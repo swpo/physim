@@ -54,7 +54,7 @@ LIT_EVERY = timedelta(hours=6)  # a literature check is due this long after the 
 LEASE = timedelta(hours=6, minutes=10)  # a session lasts 6 h (WORKER_PROMPT.md) unless an intent gives "until"
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
 FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
-SCORE_VERSION = 5  # bump when scoring rules change: the progress history is then replayed
+SCORE_VERSION = 6  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
 
@@ -650,6 +650,7 @@ def derive(items, until=None, canaries=frozenset()):
                 "same_individuals": bool(v.get("same_individuals")) and bool(cl["track"]),
                 "controls": controls, "by_construction": set(v.get("by_construction") or []),
                 "bd": (bd is not False and bool(bd_caps)) if bd is not None else None, "bd_caps": bd_caps,
+                "bd_listed": isinstance(bd, (list, str)) and bd not in ("", "true", "false"),
                 "class_confirmed": bool(v.get("class_confirmed")), "refs": c["_refs"],
             }
     # time order: a claim that brings capabilities nobody has established before needs a third review
@@ -721,11 +722,11 @@ def tally(cl):
     bd_yes = [v for v in rep_votes if v["bd"] is True and v["supported"]]
     bd_no = [v for v in rep_votes if v["bd"] is False]
     bd = status == "established" and len(bd_yes) >= 1 and len(bd_yes) > len(bd_no)
-    # a capability counts as beyond diffusion when more of the reviewers who judged the twin say the twin lost it
-    # than say it did not (one reviewer listing every capability must not outvote one who names fewer)
-    bd_judges = [v for v in rep_votes if v["bd"] is not None]
-    lost = {x for x in held - bc if sum(x in v["bd_caps"] for v in bd_yes) > sum(x not in v["bd_caps"] for v in bd_judges)}
-    bd_mask = mask(lost) if bd else 0
+    # the capabilities the matched twins lost: each reviewer names those its own twin lost (reviewers often test
+    # different twins, so leaving a capability out is not a vote against it); a bare `true` names only what that
+    # reviewer itself supported, never every claimed capability
+    lost = set().union(*[v["bd_caps"] if v["bd_listed"] else v["bd_caps"] & v["supported"] for v in bd_yes]) if bd_yes else set()
+    bd_mask = mask(lost & (held - bc)) if bd else 0
     cl.update(status=status, held=mask(held), scored=mask(held - bc), bc=mask(bc), per=per, need=need,
               n_votes=len(votes), ever_supported=bool(seed_pro) or any(v["supported"] for v in rep_votes),
               bd=bd and bool(bd_mask), bd_mask=bd_mask, class_ok=any(v["class_confirmed"] for v in bd_yes))
@@ -912,10 +913,20 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
                 ok = (v.get("verdict") == "Supported" and set(cl["claimed"]) <= set(v.get("supported", [])) | {"S"}
                       and not set(v.get("by_construction") or []) & set(cl["claimed"]))
                 audits.setdefault(key, []).append({"id": c["id"], "author": c.get("author"), "t": c["_t"],
-                                                   "independent": independent, "passed": ok})
-    def audit_status(key):
+                                                   "independent": independent, "passed": ok,
+                                                   "supported": set(v.get("supported", [])) | {"S"},
+                                                   "bc": set(v.get("by_construction") or []),
+                                                   "verdict": v.get("verdict")})
+    def audit_status(key, target=None):
+        """The latest independent audit of a claim: passed or disputed, for the whole claim or for a challenge's target."""
         good = [a for a in audits.get(key, []) if a["independent"]]
-        return None if not good else ("passed" if good[-1]["passed"] else "disputed")
+        if not good:
+            return None
+        a = good[-1]
+        if target is None:
+            return "passed" if a["passed"] else "disputed"
+        t = set(caps_of(target))
+        return "passed" if a["verdict"] == "Supported" and t <= a["supported"] and not t & a["bc"] else "disputed"
     audits_due = sorted([k for k in large if audit_status(k) is None],
                         key=lambda k: (k not in in_challenge, -bin(claims[k]["scored"]).count("1"), claims[k]["t"]))
 
@@ -1100,13 +1111,13 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     else:
         S += ["No literature check yet" + (" (task `LIT` is due)." if lit_due else "."), ""]
     S += ["## Grand challenges", "", "| Challenge | Target | Status |", "|---|---|---|"]
-    def met(k):
-        st = audit_status(k)
+    def met(k, ch):
+        st = audit_status(k, mask(ch.get("target", "")))
         if st is None and claims[k]["seed_status"]:
             return f"{k} (lab 1 committee)"
         return f"{k} ({'audited' if st == 'passed' else 'disputed by audit' if st == 'disputed' else 'audit pending'})"
     S += [f"| {ch['title']} | `{ch.get('target', '')}`{' (BD)' if ch.get('bd') else ''} | "
-          f"{'achieved: ' + ', '.join(met(k) for k in ch['achieved'][:2]) if ch['achieved'] else 'open'} |" for ch in challenges] or ["| none | | |"]
+          f"{'achieved: ' + ', '.join(met(k, ch) for k in ch['achieved'][:2]) if ch['achieved'] else 'open'} |" for ch in challenges] or ["| none | | |"]
     n_pass = sum(1 for k in large if audit_status(k) == "passed")
     n_disp = [k for k in claims if audit_status(k) == "disputed"]
     S += ["", f"**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an "
