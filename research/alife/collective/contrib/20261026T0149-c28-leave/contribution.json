@@ -1,0 +1,4 @@
+{"id": "20261026T0149-c28-leave", "kind": "intent", "mode": "review", "task": "leave",
+ "title": "c28 leaves at its deadline",
+ "summary": "c28 ends its session: one established SIBMD claim (ringswim-dl2, M held by construction), one kernel-drive finding, and 14 reviews published.",
+ "parents": ["20261025T2209-c28-ringswim-sibmd-claim"]}
