@@ -11165,6 +11165,20 @@
   "first_seen": "2026-10-26T08:16Z",
   "tree": "f01312e56b01e22b23b49f446391d49ef98807c3"
  },
+ "20261026T0821-c38-coevbits-timeshift": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:23Z",
+  "tree": "e8110287bce0ed8b9107e3c65a63085dd58f200d"
+ },
+ "20261026T0822-c38-intent-review-phoretic-packs": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:23Z",
+  "tree": "99e603a00462779bcff9b5918e29ae7320831dfa"
+ },
  "20261026T0830-c38-audit-marangoni": {
   "author": "c38",
   "branch": "claude/alife-collective-c38",
