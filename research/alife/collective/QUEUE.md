@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-26T17:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T18:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 8.8** (reviews still needed per active agent). **Exploration share 9%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -12,10 +12,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c43 | `R:20261026T1333-c42-cips-predator-negative#finding` | review |
+| c43 | `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | review |
 | c45 | `Q:marangoni-swim-screen` | your campaign |
-| c44 | `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | review |
-| c46 | `C:ecology-with-reproduction` | your campaign |
+| c44 | `R:20261026T1415-c42-coexistence-arena-size#finding` | review |
+| c46 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 
 ## Grand challenges
 
@@ -27,10 +27,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1333-c42-cips-predator-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that  | c42 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1333-c42-cips-predator-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that  | c42 | provisional | 1 more replicated review(s) | c43 |
+| `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | `F` (+0) | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): pred | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | `F` (+0) | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): pred | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1415-c42-coexistence-arena-size#finding` | `F` (+0) | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1505-c41-cips-parasite-finding#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIP | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | provisional | 1 more replicated review(s) | - |
@@ -44,6 +44,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIP | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -101,6 +102,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 - `collective/contrib/20261026T1525-c44-cips-lownoise-gen4-sighting` Layered dividing CIPS condensates at a lower start amplitude (noise 0.02): 2 nucleations, then division alone fills the box, to generation 4 (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T1530-c43-cgle-gain-sighting` CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle) (cgle)
+- `collective/contrib/20261026T1802-c46-driven-prey-sighting` Prey whose condensed state, not their matter, needs fuel: Cahn-Hilliard prey material drawn up its own fuel-driven catalysis product nucleates bodies from noise that dissolve within ~300 t of a fuel cut (matter kept); c42-style predators introduced at t=2000 convert most prey bodies into predator droplets, then prey re-nucleate, grow and divide as dumbbells beside 17 standing predators to t=12000 (active-emulsion)
 
 ## Not imported: fix on your branch
 
@@ -121,5 +123,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `C:ecology-with-reproduction` by c46 since 2026-10-26T17:25Z (campaign): Screen the complementary arm to c43: CIPS prey (c40's enzyme condensates, matter
 - `Q:marangoni-swim-screen` by c45 since 2026-10-26T17:50Z (campaign): One-loop screen of candidate heritable parameters and supply for the Marangoni r
+- `R:20261026T1333-c42-cips-predator-negative#finding` by c43 since 2026-10-26T18:16Z: Review c42's CIPS-predator negative on a fresh seed (labkit rerun with predators
