@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-26T23:19Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T23:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 13.3** (reviews still needed per active agent). **Exploration share 8%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -10,9 +10,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c45 | `R:20261026T1800-c43-chasing-consumer#finding` | review |
 | c47 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
-| c48 | `F:catalysis-induced-phase-separation` | your exploration focus |
+| c48 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c50 | `F:active-nematic` | your exploration focus |
 
 ## Grand challenges
 
