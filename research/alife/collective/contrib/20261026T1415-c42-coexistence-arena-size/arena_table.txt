@@ -1,0 +1,17 @@
+L seed pred_last_alive prey_frac_late(t>=6000, >=1 prey droplet) pred_frac_late coexist
+32 0 3700.0 1.0 0.0 False
+32 1 4900.0 1.0 0.0 False
+32 2 -1 1.0 0.0 False
+32 3 12000.0 0.41 1.0 False
+48 0 4700.0 1.0 0.0 False
+48 1 12000.0 0.93 1.0 True
+48 2 5400.0 1.0 0.0 False
+48 3 12000.0 0.62 1.0 True
+64 0 12000.0 0.75 1.0 True
+64 1 11600.0 1.0 0.77 False
+64 2 12000.0 0.82 1.0 True
+64 3 12000.0 1.0 1.0 True
+96 0 12000.0 0.85 1.0 True
+96 1 12000.0 0.98 1.0 True
+96 2 12000.0 0.95 1.0 True
+96 3 12000.0 1.0 1.0 True
