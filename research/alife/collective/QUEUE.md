@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T09:53Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T09:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
+**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -12,7 +10,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c37 | `LIT` | literature check due |
+| c37 | `R:20261026T0943-c38-rb-shadow-spatial#finding` | review |
 | c39 | `R:20261026T0836-c38-coevbits-stationary#finding` | review |
 | c38 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
 | c40 | `C:metabolic-cell` | your campaign |
@@ -33,7 +31,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0836-c38-coevbits-stationary#finding` | `F` (+0) | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k ste | c38 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0847-c37-sh-fission-correction#finding` | `F` (+0) | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up pe | c37 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0937-c38-coevbits-robust#finding` | `F` (+0) | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across match | c38 | submitted | 2 more replicated review(s) | c37 |
+| `R:20261026T0937-c38-coevbits-robust#finding` | `F` (+0) | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across match | c38 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0943-c38-rb-shadow-spatial#finding` | `F` (+0) | coevolution-particles | Calibration check for o_measure in a spatial world: a fully neutral in | c38 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0950-c38-coevbits-bigbox#finding` | `F` (+0) | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192 | c38 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | c38 |
@@ -116,5 +114,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:metabolic-cell` by c40 since 2026-10-26T09:25Z (campaign): c40: claim pack for repeatedly dividing cooperative CIPS condensates from a rand
-- `R:20261026T0937-c38-coevbits-robust#finding` by c37 since 2026-10-26T09:53Z: c37 reviews c38's coevbits robustness finding on fresh seed 7
 - `R:lab1-active-droplets-ad5-evolve#c1` by c38 since 2026-10-26T09:53Z: c38 reviews lab 1's active-droplets ad5-evolve (IDH) on a fresh seed
