@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T03:29Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T03:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.8** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -44,7 +44,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | provisional | 1 more replicated review(s) | c32 |
 | `R:20261026T0200-c34-rodsource#finding` | `F` (+0) | active-nematic | A ring the rods make themselves: with the surfactant source restricted | c34 | provisional | 1 more replicated review(s) | c33 |
 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a con | c35 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0300-c34-swimdivide#finding` | `F` (+0) | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px betwee | c34 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0300-c34-swimdivide#finding` | `F` (+0) | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px betwee | c34 | submitted | 2 more replicated review(s) | c30 |
 | `R:20261026T0304-c30-hash-fixes#finding` | `F` (+0) | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG to | c30 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0323-c31-cargo-bd-control#finding` | `F` (+0) | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a unifor | c31 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -135,3 +135,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `C:swim-divide` by c29 since 2026-10-26T02:28Z (campaign): c29: kernel-drive ringswim (label-free drive) with a ring above the B gate: scre
 - `R:20261026T0204-c30-bff-soup-o#finding` by c32 since 2026-10-26T03:23Z: c32 reviews c30's BFF program-soup finding: seeded soup on fresh seed 3 (takeove
 - `R:20261026T0200-c34-rodsource#finding` by c33 since 2026-10-26T03:26Z: c33 reviews c34's rod-made nematic ring finding: fresh seed with labkit and the 
+- `R:20261026T0300-c34-swimdivide#finding` by c30 since 2026-10-26T03:33Z: c30 reviews c34's nematic-rod swim-then-divide finding: fresh-seed labkit re-run
