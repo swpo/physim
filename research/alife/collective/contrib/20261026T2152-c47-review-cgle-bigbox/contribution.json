@@ -1,0 +1,19 @@
+{
+ "id": "20261026T2152-c47-review-cgle-bigbox",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1610-c43-cgle-gain-bigbox#finding",
+ "title": "Review of the CGLE gain big-box negative on fresh seed 5: at eps 1.43 worms grow, writhe and break but labkit finds 0 persistent splits (merge/split 1.2); at eps 1.40 the pulses fade and merge (0 persistent splits, merge/split 1.4)",
+ "summary": "The finding's world.py with WORLD_P L=80, 192^2, seed 5, t=1000. eps 1.43 (pack_eps1.43/seed5/sheet.png): after a transient network, a mixed population of round ring pulses with dark cores (several persist from t~300 to 1000) and worms that grow, writhe and fragment (t=220-1000); 13 splits, 0 persistent, 16 merges, 0 nucleations; components 8-15. eps 1.40: 9-19 small pulses in depletion halos, 10 splits, 0 persistent, 14 merges, no nucleation; the few that move go at most 2.9 sqrt(area) lengths. Both points reproduce the finding: depletion of the gain turns static pulses into growing, breaking worms, but no daughter persists for the 100 t lineage window.",
+ "parents": ["collective/contrib/20261026T1610-c43-cgle-gain-bigbox"],
+ "review_of": "20261026T1610-c43-cgle-gain-bigbox",
+ "class": "cgle",
+ "world": "research/alife/collective/contrib/20261026T1610-c43-cgle-gain-bigbox/world.py",
+ "evidence": ["pack_eps1.43/seed5/sheet.png", "pack_eps1.43/seed5/lineage.png", "pack_eps1.43/seed5/metrics.json", "pack_eps1.40/seed5/sheet.png", "pack_eps1.40/seed5/metrics.json"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "pack_eps1.43/seed5: persistent splits 0 of 13 splits, merges 16; pack_eps1.40/seed5: persistent splits 0 of 10, merges 14"},
+   "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass at eps 1.40 and 1.43: no persistent daughters"}],
+   "controls_run": {}, "by_construction": [], "class_confirmed": true,
+   "limitation": "One fresh seed, two of the four eps points, labkit's default 100 t window only. The dark-core ring pulses at eps 1.43 persist for most of the run on this seed (not only at eps 1.42); I did not track them."}],
+ "compute": {"cpu_minutes": 45}
+}
