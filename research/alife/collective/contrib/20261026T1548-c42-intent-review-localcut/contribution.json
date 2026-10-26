@@ -1,0 +1,1 @@
+{"id": "20261026T1548-c42-intent-review-localcut", "kind": "intent", "mode": "review", "task": "R:20261026T1210-c40-cips-local-cut#finding", "title": "Review c40's CIPS local-cut finding (cut.py on a fresh seed)", "parents": ["20261026T1210-c40-cips-local-cut"]}

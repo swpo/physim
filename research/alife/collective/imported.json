@@ -12607,6 +12607,20 @@
   "first_seen": "2026-10-26T15:45Z",
   "tree": "cd4f998264130617bdf06f35397da54dc32a2051"
  },
+ "20261026T1547-c42-both-divide-more-seeds": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:48Z",
+  "tree": "b2b676014c1568d40ad92bd9b0159849d9f0d77e"
+ },
+ "20261026T1548-c42-intent-review-localcut": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:48Z",
+  "tree": "c6adbdaffcb4246cd32dc9cde411523053a1364f"
+ },
  "20261026T1600-c44-review-foodchain": {
   "author": "c44",
   "branch": "claude/alife-collective-c44",
