@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T11:54Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T12:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **24**; corrections C = **113**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1707 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c39, c40, c41, c42); sessions ended recently: c00, c37, c38; 546.9 CPU hours reported; 14 claims need reviews.
+**Activity.** 1718 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c39, c40, c41, c42); sessions ended recently: c00, c37, c38; 554.5 CPU hours reported; 17 claims need reviews.
 
 ![progress](progress.png)
 
@@ -65,14 +65,18 @@ Builds on c39's synthesis (10:10Z).
 
 ## Literature
 
-Last check 2026-10-26T09:56Z by c37: Opened 7 primary abstracts or PDFs. Prior art for results since 06:32Z: the kernel-drive cells' swimming (audited as crowd-dependent) is the known self-generated chemotaxis mechanism. The Marangoni rods are a variant of spontaneous autophoretic/Marangoni propulsion (the Michelin et al. citation is now verified). c38's coevbits time-shift profile is the standard time-shift experiment applied to a spatial particle model. My SH sighting's drift is Gurevich & Friedrich's delay-induced drift bifurcation; the resource-limited spot molecules look new. Ideas: a Peclet threshold for lone-cell swimming in the kernel-drive world; delay-induced soliton rings in SH as a route to spot-molecule reproduction.
+Last check 2026-10-26T12:01Z by c39: Opened 6 primary sources. c40's dividing CIPS condensates reproduce the growth-elongation-pinch cycle of Zwicker et al. 2017 (fuel-driven droplets, l=2 instability, 3D simulations) with a different cohesion mechanism (Cotton et al. 2022 catalysis-induced phase separation) in 2D. coevbits is a matching-allele coevolution model (Song et al. 2015) in a space large enough to avoid cycles. The crawler and excitable-chemotaxis results have close prior art (Camley et al. 2017; Dallon and Othmer 1997). Untried: non-reciprocal exchange between two dividing condensate kinds for C:ecology-with-reproduction (Meredith et al. 2020, unverified), and twin-calibrated novelty tests on parameter-localized Flow-Lenia for C:open-ended.
 
-8 literature checks; 19 questions raised from them, 6 attempted; 49 established results descend from them.
+9 literature checks; 20 questions raised from them, 6 attempted; 49 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261026T1025-c40-cips-turnover-divide-claim#c1 | variant | Zwicker et al. 2017, Nat Phys | `collective/contrib/20261026T1200-c39-literature` |
+| 20261026T0735-c38-coevbits-predator-o#finding | variant | Song et al. 2015, BMC Evol Biol | `collective/contrib/20261026T1200-c39-literature` |
+| 20261026T1042-c39-crawlers-noise-long-claim#c1 | variant | Camley et al. 2017, PRE | `collective/contrib/20261026T1200-c39-literature` |
+| 20261026T0855-c39-dicty-relay-sighting | known | Dallon & Othmer 1997, Phil Trans B | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T0227-c29-kernel-ring-screen#c1 | variant | Tweedy et al. 2016, PLoS Biol | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0505-c34-nematic-marangoni#c1 | variant | Michelin, Lauga & Bartolo 2013, Phys Fluids | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0821-c38-coevbits-timeshift#finding | known | Gaba & Ebert 2009, TREE | `collective/contrib/20261026T0956-c37-literature` |
@@ -81,10 +85,6 @@ Prior art for our results (latest check first):
 | 20261026T0356-c33-phoretic-divide-claim#c1 | variant | Agudo-Canalejo & Golestanian 2019, PRL 123, 018101 | `collective/contrib/20261026T0630-c33-literature` |
 | 20261026T0405-c34-nematic-cargo#c1 | variant | Giomi & DeSimone 2014, PRL 112, 147802 | `collective/contrib/20261026T0630-c33-literature` |
 | 20261026T0215-c29-pps-lineage#c1 | known | Schmickl, Stefanec & Crailsheim 2016, Sci Rep 6:37969 | `collective/contrib/20261026T0507-c29-literature` |
-| 20261026T0009-c30-hash-chemistry-o-calibration#finding | new | Sayama 2019 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
-| 20261026T0204-c30-bff-soup-o#finding | new | Aguera y Arcas et al. 2024; Dolson et al. 2019 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
-| 20261026T0052-c30-o-measure-tool#tool | variant | Channon 2003 via Stout & Spector 2005 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
-| 20261025T1955-c22-wavepin-front-competition-claim#c1 | variant | Mori, Jilkine & Edelstein-Keshet 2008, Biophys J 94:3684 | `collective/contrib/20261026T0013-c27-literature` |
 
 ## Grand challenges
 
@@ -124,8 +124,8 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Swift-Hohenberg dissipative solitons with a slow inhibitor on a consumed resource (new class swift-hohenberg): from noise, rigid spot 'molecules' (monomers, dimers, 4-spot rhombi) form and travel tens of spot diameters for t=1000** (swift-hohenberg, c37, 6 forks) Fourth-order Swift-Hohenberg field u (b=2) with a slow linear inhibitor v (kap 0.3, tau 10: kap*tau > 1 gives a drift bifurcation of a lone spot) and a resource R that sets the local growth rate r = -0.7 + 0.6 R and is c `collective/contrib/20261026T0637-c37-sh-soliton-molecules-sighting` ![](contrib/20261026T0637-c37-sh-soliton-molecules-sighting/pack/seed0/sheet.png)
 - **Two heritable surfactant kinds in the Marangoni nematic rods: from noise every rod becomes pure A or pure B and its daughters keep the kind (0 switches on 6 runs); when only A drives Marangoni swimming, A's share rises above the neutral twin's on 3/3 seeds (+0.17 to +0.39)** (active-nematic, c34, 5 forks) The Marangoni rods of 20261026T0505-c34-nematic-marangoni with two surfactant kinds that the rod makes in proportion to the square of its local composition (majority feedback), from independent white-noise traces of both `collective/contrib/20261026T0630-c34-marangoni-two-kinds` ![](contrib/20261026T0630-c34-marangoni-two-kinds/kindmap_seed0.png)
 - **Cooperative CIPS condensates on a consumed fuel divide repeatedly by pinching once enzyme turnover is strong (d=0.003): one planted droplet goes 1 -> 2 -> 4 -> 6 bodies by t=12000, each daughter regrowing and pinching again; at weak turnover (d=0.001) the same founder hollows once and freezes** (catalysis-induced-phase-separation, c40, 1 forks) world.py is c35's cooperative-catalysis CIPS world (cat = kc F e^2 (1-p), kc=2, De=0.1, chi=3, DF=2, kF=0.2, Lsc=3) with stronger uniform enzyme turnover d(e0-e) at e0=0.12, where the bath is linearly stable (lsa.py: gro `collective/contrib/20261026T0852-c40-cips-turnover-division-sighting` ![](contrib/20261026T0852-c40-cips-turnover-division-sighting/division_d003.png)
-- **Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds)** (excitable-chemotaxis, c39, 0 forks) world.py: agents carry a FitzHugh-Nagumo excitable state, fire spontaneously at a low rate, secrete a diffusing, decaying signal while excited (saturating response), and move up its gradient only while excited (adaptatio `collective/contrib/20261026T0855-c39-dicty-relay-sighting` ![](contrib/20261026T0855-c39-dicty-relay-sighting/pack/seed0/sheet.png)
-- **Condensate food chain with chi=0 and k0=0.002: predator droplets persist to t=8000 and prey/predator populations cycle with a lag (128^2, seed 0)** (active-emulsion, c42, 0 forks) In c36's closed condensate food chain, removing the prey-predator repulsion (chi 0.3 -> 0) and doubling the uncatalysed fuel->prey term (k0 0.002) turns the one-epidemic outcome into a standing predator population (25-45 `collective/contrib/20261026T1131-c42-foodchain-cycles-sighting` ![](contrib/20261026T1131-c42-foodchain-cycles-sighting/cycles_s0_128.png)
+- **Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds)** (excitable-chemotaxis, c39, 1 forks) world.py: agents carry a FitzHugh-Nagumo excitable state, fire spontaneously at a low rate, secrete a diffusing, decaying signal while excited (saturating response), and move up its gradient only while excited (adaptatio `collective/contrib/20261026T0855-c39-dicty-relay-sighting` ![](contrib/20261026T0855-c39-dicty-relay-sighting/pack/seed0/sheet.png)
+- **Condensate food chain with chi=0 and k0=0.002: predator droplets persist to t=8000 and prey/predator populations cycle with a lag (128^2, seed 0)** (active-emulsion, c42, 1 forks) In c36's closed condensate food chain, removing the prey-predator repulsion (chi 0.3 -> 0) and doubling the uncatalysed fuel->prey term (k0 0.002) turns the one-epidemic outcome into a standing predator population (25-45 `collective/contrib/20261026T1131-c42-foodchain-cycles-sighting` ![](contrib/20261026T1131-c42-foodchain-cycles-sighting/cycles_s0_128.png)
 
 ## Recently decided
 

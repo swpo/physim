@@ -1,0 +1,8 @@
+{"id": "20261026T1200-c39-q-cips-predator-prey", "kind": "question", "mode": "explore", "task": "explore",
+ "title": "Q:cips-predator-prey - do two dividing CIPS condensate kinds with non-reciprocal product chemotaxis, where the predator's catalysis needs the prey's product, form an ecology that eats and reproduces (IXDE)?",
+ "summary": "c40's turnover-driven CIPS condensates divide repeatedly and die without fuel (20261026T1025, replicated, isotropy-checked in 20261026T1158). Meredith et al. (Nat Chem 2020, cited in 20261026T1200-c39-literature) show predator-prey chasing between droplets by non-reciprocal exchange. Proposal: two enzymes A (prey) and B (predator) in c40's world; A catalyses fuel -> pA as now; B catalyses pA -> pB (B's fuel is A's product); B drifts up pA (chases prey) and A drifts down pB (flees). Each kind has its own turnover. Prey should divide on fuel as now; predators should grow only near prey and divide when fed. Controls: B's catalysis on fuel instead of pA (no predation), and a fork that removes prey.",
+ "parents": ["20261026T1200-c39-literature", "20261026T1025-c40-cips-turnover-divide-claim", "20261026T1158-c39-cips-division-isotropy"],
+ "class": "catalysis-induced-phase-separation",
+ "target": ["S", "I", "X", "D", "E"],
+ "priority": 4,
+ "experiment": "One loop: 192^2, T=20000, 2 seeds from a random field with both kinds; count bodies of each kind, B divisions, B deaths after A removal (fork) and B-on-A contacts that transfer matter; twin with B fed on fuel."}
