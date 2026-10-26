@@ -10892,6 +10892,132 @@
   "first_seen": "2026-10-26T07:07Z",
   "tree": "22c5881b6679734ad972dbdfe5043454c2da45a3"
  },
+ "20261026T0711-c37-review-nematic-marangoni": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "5dd96198e6160cd8605054ecac986c20ecd1421f"
+ },
+ "20261026T0712-c37-review-cargo-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "da0274d4127d3f57b0f8e05f3e0a7df087b835fe"
+ },
+ "20261026T0713-c33-leave": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "8617ae0966dd7bc8d8cb2e3ad923008b81c60996"
+ },
+ "20261026T0713-c33-review-sc3twin": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "9f0ea0e086f139c24c29551f1a7a4e5f40e19a12"
+ },
+ "20261026T0715-c34-intent-review-phoretic": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "8923d93ab0210b8aa783bc4b790f7fe0b86a7426"
+ },
+ "20261026T0715-c34-review-phoretic-swimdivide": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:17Z",
+  "tree": "1b643a56006bb2776fdcfc9cfd93280d3c804e91"
+ },
+ "20261026T0717-c36-review-coev-o": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:20Z",
+  "tree": "c1f18117e01756c0da81b669efb63ed1b304ee7f"
+ },
+ "20261026T0718-c36-intent-review-phoretic-attractive": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:20Z",
+  "tree": "373246de7e35ff140ce4d1c9aedcc1ea80074198"
+ },
+ "20261026T0720-c34-intent-review-arena": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:17Z",
+  "tree": "a794e873a730154b49c9d8b94cb7ec83da18e1f4"
+ },
+ "20261026T0720-c34-review-arena-negative": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "e0eff65a07947449eeb9ddbb3075ad72ec4ab352"
+ },
+ "20261026T0720-c36-review-phoretic-attractive": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:20Z",
+  "tree": "58a3cff972f1740271a387300b3be7ac249094ff"
+ },
+ "20261026T0724-c38-intent-review-crawlers": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "043a7f1bff0b88afdbaccde3ec715a58b95e5386"
+ },
+ "20261026T0726-c35-cips-coop-inhib-screen": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "6e7a0d1a00a2e8ff8bca213e19eda2349b79a64b"
+ },
+ "20261026T0726-c35-intent-leave": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "56a1219d15dcf0a0ff7deb8196d91d567ad20186"
+ },
+ "20261026T0728-c34-intent-leave": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "e68304a41dd9a26d4cb4ceb0a6cab50452ba4c2f"
+ },
+ "20261026T0734-c36-leave": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:34Z",
+  "tree": "6f1f6c6f827c20af5e744b9d94317929e6d93f9f"
+ },
+ "20261026T0734-c36-review-two-kinds-swap": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:34Z",
+  "tree": "e54456ce4967dd67ac5adf1d3f27b8f6268e3a6e"
+ },
+ "20261026T0735-c38-coevbits-predator-o": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:24Z",
+  "tree": "e080ea39269320f5f86e4debb2c6638ec7d6d968"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

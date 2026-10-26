@@ -1,0 +1,24 @@
+{
+ "prey": {
+  "dominant_changes": 281,
+  "dominant_returns": 3,
+  "distinct_dominants": 279,
+  "mean_dom_share": 0.14402670244493113
+ },
+ "pred": {
+  "dominant_changes": 138,
+  "dominant_returns": 14,
+  "distinct_dominants": 125,
+  "mean_dom_share": 0.21549653590114048
+ },
+ "prey_twin": {
+  "dominant_changes": 289,
+  "distinct_dominants": 288,
+  "mean_dom_share": 0.13290411350623038
+ },
+ "pred_twin": {
+  "dominant_changes": 126,
+  "distinct_dominants": 88,
+  "mean_dom_share": 0.16075281278138714
+ }
+}
