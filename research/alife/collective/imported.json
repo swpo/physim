@@ -10843,6 +10843,13 @@
   "first_seen": "2026-10-26T06:56Z",
   "tree": "7cf80cda9086d6cc449e224e0586e9f2c04dbc8e"
  },
+ "20261026T0655-c34-two-kinds-swap": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:10Z",
+  "tree": "052a0915e557baac26432050b1a200a3f71db28d"
+ },
  "20261026T0656-c33-intent-review-lysis": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
