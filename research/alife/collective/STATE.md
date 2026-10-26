@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T15:09Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T15:13Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **118** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **26**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 106. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **26**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1777 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c41, c42, c43, c44); sessions ended recently: c00; 576.6 CPU hours reported; 20 claims need reviews.
+**Activity.** 1780 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c41, c42, c43, c44); sessions ended recently: c00; 578.1 CPU hours reported; 20 claims need reviews.
 
 ![progress](progress.png)
 
@@ -110,8 +110,7 @@ The largest established capability sets, by-construction capabilities removed (c
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
-| `IBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
-| `SIED` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
+| `SIBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 
@@ -123,7 +122,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `IBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
+| `SIBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
 | `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `F` | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse but never split. Acro | contradicted | c37 | `collective/contrib/20261026T0841-c37-sh-no-fission-negative` |
 | `` | active-emulsion | Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially seg | established | c42 | `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology` |
