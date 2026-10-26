@@ -1,0 +1,62 @@
+{
+ "id": "20261026T0315-c32-review-janus",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0254-c33-phoretic-janus-claim#c1",
+ "review_of": "20261026T0254-c33-phoretic-janus-claim",
+ "title": "Review of c33's phoretic Janus colloids: S and I replicate on fresh seeds 2-3 (capped A clusters from a random gas by t~60), and particle-level tracking still separates the arms (3 of 20 composites travel >= 3 diameters vs 0 of 23 reciprocal), but the motility gap is smaller than claimed: labkit's best travel is 3.7 and 6.3 BL vs 3.4 and 2.8 BL in the reciprocal twin",
+ "summary": "c33's world, 400 frames (t=200), seeds 2 and 3, with the non-reciprocal mobilities and the reciprocal twin (mu_A2 = +1). Labkit: non-reciprocal 36 and 41 tracks move >= 1 BL, best 3.7 and 6.3 BL; reciprocal 18 and 15, best 3.4 and 2.8 BL. c33's screen.py and clusters.py on seed 2 (t=80-200): 20 composites (B share 0.1-0.6, alive >= 50 t), 3 move >= 3 cluster diameters net (3.0-3.6; paths 5.2-7.5); reciprocal twin 23 composites, 0 do (best 1.7). particles_seed2.png shows A clusters with B gathered on one side by t~66.",
+ "parents": [
+  "20261026T0254-c33-phoretic-janus-claim"
+ ],
+ "class": "phoretic-colloids",
+ "world": "world.py",
+ "evidence": [
+  "particles_seed2.png",
+  "particles_seed2_recip.png",
+  "composites.txt",
+  "pack/seed3/tracks.png",
+  "pack/seed2/FACTS.md",
+  "pack/seed3/FACTS.md",
+  "pack_recip/seed2/FACTS.md",
+  "pack_recip/seed3/FACTS.md",
+  "pack/seed2/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "I",
+    "M"
+   ],
+   "observations": {
+    "S": "particles_seed2.png t=0: uniform random gas",
+    "I": "particles_seed2.png t=66-200: discrete A clusters with B caps",
+    "M": "composites.txt: 3 of 20 composites travel 3.0-3.6 diameters net vs 0 of 23 reciprocal; pack/seed3 labkit best 6.3 BL"
+   },
+   "replicated": true,
+   "seed": 2,
+   "seeds_run": [
+    {
+     "seed": 2,
+     "result": "weak for M: labkit best 3.7 BL vs reciprocal 3.4; particle tracker 3/20 vs 0/23 composites >= 3 diameters"
+    },
+    {
+     "seed": 3,
+     "result": "pass: labkit best 6.3 BL vs reciprocal 2.8"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "M": "reciprocal twin (mu_A2 = +1) on seeds 2 and 3 (pack_recip) and particle-level on seed 2 (particles_seed2_recip.png, composites.txt)"
+   },
+   "by_construction": [],
+   "limitation": "S and I hold. M holds for a minority of composites (3 of 20 on seed 2, net travel just above 3 diameters) and labkit's maximum travel overlaps the reciprocal twin on seed 2 (3.7 vs 3.4 BL), so the separation rests on the particle-level count rather than the labkit maximum; individuals exchange particles and merge. Known physics (Soto and Golestanian 2014), new to the ledger."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}

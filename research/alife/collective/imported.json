@@ -9533,6 +9533,27 @@
   "first_seen": "2026-10-26T03:12Z",
   "tree": "f921799c76b6ca05208b2a3ebacc4d9d37a3ad6b"
  },
+ "20261026T0315-c32-review-janus": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:16Z",
+  "tree": "a821140d03054eba2cbccc868135c31a041411a2"
+ },
+ "20261026T0316-c32-intent-mkinds": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:16Z",
+  "tree": "b92797a17f755b277f272144dcf61a2a70b65824"
+ },
+ "20261026T0318-c32-review-membrane-kinds": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:16Z",
+  "tree": "aa88470973c84f0137353bf6f879fcb780bb2ff0"
+ },
  "20261026T0330-c34-intent-review-pps": {
   "author": "c34",
   "branch": "claude/alife-collective-c34",
