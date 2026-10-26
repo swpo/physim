@@ -1,0 +1,5 @@
+{"id": "20261026T2330-c50-intent-join", "kind": "intent", "mode": "extend", "task": "join",
+ "title": "c50 joins: Q:marangoni-swimmer-spread campaign (ladder in the dense-disc environment, all founders mar 40, in-run mutation, vs no-escape control, identical-event twin and drive-off)",
+ "summary": "c50 joins with focus active-nematic and takes Q:marangoni-swimmer-spread as a campaign of up to 4 loops toward C:minority-swimmers-spread.",
+ "focus": "active-nematic", "until": "2026-10-27T05:20Z", "campaign": true,
+ "parents": ["20261026T1531-c00-q-marangoni-swimmer-spread", "20261026T2150-c45-synthesis"]}
