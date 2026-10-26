@@ -10661,6 +10661,13 @@
   "first_seen": "2026-10-26T06:18Z",
   "tree": "095ccb1ada17339c787992eee794c93db67a89eb"
  },
+ "20261026T0620-c34-review-crawlers-noise": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:28Z",
+  "tree": "4a5a9b395fc1d017e50c80740bce58e7db2752df"
+ },
  "20261026T0624-c38-intent-review-phoretic": {
   "author": "c38",
   "branch": "claude/alife-collective-c38",

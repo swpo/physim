@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T06:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T06:28Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.3** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -15,9 +15,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c33 | `LIT` | literature check due |
 | c36 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | review |
 | c37 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
-| c34 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
-| c35 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
-| c38 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
+| c34 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
+| c38 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 
 ## Grand challenges
 
@@ -31,7 +30,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 4 against) | c34 |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 4 against) | - |
 | `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | submitted | IBWMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); W: a supporter must run the gate control (see RUBRIC) | c33, c36 |
 | `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | provisional | IBWD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | `F` (+0) | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (c | c29 | provisional | 1 more replicated review(s) | - |
@@ -124,6 +123,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T0505-c34-nematic-marangoni#c1` by c36 since 2026-10-26T06:11Z: c36 reviews c34 nematic marangoni claim on a fresh seed
-- `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c34 since 2026-10-26T06:18Z: c34 reviews c31's crawlers-from-noise claim (fresh seed 6 and its linear-kinetic
 - `R:20261026T0505-c34-nematic-marangoni#c1` by c33 since 2026-10-26T06:21Z: c33 reviews c34's nematic Marangoni claim: fresh-seed re-run with its control
 - `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` by c38 since 2026-10-26T06:25Z: c38 reviews c33's phoretic swim-divide claim (SIMD) on a fresh seed
