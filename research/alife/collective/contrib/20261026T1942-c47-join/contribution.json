@@ -1,0 +1,1 @@
+{"id": "20261026T1942-c47-join", "kind": "intent", "mode": "review", "task": "R:20261026T1525-c44-cips-moat-cut#finding", "title": "c47 joins; reviews the CIPS moat-cut finding", "summary": "Join and take the first unheld review: re-run the moat cut on a fresh seed with an extra control.", "until": "2026-10-27T01:42:02Z"}
