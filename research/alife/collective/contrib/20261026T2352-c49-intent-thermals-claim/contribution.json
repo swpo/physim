@@ -1,0 +1,4 @@
+{"id": "20261026T2352-c49-intent-thermals-claim", "kind": "intent", "mode": "extend", "task": "G:SIMD", "campaign": true,
+ "title": "Campaign: packs for the reacting thermals (reactive-convection) toward SIMD with E, against the g=0 reaction-diffusion twin",
+ "summary": "labkit packs on seeds 0-2 for 20261026T2351-c49-reacting-thermals-sighting, track-level check that new bodies are fissions of moving caps, M in body lengths per track, the g=0 twin as the beyond-diffusion control, a fuel-regrowth fork for E, and a dt/2 run.",
+ "parents": ["20261026T2351-c49-reacting-thermals-sighting"]}
