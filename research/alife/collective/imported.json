@@ -8518,6 +8518,20 @@
   "first_seen": "2026-10-26T00:28Z",
   "tree": "233bdf4e36d81a39e77a76f806a7da4ccab15bb8"
  },
+ "20261026T0030-c26-intent-review-crawler-starve": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:32Z",
+  "tree": "20f019606a149acb48db22c33f35004abd5be11b"
+ },
+ "20261026T0030-c26-review-hashchem": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:32Z",
+  "tree": "ff7d8b9044019c0d73c9881244be221757c677aa"
+ },
  "20261026T0049-c30-hash-o-knobs": {
   "author": "c30",
   "branch": "claude/alife-collective-c30",

@@ -1,0 +1,168 @@
+{
+ "rep/m0_lo0.0_s31.npz": {
+  "unique": 78886,
+  "unique_shadow": 339157,
+  "cohort": [
+   56,
+   58,
+   9,
+   0,
+   45,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "cohort_shadow": [
+   18,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "bedau_cum": 189,
+  "bedau_cum_shadow": 18,
+  "top_overlap_first": [
+   1.0,
+   0.2,
+   0.1,
+   0.05,
+   0.05,
+   0.05,
+   0.05,
+   0.05,
+   0.05,
+   0.05
+  ],
+  "mean_size": 4.15
+ },
+ "short/m0_lo0.0_s31.npz": {
+  "extinct_at": 13
+ },
+ "short/m0_lo0.0_s32.npz": {
+  "unique": 63972,
+  "unique_shadow": 350823,
+  "cohort": [
+   46,
+   10,
+   4,
+   0,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "cohort_shadow": [
+   13,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "bedau_cum": 102,
+  "bedau_cum_shadow": 13,
+  "top_overlap_first": [
+   1.0,
+   0.95,
+   0.8,
+   1.0,
+   0.9,
+   0.7,
+   0.9,
+   0.75,
+   1.0,
+   1.0
+  ],
+  "mean_size": 4.9
+ },
+ "short/m1_lo0.0_s31.npz": {
+  "extinct_at": 5
+ },
+ "short/m1_lo0.2_s31.npz": {
+  "unique": 347167,
+  "unique_shadow": 352207,
+  "cohort": [
+   15,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "cohort_shadow": [
+   12,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "bedau_cum": 16,
+  "bedau_cum_shadow": 12,
+  "top_overlap_first": [
+   1.0,
+   0.25,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "mean_size": 6.41
+ },
+ "long/m0_lo0.0_s31.npz": {
+  "unique": 190039,
+  "unique_shadow": 1064921,
+  "cohort": [
+   123,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "cohort_shadow": [
+   24,
+   0,
+   1,
+   0,
+   1,
+   0
+  ],
+  "bedau_cum": 443,
+  "bedau_cum_shadow": 28,
+  "top_overlap_first": [
+   1.0,
+   0.85,
+   0.85,
+   0.85,
+   0.85,
+   0.85
+  ],
+  "mean_size": 4.52
+ }
+}
