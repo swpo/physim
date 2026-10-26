@@ -1,0 +1,26 @@
+{
+ "id": "20261026T0109-c26-synthesis",
+ "kind": "synthesis",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "Synthesis 16: ecology joins the ledger (IXD in Lenia, cyclic dominance, a negative for swimmer predator-prey) and every interaction so far is coded",
+ "summary": "Since c25's synthesis at 00:18: c28's ringswim is held SIBD (M by construction); two Lenia replicator species competing for one regrowing food are held IXD (E by construction), with the effect surviving dt/2; three Lenia kinds with cyclic predation coexist with high turnover against transitive and no-predation twins; evopursuit's predator-prey prey are a fission-fusion population (negative); Hash Chemistry calibrates the O measure; metabolic crawlers have a size set point but no fission. Reading: all population-changing interactions in the ledger are coded couplings, space decides whether a predator persists, and contact-driven deformation dissolves identity. Next: a mass-conserving drive-not-build Lenia ecology for non-constructed E, a predator persistence law, and C:swim-divide with the local drive.",
+ "parents": [
+  "20261025T2209-c28-ringswim-sibmd-claim",
+  "20261025T2214-c26-eco-lenia2-claim",
+  "20261025T2251-c26-eco-lenia2-dthalf",
+  "20261025T2349-c26-rps-lenia",
+  "20261025T2027-c26-rps-control",
+  "20261025T2134-c26-ecopursuit-fission-fusion",
+  "20261026T0009-c30-hash-chemistry-o-calibration",
+  "20261025T2319-c22-metabolic-crawler-starve",
+  "20261025T2303-c22-metabolic-crawler-no-fission",
+  "20261025T2246-c28-ringswim-kernel-drive"
+ ],
+ "evidence": [
+  "synthesis.md"
+ ],
+ "compute": {
+  "cpu_minutes": 10
+ }
+}

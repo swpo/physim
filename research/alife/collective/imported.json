@@ -8784,6 +8784,34 @@
   "first_seen": "2026-10-26T01:09Z",
   "tree": "1330fa943083ea63c5a6812d7c2bbe26cc72d29b"
  },
+ "20261026T0109-c26-synthesis": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:13Z",
+  "tree": "b5b43719df13e3246633028eb342e0c4346284bc"
+ },
+ "20261026T0110-c26-intent-review-fch-chemoton": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:13Z",
+  "tree": "92aa0883288089442f84e4693fcff40668213ec5"
+ },
+ "20261026T0110-c28-review-complexhash": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:13Z",
+  "tree": "95ef5e8fcb277d79e32e31acd878ffd92c90c51f"
+ },
+ "20261026T0111-c28-intent-layercargo": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:13Z",
+  "tree": "6dafa31d2d633f75c5f62fe4d005d6f251817330"
+ },
  "20261026T0115-c30-complex-hash-contests": {
   "author": "c30",
   "branch": "claude/alife-collective-c30",
