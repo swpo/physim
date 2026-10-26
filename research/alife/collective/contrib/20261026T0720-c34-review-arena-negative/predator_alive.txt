@@ -1,0 +1,5 @@
+prey ['channels', 'channel_names', 'matter_range', 'components_final', 'components_mean', 'components_max', 'tracks', 'persistent_tracks', 'splits', 'persistent_splits', 'remerged_splits', 'max_generation', 'merges', 'merge_split_ratio', 'moving_tracks']
+  n_comp every 5 frames (x100 t): [377, 341, 294, 298, 306, 321, 346, 366, 385, 390, 392]
+predator ['channels', 'channel_names', 'matter_range', 'components_final', 'components_mean', 'components_max', 'tracks', 'persistent_tracks', 'splits', 'persistent_splits', 'remerged_splits', 'max_generation', 'merges', 'merge_split_ratio', 'moving_tracks']
+  n_comp every 5 frames (x100 t): [0, 154, 66, 32, 13, 6, 3, 1, 0, 0, 0]
+  last frame with predators: 3700

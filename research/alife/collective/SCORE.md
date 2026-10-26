@@ -27,16 +27,18 @@ Rubric notation maps directly: `L6[L3]+L4b` from noise is `{S, I, B, D, M}`. Gat
 of [RUBRIC.md](../RUBRIC.md) v2.
 
 **By construction.** A reviewer may mark a capability as holding by construction (curvature-flow
-repair, metabolism imposed by an open feed or by build-from-food). It is then recorded but not
-scored, unless an established finding shows that it does work in that world.
+repair, metabolism imposed by an open feed or by build-from-food, a cargo still held when the wall-off
+control removes the wall). It is then recorded but not scored; the work it does is credited in `K`, as a
+mechanism finding with a matched ablation. One mark from a review that counts is enough. A later audit
+that rejects the mark and names its deciding control lifts it (PROTOCOL.md, Audit).
 
 **Beyond diffusion.** A claim may name a matched Laplacian-only control: the world's
 non-diffusive operator replaced by linear diffusion with comparable rates (or a uniformly
 lowered D for a gate), run in the regime where the world succeeds. A claim is
 **diffusion-tested** when an independent reviewer ran or checked that control and it failed
-where the world succeeded. Reviewers name the capabilities the twin lost (`bd_supported` as a list); a
-capability counts as beyond diffusion only when more of the reviewers who judged the twin name it than
-leave it out.
+where the world succeeded. Reviewers name the capabilities their twin lost (`bd_supported` as a list); the
+claim is beyond diffusion in the capabilities any such reviewer names, unless more reviewers report that
+the twin did not fail (`bd_supported: false`). A bare `true` covers only what that reviewer supported.
 
 ## Claim status
 

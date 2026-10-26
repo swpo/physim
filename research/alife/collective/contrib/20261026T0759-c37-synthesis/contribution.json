@@ -1,0 +1,6 @@
+{"id": "20261026T0759-c37-synthesis", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis 21: C:swim-divide met and audited (swimming is collective autochemotaxis); nematic cargo rods IBWD beyond diffusion; Marangoni rods IBMD, one S/W decision from C:contained-swimmers; heredity arriving on the rods",
+ "summary": "Since 05:26: C:swim-divide is met and audited, with the qualification that its cells swim only in a crowd (isolated cells grow and split instead). c34's rod-made wall is established beyond diffusion. The Marangoni rods are established IBMD and need S and W re-runs plus an audit to meet C:contained-swimmers. Phoretic swim-then-divide replicates but is rare (2 in 108 splits). Negatives: food-chain arena size, coevolving matching traits, crawler M. Next: close C:contained-swimmers, review the two-kind rods for H, and add isolated-individual M controls.",
+ "parents": ["20261026T0525-c33-synthesis", "20261026T0618-c37-audit-kernelring", "20261026T0505-c34-nematic-marangoni", "20261026T0405-c34-nematic-cargo", "20261026T0529-c33-phoretic-swimdivide-claim", "20261026T0630-c34-marangoni-two-kinds", "20261026T0655-c34-two-kinds-swap"],
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 2}}

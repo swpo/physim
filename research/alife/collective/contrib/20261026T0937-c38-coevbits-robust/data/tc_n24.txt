@@ -1,0 +1,6 @@
+0 prey q 99.9 a* 2016 late real 31 late twin 30 | per window real [3, 2, 0, 4, 0, 2, 0, 1, 1, 4, 2, 2, 3, 4, 1, 2, 0]
+0 pred q 99.9 a* 179 late real 28 late twin 2 | per window real [1, 5, 0, 2, 1, 2, 3, 1, 0, 1, 4, 1, 3, 1, 2, 1, 0]
+1 prey q 99.9 a* 1857 late real 42 late twin 30 | per window real [2, 4, 1, 3, 3, 3, 1, 3, 1, 4, 3, 4, 1, 3, 2, 4, 0]
+1 pred q 99.9 a* 191 late real 23 late twin 3 | per window real [1, 2, 1, 1, 1, 2, 1, 5, 1, 2, 0, 1, 1, 1, 1, 2, 0]
+2 prey q 99.9 a* 1924 late real 32 late twin 29 | per window real [2, 4, 1, 4, 4, 0, 2, 0, 2, 2, 1, 3, 2, 1, 2, 2, 0]
+2 pred q 99.9 a* 260 late real 8 late twin 4 | per window real [0, 1, 0, 2, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0]

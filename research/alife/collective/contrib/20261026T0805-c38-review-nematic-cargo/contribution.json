@@ -1,0 +1,59 @@
+{
+ "id": "20261026T0805-c38-review-nematic-cargo",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0405-c34-nematic-cargo#c1",
+ "title": "Review of c34's nematic cargo claim (SIBWD): fresh seed 13 and its kappa=0 twin reproduce every number (22 persistent splits, ring 99% of body-frames, cargo in/out 12.3 vs 1.38, daughters holding cargo 31/31 vs 0/31)",
+ "summary": "Re-ran world.py unchanged on seed 13 (labkit, T=1000) and the wall ablation kappa=0 on the same seed, then the author's sd_individuals.py and inherit.py. From uniform noise (sheet t=0) rods nucleate by t~85-135, elongate, buckle and break into pieces (the long rod of t=260 is in 4 segments by t=480); labkit: 22 persistent splits, max generation 3, merge/split 0.17, 39 tracks moved >= 1 body length. Surfactant ring (channel 2): 99% of 391 body-frames pass rim/core and rim/out >= 1.5, medians 2.72 and 7.96. Cargo (channel 3): inside/outside median 12.26, 100% of body-frames >= 2; with kappa=0, same bodies (cargo does not act back), 1.38 and 3%. Daughters 5 frames after a split: median 5.70, 31/31 >= 2 (mid-life 4.34, 36/36); with kappa=0 1.30 and 0/31.",
+ "parents": [
+  "20261026T0405-c34-nematic-cargo"
+ ],
+ "review_of": "20261026T0405-c34-nematic-cargo",
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T0405-c34-nematic-cargo/world.py",
+ "evidence": [
+  "rerun/seed13/sheet.png",
+  "rerun/seed13/lineage.png",
+  "rerun/seed13/FACTS.md",
+  "rerun/kappa0_seed13/sheet.png",
+  "rerun/measures.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "W",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed13/sheet.png t=0: uniform noise over the whole box; first droplets t~85",
+    "I": "rerun/seed13/sheet.png t=520-1000: ~30 discrete rods persist; labkit components final 30",
+    "B": "rerun/measures.txt ch2: 99% of 391 body-frames pass the signed-distance rim test (rim/core 2.72, rim/out 7.96)",
+    "W": "rerun/measures.txt ch3: cargo in/out 12.26 (100% >= 2) vs 1.38 (3%) with kappa=0 on the same bodies",
+    "D": "rerun/seed13/FACTS.md: 22 persistent splits, generation 3; daughters keep cargo 31/31 (5.70) vs 0/31 with kappa=0"
+   },
+   "replicated": true,
+   "seed": 13,
+   "seeds_run": [
+    {
+     "seed": 13,
+     "result": "pass: all claimed numbers within the claim's ranges"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "W": "rerun/kappa0_seed13 (kappa=0, same seed and bodies): cargo in/out 1.38, daughters 0/31 >= 2"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "I did not rerun the zeta=0 twin or the chis=0 ring ablation; the D beyond-diffusion statement rests on the author's twin. The ring is a quasi-equilibrium coating (adsorption drift written against the body field, source on rod pixels only, read in the claim's limits); the wall works through a coded coupling (cargo chemical potential ln c + kappa s), so W shows that the self-made ring can hold contents through that coupling, not that the ring evolved a barrier, and neither s nor c acts back on the rods. Cargo inside is a thin spine; most cargo (70-80% in the author's numbers) sits in the bath. One fresh seed."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}

@@ -1,0 +1,18 @@
+   134   34   17  16    1  0.52
+   151   34   16  17    1  0.48
+   168   34   16  18    0  0.47
+   185   30   14  16    0  0.47
+collective/contrib/20261026T0915-c38-review-two-kinds/rerun/swap_seed4/frames.npz: 97 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 13, 'B': 14}; merges by kinds of the merging tracks: {'AA': 4, 'BB': 6, 'AB': 1}
+   134   35   22  12    1  0.65
+   151   33   22  11    0  0.67
+   168   34   22  11    1  0.67
+   185   31   20  11    0  0.65
+collective/contrib/20261026T0915-c38-review-two-kinds/rerun/neutral_seed4/frames.npz: 92 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 15, 'B': 6}; merges by kinds of the merging tracks: {'AA': 9, 'BB': 3, 'AB': 2}
+   134   33   25   8    0  0.76
+   151   33   24   7    2  0.77
+   168   34   26   7    1  0.79
+   185   31   24   6    1  0.80
+collective/contrib/20261026T0915-c38-review-two-kinds/rerun/orig_seed4/frames.npz: 95 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 23, 'B': 2}; merges by kinds of the merging tracks: {'AA': 10, 'BB': 3, 'AB': 2}

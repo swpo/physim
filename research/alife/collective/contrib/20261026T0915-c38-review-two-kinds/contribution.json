@@ -1,0 +1,49 @@
+{
+ "id": "20261026T0915-c38-review-two-kinds",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0655-c34-two-kinds-swap#finding",
+ "title": "Review of c34's two-kind trait-swap finding: on fresh seed 4 the swimming kind beats the neutral twin in both assignments (swap: B 0.53 vs 0.35; original: A 0.80 vs 0.65 of pure rods at frame 185), 0 kind switches in 3 runs; the split advantage is large in the original arm (23 vs 2) but not in the swap arm (14 vs 13)",
+ "summary": "Ran the finding's world on seed 4 three times with labkit (T=1000): swap (mar=0, marB=40), neutral twin (mar=marB=40) and the original assignment (mar=40, marB=0), then the author's kinds.py and switches.py. Pure-rod shares at frame 185: neutral A 0.65 / B 0.35 (founder bias toward A on this seed); swap B 0.53 (+0.18 over neutral); original A 0.80 (+0.15). Both paired comparisons favour the kind that carries the Marangoni drive, extending the author's 6/6 to 8/8. switches.py: 0 kind switches along any of 97, 92 and 95 tracks, so the shift is carried by births and not by conversion. Persistent splits by parent kind: original A 23 vs B 2; swap A 13 vs B 14; neutral A 15 vs B 6, so the swimmer's split count rises over its neutral value in both arms (B 6 -> 14, A 15 -> 23), but in the swap arm swimmers do not out-divide non-swimmers in absolute terms as the summary states for seeds 0-2.",
+ "parents": [
+  "20261026T0655-c34-two-kinds-swap"
+ ],
+ "review_of": "20261026T0655-c34-two-kinds-swap",
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T0655-c34-two-kinds-swap/world.py",
+ "evidence": [
+  "rerun/kinds.txt",
+  "rerun/swap_seed4/sheet.png",
+  "rerun/swap_seed4/lineage.png",
+  "rerun/neutral_seed4/sheet.png",
+  "rerun/orig_seed4/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "H"
+   ],
+   "observations": {
+    "H": "rerun/kinds.txt: swimmer share above neutral in both assignments on seed 4 (+0.18, +0.15), 0 kind switches in 3 runs; persistent splits by parent kind 23/2 (original), 14/13 (swap), 15/6 (neutral)"
+   },
+   "replicated": true,
+   "seed": 4,
+   "seeds_run": [
+    {
+     "seed": 4,
+     "result": "pass: swimmer above neutral in both arms, no conversions"
+    }
+   ],
+   "controls_run": {
+    "H": "rerun/neutral_seed4 (mar = marB = 40) as the paired neutral twin; trait swapped between kinds (rerun/swap_seed4, rerun/orig_seed4)"
+   },
+   "by_construction": [],
+   "limitation": "One fresh seed and one T=1000 window; the two arms share one neutral run. The neutral run already favours A (0.65), so founder composition matters and per-seed effects are of the size of that bias. In the swap arm swimmers and non-swimmers split about equally often (14 vs 13), so 'swimmers out-divide non-swimmers' holds relative to the neutral twin, not in absolute terms on this seed. Kind identity is a surfactant composition with coded majority feedback (src fA^2/(fA^2+fB^2)), so heredity is engineered while selection comes from the dynamics; I did not check the mechanism of the split advantage."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

@@ -1,0 +1,15 @@
+== scan_i (more food or less consumption, slow local inhibitor)
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.3, "tau": 10, "noise0": 0.8, "cr": 0.08} spots 12 -> 13 min 10 max 15 mol 10 -> 3 spot-up events 10 mol-up events 11
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.3, "tau": 10, "noise0": 0.8, "cr": 0.065} spots 40 -> 31 min 30 max 40 mol 21 -> 5 spot-up events 11 mol-up events 15
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.3, "tau": 10, "noise0": 0.8, "cr": 0.1, "ar": 0.02} spots 45 -> 59 min 39 max 63 mol 15 -> 3 spot-up events 22 mol-up events 19
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.3, "tau": 10, "noise0": 0.8, "cr": 0.1, "ar": 0.04} spots 129 -> 146 min 126 max 148 mol 4 -> 2 spot-up events 23 mol-up events 15
+== scan_j (diffusing inhibitor Dv)
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.3, "tau": 10, "noise0": 0.8, "cr": 0.1, "ar": 0.02, "Dv": 2} spots 130 -> 133 min 128 max 134 mol 1 -> 1 spot-up events 8 mol-up events 1
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.3, "tau": 10, "noise0": 0.8, "cr": 0.1, "ar": 0.02, "Dv": 10} spots 130 -> 132 min 128 max 132 mol 1 -> 1 spot-up events 6 mol-up events 0
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.5, "tau": 6, "noise0": 0.8, "cr": 0.1, "ar": 0.03, "Dv": 10} spots 128 -> 132 min 125 max 132 mol 1 -> 1 spot-up events 9 mol-up events 0
+{"N": 128, "L": 80, "r": -0.6, "g": 0.6, "b": 2, "kap": 0.6, "tau": 5, "noise0": 0.8, "cr": 0.1, "ar": 0.03, "Dv": 30} spots 129 -> 132 min 129 max 134 mol 1 -> 2 spot-up events 8 mol-up events 5
+== scan_k (stronger drift kap*tau 6-10)
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.4, "tau": 15, "noise0": 0.8, "cr": 0.1, "ar": 0.02} spots 50 -> 102 min 49 max 103 mol 19 -> 7 spot-up events 28 mol-up events 21
+{"N": 128, "L": 80, "r": -0.7, "g": 0.6, "b": 2, "kap": 0.5, "tau": 20, "noise0": 0.8, "cr": 0.1, "ar": 0.02} spots 52 -> 86 min 52 max 116 mol 16 -> 7 spot-up events 24 mol-up events 16
+{"N": 128, "L": 80, "r": -0.6, "g": 0.6, "b": 2, "kap": 0.5, "tau": 20, "noise0": 0.8, "cr": 0.1, "ar": 0.02} spots 128 -> 130 min 119 max 140 mol 3 -> 2 spot-up events 22 mol-up events 16
+{"N": 128, "L": 80, "r": -0.7, "g": 0.7, "b": 2, "kap": 0.4, "tau": 25, "noise0": 0.8, "cr": 0.1, "ar": 0.03} spots 130 -> 130 min 129 max 142 mol 2 -> 1 spot-up events 23 mol-up events 15

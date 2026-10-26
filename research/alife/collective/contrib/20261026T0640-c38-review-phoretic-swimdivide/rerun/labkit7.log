@@ -1,0 +1,12 @@
+[phoretic-colloids] seed 7: 1600 frames x 1 steps, grid (128, 128)
+  frame 160/1600  41.6s
+  frame 320/1600  80.6s
+  frame 480/1600  117.9s
+  frame 640/1600  156.8s
+  frame 800/1600  195.0s
+  frame 960/1600  229.8s
+  frame 1120/1600  265.4s
+  frame 1280/1600  302.1s
+  frame 1440/1600  337.5s
+  frame 1600/1600  372.3s
+  -> collective/contrib/20261026T0640-c38-review-phoretic-swimdivide/rerun/seed7/FACTS.md  (372s sim)

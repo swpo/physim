@@ -1,0 +1,54 @@
+{
+ "id": "20261026T1000-c38-review-ad5",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-active-droplets-ad5-evolve#c1",
+ "title": "Review of lab 1's ad5-evolve (IDH): on fresh seed 21 the faster alleles rise from 0 to 8 of 10 droplets while the neutral twin (equal rates, identical mutation and dilution counts) keeps the ancestor at 5 of 9; 5 persistent splits to generation 2. Selection is real but rests on ~10 planted-founder droplets, imposed mutation patches and imposed deaths",
+ "summary": "Re-ran threads/active-droplets/worlds/ad5-evolve/world.py on seed 21 with labkit (t=20000; rerun/pack: 10 droplets at the end, 5 persistent splits, max generation 2, 0 merges) and with the lab's alleles.py census, and ran the neutral twin worlds/ad5n-neutral (all k = 0.13) on the same seed. Both runs see the same event sequence counts (40 mutation patches, 12 dilution disks by t=20000). Droplets per allele [a0, a1, a2, a3] at t=20000: evolve [2, 2, 4, 2] (ancestor share 0.2), neutral [5, 2, 1, 1] (0.56). The strip (alleles_evolve_s21.png) shows how: a mutation patch turns one ancestor droplet yellow (a2, k=0.14) by t~1800, and that droplet's lineage then divides repeatedly (4-5 yellow droplets from t~10900), with a red (a3) lineage later doing the same, while the ancestor droplets mostly persist without dividing. So the faster kinds win by out-dividing the ancestor, as claimed, in the direction the rates predict and not in the neutral twin.",
+ "parents": [],
+ "review_of": "lab1-active-droplets-ad5-evolve",
+ "class": "active-emulsion",
+ "world": "research/alife/threads/active-droplets/worlds/ad5-evolve/world.py",
+ "evidence": [
+  "rerun/pack/sheet.png",
+  "rerun/pack/lineage.png",
+  "rerun/pack/FACTS.md",
+  "rerun/alleles_evolve_s21.png",
+  "rerun/alleles_evolve_s21.txt",
+  "rerun/alleles_neutral_s21.png",
+  "rerun/alleles_neutral_s21.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "I",
+    "D",
+    "H"
+   ],
+   "observations": {
+    "I": "rerun/pack/sheet.png: 6-10 discrete droplets persist to t=20000",
+    "D": "rerun/pack/FACTS.md: 5 persistent splits, generation 2; rerun/alleles_evolve_s21.png: yellow and red lineages multiply by division",
+    "H": "rerun/alleles_evolve_s21.txt vs rerun/alleles_neutral_s21.txt: ancestor share 0.2 vs 0.56 at t=20000 with identical event counts; faster alleles 8/10 vs 4/9"
+   },
+   "replicated": true,
+   "seed": 21,
+   "seeds_run": [
+    {
+     "seed": 21,
+     "result": "pass in direction: faster alleles rise, neutral twin keeps the ancestor; small numbers"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "H": "worlds/ad5n-neutral (all k equal) on seed 21, same mutation and dilution event counts"
+   },
+   "by_construction": [],
+   "limitation": "About 10 droplets per run and one seed, so one lineage decides the outcome; the 6 founders are planted (S not claimed). Each new kind starts as an imposed patch transplant that converts a living droplet (a mutation operator, not a birth), and every death is an imposed dilution disk, unbiased by allele, so selection here runs through births only. D is slow (5 persistent splits in 20000 t, generation 2). I agree with lab 1's low confidence: the rates' ordering is respected, but the evidence is thin."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 18
+ }
+}

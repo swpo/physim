@@ -1,0 +1,25 @@
+frames 501; molecules first/last 4/1, frame 25 24; fission events (children apart >= 10 frames): 50; fusions 266; nucleations 74
+after frame 50 (t >= 100): 23 fissions; with >= 2 spots in both children: 16; molecules every 50 frames: [4, 19, 14, 10, 6, 3, 1, 1, 1, 1, 1]
+  fission at frame 71 children spots 3 3
+  fission at frame 71 children spots 5 1
+  fission at frame 78 children spots 2 1
+  fission at frame 96 children spots 17 10
+  fission at frame 97 children spots 14 9
+  fission at frame 98 children spots 2 2
+  fission at frame 108 children spots 13 7
+  fission at frame 112 children spots 36 1
+  fission at frame 115 children spots 21 14
+  fission at frame 124 children spots 11 5
+  fission at frame 125 children spots 17 6
+  fission at frame 139 children spots 54 6
+  fission at frame 140 children spots 40 16
+  fission at frame 140 children spots 40 2
+  fission at frame 144 children spots 39 1
+  fission at frame 145 children spots 25 13
+  fission at frame 150 children spots 7 6
+  fission at frame 155 children spots 4 1
+  fission at frame 160 children spots 29 27
+  fission at frame 163 children spots 21 7
+  fission at frame 193 children spots 51 2
+  fission at frame 203 children spots 43 1
+  fission at frame 226 children spots 70 1

@@ -1,0 +1,29 @@
+== pack/seed0 (t=32)
+- components: final 1, mean 2.4, max 30; occupancy final 0.22
+- motion: 1 long-lived tracks moved >= 1 body length; max speed 24.4/time; max body lengths 4.7
+track 35 frames 43-160 birth merge diameter 136.1px: net 4.20 D, path 4.22 D, max excursion 4.20 D
+track 33 frames 30-40 birth merge diameter 118.4px: net 0.54 D, path 0.54 D, max excursion 0.54 D
+track 15 frames 0-23 birth initial diameter 73.9px: net 0.42 D, path 0.43 D, max excursion 0.42 D
+collective/contrib/20261026T1042-c39-crawlers-noise-long-claim/pack/seed0/frames.npz body-frames 31 both >= 1.5: 1.0 median rim/core 3.52 median rim/out 19.45
+== pack/seed1 (t=32)
+- components: final 1, mean 2.3, max 32; occupancy final 0.27
+- motion: 4 long-lived tracks moved >= 1 body length; max speed 24.1/time; max body lengths 3.6
+track 32 frames 6-75 birth merge diameter 103.5px: net 3.22 D, path 3.22 D, max excursion 3.22 D
+track 35 frames 76-160 birth merge diameter 149.8px: net 2.64 D, path 2.67 D, max excursion 2.64 D
+track 34 frames 35-75 birth merge diameter 104.2px: net 1.85 D, path 1.85 D, max excursion 1.85 D
+collective/contrib/20261026T1042-c39-crawlers-noise-long-claim/pack/seed1/frames.npz body-frames 48 both >= 1.5: 1.0 median rim/core 3.82 median rim/out 19.24
+== pack/seed2 (t=32)
+- components: final 1, mean 2.2, max 24; occupancy final 0.29
+- motion: 2 long-lived tracks moved >= 1 body length; max speed 26.4/time; max body lengths 4.1
+track 31 frames 52-160 birth merge diameter 157.3px: net 3.63 D, path 3.63 D, max excursion 3.63 D
+track 24 frames 1-26 birth split diameter 69.7px: net 1.23 D, path 1.27 D, max excursion 1.25 D
+track 3 frames 0-51 birth initial diameter 64.2px: net 0.78 D, path 0.83 D, max excursion 0.79 D
+collective/contrib/20261026T1042-c39-crawlers-noise-long-claim/pack/seed2/frames.npz body-frames 59 both >= 1.5: 1.0 median rim/core 3.59 median rim/out 21.22
+== linear/seed0 (KIN=1, t=32)
+- components: final 1, mean 1.4, max 30; occupancy final 0.06
+- motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 0.0
+track 25 frames 0-160 birth initial diameter 72.4px: net 0.03 D, path 0.06 D, max excursion 0.03 D
+== nosrc/seed0 (SRC=none, t=16)
+  - radial s (layer species): flat profile (no radial structure; level 0; aggregate of 16 individuals)
+collective/contrib/20261026T1042-c39-crawlers-noise-long-claim/nosrc/seed0/frames.npz body-frames 16 both >= 1.5: 0.0 median rim/core 0.0 median rim/out 0.0
+track 35 frames 43-80 birth merge diameter 136.5px: net 1.43 D, path 1.45 D, max excursion 1.43 D
