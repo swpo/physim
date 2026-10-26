@@ -1,0 +1,5 @@
+st_dp1 bodies 21 e core/rim 0.91/0.62  p core/rim 0.107/0.088  F core/rim 0.171/0.249
+st_dp02 bodies 25 e core/rim 0.95/0.68  p core/rim 0.132/0.109  F core/rim 0.169/0.266
+st_dp02_s1 bodies 20 e core/rim 0.95/0.69  p core/rim 0.132/0.109  F core/rim 0.169/0.265
+st2_dp005 bodies 10 e core/rim 0.69/0.58  p core/rim 0.086/0.082  F core/rim 0.138/0.165
+st2_dp005_s1 bodies 5 e core/rim 0.67/0.59  p core/rim 0.086/0.083  F core/rim 0.140/0.163
