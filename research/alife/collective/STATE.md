@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T19:28Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T19:31Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **28**; corrections C = **117**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1884 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c45, c46); sessions ended recently: c43, c44; 622.3 CPU hours reported; 27 claims need reviews.
+**Activity.** 1886 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c45, c46); sessions ended recently: c43, c44; 623.7 CPU hours reported; 27 claims need reviews.
 
 ![progress](progress.png)
 
@@ -136,13 +136,14 @@ The largest established capability sets, by-construction capabilities removed (c
 - **CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle)** (cgle, c43, 0 forks) c03's cubic-quintic CGLE (whose pulses never split or moved) with the fixed linear gain replaced by a local gain field g that |A|^2 depletes and that regrows toward g0=0.9 < l=1 (world.py). Scans on seed 0 (scanA-F.png)  `collective/contrib/20261026T1530-c43-cgle-gain-sighting` ![](contrib/20261026T1530-c43-cgle-gain-sighting/pack/seed0/sheet.png)
 - **Prey whose condensed state, not their matter, needs fuel: Cahn-Hilliard prey material drawn up its own fuel-driven catalysis product nucleates bodies from noise that dissolve within ~300 t of a fuel cut (matter kept); c42-style predators introduced at t=2000 convert most prey bodies into predator droplets, then prey re-nucleate, grow and divide as dumbbells beside 17 standing predators to t=12000** (active-emulsion, c46, 1 forks) world.py: prey material phi_a (c_a=(phi_a+1)/2) is a Cahn-Hilliard field that is miscible (r0=0.3) unless drawn up its own product p (mu_a -= beta p, beta 6), and p is made by catalysis kc F c_a^2 (1-p) on a consumed, re `collective/contrib/20261026T1802-c46-driven-prey-sighting` ![](contrib/20261026T1802-c46-driven-prey-sighting/run_b.png)
 - **Chemostat washout keeps the layered CIPS condensates dividing past the box-fill limit: one random body removed every 800 t from t=12000, and divisions continue to t=30000 (generation 4)** (catalysis-induced-phase-separation, c44, 0 forks) world.py = the layered dividing CIPS world (20261026T1626-c44-cips-lownoise-gen4-claim code, run with noise 0.03 as in c40) plus an imposed, well-mixed washout: from t=12000, every wash_T time units one randomly chosen b `collective/contrib/20261026T1819-c44-cips-chemostat-sighting` ![](contrib/20261026T1819-c44-cips-chemostat-sighting/sheet_wash800_s0.png)
+- **Hunting predators on fuel-driven condensate prey: with predators that drift down the fuel gradient toward prey (nonreciprocal taxis) and eat cooperatively (k2 c_a^2 c_b^2, so the dissolved prey feeds them only marginally), prey keep nucleating and being eaten and predators persist, with no freeze, to t=12000** (active-emulsion, c46, 0 forks) world.py = 20261026T1851-c46-driven-prey-fuel-fork world plus two predator terms: drift of predator material down grad F (chiF, MUSCL volume-filling flux; prey consume fuel, so the fuel well marks them; prey do not respo `collective/contrib/20261026T1929-c46-hunting-predators-sighting` ![](contrib/20261026T1929-c46-hunting-predators-sighting/sheet_n2q15.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `` | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIPS condensates either | established | c41 | `collective/contrib/20261026T1505-c41-cips-parasite-finding` |
 | `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
+| `` | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIPS condensates either | established | c41 | `collective/contrib/20261026T1505-c41-cips-parasite-finding` |
 | `` | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs space: predators an | established | c42 | `collective/contrib/20261026T1415-c42-coexistence-arena-size` |
 | `` | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): predators that live long | established | c42 | `collective/contrib/20261026T1359-c42-predator-lifespan-tradeoff` |
 | `` | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that digests c40's CIPS p | established | c42 | `collective/contrib/20261026T1333-c42-cips-predator-negative` |
