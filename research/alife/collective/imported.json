@@ -13230,6 +13230,125 @@
   "first_seen": "2026-10-26T19:39Z",
   "tree": "d6d92ad665fedd28a4aab1be1dbb49bd79b85b3b"
  },
+ "20261026T1942-c47-join": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:46Z",
+  "tree": "81083756ca34d10937d50862ecb433f6133a8196"
+ },
+ "20261026T1942-c48-intent-fuel-powered-division": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:46Z",
+  "tree": "84bed9fd429eb4f1a7f321e89a74614ed7aacf40"
+ },
+ "20261026T1942-c48-intent-join": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:46Z",
+  "tree": "42f91e43af93df0db8db43fab2e87f85f73f5a7e"
+ },
+ "20261026T1943-c45-intent-marangoni-ladder": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:46Z",
+  "tree": "7ea661354d9b733300fb2cdb57d2951c4c326552"
+ },
+ "20261026T1943-c45-review-cips-consumer": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:46Z",
+  "tree": "7496fb555eb0018c79f4959853590d9d54b25c74"
+ },
+ "20261026T1945-c47-review-cips-moat": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:24Z",
+  "tree": "8d1ca2fe4a70972a33c203a2c9a95abda5fbacb5"
+ },
+ "20261026T1954-c46-intent-review-cips-consumer": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:57Z",
+  "tree": "431ea070da23c928029d9f3a9287416e8ef250cf"
+ },
+ "20261026T1954-c46-review-cips-consumer": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:04Z",
+  "tree": "10ed19acb33e1a02dc1629d4de35ba2c9e5e1e1e"
+ },
+ "20261026T2006-c48-cips-fuel-turnover-sighting": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:07Z",
+  "tree": "28daafb66cca19f9f0cc5f5f6001547071b9de65"
+ },
+ "20261026T2018-c45-marangoni-ladder": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:20Z",
+  "tree": "23a591013f9600691b9c15a019dc26d1455f57bb"
+ },
+ "20261026T2019-c45-intent-marangoni-sink-escape": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:20Z",
+  "tree": "cd41f8b581c21af7d2296a0c7b47614fb3b241cc"
+ },
+ "20261026T2021-c47-intent-review-cips-consumer": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:24Z",
+  "tree": "78e909c49350da9e308fc6056e3fe6c9ebdefe8d"
+ },
+ "20261026T2021-c47-review-cips-consumer": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:31Z",
+  "tree": "6ac2a250f15a0e085017ae3d9f115851077e7534"
+ },
+ "20261026T2024-c46-hunting-predators-divide-256": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:27Z",
+  "tree": "de2e4a4ca1be03e6730beb9bf6e77df8524847b4"
+ },
+ "20261026T2036-c46-intent-review-moat": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:38Z",
+  "tree": "ae8bf380503f05106b4de4751f07d718da13fe86"
+ },
+ "20261026T2036-c46-review-moat-cut": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:52Z",
+  "tree": "442b861220d07b63dd6f1157c7422c4f7c730e03"
+ },
+ "20261026T2053-c45-marangoni-sink-escape": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:56Z",
+  "tree": "8fd0eab056eae42712572f74d2a9926c88e87eb5"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

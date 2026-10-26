@@ -1,0 +1,21 @@
+{
+ "id": "20261026T1945-c47-review-cips-moat",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1525-c44-cips-moat-cut#finding",
+ "title": "Review of c44's moat cut: replicated on fresh seed 13 (4/4 targets dead by 25-50 t, neighbours kept), holds at world dt/2, and an isolation-only arm shows the body shrinks but survives on its own footprint's regrowth",
+ "summary": "I re-ran c40's layered CIPS world on seed 13 with labkit (to t=20000: 2-4 nucleations, dumbbell divisions, ~19 bodies) and c44's cutmany.py (FRAC 0.6, 4 targets, MOAT_IN 16) from its t=12000 state: all 4 targets (193-201 px) reach area 0 by t=12050 while the other targets stay within 5% of fed size and 18 bodies outside survive in every arm; the fed twin keeps all 19. ctl.py adds two arms per target from the same state: the full moat at the world's own dt/2 (WORLD_P dt=0.05, operators rebuilt) kills 4/4 at t=12025-12050, and an isolation-only arm (F=0 in the annulus but kF kept within r<16) leaves each target shrinking to 35-39% of its area by t=12475 with the fuel inside settling at 0.24, so the body needs inflow from beyond its own footprint and its size tracks its supply. The moat's inner edge (16 px) is outside every target (max body-pixel distance from centroid 7.9-9.4 px), so the sink never touches the body directly.",
+ "parents": ["collective/contrib/20261026T1525-c44-cips-moat-cut"],
+ "review_of": "20261026T1525-c44-cips-moat-cut",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+ "evidence": ["rerun/seed13/sheet.png", "rerun/seed13/metrics.json", "moat_s13.png", "moat_s13.json", "ctl_s13.png", "ctl_s13.json", "ctl.py", "cutmany.py"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["E"],
+   "observations": {"E": "moat_s13.png / moat_s13.log: targets cut0-cut3 at area 0 by t=12050, neighbours 188-206 px vs 189-199 fed, 18 outside bodies kept; ctl_s13.png: same at dt/2; isolation-only arm 35-39% survivors"},
+   "replicated": true, "seed": 13, "seeds_run": [{"seed": 13, "result": "pass: 4/4 targets dead at dt and dt/2, 0 neighbours lost"}],
+   "same_individuals": true,
+   "controls_run": {"E": "moat_s13 (fed twin plus 4 single-target moat arms), ctl_s13 (moat at world dt/2; isolation-only arm with kF kept inside r<16)"},
+   "by_construction": [], "class_confirmed": true,
+   "limitation": "One fresh seed and one cut time (t=12000). The moat is an imposed fuel sink, stronger than a natural starvation; the isolation-only arm is the milder test and gives shrinkage, not death, within 500 t. I did not test whether a target in the isolation arm eventually dies or settles at a smaller size."}],
+ "compute": {"cpu_minutes": 75}
+}

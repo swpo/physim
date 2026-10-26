@@ -1,0 +1,12 @@
+[cips-consumer] seed 21: 120 frames x 400 steps, grid (128, 128)
+  frame 12/120  26.7s
+  frame 24/120  54.7s
+  frame 36/120  83.2s
+  frame 48/120  111.2s
+  frame 60/120  139.7s
+  frame 72/120  167.7s
+  frame 84/120  196.2s
+  frame 96/120  224.1s
+  frame 108/120  252.9s
+  frame 120/120  281.4s
+  -> collective/contrib/20261026T2021-c47-review-cips-consumer/rerun/seed21/FACTS.md  (281s sim)

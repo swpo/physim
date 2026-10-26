@@ -1,0 +1,9 @@
+fed {'t': 12000, 'n_bodies': 19, 'cut0_px': 201, 'cut1_px': 195, 'cut2_px': 193} {'t': 12275, 'n_bodies': 19, 'cut0_px': 203, 'cut1_px': 195, 'cut2_px': 193}
+cut0 {'t': 12000, 'n_bodies': 19, 'cut0_px': 201, 'cut1_px': 195, 'cut2_px': 193, 'outside': 18, 'F_disk': 0.794102276930954} {'t': 12275, 'n_bodies': 18, 'cut0_px': 0, 'cut1_px': 195, 'cut2_px': 193, 'outside': 18, 'F_disk': 1.160043323336139e-05}
+cut1 {'t': 12000, 'n_bodies': 19, 'cut0_px': 201, 'cut1_px': 195, 'cut2_px': 193, 'outside': 18, 'F_disk': 0.7917024520255307} {'t': 12275, 'n_bodies': 18, 'cut0_px': 204, 'cut1_px': 0, 'cut2_px': 192, 'outside': 18, 'F_disk': 2.6068847056252212e-05}
+cut2 {'t': 12000, 'n_bodies': 19, 'cut0_px': 201, 'cut1_px': 195, 'cut2_px': 193, 'outside': 18, 'F_disk': 0.7906991231056463} {'t': 12275, 'n_bodies': 18, 'cut0_px': 203, 'cut1_px': 193, 'cut2_px': 0, 'outside': 18, 'F_disk': 3.322675424352174e-05}
+Traceback (most recent call last):
+  File "/home/user/physim/research/alife/collective/contrib/20261026T1525-c44-cips-moat-cut/cutmany.py", line 75, in <module>
+    t, e = snaps[n][j]; ax[r, j].imshow(e, cmap="magma", vmin=0, vmax=1); ax[r, j].axis("off")
+                        ~~^^^^^^
+IndexError: too many indices for array: array is 1-dimensional, but 2 were indexed
