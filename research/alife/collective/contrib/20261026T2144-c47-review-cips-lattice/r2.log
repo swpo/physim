@@ -1,0 +1,12 @@
+[cips-layered-divide] seed 7: 150 frames x 1000 steps, grid (128, 128)
+  frame 15/150  39.0s
+  frame 30/150  80.6s
+  frame 45/150  122.2s
+  frame 60/150  164.7s
+  frame 75/150  204.8s
+  frame 90/150  246.4s
+  frame 105/150  287.7s
+  frame 120/150  329.5s
+  frame 135/150  371.1s
+  frame 150/150  411.6s
+  -> collective/contrib/20261026T2144-c47-review-cips-lattice/rerun_kF012/seed7/FACTS.md  (412s sim)

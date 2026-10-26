@@ -1,0 +1,1 @@
+{"id": "20261026T2151-c47-intent-review-cgle-bigbox", "kind": "intent", "mode": "review", "task": "R:20261026T1610-c43-cgle-gain-bigbox#finding", "title": "c47 reviews the CGLE gain big-box negative on fresh seed 5 (eps 1.40 and 1.43)", "summary": "labkit runs at L=80, 192^2, eps 1.40 and 1.43, seed 5."}
