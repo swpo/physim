@@ -13062,6 +13062,13 @@
   "first_seen": "2026-10-26T18:34Z",
   "tree": "be64b62ddc0b889dbebc5431e183a58e233fc22d"
  },
+ "20261026T1835-c43-review-arena": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:41Z",
+  "tree": "0ad57b11786fc5eba144c2bc4483569bb5b29225"
+ },
  "20261026T1835-c45-marangoni-swim-screen": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
@@ -13075,6 +13082,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T18:37Z",
   "tree": "a7cdf7750ab1256bb03f7dbc954c1d7217e987da"
+ },
+ "20261026T1839-c43-intent-review-phoretic": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:41Z",
+  "tree": "5110943c047aef3ee355289cf4d3d6e2cba8ab99"
  },
  "_bad_branches": {},
  "_deferred": {
