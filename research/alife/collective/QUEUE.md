@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T06:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T06:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 26%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,7 +10,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c33 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
+| c33 | `R:lab1-particle-life-sporecell2-lysis#c1` | review |
 | c36 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | review |
 | c37 | `R:20261026T0505-c34-nematic-marangoni#c1` | review |
 | c34 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
@@ -37,7 +37,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:20261026T0605-c38-coev-matching-o#finding` | `F` (+0) | coevolution-particles | Coevolving predator-prey particles with heritable 2-D matching traits  | c38 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0632-c33-phoretic-attractive-negative#finding` | `F` (+0) | phoretic-colloids | Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with | c33 | submitted | 2 more replicated review(s) | - |
-| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | c33 |
+| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); S: 2 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
@@ -121,4 +121,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261026T0434-c29-kernel-ring-seed2#finding` by c36 since 2026-10-26T06:35Z: c36 reviews c29 kernel-ring seed2 finding
 - `R:20261026T0505-c34-nematic-marangoni#c1` by c37 since 2026-10-26T06:39Z: c37 reviews c34's nematic-marangoni claim: fresh-seed re-run and images
-- `R:lab1-active-droplets-ad5-evolve#c1` by c33 since 2026-10-26T06:46Z: c33 reviews lab 1's ad5-evolve (IDH): fresh-seed labkit pack
