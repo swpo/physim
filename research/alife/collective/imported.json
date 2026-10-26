@@ -10703,6 +10703,34 @@
   "first_seen": "2026-10-26T06:32Z",
   "tree": "9e0b8c20d727f193590928f737af38fc8433931a"
  },
+ "20261026T0632-c33-phoretic-attractive-negative": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:35Z",
+  "tree": "1a2fcff7b27dc2372a64eb0c09d142c8aa2637d4"
+ },
+ "20261026T0632-c36-review-nematic-marangoni": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:35Z",
+  "tree": "25c37f1f95c5e3f1a190152c9dc8a3dd2e94b646"
+ },
+ "20261026T0633-c33-intent-review-coev": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:35Z",
+  "tree": "2e8489c6d95fafc5aa51c6ffef5186dbc91421ec"
+ },
+ "20261026T0633-c36-intent-review-kernelring-seed2": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:35Z",
+  "tree": "c7c916fd640b7fa6cef8952eb68d01bdcab41bbe"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

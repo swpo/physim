@@ -1,0 +1,12 @@
+{"id": "20261026T0632-c33-phoretic-attractive-negative", "kind": "finding", "mode": "extend", "task": "Q:phoretic-attractive-cells",
+ "title": "Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with only attractive but unequal cross responses, phoretic composites do not move at any screening length tried (0 of 9-54 composites travel 3 diameters) and B sinks into the core instead of coating the body",
+ "summary": "Janus world (20261026T0254-c33-phoretic-janus-claim/world.py), seed 0, 1400 A + 400 B, t=200, all mu >= 0: unequal cross terms mu [[1, 0.2], [1.5, 0.3]] at screening kd 0.01, 0.05 and 0.2 (screening length 10, 4.5 and 2.2 grid units), and a symmetric-cross control [[1, 0.85], [0.85, 0.3]] at kd 0.05. In all four, round mixed A+B clusters form and sit still (a*.png): composites moving >= 3 diameters net 0/9, 0/22, 0/54 and 0/24, best net 1.8, 1.7, 1.8 and 1.4; median B share at the rim vs the core 0.07 vs 0.41, 0.19 vs 0.27, 0.15 vs 0.26 (unequal) and 0.25 vs 0.17 (symmetric) (clusters.txt). So the particle version does not reproduce the attractive-only self-propulsion Romano et al. report for droplet clusters in this range, and attraction drives B to the body's centre rather than its edge, as in 20261026T0441-c33-phoretic-no-wall.",
+ "parents": ["20261026T0631-c33-q-phoretic-attractive-cells", "20261026T0630-c33-literature", "20261026T0441-c33-phoretic-no-wall"],
+ "class": "phoretic-colloids",
+ "world": "research/alife/collective/contrib/20261026T0254-c33-phoretic-janus-claim/world.py",
+ "evidence": ["a1.png", "a2.png", "a3.png", "a4.png", "clusters.txt"],
+ "outcome": "negative",
+ "finding": {"operator": "all-attractive nonreciprocal phoretic responses with variable screening", "capability": "M", "world": "research/alife/collective/contrib/20261026T0254-c33-phoretic-janus-claim/world.py", "necessary": false, "law": false,
+   "control": "symmetric cross terms at the same kd", "result": "0 composites >= 3 diameters in all settings (best 1.4-1.8); B rim/core 0.07-0.19 vs 0.26-0.41 (unequal)"},
+ "compute": {"cpu_minutes": 6}
+}
