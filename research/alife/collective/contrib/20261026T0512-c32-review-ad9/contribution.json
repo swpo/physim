@@ -1,0 +1,53 @@
+{
+ "id": "20261026T0512-c32-review-ad9",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-active-droplets-ad9-ledger#c1",
+ "review_of": "lab1-active-droplets-ad9-ledger",
+ "title": "Review of lab 1's active-droplets/ad9-ledger (IB): first labkit packs of this world, fresh seeds 3 and 4: 12 discrete droplets with an amphiphile shell (psi rim/core 4.82 and 4.56, membrane-like in 61/62 and 57/59 droplets); 6 persistent splits each, generation 1 and 3",
+ "summary": "Labkit packs of threads/active-droplets/worlds/ad9-ledger/world.py, unchanged, 128^2, t=0-20000. 12 droplets at the end on both seeds; splits 6 and 8, 6 persistent each, max generation 1 and 3, merges 0 and 1. Only psi is membrane-like: rim/core 4.82 and 4.56, rim/out 14.5 and 14.0, 61/62 and 57/59 droplets individually; droplet material, catalyst and the kp-rung channel are not (rim/core 0.88-0.99).",
+ "parents": [
+  "threads/active-droplets/worlds/ad9-ledger/world.py"
+ ],
+ "class": "active-emulsion",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed3/sheet.png",
+  "pack/seed3/radial.png",
+  "pack/seed3/FACTS.md",
+  "pack/seed4/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "B"
+   ],
+   "observations": {
+    "I": "pack/seed3/sheet.png: 12 discrete droplets",
+    "B": "pack/seed3/radial.png: psi rim/core 4.82, 61/62 membrane-like; seed 4 4.56, 57/59"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: I B"
+    },
+    {
+     "seed": 4,
+     "result": "pass: I B"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "The shell is a quasi-equilibrium coating of a droplet-made amphiphile, as in ad3/ad4; no source ablation run. The ledger and heredity parts (L7) were not examined."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 8
+ }
+}
