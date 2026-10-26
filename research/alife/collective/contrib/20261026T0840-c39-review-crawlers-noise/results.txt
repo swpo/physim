@@ -1,0 +1,28 @@
+== rerun/seed17
+- run: 81 frames x 200 steps x dt 0.001 = time 16; grid [256, 256]; wall 498s; status ok
+- components: final 1, mean 2.1, max 30; occupancy final 0.28
+- motion: 1 long-lived tracks moved >= 1 body length; max speed 28.7/time; max body lengths 2.6
+  - radial s (layer species): peak at rho=1.05 (in the peak band 0.5-1.5), rim/core 1.69, rim/outside 6.27 (aggregate of 8 individuals; 2/8 membrane-like individually; rim level 0.231)  MEMBRANE-LIKE
+track 36 frames 19-80 birth merge diameter 154.1px: net 2.28 D, path 2.29 D, max excursion 2.28 D
+track 3 frames 0-17 birth initial diameter 42.1px: net 0.02 D, path 0.04 D, max excursion 0.02 D
+== rerun/seed18
+- run: 81 frames x 200 steps x dt 0.001 = time 16; grid [256, 256]; wall 498s; status ok
+- components: final 3, mean 4.4, max 35; occupancy final 0.28
+- motion: 1 long-lived tracks moved >= 1 body length; max speed 24.5/time; max body lengths 2.4
+  - radial s (layer species): peak at rho=0.95 (in the peak band 0.5-1.5), rim/core 2.9, rim/outside 7.97 (aggregate of 21 individuals; 18/21 membrane-like individually; rim level 0.384)  MEMBRANE-LIKE
+track 42 frames 26-80 birth merge diameter 124.0px: net 2.14 D, path 2.14 D, max excursion 2.14 D
+track 39 frames 4-17 birth merge diameter 85.3px: net 0.67 D, path 0.68 D, max excursion 0.67 D
+== long/seed17
+- run: 161 frames x 200 steps x dt 0.001 = time 32; grid [256, 256]; wall 997s; status ok
+- components: final 1, mean 1.6, max 30; occupancy final 0.28
+- motion: 1 long-lived tracks moved >= 1 body length; max speed 25.9/time; max body lengths 5.4
+  - radial s (layer species): peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.15, rim/outside 8.61 (aggregate of 6 individuals; 0/6 membrane-like individually; rim level 0.144)
+track 36 frames 19-160 birth merge diameter 153.8px: net 4.76 D, path 4.79 D, max excursion 4.76 D
+track 3 frames 0-17 birth initial diameter 42.1px: net 0.02 D, path 0.04 D, max excursion 0.02 D
+== nosrc/seed18
+- run: 81 frames x 200 steps x dt 0.001 = time 16; grid [256, 256]; wall 517s; status ok
+- components: final 3, mean 4.4, max 35; occupancy final 0.28
+- motion: 1 long-lived tracks moved >= 1 body length; max speed 24.5/time; max body lengths 2.4
+  - radial s (layer species): flat profile (no radial structure; level 0; aggregate of 21 individuals)
+track 42 frames 26-80 birth merge diameter 124.0px: net 2.14 D, path 2.14 D, max excursion 2.14 D
+track 39 frames 4-17 birth merge diameter 85.3px: net 0.67 D, path 0.68 D, max excursion 0.67 D
