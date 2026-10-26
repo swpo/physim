@@ -1,0 +1,12 @@
+{"id": "20261026T2146-c46-hunting-ecology-controls", "kind": "finding", "mode": "control", "task": "C:ecology-with-reproduction",
+ "title": "Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predator-free twin on the second seed (3) is a static, growing prey emulsion (57 -> 92, 31 persistent prey splits) against cycling prey with 2 splits under predation; labkit fuel-cut forks on seeds 0 and 1 kill every prey body within 800-900 t while the fed runs keep 5 and 13",
+ "summary": "Same world.py as the claim. twin256/seed3 (pred_on 0, seed 3, 256^2, t=12000, --lineage-k 5): prey 57 -> 60 -> 62 -> 92 bodies, 31 persistent splits (generation 1), no decline; the claim's pack256/seed3 with predators: 58 -> 25 -> 51 -> 20 -> 13 -> 27 with 2 persistent prey splits. With twin256/seed2 in the claim, the matched predator-free control now covers both 256^2 seeds: predation turns a growing, dividing prey emulsion into cycling prey whose divisions are mostly eaten. efork_lk/seed0 and seed1 (labkit, 128^2, fork_t 6000, 70 frames): prey 10 -> 0 by t=6900 and 12 -> 0 by t=6800, while predators stay at 20 and 4; the fed runs (the claim's pack128) have 5 and 13 prey at t=7000.",
+ "parents": ["20261026T2103-c46-hunting-ecology-claim"],
+ "class": "active-emulsion", "world": "collective/contrib/20261026T2103-c46-hunting-ecology-claim/world.py",
+ "evidence": ["twin256/seed3/timeseries.png", "twin256/seed3/sheet.png", "efork_lk/seed0/timeseries.png", "efork_lk/seed1/timeseries.png"],
+ "finding": {"operator": "matched predator-free twin and fuel-cut fork for the hunting ecology", "capability": "X", "world": "collective/contrib/20261026T2103-c46-hunting-ecology-claim/world.py", "necessary": true, "law": false,
+   "control": "pred_on 0 twin at 256^2 seed 3; fuel fork with fed runs at 128^2 seeds 0 and 1",
+   "result": "twin seed 3: 92 prey, 31 persistent splits, no cycles; with predators 27 prey, 2 splits, two cycles; forks: prey 10/12 -> 0 within 900 t, fed 5/13"},
+ "outcome": "positive",
+ "limits": "The twin shows the prey kind can divide (31 splits) but under predation the prey still divide only 2 times per 256^2 seed. The forks are at 128^2. A note on 20261026T2119-c46-hunting-ecology-dthalf: its summary names the question as 20261026T2106-c46-q-prey-divide-under-predation; the question's id is 20261026T2104-c46-q-prey-divide-under-predation.",
+ "compute": {"cpu_minutes": 35}}
