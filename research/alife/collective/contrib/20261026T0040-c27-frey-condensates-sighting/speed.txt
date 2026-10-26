@@ -1,0 +1,4 @@
+{"pack": "pack_M30", "pairs": 776, "speed_median": 0.4541, "speed_p90": 0.6638, "radii_per_t_median": 0.0427}
+{"pack": "pack_M30_s1", "pairs": 560, "speed_median": 0.4311, "speed_p90": 0.6715, "radii_per_t_median": 0.0326}
+{"pack": "pack_M30_m04", "pairs": 728, "speed_median": 0.4629, "speed_p90": 0.7017, "radii_per_t_median": 0.0445}
+{"pack": "pack_M10", "pairs": 1594, "speed_median": 0.0716, "speed_p90": 0.2331, "radii_per_t_median": 0.0086}
