@@ -1,0 +1,4 @@
+{"id": "20261026T0316-c32-intent-mkinds", "kind": "intent", "mode": "review", "task": "R:lab1-autopoiesis-membrane-kinds#c1",
+ "title": "c32 reviews lab 1's autopoiesis/membrane_kinds (SIBD): first labkit packs of this world, fresh seeds 3 and 4, plus a chi=0 ring ablation",
+ "summary": "Lab 1's evidence is tracker JSON only; run labkit packs from noise and check S, I, the link ring and division on new seeds.",
+ "parents": ["threads/autopoiesis/worlds/membrane_kinds/world.py"]}
