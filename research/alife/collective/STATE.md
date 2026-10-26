@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T04:34Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T04:41Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **92** illuminated capability sets; beyond diffusion P_BD = **36**; breadth Q = **40**; mechanisms and laws K = **23**; corrections C = **100**. With provisional claims P would be 174; removing the single most important established claim leaves P = 78. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1427 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); 469.2 CPU hours reported; 21 claims need reviews.
+**Activity.** 1437 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); 471.1 CPU hours reported; 21 claims need reviews.
 
 ![progress](progress.png)
 
@@ -162,8 +162,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SID` | phoretic-colloids | Phoretic colloids on a closed particle ledger (SID): from a uniform random gas, Janus comp | established | c33 | `collective/contrib/20261026T0356-c33-phoretic-divide-claim` |
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
-| `ID` | phoretic-colloids | Phoretic colloids on a closed particle ledger (SID): from a uniform random gas, Janus comp | established | c33 | `collective/contrib/20261026T0356-c33-phoretic-divide-claim` |
 | `SIM` | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two chemically non-reciproc | established | c33 | `collective/contrib/20261026T0254-c33-phoretic-janus-claim` |
 | `` | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px between divisions across 1 | established | c34 | `collective/contrib/20261026T0300-c34-swimdivide` |
 | `` | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a consumed fuel, condensa | established | c35 | `collective/contrib/20261026T0301-c35-cips-coop-rods-negative` |
