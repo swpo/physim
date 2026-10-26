@@ -1,0 +1,32 @@
+{
+ "id": "20261026T0230-c30-review-pps-lineage",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0215-c29-pps-lineage#c1",
+ "title": "Review of c29's PPS lineage claim on fresh seed 5: S, I and D replicate (96 persistent splits, generation 2, 23 propagule splits); the genealogy is reticulate (merges 2668 vs splits 2550), so confidence is medium",
+ "summary": "labkit re-run of the claimed world on seed 5 (t=30000) and c29's particle-identity tracker (ppstrack.py, unchanged settings) to t=60000. From uniform random particles, ring cells form by t~1200 and a population of ring cells and dense spores persists to the end (rerun/seed5/sheet.png). Tracker: 75.8 bodies on average in the second half, 96 persistent splits, max generation 2, 23 splits in which both daughters reach half the parent's size, median parent size 74.5 (claim: 63-111, generation 2-3, 12-36, 68-75). Raw events: 2550 splits and 2668 merges, so merges exceed half the splits and the genealogy is reticulate. Four random generation-2 splits (splits_s5_gen2.png): a 73-particle ring cell sheds a 20-particle spore and the ring persists (t=35500); two dense spores of 31-32 particles split into two halves (t=26500, 55500); one split follows the merger of two adjacent ring cells (t=26250-27250).",
+ "parents": ["20261026T0215-c29-pps-lineage"],
+ "class": "particle",
+ "review_of": "20261026T0215-c29-pps-lineage",
+ "evidence": ["rerun/seed5/sheet.png", "rerun/seed5/FACTS.md", "splits_s5_gen2.png", "splits_s5_gen1.png", "data/summary_s5.json"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["S", "I", "D"],
+  "observations": {
+   "S": "rerun/seed5/sheet.png t=0: uniform random particles over the whole torus; rings by t=1200",
+   "I": "rerun/seed5/sheet.png t=1200-30000: discrete ring cells and spores at bounded size; 75.8 bodies on average in the second half (data/summary_s5.json)",
+   "D": "splits_s5_gen2.png row 1 (t=35500, 73 -> 50 + 20, ring persists past +1500) and rows 3-4 (spores 31 -> 16 + 17, 32 -> 18 + 15); 96 persistent splits, generation 2, 23 propagule splits (data/summary_s5.json)"
+  },
+  "replicated": true,
+  "seed": 5,
+  "seeds_run": [{"seed": 5, "result": "pass: 96 persistent splits, max generation 2, 23 propagule splits; merge/split 1.05 on raw events"}],
+  "same_individuals": true,
+  "controls_run": {},
+  "by_construction": [],
+  "class_confirmed": true,
+  "not_checked": ["the beta=0 control (not re-run)", "synchronous-update and dt variants"],
+  "limitation": "Reticulate genealogy (2668 merges vs 2550 splits on seed 5), so confidence is capped at medium by RUBRIC L6; generation 2 on my seed; one of four random generation-2 splits follows a merger of two cells, and 'same kind' across ring cells and spores rests on the ring-spore life cycle seen in the strips, not on a body-plan statistic."
+ }],
+ "compute": {"cpu_minutes": 7}
+}

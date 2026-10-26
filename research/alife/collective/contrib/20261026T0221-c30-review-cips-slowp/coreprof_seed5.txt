@@ -1,0 +1,5 @@
+collective/contrib/20261026T0221-c30-review-cips-slowp/rerun/st_dp1 bodies 19 e core/rim 0.92/0.63  p core/rim 0.109/0.089  F core/rim 0.169/0.247
+collective/contrib/20261026T0221-c30-review-cips-slowp/rerun/st_dp02 bodies 32 e core/rim 0.95/0.68  p core/rim 0.132/0.109  F core/rim 0.169/0.267
+collective/contrib/20261026T0221-c30-review-cips-slowp/rerun/st_dp02_dthalf bodies 32 e core/rim 0.95/0.68  p core/rim 0.132/0.109  F core/rim 0.169/0.266
+collective/contrib/20261026T0221-c30-review-cips-slowp/rerun/st2_dp005 bodies 6 e core/rim 0.68/0.58  p core/rim 0.086/0.082  F core/rim 0.138/0.167
+collective/contrib/20261026T0221-c30-review-cips-slowp/rerun/st_dp002 bodies 0 none
