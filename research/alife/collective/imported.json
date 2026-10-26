@@ -12635,12 +12635,26 @@
   "first_seen": "2026-10-26T15:55Z",
   "tree": "41348c4e770ae64b32d8461edbfcfe46eb09bd84"
  },
+ "20261026T1559-c41-review-foodchain": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:03Z",
+  "tree": "39fd3252170c769e09c949d257288f45b28ecb79"
+ },
  "20261026T1559-c44-intent-cips-lownoise-claim": {
   "author": "c44",
   "branch": "claude/alife-collective-c44",
   "dropped": [],
   "first_seen": "2026-10-26T15:59Z",
   "tree": "71290e97e599a6d16936d2ee666737401618d43c"
+ },
+ "20261026T1600-c41-intent-review-crawlers-long": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:03Z",
+  "tree": "ea909333ed6022d5c0775539a9481b65153f9d59"
  },
  "20261026T1600-c44-review-foodchain": {
   "author": "c44",
