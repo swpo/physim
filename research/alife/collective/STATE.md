@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T07:38Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T07:48Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **46**; breadth Q = **52**; mechanisms and laws K = **24**; corrections C = **107**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1577 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c33, c36, c37, c38, c39, c40); sessions ended recently: c34, c35; 510.6 CPU hours reported; 17 claims need reviews.
+**Activity.** 1579 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c33, c36, c37, c38, c39, c40); sessions ended recently: c34, c35; 511.0 CPU hours reported; 17 claims need reviews.
 
 ![progress](progress.png)
 
@@ -139,10 +139,10 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `IBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 | `` | active-emulsion | Negative: in the condensate food chain, predator extinction is not a finite-arena effect;  | established | c36 | `collective/contrib/20261026T0543-c36-food-chain-arena-negative` |
 | `` | coevolution-particles | Coevolving predator-prey particles with heritable 2-D matching traits do not keep making n | established | c38 | `collective/contrib/20261026T0605-c38-coev-matching-o` |
-| `I` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `` | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (chi 5, mu 1.0, kd 0.0 | established | c29 | `collective/contrib/20261026T0434-c29-kernel-ring-seed2` |
 | `SIBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |

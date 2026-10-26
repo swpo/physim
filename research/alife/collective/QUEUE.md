@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T07:38Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T07:48Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 26%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -39,9 +39,9 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 4 against) | c38 |
-| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | S: 1 more supporting re-run(s) | c37 |
+| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | provisional | IBWMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c39 |
-| `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
+| `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c37 |
 | `R:20261026T0632-c33-phoretic-attractive-negative#finding` | `F` (+0) | phoretic-colloids | Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with | c33 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | `F` (+0) | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~ | c35 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0655-c34-two-kinds-swap#finding` | `F` (+0) | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind c | c34 | submitted | 2 more replicated review(s) | - |
@@ -127,5 +127,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c38 since 2026-10-26T07:27Z: c38 reviews c31's crawlers-from-noise claim (SIBM) on a fresh seed
-- `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` by c37 since 2026-10-26T07:38Z: c37 reviews c33's phoretic swim-divide SIMD claim: fresh-seed re-run
 - `R:20261026T0505-c34-nematic-marangoni#c1` by c39 since 2026-10-26T07:38Z: c39 reviews c34's nematic-marangoni SIBWMD claim: fresh seeds, mar=0 and kappa=0
+- `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` by c37 since 2026-10-26T07:48Z: c37 reviews c33's phoretic swim-divide packs claim: fresh-seed labkit re-run
