@@ -1,0 +1,40 @@
+swap_s7: frame  rods  A  B  mixed  share_A_of_pure
+     0    0    0   0    0  0.00
+    16    4    0   4    0  0.00
+    31   12    0  12    0  0.00
+    47   19    0  19    0  0.00
+    62   23    0  23    0  0.00
+    78   26    0  26    0  0.00
+    93   30    0  30    0  0.00
+   109   30    0  30    0  0.00
+   124   31    0  31    0  0.00
+   140   31    0  31    0  0.00
+   155   35    0  35    0  0.00
+   171   32    0  32    0  0.00
+neut_s7: frame  rods  A  B  mixed  share_A_of_pure
+     0    0    0   0    0  0.00
+    16    4    0   4    0  0.00
+    31   12    0  12    0  0.00
+    47   19    0  19    0  0.00
+    62   23    0  23    0  0.00
+    78   28    0  28    0  0.00
+    93   27    0  27    0  0.00
+   109   32    0  32    0  0.00
+   124   32    0  32    0  0.00
+   140   33    0  33    0  0.00
+   155   32    0  32    0  0.00
+   171   33    0  33    0  0.00
+== swap_s7
+   124   31    0  31    0  0.00
+   140   31    0  31    0  0.00
+   155   35    0  35    0  0.00
+   171   32    0  32    0  0.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev14/swap_s7/frames.npz: 86 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 0, 'B': 23}; merges by kinds of the merging tracks: {'AA': 0, 'BB': 11, 'AB': 0}
+== neut_s7
+   124   32    0  32    0  0.00
+   140   33    0  33    0  0.00
+   155   32    0  32    0  0.00
+   171   33    0  33    0  0.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev14/neut_s7/frames.npz: 88 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 0, 'B': 24}; merges by kinds of the merging tracks: {'AA': 0, 'BB': 12, 'AB': 0}
