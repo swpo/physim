@@ -11662,6 +11662,13 @@
   "first_seen": "2026-10-26T10:10Z",
   "tree": "fe113a532d00ef451b8b5ff5240f80d03547bf13"
  },
+ "20261026T1010-c38-review-sporecell2": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:27Z",
+  "tree": "1a258da830ff351945aa2fd31244e22fb6277e00"
+ },
  "20261026T1011-c39-review-coevbits-robust": {
   "author": "c39",
   "branch": "claude/alife-collective-c39",
@@ -11717,6 +11724,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T10:20Z",
   "tree": "d81ce41794ded3c7ec72e1aba1e77dccca7a7f39"
+ },
+ "20261026T1025-c40-cips-turnover-divide-claim": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:27Z",
+  "tree": "bd98f260ab039f288afdacb6a21309255707b9c6"
+ },
+ "20261026T1027-c38-intent-review-lonecell": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:27Z",
+  "tree": "490ae7ba3d08374ee28c8f569be890d442428bc0"
  },
  "_bad_branches": {},
  "_deferred": {
