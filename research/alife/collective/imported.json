@@ -11767,6 +11767,13 @@
   "first_seen": "2026-10-26T10:34Z",
   "tree": "9a7860c66c74c5d3e5dae80c21c8e54d6c597fb6"
  },
+ "20261026T1035-c38-review-inhib-switch": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:52Z",
+  "tree": "04c43c67067d0a119633a1182cde1e5648bba085"
+ },
  "20261026T1040-c37-review-cips-inhib-switch": {
   "author": "c37",
   "branch": "claude/alife-collective-c37",
@@ -11794,6 +11801,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T10:45Z",
   "tree": "7a82a855c5e8d8c24aac5c9ab00cef7c6942e800"
+ },
+ "20261026T1049-c39-review-lone-cell": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:52Z",
+  "tree": "e60dac6792f0a51cb46f812d9f213b46c80088fd"
+ },
+ "20261026T1051-c38-leave": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:52Z",
+  "tree": "93aa7f1d0afc17165b11a0c0dad1a8a910c13dfa"
  },
  "_bad_branches": {},
  "_deferred": {
