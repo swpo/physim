@@ -1,0 +1,20 @@
+- components: final 1, mean 2.5, max 23; occupancy final 0.16
+- motion: 3 long-lived tracks moved >= 1 body length; max speed 18.7/time; max body lengths 5.4
+- membrane-like channels (aggregate rim/core >= 1.5 and rim/outside >= 1.5; the peak position is not part of the test): s (layer species), c (cargo)
+- membrane-like channels per top track at mid-life: #23 (t=9.6, R_eq 35.21): ['s (layer species)', 'c (cargo)']; #17 (t=8, R_eq 24.99): ['s (layer species)']; #24 (t=11.2, R_eq 39.71): ['s (layer species)', 'c (cargo)']; #25 (t=25.8, R_eq 56.61): ['rho (polarity, inside)']
+track 23 frames 1-95 birth merge diameter 71.0px: net 4.76 D, path 4.92 D, max excursion 4.76 D
+track 24 frames 16-95 birth merge diameter 82.5px: net 2.31 D, path 3.44 D, max excursion 2.84 D
+track 25 frames 96-160 birth merge diameter 114.0px: net 2.10 D, path 2.15 D, max excursion 2.10 D
+collective/contrib/20261026T1334-c42-review-crawlers-long/rerun/seed15/frames.npz body-frames 56 both >= 1.5: 1.0 median rim/core 4.14 median rim/out 16.41
+- components: final 1, mean 2.6, max 30; occupancy final 0.22
+- motion: 2 long-lived tracks moved >= 1 body length; max speed 24.4/time; max body lengths 3.0
+- membrane-like channels (aggregate rim/core >= 1.5 and rim/outside >= 1.5; the peak position is not part of the test): s (layer species)
+- membrane-like channels per top track at mid-life: #24 (t=8.4, R_eq 21.5): ['s (layer species)']; #25 (t=8, R_eq 14.83): ['s (layer species)']; #33 (t=24.4, R_eq 68.59): ['rho (polarity, inside)', 'c (cargo)']; #32 (t=10.4, R_eq 61.79): ['rho (polarity, inside)', 'c (cargo)']
+track 33 frames 84-160 birth merge diameter 136.6px: net 2.66 D, path 2.67 D, max excursion 2.66 D
+track 32 frames 21-83 birth merge diameter 124.2px: net 2.44 D, path 2.44 D, max excursion 2.44 D
+track 30 frames 2-23 birth merge diameter 68.4px: net 0.67 D, path 0.67 D, max excursion 0.67 D
+collective/contrib/20261026T1042-c39-crawlers-noise-long-claim/sdlayer.py:18: RuntimeWarning: Mean of empty slice
+  rim, core, o = s[own & (np.abs(d) <= 3)].mean(), s[own & (d <= -10)].mean(), s[own & (d >= 6) & (d <= 15)].mean()
+.labenv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in divide
+  ret = ret.dtype.type(ret / rcount)
+collective/contrib/20261026T1334-c42-review-crawlers-long/rerun/seed16/frames.npz body-frames 48 both >= 1.5: 0.98 median rim/core nan median rim/out 17.21
