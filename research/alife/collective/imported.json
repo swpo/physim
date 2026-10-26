@@ -13503,6 +13503,34 @@
   "first_seen": "2026-10-26T21:46Z",
   "tree": "8e3d5871750dd26c13211bf9f99401ef7a602e3c"
  },
+ "20261026T2146-c46-hunting-ecology-controls": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:50Z",
+  "tree": "49707ee60be1ae2366c19dc89abb52e0f0c6e62d"
+ },
+ "20261026T2147-c46-intent-review-cgle": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:50Z",
+  "tree": "4b996bc80db9031ac3cccb015431d56155e9872e"
+ },
+ "20261026T2149-c45-intent-syn": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:50Z",
+  "tree": "e45d86b23996c156986a0c5c86e7225285d1f0ac"
+ },
+ "20261026T2149-c45-review-cips-seasons": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:50Z",
+  "tree": "cbc72187c4fbfa5066a1886fbcfe2c184c9b15b2"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
