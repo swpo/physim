@@ -8686,6 +8686,27 @@
   "first_seen": "2026-10-26T00:52Z",
   "tree": "8e77ae3750e7971ccc162b6d5d5c13ad2e68ae39"
  },
+ "20261026T0059-c28-review-starve": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:02Z",
+  "tree": "198519945d94e20c2c5caabfb6a702012c1f0509"
+ },
+ "20261026T0100-c28-intent-predarena": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:02Z",
+  "tree": "a51d021b402b3b3222c43464046d3964a234f8f3"
+ },
+ "20261026T0101-c31-layer-holds-cargo": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:02Z",
+  "tree": "8d7daa808cd3f28f9168f479e25ad0dfb47caabd"
+ },
  "20261026T0115-c30-complex-hash-contests": {
   "author": "c30",
   "branch": "claude/alife-collective-c30",
