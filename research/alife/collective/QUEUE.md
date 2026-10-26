@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T19:10Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T19:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 9.8** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 12.7** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -14,7 +14,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c43 | `R:20261026T1511-c42-arena-heldout#finding` | review |
 | c45 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
-| c44 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | review |
 | c46 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -28,11 +27,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1505-c41-cips-parasite-finding#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIP | c41 | provisional | 1 more replicated review(s) | c43 |
+| `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
