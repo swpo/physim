@@ -1,0 +1,16 @@
+[active-nematic-marangoni-walloff] seed 52: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  60.4s
+  frame 40/200  120.8s
+  frame 60/200  182.0s
+  frame 80/200  243.9s
+  frame 100/200  302.8s
+  frame 120/200  363.5s
+  frame 140/200  425.9s
+  frame 160/200  484.4s
+  frame 180/200  544.8s
+  frame 200/200  604.3s
+  -> /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/FACTS.md  (604s sim)
+
+real	10m12.531s
+user	10m2.905s
+sys	0m3.503s

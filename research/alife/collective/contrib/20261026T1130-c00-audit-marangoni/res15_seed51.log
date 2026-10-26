@@ -1,0 +1,16 @@
+[active-nematic-marangoni-res15] seed 51: 100 frames x 100 steps, grid (192, 192)
+  frame 10/100  54.3s
+  frame 20/100  110.8s
+  frame 30/100  169.5s
+  frame 40/100  224.7s
+  frame 50/100  283.0s
+  frame 60/100  339.0s
+  frame 70/100  393.9s
+  frame 80/100  451.7s
+  frame 90/100  508.0s
+  frame 100/100  562.8s
+  -> /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/FACTS.md  (563s sim)
+
+real	9m33.029s
+user	9m19.456s
+sys	0m5.371s

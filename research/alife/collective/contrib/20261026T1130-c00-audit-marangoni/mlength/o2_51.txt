@@ -1,0 +1,16 @@
+== seed51: grid 128x128, 201 frames, 120 tracks, 27 dividing tracks (2 split children >= 20 frames)
+  passing >= 3: {'bl_lab': 10, 'bl_lab_corr': 10, 'bl_4lam': np.int64(0), 'bl_12lam': np.int64(0), 'bl_2pilam': np.int64(0), 'bl_feret': np.int64(0), 'bl_feret_max': np.int64(0), 'bl_ext_u': np.int64(0), 'bl_r2': np.int64(2), 'bl_feret_corr': np.int64(0), 'bl_feret_rear': np.int64(0)}
+  best: {'bl_lab': 4.93, 'bl_4lam': np.float64(2.19), 'bl_12lam': np.float64(2.53), 'bl_2pilam': np.float64(2.48), 'bl_feret': np.float64(2.42), 'bl_ext_u': np.float64(2.9), 'bl_r2': np.float64(3.26), 'bl_feret_rear': np.float64(2.29)}
+  median over dividing tracks: sqrt(area) 7.33, feret 14.8, 4sqrt(lam) 16.0, aspect 3.20, feret/sqrt(area) 1.97
+  tracks with any low-overlap link (centroid fallback, possible swap): 0
+  births of the >=3 labkit tracks: ['split', 'split', 'split', 'split', 'split', 'split', 'split', 'split', 'split', 'split']
+   id 8 life 30 net 37.3 | lab 4.93 4lam 2.19 2pilam 2.48 feret 2.42 ext_u 2.90 r2 3.26 rear 2.29 | feret 15.4 (birth 9.5 div 21.9) ext12u 11.4 size 7.56 straight 0.79
+   id 54 life 18 net 36.6 | lab 4.75 4lam 1.96 2pilam 2.21 feret 2.17 ext_u 2.20 r2 2.34 rear 1.85 | feret 16.9 (birth 13.2 div 20.5) ext12u 15.6 size 7.69 straight 0.99
+   id 9 life 29 net 35.3 | lab 4.63 4lam 2.08 2pilam 2.35 feret 2.29 ext_u 2.53 r2 2.79 rear 1.82 | feret 15.4 (birth 8.7 div 26.0) ext12u 12.6 size 7.63 straight 0.86
+   id 28 life 84 net 31.8 | lab 4.38 4lam 2.17 2pilam 2.45 feret 2.31 ext_u 2.70 r2 3.00 rear 1.92 | feret 13.7 (birth 10.0 div 18.5) ext12u 10.6 size 7.26 straight 0.54
+   id 14 life 22 net 26.1 | lab 3.90 4lam 1.93 2pilam 2.18 feret 2.09 ext_u 2.12 r2 2.27 rear 1.53 | feret 12.5 (birth 7.8 div 19.9) ext12u 11.5 size 6.69 straight 0.99
+   id 11 life 23 net 27.2 | lab 3.86 4lam 1.84 2pilam 2.07 feret 1.99 ext_u 2.21 r2 2.49 rear 1.74 | feret 13.6 (birth 8.8 div 19.2) ext12u 10.9 size 7.04 straight 0.84
+   id 13 life 20 net 23.8 | lab 3.52 4lam 1.70 2pilam 1.91 feret 1.86 ext_u 1.86 r2 1.98 rear 1.30 | feret 12.8 (birth 8.7 div 20.8) ext12u 12.0 size 6.75 straight 0.99
+   id 16 life 19 net 23.3 | lab 3.29 4lam 1.53 2pilam 1.73 feret 1.67 ext_u 1.68 r2 1.79 rear 1.16 | feret 14.0 (birth 9.3 div 21.0) ext12u 13.0 size 7.08 straight 0.99
+   id 12 life 33 net 23.4 | lab 3.17 4lam 1.45 2pilam 1.63 feret 1.58 ext_u 1.79 r2 2.01 rear 1.12 | feret 14.9 (birth 9.2 div 23.8) ext12u 11.6 size 7.39 straight 0.76
+   id 7 life 29 net 22.1 | lab 3.14 4lam 1.48 2pilam 1.67 feret 1.61 ext_u 1.78 r2 1.99 rear 1.32 | feret 13.7 (birth 8.6 div 19.0) ext12u 11.1 size 7.04 straight 0.68

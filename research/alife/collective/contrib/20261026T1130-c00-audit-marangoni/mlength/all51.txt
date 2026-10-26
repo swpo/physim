@@ -1,0 +1,13 @@
+../waudit/nematic-marangoni/rerun/seed51/frames.npz tracks >= K frames: 78
+ >=3 rod lengths (median Feret): 4 Counter({'run-end': 2, 'merges': 1, 'split-other': 1}) Counter({'split': 4})
+ >=3 labkit BL: 30 Counter({'run-end': 11, 'divides': 8, 'split-other': 6, 'merges': 5})
+  id 35 birth split fate merges life 106 net 65.2 Fmed 12.1 rodL 5.37 labkitBL 9.49
+  id 45 birth split fate run-end life 130 net 61.0 Fmed 12.1 rodL 5.03 labkitBL 9.20
+  id 33 birth split fate split-other life 30 net 42.2 Fmed 13.7 rodL 3.09 labkitBL 5.88
+  id 55 birth split fate run-end life 117 net 38.8 Fmed 12.8 rodL 3.02 labkitBL 5.73
+  id 20 birth split fate run-end life 154 net 39.6 Fmed 13.5 rodL 2.93 labkitBL 5.56
+  id 47 birth split fate run-end life 130 net 40.3 Fmed 14.4 rodL 2.79 labkitBL 5.28
+  id 65 birth split fate run-end life 99 net 33.6 Fmed 12.3 rodL 2.73 labkitBL 4.85
+  id 26 birth split fate merges life 86 net 26.2 Fmed 9.9 rodL 2.64 labkitBL 4.29
+  id 28 birth split fate divides life 84 net 31.8 Fmed 13.1 rodL 2.44 labkitBL 4.38
+  id 59 birth split fate run-end life 115 net 31.8 Fmed 13.0 rodL 2.43 labkitBL 4.48

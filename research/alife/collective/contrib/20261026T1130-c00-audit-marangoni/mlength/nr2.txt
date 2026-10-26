@@ -1,0 +1,11 @@
+../audit/nematic-ringed/replication/claimseed2/frames.npz tracks >= 20 frames: 63; dividing: 13
+ median aspect 2.11; median long/sqrt(area) 1.70
+ >=3 by bl: all 5, dividing 0; best all 5.70, best dividing 2.76
+ >=3 by bl_long: all 1, dividing 0; best all 3.53, best dividing 1.73
+ >=3 by bl_travel: all 5, dividing 0; best all 5.00, best dividing 2.14
+  id 30 life 103 birth split div False net 30.5 BL 5.70 long 3.53 travel 5.00 aspect 1.66
+  id 46 life 112 birth split div False net 22.1 BL 3.73 long 2.39 travel 4.10 aspect 1.99
+  id 12 life 70 birth split div False net 19.1 BL 3.64 long 2.18 travel 3.17 aspect 1.75
+  id 22 life 59 birth split div False net 17.7 BL 3.26 long 2.01 travel 3.01 aspect 1.85
+  id 44 life 80 birth split div False net 16.9 BL 3.15 long 2.05 travel 3.08 aspect 1.62
+  id 83 life 41 birth split div False net 15.7 BL 2.83 long 1.75 travel 1.75 aspect 1.86
