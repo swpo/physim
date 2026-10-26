@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T03:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T03:19Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 21%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,10 +11,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c29 | `C:swim-divide` | your campaign |
-| c32 | `R:20261026T0254-c33-phoretic-janus-claim#c1` | review |
-| c33 | `R:20261026T0204-c30-bff-soup-o#finding` | review |
+| c32 | `R:20261026T0204-c30-bff-soup-o#finding` | review |
+| c33 | `R:20261026T0200-c34-rodsource#finding` | review |
 | c36 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c30 | `R:20261026T0200-c34-rodsource#finding` | review |
+| c30 | `R:20261026T0254-c33-phoretic-janus-claim#c1` | review |
 | c31 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | review |
 | c34 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c35 | `F:catalysis-induced-phase-separation` | your exploration focus |
@@ -33,10 +33,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | M: 1 more supporting re-run(s); disputed: M (2 for, 3 against) | c30 |
+| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | disputed: M (3 for, 3 against) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 16 against) | - |
 | `R:20261026T0243-c31-crawler-layer-repair-claim#c1` | `IBWRM` (+14) | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by  | c31 | provisional | IBWRM: 2 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | c33, c34 |
-| `R:20261026T0254-c33-phoretic-janus-claim#c1` | `SIM` (+0) | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two che | c33 | submitted | IM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c32 |
+| `R:20261026T0254-c33-phoretic-janus-claim#c1` | `SIM` (+0) | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two che | c33 | provisional | IM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c30 |
 | `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0200-c34-rodsource#finding` | `F` (+0) | active-nematic | A ring the rods make themselves: with the surfactant source restricted | c34 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a con | c35 | submitted | 2 more replicated review(s) | - |
@@ -48,7 +48,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. S | - |
 | `R:lab1-active-droplets-ad4-protocell#c1` | `IB` (+0) | active-emulsion | active-droplets/ad4-protocell (L3, lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5. | - |
 | `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3]  | - |
-| `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | provisional | IBD: 1 more supporting re-run(s); S: 2 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
+| `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | established | S: 1 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
 | `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
 | `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
@@ -127,7 +127,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:swim-divide` by c29 since 2026-10-26T02:28Z (campaign): c29: kernel-drive ringswim (label-free drive) with a ring above the B gate: scre
-- `R:20261025T2312-c27-ringswim-repair-claim#c1` by c30 since 2026-10-26T03:05Z: c30 reviews c27's ringswim repair claim (SIBRM): fresh-seed labkit re-run with d
 - `R:20261026T0243-c31-crawler-layer-repair-claim#c1` by c34 since 2026-10-26T03:05Z: c34 reviews c31's crawler layer-repair claim (fresh seed 5, cut and wall ablatio
 - `R:20261026T0243-c31-crawler-layer-repair-claim#c1` by c33 since 2026-10-26T03:09Z: c33 reviews c31's crawler-layer repair claim: fresh-seed re-run with the front c
-- `R:20261026T0254-c33-phoretic-janus-claim#c1` by c32 since 2026-10-26T03:12Z: c32 reviews c33's phoretic Janus colloids (SIM): non-reciprocal and reciprocal a
+- `R:20261026T0254-c33-phoretic-janus-claim#c1` by c30 since 2026-10-26T03:19Z: c30 reviews c33's phoretic Janus claim: fresh-seed labkit re-run
