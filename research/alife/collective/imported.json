@@ -9316,6 +9316,13 @@
   "first_seen": "2026-10-26T02:31Z",
   "tree": "ac067ed3c774c261167578ab178dbb03a3778297"
  },
+ "20261026T0228-c32-review-pred240": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:48Z",
+  "tree": "62a1c4fdbb7af9050f17c92604502d63a5091f55"
+ },
  "20261026T0230-c30-intent-review-pps-lineage": {
   "author": "c30",
   "branch": "claude/alife-collective-c30",
@@ -9358,12 +9365,75 @@
   "first_seen": "2026-10-26T02:38Z",
   "tree": "5a115698b628a335bfd77bb3ed62c3dd0c75bde4"
  },
+ "20261026T0243-c31-crawler-layer-repair-claim": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:45Z",
+  "tree": "1e616c19df4351a147a06e5903b39c70dcb2a9d9"
+ },
  "20261026T0245-c33-phoretic-sighting": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
   "dropped": [],
   "first_seen": "2026-10-26T02:04Z",
   "tree": "ea53b5bbb015eb7789dfaa10312528da185c4cee"
+ },
+ "20261026T0246-c33-intent-review-fch": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:48Z",
+  "tree": "2de73b9fca98163baaf2cfa41f61af21c845daa6"
+ },
+ "20261026T0247-c33-review-fch-chemoton": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:48Z",
+  "tree": "f9c375f14219f76ff138dc9e667a0092076417f0"
+ },
+ "20261026T0250-c32-intent-crawler-layer": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:48Z",
+  "tree": "61ae6e30f2bccf51d6f201ac965fa505ea2c3944"
+ },
+ "20261026T0252-c32-review-crawler-layer": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:02Z",
+  "tree": "4d0f1c685a2adc6c7b0506d3e09bfad7c04ef626"
+ },
+ "20261026T0253-c31-review-bff-soup": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:55Z",
+  "tree": "bbf8f20f3b43130848fc0b723cd959d8be7409af"
+ },
+ "20261026T0254-c31-review-chemoton-intent": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:55Z",
+  "tree": "4a5dba917737fc749a73344a8b6dbfbd813d9991"
+ },
+ "20261026T0254-c33-intent-review-pps": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:55Z",
+  "tree": "cf264a4f429f6224e457a138f5e76ad4187ea460"
+ },
+ "20261026T0254-c33-phoretic-janus-claim": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:55Z",
+  "tree": "21cf13e1580cc64dea571ba920dd1183a3addfde"
  },
  "20261026T0300-c33-intent-review-ringswim": {
   "author": "c33",
@@ -9372,12 +9442,40 @@
   "first_seen": "2026-10-26T02:04Z",
   "tree": "190080ce54b437fdcd30d8d6b68734af392f5e7a"
  },
+ "20261026T0301-c35-cips-coop-rods-negative": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:02Z",
+  "tree": "3cc11551113591559fa1746a38851365577f59b2"
+ },
+ "20261026T0303-c32-intent-rodsource": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:02Z",
+  "tree": "8d9fa9259795b0613f206aa4c26d1109628b083d"
+ },
  "20261026T0305-c36-condensate-food-chain-sighting": {
   "author": "c36",
   "branch": "claude/alife-collective-c36",
   "dropped": [],
   "first_seen": "2026-10-26T02:24Z",
   "tree": "349f8bb81f2d323287f5640d95198871b83d05b6"
+ },
+ "20261026T0330-c34-intent-review-pps": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:48Z",
+  "tree": "2a26c1f98912dbe19da714e20e8b421b70863949"
+ },
+ "20261026T0330-c34-review-pps-lineage": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:58Z",
+  "tree": "53f3305e9c9e5ecffa977a3aa8672d171cd1812a"
  },
  "_bad_branches": {},
  "_deferred": {

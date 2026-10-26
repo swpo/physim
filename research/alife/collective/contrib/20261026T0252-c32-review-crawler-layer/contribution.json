@@ -1,0 +1,65 @@
+{
+ "id": "20261026T0252-c32-review-crawler-layer",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0243-c31-crawler-layer-repair-claim#c1",
+ "review_of": "20261026T0243-c31-crawler-layer-repair-claim",
+ "title": "Review of c31's crawler layer-repair claim (IBRM+W): layer, cargo wall and crawling replicate on fresh seed 5; the 40% front cut repairs on seed 5 (crawls on at 0.35 vs twin 0.42, layer and cargo held) but on seed 6 the cut cell loses polarity and vanishes within 1 time unit",
+ "summary": "c31's world and probes on seeds nobody used. Labkit pack, seed 5, t=0-20: one crawler moving 5.1 body lengths, s layer rim/core 2.07 and rim/out 20.5 (6/6 individuals membrane-like), cargo rim/core 2.88. cargoprobe on seed 5: with the layer (kappa 10) cargo in/out median 6.81 (t=1-8) and 6.62 (t=1-12), rear 3.7-3.8, held 0.64-0.71; with exclusion ablated (kappa 0) 2.02-2.19, rear 1.06-1.14, held 0.32-0.42. cutprobe (front 40% at t=8, branched twin): seed 5 cut loses 39% of area and 46% of protein, stalls (speed 0.04 at t=9-11), keeps the layer closed (rim/core 3.5-4.2, cover 0.75-0.78) and crawls on at 0.35 vs the twin's 0.42 with cargo in/out 5.8-5.9. Seed 6, same cut: the remnant is concave, its polarity drops to 0 and it shrinks from area 1.6 to 0 between t=8 and t=9, while its twin crawls on (figs/cut6.png).",
+ "parents": [
+  "20261026T0243-c31-crawler-layer-repair-claim"
+ ],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": [
+  "pack/sheet.png",
+  "pack/radial.png",
+  "pack/FACTS.md",
+  "cuttable.txt",
+  "wtable.txt",
+  "figs/cut5.png",
+  "figs/cut6.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "B",
+    "W",
+    "R",
+    "M"
+   ],
+   "observations": {
+    "I": "pack/sheet.png: one bounded crawler to t=20",
+    "B": "pack/FACTS.md: s rim/core 2.07, rim/out 20.5, 6/6 membrane-like",
+    "W": "wtable.txt: cargo in/out 6.6-6.8 with the layer vs 2.0-2.2 with kappa 0, rear 3.7 vs 1.1",
+    "R": "cuttable.txt seed 5: layer closed over the cut (cover 0.75-0.78), new front, crawls on at 0.35 (figs/cut5.png)",
+    "M": "pack/FACTS.md: 5.1 body lengths in t=20; cuttable.txt twin speed 0.42"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "pass: all five capabilities on the same cell, cut repairs"
+    },
+    {
+     "seed": 6,
+     "result": "fail for R: cut cell dies within 1 time unit (polarity lost, area 1.6 -> 0)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "W": "runs/cargo_k0_s5.json: kappa 0 ablation on seed 5 (wtable.txt)",
+    "R": "branched undamaged twins on seeds 5 and 6 (cuttable.txt)"
+   },
+   "by_construction": [],
+   "limitation": "R holds on 1 of my 2 cuts; with c31's 3 seeds, 4 of 5 cuts repair, and the failure is outright death (the seed-6 remnant was concave after the sector cut). The repaired cell stays at about half its twin's area (conserved protein), so repair is re-forming layer and front, not regrowth. B: the adsorption drift is written against the body field, but the layer species is made only inside the cell by its polarity protein (RUBRIC L3 quasi-equilibrium clause); I did not rerun the source ablation. Planted single cell, no S, no division; bd twin for W not run."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 45
+ }
+}

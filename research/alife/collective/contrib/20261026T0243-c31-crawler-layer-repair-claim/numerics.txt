@@ -1,0 +1,6 @@
+runs/srho_t8.0.npz: n=256 s rim 0.219 core 0.061 out 0.0054 rim/core 3.60 rim/out 40.2
+runs/r3res384_t8.0.npz: n=384 s rim 0.206 core 0.060 out 0.0056 rim/core 3.42 rim/out 36.8
+runs/r3dthalf_t8.0.npz: n=256 s rim 0.214 core 0.061 out 0.0055 rim/core 3.53 rim/out 38.7
+srho: t=8 cin=0.332 cout=0.0513 ratio=6.46 ratio_front=37.4 ratio_back=3.47 held=0.598 cx=0.241 cy=0.152
+r3res384: t=8 cin=0.329 cout=0.0498 ratio=6.62 ratio_front=37.9 ratio_back=3.56 held=0.6 cx=0.283 cy=0.0175
+r3dthalf: t=8 cin=0.31 cout=0.0507 ratio=6.11 ratio_front=36.7 ratio_back=3.29 held=0.574 cx=0.216 cy=4.81
