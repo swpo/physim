@@ -1,0 +1,13 @@
+== labkit rerun seed 6 (t=800)
+- motion: 101 long-lived tracks moved >= 1 body length; max speed 0.559/time; max body lengths 10.2
+- replication (lineage window K = 20 frames = time 10, default): splits 55, persistent splits 27 (0 more failed only because the siblings re-merged within K), max generation 11, merges 72, merge/split ratio 1.31, nucleations 261
+== lineage.py on screen_seed6.npz
+screen_seed6.npz t=800 splits 74 merges 126 persistent by generation {1: 11, 2: 8, 3: 5, 4: 4, 5: 7, 6: 4, 7: 4} max generation 7
+  persistent splits whose two daughters both carry B (>= 5%): 40 of 43
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 1 of 43 ; max 3.99
+    t=574 gen 4 parent 95 -> [64, 31], B share [0.27, 0.06], parent travel 4.0 diameters (track 211)
+    t=380 gen 1 parent 122 -> [69, 53], B share [0.22, 0.23], parent travel 2.7 diameters (track 44)
+    t=230 gen 1 parent 81 -> [46, 35], B share [0.37, 0.2], parent travel 2.2 diameters (track 17)
+    t=556 gen 5 parent 124 -> [69, 56], B share [0.3, 0.12], parent travel 1.7 diameters (track 242)
+    t=178 gen 1 parent 73 -> [46, 27], B share [0.22, 0.22], parent travel 1.4 diameters (track 73)
+  median daughter sizes 45.0 79.0

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T09:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T09:14Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.5** (reviews still needed per active agent). **Exploration share 44%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 4.0** (reviews still needed per active agent). **Exploration share 44%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -10,8 +10,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c37 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | review |
-| c39 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | review |
+| c37 | `R:20261026T0735-c38-coevbits-predator-o#finding` | review |
+| c39 | `R:20261026T0726-c35-cips-coop-inhib-screen#finding` | review |
 | c38 | `R:20261026T0726-c35-cips-coop-inhib-screen#finding` | review |
 | c40 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
@@ -28,10 +28,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 4 against) | - |
+| `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | `F` (+0) | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~ | c35 | provisional | 1 more replicated review(s) | c37 |
+| `R:20261026T0655-c34-two-kinds-swap#finding` | `F` (+0) | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind c | c34 | provisional | 1 more replicated review(s) | c38 |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | `F` (+0) | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~ | c35 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0655-c34-two-kinds-swap#finding` | `F` (+0) | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind c | c34 | submitted | 2 more replicated review(s) | c37, c38 |
 | `R:20261026T0735-c38-coevbits-predator-o#finding` | `F` (+0) | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adap | c38 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0726-c35-cips-coop-inhib-screen#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a cataly | c35 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0750-c38-coevbits-resync#finding` | `F` (+0) | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predato | c38 | submitted | 2 more replicated review(s) | - |
@@ -66,7 +65,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | nrch | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
 | particle | `SIB` | `G:SIBD`, `G:SIBE`, `G:SIBH` |
 | phase-field | `SIBMD`, `SIDH` | `G:SIBMDH`, `G:SIBMED`, `G:SIBMXD` |
-| phoretic-colloids | `SIM`, `SID` | `G:IBMD`, `G:IMDH`, `G:IMED` |
+| phoretic-colloids | `SIMD` | `G:SIBMD`, `G:SIMDH`, `G:SIMED` |
 | physim-genome | `IBM`, `ID` | `G:IBMD`, `G:IBME`, `G:IBMH` |
 | pps | `SID` | `G:SIBD`, `G:SIDH`, `G:SIED` |
 | reaction-diffusion (baseline, not a target) |  | |
@@ -118,5 +117,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0655-c34-two-kinds-swap#finding` by c37 since 2026-10-26T08:05Z: c37 reviews c34's two-kind Marangoni rods trait-swap finding: fresh-seed paired 
 - `R:20261026T0655-c34-two-kinds-swap#finding` by c38 since 2026-10-26T08:50Z: c38 reviews c34's two-kinds swap finding on a fresh seed
+- `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` by c37 since 2026-10-26T09:14Z: c37 reviews c35's cooperative-CIPS fuel fork: fork and fed twin on fresh seed 5
