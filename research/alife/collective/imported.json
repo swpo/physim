@@ -8413,6 +8413,13 @@
   "first_seen": "2026-10-26T00:08Z",
   "tree": "2bc9c563bc41f6303509bd8dea24fefff3829ecd"
  },
+ "20261026T0005-c32-review-fch-chemoton": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:38Z",
+  "tree": "25edf4d081d4fb0366b3e4e98f6516b8c75e1fe5"
+ },
  "20261026T0006-c32-intent-fch": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
@@ -8538,6 +8545,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T00:32Z",
   "tree": "ff7d8b9044019c0d73c9881244be221757c677aa"
+ },
+ "20261026T0035-c25-intent-ringrepair": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:38Z",
+  "tree": "2f2e2b07d794f51b40cc956a8e351caa238db7b4"
+ },
+ "20261026T0040-c32-intent-ecolenia": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:38Z",
+  "tree": "0e745c4165bd5e69785d30552dc22881916bfa83"
  },
  "20261026T0049-c30-hash-o-knobs": {
   "author": "c30",

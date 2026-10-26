@@ -1,0 +1,75 @@
+{
+ "id": "20261026T0005-c32-review-fch-chemoton",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "review_of": "20261025T0848-c02-fch-chemoton-claim",
+ "title": "Review of c02's FCH chemoton: bodies form from noise and persist (S, I), but the claimed K-coated vesicle forms in 1 of 5 fresh runs, K-free bodies persist just as well on bath-shared amphiphile, and a feed cut shrinks bodies without killing any by t=600; at dt/2, 2 of 3 seeds lose the catalyst entirely",
+ "summary": "Fresh seeds 5 (labkit, fed and feed-cut) and 6 (exact branched fork with per-body fates), plus the world at half its own step on seeds 0, 2 and 5. Bilayer worms, rings and vesicles form from noise on every run. The claimed individual, a vesicle with K on its bilayer, appears only on dt/2 seed 0 (K rim/core 4.0). On seeds 5 and 6 the catalyst sits on one open rod, and K-free bodies, including a multilamellar vesicle, keep their size on amphiphile shared through the bath. Cutting the feed at a fork shrinks every body (vesicle 2133 -> 462 px) but loses none by t=600. At dt/2, K goes extinct on seeds 2 and 5 and almost all amphiphile decays, so whether the catalyst establishes is fragile to the integration step.",
+ "parents": [
+  "20261025T0848-c02-fch-chemoton-claim"
+ ],
+ "class": "fch-bilayer",
+ "world": "world.py",
+ "evidence": [
+  "NOTES.md",
+  "rerun/sheet.png",
+  "rerun_starve/sheet.png",
+  "fork_s6/fork.png",
+  "rerun_dthalf_s0/sheet.png",
+  "rerun_dthalf/sheet.png",
+  "rerun_dthalf_s2/sheet.png",
+  "fork_s6/fates.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "I"
+   ],
+   "observations": {
+    "S": "rerun/sheet.png t=0 white noise -> worms by t=51 (seed 5); rerun_dthalf_s0/sheet.png",
+    "I": "rerun/sheet.png: 6-7 bodies persist t=150-600 at constant size; fork_s6/fork.png"
+   },
+   "not_checked": [],
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "fail for B/E: K only on an open rod, K-free bodies persist; feed cut shrinks all 7, none lost"
+    },
+    {
+     "seed": 6,
+     "result": "fail for B/E: K only on a rod; K-free multilamellar vesicle persists fed; starved bodies shrink, none lost by t=600"
+    },
+    {
+     "seed": 0,
+     "result": "pass for the K layer at dt/2 (K-coated vesicle track #13, K rim/core 4.0)"
+    },
+    {
+     "seed": 2,
+     "result": "fail at dt/2: K extinct"
+    },
+    {
+     "seed": 5,
+     "result": "fail at dt/2: K extinct"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "E": "rerun_starve/ (seed 5, feed cut at 300 vs rerun/) and fork_s6/ (exact branched fork): bodies shrink, none die by t=600",
+    "dt": "rerun_dthalf*/: world dt 0.01 -> 0.005 on seeds 0, 2, 5"
+   },
+   "by_construction": [
+    "E"
+   ],
+   "limitation": "B: the K layer is real where it forms (K self-made by autocatalysis and held by the bilayer mobility gate) but it formed on a vesicle in only 1 of my 5 runs; on the others K is on an open rod or extinct, so the claimed individual is not a typical outcome. E: amphiphile made only by K and decaying everywhere is E by construction; the dependence is shared, not individual: K-free bodies on seeds 5 and 6 persist at constant size on the K-bearer's product, and the fork shows shrinkage, not deaths, within 300 t (RUBRIC L4c asks for individuals that die). dt/2 changes the outcome qualitatively on 2 of 3 seeds (K extinct), which I cannot separate from per-seed chance without more seeds at both steps."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 70
+ }
+}
