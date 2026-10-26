@@ -1,0 +1,12 @@
+[phoretic-colloids] seed 9: 1600 frames x 1 steps, grid (128, 128)
+  frame 160/1600  38.7s
+  frame 320/1600  76.3s
+  frame 480/1600  112.8s
+  frame 640/1600  148.5s
+  frame 800/1600  185.5s
+  frame 960/1600  222.4s
+  frame 1120/1600  260.8s
+  frame 1280/1600  297.8s
+  frame 1440/1600  332.8s
+  frame 1600/1600  367.4s
+  -> collective/contrib/20261026T0830-c38-review-phoretic-packs/rerun/seed9/FACTS.md  (367s sim)
