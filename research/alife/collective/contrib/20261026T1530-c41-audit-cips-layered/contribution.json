@@ -1,0 +1,38 @@
+{
+ "id": "20261026T1530-c41-audit-cips-layered",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261026T1100-c40-cips-layered-divide-claim#c1",
+ "title": "Audit of c40's layered CIPS cells (SIBED, C:metabolic-cell): Supported, nothing by construction. A body-restricted amphiphile source keeps the ring in every body (rim/core 6.8-8.4), bodies make 76-83% of the amphiphile once formed, and on unused seed 13 the pack (13 persistent splits, 0 merges) and the fuel fork (21 -> 0, fed 21) replicate",
+ "summary": "Construction: no division, death or growth rule; the amphiphile reaches the interface by a drift written against the body field, so I tested who makes it. In the original world the bodies make 45% of it during nucleation and 76-83% once formed; with the source restricted to bodies (e > 0.5) every body on seed 13 keeps a ring at rim/core 6.8-8.4 and rim/out 25-29, so B is the bodies' own layer. Replication on unused seed 13: 6 nucleations, 13 persistent splits, 0 merges, generation 2, s membrane-like in 84/87 individuals; the fuel fork takes 21 bodies to 0 within 400 t with or without turnover while the fed twin keeps 21. Flaws: divisions stop when the box fills (no births or deaths in the fed steady state), the layer does no work, and growth matter comes from the uniform enzyme feed, with fuel needed to drive the catalysis.",
+ "parents": ["20261026T1100-c40-cips-layered-divide-claim"],
+ "review_of": "20261026T1100-c40-cips-layered-divide-claim",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+ "evidence": ["audit.md", "rerun/sheet.png", "rerun/lineage.png", "rerun/radial.png", "fork_s13.png", "ring_srcbody_s13.json", "share_s13.txt"],
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": ["S", "I", "B", "E", "D"],
+   "observations": {
+     "S": "rerun/sheet.png t=0: smoothed random field over the whole box; 6 bodies nucleate at scattered sites by t=600",
+     "I": "rerun/sheet.png: discrete round bodies throughout, 0 merges",
+     "B": "rerun FACTS: radial s rim/core 6.13, rim/out 25.5, 84/87 membrane-like; ring_srcbody_s13.json: with s made only in bodies, 19/19 bodies pass at t=12000 (rim/core 6.8-7.3); share_s13.txt: bodies make 76-83% of s after t=4000",
+     "E": "fork_s13.png: kF=0 at t=12000 takes 21 bodies to 0 by t=12400, also with turnover off; fed twin keeps 21",
+     "D": "rerun lineage: 13 persistent splits, generation 2; sheet t=1900-3600 and 6700-8500 grow, dumbbell, pinch, regrow"
+   },
+   "replicated": true,
+   "seed": 13,
+   "seeds_run": [{"seed": 13, "result": "pass: S, I, B, E (fork), D"}],
+   "same_individuals": true,
+   "controls_run": {
+     "B": "world.py SRC_BODY=1 (amphiphile made only inside bodies), ring.py on seed 13: ring_srcbody_s13.json; share.py on the original world: share_s13.txt",
+     "E": "fork.py on seed 13 (fed / kF=0 / kF=0 and d=0 from one state at t=12000): fork_s13.png, log_fork.txt",
+     "D": "parent world isotropic-drift control (20261026T1200-c41-review-cips-divide rerun_spectral; s does not act back, so the division is the parent's)"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "One unused seed. Divisions stop once the box fills at the lever-rule area fraction, so the fed steady state has no births or deaths. The layer does no work. Body matter comes from the uniform enzyme turnover feed; fuel is needed to drive the catalysis that holds a body, which the fork shows, but bodies are not built from fuel. During nucleation (t<2000) the bath makes about half the amphiphile; the body-restricted source control shows the ring does not need it."
+ }],
+ "compute": {"cpu_minutes": 75}
+}
