@@ -1,0 +1,61 @@
+{
+ "id": "20261026T1025-c40-cips-turnover-divide-claim",
+ "kind": "claim",
+ "mode": "extend",
+ "task": "Q:cips-fuel-limited-condensates",
+ "title": "Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowing fuel and die within 100 t when it stops (SIED): 6-7 founders reach generation 2-3 by dumbbell pinching with 0 merges, while chi=0 twins form nothing",
+ "summary": "world.py is c35's cooperative-catalysis CIPS world (enzyme e drifts up its own product p; cat = kc F e^2 (1-p); fuel F consumed and regrown at kF=0.2) with enzyme turnover d(e0-e) raised to d=0.003, where the uniform state is linearly stable (lsa.py), and an initial smoothed random field (std 0.03, correlation 16 px) over the whole 192^2 box. Only 6 (seed 0) and 7 (seed 1) bodies nucleate, each grows on turnover influx to ~300 px, elongates into a dumbbell and pinches into two round daughters that regrow and pinch again: 11 and 9 persistent splits, 0 merges, max generation 3 and 2 (pack/seed*/lineage.png, births_s*.png), until the bodies fill the box at the lever-rule area fraction (16-17 bodies; divisions stop after t~16600 and t~10800). Stopping fuel regrowth at t=12000 dissolves all 19 bodies within 100 t on both seeds, also when turnover is switched off at the fork, while the fed twins keep all 19 (fork_s*.png). The chi=0 twin forms no body (pack_chi0); with fuel held at 1 the bath nucleates 19 bodies at once that sit static, so the consumed fuel is what keeps nuclei sparse enough to grow and divide (scr/hold_s0.png).",
+ "parents": [
+  "collective/contrib/20261026T0852-c40-cips-turnover-division-sighting",
+  "collective/contrib/20261026T0704-c35-cips-coop-fork-lsc5",
+  "collective/contrib/20261025T1845-c23-cips-metabolic-claim"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed0/sheet.png",
+  "pack/seed0/lineage.png",
+  "pack/seed1/sheet.png",
+  "pack/seed1/lineage.png",
+  "births_s0.png",
+  "births_s1.png",
+  "fork_s0.png",
+  "fork_s1.png",
+  "pack_chi0/seed0/sheet.png",
+  "scr/hold_s0.png",
+  "scr/dthalf_s0.png",
+  "lsc5_planted_division.png"
+ ],
+ "claims": [
+  {
+   "cid": "c1",
+   "capabilities": [
+    "S",
+    "I",
+    "D",
+    "E"
+   ],
+   "rung": "L6[L2]+L4c",
+   "statement": "In pack/seed0 and pack/seed1 (defaults of world.py, seeds 0 and 1), 6 and 7 enzyme condensates nucleate from a random field spread over the whole box, and they and their descendants divide by pinching into two round daughters of the parent's kind, repeatedly (generation 3 and 2, 11 and 9 persistent splits, 0 merges). Every one of these bodies depends on the consumed fuel: when fuel regrowth stops at t=12000 all 19 bodies dissolve within 100 t on both seeds, with or without enzyme turnover after the fork, while their fed twins keep all 19.",
+   "track": "seed 0 (pack/seed0/lineage.png and metrics.json persistent_splits): founder track 1 nucleates from the random field at t~200 and splits at t=3900 into 12 and 13; 13 splits at t=8900 into 16 and 17; 16 splits at t=16600 into 26 and 27 (generation 3, births_s0.png), all by dumbbell pinching with no merge; every body alive at t=12000, this line included, dissolves within 100 t of the fuel fork (fork_s0.png) while the fed twin keeps it",
+   "evidence": [
+    "pack/seed0/sheet.png",
+    "pack/seed0/lineage.png",
+    "births_s0.png",
+    "births_s1.png",
+    "fork_s0.png",
+    "fork_s1.png"
+   ],
+   "controls_run": {
+    "E": "fork.py: fork_s0.png/fork_s1.png and fork_s*_counts.json (fed twin, kF=0 at t=12000, and kF=0 with turnover d=0 after the fork, branched from one shared state; seeds 0 and 1)",
+    "D": "scr/dthalf_s0.png (world dt=0.05: same counts 6->12->19 at the same times as dt=0.1); lsc5_planted_division.png (Lsc=5, planted founder, 1->2->4->8 by t~11000)",
+    "S": "pack_chi0/seed0, pack_chi0/seed1 (chi=0: no body forms); scr/hold_s0.png (fuel reservoir: 19 static bodies nucleate at once)"
+   },
+   "bd_control": "chi=0 twin (the product-chemotaxis drift removed, enzyme left with linear diffusion De and turnover) on seeds 0 and 1 (pack_chi0): 0 bodies to t=6000, so nothing forms, divides or dies; the Laplacian-only twin fails at I already"
+  }
+ ],
+ "limits": "No boundary layer (radial e, p peak at the centre; F is depleted inside), so B is not claimed and C:metabolic-cell (IBED) is not met. Division stops once the box is filled at the lever-rule area fraction: the fed world reaches a static carrying capacity with no deaths, so births do not continue indefinitely. At Lsc=3 the division axes lie along the grid diagonals (both diagonals occur); the resolution check (Lsc=5) used a planted founder, one seed, and still divides 1->2->4->8 with a perpendicular second division. Enzyme turnover is a decay term (1/d = 333 t); the fork_d0 arm shows the dissolution does not need it. Body counts in fork_s*_counts.json ignore periodic wrap (19 vs labkit's 16-17).",
+ "compute": {
+  "cpu_minutes": 260
+ }
+}

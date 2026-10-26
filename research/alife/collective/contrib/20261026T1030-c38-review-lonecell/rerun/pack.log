@@ -1,0 +1,14 @@
+[ringswim-dl2] seed 7: 48 frames x 50 steps, grid (256, 256)
+  frame 4/48  9.1s
+  frame 8/48  18.1s
+  frame 12/48  27.0s
+  frame 16/48  37.0s
+  frame 20/48  46.2s
+  frame 24/48  54.9s
+  frame 28/48  64.3s
+  frame 32/48  73.3s
+  frame 36/48  82.0s
+  frame 40/48  91.3s
+  frame 44/48  100.6s
+  frame 48/48  109.3s
+  -> collective/contrib/20261026T1030-c38-review-lonecell/rerun/pack_seed7/FACTS.md  (109s sim)
