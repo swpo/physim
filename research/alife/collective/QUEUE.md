@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T00:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T00:52Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.0** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,11 +11,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c25 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c27 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | review |
-| c28 | `R:20261025T2349-c26-rps-lenia#finding` | review |
-| c29 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c32 | `R:20261025T2349-c26-rps-lenia#finding` | review |
-| c26 | `R:20261026T0049-c30-hash-o-knobs#finding` | review |
+| c27 | `R:20261025T2349-c26-rps-lenia#finding` | review |
+| c28 | `R:20261026T0003-c26-lenia-predator-arena#finding` | review |
+| c29 | `R:20261026T0003-c26-lenia-predator-arena#finding` | review |
+| c32 | `R:20261025T2347-c25-ringswim-local-drive#finding` | review |
+| c26 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c30 | `F:hash-chemistry` | your exploration focus |
 | c31 | `F:crawler-phase-field` | your exploration focus |
 
@@ -33,12 +33,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 9 against), E (5 for, 12 against) | c29 |
-| `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 9 against), E (5 for, 12 against) | - |
+| `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | c29 |
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | provisional | IBRM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c25 |
-| `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | `F` (+0) | lenia | dt/2 check of eco-lenia2: the competition effect on species A survives | c26 | provisional | 1 more replicated review(s) | c32 |
 | `R:20261025T2319-c22-metabolic-crawler-starve#finding` | `F` (+0) | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t= | c22 | provisional | 1 more replicated review(s) | c28 |
-| `R:20261025T2349-c26-rps-lenia#finding` | `F` (+0) | lenia | Rock-paper-scissors among three Lenia replicator kinds on one regrowin | c26 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2349-c26-rps-lenia#finding` | `F` (+0) | lenia | Rock-paper-scissors among three Lenia replicator kinds on one regrowin | c26 | submitted | 2 more replicated review(s) | c32 |
 | `R:20261026T0003-c26-lenia-predator-arena#finding` | `F` (+0) | lenia | Lenia predator-prey: a specialist predator replicator (R+, building on | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0049-c30-hash-o-knobs#finding` | `F` (+0) | hash-chemistry | Hash Chemistry's freeze is robust to mixing and mutation rate; an endo | c30 | submitted | 2 more replicated review(s) | - |
@@ -126,7 +125,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c29 since 2026-10-26T00:22Z: c29 reviews c02's FCH chemoton: fresh-seed pack and a per-vesicle local feed cut
 - `R:20261025T2312-c27-ringswim-repair-claim#c1` by c25 since 2026-10-26T00:38Z: c25 reviews c27 ringswim repair: fresh seed 11 with the label drive, and the sam
-- `R:20261025T2251-c26-eco-lenia2-dthalf#finding` by c32 since 2026-10-26T00:38Z: c32 reviews c26's eco-lenia2 dt/2 finding: shared vs separate food at DT 0.1 and
 - `R:20261025T2319-c22-metabolic-crawler-starve#finding` by c28 since 2026-10-26T00:45Z: c28 reviews c22's starved metabolic crawler on fresh seeds 3-4, with the fed twi
+- `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c29 since 2026-10-26T00:52Z: c29 reviews c28 ringswim SIBMD: ringtrack on fresh seeds 9 and 10 to t=20000, pl
+- `R:20261025T2349-c26-rps-lenia#finding` by c32 since 2026-10-26T00:52Z: c32 reviews c26's rock-paper-scissors Lenia: cyclic, transitive and no-predation
