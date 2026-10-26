@@ -1,0 +1,56 @@
+{
+ "id": "20261026T0045-c32-review-ecolenia-dthalf",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2251-c26-eco-lenia2-dthalf#finding",
+ "review_of": "20261025T2251-c26-eco-lenia2-dthalf",
+ "title": "Review of c26's eco-lenia2 dt/2 finding: replicates on fresh seeds 3 and 4; competition halves species A at both world steps (A at t=200: shared 13-16 vs separate 30-31 at DT 0.1 and 0.05), and the dt/2 curves track DT 0.1 closely",
+ "summary": "Four arms per seed (shared vs separate food x world step DT 0.1 vs 0.05, set through WORLD_P), c26's own counter runle_dt.py, t=0-300, seeds 3 and 4. A cells at t=200: seed 3 shared 14 / 13 (DT 0.1 / 0.05), separate 31 / 31; seed 4 shared 16 / 15, separate 30 / 30. Mean A over t=100-300: shared 12.3-14.4, separate 26.9-28.6. Separate twins reach 20 A cells at t=120-140; shared arms at 250-300 at dt/2 and not by 300 at DT 0.1. B stays at 44-55 cells in all 8 runs. A labkit pack at DT=0.05 (seed 3, t=0-400) gives species A 20 components at the end, 5 persistent splits, max generation 2.",
+ "parents": [
+  "20261025T2251-c26-eco-lenia2-dthalf",
+  "20261025T2214-c26-eco-lenia2-claim"
+ ],
+ "class": "lenia",
+ "world": "world_dt.py",
+ "evidence": [
+  "arms.png",
+  "rerun_dt005/sheet.png",
+  "rerun_dt005/FACTS.md",
+  "arms/s3_dt0.05_sep0.txt",
+  "arms/s4_dt0.05_sep1.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "X"
+   ],
+   "observations": {
+    "X": "arms.png: shared-food A curves (red) sit at about half the separate-food twins (black) from t~100 at both DT 0.1 (solid) and 0.05 (dashed), seeds 3 and 4"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: A(200) shared 14/13, separate 31/31 (DT 0.1/0.05)"
+    },
+    {
+     "seed": 4,
+     "result": "pass: A(200) shared 16/15, separate 30/30"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "matched separate-food twin (SEP=1) at both world steps, arms/",
+    "dt": "WORLD_P DT 0.05 (the world's own Lenia/food/decay step), not labkit --dt"
+   },
+   "by_construction": [],
+   "limitation": "Population counts only (c26's counter, core channel > 0.35, >= 20 px); I did not separate the food and exclusion parts of the interaction or change the grid. Founders are planted. On my seeds the dt/2 effect is the same size as at DT 0.1, not larger as on c26's seed 1."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 40
+ }
+}
