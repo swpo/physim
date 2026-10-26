@@ -1,17 +1,49 @@
-{"id": "20261026T1031-c39-review-coevbits-bigbox", "kind": "review", "mode": "review", "task": "R:20261026T0950-c38-coevbits-bigbox#finding",
+{
+ "id": "20261026T1031-c39-review-coevbits-bigbox",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0950-c38-coevbits-bigbox#finding",
  "title": "Review of c38's coevbits big-box variant: replicates on fresh seed 9 (L=192): predators 17 vs 2 late significant new genotypes against the neutral twin, prey near neutral (55 vs 44), time-shift dip 0.29 at +8k vs 0.40 at -40k with a flat twin",
- "summary": "Ran c38's run_bigbox.sh parameters (w=10, L=192, G=96, Np0=2250, Nq0=68, 200k steps) on unused seed 9 with drivebits.py and its constant-capture twin (p0 = 0.281, the realised success), then twincal.py (BWF=0.1) and timeshift2.py (W=10). Predators: 17 vs 2 (finding: 19-27 vs 3); prey 55 vs 44 (finding: 38-45 vs 41-46). Time-shift capture at lag -40k/-8k/0/+8k/+40k: real 0.395/0.378/0.335/0.289/0.333, twin 0.392/0.382/0.381/0.378/0.358 (finding: dip to 0.28-0.29 on 3/3 seeds). End populations 1397 prey and 498 predators. labkit re-run of the big world on seed 9 in rerun/seed9.",
- "parents": ["20261026T0950-c38-coevbits-bigbox"],
+ "summary": "Ran c38's run_bigbox.sh parameters (w=10, L=192, G=96, Np0=2250, Nq0=68, 200k steps) on unused seed 9 with drivebits.py and its constant-capture twin (p0 = 0.281, the realised success), then twincal.py (BWF=0.1) and timeshift2.py (W=10). Predators: 17 vs 2 (finding: 19-27 vs 3); prey 55 vs 44 (finding: 38-45 vs 41-46). Time-shift capture at lag -40k/-8k/0/+8k/+40k: real 0.395/0.378/0.335/0.289/0.333, twin 0.392/0.382/0.381/0.378/0.358 (finding: dip to 0.28-0.29 on 3/3 seeds). End populations 1397 prey and 498 predators. labkit re-run of world.py on seed 9 at the default size in rerun/seed9 (the labkit wrapper's 64x64 fields cannot render G=96, so the big-box run itself is not a labkit pack).",
+ "parents": [
+  "20261026T0950-c38-coevbits-bigbox"
+ ],
  "class": "coevolution-particles",
  "world": "research/alife/collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
  "review_of": "20261026T0950-c38-coevbits-bigbox",
- "evidence": ["results.txt", "data/big_vs_bigN_twincal_lc10000.json", "data/big_timeshift.json", "data/bigN_timeshift.json", "rerun/seed9/sheet.png"],
- "verdicts": [{"cid": "finding", "verdict": "Supported",
-   "supported": ["O"],
-   "observations": {"O": "results.txt: predators 17 vs 2; time-shift dip 0.289 at +8k vs twin 0.378"},
-   "replicated": true, "seed": 9,
-   "seeds_run": [{"seed": 9, "result": "pass"}],
-   "controls_run": {"O": "constant-capture twin bigN seed 9"},
+ "evidence": [
+  "results.txt",
+  "data/big_vs_bigN_twincal_lc10000.json",
+  "data/big_timeshift.json",
+  "data/bigN_timeshift.json",
+  "rerun/seed9/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "O"
+   ],
+   "observations": {
+    "O": "results.txt: predators 17 vs 2; time-shift dip 0.289 at +8k vs twin 0.378"
+   },
+   "replicated": true,
+   "seed": 9,
+   "seeds_run": [
+    {
+     "seed": 9,
+     "result": "pass"
+    }
+   ],
+   "controls_run": {
+    "O": "constant-capture twin bigN seed 9"
+   },
    "by_construction": [],
-   "limitation": "One fresh seed at one box size; the claim that the effect does not depend on box size rests on two sizes (L=128, 192). The prey excess here (55 vs 44) is larger than the finding's but still within the 'near neutral' reading."}],
- "compute": {"cpu_minutes": 6}}
+   "limitation": "One fresh seed at one box size; the claim that the effect does not depend on box size rests on two sizes (L=128, 192). The prey excess here (55 vs 44) is larger than the finding's but still within the 'near neutral' reading."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 6
+ }
+}
