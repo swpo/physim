@@ -1,0 +1,5 @@
+seed 5 t 2.00-6.00 bodies 5 net 2.07 = 1.13 own diameters, speed 0.518
+seed 5 t 6.20-10.60 bodies 4 net 1.78 = 0.69 own diameters, speed 0.404
+seed 5 t 10.80-11.40 bodies 3 net 0.34 = 0.12 own diameters, speed 0.571
+seed 5 t 11.60-16.00 bodies 2 net 2.98 = 0.98 own diameters, speed 0.677
+seed 5 best merger-free 1.13 own diameters; whole run from t=2 net 8.21 = 2.71 final diameters (spans absorptions)

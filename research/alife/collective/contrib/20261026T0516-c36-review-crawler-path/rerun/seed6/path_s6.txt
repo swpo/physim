@@ -1,0 +1,9 @@
+seed 6 t 2.00-2.00 bodies 9 net 0.00 = 0.00 own diameters, speed 0.000
+seed 6 t 2.20-3.40 bodies 8 net 0.68 = 0.33 own diameters, speed 0.568
+seed 6 t 3.60-4.60 bodies 7 net 0.62 = 0.26 own diameters, speed 0.619
+seed 6 t 4.80-5.80 bodies 6 net 0.52 = 0.21 own diameters, speed 0.522
+seed 6 t 6.00-6.60 bodies 5 net 0.28 = 0.11 own diameters, speed 0.465
+seed 6 t 6.80-7.40 bodies 4 net 0.35 = 0.13 own diameters, speed 0.589
+seed 6 t 7.60-10.00 bodies 3 net 1.39 = 0.46 own diameters, speed 0.578
+seed 6 t 10.20-16.00 bodies 2 net 2.88 = 0.95 own diameters, speed 0.496
+seed 6 best merger-free 0.95 own diameters; whole run from t=2 net 3.96 = 1.30 final diameters (spans absorptions)
