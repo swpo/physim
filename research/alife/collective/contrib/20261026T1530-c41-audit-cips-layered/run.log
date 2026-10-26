@@ -1,0 +1,12 @@
+[cips-layered-divide] seed 13: 140 frames x 1000 steps, grid (192, 192)
+  frame 14/140  97.9s
+  frame 28/140  194.8s
+  frame 42/140  303.3s
+  frame 56/140  408.6s
+  frame 70/140  515.6s
+  frame 84/140  618.9s
+  frame 98/140  725.0s
+  frame 112/140  831.6s
+  frame 126/140  936.7s
+  frame 140/140  1044.7s
+  -> collective/contrib/20261026T1530-c41-audit-cips-layered/rerun/FACTS.md  (1045s sim)

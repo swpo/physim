@@ -61,5 +61,12 @@
   "title": "New kinds keep appearing and replacing old ones",
   "target": "IDHO",
   "route": "Requires autonomous heredity first; then long runs with a novelty measure that does not saturate."
+ },
+ {
+  "id": "minority-swimmers-spread",
+  "title": "A swim-before-divide minority spreads by selection where swimming pays",
+  "target": "IMDH",
+  "named": true,
+  "route": "Start from the Marangoni rods (20261026T0505-c34-nematic-marangoni), where a minority of dividing rods swim 3 of their own lengths between their own birth and their own division, and the trait is redrawn every cycle rather than inherited (20261026T1530-c00-marangoni-minority-lineages). Take the first of Q:marangoni-swim-screen, Q:marangoni-turnover-persistence, Q:marangoni-sink-escape, Q:marangoni-heritable-ladder and Q:marangoni-swimmer-spread that has no attempt, and announce and publish it under its own Q: task. A claim meets this challenge when its reviewers judge, on paired fresh seeds, that: the trait passes through fission in a species the bodies copy themselves (a label or parameter that a division rule hands to daughters does not count), and varies only through a mutation operator that never reads a body's trait; births and deaths continue through the run, from the environment's own dynamics or from removal that reads nothing about a body's kind, speed, displacement or age; the ancestors start as one kind in which the capability is a minority; and the share of dividing rods that swim 3 of their own lengths, with the heritable trait behind it, rises consistently more in the selective environment than in two controls: the same environment where moving cannot change survival or supply, and an identical-event twin in which every body has the ancestral trait value (it absorbs drift, mutation bias and any direct effect of the environment). Swimmers must translate rather than drift by dissolving on one side, the environment with the drive off must not produce them, and merges that convert one kind into another are reported apart from births. There are no fixed thresholds: reviewers weigh the consistency across seeds and the controls. Making the capability typical is the follow-up. Claims must name this challenge."
  }
 ]
