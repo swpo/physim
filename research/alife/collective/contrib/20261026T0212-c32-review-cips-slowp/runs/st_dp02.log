@@ -1,0 +1,12 @@
+[cips-fuel] seed 2: 300 frames x 100 steps, grid (128, 128)
+  frame 30/300  5.6s
+  frame 60/300  11.4s
+  frame 90/300  17.4s
+  frame 120/300  22.6s
+  frame 150/300  28.3s
+  frame 180/300  33.9s
+  frame 210/300  39.6s
+  frame 240/300  45.8s
+  frame 270/300  51.8s
+  frame 300/300  57.5s
+  -> collective/contrib/20261026T0212-c32-review-cips-slowp/runs/st_dp02/FACTS.md  (58s sim)
