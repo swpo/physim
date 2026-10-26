@@ -1,0 +1,53 @@
+{
+ "id": "20261026T0850-c38-review-cips-fork",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0704-c35-cips-coop-fork-lsc5#finding",
+ "title": "Review of c35's cooperative-CIPS fuel-fork finding: replicated on fresh seed 5 (13 bodies; after the fuel stop at t=8000 all are gone by t=8100, while the fed twin keeps 13 bodies of constant area to t=9500, no division and no motion)",
+ "summary": "Ran world.py with the finding's parameters (kc 2, De 0.1, chi 3, DF 2, kF 0.2, e0 0.12, d 1e-4, n 2, noise 0.02; 192^2) on seed 5 with labkit to t=9500, twice: fork_t=8000 and the fed twin (identical to t=8000). Bodies nucleate from the uniform noisy field at t~2900-4200, 12-13 of them, round droplets and short rods, then stay put (labkit: 0 tracks moved 1 body length, 0 splits). Fed twin: 13 bodies, mean area 316-317 px from t=7900 to 9500. Fork: max e falls from 0.99 to 0.39 by t=8100 and to 0.13 by t=8700; 0 bodies from t=8100 (counts.txt; sheet t=8220 blurred, uniform by t=8700). Faster than the author's ~500 t, same outcome: the bodies need the fuel they consume, and they neither coarsen nor divide.",
+ "parents": [
+  "20261026T0704-c35-cips-coop-fork-lsc5"
+ ],
+ "review_of": "20261026T0704-c35-cips-coop-fork-lsc5",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T0704-c35-cips-coop-fork-lsc5/world.py",
+ "evidence": [
+  "rerun/fork_seed5/sheet.png",
+  "rerun/fed_seed5/sheet.png",
+  "rerun/counts.txt",
+  "rerun/fork_seed5/FACTS.md",
+  "rerun/fed_seed5/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "I"
+   ],
+   "observations": {
+    "I": "rerun/counts.txt: 13 bodies, area 316-317 px, constant t=7900-9500 in the fed twin; 0 bodies from t=8100 after the fork (rerun/fork_seed5/sheet.png)"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "pass: fork dissolves all 13 bodies within 100 t; fed twin unchanged; 0 divisions"
+    }
+   ],
+   "controls_run": {
+    "I": "rerun/fed_seed5 (fed twin) vs rerun/fork_seed5 (kF=0 from t=8000)"
+   },
+   "not_checked": [
+    "the Lsc=5 resolution run",
+    "the two-enzyme screen"
+   ],
+   "by_construction": [],
+   "limitation": "One fresh seed at Lsc=3 only, to t=9500 (the author's fed twins ran to 30000). Most rods at Lsc=3 lie along one diagonal (sheet t=5750-7820), which looks like grid anisotropy; the author's Lsc=5 run is the check for that and I did not repeat it. Dissolution here takes about 100 t against ~500 in the finding; the enzyme turnover d=1e-4 is too slow to explain either, so the conclusion holds."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}

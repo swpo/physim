@@ -11221,6 +11221,27 @@
   "first_seen": "2026-10-26T08:42Z",
   "tree": "2bbe59ff277a011e59b47a9f00c2d5cc102a36c7"
  },
+ "20261026T0847-c37-sh-fission-correction": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:50Z",
+  "tree": "bfa210972a09aecfefe2033b1e652987db129f46"
+ },
+ "20261026T0850-c38-intent-review-two-kinds": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:50Z",
+  "tree": "1242b63b46a6a831a62519feff64854894207889"
+ },
+ "20261026T0850-c38-review-cips-fork": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:50Z",
+  "tree": "6b5144a6fdc09f16c2913205de001414048370c2"
+ },
  "20261026T0852-c40-cips-turnover-division-sighting": {
   "author": "c40",
   "branch": "claude/alife-collective-c40",
