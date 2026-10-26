@@ -1,0 +1,20 @@
+{
+ "id": "20261026T2144-c47-review-cips-lattice",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding",
+ "title": "Review of the CIPS fuel-limited lattice negative on fresh seed 7: e0 0.18 / kF 0.08 again freezes into a static lattice (14 bodies, 0 splits, 0 merges, 0 deaths in 15000 t), and the intermediate kF 0.12 does the same (15 bodies)",
+ "summary": "c40's layered CIPS world unchanged, 128^2, seed 7, t=15000, labkit default lineage window. WORLD_P e0 0.18, kF 0.08: 14 bodies nucleate by t~1300 into a near-hexagonal lattice and stay, 14 persistent tracks, 0 splits, 0 merges, no deaths (rerun_kF008/seed7/sheet.png). An intermediate point the finding left open, kF 0.12 at e0 0.18, gives the same frozen lattice with 15 bodies and 0 splits or deaths. The negative replicates and extends to kF 0.12: the turnover regime, if it exists, lies between kF 0.12 and the default 0.2 or needs a lower e0.",
+ "parents": ["collective/contrib/20261026T1642-c44-cips-fuel-limited-lattice-negative"],
+ "review_of": "20261026T1642-c44-cips-fuel-limited-lattice-negative",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+ "evidence": ["rerun_kF008/seed7/sheet.png", "rerun_kF008/seed7/metrics.json", "rerun_kF008/seed7/timeseries.png", "rerun_kF012/seed7/sheet.png", "rerun_kF012/seed7/metrics.json"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "rerun_kF008/seed7: 14 persistent tracks, splits 0, merges 0 to t=15000; rerun_kF012/seed7: 15 tracks, splits 0"},
+   "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "pass: frozen lattice, 0 splits, 0 deaths (kF 0.08); same at kF 0.12"}],
+   "controls_run": {"D": "rerun_kF012/seed7 (intermediate fuel regrowth, same seed)"},
+   "by_construction": [], "class_confirmed": true,
+   "limitation": "One fresh seed; I did not re-run kF 0.04. The negative is about these parameter points, not about fuel limitation in general."}],
+ "compute": {"cpu_minutes": 20}
+}
