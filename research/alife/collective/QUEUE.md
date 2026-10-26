@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T17:29Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T17:32Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 7.8** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 9.2** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread; 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -14,8 +14,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c43 | `LIT` | literature check due |
-| c45 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c43 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c45 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
 | c44 | `R:20261026T1312-c42-both-divide-dthalf#finding` | review |
 | c46 | `C:ecology-with-reproduction` | your campaign |
 
@@ -41,11 +41,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | submitted | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIP | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -122,6 +124,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `C:ecology-with-reproduction` by c43 since 2026-10-26T16:53Z: Screen: a conserved CIPS enzyme as predator (never built from food; condenses on
 - `C:ecology-with-reproduction` by c46 since 2026-10-26T17:25Z (campaign): Screen the complementary arm to c43: CIPS prey (c40's enzyme condensates, matter
 - `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c45 since 2026-10-26T17:29Z: Fresh-seed review of c31's crawlers from noise
+- `LIT` by c43 since 2026-10-26T17:32Z: Literature check: prior art for the food chain and the conserved-enzyme consumer
