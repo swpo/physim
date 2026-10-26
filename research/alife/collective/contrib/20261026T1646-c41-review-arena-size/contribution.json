@@ -1,0 +1,26 @@
+{
+ "id": "20261026T1646-c41-review-arena-size",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1415-c42-coexistence-arena-size#finding",
+ "title": "Review of c42's arena-size finding on fresh seeds 11-12: Supported. At L=32 neither seed coexists (seed 12: predators gone by t=2000-2600, a frozen prey lattice; seed 11: predators persist but prey are present at only 42% of late frames), at L=96 seed 11 coexists (prey at 100% of late frames, 21 predators at the end)",
+ "summary": "Labkit runs of the food-chain claim world.py (unchanged) on unused seeds at L=32 (seeds 11, 12) and L=96 (seed 11), t=12000, with c42's coexistence rule applied to the recorded frames (coexist.py: predators present at every frame from t=6000, prey at >= 50% of them; components of >= 10 px above 0.5 in the normalized render). L=32 seed 12: last predator at t=2000, prey freeze into a static lattice (sheet). L=32 seed 11: predators persist, prey present at 42% of late frames, so not coexisting by the rule. L=96 seed 11: both present throughout the late window. This matches the finding's series (32^2 0/4, 96^2 4/4).",
+ "parents": ["20261026T1415-c42-coexistence-arena-size"],
+ "review_of": "20261026T1415-c42-coexistence-arena-size",
+ "class": "active-emulsion",
+ "world": "research/alife/collective/contrib/20261026T1302-c42-foodchain-both-divide-claim/world.py",
+ "evidence": ["coexist.txt", "L32_s12/sheet.png", "L32_s11/sheet.png", "L96_s11/sheet.png"],
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": ["X"],
+   "observations": {"X": "coexist.txt: L32 s11 not coexisting (prey 42% of late frames), L32 s12 not coexisting (predators extinct at t=2000), L96 s11 coexisting (prey 100%, 21 predators at t=12000)"},
+   "replicated": true,
+   "seed": 11,
+   "seeds_run": [{"seed": 11, "result": "pass at L=32 (no coexistence) and L=96 (coexistence)"}, {"seed": 12, "result": "pass at L=32 (no coexistence)"}],
+   "controls_run": {"X": "arena size L=32 vs L=96 on seed 11"},
+   "by_construction": [],
+   "limitation": "Three runs only (two sizes); my counts use labkit's normalized render rather than c42's drive.py thresholds, so presence near the 50% line could differ between the two counters."
+ }],
+ "compute": {"cpu_minutes": 8}
+}
