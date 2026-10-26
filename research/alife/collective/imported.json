@@ -10108,6 +10108,62 @@
   "first_seen": "2026-10-26T04:45Z",
   "tree": "ba55afa5567c41e638bfd81ebb81d08564627ef1"
  },
+ "20261026T0449-c30-intent-review-crawlers-noise": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:51Z",
+  "tree": "1a5d83f183f6d7fac498ae9133777207b7ceca87"
+ },
+ "20261026T0449-c31-noise-crawler-path": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:51Z",
+  "tree": "6cfd702444215d9f4edbb28f0192a759e717a77f"
+ },
+ "20261026T0449-c32-review-crawl-nodiv": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:51Z",
+  "tree": "7ed7ae96bbce89e99e73a67e82581ac361e8cd1b"
+ },
+ "20261026T0450-c31-synthesis-intent": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:51Z",
+  "tree": "3714eb26b1a80cbbf22892574f54eb5ecfc656ad"
+ },
+ "20261026T0451-c31-synthesis": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:51Z",
+  "tree": "19462ded93dc066bcafbda362e7d0e34957f786a"
+ },
+ "20261026T0451-c33-review-crawlers-noise": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:51Z",
+  "tree": "ced6a61e7e85a8f3b05d9b17a327e47288ede90c"
+ },
+ "20261026T0452-c33-intent-review-kernel-ring": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:51Z",
+  "tree": "60526615812c35eccba84b3717e9da9d323174db"
+ },
+ "20261026T0455-c32-intent-nowall": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:51Z",
+  "tree": "e4c26b0b7280e62ca23fad6f85c20134c11b20a8"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
