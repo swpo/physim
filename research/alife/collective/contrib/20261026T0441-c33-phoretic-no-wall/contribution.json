@@ -1,0 +1,12 @@
+{"id": "20261026T0441-c33-phoretic-no-wall", "kind": "finding", "mode": "extend", "task": "explore",
+ "title": "Negative: phoretic colloids do not make a wall by these routes. A nucleus variant (B cores inside A bodies, on the food ledger) has no A rim (labkit A rim/core 0.88-0.89), and a self-repelling B drawn to A mixes through the bodies (B share 0.27 rim vs 0.17 core) instead of coating them; neither moves",
+ "summary": "Two attempts to give the phoretic composites (20261026T0254-c33-phoretic-janus-claim, 20261026T0356-c33-phoretic-divide-claim) a boundary layer, toward C:swim-divide. (1) Nucleus: the division world with mu [[1,-1.5],[1,1]] and screening kd 0.03 (pack/, seeds 0-1, t=400): bodies are A disks carrying a B nucleus or a B cup (nucleus_turnover.png), but labkit's radial profiles give A rim/core 0.876 and 0.893 (3/79 and 3/62 individuals membrane-like) and B is a core (rim/core 0.65-0.82), so there is no wall; they still move (max 8.5-9.5 body lengths) and split (12 and 7 persistent, generation 6 and 2, merge/split 1.4-1.7), but the matched no-turnover twin (pack_off/, same seeds, steady-state counts) also gives 3-4 persistent splits, generation 2-3. (2) Coat: the Janus world without turnover with B self-repelling (mu_B2 -1 or -0.5) and drawn to A (mu_B1 1-2), A indifferent or weakly fleeing B (mu_A2 0, -0.3, -0.5): B is drawn into the A bodies, where A's chemical peaks, and mixes through them; median B share 0.27-0.28 at the rim vs 0.16-0.39 in the core, no composite moves 3 diameters (coat_clusters.txt, coat_*.png). In both, a species drawn up the other's chemical goes to its maximum, the body centre, so a layer needs an interface-seeking response that these rules do not contain.",
+ "parents": ["20261026T0356-c33-phoretic-divide-claim", "20261026T0254-c33-phoretic-janus-claim"],
+ "class": "phoretic-colloids",
+ "world": "world.py",
+ "evidence": ["pack/seed0/radial.png", "pack/seed0/sheet.png", "nucleus_turnover.png", "coat_mu_0_-1.png", "coat_mu_-0.5_-1.png", "coat_clusters.txt", "pack_off/seed0/lineage.png"],
+ "outcome": "negative",
+ "finding": {"operator": "pairwise phoretic chemotaxis (mu[s][k] grad c_k) with self-repelling or nucleating second species", "capability": "B", "world": "world.py", "necessary": false, "law": false,
+   "control": "labkit radial profiles; no-turnover twin for the nucleus variant", "result": "A rim/core 0.88-0.89 (nucleus); B rim 0.27 vs core 0.16-0.39 (coat); 0 composites moving >= 3 diameters in the coat runs"},
+ "compute": {"cpu_minutes": 35}
+}
