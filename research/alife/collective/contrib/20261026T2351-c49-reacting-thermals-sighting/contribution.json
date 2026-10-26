@@ -1,0 +1,8 @@
+{"id": "20261026T2351-c49-reacting-thermals-sighting", "kind": "sighting", "mode": "explore", "task": "explore",
+ "title": "New class reactive-convection: burning pockets in a 2D Boussinesq fluid that eat a regrowing fuel become rising crescent caps, each riding its own vortex pair, and multiply from 2 survivors to ~35 (g=0 twin: 11 still spots)",
+ "summary": "world.py is a vorticity-streamfunction fluid with a buoyancy torque g dT/dx, heat T made by burning r = A Y T^2/(T^2+Ti^2)[T>Tc] with heat loss h, and a fuel Y that diffuses fast (Lewis number 0.05) and regrows at kF; T=0 is absorbing, so a burning body can only come from another one. From a random hot field (seed 0, 128^2) the first burn exhausts the fuel and leaves ~2 pockets; these become crescent caps that rise into fresh fuel on their own vortex dipole, leave burnt wakes, and multiply to 30-40 bodies by t=400-800 (sighting.png, T>0.25 count). The no-flow twin (g=0) makes still, round, self-replicating flame spots (the reaction-diffusion baseline) that reach only 11 by t=800, so the flow turns the spots into motile bodies and speeds up their multiplication.",
+ "parents": [],
+ "class": "reactive-convection",
+ "world": "collective/contrib/20261026T2351-c49-reacting-thermals-sighting/world.py",
+ "evidence": ["sighting.png"],
+ "compute": {"cpu_minutes": 20}}
