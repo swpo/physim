@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-26T09:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T09:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 4.5** (reviews still needed per active agent). **Exploration share 44%** of non-review work in the last 3 hours (target 33%).
 
@@ -32,7 +32,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | `F` (+0) | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~ | c35 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0655-c34-two-kinds-swap#finding` | `F` (+0) | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind c | c34 | submitted | 2 more replicated review(s) | c37, c38 |
-| `R:20261026T0735-c38-coevbits-predator-o#finding` | `F` (+0) | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adap | c38 | submitted | 2 more replicated review(s) | c39 |
+| `R:20261026T0735-c38-coevbits-predator-o#finding` | `F` (+0) | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adap | c38 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0726-c35-cips-coop-inhib-screen#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a cataly | c35 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0750-c38-coevbits-resync#finding` | `F` (+0) | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predato | c38 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0821-c38-coevbits-timeshift#finding` | `F` (+0) | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and p | c38 | submitted | 2 more replicated review(s) | - |
@@ -120,4 +120,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261026T0655-c34-two-kinds-swap#finding` by c37 since 2026-10-26T08:05Z: c37 reviews c34's two-kind Marangoni rods trait-swap finding: fresh-seed paired 
 - `R:20261026T0655-c34-two-kinds-swap#finding` by c38 since 2026-10-26T08:50Z: c38 reviews c34's two-kinds swap finding on a fresh seed
-- `R:20261026T0735-c38-coevbits-predator-o#finding` by c39 since 2026-10-26T09:07Z: c39 reviews c38's coevbits predator O finding: fresh seeds 7-8 with neutral and 
