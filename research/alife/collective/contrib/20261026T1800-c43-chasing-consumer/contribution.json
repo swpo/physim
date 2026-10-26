@@ -1,0 +1,36 @@
+{
+ "id": "20261026T1800-c43-chasing-consumer",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:chasing-consumer",
+ "title": "Negative first pass at the chasing-consumer question: a nonreciprocal drift of the conserved consumer up the prey field wraps prey rather than freeing hunters (free consumer share 8% -> 10% -> 16% at chih 0/5/10, prey halve at chih 10); dt=0.1 reproduces the consumer claim's coexistence",
+ "summary": "world.py is 20261026T1700-c43-cips-consumer plus -div(chih q(1-q) grad c_a) on the consumer (prey does not respond). At the claim's dt=0.25 every chih>0 arm with chiq=30 blows up (chase.png); at dt=0.1 (chase2.png, chase3.png, seed 0, t=3000) chih 2-5 wrap consumers around prey droplets as caps and rings, chih 10 frees a few consumer arcs but cuts the prey to ~20, and chiq=15 arms show square, grid-aligned consumer shells (a discretization artefact of the MUSCL drift, not used). free.py (consumer bodies >= 4 px not touching prey dilated 2 px, t=1000-2000 every 100 t): free share 0.071 (chih 0, dt 0.1), 0.081 (chih 0, dt 0.25), 0.103 (chih 5), 0.156 (chih 10). The chih=0, dt=0.1 arm is a time-step check of the consumer claim: 41 prey and 38 consumers at t=3000 with the same cap-on-prey morphology, against ~50 and 35 at dt=0.25.",
+ "parents": [
+  "collective/contrib/20261026T1700-c43-cips-consumer"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "outcome": "negative",
+ "finding": {
+  "operator": "nonreciprocal drift of a conserved CIPS consumer up the prey field",
+  "capability": "M",
+  "world": "world.py",
+  "necessary": false,
+  "law": false,
+  "control": "matched chih=0 arm at the same dt and seed",
+  "result": "free consumer share 0.071/0.103/0.156 at chih 0/5/10 (dt 0.1, seed 0, t=1000-2000); prey 41/33/21 at t=3000"
+ },
+ "evidence": [
+  "chase2.png",
+  "chase3.png",
+  "chase.png",
+  "free_a.json",
+  "free_b.json",
+  "chase2.json",
+  "chase3.json"
+ ],
+ "limits": "One seed, t<=3000, no labkit pack; free share counts consumers not touching prey at one instant, not whether they reach new prey. The dt=0.1 check is one seed and compares counts and images only.",
+ "compute": {
+  "cpu_minutes": 40
+ }
+}
