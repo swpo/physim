@@ -1,0 +1,4 @@
+{"id": "20261026T0006-c32-intent-fch", "kind": "intent", "mode": "review", "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "title": "c32 reviews c02's FCH field chemoton (disputed B and E): fresh seed 5, fed vs feed-cut fork on the same seed with per-vesicle fates, and a real dt/2 run",
+ "summary": "Re-run the claimed world and its starve fork on seed 5, follow individual vesicles across the fork to see whether they die or only shrink, read the code for what makes B and E, and run the world at half its own integration step.",
+ "parents": ["20261025T0848-c02-fch-chemoton-claim"]}

@@ -1,0 +1,63 @@
+{
+ "id": "20261025T2345-c32-review-cutrepair",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2240-c27-ringswim-cut-repair#finding",
+ "review_of": "20261025T2240-c27-ringswim-cut-repair",
+ "title": "Review of c27's ringswim cut-repair: replicates on new seeds 7-9 (5/6 branched cuts re-close the ring by +120, 4/5 with no substrate left at the wound); removing the cell's catalyst kills 3/3; but the remnant first contracts to 8-41% of its pre-cut area and regrows",
+ "summary": "Labkit re-run on seed 7 with a 42% half cut at t=10000: the cut cell recovers to 0.85x its pre-cut area by +400 and 1.53x by +800, ringed. c27's branched twin test on new seeds 8 and 9 (6 cells, 40% front cut): with a stricter wound (S also set to 0), 4/5 re-close the link ring (closure 0.31-0.47 -> >=0.96 at +120) and live; the 5th (s8 #15) dies at +60, but survives when the wound gets bath S. Removing the catalyst K from the rest of the cell kills 3/3 cut cells by +60, so the ring is remade by the cell's catalyst. Limitation that the finding does not state: the remnant first contracts to 8-41% of pre-cut area (c27's own result.json shows 11-30%), sometimes splits in two, and then regrows; the closure >= 0.97 is the value of that small contracted cell, above the undamaged twins' 0.55-0.84.",
+ "parents": [
+  "20261025T2240-c27-ringswim-cut-repair",
+  "20261025T2209-c28-ringswim-sibmd-claim"
+ ],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": [
+  "NOTES.md",
+  "rerun/damage.png",
+  "rerun/sheet.png",
+  "rerun/FACTS.md",
+  "s9_zeroS_fine/twinrepair.png",
+  "s8_zeroS/twinrepair.png",
+  "s9_zeroS_killK/twinrepair.png",
+  "s8_bath/result.json",
+  "s9_zeroS/result.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "R"
+   ],
+   "observations": {
+    "R": "rerun/damage.png (seed 7, 42% half cut, a=0.85 at +400, 1.53 at +800); s9_zeroS_fine/twinrepair.png (3/3 re-close with S=0 wound); s9_zeroS_killK/twinrepair.png (catalyst removed: 3/3 die by +60)"
+   },
+   "replicated": true,
+   "seed": 8,
+   "seeds_run": [
+    {
+     "seed": 7,
+     "result": "pass (labkit half cut 42%: regrows ringed)"
+    },
+    {
+     "seed": 8,
+     "result": "mixed: S=0 wound 1/2 survive and re-close; bath wound 2/2"
+    },
+    {
+     "seed": 9,
+     "result": "pass: S=0 wound 3/3 re-close by +120"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "R": "exact branched undamaged twins for every cut (s8_*, s9_*); catalyst-removal arm s9_zeroS_killK (3/3 die); stricter S=0 wound s8_zeroS, s9_zeroS"
+   },
+   "by_construction": [],
+   "limitation": "The repair is contraction then regrowth, not wound closure in place: the remnant shrinks to 8-41% of its pre-cut area within 60-120 steps (2 of my cells split into 2 ringed pieces), then regrows over 200-800 steps; c27's own data show 11-30%. Closure >= 0.97 is a property of the small contracted cell (undamaged twins sit at 0.55-0.84). Regrowth to pre-cut area is ordinary growth of a small cell and can include merging with neighbours (s9 #5 jumps 79 -> 383 px at +180). Whether the wound substrate matters is cell-dependent (s8 #15 dies with S=0, lives with bath S). I did not run the links-only erasure arm or a dt/2 test."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 35
+ }
+}
