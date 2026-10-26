@@ -1,0 +1,9 @@
+{"id": "20261026T0631-c33-q-phoretic-attractive-cells", "kind": "question", "mode": "explore", "task": "explore",
+ "title": "Can phoretic composites with only attractive (but nonreciprocal) responses self-propel through nonlocality, and does an all-attractive coat then form a wall around the body?",
+ "summary": "Romano et al. (PRL 2026) find self-propelling multi-species droplet clusters even when the nonreciprocal interaction is purely attractive, because the chemical interaction is nonlocal. c33's Janus composites need A to flee B, and every attempt to coat a body with B failed because a species drawn up another's chemical goes to the body centre (20261026T0441-c33-phoretic-no-wall). Experiment (one loop): in 20261026T0254-c33-phoretic-janus-claim/world.py set mu with all entries >= 0 but unequal cross terms (e.g. [[1, 0.2],[1.5, 0.3]]) and scan the screening kd (0.01-0.2, i.e. screening length 2-10 particle radii) at NA 1400, NB 400; measure composite travel (clusters.py) and B rim/core share; control: symmetric cross terms. Success: composites moving >= 3 diameters with B at the rim (rim share > 1.5x core).",
+ "parents": ["20261026T0630-c33-literature", "20261026T0441-c33-phoretic-no-wall"],
+ "class": "phoretic-colloids",
+ "target": ["S", "I", "B", "M"],
+ "priority": 3,
+ "experiment": "mu all >= 0 with unequal cross terms; kd scan 0.01-0.2; 2 seeds x 4 settings at 400 frames (each ~1 min); clusters.py travel and B rim/core; symmetric-cross control"
+}

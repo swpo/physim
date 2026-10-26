@@ -1,0 +1,45 @@
+== rerun
+- motion: 59 long-lived tracks moved >= 1 body length; max speed 0.278/time; max body lengths 9.9
+- replication (lineage window K = 20 frames = time 100, default): splits 45, persistent splits 30 (0 more failed only because the siblings re-merged within K), max generation 4, merges 16, merge/split ratio 0.356, nucleations 8
+collective/contrib/wip-c33-nm/rerun/frames.npz: 115 tracks, 25 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 6; by rod length >= 3: 0
+   {"id": 14, "start": 25, "end": 56, "birth": "split", "children": [34, 35], "net": 43.2, "bl_labkit": 5.79, "bl_rod": 2.94}
+   {"id": 56, "start": 96, "end": 121, "birth": "split", "children": [76, 77], "net": 34.7, "bl_labkit": 3.91, "bl_rod": 1.92}
+Traceback (most recent call last):
+  File "/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/swimdivide.py", line 45, in <module>
+    for r in rows[:6]: print("  ", json.dumps(r))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+collective/contrib/wip-c33-nm/rerun/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.40, fraction >= 2: 1.00
+collective/contrib/wip-c33-nm/rerun/frames.npz ch2: body-frames 565, both >= 1.5: 1.00, median rim/core 2.53, median rim/out 11.17
+collective/contrib/wip-c33-nm/rerun/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.29, fraction >= 2: 1.00
+collective/contrib/wip-c33-nm/rerun/frames.npz ch3: body-frames 565, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+collective/contrib/wip-c33-nm/rerun/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=53, median in/out 4.65, fraction >= 2: 1.00
+== kappa0
+- motion: 59 long-lived tracks moved >= 1 body length; max speed 0.278/time; max body lengths 9.9
+- replication (lineage window K = 20 frames = time 100, default): splits 45, persistent splits 30 (0 more failed only because the siblings re-merged within K), max generation 4, merges 16, merge/split ratio 0.356, nucleations 8
+collective/contrib/wip-c33-nm/kappa0/frames.npz: 115 tracks, 25 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 6; by rod length >= 3: 0
+   {"id": 14, "start": 25, "end": 56, "birth": "split", "children": [34, 35], "net": 43.2, "bl_labkit": 5.79, "bl_rod": 2.94}
+   {"id": 56, "start": 96, "end": 121, "birth": "split", "children": [76, 77], "net": 34.7, "bl_labkit": 3.91, "bl_rod": 1.92}
+collective/contrib/wip-c33-nm/kappa0/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.40, fraction >= 2: 1.00
+collective/contrib/wip-c33-nm/kappa0/frames.npz ch2: body-frames 565, both >= 1.5: 1.00, median rim/core 2.53, median rim/out 11.17
+collective/contrib/wip-c33-nm/kappa0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.31, fraction >= 2: 0.06
+collective/contrib/wip-c33-nm/kappa0/frames.npz ch3: body-frames 565, both >= 1.5: 0.00, median rim/core 0.91, median rim/out 1.20
+collective/contrib/wip-c33-nm/kappa0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=53, median in/out 1.33, fraction >= 2: 0.00
+Traceback (most recent call last):
+  File "/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/inherit.py", line 39, in <module>
+    print(f"{sys.argv[1]}: daughters (born by split, >= 12 frames) {name}: n={len(v)}, median in/out {np.median(v):.2f}, fraction >= 2: {(v >= 2).mean():.2f}")
+BrokenPipeError: [Errno 32] Broken pipe
+== mar0
+- motion: 52 long-lived tracks moved >= 1 body length; max speed 0.0993/time; max body lengths 4.7
+- replication (lineage window K = 20 frames = time 100, default): splits 40, persistent splits 32 (0 more failed only because the siblings re-merged within K), max generation 5, merges 8, merge/split ratio 0.2, nucleations 8
+collective/contrib/wip-c33-nm/mar0/frames.npz: 96 tracks, 31 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 46, "start": 85, "end": 178, "birth": "split", "children": [88, 89], "net": 13.7, "bl_labkit": 2.29, "bl_rod": 1.2}
+   {"id": 12, "start": 30, "end": 121, "birth": "split", "children": [59, 60], "net": 15.1, "bl_labkit": 2.1, "bl_rod": 1.04}
+collective/contrib/wip-c33-nm/mar0/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.81, fraction >= 2: 0.93
+collective/contrib/wip-c33-nm/mar0/frames.npz ch2: body-frames 481, both >= 1.5: 1.00, median rim/core 2.61, median rim/out 7.81
+collective/contrib/wip-c33-nm/mar0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 11.82, fraction >= 2: 1.00
+collective/contrib/wip-c33-nm/mar0/frames.npz ch3: body-frames 481, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+collective/contrib/wip-c33-nm/mar0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=38, median in/out 5.64, fraction >= 2: 1.00
