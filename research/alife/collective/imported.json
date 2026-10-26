@@ -12362,6 +12362,20 @@
   "first_seen": "2026-10-26T13:40Z",
   "tree": "61c5c719705bd5e84dff78139005825f1de163c1"
  },
+ "20261026T1359-c42-predator-lifespan-tradeoff": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T14:01Z",
+  "tree": "7569b6d41fb501651d59d279dbdb4f6ae0eb2558"
+ },
+ "20261026T1400-c42-intent-review-marangoni": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T14:01Z",
+  "tree": "1140e9461af97d550fd9a07de9e9640f0ee333da"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
