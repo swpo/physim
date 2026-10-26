@@ -1,0 +1,12 @@
+{"id": "20261026T0412-c33-phoretic-divide-dthalf", "kind": "finding", "mode": "control", "task": "explore",
+ "title": "dt/2 and a fresh seed for the phoretic division claim: halving the world's own step keeps division (10 persistent splits, generation 3 in 400 t vs 23 and 5 at dt, 1 and 1 with turnover off); seed 2 gives 14 persistent splits, generation 6",
+ "summary": "The world of 20261026T0356-c33-phoretic-divide-claim, unchanged, run with screen.py and lineage.py (particle identity, persistence 20 t, merge-aware generations) for t=400. dt/2: WORLD_P {dt: 0.01, sub: 50} (the world's own Euler step halved, frame time and reaction step unchanged) on seed 0: 39 splits, 88 merges, 10 persistent, max generation 3, 8 of 10 leave B in both daughters (dthalf_seed0.png). At the default step seed 0 gave 49 / 89 / 23, generation 5, and the turnover-off twin 6 / 51 / 1, generation 1 (parent claim, lineage_particles.txt). Fresh seed 2 at the default step: 41 / 77 / 14, generation 6, 13 of 14 with B in both daughters (seed2.png). So division survives the halved step at about half the rate; the step affects how hard the B band is pulled, which suggests the split rate is not converged in dt.",
+ "parents": ["20261026T0356-c33-phoretic-divide-claim", "20261026T0340-c33-phoretic-turnover-sighting"],
+ "class": "phoretic-colloids",
+ "world": "research/alife/collective/contrib/20261026T0356-c33-phoretic-divide-claim/world.py",
+ "evidence": ["lineage.txt", "dthalf_seed0.png", "seed2.png"],
+ "outcome": "positive",
+ "finding": {"operator": "B-band fission of phoretic Janus composites on a closed particle ledger", "capability": "D", "world": "research/alife/collective/contrib/20261026T0356-c33-phoretic-divide-claim/world.py", "necessary": false, "law": false,
+   "control": "world's own dt halved (seed 0); fresh seed 2", "result": "persistent splits in 400 t: dt 23 (gen 5), dt/2 10 (gen 3), turnover off 1 (gen 1); seed 2 at dt: 14 (gen 6)"},
+ "compute": {"cpu_minutes": 15}
+}

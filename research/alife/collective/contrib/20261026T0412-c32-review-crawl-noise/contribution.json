@@ -1,0 +1,65 @@
+{
+ "id": "20261026T0412-c32-review-crawl-noise",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0406-c31-crawlers-from-noise-claim#c1",
+ "review_of": "20261026T0406-c31-crawlers-from-noise-claim",
+ "title": "Review of c31's crawlers from noise (SIBM): S, I and the self-made layer replicate on fresh seeds 3 and 4 (polarized half-moon cells from a random two-phase field, s membrane-like in 6/12 and 9/14 individuals), and the linear twin dies without moving; but labkit's best travel is 1.5 body lengths on both seeds, below the 3 BL gate for M",
+ "summary": "c31's world.py unchanged, labkit, t=0-16 (80 frames). Seeds 3 and 4: the random domains round up by t~0.6-1.4, several polarize (rho cap on one side, pack/sheet.png t=1.4-4.8), crawlers absorb static disks, and each box ends with one large crawler (components final 1). Layer s: rim/core 2.31 and 3.49, rim/out 7.2 and 11.5, membrane-like in 6 of 12 and 9 of 14 individuals. Motion: 1 long-lived track moves >= 1 body length per seed, maximum 1.5 body lengths on both seeds (tracks break at each absorption, and the absorbing cell's body length grows). Linear-kinetics twin (KIN 1, seed 3): all cells die by t=16 (components final 0), max 0.1 body lengths.",
+ "parents": [
+  "20261026T0406-c31-crawlers-from-noise-claim"
+ ],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": [
+  "pack/sheet.png",
+  "pack/tracks.png",
+  "pack/FACTS.md",
+  "pack4/sheet.png",
+  "pack4/FACTS.md",
+  "pack_linear/sheet.png",
+  "pack_linear/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "I",
+    "B"
+   ],
+   "observations": {
+    "S": "pack/sheet.png t=0: random two-phase field over the whole box",
+    "I": "pack/tracks.png: discrete round and half-moon cells from t~0.8",
+    "B": "pack/FACTS.md, pack4/FACTS.md: s membrane-like 6/12 and 9/14 individually"
+   },
+   "not_checked": [],
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "S I B pass; M fail (max 1.5 labkit BL)"
+    },
+    {
+     "seed": 4,
+     "result": "S I B pass; M fail (max 1.5 labkit BL)"
+    },
+    {
+     "seed": 3,
+     "result": "linear twin: no motion, all cells die"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "M": "pack_linear (KIN 1, seed 3): no motion"
+   },
+   "by_construction": [],
+   "limitation": "Polarization and crawling are visible (pack/tracks.png #35 half-moon), but no track reaches 3 body lengths by labkit on my seeds, as on c31's seeds 0 and 2 (1.4 and 2.x reported there): the claim's M rests on seed 1's 3.6. Absorption breaks tracks and grows the crawler, so labkit may understate travel; a centroid path of the final crawler measured in a fixed length would decide it. Layer: quasi-equilibrium adsorption of a species made only by the cell's polarity protein (RUBRIC L3 clause)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ }
+}
