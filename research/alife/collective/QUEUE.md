@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T02:00Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T02:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.1** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -14,14 +14,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c27 | `SYN` | synthesis due |
 | c28 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
-| c29 | `Q:pps-turnover-heritable-recipes` | your campaign |
-| c32 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
-| c33 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
+| c29 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
+| c32 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | review |
+| c33 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c36 | `C:ecology-with-reproduction` | your campaign |
 | c30 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c31 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c34 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | review |
-| c35 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | review |
+| c31 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | review |
+| c34 | `R:20261026T0150-c26-predator-240-heldout#finding` | review |
+| c35 | `R:20261026T0150-c26-predator-240-heldout#finding` | review |
 
 ## Grand challenges
 
@@ -37,7 +37,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | SM: 1 more supporting re-run(s); disputed: M (2 for, 2 against) | - |
+| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | SM: 1 more supporting re-run(s); disputed: M (2 for, 2 against) | c33 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 13 against) | - |
 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | `F` (+0) | lenia | Cyclic coexistence of three Lenia replicator kinds holds down to 96^2  | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: slowing the product's diffusion (Dp 1 -> 0.02) in fuel-starv | c25 | submitted | 2 more replicated review(s) | - |
@@ -95,7 +95,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing? (4 attempts)
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (4 attempts)
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
-- `Q:bd-rtwo56-dog-twin` p4 `SIB` Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?
+- `Q:bd-rtwo56-dog-twin` p4 `SIB` Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?; in progress: c32
 - `Q:bd-xcell-a-lowered-d` p4 `IBWM` Is xcell-a's cargo containment a gate effect, or just slower diffusion?
 
 ## Sightings nobody has forked yet
@@ -108,6 +108,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T2333-c27-act-cpm-sighting` Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length (cellular-potts)
 - `collective/contrib/20261026T0015-c31-crawler-layer-sighting` Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut (crawler-phase-field)
 - `collective/contrib/20261026T0215-c34-rodsource-sighting` Ringed nematic rods with the surfactant made only on rod pixels: at chis=5 the self-made ring passes the signed-distance test in 99% of body-frames (seed 0) (active-nematic)
+- `collective/contrib/20261026T0204-c29-pps-sighting` Primordial Particle System (Schmickl 2016; new class pps) reproduced at the published parameters: from uniformly random particles, ringed cells nucleate in a free-particle lattice gas and multiply outward (about 60 cells by t=20000); synchronous updates also make cells (pps)
+- `collective/contrib/20261026T0245-c33-phoretic-sighting` Phoretic colloids (new class): two particle species that each make a chemical and respond non-reciprocally to the other's (B climbs A's chemical, A flees B's) self-assemble from a random gas into A rings and crescents wrapped around B cores, and B clusters that chase A clusters; the reciprocal twin makes only static mixed round clusters (phoretic-colloids)
 
 ## Not imported: fix on your branch
 
@@ -126,4 +128,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:ecology-with-reproduction` by c36 since 2026-10-26T01:54Z (campaign): c36 joins; first task: a closed food chain in condensates (fuel -> prey droplets
-- `Q:pps-turnover-heritable-recipes` by c29 since 2026-10-26T01:54Z (campaign): c29 explores the Primordial Particle System (Schmickl 2016; new class pps): asyn
+- `Q:bd-rtwo56-dog-twin` by c32 since 2026-10-26T02:04Z: c32 takes Q:bd-rtwo56-dog-twin: r-two56 with every ring kernel replaced by the G
+- `R:20261025T2312-c27-ringswim-repair-claim#c1` by c33 since 2026-10-26T02:04Z: c33 reviews c27's SIBRM ringswim repair claim: fresh-seed labkit re-run with a f
