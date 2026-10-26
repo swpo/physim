@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T04:48Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T04:58Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.0** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 0.9** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -15,13 +13,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c29 | `LIT` | literature check due |
-| c32 | `R:20261026T0422-c31-crawler-noise-no-division#finding` | review |
-| c33 | `R:20261026T0227-c29-kernel-ring-screen#c1` | review |
+| c32 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
+| c33 | `R:20261026T0422-c31-crawler-noise-no-division#finding` | review |
 | c36 | `R:20261026T0441-c33-phoretic-no-wall#finding` | review |
 | c30 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
-| c31 | `SYN` | synthesis due |
-| c34 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | review |
-| c35 | `R:20261026T0441-c33-phoretic-no-wall#finding` | review |
+| c31 | `F:crawler-phase-field` | your exploration focus |
+| c34 | `F:active-nematic` | your exploration focus |
+| c35 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
 ## Grand challenges
 
@@ -37,20 +35,19 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261026T0227-c29-kernel-ring-screen#c1` | `SIBMD` (+4) | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells u | c29 | provisional | IBMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c36 |
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 1 against) | c33 |
-| `R:20261026T0323-c31-cargo-bd-control#finding` | `F` (+0) | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a unifor | c31 | provisional | 1 more replicated review(s) | c35 |
-| `R:20261026T0422-c31-crawler-noise-no-division#finding` | `F` (+0) | crawler-phase-field | Negative (toward C:contained-swimmers): the layered wave-pinning crawl | c31 | submitted | 2 more replicated review(s) | c32 |
-| `R:20261026T0441-c33-phoretic-no-wall#finding` | `F` (+0) | phoretic-colloids | Negative: phoretic colloids do not make a wall by these routes. A nucl | c33 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0227-c29-kernel-ring-screen#c1` | `SIBMD` (+4) | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells u | c29 | provisional | IBMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c33, c36 |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 2 against) | c30 |
+| `R:20261026T0422-c31-crawler-noise-no-division#finding` | `F` (+0) | crawler-phase-field | Negative (toward C:contained-swimmers): the layered wave-pinning crawl | c31 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0441-c33-phoretic-no-wall#finding` | `F` (+0) | phoretic-colloids | Negative: phoretic colloids do not make a wall by these routes. A nucl | c33 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0449-c31-noise-crawler-path#finding` | `F` (+0) | crawler-phase-field | Path of the crawlers from noise (answers c32's M question on 20261026T | c31 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
-| `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. S | - |
+| `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. S | c32 |
 | `R:lab1-active-droplets-ad4-protocell#c1` | `IB` (+0) | active-emulsion | active-droplets/ad4-protocell (L3, lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5. | - |
 | `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3]  | - |
 | `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | established | S: 1 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
-| `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
-| `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
+| `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); S: 2 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 | `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | provisional | I: 1 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | - |
 | `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | provisional | I: 1 more supporting re-run(s); lab 1 asked for: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daug | - |
@@ -128,7 +125,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0323-c31-cargo-bd-control#finding` by c35 since 2026-10-26T04:41Z: c35 reviews c31's cargo beyond-diffusion control
-- `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c33 since 2026-10-26T04:41Z: c33 reviews c31's crawlers-from-noise claim: fresh-seed labkit re-run
 - `R:20261026T0227-c29-kernel-ring-screen#c1` by c36 since 2026-10-26T04:45Z: c36 reviews c29 kernel-ring screen claim on a fresh seed
-- `R:20261026T0422-c31-crawler-noise-no-division#finding` by c32 since 2026-10-26T04:45Z: c32 reviews c31's crawler no-division negative: labkit packs at rho_s 0.25 and 0
+- `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c30 since 2026-10-26T04:51Z: c30 reviews c31's crawlers-from-noise claim (SIBM): fresh-seed labkit re-runs
+- `R:20261026T0227-c29-kernel-ring-screen#c1` by c33 since 2026-10-26T04:51Z: c33 reviews c29's kernel-ring screen claim: fresh-seed re-run
+- `R:lab1-active-droplets-ad3-membrane#c1` by c32 since 2026-10-26T04:58Z: c32 reviews lab 1's active-droplets/ad3-membrane (IBD): labkit packs on fresh se

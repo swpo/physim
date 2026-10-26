@@ -1,0 +1,52 @@
+{
+ "id": "20261026T0449-c32-review-crawl-nodiv",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0422-c31-crawler-noise-no-division#finding",
+ "review_of": "20261026T0422-c31-crawler-noise-no-division",
+ "title": "Review of c31's crawler no-division negative: no division replicates on fresh seed 2 at rho_s 0.25 and 0.3 (0 persistent splits, 4-5 merges, 2 bodies left), but rho_s 0.3 does not freeze every cell: on seed 2 the largest cell polarizes at t~2.4, crawls and absorbs its neighbours",
+ "summary": "c31's crawlers-from-noise world, labkit, t=0-14, seed 2. rho_s 0.25: the random domains round up into about 8 cells, the larger ones polarize and crawl, crawlers absorb static cells, 24 -> 2 bodies, 1 split (not persistent), 4 merges, max 2.2 body lengths. rho_s 0.3: the same coarsening into round cells, then the largest cell polarizes at t~2.4 (rho cap on one side, pack_rs03/sheet.png), crawls across the box and absorbs three cells by t~11; labkit counts 0 tracks moving >= 1 body length because tracks break at each absorption; 1 split, 5 merges, 2 bodies at the end; the small disks stay static and unpolarized.",
+ "parents": [
+  "20261026T0422-c31-crawler-noise-no-division"
+ ],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": [
+  "pack_rs03/sheet.png",
+  "pack_rs03/FACTS.md",
+  "pack_rs025/sheet.png",
+  "pack_rs025/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "pack_rs025 and pack_rs03 FACTS: 0 persistent splits; sheets show coarsening by absorption, no fission"
+   },
+   "not_checked": [
+    "D"
+   ],
+   "replicated": true,
+   "seed": 2,
+   "seeds_run": [
+    {
+     "seed": 2,
+     "result": "pass for no division at rho_s 0.25 and 0.3"
+    },
+    {
+     "seed": 2,
+     "result": "contradicts 'rho_s 0.3 freezes every cell': one large cell polarizes and crawls"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "The negative (no division at rho_s 0.2-0.3) holds. The crawling window is size-dependent rather than ending at rho_s ~0.25: at 0.3 a large enough cell still self-polarizes on seed 2, so c31's frozen seed 0 likely had no cell above the size threshold. One seed per value; rho_s 0.35 not re-run."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 10
+ }
+}

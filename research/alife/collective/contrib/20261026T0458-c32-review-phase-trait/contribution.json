@@ -1,0 +1,54 @@
+{
+ "id": "20261026T0458-c32-review-phase-trait",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-autopoiesis-phase-trait#c1",
+ "review_of": "lab1-autopoiesis-phase-trait",
+ "title": "Review of lab 1's autopoiesis/phase_trait (ID): individuals and division replicate on fresh seeds 3 and 4 (15 persistent splits each, generation 3 and 5, 0 merges, 22-30 bodies at t=10000 from 4 planted spots); late bodies stretch into worms",
+ "summary": "Labkit packs of threads/autopoiesis/worlds/phase_trait/world.py, unchanged, 128^2, t=0-10000. From four planted catalyst spots the cells grow and divide: seed 3, 27 splits, 15 persistent, generation 3, 0 merges, 30 bodies at the end; seed 4, 20 splits, 15 persistent, generation 5, 0 merges, 22 bodies; the wall channel is membrane-like. pack/seed4/sheet.png: round cells pinch in two (t=850-4800), and from t~5000 many bodies elongate into worms and U-shapes that fill the box (occupancy 0.41).",
+ "parents": [
+  "threads/autopoiesis/worlds/phase_trait/world.py"
+ ],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed4/sheet.png",
+  "pack/seed3/sheet.png",
+  "pack/seed4/lineage.png",
+  "pack/seed3/FACTS.md",
+  "pack/seed4/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "D"
+   ],
+   "observations": {
+    "I": "pack/seed4/sheet.png: discrete walled bodies",
+    "D": "pack/seed4/lineage.png: 15 persistent splits, generation 5, 0 merges; seed 3: 15, generation 3"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: 15 persistent splits, gen 3"
+    },
+    {
+     "seed": 4,
+     "result": "pass: 15 persistent splits, gen 5"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "Planted start (no S). I checked only I and D; the trait (heredity/selection, L7) was not examined. From t~5000 the bodies tend to worms filling the box, so individuality weakens late in the run."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 5
+ }
+}
