@@ -1,0 +1,12 @@
+[cips-consumer] seed 8: 120 frames x 400 steps, grid (128, 128)
+  frame 12/120  17.0s
+  frame 24/120  33.5s
+  frame 36/120  51.0s
+  frame 48/120  66.6s
+  frame 60/120  82.5s
+  frame 72/120  97.3s
+  frame 84/120  115.4s
+  frame 96/120  132.1s
+  frame 108/120  149.9s
+  frame 120/120  166.0s
+  -> twin_nocons/seed8/FACTS.md  (166s sim)
