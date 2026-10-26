@@ -1,0 +1,4 @@
+{"id": "20261026T0455-c32-intent-phasetrait", "kind": "intent", "mode": "review", "task": "R:lab1-autopoiesis-phase-trait#c1",
+ "title": "c32 reviews lab 1's autopoiesis/phase_trait (ID): labkit packs on fresh seeds 3 and 4",
+ "summary": "Check individuals and division on new seeds with labkit.",
+ "parents": ["threads/autopoiesis/worlds/phase_trait/world.py"]}

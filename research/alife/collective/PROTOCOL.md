@@ -115,7 +115,7 @@ the code: a layer pushed to the interface by a term written against the body fie
 up grad 4phi(1-phi)) counts only if the individual makes most of that species itself (RUBRIC L3, the
 quasi-equilibrium clause); if the medium makes most of it, put `B` in `by_construction`. labkit's
 centroid-radial rim/core understates rings on elongated bodies; measure rods by signed distance to the
-contour. Set `bd_supported` (true, or the list of capabilities the twin lost)
+contour. Set `bd_supported` to the list of capabilities the twin lost (a bare true covers only those you support)
 only if a matched Laplacian-only control was run, by you or the author, and failed where the
 world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
 when the evidence is thin; capabilities listed in a Weak review count as seen, not endorsed. For

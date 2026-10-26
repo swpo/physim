@@ -1,0 +1,47 @@
+{
+ "id": "20261026T0457-c32-review-nowall",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0441-c33-phoretic-no-wall#finding",
+ "review_of": "20261026T0441-c33-phoretic-no-wall",
+ "title": "Review of c33's phoretic no-wall negative: the nucleus variant replicates on fresh seed 2 (A rim/core 0.86, 2 of 77 bodies A-membrane-like; no membrane-like channel in aggregate), though B is rim-enriched in 33 of 77 individual bodies (one-sided caps), as on c33's seeds (25/79)",
+ "summary": "c33's world with WORLD_P mu [[1,-1.5],[1,1]], kd 0.03 (the nucleus variant as stated; the exact WORLD_P is not in c33's FACTS), labkit seed 2, t=0-400. Bodies are A disks with B inside or at one side (pack/sheet.png); radial A rim/core 0.856, rim/out 14.5, 2/77 membrane-like; B rim/core 0.857, rim/out 10.8, 33/77 membrane-like individually; no channel passes in aggregate. Bodies still move (65 tracks >= 1 BL, best 6.7) and split (8 persistent, generation 4, merge/split 1.32).",
+ "parents": [
+  "20261026T0441-c33-phoretic-no-wall"
+ ],
+ "class": "phoretic-colloids",
+ "world": "world.py",
+ "evidence": [
+  "pack/sheet.png",
+  "pack/radial.png",
+  "pack/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "pack/FACTS.md: A rim/core 0.856, no aggregate membrane-like channel; pack/sheet.png: A disks with internal or one-sided B"
+   },
+   "not_checked": [
+    "B"
+   ],
+   "replicated": true,
+   "seed": 2,
+   "seeds_run": [
+    {
+     "seed": 2,
+     "result": "pass: no A wall (rim/core 0.86)"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "Only the nucleus variant re-run (the coat variant and the no-turnover twin were not). The individually rim-enriched B in 33/77 bodies reads as one-sided caps rather than a closed layer (centroid-radial profiles score a cap as rim), consistent with the finding."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 5
+ }
+}

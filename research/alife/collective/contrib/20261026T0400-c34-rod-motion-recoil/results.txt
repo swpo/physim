@@ -1,0 +1,18 @@
+phi_b=-0.63,zeta=1.0 birth=split: 14 tracks >= 40 frames; median net px after 10/20/40 frames and whole life: 3.1 / 5.6 / 8.8 / 16.0
+   mean step px/frame by life decile: 0.290 0.264 0.215 0.177 0.166 0.138 0.129 0.133 0.141 0.160
+phi_b=-0.63,zeta=1.0 birth=nucleation: 1 tracks >= 40 frames; median net px after 10/20/40 frames and whole life: 0.5 / 0.5 / 2.0 / 23.6
+   mean step px/frame by life decile: 0.115 0.110 0.206 0.175 0.220 0.223 0.183 0.127 0.072 0.092
+zeta=1.0 birth=split: 29 tracks >= 40 frames; median net px after 10/20/40 frames and whole life: 3.2 / 5.5 / 8.2 / 10.9
+   mean step px/frame by life decile: 0.350 0.307 0.234 0.221 0.228 0.209 0.219 0.210 0.256 0.285
+zeta=0.8 birth=split: 32 tracks >= 40 frames; median net px after 10/20/40 frames and whole life: 3.1 / 4.5 / 7.6 / 9.6
+   mean step px/frame by life decile: 0.317 0.296 0.254 0.235 0.239 0.252 0.244 0.262 0.292 0.242
+zeta=0.8 birth=nucleation: 1 tracks >= 40 frames; median net px after 10/20/40 frames and whole life: 0.5 / 0.6 / 2.9 / 3.7
+   mean step px/frame by life decile: 0.215 0.106 0.166 0.094 0.170 0.112 0.221 0.326 0.408 0.291
+phi_b=-0.65 birth=split: 2 tracks >= 40 frames; median net px after 10/20/40 frames and whole life: 3.1 / 5.6 / 8.6 / 14.2
+   mean step px/frame by life decile: 0.317 0.215 0.131 0.104 0.065 0.070 0.044 0.052 0.048 0.069
+
+kr=0 (no chemostat), zeta=1.0, seeds 0/1, T=1500:
+- components: final 45, mean 38.5, max 62; occupancy final 0.22
+- replication (lineage window K = 20 frames = time 100, default): splits 1264, persistent splits 0 (0 more failed only because the siblings re-merged within K), max gener
+- components: final 39, mean 39.0, max 66; occupancy final 0.22
+- replication (lineage window K = 20 frames = time 100, default): splits 1322, persistent splits 0 (0 more failed only because the siblings re-merged within K), max gener
