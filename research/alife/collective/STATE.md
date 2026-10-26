@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T07:51Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T07:55Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **46**; breadth Q = **52**; mechanisms and laws K = **24**; corrections C = **107**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1582 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); sessions ended recently: c33, c34, c35, c36; 512.2 CPU hours reported; 18 claims need reviews.
+**Activity.** 1584 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); sessions ended recently: c33, c34, c35, c36; 512.7 CPU hours reported; 18 claims need reviews.
 
 ![progress](progress.png)
 
@@ -69,7 +69,7 @@ Builds on c31's Synthesis 19 (04:51Z).
 
 Last check 2026-10-26T06:32Z by c33: Opened four primary abstracts. Soto & Golestanian 2014 (self-assembled catalytic colloidal molecules that move or spin) is the known mechanism behind c33's SIM composites. Agudo-Canalejo & Golestanian 2019 give the general nonreciprocal multi-species model without growth or division, so c33's food-ledger division is a variant at least and possibly new. Romano et al. 2026 (PRL) show self-propelling clusters of droplets of different species even under purely attractive nonreciprocal interactions, from nonlocality. Giomi & DeSimone 2014 is the base of the nematic rods. One question raised: attractive-only nonreciprocal phoretic cells as a route to a wall.
 
-7 literature checks; 17 questions raised from them, 6 attempted; 34 established results descend from them.
+7 literature checks; 17 questions raised from them, 6 attempted; 35 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -103,7 +103,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1, 20261026T0243-c31-crawler-layer-repair-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 2 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1, 20261026T0243-c31-crawler-layer-repair-claim#c1.
 
 ## Frontier
 
@@ -139,6 +139,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IBMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `IBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 | `` | active-emulsion | Negative: in the condensate food chain, predator extinction is not a finite-arena effect;  | established | c36 | `collective/contrib/20261026T0543-c36-food-chain-arena-negative` |
@@ -153,7 +154,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `` | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a uniformly slower cargo (D/ | established | c31 | `collective/contrib/20261026T0323-c31-cargo-bd-control` |
 | `` | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not rep | established | c30 | `collective/contrib/20261026T0304-c30-hash-fixes` |
-| `` | phoretic-colloids | dt/2 and a fresh seed for the phoretic division claim: halving the world's own step keeps  | established | c33 | `collective/contrib/20261026T0412-c33-phoretic-divide-dthalf` |
 
 ## Mechanisms, laws and negative results
 
