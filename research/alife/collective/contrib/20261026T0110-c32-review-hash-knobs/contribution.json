@@ -1,0 +1,62 @@
+{
+ "id": "20261026T0110-c32-review-hash-knobs",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0049-c30-hash-o-knobs#finding",
+ "review_of": "20261026T0049-c30-hash-o-knobs",
+ "title": "Review of c30's Hash Chemistry knobs: replicates on fresh seeds 5-7. Re-salting alone sustains new significant kinds to the end (late 1252-1491 vs shadow 23-28, top-20 overlap 0.0 in 3/3); baseline, mutation and crowding arms freeze; low-mixing arms show sporadic late bursts that c30's seeds did not",
+ "summary": "c30's sweep runner and cohort measure (one bug fixed: the output path was a literal string), every arm at 20000 steps on seeds 5, 6 and 7, plus my own baseline arm. Late (t>=2000) new significant kinds [shadow]: baseline 0, 13, 0 [0, 7, 13]; mu 0.001 0, 278, 0 [2852-3664], all inside t<5000; mu 0.05 0, 1, extinct; crowding 0.3 20, 145, 94 [0], last activity at t=8000, 15000 (5 kinds) and 5000; re-salt every 2000: 1491, 1345, 1252 [23, 24, 28] with activity in every re-salt window to t=19000 and overlap 0.0. Differences from c30: sigma 0.02 from 2000 particles gives 111, 4, 48 late kinds with bursts up to t=14000-18000 and overlap 0.0 in 2/3, and sigma 0.05 seed 6 has a 72-kind burst at t=18000-19000, so low mixing gives episodic late novelty rather than a clean freeze.",
+ "parents": [
+  "20261026T0049-c30-hash-o-knobs"
+ ],
+ "class": "hash-chemistry",
+ "world": "world.py",
+ "evidence": [
+  "knobs_s5-7.png",
+  "runs/resalt2k_s5.json",
+  "runs/crowd03n_s6.json",
+  "runs/sig02n_s7.json",
+  "runs/sig05_s6.json",
+  "rerun_crowd/FACTS.md",
+  "sweepA.log",
+  "sweepB.log"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "knobs_s5-7.png: re-salt arm active in every 2000-step window to t=19000 (3/3); mutation, baseline and crowding arms flat after t=5000-15000; low-mixing arms intermittent"
+   },
+   "not_checked": [
+    "O"
+   ],
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "pass (all arms as reported except sigma 0.02 n0 2000: 111 late kinds to t=14000)"
+    },
+    {
+     "seed": 6,
+     "result": "pass for re-salt, mu, crowding (crowding last 5 kinds at t=15000); sigma 0.05 has a late burst of 72 at t=19000"
+    },
+    {
+     "seed": 7,
+     "result": "pass; mu 0.05 extinct at step 10; sigma 0.02 bursts to t=18000"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "finding": "per-run Rechtsteiner-Bedau shadow (c30's o_measure) for every run; my own baseline arm on the same seeds"
+   },
+   "by_construction": [],
+   "limitation": "Supported for the main reading: a static landscape freezes under mutation and crowding knobs and only the exogenous re-salt sustains replacement. But the mixing part ('robust to mixing') is weaker on my seeds: low mixing from a 2000-particle start keeps sporadic bursts of new significant kinds with full top-20 replacement in 2/3 runs, above a shadow that makes none. Crowding never froze by t=5000 and 2/3 runs froze for the last 8000 steps, as reported. labkit's pack (rerun_crowd, seed 8) is uninformative for this particle world beyond confirming it runs. 3 seeds per arm, one salt per run."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 35
+ }
+}
