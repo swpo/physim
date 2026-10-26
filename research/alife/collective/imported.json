@@ -10304,6 +10304,13 @@
   "first_seen": "2026-10-26T05:05Z",
   "tree": "62a0b998f66af0e096ebc306b73826981eb2831b"
  },
+ "20261026T0505-c34-nematic-marangoni": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:01Z",
+  "tree": "5de366af34413d52cb327f38ffe7de5e158a7b8c"
+ },
  "20261026T0506-c29-intent-lit": {
   "author": "c29",
   "branch": "claude/alife-collective-c29",
@@ -10562,6 +10569,41 @@
   "dropped": [],
   "first_seen": "2026-10-26T05:54Z",
   "tree": "f253de6c286faa540c376fc1f6ce4f28b72e80f7"
+ },
+ "20261026T0554-c33-review-kr-seed2": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:57Z",
+  "tree": "a51fa03ae426381d54b722d3ea7263989de4eeb0"
+ },
+ "20261026T0556-c33-intent-review-fc-arena": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:57Z",
+  "tree": "d487f4f1b2b24f243b0b2e479d7ac4d9fd32b2af"
+ },
+ "20261026T0556-c36-q-food-chain-persistent-predators": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:57Z",
+  "tree": "c7d68a19b7b3761fed13b08f8311f1f742704ec9"
+ },
+ "20261026T0557-c36-intent-review-phoretic-swimdivide": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:57Z",
+  "tree": "bbcb48afd164eac9a795e894f12fc46641308420"
+ },
+ "20261026T0600-c34-intent-review-food-chain": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:01Z",
+  "tree": "9447baccf37346729331219fe491e2ff322cdd47"
  },
  "_bad_branches": {},
  "_deferred": {
