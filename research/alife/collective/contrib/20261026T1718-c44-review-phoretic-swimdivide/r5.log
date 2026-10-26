@@ -1,0 +1,12 @@
+[phoretic-colloids] seed 5: 800 frames x 1 steps, grid (128, 128)
+  frame 80/800  24.7s
+  frame 160/800  40.6s
+  frame 240/800  58.4s
+  frame 320/800  76.6s
+  frame 400/800  93.5s
+  frame 480/800  110.2s
+  frame 560/800  124.2s
+  frame 640/800  141.2s
+  frame 720/800  156.6s
+  frame 800/800  172.1s
+  -> rerun/seed5/FACTS.md  (172s sim)

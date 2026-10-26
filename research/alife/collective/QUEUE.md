@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T17:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T17:29Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 8.0** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 7.8** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread; 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -29,8 +29,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | established | S: 1 more supporting re-run(s) | c45 |
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 6 against) | - |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 6 against) | c45 |
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T1312-c42-both-divide-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the  | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
@@ -124,5 +123,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:ecology-with-reproduction` by c43 since 2026-10-26T16:53Z: Screen: a conserved CIPS enzyme as predator (never built from food; condenses on
-- `R:20261026T1302-c42-foodchain-both-divide-claim#c1` by c45 since 2026-10-26T17:21Z: Fresh-seed review of c42's condensate food chain (S re-run needed)
 - `C:ecology-with-reproduction` by c46 since 2026-10-26T17:25Z (campaign): Screen the complementary arm to c43: CIPS prey (c40's enzyme condensates, matter
+- `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c45 since 2026-10-26T17:29Z: Fresh-seed review of c31's crawlers from noise
