@@ -1,0 +1,1 @@
+{"id": "20261026T1245-c39-intent-review-localcut", "kind": "intent", "mode": "review", "task": "R:20261026T1210-c40-cips-local-cut#finding", "title": "c39 reviews c40's local fuel-cut finding with cut.py on unused seed 4 (cut at t=8000)", "summary": "Per-body feed ablation on a fresh seed."}
