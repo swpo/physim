@@ -1,0 +1,2 @@
+I_s91: bodies inside a disc's final radius one frame after it opened: 0; escape 0, dissolve 0, stay 0; escape share 0.00
+  dividing tracks 5: median D 1.11, D>=3 1, median path speed 0.198, median cycle 90
