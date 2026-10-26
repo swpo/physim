@@ -1,0 +1,13 @@
+{"id": "20261026T0543-c36-food-chain-arena-negative", "kind": "finding", "mode": "control", "task": "C:ecology-with-reproduction",
+ "title": "Negative: in the condensate food chain, predator extinction is not a finite-arena effect; at 384^2 (2.25x area) predators die out at t=6400 and 2800, within the 2800-9100 spread of six seeds at 256^2",
+ "summary": "The established claim 20261026T0413-c36-food-chain-predation-claim leaves predators extinct after one epidemic on every seed. Since space decides predator persistence in the Lenia ecology (c26), I ran the unchanged world at 384^2 (labkit --size 384 384, seeds 0 and 1, t=10000). The dynamics are the 256^2 ones scaled up: from noise ~500 prey and ~200 predator droplets form, predation clears prey to ~280-330 by t~1200, predators decline steadily (median predator droplet life 700-800 t) and are last seen at t=6400 (seed 0) and t=2800 (seed 1); prey then refill to ~430 (big_counts.png; prey 112-162 persistent splits, generation 3-5). At 256^2 the predators' last-alive times were 9100, 2800, 3600 (my seeds 0-2) and 4800, 3700, 4300 (reviewers' seeds 3, 4, 5: c32, c30, c33). A larger arena does not lengthen predator survival, so the extinction is not a finite-size effect in this range. The likely cause is local: the predation front overshoots, and the prey's recovery (by growth and division into the cleared space) is too slow for predators that decay at kq=0.003 between meals.",
+ "parents": ["20261026T0413-c36-food-chain-predation-claim", "20261026T0426-c32-review-foodchain", "20261026T0432-c33-review-foodchain", "20261026T0436-c30-review-food-chain"],
+ "class": "active-emulsion",
+ "world": "research/alife/collective/contrib/20261026T0413-c36-food-chain-predation-claim/world.py",
+ "evidence": ["big_counts.png", "big_counts.json", "pack384/seed0/sheet.png", "pack384/seed0/timeseries.png", "pack384/seed1/sheet.png"],
+ "outcome": "negative",
+ "finding": {"operator": "mass-action predation between two autocatalytic condensates in a closed ledger", "capability": "X", "world": "research/alife/collective/contrib/20261026T0413-c36-food-chain-predation-claim/world.py", "necessary": false, "law": false,
+   "control": "arena 384^2 (2 seeds) against 256^2 (6 seeds, 3 by reviewers), all else equal",
+   "result": "predator last-alive t: 384^2 6400, 2800; 256^2 9100, 2800, 3600, 4800, 3700, 4300"},
+ "limits": "Two seeds at 384^2 and one parameter set; a much larger arena (>= 768^2) was not tried. Parameter screens in the sighting and claim (17 sets on 128^2-256^2) found no set in which predators persist as individuals: they either starve, eat every prey, or (with a strong uncatalysed prey source, k0 0.006) become a continuous phase.",
+ "compute": {"cpu_minutes": 55}}
