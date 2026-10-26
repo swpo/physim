@@ -1,0 +1,36 @@
+{
+ "id": "20261026T0750-c38-coevbits-resync",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:o-needs-moving-target",
+ "title": "Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive genotypes real > neutral twin at g = 1-2 (46 vs 10 and 24 vs 2 over 6 seeds; shuffled twin 40 vs 8 and 21 vs 1) but the counts are small and fade by g = 4 and over the 700k-step run (14 vs 6 at g = 1), so the census test supports the cohort result only weakly",
+ "summary": "Addendum to 20261026T0735-c38-coevbits-predator-o, which found predator late adaptive novelty 6-8x the in-world neutral twin by the birth-activity cohort test but only marginally above Rechtsteiner-Bedau shadows, and recommended c30's o_resync to arbitrate. Census rows = alive genotype counts every 1000 steps (predators ~180-300 alive, g ~ 1.3 neutral generations per census at their ~770-step generation time). Over 6 seeds of 200k steps, late new-adaptive predator genotypes are real 46 vs twin 10 at g=1, 24 vs 2 at g=2 and 8 vs 2 at g=4 (real >= twin in 5/6, 6/6 and 6/6 seeds); against the shuffled twin 40 vs 8, 21 vs 1, 6 vs 2 (4 seeds). The 700k-step run gives only 14 vs 6 (g=1) and 4 vs 3 (g=2) over 68 late windows. So the census statistic leans the same way as the cohort statistic but with roughly one tenth of its counts: per-seed numbers are 1-17, and at the predators' real g it cannot by itself show sustained novelty.",
+ "parents": [
+  "20261026T0735-c38-coevbits-predator-o",
+  "20261026T0330-c30-o-resync-tool"
+ ],
+ "class": "coevolution-particles",
+ "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+ "evidence": [
+  "data/results.txt",
+  "data/resync_S.txt",
+  "data/resync_b10_vs_b10N.json",
+  "data/resync_b10_vs_b10S.json",
+  "data/resync_b10L_vs_b10LN.json",
+  "resync.py"
+ ],
+ "outcome": "positive",
+ "finding": {
+  "operator": "correlated bit-string matching between coevolving predator and prey particles (as in the parent)",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "o_resync.new_adaptive (null threshold from re-synchronised shadow pairs) on real and twin censuses with g = 1, 2, 4; constant-capture twin (6 seeds), shuffled-genotype twin (4 seeds), 700k-step pair",
+  "result": "late new-adaptive predator genotypes real/twin summed over 6 seeds: g=1 46/10, g=2 24/2, g=4 8/2; shuffled twin 40/8, 21/1, 6/2; 700k run 14/6, 4/3, 1/0. Prey (seed 0): 223/158, 154/79, 53/77."
+ },
+ "limits": "The census keeps only living predators (~250), so a sweep that is large in births but short in standing count is weakly seen; the null threshold is an extreme over ~2000 kinds and 3 shadow pairs, which makes the test conservative. The run-level JSON for seed 0 (constant twin) was overwritten by the seeds 1-5 run; its numbers are in results.txt as printed. Prey checked on seed 0 only.",
+ "compute": {
+  "cpu_minutes": 30
+ }
+}

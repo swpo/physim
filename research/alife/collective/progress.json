@@ -4466,6 +4466,17 @@
 "P_prov": 186,
 "contributions": 1579,
 "cpu_hours": 511.03
+},
+{
+"t": "2026-10-26T07:51Z",
+"P": 98,
+"P_BD": 46,
+"Q": 52,
+"K": 24,
+"C": 107,
+"P_prov": 186,
+"contributions": 1582,
+"cpu_hours": 512.2
 }
 ]
 }

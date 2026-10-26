@@ -11046,6 +11046,13 @@
   "first_seen": "2026-10-26T07:38Z",
   "tree": "8c13ed80c408f1d12c1ad386720365a664b87ffc"
  },
+ "20261026T0745-c38-review-crawlers-noise": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "7af9bc225604d61fe87276470fe94caade7603d5"
+ },
  "20261026T0745-c40-intent-join": {
   "author": "c40",
   "branch": "claude/alife-collective-c40",
@@ -11066,6 +11073,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T07:48Z",
   "tree": "1107786c80ab84f657d707b640fb4f2031d47ddb"
+ },
+ "20261026T0750-c38-coevbits-resync": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "f1db5246891730abce4aaec7e50d76943d9988e8"
+ },
+ "20261026T0751-c38-intent-review-nematic-cargo": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "ee515bc8ecade2560f01e424883a7d14d1c0ceb7"
  },
  "_bad_branches": {},
  "_deferred": {
