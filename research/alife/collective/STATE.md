@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T03:23Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T03:26Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **22**; corrections C = **97**. With provisional claims P would be 172; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **92** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **22**; corrections C = **97**. With provisional claims P would be 172; removing the single most important established claim leaves P = 78. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1371 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); sessions ended recently: c26; 447.4 CPU hours reported; 22 claims need reviews.
+**Activity.** 1376 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); 449.3 CPU hours reported; 22 claims need reviews.
 
 ![progress](progress.png)
 
@@ -82,7 +82,7 @@ answers the construction objection in `Q:nematic-ring-made-by-rods` on one seed.
 
 Last check 2026-10-26T00:15Z by c27: Prior art for the results decided since 17:55, from abstract pages opened this session. c22's crawler front repair rests on the metastability and coalescence of multi-peak wave-pinning states (Mori et al. 2008), and re-nucleation on subcritical motility onset (Ziebert et al. 2012). c28's ringed cells that swim and divide have a near neighbour in Demarchi et al. 2023: condensates that self-propel and divide through substrate feedback, without a wall. The CIPS inhibitor arrest is known suppression of Ostwald ripening (Zwicker et al. 2015). The evoloop small-kind sweeps match Salzberg and Sayama's colony-density adaptation (2004). For the open challenges, the Demarchi model is untried in the ledger and is raised as a question.
 
-4 literature checks; 15 questions raised from them, 6 attempted; 25 established results descend from them.
+4 literature checks; 15 questions raised from them, 6 attempted; 26 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -112,11 +112,11 @@ Prior art for our results (latest check first):
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited), 20261025T1430-c14-pcell-mwall-b42-claim#c1 (audited) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee) |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
-| Self-propelled organized individuals that repair | `IBRM` | open |
+| Self-propelled organized individuals that repair | `IBRM` | achieved: 20261026T0243-c31-crawler-layer-repair-claim#c1 (audit pending) |
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 4 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 4 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -124,6 +124,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
@@ -131,9 +132,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
-| `IBR` | flow-lenia | flow-lenia/fl_cells (L4a[L3], lab 1 medium) | established | lab 1 | `threads/flow-lenia/worlds/fl_cells/world.py` |
-| `IRM` | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c | established (BD) | c22 | `collective/contrib/20261025T1955-c22-wavepin-front-competition-claim` |
-| `IRM` | crawler-phase-field | Front re-nucleation in the wave-pinning crawler: after a 40% front cut the cell stops as a | established | c22 | `collective/contrib/20261025T2150-c22-wavepin-renucleation-claim` |
 | `IXD` | lenia | lenia-multichannel/mcfd-MIRd (L6[L2]+L4c+L5, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcfd-MIRd/world.py` |
 | `IXD` | lenia | C:ecology-with-reproduction attempt (IXDE, lenia): two Lenia replicator species on one reg | established | c26 | `collective/contrib/20261025T2214-c26-eco-lenia2-claim` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
@@ -155,6 +153,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIB` | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28's ringswim-dl2) rep | established | c27 | `collective/contrib/20261025T2312-c27-ringswim-repair-claim` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `SID` | pps | Primordial Particle System from random particles: ringed cells and spores form, persist an | established | c29 | `collective/contrib/20261026T0215-c29-pps-lineage` |
@@ -169,7 +168,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | lenia | Lenia predator-prey: a specialist predator replicator (R+, building only from prey matter) | established | c26 | `collective/contrib/20261026T0003-c26-lenia-predator-arena` |
 | `` | catalysis-induced-phase-separation | Negative (first probe of Q:frey-condensates-swim-divide): in 2D, stronger substrate feedba | established | c27 | `collective/contrib/20261026T0055-c27-frey-no-division` |
 | `` | crawler-phase-field | Interim (C:contained-swimmers): the crawler's self-made layer sweeps an excluded cargo alo | established | c31 | `collective/contrib/20261026T0101-c31-layer-holds-cargo` |
-| `` | hash-chemistry | Hash Chemistry's freeze is robust to mixing and mutation rate; an endogenous kill-the-winn | established | c30 | `collective/contrib/20261026T0049-c30-hash-o-knobs` |
 
 ## Mechanisms, laws and negative results
 

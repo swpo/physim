@@ -1,0 +1,17 @@
+t=0 cin=0 cout=0 ratio=0 ratio_front=0 ratio_back=0 held=0 cx=2.5 cy=2.5
+t=0.5 cin=0.0447 cout=0.00321 ratio=13.9 ratio_front=30.2 ratio_back=9.07 held=0.913 cx=2.4 cy=2.37
+t=1 cin=0.0818 cout=0.00995 ratio=8.22 ratio_front=24.5 ratio_back=4.93 held=0.864 cx=2.29 cy=2.24
+t=1.5 cin=0.116 cout=0.017 ratio=6.83 ratio_front=24.7 ratio_back=3.92 held=0.826 cx=2.17 cy=2.09
+t=2 cin=0.148 cout=0.0224 ratio=6.61 ratio_front=26.3 ratio_back=3.71 held=0.795 cx=2.03 cy=1.93
+t=2.5 cin=0.176 cout=0.0263 ratio=6.69 ratio_front=29 ratio_back=3.69 held=0.77 cx=1.89 cy=1.77
+t=3 cin=0.196 cout=0.0291 ratio=6.74 ratio_front=31.7 ratio_back=3.73 held=0.749 cx=1.75 cy=1.61
+t=3.5 cin=0.215 cout=0.0313 ratio=6.88 ratio_front=33 ratio_back=3.77 held=0.733 cx=1.6 cy=1.46
+t=4 cin=0.233 cout=0.0333 ratio=7.02 ratio_front=34.8 ratio_back=3.82 held=0.717 cx=1.46 cy=1.31
+t=4.5 cin=0.253 cout=0.0352 ratio=7.18 ratio_front=36.8 ratio_back=3.92 held=0.703 cx=1.31 cy=1.16
+t=5 cin=0.267 cout=0.0371 ratio=7.2 ratio_front=38 ratio_back=3.91 held=0.688 cx=1.16 cy=1.01
+t=5.5 cin=0.279 cout=0.0392 ratio=7.13 ratio_front=38.6 ratio_back=3.86 held=0.673 cx=1.01 cy=0.865
+t=6 cin=0.294 cout=0.0413 ratio=7.13 ratio_front=39.2 ratio_back=3.85 held=0.66 cx=0.863 cy=0.72
+t=6.5 cin=0.306 cout=0.0437 ratio=7 ratio_front=39.1 ratio_back=3.76 held=0.645 cx=0.706 cy=0.578
+t=7 cin=0.317 cout=0.0464 ratio=6.83 ratio_front=39.1 ratio_back=3.68 held=0.629 cx=0.552 cy=0.434
+t=7.5 cin=0.325 cout=0.049 ratio=6.64 ratio_front=38.4 ratio_back=3.58 held=0.614 cx=0.397 cy=0.292
+t=8 cin=0.332 cout=0.0513 ratio=6.46 ratio_front=37.4 ratio_back=3.47 held=0.598 cx=0.241 cy=0.152

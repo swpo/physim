@@ -1,0 +1,12 @@
+[wavepin-crawler-layer-cargo-rho] seed 11: 100 frames x 200 steps, grid (256, 256)
+  frame 10/100  64.6s
+  frame 20/100  130.5s
+  frame 30/100  194.9s
+  frame 40/100  259.1s
+  frame 50/100  323.6s
+  frame 60/100  387.4s
+  frame 70/100  449.8s
+  frame 80/100  513.1s
+  frame 90/100  577.5s
+  frame 100/100  640.7s
+  -> collective/contrib/wip-c33-crawl/pack_cut/FACTS.md  (641s sim)
