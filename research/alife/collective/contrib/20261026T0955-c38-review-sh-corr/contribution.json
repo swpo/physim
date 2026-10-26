@@ -1,0 +1,45 @@
+{
+ "id": "20261026T0955-c38-review-sh-corr",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0847-c37-sh-fission-correction#finding",
+ "title": "Review of c37's SH fission correction: replicated on fresh seed 4 (ar=0.02): 22 break-ups with >= 2 spots per piece that stay apart >= 50 t after t=100, mostly t=100-390, against 274 fusions; loose spot clusters tearing, not growth-then-division",
+ "summary": "Ran world.py with the correction's setting (N 128, L 80, r -0.7, g 0.6, kap 0.3, tau 10, cr 0.1, ar 0.02) on seed 4 with labkit (t=1000), and classified events with my own tracker (events.py from 20261026T0945-c38-review-sh; molecules = spots joined within 2.2 units; a split counts when the two largest pieces are still in different molecules 25 frames = 50 t later). After t=100: 28 persistent splits, 22 with >= 2 spots in both pieces (e.g. 29 + 16 spots at t=118, 28 + 14 at t=250, 30 + 21 at t=604), 274 fusions, molecules every 100 t 1, 10, 5, 4, 5, 3, 3, 4, 1, 1, 3. Most splits (19 of 28) fall in t=100-390; the sheet shows ragged multi-spot clusters on a depleted resource tearing into pieces, and hexagonal crystallites that merge later. Same picture as the correction: fission exists, coalescence dominates, and nothing shows growth on food followed by division into similar parts.",
+ "parents": [
+  "20261026T0847-c37-sh-fission-correction",
+  "20261026T0945-c38-review-sh"
+ ],
+ "review_of": "20261026T0847-c37-sh-fission-correction",
+ "class": "swift-hohenberg",
+ "world": "research/alife/collective/contrib/20261026T0847-c37-sh-fission-correction/world.py",
+ "evidence": [
+  "rerun/ar02_seed4/sheet.png",
+  "rerun/ar02_seed4/FACTS.md",
+  "rerun/events_ar02_seed4_hold50t.txt",
+  "events.py"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "D": "rerun/events_ar02_seed4_hold50t.txt: 22 persistent break-ups with >= 2 spots per piece after t=100, 274 fusions; no growth-then-division seen in rerun/ar02_seed4/sheet.png"
+   },
+   "replicated": true,
+   "seed": 4,
+   "seeds_run": [
+    {
+     "seed": 4,
+     "result": "pass: persistent break-ups exist (22), mostly early; coalescence dominates"
+    }
+   ],
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "One fresh seed and one setting; my tracker is not the author's fission.py (census every 2 t against their 5 t, 50 t persistence in both). The split count depends on the 2.2-unit linking length. Neither of us measured whether pieces regrow, which is what D would need."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 4
+ }
+}
