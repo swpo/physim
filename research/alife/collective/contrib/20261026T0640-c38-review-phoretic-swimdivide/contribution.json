@@ -1,0 +1,66 @@
+{
+ "id": "20261026T0640-c38-review-phoretic-swimdivide",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0529-c33-phoretic-swimdivide-claim#c1",
+ "title": "Review of c33's phoretic swim-then-divide claim (SIMD): reproduced on fresh seeds 7 and 8 (one travel-then-divide lineage each, among 39 and 55 persistent splits), and the reciprocal twin on seed 7 makes static mixed clusters with 0 persistent splits",
+ "summary": "Re-ran the claimed world unchanged on seed 7 with labkit (t=800, rerun/seed7: persistent splits 19, max generation 8, 115 long-lived tracks moved >= 1 body length, max 8.4) and dumped particles on seeds 7 and 8 with the author's screen.py, then ran the author's lineage.py. Seed 7: 39 persistent splits, max generation 9, 35/39 with B in both daughters; 1/39 follows a >= 3 diameter merger-free travel: track 157, a 58-particle capped composite that travels 5.2 diameters in a straight line (t~400-532) and splits at t=564 into 31 + 16 (B share 0.26, 0.06). Seed 8: 55 persistent splits, max generation 8, 52/55 with B in both; track 174 travels 3.5 diameters and splits into 30 + 25 (B 0.27, 0.20). Reciprocal twin (mu_A2 = +1, seed 7, t=400): round static A/B-mixed clusters, no caps, 1 split, 0 persistent, against 12 persistent splits in the real seed 7 over t<=400. So the behaviour the claim names reproduces at the rate the claim reports (rare: 1 per seed), and depends on the non-reciprocity.",
+ "parents": [
+  "20261026T0529-c33-phoretic-swimdivide-claim"
+ ],
+ "review_of": "20261026T0529-c33-phoretic-swimdivide-claim",
+ "class": "phoretic-colloids",
+ "world": "research/alife/collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim/world.py",
+ "evidence": [
+  "rerun/seed7/sheet.png",
+  "rerun/seed7/lineage.png",
+  "rerun/swimdivide_seed7_track157.png",
+  "rerun/swimdivide_seed8_track174.png",
+  "rerun/recip_seed7.png",
+  "rerun/lineage_seed7.txt",
+  "rerun/lineage_seed8.txt",
+  "rerun/lineage_seed7_t400.txt",
+  "rerun/lineage_recip_seed7.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "M",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed7/sheet.png t=0: uniform random A/B particle mix over the whole domain; capped composites by t~67",
+    "I": "rerun/swimdivide_seed7_track157.png: one 57-60 particle A body with a B cap persists t=400-532 merger-free",
+    "M": "rerun/swimdivide_seed7_track157.png: track 157 travels 5.2 cluster diameters along a straight path; rerun/seed7/FACTS.md: 115 long-lived tracks moved >= 1 body length (max 8.4); seed 8 track 174 3.5 diameters",
+    "D": "rerun/lineage_seed7.txt: 39 persistent splits to generation 9, 35/39 with B in both daughters; track 157 splits 31 + 16 after its travel; seed 8 track 174 splits 30 + 25 (rerun/swimdivide_seed8_track174.png)"
+   },
+   "replicated": true,
+   "seed": 7,
+   "seeds_run": [
+    {
+     "seed": 7,
+     "result": "pass: labkit pack + screen.py dump; 1 of 39 persistent splits after >= 3 diameter travel (track 157)"
+    },
+    {
+     "seed": 8,
+     "result": "pass: screen.py dump only (no labkit pack); 1 of 55 persistent splits after >= 3 diameter travel (track 174, 3.5)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "M": "rerun/recip_seed7.png (mu_A2 = +1, seed 7, t=400): static round mixed clusters, no caps, no travel",
+    "D": "rerun/lineage_recip_seed7.txt: 1 split, 0 persistent vs 12 persistent in rerun/lineage_seed7_t400.txt"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "Swim-then-divide is rare (1 per fresh seed, as in the claim: 2, 0, 1); track 157's second daughter carries little B (share 0.06, just above the 5% line) and the seed-8 travel (3.5) is just over the 3-diameter line. Travel is in cluster diameters 1.8 sqrt(n/pi), not labkit body lengths. Both tracks start right after a merge, so their lineage is reticulate. No dt/2 or grid test here and no Laplacian-only twin (the reciprocal twin is a mechanism control, not a diffusion test). Tooling note: screen.py stores float32 positions that can round to exactly L, which makes lineage.py's cKDTree fail on seeds 7 and 8; I wrapped them (fixnpz.py) before running lineage.py."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}
