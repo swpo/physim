@@ -1,0 +1,22 @@
+{
+ "L384_s0": {
+  "prey_mean_t2000": 388.3333333333333,
+  "pred_mean_t2000": 5.7407407407407405,
+  "pred_last_alive_t": 6400.0,
+  "pred_life_median": 800.0,
+  "pred_life_n": 440,
+  "pred_life_p90": 1600.0,
+  "prey_life_median": 100.0,
+  "prey_life_n": 223
+ },
+ "L384_s1": {
+  "prey_mean_t2000": 415.30864197530866,
+  "pred_mean_t2000": 0.4444444444444444,
+  "pred_last_alive_t": 2800.0,
+  "pred_life_median": 700.0,
+  "pred_life_n": 300,
+  "pred_life_p90": 1110.0000000000023,
+  "prey_life_median": 100.0,
+  "prey_life_n": 203
+ }
+}

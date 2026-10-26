@@ -1,0 +1,2 @@
+seed 8 t 2.00-16.00 bodies 5 net 2.49 = 1.95 own diameters, speed 0.178
+seed 8: path t>=2 = 1.51 x 1.7; net t=2..end = 1.94 final diameters; final area 1.29

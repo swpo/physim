@@ -1,0 +1,8 @@
+seed 0, T=600, CARGO=0, swimdivide.py (tracks ending in a split with 2 children living >= 20 frames; net displacement over life):
+mar=0: tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0 | best 1.3 labkit BL, 0.6 rod lengths
+mar=2: tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0 | best 1.99 labkit BL, 1.07 rod lengths
+mar=8: tracks that move >= 3 labkit body lengths, then divide: 2; by rod length >= 3: 0 | best 3.63 labkit BL, 1.71 rod lengths
+mar=16: tracks that move >= 3 labkit body lengths, then divide: 2; by rod length >= 3: 0 | best 4.6 labkit BL, 2.18 rod lengths
+mar=24: tracks that move >= 3 labkit body lengths, then divide: 4; by rod length >= 3: 0 | best 4.73 labkit BL, 2.14 rod lengths
+mar=40: tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 2 | best 7.09 labkit BL, 3.33 rod lengths
+mar=60: tracks that move >= 3 labkit body lengths, then divide: 3; by rod length >= 3: 0 | best 6.52 labkit BL, 2.77 rod lengths
