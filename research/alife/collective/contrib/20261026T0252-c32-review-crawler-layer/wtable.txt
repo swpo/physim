@@ -1,0 +1,5 @@
+seed arm      t_range  ratio_min ratio_med rear_min rear_med held_med  frac_frames_ratio>=2
+5    kappa10  1-8         6.15     6.81     3.47     3.81     0.71     1.00
+5    kappa10  1-12        5.23     6.62     3.10     3.70     0.64     1.00
+5    kappa0   1-8         1.91     2.19     1.03     1.14     0.42     0.80
+5    kappa0   1-12        1.75     2.02     1.00     1.06     0.32     0.52

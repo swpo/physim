@@ -1,0 +1,10 @@
+c34 review of 20261026T0215-c29-pps-lineage, fresh seed 7 (unchanged world.py).
+labkit pack rerun/seed7 (T=30000):
+- components: final 47, mean 38.2, max 77; occupancy final 0.18
+- replication (lineage window K = 20 frames = time 3000, default): splits 828, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 782, merge/split ratio 0.944, nucleations 1
+
+ppstrack.py seed 7, T=60000, author's settings DT=100 LINK=5 HOLD=1500:
+{"seed": 7, "T": 60000, "bodies_final": 78, "bodies_max": 85, "bodies_mean_2nd_half": 77.87043189368771, "splits": 1850, "merges": 1917, "deaths": 70, "nucleations": 179, "persistent_splits": 133, "max_generation": 3, "settings": {"DT": 100, "HOLD": 1500, "NMIN": 11, "LINK": 5.0, "MINP": 15}, "propagule_splits_kids_reach_half_parent": 51, "median_parent_n_at_split": 74.0}
+
+same, HOLD=3000 (stricter persistence):
+{"seed": 7, "T": 60000, "bodies_final": 78, "bodies_max": 85, "bodies_mean_2nd_half": 77.87043189368771, "splits": 1850, "merges": 1917, "deaths": 70, "nucleations": 179, "persistent_splits": 45, "max_generation": 2, "settings": {"DT": 100, "HOLD": 3000, "NMIN": 11, "LINK": 5.0, "MINP": 15}, "propagule_splits_kids_reach_half_parent": 18, "median_parent_n_at_split": 68.0}

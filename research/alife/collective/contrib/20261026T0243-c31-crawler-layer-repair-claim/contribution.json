@@ -1,0 +1,66 @@
+{
+ "id": "20261026T0243-c31-crawler-layer-repair-claim",
+ "kind": "claim",
+ "mode": "extend",
+ "task": "C:motile-repair",
+ "title": "C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity protein, which repairs after a 40% front cut, crawls on, and sweeps an excluded cargo along",
+ "summary": "world.py = c22's Camley wave-pinning crawler (rho*=0.2, eta=2, per-body pools; IRM established in 20261025T2150-c22-wavepin-renucleation-claim) plus two species that do not feed back on the cell. (1) A layer species s, made by the cell's own bound polarity protein (source kp*phi*rho, kp=0.15), decaying everywhere (kd=0.5), diffusing (Ds=0.1) and adsorbing onto the interface by the diffuse-interface Langmuir flux Ds*beta*s(1-s)*grad(4phi(1-phi)), beta=4. Positive control: on a frozen disk this operator reaches 83-94% of the Fermi/Langmuir odds ratio (isotherm.py, runs/isotherm_*). (2) A cargo c made inside the body (kc*phi), decaying at 0.05, whose chemical potential ln c + kappa*s (kappa=10) makes the layer exclude it (Scharfetter-Gummel face flux). Results: the s layer scores rim/core 1.98-2.06 and rim/out 19-20 in labkit's radial test on seeds 0-2 (6/6 individuals each), 3.4-3.6 and 37-40 by signed distance to the contour (numerics.txt), and keeps both through 1.5x resolution and dt/2. The cell crawls 5.0-5.1 body lengths in t=20 at 0.42. A 40% front sector cut at t=8 (39% of area, 45% of protein, 34-35% of s leave the cell) on seeds 0, 2, 3 with branched twins: the layer closes over the cut edge within ~1 time unit (rim/core 3.4-5.6, contour coverage 0.75 vs twin 0.72), the cell stops (speed 0.01-0.07 at t=9-11), re-nucleates a front and crawls on at 0.34-0.36 vs 0.42 for its twin, keeping the layer and its cargo (in/out 6-10). Cargo: in/out (signed distance) 6.3-6.9 median, rear side 3.6-3.8, on seeds 0-2 against 2.0-2.5 and 1.1-1.3 at the rear for the kappa=0 ablation, which loses it from the retracting rear; the layer-source ablation (SRC=none, pack_nosrc) crawls as far but has no layer and no cargo contrast.",
+ "parents": [
+  "collective/contrib/20261025T2150-c22-wavepin-renucleation-claim",
+  "collective/contrib/20261026T0015-c31-crawler-layer-sighting",
+  "collective/contrib/20261026T0101-c31-layer-holds-cargo"
+ ],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed0/sheet.png",
+  "pack/seed0/radial.png",
+  "pack_cut/seed0/sheet.png",
+  "figs/r3cut0_fig.png",
+  "figs/r3cut2_fig.png",
+  "figs/r3_w_cmp.png",
+  "cuttable.txt",
+  "wtable.txt",
+  "numerics.txt",
+  "pack_nosrc/seed0/radial.png"
+ ],
+ "claims": [
+  {
+   "cid": "c1",
+   "capabilities": [
+    "I",
+    "B",
+    "W",
+    "R",
+    "M"
+   ],
+   "rung": "L4a+L4b[L3]+W",
+   "statement": "One planted crawler per run (no S). Its layer species s, made by its own bound polarity protein (kp*phi*rho) and adsorbed at its interface, forms a ring with rim/core ~2 (labkit radial) and ~3.5 (signed distance) and rim/out 19-40 on seeds 0-2, for the whole run, while the cell crawls at 0.42. The same cell, cut by 40% at its front at t=8 (seeds 0, 2, 3), closes its layer over the cut within ~1 time unit, passes through c22's non-polar disk, re-nucleates a front and crawls on at 0.34-0.36 against its twin's 0.42, with the layer and the cargo held. The layer excludes a cargo species made inside the body; the retracting rear rim sweeps it forward so the cell holds in/out 6.3-6.9 (rear 3.6-3.8) for t=1-12 on 3 seeds, against ~2 (rear 1.1-1.3) with the exclusion ablated. Commands: python -m labkit.run world.py --seeds 0 1 2 --frames 100 --no-movie; cut: WORLD_P='{\"cut_t\":8.0,\"cut_mode\":\"front\",\"cut_frac\":0.4}' (pack_cut, seeds 0 2); twins: python cutprobe.py world.py <seed> 8 20 0.4 <out>; cargo: python cargoprobe.py world.py <seed> 12 <out> (kappa=0 for the ablation); source ablation: WORLD_P='{\"SRC\":\"none\"}'.",
+   "track": "seed 0, pack_cut/seed0 track 0 (the only track, 101/101 frames): crawls with its layer t=0-8, cut at t=8, non-polar disk t~9-11, new front ~t=11, crawls on t=11-20 (sheet.png); the same seed side by side with its twin, layer and cargo drawn, in figs/r3cut0_fig.png and runs/r3cut0.log (cuttable.txt)",
+   "evidence": [
+    "pack/seed0/radial.png",
+    "pack/seed1/radial.png",
+    "pack/seed2/radial.png",
+    "pack_cut/seed0/sheet.png",
+    "pack_cut/seed2/sheet.png",
+    "figs/r3cut0_fig.png",
+    "figs/r3cut2_fig.png",
+    "figs/r3_w_cmp.png",
+    "cuttable.txt",
+    "wtable.txt",
+    "numerics.txt"
+   ],
+   "controls_run": {
+    "B": "layer-source ablation SRC=none on the same world (pack_nosrc, seeds 0-1): s flat zero, cell crawls the same 5.0-5.1 body lengths, cargo not contained (rim/core 0.91); positive control of the adsorption operator against the Langmuir isotherm (isotherm.py, runs/isotherm_b2.0_s0.1.txt, runs/isotherm_b4.0_s0.1.txt); 1.5x resolution and dt/2 (numerics.txt: rim/core 3.42 and 3.53 vs 3.60)",
+    "W": "kappa=0 wall ablation with the same cargo production on seeds 0-2 (runs/c_ablate.log, runs/koff1_k0.log, runs/k0_s2.log; wtable.txt; figs/r3_w_cmp.png): in/out ~2, rear 1.1-1.3, held 32-51% vs 64-74%; cargo contrast survives 1.5x resolution (6.62 vs 6.46) and dt/2 (6.11)",
+    "R": "branched undamaged twins on seeds 0, 2, 3 (cutprobe.py; runs/r3cut*.log; cuttable.txt), different post-cut noise for both arms; labkit packs of the cut (pack_cut seeds 0, 2) next to the uncut packs (pack seeds 0, 2), identical until t=8; erased matter leaves the cell (phi, rho, s and c set to 0 in the sector, the protein removed from the pool)",
+    "M": "the linear-kinetics twin of the parent world (research/alife/collective/contrib/20261025T1955-c22-wavepin-front-competition-claim/pack_linear): no polarity, no motion"
+   },
+   "bd_control": "not run for B or W. The layer is a quasi-equilibrium adsorption layer (drift up grad 4phi(1-phi)); it counts under RUBRIC L3 because the cell makes its species (100% of production is kp*phi*rho, inside the body, by its own polarity protein). The cargo containment is an exclusion potential, so a uniformly lowered cargo D is the natural Laplacian-only twin; it was not run."
+  }
+ ],
+ "limitations": "Planted single cell, no S, no division. The adsorption drift is written against the body field; only the source belongs to the cell (polarity protein). The repaired cell stays at ~52% of its twin's area because protein is conserved (as in c22's claim); repair here means re-forming layer and front and crawling on, not regrowth. Cargo leaks: with the polarity-protein source the rear rim carries less s, the in/out ratio declines from ~6.5 (t<8) to ~3-4 by t=14-20 and the twin holds 42-44% of its cargo at t=14-20; the 'body' source (world_src_body.py, finding 20261026T0101) holds 8.5-14 and a cytosol source (runs/scyt.log) 36 at t=8. The box is periodic (L=5), so the cell re-crosses its own cargo trail after ~12 time units, which raises the outside level. kappa=0 arms were run with world_src_body.py: with kappa=0 the cargo ignores s and neither species feeds back, so these runs are numerically the same as world.py with kappa=0. The 8-9 speed window in cuttable.txt is inflated by the centroid jump of the cut.",
+ "compute": {
+  "cpu_minutes": 240
+ }
+}

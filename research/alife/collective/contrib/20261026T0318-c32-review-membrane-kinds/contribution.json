@@ -1,0 +1,67 @@
+{
+ "id": "20261026T0318-c32-review-membrane-kinds",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-autopoiesis-membrane-kinds#c1",
+ "review_of": "lab1-autopoiesis-membrane-kinds",
+ "title": "Review of lab 1's autopoiesis/membrane_kinds (SIBD): first labkit packs of this world replicate on fresh seeds 3 and 4: walled cells from noise (L link ring membrane-like in 53/64 and 77/99 individuals), 7 and 15 persistent splits to generation 2-3; chi=0 removes the ring (3/189)",
+ "summary": "Labkit packs of threads/autopoiesis/worlds/membrane_kinds/world.py (unchanged), 128^2, t=0-10000, seeds 3 and 4; and the same world with chi=0 on seed 3. From smoothed noise over the whole domain (sheet t=0), the field breaks into 8-22 discrete cells with a bright wall. Link L: aggregate rim/core 1.69 and 1.59, rim/out 4.8 and 4.1, membrane-like individually in 53/64 and 77/99 cells; the wall channel is also membrane-like. Division: 64-67 splits, 7 and 15 persistent, max generation 2 and 3, merge/split 0.09-0.11. chi=0: L rim/core 1.14, 3/189 cells membrane-like, while division continues (37 persistent splits), so the ring comes from the link adsorption and division does not need it. The catalyst kinds K1/K2 carry no ring (rim/core 0.9-1.1).",
+ "parents": [
+  "threads/autopoiesis/worlds/membrane_kinds/world.py"
+ ],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed4/sheet.png",
+  "pack/seed3/sheet.png",
+  "pack/seed3/radial.png",
+  "pack/seed4/FACTS.md",
+  "pack/seed3/FACTS.md",
+  "pack/seed4/lineage.png",
+  "pack_chi0/FACTS.md",
+  "pack_chi0/radial.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "D"
+   ],
+   "observations": {
+    "S": "pack/seed4/sheet.png t=0: smoothed noise everywhere",
+    "I": "pack/seed4/sheet.png t=850-10000: 8-22 discrete walled cells",
+    "B": "pack/seed3/FACTS.md, pack/seed4/FACTS.md: L link membrane-like 53/64 and 77/99 individually; pack_chi0: 3/189",
+    "D": "pack/seed4/lineage.png: 15 persistent splits, generation 3; seed 3: 7, generation 2"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: S I B D (7 persistent splits, gen 2)"
+    },
+    {
+     "seed": 4,
+     "result": "pass: S I B D (15 persistent splits, gen 3)"
+    },
+    {
+     "seed": 3,
+     "result": "chi=0 ablation: no ring, division continues"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "B": "pack_chi0 (chi 2 -> 0, seed 3): ring lost, rim/core 1.14"
+   },
+   "by_construction": [],
+   "limitation": "These packs cover the base cells (SIBD) only; the kinds/mutation part (L6 heredity, the infection law) was not examined. The ring is links drifting up the wall indicator (chi term written against the body field); the links are made by the cells' catalyst, which RUBRIC L3's quasi-equilibrium clause allows, and the ring does no work for division here (chi=0 divides more). Generations are short (2-3) at labkit's 1000 t window."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 10
+ }
+}

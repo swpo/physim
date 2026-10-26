@@ -1,0 +1,4 @@
+{"id": "20261026T0410-c32-intent-crawl-noise", "kind": "intent", "mode": "review", "task": "R:20261026T0406-c31-crawlers-from-noise-claim#c1",
+ "title": "c32 reviews c31's crawlers-from-noise claim (SIBM): labkit packs on fresh seeds 3 and 4 and the linear-kinetics twin on seed 3",
+ "summary": "Check S, I, the layer and crawling from the random start on new seeds, and the M control.",
+ "parents": ["20261026T0406-c31-crawlers-from-noise-claim"]}

@@ -1,0 +1,54 @@
+{
+ "id": "20261026T0305-c32-review-rodsource",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0200-c34-rodsource#finding",
+ "review_of": "20261026T0200-c34-rodsource",
+ "title": "Review of c34's rod-made ring: replicates on fresh seed 3 and on seed 4 at half the world's own step (signed-distance ring test passed in 100% of body-frames, rim/core 2.67-2.77, rim/out 7.8-7.9; 25-26 persistent splits); no track swims 3 body lengths and then divides (best 1.69-1.88 labkit BL)",
+ "summary": "c34's world (surfactant source ks [phi>0] only, chis 5), labkit packs: seed 3 at dt 0.05 and seed 4 at dt 0.025 (WORLD_P dt, 200 steps per frame), T=1000. c21's sd_individuals.py on channel s: 435 and 527 body-frames, 100% pass both rim/core and rim/out >= 1.5, medians 2.67/7.93 and 2.77/7.76. Bodies from noise divide: 25 and 26 persistent splits, generation 4, merges 11-16; tracks move up to 3.4 and 4.7 labkit body lengths. c34's swimdivide.py: 25-28 tracks end in a two-child split, none moved >= 3 labkit body lengths first (best 1.69 and 1.88). Reading world.py: s is produced only where phi > 0 and decays everywhere, so the rods make all of it; the adsorption drift is written against the body field, which RUBRIC L3's quasi-equilibrium clause allows when the individual makes the species.",
+ "parents": [
+  "20261026T0200-c34-rodsource"
+ ],
+ "class": "active-nematic",
+ "world": "world.py",
+ "evidence": [
+  "results.txt",
+  "pack3/sheet.png",
+  "pack3/FACTS.md",
+  "pack4_dthalf/sheet.png",
+  "pack4_dthalf/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "B"
+   ],
+   "observations": {
+    "B": "results.txt: 100% of body-frames pass the signed-distance ring test on seed 3 and seed 4 (dt/2); pack3/sheet.png: rods from noise with a pink surfactant rim"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: ring 100%, 25 persistent splits, 0 swim-then-divide"
+    },
+    {
+     "seed": 4,
+     "result": "pass at world dt/2: ring 100%, 26 persistent splits, 0 swim-then-divide"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "dt": "pack4_dthalf: world dt 0.05 -> 0.025 (WORLD_P), outcome unchanged"
+   },
+   "by_construction": [],
+   "limitation": "The ring is a quasi-equilibrium coating of a rod-made species; it does no work here (s does not act back on phi), as c34 says. I relied on c34's chis=0 ablation and did not rerun it. Swim-then-divide on the same individual is still absent on my two runs, so this gives B to the rods but not SIBMD."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

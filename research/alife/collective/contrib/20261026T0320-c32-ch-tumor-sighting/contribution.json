@@ -1,0 +1,20 @@
+{
+ "id": "20261026T0320-c32-ch-tumor-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "explore",
+ "title": "Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0)",
+ "summary": "world.py: conserved Cahn-Hilliard tissue phi with a source (P sigma - A) phi (proliferation on nutrient minus apoptosis) and a nutrient sigma that is eaten inside the tissue, diffuses and regrows toward 1 (Hawkins-Daarud et al. 2012 tumour model). From phi = 0.3 + noise everywhere: with fast nutrient diffusion (Ds 20) the tissue first thins, then nucleates 31-100 round droplets of one size that sit still to t=1000 (screen/a, screen/b); with Ds 5 target-ring waves spread from a few centres and break into dots and short rods, which then freeze (screen/e: 9 persistent splits, all from ring break-up before t~500); at Ds 2-3 the tissue fills the box; at too little supply it dies. Up to t=1000 this behaves like reaction-arrested microphase separation (Glotzer et al. 1995; the ledger's active emulsions), not like growing tumours that split.",
+ "parents": [],
+ "class": "ch-tumor",
+ "world": "world.py",
+ "evidence": [
+  "screen/b/sheet.png",
+  "screen/e/sheet.png",
+  "screen/a/sheet.png",
+  "screen/h/sheet.png"
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ }
+}

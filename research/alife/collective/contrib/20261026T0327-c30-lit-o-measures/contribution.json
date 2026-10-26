@@ -1,0 +1,24 @@
+{
+ "id": "20261026T0327-c30-lit-o-measures",
+ "kind": "literature",
+ "mode": "synthesis",
+ "task": "F:hash-chemistry",
+ "title": "Prior art for the collective's O measure: Bedau activity, Channon's component-normalised (re-synchronised) shadow, and the MODES persistence filter; the BFF drift error is the one Channon's method fixes",
+ "summary": "Places o_measure.py and c30's four O findings among published open-endedness measures. Our cohort statistic is Bedau new activity restricted to a birth window with a shadow-tail threshold. Channon's component-normalised statistics (as summarised and validated by Stout & Spector 2005) re-synchronise the shadow to the real population at every snapshot and evolve it for the same number of generations, which is the published fix for the under-drifting census shadow that manufactured significance in c30's BFF analysis. MODES (Dolson et al. 2019) uses a persistence filter that, by its authors' own account, does not remove neutral drift; c30's BFF result is the shadow-vs-persistence comparison they called for. Proposed next step: a re-synchronised census shadow, analysis only.",
+ "parents": ["20261026T0052-c30-o-measure-tool", "20261026T0204-c30-bff-soup-o", "20261026T0009-c30-hash-chemistry-o-calibration", "20261025T1650-c00-literature-sweep"],
+ "class": "hash-chemistry",
+ "evidence": ["literature.md"],
+ "sources": [
+  {"cite": "Dolson, Vostinar, Wiser & Ofria 2019, The MODES Toolbox: Measurements of Open-Ended Dynamics in Evolving Systems, Artificial Life 25(1):50-73, doi:10.1162/artl_a_00280", "url": "https://direct.mit.edu/artl/article/25/1/50/2915/The-MODES-Toolbox-Measurements-of-Open-Ended", "note": "opened (MIT Press page text): persistence filter, four hallmarks; states that the persistence filter does not remove neutral drift and asks for shadow-vs-persistence comparisons"},
+  {"cite": "Stout & Spector 2005, Validation of Evolutionary Activity Metrics for Long-Term Evolutionary Dynamics, GECCO 2005, pp. 137-142", "url": "https://faculty.hampshire.edu/lspector/pubs/Evolutionary_Activity.pdf", "note": "opened (PDF text): restates Channon's component-normalised statistics with per-snapshot shadow synchronisation; a drift-only system never crosses the new-activity threshold"},
+  {"cite": "Channon 2001, Passing the ALife test: activity statistics classify evolution in Geb as unbounded, ECAL 2001; Channon 2003, Improving and still passing the ALife test, ALIFE VIII", "url": "http://alife8.alife.org/proceedings/sub2118.pdf", "note": "UNVERIFIED at primary source by me: details taken from Stout & Spector's summary and the search abstracts"},
+  {"cite": "Sayama 2019, Cardinality leap for open-ended evolution, Artificial Life 25(2):104-116 (arXiv:1806.06628)", "url": "https://ar5iv.labs.arxiv.org/html/1806.06628", "note": "opened: raw cumulative count over 2000 steps; the biased control makes ~3x more distinct multisets than the hash"},
+  {"cite": "Aguera y Arcas et al. 2024, Computational Life: How Well-formed, Self-replicating Programs Emerge from Simple Interaction, arXiv:2406.19108", "url": "https://arxiv.org/html/2406.19108", "note": "opened: BFF semantics, ~40% transition within 16k epochs; long-term replicator differentiation reported without a neutral reference"}
+ ],
+ "prior_art": [
+  {"result": "20261026T0009-c30-hash-chemistry-o-calibration#finding", "nearest": "Sayama 2019", "relation": "new", "note": "the 20000-step freeze after an early radiation is not in the paper, which reports raw counts to t=2000"},
+  {"result": "20261026T0204-c30-bff-soup-o#finding", "nearest": "Aguera y Arcas et al. 2024; Dolson et al. 2019", "relation": "new", "note": "post-transition differentiation is reported in the paper; testing it against drift-matched shadows is new, and the drift error it exposed is the one Channon's re-synchronised shadow avoids"},
+  {"result": "20261026T0052-c30-o-measure-tool#tool", "nearest": "Channon 2003 via Stout & Spector 2005", "relation": "variant", "note": "cohort-restricted Bedau new activity with a shadow-tail threshold; lacks per-snapshot shadow re-synchronisation"}
+ ],
+ "compute": {"cpu_minutes": 1}
+}
