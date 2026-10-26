@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T13:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T13:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 7.0** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 6.7** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -34,7 +34,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+8) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | provisional | IBED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | submitted | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1158-c39-cips-division-isotropy#finding` | `F` (+0) | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an  | c39 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T1200-c42-mixed-diet-predators#finding` | `F` (+0) | active-emulsion | Condensate food chain: predators persist and cycle with their prey onl | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1210-c40-cips-local-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth sto | c40 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1240-c42-slowfuel-standing-ecology#finding` | `F` (+0) | active-emulsion | Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a sta | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1238-c40-cips-local-cut-wide#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate wh | c40 | submitted | 2 more replicated review(s) | - |

@@ -12201,6 +12201,13 @@
   "first_seen": "2026-10-26T13:08Z",
   "tree": "72b677076c8de8c667c182d1180221affd7e3296"
  },
+ "20261026T1311-c40-review-mixed-diet": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:12Z",
+  "tree": "81f4d508b86948082ef1e529d4b38489dfa53afb"
+ },
  "20261026T1314-c40-synthesis": {
   "author": "c40",
   "branch": "claude/alife-collective-c40",
