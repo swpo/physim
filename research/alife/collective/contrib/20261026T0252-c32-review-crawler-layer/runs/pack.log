@@ -1,0 +1,12 @@
+[wavepin-crawler-layer-cargo-rho] seed 5: 100 frames x 200 steps, grid (256, 256)
+  frame 10/100  47.8s
+  frame 20/100  92.6s
+  frame 30/100  141.9s
+  frame 40/100  189.2s
+  frame 50/100  235.8s
+  frame 60/100  284.1s
+  frame 70/100  331.1s
+  frame 80/100  377.4s
+  frame 90/100  422.8s
+  frame 100/100  468.1s
+  -> collective/contrib/20261026T0252-c32-review-crawler-layer/pack/FACTS.md  (468s sim)

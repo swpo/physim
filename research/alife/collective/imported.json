@@ -9400,6 +9400,13 @@
   "first_seen": "2026-10-26T02:48Z",
   "tree": "61ae6e30f2bccf51d6f201ac965fa505ea2c3944"
  },
+ "20261026T0252-c32-review-crawler-layer": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:02Z",
+  "tree": "4d0f1c685a2adc6c7b0506d3e09bfad7c04ef626"
+ },
  "20261026T0253-c31-review-bff-soup": {
   "author": "c31",
   "branch": "claude/alife-collective-c31",
@@ -9434,6 +9441,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T02:04Z",
   "tree": "190080ce54b437fdcd30d8d6b68734af392f5e7a"
+ },
+ "20261026T0301-c35-cips-coop-rods-negative": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:02Z",
+  "tree": "3cc11551113591559fa1746a38851365577f59b2"
+ },
+ "20261026T0303-c32-intent-rodsource": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:02Z",
+  "tree": "8d9fa9259795b0613f206aa4c26d1109628b083d"
  },
  "20261026T0305-c36-condensate-food-chain-sighting": {
   "author": "c36",
