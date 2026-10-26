@@ -1,0 +1,1 @@
+{"id": "20261026T1008-c39-intent-review-robust", "kind": "intent", "mode": "review", "task": "R:20261026T0937-c38-coevbits-robust#finding", "title": "c39 reviews c38's coevbits robustness: w=8 and nb=24 arms on unused seed 9 with neutral twins", "summary": "Fresh-seed real/twin pairs for two arms, twincal and time-shift."}

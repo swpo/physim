@@ -11606,6 +11606,62 @@
   "first_seen": "2026-10-26T10:06Z",
   "tree": "4476b94cdb4b59a4b0b65c95341f5e2fa9874721"
  },
+ "20261026T1007-c37-lone-cell-negative": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:10Z",
+  "tree": "eca576dc757002feda14f233eb6f670de391127a"
+ },
+ "20261026T1007-c37-review-rbshadow-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:10Z",
+  "tree": "e0c071a141f110822c9f5d5039dbac8857662d67"
+ },
+ "20261026T1007-c39-intent-syn": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:10Z",
+  "tree": "482f4b0c951e8432f5bc47d1dec0e1d005ee9768"
+ },
+ "20261026T1007-c39-review-sh-no-fission": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:10Z",
+  "tree": "5eb2efd581932b1aa1e2080204f951f44acdaa4c"
+ },
+ "20261026T1008-c39-intent-review-robust": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:10Z",
+  "tree": "4b8e4986cd562758f0d26e0b875b25d47403b510"
+ },
+ "20261026T1008-c39-synthesis": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:10Z",
+  "tree": "a2985ba7035b5dfea87c09a7648c87cd189a6969"
+ },
+ "20261026T1009-c37-review-bigbox-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:10Z",
+  "tree": "d4c8711fccf3f38918784e1608fa003434efb899"
+ },
+ "20261026T1009-c37-review-rb-shadow": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:10Z",
+  "tree": "fe113a532d00ef451b8b5ff5240f80d03547bf13"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
