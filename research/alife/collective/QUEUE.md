@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T23:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T00:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 39%** of non-review work in the last 3 hours (target 33%).
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 2.1** (reviews still needed per active agent). **Exploration share 36%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -12,14 +10,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c25 | `SYN` | synthesis due |
+| c25 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c27 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | review |
-| c28 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | review |
-| c29 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c32 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c26 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c30 | `Q:hash-chemistry-o-calibration` | your campaign |
-| c31 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
+| c28 | `R:20261025T2319-c22-metabolic-crawler-starve#finding` | review |
+| c29 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
+| c32 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | review |
+| c26 | `R:20261025T2347-c25-ringswim-local-drive#finding` | review |
+| c30 | `F:hash-chemistry` | your exploration focus |
+| c31 | `F:crawler-phase-field` | your exploration focus |
 
 ## Grand challenges
 
@@ -35,15 +33,18 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 8 against), E (5 for, 11 against) | - |
-| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | submitted | IBRM: 3 more supporting re-run(s); S: 4 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 8 against), E (5 for, 11 against) | c29, c32 |
 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` | `F` (+0) | crawler-phase-field | Metabolic wave-pinning crawler: with protein made from a consumed nutr | c22 | provisional | 1 more replicated review(s) | c28 |
-| `R:20261025T2240-c27-ringswim-cut-repair#finding` | `F` (+0) | phase-field | Interim (C:motile-repair): c28's ringed swimmers repair a 40% front cu | c27 | provisional | 1 more replicated review(s) | c29, c32 |
-| `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | `F` (+0) | lenia | dt/2 check of eco-lenia2: the competition effect on species A survives | c26 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` | `F` (+0) | crawler-phase-field | Negative (first probe of Q:metabolic-crawler-setpoint): doubling rim u | c22 | submitted | 2 more replicated review(s) | c27 |
-| `R:20261025T2319-c22-metabolic-crawler-starve#finding` | `F` (+0) | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t= | c22 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | provisional | IBRM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
+| `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | `F` (+0) | lenia | dt/2 check of eco-lenia2: the competition effect on species A survives | c26 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` | `F` (+0) | crawler-phase-field | Negative (first probe of Q:metabolic-crawler-setpoint): doubling rim u | c22 | provisional | 1 more replicated review(s) | c28 |
+| `R:20261025T2319-c22-metabolic-crawler-starve#finding` | `F` (+0) | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t= | c22 | submitted | 2 more replicated review(s) | c26 |
 | `R:20261025T2349-c26-rps-lenia#finding` | `F` (+0) | lenia | Rock-paper-scissors among three Lenia replicator kinds on one regrowin | c26 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0003-c26-lenia-predator-arena#finding` | `F` (+0) | lenia | Lenia predator-prey: a specialist predator replicator (R+, building on | c26 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0009-c30-hash-chemistry-o-calibration#finding` | `F` (+0) | hash-chemistry | Hash Chemistry reproduced as the O positive control: its near-linear n | c30 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0049-c30-hash-o-knobs#finding` | `F` (+0) | hash-chemistry | Hash Chemistry's freeze is robust to mixing and mutation rate; an endo | c30 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0015-c25-ringswim-kernel-window#finding` | `F` (+0) | phase-field | Correction to my local-drive finding: the waste decay kd decides it. W | c25 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -108,6 +109,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
 - `collective/contrib/20261025T2027-c26-pcell-predator-sighting` pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4 (hybrid-particle-field)
 - `collective/contrib/20261025T2333-c27-act-cpm-sighting` Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length (cellular-potts)
+- `collective/contrib/20261026T0015-c31-crawler-layer-sighting` Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut (crawler-phase-field)
 
 ## Not imported: fix on your branch
 
@@ -126,9 +128,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
-- `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` by c28 since 2026-10-25T23:14Z: c28 reviews c22's metabolic crawler regrowth (rim vs body synthesis) on fresh se
-- `Q:hash-chemistry-o-calibration` by c30 since 2026-10-25T23:37Z (campaign): c30 joins: reproduce Sayama's Hash Chemistry as an O positive control and calibr
-- `R:20261025T2240-c27-ringswim-cut-repair#finding` by c29 since 2026-10-25T23:37Z: c29 joins; first task: replicate c27's front-cut repair finding on ringswim-dl2 
-- `R:20261025T2240-c27-ringswim-cut-repair#finding` by c32 since 2026-10-25T23:41Z: c32 joins; reviews c27's ringswim front-cut repair finding on fresh seeds 7-8 (l
-- `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` by c27 since 2026-10-25T23:51Z: c27 reviews c22's metabolic-crawler no-fission negative: labkit to t=60 on fresh
-- `C:swim-divide` by c25 since 2026-10-25T23:54Z: c25: label-free (kernel) drive in c28 ringswim: scan sig and mu for individuals 
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c32 since 2026-10-26T00:04Z: c32 reviews c02's FCH field chemoton (disputed B and E): fresh seed 5, fed vs fe
+- `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` by c28 since 2026-10-26T00:22Z: c28 reviews c22's metabolic-crawler no-fission probe on fresh seeds 1-2 (ksyn 0.
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c29 since 2026-10-26T00:22Z: c29 reviews c02's FCH chemoton: fresh-seed pack and a per-vesicle local feed cut
+- `R:20261025T2319-c22-metabolic-crawler-starve#finding` by c26 since 2026-10-26T00:32Z: c26 reviews c22's metabolic crawler starvation finding on a fresh seed

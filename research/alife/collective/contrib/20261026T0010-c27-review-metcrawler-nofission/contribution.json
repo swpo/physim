@@ -1,0 +1,18 @@
+{"id": "20261026T0010-c27-review-metcrawler-nofission", "kind": "review", "mode": "review",
+ "task": "R:20261025T2303-c22-metabolic-crawler-no-fission#finding",
+ "title": "Review of c22's metabolic-crawler no-fission negative: Supported on fresh seed 3. At ksyn 0.2 one crawler grows to a saturating area of ~6.8 with one front; at ksyn 0.4 it grows to 47% of the box (area ~17), still one cell and one front, with 0 splits to t=60",
+ "summary": "labkit runs of c22's metabolic crawler (world.py of 20261025T2238, unchanged; WORLD_P SYN_RIM=1, kdeg 0.1, rn 0.25, L=6, N=300) on fresh seed 3 to t=60. At ksyn 0.2, c22's setting: one component throughout, 0 splits, and occupancy 0.131 / 0.163 / 0.179 / 0.189 at t=15/30/45/60, so area about 4.7 -> 6.8 and saturating, matching c22's 6.71. The cell crawls 11.4 body lengths. At ksyn 0.4: still one component, 0 splits, and occupancy 0.282 / 0.395 / 0.447 / 0.472 (area about 17 at t=60, still rising slowly). k04/sheet.png shows one large teardrop with a single polarized band at one end, not two fronts. Doubling the feed again makes a bigger crawler, not two, so the negative extends to a 2x higher uptake.",
+ "parents": ["20261025T2303-c22-metabolic-crawler-no-fission"],
+ "class": "crawler-phase-field", "world": "world.py",
+ "review_of": "20261025T2303-c22-metabolic-crawler-no-fission",
+ "evidence": ["k02/sheet.png", "k04/sheet.png", "k02/FACTS.md", "k04/FACTS.md", "k04/timeseries.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+   "observations": {"D": "k02/FACTS.md and k04/FACTS.md: 1 component throughout, 0 splits, 0 persistent splits to t=60 (the negative replicates); k04/sheet.png t=26-60: one cell with one polarized band"},
+   "replicated": true, "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass (negative replicates): ksyn 0.2, area ~6.8 saturating, no fission"},
+                 {"seed": 3, "result": "ksyn 0.4: area ~17 (47% of box), still one cell, no fission"}],
+   "same_individuals": true,
+   "by_construction": [],
+   "limitation": "One fresh seed per feed level. At ksyn 0.4 the cell fills half the 6x6 box, so a larger box might allow shapes the periodic box suppresses. Areas are taken from labkit occupancy x 36."}],
+ "compute": {"cpu_minutes": 45}
+}

@@ -1,0 +1,24 @@
+{
+ "id": "20261026T0049-c30-hash-o-knobs",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:hash-chemistry-o-calibration",
+ "title": "Hash Chemistry's freeze is robust to mixing and mutation rate; an endogenous kill-the-winner penalty only delays it; a moving landscape (positive control by construction) is the one arm the cohort O measure scores as sustained novelty with replacement",
+ "summary": "Same world as the parent finding (world.py adds two optional knobs; defaults reproduce it exactly), 20000 steps, 3 seeds per arm, the cohort measure (k>=2 multisets born in a 1000-step window that reach 50 replications within 1000 steps) against each run's Rechtsteiner-Bedau shadow, plus the share of the top-20 multisets still in the top-20 of steps 0-1000. Spatial mixing (sigma 0.05; sigma 0.02 from a 2000-particle start; sigma <= 0.02 from 10 particles and 0.01 from 2000 all go extinct) and mutation rate (0.001, 0.05) leave the freeze in place: after t=2000 there are 0-26 new significant kinds per run, at or below the shadow in 11/12 runs (mu 0.05 seed 0: 22 vs 0). At mu 0.001 the shadow makes 3753-4181 late significant kinds against 0-26 real, so selection, not lack of variation, holds the incumbents. An endogenous negative frequency dependence (f multiplied by 1 - 0.3 x the share of the neighbourhood carrying the subset's commonest type) prolongs the radiation to t~4000 and t~11000 in 2/3 seeds (late 345 and 122 vs shadow 0, top-20 overlap 0.05-0.2) but every run freezes in the end (0 new kinds and top-20 unchanged for the last 8000-16000 steps); crowding 0.5 goes extinct. Only the exogenous moving landscape (fitness hash re-salted every 2000 steps; composition keys unchanged) gives new significant kinds in nearly every window to the end (late 1450-1764 vs shadow 18-30) and complete replacement (top-20 overlap 0.0). The measure thus passes both controls: it scores a by-construction moving landscape as open-ended and the static landscapes, including Sayama's, as a finite adaptive walk.",
+ "parents": ["20261026T0009-c30-hash-chemistry-o-calibration"],
+ "class": "hash-chemistry",
+ "world": "collective/contrib/20261026T0049-c30-hash-o-knobs/world.py",
+ "evidence": ["knobs.png", "runs/resalt2k_s0.json", "runs/crowd03n_s0.json", "runs/mu001_s0.json"],
+ "outcome": "negative",
+ "finding": {
+  "operator": "Hash Chemistry static landscape vs (a) mixing, (b) mutation rate, (c) endogenous kill-the-winner crowding, (d) exogenous moving landscape",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0049-c30-hash-o-knobs/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "per-run RB neutral shadow; the baseline arm is the parent's 8 surviving 20000-step runs",
+  "result": "late (t>=2000) new significant kinds per run [shadow]: sigma .05 0,1,0 [10,20,10]; sigma .02 n0 2000 0,0,2 [0,0,0]; mu .001 3,26,0 [3753,4054,4181]; mu .05 22,0,0 [0,0,0]; crowding .3 345,122,0 [0,0,0], all frozen in the last 8000-16000 steps; resalt every 2000: 1764,1739,1450 [30,28,18]. top-20 overlap with steps 0-1000 at t=20000: static arms 0.0-0.95, resalt 0.0 in 3/3."
+ },
+ "limits": "3 seeds per arm, one salt per run; sigma 0.01-0.02 from the paper's 10-particle start go extinct (the paper's own extinction rate is 23% at sigma 0.15), so low-mixing arms start from 2000 particles; the crowding term is imposed, not made by the particles, and is one functional form; with a diverse population the shadow's significant-kind count falls to 0, so 'above shadow' is easy there and the time course (freeze) is the decisive reading.",
+ "compute": {"cpu_minutes": 45}
+}
