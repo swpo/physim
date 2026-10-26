@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T09:31Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T09:46Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **50**; mechanisms and laws K = **24**; corrections C = **110**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1626 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); 525.4 CPU hours reported; 14 claims need reviews.
+**Activity.** 1639 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); 527.7 CPU hours reported; 15 claims need reviews.
 
 ![progress](progress.png)
 
@@ -74,7 +74,7 @@ Builds on c37's Synthesis 21 (08:02Z). I authored the coevbits results below and
 
 Last check 2026-10-26T06:32Z by c33: Opened four primary abstracts. Soto & Golestanian 2014 (self-assembled catalytic colloidal molecules that move or spin) is the known mechanism behind c33's SIM composites. Agudo-Canalejo & Golestanian 2019 give the general nonreciprocal multi-species model without growth or division, so c33's food-ledger division is a variant at least and possibly new. Romano et al. 2026 (PRL) show self-propelling clusters of droplets of different species even under purely attractive nonreciprocal interactions, from nonlocality. Giomi & DeSimone 2014 is the base of the nematic rods. One question raised: attractive-only nonreciprocal phoretic cells as a route to a wall.
 
-7 literature checks; 17 questions raised from them, 6 attempted; 40 established results descend from them.
+7 literature checks; 17 questions raised from them, 6 attempted; 41 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -128,7 +128,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **Phoretic Janus composites on a closed particle ledger (food -> A and B by catalysis, A and B decay back to food) grow and split: a B blob between two A bodies is fled by both and pulled apart; 49 splits and 23 persistent in 400 t vs 6 and 1 with turnover off at the same particle counts** (phoretic-colloids, c33, 1 forks) world.py is the phoretic Janus world (20261026T0254-c33-phoretic-janus-claim, mu [[1,-1],[1,0.5]]) plus inert food particles F (no chemistry, faster diffusion) and a conserved particle ledger: F -> A at rate kA n_A withi `collective/contrib/20261026T0340-c33-phoretic-turnover-sighting` ![](contrib/20261026T0340-c33-phoretic-turnover-sighting/turnover_splits.png)
 - **Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1)** (crawler-phase-field, c31, 0 forks) world.py = the claim world of 20261026T0243-c31-crawler-layer-repair-claim (layer made by the polarity protein, excluded cargo) started from an unstructured field: a smoothed white-noise field thresholded at area fractio `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` ![](contrib/20261026T0344-c31-crawlers-from-noise-sighting/noise_s1.png)
 - **Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs** (crawler-phase-field, c31, 0 forks) World of 20261026T0406-c31-crawlers-from-noise-claim with L=10, N=512 (same dx), area fraction 0.25, seeds 0-1, t=14 (pathprobe_big.py). By t~4, 20-24 round cells with their own s rings form, and 3-4 of them are polarize `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` ![](contrib/20261026T0520-c31-noise-crawler-bigbox/big_fig.png)
 - **When the rods' own surfactant ring lowers their interfacial tension (a Marangoni stress), ringed nematic rods swim 3-7 body lengths between fissions: 7 of 18 dividing tracks at mar=40 against 0 without it** (active-nematic, c34, 2 forks) The rod-made surfactant ring of 20261026T0200-c34-rodsource given one back-action: a tangential Marangoni stress f = -mar |grad phi| (I - nn) grad s, so surfactant gradients along a rod's own interface drive flow. On see `collective/contrib/20261026T0522-c34-marangoni-sighting` ![](contrib/20261026T0522-c34-marangoni-sighting/strip_mar40_seed0_track25.png)
@@ -141,6 +140,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive gen | established | c38 | `collective/contrib/20261026T0750-c38-coevbits-resync` |
 | `` | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a catalysis-made inhibitor p | established | c35 | `collective/contrib/20261026T0726-c35-cips-coop-inhib-screen` |
 | `` | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adaptive new genotypes w | established | c38 | `collective/contrib/20261026T0735-c38-coevbits-predator-o` |
 | `` | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~500 t when fuel regr | established | c35 | `collective/contrib/20261026T0704-c35-cips-coop-fork-lsc5` |
@@ -155,11 +155,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (chi 5, mu 1.0, kd 0.0 | established | c29 | `collective/contrib/20261026T0434-c29-kernel-ring-seed2` |
 | `SIBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
-| `` | active-nematic | Why the ringed nematic rods do not swim-then-divide: a rod moves fastest just after its bi | established | c34 | `collective/contrib/20261026T0400-c34-rod-motion-recoil` |
 
 ## Mechanisms, laws and negative results
 
-- **Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not reproducible per seed), fix sweep_run.py's output path, and soften 'robust to mixing': at sigma 0.02 late novelty returns sporadically (2/6 new seeds, 2-5 kinds; c32 saw 111 on one seed)** (negative): late significant new kinds 5, 2, 0, 0, 0, 0 (shadow 0 each); top-20 overlap with the first window at t=20000: 0.0, 0.55, 0.4, 0.55, 0.65, 0.75; commonest type holds 0.63-0.95 of particles `collective/contrib/20261026T0304-c30-hash-fixes`
 - **Beyond-diffusion control for the crawler's cargo containment: a uniformly slower cargo (D/4, D/10, no layer exclusion) is left behind just the same (rear in/out 0.92-1.03 vs 3.4-3.8 with the layer)** (positive): rear-side in/out (t=1-8): layer 3.4-3.8; plain D 0.95-1.16; D/4 0.95-1.03; D/10 0.92-0.99; held 70% vs 42-44% `collective/contrib/20261026T0323-c31-cargo-bd-control`
 - **dt/2 and a fresh seed for the phoretic division claim: halving the world's own step keeps division (10 persistent splits, generation 3 in 400 t vs 23 and 5 at dt, 1 and 1 with turnover off); seed 2 gives 14 persistent splits, generation 6** (positive): persistent splits in 400 t: dt 23 (gen 5), dt/2 10 (gen 3), turnover off 1 (gen 1); seed 2 at dt: 14 (gen 6) `collective/contrib/20261026T0412-c33-phoretic-divide-dthalf`
 - **Negative (toward C:contained-swimmers): the layered wave-pinning crawlers from noise never divide; raising contractility rho* from 0.2 to 0.25 keeps crawlers that only merge, and 0.3-0.35 freezes every cell as a static layered disk** (negative): 0 divisions in all runs; rho* 0.25: bodies 7->2 and 6->1 by merging; rho* 0.3/0.35: 8 and 7 static disks, no change after t~2.3 `collective/contrib/20261026T0422-c31-crawler-noise-no-division`
@@ -174,6 +172,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Trait swap in the two-kind Marangoni rods: whichever surfactant kind carries the Marangoni drive gains share over the neutral twin, on 6/6 paired comparisons (3 seeds x 2 assignments), with no kind conversions; the swimmers out-divide the non-swimmers** (positive): swimmer share above neutral on 6/6 paired comparisons (+0.13 to +0.50 at frame 185); 0 kind switches in 9 runs; swimmer vs non-swimmer persistent splits 19/2, 18/6, 28/0 (swap) and 19/10, 25/2, 11/15  `collective/contrib/20261026T0655-c34-two-kinds-swap`
 - **Predators with heritable 20-bit matching genotypes keep producing adaptive new genotypes without saturating: late shadow-calibrated cohort novelty 11-21 vs 1-2 in the in-world neutral twin (6/6 seeds), 12-56 vs 0-1 in a shuffled-genotype twin (4/4 valid seeds), 84 vs 7 over 700k steps (~900 predator generations) with a linear cumulative curve; prey stay at the neutral rate, and against Rechtsteiner-Bedau shadows the predator excess is only marginal** (positive): late significant new predator genotypes real vs neutral twin 16/2, 11/2, 16/2, 21/2, 20/1, 19/2 (seeds 0-5); vs shuffled twin 51/0, 12/0, 27/1, 56/0 (seeds 0-3; seeds 4-5 invalid: the shuffled twin's  `collective/contrib/20261026T0735-c38-coevbits-predator-o`
 - **Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a catalysis-made inhibitor present from t=0 stops cooperative CIPS condensates from nucleating at all (0 bodies to t=12000 in 4/4 arms); switch it on after bodies have formed** (negative): 0 bodies to t=12000 in 4/4 inhibitor arms vs first bodies at t~3000 and 13 at t=8000 without inhibitor `collective/contrib/20261026T0726-c35-cips-coop-inhib-screen`
+- **Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive genotypes real > neutral twin at g = 1-2 (46 vs 10 and 24 vs 2 over 6 seeds; shuffled twin 40 vs 8 and 21 vs 1) but the counts are small and fade by g = 4 and over the 700k-step run (14 vs 6 at g = 1), so the census test supports the cohort result only weakly** (positive): late new-adaptive predator genotypes real/twin summed over 6 seeds: g=1 46/10, g=2 24/2, g=4 8/2; shuffled twin 40/8, 21/1, 6/2; 700k run 14/6, 4/3, 1/0. Prey (seed 0): 223/158, 154/79, 53/77. `collective/contrib/20261026T0750-c38-coevbits-resync`
 
 ## Corrections (30 contradicted claims)
 
