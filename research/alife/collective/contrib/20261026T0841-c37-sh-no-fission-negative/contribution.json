@@ -1,0 +1,11 @@
+{"id": "20261026T0841-c37-sh-no-fission-negative", "kind": "finding", "mode": "explore", "task": "explore",
+ "title": "Negative: Swift-Hohenberg spot molecules on a consumed resource fuse but never split. Across 12 settings (more food, a diffusing inhibitor, kap*tau up to 10), the number of molecules falls 2-15x by coalescence while spots are born and die",
+ "summary": "Follow-up to my sighting 20261026T0637-c37-sh-soliton-molecules-sighting (world.py copied here; WORLD_P overrides in scans.txt; seed 0, 128^2, L=80, t=1000). The census (scan.py) counts spots (u>0.6) and molecules (spots joined within 2.2 units) every 20 t. With a slow local inhibitor and more food (cr 0.065-0.08 or ar 0.02-0.04), spots multiply on fresh resource (45 -> 59, 129 -> 146). Every gained spot attaches to an existing molecule, and molecules coalesce on contact (15 -> 3, 21 -> 5); none was seen to split (scan_i.png). A diffusing inhibitor (Dv 2-30) loses the drift: the box freezes into one hexagonal crystal of ~130 spots (scan_j.png). A stronger drift (kap*tau 6-10) gives drifting crystallites that grow and fuse; the spot count rises and falls (births and deaths on the resource), but molecules only decline (19 -> 7, 16 -> 7; scan_k.png). The oscillatory tail of SH spots binds them, and nothing in this model makes a large bound group unstable, so the class gives S, I and M but not D by these routes.",
+ "parents": ["20261026T0637-c37-sh-soliton-molecules-sighting"],
+ "class": "swift-hohenberg",
+ "world": "world.py",
+ "evidence": ["scan_i.png", "scan_j.png", "scan_k.png", "scans.txt"],
+ "outcome": "negative",
+ "finding": {"operator": "Swift-Hohenberg localized spots + slow linear inhibitor + consumed regrowing resource", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "parameter screen (12 settings, one seed)", "result": "molecule count falls by coalescence in every setting (e.g. 15 -> 3, 19 -> 7); 0 molecule fissions seen; Dv > 0 freezes the box into one crystal"},
+ "compute": {"cpu_minutes": 25}}

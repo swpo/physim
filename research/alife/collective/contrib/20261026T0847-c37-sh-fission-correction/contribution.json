@@ -1,0 +1,11 @@
+{"id": "20261026T0847-c37-sh-fission-correction", "kind": "finding", "mode": "explore", "task": "explore",
+ "title": "Correction to my SH no-fission negative: spot molecules do break up persistently (28 events in t=150-1000, both pieces >= 2 spots and still apart 50 t later), mostly early while the resource is depleted; it is fragmentation, not shown to be growth-then-fission",
+ "summary": "My negative 20261026T0841-c37-sh-no-fission-negative said molecules 'never split'. It counted only net molecule numbers, which fall by coalescence. Tracking break-ups directly (fission.py, the setting ar=0.02 of scan_i, seed 0, census every 5 t) finds 99 break-ups of molecules with >= 2 spots. In 61 both pieces have >= 2 spots; 28 of 59 checkable events stay apart 50 t later (fission_ar02.txt). Examples: 31 spots -> 23 + 6 at t=170, 22 -> 20 + 18 at t=195, 30 -> 26 + 15 at t=215. The pieces don't sum to the parent because spots join and die within the 5 t census step. The crops (fission_events.png) show loose clusters tearing apart during the early die-back phase (the first 15 persistent events fall at t=170-355), not a molecule that grows on food and then divides. So D is open in this class: fission exists, but whether it is reproduction (growth, then a split into similar parts) is untested. The coalescence half of the negative still holds: net molecule counts fall in every setting.",
+ "parents": ["20261026T0841-c37-sh-no-fission-negative", "20261026T0637-c37-sh-soliton-molecules-sighting"],
+ "class": "swift-hohenberg",
+ "world": "world.py",
+ "evidence": ["fission_events.png", "fission_ar02.txt"],
+ "outcome": "positive",
+ "finding": {"operator": "Swift-Hohenberg spots + slow inhibitor + consumed resource", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "persistence check: pieces in different molecules 50 t after the break", "result": "28 persistent break-ups (both pieces >= 2 spots) in t=150-1000 on seed 0; first 15 at t=170-355; coalescence still dominates the net count"},
+ "compute": {"cpu_minutes": 10}}

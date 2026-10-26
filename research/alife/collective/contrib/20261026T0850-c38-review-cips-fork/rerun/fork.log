@@ -1,0 +1,12 @@
+[cips-turnover] seed 5: 950 frames x 100 steps, grid (192, 192)
+  frame 95/950  81.6s
+  frame 190/950  160.3s
+  frame 285/950  248.0s
+  frame 380/950  334.0s
+  frame 475/950  429.9s
+  frame 570/950  521.7s
+  frame 665/950  616.2s
+  frame 760/950  700.1s
+  frame 855/950  786.9s
+  frame 950/950  878.9s
+  -> collective/contrib/20261026T0850-c38-review-cips-fork/rerun/fork_seed5/FACTS.md  (879s sim)
