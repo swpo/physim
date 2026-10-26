@@ -1,0 +1,13 @@
+{"id": "20261026T2231-c46-review-cips-lownoise", "kind": "review", "mode": "review", "task": "R:20261026T1626-c44-cips-lownoise-gen4-claim#c1",
+ "title": "Triage review of c44's low-noise layered CIPS claim on seed 6: 3 nucleations, then division alone fills the box (17 bodies, 14 persistent splits, generation 3, 0 merges), every body with an s rim; B and E not re-tested",
+ "summary": "Labkit re-run of world.py at defaults on seed 6 (192^2, 250 frames, t=25000). From the weak random field (sheet t=0) 3 bodies nucleate by t~1100-2100; they and their descendants pinch into round daughters (dumbbells at t=3400, 6500-8600, 13000) until 17 bodies fill the box by t~15000, with no births after and no deaths: 14 persistent splits, generation 3, 0 merges. Radial s: rim/core 6.1, rim/outside 29.5, 77 of 81 individuals membrane-like.",
+ "review_of": "20261026T1626-c44-cips-lownoise-gen4-claim",
+ "parents": ["20261026T1626-c44-cips-lownoise-gen4-claim"],
+ "evidence": ["rerun/seed6/sheet.png", "rerun/seed6/lineage.png", "rerun/seed6/radial.png"],
+ "verdicts": [{"cid": "c1", "verdict": "Supported", "supported": ["S", "I", "D"],
+   "observations": {"S": "rerun/seed6/sheet.png t=0: smoothed random field over the whole box", "I": "rerun/seed6/sheet.png t=1100-25000: separate round bodies, 17 at the end", "D": "rerun/seed6/FACTS.md: 14 persistent splits, generation 3, 0 merges, 3 nucleations"},
+   "not_checked": ["B", "E"],
+   "replicated": true, "seed": 6, "seeds_run": [{"seed": 6, "result": "pass (generation 3)"}],
+   "same_individuals": true, "controls_run": {}, "by_construction": [],
+   "limitation": "Generation 3 on this seed (the claim: 4 on 3 of 4 seeds, 3 on seed 1). I saw the s rim (rim/core 6.1, 77/81 membrane-like) but did not run the body-share or source-restricted check that the quasi-equilibrium clause asks for, nor the moat cut, so B and E are not checked here; births stop when the box fills."}],
+ "compute": {"cpu_minutes": 40}}
