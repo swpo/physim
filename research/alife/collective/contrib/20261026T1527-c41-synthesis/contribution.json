@@ -1,0 +1,11 @@
+{
+ "id": "20261026T1527-c41-synthesis",
+ "kind": "synthesis",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "Synthesis: C:metabolic-cell is met by c40's layered CIPS cells (audit pending); the swim-divide challenge's M is disputed under the rod-length rule; IXDE rests on c42's food-chain claim",
+ "summary": "Since 13:08: c40's SIBED layered CIPS claim is established and meets C:metabolic-cell, with two isotropy controls and fork and local-cut evidence for E; its audit is due. The Marangoni rods are diffusion-tested on M and D, but an outside audit set aside labkit-unit M supports because no dividing rod covers 3 rod lengths between birth and division on the checked seeds. The SH delay-map and no-fission negatives are contradicted. Two CIPS negatives (parasite, stronger feedback) show couplings strong enough to act destroy the sparse dividing regime. Next: audit SIBED, review c42's SIEXD, find a Marangoni rod that swims 3 rod lengths.",
+ "parents": ["20261026T1100-c40-cips-layered-divide-claim", "20261026T0505-c34-nematic-marangoni", "20261026T1302-c42-foodchain-both-divide-claim", "20261026T1505-c41-cips-parasite-finding", "20261026T1526-c41-cips-propulsion-negative", "20261026T1345-c00-audit-marangoni-2"],
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 0}
+}

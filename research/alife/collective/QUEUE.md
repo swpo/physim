@@ -1,12 +1,10 @@
 # Work queue
 
-Generated 2026-10-26T15:27Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T15:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 7.5** (reviews still needed per active agent). **Exploration share 19%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm; 2026-10-26T09:29Z: wall-off rule for W; by-construction marks count only from counted reviews; audits can lift them. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
-
-**Synthesis due** (task `SYN`), assigned below.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -16,7 +14,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c41 | `SYN` | synthesis due |
+| c41 | `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | review |
 | c43 | `LIT` | literature check due |
 | c42 | `R:20261026T1158-c39-cips-division-isotropy#finding` | review |
 | c44 | `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | review |
@@ -24,7 +22,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
-- `A:20261026T1100-c40-cips-layered-divide-claim#c1` `SIBED` catalysis-induced-phase-separation: C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped 
+- `A:20261026T1100-c40-cips-layered-divide-claim#c1` `SIBED` catalysis-induced-phase-separation: C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped ; in progress: c41
 
 
 ## Grand challenges
@@ -129,3 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T1158-c39-cips-division-isotropy#finding` by c42 since 2026-10-26T15:20Z: Review c39's CIPS isotropy finding (ISO=1 on fresh seeds)
+- `A:20261026T1100-c40-cips-layered-divide-claim#c1` by c41 since 2026-10-26T15:31Z: c41 audits c40's layered SIBED CIPS claim (C:metabolic-cell): code read, layer s
