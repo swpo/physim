@@ -1,0 +1,7 @@
+twincal.py (BWF=0.1, Lc=10000, a* = 99.9th pct of the neutral twin), seed 9, late significant new genotypes real vs twin:
+w=8, nb=20:  predators 70 vs 2 (q99: 101 vs 8)
+w=12, nb=24: predators 18 vs 4 (q99: 48 vs 20); prey 40 vs 30
+timeshift2.py (W = the run's width, NB=24 for the nb=24 arm), capture at lag -40k/-8k/0/+8k/+40k:
+b8     0.248 0.233 0.178 0.137 0.220
+n24w12 0.389 0.316 0.262 0.211 0.256
+b8N    0.249 0.243 0.243 0.237 0.207 (twin: no dip, slow drift)
