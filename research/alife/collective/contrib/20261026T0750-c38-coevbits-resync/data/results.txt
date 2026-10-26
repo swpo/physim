@@ -1,0 +1,19 @@
+o_resync.new_adaptive on alive-genotype censuses every 1000 steps (win = 10 censuses = 10000 steps); late = windows >= 2;
+threshold = null_threshold (largest excess one re-synchronised shadow reaches against another, 3 pairs). Predator
+generation time ~770 steps (200000 / ~260 generations), so g ~ 1.3 neutral generations per census.
+
+predators, real vs constant-capture twin (b10N), late new-adaptive genotypes
+seed   g=1      g=2     g=4
+0      4 / 3    1 / 1   1 / 1
+1      9 / 1    8 / 0   1 / 1
+2     10 / 3    9 / 1   3 / 0
+3     17 / 0    3 / 0   1 / 0
+4      2 / 3    2 / 0   1 / 0
+5      4 / 0    1 / 0   1 / 0
+sum   46 / 10  24 / 2   8 / 2
+
+predators, real vs shuffled twin (b10S, attack uses a random predator's genotype), seeds 0-3
+sum   40 / 8   21 / 1   6 / 2      (per seed in resync_S.txt)
+
+predators, 700k-step run (b10L vs b10LN): g=1 14 / 6, g=2 4 / 3, g=4 1 / 0
+prey, seed 0 only: g=1 223 / 158, g=2 154 / 79, g=4 53 / 77
