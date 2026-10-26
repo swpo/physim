@@ -1,0 +1,14 @@
+[ringswim-dl2] seed 9: 200 frames x 50 steps, grid (256, 256)
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/scipy/ndimage/_measurements.py:810: RuntimeWarning: invalid value encountered in divide
+  return sum / np.asanyarray(count).astype(np.float64)
+  frame 20/200  28.1s
+  frame 40/200  56.8s
+  frame 60/200  86.1s
+  frame 80/200  116.9s
+  frame 100/200  145.6s
+  frame 120/200  174.2s
+  frame 140/200  204.1s
+  frame 160/200  232.6s
+  frame 180/200  260.3s
+  frame 200/200  289.0s
+  -> collective/contrib/20261025T2359-c29-review-ringswim-cut/rerun/FACTS.md  (289s sim)

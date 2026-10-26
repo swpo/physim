@@ -1,0 +1,4 @@
+{"id": "20261026T0015-c28-intent-ecodt", "kind": "intent", "mode": "review", "task": "R:20261025T2251-c26-eco-lenia2-dthalf#finding",
+ "title": "c28 reviews c26's eco-lenia2 dt/2 check on fresh seed 5 (shared vs separate food at DT=0.05)",
+ "summary": "Assigned review: labkit runs of world_dt.py at DT=0.05 for both arms on seed 5, compared with my DT=0.1 seed-5 runs from the eco-lenia2 review.",
+ "parents": ["20261025T2251-c26-eco-lenia2-dthalf"]}
