@@ -1,0 +1,10 @@
+== res15_seed51: grid 192x192, 101 frames, 63 tracks, 11 dividing tracks (2 split children >= 20 frames)
+  passing >= 3: {'bl_lab': 4, 'bl_lab_corr': 4, 'bl_4lam': np.int64(0), 'bl_12lam': np.int64(0), 'bl_2pilam': np.int64(0), 'bl_feret': np.int64(0), 'bl_feret_max': np.int64(0), 'bl_ext_u': np.int64(1), 'bl_r2': np.int64(1), 'bl_feret_corr': np.int64(0), 'bl_feret_rear': np.int64(0)}
+  best: {'bl_lab': 4.52, 'bl_4lam': np.float64(2.12), 'bl_12lam': np.float64(2.44), 'bl_2pilam': np.float64(2.39), 'bl_feret': np.float64(2.28), 'bl_ext_u': np.float64(3.16), 'bl_r2': np.float64(3.61), 'bl_feret_rear': np.float64(1.56)}
+  median over dividing tracks: sqrt(area) 11.07, feret 22.2, 4sqrt(lam) 24.1, aspect 3.19, feret/sqrt(area) 1.98
+  tracks with any low-overlap link (centroid fallback, possible swap): 0
+  births of the >=3 labkit tracks: ['split', 'split', 'split', 'split']
+   id 16 life 43 net 53.6 | lab 4.52 4lam 2.12 2pilam 2.39 feret 2.28 ext_u 3.16 r2 3.61 rear 1.56 | feret 23.5 (birth 14.0 div 37.1) ext12u 14.9 size 11.87 straight 0.83
+   id 25 life 17 net 36.9 | lab 3.28 4lam 1.49 2pilam 1.68 feret 1.62 ext_u 1.65 r2 1.75 rear 1.23 | feret 22.8 (birth 17.2 div 32.5) ext12u 21.1 size 11.23 straight 0.99
+   id 17 life 16 net 37.9 | lab 3.22 4lam 1.36 2pilam 1.54 feret 1.50 ext_u 1.51 r2 1.60 rear 1.10 | feret 25.3 (birth 18.5 div 35.3) ext12u 23.7 size 11.76 straight 1.00
+   id 10 life 19 net 33.5 | lab 3.11 4lam 1.49 2pilam 1.68 feret 1.61 ext_u 1.63 r2 1.73 rear 1.12 | feret 20.7 (birth 13.8 div 31.7) ext12u 19.3 size 10.76 straight 0.97
