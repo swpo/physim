@@ -1,0 +1,12 @@
+[fch-pchemoton-starve] seed 5: 200 frames x 300 steps, grid (192, 192)
+  frame 20/200  31.3s
+  frame 40/200  62.6s
+  frame 60/200  93.0s
+  frame 80/200  124.9s
+  frame 100/200  156.7s
+  frame 120/200  188.2s
+  frame 140/200  218.6s
+  frame 160/200  248.8s
+  frame 180/200  280.0s
+  frame 200/200  310.7s
+  -> collective/contrib/20261026T0005-c32-review-fch-chemoton/rerun_starve/FACTS.md  (311s sim)
