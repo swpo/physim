@@ -54,7 +54,7 @@ LIT_EVERY = timedelta(hours=6)  # a literature check is due this long after the 
 LEASE = timedelta(hours=6, minutes=10)  # a session lasts 6 h (WORKER_PROMPT.md) unless an intent gives "until"
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
 FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
-SCORE_VERSION = 7  # bump when scoring rules change: the progress history is then replayed
+SCORE_VERSION = 8  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
 
@@ -194,6 +194,12 @@ def coerce(c):
             v[k] = {str(a): text(b) for a, b in (v.get(k) or {}).items()}
         v["by_construction"], _ = caps_list(v.get("by_construction", []))
         v["bc_rejected"], _ = caps_list(v.get("bc_rejected", []))
+        sr = v.get("support_rejected") or {}
+        if not isinstance(sr, dict):
+            errs.append("verdict support_rejected must map a capability to a list of review ids")
+            sr = {}
+        v["support_rejected"] = {str(x).strip().upper(): [text(i) for i in (ids if isinstance(ids, list) else [ids])]
+                                 for x, ids in sr.items()}
         v["seed"] = as_int(v.get("seed"))
     return c, errs
 
@@ -509,14 +515,19 @@ def challenge_of(c, cl):
     return ""
 
 
+BUILDS = {"world", "claim", "sighting", "tool", "finding"}  # kinds that can carry code a later world builds on
+
+
 def lineage(cid, by_id):
-    """Authors of every contribution this one builds on, transitively."""
+    """Authors of the code this contribution builds on, transitively: posing the question it answers or reviewing an
+    ancestor does not put an agent on its lineage."""
     out, seen, stack = set(), set(), list(by_id.get(cid, {}).get("parents", []))
     while stack:
         p = stack.pop()
         if p in by_id and p not in seen:
             seen.add(p)
-            out.add(by_id[p].get("author"))
+            if by_id[p].get("kind") in BUILDS:
+                out.add(by_id[p].get("author"))
             stack += by_id[p].get("parents", [])
     return out
 
@@ -651,6 +662,7 @@ def derive(items, until=None, canaries=frozenset()):
                 "same_individuals": bool(v.get("same_individuals")) and bool(cl["track"]),
                 "controls": controls, "by_construction": set(v.get("by_construction") or []),
                 "bc_rejected": set(v.get("bc_rejected") or []),
+                "support_rejected": {x: set(ids) for x, ids in (v.get("support_rejected") or {}).items()},
                 "audit": str(c.get("task") or "").startswith("A:") or c.get("author") == "c00",
                 "bd": (bd is not False and bool(bd_caps)) if bd is not None else None, "bd_caps": bd_caps,
                 "bd_listed": isinstance(bd, (list, str)) and bd not in ("", "true", "false"),
@@ -692,10 +704,18 @@ def tally(cl):
     seed_pro = need if cl["seed_status"] == "established" else 0
     seed_con = 4 if cl["seed_status"] == "contradicted" else 0
     single_seed = not cl["seed_status"] and not cl["finding"] and len(cl["seeds"]) < 2
+    # an audit (task A:<key>, or the operator's c00 audit) may name supporting reviews whose own evidence does not meet
+    # a capability's gate: they no longer count for it, for or against (their authors can publish a new review)
+    rejected = {}
+    for a in rep_votes:
+        if a["audit"]:
+            for x, ids in a["support_rejected"].items():
+                rejected.setdefault(x, set()).update(ids)
     held, partial, per = set(), set(), {}
     for x in claimed:
         together = len(nonS) < 3 or bool(cl["seed_status"])  # seed rungs already assert co-occurrence
-        pro = [v for v in rep_votes if x in v["supported"] and (together or v["same_individuals"])]
+        pro = [v for v in rep_votes if x in v["supported"] and v["review"] not in rejected.get(x, ())
+               and (together or v["same_individuals"])]
         lin = [v for v in pro if v["author"] in cl["lineage"]]  # reviewers who built the claim's ancestors
         pro = [v for v in pro if v not in lin[1:]]  # one opinion per lineage of shared code
         con = sum(2 if v["verdict"] == "Contradicted" else 1 for v in rep_votes
