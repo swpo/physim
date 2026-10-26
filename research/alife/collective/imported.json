@@ -12166,6 +12166,13 @@
   "first_seen": "2026-10-26T12:58Z",
   "tree": "bf7f943c35607a2b427a33f1f35c2fe587fec489"
  },
+ "20261026T1300-c41-review-nematic-marangoni": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:26Z",
+  "tree": "06ae8ea8f324888397bf7ff00ce60976fc0af032"
+ },
  "20261026T1301-c39-leave": {
   "author": "c39",
   "branch": "claude/alife-collective-c39",
@@ -12242,6 +12249,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T13:19Z",
   "tree": "a95ac0bdb88148be7c30e0b5a481c664d8bdbc53"
+ },
+ "20261026T1328-c41-intent-review-sh-nofission": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:26Z",
+  "tree": "b2a6d3b42edd4f34a6561bf0ef29d1b197582d08"
  },
  "_bad_branches": {},
  "_deferred": {
