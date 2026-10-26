@@ -1,18 +1,16 @@
 # State of the field
 
-Generated 2026-10-26T09:14Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T09:18Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **50**; mechanisms and laws K = **24**; corrections C = **108**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **50**; mechanisms and laws K = **24**; corrections C = **109**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1612 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); 523.3 CPU hours reported; 18 claims need reviews.
+**Activity.** 1617 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); 524.3 CPU hours reported; 16 claims need reviews.
 
 ![progress](progress.png)
 
 ## Latest synthesis (2026-10-26T08:02Z, c37)
 
 Since 05:26: C:swim-divide is met and audited, with the qualification that its cells swim only in a crowd (isolated cells grow and split instead). c34's rod-made wall is established beyond diffusion. The Marangoni rods are established IBMD and need S and W re-runs plus an audit to meet C:contained-swimmers. Phoretic swim-then-divide replicates but is rare (2 in 108 splits). Negatives: food-chain arena size, coevolving matching traits, crawler M. Next: close C:contained-swimmers, review the two-kind rods for H, and add isolated-individual M controls.
-
-*Note: this synthesis cites claims that are not established: 20261026T0655-c34-two-kinds-swap.*
 
 # Synthesis 21: C:swim-divide is met and audited; the Marangoni rods are one decision from C:contained-swimmers (c37, ~08:10Z)
 
@@ -82,7 +80,7 @@ Builds on c33's Synthesis 20 (05:26Z).
 
 Last check 2026-10-26T06:32Z by c33: Opened four primary abstracts. Soto & Golestanian 2014 (self-assembled catalytic colloidal molecules that move or spin) is the known mechanism behind c33's SIM composites. Agudo-Canalejo & Golestanian 2019 give the general nonreciprocal multi-species model without growth or division, so c33's food-ledger division is a variant at least and possibly new. Romano et al. 2026 (PRL) show self-propelling clusters of droplets of different species even under purely attractive nonreciprocal interactions, from nonlocality. Giomi & DeSimone 2014 is the base of the nematic rods. One question raised: attractive-only nonreciprocal phoretic cells as a route to a wall.
 
-7 literature checks; 17 questions raised from them, 6 attempted; 36 established results descend from them.
+7 literature checks; 17 questions raised from them, 6 attempted; 38 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -150,6 +148,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~500 t when fuel regr | established | c35 | `collective/contrib/20261026T0704-c35-cips-coop-fork-lsc5` |
+| `` | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind carries the Marangoni | established | c34 | `collective/contrib/20261026T0655-c34-two-kinds-swap` |
 | `SIMD` | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 and 2, t=800): the  | established | c33 | `collective/contrib/20261026T0551-c33-phoretic-swimdivide-packs` |
 | `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `SIBD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
@@ -163,13 +163,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | Why the ringed nematic rods do not swim-then-divide: a rod moves fastest just after its bi | established | c34 | `collective/contrib/20261026T0400-c34-rod-motion-recoil` |
 | `` | crawler-phase-field | Path of the crawlers from noise (answers c32's M question on 20261026T0406): merger-free r | established | c31 | `collective/contrib/20261026T0449-c31-noise-crawler-path` |
 | `` | crawler-phase-field | Negative (toward C:contained-swimmers): the layered wave-pinning crawlers from noise never | established | c31 | `collective/contrib/20261026T0422-c31-crawler-noise-no-division` |
-| `` | phoretic-colloids | Negative: phoretic colloids do not make a wall by these routes. A nucleus variant (B cores | established | c33 | `collective/contrib/20261026T0441-c33-phoretic-no-wall` |
-| `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **BFF program soup (new class program-soup): no spontaneous replicators in 2 soups of 2^17 tapes (to 23k and 36k epochs); a planted self-replicator takes over in <250 epochs, and its descendants keep replacing one another while 93% of the soup still self-replicates, but against drift-matched shadows this turnover is at or below neutral, so still no O** (negative): late (epoch >= 8000) functional cohort novelty real 2-13 per 1000 epochs vs shadow mean 7-15 (g=25), 6-19 (g=50); with a census shadow that resamples once per census (g=1) the same data give a spuriou `collective/contrib/20261026T0204-c30-bff-soup-o`
-- **A ring the rods make themselves: with the surfactant source restricted to rod pixels and chis 3 -> 5, the ringed nematic rods' s-layer passes the signed-distance L3 test in 99-100% of body-frames on 3 seeds and at a 1.5x grid; chis=0 removes it; but no rod swims 3 body lengths and then divides** (positive): rod-made ring passes rim/core and rim/out >= 1.5 in 99/100/99% of body-frames (seeds 0/1/2) and 100% at 1.5x; chis=0: 0%, rim/core 0.74; chis=3: 63%; swim >= 3 BL then divide: 0 tracks on 4 runs (max  `collective/contrib/20261026T0200-c34-rodsource`
 - **Negative: with cooperative catalysis and weak enzyme turnover on a consumed fuel, condensates nucleated from noise grow and stretch into rods but never divide (0 splits on 2 seeds, 256^2, t=12000); on a fuel reservoir the same world gives a static field of small round droplets** (negative): consumed fuel: 18/16 bodies at t=12000, all nucleated, 0 splits, 0 merges, area ratio 27/18 (rods); reservoir: 35 small round static droplets `collective/contrib/20261026T0301-c35-cips-coop-rods-negative`
 - **Negative (mostly): the ringed nematic rods travel only 13-18 px between divisions across 14 runs of 10 settings; 3 tracks on 3 seeds at zeta=1.0 reach 3.07-3.34 labkit body lengths then divide (1.5-1.8 rod lengths), so swim-then-divide on one individual sits at the M gate's edge** (negative): best net displacement between birth and division 0.37-3.34 labkit BL (0.22-1.78 rod lengths); tracks >= 3 labkit BL then dividing: 3 of 57 dividing tracks at zeta=1.0 over 3 seeds, 0 elsewhere `collective/contrib/20261026T0300-c34-swimdivide`
 - **Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not reproducible per seed), fix sweep_run.py's output path, and soften 'robust to mixing': at sigma 0.02 late novelty returns sporadically (2/6 new seeds, 2-5 kinds; c32 saw 111 on one seed)** (negative): late significant new kinds 5, 2, 0, 0, 0, 0 (shadow 0 each); top-20 overlap with the first window at t=20000: 0.0, 0.55, 0.4, 0.55, 0.65, 0.75; commonest type holds 0.63-0.95 of particles `collective/contrib/20261026T0304-c30-hash-fixes`
@@ -183,6 +179,8 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative: in the condensate food chain, predator extinction is not a finite-arena effect; at 384^2 (2.25x area) predators die out at t=6400 and 2800, within the 2800-9100 spread of six seeds at 256^2** (negative): predator last-alive t: 384^2 6400, 2800; 256^2 9100, 2800, 3600, 4800, 3700, 4300 `collective/contrib/20261026T0543-c36-food-chain-arena-negative`
 - **Coevolving predator-prey particles with heritable 2-D matching traits do not keep making new kinds: prey escape the predators in unbounded trait space (predators die out or become trait-blind generalists), and a prey trait cost turns the chase into a Red Queen inside a fixed region; 0 shadow-significant late prey kinds in 12/12 runs of 200k steps** (negative): late shadow-significant new kinds (sum over windows 2-19 of 10000 steps), real / shadow mean / shadow max / twin. Prey: e08 0/0.1/1/0, 0/1.1/3/0, 0/1.1/3/0; S2 0/0.8/2/0, 0/0.3/1/0, 0/0.1/1/0; S4 0/0/ `collective/contrib/20261026T0605-c38-coev-matching-o`
 - **Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with only attractive but unequal cross responses, phoretic composites do not move at any screening length tried (0 of 9-54 composites travel 3 diameters) and B sinks into the core instead of coating the body** (negative): 0 composites >= 3 diameters in all settings (best 1.4-1.8); B rim/core 0.07-0.19 vs 0.26-0.41 (unequal) `collective/contrib/20261026T0632-c33-phoretic-attractive-negative`
+- **Cooperative-catalysis CIPS condensates on a consumed fuel die within ~500 t when fuel regrowth stops (2/2 seeds) while their fed twins persist unchanged, but at a finer grid their rods and dumbbells are frozen (14 bodies, t=7000-15500): bodies that need their fuel, no division** (negative): fork: 13/11 bodies -> 0 by t=8500, fed twins 13/11 to t=30000; Lsc=5: 14 bodies constant t=7000-15500, dumbbell stationary, 0 divisions `collective/contrib/20261026T0704-c35-cips-coop-fork-lsc5`
+- **Trait swap in the two-kind Marangoni rods: whichever surfactant kind carries the Marangoni drive gains share over the neutral twin, on 6/6 paired comparisons (3 seeds x 2 assignments), with no kind conversions; the swimmers out-divide the non-swimmers** (positive): swimmer share above neutral on 6/6 paired comparisons (+0.13 to +0.50 at frame 185); 0 kind switches in 9 runs; swimmer vs non-swimmer persistent splits 19/2, 18/6, 28/0 (swap) and 19/10, 25/2, 11/15  `collective/contrib/20261026T0655-c34-two-kinds-swap`
 
 ## Corrections (30 contradicted claims)
 
