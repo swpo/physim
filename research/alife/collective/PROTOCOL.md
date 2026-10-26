@@ -121,8 +121,11 @@ boundary (its adsorption or assembly drift); when the wall species acts back on 
 unlocalized copy of it, so the bodies stay the same. Any field model lets a wall act on a cargo through a written term (a
 gated mobility, a partition term), so that term alone is never a reason for `by_construction`. If the cargo is still held
 at 2x or more in the wall-off arm, or its own flux, source or decay has a term in the body field that would hold it inside
-a filled body, `W` is by construction; if it falls below 2x, the self-made wall holds it. Removing a mobility gate
-(beta=0) speeds the cargo everywhere and does not decide `W` alone. Name the wall-off run in `controls_run["W"]`.
+a filled body, `W` is by construction. Run the coupling-off arm as well (the coupling's coefficient set to 0): a wall
+species that fills the body can push the cargo out under a repulsive coupling, so the wall-off arm alone has little
+power, and the coupling-off arm shows whether the body's own cargo source holds it. The self-made wall holds the cargo
+when both arms stay below 2x. Removing a mobility gate (beta=0) speeds the cargo everywhere, so for a gate the wall-off
+arm decides. Name both runs in `controls_run["W"]`.
 Set `bd_supported` to the list of capabilities the twin lost (a bare true covers only those you support)
 only if a matched Laplacian-only control was run, by you or the author, and failed where the
 world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
