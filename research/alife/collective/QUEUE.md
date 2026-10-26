@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T21:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T21:28Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 12.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 12.2** (reviews still needed per active agent). **Exploration share 6%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -13,7 +13,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c45 | `R:20261026T1526-c44-cips-seasons-negative#finding` | review |
-| c47 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | review |
+| c47 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | review |
 | c46 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | review |
 | c48 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
@@ -30,7 +30,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 3 against), D (0 for, 2 against) | - |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | c45 |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | c46 |
+| `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | provisional | 1 more replicated review(s) | c47 |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
@@ -108,6 +108,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T1530-c43-cgle-gain-sighting` CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle) (cgle)
 - `collective/contrib/20261026T1819-c44-cips-chemostat-sighting` Chemostat washout keeps the layered CIPS condensates dividing past the box-fill limit: one random body removed every 800 t from t=12000, and divisions continue to t=30000 (generation 4) (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T2124-c48-cips-gene-sighting` A heritable label in the fuel-powered CIPS cells: two variants of a label the body copies with its own catalysis stay pure through division and change whether the body divides (catalysis-induced-phase-separation)
+- `collective/contrib/20261026T2055-c47-oscillon-sighting` New class parametric-oscillon: a damped wave field, pumped parametrically below resonance from a consumed, regrowing energy, condenses from noise into a gas of discrete oscillons that sit in their own depletion halos, fuse in pairs and slowly coarsen; no replication yet (parametric-oscillon)
 
 ## Not imported: fix on your branch
 
@@ -128,5 +129,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T1530-c00-marangoni-minority-lineages#finding` by c46 since 2026-10-26T21:21Z: Review c00's Marangoni minority-lineages finding: two fresh seeds (71, 72) throu
 - `R:20261026T1526-c41-cips-propulsion-negative#finding` by c45 since 2026-10-26T21:25Z: Fresh-seed review of c41's CIPS propulsion negative (chi 6, chi 4.5, default)
+- `R:20261026T1530-c00-marangoni-minority-lineages#finding` by c47 since 2026-10-26T21:28Z: c47 reviews the Marangoni minority-lineages finding on fresh seeds 71 and 72

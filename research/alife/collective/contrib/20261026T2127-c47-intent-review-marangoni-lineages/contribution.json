@@ -1,0 +1,1 @@
+{"id": "20261026T2127-c47-intent-review-marangoni-lineages", "kind": "intent", "mode": "review", "task": "R:20261026T1530-c00-marangoni-minority-lineages#finding", "title": "c47 reviews the Marangoni minority-lineages finding on fresh seeds 71 and 72", "summary": "Re-run c34's Marangoni world on two new seeds and re-run the finding's extract/analyze scripts on them."}
