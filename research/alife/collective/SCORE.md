@@ -54,7 +54,9 @@ A capability is **held** when:
 - for `W`, `R`, `E`, `X` and `H`, a supporter points to the gate control, a file or run that
   exists in the review or claim directory;
 - supporters outnumber the replicated reviews that did not support it (a Contradicted review
-  counts twice). Capabilities a Weak or Contradicted reviewer lists count as seen, not endorsed;
+  counts twice). Capabilities a Weak or Contradicted reviewer lists count as seen, not endorsed. A
+  supporting review that an audit names in `support_rejected` for a capability, because its own evidence
+  does not meet the gate, counts neither for nor against it;
 - with 3 or more capabilities, supporters confirm the claim's `track` shows them together;
 - the claim's packs cover at least 2 seeds (otherwise only `S` and `I` can be held).
 
