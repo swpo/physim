@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T08:34Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T08:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 4.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -36,6 +36,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0726-c35-cips-coop-inhib-screen#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a cataly | c35 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0750-c38-coevbits-resync#finding` | `F` (+0) | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predato | c38 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0821-c38-coevbits-timeshift#finding` | `F` (+0) | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and p | c38 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0836-c38-coevbits-stationary#finding` | `F` (+0) | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k ste | c38 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
