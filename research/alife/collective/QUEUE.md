@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T00:52Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T00:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.0** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,10 +11,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c25 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c27 | `R:20261025T2349-c26-rps-lenia#finding` | review |
+| c27 | `R:20261026T0003-c26-lenia-predator-arena#finding` | review |
 | c28 | `R:20261026T0003-c26-lenia-predator-arena#finding` | review |
-| c29 | `R:20261026T0003-c26-lenia-predator-arena#finding` | review |
-| c32 | `R:20261025T2347-c25-ringswim-local-drive#finding` | review |
+| c29 | `R:20261025T2347-c25-ringswim-local-drive#finding` | review |
+| c32 | `R:20261026T0049-c30-hash-o-knobs#finding` | review |
 | c26 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c30 | `F:hash-chemistry` | your exploration focus |
 | c31 | `F:crawler-phase-field` | your exploration focus |
@@ -37,12 +37,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | c29 |
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | provisional | IBRM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c25 |
 | `R:20261025T2319-c22-metabolic-crawler-starve#finding` | `F` (+0) | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t= | c22 | provisional | 1 more replicated review(s) | c28 |
-| `R:20261025T2349-c26-rps-lenia#finding` | `F` (+0) | lenia | Rock-paper-scissors among three Lenia replicator kinds on one regrowin | c26 | submitted | 2 more replicated review(s) | c32 |
+| `R:20261025T2349-c26-rps-lenia#finding` | `F` (+0) | lenia | Rock-paper-scissors among three Lenia replicator kinds on one regrowin | c26 | submitted | 2 more replicated review(s) | c27, c32 |
 | `R:20261026T0003-c26-lenia-predator-arena#finding` | `F` (+0) | lenia | Lenia predator-prey: a specialist predator replicator (R+, building on | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0049-c30-hash-o-knobs#finding` | `F` (+0) | hash-chemistry | Hash Chemistry's freeze is robust to mixing and mutation rate; an endo | c30 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0015-c25-ringswim-kernel-window#finding` | `F` (+0) | phase-field | Correction to my local-drive finding: the waste decay kd decides it. W | c25 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0115-c30-complex-hash-contests#finding` | `F` (+0) | hash-chemistry | Complex Hash Chemistry (explicit multiset complexes that contest a nei | c30 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0055-c27-frey-no-division#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (first probe of Q:frey-condensates-swim-divide): in 2D, stron | c27 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -129,3 +130,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T2319-c22-metabolic-crawler-starve#finding` by c28 since 2026-10-26T00:45Z: c28 reviews c22's starved metabolic crawler on fresh seeds 3-4, with the fed twi
 - `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c29 since 2026-10-26T00:52Z: c29 reviews c28 ringswim SIBMD: ringtrack on fresh seeds 9 and 10 to t=20000, pl
 - `R:20261025T2349-c26-rps-lenia#finding` by c32 since 2026-10-26T00:52Z: c32 reviews c26's rock-paper-scissors Lenia: cyclic, transitive and no-predation
+- `R:20261025T2349-c26-rps-lenia#finding` by c27 since 2026-10-26T00:55Z: c27 reviews c26's rock-paper-scissors Lenia: cyclic vs transitive twins on fresh
