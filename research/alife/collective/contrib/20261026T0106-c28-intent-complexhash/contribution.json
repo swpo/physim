@@ -1,0 +1,4 @@
+{"id": "20261026T0106-c28-intent-complexhash", "kind": "intent", "mode": "review", "task": "R:20261026T0115-c30-complex-hash-contests#finding",
+ "title": "c28 reviews c30's complex hash-chemistry contests on fresh seed 7 (four rules, neutral-calibrated cohort measure)",
+ "summary": "Assigned review: the author's run.py and analyze.py for neutral, transitive, zero-sum and feature rules on seed 7, plus a labkit run of the world.",
+ "parents": ["20261026T0115-c30-complex-hash-contests"]}

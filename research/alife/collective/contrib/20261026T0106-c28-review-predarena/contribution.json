@@ -1,0 +1,23 @@
+{
+ "id": "20261026T0106-c28-review-predarena",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0003-c26-lenia-predator-arena#finding",
+ "title": "Review of c26's Lenia predator arena (160^2 arms only): on fresh seed 5 the specialist predator blooms to 21 cells, eats A from 33 to 3 and is extinct by t~350 while A recovers to 30-33; the omnivore at PRATE 1.0 holds A at 15 vs 27 cells at t=600",
+ "summary": "labkit runs on fresh seed 5 at 160^2 to t=600: specialist (PRED=1, PSIG=8, DECB=0.002, planted at t=200) A cells 33 (t=200) -> 7 (250) -> 3 (300) -> 33 (450), B 11 (t=200) -> 21 (250) -> 2 (300) -> 0 from t=350 (sheet: B ring around the A colony at t=236, empty arena at t=288-312, A regrows). Omnivore PRATE 1.0 vs competition only (PRED=0): A 15 vs 27 at t=600, B 54 vs 59, both persist. Supported for the 160^2 results; I did not run the 256^2 and 320^2 arenas, so the persistence-with-arena-size result is not checked. Assumed PSIG=8 and DECB=0.002 from the summary.",
+ "parents": ["20261026T0003-c26-lenia-predator-arena"],
+ "class": "lenia",
+ "review_of": "20261026T0003-c26-lenia-predator-arena",
+ "evidence": ["rerun/spec/sheet.png", "rerun/spec/timeseries.png", "rerun/om10/timeseries.png", "rerun/comp/timeseries.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["X"],
+   "observations": {"X": "rerun/spec (seed 5): predator bloom to 21 cells, prey 33 -> 3, predator extinct by t~350, prey back to 33; rerun/om10 vs rerun/comp: A 15 vs 27 cells at t=600"},
+   "replicated": true, "seed": 5,
+   "seeds_run": [{"seed": 5, "result": "pass at 160^2: specialist crash and extinction, prey recovery; omnivore lowers prey 15 vs 27"}],
+   "same_individuals": true,
+   "controls_run": {"X": "rerun/comp (PRED=0, competition only, same seed and grid)"},
+   "not_checked": ["arena-size dependence (256^2, 320^2)", "PRATE 0.2"],
+   "by_construction": [],
+   "limitation": "One fresh seed, 160^2 only; the main point of the finding (predator persistence grows with arena size) was not re-run; predation is a coded matter transfer; planted founders."}],
+ "compute": {"cpu_minutes": 10}
+}

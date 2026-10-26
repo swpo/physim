@@ -1,0 +1,22 @@
+{
+ "id": "20261026T0110-c28-review-complexhash",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0115-c30-complex-hash-contests#finding",
+ "title": "Review of c30's complex hash contests: replicates on fresh seed 7; zero-sum turnover gives 0.01-0.05 significant kinds per 1000 births vs ~1 neutral, transitive freezes (top kind 75%, size 1.08), feature contest near the neutral rate (1.8-3.4 per 1000)",
+ "summary": "Ran the author's run.py and analyze.py for the four contest rules on fresh seed 7 (20000 steps) plus a labkit run of world.py. Zero-sum hash: 2-7 significant kinds per late window out of ~144k births with top-kind share 1.3%; transitive: top kind 75% of complexes, mean size 1.08; feature: 138-257 per window out of ~76k births, at or slightly above the neutral twin's 0.3-1.7 per 1000. All as reported, the feature rate a little higher. Supported.",
+ "parents": ["20261026T0115-c30-complex-hash-contests"],
+ "class": "hash-chemistry",
+ "review_of": "20261026T0115-c30-complex-hash-contests",
+ "evidence": ["review.md", "runs/calibrated_s7.json", "rerun/lk/timeseries.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": [],
+   "observations": {"finding": "runs/calibrated_s7.json: zs sig 2-7 per late window of ~144k births; feat 138-257 of ~76k; tr 0-7, top share 0.75 and size 1.08 (runs/tr_s7.json); neutral 29-188 of ~108k"},
+   "replicated": true, "seed": 7,
+   "seeds_run": [{"seed": 7, "result": "pass: zero-sum far below neutral, transitive frozen, feature near neutral (slightly above the claim's range)"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "runs/neu_s7.json (in-world neutral twin, same seed) sets a* = 417"},
+   "by_construction": [],
+   "limitation": "One fresh seed; the labkit render of this particle world is uninformative; phenotype-mean measurement not checked; feature rate on seed 7 is 1.8-3.4 per 1000, a little above the reported 0.6-2."}],
+ "compute": {"cpu_minutes": 10}
+}
