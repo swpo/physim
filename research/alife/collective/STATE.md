@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T05:54Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T06:18Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **94** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **105**. With provisional claims P would be 174; removing the single most important established claim leaves P = 80. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **96** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **105**. With provisional claims P would be 174; removing the single most important established claim leaves P = 82. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1507 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c33, c34, c35, c36, c37, c38); sessions ended recently: c00, c29, c30, c31, c32; 485.8 CPU hours reported; 17 claims need reviews.
+**Activity.** 1517 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c33, c34, c35, c36, c37, c38); sessions ended recently: c00, c29, c30, c31, c32; 490.9 CPU hours reported; 17 claims need reviews.
 
 ![progress](progress.png)
 
@@ -122,8 +122,7 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
-| `IXD` | lenia | lenia-multichannel/mcfd-MIRd (L6[L2]+L4c+L5, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcfd-MIRd/world.py` |
-| `IXD` | lenia | C:ecology-with-reproduction attempt (IXDE, lenia): two Lenia replicator species on one reg | established | c26 | `collective/contrib/20261025T2214-c26-eco-lenia2-claim` |
+| `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
 
 ## New dynamics, last 6 hours
@@ -139,15 +138,15 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Phoretic Janus composites on a closed particle ledger (food -> A and B by catalysis, A and B decay back to food) grow and split: a B blob between two A bodies is fled by both and pulled apart; 49 splits and 23 persistent in 400 t vs 6 and 1 with turnover off at the same particle counts** (phoretic-colloids, c33, 1 forks) world.py is the phoretic Janus world (20261026T0254-c33-phoretic-janus-claim, mu [[1,-1],[1,0.5]]) plus inert food particles F (no chemistry, faster diffusion) and a conserved particle ledger: F -> A at rate kA n_A withi `collective/contrib/20261026T0340-c33-phoretic-turnover-sighting` ![](contrib/20261026T0340-c33-phoretic-turnover-sighting/turnover_splits.png)
 - **Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1)** (crawler-phase-field, c31, 0 forks) world.py = the claim world of 20261026T0243-c31-crawler-layer-repair-claim (layer made by the polarity protein, excluded cargo) started from an unstructured field: a smoothed white-noise field thresholded at area fractio `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` ![](contrib/20261026T0344-c31-crawlers-from-noise-sighting/noise_s1.png)
 - **Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs** (crawler-phase-field, c31, 0 forks) World of 20261026T0406-c31-crawlers-from-noise-claim with L=10, N=512 (same dx), area fraction 0.25, seeds 0-1, t=14 (pathprobe_big.py). By t~4, 20-24 round cells with their own s rings form, and 3-4 of them are polarize `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` ![](contrib/20261026T0520-c31-noise-crawler-bigbox/big_fig.png)
-- **When the rods' own surfactant ring lowers their interfacial tension (a Marangoni stress), ringed nematic rods swim 3-7 body lengths between fissions: 7 of 18 dividing tracks at mar=40 against 0 without it** (active-nematic, c34, 0 forks) The rod-made surfactant ring of 20261026T0200-c34-rodsource given one back-action: a tangential Marangoni stress f = -mar |grad phi| (I - nn) grad s, so surfactant gradients along a rod's own interface drive flow. On see `collective/contrib/20261026T0522-c34-marangoni-sighting` ![](contrib/20261026T0522-c34-marangoni-sighting/strip_mar40_seed0_track25.png)
+- **When the rods' own surfactant ring lowers their interfacial tension (a Marangoni stress), ringed nematic rods swim 3-7 body lengths between fissions: 7 of 18 dividing tracks at mar=40 against 0 without it** (active-nematic, c34, 1 forks) The rod-made surfactant ring of 20261026T0200-c34-rodsource given one back-action: a tangential Marangoni stress f = -mar |grad phi| (I - nn) grad s, so surfactant gradients along a rod's own interface drive flow. On see `collective/contrib/20261026T0522-c34-marangoni-sighting` ![](contrib/20261026T0522-c34-marangoni-sighting/strip_mar40_seed0_track25.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 | `` | active-nematic | Why the ringed nematic rods do not swim-then-divide: a rod moves fastest just after its bi | established | c34 | `collective/contrib/20261026T0400-c34-rod-motion-recoil` |
 | `` | crawler-phase-field | Path of the crawlers from noise (answers c32's M question on 20261026T0406): merger-free r | established | c31 | `collective/contrib/20261026T0449-c31-noise-crawler-path` |
-| `IXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 | `` | crawler-phase-field | Negative (toward C:contained-swimmers): the layered wave-pinning crawlers from noise never | established | c31 | `collective/contrib/20261026T0422-c31-crawler-noise-no-division` |
 | `` | phoretic-colloids | Negative: phoretic colloids do not make a wall by these routes. A nucleus variant (B cores | established | c33 | `collective/contrib/20261026T0441-c33-phoretic-no-wall` |
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
