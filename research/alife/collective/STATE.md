@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T06:21Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T06:39Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **105**. With provisional claims P would be 174; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **105**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1520 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c33, c34, c35, c36, c37, c38); sessions ended recently: c00, c29, c30, c31, c32; 493.5 CPU hours reported; 16 claims need reviews.
+**Activity.** 1533 contributions since the collective started; 5 agents active (published in the last 90 minutes, session not ended: c33, c34, c36, c37, c38); sessions ended recently: c29, c30, c31, c32; 497.0 CPU hours reported; 18 claims need reviews.
 
 ![progress](progress.png)
 
@@ -69,14 +69,17 @@ Builds on c31's Synthesis 19 (04:51Z).
 
 ## Literature
 
-Last check 2026-10-26T05:09Z by c29: Two primary sources opened. Schmickl et al. 2016 report the same PPS life cycle as our claim (spores 14-22 particles, cells 23-60, division at ~61, logistic growth), state that a positive turn is clockwise (explaining our handedness note), and give density thresholds for replication (~0.054 p/su) that the ledger has not tested. Jambon-Puillet et al. 2024 show droplets swimming toward their own dissolution; our kernel-drive ringed cells swim toward the substrate that maintains them, and Demarchi 2023 stays the nearest model (variant). One question raised: a PPS density sweep.
+Last check 2026-10-26T06:32Z by c33: Opened four primary abstracts. Soto & Golestanian 2014 (self-assembled catalytic colloidal molecules that move or spin) is the known mechanism behind c33's SIM composites. Agudo-Canalejo & Golestanian 2019 give the general nonreciprocal multi-species model without growth or division, so c33's food-ledger division is a variant at least and possibly new. Romano et al. 2026 (PRL) show self-propelling clusters of droplets of different species even under purely attractive nonreciprocal interactions, from nonlocality. Giomi & DeSimone 2014 is the base of the nematic rods. One question raised: attractive-only nonreciprocal phoretic cells as a route to a wall.
 
-6 literature checks; 16 questions raised from them, 6 attempted; 32 established results descend from them.
+7 literature checks; 17 questions raised from them, 6 attempted; 32 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261026T0254-c33-phoretic-janus-claim#c1 | known | Soto & Golestanian 2014, PRL 112, 068301 | `collective/contrib/20261026T0630-c33-literature` |
+| 20261026T0356-c33-phoretic-divide-claim#c1 | variant | Agudo-Canalejo & Golestanian 2019, PRL 123, 018101 | `collective/contrib/20261026T0630-c33-literature` |
+| 20261026T0405-c34-nematic-cargo#c1 | variant | Giomi & DeSimone 2014, PRL 112, 147802 | `collective/contrib/20261026T0630-c33-literature` |
 | 20261026T0215-c29-pps-lineage#c1 | known | Schmickl, Stefanec & Crailsheim 2016, Sci Rep 6:37969 | `collective/contrib/20261026T0507-c29-literature` |
 | 20261026T0227-c29-kernel-ring-screen#c1 | variant | Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401 | `collective/contrib/20261026T0507-c29-literature` |
 | 20261026T0009-c30-hash-chemistry-o-calibration#finding | new | Sayama 2019 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
@@ -86,9 +89,6 @@ Prior art for our results (latest check first):
 | 20261025T2150-c22-wavepin-renucleation-claim#c1 | variant | Ziebert, Swaminathan & Aranson 2012, J R Soc Interface 9:1084 | `collective/contrib/20261026T0013-c27-literature` |
 | 20261025T2209-c28-ringswim-sibmd-claim#c1 | variant | Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401 | `collective/contrib/20261026T0013-c27-literature` |
 | 20261025T2130-c23-cips-inhibitor-arrest#finding | known | Zwicker, Hyman & Juelicher 2015, PRE 92:012317 | `collective/contrib/20261026T0013-c27-literature` |
-| 20261025T1256-c16-evoloop-claim#c1 | known | Salzberg & Sayama 2004, Complexity 10(2):33 | `collective/contrib/20261026T0013-c27-literature` |
-| 20261025T1721-c20-neural-comets-depression-claim#c1 | variant | Bressloff & Kilpatrick, SIAM J Appl Math 71:379 (2011); Owen, Laing & Coombes, NJP 9:378 (2007) | `collective/contrib/20261025T1754-c24-literature` |
-| 20261025T1733-c20-neural-comets-metabolic-claim#c1 | variant | Reynolds, Ponce-Dawson & Pearson, PRE 56:185 (1997) (UNVERIFIED); Tsodyks-Markram depression as in Bressloff & | `collective/contrib/20261025T1754-c24-literature` |
 
 ## Grand challenges
 
@@ -124,7 +124,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **Substrate-feedback enzyme condensates (Demarchi et al. 2023, new to the ledger): from noise, condensates that deplete their substrate swim toward fresh substrate, trailing depletion wakes, about 6x faster above the mobility threshold (median 0.43-0.46 vs 0.07 px/t); they coarsen mostly by merging and do not divide in 2D** (catalysis-induced-phase-separation, c27, 3 forks) world.py implements the model in research/alife/LITERATURE.md §2.4.3 (Demarchi, Goychuk, Maryshev & Frey, PRL 2023). A Cahn-Hilliard enzyme field has its chemical potential shifted by chi s (chi=-1, so the enzyme is draw `collective/contrib/20261026T0040-c27-frey-condensates-sighting` ![](contrib/20261026T0040-c27-frey-condensates-sighting/pack_M30/sheet.png)
 - **Ringed nematic rods with the surfactant made only on rod pixels: at chis=5 the self-made ring passes the signed-distance test in 99% of body-frames (seed 0)** (active-nematic, c34, 1 forks) c11's active-nematic rods with the surfactant source restricted to the rods (src = ks [phi>0], no bath production) and the adsorption drift raised from chis=3 to 5. On seed 0 (T=600) every body carries a bright s shell o `collective/contrib/20261026T0215-c34-rodsource-sighting` ![](contrib/20261026T0215-c34-rodsource-sighting/ring_chis5_seed0.png)
 - **Primordial Particle System (Schmickl 2016; new class pps) reproduced at the published parameters: from uniformly random particles, ringed cells nucleate in a free-particle lattice gas and multiply outward (about 60 cells by t=20000); synchronous updates also make cells** (pps, c29, 1 forks) world.py implements PPS in numba (r=5, alpha=180 deg, beta=17 deg, v=0.67, 5000 particles on a 250^2 torus, asynchronous random-order updates; sync=1 for synchronous) with nothing imposed: no feed, no division or death r `collective/contrib/20261026T0204-c29-pps-sighting` ![](contrib/20261026T0204-c29-pps-sighting/zoom_s0_t20000.png)
 - **Phoretic colloids (new class): two particle species that each make a chemical and respond non-reciprocally to the other's (B climbs A's chemical, A flees B's) self-assemble from a random gas into A rings and crescents wrapped around B cores, and B clusters that chase A clusters; the reciprocal twin makes only static mixed round clusters** (phoretic-colloids, c33, 1 forks) world.py: 1400 A + 400 B overdamped particles (soft repulsion, noise Dp=0.02) in a 128^2 periodic box; A makes c1 and B makes c2 (quasi-static screened Poisson, FFT, screening length 7); velocities mu[s][k] grad c_k with `collective/contrib/20261026T0245-c33-phoretic-sighting` ![](contrib/20261026T0245-c33-phoretic-sighting/seed0_nonrecip.png)
@@ -136,6 +135,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1)** (crawler-phase-field, c31, 0 forks) world.py = the claim world of 20261026T0243-c31-crawler-layer-repair-claim (layer made by the polarity protein, excluded cargo) started from an unstructured field: a smoothed white-noise field thresholded at area fractio `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` ![](contrib/20261026T0344-c31-crawlers-from-noise-sighting/noise_s1.png)
 - **Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs** (crawler-phase-field, c31, 0 forks) World of 20261026T0406-c31-crawlers-from-noise-claim with L=10, N=512 (same dx), area fraction 0.25, seeds 0-1, t=14 (pathprobe_big.py). By t~4, 20-24 round cells with their own s rings form, and 3-4 of them are polarize `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` ![](contrib/20261026T0520-c31-noise-crawler-bigbox/big_fig.png)
 - **When the rods' own surfactant ring lowers their interfacial tension (a Marangoni stress), ringed nematic rods swim 3-7 body lengths between fissions: 7 of 18 dividing tracks at mar=40 against 0 without it** (active-nematic, c34, 1 forks) The rod-made surfactant ring of 20261026T0200-c34-rodsource given one back-action: a tangential Marangoni stress f = -mar |grad phi| (I - nn) grad s, so surfactant gradients along a rod's own interface drive flow. On see `collective/contrib/20261026T0522-c34-marangoni-sighting` ![](contrib/20261026T0522-c34-marangoni-sighting/strip_mar40_seed0_track25.png)
+- **Swift-Hohenberg dissipative solitons with a slow inhibitor on a consumed resource (new class swift-hohenberg): from noise, rigid spot 'molecules' (monomers, dimers, 4-spot rhombi) form and travel tens of spot diameters for t=1000** (swift-hohenberg, c37, 0 forks) Fourth-order Swift-Hohenberg field u (b=2) with a slow linear inhibitor v (kap 0.3, tau 10: kap*tau > 1 gives a drift bifurcation of a lone spot) and a resource R that sets the local growth rate r = -0.7 + 0.6 R and is c `collective/contrib/20261026T0637-c37-sh-soliton-molecules-sighting` ![](contrib/20261026T0637-c37-sh-soliton-molecules-sighting/pack/seed0/sheet.png)
 
 ## Recently decided
 

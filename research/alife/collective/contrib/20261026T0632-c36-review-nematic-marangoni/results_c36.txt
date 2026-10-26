@@ -1,0 +1,49 @@
+== s9
+- motion: 59 long-lived tracks moved >= 1 body length; max speed 0.28/time; max body lengths 7.7
+- replication (lineage window K = 20 frames = time 100, default): splits 41, persistent splits 20 (0 more failed only because the siblings re-merged within K), max genera
+Traceback (most recent call last):
+  File "/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/swimdivide.py", line 10, in <module>
+    F = np.load(sys.argv[1]); mat = F["matter"].astype(np.float32)
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 471, in load
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/s9/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.24, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/s9/frames.npz ch2: body-frames 542, both >= 1.5: 1.00, median rim/core 2.60, median rim/out 11.12
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/s9/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.61, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/s9/frames.npz ch3: body-frames 542, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/s9/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=38, median in/out 4.18, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/s9/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=40, median in/out 4.44, fraction >= 2: 1.00
+== k0_s9
+- motion: 59 long-lived tracks moved >= 1 body length; max speed 0.28/time; max body lengths 7.7
+- replication (lineage window K = 20 frames = time 100, default): splits 41, persistent splits 20 (0 more failed only because the siblings re-merged within K), max genera
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/k0_s9/frames.npz: 112 tracks, 20 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 8; by rod length >= 3: 0
+   {"id": 13, "start": 30, "end": 61, "birth": "split", "children": [36, 37], "net": 41.2, "bl_labkit": 5.28, "bl_rod": 2.26}
+   {"id": 26, "start": 52, "end": 93, "birth": "split", "children": [57, 58], "net": 38.3, "bl_labkit": 5.07, "bl_rod": 2.51}
+   {"id": 7, "start": 16, "end": 84, "birth": "nucleation", "children": [50, 51], "net": 32.9, "bl_labkit": 4.77, "bl_rod": 2.4}
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/k0_s9/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.24, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/k0_s9/frames.npz ch2: body-frames 542, both >= 1.5: 1.00, median rim/core 2.60, median rim/out 11.12
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/k0_s9/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.33, fraction >= 2: 0.04
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/k0_s9/frames.npz ch3: body-frames 542, both >= 1.5: 0.00, median rim/core 0.91, median rim/out 1.21
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/k0_s9/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=38, median in/out 1.26, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/k0_s9/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=40, median in/out 1.22, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/s9/frames.npz: 112 tracks, 20 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 8; by rod length >= 3: 0
+   {"id": 13, "start": 30, "end": 61, "birth": "split", "children": [36, 37], "net": 41.2, "bl_labkit": 5.28, "bl_rod": 2.26}
+   {"id": 26, "start": 52, "end": 93, "birth": "split", "children": [57, 58], "net": 38.3, "bl_labkit": 5.07, "bl_rod": 2.51}
+   {"id": 7, "start": 16, "end": 84, "birth": "nucleation", "children": [50, 51], "net": 32.9, "bl_labkit": 4.77, "bl_rod": 2.4}
+   {"id": 18, "start": 35, "end": 69, "birth": "split", "children": [41, 42], "net": 33.0, "bl_labkit": 4.67, "bl_rod": 2.44}
+   {"id": 5, "start": 14, "end": 48, "birth": "nucleation", "children": [23, 24], "net": 33.0, "bl_labkit": 4.55, "bl_rod": 2.26}
+   {"id": 20, "start": 36, "end": 57, "birth": "split", "children": [31, 32], "net": 29.4, "bl_labkit": 4.1, "bl_rod": 1.81}
+life phase 0.5: mean px/frame 0.773
+life phase 0.75: mean px/frame 0.752
+== m0_s9 (mar=0)
+- motion: 40 long-lived tracks moved >= 1 body length; max speed 0.0708/time; max body lengths 4.8
+- replication (lineage window K = 20 frames = time 100, default): splits 38, persistent splits 23 (0 more failed only because the siblings re-merged within K), max genera
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev9/m0_s9/frames.npz: 95 tracks, 23 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 16, "start": 33, "end": 111, "birth": "split", "children": [48, 49], "net": 17.3, "bl_labkit": 2.83, "bl_rod": 1.44}
+   {"id": 12, "start": 32, "end": 94, "birth": "split", "children": [42, 43], "net": 14.4, "bl_labkit": 2.34, "bl_rod": 1.2}
+life phase 0: mean px/frame 0.264
+life phase 0.25: mean px/frame 0.208
+life phase 0.5: mean px/frame 0.205
+life phase 0.75: mean px/frame 0.263
