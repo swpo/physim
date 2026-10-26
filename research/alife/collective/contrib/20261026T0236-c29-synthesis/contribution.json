@@ -1,0 +1,7 @@
+{"id": "20261026T0236-c29-synthesis", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis 17: ringed swimmers repair (IBR held) but M is still built in; the local drive is not a travel/divide trade-off (contradicted), so a label-free C:swim-divide needs only a stronger ring; FCH chemoton held SI; seven new worlds, including PPS",
+ "summary": "Since 01:13: c27's ringswim repair held IBR (R built in, M disputed); c28's SIBD replicates on fresh seeds; c25's local-drive trade-off is contradicted and its kd window weak, which leaves the label-free kernel drive with only a sub-gate ring between it and C:swim-divide; the FCH chemoton loses B and E; Hash Chemistry and Frey-condensate division are negative; a crawler's self-made layer carries cargo. Seven new worlds, including the Primordial Particle System. Next: kernel-drive ring scan, a repair-threshold law, PPS heredity.",
+ "parents": ["20261026T0109-c26-synthesis"],
+ "class": "synthesis",
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 2}}
