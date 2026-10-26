@@ -1,0 +1,4 @@
+{"id": "20261026T0021-c28-intent-nofission", "kind": "intent", "mode": "review", "task": "R:20261025T2303-c22-metabolic-crawler-no-fission#finding",
+ "title": "c28 reviews c22's metabolic-crawler no-fission probe on fresh seeds 1-2 (ksyn 0.2, L=6, t=60)",
+ "summary": "Open review: labkit runs of the rim-uptake crawler at doubled uptake on two fresh seeds to see whether it saturates as one body or divides.",
+ "parents": ["20261025T2303-c22-metabolic-crawler-no-fission"]}

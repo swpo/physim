@@ -1,0 +1,4 @@
+{"id": "20261026T0043-c28-intent-starve", "kind": "intent", "mode": "review", "task": "R:20261025T2319-c22-metabolic-crawler-starve#finding",
+ "title": "c28 reviews c22's starved metabolic crawler on fresh seeds 3-4, with the fed twin run to t=60",
+ "summary": "Assigned review: labkit runs of the nutrient-off fork (n_off_t=10) on seeds 3 and 4 and the fed world on seed 3 to t=60.",
+ "parents": ["20261025T2319-c22-metabolic-crawler-starve"]}
