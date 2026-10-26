@@ -1,0 +1,4 @@
+seed 0 bodies (area, K, id) [(2948, 1976.9079884627704, 3), (894, 991.0439360637455, 4), (522, 2.111794762590956, 1)] target 3 disc px 5578
+1  area0 522 mass twin x1.03 cut x0.89 K end twin 3.9 cut 0.7 lost twin None cut None
+3 TARGET area0 2948 mass twin x1.04 cut x0.58 K end twin 2099.5 cut 605.6 lost twin None cut None
+4  area0 894 mass twin x1.07 cut x0.95 K end twin 1130.3 cut 1034.0 lost twin None cut None
