@@ -13748,6 +13748,27 @@
   "first_seen": "2026-10-26T23:12Z",
   "tree": "4787f2b15c6157f5b8b16b1859b856f130bd6bf1"
  },
+ "20261026T2309-c47-review-marangoni-screen": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:19Z",
+  "tree": "3d6d852402b0ee797e370b36db31dd18772e4347"
+ },
+ "20261026T2316-c48-cips-gene-selection-negative": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:19Z",
+  "tree": "6b7e735d29d7aa463d6b7b93a2a7190ed850e1b1"
+ },
+ "20261026T2319-c47-intent-review-hunting-ecology": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:19Z",
+  "tree": "a48181720ca3a7b51cee7fe9d315a3fd85a94871"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
