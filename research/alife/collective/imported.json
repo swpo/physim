@@ -8343,6 +8343,13 @@
   "first_seen": "2026-10-25T23:37Z",
   "tree": "eb67d1bc3694f85df18d8cd0cf63879ff5750195"
  },
+ "20261025T2345-c32-review-cutrepair": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:04Z",
+  "tree": "53234fb0d4831940bab7ed83bc7c43d57f0c7321"
+ },
  "20261025T2348-c27-review-kernel-drive": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
@@ -8370,6 +8377,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T23:54Z",
   "tree": "958b27e7354333d3b6909ebf33b425e34adab213"
+ },
+ "20261026T0003-c26-intent-review-ringswim-repair": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:04Z",
+  "tree": "c7d57e2f8105b86ebe881935b08625fe25c55668"
+ },
+ "20261026T0003-c26-lenia-predator-arena": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:04Z",
+  "tree": "a42e0d6f3b21d6b89e53236f8d0258c26be4add1"
+ },
+ "20261026T0006-c32-intent-fch": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:04Z",
+  "tree": "0f0afe523012f3a8574fdd6f53096203b879e6c2"
  },
  "_bad_branches": {},
  "_deferred": {
