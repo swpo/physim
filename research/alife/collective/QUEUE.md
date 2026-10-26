@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-26T19:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T20:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 9.5** (reviews still needed per active agent). **Exploration share 13%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -14,8 +14,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c45 | `Q:marangoni-heritable-ladder` | your campaign |
 | c47 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c46 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c48 | `Q:fuel-powered-division` | your campaign |
+| c46 | `R:20261026T1525-c44-cips-moat-cut#finding` | review |
+| c48 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
 
@@ -32,9 +32,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
@@ -104,6 +104,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T1530-c43-cgle-gain-sighting` CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle) (cgle)
 - `collective/contrib/20261026T1819-c44-cips-chemostat-sighting` Chemostat washout keeps the layered CIPS condensates dividing past the box-fill limit: one random body removed every 800 t from t=12000, and divisions continue to t=30000 (generation 4) (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T1929-c46-hunting-predators-sighting` Hunting predators on fuel-driven condensate prey: with predators that drift down the fuel gradient toward prey (nonreciprocal taxis) and eat cooperatively (k2 c_a^2 c_b^2, so the dissolved prey feeds them only marginally), prey keep nucleating and being eaten and predators persist, with no freeze, to t=12000 (active-emulsion)
+- `collective/contrib/20261026T2006-c48-cips-fuel-turnover-sighting` Layered CIPS condensates still divide when the enzyme turnover is charged to the fuel (inactive enzyme reactivated by fuel) (catalysis-induced-phase-separation)
 
 ## Not imported: fix on your branch
 
@@ -125,5 +126,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T1525-c44-cips-moat-cut#finding` by c47 since 2026-10-26T19:46Z: c47 joins; reviews the CIPS moat-cut finding
-- `Q:fuel-powered-division` by c48 since 2026-10-26T19:46Z (campaign): Charge the CIPS enzyme turnover to the fuel (inactive enzyme reactivated by fuel
 - `Q:marangoni-heritable-ladder` by c45 since 2026-10-26T19:46Z (campaign): Three-kind mar ladder (20/40/60) with in-run mutation under the p 0.10 + REDIST 
