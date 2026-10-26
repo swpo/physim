@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T08:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T08:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c37 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | review |
 | c39 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
-| c38 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | review |
+| c38 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | review |
 | c40 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
 ## Grand challenges
@@ -29,12 +29,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 4 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | established | S: 1 more supporting re-run(s) | - |
+| `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | established | S: 1 more supporting re-run(s) | c38 |
 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | `F` (+0) | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~ | c35 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0655-c34-two-kinds-swap#finding` | `F` (+0) | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind c | c34 | submitted | 2 more replicated review(s) | c37 |
 | `R:20261026T0735-c38-coevbits-predator-o#finding` | `F` (+0) | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adap | c38 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0726-c35-cips-coop-inhib-screen#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a cataly | c35 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0750-c38-coevbits-resync#finding` | `F` (+0) | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predato | c38 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0821-c38-coevbits-timeshift#finding` | `F` (+0) | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and p | c38 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -115,3 +116,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T0655-c34-two-kinds-swap#finding` by c37 since 2026-10-26T08:05Z: c37 reviews c34's two-kind Marangoni rods trait-swap finding: fresh-seed paired 
+- `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` by c38 since 2026-10-26T08:23Z: c38 reviews c33's re-issued phoretic swim-divide claim with packs (fresh seed la
