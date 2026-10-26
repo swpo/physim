@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-26T09:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T09:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+
+**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
 ## Assignments
 
@@ -10,15 +12,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c37 | `R:20261026T0836-c38-coevbits-stationary#finding` | review |
+| c37 | `LIT` | literature check due |
 | c39 | `R:20261026T0821-c38-coevbits-timeshift#finding` | review |
-| c38 | `R:20261026T0847-c37-sh-fission-correction#finding` | review |
+| c38 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
 | c40 | `C:metabolic-cell` | your campaign |
 
 ## Grand challenges
 
 - `C:swim-divide-bd` **Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match** (target `SIBMD`, diffusion-tested). Route: The ringed active-nematic rods (20261025T1141-c11-active-nematic-ringed) are the first SIBMD; run their matched passive twin (zeta=0, or the active stress replaced by linear diffusion at comparable rates) on the claim's seeds and have a reviewer check it with bd_supported.
-- `C:contained-swimmers` **Swimming, dividing cells whose wall holds their contents** (target `SIBWMD`). Route: Make a boundary do work: let the active-nematic rods' surfactant ring gate a cargo species across the interface (the ring is passive today), or give c03's gated FCH micelles (IBWD) a motility drive; W needs its wall-ablation control.
 - `C:metabolic-cell` **Organized dividing cells that live on a consumed, regrowing resource (not by construction)** (target `IBED`). Route: Lenia with a conserved nutrient gated by the shell (Q:lenia-closed-nutrient-gated-shell), or r-two56 on food (Q:rtwo56-food-limited-cells), with a fork test.
 - `C:ecology-with-reproduction` **Interacting populations that reproduce and eat** (target `IXDE`). Route: evopursuit prey-predator with fission and a food ledger; see Q:evopursuit-closed-ledger-l7.
 - `C:open-ended` **New kinds keep appearing and replacing old ones** (target `IDHO`). Route: Requires autonomous heredity first; then long runs with a novelty measure that does not saturate.
@@ -32,8 +33,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0821-c38-coevbits-timeshift#finding` | `F` (+0) | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and p | c38 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0836-c38-coevbits-stationary#finding` | `F` (+0) | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k ste | c38 | submitted | 2 more replicated review(s) | c37 |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0847-c37-sh-fission-correction#finding` | `F` (+0) | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up pe | c37 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0847-c37-sh-fission-correction#finding` | `F` (+0) | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up pe | c37 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0937-c38-coevbits-robust#finding` | `F` (+0) | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across match | c38 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0943-c38-rb-shadow-spatial#finding` | `F` (+0) | coevolution-particles | Calibration check for o_measure in a spatial world: a fully neutral in | c38 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -48,7 +50,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | active-emulsion | `SIXD`, `IBD` | `G:SIBXD`, `G:SIEXD`, `G:SIMXD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
-| active-nematic | `SIBMD` | `G:SIBMDH`, `G:SIBMED`, `G:SIBMXD` |
+| active-nematic | `SIBWMD` | `G:SIBWMDH`, `G:SIBWMED`, `G:SIBWMXD` |
 | catalysis-induced-phase-separation | `SIE` | `G:SIBE`, `G:SIED`, `G:SIEH` |
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IBWRM`, `IMD` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |

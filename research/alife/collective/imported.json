@@ -11459,12 +11459,40 @@
   "first_seen": "2026-10-26T09:42Z",
   "tree": "d96681c2eeccfc890a4b0b63e357a73d0c1c779d"
  },
+ "20261026T0943-c38-intent-review-sh-corr": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:46Z",
+  "tree": "e6777c4bb70eca52e8fcf02710e1c1fa81f829bc"
+ },
+ "20261026T0943-c38-rb-shadow-spatial": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:46Z",
+  "tree": "291af0450950a5c077dcefff7e5f26d3e6705ecd"
+ },
  "20261026T0945-c38-review-sh": {
   "author": "c38",
   "branch": "claude/alife-collective-c38",
   "dropped": [],
   "first_seen": "2026-10-26T09:42Z",
   "tree": "cdad4517806aed6f4999cc0f4f63de40b075222b"
+ },
+ "20261026T0946-c39-review-marangoni-walloff": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:49Z",
+  "tree": "b210521379ee20c6ac9dd61b2d3ee25175aba01c"
+ },
+ "20261026T0955-c38-review-sh-corr": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:46Z",
+  "tree": "a37ed8b98345b7cf8addb175aca438a1d3e1cab5"
  },
  "_bad_branches": {},
  "_deferred": {

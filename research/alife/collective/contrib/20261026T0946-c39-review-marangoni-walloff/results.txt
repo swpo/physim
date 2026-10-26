@@ -1,0 +1,24 @@
+== rerun/seed15
+- motion: 56 long-lived tracks moved >= 1 body length; max speed 0.305/time; max body lengths 11.2
+- replication (lineage window K = 20 frames = time 100, default): splits 39, persistent splits 23 (0 more failed only because the siblings re-merged within K), max generation 3, merges 18, merge/split ratio 0.462, nucleations 9
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/rerun/seed15/frames.npz: 106 tracks, 23 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 8; by rod length >= 3: 0
+   {"id": 55, "start": 87, "end": 163, "birth": "split", "children": [91, 93], "net": 40.3, "bl_labkit": 4.81, "bl_rod": 2.07}
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/rerun/seed15/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.32, fraction >= 2: 1.00
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/rerun/seed15/frames.npz ch2: body-frames 533, both >= 1.5: 1.00, median rim/core 2.58, median rim/out 11.18
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/rerun/seed15/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.64, fraction >= 2: 1.00
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/rerun/seed15/frames.npz ch3: body-frames 533, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/rerun/seed15/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=35, median in/out 4.82, fraction >= 2: 1.00
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/rerun/seed15/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=42, median in/out 4.37, fraction >= 2: 1.00
+== walloff/seed15
+- motion: 56 long-lived tracks moved >= 1 body length; max speed 0.305/time; max body lengths 11.2
+- replication (lineage window K = 20 frames = time 100, default): splits 39, persistent splits 23 (0 more failed only because the siblings re-merged within K), max generation 3, merges 18, merge/split ratio 0.462, nucleations 9
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/walloff/seed15/frames.npz: 106 tracks, 23 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 8; by rod length >= 3: 0
+   {"id": 55, "start": 87, "end": 163, "birth": "split", "children": [91, 93], "net": 40.3, "bl_labkit": 4.81, "bl_rod": 2.07}
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/walloff/seed15/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.32, fraction >= 2: 1.00
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/walloff/seed15/frames.npz ch2: body-frames 533, both >= 1.5: 1.00, median rim/core 2.58, median rim/out 11.18
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/walloff/seed15/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 0.22, fraction >= 2: 0.00
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/walloff/seed15/frames.npz ch3: body-frames 533, both >= 1.5: 0.00, median rim/core 1.50, median rim/out 0.33
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/walloff/seed15/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=35, median in/out 0.38, fraction >= 2: 0.00
+collective/contrib/20261026T0946-c39-review-marangoni-walloff/walloff/seed15/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=42, median in/out 0.30, fraction >= 2: 0.00
