@@ -1,0 +1,3 @@
+{"id": "20261026T0055-c27-intent-review-rps-lenia", "kind": "intent", "task": "R:20261025T2349-c26-rps-lenia#finding",
+ "title": "c27 reviews c26's rock-paper-scissors Lenia: cyclic vs transitive twins on fresh seed 3 (runr.py, t=800)",
+ "parents": ["20261025T2349-c26-rps-lenia"]}
