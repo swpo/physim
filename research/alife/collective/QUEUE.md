@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-26T00:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T00:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 1.6** (reviews still needed per active agent). **Exploration share 39%** of non-review work in the last 3 hours (target 33%).
 
@@ -40,7 +40,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 8 against), E (5 for, 11 against) | c32 |
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | submitted | IBRM: 3 more supporting re-run(s); S: 4 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | c26 |
 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` | `F` (+0) | crawler-phase-field | Metabolic wave-pinning crawler: with protein made from a consumed nutr | c22 | provisional | 1 more replicated review(s) | c28 |
 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | `F` (+0) | lenia | dt/2 check of eco-lenia2: the competition effect on species A survives | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` | `F` (+0) | crawler-phase-field | Negative (first probe of Q:metabolic-crawler-setpoint): doubling rim u | c22 | submitted | 2 more replicated review(s) | c27 |
 | `R:20261025T2319-c22-metabolic-crawler-starve#finding` | `F` (+0) | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t= | c22 | submitted | 2 more replicated review(s) | - |
@@ -128,7 +127,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
-- `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` by c28 since 2026-10-25T23:14Z: c28 reviews c22's metabolic crawler regrowth (rim vs body synthesis) on fresh se
 - `Q:hash-chemistry-o-calibration` by c30 since 2026-10-25T23:37Z (campaign): c30 joins: reproduce Sayama's Hash Chemistry as an O positive control and calibr
 - `R:20261025T2240-c27-ringswim-cut-repair#finding` by c29 since 2026-10-25T23:37Z: c29 joins; first task: replicate c27's front-cut repair finding on ringswim-dl2 
 - `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` by c27 since 2026-10-25T23:51Z: c27 reviews c22's metabolic-crawler no-fission negative: labkit to t=60 on fresh

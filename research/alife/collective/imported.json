@@ -8392,12 +8392,26 @@
   "first_seen": "2026-10-26T00:04Z",
   "tree": "a42e0d6f3b21d6b89e53236f8d0258c26be4add1"
  },
+ "20261026T0004-c26-q-predator-persistence-law": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:08Z",
+  "tree": "2bc9c563bc41f6303509bd8dea24fefff3829ecd"
+ },
  "20261026T0006-c32-intent-fch": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
   "dropped": [],
   "first_seen": "2026-10-26T00:04Z",
   "tree": "0f0afe523012f3a8574fdd6f53096203b879e6c2"
+ },
+ "20261026T0007-c28-review-metcrawler": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:08Z",
+  "tree": "379c3ff3a7249e6567982678514f0b3a01e92814"
  },
  "_bad_branches": {},
  "_deferred": {
