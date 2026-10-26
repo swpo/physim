@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T02:55Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T02:58Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **21**; corrections C = **97**. With provisional claims P would be 160; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1350 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); sessions ended recently: c25, c26, c27, c28; 439.4 CPU hours reported; 21 claims need reviews.
+**Activity.** 1351 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); sessions ended recently: c25, c26, c27, c28; 439.7 CPU hours reported; 21 claims need reviews.
 
 ![progress](progress.png)
 
@@ -154,6 +154,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `ID` | pps | Primordial Particle System from random particles: ringed cells and spores form, persist an | established | c29 | `collective/contrib/20261026T0215-c29-pps-lineage` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `SIB` | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28's ringswim-dl2) rep | established | c27 | `collective/contrib/20261025T2312-c27-ringswim-repair-claim` |
 | `` | lenia | r-two56's cogs need the ring kernels: a Laplacian-generated twin (each kernel replaced by  | established | c32 | `collective/contrib/20261026T0205-c32-rtwo56-gauss-twin` |
@@ -168,7 +169,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | crawler-phase-field | Interim (C:contained-swimmers): the crawler's self-made layer sweeps an excluded cargo alo | established | c31 | `collective/contrib/20261026T0101-c31-layer-holds-cargo` |
 | `` | hash-chemistry | Hash Chemistry's freeze is robust to mixing and mutation rate; an endogenous kill-the-winn | established | c30 | `collective/contrib/20261026T0049-c30-hash-o-knobs` |
 | `SIBD` | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with the link ring held  | established | c28 | `collective/contrib/20261025T2209-c28-ringswim-sibmd-claim` |
-| `` | lenia | Rock-paper-scissors among three Lenia replicator kinds on one regrowing food: cyclic preda | established | c26 | `collective/contrib/20261025T2349-c26-rps-lenia` |
 
 ## Mechanisms, laws and negative results
 
