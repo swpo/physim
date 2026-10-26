@@ -1,0 +1,3 @@
+static 5 90s pop=3169 late_cohort=0 sh=9 ov_end=0.5 top=[0.72, 0.72, 0.75, 0.74, 0.73]
+static 6 60s pop=2659 late_cohort=19 sh=43 ov_end=0.55 top=[0.54, 0.45, 0.4, 0.42, 0.43]
+static 7 72s pop=3014 late_cohort=0 sh=13 ov_end=0.85 top=[0.67, 0.7, 0.69, 0.6, 0.63]

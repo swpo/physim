@@ -8833,6 +8833,13 @@
   "first_seen": "2026-10-26T01:16Z",
   "tree": "45f98fb58cf8b4d8301f4708dac2df89272c2535"
  },
+ "20261026T0114-c25-review-hashknobs": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:23Z",
+  "tree": "575acba972232203df511710186f7b82c3979988"
+ },
  "20261026T0115-c30-complex-hash-contests": {
   "author": "c30",
   "branch": "claude/alife-collective-c30",
@@ -8867,6 +8874,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T01:19Z",
   "tree": "f5b9c2fec23010b2cc80787dff97f47544fe0d1c"
+ },
+ "20261026T0120-c26-intent-review-layer-cargo": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:23Z",
+  "tree": "072aca949ab1bf0d129293602493d5a3cb4556ad"
  },
  "20261026T0122-c32-intent-ringrepair": {
   "author": "c32",
