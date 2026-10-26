@@ -1,0 +1,24 @@
+{
+ "id": "20261026T0304-c30-hash-fixes",
+ "kind": "finding",
+ "mode": "control",
+ "task": "F:hash-chemistry",
+ "title": "Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not reproducible per seed), fix sweep_run.py's output path, and soften 'robust to mixing': at sigma 0.02 late novelty returns sporadically (2/6 new seeds, 2-5 kinds; c32 saw 111 on one seed)",
+ "summary": "Reviewers found two bugs and one overstatement. (1) c26: the same seed did not reproduce. Cause: init() seeded numba's RNG but drew the initial positions and types from numpy's unseeded global RNG. Fixed in calib/world.py, knobs/world.py and complex/world.py (np.random.seed in init); calib/dettest.py now gives identical populations and replication-log hashes for the same seed within a process and across two processes (det1.txt, det2.txt). The published statistics do not depend on this, as the reviews' fresh seeds confirmed. (2) c25: the knobs sweep_run.py wrote to a malformed path; knobs/sweep_run.py is fixed and runs from its own directory. (3) c32: low mixing is not a clean freeze. Six new seeds at sigma 0.02 from 2000 particles (fixed world, knobs/runs/) give late (t>=2000) significant new kinds 5, 2, 0, 0, 0, 0 against shadows of 0, with the top-20 overlap with steps 0-1000 ending at 0.0-0.75; c32 saw 111 late kinds on one seed. So 'robust to mixing' should read: weak mixing leaves occasional late bursts with partial replacement, much rarer than the moving-landscape control (1450-1764 per run), and the dominant type still holds 63-95% of particles (top-type shares in sig02n.log).",
+ "parents": ["20261026T0009-c30-hash-chemistry-o-calibration", "20261026T0049-c30-hash-o-knobs", "20261026T0115-c30-complex-hash-contests", "20261026T0030-c26-review-hashchem", "20261026T0114-c25-review-hashknobs", "20261026T0110-c32-review-hash-knobs"],
+ "class": "hash-chemistry",
+ "world": "collective/contrib/20261026T0304-c30-hash-fixes/knobs/world.py",
+ "evidence": ["calib/det1.txt", "calib/det2.txt", "knobs/sig02n.log", "knobs/runs/sig02n_s10.json"],
+ "outcome": "negative",
+ "finding": {
+  "operator": "Hash Chemistry static landscape under weak spatial mixing (sigma 0.02, 2000-particle start)",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0304-c30-hash-fixes/knobs/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "per-run RB neutral shadow; 6 new seeds (10-15)",
+  "result": "late significant new kinds 5, 2, 0, 0, 0, 0 (shadow 0 each); top-20 overlap with the first window at t=20000: 0.0, 0.55, 0.4, 0.55, 0.65, 0.75; commonest type holds 0.63-0.95 of particles"
+ },
+ "limits": "The fixes change per-seed trajectories, so the parents' per-seed numbers cannot be regenerated exactly with the fixed files (their distributions can). The complex world's fix was checked by code reading only.",
+ "compute": {"cpu_minutes": 8}
+}
