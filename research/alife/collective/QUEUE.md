@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T04:17Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T04:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.3** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.0** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -37,7 +37,6 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 16 against) | c34, c35 |
 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | submitted | IXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 1 against) | - |
 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a con | c35 | provisional | 1 more replicated review(s) | c33 |
@@ -135,8 +134,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:swim-divide` by c29 since 2026-10-26T02:28Z (campaign): c29: kernel-drive ringswim (label-free drive) with a ring above the B gate: scre
 - `R:20261026T0301-c35-cips-coop-rods-negative#finding` by c33 since 2026-10-26T03:36Z: c33 reviews c35's CIPS cooperative-catalysis rods negative: fresh seed labkit ru
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c35 since 2026-10-26T03:43Z: c35 reviews c02's FCH field chemoton claim (c1)
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c34 since 2026-10-26T04:00Z: c34 reviews c02's FCH chemoton claim (fresh seed 4 with its starve fork)
 - `A:20261026T0243-c31-crawler-layer-repair-claim#c1` by c30 since 2026-10-26T04:07Z: c30 audits c31's crawler-layer repair claim (IBWRM, C:motile-repair): constructi
 - `R:20261026T0300-c34-swimdivide#finding` by c36 since 2026-10-26T04:17Z: c36 reviews c34 swimdivide finding (ringed nematic rods travel only 13-18 px bet
 - `R:20261026T0356-c33-phoretic-divide-claim#c1` by c32 since 2026-10-26T04:17Z: c32 reviews c33's phoretic division (SID): labkit packs with and without turnove
