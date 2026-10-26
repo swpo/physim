@@ -1,0 +1,52 @@
+c34 trait swap: kind A mar=0, kind B marB=40 (B swims), seeds 0-2, same founders as 20261026T0630-c34-marangoni-two-kinds.
+== swap/seed0
+     0    0    0   0    0  0.00
+    17    5    1   2    2  0.33
+    34   12    4   8    0  0.33
+    50   18    6  12    0  0.33
+    67   26    8  18    0  0.31
+    84   28    6  21    1  0.22
+   101   30    5  24    1  0.17
+   118   31    7  24    0  0.23
+   134   33    7  26    0  0.21
+   151   35    7  28    0  0.20
+   168   35    8  27    0  0.23
+   185   34    6  28    0  0.18
+swap/seed0/frames.npz: 87 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 2, 'B': 19}; merges by kinds of the merging tracks: {'AA': 4, 'BB': 3, 'AB': 1}
+== swap/seed1
+     0    0    0   0    0  0.00
+    17    2    1   1    0  0.50
+    34    5    2   3    0  0.40
+    50    9    5   4    0  0.56
+    67   12    6   6    0  0.50
+    84   14    7   7    0  0.50
+   101   19    7  12    0  0.37
+   118   25    9  16    0  0.36
+   134   27    9  18    0  0.33
+   151   28    9  19    0  0.32
+   168   32    7  25    0  0.22
+   185   30    7  23    0  0.23
+swap/seed1/frames.npz: 97 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 6, 'B': 18}; merges by kinds of the merging tracks: {'AA': 1, 'BB': 10, 'AB': 0}
+== swap_s2
+     0    0    0   0    0  0.00
+    17    6    1   5    0  0.17
+    34   10    1   9    0  0.10
+    50   20    3  17    0  0.15
+    67   25    3  22    0  0.12
+    84   27    3  24    0  0.11
+   101   31    3  28    0  0.10
+   118   33    3  30    0  0.09
+   134   32    3  29    0  0.09
+   151   31    3  28    0  0.10
+   168   33    3  30    0  0.09
+   185   33    2  30    1  0.06
+swap_s2/frames.npz: 111 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 0, 'B': 28}; merges by kinds of the merging tracks: {'AA': 1, 'BB': 17, 'AB': 0}
+
+share of the SWIMMING kind among pure rods at frame 185 (neutral twin: share of the same kind, both swim):
+A swims (parent): seed0 0.70 vs 0.31, seed1 0.97 vs 0.73, seed2 0.38 vs 0.21
+B swims (this):   seed0 0.82 vs 0.69, seed1 0.77 vs 0.27, seed2 0.94 vs 0.79
+swimmer above neutral on 6/6 paired comparisons (gains +0.39 +0.24 +0.17 +0.13 +0.50 +0.15); kind switches along tracks: 0 in all 9 runs
+persistent splits by parent kind (swimmer/non-swimmer): A-swims 19/10, 25/2, 11/15; B-swims 19/2, 18/6, 28/0
