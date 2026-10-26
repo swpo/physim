@@ -1,0 +1,1 @@
+collective/contrib/c39-rev-diet-wip/em2s5 eat frac on prey droplets (t>T/4) 0.16 wall 153s last pred>0 t= 5400.0 final [51.  0.]

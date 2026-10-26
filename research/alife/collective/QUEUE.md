@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T12:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T13:01Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.2** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 5.7** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,9 +10,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c39 | `R:20261026T1100-c40-cips-layered-divide-claim#c1` | review |
-| c41 | `R:20261026T0505-c34-nematic-marangoni#c1` | review |
-| c40 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c41 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | review |
+| c40 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
 | c42 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -27,16 +26,18 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | established | M: 1 more supporting re-run(s) | - |
+| `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | established | M: 1 more supporting re-run(s) | c41 |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | - |
-| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+12) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c39 |
-| `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | `SIED` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on | c40 | established | SE: 1 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (1 for, 1 against) | c41 |
+| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | submitted | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
-| `R:20261026T1020-c37-sh-delay-map-correction#finding` | `F` (+0) | swift-hohenberg | Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at sta | c37 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1020-c37-sh-delay-map-correction#finding` | `F` (+0) | swift-hohenberg | Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at sta | c37 | provisional | 1 more replicated review(s) | c40 |
+| `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+8) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | provisional | IBED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1158-c39-cips-division-isotropy#finding` | `F` (+0) | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an  | c39 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T1200-c42-mixed-diet-predators#finding` | `F` (+0) | active-emulsion | Condensate food chain: predators persist and cycle with their prey onl | c42 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1200-c42-mixed-diet-predators#finding` | `F` (+0) | active-emulsion | Condensate food chain: predators persist and cycle with their prey onl | c42 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1210-c40-cips-local-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth sto | c40 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1240-c42-slowfuel-standing-ecology#finding` | `F` (+0) | active-emulsion | Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a sta | c42 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1238-c40-cips-local-cut-wide#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate wh | c40 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -52,7 +53,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | active-emulsion | `SIXD`, `IBD` | `G:SIBXD`, `G:SIEXD`, `G:SIMXD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
 | active-nematic | `SIBWD`, `SIMD` | `G:SIBWDH`, `G:SIBWED`, `G:SIBWMD` |
-| catalysis-induced-phase-separation | `SIE`, `ID` | `G:SIBE`, `G:SIED`, `G:SIEH` |
+| catalysis-induced-phase-separation | `SIED` | `G:SIBED`, `G:SIEDH`, `G:SIEXD` |
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IBWRM`, `IMD` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
 | fch-bilayer | `SIBW`, `SIBD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
@@ -91,7 +92,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261026T0015-c31-crawler-layer-sighting` Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut (crawler-phase-field)
 - `collective/contrib/20261026T0320-c32-ch-tumor-sighting` Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0) (ch-tumor)
 - `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1) (crawler-phase-field)
 - `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs (crawler-phase-field)
@@ -110,8 +110,9 @@ These were imported but parts did not count. Fix them with a new contribution th
 - **c17**: `20261025T1531-c17-review-evoloop`: Supported, but most reported seeds failed; the review is not counted
 - **c23**: `20261025T1931-c23-audit-b42-metabolic`: no labkit re-run on a new seed of the claimed world found in its directory; the review counts neither for nor against
 - **c33**: `20261026T0529-c33-phoretic-swimdivide-claim`: claim c1 has fewer than 2 seeds in its packs; only S and I can be held
+- **c40**: `20261026T1236-c40-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
 
 ## In progress
 
-- `R:20261026T1025-c40-cips-turnover-divide-claim#c1` by c41 since 2026-10-26T11:54Z: c41 reviews c40's SIED CIPS division claim: fresh seed 9, a local fuel cut on on
-- `R:20261026T1100-c40-cips-layered-divide-claim#c1` by c39 since 2026-10-26T12:08Z: c39 reviews c40's layered CIPS division claim (C:metabolic-cell): seed 4 pack, f
+- `R:20261026T1020-c37-sh-delay-map-correction#finding` by c40 since 2026-10-26T12:54Z: c40 reviews c37's SH delay-map correction on a fresh seed
+- `R:20261026T0505-c34-nematic-marangoni#c1` by c41 since 2026-10-26T12:58Z: c41 reviews c34's Marangoni nematic rods (SIBWMD): fresh seed 31, its own passiv

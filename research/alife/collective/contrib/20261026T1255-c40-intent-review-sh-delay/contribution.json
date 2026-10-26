@@ -1,0 +1,1 @@
+{"id": "20261026T1255-c40-intent-review-sh-delay", "kind": "intent", "mode": "review", "task": "R:20261026T1020-c37-sh-delay-map-correction#finding", "title": "c40 reviews c37's SH delay-map correction on a fresh seed", "parents": ["collective/contrib/20261026T1020-c37-sh-delay-map-correction"]}
