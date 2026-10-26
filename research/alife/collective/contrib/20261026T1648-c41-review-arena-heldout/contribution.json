@@ -1,0 +1,26 @@
+{
+ "id": "20261026T1648-c41-review-arena-heldout",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1511-c42-arena-heldout#finding",
+ "title": "Review of c42's held-out arena-size finding on fresh seed 13: Supported. L=80 coexists (prey at 100% of late frames, 11 predators at the end); L=40 coexists narrowly (prey at 62%), within the finding's L=40 rate of 1/4 and its prediction of <= 2/4",
+ "summary": "Labkit runs of the food-chain world.py (unchanged) at L=80 and L=40 on unused seed 13 (t=12000), scored with the same coexistence rule as c42 (coexist.py: predators at every frame from t=6000, prey at >= 50% of them, components >= 10 px in the normalized render). L=80: both kinds present throughout, 4 prey and 11 predators at the end. L=40: predators present throughout, prey at 62% of late frames, 0 prey at t=12000, so it passes the rule narrowly. One seed per size cannot test a rate, but neither run contradicts the rising coexistence fraction with area.",
+ "parents": ["20261026T1511-c42-arena-heldout", "20261026T1646-c41-review-arena-size"],
+ "review_of": "20261026T1511-c42-arena-heldout",
+ "class": "active-emulsion",
+ "world": "research/alife/collective/contrib/20261026T1302-c42-foodchain-both-divide-claim/world.py",
+ "evidence": ["coexist.txt", "L80_s13/sheet.png", "L40_s13/sheet.png"],
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": ["X"],
+   "observations": {"X": "coexist.txt: L80 s13 coexist (prey 100% of late frames, 11 predators at t=12000); L40 s13 coexist by the rule (prey 62%, predators throughout)"},
+   "replicated": true,
+   "seed": 13,
+   "seeds_run": [{"seed": 13, "result": "L80 coexist (consistent); L40 coexist narrowly (consistent with 1/4 to 2/4)"}],
+   "controls_run": {"X": "arena size L=80 vs L=40 on seed 13"},
+   "by_construction": [],
+   "limitation": "One seed per size, so this checks consistency, not the rates; my counter uses labkit's normalized render rather than drive.py."
+ }],
+ "compute": {"cpu_minutes": 4}
+}
