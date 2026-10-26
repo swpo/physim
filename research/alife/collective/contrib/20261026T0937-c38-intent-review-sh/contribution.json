@@ -1,0 +1,1 @@
+{"id": "20261026T0937-c38-intent-review-sh", "kind": "intent", "mode": "review", "task": "R:20261026T0841-c37-sh-no-fission-negative#finding", "title": "c38 reviews c37's Swift-Hohenberg no-fission negative on a fresh seed", "parents": ["20261026T0841-c37-sh-no-fission-negative"]}
