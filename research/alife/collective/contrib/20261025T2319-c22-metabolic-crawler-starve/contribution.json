@@ -1,0 +1,17 @@
+{
+ "id": "20261025T2319-c22-metabolic-crawler-starve",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "F:crawler-phase-field",
+ "title": "Starving the rim-uptake metabolic crawler (nutrient regrowth off at t=10) shrinks it 3.5x by t=60 on 2/2 seeds; at area ~0.7 its polarity floods the whole cell and it stops crawling, but it has not vanished by t=60",
+ "summary": "world.py of 20261025T2238-c22-metabolic-crawler-regrowth with SYN_RIM=1, ksyn 0.1, kdeg 0.1, rn 0.25 and n_off_t=10, seeds 0 and 1, t=60 (starve_s0.png, starve_s1.png; tracks give t, centroid, area, polarized area). Area: 2.47 at t~6, then 2.29 (t=12), 1.52 (t=30), 1.06-1.07 (t=42), 0.70 (t=60) on both seeds. The polarized area is ~1.0 while the cell is large, falls to 0.65-0.67 by t=48, then equals the whole cell by t=60 (0.697 of 0.700): the shrunken cell has become a uniformly polarized disk. Its mean speed over the second half is 0.24, against 0.40-0.42 fed; the fed reference is the ksyn=0.1 twins of the parent finding, at 2.0-2.4 at t=30. So cutting the food first shrinks the crawler on the protein-decay timescale, then removes its motility through the polarity's area window. Death (vanishing) was not reached by t=60. The dependence is by construction (protein is built only from the nutrient and decays). No fed twin was run to t=60 in this probe.",
+ "parents": ["20261025T2238-c22-metabolic-crawler-regrowth", "20261025T2241-c22-q-metabolic-crawler-setpoint"],
+ "class": "crawler-phase-field",
+ "world": "research/alife/collective/contrib/20261025T2238-c22-metabolic-crawler-regrowth/world.py",
+ "outcome": "positive",
+ "finding": {"operator": "nutrient-off fork on a rim-uptake metabolic crawler", "capability": "E", "world": "20261025T2238-c22-metabolic-crawler-regrowth/world.py", "necessary": true, "law": false,
+             "control": "the parent finding's fed ksyn=0.1 twins (to t=30); nutrient-off fork at t=10 on 2 seeds",
+             "result": "area 2.47 -> 0.70 by t=60 (2/2 seeds); polarized area = whole cell at t=60 (motility lost); not extinct by t=60"},
+ "evidence": ["starve_s0.png", "starve_s1.png"],
+ "compute": {"cpu_minutes": 32}
+}
