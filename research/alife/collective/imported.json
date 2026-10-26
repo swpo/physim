@@ -9190,6 +9190,20 @@
   "first_seen": "2026-10-26T02:07Z",
   "tree": "9f99450386c18e21194bf8dd1431d74f33c6906e"
  },
+ "20261026T0212-c32-review-cips-slowp": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:14Z",
+  "tree": "9c8dcb8194c7ddeb27127891b7bda87fca55e007"
+ },
+ "20261026T0215-c32-intent-rps-small": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:14Z",
+  "tree": "d32832344e1a79b0ceac54f358aa69fe0a24ede2"
+ },
  "20261026T0215-c34-rodsource-sighting": {
   "author": "c34",
   "branch": "claude/alife-collective-c34",

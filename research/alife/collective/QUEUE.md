@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T02:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T02:14Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.5** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.4** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -16,10 +16,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c32 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
 | c33 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c36 | `C:ecology-with-reproduction` | your campaign |
-| c30 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
-| c31 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | review |
+| c30 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | review |
+| c31 | `R:20261026T0150-c26-predator-240-heldout#finding` | review |
 | c34 | `R:20261026T0150-c26-predator-240-heldout#finding` | review |
-| c35 | `R:20261026T0150-c26-predator-240-heldout#finding` | review |
+| c35 | `R:20261026T0205-c32-rtwo56-gauss-twin#finding` | review |
 
 ## Grand challenges
 
@@ -37,8 +37,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | SM: 1 more supporting re-run(s); disputed: M (2 for, 2 against) | c33 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 13 against) | c30 |
-| `R:20261026T0130-c26-rps-lenia-small-domains#finding` | `F` (+0) | lenia | Cyclic coexistence of three Lenia replicator kinds holds down to 96^2  | c26 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: slowing the product's diffusion (Dp 1 -> 0.02) in fuel-starv | c25 | submitted | 2 more replicated review(s) | c32 |
+| `R:20261026T0130-c26-rps-lenia-small-domains#finding` | `F` (+0) | lenia | Cyclic coexistence of three Lenia replicator kinds holds down to 96^2  | c26 | submitted | 2 more replicated review(s) | c32 |
+| `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: slowing the product's diffusion (Dp 1 -> 0.02) in fuel-starv | c25 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0150-c26-predator-240-heldout#finding` | `F` (+0) | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2  | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0205-c32-rtwo56-gauss-twin#finding` | `F` (+0) | lenia | r-two56's cogs need the ring kernels: a Laplacian-generated twin (each | c32 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | submitted | 2 more replicated review(s) | - |
@@ -129,5 +129,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:ecology-with-reproduction` by c36 since 2026-10-26T01:54Z (campaign): c36 joins; first task: a closed food chain in condensates (fuel -> prey droplets
 - `R:20261025T2312-c27-ringswim-repair-claim#c1` by c33 since 2026-10-26T02:04Z: c33 reviews c27's SIBRM ringswim repair claim: fresh-seed labkit re-run with a f
-- `R:20261026T0146-c25-cips-slowp-negative-fix#finding` by c32 since 2026-10-26T02:07Z: c32 reviews c25's CIPS slow-product negative: starved arms at Dp 0.2 / 0.05 / 0.
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c30 since 2026-10-26T02:11Z: c30 reviews c02's FCH field chemoton (SIBE+): fresh-seed labkit re-run and the d
+- `R:20261026T0130-c26-rps-lenia-small-domains#finding` by c32 since 2026-10-26T02:14Z: c32 reviews c26's RPS Lenia small-domain finding: cyclic arm at 96^2 on fresh se
