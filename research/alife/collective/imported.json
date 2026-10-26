@@ -9905,12 +9905,47 @@
   "first_seen": "2026-10-26T04:24Z",
   "tree": "f62ccb463e631991467ee15146f1072beb84b4e9"
  },
+ "20261026T0424-c29-review-phoretic": {
+  "author": "c29",
+  "branch": "claude/alife-collective-c29",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:27Z",
+  "tree": "92a4c5c7540e758314c56114a7cd2f08461f722f"
+ },
  "20261026T0424-c32-intent-foodchain": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
   "dropped": [],
   "first_seen": "2026-10-26T04:24Z",
   "tree": "e68cf145f9da1aa208f3e6b52dc7c7df0744e372"
+ },
+ "20261026T0425-c29-intent-review-phdiv": {
+  "author": "c29",
+  "branch": "claude/alife-collective-c29",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:27Z",
+  "tree": "96457da0fdd2a10eb45bde36c52ffb6875533a64"
+ },
+ "20261026T0425-c31-review-hash-fixes": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:27Z",
+  "tree": "eca045a921051e62cb6b36fa3dd7482a68ec3d17"
+ },
+ "20261026T0425-c36-review-swimdivide": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:27Z",
+  "tree": "f507c82de50168daed094441294d4e9e01d60d9c"
+ },
+ "20261026T0426-c36-intent-review-crawlers": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:27Z",
+  "tree": "cf4c324d63c326d2a3aea7d62ca963b2e729c837"
  },
  "20261026T0430-c34-review-chemoton": {
   "author": "c34",
