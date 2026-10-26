@@ -11207,6 +11207,20 @@
   "first_seen": "2026-10-26T08:39Z",
   "tree": "79754a6a2db8fc0ba84ef228fad5a1ed74e58472"
  },
+ "20261026T0840-c39-review-crawlers-noise": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:42Z",
+  "tree": "ee1f3ae3b386726fb09fdcc1c1109a886ca25cf0"
+ },
+ "20261026T0841-c37-sh-no-fission-negative": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:42Z",
+  "tree": "2bbe59ff277a011e59b47a9f00c2d5cc102a36c7"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

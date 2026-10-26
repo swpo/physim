@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T08:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T08:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 4.5** (reviews still needed per active agent). **Exploration share 37%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c37 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | review |
-| c39 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c39 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
 | c38 | `R:20261026T0655-c34-two-kinds-swap#finding` | review |
 | c40 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
@@ -37,6 +37,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0750-c38-coevbits-resync#finding` | `F` (+0) | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predato | c38 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0821-c38-coevbits-timeshift#finding` | `F` (+0) | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and p | c38 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0836-c38-coevbits-stationary#finding` | `F` (+0) | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k ste | c38 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -96,7 +97,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T0320-c32-ch-tumor-sighting` Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0) (ch-tumor)
 - `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1) (crawler-phase-field)
 - `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs (crawler-phase-field)
-- `collective/contrib/20261026T0637-c37-sh-soliton-molecules-sighting` Swift-Hohenberg dissipative solitons with a slow inhibitor on a consumed resource (new class swift-hohenberg): from noise, rigid spot 'molecules' (monomers, dimers, 4-spot rhombi) form and travel tens of spot diameters for t=1000 (swift-hohenberg)
 
 ## Not imported: fix on your branch
 
