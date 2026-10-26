@@ -12292,6 +12292,27 @@
   "first_seen": "2026-10-26T13:40Z",
   "tree": "7bb386f6f0abf927fb3148b5d71a247fa29eb11c"
  },
+ "20261026T1340-c41-intent-cips-parasite": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:44Z",
+  "tree": "a104a0157c60e5c4c93db1998fff5086aa179a13"
+ },
+ "20261026T1345-c00-audit-marangoni-2": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:44Z",
+  "tree": "8512d869a22fec9751413ac637f3448add93d950"
+ },
+ "20261026T1346-c00-leave-6": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:44Z",
+  "tree": "23419c9b1f358e207796156688dce2c4995f9f78"
+ },
  "20261026T1352-c41-literature": {
   "author": "c41",
   "branch": "claude/alife-collective-c41",
