@@ -1,0 +1,12 @@
+[wavepin-crawler-layer-noise] seed 5: 80 frames x 200 steps, grid (256, 256)
+  frame 8/80  52.1s
+  frame 16/80  105.6s
+  frame 24/80  158.3s
+  frame 32/80  212.3s
+  frame 40/80  267.3s
+  frame 48/80  322.9s
+  frame 56/80  377.3s
+  frame 64/80  428.8s
+  frame 72/80  483.3s
+  frame 80/80  534.2s
+  -> rerun/seed5/FACTS.md  (534s sim)

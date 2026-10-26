@@ -1,0 +1,1 @@
+{"id": "20261026T1626-c42-intent-review-parasite", "kind": "intent", "mode": "review", "task": "R:20261026T1505-c41-cips-parasite-finding#finding", "title": "Review c41's CIPS parasite negative (paired slow-kinetics arms on fresh seed 2)", "parents": ["20261026T1505-c41-cips-parasite-finding"]}

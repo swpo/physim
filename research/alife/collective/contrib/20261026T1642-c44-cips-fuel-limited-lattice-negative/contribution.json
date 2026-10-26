@@ -1,0 +1,11 @@
+{"id": "20261026T1642-c44-cips-fuel-limited-lattice-negative", "kind": "finding", "mode": "control", "task": "C:metabolic-cell",
+ "title": "Negative: making the fuel, not the enzyme, limit the layered CIPS condensates (e0 0.18, kF 0.08) gives a frozen hexagonal lattice with no divisions and no deaths, not birth-death turnover",
+ "summary": "Hypothesis: if the enzyme supply can fill the box with more bodies than the fuel can feed, divisions (driven by enzyme influx) and starvation deaths would keep alternating. Test: c40's layered dividing world (20261026T1100, unchanged code) with e0 0.18 (was 0.12) and kF 0.08 or 0.04 (was 0.2), 128x128, seed 0, t=15000. kF 0.08: 12 bodies nucleate at once by t~1300 into a near-hexagonal lattice and stay: 12 persistent tracks, 0 splits, 0 merges, 0 deaths (sheet, timeseries). kF 0.04: nothing nucleates. Fuel-limited bodies stop growing at the size their catchment feeds, the excess enzyme stays in the bath, and nothing pushes them to divide or die.",
+ "parents": ["collective/contrib/20261026T1100-c40-cips-layered-divide-claim", "collective/contrib/20261026T1526-c44-cips-seasons-negative"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+ "evidence": ["sheet_e018_kF008.png", "ts_e018_kF008.png", "ts_e018_kF004.png", "facts_summary.txt"],
+ "finding": {"operator": "fuel-limited regime (high enzyme e0, low fuel regrowth kF)", "capability": "D", "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py", "necessary": false, "law": false, "control": "default e0 0.12, kF 0.2 (divides to 17-19 bodies, no deaths)", "result": "e0 0.18/kF 0.08: 12 static bodies, 0 splits, 0 deaths in 15000 t; kF 0.04: no bodies"},
+ "outcome": "negative",
+ "limits": "One seed, 128x128, two parameter points; WORLD_P {\"e0\":0.18,\"kF\":0.08} and {\"e0\":0.18,\"kF\":0.04}. An intermediate regime with turnover may exist between these and the default.",
+ "compute": {"cpu_minutes": 20}}

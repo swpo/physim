@@ -1,0 +1,67 @@
+{
+ "id": "20261026T1626-c44-cips-lownoise-gen4-claim",
+ "kind": "claim",
+ "mode": "extend",
+ "task": "C:metabolic-cell",
+ "title": "C:metabolic-cell (SIBED): layered CIPS condensates from a weaker random field nucleate only 2-4 times and then fill the box by division alone, to generation 4 on 3 of 4 seeds; each body dies within 50 t when an absorbing moat cuts its own fuel while its neighbours stay fed",
+ "summary": "world.py is c40's layered dividing CIPS world (20261026T1100-c40-cips-layered-divide-claim) with one change: the random-field amplitude is 0.02 instead of 0.03. Because the uniform state is linearly stable, fewer sites nucleate (2/4/2/2 on seeds 0-3; 0 at amplitude 0.015), and the box is then populated by dumbbell pinching alone: 13/14/14/15 persistent splits, 0 merges, max generation 4/3/4/4, 17-18 bodies at t=25000 (pack/seed*/lineage.png). Every body carries the self-made amphiphile layer (labkit s rim/core 3.9-6.7, rim/out 15-31, 53/59-82/87 individuals membrane-like). An absorbing fuel moat around one body at t=20000 (kF=0 in a disk of 0.6x the nearest-neighbour distance plus F=0 in the annulus 16 px <= r <= that radius) removes it by t=20025-20050 in 8 of 8 arms on seeds 0 and 1, while the other targets and all 13-17 bodies outside keep their size and the fed twin keeps all. The chi=0 twin (no drift up the product; enzyme with linear diffusion and turnover only) makes no body on seed 0.",
+ "parents": [
+  "collective/contrib/20261026T1100-c40-cips-layered-divide-claim",
+  "collective/contrib/20261026T1025-c40-cips-turnover-divide-claim",
+  "collective/contrib/20261026T1525-c44-cips-moat-cut",
+  "collective/contrib/20261026T1525-c44-cips-lownoise-gen4-sighting"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed0/sheet.png",
+  "pack/seed0/lineage.png",
+  "pack/seed0/radial.png",
+  "pack/seed1/sheet.png",
+  "pack/seed1/lineage.png",
+  "pack/seed2/lineage.png",
+  "pack/seed3/lineage.png",
+  "moat_s0.png",
+  "moat_s0.json",
+  "moat_s1.png",
+  "moat_s1.json",
+  "share_s0.txt",
+  "share_s1.txt",
+  "share_s2.txt",
+  "share_s3.txt",
+  "pack_chi0/seed0/sheet.png"
+ ],
+ "claims": [
+  {
+   "cid": "c1",
+   "capabilities": [
+    "S",
+    "I",
+    "B",
+    "E",
+    "D"
+   ],
+   "rung": "L6[L3]+L4c",
+   "statement": "In pack/seed0-3 (world.py defaults, seeds 0-3, t=25000) enzyme condensates nucleate at 2-4 sites of a random field spread over the whole box; they and their descendants divide by pinching into two round daughters, repeatedly and with 0 merges, to generation 4 on seeds 0, 2 and 3 and generation 3 on seed 1, until 17-18 bodies fill the box. Each body carries a rim layer of the amphiphile s, made only by catalysis and, from t~9000-12000 on, mostly by the bodies themselves (share_s*.txt). Each body depends on its own fuel supply: cutting it with an absorbing moat kills it within 50 t while its neighbours, outside the moat, keep their size (8/8 targets on seeds 0 and 1).",
+   "track": "seed 0 (pack/seed0/lineage.png, metrics.json persistent_splits): founder track 0 nucleates at t~400 and splits at t=4200 into 2 and 3; 3 splits at t=8900 (-> 9), 9 at t=12300 (-> 14), 14 at t=17100 (-> 22, generation 4, alive to t=25000 at (54.5, 51.7), a labkit top track with an s layer, radial.png). The moat arms (moat_s0.png) cut four other bodies of the same population at t=20000; a moat cut of track 22 itself is running as a follow-up.",
+   "evidence": [
+    "pack/seed0/lineage.png",
+    "pack/seed0/sheet.png",
+    "pack/seed0/radial.png",
+    "pack/seed0/tracks.png",
+    "moat_s0.png",
+    "share_s0.txt"
+   ],
+   "controls_run": {
+    "E": "moat_s0, moat_s1 (cutmany.py with MOAT_IN=16, FRAC 0.6, 4 targets each, fed twin, all from the t=20000 frame of the pack; the plain kF=0 disk is not decisive here because fuel diffuses into it: 20261026T1501-c44-review-cips-layered cut_s9)",
+    "B": "share_s*.txt: share of all catalysis (the only source of s) made inside the bodies; c40's chi_s=0 ablation (parent claim ring_chis0_s0.json) removes the layer",
+    "D": "parent claims: dt/2 gives the same division history (20261026T1025); division also under an isotropic drift flux (20261026T1158-c39)"
+   },
+   "bd_control": "chi=0 twin, seed 0 (pack_chi0/seed0, t=8000): 0 bodies; the parent claims ran it on seeds 0 and 1 with the same result"
+  }
+ ],
+ "limits": "The only change from c40's world is the initial amplitude, so this is a sampling choice, not new physics: fewer nucleations leave room for more divisions before the box fills at the lever-rule area fraction; the population still stops at 17-18 bodies with no deaths in the fed world, so births do not continue indefinitely. B: the layer is placed by a drift written against the body field (grad 4e(1-e)); at this low body density the bath makes most of the catalysis (and so most of s) until t~9000 (seeds 0, 2) or ~3600 (seed 1); the bodies make 54-65% at t=11600 and 73-88% from t=17000, when the generation 3-4 bodies live. The layer does no work (one-way coupled). E: the moat is an imposed fuel sink; the dependence itself is dynamic (the enzyme's source is uniform and independent of F; the body is held only by its drift up the catalytic product). Moat targets were the 4 bodies with the farthest neighbours, not the named generation-4 track. Moat states were rebuilt from labkit's float16 frames. Division axes lie along the grid diagonals (c39's isotropy finding covers the unlayered parent). No dt/2 run of this variant.",
+ "compute": {
+  "cpu_minutes": 260
+ }
+}
