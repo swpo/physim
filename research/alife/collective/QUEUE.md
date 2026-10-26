@@ -1,10 +1,12 @@
 # Work queue
 
-Generated 2026-10-26T15:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T15:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 5.5** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 6.0** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm; 2026-10-26T09:29Z: wall-off rule for W; by-construction marks count only from counted reviews; audits can lift them. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
+
+**Synthesis due** (task `SYN`), assigned below.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -14,14 +16,19 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c41 | `LIT` | literature check due |
-| c43 | `R:20261026T1100-c40-cips-layered-divide-claim#c1` | your campaign |
-| c42 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
-| c44 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c41 | `SYN` | synthesis due |
+| c43 | `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | your campaign |
+| c42 | `LIT` | literature check due |
+| c44 | `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | review |
+## Audits due
+
+Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
+
+- `A:20261026T1100-c40-cips-layered-divide-claim#c1` `SIBED` catalysis-induced-phase-separation: C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped 
+
 
 ## Grand challenges
 
-- `C:metabolic-cell` **Organized dividing cells that live on a consumed, regrowing resource (not by construction)** (target `IBED`). Route: Lenia with a conserved nutrient gated by the shell (Q:lenia-closed-nutrient-gated-shell), or r-two56 on food (Q:rtwo56-food-limited-cells), with a fork test.
 - `C:ecology-with-reproduction` **Interacting populations that reproduce and eat** (target `IXDE`). Route: evopursuit prey-predator with fission and a food ledger; see Q:evopursuit-closed-ledger-l7.
 - `C:open-ended` **New kinds keep appearing and replacing old ones** (target `IDHO`). Route: Requires autonomous heredity first; then long runs with a novelty measure that does not saturate.
 
@@ -29,18 +36,19 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+8) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | provisional | IBED: 1 more supporting re-run(s); S: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c42, c43 |
+| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | c43 |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | - |
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1158-c39-cips-division-isotropy#finding` | `F` (+0) | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an  | c39 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1158-c39-cips-division-isotropy#finding` | `F` (+0) | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an  | c39 | submitted | 2 more replicated review(s) | c42 |
 | `R:20261026T1210-c40-cips-local-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth sto | c40 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1238-c40-cips-local-cut-wide#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate wh | c40 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1312-c42-both-divide-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the  | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1333-c42-cips-predator-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that  | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | `F` (+0) | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): pred | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1415-c42-coexistence-arena-size#finding` | `F` (+0) | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs | c42 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1505-c41-cips-parasite-finding#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIP | c41 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -56,7 +64,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | active-emulsion | `SIXD`, `IBD` | `G:SIBXD`, `G:SIEXD`, `G:SIMXD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
 | active-nematic | `SIBWMD` | `G:SIBWMDH`, `G:SIBWMED`, `G:SIBWMXD` |
-| catalysis-induced-phase-separation | `SIED` | `G:SIBED`, `G:SIEDH`, `G:SIEXD` |
+| catalysis-induced-phase-separation | `SIBED` | `G:SIBEDH`, `G:SIBEXD`, `G:SIBMED` |
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IBWRM`, `IMD` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
 | fch-bilayer | `SIBW`, `SIBD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
@@ -117,5 +125,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T1100-c40-cips-layered-divide-claim#c1` by c43 since 2026-10-26T13:47Z (campaign): Review c40's CIPS SIBED claim: fresh-seed rerun, fuel fork (E gate), s-layer rin
-- `R:20261026T1100-c40-cips-layered-divide-claim#c1` by c42 since 2026-10-26T14:16Z: Review c40's CIPS layered-divide SIBED claim (fresh seeds + E fork)
+- `R:20261026T1302-c42-foodchain-both-divide-claim#c1` by c43 since 2026-10-26T15:05Z (campaign): Review c42's closed condensate food-chain IXDE claim: fresh seed, E and X gate c
+- `R:20261026T1158-c39-cips-division-isotropy#finding` by c42 since 2026-10-26T15:20Z: Review c39's CIPS isotropy finding (ISO=1 on fresh seeds)
