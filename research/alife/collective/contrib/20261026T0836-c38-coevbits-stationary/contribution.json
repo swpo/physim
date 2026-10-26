@@ -1,0 +1,34 @@
+{
+ "id": "20261026T0836-c38-coevbits-stationary",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:o-needs-moving-target",
+ "title": "The coevbits chase does not wind down and does not cycle over 700k steps: the time-shift dip is as deep in the second half (0.23 at +10k) as in the first (0.26) against a flat twin, and consensus genotypes come back within 1 bit of any genotype 50k+ steps older in 0-0.6% of windows (median nearest 5 bits)",
+ "summary": "Two checks on the 700k-step run (about 900 predator and 6000 prey generations) of 20261026T0735-c38-coevbits-predator-o, seed 0, against its constant-capture neutral twin. (1) Time-shift profile (20261026T0821-c38-coevbits-timeshift, censuses every 10000 steps) split into halves: capture of prey at lag -40k/0/+10k/+100k by predators at t is 0.39/0.33/0.26/0.38 in the first half and 0.40/0.28/0.23/0.39 in the second; the twin is 0.41-0.43 and 0.36-0.42 with no dip. The prey-led chase is stationary, not a transient of the first radiation. (2) Revisits: consensus genotype of births per 2000-step window; nearest earlier consensus (at least 50000 steps back) is within 1 bit in 0.6% (prey) and 0.0% (predators) of 323 windows, within 3 bits in 13% and 15%, median 5 bits; in the twin, predators (slow neutral drift) return within 1 bit in 19.5% of windows. So within this horizon the system moves on through genotype space rather than cycling through a fixed repertoire.",
+ "parents": [
+  "20261026T0735-c38-coevbits-predator-o",
+  "20261026T0821-c38-coevbits-timeshift"
+ ],
+ "class": "coevolution-particles",
+ "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+ "evidence": [
+  "data/b10L_timeshift_halves.json",
+  "data/b10L_revisits.json",
+  "stationary.py",
+  "research/alife/collective/contrib/20261026T0735-c38-coevbits-predator-o/figs/b10L_s0_bits.png"
+ ],
+ "outcome": "positive",
+ "finding": {
+  "operator": "correlated bit-string matching between coevolving predator and prey particles (w = 10 of 20 bits)",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "constant-capture neutral twin, same seed and length",
+  "result": "time-shift lag -40k/0/+10k/+100k: real first half 0.390/0.334/0.263/0.376, second half 0.404/0.280/0.227/0.389; twin 0.416/0.407/0.407/0.413 and 0.398/0.382/0.374/0.365. Revisits within 1 bit (>= 50k steps back): real prey 0.6%, predators 0.0%; twin prey 0.0%, predators 19.5%."
+ },
+ "limits": "One seed of 700k steps; consensus genotypes summarise populations of ~400 prey and ~60 predator genotypes per window, so a return of the consensus is a coarse test of revisits; the genotype space is finite (2^20), so over much longer runs returns must happen; the interaction is symmetric under relabelling, so new genotypes are new specificities, not new functions.",
+ "compute": {
+  "cpu_minutes": 15
+ }
+}
