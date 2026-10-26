@@ -1,0 +1,12 @@
+[wavepin-crawler-layer-noise] seed 6: 160 frames x 200 steps, grid (256, 256)
+  frame 16/160  114.0s
+  frame 32/160  219.3s
+  frame 48/160  322.2s
+  frame 64/160  424.3s
+  frame 80/160  528.2s
+  frame 96/160  627.7s
+  frame 112/160  722.2s
+  frame 128/160  816.4s
+  frame 144/160  915.9s
+  frame 160/160  1029.4s
+  -> rerun/seed6/FACTS.md  (1029s sim)

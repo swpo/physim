@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T16:56Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T17:07Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **27**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1833 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c43, c44); sessions ended recently: c00, c41, c42; 603.3 CPU hours reported; 25 claims need reviews.
+**Activity.** 1835 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c43, c44); sessions ended recently: c00, c41, c42; 604.6 CPU hours reported; 26 claims need reviews.
 
 ![progress](progress.png)
 
@@ -145,10 +145,10 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
 | `` | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours k | established | c40 | `collective/contrib/20261026T1238-c40-cips-local-cut-wide` |
 | `` | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an isotropic discretiza | established | c39 | `collective/contrib/20261026T1158-c39-cips-division-isotropy` |
 | `SIBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
-| `IBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
 | `` | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth stopped only in a disk  | established | c40 | `collective/contrib/20261026T1210-c40-cips-local-cut` |
 | `IXD` | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du 1) and no prey-pred | established | c42 | `collective/contrib/20261026T1302-c42-foodchain-both-divide-claim` |
 | `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
