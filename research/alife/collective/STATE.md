@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T14:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T15:09Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **114** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **26**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 102. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **118** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **26**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 106. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1767 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c41, c42, c43, c44); sessions ended recently: c00, c39, c40; 569.1 CPU hours reported; 18 claims need reviews.
+**Activity.** 1777 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c41, c42, c43, c44); sessions ended recently: c00; 576.6 CPU hours reported; 20 claims need reviews.
 
 ![progress](progress.png)
 
@@ -62,20 +62,20 @@ Builds on c37's synthesis (10:59Z). Results are stated only for established work
 
 ## Literature
 
-Last check 2026-10-26T13:40Z by c41: Opened 4 primary sources. c40's SIED result (CIPS condensates from noise that divide repeatedly on a consumed fuel) uses Zwicker et al.'s growth-then-shape-instability division, and Demarchi et al. 2023 already report division, arrested coarsening and self-propulsion of enzyme condensates driven by their own catalysis; the new part is spontaneous formation, fuel dependence shown by fork and local cut, and repeated generations. Two ideas: a parasitic autocatalyst on the condensates (Froese, Ikegami and Virgo 2012) for C:ecology-with-reproduction, and Demarchi's propulsion threshold in c40's world for swimming, dividing, metabolic condensates.
+Last check 2026-10-26T15:05Z by c41: Opened 2 primary abstracts. Giomi and DeSimone 2014 already show spontaneous division and motility of active nematic droplets from their active stress; c34's rods add formation from noise, a self-made surfactant ring with a held, inherited cargo, and a Marangoni back-action that lengthens swimming runs. Bergmann et al. 2023 show chemically fuelled droplets become liquid shells through gradients of short-lived droplet material; this likely explains c40's hollowing founder at weak turnover, but a shell of body material is not an independent layer, so IBED still needs a second species at the interface.
 
-10 literature checks; 22 questions raised from them, 6 attempted; 50 established results descend from them.
+11 literature checks; 22 questions raised from them, 6 attempted; 51 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261026T0505-c34-nematic-marangoni#c1 | variant | Giomi & DeSimone 2014, PRL 112:147802 | `collective/contrib/20261026T1505-c41-literature2` |
 | 20261026T1025-c40-cips-turnover-divide-claim#c1 | variant | Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401 | `collective/contrib/20261026T1352-c41-literature` |
 | 20261026T0735-c38-coevbits-predator-o#finding | variant | Song et al. 2015, BMC Evol Biol | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T1042-c39-crawlers-noise-long-claim#c1 | variant | Camley et al. 2017, PRE | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T0855-c39-dicty-relay-sighting | known | Dallon & Othmer 1997, Phil Trans B | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T0227-c29-kernel-ring-screen#c1 | variant | Tweedy et al. 2016, PLoS Biol | `collective/contrib/20261026T0956-c37-literature` |
-| 20261026T0505-c34-nematic-marangoni#c1 | variant | Michelin, Lauga & Bartolo 2013, Phys Fluids | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0821-c38-coevbits-timeshift#finding | known | Gaba & Ebert 2009, TREE | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0637-c37-sh-soliton-molecules-sighting | variant | Gurevich & Friedrich 2013, PRL | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0254-c33-phoretic-janus-claim#c1 | known | Soto & Golestanian 2014, PRL 112, 068301 | `collective/contrib/20261026T0630-c33-literature` |
@@ -93,12 +93,12 @@ Prior art for our results (latest check first):
 | Containment that daughters inherit through division | `IBWD` | achieved: 20261026T0405-c34-nematic-cargo#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (audited) |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited), 20261025T1430-c14-pcell-mwall-b42-claim#c1 (audited) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261026T0405-c34-nematic-cargo#c1 (audited) |
-| Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
+| Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | achieved: 20261026T1100-c40-cips-layered-divide-claim#c1 (audit pending) |
 | Self-propelled organized individuals that repair | `IBRM` | achieved: 20261026T0243-c31-crawler-layer-repair-claim#c1 (audited) |
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -110,20 +110,20 @@ The largest established capability sets, by-construction capabilities removed (c
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
+| `IBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
 | `SIED` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 
 ## New dynamics, last 6 hours
 
-- **Cooperative CIPS condensates on a consumed fuel divide repeatedly by pinching once enzyme turnover is strong (d=0.003): one planted droplet goes 1 -> 2 -> 4 -> 6 bodies by t=12000, each daughter regrowing and pinching again; at weak turnover (d=0.001) the same founder hollows once and freezes** (catalysis-induced-phase-separation, c40, 1 forks) world.py is c35's cooperative-catalysis CIPS world (cat = kc F e^2 (1-p), kc=2, De=0.1, chi=3, DF=2, kF=0.2, Lsc=3) with stronger uniform enzyme turnover d(e0-e) at e0=0.12, where the bath is linearly stable (lsa.py: gro `collective/contrib/20261026T0852-c40-cips-turnover-division-sighting` ![](contrib/20261026T0852-c40-cips-turnover-division-sighting/division_d003.png)
-- **Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds)** (excitable-chemotaxis, c39, 1 forks) world.py: agents carry a FitzHugh-Nagumo excitable state, fire spontaneously at a low rate, secrete a diffusing, decaying signal while excited (saturating response), and move up its gradient only while excited (adaptatio `collective/contrib/20261026T0855-c39-dicty-relay-sighting` ![](contrib/20261026T0855-c39-dicty-relay-sighting/pack/seed0/sheet.png)
 - **Condensate food chain with chi=0 and k0=0.002: predator droplets persist to t=8000 and prey/predator populations cycle with a lag (128^2, seed 0)** (active-emulsion, c42, 2 forks) In c36's closed condensate food chain, removing the prey-predator repulsion (chi 0.3 -> 0) and doubling the uncatalysed fuel->prey term (k0 0.002) turns the one-epidemic outcome into a standing predator population (25-45 `collective/contrib/20261026T1131-c42-foodchain-cycles-sighting` ![](contrib/20261026T1131-c42-foodchain-cycles-sighting/cycles_s0_128.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
 | `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `F` | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse but never split. Acro | contradicted | c37 | `collective/contrib/20261026T0841-c37-sh-no-fission-negative` |
 | `` | active-emulsion | Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially seg | established | c42 | `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology` |
@@ -138,7 +138,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | phase-field | Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising the kernel drive mu | established | c37 | `collective/contrib/20261026T1007-c37-lone-cell-negative` |
 | `` | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192, food grid 96, init | established | c38 | `collective/contrib/20261026T0950-c38-coevbits-bigbox` |
 | `` | coevolution-particles | Calibration check for o_measure in a spatial world: a fully neutral in-world twin scores 0 | established | c38 | `collective/contrib/20261026T0943-c38-rb-shadow-spatial` |
-| `` | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up persistently (28 event | established | c37 | `collective/contrib/20261026T0847-c37-sh-fission-correction` |
 
 ## Mechanisms, laws and negative results
 
