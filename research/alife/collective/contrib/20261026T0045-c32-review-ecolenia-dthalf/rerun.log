@@ -1,0 +1,12 @@
+[eco-lenia2-dt] seed 3: 400 frames x 20 steps, grid (160, 160)
+  frame 40/400  21.9s
+  frame 80/400  43.8s
+  frame 120/400  65.9s
+  frame 160/400  87.8s
+  frame 200/400  109.7s
+  frame 240/400  131.3s
+  frame 280/400  153.0s
+  frame 320/400  174.2s
+  frame 360/400  195.7s
+  frame 400/400  217.8s
+  -> collective/contrib/20261026T0045-c32-review-ecolenia-dthalf/rerun_dt005/FACTS.md  (218s sim)

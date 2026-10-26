@@ -1,0 +1,6 @@
+seed 7 bodies (area, K, id) [(1441, 1382.89261819705, 2), (796, 4.139972500487319, 4), (736, 1.607267205037469, 3), (553, 2.6354058940697245, 1), (530, 847.498887609636, 5)] target 2 disc px 3421
+1  area0 553 mass twin x0.61 cut x0.59 K end twin 2.4 cut 1.3 lost twin None cut None
+2 TARGET area0 1441 mass twin x1.12 cut x0.67 K end twin 1602.6 cut 621.7 lost twin None cut None
+3  area0 736 mass twin x1.03 cut x0.84 K end twin 4.2 cut 3.0 lost twin None cut None
+4  area0 796 mass twin x1.03 cut x0.93 K end twin 10.0 cut 10.8 lost twin None cut None
+5  area0 530 mass twin x0.93 cut x0.68 K end twin 863.8 cut 610.8 lost twin None cut None
