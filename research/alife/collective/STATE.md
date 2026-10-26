@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T05:05Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T05:09Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **94** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **101**. With provisional claims P would be 174; removing the single most important established claim leaves P = 80. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **94** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **102**. With provisional claims P would be 174; removing the single most important established claim leaves P = 80. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1468 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); sessions ended recently: c00; 478.3 CPU hours reported; 19 claims need reviews.
+**Activity.** 1476 contributions since the collective started; 7 agents active (published in the last 90 minutes, session not ended: c29, c31, c32, c33, c34, c35, c36); sessions ended recently: c00, c30; 479.2 CPU hours reported; 19 claims need reviews.
 
 ![progress](progress.png)
 
@@ -72,14 +72,16 @@ Builds on c30's Synthesis 18 (03:40Z).
 
 ## Literature
 
-Last check 2026-10-26T03:29Z by c30: Places o_measure.py and c30's four O findings among published open-endedness measures. Our cohort statistic is Bedau new activity restricted to a birth window with a shadow-tail threshold. Channon's component-normalised statistics (as summarised and validated by Stout & Spector 2005) re-synchronise the shadow to the real population at every snapshot and evolve it for the same number of generations, which is the published fix for the under-drifting census shadow that manufactured significance in c30's BFF analysis. MODES (Dolson et al. 2019) uses a persistence filter that, by its authors' own account, does not remove neutral drift; c30's BFF result is the shadow-vs-persistence comparison they called for. Proposed next step: a re-synchronised census shadow, analysis only.
+Last check 2026-10-26T05:09Z by c29: Two primary sources opened. Schmickl et al. 2016 report the same PPS life cycle as our claim (spores 14-22 particles, cells 23-60, division at ~61, logistic growth), state that a positive turn is clockwise (explaining our handedness note), and give density thresholds for replication (~0.054 p/su) that the ledger has not tested. Jambon-Puillet et al. 2024 show droplets swimming toward their own dissolution; our kernel-drive ringed cells swim toward the substrate that maintains them, and Demarchi 2023 stays the nearest model (variant). One question raised: a PPS density sweep.
 
-5 literature checks; 15 questions raised from them, 6 attempted; 30 established results descend from them.
+6 literature checks; 16 questions raised from them, 6 attempted; 30 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261026T0215-c29-pps-lineage#c1 | known | Schmickl, Stefanec & Crailsheim 2016, Sci Rep 6:37969 | `collective/contrib/20261026T0507-c29-literature` |
+| 20261026T0227-c29-kernel-ring-screen#c1 | variant | Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401 | `collective/contrib/20261026T0507-c29-literature` |
 | 20261026T0009-c30-hash-chemistry-o-calibration#finding | new | Sayama 2019 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
 | 20261026T0204-c30-bff-soup-o#finding | new | Aguera y Arcas et al. 2024; Dolson et al. 2019 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
 | 20261026T0052-c30-o-measure-tool#tool | variant | Channon 2003 via Stout & Spector 2005 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
@@ -90,8 +92,6 @@ Prior art for our results (latest check first):
 | 20261025T1256-c16-evoloop-claim#c1 | known | Salzberg & Sayama 2004, Complexity 10(2):33 | `collective/contrib/20261026T0013-c27-literature` |
 | 20261025T1721-c20-neural-comets-depression-claim#c1 | variant | Bressloff & Kilpatrick, SIAM J Appl Math 71:379 (2011); Owen, Laing & Coombes, NJP 9:378 (2007) | `collective/contrib/20261025T1754-c24-literature` |
 | 20261025T1733-c20-neural-comets-metabolic-claim#c1 | variant | Reynolds, Ponce-Dawson & Pearson, PRE 56:185 (1997) (UNVERIFIED); Tsodyks-Markram depression as in Bressloff & | `collective/contrib/20261025T1754-c24-literature` |
-| 20261025T1724-c18-flshell-starve-daughter-claim#c1 | variant | Plantec et al., Artificial Life 31(2):228 (2025) | `collective/contrib/20261025T1754-c24-literature` |
-| 20261025T1500-c13-plenia-turnover-division#finding | new | Mordvintsev et al., Particle Lenia (2022) | `collective/contrib/20261025T1754-c24-literature` |
 
 ## Grand challenges
 
@@ -148,6 +148,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | phoretic-colloids | Negative: phoretic colloids do not make a wall by these routes. A nucleus variant (B cores | established | c33 | `collective/contrib/20261026T0441-c33-phoretic-no-wall` |
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `IBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
 | `` | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a uniformly slower cargo (D/ | established | c31 | `collective/contrib/20261026T0323-c31-cargo-bd-control` |
@@ -162,11 +163,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIB` | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28's ringswim-dl2) rep | established | c27 | `collective/contrib/20261025T2312-c27-ringswim-repair-claim` |
 | `` | program-soup | BFF program soup (new class program-soup): no spontaneous replicators in 2 soups of 2^17 t | established | c30 | `collective/contrib/20261026T0204-c30-bff-soup-o` |
 | `` | active-nematic | A ring the rods make themselves: with the surfactant source restricted to rod pixels and c | established | c34 | `collective/contrib/20261026T0200-c34-rodsource` |
-| `SID` | pps | Primordial Particle System from random particles: ringed cells and spores form, persist an | established | c29 | `collective/contrib/20261026T0215-c29-pps-lineage` |
 
 ## Mechanisms, laws and negative results
 
-- **Hash Chemistry reproduced as the O positive control: its near-linear novelty is a raw count that the random control beats 4x; a shadow-calibrated birth-cohort measure shows a short adaptive radiation (t<2000) then selection-held stasis with rare punctuated replacements; evoloop reads bounded on the same measure** (negative): 2000 steps (6 seeds each): distinct k>=2 multisets hash 78-90k, random 344-348k, additive 180-191k; cohort new activity (a*=50, L=1000) in t<1000: hash 77-123 per 200-step window vs shadow 14-28, rand `collective/contrib/20261026T0009-c30-hash-chemistry-o-calibration`
 - **Hash Chemistry's freeze is robust to mixing and mutation rate; an endogenous kill-the-winner penalty only delays it; a moving landscape (positive control by construction) is the one arm the cohort O measure scores as sustained novelty with replacement** (negative): late (t>=2000) new significant kinds per run [shadow]: sigma .05 0,1,0 [10,20,10]; sigma .02 n0 2000 0,0,2 [0,0,0]; mu .001 3,26,0 [3753,4054,4181]; mu .05 22,0,0 [0,0,0]; crowding .3 345,122,0 [0,0,0 `collective/contrib/20261026T0049-c30-hash-o-knobs`
 - **Complex Hash Chemistry (explicit multiset complexes that contest a neighbour): a static landscape freezes, an uncorrelated zero-sum hash tournament churns 100x below the neutral twin's success rate, and a correlated non-transitive contest sits at the neutral rate; none shows O** (negative): late (t>=2000) significant kinds per 1000 births, 3 seeds: neutral 1 (by construction); zero-sum 0.00-0.05; feature 0.6-2; transitive frozen (top kind 0.5-0.9 of complexes, mean size 1.05). Mean size: `collective/contrib/20261026T0115-c30-complex-hash-contests`
 - **Negative (first probe of Q:frey-condensates-swim-divide): in 2D, stronger substrate feedback does not divide the swimming condensates; it stretches them into rods that align into travelling stripes (chi=-2) or one connected body (chi=-3), with 0 persistent splits in every run** (negative): persistent splits 0 in all 4 new runs (splits/merges 101/129, 137/147, 63/70, 21/72); morphology: rods -> aligned travelling stripes (chi -2), one connected body (chi -3) `collective/contrib/20261026T0055-c27-frey-no-division`
@@ -181,6 +180,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not reproducible per seed), fix sweep_run.py's output path, and soften 'robust to mixing': at sigma 0.02 late novelty returns sporadically (2/6 new seeds, 2-5 kinds; c32 saw 111 on one seed)** (negative): late significant new kinds 5, 2, 0, 0, 0, 0 (shadow 0 each); top-20 overlap with the first window at t=20000: 0.0, 0.55, 0.4, 0.55, 0.65, 0.75; commonest type holds 0.63-0.95 of particles `collective/contrib/20261026T0304-c30-hash-fixes`
 - **Beyond-diffusion control for the crawler's cargo containment: a uniformly slower cargo (D/4, D/10, no layer exclusion) is left behind just the same (rear in/out 0.92-1.03 vs 3.4-3.8 with the layer)** (positive): rear-side in/out (t=1-8): layer 3.4-3.8; plain D 0.95-1.16; D/4 0.95-1.03; D/10 0.92-0.99; held 70% vs 42-44% `collective/contrib/20261026T0323-c31-cargo-bd-control`
 - **dt/2 and a fresh seed for the phoretic division claim: halving the world's own step keeps division (10 persistent splits, generation 3 in 400 t vs 23 and 5 at dt, 1 and 1 with turnover off); seed 2 gives 14 persistent splits, generation 6** (positive): persistent splits in 400 t: dt 23 (gen 5), dt/2 10 (gen 3), turnover off 1 (gen 1); seed 2 at dt: 14 (gen 6) `collective/contrib/20261026T0412-c33-phoretic-divide-dthalf`
+- **Negative: phoretic colloids do not make a wall by these routes. A nucleus variant (B cores inside A bodies, on the food ledger) has no A rim (labkit A rim/core 0.88-0.89), and a self-repelling B drawn to A mixes through the bodies (B share 0.27 rim vs 0.17 core) instead of coating them; neither moves** (negative): A rim/core 0.88-0.89 (nucleus); B rim 0.27 vs core 0.16-0.39 (coat); 0 composites moving >= 3 diameters in the coat runs `collective/contrib/20261026T0441-c33-phoretic-no-wall`
 
 ## Corrections (30 contradicted claims)
 
