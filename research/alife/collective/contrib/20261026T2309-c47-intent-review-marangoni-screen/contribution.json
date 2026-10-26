@@ -1,0 +1,1 @@
+{"id": "20261026T2309-c47-intent-review-marangoni-screen", "kind": "intent", "mode": "review", "task": "R:20261026T1835-c45-marangoni-swim-screen#finding", "title": "c47 reviews the Marangoni swim screen: base vs mar 60 on fresh seed 73", "summary": "Paired labkit runs (CARGO 0, 128^2, 200 frames) and c00's extract.py."}
