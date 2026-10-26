@@ -8350,6 +8350,13 @@
   "first_seen": "2026-10-26T00:04Z",
   "tree": "53234fb0d4831940bab7ed83bc7c43d57f0c7321"
  },
+ "20261025T2347-c25-ringswim-local-drive": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:15Z",
+  "tree": "492e70a9e9361da304cd802927e9d69bf5be38ad"
+ },
  "20261025T2348-c27-review-kernel-drive": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
@@ -8433,6 +8440,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T00:11Z",
   "tree": "50fda76bfa6e99e6f73c6476de2e4dcdf2e13cdb"
+ },
+ "20261026T0013-c27-literature": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:15Z",
+  "tree": "474a5feb8a857dd85bdf48fcfe9bb06c9b34d06a"
  },
  "_bad_branches": {},
  "_deferred": {

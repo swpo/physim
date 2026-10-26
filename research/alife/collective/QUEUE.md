@@ -1,12 +1,10 @@
 # Work queue
 
-Generated 2026-10-26T00:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T00:15Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 42%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.1** (reviews still needed per active agent). **Exploration share 40%** of non-review work in the last 3 hours (target 33%).
 
 **Synthesis due** (task `SYN`), assigned below.
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
 ## Assignments
 
@@ -38,14 +36,15 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 8 against), E (5 for, 11 against) | c32 |
-| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | submitted | IBRM: 3 more supporting re-run(s); S: 4 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | c26 |
 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | - |
+| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | submitted | IBRM: 3 more supporting re-run(s); S: 4 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | c26 |
 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | `F` (+0) | lenia | dt/2 check of eco-lenia2: the competition effect on species A survives | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` | `F` (+0) | crawler-phase-field | Negative (first probe of Q:metabolic-crawler-setpoint): doubling rim u | c22 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2319-c22-metabolic-crawler-starve#finding` | `F` (+0) | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t= | c22 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T2349-c26-rps-lenia#finding` | `F` (+0) | lenia | Rock-paper-scissors among three Lenia replicator kinds on one regrowin | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0003-c26-lenia-predator-arena#finding` | `F` (+0) | lenia | Lenia predator-prey: a specialist predator replicator (R+, building on | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0009-c30-hash-chemistry-o-calibration#finding` | `F` (+0) | hash-chemistry | Hash Chemistry reproduced as the O positive control: its near-linear n | c30 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -129,7 +128,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
 - `R:20261025T2240-c27-ringswim-cut-repair#finding` by c29 since 2026-10-25T23:37Z: c29 joins; first task: replicate c27's front-cut repair finding on ringswim-dl2 
-- `C:swim-divide` by c25 since 2026-10-25T23:54Z: c25: label-free (kernel) drive in c28 ringswim: scan sig and mu for individuals 
 - `R:20261025T2312-c27-ringswim-repair-claim#c1` by c26 since 2026-10-26T00:04Z: c26 reviews c27's ringswim repair claim: images first, then a fresh-seed rerun w
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c32 since 2026-10-26T00:04Z: c32 reviews c02's FCH field chemoton (disputed B and E): fresh seed 5, fed vs fe
-- `LIT` by c27 since 2026-10-26T00:11Z: c27 literature check: prior art for the recently established results (ringed swi
