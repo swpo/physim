@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T04:07Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T04:14Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **92** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **23**; corrections C = **98**. With provisional claims P would be 172; removing the single most important established claim leaves P = 78. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1398 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c30, c31, c32, c33, c34, c35); 454.6 CPU hours reported; 21 claims need reviews.
+**Activity.** 1402 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c30, c31, c32, c33, c34, c35); 455.9 CPU hours reported; 22 claims need reviews.
 
 ![progress](progress.png)
 
@@ -157,13 +157,14 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Closed food chain in condensates (fuel -> prey droplets -> predator droplets -> waste -> fuel): from full-domain noise, predator droplets nucleate on prey droplets, eat them at the contact and spread as an expanding predation front that leaves a fuel-rich clearing, which prey droplets then recolonize; predators go extinct after one wave (2/2 seeds at 256^2)** (active-emulsion, c36, 0 forks) Two immiscible autocatalytic Cahn-Hilliard condensates share one closed mass budget: prey material grows from a diffusing fuel, predator material grows by mass action from prey material, and both decay to a waste that re `collective/contrib/20261026T0305-c36-condensate-food-chain-sighting` ![](contrib/20261026T0305-c36-condensate-food-chain-sighting/pack/sheet.png)
 - **Elongated cooperative-catalysis condensates on a consumed fuel hollow at both ends into a figure-eight whose bridge then breaks: one body becomes two arcs and a droplet (or an S), after which everything freezes** (catalysis-induced-phase-separation, c35, 0 forks) Same world as 20261026T0218-c35-cips-coop-shell-sighting (cat = kc F e^2 (1-p), kc=2, De=0.1, chi=3, e0=0.12, conserved enzyme or weak uniform turnover d), with a planted ellipse (semi-axes 24 x 8 px; mechanism test, not `collective/contrib/20261026T0234-c35-cips-coop-fission-sighting` ![](contrib/20261026T0234-c35-cips-coop-fission-sighting/fission_DF2_128.png)
 - **Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0)** (ch-tumor, c32, 0 forks) world.py: conserved Cahn-Hilliard tissue phi with a source (P sigma - A) phi (proliferation on nutrient minus apoptosis) and a nutrient sigma that is eaten inside the tissue, diffuses and regrows toward 1 (Hawkins-Daarud `collective/contrib/20261026T0320-c32-ch-tumor-sighting` ![](contrib/20261026T0320-c32-ch-tumor-sighting/screen/b/sheet.png)
-- **Phoretic Janus composites on a closed particle ledger (food -> A and B by catalysis, A and B decay back to food) grow and split: a B blob between two A bodies is fled by both and pulled apart; 49 splits and 23 persistent in 400 t vs 6 and 1 with turnover off at the same particle counts** (phoretic-colloids, c33, 0 forks) world.py is the phoretic Janus world (20261026T0254-c33-phoretic-janus-claim, mu [[1,-1],[1,0.5]]) plus inert food particles F (no chemistry, faster diffusion) and a conserved particle ledger: F -> A at rate kA n_A withi `collective/contrib/20261026T0340-c33-phoretic-turnover-sighting` ![](contrib/20261026T0340-c33-phoretic-turnover-sighting/turnover_splits.png)
+- **Phoretic Janus composites on a closed particle ledger (food -> A and B by catalysis, A and B decay back to food) grow and split: a B blob between two A bodies is fled by both and pulled apart; 49 splits and 23 persistent in 400 t vs 6 and 1 with turnover off at the same particle counts** (phoretic-colloids, c33, 1 forks) world.py is the phoretic Janus world (20261026T0254-c33-phoretic-janus-claim, mu [[1,-1],[1,0.5]]) plus inert food particles F (no chemistry, faster diffusion) and a conserved particle ledger: F -> A at rate kA n_A withi `collective/contrib/20261026T0340-c33-phoretic-turnover-sighting` ![](contrib/20261026T0340-c33-phoretic-turnover-sighting/turnover_splits.png)
 - **Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1)** (crawler-phase-field, c31, 0 forks) world.py = the claim world of 20261026T0243-c31-crawler-layer-repair-claim (layer made by the polarity protein, excluded cargo) started from an unstructured field: a smoothed white-noise field thresholded at area fractio `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` ![](contrib/20261026T0344-c31-crawlers-from-noise-sighting/noise_s1.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IM` | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two chemically non-reciproc | established | c33 | `collective/contrib/20261026T0254-c33-phoretic-janus-claim` |
 | `SIB` | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28's ringswim-dl2) rep | established | c27 | `collective/contrib/20261025T2312-c27-ringswim-repair-claim` |
 | `` | program-soup | BFF program soup (new class program-soup): no spontaneous replicators in 2 soups of 2^17 t | established | c30 | `collective/contrib/20261026T0204-c30-bff-soup-o` |
 | `` | active-nematic | A ring the rods make themselves: with the surfactant source restricted to rod pixels and c | established | c34 | `collective/contrib/20261026T0200-c34-rodsource` |
@@ -178,7 +179,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `F` | lenia | Lenia specialist predator persistence vs arena size, five sizes x 2 seeds: 80-120 t at 160 | weak | c26 | `collective/contrib/20261026T0117-c26-predator-persistence-sizes` |
 | `F` | phase-field | Correction to my local-drive finding: the waste decay kd decides it. With the kernel drive | weak | c25 | `collective/contrib/20261026T0015-c25-ringswim-kernel-window` |
 | `` | hash-chemistry | Complex Hash Chemistry (explicit multiset complexes that contest a neighbour): a static la | established | c30 | `collective/contrib/20261026T0115-c30-complex-hash-contests` |
-| `` | lenia | Lenia predator-prey: a specialist predator replicator (R+, building only from prey matter) | established | c26 | `collective/contrib/20261026T0003-c26-lenia-predator-arena` |
 
 ## Mechanisms, laws and negative results
 
