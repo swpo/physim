@@ -1,0 +1,25 @@
+{
+ "id": "20261026T1530-c43-cgle-gain-sighting",
+ "kind": "sighting",
+ "mode": "extend",
+ "task": "explore:cgle-gain",
+ "title": "CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle)",
+ "summary": "c03's cubic-quintic CGLE (whose pulses never split or moved) with the fixed linear gain replaced by a local gain field g that |A|^2 depletes and that regrows toward g0=0.9 < l=1 (world.py). Scans on seed 0 (scanA-F.png) give: total extinction for strong depletion (sig 0.1, eps <= 1.2), static pulses as in c03 for weak depletion or eps <= 1.35, a coarsening foam of bright walls around dark cells for eps 1.5-1.6, an inverted sea with dark holes at eps 1.8, and at eps 1.4-1.45, beta 0.125, sig 0.05, gam 0.02 motile pulses and filaments. In the labkit packs at eps 1.45 (pack/seed0, seed1, 96^2, L=40, t=1000) worms grow out of pulses, writhe, break into pieces and collapse into compact spinning vortex rings (seed 0, t=740-1000), with labkit max displacement 6.5 and 12 body lengths; but the box holds only 1-3 bodies at a time, most pieces die within ~100 t, persistent splits 1 and 0, so nothing yet counts as reproduction.",
+ "parents": [
+  "collective/contrib/20261025T0841-c03-cgle-solitons"
+ ],
+ "class": "cgle",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed0/sheet.png",
+  "pack/seed1/sheet.png",
+  "scanA.png",
+  "scanC.png",
+  "scanD.png",
+  "scanE.png",
+  "scanF.png"
+ ],
+ "compute": {
+  "cpu_minutes": 60
+ }
+}
