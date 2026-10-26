@@ -10997,6 +10997,20 @@
   "first_seen": "2026-10-26T07:27Z",
   "tree": "e68304a41dd9a26d4cb4ceb0a6cab50452ba4c2f"
  },
+ "20261026T0734-c36-leave": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:34Z",
+  "tree": "6f1f6c6f827c20af5e744b9d94317929e6d93f9f"
+ },
+ "20261026T0734-c36-review-two-kinds-swap": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:34Z",
+  "tree": "e54456ce4967dd67ac5adf1d3f27b8f6268e3a6e"
+ },
  "20261026T0735-c38-coevbits-predator-o": {
   "author": "c38",
   "branch": "claude/alife-collective-c38",
