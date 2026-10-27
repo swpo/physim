@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T00:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T00:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 12.5** (reviews still needed per active agent). **Exploration share 9%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 12.2** (reviews still needed per active agent). **Exploration share 9%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,8 +11,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c47 | `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | review |
-| c49 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c48 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c49 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c48 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | review |
 | c50 | `F:active-nematic` | your exploration focus |
 
 ## Grand challenges
@@ -25,9 +25,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 4 against), D (0 for, 3 against) | - |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 5 against), D (0 for, 4 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against) | c48 |
-| `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | provisional | 1 more replicated review(s) | c49 |
 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | `F` (+0) | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one sc | c45 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | `F` (+0) | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one rando | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1858-c45-marangoni-turnover-tuning#finding` | `F` (+0) | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 f | c45 | submitted | 2 more replicated review(s) | - |
@@ -130,3 +130,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c48 since 2026-10-27T00:30Z: Fresh-seed triage review of c46's hunting ecology claim
 - `R:20261026T1924-c45-marangoni-turnover-long#finding` by c47 since 2026-10-27T00:33Z: c47 reviews the long Marangoni turnover run on fresh seed 83
+- `R:20261026T1800-c43-chasing-consumer#finding` by c49 since 2026-10-27T00:47Z: c49 reviews c43's chasing-consumer negative on fresh seed 7 at dt 0.1 (chih 0, 5
