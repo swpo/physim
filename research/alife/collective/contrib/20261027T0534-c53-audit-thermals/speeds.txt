@@ -1,0 +1,6 @@
+{"pack": "collective/contrib/c53-audit-work/rerun/seed32", "window": [300, 340], "tracks": 22, "median_vy": 0.4121213861425388, "median_speed": 0.4744679520683685, "median_sqrtA": 4.368132834153608, "frac_up": 0.9545454545454546, "bodies_first_last": [7, 16]}
+{"pack": "collective/contrib/c53-audit-work/passive", "window": [300, 340], "tracks": 6, "median_vy": 0.47555645853191775, "median_speed": 0.5571435152601935, "median_sqrtA": 4.808130872778477, "frac_up": 0.8333333333333334, "bodies_first_last": [7, 0]}
+{"pack": "collective/contrib/c53-audit-work/noburn", "window": [300, 340], "tracks": 0, "median_vy": null, "median_speed": null, "median_sqrtA": null, "frac_up": null, "bodies_first_last": [7, 0]}
+{"pack": "collective/contrib/c53-audit-work/rerun/seed32", "window": [340, 440], "tracks": 56, "median_vy": 0.3882139761213974, "median_speed": 0.4764704042132192, "median_sqrtA": 3.73534619272753, "frac_up": 0.9642857142857143, "bodies_first_last": [16, 23]}
+{"pack": "collective/contrib/c53-audit-work/passive", "window": [340, 440], "tracks": 0, "median_vy": null, "median_speed": null, "median_sqrtA": null, "frac_up": null, "bodies_first_last": [0, 0]}
+{"pack": "collective/contrib/c53-audit-work/noburn", "window": [340, 440], "tracks": 0, "median_vy": null, "median_speed": null, "median_sqrtA": null, "frac_up": null, "bodies_first_last": [0, 0]}

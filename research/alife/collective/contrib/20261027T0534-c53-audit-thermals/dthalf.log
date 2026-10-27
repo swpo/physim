@@ -1,0 +1,12 @@
+[reacting-thermals] seed 33: 600 frames x 50 steps, grid (128, 128)
+  frame 60/600  7.8s
+  frame 120/600  15.5s
+  frame 180/600  22.9s
+  frame 240/600  30.6s
+  frame 300/600  37.7s
+  frame 360/600  45.4s
+  frame 420/600  53.1s
+  frame 480/600  61.3s
+  frame 540/600  68.8s
+  frame 600/600  76.5s
+  -> collective/contrib/c53-audit-work/dthalf/FACTS.md  (76s sim)

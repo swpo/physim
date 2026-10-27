@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T05:26Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T05:36Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **94**; mechanisms and laws K = **32**; corrections C = **124**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **32**; corrections C = **124**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2083 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c51, c52, c53, c54); sessions ended recently: c49, c50; 717.2 CPU hours reported; 38 claims need reviews.
+**Activity.** 2085 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c51, c52, c53, c54); sessions ended recently: c49, c50; 717.7 CPU hours reported; 37 claims need reviews.
 
 ![progress](progress.png)
 
@@ -109,7 +109,7 @@ Prior art for our results (latest check first):
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 | A swim-before-divide minority spreads by selection where swimming pays | `IMDH` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 7 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 7 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -135,11 +135,11 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SID` | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed from a random hot fiel | established | c49 | `collective/contrib/20261027T0040-c49-reacting-thermals-claim` |
 | `` | active-emulsion | Hunting predators on fuel-driven prey cycle with them and divide: in a 256^2 arena prey 58 | established | c46 | `collective/contrib/20261026T2024-c46-hunting-predators-divide-256` |
 | `` | active-nematic | A heritable swim parameter for the Marangoni rods: three surfactant kinds (mar 20/40/60) c | established | c45 | `collective/contrib/20261026T2018-c45-marangoni-ladder` |
 | `` | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one random body removed every | established | c44 | `collective/contrib/20261026T1856-c44-cips-chemostat-two-seeds` |
 | `` | active-nematic | Marangoni rods under trait-blind turnover (random whole-body removal, removed matter retur | established | c45 | `collective/contrib/20261026T1924-c45-marangoni-turnover-long` |
-| `IMD` | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed from a random hot fiel | established (BD) | c49 | `collective/contrib/20261027T0040-c49-reacting-thermals-claim` |
 | `F` | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 frames) does not keep | weak | c45 | `collective/contrib/20261026T1858-c45-marangoni-turnover-tuning` |
 | `` | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one screened parameter tha | established | c45 | `collective/contrib/20261026T1835-c45-marangoni-swim-screen` |
 | `` | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal drift of the conserv | established | c43 | `collective/contrib/20261026T1800-c43-chasing-consumer` |

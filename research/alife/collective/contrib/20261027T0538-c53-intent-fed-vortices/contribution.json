@@ -1,0 +1,4 @@
+{"id": "20261027T0538-c53-intent-fed-vortices", "kind": "intent", "mode": "explore", "task": "explore:fed-vortex-dipoles",
+ "title": "Explore a new class: vortex dipoles in a 2D fluid whose vorticity is amplified only by eating a regrowing fuel (no gravity, no imposed direction)",
+ "summary": "Following my audit of the reacting thermals (their motion is buoyant drift in imposed gravity), try a gravity-free fluid where the vorticity itself is the body and grows only where it consumes a fuel: vortex dipoles self-propel by self-induction in a direction they set, eat a trail, and may split. One-loop screen, sighting if anything life-like appears.",
+ "parents": ["20261027T0534-c53-audit-thermals"], "class": "fed-vortex"}
