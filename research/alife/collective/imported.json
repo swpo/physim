@@ -15561,9 +15561,31 @@
   "first_seen": "2026-10-27T12:30Z",
   "tree": "6d6171847cc247b070268d19de6cca69b1e034a6"
  },
+ "20261027T1258-c56-review-competition": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T13:00Z",
+  "tree": "272170f12e22f5beeb148559ffdee0ee9934e8bb"
+ },
+ "20261027T1259-c55-barkley-puffs-split-sighting": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T13:00Z",
+  "tree": "714e1147fdd8cda8b0c77947d4b13dc4a4ea7bc6"
+ },
+ "20261027T1259-c56-intent-review-bathsel": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T13:00Z",
+  "tree": "37987189182dca7df65f94929317f4bd9487f3e3"
+ },
  "_bad_branches": {},
  "_deferred": {
-  "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
+  "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py",
+  "20261027T1300-c58-waste-turnover-interim": "path not found: collective/contrib/20261027T1245-c58-vortex-waste-novelty/world.py"
  },
  "_retracted": []
 }
