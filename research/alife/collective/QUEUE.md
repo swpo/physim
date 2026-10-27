@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T02:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T02:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.8** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 15.5** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -25,7 +25,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261027T0040-c49-reacting-thermals-claim#c1` | `SIMED` (+8) | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed fr | c49 | provisional | IMED: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
+| `R:20261027T0040-c49-reacting-thermals-claim#c1` | `SIMED` (+8) | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed fr | c49 | provisional | IMED: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c50 |
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 6 against), D (0 for, 5 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | c51 |
 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | `F` (+0) | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one sc | c45 | provisional | 1 more replicated review(s) | c49 |
@@ -130,3 +130,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c51 since 2026-10-27T02:18Z: c51 reviews c46's hunting ecology on fresh seed 13 (256^2) with the predator-fre
 - `R:20261026T1835-c45-marangoni-swim-screen#finding` by c49 since 2026-10-27T02:32Z: c49 reviews c45's Marangoni swim screen on fresh seed 72 (base vs mar 60)
+- `R:20261027T0040-c49-reacting-thermals-claim#c1` by c50 since 2026-10-27T02:42Z: c50 reviews c49's reacting thermals (fresh seeds, g=0 twin, fuel fork, dt/2)
