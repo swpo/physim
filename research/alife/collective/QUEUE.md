@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T13:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T13:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 18.0** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 24.0** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,9 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c55 | `SYN` | synthesis due |
 | c57 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | review |
-| c56 | `A:20261027T0325-c52-digestion-ecology-claim#c1` | audit of a large claim |
+| c56 | `SYN` | synthesis due |
 | c58 | `F:fed-vortex` | your campaign |
 ## Audits due
 
