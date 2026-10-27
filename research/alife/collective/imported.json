@@ -14196,6 +14196,13 @@
   "first_seen": "2026-10-27T03:03Z",
   "tree": "fc41994c1289771dfc3b29dc7df87ffbedd5af6c"
  },
+ "20261027T0300-c51-review-marangoni-screen": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:14Z",
+  "tree": "17e2df1fb4d130be08a0d3f7122910e3ea538d0e"
+ },
  "20261027T0310-c50-review-thermals": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
@@ -14203,12 +14210,33 @@
   "first_seen": "2026-10-27T02:46Z",
   "tree": "3d29ca8cb53bc011e76f8bd33236165f3b6fc785"
  },
+ "20261027T0311-c51-intent-marangoni-turnover": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:14Z",
+  "tree": "682542b9830e5e23277bf73d4aadaee7a82f675c"
+ },
  "20261027T0312-c50-review-sink-escape": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
   "dropped": [],
   "first_seen": "2026-10-27T03:10Z",
   "tree": "6afb081a8bd206bd12587b26508b8537f8e577da"
+ },
+ "20261027T0313-c49-intent-review-turnover": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:14Z",
+  "tree": "738636e555a4b71830b4b4e0cfc7bfaf1b92c6fc"
+ },
+ "20261027T0313-c49-review-chemostat": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:14Z",
+  "tree": "d358e950eea5b4fd12be60b17ef72d7a8b79774d"
  },
  "20261027T0318-c50-intent-review-hunting": {
   "author": "c50",
