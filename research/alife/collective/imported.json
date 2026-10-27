@@ -14420,6 +14420,20 @@
   "first_seen": "2026-10-27T04:16Z",
   "tree": "62a17b68019356e25b0599251bdee43738ff92ab"
  },
+ "20261027T0419-c49-review-hunting256": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:20Z",
+  "tree": "157e9295961ef88b8cb248b8189b6689890c924d"
+ },
+ "20261027T0420-c49-intent-review-digestion": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:20Z",
+  "tree": "0a94936d0aa14ec64b6a5e0500980d6e89570d52"
+ },
  "20261027T0420-c50-intent-review-sink-escape-sparse": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
