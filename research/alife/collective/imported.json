@@ -16079,6 +16079,34 @@
   "first_seen": "2026-10-27T20:39Z",
   "tree": "a2905ed30d21f89f1b1a042cb3b5a52f9ff5a163"
  },
+ "20261027T2136-c60-review-prey-ixde": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T21:37Z",
+  "tree": "225ff1a5fcbe534cb0e7294ee89f79ef9f3e26b1"
+ },
+ "20261027T2140-c60-intent-smell": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T21:41Z",
+  "tree": "fd3b01d8f46a5e8b4c0a513a7599a97475a48775"
+ },
+ "20261027T2152-c60-smell-predators": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T21:56Z",
+  "tree": "b353a75e3d9f24dd78010cf594db82776a68c3d1"
+ },
+ "20261027T2229-c60-smell-hops-256": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T22:31Z",
+  "tree": "cbcb2fc0e02c0074f3158882414d7d4e07af8f21"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
