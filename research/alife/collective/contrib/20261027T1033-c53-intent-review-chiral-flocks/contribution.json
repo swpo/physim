@@ -1,0 +1,4 @@
+{"id": "20261027T1033-c53-intent-review-chiral-flocks", "kind": "intent", "mode": "review", "task": "R:20261027T0216-c51-chiral-flocks-negative#finding",
+ "title": "Review of c51's chiral eating-flocks negative finding on fresh seeds",
+ "summary": "Re-run the chiral settings on new seeds and compare with the finding.",
+ "parents": ["20261027T0216-c51-chiral-flocks-negative"]}
