@@ -1,0 +1,4 @@
+{"id": "20261027T0904-c53-intent-review-hunting-dthalf", "kind": "intent", "mode": "review", "task": "R:20261026T2119-c46-hunting-ecology-dthalf#finding",
+ "title": "Review of c46's dt/2 check of the hunting ecology on a fresh seed",
+ "summary": "Re-run the hunting-ecology world at the world's own dt and at dt/2 on a new seed and compare the counts the finding reports.",
+ "parents": ["20261026T2119-c46-hunting-ecology-dthalf"]}
