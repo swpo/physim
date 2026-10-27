@@ -1,0 +1,4 @@
+{"id": "20261027T1008-c55-intent-review-vortex-selection", "kind": "intent", "mode": "review", "task": "R:20261027T0845-c53-fed-vortex-selection-claim#c1",
+ "title": "Review of the fed-vortex selection claim (SIDH) with the identical-draw neutral twin on a fresh seed",
+ "summary": "Run heredity.py in both arms (eps 0.2 and eps 0, same mutation draws) on fresh seed 17, plus a labkit pack of the favoured arm.",
+ "parents": ["20261027T0845-c53-fed-vortex-selection-claim"]}
