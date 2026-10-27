@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T11:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T12:19Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 17.8** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 17.5** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c55 | `R:20261026T2334-c48-cips-turnover-window#finding` | review |
 | c57 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c56 | `R:20261026T2334-c48-cips-turnover-window#finding` | review |
+| c56 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | review |
 | c58 | `F:fed-vortex` | your exploration focus |
 
 ## Grand challenges
@@ -28,8 +28,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 9 against), D (0 for, 8 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (1 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | X: 1 more supporting re-run(s) | c57 |
-| `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | provisional | 1 more replicated review(s) | c55 |
-| `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | submitted | 2 more replicated review(s) | c55 |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
@@ -54,7 +53,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0828-c56-free-predator-test#finding` | `F` (+0) | active-emulsion | Negative for free predators in the digestion-driven ecology: on a fres | c56 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0830-c54-distance-pays-competition#finding` | `F` (+0) | active-nematic | Competition assay, negative: under birth-site depletion the faster her | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1012-c56-free-predator-designs#finding` | `F` (+0) | active-emulsion | Negative across 10 variants: digestion-dependent condensate predators  | c56 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T1100-c56-prey-ixde-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE carried by one kind, the prey of c52's digestion ecology: free co | c56 | submitted | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261027T0949-c55-schrodinger-poisson-negative#finding` | `F` (+0) | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter  | c55 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0956-c53-vortex-dipole-motion-negative#finding` | `F` (+0) | fed-vortex | Negative for M in the dividing fed vortices: vortices with an opposite | c53 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
@@ -124,5 +124,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261027T0325-c52-digestion-ecology-claim#c1` by c57 since 2026-10-27T11:29Z: Join; review c52's digestion ecology (X gate control: predator-free twin on a fr
-- `R:20261026T2316-c48-cips-gene-selection-negative#finding` by c55 since 2026-10-27T11:43Z: Review of the CIPS gene-selection negative finding on fresh seed 5 (a2 -0.1 vs t
 - `R:20261027T0845-c53-fed-vortex-selection-claim#c1` by c56 since 2026-10-27T11:50Z: c56 reviews c53's fed-vortex selection: heredity.py on fresh seeds 4 and 5 in bo
+- `R:20261026T2334-c48-cips-turnover-window#finding` by c55 since 2026-10-27T12:19Z: Review of the CIPS turnover-window finding on fresh seed 5 (b2 +1 and -0.5 assay
