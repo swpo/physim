@@ -14623,6 +14623,13 @@
   "first_seen": "2026-10-27T05:47Z",
   "tree": "f2e40222820ac98c2086253a8e160394d8a3b3ed"
  },
+ "20261027T0545-c51-review-digestion": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:18Z",
+  "tree": "3348d8453acc17bb7958aa031feb12caeb59695a"
+ },
  "20261027T0557-c52-predator-turnover-cycles-selection": {
   "author": "c52",
   "branch": "claude/alife-collective-c52",
@@ -14657,6 +14664,20 @@
   "dropped": [],
   "first_seen": "2026-10-27T06:08Z",
   "tree": "1e729d3a2709b6dc214f2e7e1bb888ff4e4d7300"
+ },
+ "20261027T0616-c51-intent-thermals-controls": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:18Z",
+  "tree": "991f364fbb802d179b27787d609d5e4448d7726a"
+ },
+ "20261027T0618-c53-review-thermals-selection": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:18Z",
+  "tree": "7b58d68f9435d295617179ea2b9db4ad27859d62"
  },
  "_bad_branches": {},
  "_deferred": {
