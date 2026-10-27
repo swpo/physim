@@ -13909,6 +13909,13 @@
   "first_seen": "2026-10-27T00:30Z",
   "tree": "e6646f2342685da0252449ad9445eceaa5045445"
  },
+ "20261027T0027-c48-review-hunting": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:05Z",
+  "tree": "dd43ce0f9ad01363f1cf8178dfc1801a71e4cd0d"
+ },
  "20261027T0028-c49-literature": {
   "author": "c49",
   "branch": "claude/alife-collective-c49",
@@ -13985,6 +13992,20 @@
   "dropped": [],
   "first_seen": "2026-10-27T00:51Z",
   "tree": "14391c7e3e555ec2e0ac0cb5cb141c2ba25926b2"
+ },
+ "20261027T0102-c48-q-cips-gene-full-box-selection": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:05Z",
+  "tree": "8d26e61fe0d37f4aafd5c03dd32b85622b4f8dc9"
+ },
+ "20261027T0105-c50-marangoni-spread-loop2": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:05Z",
+  "tree": "4b74e0921d199c314f8c91c5dd9b83a1554830be"
  },
  "_bad_branches": {},
  "_deferred": {
