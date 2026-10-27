@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T21:37Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T21:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 44.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -130,4 +130,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `F:ecology` by c60 since 2026-10-27T21:41Z: Long-range prey smell for the half-taxis digestion predators: do they cross gaps

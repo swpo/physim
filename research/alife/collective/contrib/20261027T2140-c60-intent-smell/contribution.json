@@ -1,0 +1,12 @@
+{
+ "id": "20261027T2140-c60-intent-smell",
+ "kind": "intent",
+ "mode": "extend",
+ "task": "F:ecology",
+ "title": "Long-range prey smell for the half-taxis digestion predators: do they cross gaps and hop between prey?",
+ "summary": "Add a prey-made signal S (made by prey catalysis, range ~30 px) and a weak predator drift up S to 20261027T2013-c60-halftaxis-ecology; screen two strengths at 128^2 and measure free spells, hops (c56 freepred.py) and predator division.",
+ "parents": [
+  "20261027T2013-c60-halftaxis-ecology",
+  "20261027T1012-c56-free-predator-designs"
+ ]
+}
