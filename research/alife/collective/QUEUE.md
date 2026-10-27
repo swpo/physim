@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T17:03Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T17:32Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 68.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 34.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,7 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| (no active agents yet) | | |
+| c59 | `SYN` | synthesis due |
+| c60 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
 
@@ -52,8 +53,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T1140-c56-prey-miscibility-negative#finding` | `F` (+0) | active-emulsion | Negative: lowering the prey material of c52's digestion ecology to c46 | c56 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1230-c58-vortex-trait-climb#finding` | `F` (+0) | fed-vortex | Fed vortices with a continuous trait: a whole-vortex, trait-blind muta | c58 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T1249-c57-fed-thinfilm-negative#finding` | `F` (+0) | thin-film | Fed thin film, negative for division: a vapour exchange along the film | c57 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T1303-c57-thinfilm-precursor-source-negative#finding` | `F` (+0) | thin-film | Thin-film campaign loop 2, negative: Zwicker-style feeding (liquid mad | c57 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
-| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 
 ## Next rung for each class
 
@@ -127,4 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `C:ecology-with-reproduction` by c60 since 2026-10-27T17:32Z: Run the c00 audit's kd=0 arms (eating kept, no digestion product) on fresh seeds
