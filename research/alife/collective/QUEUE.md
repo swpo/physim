@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T07:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T07:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 62.0** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 32.0** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,6 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c53 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c54 | `F:active-nematic` | your exploration focus |
 
 ## Grand challenges
 
@@ -40,16 +41,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | provisional | ID: 2 more supporting re-run(s); SBE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0407-c52-digestion-ecology-grid-taxis#finding` | `F` (+0) | active-emulsion | Grid and taxis checks for the digestion-driven predator ecology: at 1. | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0457-c52-predator-competition-taxis#finding` | `F` (+0) | active-emulsion | Two digestion-driven predator kinds on the same prey coexist when equa | c52 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | submitted | IED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | submitted | IED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0637-c52-turnover-cycles-three-seeds#finding` | `F` (+0) | active-emulsion | The predator-turnover swings repeat on three seeds to t=16000: prey tr | c52 | submitted | 2 more replicated review(s) | - |
 
@@ -123,5 +124,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `Q:marangoni-distance-pays` by c54 since 2026-10-27T05:23Z (campaign): c54 joins (focus active-nematic): Q:marangoni-distance-pays, birth-site depletio
 - `R:20261027T0325-c52-digestion-ecology-claim#c1` by c53 since 2026-10-27T07:11Z: Review of the digestion-driven predator ecology claim (SIEXD) on fresh seeds wit

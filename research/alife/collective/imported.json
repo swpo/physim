@@ -14840,6 +14840,13 @@
   "first_seen": "2026-10-27T07:18Z",
   "tree": "87a81909f15cc6c8c3ca75d4e9bc9dc5d16e0c6c"
  },
+ "20261027T0725-c54-distance-pays-loop1": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:25Z",
+  "tree": "149fc469b7d9f22a146a0bbd69c7d39fd1fbc978"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

@@ -1,0 +1,41 @@
+== off_s600: 401 frames, 30 tracks
+frame  bodies  k0 k1 k2 (pure>=0.6)  trait_mean(ladder value)  area-weighted
+    0      0     0   0   0      nan      nan
+   20      4     0   4   0    40.00    40.00
+   40      9     0   9   0    40.00    40.00
+   61      8     0   7   1    42.50    41.57
+   81      6     0   5   1    43.33    43.20
+  101      5     0   4   1    44.00    43.40
+  121      5     1   3   1    40.00    40.12
+  141      4     0   2   1    46.67    48.16
+  161      4     1   2   1    40.00    43.64
+  182      3     0   2   1    46.67    50.72
+  202      4     0   2   2    50.00    49.09
+  222      3     0   2   1    46.67    44.24
+  242      2     0   2   0    40.00    40.00
+  262      3     0   3   0    40.00    40.00
+  282      3     0   3   0    40.00    40.00
+  303      3     0   3   0    40.00    40.00
+  323      4     0   4   0    40.00    40.00
+  343      6     0   6   0    40.00    40.00
+  363      2     0   2   0    40.00    40.00
+  383      1     0   1   0    40.00    40.00
+  400      1     0   1   0    40.00    40.00
+mutation events 2; from->to counts [[0, 0, 0], [1, 0, 1], [0, 0, 0]]
+kind changes along tracks: 2; at a logged mutation: 2; unexplained (conversions): 0
+persistent splits by parent kind k0/k1/k2: [0, 8, 1]; daughters checked 18, off-kind 1
+merge products by kind: [0, 1, 0]; merges of two different kinds: 1
+vanishings (no children, before run end) by last kind: [1, 12, 2]
+dividing tracks 6; median cycle 108.5 frames (542 t)
+kind  n_div  medD  sh_pass(rl)  sh_pass(sqrtA)  v_path  cycle
+k0  0
+k1     5  1.21  0/5  1/5  0.033 405
+k2     1  0.52  0/1  0/1  0.028 780
+cohort(birth frames)  n_div  trait_mean_of_dividers  pass_rl  pass_sqrtA  k0/k1/k2
+    0-107     2   50.00  0/2  0/2  [0, 1, 1]
+  108-215     2   40.00  0/2  1/2  [0, 2, 0]
+  216-323     2   40.00  0/2  0/2  [0, 2, 0]
+descendants alive at birth + 2 median cycles, passers (rl) vs non-passers, by kind:
+  k0: passers n=0 mean nan; non-passers n=0 mean nan
+  k1: passers n=0 mean nan; non-passers n=3 mean 2.33
+  k2: passers n=0 mean nan; non-passers n=1 mean 0.00
