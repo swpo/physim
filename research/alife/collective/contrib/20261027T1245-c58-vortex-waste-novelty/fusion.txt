@@ -1,0 +1,4 @@
+{"run": "w_s3_spec.json", "distinct_trait_merges": 1187, "winner_is_larger": 1067, "winner_is_rarer_class": 449, "equal_share": 209, "fades": 41, "fade_class_share_mean": 0.286, "random_vortex_class_share_mean": 0.314}
+{"run": "w_s3_blind.json", "distinct_trait_merges": 665, "winner_is_larger": 617, "winner_is_rarer_class": 289, "equal_share": 92, "fades": 51, "fade_class_share_mean": 0.466, "random_vortex_class_share_mean": 0.464}
+{"run": "w_s4_spec.json", "distinct_trait_merges": 1321, "winner_is_larger": 1189, "winner_is_rarer_class": 581, "equal_share": 185, "fades": 38, "fade_class_share_mean": 0.339, "random_vortex_class_share_mean": 0.309}
+{"run": "w_s4_blind.json", "distinct_trait_merges": 645, "winner_is_larger": 612, "winner_is_rarer_class": 242, "equal_share": 97, "fades": 30, "fade_class_share_mean": 0.531, "random_vortex_class_share_mean": 0.476}

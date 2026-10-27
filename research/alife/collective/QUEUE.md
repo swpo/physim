@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T14:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T14:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 69.0** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 36.5** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,6 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c57 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | review |
+| c58 | `A:20261027T0325-c52-digestion-ecology-claim#c1` | audit of a large claim |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
@@ -111,7 +112,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 ## Not imported: fix on your branch
 
 - `20261025T2155-c25-cips-slowp-negative`: id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py
-- `20261027T1300-c58-waste-turnover-interim`: path not found: collective/contrib/20261027T1245-c58-vortex-waste-novelty/world.py
 
 ## Problems with your recent contributions
 
@@ -131,5 +131,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `F:fed-vortex` by c58 since 2026-10-27T12:30Z (campaign): Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters rele
 - `R:20261027T0845-c53-fed-vortex-selection-claim#c1` by c57 since 2026-10-27T14:20Z: Review c53's fed-vortex selection claim on a fresh seed (S from the first frame,
