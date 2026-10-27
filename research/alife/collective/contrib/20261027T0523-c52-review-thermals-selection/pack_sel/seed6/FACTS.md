@@ -1,0 +1,38 @@
+# Evidence pack: reacting-thermals (seed 6)
+
+- world: `../../../../collective/contrib/20261027T0222-c49-thermals-selection-claim/world.py`, family `reactive-convection`
+- parent: None; mutation: -
+- run: 1201 frames x 25 steps x dt 0.04 = time 1200; grid [128, 128]; wall 138s; status ok
+- command: `python -m labkit.run collective/contrib/20261027T0222-c49-thermals-selection-claim/world.py --out collective/contrib/20261027T0523-c52-review-thermals-selection/pack_sel/seed6 --seeds 6 --frames 1200 --spf 25 --no-movie`
+- segmentation: matter > 0.36 of robust range [0.0, 0.6911], min area 6 px
+
+## Measurements
+- components: final 23, mean 18.6, max 38; occupancy final 0.02
+- tracks: 874; persistent (alive >= 50% of run): 0; longest 252 frames; alive start-to-end: 0
+- size of persistent tracks: max/min area ratio 0.00 (1 = constant size)
+- enclosures: components with a hole mean 0.01, final 0; holes at thresholds 0.2/0.35/0.5 final [0, 0, 0]
+- persistent homology of matter (final frame, tau 0.1/0.25/0.5): H0 [29, 28, 27], H1 [0, 0, 0]
+- motion: 346 long-lived tracks moved >= 1 body length; max speed 1.27/time; max body lengths 41.2
+- replication (lineage window K = 20 frames = time 20, default): splits 153, persistent splits 57 (0 more failed only because the siblings re-merged within K), max generation 10, merges 19, merge/split ratio 0.124, nucleations 521
+- channel total drift (end/start - 1): [-0.8503, -0.3223, None, None]
+- internal organization of top tracks (normalized channel means; rim = outer layer):
+  - track 614 at frame 1008: holes 0, rim-vs-core 0.12, rim-vs-outside 0.59, heterogeneity 0.09; core [0.937, 0.0, 0.36, 0.904] rim [0.854, 0.057, 0.321, 0.856]
+  - track 709 at frame 1099: holes 0, rim-vs-core 0.16, rim-vs-outside 0.43, heterogeneity 0.08; core [0.895, 0.017, 0.72, 0.557] rim [0.759, 0.066, 0.67, 0.521]
+  - track 624 at frame 1008: holes 0, rim-vs-core 0.17, rim-vs-outside 0.56, heterogeneity 0.10; core [0.936, 0.0, 0.315, 0.953] rim [0.804, 0.034, 0.276, 0.852]
+  - track 435 at frame 726: holes 0, rim-vs-core 0.23, rim-vs-outside 0.53, heterogeneity 0.08; core [0.965, 0.002, 0.23, 0.987] rim [0.775, 0.047, 0.181, 0.886]
+- radial profiles (rho = r / R_eq around tracked centroids; fixed render scales; core rho<0.4, rim 0.6-1.3, outside 1.6-2.2; aggregate of 85 components >= 12 px at frames [202, 403, 605, 797, 998, 1200]):
+  - radial heat T: peak at rho=0.15 (OUTSIDE the peak band 0.5-1.5), rim/core 0.873, rim/outside 5.37 (aggregate of 85 individuals; 4/85 membrane-like individually; rim level 0.711)
+  - radial fuel Y: peak at rho=2.45 (OUTSIDE the peak band 0.5-1.5), rim/core 7.87, rim/outside 0.582 (aggregate of 85 individuals; 0/85 membrane-like individually; rim level 0.174)
+  - radial label a: peak at rho=0.05 (OUTSIDE the peak band 0.5-1.5), rim/core 0.922, rim/outside 3.59 (aggregate of 85 individuals; 6/85 membrane-like individually; rim level 0.396)
+  - radial label b: peak at rho=0.15 (OUTSIDE the peak band 0.5-1.5), rim/core 0.896, rim/outside 4.4 (aggregate of 85 individuals; 2/85 membrane-like individually; rim level 0.555)
+- membrane-like channels (aggregate rim/core >= 1.5 and rim/outside >= 1.5; the peak position is not part of the test): none
+- membrane-like channels per top track at mid-life: #614 (t=1008, R_eq 2.11): none; #709 (t=1099, R_eq 2.03): none; #624 (t=1008, R_eq 2.59): none; #435 (t=726, R_eq 2.03): none
+
+## Warnings
+- a channel total changed by more than 50% (not conserved; may be fine if the model is open)
+- radial: 6 of 85 aggregate members are rings (centroid outside their own mask): the threshold may cut individuals into a core and a separate ring, so one individual is counted twice and the ring's profile is centred on its hole; check radial.png and raise META smooth or set META matter so one component covers each individual
+
+## Files
+sheet.png, tracks.png, radial.png, lineage.png, timeseries.png, metrics.json
+
+Measurements are screens, not verdicts: judge them against the images.
