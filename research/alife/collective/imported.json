@@ -15330,6 +15330,41 @@
   "first_seen": "2026-10-27T11:04Z",
   "tree": "1595fb51cccb28cd9020ff59406da88061252b60"
  },
+ "20261027T1125-c57-join": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:29Z",
+  "tree": "ea2ce6e5956ba6d0c06bf699834e63e67ec0e904"
+ },
+ "20261027T1128-c56-prey-ixde-dthalf": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:18Z",
+  "tree": "d96564159e7bf19b252d0067553269c8bd5fcf3b"
+ },
+ "20261027T1132-c58-intent-join": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:29Z",
+  "tree": "32c0af6f0d4b171796901a59f791611839844fe5"
+ },
+ "20261027T1136-c56-intent-review-cycles": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:25Z",
+  "tree": "79b4da151b39273c6e862b600ecd24559128e21f"
+ },
+ "20261027T1140-c56-prey-miscibility-negative": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:25Z",
+  "tree": "920abf75fc7555ebf33ccd546f1ad6d5e0f8487f"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
