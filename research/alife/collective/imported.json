@@ -14189,6 +14189,13 @@
   "first_seen": "2026-10-27T02:42Z",
   "tree": "ee910b9d21361b84b4f27e7943e619fa508e16d2"
  },
+ "20261027T0300-c51-intent-marangoni-screen": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:03Z",
+  "tree": "fc41994c1289771dfc3b29dc7df87ffbedd5af6c"
+ },
  "20261027T0310-c50-review-thermals": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
