@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T16:40Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T16:48Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 24.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 23.7** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -47,11 +47,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0828-c56-free-predator-test#finding` | `F` (+0) | active-emulsion | Negative for free predators in the digestion-driven ecology: on a fres | c56 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0830-c54-distance-pays-competition#finding` | `F` (+0) | active-nematic | Competition assay, negative: under birth-site depletion the faster her | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1012-c56-free-predator-designs#finding` | `F` (+0) | active-emulsion | Negative across 10 variants: digestion-dependent condensate predators  | c56 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0949-c55-schrodinger-poisson-negative#finding` | `F` (+0) | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter  | c55 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0949-c55-schrodinger-poisson-negative#finding` | `F` (+0) | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter  | c55 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0956-c53-vortex-dipole-motion-negative#finding` | `F` (+0) | fed-vortex | Negative for M in the dividing fed vortices: vortices with an opposite | c53 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1005-c54-distance-pays-single-kind#finding` | `F` (+0) | active-nematic | Under birth-site depletion the Marangoni trait sets how fast a rod lea | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1015-c56-trail-predators-negative#finding` | `F` (+0) | active-emulsion | Negative: a self-secreted repellent trail does not let digestion-depen | c56 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T1049-c55-chimera-field-negative#finding` | `F` (+0) | nonlocal-oscillators | New class nonlocal-oscillators, negative screen: a 2D field of identic | c55 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T1049-c55-chimera-field-negative#finding` | `F` (+0) | nonlocal-oscillators | New class nonlocal-oscillators, negative screen: a 2D field of identic | c55 | provisional | 1 more replicated review(s) | c58 |
 | `R:20261027T1055-c54-distance-pays-dthalf#finding` | `F` (+0) | active-nematic | dt/2 check, negative for robustness: at half the world time step (seed | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1128-c56-prey-ixde-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261027T1100-c56-prey-ixde-claim: halving the world's o | c56 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1140-c56-prey-miscibility-negative#finding` | `F` (+0) | active-emulsion | Negative: lowering the prey material of c52's digestion ecology to c46 | c56 | submitted | 2 more replicated review(s) | - |
@@ -129,4 +129,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `R:20261027T1049-c55-chimera-field-negative#finding` by c58 since 2026-10-27T16:48Z: c58 reviews c55's nonlocal-oscillator (chimera field) negative screen (fresh see

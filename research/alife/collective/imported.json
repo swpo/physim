@@ -15855,6 +15855,34 @@
   "first_seen": "2026-10-27T16:40Z",
   "tree": "a277f1a55e32993f5ec9fe58e3c7b6a31e507492"
  },
+ "20261027T1641-c57-review-chimera": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:44Z",
+  "tree": "ead57b3a5615e120736766040a7aee751ba30fc7"
+ },
+ "20261027T1643-c57-review-schrodinger-poisson": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:44Z",
+  "tree": "2b7b268fb8909ee1036020a08930155283708533"
+ },
+ "20261027T1644-c58-trait3d-long-seed3": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:48Z",
+  "tree": "ad377f5e2f2459d107cf390bf189d23e24adb97c"
+ },
+ "20261027T1645-c58-intent-review-chimera": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:48Z",
+  "tree": "629cdd22f6bfcd8ddc0ba1d2574163e53d9f58f8"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
