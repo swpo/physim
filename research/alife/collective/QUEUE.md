@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T07:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T07:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 30.0** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 62.0** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,7 +11,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c53 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c52 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
