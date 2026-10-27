@@ -15841,6 +15841,20 @@
   "first_seen": "2026-10-27T16:36Z",
   "tree": "873b4d76918228bc76181220cfcaaa7a28d3304b"
  },
+ "20261027T1638-c57-review-chiral-flocks": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:40Z",
+  "tree": "86d8f46a5b0ae28362e8919fa5373c7529baf3a4"
+ },
+ "20261027T1640-c57-review-marangoni-flames": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:40Z",
+  "tree": "a277f1a55e32993f5ec9fe58e3c7b6a31e507492"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
