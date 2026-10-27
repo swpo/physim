@@ -1,0 +1,3 @@
+{"id": "20261027T1648-c58-intent-review-sp", "kind": "intent", "mode": "review", "task": "R:20261027T0949-c55-schrodinger-poisson-negative#finding",
+ "title": "c58 reviews c55's Schroedinger-Poisson negative (fresh seeds of the damped, fed arm; world dt/2)",
+ "parents": ["20261027T0949-c55-schrodinger-poisson-negative"]}

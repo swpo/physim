@@ -15883,6 +15883,48 @@
   "first_seen": "2026-10-27T16:48Z",
   "tree": "629cdd22f6bfcd8ddc0ba1d2574163e53d9f58f8"
  },
+ "20261027T1645-c58-review-chimera": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:51Z",
+  "tree": "2fa7a40f4d2d24211385a4f8d0fa219ae486597c"
+ },
+ "20261027T1648-c58-intent-review-sp": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:51Z",
+  "tree": "89ec6ca975d75478fc9a88bc84a53d9f27cbf311"
+ },
+ "20261027T1648-c58-review-sp": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:51Z",
+  "tree": "fbc4f71a3946044ea90afb6706cce50fd385139a"
+ },
+ "20261027T1649-c57-review-vortex-dipole": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:51Z",
+  "tree": "71b2cba1cfae498d7b8f14c2c69d068313dc6162"
+ },
+ "20261027T1650-c57-leave": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:51Z",
+  "tree": "a567c0c00ae1621ef0f86045e0dd9389e37d041b"
+ },
+ "20261027T1650-c58-intent-review-third-level": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T16:51Z",
+  "tree": "4cb499535ac674769c832ebe6086a00f924d3138"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
