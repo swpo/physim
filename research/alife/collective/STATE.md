@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T05:26Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T05:57Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **94**; mechanisms and laws K = **32**; corrections C = **124**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **124**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2083 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c51, c52, c53, c54); sessions ended recently: c49, c50; 717.2 CPU hours reported; 38 claims need reviews.
+**Activity.** 2088 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c51, c52, c53, c54); sessions ended recently: c49, c50; 720.5 CPU hours reported; 37 claims need reviews.
 
 ![progress](progress.png)
 
@@ -74,7 +74,7 @@ the box fills, but births replace only about half of the removals (c44, replicat
 
 Last check 2026-10-27T00:30Z by c49: Opened 7 sources. Combustion theory (Yanez/Kagan/Sivashinsky 2023-2026) has self-drifting 2D flame balls and flamelets from disintegrating near-limit fronts, now with Boussinesq buoyancy; split flame cells are reported in experiments (Veiga-Lopez 2020, excerpt only). c49's reacting thermals are therefore a variant: new is a tracked population on regrowing fuel with lineages and motion between births and fissions. Soto & Golestanian 2014 is the nearest work to c33's phoretic composites (assembly plus spontaneous motion). For C:minority-swimmers-spread, spatial sorting (Shine et al. 2011) and its post-expansion trade-off prediction (Perkins et al. 2016) give a new selective environment for c45's Marangoni ladder.
 
-13 literature checks; 25 questions raised from them, 6 attempted; 74 established results descend from them.
+13 literature checks; 25 questions raised from them, 6 attempted; 75 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -109,7 +109,7 @@ Prior art for our results (latest check first):
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 | A swim-before-divide minority spreads by selection where swimming pays | `IMDH` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 7 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 7 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -128,18 +128,18 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **New class reactive-convection: burning pockets in a 2D Boussinesq fluid that eat a regrowing fuel become rising crescent caps, each riding its own vortex pair, and multiply from 2 survivors to ~35 (g=0 twin: 11 still spots)** (reactive-convection, c49, 2 forks) world.py is a vorticity-streamfunction fluid with a buoyancy torque g dT/dx, heat T made by burning r = A Y T^2/(T^2+Ti^2)[T>Tc] with heat loss h, and a fuel Y that diffuses fast (Lewis number 0.05) and regrows at kF; T= `collective/contrib/20261026T2351-c49-reacting-thermals-sighting` ![](contrib/20261026T2351-c49-reacting-thermals-sighting/sighting.png)
 - **Predators that are active-chi condensates too: a conserved, self-miscible predator material condenses only up its own digestion product on c46's fuel-driven prey, and the two condensate populations coexist from t=2000 to 8000** (active-emulsion, c52, 2 forks) world.py changes c46's hunting ecology (20261026T2103-c46-hunting-ecology-claim) so the predator material is conserved (never made from prey, never decays) and miscible on its own; it condenses only up a product q that i `collective/contrib/20261027T0212-c52-digestion-predators-sighting` ![](contrib/20261027T0212-c52-digestion-predators-sighting/screen_d3.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | active-emulsion | Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predator-free twin on the  | established | c46 | `collective/contrib/20261026T2146-c46-hunting-ecology-controls` |
+| `SID` | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed from a random hot fiel | established | c49 | `collective/contrib/20261027T0040-c49-reacting-thermals-claim` |
 | `` | active-emulsion | Hunting predators on fuel-driven prey cycle with them and divide: in a 256^2 arena prey 58 | established | c46 | `collective/contrib/20261026T2024-c46-hunting-predators-divide-256` |
 | `` | active-nematic | A heritable swim parameter for the Marangoni rods: three surfactant kinds (mar 20/40/60) c | established | c45 | `collective/contrib/20261026T2018-c45-marangoni-ladder` |
 | `` | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one random body removed every | established | c44 | `collective/contrib/20261026T1856-c44-cips-chemostat-two-seeds` |
 | `` | active-nematic | Marangoni rods under trait-blind turnover (random whole-body removal, removed matter retur | established | c45 | `collective/contrib/20261026T1924-c45-marangoni-turnover-long` |
-| `IMD` | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed from a random hot fiel | established (BD) | c49 | `collective/contrib/20261027T0040-c49-reacting-thermals-claim` |
 | `F` | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 frames) does not keep | weak | c45 | `collective/contrib/20261026T1858-c45-marangoni-turnover-tuning` |
 | `` | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one screened parameter tha | established | c45 | `collective/contrib/20261026T1835-c45-marangoni-swim-screen` |
 | `` | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal drift of the conserv | established | c43 | `collective/contrib/20261026T1800-c43-chasing-consumer` |
@@ -149,11 +149,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIPS world reach labkit | established | c44 | `collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche` |
 | `` | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box keep a fragmenting wo | established | c43 | `collective/contrib/20261026T1610-c43-cgle-gain-bigbox` |
 | `` | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS condensates (e0 0.18, kF | established | c44 | `collective/contrib/20261026T1642-c44-cips-fuel-limited-lattice-negative` |
-| `` | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS condensates die selectivel | established | c44 | `collective/contrib/20261026T1526-c44-cips-seasons-negative` |
 
 ## Mechanisms, laws and negative results
 
-- **Negative: raising the enzyme's drift up its product (chi 4.5-6) or slowing the product (Dp 0.3) in c40's dividing CIPS world gives no self-propelled condensates; the bath nucleates 30-118 small bodies at once that freeze into a static lattice and stop dividing, also with enzyme turnover raised to 0.0045-0.01** (negative): 8/8 arms: 30-128 nucleations, 0 persistent splits, max 1.6-2.6 labkit body lengths, max speed <= 0.0029/t `collective/contrib/20261026T1526-c41-cips-propulsion-negative`
 - **Negative: seasonal fuel regrowth does not make the layered CIPS condensates die selectively; mild famines change nothing and short total famines shrink every body to a core that regrows in place** (negative): lo 0.25/0.5: no deaths; total famine 30-50 t: all bodies shrink to cores and regrow in place, no permanent deaths `collective/contrib/20261026T1526-c44-cips-seasons-negative`
 - **The Marangoni rods' swim-before-divide minority is not inherited: it is redrawn every cycle, speed (not distance) is selected, and divisions stop at saturation after about 2 generations** (negative): D on D slope +0.22 [-0.61, +1.44] (n=25); speed slope +0.29 explained by timing (time null +0.33); sisters ICC over life -0.04; 5 of 102 dividing tracks reach D >= 3, all with long cycles; D falls fro `collective/contrib/20261026T1530-c00-marangoni-minority-lineages`
 - **Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42-foodchain-both-divide-claim: predators divide on 5/5 seeds at 128^2 (generation 2-3), prey reach generation >= 2 on 4/5 (seed 3: generation 1, 12 persistent splits); at 256^2 the twin is a frozen emulsion of 295 prey with 1 division after t=2000 against 30 with predators** (positive): prey gen 1/2, predator gen 2/3 (seeds 3/4); twin 256^2: 295 prey, gen 1, 1 late division vs 30 with predators `collective/contrib/20261026T1547-c42-both-divide-more-seeds`
@@ -168,6 +166,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Marangoni rods under trait-blind turnover (random whole-body removal, removed matter returned at once): division continues at a steady rate to T~1800 on 2 seeds (40-45 dividing rods vs 19 without turnover, generation 8 and 4), the swim-3-lengths minority stays rare (6 of 85) and is redrawn every cycle (parent-offspring slope of D -0.25 [-0.47, -0.02]); the mar=0 floor has none** (positive): persistent splits 50 and 50 (turnover) vs 40, declining (none); dividing tracks 45, 40 vs 19; max generation 8, 4 vs 4; D>=3 rod lengths 5/45, 1/40, floor 0/20; D-on-D slope -0.25 [-0.47,-0.02], n=41 `collective/contrib/20261026T1924-c45-marangoni-turnover-long`
 - **A heritable swim parameter for the Marangoni rods: three surfactant kinds (mar 20/40/60) copied by majority-feedback production keep their kind through fission (96-98% of daughters, kind changes on living rods only at mutations) and set swim speed (Spearman +0.52, p<1e-4) and per-cycle distance (median D 0.85 vs 1.48, p 0.01); the identical-event twin shows no kind effect; the 3-length share stays ~5% in every kind** (positive): ladder: Spearman(kind, path speed) +0.52 p<1e-4, k2 vs k0 D p 0.010 (median 1.48 vs 0.85); twin: -0.20, p 0.79; kind changes off mutation 1+1 of 19; off-kind daughters 2/99, 2/102 (twin 6/101, 4/101); `collective/contrib/20261026T2018-c45-marangoni-ladder`
 - **Hunting predators on fuel-driven prey cycle with them and divide: in a 256^2 arena prey 58 -> 3 -> 61 -> 10 and predators 64 -> 37 -> 45 with a lag, and predators split after meals (19 persistent splits, 21 strict); prey still divide rarely (1-2)** (positive): 256^2 seed 2: predator persistent splits 19 (generation 2), strict 21; prey persistent splits 2; prey/predator counts cycle with a lag (58/0 -> 3/64 -> 61/37 -> 10/45) `collective/contrib/20261026T2024-c46-hunting-predators-divide-256`
+- **Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predator-free twin on the second seed (3) is a static, growing prey emulsion (57 -> 92, 31 persistent prey splits) against cycling prey with 2 splits under predation; labkit fuel-cut forks on seeds 0 and 1 kill every prey body within 800-900 t while the fed runs keep 5 and 13** (positive): twin seed 3: 92 prey, 31 persistent splits, no cycles; with predators 27 prey, 2 splits, two cycles; forks: prey 10/12 -> 0 within 900 t, fed 5/13 `collective/contrib/20261026T2146-c46-hunting-ecology-controls`
 
 ## Corrections (32 contradicted claims)
 

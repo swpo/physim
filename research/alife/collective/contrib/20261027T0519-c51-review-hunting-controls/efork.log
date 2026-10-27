@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 16: 80 frames x 500 steps, grid (128, 128)
+  frame 8/80  19.4s
+  frame 16/80  38.6s
+  frame 24/80  60.8s
+  frame 32/80  86.6s
+  frame 40/80  112.3s
+  frame 48/80  137.5s
+  frame 56/80  162.1s
+  frame 64/80  187.1s
+  frame 72/80  212.3s
+  frame 80/80  237.6s
+  -> collective/contrib/20261027T0519-c51-review-hunting-controls/efork128_s16/FACTS.md  (238s sim)
