@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T04:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T04:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.0** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 14.8** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -39,7 +39,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` | `F` (+0) | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escap | c45 | submitted | 2 more replicated review(s) | c51 |
-| `R:20261026T2146-c46-hunting-ecology-controls#finding` | `F` (+0) | active-emulsion | Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predat | c46 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2146-c46-hunting-ecology-controls#finding` | `F` (+0) | active-emulsion | Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predat | c46 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | `F` (+0) | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | submitted | 2 more replicated review(s) | - |
