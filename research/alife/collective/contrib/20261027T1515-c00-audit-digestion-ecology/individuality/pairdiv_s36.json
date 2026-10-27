@@ -1,0 +1,108 @@
+{
+"pack": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/audit/digestion-ecology/individuality/s36",
+"prey_persistent_splits": 12,
+"parent_carried_predator": 12,
+"both_kids_predator_from_parent": 12,
+"combos": {
+"fragment_of_parent_predator + parent_predator": 6,
+"parent_predator + parent_predator": 6
+},
+"rows": [
+{
+"frame": 25,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"fragment_of_parent_predator"
+]
+},
+{
+"frame": 28,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"parent_predator"
+]
+},
+{
+"frame": 29,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"parent_predator"
+]
+},
+{
+"frame": 34,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"parent_predator"
+]
+},
+{
+"frame": 44,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"fragment_of_parent_predator",
+"parent_predator"
+]
+},
+{
+"frame": 59,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"parent_predator"
+]
+},
+{
+"frame": 60,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"parent_predator"
+]
+},
+{
+"frame": 67,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"fragment_of_parent_predator"
+]
+},
+{
+"frame": 78,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"fragment_of_parent_predator"
+]
+},
+{
+"frame": 89,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"parent_predator",
+"fragment_of_parent_predator"
+]
+},
+{
+"frame": 95,
+"n_pred_on_parent": 2,
+"kid_origins": [
+"parent_predator",
+"parent_predator"
+]
+},
+{
+"frame": 99,
+"n_pred_on_parent": 1,
+"kid_origins": [
+"fragment_of_parent_predator",
+"parent_predator"
+]
+}
+]
+}
