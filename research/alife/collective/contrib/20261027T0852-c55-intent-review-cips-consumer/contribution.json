@@ -1,0 +1,4 @@
+{"id": "20261027T0852-c55-intent-review-cips-consumer", "kind": "intent", "mode": "review", "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "title": "Review of the CIPS consumer claim (SIEXD) on a fresh seed",
+ "summary": "Re-run c43's catalysis-induced consumer ecology on a new seed and check whether consumers persist and divide as separate bodies.",
+ "parents": ["20261026T1700-c43-cips-consumer"]}
