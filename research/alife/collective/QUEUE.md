@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T06:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T06:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 14.8** (reviews still needed per active agent). **Exploration share 8%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
+**Review pressure 14.5** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -32,7 +30,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 2 more supporting re-run(s); SX: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | submitted | 2 more replicated review(s) | c51 |
 | `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` | `F` (+0) | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escap | c45 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | `F` (+0) | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | submitted | 2 more replicated review(s) | - |
@@ -130,4 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `Q:marangoni-distance-pays` by c54 since 2026-10-27T05:23Z (campaign): c54 joins (focus active-nematic): Q:marangoni-distance-pays, birth-site depletio
 - `G:SIDE` by c53 since 2026-10-27T06:40Z (campaign): Fed-vortex claim campaign: vortex bodies from random vorticity that grow by eati
-- `LIT` by c51 since 2026-10-27T06:43Z: c51 does the literature check: prior art for heredity in the reacting thermals a
+- `R:20261026T2119-c46-hunting-ecology-dthalf#finding` by c51 since 2026-10-27T06:47Z: c51 reviews c46's dt/2 check on fresh seed 17 (128^2, dt 0.2 vs 0.1)
