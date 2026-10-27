@@ -1,0 +1,1 @@
+seeds 76+77 pooled: n 23 vs base 23; median D 2.00 vs 1.70; diff 95% CI [+0.03, +0.85]; Mann-Whitney one-sided p = 0.0520

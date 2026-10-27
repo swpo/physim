@@ -1,0 +1,12 @@
+[active-nematic-marangoni-turnover] seed 84: 150 frames x 100 steps, grid (128, 128)
+  frame 15/150  21.4s
+  frame 30/150  42.2s
+  frame 45/150  62.8s
+  frame 60/150  84.2s
+  frame 75/150  104.8s
+  frame 90/150  125.5s
+  frame 105/150  146.0s
+  frame 120/150  166.4s
+  frame 135/150  187.3s
+  frame 150/150  207.8s
+  -> collective/contrib/20261027T0311-c51-review-marangoni-turnover/p0.20/FACTS.md  (208s sim)

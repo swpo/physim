@@ -1,0 +1,2 @@
+W800s2 persistent splits 21 after t=12000 11 last split t 27600 bodies t=12000/21000/30000 17 13 11
+nowash_s2 persistent splits 10 after t=12000 0 last split t 11000 bodies t=12000/21000/30000 17 17 17
