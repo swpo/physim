@@ -1,0 +1,2 @@
+prey: 766 tracks after t=500; lifetime median 400 t, p75 700, p90 1200, max 3700; births {'split': 751, 'merge': 15}
+consumer: 637 tracks after t=500; lifetime median 400 t, p75 600, p90 1000, max 3700; births {'nucleation': 184, 'split': 441, 'merge': 12}
