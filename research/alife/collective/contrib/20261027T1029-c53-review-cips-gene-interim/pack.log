@@ -1,0 +1,12 @@
+[cips-gene] seed 7: 120 frames x 1000 steps, grid (192, 192)
+  frame 12/120  105.7s
+  frame 24/120  214.8s
+  frame 36/120  322.0s
+  frame 48/120  426.6s
+  frame 60/120  534.6s
+  frame 72/120  639.8s
+  frame 84/120  746.8s
+  frame 96/120  861.6s
+  frame 108/120  970.8s
+  frame 120/120  1088.8s
+  -> collective/contrib/c53-rev-gene/pack/FACTS.md  (1089s sim)
