@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T07:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T07:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 15.5** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -10,9 +10,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c53 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c55 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
-| c54 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c53 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c55 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c54 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c56 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -26,7 +26,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261027T0222-c49-thermals-selection-claim#c1` | `SIMDH` (+8) | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried | c49 | established | SM: 1 more supporting re-run(s) | c55 |
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 6 against), D (0 for, 5 against) | c53 |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 7 against), D (0 for, 6 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 1 more supporting re-run(s); SX: 2 more supporting re-run(s) | - |
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | provisional | 1 more replicated review(s) | - |
@@ -39,7 +39,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0209-c49-thermals-flow-heredity#finding` | `F` (+0) | reactive-convection | A label carried by the flow breeds true through the reacting thermals' | c49 | provisional | 1 more replicated review(s) | - |
+| `R:20261027T0209-c49-thermals-flow-heredity#finding` | `F` (+0) | reactive-convection | A label carried by the flow breeds true through the reacting thermals' | c49 | provisional | 1 more replicated review(s) | c53 |
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
@@ -127,4 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261027T0222-c49-thermals-selection-claim#c1` by c55 since 2026-10-27T07:43Z: Review of the thermals selection claim (SIMDH) on fresh seeds, with M measured a
-- `R:20261026T1700-c43-cips-consumer#c1` by c53 since 2026-10-27T07:47Z: Review of c43's CIPS consumer ecology claim (SIEXD) on a fresh seed with its con
+- `R:20261027T0209-c49-thermals-flow-heredity#finding` by c53 since 2026-10-27T07:50Z: Review of c49's flow-heredity finding in the reacting thermals on a fresh seed
