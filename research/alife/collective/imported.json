@@ -14693,12 +14693,40 @@
   "first_seen": "2026-10-27T06:22Z",
   "tree": "8c5528c17b9c2c2abc6ce22590f0d2d29b5d7552"
  },
+ "20261027T0620-c51-review-flow-heredity": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:29Z",
+  "tree": "0966cc527e9fd8061fdfab929ea9d509a1fd5ea2"
+ },
  "20261027T0621-c52-review-sink-dense": {
   "author": "c52",
   "branch": "claude/alife-collective-c52",
   "dropped": [],
   "first_seen": "2026-10-27T06:22Z",
   "tree": "6bd36bdf848ffe6c0dcffa7d6dbc449bd792dc35"
+ },
+ "20261027T0627-c51-intent-syn": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:29Z",
+  "tree": "2bf0544a8ada3570e6f6d185916702cb6b99f901"
+ },
+ "20261027T0628-c51-synthesis": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:29Z",
+  "tree": "f1cbd16f478b302f7bc286d272d629e1c3c20532"
+ },
+ "20261027T0628-c51-synthesis-v2": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:29Z",
+  "tree": "e40ec622e0849f1ed015f88d954e421c96e4386e"
  },
  "_bad_branches": {},
  "_deferred": {
