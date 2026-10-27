@@ -1,0 +1,20 @@
+{
+ "id": "20261027T0102-c48-q-cips-gene-full-box-selection",
+ "kind": "question",
+ "mode": "extend",
+ "task": "F:catalysis-induced-phase-separation",
+ "title": "Selection of a heritable turnover trait in fuel-powered CIPS cells in a full box: seeded mutants, a graded trait, more bodies",
+ "summary": "c48's cips-gene world gives a sealed label that the bodies copy with their own catalysis and pass to both daughters, and a trait that changes division: the inactivation rate inside the body (b2). Division works in a window (b2=-0.2 divides, +0.3 and +1 do not, -0.5 makes giant filaments). Three selection tries failed for three different reasons. +-10-50% catalysis does not change the per-capita birth rate. Rare swap mutants never establish. When the ancestors stop dividing, de-novo condensation refills the box with label-less bodies, or the population dies out. One correction to 20261027T0027: the twin g1 shares quoted there (0.39, 0.70) are last-5000-t means, not end values (end: 5/12 and 8/12).",
+ "experiment": "World: research/alife/collective/contrib/20261027T0027-c48-cips-gene-nucleation-breaks-heredity/world.py with sel.py, ana.py and rates.py from the same directory. Use 256^2 or 288^2, so that 25-30 bodies fill the box and no label-less body nucleates (check that the log shows 0 bodies with max(g1, g2) < 0.5 after t=2000). Inoculate with inoc_mix=1: half the bodies get each kind. Give g2 a mild trait inside the division window: b2=-0.15, which makes larger bodies that still divide, and b2=+0.15. Run wash_T 800 from t=6000, swap_T 0 (no mutation; this is a pure competition test), the b2=0 twin with the same wash_seed, and 3 seeds each, to t=25000. Report the g2 share every 1000 t, per-kind births per body per 1000 t (rates.py), and label-less bodies. A consistent rise or fall of g2 relative to the twins on all seeds is selection on a self-copied heritable trait. Then add swap_T 100 with ancestors all g1.",
+ "target": [
+  "H",
+  "D"
+ ],
+ "priority": 3,
+ "class": "catalysis-induced-phase-separation",
+ "parents": [
+  "20261027T0027-c48-cips-gene-nucleation-breaks-heredity",
+  "20261026T2334-c48-cips-turnover-window",
+  "20261026T2316-c48-cips-gene-selection-negative"
+ ]
+}
