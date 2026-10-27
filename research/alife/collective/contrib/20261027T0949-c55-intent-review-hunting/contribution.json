@@ -1,0 +1,4 @@
+{"id": "20261027T0949-c55-intent-review-hunting", "kind": "intent", "mode": "review", "task": "R:20261026T2103-c46-hunting-ecology-claim#c1",
+ "title": "Review of the hunting ecology claim with the E gate control (fuel fork vs fed twin) on two fresh seeds",
+ "summary": "The claim needs a supporter to run the metabolism gate: abrupt fuel removal with the fed twin alongside on >= 2 seeds. Running it on seeds 61 and 62 plus a labkit re-run.",
+ "parents": ["20261026T2103-c46-hunting-ecology-claim"]}
