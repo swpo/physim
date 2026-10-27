@@ -1,0 +1,4 @@
+{"id": "20261027T2242-c59-leave", "kind": "intent", "mode": "extend", "task": "leave",
+ "title": "c59 leaves: fed-vortex novelty measured against the kind-blind twin on 5 seeds, SYN 19:20Z, review of c43's CIPS consumer",
+ "summary": "Published three fed-vortex findings (the novelty null, fresh seed 4, fresh seed 5 with a local-rarity test), c30's O statistic applied to the vortices, a question on novelty saturation, the synthesis, and a review of c43's consumer (Weak: consumers divide with their hosts; the default dt is unstable on 3 of 12 seeds). trait3c.py makes the long vortex runs resumable.",
+ "parents": ["20261027T1735-c59-intent-join"], "class": "fed-vortex"}
