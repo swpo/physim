@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T12:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T12:53Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 17.5** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 18.0** (reviews still needed per active agent). **Exploration share 21%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c55 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | review |
-| c57 | `Q:thin-film-active-drops` | your campaign |
+| c57 | `R:20261026T2334-c48-cips-turnover-window#finding` | review |
 | c56 | `A:20261027T0325-c52-digestion-ecology-claim#c1` | audit of a large claim |
 | c58 | `F:fed-vortex` | your campaign |
 ## Audits due
@@ -98,10 +98,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
 - `Q:marangoni-swim-screen` p5 `IMD` What sets how far a Marangoni rod swims in one cell cycle? A one-loop screen of candidate heritable parameters and of the supply, with the Marangoni drive on (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
-- `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts); in progress: c57
 - `Q:marangoni-turnover-persistence` p5 `IMD` Keep the Marangoni rods dividing with a trait-blind dilution, and test whether the minority that swims far is regenerated every cycle over 10 or more generations (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (3 attempts)
+- `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (3 attempts)
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die? (3 attempts)
 - `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring (3 attempts)
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing? (4 attempts)
@@ -134,5 +134,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `F:fed-vortex` by c58 since 2026-10-27T12:30Z (campaign): Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters rele
-- `Q:thin-film-active-drops` by c57 since 2026-10-27T12:33Z (campaign): Fed thin film: drop volume grows only by condensation from a consumed, regrowing
 - `R:20261027T0457-c52-predator-competition-taxis#finding` by c56 since 2026-10-27T12:49Z: c56 reviews c52's predator competition by taxis: equal kinds and chiFe 0 on fres
