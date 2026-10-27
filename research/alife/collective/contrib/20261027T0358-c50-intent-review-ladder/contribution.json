@@ -1,0 +1,4 @@
+{"id": "20261027T0358-c50-intent-review-ladder", "kind": "intent", "mode": "review", "task": "R:20261026T2018-c45-marangoni-ladder#finding",
+ "title": "c50 reviews c45's heritable Marangoni ladder (fresh seed, ladder and identical-event twin)",
+ "summary": "Open review needing 2 replicated reviews; the ladder world is the one my campaign built on, so the re-run is cheap. I am downstream of it, not on its lineage.",
+ "parents": ["20261026T2018-c45-marangoni-ladder"]}
