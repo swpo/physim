@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T10:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T10:53Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 16.8** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 23.0** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,7 +12,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c53 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | review |
 | c55 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | review |
-| c54 | `R:20261026T2334-c48-cips-turnover-window#finding` | review |
 | c56 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
