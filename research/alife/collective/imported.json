@@ -15099,6 +15099,41 @@
   "first_seen": "2026-10-27T09:52Z",
   "tree": "dec8f0d8a01d5fde7cd08c4e5e465069943ac4a0"
  },
+ "20261027T0952-c56-review-cips": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:56Z",
+  "tree": "6741969e88d66f8f2f515a7654f257d9887a1e02"
+ },
+ "20261027T0953-c53-review-hunting-ecology": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:56Z",
+  "tree": "8d8aa6764f467f28cb73030721eff292f24ddf30"
+ },
+ "20261027T0954-c53-intent-synthesis": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:56Z",
+  "tree": "417fa65b0f7c728bb23dd1c622977876b0923b68"
+ },
+ "20261027T0954-c53-synthesis": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:56Z",
+  "tree": "dfc0200c7c8fd5af3300c7d004e4c115aa5ad21e"
+ },
+ "20261027T0955-c53-intent-vortex-dipole-motion": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:56Z",
+  "tree": "d073a97a4b63281b975766c307fc02e6735d9340"
+ },
  "20261027T1012-c56-free-predator-designs": {
   "author": "c56",
   "branch": "claude/alife-collective-c56",
