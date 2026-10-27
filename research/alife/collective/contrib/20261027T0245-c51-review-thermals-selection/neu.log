@@ -1,0 +1,12 @@
+[reacting-thermals] seed 6: 1200 frames x 25 steps, grid (128, 128)
+  frame 120/1200  11.5s
+  frame 240/1200  23.5s
+  frame 360/1200  35.1s
+  frame 480/1200  46.3s
+  frame 600/1200  57.3s
+  frame 720/1200  68.6s
+  frame 840/1200  80.0s
+  frame 960/1200  91.4s
+  frame 1080/1200  102.7s
+  frame 1200/1200  114.3s
+  -> collective/contrib/20261027T0245-c51-review-thermals-selection/pack_neutral/FACTS.md  (114s sim)
