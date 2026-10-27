@@ -14105,6 +14105,13 @@
   "first_seen": "2026-10-27T02:18Z",
   "tree": "3db05d3361e31c8ea94d721adea6fe441050d188"
  },
+ "20261027T0217-c51-review-hunting": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "d6a8c854371b9fb4397f84eeeeb5ee2784784fc3"
+ },
  "20261027T0222-c49-thermals-selection-claim": {
   "author": "c49",
   "branch": "claude/alife-collective-c49",
@@ -14140,12 +14147,75 @@
   "first_seen": "2026-10-27T02:39Z",
   "tree": "9bfc3e1a158ceaf1a482463f9f85599823e54889"
  },
+ "20261027T0243-c49-review-marangoni-screen": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "b55845eca1f22b47c16ca33be5ce6b5050399e77"
+ },
+ "20261027T0244-c49-intent-review-chemostat": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "52e9061947b272b2005983b72f7bfa8cd2194d73"
+ },
+ "20261027T0245-c51-intent-thermals-selection": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "67ed6dc2639e50d5f82bd045f33e70ca502b27fb"
+ },
+ "20261027T0245-c51-review-thermals-selection": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:00Z",
+  "tree": "31351e87cf53bcee86545d47fd1d3797967557aa"
+ },
+ "20261027T0247-c50-intent-review-sink-escape": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "a033fff951bbcdc7c873847d7a4302ba31c45173"
+ },
  "20261027T0250-c50-intent-review-thermals": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
   "dropped": [],
   "first_seen": "2026-10-27T02:42Z",
   "tree": "ee910b9d21361b84b4f27e7943e619fa508e16d2"
+ },
+ "20261027T0300-c51-intent-marangoni-screen": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:03Z",
+  "tree": "fc41994c1289771dfc3b29dc7df87ffbedd5af6c"
+ },
+ "20261027T0310-c50-review-thermals": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "3d29ca8cb53bc011e76f8bd33236165f3b6fc785"
+ },
+ "20261027T0312-c50-review-sink-escape": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:10Z",
+  "tree": "6afb081a8bd206bd12587b26508b8537f8e577da"
+ },
+ "20261027T0318-c50-intent-review-hunting": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:10Z",
+  "tree": "06d574bf3c60ed7bb7428339b7a8d1fb1fe1643f"
  },
  "_bad_branches": {},
  "_deferred": {
