@@ -1,0 +1,9 @@
+seed arm      bodies  splits vanish  van/split  area_mean  vpath_med  dividers pass  medD  cycle  ringpol
+620 m40dep      5.9     13     11     0.85       43.4      0.216      10     8   3.69    338  -0.008
+620 m60dep      6.3     18     16     0.89       40.0      0.242      15     9   3.17    305  -0.001
+620 m40E        8.4     21     18     0.86       51.4      0.216      16     2   1.59    140  -0.007
+620 m60E       10.0     17     23     1.35       44.9      0.270      13     4   2.42    175  -0.004
+ fates seen: ['divides', 'merges', 'run-end', 'split-other', 'vanishes']
+621 m40dep     11.1     24     31     1.29       39.7      0.154      11     5   2.92    470  -0.003
+621 m60dep      9.0     27     33     1.22       39.4      0.239      14     7   3.07    322  -0.003
+ fates seen: ['divides', 'merges', 'run-end', 'split-other', 'vanishes']
