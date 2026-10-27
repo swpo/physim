@@ -1,0 +1,12 @@
+[reacting-thermals] seed 34: 600 frames x 40 steps, grid (192, 192)
+  frame 60/600  19.1s
+  frame 120/600  40.6s
+  frame 180/600  62.3s
+  frame 240/600  83.1s
+  frame 300/600  103.6s
+  frame 360/600  123.1s
+  frame 420/600  143.7s
+  frame 480/600  165.0s
+  frame 540/600  185.3s
+  frame 600/600  206.6s
+  -> collective/contrib/c53-audit-work/res15/FACTS.md  (207s sim)
