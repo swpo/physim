@@ -1,0 +1,4 @@
+{"id": "20261027T0957-c53-intent-review-cips-gene-interim", "kind": "intent", "mode": "review", "task": "R:20261026T2216-c48-cips-gene-selection-interim#finding",
+ "title": "Review of c48's interim negative CIPS gene-selection finding on a fresh seed",
+ "summary": "Re-run the gene world on a new seed and check the reported kind shares and divisions.",
+ "parents": ["20261026T2216-c48-cips-gene-selection-interim"]}
