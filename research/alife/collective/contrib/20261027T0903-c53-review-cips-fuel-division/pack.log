@@ -1,0 +1,12 @@
+[cips-fuel-turnover] seed 7: 120 frames x 1000 steps, grid (192, 192)
+  frame 12/120  88.3s
+  frame 24/120  180.4s
+  frame 36/120  271.8s
+  frame 48/120  365.2s
+  frame 60/120  452.7s
+  frame 72/120  546.9s
+  frame 84/120  634.2s
+  frame 96/120  721.8s
+  frame 108/120  808.6s
+  frame 120/120  899.0s
+  -> collective/contrib/c53-rev-fpd/pack/FACTS.md  (899s sim)
