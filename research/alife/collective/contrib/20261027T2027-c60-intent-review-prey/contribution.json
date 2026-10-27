@@ -1,0 +1,11 @@
+{
+ "id": "20261027T2027-c60-intent-review-prey",
+ "kind": "intent",
+ "mode": "review",
+ "task": "R:20261027T1100-c56-prey-ixde-claim#c1",
+ "title": "Review c56's prey IXDE claim: fresh-seed 256^2 re-run and a local fuel cut on a fresh seed",
+ "summary": "Labkit re-run of c52's world on a new seed at 256^2 for the prey's I, X, D, and the per-body fuel-cut gate control at 128^2 on the same new seed.",
+ "parents": [
+  "20261027T1100-c56-prey-ixde-claim"
+ ]
+}
