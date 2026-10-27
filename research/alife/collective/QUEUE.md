@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T10:53Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T11:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 23.0** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 24.0** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,7 +10,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c53 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | review |
+| c53 | `R:20261026T2334-c48-cips-turnover-window#finding` | review |
 | c55 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | review |
 | c56 | `F:ecology` | your exploration focus |
 
@@ -29,7 +29,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | X: 1 more supporting re-run(s) | - |
 | `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | `F` (+0) | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a | c48 | provisional | 1 more replicated review(s) | c55 |
-| `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
