@@ -1,0 +1,33 @@
+{
+ "id": "20261027T1900-c60-kd0-arms",
+ "kind": "finding",
+ "mode": "control",
+ "task": "C:ecology-with-reproduction",
+ "title": "Negative, deciding: in c52's digestion ecology a predator whose own digestion product is switched off (kd=0, eating kept) persists on its still-eaten, fed-size prey; the written fuel-depletion taxis alone holds it",
+ "summary": "The c00 audit's proposed experiment, on the unchanged c52 world.py at 128^2, fresh seeds 61 and 62: states at t=6000, then 3000 t arms with 3 target predators each (one prey touched). With kd=0 in a disk following each target pair (the predator still eats, its prey is still consumed, but no q is made), 4 of 6 targets live to +3000 (fed twin: 4 of 6) while their prey stay at fed size (19-38 px at +3000; fed twin 5-32 px); the two deaths follow the prey being eaten out, as in the fed twin. The surviving bodies are smaller and dimmer (area 8-18 vs 24-30 px, max c_b 0.65-0.80 vs 0.98-1.37) and lose their comet shape. kd=0 everywhere: 3 of 6 alive, predators 48->40 and 43->38 (fed 44, 46). Adding chiF=0 in the same moving disk kills 6 of 6 targets within 350-500 t; kd=0 plus chiF=0 everywhere removes every predator by +1000 t. So the q-route makes predators bigger and denser, but survival on an eaten prey of fed size does not need it: the audit's reading (b) holds, and predator E fails in this world.",
+ "parents": [
+  "20261027T1515-c00-audit-digestion-ecology",
+  "20261027T0325-c52-digestion-ecology-claim"
+ ],
+ "class": "active-emulsion",
+ "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+ "evidence": [
+  "targets_s61.png",
+  "targets_s62.png",
+  "arms_summary.json"
+ ],
+ "outcome": "negative",
+ "finding": {
+  "operator": "conserved predator condensate tilted by its own digestion product q plus a written nonreciprocal drift down the fuel gradient (chiF 0.5)",
+  "capability": "E",
+  "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "per-target arms from t=6000 states (seeds 61, 62; 3 targets each): fed twin; kd=0 in a moving disk (eating kept); kd=0 everywhere; kd=0+chiF=0 in the disk; k2=0 everywhere (audit's arm); kd=0+chiF=0 everywhere",
+  "result": "targets alive at +3000: fed 4/6; kdlocal 4/6 (deaths only after the prey was eaten out; prey 19-38 px at the end, q=0); kdzero 3/6; kdlocal+chiF0 0/6 (dead at 350-500 t); k2zero 6/6 (prey grow to 54-98 px); kdzero+chiF0 0/6, all predators gone by +1000. kd=0 survivors: area 8-18 px, max c_b 0.65-0.80; fed 24-30 px, max c_b 0.98-1.37."
+ },
+ "limits": "Two seeds, three targets each (128^2, as the audit specified); fed twins themselves lose 2 of 6 targets when their prey is eaten out, so small-number survival rates are noisy; the result rests on the qualitative contrast with the chiF=0 arms (0 of 12). kd=0 bodies are near the 0.5 threshold (max c_b ~0.7). Arms use kd as a per-pixel map re-centred every 50 t on the tracked predator plus the prey it touches (radius +4 px). Divisions and prey dynamics under kd=0 were not counted; in the crops prey stop being dragged into comets and predators sit as round cores on them.",
+ "compute": {
+  "cpu_minutes": 70
+ }
+}

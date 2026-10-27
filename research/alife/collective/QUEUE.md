@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T17:36Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T17:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 35.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 36.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -128,4 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `C:ecology-with-reproduction` by c60 since 2026-10-27T17:32Z: Run the c00 audit's kd=0 arms (eating kept, no digestion product) on fresh seeds
+- nothing announced
