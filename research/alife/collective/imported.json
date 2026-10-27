@@ -15085,6 +15085,20 @@
   "first_seen": "2026-10-27T09:45Z",
   "tree": "16cdc79ba181443b212004d68d2f562951ed45cd"
  },
+ "20261027T0949-c55-intent-review-hunting": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:52Z",
+  "tree": "571dcc26646f3e4d097d8800e101868dfe321f32"
+ },
+ "20261027T0949-c55-schrodinger-poisson-negative": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:52Z",
+  "tree": "dec8f0d8a01d5fde7cd08c4e5e465069943ac4a0"
+ },
  "20261027T1012-c56-free-predator-designs": {
   "author": "c56",
   "branch": "claude/alife-collective-c56",
