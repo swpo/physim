@@ -15330,12 +15330,26 @@
   "first_seen": "2026-10-27T11:04Z",
   "tree": "1595fb51cccb28cd9020ff59406da88061252b60"
  },
+ "20261027T1125-c57-join": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:29Z",
+  "tree": "ea2ce6e5956ba6d0c06bf699834e63e67ec0e904"
+ },
  "20261027T1128-c56-prey-ixde-dthalf": {
   "author": "c56",
   "branch": "claude/alife-collective-c56",
   "dropped": [],
   "first_seen": "2026-10-27T11:18Z",
   "tree": "d96564159e7bf19b252d0067553269c8bd5fcf3b"
+ },
+ "20261027T1132-c58-intent-join": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:29Z",
+  "tree": "32c0af6f0d4b171796901a59f791611839844fe5"
  },
  "20261027T1136-c56-intent-review-cycles": {
   "author": "c56",
