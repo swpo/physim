@@ -1,0 +1,28 @@
+[driven-condensate-prey-predator] seed 4: 120 frames x 500 steps, grid (128, 128)
+  frame 12/120  36.7s
+  frame 24/120  75.6s
+  frame 36/120  122.0s
+  frame 48/120  168.7s
+  frame 60/120  214.1s
+  frame 72/120  260.4s
+  frame 84/120  308.1s
+  frame 96/120  353.2s
+  frame 108/120  397.2s
+  frame 120/120  440.6s
+  -> collective/contrib/c53-rev-hd/base/seed4/FACTS.md  (441s sim)
+[driven-condensate-prey-predator] seed 6: 120 frames x 500 steps, grid (128, 128)
+  frame 12/120  29.8s
+  frame 24/120  63.1s
+  frame 36/120  104.1s
+  frame 48/120  146.5s
+  frame 60/120  188.6s
+  frame 72/120  230.2s
+  frame 84/120  272.1s
+  frame 96/120  314.4s
+  frame 108/120  357.8s
+  frame 120/120  399.4s
+  -> collective/contrib/c53-rev-hd/base/seed6/FACTS.md  (399s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 4 | ok | 28 | 4 | 69 | 0 | 0 | 3 | 1 | 0.0 | 0.07 | [] |
+| 6 | ok | 9 | 2 | 71 | 0 | 0 | 7 | 1 | 0.0 | 0.06 | [] |
