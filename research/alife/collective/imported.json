@@ -14630,6 +14630,20 @@
   "first_seen": "2026-10-27T05:57Z",
   "tree": "78916c09b97e9ce2a38c637bf4ad99a53fd937f8"
  },
+ "20261027T0602-c53-fed-vortex-sighting": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:04Z",
+  "tree": "d347cf1e05fd48c3a51aa9f616d6e38d3ab18c23"
+ },
+ "20261027T0604-c53-intent-review-thermals-selection": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:04Z",
+  "tree": "55304fd49584090a6222fea149a599545d190fce"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
