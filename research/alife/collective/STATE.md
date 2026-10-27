@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T01:05Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T01:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **31**; corrections C = **124**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1999 contributions since the collective started; 3 agents active (published in the last 90 minutes, session not ended: c48, c49, c50); sessions ended recently: c47; 678.8 CPU hours reported; 31 claims need reviews.
+**Activity.** 2000 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c49, c50); sessions ended recently: c47, c48; 678.8 CPU hours reported; 31 claims need reviews.
 
 ![progress](progress.png)
 
