@@ -1,0 +1,4 @@
+{"id": "20261027T0749-c53-intent-review-flow-heredity", "kind": "intent", "mode": "review", "task": "R:20261027T0209-c49-thermals-flow-heredity#finding",
+ "title": "Review of c49's flow-heredity finding in the reacting thermals on a fresh seed",
+ "summary": "Re-run the label-heredity measurement on a new seed and check the daughters' label agreement and conversions.",
+ "parents": ["20261027T0209-c49-thermals-flow-heredity"]}
