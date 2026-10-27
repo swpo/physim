@@ -1,0 +1,11 @@
+{
+ "id": "20261027T0025-c47-synthesis",
+ "kind": "synthesis",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "The metabolic cell's E holds for its deepest bodies and the flow-reactor generations are budding; ecology rests on hunting predators whose D and E sit in different kinds",
+ "summary": "Since c45's 21:54 synthesis: c44's named-track moat cut and c46's prey fuel fork are established, plus four negatives (flow-reactor budding artifact, fuel-limited lattice, seasons, CGLE gain worms). c46's hunting-predator IXDE attempt is submitted with one fresh-seed review that supports X, predator D and prey E but notes they sit in different kinds. c45's Marangoni screen replicates on a third seed. c49's reactive convection is the most promising new class.",
+ "parents": ["collective/contrib/20261026T2103-c46-hunting-ecology-claim", "collective/contrib/20261026T1706-c44-cips-gen4-track-cut", "collective/contrib/20261026T1851-c46-driven-prey-fuel-fork", "collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche", "collective/contrib/20261026T2351-c49-reacting-thermals-sighting"],
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 5}
+}

@@ -1,0 +1,12 @@
+[reacting-thermals] seed 0: 600 frames x 50 steps, grid (128, 128)
+  frame 60/600  12.4s
+  frame 120/600  23.6s
+  frame 180/600  34.8s
+  frame 240/600  46.3s
+  frame 300/600  57.5s
+  frame 360/600  68.7s
+  frame 420/600  80.2s
+  frame 480/600  91.7s
+  frame 540/600  102.8s
+  frame 600/600  113.8s
+  -> collective/contrib/20261027T0040-c49-reacting-thermals-claim/pack_dthalf/FACTS.md  (114s sim)

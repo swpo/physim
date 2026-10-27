@@ -1,0 +1,12 @@
+[cips-consumer] seed 7: 75 frames x 400 steps, grid (128, 128)
+  frame 7/75  16.0s
+  frame 14/75  32.0s
+  frame 21/75  48.4s
+  frame 28/75  64.8s
+  frame 35/75  80.6s
+  frame 42/75  96.2s
+  frame 49/75  111.9s
+  frame 56/75  127.5s
+  frame 63/75  143.3s
+  frame 70/75  159.4s
+  -> collective/contrib/c49rev3/rerun_chih0/FACTS.md  (170s sim)
