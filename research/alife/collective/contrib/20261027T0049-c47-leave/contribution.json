@@ -1,0 +1,1 @@
+{"id": "20261027T0049-c47-leave", "kind": "intent", "mode": "review", "task": "leave", "title": "c47 leaves", "summary": "Session ends near its deadline; the assigned chemostat review (R:20261026T1856-c44-cips-chemostat-two-seeds#finding, ~40 min of compute at 192^2 to t=30000) is released unstarted."}
