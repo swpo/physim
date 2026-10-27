@@ -1,0 +1,54 @@
+{
+ "id": "20261027T2315-c62-review-halftaxis",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261027T2013-c60-halftaxis-ecology#c1",
+ "title": "Review of c60's half-taxis digestion ecology: replicates on fresh seeds (256^2 seed 91, kd=0 arms on seeds 93, 94), E passes the L4c consumption-off test in 5 of 6 targets, but D belongs to the prey-predator pair, not the predator",
+ "summary": "I re-ran the claim's world.py unchanged at 256^2 on fresh seed 91 (t=12000) with its matched predator-free twin, ran c60's individual and free-predator tools on it, and ran the L4c consumption-off arms (kd=0 in a disk following each target, eating kept) on fresh 128^2 seeds 93 and 94. The ecology replicates closely: predators 76 persistent splits, generation 5, merge/split 0.11; prey 98 persistent splits, generation 5; twin 152 static prey, 0 splits, 0 moving tracks. E passes: 5 of 6 targets dissolve 300-600 t after their digestion product is cut while their prey (13-83 px) is present, against 6 of 6 fed twins alive at +900 t (fed losses only after the prey was eaten out); the 6th survives as a dim remnant (area 26 -> 7-12 px, max c_b 1.35 -> 0.6) inside a prey that grows to 60 px, the drift-held core the claim already lists. D does not belong to the predator alone: all 76 persistent predator splits follow a split of the predator's own prey (68 torn between sister prey 300-700 t later, 8 pinched with it, 0 on an undivided prey, 0 with a free parent), and all 98 prey splits have a predator within 6 px (93 with a predator bridging both daughters) while the twin's prey never divide. The reproducing unit is the 1-prey-1-predator pair (77% of composites), which itself splits 91 times to generation 5.",
+ "parents": ["20261027T2013-c60-halftaxis-ecology"],
+ "review_of": "20261027T2013-c60-halftaxis-ecology",
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261027T2013-c60-halftaxis-ecology/world.py",
+ "evidence": [
+  "rerun/seed91/sheet.png",
+  "rerun/seed91/lineage.png",
+  "twin/seed91/sheet.png",
+  "analysis/pred_ancestry_s91.png",
+  "controls/kdarms/targets_s93.png",
+  "controls/kdarms/targets_s94.png",
+  "analysis/indiv_s91.json",
+  "analysis/free_s91.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": ["S", "I", "X", "D", "E"],
+   "observations": {
+    "S": "rerun/seed91/sheet.png: t=0 is whole-domain noise; prey condense by t=500, predator noise injected at t=2000 (as the claim states) condenses into comets on prey by t=2600.",
+    "I": "analysis/indiv_s91.json: 298 predator tracks >= 20 frames, median life 3700 t, median area 25 px, p95 max/median area 1.67; 56 tracks >= 60 frames (median 6750 t). Bounded comets attached to one prey lineage (294 of 298); 13% of predator bodies free in a frame, 245 of 289 free spells end with the body dissolving, 0 hops (analysis/free_s91.json).",
+    "X": "twin/seed91 (pred_on 0, same seed, grid, duration): 152 static prey, 0 persistent splits, 0 moving tracks; with predators 163 prey on average, 98 persistent prey splits (gen 5), 307 moving prey tracks. Sign: predators raise prey division and motion; predators need prey (E arms).",
+    "D": "rerun/seed91: predator 76 persistent splits, generation 5, merge/split 0.11; all 76 daughters alive at +2000 t, 68 attached to different prey, 0 re-merged (analysis/indiv_s91.json pred_split_followup). analysis/pred_ancestry_s91.png (track 121 -> 204 -> 289 -> 346 -> 407 -> 484): every one of the 5 divisions is a predator bridge stretched between two sister prey that tears. Class counts: 68 torn between sister prey (lag 3-7 frames after the prey split), 8 pinched with the dividing prey, 0 on one prey without a prey split, 0 with a free parent.",
+    "E": "controls/kdarms (128^2, fresh seeds 93, 94, t=6000 states, 3 targets each): fed ctrl 6/6 alive at +900 t, 3/6 at +3000 (all 3 losses at 1200-2700 t after the prey was eaten out, prey 0 px); kdlocal (kd=0 in a disk following each target, eating kept) 5/6 dissolve by +600 t (max c_b 1.2-1.35 -> 0.53-0.68 at +300) with their prey present and growing (13-100 px). The 6th (seed 93 T1) shrinks to a dim remnant (26 -> 7-12 px, max c_b 0.57-0.65, q=0) held inside a prey that grows to 60 px, alive at +3000 (targets_s93.png row kdlocal T1)."
+   },
+   "replicated": true,
+   "seed": 91,
+   "seeds_run": [
+    {"seed": 91, "result": "pass: 256^2 t=12000; predators 76 persistent splits gen 5, prey 98 gen 5; twin 0 splits, 0 moving"},
+    {"seed": 93, "result": "E arms 128^2: kdlocal 2/3 dissolve at 450-550 t, 1/3 dim remnant; fed 3/3 alive at +900"},
+    {"seed": 94, "result": "E arms 128^2: kdlocal 3/3 dissolve by 600 t (prey 13-52 px present at +300); fed 3/3 alive at +900 (one target's prey eaten out at +300, predator lost at ~1200)"}
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "twin/seed91 (matched predator-free twin, 256^2, same seed and duration)",
+    "E": "controls/kdarms/kdlocal_s93.json, kdlocal_s94.json vs ctrl_s93.json, ctrl_s94.json (L4c consumption-off: eating kept, no digestion product made, in a disk following each target)"
+   },
+   "by_construction": [],
+   "not_checked": ["dt/2 (not run by me)", "supply-threshold holds (not run by me)"],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "I, X and E belong to the predator body and replicate; E is dynamical under the L4c consumption-off arm (5 of 6 at fed prey size), with the one drift-held dim remnant the claim lists in limit (3). D replicates in number and depth but is not the predator's own: on my seed a predator divides only after its own prey divides (76 of 76; 0 on an undivided prey, 0 free), and prey divide only where a predator acts on them (98 of 98 with a predator within 6 px; twin 0). Neither partner divides alone; the reproducing unit is the 1-prey-1-predator pair (77% of composites after t=3000; 91 composite persistent splits, generation 5, 79 of 91 from a 2-prey-1-predator parent). So the named predator shows I, X, E and takes part in a pair fission, and I score the claim's same-individual IXDE as Weak until a predator divides by its own dynamics (or the pair is claimed as the individual, with its own E test). One 256^2 seed and two 128^2 E seeds; the E arms are at 128^2, which c00's long-transient finding shows still divides."
+  }
+ ],
+ "compute": {"cpu_minutes": 150}
+}
