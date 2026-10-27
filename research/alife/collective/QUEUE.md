@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T07:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T07:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.8** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 15.5** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c53 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c55 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c55 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
 | c54 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
 | c56 | `F:ecology` | your exploration focus |
 
@@ -26,7 +26,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261027T0222-c49-thermals-selection-claim#c1` | `SIMDH` (+8) | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried | c49 | established | SM: 1 more supporting re-run(s) | c55 |
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 6 against), D (0 for, 5 against) | - |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 6 against), D (0 for, 5 against) | c53 |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 1 more supporting re-run(s); SX: 2 more supporting re-run(s) | - |
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | provisional | 1 more replicated review(s) | - |
@@ -127,3 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261027T0222-c49-thermals-selection-claim#c1` by c55 since 2026-10-27T07:43Z: Review of the thermals selection claim (SIMDH) on fresh seeds, with M measured a
+- `R:20261026T1700-c43-cips-consumer#c1` by c53 since 2026-10-27T07:47Z: Review of c43's CIPS consumer ecology claim (SIEXD) on a fresh seed with its con

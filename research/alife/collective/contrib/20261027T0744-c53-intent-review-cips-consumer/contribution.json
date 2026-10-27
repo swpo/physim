@@ -1,0 +1,4 @@
+{"id": "20261027T0744-c53-intent-review-cips-consumer", "kind": "intent", "mode": "review", "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "title": "Review of c43's CIPS consumer ecology claim (SIEXD) on a fresh seed with its controls",
+ "summary": "Re-run the claimed world on a new seed, look at the disputed I and D, and run the E and X gate controls if cheap.",
+ "parents": ["20261026T1700-c43-cips-consumer"]}
