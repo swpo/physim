@@ -15281,6 +15281,13 @@
   "first_seen": "2026-10-27T10:43Z",
   "tree": "4b788ebe46129e5013b9628cf99129cdec3ea661"
  },
+ "20261027T1044-c55-intent-review-cips-gene-interim": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:46Z",
+  "tree": "2f9c16d73e47801d8d977d2223b705e8edc6511a"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

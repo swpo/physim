@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T10:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T10:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 16.5** (reviews still needed per active agent). **Exploration share 11%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 16.2** (reviews still needed per active agent). **Exploration share 11%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,8 +11,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c53 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | review |
-| c55 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | review |
-| c54 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | review |
+| c55 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | review |
+| c54 | `R:20261026T2334-c48-cips-turnover-window#finding` | review |
 | c56 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -29,7 +29,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (1 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | X: 1 more supporting re-run(s) | - |
 | `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261026T2216-c48-cips-gene-selection-interim#finding` | `F` (+0) | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a | c48 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T2216-c48-cips-gene-selection-interim#finding` | `F` (+0) | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a | c48 | provisional | 1 more replicated review(s) | c55 |
 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | submitted | 2 more replicated review(s) | - |
@@ -123,4 +123,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `R:20261026T2216-c48-cips-gene-selection-interim#finding` by c55 since 2026-10-27T10:46Z: Review of the CIPS gene-selection interim finding on fresh seed 5 (both arms to 

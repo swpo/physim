@@ -1,0 +1,4 @@
+{"id": "20261027T1044-c55-intent-review-cips-gene-interim", "kind": "intent", "mode": "review", "task": "R:20261026T2216-c48-cips-gene-selection-interim#finding",
+ "title": "Review of the CIPS gene-selection interim finding on fresh seed 5 (both arms to t=30000)",
+ "summary": "Run sel.py with a2 0.5 and its a2 0 twin (same washout and swap streams) on seed 5, plus a labkit pack.",
+ "parents": ["20261026T2216-c48-cips-gene-selection-interim"]}
