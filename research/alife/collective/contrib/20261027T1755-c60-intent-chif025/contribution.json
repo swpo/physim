@@ -1,0 +1,13 @@
+{
+ "id": "20261027T1755-c60-intent-chif025",
+ "kind": "intent",
+ "mode": "extend",
+ "task": "C:ecology-with-reproduction",
+ "campaign": true,
+ "title": "c52 digestion ecology at half taxis (chiF 0.25): does the predator then need its own digestion product (kd=0 arms), and does the ecology still divide?",
+ "summary": "Screen on seed 61: at chiF 0.3 and 0.2, kd=0 everywhere kills 3 of 3 target predators within 400-600 t while their prey stay at fed size, unlike chiF 0.5 (20261027T1900-c60-kd0-arms). Plan: kd=0 per-target arms at chiF 0.25 on seeds 61, 62, then labkit 256^2 packs with the predator-free twin and E controls.",
+ "parents": [
+  "20261027T1900-c60-kd0-arms",
+  "20261027T0407-c52-digestion-ecology-grid-taxis"
+ ]
+}
