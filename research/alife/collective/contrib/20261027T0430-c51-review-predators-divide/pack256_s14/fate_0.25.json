@@ -1,0 +1,597 @@
+{
+ "splits": 34,
+ "splits_both_daughters_5frames_or_divide": 21,
+ "daughters": 69,
+ "daughters_vanished": 48,
+ "daughters_merged": 2,
+ "daughters_divided_again": 6,
+ "daughters_reach_end": 13,
+ "daughters_grew_1p5": 2,
+ "median_life_frames": 9.0,
+ "events": [
+  {
+   "t": 3000,
+   "daughters": [
+    {
+     "life_frames": 4,
+     "fate": "divided",
+     "grew": false,
+     "birth_area": 84
+    },
+    {
+     "life_frames": 20,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 33
+    }
+   ]
+  },
+  {
+   "t": 3400,
+   "daughters": [
+    {
+     "life_frames": 23,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 63
+    },
+    {
+     "life_frames": 10,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 30
+    }
+   ]
+  },
+  {
+   "t": 3400,
+   "daughters": [
+    {
+     "life_frames": 11,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 35
+    },
+    {
+     "life_frames": 8,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 24
+    }
+   ]
+  },
+  {
+   "t": 3500,
+   "daughters": [
+    {
+     "life_frames": 18,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 78
+    },
+    {
+     "life_frames": 17,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 32
+    }
+   ]
+  },
+  {
+   "t": 3500,
+   "daughters": [
+    {
+     "life_frames": 17,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 38
+    },
+    {
+     "life_frames": 19,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 41
+    }
+   ]
+  },
+  {
+   "t": 3700,
+   "daughters": [
+    {
+     "life_frames": 19,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 41
+    },
+    {
+     "life_frames": 1,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 14
+    }
+   ]
+  },
+  {
+   "t": 3900,
+   "daughters": [
+    {
+     "life_frames": 11,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 31
+    },
+    {
+     "life_frames": 9,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 26
+    }
+   ]
+  },
+  {
+   "t": 4300,
+   "daughters": [
+    {
+     "life_frames": 8,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 31
+    },
+    {
+     "life_frames": 5,
+     "fate": "divided",
+     "grew": false,
+     "birth_area": 66
+    }
+   ]
+  },
+  {
+   "t": 4500,
+   "daughters": [
+    {
+     "life_frames": 9,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 27
+    },
+    {
+     "life_frames": 3,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 21
+    }
+   ]
+  },
+  {
+   "t": 4800,
+   "daughters": [
+    {
+     "life_frames": 0,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 11
+    },
+    {
+     "life_frames": 5,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 22
+    }
+   ]
+  },
+  {
+   "t": 7300,
+   "daughters": [
+    {
+     "life_frames": 5,
+     "fate": "divided",
+     "grew": false,
+     "birth_area": 71
+    },
+    {
+     "life_frames": 3,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 16
+    }
+   ]
+  },
+  {
+   "t": 7300,
+   "daughters": [
+    {
+     "life_frames": 10,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 40
+    },
+    {
+     "life_frames": 14,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 36
+    }
+   ]
+  },
+  {
+   "t": 7800,
+   "daughters": [
+    {
+     "life_frames": 0,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 12
+    },
+    {
+     "life_frames": 3,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 20
+    }
+   ]
+  },
+  {
+   "t": 8100,
+   "daughters": [
+    {
+     "life_frames": 19,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 50
+    },
+    {
+     "life_frames": 6,
+     "fate": "divided",
+     "grew": false,
+     "birth_area": 153
+    }
+   ]
+  },
+  {
+   "t": 8500,
+   "daughters": [
+    {
+     "life_frames": 17,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 43
+    },
+    {
+     "life_frames": 11,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 36
+    }
+   ]
+  },
+  {
+   "t": 8700,
+   "daughters": [
+    {
+     "life_frames": 9,
+     "fate": "divided",
+     "grew": false,
+     "birth_area": 191
+    },
+    {
+     "life_frames": 10,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 31
+    }
+   ]
+  },
+  {
+   "t": 8800,
+   "daughters": [
+    {
+     "life_frames": 15,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 43
+    },
+    {
+     "life_frames": 22,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 64
+    }
+   ]
+  },
+  {
+   "t": 8900,
+   "daughters": [
+    {
+     "life_frames": 6,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 22
+    },
+    {
+     "life_frames": 1,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 13
+    }
+   ]
+  },
+  {
+   "t": 8900,
+   "daughters": [
+    {
+     "life_frames": 3,
+     "fate": "merged",
+     "grew": true,
+     "birth_area": 31
+    },
+    {
+     "life_frames": 3,
+     "fate": "merged",
+     "grew": true,
+     "birth_area": 48
+    }
+   ]
+  },
+  {
+   "t": 9100,
+   "daughters": [
+    {
+     "life_frames": 16,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 37
+    },
+    {
+     "life_frames": 28,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 59
+    }
+   ]
+  },
+  {
+   "t": 9100,
+   "daughters": [
+    {
+     "life_frames": 11,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 39
+    },
+    {
+     "life_frames": 20,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 44
+    }
+   ]
+  },
+  {
+   "t": 9600,
+   "daughters": [
+    {
+     "life_frames": 23,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 111
+    },
+    {
+     "life_frames": 6,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 28
+    }
+   ]
+  },
+  {
+   "t": 9900,
+   "daughters": [
+    {
+     "life_frames": 14,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 55
+    },
+    {
+     "life_frames": 8,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 40
+    }
+   ]
+  },
+  {
+   "t": 10200,
+   "daughters": [
+    {
+     "life_frames": 13,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 34
+    },
+    {
+     "life_frames": 16,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 37
+    },
+    {
+     "life_frames": 3,
+     "fate": "divided",
+     "grew": false,
+     "birth_area": 99
+    }
+   ]
+  },
+  {
+   "t": 10200,
+   "daughters": [
+    {
+     "life_frames": 15,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 47
+    },
+    {
+     "life_frames": 17,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 116
+    }
+   ]
+  },
+  {
+   "t": 10200,
+   "daughters": [
+    {
+     "life_frames": 17,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 90
+    },
+    {
+     "life_frames": 15,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 40
+    }
+   ]
+  },
+  {
+   "t": 10500,
+   "daughters": [
+    {
+     "life_frames": 9,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 30
+    },
+    {
+     "life_frames": 7,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 28
+    }
+   ]
+  },
+  {
+   "t": 10600,
+   "daughters": [
+    {
+     "life_frames": 0,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 9
+    },
+    {
+     "life_frames": 13,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 34
+    }
+   ]
+  },
+  {
+   "t": 10700,
+   "daughters": [
+    {
+     "life_frames": 8,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 25
+    },
+    {
+     "life_frames": 2,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 20
+    }
+   ]
+  },
+  {
+   "t": 10800,
+   "daughters": [
+    {
+     "life_frames": 2,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 16
+    },
+    {
+     "life_frames": 7,
+     "fate": "vanished",
+     "grew": false,
+     "birth_area": 21
+    }
+   ]
+  },
+  {
+   "t": 11400,
+   "daughters": [
+    {
+     "life_frames": 5,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 40
+    },
+    {
+     "life_frames": 5,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 88
+    }
+   ]
+  },
+  {
+   "t": 11500,
+   "daughters": [
+    {
+     "life_frames": 4,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 52
+    },
+    {
+     "life_frames": 4,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 38
+    }
+   ]
+  },
+  {
+   "t": 11600,
+   "daughters": [
+    {
+     "life_frames": 3,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 166
+    },
+    {
+     "life_frames": 3,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 49
+    }
+   ]
+  },
+  {
+   "t": 11800,
+   "daughters": [
+    {
+     "life_frames": 1,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 50
+    },
+    {
+     "life_frames": 1,
+     "fate": "end",
+     "grew": false,
+     "birth_area": 118
+    }
+   ]
+  }
+ ]
+}
