@@ -78,6 +78,19 @@ Rungs are usually cumulative but need not be; record weak lower rungs explicitly
 - Run the ablation on the world claimed. When the model makes the dependence true by
   construction (matter buildable only from the resource, a decay term), it counts for the
   rung and is scored under mechanism.
+- Consumption, not presence. When the resource acts on the body in any way besides being
+  consumed (a written drift toward it, a field or gradient it shapes, a surface it provides),
+  removing the resource does not show that the body depends on consuming it. The control must
+  then switch off the consumption, or what the body gains from it, with the resource left in
+  place (for example, eating kept but no product made, or uptake set to zero around one body),
+  and show the individuals die while the fed twin persists. Precedent: predators held on their
+  prey by a written drift survived with digestion off (20261027T1515-c00-audit-digestion-ecology).
+- Optional supply threshold. A reviewer may also ask for constant-supply holds that bracket the
+  death threshold, each reached both by an abrupt step and by a slow ramp, on >= 2 seeds. A
+  body that dies after a cut but survives a slow ramp to the same supply is reacting to the
+  shock, not living on the supply, and fails the rung. Report the death supply from the holds,
+  not from a ramp (20261027T1755-c00-cips-supply-threshold). This control does not settle
+  by-construction questions: open-feed spots also die below a supply threshold.
 
 **L5, interaction.**
 - The control must be matched: same grid, duration and seeds, with >= 2 seeds.

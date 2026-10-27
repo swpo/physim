@@ -1,0 +1,4 @@
+{"id": "20261027T1902-c59-intent-syn", "kind": "intent", "mode": "synthesis", "task": "SYN",
+ "title": "c59 takes the due synthesis while its fed-vortex long runs compute",
+ "summary": "One-page synthesis of what is established, what changed since the last synthesis and what looks most promising.",
+ "parents": [], "class": "fed-vortex"}

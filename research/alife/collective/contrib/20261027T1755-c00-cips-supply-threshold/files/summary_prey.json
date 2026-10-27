@@ -1,0 +1,412 @@
+{
+ "90": {
+  "seed": 90,
+  "ramps": {
+   "R100": {
+    "n_start": 36,
+    "area_start": 3080,
+    "n_end": 0,
+    "deaths": 36,
+    "splits_children": 0,
+    "births": 0,
+    "merge_children": 0,
+    "death_kF_q": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "death_t_q": [
+     160.0,
+     225.0,
+     325.0
+    ],
+    "n10pct_kF": 0.0,
+    "n10pct_t": 285.0,
+    "extinct_t": 325.0,
+    "extinct_kF": 0.0,
+    "half_area_kF": 0.0,
+    "half_area_t": 150.0,
+    "e_max_end": 0.34082583534770383
+   },
+   "R1000": {
+    "n_start": 36,
+    "area_start": 3080,
+    "n_end": 0,
+    "deaths": 36,
+    "splits_children": 0,
+    "births": 0,
+    "merge_children": 0,
+    "death_kF_q": [
+     0.006000000000000005,
+     0.010499999999999995,
+     0.018000000000000002,
+     0.026499999999999996,
+     0.032
+    ],
+    "death_t_q": [
+     680.0,
+     820.0,
+     940.0
+    ],
+    "n10pct_kF": 0.009999999999999995,
+    "n10pct_t": 900.0,
+    "extinct_t": 940.0,
+    "extinct_kF": 0.006000000000000005,
+    "half_area_kF": 0.035,
+    "half_area_t": 650.0,
+    "e_max_end": 0.3125596550389215
+   },
+   "R4000": {
+    "n_start": 36,
+    "area_start": 3080,
+    "n_end": 0,
+    "deaths": 36,
+    "splits_children": 0,
+    "births": 0,
+    "merge_children": 0,
+    "death_kF_q": [
+     0.0325,
+     0.035500000000000004,
+     0.0395,
+     0.046125,
+     0.051500000000000004
+    ],
+    "death_t_q": [
+     1940.0,
+     2420.0,
+     2700.0
+    ],
+    "n10pct_kF": 0.035500000000000004,
+    "n10pct_t": 2580.0,
+    "extinct_t": 2700.0,
+    "extinct_kF": 0.0325,
+    "half_area_kF": 0.052750000000000005,
+    "half_area_t": 1890.0,
+    "e_max_end": 0.30217026486173837
+   }
+  },
+  "const": {
+   "1": {
+    "kF": 0.1,
+    "n_start": 36,
+    "n_end": 36,
+    "area_start": 3080,
+    "area_end": 3105,
+    "n_late_mean": 36.0,
+    "area_late_mean": 3107.235294117647,
+    "cell_area_late_median": 86.0,
+    "cell_area_late_q": [
+     71.0,
+     99.0
+    ],
+    "deaths": 0,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": null,
+    "F_bath_late": 0.39068836625609943,
+    "e_max_end": 0.8864942621400158
+   },
+   "0.75": {
+    "kF": 0.07500000000000001,
+    "n_start": 36,
+    "n_end": 36,
+    "area_start": 3080,
+    "area_end": 2310,
+    "n_late_mean": 36.0,
+    "area_late_mean": 2317.372549019608,
+    "cell_area_late_median": 65.0,
+    "cell_area_late_q": [
+     52.0,
+     74.0
+    ],
+    "deaths": 0,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": null,
+    "F_bath_late": 0.3170135053765455,
+    "e_max_end": 0.8231620815823869
+   },
+   "0.625": {
+    "kF": 0.0625,
+    "n_start": 36,
+    "n_end": 33,
+    "area_start": 3080,
+    "area_end": 1482,
+    "n_late_mean": 33.8235294117647,
+    "area_late_mean": 1514.4901960784314,
+    "cell_area_late_median": 47.0,
+    "cell_area_late_q": [
+     37.0,
+     52.0
+    ],
+    "deaths": 3,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": null,
+    "F_bath_late": 0.27379214581351285,
+    "e_max_end": 0.7701352039345555
+   },
+   "0.5": {
+    "kF": 0.05,
+    "n_start": 36,
+    "n_end": 2,
+    "area_start": 3080,
+    "area_end": 26,
+    "n_late_mean": 4.450980392156863,
+    "area_late_mean": 71.11764705882354,
+    "cell_area_late_median": 16.0,
+    "cell_area_late_q": [
+     8.0,
+     24.0
+    ],
+    "deaths": 34,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": null,
+    "F_bath_late": 0.22735187633548104,
+    "e_max_end": 0.5582068802651167
+   },
+   "0.25": {
+    "kF": 0.025,
+    "n_start": 36,
+    "n_end": 0,
+    "area_start": 3080,
+    "area_end": 0,
+    "n_late_mean": 0.0,
+    "area_late_mean": 0.0,
+    "cell_area_late_median": 0.0,
+    "cell_area_late_q": null,
+    "deaths": 36,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": 540.0,
+    "F_bath_late": 0.1263007689082932,
+    "e_max_end": 0.3079708692173705
+   },
+   "0.1": {
+    "kF": 0.010000000000000002,
+    "n_start": 36,
+    "n_end": 0,
+    "area_start": 3080,
+    "area_end": 0,
+    "n_late_mean": 0.0,
+    "area_late_mean": 0.0,
+    "cell_area_late_median": 0.0,
+    "cell_area_late_q": null,
+    "deaths": 36,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": 340.0,
+    "F_bath_late": 0.05401506393656791,
+    "e_max_end": 0.30601914459581525
+   }
+  }
+ },
+ "91": {
+  "seed": 91,
+  "ramps": {
+   "R100": {
+    "n_start": 40,
+    "area_start": 3120,
+    "n_end": 0,
+    "deaths": 40,
+    "splits_children": 0,
+    "births": 0,
+    "merge_children": 0,
+    "death_kF_q": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "death_t_q": [
+     125.0,
+     210.0,
+     295.0
+    ],
+    "n10pct_kF": 0.0,
+    "n10pct_t": 260.0,
+    "extinct_t": 295.0,
+    "extinct_kF": 0.0,
+    "half_area_kF": 0.0,
+    "half_area_t": 145.0,
+    "e_max_end": 0.3357744208638704
+   },
+   "R1000": {
+    "n_start": 40,
+    "area_start": 3120,
+    "n_end": 0,
+    "deaths": 40,
+    "splits_children": 0,
+    "births": 0,
+    "merge_children": 0,
+    "death_kF_q": [
+     0.009000000000000008,
+     0.011999999999999997,
+     0.020000000000000004,
+     0.0292,
+     0.047
+    ],
+    "death_t_q": [
+     530.0,
+     800.0,
+     910.0
+    ],
+    "n10pct_kF": 0.011999999999999997,
+    "n10pct_t": 880.0,
+    "extinct_t": 910.0,
+    "extinct_kF": 0.009000000000000008,
+    "half_area_kF": 0.037000000000000005,
+    "half_area_t": 630.0,
+    "e_max_end": 0.31201010712255584
+   },
+   "R4000": {
+    "n_start": 40,
+    "area_start": 3120,
+    "n_end": 0,
+    "deaths": 40,
+    "splits_children": 0,
+    "births": 0,
+    "merge_children": 0,
+    "death_kF_q": [
+     0.0345,
+     0.03672500000000001,
+     0.041125,
+     0.047875,
+     0.06425
+    ],
+    "death_t_q": [
+     1430.0,
+     2355.0,
+     2620.0
+    ],
+    "n10pct_kF": 0.036750000000000005,
+    "n10pct_t": 2530.0,
+    "extinct_t": 2620.0,
+    "extinct_kF": 0.0345,
+    "half_area_kF": 0.054000000000000006,
+    "half_area_t": 1840.0,
+    "e_max_end": 0.3058461272181914
+   }
+  },
+  "const": {
+   "1": {
+    "kF": 0.1,
+    "n_start": 40,
+    "n_end": 40,
+    "area_start": 3120,
+    "area_end": 3155,
+    "n_late_mean": 40.0,
+    "area_late_mean": 3157.529411764706,
+    "cell_area_late_median": 80.0,
+    "cell_area_late_q": [
+     67.0,
+     89.0
+    ],
+    "deaths": 0,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": null,
+    "F_bath_late": 0.378463489423449,
+    "e_max_end": 0.8839415371042167
+   },
+   "0.75": {
+    "kF": 0.07500000000000001,
+    "n_start": 40,
+    "n_end": 39,
+    "area_start": 3120,
+    "area_end": 2376,
+    "n_late_mean": 39.0,
+    "area_late_mean": 2368.450980392157,
+    "cell_area_late_median": 61.0,
+    "cell_area_late_q": [
+     54.0,
+     68.0
+    ],
+    "deaths": 1,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": null,
+    "F_bath_late": 0.30821716724436476,
+    "e_max_end": 0.822793851490758
+   },
+   "0.625": {
+    "kF": 0.0625,
+    "n_start": 40,
+    "n_end": 36,
+    "area_start": 3120,
+    "area_end": 1497,
+    "n_late_mean": 36.0,
+    "area_late_mean": 1522.7843137254902,
+    "cell_area_late_median": 45.0,
+    "cell_area_late_q": [
+     37.0,
+     50.0
+    ],
+    "deaths": 4,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": null,
+    "F_bath_late": 0.2669640413074576,
+    "e_max_end": 0.7631733071888713
+   },
+   "0.5": {
+    "kF": 0.05,
+    "n_start": 40,
+    "n_end": 0,
+    "area_start": 3120,
+    "area_end": 0,
+    "n_late_mean": 1.8823529411764706,
+    "area_late_mean": 18.019607843137255,
+    "cell_area_late_median": 8.0,
+    "cell_area_late_q": [
+     4.0,
+     14.0
+    ],
+    "deaths": 40,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": 1920.0,
+    "F_bath_late": 0.22209703200731298,
+    "e_max_end": 0.48124440612733754
+   },
+   "0.25": {
+    "kF": 0.025,
+    "n_start": 40,
+    "n_end": 0,
+    "area_start": 3120,
+    "area_end": 0,
+    "n_late_mean": 0.0,
+    "area_late_mean": 0.0,
+    "cell_area_late_median": 0.0,
+    "cell_area_late_q": null,
+    "deaths": 40,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": 480.0,
+    "F_bath_late": 0.12306408883515389,
+    "e_max_end": 0.30945396692156946
+   },
+   "0.1": {
+    "kF": 0.010000000000000002,
+    "n_start": 40,
+    "n_end": 0,
+    "area_start": 3120,
+    "area_end": 0,
+    "n_late_mean": 0.0,
+    "area_late_mean": 0.0,
+    "cell_area_late_median": 0.0,
+    "cell_area_late_q": null,
+    "deaths": 40,
+    "split_children": 0,
+    "births": 0,
+    "extinct_t": 300.0,
+    "F_bath_late": 0.052515907075643686,
+    "e_max_end": 0.3086684448514345
+   }
+  }
+ }
+}
