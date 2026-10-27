@@ -1,0 +1,44 @@
+== twin_s510: 401 frames, 146 tracks
+frame  bodies  k0 k1 k2 (pure>=0.6)  trait_mean(ladder value)  area-weighted
+    0      0     0   0   0      nan      nan
+   20      7     0   7   0    40.00    40.00
+   40     14     2  10   2    40.00    40.20
+   61     25     4  17   4    40.00    39.81
+   81     26     4  18   4    40.00    40.12
+  101     21     4  13   3    39.00    39.71
+  121     15     2   8   3    41.54    41.08
+  141     14     2   7   5    44.29    43.48
+  161     12     2   6   4    43.33    42.79
+  182     15     2   8   5    44.00    45.05
+  202     15     2   7   6    45.33    44.63
+  222     18     3   8   6    43.53    46.35
+  242     17     2   8   7    45.88    44.85
+  262     14     2   8   4    42.86    41.99
+  282      8     2   4   2    40.00    38.92
+  303     10     2   5   3    42.00    42.46
+  323     12     2   6   4    43.33    42.90
+  343     15     2   8   5    44.00    43.51
+  363     17     2   9   6    44.71    43.05
+  383     11     1   8   2    41.82    40.33
+  400     12     2   8   1    38.18    38.07
+mutation events 11; from->to counts [[0, 3, 0], [4, 0, 4], [0, 0, 0]]
+kind changes along tracks: 11; at a logged mutation: 11; unexplained (conversions): 0
+persistent splits by parent kind k0/k1/k2: [4, 21, 9]; daughters checked 68, off-kind 2
+merge products by kind: [3, 13, 6]; merges of two different kinds: 4
+vanishings (no children, before run end) by last kind: [5, 15, 11]
+dividing tracks 22; median cycle 42.0 frames (210 t)
+kind  n_div  medD  sh_pass(rl)  sh_pass(sqrtA)  v_path  cycle
+k0     1  1.36  0/1  0/1  0.197 375
+k1    16  1.91  3/16  11/16  0.225 170
+k2     5  2.61  1/5  4/5  0.222 535
+cohort(birth frames)  n_div  trait_mean_of_dividers  pass_rl  pass_sqrtA  k0/k1/k2
+    0- 41     8   40.00  0/8  4/8  [0, 8, 0]
+   42- 83     4   50.00  1/4  2/4  [0, 2, 2]
+   84-125     2   40.00  2/2  2/2  [0, 2, 0]
+  210-251     4   45.00  1/4  3/4  [1, 1, 2]
+  252-293     1   40.00  0/1  1/1  [0, 1, 0]
+  294-335     3   46.67  0/3  3/3  [0, 2, 1]
+descendants alive at birth + 2 median cycles, passers (rl) vs non-passers, by kind:
+  k0: passers n=0 mean nan; non-passers n=1 mean 2.00
+  k1: passers n=3 mean 1.33; non-passers n=13 mean 1.69
+  k2: passers n=1 mean 1.00; non-passers n=3 mean 0.67

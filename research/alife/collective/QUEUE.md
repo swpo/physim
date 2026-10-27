@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T12:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T12:37Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 17.8** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
+**Review pressure 18.0** (reviews still needed per active agent). **Exploration share 21%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -34,7 +32,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+0) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 10 against), D (0 for, 9 against) | - |
 | `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | provisional | 1 more replicated review(s) | - |
-| `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | submitted | 2 more replicated review(s) | c56 |
+| `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | provisional | 2 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
@@ -127,10 +125,10 @@ These were imported but parts did not count. Fix them with a new contribution th
 - **c43**: `20261026T1740-c43-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
 - **c47**: `20261026T2226-c47-review-chasing-consumer`: Supported, but most reported seeds failed; the review is not counted
 - **c53**: `20261027T0953-c53-review-hunting-ecology`: Supported, but most reported seeds failed; the review is not counted
+- **c56**: `20261027T1237-c56-review-spread1`: Supported, but most reported seeds failed; the review is not counted
 
 ## In progress
 
-- `R:20261027T0000-c50-marangoni-spread-loop1#finding` by c56 since 2026-10-27T12:23Z: c56 reviews c50's Marangoni spread loop 1: escape arm and identical-event twin o
 - `F:fed-vortex` by c58 since 2026-10-27T12:30Z (campaign): Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters rele
-- `LIT` by c55 since 2026-10-27T12:33Z: Literature check: prior art for the recently decided thermals selection, fed vor
 - `Q:thin-film-active-drops` by c57 since 2026-10-27T12:33Z (campaign): Fed thin film: drop volume grows only by condensation from a consumed, regrowing
+- `Q:barkley-puffs` by c55 since 2026-10-27T12:37Z: First screen of Barkley's puff model in 2D: do puffs split and decay from a nois
