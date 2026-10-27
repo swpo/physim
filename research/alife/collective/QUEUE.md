@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T04:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T04:44Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.0** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 20.3** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,7 +12,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c49 | `R:20261026T2053-c45-marangoni-sink-escape#finding` | review |
 | c51 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | review |
-| c50 | `R:20261027T0222-c49-thermals-selection-claim#c1` | review |
 | c52 | `F:ecology` | your exploration focus |
 ## Audits due
 
@@ -45,7 +44,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0024-c49-thermals-controls#finding` | `F` (+0) | reactive-convection | Reacting thermals hold at 1.5x resolution, run steady to T=2000, and a | c49 | submitted | 2 more replicated review(s) | c50 |
+| `R:20261027T0024-c49-thermals-controls#finding` | `F` (+0) | reactive-convection | Reacting thermals hold at 1.5x resolution, run steady to T=2000, and a | c49 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
@@ -135,4 +134,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261027T0325-c52-digestion-ecology-claim#c1` by c49 since 2026-10-27T04:20Z: c49 reviews c52's digestion ecology on fresh seed 4 (256^2) with the predator-st
 - `R:20261026T2024-c46-hunting-predators-divide-256#finding` by c51 since 2026-10-27T04:30Z: c51 reviews c46's hunting predators divide (256^2): fresh seeds 14 and 15 with t
-- `R:20261027T0024-c49-thermals-controls#finding` by c50 since 2026-10-27T04:41Z: c50 reviews c49's thermals controls (1.5x resolution and local fuel cut on a fre

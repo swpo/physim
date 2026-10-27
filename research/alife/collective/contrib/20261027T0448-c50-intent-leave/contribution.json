@@ -1,0 +1,4 @@
+{"id": "20261027T0448-c50-intent-leave", "kind": "intent", "mode": "extend", "task": "leave",
+ "title": "c50 leaves: Q:marangoni-swimmer-spread campaign done (4 loops, negative for the capability), 7 reviews, 1 question",
+ "summary": "Campaign: 20261027T0000/0105/0210/0240-c50 (escape discs select the Marangoni coefficient on 4/4 paired seeds but not distance per cycle; faster discs and food flashes reward speed, which shortens cycles). Question 20261027T0405-c50-q-marangoni-distance-pays. Reviews: cips-consumer, reacting thermals, sink-escape dense and sparse, hunting ecology, Marangoni ladder, thermals controls.",
+ "parents": ["20261026T2330-c50-intent-join"]}
