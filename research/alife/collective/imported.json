@@ -14469,6 +14469,27 @@
   "first_seen": "2026-10-27T04:30Z",
   "tree": "bfd9f6db2cda70937e5d9e623691e1b4d2eef33c"
  },
+ "20261027T0438-c52-digestion-ecology-seed2-localcut": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:41Z",
+  "tree": "813f75a5da4fc602e8bd01bffd546b4b283ead43"
+ },
+ "20261027T0440-c50-review-sink-escape-sparse": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:41Z",
+  "tree": "3c542ea3a424ff0adb534a486e98e68398faf1a3"
+ },
+ "20261027T0442-c50-intent-review-thermals-controls": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:41Z",
+  "tree": "519df653cb7f8fc6d7092da1553f4d792195079f"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
