@@ -1,0 +1,4 @@
+{"id": "20261027T0711-c53-intent-review-digestion", "kind": "intent", "mode": "review", "task": "R:20261027T0325-c52-digestion-ecology-claim#c1",
+ "title": "Review of the digestion-driven predator ecology claim (SIEXD) on fresh seeds with the X gate control",
+ "summary": "My G:SIDE campaign's claim is published (20261027T0712-c53-fed-vortex-claim). Next: re-run the digestion ecology claim on new seeds and run its interaction control.",
+ "parents": ["20261027T0325-c52-digestion-ecology-claim"]}
