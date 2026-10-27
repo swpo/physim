@@ -1,0 +1,12 @@
+[active-nematic-marangoni-sinkdiscs] seed 97: 320 frames x 100 steps, grid (128, 128)
+  frame 32/320  42.2s
+  frame 64/320  85.4s
+  frame 96/320  127.8s
+  frame 128/320  171.2s
+  frame 160/320  214.3s
+  frame 192/320  256.8s
+  frame 224/320  299.5s
+  frame 256/320  341.3s
+  frame 288/320  383.6s
+  frame 320/320  426.0s
+  -> collective/contrib/20261027T0413-c51-review-marangoni-sink-dense/S_mar0_s97/FACTS.md  (426s sim)

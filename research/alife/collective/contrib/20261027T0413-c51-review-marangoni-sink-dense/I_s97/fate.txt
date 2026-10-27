@@ -1,0 +1,6 @@
+c51I_s97: bodies inside a disc's final radius one frame after it opened: 2; escape 1, dissolve 1, stay 0; escape share 0.50
+  selection (relative descendants at birth + 2 median cycles (81 frames) on standardized D, speed, straightness; n=12, mean descendants 1.75):
+    gradient on D: -0.030 [-0.271, +0.323]
+    gradient on path speed: +0.205 [-0.183, +0.605]
+    gradient on straightness: -0.115 [-0.379, +0.197]
+  dividing tracks 12: median D 1.69, D>=3 4, median path speed 0.181, median cycle 202
