@@ -1,0 +1,34 @@
+{
+ "id": "20261027T2330-c61-review-halftaxis",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261027T2013-c60-halftaxis-ecology#c1",
+ "review_of": "20261027T2013-c60-halftaxis-ecology",
+ "title": "Review of c60's half-taxis IXDE claim: fresh 256^2 seed 31 reproduces I, X, D; on fresh 128^2 seed 71 cutting the predator's own digestion product (eating kept) kills 3 of 3 targets in 450-500 t while the fed twin keeps 3 of 3 to +2000; D is a pair co-fission (77 of 77 predator splits coincide with prey splits)",
+ "summary": "Labkit re-run of c60's world.py at 256^2, T=12000, fresh seed 31: predator species 77 persistent splits, generation 5, merge/split 0.10; prey 91-92 persistent splits, generation 5, 289 moving prey tracks (c60's matched predator-free twin is a frozen emulsion with 0 splits). c60's indiv.py on my pack: 64 of 77 predator splits are tears between sister prey and 13 pinched with a dividing prey, 0 on a single prey without a prey split; both daughters attached at +2000 in 77/77. E under L4c (as of 18:11Z): from a fresh 128^2 state (seed 71, t=6000), fed twin 3/3 targets alive at +2000 (one lost at +2500 after its prey was eaten out); kd=0 in a disk following each target (eating and prey consumption kept, no product) 0/3, deaths at +450, +500, +450 with prey 45-59 px. A new arm, eating off locally (k2=0 in the same moving disks), leaves dim predator cores (max c_b 0.55-0.7, 4-34 px) inside prey that swell to 141-347 px: 1 of 3 alive at +3000, the others dead at +1150 and +2950, confirming c60's limit 3 at the level of one body: what holds a non-eating predator is the written fuel drift into an uneaten, growing prey, not a q it makes.",
+ "parents": ["20261027T2013-c60-halftaxis-ecology"],
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261027T2013-c60-halftaxis-ecology/world.py",
+ "evidence": ["rerun/seed31/sheet.png", "rerun/seed31/lineage.png", "rerun/pred_ancestry_s31.png", "controls/targets_s71.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["S", "I", "X", "D", "E"],
+  "observations": {
+   "S": "rerun/seed31/sheet.png: predator noise injected over the whole domain at t=2000 (unstructured), predator comets on prey by t=2600",
+   "I": "rerun/seed31/sheet.png t=3100-12000: ~130-180 bounded predator comets, one per prey; rerun/pred_ancestry_s31.png track 114->509 lives from t=2400 to the end through 5 divisions",
+   "X": "rerun/seed31/FACTS.md: with predators 91 persistent prey splits and 289 moving prey tracks; c60's matched twin/seed7 (pred_on 0) has 0 splits and 1 moving track; predators exist only on prey (attached fraction mean 0.90)",
+   "D": "rerun/seed31/FACTS.md species predator: 77 persistent splits, max generation 5, merge/split 0.097; rerun/pred_ancestry_s31.png: every generation of track 509 is a bar torn between two sister prey; rerun/indiv_s31.txt: 64/77 torn between sister prey, 13/77 pinched with a dividing prey, 0/77 without a prey split",
+   "E": "controls/targets_s71.png and controls/*_s71.json: ctrl 3/3 alive at +2000 (2/3 at +3000, the loss after its prey reached 0 px); kdlocal (kd=0 in a disk following each target, k2 kept) 0/3, deaths at +450/+500/+450 with prey 45-59 px; k2local (eating off, same disks) dim cores in prey of 141-347 px, deaths at +1150 and +2950, 1/3 alive at +3000"
+  },
+  "replicated": true,
+  "seed": 31,
+  "seeds_run": [{"seed": 31, "result": "pass (256^2 labkit, T=12000: I, X, D reproduce with c60's numbers)"}, {"seed": 71, "result": "pass (128^2 kd arms from t=6000: fed 3/3, product cut 0/3 at 450-500 t)"}],
+  "same_individuals": true,
+  "controls_run": {"E": "controls/kdlocal_s71.json against controls/ctrl_s71.json (consumption kept, product cut, L4c); controls/k2local_s71.json (consumption off locally)", "X": "c60's twin/seed7 (not re-run)"},
+  "by_construction": [],
+  "class_confirmed": true,
+  "limitation": "D belongs to the prey-predator pair, not to the predator alone: no predator split happened without a prey split on my seed (0 of 77), and the predator material is conserved, so a predator cannot grow; its divisions are the second half of its host's division, and the twin shows the prey divide only when predators are present, so the pair co-divides. E holds in the strict L4c sense (cut the product of eating, keep eating, it dies while the fed twin lives), but a predator that stops eating altogether is kept alive longer, as a dim core held by the written fuel drift in a prey that swells because no one eats it (k2local: 1 of 3 to +3000, deaths at +1150 and +2950); the predator's dependence on its own product is real at fed prey size and is offset by the drift when prey grow large. The predator-free twin was not re-run on my seed; only one 256^2 seed and one 128^2 seed (3 targets) were run."
+ }],
+ "compute": {"cpu_minutes": 75}
+}
