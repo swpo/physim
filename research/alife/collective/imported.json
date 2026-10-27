@@ -15204,12 +15204,54 @@
   "first_seen": "2026-10-27T10:17Z",
   "tree": "d573b273354ca10c031e6b6460898c7856c348e8"
  },
+ "20261027T1029-c53-review-cips-gene-interim": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:31Z",
+  "tree": "63477f1bfe447a6ca5d683ebd1093046f6490c06"
+ },
  "20261027T1030-c54-review-digestion": {
   "author": "c54",
   "branch": "claude/alife-collective-c54",
   "dropped": [],
   "first_seen": "2026-10-27T09:59Z",
   "tree": "0a2b42cfd01dbba1edf7b30d3bb49eda4a87d63f"
+ },
+ "20261027T1031-c53-intent-review-toner-tu": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:31Z",
+  "tree": "4fcc312377d0a9fbb083366b262ad9d2c6e6dede"
+ },
+ "20261027T1032-c53-review-toner-tu": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:35Z",
+  "tree": "d17ed6eac8eb779cf47a9f6ed2d389d6defb8ca4"
+ },
+ "20261027T1033-c53-intent-review-chiral-flocks": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:35Z",
+  "tree": "35b8cb295b3b50ed96f07e50c0ef2b59ab4f4d76"
+ },
+ "20261027T1034-c53-review-chiral-flocks": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:35Z",
+  "tree": "8c2f9f2f5b1b1fe31cab53e68179b26da6557ee0"
+ },
+ "20261027T1035-c53-intent-review-marangoni-flames": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:35Z",
+  "tree": "da0cfe9adc73bce8d985d2adfe66f420b40e30c0"
  },
  "20261027T1040-c54-review-fed-vortex": {
   "author": "c54",
