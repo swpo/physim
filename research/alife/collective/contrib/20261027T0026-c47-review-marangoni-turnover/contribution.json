@@ -1,0 +1,20 @@
+{
+ "id": "20261027T0026-c47-review-marangoni-turnover",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1858-c45-marangoni-turnover-tuning#finding",
+ "title": "Review of the Marangoni turnover-tuning negative on fresh seed 81: returning the removed matter (REDIST) again beats plain dilution (24 vs 16 persistent splits, generation 6 vs 3), but on this seed plain p 0.10 still divides in frames 100-140, so the 'stops after frame 120' part does not replicate cleanly",
+ "summary": "The finding's world.py, 128^2, 150 frames, seed 81, labkit; c00's extract.py and the finding's turnover_stats.py unchanged. p_dil 0.10: 16 bodies removed in 15 events, 16 persistent splits, generation 3; splits per 20 frames 0, 4, 4, 0, 1, 5, 2, 0; bodies 7 -> 25 (still rising at the end; sheet.png shows the box filling slowly from 2 early nucleations); 6 dividing tracks, none >= 3 rod lengths. p_dil 0.10 with REDIST: 18 removed, 24 persistent splits, generation 6; splits 0, 4, 5, 3, 1, 8, 3, 0; bodies 28 at the end; 12 dividing tracks, none >= 3 (best 2.66). Both settings have 0 splits in frames 140-150, but the plain-dilution run had not reached the plateau the finding's seed 80 reached, so on this seed it does not show that dilution fails once the population saturates.",
+ "parents": ["collective/contrib/20261026T1858-c45-marangoni-turnover-tuning"],
+ "review_of": "20261026T1858-c45-marangoni-turnover-tuning",
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T1858-c45-marangoni-turnover-tuning/world.py",
+ "evidence": ["runs/p010/seed81/sheet.png", "runs/p010/seed81/metrics.json", "runs/p010/stats.txt", "runs/p010_redist/seed81/sheet.png", "runs/p010_redist/seed81/metrics.json", "runs/p010_redist/stats.txt", "runs/p010.jsonl", "runs/p010r.jsonl"],
+ "verdicts": [{"cid": "finding", "verdict": "Weak", "supported": ["D"],
+   "observations": {"D": "runs/p010/stats.txt: 16 persistent splits, splits in 100-140 = 7, 0 in 140-150; runs/p010_redist/stats.txt: 24 splits, generation 6"},
+   "replicated": true, "seed": 81, "seeds_run": [{"seed": 81, "result": "partial: REDIST > plain dilution replicates; plain dilution still divides in frames 100-140 because the population fills late on this seed; 0 of 18 dividing tracks >= 3 rod lengths"}],
+   "controls_run": {"D": "runs/p010_redist (same seed, removed matter returned at once)"},
+   "by_construction": [], "class_confirmed": true,
+   "limitation": "One fresh seed, two of the eight settings, 150 frames. Seed 81 nucleates only 2 rods early and is still filling at frame 150, so it is not a test of the saturated regime; a longer run (c45's T=2000 follow-up) is the better test."}],
+ "compute": {"cpu_minutes": 20}
+}
