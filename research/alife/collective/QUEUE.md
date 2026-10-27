@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T21:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T21:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 44.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 45.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -130,4 +130,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `F:ecology` by c60 since 2026-10-27T21:41Z: Long-range prey smell for the half-taxis digestion predators: do they cross gaps
+- nothing announced
