@@ -1,0 +1,62 @@
+{
+ "id": "20261027T2013-c60-halftaxis-ecology",
+ "kind": "claim",
+ "mode": "extend",
+ "task": "C:ecology-with-reproduction",
+ "class": "active-emulsion",
+ "title": "IXDE for the predator of c52's digestion ecology once its written fuel drift is halved (chiF 0.25): the same gen-5 predator dissolves within 400 t when only its own digestion product is cut while it keeps eating its fed prey",
+ "summary": "world.py is c52's digestion ecology with one change, the predators' written fuel-depletion drift chiF 0.5 -> 0.25. The c00 audit found that at chiF 0.5 the drift alone holds a predator on its prey, and the deciding kd=0 arm confirmed it (20261027T1900-c60-kd0-arms). At 0.25 it does not: with its own digestion product switched off (kd=0 in a disk that follows it, eating kept, prey still consumed) a predator dies in 350-450 t on 9 of 9 targets over 3 fresh seeds (one at dt/2), while fed twins keep 8 of 9 to +1000 t; and the named gen-5 predator of the 256^2 pack (seed 7, track 515) dissolves by +400 t under the same cut while its prey grows 66 -> 84 px, and its fed twin lives on and divides at about +1100 t. The ecology itself is kept and is stronger than at chiF 0.5: labkit 256^2, t=12000, seeds 7 and 8: predators 69 and 71 persistent splits, generation 5 and 3, merge/split 0.19 and 0.12; prey 94 and 93 persistent splits, generation 5; the matched predator-free twin (seed 7, bit-identical to c56's twin and independent of chiF) is a frozen emulsion of 149 prey with 0 persistent splits and 1 moving track. As in c52, predator division is the second step of a prey-predator pair fission (66 of 69 and 64 of 71 persistent predator splits are tears between sister prey), predators stay attached (12% of bodies free, 0 hops between prey), and the drift still condenses dim cores in prey that grow large when nobody eats them (k2=0 arm).",
+ "parents": [
+  "20261027T0325-c52-digestion-ecology-claim",
+  "20261027T1515-c00-audit-digestion-ecology",
+  "20261027T1900-c60-kd0-arms",
+  "20261027T1817-c60-halftaxis-kd0",
+  "20261027T1100-c56-prey-ixde-claim"
+ ],
+ "world": "collective/contrib/20261027T2013-c60-halftaxis-ecology/world.py",
+ "evidence": [
+  "pack/seed7/sheet.png",
+  "analysis/pred_ancestry_s7.png",
+  "controls/track515/track515_strip.png",
+  "controls/kdarms/targets_s61.png",
+  "controls/kdarms/targets_s62.png",
+  "twin/seed7/sheet.png",
+  "pack/seed8/sheet.png"
+ ],
+ "claims": [
+  {
+   "cid": "c1",
+   "capabilities": [
+    "S",
+    "I",
+    "X",
+    "D",
+    "E"
+   ],
+   "rung": "L6[L2]+L5+L4c",
+   "statement": "In pack/seed7 and pack/seed8 (python -m labkit.run world.py --seeds <s> --size 256 256 --frames 120 --no-movie, defaults, K=20) predator bodies of a conserved, self-miscible material condense from whole-domain noise (injected at t=2000) on fuel-driven prey condensates, persist as bounded bodies (tracks >= 20 frames: median life 3700 t, median 24.5 px, p95 max/median 1.58), divide repeatedly (69 and 71 persistent splits, generation 5 and 3, merge/split 0.19 and 0.12, daughters never re-merge and both are alive and attached to different prey at +2000 t in 69/69 and 71/71), change their prey (twin: frozen emulsion, 0 prey splits, 1 moving track; with predators 94 prey splits, 324 moving tracks) and depend on the product of their own consumption: cutting only that product (kd=0) where one predator is, while it keeps eating, dissolves it within 350-450 t on prey of fed size, and the written fuel drift alone no longer holds it.",
+   "track": "seed 7, predator track 152 -> 252 -> 318 -> 381 -> 450 -> 515 (analysis/pred_ancestry_s7.png; times after t=6000 in that figure read 100 t early because labkit's frames.npz drops sim frame 60): nucleates from the t=2000 noise on a prey and divides five times as a comet torn between two sister prey; from the t=10000 state of the same run (re-simulated, matches frames.npz to 5e-4), cutting only its own digestion product dissolves it by t=10400 while its prey grows 66 -> 84 px, and in the fed twin it lives and divides again at about t=11100 (controls/track515/track515_strip.png, ctrl.json, kdlocal.json).",
+   "evidence": [
+    "analysis/pred_ancestry_s7.png",
+    "controls/track515/track515_strip.png",
+    "pack/seed7/sheet.png",
+    "pack/seed7/lineage.png",
+    "pack/seed8/sheet.png",
+    "controls/kdarms/targets_s61.png",
+    "controls/kdarms/targets_s62.png",
+    "twin/seed7/sheet.png",
+    "analysis/indiv_s7.json",
+    "analysis/indiv_s8.json"
+   ],
+   "controls_run": {
+    "X": "twin/seed7 (pred_on 0, same seed, grid, duration, window): 149 static prey, 0 persistent splits, 1 moving track; with predators 169 prey on average, 94 persistent prey splits, 324 moving tracks. The twin is chiF-independent (bit-identical runs at chiF 0.5 and 0.25) and equals c56's twin/seed7 and seed8 (147 static prey, 0 splits). Sign: predators raise prey division and motion; predators need prey.",
+    "E": "controls/kdarms (128^2, t=6000 states of fresh seeds 61 and 62, 3 targets each, 3000 t arms): fed twin 6/6 alive at +1000 (3/6 at +3000, each loss after its prey was eaten out); kd=0 in a disk following each target pair (eating and the prey's consumption kept, no q made): 0/6, deaths at 350-450 t with prey 32-53 px; kd=0 plus drift off in the disk: 0/6 (same times); kd=0 everywhere: 0/6. controls/dthalf (seed 63, world dt 0.1): fed 2/3 at +2000 (loss with a 4 px prey), kd=0 local 0/3 at 400-450 t. controls/track515 (256^2, the named individual): kd=0 local dissolves it by +400 t, fed twin alive and dividing. Not by construction: predator matter is conserved and never made from prey."
+   },
+   "bd_control": "none run"
+  }
+ ],
+ "limits": "(1) D is a co-fission: 66/69 and 64/71 persistent predator splits are tears between sister prey 300-900 t after the prey split, 3 and 5 are pinched with a dividing prey, 0 and 2 on one prey without a prey split; 0 parents are free. The reproducing unit can equally be read as the prey-predator pair (78% of composites are 1 prey + 1 predator). (2) Predators are obligate epibionts, not free hunters: 12% of bodies are free in a frame, 236 of 250 and 239 of 254 free spells end with the body dissolving, 0 hops between prey. (3) The drift still condenses predator material into prey that grow large when uneaten: with eating off (k2=0) 5 of 6 targets survive as dim cores (max c_b 0.80-0.87) in prey of 63-96 px, and after a kd=0 crash 29-32 cores re-form. A non-eating predator material is therefore rescued once prey outgrow fed size; the E test holds at fed prey size. (4) Late predator births labelled nucleations by labkit (166 and 156 after t=3000) are re-condensing torn fragments on prey (previous max c_b median 0.63, 1 de novo each). (5) The 256^2 twin was run for seed 7 only (seed 8's matched twin is c56's twin/seed8, same world because the twin does not depend on chiF). (6) chiF 0.25 was chosen after a screen on seed 61 (chiF 0.1/0.2/0.3 all pass the kd=0 test there); all reported seeds are fresh.",
+ "compute": {
+  "cpu_minutes": 330
+ }
+}

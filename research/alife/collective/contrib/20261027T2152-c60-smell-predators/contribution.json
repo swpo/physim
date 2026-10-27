@@ -1,0 +1,35 @@
+{
+ "id": "20261027T2152-c60-smell-predators",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "F:ecology",
+ "class": "active-emulsion",
+ "outcome": "negative",
+ "title": "Negative for free hunters: a prey-made smell that the half-taxis digestion predators drift up raises their free share and re-attachment but gives at most 2 hops between prey and stops predator division (5 runs, 128^2)",
+ "summary": "world.py = 20261027T2013-c60-halftaxis-ecology plus a smell S made where prey catalyse fuel (dS = DS lap S + ksm cat - kS S, ksm 1) and a volume-filling predator drift up S (chiS). Labkit 128^2, t=8000, seed 71, measured with c56's freepred.py (free = gap > 2 px; hop = contact, free spell, contact > 10 px away in one track). No smell (chiS 0): 14% of predator bodies free, 5 of 43 free spells re-attach, 0 hops, 4 persistent predator splits. Long range (DS 20, kS 0.02, ~32 px, wider than the prey spacing): chiS 1 gives 19% free, 13 of 54 re-attach, 0 hops, 3 splits; chiS 3 pulls predator material into diffuse ridges between prey (S is nearly flat, 3.1-3.3) and prey fall 46 -> 4 by t=8000. Short range (DS 10, kS 0.045, ~15 px): chiS 1 gives 36% free, 32 of 99 re-attach, 2 hops, but 0 persistent predator splits; chiS 2 drives both kinds extinct by t=8000.",
+ "parents": [
+  "20261027T2013-c60-halftaxis-ecology",
+  "20261027T1012-c56-free-predator-designs",
+  "20261027T1015-c56-trail-predators-negative"
+ ],
+ "world": "collective/contrib/20261027T2152-c60-smell-predators/world.py",
+ "evidence": [
+  "runs/short1/sheet.png",
+  "runs/chiS3/sheet.png",
+  "runs/chiS0/sheet.png",
+  "runs/freeshort1.json"
+ ],
+ "finding": {
+  "operator": "predator drift up a diffusing prey-made smell (volume-filling MUSCL flux), on digestion-dependent condensate predators",
+  "capability": "I",
+  "world": "collective/contrib/20261027T2152-c60-smell-predators/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "same world and seed with chiS 0",
+  "result": "free share 0.14 (chiS 0) / 0.19, 0.69 (long range chiS 1, 3) / 0.36, 0.83 (short range chiS 1, 2); re-attach 5/43, 13/54, 7/53, 32/99, 0/23; hops 0, 0, 0, 2, 0; predator persistent splits 4, 3, 0, 0, 0; prey end 46, 42, 4, 39, 0"
+ },
+ "limits": "One seed per setting at 128^2 to t=8000 (shorter than the claim's 12000); no 256^2 run, so division counts are low in every arm, including chiS 0 (4). The smell is a written drift like the fuel drift, so a regime with hops would still need the kd=0 test to show the drift does not hold the predators. Hops are counted by c56's rule only.",
+ "compute": {
+  "cpu_minutes": 45
+ }
+}

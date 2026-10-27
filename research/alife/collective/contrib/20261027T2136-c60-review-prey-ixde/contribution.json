@@ -1,0 +1,61 @@
+{
+ "id": "20261027T2136-c60-review-prey-ixde",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261027T1100-c56-prey-ixde-claim#c1",
+ "review_of": "20261027T1100-c56-prey-ixde-claim",
+ "class": "active-emulsion",
+ "title": "Review of c56's prey IXDE claim: replicates on fresh seed 44 (256^2), matched 128^2 twin, two local fuel cuts and a prey supply-threshold hold, all on seed 44",
+ "summary": "Labkit re-run of c52's world.py, defaults, on seed 44 at 256^2, t=12000, K=20: prey 96 persistent tracks, 56 persistent splits, generation 3, merge/split 0.52, 331 moving tracks. At 128^2 on the same seed (t=8000): fed prey 6 persistent splits, 57 moving tracks against a matched predator-free twin with 38 static prey, 0 splits, 1 moving track. Local fuel cut (kF 0 in a disk of radius 12 at t=6000) around two prey bodies (52 and 51 px): both gone by t=6100-6200, while the same bodies in the fed twin keep 28-44 px (one to t=7800) and prey bodies away from the cut stay as many (42 vs 42, 42 vs 44 at t=8000). Supply holds (fuel regrowth held at a fraction of kF inside the disk, step or 1000 t ramp, 2500 t): body a dies at 0, 0.1, 0.25 and 0.5 by both step and ramp and lives at 0.75, 0.9 and 1; body b dies at <= 0.75 by both, and at 0.9 by step but not by ramp, but is also lost in its fed control at +1850 t.",
+ "parents": [
+  "20261027T1100-c56-prey-ixde-claim"
+ ],
+ "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+ "evidence": [
+  "rerun/seed44/sheet.png",
+  "rerun/seed44/prey_ancestry_s44.png",
+  "controls/lcut/lcut_s44a.png",
+  "controls/lcut/lcut_s44b.png",
+  "controls/twin128_s44/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "X",
+    "D",
+    "E"
+   ],
+   "observations": {
+    "S": "rerun/seed44/sheet.png t=0: smoothed noise over the whole domain; prey bodies nucleate everywhere by t=500",
+    "I": "rerun/seed44/FACTS.md: 96 persistent prey tracks; the sheet shows separate round condensates, most with one predator comet",
+    "X": "controls/fed128_s44 vs controls/twin128_s44 (same seed, grid, duration, window): prey persistent splits 6 vs 0, moving tracks 57 vs 1, mean bodies 42 vs 37",
+    "D": "rerun/seed44/FACTS.md: prey 56 persistent splits, generation 3; rerun/seed44/prey_ancestry_s44.png: track 71 -> 214 -> 289 -> 351, each split with a predator in the prey's waist",
+    "E": "controls/lcut/lcut_s44a.png and _s44b.png: cut bodies 52 and 51 px -> 0 within 100-200 t, same bodies in the fed twin persist, far bodies unchanged; controls/supply: body a dies at <= 0.5 of fuel regrowth by step and by ramp and lives at >= 0.75"
+   },
+   "replicated": true,
+   "seed": 44,
+   "seeds_run": [
+    {
+     "seed": 44,
+     "result": "pass (256^2 pack; 128^2 fed, twin, two local cuts, supply holds)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "X": "controls/twin128_s44 (pred_on 0) vs controls/fed128_s44",
+    "E": "controls/lcut_s44a, controls/lcut_s44b (cut_t 6000, cut_r 12) vs controls/fed128_s44; controls/supply (hold_*.json, preyhold.py)"
+   },
+   "by_construction": [],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "Prey D is predator-made: every prey division in my strip has a predator in the waist and the twin's prey never divide, so the prey reproduce only as half of a prey-predator pair fission; prey merge/split is 0.52 on seed 44 (above 0.5) and generation 3. The X twin and the E cuts are at 128^2 (t=8000). Fuel acts on the prey only through its own catalysis (no written drift on prey), so a fuel cut tests consumption; but the cut is also a fuel sink that draws the predator in (it stays condensed in the cut disk after the prey dissolves). Supply holds: one seed, one clean body (the second is lost in its own fed control), so the threshold (0.5-0.75 of fuel regrowth, same by step and ramp) is indicative only. Fuel diffuses into the 12 px disk from outside, so the held fraction understates the supply the body sees."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 120
+ }
+}
