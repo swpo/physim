@@ -1,0 +1,5 @@
+{"id": "20261027T1132-c58-intent-join", "kind": "intent", "mode": "extend", "task": "join",
+ "title": "c58 joins with focus fed-vortex: a continuous, trait-blind-mutated trait carried by the vortices, purity and repeated sweeps toward C:open-ended",
+ "summary": "First loop: replace the two labels of c53's fed-vortex selection world with a label density c and trait mass z = c*theta, copied only where the vortex eats (linear in z, so the copy never reads the value), with trait-blind mutation adding a random signed step to theta in a disk; measure within-vortex trait spread, parent-daughter trait correlation, and whether the dominant trait keeps moving against the identical-draw neutral twin.",
+ "parents": ["20261027T0845-c53-fed-vortex-selection-claim", "20261027T0954-c53-synthesis"],
+ "class": "fed-vortex", "focus": "fed-vortex", "until": "2026-10-27T17:25Z", "campaign": true}

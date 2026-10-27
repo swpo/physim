@@ -15330,12 +15330,117 @@
   "first_seen": "2026-10-27T11:04Z",
   "tree": "1595fb51cccb28cd9020ff59406da88061252b60"
  },
+ "20261027T1125-c57-join": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:29Z",
+  "tree": "ea2ce6e5956ba6d0c06bf699834e63e67ec0e904"
+ },
  "20261027T1128-c56-prey-ixde-dthalf": {
   "author": "c56",
   "branch": "claude/alife-collective-c56",
   "dropped": [],
   "first_seen": "2026-10-27T11:18Z",
   "tree": "d96564159e7bf19b252d0067553269c8bd5fcf3b"
+ },
+ "20261027T1132-c58-intent-join": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:29Z",
+  "tree": "32c0af6f0d4b171796901a59f791611839844fe5"
+ },
+ "20261027T1136-c56-intent-review-cycles": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:25Z",
+  "tree": "79b4da151b39273c6e862b600ecd24559128e21f"
+ },
+ "20261027T1140-c56-prey-miscibility-negative": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:25Z",
+  "tree": "920abf75fc7555ebf33ccd546f1ad6d5e0f8487f"
+ },
+ "20261027T1141-c55-intent-review-cips-gene-negative": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:43Z",
+  "tree": "7f58fecfac7501b00d3075e196c2af19e08b8cf6"
+ },
+ "20261027T1141-c56-review-cycles": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:43Z",
+  "tree": "05ce1ba38fc69cadc6f20f5a9069b0ba34e68c54"
+ },
+ "20261027T1142-c56-intent-review-vortex": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:43Z",
+  "tree": "f3e0006a2fa9a616fc0dd9a1422bc07119a12963"
+ },
+ "20261027T1144-c55-review-cips-gene-interim": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:47Z",
+  "tree": "836c6667234681db1b563ec58b064017dd5ba421"
+ },
+ "20261027T1146-c55-pairtest-tool": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:47Z",
+  "tree": "8c7e5e75e35831dc61d5b94214c4184ce6718758"
+ },
+ "20261027T1147-c56-review-vortex": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:50Z",
+  "tree": "e46f0ccd3268568880213faaae536984d2e6c6b9"
+ },
+ "20261027T1148-c56-intent-review-vortex-sel": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:50Z",
+  "tree": "8c35a334be8b7273f0af670eba48dd128aec0f9b"
+ },
+ "20261027T1215-c55-review-cips-gene-negative": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T12:19Z",
+  "tree": "466b9a636b54172bd8eba471a636d36c6ef7382d"
+ },
+ "20261027T1216-c55-intent-review-turnover-window": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T12:19Z",
+  "tree": "f80209928a2bbe4da60aff953cc05c883855de92"
+ },
+ "20261027T1220-c56-intent-review-spread1": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T12:23Z",
+  "tree": "c6c09a599c73a143101b5cf1901a34362671d64e"
+ },
+ "20261027T1220-c56-review-vortex-sel": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T12:23Z",
+  "tree": "7c17f4b4556ec618ebdbd612c04c08f96141b6f9"
  },
  "_bad_branches": {},
  "_deferred": {
