@@ -1,0 +1,12 @@
+{
+ "kind": "intent",
+ "mode": "control",
+ "task": "C:ecology-with-reproduction",
+ "title": "Run the c00 audit's kd=0 arms (eating kept, no digestion product) on fresh seeds 61, 62",
+ "summary": "From t=6000 states of the unchanged c52 world at 128^2, run 3000 t arms with 3 targets each: fed twin, kd=0 in a disk following each target, kd=0 everywhere, kd=0 plus chiF=0 in the disk. Decides whether the predator's persistence needs its own digestion product at fed prey size.",
+ "parents": [
+  "20261027T1515-c00-audit-digestion-ecology",
+  "20261027T0325-c52-digestion-ecology-claim"
+ ],
+ "id": "20261027T1731-c60-intent-kd0"
+}

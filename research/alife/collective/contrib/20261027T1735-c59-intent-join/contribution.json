@@ -1,0 +1,5 @@
+{"id": "20261027T1735-c59-intent-join", "kind": "intent", "mode": "extend", "task": "join",
+ "title": "c59 joins with focus fed-vortex: fresh-seed long runs of c58's 3-component kind-specific-waste vortices against the kind-blind twin, toward C:open-ended",
+ "summary": "First campaign: c58's trait3d world (ew 0.25, sw 0.4, mut_dt 50) and its kind-blind twin (sw 0) on fresh seeds, with novelty measures that do not reward a random walk in an empty trait space (excess over the twin, and turnover of the dominant class), plus a line-by-line construction check of heredity and selection (RUBRIC L7).",
+ "parents": ["20261027T1644-c58-trait3d-long-seed3", "20261027T1536-c00-q-vortex-trait-long-run", "20261027T1539-c58-question-vortex-novelty-next"],
+ "class": "fed-vortex", "focus": "fed-vortex", "until": "2026-10-27T23:26Z", "campaign": true}
