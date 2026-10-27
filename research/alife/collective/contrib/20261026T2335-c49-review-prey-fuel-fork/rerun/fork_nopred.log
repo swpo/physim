@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 7: 70 frames x 500 steps, grid (128, 128)
+  frame 7/70  16.7s
+  frame 14/70  34.0s
+  frame 21/70  51.0s
+  frame 28/70  67.6s
+  frame 35/70  84.0s
+  frame 42/70  100.2s
+  frame 49/70  116.6s
+  frame 56/70  132.3s
+  frame 63/70  149.2s
+  frame 70/70  166.0s
+  -> collective/contrib/20261026T2335-c49-review-prey-fuel-fork/rerun/fork_nopred/FACTS.md  (166s sim)

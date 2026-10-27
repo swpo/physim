@@ -1,0 +1,4 @@
+{"id": "20261027T0010-c50-intent-review-cips-consumer", "kind": "intent", "mode": "review", "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "title": "c50 reviews c43's CIPS consumer claim (fresh seed, consumer-free twin, prey-removal fork); Q:marangoni-swimmer-spread loop 2 continues alongside",
+ "summary": "Assigned review: fresh-seed labkit re-run of the claimed world, its consumer-free twin and its prey-removal fork, checking I and D of the consumer bodies.",
+ "parents": ["20261026T1700-c43-cips-consumer"]}

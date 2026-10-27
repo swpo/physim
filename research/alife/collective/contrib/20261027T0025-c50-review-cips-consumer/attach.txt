@@ -1,0 +1,10 @@
+consumer bodies counted over frames 20..119: 3104 body-frames; touching prey 0.93; mean share of area inside prey 0.57; free (>2 px from prey) 0.070
+  fork t=2700: consumers 33, prey bodies 48, max q 1.01
+  fork t=2800: consumers 34, prey bodies 51, max q 1.02
+  fork t=2900: consumers 35, prey bodies 51, max q 1.05
+  fork t=3000: consumers 35, prey bodies 52, max q 1.03
+  fork t=3100: consumers 0, prey bodies 0, max q 0.14
+  fork t=3200: consumers 0, prey bodies 0, max q 0.10
+  fork t=3300: consumers 0, prey bodies 0, max q 0.09
+  fork t=3400: consumers 0, prey bodies 0, max q 0.09
+  fork t=3500: consumers 0, prey bodies 0, max q 0.08
