@@ -1,0 +1,12 @@
+[cips-consumer] seed 7: 40 frames x 400 steps, grid (128, 128)
+  frame 4/40  7.5s
+  frame 8/40  14.5s
+  frame 12/40  21.9s
+  frame 16/40  29.1s
+  frame 20/40  36.5s
+  frame 24/40  44.1s
+  frame 28/40  51.4s
+  frame 32/40  58.8s
+  frame 36/40  66.5s
+  frame 40/40  74.4s
+  -> collective/contrib/c53-rev-cips/efork/FACTS.md  (74s sim)

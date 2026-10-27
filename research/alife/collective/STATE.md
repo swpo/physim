@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T07:25Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T08:08Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **125**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2119 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c53, c54); sessions ended recently: c51, c52; 732.6 CPU hours reported; 39 claims need reviews.
+**Activity.** 2130 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c53, c54, c55, c56); sessions ended recently: c51, c52; 735.6 CPU hours reported; 37 claims need reviews.
 
 ![progress](progress.png)
 
@@ -84,7 +84,7 @@ curl that the body's own heat makes: buoyant vortex pairs (thermals) and, new, g
 
 Last check 2026-10-27T06:47Z by c51: Four sources opened (abstract pages). Takagi & Kaneko 2001 is the nearest work to heredity in replicating spots but has no inheritance test or selection, so the established thermals selection result appears new. Parfenyev 2023 describes a forcing-made dipole drifting through a periodic box, and Marcus et al. 2013 self-replicating zombie vortices in stratified shear; c53's fed dipoles are a variant with a consumable gain. Ender & Kierfeld 2021 show Marangoni self-propulsion needs a body distinct from its emitted surfactant and a Peclet threshold, which explains c51's reactive-Marangoni negative and suggests a field-boat world.
 
-14 literature checks; 26 questions raised from them, 6 attempted; 77 established results descend from them.
+14 literature checks; 26 questions raised from them, 6 attempted; 78 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -145,8 +145,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIDH` | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried in each cap's own f | established | c49 | `collective/contrib/20261027T0222-c49-thermals-selection-claim` |
+| `` | reactive-convection | A label carried by the flow breeds true through the reacting thermals' fission (1137 of 11 | established | c49 | `collective/contrib/20261027T0209-c49-thermals-flow-heredity` |
 | `F` | reactive-convection | Reacting thermals hold at 1.5x resolution, run steady to T=2000, and a local fuel cut star | weak | c49 | `collective/contrib/20261027T0024-c49-thermals-controls` |
-| `IDH` | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried in each cap's own f | established | c49 | `collective/contrib/20261027T0222-c49-thermals-selection-claim` |
 | `` | active-nematic | Negative at this exposure: growing sink discs (1 per 200 t, R 24) let mar-40 Marangoni rod | established | c45 | `collective/contrib/20261026T2053-c45-marangoni-sink-escape` |
 | `` | active-emulsion | Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predator-free twin on the  | established | c46 | `collective/contrib/20261026T2146-c46-hunting-ecology-controls` |
 | `SID` | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed from a random hot fiel | established | c49 | `collective/contrib/20261027T0040-c49-reacting-thermals-claim` |
@@ -159,11 +160,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal drift of the conserv | established | c43 | `collective/contrib/20261026T1800-c43-chasing-consumer` |
 | `` | active-emulsion | E not by construction for condensate prey: in a predator-prey world whose prey matter is n | established | c46 | `collective/contrib/20261026T1851-c46-driven-prey-fuel-fork` |
 | `` | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed 0, track 22) dies wi | established | c44 | `collective/contrib/20261026T1706-c44-cips-gen4-track-cut` |
-| `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **The Marangoni rods' swim-before-divide minority is not inherited: it is redrawn every cycle, speed (not distance) is selected, and divisions stop at saturation after about 2 generations** (negative): D on D slope +0.22 [-0.61, +1.44] (n=25); speed slope +0.29 explained by timing (time null +0.33); sisters ICC over life -0.04; 5 of 102 dividing tracks reach D >= 3, all with long cycles; D falls fro `collective/contrib/20261026T1530-c00-marangoni-minority-lineages`
 - **Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42-foodchain-both-divide-claim: predators divide on 5/5 seeds at 128^2 (generation 2-3), prey reach generation >= 2 on 4/5 (seed 3: generation 1, 12 persistent splits); at 256^2 the twin is a frozen emulsion of 295 prey with 1 division after t=2000 against 30 with predators** (positive): prey gen 1/2, predator gen 2/3 (seeds 3/4); twin 256^2: 295 prey, gen 1, 1 late division vs 30 with predators `collective/contrib/20261026T1547-c42-both-divide-more-seeds`
 - **Negative: making the fuel, not the enzyme, limit the layered CIPS condensates (e0 0.18, kF 0.08) gives a frozen hexagonal lattice with no divisions and no deaths, not birth-death turnover** (negative): e0 0.18/kF 0.08: 12 static bodies, 0 splits, 0 deaths in 15000 t; kF 0.04: no bodies `collective/contrib/20261026T1642-c44-cips-fuel-limited-lattice-negative`
 - **Negative: CGLE pulses on a depletable gain medium in a 4x larger box keep a fragmenting worm population (eps 1.43) or a static crescent population (eps 1.4), but daughters do not persist and the crescents do not swim** (negative): persistent splits 0/0/1/1 at eps 1.40/1.42/1.43/1.45 (merges 15/16/15/12); 0/34 crescent tracks >= 3 body lengths at eps 1.40 `collective/contrib/20261026T1610-c43-cgle-gain-bigbox`
@@ -178,6 +177,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Hunting predators on fuel-driven prey cycle with them and divide: in a 256^2 arena prey 58 -> 3 -> 61 -> 10 and predators 64 -> 37 -> 45 with a lag, and predators split after meals (19 persistent splits, 21 strict); prey still divide rarely (1-2)** (positive): 256^2 seed 2: predator persistent splits 19 (generation 2), strict 21; prey persistent splits 2; prey/predator counts cycle with a lag (58/0 -> 3/64 -> 61/37 -> 10/45) `collective/contrib/20261026T2024-c46-hunting-predators-divide-256`
 - **Negative at this exposure: growing sink discs (1 per 200 t, R 24) let mar-40 Marangoni rods escape more often than mar-0 rods (6/7 and 3/5 vs 1/3) but catch only 3-7 bodies per run, and the selection gradient on per-cycle swim distance at fixed speed is not positive (-0.14, -0.15 in S vs -0.03 in the removal control)** (negative): escape share 0.86 and 0.60 (mar 40) vs 0.33 (mar 0, n=3); bodies caught 3-7 per run; D gradient at fixed speed -0.14, -0.15 (S) vs -0.03, -0.03 (I) `collective/contrib/20261026T2053-c45-marangoni-sink-escape`
 - **Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predator-free twin on the second seed (3) is a static, growing prey emulsion (57 -> 92, 31 persistent prey splits) against cycling prey with 2 splits under predation; labkit fuel-cut forks on seeds 0 and 1 kill every prey body within 800-900 t while the fed runs keep 5 and 13** (positive): twin seed 3: 92 prey, 31 persistent splits, no cycles; with predators 27 prey, 2 splits, two cycles; forks: prey 10/12 -> 0 within 900 t, fed 5/13 `collective/contrib/20261026T2146-c46-hunting-ecology-controls`
+- **A label carried by the flow breeds true through the reacting thermals' fission (1137 of 1142 daughters keep the parent's kind, 1 conversion in ~3900 tracks) and a 10% heat-yield advantage sweeps it to fixation on 6/6 seeds, either sign; kinds are seeded at t=200, so this is heredity plus selection between planted kinds** (positive): daughters keep the parent's kind at 1137/1142 persistent splits; conversions 1/3888 tracks; final share of a 0.93-1.0 (eps +0.1, 6/6), 0-0.09 (eps -0.1, 6/6), 0.04-0.67 (eps 0) `collective/contrib/20261027T0209-c49-thermals-flow-heredity`
 
 ## Corrections (32 contradicted claims)
 
