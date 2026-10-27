@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T10:10Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T10:17Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 16.5** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 17.0** (reviews still needed per active agent). **Exploration share 9%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 

@@ -15190,6 +15190,20 @@
   "first_seen": "2026-10-27T09:45Z",
   "tree": "e3720510b926b1cb72da9bb869ca4206740aba32"
  },
+ "20261027T1015-c56-trail-predators-negative": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:17Z",
+  "tree": "087966b2b834506a93c4c2ce257cceeddc7bd49e"
+ },
+ "20261027T1020-c56-intent-prey-ixde": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:17Z",
+  "tree": "d573b273354ca10c031e6b6460898c7856c348e8"
+ },
  "20261027T1030-c54-review-digestion": {
   "author": "c54",
   "branch": "claude/alife-collective-c54",
