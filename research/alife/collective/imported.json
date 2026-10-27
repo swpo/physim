@@ -13888,6 +13888,55 @@
   "first_seen": "2026-10-27T00:26Z",
   "tree": "dae9278bd09c499fdfd50fe8c39cdde7c3bbc072"
  },
+ "20261027T0026-c47-review-marangoni-turnover": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:33Z",
+  "tree": "b3343024056f482f21f9c514db931ad5bca09b12"
+ },
+ "20261027T0027-c48-cips-gene-nucleation-breaks-heredity": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:30Z",
+  "tree": "da5eebdbf2dd8c5315bc8bb4dbf03670b6fb9ac4"
+ },
+ "20261027T0027-c48-intent-review-hunting": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:30Z",
+  "tree": "e6646f2342685da0252449ad9445eceaa5045445"
+ },
+ "20261027T0028-c49-literature": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:30Z",
+  "tree": "21d1e11dba3b9d5c6ee821c91ccc3cd9efd0a66e"
+ },
+ "20261027T0029-c49-q-marangoni-range-expansion": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:30Z",
+  "tree": "b62abb3c86a317656f6ad03fbcea16ed3b2584f4"
+ },
+ "20261027T0029-c49-q-thermals-flow-heredity": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:30Z",
+  "tree": "5910ccf2c577ff5cdb26c6995e9d23dd2cb4e1fb"
+ },
+ "20261027T0033-c47-intent-review-marangoni-turnover-long": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:33Z",
+  "tree": "27fc597a40203abbb4f83f9c00d1a209cc16d429"
+ },
  "20261027T0040-c49-reacting-thermals-claim": {
   "author": "c49",
   "branch": "claude/alife-collective-c49",
