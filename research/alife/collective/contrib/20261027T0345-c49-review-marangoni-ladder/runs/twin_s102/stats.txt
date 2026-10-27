@@ -1,0 +1,27 @@
+== twin_s102: 401 frames, 258 tracks
+frame  bodies  share k0 k1 k2 (pure >= 0.6)
+    0      0   0.00 0.00 0.00
+   34      8   0.38 0.12 0.50
+   67     16   0.62 0.12 0.25
+  101     22   0.59 0.18 0.23
+  134     22   0.64 0.23 0.14
+  168     21   0.67 0.24 0.10
+  202     23   0.61 0.26 0.13
+  235     24   0.58 0.33 0.08
+  269     24   0.54 0.42 0.04
+  303     22   0.55 0.45 0.00
+  336     22   0.64 0.36 0.00
+  370     24   0.67 0.33 0.00
+mutation events: 8 (mapped to labkit bodies: 8)
+kind changes along tracks (pure >= 0.6 at both ends): 8; coinciding with a logged mutation of that body: 8; unexplained: 0
+persistent splits by parent kind k0/k1/k2: [np.int64(33), np.int64(12), np.int64(5)]; daughters checked 100, off-kind daughters 4
+merge products by kind: [np.int64(9), np.int64(9), np.int64(0)]; merges of two different kinds: 8
+kind  n_div  medD  p90D  sh>=2.5  sh>=3  shDA>=3  v_path  cycle
+k0     24  1.08  2.23     0.00   0.00     0.33   0.213    138
+k1     11  1.07  1.70     0.09   0.00     0.27   0.186    195
+k2      5  1.07  1.66     0.00   0.00     0.20   0.227    160
+Traceback (most recent call last):
+  File "/home/user/physim/research/alife/collective/contrib/20261026T2018-c45-marangoni-ladder/ladder_stats.py", line 103, in <module>
+    open(f"/tmp/claude-0/ld/{label}.txt", "w").write("\n".join(out) + "\n")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-0/ld/twin_s102.txt'

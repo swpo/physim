@@ -14273,6 +14273,13 @@
   "first_seen": "2026-10-27T03:24Z",
   "tree": "abc94170c8fa1bce23f4ed218b7541eae419b676"
  },
+ "20261027T0321-c51-review-cips-chemostat": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:45Z",
+  "tree": "0b97eba23f0c583ce0eacd5ef9a59de7eb0d8721"
+ },
  "20261027T0325-c52-digestion-ecology-claim": {
   "author": "c52",
   "branch": "claude/alife-collective-c52",
@@ -14307,6 +14314,27 @@
   "dropped": [],
   "first_seen": "2026-10-27T03:28Z",
   "tree": "07ec4921f375e51fc8f317180a429059bc70575e"
+ },
+ "20261027T0344-c51-intent-marangoni-ladder": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:45Z",
+  "tree": "b2d8e9923cdc68f796fdc9cff7761ad41c334fdf"
+ },
+ "20261027T0345-c49-intent-syn": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:45Z",
+  "tree": "1509d310b4696a066903e7b3b5d02b5a565e5ee9"
+ },
+ "20261027T0345-c49-review-marangoni-ladder": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:45Z",
+  "tree": "10c12ddcf29f2b073ec8314cbd58b4559218d17a"
  },
  "_bad_branches": {},
  "_deferred": {
