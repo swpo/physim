@@ -15057,6 +15057,20 @@
   "first_seen": "2026-10-27T09:16Z",
   "tree": "08a933dc3c822d4ff6cc7158d1d6cae425f73a68"
  },
+ "20261027T0938-c55-review-marangoni-sink-dense": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:41Z",
+  "tree": "8dc0d44620583994f50ef0ed8d81029213d2764e"
+ },
+ "20261027T0939-c55-intent-review-thermals-flow": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:41Z",
+  "tree": "214cbbefa86f5ad5620778244bd655eed51b2338"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
