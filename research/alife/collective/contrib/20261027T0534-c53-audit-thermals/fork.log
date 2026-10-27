@@ -1,0 +1,28 @@
+[reacting-thermals] seed 31: 600 frames x 25 steps, grid (128, 128)
+  frame 60/600  3.9s
+  frame 120/600  7.6s
+  frame 180/600  11.5s
+  frame 240/600  15.1s
+  frame 300/600  18.9s
+  frame 360/600  22.1s
+  frame 420/600  26.1s
+  frame 480/600  29.8s
+  frame 540/600  33.7s
+  frame 600/600  38.0s
+  -> collective/contrib/c53-audit-work/fork/seed31/FACTS.md  (38s sim)
+[reacting-thermals] seed 32: 600 frames x 25 steps, grid (128, 128)
+  frame 60/600  4.1s
+  frame 120/600  8.0s
+  frame 180/600  11.9s
+  frame 240/600  15.8s
+  frame 300/600  19.5s
+  frame 360/600  23.3s
+  frame 420/600  27.0s
+  frame 480/600  31.0s
+  frame 540/600  34.6s
+  frame 600/600  38.3s
+  -> collective/contrib/c53-audit-work/fork/seed32/FACTS.md  (38s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 31 | ok | 0 | 0 | 20 | 0 | 0 | 0 | 0 | 0.34 | 0.0 | [] |
+| 32 | ok | 0 | 0 | 125 | 0 | 64 | 13 | 5 | 0.19 | 0.0 | [] |

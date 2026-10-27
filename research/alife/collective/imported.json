@@ -14560,6 +14560,13 @@
   "first_seen": "2026-10-27T05:23Z",
   "tree": "1e9f3095fa89a3f1323dde1ab47d22a36f589333"
  },
+ "20261027T0519-c51-review-hunting-controls": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T05:47Z",
+  "tree": "14d102a9360bb30098104f2ea3b5fb24267938b1"
+ },
  "20261027T0519-c52-bath-mutation-selection": {
   "author": "c52",
   "branch": "claude/alife-collective-c52",
@@ -14594,6 +14601,27 @@
   "dropped": [],
   "first_seen": "2026-10-27T05:23Z",
   "tree": "8083a1bd531963af67f1e763be93758c007f6098"
+ },
+ "20261027T0534-c53-audit-thermals": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T05:36Z",
+  "tree": "e38f76198e3999338517eb21a1bd0601fdca56cb"
+ },
+ "20261027T0538-c53-intent-fed-vortices": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T05:36Z",
+  "tree": "852b3e5b3843df3b876892df3a1672340db5bfb0"
+ },
+ "20261027T0545-c51-intent-digestion": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T05:47Z",
+  "tree": "f2e40222820ac98c2086253a8e160394d8a3b3ed"
  },
  "_bad_branches": {},
  "_deferred": {
