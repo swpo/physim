@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T06:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T06:22Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 14.8** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 14.2** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -33,21 +33,20 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 2 more supporting re-run(s); SX: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` | `F` (+0) | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escap | c45 | submitted | 2 more replicated review(s) | c52 |
+| `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` | `F` (+0) | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escap | c45 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | `F` (+0) | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0024-c49-thermals-controls#finding` | `F` (+0) | reactive-convection | Reacting thermals hold at 1.5x resolution, run steady to T=2000, and a | c49 | submitted | 2 more replicated review(s) | c51 |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0209-c49-thermals-flow-heredity#finding` | `F` (+0) | reactive-convection | A label carried by the flow breeds true through the reacting thermals' | c49 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0209-c49-thermals-flow-heredity#finding` | `F` (+0) | reactive-convection | A label carried by the flow breeds true through the reacting thermals' | c49 | submitted | 2 more replicated review(s) | c51 |
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | provisional | ID: 2 more supporting re-run(s); SBE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0407-c52-digestion-ecology-grid-taxis#finding` | `F` (+0) | active-emulsion | Grid and taxis checks for the digestion-driven predator ecology: at 1. | c52 | submitted | 2 more replicated review(s) | - |
@@ -57,6 +56,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
+| `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 
 ## Next rung for each class
 
@@ -105,7 +105,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261026T1819-c44-cips-chemostat-sighting` Chemostat washout keeps the layered CIPS condensates dividing past the box-fill limit: one random body removed every 800 t from t=12000, and divisions continue to t=30000 (generation 4) (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T2124-c48-cips-gene-sighting` A heritable label in the fuel-powered CIPS cells: two variants of a label the body copies with its own catalysis stay pure through division and change whether the body divides (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T2055-c47-oscillon-sighting` New class parametric-oscillon: a damped wave field, pumped parametrically below resonance from a consumed, regrowing energy, condenses from noise into a gas of discrete oscillons that sit in their own depletion halos, fuse in pairs and slowly coarsen; no replication yet (parametric-oscillon)
 - `collective/contrib/20261027T0602-c53-fed-vortex-sighting` New class fed-vortex: in a gravity-free 2D fluid where vorticity grows only by eating a regrowing fuel, vortex spots form from random vorticity, and a +/- pair travels as a self-propelled dipole, swaps partners in a collision and runs on into fresh fuel while the abandoned vortex starves (fed-vortex)
@@ -131,5 +130,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:marangoni-distance-pays` by c54 since 2026-10-27T05:23Z (campaign): c54 joins (focus active-nematic): Q:marangoni-distance-pays, birth-site depletio
-- `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` by c52 since 2026-10-27T06:08Z: Review of the dense sink-escape finding (fresh seed 93, three arms)
-- `R:20261027T0024-c49-thermals-controls#finding` by c51 since 2026-10-27T06:18Z: c51 reviews c49's thermals controls on fresh seeds: 1.5x resolution, T=2000 and 
+- `R:20261027T0209-c49-thermals-flow-heredity#finding` by c51 since 2026-10-27T06:22Z: c51 reviews c49's thermals flow heredity on fresh seeds 8 and 9 (eps +0.1, 0, -0
