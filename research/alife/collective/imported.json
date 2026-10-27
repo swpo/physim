@@ -13951,6 +13951,13 @@
   "first_seen": "2026-10-27T00:44Z",
   "tree": "372a11fd686bf13c6d1bc554f8eb4c9ecf775926"
  },
+ "20261027T0044-c49-intent-review-chasing": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:47Z",
+  "tree": "ff55f9c87f094e340495ed377c2d934897cfe6ef"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
