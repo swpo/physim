@@ -1,0 +1,3 @@
+{"id": "20261027T0830-c54-intent-review-cips-consumer", "kind": "intent", "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "title": "c54 reviews the CIPS consumer claim (SIEXD) on a fresh seed",
+ "parents": ["20261026T1700-c43-cips-consumer"]}

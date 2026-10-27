@@ -1,0 +1,43 @@
+== cEtwin_s610: 401 frames, 157 tracks
+frame  bodies  k0 k1 k2 (pure>=0.6)  trait_mean(ladder value)  area-weighted
+    0      0     0   0   0      nan      nan
+   20      6     0   1   5    56.67    58.52
+   40     13     0   3  10    55.38    55.80
+   61     17     0   4  13    55.29    55.52
+   81     18     0   4  14    55.56    55.85
+  101     20     0   4  16    56.00    56.57
+  121     20     0   3  16    56.84    56.43
+  141     19     0   3  15    56.67    56.62
+  161     19     0   3  15    56.67    56.75
+  182     18     0   3  14    56.47    57.22
+  202     18     0   3  15    56.67    57.15
+  222     14     0   2  12    57.14    56.85
+  242     18     0   3  15    56.67    56.54
+  262     17     0   3  14    56.47    55.91
+  282     16     0   4  12    55.00    55.44
+  303     19     0   4  14    55.56    55.55
+  323     23     0   5  18    55.65    55.00
+  343     25     0   6  19    55.20    55.21
+  363     19     0   3  16    56.84    56.14
+  383     11     0   3   8    54.55    55.15
+  400     10     0   2   8    56.00    55.71
+mutation events 0; from->to counts [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+kind changes along tracks: 0; at a logged mutation: 0; unexplained (conversions): 0
+persistent splits by parent kind k0/k1/k2: [0, 5, 28]; daughters checked 67, off-kind 1
+merge products by kind: [0, 4, 26]; merges of two different kinds: 7
+vanishings (no children, before run end) by last kind: [0, 4, 21]
+dividing tracks 18; median cycle 64.5 frames (322 t)
+kind  n_div  medD  sh_pass(rl)  sh_pass(sqrtA)  v_path  cycle
+k0  0
+k1     3  2.16  1/3  2/3  0.210 520
+k2    15  1.47  3/15  7/15  0.205 300
+cohort(birth frames)  n_div  trait_mean_of_dividers  pass_rl  pass_sqrtA  k0/k1/k2
+    0- 63     8   55.00  1/8  4/8  [0, 2, 6]
+   64-127     3   60.00  1/3  2/3  [0, 0, 3]
+  128-191     2   50.00  1/2  2/2  [0, 1, 1]
+  192-255     4   60.00  1/4  1/4  [0, 0, 4]
+  256-319     1   60.00  0/1  0/1  [0, 0, 1]
+descendants alive at birth + 2 median cycles, passers (rl) vs non-passers, by kind:
+  k0: passers n=0 mean nan; non-passers n=0 mean nan
+  k1: passers n=1 mean 2.00; non-passers n=2 mean 1.50
+  k2: passers n=3 mean 2.33; non-passers n=11 mean 2.64
