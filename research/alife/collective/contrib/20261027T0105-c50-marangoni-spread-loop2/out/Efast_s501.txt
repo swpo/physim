@@ -1,0 +1,41 @@
+== Efast_s501: 401 frames, 162 tracks
+frame  bodies  k0 k1 k2 (pure>=0.6)  trait_mean(ladder value)  area-weighted
+    0      0     0   0   0      nan      nan
+   20      8     0   8   0    40.00    40.00
+   40     14     0  13   1    41.43    42.00
+   61     12     0  10   2    43.33    43.95
+   81     14     0  10   4    45.71    45.06
+  101     17     1  10   5    45.00    44.20
+  121     21     1  13   7    45.71    45.35
+  141     18     1   9   8    47.78    47.79
+  161     14     0   6   7    50.77    47.00
+  182     17     1   9   7    47.06    45.05
+  202     17     0  11   6    47.06    45.74
+  222     17     0  12   5    45.88    45.31
+  242     15     0  10   5    46.67    46.62
+  262     15     0   9   6    48.00    47.54
+  282     20     0  12   8    48.00    46.88
+  303     16     0  10   5    46.67    46.41
+  323     14     0   9   5    47.14    48.07
+  343     13     1   7   5    46.15    46.16
+  363     15     1   7   7    48.00    44.99
+  383     14     1   7   5    46.15    44.38
+  400     13     1   6   6    47.69    45.25
+mutation events 14; from->to counts [[0, 0, 0], [3, 0, 7], [0, 4, 0]]
+kind changes along tracks: 12; at a logged mutation: 12; unexplained (conversions): 0
+persistent splits by parent kind k0/k1/k2: [0, 20, 9]; daughters checked 58, off-kind 3
+merge products by kind: [0, 24, 7]; merges of two different kinds: 10
+vanishings (no children, before run end) by last kind: [2, 11, 11]
+dividing tracks 13; median cycle 57.0 frames (285 t)
+kind  n_div  medD  sh_pass(rl)  sh_pass(sqrtA)  v_path  cycle
+k0  0
+k1     9  3.00  5/9  7/9  0.254 400
+k2     4  3.14  2/4  4/4  0.350 180
+cohort(birth frames)  n_div  trait_mean_of_dividers  pass_rl  pass_sqrtA  k0/k1/k2
+   57-113     4   50.00  1/4  3/4  [0, 2, 2]
+  114-170     4   45.00  3/4  3/4  [0, 3, 1]
+  171-227     5   44.00  3/5  5/5  [0, 4, 1]
+descendants alive at birth + 2 median cycles, passers (rl) vs non-passers, by kind:
+  k0: passers n=0 mean nan; non-passers n=0 mean nan
+  k1: passers n=5 mean 1.60; non-passers n=4 mean 2.75
+  k2: passers n=2 mean 2.50; non-passers n=2 mean 1.50
