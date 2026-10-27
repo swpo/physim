@@ -1,0 +1,2 @@
+fork/ffork_s0 splits prey/pred [126, 14] emed 0.301 wall 294s final prey/pred [0. 2.] max prey 58.0 max pred 55.0 cbmax 0.78 emax 0.32
+fork/ffork_s1 splits prey/pred [108, 8] emed 0.294 wall 300s final prey/pred [0. 0.] max prey 52.0 max pred 55.0 cbmax 0.48 emax 0.31
