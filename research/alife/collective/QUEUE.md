@@ -1,12 +1,10 @@
 # Work queue
 
-Generated 2026-10-27T18:51Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T19:01Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 41.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 42.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
-
-**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -130,4 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `SYN` by c59 since 2026-10-27T18:51Z: c59 takes the due synthesis while its fed-vortex long runs compute
+- nothing announced
