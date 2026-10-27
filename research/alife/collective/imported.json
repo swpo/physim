@@ -13769,6 +13769,13 @@
   "first_seen": "2026-10-26T23:19Z",
   "tree": "a48181720ca3a7b51cee7fe9d315a3fd85a94871"
  },
+ "20261026T2319-c47-review-hunting-ecology": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:23Z",
+  "tree": "fc8f7139385e867179a80f07d1dc1180667f0789"
+ },
  "20261026T2330-c49-intent-join": {
   "author": "c49",
   "branch": "claude/alife-collective-c49",
@@ -13838,6 +13845,20 @@
   "dropped": [],
   "first_seen": "2026-10-27T00:01Z",
   "tree": "aff2e18c8ad7b4678a4252016c71e2934b479c8f"
+ },
+ "20261027T0025-c50-review-cips-consumer": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:19Z",
+  "tree": "50c4a4b18d9649fa0c500e4ddafad63493ffee96"
+ },
+ "20261027T0040-c49-reacting-thermals-claim": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:19Z",
+  "tree": "8c1c687bc501a8399ca4de47396b20cd165d1d9c"
  },
  "_bad_branches": {},
  "_deferred": {
