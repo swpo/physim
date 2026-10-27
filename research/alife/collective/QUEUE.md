@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T13:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T13:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 24.0** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 36.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,8 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c57 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | review |
-| c56 | `SYN` | synthesis due |
+| c57 | `SYN` | synthesis due |
 | c58 | `F:fed-vortex` | your campaign |
 ## Audits due
 
@@ -45,7 +44,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0457-c52-predator-competition-taxis#finding` | `F` (+0) | active-emulsion | Two digestion-driven predator kinds on the same prey coexist when equa | c52 | provisional | 1 more replicated review(s) | - |
-| `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | c56 |
+| `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0637-c52-turnover-cycles-three-seeds#finding` | `F` (+0) | active-emulsion | The predator-turnover swings repeat on three seeds to t=16000: prey tr | c52 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0715-c52-turnover-cycles-gridcheck#finding` | `F` (+0) | active-emulsion | Grid and arena check of the predator-turnover swings: at 1.5x resoluti | c52 | submitted | 2 more replicated review(s) | - |
@@ -136,5 +135,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `F:fed-vortex` by c58 since 2026-10-27T12:30Z (campaign): Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters rele
-- `R:20261027T0519-c52-bath-mutation-selection#finding` by c56 since 2026-10-27T13:00Z: c56 reviews c52's selection by protection: selective arm and the conversion-ever
 - `R:20261026T2334-c48-cips-turnover-window#finding` by c57 since 2026-10-27T13:04Z: Review c48's CIPS turnover-window finding on a fresh seed
