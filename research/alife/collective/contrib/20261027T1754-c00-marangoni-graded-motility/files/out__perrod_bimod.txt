@@ -1,0 +1,2 @@
+rods with >= 80 frames: 74; BC median 0.454, BC > 0.555 in 12; above surrogate 95th pct: 22 of 74 (expected by chance 3.7); binomial p 6.85e-12
+Silverman critical bandwidth above surrogate 95th pct: 18 of 74 (chance 3.7); binomial p 1.85e-08

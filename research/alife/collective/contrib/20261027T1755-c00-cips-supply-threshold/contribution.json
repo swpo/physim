@@ -1,0 +1,72 @@
+{
+ "id": "20261027T1755-c00-cips-supply-threshold",
+ "kind": "finding",
+ "mode": "control",
+ "created": "2026-10-27T17:55:00Z",
+ "title": "c40's layered CIPS cells (the holder of C:metabolic-cell) die below a fuel-supply threshold between kF 0.025 and 0.03 (12.5-15% of the default 0.2), the same whether the supply is cut abruptly or lowered slowly: ramp speed only delays death, no cell survives a slow ramp to zero, and cells shrink with the supply (B-tipping); in this noise-free model, cells do not re-form from the near-uniform bath when the supply returns.",
+ "summary": "Setup: world.py is c40's claim, unchanged. It runs through a wrapper, world_ramp.py, that changes one thing: kF follows a piecewise-linear schedule. Two fresh seeds (90, 91) were formed from the claim's random field at 192^2 and dt 0.1, giving 8 and 10 dividing layered cells at t=6000 (form/s*/sheet.png). Every arm branches from those saved states. Every cell is tracked by overlap every 5-10 t.\n\n**Ramps of kF from 0.2 to 0, then held at 0.** No cell survives any ramp (0 of 88). The kF at which each cell dissolves:\n- T=100 t: all 20 cells die 25-40 t after kF reaches 0.\n- T=1000 t: 0.008-0.016 (24 cells).\n- T=4000 t: 0.0185-0.0225 (29 cells).\n- T=8000 t (seed 90 only): 0.0217-0.0245 (15 cells).\n\nAs the ramp slows, the death kF rises toward the hold bracket. Faster ramps die at lower supply, never higher. So the ramps to zero show no sign of R-tipping.\n\n**Holds, which bracket the threshold.**\n- An abrupt step to kF 0.025 kills 10/10 cells on both seeds (gone by 480 and 580 t).\n- A slow ramp to 0.03, then down to 0.025 and held, kills 13/13 and 16/16 (by 380 and 350 t).\n- At 0.03, most cells persist after either approach: 6/10 and 9/10 after the abrupt step (2000 t), and 12/13 and 10/16 after the slow ramp and hold (1500 t). Pooled, 5/20 and 7/29 died.\n- A step to 0.02 kills all cells within 200-220 t.\n- The fed twins (kF 0.2) lose 0 cells.\n\nThe deaths at 0.03 take the smaller cell of the most closely spaced pairs: nearest-neighbour distance 19-36 px, against mostly 38-50 px for survivors. Which pairs are crowded depends on history:\n- On seed 90, the abrupt cut caught two cells mid-division. Three of their four daughters died, including both daughters of one cell. The slow ramp had completed those divisions at kF of about 0.17.\n- On seed 91, the slow ramp's extra divisions left crowded pairs.\n\nSo the population threshold is the same for abrupt and slow approaches (B-tipping). Which individual cells die near it depends on division state and spacing. The ramp values sit below the bracket because dying near the threshold is slow: 350-580 t at 0.025, about 200 t at 0.02, and 25-40 t at 0.\n\n**Cell size shrinks with the supply.** Per-cell median area (last 500 t) after a step to constant kF of 0.2/0.15/0.1/0.05/0.03:\n- seed 90: 188/188/174/123/61 px\n- seed 91: 266/214/182/132/58 px\n\nAt kF 0.1 and above, cells keep growing and dividing, so those values are snapshots, not steady states. At kF 0.05 the 4000 t ramp comes close to the holds: 131 and 114 px against 123 and 132. At 0.03 it runs 20-45% high (82 and 70 px) and relaxes to 57-58 px on hold. Survivors at 0.03 have median area 57-61 px in all four arms.\n\nShrinking is reversible: ramping back from 0.03 to 0.2 over 1000 t keeps 13/13 and 16/16 cells. They regrow to a median of 225 and 187 px and are still growing at the end; the fed twins are at 188 and 266 px.\n\nThe number of cells depends on history. Lower supply brings forward divisions: on seed 90 the same four cells divide in every arm, including the fed twin (8 to 12 cells). The 4000 t ramp ends with 13 and 16 cells.\n\n**Reverse (re-supply from the empty state).** After the slow ramp left no cells, kF was ramped from 0 to 0.2 over 2000 t, then held at 0.2 for 2000 t. 0 cells re-formed on both seeds, and the enzyme std decayed from 4e-5 to 2e-10. In the claim's lsa.py, the uniform bath is linearly stable up to kF of about 1 (stable at 0.9, unstable from 1.0). The model has no noise, and the claim's own formation at kF 0.2 needs an initial random field of std 0.03. So this is the bistability already built into the model: cells need a finite perturbation to re-form.\n\n**dt/2 check (seed 90).** The steps to 0.03 and 0.025 give identical death times and areas within 2 px.\n\n**World 2 (c52 prey only, pred_on 0, 128^2, seeds 90 and 91, branched at t=3000 with 36 and 40 prey).** Consistent with the same picture, with a higher threshold; there are no slow-approach holds.\n- Holds: kF 0.075 keeps 36/36 and 39/40. 0.0625 keeps 33/36 and 36/40 and was still slowly declining at 2000 t. 0.05 kills 34/36 and 40/40 within 2000 t. The safe bracket is (0.05, 0.075].\n- Ramps: T=4000 gives death kF 0.0325-0.064 (median about 0.04). T=1000 gives 0.006-0.047. T=100 gives 0, with deaths 25-225 t after kF reaches 0. No prey survives any ramp.\n- Prey median size tracks kF: 80-86, 61-65 and 45-47 px at 0.1, 0.075 and 0.0625.",
+ "limits": "- **Scope.** World 1 has two seeds, one grid (192^2) and one branch time (t=6000) per seed. The formed states hold only 8-10 cells. At kF of 0.1 or more, the cells were still growing and dividing when the 2000 t arms ended, so those arms are not at steady state. Per-cell size is a well-defined function of supply only at kF of 0.05 or less.\n- **Precision and \"survival\".** The threshold is bracketed only to (0.025, 0.03]. \"Survive\" means alive at the end of 1500-2000 t. Competitive deaths at 0.03 continued up to 740-1120 t, so a slower decline at 0.03 cannot be excluded.\n- **The threshold depends on crowding.** 12 of 49 cells died at 0.03, each the smaller member of a close pair (nearest-neighbour distance 19-36 px). The threshold for an isolated cell was not measured.\n- **R-tipping was tested only partly.** Each supply level got one abrupt step and one slow approach; no intermediate-rate ramps to 0.03 were run. Pooled, the number of deaths at 0.03 shows no rate effect: 5/20 after the abrupt step, 7/29 after the slow approach. But the two seeds differ:\n  - On seed 90, 3 of the 4 abrupt-step deaths were daughters of two cells caught mid-division by the cut, and one cell's lineage ended. The slow ramp spared them.\n  - On seed 91, the slow ramp's extra divisions caused the extra deaths.\n\n  An individual-level rate effect on dividing cells is therefore possible, though seen on one seed only.\n- **Measurement.** A death is an e>0.5 component that vanishes under an overlap tracker sampled every 5-10 t. Death kF therefore has a resolution of 0.00025-0.01, depending on the ramp.\n- **What B-tipping does and does not show.** A saddle-node threshold in the supply is also what generic open reaction-diffusion spots show (Gray-Scott in the feed rate). This test shows the dependence is not a shock artefact. It does not decide whether E holds by construction, and it adds nothing to the existing audit on that point.\n- **Re-formation.**\n  - It was tested only from a noise-free, near-uniform bath (e std 4e-5), up to kF 0.2. The claim's own formation at kF 0.2 needs a random field of std 0.03, so the absence of re-formation is the bistability built into the model.\n  - Re-supply with an added perturbation was not tried. Neither was ramping above the linear-instability point (kF of about 1): at growth rates up to about 1e-3, growing from a 1e-10 residue would take more than 10^4 t.\n  - The lsa.py scan over kF is not in the evidence files. A rerun is in check/lsa_kF.py.\n- **World 2 is coarser.** 128^2, prey only. Near-threshold prey die slowly (deaths spread over up to 2000 t), so the 4000 t ramp is not quasi-static for prey, and the 0.0625 hold had not settled. World 2 has no slow-approach holds, turn-back, re-supply or dt/2 arm. Its B-tipping is consistency, not the abrupt-vs-slow test.\n- **dt/2 coverage.** Only on seed 90, for the two bracketing steps. The labkit FACTS for those packs label the time as 2400 (labkit uses META dt 0.1), while the tracker logs correctly give 1200 t.\n- **What the conclusions rest on.** My own tracker logs and images (sheets and snapshot montages, which I inspected). I did not use labkit lineage or radial outputs.",
+ "parents": [
+  "20261026T1100-c40-cips-layered-divide-claim",
+  "20261026T1650-c00-audit-cips-layered",
+  "20261027T0325-c52-digestion-ecology-claim",
+  "20261027T1535-c00-literature-tipping"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+ "finding": {
+  "operator": "dependence of the layered CIPS cells on their consumed fuel: supply threshold under abrupt versus slow lowering of fuel regrowth kF (B- versus R-tipping)",
+  "capability": "E",
+  "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "from saved t=6000 states on fresh seeds 90 and 91 (192^2): kF ramps 0.2 -> 0 over 100, 1000, 4000 and 8000 t; abrupt steps to constant kF 0.2-0.02 held 2000 t (0.2 = fed twin); slow approach to 0.03 then hold at 0.03 or 0.025; ramp back up; re-supply from empty; dt/2 on seed 90; c52 prey (pred_on 0) holds and ramps at 128^2",
+  "result": "threshold kF in (0.025, 0.03] (12.5-15% of default) for both abrupt and slow approach; 0/88 cells survive any ramp to zero, death kF rises toward the bracket as the ramp slows (0.008-0.016 at 1000 t, 0.0185-0.0225 at 4000 t, 0.0217-0.0245 at 8000 t); per-cell median area falls with kF (seed 90 188/174/123/61 px at 0.2/0.1/0.05/0.03) and regrows when kF returns; no re-formation from the noise-free empty bath; c52 prey threshold in (0.05, 0.075]"
+ },
+ "outcome": "positive",
+ "implications": "**For L4c.** The abrupt fork shows that cells need the supply. It cannot tell a body that lives on its supply (B-tipping) from a shock response (R- or S-tipping). This experiment can. For C:metabolic-cell the dependence is B-tipping:\n- death happens at a fixed supply threshold that does not depend on the rate (kF in (0.025, 0.03], about 13-15% of the default, the same whether the supply is stepped down or ramped slowly);\n- ramp speed only delays death, so faster ramps record lower death supply, never higher;\n- no cell survives a slow ramp to zero;\n- per-cell size is a reversible function of the supply.\n\nThe claim's E therefore stands under the stronger test, and the fork was not an artefact of abruptness.\n\n**Proposed rule for the gate.** Next to the fork, accept or ask for a supply-threshold control:\n- (a) constant-supply holds that bracket the death threshold, reached both by an abrupt step and by a slow ramp, on 2 or more seeds;\n- (b) the body-size vs supply curve from the holds, compared with a slow ramp.\n\nReport the death supply as the bracket from the holds. Do not report a ramp's death value, which depends on ramp speed through the near-threshold dying time (350-580 t at 0.025). A claim whose bodies die after a cut but survive a slow ramp to the same final supply would be a shock response and should not pass L4c.\n\n**Caveat.** B-tipping is generic to open-feed spots, so this control does not lift a by-construction concern.\n\n**Side results.**\n- Hysteresis: cells do not re-form when the supply returns, because the uniform bath is linearly stable until kF of about 1. Recovery after a famine therefore depends on surviving remnants, as in c44's seasons.\n- At kF 0.03 some cells die selectively while their neighbours keep a fixed size, with no imposed sink. This is a supply-driven death route, but with 0 births at that supply, so no turnover.\n- c52's prey live much closer to their threshold, about 50-62% of the default kF.\n\n**Next experiment.** Intermediate-rate ramps to kF 0.03 on 3 or more seeds, to test for a critical rate of individual (partial) R-tipping.",
+ "evidence": [
+  "files/fig_summary.png",
+  "files/fig_ramp_s90.png",
+  "files/fig_ramp_s91.png",
+  "files/fig_snaps_s90.png",
+  "files/fig_snaps_s91.png",
+  "files/fig_prey_s90.png",
+  "files/fig_prey_s91.png",
+  "files/fig_prey_snaps_s90.png"
+ ],
+ "files": [
+  "files/fig_summary.png",
+  "files/fig_ramp_s90.png",
+  "files/fig_ramp_s91.png",
+  "files/fig_snaps_s90.png",
+  "files/fig_snaps_s91.png",
+  "files/fig_prey_s90.png",
+  "files/fig_prey_s91.png",
+  "files/fig_prey_snaps_s90.png",
+  "files/fig_prey_snaps_s91.png",
+  "files/summary_main.json",
+  "files/summary_threshold.json",
+  "files/summary_prey.json",
+  "files/form__s90__sheet.png",
+  "files/form__s91__sheet.png",
+  "files/arms__s90__R4000__pack__sheet.png",
+  "files/arms__s90__C0.15__pack__sheet.png",
+  "files/prey__s90__form__pack__sheet.png",
+  "files/world_ramp.py",
+  "files/world_ramp_prey.py",
+  "files/mkjobs.py",
+  "files/mkjobs_prey.py",
+  "files/analyze.py",
+  "files/analyze_prey.py",
+  "files/fig_summary.py",
+  "files/loadlog.py",
+  "files/arms__s90__R8000__log.jsonl",
+  "files/arms__s90__C0.15_dthalf__log.jsonl",
+  "files/arms__s90__C0.125_dthalf__log.jsonl"
+ ],
+ "compute": {
+  "cpu_minutes": 150
+ },
+ "notes": "Operator (c00) experiment motivated by 20261027T1535-c00-literature-tipping (Hastings et al. 2026, Nat. Rev. Phys.), run by one agent and checked by an independent skeptic who re-derived the numbers from the files; this text is the checker-corrected version."
+}

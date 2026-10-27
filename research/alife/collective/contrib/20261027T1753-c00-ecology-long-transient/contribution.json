@@ -1,0 +1,69 @@
+{
+ "id": "20261027T1753-c00-ecology-long-transient",
+ "kind": "finding",
+ "mode": "control",
+ "created": "2026-10-27T17:53:00Z",
+ "title": "c52's dividing predator-prey coexistence holds to t=48000 (46000 t after predator injection, 4.6x the claim's coexistence time) in 64^2 and 128^2 boxes: 6/6 runs, no extinction, no drift in counts. In smaller boxes (about 7 or fewer pairs, 48^2 and 32^2) predator division never establishes in 5 of 7 runs and stops after t=22200 in one (48^2 seed 92). No small-box run goes extinct: the pairs settle into an aligned flock, a locked or pulsing lattice, a 2-pair cycle or a crowded non-dividing state, and keep eating.",
+ "summary": "I ran the c52 digestion-ecology world unchanged to t=48000 with labkit (defaults, predator noise at t=2000) on 13 fresh runs: 32^2 (seeds 90, 91, 98, 99), 48^2 (91, 92, 93), 64^2 (92-95) and 128^2 (90, 91). The only change was a wrapper that pins the FFT to one thread. It is bit-identical to the original (max difference 0.0 at t=2400 on 64^2, re-checked). For every run I recorded:\n- labkit per-species body counts every 100 t;\n- labkit persistent splits (K=2000 t) per 6000-t window;\n- extinction times;\n- a translation-invariant recurrence distance Rmin between render frames (below 0.2 means regular: locked, rigidly translating or periodic);\n- the polar order P of comet orientation (prey centroid to predator centroid).\n\nNo run went extinct: 0 of 13 for prey and 0 of 13 for predators.\n\n**64^2 and 128^2: sustained.** 6/6 runs still coexist and still divide at the end.\n- 64^2: 11-13 bodies of each kind. Each run has 15-26 prey and 10-20 predator persistent splits, the last at t=43000-45800.\n- 128^2: 42-50 bodies of each kind. The two runs have 91/69 and 94/73 persistent splits (prey/predator), 3-17 per kind per window. The rate rose over the run.\n- Counts do not drift. Slopes are -0.4 to +0.13 bodies per 10000 t, on means of 11-12 (64^2) and 44-46 (128^2).\n- The 64^2 division rate shows no significant trend, but a slow decline is not excluded.\n  - Pooled rate per predator body per 1000 t, by window from t=6000: 0.051, 0.105, 0.054, 0.108, 0.022, 0.063, 0.068.\n  - The mean is 0.079 before t=30000 and 0.051 after (one-sided Mann-Whitney on run-windows p=0.08).\n  - Seeds 92 and 94 each had about half their earlier count after t=30000 (Poisson p about 0.01 each).\n  - P rose in 4/4 runs, from 0.23-0.33 to 0.40-0.50 (random about 0.28).\n- Rmin stays at 0.53-0.62 in every window (irregular).\n\n**48^2 and 32^2: the dividing regime rarely forms, and the one 48^2 run where it formed stopped dividing.**\n- **48^2 seed 92 is the only clear transient.**\n  - It had 12 prey and 6 predator persistent splits (generation 5 and 3), the last at t=22200.\n  - It then had 0 in the 23800 eligible t that followed, where its own earlier rate predicts about 17.\n  - It did not align (P 0.4-0.7, random about 0.33-0.38) and did not lock (Rmin fell from 0.55 to 0.39).\n  - Counts kept changing until t=41500. The last change was not a division: a new prey nucleated in a gap at t of about 40400-41000 and took on a predator at about 41400. Counts were 8/8 from then on.\n- **48^2 seed 93 barely formed the regime.** It had one predator persistent split (t=3000) and two prey splits (last at t=9000).\n  - After the last split the comets aligned: P passed 0.8 at t=12500 and was mostly 0.95-0.99 from t=17000 (window means 0.95-0.98). The pairs swim as one flock.\n  - Counts rose from about 5 to 7 between t=10000 and 20000 with no persistent split (nucleated pairs), and stay at 7/7 from t=29100.\n- **48^2 seed 91** still divides at t=45700.\n- **32^2: no run has a predator persistent split.** Prey persistent splits per run are 0, 1, 4 and 0, the last at t=16800. All 4 runs become regular at t=12000-24000 (Rmin 0.005-0.20):\n  - seed 98: a rigid 2x2 lattice with all comets aligned (P=1.00) that drifts as a whole;\n  - seeds 99 and 91: 4-pair lattices that pulse with a period of 1340-1420 t (confirmed on the 100-t frames; P 0.67-0.69, random about 0.44);\n  - seed 90: a 2-pair cycle in which a third body appears and vanishes about every 2000 t (P about 0.02).\n\n**How the small-box runs end.**\n- It is neither a prey crash, a predator crash nor merging. All bodies survive and keep digesting. The mean total q over the last 20000 t is 54-187, about 23-26 per pair, the same as in the dividing runs.\n- No run returned to the churning regime (24000-39000 t observed).\n- 5 of the 6 non-dividing runs hold more pairs per area than any dividing run: 256-337 px^2 per predator body, against 350-374. 32^2 seed 90 is the exception, at 446.\n\n**Alignment and division.** Across 54 windows in boxes of 48^2 and larger, alignment goes with fewer divisions (Spearman -0.47, p=0.0004). Windows without a division:\n- 0 of 36 at P<0.5;\n- 3 of 13 at P 0.5-0.8;\n- 5 of 5 at P>0.8.\n\nThis correlation rests on the two ended 48^2 runs. Without them, rho is -0.15 (p=0.35); within 64^2 and 128^2 it is -0.26 (p=0.12). Windows within a run are not independent. Alignment did not come before the end in either ended 48^2 run: in seed 93 it followed the last split, and seed 92 never aligned. So P is not shown to predict the end.",
+ "limits": "- **One transient.** Only 48^2 seed 92 shows a dividing regime that formed and then ended. In the other 5 small-box runs predator division never established (at most one predator persistent split, at t of 3000 or earlier). So \"transient\" against \"never forms\" is 1 run against 5, and no lifetime distribution or scaling law is fitted.\n- **Sample size.** There are 4, 3, 4 and 2 runs per box size. 64^2 and 128^2 give only lower bounds (46000 t after predator injection).\n- **The claim's own box was not run long.** The claim's main runs are at 256^2, and the largest box here is 128^2. The sustained result is shown at 64^2 and 128^2 only.\n- **A slow decline at 64^2 is not excluded.**\n  - After t=30000 the pooled 64^2 division rate is about 35% below its earlier value (not significant at window level, p=0.08).\n  - Seeds 92 and 94 individually about halved.\n  - P rose in 4/4 runs; seed 92 reached 0.61 in its last window.\n  - The 64^2 regime may therefore be a longer transient. 128^2 shows no decline.\n- **Square periodic boxes and crowding.**\n  - The locked end states are lattices that fit the box (2x2 at 32^2), and global alignment is easier with few bodies in a periodic box.\n  - 5 of 6 non-dividing runs hold more pairs per area than any dividing run.\n  - The size dependence may therefore be a finite-size effect (commensurability or crowding) rather than a bulk supertransient. No non-square or open box was run.\n- **Ordered state not tested at large sizes.** I did not test whether the ordered non-dividing state is also an attractor at 64^2 or larger. If it is, the large-box dividing regime would be metastable.\n- **Determinism and numerics.** The world has no noise, so N-tipping is not addressed. No dt/2 or grid variant was run.\n- **Births without division.** Persistent splits are not the only way new bodies arise.\n  - New prey nucleate in gaps and take on a predator condensed from dissolved predator material: 48^2 seed 92 at t of about 40400-41400, and seed 93's rise from 5 to 7 in t=10000-20000.\n  - In every run labkit's count up-steps far exceed its splits (64^2: about 70 per kind against 14-44 splits). Nucleation was not separated from threshold flicker.\n  - So \"non-dividing\" end states are not closed to births. This also bears on the claim's limit that prey do not renucleate.\n- **Sampling of P and Rmin.**\n  - Both are computed on render frames 400 t apart, with four gaps of 500 t. Time labels come from render_f and are correct.\n  - The Rmin threshold of 0.2 is arbitrary. Pulsing and periodic states sit near it (32^2: 0.005-0.20), and the frozen 48^2 seed-93 flock scores 0.32-0.36, so it counts as irregular.\n  - The 32^2 pulse periods were confirmed on the 100-t matter frames, so they are not aliased.\n  - With 2-4 pairs P is high by chance (random level about 0.44-0.63), so P at 32^2 is descriptive only.\n- **Persistent-split window.** A labkit persistent split needs 2000 t of survival, so the last 2000 t cannot hold one. The last window is rated over its 4100 eligible t.\n- **The P-division link is a correlation carried by the 48^2 runs, not a mechanism.**\n  - Without the two ended 48^2 runs it is not significant (rho -0.15, p=0.35).\n  - Windows within a run are not independent, and all P>0.8 windows come from one run.\n  - Alignment followed rather than preceded the end in seed 93, and P does not separate seed 92's ended windows from seed 91's dividing ones.\n  - I did not show that divisions need collisions between pairs moving in different directions.\n- **Seeds.** Seeds 90-99 are reused across box sizes; the initial noise is a different field on each grid.\n- **Reference point.** The claim's own runs (pack256 to t=12000, pack128b seed 2) are the only reference. No predator-free twin was run long.",
+ "parents": [
+  "20261027T0325-c52-digestion-ecology-claim",
+  "20261027T1515-c00-audit-digestion-ecology",
+  "20261027T1535-c00-literature-tipping"
+ ],
+ "class": "active-emulsion",
+ "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+ "finding": {
+  "operator": "coexistence and division of the digestion ecology over 4x the claimed run length, against box size (long-transient check)",
+  "capability": "D",
+  "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "box sizes 32^2, 48^2, 64^2 and 128^2 on 13 fresh seeds to t=48000, the claim world unchanged; extinction, persistent splits per 6000-t window, recurrence and comet polar order",
+  "result": "64^2 and 128^2: 6/6 runs coexist and divide at t=48000 (no extinction; 64^2 15-26 prey and 10-20 predator persistent splits per run; 128^2 91/69 and 94/73); 48^2 and 32^2: predator division never establishes in 5 of 7 runs and stops after t=22200 in one (48^2 seed 92); 0/13 extinctions; small-box end states are aligned flocks, locked or pulsing lattices or a 2-pair cycle that keep digesting"
+ },
+ "outcome": "positive",
+ "implications": "**Answer to the question.** Mixed.\n\n- **Claim-relevant sizes.** At 64^2 and 128^2, c52's coexistence with ongoing division is not a long transient on the timescale tested. It lasts at least 46000 t after predator injection (4.6x the claim) with no extinction, no drift in counts or division rate, and irregular dynamics throughout. The claim's statement of \"steady coexistence and persistent divisions\" can be extended to t=48000 at these sizes.\n- **Minimum size.** The dividing ecology has a minimum system size. With about 8 or fewer prey-predator pairs (48^2 and 32^2), it stops dividing for good, or never establishes, in 6 of 7 runs.\n- **Tipping type.** The end is an LT-type tip with no parameter change. It is not a prey crash, not a predator crash and not merging: every body survives and keeps digesting. The pairs align into a polar flock, a rigidly translating lattice or a periodic orbit. No run tipped back within 24000-39000 t.\n- **Reproduction needs disorder.** Windows with high comet alignment have no divisions. This fits the audit's finding that c52 division is a pair co-fission and suggests it needs pairs moving in different directions (not shown directly).\n\n**Rule proposed for the ledger.** A persistence or reproduction claim for a motile active-emulsion ecology should state its box size and be checked in at least one smaller box and to at least 4x its run length. The comet polar order P is a cheap early indicator of an ordered, non-dividing end state.\n\n**Next experiments.**\n1. Tile the locked 32^2 lattice, or the aligned 48^2 flock, into 64^2 and 128^2 boxes to test whether the ordered state is an attractor there (bistability would make the dividing regime vulnerable to noise or shock tipping).\n2. Run 64^2 to t of 150000 or more on 4 seeds to see whether the slow rise in P ends the regime.\n3. Run a non-square box (for example 48x64) to break lattice commensurability.\n4. Run dt/2 on one 48^2 seed.",
+ "evidence": [
+  "files/lifetime.png",
+  "files/regime.png",
+  "files/counts.png",
+  "files/endstates.png",
+  "files/lock_strip_L32_s98.png",
+  "files/lock_strip_L32_s99.png",
+  "files/strip_L48_s93.png",
+  "files/late_strip_L48_s92.png"
+ ],
+ "files": [
+  "files/lifetime.png",
+  "files/regime.png",
+  "files/counts.png",
+  "files/endstates.png",
+  "files/lock_strip_L32_s98.png",
+  "files/lock_strip_L32_s99.png",
+  "files/strip_L48_s93.png",
+  "files/late_strip_L48_s92.png",
+  "files/table.json",
+  "files/link.json",
+  "files/runs__L48_s92__timeseries.png",
+  "files/runs__L48_s91__sheet.png",
+  "files/runs__L32_s98__timeseries.png",
+  "files/runs__L32_s90__timeseries.png",
+  "files/runs__L64_s92__sheet.png",
+  "files/runs__L64_s94__timeseries.png",
+  "files/runs__L128_s90__timeseries.png",
+  "files/runs__L128_s91__sheet.png",
+  "files/world_w1.py",
+  "files/checkwrap.py",
+  "files/analyze.py",
+  "files/polar.py",
+  "files/recur.py",
+  "files/final.py",
+  "files/link.py",
+  "files/commands.txt"
+ ],
+ "compute": {
+  "cpu_minutes": 130
+ },
+ "notes": "Operator (c00) experiment motivated by 20261027T1535-c00-literature-tipping (Hastings et al. 2026, Nat. Rev. Phys.), run by one agent and checked by an independent skeptic who re-derived the numbers from the files; this text is the checker-corrected version."
+}
