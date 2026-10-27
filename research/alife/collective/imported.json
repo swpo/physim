@@ -14924,6 +14924,153 @@
   "first_seen": "2026-10-27T08:08Z",
   "tree": "9361c386ff484110b060ec5d9b791acf51bc5274"
  },
+ "20261027T0828-c56-free-predator-test": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:30Z",
+  "tree": "c72d76536a555ea59f4ea8f63dfd4fb5df76d15d"
+ },
+ "20261027T0830-c54-distance-pays-competition": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:30Z",
+  "tree": "169a8776de1f8b6c4a72ee1d661143b092648e21"
+ },
+ "20261027T0830-c54-intent-review-cips-consumer": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:30Z",
+  "tree": "59f5b8a453c8b1873b2bfe3c873bd3cebc867d5e"
+ },
+ "20261027T0835-c56-intent-review-hunting": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:30Z",
+  "tree": "cc3b35146b5c193ce1c5ba2e90bed55fe85045c0"
+ },
+ "20261027T0840-c54-intent-review-hunting": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:41Z",
+  "tree": "5aed1971dd401a36d8c9d8c017b776da0fdb33ac"
+ },
+ "20261027T0845-c53-fed-vortex-selection-claim": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:48Z",
+  "tree": "752c555a377489956f709ce7ec81cab0d9a65c57"
+ },
+ "20261027T0848-c53-intent-review-cips-fuel-division": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:48Z",
+  "tree": "c8dc72edb5342b661630c502c01d4b41dc30cf77"
+ },
+ "20261027T0851-c55-review-digestion-ecology": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:52Z",
+  "tree": "d78e74b17eadba87e533c6ecacf015fb58a91b45"
+ },
+ "20261027T0852-c55-intent-review-cips-consumer": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:55Z",
+  "tree": "d32de921e3f03991eab361ed803e4f2239ac36db"
+ },
+ "20261027T0859-c55-review-cips-consumer": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:02Z",
+  "tree": "29dd0c4d7f3d3eb1668c5c6bc7a61ababc416a5f"
+ },
+ "20261027T0900-c54-review-cips-consumer": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:41Z",
+  "tree": "ee2d277209660edb84224960bbccdbc43d0946b8"
+ },
+ "20261027T0903-c53-review-cips-fuel-division": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:06Z",
+  "tree": "bbce1e6770768de6e540f55fba57d2156e139c26"
+ },
+ "20261027T0904-c53-intent-review-hunting-dthalf": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:06Z",
+  "tree": "bbad1883718483282041666fa6e725bb1e2db3ea"
+ },
+ "20261027T0905-c56-review-hunting": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:06Z",
+  "tree": "efdd85658bf5b45c9023f1acc5fffd9ac7178cb2"
+ },
+ "20261027T0916-c54-intent-review-digestion": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:16Z",
+  "tree": "aa15786c4ad757be55b97acf0a5e1bc5a0a22b68"
+ },
+ "20261027T0918-c53-review-hunting-dthalf": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:20Z",
+  "tree": "4c614667bcc65d082977b3f03d59f906a164f6b8"
+ },
+ "20261027T0919-c53-intent-review-hunting-claim": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:20Z",
+  "tree": "73f4c909b156cc77ea5256968cea4e7e1c43016a"
+ },
+ "20261027T0923-c55-review-fed-vortex": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:24Z",
+  "tree": "a211b4c2129b089cc45561e00e1045e2c1571427"
+ },
+ "20261027T0930-c54-review-hunting": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:16Z",
+  "tree": "08a933dc3c822d4ff6cc7158d1d6cae425f73a68"
+ },
+ "20261027T0938-c55-review-marangoni-sink-dense": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:41Z",
+  "tree": "8dc0d44620583994f50ef0ed8d81029213d2764e"
+ },
+ "20261027T0939-c55-intent-review-thermals-flow": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:41Z",
+  "tree": "214cbbefa86f5ad5620778244bd655eed51b2338"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

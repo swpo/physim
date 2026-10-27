@@ -1,0 +1,2150 @@
+{
+"persistent_predators_ge20": 306,
+"touch_ge2_unrelated_prey": 4,
+"median_partners": 1.0,
+"median_frac_alone": 0.024695121951219513,
+"rows": [
+{
+"id": 0,
+"life": 22,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 2,
+"life": 47,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 8,
+"life": 28,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 9,
+"life": 97,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 13,
+"life": 34,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 15,
+"life": 64,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 9
+},
+{
+"id": 17,
+"life": 49,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 18,
+"life": 50,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 20,
+"life": 22,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 26,
+"life": 40,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 29,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 30,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 31,
+"life": 88,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 34,
+"life": 55,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 36,
+"life": 62,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 39,
+"life": 45,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 44,
+"life": 35,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 45,
+"life": 97,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 47,
+"life": 65,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 48,
+"life": 97,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 49,
+"life": 57,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 50,
+"life": 39,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 52,
+"life": 65,
+"prey_partners": 4,
+"unrelated_partners": 2,
+"frames_alone": 2
+},
+{
+"id": 54,
+"life": 20,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 9
+},
+{
+"id": 56,
+"life": 39,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 58,
+"life": 85,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 61,
+"life": 69,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 62,
+"life": 42,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 68,
+"life": 97,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 69,
+"life": 55,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 70,
+"life": 33,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 71,
+"life": 26,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 9
+},
+{
+"id": 72,
+"life": 56,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 73,
+"life": 34,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 74,
+"life": 77,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 76,
+"life": 27,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 77,
+"life": 37,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 78,
+"life": 81,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 79,
+"life": 97,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 87,
+"life": 42,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 88,
+"life": 42,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 89,
+"life": 29,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 90,
+"life": 44,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 92,
+"life": 51,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 95,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 96,
+"life": 70,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 97,
+"life": 97,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 98,
+"life": 70,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 102,
+"life": 49,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 104,
+"life": 97,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 105,
+"life": 26,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 107,
+"life": 20,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 110,
+"life": 20,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 111,
+"life": 42,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 112,
+"life": 71,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 8
+},
+{
+"id": 113,
+"life": 67,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 116,
+"life": 96,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 117,
+"life": 43,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 8
+},
+{
+"id": 118,
+"life": 42,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 119,
+"life": 47,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 120,
+"life": 43,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 122,
+"life": 80,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 124,
+"life": 77,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 126,
+"life": 86,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 127,
+"life": 38,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 128,
+"life": 41,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 129,
+"life": 45,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 130,
+"life": 26,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 134,
+"life": 42,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 135,
+"life": 96,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 137,
+"life": 24,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 138,
+"life": 93,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 140,
+"life": 51,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 142,
+"life": 96,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 143,
+"life": 61,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 144,
+"life": 96,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 145,
+"life": 54,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 147,
+"life": 78,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 151,
+"life": 30,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 154,
+"life": 43,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 157,
+"life": 78,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 161,
+"life": 60,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 162,
+"life": 62,
+"prey_partners": 3,
+"unrelated_partners": 2,
+"frames_alone": 3
+},
+{
+"id": 163,
+"life": 73,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 164,
+"life": 88,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 166,
+"life": 42,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 167,
+"life": 53,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 168,
+"life": 35,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 169,
+"life": 81,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 170,
+"life": 64,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 171,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 172,
+"life": 28,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 173,
+"life": 87,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 175,
+"life": 27,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 176,
+"life": 39,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 178,
+"life": 46,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 179,
+"life": 83,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 183,
+"life": 21,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 9
+},
+{
+"id": 185,
+"life": 76,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 186,
+"life": 86,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 187,
+"life": 54,
+"prey_partners": 6,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 188,
+"life": 20,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 189,
+"life": 65,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 190,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 192,
+"life": 85,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 193,
+"life": 32,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 195,
+"life": 46,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 196,
+"life": 85,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 197,
+"life": 47,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 198,
+"life": 70,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 199,
+"life": 38,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 200,
+"life": 63,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 201,
+"life": 84,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 202,
+"life": 31,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 203,
+"life": 32,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 204,
+"life": 54,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 205,
+"life": 56,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 207,
+"life": 42,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 9
+},
+{
+"id": 208,
+"life": 84,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 209,
+"life": 30,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 211,
+"life": 84,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 213,
+"life": 33,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 214,
+"life": 24,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 215,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 216,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 217,
+"life": 68,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 219,
+"life": 20,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 220,
+"life": 38,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 221,
+"life": 43,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 222,
+"life": 65,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 224,
+"life": 31,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 225,
+"life": 82,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 227,
+"life": 25,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 229,
+"life": 33,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 230,
+"life": 44,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 232,
+"life": 29,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 236,
+"life": 38,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 237,
+"life": 81,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 239,
+"life": 46,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 243,
+"life": 39,
+"prey_partners": 2,
+"unrelated_partners": 2,
+"frames_alone": 6
+},
+{
+"id": 244,
+"life": 81,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 246,
+"life": 49,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 248,
+"life": 55,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 250,
+"life": 40,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 251,
+"life": 63,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 252,
+"life": 43,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 253,
+"life": 29,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 255,
+"life": 37,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 256,
+"life": 24,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 257,
+"life": 38,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 258,
+"life": 79,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 261,
+"life": 33,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 262,
+"life": 78,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 264,
+"life": 46,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 265,
+"life": 22,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 266,
+"life": 20,
+"prey_partners": 6,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 267,
+"life": 77,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 268,
+"life": 46,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 269,
+"life": 76,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 271,
+"life": 76,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 272,
+"life": 33,
+"prey_partners": 5,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 274,
+"life": 22,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 275,
+"life": 57,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 276,
+"life": 42,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 280,
+"life": 62,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 282,
+"life": 74,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 283,
+"life": 34,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 284,
+"life": 24,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 285,
+"life": 55,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 10
+},
+{
+"id": 286,
+"life": 53,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 287,
+"life": 65,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 288,
+"life": 72,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 290,
+"life": 49,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 292,
+"life": 23,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 294,
+"life": 70,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 295,
+"life": 69,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 296,
+"life": 28,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 297,
+"life": 57,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 298,
+"life": 22,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 299,
+"life": 68,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 300,
+"life": 30,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 301,
+"life": 56,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 302,
+"life": 29,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 303,
+"life": 67,
+"prey_partners": 3,
+"unrelated_partners": 2,
+"frames_alone": 4
+},
+{
+"id": 307,
+"life": 28,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 311,
+"life": 21,
+"prey_partners": 5,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 312,
+"life": 30,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 313,
+"life": 45,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 314,
+"life": 64,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 315,
+"life": 49,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 316,
+"life": 64,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 319,
+"life": 63,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 320,
+"life": 62,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 321,
+"life": 62,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 322,
+"life": 50,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 324,
+"life": 36,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 325,
+"life": 29,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 326,
+"life": 56,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 328,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 329,
+"life": 60,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 331,
+"life": 60,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 332,
+"life": 43,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 334,
+"life": 59,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 335,
+"life": 27,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 336,
+"life": 40,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 337,
+"life": 59,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 339,
+"life": 47,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 341,
+"life": 35,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 342,
+"life": 43,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 343,
+"life": 25,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 344,
+"life": 24,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 346,
+"life": 52,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 347,
+"life": 57,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 348,
+"life": 37,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 349,
+"life": 37,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 353,
+"life": 34,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 355,
+"life": 41,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 357,
+"life": 54,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 358,
+"life": 53,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 359,
+"life": 53,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 361,
+"life": 52,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 365,
+"life": 26,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 368,
+"life": 35,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 369,
+"life": 51,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 373,
+"life": 49,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 374,
+"life": 49,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 375,
+"life": 21,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 377,
+"life": 28,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 378,
+"life": 47,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 379,
+"life": 36,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 380,
+"life": 46,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 381,
+"life": 29,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 382,
+"life": 46,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 383,
+"life": 27,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 385,
+"life": 29,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 386,
+"life": 46,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 388,
+"life": 46,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 390,
+"life": 45,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 392,
+"life": 29,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 393,
+"life": 26,
+"prey_partners": 5,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 394,
+"life": 44,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 395,
+"life": 43,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 396,
+"life": 36,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 397,
+"life": 43,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 399,
+"life": 43,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 7
+},
+{
+"id": 400,
+"life": 29,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 401,
+"life": 42,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 403,
+"life": 42,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 404,
+"life": 42,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 405,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 406,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 407,
+"life": 36,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 408,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 409,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 411,
+"life": 24,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 412,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 414,
+"life": 41,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 416,
+"life": 40,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 417,
+"life": 40,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 419,
+"life": 40,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 5
+},
+{
+"id": 420,
+"life": 40,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 423,
+"life": 40,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 428,
+"life": 37,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 430,
+"life": 36,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 431,
+"life": 36,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 432,
+"life": 31,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 434,
+"life": 36,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 436,
+"life": 35,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 437,
+"life": 35,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 440,
+"life": 34,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 444,
+"life": 34,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 445,
+"life": 22,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 446,
+"life": 27,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 448,
+"life": 33,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 449,
+"life": 33,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 451,
+"life": 32,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 452,
+"life": 32,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 453,
+"life": 32,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 454,
+"life": 25,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 6
+},
+{
+"id": 455,
+"life": 32,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 456,
+"life": 29,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 4
+},
+{
+"id": 457,
+"life": 22,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 458,
+"life": 29,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 459,
+"life": 30,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 462,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 466,
+"life": 26,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 469,
+"life": 28,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 470,
+"life": 20,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 472,
+"life": 27,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 473,
+"life": 27,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 476,
+"life": 25,
+"prey_partners": 4,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 479,
+"life": 25,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 481,
+"life": 25,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 482,
+"life": 25,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 484,
+"life": 24,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 485,
+"life": 24,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 486,
+"life": 24,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 487,
+"life": 23,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 488,
+"life": 23,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 490,
+"life": 23,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 491,
+"life": 22,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 493,
+"life": 20,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 3
+},
+{
+"id": 496,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 498,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 500,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 501,
+"life": 20,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+}
+]
+}

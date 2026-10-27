@@ -1,0 +1,78 @@
+{
+"persistent_predators_ge20": 10,
+"touch_ge2_unrelated_prey": 1,
+"median_partners": 2.5,
+"median_frac_alone": 0.041050903119868636,
+"rows": [
+{
+"id": 91,
+"life": 26,
+"prey_partners": 3,
+"unrelated_partners": 2,
+"frames_alone": 0
+},
+{
+"id": 164,
+"life": 21,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 171,
+"life": 32,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 203,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 387,
+"life": 23,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 2
+},
+{
+"id": 453,
+"life": 29,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 496,
+"life": 25,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 499,
+"life": 20,
+"prey_partners": 3,
+"unrelated_partners": 1,
+"frames_alone": 1
+},
+{
+"id": 540,
+"life": 29,
+"prey_partners": 2,
+"unrelated_partners": 1,
+"frames_alone": 0
+},
+{
+"id": 551,
+"life": 21,
+"prey_partners": 1,
+"unrelated_partners": 1,
+"frames_alone": 1
+}
+]
+}
