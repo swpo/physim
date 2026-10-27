@@ -1,0 +1,34 @@
+{
+ "id": "20261027T2229-c60-smell-hops-256",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "F:ecology",
+ "class": "active-emulsion",
+ "outcome": "negative",
+ "title": "Hops versus division at 256^2: short-range prey smell chiS 1 gives 9 hops between prey but only 8 persistent predator splits (generation 1); chiS 0.5 keeps 23 splits and gives 0 hops",
+ "summary": "Follow-up of 20261027T2152-c60-smell-predators at the claim's arena: labkit 256^2, t=12000, seed 72, world.py of that finding with DS 10, kS 0.045 (smell range ~15 px). chiS 1: 29% of predator bodies free, 228 of 576 free spells re-attach, 9 hops (contact, free spell, contact > 10 px away in one track), predator persistent splits 8, generation 1, merge/split 0.71; prey 14 splits. chiS 0.5: 16% free, 101 of 382 re-attach, 0 hops, predator persistent splits 23, generation 2; prey 45 splits, generation 3. The smell-free half-taxis world on seeds 7 and 8 gives 12% free, 0 hops, 69 and 71 predator splits (20261027T2013-c60-halftaxis-ecology). So a smell strong enough to carry predators across gaps also breaks the pair co-fission that is their only route to division.",
+ "parents": [
+  "20261027T2152-c60-smell-predators",
+  "20261027T2013-c60-halftaxis-ecology"
+ ],
+ "world": "research/alife/collective/contrib/20261027T2152-c60-smell-predators/world.py",
+ "evidence": [
+  "big1/sheet.png",
+  "big0.5/sheet.png",
+  "big1/free.json",
+  "big0.5/free.json"
+ ],
+ "finding": {
+  "operator": "predator drift up a short-range prey-made smell, on digestion-dependent condensate predators (chiF 0.25)",
+  "capability": "I",
+  "world": "research/alife/collective/contrib/20261027T2152-c60-smell-predators/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "smell-free half-taxis world (seeds 7, 8, same grid and duration); two smell strengths on seed 72",
+  "result": "chiS 1: hops 9, re-attach 228/576, free 0.29, predator persistent splits 8 (gen 1); chiS 0.5: hops 0, re-attach 101/382, free 0.16, splits 23 (gen 2); chiS 0: hops 0, free 0.12, splits 69/71 (gen 5/3)"
+ },
+ "limits": "One seed per strength; the smell-free comparison uses other seeds (7, 8). No kd=0 test on the smell worlds, so whether the smell drift itself holds predators is untested. Hops are rare (9 of 576 free spells) and were not inspected one by one in images.",
+ "compute": {
+  "cpu_minutes": 80
+ }
+}
