@@ -1,0 +1,118 @@
+Replication-lens audit of 20261027T0325-c52-digestion-ecology-claim. Notes written BEFORE reading any review.
+All paths relative to this directory. Python: /home/user/labenv/bin/python; 2 threads; one simulation at a time.
+
+RUNS (claim world.py imported unchanged; defaults; default window K=20)
+- claim256/   seed 33, 256^2, 120 frames (t=12000). 30 min wall.
+- twin256/    seed 33, 256^2, 120 frames, WORLD_P pred_on 0 (matched twin). [results appended below]
+- fed128/     seed 34, 128^2, 120 frames (fed twin of the forks).
+- dfork128/   seed 34, 128^2, 90 frames, WORLD_P dfork_t 6000 (all prey removed).
+- local128/   seed 34, 128^2, 80 frames, localcut_world.py (wrapper, imports the claim world unchanged): prey material and p
+              deleted at t=6000 in 3 disks (r=9) each holding exactly one prey carrying exactly one predator
+              (targets.json, targets.png); waste w untouched, predator material untouched.
+- lincut128/  seed 34, 128^2, wrapper, prey under the deepest-lineage predator (track 100) cut at t=7600. [appended below]
+
+LABKIT INDEXING TRAP (flaw in frames.npz-based scripts, including the claim's predlineage.py and splits3.py)
+With --frames 120 labkit renders only 120 of 121 frames (render_max 120): frames.npz drops sim frame 60
+(render_f = 0..59, 61..120). Render index i >= 60 is sim frame i+1. Scripts that use t = 100*index (predlineage.py,
+splits3.py, strip.py, life.py, my audit_an.py) label times >= 6000 100 t early and see a 200 t gap between index 59 and 60.
+Effect: cosmetic for counts; the claim's pred_ancestry times (t=7100, 8600, 9800) are really 7200, 8700, 9900.
+My fork comparisons align by render_f (fork_an.py).
+
+SEED 33, 256^2 (claim256/FACTS.md, my reconstruction an33.json)
+- Visual (sheet.png): prey droplets form from noise by t=500-1000, frozen hexagonal emulsion by t=1600-2100. Predator
+  noise added at t=2000 condenses within 200-300 t into comet/rod bodies, each on one side of a prey; from t=2600 to 12000
+  a disordered, moving, steady mixed emulsion. Matches pack256/seed0/sheet.png of the claim.
+- labkit species: predator 177 final bodies, 80 persistent tracks (>= 6000 t), 73 splits, 50 persistent splits, max gen 4,
+  19 merges (merge/split 0.26), 316 moving tracks. Prey 187 final, 85 persistent, 148 splits, 68 persistent splits, gen 4,
+  60 merges (0.405), 319 moving. (Claim seeds 0/1: predators 81/74, 49/43, gen 4/3, 0.20/0.31; prey 97/99, 65/69, gen 5/4.)
+  -> replicates.
+- Predator S: the predator noise is uniform over the domain: c_b 0.1005 +- 0.050; mean 0.1024 inside prey vs 0.1001
+  outside; corr with prey c_a at t=2000 = 0.016; corr with prey init noise -0.003. Not placed at prey.
+- Predator formation: predator bodies 0 (t=2000) -> 108 (t=2200) -> 151 (t=2300). Formation ~200-300 t.
+- Predator size bounded: mean predator body area 24-26 px from t=4000 to t=12000; persistent tracks median 27 px, max 58.
+  Prey mean area 48-50 px with predators (104 px at t=2000 before predators).
+- Material conserved: phi_b has no source/sink in step() (only Mb lap mu_b and a conservative MUSCL taxis flux; k=0 mode
+  unchanged). Clipped mean c_b reads 0.105-0.113 because ~28% of pixels have phi_b < -1 (depletion halos, c_b clipped to 0).
+- Attachment (labkit thresholds, within 2 px of a prey body), t >= 3000: 93.2% of predator bodies per frame (min 81.6%,
+  max 97.7%); gap > 2 px 7.4%. c56's freepred.py (c > 0.5 bodies): 13% free per frame; 314 detach events; free spells median
+  5 frames (max 12); fates 243 dissolved, 51 reattach, 19 alive at end; 0 hops. 96.6% of all digestion (eat) happens within
+  2 px of a predator body (final frame).
+- Persistent predator splits (labkit rule, 50): the parent touches exactly 2 prey bodies at f-1 in 50/50; the two daughters
+  sit on different prey 3 frames later in 50/50; 0 daughters free. Within +-2 frames only 4/50 coincide with a nearby prey
+  split (real fissions: prey parents of span 16-34 frames, daughters 70-97 px). BUT traced back (sisters.py), the two prey
+  are SISTER daughters of one prey fission in 49/50 (seed 34: 14/14), lag prey fission -> predator split 2-9 frames,
+  median 4 (400 t); the sister prey split is itself a labkit persistent split in 42/49 (seed 34: 11/14). Only 1/50 bridges
+  unrelated prey. The sisters separate steadily: prey-prey distance 11.9 px (f-4) -> 15.5 (f-1) -> 17.0 (f) -> 23.5 (f+5),
+  increasing in 50/50 over the 5 frames before the split (tear.py). prehist33.png: 800 t before each split there is one
+  bean-shaped prey with the predator in its waist; the prey pinches, the predator becomes a rod between the separating
+  sisters and tears. So: 0 predator splits on one prey without a prey split; ~1/50 between unrelated prey; 49/50 are
+  lagged co-fissions with the host prey. My first +-2-frame classification (46 "torn between two prey", 4 "with prey split")
+  is wrong in kind: the "two prey" are the host's daughters.
+- Prey persistent splits (68): a predator on the parent in 68/68. The twin has none (see below).
+- Pair as a unit (union of prey and predator masks, labkit tracker): 80.5% of union components are exactly 1 prey + 1
+  predator, 9.4% lone prey, 7.6% lone predator, 1.8% 2 prey + 1 predator (the bridge state), 0.7% 1 prey + 2 predators.
+  Union: 84 persistent tracks, 226 splits, 86 merges (0.38), 63 persistent splits, max gen 4. A pair -> two pairs by the
+  co-fission above; the pair satisfies I and D by labkit's numbers as well as the predator does.
+- Deepest predator lineage (predlineage rule): 266 (nucleated on a prey from bath predator material at t=4200) -> 358 ->
+  415 -> 460 -> 504, splits at sim t=6300, 7500, 8600, 9800 (render 62/74/85/97), gen 4, last member alive to t=10900.
+  Every member touches prey in 100% of its frames (gap 0), area 11-44 px, digestion flux over body+2 px > 0 in every frame
+  (min 0.046, median 0.067-0.076). Each of its 4 splits is a co-fission with a persistent sister-prey split (lag 2, 4, 4, 3).
+  an33_lineage.png: a comet on a prey, stretched into a rod between the host's daughters, tears; repeated 4 times.
+- Deepest-generation strips (an33_deepstrips.png, gen >= 3, random): every one a rod between two prey that tears into two
+  comets, each on one prey, both present 1000 t later.
+
+SEED 34, 128^2 FED (fed128/FACTS.md, an34.json)
+- Predators 41 final, 21 persistent, 22 splits, 15 persistent splits (my rebuild 14), gen 3, merge/split 0.27, 74 moving.
+  Prey 46, 19 persistent, 39 splits, 20 persistent, gen 2, 0.36. Attachment 93.1%. 14/14 predator splits: parent on 2
+  prey, daughters on different prey, sister prey (lag 2-7, median 3.5).
+
+FORK (E, predators): fork34.json, seed 34, 128^2; fed and dfork bit-identical through t=5900 (frames 0-59 equal).
+- Predator bodies (c_b > 0.5): 45 at t=5900; dfork 46 (6100), 41 (6300), 13 (6500), 2 (6700), 0 (6900); fed 43-53 to t=9000.
+- Overlap-followed predators present at t=5900: all 45 lost by t=6700 in dfork; 9 of 45 lost by t=6700 in fed (turnover),
+  19 by t=8900.
+- max c_b 1.36 -> 0.48 (6900) -> 0.14 (9000, dissolved: c_b 0.053-0.144 everywhere, no clipped pixels); fed 1.34-1.69.
+- Predator material kept (no sink in the code; the clipped mean drops 0.106 -> 0.0959 only because the phi_b<-1 halos vanish).
+
+LOCAL ABLATION (E, one individual's supply): local34.json, local_strip.png; seed 34, cut at t=6000.
+- Each target prey lay 100% inside its disk at t=6000; no prey in the disks at t=6100; nothing else touched.
+- All 3 targeted predators fade: max c_b in a 14 px disk 1.15/1.33/1.14 (t=5900) -> 0.84/0.78/0.69 (6200) -> 0.53/0.58/0.48
+  (6400); T2 -> 0.13 by 7300; T3 -> 0.33 by 6600 (no c_b > 0.5 anywhere within 14 px). Overlap-follow: T1 lost t=6300,
+  T2 lost t=6500; T3's follow jumps to a neighbouring pair that moves into the disk at t~6700 (visible in local_strip.png).
+  Visually all three are gone by t=6500-6700. Their fed twins persist to t=8000 (local_strip.png fed rows).
+- Neighbours (42 non-target predators): lost within 1500 t: 16 (cut run) vs 14 (fed) -> unaffected.
+- None of the 3 found another prey before dissolving (predators move < 1 px per 100 t).
+=> L4c local-ablation gate met on one seed, 3/3 targets, with the fed twin and unaffected neighbours.
+
+CONSTRUCTION (read world.py)
+- No division rule, no size cap, no noise after t=2000, no death rule. phi_b conserved. q made only by eat = k2 c_a^2 c_b^2,
+  decays at kqs = 1 with Dq = 1 (decay length 1 px: q in a predator body is made by that body's own digestion).
+- Predator E: matter not built from prey and not decaying; its condensed state needs q (r0b = 0.3 > 0: miscible without q).
+  Same structure as c46's prey (miscible r0 0.3 without p; p made only by catalysis that consumes F; ks = 1). If c46's prey E
+  is not by construction, the predator's E is not either. The decisive control is dynamical (fork + local cut above).
+- X: predator -> prey coupling = eat (written consumption) + written fuel-depletion drift chiF of the predator (on the
+  predator only). Prey division/motion are not written anywhere; the twin shows them absent without predators. Coded
+  coupling, emergent effect -> not by construction under the collective's rule.
+- Twin matching: before pred_t, pb = -1 in both arms; eat = k2 c_a^2 c_b^2 with c_b = 0 is zero; taxis flux of c=0 is 0;
+  q stays 0. The arms differ only from the step at t=2000.
+
+MATCHED TWIN (X), seed 33, 256^2, pred_on 0 (twin256/, twin33.json) -- appended before reading reviews
+- Matched: same seed, grid, duration, window; float64 channel totals and float16 renders identical for frames 0-20
+  (t <= 2000); first difference at frame 21 (t=2100).
+- twin256/sheet.png: frozen hexagonal prey emulsion from t~1600 to 12000. labkit prey: 150 final, 150 persistent tracks,
+  1 split, 0 persistent splits, gen 0, 4 merges, 2 moving tracks (max 1.2 body lengths, max speed 0.0009/t).
+- With predators (claim256): 187 final, 85 persistent, 148 splits, 68 persistent splits, gen 4, 319 moving tracks (max 9.0
+  body lengths, 0.0081/t).
+- t >= 6100 means (c_a > 0.5, area >= 6): bodies 183 vs 162 (+13%); condensed prey area 5557 vs 12590 px (x0.44, -56%);
+  median prey body 28 vs 80 px; mean c_a 0.285 vs 0.301 (prey material held as waste).
+- Signs. Predators on prey: + body number, + division (0 -> 68), + motion (2 -> 319 moving tracks), - condensed prey
+  area (-56%), - body size. Prey on predators: + and obligate (dfork: 45 -> 0; local cut: 3/3 die).
+- Both kinds divide only together: prey 0 persistent splits without predators; 49/50 predator splits follow a host fission.
+
+--- appended AFTER reading the reviews (run was queued before) ---
+INDIVIDUAL-LEVEL E ON A LINEAGE MEMBER (lincut128/, lincut34.json, lincut_strip.png), seed 34, 128^2
+- Deepest predator lineage in fed128: 97 -> 100 -> 114 -> 122 (gen 3). At t=7600 track 100 (gen 1, 19 px) touched exactly one
+  prey (115 px, wholly inside an r=9 disk, no other prey or predator on it). Prey deleted there at t=7600 (wrapper).
+- Cut run: that predator 19 px / max c_b 1.34 (7600) -> 16 px / 0.84 (7700) -> 7 px / 0.65 (7800) -> no c_b > 0.5 body (7900).
+- Fed twin: the same predator persists, rides its host while the host divides (touches 2 prey from 7700), and co-fissions at
+  t=8500 into the gen-2 daughters (area 29 -> 20). The neighbouring pair below persists in both runs.
+=> the same individual shows E (dies when its own supply is cut) and D (divides when fed) in a branched pair of runs.
