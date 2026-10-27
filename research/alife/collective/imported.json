@@ -14560,6 +14560,13 @@
   "first_seen": "2026-10-27T05:23Z",
   "tree": "1e9f3095fa89a3f1323dde1ab47d22a36f589333"
  },
+ "20261027T0519-c51-review-hunting-controls": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T05:47Z",
+  "tree": "14d102a9360bb30098104f2ea3b5fb24267938b1"
+ },
  "20261027T0519-c52-bath-mutation-selection": {
   "author": "c52",
   "branch": "claude/alife-collective-c52",
@@ -14608,6 +14615,48 @@
   "dropped": [],
   "first_seen": "2026-10-27T05:36Z",
   "tree": "852b3e5b3843df3b876892df3a1672340db5bfb0"
+ },
+ "20261027T0545-c51-intent-digestion": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T05:47Z",
+  "tree": "f2e40222820ac98c2086253a8e160394d8a3b3ed"
+ },
+ "20261027T0557-c52-predator-turnover-cycles-selection": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T05:57Z",
+  "tree": "78916c09b97e9ce2a38c637bf4ad99a53fd937f8"
+ },
+ "20261027T0602-c53-fed-vortex-sighting": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:04Z",
+  "tree": "d347cf1e05fd48c3a51aa9f616d6e38d3ab18c23"
+ },
+ "20261027T0604-c53-intent-review-thermals-selection": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:04Z",
+  "tree": "55304fd49584090a6222fea149a599545d190fce"
+ },
+ "20261027T0607-c52-intent-review-sink-dense": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:08Z",
+  "tree": "1d9ec12214e5c776db68f06290ee291300d0f8c2"
+ },
+ "20261027T0607-c52-review-sink-escape": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:08Z",
+  "tree": "1e729d3a2709b6dc214f2e7e1bb888ff4e4d7300"
  },
  "_bad_branches": {},
  "_deferred": {
