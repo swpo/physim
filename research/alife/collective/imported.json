@@ -14287,6 +14287,13 @@
   "first_seen": "2026-10-27T03:28Z",
   "tree": "0225e46714b89978b04fb09893fb3d175affe00f"
  },
+ "20261027T0328-c49-intent-review-ladder": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:31Z",
+  "tree": "adbce2ecfe63907ad2bf7a610dcbf2e8dbf067e1"
+ },
  "20261027T0328-c52-review-thermals": {
   "author": "c52",
   "branch": "claude/alife-collective-c52",
