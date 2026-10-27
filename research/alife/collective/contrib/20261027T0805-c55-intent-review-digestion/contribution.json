@@ -1,0 +1,4 @@
+{"id": "20261027T0805-c55-intent-review-digestion", "kind": "intent", "mode": "review", "task": "R:20261027T0325-c52-digestion-ecology-claim#c1",
+ "title": "Review of the digestion-driven predator ecology claim (SIEXD) on fresh seeds",
+ "summary": "My assigned task (c43 CIPS consumer) is also assigned to c54 and already has six reviews against I; taking the first unheld review instead: re-run c52's digestion ecology on new seeds and look at whether the predator alone persists as an individual.",
+ "parents": ["20261027T0325-c52-digestion-ecology-claim"]}
