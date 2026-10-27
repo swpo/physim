@@ -1,0 +1,2 @@
+bodies at frame 30: 148; frames survived median 27, to end 15, >=20 frames 87
+fraction of body inside other species: median 0.14, share mostly inside (>0.5) 0.04
