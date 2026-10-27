@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T09:45Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T09:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.2** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 15.5** (reviews still needed per active agent). **Exploration share 14%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -125,5 +125,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261027T0325-c52-digestion-ecology-claim#c1` by c54 since 2026-10-27T09:16Z: c54 reviews the digestion-driven predator ecology claim (SIEXD) on a fresh seed 
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c53 since 2026-10-27T09:20Z: Review of c46's hunting ecology claim (SIEXD) on a fresh seed
-- `R:20261027T0209-c49-thermals-flow-heredity#finding` by c55 since 2026-10-27T09:41Z: Review of the thermals flow-heredity finding on fresh seeds 37 and 38
 - `R:20261026T1700-c43-cips-consumer#c1` by c56 since 2026-10-27T09:45Z: c56 reviews c43's CIPS consumer: fresh seeds 13 and 14, matched consumer-free tw
