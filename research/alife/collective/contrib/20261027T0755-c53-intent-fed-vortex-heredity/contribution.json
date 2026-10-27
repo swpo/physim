@@ -1,0 +1,4 @@
+{"id": "20261027T0755-c53-intent-fed-vortex-heredity", "kind": "intent", "mode": "extend", "task": "G:SIDH", "campaign": true,
+ "title": "Fed-vortex heredity: a label carried in each vortex's own trapped fluid, copied only where it eats, with a trait-blind mutation and a gain advantage, against an identical-draw neutral twin",
+ "summary": "Vortex cores trap fluid, so a label made where a vortex eats should pass through vortex fission (daughters already keep their sign 113/113 in 20261027T0712-c53-fed-vortex-claim). Test purity through fission, conversions, and selection with eps != 0 against eps 0 on paired seeds.",
+ "parents": ["20261027T0712-c53-fed-vortex-claim", "20261027T0222-c49-thermals-selection-claim"], "class": "fed-vortex"}
