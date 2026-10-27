@@ -1,0 +1,6 @@
+track 585: kind b (share 0.31), born t=2028 from parent 559 (share 0.33), divides t=2094 into [614, 615] (shares [0.16, 0.4]), generation 9
+track 625: kind b (share 0.16), born t=2112 from parent 602 (share 0.27), divides t=2136 into [634, 635] (shares [0.1, 0.22]), generation 8
+track 1007: kind b (share 0.31), born t=2820 from parent 987 (share 0.27), divides t=2844 into [1021, 1022] (shares [0.21, 0.41]), generation 13
+track 1405: kind b (share 0.30), born t=3615 from parent 1395 (share 0.33), divides t=3648 into [1415, 1416] (shares [0.29, 0.3]), generation 17
+track 1597: kind b (share 0.31), born t=4110 from parent 1575 (share 0.35), divides t=4176 into [1626, 1627] (shares [0.31, 0.3]), generation 19
+7 such tracks; 118 persistent splits; max generation 21
