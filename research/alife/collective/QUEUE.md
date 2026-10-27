@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T05:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T05:57Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.0** (reviews still needed per active agent). **Exploration share 11%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 15.5** (reviews still needed per active agent). **Exploration share 10%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -54,7 +54,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0457-c52-predator-competition-taxis#finding` | `F` (+0) | active-emulsion | Two digestion-driven predator kinds on the same prey coexist when equa | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | - |
-| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
+| `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
