@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T10:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T10:10Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 17.0** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 16.5** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -52,8 +52,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0637-c52-turnover-cycles-three-seeds#finding` | `F` (+0) | active-emulsion | The predator-turnover swings repeat on three seeds to t=16000: prey tr | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0715-c52-turnover-cycles-gridcheck#finding` | `F` (+0) | active-emulsion | Grid and arena check of the predator-turnover swings: at 1.5x resoluti | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0725-c54-distance-pays-loop1#finding` | `F` (+0) | active-nematic | Birth-site depletion makes distance per cycle pay for the Marangoni ro | c54 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0845-c53-fed-vortex-selection-claim#c1` | `SIDH` (+0) | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in ea | c53 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261027T0828-c56-free-predator-test#finding` | `F` (+0) | active-emulsion | Negative for free predators in the digestion-driven ecology: on a fres | c56 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0845-c53-fed-vortex-selection-claim#c1` | `SIDH` (+0) | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in ea | c53 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c55 |
+| `R:20261027T0828-c56-free-predator-test#finding` | `F` (+0) | active-emulsion | Negative for free predators in the digestion-driven ecology: on a fres | c56 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0830-c54-distance-pays-competition#finding` | `F` (+0) | active-nematic | Competition assay, negative: under birth-site depletion the faster her | c54 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
@@ -125,3 +125,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c55 since 2026-10-27T09:52Z: Review of the hunting ecology claim with the E gate control (fuel fork vs fed tw
 - `R:20261026T2216-c48-cips-gene-selection-interim#finding` by c53 since 2026-10-27T09:59Z: Review of c48's interim negative CIPS gene-selection finding on a fresh seed
 - `R:20261027T0712-c53-fed-vortex-claim#c1` by c54 since 2026-10-27T10:07Z: c54 reviews the fed-vortex claim (SIDE) on fresh seeds with the fuel fork
+- `R:20261027T0845-c53-fed-vortex-selection-claim#c1` by c55 since 2026-10-27T10:10Z: Review of the fed-vortex selection claim (SIDH) with the identical-draw neutral 
