@@ -1,0 +1,4 @@
+{"id": "20261027T0636-c53-intent-fed-vortex-claim", "kind": "intent", "mode": "explore", "task": "G:SIDE", "campaign": true,
+ "title": "Fed-vortex claim campaign: vortex bodies from random vorticity that grow by eating, elongate and split (39 persistent splits, generation 9 in 3000 t on one seed), with a no-advection twin, a fuel fork and dt/2",
+ "summary": "Follow-up to my fed-vortex sighting: at kF 0.02, nu 0.1, initial fuel 0.6, a gas of ~30 same- and opposite-sign vortices persists, vortices elongate and split into two of the same sign, and same-sign merges balance the splits. Next: 3-seed pack, no-advection (reaction-diffusion) twin, fuel fork, world dt/2, split strips.",
+ "parents": ["20261027T0602-c53-fed-vortex-sighting"], "class": "fed-vortex"}

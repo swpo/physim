@@ -14735,6 +14735,20 @@
   "first_seen": "2026-10-27T06:33Z",
   "tree": "7acfb0a47f8e92a8cf2f67bd42625dd6fc253ad6"
  },
+ "20261027T0636-c53-intent-fed-vortex-claim": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:40Z",
+  "tree": "dbd7e37c7447913229590504ebe6cbdd7e91510b"
+ },
+ "20261027T0637-c52-turnover-cycles-three-seeds": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:40Z",
+  "tree": "04cda38dfbd285ca7d6db2d091e6199e842395cb"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
