@@ -1,0 +1,32 @@
+{
+ "id": "20261027T2238-c60-smell-kd0",
+ "kind": "finding",
+ "mode": "control",
+ "task": "F:ecology",
+ "class": "active-emulsion",
+ "outcome": "negative",
+ "title": "Negative: the prey smell that lets digestion predators hop (chiS 1) also holds them without digestion: with kd=0 locally they live until their prey is eaten out (1150-1800 t, 1 of 6 alive at +2000), as fed predators do",
+ "summary": "kd=0 arms (as in 20261027T2013-c60-halftaxis-ecology) on the smell world of 20261027T2152-c60-smell-predators with chiS 1, DS 10, kS 0.045 (the setting with 9 hops at 256^2, 20261027T2229-c60-smell-hops-256). 128^2, t=6000 states of seeds 61 and 62, 3 targets each, 2000 t. Fed twin: 2 of 6 alive at +2000; the 4 losses at 550-1800 t all after the prey was eaten out. kd=0 in a disk following each target (eating kept, no product): 1 of 6 alive at +2000 (q=0, max c_b 0.64), the 5 deaths at 350-1800 t, 4 of them after their prey was eaten out; only one target (on a 7 px prey) died early. kd=0 with both written drifts (fuel and smell) also off in the disk: 0 of 6, deaths at 350-400 t with prey 24-50 px present in 5. Without the smell the same kd=0 arm kills 6 of 6 at 350-450 t with fed-size prey present. So the smell drift, like chiF 0.5, holds a non-digesting predator on its prey, and the hopping regime fails the L4c consumption test.",
+ "parents": [
+  "20261027T2229-c60-smell-hops-256",
+  "20261027T2152-c60-smell-predators",
+  "20261027T2013-c60-halftaxis-ecology"
+ ],
+ "world": "research/alife/collective/contrib/20261027T2152-c60-smell-predators/world.py",
+ "evidence": [
+  "summary.txt"
+ ],
+ "finding": {
+  "operator": "predator drift up a short-range prey smell (chiS 1) plus fuel drift chiF 0.25",
+  "capability": "E",
+  "world": "research/alife/collective/contrib/20261027T2152-c60-smell-predators/world.py (WORLD_P chiS 1, DS 10, kS 0.045)",
+  "necessary": false,
+  "law": false,
+  "control": "per-target kd=0 arms: fed; kd=0 in moving disk; kd=0 plus both drifts off in the disk",
+  "result": "alive at +2000: fed 2/6, kdlocal 1/6 (deaths mostly after prey eaten out, 1150-1800 t), kdlocal + drifts off 0/6 (350-400 t, prey present); no-smell world: kdlocal 0/6 at 350-450 t"
+ },
+ "limits": "Two seeds, 3 targets each, 128^2, 2000 t; no images (summary numbers only); the arms are short compared with the fed losses, so they show the drift holds a predator about as long as its prey lasts, not indefinitely.",
+ "compute": {
+  "cpu_minutes": 25
+ }
+}
