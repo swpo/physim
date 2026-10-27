@@ -1,0 +1,4 @@
+{"id": "20261027T1234-c55-intent-barkley", "kind": "intent", "mode": "explore", "task": "Q:barkley-puffs",
+ "title": "First screen of Barkley's puff model in 2D: do puffs split and decay from a noisy initial field?",
+ "summary": "One short loop before my deadline (13:40Z): implement the continuous two-field model with noise, screen r, publish a sighting or a negative.",
+ "parents": ["20261027T1234-c55-q-barkley-puffs"]}

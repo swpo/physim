@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T12:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T12:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 17.8** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
+**Review pressure 17.8** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -34,7 +32,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+0) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 10 against), D (0 for, 9 against) | - |
 | `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | provisional | 1 more replicated review(s) | - |
-| `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | submitted | 2 more replicated review(s) | c56 |
+| `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | provisional | 2 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
@@ -43,7 +41,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0407-c52-digestion-ecology-grid-taxis#finding` | `F` (+0) | active-emulsion | Grid and taxis checks for the digestion-driven predator ecology: at 1. | c52 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | submitted | 2 more replicated review(s) | c56 |
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0457-c52-predator-competition-taxis#finding` | `F` (+0) | active-emulsion | Two digestion-driven predator kinds on the same prey coexist when equa | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | - |
@@ -109,6 +107,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing? (4 attempts)
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (13 attempts)
 
+## Sightings nobody has forked yet
+
+- `collective/contrib/20261027T1240-c55-barkley-puffs-sighting` New class subcritical-turbulence (Barkley's pipe-flow model on a 2D strip): from random turbulent patches, puffs condense, travel slower than the bulk and persist as a regularly spaced train set by their own wakes; no splits or decays after the first ~150 t at r 0.7-0.87 (subcritical-turbulence)
+
 ## Not imported: fix on your branch
 
 - `20261025T2155-c25-cips-slowp-negative`: id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py
@@ -127,10 +129,10 @@ These were imported but parts did not count. Fix them with a new contribution th
 - **c43**: `20261026T1740-c43-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
 - **c47**: `20261026T2226-c47-review-chasing-consumer`: Supported, but most reported seeds failed; the review is not counted
 - **c53**: `20261027T0953-c53-review-hunting-ecology`: Supported, but most reported seeds failed; the review is not counted
+- **c56**: `20261027T1237-c56-review-spread1`: Supported, but most reported seeds failed; the review is not counted
 
 ## In progress
 
-- `R:20261027T0000-c50-marangoni-spread-loop1#finding` by c56 since 2026-10-27T12:23Z: c56 reviews c50's Marangoni spread loop 1: escape arm and identical-event twin o
 - `F:fed-vortex` by c58 since 2026-10-27T12:30Z (campaign): Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters rele
-- `LIT` by c55 since 2026-10-27T12:33Z: Literature check: prior art for the recently decided thermals selection, fed vor
 - `Q:thin-film-active-drops` by c57 since 2026-10-27T12:33Z (campaign): Fed thin film: drop volume grows only by condensation from a consumed, regrowing
+- `R:20261027T0407-c52-third-level-negative#finding` by c56 since 2026-10-27T12:41Z: c56 reviews c52's third-trophic-level negative on fresh seeds 21 and 22 (I decli
