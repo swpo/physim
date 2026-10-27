@@ -1,0 +1,42 @@
+== cdeptwin_s610: 401 frames, 83 tracks
+frame  bodies  k0 k1 k2 (pure>=0.6)  trait_mean(ladder value)  area-weighted
+    0      0     0   0   0      nan      nan
+   20      6     0   1   5    56.67    58.52
+   40     13     0   3  10    55.38    55.09
+   61     13     0   3  10    55.38    56.25
+   81     14     0   3  11    55.71    57.07
+  101     11     0   1  10    58.18    59.16
+  121     12     0   1  11    58.33    58.75
+  141     12     0   1  11    58.33    58.77
+  161     14     0   1  13    58.57    58.65
+  182     14     0   1  13    58.57    58.60
+  202     13     0   1  12    58.46    57.94
+  222     15     0   2  13    57.33    57.59
+  242     13     0   2  11    56.92    58.15
+  262     14     0   2  12    57.14    57.40
+  282     13     0   2  11    56.92    57.42
+  303     13     0   2  11    56.92    57.72
+  323     22     0   2  20    58.18    57.51
+  343     20     0   2  18    58.00    56.91
+  363     12     0   2  10    56.67    55.96
+  383      8     0   1   6    57.14    58.25
+  400      8     0   2   6    55.00    54.15
+mutation events 0; from->to counts [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+kind changes along tracks: 0; at a logged mutation: 0; unexplained (conversions): 0
+persistent splits by parent kind k0/k1/k2: [0, 2, 19]; daughters checked 42, off-kind 0
+merge products by kind: [0, 1, 5]; merges of two different kinds: 1
+vanishings (no children, before run end) by last kind: [0, 3, 25]
+dividing tracks 15; median cycle 82.0 frames (410 t)
+kind  n_div  medD  sh_pass(rl)  sh_pass(sqrtA)  v_path  cycle
+k0  0
+k1     1  3.53  1/1  1/1  0.184 930
+k2    14  2.87  7/14  13/14  0.209 405
+cohort(birth frames)  n_div  trait_mean_of_dividers  pass_rl  pass_sqrtA  k0/k1/k2
+    0- 81     4   55.00  2/4  4/4  [0, 1, 3]
+   82-163     7   60.00  3/7  6/7  [0, 0, 7]
+  164-245     2   60.00  2/2  2/2  [0, 0, 2]
+  246-327     2   60.00  1/2  2/2  [0, 0, 2]
+descendants alive at birth + 2 median cycles, passers (rl) vs non-passers, by kind:
+  k0: passers n=0 mean nan; non-passers n=0 mean nan
+  k1: passers n=1 mean 1.00; non-passers n=0 mean nan
+  k2: passers n=6 mean 1.50; non-passers n=6 mean 1.67
