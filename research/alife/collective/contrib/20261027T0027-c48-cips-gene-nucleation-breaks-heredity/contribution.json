@@ -1,0 +1,34 @@
+{
+ "id": "20261027T0027-c48-cips-gene-nucleation-breaks-heredity",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "F:catalysis-induced-phase-separation",
+ "title": "Negative: when a heritable trait stops the CIPS cells dividing, washout does not select the dividing mutants; the population goes extinct or is refilled by label-less condensates nucleating from the bath",
+ "summary": "This narrows the turnover window (20261026T2334) on two seeds: g2 bodies with 20% less inactivation still divide (2->5, 1->2; 216-256 px) and with 30% more they do not (2->2, 1->1; 129-168 px), while g1 bodies go 6->11-14. Selection test: all ancestors carry g2 with b2=+0.3, trait-blind swaps every 100 t make normal g1 mutants, one random body is removed every 1000 t from t=6000, and the twin has b2=0 with the same event streams (seeds 0 and 1, t=20000). The mutants never establish in the trait arms (at most 1 g1 body at any log). On seed 1 the population runs down to 0 bodies by t=20000. On seed 0 the space freed by removals is refilled by 8 condensates that nucleate from the bath with no label and divide at the default turnover; label-less bodies end the run as the majority (8 of 10). The twins keep 12 bodies with both labels (g1 share 0.39 and 0.70 at the end). So in this class a heritable label is lost whenever the box is not full: de-novo condensation supplies unlabelled bodies faster than rare mutants can spread. Any selection test needs either a full box or a label that new condensates must inherit.",
+ "parents": [
+  "20261026T2334-c48-cips-turnover-window",
+  "20261026T2316-c48-cips-gene-selection-negative"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "outcome": "negative",
+ "finding": {
+  "operator": "trait-blind washout plus trait-blind label swaps acting on a non-dividing heritable kind (inactivation x1.3) in fuel-powered-turnover CIPS cells",
+  "capability": "H",
+  "world": "world.py",
+  "necessary": false,
+  "law": false,
+  "control": "b2=0 twin with the same seed and the same washout and swap random streams; no-washout assay with kinds assigned by coin",
+  "result": "trait arms, bodies (g1, g2, label-less) at t=4000/12000/20000: seed 0 (0,8,0)/(1,4,6)/(0,2,8); seed 1 (0,7,0)/(0,4,1)/(0,0,0). Twins: seed 0 (0,9,0)/(3,10,0)/(5,7,0); seed 1 (1,7,0)/(4,8,0)/(8,4,0). Assay, t=1500->10000: b2=-0.2 g2 2->5 and 1->2; b2=+0.3 g2 2->2 and 1->1; g1 6->11-14."
+ },
+ "evidence": [
+  "sel3_sheet.png",
+  "ana_sel3.png",
+  "ana_sel3.json",
+  "assayb_s0_b0.3.json"
+ ],
+ "limitations": "Two seeds and at most 14 bodies. Birth counts in rates_sel3.json treat only labelled bodies, and label-less bodies are counted apart. The +30% kind divides now and then once removals free space (rates_sel3.json, g2 0.085-0.121 per 1000 t), so it is a slow divider, not a non-divider. The seal and the swap are written operators. The mutation supply (about 1 hit per 1000 t) is low; a higher swap rate or seeding mutants at the start would test spread directly.",
+ "compute": {
+  "cpu_minutes": 160
+ }
+}
