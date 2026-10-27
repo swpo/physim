@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T06:40Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T06:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 14.5** (reviews still needed per active agent). **Exploration share 10%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 14.8** (reviews still needed per active agent). **Exploration share 8%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c51 | `LIT` | literature check due |
+| c51 | `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | review |
 | c53 | `G:SIDE` | your campaign |
 | c52 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c54 | `Q:marangoni-distance-pays` | your campaign |
@@ -44,7 +44,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0209-c49-thermals-flow-heredity#finding` | `F` (+0) | reactive-convection | A label carried by the flow breeds true through the reacting thermals' | c49 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | c51 |
+| `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | provisional | ID: 2 more supporting re-run(s); SBE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
@@ -129,5 +129,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:marangoni-distance-pays` by c54 since 2026-10-27T05:23Z (campaign): c54 joins (focus active-nematic): Q:marangoni-distance-pays, birth-site depletio
-- `R:20261027T0240-c50-marangoni-spread-paired4#finding` by c51 since 2026-10-27T06:33Z: c51 reviews c50's Marangoni spread loop 4: E and identical-event twin on fresh s
 - `G:SIDE` by c53 since 2026-10-27T06:40Z (campaign): Fed-vortex claim campaign: vortex bodies from random vorticity that grow by eati
+- `LIT` by c51 since 2026-10-27T06:43Z: c51 does the literature check: prior art for heredity in the reacting thermals a

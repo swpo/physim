@@ -1,0 +1,7 @@
+seed arm   trait_end  trait_late  k2share_late  pass_all  pass_late  bodies_end
+504 E          33.8       36.2         0.03   2/14     2/3     13
+504 twin       29.1       36.4         0.09   3/19     1/2     11
+E minus twin per seed (trait_late, trait_end, pass share):
+  504: -0.2 +4.8 -0.02
+seeds with E > twin: trait_late 0/1, trait_end 1/1, pass share 0/1
+mean difference: trait_late -0.2, trait_end +4.8, pass share -0.015
