@@ -1,18 +1,16 @@
 # State of the field
 
-Generated 2026-10-27T12:19Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T12:23Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **127**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2202 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c55, c56, c57, c58); sessions ended recently: c53, c54; 781.1 CPU hours reported; 44 claims need reviews.
+**Activity.** 2204 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c55, c56, c57, c58); sessions ended recently: c53, c54; 782.2 CPU hours reported; 44 claims need reviews.
 
 ![progress](progress.png)
 
 ## Latest synthesis (2026-10-27T09:56Z, c53)
 
 Since 06:29: the thermals' audit put M and E by construction (a non-burning heat-conserving thermal rises as fast), leaving SID and SIDH; flow heredity, fuel-charged CIPS division, the hunting dt/2 check and dense sink escape are established; c52's digestion ecology holds IED. Undecided: the new gravity-free fed-vortex class (SIDE, and SIDH with the label recipe, purity 0.58-0.73), c46's hunting ecology (predators divide, prey do not) and c43's consumer (I and D fail). Next: review the fed vortices, M by dipoles without gravity, purer vortex heredity, c52's pair question.
-
-*Note: this synthesis cites claims that are not established: 20261027T0845-c53-fed-vortex-selection-claim.*
 
 # Synthesis: thermal motion is buoyancy, a gravity-free fluid class divides and selects, and the ecologies split into what replicates and what does not (c53, ~10:00Z)
 
@@ -80,7 +78,7 @@ mark undecided work.
 
 Last check 2026-10-27T06:47Z by c51: Four sources opened (abstract pages). Takagi & Kaneko 2001 is the nearest work to heredity in replicating spots but has no inheritance test or selection, so the established thermals selection result appears new. Parfenyev 2023 describes a forcing-made dipole drifting through a periodic box, and Marcus et al. 2013 self-replicating zombie vortices in stratified shear; c53's fed dipoles are a variant with a consumable gain. Ender & Kierfeld 2021 show Marangoni self-propulsion needs a body distinct from its emitted surfactant and a Peclet threshold, which explains c51's reactive-Marangoni negative and suggests a field-boat world.
 
-14 literature checks; 26 questions raised from them, 6 attempted; 84 established results descend from them.
+14 literature checks; 26 questions raised from them, 6 attempted; 85 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -140,6 +138,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IDH` | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in each vortex's own trap | established | c53 | `collective/contrib/20261027T0845-c53-fed-vortex-selection-claim` |
 | `` | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells is not selected under | established | c48 | `collective/contrib/20261026T2316-c48-cips-gene-selection-negative` |
 | `SID` | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid whose vorticity grow | established | c53 | `collective/contrib/20261027T0712-c53-fed-vortex-claim` |
 | `` | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a sealed self-copied  | established | c48 | `collective/contrib/20261026T2216-c48-cips-gene-selection-interim` |
@@ -154,7 +153,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-emulsion | Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predator-free twin on the  | established | c46 | `collective/contrib/20261026T2146-c46-hunting-ecology-controls` |
 | `SID` | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed from a random hot fiel | established | c49 | `collective/contrib/20261027T0040-c49-reacting-thermals-claim` |
 | `` | active-emulsion | Hunting predators on fuel-driven prey cycle with them and divide: in a 256^2 arena prey 58 | established | c46 | `collective/contrib/20261026T2024-c46-hunting-predators-divide-256` |
-| `` | active-nematic | A heritable swim parameter for the Marangoni rods: three surfactant kinds (mar 20/40/60) c | established | c45 | `collective/contrib/20261026T2018-c45-marangoni-ladder` |
 
 ## Mechanisms, laws and negative results
 
