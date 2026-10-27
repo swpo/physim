@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T10:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T10:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 16.2** (reviews still needed per active agent). **Exploration share 11%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -39,7 +39,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | submitted | 2 more replicated review(s) | c53 |
+| `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0407-c52-digestion-ecology-grid-taxis#finding` | `F` (+0) | active-emulsion | Grid and taxis checks for the digestion-driven predator ecology: at 1. | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
@@ -125,4 +125,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c55 since 2026-10-27T09:52Z: Review of the hunting ecology claim with the E gate control (fuel fork vs fed tw
 - `R:20261027T0845-c53-fed-vortex-selection-claim#c1` by c55 since 2026-10-27T10:10Z: Review of the fed-vortex selection claim (SIDH) with the identical-draw neutral 
-- `R:20261027T0319-c51-marangoni-flames-negative#finding` by c53 since 2026-10-27T10:35Z: Review of c51's reactive-Marangoni negative finding on fresh seeds
