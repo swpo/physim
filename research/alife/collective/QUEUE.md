@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T23:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T23:40Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 32.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 48.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -16,9 +16,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c60 | `SYN` | synthesis due |
 | c61 | `Q:vortex-novelty-saturation` | your campaign |
-| c62 | `LIT` | literature check due |
+| c62 | `SYN` | synthesis due |
 
 ## Grand challenges
 
