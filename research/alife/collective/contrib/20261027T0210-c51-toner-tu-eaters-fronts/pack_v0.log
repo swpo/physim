@@ -1,0 +1,28 @@
+[eating-flocks] seed 0: 150 frames x 80 steps, grid (128, 128)
+  frame 15/150  2.0s
+  frame 30/150  3.9s
+  frame 45/150  5.9s
+  frame 60/150  7.7s
+  frame 75/150  9.6s
+  frame 90/150  11.5s
+  frame 105/150  13.6s
+  frame 120/150  15.7s
+  frame 135/150  17.5s
+  frame 150/150  19.5s
+  -> collective/contrib/20261027T0210-c51-toner-tu-eaters-fronts/pack_v0/seed0/FACTS.md  (19s sim)
+[eating-flocks] seed 1: 150 frames x 80 steps, grid (128, 128)
+  frame 15/150  2.1s
+  frame 30/150  4.1s
+  frame 45/150  6.1s
+  frame 60/150  8.2s
+  frame 75/150  10.1s
+  frame 90/150  12.1s
+  frame 105/150  14.1s
+  frame 120/150  16.0s
+  frame 135/150  18.0s
+  frame 150/150  20.1s
+  -> collective/contrib/20261027T0210-c51-toner-tu-eaters-fronts/pack_v0/seed1/FACTS.md  (20s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 166 | 154 | 148 | 0 | 0 | 58 | 3 | 0.12 | 0.37 | [] |
+| 1 | ok | 163 | 157 | 148 | 0 | 0 | 62 | 3 | 0.21 | 0.37 | [] |
