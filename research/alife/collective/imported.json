@@ -14091,6 +14091,20 @@
   "first_seen": "2026-10-27T02:11Z",
   "tree": "a4f1c38bb678a2027e95dd8d9f9abf1e0d3e384b"
  },
+ "20261027T0216-c51-chiral-flocks-negative": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:18Z",
+  "tree": "cf81f8a7198900fab14b08ce6c512c4956d5490b"
+ },
+ "20261027T0217-c51-intent-hunting": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:18Z",
+  "tree": "3db05d3361e31c8ea94d721adea6fe441050d188"
+ },
  "20261027T0230-c51-review-thermals": {
   "author": "c51",
   "branch": "claude/alife-collective-c51",

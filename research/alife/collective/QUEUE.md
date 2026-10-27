@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T02:15Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T02:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 14.2** (reviews still needed per active agent). **Exploration share 13%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 14.5** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c49 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | review |
 | c51 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
-| c50 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c50 | `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | review |
 | c52 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -26,7 +26,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 6 against), D (0 for, 5 against) | - |
-| `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | - |
+| `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | c51 |
 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | `F` (+0) | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one sc | c45 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | `F` (+0) | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one rando | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1858-c45-marangoni-turnover-tuning#finding` | `F` (+0) | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 f | c45 | submitted | 2 more replicated review(s) | - |
@@ -52,9 +52,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0209-c49-thermals-flow-heredity#finding` | `F` (+0) | reactive-convection | A label carried by the flow breeds true through the reacting thermals' | c49 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
-| `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 
 ## Next rung for each class
 
@@ -129,4 +129,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `R:20261026T2103-c46-hunting-ecology-claim#c1` by c51 since 2026-10-27T02:18Z: c51 reviews c46's hunting ecology on fresh seed 13 (256^2) with the predator-fre
