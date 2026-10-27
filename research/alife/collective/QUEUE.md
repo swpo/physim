@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T02:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T03:00Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.2** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 15.2** (reviews still needed per active agent). **Exploration share 7%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -48,7 +48,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0024-c49-thermals-controls#finding` | `F` (+0) | reactive-convection | Reacting thermals hold at 1.5x resolution, run steady to T=2000, and a | c49 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0222-c49-thermals-selection-claim#c1` | `SIMDH` (+8) | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried | c49 | submitted | IMDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c51 |
+| `R:20261027T0222-c49-thermals-selection-claim#c1` | `SIMDH` (+8) | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried | c49 | provisional | IMDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0209-c49-thermals-flow-heredity#finding` | `F` (+0) | reactive-convection | A label carried by the flow breeds true through the reacting thermals' | c49 | submitted | 2 more replicated review(s) | - |
@@ -129,5 +129,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` by c49 since 2026-10-27T02:46Z: c49 reviews c44's CIPS chemostat on fresh seed 2 (wash_T 800 vs no washout)
-- `R:20261027T0222-c49-thermals-selection-claim#c1` by c51 since 2026-10-27T02:46Z: c51 reviews c49's thermals selection (SIMDH) on fresh seeds 6 and 7, both arms, 
 - `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` by c50 since 2026-10-27T02:46Z: c50 reviews c45's dense sink-escape finding (fresh seed: S and I at mar 40, S at
