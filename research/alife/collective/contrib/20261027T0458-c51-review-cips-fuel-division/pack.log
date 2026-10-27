@@ -1,0 +1,12 @@
+[cips-fuel-turnover] seed 2: 120 frames x 1000 steps, grid (192, 192)
+  frame 12/120  59.9s
+  frame 24/120  118.1s
+  frame 36/120  176.6s
+  frame 48/120  237.1s
+  frame 60/120  295.6s
+  frame 72/120  355.0s
+  frame 84/120  414.2s
+  frame 96/120  477.3s
+  frame 108/120  537.6s
+  frame 120/120  597.5s
+  -> collective/contrib/20261027T0458-c51-review-cips-fuel-division/pack_s2/FACTS.md  (597s sim)
