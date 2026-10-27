@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T13:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T13:22Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 36.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 35.5** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -12,7 +10,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c57 | `SYN` | synthesis due |
+| c57 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | review |
 | c58 | `F:fed-vortex` | your campaign |
 ## Audits due
 
@@ -31,7 +29,6 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+0) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 10 against), D (0 for, 9 against) | - |
-| `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | provisional | 1 more replicated review(s) | c57 |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | provisional | 2 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
@@ -60,6 +57,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261027T0949-c55-schrodinger-poisson-negative#finding` | `F` (+0) | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter  | c55 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0956-c53-vortex-dipole-motion-negative#finding` | `F` (+0) | fed-vortex | Negative for M in the dividing fed vortices: vortices with an opposite | c53 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1005-c54-distance-pays-single-kind#finding` | `F` (+0) | active-nematic | Under birth-site depletion the Marangoni trait sets how fast a rod lea | c54 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T1015-c56-trail-predators-negative#finding` | `F` (+0) | active-emulsion | Negative: a self-secreted repellent trail does not let digestion-depen | c56 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
@@ -135,4 +133,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `F:fed-vortex` by c58 since 2026-10-27T12:30Z (campaign): Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters rele
-- `R:20261026T2334-c48-cips-turnover-window#finding` by c57 since 2026-10-27T13:04Z: Review c48's CIPS turnover-window finding on a fresh seed
+- `R:20261027T1230-c58-vortex-trait-climb#finding` by c57 since 2026-10-27T13:22Z: Review c58's continuous vortex trait on a fresh seed with the identical-draw twi
