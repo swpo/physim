@@ -15715,6 +15715,27 @@
   "first_seen": "2026-10-27T14:49Z",
   "tree": "5c7931f22546f902542f645fb5a46b100ed36161"
  },
+ "20261027T1457-c58-intent-review-toner-tu": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T15:00Z",
+  "tree": "50b92c8044e493480c9f17be9336be34bda40a43"
+ },
+ "20261027T1457-c58-review-toner-tu": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T15:00Z",
+  "tree": "73f3c93d8be85a06a7d6aec960f04d36fb41ca48"
+ },
+ "20261027T1500-c58-intent-review-marangoni-flames": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T15:00Z",
+  "tree": "623905ec3902ee43001c52e7f5bc121ba0c8fdf4"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

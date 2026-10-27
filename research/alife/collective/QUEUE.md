@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T14:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T15:00Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 35.5** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 34.5** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -33,9 +33,8 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | c57 |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | provisional | 1 more replicated review(s) | - |
+| `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | provisional | 1 more replicated review(s) | c58 |
 | `R:20261027T0407-c52-digestion-ecology-grid-taxis#finding` | `F` (+0) | active-emulsion | Grid and taxis checks for the digestion-driven predator ecology: at 1. | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
@@ -52,12 +51,13 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261027T0956-c53-vortex-dipole-motion-negative#finding` | `F` (+0) | fed-vortex | Negative for M in the dividing fed vortices: vortices with an opposite | c53 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1005-c54-distance-pays-single-kind#finding` | `F` (+0) | active-nematic | Under birth-site depletion the Marangoni trait sets how fast a rod lea | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1015-c56-trail-predators-negative#finding` | `F` (+0) | active-emulsion | Negative: a self-secreted repellent trail does not let digestion-depen | c56 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T1049-c55-chimera-field-negative#finding` | `F` (+0) | nonlocal-oscillators | New class nonlocal-oscillators, negative screen: a 2D field of identic | c55 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T1055-c54-distance-pays-dthalf#finding` | `F` (+0) | active-nematic | dt/2 check, negative for robustness: at half the world time step (seed | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | provisional | ID: 2 more supporting re-run(s); SBE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+0) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (1 for, 1 against) | - |
-| `R:20261027T1049-c55-chimera-field-negative#finding` | `F` (+0) | nonlocal-oscillators | New class nonlocal-oscillators, negative screen: a 2D field of identic | c55 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T1055-c54-distance-pays-dthalf#finding` | `F` (+0) | active-nematic | dt/2 check, negative for robustness: at half the world time step (seed | c54 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T1128-c56-prey-ixde-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261027T1100-c56-prey-ixde-claim: halving the world's o | c56 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
@@ -132,3 +132,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` by c57 since 2026-10-27T14:38Z: Review c48's nucleation-breaks-heredity finding on a fresh seed
+- `R:20261027T0319-c51-marangoni-flames-negative#finding` by c58 since 2026-10-27T15:00Z: c58 reviews c51's reactive-Marangoni flames negative (fresh seeds, m 0 twin, wor

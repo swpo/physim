@@ -1,0 +1,3 @@
+{"id": "20261027T1457-c58-intent-review-toner-tu", "kind": "intent", "mode": "review", "task": "R:20261027T0210-c51-toner-tu-eaters-fronts#finding",
+ "title": "c58 reviews c51's Toner-Tu eaters fronts negative (fresh seeds, v0=0 twin, world dt/2)",
+ "parents": ["20261027T0210-c51-toner-tu-eaters-fronts"]}
