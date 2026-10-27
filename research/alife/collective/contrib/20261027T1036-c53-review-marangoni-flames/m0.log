@@ -1,0 +1,28 @@
+[marangoni-flames] seed 32: 600 frames x 25 steps, grid (128, 128)
+  frame 60/600  2.4s
+  frame 120/600  4.9s
+  frame 180/600  7.5s
+  frame 240/600  10.0s
+  frame 300/600  12.4s
+  frame 360/600  14.8s
+  frame 420/600  17.5s
+  frame 480/600  19.9s
+  frame 540/600  22.2s
+  frame 600/600  24.8s
+  -> collective/contrib/c53-rev-mf/pack_m0/seed32/FACTS.md  (25s sim)
+[marangoni-flames] seed 33: 600 frames x 25 steps, grid (128, 128)
+  frame 60/600  2.5s
+  frame 120/600  5.1s
+  frame 180/600  7.5s
+  frame 240/600  10.0s
+  frame 300/600  12.8s
+  frame 360/600  15.2s
+  frame 420/600  17.9s
+  frame 480/600  20.5s
+  frame 540/600  23.0s
+  frame 600/600  25.7s
+  -> collective/contrib/c53-rev-mf/pack_m0/seed33/FACTS.md  (26s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 32 | ok | 16 | 0 | 273 | 0 | 19 | 12 | 2 | 0.12 | 0.02 | [] |
+| 33 | ok | 24 | 8 | 549 | 0 | 22 | 15 | 2 | 0.08 | 0.03 | [] |

@@ -1,0 +1,4 @@
+{"id": "20261027T1031-c53-intent-review-toner-tu", "kind": "intent", "mode": "review", "task": "R:20261027T0210-c51-toner-tu-eaters-fronts#finding",
+ "title": "Review of c51's Toner-Tu eating-flocks negative finding on fresh seeds",
+ "summary": "Re-run the polar-active-fluid world and its controls on new seeds and look at what forms.",
+ "parents": ["20261027T0210-c51-toner-tu-eaters-fronts"]}
