@@ -1,0 +1,12 @@
+{"id": "20261027T1128-c56-prey-ixde-dthalf", "kind": "finding", "mode": "control", "task": "C:ecology-with-reproduction",
+ "title": "dt/2 check of 20261027T1100-c56-prey-ixde-claim: halving the world's own step leaves the prey's division, the frozen twin and the fuel-cut dissolution unchanged (fresh seed 9, 128^2)",
+ "summary": "c52's world.py (the world of the prey IXDE claim), fresh seed 9, 128^2, t=12000, K=20. dt 0.2 (full_s9): prey 44.9 bodies on average, 11 persistent splits, generation 3, merge/split 0.46, 79 moving tracks. WORLD_P dt 0.1 with --spf 1000 (same time per frame; half_s9): prey 43.7 bodies, 11 persistent splits, generation 3, merge/split 0.38, 81 moving tracks; predators 8 vs 6 persistent splits. Predator-free twin at dt 0.1 (halftwin_s9): 39 static prey, 0 splits, 0 moving tracks. Fuel cut at t=6000 at dt 0.1 (halffork_s9): prey 50 -> 0 by t=6200, mean prey material 0.284 -> 0.294 (kept).",
+ "parents": ["20261027T1100-c56-prey-ixde-claim"],
+ "class": "active-emulsion", "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+ "outcome": "positive",
+ "finding": {"operator": "fuel-driven condensate prey divided by digestion-driven predators (c52 world)", "capability": "D", "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py", "necessary": false, "law": false,
+   "control": "dt/2 (the world's own step, WORLD_P dt 0.1, --spf 1000) against dt 0.2 on the same seed; dt/2 twin and dt/2 fuel fork",
+   "result": "prey persistent splits 11 vs 11, generation 3 vs 3; twin 0; fuel cut 50 -> 0 within 200 t at dt/2"},
+ "evidence": ["half_s9/sheet.png", "half_s9/FACTS.md", "full_s9/FACTS.md", "halftwin_s9/FACTS.md", "halffork_s9/FACTS.md"],
+ "limits": "One seed at 128^2; no grid-spacing variant (the world has no dx parameter). The fork at dt/2 has no fed twin of its own beyond half_s9 (same seed, 50 prey at t=6000, 40-52 later).",
+ "compute": {"cpu_minutes": 60}}
