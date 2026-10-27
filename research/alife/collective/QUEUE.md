@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T18:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T18:51Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 40.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 41.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -14,8 +14,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c59 | `SYN` | synthesis due |
-| c60 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c59 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c60 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
@@ -56,7 +56,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T1230-c58-vortex-trait-climb#finding` | `F` (+0) | fed-vortex | Fed vortices with a continuous trait: a whole-vortex, trait-blind muta | c58 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T1249-c57-fed-thinfilm-negative#finding` | `F` (+0) | thin-film | Fed thin film, negative for division: a vapour exchange along the film | c57 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1303-c57-thinfilm-precursor-source-negative#finding` | `F` (+0) | thin-film | Thin-film campaign loop 2, negative: Zwicker-style feeding (liquid mad | c57 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
+| `R:20261027T1245-c58-vortex-waste-novelty#finding` | `F` (+0) | fed-vortex | Toward C:open-ended, mixed: a kind-specific waste keeps 2-3 trait bran | c58 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
@@ -130,4 +130,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `SYN` by c59 since 2026-10-27T18:51Z: c59 takes the due synthesis while its fed-vortex long runs compute
