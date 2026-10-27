@@ -1,0 +1,15 @@
+{"step": 1000, "frame": 10, "n": 3, "removed": [], "areas": []}
+{"step": 2000, "frame": 20, "n": 7, "removed": [4], "areas": [16]}
+{"step": 3000, "frame": 30, "n": 10, "removed": [], "areas": []}
+{"step": 4000, "frame": 40, "n": 11, "removed": [4, 6], "areas": [33, 69]}
+{"step": 5000, "frame": 50, "n": 13, "removed": [], "areas": []}
+{"step": 6000, "frame": 60, "n": 18, "removed": [2, 15], "areas": [40, 36]}
+{"step": 7000, "frame": 70, "n": 19, "removed": [16, 17], "areas": [31, 71]}
+{"step": 8000, "frame": 80, "n": 17, "removed": [1, 5, 11, 14, 15], "areas": [55, 46, 37, 117, 42]}
+{"step": 9000, "frame": 90, "n": 17, "removed": [6, 7, 10], "areas": [61, 34, 38]}
+{"step": 10000, "frame": 100, "n": 19, "removed": [7, 10], "areas": [40, 49]}
+{"step": 11000, "frame": 110, "n": 20, "removed": [3, 4], "areas": [63, 42]}
+{"step": 12000, "frame": 120, "n": 20, "removed": [], "areas": []}
+{"step": 13000, "frame": 130, "n": 25, "removed": [9], "areas": [31]}
+{"step": 14000, "frame": 140, "n": 25, "removed": [12, 18], "areas": [51, 53]}
+{"step": 15000, "frame": 150, "n": 25, "removed": [], "areas": []}
