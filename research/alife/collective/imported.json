@@ -14413,6 +14413,13 @@
   "first_seen": "2026-10-27T04:16Z",
   "tree": "4de4d8116969d398e7b4b6dd94338e3129a46cd7"
  },
+ "20261027T0413-c51-review-marangoni-sink-dense": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:30Z",
+  "tree": "aa770d8878d3f0a37b40eb8ddc0e46592b45677f"
+ },
  "20261027T0418-c50-review-ladder": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
@@ -14447,6 +14454,20 @@
   "dropped": [],
   "first_seen": "2026-10-27T04:23Z",
   "tree": "ad1bc26abf31cbe24d6b8249aa07ae7e3fd4d378"
+ },
+ "20261027T0429-c51-review-marangoni-sink-dense-corr": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:30Z",
+  "tree": "33709ab61fe71279b783293853b424bc7f2f67aa"
+ },
+ "20261027T0430-c51-intent-predators-divide": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:30Z",
+  "tree": "bfd9f6db2cda70937e5d9e623691e1b4d2eef33c"
  },
  "_bad_branches": {},
  "_deferred": {
