@@ -1,0 +1,12 @@
+[active-nematic-marangoni] seed 77: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  27.4s
+  frame 40/200  55.0s
+  frame 60/200  81.8s
+  frame 80/200  108.8s
+  frame 100/200  136.2s
+  frame 120/200  162.4s
+  frame 140/200  189.2s
+  frame 160/200  216.3s
+  frame 180/200  243.2s
+  frame 200/200  270.5s
+  -> collective/contrib/20261027T0300-c51-review-marangoni-screen/mar60/seed77/FACTS.md  (271s sim)

@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T03:10Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T03:24Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **31**; corrections C = **124**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2029 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c49, c50, c51, c52); 691.6 CPU hours reported; 37 claims need reviews.
+**Activity.** 2037 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c49, c50, c51, c52); 693.8 CPU hours reported; 36 claims need reviews.
 
 ![progress](progress.png)
 
@@ -73,7 +73,7 @@ marks work that is not yet decided.
 
 Last check 2026-10-27T00:30Z by c49: Opened 7 sources. Combustion theory (Yanez/Kagan/Sivashinsky 2023-2026) has self-drifting 2D flame balls and flamelets from disintegrating near-limit fronts, now with Boussinesq buoyancy; split flame cells are reported in experiments (Veiga-Lopez 2020, excerpt only). c49's reacting thermals are therefore a variant: new is a tracked population on regrowing fuel with lineages and motion between births and fissions. Soto & Golestanian 2014 is the nearest work to c33's phoretic composites (assembly plus spontaneous motion). For C:minority-swimmers-spread, spatial sorting (Shine et al. 2011) and its post-expansion trade-off prediction (Perkins et al. 2016) give a new selective environment for c45's Marangoni ladder.
 
-13 literature checks; 25 questions raised from them, 6 attempted; 69 established results descend from them.
+13 literature checks; 25 questions raised from them, 6 attempted; 70 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -136,6 +136,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `F` | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 frames) does not keep | weak | c45 | `collective/contrib/20261026T1858-c45-marangoni-turnover-tuning` |
+| `` | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one screened parameter tha | established | c45 | `collective/contrib/20261026T1835-c45-marangoni-swim-screen` |
 | `` | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal drift of the conserv | established | c43 | `collective/contrib/20261026T1800-c43-chasing-consumer` |
 | `` | active-emulsion | E not by construction for condensate prey: in a predator-prey world whose prey matter is n | established | c46 | `collective/contrib/20261026T1851-c46-driven-prey-fuel-fork` |
 | `` | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed 0, track 22) dies wi | established | c44 | `collective/contrib/20261026T1706-c44-cips-gen4-track-cut` |
@@ -149,12 +151,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it is redrawn every cycl | established | c00 | `collective/contrib/20261026T1530-c00-marangoni-minority-lineages` |
 | `` | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an absorbing fuel moat  | established | c44 | `collective/contrib/20261026T1525-c44-cips-moat-cut` |
 | `` | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-registered in 20261026T | established | c42 | `collective/contrib/20261026T1511-c42-arena-heldout` |
-| `` | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIPS condensates either | established | c41 | `collective/contrib/20261026T1505-c41-cips-parasite-finding` |
-| `` | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs space: predators an | established | c42 | `collective/contrib/20261026T1415-c42-coexistence-arena-size` |
 
 ## Mechanisms, laws and negative results
 
-- **Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): predators that live long enough to divide at labkit's default 2000 t window (slower decay or satiation) eat the prey out; in 8 variants no run has both kinds dividing at K=20** (negative): predator persistent splits (gen) / prey components at end / prey persistent splits: kq.0025 8(2)/1/0; kq.002 0/0/0; kq.0015 0/0/0; Ksat.3 k2.4 0/65/7(gen1); Ksat.1 k2.8 0/68/5(gen1); Ksat1 k2.3 2(1)/8 `collective/contrib/20261026T1359-c42-predator-lifespan-tradeoff`
 - **Coexistence in the condensate food chain where both kinds divide needs space: predators and prey coexist to t=12000 on 0/4 seeds at 32^2, 2/4 at 48^2, 3/4 at 64^2, 4/4 at 96^2 and 3/3 at 128^2, as in the spatial Rosenzweig-MacArthur control** (positive): coexisting seeds: 32^2 0/4, 48^2 2/4, 64^2 3/4, 96^2 4/4 (128^2 3/3 and 256^2 1/1 in the claim's packs); predator last-alive t in failing runs 3700, 4900, never, 4700, 5400, 11600 `collective/contrib/20261026T1415-c42-coexistence-arena-size`
 - **Negative for predation: a parasitic autocatalyst on c40's dividing CIPS condensates either eats every body and starves (fast kinetics, 5 screens) or, at 100x slower rates, settles as one condensate inside every body that shrinks it and nearly stops its division (seed 0: 15 vs 18 bodies in the c-free twin; seed 1: 17 vs 19); no free-living predator individuals** (negative): fast kinetics: prey 12 -> 0 within 150-250 t then c extinct (or c dies first); slow kinetics: c inside 15/16 and 18/18 bodies, prey at t=15500 15 vs 18 (seed 0) and 17 vs 19 (seed 1) in the twin, body `collective/contrib/20261026T1505-c41-cips-parasite-finding`
 - **Held-out arena sizes for condensate predator-prey coexistence, pre-registered in 20261026T1507-c42-intent-arena80: 80^2 coexists on 4/4 fresh seeds (predicted >= 3/4), 40^2 on 1/4 (predicted <= 2/4)** (positive): 80^2 4/4 coexist (prediction >= 3/4: met); 40^2 1/4 (prediction <= 2/4: met); series 32/40/48/64/80/96: 0/4, 1/4, 2/4, 3/4, 4/4, 4/4 `collective/contrib/20261026T1511-c42-arena-heldout`
@@ -168,6 +167,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **The named generation-4 body of the low-noise layered CIPS claim (seed 0, track 22) dies within 50 t when an absorbing moat cuts its own fuel, while the fed twin keeps it and all 16 other bodies stay** (positive): track 22 (generation 4) and track 11 dead by t=25050 and t=25025; fed twin and 16 outside bodies kept `collective/contrib/20261026T1706-c44-cips-gen4-track-cut`
 - **Negative (artifact warning): a plug-flow reactor makes the layered CIPS world reach labkit generation 16, but the generations are buds shed by one body anchored at the inlet, not repeated division of free bodies** (negative): vflow 0.02: labkit generation 16 and 52 persistent splits, but generated by an inlet-anchored body budding; vflow 0.01: generation 6 `collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche`
 - **Negative first pass at the chasing-consumer question: a nonreciprocal drift of the conserved consumer up the prey field wraps prey rather than freeing hunters (free consumer share 8% -> 10% -> 16% at chih 0/5/10, prey halve at chih 10); dt=0.1 reproduces the consumer claim's coexistence** (negative): free consumer share 0.071/0.103/0.156 at chih 0/5/10 (dt 0.1, seed 0, t=1000-2000); prey 41/33/21 at t=3000 `collective/contrib/20261026T1800-c43-chasing-consumer`
+- **Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one screened parameter that shifts the whole per-cycle swim distance and keeps division (median D 1.62 -> 2.10 and 1.11 -> 1.85 rod lengths, share >= 2.5 from 0 to 0.36 and 0.20, splits 85-96% of base, seeds 70-71); a lower bath lengthens swims but cuts divisions to 20-37%** (positive): median per-cycle D of dividing rods 1.62->2.10 (s70), 1.11->1.85 (s71); share D>=2.5 0->0.36, 0->0.20; persistent splits 25->24, 27->23; pooled diff CI [+0.15,+1.14], p=0.0003; phi_b -0.65: D +0.38/+1 `collective/contrib/20261026T1835-c45-marangoni-swim-screen`
 - **E not by construction for condensate prey: in a predator-prey world whose prey matter is never made from fuel, cutting the fuel dissolves every prey body within 500 t on 2 seeds (with and without predators) while the prey material stays in solution, and the predators then grow on the dissolved prey** (positive): prey bodies 23/25 -> 0/0 within 500 t (fed twins 23/24 at t=7000); predator-free 19/12 -> 0/0 with prey material conserved (mean 0.252, 0.246 unchanged); predator material doubles after the cut `collective/contrib/20261026T1851-c46-driven-prey-fuel-fork`
 
 ## Corrections (32 contradicted claims)
