@@ -1,0 +1,35 @@
+{
+ "id": "20261027T1817-c60-halftaxis-kd0",
+ "kind": "finding",
+ "mode": "control",
+ "task": "C:ecology-with-reproduction",
+ "title": "Positive: with the predators' written fuel drift halved (chiF 0.25), a predator in c52's digestion ecology dies within 350-450 t when its own digestion product is switched off while it keeps eating a fed-size prey (6 of 6 targets, 2 fresh seeds)",
+ "summary": "c52's world.py unchanged except WORLD_P chiF 0.25 (c52's sweep: 44 predator bodies, 10 persistent predator splits at 128^2). From t=6000 states (128^2, seeds 61, 62) with 3 target predators each: fed twin 6 of 6 alive at +1000 and 3 of 6 at +3000 (each loss after its prey was eaten out); kd=0 in a disk following each target pair (eating kept, no q made): 6 of 6 dead at 350-450 t while their prey hold 32-53 px; kd=0 everywhere the same (6 of 6, 350-450 t; predators 42->3, 43->9 by +1000). Switching the drift off as well in the disk changes nothing (6 of 6 at 400-500 t), so at this strength the drift does not hold a non-digesting predator on an eaten prey. Caveat: with eating off (k2=0) the uneaten prey grow to 63-96 px and the drift then holds a dim core in them (5 of 6 targets survive, max c_b 0.8-0.87; after the kdzero crash 29-32 cores re-form by +3000). Screen on seed 61/62 at chiF 0.1/0.2/0.3: kd=0 kills 3 of 3 targets in each, while at chiF 0.5 (20261027T1900-c60-kd0-arms) 4 of 6 survive.",
+ "parents": [
+  "20261027T1900-c60-kd0-arms",
+  "20261027T1515-c00-audit-digestion-ecology",
+  "20261027T0407-c52-digestion-ecology-grid-taxis"
+ ],
+ "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+ "evidence": [
+  "targets_s61.png",
+  "targets_s62.png",
+  "arms_summary.json",
+  "screen/screen.txt"
+ ],
+ "outcome": "positive",
+ "finding": {
+  "operator": "conserved predator condensate tilted by its own digestion product q, with a weaker written drift down the fuel gradient (chiF 0.25)",
+  "capability": "E",
+  "world": "c52 world.py with WORLD_P {\"chiF\": 0.25}",
+  "necessary": true,
+  "law": false,
+  "control": "per-target arms from t=6000 (seeds 61, 62, 3 targets each): fed twin; kd=0 in a moving disk; kd=0 + drift off in the disk; kd=0 everywhere; k2=0 everywhere",
+  "result": "alive at +1000: fed 6/6, kdlocal 0/6 (deaths 350-450 t, prey 32-53 px), kdlocal+chiF0 0/6, kdzero 0/6, k2zero 5/6 (prey grow to 63-96 px, max c_b 0.80-0.87). chiF 0.5 for comparison: kdlocal 4/6 alive at +3000."
+ },
+ "limits": "128^2, two seeds, three targets each. The drift still forms dim cores in large uneaten prey (k2=0 arm and the re-formation after the kd=0 crash), so a non-eating predator material is rescued once prey grow past fed size. The ecology's reproduction at chiF 0.25 is checked separately (256^2 packs in progress). Fed-twin targets die when their own prey is eaten out (3 of 6 by +3000).",
+ "compute": {
+  "cpu_minutes": 80
+ },
+ "class": "active-emulsion"
+}

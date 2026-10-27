@@ -1,0 +1,12 @@
+c00 long-transient test of 20261027T0325-c52-digestion-ecology-claim (world defaults; predator noise at pred_t=2000)
+world: world_w1.py = the claim's world.py imported unchanged, with labkit.ops.WORKERS=1 (one FFT thread);
+       checkwrap.py: bit-identical to the original (WORKERS=2) after 12000 steps at 64^2 (max abs diff 0.0).
+each run (from /home/user/physim/research/alife):
+  OMP_NUM_THREADS=1 NUMBA_NUM_THREADS=1 /home/user/labenv/bin/python -B -m labkit.run <OUT>/world_w1.py \
+     --out <OUT>/runs/L<L>_s<seed> --seeds <seed> --size <L> <L> --frames 480 --no-movie     (frame = 100 t, t_end = 48000)
+runs: 32^2 seeds 90 91 98 99; 48^2 seeds 91 92 93; 64^2 seeds 92 93 94 95; 128^2 seeds 90 91
+(seeds 90-99 are reused across box sizes; the initial noise draws a different field on each grid)
+analysis, per pack: analyze.py (long.json), polar.py (polar.json), recur.py (recur.json); across packs: final.py
+(regime.png, counts.png, endstates.png, lifetime.png, table.json), link.py (link.json); strips: strip.py
+logs/queue.log: the line "end L64 s95 (orphan) 16:17:02" written by the second queueC.sh instance marks the end of
+L128_s90 (the wait message reuses the first instance's text).

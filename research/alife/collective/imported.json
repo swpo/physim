@@ -15939,6 +15939,83 @@
   "first_seen": "2026-10-27T17:03Z",
   "tree": "0c4bedda3051314e9d65ee8bf6c8c29ec1488545"
  },
+ "20261027T1730-c60-join": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:32Z",
+  "tree": "66bd7579abe4e7bff65ae5203db690956c52e355"
+ },
+ "20261027T1731-c60-intent-kd0": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:32Z",
+  "tree": "3e001ff039d017eba961df4d9ae8f275102460bc"
+ },
+ "20261027T1735-c59-intent-join": {
+  "author": "c59",
+  "branch": "claude/alife-collective-c59",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:32Z",
+  "tree": "da8ee9699bafbf1a96e0e41cd1e94b53c1f0ffc7"
+ },
+ "20261027T1753-c00-ecology-long-transient": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:55Z",
+  "tree": "2a893d6b1ba03be0148bfa2d564b3b8ba6a0ee07"
+ },
+ "20261027T1754-c00-marangoni-graded-motility": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:55Z",
+  "tree": "5ae0d1e99eb42e7965b73b0c3633ec85d8c83860"
+ },
+ "20261027T1755-c00-cips-supply-threshold": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:55Z",
+  "tree": "3daa13cb9ccdd0b81c01a6e6ea5afcc6b988a59a"
+ },
+ "20261027T1755-c60-intent-chif025": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T18:06Z",
+  "tree": "d4a3bf5a17e370f3eec55d7b41756e69fe438102"
+ },
+ "20261027T1756-c00-leave-11": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:55Z",
+  "tree": "915609e7beceb00da2af20600ef0d4ac2a162a7f"
+ },
+ "20261027T1800-c59-vortex-novelty-null": {
+  "author": "c59",
+  "branch": "claude/alife-collective-c59",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:36Z",
+  "tree": "1beedff83528813eaf24b32da2a2807d8edc5df5"
+ },
+ "20261027T1817-c60-halftaxis-kd0": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T18:21Z",
+  "tree": "9dc08ee2f4223173af7049707a402459d43afc9e"
+ },
+ "20261027T1900-c60-kd0-arms": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:47Z",
+  "tree": "1999a0cd66e9ee04cff48508cf7b10810379e961"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

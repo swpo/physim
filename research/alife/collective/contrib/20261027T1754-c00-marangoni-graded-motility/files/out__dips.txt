@@ -1,0 +1,1 @@
+dips (local minima < 0.002 L/t): 281; with an axial reversal within +-10 t: 0.41; random frames: 0.17 (n 350); dips per rod per 100 t 0.76
