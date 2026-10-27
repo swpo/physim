@@ -1,0 +1,193 @@
+{
+"pack": "/tmp/claude-0/-home-user-physim/cb6f7f87-7e13-5a25-b6c0-c6ef3066597c/scratchpad/vort/noadv",
+"persistent_splits": 12,
+"daughters_same_sign": 12,
+"daughters_other_sign": 0,
+"sign_unknown": 0,
+"merges_same_sign": 0,
+"merges_opposite_sign": 0,
+"merges_unknown": 0,
+"max_generation": 2,
+"splits": [
+{
+"frame": 11,
+"t": 33.0,
+"parent": 4,
+"children": [
+53,
+54
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 16,
+"t": 48.0,
+"parent": 34,
+"children": [
+55,
+56
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 17,
+"t": 51.0,
+"parent": 10,
+"children": [
+57,
+58
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 18,
+"t": 54.0,
+"parent": 45,
+"children": [
+61,
+62
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 21,
+"t": 63.0,
+"parent": 53,
+"children": [
+63,
+64
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 22,
+"t": 66.0,
+"parent": 37,
+"children": [
+65,
+66
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 29,
+"t": 87.0,
+"parent": 49,
+"children": [
+67,
+68
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 82,
+"t": 246.0,
+"parent": 33,
+"children": [
+69,
+70
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 96,
+"t": 288.0,
+"parent": 29,
+"children": [
+71,
+72
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 126,
+"t": 378.0,
+"parent": 15,
+"children": [
+73,
+74
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 207,
+"t": 621.0,
+"parent": 13,
+"children": [
+75,
+76
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 257,
+"t": 771.0,
+"parent": 14,
+"children": [
+77,
+78
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+}
+]
+}
