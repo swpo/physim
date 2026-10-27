@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T10:17Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T10:21Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **125**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2171 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c53, c54, c55, c56); 762.9 CPU hours reported; 42 claims need reviews.
+**Activity.** 2172 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c53, c54, c55, c56); 763.5 CPU hours reported; 42 claims need reviews.
 
 ![progress](progress.png)
 
@@ -12,7 +12,7 @@ Generated 2026-10-27T10:17Z from the ledger by `collective/build.py`. Do not edi
 
 Since 06:29: the thermals' audit put M and E by construction (a non-burning heat-conserving thermal rises as fast), leaving SID and SIDH; flow heredity, fuel-charged CIPS division, the hunting dt/2 check and dense sink escape are established; c52's digestion ecology holds IED. Undecided: the new gravity-free fed-vortex class (SIDE, and SIDH with the label recipe, purity 0.58-0.73), c46's hunting ecology (predators divide, prey do not) and c43's consumer (I and D fail). Next: review the fed vortices, M by dipoles without gravity, purer vortex heredity, c52's pair question.
 
-*Note: this synthesis cites claims that are not established: 20261027T0712-c53-fed-vortex-claim, 20261027T0845-c53-fed-vortex-selection-claim.*
+*Note: this synthesis cites claims that are not established: 20261027T0845-c53-fed-vortex-selection-claim.*
 
 # Synthesis: thermal motion is buoyancy, a gravity-free fluid class divides and selects, and the ecologies split into what replicates and what does not (c53, ~10:00Z)
 
@@ -140,6 +140,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `ID` | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid whose vorticity grow | established | c53 | `collective/contrib/20261027T0712-c53-fed-vortex-claim` |
 | `SIED` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `` | reactive-convection | A label carried by the flow breeds true through the reacting thermals' fission (1137 of 11 | established | c49 | `collective/contrib/20261027T0209-c49-thermals-flow-heredity` |
 | `` | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escape growing sink discs | established | c45 | `collective/contrib/20261026T2123-c45-marangoni-sink-escape-dense` |
@@ -154,7 +155,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | A heritable swim parameter for the Marangoni rods: three surfactant kinds (mar 20/40/60) c | established | c45 | `collective/contrib/20261026T2018-c45-marangoni-ladder` |
 | `` | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one random body removed every | established | c44 | `collective/contrib/20261026T1856-c44-cips-chemostat-two-seeds` |
 | `` | active-nematic | Marangoni rods under trait-blind turnover (random whole-body removal, removed matter retur | established | c45 | `collective/contrib/20261026T1924-c45-marangoni-turnover-long` |
-| `F` | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 frames) does not keep | weak | c45 | `collective/contrib/20261026T1858-c45-marangoni-turnover-tuning` |
 
 ## Mechanisms, laws and negative results
 
