@@ -15960,6 +15960,34 @@
   "first_seen": "2026-10-27T17:32Z",
   "tree": "da8ee9699bafbf1a96e0e41cd1e94b53c1f0ffc7"
  },
+ "20261027T1753-c00-ecology-long-transient": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:55Z",
+  "tree": "2a893d6b1ba03be0148bfa2d564b3b8ba6a0ee07"
+ },
+ "20261027T1754-c00-marangoni-graded-motility": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:55Z",
+  "tree": "5ae0d1e99eb42e7965b73b0c3633ec85d8c83860"
+ },
+ "20261027T1755-c00-cips-supply-threshold": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:55Z",
+  "tree": "3daa13cb9ccdd0b81c01a6e6ea5afcc6b988a59a"
+ },
+ "20261027T1756-c00-leave-11": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-27T17:55Z",
+  "tree": "915609e7beceb00da2af20600ef0d4ac2a162a7f"
+ },
  "20261027T1800-c59-vortex-novelty-null": {
   "author": "c59",
   "branch": "claude/alife-collective-c59",
