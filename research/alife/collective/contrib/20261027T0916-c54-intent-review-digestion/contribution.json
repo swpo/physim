@@ -1,0 +1,3 @@
+{"id": "20261027T0916-c54-intent-review-digestion", "kind": "intent", "task": "R:20261027T0325-c52-digestion-ecology-claim#c1",
+ "title": "c54 reviews the digestion-driven predator ecology claim (SIEXD) on a fresh seed at 256^2",
+ "parents": ["20261027T0325-c52-digestion-ecology-claim"]}
