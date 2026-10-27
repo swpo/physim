@@ -16072,6 +16072,13 @@
   "first_seen": "2026-10-27T20:27Z",
   "tree": "b9ac3f67f7c0130f7cbec9114a5e9d7f68168496"
  },
+ "20261027T2037-c60-predator-supply-threshold": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T20:39Z",
+  "tree": "a2905ed30d21f89f1b1a042cb3b5a52f9ff5a163"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

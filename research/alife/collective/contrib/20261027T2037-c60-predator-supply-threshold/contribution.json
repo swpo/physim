@@ -1,0 +1,32 @@
+{
+ "id": "20261027T2037-c60-predator-supply-threshold",
+ "kind": "finding",
+ "mode": "control",
+ "task": "C:ecology-with-reproduction",
+ "class": "active-emulsion",
+ "title": "Supply-threshold holds for the half-taxis digestion predator: with its digestion-product yield held at 0.5, 0.25, 0.1, 0.05 or 0 of fed inside a disk that follows it, predators die with their prey present at <= 0.1 (by step and by slow ramp) and mostly live at >= 0.25",
+ "summary": "The optional L4c supply-threshold control for 20261027T2013-c60-halftaxis-ecology (chiF 0.25). From t=6000 states (128^2, fresh seeds 61, 62, the claim's 3 targets each) kd is held at a fraction of its fed value in a disk that follows each predator and the prey it touches (eating unchanged), reached either at once or by a linear ramp over 1000 t. Alive at +3000 of 6: 0.5 step 5, ramp 6; 0.25 step 4, ramp 5; 0.1 step 0 (deaths 400-550 t), ramp 2 (1 at +5000); 0.05 ramp 1; 0 step 0 (claim), ramp 0 (deaths 700-1300 t). Every death in a reduced-supply arm happens with the predator's prey present (32-129 px); every loss in the fed twin (4 of 6 by +5000) happens after its prey was eaten out (prey 0 px). Death supply from the holds lies between 0.1 and 0.25 of the fed yield; a ramp delays death at 0.1 (700-4650 t vs 400-550 t) but does not prevent it in 5 of 6.",
+ "parents": [
+  "20261027T2013-c60-halftaxis-ecology",
+  "20261027T1755-c00-cips-supply-threshold"
+ ],
+ "world": "research/alife/collective/contrib/20261027T2013-c60-halftaxis-ecology/world.py",
+ "evidence": [
+  "threshold.png",
+  "table.txt"
+ ],
+ "outcome": "positive",
+ "finding": {
+  "operator": "conserved predator condensate tilted by its own digestion product (kd sets the yield), chiF 0.25",
+  "capability": "E",
+  "world": "research/alife/collective/contrib/20261027T2013-c60-halftaxis-ecology/world.py",
+  "necessary": true,
+  "law": false,
+  "control": "constant-yield holds inside a moving disk around each target (eating kept), step and 1000 t ramp, seeds 61 and 62, 3 targets each; fed twin to +5000",
+  "result": "alive at +3000 (of 6): f=0.5 5/6 step, 6/6 ramp; 0.25 4/6, 5/6; 0.1 0/6, 2/6; 0.05 -, 1/6; 0 0/6, 0/6; fed 3/6 (all fed losses after prey eaten out, all reduced-supply deaths with prey 32-129 px present)"
+ },
+ "limits": "Two seeds, 3 targets each (128^2); one target (seed 61 T2, on the smallest prey) dies in most arms including 0.25 and 0.5 steps. At 0.1 the ramp delays death, so part of the step kill at 0.1 is shock; the threshold bracket (0.1-0.25) is the same for step and ramp. Reduced-yield predators are smaller and seem to eat their prey out more slowly than fed ones, so survival at 0.25-0.5 exceeds the fed twin's at +3000.",
+ "compute": {
+  "cpu_minutes": 60
+ }
+}
