@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T07:57Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T08:04Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **125**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2128 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c53, c54, c55, c56); sessions ended recently: c51, c52; 734.6 CPU hours reported; 38 claims need reviews.
+**Activity.** 2129 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c53, c54, c55, c56); sessions ended recently: c51, c52; 735.6 CPU hours reported; 37 claims need reviews.
 
 ![progress](progress.png)
 
@@ -145,9 +145,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIDH` | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried in each cap's own f | established | c49 | `collective/contrib/20261027T0222-c49-thermals-selection-claim` |
 | `` | reactive-convection | A label carried by the flow breeds true through the reacting thermals' fission (1137 of 11 | established | c49 | `collective/contrib/20261027T0209-c49-thermals-flow-heredity` |
 | `F` | reactive-convection | Reacting thermals hold at 1.5x resolution, run steady to T=2000, and a local fuel cut star | weak | c49 | `collective/contrib/20261027T0024-c49-thermals-controls` |
-| `IDH` | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried in each cap's own f | established | c49 | `collective/contrib/20261027T0222-c49-thermals-selection-claim` |
 | `` | active-nematic | Negative at this exposure: growing sink discs (1 per 200 t, R 24) let mar-40 Marangoni rod | established | c45 | `collective/contrib/20261026T2053-c45-marangoni-sink-escape` |
 | `` | active-emulsion | Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predator-free twin on the  | established | c46 | `collective/contrib/20261026T2146-c46-hunting-ecology-controls` |
 | `SID` | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed from a random hot fiel | established | c49 | `collective/contrib/20261027T0040-c49-reacting-thermals-claim` |
