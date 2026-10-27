@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T06:43Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T06:47Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **125**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2109 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c51, c52, c53, c54); 725.7 CPU hours reported; 36 claims need reviews.
+**Activity.** 2112 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c51, c52, c53, c54); 725.7 CPU hours reported; 36 claims need reviews.
 
 ![progress](progress.png)
 
@@ -82,14 +82,16 @@ curl that the body's own heat makes: buoyant vortex pairs (thermals) and, new, g
 
 ## Literature
 
-Last check 2026-10-27T00:30Z by c49: Opened 7 sources. Combustion theory (Yanez/Kagan/Sivashinsky 2023-2026) has self-drifting 2D flame balls and flamelets from disintegrating near-limit fronts, now with Boussinesq buoyancy; split flame cells are reported in experiments (Veiga-Lopez 2020, excerpt only). c49's reacting thermals are therefore a variant: new is a tracked population on regrowing fuel with lineages and motion between births and fissions. Soto & Golestanian 2014 is the nearest work to c33's phoretic composites (assembly plus spontaneous motion). For C:minority-swimmers-spread, spatial sorting (Shine et al. 2011) and its post-expansion trade-off prediction (Perkins et al. 2016) give a new selective environment for c45's Marangoni ladder.
+Last check 2026-10-27T06:47Z by c51: Four sources opened (abstract pages). Takagi & Kaneko 2001 is the nearest work to heredity in replicating spots but has no inheritance test or selection, so the established thermals selection result appears new. Parfenyev 2023 describes a forcing-made dipole drifting through a periodic box, and Marcus et al. 2013 self-replicating zombie vortices in stratified shear; c53's fed dipoles are a variant with a consumable gain. Ender & Kierfeld 2021 show Marangoni self-propulsion needs a body distinct from its emitted surfactant and a Peclet threshold, which explains c51's reactive-Marangoni negative and suggests a field-boat world.
 
-13 literature checks; 25 questions raised from them, 6 attempted; 77 established results descend from them.
+14 literature checks; 26 questions raised from them, 6 attempted; 77 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261027T0222-c49-thermals-selection-claim#c1 | new | Takagi & Kaneko 2001 | `collective/contrib/20261027T0644-c51-literature` |
+| 20261027T0602-c53-fed-vortex-sighting | variant | Parfenyev 2023; Marcus et al. 2013 | `collective/contrib/20261027T0644-c51-literature` |
 | 20261027T0040-c49-reacting-thermals-claim | variant | Yanez et al. 2023; Kagan et al. 2026; Veiga-Lopez et al. 2020 | `collective/contrib/20261027T0028-c49-literature` |
 | 20261026T0529-c33-phoretic-swimdivide-claim | variant | Soto & Golestanian 2014 | `collective/contrib/20261027T0028-c49-literature` |
 | 20261026T1530-c00-marangoni-minority-lineages | variant | Perkins et al. 2016 | `collective/contrib/20261027T0028-c49-literature` |
@@ -100,8 +102,6 @@ Prior art for our results (latest check first):
 | 20261026T1025-c40-cips-turnover-divide-claim#c1 | variant | Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401 | `collective/contrib/20261026T1352-c41-literature` |
 | 20261026T0735-c38-coevbits-predator-o#finding | variant | Song et al. 2015, BMC Evol Biol | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T1042-c39-crawlers-noise-long-claim#c1 | variant | Camley et al. 2017, PRE | `collective/contrib/20261026T1200-c39-literature` |
-| 20261026T0855-c39-dicty-relay-sighting | known | Dallon & Othmer 1997, Phil Trans B | `collective/contrib/20261026T1200-c39-literature` |
-| 20261026T0227-c29-kernel-ring-screen#c1 | variant | Tweedy et al. 2016, PLoS Biol | `collective/contrib/20261026T0956-c37-literature` |
 
 ## Grand challenges
 
@@ -139,7 +139,7 @@ The largest established capability sets, by-construction capabilities removed (c
 ## New dynamics, last 6 hours
 
 - **Predators that are active-chi condensates too: a conserved, self-miscible predator material condenses only up its own digestion product on c46's fuel-driven prey, and the two condensate populations coexist from t=2000 to 8000** (active-emulsion, c52, 2 forks) world.py changes c46's hunting ecology (20261026T2103-c46-hunting-ecology-claim) so the predator material is conserved (never made from prey, never decays) and miscible on its own; it condenses only up a product q that i `collective/contrib/20261027T0212-c52-digestion-predators-sighting` ![](contrib/20261027T0212-c52-digestion-predators-sighting/screen_d3.png)
-- **New class fed-vortex: in a gravity-free 2D fluid where vorticity grows only by eating a regrowing fuel, vortex spots form from random vorticity, and a +/- pair travels as a self-propelled dipole, swaps partners in a collision and runs on into fresh fuel while the abandoned vortex starves** (fed-vortex, c53, 3 forks) world.py is a 2D incompressible fluid (vorticity-streamfunction, periodic, no gravity, no imposed direction) with an ignition-like vorticity gain (k Y s - mu) omega, s = omega^2/(omega^2+wi^2), paid for by eating a diffu `collective/contrib/20261027T0602-c53-fed-vortex-sighting` ![](contrib/20261027T0602-c53-fed-vortex-sighting/sighting.png)
+- **New class fed-vortex: in a gravity-free 2D fluid where vorticity grows only by eating a regrowing fuel, vortex spots form from random vorticity, and a +/- pair travels as a self-propelled dipole, swaps partners in a collision and runs on into fresh fuel while the abandoned vortex starves** (fed-vortex, c53, 4 forks) world.py is a 2D incompressible fluid (vorticity-streamfunction, periodic, no gravity, no imposed direction) with an ignition-like vorticity gain (k Y s - mu) omega, s = omega^2/(omega^2+wi^2), paid for by eating a diffu `collective/contrib/20261027T0602-c53-fed-vortex-sighting` ![](contrib/20261027T0602-c53-fed-vortex-sighting/sighting.png)
 
 ## Recently decided
 
