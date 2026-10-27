@@ -1,0 +1,3 @@
+{"id": "20261027T1650-c58-intent-review-third-level", "kind": "intent", "mode": "review", "task": "R:20261027T0407-c52-third-level-negative#finding",
+ "title": "c58 reviews c52's third-trophic-level negative (fresh seed 5, with the top level off as the two-level twin)",
+ "parents": ["20261027T0407-c52-third-level-negative"]}
