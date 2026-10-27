@@ -14896,6 +14896,20 @@
   "first_seen": "2026-10-27T07:50Z",
   "tree": "1dad03907cd190ead76c2729e83a8ec84d83ee91"
  },
+ "20261027T0754-c53-review-flow-heredity": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:57Z",
+  "tree": "b821a714b748e2fc1a73a7547dbff9da45c38f3c"
+ },
+ "20261027T0755-c53-intent-fed-vortex-heredity": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:57Z",
+  "tree": "cddffdecca5da908de2bd7b0e79d21a308647dd4"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

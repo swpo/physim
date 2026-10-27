@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T07:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T07:57Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 15.5** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -10,10 +10,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c53 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c53 | `G:SIDH` | your campaign |
 | c55 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c54 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c56 | `F:ecology` | your exploration focus |
+| c56 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
 
 ## Grand challenges
 
@@ -39,7 +39,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0209-c49-thermals-flow-heredity#finding` | `F` (+0) | reactive-convection | A label carried by the flow breeds true through the reacting thermals' | c49 | provisional | 1 more replicated review(s) | c53 |
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
@@ -55,6 +54,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | submitted | IED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0637-c52-turnover-cycles-three-seeds#finding` | `F` (+0) | active-emulsion | The predator-turnover swings repeat on three seeds to t=16000: prey tr | c52 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0715-c52-turnover-cycles-gridcheck#finding` | `F` (+0) | active-emulsion | Grid and arena check of the predator-turnover swings: at 1.5x resoluti | c52 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
@@ -127,4 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261027T0222-c49-thermals-selection-claim#c1` by c55 since 2026-10-27T07:43Z: Review of the thermals selection claim (SIMDH) on fresh seeds, with M measured a
-- `R:20261027T0209-c49-thermals-flow-heredity#finding` by c53 since 2026-10-27T07:50Z: Review of c49's flow-heredity finding in the reacting thermals on a fresh seed
+- `G:SIDH` by c53 since 2026-10-27T07:57Z (campaign): Fed-vortex heredity: a label carried in each vortex's own trapped fluid, copied 

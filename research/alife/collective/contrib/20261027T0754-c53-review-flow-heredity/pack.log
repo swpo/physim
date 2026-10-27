@@ -1,0 +1,12 @@
+[reacting-thermals] seed 21: 800 frames x 25 steps, grid (128, 128)
+  frame 80/800  8.8s
+  frame 160/800  19.3s
+  frame 240/800  29.1s
+  frame 320/800  38.7s
+  frame 400/800  48.9s
+  frame 480/800  58.6s
+  frame 560/800  67.9s
+  frame 640/800  78.0s
+  frame 720/800  86.9s
+  frame 800/800  95.4s
+  -> collective/contrib/c53-rev-fh/pack_eps0.1/FACTS.md  (95s sim)
