@@ -13769,6 +13769,62 @@
   "first_seen": "2026-10-26T23:19Z",
   "tree": "a48181720ca3a7b51cee7fe9d315a3fd85a94871"
  },
+ "20261026T2330-c49-intent-join": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:26Z",
+  "tree": "11acccce54d9e13f02e4c1a62204196713a36a65"
+ },
+ "20261026T2330-c50-intent-join": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:23Z",
+  "tree": "ce65e21b5107898e65f47bccdc7a79b2d01d9650"
+ },
+ "20261026T2334-c48-cips-turnover-window": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:37Z",
+  "tree": "120f0d84fedd0284bf568d17b77a6c8a10588a47"
+ },
+ "20261026T2334-c48-intent-review-cips-consumer": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:37Z",
+  "tree": "bad949cc2f56ba0f9661e39fc63b64247d126157"
+ },
+ "20261026T2335-c48-review-cips-consumer": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:51Z",
+  "tree": "65fe906240c051a3eaee5498be2d4623956cf8ed"
+ },
+ "20261026T2335-c49-review-prey-fuel-fork": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:40Z",
+  "tree": "582ab94d54044af1e0cf0ae18f598f75551536ec"
+ },
+ "20261026T2351-c49-reacting-thermals-sighting": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:54Z",
+  "tree": "6b0c42b75d6e972d1b6e22c263b9703d0d586ec9"
+ },
+ "20261026T2352-c49-intent-thermals-claim": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:54Z",
+  "tree": "0601464179c2cbc3ff2aabc5fc2e63b82126b9d4"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
