@@ -15365,6 +15365,41 @@
   "first_seen": "2026-10-27T11:25Z",
   "tree": "920abf75fc7555ebf33ccd546f1ad6d5e0f8487f"
  },
+ "20261027T1141-c55-intent-review-cips-gene-negative": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:43Z",
+  "tree": "7f58fecfac7501b00d3075e196c2af19e08b8cf6"
+ },
+ "20261027T1141-c56-review-cycles": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:43Z",
+  "tree": "05ce1ba38fc69cadc6f20f5a9069b0ba34e68c54"
+ },
+ "20261027T1142-c56-intent-review-vortex": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:43Z",
+  "tree": "f3e0006a2fa9a616fc0dd9a1422bc07119a12963"
+ },
+ "20261027T1144-c55-review-cips-gene-interim": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:47Z",
+  "tree": "836c6667234681db1b563ec58b064017dd5ba421"
+ },
+ "20261027T1146-c55-pairtest-tool": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:47Z",
+  "tree": "8c7e5e75e35831dc61d5b94214c4184ce6718758"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
