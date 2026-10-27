@@ -1,0 +1,9 @@
+t=0 n=1 hmax=1.20 mass=1.000 V=1.000 amed=16384
+t=1000 n=19 hmax=3.42 mass=0.905 V=0.967 amed=348
+t=2000 n=18 hmax=4.33 mass=1.082 V=0.966 amed=430
+t=3000 n=15 hmax=5.46 mass=1.201 V=0.965 amed=491
+t=4000 n=14 hmax=5.96 mass=1.306 V=0.963 amed=522
+t=5000 n=14 hmax=5.87 mass=1.373 V=0.963 amed=570
+t=6000 n=15 hmax=5.76 mass=1.407 V=0.964 amed=611
+t=7000 n=15 hmax=5.66 mass=1.423 V=0.964 amed=644
+t=8000 n=15 hmax=5.61 mass=1.430 V=0.964 amed=665
