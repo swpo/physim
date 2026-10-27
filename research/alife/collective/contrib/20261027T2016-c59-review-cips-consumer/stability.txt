@@ -1,0 +1,5 @@
+c59: numerical screen of c43's world.py at its default world step dt 0.25 (first 1200 steps = t 300), seeds 0-2 and 90-99:
+0 ok (max r 0.54); 1 ok (0.54); 2 ok (0.53); 90 ok (0.52); 91 BLOWUP at step 157 (t~39, r non-finite); 92 ok (0.52);
+93 ok (0.53); 94 ok (0.52); 95 BLOWUP step 143; 96 BLOWUP step 150; 97 ok but max r 1.13 (>1, so the factor (1-r) changes sign); 98 ok; 99 ok.
+At the world's own dt 0.125 and 0.0625 (WORLD_P), seeds 91, 95, 96 all run to t=300 with max r 0.51-0.53, max q 1.02.
+labkit run of seed 91 at default dt: "RUN FAILED: non-finite fields at frame 1".
