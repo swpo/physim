@@ -1,0 +1,7 @@
+twinf_s503: bodies inside a disc's final radius one frame after it opened: 34; escape 22, dissolve 12, stay 0; escape share 0.65
+  by kind (escape/dissolve/stay): {0: (4, 1, 0), 1: (17, 7, 0), 2: (1, 4, 0), None: (0, 0, 0)}
+  selection (relative descendants at birth + 2 median cycles (82 frames) on standardized D, speed, straightness; n=11, mean descendants 1.36):
+    gradient on D: +0.483 [-0.078, +1.129]
+    gradient on path speed: +0.322 [-0.341, +0.881]
+    gradient on straightness: -0.373 [-0.990, +0.441]
+  dividing tracks 11: median D 1.84, D>=3 1, median path speed 0.207, median cycle 205

@@ -1,0 +1,12 @@
+[reacting-thermals] seed 9: 600 frames x 25 steps, grid (256, 256)
+  frame 60/600  15.6s
+  frame 120/600  30.5s
+  frame 180/600  45.6s
+  frame 240/600  60.1s
+  frame 300/600  74.9s
+  frame 360/600  90.2s
+  frame 420/600  104.4s
+  frame 480/600  119.3s
+  frame 540/600  134.9s
+  frame 600/600  150.0s
+  -> collective/contrib/20261027T0230-c51-review-thermals/res2x/FACTS.md  (150s sim)
