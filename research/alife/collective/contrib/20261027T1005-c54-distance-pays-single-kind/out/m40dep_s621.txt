@@ -1,0 +1,41 @@
+== m40dep_s621: 401 frames, 96 tracks
+frame  bodies  k0 k1 k2 (pure>=0.6)  trait_mean(ladder value)  area-weighted
+    0      0     0   0   0      nan      nan
+   20     11     0  11   0    40.00    40.00
+   40     19     0  19   0    40.00    40.00
+   61     18     0  18   0    40.00    40.00
+   81     15     0  15   0    40.00    40.00
+  101     12     0  12   0    40.00    40.00
+  121     13     0  13   0    40.00    40.00
+  141     10     0  10   0    40.00    40.00
+  161     11     0  11   0    40.00    40.00
+  182     11     0  11   0    40.00    40.00
+  202     11     0  11   0    40.00    40.00
+  222     12     0  12   0    40.00    40.00
+  242     15     0  15   0    40.00    40.00
+  262     17     0  17   0    40.00    40.00
+  282     15     0  15   0    40.00    40.00
+  303      9     0   9   0    40.00    40.00
+  323      9     0   9   0    40.00    40.00
+  343      7     0   7   0    40.00    40.00
+  363      8     0   8   0    40.00    40.00
+  383      8     0   8   0    40.00    40.00
+  400      8     0   8   0    40.00    40.00
+mutation events 0; from->to counts [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+kind changes along tracks: 0; at a logged mutation: 0; unexplained (conversions): 0
+persistent splits by parent kind k0/k1/k2: [0, 24, 0]; daughters checked 48, off-kind 0
+merge products by kind: [0, 9, 0]; merges of two different kinds: 0
+vanishings (no children, before run end) by last kind: [0, 31, 0]
+dividing tracks 11; median cycle 94.0 frames (470 t)
+kind  n_div  medD  sh_pass(rl)  sh_pass(sqrtA)  v_path  cycle
+k0  0
+k1    11  2.92  5/11  10/11  0.158 470
+k2  0
+cohort(birth frames)  n_div  trait_mean_of_dividers  pass_rl  pass_sqrtA  k0/k1/k2
+    0- 93     2   40.00  1/2  2/2  [0, 2, 0]
+   94-187     4   40.00  2/4  4/4  [0, 4, 0]
+  188-281     5   40.00  2/5  4/5  [0, 5, 0]
+descendants alive at birth + 2 median cycles, passers (rl) vs non-passers, by kind:
+  k0: passers n=0 mean nan; non-passers n=0 mean nan
+  k1: passers n=3 mean 1.33; non-passers n=4 mean 0.25
+  k2: passers n=0 mean nan; non-passers n=0 mean nan

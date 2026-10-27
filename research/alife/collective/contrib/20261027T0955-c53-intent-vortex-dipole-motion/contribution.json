@@ -1,0 +1,4 @@
+{"id": "20261027T0955-c53-intent-vortex-dipole-motion", "kind": "intent", "mode": "extend", "task": "explore:fed-vortex-dipole-motion",
+ "title": "Measure motion in the dividing fed-vortex regime: per-cycle travel of dividing vortices, and how much of it happens while paired with an opposite-sign partner (a self-propelled dipole)",
+ "summary": "Analysis of the fed-vortex claim's packs (seeds 0-2): for each vortex born by a split that divides again, net travel in sqrt(area) and long axes, and the fraction of its life spent with an opposite-sign vortex within 2.5 sqrt(area).",
+ "parents": ["20261027T0712-c53-fed-vortex-claim", "20261027T0954-c53-synthesis"], "class": "fed-vortex"}

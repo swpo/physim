@@ -1,0 +1,26 @@
+{
+"pack": "../20261027T0602-c53-fed-vortex-sighting/pack_spots/seed1",
+"speed_per_t_in_sqrtA": {
+"opp": {
+"n": 709,
+"median": 0.008806341261245009,
+"mean": 0.015955741952534155
+},
+"same": {
+"n": 91,
+"median": 0.021019781807297737,
+"mean": 0.02531141236164576
+},
+"none": {
+"n": 521,
+"median": 0.00418108296991596,
+"mean": 0.008965176785566232
+}
+},
+"dividing": 0,
+"pass3_sqrtA": 0,
+"pass3_long": 0,
+"pass3_long_mostly_dipole": 0,
+"median_frac_dipole_of_dividing": null,
+"rows": []
+}

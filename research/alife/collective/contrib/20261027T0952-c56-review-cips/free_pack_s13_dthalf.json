@@ -1,0 +1,116 @@
+{
+ "frames_from": 10,
+ "mean_pred": 30.727272727272727,
+ "mean_free": 2.481818181818182,
+ "free_frac": 0.08076923076923077,
+ "tracks10": 70,
+ "track_free_frac_median": 0.0,
+ "tracks_ever_free": 33,
+ "tracks_mostly_free": 0,
+ "detach_events": 33,
+ "free_spells_after_contact": 33,
+ "spell_frames_median": 1.0,
+ "spell_frames_max": 1,
+ "spell_fates": {
+  "reattach": 0,
+  "end": 33,
+  "alive_at_end": 0
+ },
+ "free_end_kind": {
+  "dissolved": 33
+ },
+ "born_free_spells": 0,
+ "hops": 0,
+ "hop_examples": [],
+ "divisions": 6,
+ "div_parent_free": 0,
+ "div_parent_gap_gt6": 0,
+ "div_any_kid_free_t5": 1,
+ "div_all_kids_free_t5": 0,
+ "div_list": [
+  {
+   "t": 3800.0,
+   "y": 67,
+   "x": 53,
+   "parent_gap": 0.0,
+   "kid_gap1": [
+    0.0,
+    0.0
+   ],
+   "kid_gap5": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "t": 4500.0,
+   "y": 73,
+   "x": 114,
+   "parent_gap": 0.0,
+   "kid_gap1": [
+    0.0,
+    0.0
+   ],
+   "kid_gap5": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "t": 4800.0,
+   "y": 78,
+   "x": 54,
+   "parent_gap": 0.0,
+   "kid_gap1": [
+    0.0,
+    0.0
+   ],
+   "kid_gap5": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "t": 6500.0,
+   "y": 56,
+   "x": 88,
+   "parent_gap": 0.0,
+   "kid_gap1": [
+    0.0,
+    0.0
+   ],
+   "kid_gap5": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "t": 7300.0,
+   "y": 82,
+   "x": 91,
+   "parent_gap": 0.0,
+   "kid_gap1": [
+    0.0,
+    0.0
+   ],
+   "kid_gap5": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "t": 7800.0,
+   "y": 65,
+   "x": 41,
+   "parent_gap": 0.0,
+   "kid_gap1": [
+    0.0,
+    0.0
+   ],
+   "kid_gap5": [
+    0.0,
+    3.0
+   ]
+  }
+ ]
+}
