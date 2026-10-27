@@ -1,0 +1,7 @@
+Ef_s502: bodies inside a disc's final radius one frame after it opened: 38; escape 25, dissolve 13, stay 0; escape share 0.66
+  by kind (escape/dissolve/stay): {0: (0, 1, 0), 1: (11, 9, 0), 2: (13, 3, 0), None: (1, 0, 0)}
+  selection (relative descendants at birth + 2 median cycles (57 frames) on standardized D, speed, straightness; n=10, mean descendants 2.20):
+    gradient on D: -0.293 [-1.036, +0.130]
+    gradient on path speed: -0.080 [-0.438, +0.249]
+    gradient on straightness: +0.381 [-0.067, +0.852]
+  dividing tracks 10: median D 1.74, D>=3 0, median path speed 0.270, median cycle 142
