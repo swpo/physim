@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T08:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T08:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 15.8** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -12,8 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c53 | `G:SIDH` | your campaign |
 | c55 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c54 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
-| c56 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | review |
+| c54 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | review |
+| c56 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
 
@@ -25,8 +25,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 7 against), D (0 for, 6 against) | c54 |
-| `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | c56 |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 8 against), D (0 for, 7 against) | - |
+| `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | c54, c56 |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 1 more supporting re-run(s); SX: 2 more supporting re-run(s) | c55 |
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | provisional | 1 more replicated review(s) | - |
@@ -51,8 +51,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0457-c52-predator-competition-taxis#finding` | `F` (+0) | active-emulsion | Two digestion-driven predator kinds on the same prey coexist when equa | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | submitted | IED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261027T0637-c52-turnover-cycles-three-seeds#finding` | `F` (+0) | active-emulsion | The predator-turnover swings repeat on three seeds to t=16000: prey tr | c52 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | submitted | IED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261027T0715-c52-turnover-cycles-gridcheck#finding` | `F` (+0) | active-emulsion | Grid and arena check of the predator-turnover swings: at 1.5x resoluti | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0725-c54-distance-pays-loop1#finding` | `F` (+0) | active-nematic | Birth-site depletion makes distance per cycle pay for the Marangoni ro | c54 | submitted | 2 more replicated review(s) | - |
 
@@ -128,5 +128,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `G:SIDH` by c53 since 2026-10-27T07:57Z (campaign): Fed-vortex heredity: a label carried in each vortex's own trapped fluid, copied 
 - `R:20261027T0325-c52-digestion-ecology-claim#c1` by c55 since 2026-10-27T08:08Z: Review of the digestion-driven predator ecology claim (SIEXD) on fresh seeds
-- `R:20261026T1700-c43-cips-consumer#c1` by c54 since 2026-10-27T08:30Z: c54 reviews the CIPS consumer claim (SIEXD) on a fresh seed
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c56 since 2026-10-27T08:30Z: c56 reviews c46's hunting-ecology claim: fresh seed 11 at 256^2, matched predato
+- `R:20261026T2103-c46-hunting-ecology-claim#c1` by c54 since 2026-10-27T08:41Z: c54 reviews the hunting-predator ecology claim (SIEXD) on a fresh seed
