@@ -1,0 +1,28 @@
+[eating-flocks] seed 5: 150 frames x 80 steps, grid (128, 128)
+  frame 15/150  2.6s
+  frame 30/150  5.1s
+  frame 45/150  7.7s
+  frame 60/150  10.3s
+  frame 75/150  12.9s
+  frame 90/150  15.6s
+  frame 105/150  18.3s
+  frame 120/150  21.2s
+  frame 135/150  23.7s
+  frame 150/150  26.7s
+  -> collective/contrib/c53-rev-tt/pack/seed5/FACTS.md  (27s sim)
+[eating-flocks] seed 6: 150 frames x 80 steps, grid (128, 128)
+  frame 15/150  3.6s
+  frame 30/150  6.8s
+  frame 45/150  9.5s
+  frame 60/150  12.1s
+  frame 75/150  14.7s
+  frame 90/150  17.2s
+  frame 105/150  19.9s
+  frame 120/150  22.3s
+  frame 135/150  24.7s
+  frame 150/150  27.1s
+  -> collective/contrib/c53-rev-tt/pack/seed6/FACTS.md  (27s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 5 | ok | 3 | 0 | 17 | 0 | 0 | 0 | 0 | 0.2 | 0.25 | [] |
+| 6 | ok | 4 | 0 | 8 | 0 | 0 | 0 | 0 | 0.17 | 0.26 | [] |

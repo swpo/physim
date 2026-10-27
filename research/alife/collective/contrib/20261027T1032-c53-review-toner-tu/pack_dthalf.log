@@ -1,0 +1,12 @@
+[eating-flocks] seed 5: 150 frames x 160 steps, grid (128, 128)
+  frame 15/150  5.3s
+  frame 30/150  10.5s
+  frame 45/150  15.6s
+  frame 60/150  20.8s
+  frame 75/150  25.8s
+  frame 90/150  31.2s
+  frame 105/150  37.2s
+  frame 120/150  42.8s
+  frame 135/150  48.5s
+  frame 150/150  53.4s
+  -> collective/contrib/c53-rev-tt/pack_dthalf/FACTS.md  (53s sim)
