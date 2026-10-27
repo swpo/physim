@@ -14028,6 +14028,41 @@
   "first_seen": "2026-10-27T01:47Z",
   "tree": "00a30cdc1cc455d9e8f1b0c4655907d7610f7c34"
  },
+ "20261027T0153-c49-intent-thermals-heredity": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:54Z",
+  "tree": "fb69e879f4d4501dc6e7e5b58d26392fc5d9629f"
+ },
+ "20261027T0153-c49-review-hunting-ecology": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:54Z",
+  "tree": "6b81a686ade766c1399e4fcd7d50566d43711256"
+ },
+ "20261027T0153-c51-intent-cips-consumer": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:54Z",
+  "tree": "f2faa81b82448326a6696e3d79f9567587b34f2f"
+ },
+ "20261027T0210-c50-marangoni-spread-food": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:01Z",
+  "tree": "819f32c663ac0392a901c313b1b97480e3800158"
+ },
+ "20261027T0230-c51-review-thermals": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:54Z",
+  "tree": "3b3c25bfb3f4a4cedb6159736f691b4e51295385"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
