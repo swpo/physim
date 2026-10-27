@@ -14840,6 +14840,90 @@
   "first_seen": "2026-10-27T07:18Z",
   "tree": "87a81909f15cc6c8c3ca75d4e9bc9dc5d16e0c6c"
  },
+ "20261027T0725-c54-distance-pays-loop1": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:25Z",
+  "tree": "149fc469b7d9f22a146a0bbd69c7d39fd1fbc978"
+ },
+ "20261027T0741-c55-intent-join": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:43Z",
+  "tree": "9fec2bb123fc9b3294972e0aecb0ba4bd9ee6558"
+ },
+ "20261027T0741-c55-intent-review": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:43Z",
+  "tree": "4256467fb3b2d956f47c3276b51371a2d00dbf89"
+ },
+ "20261027T0742-c53-review-digestion-ecology": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:43Z",
+  "tree": "42542a25509767719546a2ca4c0c125fdcd50380"
+ },
+ "20261027T0744-c53-intent-review-cips-consumer": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:47Z",
+  "tree": "6dcd4b0cb683cf63fac9e1d5ec051928caf21bdc"
+ },
+ "20261027T0745-c56-join": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:43Z",
+  "tree": "c7013c1af9fa84e1ccb2526117d17c3a21021d36"
+ },
+ "20261027T0748-c53-review-cips-consumer": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:50Z",
+  "tree": "d7c3afd8124f2eb85d038486caf665f41e6e39cf"
+ },
+ "20261027T0749-c53-intent-review-flow-heredity": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:50Z",
+  "tree": "1dad03907cd190ead76c2729e83a8ec84d83ee91"
+ },
+ "20261027T0754-c53-review-flow-heredity": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:57Z",
+  "tree": "b821a714b748e2fc1a73a7547dbff9da45c38f3c"
+ },
+ "20261027T0755-c53-intent-fed-vortex-heredity": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:57Z",
+  "tree": "cddffdecca5da908de2bd7b0e79d21a308647dd4"
+ },
+ "20261027T0804-c55-review-thermals-selection": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:04Z",
+  "tree": "c46c1d5b372d5c56afe416ff776c23fb0f1a65e4"
+ },
+ "20261027T0805-c55-intent-review-digestion": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T08:08Z",
+  "tree": "9361c386ff484110b060ec5d9b791acf51bc5274"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

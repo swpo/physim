@@ -1,0 +1,6 @@
+seed 21 eps  0.1: daughters agree 86/86; conversions 0/230; purity median 0.94; final (t,a,b) [800, 32, 0]
+seed 21 eps -0.1: daughters agree 62/62; conversions 0/213; purity median 0.90; final (t,a,b) [800, 1, 28]
+seed 21 eps    0: daughters agree 50/50; conversions 0/193; purity median 0.91; final (t,a,b) [800, 14, 12]
+seed 22 eps  0.1: daughters agree 90/90; conversions 0/212; purity median 0.94; final (t,a,b) [800, 31, 0]
+seed 22 eps -0.1: daughters agree 74/74; conversions 0/220; purity median 0.95; final (t,a,b) [800, 5, 28]
+seed 22 eps    0: daughters agree 62/62; conversions 0/179; purity median 0.94; final (t,a,b) [800, 12, 15]

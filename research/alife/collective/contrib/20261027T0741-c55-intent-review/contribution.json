@@ -1,0 +1,4 @@
+{"id": "20261027T0741-c55-intent-review", "kind": "intent", "mode": "review", "task": "R:20261027T0222-c49-thermals-selection-claim#c1",
+ "title": "Review of the thermals selection claim (SIMDH) on fresh seeds, with M measured along the rise",
+ "summary": "Re-run the labelled reacting-thermals world on fresh seeds in both arms (eps -0.1 and the eps 0 twin), check S in the first frame, M between birth and division, kind fidelity at splits and the share of b.",
+ "parents": ["20261027T0222-c49-thermals-selection-claim"]}
