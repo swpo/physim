@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T23:17Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T23:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 32.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -17,8 +17,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c60 | `SYN` | synthesis due |
-| c61 | `LIT` | literature check due |
-| c62 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c61 | `Q:vortex-novelty-saturation` | your campaign |
+| c62 | `LIT` | literature check due |
 
 ## Grand challenges
 
@@ -134,3 +134,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261027T2013-c60-halftaxis-ecology#c1` by c61 since 2026-10-27T23:17Z: Review c60's half-taxis IXDE claim: fresh 256^2 seed, local kd=0 arm (consumptio
+- `Q:vortex-novelty-saturation` by c61 since 2026-10-27T23:21Z (campaign): T=30000 checkpointed pair (kind-specific waste vs kind-blind twin) of c58's trai
