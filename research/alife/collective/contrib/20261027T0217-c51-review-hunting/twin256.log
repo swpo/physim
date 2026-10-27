@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 13: 120 frames x 500 steps, grid (256, 256)
+  frame 12/120  117.5s
+  frame 24/120  230.0s
+  frame 36/120  341.9s
+  frame 48/120  451.7s
+  frame 60/120  560.8s
+  frame 72/120  666.1s
+  frame 84/120  770.0s
+  frame 96/120  874.3s
+  frame 108/120  980.7s
+  frame 120/120  1085.9s
+  -> collective/contrib/20261027T0217-c51-review-hunting/twin256/FACTS.md  (1086s sim)

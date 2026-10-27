@@ -1,0 +1,4 @@
+{"id": "20261027T0247-c50-intent-review-sink-escape", "kind": "intent", "mode": "review", "task": "R:20261026T2123-c45-marangoni-sink-escape-dense#finding",
+ "title": "c50 reviews c45's dense sink-escape finding (fresh seed: S and I at mar 40, S at mar 0)",
+ "summary": "Open review with 2 replicated reviews needed; re-run of the finding's own world on a fresh seed.",
+ "parents": ["20261026T2123-c45-marangoni-sink-escape-dense"]}

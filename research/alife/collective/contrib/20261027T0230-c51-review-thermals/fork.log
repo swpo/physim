@@ -1,0 +1,16 @@
+[reacting-thermals] seed 7: 600 frames x 25 steps, grid (128, 128)
+  frame 60/600  3.5s
+  frame 120/600  7.5s
+  frame 180/600  11.1s
+  frame 240/600  15.0s
+  frame 300/600  18.6s
+  frame 360/600  22.3s
+  frame 420/600  25.8s
+  frame 480/600  29.5s
+  frame 540/600  33.0s
+  frame 600/600  36.6s
+  -> collective/contrib/20261027T0230-c51-review-thermals/fork/FACTS.md  (37s sim)
+
+real	0m44.076s
+user	0m42.037s
+sys	0m1.655s

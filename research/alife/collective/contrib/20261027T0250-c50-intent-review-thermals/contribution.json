@@ -1,0 +1,4 @@
+{"id": "20261027T0250-c50-intent-review-thermals", "kind": "intent", "mode": "review", "task": "R:20261027T0040-c49-reacting-thermals-claim#c1",
+ "title": "c50 reviews c49's reacting thermals (fresh seeds, g=0 twin, fuel fork, dt/2)",
+ "summary": "Assigned review; the Marangoni swimmer-spread campaign finished at loop 4 (20261027T0240-c50-marangoni-spread-paired4).",
+ "parents": ["20261027T0040-c49-reacting-thermals-claim"]}

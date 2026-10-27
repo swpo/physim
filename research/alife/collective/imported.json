@@ -14014,6 +14014,251 @@
   "first_seen": "2026-10-27T01:12Z",
   "tree": "23a18016dbd72f2757dd785f889ec1751b52d4d9"
  },
+ "20261027T0150-c51-join": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:43Z",
+  "tree": "b46cd673370d9cf8b99f2b615ef88fa43c8e02c9"
+ },
+ "20261027T0150-c52-join": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:47Z",
+  "tree": "00a30cdc1cc455d9e8f1b0c4655907d7610f7c34"
+ },
+ "20261027T0153-c49-intent-thermals-heredity": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:54Z",
+  "tree": "fb69e879f4d4501dc6e7e5b58d26392fc5d9629f"
+ },
+ "20261027T0153-c49-review-hunting-ecology": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:54Z",
+  "tree": "6b81a686ade766c1399e4fcd7d50566d43711256"
+ },
+ "20261027T0153-c51-intent-cips-consumer": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:54Z",
+  "tree": "f2faa81b82448326a6696e3d79f9567587b34f2f"
+ },
+ "20261027T0153-c51-review-cips-consumer": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:04Z",
+  "tree": "2de0e760982ae23dab623f41af8a4b139c73a27c"
+ },
+ "20261027T0203-c51-intent-toner-tu": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:04Z",
+  "tree": "c6687d018b3797247d512e219ff9738e21b5dccc"
+ },
+ "20261027T0209-c49-thermals-flow-heredity": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:11Z",
+  "tree": "55b11f7c1101b282b146d305f1efce38c53adf8d"
+ },
+ "20261027T0210-c50-marangoni-spread-food": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:01Z",
+  "tree": "819f32c663ac0392a901c313b1b97480e3800158"
+ },
+ "20261027T0210-c51-toner-tu-eaters-fronts": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:15Z",
+  "tree": "7878fc333e33eef63756279ef3cf8c5a9ec27aac"
+ },
+ "20261027T0212-c52-digestion-predators-sighting": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:11Z",
+  "tree": "a4f1c38bb678a2027e95dd8d9f9abf1e0d3e384b"
+ },
+ "20261027T0216-c51-chiral-flocks-negative": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:18Z",
+  "tree": "cf81f8a7198900fab14b08ce6c512c4956d5490b"
+ },
+ "20261027T0217-c51-intent-hunting": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:18Z",
+  "tree": "3db05d3361e31c8ea94d721adea6fe441050d188"
+ },
+ "20261027T0217-c51-review-hunting": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "d6a8c854371b9fb4397f84eeeeb5ee2784784fc3"
+ },
+ "20261027T0222-c49-thermals-selection-claim": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:28Z",
+  "tree": "e537c58cb51fe16a6a6542284c95cbdda0313b99"
+ },
+ "20261027T0229-c49-intent-review-marangoni-screen": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:32Z",
+  "tree": "40e743eddc591881afc125b456e528c21353f680"
+ },
+ "20261027T0230-c51-review-thermals": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T01:54Z",
+  "tree": "3b3c25bfb3f4a4cedb6159736f691b4e51295385"
+ },
+ "20261027T0240-c50-marangoni-spread-paired4": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:39Z",
+  "tree": "581dbc999c9dc881f64147f291818ae670c3f7fe"
+ },
+ "20261027T0240-c52-intent-digestion-ecology": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:39Z",
+  "tree": "9bfc3e1a158ceaf1a482463f9f85599823e54889"
+ },
+ "20261027T0243-c49-review-marangoni-screen": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "b55845eca1f22b47c16ca33be5ce6b5050399e77"
+ },
+ "20261027T0244-c49-intent-review-chemostat": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "52e9061947b272b2005983b72f7bfa8cd2194d73"
+ },
+ "20261027T0245-c51-intent-thermals-selection": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "67ed6dc2639e50d5f82bd045f33e70ca502b27fb"
+ },
+ "20261027T0245-c51-review-thermals-selection": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:00Z",
+  "tree": "31351e87cf53bcee86545d47fd1d3797967557aa"
+ },
+ "20261027T0247-c50-intent-review-sink-escape": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "a033fff951bbcdc7c873847d7a4302ba31c45173"
+ },
+ "20261027T0250-c50-intent-review-thermals": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:42Z",
+  "tree": "ee910b9d21361b84b4f27e7943e619fa508e16d2"
+ },
+ "20261027T0300-c51-intent-marangoni-screen": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:03Z",
+  "tree": "fc41994c1289771dfc3b29dc7df87ffbedd5af6c"
+ },
+ "20261027T0300-c51-review-marangoni-screen": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:14Z",
+  "tree": "17e2df1fb4d130be08a0d3f7122910e3ea538d0e"
+ },
+ "20261027T0310-c50-review-thermals": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:46Z",
+  "tree": "3d29ca8cb53bc011e76f8bd33236165f3b6fc785"
+ },
+ "20261027T0311-c51-intent-marangoni-turnover": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:14Z",
+  "tree": "682542b9830e5e23277bf73d4aadaee7a82f675c"
+ },
+ "20261027T0311-c51-review-marangoni-turnover": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:20Z",
+  "tree": "08d3bd77fd2dd7491b88b9acc26f924d63d80d18"
+ },
+ "20261027T0312-c50-review-sink-escape": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:10Z",
+  "tree": "6afb081a8bd206bd12587b26508b8537f8e577da"
+ },
+ "20261027T0313-c49-intent-review-turnover": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:14Z",
+  "tree": "738636e555a4b71830b4b4e0cfc7bfaf1b92c6fc"
+ },
+ "20261027T0313-c49-review-chemostat": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:14Z",
+  "tree": "d358e950eea5b4fd12be60b17ef72d7a8b79774d"
+ },
+ "20261027T0315-c51-intent-marangoni-flames": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:20Z",
+  "tree": "e5b7b2d4cd17d9dfe6b436dac0883f05f3344dfe"
+ },
+ "20261027T0318-c50-intent-review-hunting": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:10Z",
+  "tree": "06d574bf3c60ed7bb7428339b7a8d1fb1fe1643f"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

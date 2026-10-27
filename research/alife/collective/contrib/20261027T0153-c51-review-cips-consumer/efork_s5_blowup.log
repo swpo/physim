@@ -1,0 +1,20 @@
+[cips-consumer] seed 5: 80 frames x 400 steps, grid (128, 128)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:80: RuntimeWarning: overflow encountered in square
+  feed = 0.0 if cut else P["k1"] * u * ca ** 2 + P["k0"] * u
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:82: RuntimeWarning: overflow encountered in multiply
+  cat = P["kr"] * ca ** P["na"] * np.clip(q, 0, None) ** 2 * (1 - r)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:84: RuntimeWarning: invalid value encountered in subtract
+  Ra = feed - P["kp"] * ca - eat
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:85: RuntimeWarning: overflow encountered in power
+  mu = pa ** 3 - pa - P["A"] * pa
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:50: RuntimeWarning: overflow encountered in multiply
+  flux = np.where(vf > 0, vf * L * (1 - R), vf * R * (1 - L))
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:51: RuntimeWarning: invalid value encountered in subtract
+  out += flux - np.roll(flux, 1, ax)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:51: RuntimeWarning: invalid value encountered in add
+  out += flux - np.roll(flux, 1, ax)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:91: RuntimeWarning: invalid value encountered in divide
+  s["u"] = ops.irfft2(ops.rfft2(u + dt * (P["rr"] * w - feed)) / s["du_"], sh)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:92: RuntimeWarning: invalid value encountered in divide
+  s["w"] = ops.irfft2(ops.rfft2(w + dt * (P["kp"] * ca + eat - P["rr"] * w)) / s["dw_"], sh)
+non-finite fields at frame 1
