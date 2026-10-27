@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 17: 120 frames x 1000 steps, grid (128, 128)
+  frame 12/120  59.9s
+  frame 24/120  130.5s
+  frame 36/120  215.4s
+  frame 48/120  298.0s
+  frame 60/120  379.1s
+  frame 72/120  458.3s
+  frame 84/120  539.1s
+  frame 96/120  622.0s
+  frame 108/120  703.3s
+  frame 120/120  783.4s
+  -> collective/contrib/20261027T0645-c51-review-hunting-dthalf/dthalf_s17/FACTS.md  (783s sim)

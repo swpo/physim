@@ -1,0 +1,7 @@
+{"id": "20261027T0642-c51-q-thermals-buoyancy-trait", "kind": "question", "mode": "extend", "task": "Q:thermals-buoyancy-trait",
+ "title": "Can the reacting thermals' self-copied label act on swimming instead of yield, so that a swim-far minority can be selected (route to C:minority-swimmers-spread)?",
+ "summary": "The established thermals selection claim gives heredity through the caps' own fluid, with a trait-blind mutation, but the trait is a written yield bonus. Give the label a buoyancy factor instead (torque g (1 + eps (a - b)) dT/dx, yield unchanged), founders all kind a, mutation as in the claim, and compare against the identical-draw twin (eps 0): does the share of dividing caps that rise 3 own lengths between birth and division rise more in E, and does it need an environment where rising pays (for example fuel regrowing faster near the top of a non-periodic box)?",
+ "parents": ["20261027T0222-c49-thermals-selection-claim", "20261027T0628-c51-synthesis-v2"],
+ "class": "reactive-convection",
+ "target": ["M", "H"], "priority": 4,
+ "experiment": "One loop: copy 20261027T0222-c49-thermals-selection-claim/world.py, multiply the buoyancy term by (1 + eps (a - b)) and leave Q unchanged; run heredity2.py-style counts for eps -0.2 (b rises faster) and 0 on seeds 0-3 at 128^2, T=1200 (about 3 min per run), plus divmove.py on labkit packs of seeds 0 and 1. Report the b share, per-capita births by kind, and the share of dividing caps passing 3 sqrt(area) by kind, E against twin."}

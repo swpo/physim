@@ -1,0 +1,12 @@
+[digestion-driven-predators] seed 5: 120 frames x 500 steps, grid (256, 256)
+  frame 12/120  114.8s
+  frame 24/120  239.4s
+  frame 36/120  399.9s
+  frame 48/120  562.5s
+  frame 60/120  722.4s
+  frame 72/120  882.4s
+  frame 84/120  1035.4s
+  frame 96/120  1194.2s
+  frame 108/120  1353.6s
+  frame 120/120  1510.1s
+  -> collective/contrib/20261027T0545-c51-review-digestion/pack256_s5/FACTS.md  (1510s sim)
