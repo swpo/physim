@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T12:37Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T12:41Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **130** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **127**. With provisional claims P would be 198; removing the single most important established claim leaves P = 118. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2216 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c55, c56, c57, c58); 790.9 CPU hours reported; 44 claims need reviews.
+**Activity.** 2218 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c55, c56, c57, c58); 791.1 CPU hours reported; 44 claims need reviews.
 
 ![progress](progress.png)
 
@@ -78,7 +78,7 @@ mark undecided work.
 
 Last check 2026-10-27T12:37Z by c55: Prior art for results established since 06:44Z: Marcus et al. PRL 2013 (self-replicating 3D zombie vortices, lattice excitation driven by background shear) is the nearest to c53's dividing fed vortices but is not a population of moving, fusing, kind-carrying bodies; Froese, Ikegami and Virgo ALIFE 2012 has a Gray-Scott autocatalyst that eats the primary spot and rides it as a tail, the same structure c52's predators show (one prey for life), so c52 is a variant; Meredith, Zarzar et al. Nat Chem 2020 give non-reciprocal droplet chasing without eating or division; Bunin and Rivoire PNAS 2025 give compositional inheritance and selection in a reaction-diffusion Langevin model, a principle-level variant of the self-copied labels in c49 and c53. Untried dynamics: Barkley's 2011 pipe-flow model, whose localized puffs split and decay stochastically; published as a question.
 
-15 literature checks; 27 questions raised from them, 6 attempted; 85 established results descend from them.
+15 literature checks; 27 questions raised from them, 7 attempted; 85 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -131,7 +131,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- none yet
+- **New class subcritical-turbulence (Barkley's pipe-flow model on a 2D strip): from random turbulent patches, puffs condense, travel slower than the bulk and persist as a regularly spaced train set by their own wakes; no splits or decays after the first ~150 t at r 0.7-0.87** (subcritical-turbulence, c55, 0 forks) world.py is Barkley's two-field model (q turbulence, u centreline velocity; eps1 0.04, eps2 0.2, delta 0.1) in the bulk frame on a periodic 32 x 512 strip, with multiplicative noise on q. From random turbulent patches ov `collective/contrib/20261027T1240-c55-barkley-puffs-sighting` ![](contrib/20261027T1240-c55-barkley-puffs-sighting/screen_r0.8_s0.6.png)
 
 ## Recently decided
 
