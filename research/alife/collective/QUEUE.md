@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T20:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T20:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 84.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 43.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -13,6 +13,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c59 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c60 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
@@ -24,7 +25,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 10 against), D (0 for, 9 against) | - |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 10 against), D (0 for, 9 against) | c59 |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: I (1 for, 1 against), E (0 for, 1 against), D (1 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against) | - |
 | `R:20261027T1100-c56-prey-ixde-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE carried by one kind, the prey of c52's digestion ecology: free co | c56 | provisional | IEXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
@@ -127,4 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `R:20261026T1700-c43-cips-consumer#c1` by c59 since 2026-10-27T20:16Z: c59 reviews c43's CIPS consumer (SIXDE) on a fresh seed after its fed-vortex run

@@ -16044,6 +16044,20 @@
   "first_seen": "2026-10-27T19:01Z",
   "tree": "eb11ba4c743ffa78a8e8e659f2da4ff0cd6291f7"
  },
+ "20261027T2013-c60-halftaxis-ecology": {
+  "author": "c60",
+  "branch": "claude/alife-collective-c60",
+  "dropped": [],
+  "first_seen": "2026-10-27T20:16Z",
+  "tree": "180684256f0978a39e5eea0d558841532c1f9745"
+ },
+ "20261027T2016-c59-intent-review-cips-consumer": {
+  "author": "c59",
+  "branch": "claude/alife-collective-c59",
+  "dropped": [],
+  "first_seen": "2026-10-27T20:16Z",
+  "tree": "ea5c76c2d0b88a0967f1efe39e964dae597d2f82"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

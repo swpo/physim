@@ -1,0 +1,8 @@
+ctrl_0.1_61.json npred [39, 37, 37, 33] nprey 40 39 targets alive 2 [(10, 0.7), (0, 0), (12, 0.69)]
+ctrl_0.2_61.json npred [42, 42, 42, 38] nprey 43 37 targets alive 2 [(0, 0), (18, 1.2), (29, 1.23)]
+ctrl_0.2_62.json npred [40, 40, 40, 41] nprey 40 36 targets alive 2 [(25, 1.35), (33, 0.99), (0, 0)]
+ctrl_0.3_61.json npred [44, 43, 45, 44] nprey 45 43 targets alive 2 [(0, 0), (25, 1.21), (20, 1.07)]
+kdzero_0.1_61.json npred [39, 3, 0, 0] nprey 40 36 targets alive 0 [(0, 0), (0, 0), (0, 0)]
+kdzero_0.2_61.json npred [42, 8, 0, 14] nprey 43 41 targets alive 0 [(0, 0), (0, 0), (0, 0)]
+kdzero_0.2_62.json npred [40, 5, 2, 16] nprey 40 39 targets alive 0 [(0, 0), (0, 0), (0, 0)]
+kdzero_0.3_61.json npred [44, 9, 17, 33] nprey 45 39 targets alive 0 [(0, 0), (0, 0), (0, 0)]

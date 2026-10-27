@@ -1,0 +1,104 @@
+{
+ "ctrl_s63": {
+  "n_pred": [
+   44,
+   41,
+   40
+  ],
+  "n_prey": [
+   39,
+   39
+  ],
+  "eat_total": [
+   2.2,
+   2.26
+  ],
+  "alive": 2,
+  "targets": [
+   {
+    "death": null,
+    "prey0": 37,
+    "prey_last": 26,
+    "maxcb0": 1.37,
+    "maxcb_last": 1.05,
+    "q_last": 0.866,
+    "eat0": 0.07,
+    "eat_last": 0.036,
+    "t_last": 2000
+   },
+   {
+    "death": null,
+    "prey0": 20,
+    "prey_last": 19,
+    "maxcb0": 1.25,
+    "maxcb_last": 1.24,
+    "q_last": 1.307,
+    "eat0": 0.054,
+    "eat_last": 0.055,
+    "t_last": 2000
+   },
+   {
+    "death": 750.0000000027285,
+    "prey0": 4,
+    "prey_last": 0,
+    "maxcb0": 1.04,
+    "maxcb_last": 0.55,
+    "q_last": 0.061,
+    "eat0": 0.03,
+    "eat_last": 0.003,
+    "t_last": 700
+   }
+  ]
+ },
+ "kdlocal_s63": {
+  "n_pred": [
+   44,
+   38,
+   39
+  ],
+  "n_prey": [
+   39,
+   39
+  ],
+  "eat_total": [
+   2.2,
+   2.35
+  ],
+  "alive": 0,
+  "targets": [
+   {
+    "death": 450.0000000016371,
+    "prey0": 37,
+    "prey_last": 61,
+    "maxcb0": 1.37,
+    "maxcb_last": 0.58,
+    "q_last": 0.0,
+    "eat0": 0.07,
+    "eat_last": 0.021,
+    "t_last": 400
+   },
+   {
+    "death": 450.0000000016371,
+    "prey0": 20,
+    "prey_last": 44,
+    "maxcb0": 1.25,
+    "maxcb_last": 0.55,
+    "q_last": 0.0,
+    "eat0": 0.054,
+    "eat_last": 0.02,
+    "t_last": 400
+   },
+   {
+    "death": 400.0000000014552,
+    "prey0": 4,
+    "prey_last": 0,
+    "maxcb0": 1.04,
+    "maxcb_last": 0.54,
+    "q_last": 0.0,
+    "eat0": 0.03,
+    "eat_last": 0.006,
+    "t_last": 350
+   }
+  ]
+ }
+}
