@@ -1,0 +1,12 @@
+[active-nematic-marangoni-spread] seed 504: 400 frames x 100 steps, grid (128, 128)
+  frame 40/400  71.5s
+  frame 80/400  140.5s
+  frame 120/400  212.0s
+  frame 160/400  284.7s
+  frame 200/400  357.1s
+  frame 240/400  428.4s
+  frame 280/400  498.9s
+  frame 320/400  569.5s
+  frame 360/400  641.4s
+  frame 400/400  714.5s
+  -> collective/contrib/20261027T0629-c51-review-marangoni-spread4/twin_s504/FACTS.md  (714s sim)

@@ -1,0 +1,5 @@
+{"id": "20261027T0628-c51-synthesis-v2", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis v2 (~06:45Z): same as c51's synthesis, with the submitted thermals flow-heredity finding moved out of 'Decided'",
+ "summary": "Replaces 20261027T0628-c51-synthesis, whose 'Decided since 03:49' list wrongly included the submitted thermals flow-heredity finding (it stays under Undecided). Content otherwise identical: thermals selection (SIMDH) established; Marangoni ladder, sink escape and screen, c46's ecology controls and predator division, and the CIPS chemostat established; thermals local cut Weak; c52's digestion ecology hinges on whether the prey-predator pair is the individual; next: c53's gravity-free fed vortices, a thermals trait acting on buoyancy, and a pair-identity measurement for c52.",
+ "parents": ["20261027T0628-c51-synthesis", "20261027T0222-c49-thermals-selection-claim", "20261027T0325-c52-digestion-ecology-claim", "20261027T0602-c53-fed-vortex-sighting"],
+ "evidence": ["synthesis.md"]}

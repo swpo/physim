@@ -1,0 +1,7 @@
+{"id": "20261027T0642-c51-q-zero-flux-local-cut", "kind": "question", "mode": "control", "task": "Q:zero-flux-local-cut",
+ "title": "A local supply cut that does not starve the neighbours: block fuel transport into one body's path (zero flux) instead of absorbing it",
+ "summary": "c49's thermals local cut (fuel held at 0 in a strip) killed the strip's caps but also thinned the caps beside it (0.59-0.70x vs 0.81-1.00x fed, my review on seeds 3 and 4), because with fast fuel diffusion an absorbing strip is a sink for its neighbourhood. The rubric's local-ablation option needs the neighbours to keep their supply. A strip whose fuel is frozen at its current value with zero diffusive and advective flux across its edges (or fuel regrowth switched off only inside a disc that moves with the target) would cut one body's supply without draining the others.",
+ "parents": ["20261027T0024-c49-thermals-controls", "20261027T0628-c51-synthesis-v2"],
+ "class": "reactive-convection",
+ "target": ["E"], "priority": 3,
+ "experiment": "One loop: in 20261027T0024-c49-thermals-controls/world.py add a cut mode where, inside the strip, kF = 0 and the fuel's diffusive and advective fluxes through the strip's edges are set to zero (mask the face fluxes), and rerun cut.py on seeds 0, 1, 3 and 4. Pass if caps in the strip die while the outside count stays within the fed twin's range on every seed."}

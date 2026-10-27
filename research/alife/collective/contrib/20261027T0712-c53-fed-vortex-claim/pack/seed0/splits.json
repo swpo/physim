@@ -1,0 +1,523 @@
+{
+"pack": "pack/seed0",
+"persistent_splits": 34,
+"daughters_same_sign": 33,
+"daughters_other_sign": 0,
+"sign_unknown": 1,
+"merges_same_sign": 66,
+"merges_opposite_sign": 0,
+"merges_unknown": 15,
+"max_generation": 10,
+"splits": [
+{
+"frame": 13,
+"t": 39.0,
+"parent": 6,
+"children": [
+55,
+56
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 73,
+"t": 219.0,
+"parent": 32,
+"children": [
+69,
+70
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 132,
+"t": 396.0,
+"parent": 74,
+"children": [
+77,
+78
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 144,
+"t": 432.0,
+"parent": 76,
+"children": [
+79,
+80
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 190,
+"t": 570.0,
+"parent": 82,
+"children": [
+83,
+84
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 246,
+"t": 738.0,
+"parent": 94,
+"children": [
+96,
+97
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 301,
+"t": 903.0,
+"parent": 99,
+"children": [
+100,
+101
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 2
+},
+{
+"frame": 306,
+"t": 918.0,
+"parent": 98,
+"children": [
+102,
+103
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 2
+},
+{
+"frame": 340,
+"t": 1020.0,
+"parent": 95,
+"children": [
+110,
+111
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 342,
+"t": 1026.0,
+"parent": 105,
+"children": [
+113,
+114
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 3
+},
+{
+"frame": 445,
+"t": 1335.0,
+"parent": 129,
+"children": [
+130,
+131
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 3
+},
+{
+"frame": 449,
+"t": 1347.0,
+"parent": 118,
+"children": [
+132,
+133
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 4
+},
+{
+"frame": 553,
+"t": 1659.0,
+"parent": 144,
+"children": [
+145,
+146
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 3
+},
+{
+"frame": 579,
+"t": 1737.0,
+"parent": 149,
+"children": [
+150,
+151
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 5
+},
+{
+"frame": 612,
+"t": 1836.0,
+"parent": 150,
+"children": [
+157,
+158
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 6
+},
+{
+"frame": 677,
+"t": 2031.0,
+"parent": 164,
+"children": [
+171,
+172
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 3
+},
+{
+"frame": 705,
+"t": 2115.0,
+"parent": 173,
+"children": [
+181,
+182
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 5
+},
+{
+"frame": 733,
+"t": 2199.0,
+"parent": 180,
+"children": [
+190,
+191
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 4
+},
+{
+"frame": 774,
+"t": 2322.0,
+"parent": 200,
+"children": [
+201,
+202
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 7
+},
+{
+"frame": 789,
+"t": 2367.0,
+"parent": 198,
+"children": [
+204,
+205
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 6
+},
+{
+"frame": 809,
+"t": 2427.0,
+"parent": 205,
+"children": [
+209,
+210
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 7
+},
+{
+"frame": 811,
+"t": 2433.0,
+"parent": 203,
+"children": [
+211,
+212
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 4
+},
+{
+"frame": 814,
+"t": 2442.0,
+"parent": 208,
+"children": [
+215,
+216
+],
+"sign_parent": 0,
+"sign_children": [
+-1,
+-1
+],
+"generation": 8
+},
+{
+"frame": 823,
+"t": 2469.0,
+"parent": 190,
+"children": [
+220,
+221
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 5
+},
+{
+"frame": 836,
+"t": 2508.0,
+"parent": 213,
+"children": [
+224,
+225
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 8
+},
+{
+"frame": 843,
+"t": 2529.0,
+"parent": 216,
+"children": [
+227,
+228
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 9
+},
+{
+"frame": 855,
+"t": 2565.0,
+"parent": 219,
+"children": [
+233,
+234
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 6
+},
+{
+"frame": 874,
+"t": 2622.0,
+"parent": 239,
+"children": [
+242,
+243
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 5
+},
+{
+"frame": 880,
+"t": 2640.0,
+"parent": 238,
+"children": [
+244,
+246
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 9
+},
+{
+"frame": 900,
+"t": 2700.0,
+"parent": 240,
+"children": [
+250,
+251
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 8
+},
+{
+"frame": 906,
+"t": 2718.0,
+"parent": 249,
+"children": [
+253,
+254
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 7
+},
+{
+"frame": 934,
+"t": 2802.0,
+"parent": 253,
+"children": [
+260,
+261
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 8
+},
+{
+"frame": 936,
+"t": 2808.0,
+"parent": 256,
+"children": [
+266,
+267
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 10
+},
+{
+"frame": 958,
+"t": 2874.0,
+"parent": 247,
+"children": [
+273,
+274
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 6
+}
+]
+}

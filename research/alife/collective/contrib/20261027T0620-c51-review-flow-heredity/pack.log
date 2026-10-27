@@ -1,0 +1,12 @@
+[reacting-thermals] seed 8: 800 frames x 25 steps, grid (128, 128)
+  frame 80/800  9.1s
+  frame 160/800  18.0s
+  frame 240/800  26.1s
+  frame 320/800  33.6s
+  frame 400/800  41.7s
+  frame 480/800  49.8s
+  frame 560/800  57.9s
+  frame 640/800  65.5s
+  frame 720/800  73.3s
+  frame 800/800  80.7s
+  -> collective/contrib/20261027T0620-c51-review-flow-heredity/pack_eps0.1_s8/FACTS.md  (81s sim)

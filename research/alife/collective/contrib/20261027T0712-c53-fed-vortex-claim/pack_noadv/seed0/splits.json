@@ -1,0 +1,133 @@
+{
+"pack": "pack_noadv/seed0",
+"persistent_splits": 8,
+"daughters_same_sign": 8,
+"daughters_other_sign": 0,
+"sign_unknown": 0,
+"merges_same_sign": 0,
+"merges_opposite_sign": 0,
+"merges_unknown": 0,
+"max_generation": 2,
+"splits": [
+{
+"frame": 16,
+"t": 48.0,
+"parent": 32,
+"children": [
+57,
+58
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 17,
+"t": 51.0,
+"parent": 6,
+"children": [
+59,
+60
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 18,
+"t": 54.0,
+"parent": 34,
+"children": [
+61,
+62
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 27,
+"t": 81.0,
+"parent": 59,
+"children": [
+67,
+68
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 74,
+"t": 222.0,
+"parent": 13,
+"children": [
+69,
+70
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 115,
+"t": 345.0,
+"parent": 3,
+"children": [
+71,
+72
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 117,
+"t": 351.0,
+"parent": 16,
+"children": [
+73,
+74
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 428,
+"t": 1284.0,
+"parent": 8,
+"children": [
+75,
+76
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+}
+]
+}

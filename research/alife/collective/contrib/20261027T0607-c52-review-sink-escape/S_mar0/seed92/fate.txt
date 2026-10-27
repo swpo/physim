@@ -1,0 +1,6 @@
+S_mar0: bodies inside a disc's final radius one frame after it opened: 20; escape 8, dissolve 12, stay 0; escape share 0.40
+  selection (relative descendants at birth + 2 median cycles (66 frames) on standardized D, speed, straightness; n=23, mean descendants 2.04):
+    gradient on D: -0.262 [-0.684, -0.123]
+    gradient on path speed: +0.005 [-0.137, +0.262]
+    gradient on straightness: -0.016 [-0.271, +0.164]
+  dividing tracks 25: median D 0.45, D>=3 0, median path speed 0.051, median cycle 165
