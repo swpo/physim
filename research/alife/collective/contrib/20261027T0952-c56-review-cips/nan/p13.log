@@ -1,0 +1,16 @@
+[cips-consumer] seed 13: 120 frames x 400 steps, grid (128, 128)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:82: RuntimeWarning: overflow encountered in multiply
+  cat = P["kr"] * ca ** P["na"] * np.clip(q, 0, None) ** 2 * (1 - r)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:86: RuntimeWarning: invalid value encountered in multiply
+  s["pa"] = ops.irfft2((ops.rfft2(pa) - dt * P["M"] * k2 * ops.rfft2(mu) + dt * (2 + P["e"]) * ops.rfft2(Ra)) / s["den"], sh)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:86: RuntimeWarning: invalid value encountered in divide
+  s["pa"] = ops.irfft2((ops.rfft2(pa) - dt * P["M"] * k2 * ops.rfft2(mu) + dt * (2 + P["e"]) * ops.rfft2(Ra)) / s["den"], sh)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:90: RuntimeWarning: invalid value encountered in divide
+  s["r"] = ops.irfft2(ops.rfft2(r + dt * cat) / s["dr_"], sh)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:92: RuntimeWarning: invalid value encountered in divide
+  s["w"] = ops.irfft2(ops.rfft2(w + dt * (P["kp"] * ca + eat - P["rr"] * w)) / s["dw_"], sh)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:82: RuntimeWarning: overflow encountered in square
+  cat = P["kr"] * ca ** P["na"] * np.clip(q, 0, None) ** 2 * (1 - r)
+/home/user/physim/research/alife/collective/contrib/20261026T1700-c43-cips-consumer/world.py:40: RuntimeWarning: overflow encountered in multiply
+  slope = np.where(d1 * d2 > 0, 2 * d1 * d2 / (d1 + d2 + 1e-300), 0.0)
+non-finite fields at frame 1

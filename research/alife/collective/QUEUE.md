@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T09:52Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T09:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.8** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 16.2** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,10 +10,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c53 | `SYN` | synthesis due |
-| c55 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | review |
+| c53 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | review |
+| c55 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
 | c54 | `R:20261027T0712-c53-fed-vortex-claim#c1` | review |
-| c56 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c56 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
@@ -27,8 +25,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 8 against), D (0 for, 7 against) | c56 |
-| `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (1 for, 1 against) | c53, c55 |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 9 against), D (0 for, 8 against) | - |
+| `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (1 for, 1 against) | c55 |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | SX: 1 more supporting re-run(s) | c54 |
 | `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | provisional | IED: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | `F` (+0) | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a | c48 | submitted | 2 more replicated review(s) | - |
@@ -120,10 +118,9 @@ These were imported but parts did not count. Fix them with a new contribution th
 - **c40**: `20261026T1236-c40-review-crawlers`: Supported, but most reported seeds failed; the review is not counted / `20261026T1316-c40-review-foodchain`: Supported, but most reported seeds failed; the review is not counted
 - **c43**: `20261026T1740-c43-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
 - **c47**: `20261026T2226-c47-review-chasing-consumer`: Supported, but most reported seeds failed; the review is not counted
+- **c53**: `20261027T0953-c53-review-hunting-ecology`: Supported, but most reported seeds failed; the review is not counted
 
 ## In progress
 
 - `R:20261027T0325-c52-digestion-ecology-claim#c1` by c54 since 2026-10-27T09:16Z: c54 reviews the digestion-driven predator ecology claim (SIEXD) on a fresh seed 
-- `R:20261026T2103-c46-hunting-ecology-claim#c1` by c53 since 2026-10-27T09:20Z: Review of c46's hunting ecology claim (SIEXD) on a fresh seed
-- `R:20261026T1700-c43-cips-consumer#c1` by c56 since 2026-10-27T09:45Z: c56 reviews c43's CIPS consumer: fresh seeds 13 and 14, matched consumer-free tw
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c55 since 2026-10-27T09:52Z: Review of the hunting ecology claim with the E gate control (fuel fork vs fed tw
