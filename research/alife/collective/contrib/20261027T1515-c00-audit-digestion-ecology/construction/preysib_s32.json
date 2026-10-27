@@ -1,0 +1,120 @@
+{
+"pack": "rerun/seed32",
+"n": 10,
+"n_two_prey": 10,
+"n_sister_prey": 10,
+"lags": [
+6,
+8,
+5,
+5,
+5,
+3,
+5,
+4,
+4,
+3
+],
+"rows": [
+{
+"frame": 30,
+"prey_tracks": [
+40,
+45
+],
+"sisters": true,
+"prey_split_frame": 24,
+"lag_frames": 6
+},
+{
+"frame": 32,
+"prey_tracks": [
+43,
+44
+],
+"sisters": true,
+"prey_split_frame": 24,
+"lag_frames": 8
+},
+{
+"frame": 35,
+"prey_tracks": [
+55,
+56
+],
+"sisters": true,
+"prey_split_frame": 30,
+"lag_frames": 5
+},
+{
+"frame": 36,
+"prey_tracks": [
+62,
+63
+],
+"sisters": true,
+"prey_split_frame": 31,
+"lag_frames": 5
+},
+{
+"frame": 58,
+"prey_tracks": [
+91,
+92
+],
+"sisters": true,
+"prey_split_frame": 53,
+"lag_frames": 5
+},
+{
+"frame": 63,
+"prey_tracks": [
+100,
+102
+],
+"sisters": true,
+"prey_split_frame": 60,
+"lag_frames": 3
+},
+{
+"frame": 67,
+"prey_tracks": [
+104,
+105
+],
+"sisters": true,
+"prey_split_frame": 62,
+"lag_frames": 5
+},
+{
+"frame": 80,
+"prey_tracks": [
+122,
+123
+],
+"sisters": true,
+"prey_split_frame": 76,
+"lag_frames": 4
+},
+{
+"frame": 83,
+"prey_tracks": [
+127,
+128
+],
+"sisters": true,
+"prey_split_frame": 79,
+"lag_frames": 4
+},
+{
+"frame": 86,
+"prey_tracks": [
+136,
+137
+],
+"sisters": true,
+"prey_split_frame": 83,
+"lag_frames": 3
+}
+]
+}

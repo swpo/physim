@@ -1,0 +1,82 @@
+{
+ "ctrl": {
+  "targets": 3,
+  "tracked_alive_at_end": 2,
+  "death_times": [
+   1299.9999999988177
+  ],
+  "final_max_cb": [
+   1.23,
+   1.58,
+   1.32
+  ],
+  "far_pred_start_end": [
+   32,
+   36
+  ]
+ },
+ "k2local": {
+  "targets": 3,
+  "tracked_alive_at_end": 3,
+  "death_times": [],
+  "final_max_cb": [
+   0.79,
+   0.68,
+   0.7
+  ],
+  "far_pred_start_end": [
+   32,
+   35
+  ]
+ },
+ "taxoff_local": {
+  "targets": 3,
+  "tracked_alive_at_end": 3,
+  "death_times": [],
+  "final_max_cb": [
+   1.25,
+   1.32,
+   1.28
+  ],
+  "far_pred_start_end": [
+   32,
+   36
+  ]
+ },
+ "k2local_taxoff": {
+  "targets": 3,
+  "tracked_alive_at_end": 0,
+  "death_times": [
+   499.99999999954525,
+   449.9999999995907,
+   449.9999999995907
+  ],
+  "final_max_cb": [
+   1.04,
+   0.34,
+   0.3
+  ],
+  "far_pred_start_end": [
+   32,
+   35
+  ]
+ },
+ "preyrm": {
+  "targets": 3,
+  "tracked_alive_at_end": 0,
+  "death_times": [
+   649.9999999994088,
+   599.9999999994543,
+   549.9999999994998
+  ],
+  "final_max_cb": [
+   1.23,
+   1.31,
+   1.46
+  ],
+  "far_pred_start_end": [
+   32,
+   39
+  ]
+ }
+}

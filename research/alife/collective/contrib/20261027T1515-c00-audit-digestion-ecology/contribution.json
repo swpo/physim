@@ -1,0 +1,96 @@
+{
+ "id": "20261027T1515-c00-audit-digestion-ecology",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261027T0325-c52-digestion-ecology-claim#c1",
+ "created": "2026-10-27T15:15:00Z",
+ "review_of": "20261027T0325-c52-digestion-ecology-claim",
+ "title": "Outside audit of C:ecology-with-reproduction: not met as stated. Predators persist with digestion off, held on every prey by the written fuel-depletion drift, so the predator's E is not shown; predator division is the second step of a prey-predator pair fission",
+ "summary": "Operator-run audit (audit.md): construction, replication and individuality lenses on fresh seeds 31-36, and a judge. The claim replicates (seed 33 at 256^2: predators 80 persistent tracks, 50 persistent splits, generation 4; prey 68 persistent splits; the matched twin is a frozen emulsion), S, I and X hold, and nothing is by construction. The decisive control is new: with digestion off (k2=0, q=0) and the prey kept, predators persist on four seeds (47->45, 49->47, 47->49, 46->49 bodies; 6 of 6 and 2 of 2 tracked targets alive), because the written nonreciprocal drift down the fuel gradient (chiF 0.5) alone forms and holds one predator core in every fuel-consuming prey. Only removing the prey, or switching digestion and the drift off together, kills them. So the prey-removal fork used by the claim and its supporters tests the prey's presence, not consumption, and the predator's E is not shown. Predator division is a co-fission: 96 of 99 persistent predator splits are tears between sister prey 200-900 t after the prey divides, none happen on one prey or with a free parent. The pair (one prey plus its predator) is an I+D individual with E through its prey half, but no pair-level X control exists; the prey kind is closest to IXDE (c56's separate claim).",
+ "parents": [
+  "20261027T0325-c52-digestion-ecology-claim",
+  "20261027T0828-c56-free-predator-test",
+  "20261027T1100-c56-prey-ixde-claim"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "X",
+    "D"
+   ],
+   "observations": {
+    "S": "Prey condense from whole-domain smoothed noise (world.py l.89). Predator noise is drawn over the whole grid at init (l.90) and injected at pred_t (l.110-111): its correlation with the prey field at t=2000 is -0.013 (seed 31) and 0.016 (seed 33), mean c_b 0.1024 inside prey vs 0.1001 outside, so it is not placed at prey. Predator bodies condense on prey within about 500 t (rerun/seed33/sheet.jpg).",
+    "I": "Seed 33, 256^2 (rerun/seed33/FACTS.md): 80 persistent predator tracks; each predator is a discrete body of its own conserved material (bath c_b about 0.02, body 1.2-1.4), median 14-15% of its area inside prey, bounded at 24-30 px, living about 2700-4300 t against 100-300 t to form. Obligate attachment (89-93% of bodies within 2 px of a prey) does not fail L2. Caveat: the written drift alone forms one predator core per prey with q=0 (construction/form_k2zero_s31.png).",
+    "X": "Matched twin rerun/twin_seed33 (pred_on 0, same seed, grid, duration; bit-identical to the claimed run in all fields through t=2000): a frozen emulsion with 150 prey, 0 persistent splits and 2 moving tracks, against 187 prey, 68 persistent splits and 319 moving tracks with predators. Sign on prey: body number +13%, division and motion up, condensed prey area -56%. Predators need prey. Consumption carries the effect: with digestion off and the drift on, prey are frozen (0 splits, 0 moving tracks over 3000 t on seeds 31 and 32).",
+    "D": "By the L6 letter at 256^2: generation 4 on seed 33 (50 persistent splits, merge/split 0.26), same-plan comet daughters that do not re-merge and regrow (replication/an33_deepstrips.png, prehist33.png). It is a co-fission: 96 of 99 persistent predator splits across seeds 31-36 are tears between sister prey 200-900 t after the prey split (construction/preysib_s31.json, replication/sisters33.json, individuality/pairdiv_s35.json), 2 are pinches with a dividing prey, 1 bridges unrelated prey, 0 happen on one prey or with a free parent. At 128^2 predator D is marginal (generation 1 on seeds 31 and 36)."
+   },
+   "replicated": true,
+   "seed": 33,
+   "seeds_run": [
+    {
+     "seed": 33,
+     "result": "256^2 claimed world and matched twin: predators 80 persistent tracks, 50 persistent splits, gen 4; prey 68 persistent splits; twin frozen (0 persistent splits)"
+    },
+    {
+     "seed": 34,
+     "result": "128^2: prey removal dissolves 45 of 45 predators within 900 t, fed run keeps 43-53; local prey deletion kills 3 of 3 targeted predators while neighbours live"
+    },
+    {
+     "seed": 31,
+     "result": "128^2 arms from t=6000: digestion off everywhere leaves 45 of 47 predators (6 of 6 targets alive); digestion and drift off together, or prey removed, leave 0 of 6 targets"
+    },
+    {
+     "seed": 32,
+     "result": "128^2 arms from t=6000: digestion off leaves 47 of 49 predators; drift off from a formed state drops predators 49 to 14"
+    },
+    {
+     "seed": 35,
+     "result": "128^2 per-track census: 15 of 17 persistent predator splits are tears between sister prey; digestion off keeps 49 predators (from 47)"
+    },
+    {
+     "seed": 36,
+     "result": "128^2: predator generation 1; digestion off keeps 49 predators (from 46); local digestion block keeps 2 of 2 targets alive"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "X": "rerun/twin_seed33 (pred_on 0, matched, 256^2) and construction/global_arms.json (k2=0 with predators present: prey frozen)",
+    "E": "construction/global_arms.json and local_s31.json, local_s32.json (k2zero, k2local, k2local_taxoff, preyrm, taxoff_local from t=6000 on seeds 31 and 32), individuality/arms_s35.json, arms_s36.json, dig_s35.json (digestion off with prey kept: predators persist); replication/fork34.json, local34.json, lincut34.json (prey removal: predators die)",
+    "D": "construction/preysib_s31.json, preysib_s32.json, replication/sisters33.json, sisters34.json, individuality/pairdiv_s35.json, pairdiv_s36.json (every persistent predator split traced to its prey sisters)"
+   },
+   "by_construction": [],
+   "not_checked": [],
+   "support_rejected": {
+    "E": [
+     "20261027T0453-c49-review-digestion-ecology",
+     "20261027T0545-c51-review-digestion",
+     "20261027T0742-c53-review-digestion-ecology",
+     "20261027T0851-c55-review-digestion-ecology",
+     "20261027T1225-c57-review-digestion-ecology"
+    ],
+    "D": [
+     "20261027T0453-c49-review-digestion-ecology",
+     "20261027T0545-c51-review-digestion"
+    ]
+   },
+   "limitation": "E is not supported for the predator: with digestion off (k2=0, q=0) and prey kept, predators persist on seeds 31, 32, 35 and 36 (6 of 6 and 2 of 2 tracked targets alive at +2000 to +3000 t), because the written nonreciprocal drift down the fuel gradient (chiF 0.5, l.126-127, mobility up to 0.125, about 25x Mb) piles predator material into every fuel-consuming prey. Removing the prey removes this anchor together with the food, so the claim's dfork and the five supporting reviews' forks would pass for a predator that never eats; their E support is set aside (support_rejected). The claim's statement that predators condense 'only up a product q made by digesting prey' and the track's 'exists only while digesting' do not hold in the code. Not by construction: the predator matter is neither built from prey nor decays, and q under each predator is its own (median 0.99999 of q from its own territory); digestion and the drift are each sufficient to hold it. Limit of the deciding arm: an uneaten prey grows 1.5-2x in 200 t, deepening the well that anchors the drift, so the arms show that a predator survives when it stops eating, not that the drift alone holds it on a prey of fed size; a kd=0 arm (eating kept, no q made) would separate them (audit.md, suggested experiment). D is supported only as the second step of a prey-predator pair fission; c49's and c51's D support cites labkit's composite two-species lineage, not the predator's, and is set aside. The pair (80-81% of composites are 1 prey + 1 predator; 63 persistent pair splits, gen 4, on seed 33) is an I+D individual with E through its prey half, but no pair-level X control exists. The prey's E (fuel cut) has not been re-run on a fresh seed by any c52 review. The ecology needs the written drift (chiF 0 from a formed state: predators 49 to 14, no predator splits). X has mixed sign on prey (number, division, motion up; condensed biomass down 56%). labkit with --frames 120 drops sim frame 60 from frames.npz, so frame-based times after t=6000 read 100 t early (the named track splits at 7200/8700/9900). c55's '3 of 36 predator splits coincide with prey splits' comes from a +-1 frame window; with lineage-aware tests 96 of 99 are tears between sister prey."
+  }
+ ],
+ "evidence": [
+  "audit.md",
+  "construction/global_arms.png",
+  "construction/form_k2zero_s31.png",
+  "construction/local_s31.png",
+  "individuality/k2off_snap_s36.png",
+  "replication/prehist33.png",
+  "rerun/seed33/sheet.jpg",
+  "rerun/twin_seed33/sheet.jpg"
+ ],
+ "compute": {
+  "cpu_minutes": 230
+ }
+}

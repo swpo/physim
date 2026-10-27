@@ -1,0 +1,100 @@
+[
+ {
+  "frame": 31,
+  "sim_frame": 31,
+  "cls": "sisters",
+  "lag": 6,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 31,
+  "sim_frame": 31,
+  "cls": "sisters",
+  "lag": 3,
+  "prey_split_persistent": false
+ },
+ {
+  "frame": 32,
+  "sim_frame": 32,
+  "cls": "sisters",
+  "lag": 7,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 34,
+  "sim_frame": 34,
+  "cls": "sisters",
+  "lag": 4,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 36,
+  "sim_frame": 36,
+  "cls": "sisters",
+  "lag": 4,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 37,
+  "sim_frame": 37,
+  "cls": "sisters",
+  "lag": 3,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 60,
+  "sim_frame": 61,
+  "cls": "sisters",
+  "lag": 3,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 63,
+  "sim_frame": 64,
+  "cls": "sisters",
+  "lag": 3,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 73,
+  "sim_frame": 74,
+  "cls": "sisters",
+  "lag": 2,
+  "prey_split_persistent": false
+ },
+ {
+  "frame": 79,
+  "sim_frame": 80,
+  "cls": "sisters",
+  "lag": 5,
+  "prey_split_persistent": false
+ },
+ {
+  "frame": 84,
+  "sim_frame": 85,
+  "cls": "sisters",
+  "lag": 3,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 95,
+  "sim_frame": 96,
+  "cls": "sisters",
+  "lag": 4,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 95,
+  "sim_frame": 96,
+  "cls": "sisters",
+  "lag": 4,
+  "prey_split_persistent": true
+ },
+ {
+  "frame": 97,
+  "sim_frame": 98,
+  "cls": "sisters",
+  "lag": 3,
+  "prey_split_persistent": true
+ }
+]

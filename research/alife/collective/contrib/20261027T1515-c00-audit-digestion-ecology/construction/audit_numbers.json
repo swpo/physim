@@ -1,0 +1,488 @@
+{
+ "splitclass_s31": {
+  "pack": "rerun/seed31",
+  "K": 20,
+  "n_persistent_pred_splits": 8,
+  "pred_max_gen": 1,
+  "n_classified": 8,
+  "counts": {
+   "torn_two_prey": 8
+  },
+  "pred_merges": 7,
+  "prey_persistent_splits": 12,
+  "prey_max_gen": 3
+ },
+ "preysib_s31": {
+  "pack": "rerun/seed31",
+  "n": 8,
+  "n_two_prey": 8,
+  "n_sister_prey": 8,
+  "lags": [
+   4,
+   5,
+   5,
+   2,
+   5,
+   3,
+   3,
+   4
+  ]
+ },
+ "pairdiv_s31": {
+  "pack": "rerun/seed31",
+  "K": 20,
+  "prey_persistent_splits": 12,
+  "with_predator_on_parent": 12,
+  "followed_by_pred_split": 9,
+  "followed_by_persistent_pred_split": 8
+ },
+ "local_s31": {
+  "ctrl": {
+   "targets": 3,
+   "tracked_alive_at_end": 2,
+   "death_times": [
+    1299.9999999988177
+   ],
+   "final_max_cb": [
+    1.23,
+    1.58,
+    1.32
+   ],
+   "far_pred_start_end": [
+    32,
+    36
+   ]
+  },
+  "k2local": {
+   "targets": 3,
+   "tracked_alive_at_end": 3,
+   "death_times": [],
+   "final_max_cb": [
+    0.79,
+    0.68,
+    0.7
+   ],
+   "far_pred_start_end": [
+    32,
+    35
+   ]
+  },
+  "taxoff_local": {
+   "targets": 3,
+   "tracked_alive_at_end": 3,
+   "death_times": [],
+   "final_max_cb": [
+    1.25,
+    1.32,
+    1.28
+   ],
+   "far_pred_start_end": [
+    32,
+    36
+   ]
+  },
+  "k2local_taxoff": {
+   "targets": 3,
+   "tracked_alive_at_end": 0,
+   "death_times": [
+    499.99999999954525,
+    449.9999999995907,
+    449.9999999995907
+   ],
+   "final_max_cb": [
+    1.04,
+    0.34,
+    0.3
+   ],
+   "far_pred_start_end": [
+    32,
+    35
+   ]
+  },
+  "preyrm": {
+   "targets": 3,
+   "tracked_alive_at_end": 0,
+   "death_times": [
+    649.9999999994088,
+    599.9999999994543,
+    549.9999999994998
+   ],
+   "final_max_cb": [
+    1.23,
+    1.31,
+    1.46
+   ],
+   "far_pred_start_end": [
+    32,
+    39
+   ]
+  }
+ },
+ "form_k2zero_s31": [
+  {
+   "t": 2000.0000000003176,
+   "n_prey": 41,
+   "n_pred": 0,
+   "max_cb": 0.0,
+   "q_max": 0.0,
+   "pred_on_prey_frac": null
+  },
+  {
+   "t": 2799.9999999996444,
+   "n_prey": 41,
+   "n_pred": 41,
+   "max_cb": 0.979039910019136,
+   "q_max": 0.0,
+   "pred_on_prey_frac": 1.0
+  },
+  {
+   "t": 3999.999999998553,
+   "n_prey": 40,
+   "n_pred": 40,
+   "max_cb": 1.0105685520793117,
+   "q_max": 0.0,
+   "pred_on_prey_frac": 1.0
+  }
+ ],
+ "splitclass_s32": {
+  "pack": "rerun/seed32",
+  "K": 20,
+  "n_persistent_pred_splits": 10,
+  "pred_max_gen": 2,
+  "n_classified": 10,
+  "counts": {
+   "torn_two_prey": 8,
+   "with_prey_split": 2
+  },
+  "pred_merges": 6,
+  "prey_persistent_splits": 13,
+  "prey_max_gen": 3
+ },
+ "preysib_s32": {
+  "pack": "rerun/seed32",
+  "n": 10,
+  "n_two_prey": 10,
+  "n_sister_prey": 10,
+  "lags": [
+   6,
+   8,
+   5,
+   5,
+   5,
+   3,
+   5,
+   4,
+   4,
+   3
+  ]
+ },
+ "pairdiv_s32": {
+  "pack": "rerun/seed32",
+  "K": 20,
+  "prey_persistent_splits": 13,
+  "with_predator_on_parent": 13,
+  "followed_by_pred_split": 8,
+  "followed_by_persistent_pred_split": 7
+ },
+ "local_s32": {
+  "ctrl": {
+   "targets": 3,
+   "tracked_alive_at_end": 3,
+   "death_times": [],
+   "final_max_cb": [
+    1.39,
+    1.39,
+    1.17
+   ],
+   "far_pred_start_end": [
+    30,
+    35
+   ]
+  },
+  "k2local": {
+   "targets": 3,
+   "tracked_alive_at_end": 2,
+   "death_times": [
+    2649.9999999996717
+   ],
+   "final_max_cb": [
+    0.56,
+    0.41,
+    0.68
+   ],
+   "far_pred_start_end": [
+    30,
+    33
+   ]
+  },
+  "taxoff_local": {
+   "targets": 3,
+   "tracked_alive_at_end": 3,
+   "death_times": [],
+   "final_max_cb": [
+    1.24,
+    1.15,
+    1.36
+   ],
+   "far_pred_start_end": [
+    30,
+    37
+   ]
+  },
+  "k2local_taxoff": {
+   "targets": 3,
+   "tracked_alive_at_end": 0,
+   "death_times": [
+    449.9999999995907,
+    449.9999999995907,
+    449.9999999995907
+   ],
+   "final_max_cb": [
+    0.35,
+    0.26,
+    0.65
+   ],
+   "far_pred_start_end": [
+    30,
+    33
+   ]
+  },
+  "preyrm": {
+   "targets": 3,
+   "tracked_alive_at_end": 0,
+   "death_times": [
+    549.9999999994998,
+    449.9999999995907,
+    449.9999999995907
+   ],
+   "final_max_cb": [
+    1.44,
+    1.11,
+    1.37
+   ],
+   "far_pred_start_end": [
+    30,
+    33
+   ]
+  }
+ },
+ "form_k2zero_s32": [
+  {
+   "t": 2000.0000000003176,
+   "n_prey": 36,
+   "n_pred": 0,
+   "max_cb": 0.0,
+   "q_max": 0.0,
+   "pred_on_prey_frac": null
+  },
+  {
+   "t": 2799.9999999996444,
+   "n_prey": 36,
+   "n_pred": 36,
+   "max_cb": 0.9625546052291358,
+   "q_max": 0.0,
+   "pred_on_prey_frac": 1.0
+  },
+  {
+   "t": 3999.999999998553,
+   "n_prey": 36,
+   "n_pred": 36,
+   "max_cb": 1.0100459349940862,
+   "q_max": 0.0,
+   "pred_on_prey_frac": 1.0
+  }
+ ],
+ "qbudget_s31_t6000": {
+  "state": "states/state_s31_t6000.npz",
+  "t": 5999.999999996734,
+  "n_pred": 47,
+  "n_prey": 48,
+  "n_measured": 47,
+  "q_check_rel_err": 0.003800018610149432,
+  "share_own_territory": {
+   "median": 0.9999958633337889,
+   "p10": 0.9999262684300639,
+   "min": 0.9991467741317573,
+   "n_ge_0p9": 47
+  },
+  "share_own_mask": {
+   "median": 0.9636130166895157,
+   "p10": 0.9167241556708211,
+   "min": 0.677557226789768
+  },
+  "frac_total_eat_in_pred_masks": 0.875400095361715,
+  "frac_total_eat_in_prey_masks": 0.4047023980526435,
+  "frac_q_in_pred_masks": 0.6209256981863324,
+  "frac_in_prey_median": 0.15151515151515152,
+  "frac_px_with_q_gt_0p1_median": 0.9523809523809523,
+  "mean_eat_per_pred_mass": 0.0026703707744757323
+ },
+ "qbudget_s31_t9000": {
+  "state": "states/state_s31_t9000.npz",
+  "t": 8999.999999997679,
+  "n_pred": 50,
+  "n_prey": 45,
+  "n_measured": 49,
+  "q_check_rel_err": 0.0038984039930787823,
+  "share_own_territory": {
+   "median": 0.9999939886491553,
+   "p10": 0.999936938789172,
+   "min": 0.9660476047509498,
+   "n_ge_0p9": 49
+  },
+  "share_own_mask": {
+   "median": 0.9657587083309801,
+   "p10": 0.9184175898929469,
+   "min": 0.7947020676452476
+  },
+  "frac_total_eat_in_pred_masks": 0.8832791694888303,
+  "frac_total_eat_in_prey_masks": 0.41093950939304796,
+  "frac_q_in_pred_masks": 0.6203738093552881,
+  "frac_in_prey_median": 0.15384615384615385,
+  "frac_px_with_q_gt_0p1_median": 0.9583333333333334,
+  "mean_eat_per_pred_mass": 0.002701316836624809
+ },
+ "qbudget_s32_t6000": {
+  "state": "states/state_s32_t6000.npz",
+  "t": 5999.999999996734,
+  "n_pred": 49,
+  "n_prey": 51,
+  "n_measured": 49,
+  "q_check_rel_err": 0.003773665010284418,
+  "share_own_territory": {
+   "median": 0.9999916922268192,
+   "p10": 0.9999326885088471,
+   "min": 0.9990645310001447,
+   "n_ge_0p9": 49
+  },
+  "share_own_mask": {
+   "median": 0.9571547052385904,
+   "p10": 0.921648723367516,
+   "min": 0.8573329237521176
+  },
+  "frac_total_eat_in_pred_masks": 0.869417776112645,
+  "frac_total_eat_in_prey_masks": 0.43099457002338315,
+  "frac_q_in_pred_masks": 0.6046008542542256,
+  "frac_in_prey_median": 0.13636363636363635,
+  "frac_px_with_q_gt_0p1_median": 0.9523809523809523,
+  "mean_eat_per_pred_mass": 0.002739334158824088
+ },
+ "global_arms": {
+  "s31_ctrl": {
+   "+0": [
+    47,
+    48
+   ],
+   "+1000": [
+    49,
+    43
+   ],
+   "+2000": [
+    48,
+    49
+   ],
+   "+3000": [
+    50,
+    45
+   ]
+  },
+  "s31_k2zero": {
+   "+0": [
+    47,
+    48
+   ],
+   "+1000": [
+    46,
+    45
+   ],
+   "+2000": [
+    45,
+    45
+   ],
+   "+3000": [
+    45,
+    45
+   ]
+  },
+  "s31_chiF0": {
+   "+0": [
+    47,
+    48
+   ],
+   "+1000": [
+    44,
+    44
+   ],
+   "+2000": [
+    31,
+    33
+   ],
+   "+3000": [
+    27,
+    32
+   ]
+  },
+  "s32_ctrl": {
+   "+0": [
+    49,
+    51
+   ],
+   "+1000": [
+    51,
+    45
+   ],
+   "+2000": [
+    44,
+    47
+   ],
+   "+3000": [
+    51,
+    49
+   ],
+   "+6000": [
+    50,
+    47
+   ]
+  },
+  "s32_k2zero": {
+   "+0": [
+    49,
+    51
+   ],
+   "+1000": [
+    49,
+    51
+   ],
+   "+2000": [
+    47,
+    48
+   ],
+   "+3000": [
+    47,
+    48
+   ]
+  },
+  "s32_chiF0": {
+   "+0": [
+    49,
+    51
+   ],
+   "+1000": [
+    38,
+    42
+   ],
+   "+2000": [
+    24,
+    32
+   ],
+   "+3000": [
+    14,
+    23
+   ],
+   "+6000": [
+    17,
+    23
+   ]
+  }
+ }
+}

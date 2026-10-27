@@ -1,0 +1,98 @@
+{
+"pack": "rerun/seed31",
+"n": 8,
+"n_two_prey": 8,
+"n_sister_prey": 8,
+"lags": [
+4,
+5,
+5,
+2,
+5,
+3,
+3,
+4
+],
+"rows": [
+{
+"frame": 31,
+"prey_tracks": [
+49,
+50
+],
+"sisters": true,
+"prey_split_frame": 27,
+"lag_frames": 4
+},
+{
+"frame": 32,
+"prey_tracks": [
+51,
+52
+],
+"sisters": true,
+"prey_split_frame": 27,
+"lag_frames": 5
+},
+{
+"frame": 34,
+"prey_tracks": [
+56,
+57
+],
+"sisters": true,
+"prey_split_frame": 29,
+"lag_frames": 5
+},
+{
+"frame": 35,
+"prey_tracks": [
+65,
+66
+],
+"sisters": true,
+"prey_split_frame": 33,
+"lag_frames": 2
+},
+{
+"frame": 53,
+"prey_tracks": [
+85,
+86
+],
+"sisters": true,
+"prey_split_frame": 48,
+"lag_frames": 5
+},
+{
+"frame": 53,
+"prey_tracks": [
+87,
+88
+],
+"sisters": true,
+"prey_split_frame": 50,
+"lag_frames": 3
+},
+{
+"frame": 64,
+"prey_tracks": [
+100,
+101
+],
+"sisters": true,
+"prey_split_frame": 61,
+"lag_frames": 3
+},
+{
+"frame": 87,
+"prey_tracks": [
+130,
+131
+],
+"sisters": true,
+"prey_split_frame": 83,
+"lag_frames": 4
+}
+]
+}
