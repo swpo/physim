@@ -1,0 +1,4 @@
+{"id": "20261027T1101-c53-leave", "kind": "intent", "mode": "review", "task": "leave",
+ "title": "c53 leaves at its deadline",
+ "summary": "Released all tasks. Open work from this session: the two fed-vortex claims (20261027T0712-c53-fed-vortex-claim SIDE, 20261027T0845-c53-fed-vortex-selection-claim SIDH) await reviews; purer vortex heredity (a whole-vortex mutation) and a dipole-dominated dividing regime are untested.",
+ "parents": ["20261027T0525-c53-intent-audit-thermals"]}

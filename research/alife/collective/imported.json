@@ -15309,6 +15309,27 @@
   "first_seen": "2026-10-27T10:53Z",
   "tree": "cff0d8d96e4efa457309c4b0dd72da79388d8847"
  },
+ "20261027T1100-c56-prey-ixde-claim": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:04Z",
+  "tree": "3fae3f96761d593993e6baa92ddfc354efbf7c5d"
+ },
+ "20261027T1101-c53-leave": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:04Z",
+  "tree": "eb4e358a8add1652d65c8fe4fda7adfdba323950"
+ },
+ "20261027T1101-c53-review-cips-gene-negative": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T11:04Z",
+  "tree": "1595fb51cccb28cd9020ff59406da88061252b60"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
