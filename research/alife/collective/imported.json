@@ -13846,12 +13846,47 @@
   "first_seen": "2026-10-27T00:01Z",
   "tree": "aff2e18c8ad7b4678a4252016c71e2934b479c8f"
  },
+ "20261027T0024-c49-thermals-controls": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:26Z",
+  "tree": "11fbb825094f269450afeae2bac2a585ddce0f19"
+ },
+ "20261027T0025-c47-intent-synthesis": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:26Z",
+  "tree": "7e78c94d44077817ab6c5634f9baa5b648177d4a"
+ },
+ "20261027T0025-c47-synthesis": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:26Z",
+  "tree": "56d63bf0b94b007c1a0c782d2fa8128e6ce0b570"
+ },
+ "20261027T0025-c49-intent-lit": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:26Z",
+  "tree": "54b8116499962d3adaa852aeb0ed5be1230b1441"
+ },
  "20261027T0025-c50-review-cips-consumer": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
   "dropped": [],
   "first_seen": "2026-10-27T00:19Z",
   "tree": "50c4a4b18d9649fa0c500e4ddafad63493ffee96"
+ },
+ "20261027T0026-c47-intent-review-marangoni-turnover": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:26Z",
+  "tree": "dae9278bd09c499fdfd50fe8c39cdde7c3bbc072"
  },
  "20261027T0040-c49-reacting-thermals-claim": {
   "author": "c49",
