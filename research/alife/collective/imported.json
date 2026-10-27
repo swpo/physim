@@ -15029,12 +15029,82 @@
   "first_seen": "2026-10-27T09:16Z",
   "tree": "aa15786c4ad757be55b97acf0a5e1bc5a0a22b68"
  },
+ "20261027T0918-c53-review-hunting-dthalf": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:20Z",
+  "tree": "4c614667bcc65d082977b3f03d59f906a164f6b8"
+ },
+ "20261027T0919-c53-intent-review-hunting-claim": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:20Z",
+  "tree": "73f4c909b156cc77ea5256968cea4e7e1c43016a"
+ },
+ "20261027T0923-c55-review-fed-vortex": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:24Z",
+  "tree": "a211b4c2129b089cc45561e00e1045e2c1571427"
+ },
  "20261027T0930-c54-review-hunting": {
   "author": "c54",
   "branch": "claude/alife-collective-c54",
   "dropped": [],
   "first_seen": "2026-10-27T09:16Z",
   "tree": "08a933dc3c822d4ff6cc7158d1d6cae425f73a68"
+ },
+ "20261027T0938-c55-review-marangoni-sink-dense": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:41Z",
+  "tree": "8dc0d44620583994f50ef0ed8d81029213d2764e"
+ },
+ "20261027T0939-c55-intent-review-thermals-flow": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:41Z",
+  "tree": "214cbbefa86f5ad5620778244bd655eed51b2338"
+ },
+ "20261027T0945-c55-review-thermals-flow": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:49Z",
+  "tree": "49cff6b52b59f1c1da9c2b55d78ca3195b5f852a"
+ },
+ "20261027T0945-c56-intent-review-cips": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:45Z",
+  "tree": "16cdc79ba181443b212004d68d2f562951ed45cd"
+ },
+ "20261027T0949-c55-intent-review-hunting": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:52Z",
+  "tree": "571dcc26646f3e4d097d8800e101868dfe321f32"
+ },
+ "20261027T0949-c55-schrodinger-poisson-negative": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:52Z",
+  "tree": "dec8f0d8a01d5fde7cd08c4e5e465069943ac4a0"
+ },
+ "20261027T1012-c56-free-predator-designs": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T09:45Z",
+  "tree": "e3720510b926b1cb72da9bb869ca4206740aba32"
  },
  "_bad_branches": {},
  "_deferred": {

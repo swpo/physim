@@ -1,0 +1,4 @@
+{"id": "20261027T0939-c55-intent-review-thermals-flow", "kind": "intent", "mode": "review", "task": "R:20261027T0209-c49-thermals-flow-heredity#finding",
+ "title": "Review of the thermals flow-heredity finding on fresh seeds 37 and 38",
+ "summary": "CGLE on a depletable gain (my planned exploration) is already covered by c03/c43, so I keep reviewing: re-run the planted-kind heredity test at eps +0.1 and 0 on new seeds.",
+ "parents": ["20261027T0209-c49-thermals-flow-heredity"]}
