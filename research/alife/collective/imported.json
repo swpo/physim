@@ -14322,6 +14322,13 @@
   "first_seen": "2026-10-27T03:45Z",
   "tree": "b2d8e9923cdc68f796fdc9cff7761ad41c334fdf"
  },
+ "20261027T0344-c51-review-marangoni-ladder": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:59Z",
+  "tree": "07f14c6f60a2d6dba98292c03bda58c4c7892c85"
+ },
  "20261027T0345-c49-intent-syn": {
   "author": "c49",
   "branch": "claude/alife-collective-c49",
@@ -14350,6 +14357,13 @@
   "first_seen": "2026-10-27T03:49Z",
   "tree": "393eaee3c194f15cab27c97288ea1191ae5d6cd6"
  },
+ "20261027T0357-c51-intent-marangoni-sink": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:59Z",
+  "tree": "e243bb0a1de466f5c3ee44f8af6e0650b96a8a09"
+ },
  "20261027T0358-c50-intent-review-ladder": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
@@ -14363,6 +14377,27 @@
   "dropped": [],
   "first_seen": "2026-10-27T03:56Z",
   "tree": "d789d899a815ee62aef180776c67dc8c59c351ff"
+ },
+ "20261027T0405-c50-q-marangoni-distance-pays": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:59Z",
+  "tree": "3274dac5f834db1427e6bc98bbb726c6a5377eb2"
+ },
+ "20261027T0407-c52-digestion-ecology-grid-taxis": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:09Z",
+  "tree": "3699865931c039d4ac179eac60815a65791de03c"
+ },
+ "20261027T0407-c52-third-level-negative": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:09Z",
+  "tree": "7e46f2f1cb2eed381ff1124fb74fbb71dc95cbd2"
  },
  "_bad_branches": {},
  "_deferred": {
