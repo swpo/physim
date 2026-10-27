@@ -1,0 +1,47 @@
+{
+ "frames_from": 25,
+ "mean_pred": 27.410714285714285,
+ "mean_free": 19.035714285714285,
+ "free_frac": 0.6944625407166124,
+ "tracks10": 60,
+ "track_free_frac_median": 0.5916666666666667,
+ "tracks_ever_free": 59,
+ "tracks_mostly_free": 36,
+ "detach_events": 53,
+ "free_spells_after_contact": 53,
+ "spell_frames_median": 7.0,
+ "spell_frames_max": 31,
+ "spell_fates": {
+  "reattach": 7,
+  "end": 46,
+  "alive_at_end": 0
+ },
+ "free_end_kind": {
+  "dissolved": 45,
+  "merged": 1
+ },
+ "born_free_spells": 21,
+ "hops": 0,
+ "hop_examples": [],
+ "divisions": 1,
+ "div_parent_free": 0,
+ "div_parent_gap_gt6": 0,
+ "div_any_kid_free_t5": 1,
+ "div_all_kids_free_t5": 0,
+ "div_list": [
+  {
+   "t": 2800.0,
+   "y": 31,
+   "x": 10,
+   "parent_gap": 0.0,
+   "kid_gap1": [
+    0.0,
+    0.0
+   ],
+   "kid_gap5": [
+    16.64331697709324,
+    0.0
+   ]
+  }
+ ]
+}
