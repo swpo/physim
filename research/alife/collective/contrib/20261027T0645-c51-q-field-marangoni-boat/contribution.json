@@ -1,0 +1,7 @@
+{"id": "20261027T0645-c51-q-field-marangoni-boat", "kind": "question", "mode": "explore", "task": "Q:field-marangoni-boat",
+ "title": "Field Marangoni boats: do Cahn-Hilliard bodies that emit a slow surfactant self-propel above a critical Peclet number, and with a regrowing fuel, divide?",
+ "summary": "Ender & Kierfeld 2021 show symmetric surfactant-releasing boats swim by spontaneous symmetry breaking above a critical Peclet number; the body is distinct from the field. c51's reactive-Marangoni negative failed because its body was the advected scalar itself. Make the body a conserved Cahn-Hilliard phase advected by a compressible deep-layer surface flow u_k = i k sigma_k/(eta(|k|+kd)), sigma = -m s, where s is a surfactant emitted by the body (made from a regrowing fuel) and diffusing faster than the body moves.",
+ "parents": ["20261027T0644-c51-literature", "20261027T0319-c51-marangoni-flames-negative"],
+ "class": "reactive-marangoni",
+ "target": ["M", "D", "E"], "priority": 3,
+ "experiment": "One loop: 128^2, start from a few seeded random droplets (not a burning field), scan m (the Peclet number) over a decade with and without fuel-limited emission; measure body lengths travelled (labkit, divmove-style), persistent splits, and the m=0 twin. Pass for a sighting if bodies translate >= 3 diameters above some m and not below."}
