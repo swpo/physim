@@ -1,0 +1,41 @@
+{
+ "sel_s5_a0.5": {
+  "t_end": 30000,
+  "n_g1_g2_empty_end": [
+   4,
+   1,
+   0
+  ],
+  "g2_share_end": 0.2,
+  "g2_share_mean_last_5000t": 0.15931372549019607,
+  "removals": 24,
+  "removals_g2": 7,
+  "swap_hits": 4,
+  "swap_times": [
+   2700,
+   9100,
+   14900,
+   23100
+  ]
+ },
+ "sel_s5_a0.0": {
+  "t_end": 30000,
+  "n_g1_g2_empty_end": [
+   5,
+   6,
+   0
+  ],
+  "g2_share_end": 0.5454545454545454,
+  "g2_share_mean_last_5000t": 0.6125816993464053,
+  "removals": 24,
+  "removals_g2": 10,
+  "swap_hits": 5,
+  "swap_times": [
+   2700,
+   9100,
+   14900,
+   23100,
+   27900
+  ]
+ }
+}

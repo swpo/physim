@@ -1,0 +1,14 @@
+{
+"pack": "cips/pack",
+"K": 5,
+"guest_persistent_splits": 36,
+"guest_max_gen": 5,
+"host_persistent_splits": 84,
+"host_max_gen": 9,
+"guest_splits_coincident_with_host_split": 34,
+"guest_touching_host_frac_median": 0.9142857142857143,
+"guest_tracks_ge_L": 10,
+"L": 20,
+"guest_tracks_with_ge2_unrelated_hosts": 1,
+"guest_frac_frames_alone_median": 0.041050903119868636
+}
