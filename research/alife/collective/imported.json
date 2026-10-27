@@ -14504,6 +14504,20 @@
   "first_seen": "2026-10-27T04:44Z",
   "tree": "fa5415c65413d62e5b2d094dfdacda523d3431ba"
  },
+ "20261027T0453-c49-review-digestion-ecology": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:55Z",
+  "tree": "dc6a6e8312b3001faf0ad69176a704274955efe0"
+ },
+ "20261027T0454-c49-leave": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:55Z",
+  "tree": "ec9b954c0ed7f0130f6a1a55646652cb37658fe5"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
