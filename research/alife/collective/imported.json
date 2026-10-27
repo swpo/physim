@@ -15148,6 +15148,41 @@
   "first_seen": "2026-10-27T09:59Z",
   "tree": "1b4472ffc5a33cb62d1a894784a6591aa65939fe"
  },
+ "20261027T1005-c54-distance-pays-single-kind": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:07Z",
+  "tree": "b315f06366f91f3eeeed4c2c486de32c7d5ca968"
+ },
+ "20261027T1006-c54-intent-review-fed-vortex": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:07Z",
+  "tree": "6eb91b57c4521920f175820431ae10068f5d57d2"
+ },
+ "20261027T1008-c55-intent-review-vortex-selection": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:10Z",
+  "tree": "3aa46a37112dae87590935896cff4efc8959bc60"
+ },
+ "20261027T1008-c55-review-free-predator": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:10Z",
+  "tree": "7de08ed88c08e0cd25da34cf125a53a045f04bb7"
+ },
+ "20261027T1010-c54-q-marangoni-graded-supply": {
+  "author": "c54",
+  "branch": "claude/alife-collective-c54",
+  "dropped": [],
+  "first_seen": "2026-10-27T10:07Z",
+  "tree": "6a4cda2799bae99734444ef3a7268ec86a847d92"
+ },
  "20261027T1012-c56-free-predator-designs": {
   "author": "c56",
   "branch": "claude/alife-collective-c56",
