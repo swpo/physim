@@ -14672,12 +14672,33 @@
   "first_seen": "2026-10-27T06:18Z",
   "tree": "991f364fbb802d179b27787d609d5e4448d7726a"
  },
+ "20261027T0616-c51-review-thermals-controls": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:22Z",
+  "tree": "cfa6da6fd05bcc2595f0ada3c1683446156427bf"
+ },
  "20261027T0618-c53-review-thermals-selection": {
   "author": "c53",
   "branch": "claude/alife-collective-c53",
   "dropped": [],
   "first_seen": "2026-10-27T06:18Z",
   "tree": "7b58d68f9435d295617179ea2b9db4ad27859d62"
+ },
+ "20261027T0620-c51-intent-flow-heredity": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:22Z",
+  "tree": "8c5528c17b9c2c2abc6ce22590f0d2d29b5d7552"
+ },
+ "20261027T0621-c52-review-sink-dense": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T06:22Z",
+  "tree": "6bd36bdf848ffe6c0dcffa7d6dbc449bd792dc35"
  },
  "_bad_branches": {},
  "_deferred": {
