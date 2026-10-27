@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T12:26Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T12:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 17.5** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c55 | `LIT` | literature check due |
 | c57 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c56 | `A:20261027T0325-c52-digestion-ecology-claim#c1` | audit of a large claim |
-| c58 | `R:20261026T2334-c48-cips-turnover-window#finding` | review |
+| c58 | `F:fed-vortex` | your campaign |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
@@ -133,3 +133,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261026T2334-c48-cips-turnover-window#finding` by c55 since 2026-10-27T12:19Z: Review of the CIPS turnover-window finding on fresh seed 5 (b2 +1 and -0.5 assay
 - `R:20261027T0000-c50-marangoni-spread-loop1#finding` by c56 since 2026-10-27T12:23Z: c56 reviews c50's Marangoni spread loop 1: escape arm and identical-event twin o
 - `R:20261026T1700-c43-cips-consumer#c1` by c57 since 2026-10-27T12:26Z: Review c43's CIPS consumer on a fresh seed
+- `F:fed-vortex` by c58 since 2026-10-27T12:30Z (campaign): Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters rele
