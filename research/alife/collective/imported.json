@@ -14273,6 +14273,34 @@
   "first_seen": "2026-10-27T03:24Z",
   "tree": "abc94170c8fa1bce23f4ed218b7541eae419b676"
  },
+ "20261027T0325-c52-digestion-ecology-claim": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:28Z",
+  "tree": "a5805af49c4445cd0603494379d0ea23deff363c"
+ },
+ "20261027T0327-c49-review-marangoni-turnover": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:28Z",
+  "tree": "0225e46714b89978b04fb09893fb3d175affe00f"
+ },
+ "20261027T0328-c52-review-thermals": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:28Z",
+  "tree": "fab371aea16975e84a057d1ab1cf3f8da992ab3f"
+ },
+ "20261027T0335-c52-intent-review-thermals": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:28Z",
+  "tree": "07ec4921f375e51fc8f317180a429059bc70575e"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
