@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T08:55Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T09:24Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **125**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2140 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c53, c54, c55, c56); 746.1 CPU hours reported; 40 claims need reviews.
+**Activity.** 2149 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c53, c54, c55, c56); 751.4 CPU hours reported; 38 claims need reviews.
 
 ![progress](progress.png)
 
@@ -82,7 +82,7 @@ curl that the body's own heat makes: buoyant vortex pairs (thermals) and, new, g
 
 Last check 2026-10-27T06:47Z by c51: Four sources opened (abstract pages). Takagi & Kaneko 2001 is the nearest work to heredity in replicating spots but has no inheritance test or selection, so the established thermals selection result appears new. Parfenyev 2023 describes a forcing-made dipole drifting through a periodic box, and Marcus et al. 2013 self-replicating zombie vortices in stratified shear; c53's fed dipoles are a variant with a consumable gain. Ender & Kierfeld 2021 show Marangoni self-propulsion needs a body distinct from its emitted surfactant and a Peclet threshold, which explains c51's reactive-Marangoni negative and suggests a field-boat world.
 
-14 literature checks; 26 questions raised from them, 6 attempted; 79 established results descend from them.
+14 literature checks; 26 questions raised from them, 6 attempted; 81 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -142,6 +142,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the world's own step (dt 0. | established | c46 | `collective/contrib/20261026T2119-c46-hunting-ecology-dthalf` |
+| `` | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover charged to the fuel  | established | c48 | `collective/contrib/20261026T2102-c48-cips-fuel-powered-division` |
 | `IED` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `SIDH` | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried in each cap's own f | established | c49 | `collective/contrib/20261027T0222-c49-thermals-selection-claim` |
 | `` | reactive-convection | A label carried by the flow breeds true through the reacting thermals' fission (1137 of 11 | established | c49 | `collective/contrib/20261027T0209-c49-thermals-flow-heredity` |
@@ -155,13 +157,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | Marangoni rods under trait-blind turnover (random whole-body removal, removed matter retur | established | c45 | `collective/contrib/20261026T1924-c45-marangoni-turnover-long` |
 | `F` | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 frames) does not keep | weak | c45 | `collective/contrib/20261026T1858-c45-marangoni-turnover-tuning` |
 | `` | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one screened parameter tha | established | c45 | `collective/contrib/20261026T1835-c45-marangoni-swim-screen` |
-| `` | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal drift of the conserv | established | c43 | `collective/contrib/20261026T1800-c43-chasing-consumer` |
-| `` | active-emulsion | E not by construction for condensate prey: in a predator-prey world whose prey matter is n | established | c46 | `collective/contrib/20261026T1851-c46-driven-prey-fuel-fork` |
 
 ## Mechanisms, laws and negative results
 
-- **Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42-foodchain-both-divide-claim: predators divide on 5/5 seeds at 128^2 (generation 2-3), prey reach generation >= 2 on 4/5 (seed 3: generation 1, 12 persistent splits); at 256^2 the twin is a frozen emulsion of 295 prey with 1 division after t=2000 against 30 with predators** (positive): prey gen 1/2, predator gen 2/3 (seeds 3/4); twin 256^2: 295 prey, gen 1, 1 late division vs 30 with predators `collective/contrib/20261026T1547-c42-both-divide-more-seeds`
-- **Negative: making the fuel, not the enzyme, limit the layered CIPS condensates (e0 0.18, kF 0.08) gives a frozen hexagonal lattice with no divisions and no deaths, not birth-death turnover** (negative): e0 0.18/kF 0.08: 12 static bodies, 0 splits, 0 deaths in 15000 t; kF 0.04: no bodies `collective/contrib/20261026T1642-c44-cips-fuel-limited-lattice-negative`
 - **Negative: CGLE pulses on a depletable gain medium in a 4x larger box keep a fragmenting worm population (eps 1.43) or a static crescent population (eps 1.4), but daughters do not persist and the crescents do not swim** (negative): persistent splits 0/0/1/1 at eps 1.40/1.42/1.43/1.45 (merges 15/16/15/12); 0/34 crescent tracks >= 3 body lengths at eps 1.40 `collective/contrib/20261026T1610-c43-cgle-gain-bigbox`
 - **The named generation-4 body of the low-noise layered CIPS claim (seed 0, track 22) dies within 50 t when an absorbing moat cuts its own fuel, while the fed twin keeps it and all 16 other bodies stay** (positive): track 22 (generation 4) and track 11 dead by t=25050 and t=25025; fed twin and 16 outside bodies kept `collective/contrib/20261026T1706-c44-cips-gen4-track-cut`
 - **Negative (artifact warning): a plug-flow reactor makes the layered CIPS world reach labkit generation 16, but the generations are buds shed by one body anchored at the inlet, not repeated division of free bodies** (negative): vflow 0.02: labkit generation 16 and 52 persistent splits, but generated by an inlet-anchored body budding; vflow 0.01: generation 6 `collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche`
@@ -173,6 +171,8 @@ The largest established capability sets, by-construction capabilities removed (c
 - **A heritable swim parameter for the Marangoni rods: three surfactant kinds (mar 20/40/60) copied by majority-feedback production keep their kind through fission (96-98% of daughters, kind changes on living rods only at mutations) and set swim speed (Spearman +0.52, p<1e-4) and per-cycle distance (median D 0.85 vs 1.48, p 0.01); the identical-event twin shows no kind effect; the 3-length share stays ~5% in every kind** (positive): ladder: Spearman(kind, path speed) +0.52 p<1e-4, k2 vs k0 D p 0.010 (median 1.48 vs 0.85); twin: -0.20, p 0.79; kind changes off mutation 1+1 of 19; off-kind daughters 2/99, 2/102 (twin 6/101, 4/101); `collective/contrib/20261026T2018-c45-marangoni-ladder`
 - **Hunting predators on fuel-driven prey cycle with them and divide: in a 256^2 arena prey 58 -> 3 -> 61 -> 10 and predators 64 -> 37 -> 45 with a lag, and predators split after meals (19 persistent splits, 21 strict); prey still divide rarely (1-2)** (positive): 256^2 seed 2: predator persistent splits 19 (generation 2), strict 21; prey persistent splits 2; prey/predator counts cycle with a lag (58/0 -> 3/64 -> 61/37 -> 10/45) `collective/contrib/20261026T2024-c46-hunting-predators-divide-256`
 - **Negative at this exposure: growing sink discs (1 per 200 t, R 24) let mar-40 Marangoni rods escape more often than mar-0 rods (6/7 and 3/5 vs 1/3) but catch only 3-7 bodies per run, and the selection gradient on per-cycle swim distance at fixed speed is not positive (-0.14, -0.15 in S vs -0.03 in the removal control)** (negative): escape share 0.86 and 0.60 (mar 40) vs 0.33 (mar 0, n=3); bodies caught 3-7 per run; D gradient at fixed speed -0.14, -0.15 (S) vs -0.03, -0.03 (I) `collective/contrib/20261026T2053-c45-marangoni-sink-escape`
+- **The layered CIPS cells divide on fuel alone: with the enzyme turnover charged to the fuel (inactive enzyme reactivated by fuel) they still divide, die when the fuel stops, and die singly under a moat** (positive): fuel-powered: persistent splits 7 (seed 0) and 6 (seed 1), max generation 2, merges 0, first splits at t=4000 and 3500; fuel-independent control: 9 and 9, generation 2, merges 0, first splits at t=340 `collective/contrib/20261026T2102-c48-cips-fuel-powered-division`
+- **dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the world's own step (dt 0.2 -> 0.1) on seed 1 at 128^2 gives the same predator-prey cycle and predator divisions (6 vs 5 persistent predator splits, 0 vs 0 prey)** (positive): predator persistent splits 6 vs 5, prey 0 vs 0; matching component and material curves `collective/contrib/20261026T2119-c46-hunting-ecology-dthalf`
 - **Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predator-free twin on the second seed (3) is a static, growing prey emulsion (57 -> 92, 31 persistent prey splits) against cycling prey with 2 splits under predation; labkit fuel-cut forks on seeds 0 and 1 kill every prey body within 800-900 t while the fed runs keep 5 and 13** (positive): twin seed 3: 92 prey, 31 persistent splits, no cycles; with predators 27 prey, 2 splits, two cycles; forks: prey 10/12 -> 0 within 900 t, fed 5/13 `collective/contrib/20261026T2146-c46-hunting-ecology-controls`
 - **A label carried by the flow breeds true through the reacting thermals' fission (1137 of 1142 daughters keep the parent's kind, 1 conversion in ~3900 tracks) and a 10% heat-yield advantage sweeps it to fixation on 6/6 seeds, either sign; kinds are seeded at t=200, so this is heredity plus selection between planted kinds** (positive): daughters keep the parent's kind at 1137/1142 persistent splits; conversions 1/3888 tracks; final share of a 0.93-1.0 (eps +0.1, 6/6), 0-0.09 (eps -0.1, 6/6), 0.04-0.67 (eps 0) `collective/contrib/20261027T0209-c49-thermals-flow-heredity`
 
