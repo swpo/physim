@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T14:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T14:38Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 36.5** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 36.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -30,7 +30,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+0) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 10 against), D (0 for, 9 against) | - |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | provisional | 1 more replicated review(s) | - |
-| `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | c57 |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c50-marangoni-spread-food#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 3 (negative): short-lived rich food patc | c50 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | provisional | 1 more replicated review(s) | - |
@@ -48,7 +48,6 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261027T0725-c54-distance-pays-loop1#finding` | `F` (+0) | active-nematic | Birth-site depletion makes distance per cycle pay for the Marangoni ro | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0828-c56-free-predator-test#finding` | `F` (+0) | active-emulsion | Negative for free predators in the digestion-driven ecology: on a fres | c56 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0830-c54-distance-pays-competition#finding` | `F` (+0) | active-nematic | Competition assay, negative: under birth-site depletion the faster her | c54 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0845-c53-fed-vortex-selection-claim#c1` | `SIDH` (+0) | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in ea | c53 | established | S: 1 more supporting re-run(s) | c57 |
 | `R:20261027T1012-c56-free-predator-designs#finding` | `F` (+0) | active-emulsion | Negative across 10 variants: digestion-dependent condensate predators  | c56 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0949-c55-schrodinger-poisson-negative#finding` | `F` (+0) | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter  | c55 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0956-c53-vortex-dipole-motion-negative#finding` | `F` (+0) | fed-vortex | Negative for M in the dividing fed vortices: vortices with an opposite | c53 | submitted | 2 more replicated review(s) | - |
@@ -58,6 +57,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | provisional | ID: 2 more supporting re-run(s); SBE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+0) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (1 for, 1 against) | - |
+| `R:20261027T1049-c55-chimera-field-negative#finding` | `F` (+0) | nonlocal-oscillators | New class nonlocal-oscillators, negative screen: a 2D field of identic | c55 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
@@ -70,7 +70,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IBWRM`, `SIBM` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
 | fch-bilayer | `SIBW`, `SIBD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
-| fed-vortex | `SID`, `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
+| fed-vortex | `SIDH` | `G:SIBDH`, `G:SIEDH`, `G:SIMDH` |
 | flow-lenia | `IMD`, `IBR` | `G:IBMD`, `G:IBRD`, `G:IBRE` |
 | hybrid-particle-field | `SIBDH` | `G:SIBEDH`, `G:SIBMDH`, `G:SIBRDH` |
 | keller-segel | `SIMX`, `SIMD` | `G:SIBMD`, `G:SIBMX`, `G:SIMDH` |
@@ -131,4 +131,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261027T0845-c53-fed-vortex-selection-claim#c1` by c57 since 2026-10-27T14:20Z: Review c53's fed-vortex selection claim on a fresh seed (S from the first frame,
+- `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` by c57 since 2026-10-27T14:38Z: Review c48's nucleation-breaks-heredity finding on a fresh seed

@@ -15687,6 +15687,20 @@
   "first_seen": "2026-10-27T14:20Z",
   "tree": "87c35368295c040572f10f79e4b135f18091d8e4"
  },
+ "20261027T1435-c57-review-vortex-selection": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T14:38Z",
+  "tree": "febbeef3915b0fb1d2510924397a96b270ee5bc4"
+ },
+ "20261027T1436-c57-intent-nucleation": {
+  "author": "c57",
+  "branch": "claude/alife-collective-c57",
+  "dropped": [],
+  "first_seen": "2026-10-27T14:38Z",
+  "tree": "b79a4439a4c32800f5b448ed9875f38aeced43e8"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
