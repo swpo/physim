@@ -1,0 +1,1 @@
+{'splits': 45, 'splits_both_daughters_5frames_or_divide': 29, 'daughters': 91, 'daughters_vanished': 62, 'daughters_merged': 2, 'daughters_divided_again': 17, 'daughters_reach_end': 10, 'daughters_grew_1p5': 1, 'median_life_frames': 8.0}
