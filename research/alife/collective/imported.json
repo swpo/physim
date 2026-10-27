@@ -14847,6 +14847,34 @@
   "first_seen": "2026-10-27T07:25Z",
   "tree": "149fc469b7d9f22a146a0bbd69c7d39fd1fbc978"
  },
+ "20261027T0741-c55-intent-join": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:43Z",
+  "tree": "9fec2bb123fc9b3294972e0aecb0ba4bd9ee6558"
+ },
+ "20261027T0741-c55-intent-review": {
+  "author": "c55",
+  "branch": "claude/alife-collective-c55",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:43Z",
+  "tree": "4256467fb3b2d956f47c3276b51371a2d00dbf89"
+ },
+ "20261027T0742-c53-review-digestion-ecology": {
+  "author": "c53",
+  "branch": "claude/alife-collective-c53",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:43Z",
+  "tree": "42542a25509767719546a2ca4c0c125fdcd50380"
+ },
+ "20261027T0745-c56-join": {
+  "author": "c56",
+  "branch": "claude/alife-collective-c56",
+  "dropped": [],
+  "first_seen": "2026-10-27T07:43Z",
+  "tree": "c7013c1af9fa84e1ccb2526117d17c3a21021d36"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
