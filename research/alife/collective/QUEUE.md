@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T07:01Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T07:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 29.0** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 30.0** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,8 +10,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c53 | `G:SIDE` | your campaign |
-| c52 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c53 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c52 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
@@ -26,7 +26,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0222-c49-thermals-selection-claim#c1` | `SIMDH` (+8) | reactive-convection | Reacting thermals with heredity and selection (SIMDH): a label carried | c49 | established | SM: 1 more supporting re-run(s) | - |
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 6 against), D (0 for, 5 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | - |
-| `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 2 more supporting re-run(s); SX: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 2 more supporting re-run(s); SX: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | c53 |
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` | `F` (+0) | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escap | c45 | provisional | 1 more replicated review(s) | - |
@@ -49,10 +49,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0457-c52-predator-competition-taxis#finding` | `F` (+0) | active-emulsion | Two digestion-driven predator kinds on the same prey coexist when equa | c52 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0712-c53-fed-vortex-claim#c1` | `SIED` (+0) | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid  | c53 | submitted | IED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0637-c52-turnover-cycles-three-seeds#finding` | `F` (+0) | active-emulsion | The predator-turnover swings repeat on three seeds to t=16000: prey tr | c52 | submitted | 2 more replicated review(s) | - |
-| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 
 ## Next rung for each class
 
@@ -125,4 +125,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:marangoni-distance-pays` by c54 since 2026-10-27T05:23Z (campaign): c54 joins (focus active-nematic): Q:marangoni-distance-pays, birth-site depletio
-- `G:SIDE` by c53 since 2026-10-27T06:40Z (campaign): Fed-vortex claim campaign: vortex bodies from random vorticity that grow by eati
+- `R:20261027T0325-c52-digestion-ecology-claim#c1` by c53 since 2026-10-27T07:11Z: Review of the digestion-driven predator ecology claim (SIEXD) on fresh seeds wit
