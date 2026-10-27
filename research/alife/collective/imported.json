@@ -15806,6 +15806,13 @@
   "first_seen": "2026-10-27T15:27Z",
   "tree": "960fc55972b4e83892c392f66a841e2de3ef1d70"
  },
+ "20261027T1539-c58-question-vortex-novelty-next": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T15:42Z",
+  "tree": "1a22aeb21034a4d06b69a8ce81a6c5e9b380f199"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
