@@ -1,0 +1,4 @@
+pack/seed0 persistent splits 34 | after t=300: 32 | after t=1000: 26 | last split t=2874
+pack/seed1 persistent splits 39 | after t=300: 31 | after t=1000: 24 | last split t=2925
+pack/seed2 persistent splits 42 | after t=300: 37 | after t=1000: 26 | last split t=2853
+pack_noadv/seed0 persistent splits 8 | after t=300: 3 | after t=1000: 1 | last split t=1284

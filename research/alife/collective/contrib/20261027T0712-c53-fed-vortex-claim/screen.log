@@ -1,0 +1,106 @@
+[fed-vortices] seed 3: 150 frames x 150 steps, grid (128, 128)
+  frame 15/150  4.4s
+  frame 30/150  8.9s
+  frame 45/150  13.5s
+  frame 60/150  17.5s
+  frame 75/150  21.5s
+  frame 90/150  25.6s
+  frame 105/150  29.7s
+  frame 120/150  33.6s
+  frame 135/150  37.5s
+  frame 150/150  41.9s
+  -> collective/contrib/c53-fvc/screen/seed3/FACTS.md  (42s sim)
+[fed-vortices] seed 4: 150 frames x 150 steps, grid (128, 128)
+  frame 15/150  4.2s
+  frame 30/150  8.5s
+  frame 45/150  12.5s
+  frame 60/150  17.0s
+  frame 75/150  20.9s
+  frame 90/150  25.4s
+  frame 105/150  29.8s
+  frame 120/150  33.8s
+  frame 135/150  38.5s
+  frame 150/150  42.8s
+  -> collective/contrib/c53-fvc/screen/seed4/FACTS.md  (43s sim)
+[fed-vortices] seed 5: 150 frames x 150 steps, grid (128, 128)
+  frame 15/150  4.3s
+  frame 30/150  8.7s
+  frame 45/150  13.0s
+  frame 60/150  17.2s
+  frame 75/150  21.8s
+  frame 90/150  26.1s
+  frame 105/150  30.6s
+  frame 120/150  34.9s
+  frame 135/150  39.1s
+  frame 150/150  43.4s
+  -> collective/contrib/c53-fvc/screen/seed5/FACTS.md  (43s sim)
+[fed-vortices] seed 6: 150 frames x 150 steps, grid (128, 128)
+  frame 15/150  4.5s
+  frame 30/150  8.7s
+  frame 45/150  12.9s
+  frame 60/150  17.3s
+  frame 75/150  21.9s
+  frame 90/150  26.5s
+  frame 105/150  31.1s
+  frame 120/150  35.2s
+  frame 135/150  39.1s
+  frame 150/150  43.9s
+  -> collective/contrib/c53-fvc/screen/seed6/FACTS.md  (44s sim)
+[fed-vortices] seed 7: 150 frames x 150 steps, grid (128, 128)
+  frame 15/150  4.8s
+  frame 30/150  9.8s
+  frame 45/150  14.3s
+  frame 60/150  18.6s
+  frame 75/150  22.9s
+  frame 90/150  27.6s
+  frame 105/150  32.1s
+  frame 120/150  37.3s
+  frame 135/150  41.9s
+  frame 150/150  46.2s
+  -> collective/contrib/c53-fvc/screen/seed7/FACTS.md  (46s sim)
+[fed-vortices] seed 8: 150 frames x 150 steps, grid (128, 128)
+  frame 15/150  5.0s
+  frame 30/150  10.1s
+  frame 45/150  14.7s
+  frame 60/150  19.2s
+  frame 75/150  24.2s
+  frame 90/150  28.4s
+  frame 105/150  32.9s
+  frame 120/150  37.7s
+  frame 135/150  42.2s
+  frame 150/150  46.7s
+  -> collective/contrib/c53-fvc/screen/seed8/FACTS.md  (47s sim)
+[fed-vortices] seed 9: 150 frames x 150 steps, grid (128, 128)
+  frame 15/150  5.9s
+  frame 30/150  10.9s
+  frame 45/150  15.6s
+  frame 60/150  20.0s
+  frame 75/150  24.6s
+  frame 90/150  29.2s
+  frame 105/150  33.6s
+  frame 120/150  38.1s
+  frame 135/150  43.0s
+  frame 150/150  47.1s
+  -> collective/contrib/c53-fvc/screen/seed9/FACTS.md  (47s sim)
+[fed-vortices] seed 10: 150 frames x 150 steps, grid (128, 128)
+  frame 15/150  4.3s
+  frame 30/150  9.5s
+  frame 45/150  13.7s
+  frame 60/150  18.2s
+  frame 75/150  22.8s
+  frame 90/150  26.8s
+  frame 105/150  30.9s
+  frame 120/150  34.8s
+  frame 135/150  39.0s
+  frame 150/150  43.4s
+  -> collective/contrib/c53-fvc/screen/seed10/FACTS.md  (43s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 3 | ok | 34 | 31 | 151 | 0 | 47 | 3 | 1 | 0.55 | 0.14 | [] |
+| 4 | ok | 28 | 28 | 151 | 0 | 39 | 8 | 2 | 0.48 | 0.13 | [] |
+| 5 | ok | 30 | 29 | 151 | 0 | 44 | 11 | 3 | 0.62 | 0.13 | [] |
+| 6 | ok | 35 | 31 | 151 | 0 | 44 | 8 | 2 | 0.43 | 0.14 | [] |
+| 7 | ok | 36 | 32 | 151 | 0 | 49 | 5 | 2 | 0.39 | 0.14 | [] |
+| 8 | ok | 32 | 32 | 151 | 0 | 37 | 2 | 1 | 0.47 | 0.14 | [] |
+| 9 | ok | 36 | 39 | 151 | 0 | 50 | 5 | 1 | 0.55 | 0.14 | [] |
+| 10 | ok | 37 | 33 | 151 | 0 | 50 | 7 | 2 | 0.5 | 0.13 | [] |
