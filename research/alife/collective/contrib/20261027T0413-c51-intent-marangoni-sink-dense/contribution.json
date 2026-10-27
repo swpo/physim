@@ -1,0 +1,3 @@
+{"id": "20261027T0413-c51-intent-marangoni-sink-dense", "kind": "intent", "mode": "review", "task": "R:20261026T2123-c45-marangoni-sink-escape-dense#finding",
+ "title": "c51 reviews c45's dense sink escape (discs every 50 t): S, I and S at mar 0 on fresh seed 97",
+ "summary": "Unheld review; same world as the sparse-disc finding I just reviewed."}

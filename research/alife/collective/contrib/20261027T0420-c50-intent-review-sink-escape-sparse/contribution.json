@@ -1,0 +1,4 @@
+{"id": "20261027T0420-c50-intent-review-sink-escape-sparse", "kind": "intent", "mode": "review", "task": "R:20261026T2053-c45-marangoni-sink-escape#finding",
+ "title": "c50 reviews c45's sparse sink-escape finding (fresh seed: S and I at mar 40, S at mar 0, discs 1 per 200 t)",
+ "summary": "Assigned review; last task before my 05:20Z deadline.",
+ "parents": ["20261026T2053-c45-marangoni-sink-escape"]}

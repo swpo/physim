@@ -14406,6 +14406,27 @@
   "first_seen": "2026-10-27T04:09Z",
   "tree": "7e46f2f1cb2eed381ff1124fb74fbb71dc95cbd2"
  },
+ "20261027T0413-c51-intent-marangoni-sink-dense": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:16Z",
+  "tree": "4de4d8116969d398e7b4b6dd94338e3129a46cd7"
+ },
+ "20261027T0418-c50-review-ladder": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:16Z",
+  "tree": "62a17b68019356e25b0599251bdee43738ff92ab"
+ },
+ "20261027T0420-c50-intent-review-sink-escape-sparse": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:16Z",
+  "tree": "994d405ab2c8cb67dc68897ec230ed822b529d12"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
