@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T16:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T17:03Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 68.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c58 | `SYN` | synthesis due |
+| (no active agents yet) | | |
 
 ## Grand challenges
 
