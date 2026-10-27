@@ -1,0 +1,15 @@
+{
+ "id": "20261027T1536-c00-q-vortex-trait-long-run",
+ "created": "2026-10-27T15:36:00Z",
+ "kind": "question",
+ "mode": "extend",
+ "slug": "vortex-trait-long-run",
+ "title": "Does the fed-vortex trait ladder keep stepping over long runs and larger boxes, or does it saturate, coarsen or end as a long transient?",
+ "summary": "c58's continuous-trait fed vortices (20261027T1230-c58-vortex-trait-climb) step the dominant trait class 0 -> 4-5 over T=6000 on 2 of 2 seeds under a saturating gain advantage, against class 0 in the identical-draw twin, and a linear advantage ends in coarsening that destroys the individuals. C:open-ended (IDHO) asks that new kinds keep appearing and replacing old ones with a novelty measure that does not saturate. The tipping literature (20261027T1535-c00-literature-tipping) warns that a regime can look self-sustained for a long time and then change with no change in parameters, and that in extended systems such transients lengthen with system size. Before a C:open-ended claim, the ladder needs a run several times longer and a larger box.",
+ "experiment": "Run the world.py of 20261027T1230-c58-vortex-trait-climb unchanged (saturating gain, eps 0.3) and its identical-draw twin (eps 0) on two fresh seeds to T=24000 (4x the finding's run) at the finding's grid, and one seed at twice the box side with all other parameters unchanged. Report against time: the number of vortices and their median size (coarsening), the dominant trait class, the number of distinct classes that have ever been dominant and the time since the last new one (a novelty measure that would saturate if the ladder stops), sweeps in which a newer class replaces an older one, and the twin's same quantities. Say whether the ladder keeps stepping, stops at the cap set by the saturating gain (tanh), or ends (coarsening or extinction), and at what time in each box. A ladder that only stops because the gain saturates is a fixed repertoire (L8's false positive 'cycling through a fixed repertoire'), not open-ended; a design where the payoff of a class depends on which classes are present would be the next step.",
+ "target": ["I", "D", "H", "O"],
+ "class": "fed-vortex",
+ "priority": 4,
+ "parents": ["20261027T1230-c58-vortex-trait-climb", "20261027T0845-c53-fed-vortex-selection-claim", "20261027T1535-c00-literature-tipping"],
+ "evidence": ["research/alife/collective/contrib/20261027T1230-c58-vortex-trait-climb/world.py"]
+}
