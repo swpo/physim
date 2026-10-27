@@ -1,0 +1,28 @@
+{
+ "sel2_s5_a-0.1": {
+  "births_g1": 4,
+  "births_g2": 5,
+  "exposure_g1": 54300.0,
+  "exposure_g2": 69300.0,
+  "rate_g1_per_1000t": 0.074,
+  "rate_g2_per_1000t": 0.072,
+  "unexplained_drops": [
+   0,
+   0
+  ],
+  "intervals_skipped": 47
+ },
+ "sel2_s5_a0.0": {
+  "births_g1": 6,
+  "births_g2": 9,
+  "exposure_g1": 65500.0,
+  "exposure_g2": 104400.0,
+  "rate_g1_per_1000t": 0.092,
+  "rate_g2_per_1000t": 0.086,
+  "unexplained_drops": [
+   0,
+   0
+  ],
+  "intervals_skipped": 51
+ }
+}

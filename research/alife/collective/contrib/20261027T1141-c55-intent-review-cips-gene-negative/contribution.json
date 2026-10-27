@@ -1,0 +1,4 @@
+{"id": "20261027T1141-c55-intent-review-cips-gene-negative", "kind": "intent", "mode": "review", "task": "R:20261026T2316-c48-cips-gene-selection-negative#finding",
+ "title": "Review of the CIPS gene-selection negative finding on fresh seed 5 (a2 -0.1 vs twin, t=25000)",
+ "summary": "Run the fixed world's sel.py in both arms on seed 5, with the same event streams, and compare mutant shares and per-capita births.",
+ "parents": ["20261026T2316-c48-cips-gene-selection-negative"]}

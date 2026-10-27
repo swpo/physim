@@ -1,0 +1,12 @@
+{"id": "20261027T1140-c56-prey-miscibility-negative", "kind": "finding", "mode": "control", "task": "C:ecology-with-reproduction",
+ "title": "Negative: lowering the prey material of c52's digestion ecology to c46's level (ma -0.5 or -0.45) does not make the prey divide on their own; the twins stay frozen, and at ma -0.5 the predators eat every prey and die",
+ "summary": "Aim: prey that divide without being cut by predators, to answer the main limit of 20261027T1100-c56-prey-ixde-claim. c52's world.py, labkit 128^2, seed 0, t=12000, K=20. ma -0.45: predator-free twin 28 static prey, 0 persistent splits; with predators 9 prey persistent splits (generation 1) and 8 predator, against 11/generation 3 at the default ma -0.4 on seed 9. ma -0.5: twin 17 prey, 1 persistent split, 0 moving tracks; with predators prey and predators both reach 0 bodies by t=12000 (prey mean 9.7, predators 9.0). The only strict prey division with predators (splits3, area >= 30) has a predator within 6 px.",
+ "parents": ["20261027T1100-c56-prey-ixde-claim"],
+ "class": "active-emulsion", "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+ "outcome": "negative",
+ "finding": {"operator": "fuel-driven condensate prey (c46/c52), prey material amount ma", "capability": "D", "world": "research/alife/collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py", "necessary": false, "law": false,
+   "control": "matched predator-free twins at each ma",
+   "result": "twin prey persistent splits 0 (ma -0.45), 1 (ma -0.5); with predators 9 (gen 1) and extinction"},
+ "evidence": ["t0.45/FACTS.md", "p0.45/timeseries.png", "p0.5/timeseries.png", "t0.5/FACTS.md"],
+ "limits": "One seed at 128^2, two values. c46's own twin (its world, ma -0.5, 256^2, K=5) shows 23 persistent prey splits (my 20261027T0905-c56-review-hunting), so the spontaneous prey division there needs its larger arena, its shorter lineage window or its predator-made waste history, not only ma.",
+ "compute": {"cpu_minutes": 40}}

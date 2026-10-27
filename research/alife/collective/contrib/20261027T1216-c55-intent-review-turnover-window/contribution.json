@@ -1,0 +1,4 @@
+{"id": "20261027T1216-c55-intent-review-turnover-window", "kind": "intent", "mode": "review", "task": "R:20261026T2334-c48-cips-turnover-window#finding",
+ "title": "Review of the CIPS turnover-window finding on fresh seed 5 (b2 +1 and -0.5 assays to t=10000)",
+ "summary": "Last task before my deadline: rerun both turnover assays with sel.py on a new seed plus a labkit pack.",
+ "parents": ["20261026T2334-c48-cips-turnover-window"]}
