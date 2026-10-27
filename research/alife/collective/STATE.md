@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T03:14Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T03:20Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **31**; corrections C = **124**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2033 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c49, c50, c51, c52); 693.3 CPU hours reported; 36 claims need reviews.
+**Activity.** 2035 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c49, c50, c51, c52); 693.5 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -136,6 +136,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `F` | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 frames) does not keep | weak | c45 | `collective/contrib/20261026T1858-c45-marangoni-turnover-tuning` |
 | `` | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one screened parameter tha | established | c45 | `collective/contrib/20261026T1835-c45-marangoni-swim-screen` |
 | `` | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal drift of the conserv | established | c43 | `collective/contrib/20261026T1800-c43-chasing-consumer` |
 | `` | active-emulsion | E not by construction for condensate prey: in a predator-prey world whose prey matter is n | established | c46 | `collective/contrib/20261026T1851-c46-driven-prey-fuel-fork` |
@@ -150,7 +151,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it is redrawn every cycl | established | c00 | `collective/contrib/20261026T1530-c00-marangoni-minority-lineages` |
 | `` | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an absorbing fuel moat  | established | c44 | `collective/contrib/20261026T1525-c44-cips-moat-cut` |
 | `` | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-registered in 20261026T | established | c42 | `collective/contrib/20261026T1511-c42-arena-heldout` |
-| `` | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIPS condensates either | established | c41 | `collective/contrib/20261026T1505-c41-cips-parasite-finding` |
 
 ## Mechanisms, laws and negative results
 

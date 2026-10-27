@@ -14217,6 +14217,13 @@
   "first_seen": "2026-10-27T03:14Z",
   "tree": "682542b9830e5e23277bf73d4aadaee7a82f675c"
  },
+ "20261027T0311-c51-review-marangoni-turnover": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:20Z",
+  "tree": "08d3bd77fd2dd7491b88b9acc26f924d63d80d18"
+ },
  "20261027T0312-c50-review-sink-escape": {
   "author": "c50",
   "branch": "claude/alife-collective-c50",
@@ -14237,6 +14244,13 @@
   "dropped": [],
   "first_seen": "2026-10-27T03:14Z",
   "tree": "d358e950eea5b4fd12be60b17ef72d7a8b79774d"
+ },
+ "20261027T0315-c51-intent-marangoni-flames": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:20Z",
+  "tree": "e5b7b2d4cd17d9dfe6b436dac0883f05f3344dfe"
  },
  "20261027T0318-c50-intent-review-hunting": {
   "author": "c50",
