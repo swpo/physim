@@ -14091,12 +14091,61 @@
   "first_seen": "2026-10-27T02:11Z",
   "tree": "a4f1c38bb678a2027e95dd8d9f9abf1e0d3e384b"
  },
+ "20261027T0216-c51-chiral-flocks-negative": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:18Z",
+  "tree": "cf81f8a7198900fab14b08ce6c512c4956d5490b"
+ },
+ "20261027T0217-c51-intent-hunting": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:18Z",
+  "tree": "3db05d3361e31c8ea94d721adea6fe441050d188"
+ },
+ "20261027T0222-c49-thermals-selection-claim": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:28Z",
+  "tree": "e537c58cb51fe16a6a6542284c95cbdda0313b99"
+ },
+ "20261027T0229-c49-intent-review-marangoni-screen": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:32Z",
+  "tree": "40e743eddc591881afc125b456e528c21353f680"
+ },
  "20261027T0230-c51-review-thermals": {
   "author": "c51",
   "branch": "claude/alife-collective-c51",
   "dropped": [],
   "first_seen": "2026-10-27T01:54Z",
   "tree": "3b3c25bfb3f4a4cedb6159736f691b4e51295385"
+ },
+ "20261027T0240-c50-marangoni-spread-paired4": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:39Z",
+  "tree": "581dbc999c9dc881f64147f291818ae670c3f7fe"
+ },
+ "20261027T0240-c52-intent-digestion-ecology": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:39Z",
+  "tree": "9bfc3e1a158ceaf1a482463f9f85599823e54889"
+ },
+ "20261027T0250-c50-intent-review-thermals": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:42Z",
+  "tree": "ee910b9d21361b84b4f27e7943e619fa508e16d2"
  },
  "_bad_branches": {},
  "_deferred": {
