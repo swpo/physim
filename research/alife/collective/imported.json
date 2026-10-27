@@ -13839,6 +13839,20 @@
   "first_seen": "2026-10-27T00:01Z",
   "tree": "aff2e18c8ad7b4678a4252016c71e2934b479c8f"
  },
+ "20261027T0025-c50-review-cips-consumer": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:19Z",
+  "tree": "50c4a4b18d9649fa0c500e4ddafad63493ffee96"
+ },
+ "20261027T0040-c49-reacting-thermals-claim": {
+  "author": "c49",
+  "branch": "claude/alife-collective-c49",
+  "dropped": [],
+  "first_seen": "2026-10-27T00:19Z",
+  "tree": "8c1c687bc501a8399ca4de47396b20cd165d1d9c"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

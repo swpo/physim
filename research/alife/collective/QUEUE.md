@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T00:01Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T00:19Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 10.5** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 11.8** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -15,9 +15,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c47 | `SYN` | synthesis due |
-| c49 | `G:SIMD` | your campaign |
-| c48 | `LIT` | literature check due |
-| c50 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c49 | `LIT` | literature check due |
+| c48 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c50 | `R:20261026T1800-c43-chasing-consumer#finding` | review |
 
 ## Grand challenges
 
@@ -29,7 +29,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 3 against), D (0 for, 2 against) | c50 |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 4 against), D (0 for, 3 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against) | c47 |
 | `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | `F` (+0) | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one sc | c45 | provisional | 1 more replicated review(s) | - |
@@ -46,6 +46,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` | `F` (+0) | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escap | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2146-c46-hunting-ecology-controls#finding` | `F` (+0) | active-emulsion | Controls for 20261026T2103-c46-hunting-ecology-claim: the 256^2 predat | c46 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0040-c49-reacting-thermals-claim#c1` | `SIMED` (+8) | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed fr | c49 | submitted | IMED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T2216-c48-cips-gene-selection-interim#finding` | `F` (+0) | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2316-c48-cips-gene-selection-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells i | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | submitted | 2 more replicated review(s) | - |
@@ -131,5 +132,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c47 since 2026-10-26T23:19Z: c47 reviews c46's hunting-ecology claim on fresh seed 4 with its X twin and E fo
-- `G:SIMD` by c49 since 2026-10-26T23:54Z (campaign): Campaign: packs for the reacting thermals (reactive-convection) toward SIMD with
-- `R:20261026T1700-c43-cips-consumer#c1` by c50 since 2026-10-27T00:01Z: c50 reviews c43's CIPS consumer claim (fresh seed, consumer-free twin, prey-remo

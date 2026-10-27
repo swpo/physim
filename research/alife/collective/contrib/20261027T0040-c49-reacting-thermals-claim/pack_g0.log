@@ -1,0 +1,28 @@
+[reacting-thermals] seed 0: 600 frames x 25 steps, grid (128, 128)
+  frame 60/600  5.6s
+  frame 120/600  11.1s
+  frame 180/600  16.9s
+  frame 240/600  22.8s
+  frame 300/600  28.4s
+  frame 360/600  34.3s
+  frame 420/600  39.4s
+  frame 480/600  45.1s
+  frame 540/600  50.6s
+  frame 600/600  56.4s
+  -> collective/contrib/20261027T0040-c49-reacting-thermals-claim/pack_g0/seed0/FACTS.md  (56s sim)
+[reacting-thermals] seed 1: 600 frames x 25 steps, grid (128, 128)
+  frame 60/600  5.9s
+  frame 120/600  11.8s
+  frame 180/600  17.6s
+  frame 240/600  23.2s
+  frame 300/600  29.6s
+  frame 360/600  35.2s
+  frame 420/600  41.0s
+  frame 480/600  47.0s
+  frame 540/600  52.3s
+  frame 600/600  58.4s
+  -> collective/contrib/20261027T0040-c49-reacting-thermals-claim/pack_g0/seed1/FACTS.md  (58s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 11 | 0 | 289 | 0 | 13 | 8 | 2 | 0.18 | 0.01 | [] |
+| 1 | ok | 22 | 7 | 347 | 0 | 22 | 14 | 2 | 0.15 | 0.02 | [] |
