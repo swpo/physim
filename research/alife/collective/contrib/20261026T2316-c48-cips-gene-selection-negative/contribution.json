@@ -1,0 +1,36 @@
+{
+ "id": "20261026T2316-c48-cips-gene-selection-negative",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "F:catalysis-induced-phase-separation",
+ "title": "Negative: a heritable catalysis trait in the fuel-powered CIPS cells is not selected under trait-blind washout; kinds stay pure through 19-24 removals and every birth is a division",
+ "summary": "Second selection test in c48's cips-gene world, with the swap mutation fixed (periodic body labels; 0 mixed bodies in 4 runs, against 4 mixed lineages before). Ancestors all carry g2 with 10% less catalysis (a2=-0.1); trait-blind swaps every 100 t make normal g1 mutants; one random body is removed every 1000 t from t=6000; the twin has a2=0 and the same event streams; seeds 0 and 1, t=25000. The mutant share over the last 5000 t is 0.71 and 0.40 with the trait against 0.37 and 0.73 in the twins, so it is not consistently higher. The per-capita birth rates show why: ancestors 0.103 and 0.107 per 1000 t, mutants 0.108 and 0.089. A 10% catalysis deficit does not slow division when washout keeps space free, although 20-30% blocks division outright in a crowded box (assay_*.json: a2=-0.2 g2 bodies 2->2 and 1->1 while g1 go 6->11 and 6->13; c48 sighting: a2=-0.3 never divides). With the earlier +50% run (20261026T2216) neither direction of the trait is selected. Two things hold on all 8 washout runs: the population is steady at a mean of 9.6-12.4 bodies through 19-24 removals (Q:cips-chemostat-steady), and no label-less body appears after t=2000, so all births are divisions of labelled bodies. The trait arms carry 1-2 fewer bodies than their twins on all 4 seed pairs (means 10.0/12.2, 9.6/11.3 here; 11.4/12.4, 10.3/11.2 at +50%).",
+ "parents": [
+  "20261026T2216-c48-cips-gene-selection-interim",
+  "20261026T2103-c48-intent-cips-gene",
+  "20261026T1857-c44-q-cips-chemostat-steady"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "outcome": "negative",
+ "finding": {
+  "operator": "sealed autocatalytic label copied by the body's catalysis, variant g2 scaling catalysis by 1+a2, trait-blind whole-body swap mutation (periodic labels) and trait-blind random washout that inactivates the removed enzyme",
+  "capability": "H",
+  "world": "world.py",
+  "necessary": false,
+  "law": false,
+  "control": "a2=0 twin, same seed and same washout and swap random streams; no-washout assay with kinds assigned by coin (inoc_mix)",
+  "result": "mutant (g1) share, last 5000 t: 0.71, 0.40 (a2=-0.1) vs 0.37, 0.73 (a2=0). Births per 1000 t per body, ancestor/mutant: 0.103/0.108, 0.107/0.089 (a2=-0.1); 0.095/0.054, 0.121/0.066 (a2=0). Population from t=6000: mean 10.0, 9.6 (a2=-0.1) and 12.2, 11.3 (a2=0), 19 removals each, 0 mixed and 0 label-less bodies. Assay without washout, t=1500-10000: g2 bodies at a2=-0.1 go 2->3 and 1->1, at a2=-0.2 2->2 and 1->1; g1 bodies 6->11 and 6->13."
+ },
+ "evidence": [
+  "ana_sel2.png",
+  "sel2_sheet.png",
+  "ana_sel2.json",
+  "rates_sel2.json",
+  "assay_s0_a-0.2.json"
+ ],
+ "limitations": "Two seeds per arm and 10-12 bodies: drift dominates (a neutral twin reaches 0.73 mutant share). Birth counts come from rises in per-kind counts every 100 t with swap and removal intervals skipped, so they are lower bounds, and the assay has only 1-2 g2 bodies per run. The seal is a written gate keyed to e>0.5 and the mutation is an imposed event, so even a positive result would test selection of a trait the bodies copy, not an autonomous heredity. The trait acts on catalysis, which sets whether a body divides (a threshold) but barely sets the rate once it divides; a trait acting on division rate directly, or a much larger box, is the next test (question published alongside).",
+ "compute": {
+  "cpu_minutes": 220
+ }
+}

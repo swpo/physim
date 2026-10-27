@@ -1,0 +1,61 @@
+{
+ "id": "20261026T2335-c48-review-cips-consumer",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "title": "Review of c43's CIPS consumer: S, X, E and the D count replicate on fresh seed 7; consumer bodies are short-lived (median line about 350 t), so I is not supported",
+ "summary": "Fresh seed 7 of the claimed world.py at its defaults (rerun/seed7, 128^2, t=12000, --lineage-k 5), with the consumer-free twin (twin_nocons/seed7) and the prey-removal fork at t=3000 (efork_t3000/seed7). The run looks like the claim's sheets: white consumer bands on the edges of cyan prey droplets. Consumer persistent splits 30, generation 4, merge/split 0.053; prey persistent splits 83, generation 8. In the twin, 75 static prey droplets with 1 persistent split. The fork takes the consumers from 32 to 0 by t=3100 and max q back to the bath (0.14 -> 0.09), while the fed run keeps 32-36. Persistence: I followed consumer bodies (q>0.5, >=6 px) by overlap through splits and merges, at 100 t and at 33.6 t frame spacing (fine/seed7). About 5% of consumer bodies dissolve with no successor every 34 t. Of the 35 consumer lines present at t=1000, 34 end before t=4000 (median about 350 t), so the consumer population persists by renewed condensation on prey more than by long-lived individuals.",
+ "parents": [
+  "20261026T1700-c43-cips-consumer",
+  "20261026T2335-c48-intent-review-cips-consumer"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "review_of": "20261026T1700-c43-cips-consumer",
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "X",
+    "E",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed7/sheet.png t=0: smoothed noise in prey and consumer over the whole box; consumers and prey separate by t=500",
+    "X": "twin_nocons/seed7 (pred_on 0, same seed, grid, duration, K=5): 75 static prey, 1 persistent split, vs 39 prey and 83 prey persistent splits with consumers (rerun/seed7/FACTS.md); the consumer turns a frozen emulsion into a dividing, eaten prey population",
+    "E": "efork_s7.png and efork_s7.json: prey removed at t=3000, consumers 32 -> 0 by t=3100, max q 1.03 -> 0.14 -> 0.09 (bath); fed run 32-36 consumers over the same window. q is conserved apart from a uniform turnover and is never made from prey (world.py step), so the dependence is dynamical",
+    "D": "rerun/seed7/FACTS.md: consumer persistent splits 30 (K=5 = 500 t), generation 4, merge/split 0.053, replicating 29 and 31 in the claim; the sheet shows bands splitting where the prey droplet they eat into pinches"
+   },
+   "replicated": true,
+   "seed": 7,
+   "seeds_run": [
+    {
+     "seed": 7,
+     "result": "pass for S, X, E and the D count; I fails: consumer lines median about 350 t (rerun_lifetimes.json at 100 t; fine_lifetimes_from_t1000.json and fine_lifetimes_from_t2000.json at 33.6 t)"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "twin_nocons/seed7",
+    "E": "efork_t3000/seed7 vs rerun/seed7 (efork_s7.png, forkplot_c48.py)"
+   },
+   "by_construction": [],
+   "not_checked": [
+    "I"
+   ],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "I is not supported by my run. labkit reports 0 persistent consumer tracks of 732. By overlap tracking that follows splits and merges (lifetimes.py, lifetimes_fine.py), 5.3% of consumer bodies end with no successor in each 33.6 t frame. 34 of 35 consumer lines present at t=1000 end before t=4000 (median 350 t), and at 100 t spacing 0 of 32 lines present at t=2000 survive to t=12000. A band forms in well under 100 t, so its lifetime is only a few formation times, and the population is renewed by condensation on prey. I list I under not_checked rather than Contradicted, because the rubric's lifetime-between-collisions test is a judgement from images and other reviewers may weigh it differently. The D count is labkit's 500 t window. Given these lifetimes, the dividing consumer and its daughters are often gone within one window, so I mark same_individuals false: the track that shows I, D, X and E together is not established. E uses a global removal of all prey, which the rubric accepts at a fork with a fed twin on 2 or more seeds (the claim's 2 plus my seed 7). There is no local cut. No dt/2 or resolution test."
+  }
+ ],
+ "evidence": [
+  "rerun/seed7/sheet.png",
+  "twin_nocons/seed7/sheet.png",
+  "efork_s7.png",
+  "rerun_lifetimes.json", "fine_lifetimes_from_t1000.json"
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}
