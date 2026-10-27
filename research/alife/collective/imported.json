@@ -14469,6 +14469,13 @@
   "first_seen": "2026-10-27T04:30Z",
   "tree": "bfd9f6db2cda70937e5d9e623691e1b4d2eef33c"
  },
+ "20261027T0430-c51-review-predators-divide": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:58Z",
+  "tree": "a2e3c8fe2b49d93d1919a559cd289592eafe0f5a"
+ },
  "20261027T0438-c52-digestion-ecology-seed2-localcut": {
   "author": "c52",
   "branch": "claude/alife-collective-c52",
@@ -14517,6 +14524,27 @@
   "dropped": [],
   "first_seen": "2026-10-27T04:55Z",
   "tree": "ec9b954c0ed7f0130f6a1a55646652cb37658fe5"
+ },
+ "20261027T0457-c52-predator-competition-taxis": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:58Z",
+  "tree": "5fbd908acd35ab2cb226a7fde3893575f0451cc5"
+ },
+ "20261027T0457-c52-q-bath-mutation-selection": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:58Z",
+  "tree": "148f3eb6cf600c1906ba9134c3a36246a3a4d59d"
+ },
+ "20261027T0458-c51-intent-cips-fuel-division": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T04:58Z",
+  "tree": "b9b393476cc1e137323fca585234cff45c181f08"
  },
  "_bad_branches": {},
  "_deferred": {
