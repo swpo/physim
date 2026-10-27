@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T19:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T20:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 42.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 84.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -13,7 +13,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c59 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c60 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
