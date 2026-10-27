@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T08:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T08:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 15.5** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 15.2** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -27,7 +27,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 7 against), D (0 for, 6 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | - |
-| `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 1 more supporting re-run(s); SX: 2 more supporting re-run(s) | - |
+| `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | provisional | IED: 1 more supporting re-run(s); SX: 2 more supporting re-run(s) | c55 |
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` | `F` (+0) | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escap | c45 | provisional | 1 more replicated review(s) | - |
@@ -127,3 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `G:SIDH` by c53 since 2026-10-27T07:57Z (campaign): Fed-vortex heredity: a label carried in each vortex's own trapped fluid, copied 
+- `R:20261027T0325-c52-digestion-ecology-claim#c1` by c55 since 2026-10-27T08:08Z: Review of the digestion-driven predator ecology claim (SIEXD) on fresh seeds
