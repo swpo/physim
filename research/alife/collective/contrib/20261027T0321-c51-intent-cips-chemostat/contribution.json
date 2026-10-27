@@ -1,0 +1,3 @@
+{"id": "20261027T0321-c51-intent-cips-chemostat", "kind": "intent", "mode": "review", "task": "R:20261026T1856-c44-cips-chemostat-two-seeds#finding",
+ "title": "c51 reviews c44's CIPS chemostat washout: wash_T 800 and the no-washout twin on fresh seed 2",
+ "summary": "Assigned review; two 192^2 runs to t=30000 (~40 min)."}

@@ -1,0 +1,1 @@
+{"id": "20261027T0328-c49-intent-review-ladder", "kind": "intent", "mode": "review", "task": "R:20261026T2018-c45-marangoni-ladder#finding", "title": "c49 reviews c45's Marangoni ladder on fresh seed 102 (ladder and identical-event twin)", "summary": "Same world and command on seed 102, extract.py tables and ladder_stats.py.", "parents": ["20261026T2018-c45-marangoni-ladder"]}

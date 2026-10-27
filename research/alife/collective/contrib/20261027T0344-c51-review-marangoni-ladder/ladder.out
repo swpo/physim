@@ -1,0 +1,12 @@
+[active-nematic-marangoni-ladder] seed 102: 400 frames x 100 steps, grid (128, 128)
+  frame 40/400  67.0s
+  frame 80/400  134.2s
+  frame 120/400  200.8s
+  frame 160/400  266.2s
+  frame 200/400  331.9s
+  frame 240/400  397.8s
+  frame 280/400  462.7s
+  frame 320/400  526.8s
+  frame 360/400  591.1s
+  frame 400/400  655.6s
+  -> collective/contrib/20261027T0344-c51-review-marangoni-ladder/ladder_s102/FACTS.md  (656s sim)

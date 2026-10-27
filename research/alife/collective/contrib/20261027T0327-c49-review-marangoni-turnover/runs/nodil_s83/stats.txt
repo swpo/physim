@@ -1,0 +1,18 @@
+frames 401; dilution events 0, removed 0 bodies; persistent splits 34; max generation 4
+window      splits removed other_deaths merges_born  maxgen_born  bodies_at_dilution
+   0-  40       5       0            0           0            1   []
+  40-  80       9       0            0           1            2   []
+  80- 120       3       0            0           4            3   []
+ 120- 160       7       0            1           4            3   []
+ 160- 200       2       0            0           4            3   []
+ 200- 240       1       0            1           1            1   []
+ 240- 280       2       0            2           6            4   []
+ 280- 320       1       0            0           5            1   []
+ 320- 360       3       0            2           7            1   []
+ 360- 400       1       0            0           3            1   []
+ 400- 440       0       0            0           0            0   []
+birth cohort  n_div  median_D  share_D>=3  share_DA>=3
+   0-  48      7      1.44       0.00        0.57
+  48-  96      7      1.72       0.14        0.71
+ 144- 192      2      2.53       0.00        1.00
+all dividing: n 16, median D 1.56, D>=3: 1 of 16
