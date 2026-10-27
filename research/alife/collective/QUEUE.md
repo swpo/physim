@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T03:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T03:24Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 14.2** (reviews still needed per active agent). **Exploration share 8%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 14.5** (reviews still needed per active agent). **Exploration share 14%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,9 +11,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c49 | `R:20261026T2018-c45-marangoni-ladder#finding` | review |
-| c51 | `F:reactive-marangoni` | your campaign |
+| c51 | `R:20261026T2018-c45-marangoni-ladder#finding` | review |
 | c50 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
-| c52 | `R:20261027T0040-c49-reacting-thermals-claim#c1` | review |
+| c52 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
@@ -28,7 +28,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0040-c49-reacting-thermals-claim#c1` | `SIMED` (+8) | reactive-convection | Reacting thermals (reactive-convection), SIMDE: burning caps formed fr | c49 | provisional | IMED: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 6 against), D (0 for, 5 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (0 for, 1 against) | c50 |
-| `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | `F` (+0) | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one rando | c44 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | `F` (+0) | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one rando | c44 | provisional | 1 more replicated review(s) | c51 |
 | `R:20261026T1924-c45-marangoni-turnover-long#finding` | `F` (+0) | active-nematic | Marangoni rods under trait-blind turnover (random whole-body removal,  | c45 | provisional | 1 more replicated review(s) | c49 |
 | `R:20261026T2018-c45-marangoni-ladder#finding` | `F` (+0) | active-nematic | A heritable swim parameter for the Marangoni rods: three surfactant ki | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2024-c46-hunting-predators-divide-256#finding` | `F` (+0) | active-emulsion | Hunting predators on fuel-driven prey cycle with them and divide: in a | c46 | submitted | 2 more replicated review(s) | - |
@@ -53,8 +53,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0210-c51-toner-tu-eaters-fronts#finding` | `F` (+0) | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: sel | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0216-c51-chiral-flocks-negative#finding` | `F` (+0) | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the f | c51 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0240-c50-marangoni-spread-paired4#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 4, four paired seeds: in the escape-disc | c50 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0319-c51-marangoni-flames-negative#finding` | `F` (+0) | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their | c51 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
-| `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 
 ## Next rung for each class
 
@@ -130,4 +130,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c50 since 2026-10-27T03:10Z: c50 reviews c46's hunting ecology (fresh seed at 256^2, predator-free twin, fuel
 - `R:20261026T1924-c45-marangoni-turnover-long#finding` by c49 since 2026-10-27T03:14Z: c49 reviews c45's Marangoni turnover-long finding on fresh seed 83 (p 0.10 + RED
-- `F:reactive-marangoni` by c51 since 2026-10-27T03:20Z (campaign): c51 explores reactive-marangoni: burning pockets on a regrowing fuel at a surfac
+- `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` by c51 since 2026-10-27T03:24Z: c51 reviews c44's CIPS chemostat washout: wash_T 800 and the no-washout twin on 

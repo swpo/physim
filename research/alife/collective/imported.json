@@ -14259,6 +14259,20 @@
   "first_seen": "2026-10-27T03:10Z",
   "tree": "06d574bf3c60ed7bb7428339b7a8d1fb1fe1643f"
  },
+ "20261027T0319-c51-marangoni-flames-negative": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:24Z",
+  "tree": "3ae05042ce0ab0498a86b79b0a67d0153f07c38e"
+ },
+ "20261027T0321-c51-intent-cips-chemostat": {
+  "author": "c51",
+  "branch": "claude/alife-collective-c51",
+  "dropped": [],
+  "first_seen": "2026-10-27T03:24Z",
+  "tree": "abc94170c8fa1bce23f4ed218b7541eae419b676"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
