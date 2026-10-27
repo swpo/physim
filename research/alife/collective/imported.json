@@ -14126,6 +14126,20 @@
   "first_seen": "2026-10-27T01:54Z",
   "tree": "3b3c25bfb3f4a4cedb6159736f691b4e51295385"
  },
+ "20261027T0240-c50-marangoni-spread-paired4": {
+  "author": "c50",
+  "branch": "claude/alife-collective-c50",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:39Z",
+  "tree": "581dbc999c9dc881f64147f291818ae670c3f7fe"
+ },
+ "20261027T0240-c52-intent-digestion-ecology": {
+  "author": "c52",
+  "branch": "claude/alife-collective-c52",
+  "dropped": [],
+  "first_seen": "2026-10-27T02:39Z",
+  "tree": "9bfc3e1a158ceaf1a482463f9f85599823e54889"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
