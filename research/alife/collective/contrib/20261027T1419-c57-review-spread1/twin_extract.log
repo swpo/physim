@@ -1,0 +1,3 @@
+/home/user/physim/research/alife/collective/contrib/20261026T1530-c00-marangoni-minority-lineages/files/extract.py:117: RuntimeWarning: Mean of empty slice
+  ring_pol=float(np.nanmean(R[:, 2])) * dx, ring_pol_rl=float(np.nanmean(R[:, 2]) / np.median(L4)),
+twin_s520: 401 frames, 131 tracks, 14 dividing (split-born, >=2 children living >=20 frames); >=3 rod lengths: 4; best 4.19

@@ -1,0 +1,7 @@
+{"id": "20261027T0457-c52-q-bath-mutation-selection", "kind": "question", "mode": "extend", "task": "C:ecology-with-reproduction",
+ "title": "Selection by protection: if two digestion-driven predator kinds interconvert only in solution (a mutation in the bath, switched off inside bodies), does material accumulate in the kind that hunts better and so stays condensed?",
+ "summary": "In 20261027T0457-c52-predator-competition-taxis a predator kind with weaker taxis keeps fewer bodies, but both kinds' materials are conserved, so nothing grows. Let b and e convert into each other at rate m only where the predator material is dissolved (gate 1 - min(1, (c_b + c_e)/0.5)); bodies carry their kind through division. At steady state the dissolved amounts equalize, so the total of the kind that spends more time in bodies should rise.",
+ "parents": ["20261027T0457-c52-predator-competition-taxis"],
+ "target": ["H", "X", "D"], "priority": 3,
+ "experiment": "world2p.py plus the gated conversion; m in {1e-4, 1e-3}; arms on 2 seeds at 128^2 t=12000: (a) e with taxis 0.5, b with taxis 0; (b) neutral, both 0.5; (c) conversion everywhere (gate off), e 0.5 / b 0. Measure total e and b material and body share over time; selection shows as e/b > 1 in (a) only.",
+ "compute": {"cpu_minutes": 5}}

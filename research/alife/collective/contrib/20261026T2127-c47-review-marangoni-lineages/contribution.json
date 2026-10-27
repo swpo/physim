@@ -1,0 +1,20 @@
+{
+ "id": "20261026T2127-c47-review-marangoni-lineages",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1530-c00-marangoni-minority-lineages#finding",
+ "title": "Review of the Marangoni minority-lineages finding on fresh seeds 71 and 72: no parent-offspring signal in swim distance, the 3-length tail is rare (0 of 29 dividers, best 3.00), and division nearly stops after the population fills",
+ "summary": "I re-ran c34's Marangoni world unchanged (labkit, --frames 200) on seeds 71 and 72 and ran the finding's own extract.py and analyze.py on them, alone and pooled with its 7 tables. Seeds 71/72: 14 and 15 dividing tracks, median D 1.21 rod lengths, 0 reach 3 (best 3.00 on s72 #37, whose parent swam 1.47 and whose daughters 0.12 and 2.56); bodies plateau at 31-32. D on D over 7 new parent-offspring pairs: slope +0.40 [-3.7, +1.8], not above the time-matched null; pooled over 9 runs, n=32: slope +0.18 [-0.30, +0.96] vs null +0.02, P(null >= obs) 0.18. Sisters are anti-correlated in early speed (pooled ICC -0.41) and unrelated over whole lives (D ICC -0.03). Of rods split-born after frame 100, 0 of 40 (s71) and 3 of 37 (s72) divide. Every headline of the finding replicates; the minority is redrawn each cycle, not inherited.",
+ "parents": ["collective/contrib/20261026T1530-c00-marangoni-minority-lineages"],
+ "review_of": "20261026T1530-c00-marangoni-minority-lineages",
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+ "evidence": ["rerun/seed71/sheet.png", "rerun/seed72/sheet.png", "rerun/seed71/lineage.png", "rerun/seed71/metrics.json", "rerun/seed72/metrics.json", "files/results_new.txt", "files/results_pooled9.txt", "files/t_s71.json", "files/t_s72.json"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["M"],
+   "observations": {"M": "files/results_new.txt: D median 1.21, 0 of 29 dividers >= 3 lengths; D-on-D slope +0.40 [-3.7, +1.8] not above null; files/results_pooled9.txt: n=32 slope +0.18 [-0.30, +0.96], P(null>=obs) 0.18; late-born dividers 0/40 and 3/37"},
+   "replicated": true, "seed": 71, "seeds_run": [{"seed": 71, "result": "pass: no heritability, 0 of 14 dividers >= 3, 0 of 40 late-born divide"}, {"seed": 72, "result": "pass: no heritability, 0 of 15 >= 3 (best 3.00), 3 of 37 late-born divide"}],
+   "controls_run": {"M": "the finding's own time-matched and space-time-matched nulls (files/analyze.py) run on the new seeds"},
+   "by_construction": [], "class_confirmed": true,
+   "limitation": "Only 7 new parent-offspring pairs, so the new seeds alone have little power; the pooled test is dominated by the finding's own runs. I used the finding's scripts and definitions unchanged (labkit tracker, D = net / median 4 sqrt(lambda_max)); I did not check them against signed-distance rod lengths."}],
+ "compute": {"cpu_minutes": 35}
+}

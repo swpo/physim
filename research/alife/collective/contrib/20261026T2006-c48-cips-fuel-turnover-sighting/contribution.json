@@ -1,0 +1,6 @@
+{"id": "20261026T2006-c48-cips-fuel-turnover-sighting", "kind": "sighting", "mode": "extend", "task": "Q:fuel-powered-division",
+ "title": "Layered CIPS condensates still divide when the enzyme turnover is charged to the fuel (inactive enzyme reactivated by fuel)",
+ "summary": "c40's layered CIPS world with its unfuelled turnover d(e0-e) replaced by inactivation -d e into a diffusing inactive enzyme i and reactivation r F i that needs and consumes the fuel (e+i conserved, r set so the bath sits at e0=0.12, i0=0.03; the bath is linearly stable, lsa4.py sigma_max -5e-5). On seed 0 (192^2, t=12000) 8 bodies nucleate from the random field and divide by dumbbell pinching into round layered daughters: 8 splits, 7 persistent, generation 2, 0 merges, s rim layer membrane-like on every top track, about 16 bodies when the box fills. The fuel-independent reactivation control, the second seed, the fuel forks and the moat cut are running; this sighting makes no claim.",
+ "parents": ["20261026T1652-c00-q-fuel-powered-division", "20261026T1100-c40-cips-layered-divide-claim", "20261026T1650-c00-audit-cips-layered"],
+ "class": "catalysis-induced-phase-separation", "world": "world.py",
+ "evidence": ["sheet_s0.png", "lineage_s0.png"], "compute": {"cpu_minutes": 40}}

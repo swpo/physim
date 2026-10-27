@@ -1,0 +1,4 @@
+{"id": "20261027T0442-c50-intent-review-thermals-controls", "kind": "intent", "mode": "review", "task": "R:20261027T0024-c49-thermals-controls#finding",
+ "title": "c50 reviews c49's thermals controls (1.5x resolution and local fuel cut on a fresh seed)",
+ "summary": "Short review before my 05:20Z deadline.",
+ "parents": ["20261027T0024-c49-thermals-controls"]}

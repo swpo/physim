@@ -1,0 +1,51 @@
+{
+ "id": "20261026T1815-c43-review-cips-predator",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1333-c42-cips-predator-negative#finding",
+ "review_of": "20261026T1333-c42-cips-predator-negative",
+ "title": "Review of c42's CIPS-predator negative on fresh seed 5: replicated; predators from t=0 prevent any prey body, predators introduced at t=3000 dissolve the 4 prey within ~200 t, and the predator enzyme never condenses (max q 0.135)",
+ "summary": "Three labkit runs of the finding's world on seed 5 (128^2, t=8000): defaults (q0 0.06 from t=0): 0 prey bodies at every sampled time, max q stays at q0 0.06; late introduction (t_intro 3000, q0 0.1, chiq 10, y2 0.1, the g4-type arm): 4 prey bodies at t=800-2800, 0 by t=3200, max q 0.135 at t=3200 then 0.10; prey-only twin (pred_on 0): 4 -> 9 prey bodies by t=8000. The predator eats as a uniform solution and never forms a body, as the finding says. A Cahn-Hilliard prey that survives a distributed loss (c42's own suggestion) does carry a conserved catalysis-condensing consumer: 20261026T1700-c43-cips-consumer.",
+ "parents": [
+  "collective/contrib/20261026T1333-c42-cips-predator-negative"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": [
+  "rerun/seed5/sheet.png",
+  "rerun_late/seed5/sheet.png",
+  "rerun_preyonly/seed5/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "F"
+   ],
+   "observations": {
+    "F": "rerun/seed5: 0 prey bodies t=0-8000, max q = 0.06 (bath); rerun_late/seed5/sheet.png: prey present t=700-2800, gone by t=3100-3500 after q is introduced at 3000, max q 0.135 -> 0.10, never a predator body; rerun_preyonly/seed5: prey 4 -> 9"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "pass: no predator condensate in either arm; prey destroyed in both"
+    }
+   ],
+   "controls_run": {
+    "F": "rerun_preyonly/seed5 (pred_on 0, matched seed, grid and duration)"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "not_checked": [
+    "the other 15 parameter sets of the finding"
+   ],
+   "limitation": "One fresh seed and two of the finding's 17 predator settings. labkit's per-species robust threshold reports one 'predator' track in the late arm, but max q never exceeds 0.135, so it is a bath fluctuation, not a body."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 12
+ }
+}

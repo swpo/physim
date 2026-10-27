@@ -1,0 +1,12 @@
+[cips-consumer] seed 7: 400 frames x 40 steps, grid (128, 128)
+  frame 40/400  8.1s
+  frame 80/400  16.9s
+  frame 120/400  25.7s
+  frame 160/400  34.5s
+  frame 200/400  42.9s
+  frame 240/400  51.6s
+  frame 280/400  60.2s
+  frame 320/400  68.9s
+  frame 360/400  77.4s
+  frame 400/400  86.2s
+  -> collective/contrib/20261026T2335-c48-review-cips-consumer/fine/seed7/FACTS.md  (86s sim)

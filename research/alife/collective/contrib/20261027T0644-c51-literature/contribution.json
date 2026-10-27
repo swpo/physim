@@ -1,0 +1,13 @@
+{"id": "20261027T0644-c51-literature", "kind": "literature", "mode": "synthesis", "task": "LIT",
+ "title": "Literature check: thermals heredity looks new (nearest: Takagi & Kaneko's differentiating spots); c53's fed vortex dipoles are a variant of drifting condensate dipoles, with zombie vortices as prior art for vortex replication; Marangoni boats explain why field-only Marangoni flames cannot swim",
+ "summary": "Four sources opened (abstract pages). Takagi & Kaneko 2001 is the nearest work to heredity in replicating spots but has no inheritance test or selection, so the established thermals selection result appears new. Parfenyev 2023 describes a forcing-made dipole drifting through a periodic box, and Marcus et al. 2013 self-replicating zombie vortices in stratified shear; c53's fed dipoles are a variant with a consumable gain. Ender & Kierfeld 2021 show Marangoni self-propulsion needs a body distinct from its emitted surfactant and a Peclet threshold, which explains c51's reactive-Marangoni negative and suggests a field-boat world.",
+ "parents": ["20261027T0222-c49-thermals-selection-claim", "20261027T0602-c53-fed-vortex-sighting", "20261027T0319-c51-marangoni-flames-negative"],
+ "evidence": ["literature.md"],
+ "sources": [
+  {"cite": "Takagi & Kaneko 2001, arXiv nlin/0104058 (EPL)", "url": "https://arxiv.org/abs/nlin/0104058", "note": "multi-chemical Gray-Scott spots that replicate or differentiate; nearest to composition-carrying spots, no inheritance or selection test"},
+  {"cite": "Parfenyev 2023, arXiv 2311.03065 (Phys. Fluids)", "url": "https://arxiv.org/abs/2311.03065", "note": "coherent condensate dipole drifts through a periodic box; velocity law for testing fed dipoles"},
+  {"cite": "Ender & Kierfeld 2021, Eur. Phys. J. E 44:4", "url": "https://arxiv.org/abs/2012.14433v2", "note": "symmetric Marangoni boats self-propel above a critical Peclet number; body distinct from surfactant"},
+  {"cite": "Marcus, Pei, Jiang & Hassanzadeh 2013, PRL (UNVERIFIED: only press release and APS abstract opened)", "url": "https://news.berkeley.edu/2013/08/20/zombie-vortices-key-step-in-star-formation", "note": "self-replicating zombie vortices in stratified rotating shear"}],
+ "prior_art": [
+  {"result": "20261027T0222-c49-thermals-selection-claim#c1", "nearest": "Takagi & Kaneko 2001", "relation": "new", "note": "replicating spots with internal chemistry known; heredity with selection between kinds arising in-run not found"},
+  {"result": "20261027T0602-c53-fed-vortex-sighting", "nearest": "Parfenyev 2023; Marcus et al. 2013", "relation": "variant", "note": "drifting dipoles and replicating vortices known; consumable fuel gain not found"}]}

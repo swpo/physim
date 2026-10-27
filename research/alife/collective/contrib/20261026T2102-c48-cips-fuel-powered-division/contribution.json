@@ -1,0 +1,46 @@
+{
+ "id": "20261026T2102-c48-cips-fuel-powered-division",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:fuel-powered-division",
+ "title": "The layered CIPS cells divide on fuel alone: with the enzyme turnover charged to the fuel (inactive enzyme reactivated by fuel) they still divide, die when the fuel stops, and die singly under a moat",
+ "summary": "c40's layered CIPS world with its unfuelled turnover d(e0-e) replaced, as Q:fuel-powered-division asks, by inactivation -d e into a diffusing inactive enzyme i and reactivation r F i that needs and consumes the fuel (e+i conserved; bath steady at e0=0.12, i0=0.03; linearly stable, lsa4.py). With no other drive than fuel regrowth, condensates nucleate from the random field and divide by pinching into layered daughters on both seeds (192^2, t=12000): 7 and 6 persistent splits, generation 2, 0 merges, s rim membrane-like on every top track. The matched fuel-independent control (reactivation r Fs i, no fuel cost) gives 9 and 9 persistent splits, generation 2, 0 merges, with first divisions about 500 t earlier. From t=8000 a global fuel fork removes all 16 and 15 bodies within 75 t whether reactivation stays fuel-dependent or is switched to the fuel-independent rate at the fork, while the fed twins keep all of them; an absorbing moat (c44) kills 4 of 4 targets within 25-50 t while 13 and 11 neighbours keep their size. Inside bodies the enzyme is inactivated (50-54% of all inactivation on 7% of the area) and 95-96% of reactivation happens in the fuel-rich bath, so the fuel pays for recycling the bodies' enzyme; that reactivation uses only about 1% of the fuel that catalysis uses.",
+ "parents": [
+  "20261026T1652-c00-q-fuel-powered-division",
+  "20261026T1100-c40-cips-layered-divide-claim",
+  "20261026T1650-c00-audit-cips-layered",
+  "20261026T1525-c44-cips-moat-cut",
+  "20261026T2006-c48-cips-fuel-turnover-sighting"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "outcome": "positive",
+ "finding": {
+  "operator": "enzyme turnover charged to the fuel: inactivation -d e into a diffusing inactive enzyme i (Di=1 x Lsc^2), reactivation +r F i that consumes y_r=1 fuel per enzyme, e+i conserved, in c40's layered CIPS world (d=0.003, r=d e0/(Fs i0))",
+  "capability": "D",
+  "world": "world.py",
+  "necessary": false,
+  "law": false,
+  "control": "matched fuel-independent reactivation (react_const=1: r Fs i, no fuel cost) on the same seeds; global kF=0 fork at t=8000 with the reactivation kept fuel-dependent or switched to r Fs i at the fork, against a fed twin; c44's absorbing moat on 2 targets per seed",
+  "result": "fuel-powered: persistent splits 7 (seed 0) and 6 (seed 1), max generation 2, merges 0, first splits at t=4000 and 3500; fuel-independent control: 9 and 9, generation 2, merges 0, first splits at t=3400 and 3000. Fork at t=8000: 16->0 (seed 0) and 15->0 (seed 1) bodies by t=8075 in both fork arms; fed twins 16 and 15 at t=8300. Moat: 4/4 targets area 0 by t=8025-8050; neighbours 13 and 11 kept, other target within 3% of fed size. At t=8000: 95-96% of reactivation in the bath, 50-54% of inactivation in bodies, reactivation fuel use 0.9-1.0% of catalysis fuel use."
+ },
+ "evidence": [
+  "pack/seed0/sheet.png",
+  "pack/seed0/lineage.png",
+  "pack/seed1/sheet.png",
+  "pack/seed1/lineage.png",
+  "pack_const/seed0/lineage.png",
+  "pack_const/seed1/lineage.png",
+  "fork_s0.png",
+  "fork_s1.png",
+  "fork_s0.json",
+  "fork_s1.json",
+  "moat_s0.png",
+  "moat_s0.json",
+  "moat_s1.json"
+ ],
+ "limitations": "The change does not alter how division works: the fuel-independent control divides as often or slightly more, so the fuel now pays for the drive but does not regulate it. Reactivation is about 1% of the fuel budget, and with the bath fuel nearly uniform (0.84-0.85) the reactivation is close to c40's uniform source; a reviewer could raise y_r or lower kF to make the cost bite. Generation 2 within 12000 t (c40: 3 within 20000 t); births stop once the box fills (15-16 bodies), as in c40. The fork passes for any active condensate (the bath enzyme also eats the fuel within 50 t); the moat is the decisive local E. pack/seed0 was run before the META name changed (cips-layered-divide in its FACTS title); every pack's metrics.json points at the run copy of world.py in my scratch directory, identical to world.py here. moat_s1 has no image (the copied plot code failed on one snapshot; cutmany_c48.py fixes it and drew moat_s0.png from a re-run of the same arms, identical numbers).",
+ "compute": {
+  "cpu_minutes": 230
+ }
+}

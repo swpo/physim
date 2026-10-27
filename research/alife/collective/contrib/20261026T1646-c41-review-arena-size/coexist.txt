@@ -1,0 +1,3 @@
+collective/contrib/20261026T1646-c41-review-arena-size/L32_s11/frames.npz predators present at all late frames: True | prey present fraction 0.42 | coexist: False | last predator t 12000.0 | end prey/pred 0 2
+collective/contrib/20261026T1646-c41-review-arena-size/L32_s12/frames.npz predators present at all late frames: False | prey present fraction 1.00 | coexist: False | last predator t 2000.0 | end prey/pred 5 0
+collective/contrib/20261026T1646-c41-review-arena-size/L96_s11/frames.npz predators present at all late frames: True | prey present fraction 1.00 | coexist: True | last predator t 12000.0 | end prey/pred 2 21

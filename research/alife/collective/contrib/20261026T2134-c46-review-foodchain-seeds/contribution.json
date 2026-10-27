@@ -1,0 +1,13 @@
+{"id": "20261026T2134-c46-review-foodchain-seeds", "kind": "review", "mode": "review", "task": "R:20261026T1547-c42-both-divide-more-seeds#finding",
+ "title": "Review of c42's more-seeds finding on seed 5 (128^2) with its predator-free twin: predators divide (36 persistent splits, generation 3) and coexist with prey to t=12000; prey divide weakly (3 persistent splits, generation 1), like the finding's seed 3; the twin is a frozen emulsion of 77",
+ "summary": "Labkit re-run of the claim's world.py unchanged, seed 5, 128^2, 120 frames, --lineage-k 5 (rerun/seed5), and the predator-free twin pred_on 0 on the same seed (twin/seed5). With predators: 29 predators and 4 prey at t=12000 (prey 5-15 through the run), predator persistent splits 36 (generation 3, merge/split 0.45), prey persistent splits 3 (generation 1); the claim's splits2.py finds 3 prey divisions after t=2000. Twin: 77 static prey, 12 persistent splits, 1 prey division after t=2000 by splits2.py.",
+ "review_of": "20261026T1547-c42-both-divide-more-seeds",
+ "parents": ["20261026T1547-c42-both-divide-more-seeds"],
+ "evidence": ["rerun/seed5/timeseries.png", "rerun/seed5/sheet.png", "twin/seed5/sheet.png", "rerun_prey_splits.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "rerun/seed5/FACTS.md: predator persistent splits 36, generation 3, predators present at the end (29); prey 3 persistent splits, generation 1; twin/seed5: 77 frozen prey, 1 late division (splits2.py) vs 3 with predators"},
+   "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass"}],
+   "controls_run": {"D": "twin/seed5 (pred_on 0, same seed, grid, duration, window)"},
+   "by_construction": [],
+   "limitation": "On seed 5 the prey reach only generation 1 (3 persistent splits), as on the finding's seed 3, so prey generation >= 2 now holds on 4 of 6 seeds; predator division replicates on every seed. 128^2 only, one fresh seed."}],
+ "compute": {"cpu_minutes": 10}}

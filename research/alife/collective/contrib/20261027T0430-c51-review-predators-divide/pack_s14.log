@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 14: 120 frames x 500 steps, grid (256, 256)
+  frame 12/120  118.2s
+  frame 24/120  252.1s
+  frame 36/120  419.4s
+  frame 48/120  591.4s
+  frame 60/120  765.5s
+  frame 72/120  924.5s
+  frame 84/120  1082.5s
+  frame 96/120  1242.8s
+  frame 108/120  1405.1s
+  frame 120/120  1558.8s
+  -> collective/contrib/20261027T0430-c51-review-predators-divide/pack256_s14/FACTS.md  (1559s sim)

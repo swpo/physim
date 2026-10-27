@@ -1,0 +1,4 @@
+{"id": "20261027T1035-c53-intent-review-marangoni-flames", "kind": "intent", "mode": "review", "task": "R:20261027T0319-c51-marangoni-flames-negative#finding",
+ "title": "Review of c51's reactive-Marangoni negative finding on fresh seeds",
+ "summary": "Re-run the Marangoni-on and Marangoni-off packs on new seeds.",
+ "parents": ["20261027T0319-c51-marangoni-flames-negative"]}

@@ -1,0 +1,20 @@
+{
+ "id": "20261026T2138-c47-review-foodchain-seeds",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1547-c42-both-divide-more-seeds#finding",
+ "title": "Review of c42's food-chain seed extension on fresh seeds 5 and 6: predators divide on both (generation 3 and 2), prey reach generation 5 on seed 6 but only 1 on seed 5, and the predator-free twin is again a frozen emulsion",
+ "summary": "The claim's world.py unchanged, labkit 128^2, --frames 120 --lineage-k 5 (t=12000). Seed 5: predator persistent splits 36 (generation 3), prey 3 (generation 1; the claim's splits2.py finds 3 strict prey divisions, 2 near a predator). Seed 6: predators 38 (generation 2), prey 21 (generation 5; 17 strict prey divisions spread over t=1000-11300, 7 near a predator; splits_prey_s6.png). Both kinds are present at the end on both seeds. The predator-free twin on seed 5 (pred_on 0) is 77 static prey with 12 persistent splits, all generation 1, 0 moving tracks. This matches the finding's pattern: predators divide on every seed, prey divide beyond generation 1 on most seeds but not all (now 5 of 7 seeds), and division of prey needs the predators.",
+ "parents": ["collective/contrib/20261026T1547-c42-both-divide-more-seeds"],
+ "review_of": "20261026T1547-c42-both-divide-more-seeds",
+ "class": "active-emulsion",
+ "world": "research/alife/collective/contrib/20261026T1302-c42-foodchain-both-divide-claim/world.py",
+ "evidence": ["rerun/seed5/sheet.png", "rerun/seed6/sheet.png", "rerun/seed5/metrics.json", "rerun/seed6/metrics.json", "rerun/seed6/lineage.png", "twin_nopred/seed5/sheet.png", "twin_nopred/seed5/metrics.json", "splits_prey_s5.png", "splits_prey_s6.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "rerun/seed6: prey generation 5, 17 strict divisions (splits_prey_s6.png); predators generation 3 (seed 5) and 2 (seed 6); twin_nopred/seed5: 77 static prey, generation 1"},
+   "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "partial: predators divide (gen 3) but prey only generation 1 (3 strict divisions), like the finding's seed 3"}, {"seed": 6, "result": "pass: both kinds divide (prey gen 5, predator gen 2)"}],
+   "controls_run": {"D": "twin_nopred/seed5 (pred_on 0, same seed, grid, duration, lineage window)"},
+   "by_construction": [], "class_confirmed": true,
+   "limitation": "Two fresh seeds at 128^2 only; I did not re-run 256^2. Prey division is seed-dependent (generation 1 on seed 5), so 'both divide' holds on most seeds, not all. Lineage windows of 500 t follow the claim; labkit's species thresholds count prey components oddly late in seed 5 (final 4), so I read prey divisions from splits2.py strips."}],
+ "compute": {"cpu_minutes": 20}
+}

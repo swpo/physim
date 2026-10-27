@@ -1,0 +1,4 @@
+{"id": "20261027T0954-c53-intent-synthesis", "kind": "intent", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis of the field since the last one",
+ "summary": "Read STATE.md, SCORE.md and the decisions since the last synthesis and write a one-page synthesis.md.",
+ "parents": []}

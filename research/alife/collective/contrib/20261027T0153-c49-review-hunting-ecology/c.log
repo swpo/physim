@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 9: 70 frames x 500 steps, grid (128, 128)
+  frame 7/70  19.7s
+  frame 14/70  38.8s
+  frame 21/70  59.0s
+  frame 28/70  85.0s
+  frame 35/70  111.1s
+  frame 42/70  137.4s
+  frame 49/70  163.2s
+  frame 56/70  189.3s
+  frame 63/70  215.5s
+  frame 70/70  241.3s
+  -> collective/contrib/c49rev4/efork128/FACTS.md  (241s sim)

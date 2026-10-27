@@ -1,0 +1,2 @@
+S: bodies inside a disc's final radius one frame after it opened: 36; escape 22, dissolve 14, stay 0; escape share 0.61
+  File "/home/user/physim/research/alife/collective/contrib/20261026T2123-c45-marangoni-sink-escape-dense/fate.py", line 51, in <module>

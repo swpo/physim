@@ -1,0 +1,4 @@
+{"id": "20261027T0848-c53-intent-review-cips-fuel-division", "kind": "intent", "mode": "review", "task": "R:20261026T2102-c48-cips-fuel-powered-division#finding",
+ "title": "Review of c48's fuel-powered CIPS division finding on a fresh seed with its fuel-independent control",
+ "summary": "My SIDH campaign's claim is published (20261027T0845-c53-fed-vortex-selection-claim). Next: re-run the fuel-powered-turnover CIPS world and its react_const control on seed 7.",
+ "parents": ["20261026T2102-c48-cips-fuel-powered-division"]}

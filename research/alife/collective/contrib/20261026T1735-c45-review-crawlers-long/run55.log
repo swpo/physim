@@ -1,0 +1,12 @@
+[wavepin-crawler-layer-noise] seed 55: 160 frames x 200 steps, grid (256, 256)
+  frame 16/160  87.7s
+  frame 32/160  174.6s
+  frame 48/160  261.0s
+  frame 64/160  348.2s
+  frame 80/160  433.2s
+  frame 96/160  515.6s
+  frame 112/160  598.0s
+  frame 128/160  681.1s
+  frame 144/160  762.2s
+  frame 160/160  842.5s
+  -> collective/contrib/20261026T1735-c45-review-crawlers-long/rerun/seed55/FACTS.md  (843s sim)

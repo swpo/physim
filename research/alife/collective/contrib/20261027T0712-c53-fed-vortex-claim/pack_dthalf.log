@@ -1,0 +1,12 @@
+[fed-vortices] seed 0: 1000 frames x 300 steps, grid (128, 128)
+  frame 100/1000  58.3s
+  frame 200/1000  114.8s
+  frame 300/1000  173.3s
+  frame 400/1000  230.9s
+  frame 500/1000  286.7s
+  frame 600/1000  343.1s
+  frame 700/1000  398.2s
+  frame 800/1000  456.1s
+  frame 900/1000  513.2s
+  frame 1000/1000  570.4s
+  -> collective/contrib/c53-fvc/pack_dthalf/FACTS.md  (570s sim)

@@ -1,0 +1,3 @@
+seed 3 caps at t=400 34 target cx 49.5 cy 86.3 width 17.0 clearance 4.0
+fed inside/outside at t=400,410,420,440,480: [(4, 30), (4, 30), (4, 27), (5, 24), (3, 30)]
+cut inside/outside at t=400,410,420,440,480: [(4, 30), (0, 28), (0, 24), (0, 24), (0, 21)]

@@ -1,0 +1,3 @@
+{"id": "20261027T1500-c58-intent-review-marangoni-flames", "kind": "intent", "mode": "review", "task": "R:20261027T0319-c51-marangoni-flames-negative#finding",
+ "title": "c58 reviews c51's reactive-Marangoni flames negative (fresh seeds, m 0 twin, world dt/2)",
+ "parents": ["20261027T0319-c51-marangoni-flames-negative"]}

@@ -1,0 +1,12 @@
+[cips-layered-divide] seed 10: 120 frames x 1000 steps, grid (192, 192)
+  frame 12/120  76.5s
+  frame 24/120  154.8s
+  frame 36/120  239.7s
+  frame 48/120  314.6s
+  frame 60/120  394.9s
+  frame 72/120  475.1s
+  frame 84/120  565.6s
+  frame 96/120  661.0s
+  frame 108/120  763.9s
+  frame 120/120  865.9s
+  -> rerun/seed10/FACTS.md  (866s sim)

@@ -1,0 +1,28 @@
+[reacting-thermals] seed 21: 1200 frames x 25 steps, grid (128, 128)
+  frame 120/1200  13.1s
+  frame 240/1200  25.5s
+  frame 360/1200  37.7s
+  frame 480/1200  50.5s
+  frame 600/1200  62.6s
+  frame 720/1200  75.1s
+  frame 840/1200  87.9s
+  frame 960/1200  100.1s
+  frame 1080/1200  112.9s
+  frame 1200/1200  124.6s
+  -> collective/contrib/c53-rev-sel/pack_neutral/seed21/FACTS.md  (125s sim)
+[reacting-thermals] seed 22: 1200 frames x 25 steps, grid (128, 128)
+  frame 120/1200  13.2s
+  frame 240/1200  26.5s
+  frame 360/1200  39.5s
+  frame 480/1200  52.7s
+  frame 600/1200  66.2s
+  frame 720/1200  78.8s
+  frame 840/1200  92.3s
+  frame 960/1200  104.2s
+  frame 1080/1200  118.7s
+  frame 1200/1200  132.1s
+  -> collective/contrib/c53-rev-sel/pack_neutral/seed22/FACTS.md  (132s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 21 | ok | 22 | 0 | 278 | 0 | 381 | 43 | 6 | 0.19 | 0.02 | [] |
+| 22 | ok | 23 | 0 | 301 | 0 | 346 | 56 | 12 | 0.1 | 0.02 | [] |

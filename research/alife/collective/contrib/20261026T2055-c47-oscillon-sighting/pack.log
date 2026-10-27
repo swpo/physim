@@ -1,0 +1,28 @@
+[param-oscillon] seed 0: 150 frames x 1000 steps, grid (128, 128)
+  frame 15/150  61.9s
+  frame 30/150  123.8s
+  frame 45/150  186.9s
+  frame 60/150  249.1s
+  frame 75/150  311.3s
+  frame 90/150  371.7s
+  frame 105/150  433.7s
+  frame 120/150  494.7s
+  frame 135/150  556.2s
+  frame 150/150  617.5s
+  -> collective/contrib/20261026T2055-c47-oscillon-sighting/pack/seed0/FACTS.md  (618s sim)
+[param-oscillon] seed 1: 150 frames x 1000 steps, grid (128, 128)
+  frame 15/150  63.2s
+  frame 30/150  124.3s
+  frame 45/150  185.7s
+  frame 60/150  245.5s
+  frame 75/150  304.1s
+  frame 90/150  362.5s
+  frame 105/150  421.4s
+  frame 120/150  480.3s
+  frame 135/150  540.5s
+  frame 150/150  601.2s
+  -> collective/contrib/20261026T2055-c47-oscillon-sighting/pack/seed1/FACTS.md  (601s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 55 | 60 | 148 | 0 | 38 | 1 | 1 | 2.91 | 0.12 | [] |
+| 1 | ok | 56 | 62 | 149 | 0 | 24 | 0 | 0 | 2.54 | 0.13 | [] |

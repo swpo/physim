@@ -1,0 +1,8 @@
+- components: final 18, mean 15.4, max 20; occupancy final 0.15
+- tracks: 87; persistent (alive >= 50% of run): 1; longest 154 frames; alive start-to-end: 0
+- size of persistent tracks: max/min area ratio 3.00 (1 = constant size)
+- replication (lineage window K = 20 frames = time 2000, default): splits 32, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 6, merges 18, merge/split ratio 0.562, nucleations 5
+- components: final 17, mean 14.5, max 19; occupancy final 0.15
+- tracks: 174; persistent (alive >= 50% of run): 0; longest 85 frames; alive start-to-end: 0
+- size of persistent tracks: max/min area ratio 0.00 (1 = constant size)
+- replication (lineage window K = 20 frames = time 2000, default): splits 64, persistent splits 52 (0 more failed only because the siblings re-merged within K), max generation 16, merges 40, merge/split ratio 0.625, nucleations 5

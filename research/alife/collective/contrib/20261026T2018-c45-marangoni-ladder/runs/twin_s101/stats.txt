@@ -1,0 +1,32 @@
+== twin101: 401 frames, 286 tracks
+frame  bodies  share k0 k1 k2 (pure >= 0.6)
+    0      0   0.00 0.00 0.00
+   34     10   0.30 0.30 0.40
+   67     21   0.29 0.38 0.33
+  101     19   0.39 0.17 0.44
+  134     21   0.43 0.10 0.48
+  168     21   0.48 0.14 0.38
+  202     21   0.43 0.19 0.38
+  235     28   0.43 0.25 0.32
+  269     22   0.50 0.23 0.27
+  303     20   0.45 0.25 0.30
+  336     27   0.52 0.26 0.22
+  370     20   0.45 0.25 0.30
+mutation events: 12 (mapped to labkit bodies: 12)
+kind changes along tracks (pure >= 0.6 at both ends): 10; coinciding with a logged mutation of that body: 9; unexplained: 1
+persistent splits by parent kind k0/k1/k2: [np.int64(25), np.int64(9), np.int64(16)]; daughters checked 101, off-kind daughters 4
+merge products by kind: [np.int64(11), np.int64(3), np.int64(10)]; merges of two different kinds: 12
+kind  n_div  medD  p90D  sh>=2.5  sh>=3  shDA>=3  v_path  cycle
+k0     19  1.46  2.56     0.16   0.00     0.58   0.241    140
+k1     10  0.82  2.05     0.00   0.00     0.30   0.201    198
+k2     16  1.33  2.19     0.06   0.00     0.38   0.190    205
+mutant lineages (kind of persistent-split daughters and granddaughters):
+  track 1 mutated 1->2 at frame ~17; daughters kinds [2, 2]; granddaughters kinds [2, 2, 2, 2]
+  track 78 mutated 2->1 at frame ~141; daughters kinds [2, 1]; granddaughters kinds []
+  track 100 mutated 2->1 at frame ~185; daughters kinds []; granddaughters kinds []
+  track 115 mutated 1->2 at frame ~239; daughters kinds []; granddaughters kinds []
+  track 120 mutated 1->2 at frame ~202; daughters kinds [2, 2]; granddaughters kinds []
+  track 136 mutated 2->1 at frame ~218; daughters kinds []; granddaughters kinds []
+  track 183 mutated 0->1 at frame ~276; daughters kinds []; granddaughters kinds []
+  track 197 mutated 2->1 at frame ~296; daughters kinds []; granddaughters kinds []
+  track 225 mutated 0->1 at frame ~333; daughters kinds []; granddaughters kinds []

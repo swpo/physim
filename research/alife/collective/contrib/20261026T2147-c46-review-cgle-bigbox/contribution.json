@@ -1,0 +1,13 @@
+{"id": "20261026T2147-c46-review-cgle-bigbox", "kind": "review", "mode": "review", "task": "R:20261026T1610-c43-cgle-gain-bigbox#finding",
+ "title": "Review of c43's CGLE gain big-box negative on seed 3 (L=80, 192^2, t=1000): no persistent daughters at eps 1.40 or 1.43 (0 persistent splits, merges 16 and 15); at eps 1.43 this seed also forms a box-spanning domain wall, which the finding saw only at 1.45",
+ "summary": "Labkit re-runs of the finding's world.py with WORLD_P {L: 80, eps: 1.40 or 1.43}, seed 3, 192^2, 200 frames (t=1000). eps 1.40: 7-18 pulses, 11 splits, 0 persistent, 16 merges (merge/split 1.46). eps 1.43: from noise a network of fronts coarsens into one domain wall that straightens across the box by t~400; beside it commas and worms grow, writhe and break (t=480-825), but no fragment lives 100 t as a separate body: 12 splits, 0 persistent, 15 merges; by t=1000 only the wall, two spinning ring pulses with dark cores and one comma remain (eps1.43/seed3/sheet.png).",
+ "review_of": "20261026T1610-c43-cgle-gain-bigbox",
+ "parents": ["20261026T1610-c43-cgle-gain-bigbox"],
+ "evidence": ["eps1.43/seed3/sheet.png", "eps1.40/seed3/sheet.png", "eps1.43/seed3/lineage.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "eps1.40/seed3/FACTS.md: 0 persistent splits of 11, 16 merges; eps1.43/seed3/FACTS.md: 0 persistent of 12, 15 merges; sheet t=480-825 shows worms breaking and pieces re-merging or fading"},
+   "replicated": true, "seed": 3, "seeds_run": [{"seed": 3, "result": "pass"}],
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "One fresh seed, two of the four eps values, the finding's 100 t lineage window; on seed 3 a domain wall takes much of the box at eps 1.43, so the worm population is smaller than in the finding's seed 2 and the worm regime looks seed-dependent near eps 1.43-1.45."}],
+ "compute": {"cpu_minutes": 25}}

@@ -1,0 +1,1 @@
+splits 77; parent x in [6,26): 76; x>=40: 1; frames with a body in the inlet zone: 119/119; x hist (16 px bins): [1, 75, 0, 0, 0, 0, 0, 1]

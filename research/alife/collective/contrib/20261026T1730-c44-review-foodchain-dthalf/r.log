@@ -1,0 +1,12 @@
+[condensate-food-chain] seed 7: 120 frames x 400 steps, grid (128, 128)
+  frame 12/120  31.7s
+  frame 24/120  62.8s
+  frame 36/120  94.4s
+  frame 48/120  126.8s
+  frame 60/120  158.0s
+  frame 72/120  187.2s
+  frame 84/120  215.9s
+  frame 96/120  247.3s
+  frame 108/120  277.9s
+  frame 120/120  308.8s
+  -> rerun_dthalf/seed7/FACTS.md  (309s sim)

@@ -1,0 +1,6 @@
+collective/contrib/20261027T0616-c51-review-thermals-controls/pack_res15_s3 persistent splits 58; dividing tracks born by split 54; >=3 BL: 23/54 (sqrt area), 5/54 (long axis); travelling up (+-45deg) 43/54
+  track 185 born 380 divides 460 net 71.7 px, sqrtA 6.5, long axis 8.1 -> 11.0 / 8.8 BL, dir 98 deg, max area jump 1.25
+  track 237 born 461 divides 572 net 84.3 px, sqrtA 7.3, long axis 11.2 -> 11.5 / 7.5 BL, dir 83 deg, max area jump 1.28
+  track 155 born 321 divides 405 net 67.8 px, sqrtA 6.5, long axis 12.4 -> 10.4 / 5.5 BL, dir 91 deg, max area jump 1.17
+  track 236 born 461 divides 522 net 44.2 px, sqrtA 6.4, long axis 13.4 -> 7.0 / 3.3 BL, dir 121 deg, max area jump 1.18
+  track 247 born 479 divides 524 net 33.4 px, sqrtA 6.2, long axis 11.1 -> 5.4 / 3.0 BL, dir 74 deg, max area jump 1.14

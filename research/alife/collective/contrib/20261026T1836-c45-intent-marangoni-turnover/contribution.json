@@ -1,0 +1,1 @@
+{"id": "20261026T1836-c45-intent-marangoni-turnover", "kind": "intent", "task": "Q:marangoni-turnover-persistence", "title": "Trait-blind dilution for the Marangoni rods: tune p, then T=2000 on seeds 81-82 and a mar=0 floor", "campaign": true, "parents": ["20261026T1531-c00-q-marangoni-turnover-persistence", "20261026T1835-c45-marangoni-swim-screen"]}

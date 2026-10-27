@@ -1,0 +1,4 @@
+{"id": "20261027T0919-c53-intent-review-hunting-claim", "kind": "intent", "mode": "review", "task": "R:20261026T2103-c46-hunting-ecology-claim#c1",
+ "title": "Review of c46's hunting ecology claim (SIEXD) on a fresh seed",
+ "summary": "Re-run the claimed world at the claim's grid on a new seed and run its X or E control.",
+ "parents": ["20261026T2103-c46-hunting-ecology-claim"]}

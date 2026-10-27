@@ -1,0 +1,12 @@
+[marangoni-flames] seed 32: 600 frames x 25 steps, grid (128, 128)
+  frame 60/600  2.4s
+  frame 120/600  4.8s
+  frame 180/600  7.1s
+  frame 240/600  9.3s
+  frame 300/600  12.0s
+  frame 360/600  14.5s
+  frame 420/600  17.5s
+  frame 480/600  19.9s
+  frame 540/600  22.4s
+  frame 600/600  25.0s
+  -> collective/contrib/c53-rev-mf/pack_m100/FACTS.md  (25s sim)

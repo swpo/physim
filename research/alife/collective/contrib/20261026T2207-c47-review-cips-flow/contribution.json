@@ -1,0 +1,19 @@
+{
+ "id": "20261026T2207-c47-review-cips-flow",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding",
+ "title": "Review of the CIPS flow-reactor artifact warning on fresh seeds 3 and 4: labkit again reports generation 16-17, and 76 of 77 and 66 of 68 splits happen in bodies sitting 6-26 px downstream of the inlet",
+ "summary": "The finding's world.py with WORLD_P vflow 0.02, out_w 6, 128^2, t=30000, seeds 3 and 4. labkit: persistent splits 58 and 59, max generation 16 and 17, merges 58 and 49, no persistent track. The sheet (rerun/seed3/sheet.png) shows a column of large bodies held just downstream of the inlet strip in every frame, pinching off round daughters that drift with the flow and are washed out; the rest of the box holds a lattice of round bodies that never divide. splitx.py, which places every split (a component at one frame overlapping two at the next) by its parent's x centroid, finds 76 of 77 (seed 3) and 66 of 68 (seed 4) splits with the parent at x in [6, 26), 1 each at x >= 40, and a body in that inlet zone in 119/119 and 118/119 frames. The finding's reading holds: labkit's generation count here is budding from an inflow-fed niche, not repeated division of free bodies.",
+ "parents": ["collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche"],
+ "review_of": "20261026T1729-c44-cips-flow-reactor-budding-niche",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche/world.py",
+ "evidence": ["rerun/seed3/sheet.png", "rerun/seed3/lineage.png", "rerun/seed4/sheet.png", "rerun/seed3/metrics.json", "rerun/seed4/metrics.json", "splitx.py", "splitx_s3.txt", "splitx_s4.txt"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "splitx_s3.txt: 76/77 splits with parent x in [6,26); splitx_s4.txt: 66/68; rerun/seed3/sheet.png: inlet column budding in every frame, downstream lattice static"},
+   "replicated": true, "seed": 3, "seeds_run": [{"seed": 3, "result": "pass: generation 16, 76/77 splits at the inlet"}, {"seed": 4, "result": "pass: generation 17, 66/68 splits at the inlet"}],
+   "controls_run": {}, "by_construction": ["D"], "class_confirmed": true,
+   "limitation": "Splits are located on labkit's rendered frames (119 of 300), so splits between them are missed; the split rule is a simple overlap test, not labkit's persistent-split rule. I did not run the vflow 0.01 point or an outlet reset to the bath value."}],
+ "compute": {"cpu_minutes": 45}
+}

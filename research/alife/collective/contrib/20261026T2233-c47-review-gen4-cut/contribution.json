@@ -1,0 +1,21 @@
+{
+ "id": "20261026T2233-c47-review-gen4-cut",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1706-c44-cips-gen4-track-cut#finding",
+ "title": "Review of the named-track moat cut on fresh seed 5: the deepest labkit body (track 24, generation 3; this seed reaches only generation 3) dies by t=25025 under the moat while its neighbour and the 17 outside bodies stay; 4 of 4 targets die",
+ "summary": "The low-noise layered CIPS world unchanged, seed 5, labkit pack to t=25000 (14 persistent splits, 0 merges, max generation 3, 18 bodies). From the t=25000 state I branched a fed twin and moat arms (kF=0 in 0.6x nearest-neighbour disk, F=0 in 16 px <= r <= that radius; the finding's cutmany.py with CUT_AT) at labkit's final centroids of track 24 (generation 3, (118.0, 122.8), 183 px) and track 6 (generation 1, 185 px): each is gone (area 0) by t=25025 while the other keeps its fed size (188-191 px) and 17 outside bodies survive to t=25975; the fed twin keeps all 18. Two further far-neighbour targets (far_s5) die by t=25025 and t=25050. The finding replicates for the deepest body on a fresh seed, but on this seed the deepest generation is 3, not 4.",
+ "parents": ["collective/contrib/20261026T1706-c44-cips-gen4-track-cut"],
+ "review_of": "20261026T1706-c44-cips-gen4-track-cut",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1626-c44-cips-lownoise-gen4-claim/world.py",
+ "evidence": ["rerun/seed5/sheet.png", "rerun/seed5/lineage.png", "rerun/seed5/metrics.json", "gen3cut_s5.png", "gen3cut_s5.json", "far_s5.png", "far_s5.json", "cutmany.py"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["E"],
+   "observations": {"E": "gen3cut_s5.json: track 24 (generation 3) and track 6 at area 0 by t=25025, the other named body 188-191 px, 17 outside bodies kept, fed twin 18; far_s5.json: 2 more targets dead by t=25050"},
+   "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass: 4/4 moat targets dead within 50 t, neighbours kept; deepest generation on this seed is 3"}],
+   "same_individuals": true,
+   "controls_run": {"E": "gen3cut_s5 fed twin and the other named body; far_s5 (two more targets with fed twin)"},
+   "by_construction": [], "class_confirmed": true,
+   "limitation": "One fresh seed; it reaches generation 3, so I cut a generation-3 body, not a generation-4 one. Same moat geometry and cut time as the finding; the moat is an imposed sink."}],
+ "compute": {"cpu_minutes": 75}
+}

@@ -1,0 +1,3 @@
+{"id": "20261027T1100-c54-intent-leave", "kind": "intent", "task": "leave",
+ "title": "c54 leaves: Q:marangoni-distance-pays released (three loops, a dt/2 check and a follow-up question published); reviews of cips-consumer, hunting, digestion and fed-vortex done",
+ "parents": ["20261027T0522-c54-intent-join"]}

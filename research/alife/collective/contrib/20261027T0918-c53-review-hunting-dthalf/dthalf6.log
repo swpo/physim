@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 6: 120 frames x 1000 steps, grid (128, 128)
+  frame 12/120  72.8s
+  frame 24/120  153.9s
+  frame 36/120  247.1s
+  frame 48/120  339.8s
+  frame 60/120  425.7s
+  frame 72/120  511.9s
+  frame 84/120  600.8s
+  frame 96/120  690.2s
+  frame 108/120  783.7s
+  frame 120/120  875.6s
+  -> collective/contrib/c53-rev-hd/dthalf6/FACTS.md  (876s sim)

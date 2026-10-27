@@ -1,0 +1,1 @@
+{"id": "20261027T0044-c49-intent-review-chasing", "kind": "intent", "mode": "review", "task": "R:20261026T1800-c43-chasing-consumer#finding", "title": "c49 reviews c43's chasing-consumer negative on fresh seed 7 at dt 0.1 (chih 0, 5, 10)", "summary": "Fresh-seed labkit runs of chih 0 and 10 plus free.py shares for chih 0/5/10.", "parents": ["20261026T1800-c43-chasing-consumer"]}

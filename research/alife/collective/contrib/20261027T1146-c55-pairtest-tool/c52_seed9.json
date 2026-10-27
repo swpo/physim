@@ -1,0 +1,14 @@
+{
+"pack": "dig/pack256",
+"K": 20,
+"guest_persistent_splits": 36,
+"guest_max_gen": 2,
+"host_persistent_splits": 62,
+"host_max_gen": 3,
+"guest_splits_coincident_with_host_split": 3,
+"guest_touching_host_frac_median": 0.8775510204081632,
+"guest_tracks_ge_L": 306,
+"L": 20,
+"guest_tracks_with_ge2_unrelated_hosts": 4,
+"guest_frac_frames_alone_median": 0.024695121951219513
+}

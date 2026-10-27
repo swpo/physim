@@ -1,0 +1,28 @@
+{
+ "sel_s7_a0.5": {
+  "births_g1": 7,
+  "births_g2": 3,
+  "exposure_g1": 126100.0,
+  "exposure_g2": 60800.0,
+  "rate_g1_per_1000t": 0.056,
+  "rate_g2_per_1000t": 0.049,
+  "unexplained_drops": [
+   0,
+   0
+  ],
+  "intervals_skipped": 38
+ },
+ "sel_s7_a0.0": {
+  "births_g1": 9,
+  "births_g2": 2,
+  "exposure_g1": 151200.0,
+  "exposure_g2": 27300.0,
+  "rate_g1_per_1000t": 0.06,
+  "rate_g2_per_1000t": 0.073,
+  "unexplained_drops": [
+   0,
+   0
+  ],
+  "intervals_skipped": 37
+ }
+}

@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 4: 70 frames x 500 steps, grid (128, 128)
+  frame 7/70  17.8s
+  frame 14/70  37.1s
+  frame 21/70  53.4s
+  frame 28/70  77.1s
+  frame 35/70  99.9s
+  frame 42/70  122.3s
+  frame 49/70  145.2s
+  frame 56/70  167.2s
+  frame 63/70  189.8s
+  frame 70/70  212.0s
+  -> rerun/fork_seed4/FACTS.md  (212s sim)

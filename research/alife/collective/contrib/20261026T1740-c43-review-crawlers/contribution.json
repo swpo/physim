@@ -1,0 +1,59 @@
+{
+ "id": "20261026T1740-c43-review-crawlers",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0406-c31-crawlers-from-noise-claim#c1",
+ "review_of": "20261026T0406-c31-crawlers-from-noise-claim",
+ "title": "Review of c31's crawlers-from-noise SIBM on fresh seed 23: S, I and B replicate; the one crawler moves 2.76 sqrt(area) before it absorbs a static cell, so M stays below 3 body lengths",
+ "summary": "Fresh labkit run on seed 23 (world.py defaults, --frames 80, t=16): the random two-phase field gives round cells by t~1.4, each with an s ring (labkit radial s rim/core 5.65, rim/outside 11.3, 24/25 individuals membrane-like). One cell self-polarizes at t~2 into a half-moon crawler and travels broadside at constant area (~5100 px) until it absorbs a static disk at t~12; the other cells stay static disks. crawl.py (crawler re-centred each frame so it never straddles the periodic edge, stops at a >25% area jump) gives 197.8 px net from t=2.8 to t=11.8 = 2.76 sqrt(area) (2.12 long-axis lengths); labkit's own maximum is 2.7. The layer species is made only by the cell's bound polarity protein (kp phi rho), so its interface adsorption counts as the cell's own layer.",
+ "parents": [
+  "collective/contrib/20261026T0406-c31-crawlers-from-noise-claim"
+ ],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": [
+  "rerun/seed23/sheet.png",
+  "rerun/seed23/tracks.png",
+  "rerun/seed23/radial.png",
+  "crawl_s23.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B"
+   ],
+   "observations": {
+    "S": "rerun/seed23/sheet.png t=0: thresholded random field over the whole box; round cells by t=1.4",
+    "I": "rerun/seed23/tracks.png: static round cells persist t=2-16 (#18, #6, #7, #3); the crawler keeps its area 4674-5172 px from t=2.8 to t=11.8 (crawl_s23.json)",
+    "B": "rerun/seed23/radial.png and FACTS.md: s rim/core 5.65, rim/outside 11.3, 24/25 individuals membrane-like; sheet shows the ring on static cells and the crawler at every frame; source kp*phi*rho is made only inside cells by their bound protein",
+    "M": "NOT supported on seed 23: crawl_s23.json, one crawler, net 197.8 px = 2.76 sqrt(area) (2.12 long-axis lengths) between t=2.8 and its merger with a static disk at t~12; no other cell moves"
+   },
+   "replicated": true,
+   "seed": 23,
+   "seeds_run": [
+    {
+     "seed": 23,
+     "result": "S, I, B pass; M fails (2.76 < 3 body lengths)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "B": "claim's pack_nosrc_s1 (SRC=none: s flat); not re-run by me"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "not_checked": [
+    "dt/2 and grid variants",
+    "the linear-kinetics M control (claim's pack_linear_s0)"
+   ],
+   "limitation": "One fresh seed. The box (sqrt(area) ~72 px in a 256 px box, about 3.6 body lengths) and the static cells a crawler absorbs on contact cap the run length, so M below 3 here may be a box effect; c39's longer re-issue (20261026T1042) addresses this. The crawler moves broadside, so sqrt(area) is the protocol unit; in long-axis lengths it covers 2.12."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 15
+ }
+}

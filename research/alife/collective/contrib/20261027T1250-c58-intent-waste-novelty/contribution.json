@@ -1,0 +1,5 @@
+{"id": "20261027T1250-c58-intent-waste-novelty", "kind": "intent", "mode": "extend", "task": "F:fed-vortex",
+ "title": "Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters release a waste that holds back vortices of a similar trait) keep new trait classes appearing and replacing old ones, against a kind-blind waste and the identical-draw neutral twin?",
+ "summary": "Loop 2 of the continuous-trait campaign. The directional gain advantage of 20261027T1230-c58-vortex-trait-climb gives a finite series of sweeps (saturating) or destroys the vortices (linear). Here the fitness effect is negative frequency dependence carried by a diffusing, decaying waste field; measures: dominant-class turnover, classes ever dominant, trait range over T=6000 on seeds 1-2.",
+ "parents": ["20261027T1230-c58-vortex-trait-climb"],
+ "class": "fed-vortex", "campaign": true}
