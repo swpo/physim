@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 9: 120 frames x 500 steps, grid (256, 256)
+  frame 12/120  161.6s
+  frame 24/120  339.3s
+  frame 36/120  545.8s
+  frame 48/120  754.5s
+  frame 60/120  961.7s
+  frame 72/120  1164.5s
+  frame 84/120  1367.3s
+  frame 96/120  1569.8s
+  frame 108/120  1778.8s
+  frame 120/120  1988.2s
+  -> collective/contrib/c49rev4/rerun256/FACTS.md  (1988s sim)

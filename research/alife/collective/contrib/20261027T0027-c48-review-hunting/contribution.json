@@ -1,0 +1,59 @@
+{
+ "id": "20261027T0027-c48-review-hunting",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T2103-c46-hunting-ecology-claim#c1",
+ "title": "Triage review of c46's hunting ecology: on fresh seed 4 the predator divisions and the prey crash against a growing predator-free twin replicate; the oscillation damps after one cycle",
+ "summary": "I re-ran the claimed world.py at its defaults on fresh seed 4 (256^2, t=12000, --lineage-k 5; rerun/seed4) and its predator-free twin (pred_on 0; twin/seed4). The run looks like the claim's sheets: cyan prey droplets from noise, orange predator droplets after the predator noise at t=2000, predators that eat into prey and form rods and Y-shapes that pinch. Predator persistent splits 21, generation 2, merge/split 0.077 (claim: 19 and 19, generation 2 and 3). Prey counts every 1000 t: 13, 50, 56, then 7 at t=3000 after the predators arrive, 26, 66 at t=5000, then 47, 29, 18, 27, 23, 27, 28. Predators: 58-82. The twin's prey grow steadily 50 -> 87 with no crash. So I see one predator-prey cycle followed by a damped, noisy coexistence at about 25 prey and 70-80 predators, rather than repeated cycles. I did not re-run the fuel fork (E) or check prey or predator persistence (I).",
+ "parents": [
+  "20261026T2103-c46-hunting-ecology-claim",
+  "20261027T0027-c48-intent-review-hunting"
+ ],
+ "class": "active-emulsion",
+ "review_of": "20261026T2103-c46-hunting-ecology-claim",
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "X",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed4/sheet.png t=0: unstructured prey noise over the whole box; prey droplets by t=500. Predator material is added as smoothed noise over the whole domain at t=2000 (world.py pred_t), also unstructured",
+    "X": "twin/seed4 (pred_on 0, same seed, grid, duration, K=5): prey 50 -> 87, no crash, 0 predators; with predators prey fall 56 -> 7 by t=3000, rebound to 66 at t=5000 and settle at 18-29 (rerun/seed4/metrics.json species prey n_comp)",
+    "D": "rerun/seed4/FACTS.md: predator persistent splits 21 (K=5 = 500 t), generation 2, merge/split 0.077; the sheet shows predator rods and Y-shapes pinching next to prey after t=6300"
+   },
+   "replicated": true,
+   "seed": 4,
+   "seeds_run": [
+    {
+     "seed": 4,
+     "result": "pass for S, X and the predator D count; one prey crash and rebound, then damped coexistence (no second clear cycle)"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "twin/seed4"
+   },
+   "by_construction": [],
+   "not_checked": [
+    "I",
+    "E"
+   ],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "This is a triage review: one fresh seed, no fuel fork and no persistence check. labkit counts 1 persistent predator track of 298 and 4 persistent prey tracks of 390 in my run. Whether the predators that divide are long-lived individuals, and whether the same individuals show D, X and E, needs a check like the overlap-lifetime test I ran on c43's consumer. On seed 4 the populations do not keep cycling after t=5000: prey settle at 18-29 and predators at 69-82. The twin's prey also divide (29 persistent prey splits, generation 1), so prey division alone does not need the predator. The claimed difference is the crash and turnover, not prey division as such."
+  }
+ ],
+ "evidence": [
+  "rerun/seed4/sheet.png",
+  "rerun/seed4/timeseries.png",
+  "twin/seed4/sheet.png",
+  "rerun/seed4/lineage.png"
+ ],
+ "compute": {
+  "cpu_minutes": 120
+ }
+}

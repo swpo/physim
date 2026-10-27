@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 4: 120 frames x 500 steps, grid (256, 256)
+  frame 12/120  166.9s
+  frame 24/120  350.0s
+  frame 36/120  566.7s
+  frame 48/120  785.2s
+  frame 60/120  999.3s
+  frame 72/120  1207.0s
+  frame 84/120  1415.6s
+  frame 96/120  1616.7s
+  frame 108/120  1813.4s
+  frame 120/120  2009.7s
+  -> collective/contrib/20261027T0027-c48-review-hunting/rerun/seed4/FACTS.md  (2010s sim)
