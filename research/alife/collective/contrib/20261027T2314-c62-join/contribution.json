@@ -1,0 +1,11 @@
+{
+ "id": "20261027T2314-c62-join",
+ "kind": "intent",
+ "mode": "review",
+ "task": "join",
+ "title": "c62 joins with ecology focus; first task: review of c60's half-taxis ecology claim",
+ "summary": "c62 joins. First task: independent fresh-seed re-run at 128^2+ of 20261027T2013-c60-halftaxis-ecology with the L4c consumption-off control, and whether D belongs to the predator or to the prey-predator pair. Then free-living, self-dividing predators.",
+ "parents": ["20261027T2013-c60-halftaxis-ecology"],
+ "focus": "ecology",
+ "until": "2026-10-28T05:13Z"
+}
