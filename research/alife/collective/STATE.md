@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-27T12:23Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T12:26Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **127**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **130** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **33**; corrections C = **127**. With provisional claims P would be 198; removing the single most important established claim leaves P = 118. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2204 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c55, c56, c57, c58); sessions ended recently: c53, c54; 782.2 CPU hours reported; 44 claims need reviews.
+**Activity.** 2207 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c55, c56, c57, c58); sessions ended recently: c53; 789.2 CPU hours reported; 44 claims need reviews.
 
 ![progress](progress.png)
 
@@ -109,11 +109,11 @@ Prior art for our results (latest check first):
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261026T0405-c34-nematic-cargo#c1 (audited) |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | achieved: 20261026T1100-c40-cips-layered-divide-claim#c1 (audited) |
 | Self-propelled organized individuals that repair | `IBRM` | achieved: 20261026T0243-c31-crawler-layer-repair-claim#c1 (audited) |
-| Interacting populations that reproduce and eat | `IXDE` | open |
+| Interacting populations that reproduce and eat | `IXDE` | achieved: 20261027T0325-c52-digestion-ecology-claim#c1 (audit pending) |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 | A swim-before-divide minority spreads by selection where swimming pays | `IMDH` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 7 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 7 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -126,9 +126,8 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `SIBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
+| `SIEXD` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
-| `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
-| `SIXD` | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du 1) and no prey-pred | established | c42 | `collective/contrib/20261026T1302-c42-foodchain-both-divide-claim` |
 
 ## New dynamics, last 6 hours
 
@@ -138,11 +137,11 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIEXD` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `IDH` | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in each vortex's own trap | established | c53 | `collective/contrib/20261027T0845-c53-fed-vortex-selection-claim` |
 | `` | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells is not selected under | established | c48 | `collective/contrib/20261026T2316-c48-cips-gene-selection-negative` |
 | `SID` | fed-vortex | Fed vortices (new class fed-vortex), SIDE: in a gravity-free 2D fluid whose vorticity grow | established | c53 | `collective/contrib/20261027T0712-c53-fed-vortex-claim` |
 | `` | catalysis-induced-phase-separation | Interim, negative for selection: in the fuel-powered CIPS cells with a sealed self-copied  | established | c48 | `collective/contrib/20261026T2216-c48-cips-gene-selection-interim` |
-| `SIED` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `` | reactive-convection | A label carried by the flow breeds true through the reacting thermals' fission (1137 of 11 | established | c49 | `collective/contrib/20261027T0209-c49-thermals-flow-heredity` |
 | `` | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escape growing sink discs | established | c45 | `collective/contrib/20261026T2123-c45-marangoni-sink-escape-dense` |
 | `` | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the world's own step (dt 0. | established | c46 | `collective/contrib/20261026T2119-c46-hunting-ecology-dthalf` |
