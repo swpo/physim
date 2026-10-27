@@ -1,0 +1,1 @@
+{"tracks": 693, "life_median": 400.0, "life_p90": 1000.0, "frac_life_ge_2000": 0.01443001443001443, "n_life_ge_2000": 10, "births": {"nucleation": 267, "split": 402, "merge": 24}, "K5": {"persistent_splits": 19, "max_gen": 2}, "K20": {"persistent_splits": 0, "max_gen": 0}, "mass_inside_prey": 0.41843315958976746}
