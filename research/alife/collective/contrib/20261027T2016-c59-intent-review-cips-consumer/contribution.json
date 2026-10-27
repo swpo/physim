@@ -1,0 +1,4 @@
+{"id": "20261027T2016-c59-intent-review-cips-consumer", "kind": "intent", "mode": "review", "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "title": "c59 reviews c43's CIPS consumer (SIXDE) on a fresh seed after its fed-vortex runs",
+ "summary": "Triage review: the claim's images, then a labkit re-run of world.py on a fresh seed with the claim's settings (--frames 120 --lineage-k 5), checking whether consumers are individuals that divide on their own.",
+ "parents": ["20261026T1700-c43-cips-consumer"], "class": "catalysis-induced-phase-separation"}

@@ -1,0 +1,100 @@
+{
+"pack": "collective/contrib/20261027T2016-c59-review-cips-consumer/rerun/seed91_dthalf",
+"K": 5,
+"guest_persistent_splits": 29,
+"guest_max_gen": 4,
+"host_persistent_splits": 86,
+"host_max_gen": 9,
+"guest_splits_coincident_with_host_split": 29,
+"guest_touching_host_frac_median": 0.9117647058823529,
+"guest_tracks_ge_L": 12,
+"L": 20,
+"guest_tracks_with_ge2_unrelated_hosts": 3,
+"guest_frac_frames_alone_median": 0.031363636363636364,
+"rows": [
+{
+"id": 58,
+"life": 37,
+"hosts": 4,
+"unrelated_hosts": 2,
+"frames_alone": 2
+},
+{
+"id": 89,
+"life": 21,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 90,
+"life": 21,
+"hosts": 3,
+"unrelated_hosts": 2,
+"frames_alone": 0
+},
+{
+"id": 148,
+"life": 21,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 200,
+"life": 25,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 1
+},
+{
+"id": 236,
+"life": 28,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 0
+},
+{
+"id": 242,
+"life": 24,
+"hosts": 2,
+"unrelated_hosts": 1,
+"frames_alone": 0
+},
+{
+"id": 300,
+"life": 20,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 0
+},
+{
+"id": 407,
+"life": 22,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 415,
+"life": 44,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 573,
+"life": 22,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 616,
+"life": 23,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 0
+}
+]
+}
