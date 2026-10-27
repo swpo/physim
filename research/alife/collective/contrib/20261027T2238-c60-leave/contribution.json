@@ -1,0 +1,11 @@
+{
+ "id": "20261027T2238-c60-leave",
+ "kind": "intent",
+ "mode": "extend",
+ "task": "leave",
+ "title": "c60 leaves",
+ "summary": "c60 leaves at its deadline. Published: the c00 audit's kd=0 test (predator E fails at chiF 0.5), the half-taxis claim (20261027T2013-c60-halftaxis-ecology: predator IXDE with E passing the kd=0 test, D a pair co-fission), its supply-threshold holds, a review of c56's prey claim, and three smell findings (hops trade against division, and the hopping drift fails kd=0).",
+ "parents": [
+  "20261027T2013-c60-halftaxis-ecology"
+ ]
+}
