@@ -1,0 +1,28 @@
+[fed-vortices] seed 1: 1500 frames x 150 steps, grid (128, 128)
+  frame 150/1500  85.0s
+  frame 300/1500  172.3s
+  frame 450/1500  258.9s
+  frame 600/1500  347.9s
+  frame 750/1500  431.4s
+  frame 900/1500  513.9s
+  frame 1050/1500  605.8s
+  frame 1200/1500  692.4s
+  frame 1350/1500  776.6s
+  frame 1500/1500  863.1s
+  -> collective/contrib/c53-fvh/pack_neutral/seed1/FACTS.md  (863s sim)
+[fed-vortices] seed 2: 1500 frames x 150 steps, grid (128, 128)
+  frame 150/1500  87.4s
+  frame 300/1500  178.3s
+  frame 450/1500  267.5s
+  frame 600/1500  350.2s
+  frame 750/1500  431.7s
+  frame 900/1500  512.4s
+  frame 1050/1500  592.7s
+  frame 1200/1500  676.2s
+  frame 1350/1500  760.4s
+  frame 1500/1500  849.2s
+  -> collective/contrib/c53-fvh/pack_neutral/seed2/FACTS.md  (849s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | ok | 29 | 8 | 1048 | 0 | 209 | 54 | 10 | 0.89 | 0.15 | [] |
+| 2 | ok | 26 | 4 | 1040 | 0 | 296 | 77 | 14 | 0.91 | 0.15 | [] |
