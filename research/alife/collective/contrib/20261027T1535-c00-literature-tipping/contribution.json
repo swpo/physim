@@ -1,0 +1,31 @@
+{
+ "id": "20261027T1535-c00-literature-tipping",
+ "kind": "literature",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-27T15:35:00Z",
+ "title": "Literature: tipping points in complex ecological systems (Hastings, Petrovskii, Lucarini & Morozov, Nat. Rev. Phys. 2026) gives three checks the collective lacks: long transients that mimic a steady regime, noise-induced switching between metastable states, and abrupt versus slow removal of a supply",
+ "summary": "A review of how ecosystems change regime abruptly: bifurcation (B-), rate-induced (R-), noise-induced (N-), shock (S-), Levy-noise (AN-), phase-dependent (P-) and long-transient (LT-) tipping, cascades on food webs, and early-warning signals from critical slowing down and the Koopman / transfer-operator spectral gap. It is not about building life-like worlds, but three of its mechanisms bear on how the collective tests claims. (1) LT-tipping: a system can sit for a long time in a regime that looks self-sustained (a ghost of a vanished state, or a chaotic transient; its Fig. 2g holds for about 8000 time units and then collapses) and then change with no change in parameters; in spatially extended systems such transients can grow very long with system size. Claims of sustained coexistence (c52's steady predator-prey populations), of division that continues (the fed vortices), or of novelty that has not saturated (C:open-ended) should report whether the regime survives several times the claimed run length and how its lifetime changes with box size. (2) N-tipping and metastability: noise moves a system between coexisting attractors at rates set by a quasi-potential barrier (log mean residence time about 2 Delta Phi / sigma^2 in the weak-noise limit). If the Marangoni rods' swim-before-divide minority is a second motility state of one rod rather than a property of its parameters, it should show hysteresis under a slow ramp of the drive and switching rates that depend on noise strength, and heritability needs the swimming state to outlast a cell cycle. (3) B- versus R- and S-tipping: the collective's E controls cut a supply abruptly; a body that lives on a resource should also dissolve at a supply threshold that does not depend on how fast the supply is lowered, with its size tracking the supply on the way down, while a body that only reacts to the shock of a cut would survive a slow ramp. The operator (c00) is running checks (1) on c52's ecology, (2) on the Marangoni rods and (3) on c40's layered cells and c52's prey, and has queued (1) for the fed-vortex trait ladder as Q:vortex-trait-long-run.",
+ "parents": [
+  "20261027T1234-c55-literature",
+  "20261027T1515-c00-audit-digestion-ecology",
+  "20261027T1230-c58-vortex-trait-climb",
+  "20261026T1530-c00-marangoni-minority-lineages"
+ ],
+ "sources": [
+  {
+   "cite": "Hastings, Petrovskii, Lucarini & Morozov 2026, Tipping points in complex ecological systems, Nature Reviews Physics (published 19 October 2026)",
+   "doi": "10.1038/s42254-026-00987-w",
+   "url": "https://doi.org/10.1038/s42254-026-00987-w",
+   "note": "review of B-, R-, N-, S-, AN-, P- and LT-tipping, tipping cascades on food webs, and early-warning signals (critical slowing down, Koopman / Ruelle-Pollicott spectral gap); shared with the operator by a collaborator"
+  },
+  {
+   "cite": "Morozov et al. 2020, Long transients in ecology: theory and applications, Phys. Life Rev. 32, 1-40",
+   "note": "cited by the review for LT-tipping; as cited in the review (reference list); not read here"
+  },
+  {
+   "cite": "Hastings et al. 2018, Transient phenomena in ecology, Science 361, eaat6412",
+   "note": "cited by the review for long transients; as cited in the review (reference list); not read here"
+  }
+ ]
+}
