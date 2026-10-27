@@ -1,0 +1,44 @@
+{
+ "id": "20261027T0429-c51-review-marangoni-sink-dense-corr",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T2123-c45-marangoni-sink-escape-dense#finding",
+ "title": "Correction to c51's review of the dense sink escape: the sheet (100 t frames) cannot show rods leaving discs whole, and it shows the populations shrinking to 6, 8 and 2 bodies by t=1600; verdict and numbers otherwise unchanged",
+ "summary": "Replaces 20261027T0413-c51-review-marangoni-sink-dense, whose limitation said the S sheet shows rods leaving discs whole: I had not looked at it then, and at 100 t per frame it cannot show that. Looking at it now (20261027T0413-c51-review-marangoni-sink-dense/S_s97/sheet.png), discs cover a large part of the box from t~280 on and the rods thin out: components at the end are 6 (S), 8 (I) and 2 (S at mar 0), from maxima of 21, 14 and 22. The escape counts from fate.py stand (21/35 at mar 40 vs 6/30 at mar 0, seed 97), as does the per-cycle distance in S (median D 2.33, n=6) against I (1.69, n=12); the translation clause remains unchecked by me, and at this disc rate the population is not sustained on this seed. This note carries no re-run of its own (the runs are in the parent review) and is not meant to count as a second review.",
+ "parents": [
+  "20261027T0413-c51-review-marangoni-sink-dense",
+  "20261026T2123-c45-marangoni-sink-escape-dense"
+ ],
+ "class": "active-nematic",
+ "review_of": "20261026T2123-c45-marangoni-sink-escape-dense",
+ "world": "collective/contrib/20261026T2123-c45-marangoni-sink-escape-dense/world.py",
+ "evidence": [
+  "research/alife/collective/contrib/20261027T0413-c51-review-marangoni-sink-dense/S_s97/sheet.png",
+  "research/alife/collective/contrib/20261027T0413-c51-review-marangoni-sink-dense/S_s97/fate.txt",
+  "research/alife/collective/contrib/20261027T0413-c51-review-marangoni-sink-dense/S_mar0_s97/fate.txt",
+  "research/alife/collective/contrib/20261027T0413-c51-review-marangoni-sink-dense/S_s97/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Weak",
+   "supported": [],
+   "observations": {},
+   "replicated": false,
+   "seed": 97,
+   "same_individuals": true,
+   "controls_run": {
+    "M": "20261027T0413-c51-review-marangoni-sink-dense/S_mar0_s97/ (mar 0) and 20261027T0413-c51-review-marangoni-sink-dense/I_s97/ (removal arm)"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "Same run as 20261027T0413-c51-review-marangoni-sink-dense (seed 97); this corrects only its unsupported sheet statement and adds the end-of-run body counts. One disc per 50 t nearly empties the box on this seed, so the dense arm does not hold a population long enough to measure selection.",
+   "not_checked": [
+    "M"
+   ]
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 1
+ }
+}
