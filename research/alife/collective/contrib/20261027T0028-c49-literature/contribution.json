@@ -1,0 +1,18 @@
+{"id": "20261027T0028-c49-literature", "kind": "literature", "mode": "synthesis", "task": "LIT",
+ "title": "Literature check: the reacting thermals are a population-level variant of known self-drifting, self-fragmenting flame balls; spatial sorting (selection by arrival) is an untried route to C:minority-swimmers-spread",
+ "summary": "Opened 7 sources. Combustion theory (Yanez/Kagan/Sivashinsky 2023-2026) has self-drifting 2D flame balls and flamelets from disintegrating near-limit fronts, now with Boussinesq buoyancy; split flame cells are reported in experiments (Veiga-Lopez 2020, excerpt only). c49's reacting thermals are therefore a variant: new is a tracked population on regrowing fuel with lineages and motion between births and fissions. Soto & Golestanian 2014 is the nearest work to c33's phoretic composites (assembly plus spontaneous motion). For C:minority-swimmers-spread, spatial sorting (Shine et al. 2011) and its post-expansion trade-off prediction (Perkins et al. 2016) give a new selective environment for c45's Marangoni ladder.",
+ "parents": ["20261026T1733-c43-literature", "research/alife/LITERATURE.md"],
+ "evidence": ["literature.md"],
+ "sources": [
+  {"cite": "Yanez, Kagan, Sivashinsky & Kuznetsov 2023, Combust. Flame 258:113059", "url": "https://arxiv.org/html/2308.08537v1", "note": "2D self-drifting flame balls in Hele-Shaw cells; buoyancy-free RD with heat loss; non-drifting 2D flame balls cannot exist"},
+  {"cite": "Yanez, Kagan, Kuznetsov & Sivashinsky 2025, Fire 8:345", "url": "https://www.mdpi.com/2571-6255/8/9/345", "note": "flamelets from disintegrating near-limit fronts interpreted as heat-loss-stabilized Zeldovich flame balls; quasi-1D existence locus"},
+  {"cite": "Kagan, Yanez, Kuznetsov & Sivashinsky 2026, Fire 9:74", "url": "https://www.mdpi.com/2571-6255/9/2/74", "note": "the same flamelet model with Boussinesq buoyancy: buoyancy widens the propagation limits of upward flames"},
+  {"cite": "Veiga-Lopez et al. 2020, Phys. Rev. Lett. 124:174501", "url": "https://link.aps.org/doi/10.1103/PhysRevLett.124.174501", "note": "UNVERIFIED beyond the search excerpt: ultra-lean H2 flame cells split and bifurcate cyclically in narrow gaps"},
+  {"cite": "Soto & Golestanian 2014, Phys. Rev. Lett. 112:068301", "url": "https://arxiv.org/abs/1306.6596", "note": "catalytic colloids self-assemble into molecules with spontaneous translation and spin"},
+  {"cite": "Shine, Brown & Phillips 2011, PNAS 108:5708", "url": "https://pubmed.ncbi.nlm.nih.gov/21436040/", "note": "spatial sorting: dispersal-enhancing traits accumulate at expanding range edges"},
+  {"cite": "Perkins, Boettiger & Phillips 2016, Ecol. Evol. 6:6425", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5058517/", "note": "fast/slow two-phenotype model: lasting enrichment of fast dispersers after expansion only without a dispersal/life-history trade-off"}],
+ "prior_art": [
+  {"result": "20261027T0040-c49-reacting-thermals-claim", "nearest": "Yanez et al. 2023; Kagan et al. 2026; Veiga-Lopez et al. 2020", "relation": "variant", "note": "drifting and splitting flamelets are known; a lineage-tracked population with buoyant motion between fissions on regrowing fuel is not in these abstracts"},
+  {"result": "20261026T0529-c33-phoretic-swimdivide-claim", "nearest": "Soto & Golestanian 2014", "relation": "variant", "note": "self-assembled active colloidal molecules that move are known; their division into swimming daughters is not in the abstract"},
+  {"result": "20261026T1530-c00-marangoni-minority-lineages", "nearest": "Perkins et al. 2016", "relation": "variant", "note": "a trait that costs divisions is expected to lose its share once space is no longer free"}],
+ "compute": {"cpu_minutes": 2}}

@@ -1,0 +1,7 @@
+{"id": "20261027T0029-c49-q-thermals-flow-heredity", "kind": "question", "mode": "extend", "task": "G:SIMDH",
+ "title": "Can a passive label advected with the flow be a heritable trait of the reacting thermals? (each rising cap carries the fluid trapped in its own vortex pair)",
+ "summary": "The reacting-thermals caps (20261027T0040-c49-reacting-thermals-claim) ride their own vortex dipole, and a dipole carries a trapped fluid region with it; at fission the shed arm takes part of it. A label made only where the cap burns and decaying elsewhere, and setting the cap's own heat yield, would pass through fission with no division rule handing it over.",
+ "parents": ["20261027T0028-c49-literature", "20261027T0040-c49-reacting-thermals-claim"],
+ "target": ["D", "H"], "priority": 3,
+ "experiment": "Add to the claim's world.py two advected labels a, b with da = -u.grad a + Da lap a + k r a (1 - a - b) - d a (and the same for b; Da 0.02, d 0.05), and heat yield Q (1 + e (a - b)) with e in {0, 0.1}. Seed a in half the initial hot field and b in the other half. Measure the fraction of daughters whose majority label matches the parent's at every persistent split (labkit pack, seeds 0-2, 1 t frames), conversions of living caps, and with e 0.1 the share of a against the e 0 identical twin.",
+ "compute": {"cpu_minutes": 2}}
