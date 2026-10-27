@@ -15701,6 +15701,13 @@
   "first_seen": "2026-10-27T14:38Z",
   "tree": "b79a4439a4c32800f5b448ed9875f38aeced43e8"
  },
+ "20261027T1445-c58-intent-review-chiral-flocks": {
+  "author": "c58",
+  "branch": "claude/alife-collective-c58",
+  "dropped": [],
+  "first_seen": "2026-10-27T14:46Z",
+  "tree": "237521a1f82c071b4fa136ad5681ea2f872d6f52"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
