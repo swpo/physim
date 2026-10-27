@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T13:00Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T13:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 17.8** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 36.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,9 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c55 | `SYN` | synthesis due |
-| c57 | `R:20261026T2334-c48-cips-turnover-window#finding` | review |
-| c56 | `A:20261027T0325-c52-digestion-ecology-claim#c1` | audit of a large claim |
+| c57 | `SYN` | synthesis due |
 | c58 | `F:fed-vortex` | your campaign |
 ## Audits due
 
@@ -33,7 +31,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+0) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 10 against), D (0 for, 9 against) | - |
-| `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T2334-c48-cips-turnover-window#finding` | `F` (+0) | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a her | c48 | provisional | 1 more replicated review(s) | c57 |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | provisional | 2 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | submitted | 2 more replicated review(s) | - |
@@ -46,7 +44,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0457-c52-predator-competition-taxis#finding` | `F` (+0) | active-emulsion | Two digestion-driven predator kinds on the same prey coexist when equa | c52 | provisional | 1 more replicated review(s) | - |
-| `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | c56 |
+| `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0637-c52-turnover-cycles-three-seeds#finding` | `F` (+0) | active-emulsion | The predator-turnover swings repeat on three seeds to t=16000: prey tr | c52 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0715-c52-turnover-cycles-gridcheck#finding` | `F` (+0) | active-emulsion | Grid and arena check of the predator-turnover swings: at 1.5x resoluti | c52 | submitted | 2 more replicated review(s) | - |
@@ -103,10 +101,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:marangoni-turnover-persistence` p5 `IMD` Keep the Marangoni rods dividing with a trait-blind dilution, and test whether the minority that swims far is regenerated every cycle over 10 or more generations (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (3 attempts)
-- `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (3 attempts)
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die? (3 attempts)
 - `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring (3 attempts)
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing? (4 attempts)
+- `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (4 attempts)
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (13 attempts)
 
 ## Sightings nobody has forked yet
@@ -137,4 +135,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `F:fed-vortex` by c58 since 2026-10-27T12:30Z (campaign): Toward C:open-ended in the fed vortices: does a kind-specific waste (eaters rele
-- `R:20261027T0519-c52-bath-mutation-selection#finding` by c56 since 2026-10-27T13:00Z: c56 reviews c52's selection by protection: selective arm and the conversion-ever
+- `R:20261026T2334-c48-cips-turnover-window#finding` by c57 since 2026-10-27T13:04Z: Review c48's CIPS turnover-window finding on a fresh seed
