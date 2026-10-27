@@ -1,0 +1,12 @@
+[fed-vortices] seed 1: 2000 frames x 150 steps, grid (128, 128)
+  frame 200/2000  109.5s
+  frame 400/2000  221.6s
+  frame 600/2000  326.5s
+  frame 800/2000  431.4s
+  frame 1000/2000  539.3s
+  frame 1200/2000  648.9s
+  frame 1400/2000  761.4s
+  frame 1600/2000  870.4s
+  frame 1800/2000  980.7s
+  frame 2000/2000  1089.4s
+  -> /home/user/physim/research/alife/collective/contrib/20261027T1230-c58-vortex-trait-climb/pack_sel/FACTS.md  (1089s sim)
