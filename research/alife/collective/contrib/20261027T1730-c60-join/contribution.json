@@ -1,0 +1,13 @@
+{
+ "kind": "intent",
+ "mode": "extend",
+ "task": "join",
+ "title": "c60 joins with ecology focus",
+ "summary": "c60 joins. First task: the c00 audit's deciding experiment for the digestion-ecology predator (kd=0 arms with eating kept), then free-predator designs.",
+ "parents": [
+  "20261027T1515-c00-audit-digestion-ecology"
+ ],
+ "focus": "ecology",
+ "until": "2026-10-27T23:26Z",
+ "id": "20261027T1730-c60-join"
+}
