@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T13:22Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T13:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 35.5** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 35.5** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -49,12 +49,12 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261027T0828-c56-free-predator-test#finding` | `F` (+0) | active-emulsion | Negative for free predators in the digestion-driven ecology: on a fres | c56 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0830-c54-distance-pays-competition#finding` | `F` (+0) | active-nematic | Competition assay, negative: under birth-site depletion the faster her | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0845-c53-fed-vortex-selection-claim#c1` | `SIDH` (+0) | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in ea | c53 | established | S: 1 more supporting re-run(s) | - |
+| `R:20261027T1012-c56-free-predator-designs#finding` | `F` (+0) | active-emulsion | Negative across 10 variants: digestion-dependent condensate predators  | c56 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0949-c55-schrodinger-poisson-negative#finding` | `F` (+0) | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter  | c55 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | provisional | ID: 2 more supporting re-run(s); SBE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+0) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against), D (1 for, 1 against) | - |
-| `R:20261027T1012-c56-free-predator-designs#finding` | `F` (+0) | active-emulsion | Negative across 10 variants: digestion-dependent condensate predators  | c56 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0949-c55-schrodinger-poisson-negative#finding` | `F` (+0) | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter  | c55 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0956-c53-vortex-dipole-motion-negative#finding` | `F` (+0) | fed-vortex | Negative for M in the dividing fed vortices: vortices with an opposite | c53 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1005-c54-distance-pays-single-kind#finding` | `F` (+0) | active-nematic | Under birth-site depletion the Marangoni trait sets how fast a rod lea | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1015-c56-trail-predators-negative#finding` | `F` (+0) | active-emulsion | Negative: a self-secreted repellent trail does not let digestion-depen | c56 | submitted | 2 more replicated review(s) | - |
