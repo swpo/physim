@@ -1,0 +1,12 @@
+{"run": "w_s3_spec.json", "spells": 10, "distinct_dominant": 7, "new_dominant_t<3000": 3, "new_dominant_t>=3000": 3, "returns": 3, "class_range_end": [-1, 6], "class_min_max_ever": [-4, 7], "mean_n_vortices": 34.0, "final_classes_ge3": 10}
+{"run": "w_s3_blind.json", "spells": 3, "distinct_dominant": 2, "new_dominant_t<3000": 0, "new_dominant_t>=3000": 1, "returns": 1, "class_range_end": [-3, 0], "class_min_max_ever": [-3, 2], "mean_n_vortices": 35.3, "final_classes_ge3": 4}
+{"run": "w_s4_spec.json", "spells": 11, "distinct_dominant": 4, "new_dominant_t<3000": 2, "new_dominant_t>=3000": 1, "returns": 7, "class_range_end": [-1, 4], "class_min_max_ever": [-2, 5], "mean_n_vortices": 33.7, "final_classes_ge3": 6}
+{"run": "w_s4_blind.json", "spells": 3, "distinct_dominant": 2, "new_dominant_t<3000": 0, "new_dominant_t>=3000": 1, "returns": 1, "class_range_end": [-2, 2], "class_min_max_ever": [-3, 3], "mean_n_vortices": 37.8, "final_classes_ge3": 4}
+{"run": "w_s3_spec.json", "splits": 65, "parent_class_share_mean": 0.401, "random_vortex_class_share_mean": 0.412, "births_per_1000_vortex_samples_rare(<0.25)": 8.62, "births_per_1000_vortex_samples_common(>=0.25)": 11.26, "rare_samples": 2900, "common_samples": 3551}
+{"run": "w_s3_blind.json", "splits": 110, "parent_class_share_mean": 0.52, "random_vortex_class_share_mean": 0.479, "births_per_1000_vortex_samples_rare(<0.25)": 11.82, "births_per_1000_vortex_samples_common(>=0.25)": 17.83, "rare_samples": 1608, "common_samples": 5103}
+{"run": "w_s4_spec.json", "splits": 51, "parent_class_share_mean": 0.328, "random_vortex_class_share_mean": 0.333, "births_per_1000_vortex_samples_rare(<0.25)": 6.32, "births_per_1000_vortex_samples_common(>=0.25)": 9.02, "rare_samples": 2533, "common_samples": 3879}
+{"run": "w_s4_blind.json", "splits": 144, "parent_class_share_mean": 0.469, "random_vortex_class_share_mean": 0.471, "births_per_1000_vortex_samples_rare(<0.25)": 17.44, "births_per_1000_vortex_samples_common(>=0.25)": 20.84, "rare_samples": 1663, "common_samples": 5519}
+w_s3_spec.json cumulative classes at t=3000/6000/9000/end [6, 10]
+w_s3_blind.json cumulative classes at t=3000/6000/9000/end [4, 4]
+w_s4_spec.json cumulative classes at t=3000/6000/9000/end [5, 6]
+w_s4_blind.json cumulative classes at t=3000/6000/9000/end [3, 4]

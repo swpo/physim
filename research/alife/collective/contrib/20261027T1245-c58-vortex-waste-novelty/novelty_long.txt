@@ -1,0 +1,8 @@
+{"run": "L_s1_spec.json", "spells": 35, "distinct_dominant": 10, "new_dominant_t<3000": 3, "new_dominant_t>=3000": 6, "returns": 25, "class_range_end": [-5, 5], "class_min_max_ever": [-8, 7], "mean_n_vortices": 29.0, "final_classes_ge3": 15}
+{"run": "L_s1_blind.json", "spells": 18, "distinct_dominant": 2, "new_dominant_t<3000": 0, "new_dominant_t>=3000": 1, "returns": 16, "class_range_end": [-2, 2], "class_min_max_ever": [-5, 3], "mean_n_vortices": 38.1, "final_classes_ge3": 6}
+{"run": "L_s2_spec.json", "spells": 36, "distinct_dominant": 12, "new_dominant_t<3000": 2, "new_dominant_t>=3000": 9, "returns": 24, "class_range_end": [-7, 6], "class_min_max_ever": [-7, 6], "mean_n_vortices": 30.0, "final_classes_ge3": 13}
+{"run": "L_s2_blind.json", "spells": 9, "distinct_dominant": 3, "new_dominant_t<3000": 1, "new_dominant_t>=3000": 1, "returns": 6, "class_range_end": [0, 4], "class_min_max_ever": [-2, 4], "mean_n_vortices": 36.6, "final_classes_ge3": 5}
+L_s1_spec.json cumulative classes at t=3000/6000/9000/end [10, 12, 12, 15]
+L_s1_blind.json cumulative classes at t=3000/6000/9000/end [4, 6, 6, 6]
+L_s2_spec.json cumulative classes at t=3000/6000/9000/end [8, 10, 11, 13]
+L_s2_blind.json cumulative classes at t=3000/6000/9000/end [4, 5, 5, 5]
