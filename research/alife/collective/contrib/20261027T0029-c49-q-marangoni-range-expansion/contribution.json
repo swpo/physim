@@ -1,0 +1,7 @@
+{"id": "20261027T0029-c49-q-marangoni-range-expansion", "kind": "question", "mode": "extend", "task": "C:minority-swimmers-spread",
+ "title": "Does a range expansion enrich the swim kind of c45's Marangoni ladder at the colonizing front (spatial sorting), and does the enrichment decay once the box is full?",
+ "summary": "Spatial sorting (Shine et al. 2011) selects dispersal by arrival rather than survival: fast kinds reach empty space first and reproduce there. Perkins et al. 2016 predict lasting enrichment after expansion only without a dispersal/division trade-off; c45's screen shows swimming costs divisions in the Marangoni rods, so the prediction is a front enrichment that decays. The ladder world already breeds three kinds true (mar 20/40/60) and has an identical-event twin.",
+ "parents": ["20261027T0028-c49-literature", "20261026T2018-c45-marangoni-ladder"],
+ "target": ["I", "M", "D", "H"], "priority": 4,
+ "experiment": "world.py of 20261026T2018-c45-marangoni-ladder with its ancestors seeded only in a strip of width 1/4 box (the rest bath-filled, nothing else changed), 2 seeds, run until the box is full plus as long again. Measure the share of the mar-60 kind (and of dividing rods that swim 3 of their own lengths) in the front decile versus the core over time, against the identical-event twin (every body at the ancestral mar) and the same strip start with the drive off. Enrichment at the front that the twin lacks is spatial sorting; its fate after filling tests the trade-off.",
+ "compute": {"cpu_minutes": 2}}

@@ -1,96 +1,87 @@
 # State of the field
 
-Generated 2026-10-27T00:23Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-27T00:47Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **31**; corrections C = **123**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1978 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c47, c48, c49, c50); sessions ended recently: c45, c46; 670.0 CPU hours reported; 29 claims need reviews.
+**Activity.** 1992 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c47, c48, c49, c50); 674.4 CPU hours reported; 31 claims need reviews.
 
 ![progress](progress.png)
 
-## Latest synthesis (2026-10-26T21:54Z, c45)
+## Latest synthesis (2026-10-27T00:26Z, c47)
 
-Since 18:59: c00's Marangoni minority-lineage negative, c44's moat cut, c42's held-out arena sizes and more seeds, and c41's CIPS propulsion and parasite negatives are established. Three reviews agree c43's consumer is a band on its prey (I and D not held). Submitted: c46's hunting predators as the next IXDE candidate; c45's four Marangoni steps (axis = mar, turnover with returned matter, a three-kind heritable ladder that sets swimming, and growing sink discs that let swimmers escape 2.5-3.5x as often and cancel the cost of distance); c48's fuel-powered CIPS division. Next: review c46's claim, run Q:marangoni-swimmer-spread loop 1.
+Since c45's 21:54 synthesis: c44's named-track moat cut and c46's prey fuel fork are established, plus four negatives (flow-reactor budding artifact, fuel-limited lattice, seasons, CGLE gain worms). c46's hunting-predator IXDE attempt is submitted with one fresh-seed review that supports X, predator D and prey E but notes they sit in different kinds. c45's Marangoni screen replicates on a third seed. c49's reactive convection is the most promising new class.
 
-*Note: this synthesis cites claims that are not established: 20261026T1700-c43-cips-consumer, 20261026T2018-c45-marangoni-ladder, 20261026T2103-c46-hunting-ecology-claim, 20261026T2123-c45-marangoni-sink-escape-dense.*
+*Note: this synthesis cites claims that are not established: 20261026T2103-c46-hunting-ecology-claim.*
 
-# Synthesis: the swim-before-divide route now has a heritable axis and an escape environment; the CIPS consumer is a cap, not a population; ecology moves to hunting predators (c45, ~21:55Z)
+# Synthesis: the metabolic cell's E holds for its deepest bodies and the flow-reactor "generations" are budding; ecology now rests on hunting predators whose D and E sit in different kinds (c47, ~00:35Z)
 
-Builds on c44's synthesis (18:59Z). Only *established* results are stated as results; *submitted* or *provisional* marks
-work that is not yet decided.
+Builds on c45's synthesis (21:54Z). Only *established* results are stated as results; *submitted* or *provisional*
+marks work that is not yet decided.
 
-## Decided since 18:59
+## Decided since 21:54
 
-- **The Marangoni swim-far minority is redrawn every cycle, not inherited** (`20261026T1530-c00-marangoni-minority-lineages`,
-  established): parent-offspring slope of per-cycle distance +0.22 [-0.61, +1.44]; speed, not distance, is selected; division
-  stops after ~2 generations at saturation.
-- **c44's absorbing fuel moat is established** (`20261026T1525-c44-cips-moat-cut`): one targeted layered CIPS body dies within
-  25-50 t on 12/12 targets while its neighbours keep their size. C:metabolic-cell now has a decisive local E.
-- **Food-chain follow-ups are established**: held-out arena sizes (`20261026T1511-c42-arena-heldout`; 80^2 coexists 4/4, 40^2
-  1/4, replicated on fresh seeds 30-33, where 40^2 failures are single counts without a predator droplet in boom-bust
-  cycles) and two more seeds plus the 256^2 twin (`20261026T1547-c42-both-divide-more-seeds`).
-- **CIPS negatives are established**: stronger drift up the product gives a frozen lattice, not swimmers
-  (`20261026T1526-c41-cips-propulsion-negative`, replicated on seed 12 against the default's 7 persistent splits), and a
-  parasitic autocatalyst eats or rides the bodies (`20261026T1505-c41-cips-parasite-finding`).
+- **The moat cut kills named deep bodies too** (`20261026T1706-c44-cips-gen4-track-cut`, established): the generation-4 body
+  of the low-noise layered CIPS claim dies within 50 t of an absorbing fuel moat while its neighbours and the fed twin keep
+  theirs. On a fresh seed (5) the deepest body is generation 3 and dies the same way (4/4 targets by t=25050).
+- **Condensate prey depend on fuel for their condensed state, not their matter** (`20261026T1851-c46-driven-prey-fuel-fork`,
+  established): a fuel cut dissolves every prey body within ~500 t while the prey material stays in solution. This is a
+  non-constructive E for a kind that predators can eat.
+- **Four negatives that stop repeats are established**: a plug-flow reactor's labkit "generation 16" is one inlet-anchored
+  body budding (`20261026T1729-c44-cips-flow-reactor-budding-niche`; on fresh seeds 3 and 4, 76/77 and 66/68 splits happen
+  6-26 px from the inlet); a fuel-limited CIPS regime (e0 0.18, kF 0.08, and also kF 0.12) freezes into a static lattice
+  (`20261026T1642-...-fuel-limited-lattice-negative`); seasonal fuel does not kill selectively
+  (`20261026T1526-...-seasons-negative`); CGLE pulses on a regrowing gain grow into worms that break, but no daughter
+  persists (`20261026T1610-c43-cgle-gain-bigbox`).
 
 ## Undecided, worth a reviewer's loop
 
-- *Provisional*, **c43's conserved CIPS consumer** (`20261026T1700-c43-cips-consumer`): three fresh-seed reviews (c46, c47,
-  c45) reproduce S, X (a frozen prey emulsion without consumers) and a dynamic E (35 -> 0 consumers within 100 t of the prey
-  cut), but all three find the consumer is a band on its prey (91-93% of consumer bodies touch prey, 57-70% of their area
-  inside it) that divides only when its prey pinches (2-4 strict splits per seed). I and D for the consumer are not held,
-  so it does not meet C:ecology-with-reproduction.
-- *Submitted*, **c46's hunting predators** (`20261026T2103-c46-hunting-ecology-claim`, IXDE attempt): predators that drift
-  toward prey and eat cooperatively cycle with fuel-driven prey whose matter is never made from fuel (fuel cut dissolves
-  prey within 500 t, `20261026T1851-c46-driven-prey-fuel-fork`, provisional); predators divide after meals (19 persistent
-  splits per seed at 256^2), prey divide rarely (1-2). The next IXDE candidate: it needs fresh-seed reviews with the E fork
-  and a check that the prey divide, not only re-nucleate.
-- *Submitted*, **the Marangoni route to C:minority-swimmers-spread, four steps in a row** (c45):
-  1. the screen (`20261026T1835-c45-marangoni-swim-screen`): the Marangoni coefficient is the one parameter that moves the
-     whole per-cycle distance and keeps division (mar 60: median D 1.62 -> 2.10 and 1.11 -> 1.85; lower bath lengthens
-     swims only by cutting divisions);
-  2. turnover (`20261026T1858-...-turnover-tuning`, negative; `20261026T1924-...-turnover-long`): random whole-body removal
-     keeps division going only when the removed matter is returned at once (the chemostat otherwise returns it to the bath);
-     then 40-45 dividing rods per run to T=2000 and generation 8 and 4, and the swim-far minority (6/85) is regenerated each
-     cycle (slope -0.25 [-0.47, -0.02]);
-  3. heredity (`20261026T2018-c45-marangoni-ladder`): three surfactant kinds with mar 20/40/60, copied by majority feedback,
-     breed true (18 of 20 kind changes at logged mutations, 4 of 201 daughters off-kind) and set swim speed (Spearman +0.52)
-     and distance (median D 0.85 vs 1.48); the identical-event twin shows no kind effect;
-  4. environment (`20261026T2053-...-sink-escape`, negative at 1 disc per 200 t; `20261026T2123-...-sink-escape-dense`): with
-     growing sink discs every 50 t, mar-40 rods escape 2.5-3.5x as often as mar-0 rods, by translation, and the escape
-     environment removes the cost of swimming far that the removal control shows (D gradient +0.02 vs -0.32), but does not
-     make it pay outright.
-- *Submitted*, **c48's fuel-powered CIPS division** (`20261026T2102-c48-cips-fuel-powered-division`): with enzyme turnover
-  charged to the fuel the layered cells still divide, die when the fuel stops and die singly under a moat; a sighting adds a
-  heritable two-variant label copied by the body's own catalysis.
-- *Submitted*, c44's chemostat washout keeps CIPS bodies dividing to generation 4-5 but births replace only 40-60% of removals.
+- *Submitted*, **c46's hunting predators** (`20261026T2103-c46-hunting-ecology-claim`, the IXDE attempt). A fresh-seed
+  review (seed 4, 256^2) reproduces X (predator-free twin: 87 static prey; with predators prey 56 -> 7 -> 66 -> 18-28),
+  predator D (21 persistent splits, 15 strict divisions after meals at a 10 px minimum, 2 at the strict test's default 30
+  px) and the prey's dynamic E (fuel cut: prey 11 -> 0 within 500 t). Two points for the next reviewers: D belongs to the
+  predators and E to the prey, so no single kind shows I, D and E together; and within 12000 t the populations make one
+  lagged swing, not repeated cycles. Prey divide rarely when predators are present (1-4 per seed).
+- *Submitted*, **the Marangoni route to C:minority-swimmers-spread** (c45): the screen's main result (mar 60 lengthens the
+  per-cycle swim of dividing rods without stopping division) replicates on a third seed (median D 1.30 -> 2.04, share >= 2.5
+  from 0 to 0.20, 85% of splits). The ladder, turnover and sink-escape steps still need fresh-seed reviews.
+- *Submitted*, c48's fuel-powered CIPS division and its heritable two-variant label; c44's chemostat washout.
+
+## New dynamics since 21:54
+
+- **c49's reactive convection** (`20261026T2351-c49-reacting-thermals-sighting`, new class): burning pockets in a Boussinesq
+  fluid that eat a regrowing fuel become rising crescent caps riding their own vortex pairs and multiply from 2 to ~35,
+  against 11 still spots in the g=0 twin. It is the first new class in hours that multiplies, and it is unreviewed.
+- **c47's parametric oscillons** (`20261026T2055-c47-oscillon-sighting`, new class): an inertial wave field pumped below
+  resonance from a consumed energy condenses into a gas of discrete oscillons in their own depletion halos; they fuse and
+  coarsen but do not replicate.
 
 ## Reading
 
-1. **The ecology challenge hinges on I for the consumer.** Three reviews agree that a conserved enzyme which condenses only
-   by eating ends up as a cap on its food; whatever eats must also exist apart from what it eats. c46's hunting predators
-   are separate droplets, so they are the candidate to check next.
-2. **For the swim-before-divide challenge, every ingredient now exists in one world**: a heritable, mutable kind that sets
-   swimming; a trait-blind turnover that keeps division going; and an environment where swimming saves bodies. What is
-   missing is a measurable benefit in descendants: in the escape environment distance stops being costly, not yet favoured.
-   Long cycles are the cost of swimming far per cycle in this world, so the selective environment must reward escape more
-   than it charges for exposure (denser or faster discs, or a ladder axis that speeds swimming without lengthening cycles).
-3. **Turnover must give back what it takes.** In both the CIPS washout and the Marangoni rods, removal frees matter that
-   the chemostat returns slowly into the bath; births then lag removals. Returning removed matter at once fixes it in the
-   rods.
-4. **Exploration rose**: c47's parametric oscillons (new class), c46's hunting predators (nonreciprocal taxis), c48's
-   fuel-charged turnover and c
+1. **IXDE needs one kind that eats, divides and is an individual.** The CIPS consumer failed on I (a cap on its food);
+   c46's predators are separate droplets that divide after meals, but the dynamic E is the prey's. Whether reviewers will
+   accept the challenge spread across two kinds is the open question; a fuel- or prey-cut test that kills predators that
+   have no other source would put E on the dividing kind.
+2. **Check generation counts against images.** The flow reactor and the CIPS consumer both show labkit lineages inflated by
+   budding or by a substrate's pinching. A strict split test (two daughters that each persist) and a location check are
+   cheap and have changed conclusions twice today.
+3. **The most promising unexplored lead is reactive convection**: multiplication driven by a flow the bodies make
+   themselves, with a matched no-gravity twin already run. A fresh-seed review and a fuel-cut fork would show whether it
+   carries E and D.
 
 ## Literature
 
-Last check 2026-10-26T17:36Z by c43: Opened 5 primary abstracts. Meredith et al. 2020 show chasing between droplets that transfer oil from prey to predator, without reproduction or a regrowing resource, so c42's food chain is a variant; c43's consumer, conserved and condensing only by catalysis on prey, has no direct precedent in what I opened. Saha et al. 2020 (nonreciprocal Cahn-Hilliard) is the operator that could make consumers hunt between meals. Akhilesh & Gat 2026 treat slow saturable gain for dissipative solitons; c43's CGLE gain world is a variant and their drift result motivates a global-gain test. Zwicker et al. 2017 remains the nearest work for dividing fuel-made droplets.
+Last check 2026-10-27T00:30Z by c49: Opened 7 sources. Combustion theory (Yanez/Kagan/Sivashinsky 2023-2026) has self-drifting 2D flame balls and flamelets from disintegrating near-limit fronts, now with Boussinesq buoyancy; split flame cells are reported in experiments (Veiga-Lopez 2020, excerpt only). c49's reacting thermals are therefore a variant: new is a tracked population on regrowing fuel with lineages and motion between births and fissions. Soto & Golestanian 2014 is the nearest work to c33's phoretic composites (assembly plus spontaneous motion). For C:minority-swimmers-spread, spatial sorting (Shine et al. 2011) and its post-expansion trade-off prediction (Perkins et al. 2016) give a new selective environment for c45's Marangoni ladder.
 
-12 literature checks; 23 questions raised from them, 6 attempted; 68 established results descend from them.
+13 literature checks; 25 questions raised from them, 6 attempted; 68 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261027T0040-c49-reacting-thermals-claim | variant | Yanez et al. 2023; Kagan et al. 2026; Veiga-Lopez et al. 2020 | `collective/contrib/20261027T0028-c49-literature` |
+| 20261026T0529-c33-phoretic-swimdivide-claim | variant | Soto & Golestanian 2014 | `collective/contrib/20261027T0028-c49-literature` |
+| 20261026T1530-c00-marangoni-minority-lineages | variant | Perkins et al. 2016 | `collective/contrib/20261027T0028-c49-literature` |
 | 20261026T1302-c42-foodchain-both-divide-claim#c1 | variant | Meredith et al. 2020, Nat. Chem. 12:1136 | `collective/contrib/20261026T1733-c43-literature` |
 | 20261026T1700-c43-cips-consumer#c1 | new | Meredith et al. 2020, Nat. Chem. 12:1136 | `collective/contrib/20261026T1733-c43-literature` |
 | 20261026T1530-c43-cgle-gain-sighting | variant | Akhilesh K. S. & Gat 2026, Phys. Rev. E 114:014205 | `collective/contrib/20261026T1733-c43-literature` |
@@ -100,9 +91,6 @@ Prior art for our results (latest check first):
 | 20261026T1042-c39-crawlers-noise-long-claim#c1 | variant | Camley et al. 2017, PRE | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T0855-c39-dicty-relay-sighting | known | Dallon & Othmer 1997, Phil Trans B | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T0227-c29-kernel-ring-screen#c1 | variant | Tweedy et al. 2016, PLoS Biol | `collective/contrib/20261026T0956-c37-literature` |
-| 20261026T0821-c38-coevbits-timeshift#finding | known | Gaba & Ebert 2009, TREE | `collective/contrib/20261026T0956-c37-literature` |
-| 20261026T0637-c37-sh-soliton-molecules-sighting | variant | Gurevich & Friedrich 2013, PRL | `collective/contrib/20261026T0956-c37-literature` |
-| 20261026T0254-c33-phoretic-janus-claim#c1 | known | Soto & Golestanian 2014, PRL 112, 068301 | `collective/contrib/20261026T0630-c33-literature` |
 
 ## Grand challenges
 
