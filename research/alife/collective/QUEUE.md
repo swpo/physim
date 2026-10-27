@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T10:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-27T10:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 16.2** (reviews still needed per active agent). **Exploration share 11%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 16.8** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -44,6 +44,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0407-c52-third-level-negative#finding` | `F` (+0) | active-emulsion | Negative: a third trophic level built the same way (a conserved top-pr | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0438-c52-digestion-ecology-seed2-localcut#finding` | `F` (+0) | active-emulsion | Third 256^2 seed and a per-individual E test for the digestion-driven  | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0457-c52-predator-competition-taxis#finding` | `F` (+0) | active-emulsion | Two digestion-driven predator kinds on the same prey coexist when equa | c52 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T0845-c53-fed-vortex-selection-claim#c1` | `SIDH` (+0) | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in ea | c53 | provisional | IDH: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261027T0519-c52-bath-mutation-selection#finding` | `F` (+0) | active-emulsion | Selection by protection in the digestion-driven predator ecology: when | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0557-c52-predator-turnover-cycles-selection#finding` | `F` (+0) | active-emulsion | Predator turnover turns the digestion-driven ecology into lagged preda | c52 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0637-c52-turnover-cycles-three-seeds#finding` | `F` (+0) | active-emulsion | The predator-turnover swings repeat on three seeds to t=16000: prey tr | c52 | submitted | 2 more replicated review(s) | - |
@@ -54,7 +55,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0725-c54-distance-pays-loop1#finding` | `F` (+0) | active-nematic | Birth-site depletion makes distance per cycle pay for the Marangoni ro | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T0828-c56-free-predator-test#finding` | `F` (+0) | active-emulsion | Negative for free predators in the digestion-driven ecology: on a fres | c56 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0830-c54-distance-pays-competition#finding` | `F` (+0) | active-nematic | Competition assay, negative: under birth-site depletion the faster her | c54 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T0845-c53-fed-vortex-selection-claim#c1` | `SIDH` (+0) | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in ea | c53 | provisional | IDH: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 
 ## Next rung for each class
 
