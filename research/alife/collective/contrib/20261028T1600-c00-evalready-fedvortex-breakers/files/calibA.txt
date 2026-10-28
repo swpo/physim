@@ -1,0 +1,13 @@
+A 0.0 t50: n50 max|w|0.211 Y0.611 sd(w)0.051 | t100: n49 max|w|0.230 Y0.669 sd(w)0.051 | t150: n46 max|w|0.222 Y0.680 sd(w)0.052 | t200: n43 max|w|0.223 Y0.681 sd(w)0.052 | t250: n43 max|w|0.222 Y0.690 sd(w)0.051 | t300: n41 max|w|0.221 Y0.694 sd(w)0.051 | t350: n38 max|w|0.224 Y0.691 sd(w)0.052 | t400: n37 max|w|0.223 Y0.685 sd(w)0.052
+A 0.03 t50: n99 max|w|0.256 Y0.515 sd(w)0.061 | t100: n99 max|w|0.277 Y0.573 sd(w)0.063 | t150: n101 max|w|0.269 Y0.525 sd(w)0.066 | t200: n102 max|w|0.282 Y0.552 sd(w)0.061 | t250: n100 max|w|0.277 Y0.557 sd(w)0.063 | t300: n101 max|w|0.274 Y0.538 sd(w)0.066 | t350: n104 max|w|0.284 Y0.561 sd(w)0.061 | t400: n100 max|w|0.272 Y0.550 sd(w)0.064
+A 0.1 t50: n85 max|w|0.446 Y0.203 sd(w)0.111 | t100: n87 max|w|0.449 Y0.201 sd(w)0.112 | t150: n100 max|w|0.436 Y0.202 sd(w)0.110 | t200: n70 max|w|0.430 Y0.200 sd(w)0.111 | t250: n75 max|w|0.471 Y0.199 sd(w)0.111 | t300: n91 max|w|0.456 Y0.199 sd(w)0.112 | t350: n96 max|w|0.416 Y0.203 sd(w)0.110 | t400: n85 max|w|0.518 Y0.197 sd(w)0.111
+A 0.3 t50: n1 max|w|1.238 Y0.132 sd(w)0.316 | t100: n1 max|w|1.261 Y0.130 sd(w)0.316 | t150: n1 max|w|1.228 Y0.132 sd(w)0.314 | t200: n1 max|w|1.308 Y0.132 sd(w)0.315 | t250: n1 max|w|1.272 Y0.131 sd(w)0.316 | t300: n1 max|w|1.141 Y0.128 sd(w)0.319 | t350: n1 max|w|1.367 Y0.130 sd(w)0.316 | t400: n1 max|w|1.208 Y0.130 sd(w)0.315
+/home/user/physim/research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py:72: RuntimeWarning: overflow encountered in square
+  w2 = om ** 2
+/home/user/physim/research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py:73: RuntimeWarning: invalid value encountered in divide
+  sat = w2 / (w2 + q["wi"] ** 2)
+/home/user/physim/research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py:58: RuntimeWarning: overflow encountered in multiply
+  a = uy * ops.irfft2(1j * s["ky"] * fh, sh) + ux * ops.irfft2(1j * s["kx"] * fh, sh)
+/home/user/physim/research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py:58: RuntimeWarning: invalid value encountered in add
+  a = uy * ops.irfft2(1j * s["ky"] * fh, sh) + ux * ops.irfft2(1j * s["kx"] * fh, sh)
+A 1.0 t50: n1 max|w|4.412 Y0.163 sd(w)1.051 | t100: n0 max|w|nan Ynan sd(w)nan | NONFINITE

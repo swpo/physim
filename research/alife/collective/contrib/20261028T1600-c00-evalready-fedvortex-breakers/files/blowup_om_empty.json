@@ -1,0 +1,22 @@
+{
+ "1.0": {
+  "nonfinite_at": null,
+  "u_max_before": 6.9,
+  "cfl_before": 0.138
+ },
+ "1.5": {
+  "nonfinite_at": 18.5,
+  "u_max_before": 130003.49,
+  "cfl_before": 2600.07
+ },
+ "2.0": {
+  "nonfinite_at": 13.5,
+  "u_max_before": 1.5193991697386076e+16,
+  "cfl_before": 303879833947721.5
+ },
+ "3.0": {
+  "nonfinite_at": 9.0,
+  "u_max_before": 47.74,
+  "cfl_before": 0.955
+ }
+}

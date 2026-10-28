@@ -1,0 +1,60 @@
+{
+ "id": "20261028T1610-c00-evalready-marangoni-breakers",
+ "kind": "finding",
+ "mode": "control",
+ "created": "2026-10-28T16:10:00Z",
+ "title": "Negative: what breaks c34's Marangoni rods under an evaluation setup. Plain additive noise of sd 0.1 per sqrt(t) removes reproduction and cargo containment (persistent splits 2/1 against 14/11, daughters 0%, cargo in/out 1.8-1.9 against 12.4) and the physical form does so at sd 0.3; PhySim-range pulses (amplitude 3 per t for 20 t) into the phase field or the surfactant make the fields non-finite at every site within 2.5-55 t; the velocity port does nothing and cargo pulses never change a body",
+ "summary": "**Noise that destroys the behaviour.** Same wrapper, packs and measures as 20261028T1610-c00-evalready-marangoni-noise-detect (T=500, seeds 0-1; files/noise_table.json). Baseline: 14/11 persistent splits, cargo in/out 12.43, rim/out 11.1, speed 0.87/0.84 px per frame.\n- Plain additive noise on phi, q1, q2, s and c, sd 0.1 per sqrt(t): persistent splits 2/1, generation 1/1, merge/split 0.91/0.70, 1/0 swim-then-divide tracks, cargo in/out 1.89/1.80 (fraction >= 2: 0.44/0.39), daughters >= 2: 0%/0%, rim/out 6.29, speed 2.02/2.15 (2.3x/2.6x). files/sheet_plain_0.1_s0.png: bodies by t=45 in a heavily speckled bath, many of them fat, hooked or half-merged, with diffuse cargo.\n- Physical form (conserved phi, additive Q, proportional s and c), sd 0.3: seed 0 goes non-finite at t=310 (2 persistent splits out of 43 by then). Seed 1 keeps 3 persistent splits out of 55, generation 1, merge/split 0.73, cargo 2.48, daughters 0%, rim/out 8.07, speed 1.34. files/sheet_phys_0.3_s1.png: bodies nucleate by t=20-45 as short fuzzy stubs in a dense speckled bath.\n- Non-finite fields (64^2 screen, seed 0; files/screen64.log, files/log_scr64_plain_1.0_s0.txt): plain sd 0.3 at t=35, plain sd 1.0 at t=5, physical sd 1.0 at t=25.\n\n**Which field's noise (64^2, seed 0, from noise, 100 t, one field at a time; files/fieldnoise_64.txt).**\n- Additive cargo noise has no back-action: max |v| and the body count are identical to the noise-free run. But the world clips c at zero, which rectifies the noise into a hidden source: bath c rises from 0.004 to 0.126 at sd 0.1 and to 0.374 at sd 0.3. This damages the cargo measure, not the dynamics.\n- Additive surfactant noise raises max |v| from 2.05 to 3.1 (sd 0.1), 7.1 (0.3) and 21 (1.0), and removes bodies at sd >= 0.3 (1 and 0 left of 3). The world also clips s at zero, so this noise too is rectified into a source; whether the damage acts through the Marangoni stress or through the rectified source was not separated.\n- Additive phi noise nucleates bodies (3 become 14 at sd 0.1 and 16 at 0.3) and blows up at sd 1.0 (t=23). Conserved phi noise nucleates at 0.3 (12 bodies) and blows up at 1.0 (t=48). q1+q2 noise at sd 1.0 leaves no body. Proportional s or c noise up to sd 1.0 changes none of these coarse measures.\n\n**PhySim-range pulses (files/pulse_table.json, files/pulse_table.txt).** From the companion finding's prepared state (seed 0, t=300, 19 rods; the target rod splits at t=85 in the uninjected twin), noise-free: a Gaussian source of width 2 px at rate 0.03, 0.3 or 3 per t for 20 t into phi, q1, s or c, at the target's deepest pixel (centre), its tip (7.3 px away) and a bath point 30 px from any body, against the twin at t=20, 50 and 100. PhySim's amplitude range is [0, 3].\n- Amplitude 3 into phi or s makes the fields non-finite at every site: phi at t=20 (centre), 25 (tip) and 25 (bath); s at t=5, 2.5 and 55. All 6 reproduce with a non-finite-only criterion (files/pulse_s0_phi_q1_s_c_strict.json).\n- Below that, s and phi pulses at a body change it. s at the centre triggers the target's division at t=20 instead of 85 at amp 0.03, and at t=5 at amp 0.3. s at the tip at amp 0.3 drives a flow burst (max |v| 3.18 against 0.86 in the twin) that changes 1,169 px, out to 69 px, by t=20. phi at amp 0.03 advances division to t=57.5 at the centre and suppresses it past t=100 at the tip; it is absorbed in the bath. phi at amp 0.3 triggers division at t=45 and fragments the target into 5 (centre) or 4 (tip) pieces, and in the bath it creates a body at the site.\n- q1 pulses never blow up (the cubic term saturates q1). They advance the target's division by 0-17.5 t or suppress it past t=100; amp 3 at the centre gives a transient split (t=12.5, re-merged at 15) and no division by t=100 (1 descendant against the twin's 2).\n- Ports that do nothing: vx at amp 3 leaves every field bit-identical to the twin, because v is recomputed every step and step() never reads the stored value. Cargo pulses (all 9 cases) leave phi, Q and s bit-identical. The c response is exactly linear in amplitude (normalised L2 9.43, 94.3 and 943 at t=20 at the centre), its 90% radius is 3-23 px, it decays by about 5x from t=20 to t=100 at the centre, and it never creates or kills a body.\n- Spread: the region where |dphi| > 0.25 reaches 2-17 px from the site at t=20 for amp-0.03 pulses that change a body at phi and q1 sites (and s at the centre), but 40 px for s at the tip; it reaches 53-69 px for amp-0.3 phi or s pulses at body sites and 0-11 px from the bath. By t=100 every case that changed a body has spread 54-90.5 px (90.5 px is the largest periodic distance).\n\n**A smaller grid.** A 64^2 pack (seed 0, T=500; first line of files/screen64.log) only partly reproduces the behaviour: speed 0.611 px per frame against 0.84-0.89 at 128^2 (-28%), best track 3.55 body lengths, generation 2, 4 persistent splits and 8 bodies at the end (ring 100%, cargo 12.68).",
+ "limits": "- One world. Pulses: one prepared state and seed, one target rod, noise-free, width 2 px, 20 t, dilation 1. The rim site is the rod tip; the flank rim is 1.4 px from the centre and would overlap a width-2 pulse.\n- The plain sd 0.3 and physical sd 1.0 blow-ups, the field-noise diagnostic and the 64^2 pack are 64^2, single-seed, short runs. The diagnostic starts from noise, so it covers body formation, not a prepared state.\n- The surfactant-noise pathway (Marangoni stress against the rectified source) was not separated: no mar=0 run under s noise was done.\n- The blow-up check watched phi, s and q1 only, not q2 or c. The first overflow warning in the strict re-runs is in the cargo term exp(kappa s) (files/pulse_strict_log.txt), so the cargo observables could go non-finite before the recorded times; not established either way. Whether a smaller or CFL-limited dt removes the amp-3 blow-ups was not tested.\n- Pulse outcome classes are heuristic: the target's fate comes from descendant overlap tracking every 2.5 t, and 'body created' means a body at the bath site that the twin lacks.\n- The world amplifies small differences: a phi pulse of amp 1e-4 leaves the twin's split time unchanged but grows by about one e-fold per 21-24 t in L2 norm (about 54 t in peak |dphi| over t=20-50). That is one perturbation of one state, not a Lyapunov estimate. Beyond about 50 t the twin comparison mixes the pulse response with this amplification.\n- Amplitudes are in this world's field units, with one world unit taken as 1 px; mapping them to PhySim units is a choice of the world contract.\n- I looked at files/sheet_plain_0.1_s0.png, files/sheet_phys_0.3_s1.png and files/pulse_view_s-centre-0.03_phi-bath-0.3.png. In the last, for s at the centre at amp 0.03, |dphi| is confined to the target at t=20 while faint |ds| ring outlines and |dc| axis lines already appear on distant rods; for phi in the bath at amp 0.3 a new body sits at the site at t=20 and the difference is domain-wide by t=100. The other pulse outcomes are counts.",
+ "parents": [
+  "20261028T1610-c00-evalready-marangoni-noise-detect"
+ ],
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+ "finding": {
+  "operator": "plain and physical-form dynamics noise at destroying levels; PhySim-range Gaussian source injections into each state field and into the derived velocity",
+  "capability": "D",
+  "world": "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "labkit packs on seeds 0-1 (T=500) at plain sd 0.1 and physical sd 0.3 against sd 0; 64^2 screens to sd 1.0; a one-field-at-a-time noise diagnostic (64^2, 100 t); 38 pulse cases (phi, q1, s, c x centre, tip, bath x amp 0.03, 0.3, 3, width 2 px, 20 t, plus a 1e-4 phi control and vx at amp 3) against the uninjected twin; 6 strict blow-up re-runs",
+  "result": "plain sd 0.1 removes reproduction (persistent splits 2/1 against 14/11, daughters 0%, cargo in/out 1.8-1.9, speed 2.3-2.6x); physical sd 0.3 does so and goes non-finite on one of two seeds; amp 3 into phi or s is non-finite at every site within 2.5-55 t, q1 and c stay finite; vx pulses have exactly no effect and c pulses never change a body"
+ },
+ "outcome": "negative",
+ "implications": "A world contract for PhySim must (1) declare each field's noise form: additive noise on a field the world clips at zero (here s and c) becomes a hidden source, and the surfactant is where noise reaches the dynamics; (2) declare per-port amplitude ranges in the world's units: phi and s stayed finite up to amp 0.3 in these cases, but 0.3 at a body already fragments it or drives a domain-wide flow burst, so s needs about 0.03 or less at a body; c is safe over the whole [0, 3] range and is the interpretable probe of the wall; Q needs an (amp, angle) pair or an isotropic |Q| port, since driving one component fixes the director along x; (3) not expose derived fields (v) as actuators; (4) guarantee that no allowed action makes the fields non-finite (bound the injection, or stabilise or shorten the step; untested here); (5) check fidelity before shrinking the grid for ensembles. As for phase_membrane (20261028T1331-c00-evalready-pm-breakers), calibrating the apparatus to Blobkit's scale breaks this world.",
+ "evidence": [
+  "files/sheet_plain_0.1_s0.png",
+  "files/sheet_phys_0.3_s1.png",
+  "files/pulse_view_s-centre-0.03_phi-bath-0.3.png",
+  "files/noise_table.json",
+  "files/fieldnoise_64.txt",
+  "files/pulse_table.json",
+  "files/pulse_s0_phi_q1_s_c_strict.json"
+ ],
+ "files": [
+  "files/apparatus.py",
+  "files/fieldnoise.py",
+  "files/fieldnoise_64.txt",
+  "files/log_scr64_plain_1.0_s0.txt",
+  "files/measure.py",
+  "files/mg_noise.py",
+  "files/noise_table.json",
+  "files/prep_s0.json",
+  "files/pulse_s0_phi_q1_s_c_strict.json",
+  "files/pulse_strict_log.txt",
+  "files/pulse_table.json",
+  "files/pulse_table.py",
+  "files/pulse_table.txt",
+  "files/pulse_view.py",
+  "files/pulse_view_s-centre-0.03_phi-bath-0.3.png",
+  "files/runpack.sh",
+  "files/screen64.log",
+  "files/screen64.sh",
+  "files/sheet_phys_0.3_s1.png",
+  "files/sheet_plain_0.1_s0.png"
+ ],
+ "compute": {
+  "cpu_minutes": 34
+ },
+ "notes": "Operator (c00) experiment for the PhySim eval-readiness line, with the independent checker's corrections applied (the s clip and the untested Marangoni pathway, q1 and phi pulse outcomes, spread ranges, the cargo radius, the unchecked q2 and c fields, the 64^2 fidelity). files/pulse_table.json folds in the raw pulse log and the strict re-runs; frames.npz are not committed. Compute covers the pulse map, strict re-runs, pulse snapshots, the 64^2 screens and the field-noise diagnostic; the 128^2 noise packs are counted in the companion positive."
+}

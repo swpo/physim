@@ -1,0 +1,62 @@
+{
+ "seed": 0,
+ "size": 128,
+ "t_prep": 300.0,
+ "n_bodies": 19,
+ "target_area": 51,
+ "median_area": 51.0,
+ "target_halfwidth": 2.24,
+ "bath_dist_to_body": 29.97,
+ "rim_dist_to_centre": 7.28,
+ "sites": {
+  "centre": [
+   118,
+   36
+  ],
+  "rim": [
+   111,
+   34
+  ],
+  "bath": [
+   126,
+   71
+  ],
+  "other": [
+   106,
+   108
+  ]
+ },
+ "levels": {
+  "phi": {
+   "inside_mean": 0.2935,
+   "outside_mean": -0.6547,
+   "max": 0.6079,
+   "min": -0.8647
+  },
+  "q1": {
+   "inside_mean": 0.0119,
+   "outside_mean": 0.0002,
+   "max": 0.5045,
+   "min": -0.5145
+  },
+  "q2": {
+   "inside_mean": 0.0054,
+   "outside_mean": 0.0002,
+   "max": 0.4279,
+   "min": -0.4581
+  },
+  "s": {
+   "inside_mean": 0.3173,
+   "outside_mean": 0.0363,
+   "max": 0.5886,
+   "min": 0.0
+  },
+  "c": {
+   "inside_mean": 0.558,
+   "outside_mean": 0.0819,
+   "max": 8.6362,
+   "min": 0.0018
+  },
+  "|v|max": null
+ }
+}

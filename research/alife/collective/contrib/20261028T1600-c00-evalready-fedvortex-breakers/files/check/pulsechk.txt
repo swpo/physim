@@ -1,0 +1,14 @@
+prep t 500.0 max|dom| vs battery prep 0.0 max|dY| 0.0 52s
+target pixels 61 bodies at prep 36
+t=2 site om -0.126 twin -0.184 | within 8px: neg px 56 pos px 0 (twin neg 61) | max|om| 0.218 Y_site 0.31 | bodies 36/36
+t=4 site om -0.068 twin -0.183 | within 8px: neg px 45 pos px 0 (twin neg 61) | max|om| 0.218 Y_site 0.38 | bodies 35/35
+t=6 site om -0.011 twin -0.180 | within 8px: neg px 24 pos px 0 (twin neg 59) | max|om| 0.218 Y_site 0.45 | bodies 35/35
+t=8 site om +0.037 twin -0.176 | within 8px: neg px 7 pos px 0 (twin neg 59) | max|om| 0.218 Y_site 0.51 | bodies 34/35
+t=10 site om +0.082 twin -0.168 | within 8px: neg px 0 pos px 6 (twin neg 60) | max|om| 0.217 Y_site 0.55 | bodies 35/35
+t=12 site om +0.135 twin -0.158 | within 8px: neg px 1 pos px 16 (twin neg 58) | max|om| 0.216 Y_site 0.55 | bodies 34/34
+t=14 site om +0.199 twin -0.144 | within 8px: neg px 1 pos px 20 (twin neg 60) | max|om| 0.214 Y_site 0.50 | bodies 35/35
+t=16 site om +0.262 twin -0.128 | within 8px: neg px 1 pos px 30 (twin neg 59) | max|om| 0.269 Y_site 0.39 | bodies 35/35
+t=18 site om +0.309 twin -0.109 | within 8px: neg px 2 pos px 35 (twin neg 58) | max|om| 0.324 Y_site 0.28 | bodies 35/35
+t=20 site om +0.334 twin -0.091 | within 8px: neg px 2 pos px 42 (twin neg 58) | max|om| 0.353 Y_site 0.20 | bodies 35/35
+t=20 changed px 474 max dist 42.5581946103594 total 56s
+EXIT 0

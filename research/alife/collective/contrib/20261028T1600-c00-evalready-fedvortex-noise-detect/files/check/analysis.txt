@@ -1,0 +1,18 @@
+B0.003 30 {'adv0': np.float64(3.25), 'fork': np.float64(173.04), 'dthalf': np.float64(0.97)}
+B0.003 100 {'adv0': np.float64(5.57), 'fork': np.float64(145.26), 'dthalf': np.float64(0.95)}
+B0.003 300 {'adv0': np.float64(2.45), 'fork': np.float64(44.28), 'dthalf': np.float64(1.19)}
+B0.003 native dev0 centre om < 0.06 first at t = [62, 66, 64, 68, 66, 70, 64, 62]
+B0.003 truth dev0 centre om < 0.06 first at t = [62, 66, 64, 70, 66, 66, 72, 68]
+B0.003 dthalf dev0 centre om < 0.06 first at t = [68, 62, 62, 64, 62, 62, 64, 66]
+B0.01 30 {'adv0': np.float64(2.09), 'fork': np.float64(98.3)}
+B0.01 100 {'adv0': np.float64(3.18), 'fork': np.float64(71.95)}
+B0.01 300 {'adv0': np.float64(2.36), 'fork': np.float64(35.1)}
+B0.01 native dev0 centre om < 0.06 first at t = [56, 68, 58, 72, 66, 86, 62, 58]
+B0.01 truth dev0 centre om < 0.06 first at t = [58, 60, 60, 92, 68, 68, 84, 76]
+A0_s0 smoothed(sigma2) bodies >=20px: mean 28.0 median peak 0.146
+B0.003_s0 smoothed(sigma2) bodies >=20px: mean 30.8 median peak 0.146
+B0.01_s0 smoothed(sigma2) bodies >=20px: mean 34.2 median peak 0.138
+B0.02_s0 smoothed(sigma2) bodies >=20px: mean 36.2 median peak 0.129
+B0.03_s0 smoothed(sigma2) bodies >=20px: mean 43.9 median peak 0.108
+A0.03_s0 smoothed(sigma2) bodies >=20px: mean 43.8 median peak 0.108
+B0.1_s0 smoothed(sigma2) bodies >=20px: mean 40.2 median peak 0.101

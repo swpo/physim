@@ -1,0 +1,57 @@
+{"case": "none", "a": 0.0, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.106, "s_max": 0.26, "c_in": 0.13, "c_out": 0.004}
+{"case": "add:phi", "a": 0.1, "blowup_t": null, "vmax": 2.141, "bodies": 14, "occ": 0.108, "Q_in": 0.289, "s_max": 0.43, "c_in": 0.23, "c_out": 0.087}
+{"case": "add:q1", "a": 0.1, "blowup_t": null, "vmax": 2.044, "bodies": 3, "occ": 0.019, "Q_in": 0.217, "s_max": 0.22, "c_in": 0.1, "c_out": 0.004}
+{"case": "add:s", "a": 0.1, "blowup_t": null, "vmax": 3.114, "bodies": 3, "occ": 0.015, "Q_in": 0.171, "s_max": 0.67, "c_in": 0.13, "c_out": 0.003}
+{"case": "add:c", "a": 0.1, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.106, "s_max": 0.26, "c_in": 0.22, "c_out": 0.126}
+{"case": "add:q1q2", "a": 0.1, "blowup_t": null, "vmax": 2.05, "bodies": 2, "occ": 0.015, "Q_in": 0.291, "s_max": 0.23, "c_in": 0.11, "c_out": 0.004}
+{"case": "cons:phi", "a": 0.1, "blowup_t": null, "vmax": 2.066, "bodies": 2, "occ": 0.025, "Q_in": 0.27, "s_max": 0.27, "c_in": 0.2, "c_out": 0.007}
+{"case": "mult:s", "a": 0.1, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.085, "s_max": 0.29, "c_in": 0.13, "c_out": 0.004}
+{"case": "mult:c", "a": 0.1, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.106, "s_max": 0.26, "c_in": 0.13, "c_out": 0.004}
+{"case": "add:phi", "a": 0.3, "blowup_t": null, "vmax": 2.781, "bodies": 16, "occ": 0.133, "Q_in": 0.259, "s_max": 0.74, "c_in": 0.23, "c_out": 0.183}
+{"case": "add:q1", "a": 0.3, "blowup_t": null, "vmax": 2.039, "bodies": 3, "occ": 0.016, "Q_in": 0.139, "s_max": 0.17, "c_in": 0.06, "c_out": 0.003}
+{"case": "add:s", "a": 0.3, "blowup_t": null, "vmax": 7.103, "bodies": 1, "occ": 0.001, "Q_in": 0.058, "s_max": 1.08, "c_in": 0.01, "c_out": 0.0}
+{"case": "add:c", "a": 0.3, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.106, "s_max": 0.26, "c_in": 0.49, "c_out": 0.374}
+{"case": "add:q1q2", "a": 0.3, "blowup_t": null, "vmax": 2.057, "bodies": 2, "occ": 0.007, "Q_in": 0.234, "s_max": 0.09, "c_in": 0.03, "c_out": 0.001}
+{"case": "cons:phi", "a": 0.3, "blowup_t": null, "vmax": 2.109, "bodies": 12, "occ": 0.076, "Q_in": 0.266, "s_max": 0.46, "c_in": 0.15, "c_out": 0.051}
+{"case": "mult:s", "a": 0.3, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.141, "s_max": 0.37, "c_in": 0.11, "c_out": 0.004}
+{"case": "mult:c", "a": 0.3, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.106, "s_max": 0.26, "c_in": 0.12, "c_out": 0.004}
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:89: RuntimeWarning: overflow encountered in exp
+  e = np.exp(P["kappa"] * sf); u = c * e
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:89: RuntimeWarning: invalid value encountered in multiply
+  e = np.exp(P["kappa"] * sf); u = c * e
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:93: RuntimeWarning: invalid value encountered in subtract
+  fl = -P["Dc"] * 2.0 / (e + ej) * (uj - u) / dx
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:93: RuntimeWarning: invalid value encountered in multiply
+  fl = -P["Dc"] * 2.0 / (e + ej) * (uj - u) / dx
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:89: RuntimeWarning: overflow encountered in multiply
+  e = np.exp(P["kappa"] * sf); u = c * e
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:107: RuntimeWarning: overflow encountered in multiply
+  fx = mu * px - P["zeta"] * (_d(Q1, kx) + _d(Q2, ky))
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:108: RuntimeWarning: overflow encountered in multiply
+  fy = mu * py - P["zeta"] * (_d(Q2, kx) - _d(Q1, ky))
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/fft/_pocketfft.py:101: RuntimeWarning: invalid value encountered in fft
+  return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+{"case": "add:phi", "a": 1.0, "blowup_t": 23.0, "vmax": 43.459}
+{"case": "add:q1", "a": 1.0, "blowup_t": null, "vmax": 2.024, "bodies": 2, "occ": 0.004, "Q_in": 0.453, "s_max": 0.06, "c_in": 0.02, "c_out": 0.0}
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/fieldnoise.py:36: RuntimeWarning: Mean of empty slice
+  r = dict(bodies=int(nb), occ=round(float(ins.mean()), 3), Q_in=round(float(np.hypot(s["q1"], s["q2"])[ins].mean()), 3),
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/fieldnoise.py:37: RuntimeWarning: Mean of empty slice
+  s_max=round(float(s["s"].max()), 2), c_in=round(float(s["c"][ins].mean()), 2), c_out=round(float(s["c"][~ins].mean()), 3))
+{"case": "add:s", "a": 1.0, "blowup_t": null, "vmax": 21.456, "bodies": 0, "occ": 0.0, "Q_in": NaN, "s_max": 3.35, "c_in": NaN, "c_out": 0.0}
+{"case": "add:c", "a": 1.0, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.106, "s_max": 0.26, "c_in": 1.44, "c_out": 1.244}
+{"case": "add:q1q2", "a": 1.0, "blowup_t": null, "vmax": 2.085, "bodies": 0, "occ": 0.0, "Q_in": NaN, "s_max": 0.0, "c_in": NaN, "c_out": 0.0}
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:105: RuntimeWarning: overflow encountered in power
+  mu = P["a"] * (phi ** 3 - phi) - P["k"] * ifft2(-k2 * Ph).real
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:128: RuntimeWarning: overflow encountered in power
+  nl = P["a"] * (phi ** 3 - phi) - P["S"] * phi
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/fft/_pocketfft.py:101: RuntimeWarning: overflow encountered in fft
+  return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:141: RuntimeWarning: overflow encountered in multiply
+  r1 = -(vx * _d(Q1, kx) + vy * _d(Q1, ky)) - 2 * om * q2 + P["lam_f"] * inside * Exx + P["G"] * bulk * q1
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:142: RuntimeWarning: overflow encountered in multiply
+  r2 = -(vx * _d(Q2, kx) + vy * _d(Q2, ky)) + 2 * om * q1 + P["lam_f"] * inside * Exy + P["G"] * bulk * q2
+{"case": "cons:phi", "a": 1.0, "blowup_t": 48.0, "vmax": 9.431632590374587e+85}
+{"case": "mult:s", "a": 1.0, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.017, "Q_in": 0.097, "s_max": 0.33, "c_in": 0.09, "c_out": 0.005}
+{"case": "mult:c", "a": 1.0, "blowup_t": null, "vmax": 2.046, "bodies": 3, "occ": 0.018, "Q_in": 0.106, "s_max": 0.26, "c_in": 0.1, "c_out": 0.004}

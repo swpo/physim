@@ -1,0 +1,46 @@
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:89: RuntimeWarning: overflow encountered in exp
+  e = np.exp(P["kappa"] * sf); u = c * e
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:89: RuntimeWarning: invalid value encountered in multiply
+  e = np.exp(P["kappa"] * sf); u = c * e
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:93: RuntimeWarning: invalid value encountered in subtract
+  fl = -P["Dc"] * 2.0 / (e + ej) * (uj - u) / dx
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:93: RuntimeWarning: invalid value encountered in multiply
+  fl = -P["Dc"] * 2.0 / (e + ej) * (uj - u) / dx
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:89: RuntimeWarning: overflow encountered in multiply
+  e = np.exp(P["kappa"] * sf); u = c * e
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:107: RuntimeWarning: overflow encountered in multiply
+  fx = mu * px - P["zeta"] * (_d(Q1, kx) + _d(Q2, ky))
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:108: RuntimeWarning: overflow encountered in multiply
+  fy = mu * py - P["zeta"] * (_d(Q2, kx) - _d(Q1, ky))
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/fft/_pocketfft.py:101: RuntimeWarning: invalid value encountered in fft
+  return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:141: RuntimeWarning: overflow encountered in multiply
+  r1 = -(vx * _d(Q1, kx) + vy * _d(Q1, ky)) - 2 * om * q2 + P["lam_f"] * inside * Exx + P["G"] * bulk * q1
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:142: RuntimeWarning: overflow encountered in multiply
+  r2 = -(vx * _d(Q2, kx) + vy * _d(Q2, ky)) + 2 * om * q1 + P["lam_f"] * inside * Exy + P["G"] * bulk * q2
+{"field": "phi", "site": "centre", "amp": 3.0, "sig": 2.0, "dur": 20, "blow_phi": 1e+30, "t20": {"blowup_at": 20.0}, "t50": {"blowup_at": 20.0}, "t100": {"blowup_at": 20.0}, "events": [], "twin_events": [[85.0, 1, 2]], "wall": 7.3}
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/fft/_pocketfft.py:101: RuntimeWarning: overflow encountered in fft
+  return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+{"field": "phi", "site": "rim", "amp": 3.0, "sig": 2.0, "dur": 20, "blow_phi": 1e+30, "t20": {"bodies": 19, "bodies_twin": 20, "target_desc": 1, "target_desc_twin": 1, "target_maxdesc": 1, "target_maxdesc_twin": 1, "body_at_site": true, "body_at_site_twin": false, "changed_px": 3715, "changed_rmax": 77.7, "area": 1903, "area_twin": 1082, "vmax_so_far": 5.524, "d_phi": 224.0, "r90_phi": 56.1, "d_q1": 232.0, "r90_q1": 54.7, "d_q2": 391.0, "r90_q2": 43.2, "d_s": 469.0, "r90_s": 41.9, "d_c": 181.0, "r90_c": 70.0, "dmax_phi": 2.781}, "t50": {"blowup_at": 25.0}, "t100": {"blowup_at": 25.0}, "events": [], "twin_events": [[85.0, 1, 2]], "wall": 9.1}
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:105: RuntimeWarning: overflow encountered in power
+  mu = P["a"] * (phi ** 3 - phi) - P["k"] * ifft2(-k2 * Ph).real
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:111: RuntimeWarning: overflow encountered in multiply
+  g = np.sqrt(px * px + py * py); nx, ny = px / (g + 1e-6), py / (g + 1e-6)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:113: RuntimeWarning: invalid value encountered in subtract
+  fx = fx - P["mar"] * g * (sx - nx * sn)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:114: RuntimeWarning: invalid value encountered in subtract
+  fy = fy - P["mar"] * g * (sy - ny * sn)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:128: RuntimeWarning: overflow encountered in power
+  nl = P["a"] * (phi ** 3 - phi) - P["S"] * phi
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:139: RuntimeWarning: overflow encountered in multiply
+  QQ = q1 * q1 + q2 * q2
+{"field": "phi", "site": "bath", "amp": 3.0, "sig": 2.0, "dur": 20, "blow_phi": 1e+30, "t20": {"bodies": 21, "bodies_twin": 20, "target_desc": 1, "target_desc_twin": 1, "target_maxdesc": 1, "target_maxdesc_twin": 1, "body_at_site": true, "body_at_site_twin": false, "changed_px": 3447, "changed_rmax": 83.6, "area": 1925, "area_twin": 1082, "vmax_so_far": 7.9, "d_phi": 223.0, "r90_phi": 47.0, "d_q1": 285.0, "r90_q1": 40.3, "d_q2": 412.0, "r90_q2": 42.4, "d_s": 410.0, "r90_s": 39.1, "d_c": 168.0, "r90_c": 73.1, "dmax_phi": 2.894}, "t50": {"blowup_at": 25.0}, "t100": {"blowup_at": 25.0}, "events": [], "twin_events": [[85.0, 1, 2]], "wall": 8.8}
+{"field": "s", "site": "centre", "amp": 3.0, "sig": 2.0, "dur": 20, "blow_phi": 1e+30, "t20": {"blowup_at": 5.0}, "t50": {"blowup_at": 5.0}, "t100": {"blowup_at": 5.0}, "events": [[2.5, 1, 0]], "twin_events": [[85.0, 1, 2]], "wall": 1.9}
+{"field": "s", "site": "rim", "amp": 3.0, "sig": 2.0, "dur": 20, "blow_phi": 1e+30, "t20": {"blowup_at": 2.5}, "t50": {"blowup_at": 2.5}, "t100": {"blowup_at": 2.5}, "events": [], "twin_events": [[85.0, 1, 2]], "wall": 0.8}
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:111: RuntimeWarning: overflow encountered in add
+  g = np.sqrt(px * px + py * py); nx, ny = px / (g + 1e-6), py / (g + 1e-6)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:113: RuntimeWarning: overflow encountered in multiply
+  fx = fx - P["mar"] * g * (sx - nx * sn)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:114: RuntimeWarning: overflow encountered in multiply
+  fy = fy - P["mar"] * g * (sy - ny * sn)
+{"field": "s", "site": "bath", "amp": 3.0, "sig": 2.0, "dur": 20, "blow_phi": 1e+30, "t20": {"bodies": 20, "bodies_twin": 20, "target_desc": 1, "target_desc_twin": 1, "target_maxdesc": 1, "target_maxdesc_twin": 1, "body_at_site": false, "body_at_site_twin": false, "changed_px": 0, "changed_rmax": 0.0, "area": 1085, "area_twin": 1082, "vmax_so_far": 0.862, "d_phi": 3.14, "r90_phi": 61.6, "d_q1": 3.51, "r90_q1": 48.1, "d_q2": 4.35, "r90_q2": 64.6, "d_s": 918.0, "r90_s": 5.1, "d_c": 13.9, "r90_c": 63.3, "dmax_phi": 0.078}, "t50": {"bodies": 20, "bodies_twin": 21, "target_desc": 1, "target_desc_twin": 1, "target_maxdesc": 1, "target_maxdesc_twin": 1, "body_at_site": false, "body_at_site_twin": false, "changed_px": 1716, "changed_rmax": 82.1, "area": 1215, "area_twin": 1207, "vmax_so_far": 5.992, "d_phi": 91.6, "r90_phi": 62.4, "d_q1": 85.6, "r90_q1": 62.3, "d_q2": 134.0, "r90_q2": 63.4, "d_s": 269.0, "r90_s": 40.0, "d_c": 172.0, "r90_c": 74.6, "dmax_phi": 1.212}, "t100": {"blowup_at": 55.0}, "events": [], "twin_events": [[85.0, 1, 2]], "wall": 20.6}

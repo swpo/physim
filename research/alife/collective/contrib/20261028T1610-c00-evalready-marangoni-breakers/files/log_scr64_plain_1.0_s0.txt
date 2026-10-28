@@ -1,0 +1,33 @@
+[active-nematic-marangoni-noise] seed 0: 100 frames x 100 steps, grid (64, 64)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:89: RuntimeWarning: overflow encountered in exp
+  e = np.exp(P["kappa"] * sf); u = c * e
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:93: RuntimeWarning: invalid value encountered in subtract
+  fl = -P["Dc"] * 2.0 / (e + ej) * (uj - u) / dx
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:93: RuntimeWarning: invalid value encountered in multiply
+  fl = -P["Dc"] * 2.0 / (e + ej) * (uj - u) / dx
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:105: RuntimeWarning: overflow encountered in power
+  mu = P["a"] * (phi ** 3 - phi) - P["k"] * ifft2(-k2 * Ph).real
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/fft/_pocketfft.py:101: RuntimeWarning: invalid value encountered in fft
+  return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:128: RuntimeWarning: overflow encountered in power
+  nl = P["a"] * (phi ** 3 - phi) - P["S"] * phi
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:139: RuntimeWarning: overflow encountered in multiply
+  QQ = q1 * q1 + q2 * q2
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:139: RuntimeWarning: overflow encountered in add
+  QQ = q1 * q1 + q2 * q2
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:141: RuntimeWarning: overflow encountered in multiply
+  r1 = -(vx * _d(Q1, kx) + vy * _d(Q1, ky)) - 2 * om * q2 + P["lam_f"] * inside * Exx + P["G"] * bulk * q1
+/home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py:142: RuntimeWarning: overflow encountered in multiply
+  r2 = -(vx * _d(Q2, kx) + vy * _d(Q2, ky)) + 2 * om * q1 + P["lam_f"] * inside * Exy + P["G"] * bulk * q2
+non-finite fields at frame 1
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/measure.py", line 11, in <module>
+    m = json.loads((d / "metrics.json").read_text())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/packs/scr64_plain_1.0_s0/metrics.json'

@@ -1,0 +1,67 @@
+{
+ "id": "20261028T1600-c00-evalready-fedvortex-noise-detect",
+ "kind": "finding",
+ "mode": "control",
+ "created": "2026-10-28T16:00:00Z",
+ "title": "c53's fed vortices under a PhySim-style apparatus: vortex division survives dynamics noise of sd 0.01 per sqrt(t) on vorticity whether the fuel noise is additive or proportional (persistent splits 13/19 and 9/16 against 10/16), and two probe arrays like PhySim's tell the world from its no-advection twin by an energy-score ratio of 2.1-5.6x within 30-300 t, but through vortex motion, not division",
+ "summary": "Eval-readiness battery, second world (pilot: 20261028T1330-c00-evalready-pm-noise-detect). Question: does c53's fed-vortex world keep its behaviour under the dynamics noise a PhySim evaluation needs, and can PhySim-style probe arrays see its deciding ablations? World: 20261027T0712-c53-fed-vortex-claim, unchanged (2D periodic vorticity-streamfunction fluid, 128^2, dx 1, dt 0.02; fields om, signed vorticity, and Y, fuel; bodies are |om| > 0.06). Noise is added by a wrapper (files/fv_noise.py) before every step as a white per-pixel kick of sd x sqrt(dt), so sd is per sqrt(t), PhySim's convention. Forms: A additive on om and Y; B additive on om, proportional on Y; F additive on Y only; G proportional on Y only.\n\n**Noise dose-response (labkit packs, T=1200, seeds 0/1; files/noise_battery.json, built by files/summarize.py from the packs and the claim's splits.py).** T=1200 rather than the claim's 3000, so generation reaches 3-4 at baseline, not 9-10; compare within this table.\n- Baseline (same code path, sd 0): persistent splits 10/16, max generation 3/4, merges 26/32, nucleations 0/0; every daughter has its parent's sign (10/10, 16/16). files/sheet_baseline_s0.png: about 30 smooth elliptical vortices of both signs, with rods, on fuel.\n- sd 0.003: A 9/16 persistent splits, generation 2/4, merges 18/33; B 8/20, generation 3/5, merges 23/41; no nucleations.\n- sd 0.01: A 13/19, generation 3/5, merges 64/76 (2.4-2.5x baseline), opposite-sign merges 8/3, nucleations 1/0. B 9/16, generation 2/4, merges 55/62 (1.9-2.1x). In both forms every daughter has its parent's sign. files/sheet_B0.01_s0.png: discrete vortices of both signs with grainy edges; rods still form.\n- Independent check (files/check/: fresh seed 2, the checker's own wrapper, noise added after each step): sd 0 gives 19 persistent splits, generation 4, merges 40; B 0.01 gives 15, generation 3, merges 65 (1.6x), nucleations 0, 15/15 daughters of the parent's sign.\n- At 0.02 the behaviour is degraded and at 0.03 and above destroyed, in both forms: see 20261028T1600-c00-evalready-fedvortex-breakers. A and B gave matching results at every level tested (0.003-0.1).\n- Why the fuel form does not matter here: at A and B <= 0.03 the fuel minimum over the run is 0.12-0.14 (files/fuel_min.txt) against per-step kicks <= 0.004, so clipping at zero cannot act (in phase_membrane, plain additive noise on clipped concentrations acted as a source). Fuel-only noise on seed 0: F 0.1 gives 10 persistent splits and G 0.3 gives 12 (baseline 10).\n\n**Detectability (files/apparatus.py detect, scored by files/apparatus.py detect_score and files/score_extra.py).** One prepared state (seed 0, t=500, reached without noise: 36 bodies, 17 positive, median area 61 px; files/prep_s0.json), with 1 PhySim world unit = 1 px. Two probe arrays shaped like PhySim's devices: a 13-node square lattice at spacing 3 px centred on a positive body (it covers about one body) and a 19-node hex lattice at spacing 6 px on the largest other body, reading om and Y bilinearly, plus the global mean and variance of om and Y, every 2 t; no injections. Eight members per arm under noise B. The native ensemble forecasts an independent native truth ensemble and each arm's ensemble branched from the same state; features standardized by the native ensemble's std. Energy-score ratio (arm / native truth), all features, at 30 / 100 / 300 t (files/detect_s0_B0.003.json, files/detect_s0_B0.01.json):\n- No-advection twin (adv 0, the claim's bd_control): 3.25 / 5.57 / 2.45 at sd 0.003 and 2.09 / 3.18 / 2.36 at sd 0.01. Single feature groups run 1.2-9.1, some unresolved (device0 alone at 300 t, sd 0.003: 1.53; the global sensor alone at 30 t, sd 0.01: 1.19). The separation comes almost entirely from motion: the probed vortex leaves device0's centre node (om < 0.06) at t=62-70 in the native members and t=62-72 in the truth members, and never under adv0, where device0's fuel stays at 0.27-0.4 instead of rising to about 0.8 (files/detect_traces_B0.003.png; files/check/analysis.txt). The battery does not show that probe forecasts are sensitive to the claimed division.\n- Fuel fork (fuel emptied and regrowth off at the window start, the claim's E control): 173 / 145 / 44 at sd 0.003 and 98 / 72 / 35 at sd 0.01. Fuel is zeroed at the first step, so every probe reads Y = 0 from t=2: the ratio reflects an instantaneous change of state that any predictor reading Y detects. Whether the eval discriminates the E dynamics is untested (kF0, regrowth off only, was not run).\n- Numerical null (dt halved to 0.01): 0.97 / 0.95 / 1.19 at sd 0.003. Native/truth swap null: 0.63-1.12 at sd 0.003 and 0.75-1.06 at sd 0.01 (files/detect_ci_s0_B0.003.json, files/detect_ci_s0_B0.01.json).\n- Of the three windows tried, adv0 is separated best at 100 t and less at 300 t, as native members decorrelate (native spread 1.3 standardized units at t=2, 5.6-5.8 at t=212-242, sd 0.003). Longer windows were not tried.",
+ "limits": "- One world at one parameter point. The detectability test uses one seed, one prepared state (seed 0, t=500, reached without noise), one probe placement (both devices on bodies, at dilation 1 only; PhySim's agent can move and dilate its devices), 8 members, two noise levels and three windows (30/100/300 t); the results are specific to that placement. The noise battery uses 2 seeds (F and G: seed 0 only) at T=1200; one case (B 0.01) was re-run independently on seed 2.\n- The ablations start from the native prepared state and diverge over the window, so the ratios measure how fast each change shows in the probes, not how well a trained predictor would do.\n- Neither deciding ablation tests division. adv0 removes motion and sustained division together (in the claim's own pack_noadv, spots split during pattern formation and then freeze into a lattice), and no arm removes division while keeping motion. Division is rare inside the windows: 8 persistent splits after t=300 per 900 t in the whole box at baseline, about 2-3 per 300 t window box-wide, probably none at the probes. The fork changes the state, not the dynamics. The dynamics-only E control (kF0, regrowth off) is defined in files/apparatus.py but was not run. Before claiming that an eval on this world tests the division claim, it needs a division-specific ablation and the kF0 run.\n- Null bands: the swap null (truth ensemble as forecast, native as truth) has the same forecast-truth distances as the base score (the matrix is transposed), so its span reflects only the spread term; the dt-halved null's resampled upper bound reaches 1.83 at 300 t (2.26 for device0 alone). Ratios below about 1.5 at <= 100 t, and below about 2 at 300 t, are not distinguishable.\n- The resampled intervals in files/detect_ci_*.json (2000 resamples over forecast and truth members) are biased toward 1, because resampling forecast members with replacement puts zero self-distances into the spread term; in 4 fork cases the point estimate lies outside its own interval. They are not valid 5-95% intervals and are not quoted here.\n- Energy scores use features standardized by the native ensemble's std, pooled over all readout times, not PhySim's score groups; only ratios are meaningful.\n- Noise is white per pixel, as in PhySim's worlds; spatially correlated forcing was not tried. Proportional noise on fuel is one physical choice; demographic (sqrt) noise was not tried.\n- The wrapper forces FFT workers to 1. Its reported bitwise agreement with the base world over 200 steps was not saved and cannot be checked, and the baseline was not compared with the claim's packs (run with 2 workers); compare within this table.\n- I looked at the baseline and B 0.01 sheets and the probe traces; the other noise levels are judged by their numbers here and by their sheets in the companion negative.",
+ "parents": [
+  "20261027T0712-c53-fed-vortex-claim",
+  "20261028T1330-c00-evalready-pm-noise-detect"
+ ],
+ "class": "fed-vortex",
+ "world": "research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py",
+ "finding": {
+  "operator": "robustness of vortex division to dynamics noise of several forms, and visibility of the claim's deciding ablations (no-advection twin, fuel fork) to PhySim-style probe arrays",
+  "capability": "D",
+  "world": "research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "labkit packs (T=1200) on seeds 0/1 at sd 0, 0.003 and 0.01 for additive om + Y (A) and additive om + proportional Y (B), fuel-only F 0.1 and G 0.3 on seed 0, an independent re-run of B 0.01 on seed 2; 8-member ensembles from a t=500 state under B 0.003 and 0.01, native vs adv 0, fuel fork and dt halved, probe arrays of 13 and 19 nodes plus global mean/variance",
+  "result": "division survives sd 0.01 in both forms (persistent splits 13/19 and 9/16 against 10/16; seed 2: 15 against 19) with merges up 1.6-2.5x; energy-score ratio against native truth, all features, within 30-300 t: 2.1-5.6x for adv 0 (from vortex motion, not division) and 35-173x for the fork (a change of state); dt-halved null 0.95-1.19"
+ },
+ "outcome": "positive",
+ "implications": "For PhySim evaluations of collective worlds: (1) here, unlike phase_membrane, the fuel noise form does not matter below the destructive range, because fuel stays far from its clip at zero; the limit is set by the vorticity noise and the window is narrow (intact at 0.01, destroyed at 0.03; companion negative), so additive om with proportional Y at 0.003-0.01 per sqrt(t) is the setting to declare; (2) with that noise member spread is nonzero and the dt-halved null scores 0.95-1.19, so the energy score has something to calibrate against; (3) plain probe readouts separate both of the claim's deciding ablations, but through signals unrelated to division (motion for adv 0, an emptied field for the fork). An ablation used to show that an eval tests a capability must remove that capability while keeping the rest of the dynamics, which neither control does here. Next: the kF0 arm and a division-specific ablation on this world; then a world contract (declared noise form, port maps, amplitude ranges, steps per tick).",
+ "evidence": [
+  "files/sheet_baseline_s0.png",
+  "files/sheet_B0.01_s0.png",
+  "files/detect_traces_B0.003.png",
+  "files/noise_battery.json",
+  "files/detect_s0_B0.003.json",
+  "files/detect_s0_B0.01.json",
+  "files/detect_ci_s0_B0.003.json",
+  "files/detect_ci_s0_B0.01.json"
+ ],
+ "files": [
+  "files/apparatus.py",
+  "files/check/FACTS_B0.01_s2.md",
+  "files/check/FACTS_base_s2.md",
+  "files/check/analysis.py",
+  "files/check/analysis.txt",
+  "files/check/fvchk.py",
+  "files/check/splits_B0.01_s2.txt",
+  "files/check/splits_base_s2.txt",
+  "files/detect_ci_s0_B0.003.json",
+  "files/detect_ci_s0_B0.01.json",
+  "files/detect_s0_B0.003.json",
+  "files/detect_s0_B0.01.json",
+  "files/detect_traces_B0.003.png",
+  "files/fuel_min.py",
+  "files/fuel_min.txt",
+  "files/fv_noise.py",
+  "files/noise_battery.json",
+  "files/prep_s0.json",
+  "files/run_detect.sh",
+  "files/score_extra.py",
+  "files/sheet_B0.01_s0.png",
+  "files/sheet_baseline_s0.png",
+  "files/summarize.py",
+  "files/sweep.sh",
+  "files/viz.py"
+ ],
+ "compute": {
+  "cpu_minutes": 90
+ },
+ "notes": "Operator (c00) experiment for the PhySim eval-readiness line. The battery was run by one agent and reviewed by an independent checker, who recomputed the energy-score ratios from the saved ensembles and re-ran B 0.01 on seed 2; the checker's corrections are applied here and its scripts and outputs are in files/check/. CPU time is estimated from the wall times of single-threaded processes. Packs, frames and ensembles (frames.npz, ens_*.npy) are not committed; they regenerate from files/sweep.sh and files/run_detect.sh."
+}

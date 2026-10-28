@@ -1,0 +1,63 @@
+{
+ "id": "20261028T1600-c00-evalready-fedvortex-breakers",
+ "kind": "finding",
+ "mode": "control",
+ "created": "2026-10-28T16:00:00Z",
+ "title": "Negative: what breaks c53's fed vortices under an evaluation setup. Vorticity noise of sd 0.03 per sqrt(t) destroys the vortices in both fuel-noise forms on 2/2 seeds (continual nucleation, no smooth bodies; degraded already at 0.02); vorticity pulses of amplitude 1.5-3 per t for 20 t, inside PhySim's range, make the fields non-finite; PhySim's non-negative amplitudes make the vorticity port one-signed (it kills or flips negative vortices) and box-wide; and pulses of 0.003, fuel pulses up to 0.03 and fuel into empty space up to 0.3 are absorbed",
+ "summary": "**Noise that destroys the behaviour.** Same wrapper, noise forms and baseline as 20261028T1600-c00-evalready-fedvortex-noise-detect (labkit packs, T=1200, seeds 0/1; files/noise_battery.json). Baseline sd 0: persistent splits 10/16, merges 26/32, nucleations 0/0, mean body count over the second half 28.5/33.5.\n- B (additive om, proportional Y) at sd 0.02, degraded: 39.7/38.1 bodies, persistent splits 13/15, generation 3/6, but merges 278/284 (8.9-10.7x baseline), nucleations 37/30, opposite-sign merges 14/8, mean fuel 0.63. files/sheet_B0.02_s0.png: ragged, speckled bodies and chains on a grainy background. Splitting continues, so 'degraded' is a judgement call.\n- A (additive om and Y) and B at 0.03, destroyed: about 70 components, nucleations 1336-1419, persistent splits 1-4, generation 1-2, mean fuel 0.55. files/sheet_B0.03_s0.png: no smooth vortices, only ragged speckled patches of both signs. This is not just a segmentation artefact: on the signed field smoothed by 2 px, B 0.03 has 44 blobs of median peak 0.108, closer to B 0.1 (40, 0.101) than to the baseline (28, 0.146) (files/check/analysis.txt).\n- A and B at 0.1: one percolating component (occupancy 0.88), no splits, mean fuel 0.20; pixel noise everywhere.\n- Calibration runs from the initial state (400 t, seed 0; files/calibA.txt, files/calibB.txt): A at 1.0 went non-finite by t=100; B at 1.0 stayed finite but noise-dominated (sd of om about 0.97).\n- The window from intact (0.01) to destroyed (0.03) is a factor of 3 and is set by the vorticity noise: A and B agree at every level up to 0.1.\n- Fuel-only additive noise (F, seed 0) degrades the world at 0.3: second-half bodies 21.7 against 28.5, persistent splits 5 against 10, generation 1, mean fuel up to 0.752. Fuel reaches about 0 there (rendered minimum 0.0009; 38 pixels below 0.01 in 34 of 120 frames; files/fuel_min.txt), as it does in A 0.1 (0.004). A negative fuel value after a kick is reset to about 0 inside the step (eat = min(e Y s om^2, Y/dt) becomes Y/dt when Y < 0, then the clip at 0), which makes a rectified source, the pilot's mechanism. It plausibly contributes and fits the rise in mean fuel, but was not established. F at 0.1 and proportional fuel noise (G) at 0.3 had no effect.\n\n**PhySim-style pulses (files/apparatus.py pulse; files/pulse_s0_dur20_om.json, files/pulse_s0_dur20_Y.json, files/blowup_om_empty.json).** From the seed-0 state at t=500 (no noise; files/prep_s0.json): a Gaussian source amp x exp(-r^2/2 sigma^2), sigma 2 px, per time unit for 20 t, into om at a positive and a negative body's centre and rim, into Y at the positive body's centre and rim, and into either at the empty point farthest from any body (18 px away); compared with the uninjected twin at t=20, 50, 100 and 200; amplitudes 0.003, 0.03, 0.3 and 3 per t, with 1 world unit = 1 px. PhySim allows amplitudes in [0, 3] per t for up to 50 t.\n- Non-finite fields: vorticity at amp 3 (peak 60 added) blows up at all 5 sites before t=20. At the empty site amp 1.0 stays finite through 50 t (u_max 6.9, CFL 0.14), amp 1.5 goes non-finite at t=18.5, 2.0 at t=13.5 and 3.0 at t=9.0. So at gain 1, amp >= 1.5, at least the top half of PhySim's range, went non-finite for 20 t pulses; the threshold between 1.0 and 1.5 is not resolved and 50 t pulses were not tried. Fuel pulses up to amp 3 x 20 t stayed finite (50 t untested); at amp 3 the target is boosted to |om| 1.08 (u_max 1.7).\n- One-signed vorticity port: PhySim's amplitudes are non-negative, so the port only adds positive vorticity. At amp 0.03 (peak 0.6) a negative vortex injected at its centre is killed at t=8 and replaced by a positive one (reproduced independently: site om +0.334 against -0.091 in the twin at t=20; files/check/pulsechk.txt); injected at its rim it is killed at t=46. In empty space a positive body is created and persists to t=200; positive bodies are boosted to |om| 0.33-0.34 and relax by t=50. At 0.3 a super-vortex forms (|om| 1.8-2.0, u_max 2.2-2.4) and a negative target hit at its centre or rim dies by t=2. files/pulse_snapshots.png.\n- Box-wide vorticity port: the injected vortex's induced flow displaces every vortex. By t=20 the difference (|d om| > 0.03) reaches 32-43 px and touches 9-14 bodies at amp 0.03, and 77-79 px (the whole box) and 32-35 of 35 bodies at 0.3.\n\n**Pulses and ports that do nothing.**\n- Both ports at amp 0.003 (peak 0.06) are absorbed: at the positive body centre the site reads +0.21 against +0.19 in the twin and no pixel differs by more than 0.03 at t=20 or t=50; in empty space none does until t=200.\n- Fuel at 0.03 is absorbed at every site (at most 2-12 px changed, within 4 px of the site, at t=20).\n- Fuel into empty space is absorbed up to 0.3 (fuel 2.2 at t=20; the first vorticity difference, 80 px, at t=200). At amp 3 no body is created (fuel 13.6 at t=20 with no vorticity to ignite), but the fuel diffuses into neighbouring bodies within about 50 t and the difference is box-wide by 100-200 t (984 px out to 69 px, 21 bodies, at t=100).\n- No pulse triggered a division attributable within 200 t, and fuel pulses never created or killed a body.\n- Velocity and streamfunction are recomputed from om every step, so as drive ports they would only be om sources; the mean of om does not move the flow (the k=0 mode is dropped from the Poisson solve).\n- Chaos limits every comparison with the twin: any pulse that touches a body makes the difference domain-wide within 100-200 t (om 0.003 at the positive centre: 142 px out to 36 px, 8 bodies, at t=100; 2006 px out to 78 px, 27 of 30 bodies, at t=200), while amp 1e-6 in empty space stays at an L2 difference of 3e-5 (t=20) to 1.2e-4 (t=200).",
+ "limits": "- One world at one parameter point. Pulses: one prepared state (seed 0, t=500, no noise), one duration (20 t; PhySim allows 50), one width (sigma 2 px) and a 200 t follow-up; the blow-up threshold was found at the empty site only. Noise: 2 seeds (F: seed 0 only), T=1200, white per-pixel noise only.\n- Pulse outcome classes come from a periodic labeller (threshold 0.06, no blur, min area 6 px) and an overlap tracker checked every 2 t; without blur its body counts differ slightly from labkit's (35 against 36 at the prepared state). In the fuel amp-3 rim case the target is counted as 2 parts from about t=160, 140 t after the pulse in an already diverged trajectory; that is not counted as a triggered division.\n- At sd >= 0.02 labkit partly counts noise speckle as nucleations and fragments (6444-6503 tracks and no persistent one at B 0.03), so the 'destroyed' calls rest on the sheets and the smoothed count as well as the numbers; 'degraded' at 0.02 is a judgement call (the sheets still show about 38 discrete bodies and splitting continues).\n- Where the explicit step first fails was not traced; amp 1.0 reaches u_max 6.9 (CFL 0.14) and stays finite.\n- The mechanism of the F 0.3 degradation was not established.\n- The calibration runs start from the world's initial state, not the prepared one, and ran 400 t on seed 0.\n- Amplitudes are in this world's units at 1 world unit = 1 px; the mapping to PhySim's units (a port gain) is a choice of the world contract.\n- I looked at the B 0.02 and B 0.03 sheets and files/pulse_snapshots.png; the other pulse outcomes are numbers, not images.",
+ "parents": [
+  "20261028T1600-c00-evalready-fedvortex-noise-detect"
+ ],
+ "class": "fed-vortex",
+ "world": "research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py",
+ "finding": {
+  "operator": "dynamics noise on vorticity at sd 0.02-0.1 per sqrt(t) and fuel-only noise; Gaussian source injections of PhySim-range amplitude into vorticity and fuel",
+  "capability": "D",
+  "world": "research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "labkit packs (T=1200) on seeds 0/1 at sd 0.02 (B), 0.03 and 0.1 (A and B) against sd 0, fuel-only F 0.3 on seed 0, 400 t calibration runs at 0.3 and 1.0; 33 pulse cases (om at 5 sites and Y at 3 sites, amplitudes 0.003-3 per t for 20 t, plus a 1e-6 chaos control) against the uninjected twin, and a blow-up threshold run at amplitudes 1-3 at the empty site",
+  "result": "vorticity noise of sd 0.03 destroys the vortices in both fuel forms (nucleations 1336-1419, persistent splits 1-4 against 10/16) and 0.02 degrades them (merges 8.9-10.7x); vorticity pulses of amp >= 1.5 for 20 t go non-finite (1.0 stays finite); a 0.03 vorticity pulse kills or flips a negative vortex and changes the field 32-43 px away within 20 t; pulses of 0.003 and fuel pulses <= 0.03 are absorbed; no pulse triggered a division"
+ },
+ "outcome": "negative",
+ "implications": "A world contract for this world in PhySim must (1) map the vorticity port with a gain of at most about 0.03 (PhySim amp 3 -> 0.09 per t, below the 0.3 per t that stayed finite for 20 t; 50 t untested), or bound the injected field, since at gain 1 at least the top half of the range goes non-finite; (2) offer signed vorticity amplitudes or two ports (+ and -), since non-negative amplitudes can only strengthen positive vortices and kill or flip negative ones; (3) declare that a vorticity injection acts box-wide through the induced flow, and that only om and Y are drive ports; (4) keep dynamics noise on vorticity at or below 0.01 per sqrt(t); (5) score pulse responses within about 50-100 t, before mutual-advection chaos makes every twin difference domain-wide. Fuel is the safer port: a gain of about 0.1 keeps PhySim's range in the feeding regime (tested for 20 t pulses). As in phase_membrane, calibrating the apparatus to Blobkit's scale breaks the world at the top of PhySim's amplitude range, here for the vorticity port only.",
+ "evidence": [
+  "files/sheet_B0.03_s0.png",
+  "files/sheet_B0.02_s0.png",
+  "files/pulse_snapshots.png",
+  "files/noise_battery.json",
+  "files/pulse_s0_dur20_om.json",
+  "files/pulse_s0_dur20_Y.json",
+  "files/blowup_om_empty.json"
+ ],
+ "files": [
+  "files/apparatus.py",
+  "files/blowup_om_empty.json",
+  "files/calib.py",
+  "files/calibA.txt",
+  "files/calibB.txt",
+  "files/check/analysis.py",
+  "files/check/analysis.txt",
+  "files/check/pulsechk.py",
+  "files/check/pulsechk.txt",
+  "files/fuel_min.py",
+  "files/fuel_min.txt",
+  "files/fv_noise.py",
+  "files/noise_battery.json",
+  "files/prep_s0.json",
+  "files/pulse_s0_dur20_Y.json",
+  "files/pulse_s0_dur20_om.json",
+  "files/pulse_snapshots.png",
+  "files/pulse_table.py",
+  "files/sheet_B0.02_s0.png",
+  "files/sheet_B0.03_s0.png",
+  "files/summarize.py",
+  "files/sweep.sh",
+  "files/viz.py"
+ ],
+ "compute": {
+  "cpu_minutes": 50
+ },
+ "notes": "Operator (c00) experiment for the PhySim eval-readiness line. The battery was run by one agent and reviewed by an independent checker, who regenerated the prepared state (identical to the battery's) and re-ran the negative-centre pulse; the checker's corrections are applied here and its scripts and outputs are in files/check/. CPU time is estimated from the wall times of single-threaded processes. Packs and frames (frames.npz) are not committed; they regenerate from files/sweep.sh."
+}
