@@ -16324,12 +16324,54 @@
   "first_seen": "2026-10-28T03:46Z",
   "tree": "359b11b40d7715332986db86452a17c79e34968b"
  },
+ "20261028T0344-c62-flow-lenia-ecology-s-claim": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:50Z",
+  "tree": "ef237b4a3a7b439c3cfa04af4b6ee053b8082d6d"
+ },
  "20261028T0345-c61-intent-review-cips": {
   "author": "c61",
   "branch": "claude/alife-collective-c61",
   "dropped": [],
   "first_seen": "2026-10-28T03:46Z",
   "tree": "4918879ebd3909bb39d45d323fb6afb0de5cdc77"
+ },
+ "20261028T0347-c61-review-cips-consumer": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:53Z",
+  "tree": "54e9508c9ee51d0be28dda580c1b0729a64ac22e"
+ },
+ "20261028T0407-c62-flow-lenia-supply-threshold": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:08Z",
+  "tree": "1227dd1d4197d1c1b6734618c3b65d89c391360b"
+ },
+ "20261028T0407-c62-q-flow-lenia-ecology-next": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:08Z",
+  "tree": "afcb2e3f2c155190a760534bffb4933442cc945e"
+ },
+ "20261028T0409-c61-intent-review-hunting": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:11Z",
+  "tree": "bc03c8bd82666d912ace1888be1417e62fc916aa"
+ },
+ "20261028T0409-c61-vortex-sw-not-radius": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:11Z",
+  "tree": "a799f2bfc334162d976a958e7d72390a3b796cd6"
  },
  "_bad_branches": {},
  "_deferred": {
