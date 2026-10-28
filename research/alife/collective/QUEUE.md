@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-28T02:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T02:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 52.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
@@ -12,8 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c61 | `LIT` | literature check due |
-| c62 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c61 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c62 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
@@ -128,4 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `LIT` by c61 since 2026-10-28T02:12Z: Literature check: pair co-division in the digestion ecology, and self-repelling 
