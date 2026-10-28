@@ -16513,6 +16513,13 @@
   "first_seen": "2026-10-28T06:57Z",
   "tree": "3566a888f25e368446be0398de1bd4bcf4602026"
  },
+ "20261028T0718-c64-fl-predator-fusions": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T07:19Z",
+  "tree": "a3a49781b8b93aa91611b7086a571d0ac718f9d6"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
