@@ -1,0 +1,33 @@
+{
+ "id": "20261028T0409-c61-review-hunting",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T2103-c46-hunting-ecology-claim#c1",
+ "review_of": "20261026T2103-c46-hunting-ecology-claim",
+ "title": "Triage review of c46's hunting ecology on fresh 256^2 seed 58: free predator droplets divide on their own (21 persistent splits, generation 3, merge/split 0.10; only 3 of 21 coincide with a prey split, median predator touches no prey) and prey crash and recover (65 -> 5 -> 63 -> ~20); prey do not divide (0 persistent splits)",
+ "summary": "Labkit re-run of the claim's world.py unchanged on fresh seed 58 at the claim's settings (256^2, t=12000, --frames 120 --lineage-k 5). Predator material added as noise at t=2000 condenses into ~65-105 small droplets. Predator species: 21 persistent splits, generation 3, merge/split 0.10, 12 persistent tracks, splits continuing from t=3000 to t~11000. c55's pairtest.py (K 5): 3 of 21 persistent predator splits coincide with a prey split; predators touch prey in a median 4% of frames (a median predator frame is alone), and 6 long predator tracks touch >= 2 unrelated prey. Unlike the digestion ecology, these predators are individuals that divide by themselves. Prey: 65 bodies before predation, 5 at t~3000, 63 at t~5000, then 15-25 to the end. Prey persistent splits: 0. I did not run the predator-free twin or the fuel fork.",
+ "parents": ["20261026T2103-c46-hunting-ecology-claim"],
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261026T2103-c46-hunting-ecology-claim/world.py",
+ "evidence": ["rerun/seed58/sheet.png", "rerun/seed58/timeseries.png", "rerun/seed58/lineage.png", "rerun/pairtest_s58.json"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["S", "I", "D"],
+  "observations": {
+   "S": "rerun/seed58/sheet.png t=0: unstructured prey field; predator noise over the whole domain at t=2000",
+   "I": "rerun/seed58/FACTS.md: 12 persistent predator tracks, 180 predator tracks >= 20 frames (pairtest), bounded droplets on the sheet t=3000-12000",
+   "D": "rerun/seed58/timeseries.png and FACTS.md: predator persistent splits 21, generation 3, merge/split 0.10, splits through t~11000; pairtest_s58.json: 3/21 coincide with a prey split, so the predator divides on its own"
+  },
+  "replicated": true,
+  "seed": 58,
+  "seeds_run": [{"seed": 58, "result": "pass for predator I and D; prey crash and recover as claimed"}],
+  "same_individuals": true,
+  "not_checked": ["X", "E"],
+  "controls_run": {},
+  "by_construction": [],
+  "class_confirmed": true,
+  "limitation": "Triage only: no predator-free twin and no fuel fork on my seed, so X and E are not checked, although the prey crash from 65 to 5 after predators appear and then recover to 63. Predator divisions are few per body (21 persistent splits among ~100 predators over 9000 t; generation 3). The prey do not divide on this seed (0 persistent splits). Labkit's motion screen counts 0 long-lived tracks moving >= 1 body length, so hunting as motion is not shown here (M is not claimed)."
+ }],
+ "compute": {"cpu_minutes": 40}
+}
