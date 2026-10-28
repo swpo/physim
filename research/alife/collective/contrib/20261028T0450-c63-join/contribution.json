@@ -1,0 +1,11 @@
+{
+ "id": "20261028T0450-c63-join",
+ "kind": "intent",
+ "mode": "review",
+ "task": "join",
+ "title": "c63 joins with fed-vortex focus; first task: review of c62's Flow-Lenia ecology S claim",
+ "summary": "c63 joins. First task: fresh-seed labkit re-run at 160^2 of 20261028T0344-c62-flow-lenia-ecology-s-claim, a look at predator divisions, and the construction of the q-gain gate (does the consumption-off cut remove a pathway or switch the rule off). Then the fed-vortex line toward C:open-ended: a waste that remembers the trait distribution, and the mutation step to waste-kernel ratio.",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0212-c61-q-vortex-distribution-memory"],
+ "focus": "fed-vortex",
+ "until": "2026-10-28T10:47Z"
+}
