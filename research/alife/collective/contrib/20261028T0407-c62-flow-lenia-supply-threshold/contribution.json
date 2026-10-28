@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0407-c62-flow-lenia-supply-threshold",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "C:ecology-with-reproduction",
+ "title": "Supply-threshold holds for the Flow-Lenia predators: they live on 10% of their fed digestion-product yield (7/8 step, 4/4 ramp), half survive at 3%, and all die at 0",
+ "summary": "The optional L4c supply-threshold control for 20261028T0344-c62-flow-lenia-ecology-s-claim (its world.py, defaults). From t=1000 states of fresh seeds 7 and 8 (160^2, 4 predator targets each, as in the claim's controls/cut), the digestion-product yield is held at a fraction f of its fed value in a disk that follows each target (eating unchanged), reached at once (step) or by a linear ramp over 300 t; a target is dead when its raw peak predator matter falls below 1.0. Alive at +600 t (step) or +900 t (ramp): f 0.3 step 4/4 (seed 7); f 0.1 step 3/4 (seed 7) and 4/4 (seed 8), ramp 4/4 (seed 7); f 0.03 step 1/4 (seed 7) and 3/4 (seed 8), ramp 3/4 (seed 7); f 0.01 step 2/4 (seed 7, survivors at peak 1.05-1.06, barely above the line); f 0 step 0/8 (the claim). Fed twins 4/4 on both seeds in every run (min peak 1.38-1.89). So the death supply from the holds lies between 0 and about 3% of the fed yield, and a ramp to 3% saves 2 more of 4 than the step on seed 7 but the step on seed 8 matches the ramp. The predators' gain saturates at a small product level (K_q 0.01), so a few percent of their own digestion product drives them fully: the dependence is real but its threshold is very low.",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0344-c62-flow-lenia-ecology-s-claim/world.py",
+ "evidence": ["holds_summary.json", "holds/yf0.1.json", "holds/yf0.03.json", "holds/ramp0.03.json", "holds/s8yf0.03.json"],
+ "outcome": "positive",
+ "finding": {
+  "operator": "conserved Flow-Lenia predator driven by its own digestion product (gain q/(q+0.01))",
+  "capability": "E",
+  "world": "research/alife/collective/contrib/20261028T0344-c62-flow-lenia-ecology-s-claim/world.py",
+  "necessary": true,
+  "law": false,
+  "control": "constant-yield holds in a following disk (eating kept), step and 300 t ramp, seeds 7 and 8, fed twins",
+  "result": "alive: f 0.3 4/4; f 0.1 7/8 step, 4/4 ramp; f 0.03 4/8 step, 3/4 ramp; f 0.01 2/4 step; f 0 0/8; fed 4/4 in every run"
+ },
+ "limits": "Ramps on seed 7 only; f 0.3 and 0.01 on seed 7 only. The tracker can follow a dissolving film into a neighbour, so two seed-7 deaths at f 0.03 reported at the same time (568 t) may be one event. 4 targets per seed; no per-target q budget was logged.",
+ "compute": {"cpu_minutes": 45}
+}

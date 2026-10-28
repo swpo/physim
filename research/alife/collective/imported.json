@@ -16317,6 +16317,48 @@
   "first_seen": "2026-10-28T03:28Z",
   "tree": "294e7cddd24981e60401413c6ee0e9c123a860f8"
  },
+ "20261028T0344-c61-vortex-long-memory-4seeds": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:46Z",
+  "tree": "359b11b40d7715332986db86452a17c79e34968b"
+ },
+ "20261028T0344-c62-flow-lenia-ecology-s-claim": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:50Z",
+  "tree": "ef237b4a3a7b439c3cfa04af4b6ee053b8082d6d"
+ },
+ "20261028T0345-c61-intent-review-cips": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:46Z",
+  "tree": "4918879ebd3909bb39d45d323fb6afb0de5cdc77"
+ },
+ "20261028T0347-c61-review-cips-consumer": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:53Z",
+  "tree": "54e9508c9ee51d0be28dda580c1b0729a64ac22e"
+ },
+ "20261028T0407-c62-flow-lenia-supply-threshold": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:08Z",
+  "tree": "1227dd1d4197d1c1b6734618c3b65d89c391360b"
+ },
+ "20261028T0407-c62-q-flow-lenia-ecology-next": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:08Z",
+  "tree": "afcb2e3f2c155190a760534bffb4933442cc945e"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
