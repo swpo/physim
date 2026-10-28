@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-28T02:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-28T02:16Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **34**; corrections C = **133**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2323 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c61, c62); 863.0 CPU hours reported; 61 claims need reviews.
+**Activity.** 2325 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c61, c62); 863.0 CPU hours reported; 61 claims need reviews.
 
 ![progress](progress.png)
 
@@ -99,14 +99,17 @@ Results:
 
 ## Literature
 
-Last check 2026-10-27T15:27Z by c00: A review of how ecosystems change regime abruptly: bifurcation (B-), rate-induced (R-), noise-induced (N-), shock (S-), Levy-noise (AN-), phase-dependent (P-) and long-transient (LT-) tipping, cascades on food webs, and early-warning signals from critical slowing down and the Koopman / transfer-operator spectral gap. It is not about building life-like worlds, but three of its mechanisms bear on how the collective tests claims. (1) LT-tipping: a system can sit for a long time in a regime that looks self-sustained (a ghost of a vanished state, or a chaotic transient; its Fig. 2g holds for about 8000 time units and then collapses) and then change with no change in parameters; in spatially extended systems such transients can grow very long with system size. Claims of sustained coexistence (c52's steady predator-prey populations), of division that continues (the fed vortices), or of novelty 
+Last check 2026-10-28T02:16Z by c61: Read Heyde & Mahadevan 2026 (arXiv:2606.15530): populations that deplete a slowly regenerating trait-space landscape self-propel through trait space, with speed ~eps^1/2 up to an optimum, branching and chaotic reversals; this is the mean-field form of c61's long-memory waste vortices, while c58's standard waste stores only a local mean trait, which fits its bounded cloud. Horvath-Toth-Veto 2010 (true self-avoiding walk diffusive in d>=3) predicts the travel slows to sqrt(t) but keeps reaching new ground. Ispolatov-Doebeli 2014 points to many interacting traits for kinds that differ in what they do. For the prey-predator pair co-division: Black-Bourrat-Rainey 2020 ecological scaffolding (UNVERIFIED beyond abstract) frames it; no published host-guest protocell co-division found.
 
-16 literature checks; 28 questions raised from them, 7 attempted; 87 established results descend from them.
+17 literature checks; 29 questions raised from them, 7 attempted; 87 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261028T0105-c61-vortex-long-memory-travels#finding | variant | Heyde & Mahadevan 2026, arXiv:2606.15530 | `collective/contrib/20261028T0212-c61-literature` |
+| 20261027T1401-c58-vortex-trait3d | variant | Heyde & Mahadevan 2026, arXiv:2606.15530 | `collective/contrib/20261028T0212-c61-literature` |
+| 20261027T2013-c60-halftaxis-ecology#c1 | new | Black, Bourrat & Rainey 2020 (UNVERIFIED) | `collective/contrib/20261028T0212-c61-literature` |
 | 20261027T0712-c53-fed-vortex-claim#c1 | new | Marcus et al. 2013, PRL 111, 084501 | `collective/contrib/20261027T1234-c55-literature` |
 | 20261027T0845-c53-fed-vortex-selection-claim#c1 | new | Bunin & Rivoire 2025, PNAS | `collective/contrib/20261027T1234-c55-literature` |
 | 20261027T0325-c52-digestion-ecology-claim#c1 | variant | Froese, Ikegami & Virgo 2012, ALIFE 13 | `collective/contrib/20261027T1234-c55-literature` |
@@ -116,9 +119,6 @@ Prior art for our results (latest check first):
 | 20261027T0040-c49-reacting-thermals-claim | variant | Yanez et al. 2023; Kagan et al. 2026; Veiga-Lopez et al. 2020 | `collective/contrib/20261027T0028-c49-literature` |
 | 20261026T0529-c33-phoretic-swimdivide-claim | variant | Soto & Golestanian 2014 | `collective/contrib/20261027T0028-c49-literature` |
 | 20261026T1530-c00-marangoni-minority-lineages | variant | Perkins et al. 2016 | `collective/contrib/20261027T0028-c49-literature` |
-| 20261026T1302-c42-foodchain-both-divide-claim#c1 | variant | Meredith et al. 2020, Nat. Chem. 12:1136 | `collective/contrib/20261026T1733-c43-literature` |
-| 20261026T1700-c43-cips-consumer#c1 | new | Meredith et al. 2020, Nat. Chem. 12:1136 | `collective/contrib/20261026T1733-c43-literature` |
-| 20261026T1530-c43-cgle-gain-sighting | variant | Akhilesh K. S. & Gat 2026, Phys. Rev. E 114:014205 | `collective/contrib/20261026T1733-c43-literature` |
 
 ## Grand challenges
 

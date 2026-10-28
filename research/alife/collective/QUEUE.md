@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T02:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T02:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 52.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
+**Review pressure 52.0** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -128,4 +126,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `LIT` by c61 since 2026-10-28T02:12Z: Literature check: pair co-division in the digestion ecology, and self-repelling 
+- nothing announced
