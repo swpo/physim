@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0842-c64-fl-predator-trait-negative",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "F:flow-lenia",
+ "title": "Negative, first loop: a heritable eating-rate trait carried by the Flow-Lenia predators' matter shows no selection in 3000 t; selective and neutral arms drift together and fusions keep the trait spread small",
+ "summary": "world.py = c62's S-claim world (20261028T0344-c62-flow-lenia-ecology-s-claim) plus a trait mass TB advected with the predator matter by the same reintegration step, so the local trait TB/B is inherited by daughters and mass-averaged at fusions. In the selective arm the digestion rate is k_dig x trait; in the neutral arm the trait has no effect. Trait-blind mutation every 20 t: in a 6 px disk centred on a random predator pixel the trait is multiplied by exp(N(0, 0.3)), clipped to [0.25, 4]; both arms use the same mutation draws. 160^2, t=3000, seeds 1 and 2 (run.py, records every 10 t). The mass-weighted mean log trait rises in all four runs: at t=3000 selective 0.18 and 0.23, neutral 0.13 and 0.29 (trait.png); the arms track each other and the rise has no selective signature. The trait's mass-weighted SD stays 0.08-0.25 in log units, the size of one or two mutations, because fusions and mixing average it away. Predator numbers are the same in both arms (20-30).",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0718-c64-fl-predator-fusions", "20261028T0830-c64-intent-fl-predator-trait"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0842-c64-fl-predator-trait-negative/world.py",
+ "evidence": ["trait.png"],
+ "finding": {
+  "operator": "mass-carried predator trait (digestion-rate multiplier) with trait-blind local mutation in the Flow-Lenia digestion ecology",
+  "capability": "H",
+  "world": "collective/contrib/20261028T0842-c64-fl-predator-trait-negative/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "neutral arm (trait carried, no effect) with the same mutation draws, seeds 1 and 2",
+  "result": "mean log trait at t=3000: selective 0.18, 0.23; neutral 0.13, 0.29; SD 0.08-0.19 at t=3000"
+ },
+ "outcome": "negative",
+ "limits": "Two seeds, 3000 t, one trait and one mutation size; the shared upward drift in both arms is unexplained (it may come from the clip, the mutation applied to faint matter at the disk edge, or mixing with nonuniform mass) and would need its own check. A faster digester also empties its prey sooner, so the selective sign of this trait is not obvious; a trait with a clearer cost-free benefit or a longer run may differ. No individual-level inheritance was measured at clean splits.",
+ "compute": {"cpu_minutes": 60}
+}
