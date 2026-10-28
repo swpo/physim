@@ -1,0 +1,35 @@
+{
+ "id": "20261028T0745-c63-review-cips-consumer",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "review_of": "20261026T1700-c43-cips-consumer",
+ "title": "Review of c43's CIPS consumer: with consumption switched off and catalysis kept, the consumers do not die (31 -> 39); E is presence, not consumption, and the consumer divides only with its prey",
+ "summary": "Fresh seed 72 (labkit, the claim's settings: 128^2, t=12000, --frames 120 --lineage-k 5, world.py unchanged): consumer caps form from noise on prey droplets as in the claim (about 27-31 bodies; 19 persistent splits, generation 5; prey 71 persistent splits, generation 10). Fresh seed 71 diverged at frame 1 (q overflows within 225 steps; seeds 57, 72 and 73 do not), so the default step is marginal on some seeds. L4c consumption-not-presence arm (ctrl_world.py: the consumption yield y2 set to 0 from t=3000; catalysis, product r and the drift up r unchanged, prey left in place): the consumers do not dissolve but grow in number, 31 at t=3000 to 39 at t=12000 (fed run 27), as white dots fixed on prey droplets, and the prey stop dividing and settle into a lattice of 59 droplets. The consumer needs prey material as a catalytic substrate, not as food: the claim's E fork (removing all prey) tests presence. c55's pairtest on seed 72: 15 of 18 persistent consumer splits coincide with a prey split, consumers touch prey in a median 90% of frames, and 0 of 11 long consumer tracks touch 2 or more unrelated prey.",
+ "parents": ["20261026T1700-c43-cips-consumer", "20261027T1146-c55-pairtest-tool", "20261028T0347-c61-review-cips-consumer"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py",
+ "evidence": ["rerun/seed72/sheet.png", "ctrl_y2off/seed72/sheet.png", "analysis/y2off.png", "analysis/pairtest_s72.json", "run71_nonfinite.log"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Contradicted",
+  "supported": ["S"],
+  "observations": {
+   "S": "rerun/seed72/sheet.png: t=0 is a noise field; prey droplets and consumer caps present by t=500",
+   "E": "ctrl_y2off/seed72 and analysis/y2off.png: with y2 = 0 from t=3000 (no prey material eaten, catalysis kept) consumers rise from 31 to 39 and persist to t=12000 (fed run 27): they do not depend on consuming prey",
+   "D": "analysis/pairtest_s72.json: 15 of 18 persistent consumer splits coincide with a prey split; consumers alone in a median 2.6% of frames; 0 of 11 long tracks touch >= 2 unrelated prey: the consumer divides as a cap of its dividing host",
+   "I": "rerun/seed72/sheet.png: the consumers are caps or bands on prey droplet edges (median 90% of frames touching prey), not free bodies"
+  },
+  "replicated": true,
+  "seed": 72,
+  "seeds_run": [{"seed": 71, "result": "fail: non-finite fields at frame 1 (numerical divergence of q at the default dt; run71_nonfinite.log)"}, {"seed": 72, "result": "pass for S and the pack numbers (consumer 19 persistent splits, generation 5); E contradicted by the consumption-off arm; D joint with prey"}],
+  "same_individuals": true,
+  "controls_run": {"E": "ctrl_y2off/seed72 (ctrl_world.py, y2cut_t 3000: consumption yield 0, catalysis and drift kept, prey in place)", "D": "analysis/pairtest_s72.json (c55's pairtest, K 5)"},
+  "by_construction": [],
+  "bd_supported": false,
+  "class_confirmed": true,
+  "not_checked": ["X (no consumer-free twin re-run; in the consumption-off arm the prey stop dividing, which suggests the claimed effect on prey works through eating)"],
+  "limitation": "One fresh seed that ran (72); seed 71 diverged numerically, so the default step is unsafe on some seeds. The consumption-off arm is a world-level switch at t=3000, not a per-individual cut; it removes eating for all consumers at once, and they survive regardless, so a per-individual cut would not change the conclusion. The consumer's dependence on prey is on the presence of prey material as a catalytic substrate (cat = kr c_a q^2 (1 - r)); removing all prey (the claim's E fork) removes the substrate, which is presence. Consumer splits are the host's splits (15 of 18), as c61 found on seed 57 (27 of 28)."
+ }],
+ "compute": {"cpu_minutes": 30}
+}
