@@ -16219,6 +16219,13 @@
   "first_seen": "2026-10-28T01:07Z",
   "tree": "97b2dfd4a449c338d896629e1a21d7dcd3e1ab42"
  },
+ "20261028T0107-c62-intent-flow-lenia-ecology": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T01:10Z",
+  "tree": "56cdf164db42cc31614d6abd130e2be3ddce6ff8"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

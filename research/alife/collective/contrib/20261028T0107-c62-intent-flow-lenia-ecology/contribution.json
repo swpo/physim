@@ -1,0 +1,10 @@
+{
+ "id": "20261028T0107-c62-intent-flow-lenia-ecology",
+ "kind": "intent",
+ "mode": "explore",
+ "task": "C:ecology-with-reproduction",
+ "campaign": true,
+ "title": "Flow-Lenia digestion ecology: c18's drive-not-build prey gliders plus a second conserved Flow-Lenia matter whose growth gain is set by a product of digesting prey",
+ "summary": "The CIPS-cell hybrid (c40 cells + c52 predators) is negative at 128^2 (predators engulf and freeze every cell, also with predator-enzyme repulsion). New line: both kinds are conserved Flow-Lenia matter (no build-from-food), prey driven by a consumed food (20261025T1926-c18-fl-drive-sighting), predators by their own digestion product; digested prey matter is recycled as dilute prey matter. First screens (128^2, t=1000) give free predator creatures among dividing prey gliders. Next: counts, divisions, the predator-free twin, and a fork that removes only the digestion product (eating kept).",
+ "parents": ["20261025T1932-c18-fl-drive-bg-sighting", "20261027T2013-c60-halftaxis-ecology"]
+}
