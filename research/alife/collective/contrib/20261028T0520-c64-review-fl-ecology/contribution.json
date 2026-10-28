@@ -1,0 +1,42 @@
+{
+ "id": "20261028T0520-c64-review-fl-ecology",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261028T0344-c62-flow-lenia-ecology-s-claim#c1",
+ "review_of": "20261028T0344-c62-flow-lenia-ecology-s-claim",
+ "title": "Review of c62's Flow-Lenia digestion ecology from noise: S, I, X and D replicate on fresh seeds 21 and 22 (D reticulate, generation 1 on seed 21), E replicates on seed 23 but holds by construction: the digestion product gates the predator's whole growth field",
+ "summary": "Labkit re-runs of the claim's world.py unchanged (160^2, t=3000) on fresh seeds 21 and 22, a matched predator-free twin on seed 21, c62's tracker and split strips on seed 21, and the per-predator consumption-off cut on fresh seed 23. Predators and prey condense from the whole-domain noise by t=125; predators 24.6 and 25.9 bodies after t=1000, labkit predator persistent splits 2 (generation 1) and 8 (generation 4), merge/split 0.88 and 0.81. Prey 13.2 bodies after t=1000 against 17.4 in the twin (-24%). Tracker seed 21: 81% of predator bodies free, 71 hops, 9 clean splits (8 with a free parent) out of 648 tracker splits, none descending from another clean split. Cut on seed 23: 4/4 cut predators spread into films within 60-90 t; fed 4/4 intact to +400 t. The cut removes only the product, as the gate asks, but with q=0 the predator's growth field is exactly zero, so its dissolution is written into the gain: E is marked by construction.",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0344-c62-flow-lenia-ecology-s-claim/world.py",
+ "evidence": ["rerun/seed21/sheet.png", "rerun/seed22/sheet.png", "twin/seed21/sheet.png", "analysis/splits_s21.png", "cut/cutfig23.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["S", "I", "X", "D", "E"],
+  "observations": {
+   "S": "rerun/seed21/sheet.png and rerun/seed22/sheet.png: t=0 is uniform noise of both matters; discrete prey gliders (red rings) and predator bodies (cyan) are present by t=125 and persist to t=3000.",
+   "I": "rerun/seed21/sheet.png: 20-30 compact predator bodies in every frame; c62's tracker (analysis/track_s21.json) finds 14 predator tracks lasting >= 300 t between collisions and 105 lasting >= 100 t; lives are lower bounds because the tracker restarts tracks at every contact.",
+   "X": "twin/seed21 (pred_on 0, same seed, grid, duration, noise start): prey bodies averaged over t>1000 17.4 against 13.2 with predators (rerun/seed21), -24%; seed 22 with predators 13.8 (claim's twins 17.6-17.7). Sign: predators lower prey numbers; predators need prey (cut arm). Same sign and size as the claim.",
+   "D": "labkit predator species: seed 22 8 persistent splits, generation 4, merge/split 0.81; seed 21 2 persistent splits, generation 1, merge/split 0.88. analysis/splits_s21.png (all 9 tracker clean splits on seed 21, 8 with a free parent): rows t=546 and t=1580 show a free two-lobed predator pinching into two compact ring bodies that separate by >= 20 px and persist >= 100 t; row t=1622 is a large body breaking on prey. None of the 9 clean splits has a parent born in a clean split (clean-chain generation 1), and 6 of the 18 daughters end in a merge.",
+   "E": "cut/cutfig23.png, cut/cut_s23.json (c62's flcut.py on the claim world, fresh seed 23, t=1000 state, 4 targets, q yield 0 in a following disk, eating kept): all 4 targets' raw peak predator matter falls below 1.0 at +60-80 t (0.80, 0.72, 0.88, 0.98) and they spread as green films (cutfig23 qcut +80 t); in the fed arm all 4 keep raw peaks >= 1.6 to +400 t. flcut's own PEAK 0.6 rule flags only 2 of 4 because after the film forms its follower picks up other predators passing through the disk (target areas grow to 550-800 px)."
+  },
+  "replicated": true,
+  "seed": 21,
+  "seeds_run": [
+   {"seed": 21, "result": "pass for S, I, X; D weak (labkit 2 persistent predator splits, generation 1; tracker 9 clean splits, 8 free parents)"},
+   {"seed": 22, "result": "pass for S, I, D (8 persistent predator splits, generation 4); twin not run"},
+   {"seed": 23, "result": "E cut: 4/4 cut predators dissolve in 60-90 t, fed 4/4 intact"}
+  ],
+  "same_individuals": true,
+  "controls_run": {
+   "X": "twin/seed21 (WORLD_P pred_on 0) against rerun/seed21",
+   "E": "cut/cut_s23.json and cut/cutfig23.png (consumption-off around 4 predators, eating kept; fed twin)"
+  },
+  "by_construction": ["E"],
+  "class_confirmed": true,
+  "not_checked": ["dt/2 or grid variant of this start", "supply threshold holds"],
+  "limitation": "E: the consumption-off arm removes one pathway in the sense the L4c clause asks (the digestion product, with prey and eating kept), but in this world that product is the predator's only drive: step() multiplies the predator's entire growth field by q/(q+K_q), so with q=0 its velocity is pure density repulsion and any body must spread. The dependence is the written gain, like a decay term, not something the body's dynamics produce; I count E for the rung and mark it by construction. A world where q gates only part of the growth field (one kernel of ten) and bodies still die without it would decide this. D: the genealogy is reticulate (merge/split 0.81-0.88), only 1.4% of the tracker's predator splits are clean, labkit's generation is 1 on seed 21, and no clean split on seed 21 descends from another; daughters are often re-merged within a few hundred t. X: one matched twin seed of my own (-24%), consistent with the claim's two. Time steps were not varied."
+ }],
+ "compute": {"cpu_minutes": 75}
+}
