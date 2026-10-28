@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0344-c61-vortex-long-memory-4seeds",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:vortex-novelty-saturation",
+ "class": "fed-vortex",
+ "outcome": "negative",
+ "title": "Correction to 20261028T0105: the long-memory waste vortices travel on 1 of 4 seeds only; on seeds 10, 13 and 14 the population branches or widens to a cloud of radius ~1 like the standard waste, and its share on new trait ground falls to 0.00 by the end; long memory raises the mean distance from the ancestor only modestly (1.2-1.4 against 0.96-1.2 at t=6000-8000)",
+ "summary": "The long-lived waste (lifetime 2000 t, reach kept at 22 px) was re-run on three more seeds with their own mutation draws: seed 10 with its twin to T=10000, and seeds 13 and 14 to T=8000. Mean distance of a vortex's trait from the ancestor per 2000 t:\n- seed 7 (20261028T0105): 0.24, 0.89, 1.19, 1.84, 2.43;\n- seed 10: 0.25, 0.77, 1.39, 1.36, 1.15;\n- seed 13: 0.33, 0.84, 1.16, 1.33;\n- seed 14: 0.29, 0.67, 0.92, 1.20;\n- twins: 0.14-0.49.\nWith the standard waste over the same t=6000-8000 window, seeds 3-6 give 0.96-1.2.\nShare on new ground (more than 0.4 from every trait seen before t-1000), by 1000-t window:\n- seed 10: 0.21, 0.25, 0.07, 0.07, 0.15, 0.03, 0.09, 0.00;\n- seed 13: 0.24, 0.35, 0.04, 0.06, 0.04, 0.00;\n- seed 14: 0.03, 0.07, 0.02, 0.17, 0.04, 0.00.\nCloud radius at the end: 0.93-1.05.\nOn seed 10 a purple kind swept and then a second lineage invaded from t~5800 and coexisted (m10_spec_maps.png), so the population branched instead of travelling. The memory-only arm (lifetime 2000 t, reach 45 px, seed 7) is intermediate: mean distance 1.47, cloud radius rising to 0.82, new-ground share 0.03-0.54. c58-style counts still exceed the twin on every seed: classes held by >= 3 vortices 44/43/40 (twin 20 on seed 10), and 3-16 first-time dominants after t=3000. A labkit pack of the long-memory world (seeds 11 and 12, T=3000) reproduces c53's fed-vortex individuals and reticulate division: about 34 vortices, 48 and 55 persistent splits, generation 13 and 12, merge/split 0.92 and 0.93.",
+ "parents": ["20261028T0105-c61-vortex-long-memory-travels", "20261028T0326-c61-vortex-t30k-saturates", "20261027T1401-c58-vortex-trait3d"],
+ "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+ "evidence": ["m10_spec_maps.png", "m13_spec_maps.png", "m14_spec_maps.png", "q7_spec_maps.png", "vnov_m10.png", "vnov_m1314.json", "pack/seed11/sheet.png", "pack/seed12/lineage.png"],
+ "finding": {
+  "operator": "kind-specific waste with a 4x longer memory (dw 0.0005) at fixed reach",
+  "capability": "O",
+  "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py with WORLD_P {ew 0.25, sw 0.4, mut_dt 50, dw 0.0005, Dw 0.25}",
+  "necessary": false,
+  "law": false,
+  "control": "4 seeds with their own mutation draws; kind-blind twins on seeds 7 and 10; standard-memory runs on seeds 3-6",
+  "result": "sustained travel (mean distance still rising at the end, new ground > 0.1 late) on 1 of 4 seeds; new-ground share in the last window 0.01, 0.00, 0.00, 0.00 on seeds 7, 10, 13, 14"
+ },
+ "limits": "T=8000-10000 only, at 128^2. Seeds 13 and 14 have no twins of their own; the twin behaves the same on seeds 6, 7 and 10 (mean distance <= 0.58). The travel on seed 7 may be a long sweep that would also stop. The labkit pack's 0 persistent tracks reflects labkit's 50%-of-run criterion with constant fusion; individuality of the vortices is the established result of 20261027T0712-c53-fed-vortex-claim and was not re-judged here.",
+ "compute": {"cpu_minutes": 330}
+}

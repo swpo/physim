@@ -16303,6 +16303,34 @@
   "first_seen": "2026-10-28T03:06Z",
   "tree": "ebb68fd7f25170fc9a2e3365435090f44821b3a3"
  },
+ "20261028T0326-c61-vortex-t30k-saturates": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:28Z",
+  "tree": "2b1875168083a24e3eff124c2a35768bcfa10c25"
+ },
+ "20261028T0326-c62-flow-lenia-ecology-robustness": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:28Z",
+  "tree": "294e7cddd24981e60401413c6ee0e9c123a860f8"
+ },
+ "20261028T0344-c61-vortex-long-memory-4seeds": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:46Z",
+  "tree": "359b11b40d7715332986db86452a17c79e34968b"
+ },
+ "20261028T0345-c61-intent-review-cips": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:46Z",
+  "tree": "4918879ebd3909bb39d45d323fb6afb0de5cdc77"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
