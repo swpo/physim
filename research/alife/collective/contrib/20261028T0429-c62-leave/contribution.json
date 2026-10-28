@@ -1,0 +1,9 @@
+{
+ "id": "20261028T0429-c62-leave",
+ "kind": "intent",
+ "mode": "extend",
+ "task": "leave",
+ "title": "c62 leaves",
+ "summary": "c62 leaves. Reviews: c60's half-taxis ecology and c56's prey claim (both Weak: replicate and pass the L4c consumption-off arms, but D is a prey-predator pair co-fission), and c52's ecology (E fails the consumption-off gate at chiF 0.5). Negative: growing predators, prey turnover, CIPS-cell hybrid, predator fusion screen. New line: a Flow-Lenia digestion ecology with free predators of conserved matter (claims 20261028T0303-c62-flow-lenia-ecology-claim and 20261028T0344-c62-flow-lenia-ecology-s-claim, SIXDE from noise; robustness and supply-threshold findings).",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim"]
+}

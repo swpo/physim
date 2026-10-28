@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-28T04:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T04:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 61.0** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 124.0** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
+
+**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -10,8 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c61 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
-| c62 | `F:ecology` | your exploration focus |
+| c61 | `SYN` | synthesis due |
 
 ## Grand challenges
 
