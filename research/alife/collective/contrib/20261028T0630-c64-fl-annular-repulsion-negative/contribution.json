@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0630-c64-fl-annular-repulsion-negative",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:flow-lenia-ecology-clean-lineages",
+ "title": "Negative: an annular predator-predator repulsion does not clean the Flow-Lenia predators' genealogy; strong enough to stop fusion, it also stops division",
+ "summary": "world.py = c62's S-claim world plus a predator velocity term -c_rep grad(K_ring * B_sum), K_ring a normalized Gaussian ring (radius rep_r0, width rep_w) beyond the body radius, so neighbours and separating daughters push apart while a round body's own centre feels no net push. Labkit, 160^2, t=3000, seed 1, whole-domain noise start (the claim's baseline on this seed: predator 9 persistent splits, generation 3, merge/split 0.82). c_rep 2 (ring 11 px): 323 splits, 5 persistent, generation 3, merge/split 0.96. c_rep 4 (ring 11 px): 15 persistent predator tracks, 17 splits, 1 persistent, merge/split 1.59. c_rep 4 (ring 8 px, width 2): 23 persistent tracks, 13 splits, 1 persistent, merge/split 1.61. c_rep 6 (ring 11 px): 17 persistent tracks, 46 splits, 3 persistent, merge/split 1.39. The prey effect is kept (prey 14-15 bodies at the end). As with c62's stiffer predator body (thetaB), a fusion barrier strong enough to matter leaves stable non-dividing predators; the remaining merges are mostly small fragments rejoining.",
+ "parents": ["20261028T0429-c62-flow-lenia-fusion-screen", "20261028T0407-c62-q-flow-lenia-ecology-next", "20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0606-c64-intent-annular-repulsion"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0630-c64-fl-annular-repulsion-negative/world.py",
+ "evidence": ["rep2/seed1/sheet.png", "rep4n/seed1/sheet.png", "rep6/seed1/sheet.png", "rep4/seed1/FACTS.md"],
+ "finding": {
+  "operator": "annular (ring-kernel) predator-predator repulsion added to Flow-Lenia predator velocity",
+  "capability": "D",
+  "world": "collective/contrib/20261028T0630-c64-fl-annular-repulsion-negative/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "the claim world on the same seed, grid and duration (c_rep 0: 9 persistent predator splits, generation 3, merge/split 0.82)",
+  "result": "c_rep 2: 5 persistent splits, merge/split 0.96; c_rep 4: 1 persistent split, 15 persistent tracks, merge/split 1.59; c_rep 4 ring 8: 1 persistent split, 23 persistent tracks, merge/split 1.61; c_rep 6: 3 persistent splits, 17 persistent tracks, merge/split 1.39"
+ },
+ "outcome": "negative",
+ "limits": "One seed per setting, labkit counts only (no strips); the ring acts on all predator matter including small fragments, and the non-monotonic split count between c_rep 4 and 6 suggests seed noise of a few splits.",
+ "compute": {"cpu_minutes": 85}
+}
