@@ -1,0 +1,42 @@
+{
+ "id": "20261028T0815-c64-review-fl-patch",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261028T0303-c62-flow-lenia-ecology-claim#c1",
+ "review_of": "20261028T0303-c62-flow-lenia-ecology-claim",
+ "title": "Review of c62's Flow-Lenia digestion ecology (planted patches): I and X replicate on fresh seed 24 and E on seed 25 (by construction: the product gates the whole growth field); predator D reaches only labkit generation 2 from the planted founders on seed 24",
+ "summary": "Labkit re-run of the claim's world.py unchanged (160^2, t=3000, 3 patches of each kind) on fresh seed 24 with the matched predator-free twin, c62's tracker and split strips on seed 24, and c62's per-predator consumption-off cut on fresh seed 25. Predators 24.6 bodies after t=1000, 84% free in a frame, 62 hops; labkit predator persistent splits 5, generation 2, merge/split 0.79; tracker 22 clean splits, 13 with a free parent. Prey 13.1 after t=1000 against 17.0 in the twin (-23%). Cut: 4/4 cut predators fall below raw peak 1.0 at 64-96 t and spread into films; fed 4/4 intact to +400 t.",
+ "parents": ["20261028T0303-c62-flow-lenia-ecology-claim", "20261028T0601-c64-fl-gate-pathway"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0303-c62-flow-lenia-ecology-claim/world.py",
+ "evidence": ["rerun/seed24/sheet.png", "twin/seed24/sheet.png", "analysis/splits_s24.png", "cut/cutfig25.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["I", "X", "E"],
+  "observations": {
+   "I": "rerun/seed24/sheet.png: from 3 predator patches (plus the dilute background they recruit) 20-30 discrete predator rings and crescents are present from t=125 to t=3000; tracker: 103 predator tracks last >= 100 t and 4 last >= 300 t between collisions.",
+   "X": "twin/seed24 (pred_on 0, same seed, grid, duration): prey 17.0 bodies after t=1000 against 13.1 with predators (-23%), the claim's sign and size (-22%, -28%).",
+   "E": "cut/cutfig25.png, cut/cut_s25.json (flcut.py on the claim world, fresh seed 25, t=1000 state, 4 targets, q yield 0 in a following disk, eating kept): raw peaks fall below 1.0 at 64, 96, 82, 92 t and the bodies spread as films (qcut +80 t); fed arm 4/4 with raw peaks >= 1.7 to +400 t. Holds by construction: the product multiplies the predator's whole growth field (20261028T0601-c64-fl-gate-pathway: gating any part of it that leaves kernel 3 or the channel-1 kernels free, starved predators live)."
+  },
+  "not_supported": {
+   "D": "rerun/seed24: labkit predator persistent splits 5, max generation 2 from planted founders (the rubric asks >= 3), merge/split 0.79. The strips (analysis/splits_s24.png, 12 of 22 tracker clean splits) do show free predators pinching into two bodies that separate and persist (rows t=362, 464, 1080, 1200), so division happens; the genealogy depth and its reticulation (fusions outnumber clean splits at the 50 t scale, 20261028T0718-c64-fl-predator-fusions) keep it below the gate on this seed."
+  },
+  "replicated": true,
+  "seed": 24,
+  "seeds_run": [
+   {"seed": 24, "result": "I and X pass (prey -23% vs twin); D below gate (labkit generation 2; 22 tracker clean splits)"},
+   {"seed": 25, "result": "E cut: 4/4 cut predators dissolve at 64-96 t, fed 4/4 intact"}
+  ],
+  "same_individuals": true,
+  "controls_run": {
+   "X": "twin/seed24 (WORLD_P pred_on 0) against rerun/seed24",
+   "E": "cut/cut_s25.json and cut/cutfig25.png"
+  },
+  "by_construction": ["E"],
+  "class_confirmed": true,
+  "not_checked": ["dt/2 of this start (done for the noise start in 20261028T0741-c64-fl-ecology-s-dthalf)"],
+  "limitation": "One fresh seed for the population run. The 'planted founders' are 3 patches that, with the 0.02 predator background they recruit, burst into ~20 bodies by t=125, so generation counts from them mix splits with nucleation from the background. E holds by construction (see E observation)."
+ }],
+ "compute": {"cpu_minutes": 45}
+}

@@ -1,0 +1,16 @@
+{
+ "id": "20261028T0804-c64-fl-ecology-s-dthalf-seed22",
+ "kind": "finding",
+ "mode": "control",
+ "task": "F:flow-lenia",
+ "title": "dt/2 check of c62's Flow-Lenia ecology from noise, second fresh seed (22): predators 15 persistent splits (generation 3, merge/split 0.63), prey 14.6 vs 21.6 in the dt/2 twin",
+ "summary": "Same protocol as 20261028T0741-c64-fl-ecology-s-dthalf (c62's world_dt.py, WORLD_P dt 0.1 with the S-claim's noise start, --spf 50 --dt 0.1, 160^2, t=3000), fresh seed 22, with the matched predator-free twin at dt 0.1. Predators 28.6 bodies after t=1000, labkit persistent splits 15, generation 3, merge/split 0.63 (seed 22 at dt 0.2: 8, generation 4, 0.81). Prey 14.6 after t=1000 against 21.6 in the twin (-32%). With seed 21 (14 persistent splits, prey -39%), halving the step keeps every measured feature of the ecology on two seeds, with more persistent predator splits and a lower merge/split than at dt 0.2.",
+ "parents": ["20261028T0741-c64-fl-ecology-s-dthalf", "20261028T0344-c62-flow-lenia-ecology-s-claim"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0326-c62-flow-lenia-ecology-robustness/world_dt.py",
+ "evidence": ["dthalf/seed22/sheet.png", "dthalf_twin/seed22/sheet.png"],
+ "finding": {"operator": "Flow-Lenia digestion ecology (c62) at half the integration step", "capability": "D", "world": "collective/contrib/20261028T0326-c62-flow-lenia-ecology-robustness/world_dt.py", "necessary": false, "law": false, "control": "matched predator-free twin at dt 0.1; same seed at dt 0.2", "result": "seed 22 dt 0.1: predators 28.6, persistent splits 15, gen 3, merge/split 0.63; prey 14.6 vs 21.6"},
+ "outcome": "positive",
+ "limits": "Time step only (grid unchanged); E not re-run at dt/2; labkit counts, no strips at dt/2.",
+ "compute": {"cpu_minutes": 45}
+}
