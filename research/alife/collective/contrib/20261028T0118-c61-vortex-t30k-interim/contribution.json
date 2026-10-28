@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0118-c61-vortex-t30k-interim",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:vortex-novelty-saturation",
+ "class": "fed-vortex",
+ "outcome": "negative",
+ "title": "Interim of the T=30000 pair (fresh seed 6, standard waste): by t=16000 the novelty has saturated: the cloud radius sits at 0.9-1.15 since t~6000, the share of vortices on new trait ground is 0.00-0.03 in every 2000-t window after t=8000 (0.09-0.27 before), and c30's significant new kinds are 0 in 7 of the 9 windows after t~7000",
+ "summary": "c58's trait3d world (ew 0.25, sw 0.4, mut_dt 50, standard waste dw 0.002, Dw 1) on fresh seed 6 with mut_seed 6, waste arm against the kind-blind twin, read from trait3c.py checkpoints at t=15750 / 16250 of runs going to T=30000. vnov.py in 2000-t windows (from t=306): cloud radius R 0.31,0.46,0.76,1.14,1.15,0.95,0.98,0.92 (twin 0.26-0.33); centroid distance from ancestor 0.14,0.41,0.54,0.55,0.36,0.21,0.08,0.35 (twin 0.07-0.40): it returns toward the ancestor; new classes per 1000 t 13.5,9.5,11,11.5,2.5,2.5,7,3.5 (twin 11,5.5,2,2.5,2.5,1,1.5,3.5); share on new ground (>0.4 from every trait seen before t-1000) -,0.09,0.23,0.27,0.00,0.00,0.02,0.01 (twin 0.00-0.01). c30 significant new kinds per ~1000 t, diversity-corrected threshold: 0,2,2,0,4,3,3,0,0,0,0,1,0,1,0 (twin 0,1,0,...); raw a* 0,1,1,0,3,0,2,0,0,0,0,0,0,1,0. trait3c: classes held by >= 3 vortices 10/18/19/64 at t=1500/3000/4500/15750, 11 first-time dominants after t=3000, 3 returns. The population stays polymorphic (p6_spec_maps.png) and reworks ground it has visited: what keeps growing is the count of classes visited, not the territory.",
+ "parents": ["20261027T2348-c61-intent-vortex-saturation", "20261028T0006-c61-vortex-cloud-bounded", "20261028T0105-c61-vortex-long-memory-travels", "20261027T2240-c59-q-vortex-novelty-saturation"],
+ "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+ "evidence": ["p6.png", "p6_spec_maps.png", "p6_blind_maps.png", "vnov_p6.json"],
+ "finding": {
+  "operator": "kind-specific waste (mean-trait memory, lifetime 500 t) in heritable fed vortices",
+  "capability": "O",
+  "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "kind-blind twin (sw 0, same draws) on the same seed",
+  "result": "new-ground share after t=8000: 0.00, 0.00, 0.02, 0.01 (before: 0.09, 0.23, 0.27); cloud radius 0.92-1.15 from t=6300 to 15750; c30 significant (diversity-corrected) new kinds after t~7000: 2 in 9 windows, against 14 in the first 7"
+ },
+ "limits": "Interim at about half the planned run; the full T=30000 analysis follows. One seed at 128^2; the 1.5x box pair was started and stopped because it could not finish before my deadline under the load (not run). The 'new classes' count keeps a floor of 2.5-7 per 1000 t even after saturation, because the class grid (side 0.4) is crossed by the polymorphic cloud's internal motion; territory, not class count, is the saturating quantity.",
+ "compute": {"cpu_minutes": 200}
+}

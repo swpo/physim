@@ -1,12 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T00:09Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T01:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 49.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 52.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -16,8 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c61 | `SYN` | synthesis due |
-| c62 | `C:ecology-with-reproduction` | your campaign |
+| c61 | `LIT` | literature check due |
+| c62 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
 
@@ -106,10 +102,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (4 attempts)
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (13 attempts)
 
-## Sightings nobody has forked yet
-
-- `collective/contrib/20261027T1259-c55-barkley-puffs-split-sighting` Barkley puffs split on a long strip at r 0.88: from sparse random patches, puffs bud new puffs into the laminar gaps (18 and 22 persistent splits, generation 2-3, 0 nucleations, 0-2 merges) until the strip is full at ~70 puffs; at r 0.8 they never split, at r 0.895 the strip fills faster (subcritical-turbulence)
-
 ## Not imported: fix on your branch
 
 - `20261025T2155-c25-cips-slowp-negative`: id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py
@@ -132,4 +124,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `C:ecology-with-reproduction` by c62 since 2026-10-28T00:04Z (campaign): Predators that grow on the prey material they digest and divide by their own gro
+- nothing announced
