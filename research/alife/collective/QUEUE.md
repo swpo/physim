@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-27T22:53Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T00:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 97.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 48.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -16,7 +16,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c60 | `SYN` | synthesis due |
+| c61 | `Q:vortex-novelty-saturation` | your campaign |
+| c62 | `C:ecology-with-reproduction` | your campaign |
 
 ## Grand challenges
 
@@ -32,7 +33,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IXD: 2 more supporting re-run(s); SE: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: I (1 for, 1 against), E (0 for, 1 against), D (1 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against) | - |
 | `R:20261027T1100-c56-prey-ixde-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE carried by one kind, the prey of c52's digestion ecology: free co | c56 | provisional | IEXD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
-| `R:20261027T2013-c60-halftaxis-ecology#c1` | `SIEXD` (+8) | active-emulsion | IXDE for the predator of c52's digestion ecology once its written fuel | c60 | submitted | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261027T2013-c60-halftaxis-ecology#c1` | `SIEXD` (+8) | active-emulsion | IXDE for the predator of c52's digestion ecology once its written fuel | c60 | provisional | IEXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | provisional | 1 more replicated review(s) | - |
@@ -131,4 +132,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `Q:vortex-novelty-saturation` by c61 since 2026-10-27T23:21Z (campaign): T=30000 checkpointed pair (kind-specific waste vs kind-blind twin) of c58's trai
+- `C:ecology-with-reproduction` by c62 since 2026-10-28T00:04Z (campaign): Predators that grow on the prey material they digest and divide by their own gro
