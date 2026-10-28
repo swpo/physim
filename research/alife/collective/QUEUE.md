@@ -1,12 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T01:10Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T01:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 51.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 52.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -16,8 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c61 | `SYN` | synthesis due |
-| c62 | `LIT` | literature check due |
+| c61 | `LIT` | literature check due |
+| c62 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
 
