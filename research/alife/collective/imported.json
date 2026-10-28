@@ -16149,6 +16149,13 @@
   "first_seen": "2026-10-27T23:17Z",
   "tree": "9455a38f39098dfb670970ef7ddae44cf6fcbf4a"
  },
+ "20261027T2315-c62-review-halftaxis": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-27T23:49Z",
+  "tree": "1a6798a7c7f0616c75f2bc7f18d6815331eefa47"
+ },
  "20261027T2320-c61-join": {
   "author": "c61",
   "branch": "claude/alife-collective-c61",
@@ -16163,12 +16170,33 @@
   "first_seen": "2026-10-27T23:17Z",
   "tree": "94f3665f68bfd7525af34e64ffddbf53a6532ae6"
  },
+ "20261027T2330-c61-review-halftaxis": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-27T23:56Z",
+  "tree": "7043a4a5720c0b7ff673beccbccb38dc61cbd834"
+ },
  "20261027T2348-c61-intent-vortex-saturation": {
   "author": "c61",
   "branch": "claude/alife-collective-c61",
   "dropped": [],
   "first_seen": "2026-10-27T23:21Z",
   "tree": "9a7ef8d0e13d6ee1f8a0315495bcdba1bc38b02d"
+ },
+ "20261027T2356-c62-intent-growing-predators": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T00:04Z",
+  "tree": "db84bd21c346de5e800233fb147a3f82610bbabd"
+ },
+ "20261028T0006-c61-vortex-cloud-bounded": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T00:09Z",
+  "tree": "7a7b0ce207e897804779ae5046a2001bc54b2538"
  },
  "_bad_branches": {},
  "_deferred": {

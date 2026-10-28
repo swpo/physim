@@ -1,0 +1,390 @@
+prey thr (render units, before blur) 0.399041748046875 pred thr 0.464501953125
+prey tracks 761 persistent splits 91 gen 5 | pred tracks 606 persistent splits 77 gen 5
+{
+ "pack": "../20261027T2330-c61-review-halftaxis/rerun/seed31",
+ "T": 120,
+ "thr_prey": 0.399041748046875,
+ "thr_pred": 0.464501953125,
+ "prey": {
+  "tracks": 761,
+  "persistent_splits": 91,
+  "max_gen": 5,
+  "splits": 213,
+  "merges": 55
+ },
+ "pred": {
+  "tracks": 606,
+  "persistent_splits": 77,
+  "max_gen": 5,
+  "splits": 124,
+  "merges": 12
+ },
+ "pred_tracks_ge10": {
+  "n": 498,
+  "span_median_t": 2500.0,
+  "span_max_t": 9800.0,
+  "frac_attached_median": 1.0,
+  "frac_attached_mean": 0.9033582123205042,
+  "always_attached": 272,
+  "ever_free": 226,
+  "one_prey_lineage": 492,
+  "ge2_unrelated_prey": 6,
+  "zero_prey": 0,
+  "area_med_median": 26.0,
+  "area_max_max": 65.0,
+  "area_max_over_min_median": 3.4444444444444446,
+  "area_max_over_med_p95": 1.5484189723320154,
+  "formation_frames_median": 0.0,
+  "births": {
+   "nucleation": 267,
+   "merge": 10,
+   "split": 221
+  },
+  "ends": {
+   "dissolved": 243,
+   "split": 121,
+   "alive_end": 124,
+   "merge": 10
+  }
+ },
+ "pred_tracks_ge20": {
+  "n": 294,
+  "span_median_t": 3800.0,
+  "span_max_t": 9800.0,
+  "frac_attached_median": 0.9432595573440643,
+  "frac_attached_mean": 0.9221196659937472,
+  "always_attached": 120,
+  "ever_free": 174,
+  "one_prey_lineage": 289,
+  "ge2_unrelated_prey": 5,
+  "zero_prey": 0,
+  "area_med_median": 25.0,
+  "area_max_max": 54.0,
+  "area_max_over_min_median": 3.7777777777777777,
+  "area_max_over_med_p95": 1.5837893296853622,
+  "formation_frames_median": 0.0,
+  "births": {
+   "nucleation": 166,
+   "merge": 7,
+   "split": 121
+  },
+  "ends": {
+   "dissolved": 183,
+   "alive_end": 84,
+   "split": 19,
+   "merge": 8
+  }
+ },
+ "pred_tracks_ge60": {
+  "n": 46,
+  "span_median_t": 7100.0,
+  "span_max_t": 9800.0,
+  "frac_attached_median": 0.9524661144578312,
+  "frac_attached_mean": 0.9589804388734792,
+  "always_attached": 19,
+  "ever_free": 27,
+  "one_prey_lineage": 46,
+  "ge2_unrelated_prey": 0,
+  "zero_prey": 0,
+  "area_med_median": 25.0,
+  "area_max_max": 47.0,
+  "area_max_over_min_median": 3.6125,
+  "area_max_over_med_p95": 1.6205357142857144,
+  "formation_frames_median": 0.0,
+  "births": {
+   "nucleation": 34,
+   "split": 12
+  },
+  "ends": {
+   "dissolved": 26,
+   "alive_end": 18,
+   "merge": 2
+  }
+ },
+ "pred_births_after_t3000": {
+  "nucleation": {
+   "all": 193,
+   "reach10": 133
+  },
+  "split": {
+   "all": 248,
+   "reach10": 221
+  },
+  "merge": {
+   "all": 10,
+   "reach10": 9
+  }
+ },
+ "late_nucleations_reach10_attached_frac_median": 1.0,
+ "late_nucleations_reach10": {
+  "n": 133,
+  "prev_pred_comp_within3": 4,
+  "prev_max_cb_median": 0.61767578125,
+  "de_novo_prev_max_lt_0p25": 0,
+  "on_prey": 133,
+  "on_prey_that_had_pred": 10,
+  "on_prey_from_split_le1000t": 34
+ },
+ "bath_cb_median_t6000": 0.032501220703125,
+ "pred_deaths_dissolved_ge10": {
+  "n": 243,
+  "attached_at_end": 33,
+  "its_prey_survives": 33,
+  "free_at_end": 210,
+  "area_last_median": 8.0
+ },
+ "prey_births_after_t3000": {
+  "nucleation": {
+   "all": 117,
+   "reach10": 78
+  },
+  "split": {
+   "all": 403,
+   "reach10": 310
+  },
+  "merge": {
+   "all": 52,
+   "reach10": 34
+  }
+ },
+ "contact_t3000plus": {
+  "predators_per_prey(0,1,2,3+)": {
+   "0": 0.077,
+   "1": 0.908,
+   "2": 0.015
+  },
+  "prey_per_predator(0,1,2,3+)": {
+   "0": 0.084,
+   "1": 0.866,
+   "2": 0.051
+  },
+  "pred_free_frac_mean": 0.08371112259592801
+ },
+ "pred_persistent_split_classes": {
+  "torn_between_sister_prey(prey split <=2000t before)": 64,
+  "pinched_with_dividing_prey(+-2 frames)": 13
+ },
+ "pred_split_sister_lags_frames": [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  5,
+  6,
+  6,
+  6,
+  6,
+  6,
+  6,
+  6,
+  6,
+  7,
+  7,
+  8
+ ],
+ "pred_persistent_split_frames": [
+  34,
+  35,
+  35,
+  35,
+  36,
+  36,
+  36,
+  36,
+  38,
+  38,
+  38,
+  38,
+  38,
+  38,
+  39,
+  40,
+  40,
+  41,
+  47,
+  47,
+  49,
+  50,
+  54,
+  54,
+  57,
+  57,
+  58,
+  58,
+  59,
+  60,
+  61,
+  62,
+  65,
+  65,
+  65,
+  66,
+  66,
+  67,
+  68,
+  68,
+  68,
+  69,
+  70,
+  70,
+  71,
+  71,
+  72,
+  77,
+  77,
+  77,
+  78,
+  79,
+  79,
+  79,
+  80,
+  80,
+  80,
+  82,
+  82,
+  84,
+  84,
+  84,
+  85,
+  86,
+  88,
+  88,
+  89,
+  89,
+  90,
+  90,
+  92,
+  93,
+  93,
+  94,
+  94,
+  94,
+  97
+ ],
+ "pred_split_followup": {
+  "+500t": {
+   "n": 77,
+   "both_alive": 77,
+   "both_attached": 77,
+   "attached_to_different_prey_bodies": 76,
+   "attached_to_unrelated_prey_lineages": 6
+  },
+  "+1000t": {
+   "n": 77,
+   "both_alive": 77,
+   "both_attached": 77,
+   "attached_to_different_prey_bodies": 77,
+   "attached_to_unrelated_prey_lineages": 6
+  },
+  "+2000t": {
+   "n": 77,
+   "both_alive": 77,
+   "both_attached": 69,
+   "attached_to_different_prey_bodies": 69,
+   "attached_to_unrelated_prey_lineages": 10
+  }
+ },
+ "pred_split_remerged_ever": 0,
+ "pred_split_parent_free": 0,
+ "pred_split_kid_area_over_parent_median": 0.42105263157894735,
+ "prey_split_summary": {
+  "n": 91,
+  "pred_within6": 91,
+  "bridge_pred_touching_both_daughters": 88,
+  "neck_pred_frac_median": 0.0,
+  "neck_mostly_pred": 13,
+  "coinc_pred_split": 4,
+  "kid_area_over_parent_median": 0.449438202247191
+ },
+ "prey_split_followup": {
+  "+1000t": {
+   "n_both_alive": 91,
+   "largest_kid_area_over_parent_median": 0.75,
+   "both_kids_carry_predator": 90
+  },
+  "+2000t": {
+   "n_both_alive": 91,
+   "largest_kid_area_over_parent_median": 0.5742574257425742,
+   "both_kids_carry_predator": 86
+  }
+ },
+ "composite": {
+  "tracks": 883,
+  "splits": 274,
+  "merges": 66,
+  "merge_split": 0.241,
+  "persistent_splits": 87,
+  "max_gen": 4,
+  "persistent_tracks_ge60": 65,
+  "body_plans_t3000plus": {
+   "1prey_1pred": 0.781,
+   "0prey_1pred": 0.084,
+   "1prey_0pred": 0.083,
+   "2prey_1pred": 0.04,
+   "1prey_2pred": 0.01,
+   "2prey_2pred": 0.001
+  },
+  "persistent_split_kids_both_1prey_ge1pred": 70,
+  "persistent_split_parent_plans": {
+   "2p2q": 2,
+   "2p1q": 75,
+   "1p2q": 3,
+   "1p1q": 7
+  },
+  "persistent_split_parent_born_by": {
+   "merge": 7,
+   "nucleation": 19,
+   "initial": 4,
+   "split": 57
+  },
+  "span_median_t_after3000": 1400.0
+ }
+}

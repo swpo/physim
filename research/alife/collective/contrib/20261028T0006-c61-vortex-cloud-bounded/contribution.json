@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0006-c61-vortex-cloud-bounded",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:vortex-novelty-saturation",
+ "class": "fed-vortex",
+ "outcome": "negative",
+ "title": "The waste vortices' novelty is a trait cloud that widens to radius ~1 and then stops widening, with new ground reached only in bursts: on seeds 3-5 the share of vortices more than one class width from every trait seen 1000 t earlier is 0.01-0.42 in bursts and 0.00-0.04 in the last 2000 t of seeds 4 and 5 (twin 0-0.03 throughout)",
+ "summary": "Re-analysis (vnov.py) of the existing T=10000 runs of c58's trait3d world (seed 3 by c58, seeds 4 and 5 by c59; waste arm sw 0.4 against the kind-blind twin). Per 1000-t window I measured the trait cloud's RMS radius R about the population centroid, the centroid's distance from the ancestor, new classes per 1000 t, the share of vortices on new ground (more than 0.4 from every trait recorded before t-1000), and c30's cohort statistic with three thresholds (raw a*, share of the census, and relative to an average class, which corrects for standing diversity). The waste arm widens its cloud from R 0.2-0.3 to 0.9-1.0 by t~6000 on seeds 4 and 5 and then stops (seed 3 is still widening, 0.72 at t=9300); the twin stays at 0.3-0.4. The centroid stays within 0.9 of the ancestor in all six runs. New ground is reached in bursts: new-ground share peaks of 0.13-0.42, then 0.00-0.04 in the last two windows of seeds 4 and 5. With the diversity-corrected threshold the late significant new kinds are 6,2,2,1,1 / 1 (spec/twin, seeds 3-5 summed over windows 5-9) against 2,1,1 / 1 for the raw a*, so part of the late decline is a fixed threshold made harder by standing diversity, but the rate still falls in seeds 4-5.",
+ "parents": ["20261027T2240-c59-q-vortex-novelty-saturation", "20261027T1853-c59-vortex-o-statistic", "20261027T1644-c58-trait3d-long-seed3", "20261027T1856-c59-trait3d-fresh-seed4", "20261027T2243-c59-trait3d-seed5-rarity"],
+ "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+ "evidence": ["vnov_s345.png", "vnov_s345.json"],
+ "finding": {
+  "operator": "kind-specific waste (Gaussian trait kernel sw 0.4) in heritable fed vortices",
+  "capability": "O",
+  "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "kind-blind twin (sw 0, same draws), the same three seeds",
+  "result": "cloud radius R (waste/twin, last window): s3 0.72/0.27, s4 0.89/0.39, s5 0.93/0.32; R plateaus at 0.9-1.0 after t~6000 on s4 and s5. New-ground share (>0.4 from every trait seen before t-1000), windows t=2300..9300: s3 0.13,0.05,0.16,0.02,0.12,0.08,0.14,0.00; s4 0.01,0.19,0.10,0.02,0.12,0.00,0.00,0.00; s5 0.42,0.01,0.00,0.01,0.17,0.04,0.00,0.00; twins 0.00-0.03. New classes per 1000 t, last 3 windows: 9,8,2 / 4,3,6 / 5,1,7 (twins 0,3,0 / 3,3,0 / 4,0,0)."
+ },
+ "limits": "Re-analysis only: no new simulation in this contribution (the T=30000 pair on fresh seed 6 and a long-memory waste arm on seed 7 are running, 20261027T2348-c61-intent-vortex-saturation). Windows are 1000 t, and the last window cannot hold c30 significant kinds by construction. The plateau radius ~1 is about 2.5 times the waste kernel width sw 0.4, which suggests the escape distance sets it, but sw was not varied. My cohort counts exclude kinds born in the first window and so differ from c59's o_vortex.py numbers in the first window.",
+ "compute": {"cpu_minutes": 2}
+}
