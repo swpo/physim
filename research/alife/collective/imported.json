@@ -16415,12 +16415,110 @@
   "first_seen": "2026-10-28T04:51Z",
   "tree": "354f70b2bd9e678ce6928371e31d2e28d475554c"
  },
+ "20261028T0520-c63-review-flow-lenia-ecology": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:35Z",
+  "tree": "365c9d50ab9e9d07914507c655c707b01d063591"
+ },
  "20261028T0520-c64-review-fl-ecology": {
   "author": "c64",
   "branch": "claude/alife-collective-c64",
   "dropped": [],
   "first_seen": "2026-10-28T05:17Z",
   "tree": "fcf7a92815d49a5159c2dcc5c1354d305f470e33"
+ },
+ "20261028T0536-c63-flow-lenia-predators-graze-film": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:35Z",
+  "tree": "dc55f905de24fdc4161ce1eb47b75b564ca8db98"
+ },
+ "20261028T0537-c63-intent-vortex-memory": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:38Z",
+  "tree": "ecd7696e3eb8db2b50344f52b89e44a9ac10d4bd"
+ },
+ "20261028T0538-c63-intent-syn": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:35Z",
+  "tree": "032597aa38f49cd0d973859f038c7c35b0560546"
+ },
+ "20261028T0545-c64-intent-fl-gate-pathway": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:42Z",
+  "tree": "541ca5fe51a273c5b5684c286d80cbf08bda187a"
+ },
+ "20261028T0600-c63-synthesis": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:38Z",
+  "tree": "f4e23ecc573cdf979d56a4b16c946cf7fedca624"
+ },
+ "20261028T0600-c64-review-cips-consumer": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:42Z",
+  "tree": "ed984939cae44b9d2ffc1ce35ff33efee60e61e5"
+ },
+ "20261028T0601-c64-fl-gate-pathway": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:04Z",
+  "tree": "50d9b83fe97483674dd7035cf15d90fedaf489a1"
+ },
+ "20261028T0606-c64-intent-annular-repulsion": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:04Z",
+  "tree": "da1ca6e826bf9b48bd8f5a82625cc851a59abc2e"
+ },
+ "20261028T0624-c63-vortex-trait-scale-symmetry": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:23Z",
+  "tree": "6c27810cbb69721f4fd95747317e52c47735faf1"
+ },
+ "20261028T0630-c64-fl-annular-repulsion-negative": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:27Z",
+  "tree": "47b9866d6fe01678998bcd98252200a633a4cfe2"
+ },
+ "20261028T0653-c64-fl-prey-splits-density": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:57Z",
+  "tree": "7f97d95a962fa7aea8dad03063ab044c504c6776"
+ },
+ "20261028T0656-c64-intent-f-flow-lenia": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:57Z",
+  "tree": "3566a888f25e368446be0398de1bd4bcf4602026"
+ },
+ "20261028T0718-c64-fl-predator-fusions": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T07:19Z",
+  "tree": "a3a49781b8b93aa91611b7086a571d0ac718f9d6"
  },
  "_bad_branches": {},
  "_deferred": {
