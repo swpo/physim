@@ -1,0 +1,42 @@
+{
+ "id": "20261028T1331-c00-evalready-pm-breakers",
+ "kind": "finding",
+ "mode": "control",
+ "created": "2026-10-28T13:31:00Z",
+ "title": "Negative: two ways an evaluation setup breaks phase_membrane. Plain additive noise of sd 0.01 per step on its clipped concentration fields dissolves every cell on 3 of 3 seeds (it tolerates 0.003), and PhySim-range Gaussian pulses (amplitude 3 per t for 20 t) into the catalyst, substrate or phase field make the explicit scheme go non-finite and kill the whole world",
+ "summary": "**Plain additive noise.** Same wrapper and seeds as 20261028T1330-c00-evalready-pm-noise-detect, noise added to S, K, L and phi before every step; the world then clips S, K and L at 0 and phi to [0, 1].\n- sd 0.003: 7/10/11 persistent splits, generation 2-3 (baseline 9/7/9).\n- sd 0.01: 0/0/0, no components left at t=8000 on any seed. files/sheet_plain_0.01_s0.png: most cells dissolve by t=650, the last two round cells by t=2750. Clipping turns the noise into a net source: the bath median of K rises from 0.000-0.001 to 0.030 and of L from 0.001 to 0.072 by t=1500 (seed 0). The same sd applied proportionally leaves the world intact, so the form of the noise, not its size, decides. Why the cells then dissolve was not established.\n- sd 0.03: no splits, 1-4 bodies left; sd 0.1: non-finite fields at the first frame.\n\n**PhySim-style pulses (files/pulse_s0_dur20.json).** From the seed-0 state at t=4000: a Gaussian source of width 2 or 4 px at rate 0.3, 1 or 3 per t for 20 t into S, K, L or phi, at a median body's centre, its rim and the farthest bath point, against the uninjected twin at t=100, 300 and 1000.\n- Amplitude 0.3: absorbed (phi at the centre: 9 px differ at t=1000; S in the bath: 67 px).\n- Amplitude 1: bodies survive; catalyst, link, substrate or phi injected into the bath nucleates a short-lived body (present at t=100, gone by 1000); differences spread to 500-1,900 px by t=1000 and the body count differs from the twin's by 1-2 (the world is deterministic, so any change grows).\n- Amplitude 3 into K or phi (both widths, every site), and into S at width 4 px: non-finite fields, which spread until no cell is left by t=1000. PhySim's runner stops on non-finite fields. Pulses into L at amplitude 3 were tolerated.\nPhySim allows amplitude up to 3 per time unit for up to 50 time units, a scale set for Blobkit's fields.",
+ "limits": "- One world; one prepared state and seed for the pulses.\n- Where the explicit step first fails was not traced (high substrate or catalyst makes the logistic catalysis step overshoot; not verified).\n- Amplitudes are in this world's field and time units; mapping them to PhySim units is a choice of the world contract.\n- I looked at the sd 0.003 and sd 0.01 sheets; the pulse outcomes are counts, not images.",
+ "parents": [
+  "20261028T1330-c00-evalready-pm-noise-detect"
+ ],
+ "class": "phase-field",
+ "world": "research/alife/threads/autopoiesis/worlds/phase_membrane/world.py",
+ "finding": {
+  "operator": "plain additive dynamics noise on clipped concentration fields; large Gaussian source injections",
+  "capability": "D",
+  "world": "research/alife/threads/autopoiesis/worlds/phase_membrane/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "labkit packs on seeds 0-2 at plain additive sd 0.003, 0.01, 0.03, 0.1; 72 pulse cases (4 fields x 3 sites x 3 amplitudes x 2 widths, 20 t) against the uninjected twin",
+  "result": "plain additive sd 0.01 extinguishes all cells on 3/3 seeds (proportional sd 0.01 does not); pulses of amplitude 3 for 20 t into K or phi, or into S at width 4 px, make the fields non-finite and kill the whole world; amplitude <= 1 is absorbed or nucleates transient bodies"
+ },
+ "outcome": "negative",
+ "implications": "A world contract for PhySim must (1) declare each world's noise form (here: proportional on bounded concentrations), since clipping turns plain noise into a hidden source; (2) declare per-port amplitude ranges in the world's own units, and (3) guarantee that no allowed action makes the fields non-finite (bound the injected field or stabilize the reaction step). Calibrating the apparatus to Blobkit's scale breaks this world.",
+ "evidence": [
+  "files/sheet_plain_0.01_s0.png",
+  "files/sheet_plain_0.003_s0.png",
+  "files/pulse_s0_dur20.json"
+ ],
+ "files": [
+  "files/apparatus.py",
+  "files/pm_noise.py",
+  "files/prep_s0.json",
+  "files/pulse_s0_dur20.json",
+  "files/sheet_plain_0.003_s0.png",
+  "files/sheet_plain_0.01_s0.png"
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ },
+ "notes": "Operator (c00) experiment for the PhySim eval-readiness line."
+}
