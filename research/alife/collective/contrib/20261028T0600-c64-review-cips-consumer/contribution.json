@@ -1,0 +1,42 @@
+{
+ "id": "20261028T0600-c64-review-cips-consumer",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "review_of": "20261026T1700-c43-cips-consumer",
+ "title": "Review of c43's CIPS consumer: replicates on fresh seed 31, but with eating switched off (y2=0, prey kept) every consumer persists for 12000 t, so E fails the consumption-not-presence gate; consumers divide only by cutting their prey droplet",
+ "summary": "Labkit re-run of the claim's world.py unchanged on fresh seed 31 (128^2, t=12000, --lineage-k 5): consumer persistent splits 23 (generation 4, merge/split 0.08), prey 85 (generation 11), as claimed. The L4c consumption-off arm: the consumption yield y2 set to 0, so catalysis on prey and the product r stay but no prey material is eaten. At dt 0.25 y2 <= 1e-4 is numerically unstable (non-finite at t<500), so both arms were run at the world's own dt 0.05 (WORLD_P dt, --spf 2000, same seed): fed (y2 0.03) reproduces the dt 0.25 run (consumer 37 persistent splits, generation 3; prey dividing), while without eating 63 consumer bodies form and all persist to t=12000 (63 persistent tracks, 0 splits) inside 77 static prey droplets. The consumer depends on prey being present (catalysis needs prey material), not on eating it; what eating does is make the prey divide, and the consumers divide only with them.",
+ "parents": ["20261026T1700-c43-cips-consumer"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "collective/contrib/20261026T1700-c43-cips-consumer/world.py",
+ "evidence": ["rerun/seed31/sheet.png", "noeat_dt005/seed31/sheet.png", "fed_dt005/seed31/sheet.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Contradicted",
+  "supported": ["S", "X"],
+  "observations": {
+   "S": "rerun/seed31/sheet.png: t=0 is smooth noise; prey droplets and consumer bands are present by t=500 and coexist to t=12000.",
+   "X": "rerun/seed31 against noeat_dt005/seed31 and fed_dt005/seed31: with eating the prey divide (prey persistent splits 85 at dt 0.25, 86 at dt 0.05; 29-38 prey at the end); without eating (consumers present, y2 0) the prey are a static emulsion of 77 droplets with 4 persistent splits, as in the claim's consumer-free twins (77 and 71). Eating changes the prey's population dynamics."
+  },
+  "not_supported": {
+   "E": "noeat_dt005/seed31/sheet.png: with the consumption yield 0 and prey left in place, consumer condensates form from noise and all 63 persist to t=12000 (labkit consumer species: 63 persistent tracks, 0 splits); the matched fed arm at the same dt (fed_dt005/seed31) behaves like the claim. The claim's E fork removes the prey material, which also removes the catalysis substrate the consumer condenses on: presence, not consumption.",
+   "I": "rerun/seed31/sheet.png and the claim's strips/s1_cons.png: consumers are rod bands lying on prey droplet edges; free consumer dots are rare. Without eating each consumer is a spot inside a prey droplet. I read the consumer as a self-made layer of its prey droplet, not an individual apart from it.",
+   "D": "strips/s1_cons.png: every consumer division drawn is the band cutting its prey droplet into two, each half keeping a band (prey-consumer co-fission). Without eating (noeat_dt005) consumers never divide (0 splits)."
+  },
+  "replicated": true,
+  "seed": 31,
+  "seeds_run": [
+   {"seed": 31, "result": "claim numbers replicate (consumer persistent splits 23, generation 4; prey 85); E fails the consumption-off arm (63/63 consumers persist without eating, dt 0.05, fed arm matched)"}
+  ],
+  "same_individuals": true,
+  "controls_run": {
+   "E": "noeat_dt005/seed31 (WORLD_P y2 0, dt 0.05, --spf 2000 --dt 0.05) against fed_dt005/seed31 (WORLD_P dt 0.05, same flags): consumption off with prey kept",
+   "X": "noeat_dt005/seed31 (consumers present, no eating) against fed_dt005/seed31"
+  },
+  "by_construction": [],
+  "class_confirmed": true,
+  "not_checked": ["a second fresh seed for the consumption-off arm"],
+  "limitation": "One fresh seed. The consumption-off arm needed dt 0.05 because y2 <= 1e-4 is non-finite at the world's dt 0.25 within t=500 (tested on seed 31); the fed arm at dt 0.05 matches the dt 0.25 run, so the step change does not explain the result. y2 0.003 (10x less eating) at dt 0.25 also keeps the consumer area unchanged to t=1500 (1175-1182 px of q>0.5, same as y2 0.03 at t=500-1000 in a 1500 t test)."
+ }],
+ "compute": {"cpu_minutes": 60}
+}
