@@ -1,0 +1,1276 @@
+{
+"pack": "collective/contrib/20261028T0409-c61-review-hunting/rerun/seed58",
+"K": 5,
+"guest_persistent_splits": 21,
+"guest_max_gen": 3,
+"host_persistent_splits": 0,
+"host_max_gen": 0,
+"guest_splits_coincident_with_host_split": 3,
+"guest_touching_host_frac_median": 0.041666666666666664,
+"guest_tracks_ge_L": 180,
+"L": 20,
+"guest_tracks_with_ge2_unrelated_hosts": 6,
+"guest_frac_frames_alone_median": 1.0,
+"rows": [
+{
+"id": 0,
+"life": 89,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 89
+},
+{
+"id": 1,
+"life": 47,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 44
+},
+{
+"id": 2,
+"life": 63,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 62
+},
+{
+"id": 3,
+"life": 38,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 33
+},
+{
+"id": 4,
+"life": 46,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 43
+},
+{
+"id": 5,
+"life": 60,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 56
+},
+{
+"id": 6,
+"life": 51,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 46
+},
+{
+"id": 7,
+"life": 41,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 40
+},
+{
+"id": 8,
+"life": 38,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 35
+},
+{
+"id": 9,
+"life": 40,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 39
+},
+{
+"id": 10,
+"life": 39,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 38
+},
+{
+"id": 11,
+"life": 39,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 36
+},
+{
+"id": 12,
+"life": 40,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 40
+},
+{
+"id": 13,
+"life": 42,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 40
+},
+{
+"id": 14,
+"life": 34,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 32
+},
+{
+"id": 15,
+"life": 41,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 37
+},
+{
+"id": 16,
+"life": 28,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 25
+},
+{
+"id": 17,
+"life": 29,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 29
+},
+{
+"id": 21,
+"life": 41,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 37
+},
+{
+"id": 22,
+"life": 39,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 35
+},
+{
+"id": 25,
+"life": 49,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 49
+},
+{
+"id": 26,
+"life": 46,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 47
+},
+{
+"id": 27,
+"life": 38,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 36
+},
+{
+"id": 28,
+"life": 36,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 34
+},
+{
+"id": 29,
+"life": 37,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 37
+},
+{
+"id": 32,
+"life": 44,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 40
+},
+{
+"id": 33,
+"life": 42,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 43
+},
+{
+"id": 34,
+"life": 26,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 21
+},
+{
+"id": 35,
+"life": 36,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 35
+},
+{
+"id": 36,
+"life": 45,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 42
+},
+{
+"id": 37,
+"life": 42,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 39
+},
+{
+"id": 38,
+"life": 43,
+"hosts": 2,
+"unrelated_hosts": 1,
+"frames_alone": 39
+},
+{
+"id": 39,
+"life": 38,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 37
+},
+{
+"id": 40,
+"life": 35,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 34
+},
+{
+"id": 41,
+"life": 51,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 49
+},
+{
+"id": 42,
+"life": 38,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 34
+},
+{
+"id": 43,
+"life": 39,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 37
+},
+{
+"id": 44,
+"life": 44,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 43
+},
+{
+"id": 45,
+"life": 49,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 49
+},
+{
+"id": 46,
+"life": 45,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 42
+},
+{
+"id": 47,
+"life": 54,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 53
+},
+{
+"id": 49,
+"life": 37,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 35
+},
+{
+"id": 50,
+"life": 36,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 33
+},
+{
+"id": 51,
+"life": 38,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 36
+},
+{
+"id": 53,
+"life": 36,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 32
+},
+{
+"id": 54,
+"life": 26,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 23
+},
+{
+"id": 55,
+"life": 45,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 44
+},
+{
+"id": 56,
+"life": 43,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 42
+},
+{
+"id": 57,
+"life": 43,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 39
+},
+{
+"id": 60,
+"life": 30,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 31
+},
+{
+"id": 61,
+"life": 46,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 42
+},
+{
+"id": 62,
+"life": 37,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 33
+},
+{
+"id": 63,
+"life": 37,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 33
+},
+{
+"id": 64,
+"life": 40,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 39
+},
+{
+"id": 65,
+"life": 52,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 48
+},
+{
+"id": 66,
+"life": 40,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 36
+},
+{
+"id": 67,
+"life": 36,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 33
+},
+{
+"id": 68,
+"life": 52,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 49
+},
+{
+"id": 69,
+"life": 26,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 20
+},
+{
+"id": 70,
+"life": 45,
+"hosts": 2,
+"unrelated_hosts": 1,
+"frames_alone": 41
+},
+{
+"id": 73,
+"life": 33,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 34
+},
+{
+"id": 74,
+"life": 25,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 26
+},
+{
+"id": 80,
+"life": 30,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 30
+},
+{
+"id": 81,
+"life": 35,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 35
+},
+{
+"id": 82,
+"life": 29,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 30
+},
+{
+"id": 86,
+"life": 44,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 45
+},
+{
+"id": 87,
+"life": 42,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 43
+},
+{
+"id": 88,
+"life": 39,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 39
+},
+{
+"id": 89,
+"life": 53,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 53
+},
+{
+"id": 90,
+"life": 48,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 47
+},
+{
+"id": 92,
+"life": 32,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 33
+},
+{
+"id": 93,
+"life": 60,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 60
+},
+{
+"id": 94,
+"life": 41,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 41
+},
+{
+"id": 95,
+"life": 39,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 40
+},
+{
+"id": 96,
+"life": 41,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 41
+},
+{
+"id": 97,
+"life": 65,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 64
+},
+{
+"id": 98,
+"life": 42,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 42
+},
+{
+"id": 99,
+"life": 40,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 41
+},
+{
+"id": 100,
+"life": 68,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 68
+},
+{
+"id": 101,
+"life": 24,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 25
+},
+{
+"id": 103,
+"life": 47,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 48
+},
+{
+"id": 104,
+"life": 53,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 53
+},
+{
+"id": 105,
+"life": 65,
+"hosts": 2,
+"unrelated_hosts": 1,
+"frames_alone": 63
+},
+{
+"id": 106,
+"life": 27,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 28
+},
+{
+"id": 107,
+"life": 53,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 52
+},
+{
+"id": 108,
+"life": 57,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 57
+},
+{
+"id": 109,
+"life": 40,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 39
+},
+{
+"id": 110,
+"life": 56,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 55
+},
+{
+"id": 112,
+"life": 48,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 45
+},
+{
+"id": 113,
+"life": 67,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 68
+},
+{
+"id": 114,
+"life": 51,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 50
+},
+{
+"id": 115,
+"life": 27,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 28
+},
+{
+"id": 118,
+"life": 28,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 27
+},
+{
+"id": 119,
+"life": 22,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 20
+},
+{
+"id": 120,
+"life": 50,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 51
+},
+{
+"id": 121,
+"life": 55,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 55
+},
+{
+"id": 122,
+"life": 55,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 54
+},
+{
+"id": 123,
+"life": 50,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 48
+},
+{
+"id": 124,
+"life": 47,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 47
+},
+{
+"id": 126,
+"life": 61,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 60
+},
+{
+"id": 127,
+"life": 41,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 40
+},
+{
+"id": 128,
+"life": 59,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 60
+},
+{
+"id": 129,
+"life": 54,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 54
+},
+{
+"id": 130,
+"life": 51,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 51
+},
+{
+"id": 133,
+"life": 30,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 31
+},
+{
+"id": 135,
+"life": 31,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 31
+},
+{
+"id": 136,
+"life": 43,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 43
+},
+{
+"id": 137,
+"life": 54,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 55
+},
+{
+"id": 138,
+"life": 21,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 21
+},
+{
+"id": 139,
+"life": 48,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 48
+},
+{
+"id": 142,
+"life": 60,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 60
+},
+{
+"id": 144,
+"life": 57,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 56
+},
+{
+"id": 145,
+"life": 34,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 35
+},
+{
+"id": 146,
+"life": 50,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 48
+},
+{
+"id": 147,
+"life": 59,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 60
+},
+{
+"id": 148,
+"life": 51,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 51
+},
+{
+"id": 149,
+"life": 29,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 29
+},
+{
+"id": 150,
+"life": 49,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 49
+},
+{
+"id": 151,
+"life": 53,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 50
+},
+{
+"id": 155,
+"life": 37,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 38
+},
+{
+"id": 157,
+"life": 52,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 49
+},
+{
+"id": 159,
+"life": 53,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 52
+},
+{
+"id": 160,
+"life": 41,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 41
+},
+{
+"id": 161,
+"life": 53,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 53
+},
+{
+"id": 162,
+"life": 47,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 47
+},
+{
+"id": 163,
+"life": 49,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 46
+},
+{
+"id": 164,
+"life": 39,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 36
+},
+{
+"id": 168,
+"life": 48,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 49
+},
+{
+"id": 169,
+"life": 33,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 31
+},
+{
+"id": 170,
+"life": 43,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 41
+},
+{
+"id": 171,
+"life": 44,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 45
+},
+{
+"id": 172,
+"life": 33,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 32
+},
+{
+"id": 173,
+"life": 48,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 45
+},
+{
+"id": 180,
+"life": 44,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 44
+},
+{
+"id": 181,
+"life": 46,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 44
+},
+{
+"id": 185,
+"life": 27,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 28
+},
+{
+"id": 186,
+"life": 45,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 42
+},
+{
+"id": 191,
+"life": 43,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 43
+},
+{
+"id": 192,
+"life": 42,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 43
+},
+{
+"id": 195,
+"life": 42,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 41
+},
+{
+"id": 198,
+"life": 24,
+"hosts": 2,
+"unrelated_hosts": 1,
+"frames_alone": 17
+},
+{
+"id": 199,
+"life": 40,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 38
+},
+{
+"id": 200,
+"life": 40,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 40
+},
+{
+"id": 202,
+"life": 27,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 28
+},
+{
+"id": 205,
+"life": 38,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 38
+},
+{
+"id": 210,
+"life": 24,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 25
+},
+{
+"id": 212,
+"life": 38,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 39
+},
+{
+"id": 213,
+"life": 36,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 36
+},
+{
+"id": 214,
+"life": 36,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 36
+},
+{
+"id": 216,
+"life": 35,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 36
+},
+{
+"id": 217,
+"life": 21,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 21
+},
+{
+"id": 218,
+"life": 35,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 34
+},
+{
+"id": 221,
+"life": 33,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 33
+},
+{
+"id": 223,
+"life": 33,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 33
+},
+{
+"id": 224,
+"life": 32,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 33
+},
+{
+"id": 225,
+"life": 32,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 33
+},
+{
+"id": 226,
+"life": 32,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 33
+},
+{
+"id": 227,
+"life": 31,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 31
+},
+{
+"id": 228,
+"life": 31,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 31
+},
+{
+"id": 229,
+"life": 30,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 30
+},
+{
+"id": 232,
+"life": 29,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 29
+},
+{
+"id": 233,
+"life": 24,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 25
+},
+{
+"id": 235,
+"life": 28,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 28
+},
+{
+"id": 236,
+"life": 28,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 27
+},
+{
+"id": 237,
+"life": 27,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 28
+},
+{
+"id": 240,
+"life": 21,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 22
+},
+{
+"id": 241,
+"life": 26,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 27
+},
+{
+"id": 245,
+"life": 25,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 26
+},
+{
+"id": 247,
+"life": 25,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 24
+},
+{
+"id": 248,
+"life": 25,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 25
+},
+{
+"id": 250,
+"life": 24,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 25
+},
+{
+"id": 251,
+"life": 24,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 24
+},
+{
+"id": 252,
+"life": 24,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 25
+},
+{
+"id": 253,
+"life": 24,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 25
+},
+{
+"id": 254,
+"life": 24,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 23
+},
+{
+"id": 255,
+"life": 23,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 23
+},
+{
+"id": 257,
+"life": 23,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 24
+},
+{
+"id": 258,
+"life": 23,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 23
+},
+{
+"id": 259,
+"life": 23,
+"hosts": 0,
+"unrelated_hosts": 0,
+"frames_alone": 24
+},
+{
+"id": 262,
+"life": 22,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 21
+}
+]
+}
