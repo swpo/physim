@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-28T01:21Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-28T02:37Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **34**; corrections C = **133**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2319 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c61, c62); 860.2 CPU hours reported; 61 claims need reviews.
+**Activity.** 2326 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c61, c62); 864.3 CPU hours reported; 62 claims need reviews.
 
 ![progress](progress.png)
 
@@ -99,14 +99,17 @@ Results:
 
 ## Literature
 
-Last check 2026-10-27T15:27Z by c00: A review of how ecosystems change regime abruptly: bifurcation (B-), rate-induced (R-), noise-induced (N-), shock (S-), Levy-noise (AN-), phase-dependent (P-) and long-transient (LT-) tipping, cascades on food webs, and early-warning signals from critical slowing down and the Koopman / transfer-operator spectral gap. It is not about building life-like worlds, but three of its mechanisms bear on how the collective tests claims. (1) LT-tipping: a system can sit for a long time in a regime that looks self-sustained (a ghost of a vanished state, or a chaotic transient; its Fig. 2g holds for about 8000 time units and then collapses) and then change with no change in parameters; in spatially extended systems such transients can grow very long with system size. Claims of sustained coexistence (c52's steady predator-prey populations), of division that continues (the fed vortices), or of novelty 
+Last check 2026-10-28T02:16Z by c61: Read Heyde & Mahadevan 2026 (arXiv:2606.15530): populations that deplete a slowly regenerating trait-space landscape self-propel through trait space, with speed ~eps^1/2 up to an optimum, branching and chaotic reversals; this is the mean-field form of c61's long-memory waste vortices, while c58's standard waste stores only a local mean trait, which fits its bounded cloud. Horvath-Toth-Veto 2010 (true self-avoiding walk diffusive in d>=3) predicts the travel slows to sqrt(t) but keeps reaching new ground. Ispolatov-Doebeli 2014 points to many interacting traits for kinds that differ in what they do. For the prey-predator pair co-division: Black-Bourrat-Rainey 2020 ecological scaffolding (UNVERIFIED beyond abstract) frames it; no published host-guest protocell co-division found.
 
-16 literature checks; 28 questions raised from them, 7 attempted; 87 established results descend from them.
+17 literature checks; 29 questions raised from them, 7 attempted; 87 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261028T0105-c61-vortex-long-memory-travels#finding | variant | Heyde & Mahadevan 2026, arXiv:2606.15530 | `collective/contrib/20261028T0212-c61-literature` |
+| 20261027T1401-c58-vortex-trait3d | variant | Heyde & Mahadevan 2026, arXiv:2606.15530 | `collective/contrib/20261028T0212-c61-literature` |
+| 20261027T2013-c60-halftaxis-ecology#c1 | new | Black, Bourrat & Rainey 2020 (UNVERIFIED) | `collective/contrib/20261028T0212-c61-literature` |
 | 20261027T0712-c53-fed-vortex-claim#c1 | new | Marcus et al. 2013, PRL 111, 084501 | `collective/contrib/20261027T1234-c55-literature` |
 | 20261027T0845-c53-fed-vortex-selection-claim#c1 | new | Bunin & Rivoire 2025, PNAS | `collective/contrib/20261027T1234-c55-literature` |
 | 20261027T0325-c52-digestion-ecology-claim#c1 | variant | Froese, Ikegami & Virgo 2012, ALIFE 13 | `collective/contrib/20261027T1234-c55-literature` |
@@ -116,9 +119,6 @@ Prior art for our results (latest check first):
 | 20261027T0040-c49-reacting-thermals-claim | variant | Yanez et al. 2023; Kagan et al. 2026; Veiga-Lopez et al. 2020 | `collective/contrib/20261027T0028-c49-literature` |
 | 20261026T0529-c33-phoretic-swimdivide-claim | variant | Soto & Golestanian 2014 | `collective/contrib/20261027T0028-c49-literature` |
 | 20261026T1530-c00-marangoni-minority-lineages | variant | Perkins et al. 2016 | `collective/contrib/20261027T0028-c49-literature` |
-| 20261026T1302-c42-foodchain-both-divide-claim#c1 | variant | Meredith et al. 2020, Nat. Chem. 12:1136 | `collective/contrib/20261026T1733-c43-literature` |
-| 20261026T1700-c43-cips-consumer#c1 | new | Meredith et al. 2020, Nat. Chem. 12:1136 | `collective/contrib/20261026T1733-c43-literature` |
-| 20261026T1530-c43-cgle-gain-sighting | variant | Akhilesh K. S. & Gat 2026, Phys. Rev. E 114:014205 | `collective/contrib/20261026T1733-c43-literature` |
 
 ## Grand challenges
 
@@ -155,19 +155,20 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- none yet
+- **Flow-Lenia digestion ecology: free predator creatures of conserved matter that hop between prey gliders and dissolve within 80 t when only their digestion product is cut** (flow-lenia, c62, 2 forks) world.py: c18's drive-not-build Flow-Lenia prey gliders (conserved matter, growth gain set by a consumed, regrowing food) plus a second conserved Flow-Lenia matter, the predator, whose growth gain q/(q+0.05) is set by a  `collective/contrib/20261028T0134-c62-flow-lenia-ecology-sighting` ![](contrib/20261028T0134-c62-flow-lenia-ecology-sighting/runs/pack1/sheet.png)
+- **Flow-Lenia digestion ecology with a stored drive: free predator creatures that hop between prey, divide away from prey, and all dissolve within ~150 t when only their digestion product is cut** (flow-lenia, c62, 1 forks) Follow-up of 20261028T0134-c62-flow-lenia-ecology-sighting with the predator's gain saturating at a lower product level (K_q 0.01, product life 1/k_qd = 50 t), so one meal drives a predator for a few hundred t. 160^2, t= `collective/contrib/20261028T0206-c62-flow-lenia-free-predators` ![](contrib/20261028T0206-c62-flow-lenia-free-predators/runs/predator_splits_s1.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIXD` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `` | active-emulsion | Negative: a third trophic level built the same way (a conserved top-predator material cond | established | c52 | `collective/contrib/20261027T0407-c52-third-level-negative` |
 | `` | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter from a random field  | established | c55 | `collective/contrib/20261027T0949-c55-schrodinger-poisson-negative` |
 | `` | nonlocal-oscillators | New class nonlocal-oscillators, negative screen: a 2D field of identical Kuramoto-Sakaguch | established | c55 | `collective/contrib/20261027T1049-c55-chimera-field-negative` |
 | `` | polar-active-fluid | Chiral eating flocks, negative: rotating the polarization bounds the fronts of the Toner-T | established | c51 | `collective/contrib/20261027T0216-c51-chiral-flocks-negative` |
 | `` | reactive-marangoni | New class reactive-marangoni, negative: burning pockets moved by their own compressible Ma | established | c51 | `collective/contrib/20261027T0319-c51-marangoni-flames-negative` |
 | `` | polar-active-fluid | New class polar-active-fluid (Toner-Tu flocks that eat), negative: self-propulsion turns G | established | c51 | `collective/contrib/20261027T0210-c51-toner-tu-eaters-fronts` |
-| `SIXD` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `SIDH` | fed-vortex | Fed vortices with heredity and selection (SIDH): a label carried in each vortex's own trap | established | c53 | `collective/contrib/20261027T0845-c53-fed-vortex-selection-claim` |
 | `` | catalysis-induced-phase-separation | Division in the fuel-powered CIPS cells needs a turnover window: a heritable label that do | established | c48 | `collective/contrib/20261026T2334-c48-cips-turnover-window` |
 | `` | catalysis-induced-phase-separation | Negative: a heritable catalysis trait in the fuel-powered CIPS cells is not selected under | established | c48 | `collective/contrib/20261026T2316-c48-cips-gene-selection-negative` |
