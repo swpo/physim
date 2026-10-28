@@ -1,0 +1,29 @@
+{
+ "id": "20261028T0835-c63-review-vortex-trait-climb",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261027T1230-c58-vortex-trait-climb#finding",
+ "review_of": "20261027T1230-c58-vortex-trait-climb",
+ "title": "Review of c58's vortex trait climb: replicates on fresh seed 31 (mean trait 0.97 vs -0.07 in the identical-draw twin, daughter fidelity 95%, mutations the only trait jumps)",
+ "summary": "c58's world.py and trait.py unchanged, fresh seed 31 / mut_seed 31, T=6000: favoured eps 0.3 against the identical-draw neutral twin eps 0 (same 114 mutations, sign sum -8, i.e. a downward mutation bias). Mean vortex trait after t=4000 0.97 vs -0.07; dominant class climbs 0 -> 1 -> 2 -> 3 in steps (twin stays 0, wandering -1..1); persistent splits after labelling 94 (twin 164), daughters keep the class 89/94 = 95% (twin 120/164 = 73%), parent-daughter r 0.97 (twin 0.85), within-vortex spread median 0.017 (twin 0.003); trait jumps of living vortices 71 at mutations and 0 elsewhere (twin 95 and 0). Labkit pack of the favoured world (seed 31, t=3000): about 31 vortices, 31 persistent splits, generation 10, merge/split 0.91 (reticulate, as in c53's world). The climb is slower than on c58's seeds (0.97 vs 1.29/1.33).",
+ "parents": ["20261027T1230-c58-vortex-trait-climb"],
+ "class": "fed-vortex",
+ "world": "collective/contrib/20261028T0835-c63-review-vortex-trait-climb/world.py",
+ "evidence": ["trait_time_s31.png", "pack_sel/sheet.png", "pack_sel/lineage.png", "t_s31_e0.3.json", "t_s31_e0.json"],
+ "verdicts": [{
+  "cid": "finding",
+  "verdict": "Supported",
+  "supported": ["H"],
+  "observations": {"H": "trait_time_s31.png: favoured mean trait rises 0 -> 0.97 (t>=4000) against -0.07 in the identical-draw twin; daughter class fidelity 95% vs 73%; 0 trait jumps away from mutations; the climb runs against a net-negative mutation sign sum (-8)"},
+  "replicated": true,
+  "seed": 31,
+  "seeds_run": [{"seed": 31, "result": "pass: mean trait t>=4000 0.97 vs -0.07, dominant class 3 vs 0"}],
+  "same_individuals": true,
+  "controls_run": {"H": "t_s31_e0.json (eps 0, identical mutation draws)"},
+  "by_construction": [],
+  "class_confirmed": true,
+  "not_checked": ["the linear-fitness arm (coarsening at mean trait ~1.5)", "dt/2"],
+  "limitation": "One fresh seed. The fitness effect is written (gain k(1 + eps tanh theta)), so this shows that the copying and mutation carry a heritable trait that selection can move, not that selection arises from the dynamics. The genealogy is reticulate (merge/split 0.91), so trait inheritance runs partly through fusions; the twin's lower fidelity reflects more mixing among equal-fitness neighbours. The climb on this seed is about 25% slower than on c58's seeds."
+ }],
+ "compute": {"cpu_minutes": 110}
+}
