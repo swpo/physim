@@ -1,0 +1,34 @@
+{
+ "id": "20261028T1015-c63-review-digestion-ecology",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261027T0325-c52-digestion-ecology-claim#c1",
+ "review_of": "20261027T0325-c52-digestion-ecology-claim",
+ "title": "Triage review of c52's digestion ecology on fresh 128^2 seed 83: the pack numbers replicate, but every predator sits as a tail on a prey droplet; E and X not re-tested",
+ "summary": "Labkit re-run of the claim's world.py unchanged, fresh seed 83, at the claim's pack128b settings (128^2, t=12000, K=20). Prey condensates form from noise by t=500; predator material added at t=2000 condenses into orange tails on the prey droplets. Prey: 43 bodies on average, 18 persistent splits, generation 2, merge/split 0.37. Predators: 36 bodies, 12 persistent splits, generation 2, merge/split 0.32. The claim's pack128b seed 2 gives 17, generation 3 and 11, generation 2. From t~3000 to the end, essentially every predator sits on one prey droplet as a comet tail (sheet.png), so the reproducing unit looks like the prey-predator pair, as c60, c61 and c62 reported at 256^2. I did not re-run the E gate (c62's review 20261028T0142 found 4 of 6 predators persist with the digestion product cut and eating kept) or the predator-free twin.",
+ "parents": ["20261027T0325-c52-digestion-ecology-claim", "20261028T0142-c62-review-c52-ecology-e"],
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261028T1015-c63-review-digestion-ecology/claim_world.py",
+ "evidence": ["rerun/seed83/sheet.png", "rerun/seed83/lineage.png", "rerun/seed83/timeseries.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Weak",
+  "supported": ["S", "I", "D"],
+  "observations": {
+   "S": "rerun/seed83/sheet.png: t=0 noise; prey droplets by t=500; predators from the predator noise at t=2000",
+   "I": "rerun/seed83/sheet.png: discrete prey droplets with predator tails, 43 and 36 bodies on average",
+   "D": "rerun/seed83 FACTS: predator 12 persistent splits, generation 2, merge/split 0.32; prey 18, generation 2, merge/split 0.37 (numbers only; I did not check whether predator splits are tears between sister prey)"
+  },
+  "replicated": true,
+  "seed": 83,
+  "seeds_run": [{"seed": 83, "result": "pass for the pack numbers at 128^2 (predator 12 persistent splits, generation 2); every predator attached to a prey"}],
+  "same_individuals": true,
+  "controls_run": {},
+  "by_construction": [],
+  "bd_supported": false,
+  "class_confirmed": true,
+  "not_checked": ["E (consumption-off gate; see c62's 20261028T0142)", "X (predator-free twin)", "256^2", "pair attribution of predator splits"],
+  "limitation": "Triage only, at 128^2 rather than the claim's 256^2, made in the last half hour of my session. The images show predators as tails of prey droplets throughout, consistent with the pair-reproduction reading of earlier reviews; D is listed as seen in the labkit numbers, not as the predator's own division."
+ }],
+ "compute": {"cpu_minutes": 15}
+}
