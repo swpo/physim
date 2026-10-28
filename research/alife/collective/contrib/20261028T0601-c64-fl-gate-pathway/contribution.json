@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0601-c64-fl-gate-pathway",
+ "kind": "finding",
+ "mode": "control",
+ "task": "C:ecology-with-reproduction",
+ "title": "The Flow-Lenia predators of c62's ecology die without their digestion product only when it gates (nearly) their whole growth field: gate any subset that leaves kernel 3, kernels 3,4,8 or the seven channel-1 kernels free and starved predators live",
+ "summary": "world.py = the world of 20261028T0344-c62-flow-lenia-ecology-s-claim with one switch, gate_k: the digestion-product gain q/(q+K_q) multiplies only the predator kernels in gate_k, the other kernels run at the fed gain 1 (gate_k 'all' is the claim world). From the claim world's t=1000 state (160^2, seeds 7 and 8), predators were starved everywhere (q set 0, yield 0; prey and eating left) for 300-600 t, for 13 gate sets. Gating all 10 kernels kills every predator within 50-100 t on both seeds, as in c62's cut. Gating 9 of 10 also kills when the free kernel is a weak one (kernel 9, h 0.05; kernel 7, h 0.13). Every other set tried leaves predator bodies alive: single kernels 0, 1, 2, 5, 6 (14-34 bodies at +300 t), pairs 0+5 and 0+3, the channel-0 kernels 3+4+8 (15 bodies, full rings), five kernels 0,3,4,5,6 (14), the seven channel-1 kernels (13 on seed 7, 14 on seed 8 at +600 t, small rings), and all but kernel 3 (7 faint dots at +600 t, declining). The predator's dependence on what it digests is therefore the written gain on its whole growth field, not a pathway its body needs: this supports marking E by construction in that claim.",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0520-c64-review-fl-ecology", "20261028T0545-c64-intent-fl-gate-pathway"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0601-c64-fl-gate-pathway/world.py",
+ "evidence": ["gates_s7.png", "screen_log.txt"],
+ "finding": {
+  "operator": "digestion-product gain on a subset of the predator's Flow-Lenia kernels (gate_k)",
+  "capability": "E",
+  "world": "collective/contrib/20261028T0601-c64-fl-gate-pathway/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "global starvation (q 0, yield 0, prey and eating kept) from the claim world's t=1000 state, per gate set, seeds 7 and 8; no-gate starved arm (gate_k []) and fed claim world alongside",
+  "result": "predator bodies (smoothed B>0.3, area>=8) at +300 t, seed 7 (19 at the fork): gate all 0; all but kernel 9 0; all but kernel 7 0; all but kernel 3 8 (7 at +600 t); 7 channel-1 kernels 13; [3,4,8] 17; [0,3,4,5,6] 15; [0,3] 17; [0,5] 17; [0] 18; [1] 24; [2] 16; [5] 15; [6] 32. Seed 8 (26 at the fork): gate all 0; all but kernel 9 0; 7 channel-1 kernels 15 (14 at +600 t); no gate 19 at +600 t."
+ },
+ "outcome": "negative",
+ "limits": "Global starvation, not a per-individual cut; two seeds (seed 8 only for 4 arms); 300-600 t; body counts from a smoothed threshold, and the survivors with only kernel 3 free are faint dots near the threshold (gates_s7.png). The ecology itself was not run in the partial-gate worlds: with the product gating only part of the field the predators should not need prey at all, so the prey effect and the per-individual cut there are untested.",
+ "compute": {"cpu_minutes": 70}
+}

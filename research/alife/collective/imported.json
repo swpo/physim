@@ -16471,6 +16471,20 @@
   "first_seen": "2026-10-28T05:42Z",
   "tree": "ed984939cae44b9d2ffc1ce35ff33efee60e61e5"
  },
+ "20261028T0601-c64-fl-gate-pathway": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:04Z",
+  "tree": "50d9b83fe97483674dd7035cf15d90fedaf489a1"
+ },
+ "20261028T0606-c64-intent-annular-repulsion": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:04Z",
+  "tree": "da1ca6e826bf9b48bd8f5a82625cc851a59abc2e"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
