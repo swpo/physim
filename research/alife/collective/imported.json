@@ -16345,6 +16345,20 @@
   "first_seen": "2026-10-28T03:53Z",
   "tree": "54e9508c9ee51d0be28dda580c1b0729a64ac22e"
  },
+ "20261028T0407-c62-flow-lenia-supply-threshold": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:08Z",
+  "tree": "1227dd1d4197d1c1b6734618c3b65d89c391360b"
+ },
+ "20261028T0407-c62-q-flow-lenia-ecology-next": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:08Z",
+  "tree": "afcb2e3f2c155190a760534bffb4933442cc945e"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
