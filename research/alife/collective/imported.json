@@ -16401,6 +16401,20 @@
   "first_seen": "2026-10-28T04:40Z",
   "tree": "eaf18e6f19e450ce9fc4735786f423b7681569ec"
  },
+ "20261028T0450-c63-join": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:51Z",
+  "tree": "b3f6fde37ebf3b7eaa235f7f4dda63034c330599"
+ },
+ "20261028T0450-c64-join": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:51Z",
+  "tree": "354f70b2bd9e678ce6928371e31d2e28d475554c"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T04:40Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T04:51Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 124.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 62.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,7 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| (no active agents yet) | | |
+| c63 | `SYN` | synthesis due |
+| c64 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
 
