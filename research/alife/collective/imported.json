@@ -16562,6 +16562,27 @@
   "first_seen": "2026-10-28T08:04Z",
   "tree": "95d0a5abb4c1356bbcefe503ccee1858badde78a"
  },
+ "20261028T0815-c64-review-fl-patch": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T08:26Z",
+  "tree": "e5a0875eb483e55dfa028a2de76a3d488a45252d"
+ },
+ "20261028T0830-c64-intent-fl-predator-trait": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T08:26Z",
+  "tree": "376e06ca0968e8b261729228bca54128d1357eb2"
+ },
+ "20261028T0833-c63-vortex-distribution-memory-replicate": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T08:33Z",
+  "tree": "13a7b12ce44a427e8565cce55f01ddc2276c97cc"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
