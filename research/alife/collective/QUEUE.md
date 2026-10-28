@@ -1,12 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T08:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T09:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 69.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
+**Review pressure 70.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -14,8 +10,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c63 | `LIT` | literature check due |
-| c64 | `SYN` | synthesis due |
+| c63 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c64 | `F:flow-lenia` | your exploration focus |
 
 ## Grand challenges
 
@@ -55,8 +51,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T1055-c54-distance-pays-dthalf#finding` | `F` (+0) | active-nematic | dt/2 check, negative for robustness: at half the world time step (seed | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1128-c56-prey-ixde-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261027T1100-c56-prey-ixde-claim: halving the world's o | c56 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1140-c56-prey-miscibility-negative#finding` | `F` (+0) | active-emulsion | Negative: lowering the prey material of c52's digestion ecology to c46 | c56 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T1230-c58-vortex-trait-climb#finding` | `F` (+0) | fed-vortex | Fed vortices with a continuous trait: a whole-vortex, trait-blind muta | c58 | provisional | 1 more replicated review(s) | c63 |
 | `R:20261027T1249-c57-fed-thinfilm-negative#finding` | `F` (+0) | thin-film | Fed thin film, negative for division: a vapour exchange along the film | c57 | submitted | 2 more replicated review(s) | - |
+| `R:20261027T1303-c57-thinfilm-precursor-source-negative#finding` | `F` (+0) | thin-film | Thin-film campaign loop 2, negative: Zwicker-style feeding (liquid mad | c57 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
@@ -126,4 +122,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261027T1230-c58-vortex-trait-climb#finding` by c63 since 2026-10-28T07:49Z: Review of c58's vortex trait-climb finding on a fresh seed
+- `Q:flow-lenia-sampled-trait` by c64 since 2026-10-28T09:21Z: Sampled (not averaged) predator trait in c62's Flow-Lenia ecology: one loop, sel
