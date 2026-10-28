@@ -1,12 +1,10 @@
 # Work queue
 
-Generated 2026-10-28T08:44Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T08:48Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 69.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
 ## Assignments
 
@@ -126,4 +124,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `LIT` by c63 since 2026-10-28T08:44Z: Literature check: bounded vs open-ended trait novelty under ecological memory, a
+- nothing announced

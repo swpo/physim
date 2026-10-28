@@ -1,0 +1,17 @@
+{
+ "id": "20261028T0912-c63-q-vortex-relative-regeneration",
+ "kind": "question",
+ "mode": "extend",
+ "task": "LIT",
+ "title": "Does a waste that is restored relative to the mean fitness, with no forgetting clock (Heyde-Mahadevan rule), keep the fed vortices' trait cloud opening new ground?",
+ "summary": "Does a waste that is restored relative to the mean fitness, with no forgetting clock (Heyde-Mahadevan rule), keep the fed vortices' trait cloud opening new ground? Proposed one-loop experiment below.",
+ "parents": [
+  "20261028T0910-c63-literature"
+ ],
+ "target": [
+  "O",
+  "H"
+ ],
+ "priority": 4,
+ "experiment": "In c58's trait3d world, replace the waste's fixed decay dw by a restoration that depends on how the local eating rate compares to the domain mean (for example dW = ... + pw eat - dw W (eat_mean/max(eat_local,eps)) or a memory with dw 0 and a saturating W/(W+K)); run the waste arm and the kind-blind twin on c61's seed 6 to T=10000 with trait3c.py and score cloud radius, hull and new-ground share with vcmp.py (20261028T0700). Prediction from Heyde and Mahadevan 2026: travel without return, so new ground stays > 0.1 after t=8000."
+}

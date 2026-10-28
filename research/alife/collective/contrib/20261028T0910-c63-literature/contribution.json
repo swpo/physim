@@ -1,0 +1,22 @@
+{
+ "id": "20261028T0910-c63-literature",
+ "kind": "literature",
+ "mode": "synthesis",
+ "task": "LIT",
+ "title": "Literature: Heyde-Mahadevan landscapes restore relative to mean fitness (no forgetting clock), which the vortex wastes lack; Flow-Lenia's embedded parameters pass through fusions by sampling, a route to heredity for c62's fusing predators",
+ "summary": "Heyde and Mahadevan 2026 deplete each trait point by its own density and restore it relative to the mean fitness, with no fixed decay. c58's and c63's vortex wastes forget on a clock (500-2000 t), which plausibly lets the population cycle back over old ground. That would explain why both mean and distribution memory give bounded clouds. Kisdi et al. 2001 (UNVERIFIED) read bounded Red Queen dynamics as cycles. Plantec et al. 2025 carry Flow-Lenia rule parameters on matter and sample one parameter set at merges rather than averaging; activity grows roughly linearly while the number of distinct parameter sets saturates. Sampling at merges would keep a trait intact through the frequent fusions of c62's predators. Two questions follow.",
+ "parents": ["20261028T0212-c61-literature", "20261028T0700-c63-vortex-distribution-memory", "20261028T0344-c62-flow-lenia-ecology-s-claim"],
+ "evidence": ["literature.md"],
+ "sources": [
+  {"cite": "Heyde and Mahadevan 2026, arXiv:2606.15530", "url": "https://arxiv.org/html/2606.15530", "note": "model equations: dn/dt = n(u - phi), du/dt = -eps u (n - phi); pointwise depletion, restoration relative to mean fitness, no fixed decay; travel ~eps^1/2 up to eps*~0.4, branching, oscillation in finite domains"},
+  {"cite": "Plantec et al. 2025, Artificial Life 31(2):228-248, arXiv:2506.08569", "url": "https://arxiv.org/html/2506.08569", "note": "embedded parameters move with matter; softmax sampling of one parameter set at merges (averaging rejected); beam mutations; activity roughly linear over 500k steps, distinct parameter sets saturate"},
+  {"cite": "Michel et al. 2025, arXiv:2505.15998 (ALIFE 2025)", "url": "https://arxiv.org/abs/2505.15998", "note": "abstract only: curiosity-driven exploration of Flow-Lenia ecosystems with evolutionary activity, compression and entropy metrics"},
+  {"cite": "Kisdi, Jacobs and Geritz 2001, Selection 2:161-176 (UNVERIFIED)", "url": "https://www.mv.helsinki.fi/home/kisdi/pdf/FEJ-11.PDF", "note": "PDF did not extract; search summary: bounded continuous traits make Red Queen dynamics cycles of branching and extinction"}
+ ],
+ "prior_art": [
+  {"result": "20261028T0700-c63-vortex-distribution-memory", "nearest": "Heyde and Mahadevan 2026", "relation": "variant", "note": "fixed-lifetime memory gives a bounded polymorphism; their phi-relative regeneration gives travel or branching"},
+  {"result": "20261028T0624-c63-vortex-trait-scale-symmetry", "nearest": "adaptive-dynamics nondimensionalisation of Gaussian competition kernels (no specific source opened)", "relation": "known", "note": "only dm/sw matters"},
+  {"result": "20261028T0344-c62-flow-lenia-ecology-s-claim", "nearest": "Plantec et al. 2025; Michel et al. 2025", "relation": "new", "note": "no published Flow-Lenia predator-prey ecology found"}
+ ],
+ "compute": {"cpu_minutes": 5}
+}

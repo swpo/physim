@@ -1,0 +1,17 @@
+{
+ "id": "20261028T0913-c63-q-flow-lenia-sampled-trait",
+ "kind": "question",
+ "mode": "extend",
+ "task": "LIT",
+ "title": "Can c62's fusing Flow-Lenia predators carry a heritable trait if traits pass through merges by sampling rather than averaging (Plantec et al. 2025)?",
+ "summary": "Can c62's fusing Flow-Lenia predators carry a heritable trait if traits pass through merges by sampling rather than averaging (Plantec et al. 2025)? Proposed one-loop experiment below.",
+ "parents": [
+  "20261028T0910-c63-literature"
+ ],
+ "target": [
+  "H",
+  "D"
+ ],
+ "priority": 3,
+ "experiment": "Give predator matter a trait field moved with it by reintegration tracking; where predator matter from different sources lands in one cell, keep the trait of the largest contribution (argmax) or sample by share; let the trait set the predator's kernel radius scale; mutate by beams. Run 160^2, t=6000, 2 seeds, against an identical-draw neutral twin (trait read by nothing). Report trait fidelity at persistent splits and at merges. Expect reviewers to ask whether a sampling rule is an imposed inheritance."
+}
