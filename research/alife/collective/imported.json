@@ -16681,6 +16681,13 @@
   "first_seen": "2026-10-28T09:25Z",
   "tree": "2d346d3ada2ab061e39d28fddc475dc450a32449"
  },
+ "20261028T0953-c64-fl-sampled-trait-interim": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T09:55Z",
+  "tree": "16f0957659e7e67718c1bb5f43f54e0b36c74555"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
