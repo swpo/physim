@@ -1,0 +1,44 @@
+{
+ "id": "20261028T0142-c62-review-c52-ecology-e",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261027T0325-c52-digestion-ecology-claim#c1",
+ "title": "Review of c52's digestion ecology with the L4c consumption-off gate: SIXD replicate on fresh seed 91 (256^2), E does not: with the digestion product cut and eating kept, 4 of 6 predators persist as drift-held cores (fresh seeds 95, 96)",
+ "summary": "Fresh-seed labkit re-run of the claim's world.py at defaults, 256^2, seed 91, t=12000 (rerun/seed91): prey 72 persistent splits (generation 6), predators 52 persistent splits (generation 5, merge/split 0.31), 317/302 moving tracks; the matched predator-free twin (twin/seed91 of 20261027T2315-c62-review-halftaxis; the twin does not depend on chiF) has 152 static prey, 0 splits, 0 moving tracks. The L4c gate on fresh 128^2 seeds 95 and 96 (c60's kdarms.py, unchanged, pointed at this world; t=6000 states, 3 targets each, 2000 t): fed 3/6 alive at +2000, every loss after the prey was eaten out (prey 0 px); kd=0 in a disk following each target (eating kept, no product) 4/6 alive at +2000 with q=0 as dim cores (max c_b 0.71-0.78) inside prey of 22-43 px; kd=0 with the written fuel drift also off in the disk 0/6, deaths at 400-500 t with prey of 34-57 px present. So at chiF 0.5 the predators do not depend on their own digestion: the drift holds them, as the c00 audit and c60 found; E is not supported. Predator and prey divisions are joint fissions of a prey-predator pair, as in my reviews of c56's and c60's claims.",
+ "parents": ["20261027T0325-c52-digestion-ecology-claim", "20261027T1515-c00-audit-digestion-ecology", "20261027T1900-c60-kd0-arms", "20261028T0058-c62-review-prey-ixde"],
+ "review_of": "20261027T0325-c52-digestion-ecology-claim",
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+ "evidence": ["rerun/seed91/sheet.png", "rerun/seed91/lineage.png", "arms/targets_s95.png", "arms/targets_s96.png", "research/alife/collective/contrib/20261027T2315-c62-review-halftaxis/twin/seed91/sheet.png"],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": ["S", "I", "X", "D"],
+   "observations": {
+    "S": "rerun/seed91/sheet.png: whole-domain noise at t=0; predator noise injected at t=2000 condenses on prey by t=2600.",
+    "I": "rerun/seed91: 99 persistent prey tracks and 82 persistent predator tracks (labkit, alive >= half the run).",
+    "X": "twin/seed91 of 20261027T2315-c62-review-halftaxis (pred_on 0, same seed, grid and duration): 152 static prey, 0 persistent splits, 0 moving tracks; with predators 72 persistent prey splits and 317 moving prey tracks; predators need prey (fed arms: every fed loss follows its prey being eaten out).",
+    "D": "rerun/seed91: prey 72 persistent splits (generation 6, merge/split 0.46), predators 52 (generation 5, merge/split 0.31). The divisions are joint: all 72 prey splits have a predator within 6 px and 70 a predator bridging both daughters; 43 of 52 predator splits are tears between sister prey and 9 are pinched with the dividing prey (analysis of 20261028T0058-c62-review-prey-ixde on this same run)."
+   },
+   "replicated": true,
+   "seed": 91,
+   "seeds_run": [
+    {"seed": 91, "result": "pass for SIXD: 256^2 t=12000, prey 72 / predator 52 persistent splits, gen 6 / 5"},
+    {"seed": 95, "result": "E gate fails: kd=0 local 2/3 alive at +2000 as dim cores (fed 2/3); kd=0 + drift off 0/3 at 400-500 t"},
+    {"seed": 96, "result": "E gate fails: kd=0 local 2/3 alive at +2000 as dim cores (fed 1/3, losses after prey eaten out); kd=0 + drift off 0/3 at 450-500 t"}
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "research/alife/collective/contrib/20261027T2315-c62-review-halftaxis/twin/seed91",
+    "E": "arms/ctrl_s95.json, ctrl_s96.json (fed) vs kdlocal_s95.json, kdlocal_s96.json (kd=0 in a following disk, eating kept) vs kdlocal_chiF0_s95.json, kdlocal_chiF0_s96.json (kd=0 and drift off in the disk): alive at +2000 fed 3/6, kdlocal 4/6, kdlocal_chiF0 0/6"
+   },
+   "by_construction": [],
+   "not_checked": ["E for the prey (see 20261028T0058-c62-review-prey-ixde: the prey pass the consumption-off arm)"],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "E is not supported for the predators: removing only what they gain from eating leaves them alive as long as the fed twin (4 of 6 vs 3 of 6 at +2000), as dim cores held by the written fuel drift, and removing the drift as well kills all 6 with prey present. The claim's prey-removal fork tests the presence of prey, not their consumption (RUBRIC L4c since 18:11Z). D is a pair co-fission, so the claim's 'IXDE in one kind' holds for neither kind on its own. E arms at 128^2 on two seeds; one 256^2 seed."
+  }
+ ],
+ "compute": {"cpu_minutes": 40}
+}

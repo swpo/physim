@@ -1,0 +1,14 @@
+{
+ "id": "20261028T0206-c62-flow-lenia-free-predators",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "C:ecology-with-reproduction",
+ "title": "Flow-Lenia digestion ecology with a stored drive: free predator creatures that hop between prey, divide away from prey, and all dissolve within ~150 t when only their digestion product is cut",
+ "summary": "Follow-up of 20261028T0134-c62-flow-lenia-ecology-sighting with the predator's gain saturating at a lower product level (K_q 0.01, product life 1/k_qd = 50 t), so one meal drives a predator for a few hundred t. 160^2, t=2000, patches of each kind, seeds 1 and 3 (fltrack.py every 2 t on 1.5 px-smoothed masks): 21.5-21.8 predator bodies on average, 68% free in a frame, 62 and 57 hops between prey, and 9 and 6 clean predator splits (both daughters live >= 100 t), 7 and 3 of them with a free parent; the strips (predator_splits_s1.png, _s3.png) show ring- or peanut-shaped predators pinching into two compact daughters that separate and later eat. Cutting only the digestion product everywhere at t=1000 (eating kept) takes predators 24 -> 0 by t=1150-1200 on both seeds, while fed runs keep 20-27 to t=2000. labkit (seed 1, runs/lk1) counts 22 predators, 8 persistent predator splits, generation 3, 128 moving predator tracks. Limits: most predator and prey splits re-merge (labkit merge/split 0.83-0.98), so lineages are reticulate; prey body number is within ~5% of the predator-free twin (17.1-17.7 vs 16.7-16.9), so the effect on prey is weak (more moving prey tracks: 94-105 vs 73-88); founders are planted patches (a whole-domain noise start, runs/noise1, also gives both kinds but packs the box).",
+ "parents": ["20261028T0134-c62-flow-lenia-ecology-sighting", "20261025T1932-c18-fl-drive-bg-sighting"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0206-c62-flow-lenia-free-predators/world.py",
+ "evidence": ["runs/predator_splits_s1.png", "runs/predator_splits_s3.png", "runs/lk1/sheet.png", "runs/lk1/timeseries.png", "runs/track_t1.json", "runs/track_t3.json", "runs/track_t3fork.json", "runs/track_t1fork.json", "runs/noise1/sheet.png"],
+ "limits": "WORLD_P {\"k_qy\":30,\"K_q\":0.01,\"k_qd\":0.02} (forks add qcut_t 1000, qcut_r 1000; dig05 adds k_dig 0.05; noise1 adds init noise). Tracker merges are inflated (a 3 px dilation links neighbours), so its merge counts are not lineages; clean splits were checked by eye in the strips. The predator's gain gate scales its whole growth field, so a reviewer may weigh E as switching the rule off rather than starving a pathway; the fork is global (no per-body cut yet). Two seeds, one parameter point, 160^2, t=2000.",
+ "compute": {"cpu_minutes": 70}
+}
