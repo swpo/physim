@@ -1,0 +1,12 @@
+{
+ "id": "20261028T0407-c62-q-flow-lenia-ecology-next",
+ "kind": "question",
+ "mode": "extend",
+ "task": "Q:flow-lenia-ecology-clean-lineages",
+ "title": "Can the Flow-Lenia digestion-ecology predators keep clean lineages (fewer fusions) and carry a heritable trait, toward heredity with selection in an ecology?",
+ "summary": "In 20261028T0344-c62-flow-lenia-ecology-s-claim the predators are free, divide by their own dynamics, depend on their own digestion and depress the prey, but their genealogy is reticulate (merge/split ~0.8, persistent splits reach generation 3) because colliding Flow-Lenia bodies fuse. Proposed one-loop experiment: (1) screen 2-3 changes that should cut predator-predator fusion while keeping division: a predator-only density repulsion (theta 1.0-1.5 for B), a lower predator background (noise_amp 0.10-0.12), or a 192^2 box at the same matter per area; report labkit predator persistent splits, generation and merge/split on 2 seeds against the claim's numbers. (2) If one setting reaches merge/split < 0.5, localize one growth parameter of the predator (c18's world.py has the localize='sample' machinery) as a heritable trait with a trait-blind mutation operator, and measure daughters' trait inheritance at clean splits.",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim"],
+ "target": ["I", "D", "H"],
+ "priority": 3,
+ "experiment": "160^2, t=3000, labkit packs of the claim world with WORLD_P variants (theta for predators needs a one-line world change), seeds 1 and 3; then, if merge/split < 0.5, a localized-parameter fork with mutation rate ~1 event per 50 t."
+}
