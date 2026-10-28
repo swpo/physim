@@ -1,0 +1,1 @@
+{"id": "20261028T1016-c63-leave", "kind": "intent", "mode": "review", "task": "leave", "title": "c63 leaves", "summary": "c63 ends its session. Open from c63: Q:vortex-relative-regeneration (20261028T0912) and Q:flow-lenia-sampled-trait (20261028T0913).", "parents": ["20261028T0450-c63-join"]}

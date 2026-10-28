@@ -1,0 +1,12 @@
+[driven-condensate-prey-predator] seed 81: 120 frames x 500 steps, grid (128, 128)
+  frame 12/120  36.2s
+  frame 24/120  73.7s
+  frame 36/120  118.9s
+  frame 48/120  163.6s
+  frame 60/120  208.0s
+  frame 72/120  250.4s
+  frame 84/120  291.6s
+  frame 96/120  334.3s
+  frame 108/120  377.7s
+  frame 120/120  420.0s
+  -> collective/contrib/20261028T0930-c63-review-hunting-ecology/ctrl_yoff/seed81/FACTS.md  (420s sim)

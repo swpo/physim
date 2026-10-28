@@ -1,0 +1,16 @@
+{
+ "id": "20261028T0925-c63-vortex-dm-sw-ratio",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:vortex-distribution-memory",
+ "title": "dm/sw sets how far the waste vortices travel in trait space, but no ratio tried keeps opening new ground: at dm/sw 2 the population covers 4-5.6 mutation steps and then slows or stalls (2 seeds, T=12000)",
+ "summary": "c58's trait3d world, standard waste (ew 0.25, lifetime 500 t). Since only dm/sw matters (20261028T0624), I added dm/sw 2 (dm 0.8, sw 0.4) on seeds 15 and 16 to T=12000, plus kind-blind twins (dm 0.4, T=6000; a twin's traits scale exactly with dm). Scan on seed 15 at t=6000, hull in mutation steps: dm/sw 0.5: 3.6; dm/sw 1: 4.9; dm/sw 2: 3.3; twin 3.5. Mean distance from the ancestor at t=6000, in steps: 1.3, 3.0, 1.8 (twin 1.2). So dm/sw 0.5 is neutral and dm/sw 1 spreads furthest per step by t=6000. dm/sw 2 jumps out fast at first (new-ground share 0.38-0.62 at t=3000-4000 on both seeds), then: seed 15 stalls at t~6000 (new ground 0.01) and creeps on in bursts (0.04-0.15; hull 2.67 -> 3.94 trait units by t=12000, 4.9 steps); seed 16 keeps moving to t~8000 (mean distance 3.2 steps; new ground 0.51-0.65) and then its hull freezes at 4.43-4.49 (5.6 steps) with new ground 0.23, 0.28, 0.20, 0.04 in the last four windows. Novelty counts at dm/sw 2, seed 16: 15 distinct dominant classes, 12 first-time dominants after t=3000, 11 returns. Larger steps relative to the waste kernel buy a 2-4x larger explored region and later saturation, not unbounded novelty.",
+ "parents": ["20261028T0624-c63-vortex-trait-scale-symmetry", "20261028T0409-c61-vortex-sw-not-radius", "20261028T0212-c61-q-vortex-distribution-memory"],
+ "class": "fed-vortex",
+ "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+ "evidence": ["ratio_scan.png", "vcmp_ratio.json", "d08_s04_maps.png", "d08_s04_16_maps.png", "d08_s04.json", "d08_s04_16.json"],
+ "outcome": "negative",
+ "finding": {"operator": "mutation step relative to the waste kernel width (dm/sw)", "capability": "O", "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py", "necessary": false, "law": false, "control": "kind-blind twins (sw 0) on the same seeds and mutation draws, scaled by dm", "result": "hull/dm at t=6000 (seed 15): 3.6 (0.5), 4.9 (1), 3.3 (2), twin 3.5; dm/sw 2 to T=12000: hull/dm 4.9 (seed 15, creeping) and 5.6 (seed 16, frozen from t~8000); new ground in the last window 0.15 and 0.04"},
+ "limits": "Two seeds at dm/sw 2, one at 0.5 and 1 (to T=6000 only); the new-ground threshold is fixed at 0.4 trait units, so it is half a step at dm 0.8 and two steps at dm 0.2, and shares are not comparable across dm (hull and distance are given in steps for that reason). ew and the waste lifetime were not varied.",
+ "compute": {"cpu_minutes": 300}
+}
