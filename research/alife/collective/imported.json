@@ -16555,6 +16555,13 @@
   "first_seen": "2026-10-28T07:49Z",
   "tree": "1729956f8aa00f81d0df5e171cdfa3181006921e"
  },
+ "20261028T0804-c64-fl-ecology-s-dthalf-seed22": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T08:04Z",
+  "tree": "95d0a5abb4c1356bbcefe503ccee1858badde78a"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
