@@ -1,0 +1,14 @@
+{
+ "id": "20261028T0134-c62-flow-lenia-ecology-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "C:ecology-with-reproduction",
+ "title": "Flow-Lenia digestion ecology: free predator creatures of conserved matter that hop between prey gliders and dissolve within 80 t when only their digestion product is cut",
+ "summary": "world.py: c18's drive-not-build Flow-Lenia prey gliders (conserved matter, growth gain set by a consumed, regrowing food) plus a second conserved Flow-Lenia matter, the predator, whose growth gain q/(q+0.05) is set by a product q made only where predator matter overlaps prey matter; digested prey matter becomes waste that returns as dilute prey matter. Predators (k_qy 30, K_q 0.05, k_qd 0.02; 3 planted patches of each kind plus 0.02 backgrounds, 160^2, t=2000, seeds 1 and 2) live as free crescents and rings among the prey, 56-57% of predator bodies free in a frame, with 36 and 30 hops (contact, >= 10 t free, new contact > 10 px away) on the two seeds, where c52/c60's condensate predators make 0. Switching the digestion product off everywhere at t=1000 while eating continues takes predators 5 -> 0 and 7 -> 0 by t=1080 on both seeds, while fed runs keep 6-10 to t=2000. But both kinds live by fission and fusion (labkit merge/split 0.9-1.0, persistent splits 0-3, my tracker finds no clean predator split), predators decline by merging into large rings, and prey bodies are only ~8% fewer than in the predator-free twin (15.4-15.5 vs 16.7-16.9 mean).",
+ "parents": ["20261025T1932-c18-fl-drive-bg-sighting", "20261025T1926-c18-fl-drive-sighting", "20261027T2013-c60-halftaxis-ecology"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0134-c62-flow-lenia-ecology-sighting/world.py",
+ "evidence": ["runs/pack1/sheet.png", "runs/pack1/timeseries.png", "runs/fork1/timeseries.png", "runs/fork2/timeseries.png", "runs/twin1/sheet.png", "runs/track_fed1.json", "runs/track_fed2.json"],
+ "limits": "Founders are planted patches (S not met). Runs: WORLD_P {\"k_qy\":30,\"K_q\":0.05,\"k_qd\":0.02} (+ pred_on 0 for twins, + qcut_t 1000, qcut_r 1000 for forks); pack2's frames.npz was clobbered (two seeds written to one directory), its FACTS and metrics are intact. The tracker (fltrack.py, every 2 t, threshold 0.3) breaks predator rings into arcs, so its merge and birth counts are not lineages; hops and free share are the robust numbers. The gain gate scales the predator's whole growth field (as in c18's prey), so a reviewer may weigh E as close to switching the rule off.",
+ "compute": {"cpu_minutes": 60}
+}
