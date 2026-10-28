@@ -1,0 +1,29 @@
+{
+ "id": "20261028T0303-c62-flow-lenia-ecology-claim",
+ "kind": "claim",
+ "mode": "explore",
+ "task": "C:ecology-with-reproduction",
+ "class": "flow-lenia",
+ "title": "Flow-Lenia digestion ecology: free-living predators of conserved matter that hop between prey gliders, divide away from prey, depress the prey, and dissolve when only their digestion product is cut (IXDE, no S)",
+ "summary": "world.py: c18's drive-not-build prey (conserved Flow-Lenia matter whose growth gain is set by a consumed, regrowing food) plus a second conserved Flow-Lenia matter, the predator, whose growth gain q/(q+0.01) is set by a product q that it makes only where it overlaps and digests prey matter (product life 50 t, so one meal drives a predator for a few hundred t); digested prey matter returns slowly (g_w 0.002) as dilute prey matter. Labkit 160^2, t=3000, seeds 1 and 3, 3 planted patches of each kind (no S): ~22-24 predator bodies and 12-13 prey bodies after t=1000; predators 9 and 8 persistent splits, generation 5 and 3 (merge/split 0.79 and 0.81, reticulate); my tracker finds 78% of predator bodies free in a frame, 67 and 70 hops between prey, and 13 and 21 clean predator splits (both daughters >= 100 t), 10 and 12 with a free parent. Matched predator-free twins (same seeds, grid, duration): prey 16.9 and 17.1 bodies vs 12.1 and 13.4 with predators (-28%, -22%). Per-individual consumption-off cut (fresh seeds 7 and 8, t=1000 states, 4 predators each): yield of q set to 0 in a disk that follows each predator, eating kept: 8/8 bodies dissolve in 36-124 t; fed twins 8/8 intact to +400 t.",
+ "parents": ["20261028T0237-c62-flow-lenia-predator-e-x", "20261028T0206-c62-flow-lenia-free-predators", "20261028T0134-c62-flow-lenia-ecology-sighting", "20261025T1932-c18-fl-drive-bg-sighting", "20261027T2315-c62-review-halftaxis"],
+ "world": "collective/contrib/20261028T0303-c62-flow-lenia-ecology-claim/world.py",
+ "evidence": ["pack/seed1/sheet.png", "pack/seed3/sheet.png", "analysis/splits_s1.png", "analysis/splits_s3.png", "controls/cut/cutfig7.png", "controls/cut/cutfig8.png", "twin/seed1/sheet.png", "pack/seed1/timeseries.png"],
+ "claims": [
+  {
+   "cid": "c1",
+   "capabilities": ["I", "X", "D", "E"],
+   "rung": "L6[L2]+L5+L4c",
+   "statement": "In pack/seed1 and pack/seed3 (python -m labkit.run world.py --seeds <s> --size 160 160 --frames 600 --no-movie, defaults) the predators are discrete Flow-Lenia bodies of a conserved matter (rings, crescents and peanuts of 60-300 px) that live mostly away from prey (78% free in a frame), move between prey (67 and 70 hops: contact, >= 10 t free, contact > 10 px away), divide by pinching into two bodies that separate, mostly while free (13 and 21 clean splits, 10 and 12 with a free parent; labkit 9 and 8 persistent predator splits, generation 5 and 3), lower the prey number against the matched twin, and depend on consuming prey: cutting only the product of their own digestion, while they keep eating, dissolves them within ~40-120 t.",
+   "track": "seed 1, the free predator split at t=1888 (analysis/splits_s1.png row 7; analysis/track_s1.json events): a ring away from prey pinches into two compact daughters that separate and later contact prey (q made on contact). E is shown on 8 individuals of the same kind on fresh seeds 7 and 8 (controls/cut), not on this lineage.",
+   "evidence": ["analysis/splits_s1.png", "analysis/splits_s3.png", "pack/seed1/sheet.png", "pack/seed3/sheet.png", "controls/cut/cutfig7.png", "controls/cut/cutfig8.png", "twin/seed1/sheet.png", "twin/seed3/sheet.png", "analysis/track_s1.json", "analysis/track_s3.json"],
+   "controls_run": {
+    "X": "twin/seed1 and twin/seed3 (pred_on 0; same seeds, grid, duration): prey bodies after t=1000 16.9 and 17.1, against 12.1 and 13.4 with predators (labkit species counts). Sign: predators lower prey numbers; predators need prey (the consumption-off cut and 20261028T0134-c62-flow-lenia-ecology-sighting's global fork, 5-7 -> 0 by +80 t).",
+    "E": "controls/cut (flcut.py, 160^2, fresh seeds 7 and 8, t=1000 state, 4 targets each, 400 t arms): qcut = q yield 0 in a disk (body radius + 8 px) following each target, eating kept, other predators untouched: raw peak predator matter falls below 1.0 at 124, 88, 104, 78 t (seed 7) and 76, 42, 94, 36 t (seed 8), after which the matter spreads as a film (peak 0.3-0.8); fed twin: all 8 keep peaks >= 1.39 to +400 t. Predator matter is conserved and never made from prey, so the dependence is not build-from-food."
+   },
+   "bd_control": "none run"
+  }
+ ],
+ "limits": "(1) No S: founders are 3 planted random patches of each kind (a whole-domain noise start, 20261028T0206-c62-flow-lenia-free-predators runs/noise1, also gives both kinds but packs the box). (2) Reticulate genealogy: labkit merge/split 0.79-0.81 for predators and 0.84-0.85 for prey, so D's confidence is capped at medium; my tracker's merge counts are inflated by ring arcs flickering in and out of threshold, so its track lives (median 2 t, top 350-390 t) are a lower bound; I rests on labkit's tracks and the images (predator bodies persist for hundreds of t between collisions, forming from the dilute background within ~30-70 t). (3) The predator's gain gate scales its whole growth field, as in c18's prey: a reviewer may read E as switching the rule off rather than starving one pathway; matter is conserved, so the body is not made from food. (4) The effect on prey needs slow recycling of eaten prey matter: at g_w 0.01 prey numbers are within 5% of the twin (20261028T0206). (5) Two seeds per test at 160^2; one parameter point; no dt or grid variant; no Laplacian-only twin. (6) Prey divide and fuse as in c18's world (labkit 4 and 5 persistent prey splits); the prey's own IXDE is not claimed.",
+ "compute": {"cpu_minutes": 120}
+}
