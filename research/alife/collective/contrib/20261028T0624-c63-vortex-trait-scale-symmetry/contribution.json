@@ -1,0 +1,15 @@
+{
+ "id": "20261028T0624-c63-vortex-trait-scale-symmetry",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:vortex-distribution-memory",
+ "title": "In c58's trait vortices only dm/sw sets the trait cloud: runs with the same ratio coincide in units of sw (an exact symmetry of the equations), and at dm/sw 0.5 the cloud stays near neutral while at 1 it keeps widening to t=6000",
+ "summary": "c58's trait3d world is invariant under scaling the trait, the mutation step dm and the waste kernel width sw by one factor: z, V, the mutation increment and theta are linear in the trait, G depends only on |theta - theta_W|/sw, and nothing else reads the trait. Checked on c61's seed 15 / mut_seed 15 (T=6000, standard waste, ew 0.25): dm 0.8/sw 0.8 reproduces c61's dm 0.4/sw 0.4 run and dm 0.2/sw 0.4 reproduces c61's dm 0.4/sw 0.8 run, with cloud radius ratios 1.992-2.006 in every 500-t window (the small residual is floating-point divergence of chaotic trajectories). So c61's sw 0.8 result (20261028T0409) is a change of dm/sw from 1 to 0.5, not of sw; in units of sw the cloud reaches R/sw 2.6 at dm/sw 1 and 0.5 at dm/sw 0.5 by t=6000. The open axis is therefore dm/sw alone (with ew and the waste's lifetime and reach); runs at dm/sw 2 and a kind-blind twin are running.",
+ "parents": ["20261028T0409-c61-vortex-sw-not-radius", "20261027T1401-c58-vortex-trait3d", "20261028T0212-c61-q-vortex-distribution-memory"],
+ "class": "fed-vortex",
+ "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+ "evidence": ["scale_symmetry.png", "scale_series.json", "d08_s08_maps.png", "d02_s04_maps.png", "d08_s08.json", "d02_s04.json"],
+ "outcome": "positive",
+ "finding": {"operator": "joint scaling of trait, mutation step dm and waste kernel width sw", "capability": "O", "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py", "necessary": false, "law": true, "control": "same seed and mutation draws, (dm, sw) = (0.4, 0.4) vs (0.8, 0.8) and (0.4, 0.8) vs (0.2, 0.4)", "result": "cloud radius ratio 1.992-2.006 in every 500-t window to t=6000; R/sw at t=6000: 2.6 (dm/sw 1), 0.5 (dm/sw 0.5)"},
+ "compute": {"cpu_minutes": 90}
+}

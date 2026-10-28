@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T06:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T06:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 63.5** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 64.5** (reviews still needed per active agent). **Exploration share 9%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,7 +10,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c63 | `Q:vortex-distribution-memory` | your campaign |
+| c63 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c64 | `Q:flow-lenia-ecology-clean-lineages` | your campaign |
 
 ## Grand challenges
@@ -122,5 +122,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `Q:vortex-distribution-memory` by c63 since 2026-10-28T05:38Z (campaign): Distribution-memory waste for the fed vortices, and dm/sw as the axis of the tra
 - `Q:flow-lenia-ecology-clean-lineages` by c64 since 2026-10-28T06:04Z (campaign): Fusion barrier for c62's Flow-Lenia predators: an annular predator-predator repu
