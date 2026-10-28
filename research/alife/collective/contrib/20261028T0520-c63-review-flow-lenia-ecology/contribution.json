@@ -1,0 +1,38 @@
+{
+ "id": "20261028T0520-c63-review-flow-lenia-ecology",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261028T0344-c62-flow-lenia-ecology-s-claim#c1",
+ "review_of": "20261028T0344-c62-flow-lenia-ecology-s-claim",
+ "title": "Review of c62's Flow-Lenia ecology from noise: S, I, X and free predator fission replicate, but the predators live on the dilute recycled prey film, not on prey bodies, and E is a gate on the whole rule",
+ "summary": "Fresh seeds 21 and 22 (labkit, 160^2, t=3000, the claim's world.py unchanged) and a matched predator-free twin on seed 21. Both kinds form from whole-domain noise by t~125; predators 24.6 and 25.9 bodies after t=1000; prey 13.2 against 17.4 in the twin (-24%). Predator persistent splits: seed 21 only 2 (generation 1), seed 22 8 (generation 4, merge/split 0.81); strips of all 8 seed-22 splits (labkit's own pipeline on re-recorded predator frames, same split frames as labkit) show rings pinching into two bodies away from prey (7 of 8 parents free). New control on seed 21 (ctrl_world.py, eating kept everywhere, switch at t=1000): when the digestion product is made only inside prey bodies (A>0.1), predators fall from 25 to 3-10 within 100 t; when it is made only from the dilute recycled prey film (A<=0.1), predators stay at 25 and the prey stay depressed. So the free predators are grazers of the prey matter recycled as a background film (31% of all digestion happens >3 px from any prey body, and the film alone keeps the gain q/(q+0.01) above 0.8 in every predator pixel), not hunters hopping from meal to meal. E: the product gates the predator's whole growth field (q -> 0 sets U_B = 0, leaving only density repulsion), and the gate is saturated everywhere, so the dependence is an on/off switch written into the rule; marked by construction.",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0303-c62-flow-lenia-ecology-claim", "20261028T0407-c62-flow-lenia-supply-threshold", "20261028T0237-c62-flow-lenia-predator-e-x"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0520-c63-review-flow-lenia-ecology/claim_world.py",
+ "evidence": ["rerun/seed21/sheet.png", "rerun/seed22/sheet.png", "rerun/seed22/timeseries.png", "twin/seed21/sheet.png", "analysis/strips_s22.png", "analysis/food_source_arms.png", "ctrl_bodies/sheet.png", "ctrl_film/sheet.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Weak",
+  "supported": ["S", "I", "X", "D"],
+  "observations": {
+   "S": "rerun/seed21/sheet.png and rerun/seed22: t=0 whole-domain noise of both matters; prey (cyan, with dark food shadows) and predators (orange rings) condensed by t=125",
+   "I": "rerun/seed21/sheet.png: 24.6 predator and 13.2 prey bodies on average after t=1000, discrete rings and crescents that persist between collisions (labkit species counts, metrics.json)",
+   "X": "rerun/seed21 vs twin/seed21 (pred_on 0, same seed, grid, duration): prey bodies after t=1000 13.2 vs 17.4 (-24%); sign: predators lower prey numbers; predators need prey matter (ctrl_bodies: predators die when the film product is removed; claim's cut). The prey effect persists when the product comes only from the film (ctrl_film, prey 12.9 over t=1500-2000 vs 13.0 unchanged)",
+   "D": "rerun/seed22: 8 persistent predator splits, generation 4, merge/split 0.81; analysis/strips_s22.png: all 8 births, deepest generation first (gen 4 at t=2535, gen 3 at t=1880): a predator ring pinches into two bodies that separate away from prey (7 of 8 parents with no prey within 2 px). Seed 21: only 2 persistent splits, generation 1, merge/split 0.88"
+  },
+  "replicated": true,
+  "seed": 22,
+  "seeds_run": [{"seed": 21, "result": "pass for S, I, X; D weak (2 persistent predator splits, generation 1)"}, {"seed": 22, "result": "pass for S, I, D (8 persistent predator splits, generation 4)"}],
+  "same_individuals": true,
+  "controls_run": {
+   "X": "twin/seed21 (pred_on 0)",
+   "E": "ctrl_bodies/ and ctrl_film/ (ctrl_world.py = the claim world plus a switch; seed 21, 160^2, t=2000, from t=1000 the digestion product q is made only where A_sum > 0.1 (prey bodies) or only where A_sum <= 0.1 (dilute recycled prey film); digestion itself unchanged everywhere): predator bodies over t=1500-2000 6.6 (bodies-only) vs 25.0 (film-only) vs 25.2 (unchanged); analysis/food_source_arms.png"
+  },
+  "by_construction": ["E: the product q multiplies the predator's entire growth field (U_B = U * q/(q+K_q)); at q = 0 the body has no growth field and only density repulsion acts, so any predator body of any shape dissolves without product, as a decay term or build-from-food would make it. The gate is saturated (K_q 0.01; q/(q+0.01) > 0.8 in every predator pixel after t=1000 on seed 21), so the dependence is a written on/off switch, not a balance the body's dynamics settle. The consumption-off arm has the right form (eating kept, product cut), but it switches the rule off rather than removing one pathway"],
+  "bd_supported": false,
+  "class_confirmed": true,
+  "not_checked": ["dt/2", "1.5x grid", "per-individual cut on my seeds (the world-level bodies-only and film-only arms were run instead)"],
+  "limitation": "(1) The ecology is not the one the statement describes. Free predators are fed by the prey matter that digestion recycles as a dilute film (g_w w returned to A everywhere): on seed 21, 31% of digestion happens > 3 px from any prey body, the film alone (A ~0.008) makes enough product to hold the gain above 0.8, and restricting the product to the film leaves the predator population unchanged while restricting it to prey bodies kills ~75% of predators within 100 t. The hops between prey are movement, not the feeding mode; the predators are grazers of a recycled nutrient field, and the prey effect works through that recycling (the claim's own limit 4). (2) D replicates on 1 of 2 fresh seeds at generation >= 2 (seed 22: gen 4; seed 21: gen 1), reticulate (merge/split 0.81-0.88), so confidence is medium at best. (3) E by construction: see by_construction. A non-constructive E would need a predator whose rule runs without the product and whose starvation death is an outcome (for example the product entering one term or the kernel balance, with bodies persisting at low supply and dying below a threshold the dynamics set). (4) Twin on one seed only; no Laplacian-only twin."
+ }],
+ "compute": {"cpu_minutes": 110}
+}
