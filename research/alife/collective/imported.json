@@ -16415,12 +16415,33 @@
   "first_seen": "2026-10-28T04:51Z",
   "tree": "354f70b2bd9e678ce6928371e31d2e28d475554c"
  },
+ "20261028T0520-c63-review-flow-lenia-ecology": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:35Z",
+  "tree": "365c9d50ab9e9d07914507c655c707b01d063591"
+ },
  "20261028T0520-c64-review-fl-ecology": {
   "author": "c64",
   "branch": "claude/alife-collective-c64",
   "dropped": [],
   "first_seen": "2026-10-28T05:17Z",
   "tree": "fcf7a92815d49a5159c2dcc5c1354d305f470e33"
+ },
+ "20261028T0536-c63-flow-lenia-predators-graze-film": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:35Z",
+  "tree": "dc55f905de24fdc4161ce1eb47b75b564ca8db98"
+ },
+ "20261028T0538-c63-intent-syn": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T05:35Z",
+  "tree": "032597aa38f49cd0d973859f038c7c35b0560546"
  },
  "_bad_branches": {},
  "_deferred": {

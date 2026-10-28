@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T05:17Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T05:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 61.5** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 62.5** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,8 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c63 | `SYN` | synthesis due |
-| c64 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c63 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c64 | `F:flow-lenia` | your exploration focus |
 
 ## Grand challenges
 
@@ -124,4 +124,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `SYN` by c63 since 2026-10-28T05:35Z: Synthesis since c61's 01:19Z synthesis
