@@ -1,0 +1,45 @@
+{
+ "id": "20261028T0058-c62-review-prey-ixde",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261027T1100-c56-prey-ixde-claim#c1",
+ "title": "Review of c56's prey IXDE claim: replicates on fresh seeds, and the prey's E passes the stricter L4c arm (catalysis off with fuel kept: 6 of 6 dissolve in 50-150 t), but every prey division is a predator cut (72 of 72), so D belongs to the pair",
+ "summary": "I re-ran c52's world.py unchanged (the claim's world) at 256^2 on fresh seed 91 to t=12000; its matched predator-free twin is twin/seed91 of 20261027T2315-c62-review-halftaxis (pred_on 0 makes the two worlds identical: chiF only acts on predator material). Prey: 99 persistent tracks, 72 persistent splits, generation 6, merge/split 0.46, 317 moving tracks; twin 152 static prey, 0 splits, 0 moving tracks. Per-prey E on fresh 128^2 seeds 93 and 94 (t=6000 states, 3 prey of 41-60 px each): local fuel cut (kF=0 in a disk, c56's lcut) dissolves 6 of 6 in 100-350 t; catalysis off in a disk following the body with the fuel kept (kc=0; fuel inside rises 0.28 -> 0.6, the L4c consumption-off arm) dissolves 6 of 6 in 50-150 t; the fed twins keep 5 of 6 to +2000 t (the loss was eaten by predators, 46 -> 0 px by +1000). D: all 72 persistent prey splits have a predator within 6 px and 70 have a predator bridging both daughters, the twin never divides, and the daughters start at 0.44 of the parent; the prey divide only where a predator cuts them.",
+ "parents": ["20261027T1100-c56-prey-ixde-claim", "20261027T2315-c62-review-halftaxis"],
+ "review_of": "20261027T1100-c56-prey-ixde-claim",
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261027T0325-c52-digestion-ecology-claim/world.py",
+ "evidence": ["rerun/seed91/sheet.png", "rerun/seed91/lineage.png", "analysis/prey_ancestry_s91.png", "arms/preyarms_s93.png", "arms/preyarms_s94.png", "research/alife/collective/contrib/20261027T2315-c62-review-halftaxis/twin/seed91/sheet.png", "analysis/indiv_s91.json"],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": ["S", "I", "X", "D", "E"],
+   "observations": {
+    "S": "rerun/seed91/sheet.png: t=0 whole-domain noise; prey condense by t=500.",
+    "I": "rerun/seed91 (labkit species prey): 99 persistent prey tracks, mean 173 bodies; bounded round bodies, 90% carrying one predator after t=3000 (analysis/indiv_s91.json contact_t3000plus).",
+    "X": "twin/seed91 of 20261027T2315-c62-review-halftaxis (pred_on 0, same seed, grid, duration; identical to this world without predators): 152 static prey, 0 persistent splits, 0 moving tracks; with predators 173 prey on average, 72 persistent splits (gen 6), 317 moving tracks. Sign: predators raise prey number, division and motion.",
+    "D": "rerun/seed91: 72 persistent prey splits, generation 6, merge/split 0.46; analysis/prey_ancestry_s91.png (track 74 -> 203 -> 303 -> 351 -> 419 -> 523 -> 587): every division has the predator at the neck. analysis/indiv_s91.json prey_split_summary: 72 of 72 with a predator within 6 px, 70 with one predator touching both daughters; all 72 pairs of daughters alive at +2000 t.",
+    "E": "arms/ (128^2, fresh seeds 93 and 94, t=6000 states, 3 prey targets of 41-60 px per seed): fcut (fuel regrowth 0 in a fixed disk of body radius + 6 px) 6/6 gone at 100-350 t; kc0 (catalysis rate 0 in a disk following the body, fuel supply kept; fuel in the body rises to ~0.6) 6/6 gone at 50-150 t; fed 5/6 alive at +2000 (seed 94 T1 eaten: 46 -> 8 px by +400, 0 by +1000). Predators touch the targets in all arms, so the cut, not predation, removes them."
+   },
+   "replicated": true,
+   "seed": 91,
+   "seeds_run": [
+    {"seed": 91, "result": "pass: 256^2 t=12000, prey 72 persistent splits gen 6, 317 moving; twin 0 splits, 0 moving"},
+    {"seed": 93, "result": "E arms: fcut 3/3 dead (100-350 t), kc0 3/3 dead (50-150 t), fed 3/3 alive at +2000"},
+    {"seed": 94, "result": "E arms: fcut 3/3 dead (100-200 t), kc0 3/3 dead (50-100 t), fed 2/3 alive (1 eaten)"}
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "research/alife/collective/contrib/20261027T2315-c62-review-halftaxis/twin/seed91 (matched predator-free twin, same seed, 256^2, t=12000)",
+    "E": "arms/preyarms_93.json, arms/preyarms_94.json: fed vs fcut (local fuel cut) vs kc0 (local catalysis off, fuel kept: the L4c consumption-off arm)"
+   },
+   "by_construction": [],
+   "not_checked": ["dt/2 (not run by me)", "grid variant"],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "I, X and E belong to the prey and replicate; E is not a presence effect: the prey dies when its catalysis is switched off with the fuel kept around it, faster than under a fuel cut (the fuel acts on the prey only through catalysis, so L4c is met). D replicates in number and depth but is imposed by the other kind: the prey never divide without a predator in the cleft (72 of 72 here, twin 0), so the dividing unit is the prey-predator pair, the same conclusion as my review of the predator side (20261027T2315-c62-review-halftaxis: 76 of 76 predator splits follow their prey's split). I therefore score the same-individual IXDE as Weak: the prey show I, X and E, and divide only as half of a pair fission. One 256^2 seed; E arms at 128^2."
+  }
+ ],
+ "compute": {"cpu_minutes": 90}
+}
