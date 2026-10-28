@@ -1,0 +1,15 @@
+{
+ "id": "20261028T0833-c63-vortex-distribution-memory-replicate",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:vortex-distribution-memory",
+ "title": "The distribution-memory waste's bounded trait cloud does not depend on the random-feature draw: other frequencies give the same plateau (seed 6, T=6000)",
+ "summary": "Replicate of 20261028T0700-c63-vortex-distribution-memory on seed 6 / mut_seed 6 (standard waste) with rff_seed 1 instead of 0, so the kernel's anisotropy and tail revivals are drawn independently. Cloud radius per 1000 t: 0.31, 0.58, 0.56, 0.56, 0.55, 0.56 (rff_seed 0: 0.32, 0.53, 0.61, 0.64, 0.59, 0.59; mean-trait waste 0.23 -> 0.84); hull 1.32 (rff_seed 0: 1.39; mean waste 2.10); share on new ground 0.03, 0.09, 0.00, 0.01 (rff_seed 0: 0.08, 0.04, 0.01, 0.02). So the early plateau at R ~0.55-0.6 and the end of new ground by t~5000 are properties of a waste that remembers the trait distribution at this lifetime, not of one kernel draw.",
+ "parents": ["20261028T0700-c63-vortex-distribution-memory"],
+ "class": "fed-vortex",
+ "world": "collective/contrib/20261028T0700-c63-vortex-distribution-memory/world.py",
+ "evidence": ["vcmp_r6b.json", "r6b_rff_maps.png", "r6b_rff.json"],
+ "outcome": "negative",
+ "finding": {"operator": "kind-specific waste that stores the eaters' trait distribution (random features), second frequency draw", "capability": "O", "world": "collective/contrib/20261028T0700-c63-vortex-distribution-memory/world.py", "necessary": false, "law": false, "control": "same seed and mutation draws, rff_seed 0 vs 1, and c61's mean-waste arm", "result": "R at t=6000 0.56 (rff_seed 1), 0.59 (rff_seed 0), 0.84 (mean waste); hull 1.32, 1.39, 2.10; new ground after t=5000 <= 0.02 in both rff arms"},
+ "compute": {"cpu_minutes": 120}
+}
