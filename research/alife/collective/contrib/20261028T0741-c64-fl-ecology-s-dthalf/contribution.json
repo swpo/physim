@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0741-c64-fl-ecology-s-dthalf",
+ "kind": "finding",
+ "mode": "control",
+ "task": "F:flow-lenia",
+ "title": "dt/2 check of c62's Flow-Lenia ecology from whole-domain noise (fresh seed 21): predators still form, divide (14 persistent splits, generation 4) and lower the prey (13.7 vs 22.5 in the dt/2 twin)",
+ "summary": "c62's world_dt.py (20261028T0326-c62-flow-lenia-ecology-robustness: every per-step reaction and diffusion increment scaled by dt/0.2, so it equals the claim world at dt 0.2) run with the S-claim's noise start (WORLD_P dt 0.1, init noise, noise_amp 0.15, no backgrounds), --spf 50 --dt 0.1 so frames stay 5 t apart, 160^2, t=3000, fresh seed 21, with the matched predator-free twin at dt 0.1. Prey and predators condense from the noise as at dt 0.2 (dthalf/seed21/sheet.png). Predators 27.8 bodies after t=1000, labkit predator persistent splits 14, generation 4, merge/split 0.64 (the same seed at dt 0.2, 20261028T0520-c64-review-fl-ecology: 24.6 bodies, 2 persistent splits, generation 1, merge/split 0.88). Prey 13.7 bodies after t=1000 against 22.5 in the dt/2 twin (-39%; at dt 0.2: 13.2 vs 17.4, -24%). The ecology's S, I, X and D survive halving the step on this seed; the predator-free prey count itself moves with the step (22.5 vs 17.4).",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0326-c62-flow-lenia-ecology-robustness", "20261028T0520-c64-review-fl-ecology"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0326-c62-flow-lenia-ecology-robustness/world_dt.py",
+ "evidence": ["dthalf/seed21/sheet.png", "dthalf_twin/seed21/sheet.png", "dthalf/seed21/FACTS.md"],
+ "finding": {
+  "operator": "Flow-Lenia digestion ecology (c62) at half the integration step",
+  "capability": "D",
+  "world": "collective/contrib/20261028T0326-c62-flow-lenia-ecology-robustness/world_dt.py",
+  "necessary": false,
+  "law": false,
+  "control": "same seed at dt 0.2 (c64 review re-run) and matched predator-free twin at dt 0.1",
+  "result": "dt 0.1 seed 21: predators 27.8, persistent splits 14, gen 4, merge/split 0.64; prey 13.7 vs twin 22.5"
+ },
+ "outcome": "positive",
+ "limits": "One seed (seed 22 at dt/2 running for a follow-up). Rt_move's sigma and dd are in grid units and unchanged, so this halves time only. The twin's prey count differs between steps (17.4 at dt 0.2, 22.5 at dt 0.1), so the prey effect's size is step dependent. E (the per-predator cut) not re-run at dt/2.",
+ "compute": {"cpu_minutes": 45}
+}

@@ -1,0 +1,20 @@
+[cips-consumer] seed 71: 120 frames x 400 steps, grid (128, 128)
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:80: RuntimeWarning: overflow encountered in square
+  feed = 0.0 if cut else P["k1"] * u * ca ** 2 + P["k0"] * u
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:82: RuntimeWarning: overflow encountered in square
+  cat = P["kr"] * ca ** P["na"] * np.clip(q, 0, None) ** 2 * (1 - r)
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:82: RuntimeWarning: invalid value encountered in multiply
+  cat = P["kr"] * ca ** P["na"] * np.clip(q, 0, None) ** 2 * (1 - r)
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:85: RuntimeWarning: overflow encountered in power
+  mu = pa ** 3 - pa - P["A"] * pa
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:40: RuntimeWarning: overflow encountered in multiply
+  slope = np.where(d1 * d2 > 0, 2 * d1 * d2 / (d1 + d2 + 1e-300), 0.0)
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:50: RuntimeWarning: overflow encountered in multiply
+  flux = np.where(vf > 0, vf * L * (1 - R), vf * R * (1 - L))
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:51: RuntimeWarning: invalid value encountered in subtract
+  out += flux - np.roll(flux, 1, ax)
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:51: RuntimeWarning: invalid value encountered in add
+  out += flux - np.roll(flux, 1, ax)
+/home/user/physim/research/alife/collective/contrib/20261028T0745-c63-review-cips-consumer/claim_world.py:91: RuntimeWarning: invalid value encountered in divide
+  s["u"] = ops.irfft2(ops.rfft2(u + dt * (P["rr"] * w - feed)) / s["du_"], sh)
+non-finite fields at frame 1

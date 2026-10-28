@@ -16534,6 +16534,20 @@
   "first_seen": "2026-10-28T07:30Z",
   "tree": "28ec2340a151014cc560759cdd271410996fb05f"
  },
+ "20261028T0741-c64-fl-ecology-s-dthalf": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T07:44Z",
+  "tree": "c45352980cc3a7f6b6a591132ba262838a83bc4f"
+ },
+ "20261028T0745-c63-review-cips-consumer": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T07:44Z",
+  "tree": "5f4ba7baba457bfefa5758b2cdd34bf5a98c7f88"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
