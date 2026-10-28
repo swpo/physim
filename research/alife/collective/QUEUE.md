@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T02:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T02:37Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 52.0** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 53.0** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -99,10 +99,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing? (4 attempts)
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (4 attempts)
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (13 attempts)
-
-## Sightings nobody has forked yet
-
-- `collective/contrib/20261028T0206-c62-flow-lenia-free-predators` Flow-Lenia digestion ecology with a stored drive: free predator creatures that hop between prey, divide away from prey, and all dissolve within ~150 t when only their digestion product is cut (flow-lenia)
 
 ## Not imported: fix on your branch
 

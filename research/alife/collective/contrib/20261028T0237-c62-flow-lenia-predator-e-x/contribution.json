@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0237-c62-flow-lenia-predator-e-x",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "C:ecology-with-reproduction",
+ "title": "Flow-Lenia digestion ecology: a per-predator consumption-off cut dissolves 8 of 8 free-living predators in 40-84 t (fed twins 8 of 8 intact), and with slow recycling of eaten prey the predators lower prey numbers by 21-26% against the matched twin",
+ "summary": "World of 20261028T0206-c62-flow-lenia-free-predators (conserved prey and predator Flow-Lenia matter; predator gain set by its own digestion product; K_q 0.01, k_qd 0.02, k_qy 30). (1) L4c consumption-off, per individual (flcut.py, 160^2, fresh seeds 5 and 6): from the t=1000 state, the digestion-product yield is set to 0 in a disk that follows each of 4 predators (eating kept, other predators untouched). All 8 targets lose their body within 40-84 t (raw peak predator matter 2.0-2.6 -> below 1.0, then a spreading film of peak 0.4-0.6), while the same 8 in the fed twin keep peaks of 1.6-3.6 to +400 t (cutfig5.png, cutfig6.png). Predator matter is conserved and never made from prey, so this is not build-from-food. (2) X with matched predator-free twins (fltrack.py, 160^2, t=3000, seeds 1 and 3) once eaten prey matter returns slowly (waste recycling g_w 0.002 instead of 0.01): prey bodies after t=1000 average 13.1 and 14.3 with predators against 17.7 and 18.0 in the twins (-26%, -21%; with faster digestion k_dig 0.05, 11.5 on seed 1); predators average 22.2-22.6 bodies, 77-78% free in a frame, 65 and 70 hops between prey, and 7 and 10 clean predator splits (6 and 7 with a free parent). At the default recycling (g_w 0.01) the prey count is within 5% of the twin.",
+ "parents": ["20261028T0206-c62-flow-lenia-free-predators", "20261028T0134-c62-flow-lenia-ecology-sighting"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0237-c62-flow-lenia-predator-e-x/world.py",
+ "evidence": ["runs/cutfig5.png", "runs/cutfig6.png", "runs/cut_s5.json", "runs/cut_s6.json", "runs/track_n.json", "runs/track_twin.json", "runs/track_n3.json", "runs/track_twin3.json"],
+ "outcome": "positive",
+ "finding": {
+  "operator": "conserved Flow-Lenia predator matter whose growth-field gain is set by a product of digesting conserved prey matter (drive, not build), with a product life of 50 t that carries predators between prey",
+  "capability": "E",
+  "world": "research/alife/collective/contrib/20261028T0237-c62-flow-lenia-predator-e-x/world.py",
+  "necessary": true,
+  "law": false,
+  "control": "per-predator digestion-product cut in a following disk with eating kept, vs fed twin (seeds 5, 6, 4 targets each); predator-free twins for the prey count (seeds 1, 3)",
+  "result": "consumption-off: 8/8 targets lose their body at 40-84 t, fed 8/8 intact to +400 t; prey bodies (t>=1000) 13.1/14.3 with predators vs 17.7/18.0 in twins at g_w 0.002 (within 5% at g_w 0.01)"
+ },
+ "limits": "WORLD_P for the cut runs {\"k_qy\":30,\"K_q\":0.01,\"k_qd\":0.02}; for the X runs the same plus {\"g_w\":0.002} (twins add pred_on 0; run m adds k_dig 0.05). Founders are planted patches (no S); both kinds divide and fuse often (labkit merge/split 0.8-1.0 in the earlier runs), so I and D of the predators are not established here: most predator tracks are short and only 6-10 clean splits per 3000 t pass the tracker. The gain gate acts on the predator's whole growth field (as in c18's prey), so a reviewer may read E as the rule being switched off rather than a pathway starved. The cut disk is body radius + 8 px and follows the target every 2 t; the 'alive' flag of the tracker follows the spreading film, so death is read from the raw peak (< 1.0). Two seeds per test, 160^2, one parameter point.",
+ "compute": {"cpu_minutes": 80}
+}
