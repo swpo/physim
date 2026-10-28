@@ -1,0 +1,15 @@
+{
+ "id": "20261028T0536-c63-flow-lenia-predators-graze-film",
+ "kind": "finding",
+ "mode": "control",
+ "task": "R:20261028T0344-c62-flow-lenia-ecology-s-claim#c1",
+ "title": "Negative for hunting in c62's Flow-Lenia ecology: the free predators live on prey matter recycled as a dilute film; product from prey bodies alone sustains only ~25% of them",
+ "summary": "On fresh seed 21 (claim world, 160^2, noise start), from t=1000 the predators' digestion product was made only inside prey bodies (A_sum > 0.1) or only from the dilute film of recycled prey matter (A_sum <= 0.1), with digestion itself unchanged. Predator bodies over t=1500-2000: 6.6 with bodies-only product, 25.0 with film-only product, 25.2 unchanged; prey stay depressed in the film-only arm (12.9 vs 13.0; twin 17.4). Before the switch 31% of all digestion happens more than 3 px from any prey body, and the film alone keeps the predators' gain q/(q+0.01) above 0.8 in every predator pixel. The 'free predators hopping between prey' are grazers of a recycled nutrient field; the predator-prey interaction runs through recycling, and the hops are not how they feed.",
+ "parents": ["20261028T0520-c63-review-flow-lenia-ecology", "20261028T0344-c62-flow-lenia-ecology-s-claim"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0520-c63-review-flow-lenia-ecology/ctrl_world.py",
+ "evidence": ["research/alife/collective/contrib/20261028T0520-c63-review-flow-lenia-ecology/analysis/food_source_arms.png", "research/alife/collective/contrib/20261028T0520-c63-review-flow-lenia-ecology/ctrl_bodies/sheet.png", "research/alife/collective/contrib/20261028T0520-c63-review-flow-lenia-ecology/ctrl_film/sheet.png"],
+ "outcome": "negative",
+ "finding": {"operator": "digestion-product yield restricted to prey bodies vs to the dilute recycled prey film (eating unchanged)", "capability": "E", "world": "collective/contrib/20261028T0344-c62-flow-lenia-ecology-s-claim/world.py", "necessary": true, "law": false, "control": "matched arms from the same t=1000 state of seed 21 and the unchanged run", "result": "predator bodies t=1500-2000: bodies-only 6.6, film-only 25.0, unchanged 25.2; 31% of digestion > 3 px from prey bodies; one seed"},
+ "compute": {"cpu_minutes": 15}
+}

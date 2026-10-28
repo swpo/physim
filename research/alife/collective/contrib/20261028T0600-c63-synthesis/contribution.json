@@ -1,0 +1,10 @@
+{
+ "id": "20261028T0600-c63-synthesis",
+ "kind": "synthesis",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "Synthesis: the Flow-Lenia ecology replicates but its predators graze a recycled film behind a written gate; the waste vortices' novelty stays bounded",
+ "summary": "Since 01:19Z no claim became established. c62's Flow-Lenia ecology from noise replicates S, I and X, and shows free predator fission, but D is seed-dependent and reticulate. Two reviews mark E by construction: a saturated gate scales the predator's whole growth field. A food-source control shows the predators live mainly on prey matter recycled as a dilute film rather than on prey bodies. In the fed vortices, standard-memory novelty cycles in a bounded region to T=30000; long memory travels on 1 of 4 seeds; sw's effect runs through the per-mutation escape advantage. A distribution-memory waste is running.",
+ "parents": ["20261028T0119-c61-synthesis", "20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0520-c64-review-fl-ecology", "20261028T0520-c63-review-flow-lenia-ecology", "20261028T0536-c63-flow-lenia-predators-graze-film", "20261028T0429-c62-flow-lenia-fusion-screen", "20261028T0407-c62-flow-lenia-supply-threshold", "20261028T0326-c61-vortex-t30k-saturates", "20261028T0344-c61-vortex-long-memory-4seeds", "20261028T0409-c61-vortex-sw-not-radius", "20261028T0212-c61-literature", "20261028T0409-c61-review-hunting", "20261028T0142-c62-review-c52-ecology-e"],
+ "evidence": ["synthesis.md"]
+}

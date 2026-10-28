@@ -1,0 +1,12 @@
+[flow-lenia-digestion-ecology] seed 21: 400 frames x 25 steps, grid (160, 160)
+  frame 40/400  33.6s
+  frame 80/400  76.0s
+  frame 120/400  118.5s
+  frame 160/400  161.2s
+  frame 200/400  204.5s
+  frame 240/400  247.0s
+  frame 280/400  289.2s
+  frame 320/400  330.8s
+  frame 360/400  372.9s
+  frame 400/400  416.1s
+  -> collective/contrib/20261028T0520-c63-review-flow-lenia-ecology/ctrl_bodies/FACTS.md  (416s sim)
