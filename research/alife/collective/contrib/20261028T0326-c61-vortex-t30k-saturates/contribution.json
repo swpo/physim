@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0326-c61-vortex-t30k-saturates",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:vortex-novelty-saturation",
+ "class": "fed-vortex",
+ "outcome": "negative",
+ "title": "T=30000 answers Q:vortex-novelty-saturation for the standard waste: the territory saturates by t~8000 (share of vortices on new trait ground 0.00-0.02 in all 11 windows to t=30000; c30 significant new kinds 14 in the first ~7000 t, 4 in the next 23000), while first-time dominant classes keep appearing (5,5,4,3,6,3 per 5000 t, twin 2,0,1,1,0,0) inside a bounded cloud: replacement continues within a finite repertoire",
+ "summary": "c58's trait3d world (ew 0.25, sw 0.4, mut_dt 50, waste lifetime 500 t, reach 22 px) and its kind-blind twin on fresh seed 6 / mut_seed 6, run to T=30000 with c59's checkpointed trait3c.py, read with vnov.py in 2000-t windows. Waste arm: cloud radius 0.31 -> 1.14 by t~6000, then 0.94-1.29 to the end (twin 0.26-0.35); mean distance of a vortex's trait from the ancestor 1.0-1.5 from t=6000 to 30000 (twin 0.3-0.58); share on new ground (>0.4 from every trait seen before t-1000) 0.09, 0.23, 0.27 before t=8000, then 0.00-0.02 in all 11 windows to t=30000 (twin 0.00-0.01); c30 cohort novelty with the diversity-corrected threshold (~1000-t windows) 0,2,2,0,4,3,3 then 4 in the remaining 23 windows (twin 1 then 0); new classes per 1000 t fall from 9.5-13.5 to 0.5-8.5 (twin 0-3.5). By trait3c's own counts novelty continues: classes held by >= 3 vortices 96 against 31; distinct dominants 26 against 4; first-time dominants after t=3000 23 against 3, at 5,5,4,3,6,3 per 5000 t; returns 16 against 10. Every dominant class lies within class index 3 of the ancestor (|theta| <= ~1.2). The centroid's successive 2000-t displacements are uncorrelated (mean cosine +0.04, twin +0.08). So the waste keeps the population polymorphic and keeps replacing its dominant kinds, but it reworks a bounded region of trait space: in RUBRIC L8's terms this is cycling through a large but finite repertoire, not open-ended novelty.",
+ "parents": ["20261028T0118-c61-vortex-t30k-interim", "20261027T2240-c59-q-vortex-novelty-saturation", "20261027T1536-c00-q-vortex-trait-long-run", "20261028T0006-c61-vortex-cloud-bounded", "20261027T1401-c58-vortex-trait3d"],
+ "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+ "evidence": ["s6.png", "s6_spec_maps.png", "s6_blind_maps.png", "vnov_s6.json", "s6_spec.json", "s6_blind.json"],
+ "finding": {
+  "operator": "kind-specific waste (local mean-trait memory, lifetime 500 t) in heritable fed vortices",
+  "capability": "O",
+  "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "kind-blind twin (sw 0) on the same seed and mutation draws, T=30000",
+  "result": "new-ground share t>=8000: 0.00-0.02 (11 of 11 windows); c30 diversity-corrected significant kinds: 14 in t<7000, 4 in 7000-30000 (twin 1, 0); first-time dominants per 5000 t 5,5,4,3,6,3 (twin 2,0,1,1,0,0), all within |class| <= 3"
+ },
+ "limits": "One seed, 128^2 only: the 1.5x box pair was started and stopped because it could not finish before my deadline. Why the cloud stops: my reading of world.py is that the waste keeps only the local mean trait V/W of past eaters, so escape pays only up to ~2 sw from that mean (cloud radius ~2.5 sw). sw was not varied to test this. A 4x longer-lived waste raised the plateau on 2 of 2 seeds and made one of them travel (20261028T0105-c61-vortex-long-memory-travels; a multi-seed follow-up is running). The first-time dominants will eventually run out in a bounded cloud, but 30000 t is not long enough to see that.",
+ "compute": {"cpu_minutes": 480}
+}
