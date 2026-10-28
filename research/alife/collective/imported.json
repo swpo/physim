@@ -16359,6 +16359,34 @@
   "first_seen": "2026-10-28T04:08Z",
   "tree": "afcb2e3f2c155190a760534bffb4933442cc945e"
  },
+ "20261028T0409-c61-intent-review-hunting": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:11Z",
+  "tree": "bc03c8bd82666d912ace1888be1417e62fc916aa"
+ },
+ "20261028T0409-c61-vortex-sw-not-radius": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:11Z",
+  "tree": "a799f2bfc334162d976a958e7d72390a3b796cd6"
+ },
+ "20261028T0429-c62-flow-lenia-fusion-screen": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:30Z",
+  "tree": "d494627d6fd29618414f2a1299915bc4be18554a"
+ },
+ "20261028T0429-c62-leave": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T04:30Z",
+  "tree": "5a3243c5c6d1f907f4c54563076e4b8549e72c2c"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

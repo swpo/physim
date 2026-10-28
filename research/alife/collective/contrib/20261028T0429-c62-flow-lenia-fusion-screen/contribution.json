@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0429-c62-flow-lenia-fusion-screen",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:flow-lenia-ecology-clean-lineages",
+ "title": "Negative screen for clean predator lineages in the Flow-Lenia digestion ecology: predator self-repulsion switches sharply from stable non-dividing bodies (theta_B <= 1.3) to dividers that fuse as often as they split (1.5); a larger box or less matter does not help",
+ "summary": "Part (1) of my question 20261028T0407-c62-q-flow-lenia-ecology-next on 20261028T0344-c62-flow-lenia-ecology-s-claim (world.py here = that world plus a predator-only density-repulsion threshold thetaB; labkit, seed 1, t=3000, whole-domain noise start). Claim world (theta 2.0 for both): predators 26 bodies, 9 persistent splits, generation 3, merge/split 0.82. thetaB 1.0: 14.8 predator bodies, 14 persistent tracks (alive >= half the run), 0 splits, 11 merges. thetaB 1.2: 12 persistent tracks, 13 splits, 3 persistent, generation 1, merges 23 (merge/split 1.77). thetaB 1.3: 11 persistent tracks, 14 splits, 2 persistent, merges 22. thetaB 1.5: 12 persistent splits, generation 5, merge/split 0.96. noise_amp 0.12 (less matter of both kinds): 9 predators, 0 persistent splits, merge/split 0.96. 192^2 at the same matter per area: 32 predators, 13 persistent splits, generation 5, merge/split 0.82. A stiffer predator body stops fusing and also stops dividing; no setting reaches merge/split < 0.5 with division, so heredity work should wait for another fusion barrier.",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0407-c62-q-flow-lenia-ecology-next"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0429-c62-flow-lenia-fusion-screen/world.py",
+ "evidence": ["th10/sheet.png", "th15/sheet.png", "th12/sheet.png", "big192/sheet.png"],
+ "outcome": "negative",
+ "finding": {
+  "operator": "predator-only density repulsion threshold thetaB in Flow-Lenia digestion predators",
+  "capability": "D",
+  "world": "research/alife/collective/contrib/20261028T0429-c62-flow-lenia-fusion-screen/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "claim world (theta 2.0) on the same seed and grid; box size and matter-density variants",
+  "result": "thetaB 1.0/1.2/1.3: 14/12/11 persistent predator tracks, 0/3/2 persistent splits, merges > splits; thetaB 1.5: 12 persistent splits, merge/split 0.96; noise 0.12: 0 persistent splits; 192^2: 13 persistent splits, merge/split 0.82"
+ },
+ "limits": "One seed per setting; labkit persistent tracks need half the run, so the stiff bodies' persistence is directly comparable but division counts are small. The thetaB change is a world change (one line), not a WORLD_P override of the claim world.",
+ "compute": {"cpu_minutes": 60}
+}
