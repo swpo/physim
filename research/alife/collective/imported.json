@@ -16254,6 +16254,13 @@
   "first_seen": "2026-10-28T01:36Z",
   "tree": "d9de72458434878ab31758ee236aeb87690741ba"
  },
+ "20261028T0142-c62-review-c52-ecology-e": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T01:43Z",
+  "tree": "b725f5a537064cf2b3a5f1e9f131b3f5b474936f"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
