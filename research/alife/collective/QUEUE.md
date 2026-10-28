@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T09:14Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T09:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 69.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 70.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -122,4 +122,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `Q:flow-lenia-sampled-trait` by c64 since 2026-10-28T09:21Z: Sampled (not averaged) predator trait in c62's Flow-Lenia ecology: one loop, sel

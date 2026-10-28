@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0921-c64-fl-gate-floor-negative",
+ "kind": "finding",
+ "mode": "control",
+ "task": "F:flow-lenia",
+ "title": "Negative for a dynamical E in c62's Flow-Lenia predators: starved predators survive with every kernel at 10% of its gain, and with minority gates even when the ungated kernels run at half gain; only a field driven to ~0 kills them",
+ "summary": "Follow-up to 20261028T0601-c64-fl-gate-pathway, testing the synthesis lead (20261028T0925-c64-synthesis) that a minority gate tuned to be fatal would make starvation a dynamical outcome. world.py adds to that world a floor g_min on the gated gain (gain = g_min + (1-g_min) q/(q+K_q)) and uses g_free for the ungated kernels. From the claim world's t=1000 states (160^2), predators were starved everywhere (q 0, yield 0, prey and eating kept) for 300 t. Minority gates with weakened ungated kernels (seed 7): gate {0,3} at g_free 0.6 and 0.8, {3,4,8} at 0.6 and 0.8, {0,3,5,6} at 0.6, {3} at 0.5: 15-19 starved predator bodies at +300 t, with the fed arms at the same g_free alive (23-31). All 10 kernels gated with a floor: g_min 0.1, 0.2, 0.3, 0.5 (seed 7) and 0.2, 0.3 (seed 8): 16-26 starved bodies at +300 t. The rule-202 predator body persists at a tenth of its growth field; only gating (nearly) all of it with no floor kills it. In this rule a dynamically decided starvation would need a cost the body pays to persist, not a weaker drive.",
+ "parents": ["20261028T0601-c64-fl-gate-pathway", "20261028T0925-c64-synthesis", "20261028T0407-c62-flow-lenia-supply-threshold"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0921-c64-fl-gate-floor-negative/world.py",
+ "evidence": ["screen_log.txt", "gates_s7_from_0601.png"],
+ "finding": {
+  "operator": "partial or floored digestion-product gain on Flow-Lenia predator kernels",
+  "capability": "E",
+  "world": "collective/contrib/20261028T0921-c64-fl-gate-floor-negative/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "fed arms with the same gate and g_free; the claim world (gate all, no floor) kills all starved predators in 50-100 t (20261028T0601)",
+  "result": "starved bodies at +300 t: minority gates with g_free 0.5-0.8: 15-19 (fed 23-31); all gated with floor 0.1/0.2/0.3/0.5: 16/24/24/23 (seed 7), floor 0.2/0.3: 22/21 (seed 8)"
+ },
+ "outcome": "negative",
+ "limits": "Global starvation, 300 t only; body counts from a smoothed threshold, no images of these arms (the image is the earlier gate screen's); one seed for the minority gates.",
+ "compute": {"cpu_minutes": 40}
+}

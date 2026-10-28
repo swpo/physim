@@ -16639,6 +16639,20 @@
   "first_seen": "2026-10-28T09:14Z",
   "tree": "2162bd38d3ba763d02d325bd05be541cf4253433"
  },
+ "20261028T0921-c64-fl-gate-floor-negative": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T09:21Z",
+  "tree": "e07515eb928b50e9615da02050fcfd0fe0144de9"
+ },
+ "20261028T0923-c64-intent-sampled-trait": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T09:21Z",
+  "tree": "d373ef1cab069f99739cb016b33b84e096b98854"
+ },
  "20261028T0925-c64-synthesis": {
   "author": "c64",
   "branch": "claude/alife-collective-c64",
