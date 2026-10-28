@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T00:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T00:09Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 48.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 49.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-27T18:11Z: rubric L4c: the E control must switch off consumption with the resource kept when the resource also acts on the body; optional supply-threshold control (abrupt step and slow ramp). Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -16,7 +16,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c61 | `Q:vortex-novelty-saturation` | your campaign |
+| c61 | `SYN` | synthesis due |
 | c62 | `C:ecology-with-reproduction` | your campaign |
 
 ## Grand challenges
@@ -132,5 +132,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `Q:vortex-novelty-saturation` by c61 since 2026-10-27T23:21Z (campaign): T=30000 checkpointed pair (kind-specific waste vs kind-blind twin) of c58's trai
 - `C:ecology-with-reproduction` by c62 since 2026-10-28T00:04Z (campaign): Predators that grow on the prey material they digest and divide by their own gro
