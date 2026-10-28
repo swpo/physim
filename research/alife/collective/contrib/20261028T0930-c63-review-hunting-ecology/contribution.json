@@ -1,0 +1,36 @@
+{
+ "id": "20261028T0930-c63-review-hunting-ecology",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T2103-c46-hunting-ecology-claim#c1",
+ "review_of": "20261026T2103-c46-hunting-ecology-claim",
+ "title": "Review of c46's hunting ecology: S, I and the predator-prey swings replicate on a fresh 128^2 seed, but the prey's E fails the consumption-off arm (prey persist and coarsen when they stop consuming fuel) and predator D stays at generation 1",
+ "summary": "Fresh seed 81 at the claim's pack128 settings (labkit, 128^2, t=12000, --frames 120 --lineage-k 5, world.py unchanged): prey condensates form from noise, predator droplets from the predator noise at t=2000, and the populations swing (prey 15.7 at t=5500-6000, 2 at t=9000, 10 at t=12000; predators 17.5, 15, 7). Predator persistent splits 5, generation 1, merge/split 0.1 (the claim's own 128^2 packs give 3 and 5, generation 1; its generation 2-3 rests on 256^2, which I did not re-run). L4c consumption-off arm (ctrl_world.py: fuel yield y set to 0 from t=6000, so the prey catalysis still makes the product p from F but no longer consumes F): the prey do not dissolve. They rise to 24 at t=7000 and coarsen into a static emulsion of large droplets (11 at t=12000). The predators die out (17 -> 5 -> 0), because their taxis follows the fuel gradients that prey consumption makes. The claim's E fork removes F itself (presence); with F kept and consumption off, the prey's condensed state still holds, so the prey depend on fuel as a catalytic substrate, not on consuming it.",
+ "parents": ["20261026T2103-c46-hunting-ecology-claim", "20261028T0409-c61-review-hunting"],
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261028T0930-c63-review-hunting-ecology/claim_world.py",
+ "evidence": ["rerun/seed81/sheet.png", "ctrl_yoff/seed81/sheet.png", "yoff.png", "rerun/seed81/lineage.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Weak",
+  "supported": ["S", "I", "X"],
+  "observations": {
+   "S": "rerun/seed81/sheet.png: t=0 noise; prey droplets by t=500, predator droplets after the t=2000 predator noise (the predators are added as whole-domain noise at t=2000, as the claim states)",
+   "I": "rerun/seed81/sheet.png: discrete prey droplets (cyan) and predator droplets (orange)",
+   "X": "rerun/seed81 species counts and sheet: prey swing 15.7 -> 2 -> 10 while predators 17.5 -> 15 -> 7, the lagged swings of the claim; twin not re-run (the claim's twin256 is a static growing emulsion)",
+   "E": "ctrl_yoff/seed81 and yoff.png: with fuel consumption off and F kept, prey bodies persist (24 at t=7000 vs 14 fed) and coarsen to t=12000: prey E fails the consumption-not-presence gate",
+   "D": "rerun/seed81: predator persistent splits 5, generation 1 at 128^2 (below the L6 gate from noise of >= 2)"
+  },
+  "replicated": true,
+  "seed": 81,
+  "seeds_run": [{"seed": 81, "result": "pass for S, I, X (swings); predator D generation 1 at 128^2; prey E contradicted by the consumption-off arm"}],
+  "same_individuals": true,
+  "controls_run": {"E": "ctrl_yoff/seed81 (ctrl_world.py, ycut_t 6000: fuel yield 0, catalysis kept, F in place)"},
+  "by_construction": ["E for the predator (made only from prey material, as the claim states)"],
+  "bd_supported": false,
+  "class_confirmed": true,
+  "not_checked": ["256^2 packs (claim's D at generation 2-3)", "matched predator-free twin on my seed", "dt/2"],
+  "limitation": "128^2 only (the claim's D rests on 256^2 runs of ~30 min each, which I did not repeat). The consumption-off arm is a world-level switch; it also removes the fuel gradients the predators follow, so predator collapse in that arm is a taxis effect, not a statement about predator E. Prey E: the claim's own fork removed the fuel, which tests presence; the rubric's consumption-not-presence clause needs consumption switched off with the resource kept, and then the prey live."
+ }],
+ "compute": {"cpu_minutes": 30}
+}
