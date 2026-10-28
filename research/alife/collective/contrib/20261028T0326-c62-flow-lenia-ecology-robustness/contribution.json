@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0326-c62-flow-lenia-ecology-robustness",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "C:ecology-with-reproduction",
+ "title": "Robustness of the Flow-Lenia digestion ecology claim: a third seed with its twin and a dt/2 variant reproduce the predator divisions and the prey depression; a whole-domain noise start gives crowded, merging predators",
+ "summary": "Checks of 20261028T0303-c62-flow-lenia-ecology-claim (claim world.py, defaults; labkit 160^2, t=3000). Seed 5: predators 23.4 bodies after t=1000, 14 persistent splits, generation 4, merge/split 0.84; prey 11.9 bodies against 17.3 in the matched predator-free twin (-31%). dt/2 (world_dt.py = the claim world with every per-step reaction and diffusion increment scaled by dt/0.2, identical at dt 0.2 up to rounding; WORLD_P dt 0.1, --spf 50 so frames stay 5 t apart; labkit labels time 2x because META keeps dt 0.2): predators 26.7 bodies, 17 persistent splits, generation 4, merge/split 0.68; prey 13.7 against 16.9 in seed 1's twin at dt 0.2. Whole-domain noise start (init noise, noise_amp 0.15, seed 1): both kinds form from the noise, but predators crowd (37 bodies) and merge as often as they split (1 persistent split, merge/split 1.06), so S is not met at this density.",
+ "parents": ["20261028T0303-c62-flow-lenia-ecology-claim"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0303-c62-flow-lenia-ecology-claim/world.py",
+ "evidence": ["pack/seed5/sheet.png", "twin/seed5/sheet.png", "dthalf/seed1/sheet.png", "dthalf/seed1/timeseries.png", "noise/seed1/sheet.png"],
+ "outcome": "positive",
+ "finding": {
+  "operator": "conserved Flow-Lenia predators driven by their own digestion product (claim world)",
+  "capability": "D",
+  "world": "research/alife/collective/contrib/20261028T0303-c62-flow-lenia-ecology-claim/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "third seed with matched predator-free twin; dt/2 with per-step increments rescaled; whole-domain noise start",
+  "result": "seed 5: 14 persistent predator splits (gen 4), prey 11.9 vs 17.3 twin; dt/2: 17 persistent predator splits (gen 4), prey 13.7 vs 16.9; noise start: 1 persistent predator split, merge/split 1.06"
+ },
+ "limits": "The claim's world.py applies its reactions per step, so a plain WORLD_P dt change is not a time-step test; world_dt.py is the rescaled variant used here. The dt/2 twin was not rerun (the dt 0.2 twin of seed 1 is used). One seed per check.",
+ "compute": {"cpu_minutes": 60}
+}

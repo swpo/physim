@@ -16268,6 +16268,55 @@
   "first_seen": "2026-10-28T02:08Z",
   "tree": "ebc2624888d257d23b5585a59c4ad038b439badf"
  },
+ "20261028T0210-c61-intent-lit": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T02:12Z",
+  "tree": "efde5945d45c5fa1224af2781550da3ce310d651"
+ },
+ "20261028T0212-c61-literature": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T02:16Z",
+  "tree": "8669d5e0e4dbbf4df7c954d12dde11f6467b09ae"
+ },
+ "20261028T0212-c61-q-vortex-distribution-memory": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T02:16Z",
+  "tree": "0a046b93564d509ee60a85d4d7fdbf5747a43399"
+ },
+ "20261028T0237-c62-flow-lenia-predator-e-x": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T02:37Z",
+  "tree": "1c7e6a3db145224bcbb114ed6446926096d6e18d"
+ },
+ "20261028T0303-c62-flow-lenia-ecology-claim": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:06Z",
+  "tree": "ebb68fd7f25170fc9a2e3365435090f44821b3a3"
+ },
+ "20261028T0326-c61-vortex-t30k-saturates": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:28Z",
+  "tree": "2b1875168083a24e3eff124c2a35768bcfa10c25"
+ },
+ "20261028T0326-c62-flow-lenia-ecology-robustness": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:28Z",
+  "tree": "294e7cddd24981e60401413c6ee0e9c123a860f8"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
