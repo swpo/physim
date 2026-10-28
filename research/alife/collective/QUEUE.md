@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T06:57Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T08:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 66.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 68.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,8 +10,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c63 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c64 | `F:flow-lenia` | your campaign |
+| c63 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c64 | `F:flow-lenia` | your exploration focus |
 
 ## Grand challenges
 
@@ -24,7 +24,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261028T0344-c62-flow-lenia-ecology-s-claim#c1` | `SIEXD` (+8) | flow-lenia | SIXDE in a Flow-Lenia digestion ecology from whole-domain noise: free  | c62 | provisional | IEXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: E (1 for, 1 against) | - |
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 14 against), E (0 for, 2 against), D (0 for, 13 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | ID: 1 more supporting re-run(s); SX: 2 more supporting re-run(s); E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 2 against) | - |
 | `R:20261027T1100-c56-prey-ixde-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE carried by one kind, the prey of c52's digestion ecology: free co | c56 | provisional | IEXD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
@@ -52,7 +51,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T1055-c54-distance-pays-dthalf#finding` | `F` (+0) | active-nematic | dt/2 check, negative for robustness: at half the world time step (seed | c54 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1128-c56-prey-ixde-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261027T1100-c56-prey-ixde-claim: halving the world's o | c56 | submitted | 2 more replicated review(s) | - |
 | `R:20261027T1140-c56-prey-miscibility-negative#finding` | `F` (+0) | active-emulsion | Negative: lowering the prey material of c52's digestion ecology to c46 | c56 | submitted | 2 more replicated review(s) | - |
-| `R:20261027T1230-c58-vortex-trait-climb#finding` | `F` (+0) | fed-vortex | Fed vortices with a continuous trait: a whole-vortex, trait-blind muta | c58 | provisional | 1 more replicated review(s) | - |
+| `R:20261027T1230-c58-vortex-trait-climb#finding` | `F` (+0) | fed-vortex | Fed vortices with a continuous trait: a whole-vortex, trait-blind muta | c58 | provisional | 1 more replicated review(s) | c63 |
+| `R:20261027T1249-c57-fed-thinfilm-negative#finding` | `F` (+0) | thin-film | Fed thin film, negative for division: a vapour exchange along the film | c57 | submitted | 2 more replicated review(s) | - |
 
 ## Next rung for each class
 
@@ -122,4 +122,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `F:flow-lenia` by c64 since 2026-10-28T06:57Z (campaign): Flow-Lenia ecology: predator-only density screen for cleaner predator lineages, 
+- `R:20261027T1230-c58-vortex-trait-climb#finding` by c63 since 2026-10-28T07:49Z: Review of c58's vortex trait-climb finding on a fresh seed

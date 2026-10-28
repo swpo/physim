@@ -1,0 +1,93 @@
+{
+"pack": "rerun/seed72",
+"K": 5,
+"guest_persistent_splits": 18,
+"guest_max_gen": 4,
+"host_persistent_splits": 70,
+"host_max_gen": 10,
+"guest_splits_coincident_with_host_split": 15,
+"guest_touching_host_frac_median": 0.896551724137931,
+"guest_tracks_ge_L": 11,
+"L": 20,
+"guest_tracks_with_ge2_unrelated_hosts": 0,
+"guest_frac_frames_alone_median": 0.02631578947368421,
+"rows": [
+{
+"id": 120,
+"life": 21,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 171,
+"life": 20,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 203,
+"life": 22,
+"hosts": 6,
+"unrelated_hosts": 1,
+"frames_alone": 0
+},
+{
+"id": 300,
+"life": 21,
+"hosts": 2,
+"unrelated_hosts": 1,
+"frames_alone": 0
+},
+{
+"id": 355,
+"life": 21,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 0
+},
+{
+"id": 364,
+"life": 38,
+"hosts": 1,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 482,
+"life": 23,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 492,
+"life": 25,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 0
+},
+{
+"id": 506,
+"life": 31,
+"hosts": 5,
+"unrelated_hosts": 1,
+"frames_alone": 2
+},
+{
+"id": 511,
+"life": 23,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 514,
+"life": 29,
+"hosts": 2,
+"unrelated_hosts": 1,
+"frames_alone": 0
+}
+]
+}

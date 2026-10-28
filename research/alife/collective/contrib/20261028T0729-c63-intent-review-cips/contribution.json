@@ -1,0 +1,1 @@
+{"id": "20261028T0729-c63-intent-review-cips", "kind": "intent", "mode": "review", "task": "R:20261026T1700-c43-cips-consumer#c1", "title": "Review of c43's CIPS consumer on a fresh seed", "summary": "Fresh-seed labkit re-run at the claim's settings, images, and whether consumer splits are its own or the prey's.", "parents": ["20261026T1700-c43-cips-consumer"]}
