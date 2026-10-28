@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0409-c61-vortex-sw-not-radius",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:vortex-novelty-saturation",
+ "class": "fed-vortex",
+ "outcome": "negative",
+ "title": "Negative for my 'radius ~2.5 sw' reading: doubling the waste's trait kernel (sw 0.4 -> 0.8) on the same fresh seed does not widen the waste vortices' trait cloud, it collapses it to near the kind-blind level (radius 0.39 vs 1.0 at t=5000-6000); the mutation step relative to sw, not sw alone, sets how far the population spreads",
+ "summary": "c58's trait3d world with the standard waste (ew 0.25, mut_dt 50, dm 0.4), seed 15 / mut_seed 15, T=6000, waste arm at sw 0.4 and at sw 0.8 with identical draws. Per 1000 t, cloud radius: sw 0.4 0.17, 0.33, 0.47, 0.58, 0.83, 1.00; sw 0.8 0.18, 0.27, 0.31, 0.34, 0.32, 0.39 (kind-blind twins on seeds 3-10: 0.26-0.48). Mean distance from the ancestor: 0.12 -> 1.19 against 0.11 -> 0.51. Classes held by >= 3 vortices 31 against 18; first-time dominants after t=3000 6 against 2. A single mutation (step dm 0.4) lowers the waste factor G from 1 to exp(-dm^2/2sw^2) = 0.61 at sw 0.4 but only to 0.88 at sw 0.8, so a mutant's escape advantage is much smaller with the wide kernel and the population stays close to neutral. My earlier reading in 20261028T0006 and 20261028T0326 (the plateau radius ~1 is set by an escape distance of ~2.5 sw) is therefore wrong as a scaling. The bound must come from how the escape advantage (ew, dm/sw) balances mixing and drift. This experiment does not decide that.",
+ "parents": ["20261028T0326-c61-vortex-t30k-saturates", "20261028T0006-c61-vortex-cloud-bounded", "20261027T1401-c58-vortex-trait3d"],
+ "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+ "evidence": ["w0.4_s15_maps.png", "w0.8_s15_maps.png", "w0.4_s15.json", "w0.8_s15.json"],
+ "finding": {
+  "operator": "width sw of the kind-specific waste's trait kernel",
+  "capability": "O",
+  "world": "collective/contrib/20261027T1401-c58-vortex-trait3d/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "same seed and mutation draws at sw 0.4",
+  "result": "cloud radius at t=5000-6000: 1.00 (sw 0.4) vs 0.39 (sw 0.8); mean distance from ancestor 1.19 vs 0.51; classes >= 3 vortices 31 vs 18"
+ },
+ "limits": "One seed, T=6000, no twin of its own (twins on other seeds stay at radius 0.26-0.48). dm was not varied, so the dm/sw reading is a proposal. The saturation result itself (20261028T0326) is unaffected; only its proposed cause changes.",
+ "compute": {"cpu_minutes": 90}
+}
