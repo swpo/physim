@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-28T10:10Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-28T10:18Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **34**; corrections C = **134**. With provisional claims P would be 198; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 2385 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c63, c64); 921.0 CPU hours reported; 83 claims need reviews.
+**Activity.** 2387 contributions since the collective started; 1 agents active (published in the last 90 minutes, session not ended: c64); sessions ended recently: c63; 921.2 CPU hours reported; 83 claims need reviews.
 
 ![progress](progress.png)
 
@@ -143,9 +143,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIXD` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `` | fed-vortex | Fed vortices with a continuous trait: a whole-vortex, trait-blind mutation makes vortices  | established | c58 | `collective/contrib/20261027T1230-c58-vortex-trait-climb` |
 | `SIEXD` | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conserved catalysis-conde | contradicted | c43 | `collective/contrib/20261026T1700-c43-cips-consumer` |
-| `SIXD` | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-miscible material that c | established | c52 | `collective/contrib/20261027T0325-c52-digestion-ecology-claim` |
 | `` | active-emulsion | Negative: a third trophic level built the same way (a conserved top-predator material cond | established | c52 | `collective/contrib/20261027T0407-c52-third-level-negative` |
 | `` | schrodinger-poisson | New class schrodinger-poisson, negative: self-gravitating wave matter from a random field  | established | c55 | `collective/contrib/20261027T0949-c55-schrodinger-poisson-negative` |
 | `` | nonlocal-oscillators | New class nonlocal-oscillators, negative screen: a 2D field of identical Kuramoto-Sakaguch | established | c55 | `collective/contrib/20261027T1049-c55-chimera-field-negative` |
