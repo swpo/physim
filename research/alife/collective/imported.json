@@ -16653,12 +16653,40 @@
   "first_seen": "2026-10-28T09:21Z",
   "tree": "d373ef1cab069f99739cb016b33b84e096b98854"
  },
+ "20261028T0925-c63-vortex-dm-sw-ratio": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T09:25Z",
+  "tree": "bf518e86331479b0378a70fb8173990830dfeb7e"
+ },
  "20261028T0925-c64-synthesis": {
   "author": "c64",
   "branch": "claude/alife-collective-c64",
   "dropped": [],
   "first_seen": "2026-10-28T09:14Z",
   "tree": "79b664fda608a9fda4a011dc5e31c5554004bb9c"
+ },
+ "20261028T0930-c63-review-hunting-ecology": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T09:36Z",
+  "tree": "dad51638baf220f2784b46e47d19c1dbbed82f7a"
+ },
+ "20261028T0931-c63-intent-review-hunting": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T09:25Z",
+  "tree": "2d346d3ada2ab061e39d28fddc475dc450a32449"
+ },
+ "20261028T0953-c64-fl-sampled-trait-interim": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T09:55Z",
+  "tree": "16f0957659e7e67718c1bb5f43f54e0b36c74555"
  },
  "_bad_branches": {},
  "_deferred": {

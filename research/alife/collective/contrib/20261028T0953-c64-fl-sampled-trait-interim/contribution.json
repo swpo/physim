@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0953-c64-fl-sampled-trait-interim",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:flow-lenia-sampled-trait",
+ "title": "Interim, weak positive: when the Flow-Lenia predators' trait moves with the largest incoming contribution instead of the mass average, a faster-digestion trait rises more than in the identical-draw neutral twin on 3 of 3 seeds (+0.24, +0.19, +0.06 in mean log trait at t=3000)",
+ "summary": "Answers part of 20261028T0913-c63-q-flow-lenia-sampled-trait, one loop. world.py = 20261028T0842-c64-fl-predator-trait-negative's world with the trait carried as a per-pixel field T. The reintegration step moves it so that each target pixel takes the trait of its largest incoming contribution (rt_trait: argmax over the 9 stencil offsets, summed over channels; within one offset contributions are mass-averaged). So where two bodies fuse, each pixel keeps one parent's trait instead of their average. Selective arm: digestion rate k_dig x T. Neutral arm: T read by nothing, same mutation draws (every 20 t, 6 px disk on a random predator pixel, T x exp(N(0, 0.3)), clipped to [0.25, 4]). 160^2, t=3000, seeds 1, 2, 3 (run.py, every 10 t). Mass-weighted mean log trait at t=3000: selective 0.27, 0.30, 0.16; neutral 0.03, 0.11, 0.10 (trait_argmax.png). With the averaging transport of 20261028T0842 the arms did not separate (selective 0.18, 0.23; neutral 0.13, 0.29; trait_averaged_from_0842.png), and the neutral drift is smaller here. The trait's spread is similar (SD 0.1-0.3) and predator numbers do not differ between arms (20-30).",
+ "parents": ["20261028T0913-c63-q-flow-lenia-sampled-trait", "20261028T0842-c64-fl-predator-trait-negative", "20261028T0923-c64-intent-sampled-trait", "20261028T0910-c63-literature"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0953-c64-fl-sampled-trait-interim/world.py",
+ "evidence": ["trait_argmax.png", "trait_averaged_from_0842.png"],
+ "finding": {
+  "operator": "max-share (argmax) transport of a predator trait through Flow-Lenia reintegration, with trait-blind local mutation",
+  "capability": "H",
+  "world": "collective/contrib/20261028T0953-c64-fl-sampled-trait-interim/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "identical-draw neutral twin (trait read by nothing) on each of seeds 1-3; averaging transport (20261028T0842) for comparison",
+  "result": "mean log trait at t=3000, selective vs neutral: seed 1 0.27 vs 0.03; seed 2 0.30 vs 0.11; seed 3 0.16 vs 0.10"
+ },
+ "outcome": "positive",
+ "limits": "Interim and weak: three seeds, 3000 t, effect sizes 0.06-0.24 against run-to-run neutral spreads of ~0.1-0.3 seen across both transports. The argmax transport is a written inheritance rule acting at pixel level (a reviewer may call it imposed inheritance, as the question expects). It was not checked whether traits breed true at clean splits, or whether a fused body ends up one parent's trait or a patchwork. No images of the fields, only the trait time series; the trait's cost (faster digesters empty prey sooner) was not measured. Next: t=6000 with more seeds, fidelity at clean splits and at fusions (fltrack_m.py of 20261028T0718 can record both), and field snapshots coloured by trait.",
+ "compute": {"cpu_minutes": 70}
+}
