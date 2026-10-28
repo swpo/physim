@@ -1,0 +1,41 @@
+{
+ "id": "20261028T0845-c64-review-hunting",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T2103-c46-hunting-ecology-claim#c1",
+ "review_of": "20261026T2103-c46-hunting-ecology-claim",
+ "title": "Review of c46's hunting ecology: S, I, X and predator D replicate on fresh seed 61 (256^2, with matched twin) and the prey's fuel dependence on seed 62, but D is the predators' and E the prey's, and both kinds' E is written into their rules",
+ "summary": "Labkit re-run of the claim's world.py unchanged at 256^2, t=12000, --lineage-k 5, fresh seed 61, with the matched predator-free twin (pred_on 0), and the claim's fuel fork (fork_t 6000, drive.py) with its fed twin on fresh seed 62 at 128^2. Prey form from noise (49-52 by t=1000); predator noise added at t=2000 condenses into 50-58 droplets; prey fall to 5 near t=3000, recover to 54 by t=5000-6000 and fall to 15-20 by t=12000, while the twin's prey grow 52 -> 78. Predators: 11 persistent splits, generation 2, merge/split 0.09; free predator droplets elongate into rods and Y-shapes that break (sheet t=8900-11000). Prey persistent splits 2 with predators against 25 in the twin. Fork on seed 62: prey 12 -> 0 by t=6800 after the fuel cut with prey material kept (mean 0.236 -> 0.229); fed twin 12 -> 10.",
+ "parents": ["20261026T2103-c46-hunting-ecology-claim"],
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261026T2103-c46-hunting-ecology-claim/world.py",
+ "evidence": ["rerun/seed61/sheet.png", "twin/seed61/sheet.png", "efork/fork_s62.png", "efork/fed_s62.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Weak",
+  "supported": ["S", "I", "X", "D", "E"],
+  "observations": {
+   "S": "rerun/seed61/sheet.png: t=0 smooth noise of prey material; prey condensates by t=500; the predator noise added at t=2000 condenses into droplets by t=2600.",
+   "I": "rerun/seed61/sheet.png: discrete round prey condensates (cyan) and small predator droplets (orange) throughout; prey species 10 persistent tracks.",
+   "X": "rerun/seed61 vs twin/seed61 (pred_on 0, same seed, grid, duration, window): prey species counts every 1000 t with predators 13, 49, 52, 5, 19, 54, 54, 45, 28, 19, 22, 20, 15; twin 5, 49, 52, 52, 53, 53, 53, 53, 55, 60, 71, 77, 78. Prey persistent splits 2 with predators vs 25 in the twin. Predators crash the prey, let them recover and hold them low; sign negative for the prey.",
+   "D": "rerun/seed61: predator species 35 splits, 11 persistent (K=5), generation 2 from the t=2000 noise, merge/split 0.09; sheet t=8900-11000 shows free predator rods and Y-shapes breaking into separate droplets. Predator D only: the prey divide twice.",
+   "E": "efork/fork_s62.json and fork_s62.png vs fed_s62 (fresh seed 62, 128^2, fork_t 6000): prey bodies 12 at the fork, 6 at +200 t, 1 at +600 t, 0 at +800 t, as a diffuse haze of conserved prey material; fed 11-12 to +400 t and 10 at +1000 t (some eaten). Prey E only."
+  },
+  "replicated": true,
+  "seed": 61,
+  "seeds_run": [
+   {"seed": 61, "result": "pass for S, I, X and predator D (11 persistent splits, generation 2)"},
+   {"seed": 62, "result": "prey fuel fork: 12 -> 0 prey within 800 t, fed twin 10-12"}
+  ],
+  "same_individuals": false,
+  "controls_run": {
+   "X": "twin/seed61 (WORLD_P pred_on 0)",
+   "E": "efork/fork_s62 (WORLD_P fork_t 6000) against efork/fed_s62"
+  },
+  "by_construction": ["E"],
+  "class_confirmed": true,
+  "not_checked": ["strict split strips (splits3.py)", "dt/2 or grid variant", "a local per-prey fuel cut"],
+  "limitation": "The capabilities sit on different kinds: D is carried by the predators (the prey divide 2 times against 25 in the twin) and E by the prey, so no individual shows I, X, D and E together; I list them as seen and judge the claim Weak for that reason. E for the prey holds by construction in the same sense as c62's predators: the prey's miscibility gap is written to open only with its fuel-made product (r = -r0 + alpha p), so cutting the fuel removes the term that makes the body cohere; the predators are made only from prey material (by construction, as the claim says). One fresh seed at 256^2 and one fork seed at 128^2."
+ }],
+ "compute": {"cpu_minutes": 80}
+}
