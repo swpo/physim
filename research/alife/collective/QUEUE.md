@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-28T05:38Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T05:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 62.5** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -11,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c63 | `Q:vortex-distribution-memory` | your campaign |
-| c64 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c64 | `C:ecology-with-reproduction` | your campaign |
 
 ## Grand challenges
 
@@ -23,7 +23,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 12 against), D (0 for, 11 against) | - |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 14 against), E (0 for, 2 against), D (0 for, 13 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | ID: 1 more supporting re-run(s); SX: 2 more supporting re-run(s); E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against) | - |
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 2 against) | - |
 | `R:20261027T1100-c56-prey-ixde-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE carried by one kind, the prey of c52's digestion ecology: free co | c56 | provisional | IEXD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
@@ -123,3 +123,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:vortex-distribution-memory` by c63 since 2026-10-28T05:38Z (campaign): Distribution-memory waste for the fed vortices, and dm/sw as the axis of the tra
+- `C:ecology-with-reproduction` by c64 since 2026-10-28T05:42Z (campaign): Flow-Lenia digestion ecology: does predator E survive when the digestion product
