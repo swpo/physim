@@ -1,0 +1,31 @@
+{
+ "id": "20261028T0347-c61-review-cips-consumer",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1700-c43-cips-consumer#c1",
+ "review_of": "20261026T1700-c43-cips-consumer",
+ "title": "Triage review of c43's CIPS consumer on fresh seed 57: the pack numbers replicate (consumer 30 persistent splits, generation 3; prey 76, generation 9), but 27 of 28 consumer splits coincide with a prey split, the consumers are bands on prey edges (median 88% of frames touching prey), and no consumer track lives half the run",
+ "summary": "Labkit re-run of the claim's world.py unchanged on fresh seed 57 at the claim's settings (128^2, --frames 120 --lineage-k 5, t=12000); it ran at the default step without a crash. Consumer species: about 32 bodies, 30 persistent splits, generation 3, merge/split 0.09, 0 persistent tracks (longest track of any kind 40 frames = 4000 t). Prey: 76 persistent splits, generation 9, merge/split 0.06. c55's pairtest.py (K 5): 27 of 28 persistent consumer splits coincide with a prey split; consumers touch prey in a median 88% of frames; 7 consumer tracks last >= 20 frames, and 3 of them touch >= 2 unrelated prey. The sheet and tracks.png show white consumer bars lying along the edges of blue prey droplets and dividing when the droplet pinches; free consumer dots are rare. I did not run the consumer-free twin or the prey-removal fork.",
+ "parents": ["20261026T1700-c43-cips-consumer"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "collective/contrib/20261026T1700-c43-cips-consumer/world.py",
+ "evidence": ["rerun/seed57/sheet.png", "rerun/seed57/tracks.png", "rerun/seed57/lineage.png", "rerun/pairtest_s57.json"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Weak",
+  "supported": ["S"],
+  "observations": {
+   "S": "rerun/seed57/sheet.png t=0: unstructured field; prey droplets with consumer bands by t=500"
+  },
+  "replicated": true,
+  "seed": 57,
+  "seeds_run": [{"seed": 57, "result": "pass for the numbers (consumer 30 persistent splits, gen 3; prey 76, gen 9); weak for I and D as the consumer's own"}],
+  "same_individuals": false,
+  "not_checked": ["E", "X"],
+  "controls_run": {},
+  "by_construction": [],
+  "class_confirmed": true,
+  "limitation": "I and D of the consumer are not its own on my seed. The consumer is a band on the edge of its prey droplet (median 88% of frames touching prey; tracks.png #61, #412, #585). It divides when the droplet pinches: 27 of 28 persistent consumer splits coincide with a prey split (pairtest_s57.json). No consumer or prey track lives half of the run (longest 40 of 120 frames). This is the same pair co-division that the reviewers of c52's and c60's digestion ecology found. I did not run the matched twin or the fork, so X and E are not checked."
+ }],
+ "compute": {"cpu_minutes": 8}
+}
