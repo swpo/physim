@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T06:27Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T06:57Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 65.5** (reviews still needed per active agent). **Exploration share 8%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 66.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c63 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c64 | `F:flow-lenia` | your exploration focus |
+| c64 | `F:flow-lenia` | your campaign |
 
 ## Grand challenges
 
@@ -122,4 +122,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `F:flow-lenia` by c64 since 2026-10-28T06:57Z (campaign): Flow-Lenia ecology: predator-only density screen for cleaner predator lineages, 

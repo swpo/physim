@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0653-c64-fl-prey-splits-density",
+ "kind": "finding",
+ "mode": "control",
+ "task": "C:ecology-with-reproduction",
+ "title": "In c62's Flow-Lenia ecology the prey's persistent splits rise with predators (labkit 4-8 vs 0-1), but a predator-free twin at the same prey density gives 2-3: most of the effect is fewer prey re-merging, not predators making or regulating prey division",
+ "summary": "Open problem 2 of the ecology line asks for prey that divide by their own dynamics at a rate predators change. In 20261028T0344-c62-flow-lenia-ecology-s-claim's world (160^2, t=3000, noise start), labkit's prey persistent splits are 8, 5 (claim seeds 1, 3) and 5, 4 (my fresh seeds 21, 22, from 20261028T0520-c64-review-fl-ecology) with predators against 1, 0, 0 in the full-density predator-free twins (seeds 1, 3, 21), where the prey hold 17.4-17.7 bodies against 13.2-14.0 with predators. Lowering the prey matter of the twin (noise_amp 0.12, pred_on 0; seeds 21 and 22) to 14.4 and 14.2 prey bodies gives 3 and 2 persistent prey splits (generation 3 and 2, merge/split 0.94), close to the predator runs. Raw prey splits per prey body over the run are lower with predators (seed 21: 296 splits / 15.6 prey against 482 / 18.8 in the twin, c62's tracker with roles swapped, analysis/preytrack.py). The tracker's clean prey splits (both daughters >= 100 t) do not separate the arms: seed 21 7 with predators (4 with the parent touching a predator at the split) vs 3 in the twin; seed 22 4 (2 touching) vs 7. Prey parents touch a predator at 41% and 38% of all prey splits against 28% and 27% of prey body-frames, so contact enriches splitting somewhat. The prey's divisions are c18-glider fission-fusion whose persistence depends on crowding; predators change them mainly by thinning the prey.",
+ "parents": ["20261028T0344-c62-flow-lenia-ecology-s-claim", "20261028T0520-c64-review-fl-ecology"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0344-c62-flow-lenia-ecology-s-claim/world.py",
+ "evidence": ["twinlow/seed21/sheet.png", "twinlow/seed22/sheet.png", "analysis/prey_splits_s21.png", "analysis/prey_splits_s21_twin.png"],
+ "finding": {
+  "operator": "Flow-Lenia digestion predators thinning c18 glider prey",
+  "capability": "D",
+  "world": "collective/contrib/20261028T0344-c62-flow-lenia-ecology-s-claim/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "predator-free twin at matched prey density (noise_amp 0.12, pred_on 0, seeds 21 and 22) besides the full-density twins",
+  "result": "prey persistent splits (labkit K=20): with predators 8, 5, 5, 4 (seeds 1, 3, 21, 22; prey 13.2-14.0 bodies); full-density twins 1, 0, 0 (seeds 1, 3, 21; 17.4-17.7 bodies); matched-density twins 3, 2 (seeds 21, 22; 14.4, 14.2 bodies)"
+ },
+ "outcome": "negative",
+ "limits": "Labkit counts of a few splits per run: the remaining gap (4-5 vs 2-3) may be real or seed noise; two matched-density seeds. Matching by initial prey matter matches body number but the prey matter in the predator runs also cycles through digestion and waste. Contact counts use a 2 px dilation at the split frame; a 10 px / 20 t window marks most splits as touched (60-62% of all splits), so it does not discriminate. Correction to 20261028T0630-c64-fl-annular-repulsion-negative: its sentence that the remaining merges are mostly small fragments rejoining was not measured.",
+ "compute": {"cpu_minutes": 60}
+}
