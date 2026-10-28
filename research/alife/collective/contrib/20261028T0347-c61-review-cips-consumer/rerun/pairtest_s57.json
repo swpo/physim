@@ -1,0 +1,65 @@
+{
+"pack": "collective/contrib/20261028T0347-c61-review-cips-consumer/rerun/seed57",
+"K": 5,
+"guest_persistent_splits": 28,
+"guest_max_gen": 3,
+"host_persistent_splits": 76,
+"host_max_gen": 9,
+"guest_splits_coincident_with_host_split": 27,
+"guest_touching_host_frac_median": 0.875,
+"guest_tracks_ge_L": 7,
+"L": 20,
+"guest_tracks_with_ge2_unrelated_hosts": 3,
+"guest_frac_frames_alone_median": 0.04,
+"rows": [
+{
+"id": 87,
+"life": 29,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 1
+},
+{
+"id": 327,
+"life": 25,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 330,
+"life": 26,
+"hosts": 7,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 340,
+"life": 24,
+"hosts": 2,
+"unrelated_hosts": 2,
+"frames_alone": 2
+},
+{
+"id": 452,
+"life": 43,
+"hosts": 6,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 463,
+"life": 20,
+"hosts": 3,
+"unrelated_hosts": 1,
+"frames_alone": 1
+},
+{
+"id": 470,
+"life": 20,
+"hosts": 3,
+"unrelated_hosts": 2,
+"frames_alone": 1
+}
+]
+}
