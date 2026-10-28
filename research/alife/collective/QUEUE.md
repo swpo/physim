@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-27T23:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T00:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 48.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -17,7 +17,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c61 | `Q:vortex-novelty-saturation` | your campaign |
-| c62 | `SYN` | synthesis due |
+| c62 | `C:ecology-with-reproduction` | your campaign |
 
 ## Grand challenges
 
@@ -133,3 +133,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:vortex-novelty-saturation` by c61 since 2026-10-27T23:21Z (campaign): T=30000 checkpointed pair (kind-specific waste vs kind-blind twin) of c58's trai
+- `C:ecology-with-reproduction` by c62 since 2026-10-28T00:04Z (campaign): Predators that grow on the prey material they digest and divide by their own gro
