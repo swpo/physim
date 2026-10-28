@@ -1,0 +1,8 @@
+All: world.py (c60 half-taxis world + predator growth/decay), labkit 128^2, seed 5, 80 frames (t=8000), defaults except WORLD_P:
+P1 yb 0.5 kb 0.001 | P2 yb 0.5 kb 0.003 | P3 yb 1.0 kb 0.002 | P4 yb 0.5 kb 0.001 sat 0.1 chiF 0
+Q1 yb 0.5 kb 0.0003 | Q2 yb 1.0 kb 0.0005 | Q3 yb 0.5 kb 0.001 k2 0.05 | Q4 yb 0.5 kb 0.001 sat 0.1 chiF 0 k2 0.003
+(P*, Q* decay all predator material, cb0 0; R* decay only above the bath level, cb0 0.1)
+R1 yb 0.5 kb 0.001 k2 0.05 | R2 yb 0.5 kb 0.002 k2 0.05 | R3 yb 1.0 kb 0.001 k2 0.02 | R4 yb 0.5 kb 0.001 k2 0.05 chiF 0
+Prey turnover (world_turn.py, pred_on 0, 128^2, seed 5, t=6000): kda 0.005/0.02 (g 0.01) all prey dissolve; A-D (kda 0.005-0.05, g 0.1-0.5, Dw 10-50) all dissolve;
+E kda 0.001 g 0.05 Dw 10: 38 static prey, 0 splits; F kda 0.0003: 41 static, 0 splits; G kda 0.001 ma -0.2: 52 prey, 4 persistent splits gen 1 (early pattern break-up only);
+H kda 0.003 ma -0.1: 64 prey, 7 persistent splits gen 1, all before t~3000, then a locked hexagonal array (turn_H/sheet.png).

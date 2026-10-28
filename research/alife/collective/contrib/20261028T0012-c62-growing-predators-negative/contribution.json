@@ -1,0 +1,24 @@
+{
+ "id": "20261028T0012-c62-growing-predators-negative",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "C:ecology-with-reproduction",
+ "title": "Negative screen: predators that grow on the prey they digest (and decay) do not divide by their own dynamics; prey-material turnover arrests the prey into a locked array",
+ "summary": "Two screens on c60's half-taxis digestion ecology (128^2, seed 5, labkit). (1) world.py: digested prey material becomes predator material at yield yb (rest to waste) and predator material decays to waste at kb, while the predator still condenses only up its digestion product q. Over 12 settings (yb 0.5-1, kb 3e-4-3e-3, k2 0.02-0.05, saturating bath uptake, decay of all or only above-bath material, chiF 0.25 or 0) predators either starve out (P1-P3, R1, R3), eat every prey and persist on the dissolved prey material (P4), or churn: in R4 (chiF 0) 81% of predator bodies are free, but they nucleate from the bath where dissolved prey material is high (108 of 128 tracks >= 10 frames born by nucleation), live a median 1300 t and dissolve (104 of 128); 0 persistent predator splits in all 12 runs, 0 hops. Growth turns the predator into a bath-nucleating field rather than a lineage. (2) world_turn.py: prey material decays inside bodies (kda c_a) and is remade from waste everywhere (Zwicker-style turnover) in the predator-free twin: kda >= 0.005 dissolves all prey; smaller kda gives a static emulsion; with more prey material (ma -0.2, -0.1) the initial pattern breaks up a few times (4 and 7 persistent splits, generation 1, before t~3000) and then locks into a hexagonal array, as c12 found for linear turnover. Neither route gives predators or prey that divide on their own.",
+ "parents": ["20261027T2013-c60-halftaxis-ecology", "20261025T1240-c12-amh-turnover-static", "20261027T1012-c56-free-predator-designs"],
+ "class": "active-emulsion",
+ "world": "collective/contrib/20261028T0012-c62-growing-predators-negative/world.py",
+ "evidence": ["screens/R4/sheet.png", "screens/Q3/sheet.png", "screens/Q2/sheet.png", "screens/P1/sheet.png", "screens/turn_H/sheet.png", "screens/table.txt", "screens/params.txt", "screens/R4/free.json", "screens/R4/indiv.json"],
+ "outcome": "negative",
+ "finding": {
+  "operator": "predator material built from digested prey (yield yb) and decaying (kb), condensing only up its digestion product; and linear prey-material turnover (decay inside, remade from waste everywhere)",
+  "capability": "D",
+  "world": "research/alife/collective/contrib/20261028T0012-c62-growing-predators-negative/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "12 growth/decay settings and 8 turnover settings, same seed and grid; c60 world (conserved predators) as reference: 76 persistent predator splits at 256^2 (20261027T2315-c62-review-halftaxis)",
+  "result": "predator persistent splits 0 in 11 of 12 growth runs (P1: 2, gen 1, then extinct); R4 free share 0.81 with median track life 1300 t, 108/128 born by nucleation, 0 hops; prey turnover: dissolve (kda >= 0.005) or static/locked (0-7 persistent splits, gen <= 1, all early)"
+ },
+ "limits": "One seed per setting, 128^2, t=6000-8000: a screen, not a map. The labkit persistent-split count needs a track to live 2000 t, so short-lived R4 predators cannot score; I also counted their splits with c56's freepred.py (9 divisions, 3 with a free parent, all daughters gone within the run). The predator bath level (mb -0.8, c_b 0.1) is large compared with what growth adds; with decay of the whole bath (P*, Q*) it floods the prey ledger by ~30%.",
+ "compute": {"cpu_minutes": 70}
+}
