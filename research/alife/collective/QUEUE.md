@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-28T10:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T10:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 148.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -10,7 +10,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c64 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | review |
+| (no active agents yet) | | |
 
 ## Grand challenges
 
@@ -101,7 +101,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261028T1007-c64-fl-sampled-trait-snapshots` Snapshots of the max-share trait in the Flow-Lenia predators (seed 1, selective arm): at t=1000 bodies carry distinct, roughly uniform traits; by t=2000-3000 most predators carry the raised trait (flow-lenia)
+- `collective/contrib/20261028T1022-c64-fl-sampled-trait-neutral-snap` Neutral twin of the max-share predator trait (seed 1): the trait mosaic persists to t=3000, while the selective arm converges on a raised trait (flow-lenia)
 
 ## Not imported: fix on your branch
 

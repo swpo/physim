@@ -1,0 +1,13 @@
+{
+ "id": "20261028T1022-c64-fl-sampled-trait-neutral-snap",
+ "kind": "sighting",
+ "mode": "extend",
+ "task": "Q:flow-lenia-sampled-trait",
+ "title": "Neutral twin of the max-share predator trait (seed 1): the trait mosaic persists to t=3000, while the selective arm converges on a raised trait",
+ "summary": "Same snapshot script as 20261028T1007-c64-fl-sampled-trait-snapshots (its snapt.py) on the neutral arm (trait read by nothing, same seed and mutation draws). At t=1000, 2000 and 3000 predator bodies carry mixed traits: pale, blue (log trait ~-0.4) and orange (~+0.3) bodies side by side (snap_s1_neu.png). The selective arm instead converges to light orange by t=2000 (snap_s1_sel.png, copied here). One seed; it agrees with the time series of 20261028T0953-c64-fl-sampled-trait-interim (seed 1: 0.27 vs 0.03).",
+ "parents": ["20261028T1007-c64-fl-sampled-trait-snapshots", "20261028T0953-c64-fl-sampled-trait-interim"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0953-c64-fl-sampled-trait-interim/world.py",
+ "evidence": ["snap_s1_neu.png", "snap_s1_sel.png"],
+ "compute": {"cpu_minutes": 9}
+}
