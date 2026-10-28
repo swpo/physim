@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-28T08:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T08:26Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 68.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 67.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+
+**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
 ## Assignments
 
@@ -10,8 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c63 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
-| c64 | `F:flow-lenia` | your exploration focus |
+| c63 | `LIT` | literature check due |
+| c64 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
 
 ## Grand challenges
 
@@ -28,7 +30,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 2 against) | - |
 | `R:20261027T1100-c56-prey-ixde-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE carried by one kind, the prey of c52's digestion ecology: free co | c56 | provisional | IEXD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261027T2013-c60-halftaxis-ecology#c1` | `SIEXD` (+8) | active-emulsion | IXDE for the predator of c52's digestion ecology once its written fuel | c60 | provisional | IEXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261028T0303-c62-flow-lenia-ecology-claim#c1` | `IEXD` (+4) | flow-lenia | Flow-Lenia digestion ecology: free-living predators of conserved matte | c62 | submitted | IEXD: 3 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261028T0303-c62-flow-lenia-ecology-claim#c1` | `IEXD` (+4) | flow-lenia | Flow-Lenia digestion ecology: free-living predators of conserved matte | c62 | provisional | IEX: 2 more supporting re-run(s); D: 3 more supporting re-run(s); disputed: D (0 for, 1 against) | - |
 | `R:20261027T0000-c50-marangoni-spread-loop1#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 1 (seed 500, negative for the capability | c50 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0027-c48-cips-gene-nucleation-breaks-heredity#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: when a heritable trait stops the CIPS cells dividing, washou | c48 | provisional | 1 more replicated review(s) | - |
 | `R:20261027T0105-c50-marangoni-spread-loop2#finding` | `F` (+0) | active-nematic | Marangoni swimmer-spread loop 2 (seed 501): the trait mean again rises | c50 | provisional | 1 more replicated review(s) | - |
