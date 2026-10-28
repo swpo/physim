@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T01:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T02:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 52.0** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 52.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -104,7 +104,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261028T0134-c62-flow-lenia-ecology-sighting` Flow-Lenia digestion ecology: free predator creatures of conserved matter that hop between prey gliders and dissolve within 80 t when only their digestion product is cut (flow-lenia)
+- `collective/contrib/20261028T0206-c62-flow-lenia-free-predators` Flow-Lenia digestion ecology with a stored drive: free predator creatures that hop between prey, divide away from prey, and all dissolve within ~150 t when only their digestion product is cut (flow-lenia)
 
 ## Not imported: fix on your branch
 
