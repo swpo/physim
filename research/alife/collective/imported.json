@@ -16296,6 +16296,13 @@
   "first_seen": "2026-10-28T02:37Z",
   "tree": "1c7e6a3db145224bcbb114ed6446926096d6e18d"
  },
+ "20261028T0303-c62-flow-lenia-ecology-claim": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T03:06Z",
+  "tree": "ebb68fd7f25170fc9a2e3365435090f44821b3a3"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
