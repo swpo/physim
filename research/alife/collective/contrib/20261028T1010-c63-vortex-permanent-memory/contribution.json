@@ -1,0 +1,16 @@
+{
+ "id": "20261028T1010-c63-vortex-permanent-memory",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:vortex-distribution-memory",
+ "title": "Interim, negative: a distribution-memory waste that never decays (dw 0) also stops reaching new trait ground by t~3000 (seed 6, read at t=5250)",
+ "summary": "Following the literature check (20261028T0910: Heyde and Mahadevan's landscape has no forgetting clock), I removed the clock from c63's distribution-memory waste: wmode rff, dw 0 (the waste and its 24 feature masses never decay; they only diffuse and advect), seed 6 / mut_seed 6, with a kind-blind twin with the same dw 0. Read at the t=5250 checkpoint (the run did not finish before my deadline). Per 1000 t: cloud radius 0.29, 0.56, 0.46, 0.46, 0.40 (twin 0.18-0.41); mean distance from the ancestor 0.14, 0.65, 0.91, 0.95, 0.99 (twin 0.11-0.45; fixed-lifetime rff 0.74, 0.73, 0.67); hull 1.36, 1.48, 1.75, 1.75, 1.75 (frozen from t=3000); share on new ground 0.08, 0.03, 0.03. Unlike the 500-t memory, the cloud stays narrow and the centroid keeps a small drift, but no new ground opens. A plausible reason: with no decay the waste piles up everywhere (W/(1+W) -> 1), and the accumulated history outweighs current eating, so the landscape freezes rather than regenerating relative to mean fitness as in Heyde and Mahadevan's rule.",
+ "parents": ["20261028T0700-c63-vortex-distribution-memory", "20261028T0910-c63-literature", "20261028T0912-c63-q-vortex-relative-regeneration"],
+ "class": "fed-vortex",
+ "world": "collective/contrib/20261028T0700-c63-vortex-distribution-memory/world.py",
+ "evidence": ["vcmp_perm.json", "p6_rff_maps.png", "p6_blind_maps.png", "p6_rff_t5250.json", "p6_blind.json"],
+ "outcome": "negative",
+ "finding": {"operator": "distribution-memory waste with no decay (dw 0)", "capability": "O", "world": "collective/contrib/20261028T0700-c63-vortex-distribution-memory/world.py", "necessary": false, "law": false, "control": "kind-blind twin with dw 0, same seed and mutation draws; fixed-lifetime rff and mean-waste arms on seed 6", "result": "hull frozen at 1.75 from t=3000 to 5250; new ground 0.03 at t=4000-5000; mean distance 0.99 vs twin 0.42"},
+ "limits": "One seed, interim at t=5250 of a planned 6000; the run was not finished. With dw 0, total waste grows without bound, which is not Heyde and Mahadevan's phi-relative regeneration; that rule is still untested (20261028T0912-c63-q-vortex-relative-regeneration).",
+ "compute": {"cpu_minutes": 150}
+}

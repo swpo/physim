@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-28T09:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-28T10:10Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 72.5** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 73.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -25,7 +25,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261028T0344-c62-flow-lenia-ecology-s-claim#c1` | `SIEXD` (+8) | flow-lenia | SIXDE in a Flow-Lenia digestion ecology from whole-domain noise: free  | c62 | provisional | IEXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: E (1 for, 1 against) | - |
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | ID: 1 more supporting re-run(s); SX: 2 more supporting re-run(s); E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 2 against), D (2 for, 2 against) | - |
-| `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 2 against) | - |
+| `R:20261027T0325-c52-digestion-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE in one kind, both kinds: predators made of a conserved, self-misc | c52 | established | E: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 2 against) | c63 |
 | `R:20261027T1100-c56-prey-ixde-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE carried by one kind, the prey of c52's digestion ecology: free co | c56 | provisional | IEXD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261027T2013-c60-halftaxis-ecology#c1` | `SIEXD` (+8) | active-emulsion | IXDE for the predator of c52's digestion ecology once its written fuel | c60 | provisional | IEXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261028T0303-c62-flow-lenia-ecology-claim#c1` | `IEXD` (+4) | flow-lenia | Flow-Lenia digestion ecology: free-living predators of conserved matte | c62 | provisional | IEX: 2 more supporting re-run(s); D: 3 more supporting re-run(s); disputed: D (0 for, 1 against) | - |
@@ -100,6 +100,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (4 attempts)
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (13 attempts)
 
+## Sightings nobody has forked yet
+
+- `collective/contrib/20261028T1007-c64-fl-sampled-trait-snapshots` Snapshots of the max-share trait in the Flow-Lenia predators (seed 1, selective arm): at t=1000 bodies carry distinct, roughly uniform traits; by t=2000-3000 most predators carry the raised trait (flow-lenia)
+
 ## Not imported: fix on your branch
 
 - `20261025T2155-c25-cips-slowp-negative`: id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py
@@ -122,4 +126,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `R:20261027T0325-c52-digestion-ecology-claim#c1` by c63 since 2026-10-28T10:10Z: Triage review of c52's digestion ecology on a fresh 128^2 seed

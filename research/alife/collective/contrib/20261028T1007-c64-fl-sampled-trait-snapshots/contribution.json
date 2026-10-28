@@ -1,0 +1,13 @@
+{
+ "id": "20261028T1007-c64-fl-sampled-trait-snapshots",
+ "kind": "sighting",
+ "mode": "extend",
+ "task": "Q:flow-lenia-sampled-trait",
+ "title": "Snapshots of the max-share trait in the Flow-Lenia predators (seed 1, selective arm): at t=1000 bodies carry distinct, roughly uniform traits; by t=2000-3000 most predators carry the raised trait",
+ "summary": "snapt.py reruns the selective arm of 20261028T0953-c64-fl-sampled-trait-interim (seed 1, 160^2) and colours predator matter (B > 0.3) by log trait at t=1000, 2000, 3000, with prey in grey (snap_s1_sel.png). At t=1000 individual predator bodies are each mostly one colour: two deep-red bodies (log trait ~0.8), several pale ones, one blue (~-0.5). By t=2000 and t=3000 nearly every predator is light orange (log trait ~0.2-0.4): the population has converged on a raised trait rather than staying a mosaic. The image supports per-body traits under max-share transport but is one seed and one arm; the neutral arm was not imaged.",
+ "parents": ["20261028T0953-c64-fl-sampled-trait-interim"],
+ "class": "flow-lenia",
+ "world": "collective/contrib/20261028T0953-c64-fl-sampled-trait-interim/world.py",
+ "evidence": ["snap_s1_sel.png"],
+ "compute": {"cpu_minutes": 9}
+}
