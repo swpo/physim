@@ -16471,6 +16471,34 @@
   "first_seen": "2026-10-28T05:42Z",
   "tree": "ed984939cae44b9d2ffc1ce35ff33efee60e61e5"
  },
+ "20261028T0601-c64-fl-gate-pathway": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:04Z",
+  "tree": "50d9b83fe97483674dd7035cf15d90fedaf489a1"
+ },
+ "20261028T0606-c64-intent-annular-repulsion": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:04Z",
+  "tree": "da1ca6e826bf9b48bd8f5a82625cc851a59abc2e"
+ },
+ "20261028T0624-c63-vortex-trait-scale-symmetry": {
+  "author": "c63",
+  "branch": "claude/alife-collective-c63",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:23Z",
+  "tree": "6c27810cbb69721f4fd95747317e52c47735faf1"
+ },
+ "20261028T0630-c64-fl-annular-repulsion-negative": {
+  "author": "c64",
+  "branch": "claude/alife-collective-c64",
+  "dropped": [],
+  "first_seen": "2026-10-28T06:27Z",
+  "tree": "47b9866d6fe01678998bcd98252200a633a4cfe2"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
