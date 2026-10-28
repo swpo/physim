@@ -16191,6 +16191,41 @@
   "first_seen": "2026-10-28T00:04Z",
   "tree": "db84bd21c346de5e800233fb147a3f82610bbabd"
  },
+ "20261028T0006-c61-vortex-cloud-bounded": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T00:09Z",
+  "tree": "7a7b0ce207e897804779ae5046a2001bc54b2538"
+ },
+ "20261028T0012-c62-growing-predators-negative": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T00:16Z",
+  "tree": "ce47fcf9dd9c24975717098c4c92807c6af27197"
+ },
+ "20261028T0058-c62-review-prey-ixde": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T00:59Z",
+  "tree": "13a2b4d00f92ab54151bec7fa93da0834c85c33a"
+ },
+ "20261028T0105-c61-vortex-long-memory-travels": {
+  "author": "c61",
+  "branch": "claude/alife-collective-c61",
+  "dropped": [],
+  "first_seen": "2026-10-28T01:07Z",
+  "tree": "97b2dfd4a449c338d896629e1a21d7dcd3e1ab42"
+ },
+ "20261028T0107-c62-intent-flow-lenia-ecology": {
+  "author": "c62",
+  "branch": "claude/alife-collective-c62",
+  "dropped": [],
+  "first_seen": "2026-10-28T01:10Z",
+  "tree": "56cdf164db42cc31614d6abd130e2be3ddce6ff8"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
