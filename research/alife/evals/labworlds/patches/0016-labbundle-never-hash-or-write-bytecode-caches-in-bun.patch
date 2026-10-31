@@ -1,0 +1,141 @@
+From 25a73d2349bc7849e57482f03e407666f894529b Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 31 Oct 2026 06:00:39 +0000
+Subject: [PATCH 16/16] labbundle: never hash or write bytecode caches in
+ bundle folders; drop the non-independent native control from the fed-vortex
+ report
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+---
+ environments/physim/physim/labbundle.py      | 5 +++++
+ environments/physim/physim/labworld.py       | 3 +++
+ scripts/physim/labworlds/fedvortex_bundle.py | 7 +++----
+ scripts/physim/labworlds/fedvortex_report.py | 8 ++++----
+ 4 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/environments/physim/physim/labbundle.py b/environments/physim/physim/labbundle.py
+index ecdcfb5..2cce100 100644
+--- a/environments/physim/physim/labbundle.py
++++ b/environments/physim/physim/labbundle.py
+@@ -94,6 +94,7 @@ def _load_function(root: Path, source: str, function: str):
+     name = "labbundle_obs_" + hashlib.sha256(str(path).encode()).hexdigest()[:16]
+     spec = importlib.util.spec_from_file_location(name, path)
+     module = importlib.util.module_from_spec(spec)
++    sys.dont_write_bytecode = True  # bundle folders stay byte-identical; see LabBundle
+     spec.loader.exec_module(module)
+     fn = getattr(module, function, None)
+     if not callable(fn):
+@@ -201,6 +202,8 @@ def validate_lab_manifest(manifest):
+         if type(record) is not dict or set(record) != {"path", "bytes", "sha256", "role", "profiles"}:
+             raise BundleError("invalid file record")
+         name = str(relative_path(record["path"]))
++        if "__pycache__" in name.split("/") or name.endswith(".pyc"):
++            raise BundleError("bytecode caches cannot be bundle files")
+         if name in names or name == "manifest.json":
+             raise BundleError("duplicate or self-referencing bundle file")
+         names.add(name)
+@@ -247,6 +250,8 @@ class LabBundle(Bundle):
+             raise BundleError("unknown bundle profile")
+         self.root = Path(directory).expanduser().resolve()
+         self.profile = profile
++        # World code is imported from the bundle folder; never write bytecode caches into it.
++        sys.dont_write_bytecode = True
+         self.manifest = validate_lab_manifest(read_json(self.root / "manifest.json"))
+         self.manifest_sha256 = digest(self.root / "manifest.json")
+         self.files = {r["path"]: r for r in self.manifest["files"]}
+diff --git a/environments/physim/physim/labworld.py b/environments/physim/physim/labworld.py
+index 1fa028c..929ec23 100644
+--- a/environments/physim/physim/labworld.py
++++ b/environments/physim/physim/labworld.py
+@@ -185,11 +185,14 @@ class LabWorld:
+                 sys.path.insert(0, p)
+         old = os.environ.get("WORLD_P")
+         os.environ["WORLD_P"] = json.dumps(self.overrides)
++        bytecode = sys.dont_write_bytecode
++        sys.dont_write_bytecode = True  # a world folder (for example a bundle's) must stay byte-identical
+         try:
+             spec = importlib.util.spec_from_file_location(f"labworld_{abs(hash(self.path))}", self.path)
+             module = importlib.util.module_from_spec(spec)
+             spec.loader.exec_module(module)
+         finally:
++            sys.dont_write_bytecode = bytecode
+             if old is None:
+                 os.environ.pop("WORLD_P", None)
+             else:
+diff --git a/scripts/physim/labworlds/fedvortex_bundle.py b/scripts/physim/labworlds/fedvortex_bundle.py
+index 398649c..823e8de 100644
+--- a/scripts/physim/labworlds/fedvortex_bundle.py
++++ b/scripts/physim/labworlds/fedvortex_bundle.py
+@@ -31,7 +31,6 @@ for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+     os.environ.setdefault(_v, "1")
+ 
+ import argparse
+-import copy
+ import dataclasses
+ import json
+ import shutil
+@@ -47,7 +46,7 @@ from physim import blobround6 as R6  # noqa: E402
+ from physim import blobround6_eval as scoring  # noqa: E402
+ from physim import labbundle as LB  # noqa: E402
+ from physim import labworld as LW  # noqa: E402
+-from physim.bundles import digest, identified, load_arrays  # noqa: E402
++from physim.bundles import digest, identified  # noqa: E402
+ from physim.devices import ProbeDevice  # noqa: E402
+ 
+ HERE = Path(__file__).resolve().parent
+@@ -330,7 +329,7 @@ def write_manifest(out: Path, checks: dict | None = None):
+         write_json(out / "checks.json", checks)
+     decl = json.loads((out / "labworld.json").read_text())
+     state = LB.read_state(out / "preparation.npz", decl)
+-    world_files = {p.relative_to(out).as_posix(): digest(p) for p in sorted((out / "world").rglob("*")) if p.is_file()}
++    world_files = {p.relative_to(out).as_posix(): digest(p) for p in sorted((out / "world").rglob("*")) if p.is_file() and "__pycache__" not in p.parts}
+     objects = {}
+     objects["world"] = identified("world", dict(
+         name=decl["name"], files=world_files, declaration_sha256=digest(out / "labworld.json"),
+@@ -348,7 +347,7 @@ def write_manifest(out: Path, checks: dict | None = None):
+         truth_sha256={c["truth"]: digest(out / c["truth"]) for c in suite["cases"]}))
+     files = []
+     for p in sorted(out.rglob("*")):
+-        if not p.is_file() or p.name == "manifest.json":
++        if not p.is_file() or p.name == "manifest.json" or "__pycache__" in p.parts:
+             continue
+         rel = p.relative_to(out).as_posix()
+         role = "truth" if rel.startswith("truth/") else "world" if rel.startswith("world/") else p.stem
+diff --git a/scripts/physim/labworlds/fedvortex_report.py b/scripts/physim/labworlds/fedvortex_report.py
+index 9ac094d..2e75860 100644
+--- a/scripts/physim/labworlds/fedvortex_report.py
++++ b/scripts/physim/labworlds/fedvortex_report.py
+@@ -12,9 +12,8 @@ import json
+ import math
+ from pathlib import Path
+ 
+-import numpy as np
+-
+ import fedvortex_bundle as FB
++import numpy as np
+ from physim import blobround6_eval as scoring
+ from physim import labbundle as LB
+ from physim.rewards import DEFAULT_PRECISION, precision_reward
+@@ -81,7 +80,6 @@ def report(out: Path, work: Path):
+         row["native4_mean"] = float(np.mean([s[0] for s in slices]))
+         row["native4_group_mean"] = {g: float(np.mean([s[1][g] for s in slices])) for g in gids}
+         row["band"] = [min(s[0] for s in slices) / row["native4_mean"], max(s[0] for s in slices) / row["native4_mean"]]
+-        row["controls"]["independent_native"] = slices[0]
+         row["controls"]["ignore_actions"] = score(record, ignore, FB.CONTROL_MEMBERS)
+         row["controls"]["initial_persistence"] = score(
+             record, persistence.predict(record["request"]["actions"], record["request"]["queries"], FB.CONTROL_MEMBERS)["samples"],
+@@ -93,7 +91,9 @@ def report(out: Path, work: Path):
+                 cpu += c
+                 row["controls"][name] = score(record, arr, FB.CONTROL_MEMBERS)
+         rows[cid] = row
+-    names = ["independent_native", "ignore_actions", "initial_persistence"] + FB.CONTROLS
++    # No "independent_native" row: slices of the 64-member reference define the band; the
++    # dt-halved null (its own seeds) is the independent check.
++    names = ["ignore_actions", "initial_persistence"] + FB.CONTROLS
+     res = dict(world="c53-fed-vortices", bundle_id=bundle.manifest["bundle_id"], cases_scored=len(rows),
+                control_members=FB.CONTROL_MEMBERS, reference_members=64, per_case={}, aggregate={}, groups={},
+                targeted={}, simulation_cpu_h=cpu / 3600)
+-- 
+2.43.0
+

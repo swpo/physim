@@ -1,0 +1,1954 @@
+{
+ "world": "c53-fed-vortices",
+ "bundle_id": "bundle:sha256:d5698a580dc607951cca484886d45e93b62ed8f37931317b2d6abfb60a9c481f",
+ "cases_scored": 15,
+ "control_members": 4,
+ "reference_members": 64,
+ "per_case": {
+  "c001": {
+   "family": "sham",
+   "native64": 0.03756833354857761,
+   "native4": 0.04527341679315266,
+   "band": [
+    0.9140701282915219,
+    1.087855083412047
+   ],
+   "ratio": {
+    "independent_native": 0.9659906667515307,
+    "ignore_actions": 1.0297442212171757,
+    "initial_persistence": 20.122350694302767,
+    "wrong_probe_geometry": 12.431229100934702,
+    "ablate_adv0": 109.59380757023558,
+    "ablate_kF0": 147.98431518585863,
+    "ablate_body_gain": 10.15457566988274,
+    "numerical_null": 0.9719410499629318,
+    "ablate_k0": 233.53086667188896,
+    "ablate_mu0": 1976.3067184168667
+   }
+  },
+  "c002": {
+   "family": "probe_shift",
+   "native64": 0.04023373715065931,
+   "native4": 0.048478433261382556,
+   "band": [
+    0.8644951786580256,
+    1.3384024028435024
+   ],
+   "ratio": {
+    "independent_native": 0.877178924689469,
+    "ignore_actions": 4.935883424270879,
+    "initial_persistence": 17.909293622330924,
+    "wrong_probe_geometry": 11.499792166796663,
+    "ablate_adv0": 101.7970902872215,
+    "ablate_kF0": 138.73461681858086,
+    "ablate_body_gain": 9.812031581458465,
+    "numerical_null": 1.1462155060112573
+   }
+  },
+  "c003": {
+   "family": "probe_wide",
+   "native64": 0.03660318175653773,
+   "native4": 0.043821959598833726,
+   "band": [
+    0.8862884072247141,
+    1.1709706407711569
+   ],
+   "ratio": {
+    "independent_native": 1.1709706407711569,
+    "ignore_actions": 10.27360671301179,
+    "initial_persistence": 22.21901117299232,
+    "wrong_probe_geometry": 12.26206516918943,
+    "ablate_adv0": 111.84474827167168,
+    "ablate_kF0": 151.8923099844094,
+    "ablate_body_gain": 10.01408551290284,
+    "numerical_null": 0.9410312864299317
+   }
+  },
+  "c004": {
+   "family": "pulse_then_move",
+   "native64": 0.03245665579782215,
+   "native4": 0.040515213599058394,
+   "band": [
+    0.8600974699322389,
+    1.3563821219229595
+   ],
+   "ratio": {
+    "independent_native": 0.9209355884881576,
+    "ignore_actions": 11.087079386281543,
+    "initial_persistence": 21.408937413682853,
+    "wrong_probe_geometry": 13.459650224062145,
+    "ablate_adv0": 125.70858521505203,
+    "ablate_kF0": 167.31235537905803,
+    "ablate_body_gain": 11.05023774877273,
+    "numerical_null": 1.0983064054169749
+   }
+  },
+  "c005": {
+   "family": "move_then_pulse",
+   "native64": 0.038398066423273494,
+   "native4": 0.04646032031037945,
+   "band": [
+    0.9159311195831659,
+    1.1121524527140445
+   ],
+   "ratio": {
+    "independent_native": 1.0465025384776239,
+    "ignore_actions": 9.170437492534129,
+    "initial_persistence": 19.296231726742477,
+    "wrong_probe_geometry": 12.157904200814745,
+    "ablate_adv0": 109.17999298449006,
+    "ablate_kF0": 145.07972809304835,
+    "ablate_body_gain": 9.98838525447196,
+    "numerical_null": 1.0162597485504794
+   }
+  },
+  "c006": {
+   "family": "two_sources",
+   "native64": 0.025317388404520653,
+   "native4": 0.033844358677367584,
+   "band": [
+    0.860325404834939,
+    1.2484696926199355
+   ],
+   "ratio": {
+    "independent_native": 0.9995652327199359,
+    "ignore_actions": 21.510853217595503,
+    "initial_persistence": 28.760673732144536,
+    "wrong_probe_geometry": 14.992525232391447,
+    "ablate_adv0": 152.05763489519748,
+    "ablate_kF0": 199.1399768885741,
+    "ablate_body_gain": 14.151640761580907,
+    "numerical_null": 0.9603131249147813
+   }
+  },
+  "c007": {
+   "family": "move_during_pulse",
+   "native64": 0.03587288825245347,
+   "native4": 0.044104845258294265,
+   "band": [
+    0.928724200369012,
+    1.0898051180792983
+   ],
+   "ratio": {
+    "independent_native": 0.9529146069375881,
+    "ignore_actions": 10.142279507001692,
+    "initial_persistence": 19.894362752891716,
+    "wrong_probe_geometry": 12.266611848059485,
+    "ablate_adv0": 115.25377176508968,
+    "ablate_kF0": 153.40711194059813,
+    "ablate_body_gain": 9.86926214052736,
+    "numerical_null": 0.9435387877616449
+   }
+  },
+  "c008": {
+   "family": "delayed_feed",
+   "native64": 0.03215507465953075,
+   "native4": 0.040225499193599745,
+   "band": [
+    0.9021822956481657,
+    1.1723288036145416
+   ],
+   "ratio": {
+    "independent_native": 1.0026261816810338,
+    "ignore_actions": 6.741056711708666,
+    "initial_persistence": 24.829870820386326,
+    "wrong_probe_geometry": 18.68915366981272,
+    "ablate_adv0": 134.43730193266592,
+    "ablate_kF0": 167.34189648878902,
+    "ablate_body_gain": 12.207468594658476,
+    "numerical_null": 0.9815933744697292,
+    "ablate_mu0": 2233.60711326684
+   }
+  },
+  "c009": {
+   "family": "feed_neck",
+   "native64": 0.042692264331872065,
+   "native4": 0.051313338770735364,
+   "band": [
+    0.8392058458887879,
+    1.3066310191338755
+   ],
+   "ratio": {
+    "independent_native": 0.9738597585669524,
+    "ignore_actions": 21.614375640477263,
+    "initial_persistence": 29.356023687405454,
+    "wrong_probe_geometry": 17.477742681972547,
+    "ablate_adv0": 108.42238185271513,
+    "ablate_kF0": 132.2778099065475,
+    "ablate_body_gain": 19.474132180020543,
+    "numerical_null": 1.1270071875778953,
+    "ablate_k0": 224.13749079577724
+   }
+  },
+  "c010": {
+   "family": "starve_neck",
+   "native64": 0.03274458927745578,
+   "native4": 0.04104321495212245,
+   "band": [
+    0.8442853092294358,
+    1.2632724378429332
+   ],
+   "ratio": {
+    "independent_native": 0.9578713554187133,
+    "ignore_actions": 6.052352882518785,
+    "initial_persistence": 23.711242663659778,
+    "wrong_probe_geometry": 12.539848564404384,
+    "ablate_adv0": 116.16167221293738,
+    "ablate_kF0": 162.3434550189163,
+    "ablate_body_gain": 12.780369925735345,
+    "numerical_null": 0.9542091983730316,
+    "ablate_mu0": 2179.8494066672683
+   }
+  },
+  "c011": {
+   "family": "feed_vortex",
+   "native64": 0.03309599809812742,
+   "native4": 0.04192013490002668,
+   "band": [
+    0.8119106047718486,
+    1.2708999542056705
+   ],
+   "ratio": {
+    "independent_native": 0.8119106047718486,
+    "ignore_actions": 25.26113173988762,
+    "initial_persistence": 34.81462391086836,
+    "wrong_probe_geometry": 14.738446758473227,
+    "ablate_adv0": 123.93768937481636,
+    "ablate_kF0": 159.19965353144218,
+    "ablate_body_gain": 16.704020705385226,
+    "numerical_null": 1.1129143869818952,
+    "ablate_k0": 272.4751259027974
+   }
+  },
+  "c012": {
+   "family": "starve_vortex",
+   "native64": 0.034166714695028126,
+   "native4": 0.041703722818065614,
+   "band": [
+    0.8806354023320676,
+    1.2576703769808122
+   ],
+   "ratio": {
+    "independent_native": 0.9523091778082479,
+    "ignore_actions": 13.47313563317321,
+    "initial_persistence": 28.03920036565408,
+    "wrong_probe_geometry": 12.681631843462176,
+    "ablate_adv0": 113.6141947660857,
+    "ablate_kF0": 157.87542079194952,
+    "ablate_body_gain": 11.20754419876039,
+    "numerical_null": 0.8884258834857148,
+    "ablate_mu0": 2137.2886250356473
+   }
+  },
+  "c013": {
+   "family": "stir_cut",
+   "native64": 0.047998865607038164,
+   "native4": 0.05657859005179783,
+   "band": [
+    0.8409910228576714,
+    1.1514725989830206
+   ],
+   "ratio": {
+    "independent_native": 0.9547146490801292,
+    "ignore_actions": 5.945055221765596,
+    "initial_persistence": 18.461132863970644,
+    "wrong_probe_geometry": 11.02294658595855,
+    "ablate_adv0": 84.48084674556779,
+    "ablate_kF0": 118.21902199732969,
+    "ablate_body_gain": 10.27171134584165,
+    "numerical_null": 1.1614150799020184,
+    "ablate_k0": 184.5139097858706,
+    "ablate_mu0": 1578.2469051979615
+   }
+  },
+  "c014": {
+   "family": "follow_vortex",
+   "native64": 0.03259899970522858,
+   "native4": 0.04040368564525137,
+   "band": [
+    0.9333400970168004,
+    1.1072727946409822
+   ],
+   "ratio": {
+    "independent_native": 1.040469214992514,
+    "ignore_actions": 9.05834201910101,
+    "initial_persistence": 17.51312064081507,
+    "wrong_probe_geometry": 12.768573299923599,
+    "ablate_adv0": 122.44343674796713,
+    "ablate_kF0": 165.50336837943783,
+    "ablate_body_gain": 11.462170399627967,
+    "numerical_null": 0.9369200070246455
+   }
+  },
+  "c015": {
+   "family": "feed_and_follow",
+   "native64": 0.027963050078881984,
+   "native4": 0.035994372790617846,
+   "band": [
+    0.8650460078762053,
+    1.3462250062858687
+   ],
+   "ratio": {
+    "independent_native": 0.9655077865866704,
+    "ignore_actions": 25.608430565538537,
+    "initial_persistence": 32.457762745249674,
+    "wrong_probe_geometry": 14.753821758280168,
+    "ablate_adv0": 142.8312230838179,
+    "ablate_kF0": 184.50682439628585,
+    "ablate_body_gain": 15.06910128509298,
+    "numerical_null": 0.9177006000915298,
+    "ablate_k0": 307.9298375483592
+   }
+  }
+ },
+ "aggregate": {
+  "independent_native": {
+   "cases": 15,
+   "ratio": 0.9721599443034613,
+   "ci90": [
+    0.9400538699174764,
+    1.0060778869975158
+   ],
+   "cases_beyond_band": 0,
+   "cases_within_band": [
+    "sham",
+    "probe_shift",
+    "probe_wide",
+    "pulse_then_move",
+    "move_then_pulse",
+    "two_sources",
+    "move_during_pulse",
+    "delayed_feed",
+    "feed_neck",
+    "starve_neck",
+    "feed_vortex",
+    "starve_vortex",
+    "stir_cut",
+    "follow_vortex",
+    "feed_and_follow"
+   ]
+  },
+  "ignore_actions": {
+   "cases": 15,
+   "ratio": 11.754727527250123,
+   "ci90": [
+    8.712381784079385,
+    14.923707211757034
+   ],
+   "cases_beyond_band": 14,
+   "cases_within_band": [
+    "sham"
+   ]
+  },
+  "initial_persistence": {
+   "cases": 15,
+   "ratio": 23.6237139381214,
+   "ci90": [
+    21.448167610301653,
+    25.931794989266677
+   ],
+   "cases_beyond_band": 15,
+   "cases_within_band": []
+  },
+  "wrong_probe_geometry": {
+   "cases": 15,
+   "ratio": 13.498742200173837,
+   "ci90": [
+    12.626752326370436,
+    14.475060465702612
+   ],
+   "cases_beyond_band": 15,
+   "cases_within_band": []
+  },
+  "ablate_adv0": {
+   "cases": 15,
+   "ratio": 116.2129437347641,
+   "ci90": [
+    109.28118912849128,
+    123.03004667090083
+   ],
+   "cases_beyond_band": 15,
+   "cases_within_band": []
+  },
+  "ablate_kF0": {
+   "cases": 15,
+   "ratio": 154.3133993152038,
+   "ci90": [
+    145.90494217288023,
+    162.7688807030856
+   ],
+   "cases_beyond_band": 15,
+   "cases_within_band": []
+  },
+  "ablate_body_gain": {
+   "cases": 15,
+   "ratio": 12.229035648430855,
+   "ci90": [
+    11.02949028022441,
+    13.622377916394244
+   ],
+   "cases_beyond_band": 15,
+   "cases_within_band": []
+  },
+  "numerical_null": {
+   "cases": 15,
+   "ratio": 1.0180120791640004,
+   "ci90": [
+    0.9772196131627116,
+    1.0592305140983926
+   ],
+   "cases_beyond_band": 1,
+   "cases_within_band": [
+    "sham",
+    "probe_shift",
+    "probe_wide",
+    "pulse_then_move",
+    "move_then_pulse",
+    "two_sources",
+    "move_during_pulse",
+    "delayed_feed",
+    "feed_neck",
+    "starve_neck",
+    "feed_vortex",
+    "starve_vortex",
+    "follow_vortex",
+    "feed_and_follow"
+   ]
+  },
+  "ablate_k0": {
+   "cases": 5,
+   "ratio": 238.09715443188696,
+   "ci90": [
+    209.890804382623,
+    272.82259115673037
+   ],
+   "cases_beyond_band": 5,
+   "cases_within_band": []
+  },
+  "ablate_mu0": {
+   "cases": 5,
+   "ratio": 1989.1877241759819,
+   "ci90": [
+    1781.6452327094532,
+    2173.1049981812225
+   ],
+   "cases_beyond_band": 5,
+   "cases_within_band": []
+  }
+ },
+ "groups": {
+  "independent_native": {
+   "device0/eat": {
+    "ratio": 0.9413165828743032,
+    "ci90": [
+     0.9082430546815153,
+     0.9733298833110096
+    ]
+   },
+   "device0/om": {
+    "ratio": 0.9631260293235012,
+    "ci90": [
+     0.93208187008369,
+     0.9914918006777003
+    ]
+   },
+   "device0/speed": {
+    "ratio": 0.9826782192092541,
+    "ci90": [
+     0.9484560905815441,
+     1.0124454461944241
+    ]
+   },
+   "device0/Y": {
+    "ratio": 0.9701617766240556,
+    "ci90": [
+     0.9457066644443243,
+     0.9918812833634977
+    ]
+   },
+   "device1/eat": {
+    "ratio": 0.9597733023603648,
+    "ci90": [
+     0.9185794211836654,
+     0.9977512228103124
+    ]
+   },
+   "device1/om": {
+    "ratio": 0.9628514825192093,
+    "ci90": [
+     0.9301289535645251,
+     0.9935178441774327
+    ]
+   },
+   "device1/speed": {
+    "ratio": 0.9973813788946614,
+    "ci90": [
+     0.972997756919553,
+     1.0237466195138307
+    ]
+   },
+   "device1/Y": {
+    "ratio": 0.9713935809994895,
+    "ci90": [
+     0.9346576886909738,
+     1.0100928173834074
+    ]
+   },
+   "global/eat": {
+    "ratio": 0.9957743988589515,
+    "ci90": [
+     0.9558626512687611,
+     1.0367219347708048
+    ]
+   },
+   "global/om": {
+    "ratio": 0.9756121626703617,
+    "ci90": [
+     0.9228240392585324,
+     1.0304567618578477
+    ]
+   },
+   "global/speed": {
+    "ratio": 0.9505786700528607,
+    "ci90": [
+     0.885324017633479,
+     1.0141844943860803
+    ]
+   },
+   "global/Y": {
+    "ratio": 1.0084194152111003,
+    "ci90": [
+     0.9307048160311678,
+     1.0939800465765797
+    ]
+   }
+  },
+  "ignore_actions": {
+   "device0/eat": {
+    "ratio": 26.21038351813965,
+    "ci90": [
+     14.78628731165797,
+     35.045085512653735
+    ]
+   },
+   "device0/om": {
+    "ratio": 18.437846897823466,
+    "ci90": [
+     10.520059580803817,
+     26.042334379566473
+    ]
+   },
+   "device0/speed": {
+    "ratio": 13.069774830228363,
+    "ci90": [
+     7.686130212034232,
+     18.99839534171876
+    ]
+   },
+   "device0/Y": {
+    "ratio": 31.745470614054128,
+    "ci90": [
+     20.16547232355512,
+     41.79024667902738
+    ]
+   },
+   "device1/eat": {
+    "ratio": 17.108222707294466,
+    "ci90": [
+     9.103442459936135,
+     26.35423315073552
+    ]
+   },
+   "device1/om": {
+    "ratio": 16.007753266133687,
+    "ci90": [
+     8.943429276608578,
+     23.79457439232163
+    ]
+   },
+   "device1/speed": {
+    "ratio": 15.252584374771393,
+    "ci90": [
+     8.56173413066272,
+     22.64454571273155
+    ]
+   },
+   "device1/Y": {
+    "ratio": 20.374702795484435,
+    "ci90": [
+     10.885146759251576,
+     31.53685188850547
+    ]
+   },
+   "global/eat": {
+    "ratio": 18.748982541326992,
+    "ci90": [
+     8.147581704703503,
+     32.215484799929754
+    ]
+   },
+   "global/om": {
+    "ratio": 7.3454836305878555,
+    "ci90": [
+     4.49163074540632,
+     10.654449976860883
+    ]
+   },
+   "global/speed": {
+    "ratio": 4.997900244286835,
+    "ci90": [
+     3.0671553554437523,
+     7.2827626454361445
+    ]
+   },
+   "global/Y": {
+    "ratio": 8.333766670653363,
+    "ci90": [
+     5.869852062301247,
+     10.855588001851496
+    ]
+   }
+  },
+  "initial_persistence": {
+   "device0/eat": {
+    "ratio": 64.41369708554544,
+    "ci90": [
+     57.79300930819905,
+     73.7325418885705
+    ]
+   },
+   "device0/om": {
+    "ratio": 65.34963849358367,
+    "ci90": [
+     61.072813241688074,
+     69.9054924844576
+    ]
+   },
+   "device0/speed": {
+    "ratio": 38.60166676098659,
+    "ci90": [
+     35.340289269702524,
+     41.918044813670896
+    ]
+   },
+   "device0/Y": {
+    "ratio": 98.08014216810675,
+    "ci90": [
+     87.31405596602417,
+     111.1220942822545
+    ]
+   },
+   "device1/eat": {
+    "ratio": 28.700013064221487,
+    "ci90": [
+     24.463005413941662,
+     33.20086456041438
+    ]
+   },
+   "device1/om": {
+    "ratio": 31.14817661862041,
+    "ci90": [
+     28.24508596756975,
+     34.13151186472534
+    ]
+   },
+   "device1/speed": {
+    "ratio": 25.4240114312859,
+    "ci90": [
+     21.872060357348435,
+     29.768440528473516
+    ]
+   },
+   "device1/Y": {
+    "ratio": 44.115465965509784,
+    "ci90": [
+     38.65775142816549,
+     50.13596245527795
+    ]
+   },
+   "global/eat": {
+    "ratio": 21.51703458603589,
+    "ci90": [
+     11.450155431880946,
+     34.10432015362697
+    ]
+   },
+   "global/om": {
+    "ratio": 10.465930638973596,
+    "ci90": [
+     8.389609677616738,
+     12.786908539296633
+    ]
+   },
+   "global/speed": {
+    "ratio": 7.534745554045296,
+    "ci90": [
+     6.179019381617119,
+     9.100741550800395
+    ]
+   },
+   "global/Y": {
+    "ratio": 14.143527795156091,
+    "ci90": [
+     12.669712436464375,
+     15.73184875755522
+    ]
+   }
+  },
+  "wrong_probe_geometry": {
+   "device0/eat": {
+    "ratio": 55.38013179780812,
+    "ci90": [
+     49.629821792547794,
+     63.56009501105689
+    ]
+   },
+   "device0/om": {
+    "ratio": 46.709549841061616,
+    "ci90": [
+     43.433819045795644,
+     49.99513593456249
+    ]
+   },
+   "device0/speed": {
+    "ratio": 25.713189827784333,
+    "ci90": [
+     23.802455504371185,
+     27.675158203598237
+    ]
+   },
+   "device0/Y": {
+    "ratio": 47.46589931163259,
+    "ci90": [
+     42.946722887440586,
+     52.45368274973582
+    ]
+   },
+   "device1/eat": {
+    "ratio": 25.144380118680473,
+    "ci90": [
+     23.135963786931946,
+     27.38741163814005
+    ]
+   },
+   "device1/om": {
+    "ratio": 26.817243684273848,
+    "ci90": [
+     24.89191089482446,
+     28.8505263456904
+    ]
+   },
+   "device1/speed": {
+    "ratio": 20.519473418163354,
+    "ci90": [
+     19.295147705552058,
+     21.76715364455109
+    ]
+   },
+   "device1/Y": {
+    "ratio": 32.296297817291226,
+    "ci90": [
+     29.565490427191076,
+     35.10270682382101
+    ]
+   },
+   "global/eat": {
+    "ratio": 3.876802628418711,
+    "ci90": [
+     2.1420274625891356,
+     5.840456737513588
+    ]
+   },
+   "global/om": {
+    "ratio": 1.3516052226482649,
+    "ci90": [
+     1.1588514383297246,
+     1.595300839193812
+    ]
+   },
+   "global/speed": {
+    "ratio": 1.1010999662781915,
+    "ci90": [
+     0.9967412531368105,
+     1.2164454254984476
+    ]
+   },
+   "global/Y": {
+    "ratio": 2.1123989296573935,
+    "ci90": [
+     1.4243534138586502,
+     2.92144323358205
+    ]
+   }
+  },
+  "ablate_adv0": {
+   "device0/eat": {
+    "ratio": 66.43836795076194,
+    "ci90": [
+     58.78193250715774,
+     77.65229387226157
+    ]
+   },
+   "device0/om": {
+    "ratio": 68.07089348300939,
+    "ci90": [
+     63.263438104904935,
+     72.95982767359438
+    ]
+   },
+   "device0/speed": {
+    "ratio": 103.54359877858256,
+    "ci90": [
+     94.29060392011536,
+     113.44311579538932
+    ]
+   },
+   "device0/Y": {
+    "ratio": 102.71882760631688,
+    "ci90": [
+     93.61567778628124,
+     112.89906702806532
+    ]
+   },
+   "device1/eat": {
+    "ratio": 27.052923556771805,
+    "ci90": [
+     23.419246285006007,
+     31.107086676845217
+    ]
+   },
+   "device1/om": {
+    "ratio": 31.935966577789973,
+    "ci90": [
+     28.363591494958452,
+     35.336908348070935
+    ]
+   },
+   "device1/speed": {
+    "ratio": 87.75149088208313,
+    "ci90": [
+     79.66311523231018,
+     95.5717932157929
+    ]
+   },
+   "device1/Y": {
+    "ratio": 45.3974796699066,
+    "ci90": [
+     39.45532026146768,
+     51.012827881420186
+    ]
+   },
+   "global/eat": {
+    "ratio": 12.492896391760219,
+    "ci90": [
+     8.713310880579794,
+     17.57141186954437
+    ]
+   },
+   "global/om": {
+    "ratio": 7.280155858486102,
+    "ci90": [
+     6.056116089389885,
+     8.521890849674044
+    ]
+   },
+   "global/speed": {
+    "ratio": 323.18043310412094,
+    "ci90": [
+     296.1450981074064,
+     353.82268938256
+    ]
+   },
+   "global/Y": {
+    "ratio": 8.37951781928553,
+    "ci90": [
+     6.9967516352118615,
+     9.954661017304971
+    ]
+   }
+  },
+  "ablate_kF0": {
+   "device0/eat": {
+    "ratio": 17.904263668020825,
+    "ci90": [
+     15.34527075884024,
+     20.82307075906967
+    ]
+   },
+   "device0/om": {
+    "ratio": 11.282359099694323,
+    "ci90": [
+     9.924711874621508,
+     12.654799866153484
+    ]
+   },
+   "device0/speed": {
+    "ratio": 46.52164215277551,
+    "ci90": [
+     42.781686360813104,
+     50.5854795607408
+    ]
+   },
+   "device0/Y": {
+    "ratio": 73.87484578593637,
+    "ci90": [
+     64.56845548979851,
+     85.39709945346432
+    ]
+   },
+   "device1/eat": {
+    "ratio": 17.633665973357974,
+    "ci90": [
+     15.690401868963775,
+     19.813345941238218
+    ]
+   },
+   "device1/om": {
+    "ratio": 18.685257725320806,
+    "ci90": [
+     17.04342510860513,
+     20.383731687708057
+    ]
+   },
+   "device1/speed": {
+    "ratio": 40.17148427680783,
+    "ci90": [
+     37.3650316019753,
+     42.73759446965894
+    ]
+   },
+   "device1/Y": {
+    "ratio": 37.51142704719015,
+    "ci90": [
+     32.70938759381353,
+     43.22819388167403
+    ]
+   },
+   "global/eat": {
+    "ratio": 327.61260103518015,
+    "ci90": [
+     306.3573332878676,
+     348.9908729979697
+    ]
+   },
+   "global/om": {
+    "ratio": 246.94576940347855,
+    "ci90": [
+     229.05675741778012,
+     265.0815571593055
+    ]
+   },
+   "global/speed": {
+    "ratio": 148.5791465315545,
+    "ci90": [
+     136.42072812258488,
+     162.64858382096193
+    ]
+   },
+   "global/Y": {
+    "ratio": 358.65404121499733,
+    "ci90": [
+     328.7393403959882,
+     391.4570785510887
+    ]
+   }
+  },
+  "ablate_body_gain": {
+   "device0/eat": {
+    "ratio": 14.363198167108738,
+    "ci90": [
+     7.914489997586436,
+     21.399056072317983
+    ]
+   },
+   "device0/om": {
+    "ratio": 8.522084885669448,
+    "ci90": [
+     5.112937685191831,
+     13.81843595351684
+    ]
+   },
+   "device0/speed": {
+    "ratio": 5.619681964128806,
+    "ci90": [
+     3.791719555421715,
+     8.406373089755173
+    ]
+   },
+   "device0/Y": {
+    "ratio": 16.66606663169558,
+    "ci90": [
+     9.081722239876301,
+     27.474295058386165
+    ]
+   },
+   "device1/eat": {
+    "ratio": 6.764649600592069,
+    "ci90": [
+     4.380569182180646,
+     10.171941722875909
+    ]
+   },
+   "device1/om": {
+    "ratio": 4.862695262032061,
+    "ci90": [
+     3.6069478393534107,
+     6.319802749285785
+    ]
+   },
+   "device1/speed": {
+    "ratio": 2.9575496087020783,
+    "ci90": [
+     2.2183906916808285,
+     3.9126602877017977
+    ]
+   },
+   "device1/Y": {
+    "ratio": 5.424137653883188,
+    "ci90": [
+     3.626039300285436,
+     7.576321235934821
+    ]
+   },
+   "global/eat": {
+    "ratio": 35.95389202209879,
+    "ci90": [
+     31.22540386884687,
+     41.75594255364061
+    ]
+   },
+   "global/om": {
+    "ratio": 16.6249763952399,
+    "ci90": [
+     15.551543620865003,
+     17.71930004384225
+    ]
+   },
+   "global/speed": {
+    "ratio": 3.5848488432553154,
+    "ci90": [
+     3.0647828773217283,
+     4.157474321757412
+    ]
+   },
+   "global/Y": {
+    "ratio": 30.51399170248325,
+    "ci90": [
+     28.069116081604108,
+     33.273243966794915
+    ]
+   }
+  },
+  "numerical_null": {
+   "device0/eat": {
+    "ratio": 1.114346446811892,
+    "ci90": [
+     1.036756742307791,
+     1.1770534626938083
+    ]
+   },
+   "device0/om": {
+    "ratio": 1.0673934117420527,
+    "ci90": [
+     1.0140409855343813,
+     1.1189966219361216
+    ]
+   },
+   "device0/speed": {
+    "ratio": 1.0391398969896606,
+    "ci90": [
+     0.9822540900421662,
+     1.0940127032611884
+    ]
+   },
+   "device0/Y": {
+    "ratio": 1.0564421595884166,
+    "ci90": [
+     0.9987418232791211,
+     1.1158700402115584
+    ]
+   },
+   "device1/eat": {
+    "ratio": 0.9796717169554671,
+    "ci90": [
+     0.9242796746747773,
+     1.0373547238624918
+    ]
+   },
+   "device1/om": {
+    "ratio": 0.9808006179576491,
+    "ci90": [
+     0.9424174579455253,
+     1.0206810986706658
+    ]
+   },
+   "device1/speed": {
+    "ratio": 0.9820084275235186,
+    "ci90": [
+     0.9427765867612634,
+     1.0191343878788743
+    ]
+   },
+   "device1/Y": {
+    "ratio": 0.9653565878282127,
+    "ci90": [
+     0.9165704466074469,
+     1.0159024997981332
+    ]
+   },
+   "global/eat": {
+    "ratio": 1.013509891150315,
+    "ci90": [
+     0.9699852834239169,
+     1.061687617855514
+    ]
+   },
+   "global/om": {
+    "ratio": 0.9991946749921123,
+    "ci90": [
+     0.9465481455038265,
+     1.0551871244412656
+    ]
+   },
+   "global/speed": {
+    "ratio": 1.0407942743152911,
+    "ci90": [
+     0.9783064309170786,
+     1.1007332035469912
+    ]
+   },
+   "global/Y": {
+    "ratio": 1.0024377000710452,
+    "ci90": [
+     0.92369557586233,
+     1.0840808409918163
+    ]
+   }
+  },
+  "ablate_k0": {
+   "device0/eat": {
+    "ratio": 48.51989640947997,
+    "ci90": [
+     43.84466131421665,
+     52.12003660023541
+    ]
+   },
+   "device0/om": {
+    "ratio": 42.65501727545866,
+    "ci90": [
+     35.30971937437733,
+     49.659558604726016
+    ]
+   },
+   "device0/speed": {
+    "ratio": 79.1999574434034,
+    "ci90": [
+     67.4088007309728,
+     92.71400600362993
+    ]
+   },
+   "device0/Y": {
+    "ratio": 76.62778128414102,
+    "ci90": [
+     54.63386362291248,
+     92.88253918584468
+    ]
+   },
+   "device1/eat": {
+    "ratio": 30.211927596358528,
+    "ci90": [
+     18.85978968194867,
+     43.88237595935764
+    ]
+   },
+   "device1/om": {
+    "ratio": 28.213459889843765,
+    "ci90": [
+     22.860389852357173,
+     33.60885462610999
+    ]
+   },
+   "device1/speed": {
+    "ratio": 70.94847075797843,
+    "ci90": [
+     55.316267384442725,
+     89.64894545141381
+    ]
+   },
+   "device1/Y": {
+    "ratio": 68.87316080536174,
+    "ci90": [
+     43.280593252125136,
+     100.97709172838061
+    ]
+   },
+   "global/eat": {
+    "ratio": 428.360468298169,
+    "ci90": [
+     367.07457524383193,
+     507.4112582010202
+    ]
+   },
+   "global/om": {
+    "ratio": 356.50760900879834,
+    "ci90": [
+     302.82810108209884,
+     426.46668260434234
+    ]
+   },
+   "global/speed": {
+    "ratio": 285.7666301888108,
+    "ci90": [
+     254.13479192876704,
+     330.7183114734099
+    ]
+   },
+   "global/Y": {
+    "ratio": 519.6954429022805,
+    "ci90": [
+     444.7128126334143,
+     619.8703105100564
+    ]
+   }
+  },
+  "ablate_mu0": {
+   "device0/eat": {
+    "ratio": 86.76792682207385,
+    "ci90": [
+     73.39250458649073,
+     103.90792060575849
+    ]
+   },
+   "device0/om": {
+    "ratio": 170.6328776954394,
+    "ci90": [
+     155.80890109331156,
+     190.30162470808096
+    ]
+   },
+   "device0/speed": {
+    "ratio": 401.22520114798505,
+    "ci90": [
+     361.29012265664574,
+     453.01483135175766
+    ]
+   },
+   "device0/Y": {
+    "ratio": 224.171605238427,
+    "ci90": [
+     192.27513242162306,
+     279.1547394683269
+    ]
+   },
+   "device1/eat": {
+    "ratio": 38.70528056353459,
+    "ci90": [
+     31.211016517436676,
+     48.0844740298776
+    ]
+   },
+   "device1/om": {
+    "ratio": 108.7440232029624,
+    "ci90": [
+     91.35017878195531,
+     129.58374011632904
+    ]
+   },
+   "device1/speed": {
+    "ratio": 310.43706121073313,
+    "ci90": [
+     261.0219781056552,
+     376.29116476088507
+    ]
+   },
+   "device1/Y": {
+    "ratio": 120.91808758915798,
+    "ci90": [
+     95.57256502950152,
+     158.3057961341437
+    ]
+   },
+   "global/eat": {
+    "ratio": 1102.1969311517923,
+    "ci90": [
+     961.1865496511448,
+     1288.773590334516
+    ]
+   },
+   "global/om": {
+    "ratio": 5220.79925566032,
+    "ci90": [
+     4584.122680317502,
+     5967.805535092555
+    ]
+   },
+   "global/speed": {
+    "ratio": 3494.7897965233947,
+    "ci90": [
+     3180.6947273188193,
+     3844.2196566238867
+    ]
+   },
+   "global/Y": {
+    "ratio": 1246.1916208398134,
+    "ci90": [
+     1101.6759311028313,
+     1429.7134641849298
+    ]
+   }
+  }
+ },
+ "targeted": {
+  "sham": {
+   "ablate_body_gain": {
+    "ratio": 10.15457566988274,
+    "band_max": 1.087855083412047,
+    "fails": true
+   },
+   "ablate_adv0": {
+    "ratio": 109.59380757023558,
+    "band_max": 1.087855083412047,
+    "fails": true
+   }
+  },
+  "delayed_feed": {
+   "ablate_body_gain": {
+    "ratio": 12.207468594658476,
+    "band_max": 1.1723288036145416,
+    "fails": true
+   },
+   "ablate_mu0": {
+    "ratio": 2233.60711326684,
+    "band_max": 1.1723288036145416,
+    "fails": true
+   }
+  },
+  "feed_neck": {
+   "ablate_body_gain": {
+    "ratio": 19.474132180020543,
+    "band_max": 1.3066310191338755,
+    "fails": true
+   },
+   "ablate_k0": {
+    "ratio": 224.13749079577724,
+    "band_max": 1.3066310191338755,
+    "fails": true
+   }
+  },
+  "starve_neck": {
+   "ablate_body_gain": {
+    "ratio": 12.780369925735345,
+    "band_max": 1.2632724378429332,
+    "fails": true
+   },
+   "ablate_mu0": {
+    "ratio": 2179.8494066672683,
+    "band_max": 1.2632724378429332,
+    "fails": true
+   }
+  },
+  "feed_vortex": {
+   "ablate_k0": {
+    "ratio": 272.4751259027974,
+    "band_max": 1.2708999542056705,
+    "fails": true
+   }
+  },
+  "starve_vortex": {
+   "ablate_mu0": {
+    "ratio": 2137.2886250356473,
+    "band_max": 1.2576703769808122,
+    "fails": true
+   }
+  },
+  "stir_cut": {
+   "ablate_k0": {
+    "ratio": 184.5139097858706,
+    "band_max": 1.1514725989830206,
+    "fails": true
+   },
+   "ablate_mu0": {
+    "ratio": 1578.2469051979615,
+    "band_max": 1.1514725989830206,
+    "fails": true
+   }
+  },
+  "follow_vortex": {
+   "ablate_adv0": {
+    "ratio": 122.44343674796713,
+    "band_max": 1.1072727946409822,
+    "fails": true
+   }
+  },
+  "feed_and_follow": {
+   "ablate_adv0": {
+    "ratio": 142.8312230838179,
+    "band_max": 1.3462250062858687,
+    "fails": true
+   },
+   "ablate_k0": {
+    "ratio": 307.9298375483592,
+    "band_max": 1.3462250062858687,
+    "fails": true
+   }
+  }
+ },
+ "simulation_cpu_h": 2.744127681187222,
+ "group_band": {
+  "device0/eat": [
+   0.8972325286740219,
+   1.101062782229272
+  ],
+  "device0/om": [
+   0.9334051254456006,
+   1.058459353656263
+  ],
+  "device0/speed": [
+   0.9594911863948966,
+   1.0818355284460954
+  ],
+  "device0/Y": [
+   0.9312297981522208,
+   1.0670038649846973
+  ],
+  "device1/eat": [
+   0.9260066456560379,
+   1.0523220774252702
+  ],
+  "device1/om": [
+   0.9428943659426092,
+   1.0450715695014619
+  ],
+  "device1/speed": [
+   0.9523560781568468,
+   1.0648521252264118
+  ],
+  "device1/Y": [
+   0.9281325287350152,
+   1.0714186935239374
+  ],
+  "global/eat": [
+   0.9355012537126968,
+   1.0794861300986653
+  ],
+  "global/om": [
+   0.9112411983471128,
+   1.0762915718360704
+  ],
+  "global/speed": [
+   0.9328679227295645,
+   1.0778857808925724
+  ],
+  "global/Y": [
+   0.8940087959010563,
+   1.1019006813444934
+  ]
+ },
+ "aggregate_band": [
+  0.9435991087261937,
+  1.0476194855608312
+ ],
+ "group_reliance": {
+  "device0/eat": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_wide",
+     "follow_vortex"
+    ],
+    "beyond_band": 12
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [],
+    "beyond_band": 15
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_wide",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "feed_neck",
+     "starve_neck",
+     "starve_vortex",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 5
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "device0/om": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_wide",
+     "follow_vortex"
+    ],
+    "beyond_band": 12
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [],
+    "beyond_band": 15
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "feed_neck",
+     "starve_neck",
+     "starve_vortex",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 4
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "device0/speed": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_wide",
+     "follow_vortex"
+    ],
+    "beyond_band": 12
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [],
+    "beyond_band": 15
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "feed_neck",
+     "starve_neck",
+     "feed_vortex",
+     "starve_vortex",
+     "stir_cut",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 2
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "device0/Y": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_wide",
+     "follow_vortex"
+    ],
+    "beyond_band": 12
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [],
+    "beyond_band": 15
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "starve_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 4
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "device1/eat": {
+   "ignore_actions": {
+    "inside_band": [
+     "probe_shift",
+     "pulse_then_move",
+     "delayed_feed"
+    ],
+    "beyond_band": 12
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [],
+    "beyond_band": 15
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "feed_vortex",
+     "starve_vortex",
+     "stir_cut",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 0
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "device1/om": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "pulse_then_move",
+     "delayed_feed"
+    ],
+    "beyond_band": 11
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [],
+    "beyond_band": 15
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "feed_vortex",
+     "starve_vortex",
+     "stir_cut",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 0
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "device1/speed": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "delayed_feed"
+    ],
+    "beyond_band": 12
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [],
+    "beyond_band": 15
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "feed_vortex",
+     "starve_vortex",
+     "stir_cut",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 0
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "device1/Y": {
+   "ignore_actions": {
+    "inside_band": [
+     "probe_shift",
+     "pulse_then_move",
+     "delayed_feed"
+    ],
+    "beyond_band": 12
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [],
+    "beyond_band": 15
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "feed_vortex",
+     "starve_vortex",
+     "stir_cut",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 0
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "global/eat": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "follow_vortex"
+    ],
+    "beyond_band": 11
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "follow_vortex"
+    ],
+    "beyond_band": 10
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "starve_vortex",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 2
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "global/om": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "follow_vortex"
+    ],
+    "beyond_band": 11
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "move_during_pulse",
+     "starve_neck",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 6
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "feed_vortex",
+     "starve_vortex",
+     "stir_cut",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 0
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "global/speed": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "follow_vortex"
+    ],
+    "beyond_band": 11
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "starve_vortex",
+     "stir_cut",
+     "follow_vortex"
+    ],
+    "beyond_band": 3
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "feed_vortex",
+     "starve_vortex",
+     "stir_cut",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 0
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  },
+  "global/Y": {
+   "ignore_actions": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "follow_vortex"
+    ],
+    "beyond_band": 11
+   },
+   "wrong_probe_geometry": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "move_during_pulse",
+     "starve_neck",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 6
+   },
+   "numerical_null": {
+    "inside_band": [
+     "sham",
+     "probe_shift",
+     "probe_wide",
+     "pulse_then_move",
+     "move_then_pulse",
+     "two_sources",
+     "move_during_pulse",
+     "delayed_feed",
+     "feed_neck",
+     "starve_neck",
+     "feed_vortex",
+     "starve_vortex",
+     "follow_vortex",
+     "feed_and_follow"
+    ],
+    "beyond_band": 1
+   },
+   "ablate_body_gain": {
+    "inside_band": [],
+    "beyond_band": 15
+   }
+  }
+ },
+ "reward": {
+  "native64_primary": 0.035324387185800485,
+  "K": 2.0,
+  "native64_reward": 0.7259626818187367,
+  "persistence4_primary": 1.0263418694456978,
+  "worst_native_case": 0.047998865607038164,
+  "calibration_rule_K": 1,
+  "scale_factor_for_K2": 9.599773121407633,
+  "note": "PhySim rule: largest integer K with 10^-K >= 2 x worst native case energy (reward-calibration.json).",
+  "persistence4_reward": 0.0,
+  "independent_native_reward_4member": 0.6871592029358662,
+  "ignore_actions_reward_4member": 0.14592178106885004,
+  "initial_persistence_reward_4member": 0.0,
+  "wrong_probe_geometry_reward_4member": 0.11588141279962418,
+  "ablate_adv0_reward_4member": 0.0,
+  "ablate_kF0_reward_4member": 0.0,
+  "ablate_body_gain_reward_4member": 0.13733195892071764,
+  "numerical_null_reward_4member": 0.6771515988547012
+ }
+}

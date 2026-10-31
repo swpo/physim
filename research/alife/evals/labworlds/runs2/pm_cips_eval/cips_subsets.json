@@ -1,0 +1,4 @@
+{"band_native": ["sham", "p_d0", "Fp_d0", "Fm_d0", "s_d0", "two_sources"],
+ "ablate_chi0": ["sham", "p_d0"], "ablate_kF0": ["sham", "Fp_d0"], "ablate_chis0": ["sham", "s_d0"],
+ "ablate_d0": ["sham", "Fm_d0"], "ablate_DF10": ["sham", "Fm_d0"],
+ "numerical_null": ["sham", "Fp_d0", "Fm_d0"]}

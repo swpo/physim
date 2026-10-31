@@ -1,7 +1,7 @@
 From b4bdebca9ea0bd903d4a9818f118f803f679044b Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 29 Oct 2026 11:50:39 +0000
-Subject: [PATCH 10/11] physim: noise declared by its intensity in world units
+Subject: [PATCH 10/16] physim: noise declared by its intensity in world units
  (LabWorld.noise_intensity)
 
 A field listed in noise_intensity reads its sd as the intensity of the

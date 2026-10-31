@@ -1,0 +1,103 @@
+{
+  "runtime_access": {},
+  "prompt_condition": "interface-only-v4-portable-tools",
+  "reward_precision": 2.0,
+  "output": "/home/user/evalwork/vortex_eval/suite/validate/lab",
+  "submitted": false,
+  "artifact_source": null,
+  "artifact": null,
+  "checks": [],
+  "experiments": [
+    {
+      "request": {
+        "actions": [
+          {
+            "t": 0,
+            "kind": "inject",
+            "device": 1,
+            "port": 1,
+            "amp": 3.0,
+            "dur": 10.0
+          },
+          {
+            "t": 1,
+            "kind": "adjust",
+            "device": 0,
+            "u": [
+              0.2,
+              -0.1,
+              0.0
+            ]
+          }
+        ],
+        "queries": [
+          {
+            "sensor": "device0",
+            "t": [
+              0,
+              5,
+              10
+            ]
+          },
+          {
+            "sensor": "device1",
+            "t": [
+              10,
+              20
+            ]
+          },
+          {
+            "sensor": "global",
+            "t": [
+              20
+            ]
+          }
+        ]
+      },
+      "file": "experiment_001.npz",
+      "sha256": "815843397a69edf42ae9cdb5e67b85a3c1d574c36c7ec1b9aa7b7ffadc8b6d62",
+      "arrays": {
+        "query0": [
+          1,
+          3,
+          4,
+          13
+        ],
+        "query1": [
+          1,
+          2,
+          4,
+          19
+        ],
+        "query2": [
+          1,
+          1,
+          4,
+          2
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "experiments": 1,
+    "max_experiments": 10,
+    "charged_tu": 20.0,
+    "max_total_tu": 200.0
+  },
+  "origin": {
+    "bundle": "bundle:sha256:d5698a580dc607951cca484886d45e93b62ed8f37931317b2d6abfb60a9c481f",
+    "manifest_sha256": "18cdc2bbb6721229b0af372a891c26ec9ff81dfecc9ad8359cab81a1ee248c40",
+    "world": "world:sha256:a720978e0c75f5325db1d0d1c7321baa9a24bcd5e9b14062b547f4eb49313934",
+    "preparation": "preparation:sha256:a5046571eae36e9688b78d100ebba8012132c5bec3c1e2e5c32a8823ecb2732a",
+    "suite": "suite:sha256:5242543b54e39434e62905492d2b1aaece382dde9c15305d013a2eab842a58e7"
+  },
+  "infrastructure_error": null,
+  "exploration_closed": false,
+  "checkpoint": {},
+  "rejected_requests": [
+    {
+      "kind": "experiment",
+      "error": "actions[0].port must be [0, 3]"
+    }
+  ]
+}

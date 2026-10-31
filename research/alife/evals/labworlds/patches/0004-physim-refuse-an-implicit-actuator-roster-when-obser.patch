@@ -1,7 +1,7 @@
 From 0431dc93b56b94c64b7e4134f74e69704bf59ee9 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 28 Oct 2026 21:33:48 +0000
-Subject: [PATCH 04/11] physim: refuse an implicit actuator roster when
+Subject: [PATCH 04/16] physim: refuse an implicit actuator roster when
  observe-only rows exist; record round-2 results in LABWORLDS.md
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>

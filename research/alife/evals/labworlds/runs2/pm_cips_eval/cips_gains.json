@@ -1,0 +1,2 @@
+{"intensity": 0.03, "gains": {"p": 0.3, "F": 0.3, "s": 1.0},
+ "why": "intensity 0.1 pushes e above 1 (1.015-1.025); 0.03 keeps e <= 0.988 and the zero-noise dt error at the pulse site is 3x smaller relative to the member spread than at 0.01. Gains 1 for p and F clip at injection (p at 1, F at 0) and give dt errors of 9-35 member sds at the pulse site; at 0.3 they are 0.6-3.2 sds in the first 10 tu (F+ worst), 0.2-1.1 over 50 tu. s at gain 1: <= 0.15 sd."}

@@ -1,7 +1,7 @@
 From 637f4cb192e1e8614cbac5f39c4338656c620c5a Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 29 Oct 2026 00:21:36 +0000
-Subject: [PATCH 06/11] LABWORLDS.md: worlds are continuum models; admissible
+Subject: [PATCH 06/16] LABWORLDS.md: worlds are continuum models; admissible
  resolutions pass the refinement nulls
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>

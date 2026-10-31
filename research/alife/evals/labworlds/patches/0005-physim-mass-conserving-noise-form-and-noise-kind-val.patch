@@ -1,7 +1,7 @@
 From 956bb5fa0828bcba2e93be7c561bc3b5cecc560f Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 28 Oct 2026 21:35:41 +0000
-Subject: [PATCH 05/11] physim: mass-conserving noise form and noise-kind
+Subject: [PATCH 05/16] physim: mass-conserving noise form and noise-kind
  validation in LabWorld
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>

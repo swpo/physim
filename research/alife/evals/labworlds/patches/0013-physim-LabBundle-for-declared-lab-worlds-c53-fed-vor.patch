@@ -1,0 +1,1357 @@
+From 0e8c3dcfe7289da9ae8eb51d53c08da0efdea6ee Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 31 Oct 2026 05:02:33 +0000
+Subject: [PATCH 13/16] physim: LabBundle for declared lab worlds; c53
+ fed-vortex bundle recipe, controls and credit-free validation
+
+labbundle.py: a lab world as a PhySim bundle (schema physim-lab-bundle-v1): world files (world file,
+labkit modules, observe-only channel module), declaration, apparatus, prepared fields and carry keys
+(no pickle), suite, truths and checks, with every file and the implementation (runner, adapter,
+devices, scorer and labbundle sources; numpy/scipy versions) hashed into the identities. LabBundle
+subclasses Bundle with the interface taskset and evaluation use; open_bundle selects it from the
+manifest, and taskset.required_bundle now opens bundles through it. The scorer's single port count
+requires as many observed ports as actuators; LabBundle refuses other declarations.
+
+scripts/physim/labworlds/fedvortex_*: c53's fed vortices (noise intensity 0.003, ell 2; om additive,
+Y proportional) with ports (om,+), (om,-), (Y,+), (Y,-) and observe-only eat and speed channels; a
+prepared state from init(31) at t=580 with device 0 on a pinching rod's neck and device 1 on a
+drifting vortex; 15 programs (8 generic, 7 mechanism-targeted); calibration-frozen score groups;
+2 truths per case; a 64-member native reference and privileged controls (ignore actions, wrong
+geometry, initial persistence, flow off, regrowth off, growth off, decay off, body-uniform gain,
+dt-halved null); report and validation through required_bundle, LaboratoryTools and evaluation.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+---
+ environments/physim/physim/labbundle.py       | 331 ++++++++++++
+ environments/physim/physim/taskset.py         |   4 +-
+ .../physim/labworlds/fedvortex/ablations.py   | 104 ++++
+ .../physim/labworlds/fedvortex/observables.py |  16 +
+ scripts/physim/labworlds/fedvortex_bundle.py  | 490 ++++++++++++++++++
+ scripts/physim/labworlds/fedvortex_report.py  | 183 +++++++
+ .../physim/labworlds/fedvortex_validate.py    | 132 +++++
+ 7 files changed, 1259 insertions(+), 1 deletion(-)
+ create mode 100644 environments/physim/physim/labbundle.py
+ create mode 100644 scripts/physim/labworlds/fedvortex/ablations.py
+ create mode 100644 scripts/physim/labworlds/fedvortex/observables.py
+ create mode 100644 scripts/physim/labworlds/fedvortex_bundle.py
+ create mode 100644 scripts/physim/labworlds/fedvortex_report.py
+ create mode 100644 scripts/physim/labworlds/fedvortex_validate.py
+
+diff --git a/environments/physim/physim/labbundle.py b/environments/physim/physim/labbundle.py
+new file mode 100644
+index 0000000..ecdcfb5
+--- /dev/null
++++ b/environments/physim/physim/labbundle.py
+@@ -0,0 +1,331 @@
++"""Lab bundles: a declared lab world (a Python world file) as a PhySim evaluation bundle.
++
++A lab bundle has the layout and identities of a Blobkit world bundle (``bundles.Bundle``),
++but its world is a lab world file run through ``labworld.LabOracleRunner`` instead of a
++Blobkit genome on the fixed 256^2 grid:
++
++- ``world/``: the world file, the modules it imports (for labkit worlds, ``labkit/``) and
++  ``observables.py`` (the observe-only channels), all as regular files hashed in the
++  manifest. ``world/`` is the only import path added for the world.
++- ``labworld.json``: the declaration (``labworld.LabWorld``'s keys; derived channels name
++  a function in a bundle file; ``fft_workers`` pins the world's FFT threads).
++- ``apparatus.json``: the two probe devices, the observed-port permutation (F rows), the
++  adjustment matrix and the protocol (``centered-pulse-v2``). The inject roster is the
++  declaration's ``actuators`` in public port order.
++- ``preparation.npz``: the prepared state, the dynamical fields and the declared ``carry``
++  keys only (named float64 arrays). Every other piece of module state is rebuilt by the
++  world's own ``init``, so nothing is unpickled.
++- ``suite.json``, ``truth/*.npz``, ``checks.json``: as in a Blobkit bundle.
++
++The manifest's ``schema_version`` is ``physim-lab-bundle-v1`` and its world object binds
++every world file, the declaration and the implementation (the hashes of the runner,
++adapter and scorer sources, and the numerical library versions). ``open_bundle`` picks
++``LabBundle`` for such a manifest and ``Bundle`` otherwise.
++
++Scoring reuses ``blobround6_eval`` unchanged. Its ``PublicRoster.n_ports`` is both the
++inject-port bound and the observed-port count, so a lab bundle must declare as many
++observed ports (fields plus derived channels) as actuators; ``LabBundle`` refuses others.
++
++Trusted-code note: a lab bundle executes its world file in the grader's host process.
++Load only bundles whose bytes were reviewed (the manifest hashes bind those bytes).
++"""
++
++from __future__ import annotations
++
++import hashlib
++import importlib.util
++import json
++import sys
++from dataclasses import replace
++from pathlib import Path
++
++import numpy as np
++
++from . import blobround6 as R6
++from . import blobround6_eval as scoring
++from . import labworld as LW
++from .bundles import (
++    MAX_TOTAL,
++    PROFILES,
++    Bundle,
++    BundleError,
++    digest,
++    identified,
++    load_arrays,
++    read_json,
++    relative_path,
++)
++
++LAB_FORMAT = "physim-lab-bundle-v1"
++SIMULATION_FILES = ("labworld.json", "apparatus.json", "preparation.npz")
++DECLARATION_KEYS = {
++    "name", "world_file", "fields", "steps_per_tick", "native_dt", "ports", "noise", "noise_corr",
++    "noise_intensity", "overrides", "dx", "carry", "actuators", "derived", "fft_workers", "grid",
++}
++REFERENCE_DEPENDENCIES = ("numpy", "scipy")
++
++
++def implementation_identity():
++    """Sources and libraries whose change can change a lab bundle's simulation or scores."""
++    from importlib.metadata import version
++
++    from . import devices
++
++    mods = (R6, LW, devices, scoring, sys.modules[__name__])
++    return dict(
++        source_sha256={m.__name__: digest(m.__file__) for m in mods},
++        dependencies={name: version(name) for name in REFERENCE_DEPENDENCIES},
++    )
++
++
++def state_digest(arrays: dict) -> str:
++    h = hashlib.sha256()
++    for key in sorted(arrays):
++        a = np.ascontiguousarray(arrays[key])
++        h.update(key.encode())
++        h.update(str(a.dtype).encode())
++        h.update(json.dumps(list(a.shape)).encode())
++        h.update(a.tobytes())
++    return h.hexdigest()
++
++
++def _load_function(root: Path, source: str, function: str):
++    path = root / "world" / relative_path(source)
++    name = "labbundle_obs_" + hashlib.sha256(str(path).encode()).hexdigest()[:16]
++    spec = importlib.util.spec_from_file_location(name, path)
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    fn = getattr(module, function, None)
++    if not callable(fn):
++        raise BundleError(f"derived channel function {function!r} is missing from {source}")
++    return fn
++
++
++def world_from_declaration(decl: dict, root: Path) -> LW.LabWorld:
++    """The LabWorld of a lab bundle declaration; paths resolve inside ``root/world``."""
++    if type(decl) is not dict or set(decl) != DECLARATION_KEYS:
++        raise BundleError("lab world declaration keys differ from the supported set")
++    root = Path(root)
++    derived = tuple(
++        LW.Derived(d["name"], _load_function(root, d["source"], d["function"])) for d in decl["derived"]
++    )
++    try:
++        return LW.LabWorld(
++            path=str(root / "world" / relative_path(decl["world_file"])),
++            fields=tuple(decl["fields"]),
++            steps_per_tick=int(decl["steps_per_tick"]),
++            native_dt=float(decl["native_dt"]),
++            ports={f: LW.Port(gain=float(p["gain"]), clip=tuple(p["clip"])) for f, p in decl["ports"].items()},
++            noise={f: (k, float(sd)) for f, (k, sd) in decl["noise"].items()},
++            noise_corr={f: float(v) for f, v in decl["noise_corr"].items()},
++            noise_intensity=tuple(decl["noise_intensity"]),
++            overrides=dict(decl["overrides"]),
++            dx=float(decl["dx"]),
++            sys_path=(str(root / "world"),),
++            carry=tuple(decl["carry"]),
++            actuators=tuple(LW.Actuator(a["field"], int(a["sign"])) for a in decl["actuators"]),
++            derived=derived,
++        )
++    except (TypeError, KeyError, ValueError) as exc:
++        raise BundleError(f"invalid lab world declaration: {exc}") from exc
++
++
++def devices_from_apparatus(apparatus: dict):
++    from .devices import ProbeDevice
++
++    devices = []
++    for record in apparatus["devices"]:
++        device = ProbeDevice(**record["parameters"])
++        device.dilation = record["dilation"]
++        device.Bm = np.asarray(record["motion_basis"], dtype=float)
++        devices.append(device)
++    return devices
++
++
++def _check_labkit(root: Path):
++    """A world imports its helper package from ``root/world``; refuse a different copy already imported."""
++    for package in sorted(p for p in (root / "world").iterdir() if p.is_dir() and (p / "__init__.py").is_file()):
++        for source in sorted(package.glob("*.py")):
++            name = package.name if source.stem == "__init__" else f"{package.name}.{source.stem}"
++            loaded = getattr(sys.modules.get(name), "__file__", None)
++            if loaded is not None and digest(loaded) != digest(source):
++                raise BundleError(f"module {name!r} is already imported from other bytes; use a fresh process")
++
++
++def build_oracle(root, decl: dict, apparatus: dict, state: dict, *, world=None, devices=None):
++    """``LabOracleRunner`` for a lab bundle's files (``world``/``devices`` override for privileged controls)."""
++    root = Path(root)
++    _check_labkit(root)
++    world = world or world_from_declaration(decl, root)
++    devices = devices or devices_from_apparatus(apparatus)
++    perm = np.asarray(apparatus["port_permutation"], dtype=int)
++    oracle = LW.oracle(world, state, devices, port_perm=perm, adjust_mix=np.asarray(apparatus["adjustment_matrix"]))
++    module = oracle._stepper.module
++    if hasattr(module, "ops") and hasattr(module.ops, "WORKERS"):
++        module.ops.WORKERS = int(decl["fft_workers"])
++    return oracle
++
++
++def read_state(path, decl):
++    arrays = load_arrays(path)
++    keys = set(decl["fields"]) | set(decl["carry"])
++    if set(arrays) != keys:
++        raise BundleError("preparation must hold exactly the declared fields and carry keys")
++    grid = tuple(decl["grid"])
++    for f in decl["fields"]:
++        if arrays[f].shape != grid or arrays[f].dtype != np.float64:
++            raise BundleError("prepared field shape or dtype mismatch")
++    return {k: (float(v) if v.ndim == 0 else v) for k, v in arrays.items()}
++
++
++def validate_lab_manifest(manifest):
++    if type(manifest) is not dict or manifest.get("schema_version") != LAB_FORMAT:
++        raise BundleError("unsupported lab bundle schema")
++    files, objects = manifest.get("files"), manifest.get("objects")
++    if type(files) is not list or not 1 <= len(files) <= 128 or type(objects) is not dict:
++        raise BundleError("invalid bundle file/object inventory")
++    if set(objects) != {"world", "preparation", "suite"}:
++        raise BundleError("invalid bundle object inventory")
++    for kind, obj in objects.items():
++        if type(obj) is not dict or obj.get("id") != identified(kind, {k: v for k, v in obj.items() if k != "id"})["id"]:
++            raise BundleError(f"{kind} identity mismatch")
++    if (
++        objects["preparation"].get("world_id") != objects["world"]["id"]
++        or objects["suite"].get("preparation_id") != objects["preparation"]["id"]
++    ):
++        raise BundleError("broken world/preparation/suite references")
++    if manifest.get("bundle_id") != identified("bundle", {k: v["id"] for k, v in objects.items()})["id"]:
++        raise BundleError("bundle identity mismatch")
++    names, total = set(), 0
++    for record in files:
++        if type(record) is not dict or set(record) != {"path", "bytes", "sha256", "role", "profiles"}:
++            raise BundleError("invalid file record")
++        name = str(relative_path(record["path"]))
++        if name in names or name == "manifest.json":
++            raise BundleError("duplicate or self-referencing bundle file")
++        names.add(name)
++        if type(record["bytes"]) is not int or record["bytes"] < 0:
++            raise BundleError("invalid file size")
++        if type(record["profiles"]) is not list or not record["profiles"] or any(p not in PROFILES for p in record["profiles"]):
++            raise BundleError("invalid download profile")
++        total += record["bytes"]
++    if total > MAX_TOTAL:
++        raise BundleError("bundle exceeds supported byte limit")
++    by_path = {r["path"]: r for r in files}
++    world_files = objects["world"].get("files")
++    if type(world_files) is not dict or not world_files or any(
++        by_path.get(p, {}).get("sha256") != h or by_path[p]["role"] != "world" for p, h in world_files.items()
++    ):
++        raise BundleError("world identity does not bind its files")
++    if {p for p, r in by_path.items() if r["role"] == "world"} != set(world_files):
++        raise BundleError("unbound world file")
++    for obj, key, name in (
++        ("world", "declaration_sha256", "labworld.json"),
++        ("preparation", "apparatus_sha256", "apparatus.json"),
++        ("preparation", "file_sha256", "preparation.npz"),
++        ("suite", "file_sha256", "suite.json"),
++    ):
++        if name not in by_path or objects[obj].get(key) != by_path[name]["sha256"]:
++            raise BundleError("object identity does not bind its declared file")
++    truths = objects["suite"].get("truth_sha256")
++    if type(truths) is not dict or not truths or truths != {r["path"]: r["sha256"] for r in files if r["role"] == "truth"}:
++        raise BundleError("suite identity does not bind every truth file")
++    for name in (*SIMULATION_FILES, *world_files):
++        if set(by_path[name]["profiles"]) != set(PROFILES):
++            raise BundleError("simulation input missing from a profile")
++    for name in ("suite.json", *truths):
++        if by_path[name]["profiles"] != ["evaluation"]:
++            raise BundleError("suite and truth require the evaluation profile")
++    return manifest
++
++
++class LabBundle(Bundle):
++    """A verified lab-world bundle with the interface of ``bundles.Bundle``."""
++
++    def _load(self, directory, *, profile):
++        if profile not in PROFILES:
++            raise BundleError("unknown bundle profile")
++        self.root = Path(directory).expanduser().resolve()
++        self.profile = profile
++        self.manifest = validate_lab_manifest(read_json(self.root / "manifest.json"))
++        self.manifest_sha256 = digest(self.root / "manifest.json")
++        self.files = {r["path"]: r for r in self.manifest["files"]}
++        for record in self.files.values():
++            if profile in record["profiles"]:
++                self.verified_path(record["path"])
++        self.declaration = read_json(self.verified_path("labworld.json"))
++        self.apparatus = read_json(self.verified_path("apparatus.json"))
++        self.genome = None
++        self._validate_lab()
++        self.roster = scoring.PublicRoster(n_ports=self.n_ports, device_slots=(13, 19), protocol=self.protocol)
++        self.limits = replace(scoring.DEFAULT_LIMITS, max_horizon_tu=50.0)
++        self.suite = None
++        if profile == "evaluation":
++            self.suite = read_json(self.verified_path("suite.json"))
++            self._validate_suite()
++
++    def _validate_lab(self):
++        d, a = self.declaration, self.apparatus
++        if type(d) is not dict or set(d) != DECLARATION_KEYS:
++            raise BundleError("lab world declaration keys differ from the supported set")
++        if d["name"] != self.manifest["objects"]["world"].get("name"):
++            raise BundleError("declaration and world identity name differ")
++        world_files = self.manifest["objects"]["world"]["files"]
++        if "world/" + d["world_file"] not in world_files or any(
++            "world/" + x["source"] not in world_files for x in d["derived"]
++        ):
++            raise BundleError("declared world sources are not bound world files")
++        n_observed = len(d["fields"]) + len(d["derived"])
++        if len(d["actuators"]) != n_observed:
++            raise BundleError(
++                "the scorer's public roster has one port count: declare as many actuators as observed ports"
++            )
++        self.n_ports = n_observed
++        prep = self.manifest["objects"]["preparation"]
++        if prep.get("noise_policy") != R6.NOISE_POLICY or prep.get("public_time") != 0:
++            raise BundleError("unsupported preparation profile")
++        if type(a) is not dict or set(a) != {"devices", "device_slots", "port_permutation", "adjustment_matrix", "protocol"}:
++            raise BundleError("invalid reference apparatus")
++        self.protocol = a["protocol"]
++        if self.protocol != R6.APPARATUS_PROTOCOL or a["device_slots"] != [13, 19] or len(a["devices"]) != 2:
++            raise BundleError("unsupported apparatus protocol or devices")
++        perm = a["port_permutation"]
++        if type(perm) is not list or sorted(perm) != list(range(n_observed)):
++            raise BundleError("invalid port permutation")
++        mix = np.asarray(a["adjustment_matrix"], dtype=float)
++        if mix.shape != (3, 3) or not np.isfinite(mix).all():
++            raise BundleError("invalid apparatus geometry")
++        self.runner, self.scoring = R6, scoring
++
++    def check_runtime(self):
++        if self.manifest["objects"]["world"].get("implementation") != implementation_identity():
++            raise BundleError("bundle requires a different lab simulator implementation")
++
++    def state(self):
++        return read_state(self.verified_path("preparation.npz"), self.declaration)
++
++    def make_oracle(self, *, world=None, devices=None):
++        self.check_runtime()
++        for name in self.manifest["objects"]["world"]["files"]:
++            self.verified_path(name)
++        state = self.state()
++        if state_digest({k: np.asarray(v) for k, v in state.items()}) != self.manifest["objects"]["preparation"]["state_sha256"]:
++            raise BundleError("prepared state identity mismatch")
++        return build_oracle(self.root, self.declaration, self.apparatus, state, world=world, devices=devices)
++
++    def world(self):
++        return world_from_declaration(self.declaration, self.root)
++
++
++def manifest_schema(path) -> str | None:
++    try:
++        return read_json(Path(path) / "manifest.json").get("schema_version")
++    except (BundleError, AttributeError):
++        return None
++
++
++def open_bundle(path, *, profile="evaluation"):
++    """``LabBundle`` when the manifest declares a lab world, otherwise the Blobkit ``Bundle``."""
++    if manifest_schema(path) == LAB_FORMAT:
++        return LabBundle(path, profile=profile)
++    return Bundle(path, profile=profile)
+diff --git a/environments/physim/physim/taskset.py b/environments/physim/physim/taskset.py
+index e3ef489..42ccb08 100644
+--- a/environments/physim/physim/taskset.py
++++ b/environments/physim/physim/taskset.py
+@@ -21,6 +21,7 @@ from pydantic import BaseModel, Field, model_validator
+ 
+ from physim.blobround6_explore import ExperimentService, RequestError
+ from physim.bundles import Bundle
++from physim.labbundle import open_bundle
+ 
+ from . import evaluation as E
+ from .artifact_store import MARKER, read_artifact_files
+@@ -120,7 +121,8 @@ def required_bundle(config: R6ToolsConfig, *, profile="evaluation") -> Bundle:
+         if source is None:
+             raise ValueError("The taskset must select a bundle before constructing a laboratory")
+         path = fetch_bundle(**source.model_dump(), profile=profile)
+-    bundle = Bundle(path, profile=profile)
++    # A manifest that declares a lab world opens as a LabBundle (physim.labbundle).
++    bundle = open_bundle(path, profile=profile)
+     bundle.check_runtime()
+     if config.bundle is not None:
+         config.bundle = bundle.root
+diff --git a/scripts/physim/labworlds/fedvortex/ablations.py b/scripts/physim/labworlds/fedvortex/ablations.py
+new file mode 100644
+index 0000000..680a7b4
+--- /dev/null
++++ b/scripts/physim/labworlds/fedvortex/ablations.py
+@@ -0,0 +1,104 @@
++"""Privileged ablation variants of c53's fed vortices (controls only; never an agent-facing world).
++
++The base world file is loaded from FV_BASE (default: c53's world.py) with the same WORLD_P overrides, and
++step() is the base step with optional changes read from the overrides (all default off = the base step):
++
++- ``sat_smooth`` (world units): the vorticity gain's saturation s uses |omega| smoothed by a periodic Gaussian
++  of this standard deviation, so a thin neck inherits the gain of the body around it (eating is unchanged).
++- ``fuel_smooth`` (world units): the growth term uses fuel smoothed by a periodic Gaussian (eating unchanged).
++- ``grow_off``: no vorticity gain from fuel (k Y s term removed) while eating continues.
++- ``body_gain``: inside every body (connected |omega| > ``body_thr``, periodic), the net gain (k Y s - mu) is
++  replaced by its omega-weighted mean over the body, so each body's circulation budget per step is exactly the
++  base world's while no part of a body grows or decays relative to another (no neck can starve); outside bodies
++  the local gain is unchanged. Eating, fuel and advection are the base world's.
++"""
++from scipy import ndimage
++import importlib.util, json, os
++import numpy as np
++
++_BASE = os.environ.get("FV_BASE", "/home/user/physim/research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py")
++_spec = importlib.util.spec_from_file_location("fv_base_for_ablation", _BASE)
++B = importlib.util.module_from_spec(_spec)
++_spec.loader.exec_module(B)
++ops = B.ops
++META = dict(B.META, name="fed-vortices-ablation")
++P = B.P
++P.setdefault("sat_smooth", 0.0)
++P.setdefault("fuel_smooth", 0.0)
++P.setdefault("grow_off", 0.0)
++P.setdefault("body_gain", 0.0)
++P.setdefault("body_thr", 0.06)
++fields = B.fields
++_vel, _adv = B._vel, B._adv
++
++
++def init(seed, size):
++    return B.init(seed, size)
++
++
++def _blur(f, sigma, s):
++    k2 = s["kx"] ** 2 + s["ky"] ** 2
++    return ops.irfft2(ops.rfft2(f) * np.exp(-0.5 * sigma ** 2 * k2), s["shape"])
++
++
++def _plabel(mask):
++    lab, n = ndimage.label(mask)
++    if n == 0:
++        return lab, 0
++    parent = np.arange(n + 1)
++
++    def find(i):
++        while parent[i] != i:
++            parent[i] = parent[parent[i]]
++            i = parent[i]
++        return i
++    for a, b in ((lab[0, :], lab[-1, :]), (lab[:, 0], lab[:, -1])):
++        m = (a > 0) & (b > 0)
++        for x, y in zip(a[m], b[m]):
++            rx, ry = find(x), find(y)
++            if rx != ry:
++                parent[max(rx, ry)] = min(rx, ry)
++    roots = np.array([find(i) for i in range(n + 1)])
++    return roots[lab], n
++
++
++def _body_mean(g, om, thr):
++    lab, n = _plabel(np.abs(om) > thr)
++    if n == 0:
++        return g
++    w = np.abs(om).ravel()
++    num = np.bincount(lab.ravel(), weights=(g * np.abs(om)).ravel(), minlength=n + 1)
++    den = np.bincount(lab.ravel(), weights=w, minlength=n + 1)
++    mean = np.where(den > 0, num / np.where(den > 0, den, 1), 0.0)
++    return np.where(lab > 0, mean[lab], g)
++
++
++def step(s):
++    q, dt, sh = s["par"], s["par"]["dt"], s["shape"]
++    om, Y = s["om"], s["Y"]
++    kF = q["kF"]
++    if q["fork_t"] >= 0 and s["t"] >= q["fork_t"]:
++        kF = 0.0
++        if abs(s["t"] - q["fork_t"]) < dt / 2:
++            Y = 0.0 * Y
++    uy, ux = _vel(s)
++    uy, ux = q["adv"] * uy, q["adv"] * ux
++    w2 = om ** 2
++    sat = w2 / (w2 + q["wi"] ** 2)
++    eat = np.minimum(q["e"] * Y * sat * w2, Y / dt)
++    gsat = sat
++    if q.get("sat_smooth", 0) > 0:
++        W = _blur(np.abs(om), q["sat_smooth"], s)
++        gsat = W ** 2 / (W ** 2 + q["wi"] ** 2)
++    Yg = _blur(Y, q["fuel_smooth"], s) if q.get("fuel_smooth", 0) > 0 else Y
++    gain = 0.0 if q.get("grow_off", 0) else q["k"] * Yg * gsat
++    net = gain - q["mu"]
++    if q.get("body_gain", 0):
++        net = _body_mean(net + 0.0 * om, om, q["body_thr"])
++    nom = om + dt * (-_adv(om, uy, ux, s) + net * om)
++    nY = Y + dt * (-_adv(Y, uy, ux, s) - eat + kF * (1 - Y))
++    s["om"] = ops.irfft2(ops.rfft2(nom) * s["Lom"], sh)
++    s["Y"] = np.clip(ops.irfft2(ops.rfft2(nY) * s["LY"], sh), 0, None)
++    s["eat"] = eat
++    s["t"] += dt
++    return s
+diff --git a/scripts/physim/labworlds/fedvortex/observables.py b/scripts/physim/labworlds/fedvortex/observables.py
+new file mode 100644
+index 0000000..752b62b
+--- /dev/null
++++ b/scripts/physim/labworlds/fedvortex/observables.py
+@@ -0,0 +1,16 @@
++"""Observe-only channels of the fed-vortex lab world: fn(module, state) -> array (no state change, no RNG)."""
++import numpy as np
++
++
++def eat(module, s):
++    """Local eating rate, e Y s omega^2 capped at Y/dt, from the current fields (the world's own formula)."""
++    q = s["par"]
++    w2 = s["om"] ** 2
++    sat = w2 / (w2 + q["wi"] ** 2)
++    return np.minimum(q["e"] * s["Y"] * sat * w2, s["Y"] / q["dt"])
++
++
++def speed(module, s):
++    """Flow speed |u| (world units per time) from the streamfunction of the current vorticity."""
++    uy, ux = module._vel(s)
++    return s["par"]["adv"] * np.hypot(uy, ux)
+diff --git a/scripts/physim/labworlds/fedvortex_bundle.py b/scripts/physim/labworlds/fedvortex_bundle.py
+new file mode 100644
+index 0000000..398649c
+--- /dev/null
++++ b/scripts/physim/labworlds/fedvortex_bundle.py
+@@ -0,0 +1,490 @@
++"""c53's fed vortices as a PhySim lab bundle: preparation, frozen suite, truths, controls and checks.
++
++    python fedvortex_bundle.py build    --out BUNDLE [--work WORK]   inputs, calibration, frozen suite, truths, manifest
++    python fedvortex_bundle.py controls --out BUNDLE --work WORK --worker K --workers N   (cached; resumable)
++    python fedvortex_bundle.py report   --out BUNDLE --work WORK      per-case and aggregate ratios, reward
++
++World: collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py (copied verbatim with labkit's
++modules into the bundle). Declaration: 128^2, dx 1, native dt 0.02, one native step per public tick;
++dynamics noise by intensity 0.003 with a 2-world-unit correlation length (vorticity additive, fuel
++proportional). Observed ports: vorticity, fuel, eating rate and flow speed (the last two observe-only).
++Actuators: (om,+), (om,-), (Y,+), (Y,-); gains 0.01 (om) and 0.1 (Y, clipped at 0) from the envelope
++test (amp 3 for 50 tu at the worst site: om within [-0.33, 0.40], Y within [0, 2.4], finite).
++
++Preparation: init(31) run to t=580 under the declared noise (generator seeded [7331, 31]). Device 0
++(square, 13 nodes) sits on the neck of a vortex rod that pinches into two same-sign daughters at about
++t=23 of the window; device 1 (hex, 19 nodes) on a round positive vortex that drifts about 12 world units
++in 50 tu. Adjustment matrix diag(3, 3, 1): one unit of u moves a device 3 world units.
++
++Suite: 15 programs (8 PhySim-style generic, 7 mechanism-targeted), queries at PhySim's 15 times on both
++devices and the global sensor; one score group per (sensor, observed port) with scales frozen from a
++calibration ensemble (seeds 51000 + k) before any truth; 2 truths per case (71000 + i).
++Controls (privileged, outside the bundle): a 64-member native reference (81000 + i; 16 independent
++4-member slices give the native band), ignore actions, wrong probe geometry, initial persistence,
++mechanism ablations and the dt-halved numerical null (82000 + i).
++"""
++from __future__ import annotations
++
++import os
++
++for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
++    os.environ.setdefault(_v, "1")
++
++import argparse
++import copy
++import dataclasses
++import json
++import shutil
++import sys
++import time
++from pathlib import Path
++
++import numpy as np
++
++ENV = Path(__file__).resolve().parents[3] / "environments" / "physim"
++sys.path.insert(0, str(ENV))
++from physim import blobround6 as R6  # noqa: E402
++from physim import blobround6_eval as scoring  # noqa: E402
++from physim import labbundle as LB  # noqa: E402
++from physim import labworld as LW  # noqa: E402
++from physim.bundles import digest, identified, load_arrays  # noqa: E402
++from physim.devices import ProbeDevice  # noqa: E402
++
++HERE = Path(__file__).resolve().parent
++LAB = Path("/home/user/physim/research/alife")
++WORLD_SRC = LAB / "collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py"
++LABKIT_SRC = [LAB / "labkit" / n for n in ("__init__.py", "ops.py", "world.py")]
++OBS_SRC = HERE / "fedvortex" / "observables.py"
++ABLATIONS = HERE / "fedvortex" / "ablations.py"
++
++PREP = dict(seed=31, noise_seed=7331, T=580.0)
++SITES = dict(device0=[91.4, 122.1], device1=[112.0, 79.3])
++PORT_PERMUTATION = [2, 0, 3, 1]                       # observed port p reads F row perm[p]: eat, om, speed, Y
++ACTUATORS = [("om", -1), ("Y", 1), ("om", 1), ("Y", -1)]   # public inject ports 0..3
++ACT = {"om-": 0, "Y+": 1, "om+": 2, "Y-": 3}
++ROWS = ["om", "Y", "eat", "speed"]
++MIX = [[3.0, 0.0, 0.0], [0.0, 3.0, 0.0], [0.0, 0.0, 1.0]]
++TIMES = [0, 2, 5, 8, 10, 12, 15, 20, 22, 25, 30, 35, 40, 45, 50]
++SCORE_TIMES = [2, 5, 8, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50]
++SENSORS = ("device0", "device1", "global")
++FLOOR_FRAC = 0.02
++CAL_SEED, TRUTH_SEED, FORECAST_SEED, IGNORE_SEED, NULL_SEED = 51000, 71000, 81000, 80999, 82000
++REF_MEMBERS, CONTROL_MEMBERS, SLICE = 64, 4, 4
++# Device-1 vortex path in the native sham (world units, every 5 tu); the follow program tracks it.
++FOLLOW_PATH = [[112.0, 79.3], [110.9, 79.9], [109.9, 80.5], [108.9, 81.3], [108.2, 82.1], [107.3, 83.1],
++               [106.5, 83.8], [105.8, 84.7], [105.0, 85.7], [104.4, 86.7], [103.9, 87.8]]
++
++
++def declaration():
++    return dict(
++        name="c53-fed-vortices", world_file="world.py", fields=["om", "Y"], grid=[128, 128],
++        steps_per_tick=1, native_dt=0.02,
++        ports={"om": dict(gain=0.01, clip=[None, None]), "Y": dict(gain=0.1, clip=[0.0, None])},
++        noise={"om": ["additive", 0.003], "Y": ["proportional", 0.003]},
++        noise_corr={"om": 2.0, "Y": 2.0}, noise_intensity=["om", "Y"], overrides={}, dx=1.0, carry=["t"],
++        actuators=[dict(field=f, sign=s) for f, s in ACTUATORS],
++        derived=[dict(name="eat", source="observables.py", function="eat"),
++                 dict(name="speed", source="observables.py", function="speed")],
++        fft_workers=1,
++    )
++
++
++def apparatus():
++    rng = np.random.default_rng(41031)
++    devices = []
++    for i, (lattice, ds, rot, k) in enumerate((("square", 3.0, 0.3, 13), ("hex", 6.0, 1.1, 19))):
++        perm = rng.permutation(k).tolist()
++        d = ProbeDevice(i, lattice, 3, ds, SITES[f"device{i}"], 128.0, rot, False, 0.0, False, perm)
++        devices.append(dict(parameters=dict(dev_id=i, lattice=lattice, n_rings=3, base_ds=ds, center=SITES[f"device{i}"],
++                                            L=128.0, secret_rot=rot, reflect=False, motion_theta=0.0, motion_reflect=False,
++                                            node_perm=perm, dil_bounds=list(d.dil_bounds)),
++                            dilation=1.0, motion_basis=d.Bm.tolist()))
++    return dict(devices=devices, device_slots=[13, 19], port_permutation=PORT_PERMUTATION, adjustment_matrix=MIX,
++                protocol=R6.APPARATUS_PROTOCOL)
++
++
++# ----------------------------------------------------------------------------- programs
++
++def _inject(t, device, act, amp, dur):
++    return dict(t=t, kind="inject", device=device, port=ACT[act], amp=amp, dur=dur)
++
++
++def _adjust(t, device, u):
++    return dict(t=t, kind="adjust", device=device, u=[round(float(x), 3) for x in u])
++
++
++def follow_actions():
++    p = np.asarray(FOLLOW_PATH)
++    u = [(p[1] - p[0]) / 6] + [(p[k + 1] - p[k - 1]) / 6 for k in range(1, 10)]
++    return [_adjust(5 * k, 1, [u[k][0], u[k][1], 0.0]) for k in range(10)]
++
++
++def programs():
++    """(id, actions, kind, mechanism). Generic programs follow eval_preparation's BF/XV families."""
++    pulse = _inject(0, 0, "om+", 3.0, 5.0)
++    move = _adjust(0, 0, [1, 0, 0])
++    arms = [
++        ("sham", [], "generic", "natural pinch of the device-0 rod at ~23 tu; drift of the device-1 vortex"),
++        ("probe_shift", [_adjust(0, 0, [1, 0, 0])], "generic", ""),
++        ("probe_wide", [_adjust(0, 1, [0, 0, 1])], "generic", ""),
++        ("pulse_then_move", [pulse, move], "generic", ""),
++        ("move_then_pulse", [move, pulse], "generic", ""),
++        ("two_sources", [pulse, _adjust(0, 1, [0, 1, 0]), dict(pulse, device=1)], "generic", ""),
++        ("move_during_pulse", [pulse, dict(move, t=2)], "generic", ""),
++        ("delayed_feed", [_inject(20, 0, "Y+", 3.0, 10.0)], "generic", "late feeding of the neck"),
++        ("feed_neck", [_inject(0, 0, "Y+", 3.0, 20.0)], "targeted", "division: feeding the neck suppresses the pinch"),
++        ("starve_neck", [_inject(0, 0, "Y-", 2.0, 6.0)], "targeted", "division/decay: starving the neck pinches it at ~8 tu"),
++        ("feed_vortex", [_inject(0, 1, "Y+", 3.0, 25.0)], "targeted", "eating grows vorticity: circulation doubles"),
++        ("starve_vortex", [_inject(0, 1, "Y-", 3.0, 10.0)], "targeted", "weak vorticity decays without fuel: vortex dies by ~25 tu"),
++        ("stir_cut", [_inject(0, 1, "om-", 2.0, 8.0)], "targeted", "signed stir: partial cancellation, the remnant regrows by eating"),
++        ("follow_vortex", follow_actions(), "targeted", "mutual advection: device 1 tracks its drifting vortex"),
++        ("feed_and_follow", [_inject(0, 1, "Y+", 3.0, 15.0)] + follow_actions(), "targeted",
++         "growth and motion together: a fed vortex tracked while it drifts"),
++    ]
++    return arms
++
++
++def queries():
++    return [dict(sensor=s, t=list(TIMES)) for s in SENSORS]
++
++
++def calibration_plan():
++    plan = [("sham", [], 4)]
++    for device in (0, 1):
++        for name in ACT:
++            plan.append((f"cal_d{device}_{name}", [_inject(0, device, name, 3.0, 10.0)], 1))
++    return plan
++
++
++# ----------------------------------------------------------------------------- preparation
++
++def prepare(work: Path):
++    """init(seed) to T under the declared noise (generator [noise_seed, seed]); returns fields + carry."""
++    path = work / "prepared_state.npz"
++    if path.exists():
++        with np.load(path) as z:
++            return {k: z[k].copy() for k in z.files}
++    decl = declaration()
++    world = LW.LabWorld(path=str(WORLD_SRC), fields=("om", "Y"), steps_per_tick=1, native_dt=0.02,
++                        noise={f: tuple(v) for f, v in decl["noise"].items()}, noise_corr=decl["noise_corr"],
++                        noise_intensity=tuple(decl["noise_intensity"]), dx=1.0, sys_path=(str(LAB),))
++    st = LW.LabStepper(world, {})
++    m = st.module
++    m.ops.WORKERS = 1
++    s = m.init(PREP["seed"], (128, 128))
++    rng = np.random.default_rng([PREP["noise_seed"], PREP["seed"]])
++    for _ in range(int(round(PREP["T"] / world.native_dt))):
++        s = st.add_noise(s, rng, world.native_dt)
++        s = m.step(s)
++    arrays = dict(om=np.asarray(s["om"], np.float64), Y=np.asarray(s["Y"], np.float64), t=np.asarray(float(s["t"])))
++    np.savez_compressed(path, **arrays)
++    return arrays
++
++
++# ----------------------------------------------------------------------------- build
++
++def write_json(path, value, compact=False):
++    text = json.dumps(value, separators=(",", ":"), allow_nan=False) if compact else json.dumps(value, indent=1, allow_nan=False)
++    Path(path).write_text(text + "\n")
++
++
++def _sig(x, digits=6):
++    return float(f"{x:.{digits}g}")
++
++
++def _jsonable(x):
++    return json.loads(json.dumps(x, default=lambda o: o.tolist() if hasattr(o, "tolist") else str(o)))
++
++
++def oracle_from_dir(out: Path, *, world=None, devices=None):
++    decl = json.loads((out / "labworld.json").read_text())
++    app = json.loads((out / "apparatus.json").read_text())
++    state = LB.read_state(out / "preparation.npz", decl)
++    return LB.build_oracle(out, decl, app, state, world=world, devices=devices)
++
++
++def ensemble(path: Path, compute, meta):
++    meta = _jsonable(meta)
++    if path.exists():
++        with np.load(path, allow_pickle=False) as z:
++            assert json.loads(str(z["meta"])) == meta, f"cached {path} was made with another request"
++            return [z[f"query{i}"].copy() for i in range(len(meta["queries"]))]
++    t0 = time.process_time()
++    res = compute()["samples"]
++    np.savez_compressed(path, meta=json.dumps(meta), cpu_s=time.process_time() - t0,
++                        **{f"query{i}": a for i, a in enumerate(res)})
++    print(f"  {path.parent.name}/{path.name}: {time.process_time() - t0:.1f} cpu-s", flush=True)
++    return res
++
++
++def frozen_scales(cal):
++    ti = [TIMES.index(t) for t in SCORE_TIMES]
++    g0 = cal[0][2][0, 0]                       # global (ports, 2) at t=0
++    spread0 = np.sqrt(g0[:, 1])
++    scales = {}
++    for qi, sensor in enumerate(SENSORS):
++        for p in range(len(PORT_PERMUTATION)):
++            name = ROWS[PORT_PERMUTATION[p]]
++            if sensor == "global":
++                for slot, label, floor in ((0, "mean", spread0[p]), (1, "variance", g0[p, 1])):
++                    raw = float(np.concatenate([c[qi][:, ti, p, slot].ravel() for c in cal]).std())
++                    scales[f"{sensor}/{name}/{label}"] = dict(port=p, raw_std=raw, floor=float(FLOOR_FRAC * floor),
++                                                              scale=_sig(max(raw, FLOOR_FRAC * floor, 1e-12)))
++            else:
++                raw = float(np.concatenate([c[qi][:, ti, p, :].ravel() for c in cal]).std())
++                scales[f"{sensor}/{name}"] = dict(port=p, raw_std=raw, floor=float(FLOOR_FRAC * spread0[p]),
++                                                  scale=_sig(max(raw, FLOOR_FRAC * spread0[p], 1e-12)))
++    return scales
++
++
++def score_groups(scales):
++    groups = []
++    for qi, sensor in enumerate(SENSORS):
++        for p in range(len(PORT_PERMUTATION)):
++            name = ROWS[PORT_PERMUTATION[p]]
++            if sensor == "global":
++                sel, sc = [], []
++                for slot, label in ((0, "mean"), (1, "variance")):
++                    for t in SCORE_TIMES:
++                        sel.append(dict(query=qi, time_index=TIMES.index(t), port=p, slot=slot))
++                        sc.append(scales[f"{sensor}/{name}/{label}"]["scale"])
++                unit = f"global mean and variance of {name}; frozen calibration scales"
++            else:
++                k = (13, 19)[qi]
++                sel = [dict(query=qi, time_index=TIMES.index(t), port=p, slot=j) for t in SCORE_TIMES for j in range(k)]
++                sc = [scales[f"{sensor}/{name}"]["scale"]] * len(sel)
++                unit = f"native {name} units; frozen calibration scale"
++            groups.append(dict(id=f"{sensor}/{name}", selectors=sel, scales=sc, unit=unit))
++    return groups
++
++
++def build(out: Path, work: Path, dry: bool = False):
++    out, work = out.resolve(), work.resolve()
++    if (out / "manifest.json").exists():
++        raise SystemExit("completed bundles are immutable; choose a new output directory")
++    out.mkdir(parents=True, exist_ok=True)
++    work.mkdir(parents=True, exist_ok=True)
++    (out / "world" / "labkit").mkdir(parents=True, exist_ok=True)
++    shutil.copyfile(WORLD_SRC, out / "world" / "world.py")
++    for src in LABKIT_SRC:
++        shutil.copyfile(src, out / "world" / "labkit" / src.name)
++    shutil.copyfile(OBS_SRC, out / "world" / "observables.py")
++    write_json(out / "labworld.json", declaration())
++    write_json(out / "apparatus.json", apparatus())
++    state = prepare(work)
++    if not (out / "preparation.npz").exists():
++        np.savez_compressed(out / "preparation.npz", **state)
++    oracle = oracle_from_dir(out)
++    progs = programs()[:2] if dry else programs()
++    # calibration ensemble (development seeds), then scales and groups, frozen before any truth
++    (work / "calibration").mkdir(exist_ok=True)
++    cal, cal_rows = [], []
++    for k, (name, actions, n) in enumerate(calibration_plan()[:3] if dry else calibration_plan()):
++        n = 1 if dry else n
++        cal.append(ensemble(work / "calibration" / f"{name}.npz",
++                            lambda: oracle.sample_truth(actions, queries(), n, truth_seed=CAL_SEED + k),
++                            dict(actions=actions, queries=queries(), members=n, seed=CAL_SEED + k)))
++        cal_rows.append(dict(id=name, actions=actions, members=n, seed=CAL_SEED + k))
++    scales = frozen_scales(cal)
++    groups = score_groups(scales)
++    cases = []
++    for i, (name, actions, kind, mech) in enumerate(progs):
++        case = dict(id=f"c{i + 1:03d}", actions=actions, queries=queries())
++        cases.append(dict(request=case, family=name, groups=groups, truth=f"truth/{case['id']}.npz"))
++    suite = dict(
++        schema_version="physim-suite-v1", scoring_version=scoring.VERSION, contract_version=R6.APPARATUS_PROTOCOL,
++        forecast_members=64, truth_members=2, predictor_seed=20260913, aggregation="equal-case-mean",
++        cases=cases,
++        program_notes={name: dict(kind=kind, mechanism=mech) for name, _, kind, mech in progs},
++        calibration=dict(plan=cal_rows, floor_frac=FLOOR_FRAC, score_times=SCORE_TIMES, scales=scales),
++        truth_seeds=[TRUTH_SEED + i for i in range(len(cases))],
++        known_limits=[
++            "One prepared state and one apparatus; not a held-out generalization benchmark.",
++            "Two grading truths per case; score scales are calibration-ensemble standard deviations.",
++            "Native and ablated controls are privileged diagnostics, not learned agents.",
++        ],
++    )
++    sp = out / "suite.json"
++    if sp.exists():
++        assert json.loads(sp.read_text()) == _jsonable(suite), "frozen suite changed"
++    else:
++        write_json(sp, suite, compact=True)    # frozen before any truth (compact: the bundle JSON cap is 2 MiB)
++    (out / "truth").mkdir(exist_ok=True)
++    for i, record in enumerate(cases):
++        case, path = record["request"], out / record["truth"]
++        if not path.exists():
++            t0 = time.process_time()
++            truth = oracle.sample_truth(case["actions"], case["queries"], n_samples=2, truth_seed=TRUTH_SEED + i)
++            np.savez_compressed(path, request=json.dumps(case), **{f"query{q}": a for q, a in enumerate(truth["samples"])})
++            print(f"  truth {case['id']} {record['family']}: {time.process_time() - t0:.1f} cpu-s", flush=True)
++    write_manifest(out)
++    bundle = LB.open_bundle(out, profile="evaluation")
++    bundle.check_runtime()
++    for record in bundle.suite["cases"]:
++        bundle.truth(record)
++    print(json.dumps(dict(bundle_id=bundle.manifest["bundle_id"], cases=len(cases)), indent=1))
++
++
++def write_manifest(out: Path, checks: dict | None = None):
++    if checks is not None:
++        write_json(out / "checks.json", checks)
++    decl = json.loads((out / "labworld.json").read_text())
++    state = LB.read_state(out / "preparation.npz", decl)
++    world_files = {p.relative_to(out).as_posix(): digest(p) for p in sorted((out / "world").rglob("*")) if p.is_file()}
++    objects = {}
++    objects["world"] = identified("world", dict(
++        name=decl["name"], files=world_files, declaration_sha256=digest(out / "labworld.json"),
++        implementation=LB.implementation_identity(),
++        source=dict(world=str(WORLD_SRC.relative_to(LAB)), lab_repository="physim research/alife")))
++    objects["preparation"] = identified("preparation", dict(
++        world_id=objects["world"]["id"], file_sha256=digest(out / "preparation.npz"),
++        state_sha256=LB.state_digest({k: np.asarray(v) for k, v in state.items()}),
++        apparatus_sha256=digest(out / "apparatus.json"), noise_policy=R6.NOISE_POLICY, public_time=0,
++        recipe=dict(PREP, script=Path(__file__).name)))
++    suite = json.loads((out / "suite.json").read_text())
++    objects["suite"] = identified("suite", dict(
++        preparation_id=objects["preparation"]["id"], file_sha256=digest(out / "suite.json"),
++        scoring_source_sha256=digest(scoring.__file__),
++        truth_sha256={c["truth"]: digest(out / c["truth"]) for c in suite["cases"]}))
++    files = []
++    for p in sorted(out.rglob("*")):
++        if not p.is_file() or p.name == "manifest.json":
++            continue
++        rel = p.relative_to(out).as_posix()
++        role = "truth" if rel.startswith("truth/") else "world" if rel.startswith("world/") else p.stem
++        profiles = ["evaluation"] if role in ("truth", "suite") else ["simulation", "evaluation"]
++        files.append(dict(path=rel, bytes=p.stat().st_size, sha256=digest(p), role=role, profiles=profiles))
++    manifest = dict(schema_version=LB.LAB_FORMAT,
++                    bundle_id=identified("bundle", {k: v["id"] for k, v in objects.items()})["id"],
++                    status="local-development-verified", licenses=dict(code="Apache-2.0", data="CC-BY-4.0"),
++                    objects=objects, files=files)
++    write_json(out / "manifest.json", manifest)
++    return manifest
++
++
++def checks(out: Path, work: Path):
++    """checks.json: the packaged initial-persistence control scored through evaluation._forecast_suite (4 members),
++    which evaluation.reference_demo reproduces; then the manifest (the bundle identity does not change)."""
++    from physim import evaluation as EV
++
++    bundle = LB.open_bundle(out, profile="evaluation")
++    sensors = ["device0", "device1", "global"]
++    init = bundle.make_oracle().sample_truth([], [dict(sensor=s, t=[0]) for s in sensors], n_samples=1, truth_seed=0)
++    model = scoring.PersistencePredictor(dict(zip(sensors, [a[0, 0] for a in init["samples"]])), roster=bundle.roster)
++    target = work / "checks_persistence"
++    if target.exists():
++        shutil.rmtree(target)
++    report = EV._forecast_suite(
++        bundle, target, lambda case, n, seed: (model.predict(case["actions"], case["queries"], n_samples=n, seed=seed),
++                                               dict(kind="trusted-packaged-control")),
++        members=4, predictor=dict(kind="trusted-packaged-control", name="initial_persistence"))
++    value = dict(schema_version="physim-reference-checks-v1",
++                 reference=dict(predictor="initial_persistence", forecast_members=4,
++                                primary_joint_energy=report["primary_joint_energy"], absolute_tolerance=1e-10),
++                 recipe_sha256=digest(__file__))
++    manifest = write_manifest(out, value)
++    print(json.dumps(dict(value["reference"], bundle_id=manifest["bundle_id"])), flush=True)
++
++
++# ----------------------------------------------------------------------------- controls
++
++def variant_oracle(bundle, name):
++    world = bundle.world()
++    devices = None
++    if name in ("reference", "ignore_actions"):
++        pass
++    elif name == "wrong_probe_geometry":
++        devices = LB.devices_from_apparatus(bundle.apparatus)
++        for d in devices:
++            d.center = (d.center + np.asarray([0.0, 3.0])) % d.L
++    elif name == "numerical_null":
++        world = dataclasses.replace(world, overrides={"dt": 0.01}, steps_per_tick=2, native_dt=0.01)
++    elif name in ABLATION_OVERRIDES:
++        ov, wrapper = ABLATION_OVERRIDES[name]
++        if wrapper:
++            os.environ["FV_BASE"] = str(bundle.root / "world" / "world.py")
++            world = dataclasses.replace(world, path=str(ABLATIONS))
++        world = dataclasses.replace(world, overrides=ov)
++    else:
++        raise ValueError(name)
++    return bundle.make_oracle(world=world, devices=devices)
++
++
++ABLATION_OVERRIDES = {
++    "ablate_adv0": ({"adv": 0.0}, False),          # vortices do not advect each other (flow off)
++    "ablate_kF0": ({"kF": 0.0}, False),            # fuel does not regrow
++    "ablate_k0": ({"k": 0.0}, False),              # eating does not grow vorticity
++    "ablate_mu0": ({"mu": 0.0}, False),            # weak vorticity does not decay
++    "ablate_body_gain": ({"body_gain": 1.0}, True),  # no differential growth within a body (division hypothesis)
++}
++# Blunt ablations run on their targeted programs and the sham only (CPU); every other control on all cases.
++LIMITED = {
++    "ablate_k0": ("sham", "feed_vortex", "stir_cut", "feed_neck", "feed_and_follow"),
++    "ablate_mu0": ("sham", "starve_vortex", "starve_neck", "stir_cut", "delayed_feed"),
++}
++CONTROLS = ["wrong_probe_geometry", "ablate_adv0", "ablate_kF0", "ablate_body_gain", "numerical_null",
++            "ablate_k0", "ablate_mu0"]
++
++
++def jobs(bundle):
++    cases = bundle.suite["cases"]
++    out = [("ignore_actions", -1)]
++    for name in CONTROLS:
++        for i, rec in enumerate(cases):
++            if name in LIMITED and rec["family"] not in LIMITED[name]:
++                continue
++            out.append((name, i))
++    out += [("reference", i) for i in range(len(cases))]
++    return out
++
++
++def run_job(bundle, work: Path, name: str, i: int, oracles: dict):
++    d = work / "controls"
++    d.mkdir(parents=True, exist_ok=True)
++    if name == "ignore_actions":
++        path, actions, members, seed = d / "ignore_actions.npz", [], 8, IGNORE_SEED
++        q = queries()
++    else:
++        case = bundle.suite["cases"][i]["request"]
++        path, actions, q = d / f"{name}_{case['id']}.npz", case["actions"], case["queries"]
++        members = REF_MEMBERS if name == "reference" else CONTROL_MEMBERS
++        seed = (NULL_SEED if name == "numerical_null" else FORECAST_SEED) + i
++    if path.exists():
++        return
++    if name not in oracles:
++        oracles[name] = variant_oracle(bundle, name)
++    o = oracles[name]
++    ensemble(path, lambda: o.sample_truth(actions, q, members, truth_seed=seed),
++             dict(variant=name, actions=actions, queries=q, members=members, seed=seed,
++                  suite_sha256=bundle.manifest["objects"]["suite"]["file_sha256"]))
++
++
++def controls(out: Path, work: Path, worker: int, workers: int):
++    bundle = LB.open_bundle(out, profile="evaluation")
++    oracles = {}
++    for j, (name, i) in enumerate(jobs(bundle)):
++        if j % workers == worker:
++            run_job(bundle, work, name, i, oracles)
++    print(f"worker {worker} done", flush=True)
++
++
++if __name__ == "__main__":
++    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    ap.add_argument("cmd", choices=["build", "checks", "controls", "report", "programs"])
++    ap.add_argument("--out", type=Path)
++    ap.add_argument("--work", type=Path)
++    ap.add_argument("--worker", type=int, default=0)
++    ap.add_argument("--workers", type=int, default=1)
++    ap.add_argument("--dry", action="store_true")
++    a = ap.parse_args()
++    if a.cmd == "build":
++        build(a.out, a.work or a.out.parent / "work", dry=a.dry)
++    elif a.cmd == "checks":
++        checks(a.out, a.work)
++    elif a.cmd == "controls":
++        controls(a.out, a.work, a.worker, a.workers)
++    elif a.cmd == "programs":
++        print(json.dumps([dict(id=p[0], kind=p[2], actions=p[1]) for p in programs()], indent=1))
++    else:
++        import fedvortex_report
++        fedvortex_report.report(a.out, a.work)
+diff --git a/scripts/physim/labworlds/fedvortex_report.py b/scripts/physim/labworlds/fedvortex_report.py
+new file mode 100644
+index 0000000..9126634
+--- /dev/null
++++ b/scripts/physim/labworlds/fedvortex_report.py
+@@ -0,0 +1,183 @@
++"""Scores, ratios and rewards for the fed-vortex lab bundle (see fedvortex_bundle.py).
++
++Every predictor is scored with blobround6_eval.score_case on the bundle's frozen groups and retained truths.
++The 64-member native reference gives (a) the native score of a 64-member predictor, from which the reward
++follows (rewards.precision_reward, calibrated K), and (b) 16 independent 4-member slices: their mean is the
++reference for every 4-member control and their spread is the native band. A control fails on a case when its
++ratio to the slice mean exceeds the largest slice ratio on that case.
++"""
++from __future__ import annotations
++
++import json
++import math
++from pathlib import Path
++
++import numpy as np
++
++import fedvortex_bundle as FB
++from physim import blobround6_eval as scoring
++from physim import labbundle as LB
++from physim.rewards import DEFAULT_PRECISION, precision_reward
++
++TARGETS = {   # program -> the mechanism controls it is designed to provoke
++    "sham": ["ablate_body_gain", "ablate_adv0"],
++    "feed_neck": ["ablate_body_gain", "ablate_k0"],
++    "starve_neck": ["ablate_body_gain", "ablate_mu0"],
++    "delayed_feed": ["ablate_body_gain", "ablate_mu0"],
++    "feed_vortex": ["ablate_k0"],
++    "starve_vortex": ["ablate_mu0"],
++    "stir_cut": ["ablate_k0", "ablate_mu0"],
++    "follow_vortex": ["ablate_adv0"],
++    "feed_and_follow": ["ablate_adv0", "ablate_k0"],
++}
++
++
++def _load(path, n=None):
++    with np.load(path, allow_pickle=False) as z:
++        meta = json.loads(str(z["meta"]))
++        arrays = [z[f"query{i}"].copy() for i in range(len(meta["queries"]))]
++        cpu = float(z["cpu_s"])
++    if n is not None:
++        arrays = [a[:n] for a in arrays]
++    return arrays, meta, cpu
++
++
++def _boot(num, den, n=4000, seed=0):
++    rng = np.random.default_rng(seed)
++    idx = rng.integers(0, len(num), size=(n, len(num)))
++    r = num[idx].mean(axis=1) / den[idx].mean(axis=1)
++    return [float(np.quantile(r, 0.05)), float(np.quantile(r, 0.95))]
++
++
++def report(out: Path, work: Path):
++    bundle = LB.open_bundle(out, profile="evaluation")
++    cases = bundle.suite["cases"]
++    cdir = work / "controls"
++    gids = [g["id"] for g in cases[0]["groups"]]
++    rows, cpu = {}, 0.0
++    ignore, _, c0 = _load(cdir / "ignore_actions.npz", FB.CONTROL_MEMBERS)
++    cpu += c0
++    sensors = ["device0", "device1", "global"]
++    init = bundle.make_oracle().sample_truth([], [dict(sensor=s, t=[0]) for s in sensors], 1, truth_seed=0)["samples"]
++    persistence = scoring.PersistencePredictor(dict(zip(sensors, [a[0, 0] for a in init])), roster=bundle.roster)
++
++    def score(record, samples, n):
++        r = scoring.score_case(record["request"], {"samples": samples}, truth, groups=record["groups"], n_samples=n,
++                               n_truth=2, roster=bundle.roster, limits=bundle.limits)
++        return r["joint_energy_equal_group_mean"], {g["id"]: g["energy_score"] for g in r["joint_energy"]}
++
++    for i, record in enumerate(cases):
++        cid, fam = record["request"]["id"], record["family"]
++        truth = bundle.truth(record)
++        ref_path = cdir / f"reference_{cid}.npz"
++        if not ref_path.exists():
++            continue
++        ref, meta, c = _load(ref_path)
++        cpu += c
++        row = dict(family=fam, controls={})
++        row["native64"] = score(record, ref, 64)
++        slices = [score(record, [a[k * FB.SLICE:(k + 1) * FB.SLICE] for a in ref], FB.SLICE) for k in range(64 // FB.SLICE)]
++        row["slices"] = slices
++        row["native4_mean"] = float(np.mean([s[0] for s in slices]))
++        row["native4_group_mean"] = {g: float(np.mean([s[1][g] for s in slices])) for g in gids}
++        row["band"] = [min(s[0] for s in slices) / row["native4_mean"], max(s[0] for s in slices) / row["native4_mean"]]
++        row["controls"]["independent_native"] = slices[0]
++        row["controls"]["ignore_actions"] = score(record, ignore, FB.CONTROL_MEMBERS)
++        row["controls"]["initial_persistence"] = score(
++            record, persistence.predict(record["request"]["actions"], record["request"]["queries"], FB.CONTROL_MEMBERS)["samples"],
++            FB.CONTROL_MEMBERS)
++        for name in FB.CONTROLS:
++            p = cdir / f"{name}_{cid}.npz"
++            if p.exists():
++                arr, _, c = _load(p)
++                cpu += c
++                row["controls"][name] = score(record, arr, FB.CONTROL_MEMBERS)
++        rows[cid] = row
++    names = ["independent_native", "ignore_actions", "initial_persistence"] + FB.CONTROLS
++    res = dict(world="c53-fed-vortices", bundle_id=bundle.manifest["bundle_id"], cases_scored=len(rows),
++               control_members=FB.CONTROL_MEMBERS, reference_members=64, per_case={}, aggregate={}, groups={},
++               targeted={}, simulation_cpu_h=cpu / 3600)
++    for cid, row in rows.items():
++        res["per_case"][cid] = dict(family=row["family"], native64=row["native64"][0], native4=row["native4_mean"],
++                                    band=row["band"],
++                                    ratio={k: v[0] / row["native4_mean"] for k, v in row["controls"].items()})
++    for name in names:
++        have = [c for c in rows if name in rows[c]["controls"]]
++        if not have:
++            continue
++        num = np.array([rows[c]["controls"][name][0] for c in have])
++        den = np.array([rows[c]["native4_mean"] for c in have])
++        fails = [c for c in have if res["per_case"][c]["ratio"][name] > rows[c]["band"][1]]
++        res["aggregate"][name] = dict(cases=len(have), ratio=float(num.mean() / den.mean()), ci90=_boot(num, den),
++                                      cases_beyond_band=len(fails), cases_within_band=[rows[c]["family"] for c in have if c not in fails])
++        res["groups"][name] = {}
++        for g in gids:
++            gn = np.array([rows[c]["controls"][name][1][g] for c in have])
++            gd = np.array([rows[c]["native4_group_mean"][g] for c in have])
++            res["groups"][name][g] = dict(ratio=float(gn.mean() / gd.mean()), ci90=_boot(gn, gd))
++    # group-level native band: each slice's case-mean group score over the slice mean
++    res["group_band"] = {}
++    for g in gids:
++        per_slice = np.array([[rows[c]["slices"][k][1][g] for c in rows] for k in range(64 // FB.SLICE)]).mean(axis=1)
++        res["group_band"][g] = [float(per_slice.min() / per_slice.mean()), float(per_slice.max() / per_slice.mean())]
++    agg_band = np.array([[rows[c]["slices"][k][0] for c in rows] for k in range(64 // FB.SLICE)]).mean(axis=1)
++    res["aggregate_band"] = [float(agg_band.min() / agg_band.mean()), float(agg_band.max() / agg_band.mean())]
++    for cid, row in rows.items():
++        for name in TARGETS.get(row["family"], []):
++            if name in row["controls"]:
++                r = row["controls"][name][0] / row["native4_mean"]
++                res["targeted"].setdefault(row["family"], {})[name] = dict(ratio=r, band_max=row["band"][1],
++                                                                          fails=bool(r > row["band"][1]))
++    s64 = np.array([rows[c]["native64"][0] for c in rows])
++    worst = float(s64.max())
++    rule_k = math.floor(-math.log10(2 * worst)) if worst > 0 else None
++    res["reward"] = dict(
++        native64_primary=float(s64.mean()), K=DEFAULT_PRECISION,
++        native64_reward=precision_reward(float(s64.mean()), DEFAULT_PRECISION),
++        persistence4_primary=float(np.mean([rows[c]["controls"]["initial_persistence"][0] for c in rows])),
++        worst_native_case=worst, calibration_rule_K=rule_k,
++        scale_factor_for_K2=float(2 * worst / 1e-2),
++        note="PhySim rule: largest integer K with 10^-K >= 2 x worst native case energy (reward-calibration.json).")
++    res["reward"]["persistence4_reward"] = precision_reward(res["reward"]["persistence4_primary"], DEFAULT_PRECISION)
++    for name in names:
++        have = [c for c in rows if name in rows[c]["controls"]]
++        if have and len(have) == len(rows):
++            res["reward"][f"{name}_reward_4member"] = precision_reward(
++                float(np.mean([rows[c]["controls"][name][0] for c in have])), DEFAULT_PRECISION)
++    (work / "report.json").write_text(json.dumps(res, indent=1) + "\n")
++    write_md(res, work / "report.md", gids)
++    return res
++
++
++def write_md(res, path, gids):
++    L = [f"# c53 fed vortices: lab bundle controls ({res['cases_scored']} cases)", "",
++         f"Ratios = control score / mean of 16 independent 4-member native slices; native band (aggregate) "
++         f"{res['aggregate_band'][0]:.2f}-{res['aggregate_band'][1]:.2f}.", "",
++         "| control | cases | aggregate ratio | 90% CI | cases beyond the native band |", "|---|---|---|---|---|"]
++    for k, a in res["aggregate"].items():
++        L.append(f"| {k} | {a['cases']} | {a['ratio']:.2f} | {a['ci90'][0]:.2f}-{a['ci90'][1]:.2f} | {a['cases_beyond_band']}/{a['cases']} |")
++    L += ["", "Per case (ratio; band = slice min-max):", "",
++          "| case | program | native64 | band | " + " | ".join(k for k in res["aggregate"] if k != "independent_native") + " |",
++          "|---" * (4 + len(res["aggregate"]) - 1) + "|"]
++    for cid, r in res["per_case"].items():
++        L.append(f"| {cid} | {r['family']} | {r['native64']:.4f} | {r['band'][0]:.2f}-{r['band'][1]:.2f} | " + " | ".join(
++            (f"{r['ratio'][k]:.2f}" if k in r["ratio"] else "-") for k in res["aggregate"] if k != "independent_native") + " |")
++    L += ["", "Per group (ratio; group band in the first row):", "", "| control | " + " | ".join(gids) + " |",
++          "|---" * (len(gids) + 1) + "|",
++          "| native band | " + " | ".join(f"{res['group_band'][g][0]:.2f}-{res['group_band'][g][1]:.2f}" for g in gids) + " |"]
++    for k, gr in res["groups"].items():
++        if k == "independent_native":
++            continue
++        L.append(f"| {k} | " + " | ".join(f"{gr[g]['ratio']:.2f}" for g in gids) + " |")
++    L += ["", "Targeted programs: mechanism control ratio vs the case's native band maximum", "",
++          "| program | control | ratio | band max | fails |", "|---|---|---|---|---|"]
++    for fam, d in res["targeted"].items():
++        for k, v in d.items():
++            L.append(f"| {fam} | {k} | {v['ratio']:.2f} | {v['band_max']:.2f} | {'yes' if v['fails'] else 'NO'} |")
++    rw = res["reward"]
++    L += ["", f"Reward (K={rw['K']:g}): native 64-member primary energy {rw['native64_primary']:.4f} -> reward "
++          f"{rw['native64_reward']:.3f}; initial persistence {rw['persistence4_primary']:.3f} -> {rw['persistence4_reward']:.3f}. "
++          f"Worst native case {rw['worst_native_case']:.4f}; PhySim's rule gives K = {rw['calibration_rule_K']}. "
++          f"Scales x{rw['scale_factor_for_K2']:.0f} would make K=2 calibrated.",
++          "", f"Simulation CPU in cached control ensembles: {res['simulation_cpu_h']:.2f} h."]
++    path.write_text("\n".join(L) + "\n")
+diff --git a/scripts/physim/labworlds/fedvortex_validate.py b/scripts/physim/labworlds/fedvortex_validate.py
+new file mode 100644
+index 0000000..9b0aac2
+--- /dev/null
++++ b/scripts/physim/labworlds/fedvortex_validate.py
+@@ -0,0 +1,132 @@
++"""Credit-free validation of a lab bundle through PhySim's own task code.
++
++    python fedvortex_validate.py --bundle BUNDLE --out OUT [--reference-dir WORK/controls]
++
++1. ``taskset.required_bundle`` opens the bundle (a ``LabBundle``) in both profiles and checks its runtime.
++2. ``taskset.public_prompt`` renders the agent contract; the port counts must match the declared roster.
++3. ``LaboratoryTools.experiment`` and ``LaboratoryTools.usage`` run directly on an ``R6State`` (the copy of
++   each observation into the agent's container, ``_put_observation``, is skipped: there is no runtime here).
++   A valid request is admitted and charged; an invalid port is rejected without charge.
++4. Trusted predictors are graded with ``evaluation._forecast_suite`` / ``score_frozen`` (frozen forecasts,
++   then the retained truths): initial persistence via ``evaluation.reference_demo`` (checks.json), and the
++   native oracle's cached 64-member reference ensembles when ``--reference-dir`` is given. Rewards use
++   ``rewards.precision_reward`` with the calibrated K.
++No Prime sandbox, container or model call is made.
++"""
++from __future__ import annotations
++
++import os
++
++for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
++    os.environ.setdefault(_v, "1")
++
++import argparse
++import asyncio
++import json
++import shutil
++import sys
++from pathlib import Path
++
++import numpy as np
++
++ENV = Path(__file__).resolve().parents[3] / "environments" / "physim"
++sys.path.insert(0, str(ENV))
++
++from physim import evaluation as EV  # noqa: E402
++from physim import labbundle as LB  # noqa: E402
++from physim import taskset as TS  # noqa: E402
++from physim.rewards import DEFAULT_PRECISION, precision_reward  # noqa: E402
++
++
++def check_prompt(config, bundle):
++    text = TS.public_prompt(config)
++    n = bundle.roster.n_ports
++    expected = [
++        f"`port` is an integer from 0 to {n - 1}.",
++        f"Each measurement interface returns {n} channels.",
++        f"shape `(1, number_of_requested_times, {n}, slots)`",
++        f"(n_samples, number_of_requested_times, {n}, number_of_output_slots)",
++        '"port": 2',
++    ]
++    missing = [e for e in expected if e not in text]
++    leftover = [k for k in ("{n_ports}", "{last_port}", "{example_port}") if k in text]
++    return dict(ok=not missing and not leftover, missing=missing, unreplaced=leftover, chars=len(text),
++                ports_line=next((l for l in text.splitlines() if "`port` is an integer" in l), None)), text
++
++
++async def tool_calls(config, out: Path):
++    import verifiers.v1.mcp.server as S
++
++    TS._put_observation = lambda state, path: None   # no agent runtime in this local check
++    tools = TS.LaboratoryTools(config)
++    state = TS.R6State(output=str(out), usage=dict(experiments=0, max_experiments=config.max_experiments,
++                                                   charged_tu=0, max_total_tu=config.max_total_tu))
++    (out / "observations").mkdir(parents=True, exist_ok=True)
++    token = S._call_state.set(state)
++    try:
++        good = json.loads(await tools.experiment(
++            [dict(t=0, kind="inject", device=1, port=1, amp=3.0, dur=10.0), dict(t=1, kind="adjust", device=0, u=[0.2, -0.1, 0.0])],
++            [dict(sensor="device0", t=[0, 5, 10]), dict(sensor="device1", t=[10, 20]), dict(sensor="global", t=[20])]))
++        bad = json.loads(await tools.experiment([dict(t=0, kind="inject", device=0, port=4, amp=1.0, dur=1.0)],
++                                                [dict(sensor="global", t=[1])]))
++        usage = json.loads(await tools.usage())
++    finally:
++        S._call_state.reset(token)
++    with np.load(out / "observations" / Path(good["path"]).name, allow_pickle=False) as z:
++        shapes = {k: list(z[k].shape) for k in z.files if k.startswith("query")}
++        finite = all(np.isfinite(z[k]).all() for k in z.files if k.startswith("query"))
++    return dict(admitted=good, rejected=bad, usage=usage, saved_shapes=shapes, finite=finite,
++                recorded_experiments=len(state.experiments), rejected_requests=state.rejected_requests)
++
++
++def grade_reference(bundle, ref_dir: Path, out: Path, precision):
++    """The native oracle as a trusted predictor: its cached 64-member ensembles, frozen then scored."""
++    def predict(case, count, seed):
++        path = ref_dir / f"reference_{case['id']}.npz"
++        with np.load(path, allow_pickle=False) as z:
++            meta = json.loads(str(z["meta"]))
++            assert meta["actions"] == case["actions"] and meta["queries"] == case["queries"] and meta["members"] == count
++            samples = [z[f"query{i}"].copy() for i in range(len(case["queries"]))]
++        return dict(samples=samples), dict(kind="trusted-native-oracle", ensemble=path.name, truth_seed=meta["seed"])
++
++    report = EV._forecast_suite(bundle, out, predict, members=64,
++                                predictor=dict(kind="trusted-native-oracle", name="independent_native_reference"))
++    return dict(primary_joint_energy=report["primary_joint_energy"], status=report["status"],
++                reward=precision_reward(report["primary_joint_energy"], precision), by_family=report["by_family"],
++                run_id=report["id"])
++
++
++def main():
++    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    ap.add_argument("--bundle", type=Path, required=True)
++    ap.add_argument("--out", type=Path, required=True)
++    ap.add_argument("--reference-dir", type=Path)
++    ap.add_argument("--precision", type=float, default=DEFAULT_PRECISION)
++    a = ap.parse_args()
++    if a.out.exists():
++        shutil.rmtree(a.out)
++    a.out.mkdir(parents=True)
++    result = {}
++    config = TS.R6ToolsConfig(bundle=a.bundle.resolve(), max_experiments=10, max_total_tu=200)
++    bundle = TS.required_bundle(config)
++    sim = TS.required_bundle(config, profile="simulation")
++    result["required_bundle"] = dict(type=type(bundle).__name__, is_lab=isinstance(bundle, LB.LabBundle),
++                                     bundle_id=bundle.manifest["bundle_id"], roster=dict(n_ports=bundle.roster.n_ports,
++                                     device_slots=list(bundle.roster.device_slots), protocol=bundle.roster.protocol),
++                                     simulation_profile_suite=sim.suite, cases=len(bundle.suite["cases"]),
++                                     public_roster_ports=TS.public_roster(config).n_ports)
++    result["prompt"], text = check_prompt(config, bundle)
++    (a.out / "AGENT_SPEC.md").write_text(text)
++    result["tools"] = asyncio.run(tool_calls(config, a.out / "lab"))
++    demo = EV.reference_demo(bundle, a.out / "persistence")
++    result["initial_persistence"] = dict(ok=demo["ok"], primary_joint_energy=demo["actual"], expected=demo["expected"],
++                                         reward=precision_reward(demo["actual"], a.precision))
++    if a.reference_dir:
++        result["native_reference"] = grade_reference(bundle, a.reference_dir, a.out / "native", a.precision)
++    result["reward_precision_K"] = a.precision
++    (a.out / "validation.json").write_text(json.dumps(result, indent=1, default=str) + "\n")
++    print(json.dumps(result, indent=1, default=str)[:6000])
++
++
++if __name__ == "__main__":
++    main()
+-- 
+2.43.0
+

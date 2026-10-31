@@ -1,7 +1,7 @@
 From 42a8c72c72fc67d3c7899c9dc8bc3b1beae5a9cf Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 28 Oct 2026 20:37:04 +0000
-Subject: [PATCH 03/11] physim: LabOracleRunner with an actuator roster apart
+Subject: [PATCH 03/16] physim: LabOracleRunner with an actuator roster apart
  from the observed ports
 
 labworld.LabOracleRunner subclasses blobround6.OracleRunner: inject ports index a declared

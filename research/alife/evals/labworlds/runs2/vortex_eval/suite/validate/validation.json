@@ -1,0 +1,136 @@
+{
+ "required_bundle": {
+  "type": "LabBundle",
+  "is_lab": true,
+  "bundle_id": "bundle:sha256:d5698a580dc607951cca484886d45e93b62ed8f37931317b2d6abfb60a9c481f",
+  "roster": {
+   "n_ports": 4,
+   "device_slots": [
+    13,
+    19
+   ],
+   "protocol": "centered-pulse-v2"
+  },
+  "simulation_profile_suite": null,
+  "cases": 15,
+  "public_roster_ports": 4
+ },
+ "prompt": {
+  "ok": true,
+  "missing": [],
+  "unreplaced": [],
+  "chars": 8892,
+  "ports_line": "`device` is 0 or 1. `port` is an integer from 0 to 3. `amp` is a finite"
+ },
+ "tools": {
+  "admitted": {
+   "path": "/observations/experiment_001.npz",
+   "arrays": {
+    "query0": [
+     1,
+     3,
+     4,
+     13
+    ],
+    "query1": [
+     1,
+     2,
+     4,
+     19
+    ],
+    "query2": [
+     1,
+     1,
+     4,
+     2
+    ]
+   },
+   "usage": {
+    "experiments": 1,
+    "max_experiments": 10,
+    "charged_tu": 20.0,
+    "max_total_tu": 200.0
+   }
+  },
+  "rejected": {
+   "error": "actions[0].port must be [0, 3]",
+   "usage": {
+    "experiments": 1,
+    "max_experiments": 10,
+    "charged_tu": 20.0,
+    "max_total_tu": 200.0
+   }
+  },
+  "usage": {
+   "experiments": 1,
+   "max_experiments": 10,
+   "charged_tu": 20.0,
+   "max_total_tu": 200.0,
+   "validation_attempts": 0,
+   "submission_attempts": 0
+  },
+  "saved_shapes": {
+   "query0": [
+    1,
+    3,
+    4,
+    13
+   ],
+   "query1": [
+    1,
+    2,
+    4,
+    19
+   ],
+   "query2": [
+    1,
+    1,
+    4,
+    2
+   ]
+  },
+  "finite": true,
+  "recorded_experiments": 1,
+  "rejected_requests": [
+   {
+    "kind": "experiment",
+    "error": "actions[0].port must be [0, 3]"
+   }
+  ]
+ },
+ "initial_persistence": {
+  "ok": true,
+  "primary_joint_energy": 1.0263418694456978,
+  "expected": {
+   "predictor": "initial_persistence",
+   "forecast_members": 4,
+   "primary_joint_energy": 1.0263418694456978,
+   "absolute_tolerance": 1e-10
+  },
+  "reward": 0.0
+ },
+ "native_reference": {
+  "primary_joint_energy": 0.035324387185800485,
+  "status": "COMPLETE",
+  "reward": 0.7259626818187367,
+  "by_family": {
+   "delayed_feed": 0.03215507465953075,
+   "feed_and_follow": 0.027963050078881984,
+   "feed_neck": 0.042692264331872065,
+   "feed_vortex": 0.03309599809812742,
+   "follow_vortex": 0.03259899970522858,
+   "move_during_pulse": 0.03587288825245347,
+   "move_then_pulse": 0.038398066423273494,
+   "probe_shift": 0.04023373715065931,
+   "probe_wide": 0.03660318175653773,
+   "pulse_then_move": 0.03245665579782215,
+   "sham": 0.03756833354857761,
+   "starve_neck": 0.03274458927745578,
+   "starve_vortex": 0.034166714695028126,
+   "stir_cut": 0.047998865607038164,
+   "two_sources": 0.025317388404520653
+  },
+  "run_id": "run:sha256:2aa1014a26d93fee617f85f42adfdc01655cf5348e6f5d7020dae92b8ea67e39"
+ },
+ "reward_precision_K": 2.0
+}

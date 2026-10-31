@@ -1,7 +1,7 @@
 From 77a6d83098154e1e2d7c0e0c279e9dfa923028d8 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 29 Oct 2026 11:41:05 +0000
-Subject: [PATCH 09/11] LABWORLDS.md: acceptance checks versus curation checks
+Subject: [PATCH 09/16] LABWORLDS.md: acceptance checks versus curation checks
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj

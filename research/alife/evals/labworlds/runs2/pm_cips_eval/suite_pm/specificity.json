@@ -1,0 +1,421 @@
+{
+ "ablate_a2:sham": {
+  "program": "sham",
+  "score_ratio": 10.23,
+  "score_ratio_by_sensor": {
+   "device0": 13.52,
+   "device1": 6.16,
+   "global": 15.84
+  }
+ },
+ "ablate_a2:L_d0": {
+  "program": "L_d0",
+  "score_ratio": 6.56,
+  "score_ratio_by_sensor": {
+   "device0": 6.95,
+   "device1": 6.12,
+   "global": 6.8
+  },
+  "response_difference_sd": {
+   "device0": {
+    "S": 1.9,
+    "K": 2.4,
+    "L": 3.5,
+    "phi": 2.5
+   },
+   "device1": {
+    "S": 0.6,
+    "K": 0.6,
+    "L": 0.6,
+    "phi": 0.6
+   },
+   "global": {
+    "S": 0.7,
+    "K": 0.7,
+    "L": 0.8,
+    "phi": 0.9
+   }
+  },
+  "native_response_sd": {
+   "device0": {
+    "S": 2.1,
+    "K": 2.0,
+    "L": 7.1,
+    "phi": 2.9
+   },
+   "device1": {
+    "S": 0.5,
+    "K": 0.6,
+    "L": 0.5,
+    "phi": 0.6
+   },
+   "global": {
+    "S": 1.1,
+    "K": 1.1,
+    "L": 2.5,
+    "phi": 1.3
+   }
+  }
+ },
+ "ablate_a2:L_rim": {
+  "program": "L_rim",
+  "score_ratio": 10.74,
+  "score_ratio_by_sensor": {
+   "device0": 15.46,
+   "device1": 7.08,
+   "global": 15.32
+  },
+  "response_difference_sd": {
+   "device0": {
+    "S": 3.0,
+    "K": 3.6,
+    "L": 4.0,
+    "phi": 3.4
+   },
+   "device1": {
+    "S": 0.5,
+    "K": 0.5,
+    "L": 0.5,
+    "phi": 0.4
+   },
+   "global": {
+    "S": 1.6,
+    "K": 1.4,
+    "L": 1.8,
+    "phi": 1.2
+   }
+  },
+  "native_response_sd": {
+   "device0": {
+    "S": 3.2,
+    "K": 2.9,
+    "L": 7.2,
+    "phi": 3.9
+   },
+   "device1": {
+    "S": 0.5,
+    "K": 0.5,
+    "L": 0.5,
+    "phi": 0.4
+   },
+   "global": {
+    "S": 1.6,
+    "K": 1.5,
+    "L": 2.9,
+    "phi": 1.3
+   }
+  }
+ },
+ "ablate_a2:L_d1": {
+  "program": "L_d1",
+  "score_ratio": 13.25,
+  "score_ratio_by_sensor": {
+   "device0": 26.16,
+   "device1": 10.15,
+   "global": 11.74
+  },
+  "response_difference_sd": {
+   "device0": {
+    "S": 0.5,
+    "K": 0.5,
+    "L": 0.6,
+    "phi": 0.5
+   },
+   "device1": {
+    "S": 8.2,
+    "K": 5.2,
+    "L": 4.4,
+    "phi": 5.9
+   },
+   "global": {
+    "S": 1.8,
+    "K": 1.9,
+    "L": 1.7,
+    "phi": 2.0
+   }
+  },
+  "native_response_sd": {
+   "device0": {
+    "S": 0.4,
+    "K": 0.4,
+    "L": 0.5,
+    "phi": 0.4
+   },
+   "device1": {
+    "S": 8.4,
+    "K": 5.3,
+    "L": 7.2,
+    "phi": 6.2
+   },
+   "global": {
+    "S": 1.9,
+    "K": 2.0,
+    "L": 2.7,
+    "phi": 2.3
+   }
+  }
+ },
+ "ablate_chi0:sham": {
+  "program": "sham",
+  "score_ratio": 11.25,
+  "score_ratio_by_sensor": {
+   "device0": 12.97,
+   "device1": 5.58,
+   "global": 21.65
+  }
+ },
+ "ablate_chi0:L_d0": {
+  "program": "L_d0",
+  "score_ratio": 6.92,
+  "score_ratio_by_sensor": {
+   "device0": 5.17,
+   "device1": 5.55,
+   "global": 8.98
+  },
+  "response_difference_sd": {
+   "device0": {
+    "S": 3.9,
+    "K": 4.0,
+    "L": 4.2,
+    "phi": 4.1
+   },
+   "device1": {
+    "S": 0.5,
+    "K": 0.6,
+    "L": 0.5,
+    "phi": 0.6
+   },
+   "global": {
+    "S": 0.9,
+    "K": 0.9,
+    "L": 1.2,
+    "phi": 0.8
+   }
+  },
+  "native_response_sd": {
+   "device0": {
+    "S": 2.1,
+    "K": 2.0,
+    "L": 7.1,
+    "phi": 2.9
+   },
+   "device1": {
+    "S": 0.5,
+    "K": 0.6,
+    "L": 0.5,
+    "phi": 0.6
+   },
+   "global": {
+    "S": 1.1,
+    "K": 1.1,
+    "L": 2.5,
+    "phi": 1.3
+   }
+  }
+ },
+ "ablate_chi0:L_rim": {
+  "program": "L_rim",
+  "score_ratio": 11.8,
+  "score_ratio_by_sensor": {
+   "device0": 15.35,
+   "device1": 6.42,
+   "global": 19.68
+  },
+  "response_difference_sd": {
+   "device0": {
+    "S": 2.8,
+    "K": 3.4,
+    "L": 3.4,
+    "phi": 3.1
+   },
+   "device1": {
+    "S": 0.5,
+    "K": 0.5,
+    "L": 0.5,
+    "phi": 0.4
+   },
+   "global": {
+    "S": 1.4,
+    "K": 1.3,
+    "L": 1.5,
+    "phi": 1.2
+   }
+  },
+  "native_response_sd": {
+   "device0": {
+    "S": 3.2,
+    "K": 2.9,
+    "L": 7.2,
+    "phi": 3.9
+   },
+   "device1": {
+    "S": 0.5,
+    "K": 0.5,
+    "L": 0.5,
+    "phi": 0.4
+   },
+   "global": {
+    "S": 1.6,
+    "K": 1.5,
+    "L": 2.9,
+    "phi": 1.3
+   }
+  }
+ },
+ "ablate_DS2:sham": {
+  "program": "sham",
+  "score_ratio": 11.72,
+  "score_ratio_by_sensor": {
+   "device0": 13.04,
+   "device1": 4.39,
+   "global": 25.97
+  }
+ },
+ "ablate_DS2:Sp_d0": {
+  "program": "Sp_d0",
+  "score_ratio": 13.99,
+  "score_ratio_by_sensor": {
+   "device0": 9.65,
+   "device1": 6.96,
+   "global": 22.67
+  },
+  "response_difference_sd": {
+   "device0": {
+    "S": 3.2,
+    "K": 3.2,
+    "L": 2.4,
+    "phi": 4.1
+   },
+   "device1": {
+    "S": 0.7,
+    "K": 0.6,
+    "L": 0.6,
+    "phi": 0.6
+   },
+   "global": {
+    "S": 1.5,
+    "K": 1.3,
+    "L": 1.5,
+    "phi": 1.2
+   }
+  },
+  "native_response_sd": {
+   "device0": {
+    "S": 3.2,
+    "K": 4.8,
+    "L": 3.6,
+    "phi": 4.4
+   },
+   "device1": {
+    "S": 0.7,
+    "K": 0.6,
+    "L": 0.6,
+    "phi": 0.5
+   },
+   "global": {
+    "S": 1.7,
+    "K": 2.2,
+    "L": 2.2,
+    "phi": 1.7
+   }
+  }
+ },
+ "ablate_DS2:Sm_d1": {
+  "program": "Sm_d1",
+  "score_ratio": 15.69,
+  "score_ratio_by_sensor": {
+   "device0": 22.72,
+   "device1": 9.03,
+   "global": 16.98
+  },
+  "response_difference_sd": {
+   "device0": {
+    "S": 0.5,
+    "K": 0.4,
+    "L": 0.5,
+    "phi": 0.4
+   },
+   "device1": {
+    "S": 4.8,
+    "K": 4.6,
+    "L": 4.9,
+    "phi": 4.5
+   },
+   "global": {
+    "S": 1.0,
+    "K": 1.0,
+    "L": 1.2,
+    "phi": 1.2
+   }
+  },
+  "native_response_sd": {
+   "device0": {
+    "S": 0.5,
+    "K": 0.4,
+    "L": 0.4,
+    "phi": 0.4
+   },
+   "device1": {
+    "S": 5.4,
+    "K": 4.0,
+    "L": 3.5,
+    "phi": 3.7
+   },
+   "global": {
+    "S": 1.1,
+    "K": 1.4,
+    "L": 1.7,
+    "phi": 1.2
+   }
+  }
+ },
+ "ablate_DS2:Sp_d1": {
+  "program": "Sp_d1",
+  "score_ratio": 13.19,
+  "score_ratio_by_sensor": {
+   "device0": 12.64,
+   "device1": 3.86,
+   "global": 19.81
+  },
+  "response_difference_sd": {
+   "device0": {
+    "S": 0.1,
+    "K": 0.1,
+    "L": 0.2,
+    "phi": 0.1
+   },
+   "device1": {
+    "S": 5.4,
+    "K": 4.2,
+    "L": 3.7,
+    "phi": 4.6
+   },
+   "global": {
+    "S": 1.5,
+    "K": 1.7,
+    "L": 1.4,
+    "phi": 1.8
+   }
+  },
+  "native_response_sd": {
+   "device0": {
+    "S": 0.1,
+    "K": 0.1,
+    "L": 0.2,
+    "phi": 0.1
+   },
+   "device1": {
+    "S": 7.3,
+    "K": 7.3,
+    "L": 5.0,
+    "phi": 7.1
+   },
+   "global": {
+    "S": 1.7,
+    "K": 2.4,
+    "L": 1.9,
+    "phi": 2.3
+   }
+  }
+ }
+}

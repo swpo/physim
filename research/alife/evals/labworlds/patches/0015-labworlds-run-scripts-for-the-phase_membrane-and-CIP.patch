@@ -1,0 +1,769 @@
+From e2b1451ed1454159148cd1bc9afac65cabe43169 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 31 Oct 2026 05:50:47 +0000
+Subject: [PATCH 15/16] labworlds: run scripts for the phase_membrane and
+ CIPS-iso suites
+
+Noise settlement for phase_membrane (dt 0.5, dt/4 null), CIPS-iso acceptance
+(parity, envelope, noise levels, dt screens), mechanism-program pilots, the two
+frozen suites and the mechanism-specificity analysis. Outputs are under
+/home/user/evalwork/pm_cips_eval.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+---
+ .../physim/labworlds/pmcips_runs/README.md    |  10 ++
+ .../labworlds/pmcips_runs/cips_accept.py      | 142 ++++++++++++++++++
+ .../labworlds/pmcips_runs/cips_detscreen.py   |  21 +++
+ .../labworlds/pmcips_runs/cips_gains.json     |   2 +
+ .../physim/labworlds/pmcips_runs/cips_prep.py |  40 +++++
+ .../labworlds/pmcips_runs/cips_subsets.json   |   4 +
+ .../physim/labworlds/pmcips_runs/common.py    |  11 ++
+ scripts/physim/labworlds/pmcips_runs/pilot.py |  70 +++++++++
+ .../labworlds/pmcips_runs/pilot_analyse.py    |  74 +++++++++
+ .../labworlds/pmcips_runs/pm_detsham.py       |  36 +++++
+ .../physim/labworlds/pmcips_runs/pm_noise.py  | 136 +++++++++++++++++
+ .../physim/labworlds/pmcips_runs/specific.py  |  68 +++++++++
+ scripts/physim/labworlds/pmcips_runs/suite.py |  32 ++++
+ 13 files changed, 646 insertions(+)
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/README.md
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/cips_accept.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/cips_detscreen.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/cips_gains.json
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/cips_prep.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/cips_subsets.json
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/common.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/pilot.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/pilot_analyse.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/pm_detsham.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/pm_noise.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/specific.py
+ create mode 100644 scripts/physim/labworlds/pmcips_runs/suite.py
+
+diff --git a/scripts/physim/labworlds/pmcips_runs/README.md b/scripts/physim/labworlds/pmcips_runs/README.md
+new file mode 100644
+index 0000000..09b229a
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/README.md
+@@ -0,0 +1,10 @@
++Run scripts for the phase_membrane and CIPS-iso evaluation candidates (31 Oct 2026). They write under
++/home/user/evalwork/pm_cips_eval and use a pinned copy of environments/physim/physim at e64fbf2 (PHYSIM_PIN).
++
++- pm_noise.py: phase_membrane intensity 0.01 (ell 2) at dt 0.5 with dt/4 null ensembles and the partition band.
++- cips_prep.py: CIPS-iso prepared state (seed 5, t 3100, zero noise) and equality of e, p, F with
++  runs/cips_rotation/world_iso.py.
++- cips_accept.py: parity, envelope, noise levels, zero-noise dt screens (det, detg); cips_detscreen.py reads them.
++- pilot.py, pilot_analyse.py: zero-noise mechanism-program pilots and their visibility at the probes.
++- suite.py: frozen suites through pmcips.freeze / run_suite / report; specific.py: program-specific response
++  differences of the mechanism controls from the suite ensembles.
+diff --git a/scripts/physim/labworlds/pmcips_runs/cips_accept.py b/scripts/physim/labworlds/pmcips_runs/cips_accept.py
+new file mode 100644
+index 0000000..8524d1c
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/cips_accept.py
+@@ -0,0 +1,142 @@
++"""Item 2: acceptance of the CIPS-iso world through the runner (192^2, dt 0.1, 1 step per tick).
++
++  parity     zero noise, no actions: native module loop vs LabStepper fields at 50 tu, and sample_truth readouts
++             (2 members) vs the native fields read through the same devices and the global sensor
++  envelope   zero noise, amp 3 for 50 tu at each device centre on each actuator (gains p 1, F 1, s 1)
++  noise L..  2 members per intensity level (ell 2), sham, 50 tu: bodies, ranges, member spread at the probes
++  det        zero-noise members at dt 0.1 and dt 0.05 on the p_d0 and Fm_d0 programs (deterministic dt error)
++"""
++import json, sys, time
++from pathlib import Path
++sys.path.insert(0, "/home/user/evalwork/pm_cips_eval/scripts")
++from common import PC, E, LW, EVALPILOT, OUT
++import numpy as np
++sys.path.insert(0, "/home/user/physim/research/alife/evals/labworlds/runs/cips_runner")
++from plabel import plabel
++
++D = Path(OUT) / "cips_accept"; D.mkdir(parents=True, exist_ok=True)
++SITES = {"device0": [20.2, 153.8], "device1": [16.1, 101.8]}
++GAINS = {"p": 1.0, "F": 1.0, "s": 1.0}
++N = 192
++st = PC.load_state(f"{OUT}/cips_prep/prep_s5_t3100.npz", PC.CIPS_FIELDS)
++devs = [PC.device(0, SITES["device0"], N), PC.device(1, SITES["device1"], N)]
++progs = dict((p[0], p[1]) for p in PC.cips_programs())
++
++
++def W(level=0.0, ell=PC.ELL, dt=0.1):
++    return PC.cips_world(level, ell=ell if level > 0 else None, gains=GAINS, dt=dt, actuators=PC.CIPS_ACTUATORS)
++
++
++def bodies(e):
++    return int(plabel(e > 0.5)[1])
++
++
++def run_member(w, actions, seed, track_every=None):
++    """One member through LabOracleRunner (devices, scheduling as in the suite); fields every track_every tu."""
++    o = LW.oracle(w, st, devs)
++    PC.one_worker(o._stepper.module)
++    rec = []
++    orig = o._fill_queries
++
++    def fill(live, devices, marks, output, member, _orig=orig):
++        F = live["F"]
++        rec.append(dict(tu=round(live["t_step"] * 0.02, 4), finite=bool(np.isfinite(F).all()), bodies=bodies(F[0]),
++                        ranges={f: [float(F[i].min()), float(F[i].max())] for i, f in enumerate(PC.CIPS_FIELDS)}))
++        return _orig(live, devices, marks, output, member)
++    o._fill_queries = fill
++    times = list(range(0, 51, track_every)) if track_every else E.TIMES
++    q = [dict(sensor=s, t=times) for s in E.SENSORS]
++    t0 = time.process_time()
++    out = o.sample_truth(actions, q, 1, truth_seed=seed)["samples"]
++    return out, rec, time.process_time() - t0
++
++
++cmd = sys.argv[1]
++if cmd == "parity":
++    w0 = W()
++    m = PC.native_module(w0)
++    s = m.init(0, (N, N))
++    for f in PC.CIPS_FIELDS:
++        s[f] = st[f].copy()
++    s["t"] = st["t"]
++    nat, tick = {}, 0
++    t0 = time.process_time()
++    for t in E.TIMES:
++        for _ in range(int(round(t / 0.02)) - tick):
++            s = m.step(s)
++        tick = int(round(t / 0.02))
++        nat[t] = np.stack([s[f] for f in PC.CIPS_FIELDS])
++    cpu_native = time.process_time() - t0
++    o = LW.oracle(w0, st, devs)
++    PC.one_worker(o._stepper.module)
++    t1 = time.process_time()
++    out = o.sample_truth([], E.queries(), 2, truth_seed=7)["samples"]
++    cpu_runner = time.process_time() - t1
++    diffs = {}
++    for qi, sensor in enumerate(E.SENSORS):
++        ref = np.stack([np.stack((nat[t].mean(axis=(1, 2)), nat[t].var(axis=(1, 2))), axis=1) if sensor == "global"
++                        else devs[qi].sample(nat[t], 1.0) for t in E.TIMES])
++        diffs[sensor] = dict(max_abs_member0=float(np.abs(out[qi][0] - ref).max()),
++                             max_abs_member1=float(np.abs(out[qi][1] - ref).max()),
++                             members_identical=bool(np.array_equal(out[qi][0], out[qi][1])))
++    stp = LW.LabStepper(w0, dict(w0.aux(st), _grid=(N, N)))
++    PC.one_worker(stp.module)
++    sim = LW.template(w0, st, 0)
++    stp(sim, 2500)
++    res = dict(field_max_abs_50tu=float(np.abs(sim["F"] - nat[50]).max()), readouts=diffs,
++               cpu_native_50tu_s=cpu_native, cpu_runner_2members_s=cpu_runner)
++    PC.dump(D / "parity.json", res)
++    print(json.dumps(res, indent=1))
++elif cmd == "envelope":
++    rows = []
++    _, sham, cpu = run_member(W(), [], 0, track_every=5)
++    rows.append(dict(program="sham", device=None, port=None, cpu_s=cpu, finite=all(r["finite"] for r in sham),
++                     bodies=[r["bodies"] for r in sham],
++                     max={f: max(r["ranges"][f][1] for r in sham) for f in PC.CIPS_FIELDS},
++                     min={f: min(r["ranges"][f][0] for r in sham) for f in PC.CIPS_FIELDS}))
++    print(json.dumps(rows[-1]), flush=True)
++    for dev in (0, 1):
++        for port, a in enumerate(PC.CIPS_ACTUATORS):
++            acts = [dict(t=0.0, kind="inject", device=dev, port=port, amp=3.0, dur=50.0)]
++            out, rec, cpu = run_member(W(), acts, 0, track_every=5)
++            rows.append(dict(program=f"{a.field}{'+' if a.sign > 0 else '-'}_d{dev}_amp3_50tu", device=dev, port=port,
++                             cpu_s=cpu, finite=all(r["finite"] for r in rec), bodies=[r["bodies"] for r in rec],
++                             max={f: max(r["ranges"][f][1] for r in rec) for f in PC.CIPS_FIELDS},
++                             min={f: min(r["ranges"][f][0] for r in rec) for f in PC.CIPS_FIELDS},
++                             probe_centre_end={f: float(out[dev][0][-1, i, 0]) for i, f in enumerate(PC.CIPS_FIELDS)}))
++            print(json.dumps(rows[-1]), flush=True)
++    PC.dump(D / "envelope.json", rows)
++elif cmd == "noise":
++    res = {}
++    for lv in map(float, sys.argv[2:]):
++        outs = []
++        for seed in (11, 12):
++            out, rec, cpu = run_member(W(lv), [], seed, track_every=5)
++            outs.append(out)
++            res[f"{lv:g}/seed{seed}"] = dict(cpu_s=cpu, bodies=[r["bodies"] for r in rec],
++                                             max={f: max(r["ranges"][f][1] for r in rec) for f in PC.CIPS_FIELDS},
++                                             min={f: min(r["ranges"][f][0] for r in rec) for f in PC.CIPS_FIELDS})
++            print(lv, seed, json.dumps(res[f"{lv:g}/seed{seed}"]), flush=True)
++        np.savez_compressed(D / f"noise_{lv:g}.npz", **{f"m{k}_q{q}": outs[k][q] for k in range(2) for q in range(3)})
++    old = json.loads((D / "noise.json").read_text()) if (D / "noise.json").exists() else {}
++    old.update(res)
++    PC.dump(D / "noise.json", old)
++elif cmd == "det":
++    for prog in sys.argv[2:]:
++        for dt in (0.1, 0.05):
++            o = LW.oracle(W(dt=dt), st, devs)
++            PC.one_worker(o._stepper.module)
++            path = D / f"det_{prog}_dt{dt:g}.npz"
++            E.cached(path, lambda: o.sample_truth(progs[prog], E.queries(), 1, truth_seed=5),
++                     meta=dict(request=dict(id=prog, actions=progs[prog], queries=E.queries()), members=1, seed=5, dt=dt))
++elif cmd == "detg":
++    # detg '{"p":0.3,"F":0.3}' PORT DEVICE : zero-noise amp 3 for 20 tu at DEVICE on PORT, dt 0.1 vs dt 0.05
++    g = json.loads(sys.argv[2]); port, dev = int(sys.argv[3]), int(sys.argv[4])
++    acts = [dict(t=0.0, kind="inject", device=dev, port=port, amp=3.0, dur=20.0)]
++    tag = "_".join(f"{k}{v:g}" for k, v in sorted(g.items()))
++    for dt in (0.1, 0.05):
++        w = PC.cips_world(0.0, ell=None, gains={**GAINS, **g}, dt=dt, actuators=PC.CIPS_ACTUATORS)
++        o = LW.oracle(w, st, devs)
++        PC.one_worker(o._stepper.module)
++        E.cached(D / f"detg_{tag}_port{port}_d{dev}_dt{dt:g}.npz", lambda: o.sample_truth(acts, E.queries(), 1, truth_seed=5),
++                 meta=dict(request=dict(id="detg", actions=acts, queries=E.queries()), members=1, seed=5, dt=dt, gains=g))
+diff --git a/scripts/physim/labworlds/pmcips_runs/cips_detscreen.py b/scripts/physim/labworlds/pmcips_runs/cips_detscreen.py
+new file mode 100644
+index 0000000..62fe948
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/cips_detscreen.py
+@@ -0,0 +1,21 @@
++import numpy as np, json
++OUT = "/home/user/evalwork/pm_cips_eval/cips_accept"
++TIMES = [0, 2, 5, 8, 10, 12, 15, 20, 22, 25, 30, 35, 40, 45, 50]
++T5 = list(range(0, 51, 5))
++F = ("e", "p", "F", "s")
++res = {}
++for prog in ("p_d0", "Fm_d0"):
++    a = np.load(f"{OUT}/det_{prog}_dt0.1.npz"); b = np.load(f"{OUT}/det_{prog}_dt0.05.npz")
++    for lv in ("0.01", "0.03", "0.1"):
++        z = np.load(f"{OUT}/noise_{lv}.npz")
++        for win in (10, 50):
++            row = {}
++            for q, s in enumerate(("d0", "d1", "gl")):
++                ti = [TIMES.index(t) for t in T5 if 0 < t <= win]
++                tn = [T5.index(t) for t in T5 if 0 < t <= win]
++                d = a[f"query{q}"][0][ti] - b[f"query{q}"][0][ti]
++                sp = np.abs(z[f"m0_q{q}"][0][tn] - z[f"m1_q{q}"][0][tn]) / np.sqrt(2)
++                row[s] = {f: round(float(np.sqrt((d[:, i] ** 2).mean()) / (np.sqrt((sp[:, i] ** 2).mean()) + 1e-15)), 2) for i, f in enumerate(F)}
++            res[f"{prog}/L{lv}/{win}tu"] = row
++            print(prog, lv, win, row)
++json.dump(res, open(f"{OUT}/det_screen.json", "w"), indent=1)
+diff --git a/scripts/physim/labworlds/pmcips_runs/cips_gains.json b/scripts/physim/labworlds/pmcips_runs/cips_gains.json
+new file mode 100644
+index 0000000..169f168
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/cips_gains.json
+@@ -0,0 +1,2 @@
++{"intensity": 0.03, "gains": {"p": 0.3, "F": 0.3, "s": 1.0},
++ "why": "intensity 0.1 pushes e above 1 (1.015-1.025); 0.03 keeps e <= 0.988 and the zero-noise dt error at the pulse site is 3x smaller relative to the member spread than at 0.01. Gains 1 for p and F clip at injection (p at 1, F at 0) and give dt errors of 9-35 member sds at the pulse site; at 0.3 they are 0.6-3.2 sds in the first 10 tu (F+ worst), 0.2-1.1 over 50 tu. s at gain 1: <= 0.15 sd."}
+diff --git a/scripts/physim/labworlds/pmcips_runs/cips_prep.py b/scripts/physim/labworlds/pmcips_runs/cips_prep.py
+new file mode 100644
+index 0000000..5c902c4
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/cips_prep.py
+@@ -0,0 +1,40 @@
++"""CIPS-iso prepared state: the variant from init(SEED) at zero noise to T_PREP (dt 0.1), then the 250 t window
++at zero noise with e snapshots every 12.5 t (5 tu; float16, for pictures), and a check that e, p, F equal the
++cips_rotation world_iso.py (both drifts isotropic) after 300 steps from the same init (the amphiphile is
++one-way coupled)."""
++import json, sys, time, importlib.util, os
++sys.path.insert(0, "/home/user/evalwork/pm_cips_eval/scripts")
++from common import PC, E, LW, EVALPILOT, OUT
++import numpy as np
++from pathlib import Path
++SEED, T_PREP, N = int(sys.argv[1]), float(sys.argv[2]), 192
++D = Path(OUT) / "cips_prep"; D.mkdir(parents=True, exist_ok=True)
++w = PC.cips_world(0.0)
++m = PC.native_module(w)
++# equality check against world_iso.py
++spec = importlib.util.spec_from_file_location("wiso", f"{EVALPILOT}/cips_rotation/world_iso.py")
++wi = importlib.util.module_from_spec(spec); spec.loader.exec_module(wi); wi.ops.WORKERS = 1
++a, b = m.init(SEED, (N, N)), wi.init(SEED, (N, N))
++for _ in range(300):
++    a, b = m.step(a), wi.step(b)
++chk = {f: float(np.abs(a[f] - b[f]).max()) for f in PC.CIPS_FIELDS}
++print("vs world_iso after 300 steps", chk, flush=True)
++t0 = time.process_time()
++s = m.init(SEED, (N, N))
++nsteps = int(round(T_PREP / 0.1))
++for i in range(nsteps):
++    s = m.step(s)
++cpu = time.process_time() - t0
++np.savez_compressed(D / f"prep_s{SEED}_t{int(T_PREP)}.npz", t=s["t"], **{f: s[f] for f in PC.CIPS_FIELDS})
++snaps = {}
++for k in range(21):
++    snaps[f"e_{k * 5}tu"] = s["e"].astype(np.float16)
++    snaps[f"s_{k * 5}tu"] = s["s"].astype(np.float16)
++    snaps[f"F_{k * 5}tu"] = s["F"].astype(np.float16)
++    if k < 20:
++        for _ in range(125):
++            s = m.step(s)
++np.savez_compressed(D / f"window_s{SEED}_t{int(T_PREP)}.npz", **snaps)
++json.dump(dict(seed=SEED, t_prep=T_PREP, cpu_prep_s=cpu, cpu_total_s=time.process_time() - t0, vs_world_iso_300=chk),
++          open(D / f"prep_s{SEED}_t{int(T_PREP)}.json", "w"), indent=1)
++print("done", cpu, flush=True)
+diff --git a/scripts/physim/labworlds/pmcips_runs/cips_subsets.json b/scripts/physim/labworlds/pmcips_runs/cips_subsets.json
+new file mode 100644
+index 0000000..6010743
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/cips_subsets.json
+@@ -0,0 +1,4 @@
++{"band_native": ["sham", "p_d0", "Fp_d0", "Fm_d0", "s_d0", "two_sources"],
++ "ablate_chi0": ["sham", "p_d0"], "ablate_kF0": ["sham", "Fp_d0"], "ablate_chis0": ["sham", "s_d0"],
++ "ablate_d0": ["sham", "Fm_d0"], "ablate_DF10": ["sham", "Fm_d0"],
++ "numerical_null": ["sham", "Fp_d0", "Fm_d0"]}
+diff --git a/scripts/physim/labworlds/pmcips_runs/common.py b/scripts/physim/labworlds/pmcips_runs/common.py
+new file mode 100644
+index 0000000..ecbcbc3
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/common.py
+@@ -0,0 +1,11 @@
++"""Shared setup for the pm_cips_eval scripts: pinned physim, pmcips declarations."""
++import os
++import sys
++for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
++    os.environ[_v] = "1"
++OUT = "/home/user/evalwork/pm_cips_eval"
++os.environ.setdefault("PHYSIM_PIN", f"{OUT}/pkg")
++sys.path.insert(0, "/home/user/swpo/residency-environments/scripts/physim/labworlds")
++import pmcips as PC  # noqa: E402,F401
++from pmcips import E, LW  # noqa: E402,F401
++EVALPILOT = "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot"
+diff --git a/scripts/physim/labworlds/pmcips_runs/pilot.py b/scripts/physim/labworlds/pmcips_runs/pilot.py
+new file mode 100644
+index 0000000..3216a6c
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/pilot.py
+@@ -0,0 +1,70 @@
++"""Item 3 pilots: zero-noise single members of each program (native) and of the matching ablations on chosen
++programs, with readouts at the suite's 15 times and full fields at 0/10/20/30/40/50 tu (float16, for pictures).
++
++  pilot.py pm|cips [variant:program ...]   (default: every program native + the planned ablation pairs)
++"""
++import json, sys, time, dataclasses
++from pathlib import Path
++sys.path.insert(0, "/home/user/evalwork/pm_cips_eval/scripts")
++from common import PC, E, LW, EVALPILOT, OUT
++import numpy as np
++
++world_name = sys.argv[1]
++D = Path(OUT) / "pilot" / world_name
++D.mkdir(parents=True, exist_ok=True)
++SNAP = [0, 10, 20, 30, 40, 50]
++
++
++def pm_setup():
++    st = PC.load_state(f"{EVALPILOT}/out/prep_s0.npz", PC.PM_FIELDS)
++    info = json.load(open(f"{EVALPILOT}/out/prep_s0.json"))
++    devs = [PC.device(0, info["sites"]["centre"], 128), PC.device(1, info["sites"]["other"], 128)]
++    w = PC.pm_world(0.0, 0.5, ell=None, actuators=PC.PM_ACTUATORS)
++    abl = {"a2": {"a": 2.0}, "chi0": {"chi": 0.0}, "feed10": {"F": 0.06}, "feed3": {"F": 0.02}, "DS2": {"DS": 0.4}}
++    pairs = [("a2", p) for p in ("sham", "K_d0", "L_d0", "L_rim")] + [("chi0", p) for p in ("sham", "L_d0", "L_rim")] \
++        + [("feed10", p) for p in ("sham", "Sm_d0", "Sm_d1", "Sp_d1")]
++    return st, devs, w, abl, dict((p[0], p[1]) for p in PC.pm_programs()), pairs
++
++
++CIPS_SITES = {"device0": [20.2, 153.8], "device1": [16.1, 101.8]}
++
++
++def cips_setup():
++    st = PC.load_state(f"{OUT}/cips_prep/prep_s5_t3100.npz", PC.CIPS_FIELDS)
++    devs = [PC.device(0, CIPS_SITES["device0"], 192), PC.device(1, CIPS_SITES["device1"], 192)]
++    w = PC.cips_world(0.0, ell=None, gains={"p": 0.3, "F": 0.3, "s": 1.0}, actuators=PC.CIPS_ACTUATORS)
++    abl = {"chi0": {"chi": 0.0}, "kF0": {"kF": 0.0}, "chis0": {"chi_s": 0.0}, "d0": {"d": 0.0}, "DF10": {"DF": 20.0}}
++    pairs = [("chi0", p) for p in ("sham", "p_d0", "p_d1")] + [("kF0", p) for p in ("sham", "Fp_d0")] \
++        + [("chis0", p) for p in ("sham", "s_d0")] + [("d0", p) for p in ("sham",)] + [("DF10", p) for p in ("sham", "Fm_d0", "Fm_d1")]
++    return st, devs, w, abl, dict((p[0], p[1]) for p in PC.cips_programs()), pairs
++
++
++st, devs, w, abl, progs, pairs = (pm_setup if world_name == "pm" else cips_setup)()
++todo = [a.split(":") for a in sys.argv[2:]] or ([("native", p) for p in progs] + pairs)
++for variant, prog in todo:
++    path = D / f"{variant}__{prog}.npz"
++    if path.exists():
++        continue
++    wv = w if variant == "native" else PC.replace(w, overrides={**w.overrides, **abl[variant]})
++    o = LW.oracle(wv, st, devs)
++    PC.one_worker(o._stepper.module)
++    snaps = {}
++    orig = o._fill_queries
++
++    def fill(live, devices, marks, output, member, _orig=orig):
++        t = round(live["t_step"] * 0.02, 6)
++        if t in SNAP:
++            snaps[f"F_{int(t)}"] = np.asarray(live["F"], dtype=np.float16)
++            snaps[f"c0_{int(t)}"] = np.asarray(devices[0].center); snaps[f"c1_{int(t)}"] = np.asarray(devices[1].center)
++        return _orig(live, devices, marks, output, member)
++    o._fill_queries = fill
++    q = [dict(sensor=s, t=sorted(set(E.TIMES) | set(SNAP))) for s in E.SENSORS]
++    t0 = time.process_time()
++    res = o.sample_truth(progs[prog], q, 1, truth_seed=1)["samples"]
++    cpu = time.process_time() - t0
++    F = np.stack([np.asarray(r) for r in res[:2]]) if False else None
++    np.savez_compressed(path, cpu_s=cpu, times=np.array(q[0]["t"]), d0=res[0][0], d1=res[1][0], gl=res[2][0],
++                        **snaps)
++    fin = all(np.isfinite(r).all() for r in res)
++    rng_ = {f: [float(res[2][0][:, i, 0].min()), float(res[2][0][:, i, 0].max())] for i, f in enumerate(w.fields)}
++    print(f"{variant}:{prog} cpu {cpu:.1f}s finite {fin}", flush=True)
+diff --git a/scripts/physim/labworlds/pmcips_runs/pilot_analyse.py b/scripts/physim/labworlds/pmcips_runs/pilot_analyse.py
+new file mode 100644
+index 0000000..2166fd3
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/pilot_analyse.py
+@@ -0,0 +1,74 @@
++"""Pilot readouts: what each program changes at the probes (native, zero noise) and how each ablation's response
++to its program differs from the native response. Units: native member spread at noise (per sensor and field:
++RMS over nodes and the 13 score times of the across-member sd of a noisy native ensemble on the sham program).
++
++  visibility(prog)           = RMS_{nodes,t}((nat_prog - nat_sham) / spread)
++  ablation_total(abl, prog)  = RMS((abl_prog - nat_prog) / spread)
++  response_diff(abl, prog)   = RMS(((abl_prog - abl_sham) - (nat_prog - nat_sham)) / spread)   (program-specific part)
++"""
++import sys, json, glob, os
++import numpy as np
++OUT = "/home/user/evalwork/pm_cips_eval"
++world = sys.argv[1]
++spread_file = sys.argv[2]          # npz with q0,q1,q2 member arrays (members, times, ports, slots) on sham, TIMES
++TIMES = [0, 2, 5, 8, 10, 12, 15, 20, 22, 25, 30, 35, 40, 45, 50]
++SCORE = [2, 5, 8, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50]
++fields = ("S", "K", "L", "phi") if world == "pm" else ("e", "p", "F", "s")
++z = np.load(spread_file)
++qs = [z[k] for k in sorted(k for k in z.files if k.startswith("query"))] if "query0" in z.files else \
++    [np.stack([z[f"m{m}_q{q}"] for m in range(2)]) for q in range(3)]
++ti = [TIMES.index(t) for t in SCORE] if "query0" in z.files else [k for k in range(1, 11)]   # cips noise runs: every 5 tu
++if "query0" not in z.files:
++    qs = [q[:, 0] for q in qs]          # (members, times, ports, slots)
++spread = {}
++for qi, s in enumerate(("d0", "d1", "gl")):
++    a = qs[qi][:, ti]
++    sd = a.std(axis=0, ddof=1)                     # (times, ports, slots)
++    for p, f in enumerate(fields):
++        spread[(s, f)] = float(np.sqrt((sd[:, p, :] ** 2).mean())) + 1e-12
++D = f"{OUT}/pilot/{world}"
++runs = {os.path.basename(p)[:-4]: np.load(p) for p in sorted(glob.glob(f"{D}/*.npz"))}
++
++
++def readout(r, s):
++    times = list(r["times"])
++    idx = [times.index(t) for t in SCORE]
++    return r[s][idx]
++
++
++def rms(diff, s, f, p):
++    return float(np.sqrt(((diff[:, p, :] / spread[(s, f)]) ** 2).mean()))
++
++
++res = {"spread": {f"{s}/{f}": v for (s, f), v in spread.items()}, "visibility": {}, "ablation": {}}
++nat_sham = runs["native__sham"]
++for k, r in runs.items():
++    v, prog = k.split("__")
++    if v != "native" or prog == "sham":
++        continue
++    res["visibility"][prog] = {s: {f: round(rms(readout(r, s) - readout(nat_sham, s), s, f, p), 2) for p, f in enumerate(fields)}
++                               for s in ("d0", "d1", "gl")}
++for k, r in runs.items():
++    v, prog = k.split("__")
++    if v == "native":
++        continue
++    nat = runs[f"native__{prog}"]
++    ab_sham = runs.get(f"{v}__sham")
++    e = {}
++    for s in ("d0", "d1", "gl"):
++        e[s] = {}
++        for p, f in enumerate(fields):
++            tot = rms(readout(r, s) - readout(nat, s), s, f, p)
++            spec = None
++            if ab_sham is not None and prog != "sham":
++                spec = rms((readout(r, s) - readout(ab_sham, s)) - (readout(nat, s) - readout(nat_sham, s)), s, f, p)
++            e[s][f] = [round(tot, 2), None if spec is None else round(spec, 2)]
++    res["ablation"][k] = e
++json.dump(res, open(f"{D}/analysis.json", "w"), indent=1)
++print("spread", {k: round(v, 4) for k, v in res["spread"].items()})
++print("\nvisibility vs sham (native): per sensor, per field")
++for prog, v in res["visibility"].items():
++    print(f"{prog:18s}", " | ".join(f"{s}: " + " ".join(f"{x:6.1f}" for x in v[s].values()) for s in v))
++print("\nablation: [total vs native on the same program, program-specific response difference]")
++for k, e in res["ablation"].items():
++    print(f"{k:22s}", " | ".join(f"{s}: " + " ".join(f"{x[0]:.1f}/{x[1] if x[1] is not None else '-'}" for x in e[s].values()) for s in e))
+diff --git a/scripts/physim/labworlds/pmcips_runs/pm_detsham.py b/scripts/physim/labworlds/pmcips_runs/pm_detsham.py
+new file mode 100644
+index 0000000..214f3b9
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/pm_detsham.py
+@@ -0,0 +1,36 @@
++"""Zero-noise sham at dt 0.5 and dt 0.25 from the PM suite's prepared state: deterministic dt error of the
++readouts relative to the suite's native member spread on the sham case (independent_native + band + truths)."""
++import sys, json
++sys.path.insert(0, "/home/user/evalwork/pm_cips_eval/scripts")
++from common import PC, E, LW, OUT
++import numpy as np
++from pathlib import Path
++spec = PC.pm_spec(0.01, 0.5, 0.25)
++D = Path(OUT) / "pm_noise"
++res = {}
++runs = {}
++for dt in (0.5, 0.25):
++    w = PC.replace(spec.world, noise={f: (k, 0.0) for f, (k, _) in spec.world.noise.items()}, noise_corr={},
++                   overrides={**spec.world.overrides, "dt": dt}, steps_per_tick=int(round(1 / dt)), native_dt=dt)
++    o = LW.oracle(w, spec.state, spec.devices)
++    runs[dt] = E.cached(D / f"det_sham_dt{dt:g}.npz", lambda: o.sample_truth([], E.queries(), 1, truth_seed=3),
++                        meta=dict(request=dict(id="sham", actions=[], queries=E.queries()), members=1, seed=3, dt=dt))
++S = Path(OUT) / "suite_pm"
++def load(p):
++    with np.load(p) as z:
++        return [z[f"query{i}"] for i in range(3)]
++nat = [np.concatenate([x[q] for x in (load(S / "controls/c001/independent_native.npz"), load(S / "controls/c001/band_native.npz"), load(S / "truth/c001.npz"))]) for q in range(3)]
++ti = [E.TIMES.index(t) for t in E.SCORE_TIMES]
++for q, s in enumerate(E.SENSORS):
++    sd = nat[q][:, ti].std(axis=0, ddof=1)
++    d = runs[0.5][q][0][ti] - runs[0.25][q][0][ti]
++    for p, f in enumerate(PC.PM_FIELDS):
++        for slot in (range(d.shape[-1]) if s != "global" else (0, 1)):
++            pass
++        if s == "global":
++            for slot, lab in ((0, "mean"), (1, "var")):
++                res[f"{s}/{f}/{lab}"] = round(float(np.sqrt((d[:, p, slot] ** 2).mean() / (sd[:, p, slot] ** 2).mean())), 2)
++        else:
++            res[f"{s}/{f}"] = round(float(np.sqrt((d[:, p] ** 2).mean() / (sd[:, p] ** 2).mean())), 2)
++json.dump(res, open(D / "det_sham_error_over_spread.json", "w"), indent=1)
++print(res)
+diff --git a/scripts/physim/labworlds/pmcips_runs/pm_noise.py b/scripts/physim/labworlds/pmcips_runs/pm_noise.py
+new file mode 100644
+index 0000000..b4c9f27
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/pm_noise.py
+@@ -0,0 +1,136 @@
++"""Item 1: phase_membrane at intensity 0.01 (ell 2) with dt halved (2 native steps of 0.5 per tick) and its dt/4 null.
++
++  run NAME     one 8-member ensemble on the K pulse program (device0, t=0, amp 3, dur 10) from prep_s0:
++               T, A, B natives (dt 0.5), I native on the sham program (ignore actions), N1, N2 dt/4 nulls (dt 0.25)
++  det          zero-noise single members at dt 0.5 and dt 0.25 (deterministic dt error)
++  analyse      band of 2000 partitions of the 24 natives (P1, P2, truth 8 each); null and ignore ratios;
++               groups/scales of the frozen labeval pm suite (as noise_intensity/analyse.py)
++Seeds 620000 + k (k = 1.. per ensemble), separate from every earlier namespace.
++"""
++import json, sys, time
++from pathlib import Path
++sys.path.insert(0, "/home/user/evalwork/pm_cips_eval/scripts")
++from common import PC, E, LW, EVALPILOT, OUT
++import numpy as np
++from physim import blobround6_eval as SC
++
++D = Path(OUT) / "pm_noise"
++D.mkdir(parents=True, exist_ok=True)
++LEVEL, DT, NULL_DT = 0.01, 0.5, 0.25
++PULSE = [dict(t=0, kind="inject", device=0, port=1, amp=3.0, dur=10.0)]
++ENS = {"T": ("native", PULSE, 1), "A": ("native", PULSE, 2), "B": ("native", PULSE, 3), "I": ("native", [], 5),
++       "N1": ("null", PULSE, 6), "N2": ("null", PULSE, 7)}
++SEED0 = 620000
++SUITE_PM = Path(EVALPILOT) / "suite" / "pm" / "suite.json"
++
++
++def setup():
++    st = PC.load_state(f"{EVALPILOT}/out/prep_s0.npz", PC.PM_FIELDS)
++    info = json.load(open(f"{EVALPILOT}/out/prep_s0.json"))
++    devs = [PC.device(0, info["sites"]["centre"], 128), PC.device(1, info["sites"]["other"], 128)]
++    return st, devs
++
++
++def world(kind, level=LEVEL):
++    return PC.pm_world(level, NULL_DT if kind == "null" else DT)
++
++
++def ensemble(name, members=8, level=LEVEL, det=False):
++    kind, actions, k = ENS[name] if not det else (name, PULSE, 9)
++    st, devs = setup()
++    w = world(kind, 0.0 if det else level)
++    if det:
++        w = PC.replace(w, noise_corr={})
++    path = D / (f"det_{kind}.npz" if det else f"{name}.npz")
++    meta = dict(name=name, actions=actions, seed=SEED0 + k, members=members, declaration=PC.jsonable(w.declaration()))
++    o = LW.oracle(w, st, devs)
++    return E.cached(path, lambda: o.sample_truth(actions, E.queries(), members, truth_seed=SEED0 + k), meta=dict(
++        request=dict(id=name, actions=actions, queries=E.queries()), **meta))
++
++
++def load(p):
++    with np.load(p, allow_pickle=False) as z:
++        return [z[f"query{i}"] for i in range(3)]
++
++
++def mats(samples, groups, tmax):
++    out = {}
++    for g in groups:
++        sel = [(s, sc) for s, sc in zip(g["selectors"], g["scales"]) if tmax is None or E.TIMES[s["time_index"]] <= tmax]
++        out[g["id"]] = np.column_stack([samples[s["query"]][:, s["time_index"], s["port"], s["slot"]] / sc for s, sc in sel])
++    return out
++
++
++def analyse(npart=2000):
++    """Partition band as noise_intensity/analyse.py, from precomputed pairwise RMS distances (same energy score)."""
++    groups = json.loads(SUITE_PM.read_text())["groups"]
++    gids = [g["id"] for g in groups]
++    names = [k for k in ENS if (D / f"{k}.npz").exists()]
++    ens = {k: load(D / f"{k}.npz") for k in names}
++    sizes = {k: ens[k][0].shape[0] for k in names}
++    off, o = {}, 0
++    for k in names:
++        off[k] = np.arange(o, o + sizes[k]); o += sizes[k]
++    subsets = {"agg": gids, **{s: [g for g in gids if g.startswith(s + "/")] for s in E.SENSORS}}
++    res = {}
++    for wname, tmax in (("50tu", None), ("10tu", 10)):
++        M = {k: mats(v, groups, tmax) for k, v in ens.items()}
++        Dm = {}
++        for g in gids:
++            V = np.concatenate([M[k][g] for k in names])
++            diff = V[:, None, :] - V[None, :, :]
++            Dm[g] = np.sqrt((diff ** 2).sum(-1) / V.shape[1])
++        nat = np.concatenate([off["T"], off["A"], off["B"]])
++        others = [k for k in names if k not in "TAB"] + (["N12"] if "N1" in names and "N2" in names else [])
++        idx = dict(off)
++        if "N12" in others:
++            idx["N12"] = np.concatenate([off["N1"], off["N2"]])
++
++        def es(g, P, T):
++            return Dm[g][np.ix_(P, T)].mean() - 0.5 * Dm[g][np.ix_(P, P)].mean()
++        rng = np.random.default_rng(0)
++        rows = {k: {s: [] for s in subsets} for k in ["P1", "P2", "P12"] + others}
++        for _ in range(npart):
++            p = nat[rng.permutation(24)]
++            i1, i2, it = p[:8], p[8:16], p[16:]
++            per = {"P1": {g: es(g, i1, it) for g in gids}, "P2": {g: es(g, i2, it) for g in gids},
++                   "P12": {g: es(g, np.concatenate([i1, i2]), it) for g in gids}}
++            for k in others:
++                per[k] = {g: es(g, idx[k], it) for g in gids}
++            for k in rows:
++                for s, gs in subsets.items():
++                    rows[k][s].append(np.mean([per[k][g] for g in gs]))
++        w = {}
++        for s in subsets:
++            p1 = np.array(rows["P1"][s])
++            band = np.array(rows["P2"][s]) / p1
++            e = dict(ref_score=round(float(np.median(p1)), 4), band=[round(float(q), 3) for q in np.quantile(band, [0.05, 0.5, 0.95])])
++            for k in others:
++                den = np.array(rows["P12"][s]) if k == "N12" else p1
++                r = np.array(rows[k][s]) / den
++                e[k] = [round(float(q), 3) for q in np.quantile(r, [0.05, 0.5, 0.95])]
++                e[k + "_frac_above_band95"] = round(float((r > e["band"][2]).mean()), 3)
++            w[s] = e
++        natv = {g: np.concatenate([M["T"][g], M["A"][g], M["B"][g]]) for g in gids}
++        spread = {g: float(np.sqrt(natv[g].var(axis=0, ddof=1).mean())) for g in gids}
++        w["spread_rms"] = {g: round(v, 4) for g, v in spread.items()}
++        if (D / "det_native.npz").exists() and (D / "det_null.npz").exists():
++            D1, D2 = mats(load(D / "det_native.npz"), groups, tmax), mats(load(D / "det_null.npz"), groups, tmax)
++            w["det_dt_error_over_spread"] = {g: round(float(np.sqrt(((D1[g] - D2[g]) ** 2).mean()) / spread[g]), 3) for g in gids}
++        res[wname] = w
++    (D / "analysis.json").write_text(json.dumps(res, indent=1))
++    for wname in res:
++        for s in subsets:
++            print(wname, s, json.dumps(res[wname][s]))
++
++
++if __name__ == "__main__":
++    cmd = sys.argv[1]
++    if cmd == "run":
++        for name in sys.argv[2:]:
++            ensemble(name)
++    elif cmd == "det":
++        ensemble("native", members=1, det=True)
++        ensemble("null", members=1, det=True)
++    else:
++        analyse()
+diff --git a/scripts/physim/labworlds/pmcips_runs/specific.py b/scripts/physim/labworlds/pmcips_runs/specific.py
+new file mode 100644
+index 0000000..999cf21
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/specific.py
+@@ -0,0 +1,68 @@
++"""Item 3 from the suite ensembles: for each mechanism ablation and each case it ran on, (a) the score ratio to
++independent_native per sensor (from scores.json), and (b) the program-specific response difference
++  RMS over nodes and score times of ((abl_prog - abl_sham) - (nat_prog - nat_sham)) / native spread,
++with ensemble means (natives: independent_native + band_native (if any) + truths) and the native spread
++(across-member sd of the sham natives), per sensor and field. Also the native response itself (nat_prog - nat_sham)."""
++import sys, json, numpy as np
++from pathlib import Path
++OUT = Path("/home/user/evalwork/pm_cips_eval")
++world = sys.argv[1]
++d = OUT / f"suite_{world}"
++suite = json.loads((d / "suite.json").read_text())
++fields = suite["declaration"]["fields"]
++TIMES = [0, 2, 5, 8, 10, 12, 15, 20, 22, 25, 30, 35, 40, 45, 50]
++ti = [TIMES.index(t) for t in [2, 5, 8, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50]]
++fam = {c["request"]["id"]: c["family"] for c in suite["cases"]}
++cid = {v: k for k, v in fam.items()}
++
++
++def load(p):
++    with np.load(p) as z:
++        return [z[f"query{i}"] for i in range(3)]
++
++
++def natives(c):
++    xs = [load(d / "controls" / c / "independent_native.npz"), load(d / "truth" / f"{c}.npz")]
++    if (d / "controls" / c / "band_native.npz").exists():
++        xs.append(load(d / "controls" / c / "band_native.npz"))
++    return [np.concatenate([x[q] for x in xs]) for q in range(3)]
++
++
++sham = cid["sham"]
++nat_sham = natives(sham)
++spread = [nat_sham[q][:, ti].std(axis=0, ddof=1) for q in range(3)]           # (t, ports, slots)
++sp = {(q, p): float(np.sqrt((spread[q][:, p] ** 2).mean())) + 1e-15 for q in range(3) for p in range(len(fields))}
++S = {c: json.loads((d / "controls" / c / "scores.json").read_text()) for c in fam if (d / "controls" / c / "scores.json").exists()}
++res = {}
++for k in suite["controls"]:
++    if not k.startswith("ablate_"):
++        continue
++    ab_sham_p = d / "controls" / sham / f"{k}.npz"
++    for c, f in fam.items():
++        p = d / "controls" / c / f"{k}.npz"
++        if not p.exists() or c not in S or k not in S[c]:
++            continue
++        g = {x["id"]: x["energy_score"] for x in S[c][k]["joint_energy"]}
++        g0 = {x["id"]: x["energy_score"] for x in S[c]["independent_native"]["joint_energy"]}
++        sens = {s: round(float(np.mean([g[x] for x in g if x.startswith(s + "/")]) / np.mean([g0[x] for x in g0 if x.startswith(s + "/")])), 2)
++                for s in ("device0", "device1", "global")}
++        row = dict(program=f, score_ratio=round(S[c][k]["joint_energy_equal_group_mean"] / S[c]["independent_native"]["joint_energy_equal_group_mean"], 2),
++                   score_ratio_by_sensor=sens)
++        if f != "sham" and ab_sham_p.exists():
++            A, As, N = load(p), load(ab_sham_p), natives(c)
++            spec, resp = {}, {}
++            for q, s in enumerate(("device0", "device1", "global")):
++                dif = (A[q][:, ti].mean(0) - As[q][:, ti].mean(0)) - (N[q][:, ti].mean(0) - nat_sham[q][:, ti].mean(0))
++                nr = N[q][:, ti].mean(0) - nat_sham[q][:, ti].mean(0)
++                spec[s] = {fl: round(float(np.sqrt((dif[:, i] ** 2).mean()) / sp[(q, i)]), 1) for i, fl in enumerate(fields)}
++                resp[s] = {fl: round(float(np.sqrt((nr[:, i] ** 2).mean()) / sp[(q, i)]), 1) for i, fl in enumerate(fields)}
++            row["response_difference_sd"] = spec
++            row["native_response_sd"] = resp
++        res[f"{k}:{f}"] = row
++(d / "specificity.json").write_text(json.dumps(res, indent=1))
++for k, r in res.items():
++    line = f"{k:28s} ratio {r['score_ratio']:8.2f}  d0/d1/gl {r['score_ratio_by_sensor']['device0']:.2f}/{r['score_ratio_by_sensor']['device1']:.2f}/{r['score_ratio_by_sensor']['global']:.2f}"
++    if "response_difference_sd" in r:
++        line += "  resp.diff max d0/d1/gl " + "/".join(f"{max(r['response_difference_sd'][s].values()):.1f}" for s in ("device0", "device1", "global"))
++        line += "  native resp max " + "/".join(f"{max(r['native_response_sd'][s].values()):.1f}" for s in ("device0", "device1", "global"))
++    print(line)
+diff --git a/scripts/physim/labworlds/pmcips_runs/suite.py b/scripts/physim/labworlds/pmcips_runs/suite.py
+new file mode 100644
+index 0000000..e51c289
+--- /dev/null
++++ b/scripts/physim/labworlds/pmcips_runs/suite.py
+@@ -0,0 +1,32 @@
++"""Item 4: frozen suites. usage: suite.py pm|cips freeze|run [controls...]|report"""
++import sys, json
++sys.path.insert(0, "/home/user/evalwork/pm_cips_eval/scripts")
++from common import PC, E, LW, OUT
++from pathlib import Path
++
++world, cmd = sys.argv[1], sys.argv[2]
++if world == "pm":
++    spec = PC.pm_spec(0.01, 0.5, 0.25)
++    progs = PC.pm_programs()
++    subsets = {"band_native": ["sham", "K_d0", "L_d0", "Sm_d0", "Sp_d1", "K_d1", "two_sources"],
++               "ablate_a2": ["sham", "L_d0", "L_rim", "L_d1"], "ablate_chi0": ["sham", "L_d0", "L_rim"],
++               "ablate_DS2": ["sham", "Sp_d0", "Sm_d1", "Sp_d1"], "numerical_null": ["sham", "K_d0", "Sm_d0"]}
++else:
++    g = json.loads(Path(f"{OUT}/cips_gains.json").read_text())
++    spec = PC.cips_spec(g["intensity"], gains=g["gains"])
++    progs = PC.cips_programs()
++    subsets = json.loads(Path(f"{OUT}/cips_subsets.json").read_text())
++plan = PC.SuitePlan(spec=spec, programs=progs, subsets=subsets, members=4)
++out = Path(OUT) / f"suite_{world}"
++if cmd == "freeze":
++    s = PC.freeze(plan, out)
++    print(json.dumps({k: v["scale"] for k, v in s["calibration"]["scales"].items()}, indent=0))
++elif cmd == "run":
++    args = sys.argv[3:]
++    ctrl = [a for a in args if not a.startswith("case:")] or None
++    cases = [a[5:] for a in args if a.startswith("case:")] or None
++    PC.run_suite(plan, out, controls=ctrl, cases=cases)
++    PC.report(out)
++elif cmd == "report":
++    PC.report(out)
++    print((out / "report.md").read_text())
+-- 
+2.43.0
+

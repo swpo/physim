@@ -1,0 +1,134 @@
+From cea06cc39c267ab126db76f97a02d47ab20d484b Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 31 Oct 2026 05:47:40 +0000
+Subject: [PATCH 14/16] LABWORLDS.md: lab bundles and the fed-vortex evaluation
+ candidate; per-group reliance in the report
+
+Records the LabBundle format and hook, the fed vortices' behaviour under the chosen noise (splitting
+continues to t~2920, same-sign daughters), ports and envelope, the rod-neck division programs, the
+15-program suite's control ratios, the absence of a clean division-specific control, the groups the
+evaluation should not rely on, the reference reward under rewards.py (0.726 at K=2) and the
+credit-free validation. fedvortex_report.py now lists, per score group, the programs on which a naive
+control stays inside that group's native band and the cases where the null leaves it.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+---
+ environments/physim/LABWORLDS.md             | 61 ++++++++++++++++++++
+ scripts/physim/labworlds/fedvortex_report.py | 21 +++++++
+ 2 files changed, 82 insertions(+)
+
+diff --git a/environments/physim/LABWORLDS.md b/environments/physim/LABWORLDS.md
+index 265d851..1151c44 100644
+--- a/environments/physim/LABWORLDS.md
++++ b/environments/physim/LABWORLDS.md
+@@ -265,6 +265,67 @@ device1 within 50 tu), so an evaluation must not rely on that group; and the sui
+ null shared member seeds with independent_native, which overstated its precision (an independent
+ dt-halved ensemble confirms the result).
+ 
++## Lab bundles and the fed-vortex evaluation candidate (31 Oct)
++
++**`physim/labbundle.py`.** A lab bundle has the Blobkit bundle's shape (manifest with world, preparation
++and suite identities, simulation/evaluation profiles, `suite.json`, `truth/*.npz`, `checks.json`) with the
++world as files: `world/` (the world file verbatim, the labkit modules it imports, `observables.py` for the
++observe-only channels), `labworld.json` (the declaration), `apparatus.json` (devices, observed-port
++permutation, adjustment matrix, protocol) and `preparation.npz` (fields and `carry` keys only; the rest of
++the module state is rebuilt by the world's `init`, nothing is unpickled). Schema `physim-lab-bundle-v1`; the
++world identity binds every world file, the declaration and the implementation (source hashes of
++`blobround6`, `labworld`, `devices`, `blobround6_eval`, `labbundle`; numpy and scipy versions).
++`LabBundle(Bundle)` provides what `taskset` and `evaluation` use (`manifest`, `roster`, `limits`, `suite`,
++`apparatus`, `protocol`, `verified_path`, `truth`, `references`, `check_runtime`, `make_oracle`);
++`open_bundle` picks it when the manifest declares a lab world, and `taskset.required_bundle` now calls
++`open_bundle`. Because `blobround6_eval.PublicRoster` has one port count, a lab bundle must declare as many
++observed ports as actuators (refused otherwise); the fed vortices meet this with two observe-only channels.
++Still Blobkit-only: `hub.fetch_bundle` and `cli.py` construct `Bundle` directly. A lab bundle runs its world
++file in the grader's host process (trusted-code policy still open), and any edit of the hashed sources
++invalidates it until its manifest is rewritten.
++
++**Fed vortices, end to end** (scripts `fedvortex_bundle.py`, `fedvortex_report.py`, `fedvortex_validate.py`):
++
++- *Behaviour under the chosen noise* (intensity 0.003, ell 2; om additive, Y proportional), fresh seeds 21
++  and 22 to t=3000: 49 and 36 persistent splits, maximum generation 10 and 12, every daughter of its
++  parent's sign (49/49, 36/36), 20 and 16 splits after t=2000, last at t=2916/2922 (noise-free claim:
++  34-42, generation 9-10). Splitting does not stop; the 0.001 fallback was not needed.
++- *Ports.* (om,-), (Y,+), (om,+), (Y,-) in public order; gains 0.01 and 0.1 (Y clipped at 0). Amp 3 for
++  50 tu at the worst site stays finite with om in [-0.33, 0.40] (body peaks 0.22) and Y in [0, 2.4];
++  (Y,-) starves a vortex to nothing within the window. Observe-only eating rate and flow speed make
++  the observed count equal the actuator count (4).
++- *Preparation and programs.* init(31) to t=580 under the declared noise; device 0 on the neck of a rod
++  that pinches into two same-sign daughters at about 23 tu, device 1 on a drifting vortex (12 units in
++  50 tu); adjustment matrix diag(3, 3, 1). Feeding an isolated vortex does not make it divide within 50
++  tu (fed vortices spin up and round off), so the division programs act on the rod: feeding its neck
++  suppresses the pinch, starving it pinches at about 8 tu, feeding from t=10 delays it to about 33.
++  Other targeted programs: feed, starve, cut (om-) and follow the device-1 vortex.
++- *Suite* (15 programs, 12 groups, scales frozen from 12 calibration members, 2 truths per case):
++  64-member native reference 0.0353 (worst case 0.048). Ratios to the mean of 16 independent 4-member
++  native slices (aggregate band 0.94-1.05): ignore actions 11.8, wrong geometry 13.5, initial
++  persistence 23.6, flow off 116, regrowth off 154, growth off 238 and decay off 1989 (5 cases each),
++  body-uniform gain 12.2, dt-halved null 1.02 (0.98-1.06). Every mechanism control fails on every case
++  it was run on, including its targeted programs; these ablations are global, so the targeted programs
++  are not needed to detect them (they raise the ratio at most about 2x over the sham).
++- *Division-specific control: none clean.* The rod still pinches under a body-uniform gain (each body's
++  net gain replaced by its circulation-weighted mean: pinch at 25-26 tu against 23-24), so the pinch is
++  strain thinning plus sub-threshold decay, not differential feeding along the body; that control still
++  changes fuel use (12x, mostly global groups). Sparing necks by smoothing the gain's saturation
++  (sigma 2-3) kills every body within 50 tu; smoothing the fuel in the growth term (sigma 6) runs away
++  to non-finite values; lowering the body threshold makes bodies decay. The same sub-threshold decay
++  bounds every body's edge and kills starved bodies, so no local change removes pinching alone.
++- *Groups not to rely on:* device0 groups for the numerical null (it leaves their native band on 2-5
++  cases; aggregate device0/eat 1.11 against 0.90-1.10: the pinch timing carries the dt error), global
++  groups for wrong geometry (by construction), and each device's groups for ignore-actions on programs
++  that act only at the other device.
++- *Reward* (`rewards.py`, K=2 from reward-calibration.json): the native 64-member reference earns 0.726
++  through the evaluation path; initial persistence (1.03) earns 0. PhySim's calibration rule gives K=1
++  for this suite; K=2 would need scales about 10x the calibration standard deviations.
++- *Credit-free validation:* `required_bundle` opens it as a `LabBundle` (both profiles); `public_prompt`
++  renders 4 ports and 4 channels; `LaboratoryTools.experiment` and `usage` run directly (admitted and
++  charged; a port-4 request is rejected without charge); two truths re-simulate bit for bit; initial
++  persistence reproduces checks.json through `evaluation.reference_demo`.
++
+ ## Open questions
+ 
+ - Whether to keep raw Python steppers or widen Blobkit's genome into a term list for field worlds
+diff --git a/scripts/physim/labworlds/fedvortex_report.py b/scripts/physim/labworlds/fedvortex_report.py
+index 9126634..9ac094d 100644
+--- a/scripts/physim/labworlds/fedvortex_report.py
++++ b/scripts/physim/labworlds/fedvortex_report.py
+@@ -128,6 +128,20 @@ def report(out: Path, work: Path):
+                 r = row["controls"][name][0] / row["native4_mean"]
+                 res["targeted"].setdefault(row["family"], {})[name] = dict(ratio=r, band_max=row["band"][1],
+                                                                           fails=bool(r > row["band"][1]))
++    # per (case, group): which naive controls stay inside the group's native band, and where the null leaves it
++    res["group_reliance"] = {}
++    for g in gids:
++        d = {}
++        for name in ("ignore_actions", "wrong_probe_geometry", "numerical_null", "ablate_body_gain"):
++            inside, beyond = [], []
++            for c, row in rows.items():
++                if name not in row["controls"]:
++                    continue
++                sl = np.array([s[1][g] for s in row["slices"]])
++                r = row["controls"][name][1][g] / sl.mean()
++                (beyond if r > sl.max() / sl.mean() else inside).append(row["family"])
++            d[name] = dict(inside_band=inside, beyond_band=len(beyond))
++        res["group_reliance"][g] = d
+     s64 = np.array([rows[c]["native64"][0] for c in rows])
+     worst = float(s64.max())
+     rule_k = math.floor(-math.log10(2 * worst)) if worst > 0 else None
+@@ -174,6 +188,13 @@ def write_md(res, path, gids):
+     for fam, d in res["targeted"].items():
+         for k, v in d.items():
+             L.append(f"| {fam} | {k} | {v['ratio']:.2f} | {v['band_max']:.2f} | {'yes' if v['fails'] else 'NO'} |")
++    L += ["", "Per group: programs on which a control stays inside that group's per-case native band", "",
++          "| group | ignore_actions inside | wrong_probe_geometry inside | null beyond band (cases) | body_gain inside |",
++          "|---|---|---|---|---|"]
++    for g, d in res["group_reliance"].items():
++        L.append(f"| {g} | {', '.join(d['ignore_actions']['inside_band']) or '-'} | "
++                 f"{', '.join(d['wrong_probe_geometry']['inside_band']) or '-'} | {d['numerical_null']['beyond_band']} | "
++                 f"{', '.join(d['ablate_body_gain']['inside_band']) or '-'} |")
+     rw = res["reward"]
+     L += ["", f"Reward (K={rw['K']:g}): native 64-member primary energy {rw['native64_primary']:.4f} -> reward "
+           f"{rw['native64_reward']:.3f}; initial persistence {rw['persistence4_primary']:.3f} -> {rw['persistence4_reward']:.3f}. "
+-- 
+2.43.0
+

@@ -1,7 +1,7 @@
 From 7b19740d7d1554093cd7424c2bcefab46bc9dd81 Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 29 Oct 2026 03:08:34 +0000
-Subject: [PATCH 08/11] LABWORLDS.md: convergence study of the Marangoni rods
+Subject: [PATCH 08/16] LABWORLDS.md: convergence study of the Marangoni rods
  and CIPS cells
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>

@@ -1,7 +1,7 @@
 From ec321ea46228e6cdfea1f895429d57bd673bed4f Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Wed, 28 Oct 2026 20:01:22 +0000
-Subject: [PATCH 02/11] physim: PhySim-style frozen suite, truths and
+Subject: [PATCH 02/16] physim: PhySim-style frozen suite, truths and
  privileged controls for declared lab worlds
 
 labeval.py builds a frozen program suite modelled on the BF/XV centred suites, per

@@ -1,0 +1,18 @@
+{
+ "device0/S": 0.0,
+ "device0/K": 0.0,
+ "device0/L": 0.0,
+ "device0/phi": 0.01,
+ "device1/S": 0.02,
+ "device1/K": 0.02,
+ "device1/L": 0.03,
+ "device1/phi": 0.02,
+ "global/S/mean": 0.18,
+ "global/S/var": 0.24,
+ "global/K/mean": 0.2,
+ "global/K/var": 0.37,
+ "global/L/mean": 0.31,
+ "global/L/var": 0.7,
+ "global/phi/mean": 0.11,
+ "global/phi/var": 0.05
+}

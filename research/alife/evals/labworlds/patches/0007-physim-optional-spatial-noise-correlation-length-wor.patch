@@ -1,7 +1,7 @@
 From b23a59384fdede05567b9e98a971bbc966dd5d2f Mon Sep 17 00:00:00 2001
 From: Claude <noreply@anthropic.com>
 Date: Thu, 29 Oct 2026 00:29:04 +0000
-Subject: [PATCH 07/11] physim: optional spatial noise correlation length
+Subject: [PATCH 07/16] physim: optional spatial noise correlation length
  (world units) per field in LabWorld
 
 noise_corr = {field: ell}: the field's white draws are smoothed by a periodic Gaussian

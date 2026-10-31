@@ -1,0 +1,199 @@
+{
+  "finalized_utc": "2026-10-31T05:46:35.615320+00:00",
+  "members": 64,
+  "completed": [
+    {
+      "case_id": "c001",
+      "file": "c001.npz",
+      "sha256": "ea3098be7a70afa41b3c340bab6417cdf454cf99fcd64d5c53b263c22367c33c",
+      "request_digest": "85d64bd84d81403dfd3f1d38a9f3f7c6c3521749aba7e7ddb40f2ab96fb5adac",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c001.npz",
+        "truth_seed": 81000
+      }
+    },
+    {
+      "case_id": "c002",
+      "file": "c002.npz",
+      "sha256": "cbca27155c61eabc34010fd1ac69189b75f03d4ee70d3e65e29922df3fc5523a",
+      "request_digest": "3aff55c69ab02c6e31443865b2e594a962aaaaef93dd4cc4199afb7fcd1e21d5",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c002.npz",
+        "truth_seed": 81001
+      }
+    },
+    {
+      "case_id": "c003",
+      "file": "c003.npz",
+      "sha256": "2a28adddfeb04bbd6dd2861b89bdd43c676ced7313e6701a6a4a1ba6a0467834",
+      "request_digest": "ec94fd6e1f8669d129bcac562c669951ee825e23e1913adfe5b6de92ae87af41",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c003.npz",
+        "truth_seed": 81002
+      }
+    },
+    {
+      "case_id": "c004",
+      "file": "c004.npz",
+      "sha256": "496d35bb1dce6ff17b76a5d7af90a4c38862a93fb99c87d86a7989a833878a07",
+      "request_digest": "169acad05f60cf4b8e44c5a98ea70306f8a13e631e86afa7037c1dff49da060e",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c004.npz",
+        "truth_seed": 81003
+      }
+    },
+    {
+      "case_id": "c005",
+      "file": "c005.npz",
+      "sha256": "993446fab352760bb6a3093508a80d2b3bd2de0a9adac2f9a75119b591311bee",
+      "request_digest": "e879d7235832f3bb26107279ae8762b904821f0264bd24e0c2895deb0441d924",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c005.npz",
+        "truth_seed": 81004
+      }
+    },
+    {
+      "case_id": "c006",
+      "file": "c006.npz",
+      "sha256": "31684c1677f3d3aaf8012a275899b512e745968b4f0264f16a32a18f77471cb3",
+      "request_digest": "f4daddbeff2eceafa3ae47ee4eeafe47d3d6562b06bc5be6cbbb55848dff8b98",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c006.npz",
+        "truth_seed": 81005
+      }
+    },
+    {
+      "case_id": "c007",
+      "file": "c007.npz",
+      "sha256": "a467050a0a3dcaae149ae0e021ba68b6612b5785f92f3fa6d180a36d959a2a5a",
+      "request_digest": "52ebfdf23b12027fc92c021a0d1e237dc4bd8bf1666103a7a1e8ef82beb03f48",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c007.npz",
+        "truth_seed": 81006
+      }
+    },
+    {
+      "case_id": "c008",
+      "file": "c008.npz",
+      "sha256": "6000b452b4a2825ec08b554d75d24f34d44daab89ff5bac28858568f071ec762",
+      "request_digest": "867fc771e069721ae26661db547d2426373c5371620bb31f85a211ddccb56621",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c008.npz",
+        "truth_seed": 81007
+      }
+    },
+    {
+      "case_id": "c009",
+      "file": "c009.npz",
+      "sha256": "e06cb68a4accdbcf98b9ec5544b402dd1bbdfd5b714cc87ebf82b5f679e2d48b",
+      "request_digest": "fba0f557164992a239f071e98aa1a2c9e2cfb344a06e5cce1bdf8bffb9cc77c2",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c009.npz",
+        "truth_seed": 81008
+      }
+    },
+    {
+      "case_id": "c010",
+      "file": "c010.npz",
+      "sha256": "789f97e4e16f62aa5e3c0031521bb9522ca092f60f10007f0b4e16f9760b4101",
+      "request_digest": "0c45cf1c9fcfdc52605b2daea1581ba415e9f30b197c05b605ce9cf842d854b7",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c010.npz",
+        "truth_seed": 81009
+      }
+    },
+    {
+      "case_id": "c011",
+      "file": "c011.npz",
+      "sha256": "abea9e8a6a3f931e6e47bc674bd579e81c81fa5b2c8125eed0e6858092ed9c51",
+      "request_digest": "0bc894cad3f0f4e49d136b30e3b310d9653d45117ead21c6d0d75b706062e8e0",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c011.npz",
+        "truth_seed": 81010
+      }
+    },
+    {
+      "case_id": "c012",
+      "file": "c012.npz",
+      "sha256": "be5b11807f4dedb41a5ef9b46d2e7bbca37c898418fa042d2b69706f0ea26590",
+      "request_digest": "0437f7a25d636fbc025047453369d0cfac9941c7cf042700aaca35651dd2c1ad",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c012.npz",
+        "truth_seed": 81011
+      }
+    },
+    {
+      "case_id": "c013",
+      "file": "c013.npz",
+      "sha256": "ac1a2ec0ccf196419b8d002b87546171b7a6acdeaf2ff25a3d3cd0ea725c2037",
+      "request_digest": "d1e091b6b434bd4b4f566de44e90805127205e144460b93b627c7bcd931cd377",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c013.npz",
+        "truth_seed": 81012
+      }
+    },
+    {
+      "case_id": "c014",
+      "file": "c014.npz",
+      "sha256": "88aff181ef201456591df4d972727f37eee7d08dcebd32eb2ec0d77f1d28d8ed",
+      "request_digest": "ab292f5311e9c21caeb05efaceb000df4e373290e4703abbf79518af4e157960",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c014.npz",
+        "truth_seed": 81013
+      }
+    },
+    {
+      "case_id": "c015",
+      "file": "c015.npz",
+      "sha256": "2a10dfeaf93a983700329f86ea0823e5d96f11344ea1e597bbe3963dbb3e07f6",
+      "request_digest": "ab4b3a9267df76bf8a891d63fa1ee051d21d73de1a2b9afacb44a810659df794",
+      "predictor_seed": 20260913,
+      "execution": {
+        "kind": "trusted-native-oracle",
+        "ensemble": "reference_c015.npz",
+        "truth_seed": 81014
+      }
+    }
+  ],
+  "failures": [],
+  "grader_truth_loaded": false,
+  "references": {
+    "bundle": "bundle:sha256:d5698a580dc607951cca484886d45e93b62ed8f37931317b2d6abfb60a9c481f",
+    "manifest_sha256": "18cdc2bbb6721229b0af372a891c26ec9ff81dfecc9ad8359cab81a1ee248c40",
+    "world": "world:sha256:a720978e0c75f5325db1d0d1c7321baa9a24bcd5e9b14062b547f4eb49313934",
+    "preparation": "preparation:sha256:a5046571eae36e9688b78d100ebba8012132c5bec3c1e2e5c32a8823ecb2732a",
+    "suite": "suite:sha256:5242543b54e39434e62905492d2b1aaece382dde9c15305d013a2eab842a58e7"
+  },
+  "predictor": {
+    "kind": "trusted-native-oracle",
+    "name": "independent_native_reference"
+  }
+}
