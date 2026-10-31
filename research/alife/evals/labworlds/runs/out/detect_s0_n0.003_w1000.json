@@ -1,0 +1,30 @@
+{
+ "args": {
+  "cmd": "detect",
+  "seed": 0,
+  "t_prep": 4000,
+  "noise": 0.003,
+  "dur": 20,
+  "members": 8,
+  "window": 1000,
+  "every": 25,
+  "scale": 2.0,
+  "inject": null,
+  "amp": 1.0
+ },
+ "res": {
+  "native@0.1": 5.789,
+  "native@0.3": 10.654,
+  "native@1.0": 22.822,
+  "chi0@0.1": 10.567,
+  "chi0@0.3": 53.761,
+  "chi0@1.0": 164.033,
+  "gate0@0.1": 31.913,
+  "gate0@0.3": 101.558,
+  "gate0@1.0": 358.701,
+  "a_half@0.1": 11.636,
+  "a_half@0.3": 41.564,
+  "a_half@1.0": 208.896,
+  "native_member_spread": 4.129
+ }
+}

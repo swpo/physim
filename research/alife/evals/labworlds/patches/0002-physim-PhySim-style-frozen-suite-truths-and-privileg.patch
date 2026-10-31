@@ -1,0 +1,617 @@
+From ec321ea46228e6cdfea1f895429d57bd673bed4f Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 28 Oct 2026 20:01:22 +0000
+Subject: [PATCH 02/11] physim: PhySim-style frozen suite, truths and
+ privileged controls for declared lab worlds
+
+labeval.py builds a frozen program suite modelled on the BF/XV centred suites, per
+(sensor, port) score groups with scales from a calibration ensemble frozen before truth,
+two independent truths per case, and native controls as predictors (independent native,
+ignored actions, shifted probe geometry, initial persistence, one per mechanism ablation,
+and a numerical null), scored with blobround6_eval.score_case. Worlds: phase_membrane and
+c53's fed vortices; a band command measures the native-vs-native noise band.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+---
+ scripts/physim/labworlds/labeval.py | 588 ++++++++++++++++++++++++++++
+ 1 file changed, 588 insertions(+)
+ create mode 100644 scripts/physim/labworlds/labeval.py
+
+diff --git a/scripts/physim/labworlds/labeval.py b/scripts/physim/labworlds/labeval.py
+new file mode 100644
+index 0000000..f9ac76d
+--- /dev/null
++++ b/scripts/physim/labworlds/labeval.py
+@@ -0,0 +1,588 @@
++"""A PhySim-style frozen suite, truths and privileged controls for a declared lab world.
++
++Given a ``physim.labworld.LabWorld`` declaration, a prepared native state and PhySim probe
++devices, this script follows ``generators/physim/eval_preparation.py`` and
++``build_evaluation_bundle.py`` of the physim repository:
++
++1. **Suite.** A frozen list of programs modelled on the centred BF/XV suites: sham, one
++   pulse on each driven port at each device, two pose programs (``probe_shift``,
++   ``probe_wide``), a move during a pulse, two devices together, plus any world extras.
++   Every program queries device0, device1 and global at PhySim's 15 times up to 50 tu.
++2. **Score groups.** One group per (sensor, port): device0/<field>, device1/<field>,
++   global/<field> (global mean and global variance carry separate scales). Each scale is
++   the pooled standard deviation of that observable in a calibration ensemble (sham plus
++   every single pulse, development seeds), floored at ``FLOOR_FRAC`` of the port's
++   box-wide spread in the prepared state. Scales are computed once and written to
++   ``suite.json`` before any truth is drawn.
++3. **Truth.** Two independent native members per case (seeds 71000 + case index), in a seed
++   namespace separate from calibration (51000 + k) and forecasts (81000 + case index).
++4. **Controls** (predictors, each from the native oracle on the same prepared state with
++   one thing changed, each scored against the native truths):
++   ``independent_native`` (the reference), ``ignore_actions`` (one action-free ensemble,
++   which is the same for every case), ``wrong_probe_geometry`` (device centres shifted
++   by 3 world units in x, so sensors and latched sources both move), ``initial_persistence``
++   (``PersistencePredictor`` of the t=0 readouts), one control per declared mechanism
++   ablation, and the numerical null (for example dt halved with twice the native steps per
++   tick). Native controls share the case's forecast seed, as in build_evaluation_bundle.py.
++5. **Scoring** with ``blobround6_eval.score_case``; a report table (aggregate and per group,
++   relative to ``independent_native``, with case-bootstrap intervals) and a JSON.
++
++Usage (OMP_NUM_THREADS=1 is set here; run one world at a time):
++
++    python labeval.py time  --world phase_membrane
++    python labeval.py calibrate --world phase_membrane --out OUT   (development ensemble only)
++    python labeval.py run   --world phase_membrane --out OUT [--members 8]
++    python labeval.py report --out OUT
++    python labeval.py band  --world phase_membrane --out OUT   (second native ensemble: noise band)
++
++``run`` caches every truth and control ensemble under OUT and resumes; it refuses to resume
++if the frozen suite changed. Worlds: ``phase_membrane`` and ``fed_vortices`` (declarations
++as in runner_demo.py and vortex_demo.py); ``--prep-dir`` points at their prepared states.
++
++Known limits: one prepared state per world; 2 truths per case and 8-member controls (PhySim's
++bundle uses 64 forecast members). With 8 members the reference itself is noisy where a sensor
++sees a bimodal outcome (phase_membrane device1: a second independent native ensemble scored
++0.90 [0.81, 0.98] of the first), so run ``band`` before reading a null ratio near 1.
++"""
++from __future__ import annotations
++
++import os
++
++for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
++    os.environ.setdefault(_v, "1")
++
++import argparse
++import copy
++import dataclasses
++import hashlib
++import json
++import pickle
++import resource
++import sys
++import time
++from dataclasses import dataclass, field
++from pathlib import Path
++from typing import Callable
++
++import numpy as np
++
++ENV = Path(__file__).resolve().parents[3] / "environments" / "physim"
++sys.path.insert(0, str(ENV))
++from physim import blobround6 as R6  # noqa: E402
++from physim import blobround6_eval as scoring  # noqa: E402
++from physim import labworld as LW  # noqa: E402
++from physim.devices import ProbeDevice  # noqa: E402
++
++VERSION = "labeval-v1"
++TIMES = [0, 2, 5, 8, 10, 12, 15, 20, 22, 25, 30, 35, 40, 45, 50]   # PhySim's BF/XV query times
++SCORE_TIMES = [2, 5, 8, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50]    # 13 x 19 slots <= 256 dims
++SENSORS = ("device0", "device1", "global")
++FLOOR_FRAC = 0.02
++NULL_BAND = (0.9, 1.1)        # the numerical null passes if its ratio interval overlaps this band
++GEOMETRY_SHIFT = (0.0, 3.0)   # world units, as build_evaluation_bundle.py
++CAL_SEED, TRUTH_SEED, FORECAST_SEED, IGNORE_SEED = 51000, 71000, 81000, 80999
++N_TRUTH = 2
++
++
++@dataclass
++class LabSpec:
++    """Everything the suite needs about one prepared lab world."""
++    name: str
++    world: LW.LabWorld
++    state: dict
++    devices: list
++    main_port: int                       # port for the composed programs
++    ablations: dict                      # control name -> parameter overrides
++    null: dict                           # {"overrides", "steps_per_tick", "native_dt"}
++    amp: float = 3.0
++    dur: float = 10.0
++    extra_programs: list = field(default_factory=list)   # (id, actions)
++    hook: Callable | None = None         # applied to each oracle's module (e.g. 1 FFT worker)
++    provenance: dict = field(default_factory=dict)
++
++    @property
++    def driven(self):
++        return [i for i, f in enumerate(self.world.fields)
++                if f in self.world.ports and self.world.ports[f].gain > 0]
++
++
++# ----------------------------------------------------------------------------- oracles
++
++def make_oracle(spec: LabSpec, variant: str):
++    world, devices = spec.world, copy.deepcopy(spec.devices)
++    if variant in spec.ablations:
++        world = dataclasses.replace(world, overrides={**world.overrides, **spec.ablations[variant]})
++    elif variant == "numerical_null":
++        n = spec.null
++        world = dataclasses.replace(world, overrides={**world.overrides, **n["overrides"]},
++                                    steps_per_tick=n["steps_per_tick"], native_dt=n["native_dt"])
++    elif variant == "wrong_probe_geometry":
++        for d in devices:
++            d.center = (d.center + np.asarray(GEOMETRY_SHIFT)) % d.L
++    elif variant not in ("native",):
++        raise ValueError(variant)
++    oracle = LW.oracle(world, spec.state, devices)
++    if spec.hook is not None:
++        spec.hook(oracle._stepper.module)
++    return oracle
++
++
++def roster(spec):
++    return scoring.PublicRoster(n_ports=len(spec.world.fields),
++                                device_slots=tuple(int(d.k) for d in spec.devices))
++
++
++# ----------------------------------------------------------------------------- suite
++
++def queries():
++    return [dict(sensor=s, t=list(TIMES)) for s in SENSORS]
++
++
++def build_programs(spec: LabSpec):
++    """Programs in the image of eval_preparation.bf_programs + with_centered_programs."""
++    def pulse(port, device=0, start=0, amp=spec.amp):
++        return dict(t=start, kind="inject", device=device, port=port, amp=amp, dur=spec.dur)
++
++    fields = spec.world.fields
++    arms = {"sham": []}
++    for device in (0, 1):
++        for p in spec.driven:
++            arms[f"pulse_d{device}_{fields[p]}"] = [pulse(p, device)]
++    arms["probe_shift"] = [dict(t=0, kind="adjust", device=0, u=[1, 0, 0])]
++    arms["probe_wide"] = [dict(t=0, kind="adjust", device=1, u=[0, 0, 1])]
++    m = spec.main_port
++    arms["move_during_pulse"] = [pulse(m), dict(t=2, kind="adjust", device=0, u=[1, 0, 0])]
++    arms["two_sources"] = [pulse(m), dict(t=0, kind="adjust", device=1, u=[0, 1, 0]), pulse(m, 1)]
++    for name, actions in spec.extra_programs:
++        arms[name] = copy.deepcopy(actions)
++    return [dict(id=name, actions=actions, queries=queries()) for name, actions in arms.items()]
++
++
++def calibrate(spec: LabSpec, out: Path, programs):
++    """Development ensemble: sham x4 and every single pulse x1, seeds 51000 + k."""
++    cal_dir = out / "calibration"
++    cal_dir.mkdir(parents=True, exist_ok=True)
++    oracle = make_oracle(spec, "native")
++    plan = [(p, 4 if p["id"] == "sham" else 1) for p in programs
++            if p["id"] == "sham" or p["id"].startswith("pulse_")]
++    samples = []
++    for k, (program, n) in enumerate(plan):
++        res = cached(cal_dir / f"{program['id']}.npz", lambda: oracle.sample_truth(
++            program["actions"], program["queries"], n, truth_seed=CAL_SEED + k), meta=dict(
++            request=program, members=n, seed=CAL_SEED + k))
++        samples.append(res)
++    return samples, [(p["id"], n, CAL_SEED + k) for k, (p, n) in enumerate(plan)]
++
++
++def frozen_scales(spec: LabSpec, cal_samples):
++    """One scale per (sensor, port[, global slot]) from the calibration ensemble."""
++    ti = [TIMES.index(t) for t in SCORE_TIMES]
++    t0 = cal_samples[0][2][0, 0]                     # global (ports, 2) at t=0 (deterministic)
++    spread0 = np.sqrt(t0[:, 1])
++    scales = {}
++    for qi, sensor in enumerate(SENSORS):
++        for p, f in enumerate(spec.world.fields):
++            if sensor == "global":
++                for slot, label, floor in ((0, "mean", spread0[p]), (1, "variance", t0[p, 1])):
++                    vals = np.concatenate([s[qi][:, ti, p, slot].ravel() for s in cal_samples])
++                    raw = float(vals.std())
++                    scales[f"{sensor}/{f}/{label}"] = dict(raw_std=raw, floor=float(FLOOR_FRAC * floor),
++                                                           scale=float(max(raw, FLOOR_FRAC * floor, 1e-12)))
++            else:
++                vals = np.concatenate([s[qi][:, ti, p, :].ravel() for s in cal_samples])
++                raw = float(vals.std())
++                scales[f"{sensor}/{f}"] = dict(raw_std=raw, floor=float(FLOOR_FRAC * spread0[p]),
++                                               scale=float(max(raw, FLOOR_FRAC * spread0[p], 1e-12)))
++    return scales
++
++
++def score_groups(spec: LabSpec, scales):
++    groups = []
++    ti = {t: TIMES.index(t) for t in SCORE_TIMES}
++    slots = [int(d.k) for d in spec.devices]
++    for qi, sensor in enumerate(SENSORS):
++        for p, f in enumerate(spec.world.fields):
++            if sensor == "global":
++                sel, sc = [], []
++                for slot, label in ((0, "mean"), (1, "variance")):
++                    s = scales[f"{sensor}/{f}/{label}"]["scale"]
++                    for t in SCORE_TIMES:
++                        sel.append(dict(query=qi, time_index=ti[t], port=p, slot=slot))
++                        sc.append(s)
++                unit = (f"global mean / variance of {f}; frozen scales "
++                        f"{scales[f'{sensor}/{f}/mean']['scale']:.4g} / {scales[f'{sensor}/{f}/variance']['scale']:.4g}")
++            else:
++                s = scales[f"{sensor}/{f}"]["scale"]
++                sel = [dict(query=qi, time_index=ti[t], port=p, slot=k)
++                       for t in SCORE_TIMES for k in range(slots[qi])]
++                sc = [s] * len(sel)
++                unit = f"native {f} units; frozen scale {s:.4g}"
++            groups.append(dict(id=f"{sensor}/{f}", selectors=sel, scales=sc, unit=unit))
++    return groups
++
++
++# ----------------------------------------------------------------------------- caching
++
++def _jsonable(x):
++    return json.loads(json.dumps(x, default=lambda o: o.tolist() if hasattr(o, "tolist") else str(o)))
++
++
++def cached(path: Path, compute, *, meta):
++    meta = _jsonable(meta)
++    if path.exists():
++        with np.load(path, allow_pickle=False) as z:
++            assert json.loads(str(z["meta"])) == meta, f"cached {path} was made with another request"
++            return [z[f"query{i}"] for i in range(len(meta["request"]["queries"]))]
++    t0 = time.process_time()
++    res = compute()["samples"]
++    meta_out = json.dumps(meta)
++    np.savez_compressed(path, meta=meta_out, cpu_s=time.process_time() - t0,
++                        **{f"query{i}": a for i, a in enumerate(res)})
++    print(f"  {path.parent.name}/{path.name}: {time.process_time() - t0:.1f} cpu-s", flush=True)
++    return res
++
++
++def digest_state(state, fields):
++    h = hashlib.sha256()
++    for k in sorted(state):
++        v = state[k]
++        if isinstance(v, np.ndarray):
++            h.update(k.encode()); h.update(np.ascontiguousarray(v).tobytes())
++        elif k in fields:
++            raise TypeError(k)
++    return h.hexdigest()
++
++
++def file_sha(path):
++    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
++
++
++# ----------------------------------------------------------------------------- run
++
++def control_names(spec):
++    return (["independent_native", "ignore_actions", "wrong_probe_geometry", "initial_persistence"]
++            + [f"ablate_{a}" for a in spec.ablations] + ["numerical_null"])
++
++
++def run(spec: LabSpec, out: Path, members: int = 8, only: list | None = None):
++    out.mkdir(parents=True, exist_ok=True)
++    cpu0 = time.process_time()
++    programs = build_programs(spec)
++    cal, cal_plan = calibrate(spec, out, programs)
++    scales = frozen_scales(spec, cal)
++    groups = score_groups(spec, scales)
++    cases = [dict(program, id=f"c{i + 1:03d}") for i, program in enumerate(programs)]
++    suite = dict(
++        schema_version=VERSION, world=spec.name, scoring_version=scoring.VERSION,
++        protocol=R6.APPARATUS_PROTOCOL,
++        declaration=_jsonable(dataclasses.asdict(spec.world)),
++        world_sha256=file_sha(spec.world.path), prepared_state_sha256=digest_state(spec.state, spec.world.fields),
++        devices=[dict(lattice=d.lattice, n_rings=d.n_rings, base_ds=d.base_ds, center=d.center.tolist(),
++                      secret_rot=d.secret_rot, k=int(d.k)) for d in spec.devices],
++        provenance=spec.provenance,
++        ablations=spec.ablations, numerical_null=spec.null,
++        calibration=dict(plan=cal_plan, floor_frac=FLOOR_FRAC, score_times=SCORE_TIMES, scales=scales),
++        cases=[dict(request=c, family=p["id"], truth=f"truth/{c['id']}.npz") for c, p in zip(cases, programs)],
++        groups=groups,
++        truth_members=N_TRUTH, truth_seeds=[TRUTH_SEED + i for i in range(len(cases))],
++        forecast_members=members, forecast_seeds=[FORECAST_SEED + i for i in range(len(cases))],
++        ignore_actions_seed=IGNORE_SEED, geometry_shift=list(GEOMETRY_SHIFT),
++        controls=control_names(spec),
++    )
++    suite = _jsonable(suite)
++    sp = out / "suite.json"
++    if sp.exists():
++        assert json.loads(sp.read_text()) == suite, "frozen suite changed; use a new output directory"
++    else:
++        sp.write_text(json.dumps(suite, indent=1) + "\n")    # frozen before any truth
++    (out / "truth").mkdir(exist_ok=True)
++    rost = roster(spec)
++    native = make_oracle(spec, "native")
++    init = native.sample_truth([], [dict(sensor=s, t=[0]) for s in SENSORS], 1, truth_seed=0)["samples"]
++    persistence = scoring.PersistencePredictor(dict(zip(SENSORS, [a[0, 0] for a in init])), roster=rost)
++    oracles = {"native": native}
++    ignore = cached(out / "ignore_actions.npz", lambda: native.sample_truth([], queries(), members,
++                    truth_seed=IGNORE_SEED), meta=dict(request=dict(id="ignore", actions=[], queries=queries()),
++                                                       members=members, seed=IGNORE_SEED))
++    results = {}
++    for i, case in enumerate(cases):
++        if only and case["id"] not in only and programs[i]["id"] not in only:
++            continue
++        print(f"{case['id']} {programs[i]['id']}", flush=True)
++        cdir = out / "controls" / case["id"]
++        cdir.mkdir(parents=True, exist_ok=True)
++        truth = cached(out / "truth" / f"{case['id']}.npz", lambda: native.sample_truth(
++            case["actions"], case["queries"], N_TRUTH, truth_seed=TRUTH_SEED + i),
++            meta=dict(request=case, members=N_TRUTH, seed=TRUTH_SEED + i))
++        preds = {}
++        for name in control_names(spec):
++            if name == "ignore_actions":
++                preds[name] = ignore
++                continue
++            if name == "initial_persistence":
++                preds[name] = persistence.predict(case["actions"], case["queries"], n_samples=members)["samples"]
++                continue
++            variant = {"independent_native": "native"}.get(name, name.removeprefix("ablate_"))
++            if variant not in oracles:
++                oracles[variant] = make_oracle(spec, variant)
++            o = oracles[variant]
++            preds[name] = cached(cdir / f"{name}.npz", lambda: o.sample_truth(
++                case["actions"], case["queries"], members, truth_seed=FORECAST_SEED + i),
++                meta=dict(request=case, members=members, seed=FORECAST_SEED + i, variant=variant))
++        scores = {}
++        for name, pred in preds.items():
++            scores[name] = scoring.score_case(case, {"samples": pred}, {"samples": truth}, groups=groups,
++                                              n_samples=members, n_truth=N_TRUTH, roster=rost)
++        (cdir / "scores.json").write_text(json.dumps(scores, indent=1, allow_nan=False) + "\n")
++        results[case["id"]] = scores
++    cpu = time.process_time() - cpu0
++    usage = resource.getrusage(resource.RUSAGE_SELF)
++    with open(out / "cpu_log.jsonl", "a") as fh:
++        fh.write(json.dumps(dict(cpu_s=cpu, ru_utime=usage.ru_utime, ru_stime=usage.ru_stime,
++                                 cases=sorted(results), time=time.strftime("%Y-%m-%dT%H:%M:%S"))) + "\n")
++    report(out)
++    return results
++
++
++# ----------------------------------------------------------------------------- report
++
++def _boot(num, den, n=4000, seed=0):
++    rng = np.random.default_rng(seed)
++    idx = rng.integers(0, len(num), size=(n, len(num)))
++    r = num[idx].mean(axis=1) / den[idx].mean(axis=1)
++    return [float(np.quantile(r, 0.05)), float(np.quantile(r, 0.95))]
++
++
++def _like_ref(ci):
++    return bool(ci[0] <= NULL_BAND[1] and ci[1] >= NULL_BAND[0])
++
++
++def _verdict(k, a, ref):
++    if k == ref:
++        return "ref"
++    if k == "numerical_null":
++        return "like ref" if _like_ref(a["ratio_ci90"]) else "UNLIKE ref"
++    return "yes" if a["separated"] else "NO"
++
++
++def report(out: Path):
++    suite = json.loads((out / "suite.json").read_text())
++    cases = [c["request"]["id"] for c in suite["cases"]]
++    fam = {c["request"]["id"]: c["family"] for c in suite["cases"]}
++    scored = [c for c in cases if (out / "controls" / c / "scores.json").exists()]
++    if not scored:
++        return
++    S = {c: json.loads((out / "controls" / c / "scores.json").read_text()) for c in scored}
++    controls = suite["controls"]
++    gids = [g["id"] for g in suite["groups"]]
++    agg = {k: np.array([S[c][k]["joint_energy_equal_group_mean"] for c in scored]) for k in controls}
++    grp = {k: {g: np.array([next(x["energy_score"] for x in S[c][k]["joint_energy"] if x["id"] == g)
++                            for c in scored]) for g in gids} for k in controls}
++    ref = "independent_native"
++    summary = dict(world=suite["world"], cases_scored=scored, n_cases=len(scored),
++                   forecast_members=suite["forecast_members"], truth_members=suite["truth_members"],
++                   reference=ref, aggregate={}, groups={}, per_case={})
++    null_ci = _boot(agg["numerical_null"], agg[ref]) if "numerical_null" in agg else [1.0, 1.0]
++    for k in controls:
++        ratio = float(agg[k].mean() / agg[ref].mean())
++        ci = _boot(agg[k], agg[ref])
++        summary["aggregate"][k] = dict(
++            mean=float(agg[k].mean()), ratio=ratio, ratio_ci90=ci,
++            cases_worse=int((agg[k] > agg[ref]).sum()),
++            separated=bool(k != ref and ci[0] > max(1.0, null_ci[1])))
++        summary["groups"][k] = {}
++        for g in gids:
++            gr = float(grp[k][g].mean() / grp[ref][g].mean())
++            gci = _boot(grp[k][g], grp[ref][g])
++            gnull = _boot(grp["numerical_null"][g], grp[ref][g]) if "numerical_null" in grp else [1.0, 1.0]
++            summary["groups"][k][g] = dict(mean=float(grp[k][g].mean()), ratio=gr, ratio_ci90=gci,
++                                           separated=bool(k != ref and gci[0] > max(1.0, gnull[1])))
++    summary["null_like_reference"] = _like_ref(null_ci)
++    summary["null_band"] = list(NULL_BAND)
++    for c in scored:
++        summary["per_case"][c] = dict(family=fam[c], **{k: S[c][k]["joint_energy_equal_group_mean"] for k in controls})
++    cpu = [json.loads(l) for l in (out / "cpu_log.jsonl").read_text().splitlines()] if (out / "cpu_log.jsonl").exists() else []
++    member_cpu = 0.0
++    for p in out.rglob("*.npz"):
++        with np.load(p, allow_pickle=False) as z:
++            member_cpu += float(z["cpu_s"]) if "cpu_s" in z.files else 0.0
++    summary["cpu"] = dict(simulation_cpu_s=member_cpu, runs=cpu)
++    (out / "report.json").write_text(json.dumps(summary, indent=1, allow_nan=False) + "\n")
++
++    lines = [f"# {suite['world']}: PhySim-style suite, controls vs independent_native", "",
++             f"{len(scored)} cases, {suite['forecast_members']} forecast members per control, "
++             f"{suite['truth_members']} truth members per case; score_case joint energy, equal-group mean "
++             f"over {len(gids)} groups. Ratio = control / independent_native (case means); "
++             f"90% case-bootstrap interval; 'sep' = interval above 1 and above the numerical null's; "
++             f"the null row says whether its interval overlaps {NULL_BAND[0]}-{NULL_BAND[1]}.", "",
++             "| control | aggregate | ratio | 90% interval | cases worse | sep |", "|---|---|---|---|---|---|"]
++    for k in controls:
++        a = summary["aggregate"][k]
++        lines.append(f"| {k} | {a['mean']:.4g} | {a['ratio']:.2f} | {a['ratio_ci90'][0]:.2f}-{a['ratio_ci90'][1]:.2f} "
++                     f"| {a['cases_worse']}/{len(scored)} | {_verdict(k, a, ref)} |")
++    lines += ["", "Per group: ratio to independent_native (reference score in the first row).", "",
++              "| control | " + " | ".join(gids) + " |", "|---" * (len(gids) + 1) + "|"]
++    lines.append(f"| {ref} (score) | " + " | ".join(f"{summary['groups'][ref][g]['mean']:.3g}" for g in gids) + " |")
++    for k in controls:
++        if k == ref:
++            continue
++        lines.append(f"| {k} | " + " | ".join(f"{summary['groups'][k][g]['ratio']:.2f}" for g in gids) + " |")
++    lines += ["", "Per case: aggregate ratio to independent_native.", "",
++              "| case | program | " + " | ".join(k for k in controls if k != ref) + " |",
++              "|---" * (len(controls) + 1) + "|"]
++    for c in scored:
++        r = S[c][ref]["joint_energy_equal_group_mean"]
++        lines.append(f"| {c} | {fam[c]} | " + " | ".join(
++            f"{S[c][k]['joint_energy_equal_group_mean'] / r:.2f}" for k in controls if k != ref) + " |")
++    lines += ["", f"Simulation CPU recorded in cached ensembles: {member_cpu / 3600:.2f} h."]
++    (out / "report.md").write_text("\n".join(lines) + "\n")
++    print("\n".join(lines[:len(controls) + 8]))
++
++
++# ----------------------------------------------------------------------------- band
++
++BAND_SEED = 91000
++
++
++def band(spec: LabSpec, out: Path, members: int = 8):
++    """Native-vs-native noise band: a second independent native ensemble per case (seeds 91000 + i),
++    scored against the same frozen truths and groups. Diagnostic only; the frozen suite is untouched."""
++    suite = json.loads((out / "suite.json").read_text())
++    groups, rost = suite["groups"], roster(spec)
++    native = make_oracle(spec, "native")
++    (out / "band").mkdir(exist_ok=True)
++    rows = []
++    for i, entry in enumerate(suite["cases"]):
++        case = entry["request"]
++        sp = out / "controls" / case["id"] / "scores.json"
++        if not sp.exists():
++            continue
++        truth = cached(out / entry["truth"], None, meta=dict(request=case, members=N_TRUTH, seed=TRUTH_SEED + i))
++        pred = cached(out / "band" / f"{case['id']}.npz", lambda: native.sample_truth(
++            case["actions"], case["queries"], members, truth_seed=BAND_SEED + i),
++            meta=dict(request=case, members=members, seed=BAND_SEED + i, variant="native"))
++        b = scoring.score_case(case, {"samples": pred}, {"samples": truth}, groups=groups,
++                               n_samples=members, n_truth=N_TRUTH, roster=rost)
++        s = json.loads(sp.read_text())
++        rows.append(dict(case=case["id"], family=entry["family"], native=s["independent_native"],
++                         native_b=b, null=s.get("numerical_null")))
++    agg = lambda r, k: r[k]["joint_energy_equal_group_mean"]
++    nat = np.array([agg(r, "native") for r in rows])
++    nb = np.array([agg(r, "native_b") for r in rows])
++    nul = np.array([agg(r, "null") for r in rows])
++    pooled = 0.5 * (nat + nb)
++    gids = [g["id"] for g in groups]
++    gs = lambda r, k, g: next(x["energy_score"] for x in r[k]["joint_energy"] if x["id"] == g)
++    res = dict(world=spec.name, n_cases=len(rows), seed_base=BAND_SEED, members=members,
++               native_b_over_native=dict(ratio=float(nb.mean() / nat.mean()), ci90=_boot(nb, nat),
++                                         per_case=(nb / nat).round(3).tolist()),
++               null_over_native=dict(ratio=float(nul.mean() / nat.mean()), ci90=_boot(nul, nat)),
++               null_over_pooled_native=dict(ratio=float(nul.mean() / pooled.mean()), ci90=_boot(nul, pooled)),
++               groups={g: dict(native_b_over_native=float(np.mean([gs(r, "native_b", g) for r in rows]) /
++                                                          np.mean([gs(r, "native", g) for r in rows])),
++                               null_over_pooled=float(np.mean([gs(r, "null", g) for r in rows]) /
++                                                      np.mean([0.5 * (gs(r, "native", g) + gs(r, "native_b", g))
++                                                               for r in rows])))
++                       for g in gids})
++    (out / "band.json").write_text(json.dumps(res, indent=1) + "\n")
++    print(json.dumps({k: v for k, v in res.items() if k != "groups"}, indent=1))
++    return res
++
++
++# ----------------------------------------------------------------------------- worlds
++
++EVALPILOT = Path("/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/out")
++LAB = "/home/user/physim/research/alife"
++
++
++def _device(i, centre):
++    lattice, ds, rot, k = (("square", 3.0, 0.3, 13), ("hex", 6.0, 1.1, 19))[i]
++    return ProbeDevice(dev_id=i, lattice=lattice, n_rings=3, base_ds=ds, center=np.asarray(centre, float) + 0.5,
++                       L=128.0, secret_rot=rot, reflect=False, motion_theta=0.0, motion_reflect=False,
++                       node_perm=np.arange(k))
++
++
++def phase_membrane(prep_dir: Path = EVALPILOT) -> LabSpec:
++    """runner_demo.py: 1 native step (dt 1) per tick, physical-form noise 0.01, gains 0.01."""
++    path = f"{LAB}/threads/autopoiesis/worlds/phase_membrane/world.py"
++    fields = ("S", "K", "L", "phi")
++    noise = 0.01
++    world = LW.LabWorld(path=path, fields=fields, steps_per_tick=1, native_dt=1.0,
++                        ports={f: LW.Port(gain=0.01, clip=(0.0, None)) for f in fields},
++                        noise={"phi": ("additive", noise), "S": ("proportional", noise),
++                               "K": ("proportional", noise), "L": ("proportional", noise)},
++                        overrides={}, dx=1.0)
++    with np.load(prep_dir / "prep_s0.npz") as z:
++        state = {f: z[f].astype(np.float64) for f in fields}
++    info = json.loads((prep_dir / "prep_s0.json").read_text())
++    devices = [_device(0, info["sites"]["centre"]), _device(1, info["sites"]["other"])]
++    return LabSpec(name="phase_membrane", world=world, state=state, devices=devices, main_port=1,
++                   ablations={"chi0": {"chi": 0.0}, "gate0": {"gate": 0, "gateK": 0}, "a2": {"a": 2.0}},
++                   null={"overrides": {"dt": 0.5}, "steps_per_tick": 2, "native_dt": 0.5},
++                   provenance=dict(prepared=str(prep_dir / "prep_s0.npz"), prep_info=info,
++                                   prepared_file_sha256=file_sha(prep_dir / "prep_s0.npz")))
++
++
++def _one_worker(module):
++    if hasattr(module, "ops") and hasattr(module.ops, "WORKERS"):
++        module.ops.WORKERS = 1
++
++
++def fed_vortices(prep_dir: Path = EVALPILOT) -> LabSpec:
++    """vortex_demo.py: dt 0.02, 1 step per tick, noise 0.003, gains om 0.01 / Y 0.1, carry ('t',)."""
++    path = f"{LAB}/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py"
++    fields = ("om", "Y")
++    noise = 0.003
++    world = LW.LabWorld(path=path, fields=fields, steps_per_tick=1, native_dt=0.02,
++                        ports={"om": LW.Port(gain=0.01), "Y": LW.Port(gain=0.1, clip=(0.0, None))},
++                        noise={"om": ("additive", noise), "Y": ("proportional", noise)},
++                        overrides={}, dx=1.0, sys_path=(LAB,), carry=("t",))
++    with open(prep_dir / "vortex_prep.pkl", "rb") as fh:
++        state = pickle.load(fh)
++    info = json.loads((prep_dir / "vortex_prep.json").read_text())
++    devices = [_device(0, info["centre"]), _device(1, info["other"])]
++    delayed = [dict(t=20, kind="inject", device=0, port=1, amp=3.0, dur=10.0)]
++    return LabSpec(name="fed_vortices", world=world, state=state, devices=devices, main_port=0,
++                   ablations={"adv0": {"adv": 0.0}, "kF0": {"kF": 0.0}},
++                   null={"overrides": {"dt": 0.01}, "steps_per_tick": 2, "native_dt": 0.01},
++                   extra_programs=[("feed_delayed", delayed)], hook=_one_worker,
++                   provenance=dict(prepared=str(prep_dir / "vortex_prep.pkl"), prep_info=info,
++                                   prepared_file_sha256=file_sha(prep_dir / "vortex_prep.pkl")))
++
++
++WORLDS = {"phase_membrane": phase_membrane, "fed_vortices": fed_vortices}
++
++
++def time_members(spec: LabSpec):
++    """CPU seconds of one 50-tu member for the native oracle and the numerical null."""
++    for variant in ("native", "numerical_null"):
++        o = make_oracle(spec, variant)
++        t0 = time.process_time()
++        o.sample_truth([], queries(), 1, truth_seed=12345)
++        print(f"{spec.name} {variant}: {time.process_time() - t0:.2f} cpu-s per 50-tu member", flush=True)
++
++
++if __name__ == "__main__":
++    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    ap.add_argument("cmd", choices=["time", "calibrate", "run", "report", "band", "programs"])
++    ap.add_argument("--world", choices=sorted(WORLDS))
++    ap.add_argument("--prep-dir", type=Path, default=EVALPILOT)
++    ap.add_argument("--out", type=Path)
++    ap.add_argument("--members", type=int, default=8)
++    ap.add_argument("--only", nargs="*", help="case ids or program names to run (default: all)")
++    a = ap.parse_args()
++    if a.cmd == "report":
++        report(a.out)
++    else:
++        spec = WORLDS[a.world](a.prep_dir)
++        if a.cmd == "time":
++            time_members(spec)
++        elif a.cmd == "calibrate":
++            cal, _ = calibrate(spec, a.out, build_programs(spec))
++            print(json.dumps(frozen_scales(spec, cal), indent=1))
++        elif a.cmd == "band":
++            band(spec, a.out, members=a.members)
++        elif a.cmd == "programs":
++            print(json.dumps([dict(id=p["id"], actions=p["actions"]) for p in build_programs(spec)], indent=1))
++        else:
++            run(spec, a.out, members=a.members, only=a.only)
+-- 
+2.43.0
+

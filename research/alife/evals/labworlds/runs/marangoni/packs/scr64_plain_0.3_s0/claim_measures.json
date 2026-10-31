@@ -1,0 +1,14 @@
+{
+ "pack": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/packs/scr64_plain_0.3_s0",
+ "status": "non-finite fields at frame 7",
+ "wall": 4.0,
+ "frames": 7,
+ "components_final": 12,
+ "components_mean": 9.1,
+ "persistent_splits": 0,
+ "splits": 2,
+ "max_generation": 0,
+ "merge_split_ratio": 2.5,
+ "moving_tracks": 0,
+ "max_body_lengths": 1.13
+}

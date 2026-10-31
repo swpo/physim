@@ -1,0 +1,92 @@
+{
+ "world": "phase_membrane",
+ "n_cases": 13,
+ "seed_base": 91000,
+ "members": 8,
+ "native_b_over_native": {
+  "ratio": 0.8970495927937883,
+  "ci90": [
+   0.808746459022175,
+   0.9778165237043732
+  ],
+  "per_case": [
+   1.014,
+   0.852,
+   1.112,
+   0.987,
+   0.867,
+   0.505,
+   0.66,
+   1.03,
+   0.979,
+   1.057,
+   0.94,
+   1.123,
+   0.706
+  ]
+ },
+ "null_over_native": {
+  "ratio": 0.8711463709675334,
+  "ci90": [
+   0.7705459015891218,
+   0.9698792133146582
+  ]
+ },
+ "null_over_pooled_native": {
+  "ratio": 0.9184223483420849,
+  "ci90": [
+   0.846950423999896,
+   0.9857935117794127
+  ]
+ },
+ "groups": {
+  "device0/S": {
+   "native_b_over_native": 1.0144781501081475,
+   "null_over_pooled": 0.9091938031701597
+  },
+  "device0/K": {
+   "native_b_over_native": 1.0162581787622376,
+   "null_over_pooled": 0.9174681801970853
+  },
+  "device0/L": {
+   "native_b_over_native": 1.0148626189828458,
+   "null_over_pooled": 0.9325633246321056
+  },
+  "device0/phi": {
+   "native_b_over_native": 1.0487187087525338,
+   "null_over_pooled": 0.9284899198105216
+  },
+  "device1/S": {
+   "native_b_over_native": 0.763148539569928,
+   "null_over_pooled": 0.8602916606142929
+  },
+  "device1/K": {
+   "native_b_over_native": 0.7847228993787679,
+   "null_over_pooled": 0.870946643211447
+  },
+  "device1/L": {
+   "native_b_over_native": 0.8218872833395144,
+   "null_over_pooled": 0.896244516226684
+  },
+  "device1/phi": {
+   "native_b_over_native": 0.7963810293676952,
+   "null_over_pooled": 0.8825085696827146
+  },
+  "global/S": {
+   "native_b_over_native": 1.0163194435038918,
+   "null_over_pooled": 0.9948047069202066
+  },
+  "global/K": {
+   "native_b_over_native": 1.0103572797599265,
+   "null_over_pooled": 0.9870686756255694
+  },
+  "global/L": {
+   "native_b_over_native": 1.041036347061805,
+   "null_over_pooled": 0.99920069355
+  },
+  "global/phi": {
+   "native_b_over_native": 0.969476891044042,
+   "null_over_pooled": 0.9599450071501454
+  }
+ }
+}

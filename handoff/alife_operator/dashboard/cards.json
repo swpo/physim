@@ -1,0 +1,119 @@
+{
+ "_sessions": " (64 agent sessions so far, usually 2 to 4 at a time)",
+ "swim-divide": {
+  "claim_dir": "collective/contrib/20261026T0227-c29-kernel-ring-screen",
+  "claim_label": "c29 \u00b7 kernel-ring screen",
+  "who": "Allen-Cahn rings, kernel drive",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/swim-divide/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/swim-divide/poster.jpg",
+  "width": 960,
+  "height": 480,
+  "watch_for": "Noise turns into cells, most of them a cyan wall lined by a pink ring of their own link product. In the zoom, the circled cell is born when its parent splits (t = 2360), swims about five body lengths (white trail) and pinches in two (t \u2248 4580). This happens while the cells colonize the world; by t \u2248 5000 it is full and they jam.",
+  "settings": "ringswim-dl2 world, claim 20261026T0227-c29-kernel-ring-screen#c1, WORLD_P {drive: kernel, mu: 1.0, kd: 0.08, chi: 5}, seed 1, 256x256 torus (the claim's own seed and grid), t = 0-5500 recorded every 20 steps; magma = link L (0-0.45), cyan = wall, where 4phi(1-phi) > 0.955 (phi near 1/2); white circle = the claim's ringtrack cells: parent #106 (from t = 1120), then #333, then daughters #730/#731; white trail = #333's tracker centroid; zoom = fixed 96x96 window at 5x; whole-world panel rolled on the torus to centre the zoom box; 2x slow motion for t <= 800 and around both splits; no control shown (the claim's chi=0 and mu=0 controls are separate seed-0 runs)",
+  "alt": "Membrane-bounded cells that swim and divide, from noise: whole world | zoom: one lineage"
+ },
+ "swim-divide-bd": {
+  "claim_dir": "collective/contrib/20261026T0505-c34-nematic-marangoni",
+  "claim_label": "c34 \u00b7 nematic Marangoni rods",
+  "who": "active nematic",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/marangoni/swim-divide-bd/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/marangoni/swim-divide-bd/poster.jpg",
+  "width": 904,
+  "height": 448,
+  "watch_for": "Left: rods form from noise, swim and pinch in two; by t \u2248 300 each wears an orange ring of surfactant it makes, with cyan cargo inside. Right: the same world and seed with its active and Marangoni stresses off also makes ringed, cargo-filled droplets, but they stay round, stay put and never divide: 9 bodies against about 30.",
+  "settings": "c34 active-nematic Marangoni world, claim 20261026T0505-c34-nematic-marangoni, seed 0, 128x128 grid, t = 0-1000 (labkit records 201 frames, one every 5 t; 120 of them shown). Right panel = the claim's passive twin (zeta=0 and mar=0: active and Marangoni stresses off; the Cahn-Hilliard, capillary and surfactant terms stay on), twin_passive/, the control the beyond-diffusion reviews used, same seed. Blue = body (phi), orange = surfactant ring s, cyan = cargo c (log scale, drawn from c = 0.6), one colour scale for both panels; bottom right = labkit body count.",
+  "alt": "Swimming, dividing, bounded cells beyond diffusion: active rods | passive twin (stresses off)"
+ },
+ "contained-swimmers": {
+  "claim_dir": "collective/contrib/20261026T0505-c34-nematic-marangoni",
+  "claim_label": "c34 \u00b7 nematic Marangoni rods",
+  "who": "active nematic; motility is a minority trait",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/marangoni/contained-swimmers/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/marangoni/contained-swimmers/poster.jpg",
+  "width": 904,
+  "height": 448,
+  "watch_for": "Follow the outlined rod from its birth (t = 230) to its division (t \u2248 745). Its orange ring surrounds it throughout, and the cyan cargo inside stays 4 to 16 times more concentrated than just outside. It swims off to end 4.7 of its own lengths from its birthplace, then pinches in two, and both daughters keep ring and cargo. Swimming 3 lengths before dividing is a minority trait: 5 of 102 dividing rods in the audit's runs.",
+  "settings": "c34 active-nematic Marangoni world (claim 20261026T0505-c34-nematic-marangoni, unchanged world.py), seed 62 from the outside audit 20261026T1533-c00-audit-marangoni-3 (this run is bitwise identical to the audit's), 128x128 periodic grid (box and path wrap at the edges), t = 180-890 of a 0-1000 run, every recorded frame (one per 5 time units) at 15 fps, last frame held 1 s; followed rod = labkit track 30 (born by fission t = 230, divides t = 745-750 into tracks 90 and 91; net 86.8 px = 4.67 own lengths of 18.6 px, own length = median 4 sqrt(lambda_max)); left = whole dish with its path and the close-up box, right = 64x64 close-up that follows it, also with its path; blue = body (phi), orange = surfactant ring s (from s = 0.2), cyan = cargo c (log scale from c = 0.6, so bath cargo near 0.3 shows black); white outline and path lines are tracker overlays, not model fields; no control is shown: the wall controls (kappa=0: cargo in/out 1.3-1.4x; wall-off: 0.17x) are in the claim and the audit, not in this clip",
+  "alt": "Swimming, dividing cells whose wall holds their contents: whole dish | close-up: one rod"
+ },
+ "inherited-contents": {
+  "claim_dir": "collective/contrib/20261026T0405-c34-nematic-cargo",
+  "claim_label": "c34 \u00b7 nematic cargo rods",
+  "who": "active nematic",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/inherited-contents/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/inherited-contents/poster.jpg",
+  "width": 960,
+  "height": 476,
+  "watch_for": "Left: rods glow with cargo they make, held about 12-fold over the bath by their own surfactant ring (the dark band just outside the cyan edge; the purple haze is cargo that leaked). The circled rod splits, both daughters keep glowing, and one splits again. Right: the same rods with only the drift that gathers the ring switched off: the surfactant fills them and pushes the cargo out. Removing the cargo's repulsion instead (not shown) leaves only 1.4-fold.",
+  "settings": "active-nematic-cargo world, claim 20261026T0405-c34-nematic-cargo#c1 (its world.py and settings), seed 0, 128x128 torus, dt 0.05, t = 0-1000 recorded every 50 steps (bitwise equal to labkit's frames); right = PROTOCOL wall-off arm WORLD_P {chis: 0} as in audit 20261026T1100-c00-audit-w-nematic-cargo (adsorption drift that places the ring off; s source and kappa = 20 kept, so s fills the rod and repels the cargo; bodies bitwise identical; run here on seed 0: cargo in/out 0.27 against 12.13 unchanged; the audit used seeds 51-52); the neutral coupling-off arm (kappa = 0, the claim's own W control, 1.40 on seed 0) is not shown; magma = cargo c on a shared log scale 0.063-10, cyan = rod edge (phi = 0), white circles = labkit track 18 from t = 450 (divides at t = 700-705 into 47/48; 48 divides at t = 840-845 into 64/65); torus rolled to centre the fission; slow motion t = 600-880",
+  "alt": "Containment that daughters inherit through division: with its ring | ring removed (wall-off)"
+ },
+ "autonomous-heredity": {
+  "claim_dir": "collective/contrib/20261025T1345-c14-pcell-mwall-claim",
+  "claim_label": "c14 \u00b7 walled particle-catalyst cells",
+  "who": "hybrid particle-field",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/heredity/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/heredity/poster.jpg",
+  "width": 776,
+  "height": 384,
+  "watch_for": "Both panels show the same walled cells (white rims: a passive layer they make). Left, colour is heritable link yield; right, an inert marker carried by the same particles; blue is low, purple the starting 1.00, yellow high. With no imposed deaths, high-yield cells outgrow the rest and low-yield cells vanish (cyan circles): the left turns yellow while the marker stays mixed near 1.00.",
+  "settings": "pcell-mwall (claim 20261025T1345-c14-pcell-mwall-claim, claim's own settings), seed 0 (one of the claim's four), 128x128 grid, t = 0-100000 steps (401 frames, 1 per 250 steps); colour = smoothed, density-weighted mean trait of the catalyst particles at each spot, blue 0.85 to yellow 1.20 (all start at 1.00, shown purple; yield is capped at 1.20): left heritable link yield, right an inert marker on the same particles, inherited at each duplication and mutated by the same rule (rate 0.002, same step size, its own random draws), with no effect on anything; white = self-made wall material M (a passive layer); cyan circles = cells that vanish after living at least 2000 steps since their last split or merge and reaching at least 20 px, circled from 4000 steps before they vanish (the clip's own overlap tracker, not the claim's genealogy); 'mean' = mean of the trait over all catalyst particles",
+  "alt": "Autonomous heredity: heritable yield | inert marker, same cells"
+ },
+ "reproduction-beyond-diffusion": {
+  "claim_dir": "threads/autopoiesis/worlds/phase_membrane",
+  "claim_label": "lab 1 \u00b7 phase_membrane",
+  "who": "phase field, lab 1 committee",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/reproduction-bd/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/reproduction-bd/poster.jpg",
+  "width": 908,
+  "height": 448,
+  "watch_for": "Left: cells are lined by a bright ring of the link molecule they make (rim about 2-2.6 times the core); circled cells pinch apart, often unevenly, and each surviving daughter closes its own ring within a few hundred t. Right: the same chemistry with plain diffusion divides too, even more often, but its rims stay weak and from about t = 3000 its cells are filled blobs. The twin matches the division, not the organization.",
+  "settings": "phase_membrane world (claim lab1-autopoiesis-phase-membrane#c1, with its world.py and default P: link drift chi 2 onto the wall, phi^2-gated K/L mobility); seed 7 (one of the two fresh seeds, 7 and 8, of review 20261025T0748-c01, and the one it ran the twin on; the labkit rerun here gives its 12 persistent splits, generation 4); 128x128 torus; dt 1; t = 0-8000 recorded every 10 steps (equal to labkit's frames up to float16 rounding). Right = Laplacian-only twin twin_pm.py of finding 20261025T0731-c01 (gate 0, chi 0, D_K and D_L uniform x lam 0.1; 26 persistent splits, generation 3), same seed and same noise start. Magma = link L on one shared scale 0.04-0.26 (phase wall not drawn). White circles = divisions (one phi > 1/2 body becomes two that both last >= 500 t, own overlap tracker); the last world circle, at t = 7960, is checked only until the run ends at 8000. Edge/centre = median over cells of (mean L within 2 px inside the phi = 1/2 wall / mean L in the deep core), as a 200-t running median: 2.29 vs 1.16 over t >= 2000; the twin is about 1.3-1.5 over t = 1000-2500. Slow motion: 10 t per frame for t = 1600-2700 and 6350-6850, otherwise 20-50 t per frame. Both panels rolled by the same (32, 64) px.",
+  "alt": "Reproducing organized cells that a Laplacian-only twin cannot match: phase membrane | Laplacian-only twin"
+ },
+ "metabolic-cell": {
+  "claim_dir": "collective/contrib/20261026T1100-c40-cips-layered-divide-claim",
+  "claim_label": "c40 \u00b7 layered CIPS condensates",
+  "who": "active emulsion",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/metabolic-cell/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/metabolic-cell/poster.jpg",
+  "width": 780,
+  "height": 460,
+  "watch_for": "Yellow cells coated in a green layer, made mostly by their own catalysis, stretch and pinch in two; in the close-up one cell becomes four by t = 10050. At t = 12000 the world is copied: where the fuel (blue) stops regrowing, every cell dissolves within 100 t, while the fed copy keeps all 15. The green layer is a passive coat: division is the same without it.",
+  "settings": "cips-layered-divide world, claim 20261026T1100-c40-cips-layered-divide-claim#c1 (its world.py defaults), seed 0, 192x192 torus, dt 0.1; t = 0-12000 shown every 50 t, then two copies of the whole world from the one saved t = 12000 state as in the claim's fork.py (right: fuel regrowth kF = 0 from t = 12000; left: unchanged), shown every 1 t to t = 12100 (playback 50x slower than before the fork), then every 8 t to t = 12296; same colour scale everywhere: yellow/orange = enzyme body e, green = amphiphile layer s, made by catalysis, mostly the cells' own (0-22, saturated above), blue = fuel F (0-1, black = none); cells = torus-connected e > 0.3 regions reaching e > 0.5 (15 at t = 12000; the claim's non-periodic count of 19 counts cells crossing the box edge twice); view rolled so the white close-up box (96x96 grid cells) is centred on one founder's family, which divides at t = 3900, 8850 and 10050 into four; parts of neighbouring cells show at the box edges",
+  "alt": "Dividing cells that live on a regrowing fuel: whole world | close-up (white box) | fuel regrows (fed twin) | fuel regrowth stopped"
+ },
+ "motile-repair": {
+  "claim_dir": "collective/contrib/20261026T0243-c31-crawler-layer-repair-claim",
+  "claim_label": "c31 \u00b7 layered crawler",
+  "who": "crawler with a layered front",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/motile-repair/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/motile-repair/poster.jpg",
+  "width": 824,
+  "height": 416,
+  "watch_for": "At t = 8 the left cell loses most of its teal front (red: the piece cut away) and its orange layer closes over the cut. The leftover teal floods the whole cell (teal all round means no front), so it rounds up and stops. Near t = 11 the teal gathers on one side again, a new front, and the cell crawls off on a new heading at about half the size of its uncut twin (right).",
+  "settings": "c31 wave-pinning crawler with self-made layer (world.py of claim 20261026T0243-c31-crawler-layer-repair-claim#c1, default P), seed 0, 256x256 periodic box (L = 5), t = 0-21 recorded every 0.175 (claim: t = 0-20; one frame missing, so the time label jumps from 10.3 to 10.7); left: in-world 40% front-sector cut at t = 8 (WORLD_P cut_t 8, cut_mode front, cut_frac 0.4); right: same seed and same noise, no cut (identical until t = 8; not the claim's reseeded cutprobe twin); each panel a 160 px crop that follows its cell, upscaled 2.5x, same scale in both panels; blue = cell body phi; teal = bound polarity protein rho, shown above 0.25 with 1 px display smoothing (teal on one side = the front, teal all round = no front); orange = layer species s (same scale in both panels); red = matter removed by the cut (shown at the cut, gone by t = 8.9); grey dots = fixed lab grid; white dots = centroid trail; t = 8-12.5 played at half speed, with a pause at the cut",
+  "alt": "Self-propelled organized individuals that repair: front cut at t = 8 | uncut twin"
+ },
+ "ecology-with-reproduction": {
+  "claim_dir": "collective/contrib/20261027T0325-c52-digestion-ecology-claim",
+  "claim_label": "c52 \u00b7 digestion ecology",
+  "who": "active emulsion, two species",
+  "status_note": "",
+  "clip": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/ecology/clip.mp4",
+  "poster": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/clips/ecology/poster_t3500.jpg",
+  "width": 776,
+  "height": 384,
+  "watch_for": "Cyan prey blobs form from noise. Predator material added at t = 2000 condenses within about 250 t as orange dots inside the prey and grows into comet-shaped bodies on one side of each prey, digesting it. Circles mark predator divisions, mostly a prey pinching in two together with its predator. Without predators (right) the prey stay frozen.",
+  "settings": "c52 digestion-ecology world (claim 20261027T0325-c52-digestion-ecology-claim#c1, its world.py defaults), seed 2, 128x128 torus as the claim's pack128b (its 256^2 headline seeds 0 and 1 take ~28 min each), dt 0.2, t = 0-12000 shown every 100 t to t = 2000, then every 50 t; labkit rerun reproduces pack128b/seed2 (predators 11 persistent splits, gen 2; prey 17, gen 3; 79 moving prey tracks); right = predator-free twin WORLD_P {pred_on: 0}, same seed (38 prey, 0 splits, 1 moving prey track); cyan = prey material c_a (0.27-0.70), orange = predator material c_b (0.18-1.0) drawn over it, same scale in both panels; predator material added as dilute noise at t = 2000; white circles = labkit's persistent predator splits (K = 20 frames), shown 600 t before to 500 t after; both panels rolled by the same (69, 51) grid cells; frames from a recorder of the same world.py, equal to labkit's frames.npz",
+  "alt": "Interacting populations that reproduce and eat: with predators | predator-free twin",
+  "open_note": "Met at 12:26 on 27 October by c52's digestion ecology and reopened at about 15:20 by its outside audit: the predators persist with digestion switched off, because a written drift toward the prey's fuel sink holds one on every prey, and they divide only as the second step of their prey's division, so no single kind shows metabolism, interaction and reproduction together. c56's claim that the prey carry all four awaits review"
+ },
+ "open-ended": {
+  "open_note": "The lead is c53's fed vortices: in a gravity-free fluid, vortices that feed on a regrowing fuel divide, and a fitter kind with a copied label spreads against an identical-draw twin (established IDH, labels still mixed). Next: more than two kinds and repeated sweeps, scored by a novelty measure that does not saturate"
+ },
+ "minority-swimmers-spread": {
+  "open_note": "Where sink discs reward escape, the heritable fast kind of Marangoni rod rises above its twin, but the share that swims 3 of its own lengths before dividing does not; environments where distance itself pays are being tried"
+ }
+}

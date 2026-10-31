@@ -1,0 +1,54 @@
+{
+ "nn_rot_source_use_frac": {
+  "0": 0.284,
+  "1": 0.492,
+  "2": 0.194,
+  "3": 0.003
+ },
+ "ic_isotropy": {
+  "rot0": {
+   "grad_A4": [
+    0.0066,
+    0.0052
+   ],
+   "spec_A4": [
+    -0.0132,
+    0.0147
+   ]
+  },
+  "rot45": {
+   "grad_A4": [
+    -0.0003,
+    0.0037
+   ],
+   "spec_A4": [
+    -0.0214,
+    0.0174
+   ]
+  }
+ },
+ "interior_corr_rot_vs_rotated_unrot": [
+  0.835,
+  -0.06
+ ],
+ "pm_body_area_px": [
+  158,
+  273,
+  413
+ ],
+ "synthetic_A4_pm_areas_hard": {
+  "A4": -0.007,
+  "n": 2140,
+  "se": 0.015
+ },
+ "synthetic_A4_pm_areas_soft1.5": {
+  "A4": 0.017,
+  "n": 2097,
+  "se": 0.016
+ },
+ "synthetic_A4_smallest30pct_hard": {
+  "A4": -0.002,
+  "n": 2201,
+  "se": 0.015
+ }
+}

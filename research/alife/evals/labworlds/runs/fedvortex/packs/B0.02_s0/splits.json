@@ -1,0 +1,208 @@
+{
+"pack": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.02_s0",
+"persistent_splits": 13,
+"daughters_same_sign": 13,
+"daughters_other_sign": 0,
+"sign_unknown": 0,
+"merges_same_sign": 180,
+"merges_opposite_sign": 14,
+"merges_unknown": 84,
+"max_generation": 3,
+"splits": [
+{
+"frame": 8,
+"t": 24.0,
+"parent": 6,
+"children": [
+81,
+82
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 13,
+"t": 39.0,
+"parent": 32,
+"children": [
+93,
+95
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 19,
+"t": 57.0,
+"parent": 21,
+"children": [
+125,
+126
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 22,
+"t": 66.0,
+"parent": 14,
+"children": [
+134,
+135
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 124,
+"t": 372.0,
+"parent": 148,
+"children": [
+327,
+328
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 163,
+"t": 489.0,
+"parent": 303,
+"children": [
+426,
+427
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 2
+},
+{
+"frame": 183,
+"t": 549.0,
+"parent": 440,
+"children": [
+463,
+464
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 2
+},
+{
+"frame": 187,
+"t": 561.0,
+"parent": 458,
+"children": [
+470,
+471
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 260,
+"t": 780.0,
+"parent": 588,
+"children": [
+624,
+627
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 306,
+"t": 918.0,
+"parent": 683,
+"children": [
+727,
+728
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 2
+},
+{
+"frame": 310,
+"t": 930.0,
+"parent": 686,
+"children": [
+743,
+744
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 330,
+"t": 990.0,
+"parent": 761,
+"children": [
+771,
+773
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 332,
+"t": 996.0,
+"parent": 759,
+"children": [
+782,
+783
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 3
+}
+]
+}

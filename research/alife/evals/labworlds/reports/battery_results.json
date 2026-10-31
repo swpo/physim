@@ -1,0 +1,468 @@
+[
+ {
+  "world": "fedvortex",
+  "report": {
+   "world": "c53 fed vortices: /home/user/physim/research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py. It is a 2D periodic vorticity-streamfunction fluid on 128x128 px (dx=1), dt=0.02. The state fields are om (signed vorticity) and Y (fuel). Velocity and streamfunction are recomputed from om every step by a spectral Poisson solve. Bodies are |om|>0.06 (the world's META threshold), with a peak of about 0.2 and R_eq about 4.4 px. The prepared state is seed 0 at t=500: 36 bodies (17 positive), median area 61 px, fuel 0.27 at body centres and 0.87 in empty space, minimum fuel 0.24, u_max 0.57 px/t. I mapped 1 PhySim world unit to 1 px. With that scale device0 (square, spacing 3) covers about one body, device1 (hex, spacing 6, reaching 12 px) covers about one inter-vortex gap, and the injection width of 2 is about half a body radius. Deciding controls taken from contribution.json: fork (fuel emptied and regrowth off; the E control) and adv0 (advection off, the no-flow reaction-diffusion twin; the bd_control). I added dt halved (0.01) as a numerical null. I defined a kF0 arm (regrowth off only) but did not run it.",
+   "timing": "- Step cost: 1.9 ms/step single-threaded with ops.WORKERS forced to 1 (a 2000-step timing in timing.py). Under the shared load it was 2.2-2.9 ms/step.\n- labkit pack: T=1200 (400 frames x 150 steps = 60k steps) took 131-160 s of simulation plus about 8 s of analysis; splits.py took a few seconds more.\n- Noise battery: 23 packs in all. That is 20 in the main battery plus 2 at B 0.02 and the seed-0 baseline, each about 150-180 s wall. The noise levels were set first with short direct calibration runs (9 runs of 400 t, about 360 s).\n- Pulse map: 33 cases of 200 t plus 2 twins, about 700 s.\n- Detect at B 0.003: 5 arms x 8 members x 300 t, about 2000 s (one arm about 330 s; dthalf 655 s). Detect at B 0.01: 4 arms, about 1230 s.\n- Small extras: the blow-up threshold run, figures and scoring, about 100 s.\n- Total: about 8100 CPU-s, about 2.25 CPU-hours. This is estimated from the wall times of single-threaded processes (OMP_NUM_THREADS=1, FFT workers 1). I kept to at most 2 of my processes at a time, except for a few seconds of light scoring and figures. One pulse launch was killed by my own pkill after about 30 s and rerun.",
+   "claim_behaviour": "Capability measures are labkit's tracker on |om| (absolute threshold 0.06, 1 px blur, min area 6, lineage K=20 frames = 60 t): persistent splits, max generation, merges, merge/split ratio, nucleations, components, moving tracks and max body lengths travelled. I also ran the claim's splits.py, which counts daughters with the parent's sign and same-sign versus opposite-sign merges. Containment does not apply because the world has no membranes. Baseline at sd 0, same code path (fv_noise.py with dyn_noise 0, which matched the base world bitwise over 200 steps), T=1200, seeds 0/1:\n- bodies: final 28/32, mean over the second half 28.5/33.5\n- persistent splits 10/16 (8/8 after t=300), max generation 3/4\n- merges 26/32, merge/split 1.18/0.84, nucleations 0/0\n- daughters with the parent's sign 10/10 and 16/16; merges same-sign 25/28 versus opposite-sign 0/2\n- moving tracks 71/82, max body lengths 17.0/27.3\n- mean fuel in the second half 0.70/0.69\nThe claim's own numbers are for T=3000 (34/39/42 persistent splits, generation 9-10) and are not directly comparable; 1200 t gives generation 3-4.",
+   "noise": [
+    {
+     "form": "baseline sd 0 (same wrapper code path)",
+     "sd": 0,
+     "seeds": "0,1",
+     "result": "Intact: bodies 28.5/33.5, persistent splits 10/16, generation 3/4, merges 26/32, nucleations 0, all daughters same sign. The sheet shows about 30 smooth elliptical vortices of both signs, with rods, on orange fuel, matching the claim's sheet."
+    },
+    {
+     "form": "A plain additive on om and Y",
+     "sd": 0.003,
+     "seeds": "0,1",
+     "result": "No visible effect: bodies 32/36, splits 9/16, generation 2/4, merges 18/33, nucleations 0, fuel 0.695/0.686."
+    },
+    {
+     "form": "B additive om + proportional Y (physical)",
+     "sd": 0.003,
+     "seeds": "0,1",
+     "result": "No visible effect: bodies 31/37, splits 8/20, generation 3/5, merges 23/41, nucleations 0, all daughters same sign. The sheet looks the same in character as the baseline: smooth vortices and rods."
+    },
+    {
+     "form": "A plain additive on om and Y",
+     "sd": 0.01,
+     "seeds": "0,1",
+     "result": "Survives, with more churn: bodies 33/35, splits 13/19, generation 3/5, merges 64/76 (about 2x baseline), opposite-sign merges 8/3, nucleations 1/0, fuel 0.683/0.670."
+    },
+    {
+     "form": "B additive om + proportional Y (physical)",
+     "sd": 0.01,
+     "seeds": "0,1",
+     "result": "Survives: bodies 35/37, splits 9/16, generation 2/4, merges 55/62 (about 2x), all daughters same sign, fuel 0.673. The sheet shows discrete vortices of both signs with grainy edges, and rods still form."
+    },
+    {
+     "form": "B additive om + proportional Y (physical)",
+     "sd": 0.02,
+     "seeds": "0,1",
+     "result": "Degraded: bodies 40/38, splits 13/15, generation 3/6, but merges 278/284 (about 9x), nucleations 37/30, opposite-sign merges 14/8, fuel 0.63. The sheet shows ragged, irregular, speckled bodies and chains on a grainy background."
+    },
+    {
+     "form": "A plain additive on om and Y",
+     "sd": 0.03,
+     "seeds": "0,1",
+     "result": "Destroyed: about 71 ragged components, nucleations 1419/1351, splits 2/1, generation 1/1, fuel 0.55."
+    },
+    {
+     "form": "B additive om + proportional Y (physical)",
+     "sd": 0.03,
+     "seeds": "0,1",
+     "result": "Destroyed: about 70 components, nucleations 1336/1376, splits 4/3, generation 1/2. The sheet shows no smooth vortices: ragged speckled patches of both signs, with pixel speckle everywhere."
+    },
+    {
+     "form": "A plain additive on om and Y",
+     "sd": 0.1,
+     "seeds": "0,1",
+     "result": "Destroyed: one percolating component, occupancy 0.88, splits 0, fuel 0.20. A 400 t calibration run at sd 1.0 went non-finite by t=100."
+    },
+    {
+     "form": "B additive om + proportional Y (physical)",
+     "sd": 0.1,
+     "seeds": "0,1",
+     "result": "Destroyed: one percolating component, occupancy 0.88, splits 0, fuel 0.20. The sheet is pixel noise everywhere. A 400 t calibration run at sd 1.0 stayed finite but noise-dominated (sd of om 0.97)."
+    },
+    {
+     "form": "F fuel-only additive (isolates the clip-at-zero mechanism)",
+     "sd": 0.1,
+     "seeds": "0",
+     "result": "No effect: bodies 31, splits 10, generation 2, fuel 0.699, minimum fuel 0.107."
+    },
+    {
+     "form": "F fuel-only additive",
+     "sd": 0.3,
+     "seeds": "0",
+     "result": "Degraded: bodies 22, splits 5, generation 1, occupancy 0.096, mean fuel up to 0.752, minimum fuel 0.001 but no rendered pixel below 0.01. The sheet shows mottled fuel and fewer discrete vortices with mottled cores. I did not establish the mechanism."
+    },
+    {
+     "form": "G fuel-only proportional",
+     "sd": 0.3,
+     "seeds": "0",
+     "result": "No effect: bodies 29, splits 12, generation 3, fuel 0.702."
+    }
+   ],
+   "noise_conclusion": "Noise sd is per sqrt(t); each step adds a white kick per pixel of sd*sqrt(dt) before the base step, as in PhySim's worlds.\n- **Vorticity noise sets the tolerance.** The behaviour survives at 0.003 (no visible effect) and 0.01 (intact; merges double). It is degraded at 0.02 (ragged bodies, merges up 9x, but splitting continues) and destroyed at 0.03 and above (continual nucleation, no smooth vortices). At 0.1 the field is a single noise sea. The window from intact to destroyed is narrow: about a factor of 3, between 0.01 and 0.03.\n- **The fuel noise form makes no difference here.** Forms A and B gave matching results at every level up to 0.1. They differed only at 0.3 and 1.0 in the calibration runs, which are destructive anyway: A kept more fuel (0.13 versus 0.03) and went non-finite at 1.0.\n- **Different from the pilot.** In phase_membrane, additive noise on a concentration clipped at zero acted as a hidden source at 0.01. That mechanism does not operate here. Fuel never comes near zero: minimum 0.24 at baseline, and no rendered pixel below 0.01 in any run. Fuel also diffuses fast (kY=1), smoothing pixel noise.\n- **Fuel-only noise.** Additive fuel noise needs about 0.3 to matter: at that level the world has fewer bodies and higher mean fuel. Proportional fuel noise at 0.3 is harmless.\n- **Recommendation.** Additive om noise (the physical form for a signed, unbounded field) with proportional Y noise, at 0.003-0.01. Use 0.003 if forecasts should stay coherent for about 100 t.",
+   "pulses": [
+    "Vorticity port, amp 0.003 (peak 0.06 added over 20 t): absorbed. At the positive body centre the site reads +0.21 against +0.19 in the twin, with no pixel |dom|>0.03 at t=20 or t=50. At the rim 17 px change within 4 px. The negative body centre is weakened (-0.05 against -0.09) but survives. In empty space nothing exceeds 0.03 until t=200. Chaos then spreads it: from the positive centre, 142 px out to 36 px (8 bodies) by t=100, and 2006 px out to 78 px (27 of 30 bodies) by t=200.",
+    "Vorticity port, amp 0.03 (peak 0.6): at positive centre or rim the body is boosted to 0.33-0.34, eats its local fuel to 0.07, and relaxes to normal by t=50; no division. At the negative centre the target is killed at t=8 and replaced by a positive vortex (sign flip). At the negative rim it is killed at t=46. In empty space a positive body is created and persists to t=200. By t=20 the difference reaches 32-43 px and touches 9-14 bodies, through the injected vortex's long-range induced flow; the faint displacement dipoles are visible across the box in pulse_snapshots.png.",
+    "Vorticity port, amp 0.3 (peak 6): a super-vortex forms (|om| 1.8-2.0, u_max 2.2-2.4) and eats the local fuel to 0. By t=20 the difference touches 32-35 of 35 bodies, out to 78-79 px (the whole box). Negative targets are killed by t=2; empty space gets a created body; positive targets survive. Peak |om| is back to normal (0.22) by t=50.",
+    "Vorticity port, amp 3 (peak 60): numerical blow-up (non-finite) at all 5 sites before t=20. A separate run at the empty site found the threshold: amp 1.0 stays finite through 50 t (u_max 6.9, CFL 0.14); amp 1.5 goes non-finite at t=18.5, amp 2.0 at t=13.5 and amp 3.0 at t=9.0.",
+    "Fuel port, amp 0.003 and 0.03: absorbed at body centre, rim and empty space. At amp 0.03 the target peaks at 0.22 against 0.19 and changes at most 2-12 px within 4 px at t=20. Fuel at the empty site goes 1.02 (t=20) back to 0.93 (t=50) with no vorticity change. Later differences come only from chaos.",
+    "Fuel port, amp 0.3: the target is fed (peak 0.36-0.37 against 0.19 or 0.06 at t=20), with the difference reaching 34-37 px (9-12 bodies) at t=20. No division and no death. At the empty site it is absorbed: fuel 2.2 at t=20, and the first vorticity difference (80 px) appears only at t=200.",
+    "Fuel port, amp 3 (peak 60 fuel): no blow-up. The target is boosted to |om| 1.08 (u_max 1.7) and the difference reaches 69-73 px (29-31 bodies) at t=20. At the empty site no body is created: fuel reaches 13.6 at t=20 but there is no vorticity to ignite, and neighbours are affected from t=50. In the rim case the target is counted as 2 parts from t=160, 140 t after the pulse in an already diverged trajectory, so I did not count it as a triggered division.",
+    "Chaos control: a vorticity pulse of amp 1e-6 in empty space gives an L2 difference of 3e-5 at t=20 and 1.2e-4 at t=200, a slow rise because it decays where it is. Perturbations that touch a body grow faster: amp 0.003 at the positive centre went from 0.15 to 4.0 L2, about 27x in 180 t."
+   ],
+   "pulse_conclusion": "Outcome classes found (prepared state, seed 0, 20 t pulses, 200 t follow-up):\n- **Absorbed:** both ports at 0.003; fuel at 0.03 everywhere; fuel in empty space at any amplitude.\n- **Body created:** vorticity at 0.03 or more in empty space (positive vortices only).\n- **Body killed:** positive vorticity at 0.03 or more into a negative vortex (sign flip at the centre).\n- **Body boosted, then relaxed** by about t=50: vorticity at 0.03-0.3 and fuel at 0.3-3 on positive bodies.\n- **Numerical blow-up:** vorticity only, at amp 1.5 and above; fuel is safe over all of PhySim's [0, 3].\n- **Division triggered:** none attributable within 200 t.\n\nOn spread: vorticity injection is nonlocal, because the induced flow displaces every vortex. It reaches 30-40 px within the pulse at amp 0.03 and the whole box at amp 0.3 or more. Fuel injection stays local unless a body eats it. Any perturbation that touches a body is amplified by mutual-advection chaos, roughly 27x in 180 t, so twin differences become domain-wide within about 100-200 t.\n\nCompared with the pilot: blow-up again occurs at the top of PhySim's amplitude range, here for the vorticity port only.",
+   "detect": [
+    {
+     "arm": "adv0",
+     "window": "30 t",
+     "ratio": 3.25,
+     "note": "Noise B 0.003, all features (device0 + device1 + global). Bootstrap 5-95%: 2.74-3.38. device0 alone 6.49, device1 3.10, global 2.92."
+    },
+    {
+     "arm": "adv0",
+     "window": "100 t",
+     "ratio": 5.57,
+     "note": "Noise B 0.003, all features (4.74-5.59). device0 9.14, device1 4.74, global 7.12."
+    },
+    {
+     "arm": "adv0",
+     "window": "300 t",
+     "ratio": 2.45,
+     "note": "Noise B 0.003, all features (1.82-3.42). device0 only 1.53 (1.06-2.63): native members have diverged by then. device1 4.00, global 6.75."
+    },
+    {
+     "arm": "fork",
+     "window": "30 t",
+     "ratio": 173,
+     "note": "Noise B 0.003, all features. Fuel reads exactly 0 and vorticity decays to 0 by about t=25; global alone gives 1296."
+    },
+    {
+     "arm": "fork",
+     "window": "100 t",
+     "ratio": 145.3,
+     "note": "Noise B 0.003, all features. device0 27.9, device1 18.7."
+    },
+    {
+     "arm": "fork",
+     "window": "300 t",
+     "ratio": 44.3,
+     "note": "Noise B 0.003, all features. device0 3.65, global 233."
+    },
+    {
+     "arm": "dthalf (numerical null)",
+     "window": "30 t",
+     "ratio": 0.97,
+     "note": "Noise B 0.003, all features (0.88-1.08). Indistinguishable, as a null should be."
+    },
+    {
+     "arm": "dthalf (numerical null)",
+     "window": "100 t",
+     "ratio": 0.95,
+     "note": "Noise B 0.003 (0.87-1.04)."
+    },
+    {
+     "arm": "dthalf (numerical null)",
+     "window": "300 t",
+     "ratio": 1.19,
+     "note": "Noise B 0.003 (0.82-1.83); device0 1.28. Consistent with 1, given that the native/truth swap null spans 0.63-1.12."
+    },
+    {
+     "arm": "adv0",
+     "window": "30 t",
+     "ratio": 2.09,
+     "note": "Noise B 0.01, all features (1.82-2.17). Global alone 1.19, not distinguishable."
+    },
+    {
+     "arm": "adv0",
+     "window": "100 t",
+     "ratio": 3.18,
+     "note": "Noise B 0.01, all features (2.71-3.24)."
+    },
+    {
+     "arm": "adv0",
+     "window": "300 t",
+     "ratio": 2.36,
+     "note": "Noise B 0.01, all features (1.94-2.69). Global 4.83."
+    },
+    {
+     "arm": "fork",
+     "window": "30 t",
+     "ratio": 98.3,
+     "note": "Noise B 0.01, all features."
+    },
+    {
+     "arm": "fork",
+     "window": "100 t",
+     "ratio": 72,
+     "note": "Noise B 0.01, all features."
+    },
+    {
+     "arm": "fork",
+     "window": "300 t",
+     "ratio": 35.1,
+     "note": "Noise B 0.01, all features."
+    }
+   ],
+   "detect_conclusion": "Setup: 8-member ensembles from the prepared state under noise B. Probes: device0 (13-node square, spacing 3 px) at a positive body centre and device1 (19-node hex, spacing 6 px) at the largest other body, reading om and Y bilinearly, plus the global mean and variance of om and Y every 2 t. The native forecast was scored against an independent native truth ensemble and against each ablation's ensemble, in features standardized by the native spread.\n- **Fork** is trivially detectable: ratio 35-173 at both noise levels and every window, mostly through the global fuel mean and the fuel readings at nodes.\n- **No-advection twin (adv0)** is distinguished 2.5-9x at noise 0.003 within 30-300 t, and 2-3.6x at noise 0.01. In the native world the probed vortex leaves device0 at t=64-72 in every member; under adv0 it stays frozen in place, and device0's fuel stays at 0.27-0.4 instead of rising to 0.8 (detect_traces_B0.003.png). Discrimination peaks around 100 t and falls by 300 t as native members decorrelate: native spread rises from 1.3 to about 5.8 standardized units by t=212-242.\n- **Calibration:** the numerical null (dt halved) scores 0.95-1.19, and the native/truth swap null scores 0.63-1.12. So with 8 members, ratios below about 1.5 are not distinguishable.\n- **Compared with the pilot** (deciding ablations 2-16x within 100-1000 t): similar for adv0 but on 10x shorter windows, because this world is chaotic. The useful forecast horizon is about 30-150 t.",
+   "port_notes": "**What to observe**\n- om (signed) and Y at the nodes, plus the global mean and variance of each.\n- Derived, observe-only channels: velocity and streamfunction (recomputed from om every step), |om|, and eating. Do not offer them as independent drive ports: a velocity or streamfunction source is just an om source through curl/Laplacian.\n- Nothing is conserved. Mean om changes through the reaction term and does not move the flow (the k=0 mode is dropped from the Poisson solve). Fuel is an open budget that relaxes toward 1 at kF=0.02.\n\n**Driving om (a local stir) makes sense physically, with three issues**\n- **Sign:** PhySim amplitudes are non-negative, so the port only adds positive vorticity. That strengthens positive bodies, kills or flips negative ones and creates positive ones. Either offer signed amplitudes or two ports (+ and -).\n- **Nonlocality:** every om injection changes the flow across the whole box.\n- **Scale:** body peak is about 0.2 and ignition about 0.05-0.07. Amp 0.003 for 20 t is absorbed, 0.03 creates or kills bodies, 0.3 perturbs the whole box, and 1.5 or more blows up the explicit advection.\n- **Recommended range:** amp about 0.002-0.1 per t in world units, i.e. a port gain of about 0.01-0.03 so that PhySim's amp 3 maps to 0.03-0.1. At gain 1 the top third of PhySim's range is non-finite.\n\n**Driving Y (feeding) also makes sense**\n- It is local and safe over all of [0, 3] (no blow-up). It is absorbed at 0.03 or less and feeds or boosts bodies at 0.3-3 (peak om up to 1.08). It never created or killed a body.\n- **Scale:** background fuel is about 0.7-0.9 and body cores about 0.27. Amp 3 for 20 t adds 60, which is far above that.\n- **Recommended range:** a gain of about 0.1 (PhySim amp 3 maps to 0.3 per t) keeps it in the feeding regime without box-wide disruption; gain 1 is usable but saturating.\n\n**Other settings**\n- **Dynamics noise:** additive om plus proportional Y at 0.003-0.01 per sqrt(t), where 0.02 is degraded and 0.03 destroys the behaviour.\n- **Scale and time:** 1 world unit = 1 px suits the device geometry. Forecast windows of 30-150 t carry the discriminating information.",
+   "images_viewed": [
+    "/home/user/physim/research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/pack/seed0/sheet.png: about 30 elliptical vortices of both signs (white/cyan) with occasional rods, on orange fuel with darker depletion halos.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/A0_s0/sheet.png (zero-noise baseline): the same character as the claim's sheet.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.003_s0/sheet.png: looks the same in character as the baseline; the layout diverges after about t=100.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.01_s0/sheet.png: discrete vortices and rods with grainy edges.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.02_s0/sheet.png: ragged, irregular, speckled bodies and chains.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.03_s0/sheet.png: no smooth vortices; ragged speckled patches of both signs.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.1_s0/sheet.png: pixel-scale noise everywhere, no bodies.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/F0.3_s0/sheet.png: mottled fuel and fewer discrete vortices with mottled cores.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/pulse_snapshots.png: a sign flip at the negative target (om 0.03), a created positive vortex in empty space (om 0.03), a saturated super-vortex (om 0.3 and Y 3 at a body centre) with displacement dipoles across the box, and no om difference at t=20 for Y 3 in empty space, with faint dipoles near the site by t=50.",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/detect_traces_B0.003.png: native/truth/dthalf members overlap until about t=200, with the probed vortex leaving device0 at t=64-72; adv0 stays frozen (om 0.2 to 0.14); fork fuel is exactly 0 and its vorticity decays by about t=25."
+   ],
+   "caveats": [
+    "Pulse and detect used a single prepared state (seed 0, t=500, no noise), a single pulse duration (20 t), and one or two noise levels for detect. The noise battery used 2 seeds (fuel-only forms F and G: seed 0 only).",
+    "The battery horizon was T=1200, not the claim's 3000. Generation counts are therefore 3-4 at baseline rather than 9-10, and comparisons are against my own baseline at the same T.",
+    "At sd 0.02 and above, labkit's segmentation partly counts noise speckle as nucleations and fragments. I base the 'destroyed' calls on the sheets as well as the numbers.",
+    "Noise is white per pixel, as in PhySim's worlds. I did not test spatially correlated forcing; the tolerance would likely differ.",
+    "Energy-score ratios come from 8 members and 2000 bootstrap resamples. The 5-95% intervals are rough and some point estimates sit at the edge of their interval. The swap null spans 0.63-1.12, so small ratios do not resolve.",
+    "The small excess of the dt-halved null at 300 t (1.19-1.28) is consistent with sampling noise, but I cannot rule out a weak numerical-resolution signature at long windows.",
+    "The pulse outcome classes come from my own periodic labeller (threshold 0.06, no blur) and an overlap tracker checked every 2 t. Without blur, my body counts differ slightly from labkit's (35 against 36 at prep).",
+    "I did not establish the mechanism by which fuel-only additive noise at 0.3 reduces bodies while raising mean fuel.",
+    "The kF0 arm (regrowth off only) is defined but was not run. I did no grid-resolution test, and the claim covers only one parameter point.",
+    "My wrapper forces FFT workers to 1. I verified bitwise agreement with the base world at equal worker count over 200 steps, but did not compare against the claim's packs, which were run with 2 workers.",
+    "The CPU total is estimated from wall times."
+   ],
+   "files": [
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/fv_noise.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/apparatus.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/sweep.sh",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/run_detect.sh",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/calib.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/summarize.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/pulse_table.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/score_extra.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/viz.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/noise_battery.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/prep_s0.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/pulse_s0_dur20_om.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/pulse_s0_dur20_Y.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/blowup_om_empty.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/detect_s0_B0.003.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/detect_s0_B0.01.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/detect_ci_s0_B0.003.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/detect_ci_s0_B0.01.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/pulse_snapshots.png",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/out/detect_traces_B0.003.png",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/logs/calibA.txt",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/logs/calibB.txt"
+   ]
+  },
+  "check": "**Review of the fed-vortex eval-readiness battery (c53)**\n\nThe numbers in the report match the files. I checked them against `out/noise_battery.json`, every pack's `metrics.json`, `FACTS.md` and `splits.json`, the pulse JSONs, `blowup_om_empty.json` and the detect and CI JSONs. I also recomputed the energy-score ratios independently from the saved ensembles, and they match exactly. Both independent re-runs reproduced.\n\nThe problems are in interpretation:\n- The two \"deciding ablations\" do not test the claimed behaviour: one measures motion, the other is a change of state, not of dynamics.\n- One factual statement about fuel minima is false.\n- The port gains and safety ranges are wrong or untested.\n- The statistical calibration is presented more confidently than it supports.\n\n## Issues, most serious first\n\n**1. Detecting adv0 measures motion, not division.**\n- Claim: \"No-advection twin (adv0) is distinguished 2.5-9x \u2026 the probed vortex leaves device0 \u2026 under adv0 it stays frozen.\"\n- Verdict: methodological gap.\n- Evidence:\n  - The discriminating signal is one vortex advecting out of device0. I recomputed when the centre node falls below 0.06: t=62-70 in the native members and 62-72 in the truth members. It never falls under adv0.\n  - Division is rare inside the windows: 8 persistent splits after t=300 per 900 t in the whole box at baseline, so about 2-3 per 300 t window box-wide, and probably none at the probes.\n  - adv0 removes motion and sustained division together. In the claim's own adv0 pack (`pack_noadv/seed0/sheet.png`) spots still split during pattern formation, then freeze into a lattice.\n  - No ablation removes division while keeping motion.\n- Corrected text: \"adv0 is separated 2-5.6x (all features), almost entirely because native vortices move and adv0 vortices do not. The battery does not show that probe forecasts are sensitive to the claimed division.\"\n\n**2. The fork arm changes the state, not the dynamics.**\n- Claim: \"Fork is trivially detectable: ratio 35-173 \u2026\"\n- Verdict: true, but it is not evidence that the eval tests the E capability.\n- Evidence: `run_members` sets `fork_t = s[\"t\"]`, so fuel is zeroed on the first step. Every probe then reads Y = 0 from t=2. The ablation that changes dynamics only (kF0, regrowth off) was defined but not run.\n- Corrected text: \"The fork ratio reflects an instantaneous change of state that any predictor reading Y detects. Whether the eval discriminates the E dynamics is untested (kF0 not run).\"\n\n**3. Fuel minima: one statement is false.**\n- Claim: \"Fuel never comes near zero: minimum 0.24 at baseline, and no rendered pixel below 0.01 in any run.\"\n- Verdict: false.\n- Evidence:\n  - Rendered fuel minimum is 0.0043-0.0044 in A0.1 (23-35 pixels below 0.01, in 19-30 of 120 frames).\n  - It is 0.0009 in F0.3 (38 pixels in 34 frames).\n  - At baseline the minimum over the whole run is 0.118-0.139. The 0.24 is the prepared state at t=500; the second half reaches 0.233-0.237.\n- Corrected text: \"At A and B \u2264 0.03 the fuel minimum over the run is 0.12-0.14, against per-step kicks \u2264 0.004, so clipping at zero cannot act. Fuel reaches about 0 only in A0.1 (0.004) and F0.3 (0.0009).\"\n\n**4. F0.3 row contradicts itself.**\n- Claim: \"minimum fuel 0.001 but no rendered pixel below 0.01 \u2026 I did not establish the mechanism.\"\n- Verdict: self-contradictory.\n- Evidence: the rendered minimum is 0.0009. Negative fuel after a kick is reset to about 0 inside the step (`eat = min(\u2026, Y/dt)` becomes Y/dt when Y < 0, then the clip). That is a rectified source, consistent with mean fuel rising from 0.70 to 0.752.\n- Corrected text: \"Fuel reaches ~0 in F0.3; clip/eat rectification of negative kicks, the pilot's mechanism, plausibly contributes. Not established.\"\n\n**5. Wrong fraction for the vorticity-port blow-up.**\n- Claim: \"At gain 1 the top third of PhySim's range is non-finite.\"\n- Verdict: wrong.\n- Evidence: amp 1.0 is finite and amps 1.5, 2 and 3 are non-finite. That is at least the top half of [0, 3]. The threshold between 1.0 and 1.5 is not resolved.\n- Corrected text: \"At gain 1, amp \u2265 1.5 (at least the top half of PhySim's range) went non-finite for 20 t pulses.\"\n\n**6. \"Fuel is safe over all of [0, 3]\" was tested only for 20 t pulses.**\n- Verdict: untested at PhySim's maximum duration.\n- Evidence:\n  - All pulses lasted 20 t; PhySim allows up to 50.\n  - The blow-up threshold run (viz.py) also used a 20 t pulse, at the empty site only.\n  - Fuel amp 3 already gave |om| 1.08 and u_max 1.75. A 50 t pulse adds 2.5x the fuel.\n- Corrected text: \"No blow-up for fuel pulses up to amp 3 \u00d7 20 t; 50 t pulses untested. The vorticity threshold (1.0-1.5) is for 20 t pulses at one empty site.\"\n\n**7. \"Absorbed: \u2026 fuel in empty space at any amplitude.\"**\n- Verdict: contradicted by the agent's own data at amp 3.\n- Evidence: at amp 3 in empty space the twin difference is 43 px (2 bodies) at t=50. At t=100 it is 984 px out to 69 px, touching 21 bodies, with L2 2.4. For comparison, a vorticity pulse of 0.03 at a body centre gives L2 2.6 at t=100.\n- Corrected text: \"Absorbed at \u2264 0.3. At amp 3 the fuel diffuses into neighbouring bodies within ~50 t and the difference is box-wide by 100-200 t.\"\n\n**8. The adv0 ranges mix feature groups.**\n- Claim: \"2.5-9x at noise 0.003 \u2026 and 2-3.6x at noise 0.01.\"\n- Verdict: overstated.\n- Evidence:\n  - All features: 2.45-5.57 at 0.003 and 2.09-3.18 at 0.01.\n  - Single groups: 1.53-9.14 at 0.003 and 1.19-4.83 at 0.01.\n  - Device0 at 300 t is 1.53 (interval 1.06-2.63) and global at 30 t at 0.01 is 1.19. Neither is resolved.\n- Corrected text: state the all-feature ranges, and say that per-group values run 1.2-9.1 with some unresolved.\n\n**9. The bootstrap intervals are not valid 5-95% intervals.**\n- Claim: \"Bootstrap 5-95% \u2026 some point estimates sit at the edge.\"\n- Verdict: understated.\n- Evidence: in 4 cases the point estimate lies outside its own interval:\n\n| Case | Point estimate | Interval |\n|---|---|---|\n| fork, B0.003, 100 t, all features | 145.26 | 119.4-144.5 |\n| fork, B0.003, 100 t, device1 | 18.67 | 15.71-18.64 |\n| fork, B0.01, 30 t | 98.3 | 80.9-97.8 |\n| fork, B0.01, 100 t | 71.95 | 59.0-71.4 |\n\n  Resampling forecast members with replacement puts zero self-distances into the spread term, which biases the ratios toward 1.\n- Corrected text: \"The resampled intervals are biased toward 1 and should not be quoted as 5-95% intervals.\"\n\n**10. The swap null covers only part of the sampling error.**\n- Claim: \"So with 8 members, ratios below about 1.5 are not distinguishable.\"\n- Verdict: weakly supported.\n- Evidence: in `score_extra.py` the swap null's forecast-truth distance matrix is the transpose of the base one, so it has the same mean. Only the ensemble-spread term changes, so the \"0.63-1.12\" span reflects only spread variability. At 300 t the dt-halved null's upper bound reaches 1.83 (2.26 for device0).\n- Corrected text: \"Below ~1.5 at \u2264 100 t, and below ~2 at 300 t, ratios are not distinguishable.\"\n\n**11. Window claims go beyond the three windows tested.**\n- Claims: \"useful forecast horizon is about 30-150 t\" and \"10x shorter windows, because this world is chaotic.\"\n- Verdict: not established.\n- Evidence: only three windows (30/100/300 t) were chosen. At 300 t the all-feature ratio is still 2.45 and 2.36. Nothing longer than 300 t was tried, and no comparison with the pilot was made.\n- Corrected text: \"Discrimination is highest at 100 t of the three windows tried and lower at 300 t. Longer windows untested.\"\n\n**12. \"Perturbations that touch a body grow faster \u2026 about 27x in 180 t.\"**\n- Verdict: confounded.\n- Evidence: it compares amplitudes 1e-6 and 0.003 at different sites. The 0.003 case is nonlinear (the target is boosted ~10%), and L2 saturates near 8-9 (the 0.3 cases). It is not a growth-rate measurement.\n- Corrected text: keep \"twin differences become domain-wide within 100-200 t\", which the changed-pixel data supports directly, and drop the growth comparison.\n\n**13. Small numeric slips.**\n- The vortex leaves device0 at t=62-70 in native members (62-72 in truth members), not 64-72.\n- A0.01 merges are 2.4-2.5x baseline, not \"about 2x\".\n- B0.02 merges are 8.9-10.7x, not \"about 9x\".\n- Pack walls are 126-168 s, not 131-160 s.\n- At amp 0.3 the difference reaches 77-79 px, not 78-79.\n\n**14. Two claims cannot be verified from the files.**\n- The 200-step bitwise match and the 1.9 ms/step timing: `timing.py` exists, but its output was never saved.\n\n**15. Detect placement is not caveated.**\n- Both devices were placed on bodies, at dilation 1 only. The results are specific to that placement; this is not in the caveats.\n\n**16. Segmentation at sd \u2265 0.02.**\n- Verdict: the \"destroyed at 0.03\" call holds.\n- Evidence: at 0.03 labkit finds 6503 tracks and 0 persistent ones. My check on a smoothed signed field (\u03c3 = 2 px) gives 44 blobs with median peak 0.108. That resembles B0.1 (40 blobs, 0.101) more than baseline (28 blobs, 0.146), so this is not just a 1 px segmentation artefact. \"Degraded\" at 0.02 is a judgement call: the sheets still show about 38 discrete bodies, and splitting continues (13/15 persistent splits).\n\n## Confirmed\n- Noise convention matches PhySim: blobkit `sim_cpu` uses a per-pixel kick of `noise*sqrt(dt)`, and `genome.poke` uses a unit-peak Gaussian.\n- Images I viewed:\n  - The claim's sheet, A0_s0 and B0.003_s0: about 30 smooth vortices of both signs with rods, on orange fuel.\n  - B0.01 and B0.02: grainy-edged, then ragged, discrete bodies.\n  - B0.03: ragged speckled patches.\n  - B0.1: pixel noise.\n  - F0.3: mottled fuel, fewer vortices with mottled cores.\n  - `pulse_snapshots.png`: sign flip, created vortex, super-vortex with dipoles across the box, blank Y3-empty difference at t=20.\n  - `detect_traces_B0.003.png`: as described in the report.\n\n## Re-runs (about 6 CPU-minutes in all, one process at a time)\n1. **Noise case on a fresh seed, with my own code.** I wrote an independent wrapper (`fvchk.py`) that adds noise after each step with a different random-number seed. I ran labkit packs at seed 2 for T=1200, at sd 0 and at B 0.01, plus `splits.py`.\n\n| Measure | sd 0 | B 0.01 |\n|---|---|---|\n| Bodies (second-half mean) | 29.8 | 29.1 |\n| Persistent splits | 19 | 15 |\n| Max generation | 4 | 3 |\n| Merges | 40 | 65 (1.6x) |\n| Nucleations | 0 | 0 |\n| Daughters with parent's sign | 19/19 | 15/15 |\n| Opposite-sign merges | \u2014 | 1 |\n| Fuel, second half | 0.698 | 0.682 |\n\n   Both sheets show discrete vortices of both signs with rods; the noisy one has grainy edges. This reproduces \"intact at 0.01, merges up\". The merge factor is 1.6x against the report's 1.9-2.1x.\n\n2. **One pulse case.** I regenerated the seed-0, t=500 prepared state myself; it matches `prep_s0.npz` exactly (maximum difference 0.0). Vorticity amp 0.03 for 20 t at the negative body centre:\n   - Negative pixels within 8 px fall from 61 to 7 at t=8 and to 0 at t=10.\n   - The site reads +0.334 against \u22120.091 in the twin at t=20.\n   - 474 px changed, out to 42.6 px.\n\n   This reproduces the reported kill at t\u22488 and the sign flip.\n\n## Overall verdict\nThe bookkeeping is faithful and the core noise conclusion holds and reproduces on a fresh seed: tolerance 0.003-0.01 with additive vorticity and proportional fuel noise, destroyed at \u2265 0.03. The pulse map is accurate.\n\nThe eval-readiness conclusions are overstated in five places:\n- The deciding-ablation evidence measures motion (adv0) and a change of state (fork), not division or E dynamics, and the kF0 arm is missing.\n- The \"fuel never near zero\" statement is false.\n- The vorticity-port blow-up fraction is wrong, and fuel-port safety is untested for 50 t pulses.\n- One \"absorbed\" class is wrong (fuel amp 3 in empty space).\n- The confidence intervals, null threshold and forecast-horizon claims are over-read.\n\nThe world is usable for a pilot eval at noise 0.003-0.01 with port gains \u2264 0.03 for vorticity. Before claiming the eval tests the division claim, it needs a division-specific ablation and the kF0 run.\n\nFiles are in /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex_review:\n- fvchk.py\n- pulsechk.py\n- pulsechk.txt\n- analysis.py\n- analysis.txt\n- packs/base_s2\n- packs/B0.01_s2\n- splits_base_s2.txt\n- splits_B0.01_s2.txt"
+ },
+ {
+  "world": "marangoni",
+  "report": {
+   "world": "c34 Marangoni rods: /home/user/physim/research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py, run unchanged at its default parameters (mar=40, kappa=20, chis=5, zeta=0.8, dt=0.05, 128x128, periodic). State fields are phi, q1, q2, s and c; vx, vy and om are recomputed every step.\n\nThe noise wrapper is mg_noise.py, modelled on the pilot's pm_noise.py. It strips its own keys from WORLD_P before loading the base module fresh. Its keys are dyn_noise (sd per sqrt(t), so the per-step sd is 0.224 x sd), noise_fields (additive), mult_fields (proportional), cons_fields (conserved: the spectral divergence of a white vector flux, dealiased, normalised to the same per-pixel sd as the additive form) and noise_seed.\n\nThe apparatus is apparatus.py, adapted from the pilot, with commands prep, pulse, detect and score:\n- World units are taken as grid units (dx=1). device0 is 13 nodes on a square lattice with spacing 3 px; device1 is 19 nodes on a hex lattice with spacing 6 px; dilation is 1 only.\n- Every node reads phi, q1, q2, s, c, vx and vy bilinearly with periodic wrap. The global sensor returns the mean and variance of each of these 7 fields.\n- Injection is a periodic Gaussian with sigma 2 px, rate amp per time unit, lasting 20 t.\n\nPrepared state: native world, seed 0, run noise-free to t=300. It holds 19 rods with median area 51 px and half-width 2.24 px (about 4.5 px wide, about 16 px long). Inside means are phi 0.29, s 0.32, c 0.56 (c max 8.6) and |Q| up to 0.5; the bath has phi -0.65.\n- centre site: the target rod's deepest pixel (118,36).\n- rim site: the rod tip (111,34), 7.3 px from the centre. The flank rim is only 1.4 px from the centre and would overlap a sigma-2 pulse there.\n- bath site: (126,71), 30 px from any body.\n- device1 sits on another rod at (106,108).",
+   "timing": "Step cost with OMP_NUM_THREADS=1 on a machine shared with another agent: 21.3 ms at 128\u00b2, 10.9 ms at 96\u00b2, 4.8 ms at 64\u00b2. Run sizes:\n- labkit pack at T=500 (100 frames, 10,000 steps): 198-231 s of simulation plus about 15 s of c34-script analysis.\n- One pulse case over 100 t: about 40 s.\n- One detect member over 150 t (3000 steps, readout every 2 t): 63-71 s.\n\nCPU used, about 2.55 CPU-h in total, at most 2 processes at once:\n- 64\u00b2 calibration screen, 7 packs: about 6 min.\n- 64\u00b2 per-field noise diagnostic, 25 short runs: about 4 min.\n- prep: 2 min.\n- 128\u00b2 noise battery, 20 packs: about 75 min.\n- pulse map, 38 cases: 21.4 min.\n- strict blow-up re-runs: 0.8 min.\n- detect, 5 arms x 8 members: 43 min.\n- pulse snapshots: about 2 min.\n\nHorizon: the noise battery ran to T=500, half the claim's T=1000. Divisions and swim-then-divide tracks already show by then: on seed 0 the claim's record track 25 (7.09 body lengths) is reproduced exactly at zero noise.",
+   "claim_behaviour": "Measures come from c34's own scripts run on each labkit pack's frames.npz (wrapper measure.py):\n- labkit lineage at K=20 frames: persistent splits, max generation, merge/split ratio.\n- swimdivide.py: tracks that move at least 3 labkit body lengths and then divide, plus the best track.\n- sd_individuals.py, channel 2 (ring): fraction of body-frames with both rim/core and rim/out at least 1.5, and median rim/out.\n- sd_individuals.py, channel 3 (cargo): median inside/outside ratio and fraction at least 2.\n- inherit.py: fraction of daughters at least 2, five frames after birth.\n- speedstats.py: mean px per frame.\n\nZero-noise baselines through the same wrapper, T=500:\n\n| measure | seed 0 | seed 1 |\n|---|---|---|\n| persistent splits | 14 | 11 |\n| max generation | 3 | 3 |\n| merge/split | 0.095 | 0.10 |\n| swim-then-divide tracks | 4 | 2 |\n| best track (body lengths) | 7.09 (claim's track 25) | 4.47 |\n| ring both ratios \u22651.5 | 100% | 100% |\n| ring rim/out | 11.1 | 11.1 |\n| cargo in/out | 12.4 | 12.4 |\n| cargo fraction \u22652 | 100% | 100% |\n| daughters \u22652 | 100% | 100% |\n| speed (px/frame) | 0.87 | 0.84 |\n| bodies at end | 28 | 22 |\n\nThe claim at T=1000 reports 22 and 28 persistent splits, generations 3 and 5, 7 and 6 swim-then-divide tracks, cargo 10.8 and 10.5, and speed 0.8-0.9.\n\nDeciding controls used as detectability arms: passive twin (zeta=0, mar=0), mar=0, and kappa=0, which is the claim's wall-off arm (\"kappa = 0 is the wall ablation\"). The zeta=0, mar=40 twin was not run.",
+   "noise": [
+    {
+     "form": "none (zero-noise baseline, same wrapper)",
+     "sd": 0,
+     "seeds": "0,1",
+     "result": "14/11 persistent splits, generation 3/3, 4/2 swim-then-divide tracks, cargo 12.4/12.4, ring rim/out 11.1/11.1, daughters 100%, speed 0.87/0.84 px per frame."
+    },
+    {
+     "form": "plain: additive iid noise on phi, q1, q2, s, c",
+     "sd": 0.003,
+     "seeds": "0,1",
+     "result": "No visible effect. 17/14 splits, generation 3/3, 3/3 swim-then-divide tracks, cargo 11.6/11.6, rim/out 11.2/10.9, speed 0.77/0.90."
+    },
+    {
+     "form": "plain",
+     "sd": 0.01,
+     "seeds": "0,1",
+     "result": "No clear effect, within seed-to-seed spread. 14/15 splits, generation 2/4, 2/4 swim-then-divide tracks, cargo 11.0/11.6, rim/out 10.7/10.5, daughters 100%, speed 0.78/0.92."
+    },
+    {
+     "form": "plain",
+     "sd": 0.03,
+     "seeds": "0,1",
+     "result": "Degraded. Cargo in/out falls to 7.7/8.1 (-36%), rim/out to 9.4/9.3, merge/split rises to 0.31/0.39, speed rises to 1.07/1.01 (+23%). Splits 10/14, 2/2 swim-then-divide tracks, daughters 100%/97%. Sheet: rods form earlier (t\u224885 instead of 110-130) and the bath is grainy."
+    },
+    {
+     "form": "plain",
+     "sd": 0.1,
+     "seeds": "0,1",
+     "result": "Destroys the behaviour. Persistent splits 2/1, generation 1/1, merge/split 0.91/0.70, 1/0 swim-then-divide tracks. Cargo in/out 1.9/1.8 (fraction \u22652: 0.44/0.39), daughters 0%/0%, rim/out 6.3, speed 2.0/2.1 (2.4x). Sheet: speckled bath, fat irregular half-merged bodies."
+    },
+    {
+     "form": "plain (64\u00b2 screen, seed 0 only)",
+     "sd": 0.3,
+     "seeds": "0",
+     "result": "Non-finite at t=35. At sd 1.0, non-finite at t=5."
+    },
+    {
+     "form": "phys: conserved div-noise on phi, additive on q1 and q2, proportional on s and c",
+     "sd": 0.003,
+     "seeds": "0,1",
+     "result": "No effect. 14/15 splits, generation 3/4, 5/4 swim-then-divide tracks, cargo 11.8/12.4, speed 0.82/0.88."
+    },
+    {
+     "form": "phys",
+     "sd": 0.01,
+     "seeds": "0,1",
+     "result": "No effect. 15/16 splits, generation 3/4, 4/2 swim-then-divide tracks, ring 99%/100%, cargo 11.3/12.4, daughters 100%, speed 0.76/0.69. This level was used for detectability."
+    },
+    {
+     "form": "phys",
+     "sd": 0.03,
+     "seeds": "0,1",
+     "result": "No effect. 13/16 splits, generation 2/4, 5/2 swim-then-divide tracks, rim/out 11.2/11.1, cargo 11.0/11.7, daughters 100%, speed 0.75/0.82."
+    },
+    {
+     "form": "phys",
+     "sd": 0.1,
+     "seeds": "0,1",
+     "result": "Degraded, structure intact. Splits 10/12, merge/split 0.65/0.41, 1/2 swim-then-divide tracks, cargo 7.7/7.75, daughters 97%/95%, ring 99%, speed 0.84/0.90. Sheet: clean rods, normal formation timing, grainy bath."
+    },
+    {
+     "form": "phys",
+     "sd": 0.3,
+     "seeds": "0,1",
+     "result": "Destroys the behaviour. Seed 0 goes non-finite at t=310 (2 persistent splits out of 43 splits by then). Seed 1: 3 persistent splits out of 55, generation 1, merge/split 0.73, 1 swim-then-divide track, cargo 2.5, daughters 0%, rim/out 8.1, speed 1.34. Sheet: bodies nucleate by t=20-45 as short fuzzy stubs in a speckled bath."
+    },
+    {
+     "form": "phys (64\u00b2 screen, seed 0 only)",
+     "sd": 1,
+     "seeds": "0",
+     "result": "Non-finite at t=25."
+    },
+    {
+     "form": "single-field diagnostic, 64\u00b2, seed 0, from noise, 100 t",
+     "sd": 0.1,
+     "seeds": "0",
+     "result": "Cargo noise has zero back-action: v and bodies are identical to the noise-free run, but bath c rises from 0.004 to 0.13 at sd 0.1 and to 0.37 at sd 0.3, the clipping-at-zero hidden source. Additive s noise raises max |v| from 2.05 to 3.1 (sd 0.1), 7.1 (0.3) and 21 (1.0), and removes bodies at sd \u22650.3. Additive phi noise nucleates bodies (3 become 14-16) and blows up at sd 1.0. Conserved phi noise nucleates at 0.3 and blows up at 1.0. q1+q2 noise at 1.0 dissolves the bodies. Proportional s and c noise up to 1.0 showed no effect on these coarse measures."
+    }
+   ],
+   "noise_conclusion": "The pilot's main finding transfers only in part. Plain additive noise on concentrations clipped at zero again acts as a hidden source, but here it hits the cargo. Cargo noise fills the bath with cargo and drives the containment ratio from 12.4 to 1.8 at sd 0.1. Cargo acts back on nothing, so this damages the measure, not the dynamics. What destroys the dynamics is surfactant noise acting through the Marangoni stress: speed rises 2.4x and reproduction disappears at plain sd 0.1. Phi noise, plain or conserved, nucleates extra bodies.\n\nPlain additive noise is safe up to sd 0.01 per sqrt(t), degrades the behaviour at 0.03, destroys it at 0.1 and blows up by 0.3. The physical form (conserved phi, additive Q, proportional s and c) is safe up to 0.03, degrades at 0.1, destroys at 0.3 (non-finite on seed 0) and blows up at 1.0. The physical form therefore buys about a factor 3 in usable sd. That leaves roughly one decade (0.003-0.03) where the behaviour survives with nonzero noise.\n\nThis world tolerates more plain noise than phase_membrane did: plain sd 0.01 is harmless here, where it killed the pilot world.\n\nSwim-then-divide counts (2-5 tracks per seed at T=500) are too few to resolve dose effects below the destroying level. The best-track length on seed 0 drops from 7.09 to about 4 body lengths at any nonzero noise, including 0.003. That is because the particular record trajectory diverges in a chaotic world, not because swimming weakens: mean speed is unchanged up to 0.03.",
+   "pulses": [
+    "Method: from the prepared state (seed 0, t=300), noise-free. Injection lasts 20 t with sigma 2 px, at amplitudes 0.03, 0.3 and 3, at the centre, rim (tip) and bath sites. Each case is compared with an uninjected noise-free twin at t=20, 50 and 100. The target's descendants are tracked by overlap every 2.5 t; in the twin the target splits at t=85.",
+    "Controls: a phi pulse of amp 1e-4 at the centre leaves the twin's split time unchanged and keeps |\u0394phi| below 0.25 through t=100. Its peak difference grows 0.004, 0.007, 0.058 at t=20, 50, 100, about one e-fold per 24 t: the world is chaotic.",
+    "vx at centre, amp 3: exactly zero difference in every field at all marks. The velocity is derived; step() overwrites the stored v and never reads it.",
+    "c (cargo), all 9 cases: absorbed. phi, Q and s stay bit-identical to the twin. The response is exactly linear in amp (normalised L2 9.4, 94, 943 at t=20 for the centre pulses). It stays local (90% radius 3-17 px) and decays slowly, by a factor of about 5 from t=20 to t=100 at the centre. Even amp 3 never creates or kills a body.",
+    "phi, centre: amp 0.03 triggers the target's division early (t=57.5 instead of 85). Amp 0.3 triggers it at t=45 and fragments the target into up to 5 pieces. Amp 3 goes non-finite at t=20.",
+    "phi, rim: amp 0.03 delays the target's division past t=100. Amp 0.3 triggers it at t=45 with 4 pieces. Amp 3 goes non-finite at t=25.",
+    "phi, bath: amp 0.03 is absorbed (12 px changed at t=20, none at t=50). Amp 0.3 creates a body at the site, visible in the snapshot at t=20. Amp 3 goes non-finite at t=25.",
+    "q1, one tensor component, centre: amp 0.03 triggers division at t=67.5. Amp 0.3 reshapes the target with no division change. Amp 3 makes the target split at t=12.5 and re-merge at t=15. No blow-up: the cubic term saturates q1.",
+    "q1, rim: all three amplitudes delay the target's division past t=100.",
+    "q1, bath: amp 0.03 is absorbed. Amps 0.3 and 3 shift the division of the target 36 px away to t=77.5 and t=72.5, through far-field flow.",
+    "s (surfactant, Marangoni), centre: amp 0.03 triggers division at t=20 with an extra body by t=20. Amp 0.3 triggers division at t=5. Amp 3 goes non-finite at t=5 (the target is lost at t=2.5).",
+    "s, rim: amp 0.03 delays the target's division to t=100. Amp 0.3 causes a flow burst (max |v| 3.2 against 0.86 in the twin) that displaces bodies domain-wide: 1169 px changed, out to 69 px, by t=20. Amp 3 goes non-finite at t=2.5.",
+    "s, bath: amp 0.03 is absorbed. Amp 0.3 delays the target's division to t=97.5. Amp 3 goes non-finite at t=55.",
+    "Spread: the region where |\u0394phi| exceeds 0.25 reaches 2-17 px from the site at t=20 for body-changing amp-0.03 pulses, and 40-80 px for amp-0.3 phi or s pulses. Once a pulse changes a body, the difference reaches the whole domain by t=50-100, out to 70-90 px (90 px is the maximum periodic distance). Small far-field differences in s and c on distant bodies already appear at t=20 (snapshot of s centre 0.03), which is consistent with the unscreened far field of the flow solve.",
+    "Strict check: all 6 amp-3 blow-ups were re-run with a non-finite-only criterion and reproduced the same times. They are genuine numerical blow-ups."
+   ],
+   "pulse_conclusion": "In PhySim's amp range [0,3] with dur=20, the fields sort into four classes.\n\n| field | what a pulse does | blow-up at amp 3 |\n|---|---|---|\n| c (cargo) | perfectly passive, linear tracer; never changes a body | none |\n| v | inert (derived, overwritten every step) | none |\n| Q (one component) | moderate: reshapes, shifts division by 15-70 t, one transient split | none |\n| phi | 0.03: absorbed in the bath, early division at a body; 0.3: creates a body / fragments the target | t=20-25 at every site |\n| s (surfactant) | 0.03 at a body centre triggers division 65 t early; 0.3 at a rim causes a domain-wide flow burst | t=2.5 (rim), 5 (centre), 55 (bath) |\n\nThe surfactant is the most potent actuator. As in the pilot, amp 3 for 20 t is numerically unsafe, and here that holds for s even from the bath. The safe ceiling for s and phi is about amp 0.3, unless the world gets a CFL-limited time step; whether a smaller dt avoids the blow-ups was not tested.\n\nBecause the dynamics are chaotic (about one e-fold per 24 t), every body-changing pulse is domain-wide by 50-100 t. A pulse's effect is only local, and classifiable, within about 20-50 t. Later, the twin comparison mixes the pulse response with chaotic amplification.",
+   "detect": [
+    {
+     "arm": "kappa0 (wall off)",
+     "window": "15 t",
+     "ratio": 3.11,
+     "note": "Pilot-style score over all features: devices plus global, every feature scaled by the native ensemble's pooled sd. By group: device0 4.9, device1 2.2, global 7.7."
+    },
+    {
+     "arm": "kappa0 (wall off)",
+     "window": "50 t",
+     "ratio": 1.83,
+     "note": "By group: device0 2.2, device1 1.5, global 3.1."
+    },
+    {
+     "arm": "kappa0 (wall off)",
+     "window": "150 t",
+     "ratio": 1.58,
+     "note": "By group: device0 1.5, device1 1.5, global 2.1. Per field, the signal is only in c (25.9 / 5.0 / 1.0 at 15 / 50 / 150 t); every other field scores 0.9-2.0."
+    },
+    {
+     "arm": "kappa0, global sensor with per-time scaling",
+     "window": "15/50/150 t",
+     "ratio": 22.8,
+     "note": "66.9 / 38.1 / 22.8. The cargo-variance feature alone gives 119 / 44 / 19.4. At t=150 the global cargo variance is 0.004 under kappa0 against 0.257 \u00b1 0.009 (member sd) in the native ensemble."
+    },
+    {
+     "arm": "mar0",
+     "window": "15 t",
+     "ratio": 16.9,
+     "note": "By group: device0 31.0, device1 7.5, global 39.9."
+    },
+    {
+     "arm": "mar0",
+     "window": "50 t",
+     "ratio": 22.5,
+     "note": "By group: device0 23.6, device1 22.1, global 20.3."
+    },
+    {
+     "arm": "mar0",
+     "window": "150 t",
+     "ratio": 14.8,
+     "note": "By group: device0 7.9, device1 20.0, global 6.1 (per-time-scaled global 23.0). The variance of |v| falls about 4x."
+    },
+    {
+     "arm": "passive (zeta=0, mar=0)",
+     "window": "15 t",
+     "ratio": 14.9,
+     "note": "By group: device0 26.8, device1 6.2, global 65.1."
+    },
+    {
+     "arm": "passive (zeta=0, mar=0)",
+     "window": "50 t",
+     "ratio": 19.9,
+     "note": "By group: device0 24.8, device1 7.3, global 79.4."
+    },
+    {
+     "arm": "passive (zeta=0, mar=0)",
+     "window": "150 t",
+     "ratio": 12.8,
+     "note": "By group: device0 16.4, device1 5.8, global 58.6 (per-time-scaled global 247). Flow stops; the variances of c and s grow 6-11x."
+    }
+   ],
+   "detect_conclusion": "Setup: 8-member ensembles from the prepared state under physical-form noise at sd 0.01, a level the behaviour survives on both seeds. Readout every 2 t. Ratio = ES(native forecast vs ablation truth) / ES(native forecast vs independent native truth). Window nominal 15 t; actual readout prefix 16 t (8 readouts), as scored by score().\n\nThe two active-stress ablations are strongly detectable. mar=0 scores 6-40x and the passive twin 6-80x, in every sensor group, at 15, 50 and 150 t. The global sensor alone suffices for the passive twin.\n\nThe wall-off arm (kappa=0) is weakly detectable with the pilot's all-feature score: 3.1x at 15 t, falling to 1.6x at 150 t. Its effect lives entirely in cargo, which acts back on nothing; phi, Q, s and v are statistically identical (ratios about 1). The pilot's scoring dilutes that single channel among about 2400 chaotic probe features. Scoring the global cargo variance alone, or the global sensor with per-time scaling, separates kappa=0 at 19-119x.\n\nRatios generally fall from 50 t to 150 t because the native members themselves diverge chaotically. These figures are comparable to or above the pilot's 2-16x for the stress ablations, and below it for the wall ablation unless the scoring isolates cargo.",
+   "port_notes": "Observe:\n- phi: bodies, and the global phi variance.\n- q1 and q2 together, or |Q| plus the director angle. One component alone is frame-dependent.\n- s: the ring.\n- c: cargo. Its global variance is the decisive wall readout.\n- Derived flow (vx, vy, or vorticity), as observables only. The variance of |v| is a strong active-stress readout.\n\nDrive:\n- c is the safest and most interpretable actuator. It is linear and passive and has no back-action, so amp 0-3 is fine. Injecting cargo at a body centre and watching retention directly probes the wall.\n- s is the strongest actuator, through the Marangoni stress. Cap amp at about 0.3, use at most about 0.03 at a body, or shorten dur. Amp 3 blows up at every site.\n- phi is conserved except for a slow chemostat relaxation (kr=0.012 toward phi_b=-0.6), so a pulse adds body material. Amp 0.03 is absorbed in the bath, 0.3 creates a body, 3 blows up at t=20-25.\n- Q is a tensor. Expose an (amp, angle) pair that injects both components, or inject an isotropic increase of |Q|. Driving q1 alone fixes the director along x; at amp 3 it does not blow up.\n- v must not be an actuator: an injection has no effect because the field is recomputed every step.\n\nConserved: phi (approximately). Non-conserved: Q, s and c (reactive sources and decays). Derived: v, vorticity, |Q|.\n\nNoise: physical form (conserved phi noise, additive Q, proportional s and c) at sd at most 0.03 per sqrt(t); plain additive at most 0.01.\n\nWorld size: a 64\u00b2 run reproduced the behaviour in a single-seed screen (4 persistent splits, 2 swim-then-divide tracks, ring 100%, cargo 12.7, 100 frames) at 4.4x lower cost per step. It is a candidate size for ensembles; its fidelity is not otherwise established.\n\nMapping: world unit = 1 px. device0 then spans \u00b16 px, about one rod (4.5 px wide, 16 px long); device1 spans \u00b112 px.",
+   "images_viewed": [
+    "prep_s0.png: the prepared state at t=300. About 19 curved rods; |Q| ordered inside each; the s field outlines each rod as a ring; cargo concentrated as a thin line along each rod axis. Faint ripple texture in the bath in s and c. The sites and probe lattices sit where intended.",
+    "packs/b128_base_0_s0/sheet.png: round droplets nucleate from noise (t=45-110), stretch into rods by t=110-150, and multiply from about 10 rods to 28 by t=500. They become curved bananas after t\u2248350, with faint bath ripples late in the run.",
+    "packs/b128_plain_0.03_s0/sheet.png: rods form earlier than baseline (several by t=85); grainy pixel-scale bath; more numerous, shorter curved rods. The rod population survives.",
+    "packs/b128_plain_0.1_s0/sheet.png: heavy green/red speckle in the bath (s and c noise); bodies form by t=45; fat, irregular, half-merged blobs with diffuse pink cargo. The clean rod shape is lost.",
+    "packs/b128_phys_0.1_s0/sheet.png: orange/green grainy bath, but clean white rods with pink rims, forming on the baseline schedule. Visually intact.",
+    "packs/b128_phys_0.3_s1/sheet.png: dense speckled bath; bodies nucleate by t=20-45 as short, fuzzy stubby pieces with irregular edges, many fragments. The rod lifestyle is destroyed.",
+    "pulse_view_s-centre-0.03_phi-bath-0.3.png: for s at the centre, amp 0.03, |\u0394phi| is confined to the target at t=20, while faint |\u0394s| ring outlines and |\u0394c| axis lines already appear on distant rods; by t=50 many rods differ, and by t=100 every rod is displaced. For phi in the bath, amp 0.3, a new body is visible at the bottom-edge site at t=20; it interacts with its neighbours by t=50, and the difference is domain-wide by t=100."
+   ],
+   "caveats": [
+    "The noise battery ran to T=500, half the claim's T=1000, on 2 seeds. Swim-then-divide counts of 2-5 per seed are small numbers. Dose effects below the destroying level are judged mainly by cargo in/out, rim/out, merge/split and speed.",
+    "The plain sd 0.3 and physical sd 1.0 blow-ups, and the single-field diagnostic, come from 64\u00b2, single-seed, short runs. The diagnostic starts from noise, so it covers body formation, not a prepared state.",
+    "The physical noise form is my choice: conserved phi noise normalised to the same per-pixel sd as the additive form, and proportional rather than square-root (chemical-Langevin) noise on s and c. The square-root form was not tested.",
+    "Pulses and detectability used a single prepared state (seed 0, t=300), dilation 1 only, sigma 2 px and dur 20 t.",
+    "The pulse map is noise-free. Because the world is chaotic (about one e-fold per 24 t), its spread measures beyond about 50 t mix the pulse response with chaotic amplification.",
+    "The rim site is the rod tip. The flank rim was rejected because it is only 1.4 px from the centre.",
+    "Pulse outcome classes are heuristic. Target fate is from descendant overlap tracking every 2.5 t; 'body created' means a body at the bath site that the twin lacks.",
+    "Detectability ran at one noise level (physical sd 0.01), at 128\u00b2 only, with a 150 t maximum window and 8 members per arm. The zeta=0, mar=40 twin was not run. No injection was combined with detection. Windows are prefixes of the 150 t run; the nominal 15 t window is actually 16 t (8 readouts at 2 t).",
+    "Energy-score ratios depend strongly on feature scaling and dilution. With the pilot's pooled scaling, kappa=0 scores 1.6-3.1x; with per-time scaling or the cargo-variance feature it scores 19-119x. Both are reported.",
+    "Not established: whether a smaller dt or a CFL-limited step removes the amp-3 blow-ups; behaviour at other dilations, world sizes (beyond the one 64\u00b2 screen) or seeds for the pulse map; detectability at T greater than 150 t.",
+    "Shared CPU: step times include contention from the other agent on the machine."
+   ],
+   "files": [
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/mg_noise.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/apparatus.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/measure.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/runpack.sh",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/battery.sh",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/screen64.sh",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/fieldnoise.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/fieldnoise_64.txt",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/noise_table.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/noise_table.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/packs",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/screen64.log",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/out/prep_s0.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/out/pulse_log.txt",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/out/pulse_strict_log.txt",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/out/pulse_table.txt",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/out/pulse_table.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/pulse_table.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/out/score_s0_phys0.01_w150.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/out/score_extra_s0_phys0.01_w150.json",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/score_extra.py",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/out/det_s0_phys0.01_w150_native.npz",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/prep_s0.png",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/pulse_view_s-centre-0.03_phi-bath-0.3.png",
+    "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/pulse_view.py"
+   ]
+  },
+  "check": "**Review of the c34 Marangoni eval-readiness battery**\n\nMost numbers in the report match its files. All 20 rows of the T=500 noise battery match `noise_table.json` and the `claim_measures.json` files. The detect ratios match `score_s0_phys0.01_w150.json` and `score_extra_*.json`. The prep values, pulse event times, the strict blow-up re-runs, the 64\u00b2 screen and the field-noise diagnostic also match. The T=1000 claim figures match c34's `results.txt`.\n\nThe problems are in interpretation:\n- At 150 t, the wall-off arm (kappa=0) sits inside the null band.\n- One of the claim's deciding controls was never run.\n- The surfactant-noise mechanism is stated but was not tested.\n- Several \"no effect\" verdicts and pulse-spread ranges are worded more strongly than the data allow.\n\n**Issues, most severe first**\n\n1. **\"The wall-off arm (kappa=0) is weakly detectable \u2026 3.1x at 15 t, falling to 1.6x at 150 t\" and \"phi, Q, s and v are statistically identical (ratios about 1).\"**\n   - Verdict: overstated at 150 t, and the per-field figures were misread.\n   - Evidence: c acts back on nothing, and the noise uses the same number of random draws whatever c is. So under kappa0, phi, Q, s and v have exactly the native distribution, and their scores are a null measurement. At 150 t they score phi 1.57, q1 1.97, q2 1.26, s 1.84, vx 1.30, vy 1.08.\n   - I built a permutation null from the saved ensembles: 24 interchangeable members (native, truth, and kappa0 with the c features removed), 300 random splits into forecast, reference and test.\n   - 5\u201395% band of the ratio for all features except c: 0.96\u20131.04 at 15 t, 0.89\u20131.11 at 50 t, 0.64\u20131.62 (max 2.01) at 150 t.\n   - Device0 without c at 150 t: 0.57\u20131.78.\n   - kappa0 scores 1.58 (all features), 1.48 (device0) and 1.50 (device1) at 150 t, all inside the band. The c-field group itself scores 1.01 at 150 t.\n   - Corrected text: \"With the pilot's pooled score, kappa=0 is detectable at 15 t (3.1, null band 0.96\u20131.04) and 50 t (1.8, null 0.89\u20131.11). At 150 t it is not detectable from the probes or all features (1.5\u20131.6, inside the null band 0.6\u20131.6). Only the global group (2.1) still separates. The non-c fields under kappa=0 are an exact null, and their 0.9\u20132.0 spread is the noise floor of an 8-member ratio at 150 t.\"\n\n2. **\"Deciding controls used as detectability arms: passive twin (zeta=0, mar=0), mar=0, and kappa=0.\"**\n   - Verdict: incomplete.\n   - Evidence: the claim lists four deciding controls in `contribution.json`. The fourth is the ring control, chis=0 (from 20261026T0200-c34-rodsource, ablate_chis0). The report never mentions it. The ARMS dict in `apparatus.py` has no chis0 arm. zeta0 is in the dict but was not run (the report does say so).\n   - Corrected text: add \"The ring ablation (chis=0, the claim's B control) and the zeta=0, mar=40 twin were not run as detectability arms.\"\n\n3. **\"What destroys the dynamics is surfactant noise acting through the Marangoni stress\" and \"The physical form therefore buys about a factor 3 in usable sd.\"**\n   - Verdict: mechanism not tested; the comparison is confounded.\n   - Evidence: `world.py` clips the surfactant at zero, `s[\"s\"] = np.maximum(ifft2(Sh).real, 0)`, exactly as `_cargo` clips c. Plain additive s noise in the bath (s about 0.036 at prep, 0 early in a run) is therefore also rectified into a hidden source, the same artefact the report names for c. No mar=0 run under s noise was done to separate a Marangoni pathway from the rectified source.\n   - The \"physical\" form changes three things at once: it removes both clipped sources (s and c become proportional) and makes phi noise conserved. The conserved noise is also scaled to an arbitrary choice (same per-pixel sd).\n   - Corrected text: \"Additive s noise, which the world also clips at zero, raises speed 2.4x and removes reproduction at plain sd 0.1. Whether this acts through the Marangoni stress or through the rectified source was not separated. The roughly 3x gain of the physical form mainly reflects removing the two clipped additive sources; its size depends on how the conserved noise is normalised.\"\n\n4. **\"phys 0.01 / 0.03: No effect\" and \"mean speed is unchanged up to 0.03.\"**\n   - Verdict: worded too strongly.\n   - Evidence: cargo in/out falls steadily with sd on both seeds:\n\n     | sd | seed 0 | seed 1 |\n     |---|---|---|\n     | 0 | 12.43 | 12.43 |\n     | 0.003 | 11.77 | 12.41 |\n     | 0.01 | 11.33 | 12.36 |\n     | 0.03 | 10.98 | 11.74 |\n     | 0.1 | 7.67 | 7.75 |\n\n   - Physical-form sd 0.01 is 13% and 18% slower than baseline on seeds 0 and 1 (0.755 and 0.686 against 0.866 and 0.837).\n   - My seed-2 re-run gives only \u22123% for both speed and cargo. The seed-2 baseline cargo is 11.14 against 12.43 on seeds 0 and 1, so the spread between seeds or realisations is about 10%.\n   - Corrected text: \"No effect is resolvable at sd \u22640.03 with one realisation per seed. Cargo in/out drifts down 0\u201312% and speed varies by \u221218% to +5%, within a realisation spread of about 10% that was not measured directly.\"\n\n5. **The ablation arms start from the native prepared state.** The report does not say so.\n   - Evidence: under kappa0 the global cargo variance is already 0.0103 at the first readout (t=2), against 0.0859 in the native ensemble.\n   - Every ratio therefore measures the response to switching a mechanism off at t=0 from a native state, not the ablated world on its own prepared state. A hidden ablated world in PhySim would presumably start from its own prepared state.\n   - Corrected text: add this as a caveat.\n\n6. **\"Scoring the global cargo variance alone, or the global sensor with per-time scaling, separates kappa=0 at 19-119x.\"**\n   - Verdict: correct numbers, but the scoring choice was made after seeing the result.\n   - Evidence: the cargo-variance feature was chosen knowing that the mechanism lives in c. Per-time scaling divides by an 8-member sd that is tiny at early readouts, because all members start from one state with sd 0.01 noise.\n   - Corrected text: label both as post-hoc, and not as PhySim's fixed scoring.\n\n7. **\"Spread: \u2026 2-17 px from the site at t=20 for body-changing amp-0.03 pulses, and 40-80 px for amp-0.3 phi or s pulses.\"**\n   - Verdict: inaccurate.\n   - Evidence: s at the rim, amp 0.03 (division delayed) already reaches 40.3 px with 311 px changed at t=20. phi in the bath at amp 0.3 reaches 11.2 px; s in the bath at amp 0.3 reaches 0 px.\n   - Corrected text: \"2-17 px for body-changing amp-0.03 pulses at phi and Q sites, but 40 px for s at the rim; 53-69 px for amp-0.3 phi or s pulses at body sites, 0-11 px from the bath.\"\n\n8. **\"c \u2026 stays local (90% radius 3-17 px).\"**\n   - Verdict: slightly off. The 90% radius of the c difference reaches 21.1 px (rim) and 23.3 px (bath) at t=100.\n   - Corrected text: \"3-23 px.\"\n\n9. **Q pulses: \"shifts division by 15-70 t, one transient split\"; pulse table \"q1 centre 3: division triggered (t=12.5).\"**\n   - Verdict: inaccurate.\n   - Evidence:\n     - centre 0.03: 17.5 t early\n     - centre 0.3: no change\n     - bath 0.3: 7.5 t early\n     - bath 3: 12.5 t early\n     - all rim cases: delayed past t=100\n     - centre 3: splits at 12.5, re-merges at 15, then does not divide by t=100 (1 descendant against the twin's 2).\n   - Corrected text: \"advances division by 0-17.5 t or suppresses it past t=100; amp 3 at the centre gives a transient split and suppressed division.\"\n\n10. **phi row of the pulse table: \"0.03: absorbed in the bath, early division at a body.\"**\n    - Verdict: incomplete. phi at the rim, amp 0.03, suppresses division past t=100.\n    - Corrected text: \"early at the centre (57.5 instead of 85), suppressed at the rim.\"\n\n11. **mar0: \"The variance of |v| falls about 4x.\"**\n    - Verdict: off. The global sensor reports var(vx) and var(vy), not |v|. Their sum falls 3.0x (time mean 0.0272 to 0.0092; 0.0279 to 0.0093 at t=150).\n    - Corrected text: \"var(vx)+var(vy) falls 3x.\"\n\n12. **\"A 64\u00b2 run reproduced the behaviour.\"**\n    - Verdict: overstated. It is one seed with speed 0.611 against 0.84-0.89 at 128\u00b2 (\u221228%), best track 3.55 body lengths, maximum generation 2, and 8 bodies at the end.\n    - Corrected text: \"partly reproduced.\"\n\n13. **\"This world tolerates more plain noise than phase_membrane did.\"**\n    - Verdict: weak. The units do match: the pilot's dt is 1, so per step equals per sqrt(t). But in the pilot the clipped field fed back into the dynamics. Here the clipped cargo is passive, while the clipped surfactant does feed back (issue 3). Absolute sd values are also not comparable across worlds with different field scales.\n    - Corrected text: \"The c clip is harmless to the dynamics only because cargo is passive. This reflects which field is clipped, not general robustness to noise.\"\n\n14. **\"about one e-fold per 24 t: the world is chaotic.\"**\n    - Verdict: the evidence is thin. It comes from one perturbation on one state. The L2 difference gives 21-24 t per e-fold, but the peak |\u0394phi| took about 54 t per e-fold over t=20-50. The window spans the target's own division at t=85.\n    - Corrected text: \"One phi pulse of amp 1e-4 grows by about one e-fold per 21\u201324 t. That shows sensitive dependence on one state; it is not a Lyapunov estimate.\"\n\n15. **The pulse blow-up check covers phi, s and q1 only (not q2 or c).**\n    - Evidence: the first overflow warning in the strict log is in the cargo term exp(kappa\u00b7s), raised in the phi-centre amp-3 case. The cargo observables could therefore go non-finite before the recorded blow-up times. Not established either way.\n\n16. **Minor wording:**\n    - \"phys 0.1 \u2026 normal formation timing\": I saw rods already at t=85 on that sheet, earlier than the baseline (about 110).\n    - \"Best track drops \u2026 to about 4 body lengths\": the values are 3.7\u20135.8.\n    - Detect member cost \"63-71 s\": the mar0 members took 58\u201359 s.\n\n**Re-run**\n\nI ran two 128\u00b2 labkit packs on a fresh seed 2, T=500 (100 frames), through the unchanged `mg_noise.py` with `OMP_NUM_THREADS=1`, one process, into separate output directories. Each was then measured with its `measure.py`. The runs were the zero-noise baseline and the physical form at sd 0.01. Simulation took 189 s and 208 s.\n\n| measure | baseline | phys 0.01 |\n|---|---|---|\n| persistent splits | 17 | 15 |\n| max generation | 3 | 3 |\n| merge/split | 0.208 | 0.214 |\n| swim-then-divide tracks | 5 | 3 |\n| best track (body lengths) | 5.43 | 4.08 |\n| ring both ratios \u22651.5 | 100% | 100% |\n| ring rim/out | 11.03 | 11.19 |\n| cargo in/out | 11.14 | 10.84 |\n| daughters \u22652 | 100% | 100% |\n| speed (px/frame) | 0.889 | 0.861 |\n| bodies at end | 26 | 30 |\n\n- The baseline's best track, 5.43 body lengths, matches the claim's seed-2 track 4 exactly, so the wrapper is faithful at zero noise on a fresh seed.\n- \"No effect at physical sd 0.01\" reproduces. The \u221213% and \u221218% speed gaps on seeds 0 and 1 do not reproduce (\u22123% here).\n- The best track drops 5.43 \u2192 4.08, as the report describes.\n- On the sheets, the noisy run looks the same as the baseline until about t=150, then the rod layout diverges. The rods stay clean and curved, about 30 by t=500.\n- Without a re-simulation, I also re-analysed the saved detect ensembles: the permutation null in issue 1 and the variances in issue 11.\n- My CPU use was about 8 minutes in total.\n\n**Images I looked at**\n- `prep_s0.png`: about 19 curved rods, |Q| ordered inside each, s rings, c as a thin line along each axis; the sites and both probe lattices sit where the report says.\n- `b128_base_0_s0` sheet: droplets at t=45-110, rods by 110-130, about 28 curved rods by t=500.\n- `b128_plain_0.03_s0` sheet: rods by t=85, slightly grainy bath, the population intact.\n- `b128_plain_0.1_s0` sheet: speckled bath, fat irregular bodies.\n- `b128_phys_0.1_s0` sheet: grainy bath, clean rods present by t=85.\n- `b128_phys_0.3_s1` sheet: fuzzy stubs in a dense speckle.\n- The pulse view: matches the report, including faint |\u0394s| ring outlines and |\u0394c| axis lines on distant rods at t=20.\n- The seed-2 sheets from my re-run, as above.\n\n**Overall verdict**\n\nThe bookkeeping is accurate and the code is sound: the wrapper strips its keys correctly, the conserved-noise normalisation is right, and v is genuinely derived. The two stress ablations are robustly detectable at 6\u201380x, far above the null band. Correct the report before relying on it: the kappa=0 result at 150 t is noise, the ring control (chis=0) is missing, and the claim that surfactant noise acts through the Marangoni stress was never tested.\n\nFiles are in `/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni_review/`:\n- `run2.sh`\n- `run2.log`\n- `packs/b128_base_0_s2/` (includes `claim_measures.json` and `sheet.png`)\n- `packs/b128_phys_0.01_s2/` (includes `claim_measures.json` and `sheet.png`)"
+ }
+]

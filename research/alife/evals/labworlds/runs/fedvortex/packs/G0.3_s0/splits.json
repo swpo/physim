@@ -1,0 +1,193 @@
+{
+"pack": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/G0.3_s0",
+"persistent_splits": 12,
+"daughters_same_sign": 12,
+"daughters_other_sign": 0,
+"sign_unknown": 0,
+"merges_same_sign": 27,
+"merges_opposite_sign": 2,
+"merges_unknown": 0,
+"max_generation": 3,
+"splits": [
+{
+"frame": 11,
+"t": 33.0,
+"parent": 6,
+"children": [
+53,
+54
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 19,
+"t": 57.0,
+"parent": 25,
+"children": [
+62,
+63
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 99,
+"t": 297.0,
+"parent": 78,
+"children": [
+79,
+80
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 109,
+"t": 327.0,
+"parent": 76,
+"children": [
+82,
+83
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 150,
+"t": 450.0,
+"parent": 86,
+"children": [
+87,
+88
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 3
+},
+{
+"frame": 163,
+"t": 489.0,
+"parent": 85,
+"children": [
+91,
+92
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 246,
+"t": 738.0,
+"parent": 100,
+"children": [
+105,
+106
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 251,
+"t": 753.0,
+"parent": 103,
+"children": [
+108,
+109
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 276,
+"t": 828.0,
+"parent": 101,
+"children": [
+113,
+114
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 330,
+"t": 990.0,
+"parent": 121,
+"children": [
+124,
+125
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 345,
+"t": 1035.0,
+"parent": 126,
+"children": [
+127,
+128
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 2
+},
+{
+"frame": 348,
+"t": 1044.0,
+"parent": 123,
+"children": [
+129,
+130
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+}
+]
+}

@@ -1,0 +1,8 @@
+{
+ "module_128_ms": 18.05,
+ "runner_corr_128_ms": 21.69,
+ "runner_white_128_ms": 20.28,
+ "module_192_ms": 42.1,
+ "runner_corr_192_ms": 49.68,
+ "runner_white_192_ms": 44.68
+}

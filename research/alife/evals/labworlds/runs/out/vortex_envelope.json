@@ -1,0 +1,177 @@
+[
+ {
+  "field": "om",
+  "gain": 1.0,
+  "finite": false,
+  "error": "simulation produced non-finite fields",
+  "secs": 1.1
+ },
+ {
+  "field": "om",
+  "gain": 0.1,
+  "finite": true,
+  "centre": [
+   1.5706,
+   1.7069,
+   1.4752
+  ],
+  "centre_sham": [
+   0.1885,
+   0.1336,
+   0.019
+  ],
+  "global_var": [
+   0.00678,
+   0.02601
+  ],
+  "global_var_sham": [
+   0.00246,
+   0.02243
+  ],
+  "secs": 6.0
+ },
+ {
+  "field": "om",
+  "gain": 0.01,
+  "finite": true,
+  "centre": [
+   0.3357,
+   0.3206,
+   0.3015
+  ],
+  "centre_sham": [
+   0.1885,
+   0.1336,
+   0.019
+  ],
+  "global_var": [
+   0.00259,
+   0.02347
+  ],
+  "global_var_sham": [
+   0.00246,
+   0.02243
+  ],
+  "secs": 6.1
+ },
+ {
+  "field": "om",
+  "gain": 0.001,
+  "finite": true,
+  "centre": [
+   0.2077,
+   0.167,
+   0.066
+  ],
+  "centre_sham": [
+   0.1885,
+   0.1336,
+   0.019
+  ],
+  "global_var": [
+   0.00247,
+   0.02253
+  ],
+  "global_var_sham": [
+   0.00246,
+   0.02243
+  ],
+  "secs": 6.4
+ },
+ {
+  "field": "Y",
+  "gain": 1.0,
+  "finite": true,
+  "centre": [
+   0.2174,
+   0.2593,
+   0.286
+  ],
+  "centre_sham": [
+   0.3004,
+   0.3664,
+   0.524
+  ],
+  "global_var": [
+   0.00463,
+   0.02492
+  ],
+  "global_var_sham": [
+   0.00246,
+   0.02243
+  ],
+  "secs": 7.1
+ },
+ {
+  "field": "Y",
+  "gain": 0.1,
+  "finite": true,
+  "centre": [
+   0.2695,
+   0.2802,
+   0.4161
+  ],
+  "centre_sham": [
+   0.3004,
+   0.3664,
+   0.524
+  ],
+  "global_var": [
+   0.00272,
+   0.02327
+  ],
+  "global_var_sham": [
+   0.00246,
+   0.02243
+  ],
+  "secs": 6.1
+ },
+ {
+  "field": "Y",
+  "gain": 0.01,
+  "finite": true,
+  "centre": [
+   0.3138,
+   0.3466,
+   0.537
+  ],
+  "centre_sham": [
+   0.3004,
+   0.3664,
+   0.524
+  ],
+  "global_var": [
+   0.00249,
+   0.02255
+  ],
+  "global_var_sham": [
+   0.00246,
+   0.02243
+  ],
+  "secs": 6.2
+ },
+ {
+  "field": "Y",
+  "gain": 0.001,
+  "finite": true,
+  "centre": [
+   0.3022,
+   0.3643,
+   0.5252
+  ],
+  "centre_sham": [
+   0.3004,
+   0.3664,
+   0.524
+  ],
+  "global_var": [
+   0.00246,
+   0.02245
+  ],
+  "global_var_sham": [
+   0.00246,
+   0.02243
+  ],
+  "secs": 6.0
+ }
+]

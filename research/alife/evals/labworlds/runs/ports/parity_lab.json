@@ -1,0 +1,180 @@
+{
+ "demo_pulseK_50tu": {
+  "members": 2,
+  "cpu_s": {
+   "OracleRunner": 11.8,
+   "LabOracleRunner(oracle)": 11.8,
+   "LabOracleRunner.wrap": 12.0
+  },
+  "identical_to_OracleRunner": {
+   "LabOracleRunner(oracle)": true,
+   "LabOracleRunner.wrap": true
+  },
+  "OracleRunner_vs_saved_demo_forecast": {
+   "identical": true,
+   "max_abs": 0.0
+  },
+  "LabOracleRunner_vs_saved_demo_forecast": true,
+  "shapes": [
+   [
+    2,
+    50,
+    4,
+    13
+   ],
+   [
+    2,
+    50,
+    4,
+    19
+   ],
+   [
+    2,
+    50,
+    4,
+    2
+   ]
+  ]
+ },
+ "rich_permuted": {
+  "members": 3,
+  "horizon_tu": 20.0,
+  "port_perm": [
+   2,
+   0,
+   3,
+   1
+  ],
+  "identical_to_OracleRunner": {
+   "LabOracleRunner(oracle)": true,
+   "LabOracleRunner.wrap": true
+  },
+  "members_differ": true,
+  "actions": [
+   {
+    "t": 0.0,
+    "kind": "inject",
+    "device": 0,
+    "port": 0,
+    "amp": 3.0,
+    "dur": 4.0
+   },
+   {
+    "t": 0.0,
+    "kind": "adjust",
+    "device": 1,
+    "u": [
+     0.5,
+     -0.3,
+     0.2
+    ]
+   },
+   {
+    "t": 2.0,
+    "kind": "inject",
+    "device": 1,
+    "port": 3,
+    "amp": 1.5,
+    "dur": 6.0
+   },
+   {
+    "t": 4.0,
+    "kind": "inject",
+    "device": 0,
+    "port": 2,
+    "amp": 0.0,
+    "dur": 2.0
+   },
+   {
+    "t": 5.0,
+    "kind": "adjust",
+    "device": 0,
+    "u": [
+     -1.0,
+     1.0,
+     -0.5
+    ]
+   },
+   {
+    "t": 6.0,
+    "kind": "inject",
+    "device": 0,
+    "port": 1,
+    "amp": 2.0,
+    "dur": 3.0
+   },
+   {
+    "t": 10.0,
+    "kind": "inject",
+    "device": 1,
+    "port": 0,
+    "amp": 3.0,
+    "dur": 10.0
+   },
+   {
+    "t": 10.0,
+    "kind": "adjust",
+    "device": 1,
+    "u": [
+     0.0,
+     0.7,
+     0.0
+    ]
+   },
+   {
+    "t": 12.0,
+    "kind": "inject",
+    "device": 0,
+    "port": 3,
+    "amp": 0.7,
+    "dur": 0.02
+   }
+  ],
+  "queries": [
+   {
+    "sensor": "device0",
+    "t": [
+     0.0,
+     0.02,
+     3.98,
+     4.0,
+     4.02,
+     10.0,
+     12.02,
+     20.0
+    ]
+   },
+   {
+    "sensor": "device1",
+    "t": [
+     0.0,
+     5.0,
+     10.0,
+     20.0
+    ]
+   },
+   {
+    "sensor": "global",
+    "t": [
+     0.0,
+     2.5,
+     7.5,
+     20.0
+    ]
+   }
+  ]
+ },
+ "protocol_errors": {
+  "identical": true,
+  "messages": [
+   "ProtocolError: actions[0].port must be [0, 3]",
+   "ProtocolError: actions[0].amp must be in [0, 3]",
+   "ProtocolError: actions[0].dur must be in (0, 50]",
+   "ProtocolError: actions[0].t must be on the dt=0.02 grid",
+   "ProtocolError: overlapping inject intervals for device 0 are unsupported",
+   "ProtocolError: actions[0].port must be an integer (not bool or float)",
+   "ProtocolError: queries[0].sensor is not in the anonymous roster"
+  ]
+ },
+ "cpu_s_total": 57.6
+}

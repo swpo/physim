@@ -1,0 +1,36 @@
+{
+ "blobround6._native_oracle": "unavailable: ImportError: cannot import name 'blobcore' from 'physim' (/home/user/swpo/residency-environments/environments/physim/physim/__init__.py)",
+ "world": {
+  "genome": "gt_bf",
+  "n_ports": 4,
+  "grid": [
+   4,
+   256,
+   256
+  ]
+ },
+ "rich_permuted": {
+  "members": 2,
+  "horizon_tu": 20.0,
+  "cpu_s": {
+   "OracleRunner": 8.8,
+   "LabOracleRunner.wrap": 8.4,
+   "LabOracleRunner(direct)": 9.0
+  },
+  "identical_to_OracleRunner": {
+   "LabOracleRunner.wrap": true,
+   "LabOracleRunner(direct)": true
+  },
+  "members_differ": true
+ },
+ "protocol_errors": {
+  "identical": true
+ },
+ "native_signed_row0_global_mean_delta_at_2tu": {
+  "observed_port": 1,
+  "plus": 0.003974556922912598,
+  "minus": -0.005581498146057129,
+  "expected_first_order": 0.009203884727313847
+ },
+ "cpu_s_total": 27.9
+}

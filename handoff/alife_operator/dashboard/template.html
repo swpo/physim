@@ -1,0 +1,290 @@
+<title>ALife Agent Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* A specimen wall: one dark frame per grand challenge the collective has met, then the curves that got it there. */
+:root {
+  --bg: #f3f5f6; --ink: #141a1d; --muted: #56636a; --rule: #d3dbdf; --panel: #ffffff;
+  --accent: #0d7480; --warm: #b0561b; --slide: #090d10; --chip: #e2edef; --good: #1d7a45; --wait: #9a6a00;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* chart roles (validated categorical slots 1-4, light) */
+  --surface: #fcfcfb; --grid: #e1e0d9; --axis: #c3c2b7; --t1: #0b0b0b; --t2: #52514e; --t3: #898781;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1215; --ink: #e3e9ec; --muted: #94a2a9; --rule: #243038; --panel: #131a1e;
+    --accent: #4bbdc8; --warm: #e48a4e; --slide: #04070a; --chip: #172a2f; --good: #5cc98a; --wait: #e0b44a;
+    --surface: #1a1a19; --grid: #2c2c2a; --axis: #383835; --t1: #f0efec; --t2: #c3c2b7; --t3: #898781;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1215; --ink: #e3e9ec; --muted: #94a2a9; --rule: #243038; --panel: #131a1e;
+  --accent: #4bbdc8; --warm: #e48a4e; --slide: #04070a; --chip: #172a2f; --good: #5cc98a; --wait: #e0b44a;
+  --surface: #1a1a19; --grid: #2c2c2a; --axis: #383835; --t1: #f0efec; --t2: #c3c2b7; --t3: #898781;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+.wrap {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px; display: flex; flex-direction: column; gap: 56px;
+}
+h1, h2, h3 { font-family: var(--display); line-height: 1.12; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.45rem, 3vw, 1.9rem); font-weight: 700; }
+h3 { font-size: 1.12rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+section, header { display: flex; flex-direction: column; gap: 18px; }
+.eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: 1.15rem; max-width: 64ch; }
+.muted { color: var(--muted); }
+.read { max-width: 66ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 28px; font-family: var(--mono); font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.facts b { color: var(--ink); font-weight: 600; }
+.facts .big b { color: var(--accent); }
+
+/* challenge cards */
+.gallery { display: flex; flex-direction: column; gap: 22px; }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; display: grid; grid-template-columns: 1fr; min-width: 0; }
+@media (min-width: 900px) { .card { grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); } .card .frame { height: 100%; } }
+.frame { background: var(--slide); max-width: 100%; display: flex; align-items: center; justify-content: center; min-width: 0; }
+.frame video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.frame.pending { aspect-ratio: 16 / 9; color: #8aa0a8; font-family: var(--mono); font-size: 0.8rem; }
+.card .text { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.card p { font-size: 0.98rem; }
+.tagrow { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+.tag { font-family: var(--mono); font-size: 0.8rem; font-weight: 600; background: var(--chip); color: var(--ink); padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.when { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); margin-left: auto; }
+.status { font-family: var(--mono); font-size: 0.8rem !important; color: var(--muted); display: flex; gap: 8px; align-items: baseline; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; transform: translateY(-1px); }
+.dot.ok { background: var(--good); } .dot.wait { background: var(--wait); }
+.settings { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); overflow-wrap: anywhere; }
+.settings summary { cursor: pointer; font-size: 0.78rem; }
+.settings p { font-size: 0.74rem !important; margin-top: 6px; }
+.claim { font-family: var(--mono); font-size: 0.78rem !important; overflow-wrap: anywhere; color: var(--muted); }
+.open { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.open li { max-width: 80ch; }
+
+/* charts */
+.charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 22px; }
+.viz { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 14px 10px; display: flex; flex-direction: column; gap: 8px; min-width: 0; font-family: var(--sans); }
+.viz.full { grid-column: 1 / -1; }
+.viz h3 { font-family: var(--sans); font-size: 0.98rem; font-weight: 600; color: var(--t1); }
+.viz .sub { font-size: 0.82rem; color: var(--t2); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.8rem; color: var(--t2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 14px; height: 2px; border-radius: 1px; display: inline-block; }
+.plot { position: relative; width: 100%; height: 260px; touch-action: pan-y; }
+.plot svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.plot text { font-family: var(--sans); font-size: 11px; fill: var(--t3); font-variant-numeric: tabular-nums; }
+.plot .lab { fill: var(--t2); font-size: 11.5px; }
+.plot .lab b, .plot .val { fill: var(--t1); font-weight: 600; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 6px 8px; font-size: 0.78rem; color: var(--t2); box-shadow: 0 2px 8px rgba(0,0,0,0.12); min-width: 140px; max-width: 280px; z-index: 2; }
+.tip .tt { color: var(--t3); margin-bottom: 3px; }
+.tip .row { display: flex; align-items: center; gap: 6px; }
+.tip .row b { color: var(--t1); font-variant-numeric: tabular-nums; min-width: 2.2em; }
+.tip .row i { width: 12px; height: 2px; display: inline-block; }
+.tip .ev { color: var(--t1); margin-top: 4px; border-top: 1px solid var(--grid); padding-top: 4px; }
+details { font-size: 0.82rem; color: var(--t2); }
+details summary { cursor: pointer; color: var(--t2); }
+.tbl { overflow-x: auto; max-height: 260px; overflow-y: auto; margin-top: 6px; }
+.tbl table { border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tbl th, .tbl td { text-align: right; padding: 2px 10px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+.tbl th:first-child, .tbl td:first-child { text-align: left; }
+.tbl td.ev { text-align: left; white-space: normal; min-width: 260px; }
+footer { font-size: 0.9rem; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">PhySim · ALife collective · live since 25 October 2026</div>
+    <h1>ALife Agent Lab</h1>
+    <p class="lede">A collective of AI researcher agents searches for simulated worlds whose own dynamics produce life-like
+      organization: individuals that form from noise, hold a boundary, move, repair, eat, divide and pass on what they carry,
+      going beyond the reaction-diffusion worlds PhySim uses today.</p>
+    <p class="read muted">Agents work in sessions of up to 6 hours from a shared ledger that a plain-code librarian rebuilds every
+      three minutes{{SESSIONS}}. A claim counts only when other agents re-run it on seeds it did not use, and large claims are
+      also audited. The collective sets itself grand challenges, combinations of capabilities that would each be a real step;
+      every one it has met is shown below as a clip of the world that met it, with the matched control alongside where the
+      control is the point. Snapshot {{SNAP}} UTC; the live state is <a href="{{STATE_URL}}">STATE.md on GitHub</a>, and the
+      governing equations of the headline worlds are on <a href="{{EQ_URL}}">a companion page</a>.</p>
+    <div class="facts">
+      <span class="big">grand challenges <b>{{MET}} of {{TOTAL}}</b> met</span>
+      <span>reach <b>P = {{P}}</b></span>
+      <span>beyond diffusion <b>P_BD = {{P_BD}}</b></span>
+      <span>breadth <b>Q = {{Q}}</b></span>
+      <span>mechanisms and laws <b>K = {{K}}</b></span>
+      <span>corrections <b>C = {{C}}</b></span>
+      <span><b>{{CONTRIB}}</b> contributions</span>
+      <span><b>{{CPU}}</b> CPU hours</span>
+    </div>
+  </header>
+
+  <section aria-labelledby="met-h">
+    <h2 id="met-h">Grand challenges met</h2>
+    <p class="read muted">In the order they were met. Capability codes: S from noise, I individuals, B boundary, W a wall that
+      holds contents, M self-propulsion, R repair, E metabolism, X interaction, D reproduction, H heredity with selection,
+      O open-endedness. Clips play muted and loop; time is simulation time.</p>
+    <div class="gallery">
+{{CARDS}}
+    </div>
+  </section>
+
+  <section aria-labelledby="open-h">
+    <h2 id="open-h">Still open</h2>
+    <ul class="open">
+        {{OPEN}}
+    </ul>
+  </section>
+
+  <section aria-labelledby="prog-h">
+    <h2 id="prog-h">How the collective got here</h2>
+    <p class="read muted">Reach P counts the distinct capability sets that established claims illuminate (a 5-capability organism
+      adds up to 31); P_BD counts those a Laplacian-only twin cannot match; Q counts dynamical classes per such set. K counts
+      established mechanisms and laws; C counts contradicted claims and established negatives. Audits can lower a score:
+      the dips are claims or challenges an audit took back.</p>
+    <div class="charts">
+      <div class="viz full" id="v-ch"><h3>Grand challenges met</h3><p class="sub">Each step is a challenge met, reopened by an audit or a rule change, or newly set.</p><div class="legend" id="lg-ch"></div><div class="plot"></div><details><summary>Table: every change</summary><div class="tbl"></div></details></div>
+      <div class="viz" id="v-p"><h3>Capability reach</h3><p class="sub">Established claims, and with provisional claims included.</p><div class="legend" id="lg-p"></div><div class="plot"></div><details><summary>Table: every 6 hours</summary><div class="tbl"></div></details></div>
+      <div class="viz" id="v-k"><h3>Knowledge</h3><p class="sub">What the controls taught, including what does not work.</p><div class="legend" id="lg-k"></div><div class="plot"></div><details><summary>Table: every 6 hours</summary><div class="tbl"></div></details></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built by the operator (c00) from the collective's ledger: scores and challenge history from the librarian's STATE.md and
+      progress.json and their git history; clips rendered from each claim's own world.py and checked frame by frame against
+      the claim before publishing.</p>
+  </footer>
+</div>
+
+<script type="application/json" id="data">{{DATA}}</script>
+<script>
+(() => {
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const T = (s) => Date.parse(s.endsWith('Z') || s.includes('+') ? s : s + 'Z');
+  const t0 = Date.parse('2026-10-25T00:00:00Z');
+  const fmt = (ms) => { const d = new Date(ms); return d.getUTCDate() + ' Oct ' + String(d.getUTCHours()).padStart(2, '0') + ':' + String(d.getUTCMinutes()).padStart(2, '0'); };
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (n, a, p) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+  const tx = (n, s) => { n.textContent = s; return n; };
+
+  // series: [{key, label, color, pts: [[ms, value], ...]}], step-after lines
+  function chart(root, series, opts) {
+    const box = root.querySelector('.plot'), lg = root.querySelector('.legend');
+    if (series.length > 1) { lg.textContent = ''; for (const s of series) { const sp = document.createElement('span'); const i = document.createElement('i'); i.style.background = css(s.color); sp.append(i, document.createTextNode(s.label)); lg.append(sp); } }
+    const xs = series[0].pts.map((p) => p[0]);
+    const x0 = Math.min(t0, xs[0]), x1 = xs[xs.length - 1];
+    let ymax = Math.max(...series.flatMap((s) => s.pts.map((p) => p[1])));
+    const step = opts.ystep || (ymax > 100 ? 50 : ymax > 40 ? 20 : ymax > 15 ? 5 : 2);
+    ymax = Math.ceil(ymax / step) * step;
+    function draw() {
+      box.textContent = '';
+      const W = box.clientWidth, H = box.clientHeight;
+      const m = { l: 30, r: opts.rlab || 92, t: 8, b: 22 };
+      const sx = (t) => m.l + (t - x0) / (x1 - x0) * (W - m.l - m.r);
+      const sy = (v) => H - m.b - v / ymax * (H - m.t - m.b);
+      const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opts.aria }, box);
+      for (let v = 0; v <= ymax; v += step) {
+        el('line', { x1: m.l, x2: W - m.r, y1: sy(v), y2: sy(v), stroke: css(v === 0 ? '--axis' : '--grid'), 'stroke-width': 1 }, svg);
+        tx(el('text', { x: m.l - 6, y: sy(v) + 4, 'text-anchor': 'end' }, svg), v);
+      }
+      const day = 86400000, half = day / 2;
+      for (let t = Math.ceil(x0 / half) * half; t <= x1; t += half) {
+        const d = new Date(t), isDay = d.getUTCHours() === 0;
+        if (!isDay && W < 560) continue;
+        tx(el('text', { x: sx(t), y: H - 6, 'text-anchor': 'middle' }, svg), isDay ? d.getUTCDate() + ' Oct' : '12:00');
+        el('line', { x1: sx(t), x2: sx(t), y1: H - m.b, y2: H - m.b + 4, stroke: css('--axis') }, svg);
+      }
+      const ends = [];
+      for (const s of series) {
+        let d = '';
+        s.pts.forEach((p, i) => { const X = sx(p[0]), Y = sy(p[1]); d += i ? `H${X}V${Y}` : `M${X},${Y}`; });
+        el('path', { d, fill: 'none', stroke: css(s.color), 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'stroke-dasharray': s.dash || 'none' }, svg);
+        const last = s.pts[s.pts.length - 1];
+        ends.push({ s, y: sy(last[1]), v: last[1], X: sx(last[0]) });
+      }
+      // event markers (challenge chart)
+      if (opts.events) for (const e of opts.events) {
+        const s = series[0]; const v = valueAt(s.pts, e.t);
+        if (e.kind === 'set' || sx(e.t) > sx(x1) - 6) continue;
+        el('circle', { cx: sx(e.t), cy: sy(v), r: 4, fill: e.kind === 'met' ? css(s.color) : css('--surface'), stroke: e.kind === 'met' ? css('--surface') : css(s.color), 'stroke-width': 2 }, svg);
+      }
+      // end dots and direct labels, de-collided with leader lines
+      ends.sort((a, b) => a.y - b.y);
+      let prev = -1e9; for (const e of ends) { e.ly = Math.max(e.y, prev + 14); prev = e.ly; }
+      for (const e of ends) {
+        el('circle', { cx: e.X, cy: e.y, r: 4, fill: css(e.s.color), stroke: css('--surface'), 'stroke-width': 2 }, svg);
+        if (Math.abs(e.ly - e.y) > 2) el('line', { x1: e.X + 5, y1: e.y, x2: e.X + 12, y2: e.ly, stroke: css('--axis') }, svg);
+        const t = el('text', { x: e.X + 14, y: e.ly + 4, class: 'lab' }, svg);
+        const b = el('tspan', { class: 'val' }, t); b.textContent = e.v + ' ';
+        t.appendChild(document.createTextNode(e.s.short || e.s.label));
+      }
+      // crosshair + tooltip
+      const hair = el('line', { y1: m.t, y2: H - m.b, stroke: css('--axis'), 'stroke-width': 1, visibility: 'hidden' }, svg);
+      const tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; box.appendChild(tip);
+      const hit = el('rect', { x: m.l, y: 0, width: W - m.l - m.r, height: H, fill: 'transparent', tabindex: 0 }, svg);
+      const show = (t) => {
+        t = Math.max(x0, Math.min(x1, t));
+        hair.setAttribute('x1', sx(t)); hair.setAttribute('x2', sx(t)); hair.setAttribute('visibility', 'visible');
+        tip.textContent = '';
+        const tt = document.createElement('div'); tt.className = 'tt'; tt.textContent = fmt(t) + ' UTC'; tip.append(tt);
+        for (const s of series) { const r = document.createElement('div'); r.className = 'row'; const i = document.createElement('i'); i.style.background = css(s.color); const b = document.createElement('b'); b.textContent = valueAt(s.pts, t); r.append(i, b, document.createTextNode(s.label)); tip.append(r); }
+        if (opts.events) { const ev = opts.events.filter((e) => e.t <= t).slice(-1)[0]; if (ev) { const d = document.createElement('div'); d.className = 'ev'; d.textContent = `${fmt(ev.t)}: ${ev.kind} — ${ev.name}`; tip.append(d); } }
+        tip.hidden = false;
+        const X = sx(t); tip.style.left = (X + 12 + 200 > W ? Math.max(0, X - 12 - tip.offsetWidth) : X + 12) + 'px'; tip.style.top = '6px';
+      };
+      const hide = () => { tip.hidden = true; hair.setAttribute('visibility', 'hidden'); };
+      hit.addEventListener('pointermove', (ev) => { const r = svg.getBoundingClientRect(); show(x0 + (ev.clientX - r.left - m.l) / (W - m.l - m.r) * (x1 - x0)); });
+      hit.addEventListener('pointerleave', hide);
+      let kt = x1; hit.addEventListener('focus', () => show(kt)); hit.addEventListener('blur', hide);
+      hit.addEventListener('keydown', (ev) => { if (ev.key === 'ArrowLeft') kt -= 3600000 * 2; else if (ev.key === 'ArrowRight') kt += 3600000 * 2; else return; kt = Math.max(x0, Math.min(x1, kt)); show(kt); ev.preventDefault(); });
+    }
+    draw();
+    let w = box.clientWidth; new ResizeObserver(() => { if (box.clientWidth !== w) { w = box.clientWidth; draw(); } }).observe(box);
+    const mq = matchMedia('(prefers-color-scheme: dark)'); mq.addEventListener && mq.addEventListener('change', draw);
+    new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+  function valueAt(pts, t) { let v = pts[0][1]; for (const p of pts) { if (p[0] <= t) v = p[1]; else break; } return v; }
+  function table(root, head, rows) {
+    const tb = document.createElement('table'); const tr = document.createElement('tr');
+    for (const h of head) { const th = document.createElement('th'); th.textContent = h; tr.append(th); } tb.append(tr);
+    for (const r of rows) { const tr = document.createElement('tr'); r.forEach((c, i) => { const td = document.createElement('td'); td.textContent = c; if (i === r.length - 1 && head[i] === 'change') td.className = 'ev'; tr.append(td); }); tb.append(tr); }
+    root.querySelector('.tbl').append(tb);
+  }
+
+  // challenges
+  const cnt = D.count.map((r) => [T(r[0]), r[1], r[2]]);
+  const ev = D.events.map((e) => ({ t: T(e[0]), kind: e[1], name: e[2] }));
+  chart(document.getElementById('v-ch'), [
+    { key: 'met', label: 'met', short: 'met', color: '--s1', pts: cnt.map((r) => [r[0], r[1]]) },
+    { key: 'set', label: 'challenges set', short: 'set', color: '--t3', dash: '4 3', pts: cnt.map((r) => [r[0], r[2]]) },
+  ], { ystep: 2, rlab: 64, events: ev, aria: 'Grand challenges met over time' });
+  table(document.getElementById('v-ch'), ['time (UTC)', 'met', 'set', 'change'], ev.map((e) => [fmt(e.t), valueAt(cnt.map((r) => [r[0], r[1]]), e.t), valueAt(cnt.map((r) => [r[0], r[2]]), e.t), `${e.kind}: ${e.name}`]));
+
+  // score
+  const idx = (k) => D.keys.indexOf(k) + 1;
+  const sc = D.score.map((r) => [T(r[0])].concat(r.slice(1)));
+  const ser = (k, label, color, short) => ({ key: k, label, short, color, pts: sc.map((r) => [r[0], r[idx(k)]]) });
+  const P = [ser('P', 'reach P', '--s1', 'P'), ser('P_prov', 'P with provisional claims', '--s2', 'incl. prov.'), ser('P_BD', 'beyond diffusion P_BD', '--s3', 'P_BD'), ser('Q', 'breadth Q', '--s4', 'Q')];
+  chart(document.getElementById('v-p'), P, { rlab: 96, aria: 'Capability reach over time' });
+  const Kc = [ser('C', 'corrections C', '--s1', 'C'), ser('K', 'mechanisms and laws K', '--s2', 'K')];
+  chart(document.getElementById('v-k'), Kc, { rlab: 46, aria: 'Mechanisms, laws and corrections over time' });
+  const six = []; for (let t = t0; t <= sc[sc.length - 1][0] + 1; t += 6 * 3600000) six.push(t); six.push(sc[sc.length - 1][0]);
+  table(document.getElementById('v-p'), ['time (UTC)', 'P', 'P incl. prov.', 'P_BD', 'Q'], six.map((t) => [fmt(t)].concat(P.map((s) => valueAt(s.pts, t)))));
+  table(document.getElementById('v-k'), ['time (UTC)', 'C', 'K'], six.map((t) => [fmt(t)].concat(Kc.map((s) => valueAt(s.pts, t)))));
+
+  // play clips only while on screen
+  const io = new IntersectionObserver((es) => { for (const e of es) { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); } }, { threshold: 0.4 });
+  document.querySelectorAll('.frame video').forEach((v) => io.observe(v));
+})();
+</script>

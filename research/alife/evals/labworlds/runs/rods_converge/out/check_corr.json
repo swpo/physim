@@ -1,0 +1,54 @@
+{
+ "default_identical_bytes": true,
+ "members_differ": true,
+ "declaration_without_noise_corr_unchanged": true,
+ "rng_state_equal_after_2_ticks": true,
+ "stats": {
+  "additive dx=1 n=128 ell=2": {
+   "var": 0.9985,
+   "max_abs_sum": 3190.846884590037,
+   "cov": {
+    "1.0": 0.9409,
+    "2.0": 0.7802,
+    "4.0": 0.3692
+   },
+   "cov_expected": {
+    "1.0": 0.9394,
+    "2.0": 0.7788,
+    "4.0": 0.3679
+   }
+  },
+  "additive dx=0.5 n=256 ell=2": {
+   "var": 0.9995,
+   "max_abs_sum": 10295.39423930705,
+   "cov": {
+    "1.0": 0.9418,
+    "2.0": 0.7808,
+    "4.0": 0.3689
+   },
+   "cov_expected": {
+    "1.0": 0.9394,
+    "2.0": 0.7788,
+    "4.0": 0.3679
+   }
+  },
+  "conserved dx=1 n=128 ell=2": {
+   "var": 1.0012,
+   "max_abs_sum": 1.9184653865522705e-12,
+   "cov": {
+    "1.0": 0.8836,
+    "2.0": 0.59,
+    "4.0": 0.0041
+   }
+  },
+  "conserved dx=0.5 n=256 ell=2": {
+   "var": 1.0007,
+   "max_abs_sum": 1.3983481039758772e-11,
+   "cov": {
+    "1.0": 0.8817,
+    "2.0": 0.5858,
+    "4.0": 0.0011
+   }
+  }
+ }
+}

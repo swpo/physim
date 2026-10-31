@@ -1,0 +1,1662 @@
+{
+ "world": {
+  "name": "active-nematic-marangoni-noise",
+  "family": "active-nematic",
+  "parent": "collective/contrib/20261026T0505-c34-nematic-marangoni",
+  "mutation": "dynamics noise sd 1.0 per sqrt(t): additive on ['q1', 'q2'], proportional on ['s', 'c'], conserved (div of white flux) on ['phi']",
+  "size": [
+   128,
+   128
+  ],
+  "steps_per_frame": 100,
+  "dt": 0.05,
+  "channels": [
+   "phi (droplet)",
+   "order |Q|",
+   "surfactant s",
+   "cargo c"
+  ],
+  "matter": [
+   0
+  ],
+  "threshold": 0.0,
+  "smooth": 0.5,
+  "periodic": true,
+  "domain": null,
+  "lineage_k": null,
+  "radial_channels": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "species": null,
+  "path": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/marangoni/mg_noise.py"
+ },
+ "seed": 0,
+ "steps_per_frame": 100,
+ "dt": 0.05,
+ "status": "non-finite fields at frame 5",
+ "wall_seconds": 2.69389009475708,
+ "damage": null,
+ "summary": {
+  "frames": 5,
+  "time": 20.0,
+  "dt": 0.05,
+  "grid": [
+   64,
+   64
+  ],
+  "threshold_rel": 0.609728151094752,
+  "matter_range": [
+   -1.0150389671325684,
+   0.6497012376785278
+  ],
+  "min_area": 6,
+  "components_final": 19,
+  "components_mean": 15.2,
+  "components_max": 20,
+  "occupancy_final": 0.057861328125,
+  "occupancy_max": 0.060791015625,
+  "tracks": 43,
+  "persistent_tracks": 11,
+  "longest_track_frames": 4,
+  "alive_at_end_from_start": 0,
+  "persistent_area_ratio_max": 3.8333333333333335,
+  "enclosed_components_mean": 0.0,
+  "enclosed_components_final": 0,
+  "holes_final_by_threshold": {
+   "0.2": 36,
+   "0.35": 4,
+   "0.5": 0
+  },
+  "holes_mean_by_threshold": {
+   "0.2": 34.2,
+   "0.35": 12.4,
+   "0.5": 0.0
+  },
+  "K_frames": 20,
+  "K_source": "default",
+  "splits": 0,
+  "persistent_splits": 0,
+  "remerged_splits": 0,
+  "max_generation": 0,
+  "merges": 0,
+  "merge_split_ratio": null,
+  "nucleations": 43,
+  "moving_tracks": 0,
+  "max_speed": 0.0,
+  "max_body_lengths": 0.0,
+  "channel_total_drift": [
+   -0.1041,
+   8.0084,
+   null,
+   null
+  ],
+  "tda_matter_final": {
+   "H0": [
+    56,
+    20,
+    2
+   ],
+   "H1": [
+    44,
+    6,
+    0
+   ]
+  },
+  "membrane_like_channels": []
+ },
+ "warnings": [
+  "RUN FAILED: non-finite fields at frame 5 (only 5 frames analysed)",
+  "a channel total changed by more than 50% (not conserved; may be fine if the model is open)",
+  "fewer than 30 recorded frames: tracking statistics are weak",
+  "lineage window K=20 frames is more than half the run: late splits cannot count as persistent",
+  "radial: 2 of 32 aggregate members are rings (centroid outside their own mask): the threshold may cut individuals into a core and a separate ring, so one individual is counted twice and the ring's profile is centred on its hole; check radial.png and raise META smooth or set META matter so one component covers each individual"
+ ],
+ "structure": [
+  {
+   "track": 0,
+   "frame": 3,
+   "holes": 0,
+   "rim_vs_core": 0.2672264873981476,
+   "rim_vs_outside": 0.32084348797798157,
+   "core_vs_outside": 0.4401652216911316,
+   "heterogeneity": 0.20950648188591003,
+   "core_mean": [
+    0.978,
+    0.577,
+    0.298,
+    0.41
+   ],
+   "rim_mean": [
+    0.845,
+    0.466,
+    0.371,
+    0.599
+   ],
+   "outside_mean": [
+    0.559,
+    0.469,
+    0.365,
+    0.452
+   ]
+  },
+  {
+   "track": 8,
+   "frame": 3,
+   "holes": 0,
+   "rim_vs_core": 0.3127995729446411,
+   "rim_vs_outside": 0.3452305495738983,
+   "core_vs_outside": 0.5635247826576233,
+   "heterogeneity": 0.21045002341270447,
+   "core_mean": [
+    0.998,
+    0.459,
+    0.272,
+    0.446
+   ],
+   "rim_mean": [
+    0.859,
+    0.44,
+    0.491,
+    0.272
+   ],
+   "outside_mean": [
+    0.526,
+    0.401,
+    0.45,
+    0.2
+   ]
+  }
+ ],
+ "radial": {
+  "rho": [
+   0.05,
+   0.15,
+   0.25,
+   0.35,
+   0.45,
+   0.55,
+   0.65,
+   0.75,
+   0.85,
+   0.95,
+   1.05,
+   1.15,
+   1.25,
+   1.35,
+   1.45,
+   1.55,
+   1.65,
+   1.75,
+   1.85,
+   1.95,
+   2.05,
+   2.15,
+   2.25,
+   2.35,
+   2.45
+  ],
+  "channels": [
+   "phi (droplet)",
+   "order |Q|",
+   "surfactant s",
+   "cargo c"
+  ],
+  "channel_index": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "bands": {
+   "core": [
+    0.0,
+    0.4
+   ],
+   "rim": [
+    0.6,
+    1.3
+   ],
+   "outside": [
+    1.6,
+    2.2
+   ],
+   "peak": [
+    0.5,
+    1.5
+   ]
+  },
+  "eps": 0.01,
+  "cap": 999.0,
+  "membrane_ratio": 1.5,
+  "aggregate": {
+   "n_individuals": 32,
+   "frames": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "min_area": 12,
+   "mean": [
+    [
+     0.9196,
+     0.8794,
+     0.8732,
+     0.8815,
+     0.8396,
+     0.828,
+     0.7585,
+     0.7669,
+     0.7356,
+     0.6844,
+     0.6282,
+     0.5752,
+     0.56,
+     0.5232,
+     0.4633,
+     0.4072,
+     0.3929,
+     0.3908,
+     0.3586,
+     0.3577,
+     0.3438,
+     0.3286,
+     0.318,
+     0.3193,
+     0.3451
+    ],
+    [
+     0.4057,
+     0.4437,
+     0.3701,
+     0.4943,
+     0.4585,
+     0.4367,
+     0.4962,
+     0.4322,
+     0.4108,
+     0.4383,
+     0.3781,
+     0.4367,
+     0.4449,
+     0.3942,
+     0.4261,
+     0.4339,
+     0.4377,
+     0.381,
+     0.3767,
+     0.399,
+     0.3777,
+     0.3902,
+     0.4133,
+     0.3876,
+     0.3983
+    ],
+    [
+     0.1808,
+     0.1606,
+     0.218,
+     0.1932,
+     0.1731,
+     0.1958,
+     0.2048,
+     0.2222,
+     0.2423,
+     0.2087,
+     0.2277,
+     0.1902,
+     0.1859,
+     0.1724,
+     0.1434,
+     0.1393,
+     0.1215,
+     0.1159,
+     0.1078,
+     0.105,
+     0.0968,
+     0.088,
+     0.0887,
+     0.0848,
+     0.097
+    ],
+    [
+     0.6221,
+     0.3855,
+     0.3574,
+     0.417,
+     0.4036,
+     0.4097,
+     0.3258,
+     0.3006,
+     0.2857,
+     0.2855,
+     0.282,
+     0.2975,
+     0.2913,
+     0.2699,
+     0.3117,
+     0.289,
+     0.271,
+     0.2747,
+     0.264,
+     0.2644,
+     0.2637,
+     0.2625,
+     0.2485,
+     0.2434,
+     0.2325
+    ]
+   ],
+   "std": [
+    [
+     0.0662,
+     0.1355,
+     0.1124,
+     0.0891,
+     0.1318,
+     0.1183,
+     0.1206,
+     0.1198,
+     0.1138,
+     0.0915,
+     0.0779,
+     0.0764,
+     0.1098,
+     0.0748,
+     0.0907,
+     0.0727,
+     0.0856,
+     0.0952,
+     0.0862,
+     0.0834,
+     0.0653,
+     0.0639,
+     0.05,
+     0.0859,
+     0.0716
+    ],
+    [
+     0.1728,
+     0.2521,
+     0.1322,
+     0.1746,
+     0.194,
+     0.1709,
+     0.1325,
+     0.1554,
+     0.1327,
+     0.1444,
+     0.0846,
+     0.1136,
+     0.1642,
+     0.1348,
+     0.1018,
+     0.1181,
+     0.0897,
+     0.0928,
+     0.0754,
+     0.0632,
+     0.0772,
+     0.0847,
+     0.0655,
+     0.1015,
+     0.0836
+    ],
+    [
+     0.269,
+     0.1367,
+     0.13,
+     0.1454,
+     0.0913,
+     0.1143,
+     0.1237,
+     0.1483,
+     0.1426,
+     0.1312,
+     0.1725,
+     0.1225,
+     0.1143,
+     0.1147,
+     0.083,
+     0.0898,
+     0.0718,
+     0.0751,
+     0.0724,
+     0.0662,
+     0.0635,
+     0.0572,
+     0.056,
+     0.0614,
+     0.065
+    ],
+    [
+     0.336,
+     0.2122,
+     0.2214,
+     0.235,
+     0.2578,
+     0.2224,
+     0.1924,
+     0.154,
+     0.1636,
+     0.1486,
+     0.1508,
+     0.1645,
+     0.1828,
+     0.1722,
+     0.1924,
+     0.1543,
+     0.1514,
+     0.1471,
+     0.1487,
+     0.1718,
+     0.148,
+     0.1601,
+     0.1413,
+     0.1343,
+     0.1324
+    ]
+   ],
+   "scores": {
+    "phi (droplet)": {
+     "rho_peak": 0.05,
+     "peak_in_rim": false,
+     "flat": false,
+     "rim_max": 0.7669,
+     "core_mean": 0.8884,
+     "outside_mean": 0.3621,
+     "rim_core": 0.865,
+     "rim_outside": 2.088,
+     "membrane_like": false
+    },
+    "order |Q|": {
+     "rho_peak": 0.65,
+     "peak_in_rim": true,
+     "flat": false,
+     "rim_max": 0.4962,
+     "core_mean": 0.4285,
+     "outside_mean": 0.3937,
+     "rim_core": 1.154,
+     "rim_outside": 1.254,
+     "membrane_like": false
+    },
+    "surfactant s": {
+     "rho_peak": 0.85,
+     "peak_in_rim": true,
+     "flat": false,
+     "rim_max": 0.2423,
+     "core_mean": 0.1882,
+     "outside_mean": 0.1058,
+     "rim_core": 1.273,
+     "rim_outside": 2.178,
+     "membrane_like": false
+    },
+    "cargo c": {
+     "rho_peak": 0.05,
+     "peak_in_rim": false,
+     "flat": false,
+     "rim_max": 0.3258,
+     "core_mean": 0.4455,
+     "outside_mean": 0.2667,
+     "rim_core": 0.737,
+     "rim_outside": 1.213,
+     "membrane_like": false
+    }
+   },
+   "n_membrane_like_individually": {
+    "phi (droplet)": 0,
+    "order |Q|": 12,
+    "surfactant s": 20,
+    "cargo c": 5
+   },
+   "n_ring": 2,
+   "n_outside_truncated": 0
+  },
+  "tracks": [
+   {
+    "track": 0,
+    "frame": 3,
+    "area": 23.0,
+    "R_eq": 2.71,
+    "profile": [
+     [
+      null,
+      0.7312,
+      0.9367,
+      0.7729,
+      0.956,
+      0.8158,
+      0.8156,
+      0.909,
+      0.8532,
+      0.7212,
+      0.6954,
+      0.5972,
+      0.5478,
+      0.5523,
+      0.4032,
+      0.3974,
+      0.4742,
+      0.4254,
+      0.2897,
+      0.3771,
+      0.3593,
+      0.4181,
+      0.3785,
+      0.3184,
+      0.3983
+     ],
+     [
+      null,
+      0.6075,
+      0.1435,
+      0.6125,
+      0.4964,
+      0.5725,
+      0.5546,
+      0.5263,
+      0.3946,
+      0.4453,
+      0.446,
+      0.5214,
+      0.3658,
+      0.4639,
+      0.4119,
+      0.3451,
+      0.6219,
+      0.3504,
+      0.4269,
+      0.3381,
+      0.3519,
+      0.3882,
+      0.4032,
+      0.2444,
+      0.3399
+     ],
+     [
+      null,
+      0.5457,
+      0.3159,
+      0.4092,
+      0.2374,
+      0.2345,
+      0.2766,
+      0.408,
+      0.2361,
+      0.4744,
+      0.7558,
+      0.256,
+      0.2711,
+      0.4064,
+      0.1801,
+      0.2568,
+      0.2887,
+      0.1907,
+      0.1581,
+      0.094,
+      0.1502,
+      0.1255,
+      0.1601,
+      0.17,
+      0.0744
+     ],
+     [
+      null,
+      0.7476,
+      0.3986,
+      0.4407,
+      0.748,
+      1.0,
+      0.58,
+      0.413,
+      0.6804,
+      0.5522,
+      0.1596,
+      0.4012,
+      0.5084,
+      0.464,
+      0.4632,
+      0.4134,
+      0.4549,
+      0.4648,
+      0.4016,
+      0.5702,
+      0.3863,
+      0.5208,
+      0.4374,
+      0.361,
+      0.3355
+     ]
+    ],
+    "scores": {
+     "phi (droplet)": {
+      "rho_peak": 0.45,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.909,
+      "core_mean": 0.8136,
+      "outside_mean": 0.3906,
+      "rim_core": 1.116,
+      "rim_outside": 2.294,
+      "membrane_like": false
+     },
+     "order |Q|": {
+      "rho_peak": 1.65,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.5546,
+      "core_mean": 0.4545,
+      "outside_mean": 0.4129,
+      "rim_core": 1.215,
+      "rim_outside": 1.335,
+      "membrane_like": false
+     },
+     "surfactant s": {
+      "rho_peak": 1.05,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.7558,
+      "core_mean": 0.4236,
+      "outside_mean": 0.1679,
+      "rim_core": 1.766,
+      "rim_outside": 4.306,
+      "membrane_like": true
+     },
+     "cargo c": {
+      "rho_peak": 0.55,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.6804,
+      "core_mean": 0.529,
+      "outside_mean": 0.4664,
+      "rim_core": 1.281,
+      "rim_outside": 1.449,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 0.934,
+    "damaged": false
+   },
+   {
+    "track": 2,
+    "frame": 3,
+    "area": 9.0,
+    "R_eq": 1.69,
+    "profile": [
+     [
+      null,
+      null,
+      0.9416,
+      null,
+      0.8999,
+      1.0,
+      null,
+      null,
+      0.6728,
+      0.7234,
+      0.7459,
+      0.934,
+      0.2029,
+      0.5509,
+      0.4198,
+      0.4513,
+      0.3526,
+      0.1618,
+      0.4144,
+      0.3846,
+      0.2933,
+      0.2889,
+      0.4252,
+      0.3175,
+      0.3314
+     ],
+     [
+      null,
+      null,
+      0.2901,
+      null,
+      0.23,
+      0.3078,
+      null,
+      null,
+      0.5323,
+      0.3602,
+      0.6288,
+      0.3785,
+      0.2397,
+      0.2809,
+      0.4533,
+      0.3454,
+      0.5729,
+      0.3928,
+      0.4313,
+      0.3912,
+      0.4606,
+      0.4594,
+      0.3709,
+      0.6043,
+      0.338
+     ],
+     [
+      null,
+      null,
+      0.1453,
+      null,
+      0.3922,
+      0.3052,
+      null,
+      null,
+      0.4237,
+      0.3386,
+      0.7691,
+      0.3487,
+      0.1483,
+      0.2204,
+      0.5924,
+      0.4661,
+      0.4806,
+      0.0451,
+      0.2998,
+      0.1959,
+      0.2565,
+      0.1921,
+      0.1003,
+      0.2163,
+      0.1026
+     ],
+     [
+      null,
+      null,
+      0.3736,
+      null,
+      0.2309,
+      0.2137,
+      null,
+      null,
+      0.1794,
+      0.3908,
+      0.1305,
+      0.2224,
+      0.3024,
+      0.3675,
+      0.1876,
+      0.2156,
+      0.1587,
+      0.6861,
+      0.1102,
+      0.3164,
+      0.2064,
+      0.4181,
+      0.3481,
+      0.2269,
+      0.3368
+     ]
+    ],
+    "scores": {
+     "phi (droplet)": {
+      "rho_peak": 0.55,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.934,
+      "core_mean": 0.9416,
+      "outside_mean": 0.3159,
+      "rim_core": 0.992,
+      "rim_outside": 2.896,
+      "membrane_like": false
+     },
+     "order |Q|": {
+      "rho_peak": 1.05,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.6288,
+      "core_mean": 0.2901,
+      "outside_mean": 0.4514,
+      "rim_core": 2.128,
+      "rim_outside": 1.384,
+      "membrane_like": false
+     },
+     "surfactant s": {
+      "rho_peak": 1.05,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.7691,
+      "core_mean": 0.1453,
+      "outside_mean": 0.245,
+      "rim_core": 5.017,
+      "rim_outside": 3.055,
+      "membrane_like": true
+     },
+     "cargo c": {
+      "rho_peak": 1.75,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.3908,
+      "core_mean": 0.3736,
+      "outside_mean": 0.316,
+      "rim_core": 1.045,
+      "rim_outside": 1.23,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 1.023,
+    "damaged": false
+   },
+   {
+    "track": 6,
+    "frame": 3,
+    "area": 8.0,
+    "R_eq": 1.6,
+    "profile": [
+     [
+      0.8573,
+      null,
+      null,
+      null,
+      null,
+      null,
+      0.7553,
+      null,
+      0.6852,
+      null,
+      null,
+      null,
+      0.5778,
+      null,
+      0.5495,
+      null,
+      null,
+      0.4755,
+      0.4176,
+      0.3946,
+      null,
+      null,
+      0.3733,
+      null,
+      null
+     ],
+     [
+      0.0394,
+      null,
+      null,
+      null,
+      null,
+      null,
+      0.3921,
+      null,
+      0.471,
+      null,
+      null,
+      null,
+      0.3293,
+      null,
+      0.5097,
+      null,
+      null,
+      0.3907,
+      0.5028,
+      0.4017,
+      null,
+      null,
+      0.3631,
+      null,
+      null
+     ],
+     [
+      0.1335,
+      null,
+      null,
+      null,
+      null,
+      null,
+      0.1564,
+      null,
+      0.1562,
+      null,
+      null,
+      null,
+      0.1942,
+      null,
+      0.2099,
+      null,
+      null,
+      0.1008,
+      0.3317,
+      0.202,
+      null,
+      null,
+      0.1294,
+      null,
+      null
+     ],
+     [
+      0.55,
+      null,
+      null,
+      null,
+      null,
+      null,
+      0.3876,
+      null,
+      0.293,
+      null,
+      null,
+      null,
+      0.2133,
+      null,
+      0.2311,
+      null,
+      null,
+      0.2649,
+      0.1872,
+      0.237,
+      null,
+      null,
+      0.2655,
+      null,
+      null
+     ]
+    ],
+    "scores": {
+     "phi (droplet)": {
+      "rho_peak": 0.05,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.7553,
+      "core_mean": 0.8573,
+      "outside_mean": 0.4293,
+      "rim_core": 0.882,
+      "rim_outside": 1.742,
+      "membrane_like": false
+     },
+     "order |Q|": {
+      "rho_peak": 1.45,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.471,
+      "core_mean": 0.0394,
+      "outside_mean": 0.4317,
+      "rim_core": 9.733,
+      "rim_outside": 1.089,
+      "membrane_like": false
+     },
+     "surfactant s": {
+      "rho_peak": 1.85,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.1942,
+      "core_mean": 0.1335,
+      "outside_mean": 0.2115,
+      "rim_core": 1.423,
+      "rim_outside": 0.922,
+      "membrane_like": false
+     },
+     "cargo c": {
+      "rho_peak": 0.05,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.3876,
+      "core_mean": 0.55,
+      "outside_mean": 0.2297,
+      "rim_core": 0.71,
+      "rim_outside": 1.659,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 0.877,
+    "damaged": false
+   },
+   {
+    "track": 8,
+    "frame": 3,
+    "area": 22.0,
+    "R_eq": 2.65,
+    "profile": [
+     [
+      1.0,
+      null,
+      null,
+      1.0,
+      0.9885,
+      0.9312,
+      1.0,
+      0.6876,
+      0.7355,
+      0.8116,
+      0.6603,
+      0.5008,
+      0.4387,
+      0.4655,
+      0.4412,
+      0.3385,
+      0.3224,
+      0.1869,
+      0.4033,
+      0.3514,
+      0.3237,
+      0.2344,
+      0.3145,
+      0.3297,
+      0.3609
+     ],
+     [
+      0.2958,
+      null,
+      null,
+      0.5035,
+      0.4455,
+      0.384,
+      0.6323,
+      0.3079,
+      0.374,
+      0.2648,
+      0.3437,
+      0.4723,
+      0.5961,
+      0.4689,
+      0.2866,
+      0.3868,
+      0.3624,
+      0.3138,
+      0.4662,
+      0.4062,
+      0.478,
+      0.4403,
+      0.5174,
+      0.336,
+      0.5259
+     ],
+     [
+      0.0,
+      null,
+      null,
+      0.0942,
+      0.3728,
+      0.2274,
+      0.5341,
+      0.7695,
+      0.5478,
+      0.4,
+      0.5516,
+      0.5145,
+      0.2408,
+      0.424,
+      0.2663,
+      0.1264,
+      0.1856,
+      0.1643,
+      0.1008,
+      0.134,
+      0.1246,
+      0.0724,
+      0.0818,
+      0.0836,
+      0.105
+     ],
+     [
+      1.0,
+      null,
+      null,
+      0.7846,
+      0.3414,
+      0.506,
+      0.129,
+      0.1446,
+      0.207,
+      0.2578,
+      0.0783,
+      0.2025,
+      0.2984,
+      0.1303,
+      0.2764,
+      0.3201,
+      0.2737,
+      0.2644,
+      0.2368,
+      0.2441,
+      0.3149,
+      0.2635,
+      0.2982,
+      0.2579,
+      0.2242
+     ]
+    ],
+    "scores": {
+     "phi (droplet)": {
+      "rho_peak": 0.05,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 1.0,
+      "core_mean": 1.0,
+      "outside_mean": 0.3037,
+      "rim_core": 1.0,
+      "rim_outside": 3.22,
+      "membrane_like": false
+     },
+     "order |Q|": {
+      "rho_peak": 0.65,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.6323,
+      "core_mean": 0.3997,
+      "outside_mean": 0.4112,
+      "rim_core": 1.568,
+      "rim_outside": 1.525,
+      "membrane_like": true
+     },
+     "surfactant s": {
+      "rho_peak": 0.75,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.7695,
+      "core_mean": 0.0471,
+      "outside_mean": 0.1303,
+      "rim_core": 13.648,
+      "rim_outside": 5.557,
+      "membrane_like": true
+     },
+     "cargo c": {
+      "rho_peak": 0.05,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.2984,
+      "core_mean": 0.8923,
+      "outside_mean": 0.2662,
+      "rim_core": 0.342,
+      "rim_outside": 1.116,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 0.977,
+    "damaged": false
+   }
+  ],
+  "membrane_like": [],
+  "n_damaged_excluded": 0
+ },
+ "species": {},
+ "top_tracks": [
+  {
+   "id": 0,
+   "start": 1,
+   "end": 4,
+   "birth": "nucleation",
+   "parents": [],
+   "children": [],
+   "area": [
+    26.0,
+    34.0,
+    23.0,
+    34.0
+   ],
+   "cy": [
+    2.18,
+    1.14,
+    1.37,
+    63.94
+   ],
+   "cx": [
+    5.49,
+    3.9,
+    5.01,
+    3.34
+   ]
+  },
+  {
+   "id": 2,
+   "start": 1,
+   "end": 4,
+   "birth": "nucleation",
+   "parents": [],
+   "children": [],
+   "area": [
+    7.0,
+    11.0,
+    9.0,
+    9.0
+   ],
+   "cy": [
+    6.02,
+    6.08,
+    6.33,
+    3.87
+   ],
+   "cx": [
+    20.99,
+    21.71,
+    23.36,
+    21.75
+   ]
+  },
+  {
+   "id": 6,
+   "start": 1,
+   "end": 4,
+   "birth": "nucleation",
+   "parents": [],
+   "children": [],
+   "area": [
+    9.0,
+    10.0,
+    8.0,
+    8.0
+   ],
+   "cy": [
+    20.66,
+    24.04,
+    26.0,
+    24.38
+   ],
+   "cx": [
+    8.56,
+    8.07,
+    9.0,
+    7.5
+   ]
+  },
+  {
+   "id": 8,
+   "start": 1,
+   "end": 4,
+   "birth": "nucleation",
+   "parents": [],
+   "children": [],
+   "area": [
+    19.0,
+    22.0,
+    22.0,
+    6.0
+   ],
+   "cy": [
+    32.39,
+    34.34,
+    32.09,
+    33.33
+   ],
+   "cx": [
+    10.71,
+    12.46,
+    14.2,
+    15.33
+   ]
+  }
+ ],
+ "persistent_splits": [],
+ "remerged_splits": [],
+ "motion_top": [],
+ "tda_matter": {
+  "0": {
+   "H0": [
+    213,
+    44,
+    1
+   ],
+   "H1": [
+    310,
+    74,
+    1
+   ]
+  },
+  "1": {
+   "H0": [
+    66,
+    24,
+    1
+   ],
+   "H1": [
+    69,
+    12,
+    0
+   ]
+  },
+  "2": {
+   "H0": [
+    73,
+    27,
+    3
+   ],
+   "H1": [
+    60,
+    10,
+    0
+   ]
+  },
+  "3": {
+   "H0": [
+    53,
+    22,
+    5
+   ],
+   "H1": [
+    60,
+    11,
+    0
+   ]
+  },
+  "4": {
+   "H0": [
+    56,
+    20,
+    2
+   ],
+   "H1": [
+    44,
+    6,
+    0
+   ]
+  }
+ },
+ "tda_channels": {
+  "0": [
+   {
+    "H0": [
+     261,
+     73,
+     1
+    ],
+    "H1": [
+     484,
+     161,
+     4
+    ]
+   },
+   {
+    "H0": [
+     315,
+     149,
+     20
+    ],
+    "H1": [
+     517,
+     94,
+     0
+    ]
+   },
+   {
+    "H0": [
+     0,
+     0,
+     0
+    ],
+    "H1": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "H0": [
+     0,
+     0,
+     0
+    ],
+    "H1": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "1": [
+   {
+    "H0": [
+     116,
+     46,
+     16
+    ],
+    "H1": [
+     134,
+     42,
+     0
+    ]
+   },
+   {
+    "H0": [
+     303,
+     150,
+     23
+    ],
+    "H1": [
+     498,
+     195,
+     0
+    ]
+   },
+   {
+    "H0": [
+     105,
+     42,
+     10
+    ],
+    "H1": [
+     2,
+     0,
+     0
+    ]
+   },
+   {
+    "H0": [
+     86,
+     25,
+     5
+    ],
+    "H1": [
+     10,
+     0,
+     0
+    ]
+   }
+  ],
+  "2": [
+   {
+    "H0": [
+     99,
+     55,
+     15
+    ],
+    "H1": [
+     111,
+     34,
+     0
+    ]
+   },
+   {
+    "H0": [
+     310,
+     167,
+     26
+    ],
+    "H1": [
+     495,
+     192,
+     1
+    ]
+   },
+   {
+    "H0": [
+     77,
+     30,
+     5
+    ],
+    "H1": [
+     4,
+     0,
+     0
+    ]
+   },
+   {
+    "H0": [
+     104,
+     23,
+     8
+    ],
+    "H1": [
+     41,
+     0,
+     0
+    ]
+   }
+  ],
+  "3": [
+   {
+    "H0": [
+     99,
+     41,
+     12
+    ],
+    "H1": [
+     115,
+     34,
+     0
+    ]
+   },
+   {
+    "H0": [
+     285,
+     150,
+     24
+    ],
+    "H1": [
+     516,
+     189,
+     0
+    ]
+   },
+   {
+    "H0": [
+     117,
+     53,
+     19
+    ],
+    "H1": [
+     24,
+     0,
+     0
+    ]
+   },
+   {
+    "H0": [
+     149,
+     65,
+     21
+    ],
+    "H1": [
+     120,
+     3,
+     0
+    ]
+   }
+  ],
+  "4": [
+   {
+    "H0": [
+     102,
+     44,
+     13
+    ],
+    "H1": [
+     101,
+     31,
+     0
+    ]
+   },
+   {
+    "H0": [
+     308,
+     166,
+     29
+    ],
+    "H1": [
+     534,
+     207,
+     2
+    ]
+   },
+   {
+    "H0": [
+     163,
+     84,
+     34
+    ],
+    "H1": [
+     91,
+     3,
+     0
+    ]
+   },
+   {
+    "H0": [
+     169,
+     73,
+     16
+    ],
+    "H1": [
+     171,
+     25,
+     1
+    ]
+   }
+  ]
+ },
+ "series": {
+  "n_comp": [
+   0,
+   17,
+   20,
+   20,
+   19
+  ],
+  "n_enclosed": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "occupancy": [
+   0.0,
+   0.051025390625,
+   0.060791015625,
+   0.056396484375,
+   0.057861328125
+  ],
+  "totals": [
+   [
+    -1651.6129150390625,
+    256.49383544921875,
+    0.0,
+    0.0
+   ],
+   [
+    -1698.536376953125,
+    2204.246826171875,
+    50.478607177734375,
+    48.493255615234375
+   ],
+   [
+    -1742.7279052734375,
+    2240.003173828125,
+    100.71662902832031,
+    104.98851013183594
+   ],
+   [
+    -1784.3466796875,
+    2244.169677734375,
+    161.70692443847656,
+    156.65847778320312
+   ],
+   [
+    -1823.54248046875,
+    2310.609375,
+    243.08160400390625,
+    209.46376037597656
+   ]
+  ]
+ }
+}

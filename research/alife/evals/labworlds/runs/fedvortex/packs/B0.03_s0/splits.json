@@ -1,0 +1,73 @@
+{
+"pack": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.03_s0",
+"persistent_splits": 4,
+"daughters_same_sign": 4,
+"daughters_other_sign": 0,
+"sign_unknown": 0,
+"merges_same_sign": 782,
+"merges_opposite_sign": 120,
+"merges_unknown": 819,
+"max_generation": 1,
+"splits": [
+{
+"frame": 174,
+"t": 522.0,
+"parent": 2602,
+"children": [
+2721,
+2724
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 175,
+"t": 525.0,
+"parent": 2200,
+"children": [
+2743,
+2744
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 233,
+"t": 699.0,
+"parent": 3542,
+"children": [
+3689,
+3701
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 298,
+"t": 894.0,
+"parent": 4676,
+"children": [
+4798,
+4802
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+}
+]
+}

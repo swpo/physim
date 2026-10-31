@@ -1,0 +1,12 @@
+{
+"pack": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.1_s0",
+"persistent_splits": 0,
+"daughters_same_sign": 0,
+"daughters_other_sign": 0,
+"sign_unknown": 0,
+"merges_same_sign": 8,
+"merges_opposite_sign": 11,
+"merges_unknown": 29,
+"max_generation": 0,
+"splits": []
+}

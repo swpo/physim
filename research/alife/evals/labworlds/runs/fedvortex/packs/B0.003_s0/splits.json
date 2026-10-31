@@ -1,0 +1,133 @@
+{
+"pack": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/B0.003_s0",
+"persistent_splits": 8,
+"daughters_same_sign": 8,
+"daughters_other_sign": 0,
+"sign_unknown": 0,
+"merges_same_sign": 22,
+"merges_opposite_sign": 0,
+"merges_unknown": 1,
+"max_generation": 3,
+"splits": [
+{
+"frame": 12,
+"t": 36.0,
+"parent": 6,
+"children": [
+58,
+59
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 125,
+"t": 375.0,
+"parent": 70,
+"children": [
+72,
+73
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 146,
+"t": 438.0,
+"parent": 71,
+"children": [
+76,
+77
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 151,
+"t": 453.0,
+"parent": 75,
+"children": [
+78,
+79
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 173,
+"t": 519.0,
+"parent": 67,
+"children": [
+81,
+82
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 177,
+"t": 531.0,
+"parent": 72,
+"children": [
+83,
+84
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 3
+},
+{
+"frame": 276,
+"t": 828.0,
+"parent": 85,
+"children": [
+92,
+93
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 358,
+"t": 1074.0,
+"parent": 98,
+"children": [
+99,
+100
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+}
+]
+}

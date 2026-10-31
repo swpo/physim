@@ -1,0 +1,917 @@
+From 42a8c72c72fc67d3c7899c9dc8bc3b1beae5a9cf Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 28 Oct 2026 20:37:04 +0000
+Subject: [PATCH 03/11] physim: LabOracleRunner with an actuator roster apart
+ from the observed ports
+
+labworld.LabOracleRunner subclasses blobround6.OracleRunner: inject ports index a declared
+actuator roster of (field row, sign) pairs, sample arrays carry every observed port, and
+observe-only rows (derived channels such as the flow speed, declared with Derived) cannot be
+actuators. It reuses the base constructor checks, _parse, member seeding, devices, pose
+updates and sampling, and repeats only the sample_truth scheduler with the actuator count and
+the actuator's field and sign. LabWorld gains actuators (Actuator(field, sign)) and derived;
+declaration() omits them when undeclared so labeval's frozen suites keep their identity.
+ports_check.py shows bit-identity with OracleRunner on phase_membrane and a native Blobkit
+world, a finite '-' vorticity actuator on the fed vortices, and an observe-only channel that
+the sensors return and the roster rejects. blobround6.py, devices.py and bundles.py are unchanged.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+---
+ environments/physim/LABWORLDS.md        |  62 +++-
+ environments/physim/physim/labworld.py  | 240 +++++++++++-
+ scripts/physim/labworlds/labeval.py     |   2 +-
+ scripts/physim/labworlds/ports_check.py | 474 ++++++++++++++++++++++++
+ 4 files changed, 759 insertions(+), 19 deletions(-)
+ create mode 100644 scripts/physim/labworlds/ports_check.py
+
+diff --git a/environments/physim/LABWORLDS.md b/environments/physim/LABWORLDS.md
+index 70163c7..036c3fd 100644
+--- a/environments/physim/LABWORLDS.md
++++ b/environments/physim/LABWORLDS.md
+@@ -18,7 +18,8 @@ through `sample_truth`, with PhySim's own devices, scheduling, member seeding an
+ - **Noise.** All draws come from the runner's per-member generator, a fixed number per step, so
+   actions never shift a member's noise stream (paired controls stay paired).
+ - **Observe-only channels.** A derived field (velocity, eating rate) can ride in `F` as an extra
+-  field with no actuator; the runner samples it like any other port.
++  field with no actuator; the runner samples it like any other port. `LabOracleRunner` (below)
++  declares such channels and keeps them out of the inject roster.
+ 
+ ## What a world declares
+ 
+@@ -28,7 +29,7 @@ through `sample_truth`, with PhySim's own devices, scheduling, member seeding an
+ | Native dt and native steps per public tick | The runner checks only the public tick. phase_membrane: 1 step per tick (1 tu = 50 native t); vortices: 1 step per tick (1 tu = 1 native t). |
+ | Noise form and level per field | The form decides survival. Plain additive noise on fields the world clips at zero is a hidden source: it dissolved phase_membrane at sd 0.01 per sqrt(t), and filled the Marangoni bath with cargo. Proportional noise on concentrations, additive on order parameters and vorticity, conserved on conserved fields, kept each world intact up to about 0.01-0.03. |
+ | Ports: observed and driven separately; for each driven port an actuator kind, a gain and a clip | PhySim's maximum program (amp 3 for 50 tu) made the numerics fail at gain 1 through phase_membrane's substrate, catalyst and phase field, the vortices' vorticity, and the rods' surfactant and phase field. Gains of 0.01 (and 0.1 for fuel) kept every port finite and in range. Velocity is recomputed every step, so injecting into it does nothing: observe-only. |
+-| Signed actuators where the field is signed | Vorticity is signed; a non-negative pulse only adds one sign (it kills or flips the other). Offer a signed amplitude or a +/- port pair. |
++| Signed actuators where the field is signed | Vorticity is signed; a non-negative pulse only adds one sign (it kills or flips the other). PhySim's grammar has no signed amplitude, so offer a +/- port pair (`Actuator(field, +1)`, `Actuator(field, -1)`) or one port of the needed sign. |
+ | Score groups and aggregate sensors | Chaotic worlds (vortices, rods) decorrelate within 50-200 t. Late in a window, whole-box statistics carry the mechanism (the rods' wall ablation separates only through cargo variance at 150 t). |
+ | Privileged ablations, each prepared on its own | All battery ablations were switched on from the native prepared state; a hidden ablated world starts from its own prepared state, which is the fair score-meaning check. |
+ | Prepared-state recipe (seed, time, overrides) | Identity must include parameter overrides, which several worlds read from the environment at import. |
+@@ -55,8 +56,13 @@ through `sample_truth`, with PhySim's own devices, scheduling, member seeding an
+   `fields` array assume a Blobkit genome. A lab bundle carries the world file, its overrides, the
+   declaration above and a prepared state (named arrays, including module state), all hashed into
+   its identity.
+-- Ports: separate observed and driven maps (today an undriven port is a silent no-op that the agent
+-  still sees); signed amplitudes; per-port actuator kinds.
++- Ports: observed and driven maps are now separate in the runner, with signed actuators
++  (`LabOracleRunner`, below). Still open: actuator kinds other than a Gaussian source, and the
++  scoring roster. `blobround6_eval.PublicRoster.n_ports` is both the inject-port bound
++  (`validate_case` parses actions against it) and the observed-port count of every sample array,
++  so `score_case` rejects valid requests when a world has more actuators than observed ports, and
++  accepts ports the runner rejects when it has fewer. Separating the two needs a scoring change
++  (that file's hash is in every suite's identity) or a lab-side roster.
+ - Ablations: hooks in the world declaration, replacing the template-array edits in
+   `build_evaluation_bundle.py`.
+ - Agent spec: port counts and sensor descriptions come from the declaration.
+@@ -99,6 +105,54 @@ per-member seeding. Scripts: `runner_demo.py`, `vortex_demo.py` (scratchpad `eva
+   per-field scales are a stand-in for PhySim's declared score groups; native-vs-native scores in the
+   phase_membrane global group are small, which inflates its ratios.
+ 
++## Ports interface: `LabOracleRunner` (28 Oct)
++
++`physim/labworld.py` keeps the agent's inject roster apart from the observed ports. It does not
++touch `blobround6.py`, `devices.py` or `bundles.py`, whose source hashes are part of PhySim's
++implementation identity.
++
++**Declaration** (`LabWorld`, new keys default to the old behaviour):
++
++| Key | Meaning |
++|---|---|
++| `fields` | Dynamical fields, the first rows of `F`, as before. |
++| `derived=(Derived(name, fn), ...)` | Observe-only channels: `fn(module, state)` on the module state at t=0 and after every runner advance (every tick at which anything is read). They ride in `F` after the fields, so the probes and the global sensor read them. They must not modify the state or draw random numbers. |
++| `observed` (property) | `fields + derived`: what every sensor returns, in port order. |
++| `actuators=(Actuator(field, sign), ...)` | The public inject roster: an inject on port `p` is a source of `sign * gain * amp` (the field's `Port` gain and clip) on `actuators[p].field`. Each actuator names a dynamical field with a declared `Port`; a derived channel, an unknown field, a field without a gain, a sign other than +1/-1 or a duplicate is a `ValueError` at declaration. |
++| `actuators=None` | OracleRunner's roster: port `p` drives the field observed on port `p` with sign +1 (over the fields only, when derived channels exist). A field without a `Port` is still a silent no-op here, as before; an explicit roster refuses it. |
++| `declaration()` | JSON-ready declaration; omits `actuators` and `derived` when undeclared, so suites frozen before them (labeval's) are unchanged. |
++
++A signed field is offered as a +/- pair, or as a single port of either sign. One bipolar port is not
++expressible within PhySim's grammar: `_parse` fixes the inject keys and requires `amp` in [0, 3].
++
++**Runner.** `LabOracleRunner(OracleRunner)` takes the base constructor's arguments plus
++`_actuators` (a sequence of `(F row, sign)`) and `_observe_only` (F rows that no actuator may name);
++`LabOracleRunner.wrap(runner, actuators=None, observe_only=())` rebinds an existing OracleRunner
++(for example a native Blobkit binding). `oracle(world, state, devices)` builds one from a
++declaration. Requests are parsed with `inject.port` in [0, `n_actuators`); every sample array has
++`n_observed` ports. A pulse reaches the stepper as `field=row, amp=sign * amp`, so `LabStepper`
++and the native `step_chunk` (through `genome.poke`) both apply negative sources unchanged.
++
++Reused from blobround6 unchanged: the constructor's checks, `_parse`, `_effective_actions`,
++`_truth_member_seed`, `_clone_sim`, `_adjust_pose`, `_advance`, `_fill_queries` and `_sample`.
++Copied: the body of `OracleRunner.sample_truth` (its scheduler, about 35 lines), with two changes:
++the action parse uses the actuator count, and a pulse's field and amplitude come from its actuator.
++With the default roster both are the base class's values, which the checks below confirm bit for bit.
++
++**Checks** (`scripts/physim/labworlds/ports_check.py`; logs in scratchpad `evalpilot/ports/`):
++
++| Check | Setup | Result |
++|---|---|---|
++| Identity, lab world | phase_membrane as in `runner_demo.py` (noise 0.01, gains 0.01): the pre-extension OracleRunner on LabStepper vs `oracle()` vs `LabOracleRunner.wrap`; the demo's pulseK program (2 members, 50 tu, every 1 tu) and a 20 tu program with pulses on all ports, moves, equal-time actions, a zero-amplitude and a one-tick pulse, ports permuted `[2, 0, 3, 1]` and a non-trivial adjustment map (3 members) | Bit-identical (byte comparison) in both; members differ; equal to the demo's saved forecast members; the same `ProtocolError` messages for seven invalid requests |
++| Identity, native Blobkit | Packaged BF genome, `init_soup` (seed 7, noise 0.002), `devices.step_chunk`, BF's port permutation, the same 20 tu program (2 members) | Bit-identical (OracleRunner, `wrap`, direct construction). `blobround6._native_oracle` cannot run here (`physim.blobcore` is not in this package), and no BF bundle is available offline, so the binding is `eval_preparation.make_oracle`'s on a fresh soup |
++| Signed vorticity | Fed vortices as in `vortex_demo.py` (noise 0.003, om gain 0.01), roster (om,+), (om,-), (Y,+); amp 3 for 50 tu at each device centre, readouts every 1 tu | Finite throughout. First tick at the centre: +5.7e-4 and -5.7e-4 (ratio -1.000003; expected 6e-4). The '-' pulse turns the device0 body from +0.19 to -0.37 at 25 tu and -0.32 at 50 tu (+ pulse: 0.34, 0.30); probe range -0.37 to 0.20; global mean om -0.0017 (device0) and -0.0021 (device1) below sham at 50 tu. (om,+) equals the default roster's port 0 bit for bit and reproduces the earlier envelope run |
++| Observe-only speed | `Derived("speed", adv * hypot(uy, ux))` from the module's own `_vel`, roster (om,+), (om,-), (Y,+) | Returned by both probes and the global sensor (3 observed ports); om and Y identical bit for bit to the world without it; equal to the speed recomputed from the state at t=0 and after 50 ticks. Rejected as a target: `Actuator("speed")` and runner row 2 raise `ValueError`; port 3 raises `ProtocolError` ("must be [0, 2]"); on the default roster ((om,+), (Y,+)) speed's observed port 2 raises `ProtocolError` |
++
++Native negative sources through `genome.poke` also work (BF activator 0, 2 tu at amp 3: global mean
+++0.0040 for '+', -0.0056 for '-'); that run is a smoke check, not part of the identity proof.
++Suites frozen by labeval before this change keep their declarations (checked for phase_membrane
++and the fed vortices).
++
+ ## Open questions
+ 
+ - Whether to keep raw Python steppers or widen Blobkit's genome into a term list for field worlds
+diff --git a/environments/physim/physim/labworld.py b/environments/physim/physim/labworld.py
+index 5e700ab..aaeef82 100644
+--- a/environments/physim/physim/labworld.py
++++ b/environments/physim/physim/labworld.py
+@@ -19,20 +19,45 @@ everything the runner and the agent contract need that the module does not say:
+   from dt) is rebuilt by the overridden module's own ``init``, so an arm with other
+   parameters or another dt uses consistent numerics. ``carry=None`` keeps them all.
+ 
++Observed ports and driven ports are declared separately:
++
++- ``derived``: observe-only channels. ``Derived(name, fn)`` is ``fn(module, state)``
++  evaluated on the module state at t=0 and after every advance of the runner (every
++  tick at which anything is read). It rides in ``F`` after the fields, so the probes
++  and the global sensor read it like any other port. It must not modify the state or
++  draw random numbers, and it can never be an inject target.
++- ``actuators``: the public inject roster. ``Actuator(field, sign)`` is a source on a
++  dynamical field with a declared sign; an inject on port ``p`` adds
++  ``sign * gain * amp`` (the field's ``Port`` gain and clip) through ``actuators[p]``.
++  A signed field such as vorticity is offered as a +/- pair, or as one port of either
++  sign. PhySim's grammar has no signed amplitude (``amp`` is in [0, 3] and the inject
++  keys are fixed), so a single bipolar port is not expressible without changing it.
++  ``None`` keeps OracleRunner's roster: port ``p`` drives the field observed on port
++  ``p`` with sign +1, over the fields only when there are derived channels.
++
++The observed ports are ``fields + derived`` (``LabWorld.observed``), sampled in the
++runner's port order. ``LabOracleRunner`` is OracleRunner with the actuator roster kept
++apart from the observed ports; with the default roster it is bit-identical to it.
++
+ The runner copies only ``F`` and ``rng`` per member, so the stepper keeps any other
+ mutable state of the module in a per-member copy created on its first call.
+ """
++
+ from __future__ import annotations
+ 
+ import copy
++import dataclasses
+ import importlib.util
+ import json
+ import os
+ import sys
++from collections import defaultdict
+ from dataclasses import dataclass, field
++from typing import Callable
+ 
+ import numpy as np
+ 
++from . import blobround6 as R6
+ from .devices import INJ_SIGMA
+ 
+ 
+@@ -42,6 +67,22 @@ class Port:
+     clip: tuple[float | None, float | None] = (None, None)
+ 
+ 
++@dataclass(frozen=True)
++class Actuator:
++    """One public inject port: a source on a dynamical ``field`` with sign +1 or -1."""
++
++    field: str
++    sign: int = 1
++
++
++@dataclass(frozen=True)
++class Derived:
++    """One observe-only channel, ``fn(module, state) -> array`` of the field shape."""
++
++    name: str
++    fn: Callable
++
++
+ @dataclass(frozen=True)
+ class LabWorld:
+     path: str
+@@ -54,6 +95,52 @@ class LabWorld:
+     dx: float = 1.0
+     sys_path: tuple[str, ...] = ()
+     carry: tuple[str, ...] | None = None
++    actuators: tuple[Actuator, ...] | None = None
++    derived: tuple[Derived, ...] = ()
++
++    def __post_init__(self):
++        derived = tuple(self.derived)
++        names = [d.name for d in derived]
++        if len(set(names)) != len(names) or set(names) & set(self.fields):
++            raise ValueError("derived channel names must be unique and distinct from the fields")
++        object.__setattr__(self, "derived", derived)
++        if self.actuators is None:
++            return
++        actuators = tuple(self.actuators)
++        if not actuators or len(set(actuators)) != len(actuators):
++            raise ValueError("declare a nonempty actuator list without duplicates")
++        for a in actuators:
++            if a.field in names:
++                raise ValueError(f"observe-only channel {a.field!r} cannot be an actuator")
++            if a.field not in self.fields:
++                raise ValueError(f"actuator field {a.field!r} is not a dynamical field")
++            if a.field not in self.ports:
++                raise ValueError(f"actuator field {a.field!r} has no declared port gain")
++            if type(a.sign) is not int or a.sign not in (1, -1):
++                raise ValueError("actuator sign must be the integer +1 or -1")
++        object.__setattr__(self, "actuators", actuators)
++
++    @property
++    def observed(self) -> tuple[str, ...]:
++        return tuple(self.fields) + tuple(d.name for d in self.derived)
++
++    def actuator_rows(self):
++        """The roster as (F row, sign) for LabOracleRunner; None is OracleRunner's roster."""
++        if self.actuators is None:
++            return None
++        return tuple((self.fields.index(a.field), a.sign) for a in self.actuators)
++
++    def declaration(self) -> dict:
++        """JSON-ready declaration. The port-interface keys appear only when declared, so a
++        declaration frozen before they existed (labeval suites) is unchanged."""
++        d = dataclasses.asdict(self)
++        if self.actuators is None:
++            d.pop("actuators")
++        if self.derived:
++            d["derived"] = [dict(name=x.name, fn=f"{x.fn.__module__}.{x.fn.__qualname__}") for x in self.derived]
++        else:
++            d.pop("derived")
++        return d
+ 
+     def load(self):
+         """A fresh module instance with the declared overrides (WORLD_P is read at import)."""
+@@ -108,9 +195,26 @@ class LabStepper:
+             Ly, Lx = n0 * dx, n1 * dx
+             dyy = (cy - y + Ly / 2) % Ly - Ly / 2
+             dxx = (cx - x + Lx / 2) % Lx - Lx / 2
+-            self._bumps[key] = np.exp(-(dyy[:, None] ** 2 + dxx[None, :] ** 2) / (2 * INJ_SIGMA ** 2))
++            self._bumps[key] = np.exp(-(dyy[:, None] ** 2 + dxx[None, :] ** 2) / (2 * INJ_SIGMA**2))
+         return self._bumps[key]
+ 
++    def observe(self, state):
++        """F rows: the fields, then the derived channels evaluated on ``state``."""
++        w = self.world
++        if not w.derived:
++            return w.pack(state)
++        rows = [np.asarray(state[f], dtype=np.float64) for f in w.fields]
++        rows += [np.asarray(d.fn(self.module, state), dtype=np.float64) for d in w.derived]
++        return np.stack(rows)
++
++    def initial(self, state):
++        """t=0 F rows for a prepared state, derived channels on the state the stepper starts from."""
++        if not self.world.derived:
++            return self.world.pack(state)
++        start = copy.deepcopy(self.aux_template)
++        start.update({f: np.asarray(state[f], dtype=np.float64) for f in self.world.fields})
++        return self.observe(start)
++
+     def __call__(self, sim, n, injections=()):
+         w = self.world
+         if "_lab_aux" not in sim:
+@@ -140,24 +244,132 @@ class LabStepper:
+                         state[f] = state[f] + (a * xi if kind == "additive" else a * xi * state[f])
+                 state = self.module.step(state)
+             sim["t_step"] += 1
+-        sim["F"] = w.pack(state)
++        sim["F"] = self.observe(state)
+         sim["_lab_aux"] = {k: v for k, v in state.items() if k not in w.fields}
+         return sim
+ 
+ 
+-def template(world: LabWorld, state: dict, seed: int = 0) -> dict:
+-    """The runner's exact t=0 template from a prepared native state."""
+-    from .blobround6 import SIM_DT
++class LabOracleRunner(R6.OracleRunner):
++    """``OracleRunner`` whose inject roster is declared apart from the observed ports.
++
++    Observed ports are the rows of ``F`` in ``_port_perm`` order, exactly as in
++    OracleRunner, and may include ``_observe_only`` rows (F-row indices) that the
++    stepper derives. ``_actuators`` is the public inject roster: port ``p`` is
++    ``(row, sign)`` and its pulse reaches the stepper as ``field=row``,
++    ``amp=sign * amp``. ``None`` is OracleRunner's roster, ``(perm[p], +1)`` for every
++    observed port ``p`` whose row is not observe-only, in port order.
+ 
+-    return {"F": world.pack(state), "t_step": 0, "dt": SIM_DT, "dx": world.dx,
+-            "rng": np.random.default_rng(seed)}
++    Construction checks, member seeding, devices, pose updates, sampling and the
++    stepper seam are the base class's. ``sample_truth`` repeats the base scheduler with
++    two changes: requests are parsed against the actuator count, and a pulse's field
++    and amplitude come from its actuator.
++    """
+ 
++    def __init__(self, *, _actuators=None, _observe_only=(), **runner):
++        super().__init__(**runner)
++        n = len(self._perm)
++        observe_only = frozenset(int(i) for i in _observe_only)
++        if not observe_only <= set(range(n)) or len(observe_only) == n:
++            raise ValueError("observe-only rows must be a proper subset of the field rows")
++        if _actuators is None:
++            actuators = tuple((int(r), 1) for r in self._perm if int(r) not in observe_only)
++        else:
++            actuators = []
++            for row, sign in _actuators:
++                if isinstance(row, bool) or not isinstance(row, (int, np.integer)) or not 0 <= row < n:
++                    raise ValueError("an actuator row must be an integer field row")
++                if int(row) in observe_only:
++                    raise ValueError("an observe-only channel cannot be an actuator")
++                if type(sign) is not int or sign not in (1, -1):
++                    raise ValueError("actuator sign must be the integer +1 or -1")
++                actuators.append((int(row), sign))
++            actuators = tuple(actuators)
++            if not actuators or len(set(actuators)) != len(actuators):
++                raise ValueError("declare a nonempty actuator roster without duplicates")
++        self._actuators = actuators
++        self._observe_only = observe_only
++
++    @classmethod
++    def wrap(cls, runner: R6.OracleRunner, *, actuators=None, observe_only=()):
++        """The same bound world (template, devices, ports, adjustment map, stepper)."""
++        if not isinstance(runner, R6.OracleRunner):
++            raise TypeError("wrap requires a centered-pulse-v2 OracleRunner")
++        return cls(
++            _template=runner._template,
++            _devices=runner._devices,
++            _port_perm=runner._perm,
++            _adjust_mix=runner._mix,
++            _stepper=runner._stepper,
++            _actuators=actuators,
++            _observe_only=observe_only,
++        )
++
++    @property
++    def n_actuators(self) -> int:
++        return len(self._actuators)
++
++    @property
++    def n_observed(self) -> int:
++        return len(self._perm)
++
++    def sample_truth(self, actions, queries, n_samples=R6.DEFAULT_SAMPLES, *, truth_seed):
++        """OracleRunner.sample_truth with inject ports indexing the actuator roster."""
++        actions, queries, n_samples, truth_seed = R6._parse(
++            actions, queries, n_samples, truth_seed, len(self._actuators), self._devices
++        )
++        effective = R6._effective_actions(actions, self._devices, self._mix)
++        output = [np.empty((n_samples, len(q.ticks), len(self._perm), q.slots), dtype=np.float64) for q in queries]
++        marks = defaultdict(list)
++        for qi, q in enumerate(queries):
++            for ti, tick in enumerate(q.ticks):
++                marks[tick].append((qi, ti, q.sensor))
++        if not marks:
++            return {"samples": output}
++        last = max(marks)
++        effective = tuple(a for a in effective if a.tick <= last)
++        starts = defaultdict(list)
++        for action in effective:
++            starts[action.tick].append(action)
++        ends = {a.end for a in effective if a.kind == "inject" and a.end <= last}
++        agenda = sorted(set(marks) | set(starts) | ends)
++        for member in range(n_samples):
++            live = R6._clone_sim(self._template)
++            live["rng"] = np.random.default_rng(R6._truth_member_seed(truth_seed, member))
++            devices = copy.deepcopy(self._devices)
++            active = {}
++            for tick in agenda:
++                self._advance(live, tick, [active[i][1] for i in sorted(active)])
++                active = {i: pulse for i, pulse in active.items() if pulse[0] > tick}
++                for a in starts.get(tick, ()):
++                    if a.kind == "adjust":
++                        R6._adjust_pose(devices[a.device], a.u, self._mix)
++                    else:
++                        row, sign = self._actuators[a.port]
++                        center = devices[a.device].center
++                        active[a.device] = (
++                            a.end,
++                            dict(field=row, y=float(center[0]), x=float(center[1]), amp=a.amp if sign > 0 else -a.amp),
++                        )
++                self._fill_queries(live, devices, marks.get(tick, ()), output, member)
++        return {"samples": output}
++
++
++def template(world: LabWorld, state: dict, seed: int = 0) -> dict:
++    """The runner's exact t=0 template from a prepared native state (dynamical fields only)."""
++    return {"F": world.pack(state), "t_step": 0, "dt": R6.SIM_DT, "dx": world.dx, "rng": np.random.default_rng(seed)}
+ 
+-def oracle(world: LabWorld, state: dict, devices, *, port_perm=None, adjust_mix=None):
+-    from .blobround6 import OracleRunner
+ 
+-    nf = len(world.fields)
+-    return OracleRunner(_template=template(world, state), _devices=devices,
+-                        _port_perm=np.arange(nf) if port_perm is None else port_perm,
+-                        _adjust_mix=np.eye(3) if adjust_mix is None else adjust_mix,
+-                        _stepper=LabStepper(world, dict(world.aux(state), _grid=np.asarray(state[world.fields[0]]).shape)))
++def oracle(world: LabWorld, state: dict, devices, *, port_perm=None, adjust_mix=None) -> LabOracleRunner:
++    stepper = LabStepper(world, dict(world.aux(state), _grid=np.asarray(state[world.fields[0]]).shape))
++    t0 = template(world, state)
++    t0["F"] = stepper.initial(state)
++    n = len(world.observed)
++    return LabOracleRunner(
++        _template=t0,
++        _devices=devices,
++        _port_perm=np.arange(n) if port_perm is None else port_perm,
++        _adjust_mix=np.eye(3) if adjust_mix is None else adjust_mix,
++        _stepper=stepper,
++        _actuators=world.actuator_rows(),
++        _observe_only=range(len(world.fields), n),
++    )
+diff --git a/scripts/physim/labworlds/labeval.py b/scripts/physim/labworlds/labeval.py
+index f9ac76d..461eaea 100644
+--- a/scripts/physim/labworlds/labeval.py
++++ b/scripts/physim/labworlds/labeval.py
+@@ -275,7 +275,7 @@ def run(spec: LabSpec, out: Path, members: int = 8, only: list | None = None):
+     suite = dict(
+         schema_version=VERSION, world=spec.name, scoring_version=scoring.VERSION,
+         protocol=R6.APPARATUS_PROTOCOL,
+-        declaration=_jsonable(dataclasses.asdict(spec.world)),
++        declaration=_jsonable(spec.world.declaration()),
+         world_sha256=file_sha(spec.world.path), prepared_state_sha256=digest_state(spec.state, spec.world.fields),
+         devices=[dict(lattice=d.lattice, n_rings=d.n_rings, base_ds=d.base_ds, center=d.center.tolist(),
+                       secret_rot=d.secret_rot, k=int(d.k)) for d in spec.devices],
+diff --git a/scripts/physim/labworlds/ports_check.py b/scripts/physim/labworlds/ports_check.py
+new file mode 100644
+index 0000000..d112506
+--- /dev/null
++++ b/scripts/physim/labworlds/ports_check.py
+@@ -0,0 +1,474 @@
++"""Checks for LabOracleRunner (physim/labworld.py): actuators apart from observed ports.
++
++    parity_lab     phase_membrane (runner_demo.py declaration): the pre-extension OracleRunner on
++                   LabStepper, LabOracleRunner from oracle(), and LabOracleRunner.wrap(OracleRunner)
++                   return bit-identical samples, also with a permuted port order and a non-trivial
++                   adjustment map, raise identical protocol errors, and reproduce the demo's saved
++                   forecast members
++    parity_native  the same comparison on a native Blobkit world (packaged BF genome, init_soup,
++                   devices.step_chunk), plus a short '-' pulse through genome.poke
++    signed         fed vortices (vortex_demo.py declaration) with actuators (om,+), (om,-), (Y,+):
++                   amp 3 for 50 tu at each device centre, every-1-tu readouts, finite and signed
++    observe        an observe-only speed channel |u| riding in F: returned by every sensor, does not
++                   perturb the dynamical channels, matches |u| recomputed from the state, and is
++                   rejected as an inject target (declaration, runner and request level)
++
++Usage: python ports_check.py CMD [--out DIR]   (OMP_NUM_THREADS=1 is set here; one command at a time)
++"""
++
++from __future__ import annotations
++
++import os
++
++for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
++    os.environ.setdefault(_v, "1")
++
++import argparse
++import copy
++import dataclasses
++import importlib.util
++import json
++import resource
++import sys
++import time
++from pathlib import Path
++
++import numpy as np
++
++ENV = Path(__file__).resolve().parents[3] / "environments" / "physim"
++sys.path.insert(0, str(ENV))
++from physim import blobround6 as R6  # noqa: E402
++from physim import labworld as LW  # noqa: E402
++from physim.devices import ProbeDevice, step_chunk  # noqa: E402
++
++EVALPILOT = Path("/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot")
++SENSORS = ("device0", "device1", "global")
++
++
++def demo(name):
++    """The scratchpad demo module (its prepared states live next to it in out/)."""
++    spec = importlib.util.spec_from_file_location(name, EVALPILOT / f"{name}.py")
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module
++
++
++def one_worker(module):
++    if hasattr(module, "ops") and hasattr(module.ops, "WORKERS"):
++        module.ops.WORKERS = 1
++
++
++def cpu():
++    r = resource.getrusage(resource.RUSAGE_SELF)
++    return r.ru_utime + r.ru_stime
++
++
++def identical(a, b):
++    """Bitwise equality of two sample payloads (lists of float64 arrays)."""
++    return len(a) == len(b) and all(
++        x.shape == y.shape and x.dtype == y.dtype and x.tobytes() == y.tobytes() for x, y in zip(a, b)
++    )
++
++
++def max_abs(a, b):
++    return float(max(np.abs(x - y).max() for x, y in zip(a, b)))
++
++
++def errors(runner, requests):
++    out = []
++    for actions, queries in requests:
++        try:
++            runner.sample_truth(actions, queries, 1, truth_seed=0)
++            out.append("accepted")
++        except R6.ProtocolError as e:
++            out.append(f"ProtocolError: {e}")
++    return out
++
++
++INVALID = [
++    ([dict(t=0.0, kind="inject", device=0, port=4, amp=1.0, dur=1.0)], [dict(sensor="global", t=[1.0])]),
++    ([dict(t=0.0, kind="inject", device=0, port=0, amp=-1.0, dur=1.0)], [dict(sensor="global", t=[1.0])]),
++    ([dict(t=0.0, kind="inject", device=0, port=0, amp=1.0, dur=51.0)], [dict(sensor="global", t=[1.0])]),
++    ([dict(t=0.01, kind="inject", device=0, port=0, amp=1.0, dur=1.0)], [dict(sensor="global", t=[1.0])]),
++    (
++        [
++            dict(t=0.0, kind="inject", device=0, port=0, amp=1.0, dur=2.0),
++            dict(t=1.0, kind="inject", device=0, port=1, amp=1.0, dur=1.0),
++        ],
++        [dict(sensor="global", t=[1.0])],
++    ),
++    ([dict(t=0.0, kind="inject", device=0, port=True, amp=1.0, dur=1.0)], [dict(sensor="global", t=[1.0])]),
++    ([], [dict(sensor="device2", t=[1.0])]),
++]
++
++
++def rich_request(n_ports, horizon):
++    """Pulses on every port at both devices, moves, a zero-amplitude (ineffective) pulse, equal-time
++    actions in list order, a one-tick pulse, and readouts at t=0 and around pulse boundaries."""
++    h = float(horizon)
++    actions = [
++        dict(t=0.0, kind="inject", device=0, port=0, amp=3.0, dur=0.2 * h),
++        dict(t=0.0, kind="adjust", device=1, u=[0.5, -0.3, 0.2]),
++        dict(t=0.1 * h, kind="inject", device=1, port=n_ports - 1, amp=1.5, dur=0.3 * h),
++        dict(t=0.2 * h, kind="inject", device=0, port=min(2, n_ports - 1), amp=0.0, dur=0.1 * h),
++        dict(t=0.25 * h, kind="adjust", device=0, u=[-1.0, 1.0, -0.5]),
++        dict(t=0.3 * h, kind="inject", device=0, port=1 % n_ports, amp=2.0, dur=0.15 * h),
++        dict(t=0.5 * h, kind="inject", device=1, port=0, amp=3.0, dur=0.5 * h),
++        dict(t=0.5 * h, kind="adjust", device=1, u=[0.0, 0.7, 0.0]),
++        dict(t=0.6 * h, kind="inject", device=0, port=n_ports - 1, amp=0.7, dur=0.02),
++    ]
++    edges = [0.0, 0.02, 0.2 * h - 0.02, 0.2 * h, 0.2 * h + 0.02, 0.5 * h, 0.6 * h + 0.02, h]
++    queries = [
++        dict(sensor="device0", t=[round(t, 2) for t in edges]),
++        dict(sensor="device1", t=[0.0, 0.25 * h, 0.5 * h, h]),
++        dict(sensor="global", t=[0.0, 0.125 * h, 0.375 * h, h]),
++    ]
++    return actions, queries
++
++
++MIX = np.array([[0.8, -0.6, 0.1], [0.6, 0.8, -0.2], [0.0, 0.1, 0.5]])
++
++
++# ----------------------------------------------------------------------------- (a) lab world
++
++
++def parity_lab(args):
++    rd = demo("runner_demo")
++    s0, info = rd.prepared()
++    fields = rd.FIELDS
++    w = rd.world({f: 0.01 for f in fields}, None, 0.01)
++    rows = {}
++
++    def legacy(perm, mix):
++        """The pre-extension labworld.oracle(): OracleRunner on LabStepper."""
++        stepper = LW.LabStepper(w, dict(w.aux(s0), _grid=s0[fields[0]].shape))
++        return R6.OracleRunner(
++            _template=LW.template(w, s0),
++            _devices=rd.devices(info),
++            _port_perm=perm,
++            _adjust_mix=mix,
++            _stepper=stepper,
++        )
++
++    # 1. runner_demo's pulseK program, 50 tu, every 1 tu, identity ports: three runners and the saved forecast
++    times = [float(t) for t in np.arange(1, 51)]
++    q = [dict(sensor=s, t=times) for s in SENSORS]
++    act = [dict(t=5.0, kind="inject", device=0, port=1, amp=3.0, dur=10.0)]
++    base = legacy(np.arange(4), np.eye(3))
++    runners = {
++        "OracleRunner": base,
++        "LabOracleRunner(oracle)": LW.oracle(w, s0, rd.devices(info)),
++        "LabOracleRunner.wrap": LW.LabOracleRunner.wrap(base),
++    }
++    out, secs = {}, {}
++    for name, r in runners.items():
++        c0 = cpu()
++        out[name] = r.sample_truth(act, q, args.members, truth_seed=101)["samples"]
++        secs[name] = round(cpu() - c0, 1)
++    z = np.load(EVALPILOT / "out" / "runner_demo_pulseK_samples.npz")
++    saved = [z[f"forecast_{g}"][: args.members] for g in SENSORS]
++    ref = out["OracleRunner"]
++    rows["demo_pulseK_50tu"] = dict(
++        members=args.members,
++        cpu_s=secs,
++        identical_to_OracleRunner={k: identical(ref, v) for k, v in out.items() if k != "OracleRunner"},
++        OracleRunner_vs_saved_demo_forecast=dict(identical=identical(ref, saved), max_abs=max_abs(ref, saved)),
++        LabOracleRunner_vs_saved_demo_forecast=identical(out["LabOracleRunner(oracle)"], saved),
++        shapes=[list(a.shape) for a in ref],
++    )
++    print(json.dumps(rows["demo_pulseK_50tu"]), flush=True)
++
++    # 2. rich program, permuted ports and a non-trivial adjustment map
++    perm = np.array([2, 0, 3, 1])
++    actions, queries = rich_request(4, args.horizon)
++    base = legacy(perm, MIX)
++    runners = {
++        "OracleRunner": base,
++        "LabOracleRunner(oracle)": LW.oracle(w, s0, rd.devices(info), port_perm=perm, adjust_mix=MIX),
++        "LabOracleRunner.wrap": LW.LabOracleRunner.wrap(base),
++    }
++    out = {}
++    for name, r in runners.items():
++        out[name] = r.sample_truth(actions, queries, args.members + 1, truth_seed=9)["samples"]
++    ref = out["OracleRunner"]
++    rows["rich_permuted"] = dict(
++        members=args.members + 1,
++        horizon_tu=args.horizon,
++        port_perm=perm.tolist(),
++        identical_to_OracleRunner={k: identical(ref, v) for k, v in out.items() if k != "OracleRunner"},
++        members_differ=bool(not np.array_equal(ref[0][0], ref[0][1])),
++        actions=actions,
++        queries=queries,
++    )
++    errs = {name: errors(r, INVALID) for name, r in runners.items()}
++    rows["protocol_errors"] = dict(
++        identical=all(e == errs["OracleRunner"] for e in errs.values()), messages=errs["OracleRunner"]
++    )
++    print(json.dumps({k: v for k, v in rows["rich_permuted"].items() if k not in ("actions", "queries")}), flush=True)
++    print(json.dumps(rows["protocol_errors"]), flush=True)
++    rows["cpu_s_total"] = round(cpu(), 1)
++    (args.out / "parity_lab.json").write_text(json.dumps(rows, indent=1) + "\n")
++
++
++# ----------------------------------------------------------------------------- (a) native Blobkit world
++
++
++def native_runner(seed):
++    """eval_preparation.make_oracle's native binding on a fresh BF soup (no hidden preparation)."""
++    from blobkit import worlds
++    from blobkit.soup import sim_cpu
++
++    genome = worlds.load("bf")
++    state = sim_cpu.init_soup(genome, L=128.0, seed=seed, workers=1, noise=0.002)
++    y, x = np.unravel_index(np.argmax(state["F"][0]), state["F"][0].shape)
++    center = (np.array([y, x]) + 0.5) * 0.5
++    rng = np.random.default_rng(41001)
++    devices = [
++        ProbeDevice(i, lattice, 3, spacing, center + 12.0 * i, 128.0, 0.0, False, 0.0, False, rng.permutation(k))
++        for i, (lattice, spacing, k) in enumerate((("square", 3.0, 13), ("hex", 6.0, 19)))
++    ]
++    return R6.OracleRunner(
++        _template=state, _devices=devices, _port_perm=[2, 0, 3, 1], _adjust_mix=MIX, _stepper=step_chunk
++    ), genome
++
++
++def parity_native(args):
++    rows = {}
++    try:
++        R6._native_oracle("bf", 0)
++        rows["blobround6._native_oracle"] = "ran"
++    except ImportError as e:
++        rows["blobround6._native_oracle"] = f"unavailable: {type(e).__name__}: {e}"
++    base, genome = native_runner(args.seed)
++    n = len(base._perm)
++    rows["world"] = dict(genome=genome.get("id", "bf"), n_ports=n, grid=list(base._template["F"].shape))
++    actions, queries = rich_request(n, args.horizon)
++    runners = {
++        "OracleRunner": base,
++        "LabOracleRunner.wrap": LW.LabOracleRunner.wrap(base),
++        "LabOracleRunner(direct)": LW.LabOracleRunner(
++            _template=base._template,
++            _devices=base._devices,
++            _port_perm=[2, 0, 3, 1],
++            _adjust_mix=MIX,
++            _stepper=step_chunk,
++        ),
++    }
++    out, secs = {}, {}
++    for name, r in runners.items():
++        c0 = cpu()
++        out[name] = r.sample_truth(actions, queries, args.members, truth_seed=11)["samples"]
++        secs[name] = round(cpu() - c0, 1)
++    ref = out["OracleRunner"]
++    rows["rich_permuted"] = dict(
++        members=args.members,
++        horizon_tu=args.horizon,
++        cpu_s=secs,
++        identical_to_OracleRunner={k: identical(ref, v) for k, v in out.items() if k != "OracleRunner"},
++        members_differ=bool(not np.array_equal(ref[0][0], ref[0][1])),
++    )
++    print(json.dumps(rows["rich_permuted"]), flush=True)
++    errs = {name: errors(r, INVALID) for name, r in runners.items()}
++    rows["protocol_errors"] = dict(identical=all(e == errs["OracleRunner"] for e in errs.values()))
++    # a '-' actuator on activator row 0 through genome.poke (not part of the identity check)
++    signed = LW.LabOracleRunner.wrap(base, actuators=[(0, 1), (0, -1)])
++    q = [dict(sensor="global", t=[0.0, 2.0])]
++    res = {}
++    for label, act in (
++        ("sham", []),
++        ("plus", [dict(t=0.0, kind="inject", device=0, port=0, amp=3.0, dur=2.0)]),
++        ("minus", [dict(t=0.0, kind="inject", device=0, port=1, amp=3.0, dur=2.0)]),
++    ):
++        res[label] = signed.sample_truth(act, q, 1, truth_seed=3)["samples"][0][0, 1, :, 0]
++    row0 = int(np.where(np.asarray(base._perm) == 0)[0][0])  # public observed port that reads F row 0
++    rows["native_signed_row0_global_mean_delta_at_2tu"] = dict(
++        observed_port=row0,
++        plus=float(res["plus"][row0] - res["sham"][row0]),
++        minus=float(res["minus"][row0] - res["sham"][row0]),
++        expected_first_order=float(3.0 * 2.0 * 2 * np.pi * 2.0**2 / 128.0**2),
++    )
++    print(json.dumps(rows["native_signed_row0_global_mean_delta_at_2tu"]), flush=True)
++    rows["cpu_s_total"] = round(cpu(), 1)
++    (args.out / "parity_native.json").write_text(json.dumps(rows, indent=1) + "\n")
++
++
++# ----------------------------------------------------------------------------- (b) signed vorticity
++
++
++def vortex(actuators=None, derived=()):
++    vd = demo("vortex_demo")
++    s, info = vd.prepared()
++    w = dataclasses.replace(
++        vd.world({"om": 0.01, "Y": 0.1}, None, noise=0.003), actuators=actuators, derived=tuple(derived)
++    )
++    o = LW.oracle(w, s, vd.devices(info))
++    one_worker(o._stepper.module)
++    return o, w, s, info
++
++
++PM = (LW.Actuator("om", 1), LW.Actuator("om", -1), LW.Actuator("Y", 1))
++
++
++def signed(args):
++    o, w, s, info = vortex(PM)
++    default, *_ = vortex(None)
++    rows = dict(actuators=[dataclasses.asdict(a) for a in PM], gain=w.ports["om"].gain, noise=w.noise)
++    times = [0.02] + [float(t) for t in np.arange(1, 51)]
++    q = [dict(sensor=x, t=times) for x in SENSORS]
++    c0 = cpu()
++    sham = o.sample_truth([], q, 1, truth_seed=5)["samples"]
++    # parity of the +/- roster's sham with the default-roster oracle and with the saved demo forecast
++    vz = np.load(EVALPILOT / "out" / "vortex_demo_sham_samples.npz")
++    saved = [vz[f"forecast_{g}"][:1] for g in SENSORS]
++    fc = o.sample_truth(
++        [], [dict(sensor=x, t=[float(t) for t in np.arange(1, 51)]) for x in SENSORS], 1, truth_seed=101
++    )
++    rows["sham_vs_saved_demo_forecast_member0"] = identical(fc["samples"], saved)
++    for dev in (0, 1):
++        res = {}
++        for label, port in (("plus", 0), ("minus", 1)):
++            act = [dict(t=0.0, kind="inject", device=dev, port=port, amp=3.0, dur=50.0)]
++            res[label] = o.sample_truth(act, q, 1, truth_seed=5)["samples"]
++        old = default.sample_truth(
++            [dict(t=0.0, kind="inject", device=dev, port=0, amp=3.0, dur=50.0)], q, 1, truth_seed=5
++        )
++        d = f"device{dev}"
++        g = SENSORS.index(d)
++        centre = {
++            k: v[g][0, :, 0, 0] for k, v in dict(sham=sham, **res).items()
++        }  # node 0 = ring 0 (identity node_perm)
++        probe_om = {k: v[g][0, :, 0, :] for k, v in dict(sham=sham, **res).items()}
++        gmean = {k: v[2][0, :, 0, 0] for k, v in dict(sham=sham, **res).items()}
++        gvar = {k: v[2][0, :, 0, 1] for k, v in dict(sham=sham, **res).items()}
++        tick1 = {k: float(centre[k][0] - centre["sham"][0]) for k in ("plus", "minus")}
++        rows[f"pulse_at_{d}"] = dict(
++            finite_all_readouts=bool(all(np.isfinite(a).all() for v in res.values() for a in v)),
++            plus_identical_to_default_roster_port0=identical(res["plus"], old["samples"]),
++            centre_om_at=dict(
++                t=[times[i] for i in (0, 10, 25, 50)],
++                **{k: [round(float(centre[k][i]), 4) for i in (0, 10, 25, 50)] for k in centre},
++            ),
++            first_tick_centre_delta=dict(tick1, ratio_minus_over_plus=tick1["minus"] / tick1["plus"]),
++            expected_first_tick_delta=0.01 * 3.0 * 0.02,
++            probe_om_min_max={k: [round(float(v.min()), 4), round(float(v.max()), 4)] for k, v in probe_om.items()},
++            global_mean_om_delta_at=dict(
++                t=[times[i] for i in (10, 25, 50)],
++                **{k: [float(gmean[k][i] - gmean["sham"][i]) for i in (10, 25, 50)] for k in ("plus", "minus")},
++            ),
++            global_var_om_at_50={k: round(float(v[-1]), 5) for k, v in gvar.items()},
++        )
++        print(json.dumps(rows[f"pulse_at_{d}"]), flush=True)
++        np.savez_compressed(
++            args.out / f"signed_{d}.npz",
++            times=np.array(times),
++            **{f"{k}_{x}": v[i] for k, v in dict(sham=sham, **res).items() for i, x in enumerate(SENSORS)},
++        )
++    # the fields themselves after 50 tu of the '-' pulse at device0 (stepper driven exactly as the runner does)
++    c = o._devices[0].center
++    snaps = {}
++    for label, amp in (("sham", 0.0), ("minus", -3.0)):
++        sim = R6._clone_sim(o._template)
++        sim["rng"] = np.random.default_rng(R6._truth_member_seed(5, 0))
++        inj = [dict(field=0, y=float(c[0]), x=float(c[1]), amp=amp)] if amp else []
++        o._stepper(sim, 2500, injections=inj)
++        snaps[label] = sim["F"]
++    readout = o._sample(dict(F=snaps["minus"], dx=1.0), o._devices, "device0")
++    runner = np.load(args.out / "signed_device0.npz")["minus_device0"][0, -1]
++    rows["direct_stepper_snapshot_matches_runner_readout_at_50"] = bool(np.array_equal(readout, runner))
++    np.savez_compressed(args.out / "signed_fields_50tu.npz", centre=c, **{k: v[0] for k, v in snaps.items()})
++    rows["field_om_min_max_50tu"] = {k: [float(v[0].min()), float(v[0].max())] for k, v in snaps.items()}
++    rows["cpu_s_total"] = round(cpu() - c0, 1)
++    (args.out / "signed.json").write_text(json.dumps(rows, indent=1) + "\n")
++
++
++# ----------------------------------------------------------------------------- (c) observe-only channel
++
++
++def vortex_speed(module, state):
++    """|u| of the flow the module advects with (zero when adv=0)."""
++    uy, ux = module._vel(state)
++    return state["par"]["adv"] * np.hypot(uy, ux)
++
++
++def observe(args):
++    speed = LW.Derived("speed", vortex_speed)
++    o, w, s, info = vortex(PM, (speed,))
++    plain, *_ = vortex(PM)
++    default, wd, *_ = vortex(None, (speed,))
++    rows = dict(
++        observed=list(w.observed),
++        n_observed=o.n_observed,
++        n_actuators=o.n_actuators,
++        declaration_derived=w.declaration()["derived"],
++    )
++    c0 = cpu()
++    q = [dict(sensor=x, t=[0.0, 1.0, 5.0, 10.0]) for x in SENSORS]
++    act = [dict(t=0.0, kind="inject", device=0, port=1, amp=3.0, dur=5.0)]
++    with_speed = o.sample_truth(act, q, 2, truth_seed=7)["samples"]
++    without = plain.sample_truth(act, q, 2, truth_seed=7)["samples"]
++    rows["shapes"] = [list(a.shape) for a in with_speed]
++    rows["dynamical_channels_identical_without_derived"] = identical([a[:, :, :2] for a in with_speed], without)
++    sp = [a[:, :, 2] for a in with_speed]
++    rows["speed_channel"] = dict(
++        finite=bool(all(np.isfinite(a).all() for a in sp)),
++        nonnegative_probe_values=bool((sp[0] >= 0).all() and (sp[1] >= 0).all()),
++        device0_centre_member0=[round(float(v), 5) for v in sp[0][0, :, 0]],
++        global_mean_member0=[round(float(v), 5) for v in sp[2][0, :, 0]],
++        global_var_member0=[round(float(v), 7) for v in sp[2][0, :, 1]],
++    )
++    # t=0: the template's speed row equals |u| from the prepared state; after 50 ticks it equals |u| from the
++    # stepper's state (fields from F, the rest from the per-member aux)
++    module = o._stepper.module
++    st0 = dict(copy.deepcopy(s))
++    rows["t0_speed_row_equals_prepared_state_speed"] = bool(
++        np.array_equal(o._template["F"][2], vortex_speed(module, st0))
++    )
++    sim = R6._clone_sim(o._template)
++    sim["rng"] = np.random.default_rng(1)
++    o._stepper(sim, 50)
++    state = dict(sim["_lab_aux"], om=sim["F"][0], Y=sim["F"][1])
++    rows["t1_speed_row_equals_recomputed_speed"] = bool(np.array_equal(sim["F"][2], vortex_speed(module, state)))
++    rows["t1_speed_field_mean_max"] = [float(sim["F"][2].mean()), float(sim["F"][2].max())]
++    # rejection as an inject target
++    rej = {}
++    try:
++        dataclasses.replace(w, actuators=(LW.Actuator("speed", 1),))
++        rej["declaration Actuator('speed')"] = "accepted"
++    except ValueError as e:
++        rej["declaration Actuator('speed')"] = f"ValueError: {e}"
++    try:
++        LW.LabOracleRunner.wrap(o, actuators=[(2, 1)], observe_only=[2])
++        rej["runner _actuators=[(2, +1)] with row 2 observe-only"] = "accepted"
++    except ValueError as e:
++        rej["runner _actuators=[(2, +1)] with row 2 observe-only"] = f"ValueError: {e}"
++    gq = [dict(sensor="global", t=[1.0])]
++    rej["request port 3 on roster (om+, om-, Y+)"] = errors(
++        o, [([dict(t=0.0, kind="inject", device=0, port=3, amp=1.0, dur=1.0)], gq)]
++    )[0]
++    rej[f"default roster {default._actuators}: request port 2 (speed's observed port)"] = errors(
++        default, [([dict(t=0.0, kind="inject", device=0, port=2, amp=1.0, dur=1.0)], gq)]
++    )[0]
++    rej["default roster: request port 1 (Y)"] = errors(
++        default, [([dict(t=0.0, kind="inject", device=0, port=1, amp=1.0, dur=1.0)], gq)]
++    )[0]
++    rows["rejections"] = rej
++    rows["default_roster_outputs_speed"] = list(
++        default.sample_truth([], [dict(sensor="device0", t=[0.0])], 1, truth_seed=0)["samples"][0].shape
++    )
++    rows["cpu_s_total"] = round(cpu() - c0, 1)
++    print(json.dumps(rows, indent=1), flush=True)
++    (args.out / "observe.json").write_text(json.dumps(rows, indent=1) + "\n")
++
++
++if __name__ == "__main__":
++    ap = argparse.ArgumentParser()
++    ap.add_argument("cmd", choices=["parity_lab", "parity_native", "signed", "observe"])
++    ap.add_argument("--out", type=Path, default=EVALPILOT / "ports")
++    ap.add_argument("--members", type=int, default=2)
++    ap.add_argument("--horizon", type=float, default=20.0)
++    ap.add_argument("--seed", type=int, default=7)
++    a = ap.parse_args()
++    a.out.mkdir(parents=True, exist_ok=True)
++    t0 = time.time()
++    {"parity_lab": parity_lab, "parity_native": parity_native, "signed": signed, "observe": observe}[a.cmd](a)
++    print(f"{a.cmd}: wall {time.time() - t0:.1f} s, cpu {cpu():.1f} s", flush=True)
+-- 
+2.43.0
+

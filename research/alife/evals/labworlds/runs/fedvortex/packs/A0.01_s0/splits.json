@@ -1,0 +1,208 @@
+{
+"pack": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/evalpilot/fedvortex/packs/A0.01_s0",
+"persistent_splits": 13,
+"daughters_same_sign": 13,
+"daughters_other_sign": 0,
+"sign_unknown": 0,
+"merges_same_sign": 44,
+"merges_opposite_sign": 8,
+"merges_unknown": 12,
+"max_generation": 3,
+"splits": [
+{
+"frame": 11,
+"t": 33.0,
+"parent": 6,
+"children": [
+65,
+66
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 19,
+"t": 57.0,
+"parent": 32,
+"children": [
+71,
+72
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 20,
+"t": 60.0,
+"parent": 60,
+"children": [
+76,
+77
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 1
+},
+{
+"frame": 28,
+"t": 84.0,
+"parent": 14,
+"children": [
+79,
+80
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 125,
+"t": 375.0,
+"parent": 105,
+"children": [
+115,
+116
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 144,
+"t": 432.0,
+"parent": 92,
+"children": [
+119,
+120
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 169,
+"t": 507.0,
+"parent": 118,
+"children": [
+136,
+137
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 244,
+"t": 732.0,
+"parent": 119,
+"children": [
+154,
+155
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 272,
+"t": 816.0,
+"parent": 167,
+"children": [
+170,
+171
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 2
+},
+{
+"frame": 307,
+"t": 921.0,
+"parent": 190,
+"children": [
+197,
+198
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 1
+},
+{
+"frame": 321,
+"t": 963.0,
+"parent": 193,
+"children": [
+200,
+201
+],
+"sign_parent": -1,
+"sign_children": [
+-1,
+-1
+],
+"generation": 2
+},
+{
+"frame": 334,
+"t": 1002.0,
+"parent": 199,
+"children": [
+209,
+210
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 3
+},
+{
+"frame": 375,
+"t": 1125.0,
+"parent": 224,
+"children": [
+228,
+229
+],
+"sign_parent": 1,
+"sign_children": [
+1,
+1
+],
+"generation": 3
+}
+]
+}

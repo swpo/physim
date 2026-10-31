@@ -1,0 +1,118 @@
+{
+ "args": {
+  "cmd": "detect_score",
+  "seed": 0,
+  "t_prep": 500,
+  "noise": 0.01,
+  "form": "B",
+  "dur": 20,
+  "fields": "om,Y",
+  "amps": "0.003,0.03,0.3,3",
+  "chaos": false,
+  "members": 8,
+  "window": 300,
+  "windows": "30,100,300",
+  "every": 2.0,
+  "scale": 1.0,
+  "arm": "native",
+  "arms": "adv0,fork"
+ },
+ "res": {
+  "w30_all": {
+   "native_vs_native": 7.52,
+   "adv0": 15.713,
+   "ratio_adv0": 2.09,
+   "fork": 739.245,
+   "ratio_fork": 98.3
+  },
+  "w30_dev0": {
+   "native_vs_native": 3.46,
+   "adv0": 7.0,
+   "ratio_adv0": 2.02,
+   "fork": 54.33,
+   "ratio_fork": 15.7
+  },
+  "w30_dev1": {
+   "native_vs_native": 6.365,
+   "adv0": 13.901,
+   "ratio_adv0": 2.18,
+   "fork": 111.396,
+   "ratio_fork": 17.5
+  },
+  "w30_global": {
+   "native_vs_native": 1.798,
+   "adv0": 2.143,
+   "ratio_adv0": 1.19,
+   "fork": 732.282,
+   "ratio_fork": 407.17
+  },
+  "w100_all": {
+   "native_vs_native": 18.835,
+   "adv0": 59.875,
+   "ratio_adv0": 3.18,
+   "fork": 1355.062,
+   "ratio_fork": 71.95
+  },
+  "w100_dev0": {
+   "native_vs_native": 10.777,
+   "adv0": 38.783,
+   "ratio_adv0": 3.6,
+   "fork": 107.953,
+   "ratio_fork": 10.02
+  },
+  "w100_dev1": {
+   "native_vs_native": 14.208,
+   "adv0": 44.219,
+   "ratio_adv0": 3.11,
+   "fork": 203.882,
+   "ratio_fork": 14.35
+  },
+  "w100_global": {
+   "native_vs_native": 5.381,
+   "adv0": 11.654,
+   "ratio_adv0": 2.17,
+   "fork": 1343.676,
+   "ratio_fork": 249.72
+  },
+  "w300_all": {
+   "native_vs_native": 66.619,
+   "adv0": 156.955,
+   "ratio_adv0": 2.36,
+   "fork": 2338.279,
+   "ratio_fork": 35.1
+  },
+  "w300_dev0": {
+   "native_vs_native": 46.605,
+   "adv0": 97.113,
+   "ratio_adv0": 2.08,
+   "fork": 199.779,
+   "ratio_fork": 4.29
+  },
+  "w300_dev1": {
+   "native_vs_native": 41.949,
+   "adv0": 100.319,
+   "ratio_adv0": 2.39,
+   "fork": 380.717,
+   "ratio_fork": 9.08
+  },
+  "w300_global": {
+   "native_vs_native": 15.159,
+   "adv0": 73.169,
+   "ratio_adv0": 4.83,
+   "fork": 2319.316,
+   "ratio_fork": 153.0
+  },
+  "native_spread_t": {
+   "2": 1.47,
+   "32": 2.78,
+   "62": 3.18,
+   "92": 3.93,
+   "122": 3.92,
+   "152": 4.46,
+   "182": 5.35,
+   "212": 6.51,
+   "242": 6.36,
+   "272": 4.96
+  }
+ }
+}

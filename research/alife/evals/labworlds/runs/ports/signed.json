@@ -1,0 +1,184 @@
+{
+ "actuators": [
+  {
+   "field": "om",
+   "sign": 1
+  },
+  {
+   "field": "om",
+   "sign": -1
+  },
+  {
+   "field": "Y",
+   "sign": 1
+  }
+ ],
+ "gain": 0.01,
+ "noise": {
+  "om": [
+   "additive",
+   0.003
+  ],
+  "Y": [
+   "proportional",
+   0.003
+  ]
+ },
+ "sham_vs_saved_demo_forecast_member0": true,
+ "pulse_at_device0": {
+  "finite_all_readouts": true,
+  "plus_identical_to_default_roster_port0": true,
+  "centre_om_at": {
+   "t": [
+    0.02,
+    10.0,
+    25.0,
+    50.0
+   ],
+   "sham": [
+    0.1934,
+    0.1885,
+    0.1336,
+    0.019
+   ],
+   "plus": [
+    0.194,
+    0.3357,
+    0.3206,
+    0.3015
+   ],
+   "minus": [
+    0.1929,
+    -0.0697,
+    -0.3666,
+    -0.3237
+   ]
+  },
+  "first_tick_centre_delta": {
+   "plus": 0.0005661779761314545,
+   "minus": -0.000566179549694068,
+   "ratio_minus_over_plus": -1.0000027792720307
+  },
+  "expected_first_tick_delta": 0.0006,
+  "probe_om_min_max": {
+   "sham": [
+    -0.1157,
+    0.2002
+   ],
+   "plus": [
+    -0.1138,
+    0.3368
+   ],
+   "minus": [
+    -0.3666,
+    0.1929
+   ]
+  },
+  "global_mean_om_delta_at": {
+   "t": [
+    10.0,
+    25.0,
+    50.0
+   ],
+   "plus": [
+    0.00040892491155931064,
+    0.0006833804734841188,
+    0.0009959460139647948
+   ],
+   "minus": [
+    -0.0005336808185814103,
+    -0.001359078681176864,
+    -0.0016787851268421482
+   ]
+  },
+  "global_var_om_at_50": {
+   "sham": 0.00246,
+   "plus": 0.00259,
+   "minus": 0.0026
+  }
+ },
+ "pulse_at_device1": {
+  "finite_all_readouts": true,
+  "plus_identical_to_default_roster_port0": true,
+  "centre_om_at": {
+   "t": [
+    0.02,
+    10.0,
+    25.0,
+    50.0
+   ],
+   "sham": [
+    0.1749,
+    0.1762,
+    0.1448,
+    0.0089
+   ],
+   "plus": [
+    0.1755,
+    0.3228,
+    0.3112,
+    0.2934
+   ],
+   "minus": [
+    0.1744,
+    -0.0532,
+    -0.3402,
+    -0.3074
+   ]
+  },
+  "first_tick_centre_delta": {
+   "plus": 0.0005733322468586266,
+   "minus": -0.0005733348662033677,
+   "ratio_minus_over_plus": -1.000004568633206
+  },
+  "expected_first_tick_delta": 0.0006,
+  "probe_om_min_max": {
+   "sham": [
+    -0.006,
+    0.1799
+   ],
+   "plus": [
+    -0.0059,
+    0.3272
+   ],
+   "minus": [
+    -0.3457,
+    0.1744
+   ]
+  },
+  "global_mean_om_delta_at": {
+   "t": [
+    10.0,
+    25.0,
+    50.0
+   ],
+   "plus": [
+    0.00036620247765078496,
+    0.0005378371775306668,
+    0.0007577497385985493
+   ],
+   "minus": [
+    -0.000545169731791556,
+    -0.0014453982242568387,
+    -0.002148507513812748
+   ]
+  },
+  "global_var_om_at_50": {
+   "sham": 0.00246,
+   "plus": 0.0026,
+   "minus": 0.00263
+  }
+ },
+ "direct_stepper_snapshot_matches_runner_readout_at_50": true,
+ "field_om_min_max_50tu": {
+  "sham": [
+   -0.22405237635725314,
+   0.22122144675473832
+  ],
+  "minus": [
+   -0.33237320627039746,
+   0.2251021892355114
+  ]
+ },
+ "cpu_s_total": 62.3
+}

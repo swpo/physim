@@ -1,0 +1,19 @@
+{
+ "parity_repo_oracle_5tu_maxabs": {
+  "device0": 0.0,
+  "device1": 0.0,
+  "global": 0.0
+ },
+ "parity_cpu_s": 9.6,
+ "sham_pred_native_m0_3tu_maxabs_vs_saved": {
+  "device0": 0.0,
+  "device1": 0.0,
+  "global": 0.0
+ },
+ "surf_pred_dthalf_m0_6tu_maxabs_vs_saved": {
+  "device0": 0.0,
+  "device1": 0.0,
+  "global": 0.0
+ },
+ "repro_cpu_s": 15.3
+}

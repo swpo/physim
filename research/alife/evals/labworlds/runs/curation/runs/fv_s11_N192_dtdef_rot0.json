@@ -1,0 +1,100 @@
+{
+ "meta": {
+  "world": "fv",
+  "seed": 11,
+  "N": 192,
+  "dt": 0.02,
+  "T": 1500.0,
+  "rot": 0.0,
+  "fdt": 3.0,
+  "spf": 150,
+  "frames": 500,
+  "overrides": {
+   "nu": 0.225,
+   "kY": 2.25,
+   "hyper": 0.0253125
+  },
+  "status": "ok",
+  "cpu_s": 403.822534769
+ },
+ "frames": 501,
+ "threshold_rel": 0.2925853115654093,
+ "components_final": 29,
+ "components_mean": 31.311377245508982,
+ "tracks": 158,
+ "splits": 41,
+ "persistent_splits": 18,
+ "merges": 37,
+ "merge_split_ratio": 0.902,
+ "max_generation": 5,
+ "ps_times": [
+  60.0,
+  234.0,
+  309.0,
+  312.0,
+  465.0,
+  516.0,
+  522.0,
+  699.0,
+  753.0,
+  903.0,
+  909.0,
+  909.0,
+  1065.0,
+  1086.0,
+  1215.0,
+  1245.0,
+  1350.0,
+  1368.0
+ ],
+ "ps_by_600": 7,
+ "maxgen_by_600": 2,
+ "ps_by_1200": 14,
+ "maxgen_by_1200": 3,
+ "ps_by_1500": 18,
+ "maxgen_by_1500": 5,
+ "division_axis_persistent": {
+  "A4": -0.093,
+  "n": 18,
+  "se": 0.148
+ },
+ "division_axis_all_splits": {
+  "A4": -0.062,
+  "n": 41,
+  "se": 0.112
+ },
+ "motion_direction": {
+  "A4": -0.002,
+  "n": 3009,
+  "se": 0.014
+ },
+ "motion": {
+  "tracks_ge_K": 101,
+  "median_path_speed": 0.1693,
+  "moving_tracks": 89,
+  "median_disp_per_frame": 0.5027
+ },
+ "elongation_axis": {
+  "A4": -0.011,
+  "n": 985,
+  "se": 0.022,
+  "median_aspect": 1.916
+ },
+ "daughters_same_sign": 18,
+ "daughters_not_same_sign": 0,
+ "merges_same_sign": 37,
+ "merges_opposite_sign": 0,
+ "bodies_by_time": {
+  "0": 39,
+  "150": 35,
+  "300": 32,
+  "450": 31,
+  "600": 31,
+  "750": 30,
+  "900": 30,
+  "1050": 30,
+  "1200": 29,
+  "1350": 29,
+  "1500": 29
+ }
+}

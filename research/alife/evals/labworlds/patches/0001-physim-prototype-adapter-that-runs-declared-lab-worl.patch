@@ -1,0 +1,614 @@
+From 689f5dace6c8caaaa8ae6746ef3f3f5c60482ea4 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 28 Oct 2026 17:16:49 +0000
+Subject: [PATCH 01/11] physim: prototype adapter that runs declared lab worlds
+ through OracleRunner, with a draft world contract
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+---
+ environments/physim/LABWORLDS.md        | 108 +++++++++++++++
+ environments/physim/physim/labworld.py  | 163 ++++++++++++++++++++++
+ scripts/physim/labworlds/runner_demo.py | 122 +++++++++++++++++
+ scripts/physim/labworlds/vortex_demo.py | 175 ++++++++++++++++++++++++
+ 4 files changed, 568 insertions(+)
+ create mode 100644 environments/physim/LABWORLDS.md
+ create mode 100644 environments/physim/physim/labworld.py
+ create mode 100644 scripts/physim/labworlds/runner_demo.py
+ create mode 100644 scripts/physim/labworlds/vortex_demo.py
+
+diff --git a/environments/physim/LABWORLDS.md b/environments/physim/LABWORLDS.md
+new file mode 100644
+index 0000000..70163c7
+--- /dev/null
++++ b/environments/physim/LABWORLDS.md
+@@ -0,0 +1,108 @@
++# Lab worlds as PhySim evaluations: draft world contract
++
++Status: draft, 28 Oct 2026. Evidence: the eval-readiness battery on three collective worlds
++(phase_membrane, c53 fed vortices, c34 Marangoni rods) and a prototype adapter,
++`physim/labworld.py`, on the local branch `feat/labkit-worlds` of residency-environments.
++
++## What already works without changing the runner
++
++PhySim's `OracleRunner` takes any stepper `stepper(sim, n, injections)` through its private
++`_stepper` argument. The prototype wraps a lab world (a Python module with `init` and `step`
++over a dict of square float arrays) as such a stepper and runs real experiment programs
++through `sample_truth`, with PhySim's own devices, scheduling, member seeding and checks.
++
++- **Public tick vs native time.** The runner's tick stays 0.02 public time units. The stepper
++  takes a declared number of native steps per tick, so a world keeps its own dt.
++- **Per-member state.** The runner copies only `F` and `rng` per member; the stepper keeps every
++  other piece of module state in a per-member copy made on its first call.
++- **Noise.** All draws come from the runner's per-member generator, a fixed number per step, so
++  actions never shift a member's noise stream (paired controls stay paired).
++- **Observe-only channels.** A derived field (velocity, eating rate) can ride in `F` as an extra
++  field with no actuator; the runner samples it like any other port.
++
++## What a world declares
++
++| Item | Why (evidence) |
++|---|---|
++| Fields in port order, grid, `dx` (world units per pixel) | Device geometry and source width are in world units. 1 px per world unit suited all three worlds. |
++| Native dt and native steps per public tick | The runner checks only the public tick. phase_membrane: 1 step per tick (1 tu = 50 native t); vortices: 1 step per tick (1 tu = 1 native t). |
++| Noise form and level per field | The form decides survival. Plain additive noise on fields the world clips at zero is a hidden source: it dissolved phase_membrane at sd 0.01 per sqrt(t), and filled the Marangoni bath with cargo. Proportional noise on concentrations, additive on order parameters and vorticity, conserved on conserved fields, kept each world intact up to about 0.01-0.03. |
++| Ports: observed and driven separately; for each driven port an actuator kind, a gain and a clip | PhySim's maximum program (amp 3 for 50 tu) made the numerics fail at gain 1 through phase_membrane's substrate, catalyst and phase field, the vortices' vorticity, and the rods' surfactant and phase field. Gains of 0.01 (and 0.1 for fuel) kept every port finite and in range. Velocity is recomputed every step, so injecting into it does nothing: observe-only. |
++| Signed actuators where the field is signed | Vorticity is signed; a non-negative pulse only adds one sign (it kills or flips the other). Offer a signed amplitude or a +/- port pair. |
++| Score groups and aggregate sensors | Chaotic worlds (vortices, rods) decorrelate within 50-200 t. Late in a window, whole-box statistics carry the mechanism (the rods' wall ablation separates only through cargo variance at 150 t). |
++| Privileged ablations, each prepared on its own | All battery ablations were switched on from the native prepared state; a hidden ablated world starts from its own prepared state, which is the fair score-meaning check. |
++| Prepared-state recipe (seed, time, overrides) | Identity must include parameter overrides, which several worlds read from the environment at import. |
++
++## Acceptance checks before a world becomes an evaluation
++
++1. **Parity.** At noise 0 and no actions, the runner's output equals the native module's run.
++2. **Noise band.** Capability measures against noise level, for the declared form, on 2 or more seeds;
++   the chosen level sits inside the band where the behaviour survives.
++3. **Envelope.** Every driven port at PhySim's maximum program (amp 3, 50 tu, at the worst site)
++   stays finite and inside the field's physical range.
++4. **Spread.** Forecast members differ; native-vs-native scores set the null band.
++5. **Detectability.** Each privileged ablation separates from the native world beyond the null band,
++   in the declared score groups and windows.
++6. **Horizon.** Measure the decorrelation time; choose windows and late-window queries (statistics)
++   accordingly. Long windows help slow behaviour (divisions), but pointwise forecasts of chaotic
++   worlds stop paying after 30-150 t.
++
++## Runner and bundle changes still needed
++
++- Make `_stepper` a declared, versioned interface; keep today's Blobkit path frozen as a legacy
++  profile so existing bundles reproduce bit for bit.
++- Bundle layer: `_validate_physics`, `make_oracle`, `NUMERICS` and the single 256^2 float32
++  `fields` array assume a Blobkit genome. A lab bundle carries the world file, its overrides, the
++  declaration above and a prepared state (named arrays, including module state), all hashed into
++  its identity.
++- Ports: separate observed and driven maps (today an undriven port is a silent no-op that the agent
++  still sees); signed amplitudes; per-port actuator kinds.
++- Ablations: hooks in the world declaration, replacing the template-array edits in
++  `build_evaluation_bundle.py`.
++- Agent spec: port counts and sensor descriptions come from the declaration.
++
++## Prototype results through the runner (28 Oct)
++
++`physim/labworld.py` runs phase_membrane and c53's fed vortices through `OracleRunner.sample_truth`
++with PhySim's own devices (13-node square and 19-node hex arrays, the global sensor), scheduling and
++per-member seeding. Scripts: `runner_demo.py`, `vortex_demo.py` (scratchpad `evalpilot/`).
++
++- **Parity.** At zero noise with no actions the runner's output equals the native module exactly
++  (phase_membrane, 100 steps: max difference 0.0; members identical).
++- **Envelope** (amp 3 for 50 tu at device 0, the maximum PhySim program):
++  - phase_membrane, 1 tick = 1 native step: gain 1 goes non-finite through S, K and phi; gain 0.1 is
++    finite but leaves the physical range (S 2.1, K 1.19); gain 0.01 is finite and in range on all
++    four ports.
++  - fed vortices, 1 tick = 1 native step: vorticity goes non-finite at gain 1, reaches 1.5 (about 8x
++    a body's peak) at 0.1 and a sane 0.33 at 0.01; fuel is safe at every gain up to 1.
++- **Scores.** 8 forecast members vs 8 truth members per arm, readouts every 1 tu for 50 tu, energy
++  score per sensor group with one pooled scale per field; ratio = score against the ablated world /
++  score against an independent native truth. Every ablated arm starts from the native prepared state.
++
++| World (noise) | Arm | device0 | device1 | global |
++|---|---|---|---|---|
++| phase_membrane (0.01, physical form) | link drift off (chi=0) | 7.8-17.6 | 5.7-18.6 | 13-177 |
++| | uniform mobility (gate=0) | 6.4-26.9 | 5.8-15.9 | 32-246 |
++| | tilt halved (a=2) | 7.7-27.3 | 5.8-17.3 | 10-96 |
++| fed vortices (0.003, vorticity additive, fuel proportional) | flow off (adv=0) | 5.0-17.3 | 7.0-21.2 | 0.75-1.14 |
++| | fuel regrowth off (kF=0) | 7.4-14.9 | 5.1-15.9 | 8-27 |
++| | dt halved (numerical null) | 0.96-1.16 | 0.98-1.00 | 0.66-0.87 |
++
++  Ranges span the 10, 25 and 50 tu windows and the sham and pulse programs. The global sensor
++  cannot see the flow-off arm in the vortices (box means and variances are unchanged); the probes can.
++  The vortex regrowth-off arm (a dynamics ablation of E) was missing from the battery and is detectable.
++- **A bug the numerical null caught.** The first vortex run scored the dt-halved null at 5-12x: the
++  world precomputes its diffusion operators from dt at init, and the adapter carried them over from
++  the prepared state. The adapter now rebuilds non-field state with the arm's own `init` (keeping
++  declared `carry` keys such as the clock). A numerical null arm belongs in every acceptance run.
++- **Caveats.** One prepared state per world; ablations branched from the native state; the pooled
++  per-field scales are a stand-in for PhySim's declared score groups; native-vs-native scores in the
++  phase_membrane global group are small, which inflates its ratios.
++
++## Open questions
++
++- Whether to keep raw Python steppers or widen Blobkit's genome into a term list for field worlds
++  (both run through the same seam).
++- Trusted-code policy for world files in the grader.
++- Cost: the prototype runs about 3.4 ms per native step at 128^2; a 50 tu window at one step per tick
++  is about 8.5 s per member.
+diff --git a/environments/physim/physim/labworld.py b/environments/physim/physim/labworld.py
+new file mode 100644
+index 0000000..5e700ab
+--- /dev/null
++++ b/environments/physim/physim/labworld.py
+@@ -0,0 +1,163 @@
++"""Run a declared lab world through the PhySim oracle runner.
++
++A lab world is a Python module with ``init(seed, size)`` and ``step(state)`` over a
++dict of square float arrays (the ALife lab's labkit contract). ``LabWorld`` declares
++everything the runner and the agent contract need that the module does not say:
++
++- ``fields``: the state keys that are dynamical fields, in port order.
++- ``steps_per_tick``: native steps per public tick (one tick is 0.02 time units).
++- ``noise``: per field, ``("additive" | "proportional", sd)``; sd is per sqrt(native
++  time). Noise draws come only from the runner's per-member generator, a fixed
++  number per step, so actions never shift a member's noise stream.
++- ``ports``: per field, the source gain (native field units per native time per unit
++  of PhySim amplitude) and an optional clip applied after each injection.
++- ``dx``: world units per pixel; the Gaussian source width is in world units.
++- ``sys_path``: directories the module imports from (for example the lab's labkit).
++
++- ``carry``: non-field state keys taken from the prepared state (for example a clock).
++  Every other non-field entry (parameters copied into the state, operators precomputed
++  from dt) is rebuilt by the overridden module's own ``init``, so an arm with other
++  parameters or another dt uses consistent numerics. ``carry=None`` keeps them all.
++
++The runner copies only ``F`` and ``rng`` per member, so the stepper keeps any other
++mutable state of the module in a per-member copy created on its first call.
++"""
++from __future__ import annotations
++
++import copy
++import importlib.util
++import json
++import os
++import sys
++from dataclasses import dataclass, field
++
++import numpy as np
++
++from .devices import INJ_SIGMA
++
++
++@dataclass(frozen=True)
++class Port:
++    gain: float
++    clip: tuple[float | None, float | None] = (None, None)
++
++
++@dataclass(frozen=True)
++class LabWorld:
++    path: str
++    fields: tuple[str, ...]
++    steps_per_tick: int
++    native_dt: float
++    ports: dict = field(default_factory=dict)
++    noise: dict = field(default_factory=dict)
++    overrides: dict = field(default_factory=dict)
++    dx: float = 1.0
++    sys_path: tuple[str, ...] = ()
++    carry: tuple[str, ...] | None = None
++
++    def load(self):
++        """A fresh module instance with the declared overrides (WORLD_P is read at import)."""
++        for p in self.sys_path:
++            if p not in sys.path:
++                sys.path.insert(0, p)
++        old = os.environ.get("WORLD_P")
++        os.environ["WORLD_P"] = json.dumps(self.overrides)
++        try:
++            spec = importlib.util.spec_from_file_location(f"labworld_{abs(hash(self.path))}", self.path)
++            module = importlib.util.module_from_spec(spec)
++            spec.loader.exec_module(module)
++        finally:
++            if old is None:
++                os.environ.pop("WORLD_P", None)
++            else:
++                os.environ["WORLD_P"] = old
++        if hasattr(module, "P"):
++            module.P.update(self.overrides)
++        return module
++
++    def pack(self, state):
++        return np.stack([np.asarray(state[f], dtype=np.float64) for f in self.fields])
++
++    def aux(self, state):
++        return {k: v for k, v in state.items() if k not in self.fields}
++
++
++class LabStepper:
++    """``stepper(sim, n, injections)`` for ``OracleRunner``: n public ticks."""
++
++    def __init__(self, world: LabWorld, aux_template: dict):
++        self.world = world
++        self.module = world.load()
++        self.aux_template = copy.deepcopy(aux_template)
++        if world.carry is not None:
++            fresh = self.module.init(0, aux_template["_grid"]) if "_grid" in aux_template else None
++            if fresh is not None:
++                rebuilt = {k: v for k, v in fresh.items() if k not in world.fields}
++                rebuilt.update({k: aux_template[k] for k in world.carry if k in aux_template})
++                self.aux_template = copy.deepcopy(rebuilt)
++        self.aux_template.pop("_grid", None)
++        self._bumps = {}
++
++    def _bump(self, shape, y, x):
++        key = (shape, round(y, 9), round(x, 9))
++        if key not in self._bumps:
++            n0, n1 = shape
++            dx = self.world.dx
++            cy = (np.arange(n0) + 0.5) * dx
++            cx = (np.arange(n1) + 0.5) * dx
++            Ly, Lx = n0 * dx, n1 * dx
++            dyy = (cy - y + Ly / 2) % Ly - Ly / 2
++            dxx = (cx - x + Lx / 2) % Lx - Lx / 2
++            self._bumps[key] = np.exp(-(dyy[:, None] ** 2 + dxx[None, :] ** 2) / (2 * INJ_SIGMA ** 2))
++        return self._bumps[key]
++
++    def __call__(self, sim, n, injections=()):
++        w = self.world
++        if "_lab_aux" not in sim:
++            sim["_lab_aux"] = copy.deepcopy(self.aux_template)
++        state = dict(sim["_lab_aux"])
++        F = np.array(sim["F"], dtype=np.float64, copy=True)
++        for i, f in enumerate(w.fields):
++            state[f] = F[i]
++        rng = sim["rng"]
++        h = w.native_dt
++        for _ in range(n):
++            for _ in range(w.steps_per_tick):
++                for inj in injections:
++                    f = w.fields[inj["field"]]
++                    port = w.ports.get(f)
++                    if port is None or inj["amp"] == 0.0:
++                        continue
++                    state[f] = state[f] + port.gain * inj["amp"] * h * self._bump(state[f].shape, inj["y"], inj["x"])
++                    lo, hi = port.clip
++                    if lo is not None or hi is not None:
++                        state[f] = np.clip(state[f], lo, hi)
++                for f in w.fields:
++                    kind, sd = w.noise.get(f, ("additive", 0.0))
++                    xi = rng.standard_normal(state[f].shape)
++                    if sd > 0:
++                        a = sd * np.sqrt(h)
++                        state[f] = state[f] + (a * xi if kind == "additive" else a * xi * state[f])
++                state = self.module.step(state)
++            sim["t_step"] += 1
++        sim["F"] = w.pack(state)
++        sim["_lab_aux"] = {k: v for k, v in state.items() if k not in w.fields}
++        return sim
++
++
++def template(world: LabWorld, state: dict, seed: int = 0) -> dict:
++    """The runner's exact t=0 template from a prepared native state."""
++    from .blobround6 import SIM_DT
++
++    return {"F": world.pack(state), "t_step": 0, "dt": SIM_DT, "dx": world.dx,
++            "rng": np.random.default_rng(seed)}
++
++
++def oracle(world: LabWorld, state: dict, devices, *, port_perm=None, adjust_mix=None):
++    from .blobround6 import OracleRunner
++
++    nf = len(world.fields)
++    return OracleRunner(_template=template(world, state), _devices=devices,
++                        _port_perm=np.arange(nf) if port_perm is None else port_perm,
++                        _adjust_mix=np.eye(3) if adjust_mix is None else adjust_mix,
++                        _stepper=LabStepper(world, dict(world.aux(state), _grid=np.asarray(state[world.fields[0]]).shape)))
+diff --git a/scripts/physim/labworlds/runner_demo.py b/scripts/physim/labworlds/runner_demo.py
+new file mode 100644
+index 0000000..3b0d9fc
+--- /dev/null
++++ b/scripts/physim/labworlds/runner_demo.py
+@@ -0,0 +1,122 @@
++"""phase_membrane through PhySim's own OracleRunner via physim.labworld (local prototype).
++
++  envelope   for each port and gain: inject amp 3 for 50 tu (PhySim's maximum) and
++             check the fields stay finite; report the response at the device centre
++  score      native forecast vs native truth vs ablated truth, sham and pulse programs,
++             energy score per sensor group (device0, device1, global)
++"""
++import argparse, json, sys, time
++from pathlib import Path
++
++import numpy as np
++
++sys.path.insert(0, "/home/user/swpo/residency-environments/environments/physim")
++from physim import labworld as LW  # noqa: E402
++from physim.devices import ProbeDevice  # noqa: E402
++from physim.blobround6_eval import _energy_score  # noqa: E402
++
++HERE = Path(__file__).resolve().parent
++PM = "/home/user/physim/research/alife/threads/autopoiesis/worlds/phase_membrane/world.py"
++FIELDS = ("S", "K", "L", "phi")
++
++
++def world(gains, overrides=None, noise=0.01):
++    ports = {f: LW.Port(gain=gains[f], clip=(0.0, None)) for f in FIELDS}
++    nz = {"phi": ("additive", noise), "S": ("proportional", noise), "K": ("proportional", noise),
++          "L": ("proportional", noise)}
++    return LW.LabWorld(path=PM, fields=FIELDS, steps_per_tick=1, native_dt=1.0, ports=ports,
++                       noise=nz, overrides=overrides or {}, dx=1.0)
++
++
++def prepared():
++    z = np.load(HERE / "out" / "prep_s0.npz")
++    info = json.loads((HERE / "out" / "prep_s0.json").read_text())
++    return {f: z[f].astype(np.float64) for f in FIELDS}, info
++
++
++def devices(info):
++    c0 = np.array(info["sites"]["centre"]) + 0.5   # pixel index -> world coordinate (dx 1)
++    c1 = np.array(info["sites"]["other"]) + 0.5
++    d0 = ProbeDevice(dev_id=0, lattice="square", n_rings=3, base_ds=3.0, center=c0, L=128.0,
++                     secret_rot=0.3, reflect=False, motion_theta=0.0, motion_reflect=False,
++                     node_perm=np.arange(13))
++    d1 = ProbeDevice(dev_id=1, lattice="hex", n_rings=3, base_ds=6.0, center=c1, L=128.0,
++                     secret_rot=1.1, reflect=False, motion_theta=0.0, motion_reflect=False,
++                     node_perm=np.arange(19))
++    return [d0, d1]
++
++
++def envelope(args):
++    s0, info = prepared()
++    devs = devices(info)
++    rows = []
++    q = [{"sensor": "device0", "t": [10.0, 25.0, 50.0]}, {"sensor": "global", "t": [50.0]}]
++    base_gains = {f: 0.0 for f in FIELDS}
++    sham = LW.oracle(world(base_gains), s0, devs).sample_truth([], q, 1, truth_seed=5)["samples"]
++    for p, f in enumerate(FIELDS):
++        for g in (1.0, 0.1, 0.01, 0.001):
++            gains = dict(base_gains, **{f: g})
++            o = LW.oracle(world(gains), s0, devs)
++            act = [{"t": 0.0, "kind": "inject", "device": 0, "port": p, "amp": 3.0, "dur": 50.0}]
++            t0 = time.time()
++            try:
++                out = o.sample_truth(act, q, 1, truth_seed=5)["samples"]
++                d = out[0][0, :, p, 0] - sham[0][0, :, p, 0]    # centre node? node order canonical: ring 0 first
++                centre = out[0][0, :, p, 0]
++                gl = out[1][0, 0, :, 0] - sham[1][0, 0, :, 0]
++                row = dict(field=f, gain=g, finite=True, centre_value=[round(float(v), 4) for v in centre],
++                           centre_delta=[round(float(v), 4) for v in d],
++                           global_mean_delta=[round(float(v), 4) for v in gl], secs=round(time.time() - t0, 1))
++            except RuntimeError as e:
++                row = dict(field=f, gain=g, finite=False, error=str(e), secs=round(time.time() - t0, 1))
++            rows.append(row)
++            print(json.dumps(row), flush=True)
++    (HERE / "out" / "runner_envelope.json").write_text(json.dumps(rows, indent=1))
++
++
++def score(args):
++    s0, info = prepared()
++    devs = devices(info)
++    gains = json.loads(args.gains)
++    times = [float(t) for t in np.arange(1, 51)]
++    q = [{"sensor": "device0", "t": times}, {"sensor": "device1", "t": times}, {"sensor": "global", "t": times}]
++    programs = {"sham": [],
++                "pulseK": [{"t": 5.0, "kind": "inject", "device": 0, "port": 1, "amp": 3.0, "dur": 10.0}]}
++    arms = {"native": {}, "chi0": {"chi": 0.0}, "gate0": {"gate": 0, "gateK": 0}, "a_half": {"a": 2.0}}
++    O = {a: LW.oracle(world(gains, ov, args.noise), s0, devs) for a, ov in arms.items()}
++    res = {}
++    for pname, act in programs.items():
++        t0 = time.time()
++        fc = O["native"].sample_truth(act, q, args.members, truth_seed=101)["samples"]
++        truths = {"native": O["native"].sample_truth(act, q, args.members, truth_seed=202)["samples"]}
++        for a in ("chi0", "gate0", "a_half"):
++            truths[a] = O[a].sample_truth(act, q, args.members, truth_seed=303)["samples"]
++        np.savez_compressed(HERE / "out" / f"{Path(__file__).stem}_{pname}_samples.npz",
++                            **{f"{a}_{g}": tr[gi] for a, tr in dict(forecast=fc, **truths).items()
++                               for gi, g in enumerate(("device0", "device1", "global"))})
++        for wi, w in enumerate((10, 25, 50)):
++            for gi, gname in enumerate(("device0", "device1", "global")):
++                xa = fc[gi][:, :w]                      # (members, times, ports, slots)
++                pscale = xa.std(axis=(0, 1, 3), keepdims=True) + 1e-6   # one scale per port (field)
++                x = (xa / pscale).reshape(args.members, -1) * 1.0
++                scale = 1.0
++                for a, tr in truths.items():
++                    y = (tr[gi][:, :w] / pscale).reshape(args.members, -1)
++                    es = _energy_score(x / scale, y / scale)
++                    res.setdefault(pname, {}).setdefault(f"{w}tu", {}).setdefault(gname, {})[a] = round(float(es), 4)
++        print(pname, round(time.time() - t0, 1), "s", json.dumps(res[pname]), flush=True)
++    ratios = {p: {w: {g: {a: round(v / r["native"], 2) for a, v in r.items() if a != "native"}
++                      for g, r in gw.items()} for w, gw in pw.items()} for p, pw in res.items()}
++    out = dict(gains=gains, noise=args.noise, members=args.members, scores=res, ratios=ratios)
++    (HERE / "out" / f"runner_score_n{args.noise:g}.json").write_text(json.dumps(out, indent=1))
++    print(json.dumps(ratios, indent=1))
++
++
++if __name__ == "__main__":
++    ap = argparse.ArgumentParser()
++    ap.add_argument("cmd", choices=["envelope", "score"])
++    ap.add_argument("--gains", default='{"S": 0.01, "K": 0.01, "L": 0.01, "phi": 0.01}')
++    ap.add_argument("--noise", type=float, default=0.01)
++    ap.add_argument("--members", type=int, default=8)
++    a = ap.parse_args()
++    {"envelope": envelope, "score": score}[a.cmd](a)
+diff --git a/scripts/physim/labworlds/vortex_demo.py b/scripts/physim/labworlds/vortex_demo.py
+new file mode 100644
+index 0000000..2f72ff7
+--- /dev/null
++++ b/scripts/physim/labworlds/vortex_demo.py
+@@ -0,0 +1,175 @@
++"""c53's fed vortices through PhySim's own OracleRunner via physim.labworld (local prototype).
++
++  prep       native run from seed 0 to t=500 (no noise), saved
++  envelope   amp 3 for 50 tu into each port at several gains; finite? response at device0
++  score      native forecast vs native / ablated truths for sham and pulse programs
++"""
++import argparse, json, pickle, sys, time
++from pathlib import Path
++
++import numpy as np
++
++sys.path.insert(0, "/home/user/swpo/residency-environments/environments/physim")
++from physim import labworld as LW  # noqa: E402
++from physim.devices import ProbeDevice  # noqa: E402
++from physim.blobround6_eval import _energy_score  # noqa: E402
++
++HERE = Path(__file__).resolve().parent
++W = "/home/user/physim/research/alife/collective/contrib/20261027T0712-c53-fed-vortex-claim/world.py"
++LAB = "/home/user/physim/research/alife"
++FIELDS = ("om", "Y")
++
++
++def world(gains, overrides=None, noise=0.003, steps_per_tick=1, native_dt=0.02):
++    ports = {"om": LW.Port(gain=gains["om"]), "Y": LW.Port(gain=gains["Y"], clip=(0.0, None))}
++    nz = {"om": ("additive", noise), "Y": ("proportional", noise)}
++    return LW.LabWorld(path=W, fields=FIELDS, steps_per_tick=steps_per_tick, native_dt=native_dt, ports=ports,
++                       noise=nz, overrides=overrides or {}, dx=1.0, sys_path=(LAB,), carry=("t",))
++
++
++def prep(args):
++    w = world({"om": 0.0, "Y": 0.0})
++    m = w.load()
++    if hasattr(m, "ops") and hasattr(m.ops, "WORKERS"):
++        m.ops.WORKERS = 1
++    s = m.init(0, (128, 128))
++    t0 = time.time()
++    for _ in range(int(round(500 / 0.02))):
++        s = m.step(s)
++    om = s["om"]
++    from scipy import ndimage
++    lab, n = ndimage.label(om > 0.06)
++    areas = ndimage.sum(np.ones_like(om), lab, range(1, n + 1))
++    order = np.argsort(areas)[::-1]
++    c0 = ndimage.center_of_mass(lab == order[len(order) // 2] + 1)
++    c1 = ndimage.center_of_mass(lab == order[0] + 1)
++    info = dict(t=float(s["t"]), positive_bodies=int(n), centre=[float(c0[0]), float(c0[1])],
++                other=[float(c1[0]), float(c1[1])], secs=round(time.time() - t0, 1))
++    with open(HERE / "out" / "vortex_prep.pkl", "wb") as fh:
++        pickle.dump(s, fh)
++    (HERE / "out" / "vortex_prep.json").write_text(json.dumps(info, indent=1))
++    print(json.dumps(info))
++
++
++def prepared():
++    with open(HERE / "out" / "vortex_prep.pkl", "rb") as fh:
++        s = pickle.load(fh)
++    return s, json.loads((HERE / "out" / "vortex_prep.json").read_text())
++
++
++def devices(info):
++    d0 = ProbeDevice(dev_id=0, lattice="square", n_rings=3, base_ds=3.0, center=np.array(info["centre"]) + 0.5,
++                     L=128.0, secret_rot=0.3, reflect=False, motion_theta=0.0, motion_reflect=False,
++                     node_perm=np.arange(13))
++    d1 = ProbeDevice(dev_id=1, lattice="hex", n_rings=3, base_ds=6.0, center=np.array(info["other"]) + 0.5,
++                     L=128.0, secret_rot=1.1, reflect=False, motion_theta=0.0, motion_reflect=False,
++                     node_perm=np.arange(19))
++    return [d0, d1]
++
++
++def oracle(gains, ov=None, **kw):
++    s, info = prepared()
++    w = world(gains, ov, **kw)
++    o = LW.oracle(w, s, devices(info))
++    m = o._stepper.module
++    if hasattr(m, "ops") and hasattr(m.ops, "WORKERS"):
++        m.ops.WORKERS = 1
++    return o
++
++
++def envelope(args):
++    q = [{"sensor": "device0", "t": [10.0, 25.0, 50.0]}, {"sensor": "global", "t": [50.0]}]
++    zero = {"om": 0.0, "Y": 0.0}
++    sham = oracle(zero).sample_truth([], q, 1, truth_seed=5)["samples"]
++    rows = []
++    for p, f in enumerate(FIELDS):
++        for g in (1.0, 0.1, 0.01, 0.001):
++            o = oracle(dict(zero, **{f: g}))
++            act = [{"t": 0.0, "kind": "inject", "device": 0, "port": p, "amp": 3.0, "dur": 50.0}]
++            t0 = time.time()
++            try:
++                out = o.sample_truth(act, q, 1, truth_seed=5)["samples"]
++                rows.append(dict(field=f, gain=g, finite=True,
++                                 centre=[round(float(v), 4) for v in out[0][0, :, p, 0]],
++                                 centre_sham=[round(float(v), 4) for v in sham[0][0, :, p, 0]],
++                                 global_var=[round(float(v), 5) for v in out[1][0, 0, :, 1]],
++                                 global_var_sham=[round(float(v), 5) for v in sham[1][0, 0, :, 1]],
++                                 secs=round(time.time() - t0, 1)))
++            except RuntimeError as e:
++                rows.append(dict(field=f, gain=g, finite=False, error=str(e), secs=round(time.time() - t0, 1)))
++            print(json.dumps(rows[-1]), flush=True)
++    (HERE / "out" / "vortex_envelope.json").write_text(json.dumps(rows, indent=1))
++
++
++def score(args):
++    gains = json.loads(args.gains)
++    times = [float(t) for t in np.arange(1, 51)]
++    q = [{"sensor": "device0", "t": times}, {"sensor": "device1", "t": times}, {"sensor": "global", "t": times}]
++    programs = {"sham": [],
++                "feed": [{"t": 5.0, "kind": "inject", "device": 0, "port": 1, "amp": 3.0, "dur": 10.0}],
++                "stir": [{"t": 5.0, "kind": "inject", "device": 0, "port": 0, "amp": 3.0, "dur": 10.0}]}
++    O = {"native": oracle(gains, noise=args.noise), "adv0": oracle(gains, {"adv": 0.0}, noise=args.noise),
++         "kF0": oracle(gains, {"kF": 0.0}, noise=args.noise),
++         "dthalf": oracle(gains, {"dt": 0.01}, noise=args.noise, steps_per_tick=2, native_dt=0.01)}
++    res = {}
++    for pname, act in programs.items():
++        t0 = time.time()
++        fc = O["native"].sample_truth(act, q, args.members, truth_seed=101)["samples"]
++        truths = {"native": O["native"].sample_truth(act, q, args.members, truth_seed=202)["samples"]}
++        for a in ("adv0", "kF0", "dthalf"):
++            truths[a] = O[a].sample_truth(act, q, args.members, truth_seed=303)["samples"]
++        np.savez_compressed(HERE / "out" / f"{Path(__file__).stem}_{pname}_samples.npz",
++                            **{f"{a}_{g}": tr[gi] for a, tr in dict(forecast=fc, **truths).items()
++                               for gi, g in enumerate(("device0", "device1", "global"))})
++        for w in (10, 25, 50):
++            for gi, gname in enumerate(("device0", "device1", "global")):
++                xa = fc[gi][:, :w]                      # (members, times, ports, slots)
++                pscale = xa.std(axis=(0, 1, 3), keepdims=True) + 1e-6   # one scale per port (field)
++                x = (xa / pscale).reshape(args.members, -1) * 1.0
++                scale = 1.0
++                for a, tr in truths.items():
++                    y = (tr[gi][:, :w] / pscale).reshape(args.members, -1)
++                    res.setdefault(pname, {}).setdefault(f"{w}tu", {}).setdefault(gname, {})[a] = \
++                        round(float(_energy_score(x / scale, y / scale)), 4)
++        print(pname, round(time.time() - t0, 1), "s", flush=True)
++    ratios = {p: {w: {g: {a: round(v / r["native"], 2) for a, v in r.items() if a != "native"}
++                      for g, r in gw.items()} for w, gw in pw.items()} for p, pw in res.items()}
++    out = dict(gains=gains, noise=args.noise, members=args.members, scores=res, ratios=ratios)
++    (HERE / "out" / f"vortex_runner_score_n{args.noise:g}.json").write_text(json.dumps(out, indent=1))
++    print(json.dumps(ratios, indent=1))
++
++
++def null(args):
++    """Re-score the numerical null (dt halved) and a parity check against the saved native samples."""
++    gains = json.loads(args.gains)
++    times = [float(t) for t in np.arange(1, 51)]
++    q = [{"sensor": "device0", "t": times}, {"sensor": "device1", "t": times}, {"sensor": "global", "t": times}]
++    z = np.load(HERE / "out" / "vortex_demo_sham_samples.npz")
++    fc = [z[f"forecast_{g}"] for g in ("device0", "device1", "global")]
++    tn = [z[f"native_{g}"] for g in ("device0", "device1", "global")]
++    o = oracle(gains, {"dt": 0.01}, noise=args.noise, steps_per_tick=2, native_dt=0.01)
++    td = o.sample_truth([], q, args.members, truth_seed=303)["samples"]
++    # parity of the rebuilt-state native arm with the saved native forecast (same seed 101)
++    on = oracle(gains, {}, noise=args.noise)
++    re = on.sample_truth([], q, 2, truth_seed=101)["samples"]
++    out = {"parity_max_abs_vs_saved_forecast": float(max(np.abs(re[i] - fc[i][:2]).max() for i in range(3)))}
++    for w in (10, 25, 50):
++        for gi, g in enumerate(("device0", "device1", "global")):
++            xa = fc[gi][:, :w]
++            ps = xa.std(axis=(0, 1, 3), keepdims=True) + 1e-6
++            x = (xa / ps).reshape(len(xa), -1)
++            nat = _energy_score(x, (tn[gi][:, :w] / ps).reshape(len(xa), -1))
++            dth = _energy_score(x, (td[gi][:, :w] / ps).reshape(len(xa), -1))
++            out[f"{w}tu/{g}"] = round(float(dth / nat), 2)
++    (HERE / "out" / "vortex_null.json").write_text(json.dumps(out, indent=1))
++    print(json.dumps(out, indent=1))
++
++
++if __name__ == "__main__":
++    ap = argparse.ArgumentParser()
++    ap.add_argument("cmd", choices=["prep", "envelope", "score", "null"])
++    ap.add_argument("--gains", default='{"om": 0.01, "Y": 0.1}')
++    ap.add_argument("--noise", type=float, default=0.003)
++    ap.add_argument("--members", type=int, default=8)
++    a = ap.parse_args()
++    {"prep": prep, "envelope": envelope, "score": score, "null": null}[a.cmd](a)
+-- 
+2.43.0
+

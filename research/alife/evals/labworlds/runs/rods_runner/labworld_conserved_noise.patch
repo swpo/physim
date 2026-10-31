@@ -1,0 +1,43 @@
+--- a/physim/labworld.py
++++ b/physim/labworld.py
+@@ -6,7 +6,7 @@
+ 
+ - ``fields``: the state keys that are dynamical fields, in port order.
+ - ``steps_per_tick``: native steps per public tick (one tick is 0.02 time units).
+-- ``noise``: per field, ``("additive" | "proportional", sd)``; sd is per sqrt(native
++- ``noise``: per field, ``("additive" | "proportional" | "conserved", sd)``; sd is per sqrt(native
+   time). Noise draws come only from the runner's per-member generator, a fixed
+   number per step, so actions never shift a member's noise stream.
+ - ``ports``: per field, the source gain (native field units per native time per unit
+@@ -134,9 +134,17 @@
+                         state[f] = np.clip(state[f], lo, hi)
+                 for f in w.fields:
+                     kind, sd = w.noise.get(f, ("additive", 0.0))
++                    a = sd * np.sqrt(h)
++                    if kind == "conserved":
++                        # div of a white flux on the module's spectral grid (kx, ky, k2, da in its state),
++                        # normalised to the additive form's per-pixel sd; no mass at k = 0; two draws per step
++                        ex = rng.standard_normal(state[f].shape)
++                        ey = rng.standard_normal(state[f].shape)
++                        if sd > 0:
++                            state[f] = state[f] + a * _conserved(state, ex, ey)
++                        continue
+                     xi = rng.standard_normal(state[f].shape)
+                     if sd > 0:
+-                        a = sd * np.sqrt(h)
+                         state[f] = state[f] + (a * xi if kind == "additive" else a * xi * state[f])
+                 state = self.module.step(state)
+             sim["t_step"] += 1
+@@ -145,6 +153,12 @@
+         return sim
+ 
+ 
++def _conserved(state, ex, ey):
++    kx, ky, k2, da = state["kx"], state["ky"], state["k2"], state["da"]
++    csd = np.sqrt((k2 * da).sum() / da.size)
++    return np.fft.ifft2(1j * (kx * np.fft.fft2(ex) + ky * np.fft.fft2(ey)) * da).real / csd
++
++
+ def template(world: LabWorld, state: dict, seed: int = 0) -> dict:
+     """The runner's exact t=0 template from a prepared native state."""
+     from .blobround6 import SIM_DT

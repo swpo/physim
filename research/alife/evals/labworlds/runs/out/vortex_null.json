@@ -1,0 +1,12 @@
+{
+ "parity_max_abs_vs_saved_forecast": 0.0,
+ "10tu/device0": 0.96,
+ "10tu/device1": 1.0,
+ "10tu/global": 0.87,
+ "25tu/device0": 1.16,
+ "25tu/device1": 0.98,
+ "25tu/global": 0.71,
+ "50tu/device0": 0.97,
+ "50tu/device1": 0.99,
+ "50tu/global": 0.66
+}

@@ -1,0 +1,244 @@
+{
+ "gains": {
+  "S": 0.01,
+  "K": 0.01,
+  "L": 0.01,
+  "phi": 0.01
+ },
+ "noise": 0.01,
+ "members": 8,
+ "scores": {
+  "sham": {
+   "10tu": {
+    "device0": {
+     "native": 0.0685,
+     "chi0": 0.9535,
+     "gate0": 1.7028,
+     "a_half": 0.7563
+    },
+    "device1": {
+     "native": 0.0592,
+     "chi0": 1.0995,
+     "gate0": 0.9404,
+     "a_half": 1.0215
+    },
+    "global": {
+     "native": 0.0058,
+     "chi0": 1.0069,
+     "gate0": 1.4261,
+     "a_half": 0.5475
+    }
+   },
+   "25tu": {
+    "device0": {
+     "native": 0.1098,
+     "chi0": 1.3377,
+     "gate0": 2.9546,
+     "a_half": 1.2338
+    },
+    "device1": {
+     "native": 0.0829,
+     "chi0": 1.2599,
+     "gate0": 1.2458,
+     "a_half": 1.3745
+    },
+    "global": {
+     "native": 0.0214,
+     "chi0": 0.8464,
+     "gate0": 1.6759,
+     "a_half": 0.5189
+    }
+   },
+   "50tu": {
+    "device0": {
+     "native": 0.1814,
+     "chi0": 1.4146,
+     "gate0": 1.1638,
+     "a_half": 1.3965
+    },
+    "device1": {
+     "native": 0.2361,
+     "chi0": 1.346,
+     "gate0": 1.3839,
+     "a_half": 1.3821
+    },
+    "global": {
+     "native": 0.0498,
+     "chi0": 0.6697,
+     "gate0": 1.6677,
+     "a_half": 0.5122
+    }
+   }
+  },
+  "pulseK": {
+   "10tu": {
+    "device0": {
+     "native": 0.0482,
+     "chi0": 0.8013,
+     "gate0": 0.7511,
+     "a_half": 0.6174
+    },
+    "device1": {
+     "native": 0.0592,
+     "chi0": 1.0995,
+     "gate0": 0.9404,
+     "a_half": 1.0215
+    },
+    "global": {
+     "native": 0.0056,
+     "chi0": 0.9906,
+     "gate0": 1.3744,
+     "a_half": 0.5361
+    }
+   },
+   "25tu": {
+    "device0": {
+     "native": 0.0701,
+     "chi0": 0.7449,
+     "gate0": 0.7807,
+     "a_half": 0.7672
+    },
+    "device1": {
+     "native": 0.0829,
+     "chi0": 1.26,
+     "gate0": 1.2456,
+     "a_half": 1.3745
+    },
+    "global": {
+     "native": 0.021,
+     "chi0": 0.8269,
+     "gate0": 1.5307,
+     "a_half": 0.5113
+    }
+   },
+   "50tu": {
+    "device0": {
+     "native": 0.0468,
+     "chi0": 0.8237,
+     "gate0": 1.2612,
+     "a_half": 1.2776
+    },
+    "device1": {
+     "native": 0.2381,
+     "chi0": 1.3445,
+     "gate0": 1.3794,
+     "a_half": 1.3889
+    },
+    "global": {
+     "native": 0.0484,
+     "chi0": 0.661,
+     "gate0": 1.5391,
+     "a_half": 0.522
+    }
+   }
+  }
+ },
+ "ratios": {
+  "sham": {
+   "10tu": {
+    "device0": {
+     "chi0": 13.92,
+     "gate0": 24.86,
+     "a_half": 11.04
+    },
+    "device1": {
+     "chi0": 18.57,
+     "gate0": 15.89,
+     "a_half": 17.26
+    },
+    "global": {
+     "chi0": 173.6,
+     "gate0": 245.88,
+     "a_half": 94.4
+    }
+   },
+   "25tu": {
+    "device0": {
+     "chi0": 12.18,
+     "gate0": 26.91,
+     "a_half": 11.24
+    },
+    "device1": {
+     "chi0": 15.2,
+     "gate0": 15.03,
+     "a_half": 16.58
+    },
+    "global": {
+     "chi0": 39.55,
+     "gate0": 78.31,
+     "a_half": 24.25
+    }
+   },
+   "50tu": {
+    "device0": {
+     "chi0": 7.8,
+     "gate0": 6.42,
+     "a_half": 7.7
+    },
+    "device1": {
+     "chi0": 5.7,
+     "gate0": 5.86,
+     "a_half": 5.85
+    },
+    "global": {
+     "chi0": 13.45,
+     "gate0": 33.49,
+     "a_half": 10.29
+    }
+   }
+  },
+  "pulseK": {
+   "10tu": {
+    "device0": {
+     "chi0": 16.62,
+     "gate0": 15.58,
+     "a_half": 12.81
+    },
+    "device1": {
+     "chi0": 18.57,
+     "gate0": 15.89,
+     "a_half": 17.26
+    },
+    "global": {
+     "chi0": 176.89,
+     "gate0": 245.43,
+     "a_half": 95.73
+    }
+   },
+   "25tu": {
+    "device0": {
+     "chi0": 10.63,
+     "gate0": 11.14,
+     "a_half": 10.94
+    },
+    "device1": {
+     "chi0": 15.2,
+     "gate0": 15.03,
+     "a_half": 16.58
+    },
+    "global": {
+     "chi0": 39.38,
+     "gate0": 72.89,
+     "a_half": 24.35
+    }
+   },
+   "50tu": {
+    "device0": {
+     "chi0": 17.6,
+     "gate0": 26.95,
+     "a_half": 27.3
+    },
+    "device1": {
+     "chi0": 5.65,
+     "gate0": 5.79,
+     "a_half": 5.83
+    },
+    "global": {
+     "chi0": 13.66,
+     "gate0": 31.8,
+     "a_half": 10.79
+    }
+   }
+  }
+ }
+}

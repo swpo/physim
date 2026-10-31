@@ -1,0 +1,25 @@
+{
+ "steps_per_tick": 1,
+ "native_steps": 2500,
+ "field_max_abs_50tu": 0.0,
+ "readouts": {
+  "device0": {
+   "max_abs_member0": 0.0,
+   "max_abs_member1": 0.0,
+   "members_identical": true
+  },
+  "device1": {
+   "max_abs_member0": 0.0,
+   "max_abs_member1": 0.0,
+   "members_identical": true
+  },
+  "global": {
+   "max_abs_member0": 0.0,
+   "max_abs_member1": 0.0,
+   "members_identical": true
+  }
+ },
+ "snapshot_t_prep_plus_100_max_abs": 0.0,
+ "cpu_native_50tu_s": 11.4,
+ "cpu_runner_2members_s": 33.0
+}

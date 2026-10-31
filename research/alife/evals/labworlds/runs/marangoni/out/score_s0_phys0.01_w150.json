@@ -1,0 +1,531 @@
+{
+ "all|kappa0|w15": {
+  "es": 24.912,
+  "ratio": 3.11
+ },
+ "all|mar0|w15": {
+  "es": 135.692,
+  "ratio": 16.92
+ },
+ "all|passive|w15": {
+  "es": 119.21,
+  "ratio": 14.86
+ },
+ "all|truth|w15": {
+  "es": 8.021,
+  "ratio": 1.0
+ },
+ "device0|kappa0|w15": {
+  "es": 19.874,
+  "ratio": 4.93
+ },
+ "device0|mar0|w15": {
+  "es": 125.065,
+  "ratio": 31.02
+ },
+ "device0|passive|w15": {
+  "es": 107.865,
+  "ratio": 26.76
+ },
+ "device0|truth|w15": {
+  "es": 4.031,
+  "ratio": 1.0
+ },
+ "device1|kappa0|w15": {
+  "es": 15.145,
+  "ratio": 2.2
+ },
+ "device1|mar0|w15": {
+  "es": 51.817,
+  "ratio": 7.52
+ },
+ "device1|passive|w15": {
+  "es": 42.556,
+  "ratio": 6.17
+ },
+ "device1|truth|w15": {
+  "es": 6.894,
+  "ratio": 1.0
+ },
+ "global|kappa0|w15": {
+  "es": 3.879,
+  "ratio": 7.68
+ },
+ "global|mar0|w15": {
+  "es": 20.155,
+  "ratio": 39.92
+ },
+ "global|passive|w15": {
+  "es": 32.894,
+  "ratio": 65.14
+ },
+ "global|truth|w15": {
+  "es": 0.505,
+  "ratio": 1.0
+ },
+ "field:phi|kappa0|w15": {
+  "es": 0.663,
+  "ratio": 0.99
+ },
+ "field:phi|mar0|w15": {
+  "es": 35.098,
+  "ratio": 52.61
+ },
+ "field:phi|passive|w15": {
+  "es": 23.239,
+  "ratio": 34.83
+ },
+ "field:phi|truth|w15": {
+  "es": 0.667,
+  "ratio": 1.0
+ },
+ "field:q1|kappa0|w15": {
+  "es": 5.358,
+  "ratio": 1.08
+ },
+ "field:q1|mar0|w15": {
+  "es": 55.38,
+  "ratio": 11.18
+ },
+ "field:q1|passive|w15": {
+  "es": 34.872,
+  "ratio": 7.04
+ },
+ "field:q1|truth|w15": {
+  "es": 4.954,
+  "ratio": 1.0
+ },
+ "field:q2|kappa0|w15": {
+  "es": 5.018,
+  "ratio": 0.9
+ },
+ "field:q2|mar0|w15": {
+  "es": 54.918,
+  "ratio": 9.85
+ },
+ "field:q2|passive|w15": {
+  "es": 25.084,
+  "ratio": 4.5
+ },
+ "field:q2|truth|w15": {
+  "es": 5.573,
+  "ratio": 1.0
+ },
+ "field:s|kappa0|w15": {
+  "es": 0.713,
+  "ratio": 1.05
+ },
+ "field:s|mar0|w15": {
+  "es": 44.168,
+  "ratio": 65.15
+ },
+ "field:s|passive|w15": {
+  "es": 52.064,
+  "ratio": 76.8
+ },
+ "field:s|truth|w15": {
+  "es": 0.678,
+  "ratio": 1.0
+ },
+ "field:c|kappa0|w15": {
+  "es": 27.224,
+  "ratio": 25.86
+ },
+ "field:c|mar0|w15": {
+  "es": 87.796,
+  "ratio": 83.4
+ },
+ "field:c|passive|w15": {
+  "es": 89.817,
+  "ratio": 85.32
+ },
+ "field:c|truth|w15": {
+  "es": 1.053,
+  "ratio": 1.0
+ },
+ "field:vx|kappa0|w15": {
+  "es": 1.761,
+  "ratio": 0.95
+ },
+ "field:vx|mar0|w15": {
+  "es": 34.006,
+  "ratio": 18.4
+ },
+ "field:vx|passive|w15": {
+  "es": 30.56,
+  "ratio": 16.53
+ },
+ "field:vx|truth|w15": {
+  "es": 1.848,
+  "ratio": 1.0
+ },
+ "field:vy|kappa0|w15": {
+  "es": 1.72,
+  "ratio": 1.02
+ },
+ "field:vy|mar0|w15": {
+  "es": 26.349,
+  "ratio": 15.66
+ },
+ "field:vy|passive|w15": {
+  "es": 27.443,
+  "ratio": 16.31
+ },
+ "field:vy|truth|w15": {
+  "es": 1.682,
+  "ratio": 1.0
+ },
+ "all|kappa0|w50": {
+  "es": 38.534,
+  "ratio": 1.83
+ },
+ "all|mar0|w50": {
+  "es": 472.48,
+  "ratio": 22.47
+ },
+ "all|passive|w50": {
+  "es": 417.813,
+  "ratio": 19.87
+ },
+ "all|truth|w50": {
+  "es": 21.027,
+  "ratio": 1.0
+ },
+ "device0|kappa0|w50": {
+  "es": 30.673,
+  "ratio": 2.17
+ },
+ "device0|mar0|w50": {
+  "es": 334.688,
+  "ratio": 23.63
+ },
+ "device0|passive|w50": {
+  "es": 351.85,
+  "ratio": 24.84
+ },
+ "device0|truth|w50": {
+  "es": 14.165,
+  "ratio": 1.0
+ },
+ "device1|kappa0|w50": {
+  "es": 22.408,
+  "ratio": 1.51
+ },
+ "device1|mar0|w50": {
+  "es": 327.654,
+  "ratio": 22.09
+ },
+ "device1|passive|w50": {
+  "es": 108.725,
+  "ratio": 7.33
+ },
+ "device1|truth|w50": {
+  "es": 14.83,
+  "ratio": 1.0
+ },
+ "global|kappa0|w50": {
+  "es": 7.969,
+  "ratio": 3.11
+ },
+ "global|mar0|w50": {
+  "es": 51.855,
+  "ratio": 20.25
+ },
+ "global|passive|w50": {
+  "es": 203.346,
+  "ratio": 79.41
+ },
+ "global|truth|w50": {
+  "es": 2.561,
+  "ratio": 1.0
+ },
+ "field:phi|kappa0|w50": {
+  "es": 3.973,
+  "ratio": 0.92
+ },
+ "field:phi|mar0|w50": {
+  "es": 136.185,
+  "ratio": 31.62
+ },
+ "field:phi|passive|w50": {
+  "es": 99.866,
+  "ratio": 23.18
+ },
+ "field:phi|truth|w50": {
+  "es": 4.308,
+  "ratio": 1.0
+ },
+ "field:q1|kappa0|w50": {
+  "es": 11.427,
+  "ratio": 0.96
+ },
+ "field:q1|mar0|w50": {
+  "es": 260.106,
+  "ratio": 21.75
+ },
+ "field:q1|passive|w50": {
+  "es": 249.833,
+  "ratio": 20.89
+ },
+ "field:q1|truth|w50": {
+  "es": 11.961,
+  "ratio": 1.0
+ },
+ "field:q2|kappa0|w50": {
+  "es": 10.619,
+  "ratio": 0.97
+ },
+ "field:q2|mar0|w50": {
+  "es": 266.023,
+  "ratio": 24.26
+ },
+ "field:q2|passive|w50": {
+  "es": 238.796,
+  "ratio": 21.78
+ },
+ "field:q2|truth|w50": {
+  "es": 10.965,
+  "ratio": 1.0
+ },
+ "field:s|kappa0|w50": {
+  "es": 5.474,
+  "ratio": 0.95
+ },
+ "field:s|mar0|w50": {
+  "es": 104.109,
+  "ratio": 18.04
+ },
+ "field:s|passive|w50": {
+  "es": 112.521,
+  "ratio": 19.49
+ },
+ "field:s|truth|w50": {
+  "es": 5.772,
+  "ratio": 1.0
+ },
+ "field:c|kappa0|w50": {
+  "es": 36.645,
+  "ratio": 5.01
+ },
+ "field:c|mar0|w50": {
+  "es": 216.111,
+  "ratio": 29.54
+ },
+ "field:c|passive|w50": {
+  "es": 168.372,
+  "ratio": 23.02
+ },
+ "field:c|truth|w50": {
+  "es": 7.315,
+  "ratio": 1.0
+ },
+ "field:vx|kappa0|w50": {
+  "es": 5.675,
+  "ratio": 0.97
+ },
+ "field:vx|mar0|w50": {
+  "es": 57.06,
+  "ratio": 9.78
+ },
+ "field:vx|passive|w50": {
+  "es": 50.614,
+  "ratio": 8.67
+ },
+ "field:vx|truth|w50": {
+  "es": 5.837,
+  "ratio": 1.0
+ },
+ "field:vy|kappa0|w50": {
+  "es": 5.632,
+  "ratio": 0.99
+ },
+ "field:vy|mar0|w50": {
+  "es": 47.018,
+  "ratio": 8.23
+ },
+ "field:vy|passive|w50": {
+  "es": 44.303,
+  "ratio": 7.76
+ },
+ "field:vy|truth|w50": {
+  "es": 5.713,
+  "ratio": 1.0
+ },
+ "all|kappa0|w150": {
+  "es": 162.786,
+  "ratio": 1.58
+ },
+ "all|mar0|w150": {
+  "es": 1524.791,
+  "ratio": 14.76
+ },
+ "all|passive|w150": {
+  "es": 1323.535,
+  "ratio": 12.81
+ },
+ "all|truth|w150": {
+  "es": 103.308,
+  "ratio": 1.0
+ },
+ "device0|kappa0|w150": {
+  "es": 97.266,
+  "ratio": 1.48
+ },
+ "device0|mar0|w150": {
+  "es": 519.278,
+  "ratio": 7.92
+ },
+ "device0|passive|w150": {
+  "es": 1075.987,
+  "ratio": 16.41
+ },
+ "device0|truth|w150": {
+  "es": 65.556,
+  "ratio": 1.0
+ },
+ "device1|kappa0|w150": {
+  "es": 106.941,
+  "ratio": 1.5
+ },
+ "device1|mar0|w150": {
+  "es": 1428.002,
+  "ratio": 20.04
+ },
+ "device1|passive|w150": {
+  "es": 415.232,
+  "ratio": 5.83
+ },
+ "device1|truth|w150": {
+  "es": 71.262,
+  "ratio": 1.0
+ },
+ "global|kappa0|w150": {
+  "es": 24.235,
+  "ratio": 2.12
+ },
+ "global|mar0|w150": {
+  "es": 69.871,
+  "ratio": 6.1
+ },
+ "global|passive|w150": {
+  "es": 671.13,
+  "ratio": 58.61
+ },
+ "global|truth|w150": {
+  "es": 11.45,
+  "ratio": 1.0
+ },
+ "field:phi|kappa0|w150": {
+  "es": 56.847,
+  "ratio": 1.57
+ },
+ "field:phi|mar0|w150": {
+  "es": 361.792,
+  "ratio": 10.02
+ },
+ "field:phi|passive|w150": {
+  "es": 233.027,
+  "ratio": 6.45
+ },
+ "field:phi|truth|w150": {
+  "es": 36.122,
+  "ratio": 1.0
+ },
+ "field:q1|kappa0|w150": {
+  "es": 78.736,
+  "ratio": 1.97
+ },
+ "field:q1|mar0|w150": {
+  "es": 432.147,
+  "ratio": 10.79
+ },
+ "field:q1|passive|w150": {
+  "es": 691.869,
+  "ratio": 17.27
+ },
+ "field:q1|truth|w150": {
+  "es": 40.059,
+  "ratio": 1.0
+ },
+ "field:q2|kappa0|w150": {
+  "es": 63.967,
+  "ratio": 1.26
+ },
+ "field:q2|mar0|w150": {
+  "es": 538.069,
+  "ratio": 10.63
+ },
+ "field:q2|passive|w150": {
+  "es": 698.127,
+  "ratio": 13.79
+ },
+ "field:q2|truth|w150": {
+  "es": 50.609,
+  "ratio": 1.0
+ },
+ "field:s|kappa0|w150": {
+  "es": 80.604,
+  "ratio": 1.84
+ },
+ "field:s|mar0|w150": {
+  "es": 1122.954,
+  "ratio": 25.65
+ },
+ "field:s|passive|w150": {
+  "es": 527.185,
+  "ratio": 12.04
+ },
+ "field:s|truth|w150": {
+  "es": 43.776,
+  "ratio": 1.0
+ },
+ "field:c|kappa0|w150": {
+  "es": 43.78,
+  "ratio": 1.01
+ },
+ "field:c|mar0|w150": {
+  "es": 659.904,
+  "ratio": 15.26
+ },
+ "field:c|passive|w150": {
+  "es": 680.03,
+  "ratio": 15.72
+ },
+ "field:c|truth|w150": {
+  "es": 43.251,
+  "ratio": 1.0
+ },
+ "field:vx|kappa0|w150": {
+  "es": 29.168,
+  "ratio": 1.3
+ },
+ "field:vx|mar0|w150": {
+  "es": 66.314,
+  "ratio": 2.95
+ },
+ "field:vx|passive|w150": {
+  "es": 56.864,
+  "ratio": 2.53
+ },
+ "field:vx|truth|w150": {
+  "es": 22.477,
+  "ratio": 1.0
+ },
+ "field:vy|kappa0|w150": {
+  "es": 20.45,
+  "ratio": 1.08
+ },
+ "field:vy|mar0|w150": {
+  "es": 60.732,
+  "ratio": 3.21
+ },
+ "field:vy|passive|w150": {
+  "es": 51.203,
+  "ratio": 2.7
+ },
+ "field:vy|truth|w150": {
+  "es": 18.944,
+  "ratio": 1.0
+ },
+ "native_member_spread": 8.077
+}

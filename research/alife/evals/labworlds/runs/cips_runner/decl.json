@@ -1,0 +1,4 @@
+{"N": 192, "seed": 0, "t_prep": 3600, "steps_per_tick": 1, "noise": 0.01,
+ "gains": {"e": 0.01, "p": 0.1, "F": 0.1, "s": 0.1},
+ "site_hint": {"device0": [19, 140], "device1": [31.5, 83]},
+ "status": "final: noise from out/noise.json (0.01 keeps e <= 1; 0.03 pushes e to 1.02), gains from out/envelope.json"}

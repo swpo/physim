@@ -1,0 +1,1971 @@
+{
+ "fv": {
+  "0.001": {
+   "designated_split_A_predicts_T": {
+    "B": 1.018,
+    "X": 49.333,
+    "I": 30.931,
+    "N": 1.042
+   },
+   "50tu": {
+    "agg": {
+     "ref_score": 0.0122,
+     "band": [
+      0.904,
+      0.999,
+      1.111
+     ],
+     "ablation": [
+      48.018,
+      53.98,
+      59.876
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      30.132,
+      33.71,
+      37.451
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.915,
+      1.057,
+      1.161
+     ],
+     "dt_half_null_frac_above_band95": 0.21
+    },
+    "device0": {
+     "ref_score": 0.0082,
+     "band": [
+      0.876,
+      1.0,
+      1.168
+     ],
+     "ablation": [
+      73.784,
+      86.304,
+      98.672
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      64.404,
+      75.253,
+      85.878
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.888,
+      1.062,
+      1.186
+     ],
+     "dt_half_null_frac_above_band95": 0.085
+    },
+    "device1": {
+     "ref_score": 0.0066,
+     "band": [
+      0.873,
+      1.001,
+      1.153
+     ],
+     "ablation": [
+      92.236,
+      108.09,
+      122.808
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.694,
+      2.154,
+      2.52
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.858,
+      0.968,
+      1.024
+     ],
+     "dt_half_null_frac_above_band95": 0.0
+    },
+    "global": {
+     "ref_score": 0.0216,
+     "band": [
+      0.85,
+      1.0,
+      1.173
+     ],
+     "ablation": [
+      21.318,
+      25.354,
+      29.849
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      23.487,
+      27.92,
+      32.836
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.87,
+      1.095,
+      1.257
+     ],
+     "dt_half_null_frac_above_band95": 0.207
+    },
+    "spread_rms": {
+     "device0/om": 0.0092,
+     "device0/Y": 0.0126,
+     "device1/om": 0.0107,
+     "device1/Y": 0.0068,
+     "global/om": 0.0297,
+     "global/Y": 0.0286
+    },
+    "det_dt_error_over_spread": {
+     "device0/om": 0.072,
+     "device0/Y": 0.102,
+     "device1/om": 0.025,
+     "device1/Y": 0.036,
+     "global/om": 0.171,
+     "global/Y": 0.299
+    }
+   },
+   "10tu": {
+    "agg": {
+     "ref_score": 0.0061,
+     "band": [
+      0.88,
+      1.002,
+      1.145
+     ],
+     "ablation": [
+      22.415,
+      25.999,
+      29.671
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      70.416,
+      81.475,
+      93.209
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.87,
+      1.012,
+      1.108
+     ],
+     "dt_half_null_frac_above_band95": 0.012
+    },
+    "device0": {
+     "ref_score": 0.0033,
+     "band": [
+      0.884,
+      1.002,
+      1.137
+     ],
+     "ablation": [
+      53.882,
+      63.812,
+      75.635
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      181.902,
+      215.388,
+      255.033
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.886,
+      0.985,
+      1.049
+     ],
+     "dt_half_null_frac_above_band95": 0.0
+    },
+    "device1": {
+     "ref_score": 0.0029,
+     "band": [
+      0.921,
+      1.0,
+      1.079
+     ],
+     "ablation": [
+      66.08,
+      73.386,
+      80.761
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.175,
+      1.377,
+      1.521
+     ],
+     "ignore_actions_frac_above_band95": 0.991,
+     "dt_half_null": [
+      0.91,
+      1.007,
+      1.072
+     ],
+     "dt_half_null_frac_above_band95": 0.03
+    },
+    "global": {
+     "ref_score": 0.0122,
+     "band": [
+      0.826,
+      1.003,
+      1.222
+     ],
+     "ablation": [
+      3.79,
+      4.75,
+      5.748
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      52.347,
+      64.053,
+      78.269
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.82,
+      1.026,
+      1.165
+     ],
+     "dt_half_null_frac_above_band95": 0.011
+    },
+    "spread_rms": {
+     "device0/om": 0.0048,
+     "device0/Y": 0.004,
+     "device1/om": 0.0054,
+     "device1/Y": 0.0019,
+     "global/om": 0.0222,
+     "global/Y": 0.0117
+    },
+    "det_dt_error_over_spread": {
+     "device0/om": 0.071,
+     "device0/Y": 0.274,
+     "device1/om": 0.021,
+     "device1/Y": 0.056,
+     "global/om": 0.124,
+     "global/Y": 0.345
+    }
+   }
+  },
+  "0.003": {
+   "designated_split_A_predicts_T": {
+    "B": 1.018,
+    "X": 16.291,
+    "I": 10.045,
+    "N": 1.001
+   },
+   "50tu": {
+    "agg": {
+     "ref_score": 0.0364,
+     "band": [
+      0.903,
+      0.999,
+      1.11
+     ],
+     "ablation": [
+      15.675,
+      17.668,
+      19.596
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      9.638,
+      10.767,
+      11.963
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.903,
+      1.016,
+      1.099
+     ],
+     "dt_half_null_frac_above_band95": 0.033
+    },
+    "device0": {
+     "ref_score": 0.0244,
+     "band": [
+      0.877,
+      0.999,
+      1.163
+     ],
+     "ablation": [
+      24.53,
+      28.568,
+      32.592
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      21.125,
+      24.49,
+      27.866
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.881,
+      1.045,
+      1.157
+     ],
+     "dt_half_null_frac_above_band95": 0.041
+    },
+    "device1": {
+     "ref_score": 0.0199,
+     "band": [
+      0.873,
+      1.001,
+      1.152
+     ],
+     "ablation": [
+      30.625,
+      35.755,
+      40.606
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.922,
+      1.129,
+      1.271
+     ],
+     "ignore_actions_frac_above_band95": 0.4,
+     "dt_half_null": [
+      0.857,
+      0.966,
+      1.021
+     ],
+     "dt_half_null_frac_above_band95": 0.0
+    },
+    "global": {
+     "ref_score": 0.0646,
+     "band": [
+      0.851,
+      0.999,
+      1.172
+     ],
+     "ablation": [
+      6.739,
+      8.068,
+      9.504
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      7.219,
+      8.624,
+      10.129
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.846,
+      1.033,
+      1.159
+     ],
+     "dt_half_null_frac_above_band95": 0.037
+    },
+    "spread_rms": {
+     "device0/om": 0.0276,
+     "device0/Y": 0.0375,
+     "device1/om": 0.0322,
+     "device1/Y": 0.0203,
+     "global/om": 0.0891,
+     "global/Y": 0.0856
+    },
+    "det_dt_error_over_spread": {
+     "device0/om": 0.024,
+     "device0/Y": 0.034,
+     "device1/om": 0.008,
+     "device1/Y": 0.012,
+     "global/om": 0.057,
+     "global/Y": 0.1
+    }
+   },
+   "10tu": {
+    "agg": {
+     "ref_score": 0.0184,
+     "band": [
+      0.879,
+      1.002,
+      1.146
+     ],
+     "ablation": [
+      7.501,
+      8.684,
+      9.894
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      22.845,
+      26.452,
+      30.26
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.862,
+      0.984,
+      1.059
+     ],
+     "dt_half_null_frac_above_band95": 0.001
+    },
+    "device0": {
+     "ref_score": 0.0099,
+     "band": [
+      0.884,
+      1.002,
+      1.136
+     ],
+     "ablation": [
+      17.518,
+      20.813,
+      24.701
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      60.031,
+      71.111,
+      84.19
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.869,
+      0.965,
+      1.02
+     ],
+     "dt_half_null_frac_above_band95": 0.0
+    },
+    "device1": {
+     "ref_score": 0.0086,
+     "band": [
+      0.921,
+      1.0,
+      1.079
+     ],
+     "ablation": [
+      21.763,
+      24.159,
+      26.561
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.95,
+      1.069,
+      1.151
+     ],
+     "ignore_actions_frac_above_band95": 0.43,
+     "dt_half_null": [
+      0.908,
+      1.002,
+      1.066
+     ],
+     "dt_half_null_frac_above_band95": 0.019
+    },
+    "global": {
+     "ref_score": 0.0366,
+     "band": [
+      0.826,
+      1.003,
+      1.222
+     ],
+     "ablation": [
+      1.32,
+      1.802,
+      2.199
+     ],
+     "ablation_frac_above_band95": 0.973,
+     "ignore_actions": [
+      16.527,
+      20.37,
+      24.869
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.814,
+      0.991,
+      1.096
+     ],
+     "dt_half_null_frac_above_band95": 0.001
+    },
+    "spread_rms": {
+     "device0/om": 0.0143,
+     "device0/Y": 0.012,
+     "device1/om": 0.0163,
+     "device1/Y": 0.0058,
+     "global/om": 0.0666,
+     "global/Y": 0.0351
+    },
+    "det_dt_error_over_spread": {
+     "device0/om": 0.024,
+     "device0/Y": 0.091,
+     "device1/om": 0.007,
+     "device1/Y": 0.019,
+     "global/om": 0.041,
+     "global/Y": 0.115
+    }
+   }
+  },
+  "0.01": {
+   "designated_split_A_predicts_T": {
+    "B": 1.017,
+    "X": 4.888,
+    "I": 2.952,
+    "N": 0.997
+   },
+   "50tu": {
+    "agg": {
+     "ref_score": 0.12,
+     "band": [
+      0.904,
+      1.0,
+      1.106
+     ],
+     "ablation": [
+      4.56,
+      5.147,
+      5.675
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      2.701,
+      3.018,
+      3.312
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.901,
+      1.01,
+      1.087
+     ],
+     "dt_half_null_frac_above_band95": 0.023
+    },
+    "device0": {
+     "ref_score": 0.079,
+     "band": [
+      0.883,
+      1.0,
+      1.15
+     ],
+     "ablation": [
+      7.291,
+      8.492,
+      9.658
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      6.085,
+      6.964,
+      7.829
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.889,
+      1.039,
+      1.145
+     ],
+     "dt_half_null_frac_above_band95": 0.04
+    },
+    "device1": {
+     "ref_score": 0.0657,
+     "band": [
+      0.877,
+      1.001,
+      1.149
+     ],
+     "ablation": [
+      9.027,
+      10.524,
+      11.925
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.871,
+      0.992,
+      1.064
+     ],
+     "ignore_actions_frac_above_band95": 0.0,
+     "dt_half_null": [
+      0.859,
+      0.966,
+      1.022
+     ],
+     "dt_half_null_frac_above_band95": 0.0
+    },
+    "global": {
+     "ref_score": 0.2145,
+     "band": [
+      0.852,
+      0.999,
+      1.168
+     ],
+     "ablation": [
+      1.855,
+      2.291,
+      2.659
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.818,
+      2.2,
+      2.558
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.848,
+      1.023,
+      1.141
+     ],
+     "dt_half_null_frac_above_band95": 0.024
+    },
+    "spread_rms": {
+     "device0/om": 0.0898,
+     "device0/Y": 0.1194,
+     "device1/om": 0.1063,
+     "device1/Y": 0.0673,
+     "global/om": 0.2965,
+     "global/Y": 0.2839
+    },
+    "det_dt_error_over_spread": {
+     "device0/om": 0.007,
+     "device0/Y": 0.011,
+     "device1/om": 0.002,
+     "device1/Y": 0.004,
+     "global/om": 0.017,
+     "global/Y": 0.03
+    }
+   },
+   "10tu": {
+    "agg": {
+     "ref_score": 0.0613,
+     "band": [
+      0.881,
+      1.002,
+      1.148
+     ],
+     "ablation": [
+      2.522,
+      2.9,
+      3.249
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      6.168,
+      7.251,
+      8.36
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.862,
+      0.978,
+      1.047
+     ],
+     "dt_half_null_frac_above_band95": 0.0
+    },
+    "device0": {
+     "ref_score": 0.0331,
+     "band": [
+      0.885,
+      1.002,
+      1.136
+     ],
+     "ablation": [
+      4.931,
+      5.863,
+      6.963
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      17.385,
+      20.612,
+      24.375
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.867,
+      0.962,
+      1.016
+     ],
+     "dt_half_null_frac_above_band95": 0.0
+    },
+    "device1": {
+     "ref_score": 0.0286,
+     "band": [
+      0.921,
+      1.0,
+      1.08
+     ],
+     "ablation": [
+      6.307,
+      7.053,
+      7.74
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.923,
+      1.012,
+      1.072
+     ],
+     "ignore_actions_frac_above_band95": 0.034,
+     "dt_half_null": [
+      0.907,
+      1.0,
+      1.062
+     ],
+     "dt_half_null_frac_above_band95": 0.016
+    },
+    "global": {
+     "ref_score": 0.1221,
+     "band": [
+      0.826,
+      1.003,
+      1.222
+     ],
+     "ablation": [
+      0.856,
+      1.129,
+      1.318
+     ],
+     "ablation_frac_above_band95": 0.211,
+     "ignore_actions": [
+      3.973,
+      5.111,
+      6.363
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.819,
+      0.982,
+      1.079
+     ],
+     "dt_half_null_frac_above_band95": 0.001
+    },
+    "spread_rms": {
+     "device0/om": 0.0478,
+     "device0/Y": 0.0399,
+     "device1/om": 0.0542,
+     "device1/Y": 0.0193,
+     "global/om": 0.2218,
+     "global/Y": 0.1169
+    },
+    "det_dt_error_over_spread": {
+     "device0/om": 0.007,
+     "device0/Y": 0.027,
+     "device1/om": 0.002,
+     "device1/Y": 0.006,
+     "global/om": 0.012,
+     "global/Y": 0.035
+    }
+   }
+  },
+  "0.03": {
+   "designated_split_A_predicts_T": {
+    "B": 1.025,
+    "X": 1.92,
+    "I": 1.31
+   },
+   "50tu": {
+    "agg": {
+     "ref_score": 0.3532,
+     "band": [
+      0.902,
+      1.0,
+      1.108
+     ],
+     "ablation": [
+      1.678,
+      1.872,
+      2.033
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.187,
+      1.292,
+      1.371
+     ],
+     "ignore_actions_frac_above_band95": 0.995
+    },
+    "device0": {
+     "ref_score": 0.2202,
+     "band": [
+      0.895,
+      1.001,
+      1.132
+     ],
+     "ablation": [
+      2.269,
+      2.795,
+      3.276
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      2.081,
+      2.338,
+      2.605
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device1": {
+     "ref_score": 0.1913,
+     "band": [
+      0.888,
+      1.001,
+      1.134
+     ],
+     "ablation": [
+      2.934,
+      3.424,
+      3.827
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.887,
+      0.988,
+      1.047
+     ],
+     "ignore_actions_frac_above_band95": 0.0
+    },
+    "global": {
+     "ref_score": 0.6454,
+     "band": [
+      0.855,
+      0.998,
+      1.171
+     ],
+     "ablation": [
+      0.934,
+      1.116,
+      1.228
+     ],
+     "ablation_frac_above_band95": 0.214,
+     "ignore_actions": [
+      0.9,
+      1.03,
+      1.113
+     ],
+     "ignore_actions_frac_above_band95": 0.003
+    },
+    "spread_rms": {
+     "device0/om": 0.2605,
+     "device0/Y": 0.3214,
+     "device1/om": 0.3021,
+     "device1/Y": 0.1982,
+     "global/om": 0.9042,
+     "global/Y": 0.8434
+    },
+    "det_dt_error_over_spread": {
+     "device0/om": 0.003,
+     "device0/Y": 0.004,
+     "device1/om": 0.001,
+     "device1/Y": 0.001,
+     "global/om": 0.006,
+     "global/Y": 0.01
+    }
+   },
+   "10tu": {
+    "agg": {
+     "ref_score": 0.1843,
+     "band": [
+      0.883,
+      1.002,
+      1.144
+     ],
+     "ablation": [
+      1.232,
+      1.402,
+      1.533
+     ],
+     "ablation_frac_above_band95": 0.988,
+     "ignore_actions": [
+      1.837,
+      2.182,
+      2.457
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device0": {
+     "ref_score": 0.0997,
+     "band": [
+      0.885,
+      1.003,
+      1.138
+     ],
+     "ablation": [
+      1.646,
+      1.942,
+      2.227
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      5.285,
+      6.274,
+      7.393
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device1": {
+     "ref_score": 0.0863,
+     "band": [
+      0.92,
+      1.0,
+      1.08
+     ],
+     "ablation": [
+      2.112,
+      2.425,
+      2.678
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.92,
+      1.0,
+      1.054
+     ],
+     "ignore_actions_frac_above_band95": 0.008
+    },
+    "global": {
+     "ref_score": 0.3659,
+     "band": [
+      0.829,
+      1.003,
+      1.219
+     ],
+     "ablation": [
+      0.819,
+      1.02,
+      1.147
+     ],
+     "ablation_frac_above_band95": 0.004,
+     "ignore_actions": [
+      0.975,
+      1.345,
+      1.646
+     ],
+     "ignore_actions_frac_above_band95": 0.746
+    },
+    "spread_rms": {
+     "device0/om": 0.1437,
+     "device0/Y": 0.1203,
+     "device1/om": 0.1638,
+     "device1/Y": 0.0588,
+     "global/om": 0.6672,
+     "global/Y": 0.3497
+    },
+    "det_dt_error_over_spread": {
+     "device0/om": 0.002,
+     "device0/Y": 0.009,
+     "device1/om": 0.001,
+     "device1/Y": 0.002,
+     "global/om": 0.004,
+     "global/Y": 0.012
+    }
+   }
+  }
+ },
+ "pm": {
+  "0.003": {
+   "designated_split_A_predicts_T": {
+    "B": 1.016,
+    "X": 44.203,
+    "I": 9.593
+   },
+   "50tu": {
+    "agg": {
+     "ref_score": 0.0329,
+     "band": [
+      0.869,
+      1.001,
+      1.146
+     ],
+     "ablation": [
+      36.969,
+      42.815,
+      48.362
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      8.024,
+      9.231,
+      10.362
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device0": {
+     "ref_score": 0.0162,
+     "band": [
+      0.806,
+      1.0,
+      1.253
+     ],
+     "ablation": [
+      26.704,
+      38.342,
+      53.694
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      30.685,
+      44.037,
+      61.596
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device1": {
+     "ref_score": 0.033,
+     "band": [
+      0.867,
+      1.001,
+      1.16
+     ],
+     "ablation": [
+      33.027,
+      39.643,
+      46.623
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.006,
+      1.174,
+      1.301
+     ],
+     "ignore_actions_frac_above_band95": 0.557
+    },
+    "global": {
+     "ref_score": 0.0492,
+     "band": [
+      0.792,
+      1.004,
+      1.237
+     ],
+     "ablation": [
+      37.39,
+      46.636,
+      55.652
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      2.626,
+      3.254,
+      3.801
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "spread_rms": {
+     "device0/S": 0.0201,
+     "device0/K": 0.0218,
+     "device0/L": 0.038,
+     "device0/phi": 0.0209,
+     "device1/S": 0.0379,
+     "device1/K": 0.0395,
+     "device1/L": 0.0608,
+     "device1/phi": 0.0417,
+     "global/S": 0.0658,
+     "global/K": 0.0668,
+     "global/L": 0.0941,
+     "global/phi": 0.0514
+    },
+    "det_dt_error_over_spread": {
+     "device0/S": 0.189,
+     "device0/K": 0.842,
+     "device0/L": 0.153,
+     "device0/phi": 0.165,
+     "device1/S": 0.173,
+     "device1/K": 0.219,
+     "device1/L": 0.205,
+     "device1/phi": 0.185,
+     "global/S": 0.114,
+     "global/K": 0.13,
+     "global/L": 0.173,
+     "global/phi": 0.144
+    }
+   },
+   "10tu": {
+    "agg": {
+     "ref_score": 0.0072,
+     "band": [
+      0.904,
+      1.0,
+      1.107
+     ],
+     "ablation": [
+      165.09,
+      188.509,
+      213.172
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      56.645,
+      64.562,
+      72.884
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device0": {
+     "ref_score": 0.0032,
+     "band": [
+      0.911,
+      0.999,
+      1.104
+     ],
+     "ablation": [
+      101.159,
+      112.483,
+      124.453
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      322.783,
+      359.023,
+      397.041
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device1": {
+     "ref_score": 0.0134,
+     "band": [
+      0.866,
+      1.001,
+      1.156
+     ],
+     "ablation": [
+      60.967,
+      73.617,
+      88.161
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.851,
+      0.956,
+      1.025
+     ],
+     "ignore_actions_frac_above_band95": 0.0
+    },
+    "global": {
+     "ref_score": 0.0051,
+     "band": [
+      0.877,
+      0.999,
+      1.14
+     ],
+     "ablation": [
+      446.017,
+      543.044,
+      655.348
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      39.756,
+      48.531,
+      58.65
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "spread_rms": {
+     "device0/S": 0.001,
+     "device0/K": 0.0055,
+     "device0/L": 0.0064,
+     "device0/phi": 0.0036,
+     "device1/S": 0.014,
+     "device1/K": 0.0194,
+     "device1/L": 0.02,
+     "device1/phi": 0.019,
+     "global/S": 0.0053,
+     "global/K": 0.0076,
+     "global/L": 0.0068,
+     "global/phi": 0.0079
+    },
+    "det_dt_error_over_spread": {
+     "device0/S": 0.335,
+     "device0/K": 5.92,
+     "device0/L": 0.321,
+     "device0/phi": 0.293,
+     "device1/S": 0.523,
+     "device1/K": 0.448,
+     "device1/L": 0.358,
+     "device1/phi": 0.477,
+     "global/S": 0.656,
+     "global/K": 1.046,
+     "global/L": 0.649,
+     "global/phi": 0.579
+    }
+   }
+  },
+  "0.01": {
+   "designated_split_A_predicts_T": {
+    "B": 1.078,
+    "X": 15.465,
+    "I": 3.747,
+    "N": 1.143
+   },
+   "50tu": {
+    "agg": {
+     "ref_score": 0.0907,
+     "band": [
+      0.908,
+      0.999,
+      1.102
+     ],
+     "ablation": [
+      12.083,
+      14.471,
+      16.465
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      3.057,
+      3.492,
+      3.909
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.981,
+      1.1,
+      1.208
+     ],
+     "dt_half_null_frac_above_band95": 0.486
+    },
+    "device0": {
+     "ref_score": 0.0387,
+     "band": [
+      0.843,
+      1.0,
+      1.201
+     ],
+     "ablation": [
+      12.809,
+      15.783,
+      18.89
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      13.481,
+      16.63,
+      19.911
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.848,
+      1.0,
+      1.11
+     ],
+     "dt_half_null_frac_above_band95": 0.004
+    },
+    "device1": {
+     "ref_score": 0.1185,
+     "band": [
+      0.866,
+      0.998,
+      1.152
+     ],
+     "ablation": [
+      6.553,
+      9.643,
+      11.46
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.909,
+      1.0,
+      1.091
+     ],
+     "ignore_actions_frac_above_band95": 0.002,
+     "dt_half_null": [
+      0.998,
+      1.14,
+      1.324
+     ],
+     "dt_half_null_frac_above_band95": 0.45
+    },
+    "global": {
+     "ref_score": 0.1078,
+     "band": [
+      0.863,
+      0.999,
+      1.158
+     ],
+     "ablation": [
+      17.142,
+      20.249,
+      23.74
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.508,
+      1.739,
+      1.96
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.901,
+      1.099,
+      1.267
+     ],
+     "dt_half_null_frac_above_band95": 0.267
+    },
+    "spread_rms": {
+     "device0/S": 0.0464,
+     "device0/K": 0.0416,
+     "device0/L": 0.0688,
+     "device0/phi": 0.0607,
+     "device1/S": 0.1661,
+     "device1/K": 0.1877,
+     "device1/L": 0.2293,
+     "device1/phi": 0.1822,
+     "global/S": 0.1476,
+     "global/K": 0.1325,
+     "global/L": 0.1487,
+     "global/phi": 0.1502
+    },
+    "det_dt_error_over_spread": {
+     "device0/S": 0.082,
+     "device0/K": 0.443,
+     "device0/L": 0.085,
+     "device0/phi": 0.057,
+     "device1/S": 0.04,
+     "device1/K": 0.046,
+     "device1/L": 0.054,
+     "device1/phi": 0.042,
+     "global/S": 0.051,
+     "global/K": 0.066,
+     "global/L": 0.109,
+     "global/phi": 0.049
+    }
+   },
+   "10tu": {
+    "agg": {
+     "ref_score": 0.0244,
+     "band": [
+      0.906,
+      1.0,
+      1.104
+     ],
+     "ablation": [
+      47.166,
+      54.267,
+      61.881
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      16.857,
+      19.299,
+      21.938
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.98,
+      1.097,
+      1.186
+     ],
+     "dt_half_null_frac_above_band95": 0.454
+    },
+    "device0": {
+     "ref_score": 0.0106,
+     "band": [
+      0.911,
+      0.999,
+      1.105
+     ],
+     "ablation": [
+      29.905,
+      33.223,
+      36.809
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      95.879,
+      106.732,
+      118.091
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      1.223,
+      1.342,
+      1.435
+     ],
+     "dt_half_null_frac_above_band95": 0.996
+    },
+    "device1": {
+     "ref_score": 0.0444,
+     "band": [
+      0.868,
+      1.001,
+      1.155
+     ],
+     "ablation": [
+      17.85,
+      21.844,
+      26.326
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.853,
+      0.956,
+      1.023
+     ],
+     "ignore_actions_frac_above_band95": 0.0,
+     "dt_half_null": [
+      0.907,
+      1.075,
+      1.206
+     ],
+     "dt_half_null_frac_above_band95": 0.15
+    },
+    "global": {
+     "ref_score": 0.0179,
+     "band": [
+      0.875,
+      1.001,
+      1.15
+     ],
+     "ablation": [
+      116.981,
+      147.715,
+      184.546
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      10.622,
+      13.575,
+      17.026
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.9,
+      1.014,
+      1.12
+     ],
+     "dt_half_null_frac_above_band95": 0.023
+    },
+    "spread_rms": {
+     "device0/S": 0.0034,
+     "device0/K": 0.0184,
+     "device0/L": 0.0212,
+     "device0/phi": 0.012,
+     "device1/S": 0.0462,
+     "device1/K": 0.0648,
+     "device1/L": 0.0675,
+     "device1/phi": 0.0625,
+     "global/S": 0.0197,
+     "global/K": 0.028,
+     "global/L": 0.0227,
+     "global/phi": 0.0316
+    },
+    "det_dt_error_over_spread": {
+     "device0/S": 0.1,
+     "device0/K": 1.775,
+     "device0/L": 0.097,
+     "device0/phi": 0.089,
+     "device1/S": 0.158,
+     "device1/K": 0.134,
+     "device1/L": 0.106,
+     "device1/phi": 0.145,
+     "global/S": 0.178,
+     "global/K": 0.285,
+     "global/L": 0.196,
+     "global/phi": 0.145
+    }
+   }
+  },
+  "0.03": {
+   "designated_split_A_predicts_T": {
+    "B": 0.913,
+    "X": 5.701,
+    "I": 1.976,
+    "N": 0.979
+   },
+   "50tu": {
+    "agg": {
+     "ref_score": 0.2188,
+     "band": [
+      0.925,
+      1.002,
+      1.08
+     ],
+     "ablation": [
+      4.92,
+      5.498,
+      6.047
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.841,
+      1.99,
+      2.133
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.941,
+      1.011,
+      1.071
+     ],
+     "dt_half_null_frac_above_band95": 0.027
+    },
+    "device0": {
+     "ref_score": 0.0917,
+     "band": [
+      0.863,
+      1.0,
+      1.162
+     ],
+     "ablation": [
+      5.338,
+      6.423,
+      7.59
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      6.402,
+      7.708,
+      9.123
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.892,
+      1.02,
+      1.107
+     ],
+     "dt_half_null_frac_above_band95": 0.001
+    },
+    "device1": {
+     "ref_score": 0.3355,
+     "band": [
+      0.892,
+      1.002,
+      1.126
+     ],
+     "ablation": [
+      2.175,
+      2.684,
+      3.137
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.899,
+      0.994,
+      1.061
+     ],
+     "ignore_actions_frac_above_band95": 0.002,
+     "dt_half_null": [
+      0.917,
+      1.024,
+      1.115
+     ],
+     "dt_half_null_frac_above_band95": 0.035
+    },
+    "global": {
+     "ref_score": 0.2261,
+     "band": [
+      0.879,
+      1.0,
+      1.139
+     ],
+     "ablation": [
+      7.965,
+      9.377,
+      10.828
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.057,
+      1.186,
+      1.294
+     ],
+     "ignore_actions_frac_above_band95": 0.748,
+     "dt_half_null": [
+      0.884,
+      1.003,
+      1.086
+     ],
+     "dt_half_null_frac_above_band95": 0.002
+    },
+    "spread_rms": {
+     "device0/S": 0.1244,
+     "device0/K": 0.097,
+     "device0/L": 0.1276,
+     "device0/phi": 0.1549,
+     "device1/S": 0.4339,
+     "device1/K": 0.4468,
+     "device1/L": 0.4962,
+     "device1/phi": 0.4251,
+     "global/S": 0.3018,
+     "global/K": 0.2895,
+     "global/L": 0.2864,
+     "global/phi": 0.3281
+    },
+    "det_dt_error_over_spread": {
+     "device0/S": 0.031,
+     "device0/K": 0.19,
+     "device0/L": 0.046,
+     "device0/phi": 0.022,
+     "device1/S": 0.015,
+     "device1/K": 0.019,
+     "device1/L": 0.025,
+     "device1/phi": 0.018,
+     "global/S": 0.025,
+     "global/K": 0.03,
+     "global/L": 0.057,
+     "global/phi": 0.023
+    }
+   },
+   "10tu": {
+    "agg": {
+     "ref_score": 0.0705,
+     "band": [
+      0.913,
+      1.001,
+      1.101
+     ],
+     "ablation": [
+      15.17,
+      17.563,
+      19.959
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      6.027,
+      6.832,
+      7.672
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.935,
+      1.038,
+      1.11
+     ],
+     "dt_half_null_frac_above_band95": 0.072
+    },
+    "device0": {
+     "ref_score": 0.0312,
+     "band": [
+      0.908,
+      0.999,
+      1.108
+     ],
+     "ablation": [
+      9.548,
+      10.632,
+      11.826
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      31.212,
+      34.755,
+      38.51
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.94,
+      1.061,
+      1.148
+     ],
+     "dt_half_null_frac_above_band95": 0.175
+    },
+    "device1": {
+     "ref_score": 0.1276,
+     "band": [
+      0.87,
+      1.001,
+      1.146
+     ],
+     "ablation": [
+      5.422,
+      6.845,
+      8.451
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.865,
+      0.957,
+      1.022
+     ],
+     "ignore_actions_frac_above_band95": 0.0,
+     "dt_half_null": [
+      0.889,
+      1.037,
+      1.141
+     ],
+     "dt_half_null_frac_above_band95": 0.042
+    },
+    "global": {
+     "ref_score": 0.0523,
+     "band": [
+      0.873,
+      0.999,
+      1.147
+     ],
+     "ablation": [
+      39.993,
+      48.012,
+      57.032
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      3.712,
+      4.604,
+      5.49
+     ],
+     "ignore_actions_frac_above_band95": 1.0,
+     "dt_half_null": [
+      0.904,
+      1.035,
+      1.139
+     ],
+     "dt_half_null_frac_above_band95": 0.039
+    },
+    "spread_rms": {
+     "device0/S": 0.0103,
+     "device0/K": 0.0552,
+     "device0/L": 0.0626,
+     "device0/phi": 0.0348,
+     "device1/S": 0.133,
+     "device1/K": 0.1859,
+     "device1/L": 0.2075,
+     "device1/phi": 0.1741,
+     "global/S": 0.056,
+     "global/K": 0.0783,
+     "global/L": 0.0719,
+     "global/phi": 0.0783
+    },
+    "det_dt_error_over_spread": {
+     "device0/S": 0.033,
+     "device0/K": 0.592,
+     "device0/L": 0.033,
+     "device0/phi": 0.031,
+     "device1/S": 0.055,
+     "device1/K": 0.047,
+     "device1/L": 0.034,
+     "device1/phi": 0.052,
+     "global/S": 0.063,
+     "global/K": 0.102,
+     "global/L": 0.062,
+     "global/phi": 0.059
+    }
+   }
+  },
+  "0.1": {
+   "designated_split_A_predicts_T": {
+    "B": 0.98,
+    "X": 1.862,
+    "I": 1.293
+   },
+   "50tu": {
+    "agg": {
+     "ref_score": 0.4695,
+     "band": [
+      0.937,
+      1.001,
+      1.071
+     ],
+     "ablation": [
+      1.782,
+      1.916,
+      2.047
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.238,
+      1.348,
+      1.444
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device0": {
+     "ref_score": 0.3532,
+     "band": [
+      0.87,
+      1.002,
+      1.145
+     ],
+     "ablation": [
+      1.125,
+      1.333,
+      1.548
+     ],
+     "ablation_frac_above_band95": 0.93,
+     "ignore_actions": [
+      1.828,
+      2.386,
+      2.989
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device1": {
+     "ref_score": 0.5716,
+     "band": [
+      0.938,
+      1.001,
+      1.068
+     ],
+     "ablation": [
+      1.068,
+      1.17,
+      1.249
+     ],
+     "ablation_frac_above_band95": 0.95,
+     "ignore_actions": [
+      0.924,
+      0.977,
+      1.016
+     ],
+     "ignore_actions_frac_above_band95": 0.0
+    },
+    "global": {
+     "ref_score": 0.4778,
+     "band": [
+      0.874,
+      1.002,
+      1.153
+     ],
+     "ablation": [
+      2.836,
+      3.267,
+      3.702
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.935,
+      1.043,
+      1.119
+     ],
+     "ignore_actions_frac_above_band95": 0.008
+    },
+    "spread_rms": {
+     "device0/S": 0.5156,
+     "device0/K": 0.4618,
+     "device0/L": 0.536,
+     "device0/phi": 0.4499,
+     "device1/S": 0.8116,
+     "device1/K": 0.7053,
+     "device1/L": 0.7588,
+     "device1/phi": 0.6408,
+     "global/S": 0.6338,
+     "global/K": 0.6336,
+     "global/L": 0.6739,
+     "global/phi": 0.6024
+    },
+    "det_dt_error_over_spread": {
+     "device0/S": 0.007,
+     "device0/K": 0.04,
+     "device0/L": 0.011,
+     "device0/phi": 0.008,
+     "device1/S": 0.008,
+     "device1/K": 0.012,
+     "device1/L": 0.016,
+     "device1/phi": 0.012,
+     "global/S": 0.012,
+     "global/K": 0.014,
+     "global/L": 0.024,
+     "global/phi": 0.012
+    }
+   },
+   "10tu": {
+    "agg": {
+     "ref_score": 0.2171,
+     "band": [
+      0.918,
+      0.999,
+      1.084
+     ],
+     "ablation": [
+      3.999,
+      4.473,
+      4.896
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      2.362,
+      2.564,
+      2.735
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device0": {
+     "ref_score": 0.1014,
+     "band": [
+      0.913,
+      1.0,
+      1.104
+     ],
+     "ablation": [
+      2.626,
+      2.932,
+      3.228
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      9.379,
+      10.298,
+      11.302
+     ],
+     "ignore_actions_frac_above_band95": 1.0
+    },
+    "device1": {
+     "ref_score": 0.3427,
+     "band": [
+      0.895,
+      1.0,
+      1.11
+     ],
+     "ablation": [
+      1.447,
+      1.785,
+      2.098
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      0.868,
+      0.948,
+      0.993
+     ],
+     "ignore_actions_frac_above_band95": 0.0
+    },
+    "global": {
+     "ref_score": 0.2066,
+     "band": [
+      0.845,
+      1.0,
+      1.177
+     ],
+     "ablation": [
+      8.03,
+      9.69,
+      11.644
+     ],
+     "ablation_frac_above_band95": 1.0,
+     "ignore_actions": [
+      1.192,
+      1.468,
+      1.668
+     ],
+     "ignore_actions_frac_above_band95": 0.959
+    },
+    "spread_rms": {
+     "device0/S": 0.0351,
+     "device0/K": 0.1814,
+     "device0/L": 0.1993,
+     "device0/phi": 0.1109,
+     "device1/S": 0.4126,
+     "device1/K": 0.4479,
+     "device1/L": 0.4717,
+     "device1/phi": 0.4554,
+     "global/S": 0.2373,
+     "global/K": 0.3205,
+     "global/L": 0.3148,
+     "global/phi": 0.2617
+    },
+    "det_dt_error_over_spread": {
+     "device0/S": 0.01,
+     "device0/K": 0.18,
+     "device0/L": 0.01,
+     "device0/phi": 0.01,
+     "device1/S": 0.018,
+     "device1/K": 0.019,
+     "device1/L": 0.015,
+     "device1/phi": 0.02,
+     "global/S": 0.015,
+     "global/K": 0.025,
+     "global/L": 0.014,
+     "global/phi": 0.018
+    }
+   }
+  }
+ }
+}

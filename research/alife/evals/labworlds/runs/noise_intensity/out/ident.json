@@ -1,0 +1,48 @@
+{
+ "A_white_all_forms": {
+  "old": "97679ee16b7a40cd",
+  "new": "97679ee16b7a40cd",
+  "identical": true,
+  "declaration_equal": true,
+  "member_spread": 0.10145355523905923
+ },
+ "B_variance_matched_corr": {
+  "old": "dc4ecf5e33e88b38",
+  "new": "dc4ecf5e33e88b38",
+  "identical": true,
+  "declaration_equal": true,
+  "member_spread": 0.15802943296997546
+ },
+ "C_runner_demo": {
+  "old": "b5c49ce974a553c2",
+  "new": "b5c49ce974a553c2",
+  "identical": true,
+  "declaration_equal": true,
+  "member_spread": 0.038309856239523044
+ },
+ "D_fed_vortices_signed": {
+  "old": "7a01452f28a7320e",
+  "new": "7a01452f28a7320e",
+  "identical": true,
+  "declaration_equal": true,
+  "member_spread": 0.004432601197077026
+ },
+ "rng_after_3_ticks_old": 2319701533305698138,
+ "rng_after_3_ticks_new": 2319701533305698138,
+ "rng_equal": true,
+ "suite_pm_declaration_unchanged": true,
+ "suite_fv_declaration_unchanged": true,
+ "intensity_white_dx1_equals_white": true,
+ "intensity_declaration": [
+  "S",
+  "K",
+  "L",
+  "phi"
+ ],
+ "intensity_corr_differs_from_variance_matched": true,
+ "validation": [
+  "ValueError: noise_intensity must list distinct fields that have a declared noise",
+  "ValueError: noise_intensity must list distinct fields that have a declared noise",
+  "ValueError: noise_intensity is a sequence of field names"
+ ]
+}
