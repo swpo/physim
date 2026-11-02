@@ -1,0 +1,285 @@
+{
+ "schema_version": "physim-lab-bundle-v1",
+ "bundle_id": "bundle:sha256:83cb9023fdce20ecec5614b899b15b161fe01bdad569a45f61cb134970211d7a",
+ "status": "local-development-verified",
+ "licenses": {
+  "code": "Apache-2.0",
+  "data": "CC-BY-4.0"
+ },
+ "objects": {
+  "world": {
+   "name": "cips_iso_gc_iter2",
+   "files": {
+    "world/cips_iso.py": "150dd2c66b35ab3719e814af43ce04aa9dd43699eaff54e09faab9ccadf9a469",
+    "world/labkit/__init__.py": "6161ec9527dcb20e33d2702d6fef86cb4bcfb040f17e5926e69a68997eaf2164",
+    "world/labkit/ops.py": "fb532bdd1282669cdb1abe542b8236fd9b7d7799b3984b19b6849b52b46d15f1",
+    "world/labkit/world.py": "2b3af982bbfd0650c197bdf9347c92eaf43e92fa8984bf337093100c72ace6f5",
+    "world/world.py": "a230ba236afce4eac6054db4c71e0675efb53fe37789eb4402866a3d7ca1f0d9"
+   },
+   "declaration_sha256": "5aab7b6d04504d1eabf359f90ee51cd5897e23e9d49da13a0ec4c95164cbd163",
+   "implementation": {
+    "source_sha256": {
+     "physim.blobround6": "d1b4a8b4a7231b011b418ab9d8d9d1a49418b879ab1b93a9263c3cc06b4f809b",
+     "physim.labworld": "501fffd327c1cf91373e4625394fe8c133e54ee63fd383351a699104f8c3adc7",
+     "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6",
+     "physim.blobround6_eval": "3d8e3fb3b6f6b1275a33b6b88acdcd5b9b9b78cff91b01dad6231b7d82e4b009",
+     "physim.labbundle": "060e39aeeb3b897487e1a01b79c5870b0cd6ec69bfd4b423ead602f246b34ca8"
+    },
+    "dependencies": {
+     "numpy": "2.5.2",
+     "scipy": "1.18.0"
+    }
+   },
+   "source": {
+    "world": "scripts/physim/labworlds/worlds/cips_iso.py",
+    "lab_repository": "swpo/residency-environments",
+    "world_sha256": "150dd2c66b35ab3719e814af43ce04aa9dd43699eaff54e09faab9ccadf9a469"
+   },
+   "id": "world:sha256:5e97e173e6b7672f1fae6cbbaa88c26f4862d8af68b5c4d488f2061b98959e78"
+  },
+  "preparation": {
+   "world_id": "world:sha256:5e97e173e6b7672f1fae6cbbaa88c26f4862d8af68b5c4d488f2061b98959e78",
+   "file_sha256": "13065146c401b14e62c61bcd3e59913141d2bdf9982944fd7582f3cd44d628a6",
+   "state_sha256": "3a7a1f2f36290030267f29678cafcef7581f5594bb98c805362d3997997675f2",
+   "apparatus_sha256": "c3586bd4f05f50137c47cee1207f813241c797d11f0713f90eda212fe07fa13f",
+   "noise_policy": "independent-experiment-v1",
+   "public_time": 0,
+   "recipe": {
+    "prepared": "/home/user/evalwork/pm_cips_eval/cips_prep/prep_s5_t3100.npz",
+    "prepared_file_sha256": "8d18e7848dd434d8c40af754cb773e4a94d39c15a138de23a7069ef844650e2d",
+    "loader": "gccips.load_prep",
+    "script": "gc_bundle.py"
+   },
+   "id": "preparation:sha256:ecac7715761a354bf3290e3c082193518eb7267147909f7b877ca01107d15f21"
+  },
+  "suite": {
+   "preparation_id": "preparation:sha256:ecac7715761a354bf3290e3c082193518eb7267147909f7b877ca01107d15f21",
+   "file_sha256": "c88e3777e8af829b1283bec81e754f65a563f4180ffb2769b700376edf239fd3",
+   "scoring_source_sha256": "3d8e3fb3b6f6b1275a33b6b88acdcd5b9b9b78cff91b01dad6231b7d82e4b009",
+   "truth_sha256": {
+    "truth/c001.npz": "095b6d5a803f14826222a6ada6a650fdd6ef58c81678d499f076a41f8d88f8e9",
+    "truth/c002.npz": "85ece1dc0c1dc600135e153a4f04e8e988e0439063034f83efc55636fb815629",
+    "truth/c003.npz": "f7ff793d6db2890d2dd9c1694ad99617d1dad64457dfd9f8b7fe66736c836310",
+    "truth/c004.npz": "2978d50718c8e1c12e4f068fe04df2d13be892ded3f887eba9151c921a6bde80",
+    "truth/c005.npz": "4873e0b2ed43e32f273111ddc8c466b76b42f1be37aaf552e1455af64cb2e947",
+    "truth/c006.npz": "aba435946479a0fc6dd55dfe6de06f264f4372e4154045b94be9c0b6eda5a4ac",
+    "truth/c007.npz": "a31af0ed4dc8b667641389f2d5548c319ec516784b4a413df95dd8a0f574dcc8",
+    "truth/c008.npz": "dabdc8da03adb3731f6ed5821f743b37f27a3d803933caac5f8ddab6d904af67",
+    "truth/c009.npz": "5dcbbabb78c1a4626efb7161d1c32454605610310d15fdd9d83fda73e4f5cb1b",
+    "truth/c010.npz": "0c94f7e511efa12bcd02ba0ef4e20f88130f37204d9e6b51a3daaf4e543eb25e",
+    "truth/c011.npz": "528dcf23a5362f0729e01b09b778a76a0a7f2bf97e69d524fd294afe022e9050",
+    "truth/c012.npz": "392bf6883fd579f3913e46eb5a93721e942b557fcf9390afbb741ed30633106a"
+   },
+   "id": "suite:sha256:214c451307f453dc654757d7bfdc9cf2bb05771de58319a56e937fbaf10cfb05"
+  }
+ },
+ "files": [
+  {
+   "path": "apparatus.json",
+   "bytes": 1431,
+   "sha256": "c3586bd4f05f50137c47cee1207f813241c797d11f0713f90eda212fe07fa13f",
+   "role": "apparatus",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "checks.json",
+   "bytes": 297,
+   "sha256": "8837b6501fb3355184a395b966259301c47924bfac7275d6ffd86e49a6ab2df9",
+   "role": "checks",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "labworld.json",
+   "bytes": 1014,
+   "sha256": "5aab7b6d04504d1eabf359f90ee51cd5897e23e9d49da13a0ec4c95164cbd163",
+   "role": "labworld",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "preparation.npz",
+   "bytes": 1091012,
+   "sha256": "13065146c401b14e62c61bcd3e59913141d2bdf9982944fd7582f3cd44d628a6",
+   "role": "preparation",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "suite.json",
+   "bytes": 1397465,
+   "sha256": "c88e3777e8af829b1283bec81e754f65a563f4180ffb2769b700376edf239fd3",
+   "role": "suite",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c001.npz",
+   "bytes": 30862,
+   "sha256": "095b6d5a803f14826222a6ada6a650fdd6ef58c81678d499f076a41f8d88f8e9",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c002.npz",
+   "bytes": 30945,
+   "sha256": "85ece1dc0c1dc600135e153a4f04e8e988e0439063034f83efc55636fb815629",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c003.npz",
+   "bytes": 30785,
+   "sha256": "f7ff793d6db2890d2dd9c1694ad99617d1dad64457dfd9f8b7fe66736c836310",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c004.npz",
+   "bytes": 31155,
+   "sha256": "2978d50718c8e1c12e4f068fe04df2d13be892ded3f887eba9151c921a6bde80",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c005.npz",
+   "bytes": 31186,
+   "sha256": "4873e0b2ed43e32f273111ddc8c466b76b42f1be37aaf552e1455af64cb2e947",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c006.npz",
+   "bytes": 31180,
+   "sha256": "aba435946479a0fc6dd55dfe6de06f264f4372e4154045b94be9c0b6eda5a4ac",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c007.npz",
+   "bytes": 30971,
+   "sha256": "a31af0ed4dc8b667641389f2d5548c319ec516784b4a413df95dd8a0f574dcc8",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c008.npz",
+   "bytes": 31245,
+   "sha256": "dabdc8da03adb3731f6ed5821f743b37f27a3d803933caac5f8ddab6d904af67",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c009.npz",
+   "bytes": 30930,
+   "sha256": "5dcbbabb78c1a4626efb7161d1c32454605610310d15fdd9d83fda73e4f5cb1b",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c010.npz",
+   "bytes": 30932,
+   "sha256": "0c94f7e511efa12bcd02ba0ef4e20f88130f37204d9e6b51a3daaf4e543eb25e",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c011.npz",
+   "bytes": 30918,
+   "sha256": "528dcf23a5362f0729e01b09b778a76a0a7f2bf97e69d524fd294afe022e9050",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c012.npz",
+   "bytes": 31697,
+   "sha256": "392bf6883fd579f3913e46eb5a93721e942b557fcf9390afbb741ed30633106a",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/cips_iso.py",
+   "bytes": 9799,
+   "sha256": "150dd2c66b35ab3719e814af43ce04aa9dd43699eaff54e09faab9ccadf9a469",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/labkit/__init__.py",
+   "bytes": 1614,
+   "sha256": "6161ec9527dcb20e33d2702d6fef86cb4bcfb040f17e5926e69a68997eaf2164",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/labkit/ops.py",
+   "bytes": 4124,
+   "sha256": "fb532bdd1282669cdb1abe542b8236fd9b7d7799b3984b19b6849b52b46d15f1",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/labkit/world.py",
+   "bytes": 5089,
+   "sha256": "2b3af982bbfd0650c197bdf9347c92eaf43e92fa8984bf337093100c72ace6f5",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/world.py",
+   "bytes": 1128,
+   "sha256": "a230ba236afce4eac6054db4c71e0675efb53fe37789eb4402866a3d7ca1f0d9",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  }
+ ]
+}

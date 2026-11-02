@@ -1,0 +1,73 @@
+# PhySim lab bundle "rods_main": Marangoni rods, main suite (iter2).
+# Harness: Codex (shell coding interface; the BF case study's harness for GPT models).
+# Select the model on the CLI (--model). This configuration makes model API calls and uses Prime sandboxes when executed.
+# Limits from costs.json (cloud session) via make_configs.py (cloud session); see
+# README.md (cloud session). Faithful predictor, longest case at 64 members: 3039 CPU-s.
+model = "YOUR_MODEL_ID"
+num_rollouts = 1
+max_concurrent = 1
+push = false
+
+[env.taskset]
+id = "physim"
+# Default prompt plus two lab-world interface notes (threads pinned to 1; ports and channels numbered independently).
+prompt = "Investigate the laboratory and submit your executable predictor. Two practical notes on this laboratory: the predictor process starts with OMP, OpenBLAS and MKL threads set to 1, so to use more than one of its CPUs, parallelise explicitly (for example with processes); and inject ports and measurement channels are numbered independently, so port i need not act on channel i, and some channels may have no port."
+
+[env.taskset.task]
+output_root = "outputs/r6/artifacts"
+agent_image = "python:3.11-slim@sha256:db3ff2e1800a8581e2c48a27c3995339d47bdf046da21c7627accd3d51053a93"
+coding_interface = "shell"
+setup_timeout = 900
+# 2x a heavy investigation (300 experiments x 50 tu = 4.9 h of serial evaluator time), at least 24 h.
+agent_timeout = 86400
+finalize_timeout = 900
+# scoring_timeout is left unset: derived by taskset.scoring_timeout = max(7200, cases x (wall_seconds + 60) + 900) = 57060 s.
+
+[env.taskset.task.agent_resources]
+cpu = 4
+memory = 8
+
+[env.taskset.task.tools]
+bundle = "@KIT@/bundles/rods_main"
+max_experiments = 1000
+# Simulating the full budget takes 16.5 h of evaluator time.
+max_total_tu = 50000
+max_validation_attempts = 128
+max_submission_attempts = 128
+reward_precision = 2.0
+
+[env.taskset.task.tools.predictor_limits]
+# 3x the faithful predictor's longest case (CPU); wall = cpu / cpus x 1.5; memory for a 64-member batch (842 MiB) with margin.
+cpu_seconds = 9200
+wall_seconds = 3450
+cpus = 4
+memory_gib = 4
+artifact_mib = 64
+file_mib = 20
+
+[env.agent]
+# Generous exploration defaults; increase these together for longer investigations.
+max_turns = 1024
+max_output_tokens = 1048576
+
+[env.agent.timeout]
+# Overrides the task's agent timeout when set (verifiers agent.py); kept equal to agent_timeout above.
+rollout = 86400
+
+[env.agent.harness]
+id = "codex"
+tool_timeout = 1800
+
+[env.agent.runtime]
+type = "prime"
+image = "python:3.11-slim@sha256:db3ff2e1800a8581e2c48a27c3995339d47bdf046da21c7627accd3d51053a93"
+workdir = "/workspace"
+cpu = 4
+memory = 8
+allow = []
+
+[env.agent.retries]
+max_retries = 0
+
+[env.retries]
+max_retries = 0

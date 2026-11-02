@@ -1,0 +1,84 @@
+{
+ "name": "c53-fed-vortices",
+ "world_file": "world.py",
+ "fields": [
+  "om",
+  "Y"
+ ],
+ "grid": [
+  128,
+  128
+ ],
+ "steps_per_tick": 1,
+ "native_dt": 0.02,
+ "ports": {
+  "om": {
+   "gain": 0.01,
+   "clip": [
+    null,
+    null
+   ]
+  },
+  "Y": {
+   "gain": 0.1,
+   "clip": [
+    0.0,
+    null
+   ]
+  }
+ },
+ "noise": {
+  "om": [
+   "additive",
+   0.003
+  ],
+  "Y": [
+   "proportional",
+   0.003
+  ]
+ },
+ "noise_corr": {
+  "om": 2.0,
+  "Y": 2.0
+ },
+ "noise_intensity": [
+  "om",
+  "Y"
+ ],
+ "overrides": {},
+ "dx": 1.0,
+ "carry": [
+  "t"
+ ],
+ "actuators": [
+  {
+   "field": "om",
+   "sign": -1
+  },
+  {
+   "field": "Y",
+   "sign": 1
+  },
+  {
+   "field": "om",
+   "sign": 1
+  },
+  {
+   "field": "Y",
+   "sign": -1
+  }
+ ],
+ "derived": [
+  {
+   "name": "eat",
+   "source": "observables.py",
+   "function": "eat"
+  },
+  {
+   "name": "speed",
+   "source": "observables.py",
+   "function": "speed"
+  }
+ ],
+ "fft_workers": 1
+}

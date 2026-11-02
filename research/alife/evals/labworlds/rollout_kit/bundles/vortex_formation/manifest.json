@@ -1,0 +1,195 @@
+{
+ "schema_version": "physim-lab-bundle-v1",
+ "bundle_id": "bundle:sha256:6e8dc9c3acacc5a0ae6e2e1898bf7d024a82442ae5aff61d8ebfbc85042b6e6e",
+ "status": "local-development-verified",
+ "licenses": {
+  "code": "Apache-2.0",
+  "data": "CC-BY-4.0"
+ },
+ "objects": {
+  "world": {
+   "name": "c53-fed-vortex-selection-formation",
+   "files": {
+    "world/labkit/__init__.py": "6161ec9527dcb20e33d2702d6fef86cb4bcfb040f17e5926e69a68997eaf2164",
+    "world/labkit/ops.py": "fb532bdd1282669cdb1abe542b8236fd9b7d7799b3984b19b6849b52b46d15f1",
+    "world/labkit/world.py": "2b3af982bbfd0650c197bdf9347c92eaf43e92fa8984bf337093100c72ace6f5",
+    "world/observables.py": "bef3c5408604bfd0e7232ced29f5183964c8dc821dc6a5c005fa24df3a27c3e4",
+    "world/world.py": "98b2f6bf27c2728c616e17b3b2ed6d06a83d7aabb6a3e5b28bb50937fc438b44"
+   },
+   "declaration_sha256": "622f93e88cffbbf5e8aebef104e8aa6335bc15077b79debcc92ccd69e3656b41",
+   "implementation": {
+    "source_sha256": {
+     "physim.blobround6": "d1b4a8b4a7231b011b418ab9d8d9d1a49418b879ab1b93a9263c3cc06b4f809b",
+     "physim.labworld": "501fffd327c1cf91373e4625394fe8c133e54ee63fd383351a699104f8c3adc7",
+     "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6",
+     "physim.blobround6_eval": "3d8e3fb3b6f6b1275a33b6b88acdcd5b9b9b78cff91b01dad6231b7d82e4b009",
+     "physim.labbundle": "060e39aeeb3b897487e1a01b79c5870b0cd6ec69bfd4b423ead602f246b34ca8"
+    },
+    "dependencies": {
+     "numpy": "2.5.2",
+     "scipy": "1.18.0"
+    }
+   },
+   "source": {
+    "world": "collective/contrib/20261027T0845-c53-fed-vortex-selection-claim/world.py",
+    "lab_repository": "physim research/alife",
+    "world_sha256": "98b2f6bf27c2728c616e17b3b2ed6d06a83d7aabb6a3e5b28bb50937fc438b44"
+   },
+   "id": "world:sha256:7cbec80b83e4a4b3f73ed0dc4a6801bf869a7f6879c2880ba8b8a8a7549cf934"
+  },
+  "preparation": {
+   "world_id": "world:sha256:7cbec80b83e4a4b3f73ed0dc4a6801bf869a7f6879c2880ba8b8a8a7549cf934",
+   "file_sha256": "e6530a3e8fc06e1aa1d4fa8b694b710528121cb5e3a7274f7edf56e9f8e238d6",
+   "state_sha256": "61a4bd76bfdeed5549ef422109217ef562152ce7e57e4c39db7502dffae41f2d",
+   "apparatus_sha256": "891730490de17d7cc5b963d4fd3bca4abbd655b6b5678fa94ed72e996875088c",
+   "noise_policy": "independent-experiment-v1",
+   "public_time": 0,
+   "recipe": {
+    "prepared": "/home/user/evalwork/gc_suites/vortex/formation/prep/prep_t0.npz",
+    "prepared_file_sha256": "e6530a3e8fc06e1aa1d4fa8b694b710528121cb5e3a7274f7edf56e9f8e238d6",
+    "loader": "gcv.load_state",
+    "script": "gc_bundle.py"
+   },
+   "id": "preparation:sha256:b75fe53e1e2e80ef1702c4209c36111797955e4bb3768dcc7aebbb69c7978f30"
+  },
+  "suite": {
+   "preparation_id": "preparation:sha256:b75fe53e1e2e80ef1702c4209c36111797955e4bb3768dcc7aebbb69c7978f30",
+   "file_sha256": "5c74af2f78e02c44c8ffe46d32483a83126da3c163693eb3db44915e65a4eb13",
+   "scoring_source_sha256": "3d8e3fb3b6f6b1275a33b6b88acdcd5b9b9b78cff91b01dad6231b7d82e4b009",
+   "truth_sha256": {
+    "truth/c001.npz": "aae199cde1ee086f3b1c90e17af40f65de11c01de7305598cd954c633c0f725a",
+    "truth/c002.npz": "d3d2c35f7cbd2a0544979473380d9548f7f376645d0773738dca28622dd2fedc",
+    "truth/c003.npz": "0da4feb0079fc4c0fab312c33739a0b18fa4d989b397d5b415e9b06996e5a4a1"
+   },
+   "id": "suite:sha256:247abfdcf98b87e6ee2ac0097a25ecda98ffc5cc954c8d5163265c4a1216ae7a"
+  }
+ },
+ "files": [
+  {
+   "path": "apparatus.json",
+   "bytes": 1433,
+   "sha256": "891730490de17d7cc5b963d4fd3bca4abbd655b6b5678fa94ed72e996875088c",
+   "role": "apparatus",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "checks.json",
+   "bytes": 297,
+   "sha256": "facdf8c5ba42f95783b69d53db1350f3abba7beaa984fe7d47dc0cd0358dfc48",
+   "role": "checks",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "labworld.json",
+   "bytes": 1078,
+   "sha256": "622f93e88cffbbf5e8aebef104e8aa6335bc15077b79debcc92ccd69e3656b41",
+   "role": "labworld",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "preparation.npz",
+   "bytes": 126963,
+   "sha256": "e6530a3e8fc06e1aa1d4fa8b694b710528121cb5e3a7274f7edf56e9f8e238d6",
+   "role": "preparation",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "suite.json",
+   "bytes": 225839,
+   "sha256": "5c74af2f78e02c44c8ffe46d32483a83126da3c163693eb3db44915e65a4eb13",
+   "role": "suite",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c001.npz",
+   "bytes": 23749,
+   "sha256": "aae199cde1ee086f3b1c90e17af40f65de11c01de7305598cd954c633c0f725a",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c002.npz",
+   "bytes": 23810,
+   "sha256": "d3d2c35f7cbd2a0544979473380d9548f7f376645d0773738dca28622dd2fedc",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "truth/c003.npz",
+   "bytes": 23782,
+   "sha256": "0da4feb0079fc4c0fab312c33739a0b18fa4d989b397d5b415e9b06996e5a4a1",
+   "role": "truth",
+   "profiles": [
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/labkit/__init__.py",
+   "bytes": 1614,
+   "sha256": "6161ec9527dcb20e33d2702d6fef86cb4bcfb040f17e5926e69a68997eaf2164",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/labkit/ops.py",
+   "bytes": 4124,
+   "sha256": "fb532bdd1282669cdb1abe542b8236fd9b7d7799b3984b19b6849b52b46d15f1",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/labkit/world.py",
+   "bytes": 5089,
+   "sha256": "2b3af982bbfd0650c197bdf9347c92eaf43e92fa8984bf337093100c72ace6f5",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/observables.py",
+   "bytes": 443,
+   "sha256": "bef3c5408604bfd0e7232ced29f5183964c8dc821dc6a5c005fa24df3a27c3e4",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  },
+  {
+   "path": "world/world.py",
+   "bytes": 5629,
+   "sha256": "98b2f6bf27c2728c616e17b3b2ed6d06a83d7aabb6a3e5b28bb50937fc438b44",
+   "role": "world",
+   "profiles": [
+    "simulation",
+    "evaluation"
+   ]
+  }
+ ]
+}

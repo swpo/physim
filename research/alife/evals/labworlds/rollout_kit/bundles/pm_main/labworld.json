@@ -1,0 +1,101 @@
+{
+ "name": "phase_membrane_gc",
+ "world_file": "world.py",
+ "fields": [
+  "S",
+  "K",
+  "L",
+  "phi"
+ ],
+ "grid": [
+  128,
+  128
+ ],
+ "steps_per_tick": 1,
+ "native_dt": 0.5,
+ "ports": {
+  "S": {
+   "gain": 0.01,
+   "clip": [
+    0.0,
+    null
+   ]
+  },
+  "K": {
+   "gain": 0.01,
+   "clip": [
+    0.0,
+    null
+   ]
+  },
+  "L": {
+   "gain": 0.01,
+   "clip": [
+    0.0,
+    null
+   ]
+  },
+  "phi": {
+   "gain": 0.01,
+   "clip": [
+    0.0,
+    null
+   ]
+  }
+ },
+ "noise": {
+  "S": [
+   "proportional",
+   0.01
+  ],
+  "K": [
+   "proportional",
+   0.01
+  ],
+  "L": [
+   "proportional",
+   0.01
+  ],
+  "phi": [
+   "additive",
+   0.01
+  ]
+ },
+ "noise_corr": {
+  "S": 2.0,
+  "K": 2.0,
+  "L": 2.0,
+  "phi": 2.0
+ },
+ "noise_intensity": [
+  "S",
+  "K",
+  "L",
+  "phi"
+ ],
+ "overrides": {
+  "dt": 0.5
+ },
+ "dx": 1.0,
+ "carry": [],
+ "actuators": [
+  {
+   "field": "S",
+   "sign": 1
+  },
+  {
+   "field": "S",
+   "sign": -1
+  },
+  {
+   "field": "K",
+   "sign": 1
+  },
+  {
+   "field": "L",
+   "sign": 1
+  }
+ ],
+ "derived": [],
+ "fft_workers": 1
+}

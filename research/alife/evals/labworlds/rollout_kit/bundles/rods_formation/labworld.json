@@ -1,0 +1,116 @@
+{
+ "name": "marangoni_rods_formation",
+ "world_file": "world.py",
+ "fields": [
+  "phi",
+  "q1",
+  "q2",
+  "s",
+  "c"
+ ],
+ "grid": [
+  128,
+  128
+ ],
+ "steps_per_tick": 2,
+ "native_dt": 0.05,
+ "ports": {
+  "phi": {
+   "gain": 0.03,
+   "clip": [
+    -1.0,
+    1.0
+   ]
+  },
+  "s": {
+   "gain": 0.01,
+   "clip": [
+    0.0,
+    null
+   ]
+  },
+  "c": {
+   "gain": 0.1,
+   "clip": [
+    0.0,
+    null
+   ]
+  }
+ },
+ "noise": {
+  "phi": [
+   "conserved",
+   0.1
+  ],
+  "q1": [
+   "additive",
+   0.1
+  ],
+  "q2": [
+   "additive",
+   0.1
+  ],
+  "s": [
+   "proportional",
+   0.1
+  ],
+  "c": [
+   "proportional",
+   0.1
+  ]
+ },
+ "noise_corr": {
+  "phi": 2.0,
+  "q1": 2.0,
+  "q2": 2.0,
+  "s": 2.0,
+  "c": 2.0
+ },
+ "noise_intensity": [
+  "phi",
+  "q1",
+  "q2",
+  "s",
+  "c"
+ ],
+ "overrides": {},
+ "dx": 1.0,
+ "carry": [
+  "vx",
+  "vy"
+ ],
+ "actuators": [
+  {
+   "field": "phi",
+   "sign": 1
+  },
+  {
+   "field": "phi",
+   "sign": -1
+  },
+  {
+   "field": "s",
+   "sign": 1
+  },
+  {
+   "field": "s",
+   "sign": -1
+  },
+  {
+   "field": "c",
+   "sign": 1
+  },
+  {
+   "field": "c",
+   "sign": -1
+  }
+ ],
+ "derived": [
+  {
+   "name": "speed",
+   "source": "observables.py",
+   "function": "speed"
+  }
+ ],
+ "fft_workers": 1
+}

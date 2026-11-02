@@ -1,0 +1,11 @@
+{
+ "cips_formation": "bundle:sha256:e9154ee981a1b363c43a495ba1002a14c0d47252f555bfc74b2677b99986872d",
+ "cips_main": "bundle:sha256:83cb9023fdce20ecec5614b899b15b161fe01bdad569a45f61cb134970211d7a",
+ "fedvortex": "bundle:sha256:66b6c134d1a13416df1757f78ddf2187d5a1b7f6e7970593eae8f332274d9af1",
+ "pm_formation": "bundle:sha256:a7a1f7e13c4172e6ab5cfe91cda7f38f177aaab85b5898978e6f7db4fcbeeac9",
+ "pm_main": "bundle:sha256:669942e68ec9dd67c512cdaad56ea3638a8b146b67351977f7207d350c6fea5b",
+ "rods_formation": "bundle:sha256:5b0af111970081cf79e9b68011a34a828d4c0f7cb26770ca1e6e5f6dbf882d13",
+ "rods_main": "bundle:sha256:3647c6b17f5de1c9d0ab19b83b702dc3b15eff648759f49a2fb64e500898e3e5",
+ "vortex_formation": "bundle:sha256:6e8dc9c3acacc5a0ae6e2e1898bf7d024a82442ae5aff61d8ebfbc85042b6e6e",
+ "vortex_main": "bundle:sha256:2b863454831a824ac3a1f74e1cb3f76618002dab7cb2c87d14a76dfbc13795aa"
+}

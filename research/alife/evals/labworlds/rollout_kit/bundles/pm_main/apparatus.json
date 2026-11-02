@@ -1,0 +1,132 @@
+{
+ "devices": [
+  {
+   "parameters": {
+    "dev_id": 0,
+    "lattice": "square",
+    "n_rings": 3,
+    "base_ds": 3.0,
+    "center": [
+     40.6,
+     62.1
+    ],
+    "L": 128.0,
+    "secret_rot": 0.3,
+    "reflect": false,
+    "motion_theta": 0.0,
+    "motion_reflect": false,
+    "node_perm": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "dil_bounds": [
+     0.5,
+     3.0
+    ]
+   },
+   "dilation": 1.0,
+   "motion_basis": [
+    [
+     1.0,
+     -0.0
+    ],
+    [
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "parameters": {
+    "dev_id": 1,
+    "lattice": "hex",
+    "n_rings": 3,
+    "base_ds": 6.0,
+    "center": [
+     85.5,
+     91.0
+    ],
+    "L": 128.0,
+    "secret_rot": 1.1,
+    "reflect": false,
+    "motion_theta": 0.0,
+    "motion_reflect": false,
+    "node_perm": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18
+    ],
+    "dil_bounds": [
+     0.5,
+     3.0
+    ]
+   },
+   "dilation": 1.0,
+   "motion_basis": [
+    [
+     1.0,
+     -0.0
+    ],
+    [
+     0.0,
+     1.0
+    ]
+   ]
+  }
+ ],
+ "device_slots": [
+  13,
+  19
+ ],
+ "port_permutation": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "adjustment_matrix": [
+  [
+   22.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   22.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "protocol": "centered-pulse-v2"
+}

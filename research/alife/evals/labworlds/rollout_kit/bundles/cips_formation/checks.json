@@ -1,0 +1,10 @@
+{
+ "schema_version": "physim-reference-checks-v1",
+ "reference": {
+  "predictor": "initial_persistence",
+  "forecast_members": 4,
+  "primary_joint_energy": 5.502707501568604,
+  "absolute_tolerance": 1e-10
+ },
+ "recipe_sha256": "bd63271221c0bfc99a942811cf6827da0d666bd89b312b3508d2c04047cb7614"
+}

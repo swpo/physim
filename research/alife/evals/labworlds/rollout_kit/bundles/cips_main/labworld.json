@@ -1,0 +1,101 @@
+{
+ "name": "cips_iso_gc_iter2",
+ "world_file": "world.py",
+ "fields": [
+  "e",
+  "p",
+  "F",
+  "s"
+ ],
+ "grid": [
+  192,
+  192
+ ],
+ "steps_per_tick": 1,
+ "native_dt": 0.1,
+ "ports": {
+  "e": {
+   "gain": 0.01,
+   "clip": [
+    0.0,
+    1.0
+   ]
+  },
+  "p": {
+   "gain": 0.3,
+   "clip": [
+    0.0,
+    1.0
+   ]
+  },
+  "F": {
+   "gain": 2.4,
+   "clip": [
+    0.0,
+    null
+   ]
+  },
+  "s": {
+   "gain": 1.0,
+   "clip": [
+    0.0,
+    null
+   ]
+  }
+ },
+ "noise": {
+  "e": [
+   "proportional",
+   0.03
+  ],
+  "p": [
+   "proportional",
+   0.03
+  ],
+  "F": [
+   "proportional",
+   0.03
+  ],
+  "s": [
+   "proportional",
+   0.03
+  ]
+ },
+ "noise_corr": {
+  "e": 2.0,
+  "p": 2.0,
+  "F": 2.0,
+  "s": 2.0
+ },
+ "noise_intensity": [
+  "e",
+  "p",
+  "F",
+  "s"
+ ],
+ "overrides": {},
+ "dx": 1.0,
+ "carry": [
+  "t"
+ ],
+ "actuators": [
+  {
+   "field": "p",
+   "sign": 1
+  },
+  {
+   "field": "F",
+   "sign": 1
+  },
+  {
+   "field": "F",
+   "sign": -1
+  },
+  {
+   "field": "s",
+   "sign": 1
+  }
+ ],
+ "derived": [],
+ "fft_workers": 1
+}

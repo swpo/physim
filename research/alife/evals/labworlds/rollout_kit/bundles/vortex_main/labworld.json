@@ -1,0 +1,103 @@
+{
+ "name": "c53-fed-vortex-selection-gc",
+ "world_file": "world.py",
+ "fields": [
+  "om",
+  "Y",
+  "a",
+  "b"
+ ],
+ "grid": [
+  128,
+  128
+ ],
+ "steps_per_tick": 1,
+ "native_dt": 0.02,
+ "ports": {
+  "om": {
+   "gain": 0.01,
+   "clip": [
+    null,
+    null
+   ]
+  },
+  "Y": {
+   "gain": 0.1,
+   "clip": [
+    0.0,
+    null
+   ]
+  },
+  "b": {
+   "gain": 0.2,
+   "clip": [
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "noise": {
+  "om": [
+   "additive",
+   0.003
+  ],
+  "Y": [
+   "proportional",
+   0.003
+  ],
+  "a": [
+   "additive",
+   0.0
+  ],
+  "b": [
+   "additive",
+   0.0
+  ]
+ },
+ "noise_corr": {
+  "om": 2.0,
+  "Y": 2.0
+ },
+ "noise_intensity": [
+  "om",
+  "Y"
+ ],
+ "overrides": {
+  "eps": 0.2,
+  "mut_dt": 50.0
+ },
+ "dx": 1.0,
+ "carry": [
+  "t"
+ ],
+ "actuators": [
+  {
+   "field": "om",
+   "sign": -1
+  },
+  {
+   "field": "Y",
+   "sign": 1
+  },
+  {
+   "field": "om",
+   "sign": 1
+  },
+  {
+   "field": "Y",
+   "sign": -1
+  },
+  {
+   "field": "b",
+   "sign": 1
+  }
+ ],
+ "derived": [
+  {
+   "name": "eat",
+   "source": "observables.py",
+   "function": "eat"
+  }
+ ],
+ "fft_workers": 1
+}
