@@ -1,0 +1,70 @@
+From a558cf73c554e5f9bd0127924a6f1666364fec17 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sun, 1 Nov 2026 21:32:35 +0000
+Subject: [PATCH 15/15] physim: configurable rollout limits for costly lab
+ worlds
+
+Agent, finalize and scoring timeouts and the agent sandbox resources become task
+config fields. The scoring timeout defaults to the old 7200 s but grows with the
+suite: grading runs the predictor once per case, so it needs at least
+cases x (predictor wall limit + 60 s) + 900 s. Predictor limits were already
+configurable (tools.predictor_limits); lab-world rollouts set them per world.
+Defaults for existing Blobkit configs are unchanged.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+---
+ environments/physim/physim/taskset.py | 23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/environments/physim/physim/taskset.py b/environments/physim/physim/taskset.py
+index 42ccb08..607d91b 100644
+--- a/environments/physim/physim/taskset.py
++++ b/environments/physim/physim/taskset.py
+@@ -95,6 +95,12 @@ class R6TaskConfig(vf.TaskConfig):
+     agent_image: str = AGENT_IMAGE
+     coding_interface: Literal["shell", "ipython"] = "shell"
+     setup_timeout: float = Field(900, gt=0, le=3600)
++    # Rollout limits. Lab worlds can be far costlier to simulate than Blobkit worlds, so these are
++    # configurable; None for the scoring timeout derives it from the suite and the predictor limits.
++    agent_timeout: float = Field(86400, gt=0)
++    finalize_timeout: float = Field(900, gt=0)
++    scoring_timeout: float | None = Field(None, gt=0)
++    agent_resources: vf.TaskResources = vf.TaskResources(cpu=4, memory=8)
+     checkpoint_artifact: Path | None = None
+ 
+ 
+@@ -129,6 +135,14 @@ def required_bundle(config: R6ToolsConfig, *, profile="evaluation") -> Bundle:
+     return bundle
+ 
+ 
++def scoring_timeout(config: "R6TaskConfig", bundle) -> float:
++    """Grading runs the predictor once per suite case, then scores; size the timeout to fit."""
++    if config.scoring_timeout is not None:
++        return config.scoring_timeout
++    cases = len(bundle.suite["cases"]) if bundle.suite is not None else 0
++    return max(7200.0, cases * (config.tools.predictor_limits.wall_seconds + 60.0) + 900.0)
++
++
+ def public_roster(config: R6ToolsConfig):
+     return required_bundle(config, profile="simulation").roster
+ 
+@@ -687,8 +701,13 @@ class R6Taskset(vf.Taskset[R6Task, R6Config]):
+                     image=config.agent_image,
+                     workdir="/workspace",
+                     network_allow=[],
+-                    resources=vf.TaskResources(cpu=4, memory=8),
+-                    timeout=vf.TaskTimeout(setup=config.setup_timeout, agent=86400, finalize=900, scoring=7200),
++                    resources=config.agent_resources,
++                    timeout=vf.TaskTimeout(
++                        setup=config.setup_timeout,
++                        agent=config.agent_timeout,
++                        finalize=config.finalize_timeout,
++                        scoring=scoring_timeout(config, bundle),
++                    ),
+                 ),
+                 config,
+             )
+-- 
+2.43.0
+

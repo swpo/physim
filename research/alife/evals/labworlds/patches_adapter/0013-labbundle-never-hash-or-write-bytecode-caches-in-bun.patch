@@ -1,0 +1,67 @@
+From b5d6dfcc7abbbb0e71077be6e7232406b3feb4b6 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 31 Oct 2026 06:00:39 +0000
+Subject: [PATCH 13/15] labbundle: never hash or write bytecode caches in
+ bundle folders
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01BZceC7G6m7DgM6KpXjnWXj
+
+(World-specific suite scripts from the same work are kept separately with the evaluation material.)
+---
+ environments/physim/physim/labbundle.py | 5 +++++
+ environments/physim/physim/labworld.py  | 3 +++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/environments/physim/physim/labbundle.py b/environments/physim/physim/labbundle.py
+index ecdcfb5..2cce100 100644
+--- a/environments/physim/physim/labbundle.py
++++ b/environments/physim/physim/labbundle.py
+@@ -94,6 +94,7 @@ def _load_function(root: Path, source: str, function: str):
+     name = "labbundle_obs_" + hashlib.sha256(str(path).encode()).hexdigest()[:16]
+     spec = importlib.util.spec_from_file_location(name, path)
+     module = importlib.util.module_from_spec(spec)
++    sys.dont_write_bytecode = True  # bundle folders stay byte-identical; see LabBundle
+     spec.loader.exec_module(module)
+     fn = getattr(module, function, None)
+     if not callable(fn):
+@@ -201,6 +202,8 @@ def validate_lab_manifest(manifest):
+         if type(record) is not dict or set(record) != {"path", "bytes", "sha256", "role", "profiles"}:
+             raise BundleError("invalid file record")
+         name = str(relative_path(record["path"]))
++        if "__pycache__" in name.split("/") or name.endswith(".pyc"):
++            raise BundleError("bytecode caches cannot be bundle files")
+         if name in names or name == "manifest.json":
+             raise BundleError("duplicate or self-referencing bundle file")
+         names.add(name)
+@@ -247,6 +250,8 @@ class LabBundle(Bundle):
+             raise BundleError("unknown bundle profile")
+         self.root = Path(directory).expanduser().resolve()
+         self.profile = profile
++        # World code is imported from the bundle folder; never write bytecode caches into it.
++        sys.dont_write_bytecode = True
+         self.manifest = validate_lab_manifest(read_json(self.root / "manifest.json"))
+         self.manifest_sha256 = digest(self.root / "manifest.json")
+         self.files = {r["path"]: r for r in self.manifest["files"]}
+diff --git a/environments/physim/physim/labworld.py b/environments/physim/physim/labworld.py
+index 1fa028c..929ec23 100644
+--- a/environments/physim/physim/labworld.py
++++ b/environments/physim/physim/labworld.py
+@@ -185,11 +185,14 @@ class LabWorld:
+                 sys.path.insert(0, p)
+         old = os.environ.get("WORLD_P")
+         os.environ["WORLD_P"] = json.dumps(self.overrides)
++        bytecode = sys.dont_write_bytecode
++        sys.dont_write_bytecode = True  # a world folder (for example a bundle's) must stay byte-identical
+         try:
+             spec = importlib.util.spec_from_file_location(f"labworld_{abs(hash(self.path))}", self.path)
+             module = importlib.util.module_from_spec(spec)
+             spec.loader.exec_module(module)
+         finally:
++            sys.dont_write_bytecode = bytecode
+             if old is None:
+                 os.environ.pop("WORLD_P", None)
+             else:
+-- 
+2.43.0
+
