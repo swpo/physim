@@ -1,0 +1,32 @@
+init + burn-in 24 members: 174.0 s
+tick 10 wall 209.1 s
+tick 20 wall 241.1 s
+tick 30 wall 273.0 s
+tick 40 wall 305.3 s
+tick 50 wall 337.8 s
+tick 60 wall 370.0 s
+tick 70 wall 402.1 s
+tick 80 wall 434.0 s
+tick 90 wall 466.1 s
+tick 100 wall 498.0 s
+tick 110 wall 530.8 s
+tick 120 wall 562.9 s
+tick 130 wall 594.8 s
+tick 140 wall 626.9 s
+tick 150 wall 659.3 s
+tick 160 wall 691.0 s
+tick 170 wall 723.3 s
+tick 180 wall 755.7 s
+tick 190 wall 787.7 s
+tick 200 wall 819.6 s
+tick 210 wall 851.3 s
+tick 220 wall 883.6 s
+tick 230 wall 915.6 s
+tick 240 wall 947.1 s
+tick 250 wall 979.0 s
+tick 260 wall 1011.0 s
+tick 270 wall 1043.2 s
+tick 280 wall 1075.6 s
+tick 290 wall 1108.3 s
+tick 300 wall 1140.4 s
+done wall 1140.8 s cpu 1131.9 s

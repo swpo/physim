@@ -1,0 +1,43 @@
+{
+ "seed": 0,
+ "world_seed": 0,
+ "objects_vs_coarse": {
+  "in_map_identical": true,
+  "level0_max_abs_diff_float32_at_ticks_0_1_10_50_100_300": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "first_tick_level0_differs": null,
+  "level0_identical_all_ticks": true
+ },
+ "objects_vs_both": {
+  "in_map_identical": true,
+  "level0_max_abs_diff_float32_at_ticks_0_1_10_50_100_300": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "first_tick_level0_differs": null,
+  "level0_identical_all_ticks": true
+ },
+ "coarse_vs_both": {
+  "in_map_identical": true,
+  "level0_max_abs_diff_float32_at_ticks_0_1_10_50_100_300": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "first_tick_level0_differs": null,
+  "level0_identical_all_ticks": true
+ }
+}

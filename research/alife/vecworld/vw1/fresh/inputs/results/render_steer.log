@@ -1,0 +1,16 @@
+steer video bytes 329841 crf 26 {
+    "programs": [
+
+    ],
+    "streams": [
+        {
+            "codec_name": "h264",
+            "width": 900,
+            "height": 364,
+            "pix_fmt": "yuv420p",
+            "nb_frames": "41"
+        }
+    ]
+}
+ poster tick 22
+EXIT 0

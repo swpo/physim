@@ -1,0 +1,6 @@
+state 13 B=43 null_x=0 null_y=0 moved(median per cond)=rand_x1:0.381 rand_x8:0.283 body_x1:1.92 body_x8same:6.18 k32_x1:8.52 empty_x1:2.82e-05  194s (total 194s)
+
+real	3m17.509s
+user	3m11.677s
+sys	0m0.956s
+EXIT 0

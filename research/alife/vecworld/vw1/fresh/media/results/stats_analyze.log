@@ -1,0 +1,58 @@
+{
+ "headline": {
+  "objects_median": 7.0,
+  "objects_mean": 7.437015503875969,
+  "speed_px_per_tick_median": 1.6376266898431362,
+  "body_length_px": 12.805962753295898,
+  "ticks_to_cross_body_length": 7.819830265786976,
+  "path_body_lengths_median_tracks_ge_50": 7.798690303565816,
+  "frac_tracks_ge_50_with_path_ge_3": 0.9796610169491525,
+  "fusions_per_100_ticks": 22.541666666666668,
+  "fissions_per_100_ticks": 22.27777777777778,
+  "track_life_median_ticks": 20.0,
+  "frac_tracks_ge_50": 0.16397998888271262,
+  "encounters_per_100_ticks": 18.36111111111111,
+  "encounters_fused_within_5_ticks": 0.6331316187594553,
+  "mass_median": 148.6966094970703,
+  "frac_slot_ticks_event_at_t+1": 0.11469910974924301,
+  "frac_slot_ticks_event_at_t+1_at_ticks_60_140_220": 0.11978221415607986,
+  "path_body_lengths_median_all_tracks": 2.194323093179663,
+  "frac_tracks_censored_by_window": 0.2056698165647582
+ },
+ "se": {
+  "objects_median": 0.48533778321813714,
+  "objects_mean": 0.1143500890012588,
+  "speed_px_per_tick_median": 0.019298736202228415,
+  "body_length_px": 0.2316484595689322,
+  "ticks_to_cross_body_length": 0.2022051345521245,
+  "path_body_lengths_median_tracks_ge_50": 0.2739800911674921,
+  "frac_tracks_ge_50_with_path_ge_3": 0.006701318534043615,
+  "fusions_per_100_ticks": 0.5866910315628007,
+  "fissions_per_100_ticks": 0.6126310978788285,
+  "track_life_median_ticks": 0.6797455554106275,
+  "frac_tracks_ge_50": 0.00632672804943304,
+  "encounters_per_100_ticks": 0.6108883303826625,
+  "encounters_fused_within_5_ticks": 0.012008886114512066,
+  "mass_median": 3.3281491003718098,
+  "frac_slot_ticks_event_at_t+1": 0.002417893593423302,
+  "frac_slot_ticks_event_at_t+1_at_ticks_60_140_220": 0.0201643723869333
+ },
+ "mass": {
+  "max_rel_drift_per_channel_over_run": 1.8424167987877173e-14,
+  "median_rel_drift": 9.769416215765661e-15,
+  "initial_mass_per_channel_mean": [
+   718.3692956608951,
+   721.9958437746591
+  ]
+ },
+ "events_total": {
+  "births": 0.0,
+  "deaths": 0.0,
+  "fusions": 1623.0,
+  "fissions": 1604.0
+ }
+}
+
+real	4m10.674s
+user	4m8.961s
+sys	0m0.100s

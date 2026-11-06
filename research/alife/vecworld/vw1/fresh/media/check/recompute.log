@@ -1,0 +1,98 @@
+{
+ "stats_both_J24_T300": {
+  "shape_L1": [
+   24,
+   301,
+   336
+  ],
+  "seed": 7,
+  "cpu_s": 1131.463371133,
+  "full": {
+   "objects_median": 7.0,
+   "objects_mean": 7.437015503875969,
+   "objects_p10": 6.0,
+   "objects_p90": 9.0,
+   "body_length_px": 12.805962753295898,
+   "speed_median": 1.6376266898431362,
+   "ticks_to_cross": 7.819830265786976,
+   "n_tracks": 1799,
+   "life_median": 20.0,
+   "frac_ge_50": 0.16397998888271262,
+   "path_median_ge_50": 7.7986903035658175,
+   "frac_path_ge_3_of_ge_50": 0.9796610169491525,
+   "path_median_all": 2.194323093179663,
+   "fusions_per_100": 22.541666666666668,
+   "fissions_per_100": 22.27777777777778,
+   "births": 0.0,
+   "deaths": 0.0,
+   "fusions": 1623.0,
+   "fissions": 1604.0,
+   "encounters_per_100": 18.36111111111111,
+   "enc_fused_5": 0.6331316187594553,
+   "mass_median": 148.6966094970703,
+   "event_share_all": 0.11469910974924301,
+   "event_share_60_140_220": 0.11978221415607986,
+   "event_share_60_140_220_counts": [
+    66,
+    551
+   ]
+  },
+  "bootstrap_se_40": {
+   "body_length_px": 0.21061420453634497,
+   "speed_median": 0.017522169867941688,
+   "ticks_to_cross": 0.17294250144582637,
+   "path_median_ge_50": 0.28787273647343126,
+   "fusions_per_100": 0.5233502811477809,
+   "event_share_all": 0.0023535467597129685,
+   "event_share_60_140_220": 0.01891801677008134,
+   "objects_mean": 0.1083089929173766,
+   "frac_ge_50": 0.005501686239359797,
+   "enc_fused_5": 0.011356525560616332
+  },
+  "mass_max_rel_drift": 1.8424167987877173e-14,
+  "frac_tracks_censored": 0.2056698165647582
+ },
+ "hero": {
+  "objects": {
+   "obs_eq_quantised_permuted_L1": true,
+   "out_map_is_perm": true,
+   "out_map_fixed_points": 2,
+   "in_map_fixed_points": 2,
+   "objects_median": 7.0,
+   "objects_min": 4,
+   "objects_max": 10,
+   "slots_ever": 11,
+   "events": [
+    0.0,
+    0.0,
+    69.0,
+    68.0
+   ]
+  },
+  "coarse": {
+   "obs_eq_quantised_permuted_L1": true,
+   "out_map_is_perm": true,
+   "out_map_fixed_points": 1,
+   "in_map_fixed_points": 2
+  },
+  "both": {
+   "obs_eq_quantised_permuted_L1": true,
+   "out_map_is_perm": true,
+   "out_map_fixed_points": 3,
+   "in_map_fixed_points": 2,
+   "objects_median": 7.0,
+   "objects_min": 4,
+   "objects_max": 10,
+   "slots_ever": 11,
+   "events": [
+    0.0,
+    0.0,
+    69.0,
+    68.0
+   ]
+  },
+  "in_map_identical_objects_coarse_both": true,
+  "level0_objects_vs_coarse_max_abs": 0.0,
+  "both_L1_objects_part_eq_objects_L1": 0.0
+ }
+}

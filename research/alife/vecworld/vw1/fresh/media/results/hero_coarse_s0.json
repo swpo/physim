@@ -1,0 +1,44 @@
+{
+ "view": "coarse",
+ "seed": 0,
+ "T": 300,
+ "world_seed": 0,
+ "card": {
+  "contract": "VW-1",
+  "n_in": 16384,
+  "n_obs": 192,
+  "inputs": {
+   "k": 8,
+   "lo": -1.0,
+   "hi": 1.0,
+   "total": 4.0,
+   "zero_sum": true,
+   "min_interval": 1,
+   "quantum": null,
+   "episode_budget": null,
+   "tol": 1e-09,
+   "actuation_noise": 0.0
+  },
+  "observation": {
+   "noise": 0.0,
+   "quantum": 0.001,
+   "clip": null,
+   "sign_flip": false,
+   "max_queries": null
+  },
+  "replay": "initial",
+  "max_ticks": null,
+  "ticks_used": 0,
+  "timing": "an input given at tick t acts before the law runs; its effect can appear from o(t+1) on",
+  "notes": "Inputs move matter: a negative coordinate removes at most the matter present at its site; under zero sum the positive coordinates receive exactly what was removed, in proportion."
+ },
+ "n_obs": 192,
+ "n_in": 16384,
+ "ticks_used": 300,
+ "obs_equal_quantised_permuted_designer_level_bitwise": true,
+ "obs_max_abs_diff": 0.0,
+ "out_sign_all_plus": true,
+ "reset_plus_burnin_wall_s": 18.218519926071167,
+ "wall_s": 64.46216464042664,
+ "cpu_s": 64.043252274
+}

@@ -1,0 +1,12 @@
+{
+ "N": 40,
+ "seed": [
+  7001
+ ],
+ "world_seed": 0,
+ "ticks_after_burn_in": 60,
+ "burn_in_ticks": 50,
+ "seconds": 602.3779819011688,
+ "objects_present_median": 7.0,
+ "mass_total_mean": 1437.4149414585086
+}

@@ -1,0 +1,18 @@
+{
+ "world": "stride20(A_gliders/coarse+objects)",
+ "L1_tick0_maxabs": 0.0,
+ "TAB_tick0_maxabs": 0.0,
+ "base_L1_ticks1-10_maxabs": 0.0,
+ "base_TAB_ticks1-10_maxabs": 0.0,
+ "base_L1_ticks11-20_maxabs": 0.0,
+ "base_TAB_ticks11-20_maxabs": 0.0,
+ "base_L1_ticks21-30_maxabs": 0.0,
+ "base_TAB_ticks21-30_maxabs": 0.0,
+ "base_L1_ticks31-40_maxabs": 0.0,
+ "base_TAB_ticks31-40_maxabs": 0.0,
+ "clone_tick40_first4_L1_maxabs": 0.0,
+ "clone_tick40_first4_L1_maxabs_vs_base": 336.76092529296875,
+ "base_L1_ticks41-50_maxabs": 0.0,
+ "base_TAB_ticks41-50_maxabs": 0.0,
+ "seconds": 306.65883350372314
+}

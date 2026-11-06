@@ -1,0 +1,138 @@
+{
+ "source": "../fresh/media/results/stats_both_J24_T300.npz",
+ "sizes": {
+  "trajectories": 24,
+  "ticks_per_trajectory": 300,
+  "slots": 12,
+  "stride_steps": 20,
+  "burn_in_ticks": 50,
+  "designer_ensemble_seed": 7,
+  "world": "MapWorld(specs['both'], world_seed=0), no input",
+  "sim_wall_s": 1140.3964297771454,
+  "sim_cpu_s": 1131.463371133
+ },
+ "headline": {
+  "objects_median": 7.0,
+  "objects_mean": 7.437015503875969,
+  "speed_px_per_tick_median": 1.6376266898431362,
+  "body_length_px": 12.805962753295898,
+  "ticks_to_cross_body_length": 7.819830265786976,
+  "path_body_lengths_median_tracks_ge_50": 7.798690303565816,
+  "frac_tracks_ge_50_with_path_ge_3": 0.9796610169491525,
+  "fusions_per_100_ticks": 22.541666666666668,
+  "fissions_per_100_ticks": 22.27777777777778,
+  "track_life_median_ticks": 20.0,
+  "frac_tracks_ge_50": 0.16397998888271262,
+  "encounters_per_100_ticks": 18.36111111111111,
+  "encounters_fused_within_5_ticks": 0.6331316187594553,
+  "mass_median": 148.6966094970703,
+  "frac_slot_ticks_event_at_t+1": 0.11469910974924301,
+  "frac_slot_ticks_event_at_t+1_at_ticks_60_140_220": 0.11978221415607986,
+  "path_body_lengths_median_all_tracks": 2.194323093179663,
+  "frac_tracks_censored_by_window": 0.2056698165647582
+ },
+ "bootstrap_se_over_trajectories": {
+  "objects_median": 0.48533778321813714,
+  "objects_mean": 0.1143500890012588,
+  "speed_px_per_tick_median": 0.019298736202228415,
+  "body_length_px": 0.2316484595689322,
+  "ticks_to_cross_body_length": 0.2022051345521245,
+  "path_body_lengths_median_tracks_ge_50": 0.2739800911674921,
+  "frac_tracks_ge_50_with_path_ge_3": 0.006701318534043615,
+  "fusions_per_100_ticks": 0.5866910315628007,
+  "fissions_per_100_ticks": 0.6126310978788285,
+  "track_life_median_ticks": 0.6797455554106275,
+  "frac_tracks_ge_50": 0.00632672804943304,
+  "encounters_per_100_ticks": 0.6108883303826625,
+  "encounters_fused_within_5_ticks": 0.012008886114512066,
+  "mass_median": 3.3281491003718098,
+  "frac_slot_ticks_event_at_t+1": 0.002417893593423302,
+  "frac_slot_ticks_event_at_t+1_at_ticks_60_140_220": 0.0201643723869333
+ },
+ "n_boot": 200,
+ "events_total": {
+  "births": 0.0,
+  "deaths": 0.0,
+  "fusions": 1623.0,
+  "fissions": 1604.0
+ },
+ "events_per_trajectory_per_300_ticks_mean_se": {
+  "births": [
+   0.0,
+   0.0
+  ],
+  "deaths": [
+   0.0,
+   0.0
+  ],
+  "fusions": [
+   67.625,
+   1.8706471212320923
+  ],
+  "fissions": [
+   66.83333333333333,
+   1.9824105757438988
+  ]
+ },
+ "trajectories_with_fusion_and_fission": 24,
+ "fusion_to_fission_ratio": 1.0118453865336658,
+ "mass": {
+  "max_rel_drift_per_channel_over_run": 1.8424167987877173e-14,
+  "median_rel_drift": 9.769416215765661e-15,
+  "initial_mass_per_channel_mean": [
+   718.3692956608951,
+   721.9958437746591
+  ]
+ },
+ "objects_stats_vw0_estimator": {
+  "ticks": 7200,
+  "trajectories": 24,
+  "steps_per_tick": 20,
+  "objects_per_tick": {
+   "median": 7.0,
+   "p10": 6.0,
+   "p90": 9.0,
+   "max": 12,
+   "frac_ticks_all_slots_full": 0.0002768549280177187
+  },
+  "mass_median": 148.6966094970703,
+  "rg_median_px": 5.335817813873291,
+  "body_length_px(2.4 rg)": 12.805962753295898,
+  "speed_px_per_tick": {
+   "median": 1.6376266898431362,
+   "p90": 2.0792074237225817
+  },
+  "speed_px_per_step_median": 0.08188133449215682,
+  "events_per_100_ticks": {
+   "births": 0.0,
+   "deaths": 0.0,
+   "fusions": 22.541666666666668,
+   "fissions": 22.27777777777778
+  },
+  "n_tracks": 1799,
+  "track_life_ticks": {
+   "median": 20.0,
+   "p90": 69.0,
+   "frac_ge_50": 0.16397998888271262
+  },
+  "inter_event_ticks_median": 7.0,
+  "path_body_lengths_tracks_ge_50": {
+   "median": 7.798690303565816,
+   "frac_ge_3": 0.9796610169491525
+  },
+  "net_displacement_body_lengths_tracks_ge_50": 6.994166550447439,
+  "encounters_per_100_ticks": 18.36111111111111,
+  "encounters_fused_within_5_ticks": 0.6331316187594553
+ },
+ "coarse_stats_vw0_estimator": {
+  "autocorr_by_lag": {
+   "1": 0.9724790230980834,
+   "2": 0.9018316440641662,
+   "4": 0.6843701507019616,
+   "8": 0.23630385576995722,
+   "16": -0.08276638857527133,
+   "32": -0.07651695198427304
+  },
+  "block_occupied_frac(mean>0.02)": 0.32501038205980065
+ }
+}

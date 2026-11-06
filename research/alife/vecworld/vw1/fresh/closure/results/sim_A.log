@@ -1,0 +1,14 @@
+[     0.2s] world built; n_in 16384 n_obs 336 TEST (40, 100, 160, 220) TB 32 TX 96 J 18 T 300 seed 301
+[   131.1s] init + burn-in 18 members
+[  1417.0s] branches at tick 40 done
+[  1441.3s] tick 50
+[  1564.5s] tick 100
+[  1954.9s] branches at tick 100 done
+[  2077.2s] tick 150
+[  2489.9s] branches at tick 160 done
+[  2587.2s] tick 200
+[  3022.7s] branches at tick 220 done
+[  3095.6s] tick 250
+[  3216.7s] tick 300
+[  3218.0s] saved /home/user/evalwork/vecworld/vw1/fresh/closure/results/sim_A.npz {"base": 0.13633846839269, "branch": 0.1356170317572024}
+EXIT 0

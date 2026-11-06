@@ -1,0 +1,38 @@
+{'analyze_closure_V_maxabs_vs_json': {'mean': 0.0, 'persistence': 0.0, 'ar1': 0.0, 'ridge_p1': 0.0, 'ridge_p2': 0.0, 'ridge_p4': 0.0, 'ridge_p8': 0.0, 'knn': 0.0, 'kinematic': 0.0, 'kin+ridge_p4': 0.0}, 'analyze_closure_Voracle_maxabs': 0.0, 'analyze_closure_s': 45.159327030181885}
+{
+ "analyze_closure_V_maxabs_vs_json": {
+  "mean": 0.0,
+  "persistence": 0.0,
+  "ar1": 0.0,
+  "ridge_p1": 0.0,
+  "ridge_p2": 0.0,
+  "ridge_p4": 0.0,
+  "ridge_p8": 0.0,
+  "knn": 0.0,
+  "kinematic": 0.0,
+  "kin+ridge_p4": 0.0
+ },
+ "analyze_closure_Voracle_maxabs": 0.0,
+ "analyze_closure_s": 45.159327030181885,
+ "slotnet_fold0_s": 66.28508567810059,
+ "slotnet_fold0_tau1_pred_maxabs_vs_saved": 2.0633489228316648e-07,
+ "slotnet_fold0_err_maxabs_vs_saved": 5.8851749695776334e-08,
+ "slotnet_fold0_V_mine": [
+  0.13568685599149577,
+  0.29127461011344247,
+  0.4019745936244294,
+  0.607647622445886,
+  0.826466927118123,
+  0.9852942852350756
+ ],
+ "slotnet_fold0_V_saved": [
+  0.13568685584080717,
+  0.2912746070780688,
+  0.40197459008130765,
+  0.6076476201415062,
+  0.8264669270979034,
+  0.9852942840920554
+ ],
+ "total_s": 111.49284529685974
+}
+EXIT 0

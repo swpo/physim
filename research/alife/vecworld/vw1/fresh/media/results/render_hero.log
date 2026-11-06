@@ -1,0 +1,6 @@
+objects {'file': '/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_objects.mp4', 'bytes': 1894766, 'crf': 26, 'frames': 301, 'poster': '/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_objects.jpg', 'poster_tick': 278, 'poster_bytes': 91489}
+coarse {'file': '/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_coarse.mp4', 'bytes': 1784916, 'crf': 26, 'frames': 301, 'poster': '/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_coarse.jpg', 'poster_tick': 278, 'poster_bytes': 82060}
+
+real	1m15.781s
+user	1m9.391s
+sys	0m5.918s

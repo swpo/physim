@@ -1,0 +1,64 @@
+{
+ "T": 60,
+ "T2": 30,
+ "a_objects_hero": {
+  "obs_bitwise_equal_saved": true,
+  "L1_bitwise_equal_saved": true,
+  "x_float32_equal_saved": true,
+  "tab_equal_saved": true,
+  "glob_equal_saved": true,
+  "obs_max_abs_diff": 0.0,
+  "in_map_equal_saved": true,
+  "out_map_equal_saved": true,
+  "wall_s": 32.336726665496826
+ },
+ "b_coarse_vs_objects_level0": {
+  "max_abs_diff": 0.0,
+  "in_map_equal_objects": true,
+  "out_maps_differ_in_size": [
+   144,
+   192
+  ],
+  "control_world_seed1_level0_t0_max_abs_diff": 2.8098068237304688,
+  "control_world_seed1_in_map_equal": false
+ },
+ "c_ensemble_seed7_members_0_1": {
+  "L1_float32_max_abs_diff_per_tick": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "L1_float32_equal_all": true,
+  "mass_max_abs_diff": 0.0
+ },
+ "wall_s": 115.20323920249939,
+ "cpu_s": 112.434312039
+}

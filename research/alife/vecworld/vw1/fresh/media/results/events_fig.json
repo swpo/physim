@@ -1,0 +1,339 @@
+{
+ "chosen": {
+  "t_fusion": 89,
+  "t_fission": 96,
+  "slot": 8,
+  "absorbed": [
+   0
+  ],
+  "worm_mass": 699.5526384265879,
+  "worm_elongation": 0.8442475952805697
+ },
+ "ticks_drawn": [
+  83,
+  87,
+  89,
+  92,
+  96,
+  101
+ ],
+ "n_candidates": 31,
+ "candidates": [
+  {
+   "t_fusion": 6,
+   "t_fission": 10,
+   "slot": 3,
+   "absorbed": [
+    6
+   ],
+   "worm_mass": 566.38041440046,
+   "worm_elongation": 0.7882123012198261
+  },
+  {
+   "t_fusion": 14,
+   "t_fission": 22,
+   "slot": 4,
+   "absorbed": [
+    0
+   ],
+   "worm_mass": 280.57063278626237,
+   "worm_elongation": 0.8819803251496283
+  },
+  {
+   "t_fusion": 29,
+   "t_fission": 39,
+   "slot": 6,
+   "absorbed": [
+    0
+   ],
+   "worm_mass": 344.60568547214376,
+   "worm_elongation": 0.870668828886916
+  },
+  {
+   "t_fusion": 43,
+   "t_fission": 54,
+   "slot": 6,
+   "absorbed": [
+    3
+   ],
+   "worm_mass": 508.59105973546923,
+   "worm_elongation": 0.6801381271921122
+  },
+  {
+   "t_fusion": 59,
+   "t_fission": 66,
+   "slot": 3,
+   "absorbed": [
+    6
+   ],
+   "worm_mass": 584.2329949696683,
+   "worm_elongation": 0.7328040193086677
+  },
+  {
+   "t_fusion": 69,
+   "t_fission": 77,
+   "slot": 2,
+   "absorbed": [
+    1
+   ],
+   "worm_mass": 451.2254412632359,
+   "worm_elongation": 0.8472095875092392
+  },
+  {
+   "t_fusion": 78,
+   "t_fission": 93,
+   "slot": 2,
+   "absorbed": [
+    4,
+    6
+   ],
+   "worm_mass": 336.07458809982785,
+   "worm_elongation": 0.8644904529883775
+  },
+  {
+   "t_fusion": 89,
+   "t_fission": 96,
+   "slot": 8,
+   "absorbed": [
+    0
+   ],
+   "worm_mass": 699.5526384265879,
+   "worm_elongation": 0.8442475952805697
+  },
+  {
+   "t_fusion": 97,
+   "t_fission": 105,
+   "slot": 8,
+   "absorbed": [
+    3
+   ],
+   "worm_mass": 430.2070196437605,
+   "worm_elongation": 0.50840235524079
+  },
+  {
+   "t_fusion": 102,
+   "t_fission": 113,
+   "slot": 2,
+   "absorbed": [
+    4
+   ],
+   "worm_mass": 389.9867996716906,
+   "worm_elongation": 0.505245938962967
+  },
+  {
+   "t_fusion": 116,
+   "t_fission": 125,
+   "slot": 0,
+   "absorbed": [
+    4
+   ],
+   "worm_mass": 306.3447344048908,
+   "worm_elongation": 0.4646063901790605
+  },
+  {
+   "t_fusion": 117,
+   "t_fission": 128,
+   "slot": 8,
+   "absorbed": [
+    6
+   ],
+   "worm_mass": 237.14478942232472,
+   "worm_elongation": 0.8575226046163396
+  },
+  {
+   "t_fusion": 131,
+   "t_fission": 141,
+   "slot": 4,
+   "absorbed": [
+    8
+   ],
+   "worm_mass": 387.80101129314414,
+   "worm_elongation": 0.7222401150648354
+  },
+  {
+   "t_fusion": 135,
+   "t_fission": 146,
+   "slot": 1,
+   "absorbed": [
+    9
+   ],
+   "worm_mass": 373.1206133322015,
+   "worm_elongation": 0.7388780098011457
+  },
+  {
+   "t_fusion": 136,
+   "t_fission": 146,
+   "slot": 0,
+   "absorbed": [
+    7
+   ],
+   "worm_mass": 358.9001352918659,
+   "worm_elongation": 0.4436152231086755
+  },
+  {
+   "t_fusion": 150,
+   "t_fission": 161,
+   "slot": 2,
+   "absorbed": [
+    5,
+    8
+   ],
+   "worm_mass": 297.6587363430144,
+   "worm_elongation": 0.47479221135307803
+  },
+  {
+   "t_fusion": 169,
+   "t_fission": 173,
+   "slot": 8,
+   "absorbed": [
+    7
+   ],
+   "worm_mass": 347.3944358099728,
+   "worm_elongation": 0.8468186886181971
+  },
+  {
+   "t_fusion": 174,
+   "t_fission": 182,
+   "slot": 2,
+   "absorbed": [
+    5
+   ],
+   "worm_mass": 397.2349242065664,
+   "worm_elongation": 0.6181009721102343
+  },
+  {
+   "t_fusion": 183,
+   "t_fission": 199,
+   "slot": 0,
+   "absorbed": [
+    1,
+    3
+   ],
+   "worm_mass": 236.19844652388056,
+   "worm_elongation": 0.8008486245619452
+  },
+  {
+   "t_fusion": 183,
+   "t_fission": 187,
+   "slot": 2,
+   "absorbed": [
+    1,
+    3
+   ],
+   "worm_mass": 602.230636549814,
+   "worm_elongation": 0.8431563486628877
+  },
+  {
+   "t_fusion": 207,
+   "t_fission": 211,
+   "slot": 2,
+   "absorbed": [
+    6
+   ],
+   "worm_mass": 351.90525188171875,
+   "worm_elongation": 0.8870689152980505
+  },
+  {
+   "t_fusion": 208,
+   "t_fission": 216,
+   "slot": 5,
+   "absorbed": [
+    0
+   ],
+   "worm_mass": 250.2560556959643,
+   "worm_elongation": 0.8733170488167471
+  },
+  {
+   "t_fusion": 212,
+   "t_fission": 228,
+   "slot": 0,
+   "absorbed": [
+    7
+   ],
+   "worm_mass": 176.77270828578716,
+   "worm_elongation": 0.8067656862889181
+  },
+  {
+   "t_fusion": 218,
+   "t_fission": 229,
+   "slot": 6,
+   "absorbed": [
+    3
+   ],
+   "worm_mass": 227.8223736383747,
+   "worm_elongation": 0.6917110537265384
+  },
+  {
+   "t_fusion": 231,
+   "t_fission": 239,
+   "slot": 6,
+   "absorbed": [
+    7
+   ],
+   "worm_mass": 221.05431068336225,
+   "worm_elongation": 0.8444505952003866
+  },
+  {
+   "t_fusion": 235,
+   "t_fission": 249,
+   "slot": 5,
+   "absorbed": [
+    9
+   ],
+   "worm_mass": 214.61996525090697,
+   "worm_elongation": 0.8279971278466749
+  },
+  {
+   "t_fusion": 243,
+   "t_fission": 251,
+   "slot": 6,
+   "absorbed": [
+    0
+   ],
+   "worm_mass": 230.28905569626554,
+   "worm_elongation": 0.7206203673159434
+  },
+  {
+   "t_fusion": 257,
+   "t_fission": 262,
+   "slot": 4,
+   "absorbed": [
+    3
+   ],
+   "worm_mass": 592.3718128818873,
+   "worm_elongation": 0.5968918328639322
+  },
+  {
+   "t_fusion": 259,
+   "t_fission": 267,
+   "slot": 1,
+   "absorbed": [
+    5,
+    7
+   ],
+   "worm_mass": 370.3706973727597,
+   "worm_elongation": 0.7080863703227928
+  },
+  {
+   "t_fusion": 263,
+   "t_fission": 267,
+   "slot": 0,
+   "absorbed": [
+    9
+   ],
+   "worm_mass": 346.8162548846334,
+   "worm_elongation": 0.8220438948782987
+  },
+  {
+   "t_fusion": 275,
+   "t_fission": 282,
+   "slot": 4,
+   "absorbed": [
+    1
+   ],
+   "worm_mass": 460.3401473903668,
+   "worm_elongation": 0.8359021115285921
+  }
+ ],
+ "file": "/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_fusion_fission.png"
+}

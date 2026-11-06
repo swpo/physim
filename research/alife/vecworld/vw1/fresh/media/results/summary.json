@@ -1,0 +1,493 @@
+{
+ "about": "Media key: hero videos, legibility statistics and blind structure recovery, all from fresh VW-1 runs (aworld.MapWorld on the JAX Flow-Lenia port; VW-0 analysis/drawing helpers used read-only on VW-1 outputs).",
+ "hero_episode": {
+  "api": "World.reset(0) then World.step(None) x 300 (agent API); level 0 and level 1 from designer.state() of the same episode",
+  "seed": 0,
+  "world_seed": 0,
+  "ticks": 300,
+  "steps_per_tick": 20,
+  "objects_present_median_min_max": [
+   7.0,
+   4,
+   10
+  ],
+  "tracker_events": {
+   "births": 0.0,
+   "deaths": 0.0,
+   "fusions": 69.0,
+   "fissions": 68.0
+  },
+  "obs_bitwise_equal_to_quantised_permuted_designer_level": {
+   "objects": true,
+   "coarse": true,
+   "both": true
+  },
+  "cpu_s": {
+   "objects": 64.596966971,
+   "coarse": 64.043252274,
+   "both": 65.45120922400001
+  },
+  "card_keys": [
+   "contract",
+   "inputs",
+   "max_ticks",
+   "n_in",
+   "n_obs",
+   "notes",
+   "observation",
+   "replay",
+   "ticks_used",
+   "timing"
+  ],
+  "card_has_no_world_or_coarse_graining_name": true,
+  "fusion_example": {
+   "t_fusion": 89,
+   "t_fission": 96,
+   "slot": 8,
+   "absorbed": [
+    0
+   ],
+   "worm_mass": 699.5526384265879,
+   "absorbed_mass": 277.0,
+   "survivor_mass_before": 423.0,
+   "fission_piece_mass": 137.0,
+   "survivor_mass_after_fission": 563.0,
+   "note": "slot 0 (mass 277, about 1.9 median glider masses; itself formed by a fusion at tick 83) merges with slot 8 (423) into a 700-mass curved worm; at tick 96 a 137-mass piece (about one glider) buds off as slot 1 and slot 8 keeps 563; at tick 97 slot 8 absorbs slot 3 and sheds two more pieces (171, 105). Do not caption it 'a glider fuses with body 8 ... splits again'."
+  },
+  "source": [
+   "/home/user/evalwork/vecworld/vw1/fresh/media/results/hero_objects_s0.json",
+   "/home/user/evalwork/vecworld/vw1/fresh/media/results/hero_coarse_s0.json",
+   "/home/user/evalwork/vecworld/vw1/fresh/media/results/hero_both_s0.json",
+   "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/hero_run.py"
+  ]
+ },
+ "same_hidden_episode_across_views": {
+  "level0_identical_all_300_ticks": {
+   "objects_vs_coarse": true,
+   "objects_vs_both": true,
+   "coarse_vs_both": true
+  },
+  "input_map_identical": {
+   "objects_vs_coarse": true,
+   "objects_vs_both": true,
+   "coarse_vs_both": true
+  },
+  "note": "same world_seed and reset seed => same hidden trajectory and same hidden input permutation in every view",
+  "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/compare_l0.json",
+  "status": "not a new leak: the checker's VW-0 finding (companion worlds with one world seed share the input permutation) persists in VW-1. VW-1's key change separates different world seeds only (checker control: world_seed 1 gives a different level 0 and in_map). It matters only if one agent is given two views with one world seed.",
+  "checker_reproduction": "check/rerun.json: coarse world re-run in a new process, level 0 identical to the saved objects episode for 61 ticks"
+ },
+ "media": {
+  "objects": {
+   "file": "/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_objects.mp4",
+   "bytes": 1894766,
+   "frames": 301,
+   "crf": 26,
+   "poster": "/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_objects.jpg",
+   "poster_tick": 278,
+   "codec": "H.264 yuv420p 896x590 15 fps",
+   "checker_note": "glyphs sit on the bodies in the poster and frames 5/150/295; one slot can cover two touching crescents (tick 150 slots 2 and 4); glyphs at the bottom edge spill over the strip's label row (cosmetic)"
+  },
+  "coarse": {
+   "file": "/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_coarse.mp4",
+   "bytes": 1784916,
+   "frames": 301,
+   "crf": 26,
+   "poster": "/home/user/evalwork/vecworld/vw1/fresh/media/media/A_gliders_coarse.jpg",
+   "poster_tick": 278,
+   "codec": "H.264 yuv420p 896x590 15 fps",
+   "checker_note": "bright blocks match the matter in the poster and frames 5/150/295"
+  }
+ },
+ "legibility": {
+  "objects_per_tick_median": {
+   "value": 7.0,
+   "se": 0.48533778321813714,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 8.0,
+   "note": "median 8 -> 7 is a quantisation effect: mean 7.44 +- 0.11 (fresh) vs 7.65 +- 0.09 (VW-0, checker recomputation from base_*.npz), about 1.4 SE apart; 49% vs 55% of ticks have >= 8 objects. Page wording: 'seven or eight bodies (mean 7.4)', not 'median 7 vs 8'."
+  },
+  "objects_per_tick_mean": {
+   "value": 7.437015503875969,
+   "se": 0.1143500890012588,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 7.654,
+   "old_page_vw0_se": 0.088
+  },
+  "objects_per_tick_p10_p90": {
+   "value": [
+    6.0,
+    9.0
+   ],
+   "old_page_vw0": [
+    6,
+    9
+   ],
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples"
+  },
+  "body_length_px": {
+   "value": 12.805962753295898,
+   "se": 0.2316484595689322,
+   "unit": "px (2.4 x median radius of gyration)",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 12.7
+  },
+  "speed_px_per_tick_median": {
+   "value": 1.6376266898431362,
+   "se": 0.019298736202228415,
+   "unit": "px per tick (continuing slots)",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 1.611
+  },
+  "ticks_to_cross_body_length": {
+   "value": 7.819830265786976,
+   "se": 0.2022051345521245,
+   "unit": "ticks",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 7.88
+  },
+  "track_path_body_lengths_median_tracks_ge_50_ticks": {
+   "value": 7.798690303565816,
+   "se": 0.2739800911674921,
+   "unit": "body lengths",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 7.55,
+   "page_label": "median over the 16% of tracks living >= 50 ticks (over all tracks: 2.2 body lengths; 21% of tracks censored by the window)"
+  },
+  "frac_tracks_ge_50_ticks": {
+   "value": 0.16397998888271262,
+   "se": 0.00632672804943304,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 0.16
+  },
+  "frac_long_tracks_path_ge_3_body_lengths": {
+   "value": 0.9796610169491525,
+   "se": 0.006701318534043615,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 0.976
+  },
+  "track_path_body_lengths_median_all_tracks": {
+   "value": 2.194323093179663,
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples"
+  },
+  "track_life_median_ticks": {
+   "value": 20.0,
+   "se": 0.6797455554106275,
+   "unit": "ticks",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 20.0
+  },
+  "fusions_per_100_ticks": {
+   "value": 22.541666666666668,
+   "se": 0.5866910315628007,
+   "unit": "per 100 ticks per trajectory (all objects)",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 23.2
+  },
+  "fissions_per_100_ticks": {
+   "value": 22.27777777777778,
+   "se": 0.6126310978788285,
+   "unit": "per 100 ticks per trajectory (all objects)",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 22.8
+  },
+  "fusion_to_fission_ratio": {
+   "value": 1.0118453865336658,
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples"
+  },
+  "births_deaths_total": [
+   0.0,
+   0.0
+  ],
+  "encounters_per_100_ticks": {
+   "value": 18.36111111111111,
+   "se": 0.6108883303826625,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 18.3
+  },
+  "encounters_fused_within_5_ticks": {
+   "value": 0.6331316187594553,
+   "se": 0.012008886114512066,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 0.649
+  },
+  "frac_present_slot_ticks_with_tracker_event_at_t_plus_1": {
+   "value": 0.11469910974924301,
+   "se": 0.002417893593423302,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 0.1148,
+   "old_page_vw0_counts": "6517 of 56766 slot-ticks (VW-0 integrate/data/A_gliders base_*.npz, all ticks, checker recomputation)",
+   "note": "Fresh VW-1 (0.1147) equals VW-0 (0.1148) over all ticks. The page's '16% of the data' is the checker's VW-0 sample at ticks 60, 140, 220 only (88 of 560 = 0.157), not the overall share."
+  },
+  "frac_present_slot_ticks_with_tracker_event_at_t_plus_1_at_ticks_60_140_220": {
+   "value": 0.11978221415607986,
+   "se": 0.0201643723869333,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 0.157,
+   "counts": "66 of 551 slot-ticks",
+   "old_page_vw0_counts": "88 of 560",
+   "note": "difference 3.7 points: z = 1.8 binomial, about 1.3 SE with the bootstrap SE on both sides; not significant"
+  },
+  "frac_tracks_censored_by_300_tick_window": {
+   "value": 0.2056698165647582,
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples"
+  },
+  "glider_mass_median": {
+   "value": 148.6966094970703,
+   "se": 3.3281491003718098,
+   "unit": "",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples",
+   "old_page_vw0": 146.3
+  },
+  "trajectories_with_fusion_and_fission": {
+   "value": 24,
+   "of": 24,
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples"
+  },
+  "mass_max_rel_drift_per_channel_over_300_ticks": {
+   "value": 1.8424167987877173e-14,
+   "old_page_vw0": 1.9e-14,
+   "how": "Ensemble.invariants every tick",
+   "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/legibility.json",
+   "data": "/home/user/evalwork/vecworld/vw1/fresh/media/results/stats_both_J24_T300.npz",
+   "scripts": [
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_run.py",
+    "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/stats_analyze.py"
+   ],
+   "sizes": "24 trajectories x 300 ticks (+50 burn-in), 'both' world, designer.ensemble seed (7,), world_seed 0, no input",
+   "se_method": "bootstrap over trajectories, 200 resamples"
+  },
+  "sim_cpu_s": 1131.463371133,
+  "rubric_verdict": "I Supported (7-8 bodies, mean 7.4, no births or deaths, bodies persist through identity churn); M Supported (98% of tracks living >= 50 ticks travel >= 3 body lengths, median 7.8; known Flow-Lenia gliders, novelty 0); X Weak (fusion 22.5 and fission 22.3 per 100 ticks, 63% of encounters fuse within 5 ticks, no matched ablation, merges = splits); D absent (fission without growth: mass conserved to 2e-14 relative, so splitting is fragmentation); S not met (planted noise patches)"
+ },
+ "anonymisation": {
+  "objects": {
+   "n_obs": 144,
+   "ticks": 301,
+   "presence_coords_found": 11,
+   "presence_correct": 11,
+   "object_coords": 144,
+   "slots_ever_occupied": 11,
+   "object_coords_assigned_to_correct_slot_frac": 0.9166666666666666,
+   "object_coords_assigned_to_correct_slot": 132,
+   "coords_of_occupied_slots_assigned_correct": "132 of 132",
+   "never_occupied_slot_coords_all_zero": true,
+   "non_object_coords_assigned_to_a_slot": 0,
+   "position_pairs_found": 22,
+   "position_pairs_correct": 22,
+   "position_pairs_correct_strict_same_slot_cos_sin": 22,
+   "partner_rule_best_partner_same_slot_frac": 1.0,
+   "old_page_vw0": {
+    "presence_coords_found": 12,
+    "coords_assigned_to_correct_slot_frac": 1.0,
+    "position_pairs": "24 of 24"
+   }
+  },
+  "coarse": {
+   "n_obs": 192,
+   "ticks": 301,
+   "best_partner_in_same_block_frac": 1.0,
+   "frac_zero_entries": 0.5698193521594684,
+   "typing_rule_presence_coords_found": 0,
+   "old_page_vw0": {
+    "best_partner_in_same_block_frac": 1.0
+   }
+  },
+  "both": {
+   "n_obs": 336,
+   "ticks": 301,
+   "presence_coords_found": 11,
+   "presence_correct": 11,
+   "object_coords": 144,
+   "slots_ever_occupied": 11,
+   "object_coords_assigned_to_correct_slot_frac": 0.9166666666666666,
+   "object_coords_assigned_to_correct_slot": 132,
+   "coords_of_occupied_slots_assigned_correct": "132 of 132",
+   "never_occupied_slot_coords_all_zero": true,
+   "non_object_coords_assigned_to_a_slot": 0,
+   "position_pairs_found": 22,
+   "position_pairs_correct": 22,
+   "position_pairs_correct_strict_same_slot_cos_sin": 22,
+   "coarse_coords_best_partner_in_same_block_frac": 1.0,
+   "coarse_coords_best_partner_is_object_coord": 0,
+   "object_coords_best_partner_same_slot_frac": 1.0
+  },
+  "episode": "one fresh agent episode per view: World.reset(0), World.step(None) x 300 (301 observations)",
+  "rules": "physim research/alife/vecworld/review/blind_typing.py and blind_coarse.py, unchanged thresholds",
+  "source": "/home/user/evalwork/vecworld/vw1/fresh/media/results/blind.json",
+  "script": "/home/user/evalwork/vecworld/vw1/fresh/media/scripts/blind.py"
+ },
+ "about_provenance_checked": "No VW-0 simulator step runs. lenia_world.py is imported by the tracker inside phi.phi_objects (geometry and screen settings of its Level0 only) and by analyze.py (constants); render_l1 imports level0/render.py (colour map only), not level0/flowlenia.py.",
+ "checker": {
+  "edits": [
+   "legibility.frac_present_slot_ticks_with_tracker_event_at_t_plus_1.old_page_vw0: 0.16 -> 0.1148 (VW-0 all-tick value, same definition); note added",
+   "legibility.frac_present_slot_ticks_with_tracker_event_at_t_plus_1_at_ticks_60_140_220: counts 66/551 vs 88/560 and significance note added",
+   "legibility.objects_per_tick_mean.old_page_vw0 = 7.654 +- 0.088 added; objects_per_tick_median.note added",
+   "legibility.track_path_body_lengths_median_tracks_ge_50_ticks.page_label added (old page said 'Tracks travel a median of 7.6')",
+   "legibility.rubric_verdict: 'median 7 bodies' -> '7-8 bodies, mean 7.4'; 'mass fixed to 2e-14' -> 'mass conserved to 2e-14 relative'",
+   "hero_episode.fusion_example: masses and caption note added (slot 0 is a 277-mass merged body, not a glider; tick 96 is a one-glider bud-off, not a split of the worm)",
+   "same_hidden_episode_across_views.status added: persisting VW-0 leak, not new",
+   "media.objects/coarse.checker_note added",
+   "about_provenance_checked added (report said lenia_world is imported only through the tracker)"
+  ],
+  "report": "/home/user/evalwork/vecworld/vw1/fresh/media/results/check.md",
+  "independent_recomputation": "/home/user/evalwork/vecworld/vw1/fresh/media/check/recompute.json (all headline values equal to 1e-12)",
+  "rerun": "/home/user/evalwork/vecworld/vw1/fresh/media/check/rerun.json (objects hero 60 ticks, coarse 60 ticks, ensemble(2, seed=(7,)) 30 ticks: bit for bit)",
+  "cpu_s": 140
+ }
+}

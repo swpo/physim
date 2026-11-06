@@ -1,0 +1,14 @@
+state 0 N=1: VJPs 35s dep max 57.6 90%-share 0.493
+state 0 N=2: VJPs 59s dep max 3.09e+04 90%-share 0.031
+state 0 N=4: VJPs 113s dep max 1.22e+10 90%-share 0.021
+state 0 done 879s; null 0; N1:7.2e-06/5.5e-06 N2:0.00045/0.00025 N4:0.98/0.13 N8:1/1
+state 1 N=1: VJPs 32s dep max 3.23e+03 90%-share 0.029
+state 1 N=2: VJPs 60s dep max 1.04e+06 90%-share 0.018
+state 1 N=4: VJPs 116s dep max 4.05e+11 90%-share 0.012
+state 1 done 866s; null 0; N1:0.00022/0.00011 N2:0.0034/0.011 N4:1/1 N8:1/1
+state 2 N=1: VJPs 31s dep max 7.94e+03 90%-share 0.018
+state 2 N=2: VJPs 59s dep max 2.09e+05 90%-share 0.016
+state 2 N=4: VJPs 114s dep max 4.09e+10 90%-share 0.014
+state 2 done 866s; null 0; N1:9.7e-05/0.0001 N2:0.0023/0.0041 N4:1/0.97 N8:1/1
+total 2611 s
+EXIT 0

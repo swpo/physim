@@ -1,0 +1,7 @@
+coarse ceiling [0.991, 0.966, 0.848, 0.495, 0.134, 0.078] old [0.99, 0.95, 0.79, 0.34, 0.04, 0.01] z [6.1, 8.2, 7.6, 9.4, 5.7, 8.5]
+objects ceiling [0.833, 0.781, 0.632, 0.434, 0.21, 0.048] old [0.81, 0.63, 0.51, 0.26, 0.13, 0.04] z [0.4, 2.2, 2.2, 4.5, 4.8, 0.8]
+coarse chaos crossing {'half_natural': 41.96948338684891, '0.9_natural': 74.7947502502666, 'natural': None, 'same_trajectory_natural': None} e-fold 3.33
+objects chaos crossing {'half_natural': 26.632683001739583, '0.9_natural': 53.655573371947064, 'natural': None, 'same_trajectory_natural': None} e-fold 5.41
+gap: base 0.10736468500443656 0.5281637919050852 all 0.11028976936723832 0.5349672080157502
+objects stats fresh {"objects_per_tick": {"median": 7.0, "p10": 6.0, "p90": 9.0, "max": 12, "frac_ticks_all_slots_full": 0.0012919896640826874}, "events_per_100_ticks": {"births": 0.0, "deaths": 0.0, "fusions": 23.212962962962962, "fissions": 22.97222222222222}, "speed_px_per_tick": {"median": 1.632106063284725, "p90": 2.090261123104306}}
+saved /home/user/evalwork/vecworld/vw1/fresh/closure/results/summary.json /home/user/evalwork/vecworld/vw1/fresh/closure/results/closure_check.png 5.4 s

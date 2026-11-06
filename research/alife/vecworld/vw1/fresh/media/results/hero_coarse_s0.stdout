@@ -1,0 +1,1 @@
+{"view": "coarse", "seed": 0, "T": 300, "world_seed": 0, "n_obs": 192, "n_in": 16384, "ticks_used": 300, "obs_equal_quantised_permuted_designer_level_bitwise": true, "obs_max_abs_diff": 0.0, "out_sign_all_plus": true, "reset_plus_burnin_wall_s": 18.218519926071167, "wall_s": 64.46216464042664, "cpu_s": 64.043252274}

@@ -1,0 +1,63 @@
+[     0.5s] objects J 36 T 300 test ticks [40, 100, 160, 220]
+[    89.5s] copy check: max |V_analyze - V_copy| = 0.0 over ['mean', 'persistence', 'ar1', 'ridge_p1', 'ridge_p2', 'ridge_p4', 'ridge_p8', 'knn', 'kinematic', 'kin+ridge_p4']
+[   111.5s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   114.3s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   114.4s]   rmlp fold 0: 18 fit traj, 9.2 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   147.9s]     rmlp seed 0: epochs 38, best epoch per h [13, 11, 9, 5, 3, 0], val gain [0.10899999737739563, 0.11699999868869781, 0.11400000005960464, 0.07500000298023224, 0.024000000208616257, 0.0]
+[   180.1s]     rmlp seed 1: epochs 41, best epoch per h [16, 11, 11, 7, 5, 0], val gain [0.11599999666213989, 0.12099999934434891, 0.11599999666213989, 0.07699999958276749, 0.027000000700354576, 0.0]
+[   180.1s]   slotnet fold 0: 18 fit traj, 65.8 s
+[   180.1s]   fold 0 done in 90.6 s
+[   199.4s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   202.4s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   202.4s]   rmlp fold 1: 18 fit traj, 7.7 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   230.8s]     rmlp seed 0: epochs 33, best epoch per h [8, 8, 4, 4, 4, 2], val gain [0.054999999701976776, 0.0689999982714653, 0.06700000166893005, 0.054999999701976776, 0.03200000151991844, 0.004000000189989805]
+[   258.8s]     rmlp seed 1: epochs 36, best epoch per h [11, 8, 5, 4, 4, 2], val gain [0.06700000166893005, 0.07199999690055847, 0.0729999989271164, 0.06199999898672104, 0.03400000184774399, 0.006000000052154064]
+[   258.8s]   slotnet fold 1: 18 fit traj, 56.4 s
+[   258.8s]   fold 1 done in 78.7 s
+[   279.3s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   282.2s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   282.2s]   rmlp fold 2: 18 fit traj, 7.5 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   313.5s]     rmlp seed 0: epochs 37, best epoch per h [12, 9, 9, 6, 5, 2], val gain [0.11599999666213989, 0.11900000274181366, 0.11500000208616257, 0.08299999684095383, 0.03500000014901161, 0.0010000000474974513]
+[   345.7s]     rmlp seed 1: epochs 41, best epoch per h [16, 11, 8, 6, 4, 3], val gain [0.12300000339746475, 0.125, 0.11800000071525574, 0.08399999886751175, 0.03700000047683716, 0.0020000000949949026]
+[   345.7s]   slotnet fold 2: 18 fit traj, 63.6 s
+[   345.7s]   fold 2 done in 86.9 s
+[   366.4s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   369.3s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   369.3s]   rmlp fold 3: 18 fit traj, 7.7 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   409.8s]     rmlp seed 0: epochs 48, best epoch per h [23, 15, 9, 5, 4, 0], val gain [0.12200000137090683, 0.11599999666213989, 0.10700000077486038, 0.06700000166893005, 0.02199999988079071, 0.0]
+[   442.1s]     rmlp seed 1: epochs 41, best epoch per h [16, 12, 8, 5, 4, 0], val gain [0.11599999666213989, 0.11100000143051147, 0.0989999994635582, 0.061000000685453415, 0.02199999988079071, 0.0]
+[   442.1s]   slotnet fold 3: 18 fit traj, 72.9 s
+[   442.1s]   fold 3 done in 96.4 s
+[   442.3s] ceiling [0.8331, 0.7809, 0.6324, 0.4339, 0.2101, 0.0485] +- [0.0331, 0.0164, 0.0122, 0.0124, 0.0105, 0.0095]
+[   442.3s] best ['slotnet', 'slotnet', 'slotnet', 'slotnet', 'slotnet', 'slotnet']
+[   442.3s]    mean           [1.019, 0.9823, 1.0117, 1.0009, 0.9809, 0.9354]
+[   442.3s]    persistence    [0.1954, 0.2767, 0.5624, 0.9134, 1.3368, 1.718]
+[   442.3s]    ar1            [0.1895, 0.2541, 0.4725, 0.6829, 0.8676, 0.9196]
+[   442.3s]    ridge_p1       [0.1929, 0.262, 0.499, 0.7639, 0.9778, 1.0611]
+[   442.3s]    ridge_p2       [0.1937, 0.2545, 0.4836, 0.7311, 0.9861, 1.0925]
+[   442.3s]    ridge_p4       [0.1909, 0.2594, 0.4891, 0.7483, 0.9979, 1.1338]
+[   442.3s]    ridge_p8       [0.192, 0.2627, 0.5074, 0.7933, 1.0358, 1.1853]
+[   442.3s]    knn            [0.1993, 0.2794, 0.5512, 0.892, 1.3413, 1.7328]
+[   442.3s]    mlp            [0.2035, 0.286, 0.5558, 0.8999, 1.2668, 1.5346]
+[   442.3s]    kinematic      [0.1944, 0.273, 0.5488, 0.8707, 1.2412, 1.6063]
+[   442.3s]    kin+ridge_p4   [0.1899, 0.2558, 0.4775, 0.7209, 1.0013, 1.3212]
+[   442.3s]    rmlp           [0.1895, 0.2545, 0.4731, 0.6826, 0.869, 0.9207]
+[   442.3s]    slotnet        [0.1739, 0.2225, 0.4164, 0.6199, 0.8314, 0.9189]
+[   442.5s] selection-checked ceiling [0.8347, 0.781, 0.6325, 0.4337, 0.21, 0.0466]
+[   442.5s] learning curve for ['ar1', 'ridge_p2', 'slotnet']
+[   465.4s]   LC frac 0.25 fold 0: 4 fit trajectories
+[   486.1s]   LC frac 0.25 fold 1: 4 fit trajectories
+[   506.3s]   LC frac 0.25 fold 2: 4 fit trajectories
+[   529.1s]   LC frac 0.25 fold 3: 4 fit trajectories
+[   566.7s]   LC frac 0.5 fold 0: 9 fit trajectories
+[   599.6s]   LC frac 0.5 fold 1: 9 fit trajectories
+[   639.4s]   LC frac 0.5 fold 2: 9 fit trajectories
+[   679.1s]   LC frac 0.5 fold 3: 9 fit trajectories
+[   743.3s]   LC frac 1.0 fold 0: 18 fit trajectories
+[   800.0s]   LC frac 1.0 fold 1: 18 fit trajectories
+[   863.0s]   LC frac 1.0 fold 2: 18 fit trajectories
+[   935.8s]   LC frac 1.0 fold 3: 18 fit trajectories
+[   935.9s] LC best {'0.25': [0.1917, 0.2644, 0.4957, 0.7031, 0.8895, 0.9526], '0.5': [0.1819, 0.2343, 0.4324, 0.6452, 0.8514, 0.9297], '1.0': [0.1739, 0.2225, 0.4164, 0.6199, 0.8314, 0.9189]}
+[   935.9s] LC saturated [False, False, False, False, False, True] rel drop [0.044, 0.05, 0.037, 0.039, 0.024, 0.012]
+[   935.9s] saved /home/user/evalwork/vecworld/vw1/fresh/closure/results/closure_objects.json
+EXIT 0

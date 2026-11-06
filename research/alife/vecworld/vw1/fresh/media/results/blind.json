@@ -1,0 +1,47 @@
+{
+ "seed": 0,
+ "rules": "physim research/alife/vecworld/review/blind_typing.py and blind_coarse.py, unchanged thresholds",
+ "objects": {
+  "n_obs": 144,
+  "ticks": 301,
+  "presence_coords_found": 11,
+  "presence_correct": 11,
+  "object_coords": 144,
+  "slots_ever_occupied": 11,
+  "object_coords_assigned_to_correct_slot_frac": 0.9166666666666666,
+  "object_coords_assigned_to_correct_slot": 132,
+  "coords_of_occupied_slots_assigned_correct": "132 of 132",
+  "never_occupied_slot_coords_all_zero": true,
+  "non_object_coords_assigned_to_a_slot": 0,
+  "position_pairs_found": 22,
+  "position_pairs_correct": 22,
+  "position_pairs_correct_strict_same_slot_cos_sin": 22,
+  "partner_rule_best_partner_same_slot_frac": 1.0
+ },
+ "coarse": {
+  "n_obs": 192,
+  "ticks": 301,
+  "best_partner_in_same_block_frac": 1.0,
+  "frac_zero_entries": 0.5698193521594684,
+  "typing_rule_presence_coords_found": 0
+ },
+ "both": {
+  "n_obs": 336,
+  "ticks": 301,
+  "presence_coords_found": 11,
+  "presence_correct": 11,
+  "object_coords": 144,
+  "slots_ever_occupied": 11,
+  "object_coords_assigned_to_correct_slot_frac": 0.9166666666666666,
+  "object_coords_assigned_to_correct_slot": 132,
+  "coords_of_occupied_slots_assigned_correct": "132 of 132",
+  "never_occupied_slot_coords_all_zero": true,
+  "non_object_coords_assigned_to_a_slot": 0,
+  "position_pairs_found": 22,
+  "position_pairs_correct": 22,
+  "position_pairs_correct_strict_same_slot_cos_sin": 22,
+  "coarse_coords_best_partner_in_same_block_frac": 1.0,
+  "coarse_coords_best_partner_is_object_coord": 0,
+  "object_coords_best_partner_same_slot_frac": 1.0
+ }
+}

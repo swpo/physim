@@ -1,0 +1,14 @@
+{
+ "n_traj": 24,
+ "test_states_share": 0.15714285714285714,
+ "test_states_counts": [
+  88,
+  560
+ ],
+ "test_states_share_se": 0.0220545150564149,
+ "every_tick_share": 0.11480463657823345,
+ "every_tick_counts": [
+  6517,
+  56766
+ ]
+}
