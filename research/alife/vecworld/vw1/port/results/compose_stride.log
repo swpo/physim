@@ -1,0 +1,46 @@
+stride20 {'ticks': 300, 'substeps_per_tick': 20, 'events_per_1000_substeps': [0.0, 0.0, 11.333333333333334, 11.375], 'mean_objects': 7.509966777408638, 'median_speed_px_per_tick': 1.5613950475052247, 'uid_issued_per_object': 9.08792302587923}
+stride200 {'ticks': 30, 'substeps_per_tick': 200, 'events_per_1000_substeps': [13.916666666666668, 15.25, 2.25, 3.625], 'mean_objects': 6.991935483870968, 'median_speed_px_per_tick': 1.7913892179988016, 'uid_issued_per_object': 15.053056516724336}
+{
+ "part": "stride",
+ "S10_S20_vs_S200_one_tick_max_abs": 0.0,
+ "same_level0_path": {
+  "start_max_abs": 0.0,
+  "end_max_abs": 2.6837427972289944
+ },
+ "tracker": {
+  "stride20": {
+   "ticks": 300,
+   "substeps_per_tick": 20,
+   "events_per_1000_substeps": [
+    0.0,
+    0.0,
+    11.333333333333334,
+    11.375
+   ],
+   "mean_objects": 7.509966777408638,
+   "median_speed_px_per_tick": 1.5613950475052247,
+   "uid_issued_per_object": 9.08792302587923
+  },
+  "stride200": {
+   "ticks": 30,
+   "substeps_per_tick": 200,
+   "events_per_1000_substeps": [
+    13.916666666666668,
+    15.25,
+    2.25,
+    3.625
+   ],
+   "mean_objects": 6.991935483870968,
+   "median_speed_px_per_tick": 1.7913892179988016,
+   "uid_issued_per_object": 15.053056516724336
+  }
+ },
+ "event_names": [
+  "births",
+  "deaths",
+  "fusions",
+  "fissions"
+ ],
+ "seconds": 291.47633481025696
+}
+EXIT 0

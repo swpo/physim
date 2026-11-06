@@ -1,0 +1,29 @@
+{
+ "part": "couple",
+ "card": {
+  "n_in": 16384,
+  "n_obs": 194,
+  "inputs": {
+   "k": 8,
+   "lo": -1.0,
+   "hi": 1.0,
+   "total": 4.0,
+   "zero_sum": true,
+   "min_interval": 1,
+   "quantum": null,
+   "episode_budget": null,
+   "tol": 1e-09,
+   "actuation_noise": 0.0
+  }
+ },
+ "src_unaffected_max_abs": 0.0,
+ "src_mass_rel_change": 2.6645352591003757e-15,
+ "dst_response_vs_closed_form_max_abs": 1.4432899320127035e-15,
+ "dst_response_rms": 0.6386484501610279,
+ "wire_u_rms": 0.2776382743522399,
+ "wire_saturated_frac": 0.0,
+ "agent_step_on_src_port_ok": [
+  194
+ ],
+ "seconds": 63.413350105285645
+}

@@ -1,0 +1,49 @@
+{
+ "part": "product",
+ "pair_equality_max_abs": [
+  0.0,
+  0.0
+ ],
+ "card": {
+  "n_in": 32768,
+  "n_obs": 384,
+  "inputs": {
+   "k": 16,
+   "lo": -1.0,
+   "hi": 1.0,
+   "total": 4.0,
+   "zero_sum": true,
+   "min_interval": 1,
+   "quantum": null,
+   "episode_budget": null,
+   "tol": 1e-09,
+   "actuation_noise": 0.0
+  }
+ },
+ "cross_block_commands": {
+  "sources at dense cells of A": {
+   "dmass_A_per_channel": [
+    -0.01296987741295652,
+    -1.9870301225870435
+   ],
+   "dmass_B_per_channel": [
+    1.0,
+    1.0
+   ],
+   "dmass_total": -2.2737367544323206e-13
+  },
+  "sources at empty cells of A": {
+   "dmass_A_per_channel": [
+    0.0,
+    0.0
+   ],
+   "dmass_B_per_channel": [
+    1.0,
+    1.0000000000001137
+   ],
+   "dmass_total": 1.9999999999997726
+  }
+ },
+ "note": "both commands pass the product port (k=8 <= 16, sum 0, total 4); each factor's kick sees a non-zero-sum command: A removes what is there and the pooled matter is lost, B adds the positive part split equally over channels (the VW-0 kick's designer-probe branch)",
+ "seconds": 60.245394229888916
+}

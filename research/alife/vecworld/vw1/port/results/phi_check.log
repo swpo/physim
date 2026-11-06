@@ -1,0 +1,40 @@
+vmap init+burn-in 22.0 s; rollout 30 ticks 8.0 s
+laxmap init+burn-in 16.8 s; rollout 30 ticks 7.8 s
+{
+ "phi_coarse": {
+  "n_out": 192,
+  "max_abs_diff_vs_vw0": 1.1102230246251565e-16
+ },
+ "batching_equal": {
+  "x_max_abs": 3.661154155150613,
+  "L1_max_abs": 661.3386651139474,
+  "memory_max_abs": 350.6146799408316
+ },
+ "phi_objects": {
+  "memory_size": 16593,
+  "n_out": 144,
+  "ticks": 30,
+  "members": 2,
+  "replay_output_max_abs_diff": 0.0,
+  "replay_final_memory_max_abs_diff": 0.0,
+  "objects_present_t30": [
+   8,
+   7
+  ]
+ },
+ "grad_through_tracker": "raises ValueError",
+ "fisher_on_objects_world": "NotDifferentiable: fisher: the world contains a non-differentiable (opaque) block on the path from level 0 to",
+ "phi_coarse_grad_finite": true,
+ "tracker_ms_per_call": 2.2937570299421037,
+ "rollout_seconds": {
+  "vmap": {
+   "init_burnin_2_members": 21.96668529510498,
+   "rollout_30_ticks_2_members": 8.030899047851562
+  },
+  "laxmap": {
+   "init_burnin_2_members": 16.775800704956055,
+   "rollout_30_ticks_2_members": 7.7869696617126465
+  }
+ }
+}
+EXIT 0

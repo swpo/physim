@@ -1,0 +1,83 @@
+{
+ "world": "A_gliders",
+ "steps": 4000,
+ "shape": [
+  2,
+  128,
+  128
+ ],
+ "dtype": "float64",
+ "jax": "0.12.0.1",
+ "numpy": "2.5.4",
+ "kernel_maxabs_diff": 5.551115123125783e-17,
+ "one_step": {
+  "max_abs": 7.105427357601002e-15,
+  "median_abs": 4.107825191113079e-15,
+  "max_rel_to_state_max": 3.5145281383777335e-15
+ },
+ "free_running": {
+  "max_abs_at": {
+   "1": 2.831068712794149e-15,
+   "10": 1.20570220474292e-13,
+   "100": 2.0809899907714424e-05,
+   "500": 1.6713138860398198,
+   "1000": 2.728368941566115,
+   "2000": 2.5425681828543643,
+   "3000": 2.605612208277776,
+   "4000": 2.933608707762026
+  },
+  "max_abs_over_first_2000": 4.299733987212995,
+  "max_abs_over_all": 4.584513610002387
+ },
+ "rounding_floor_numpy_vs_numpy_1ulp": {
+  "max_abs_at": {
+   "1": 1.6930901125533637e-15,
+   "10": 1.6053824936079764e-13,
+   "100": 0.00010669893965653543,
+   "500": 1.5215198067116231,
+   "1000": 2.1940926681148536,
+   "2000": 2.430543383322007,
+   "3000": 2.556672713939913,
+   "4000": 2.933608262520171
+  },
+  "max_abs_over_all": 4.487670254986971
+ },
+ "state_max": 4.487670271045399,
+ "mass": {
+  "jax_max_rel_drift": 1.3100631690576847e-14,
+  "numpy_max_rel_drift": 1.3322676295501878e-14,
+  "mass0": [
+   705.5257031965416,
+   718.3769604807806
+  ]
+ },
+ "stored_state_t4000": {
+  "numpy_here_vs_stored_max_abs": 0.0,
+  "jax_vs_stored_max_abs": 2.933608707762026
+ },
+ "mass_noisy_level": {
+  "substeps": 1000,
+  "flow_noise_std": 0.5,
+  "max_rel_drift": 3.1086244689504383e-15
+ },
+ "kick": {
+  "max_abs_diff_vs_vw0_kick": 1.1102230246251565e-16,
+  "rel_mass_change": 2.220446049250313e-16,
+  "min_value": 0.0
+ },
+ "timing": {
+  "numpy_substep_ms": 7.332217693328857,
+  "jax_substep_deterministic_ms": 3.566545248031616,
+  "jax_substep_level_ms": 10.801821947097778,
+  "jax_tick20_ms": 95.53427696228027,
+  "vmap8_substep_ms_per_member": 7.6551854610443115,
+  "laxmap8_substep_ms_per_member": 5.055254697799683,
+  "vmap8_tick20_ms_per_member": 96.88721597194672,
+  "laxmap8_tick20_ms_per_member": 89.61904048919678,
+  "vmap32_substep_ms_per_member": 8.52590799331665,
+  "laxmap32_substep_ms_per_member": 4.666977375745773,
+  "vmap32_tick20_ms_per_member": 141.49842783808708,
+  "laxmap32_tick20_ms_per_member": 92.27317944169044
+ },
+ "timing_note": "CPU, 2 cores (taskset), float64; per substep unless 'tick20' (20 substeps + kick each)"
+}

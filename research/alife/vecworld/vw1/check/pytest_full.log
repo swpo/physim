@@ -1,0 +1,15 @@
+........................................................................ [ 88%]
+.........                                                                [100%]
+============================= slowest 10 durations =============================
+17.77s call     vw/tests/test_calibration.py::test_certify_bundle_and_flags
+13.23s call     vw/tests/test_calibration.py::test_estimators_recover_closed_forms_on_composed_worlds[product]
+9.62s call     vw/tests/test_calibration.py::test_estimators_recover_closed_forms_on_composed_worlds[refine-leaky]
+9.37s call     vw/tests/test_calibration.py::test_estimators_recover_closed_forms[ring]
+8.50s call     vw/tests/test_calibration.py::test_estimators_recover_closed_forms[ring-conserved]
+7.34s call     vw/tests/test_calibration.py::test_estimators_recover_closed_forms[random]
+7.31s call     vw/tests/test_calibration.py::test_estimators_recover_closed_forms_on_composed_worlds[stack]
+6.99s call     vw/tests/test_category.py::test_identity_coarse_graining_is_a_unit
+6.63s call     vw/tests/test_category.py::test_exact_refinement_has_zero_commutation_error
+5.70s call     vw/tests/test_fisher.py::test_fisher_parameter_paths_in_composed_worlds
+81 passed in 193.33s (0:03:13)
+exit 0

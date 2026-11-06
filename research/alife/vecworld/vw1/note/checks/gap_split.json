@@ -1,0 +1,38 @@
+{
+ "split_tau1_pinf_nats": [
+  {
+   "world": "ring",
+   "gap_X_O": 0.2712633958005193,
+   "coarse_graining_defect": 0.07594600984192512,
+   "port_part": 0.19531738595859416
+  },
+  {
+   "world": "random",
+   "gap_X_O": 1.18990064690015,
+   "coarse_graining_defect": 1.0244850724598829,
+   "port_part": 0.16541557444026722
+  },
+  {
+   "world": "stack(ring)",
+   "gap_X_O": 0.08811394083219376,
+   "coarse_graining_defect": 0.027942948670524215,
+   "port_part": 0.060170992161669545
+  }
+ ],
+ "refinement_tau1_pinf_nats": [
+  {
+   "eta": 0.0,
+   "refinement_defect": -4.440892098500626e-16,
+   "gap_fine": 0.27126339580053926,
+   "gap_base": 0.2712633958005193,
+   "gap_fine_minus_base": 1.9984014443252818e-14
+  },
+  {
+   "eta": 0.3,
+   "refinement_defect": 0.2670290586697761,
+   "gap_fine": 0.5428200553863758,
+   "gap_base": 0.2712633958005193,
+   "gap_fine_minus_base": 0.2715566595858565
+  }
+ ]
+}

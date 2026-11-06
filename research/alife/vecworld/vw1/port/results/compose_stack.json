@@ -1,0 +1,75 @@
+{
+ "part": "stack",
+ "card": {
+  "contract": "VW-1",
+  "n_in": 16384,
+  "n_obs": 4,
+  "inputs": {
+   "k": 8,
+   "lo": -1.0,
+   "hi": 1.0,
+   "total": 4.0,
+   "zero_sum": true,
+   "min_interval": 1,
+   "quantum": null,
+   "episode_budget": null,
+   "tol": 1e-09,
+   "actuation_noise": 0.0
+  },
+  "observation": {
+   "noise": 0.0,
+   "quantum": 0.001,
+   "clip": null,
+   "sign_flip": false,
+   "max_queries": null
+  },
+  "replay": "initial",
+  "max_ticks": null,
+  "ticks_used": 0,
+  "timing": "an input given at tick t acts before the law runs; its effect can appear from o(t+1) on",
+  "notes": "Inputs move matter: a negative coordinate removes at most the matter present at its site; under zero sum the positive coordinates receive exactly what was removed, in proportion."
+ },
+ "level2": {
+  "names": [
+   "count",
+   "total_mass",
+   "mean_speed",
+   "fusion_rate_ema"
+  ],
+  "members": 4,
+  "ticks": 150,
+  "mean": [
+   7.73,
+   1413.2994806205672,
+   1.4204267872825107,
+   0.22318574038230646
+  ],
+  "sd_over_time": [
+   1.1627153461086084,
+   1.170513979012384,
+   0.3898083012177404,
+   0.05371466547645991
+  ],
+  "count_range": [
+   4.0,
+   12.0
+  ]
+ },
+ "fusion_audit": {
+  "tracker_fusions": 134.0,
+  "tracker_deaths": 0.0,
+  "inferred_fusions": 131.0,
+  "matched": 131.0,
+  "precision": 1.0,
+  "recall": 0.9776119402985075,
+  "ticks_exact": 0.995,
+  "tracker_fusion_rate_per_tick": 0.22333333333333333,
+  "level2_ema_rate_mean": 0.22176595132086452
+ },
+ "obs_dim": 4,
+ "memory_sizes": {
+  "level1": 16593,
+  "level2": 151
+ },
+ "seconds": 84.4983081817627
+}

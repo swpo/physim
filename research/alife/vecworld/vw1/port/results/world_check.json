@@ -1,0 +1,156 @@
+{
+ "coarse": {
+  "card": {
+   "contract": "VW-1",
+   "n_in": 16384,
+   "n_obs": 192,
+   "inputs": {
+    "k": 8,
+    "lo": -1.0,
+    "hi": 1.0,
+    "total": 4.0,
+    "zero_sum": true,
+    "min_interval": 1,
+    "quantum": null,
+    "episode_budget": null,
+    "tol": 1e-09,
+    "actuation_noise": 0.0
+   },
+   "observation": {
+    "noise": 0.0,
+    "quantum": 0.001,
+    "clip": null,
+    "sign_flip": false,
+    "max_queries": null
+   },
+   "replay": "initial",
+   "max_ticks": null,
+   "ticks_used": 0,
+   "timing": "an input given at tick t acts before the law runs; its effect can appear from o(t+1) on",
+   "notes": "Inputs move matter: a negative coordinate removes at most the matter present at its site; under zero sum the positive coordinates receive exactly what was removed, in proportion."
+  },
+  "reset_seconds": 10.960260391235352,
+  "step_seconds": 1.7625651359558105,
+  "mass_rel_change_after_kick_tick": 1.1102230246251565e-16,
+  "obs_change_l1": 1.941,
+  "obs_equals_QPy_max_abs": 0.0,
+  "violations": [
+   "input rejected, nothing charged: zero-sum: sum(a) = 0.5, must be 0",
+   "input rejected, nothing charged: sparsity: 9 non-zero coordinates > k=8; zero-sum: sum(a) = 0.9, must be 0",
+   "input rejected, nothing charged: bound: non-zero values must lie in [-1, 1] (got min -2, max 2)",
+   "input rejected, nothing charged: total: sum|a| = 4.6 > total=4"
+  ],
+  "nothing_charged": true,
+  "run_shape": [
+   3,
+   192
+  ],
+  "mass_rel_change_after_run": 3.3306690738754696e-16,
+  "replay_initial_same_o0": true,
+  "seconds": 24.58989667892456
+ },
+ "objects": {
+  "card": {
+   "contract": "VW-1",
+   "n_in": 16384,
+   "n_obs": 144,
+   "inputs": {
+    "k": 8,
+    "lo": -1.0,
+    "hi": 1.0,
+    "total": 4.0,
+    "zero_sum": true,
+    "min_interval": 1,
+    "quantum": null,
+    "episode_budget": null,
+    "tol": 1e-09,
+    "actuation_noise": 0.0
+   },
+   "observation": {
+    "noise": 0.0,
+    "quantum": 0.001,
+    "clip": null,
+    "sign_flip": false,
+    "max_queries": null
+   },
+   "replay": "initial",
+   "max_ticks": null,
+   "ticks_used": 0,
+   "timing": "an input given at tick t acts before the law runs; its effect can appear from o(t+1) on",
+   "notes": "Inputs move matter: a negative coordinate removes at most the matter present at its site; under zero sum the positive coordinates receive exactly what was removed, in proportion."
+  },
+  "reset_seconds": 11.52623200416565,
+  "step_seconds": 1.7394943237304688,
+  "mass_rel_change_after_kick_tick": 1.1102230246251565e-16,
+  "obs_change_l1": 15.275000000000015,
+  "obs_equals_QPy_max_abs": 0.0,
+  "violations": [
+   "input rejected, nothing charged: zero-sum: sum(a) = 0.5, must be 0",
+   "input rejected, nothing charged: sparsity: 9 non-zero coordinates > k=8; zero-sum: sum(a) = 0.9, must be 0",
+   "input rejected, nothing charged: bound: non-zero values must lie in [-1, 1] (got min -2, max 2)",
+   "input rejected, nothing charged: total: sum|a| = 4.6 > total=4"
+  ],
+  "nothing_charged": true,
+  "run_shape": [
+   3,
+   144
+  ],
+  "mass_rel_change_after_run": 3.3306690738754696e-16,
+  "replay_initial_same_o0": true,
+  "seconds": 25.21169114112854
+ },
+ "exam": {
+  "n_items": 8,
+  "prefix": 4,
+  "horizon": 8,
+  "queries": [
+   1,
+   2,
+   4,
+   8
+  ],
+  "n_rep": 8,
+  "public_item_keys": [
+   "past_obs",
+   "past_program",
+   "program",
+   "query_times"
+  ],
+  "build_seconds": 47.2729275226593,
+  "score_seconds": 49.522034883499146,
+  "oracle": [
+   0.0020467834821428577,
+   0.002648209821428571,
+   0.005112412946428571,
+   0.01811343973214286
+  ],
+  "mse": {
+   "persistence": [
+    0.13471239062499998,
+    0.40273525,
+    1.234667265625,
+    3.1911933593750006
+   ],
+   "agent": [
+    0.065732,
+    0.211777625,
+    0.9659262031250002,
+    4.429547484375
+   ]
+  },
+  "skill_vs_oracle": {
+   "persistence": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "agent": [
+    0.5199568457160147,
+    0.47729020393854693,
+    0.2185677702093163,
+    -0.39026881022882676
+   ]
+  }
+ }
+}
