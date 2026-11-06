@@ -1,0 +1,282 @@
+{
+ "objects": {
+  "card": {
+   "contract": "VW-0",
+   "name": "A_gliders/objects12",
+   "n_in": 16384,
+   "n_obs": 144,
+   "inputs": {
+    "k": 8,
+    "lo": -1.0,
+    "hi": 1.0,
+    "total": 4.0,
+    "zero_sum": true,
+    "min_interval": 1,
+    "quantum": null,
+    "episode_budget": null,
+    "noise": 0.0,
+    "tol": 1e-09
+   },
+   "observation": {
+    "noise": 0.0,
+    "quantum": 0.001,
+    "clip": null,
+    "sign_flip": false,
+    "max_queries": null
+   },
+   "replay": "initial",
+   "max_ticks": null,
+   "ticks_used": 0,
+   "timing": "an input given at tick t is added to level 0 before the law runs; its effect can appear from o(t+1) on",
+   "notes": "Level 0 is hidden. One tick = 20 hidden sub-steps. Inputs move matter: a negative coordinate removes at most the matter present at its site; under zero sum the positive coordinates receive exactly what was removed, in proportion."
+  },
+  "reset_seconds": 7.717400550842285,
+  "step_seconds": 0.15029501914978027,
+  "n_obs": 144,
+  "mass_before": [
+   724.7291185794301,
+   705.9296864737788
+  ],
+  "mass_after_input": [
+   724.72911857943,
+   705.9296864737788
+  ],
+  "mass_after_run": [
+   724.72911857943,
+   705.9296864737789
+  ],
+  "violations": [
+   "input rejected, nothing charged: zero-sum: sum(a) = 0.5, must be 0",
+   "input rejected, nothing charged: sparsity: 9 non-zero coordinates > k=8; zero-sum: sum(a) = 0.9, must be 0",
+   "input rejected, nothing charged: bound: non-zero values must lie in [-1, 1] (got min -2, max 2)",
+   "input rejected, nothing charged: total: sum|a| = 4.6 > total=4"
+  ],
+  "run_shape": [
+   3,
+   144
+  ],
+  "obs_changed_by_input_tick": 346.6600000000001,
+  "slots": [
+   {
+    "present": 1.0,
+    "mass": 125.21,
+    "frac_c1": 0.477,
+    "x_cos": 17.051,
+    "x_sin": -11.147,
+    "y_cos": 4.333,
+    "y_sin": -19.906,
+    "rg": 4.739,
+    "q1": -0.34,
+    "q2": -0.064,
+    "vx": -1.677,
+    "vy": -0.117,
+    "cy": 100.366,
+    "cx": 116.205,
+    "age": 12.0,
+    "event": 0.0,
+    "uid": 15.0
+   },
+   {
+    "present": 1.0,
+    "mass": 98.804,
+    "frac_c1": 0.46,
+    "x_cos": 16.933,
+    "x_sin": 11.326,
+    "y_cos": -14.708,
+    "y_sin": -14.096,
+    "rg": 4.278,
+    "q1": -0.055,
+    "q2": 0.216,
+    "vx": 0.557,
+    "vy": -0.185,
+    "cy": 79.568,
+    "cx": 12.009,
+    "age": 0.0,
+    "event": 2.0,
+    "uid": 18.0
+   },
+   {
+    "present": 1.0,
+    "mass": 425.616,
+    "frac_c1": 0.488,
+    "x_cos": 12.49,
+    "x_sin": -16.094,
+    "y_cos": -12.487,
+    "y_sin": 16.096,
+    "rg": 12.318,
+    "q1": -0.523,
+    "q2": -0.465,
+    "vx": 0.718,
+    "vy": 0.542,
+    "cy": 45.442,
+    "cx": 109.444,
+    "age": 56.0,
+    "event": 0.0,
+    "uid": 3.0
+   },
+   {
+    "present": 1.0,
+    "mass": 97.882,
+    "frac_c1": 0.464,
+    "x_cos": -11.691,
+    "x_sin": 16.683,
+    "y_cos": -13.898,
+    "y_sin": 14.894,
+    "rg": 4.279,
+    "q1": -0.195,
+    "q2": 0.175,
+    "vx": -1.126,
+    "vy": 0.363,
+    "cy": 47.296,
+    "cx": 44.452,
+    "age": 16.0,
+    "event": 0.0,
+    "uid": 14.0
+   },
+   {
+    "present": 1.0,
+    "mass": 226.626,
+    "frac_c1": 0.502,
+    "x_cos": -7.634,
+    "x_sin": -18.888,
+    "y_cos": -18.494,
+    "y_sin": -8.543,
+    "rg": 9.635,
+    "q1": -0.269,
+    "q2": 0.818,
+    "vx": 1.028,
+    "vy": -1.176,
+    "cy": 72.816,
+    "cx": 88.175,
+    "age": 56.0,
+    "event": 0.0,
+    "uid": 6.0
+   },
+   {
+    "present": 1.0,
+    "mass": 140.408,
+    "frac_c1": 0.499,
+    "x_cos": 20.361,
+    "x_sin": -0.678,
+    "y_cos": 20.36,
+    "y_sin": 0.682,
+    "rg": 5.045,
+    "q1": -0.022,
+    "q2": -0.41,
+    "vx": -0.562,
+    "vy": -0.535,
+    "cy": 0.682,
+    "cx": 127.322,
+    "age": 56.0,
+    "event": 0.0,
+    "uid": 7.0
+   },
+   {
+    "present": 1.0,
+    "mass": 124.918,
+    "frac_c1": 0.542,
+    "x_cos": -16.742,
+    "x_sin": -11.606,
+    "y_cos": 12.499,
+    "y_sin": 16.087,
+    "rg": 4.625,
+    "q1": -0.064,
+    "q2": -0.291,
+    "vx": -1.792,
+    "vy": -1.256,
+    "cy": 18.544,
+    "cx": 76.349,
+    "age": 5.0,
+    "event": 0.0,
+    "uid": 17.0
+   },
+   {
+    "present": 1.0,
+    "mass": 190.755,
+    "frac_c1": 0.502,
+    "x_cos": 4.558,
+    "x_sin": 19.855,
+    "y_cos": -19.814,
+    "y_sin": -4.734,
+    "rg": 5.99,
+    "q1": -0.289,
+    "q2": 0.256,
+    "vx": 0.557,
+    "vy": -0.185,
+    "cy": 68.777,
+    "cx": 27.404,
+    "age": 56.0,
+    "event": 2.0,
+    "uid": 10.0
+   }
+  ],
+  "all_component_masses": [
+   97.9,
+   98.8,
+   124.9,
+   125.2,
+   140.4,
+   190.8,
+   226.6,
+   425.6
+  ]
+ },
+ "coarse": {
+  "card": {
+   "contract": "VW-0",
+   "name": "A_gliders/coarse8",
+   "n_in": 16384,
+   "n_obs": 192,
+   "inputs": {
+    "k": 8,
+    "lo": -1.0,
+    "hi": 1.0,
+    "total": 4.0,
+    "zero_sum": true,
+    "min_interval": 1,
+    "quantum": null,
+    "episode_budget": null,
+    "noise": 0.0,
+    "tol": 1e-09
+   },
+   "observation": {
+    "noise": 0.0,
+    "quantum": 0.001,
+    "clip": null,
+    "sign_flip": false,
+    "max_queries": null
+   },
+   "replay": "initial",
+   "max_ticks": null,
+   "ticks_used": 0,
+   "timing": "an input given at tick t is added to level 0 before the law runs; its effect can appear from o(t+1) on",
+   "notes": "Level 0 is hidden. One tick = 20 hidden sub-steps. Inputs move matter: a negative coordinate removes at most the matter present at its site; under zero sum the positive coordinates receive exactly what was removed, in proportion."
+  },
+  "reset_seconds": 7.631117820739746,
+  "step_seconds": 0.15427350997924805,
+  "n_obs": 192,
+  "mass_before": [
+   724.7291185794301,
+   705.9296864737788
+  ],
+  "mass_after_input": [
+   724.72911857943,
+   705.9296864737788
+  ],
+  "mass_after_run": [
+   724.72911857943,
+   705.9296864737789
+  ],
+  "violations": [
+   "input rejected, nothing charged: zero-sum: sum(a) = 0.5, must be 0",
+   "input rejected, nothing charged: sparsity: 9 non-zero coordinates > k=8; zero-sum: sum(a) = 0.9, must be 0",
+   "input rejected, nothing charged: bound: non-zero values must lie in [-1, 1] (got min -2, max 2)",
+   "input rejected, nothing charged: total: sum|a| = 4.6 > total=4"
+  ],
+  "run_shape": [
+   3,
+   192
+  ],
+  "obs_changed_by_input_tick": 1.8179999999999998
+ }
+}

@@ -1,0 +1,154 @@
+{
+ "mass_law": {
+  "ticks": 111,
+  "steps": 2220,
+  "max_rel_drift_per_channel": 7.105427357601002e-15,
+  "min_A": 0.0
+ },
+ "reproduce_base_000": {
+  "Yo_max_abs_diff_t0..61": 0.0,
+  "Yc_mine_vs_saved_max_abs_diff": 2.220446049250313e-16,
+  "st_h0_t60_max_abs_diff": 0.0,
+  "st_m_t60_max_abs_diff": 0.0
+ },
+ "supervenience": {
+  "tracker_replayed_from_h0_history_max_abs_diff_m": 0.0,
+  "phi_coarse_ignores_m": true,
+  "phi_objects_ignores_h_given_m": true,
+  "update_one_deterministic": true,
+  "tracker_state_unchanged": true
+ },
+ "phi_objects_vs_my_components": [
+  {
+   "tick": 0,
+   "n_mine": 10,
+   "n_slots": 10,
+   "mass_match": true,
+   "centroid_max_err_px": 2.842170943040401e-14
+  },
+  {
+   "tick": 6,
+   "n_mine": 9,
+   "n_slots": 9,
+   "mass_match": true,
+   "centroid_max_err_px": 2.842170943040401e-14
+  },
+  {
+   "tick": 12,
+   "n_mine": 9,
+   "n_slots": 9,
+   "mass_match": true,
+   "centroid_max_err_px": 1.4210854715202004e-14
+  },
+  {
+   "tick": 18,
+   "n_mine": 8,
+   "n_slots": 8,
+   "mass_match": true,
+   "centroid_max_err_px": 1.4210854715202004e-14
+  },
+  {
+   "tick": 24,
+   "n_mine": 7,
+   "n_slots": 7,
+   "mass_match": true,
+   "centroid_max_err_px": 2.842170943040401e-14
+  },
+  {
+   "tick": 30,
+   "n_mine": 9,
+   "n_slots": 9,
+   "mass_match": true,
+   "centroid_max_err_px": 1.4210854715202004e-14
+  },
+  {
+   "tick": 36,
+   "n_mine": 8,
+   "n_slots": 8,
+   "mass_match": true,
+   "centroid_max_err_px": 1.4210854715202004e-14
+  },
+  {
+   "tick": 42,
+   "n_mine": 10,
+   "n_slots": 10,
+   "mass_match": true,
+   "centroid_max_err_px": 1.4210854715202004e-14
+  },
+  {
+   "tick": 48,
+   "n_mine": 9,
+   "n_slots": 9,
+   "mass_match": true,
+   "centroid_max_err_px": 1.4210854715202004e-14
+  },
+  {
+   "tick": 54,
+   "n_mine": 8,
+   "n_slots": 8,
+   "mass_match": true,
+   "centroid_max_err_px": 1.4210854715202004e-14
+  },
+  {
+   "tick": 60,
+   "n_mine": 8,
+   "n_slots": 8,
+   "mass_match": true,
+   "centroid_max_err_px": 1.4210854715202004e-14
+  }
+ ],
+ "reproduce_branch_000_state0_rep1_8ticks_max_abs_diff": 1.6653345369377348e-16,
+ "base_continuation_from_saved_state_t61_diff": 0.0,
+ "mass_stress_flow_std_100": {
+  "rel_err": 0.0,
+  "min_A": 0.0
+ },
+ "kick_admissible": {
+  "n_inputs": 400,
+  "max_abs_mass_change_per_channel": 2.2737367544323206e-13,
+  "min_A": 0.0,
+  "max_moved_mass": 2.0000000000000004
+ },
+ "violations": {
+  "k=9": "rejected, nothing ran: input rejected, nothing charged: sparsity: 9 non-zero coordinates > k=8",
+  "value 1.5": "rejected, nothing ran: input rejected, nothing charged: bound: non-zero values must lie in [-1, 1] (got min -1.5,",
+  "total 4.4": "rejected, nothing ran: input rejected, nothing charged: total: sum|a| = 4.4 > total=4",
+  "non-zero sum": "rejected, nothing ran: input rejected, nothing charged: zero-sum: sum(a) = 0.1, must be 0",
+  "nan": "rejected, nothing ran: format: value for coordinate 0 is not finite",
+  "index n_in": "rejected, nothing ran: format: coordinate 16384 outside [0, 16384)",
+  "string key": "rejected, nothing ran: format: coordinate keys must be integers, got '3'",
+  "dense wrong shape": "rejected, nothing ran: format: a dense input must have shape (16384,), got (16385,)",
+  "run with bad 3rd entry": "rejected, nothing ran: program entry t=2: input rejected, nothing charged: sparsity: 9 non-zero coordin"
+ },
+ "zero_sum_loophole": {
+  "command_sum": -0.4499999991,
+  "l1": 0.4499999991,
+  "violations": [
+   "zero-sum: sum(a) = -0.45, must be 0"
+  ],
+  "rejected": "input rejected, nothing charged: zero-sum: sum(a) = -0.45, must be 0",
+  "accepted_ticks": 0,
+  "mass_before": [
+   694.4247544219136,
+   723.9781042756047
+  ],
+  "mass_after": [
+   694.4247544219136,
+   723.9781042756047
+  ],
+  "mass_created_total": 0.0
+ },
+ "permutation": {
+  "obs_equals_quantised_h1_out_map": true,
+  "out_map_fixed_points": 3,
+  "in_map_fixed_points": 1,
+  "seed0_vs_seed1_out_map_equal_frac": 0.013888888888888888,
+  "objects_vs_coarse_in_map_equal_frac": 1.0,
+  "card_words_found": [
+   "present",
+   "glider"
+  ],
+  "card_notes": "Level 0 is hidden. One tick = 20 hidden sub-steps. Inputs move matter: a negative coordinate removes at most the matter present at its site; under zero sum the positive coordinates receive exactly what was removed, in proportion."
+ },
+ "cpu_seconds": 26.780882358551025
+}

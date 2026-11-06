@@ -1,0 +1,23 @@
+{
+ "slot_ticks": {
+  "event": 88,
+  "none": 472
+ },
+ "share_of_total_sq_error": {
+  "event": {
+   "identity": 0.328,
+   "position": 0.137,
+   "shape": 0.241,
+   "velocity": 0.042
+  },
+  "none": {
+   "identity": 0.005,
+   "position": 0.007,
+   "shape": 0.037,
+   "velocity": 0.202
+  }
+ },
+ "share_event_slots": 0.749,
+ "median_Asum_body_cells": 0.6719887025261642,
+ "median_Asum_cells_gt_0.01": 0.7304344433862204
+}

@@ -1,0 +1,23 @@
+{
+ "1 episode (301 obs)": {
+  "presence_coords_found": 12,
+  "presence_correct": 12,
+  "coords_assigned_to_correct_slot_frac": 1.0,
+  "position_pairs_found": 24,
+  "position_pairs_correct": 24
+ },
+ "4 episodes": {
+  "presence_coords_found": 12,
+  "presence_correct": 12,
+  "coords_assigned_to_correct_slot_frac": 1.0,
+  "position_pairs_found": 24,
+  "position_pairs_correct": 24
+ },
+ "24 episodes": {
+  "presence_coords_found": 12,
+  "presence_correct": 12,
+  "coords_assigned_to_correct_slot_frac": 1.0,
+  "position_pairs_found": 24,
+  "position_pairs_correct": 24
+ }
+}
