@@ -1,0 +1,42 @@
+{
+  "request": {
+    "cap_usd": 10.0,
+    "disk_gb": null,
+    "env": {
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "H100_80GB",
+        "A100_80GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "vw1-bench-001",
+    "max_hours": 1.0,
+    "notes": "float64 world (jax_enable_x64), so FP64-capable GPUs only. CPU smoke test passed (--quick).",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0"
+    ],
+    "purpose": "VW-1 gliders world float64 throughput (vmap B=1..256), JAX tracker rate, GPU-vs-CPU agreement, conv AE float32 training step",
+    "ref": "cc46ab7a080a8d3f8041b3b9148156f4e47b9a60",
+    "ref_source": "commit holding the request",
+    "requester": "cloud coordinator session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/vw1/port && python -B bench_gpu.py --out $OUT",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "f5287ade705da4fa49c0a912b1c127f079ff79d3",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/vw1-bench-001.json",
+    "received_at": "2026-11-07T21:18:40Z",
+    "tip": "cc46ab7a080a8d3f8041b3b9148156f4e47b9a60"
+  }
+}
