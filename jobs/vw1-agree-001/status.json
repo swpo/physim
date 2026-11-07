@@ -9,11 +9,17 @@
       "at": "2026-11-07T21:55:01Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-07T21:55:16Z",
+      "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
+      "state": "queued"
     }
   ],
   "job_id": "vw1-agree-001",
-  "message": "request received",
+  "max_estimate_usd": null,
+  "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-07T21:55:01Z"
+  "state": "queued",
+  "updated_at": "2026-11-07T21:55:16Z"
 }
