@@ -9,7 +9,7 @@ import json
 from pathlib import Path, PurePosixPath
 
 from blobkit.registry import Registry
-from physim.bundles import Bundle, digest
+from physim.bundles import Bundle, digest, safe_path
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -59,9 +59,15 @@ def register(source, registry_root, name, *, pilot_config=None, source_archives=
         upstream = ROOT / upstream
     from_bundle = "previous_bundle" in origin
     if from_bundle:
-        previous = Bundle(upstream)
+        # The original bundle stays sealed to the scorer it was graded with, which a
+        # later scoring fix refuses to load. Provenance needs its identities and
+        # bytes, so check every file without loading its suite.
+        previous = Bundle(upstream, profile="simulation")
         if previous.references() != origin["previous_bundle"]:
             raise ValueError("Original evaluation bundle changed")
+        for path, record in previous.files.items():
+            if digest(safe_path(previous.root, path)) != record["sha256"]:
+                raise ValueError("Original evaluation bundle changed")
         for filename in ("world.json", "preparation.npz"):
             if digest(previous.verified_path(filename)) != digest(source / "preparation" / filename):
                 raise ValueError("Original world or prepared fields changed")
