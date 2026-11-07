@@ -1,0 +1,19 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "smoke-001",
+  "purpose": "pipeline smoke test: provision, upload, JAX CUDA install, GPU matmul, collect, terminate",
+  "paths": ["smoke"],
+  "gpu": {"types": ["L40S_48GB", "RTX6000Ada_48GB", "A10_24GB", "A100_40GB"], "count": 1, "spot": true},
+  "max_hours": 0.4,
+  "cap_usd": 1.5,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv",
+    ". $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4"
+  ],
+  "run": ["python --version", "python smoke/smoke.py"],
+  "env": {"XLA_PYTHON_CLIENT_PREALLOCATE": "false"},
+  "requester": "PhySim macbook session"
+}
