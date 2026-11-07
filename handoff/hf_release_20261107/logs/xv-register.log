@@ -1,0 +1,13 @@
+{
+  "world_record": "world-record:sha256:94b463ed0b221d4ed25b4c748d3f79a4f1735d88304c91e28b062c70585d059e",
+  "recipe": "recipe:sha256:b26123c3e57eaa7474f254e85118a9dc1844814ba0b40db1ab084e4ad7642515",
+  "run": "generation-run:sha256:05ce67b9addac90a2c1f4f90644e60d561f0e4c3224d84ad776921cbd70d7c7d",
+  "references": {
+    "bundle": "bundle:sha256:5119c0ef63309b0f73f909871133022520065fb791e68589a659a608369b5820",
+    "manifest_sha256": "f9e556b9e592e71c320a3a7cce2e57e68f65c804889d8c1e647480c22c93a78e",
+    "world": "world:sha256:d1b3c19d9ff8337b3d084cc38dd5870044350ea895a9b0229d7035b70f1e995a",
+    "preparation": "preparation:sha256:506fce0fe350b2bf0dbbbdf218423853d1a17e20ba749469c577d60372849e20",
+    "suite": "suite:sha256:d1ea5c20ea4de973679de2d95fdbb0edc8e3da4dbc8ee8fbc3bff052cd06159b"
+  },
+  "registry_roundtrip": true
+}

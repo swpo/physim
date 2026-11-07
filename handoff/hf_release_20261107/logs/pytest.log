@@ -1,0 +1,44 @@
+bringing up nodes...
+bringing up nodes...
+
+.........................................................s.............. [ 45%]
+..........F............................................................. [ 90%]
+....uu.uuuuuuuuuuuuuuuu.uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu [ 94%]
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu [ 94%]
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu [ 94%]
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu.uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu [ 95%]
+uuuuuuuuuuuuuuuuu.uuuuuuuuuuuuuu.uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu [ 96%]
+uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu [ 96%]
+uuuuuuuuuuuuuuuuu.......                                                 [100%]
+=================================== FAILURES ===================================
+__________ test_full_harness_error_is_saved_before_native_truncation ___________
+[gw2] darwin -- Python 3.12.12 /Users/spoho/physim-release/physim/.venv/bin/python
+
+tmp_path = PosixPath('/private/var/folders/v8/__4cv5ss7qv5f03t0yyk00nr0000gn/T/pytest-of-spoho/pytest-75/popen-gw2/test_full_harness_error_is_sav0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10e4f9010>
+
+    def test_full_harness_error_is_saved_before_native_truncation(tmp_path, monkeypatch):
+        from verifiers.v1.harness import Harness
+    
+        async def native_check(*args):
+            raise RuntimeError("native error still propagates")
+    
+        monkeypatch.setattr(Harness, "_check_result", native_check)
+        diagnostics_module().install(tmp_path)
+        result = SimpleNamespace(
+            stdout="", stderr="root cause first\n" + "x" * 5000 + "\nAuthorization: Bearer private-token"
+        )
+        with pytest.raises(RuntimeError, match="native error still propagates"):
+            asyncio.run(Harness._check_result(None, SimpleNamespace(id="trace"), None, result))
+        saved = (tmp_path / "trace.harness.stderr.log").read_text()
+        assert saved.startswith("root cause first") and len(saved) > 5000
+        assert "private-token" not in saved
+        manifest = json.loads((tmp_path / "manifest.json").read_text())
+>       assert manifest["installation"]["vcs_info"]["commit_id"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'vcs_info'
+
+tests/test_campaign_transport.py:46: KeyError
+=========================== short test summary info ============================
+FAILED tests/test_campaign_transport.py::test_full_harness_error_is_saved_before_native_truncation
+1 failed, 158 passed, 1 skipped, 440 subtests passed in 6.25s

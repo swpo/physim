@@ -1,0 +1,55 @@
+{
+ "ok": true,
+ "release_id": "dataset-release:sha256:bc6c58337617647e487b61927ef7981fcbff18cddacc8b52b8a01e1409de34dd",
+ "checked_files": 524,
+ "registry": {
+  "ok": true,
+  "counts": {
+   "candidate": 6,
+   "checkpoint": 3,
+   "generation-result": 1,
+   "generation-run": 7,
+   "genome": 19,
+   "recipe": 7,
+   "world-record": 24,
+   "artifact": 379
+  }
+ },
+ "worlds": [
+  {
+   "world": "bf_trail_lab_centered_v2",
+   "bundle": "bundle:sha256:035caa2d314ee729b4dd407d835d2aa3646eb7b452756e958caddb1d8195207e",
+   "reference_expected": 0.4970086688520715,
+   "reference_actual": 0.4970086688520715,
+   "public_checks": 7,
+   "both_profiles_open": true,
+   "task_count": 1,
+   "native_experiment": true,
+   "cases": 15
+  },
+  {
+   "world": "p4g2_044_centered_v2",
+   "bundle": "bundle:sha256:f1680d63444d024c6f196f63d630c970c1f32bf51653b65171eed282966c9266",
+   "reference_expected": 0.8729905732429272,
+   "reference_actual": 0.8729905732429272,
+   "public_checks": 7,
+   "both_profiles_open": true,
+   "task_count": 1,
+   "native_experiment": true,
+   "cases": 19
+  },
+  {
+   "world": "xv_rotor_lab_centered_v2",
+   "bundle": "bundle:sha256:5119c0ef63309b0f73f909871133022520065fb791e68589a659a608369b5820",
+   "reference_expected": 0.4278520374639126,
+   "reference_actual": 0.4278520374639126,
+   "public_checks": 7,
+   "both_profiles_open": true,
+   "task_count": 1,
+   "native_experiment": true,
+   "cases": 15
+  }
+ ],
+ "no_model_api_calls": true,
+ "no_network": true
+}

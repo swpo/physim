@@ -7,7 +7,8 @@ arbitrary genomes.
 
 The development recipe now writes `centered-pulse-v2` apparatus and explicit
 `device` injection commands. The current preparations, `*_centered_v2` at dataset
-revision `bd77a0da…`, use it; `configs/physim/eval.toml` evaluates them through the
+revision `94d64446…` (resealed for the fair ensemble scorer on 2026-11-07; first
+published at `bd77a0da…`), use it; `configs/physim/eval.toml` evaluates them through the
 installed environment's catalog. Their science, controls and truth are recorded in the
 [preparation evidence](../../handoff/evaluation_campaign_20260916/SCIENCE.md), and the BF
 model rollouts in the [BF case study](../../BF_CASE_STUDY.md). Their registry records, in

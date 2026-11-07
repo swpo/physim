@@ -2,7 +2,8 @@
 
 > **Historical plan.** Since it was written, the centered-source preparations were
 > completed, the [BF case study](../BF_CASE_STUDY.md) was recorded, and the
-> `*_centered_v2` preparations were published at dataset revision `bd77a0da…`. The
+> `*_centered_v2` preparations were published at dataset revision `bd77a0da…` (resealed
+> for the fair ensemble scorer at `94d64446…` on 2026-11-07). The
 > `docs_source/pages/scoring.html` page it mentions is now part of the single-page site
 > (`docs_source/partials/scoring.html`).
 

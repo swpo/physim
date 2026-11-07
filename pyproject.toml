@@ -15,7 +15,7 @@ override-dependencies = ["blobkit==0.3.5"]
 members = ["packages/blobkit"]
 
 [tool.uv.sources]
-physim = { git = "https://github.com/swpo/residency-environments.git", rev = "c36626cabbb2c35273d6ed2fd97d3a67db4682da", subdirectory = "environments/physim" }
+physim = { git = "https://github.com/swpo/residency-environments.git", rev = "3687ecbd9abbe3283e27691d0a5d1fb1b30d3c15", subdirectory = "environments/physim" }
 blobkit = { workspace = true }
 
 [dependency-groups]

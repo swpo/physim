@@ -1,0 +1,25 @@
+c002: truth + independent forecast controls complete
+c003: truth + independent forecast controls complete
+c001: truth + independent forecast controls complete
+c004: truth + independent forecast controls complete
+c005: truth + independent forecast controls complete
+c006: truth + independent forecast controls complete
+c007: truth + independent forecast controls complete
+c008: truth + independent forecast controls complete
+c009: truth + independent forecast controls complete
+c010: truth + independent forecast controls complete
+c011: truth + independent forecast controls complete
+c012: truth + independent forecast controls complete
+c013: truth + independent forecast controls complete
+c014: truth + independent forecast controls complete
+c015: truth + independent forecast controls complete
+{
+  "bundle_id": "bundle:sha256:035caa2d314ee729b4dd407d835d2aa3646eb7b452756e958caddb1d8195207e",
+  "aggregate": {
+    "independent_native": 0.001764251856280229,
+    "ignore_actions": 0.20174186755631437,
+    "remove_feedback": 0.13781378903839975,
+    "wrong_probe_geometry": 0.46743477444057646,
+    "initial_persistence": 0.4970086688520715
+  }
+}

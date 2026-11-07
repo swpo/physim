@@ -1,0 +1,98 @@
+{
+ "bf": {
+  "independent_native": {
+   "plugin": 0.002211658634838555,
+   "fair": 0.001764251856280229,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "ignore_actions": {
+   "plugin": 0.20224133870949884,
+   "fair": 0.20174186755631437,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "remove_feedback": {
+   "plugin": 0.13832800342585688,
+   "fair": 0.13781378903839975,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "wrong_probe_geometry": {
+   "plugin": 0.4678514404557609,
+   "fair": 0.46743477444057646,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "initial_persistence": {
+   "plugin": 0.4970086688520715,
+   "fair": 0.4970086688520715,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  }
+ },
+ "xv": {
+  "independent_native": {
+   "plugin": 0.002067726625516691,
+   "fair": 0.0017289108337148627,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "ignore_actions": {
+   "plugin": 0.16378194685678457,
+   "fair": 0.16338980108611173,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "remove_feedback": {
+   "plugin": 0.16192127254268923,
+   "fair": 0.16151673528005642,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "wrong_probe_geometry": {
+   "plugin": 0.5359862104912364,
+   "fair": 0.5356147715237493,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "initial_persistence": {
+   "plugin": 0.4278520374639126,
+   "fair": 0.4278520374639126,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  }
+ },
+ "p4g2_044": {
+  "independent_native": {
+   "plugin": 0.0013570941707892986,
+   "fair": 0.0010268869255814258,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "ignore_actions": {
+   "plugin": 0.6430263622089002,
+   "fair": 0.6429680463000562,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "remove_feedback": {
+   "plugin": 2.13584655971546,
+   "fair": 2.135806911295265,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "wrong_probe_geometry": {
+   "plugin": 0.4496597392797952,
+   "fair": 0.449170816099193,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  },
+  "initial_persistence": {
+   "plugin": 0.8729905732429272,
+   "fair": 0.8729905732429272,
+   "plugin_equals_old_checks": true,
+   "fair_equals_new_checks": true
+  }
+ }
+}

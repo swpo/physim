@@ -11,12 +11,15 @@ Current evaluations and the BF Prime Agent case study are different experimental
 conditions. Do not substitute one for the other when reproducing a result.
 
 - [configs/physim/eval.toml](configs/physim/eval.toml) evaluates every preparation in the
-  installed environment's pinned catalog at `bd77a0da2f14eef352bd80c4a38dff426e5c1bed`:
+  installed environment's pinned catalog at `94d64446dfc8e1660da863e11c6d895e265f4a80`:
   the three `centered-pulse-v2` preparations, under the environment's current prompt
   and runtime.
 - The seven-model BF case study used the same BF preparation
   (`bundles/bf_trail_lab_centered_v2/38d159a8052bb0fc24d0d8feefe3985ac645fb19954f2c84aa54954a948b561e`)
-  with the `interface-only-v2` prompt, Prime Agent, and its 15-program suite. Its
+  with the `interface-only-v2` prompt, Prime Agent, and its 15-program suite. That
+  bundle was sealed for the earlier plug-in scorer and was resealed for the fair
+  ensemble scorer as `035caa2d…` on 2026-11-07 (same world, preparation, suite and
+  truths); the case study's recorded scores used the plug-in estimator. Its
   [evidence snapshot](docs_source/data/bf-case-study.json) records source and bundle
   identities, selected rollout IDs, scores, usage, and plotted arrays. The
   [case-study record](BF_CASE_STUDY.md) describes the runtime and run selection. Full
@@ -111,8 +114,8 @@ With Python 3.12 and the workspace installed:
 ```sh
 uv sync --locked
 uv run physim fetch --repo seanpohorence/physim-worlds \
-  --revision bd77a0da2f14eef352bd80c4a38dff426e5c1bed \
-  --path bundles/bf_trail_lab_centered_v2/38d159a8052bb0fc24d0d8feefe3985ac645fb19954f2c84aa54954a948b561e
+  --revision 94d64446dfc8e1660da863e11c6d895e265f4a80 \
+  --path bundles/bf_trail_lab_centered_v2/035caa2d314ee729b4dd407d835d2aa3646eb7b452756e958caddb1d8195207e
 # Use the directory printed by fetch:
 uv run physim inspect --bundle /path/printed/by/fetch
 uv run physim demo --bundle /path/printed/by/fetch --output outputs/reference-demo

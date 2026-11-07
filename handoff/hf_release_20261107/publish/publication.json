@@ -1,0 +1,38 @@
+{
+  "repo": "seanpohorence/physim-worlds",
+  "revision": "94d64446dfc8e1660da863e11c6d895e265f4a80",
+  "commit_url": "https://huggingface.co/datasets/seanpohorence/physim-worlds/commit/94d64446dfc8e1660da863e11c6d895e265f4a80",
+  "parent_revision": "bd77a0da2f14eef352bd80c4a38dff426e5c1bed",
+  "release_id": "dataset-release:sha256:bc6c58337617647e487b61927ef7981fcbff18cddacc8b52b8a01e1409de34dd",
+  "release_sha256": "4c283d13da5b704ae8f39af00cdecb9b987cc582769ca14afd7604d37b634b68",
+  "files": 524,
+  "added": 93,
+  "changed": [
+    "README.md",
+    "catalog.jsonl",
+    "registry/README.md",
+    "registry/availability.json",
+    "registry/index.json",
+    "release.json",
+    "worlds.jsonl"
+  ],
+  "removed": 93,
+  "registry": {
+    "ok": true,
+    "counts": {
+      "candidate": 6,
+      "checkpoint": 3,
+      "generation-result": 1,
+      "generation-run": 7,
+      "genome": 19,
+      "recipe": 7,
+      "world-record": 24,
+      "artifact": 379
+    }
+  },
+  "evaluation_bundles": [
+    "bundles/bf_trail_lab_centered_v2/035caa2d314ee729b4dd407d835d2aa3646eb7b452756e958caddb1d8195207e",
+    "bundles/p4g2_044_centered_v2/f1680d63444d024c6f196f63d630c970c1f32bf51653b65171eed282966c9266",
+    "bundles/xv_rotor_lab_centered_v2/5119c0ef63309b0f73f909871133022520065fb791e68589a659a608369b5820"
+  ]
+}

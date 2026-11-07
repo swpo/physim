@@ -31,17 +31,17 @@ native Verifiers integration, and development tools. The environment requires Nu
 for ownership and dependency updates.
 
 World data are published on Hugging Face as
-[`seanpohorence/physim-worlds`](https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/bd77a0da2f14eef352bd80c4a38dff426e5c1bed).
-The environment pins revision `bd77a0da2f14eef352bd80c4a38dff426e5c1bed`, whose catalog
+[`seanpohorence/physim-worlds`](https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/94d64446dfc8e1660da863e11c6d895e265f4a80).
+The environment pins revision `94d64446dfc8e1660da863e11c6d895e265f4a80`, whose catalog
 lists three evaluation preparations, BF, XV and `p4g2_044`, among 24 world records with
 archived provenance. Code is Apache-2.0 and world data are CC-BY-4.0. List the
 preparations, fetch one, and run its packaged reference checks:
 
 ```sh
 uv sync --locked
-uv run physim catalog --repo seanpohorence/physim-worlds --revision bd77a0da2f14eef352bd80c4a38dff426e5c1bed
-uv run physim fetch --repo seanpohorence/physim-worlds --revision bd77a0da2f14eef352bd80c4a38dff426e5c1bed \
-  --path bundles/bf_trail_lab_centered_v2/38d159a8052bb0fc24d0d8feefe3985ac645fb19954f2c84aa54954a948b561e
+uv run physim catalog --repo seanpohorence/physim-worlds --revision 94d64446dfc8e1660da863e11c6d895e265f4a80
+uv run physim fetch --repo seanpohorence/physim-worlds --revision 94d64446dfc8e1660da863e11c6d895e265f4a80 \
+  --path bundles/bf_trail_lab_centered_v2/035caa2d314ee729b4dd407d835d2aa3646eb7b452756e958caddb1d8195207e
 uv run physim inspect --bundle /path/to/bundle
 uv run physim demo --bundle /path/to/bundle --output outputs/bf-demo
 ```

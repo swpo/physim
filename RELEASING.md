@@ -43,9 +43,26 @@ Its catalog lists three `centered-pulse-v2` preparations from Physim 0.13.0.dev0
 `bf_trail_lab_centered_v2` (the BF case-study bundle, 15 programs),
 `xv_rotor_lab_centered_v2` (15 programs) and `p4g2_044_centered_v2` (19 programs).
 `eval.toml` evaluates them through the installed environment's pinned catalog. The
-original three preparations remain only at `dcd6abd5…`. This repository's `registry/`
-matches the September 28 release: staging it reproduces the published records,
-bundles and catalogs byte for byte.
+original three preparations remain only at `dcd6abd5…`.
+
+The dataset was republished on 2026-11-07 at `94d64446dfc8e1660da863e11c6d895e265f4a80`
+([commit](https://huggingface.co/datasets/seanpohorence/physim-worlds/commit/94d64446dfc8e1660da863e11c6d895e265f4a80)) after
+Physim's scorer moved to the fair (unbiased) ensemble estimator for the energy score and
+CRPS: the spread term averages over distinct member pairs, so it no longer favours
+small ensembles (residency `fix/physim-fair-energy`; `blobround6_eval.py` sha256
+`9deb1738…`; `estimator="plugin"` reproduces earlier scores bit for bit). Bundles pin the
+scorer's hash, so the three `centered-pulse-v2` preparations were resealed with the
+repository's own builder (`build_evaluation_bundle.py --resume` from the September 16
+workspaces): worlds, preparations, apparatus, suites and truths are byte-identical, and only
+`scoring_source_sha256`, suite and bundle identities and `checks.json` control scores
+(now fair; the 4-member independent-native control falls 16–24%) changed. New bundles:
+BF `035caa2d…`, XV `5119c0ef…`, `p4g2_044` `f1680d63…`. Reference scores reproduce exactly
+(BF 0.4970086688520715, XV 0.4278520374639126, `p4g2_044` 0.8729905732429272), checked
+after an anonymous download. As on 2026-09-28, the superseded seals were removed from the
+current tree and remain at `bd77a0da2f14eef352bd80c4a38dff426e5c1bed`, which only pre-fix Physim can grade. Release
+`dataset-release:sha256:bc6c5833…` records residency `c36626ca…` and this repository's
+`6199f18c…`. Receipts are in `handoff/hf_release_20261107/`. This repository's
+`registry/` matches the November 7 release.
 
 The first live 0.12.1 smoke exposed a stock bash-harness setup timeout while
 fetching dependencies inside a fresh container. Version 0.12.2 ships an agent-image

@@ -1,0 +1,20 @@
+{
+  "directory": "/Users/spoho/physim-release/dist/hf-worlds-next",
+  "release_id": "dataset-release:sha256:bc6c58337617647e487b61927ef7981fcbff18cddacc8b52b8a01e1409de34dd",
+  "registry": {
+    "ok": true,
+    "counts": {
+      "candidate": 6,
+      "checkpoint": 3,
+      "generation-result": 1,
+      "generation-run": 7,
+      "genome": 19,
+      "recipe": 7,
+      "world-record": 24,
+      "artifact": 379
+    }
+  },
+  "evaluations": 3,
+  "files": 524,
+  "bytes": 32749023
+}
