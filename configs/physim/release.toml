@@ -13,6 +13,6 @@ published_date = "2026-09-28"
 # Each published release.json records its own code inputs; the Sept 28 release
 # records residency commit 49ed83a54a453ec9c875d7d4fde1b8bcb5f13e03.
 [code_packages]
-physim = "git+https://github.com/swpo/residency-environments.git@a124e9bdd9bc3dde9866153207658a64e98f82e8#subdirectory=environments/physim"
+physim = "git+https://github.com/swpo/residency-environments.git@c36626cabbb2c35273d6ed2fd97d3a67db4682da#subdirectory=environments/physim"
 blobkit = "https://github.com/swpo/physim/releases/download/blobkit-v0.3.5/blobkit-0.3.5-py3-none-any.whl#sha256=6747e7ebe26e3909c05d91d050ebce93715d08992c51498cbf480b8206224331"
-source_commit = "a124e9bdd9bc3dde9866153207658a64e98f82e8"
+source_commit = "c36626cabbb2c35273d6ed2fd97d3a67db4682da"
