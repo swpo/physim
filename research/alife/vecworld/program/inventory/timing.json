@@ -1,0 +1,291 @@
+{
+ "fed_vortex_heredity": {
+  "size": [
+   128,
+   128
+  ],
+  "native_dt": 0.02,
+  "steps_per_frame": 100,
+  "state": {
+   "om": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "Y": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "eat": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "a": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "b": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ]
+  },
+  "s_per_step": 0.0024403421499994238,
+  "steps_timed": 200
+ },
+ "phase_membrane": {
+  "size": [
+   128,
+   128
+  ],
+  "native_dt": 1.0,
+  "steps_per_frame": 50,
+  "state": {
+   "S": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "K": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "phi": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ]
+  },
+  "s_per_step": 0.0010237091400006192,
+  "steps_timed": 200
+ },
+ "cips_iso": {
+  "size": [
+   192,
+   192
+  ],
+  "native_dt": 0.1,
+  "steps_per_frame": 1000,
+  "state": {
+   "e": [
+    [
+     192,
+     192
+    ],
+    "float64"
+   ],
+   "p": [
+    [
+     192,
+     192
+    ],
+    "float64"
+   ],
+   "F": [
+    [
+     192,
+     192
+    ],
+    "float64"
+   ],
+   "s": [
+    [
+     192,
+     192
+    ],
+    "float64"
+   ]
+  },
+  "s_per_step": 0.004435485060000701,
+  "steps_timed": 200
+ },
+ "marangoni_rods": {
+  "size": [
+   128,
+   128
+  ],
+  "native_dt": 0.05,
+  "steps_per_frame": 100,
+  "state": {
+   "phi": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "q1": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "q2": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "vx": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "vy": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "s": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "c": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ],
+   "om": [
+    [
+     128,
+     128
+    ],
+    "float64"
+   ]
+  },
+  "s_per_step": 0.012807826064999972,
+  "steps_timed": 200
+ },
+ "flowlenia_A_gliders": {
+  "state": [
+   [
+    2,
+    128,
+    128
+   ],
+   "float64"
+  ],
+  "kernels": 20,
+  "s_per_substep": 0.007935248649994264,
+  "mass_drift_rel": 0.0
+ },
+ "flowlenia_B_swarm": {
+  "state": [
+   [
+    2,
+    128,
+    128
+   ],
+   "float64"
+  ],
+  "kernels": 10,
+  "s_per_substep": 0.005188298350003606,
+  "mass_drift_rel": 0.0
+ },
+ "flowlenia_C_cells": {
+  "state": [
+   [
+    2,
+    128,
+    128
+   ],
+   "float64"
+  ],
+  "kernels": 15,
+  "s_per_substep": 0.0056521749000012275,
+  "mass_drift_rel": 1.4264724570750984e-16
+ },
+ "gray_scott_256": {
+  "state": [
+   [
+    2,
+    256,
+    256
+   ],
+   "float64"
+  ],
+  "s_per_step": 0.0029454084899998632
+ },
+ "lbm_d2q9_128": {
+  "state": [
+   [
+    9,
+    128,
+    128
+   ],
+   "float64"
+  ],
+  "s_per_step": 0.0018122812000001432,
+  "mass_drift_rel": 3.708144902248023e-14
+ },
+ "ising_128_sweep": {
+  "state": [
+   [
+    128,
+    128
+   ],
+   "int8"
+  ],
+  "s_per_sweep": 0.0002077382199991007
+ },
+ "particle_life_1024": {
+  "state": [
+   [
+    1024,
+    2
+   ],
+   "float64"
+  ],
+  "types": 6,
+  "s_per_step": 0.007135457260001203
+ },
+ "nca_64x16": {
+  "state": [
+   [
+    64,
+    64,
+    16
+   ],
+   "float64"
+  ],
+  "s_per_step": 0.0010241086599990013
+ },
+ "env": {
+  "OMP_NUM_THREADS": "1",
+  "XLA_FLAGS": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "note": "wall s per step on a shared 4-core box, 1 thread, nice 10"
+ }
+}

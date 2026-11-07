@@ -1,0 +1,22 @@
+{
+ "w=2.0": {
+  "one_step": 168799.74623733026,
+  "spread_over_50_steps": 3375.994924746605,
+  "bump_peak_shift": 0.01
+ },
+ "w=3.0": {
+  "one_step": 14146.736634695573,
+  "spread_over_50_steps": 282.9347326939115,
+  "bump_peak_shift": 0.01
+ },
+ "w=4.0": {
+  "one_step": 18636.213839297525,
+  "spread_over_50_steps": 372.7242767859505,
+  "bump_peak_shift": 0.01
+ },
+ "w=8.0": {
+  "one_step": 60437.55018908053,
+  "spread_over_50_steps": 1208.7510037816107,
+  "bump_peak_shift": 0.01
+ }
+}

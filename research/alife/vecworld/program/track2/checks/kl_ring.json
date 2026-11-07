@@ -1,0 +1,45 @@
+{
+ "world": "vw.lingauss.ring() defaults",
+ "input": "one zero-sum pair +-1 at tick 0",
+ "cases": {
+  "across blocks (site 1 -> 13)": {
+   "kl_level0_nats": 4.412222222222221,
+   "kl_obs_H1": 0.48072191664189556,
+   "efficiency_H1": 0.1089523356780927,
+   "kl_obs_H4": 0.4907993429098074,
+   "efficiency_H4": 0.11123631544165873,
+   "kl_obs_H16": 0.4913109653643669,
+   "efficiency_H16": 0.11135227117298674,
+   "kl_obs_H64": 0.4913110056522316,
+   "efficiency_H64": 0.11135228030395583
+  },
+  "neighbouring blocks (3 -> 4)": {
+   "kl_level0_nats": 2.005555555555555,
+   "kl_obs_H1": 0.21903453417385038,
+   "efficiency_H1": 0.1092138951559365,
+   "kl_obs_H4": 0.24210131060838896,
+   "efficiency_H4": 0.12071533492939064,
+   "kl_obs_H16": 0.24322493448617127,
+   "efficiency_H16": 0.1212755906025231,
+   "kl_obs_H64": 0.2432263618479254,
+   "efficiency_H64": 0.12127630230644483
+  },
+  "inside one block (0 -> 2)": {
+   "kl_level0_nats": 4.01111111111111,
+   "kl_obs_H1": 0.02433717046376114,
+   "efficiency_H1": 0.006067438619774246,
+   "kl_obs_H4": 0.04644912629576038,
+   "efficiency_H4": 0.011580114588970736,
+   "kl_obs_H16": 0.04917154469262064,
+   "efficiency_H16": 0.012258833856886035,
+   "kl_obs_H64": 0.04917770889068632,
+   "efficiency_H64": 0.01226037063756723
+  }
+ },
+ "mc_check": {
+  "program": "3 ticks",
+  "closed_form_nats": 7.52083333333333,
+  "monte_carlo_nats": 7.518588370040315,
+  "mc_se": 0.027436746226151682
+ }
+}
