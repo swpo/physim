@@ -1,5 +1,5 @@
-branch: physim-fair-energy-labworlds (swpo/residency-environments)
-head: ef1f58ce189c22e66155ab585379edebc8f68b69
+branch: fix/physim-fair-energy-labworlds (alias physim-fair-energy-labworlds, same commits) on swpo/residency-environments
+head: 19f30c1cb63533bfa2d8dd17349d16e66a8e44b0 (ef1f58c + 19f30c1: checks moved to scripts/, reward rounding tolerance; no identity file changed, the re-sealed kit still opens)
 history: 23f07a3 (labworlds-adapter) -> 4529505 ruff format labbundle.py/labworld.py (formatting only, ASTs identical) -> 177a1f7 fair estimator (cherry-pick of 774a9e8) -> ef1f58c LABWORLDS.md note (cherry-pick of 53223cb)
 replaces: 53223cb91713fd5edb64e1b5c112475c686b7b13 (force-pushed with lease; same tree except the two formatted files)
 pinned identity at this head (sha256): blobround6 d1b4a8b4a7231b01, labworld 501fffd327c1cf91, devices 43229b5040b4be42, blobround6_eval 9deb1738cba2e3df, labbundle 060e39aeeb3b8974, legacy_v1/blobround6_eval d9277b6057d375b9
