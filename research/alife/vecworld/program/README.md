@@ -11,6 +11,14 @@ Library: `../vw1/vw`; worked example: the Flow-Lenia gliders world (`../vw1/port
 | inventory | which existing worlds can become level 0, with measured costs, invariants and input costs | `inventory/WORLDS.md` |
 | review | cross-reading of the three memos against each other and the gliders results | `CRITIQUE.md` |
 
+Track 1 framing (the lead, 7 Nov 2026, speculative and open-ended): choosing an inductive bias (model structure,
+objective) and training autoencoders on level-0 dynamics yields emergent coarse variables, such as local conservation
+laws, that depend on the bias; which bias is right almost certainly depends on the level-0 theory. World research may
+then look like: hand-design level 0, then iterate on the autoencoder's biases to obtain the higher levels instead of
+designing those by hand too. The working plan is to map (level-0 theory x inductive bias) to what emerges, judged by
+closure, non-triviality, seed stability, agreement with hand designs and closure under the agent's inputs. The first
+cell of that map is the learned level-2 prototype on the gliders block view (`track1/learned_phi2`).
+
 `lit/` holds the earlier literature reviews these build on. `cover/` holds the "PhySim v2 / supervenience" cover
 (stack concept; liberties listed in `make_cover.py`).
 
