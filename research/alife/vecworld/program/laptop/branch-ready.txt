@@ -1,8 +1,9 @@
 branch: physim-fair-energy-labworlds (swpo/residency-environments)
-head: 53223cb91713fd5edb64e1b5c112475c686b7b13
-base: origin/labworlds-adapter 23f07a3a461eceb83a5bb478b452bfc08cde7c12 (+ cherry-pick 774a9e8 of the fix, + 53223cb LABWORLDS.md note)
+head: ef1f58ce189c22e66155ab585379edebc8f68b69
+history: 23f07a3 (labworlds-adapter) -> 4529505 ruff format labbundle.py/labworld.py (formatting only, ASTs identical) -> 177a1f7 fair estimator (cherry-pick of 774a9e8) -> ef1f58c LABWORLDS.md note (cherry-pick of 53223cb)
+replaces: 53223cb91713fd5edb64e1b5c112475c686b7b13 (force-pushed with lease; same tree except the two formatted files)
+pinned identity at this head (sha256): blobround6 d1b4a8b4a7231b01, labworld 501fffd327c1cf91, devices 43229b5040b4be42, blobround6_eval 9deb1738cba2e3df, labbundle 060e39aeeb3b8974, legacy_v1/blobround6_eval d9277b6057d375b9
+ruff 0.15.20: check passes, format --check passes on the whole repo (185 files) at this head
+labworlds-adapter (PR #40 head) is still 23f07a3: the formatting commit 4529505 is NOT pushed there yet, because that updates the upstream PR and waits for the user's OK. If approved it is a fast-forward: git push origin 4529505:labworlds-adapter
 also pushed: physim-fair-energy 4713d14667e48c48c32dd940921535d3334201ec (base upstream/main 5149b69429e6)
-scorer sha256 (blobround6_eval.py): old 3d8e3fb3b6f6b1275a33b6b88acdcd5b9b9b78cff91b01dad6231b7d82e4b009 -> new 9deb1738cba2e3df193970bf08a33dcf264f4c9af4223d3441f0e048dca5bc68
-legacy_v1 scorer sha256: old dcd1ab237e992645c5c50d4dbc252aa35617c143652126af0ae76c77924fc464 -> new d9277b6057d375b941f1b85c4f3aa130a9b994f5c7f870f123a0630c4ac1d198
 status: implementation reviewed by the Mac session; independent verification still running. If the scorer files change again, this file gets a new head and the line "SCORER HASH CHANGED: reseal again".
-tests: 67 passed with physim installed (12 existing + 55 new); CI-style run 12 passed, 1 skipped (the new module skips without numpy because CI does not install physim).
