@@ -1,0 +1,42 @@
+{
+  "request": {
+    "cap_usd": 4.0,
+    "disk_gb": null,
+    "env": {
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_80GB",
+        "H100_80GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "vw1-agree-001",
+    "max_hours": 0.5,
+    "notes": "Replaces section C of vw1-bench-001, which compared separately burnt-in starts. CPU smoke test passed.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0"
+    ],
+    "purpose": "VW-1 gliders world GPU vs CPU float64 agreement from one shared state: per-tick growth of the difference over 20 ticks, and one-substep size",
+    "ref": "e22d5ea2a331460b8d5c964ac553a14082060861",
+    "ref_source": "commit holding the request",
+    "requester": "cloud coordinator session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/vw1/port && python -B agree_gpu.py --out $OUT --ticks 20",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "19386da74788ee3243c6692400730fd7af1269e5",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/vw1-agree-001.json",
+    "received_at": "2026-11-07T21:55:01Z",
+    "tip": "e22d5ea2a331460b8d5c964ac553a14082060861"
+  }
+}
