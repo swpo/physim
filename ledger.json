@@ -1,24 +1,24 @@
 {
   "jobs": [
     {
-      "billed_usd": null,
+      "billed_usd": 0.0501,
       "cap_usd": 1.5,
-      "conservative_usd": 0.113,
-      "finished_at": null,
+      "conservative_usd": 0.1585,
+      "finished_at": "2026-11-07T21:11:49Z",
       "gpu": "A10_24GB (lambdalabs)",
-      "hours": 0.088,
+      "hours": 0.123,
       "job_id": "smoke-001",
       "purpose": "pipeline smoke test: provision, upload, JAX CUDA install, GPU matmul, collect, terminate",
       "requester_branch": "claude/gpu-smoke-20261107",
-      "state": "running"
+      "state": "done"
     }
   ],
   "summary": {
     "auto_job_cap_usd": 25.0,
-    "committed_usd": 1.5,
+    "committed_usd": 0.0501,
     "prior_spend_usd": 0.0,
-    "spent_usd": 0.113,
+    "spent_usd": 0.0501,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-07T21:09:22Z"
+    "updated_at": "2026-11-07T21:11:50Z"
   }
 }

@@ -1,0 +1,88 @@
+{
+  "archive_sha256": "22138ce09ea5c3942299f41e4e058b0fa2b80d06c3f3a13e5940cda360ad4afa",
+  "files": [
+    {
+      "bytes": 2677,
+      "in_git": true,
+      "path": "sysinfo.txt",
+      "sha256": "eccba8046fdf0b0cd8426752527496ddc40e1fa2259418f861e999f60c8cfc6d"
+    },
+    {
+      "bytes": 0,
+      "in_git": true,
+      "path": "job.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 286,
+      "in_git": true,
+      "path": "setup.log",
+      "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
+    },
+    {
+      "bytes": 198,
+      "in_git": true,
+      "path": "run.log",
+      "sha256": "cbd33ac24998870e34fa52988bb981c4cec65dc023e14071d68b50b21b698c91"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "setup.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "exit.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "setup.start",
+      "sha256": "bd94a29bdc93cf5ab05b908b86bc7f638256de59e47fc546a29d3343a288d438"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.start",
+      "sha256": "84269be107da090034a268224db7b916c5f0132f0ca58da31cfb28b7454218ec"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.end",
+      "sha256": "6cb683e3bb51296bb67701b1eb3be9de4a1416533958ed38f47edb3aef4f58b6"
+    },
+    {
+      "bytes": 40,
+      "in_git": true,
+      "path": "out-listing.tsv",
+      "sha256": "4ebc3a0b413b936aad4611630436e5fbff98ab2570424567e6d2126b57241acf"
+    },
+    {
+      "bytes": 164,
+      "in_git": true,
+      "path": "out/result.json",
+      "sha256": "bd580ef7e18205c9693fa18cad266de26bcd5e9e8714bcba4ce46016a37d2701"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "out/progress.txt",
+      "sha256": "8758edb68831bf26bc2ad815d0d8160666bb3f4adbd6b48423d2ec22a3af21d5"
+    }
+  ],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/smoke-001/collected/; ask for them by path.",
+  "skipped": [],
+  "skipped_count": 0,
+  "transfer_bytes": 1636,
+  "transfer_stopped": null,
+  "truncated": false
+}

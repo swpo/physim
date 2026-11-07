@@ -1,0 +1,10 @@
+{
+  "jax": "0.12.0.1",
+  "devices": [
+    "cuda:0"
+  ],
+  "gpu": true,
+  "matmul_4096_ms": 3.584,
+  "tflops": 38.34,
+  "max_abs_err_vs_numpy": 0.11180156476915926
+}
