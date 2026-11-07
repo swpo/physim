@@ -1,0 +1,41 @@
+{
+  "request": {
+    "cap_usd": 1.5,
+    "disk_gb": null,
+    "env": {
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": true,
+      "types": [
+        "L40S_48GB",
+        "RTX6000Ada_48GB",
+        "A10_24GB",
+        "A100_40GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "smoke-001",
+    "max_hours": 0.4,
+    "notes": "",
+    "paths": [
+      "smoke"
+    ],
+    "purpose": "pipeline smoke test: provision, upload, JAX CUDA install, GPU matmul, collect, terminate",
+    "ref": "3ac50cd37dff27c7cdbe52268af17879bf79130c",
+    "ref_source": "commit holding the request",
+    "requester": "PhySim macbook session",
+    "run": "python --version\npython smoke/smoke.py",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv\n. $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4"
+  },
+  "source": {
+    "blob": "b6cbc5546e0f42a7c7fda07a84728e7894a5524e",
+    "branch": "claude/gpu-smoke-20261107",
+    "path": "gpu/requests/smoke-001.json",
+    "received_at": "2026-11-07T21:03:33Z",
+    "tip": "3ac50cd37dff27c7cdbe52268af17879bf79130c"
+  }
+}

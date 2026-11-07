@@ -6,3 +6,4 @@ Campaign cap $1000.00 · spent $0.00 (billed where Prime has reported it, otherw
 
 | job | state | requester branch | GPU | pod hours | conservative USD | billed USD | cap USD | finished |
 |---|---|---|---|---|---|---|---|---|
+| smoke-001 | received | claude/gpu-smoke-20261107 | - | 0 | 0.00 | 0.00 | 1.5 |  |
