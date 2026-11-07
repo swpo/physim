@@ -59,3 +59,13 @@ Grading runs the predictor once per case in a fresh 4-CPU sandbox, so a rollout'
 
 Each run directory holds `traces.jsonl` (reward, grade, limit audit) and the agent's artifacts under
 `outputs/r6/artifacts`. Keep the run directories; the cloud session will read the traces for the write-up.
+
+## Re-sealed for the fair scorer (8 Nov 2026)
+
+The bundles now pin the fair (unbiased) ensemble estimator for the energy score and CRPS:
+`blobround6_eval.py` 9deb1738, plus the ruff-formatted `labworld.py` 501fffd3 and `labbundle.py` 060e39ae, with
+`blobround6` d1b4a8b4, `devices` 43229b50, numpy 2.5.2 and scipy 1.18.0. That is
+swpo/residency-environments branch `physim-fair-energy-labworlds` at ef1f58c. Only `manifest.json` and the ids
+changed: every data and truth file is byte-identical, member 0 of one truth per bundle re-simulates bit for bit, and
+the fed-vortex reference demo reproduces `checks.json` exactly. The bundles are refused by a PhySim environment
+whose scorer is the old plugin estimator (`blobround6_eval` 3d8e3fb3); the previous ids are in git history.
