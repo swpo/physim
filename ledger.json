@@ -10,7 +10,7 @@
       "job_id": "smoke-001",
       "purpose": "pipeline smoke test: provision, upload, JAX CUDA install, GPU matmul, collect, terminate",
       "requester_branch": "claude/gpu-smoke-20261107",
-      "state": "queued"
+      "state": "provisioning"
     }
   ],
   "summary": {
@@ -19,6 +19,6 @@
     "prior_spend_usd": 0.0,
     "spent_usd": 0.0,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-07T21:03:49Z"
+    "updated_at": "2026-11-07T21:04:06Z"
   }
 }

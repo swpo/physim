@@ -1,9 +1,26 @@
 {
+  "billing_window_hours": 1.1628,
+  "bundle": {
+    "bundle_sha256": "13b781344c456181e5f7664140885f32741ea81de995d86b22e1361492f1e39f",
+    "files": {
+      "job.sh": "83444bc6a94fa565a75c6cfbf5f0d982974335fcec2aa851642d8cacf46db6b4",
+      "request.json": "cf8ef88535d23e611336a6bb8af583815b6aa9a65ed5207dc44738ed1dbcd6e1",
+      "run.sh": "820f51fa76075d0c8f01160c3046ed4cb10034ba26d87acb4ccbf16344ec49de",
+      "setup.sh": "8dc5137f2304e8f96daae4c78fe6b4496769e76432121d0ad55dfde1410d8d6e",
+      "src.tar.gz": "2363e7625a449c6b2b21c419dc4ffa84ff22e478585cab04c07af763a629c9cb"
+    },
+    "paths": [
+      "smoke"
+    ],
+    "ref": "3ac50cd37dff27c7cdbe52268af17879bf79130c",
+    "src_bytes": 878
+  },
   "cap_usd": 1.5,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-07T21:03:33Z",
@@ -14,11 +31,35 @@
       "at": "2026-11-07T21:03:49Z",
       "message": "accepted: A10_24GB via lambdalabs at $1.29/h, at most $0.84",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-07T21:04:05Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "smoke-001",
   "max_estimate_usd": 0.84,
-  "message": "accepted: A10_24GB via lambdalabs at $1.29/h, at most $0.84",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a10",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 1400,
+      "gpu_memory_gb": 24,
+      "gpu_type": "A10_24GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 2,
+      "rate_usd_hr": 1.29,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
   "plan": {
     "max_estimate_usd": 0.84,
     "offers": [
@@ -44,6 +85,6 @@
     "window_hours": 0.65
   },
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-07T21:03:49Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-07T21:04:05Z"
 }
