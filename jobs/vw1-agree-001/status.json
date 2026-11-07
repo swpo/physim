@@ -19,10 +19,20 @@
     "src_bytes": 10009927
   },
   "cap_usd": 4.0,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 0.1096
+  "collected": {
+    "error": null,
+    "files": 12,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 5769,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 0.0836,
+    "conservative_usd": 0.1754
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-07T22:00:40Z",
   "hard_deadline": "2026-11-07T23:25:50Z",
   "hard_deadline_epoch": 1794093950.988298,
   "history": [
@@ -45,11 +55,21 @@
       "at": "2026-11-07T21:58:38Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-07T22:00:16Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-07T22:00:40Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "vw1-agree-001",
   "max_estimate_usd": null,
-  "message": "job started on the pod",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "1A100.22V",
@@ -95,7 +115,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 0.0836,
       "created_at": "2026-11-07T21:56:17Z",
       "data_center": "FIN-02",
       "gpu": "A100_80GB",
@@ -108,12 +128,13 @@
       "ready_at": "2026-11-07T21:58:23Z",
       "requested_at": "2026-11-07T21:55:50Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-07T22:00:19Z"
     }
   ],
+  "pods_terminated": true,
   "run_deadline": "2026-11-07T22:28:38Z",
   "started_at": "2026-11-07T21:58:38Z",
-  "state": "running",
-  "updated_at": "2026-11-07T21:58:38Z"
+  "state": "done",
+  "updated_at": "2026-11-07T22:00:40Z"
 }

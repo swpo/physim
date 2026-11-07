@@ -1,0 +1,26 @@
+21:59:16 accelerator cuda:0, cpu cpu:0
+21:59:25 coarse stride=1 tick 1: level0 max_abs 4.219e-15, block max_rel 4.342e-14
+21:59:26 coarse stride=1 tick 2: level0 max_abs 1.044e-14, block max_rel 3.316e-14
+21:59:26 coarse stride=1 tick 3: level0 max_abs 1.438e-14, block max_rel 9.433e-14
+21:59:26 coarse stride=1 tick 4: level0 max_abs 3.952e-14, block max_rel 3.723e-14
+21:59:26 coarse stride=1 tick 5: level0 max_abs 9.559e-14, block max_rel 2.784e-14
+21:59:45 both stride=20 tick 1: level0 max_abs 5.609e-11, block max_rel 4.045e-12, objects equal False
+21:59:47 both stride=20 tick 2: level0 max_abs 1.385e-07, block max_rel 7.777e-09, objects equal False
+21:59:48 both stride=20 tick 3: level0 max_abs 1.744e-04, block max_rel 3.369e-05, objects equal False
+21:59:48 both stride=20 tick 4: level0 max_abs 2.568e-01, block max_rel 5.159e-02, objects equal False
+21:59:48 both stride=20 tick 5: level0 max_abs 1.210e+00, block max_rel 7.194e-01, objects equal False
+21:59:48 both stride=20 tick 6: level0 max_abs 1.350e+00, block max_rel 1.497e+00, objects equal False
+21:59:48 both stride=20 tick 7: level0 max_abs 1.519e+00, block max_rel 9.489e+02, objects equal False
+21:59:48 both stride=20 tick 8: level0 max_abs 1.397e+00, block max_rel 3.281e-01, objects equal False
+21:59:48 both stride=20 tick 9: level0 max_abs 2.196e+00, block max_rel 2.493e+01, objects equal False
+21:59:49 both stride=20 tick 10: level0 max_abs 1.694e+00, block max_rel 1.029e+06, objects equal False
+21:59:49 both stride=20 tick 11: level0 max_abs 1.205e+00, block max_rel 1.682e+01, objects equal False
+21:59:49 both stride=20 tick 12: level0 max_abs 1.736e+00, block max_rel 1.800e+00, objects equal False
+21:59:49 both stride=20 tick 13: level0 max_abs 2.373e+00, block max_rel 3.115e+02, objects equal False
+21:59:49 both stride=20 tick 14: level0 max_abs 1.708e+00, block max_rel 4.769e+00, objects equal False
+21:59:49 both stride=20 tick 15: level0 max_abs 2.669e+00, block max_rel 6.691e+02, objects equal False
+21:59:50 both stride=20 tick 16: level0 max_abs 2.064e+00, block max_rel 1.528e+03, objects equal False
+21:59:50 both stride=20 tick 17: level0 max_abs 2.018e+00, block max_rel 7.438e+07, objects equal False
+21:59:50 both stride=20 tick 18: level0 max_abs 2.558e+00, block max_rel 3.100e+09, objects equal False
+21:59:50 both stride=20 tick 19: level0 max_abs 1.844e+00, block max_rel 1.045e+08, objects equal False
+21:59:50 both stride=20 tick 20: level0 max_abs 2.048e+00, block max_rel 1.722e+07, objects equal False
