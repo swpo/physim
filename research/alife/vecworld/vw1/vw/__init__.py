@@ -15,6 +15,7 @@ Composition (vw.operators): stack, product (noise 'independent' | 'shared' | ('c
 Certificates (vw.certificates): closure, leak, input_capacity, observation_capacity,
     invariant_drift, fisher (autodiff), certify
 Exam (vw.exam), opaque blocks (vw.opaque), linear-Gaussian family (vw.lingauss), toys (vw.toys).
+Objects (vw.objects): blob_tracker / BlobTracker, a pure-JAX tracker CoarseGrain for periodic fields.
 
 Importing vw enables float64 in JAX (jax_enable_x64).
 """
@@ -33,6 +34,8 @@ from .certificates import (NotDifferentiable, capacity_from_response, certify, c
                            waterfill)
 from .exam import Exam  # noqa: E402
 from .opaque import host_coarse_grain, host_level  # noqa: E402
+from . import objects  # noqa: E402
+from .objects import BlobTracker, blob_tracker  # noqa: E402
 
 InputConstraints = Admissible   # VW-0 name
 

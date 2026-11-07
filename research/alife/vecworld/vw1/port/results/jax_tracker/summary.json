@@ -1,0 +1,293 @@
+{
+ "what": "vw.objects.BlobTracker (pure JAX) vs the VW-0 host tracker integrate/lenia_world.Tracker, A_gliders",
+ "tests_before": {
+  "passed": 81
+ },
+ "tests_after": {
+  "passed": 94
+ },
+ "lockstep": {
+  "member_ticks_compared": 6020,
+  "slot_map_entries_differing": 0,
+  "discrete_slot_entries_differing": 0,
+  "globals_entries_differing": 0,
+  "ticks_with_any_discrete_mismatch": 0,
+  "obs_coords_compared": 866880,
+  "obs_coords_differing": 0,
+  "continuous_entries_compared": 939120,
+  "continuous_entries_not_bit_identical": 28937,
+  "runs": [
+   {
+    "tag": "A",
+    "designer_seed": 5101,
+    "members": 10,
+    "ticks_after_burnin": 300
+   },
+   {
+    "tag": "B",
+    "designer_seed": 5102,
+    "members": 10,
+    "ticks_after_burnin": 300
+   }
+  ],
+  "members": 20,
+  "world_seed": 0,
+  "obs_equality_rate": 1.0,
+  "jax_overflow_ticks_raw": 0.0,
+  "jax_overflow_ticks_kept": 0.0,
+  "jax_peak_raw_components": 13.0,
+  "jax_peak_kept_components": 13.0,
+  "max_abs_diff": {
+   "present": 0.0,
+   "mass": 0.0,
+   "frac_c1": 0.0,
+   "x_cos": 3.375077994860476e-14,
+   "x_sin": 2.6645352591003757e-14,
+   "y_cos": 3.375077994860476e-14,
+   "y_sin": 2.708944180085382e-14,
+   "rg": 8.881784197001252e-15,
+   "q1": 2.8206603719382883e-15,
+   "q2": 1.2212453270876722e-15,
+   "vx": 4.263256414560601e-14,
+   "vy": 4.263256414560601e-14,
+   "cy": 2.842170943040401e-14,
+   "cx": 2.842170943040401e-14,
+   "age": 0.0,
+   "event": 0.0,
+   "uid": 0.0
+  },
+  "max_rel_diff": {
+   "present": 0.0,
+   "mass": 0.0,
+   "frac_c1": 0.0,
+   "x_cos": 3.492640185481657e-14,
+   "x_sin": 2.8099837091600596e-14,
+   "y_cos": 1.7675025478062106e-14,
+   "y_sin": 2.117991285116745e-14,
+   "rg": 1.3396027558386785e-15,
+   "q1": 4.682377477727662e-12,
+   "q2": 4.220207838080437e-13,
+   "vx": 2.7692177271695893e-11,
+   "vy": 2.9059645640362914e-11,
+   "cy": 4.2576035253660253e-16,
+   "cx": 4.2189501035187424e-16,
+   "age": 0.0,
+   "event": 0.0,
+   "uid": 0.0
+  },
+  "max_abs_diff_all": 4.263256414560601e-14,
+  "max_rel_diff_all": 2.9059645640362914e-11,
+  "min_blur_threshold_margin": 4.875698984829757e-08,
+  "min_mass_mmin_margin": 3.394968866441488,
+  "events_sum_over_members": {
+   "births": 185.0,
+   "deaths": 0.0,
+   "fusions": 1625.0,
+   "fissions": 1585.0
+  }
+ },
+ "lockstep_numpy_avx512_disabled": {
+  "designer_seed": 5103,
+  "members": 4,
+  "ticks_after_burnin": 100,
+  "numpy_disabled_cpu_features": "X86_V4 AVX512_ICL AVX512_SPR",
+  "slot_map_entries_differing": 0,
+  "discrete_slot_entries_differing": 0,
+  "globals_entries_differing": 0,
+  "obs_coords_differing": 0,
+  "continuous_entries_compared": 63024,
+  "continuous_entries_not_bit_identical": 0,
+  "max_abs_diff_all": 0.0
+ },
+ "replay_hero": {
+  "episode": "objects world, world_seed 0, reset(0), step(None) x 300",
+  "tracker": "jax",
+  "keys_in_saved_npz": [
+   "obs",
+   "obs64",
+   "L1",
+   "x",
+   "out_map",
+   "in_map",
+   "tab",
+   "glob"
+  ],
+  "obs_bit_identical_to_saved_obs64": true,
+  "obs_equal_to_saved_obs64": true,
+  "obs_coords_differing": 0,
+  "obs_coords": 43344,
+  "obs_float32_equal_to_saved_obs": true,
+  "out_map_equal": true,
+  "L1_max_abs_diff": 5.684341886080802e-14,
+  "L1_entries_not_bit_identical": 1260,
+  "L1_entries": 43344,
+  "x_float32_equal": true,
+  "tab_discrete_equal": true,
+  "tab_centroid_max_abs_diff": 2.842170943040401e-14,
+  "glob_equal": true,
+  "events_over_episode": {
+   "births": 0.0,
+   "deaths": 0.0,
+   "fusions": 69.0,
+   "fissions": 68.0
+  },
+  "wall_s": 67.16237330436707
+ },
+ "replay_closure_jax_B18": {
+  "data": "sim_A.npz members 0-3, ticks 0..50 of level 1 (192 coarse + 144 objects)",
+  "tracker": "jax",
+  "designer_seed": 301,
+  "world_seed": 0,
+  "ensemble_size": 18,
+  "members_compared": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "L1_float32_equal": false,
+  "L1_entries_differing_float32": 61706,
+  "L1_entries": 68544,
+  "objects_part_float32_equal": false,
+  "coarse_part_float32_equal": false,
+  "L1_max_abs_diff_vs_float32": 759.5858354471256,
+  "tab_age_event_uid_equal": false,
+  "tab_centroid_float32_equal": false,
+  "globals_equal": false,
+  "wall_s": 236.2369041442871,
+  "coarse_max_abs_diff_ticks_0_10_50": [
+   0.6462067896816799,
+   0.6664819744224911,
+   0.8429033160176874
+  ],
+  "objects_max_abs_diff_ticks_0_10_50": [
+   492.02339450085765,
+   513.8910276731117,
+   475.1440215173508
+  ]
+ },
+ "replay_closure_host_B18_control": {
+  "data": "sim_A.npz members 0-3, ticks 0..50 of level 1 (192 coarse + 144 objects)",
+  "tracker": "host",
+  "designer_seed": 301,
+  "world_seed": 0,
+  "ensemble_size": 18,
+  "members_compared": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "L1_float32_equal": true,
+  "L1_entries_differing_float32": 0,
+  "L1_entries": 68544,
+  "objects_part_float32_equal": true,
+  "coarse_part_float32_equal": true,
+  "L1_max_abs_diff_vs_float32": 3.0001382015143463e-05,
+  "tab_age_event_uid_equal": true,
+  "tab_centroid_float32_equal": true,
+  "globals_equal": true,
+  "wall_s": 233.19296669960022,
+  "coarse_max_abs_diff_ticks_0_10_50": [
+   2.7356781617804415e-08,
+   2.5176802642690177e-08,
+   2.6461935864752206e-08
+  ],
+  "objects_max_abs_diff_ticks_0_10_50": [
+   1.4940225355530856e-05,
+   1.2435410837952077e-05,
+   1.4177153502714646e-05
+  ]
+ },
+ "level0_context": {
+  "a_after_50_burnin_ticks": {
+   "B1_host_vs_jax_max_abs": 0.0,
+   "B2_host_vs_jax_max_abs": 3.064958338474556,
+   "member0_host_B1_vs_host_B2_max_abs": 3.064958338474556
+  },
+  "a_member0_vs_B1_max_abs": {
+   "host_B2": 3.064958338474556,
+   "host_B3": 3.064958338474556,
+   "jax_B2": 0.0,
+   "jax_B3": 0.0
+  },
+  "a_member1_host_B2_vs_B3_max_abs": 0.0,
+  "a_member1_jax_B2_vs_B3_max_abs": 0.0,
+  "a_B2_by_burnin_ticks_host_vs_jax_max_abs": {
+   "0": 0.0,
+   "1": 0.0,
+   "3": 7.179634664566947e-10
+  },
+  "b_rollout_from_given_states_max_abs_vs_objects_host": {
+   "objects:host": 0.0,
+   "objects:jax": 0.0,
+   "coarse:host": 0.0
+  },
+  "c_compiled_init_program": {
+   "host": {
+    "kernel_rfft_computed_in": [
+     "loop body wide.wide.region_0.102.clone.sunk.clone.clone.clone"
+    ],
+    "kernel_rfft_input_fusion_kinds": [
+     "kLoop",
+     "kLoop"
+    ]
+   },
+   "jax": {
+    "kernel_rfft_computed_in": [
+     "program entry (hoisted out of the member loop)"
+    ],
+    "kernel_rfft_input_fusion_kinds": [
+     "kCustom/ynn",
+     "kLoop"
+    ]
+   },
+   "stride_loop_body_identical": true
+  },
+  "d_kernel_fft_jit_vs_op_by_op_max_abs": 4.497541098630883e-16
+ },
+ "speed": {
+  "jax": "0.12.0.1",
+  "cpu_affinity": [
+   0
+  ],
+  "XLA_FLAGS": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+  "update_ms_per_call": {
+   "host_numpy": 1.962370713332954,
+   "jax_jit": 1.4703543533323682,
+   "jax_vmap8_per_member": 1.7502641781277362,
+   "final_memory_equal_discrete": true
+  },
+  "world_s_per_tick_member": {
+   "coarse_no_tracker": 0.11626475069997469,
+   "objects_host": 0.1215586212999824,
+   "objects_jax": 0.1179940502500358
+  },
+  "tracker_share_of_tick": {
+   "objects_host": 0.04354993947277092,
+   "objects_jax": 0.014655819902754687
+  },
+  "vmap_world_8_members": {
+   "init_burnin_s": 85.93665813700045,
+   "rollout_5_ticks_s": 13.456576511000094,
+   "memory_shape": [
+    8,
+    16597
+   ],
+   "L1_and_memory_equal_jax_replay": true,
+   "discrete_memory_equal_host_replay": true,
+   "objects_present_t5": [
+    7,
+    9,
+    9,
+    8,
+    9,
+    6,
+    9,
+    10
+   ]
+  }
+ },
+ "default_tracker": "host",
+ "default_reason": "lockstep and hero replay pass; the closure replay (B=18 designer ensemble) does not, because level 0 differs, not the tracker: with the JAX tracker XLA hoists the Flow-Lenia kernel construction out of the member loop of the init + burn-in program (as it does in every B=1 program), the kernel rounds differently, x differs by 7e-10 after 3 burn-in ticks and chaos amplifies it. Under 'jax' a member's level 0 is the same for B=1,2,3 (= the agent path); under 'host' B=1 differs from B>=2. 'jax' as default would change saved B>=2 ensembles, so 'host' stays the default and the reference."
+}

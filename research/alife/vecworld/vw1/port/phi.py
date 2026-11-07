@@ -3,10 +3,15 @@
 Phi_coarse   (JAX, memoryless, differentiable) block means of every channel on a G x G grid plus
              the block mean of A_sum^2 (second moment): 2*64 + 64 = 192 numbers. Same as
              integrate/lenia_world.make_phi_coarse.
-Phi_objects  (opaque, with memory) the VW-0 tracker integrate/lenia_world.Tracker, wrapped as is
-             (same declared rules, same code): its memory update runs on the host through
-             jax.pure_callback; the readout phi(x, m) (the slot table's feature columns) is a JAX
-             slice of the memory, so only one host round trip per tick and member.
+Phi_objects  (with memory) K = 12 tracked object slots, two implementations of the same declared rules:
+             phi_objects_jax  vw.objects.BlobTracker with the VW-0 tracker's settings (blur, threshold,
+                              K, m_min): one pure JAX program (jit, vmap, no host callback);
+                              differentiable=False (discrete matching), opaque=False. Memory = the VW-0
+                              layout + 4 overflow entries (16597 numbers).
+             phi_objects      the VW-0 tracker integrate/lenia_world.Tracker, wrapped as is (the
+                              reference): its memory update runs on the host through jax.pure_callback
+                              (opaque); the readout is a JAX slice of the memory (16593 numbers).
+             Both read out the slot table's feature columns (K*NF = 144 numbers).
 pair         fan-out <Phi_1, Phi_2>: two coarse-grainings of the SAME level (copying a
              deterministic map is allowed in a Markov category). Not in the vw library; needed to
              observe Phi_coarse and Phi_objects of one level 0 in one world.
@@ -84,6 +89,51 @@ def phi_objects(name: str = "A_gliders", K: int = None, m_min: float = None, aud
     cg = vw.CoarseGrain(phi=phi, init_memory=init_memory, update_memory=update_memory, opaque=True,
                         name=f"Phi_objects{Kk}" + ("+audit" if audit else ""))
     return cg, tr, LW
+
+
+class JaxTracker:
+    """Host-side view of the JAX tracker with the analysis API of lenia_world.Tracker (K, n_m, l0, m_min,
+    blur, thr, update_one, memory_init, memory_update, phi, table, names), for replays and analysis
+    scripts. update_one runs the jitted JAX update (numpy in, numpy out). .bt is the vw.objects.BlobTracker."""
+
+    def __init__(self, bt, l0):
+        self.bt, self.l0 = bt, l0
+        self.K, self.m_min, self.blur, self.thr = bt.K, bt.m_min, bt.sigma, bt.threshold
+        self.n_m = bt.n_m
+        self._init, self._upd = jax.jit(bt.init_memory), jax.jit(bt.update_memory)
+
+    def update_one(self, mb, hb):
+        x = jnp.asarray(np.asarray(hb, float).reshape(self.l0.shape))
+        return np.asarray(self._init(x) if mb is None else self._upd(jnp.asarray(np.asarray(mb, float)), x))
+
+    def memory_init(self, h):
+        return np.stack([self.update_one(None, h[b]) for b in range(h.shape[0])])
+
+    def memory_update(self, m, h):
+        return np.stack([self.update_one(m[b], h[b]) for b in range(h.shape[0])])
+
+    def table(self, m):
+        return np.asarray(self.bt.split(np.asarray(m))["table"])
+
+    def phi(self, h, m):
+        return self.table(m)[..., :vw.objects.NF].reshape(np.shape(m)[0], -1).copy()
+
+    def names(self):
+        return self.bt.names()
+
+
+def phi_objects_jax(name: str = "A_gliders", K: int = None, m_min: float = None, audit: bool = False,
+                    **caps) -> tuple:
+    """(CoarseGrain, JaxTracker view, LW): the object tracker as one pure JAX program (vw.objects), with
+    the settings of the VW-0 tracker of `name` (blur sigma, threshold on the blurred A_sum, K, m_min).
+    Same rules, output and readout as phi_objects; memory = the VW-0 layout + 4 overflow entries
+    (raw/kept overflow ticks, raw/kept peak counts; caps max_raw = 64, max_kept = 32 by default).
+    audit=True appends the 5 cumulative counters, as phi_objects(audit=True)."""
+    tr, LW = vw0_tracker(name, K, m_min)
+    assert (vw.objects.NF, vw.objects.NS, len(vw.objects.GLOBALS)) == (LW.NF, LW.NS, LW.N_GLOBAL)
+    bt = vw.objects.BlobTracker(shape=tr.l0.shape, K=tr.K, m_min=tr.m_min, sigma=tr.blur, threshold=tr.thr, **caps)
+    cg = bt.coarse_grain(name=f"Phi_objects{bt.K}" + ("+audit" if audit else ""), audit=audit)
+    return cg, JaxTracker(bt, tr.l0), LW
 
 
 # ----------------------------------------------------------------------------- fan-out

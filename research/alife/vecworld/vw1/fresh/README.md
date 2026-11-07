@@ -1,6 +1,6 @@
-# VW-1 fresh runs of the gliders world (6 Nov 2026)
+# Runs of the gliders world (6 Nov 2026)
 
-Every number, chart and video on the "VW-1 Glider World" page comes from these runs of the VW-1 JAX world
+Every number, chart and video on the "Supervenient Glider World" page comes from these runs of the VW-1 JAX world
 (`../vw` library and `../port`: `aworld.build()`, `aworld.MapWorld`, `flowlenia_jax`, `phi`). The VW-0 simulator
 (`level0/flowlenia.py`, `integrate/lenia_world.py`) produced no result. The VW-0 analysis and drawing helpers
 (`integrate/analyze.py` estimators and `objects_stats`, `render_l1.py`, `make_videos.Pipe`) and the VW-0 checker's
@@ -8,12 +8,17 @@ blind rules were used read-only on the new outputs. Each set was re-run in part 
 (bit-identical); its corrections are in each `results/summary.json` under `checker.edits`, and its review is
 `results/check.md`.
 
+Object tracker: these runs used `aworld.build(tracker='host')`, the numpy tracker through a host callback (the default at the time).
+The default is now `tracker='jax'` (`vw.objects.BlobTracker`), which makes the same decisions and gives bit-identical agent
+observations (`../port/results/jax_tracker/`). To reproduce the saved multi-member ensembles bit for bit, pass `tracker='host'`.
+
 | folder | what | CPU |
 |---|---|---|
 | `closure/` | closure ceilings at 1-32 ticks for both views; 36 trajectories x 300 ticks, 144 test states x 6 futures x 32 ticks (47,160 member-ticks); learned level-1 predictors in JAX (`patchnet`, `slotnet`); learning curve; tau = 1 objects-gap decomposition; chaos curve to 96 ticks | about 3.2 h |
 | `inputs/` | blind input visibility (32 states, 6 noise keys, twins in one rollout call, null = 0); designer-aimed steering (64 runs, 46 usable); autodiff input sensitivity of the coarse view (192 VJPs per horizon, checked against finite differences); late differences; steer video | about 3.0 h |
 | `media/` | hero videos of the objects and coarse views from one agent episode (`World.reset(0)`, `World.step`); fusion/fission strip; legibility statistics (24 trajectories x 300 ticks); blind structure recovery on agent observations | about 0.5 h |
 | `page/` | the page's simplified sensitivity figure and cropped fusion strip | - |
+| `teaser/` | "PhySim v2 / supervenience" cover images built from the hero episode: three concepts (`stack`, `dissolve`, `aperture`) and the refined `final/` (cover.png 1920x1080, cover_portrait.png 1080x1350; Instrument Serif, SIL OFL, licence in `final/fonts/`). Artistic liberties are listed in `final/make_cover.py` | - |
 
 Not committed (regenerate with the scripts): the `.npz` arrays (level-1 records, test states, hero level-0 episodes)
 and the `.mp4` videos. Scripts use absolute paths under `/home/user/evalwork/vecworld/vw1/` from the build session.

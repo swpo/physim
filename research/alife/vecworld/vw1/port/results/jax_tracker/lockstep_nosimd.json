@@ -1,0 +1,99 @@
+{
+ "tag": "nosimd",
+ "designer_seed": 5103,
+ "world_seed": 0,
+ "members": 4,
+ "ticks_after_burnin": 100,
+ "records_per_member": 101,
+ "world": "aworld A_gliders, MapWorld, chain = pair(host, jax)",
+ "numpy_disabled_cpu_features": "X86_V4 AVX512_ICL AVX512_SPR",
+ "member_ticks_compared": 404,
+ "slot_map_entries_differing": 0,
+ "discrete_slot_entries_differing": 0,
+ "globals_entries_differing": 0,
+ "ticks_with_any_discrete_mismatch": 0,
+ "jax_overflow_final": {
+  "raw_overflow_ticks": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "kept_overflow_ticks": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "raw_peak": [
+   11.0,
+   11.0,
+   10.0,
+   11.0
+  ],
+  "kept_peak": [
+   11.0,
+   11.0,
+   10.0,
+   11.0
+  ]
+ },
+ "obs_coords_compared": 58176,
+ "obs_coords_differing": 0,
+ "obs_equality_rate": 1.0,
+ "continuous_entries_compared": 63024,
+ "continuous_entries_not_bit_identical": 0,
+ "max_abs_diff": {
+  "present": 0.0,
+  "mass": 0.0,
+  "frac_c1": 0.0,
+  "x_cos": 0.0,
+  "x_sin": 0.0,
+  "y_cos": 0.0,
+  "y_sin": 0.0,
+  "rg": 0.0,
+  "q1": 0.0,
+  "q2": 0.0,
+  "vx": 0.0,
+  "vy": 0.0,
+  "cy": 0.0,
+  "cx": 0.0,
+  "age": 0.0,
+  "event": 0.0,
+  "uid": 0.0
+ },
+ "max_rel_diff": {
+  "present": 0.0,
+  "mass": 0.0,
+  "frac_c1": 0.0,
+  "x_cos": 0.0,
+  "x_sin": 0.0,
+  "y_cos": 0.0,
+  "y_sin": 0.0,
+  "rg": 0.0,
+  "q1": 0.0,
+  "q2": 0.0,
+  "vx": 0.0,
+  "vy": 0.0,
+  "cy": 0.0,
+  "cx": 0.0,
+  "age": 0.0,
+  "event": 0.0,
+  "uid": 0.0
+ },
+ "max_abs_diff_all": 0.0,
+ "max_rel_diff_all": 0.0,
+ "min_blur_threshold_margin": 1.467036797320187e-07,
+ "min_mass_mmin_margin": 16.747631465198587,
+ "events_final_sum_over_members": {
+  "births": 40.0,
+  "deaths": 0.0,
+  "fusions": 129.0,
+  "fissions": 118.0
+ },
+ "objects_present_mean": 8.056930693069306,
+ "timing_s": {
+  "init_burnin": 41.783567905426025,
+  "total": 98.99712181091309
+ }
+}

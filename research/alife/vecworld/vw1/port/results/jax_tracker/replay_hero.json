@@ -1,0 +1,34 @@
+{
+ "episode": "objects world, world_seed 0, reset(0), step(None) x 300",
+ "tracker": "jax",
+ "keys_in_saved_npz": [
+  "obs",
+  "obs64",
+  "L1",
+  "x",
+  "out_map",
+  "in_map",
+  "tab",
+  "glob"
+ ],
+ "obs_bit_identical_to_saved_obs64": true,
+ "obs_equal_to_saved_obs64": true,
+ "obs_coords_differing": 0,
+ "obs_coords": 43344,
+ "obs_float32_equal_to_saved_obs": true,
+ "out_map_equal": true,
+ "L1_max_abs_diff": 5.684341886080802e-14,
+ "L1_entries_not_bit_identical": 1260,
+ "L1_entries": 43344,
+ "x_float32_equal": true,
+ "tab_discrete_equal": true,
+ "tab_centroid_max_abs_diff": 2.842170943040401e-14,
+ "glob_equal": true,
+ "events_over_episode": {
+  "births": 0.0,
+  "deaths": 0.0,
+  "fusions": 69.0,
+  "fissions": 68.0
+ },
+ "wall_s": 67.16237330436707
+}

@@ -305,6 +305,18 @@ Closed-loop exams (DESIGN Q5) need no new world semantics by (b); only the certi
 | certificates, `Exam` | functionals of B_W, plus hidden-state quantities (oracle, gap, observation rate, leak; Prop. 9(d)) | kernel-level estimands; `Exam` skill is normalised by the oracle by default (hidden-state, Prop. 9(d)); a behaviour-level ceiling must be passed as `ceiling=` |
 | Fisher (autodiff) | `vw.fisher` returns the moment lower bound J̄ᵀΣ⁻¹J̄ (J̄ = ∂E o/∂θ by pathwise autodiff with fixed keys, Σ = Cov o) plus the Gaussian covariance term, exact for Gaussian o; the complete-data Fisher E[JᵀΣ_o⁻¹J] of open question 5 (an upper bound) is not what it returns | a θ-free noise law, Σ non-singular, and Φ differentiable almost everywhere (Φ_coarse is; the tracker is not); the unquantised channel |
 
+### Differentiability is a property, not part of the definition
+
+Levels are Markov kernels and coarse-grainings are measurable causal transducers; nothing in Sections 1-6 needs derivatives. Many of the coarse-graining levels that matter are discrete: counting bodies, keeping slot identities, recording a fusion or a fission. Requiring smoothness would exclude them, and a smooth relaxation (soft slots) changes what the level means.
+
+Modules carry a `differentiable` flag. Differentiable modules stay differentiable under stack, product and stride (chain rule), so differentiable worlds form a subcategory. A world is differentiable exactly when every module on the path to the observed level is.
+
+Where derivatives are used:
+- **Designer analysis over a few ticks**, such as input sensitivity and actuator design. In a chaotic core, pathwise derivatives agree with finite differences only for one or two ticks (gliders world: median relative error at most 2.2e-4 at 1 tick; disagreement from 4 ticks on). Longer-horizon information quantities use the likelihood-ratio estimator, which needs a differentiable noise density, not differentiable dynamics.
+- **Learning a coarse-graining.** An autoencoder or information bottleneck can propose the next level up when the lower dynamics is not known well enough to write that level by hand. Training needs gradients through Φ on sampled states, not through the core, and such learned maps are smooth by construction.
+
+What the implementation does require is that every module be a pure, compiled, batchable function, so that a world is one program. The library marks a module that breaks this (`opaque=True`, a host callback) as opaque. The object tracker `vw.objects.BlobTracker` is pure JAX and not differentiable. With it, the gliders world (`port/aworld.py`, default `tracker='jax'`) is one compiled program, and only its object view is non-differentiable. The numpy tracker remains available as an opaque reference; the JAX tracker matches its decisions exactly.
+
 ## References
 
 - [A] L. Arnold, *Random Dynamical Systems*, Springer, 1998. VERIFIED.

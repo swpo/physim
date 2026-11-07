@@ -1,0 +1,92 @@
+[   80.9s] init + burn-in, 10 members
+[  149.9s] tick 50: map/disc/glob/obs diffs [0.0, 0.0, 0.0, 0.0]
+[  211.4s] tick 100: map/disc/glob/obs diffs [0.0, 0.0, 0.0, 0.0]
+[  273.4s] tick 150: map/disc/glob/obs diffs [0.0, 0.0, 0.0, 0.0]
+[  334.9s] tick 200: map/disc/glob/obs diffs [0.0, 0.0, 0.0, 0.0]
+[  396.8s] tick 250: map/disc/glob/obs diffs [0.0, 0.0, 0.0, 0.0]
+[  458.9s] tick 300: map/disc/glob/obs diffs [0.0, 0.0, 0.0, 0.0]
+{
+ "tag": "B",
+ "designer_seed": 5102,
+ "world_seed": 0,
+ "members": 10,
+ "ticks_after_burnin": 300,
+ "records_per_member": 301,
+ "world": "aworld A_gliders, MapWorld, chain = pair(host, jax)",
+ "numpy_disabled_cpu_features": "",
+ "member_ticks_compared": 3010,
+ "slot_map_entries_differing": 0,
+ "discrete_slot_entries_differing": 0,
+ "globals_entries_differing": 0,
+ "ticks_with_any_discrete_mismatch": 0,
+ "jax_overflow_final": {
+  "raw_overflow_ticks": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "kept_overflow_ticks": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "raw_peak": [
+   11.0,
+   11.0,
+   10.0,
+   10.0,
+   12.0,
+   13.0,
+   12.0,
+   11.0,
+   11.0,
+   12.0
+  ],
+  "kept_peak": [
+   11.0,
+   11.0,
+   10.0,
+   10.0,
+   11.0,
+   13.0,
+   12.0,
+   11.0,
+   11.0,
+   12.0
+  ]
+ },
+ "obs_coords_compared": 433440,
+ "obs_coords_differing": 0,
+ "obs_equality_rate": 1.0,
+ "continuous_entries_compared": 469560,
+ "continuous_entries_not_bit_identical": 14266,
+ "max_abs_diff_all": 4.263256414560601e-14,
+ "max_rel_diff_all": 2.9059645640362914e-11,
+ "min_blur_threshold_margin": 6.326633648912061e-08,
+ "min_mass_mmin_margin": 5.068554877861644,
+ "events_final_sum_over_members": {
+  "births": 95.0,
+  "deaths": 0.0,
+  "fusions": 794.0,
+  "fissions": 775.0
+ },
+ "objects_present_mean": 7.589700996677741,
+ "timing_s": {
+  "init_burnin": 80.85861325263977,
+  "total": 458.8740634918213
+ }
+}

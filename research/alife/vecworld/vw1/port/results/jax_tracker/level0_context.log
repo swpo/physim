@@ -1,0 +1,50 @@
+{'a_after_50_burnin_ticks': {'B1_host_vs_jax_max_abs': 0.0, 'B2_host_vs_jax_max_abs': 3.064958338474556, 'member0_host_B1_vs_host_B2_max_abs': 3.064958338474556}, 'a_member0_vs_B1_max_abs': {'host_B2': 3.064958338474556, 'host_B3': 3.064958338474556, 'jax_B2': 0.0, 'jax_B3': 0.0}, 'a_member1_host_B2_vs_B3_max_abs': 0.0, 'a_member1_jax_B2_vs_B3_max_abs': 0.0, 'a_B2_by_burnin_ticks_host_vs_jax_max_abs': {'0': 0.0, '1': 0.0, '3': 7.179634664566947e-10}}
+{'objects:host': 0.0, 'objects:jax': 0.0, 'coarse:host': 0.0}
+{'host': {'kernel_rfft_computed_in': ['loop body wide.wide.region_0.102.clone.sunk.clone.clone.clone'], 'kernel_rfft_input_fusion_kinds': ['kLoop', 'kLoop']}, 'jax': {'kernel_rfft_computed_in': ['program entry (hoisted out of the member loop)'], 'kernel_rfft_input_fusion_kinds': ['kCustom/ynn', 'kLoop']}, 'stride_loop_body_identical': True}
+{
+ "a_after_50_burnin_ticks": {
+  "B1_host_vs_jax_max_abs": 0.0,
+  "B2_host_vs_jax_max_abs": 3.064958338474556,
+  "member0_host_B1_vs_host_B2_max_abs": 3.064958338474556
+ },
+ "a_member0_vs_B1_max_abs": {
+  "host_B2": 3.064958338474556,
+  "host_B3": 3.064958338474556,
+  "jax_B2": 0.0,
+  "jax_B3": 0.0
+ },
+ "a_member1_host_B2_vs_B3_max_abs": 0.0,
+ "a_member1_jax_B2_vs_B3_max_abs": 0.0,
+ "a_B2_by_burnin_ticks_host_vs_jax_max_abs": {
+  "0": 0.0,
+  "1": 0.0,
+  "3": 7.179634664566947e-10
+ },
+ "b_rollout_from_given_states_max_abs_vs_objects_host": {
+  "objects:host": 0.0,
+  "objects:jax": 0.0,
+  "coarse:host": 0.0
+ },
+ "c_compiled_init_program": {
+  "host": {
+   "kernel_rfft_computed_in": [
+    "loop body wide.wide.region_0.102.clone.sunk.clone.clone.clone"
+   ],
+   "kernel_rfft_input_fusion_kinds": [
+    "kLoop",
+    "kLoop"
+   ]
+  },
+  "jax": {
+   "kernel_rfft_computed_in": [
+    "program entry (hoisted out of the member loop)"
+   ],
+   "kernel_rfft_input_fusion_kinds": [
+    "kCustom/ynn",
+    "kLoop"
+   ]
+  },
+  "stride_loop_body_identical": true
+ },
+ "d_kernel_fft_jit_vs_op_by_op_max_abs": 4.497541098630883e-16
+}
