@@ -1,9 +1,29 @@
 {
+  "billing_window_hours": 2.0,
+  "bundle": {
+    "bundle_sha256": "d5c8a060ce496611b8ac9437cb119519117022c4caef1ed8d671e587f71f2881",
+    "files": {
+      "job.sh": "73aafd8e492efc09ca1840df931b2c47ee33b2d2740fbb9cae04a510f85725a8",
+      "request.json": "c776b94f73fe09e5eed7dc9677361d89e928a89a6caff846f415ca423b9471e9",
+      "run.sh": "8367c0ddfffc594d5d3b52492b0ce20233b7f674a298952c551667571a639f0a",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "5fe389a53fdf3a01072fc8c1d3578c7c7b4de9122a67a1a59cc2bd617f8187d0"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0"
+    ],
+    "ref": "cc46ab7a080a8d3f8041b3b9148156f4e47b9a60",
+    "src_bytes": 10008965
+  },
   "cap_usd": 10.0,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-07T21:18:40Z",
@@ -14,11 +34,52 @@
       "at": "2026-11-07T21:18:58Z",
       "message": "accepted: H100_80GB via lambdalabs at $3.29/h, at most $5.36",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-07T21:19:10Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "vw1-bench-001",
   "max_estimate_usd": 5.36,
-  "message": "accepted: H100_80GB via lambdalabs at $3.29/h, at most $5.36",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_h100_sxm5",
+      "country": "US",
+      "data_center": "us-south-2",
+      "disk_gb": 2816,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 225,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 4.29,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 26
+    },
+    {
+      "cloud_id": "1A100.22V",
+      "country": "FI",
+      "data_center": "FIN-02",
+      "disk_gb": 120,
+      "gpu_memory_gb": 80,
+      "gpu_type": "A100_80GB",
+      "is_spot": false,
+      "memory_gb": 120,
+      "provider": "datacrunch",
+      "rank": 1,
+      "rate_usd_hr": 2.3489,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 22
+    }
+  ],
   "plan": {
     "max_estimate_usd": 5.36,
     "offers": [
@@ -61,6 +122,6 @@
     "window_hours": 1.25
   },
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-07T21:18:58Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-07T21:19:10Z"
 }

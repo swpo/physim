@@ -7,4 +7,4 @@ Campaign cap $1000.00 · spent $0.05 (billed where Prime has reported it, otherw
 | job | state | requester branch | GPU | pod hours | conservative USD | billed USD | cap USD | finished |
 |---|---|---|---|---|---|---|---|---|
 | smoke-001 | done | claude/gpu-smoke-20261107 | A10_24GB (lambdalabs) | 0.123 | 0.16 | 0.05 | 1.5 | 2026-11-07T21:11:49Z |
-| vw1-bench-001 | queued | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 10.0 |  |
+| vw1-bench-001 | provisioning | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 10.0 |  |
