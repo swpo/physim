@@ -1,9 +1,29 @@
 {
+  "billing_window_hours": 1.5,
+  "bundle": {
+    "bundle_sha256": "49c87b56a6e4e3f52ab2d50a74112b4bee1fb9ca4d5170af9b4d129bafa0002a",
+    "files": {
+      "job.sh": "0299609c00c9b7969b3c6f9dcb062744394d234ea849ffaf3d829ce8e0c8022a",
+      "request.json": "c7752e136190f556bedac9d3ea58af28f3b8dd3e7ecd69634efcb8750a6e792d",
+      "run.sh": "eb68aa8c6ff975c46f7ac1be58b555c965264e58beb41621bb5cbc205f944d1b",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "7509bbc22f0f89dea8a50e31ded035dfffc18d03d291dcc091bfda5f80103843"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0"
+    ],
+    "ref": "e22d5ea2a331460b8d5c964ac553a14082060861",
+    "src_bytes": 10009927
+  },
   "cap_usd": 4.0,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-07T21:55:01Z",
@@ -14,12 +34,53 @@
       "at": "2026-11-07T21:55:16Z",
       "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-07T21:55:49Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "vw1-agree-001",
   "max_estimate_usd": null,
-  "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "1A100.22V",
+      "country": "FI",
+      "data_center": "FIN-02",
+      "disk_gb": 120,
+      "gpu_memory_gb": 80,
+      "gpu_type": "A100_80GB",
+      "is_spot": false,
+      "memory_gb": 120,
+      "provider": "datacrunch",
+      "rank": 0,
+      "rate_usd_hr": 2.3489,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 22
+    },
+    {
+      "cloud_id": "1A100.22V",
+      "country": "FI",
+      "data_center": "FIN-03",
+      "disk_gb": 120,
+      "gpu_memory_gb": 80,
+      "gpu_type": "A100_80GB",
+      "is_spot": false,
+      "memory_gb": 120,
+      "provider": "datacrunch",
+      "rank": 0,
+      "rate_usd_hr": 2.3489,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 22
+    }
+  ],
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-07T21:55:16Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-07T21:55:49Z"
 }
