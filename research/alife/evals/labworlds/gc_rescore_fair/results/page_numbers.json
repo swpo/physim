@@ -1,0 +1,1132 @@
+[
+ {
+  "card": "vortex:media2/S_steer",
+  "caveat_index": 2,
+  "quote": "k0 separates on the no-action program too (17.7x); specificity 1.22 (acting probe 2.13)",
+  "text": "k0 is global (it removes every body), so it separates on the no-action program too (17.7x); its specificity here is 1.22 (acting probe device0/om: 2.13).",
+  "old": [
+   "17.7",
+   "1.22",
+   "2.13"
+  ],
+  "new": [
+   "20.8",
+   "1.48",
+   "2.54"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_steer",
+  "caveat_index": 3,
+  "quote": "null 0.99 of pooled native [0.91, 1.09], per case 0.88-1.11; band 0.51-1.44 per case",
+  "text": "dt-halved null: 0.99 of the pooled native reference [0.91, 1.09] over the 3 cases (per case 0.88-1.11), inside the native band (second independent native / first: 0.51-1.44 per case); member 0 at dt 0.01 reaches its body-count plateau (38-39) at native t 12 and settles by native t 51 (dt 0.02: plateau 39 at native t 12, settled by 49.5). At group level (null / pooled native against the group's widest per-case native band) 5 of 27 group-case cells exceed their band: global vorticity on the no-action case 1.97 (band at most 1.56), global fuel there 1.37 (at most 1.36), and on S_steer device 1's vorticity, fuel and eating 1.16, 1.18 and 1.07 (at most 1.00, 1.03 and 1.00): the dt-halved world departs most at the fuel-sink site.",
+  "old": [
+   "0.99",
+   "0.91",
+   "1.09",
+   "0.88",
+   "1.11",
+   "0.51",
+   "1.44"
+  ],
+  "new": [
+   "0.94",
+   "0.90",
+   "1.01",
+   "0.88",
+   "1.04",
+   "0.43",
+   "1.62"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_steer",
+  "caveat_index": 3,
+  "quote": "5 of 27 group-case cells exceed their band",
+  "text": "dt-halved null: 0.99 of the pooled native reference [0.91, 1.09] over the 3 cases (per case 0.88-1.11), inside the native band (second independent native / first: 0.51-1.44 per case); member 0 at dt 0.01 reaches its body-count plateau (38-39) at native t 12 and settles by native t 51 (dt 0.02: plateau 39 at native t 12, settled by 49.5). At group level (null / pooled native against the group's widest per-case native band) 5 of 27 group-case cells exceed their band: global vorticity on the no-action case 1.97 (band at most 1.56), global fuel there 1.37 (at most 1.36), and on S_steer device 1's vorticity, fuel and eating 1.16, 1.18 and 1.07 (at most 1.00, 1.03 and 1.00): the dt-halved world departs most at the fuel-sink site.",
+  "old": [
+   "5",
+   "27"
+  ],
+  "new": [
+   "4",
+   "27"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_steer",
+  "caveat_index": 3,
+  "quote": "global vorticity on the no-action case 1.97 (band at most 1.56) [exceeds?]",
+  "text": "dt-halved null: 0.99 of the pooled native reference [0.91, 1.09] over the 3 cases (per case 0.88-1.11), inside the native band (second independent native / first: 0.51-1.44 per case); member 0 at dt 0.01 reaches its body-count plateau (38-39) at native t 12 and settles by native t 51 (dt 0.02: plateau 39 at native t 12, settled by 49.5). At group level (null / pooled native against the group's widest per-case native band) 5 of 27 group-case cells exceed their band: global vorticity on the no-action case 1.97 (band at most 1.56), global fuel there 1.37 (at most 1.36), and on S_steer device 1's vorticity, fuel and eating 1.16, 1.18 and 1.07 (at most 1.00, 1.03 and 1.00): the dt-halved world departs most at the fuel-sink site.",
+  "old": [
+   "1.97",
+   "1.56",
+   "True"
+  ],
+  "new": [
+   "2.21",
+   "1.69",
+   "True"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_steer",
+  "caveat_index": 3,
+  "quote": "global fuel there 1.37 (at most 1.36) [exceeds?]",
+  "text": "dt-halved null: 0.99 of the pooled native reference [0.91, 1.09] over the 3 cases (per case 0.88-1.11), inside the native band (second independent native / first: 0.51-1.44 per case); member 0 at dt 0.01 reaches its body-count plateau (38-39) at native t 12 and settles by native t 51 (dt 0.02: plateau 39 at native t 12, settled by 49.5). At group level (null / pooled native against the group's widest per-case native band) 5 of 27 group-case cells exceed their band: global vorticity on the no-action case 1.97 (band at most 1.56), global fuel there 1.37 (at most 1.36), and on S_steer device 1's vorticity, fuel and eating 1.16, 1.18 and 1.07 (at most 1.00, 1.03 and 1.00): the dt-halved world departs most at the fuel-sink site.",
+  "old": [
+   "1.37",
+   "1.36",
+   "True"
+  ],
+  "new": [
+   "1.44",
+   "1.54",
+   "False"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_steer",
+  "caveat_index": 3,
+  "quote": "S_steer device 1 vorticity 1.16 (at most 1.00) [exceeds?]",
+  "text": "dt-halved null: 0.99 of the pooled native reference [0.91, 1.09] over the 3 cases (per case 0.88-1.11), inside the native band (second independent native / first: 0.51-1.44 per case); member 0 at dt 0.01 reaches its body-count plateau (38-39) at native t 12 and settles by native t 51 (dt 0.02: plateau 39 at native t 12, settled by 49.5). At group level (null / pooled native against the group's widest per-case native band) 5 of 27 group-case cells exceed their band: global vorticity on the no-action case 1.97 (band at most 1.56), global fuel there 1.37 (at most 1.36), and on S_steer device 1's vorticity, fuel and eating 1.16, 1.18 and 1.07 (at most 1.00, 1.03 and 1.00): the dt-halved world departs most at the fuel-sink site.",
+  "old": [
+   "1.16",
+   "1.00",
+   "True"
+  ],
+  "new": [
+   "1.07",
+   "1.00",
+   "True"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_steer",
+  "caveat_index": 3,
+  "quote": "S_steer device 1 fuel 1.18 (at most 1.03) [exceeds?]",
+  "text": "dt-halved null: 0.99 of the pooled native reference [0.91, 1.09] over the 3 cases (per case 0.88-1.11), inside the native band (second independent native / first: 0.51-1.44 per case); member 0 at dt 0.01 reaches its body-count plateau (38-39) at native t 12 and settles by native t 51 (dt 0.02: plateau 39 at native t 12, settled by 49.5). At group level (null / pooled native against the group's widest per-case native band) 5 of 27 group-case cells exceed their band: global vorticity on the no-action case 1.97 (band at most 1.56), global fuel there 1.37 (at most 1.36), and on S_steer device 1's vorticity, fuel and eating 1.16, 1.18 and 1.07 (at most 1.00, 1.03 and 1.00): the dt-halved world departs most at the fuel-sink site.",
+  "old": [
+   "1.18",
+   "1.03",
+   "True"
+  ],
+  "new": [
+   "1.09",
+   "1.05",
+   "True"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_steer",
+  "caveat_index": 3,
+  "quote": "S_steer device 1 eating 1.07 (at most 1.00) [exceeds?]",
+  "text": "dt-halved null: 0.99 of the pooled native reference [0.91, 1.09] over the 3 cases (per case 0.88-1.11), inside the native band (second independent native / first: 0.51-1.44 per case); member 0 at dt 0.01 reaches its body-count plateau (38-39) at native t 12 and settles by native t 51 (dt 0.02: plateau 39 at native t 12, settled by 49.5). At group level (null / pooled native against the group's widest per-case native band) 5 of 27 group-case cells exceed their band: global vorticity on the no-action case 1.97 (band at most 1.56), global fuel there 1.37 (at most 1.36), and on S_steer device 1's vorticity, fuel and eating 1.16, 1.18 and 1.07 (at most 1.00, 1.03 and 1.00): the dt-halved world departs most at the fuel-sink site.",
+  "old": [
+   "1.07",
+   "1.00",
+   "True"
+  ],
+  "new": [
+   "1.07",
+   "1.00",
+   "True"
+  ],
+  "old_found_in_text": true,
+  "changed": false,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_wide",
+  "caveat_index": 3,
+  "quote": "ignore-actions control 4.2x, wrong geometry 2.6x on this case",
+  "text": "The widened probes do not change the world; the program tests whether a predictor reads the same formation through its own probe pose (ignore-actions control 4.2x, wrong geometry 2.6x on this case).",
+  "old": [
+   "4.2",
+   "2.6"
+  ],
+  "new": [
+   "4.9",
+   "2.8"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:media2/S_wide",
+  "caveat_index": 4,
+  "quote": "k0's ratio here (13.4x) lower than on the no-action program (17.7x), specificity 0.76",
+  "text": "k0 is global; its ratio here (13.4x) is lower than on the no-action program (17.7x), specificity 0.76.",
+  "old": [
+   "13.4",
+   "17.7",
+   "0.76"
+  ],
+  "new": [
+   "16.1",
+   "20.8",
+   "0.77"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media2/S_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/formation/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:I_follow",
+  "caveat_index": 2,
+  "quote": "the neutral twin (eps0) already fails 2.7x on the no-action program (pooled reference)",
+  "text": "The world's own trait-blind mutation (a/b swap in a 6-px disk at a random eating pixel) fires once in the window, at tu 10. Its target depends on which pixels eat, so it lands on different vortices in different runs and members (all at 17-67 world units from the device centres here); it makes the label groups bimodal across members and is why the neutral twin (eps0) already fails 2.7x on the no-action program.",
+  "old": [
+   "2.7"
+  ],
+  "new": [
+   "3.2"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media/I_follow_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:H_inherit",
+  "caveat_index": 4,
+  "quote": "the 5.05 'no-action' ratio of that group (device0/b, pooled)",
+  "text": "Score caveat: at rest no label reaches device 0, so its label-b group scores about 1e-4 for every predictor on the no-action program; the 5.05 'no-action' ratio of that group is a ratio of near-zero numbers and the group specificity here is not meaningful. Use H_carry and H_select_fed for the eps0 specificity.",
+  "old": [
+   "5.05"
+  ],
+  "new": [
+   "9.77"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/media/H_inherit_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/HD_wide",
+  "caveat_index": 2,
+  "quote": "adv0 scores 1.53 on no action, 1.73 here (specificity 1.13)",
+  "text": "adv0 is global: it scores 1.53 on the no-action program and 1.73 here (specificity 1.13); it separates through global/Y 7.2x, global/eat 5.1x, global/b 2.0x, global/a 2.0x.",
+  "old": [
+   "1.53",
+   "1.73",
+   "1.13"
+  ],
+  "new": [
+   "1.74",
+   "1.97",
+   "1.13"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/HD_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/HD_wide",
+  "caveat_index": 2,
+  "quote": "separates through global/Y 7.2x, global/eat 5.1x, global/b 2.0x, global/a 2.0x",
+  "text": "adv0 is global: it scores 1.53 on the no-action program and 1.73 here (specificity 1.13); it separates through global/Y 7.2x, global/eat 5.1x, global/b 2.0x, global/a 2.0x.",
+  "old": [
+   "7.2",
+   "5.1",
+   "2.0",
+   "2.0"
+  ],
+  "new": [
+   "8.9",
+   "5.8",
+   "2.1",
+   "2.0"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/HD_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/HD_wide",
+  "caveat_index": 3,
+  "quote": "null 0.96 of pooled [0.95, 0.98], per case 0.95-0.98, band 0.95-1.00",
+  "text": "dt-halved null over the 3 long2 cases: 0.96 of the pooled native reference [0.95, 0.98], per case 0.95-0.98, against a native band of 0.95-1.00 (second independent native / first). At group level 9 of 45 group-case cells exceed their group's widest per-case band, most of all global vorticity on H_seed (1.34, band at most 1.11); the others are device 1's groups at 1.02-1.08 (bands at most 1.00-1.05). This program's acting group (device1/om) stays inside its band.",
+  "old": [
+   "0.96",
+   "0.95",
+   "0.98",
+   "0.95",
+   "0.98",
+   "0.95",
+   "1.00"
+  ],
+  "new": [
+   "0.97",
+   "0.95",
+   "0.98",
+   "0.95",
+   "1.00",
+   "0.95",
+   "1.00"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/HD_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/HD_wide",
+  "caveat_index": 3,
+  "quote": "9 of 45 group-case cells exceed their band",
+  "text": "dt-halved null over the 3 long2 cases: 0.96 of the pooled native reference [0.95, 0.98], per case 0.95-0.98, against a native band of 0.95-1.00 (second independent native / first). At group level 9 of 45 group-case cells exceed their group's widest per-case band, most of all global vorticity on H_seed (1.34, band at most 1.11); the others are device 1's groups at 1.02-1.08 (bands at most 1.00-1.05). This program's acting group (device1/om) stays inside its band.",
+  "old": [
+   "9",
+   "45"
+  ],
+  "new": [
+   "9",
+   "45"
+  ],
+  "old_found_in_text": true,
+  "changed": false,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/HD_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/HD_wide",
+  "caveat_index": 3,
+  "quote": "global vorticity on H_seed 1.34 (band at most 1.11)",
+  "text": "dt-halved null over the 3 long2 cases: 0.96 of the pooled native reference [0.95, 0.98], per case 0.95-0.98, against a native band of 0.95-1.00 (second independent native / first). At group level 9 of 45 group-case cells exceed their group's widest per-case band, most of all global vorticity on H_seed (1.34, band at most 1.11); the others are device 1's groups at 1.02-1.08 (bands at most 1.00-1.05). This program's acting group (device1/om) stays inside its band.",
+  "old": [
+   "1.34",
+   "1.11",
+   "True"
+  ],
+  "new": [
+   "1.51",
+   "1.14",
+   "True"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/HD_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/HD_wide",
+  "caveat_index": 3,
+  "quote": "acting group device1/om on HD_wide stays inside its band",
+  "text": "dt-halved null over the 3 long2 cases: 0.96 of the pooled native reference [0.95, 0.98], per case 0.95-0.98, against a native band of 0.95-1.00 (second independent native / first). At group level 9 of 45 group-case cells exceed their group's widest per-case band, most of all global vorticity on H_seed (1.34, band at most 1.11); the others are device 1's groups at 1.02-1.08 (bands at most 1.00-1.05). This program's acting group (device1/om) stays inside its band.",
+  "old": [
+   "0.993",
+   "1.001",
+   "False"
+  ],
+  "new": [
+   "0.992",
+   "1.014",
+   "False"
+  ],
+  "old_found_in_text": false,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/HD_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/H_seed",
+  "caveat_index": 5,
+  "quote": "acting group device1/b is one of them (1.052 against 1.041)",
+  "text": "dt-halved null over the 3 long2 cases: 0.96 of the pooled native reference [0.95, 0.98], per case 0.95-0.98, against a native band of 0.95-1.00 (second independent native / first). At group level 9 of 45 group-case cells exceed their group's widest per-case band, most of all global vorticity on H_seed (1.34, band at most 1.11); the others are device 1's groups at 1.02-1.08 (bands at most 1.00-1.05). This program's acting group (device1/b) is one of them (1.052 against 1.041).",
+  "old": [
+   "1.052",
+   "1.041",
+   "True"
+  ],
+  "new": [
+   "1.058",
+   "1.037",
+   "True"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/H_seed_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/HD_wide",
+  "caveat_index": 4,
+  "quote": "wrong probe geometry 1.00, ignore actions 1.01 (1.07 on HD_wide, above that case's 1.00); initial persistence 2.63",
+  "text": "Scored as one equal-weight mean over the 13 readings (2-50 tu), the naive action controls sit at the native band: wrong probe geometry 1.00 and ignore actions 1.01 (1.07 on HD_wide, above that case's 1.00; long/: 1.14 and 1.22); initial persistence still separates (2.63; long/ 2.56). The actions' effects are not gone by the first reading: at 2 tu (native t 496) alone ignore actions scores 1.77 on H_seed and 5.59 on HD_wide, and wrong probe geometry 3.14 on the no-action case and 2.41 on HD_wide, of the independent native; from 5 tu on they score 0.63-1.13, so the 13-reading mean dilutes them.",
+  "old": [
+   "1.00",
+   "1.01",
+   "1.07",
+   "1.00",
+   "2.63"
+  ],
+  "new": [
+   "1.01",
+   "1.01",
+   "1.07",
+   "0.99",
+   "3.28"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/HD_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/HD_wide",
+  "caveat_index": 4,
+  "quote": "at 2 tu ignore actions 1.77 on H_seed, 5.59 on HD_wide; wrong geometry 3.14 (no action), 2.41 (HD_wide); 0.63-1.13 from 5 tu",
+  "text": "Scored as one equal-weight mean over the 13 readings (2-50 tu), the naive action controls sit at the native band: wrong probe geometry 1.00 and ignore actions 1.01 (1.07 on HD_wide, above that case's 1.00; long/: 1.14 and 1.22); initial persistence still separates (2.63; long/ 2.56). The actions' effects are not gone by the first reading: at 2 tu (native t 496) alone ignore actions scores 1.77 on H_seed and 5.59 on HD_wide, and wrong probe geometry 3.14 on the no-action case and 2.41 on HD_wide, of the independent native; from 5 tu on they score 0.63-1.13, so the 13-reading mean dilutes them.",
+  "old": [
+   "1.77",
+   "5.59",
+   "3.14",
+   "2.41",
+   "0.63",
+   "1.13"
+  ],
+  "new": [
+   "1.78",
+   "8.09",
+   "3.98",
+   "3.22",
+   "0.61",
+   "1.17"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/HD_wide_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/pertime_scores.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "vortex:long2/media/H_seed",
+  "caveat_index": 4,
+  "quote": "eps0 separates through global/eat 5.1x, global/Y 3.7x, global/b 3.4x, global/om 2.5x; no action 1.60 (specificity 0.97)",
+  "text": "eps0 separates through the box groups (global/eat 5.1x, global/Y 3.7x, global/b 3.4x, global/om 2.5x); on the no-action program it scores 1.60 (specificity 0.97).",
+  "old": [
+   "5.1",
+   "3.7",
+   "3.4",
+   "2.5",
+   "1.60",
+   "0.97"
+  ],
+  "new": [
+   "6.1",
+   "4.1",
+   "4.0",
+   "3.2",
+   "1.77",
+   "0.98"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/vortex/long2/media/H_seed_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/vortex/long2/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "phase_membrane:B_links_core",
+  "caveat_index": 2,
+  "quote": "aggregate specificity of chi0 0.79-1.09; acting-device specificity 0.66-1.42",
+  "text": "aggregate specificity of chi0 is near 1 (0.79-1.09); acting-device specificity 0.66-1.42",
+  "old": [
+   "0.79",
+   "1.09",
+   "0.66",
+   "1.42"
+  ],
+  "new": [
+   "0.78",
+   "1.20",
+   "0.61",
+   "1.47"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/phase_membrane/media/B_links_core_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/phase_membrane/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "phase_membrane:media2/follow_B",
+  "caveat_index": 3,
+  "quote": "DS2's device-0 ratio there 16.7; probe ratio 2.9; device 1 gives 4.1 against 10.1",
+  "text": "acting-probe ratios: device 0 sits in the open bath in the no-action case, where doubling substrate diffusion shifts the bath substrate level (DS2's device-0 ratio there 16.7); on this program device 0 reads a cell, so its probe ratio (2.9) is not comparable with the no-action one; device 1 gives 4.1 against 10.1",
+  "old": [
+   "16.7",
+   "2.9",
+   "4.1",
+   "10.1"
+  ],
+  "new": [
+   "21.8",
+   "2.9",
+   "4.3",
+   "16.8"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/phase_membrane/media2/follow_B_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/phase_membrane/iter2/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "gaps:phase_membrane",
+  "caveat_index": null,
+  "quote": "S: the dt-halved null is flagged (formation null over native, global groups; band)",
+  "text": "S: during formation the box statistics carry a timestep error (the dt-halved null is flagged); separate cells exist only from about 25-36 tu. D is not beyond diffusion: the uniform-diffusion twin divides too.",
+  "old": [
+   "1.04",
+   "1.10",
+   "1.22",
+   "1.22",
+   "1.19",
+   "0.83",
+   "1.06"
+  ],
+  "new": [
+   "1.07",
+   "1.11",
+   "1.28",
+   "1.25",
+   "1.25",
+   "0.80",
+   "1.09"
+  ],
+  "old_found_in_text": false,
+  "changed": true,
+  "published_in": "/home/user/evalwork/showcase/page/build_gc.py WORLDS gaps",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/phase_membrane/formation/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:media2/steer_p",
+  "caveat_index": 1,
+  "quote": "dt-halved null on this case 0.931 (1.093/0.895/1.043 by sensor); band_native here 1.01",
+  "text": "the collapse is fast: device 0's centre e reaches 0.971 within 0.5 tu (5 native t); the dt-halved null on this case (a diagnostic outside the frozen suite, seeds 61001) scores 0.931 (1.093/0.895/1.043 by sensor) against the suite's native band (band_native here 1.01)",
+  "old": [
+   "0.931",
+   "1.093",
+   "0.895",
+   "1.043",
+   "1.01"
+  ],
+  "new": [
+   "0.860",
+   "1.095",
+   "0.810",
+   "1.055",
+   "1.00"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media2/steer_p_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/formation/suite/diagnostics/scores.json",
+   "/home/user/evalwork/gc_suites/cips/formation/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:media2/steer_p",
+  "caveat_index": 2,
+  "quote": "at device 0 chi0 scores 38.4x the native reference, the forecast that ignores the pulse 38.1x",
+  "text": "at device 0 chi0 scores 38.4x the native reference, the same as the forecast that ignores the pulse (38.1x): what chi0 misses at the acting probe is the steered body itself",
+  "old": [
+   "38.4",
+   "38.1"
+  ],
+  "new": [
+   "49.1",
+   "48.6"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media2/steer_p_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/formation/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:media2/steer_p",
+  "caveat_index": 7,
+  "quote": "null aggregate 1.03 against the native band 1.01-1.13 (inside); no action 1.05, keep_empty 0.98",
+  "text": "the dt-halved null (dt 0.05, 4 steps per tick, on the no-action and keep_empty cases): aggregate 1.03 against the native band 1.01-1.13 (inside the band); no action 1.05, keep_empty 0.98",
+  "old": [
+   "1.03",
+   "1.01",
+   "1.13",
+   "1.05",
+   "0.98"
+  ],
+  "new": [
+   "1.12",
+   "1.00",
+   "1.20",
+   "1.14",
+   "1.05"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media2/steer_p_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/formation/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:media2/keep_empty",
+  "caveat_index": 2,
+  "quote": "second native ensemble on this case 0.909 (0.624/0.706/1.131); its null 0.98",
+  "text": "a second native ensemble on this case (diagnostic outside the frozen suite, seeds 91002) scores 0.909 (0.624/0.706/1.131 by sensor), the band against which its null (0.98) is read",
+  "old": [
+   "0.909",
+   "0.624",
+   "0.706",
+   "1.131",
+   "0.98"
+  ],
+  "new": [
+   "0.921",
+   "0.586",
+   "0.641",
+   "1.274",
+   "1.05"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media2/keep_empty_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/formation/suite/diagnostics/scores.json",
+   "/home/user/evalwork/gc_suites/cips/formation/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:I_enter_exit",
+  "caveat_index": 0,
+  "quote": "chi0 ratio here 107.8, no action 109.8, global groups ~140; acting device 1.71x",
+  "text": "chi0 removes every body in the box; its aggregate ratio here (107.8) equals its no-action ratio (109.8), dominated by the global groups (~140); at the acting device it is 1.71x its no-action ratio",
+  "old": [
+   "107.8",
+   "109.8",
+   "148",
+   "1.71"
+  ],
+  "new": [
+   "143.4",
+   "137.9",
+   "196",
+   "1.68"
+  ],
+  "old_found_in_text": false,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/I_enter_exit_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/report.json",
+   "/home/user/evalwork/gc_suites/cips/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:I_wide_C4",
+  "caveat_index": 0,
+  "quote": "specificity 0.76, 0.89 at device 0; enter_exit 1.71 at device 0",
+  "text": "chi0 removes every body in the box, so it fails on every program including no action; on this program its ratio is below its no-action ratio (specificity 0.76, 0.89 at device 0): with the probe on a body the native forecast is less sharp than in open bath. The I program where chi0 fails more than with no action at the acting device is enter_exit (1.71 at device 0; video I_enter_exit)",
+  "old": [
+   "0.76",
+   "0.89",
+   "1.71"
+  ],
+  "new": [
+   "0.74",
+   "0.87",
+   "1.68"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/I_wide_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:B_s_core",
+  "caveat_index": 2,
+  "quote": "specificity 0.99, 1.04 at device 0; s_bath 1.51, 2.21 at device 0",
+  "text": "chis0's ratio here equals its no-action ratio (specificity 0.99, 1.04 at device 0): without adsorption the native layer dissolves within ~2.5 tu everywhere, which already dominates; the B program where chis0 fails most beyond no action is s_bath (1.51, 2.21 at device 0; video B_s_bath)",
+  "old": [
+   "0.99",
+   "1.04",
+   "1.51",
+   "2.21"
+  ],
+  "new": [
+   "1.00",
+   "1.03",
+   "1.64",
+   "2.17"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/B_s_core_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:E_cut_C4",
+  "caveat_index": 1,
+  "quote": "kF0 specificity cut_C4 0.68 (0.38 at device 0), wide_C4 0.73 (0.27), feed_neck 1.11 (1.22), cut_neck 1.24 (1.54)",
+  "text": "kF0 is a global supply ablation (the claim's control): it starves every body and drains the bath fuel (0.80 -> ~0). With no action device 0 reads open bath, where that error is largest against a very sharp native forecast, and a local cut moves the real world toward kF0's prediction at the target, so kF0's specificity on the device-0 programs is below 1 (cut_C4 0.68, 0.38 at device 0; wide_C4 0.73, 0.27). On the device-1 neck programs it is above 1 (feed_neck 1.11, 1.22 at device 1; cut_neck 1.24, 1.54); the control's own energy score at device 1 on the neck programs is 0.97-1.01x its no-action value; the ratios above 1 come from the native forecast being sharper there (independent_native device-1 score 0.034-0.042 against 0.052 with no action), and the acting-device native band reaches 1.36 on cut_neck",
+  "old": [
+   "0.68",
+   "0.38",
+   "0.73",
+   "0.27",
+   "1.11",
+   "1.22",
+   "1.24",
+   "1.54"
+  ],
+  "new": [
+   "0.64",
+   "0.35",
+   "0.72",
+   "0.26",
+   "1.09",
+   "1.24",
+   "1.23",
+   "1.69"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/E_cut_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:E_cut_C4",
+  "caveat_index": 1,
+  "quote": "kF0's own device-1 energy on the neck programs 0.97-1.01x its no-action value",
+  "text": "kF0 is a global supply ablation (the claim's control): it starves every body and drains the bath fuel (0.80 -> ~0). With no action device 0 reads open bath, where that error is largest against a very sharp native forecast, and a local cut moves the real world toward kF0's prediction at the target, so kF0's specificity on the device-0 programs is below 1 (cut_C4 0.68, 0.38 at device 0; wide_C4 0.73, 0.27). On the device-1 neck programs it is above 1 (feed_neck 1.11, 1.22 at device 1; cut_neck 1.24, 1.54); the control's own energy score at device 1 on the neck programs is 0.97-1.01x its no-action value; the ratios above 1 come from the native forecast being sharper there (independent_native device-1 score 0.034-0.042 against 0.052 with no action), and the acting-device native band reaches 1.36 on cut_neck",
+  "old": [
+   "0.97",
+   "1.01"
+  ],
+  "new": [
+   "0.97",
+   "1.01"
+  ],
+  "old_found_in_text": true,
+  "changed": false,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/E_cut_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/controls",
+   "/home/user/evalwork/gc_suites/cips/suite/suite.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:E_cut_C4",
+  "caveat_index": 1,
+  "quote": "independent_native device-1 score 0.034-0.042 on the neck programs against 0.052 with no action",
+  "text": "kF0 is a global supply ablation (the claim's control): it starves every body and drains the bath fuel (0.80 -> ~0). With no action device 0 reads open bath, where that error is largest against a very sharp native forecast, and a local cut moves the real world toward kF0's prediction at the target, so kF0's specificity on the device-0 programs is below 1 (cut_C4 0.68, 0.38 at device 0; wide_C4 0.73, 0.27). On the device-1 neck programs it is above 1 (feed_neck 1.11, 1.22 at device 1; cut_neck 1.24, 1.54); the control's own energy score at device 1 on the neck programs is 0.97-1.01x its no-action value; the ratios above 1 come from the native forecast being sharper there (independent_native device-1 score 0.034-0.042 against 0.052 with no action), and the acting-device native band reaches 1.36 on cut_neck",
+  "old": [
+   "0.034",
+   "0.042",
+   "0.052"
+  ],
+  "new": [
+   "0.026",
+   "0.034",
+   "0.043"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/E_cut_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/controls",
+   "/home/user/evalwork/gc_suites/cips/suite/suite.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:E_cut_C4",
+  "caveat_index": 1,
+  "quote": "acting-device native band reaches 1.36 on cut_neck",
+  "text": "kF0 is a global supply ablation (the claim's control): it starves every body and drains the bath fuel (0.80 -> ~0). With no action device 0 reads open bath, where that error is largest against a very sharp native forecast, and a local cut moves the real world toward kF0's prediction at the target, so kF0's specificity on the device-0 programs is below 1 (cut_C4 0.68, 0.38 at device 0; wide_C4 0.73, 0.27). On the device-1 neck programs it is above 1 (feed_neck 1.11, 1.22 at device 1; cut_neck 1.24, 1.54); the control's own energy score at device 1 on the neck programs is 0.97-1.01x its no-action value; the ratios above 1 come from the native forecast being sharper there (independent_native device-1 score 0.034-0.042 against 0.052 with no action), and the acting-device native band reaches 1.36 on cut_neck",
+  "old": [
+   "1.36"
+  ],
+  "new": [
+   "1.43"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/E_cut_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:E_cut_C4",
+  "caveat_index": 2,
+  "quote": "D's control (d0) ratio here 21.7 against 30.7 with no action",
+  "text": "without turnover (d0) the cut empties C4's centre later: device 0's centre e first falls below 0.5 at 24 tu (18 tu in the real world) and 8 of 13 nodes still read e > 0.5 at 50 tu (2 in the real world); the split time (~40 tu) came from a design run whose arrays were deleted and cannot be checked. D's control ratio here 21.7 against 30.7 with no action",
+  "old": [
+   "21.7",
+   "30.7"
+  ],
+  "new": [
+   "25.4",
+   "38.2"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/E_cut_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:E_cut_C4",
+  "caveat_index": 3,
+  "quote": "null fails on this case at device 0 (ratio 2.0; 1.23 aggregate)",
+  "text": "the dt-halved null fails on this case at device 0 (ratio 2.0; 1.23 aggregate): attributed to the fuel sink clipped at zero every step not being converged at dt 0.1 at the pulse site, so device 0's groups on cut_C4 cannot separate a control below ~2x from a change of numerics (the deciding controls here are 12-31x at device 0) (the attribution is not tested)",
+  "old": [
+   "2.0",
+   "1.23"
+  ],
+  "new": [
+   "2.2",
+   "1.29"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/E_cut_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:media2/moat_C4",
+  "caveat_index": 2,
+  "quote": "ignore_actions 14.41x (11.13x at device 0); kF0 195.65x, 8.39x at device 0 (no action 78.56x)",
+  "text": "the fed twin's contrast: the no-action forecast (ignore_actions) scores 14.41x the native reference on this case (11.13x at device 0); kF0 scores 195.65x, but only 8.39x at device 0, where the cut moves the real target toward kF0's prediction (no-action case: 78.56x at device 0); kF0 is a global ablation, so its specificity here is low by construction",
+  "old": [
+   "14.41",
+   "11.13",
+   "195.65",
+   "8.39",
+   "78.56"
+  ],
+  "new": [
+   "18.17",
+   "14.57",
+   "249.01",
+   "10.98",
+   "109.19"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media2/moat_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/iter2/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:media2/moat_C4",
+  "caveat_index": 3,
+  "quote": "null 1.3x (1.3/1.3/1.29 by sensor), above the native band 1.19x",
+  "text": "the dt-halved null scores 1.3x on this case (1.3/1.3/1.29 by sensor), above the native band 1.19x: the remnants' fate under the clipped sinks is timestep-sensitive; controls below ~1.3x on this case cannot be told from a change of numerics",
+  "old": [
+   "1.30",
+   "1.30",
+   "1.30",
+   "1.29",
+   "1.19",
+   "True"
+  ],
+  "new": [
+   "1.37",
+   "1.45",
+   "1.49",
+   "1.21",
+   "1.12",
+   "True"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media2/moat_C4_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/iter2/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "gaps:cips",
+  "caveat_index": null,
+  "quote": "The moat case's dt-halved null exceeds its band (null / band on moat_C4, unrounded)",
+  "text": "E: the moat cuts the target cell below the body threshold for 5-10 tu, but a remnant re-forms; probes cannot make an irreversible kill because fuel regrows everywhere and regrowth is not a port. The moat case's dt-halved null exceeds its band.",
+  "old": [
+   "1.298",
+   "1.186"
+  ],
+  "new": [
+   "1.370",
+   "1.116"
+  ],
+  "old_found_in_text": false,
+  "changed": true,
+  "published_in": "/home/user/evalwork/showcase/page/build_gc.py WORLDS gaps",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/iter2/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:D_cut_neck",
+  "caveat_index": 1,
+  "quote": "d0 aggregate cut_neck 1.25, hold_neck 1.51, feed_neck 1.14; device 1: 1.57, 1.08, 1.17; cut_C4 0.71, 0.81",
+  "text": "d0's ratio to the native forecast is higher than with no action on all three neck programs (cut_neck 1.25, hold_neck 1.51, feed_neck 1.14 aggregate; 1.57, 1.08, 1.17 at device 1) and lower on cut_C4 (0.71, 0.81 at device 0). This is not d0 failing more in absolute terms: d0's own device-1 energy score is 1.03x (cut_neck), 0.78x (hold_neck) and 0.93x (feed_neck) its no-action value; the ratio rises because the native forecast is sharper on these programs (device-1 score 0.034-0.042 against 0.052), and the acting-device native band on cut_neck reaches 1.36",
+  "old": [
+   "1.25",
+   "1.51",
+   "1.14",
+   "1.57",
+   "1.08",
+   "1.17",
+   "0.71",
+   "0.81"
+  ],
+  "new": [
+   "1.24",
+   "1.78",
+   "1.12",
+   "1.71",
+   "1.12",
+   "1.18",
+   "0.67",
+   "0.79"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/D_cut_neck_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/specificity.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "cips:D_cut_neck",
+  "caveat_index": 1,
+  "quote": "d0's own device-1 energy 1.03x (cut_neck), 0.78x (hold_neck), 0.93x (feed_neck) its no-action value",
+  "text": "d0's ratio to the native forecast is higher than with no action on all three neck programs (cut_neck 1.25, hold_neck 1.51, feed_neck 1.14 aggregate; 1.57, 1.08, 1.17 at device 1) and lower on cut_C4 (0.71, 0.81 at device 0). This is not d0 failing more in absolute terms: d0's own device-1 energy score is 1.03x (cut_neck), 0.78x (hold_neck) and 0.93x (feed_neck) its no-action value; the ratio rises because the native forecast is sharper on these programs (device-1 score 0.034-0.042 against 0.052), and the acting-device native band on cut_neck reaches 1.36",
+  "old": [
+   "1.03",
+   "0.78",
+   "0.93"
+  ],
+  "new": [
+   "1.02",
+   "0.77",
+   "0.93"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/cips/media/D_cut_neck_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/cips/suite/controls",
+   "/home/user/evalwork/gc_suites/cips/suite/suite.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "rods:media2/S_steer",
+  "caveat_index": 2,
+  "quote": "dt-halved null: no action 1.02, this case 0.98; native band (70 subsets) 0.975-1.078",
+  "text": "dt-halved null (dt 0.025, 4 steps per tick): no action 1.02, this case 0.98; native band on the no-action case (70 four-member subsets of 8 independent native members) 0.975-1.078",
+  "old": [
+   "1.02",
+   "0.98",
+   "0.975",
+   "1.078"
+  ],
+  "new": [
+   "1.02",
+   "0.96",
+   "0.976",
+   "1.108"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/rods/media2/S_steer_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/rods/formation/suite/band.json",
+   "/home/user/evalwork/gc_suites/rods/formation/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "rods:media2/W_pour_follow",
+  "caveat_index": 1,
+  "quote": "device 1 cargo ratio 1.35 vs 1.36 (walloff, this case vs no action)",
+  "text": "walloff and kappa0 change only the cargo, so they can fail only on the cargo groups; the probe's cargo group separates about as much as with no action (device 1 cargo ratio 1.35 vs 1.36): the poured cargo sits on 1-3 of 19 nodes and the joint energy score of the group is dominated by the members' spread on the other nodes; the box cargo statistics carry the separation",
+  "old": [
+   "1.35",
+   "1.36"
+  ],
+  "new": [
+   "1.57",
+   "1.57"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/rods/media2/W_pour_follow_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/rods/iter2/suite/controls"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ },
+ {
+  "card": "rods:media2/W_pour_follow",
+  "caveat_index": 4,
+  "quote": "second native ensemble on this case 1.13, above the 0.91-0.96 of the first iteration's band cases",
+  "text": "the second native ensemble on this case scores 1.13 (band), above the 0.91-0.96 of the first iteration's band cases",
+  "old": [
+   "1.13",
+   "0.91",
+   "0.96"
+  ],
+  "new": [
+   "1.13",
+   "0.90",
+   "0.96"
+  ],
+  "old_found_in_text": true,
+  "changed": true,
+  "published_in": "/home/user/evalwork/gc_suites/rods/media2/W_pour_follow_facts.json",
+  "recomputed_from": [
+   "/home/user/evalwork/gc_suites/rods/iter2/suite/report.json",
+   "/home/user/evalwork/gc_suites/rods/suite/report.json"
+  ],
+  "shadow": "rescore_fair/out/<world>/<suite>/{plugin,fair}/ (same file names)"
+ }
+]
