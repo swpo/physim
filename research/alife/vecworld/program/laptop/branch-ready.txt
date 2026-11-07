@@ -1,5 +1,5 @@
 branch: fix/physim-fair-energy-labworlds (alias physim-fair-energy-labworlds, same commits) on swpo/residency-environments
-head: 19f30c1cb63533bfa2d8dd17349d16e66a8e44b0 (ef1f58c + 19f30c1: checks moved to scripts/, reward rounding tolerance; no identity file changed, the re-sealed kit still opens)
+head: 0117934d05cd3f06c4bde683b1457bf1e7f59abc (19f30c1 + DEFAULT_CATALOG/configs at physim-worlds 94d64446; no identity file changed, the re-sealed kit still opens)
 history: 23f07a3 (labworlds-adapter) -> 4529505 ruff format labbundle.py/labworld.py (formatting only, ASTs identical) -> 177a1f7 fair estimator (cherry-pick of 774a9e8) -> ef1f58c LABWORLDS.md note (cherry-pick of 53223cb)
 replaces: 53223cb91713fd5edb64e1b5c112475c686b7b13 (force-pushed with lease; same tree except the two formatted files)
 pinned identity at this head (sha256): blobround6 d1b4a8b4a7231b01, labworld 501fffd327c1cf91, devices 43229b5040b4be42, blobround6_eval 9deb1738cba2e3df, labbundle 060e39aeeb3b8974, legacy_v1/blobround6_eval d9277b6057d375b9
@@ -7,3 +7,5 @@ ruff 0.15.20: check passes, format --check passes on the whole repo (185 files) 
 labworlds-adapter (PR #40 head) is still 23f07a3: the formatting commit 4529505 is NOT pushed there yet, because that updates the upstream PR and waits for the user's OK. If approved it is a fast-forward: git push origin 4529505:labworlds-adapter
 also pushed: physim-fair-energy 4713d14667e48c48c32dd940921535d3334201ec (base upstream/main 5149b69429e6)
 status: implementation reviewed by the Mac session; independent verification still running. If the scorer files change again, this file gets a new head and the line "SCORER HASH CHANGED: reseal again".
+
+2026-11-07 later: user approved; labworlds-adapter (PR #40 head) fast-forwarded to 4529505. physim-worlds re-released at HF 94d64446dfc8e1660da863e11c6d895e265f4a80 (bf 035caa2d, xv 5119c0ef, p4g2_044 f1680d63; byte-identical data; references reproduce exactly). fix/physim-fair-energy is now 3687ecbd (DEFAULT_CATALOG -> 94d64446); physim branch release/fair-scorer-20261107 (85959d1c) pins it. Lab-world installs: fix/physim-fair-energy-labworlds 0117934.
