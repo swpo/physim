@@ -1,0 +1,8 @@
+branch: physim-fair-energy-labworlds (swpo/residency-environments)
+head: 53223cb91713fd5edb64e1b5c112475c686b7b13
+base: origin/labworlds-adapter 23f07a3a461eceb83a5bb478b452bfc08cde7c12 (+ cherry-pick 774a9e8 of the fix, + 53223cb LABWORLDS.md note)
+also pushed: physim-fair-energy 4713d14667e48c48c32dd940921535d3334201ec (base upstream/main 5149b69429e6)
+scorer sha256 (blobround6_eval.py): old 3d8e3fb3b6f6b1275a33b6b88acdcd5b9b9b78cff91b01dad6231b7d82e4b009 -> new 9deb1738cba2e3df193970bf08a33dcf264f4c9af4223d3441f0e048dca5bc68
+legacy_v1 scorer sha256: old dcd1ab237e992645c5c50d4dbc252aa35617c143652126af0ae76c77924fc464 -> new d9277b6057d375b941f1b85c4f3aa130a9b994f5c7f870f123a0630c4ac1d198
+status: implementation reviewed by the Mac session; independent verification still running. If the scorer files change again, this file gets a new head and the line "SCORER HASH CHANGED: reseal again".
+tests: 67 passed with physim installed (12 existing + 55 new); CI-style run 12 passed, 1 skipped (the new module skips without numpy because CI does not install physim).
