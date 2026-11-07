@@ -1,0 +1,17 @@
+0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+21:47:35 devices ['cuda:0']  jax 0.12.0.1
+21:47:53 A both_B1: 229.0 member-ticks/s (init 13.1s, compile+first 3.9s)
+21:48:08 A both_B8: 1015.3 member-ticks/s (init 11.5s, compile+first 3.6s)
+21:48:30 A both_B64: 1485.6 member-ticks/s (init 15.9s, compile+first 3.7s)
+21:49:02 A both_B256: 1599.3 member-ticks/s (init 22.7s, compile+first 4.7s)
+21:49:13 A coarse_B1: 331.3 member-ticks/s (init 9.9s, compile+first 1.3s)
+21:49:23 A coarse_B8: 1175.1 member-ticks/s (init 8.1s, compile+first 1.4s)
+21:49:39 A coarse_B64: 1607.4 member-ticks/s (init 12.7s, compile+first 1.7s)
+21:50:04 A coarse_B256: 1707.2 member-ticks/s (init 17.0s, compile+first 2.8s)
+21:50:25 B tracker: 19902.5 member-updates/s
+21:51:05 C agreement: x0 max_abs 2.67e+00, l0 max_abs 1.69e+02, x1 max_abs 2.51e+00, l1 max_abs 1.70e+02, x10 max_abs 2.88e+00, l10 max_abs 3.74e+02
+W1107 21:51:07.922460    3205 cuda_timer.cc:88] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.
+W1107 21:51:08.187700    3205 cuda_timer.cc:88] Delay kernel timed out: measured time has sub-optimal accuracy. There may be a missing warmup execution, please investigate in Nsight Systems.
+21:51:09 D conv AE B64: 107.1 steps/s
+21:51:12 D conv AE B256: 26.7 steps/s
+21:51:12 done

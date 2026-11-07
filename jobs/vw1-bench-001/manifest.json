@@ -1,0 +1,88 @@
+{
+  "archive_sha256": "41a6fadecc65017e6478e384d006591d650e1dc5a3fc8462f6254543a0fb746e",
+  "files": [
+    {
+      "bytes": 2580,
+      "in_git": true,
+      "path": "sysinfo.txt",
+      "sha256": "878cf7ae8b5f82db770049ae41342cfe956ee8127d20157eadcd70f004363c10"
+    },
+    {
+      "bytes": 0,
+      "in_git": true,
+      "path": "job.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 279,
+      "in_git": true,
+      "path": "setup.log",
+      "sha256": "8c5ab5c3599a9e7c30286599bdd4b8449526c977e9c3c4e9bc03de10a8a87f6e"
+    },
+    {
+      "bytes": 1359,
+      "in_git": true,
+      "path": "run.log",
+      "sha256": "b6e1255b98c730d91d40a75044649967f1e23c60c8f5d95484032f22aa13106a"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "setup.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "exit.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "setup.start",
+      "sha256": "4cf31abca72c8af2b539a90686c628464467cf95c6f38b6c1d05bce181e6db5d"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.start",
+      "sha256": "f8c6773283ddfea9a2d481a9f3446e71678dbe1ba3bb25f327429571c83d3bc0"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.end",
+      "sha256": "f623dba9b4db501283c1d577513dd36972aba461296fc459c3548012643375ae"
+    },
+    {
+      "bytes": 43,
+      "in_git": true,
+      "path": "out-listing.tsv",
+      "sha256": "2bc29a06ffe92982962eaf32c22e76bf9eb250c006aa33451cf0e0679a06518a"
+    },
+    {
+      "bytes": 5124,
+      "in_git": true,
+      "path": "out/results.json",
+      "sha256": "3b9608909f82e21bc01ed9c769b0fd818d9a548a1eb60cff067f7d958b234fd5"
+    },
+    {
+      "bytes": 936,
+      "in_git": true,
+      "path": "out/progress.txt",
+      "sha256": "1ec4aa03d98df62768579c47459c075c4452a1f44e3688f72ce4a7a7f8df0c31"
+    }
+  ],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/vw1-bench-001/collected/; ask for them by path.",
+  "skipped": [],
+  "skipped_count": 0,
+  "transfer_bytes": 3450,
+  "transfer_stopped": null,
+  "truncated": false
+}

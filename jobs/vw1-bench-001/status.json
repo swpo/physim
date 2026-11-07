@@ -19,10 +19,20 @@
     "src_bytes": 10008965
   },
   "cap_usd": 10.0,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 1.9075
+  "collected": {
+    "error": null,
+    "files": 12,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 3450,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 0.1856,
+    "conservative_usd": 2.0778
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-07T21:51:43Z",
   "hard_deadline": "2026-11-07T23:19:12Z",
   "hard_deadline_epoch": 1794093552.151038,
   "history": [
@@ -45,11 +55,21 @@
       "at": "2026-11-07T21:47:01Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-07T21:51:19Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-07T21:51:43Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "vw1-bench-001",
   "max_estimate_usd": 5.36,
-  "message": "job started on the pod",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_h100_sxm5",
@@ -136,7 +156,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 0.0,
       "created_at": "2026-11-07T21:19:26Z",
       "data_center": "us-south-2",
       "gpu": "H100_80GB",
@@ -153,7 +173,7 @@
       "terminated_at": "2026-11-07T21:44:29Z"
     },
     {
-      "billed_usd": null,
+      "billed_usd": 0.1856,
       "created_at": "2026-11-07T21:44:51Z",
       "data_center": "FIN-02",
       "gpu": "A100_80GB",
@@ -166,12 +186,13 @@
       "ready_at": "2026-11-07T21:46:42Z",
       "requested_at": "2026-11-07T21:44:30Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-07T21:51:22Z"
     }
   ],
+  "pods_terminated": true,
   "run_deadline": "2026-11-07T22:47:01Z",
   "started_at": "2026-11-07T21:47:01Z",
-  "state": "running",
-  "updated_at": "2026-11-07T21:47:01Z"
+  "state": "done",
+  "updated_at": "2026-11-07T21:51:43Z"
 }
