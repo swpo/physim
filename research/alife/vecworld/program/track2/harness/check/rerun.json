@@ -1,0 +1,30 @@
+{
+ "stageA_max_abs_diff": 0.0,
+ "stageA_rejections_equal": true,
+ "stageA_cpu_s": 19.799198148000002,
+ "ref_max_abs_diff": {
+  "climatology": 0.0,
+  "oracle": 0.0
+ },
+ "pred_max_abs_diff": {
+  "B0@small_passive": 0.0,
+  "B1@small_passive": 0.0,
+  "B2@small_passive": 0.0,
+  "B2x@small_passive": 0.0,
+  "B3_true_theta": 0.0,
+  "B2@zero": 0.0
+ },
+ "usage": {
+  "ticks_used": 129,
+  "max_ticks": 129,
+  "resets": 1,
+  "episode_nats": 0.0,
+  "total_nats": 0.0,
+  "episode_left": 8.0,
+  "total_left": 0.0,
+  "episodes": 1,
+  "commands": 0
+ },
+ "world0_small_passive_cpu_s": 35.58023729,
+ "total_cpu_s": 56.106577724000005
+}

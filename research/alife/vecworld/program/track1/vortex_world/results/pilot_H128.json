@@ -1,0 +1,65 @@
+{
+ "H": 128,
+ "n_seeds": 1,
+ "seeds_per_arm": {
+  "sel": 1,
+  "neu": 1
+ },
+ "T_ticks": 440,
+ "R": 0,
+ "H_branch": 0,
+ "every": 20,
+ "arms": [
+  "sel",
+  "neu"
+ ],
+ "arms_done": [
+  "sel",
+  "neu"
+ ],
+ "tick_time": 5.0,
+ "tracker": {
+  "sigma": 1.0,
+  "threshold": 0.06,
+  "m_min": 0.5,
+  "fallback_px": 4.0,
+  "K": 56,
+  "max_kept": 72,
+  "max_raw": 160
+ },
+ "sigma_a": 0.005,
+ "timing": {
+  "sel": {
+   "cpu_s_total": 253.069797461,
+   "cpu_s_branches": 0.0,
+   "member_ticks_main": 440,
+   "member_ticks_branches": 0,
+   "cpu_s_per_member_tick_main": 0.5751586305931818,
+   "cpu_s_per_member_tick_branches": null,
+   "overflow": [
+    [
+     0.0,
+     0.0,
+     48.0,
+     44.0
+    ]
+   ]
+  },
+  "neu": {
+   "cpu_s_total": 254.438658017,
+   "cpu_s_branches": 0.0,
+   "member_ticks_main": 440,
+   "member_ticks_branches": 0,
+   "cpu_s_per_member_tick_main": 0.5782696773113636,
+   "cpu_s_per_member_tick_branches": null,
+   "overflow": [
+    [
+     0.0,
+     0.0,
+     48.0,
+     44.0
+    ]
+   ]
+  }
+ }
+}

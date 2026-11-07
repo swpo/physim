@@ -1,0 +1,81 @@
+{
+ "converted_memory_readout_vs_saved_L1_maxabs": 0.0,
+ "port_equivalence": {
+  "ticks": 3,
+  "level0_maxabs_end": 0.0,
+  "level1_maxabs_by_tick": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "mass_drift_c0": 0.0,
+  "mass_drift_c1": 1.1368683772161603e-13
+ },
+ "timing": {
+  "members": 2,
+  "ticks": 4,
+  "first_call_s": 8.696393728256226,
+  "s_per_member_tick": 0.16200101375579834
+ },
+ "shift_structure": {
+  "sigma_w": 0.2,
+  "state": 0,
+  "target_slot": 2,
+  "level0_maxabs_shifted_vs_command": 5.579980921766037e-13,
+  "level0_maxabs_command_vs_twin": 1.2938952092667033,
+  "charge_first_tick_nats": 3.1249999999999996
+ },
+ "kl_channel_mc": {
+  "N": 20000,
+  "sigma_w": 0.2,
+  "program": "wind_aimed, 4 ticks, state 0 target",
+  "rows": {
+   "2.0": {
+    "declared_nats": 2.0,
+    "mc_E_u_logLR": 2.0021517440256145,
+    "mc_se": 0.014211880769430505,
+    "mc_E_0_logLR": -1.9978482559743853,
+    "closed_form_E_0_logLR": -2.0,
+    "eta_std_check": 1.0000480544324304,
+    "mc_E_0_LR": 0.9559315289739033,
+    "mc_E_0_LR_se": 0.03356337080773817,
+    "chi2_bound_sqrt(e^2C-1)": 7.321075742890811,
+    "linear_gaussian_sqrt(2C)": 2.0
+   },
+   "12.5": {
+    "declared_nats": 12.499999999999998,
+    "mc_E_u_logLR": 12.505379360064035,
+    "mc_se": 0.03552970192357625,
+    "mc_E_0_logLR": -12.494620639935963,
+    "closed_form_E_0_logLR": -12.499999999999998,
+    "eta_std_check": 1.0000480544324304
+   },
+   "50.0": {
+    "declared_nats": 49.99999999999999,
+    "mc_E_u_logLR": 50.01075872012807,
+    "mc_se": 0.0710594038471525,
+    "mc_E_0_logLR": -49.98924127987191,
+    "closed_form_E_0_logLR": -49.99999999999999,
+    "eta_std_check": 1.0000480544324304
+   }
+  }
+ },
+ "basis": {
+  "grid": "8x8 blocks of 16 px, 2 components",
+  "smooth_px": 8.0,
+  "one_block_field_at_own_centre": 0.465204522425372,
+  "one_block_field_at_own_corner": 0.24867053263111913,
+  "background_field_sd_per_sigma_w": {
+   "min": 0.45726386467427843,
+   "max": 0.5153268318337874,
+   "mean_var_sqrt": 0.48629733938059166
+  },
+  "random_walk_px_per_tick_per_sigma_w": 1.9451893575223667,
+  "group2x2_field_at_group_centre": 0.9105331492362929,
+  "group2x2_field_at_inner_block_centre": 0.7050328331918673,
+  "group4x4_field_at_centre": 0.9998705405022049,
+  "uniform_field_check": 0.0
+ },
+ "seconds": 42.168156147003174
+}

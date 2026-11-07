@@ -1,0 +1,7 @@
+built small_passive
+built small_active
+built large_passive
+built large_active
+scored n128R16
+scored n256R4
+D2 cpu 425.578221572

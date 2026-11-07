@@ -1,0 +1,8 @@
+sel cpu_s 169.7
+neu cpu_s 168.4
+sel s_b mean t500-1500 0.402 t>=1500 None N mean 32.08 share_by_100 [0.0, 0.0, 0.05, 0.16, 0.31, 0.44, 0.59, 0.63]
+neu s_b mean t500-1500 0.163 t>=1500 None N mean 31.21 share_by_100 [0.0, 0.0, 0.0, 0.08, 0.11, 0.21, 0.15, 0.24]
+
+real	5m46.195s
+user	5m38.978s
+sys	0m0.553s

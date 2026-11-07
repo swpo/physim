@@ -1,0 +1,16 @@
+/home/user/evalwork/vecworld/program/track1/learned_phi2/lphi.py:565: RuntimeWarning: invalid value encountered in subtract
+  ld["I_avail"] = 0.5 * (l_mean - l_or)
+/home/user/evalwork/vecworld/program/track1/learned_phi2/lphi.py:576: RuntimeWarning: invalid value encountered in subtract
+  ld["inherit"] = 0.5 * (l_y - l_or)
+/home/user/evalwork/vecworld/program/track1/learned_phi2/lphi.py:566: RuntimeWarning: invalid value encountered in subtract
+  ld["I_capt"] = 0.5 * (l_mean - l_best)
+/home/user/evalwork/vecworld/program/track1/learned_phi2/lphi.py:567: RuntimeWarning: invalid value encountered in subtract
+  ld["gapX"] = 0.5 * (l_best - l_or)
+/home/user/evalwork/vecworld/program/track1/learned_phi2/lphi.py:574: RuntimeWarning: invalid value encountered in subtract
+  ld["gapX_r2"] = 0.5 * (l_r2 - l_or)
+/home/user/evalwork/vecworld/program/track1/learned_phi2/lphi.py:575: RuntimeWarning: invalid value encountered in subtract
+  ld["gammaY"] = 0.5 * (l_r2 - l_y)
+/home/user/evalwork/vecworld/program/track1/learned_phi2/lphi.py:647: RuntimeWarning: invalid value encountered in add
+  ld[k] = 0.5 * (np.asarray(cA["ld"][k]) + np.asarray(cB["ld"][k]))
+/home/user/evalwork/vecworld/program/track1/learned_phi2/lphi.py:648: RuntimeWarning: invalid value encountered in subtract
+  ld[k + "_halfdiff"] = np.asarray(cA["ld"][k]) - np.asarray(cB["ld"][k])

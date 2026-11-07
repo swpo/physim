@@ -1,0 +1,3274 @@
+{
+ "what": "Track 2 actuation probe: wind channel vs matter kick on the gliders world (A_gliders, VW-1 port)",
+ "code": {
+  "level_variant": "/home/user/evalwork/vecworld/program/track2/actuation/wind.py",
+  "programs": "/home/user/evalwork/vecworld/program/track2/actuation/programs.py",
+  "scripts": [
+   "check_wind.py",
+   "viability.py",
+   "probe.py",
+   "dp_check.py",
+   "analyze.py",
+   "make_summary.py"
+  ]
+ },
+ "channel": {
+  "grid": "8 x 8 blocks of 16 px, 2 components (128 coefficients)",
+  "embedding": "piecewise-constant block field, periodic Gaussian blur std 8 px (FFT), DC gain 1",
+  "law": "field added to the Flow-Lenia flow of both channels in all 20 substeps of a tick, before the port's clip and reintegration",
+  "noise": "a~ = u + sigma_w eta, eta ~ N(0, I_128) once per tick (Noise.stream(7))",
+  "cost": "0.5 ||u||^2 / sigma_w^2 nats per tick",
+  "background_field_sd_per_sigma_w": {
+   "min": 0.45726386467427843,
+   "max": 0.5153268318337874,
+   "mean_var_sqrt": 0.48629733938059166
+  },
+  "random_walk_px_per_tick_per_sigma_w": 1.9452,
+  "group2x2_field_at_body_range": [
+   0.705,
+   0.9105
+  ],
+  "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/check_wind.json"
+ },
+ "checks": {
+  "port_equivalence_sigma0": {
+   "ticks": 3,
+   "level0_maxabs_end": 0.0,
+   "level1_maxabs_by_tick": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "mass_drift_c0": 0.0,
+   "mass_drift_c1": 1.1368683772161603e-13,
+   "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/check_wind.json"
+  },
+  "shift_structure": {
+   "sigma_w": 0.2,
+   "state": 0,
+   "target_slot": 2,
+   "level0_maxabs_shifted_vs_command": 5.579980921766037e-13,
+   "level0_maxabs_command_vs_twin": 1.2938952092667033,
+   "charge_first_tick_nats": 3.1249999999999996,
+   "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/check_wind.json"
+  },
+  "kl_channel_monte_carlo": {
+   "N": 20000,
+   "sigma_w": 0.2,
+   "program": "wind_aimed, 4 ticks, state 0 target",
+   "rows": {
+    "2.0": {
+     "declared_nats": 2.0,
+     "mc_E_u_logLR": 2.0021517440256145,
+     "mc_se": 0.014211880769430505,
+     "mc_E_0_logLR": -1.9978482559743853,
+     "closed_form_E_0_logLR": -2.0,
+     "eta_std_check": 1.0000480544324304,
+     "mc_E_0_LR": 0.9559315289739033,
+     "mc_E_0_LR_se": 0.03356337080773817,
+     "chi2_bound_sqrt(e^2C-1)": 7.321075742890811,
+     "linear_gaussian_sqrt(2C)": 2.0
+    },
+    "12.5": {
+     "declared_nats": 12.499999999999998,
+     "mc_E_u_logLR": 12.505379360064035,
+     "mc_se": 0.03552970192357625,
+     "mc_E_0_logLR": -12.494620639935963,
+     "closed_form_E_0_logLR": -12.499999999999998,
+     "eta_std_check": 1.0000480544324304
+    },
+    "50.0": {
+     "declared_nats": 49.99999999999999,
+     "mc_E_u_logLR": 50.01075872012807,
+     "mc_se": 0.0710594038471525,
+     "mc_E_0_logLR": -49.98924127987191,
+     "closed_form_E_0_logLR": -49.99999999999999,
+     "eta_std_check": 1.0000480544324304
+    }
+   },
+   "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/check_wind.json"
+  },
+  "data_processing_level1": {
+   "state": 0,
+   "target": 2,
+   "sigma_w": 0.2,
+   "R": 32,
+   "rows": {
+    "2.0": {
+     "h1": {
+      "n_pairs": 32,
+      "lateral_shift_px": 0.3892885493634709,
+      "lateral_sd_twin_px": 0.4734033312861688,
+      "kl_proxy_1d_nats": 0.3380698773236203,
+      "kl_proxy_2d_nats_plugin": 0.34385951307409884,
+      "efficiency_1d": 0.16903493866181016,
+      "chi2_ratio_dmu2_over_var": 0.6762085217231475,
+      "chi2_bound_e2C_minus_1": 53.598150033144236,
+      "linear_bound_2C": 4.0
+     },
+     "h2": {
+      "n_pairs": 32,
+      "lateral_shift_px": 0.8115176030657815,
+      "lateral_sd_twin_px": 0.6245133221889556,
+      "kl_proxy_1d_nats": 0.8442149461414159,
+      "kl_proxy_2d_nats_plugin": 0.8463387907456232,
+      "efficiency_1d": 0.42210747307070795,
+      "chi2_ratio_dmu2_over_var": 1.6885443622080696,
+      "chi2_bound_e2C_minus_1": 53.598150033144236,
+      "linear_bound_2C": 4.0
+     },
+     "h3": {
+      "n_pairs": 32,
+      "lateral_shift_px": 1.2629745200289402,
+      "lateral_sd_twin_px": 0.7801941372246132,
+      "kl_proxy_1d_nats": 1.310088279890889,
+      "kl_proxy_2d_nats_plugin": 1.3868279977450058,
+      "efficiency_1d": 0.6550441399454445,
+      "chi2_ratio_dmu2_over_var": 2.6204978813738675,
+      "chi2_bound_e2C_minus_1": 53.598150033144236,
+      "linear_bound_2C": 4.0
+     },
+     "h4": {
+      "n_pairs": 32,
+      "lateral_shift_px": 2.0200385502640343,
+      "lateral_sd_twin_px": 2.578723207869807,
+      "kl_proxy_1d_nats": 0.30076645897810267,
+      "kl_proxy_2d_nats_plugin": 1.2817581037579082,
+      "efficiency_1d": 0.15038322948905133,
+      "chi2_ratio_dmu2_over_var": 0.613634625462339,
+      "chi2_bound_e2C_minus_1": 53.598150033144236,
+      "linear_bound_2C": 4.0
+     }
+    },
+    "12.5": {
+     "h1": {
+      "n_pairs": 32,
+      "lateral_shift_px": 0.9604027908166596,
+      "lateral_sd_twin_px": 0.4734033312861688,
+      "kl_proxy_1d_nats": 2.05779271089504,
+      "kl_proxy_2d_nats_plugin": 2.1040992176699858,
+      "efficiency_1d": 0.16462341687160317,
+      "chi2_ratio_dmu2_over_var": 4.115704706150871,
+      "chi2_bound_e2C_minus_1": 72004899336.38588,
+      "linear_bound_2C": 25.0
+     },
+     "h2": {
+      "n_pairs": 32,
+      "lateral_shift_px": 2.0137642816010795,
+      "lateral_sd_twin_px": 0.6245133221889556,
+      "kl_proxy_1d_nats": 5.198638528926956,
+      "kl_proxy_2d_nats_plugin": 5.216645180688225,
+      "efficiency_1d": 0.4158910823141565,
+      "chi2_ratio_dmu2_over_var": 10.397617872651315,
+      "chi2_bound_e2C_minus_1": 72004899336.38588,
+      "linear_bound_2C": 25.0
+     },
+     "h3": {
+      "n_pairs": 32,
+      "lateral_shift_px": 3.1611487545468897,
+      "lateral_sd_twin_px": 0.7801941372246132,
+      "kl_proxy_1d_nats": 8.207976210708111,
+      "kl_proxy_2d_nats_plugin": 8.677205970329746,
+      "efficiency_1d": 0.6566380968566489,
+      "chi2_ratio_dmu2_over_var": 16.416648554906082,
+      "chi2_bound_e2C_minus_1": 72004899336.38588,
+      "linear_bound_2C": 25.0
+     },
+     "h4": {
+      "n_pairs": 32,
+      "lateral_shift_px": 5.661319406207597,
+      "lateral_sd_twin_px": 2.578723207869807,
+      "kl_proxy_1d_nats": 2.3953280329711646,
+      "kl_proxy_2d_nats_plugin": 9.163843839302922,
+      "efficiency_1d": 0.19162624263769318,
+      "chi2_ratio_dmu2_over_var": 4.819764942873752,
+      "chi2_bound_e2C_minus_1": 72004899336.38588,
+      "linear_bound_2C": 25.0
+     }
+    }
+   },
+   "seconds": 66.09054160118103,
+   "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/dp_check.json"
+  }
+ },
+ "cpu_seconds": {
+  "check_wind": 42.2,
+  "viability_sim": 804.2,
+  "dp_check": 66.1,
+  "probe": 3163.9,
+  "total": 4076.4
+ },
+ "viability": {
+  "design": "3 members per sigma_w, init + 50 burn-in + 250 ticks, shared keys across sigma_w; native band = 2.5-97.5% of 3-trajectory means of the 36 wind-free (sigma_w = 0; port flow noise 0.5) closure trajectories",
+  "member_ticks": 5400,
+  "native_band": {
+   "objects_mean": {
+    "closure_mean_36": 7.503984063745021,
+    "band_3traj_2.5": 6.9415338645418325,
+    "band_3traj_97.5": 8.037184594953521
+   },
+   "speed_median": {
+    "closure_mean_36": 1.6340231814163042,
+    "band_3traj_2.5": 1.5601028322826787,
+    "band_3traj_97.5": 1.7006634090798787
+   },
+   "speed_p90": {
+    "closure_mean_36": 2.0884974428310215,
+    "band_3traj_2.5": 2.0103294155354052,
+    "band_3traj_97.5": 2.171642378271872
+   },
+   "mass_median": {
+    "closure_mean_36": 151.82637532552084,
+    "band_3traj_2.5": 140.3637815475464,
+    "band_3traj_97.5": 164.05760192871094
+   },
+   "rg_median": {
+    "closure_mean_36": 5.436704198519389,
+    "band_3traj_2.5": 5.131138002872467,
+    "band_3traj_97.5": 5.8100816408793134
+   },
+   "births_per100": {
+    "closure_mean_36": 0.0,
+    "band_3traj_2.5": 0.0,
+    "band_3traj_97.5": 0.0
+   },
+   "deaths_per100": {
+    "closure_mean_36": 0.0,
+    "band_3traj_2.5": 0.0,
+    "band_3traj_97.5": 0.0
+   },
+   "fusions_per100": {
+    "closure_mean_36": 23.333333333333336,
+    "band_3traj_2.5": 20.8,
+    "band_3traj_97.5": 25.600000000000005
+   },
+   "fissions_per100": {
+    "closure_mean_36": 23.022222222222226,
+    "band_3traj_2.5": 20.400000000000002,
+    "band_3traj_97.5": 25.2
+   },
+   "track_life_median": {
+    "closure_mean_36": 18.73611111111111,
+    "band_3traj_2.5": 16.0,
+    "band_3traj_97.5": 22.333333333333332
+   },
+   "tracks_ge50_frac": {
+    "closure_mean_36": 0.16354911113929949,
+    "band_3traj_2.5": 0.12337244076374511,
+    "band_3traj_97.5": 0.2094453226396374
+   },
+   "n_tracks": {
+    "closure_mean_36": 65.69444444444444,
+    "band_3traj_2.5": 59.333333333333336,
+    "band_3traj_97.5": 71.33333333333333
+   }
+  },
+  "per_sigma": {
+   "0.0": {
+    "objects_mean": 7.5657,
+    "speed_median": 1.6582,
+    "speed_p90": 2.0997,
+    "mass_median": 153.8927,
+    "rg_median": 5.457,
+    "births_per100": 0.0,
+    "deaths_per100": 0.0,
+    "fusions_per100": 23.0667,
+    "fissions_per100": 23.4667,
+    "track_life_median": 20.3333,
+    "tracks_ge50_frac": 0.1668,
+    "n_tracks": 65.6667,
+    "in_native_band": {
+     "objects_mean": true,
+     "speed_median": true,
+     "speed_p90": true,
+     "mass_median": true,
+     "rg_median": true,
+     "births_per100": true,
+     "deaths_per100": true,
+     "fusions_per100": true,
+     "fissions_per100": true,
+     "track_life_median": true,
+     "tracks_ge50_frac": true
+    },
+    "coarse_sd_ratio_mean": 0.9929,
+    "objects_sd_ratio_mean": 0.9344,
+    "mass_drift_max_abs": 0.0,
+    "A_sum_max_end": 3.0686,
+    "A_min_end": 0.0,
+    "wind_random_walk_px_per_tick": 0.0
+   },
+   "0.05": {
+    "objects_mean": 7.5764,
+    "speed_median": 1.6348,
+    "speed_p90": 2.1152,
+    "mass_median": 142.5211,
+    "rg_median": 5.2335,
+    "births_per100": 0.0,
+    "deaths_per100": 0.0,
+    "fusions_per100": 24.0,
+    "fissions_per100": 23.8667,
+    "track_life_median": 18.0,
+    "tracks_ge50_frac": 0.1433,
+    "n_tracks": 67.6667,
+    "in_native_band": {
+     "objects_mean": true,
+     "speed_median": true,
+     "speed_p90": true,
+     "mass_median": true,
+     "rg_median": true,
+     "births_per100": true,
+     "deaths_per100": true,
+     "fusions_per100": true,
+     "fissions_per100": true,
+     "track_life_median": true,
+     "tracks_ge50_frac": true
+    },
+    "coarse_sd_ratio_mean": 0.9984,
+    "objects_sd_ratio_mean": 0.9662,
+    "mass_drift_max_abs": 0.0,
+    "A_sum_max_end": 3.4905,
+    "A_min_end": 0.0,
+    "wind_random_walk_px_per_tick": 0.0973
+   },
+   "0.1": {
+    "objects_mean": 7.6773,
+    "speed_median": 1.5946,
+    "speed_p90": 2.1862,
+    "mass_median": 147.5301,
+    "rg_median": 5.2956,
+    "births_per100": 0.0,
+    "deaths_per100": 0.0,
+    "fusions_per100": 23.7333,
+    "fissions_per100": 23.2,
+    "track_life_median": 20.8333,
+    "tracks_ge50_frac": 0.1667,
+    "n_tracks": 66.0,
+    "in_native_band": {
+     "objects_mean": true,
+     "speed_median": true,
+     "speed_p90": false,
+     "mass_median": true,
+     "rg_median": true,
+     "births_per100": true,
+     "deaths_per100": true,
+     "fusions_per100": true,
+     "fissions_per100": true,
+     "track_life_median": true,
+     "tracks_ge50_frac": true
+    },
+    "coarse_sd_ratio_mean": 0.9859,
+    "objects_sd_ratio_mean": 0.9419,
+    "mass_drift_max_abs": 0.0,
+    "A_sum_max_end": 4.1156,
+    "A_min_end": 0.0,
+    "wind_random_walk_px_per_tick": 0.1945
+   },
+   "0.2": {
+    "objects_mean": 7.4701,
+    "speed_median": 1.5196,
+    "speed_p90": 2.3171,
+    "mass_median": 144.5333,
+    "rg_median": 5.1419,
+    "births_per100": 0.0,
+    "deaths_per100": 0.0,
+    "fusions_per100": 20.6667,
+    "fissions_per100": 20.6667,
+    "track_life_median": 24.5,
+    "tracks_ge50_frac": 0.1874,
+    "n_tracks": 58.6667,
+    "in_native_band": {
+     "objects_mean": true,
+     "speed_median": false,
+     "speed_p90": false,
+     "mass_median": true,
+     "rg_median": true,
+     "births_per100": true,
+     "deaths_per100": true,
+     "fusions_per100": false,
+     "fissions_per100": true,
+     "track_life_median": false,
+     "tracks_ge50_frac": true
+    },
+    "coarse_sd_ratio_mean": 1.0131,
+    "objects_sd_ratio_mean": 0.9592,
+    "mass_drift_max_abs": 0.0,
+    "A_sum_max_end": 3.4125,
+    "A_min_end": 0.0,
+    "wind_random_walk_px_per_tick": 0.389
+   },
+   "0.4": {
+    "objects_mean": 7.7304,
+    "speed_median": 1.6495,
+    "speed_p90": 2.9096,
+    "mass_median": 149.0244,
+    "rg_median": 5.3767,
+    "births_per100": 0.0,
+    "deaths_per100": 0.0,
+    "fusions_per100": 23.2,
+    "fissions_per100": 23.2,
+    "track_life_median": 18.0,
+    "tracks_ge50_frac": 0.1994,
+    "n_tracks": 65.3333,
+    "in_native_band": {
+     "objects_mean": true,
+     "speed_median": true,
+     "speed_p90": false,
+     "mass_median": true,
+     "rg_median": true,
+     "births_per100": true,
+     "deaths_per100": true,
+     "fusions_per100": true,
+     "fissions_per100": true,
+     "track_life_median": true,
+     "tracks_ge50_frac": true
+    },
+    "coarse_sd_ratio_mean": 0.995,
+    "objects_sd_ratio_mean": 0.926,
+    "mass_drift_max_abs": 0.0,
+    "A_sum_max_end": 3.08,
+    "A_min_end": 0.0,
+    "wind_random_walk_px_per_tick": 0.7781
+   },
+   "0.8": {
+    "objects_mean": 7.9456,
+    "speed_median": 2.2278,
+    "speed_p90": 4.0631,
+    "mass_median": 139.102,
+    "rg_median": 5.1645,
+    "births_per100": 0.1333,
+    "deaths_per100": 0.0,
+    "fusions_per100": 24.1333,
+    "fissions_per100": 23.7333,
+    "track_life_median": 18.1667,
+    "tracks_ge50_frac": 0.1874,
+    "n_tracks": 69.3333,
+    "in_native_band": {
+     "objects_mean": true,
+     "speed_median": false,
+     "speed_p90": false,
+     "mass_median": false,
+     "rg_median": true,
+     "births_per100": false,
+     "deaths_per100": true,
+     "fusions_per100": true,
+     "fissions_per100": true,
+     "track_life_median": true,
+     "tracks_ge50_frac": true
+    },
+    "coarse_sd_ratio_mean": 0.9854,
+    "objects_sd_ratio_mean": 1.2801,
+    "mass_drift_max_abs": 0.0,
+    "A_sum_max_end": 3.1502,
+    "A_min_end": 0.0,
+    "wind_random_walk_px_per_tick": 1.5562
+   }
+  },
+  "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/viability.json"
+ },
+ "probe": {
+  "design": "40 saved states x R = 3 shared noise keys; per state 11 conditions (+2 on states 0-9); programs 4 ticks, open loop, aimed at one isolated moving body chosen at t = 0; records t = 0..16",
+  "sigma_w": 0.2,
+  "horizons": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "V_best": {
+   "coarse": [
+    0.009201613833687993,
+    0.03348900398446454,
+    0.15173079006166923,
+    0.5134270389874777,
+    0.862082314160135
+   ],
+   "objects": [
+    0.1738569164558107,
+    0.22253724214776108,
+    0.41637060134154225,
+    0.6198729827172227,
+    0.8314046170562506
+   ]
+  },
+  "conditions": {
+   "WA2": {
+    "budget": 2.0,
+    "budget_unit": "nats",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     0.3701,
+     0.7594,
+     1.8083,
+     1.9227,
+     1.98
+    ],
+    "target_lateral_px_se": [
+     0.0052,
+     0.0138,
+     0.2989,
+     0.1579,
+     0.4219
+    ],
+    "target_lost_share": [
+     0.0083,
+     0.0417,
+     0.15,
+     0.2667,
+     0.5083
+    ],
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.0237,
+      0.0294,
+      0.0274,
+      0.009,
+      0.0063
+     ],
+     "se": [
+      0.0025,
+      0.0026,
+      0.0022,
+      0.0014,
+      0.0026
+     ],
+     "median": [
+      0.0237,
+      0.0274,
+      0.0268,
+      0.0057,
+      0.0025
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "per_budget_unit": [
+      0.0118,
+      0.0147,
+      0.0137,
+      0.0045,
+      0.00317
+     ],
+     "paired_crn_ratio_mean": [
+      0.0336,
+      0.0367,
+      0.0331,
+      0.017,
+      0.0517
+     ],
+     "n64_mean_over_se": [
+      12.072,
+      14.2939,
+      16.0024,
+      7.9113,
+      3.0502
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.0144,
+      0.0218,
+      0.0234,
+      0.0081,
+      0.0055
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.0059,
+      0.0054,
+      -0.0034,
+      0.0015,
+      -0.0016
+     ],
+     "se": [
+      0.0004,
+      0.0004,
+      0.0136,
+      0.0077,
+      0.0089
+     ],
+     "median": [
+      0.0057,
+      0.0048,
+      0.0032,
+      0.0003,
+      -0.0002
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.0,
+      0.05,
+      0.025,
+      0.05
+     ],
+     "per_budget_unit": [
+      0.00297,
+      0.00268,
+      -0.00171,
+      0.000756,
+      -0.000802
+     ],
+     "paired_crn_ratio_mean": [
+      0.0208,
+      0.0606,
+      0.0927,
+      0.1357,
+      0.3275
+     ],
+     "n64_mean_over_se": [
+      19.6543,
+      18.7603,
+      -0.3176,
+      0.2487,
+      -0.2271
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.0053,
+      0.0047,
+      -0.0029,
+      0.0012,
+      -0.0014
+     ]
+    }
+   },
+   "WA12.5": {
+    "budget": 12.499999999999996,
+    "budget_unit": "nats",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     1.0036,
+     1.8951,
+     4.4234,
+     4.9125,
+     4.589
+    ],
+    "target_lateral_px_se": [
+     0.2428,
+     0.0248,
+     0.2645,
+     0.2888,
+     1.3098
+    ],
+    "target_lost_share": [
+     0.0167,
+     0.05,
+     0.175,
+     0.275,
+     0.5417
+    ],
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.1476,
+      0.1769,
+      0.1641,
+      0.0531,
+      0.0414
+     ],
+     "se": [
+      0.0138,
+      0.016,
+      0.0125,
+      0.006,
+      0.0079
+     ],
+     "median": [
+      0.1469,
+      0.1757,
+      0.1722,
+      0.0473,
+      0.0292
+     ],
+     "share_states_ge_0.1": [
+      0.7,
+      0.8,
+      0.8,
+      0.075,
+      0.125
+     ],
+     "per_budget_unit": [
+      0.0118,
+      0.0142,
+      0.0131,
+      0.00425,
+      0.00331
+     ],
+     "paired_crn_ratio_mean": [
+      0.1647,
+      0.1919,
+      0.1787,
+      0.068,
+      0.1127
+     ],
+     "n64_mean_over_se": [
+      13.5397,
+      13.9918,
+      16.5461,
+      11.2189,
+      6.6274
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.0898,
+      0.1315,
+      0.1401,
+      0.0475,
+      0.0357
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.0488,
+      0.0123,
+      0.0411,
+      0.0383,
+      0.0433
+     ],
+     "se": [
+      0.0114,
+      0.0224,
+      0.0201,
+      0.0173,
+      0.014
+     ],
+     "median": [
+      0.0347,
+      0.0305,
+      0.0218,
+      0.0028,
+      0.0128
+     ],
+     "share_states_ge_0.1": [
+      0.025,
+      0.0,
+      0.1,
+      0.125,
+      0.2
+     ],
+     "per_budget_unit": [
+      0.00391,
+      0.000987,
+      0.00329,
+      0.00307,
+      0.00347
+     ],
+     "paired_crn_ratio_mean": [
+      0.102,
+      0.1622,
+      0.1728,
+      0.2012,
+      0.39
+     ],
+     "n64_mean_over_se": [
+      5.4401,
+      0.6962,
+      2.5913,
+      2.7962,
+      3.916
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.0436,
+      0.0108,
+      0.035,
+      0.0306,
+      0.0372
+     ]
+    }
+   },
+   "WA50": {
+    "budget": 49.999999999999986,
+    "budget_unit": "nats",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     1.8315,
+     3.7299,
+     8.5594,
+     9.9756,
+     9.4164
+    ],
+    "target_lateral_px_se": [
+     0.0223,
+     0.0491,
+     0.4407,
+     0.5117,
+     1.3032
+    ],
+    "target_lost_share": [
+     0.025,
+     0.05,
+     0.175,
+     0.3083,
+     0.6083
+    ],
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.5845,
+      0.6491,
+      0.5174,
+      0.1726,
+      0.1082
+     ],
+     "se": [
+      0.0544,
+      0.0539,
+      0.042,
+      0.016,
+      0.0193
+     ],
+     "median": [
+      0.6071,
+      0.6629,
+      0.5117,
+      0.1468,
+      0.0973
+     ],
+     "share_states_ge_0.1": [
+      0.975,
+      1.0,
+      0.95,
+      0.75,
+      0.475
+     ],
+     "per_budget_unit": [
+      0.0117,
+      0.013,
+      0.0103,
+      0.00345,
+      0.00216
+     ],
+     "paired_crn_ratio_mean": [
+      0.6122,
+      0.6712,
+      0.5475,
+      0.2039,
+      0.223
+     ],
+     "n64_mean_over_se": [
+      13.5832,
+      15.2189,
+      15.576,
+      13.6253,
+      7.0745
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.3558,
+      0.4824,
+      0.4417,
+      0.1544,
+      0.0932
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.1872,
+      0.163,
+      0.169,
+      0.0969,
+      0.058
+     ],
+     "se": [
+      0.039,
+      0.0233,
+      0.0323,
+      0.0254,
+      0.016
+     ],
+     "median": [
+      0.1385,
+      0.1195,
+      0.0844,
+      0.0126,
+      0.0428
+     ],
+     "share_states_ge_0.1": [
+      0.95,
+      0.85,
+      0.35,
+      0.275,
+      0.325
+     ],
+     "per_budget_unit": [
+      0.00374,
+      0.00326,
+      0.00338,
+      0.00194,
+      0.00116
+     ],
+     "paired_crn_ratio_mean": [
+      0.1879,
+      0.2188,
+      0.2637,
+      0.3851,
+      0.545
+     ],
+     "n64_mean_over_se": [
+      6.0752,
+      8.8357,
+      6.6205,
+      4.8193,
+      4.5898
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.167,
+      0.1427,
+      0.1438,
+      0.0773,
+      0.0499
+     ]
+    }
+   },
+   "WR2": {
+    "budget": 2.0,
+    "budget_unit": "nats",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     0.2349,
+     0.4843,
+     1.0775,
+     1.2947,
+     1.6981
+    ],
+    "target_lateral_px_se": [
+     0.0025,
+     0.0049,
+     0.108,
+     0.22,
+     0.294
+    ],
+    "target_lost_share": [
+     0.0,
+     0.0333,
+     0.1583,
+     0.2667,
+     0.5
+    ],
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.0164,
+      0.0178,
+      0.017,
+      0.005,
+      0.002
+     ],
+     "se": [
+      0.0029,
+      0.0014,
+      0.0015,
+      0.0006,
+      0.0021
+     ],
+     "median": [
+      0.0139,
+      0.0178,
+      0.0153,
+      0.004,
+      0.0021
+     ],
+     "share_states_ge_0.1": [
+      0.025,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "per_budget_unit": [
+      0.00822,
+      0.00888,
+      0.00851,
+      0.00252,
+      0.00102
+     ],
+     "paired_crn_ratio_mean": [
+      0.0389,
+      0.0304,
+      0.0248,
+      0.0142,
+      0.0689
+     ],
+     "n64_mean_over_se": [
+      7.093,
+      15.538,
+      14.3127,
+      10.7612,
+      1.229
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.01,
+      0.0132,
+      0.0145,
+      0.0045,
+      0.0018
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.0034,
+      0.0032,
+      -0.014,
+      -0.0006,
+      -0.0005
+     ],
+     "se": [
+      0.0002,
+      0.0002,
+      0.0107,
+      0.0047,
+      0.008
+     ],
+     "median": [
+      0.0034,
+      0.0029,
+      0.0017,
+      0.0001,
+      0.0009
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.025
+     ],
+     "per_budget_unit": [
+      0.00171,
+      0.00158,
+      -0.00698,
+      -0.00028,
+      -0.000267
+     ],
+     "paired_crn_ratio_mean": [
+      0.017,
+      0.0557,
+      0.091,
+      0.1671,
+      0.371
+     ],
+     "n64_mean_over_se": [
+      20.1728,
+      16.8353,
+      -1.6441,
+      -0.1494,
+      -0.0841
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.0031,
+      0.0028,
+      -0.0119,
+      -0.0004,
+      -0.0005
+     ]
+    }
+   },
+   "WR12.5": {
+    "budget": 12.499999999999996,
+    "budget_unit": "nats",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     0.5838,
+     1.1955,
+     2.7245,
+     3.3057,
+     3.7331
+    ],
+    "target_lateral_px_se": [
+     0.0037,
+     0.0082,
+     0.1934,
+     0.261,
+     0.531
+    ],
+    "target_lost_share": [
+     0.0,
+     0.0333,
+     0.1333,
+     0.2583,
+     0.5167
+    ],
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.0883,
+      0.1092,
+      0.1017,
+      0.0315,
+      0.0235
+     ],
+     "se": [
+      0.0074,
+      0.0092,
+      0.0084,
+      0.003,
+      0.0063
+     ],
+     "median": [
+      0.0869,
+      0.0992,
+      0.0972,
+      0.0283,
+      0.015
+     ],
+     "share_states_ge_0.1": [
+      0.325,
+      0.5,
+      0.425,
+      0.0,
+      0.075
+     ],
+     "per_budget_unit": [
+      0.00706,
+      0.00874,
+      0.00813,
+      0.00252,
+      0.00188
+     ],
+     "paired_crn_ratio_mean": [
+      0.1252,
+      0.1301,
+      0.1177,
+      0.0499,
+      0.1272
+     ],
+     "n64_mean_over_se": [
+      15.0704,
+      15.0493,
+      15.2379,
+      13.0916,
+      4.7208
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.0537,
+      0.0812,
+      0.0868,
+      0.0282,
+      0.0202
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.0214,
+      0.0194,
+      0.0151,
+      0.0098,
+      -0.0022
+     ],
+     "se": [
+      0.0013,
+      0.0011,
+      0.0064,
+      0.0084,
+      0.0109
+     ],
+     "median": [
+      0.0201,
+      0.0165,
+      0.0119,
+      0.0018,
+      0.0003
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.0,
+      0.025,
+      0.05,
+      0.075
+     ],
+     "per_budget_unit": [
+      0.00171,
+      0.00155,
+      0.0012,
+      0.000783,
+      -0.000177
+     ],
+     "paired_crn_ratio_mean": [
+      0.0591,
+      0.0711,
+      0.1415,
+      0.1417,
+      0.4404
+     ],
+     "n64_mean_over_se": [
+      21.3595,
+      21.3113,
+      2.9701,
+      1.4738,
+      -0.2567
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.0191,
+      0.0169,
+      0.0128,
+      0.0078,
+      -0.0019
+     ]
+    }
+   },
+   "WR50": {
+    "budget": 49.999999999999986,
+    "budget_unit": "nats",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     1.1698,
+     2.3865,
+     5.3126,
+     6.1235,
+     7.0992
+    ],
+    "target_lateral_px_se": [
+     0.006,
+     0.0146,
+     0.2149,
+     0.253,
+     0.8795
+    ],
+    "target_lost_share": [
+     0.0,
+     0.0333,
+     0.15,
+     0.25,
+     0.5167
+    ],
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.3807,
+      0.4223,
+      0.3797,
+      0.1258,
+      0.0791
+     ],
+     "se": [
+      0.0282,
+      0.0322,
+      0.027,
+      0.0111,
+      0.0108
+     ],
+     "median": [
+      0.3722,
+      0.3964,
+      0.3686,
+      0.113,
+      0.067
+     ],
+     "share_states_ge_0.1": [
+      0.925,
+      0.975,
+      0.95,
+      0.55,
+      0.275
+     ],
+     "per_budget_unit": [
+      0.00761,
+      0.00845,
+      0.00759,
+      0.00252,
+      0.00158
+     ],
+     "paired_crn_ratio_mean": [
+      0.4284,
+      0.4586,
+      0.4172,
+      0.1616,
+      0.2223
+     ],
+     "n64_mean_over_se": [
+      17.0599,
+      16.6126,
+      17.7835,
+      14.3101,
+      9.2988
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.2318,
+      0.3138,
+      0.3242,
+      0.1125,
+      0.0681
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.0857,
+      0.0761,
+      0.0777,
+      0.0287,
+      0.0399
+     ],
+     "se": [
+      0.005,
+      0.0043,
+      0.0189,
+      0.0149,
+      0.0133
+     ],
+     "median": [
+      0.0803,
+      0.0703,
+      0.0438,
+      0.0089,
+      0.0116
+     ],
+     "share_states_ge_0.1": [
+      0.35,
+      0.175,
+      0.125,
+      0.175,
+      0.2
+     ],
+     "per_budget_unit": [
+      0.00171,
+      0.00152,
+      0.00155,
+      0.000574,
+      0.000799
+     ],
+     "paired_crn_ratio_mean": [
+      0.1237,
+      0.1568,
+      0.2827,
+      0.2501,
+      0.5554
+     ],
+     "n64_mean_over_se": [
+      21.56,
+      22.3684,
+      5.1987,
+      2.4366,
+      3.7864
+     ],
+     "ratio_to_wind_world_Vbest_approx": [
+      0.0765,
+      0.0666,
+      0.0661,
+      0.0229,
+      0.0343
+     ]
+    }
+   },
+   "KA4": {
+    "budget": 4.0,
+    "budget_unit": "L1 sum|a| over program",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     0.0385,
+     0.05,
+     0.128,
+     -0.1844,
+     -0.336
+    ],
+    "target_lateral_px_se": [
+     0.003,
+     0.0054,
+     0.078,
+     0.0541,
+     0.1064
+    ],
+    "target_lost_share": [
+     0.0,
+     0.05,
+     0.15,
+     0.2167,
+     0.425
+    ],
+    "kick_matter_moved_mean": 1.9494,
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.0002,
+      0.0001,
+      0.0004,
+      0.0002,
+      0.0005
+     ],
+     "se": [
+      0.0004,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0004
+     ],
+     "median": [
+      0.0003,
+      0.0001,
+      0.0002,
+      0.0,
+      0.0003
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "per_budget_unit": [
+      3.96e-05,
+      2.26e-05,
+      8.98e-05,
+      5.62e-05,
+      0.000136
+     ],
+     "paired_crn_ratio_mean": [
+      0.0046,
+      0.0016,
+      0.0013,
+      0.0014,
+      0.0142
+     ],
+     "n64_mean_over_se": [
+      0.555,
+      0.9578,
+      3.9382,
+      3.0288,
+      1.8703
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.0001,
+      0.0001,
+      0.0007,
+      0.0001,
+      0.0
+     ],
+     "se": [
+      0.0,
+      0.0,
+      0.0007,
+      0.0,
+      0.0029
+     ],
+     "median": [
+      0.0001,
+      0.0,
+      0.0001,
+      0.0001,
+      0.0
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "per_budget_unit": [
+      2.54e-05,
+      1.52e-05,
+      0.000187,
+      3.61e-05,
+      1.08e-05
+     ],
+     "paired_crn_ratio_mean": [
+      0.0002,
+      0.0002,
+      0.0185,
+      0.0038,
+      0.1172
+     ],
+     "n64_mean_over_se": [
+      6.5902,
+      4.0712,
+      1.451,
+      5.0976,
+      0.0189
+     ]
+    }
+   },
+   "KA16": {
+    "budget": 16.0,
+    "budget_unit": "L1 sum|a| over program",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     0.1382,
+     0.2113,
+     0.1606,
+     -1.1938,
+     -1.2717
+    ],
+    "target_lateral_px_se": [
+     0.0077,
+     0.0194,
+     0.3067,
+     0.6386,
+     0.5662
+    ],
+    "target_lost_share": [
+     0.0,
+     0.05,
+     0.15,
+     0.25,
+     0.475
+    ],
+    "kick_matter_moved_mean": 7.6686,
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.0065,
+      0.0047,
+      0.0051,
+      0.0063,
+      0.0162
+     ],
+     "se": [
+      0.001,
+      0.0006,
+      0.0011,
+      0.0022,
+      0.0064
+     ],
+     "median": [
+      0.0048,
+      0.0038,
+      0.0033,
+      0.0026,
+      0.0044
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.025
+     ],
+     "per_budget_unit": [
+      0.000406,
+      0.000295,
+      0.000317,
+      0.000391,
+      0.00102
+     ],
+     "paired_crn_ratio_mean": [
+      0.0119,
+      0.007,
+      0.0062,
+      0.0085,
+      0.0362
+     ],
+     "n64_mean_over_se": [
+      8.178,
+      9.8071,
+      5.7327,
+      3.5599,
+      3.2121
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.0011,
+      0.0009,
+      0.0072,
+      0.0175,
+      0.0243
+     ],
+     "se": [
+      0.0001,
+      0.0001,
+      0.0051,
+      0.0113,
+      0.011
+     ],
+     "median": [
+      0.0009,
+      0.0008,
+      0.0008,
+      0.0008,
+      0.0011
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.0,
+      0.025,
+      0.05,
+      0.075
+     ],
+     "per_budget_unit": [
+      7.03e-05,
+      5.63e-05,
+      0.00045,
+      0.00109,
+      0.00152
+     ],
+     "paired_crn_ratio_mean": [
+      0.0013,
+      0.0011,
+      0.0595,
+      0.0458,
+      0.2267
+     ],
+     "n64_mean_over_se": [
+      11.1432,
+      9.9438,
+      1.7742,
+      1.9465,
+      2.7918
+     ]
+    }
+   },
+   "KA64": {
+    "budget": 64.0,
+    "budget_unit": "L1 sum|a| over program",
+    "n_states": 40,
+    "target_lateral_px_mean": [
+     0.7696,
+     1.3112,
+     2.6139,
+     1.7268,
+     1.2622
+    ],
+    "target_lateral_px_se": [
+     0.0801,
+     0.054,
+     0.1785,
+     0.7271,
+     1.0048
+    ],
+    "target_lost_share": [
+     0.0,
+     0.0583,
+     0.1583,
+     0.2333,
+     0.4667
+    ],
+    "kick_matter_moved_mean": 29.194,
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.0847,
+      0.0843,
+      0.0651,
+      0.0202,
+      0.0312
+     ],
+     "se": [
+      0.0076,
+      0.0064,
+      0.0062,
+      0.0043,
+      0.0085
+     ],
+     "median": [
+      0.0888,
+      0.0754,
+      0.0606,
+      0.0105,
+      0.0158
+     ],
+     "share_states_ge_0.1": [
+      0.325,
+      0.4,
+      0.1,
+      0.025,
+      0.15
+     ],
+     "per_budget_unit": [
+      0.00132,
+      0.00132,
+      0.00102,
+      0.000316,
+      0.000487
+     ],
+     "paired_crn_ratio_mean": [
+      0.0922,
+      0.0876,
+      0.0672,
+      0.0234,
+      0.0611
+     ],
+     "n64_mean_over_se": [
+      14.0632,
+      16.588,
+      13.3449,
+      5.9594,
+      4.6371
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.022,
+      0.0368,
+      0.0307,
+      0.0148,
+      0.0315
+     ],
+     "se": [
+      0.0021,
+      0.0413,
+      0.0248,
+      0.0098,
+      0.0243
+     ],
+     "median": [
+      0.019,
+      0.0126,
+      0.0066,
+      0.0019,
+      0.002
+     ],
+     "share_states_ge_0.1": [
+      0.0,
+      0.05,
+      0.075,
+      0.025,
+      0.125
+     ],
+     "per_budget_unit": [
+      0.000344,
+      0.000575,
+      0.00048,
+      0.000232,
+      0.000493
+     ],
+     "paired_crn_ratio_mean": [
+      0.0348,
+      0.1165,
+      0.0977,
+      0.0509,
+      0.2627
+     ],
+     "n64_mean_over_se": [
+      13.5683,
+      1.1273,
+      1.5686,
+      1.9063,
+      1.6406
+     ]
+    }
+   },
+   "WA50q": {
+    "budget": 800.0,
+    "budget_unit": "nats",
+    "n_states": 10,
+    "target_lateral_px_mean": [
+     1.8447,
+     3.8015,
+     8.6931,
+     10.0317,
+     16.9996
+    ],
+    "target_lateral_px_se": [
+     0.0475,
+     0.1292,
+     0.6883,
+     1.1334,
+     5.0916
+    ],
+    "target_lost_share": [
+     0.0,
+     0.1,
+     0.3,
+     0.4333,
+     0.6333
+    ],
+    "coarse": {
+     "ratio_to_Vbest_mean": [
+      0.4967,
+      0.639,
+      0.5703,
+      0.1755,
+      0.1504
+     ],
+     "se": [
+      0.092,
+      0.0926,
+      0.0656,
+      0.0376,
+      0.0314
+     ],
+     "median": [
+      0.6017,
+      0.6701,
+      0.6071,
+      0.1599,
+      0.1743
+     ],
+     "share_states_ge_0.1": [
+      0.9,
+      1.0,
+      1.0,
+      0.8,
+      0.7
+     ],
+     "per_budget_unit": [
+      0.000621,
+      0.000799,
+      0.000713,
+      0.000219,
+      0.000188
+     ],
+     "paired_crn_ratio_mean": [
+      0.5158,
+      0.6499,
+      0.578,
+      0.1864,
+      0.1995
+     ],
+     "n64_mean_over_se": [
+      13.6589,
+      17.4521,
+      21.9907,
+      11.8049,
+      12.1147
+     ]
+    },
+    "objects": {
+     "ratio_to_Vbest_mean": [
+      0.1362,
+      0.1844,
+      0.2874,
+      0.0871,
+      0.1031
+     ],
+     "se": [
+      0.0181,
+      0.0476,
+      0.1141,
+      0.055,
+      0.0337
+     ],
+     "median": [
+      0.1394,
+      0.1358,
+      0.0922,
+      0.0147,
+      0.0668
+     ],
+     "share_states_ge_0.1": [
+      0.9,
+      0.9,
+      0.4,
+      0.2,
+      0.5
+     ],
+     "per_budget_unit": [
+      0.00017,
+      0.000231,
+      0.000359,
+      0.000109,
+      0.000129
+     ],
+     "paired_crn_ratio_mean": [
+      0.1367,
+      0.3239,
+      0.3471,
+      0.3461,
+      0.4512
+     ],
+     "n64_mean_over_se": [
+      18.9892,
+      9.7957,
+      6.3696,
+      4.0057,
+      7.7391
+     ]
+    }
+   }
+  },
+  "oracle_variance": {
+   "twin_w": {
+    "coarse": {
+     "mean": [
+      0.006562420797599083,
+      0.012480009862772624,
+      0.02824841024630147,
+      0.06992210618354476,
+      0.2119614353913474
+     ],
+     "se": [
+      0.0002544888481413121,
+      0.0005755048746245505,
+      0.0013180097615458058,
+      0.0027276220367603377,
+      0.010541328017549098
+     ],
+     "n_states": 40
+    },
+    "objects": {
+     "mean": [
+      0.029832010291545984,
+      0.05940131215138925,
+      0.10650855254478542,
+      0.22000293848879565,
+      0.4166772714546342
+     ],
+     "se": [
+      0.006552173754708407,
+      0.009665446864858124,
+      0.014258342055237665,
+      0.06485432533443093,
+      0.05032481184107277
+     ],
+     "n_states": 40
+    }
+   },
+   "twin_0": {
+    "coarse": {
+     "mean": [
+      0.0006487533286993564,
+      0.0009084546380514627,
+      0.002255100963853893,
+      0.009340607526555491,
+      0.07339230465527288
+     ],
+     "se": [
+      3.8773941347477435e-05,
+      6.001868281857083e-05,
+      0.00014808068091565858,
+      0.0010035666715602562,
+      0.007403091268586104
+     ],
+     "n_states": 40
+    },
+    "objects": {
+     "mean": [
+      0.008835600386321788,
+      0.02786115615050317,
+      0.033520135482230526,
+      0.062201211002119325,
+      0.28063596081789344
+     ],
+     "se": [
+      0.006297195716604302,
+      0.009330724482905174,
+      0.01140776180276055,
+      0.012125244213273666,
+      0.06119693876868132
+     ],
+     "n_states": 40
+    }
+   },
+   "twin_q": {
+    "coarse": {
+     "mean": [
+      0.0009183444584757795,
+      0.0015628891456552266,
+      0.00447086442649473,
+      0.016370930891704133,
+      0.06669610833343312
+     ],
+     "se": [
+      5.8922302492040364e-05,
+      0.00010902596572917489,
+      0.0004332102925811602,
+      0.002313997356966706,
+      0.008546361994093638
+     ],
+     "n_states": 10
+    },
+    "objects": {
+     "mean": [
+      0.0014324936085607725,
+      0.028235089817647975,
+      0.026760908196892995,
+      0.07858114556285327,
+      0.2572775302168441
+     ],
+     "se": [
+      0.00019576930142136558,
+      0.013457917505506244,
+      0.01685608937403031,
+      0.02449497474453452,
+      0.05824536938875799
+     ],
+     "n_states": 10
+    }
+   },
+   "wind_vs_port": {
+    "coarse": {
+     "wind_minus_port_mean": [
+      0.005913667468899725,
+      0.011571555224721159,
+      0.025993309282447575,
+      0.06058149865698927,
+      0.1385691307360746
+     ],
+     "se": [
+      0.00025696686174568855,
+      0.0005704706958838695,
+      0.0012940345216197952,
+      0.0028457914734351416,
+      0.009877442391460352
+     ],
+     "ratio_wind_over_port": [
+      10.11543295007928,
+      13.737625787833391,
+      12.526450344833286,
+      7.485819951727459,
+      2.888060763140499
+     ],
+     "increase_over_V_best": [
+      0.642677205953723,
+      0.34553297643874903,
+      0.1713120275184944,
+      0.11799436737196624,
+      0.16073770272282242
+     ],
+     "closure_V_oracle": [
+      0.0006198676152659269,
+      0.0009119664551286001,
+      0.0021348665290538017,
+      0.009109717360438986,
+      0.06037357587936438
+     ]
+    },
+    "objects": {
+     "wind_minus_port_mean": [
+      0.02099640990522419,
+      0.03154015600088607,
+      0.07298841706255496,
+      0.15780172748667642,
+      0.1360413106367408
+     ],
+     "se": [
+      0.009386549535036894,
+      0.00954362497528789,
+      0.01319523807800062,
+      0.0656259546131519,
+      0.07678541018249209
+     ],
+     "ratio_wind_over_port": [
+      3.376342182442781,
+      2.1320476375965636,
+      3.1774499420280398,
+      3.5369558718286,
+      1.484760792024864
+     ],
+     "increase_over_V_best": [
+      0.12076833256478962,
+      0.14172978732226726,
+      0.17529675925098206,
+      0.254571068406547,
+      0.1636282838053287
+     ],
+     "closure_V_oracle": [
+      0.004581471439425716,
+      0.009380501565020596,
+      0.07030030445134293,
+      0.12284591440079061,
+      0.26925680153524606
+     ]
+    }
+   },
+   "sigma2_scaling_check": {
+    "n_states": 10,
+    "coarse": {
+     "dV_main": [
+      0.005825053699532493,
+      0.011569287706360756,
+      0.02552600368952774,
+      0.06344317192809812,
+      0.1450399432136611
+     ],
+     "dV_quarter": [
+      0.0002631667712621138,
+      0.0006881687899053055,
+      0.002302727591279959,
+      0.005774466425623265,
+      0.015130167014485075
+     ],
+     "ratio_quarter_over_main": [
+      0.045178428360795206,
+      0.059482381921140456,
+      0.09021104984893004,
+      0.09101793384743792,
+      0.10431724309348728
+     ],
+     "expected_if_sigma2": 0.0625
+    },
+    "objects": {
+     "dV_main": [
+      0.03374570157803598,
+      0.042844863847483775,
+      0.10897855893490764,
+      0.13584597543906982,
+      -0.04537751627304155
+     ],
+     "dV_quarter": [
+      0.0010502627941100676,
+      0.006421786365666257,
+      0.0018565366906014833,
+      0.01896335358674568,
+      -0.1615629913482282
+     ],
+     "ratio_quarter_over_main": [
+      0.031122861431147446,
+      0.1498846253433339,
+      0.017035797763763637,
+      0.13959451890609154,
+      3.5604194459671565
+     ],
+     "expected_if_sigma2": 0.0625
+    }
+   },
+   "dV_power_law_exponent": {
+    "coarse": [
+     2.2341110528764982,
+     2.0356968848689565,
+     1.7352760156975766,
+     1.7288526764974834,
+     1.6304752236952316
+    ],
+    "objects": [
+     2.502940741095029,
+     1.369037845388892,
+     2.9376433406337807,
+     1.420342899385661,
+     -0.9160236061254151
+    ]
+   }
+  },
+  "scaling_check_same_push_quarter_background": {
+   "n_states": 10,
+   "coarse": {
+    "WA50_mean_shift2": [
+     0.004582499048484295,
+     0.020731919144468335,
+     0.0828197045855654,
+     0.08262694050931532,
+     0.10349646467830753
+    ],
+    "WA50q_mean_shift2": [
+     0.004570479009944938,
+     0.021398736667782265,
+     0.08653139757683213,
+     0.09013016805766356,
+     0.12964007217462478
+    ],
+    "ratio_q_over_main": [
+     0.9973769686775313,
+     1.0321638107242883,
+     1.0448165446839042,
+     1.0908084881528723,
+     1.252603869876889
+    ],
+    "diff_se": [
+     9.952459145167873e-05,
+     0.00037977734417608496,
+     0.002875154968466277,
+     0.008792461879923698,
+     0.015739538480177263
+    ]
+   },
+   "objects": {
+    "WA50_mean_shift2": [
+     0.023688082175646757,
+     0.040300097688648236,
+     0.07632962968514802,
+     0.03509707973097846,
+     0.0722279192147839
+    ],
+    "WA50q_mean_shift2": [
+     0.023684430170076067,
+     0.04103851092132535,
+     0.1196493281109754,
+     0.05402032140401667,
+     0.08569790441978262
+    ],
+    "ratio_q_over_main": [
+     0.999845829411448,
+     1.01832286458415,
+     1.5675345027156131,
+     1.5391685524290386,
+     1.1864927766359026
+    ],
+    "diff_se": [
+     0.00022312273959673156,
+     0.0006279686241379049,
+     0.030707526238636654,
+     0.03098189657946459,
+     0.02888717300885356
+    ]
+   }
+  },
+  "loglog_fits": {
+   "WA/coarse/h1": {
+    "slope": 0.9960393983153988,
+    "intercept": -4.431931275390452,
+    "C_for_0.1_Vbest_nats": 8.480871442700538,
+    "C_for_0.1_Vbest_at_sigma_0.05": 135.6939430832086,
+    "KA4_equivalent_wind_nats": 0.013082566029487047,
+    "KA16_equivalent_wind_nats": 0.5453058791913576,
+    "KA64_equivalent_wind_nats": 7.18012484197709
+   },
+   "WA/coarse/h2": {
+    "slope": 0.9624444953403972,
+    "intercept": -4.184806499477169,
+    "C_for_0.1_Vbest_nats": 7.068635663743002,
+    "C_for_0.1_Vbest_at_sigma_0.05": 113.09817061988804,
+    "KA4_equivalent_wind_nats": 0.0048563508355286425,
+    "KA16_equivalent_wind_nats": 0.2957402619629725,
+    "KA64_equivalent_wind_nats": 5.919051377714499
+   },
+   "WA/coarse/h4": {
+    "slope": 0.9164486268825912,
+    "intercept": -4.199845000355467,
+    "C_for_0.1_Vbest_nats": 7.9266500719590915,
+    "C_for_0.1_Vbest_at_sigma_0.05": 126.82640115134546,
+    "KA4_equivalent_wind_nats": 0.017037814069830178,
+    "KA16_equivalent_wind_nats": 0.3063512702759978,
+    "KA64_equivalent_wind_nats": 4.959630829072546
+   },
+   "WA/coarse/h8": {
+    "slope": 0.9201032732898983,
+    "intercept": -5.3207555136517755,
+    "C_for_0.1_Vbest_nats": 26.582465387375162,
+    "C_for_0.1_Vbest_at_sigma_0.05": 425.3194461980026,
+    "KA4_equivalent_wind_nats": 0.03518795792784723,
+    "KA16_equivalent_wind_nats": 1.3088030292817578,
+    "KA64_equivalent_wind_nats": 4.6780194888993085
+   },
+   "WA/coarse/h16": {
+    "slope": 0.8889211288422455,
+    "intercept": -5.603092705831726,
+    "C_for_0.1_Vbest_nats": 40.9739458007397,
+    "C_for_0.1_Vbest_at_sigma_0.05": 655.5831328118352,
+    "KA4_equivalent_wind_nats": 0.11658386578796626,
+    "KA16_equivalent_wind_nats": 5.302584895898939,
+    "KA64_equivalent_wind_nats": 11.03415381191081
+   },
+   "WA/objects/h1": {
+    "slope": 1.0763691570984306,
+    "intercept": -5.8326277684472405,
+    "C_for_0.1_Vbest_nats": 26.564709846063728,
+    "C_for_0.1_Vbest_at_sigma_0.05": 425.03535753701965,
+    "KA4_equivalent_wind_nats": 0.04398868081316579,
+    "KA16_equivalent_wind_nats": 0.4106338058833636,
+    "KA64_equivalent_wind_nats": 6.504581964354295
+   },
+   "WA/objects/h2": {
+    "slope": 1.0293974844203717,
+    "intercept": -6.259960946638198,
+    "C_for_0.1_Vbest_nats": 46.728829215328325,
+    "C_for_0.1_Vbest_at_sigma_0.05": 747.6612674452532,
+    "KA4_equivalent_wind_nats": 0.03510756244261353,
+    "KA16_equivalent_wind_nats": 0.4813940145806444,
+    "KA64_equivalent_wind_nats": 17.679273010892015
+   },
+   "WA/objects/h4": {
+    "slope": 1.019704482152187,
+    "intercept": -5.766671319088672,
+    "C_for_0.1_Vbest_nats": 29.87874026975769,
+    "C_for_0.1_Vbest_at_sigma_0.05": 478.059844316123,
+    "KA4_equivalent_wind_nats": 0.2455630354160611,
+    "KA16_equivalent_wind_nats": 2.2620285306745562,
+    "KA64_equivalent_wind_nats": 9.398943880313757
+   },
+   "WA/objects/h8": {
+    "slope": 1.3170300205859171,
+    "intercept": -7.16024763570177,
+    "C_for_0.1_Vbest_nats": 39.97867160562337,
+    "C_for_0.1_Vbest_at_sigma_0.05": 639.6587456899739,
+    "KA4_equivalent_wind_nats": 0.278557793094644,
+    "KA16_equivalent_wind_nats": 10.624730693343055,
+    "KA64_equivalent_wind_nats": 9.387444544973834
+   },
+   "WA/objects/h16": {
+    "slope": 0.2109130425930948,
+    "intercept": -3.6717726552724557,
+    "C_for_0.1_Vbest_nats": 659.6543252330712,
+    "C_for_0.1_Vbest_at_sigma_0.05": 10554.469203729139,
+    "KA4_equivalent_wind_nats": 7.433801905803388e-14,
+    "KA16_equivalent_wind_nats": 0.8035125395010982,
+    "KA64_equivalent_wind_nats": 2.7702134463711414
+   },
+   "WR/coarse/h1": {
+    "slope": 0.973089591624439,
+    "intercept": -4.813269389918421,
+    "C_for_0.1_Vbest_nats": 13.198672807706593,
+    "C_for_0.1_Vbest_at_sigma_0.05": 211.1787649233055
+   },
+   "WR/coarse/h2": {
+    "slope": 0.9846757618926004,
+    "intercept": -4.709625361539941,
+    "C_for_0.1_Vbest_nats": 11.524790079259173,
+    "C_for_0.1_Vbest_at_sigma_0.05": 184.39664126814677
+   },
+   "WR/coarse/h4": {
+    "slope": 0.965151103514677,
+    "intercept": -4.7366147017231945,
+    "C_for_0.1_Vbest_nats": 12.452427500390716,
+    "C_for_0.1_Vbest_at_sigma_0.05": 199.23884000625145
+   },
+   "WR/coarse/h8": {
+    "slope": 0.9989698055847459,
+    "intercept": -5.980819021244483,
+    "C_for_0.1_Vbest_nats": 39.72684406204155,
+    "C_for_0.1_Vbest_at_sigma_0.05": 635.6295049926648
+   },
+   "WR/coarse/h16": {
+    "slope": 1.14774395160588,
+    "intercept": -6.890356113926236,
+    "C_for_0.1_Vbest_nats": 54.445911113680985,
+    "C_for_0.1_Vbest_at_sigma_0.05": 871.1345778188958
+   },
+   "WR/objects/h1": {
+    "slope": 0.9999197421304686,
+    "intercept": -6.369381637782742,
+    "C_for_0.1_Vbest_nats": 58.38873418376669,
+    "C_for_0.1_Vbest_at_sigma_0.05": 934.219746940267
+   },
+   "WR/objects/h2": {
+    "slope": 0.9881194489498304,
+    "intercept": -6.441186827215995,
+    "C_for_0.1_Vbest_nats": 65.91471966132482,
+    "C_for_0.1_Vbest_at_sigma_0.05": 1054.6355145811972
+   },
+   "WR/objects/h4": {
+    "slope": 1.1838714372592538,
+    "intercept": -7.185724185509897,
+    "C_for_0.1_Vbest_nats": 61.85053559493177,
+    "C_for_0.1_Vbest_at_sigma_0.05": 989.6085695189083
+   },
+   "WR/objects/h8": {
+    "slope": 0.7759239732368829,
+    "intercept": -6.586852508462312,
+    "C_for_0.1_Vbest_nats": 250.01080090759933,
+    "C_for_0.1_Vbest_at_sigma_0.05": 4000.1728145215893
+   },
+   "WR/objects/h16": null
+  },
+  "budget_scan_vs_wind_world_Vbest": {
+   "0.05": {
+    "WA/coarse/h1": {
+     "C_nats": 139.64972911627487,
+     "dV_over_Vbest": 0.029035146108296286
+    },
+    "WA/coarse/h2": {
+     "C_nats": 115.51435861768356,
+     "dV_over_Vbest": 0.020553124470878092
+    },
+    "WA/coarse/h4": {
+     "C_nats": 128.96659718813035,
+     "dV_over_Vbest": 0.015454237854192173
+    },
+    "WA/coarse/h8": {
+     "C_nats": 430.2861551576812,
+     "dV_over_Vbest": 0.010739603523831912
+    },
+    "WA/coarse/h16": {
+     "C_nats": 667.9622860994062,
+     "dV_over_Vbest": 0.016767714009225353
+    },
+    "WA/objects/h1": {
+     "C_nats": 426.519373487386,
+     "dV_over_Vbest": 0.00375865607968468
+    },
+    "WA/objects/h2": {
+     "C_nats": 763.0857000459108,
+     "dV_over_Vbest": 0.02124311607278842
+    },
+    "WA/objects/h4": {
+     "C_nats": 479.45985639344406,
+     "dV_over_Vbest": 0.002986320139242892
+    },
+    "WA/objects/h8": {
+     "C_nats": 656.8455624178663,
+     "dV_over_Vbest": 0.035536725821621644
+    },
+    "WA/objects/h16": {
+     "C_nats": 93045.18207542918,
+     "dV_over_Vbest": 0.582585323570725
+    },
+    "WR/coarse/h1": {
+     "C_nats": 217.48244467739727,
+     "dV_over_Vbest": 0.029035146108296286
+    },
+    "WR/coarse/h2": {
+     "C_nats": 188.2461614329616,
+     "dV_over_Vbest": 0.020553124470878092
+    },
+    "WR/coarse/h4": {
+     "C_nats": 202.42998723392583,
+     "dV_over_Vbest": 0.015454237854192173
+    },
+    "WR/coarse/h8": {
+     "C_nats": 642.4629913515789,
+     "dV_over_Vbest": 0.010739603523831912
+    },
+    "WR/coarse/h16": {
+     "C_nats": 883.8475788078911,
+     "dV_over_Vbest": 0.016767714009225353
+    },
+    "WR/objects/h1": {
+     "C_nats": 937.7314400418818,
+     "dV_over_Vbest": 0.00375865607968468
+    },
+    "WR/objects/h2": {
+     "C_nats": 1077.3115037912971,
+     "dV_over_Vbest": 0.02124311607278842
+    },
+    "WR/objects/h4": {
+     "C_nats": 992.1042826002039,
+     "dV_over_Vbest": 0.002986320139242892
+    },
+    "WR/objects/h8": {
+     "C_nats": 4184.309945902263,
+     "dV_over_Vbest": 0.035536725821621644
+    },
+    "WR/objects/h16": null
+   },
+   "0.1": {
+    "WA/coarse/h1": {
+     "C_nats": 38.57715309221078,
+     "dV_over_Vbest": 0.1366024398586569
+    },
+    "WA/coarse/h2": {
+     "C_nats": 30.754239338817726,
+     "dV_over_Vbest": 0.08427207291587527
+    },
+    "WA/coarse/h4": {
+     "C_nats": 33.49087307823892,
+     "dV_over_Vbest": 0.051453831932662966
+    },
+    "WA/coarse/h8": {
+     "C_nats": 110.4499544268355,
+     "dV_over_Vbest": 0.03559793145142406
+    },
+    "WA/coarse/h16": {
+     "C_nats": 173.49832083012248,
+     "dV_over_Vbest": 0.05191535254388792
+    },
+    "WA/objects/h1": {
+     "C_nats": 108.36053951224426,
+     "dV_over_Vbest": 0.021305553910378108
+    },
+    "WA/objects/h2": {
+     "C_nats": 196.87091367055191,
+     "dV_over_Vbest": 0.05487059616095437
+    },
+    "WA/objects/h4": {
+     "C_nats": 122.19602885162494,
+     "dV_over_Vbest": 0.02287995285168264
+    },
+    "WA/objects/h8": {
+     "C_nats": 171.3361936505536,
+     "dV_over_Vbest": 0.09511373328852542
+    },
+    "WA/objects/h16": {
+     "C_nats": 9449.964271354416,
+     "dV_over_Vbest": 0.30875141565027653
+    },
+    "WR/coarse/h1": {
+     "C_nats": 60.219434330372394,
+     "dV_over_Vbest": 0.1366024398586569
+    },
+    "WR/coarse/h2": {
+     "C_nats": 50.04700976966936,
+     "dV_over_Vbest": 0.08427207291587527
+    },
+    "WR/coarse/h4": {
+     "C_nats": 52.46757651679165,
+     "dV_over_Vbest": 0.051453831932662966
+    },
+    "WR/coarse/h8": {
+     "C_nats": 164.57008644985046,
+     "dV_over_Vbest": 0.03559793145142406
+    },
+    "WR/coarse/h16": {
+     "C_nats": 227.6022575238743,
+     "dV_over_Vbest": 0.05191535254388792
+    },
+    "WR/objects/h1": {
+     "C_nats": 238.5313576524385,
+     "dV_over_Vbest": 0.021305553910378108
+    },
+    "WR/objects/h2": {
+     "C_nats": 278.3046870188167,
+     "dV_over_Vbest": 0.05487059616095437
+    },
+    "WR/objects/h4": {
+     "C_nats": 252.17510939169264,
+     "dV_over_Vbest": 0.02287995285168264
+    },
+    "WR/objects/h8": {
+     "C_nats": 1124.2768343442956,
+     "dV_over_Vbest": 0.09511373328852542
+    },
+    "WR/objects/h16": null
+   },
+   "0.2": {
+    "WA/coarse/h1": {
+     "C_nats": 13.9588558384774,
+     "dV_over_Vbest": 0.642677205953723
+    },
+    "WA/coarse/h2": {
+     "C_nats": 9.621870869619535,
+     "dV_over_Vbest": 0.34553297643874903
+    },
+    "WA/coarse/h4": {
+     "C_nats": 9.419396464783663,
+     "dV_over_Vbest": 0.1713120275184944
+    },
+    "WA/coarse/h8": {
+     "C_nats": 30.008279993860477,
+     "dV_over_Vbest": 0.11799436737196624
+    },
+    "WA/coarse/h16": {
+     "C_nats": 48.45415229955064,
+     "dV_over_Vbest": 0.16073770272282242
+    },
+    "WA/objects/h1": {
+     "C_nats": 29.533012092360046,
+     "dV_over_Vbest": 0.12076833256478962
+    },
+    "WA/objects/h2": {
+     "C_nats": 53.15013119504762,
+     "dV_over_Vbest": 0.14172978732226726
+    },
+    "WA/objects/h4": {
+     "C_nats": 35.00695291399839,
+     "dV_over_Vbest": 0.17529675925098206
+    },
+    "WA/objects/h8": {
+     "C_nats": 47.49132143518822,
+     "dV_over_Vbest": 0.254571068406547
+    },
+    "WA/objects/h16": {
+     "C_nats": 1353.1968579413892,
+     "dV_over_Vbest": 0.1636282838053287
+    },
+    "WR/coarse/h1": {
+     "C_nats": 21.980800551528638,
+     "dV_over_Vbest": 0.642677205953723
+    },
+    "WR/coarse/h2": {
+     "C_nats": 15.578775424713555,
+     "dV_over_Vbest": 0.34553297643874903
+    },
+    "WR/coarse/h4": {
+     "C_nats": 14.66919222467005,
+     "dV_over_Vbest": 0.1713120275184944
+    },
+    "WR/coarse/h8": {
+     "C_nats": 44.41949684731447,
+     "dV_over_Vbest": 0.11799436737196624
+    },
+    "WR/coarse/h16": {
+     "C_nats": 61.99639415410959,
+     "dV_over_Vbest": 0.16073770272282242
+    },
+    "WR/objects/h1": {
+     "C_nats": 65.44084311724755,
+     "dV_over_Vbest": 0.12076833256478962
+    },
+    "WR/objects/h2": {
+     "C_nats": 75.37682631310162,
+     "dV_over_Vbest": 0.14172978732226726
+    },
+    "WR/objects/h4": {
+     "C_nats": 70.89182072883476,
+     "dV_over_Vbest": 0.17529675925098206
+    },
+    "WR/objects/h8": {
+     "C_nats": 334.886854133074,
+     "dV_over_Vbest": 0.254571068406547
+    },
+    "WR/objects/h16": null
+   },
+   "0.4": {
+    "WA/coarse/h1": {
+     "C_nats": 8.578309523435815,
+     "dV_over_Vbest": 3.0236208919829837
+    },
+    "WA/coarse/h2": {
+     "C_nats": 4.4204113334895885,
+     "dV_over_Vbest": 1.4167568647065962
+    },
+    "WA/coarse/h4": {
+     "C_nats": 3.242660187488878,
+     "dV_over_Vbest": 0.5703717229633066
+    },
+    "WA/coarse/h8": {
+     "C_nats": 9.513605040729,
+     "dV_over_Vbest": 0.39110898200669386
+    },
+    "WA/coarse/h16": {
+     "C_nats": 16.13552611433782,
+     "dV_over_Vbest": 0.4976679885736849
+    },
+    "WA/objects/h1": {
+     "C_nats": 10.78109489603183,
+     "dV_over_Vbest": 0.684562823939309
+    },
+    "WA/objects/h2": {
+     "C_nats": 15.817354062666546,
+     "dV_over_Vbest": 0.36608555437400464
+    },
+    "WA/objects/h4": {
+     "C_nats": 17.216249849305374,
+     "dV_over_Vbest": 1.3430514478370918
+    },
+    "WA/objects/h8": {
+     "C_nats": 14.828882391817038,
+     "dV_over_Vbest": 0.6813572197093972
+    },
+    "WA/objects/h16": {
+     "C_nats": 244.62249869004253,
+     "dV_over_Vbest": 0.08671770849920381
+    },
+    "WR/coarse/h1": {
+     "C_nats": 13.797734121520064,
+     "dV_over_Vbest": 3.0236208919829837
+    },
+    "WR/coarse/h2": {
+     "C_nats": 7.059438226703998,
+     "dV_over_Vbest": 1.4167568647065962
+    },
+    "WR/coarse/h4": {
+     "C_nats": 4.9690526207348364,
+     "dV_over_Vbest": 0.5703717229633066
+    },
+    "WR/coarse/h8": {
+     "C_nats": 13.820796463713053,
+     "dV_over_Vbest": 0.39110898200669386
+    },
+    "WR/coarse/h16": {
+     "C_nats": 19.352646596404004,
+     "dV_over_Vbest": 0.4976679885736849
+    },
+    "WR/objects/h1": {
+     "C_nats": 24.590902048170225,
+     "dV_over_Vbest": 0.684562823939309
+    },
+    "WR/objects/h2": {
+     "C_nats": 22.595878004968217,
+     "dV_over_Vbest": 0.36608555437400464
+    },
+    "WR/objects/h4": {
+     "C_nats": 31.741914668348826,
+     "dV_over_Vbest": 1.3430514478370918
+    },
+    "WR/objects/h8": {
+     "C_nats": 122.10297156888426,
+     "dV_over_Vbest": 0.6813572197093972
+    },
+    "WR/objects/h16": null
+   }
+  },
+  "shift_per_nat_over_wind_dV": {
+   "WA2": {
+    "coarse": [
+     0.018430086722391412,
+     0.04252644762509257,
+     0.07989845943004292,
+     0.038167671122080915,
+     0.019710433848125417
+    ],
+    "objects": [
+     0.024562400519465295,
+     0.018893332638220645,
+     -0.009762252227721788,
+     0.0029712080179112787,
+     -0.004901998703332893
+    ]
+   },
+   "WA12.5": {
+    "coarse": [
+     0.018370308987223583,
+     0.04096518088165807,
+     0.07662751895674898,
+     0.036032821092406644,
+     0.02059558740172265
+    ],
+    "objects": [
+     0.032345063601219796,
+     0.006960691577820261,
+     0.01876750860530139,
+     0.012045407005517981,
+     0.021181350018613855
+    ]
+   },
+   "WA50": {
+    "coarse": [
+     0.01818954983554189,
+     0.037569583744033824,
+     0.06040232496177704,
+     0.029259371590296443,
+     0.013458552802400207
+    ],
+    "objects": [
+     0.030998181322395263,
+     0.022998393877113436,
+     0.019287231978778494,
+     0.007614890457376599,
+     0.007093751165002606
+    ]
+   },
+   "WR2": {
+    "coarse": [
+     0.01279163277984819,
+     0.025706087327291585,
+     0.049681635988480195,
+     0.02138986691209751,
+     0.006323408052964603
+    ],
+    "objects": [
+     0.014191719583589148,
+     0.011155981515821974,
+     -0.039831342672716985,
+     -0.001100707135026888,
+     -0.0016314809117474883
+    ]
+   },
+   "WR12.5": {
+    "coarse": [
+     0.010990255560727576,
+     0.02528210185776001,
+     0.04748605268080155,
+     0.02137956284872023,
+     0.011692320569073659
+    ],
+    "objects": [
+     0.014167990451988544,
+     0.010922631531300577,
+     0.006873788594070281,
+     0.003074439985136997,
+     -0.001081968755563176
+    ]
+   },
+   "WR50": {
+    "coarse": [
+     0.011847300755959116,
+     0.024441712741555592,
+     0.044329588126298156,
+     0.021316149345688557,
+     0.00984041952701044
+    ],
+    "objects": [
+     0.01419015261395624,
+     0.010736749954689512,
+     0.008869472817016125,
+     0.0022535064686941175,
+     0.004882436476137803
+    ]
+   }
+  },
+  "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json",
+  "raw": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe",
+  "mass_drift_max_abs": 1.0231815394945443e-12
+ },
+ "member_ticks": {
+  "probe": 22080,
+  "viability": 5400,
+  "dp_check": 384,
+  "check_wind": 25
+ },
+ "headline": {
+  "note": "ratio = unbiased squared shift of the state-conditioned level-1 mean per coordinate / closure V_best; horizons 1, 2, 4, 8, 16 ticks from program start; mean over 40 states; sigma_w = 0.2 unless noted",
+  "WA2_coarse": [
+   0.0237,
+   0.0294,
+   0.0274,
+   0.009,
+   0.0063
+  ],
+  "WA12.5_coarse": [
+   0.1476,
+   0.1769,
+   0.1641,
+   0.0531,
+   0.0414
+  ],
+  "WA50_coarse": [
+   0.5845,
+   0.6491,
+   0.5174,
+   0.1726,
+   0.1082
+  ],
+  "WA12.5_objects": [
+   0.0488,
+   0.0123,
+   0.0411,
+   0.0383,
+   0.0433
+  ],
+  "WA50_objects": [
+   0.1872,
+   0.163,
+   0.169,
+   0.0969,
+   0.058
+  ],
+  "WR12.5_coarse": [
+   0.0883,
+   0.1092,
+   0.1017,
+   0.0315,
+   0.0235
+  ],
+  "WR50_coarse": [
+   0.3807,
+   0.4223,
+   0.3797,
+   0.1258,
+   0.0791
+  ],
+  "WR50_objects": [
+   0.0857,
+   0.0761,
+   0.0777,
+   0.0287,
+   0.0399
+  ],
+  "KA4_coarse": [
+   0.0002,
+   0.0001,
+   0.0004,
+   0.0002,
+   0.0005
+  ],
+  "KA16_coarse": [
+   0.0065,
+   0.0047,
+   0.0051,
+   0.0063,
+   0.0162
+  ],
+  "KA64_coarse": [
+   0.0847,
+   0.0843,
+   0.0651,
+   0.0202,
+   0.0312
+  ],
+  "KA16_objects": [
+   0.0011,
+   0.0009,
+   0.0072,
+   0.0175,
+   0.0243
+  ],
+  "KA64_objects": [
+   0.022,
+   0.0368,
+   0.0307,
+   0.0148,
+   0.0315
+  ],
+  "WA_per_nat_coarse_C12.5": [
+   0.0118,
+   0.0142,
+   0.0131,
+   0.00425,
+   0.00331
+  ],
+  "WA_per_nat_objects_C50": [
+   0.00374,
+   0.00326,
+   0.00338,
+   0.00194,
+   0.00116
+  ],
+  "WA_loglog_slopes_coarse": [
+   0.996,
+   0.962,
+   0.916,
+   0.92,
+   0.889
+  ],
+  "WA50_coarse_vs_wind_world_Vbest": [
+   0.3558,
+   0.4824,
+   0.4417,
+   0.1544,
+   0.0932
+  ],
+  "WA50_objects_vs_wind_world_Vbest": [
+   0.167,
+   0.1427,
+   0.1438,
+   0.0773,
+   0.0499
+  ],
+  "WA12.5_coarse_n64_mean_over_se": [
+   13.5,
+   14.0,
+   16.5,
+   11.2,
+   6.6
+  ],
+  "kick_equivalent_wind_nats_coarse_h1_h2_h4_h8": {
+   "KA16": [
+    0.55,
+    0.3,
+    0.31,
+    1.31
+   ],
+   "KA64": [
+    7.18,
+    5.92,
+    4.96,
+    4.68
+   ]
+  },
+  "kick_matter_moved": {
+   "KA4": 1.95,
+   "KA16": 7.67,
+   "KA64": 29.19
+  },
+  "target_lateral_px": {
+   "WA2": [
+    0.37,
+    0.76,
+    1.81,
+    1.92,
+    1.98
+   ],
+   "WA12.5": [
+    1.0,
+    1.9,
+    4.42,
+    4.91,
+    4.59
+   ],
+   "WA50": [
+    1.83,
+    3.73,
+    8.56,
+    9.98,
+    9.42
+   ],
+   "KA16": [
+    0.14,
+    0.21,
+    0.16,
+    -1.19,
+    -1.27
+   ],
+   "KA64": [
+    0.77,
+    1.31,
+    2.61,
+    1.73,
+    1.26
+   ]
+  },
+  "same_push_quarter_background_ratio_coarse": [
+   0.997,
+   1.032,
+   1.045,
+   1.091,
+   1.253
+  ],
+  "oracle_var_coarse_port": [
+   0.00065,
+   0.00091,
+   0.00226,
+   0.00934,
+   0.07339
+  ],
+  "oracle_var_coarse_wind0.2": [
+   0.00656,
+   0.01248,
+   0.02825,
+   0.06992,
+   0.21196
+  ],
+  "closure_V_oracle_coarse": [
+   0.00062,
+   0.00091,
+   0.00213,
+   0.00911,
+   0.06037
+  ],
+  "dV_over_Vbest_coarse_sigma0.2": [
+   0.643,
+   0.346,
+   0.171,
+   0.118,
+   0.161
+  ],
+  "dV_over_Vbest_objects_sigma0.2": [
+   0.121,
+   0.142,
+   0.175,
+   0.255,
+   0.164
+  ],
+  "dV_quarter_over_main_coarse": [
+   0.045,
+   0.059,
+   0.09,
+   0.091,
+   0.104
+  ],
+  "C_nats_for_0.1_wind_world_Vbest_WA": {
+   "0.05": {
+    "WA/coarse/h1": 139.6,
+    "WA/coarse/h2": 115.5,
+    "WA/coarse/h4": 129.0,
+    "WA/coarse/h8": 430.3,
+    "WA/objects/h1": 426.5,
+    "WA/objects/h2": 763.1,
+    "WA/objects/h4": 479.5,
+    "WA/objects/h8": 656.8
+   },
+   "0.1": {
+    "WA/coarse/h1": 38.6,
+    "WA/coarse/h2": 30.8,
+    "WA/coarse/h4": 33.5,
+    "WA/coarse/h8": 110.4,
+    "WA/objects/h1": 108.4,
+    "WA/objects/h2": 196.9,
+    "WA/objects/h4": 122.2,
+    "WA/objects/h8": 171.3
+   },
+   "0.2": {
+    "WA/coarse/h1": 14.0,
+    "WA/coarse/h2": 9.6,
+    "WA/coarse/h4": 9.4,
+    "WA/coarse/h8": 30.0,
+    "WA/objects/h1": 29.5,
+    "WA/objects/h2": 53.2,
+    "WA/objects/h4": 35.0,
+    "WA/objects/h8": 47.5
+   },
+   "0.4": {
+    "WA/coarse/h1": 8.6,
+    "WA/coarse/h2": 4.4,
+    "WA/coarse/h4": 3.2,
+    "WA/coarse/h8": 9.5,
+    "WA/objects/h1": 10.8,
+    "WA/objects/h2": 15.8,
+    "WA/objects/h4": 17.2,
+    "WA/objects/h8": 14.8
+   }
+  },
+  "dV_over_Vbest_by_sigma_coarse": {
+   "0.05": [
+    0.029,
+    0.021,
+    0.015,
+    0.011
+   ],
+   "0.1": [
+    0.137,
+    0.084,
+    0.051,
+    0.036
+   ],
+   "0.2": [
+    0.643,
+    0.346,
+    0.171,
+    0.118
+   ],
+   "0.4": [
+    3.024,
+    1.417,
+    0.57,
+    0.391
+   ]
+  },
+  "dp_check_kl_proxy_C2": {
+   "h1": 0.338,
+   "h2": 0.844,
+   "h3": 1.31,
+   "h4": 0.301
+  },
+  "dp_check_kl_proxy_C12.5": {
+   "h1": 2.058,
+   "h2": 5.199,
+   "h3": 8.208,
+   "h4": 2.395
+  },
+  "viability_out_of_band": {
+   "0.0": [],
+   "0.05": [],
+   "0.1": [
+    "speed_p90"
+   ],
+   "0.2": [
+    "speed_median",
+    "speed_p90",
+    "fusions_per100",
+    "track_life_median"
+   ],
+   "0.4": [
+    "speed_p90"
+   ],
+   "0.8": [
+    "speed_median",
+    "speed_p90",
+    "mass_median",
+    "births_per100"
+   ]
+  },
+  "viability_speed_p90": {
+   "0.0": 2.1,
+   "0.05": 2.115,
+   "0.1": 2.186,
+   "0.2": 2.317,
+   "0.4": 2.91,
+   "0.8": 4.063
+  }
+ },
+ "checker": {
+  "by": "independent checker, core 0, about 4 CPU-minutes (probe rerun 85 s, recompute and analyze about 40 s, vw tests separate)",
+  "reproduction": {
+   "probe_state_10_rerun": "probe.py re-run for state 10 into scratch: y, tab, glob, moved, budget, uw, target, n0 bit-identical (max abs diff 0.0); 85 s",
+   "independent_recompute": "headline effect ratios (all 9 programs x 2 views x 5 horizons, means and SEs), oracle variances, dV/V_best, target lateral shifts and kick matter moved recomputed with separate code from results/probe/*.npz: all equal to probe_effects.json at the printed precision",
+   "probe_effects_json_restored": "the checker accidentally truncated probe_effects.json (analyze.main opens it for writing) and restored it by re-running analyze.py on the unchanged probe records: same size (51219 bytes), and every block copied into this summary (conditions, oracle_variance, loglog_fits, budget_scan, scaling check, shift_per_nat) is identical",
+   "port_and_vw_unchanged": "no file in vw1/port is newer than EXAM.md; the only vw files written during the actuation run window (harness.py, nats.py, secret.py, scoring.py, tests/test_harness.py) are new modules of the sibling track2/harness prototype, not imported by actuation code"
+  },
+  "corrections": [
+   {
+    "claim": "CPU 0.147-0.164 s per member-tick",
+    "correct": "0.137-0.164 s: probe 0.143 overall (0.137-0.157 per state), viability run 0.146, burn-in incl. compile 0.164, check timing 0.162",
+    "value": {
+     "overall": 0.1433,
+     "per_state_min": 0.1372,
+     "per_state_max": 0.1565
+    },
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe/state_*.npz (seconds), /home/user/evalwork/vecworld/program/track2/actuation/results/viability.json"
+   },
+   {
+    "claim": "admissible kick at most 0.007 V_best (coarse) and 0.024 (objects) at h <= 8",
+    "correct": "at h <= 8: <= 0.0065 coarse and <= 0.0175 objects; the 0.016 (coarse) and 0.024 (objects) maxima are at h = 16",
+    "KA16_coarse": [
+     0.0065,
+     0.0047,
+     0.0051,
+     0.0063,
+     0.0162
+    ],
+    "KA16_objects": [
+     0.0011,
+     0.0009,
+     0.0072,
+     0.0175,
+     0.0243
+    ],
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json"
+   },
+   {
+    "claim": "KA64 objects 0.02-0.04",
+    "correct": "0.015-0.037 (h = 8 is 0.0148)",
+    "KA64_objects": [
+     0.022,
+     0.0368,
+     0.0307,
+     0.0148,
+     0.0315
+    ],
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json"
+   },
+   {
+    "claim": "about 87% of the nats reach level 1 through the target's lateral position",
+    "correct": "87-88% is the best tick (tick 3) of one state, Gaussian plug-in KL with 32 keys, relative to nats spent by that tick; ticks 1-2: 66-84%; tick 4: 15-19% (1-d) or 64-73% (2-d), when the twins' lateral SD jumps from 0.78 to 2.58 px",
+    "efficiency_1d_vs_spent": {
+     "2.0": [
+      0.676,
+      0.844,
+      0.873,
+      0.15
+     ],
+     "12.5": [
+      0.658,
+      0.832,
+      0.876,
+      0.192
+     ]
+    },
+    "efficiency_2d_vs_spent": {
+     "2.0": [
+      0.688,
+      0.846,
+      0.925,
+      0.641
+     ],
+     "12.5": [
+      0.673,
+      0.835,
+      0.926,
+      0.733
+     ]
+    },
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/dp_check.json"
+   },
+   {
+    "claim": "the push, not the background, sets the effect (1.00x, 1.03x, 1.05x at h = 1, 2, 4)",
+    "correct": "coarse view only; 10 states, one push size (the 50-nat command). Coarse ratios h = 1..16: 0.997, 1.032, 1.045, 1.091, 1.253 (z = -0.1, 1.8, 1.3, 0.9, 1.7); objects 1.00, 1.02, 1.57, 1.54, 1.19 (z <= 1.4). All ratios >= 1 beyond h = 1, so the sigma_w^-2 extrapolation of budgets is, if anything, conservative; objects h >= 4 is unresolved",
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json"
+   },
+   {
+    "claim": "regional wind 0.65x aimed (coarse), 0.45x (objects)",
+    "correct": "coarse 0.65-0.73x at 50 nats, 0.57-0.62x at 12.5 nats; objects 0.46-0.47x at h <= 4 (50 nats), 0.30 at h = 8, 0.69 at h = 16",
+    "WR50_over_WA50": {
+     "coarse": [
+      0.651,
+      0.651,
+      0.734,
+      0.729,
+      0.731
+     ],
+     "objects": [
+      0.458,
+      0.467,
+      0.46,
+      0.296,
+      0.688
+     ]
+    },
+    "WR12.5_over_WA12.5_coarse": [
+     0.598,
+     0.617,
+     0.62,
+     0.593,
+     0.568
+    ],
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json"
+   },
+   {
+    "claim": "effect grows linearly with budget (log-log slopes 0.89-1.00)",
+    "correct": "coarse view (h = 1..16); objects 1.08, 1.03, 1.02, 1.32 at h = 1, 2, 4, 8 from 3 or 2 points (WA2 objects <= 0 at h = 4, 16), 0.21 at h = 16",
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json"
+   },
+   {
+    "claim": "native band from the 36 noise-free closure runs",
+    "correct": "wind-free closure runs (the port world with flow noise 0.5)",
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/viability.json"
+   },
+   {
+    "claim": "the target needs about 3-4 px sideways for h <= 4 and about 7 px for h = 8",
+    "correct": "holds for the coarse view at sigma_w = 0.05, read as displacement reached by tick 4: 3.4-3.7 px by tick 4 (0.8 px at h = 1, 1.4 px at h = 2) and 7.3 px at h = 8; the objects view needs 6.3-8.4 px by tick 4 and 9.0 px at h = 8. Derived by log-log interpolation of target_lateral_px over WA2/12.5/50 at C(0.05) x (0.05/0.2)^2",
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json"
+   },
+   {
+    "claim": "wind-world V_best approximated by V_best + dV is a lower bound",
+    "correct": "an approximation, not a proven bound: it assumes the wind does not reduce the hidden-state term of the level-1 error, and the closure V_best is itself a fitted predictor's error",
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json"
+   },
+   {
+    "claim": "sigma_w = 0.8 breaks the world: births appear",
+    "correct": "one birth in 750 member-ticks (0.133 per 100 ticks); the break is carried by speed (median 2.23 vs band <= 1.70; p90 4.06 vs <= 2.17) and mass median 139.1 (band >= 140.4)",
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/viability.json"
+   },
+   {
+    "claim": "the p90 speed rise is the wind's own drift",
+    "correct": "an untested interpretation (consistent with a 1.95 sigma_w px/tick random walk per component), not measured",
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/check_wind.json"
+   },
+   {
+    "claim": "about 1 GPU-hour if 10^3 member-ticks/s holds",
+    "correct": "at 10^3 member-ticks/s, 50k member-ticks is about 50 s of simulation; 1 GPU-hour is not implied by that rate (training and overhead would have to dominate); unsupported",
+    "source": "report arithmetic"
+   },
+   {
+    "claim": "objects-view oracle variance at h <= 4 is usable",
+    "correct": "the port twins' objects oracle variance (3 keys) does not match the closure's V_oracle: 0.0088 vs 0.0046 (h = 1), 0.028 vs 0.0094 (h = 2), 0.034 vs 0.070 (h = 4); coarse matches (0.00065 vs 0.00062). Objects dV and objects budgets are rough at every horizon, not only h >= 8",
+    "twin_0_objects": [
+     0.008836,
+     0.027861,
+     0.03352,
+     0.062201,
+     0.280636
+    ],
+    "source": "/home/user/evalwork/vecworld/program/track2/actuation/results/probe_effects.json"
+   }
+  ],
+  "confounds_not_in_report": [
+   "one kick design (open-loop flank transfer, 4 ticks, k = 4 or 16 cells per side): 'kick barely registers' is shown for this design, not for every admissible kick",
+   "targets are the fastest isolated body of each state (all 40 tier 0): effects for non-isolated or slow bodies are untested",
+   "sigma_w = 0.05 rests mainly on the extrapolated dV (3% vs 14% of V_best at h = 1); the 3-member viability test cannot separate 0.05 from 0.1 (0.1 misses the p90 speed band by 0.014)"
+  ]
+ }
+}

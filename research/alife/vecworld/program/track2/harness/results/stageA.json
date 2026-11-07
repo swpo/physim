@@ -1,0 +1,149 @@
+{
+ "theta": [
+  0.21089003361342012,
+  0.1194207685161739,
+  0.17739686061657095
+ ],
+ "programs": {
+  "d": {
+   "n_commands": 4,
+   "charge_nats": 7.999999984,
+   "closed_form_level0_kl": 7.999999984,
+   "charge_minus_kl": 0.0,
+   "mc_llr": {
+    "charge_nats": 7.999999984,
+    "mc_nats": 7.960421099212192,
+    "mc_se": 0.06311638913659505,
+    "z": -0.6270777737641393,
+    "n": 4000
+   },
+   "mc_llr_under_P0": {
+    "charge_nats": -7.999999984,
+    "mc_nats": -7.988079047836185,
+    "mc_se": 0.06329537473016132,
+    "z": 0.18833818765803617,
+    "n": 4000
+   },
+   "kl_obs_level1_stationary": 5.696383080171321,
+   "kl_obs_level1_given_history": 7.061271888835202,
+   "kl_obs_level2_given_history": 5.968301721227487,
+   "efficiency_level1_given_history": 0.8826589878697183,
+   "efficiency_level1_stationary": 0.712047886445511,
+   "max_mean_shift_sd_level1_given_history": 2.747817289133357,
+   "sqrt_2C": 3.9999999959999997,
+   "card": {
+    "kl_nats": 7.999999984,
+    "chi2_mean_shift_in_sd": 2980.957771615078,
+    "linear_gaussian_mean_shift_in_sd": 3.9999999959999997,
+    "chi2_bound_informative": false
+   }
+  },
+  "b": {
+   "n_commands": 7,
+   "charge_nats": 5.787694031925563,
+   "closed_form_level0_kl": 5.787694031925563,
+   "charge_minus_kl": 0.0,
+   "mc_llr": {
+    "charge_nats": 5.787694031925563,
+    "mc_nats": 5.873898280302615,
+    "mc_se": 0.05366453697841301,
+    "z": 1.6063540883941476,
+    "n": 4000
+   },
+   "mc_llr_under_P0": {
+    "charge_nats": -5.787694031925563,
+    "mc_nats": -5.71173504232091,
+    "mc_se": 0.05338089373031653,
+    "z": 1.4229621180267567,
+    "n": 4000
+   },
+   "kl_obs_level1_stationary": 1.0726234224725815,
+   "kl_obs_level1_given_history": 1.0726235254751206,
+   "kl_obs_level2_given_history": 0.6063135044179205,
+   "efficiency_level1_given_history": 0.18532830511744577,
+   "efficiency_level1_stationary": 0.18532828732062745,
+   "max_mean_shift_sd_level1_given_history": 0.4622118541670629,
+   "sqrt_2C": 3.4022621979869694,
+   "card": {
+    "kl_nats": 5.787694031925563,
+    "chi2_mean_shift_in_sd": 326.2582790333969,
+    "linear_gaussian_mean_shift_in_sd": 3.4022621979869694,
+    "chi2_bound_informative": false
+   }
+  },
+  "c": {
+   "n_commands": 4,
+   "charge_nats": 7.999999984000001,
+   "closed_form_level0_kl": 7.999999984000001,
+   "charge_minus_kl": 0.0,
+   "mc_llr": {
+    "charge_nats": 7.999999984000001,
+    "mc_nats": 8.054093428997447,
+    "mc_se": 0.06351412460036769,
+    "z": 0.8516758333331858,
+    "n": 4000
+   },
+   "mc_llr_under_P0": {
+    "charge_nats": -7.999999984000001,
+    "mc_nats": -8.069491622020365,
+    "mc_se": 0.06363783166766797,
+    "z": -1.0919862635054234,
+    "n": 4000
+   },
+   "kl_obs_level1_stationary": 5.603776380898452,
+   "kl_obs_level1_given_history": 6.81993722395863,
+   "kl_obs_level2_given_history": 3.571431570069099,
+   "efficiency_level1_given_history": 0.8524921546998129,
+   "efficiency_level1_stationary": 0.7004720490132506,
+   "max_mean_shift_sd_level1_given_history": 3.5367003984808627,
+   "sqrt_2C": 3.999999996,
+   "card": {
+    "kl_nats": 7.999999984000001,
+    "chi2_mean_shift_in_sd": 2980.9577716150834,
+    "linear_gaussian_mean_shift_in_sd": 3.999999996,
+    "chi2_bound_informative": false
+   }
+  },
+  "agent_active": {
+   "n_commands": 4,
+   "charge_nats": 7.999999984000001,
+   "closed_form_level0_kl": 7.999999984000001,
+   "charge_minus_kl": 0.0,
+   "mc_llr": {
+    "charge_nats": 7.999999984000001,
+    "mc_nats": 8.045258878820672,
+    "mc_se": 0.06405217481698382,
+    "z": 0.7065941937176785,
+    "n": 4000
+   },
+   "mc_llr_under_P0": {
+    "charge_nats": -7.999999984000001,
+    "mc_nats": -7.906340374194593,
+    "mc_se": 0.06245011638997827,
+    "z": 1.4997507646028767,
+    "n": 4000
+   },
+   "kl_obs_level1_stationary": 4.8691989050255895,
+   "kl_obs_level1_given_history": 5.71582159897298,
+   "kl_obs_level2_given_history": 2.8860760305511817,
+   "efficiency_level1_given_history": 0.7144777013005777,
+   "efficiency_level1_stationary": 0.6086498643454983,
+   "max_mean_shift_sd_level1_given_history": 1.6771435689535408,
+   "sqrt_2C": 3.999999996,
+   "card": {
+    "kl_nats": 7.999999984000001,
+    "chi2_mean_shift_in_sd": 2980.9577716150834,
+    "linear_gaussian_mean_shift_in_sd": 3.999999996,
+    "chi2_bound_informative": false
+   }
+  }
+ },
+ "rejections": {
+  "tick_cap": "InputViolation: input rejected, nothing charged: nats: command costs 2.5 > per-tick cap 2",
+  "episode_cap": "InputViolation: program entry t=4: input rejected, nothing charged: nats: episode total would be 10 > episode cap 8",
+  "max_ticks": "BudgetExhausted: budget: 1 + 500 ticks > max_ticks=200; nothing ran",
+  "usage_unchanged": true,
+  "total_cap": "InputViolation: program entry t=1: input rejected, nothing charged: nats: investigation total would be 12 > total cap 10"
+ },
+ "cpu_s": 18.528251124
+}

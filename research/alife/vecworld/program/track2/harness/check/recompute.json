@@ -1,0 +1,948 @@
+{
+ "valid_n128": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false
+ ],
+ "valid_n256R4_own": [
+  true,
+  true,
+  true,
+  true,
+  false,
+  false,
+  false
+ ],
+ "denominator_fair_n128": [
+  0.2053,
+  0.1768,
+  0.2241,
+  0.0718,
+  0.0098,
+  0.0126,
+  0.0007
+ ],
+ "pooled_weight_per_valid_cell": [
+  0.293,
+  0.252,
+  0.32,
+  0.103,
+  0.014,
+  0.018
+ ],
+ "pooled_weight_h<=4": 0.866,
+ "pooled_weight_h16_cells": 0.032,
+ "n64_R16": {
+  "pooled": {
+   "agg": {
+    "B1@small_passive": [
+     -0.074,
+     0.0547
+    ],
+    "B1@large_passive": [
+     0.3751,
+     0.0413
+    ],
+    "B2@small_passive": [
+     0.917,
+     0.0106
+    ],
+    "B2@large_passive": [
+     0.9403,
+     0.0102
+    ],
+    "B3_true_theta": [
+     0.9408,
+     0.0102
+    ],
+    "B2@zero": [
+     0.8782,
+     0.0136
+    ],
+    "ctrl_prior_mean": [
+     0.8202,
+     0.0142
+    ]
+   },
+   "small_passive": {
+    "B1@small_passive-B0@small_passive": [
+     0.8193,
+     0.0696,
+     11.77
+    ],
+    "B2@small_passive-B1@small_passive": [
+     0.991,
+     0.0562,
+     17.64
+    ],
+    "B3_true_theta-B2@small_passive": [
+     0.0238,
+     0.0044,
+     5.42
+    ],
+    "oracle-B3_true_theta": [
+     0.0592,
+     0.0102,
+     5.78
+    ],
+    "B1@small_passive-climatology": [
+     -0.074,
+     0.0547,
+     -1.35
+    ],
+    "check1_passes(all z>=3)": true
+   },
+   "small_active": {
+    "B1@small_active-B0@small_active": [
+     -0.5477,
+     0.1014,
+     -5.4
+    ],
+    "B2@small_active-B1@small_active": [
+     1.6068,
+     0.1124,
+     14.3
+    ],
+    "B3_true_theta-B2@small_active": [
+     0.0045,
+     0.0015,
+     2.99
+    ],
+    "oracle-B3_true_theta": [
+     0.0592,
+     0.0102,
+     5.78
+    ],
+    "B1@small_active-climatology": [
+     -0.6705,
+     0.1164,
+     -5.76
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_passive": {
+    "B1@large_passive-B0@large_passive": [
+     0.383,
+     0.0448,
+     8.56
+    ],
+    "B2@large_passive-B1@large_passive": [
+     0.5652,
+     0.0429,
+     13.17
+    ],
+    "B3_true_theta-B2@large_passive": [
+     0.0005,
+     0.0006,
+     0.87
+    ],
+    "oracle-B3_true_theta": [
+     0.0592,
+     0.0102,
+     5.78
+    ],
+    "B1@large_passive-climatology": [
+     0.3751,
+     0.0413,
+     9.08
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_active": {
+    "B1@large_active-B0@large_active": [
+     0.5528,
+     0.0396,
+     13.96
+    ],
+    "B2@large_active-B1@large_active": [
+     0.456,
+     0.0358,
+     12.73
+    ],
+    "B3_true_theta-B2@large_active": [
+     0.0007,
+     0.0007,
+     1.05
+    ],
+    "oracle-B3_true_theta": [
+     0.0592,
+     0.0102,
+     5.78
+    ],
+    "B1@large_active-climatology": [
+     0.4841,
+     0.0346,
+     13.98
+    ],
+    "check1_passes(all z>=3)": false
+   }
+  },
+  "mean": {
+   "agg": {
+    "B1@small_passive": [
+     -2.041,
+     0.3887
+    ],
+    "B1@large_passive": [
+     0.3264,
+     0.05
+    ],
+    "B2@small_passive": [
+     0.8324,
+     0.047
+    ],
+    "B2@large_passive": [
+     0.9536,
+     0.0463
+    ],
+    "B3_true_theta": [
+     0.9553,
+     0.0467
+    ],
+    "B2@zero": [
+     0.678,
+     0.0681
+    ],
+    "ctrl_prior_mean": [
+     0.3368,
+     0.1075
+    ]
+   },
+   "small_passive": {
+    "B1@small_passive-B0@small_passive": [
+     1.581,
+     0.2516,
+     6.28
+    ],
+    "B2@small_passive-B1@small_passive": [
+     2.8734,
+     0.3962,
+     7.25
+    ],
+    "B3_true_theta-B2@small_passive": [
+     0.1229,
+     0.0389,
+     3.16
+    ],
+    "oracle-B3_true_theta": [
+     0.0447,
+     0.0467,
+     0.96
+    ],
+    "B1@small_passive-climatology": [
+     -2.041,
+     0.3887,
+     -5.25
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "small_active": {
+    "B1@small_active-B0@small_active": [
+     -4.1299,
+     0.8943,
+     -4.62
+    ],
+    "B2@small_active-B1@small_active": [
+     5.4672,
+     1.0071,
+     5.43
+    ],
+    "B3_true_theta-B2@small_active": [
+     0.0312,
+     0.0123,
+     2.52
+    ],
+    "oracle-B3_true_theta": [
+     0.0447,
+     0.0467,
+     0.96
+    ],
+    "B1@small_active-climatology": [
+     -4.5431,
+     0.9916,
+     -4.58
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_passive": {
+    "B1@large_passive-B0@large_passive": [
+     0.2502,
+     0.0695,
+     3.6
+    ],
+    "B2@large_passive-B1@large_passive": [
+     0.6272,
+     0.073,
+     8.6
+    ],
+    "B3_true_theta-B2@large_passive": [
+     0.0017,
+     0.0032,
+     0.53
+    ],
+    "oracle-B3_true_theta": [
+     0.0447,
+     0.0467,
+     0.96
+    ],
+    "B1@large_passive-climatology": [
+     0.3264,
+     0.05,
+     6.52
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_active": {
+    "B1@large_active-B0@large_active": [
+     0.5223,
+     0.0639,
+     8.17
+    ],
+    "B2@large_active-B1@large_active": [
+     0.5612,
+     0.0675,
+     8.32
+    ],
+    "B3_true_theta-B2@large_active": [
+     0.0021,
+     0.0044,
+     0.47
+    ],
+    "oracle-B3_true_theta": [
+     0.0447,
+     0.0467,
+     0.96
+    ],
+    "B1@large_active-climatology": [
+     0.392,
+     0.0455,
+     8.62
+    ],
+    "check1_passes(all z>=3)": false
+   }
+  }
+ },
+ "n128_R16": {
+  "pooled": {
+   "agg": {
+    "B1@small_passive": [
+     -0.0724,
+     0.0436
+    ],
+    "B1@large_passive": [
+     0.3617,
+     0.0351
+    ],
+    "B2@small_passive": [
+     0.9213,
+     0.0077
+    ],
+    "B2@large_passive": [
+     0.9412,
+     0.0074
+    ],
+    "B3_true_theta": [
+     0.9416,
+     0.0074
+    ],
+    "B2@zero": [
+     0.8861,
+     0.0094
+    ],
+    "ctrl_prior_mean": [
+     0.826,
+     0.0107
+    ]
+   },
+   "small_passive": {
+    "B1@small_passive-B0@small_passive": [
+     0.7086,
+     0.0507,
+     13.99
+    ],
+    "B2@small_passive-B1@small_passive": [
+     0.9937,
+     0.0433,
+     22.95
+    ],
+    "B3_true_theta-B2@small_passive": [
+     0.0203,
+     0.0031,
+     6.48
+    ],
+    "oracle-B3_true_theta": [
+     0.0584,
+     0.0074,
+     7.87
+    ],
+    "B1@small_passive-climatology": [
+     -0.0724,
+     0.0436,
+     -1.66
+    ],
+    "check1_passes(all z>=3)": true
+   },
+   "small_active": {
+    "B1@small_active-B0@small_active": [
+     -0.5544,
+     0.0649,
+     -8.55
+    ],
+    "B2@small_active-B1@small_active": [
+     1.6536,
+     0.0723,
+     22.89
+    ],
+    "B3_true_theta-B2@small_active": [
+     0.0041,
+     0.0013,
+     3.08
+    ],
+    "oracle-B3_true_theta": [
+     0.0584,
+     0.0074,
+     7.87
+    ],
+    "B1@small_active-climatology": [
+     -0.7162,
+     0.075,
+     -9.55
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_passive": {
+    "B1@large_passive-B0@large_passive": [
+     0.3759,
+     0.0373,
+     10.08
+    ],
+    "B2@large_passive-B1@large_passive": [
+     0.5795,
+     0.0356,
+     16.3
+    ],
+    "B3_true_theta-B2@large_passive": [
+     0.0004,
+     0.0004,
+     1.09
+    ],
+    "oracle-B3_true_theta": [
+     0.0584,
+     0.0074,
+     7.87
+    ],
+    "B1@large_passive-climatology": [
+     0.3617,
+     0.0351,
+     10.3
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_active": {
+    "B1@large_active-B0@large_active": [
+     0.5102,
+     0.0319,
+     15.99
+    ],
+    "B2@large_active-B1@large_active": [
+     0.4714,
+     0.0298,
+     15.8
+    ],
+    "B3_true_theta-B2@large_active": [
+     0.0003,
+     0.0005,
+     0.65
+    ],
+    "oracle-B3_true_theta": [
+     0.0584,
+     0.0074,
+     7.87
+    ],
+    "B1@large_active-climatology": [
+     0.4699,
+     0.0297,
+     15.8
+    ],
+    "check1_passes(all z>=3)": false
+   }
+  },
+  "mean": {
+   "agg": {
+    "B1@small_passive": [
+     -2.3826,
+     0.3728
+    ],
+    "B1@large_passive": [
+     0.2481,
+     0.0444
+    ],
+    "B2@small_passive": [
+     0.8638,
+     0.0399
+    ],
+    "B2@large_passive": [
+     0.975,
+     0.0384
+    ],
+    "B3_true_theta": [
+     0.9744,
+     0.0384
+    ],
+    "B2@zero": [
+     0.7078,
+     0.0525
+    ],
+    "ctrl_prior_mean": [
+     0.3369,
+     0.0913
+    ]
+   },
+   "small_passive": {
+    "B1@small_passive-B0@small_passive": [
+     1.4987,
+     0.2019,
+     7.42
+    ],
+    "B2@small_passive-B1@small_passive": [
+     3.2464,
+     0.3768,
+     8.62
+    ],
+    "B3_true_theta-B2@small_passive": [
+     0.1105,
+     0.0297,
+     3.72
+    ],
+    "oracle-B3_true_theta": [
+     0.0256,
+     0.0384,
+     0.67
+    ],
+    "B1@small_passive-climatology": [
+     -2.3826,
+     0.3728,
+     -6.39
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "small_active": {
+    "B1@small_active-B0@small_active": [
+     -4.7746,
+     0.7948,
+     -6.01
+    ],
+    "B2@small_active-B1@small_active": [
+     6.2728,
+     0.8965,
+     7.0
+    ],
+    "B3_true_theta-B2@small_active": [
+     0.0286,
+     0.0108,
+     2.64
+    ],
+    "oracle-B3_true_theta": [
+     0.0256,
+     0.0384,
+     0.67
+    ],
+    "B1@small_active-climatology": [
+     -5.3271,
+     0.8835,
+     -6.03
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_passive": {
+    "B1@large_passive-B0@large_passive": [
+     0.2311,
+     0.0528,
+     4.38
+    ],
+    "B2@large_passive-B1@large_passive": [
+     0.7269,
+     0.0644,
+     11.29
+    ],
+    "B3_true_theta-B2@large_passive": [
+     -0.0006,
+     0.0024,
+     -0.27
+    ],
+    "oracle-B3_true_theta": [
+     0.0256,
+     0.0384,
+     0.67
+    ],
+    "B1@large_passive-climatology": [
+     0.2481,
+     0.0444,
+     5.58
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_active": {
+    "B1@large_active-B0@large_active": [
+     0.454,
+     0.0545,
+     8.33
+    ],
+    "B2@large_active-B1@large_active": [
+     0.6698,
+     0.064,
+     10.47
+    ],
+    "B3_true_theta-B2@large_active": [
+     -0.001,
+     0.0032,
+     -0.33
+    ],
+    "oracle-B3_true_theta": [
+     0.0256,
+     0.0384,
+     0.67
+    ],
+    "B1@large_active-climatology": [
+     0.3056,
+     0.0449,
+     6.81
+    ],
+    "check1_passes(all z>=3)": false
+   }
+  }
+ },
+ "n256_R4": {
+  "pooled": {
+   "agg": {
+    "B1@small_passive": [
+     -0.0617,
+     0.0397
+    ],
+    "B1@large_passive": [
+     0.3051,
+     0.0302
+    ],
+    "B2@small_passive": [
+     0.9113,
+     0.0149
+    ],
+    "B2@large_passive": [
+     0.9313,
+     0.014
+    ],
+    "B3_true_theta": [
+     0.9317,
+     0.0139
+    ],
+    "B2@zero": [
+     0.8847,
+     0.0155
+    ],
+    "ctrl_prior_mean": [
+     0.8184,
+     0.017
+    ]
+   },
+   "small_passive": {
+    "B1@small_passive-B0@small_passive": [
+     0.7811,
+     0.0458,
+     17.04
+    ],
+    "B2@small_passive-B1@small_passive": [
+     0.973,
+     0.0403,
+     24.13
+    ],
+    "B3_true_theta-B2@small_passive": [
+     0.0204,
+     0.0044,
+     4.58
+    ],
+    "oracle-B3_true_theta": [
+     0.0683,
+     0.0139,
+     4.91
+    ],
+    "B1@small_passive-climatology": [
+     -0.0617,
+     0.0397,
+     -1.56
+    ],
+    "check1_passes(all z>=3)": true
+   },
+   "small_active": {
+    "B1@small_active-B0@small_active": [
+     -0.6751,
+     0.0576,
+     -11.72
+    ],
+    "B2@small_active-B1@small_active": [
+     1.7754,
+     0.0613,
+     28.96
+    ],
+    "B3_true_theta-B2@small_active": [
+     0.006,
+     0.0019,
+     3.12
+    ],
+    "oracle-B3_true_theta": [
+     0.0683,
+     0.0139,
+     4.91
+    ],
+    "B1@small_active-climatology": [
+     -0.8497,
+     0.0612,
+     -13.89
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_passive": {
+    "B1@large_passive-B0@large_passive": [
+     0.3095,
+     0.0314,
+     9.87
+    ],
+    "B2@large_passive-B1@large_passive": [
+     0.6261,
+     0.0316,
+     19.83
+    ],
+    "B3_true_theta-B2@large_passive": [
+     0.0004,
+     0.0006,
+     0.7
+    ],
+    "oracle-B3_true_theta": [
+     0.0683,
+     0.0139,
+     4.91
+    ],
+    "B1@large_passive-climatology": [
+     0.3051,
+     0.0302,
+     10.1
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_active": {
+    "B1@large_active-B0@large_active": [
+     0.4619,
+     0.0269,
+     17.14
+    ],
+    "B2@large_active-B1@large_active": [
+     0.5015,
+     0.0262,
+     19.13
+    ],
+    "B3_true_theta-B2@large_active": [
+     0.0005,
+     0.0007,
+     0.66
+    ],
+    "oracle-B3_true_theta": [
+     0.0683,
+     0.0139,
+     4.91
+    ],
+    "B1@large_active-climatology": [
+     0.4297,
+     0.0257,
+     16.75
+    ],
+    "check1_passes(all z>=3)": false
+   }
+  },
+  "mean": {
+   "agg": {
+    "B1@small_passive": [
+     -3.2929,
+     183.4502
+    ],
+    "B1@large_passive": [
+     0.1973,
+     2.8433
+    ],
+    "B2@small_passive": [
+     0.845,
+     10.8235
+    ],
+    "B2@large_passive": [
+     1.0065,
+     20.1395
+    ],
+    "B3_true_theta": [
+     1.0086,
+     20.3834
+    ],
+    "B2@zero": [
+     0.6609,
+     7.6778
+    ],
+    "ctrl_prior_mean": [
+     0.0933,
+     33.3482
+    ]
+   },
+   "small_passive": {
+    "B1@small_passive-B0@small_passive": [
+     2.0252,
+     81.5917,
+     0.02
+    ],
+    "B2@small_passive-B1@small_passive": [
+     4.1378,
+     192.8936,
+     0.02
+    ],
+    "B3_true_theta-B2@small_passive": [
+     0.1637,
+     10.6574,
+     0.02
+    ],
+    "oracle-B3_true_theta": [
+     -0.0086,
+     20.3834,
+     -0.0
+    ],
+    "B1@small_passive-climatology": [
+     -3.2929,
+     183.4502,
+     -0.02
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "small_active": {
+    "B1@small_active-B0@small_active": [
+     -6.7798,
+     413.3211,
+     -0.02
+    ],
+    "B2@small_active-B1@small_active": [
+     8.4655,
+     465.0984,
+     0.02
+    ],
+    "B3_true_theta-B2@small_active": [
+     0.0409,
+     2.7547,
+     0.01
+    ],
+    "oracle-B3_true_theta": [
+     -0.0086,
+     20.3834,
+     -0.0
+    ],
+    "B1@small_active-climatology": [
+     -7.4977,
+     448.1284,
+     -0.02
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_passive": {
+    "B1@large_passive-B0@large_passive": [
+     0.1951,
+     3.513,
+     0.06
+    ],
+    "B2@large_passive-B1@large_passive": [
+     0.8092,
+     22.1725,
+     0.04
+    ],
+    "B3_true_theta-B2@large_passive": [
+     0.0021,
+     0.3093,
+     0.01
+    ],
+    "oracle-B3_true_theta": [
+     -0.0086,
+     20.3834,
+     -0.0
+    ],
+    "B1@large_passive-climatology": [
+     0.1973,
+     2.8433,
+     0.07
+    ],
+    "check1_passes(all z>=3)": false
+   },
+   "large_active": {
+    "B1@large_active-B0@large_active": [
+     0.4587,
+     7.3316,
+     0.06
+    ],
+    "B2@large_active-B1@large_active": [
+     0.6819,
+     18.7551,
+     0.04
+    ],
+    "B3_true_theta-B2@large_active": [
+     0.0048,
+     0.5258,
+     0.01
+    ],
+    "oracle-B3_true_theta": [
+     -0.0086,
+     20.3834,
+     -0.0
+    ],
+    "B1@large_active-climatology": [
+     0.322,
+     3.2968,
+     0.1
+    ],
+    "check1_passes(all z>=3)": false
+   }
+  }
+ },
+ "n256_R4_own_cells_mean_se_B3": 0.0138,
+ "n256_R4_own_cells_mean_B3": 0.9332,
+ "B3_v1_mean_valid_n128": 0.6449,
+ "B3_fair_mean_valid_n128": 0.9744,
+ "denominator_v1_n128": [
+  0.1877,
+  0.1545,
+  0.1969,
+  0.042,
+  -0.0214,
+  -0.0162,
+  -0.0281
+ ],
+ "stageC_w0_B1_small_passive_mean": -2.383,
+ "stageC_w0_B1_small_passive_cell_1_16": -7.27,
+ "pooled_w0": {
+  "ctrl_prior_mean": 0.826,
+  "B2@zero_noreweight": 0.834,
+  "B2@zero": 0.886,
+  "B2@small_passive": 0.921,
+  "B2@large_passive": 0.941,
+  "B3_true_theta": 0.942
+ },
+ "pooled_w1": {
+  "ctrl_prior_mean": 0.931,
+  "B2@zero_noreweight": 0.932,
+  "B2@zero": 0.929,
+  "B2@small_passive": 0.923,
+  "B2@large_passive": 0.946,
+  "B3_true_theta": 0.948
+ },
+ "pooled_w2": {
+  "ctrl_prior_mean": 0.856,
+  "B2@zero_noreweight": 0.877,
+  "B2@zero": 0.894,
+  "B2@small_passive": 0.924,
+  "B2@large_passive": 0.936,
+  "B3_true_theta": 0.936
+ }
+}

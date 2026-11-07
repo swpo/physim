@@ -1,0 +1,62 @@
+{
+ "config": {
+  "H": 64,
+  "G": 4,
+  "m": 16,
+  "sigma_a": 0.005,
+  "stir_w": 8.0,
+  "tick_time": 5.0
+ },
+ "noise_law": {
+  "n": 16000,
+  "mean_abs_max": 8.329620843844689e-05,
+  "std_mean": 0.004994299886979359,
+  "std_min": 0.004944100877619621,
+  "std_max": 0.005044151207627618,
+  "sigma_a": 0.005,
+  "max_abs_offdiag_corr": 0.017498838684031636
+ },
+ "kl_check": {
+  "charge_nats": 15.875,
+  "mc_nats": 15.894726088457505,
+  "mc_se": 0.090040654448151,
+  "z": 0.21907979876872014,
+  "n": 4000
+ },
+ "program_charge_nats": 15.875,
+ "per_tick_charges": [
+  2.25,
+  8.0,
+  5.625
+ ],
+ "card_guarantee": {
+  "kl_nats": 15.875,
+  "chi2_mean_shift_in_sd": 7841965.01037252,
+  "linear_gaussian_mean_shift_in_sd": 5.634713834792322,
+  "chi2_bound_informative": false
+ },
+ "grid_contrast": {
+  "64": {
+   "channel_nats_u0.1": 200.0,
+   "v1_pixel_noise_nats_same_field": 3.5043695407270264e+16,
+   "v1_pixel_noise_nats_bump_std2px": 80427.2306578718,
+   "bump_peak": 0.9018379392317943,
+   "bump_mean_removed": 0.09816194823303098
+  },
+  "128": {
+   "channel_nats_u0.1": 200.0,
+   "v1_pixel_noise_nats_same_field": 35778.23509394,
+   "v1_pixel_noise_nats_bump_std2px": 76979.20589524068,
+   "bump_peak": 0.9754563073938298,
+   "bump_mean_removed": 0.024543692606170193
+  }
+ },
+ "example_costs_nats": {
+  "u=0.005 on one coefficient": 0.5,
+  "u=0.01 on one coefficient": 2.0,
+  "u=0.02 on one coefficient": 8.0,
+  "u=0.05 on one coefficient": 50.0,
+  "u=0.1 on one coefficient": 200.0,
+  "u=0.2 on one coefficient": 800.0
+ }
+}

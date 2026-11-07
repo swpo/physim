@@ -32,3 +32,15 @@ Headline positions so far:
   The designer's level-1 ceiling is a lower bound, so rewards must not be clipped at it.
 - Pooling: a reconstruction autoencoder picks the wrong feature in a mass-conserving world; a long-horizon closure
   objective with a local, translation-equivariant encoder recovers block sums.
+
+Prototypes (7 Nov 2026; each independently checked, corrections in each `results/summary.json` under `checker`):
+- `track2/actuation`: a "wind" input channel (8 x 8 force field with Gaussian noise, exact nats) makes actions matter on the
+  gliders world; the matter kick does not. Recommended background noise 0.05, budgets of about 150-700 nats per episode.
+- `track2/harness` with new library modules `vw/secret.py`, `vw/nats.py`, `vw/scoring.py`, `vw/harness.py` (105 tests):
+  on a closed-form toy, climatology < level-1 ARX < simulation-based inference ~ true parameters < oracle, separated;
+  the PhySim v1 energy-score estimator is biased (+6.7% at 15 members, +33% at 3).
+- `track1/learned_phi2`: closure with a local, translation-equivariant encoder learns a tapered pooling window equal to a
+  designed tent and better than the 2 x 2 box; the encoder's receptive field sets the window; reconstruction is worse.
+- `track1/vortex_world`: the fed-vortex world with heredity as a JAX Level (matches numpy to round-off), an exact-nats
+  stirring channel, a vortex-list level 1 and a kind-share level 2 with a selection signal at 128^2.
+Raw arrays are not committed; the scripts regenerate them.

@@ -1,0 +1,10 @@
+{
+ "note": "one core (taskset -c 3), float64, OMP/XLA single-threaded; transcribed from the stdout of bench_step.py and bench_level.py (copied into this folder) run in this session",
+ "native_step_ms_merged_transforms": {"64": 0.334, "96": 1.053, "128": 2.205},
+ "native_step_ms_first_version_30_transforms": {"64": 0.387, "96": 1.347, "128": 2.904},
+ "level_tick_s_64_B1_no_vmap": 0.081,
+ "level_tick_s_64_per_member_vmap_B4": 0.122,
+ "world_member_tick_s_64_lax_map": {"B1": 0.0855, "B4": 0.0826, "B16": 0.0888},
+ "world_member_tick_s_64_vmap": {"B1": 0.135, "B4": 0.111, "B16": 0.134},
+ "tracker_update_s_64": 0.00042
+}
