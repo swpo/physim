@@ -18,9 +18,10 @@ the suite. `mech_fedvortex.prime-agent.toml` is a capped mechanics test (45 min 
 
 ## 1. Environment
 
-The bundles bind the exact PhySim sources and numpy/scipy versions, so run from the PR branch
-`labworlds-adapter` of swpo/residency-environments (PrimeIntellect-ai/residency-environments#40) **including the
-ruff-format commit**, with the environment's pinned numpy 2.5.2 and scipy 1.18.0:
+The bundles bind the exact PhySim sources and numpy/scipy versions, so run from swpo/residency-environments branch
+`fix/physim-fair-energy-labworlds` (19f30c1 or later with the same pinned sources: the PR #40 branch `labworlds-adapter`
+plus the ruff-format commit and the fair scorer; `labworlds-adapter` alone still has the old scorer and is refused),
+with the environment's pinned numpy 2.5.2 and scipy 1.18.0:
 
     cd residency-environments/environments/physim && uv sync
     uv run python /path/to/rollout_kit/check_kit.py     # must print "ok" for all nine
