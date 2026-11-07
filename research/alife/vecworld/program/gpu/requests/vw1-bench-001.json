@@ -1,0 +1,19 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "vw1-bench-001",
+  "purpose": "VW-1 gliders world float64 throughput (vmap B=1..256), JAX tracker rate, GPU-vs-CPU agreement, conv AE float32 training step",
+  "requester": "cloud coordinator session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": ["research/alife/vecworld/vw1", "research/alife/vecworld/integrate", "research/alife/vecworld/spec", "research/alife/vecworld/level0"],
+  "gpu": {"types": ["H100_80GB", "A100_80GB"], "count": 1, "spot": false},
+  "max_hours": 1.0,
+  "cap_usd": 10,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/vw1/port && python -B bench_gpu.py --out $OUT",
+  "env": {"XLA_PYTHON_CLIENT_PREALLOCATE": "false"},
+  "notes": "float64 world (jax_enable_x64), so FP64-capable GPUs only. CPU smoke test passed (--quick)."
+}
