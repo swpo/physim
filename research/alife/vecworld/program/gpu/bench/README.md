@@ -23,3 +23,20 @@ Script: `../../../vw1/port/bench_gpu.py`; raw results: `vw1-bench-001_results.js
 
 Implication for estimates: the 47k member-tick closure study is about 30 s of A100 time; 1M member-ticks about
 10 minutes (about $0.40 at this rate).
+
+## Agreement from one shared state: vw1-agree-001 (7 Nov 2026)
+
+A100 80GB, billed $0.08. Two members built once on the CPU (init and burn-in), copied to the GPU, then advanced
+in step on both, with zero input (`agree_gpu.py`; raw results `vw1-agree-001_agreement.json`).
+
+- One Flow-Lenia substep: level-0 max abs difference 4e-15, growing to 1e-13 over 5 substeps; block view 1e-16 to
+  8e-16. That is the float64 rounding floor, so the GPU arithmetic agrees with the CPU.
+- Full ticks (20 substeps): level-0 max abs difference 5.6e-11, 1.4e-7, 1.7e-4, 0.26 and 1.2 at ticks 1-5 (about
+  x2,500 per tick), after which the maximum saturates at 1-2.7. The field-wide RMS difference keeps growing slowly:
+  1.0e-2 at tick 5 and 7.8e-2 at tick 20, against a field RMS of 0.18. The divergence is local first and global
+  over tens of ticks, consistent with the closure study's divergence curve.
+- Object view: at tick 1 it differs by at most 6e-13 (rounding passed through continuously, not a discrete
+  flip). Discrete tracker differences (slot assignment or presence) first appear around tick 9 (max abs 2.0) and
+  tick 17 (93), once the bodies themselves differ.
+- Consequence: GPU and CPU runs are statistically the same world but not bit-reproducible beyond a few ticks, so
+  frozen truths and certificates must record the platform that produced them.

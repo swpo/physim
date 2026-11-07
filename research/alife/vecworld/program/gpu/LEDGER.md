@@ -15,3 +15,4 @@ before it rents a pod.
 |---|---|---|---|---|---|---|---|
 | 2026-11-07 | vw1 GPU benchmark (gliders throughput, GPU-vs-CPU agreement, conv training step) | session_01BZceC7G6m7DgM6KpXjnWXj | none (no pod created) | 0 | 0.00 | 15 | blocked at step 1: SSH through the proxy is reset (see access note); no SSH key registered, no pod, nothing to terminate. Wallet 4866.39 before, 4866.29 after (team disk billing, not this job) |
 | 2026-11-07 | vw1-bench-001 (gliders throughput, tracker, GPU vs CPU, conv AE step) | Mac runner for session_01BZceC7G6m7DgM6KpXjnWXj | A100 80GB (datacrunch, $2.35/h) | about 0.08 billed | 0.19 | 10 | done: 1,600-1,700 member-ticks/s at B >= 64; see bench/README.md |
+| 2026-11-07 | vw1-agree-001 (GPU vs CPU from one shared state) | Mac runner for session_01BZceC7G6m7DgM6KpXjnWXj | A100 80GB (datacrunch, $2.35/h) | about 0.03 billed | 0.08 | 4 | done: rounding floor 1e-14 per substep; divergence about x2,500 per tick; see bench/README.md |
