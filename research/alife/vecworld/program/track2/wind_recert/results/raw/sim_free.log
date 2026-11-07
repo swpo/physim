@@ -1,0 +1,5 @@
+[   381.7s] free batch 0 {'init_burn': 45.0, 'base': 143.6, 'branch': 192.0}
+[   734.7s] free batch 1 {'init_burn': 29.9, 'base': 138.9, 'branch': 184.1}
+[  1081.1s] free batch 2 {'init_burn': 27.0, 'base': 135.6, 'branch': 183.6}
+[  1429.1s] free batch 3 {'init_burn': 27.9, 'base': 137.0, 'branch': 182.9}
+[  1429.1s] done free

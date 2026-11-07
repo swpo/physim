@@ -44,3 +44,19 @@ Prototypes (7 Nov 2026; each independently checked, corrections in each `results
 - `track1/vortex_world`: the fed-vortex world with heredity as a JAX Level (matches numpy to round-off), an exact-nats
   stirring channel, a vortex-list level 1 and a kind-share level 2 with a selection signal at 128^2.
 Raw arrays are not committed; the scripts regenerate them.
+
+Round 3 (7-8 Nov 2026; each independently checked, corrections in each `results/summary.json` under `checker`):
+- `track2/wind_recert`: background wind sigma_w = 0.05 kept (0.1 rejected; the declared band rule could not decide
+  at 9 members, so the choice is after the fact); the block-view closure ceiling survives the wind, the object view
+  may lose up to 0.09 (unresolved); under the exam's program mix the inputs move the true dynamics by about
+  0.1 V_best per item, of which a linear level-1 predictor recovers at least about a seventh.
+- `track2/gliders_exam`: four hidden parameters (kernel radius scale, one growth centre, one growth width, growth
+  height) with a viability-conditioned prior; given the true state, the prior-mean control loses clearly (OES
+  0.73 vs 0.99; z about 3 with truths resampled), but a history-only ridge predictor cannot exploit the true
+  parameters; the harness runs end to end on the gliders wind world.
+- `track1/vortex128`: the fed-vortex level-2 selection signal holds at 128^2 in 6 of 6 seeds and all windows
+  (paired t-test p 0.0006-0.013); with mutation per unit area the 64^2 box recovers the signal; the predictable part
+  of the kind-share change is carried by the hidden selection coefficient.
+- `track1/membrane_world`: phase_membrane as a JAX Level (matches numpy to round-off, 11-13x cheaper per tick than
+  gliders), a substrate input channel with exact nats, a cell-list level 1 and a population level 2; cells grow and
+  divide (median cycle 1,850 time units); dt 0.5 is adequate.

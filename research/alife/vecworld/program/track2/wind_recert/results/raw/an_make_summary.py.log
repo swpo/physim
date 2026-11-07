@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/user/evalwork/vecworld/program/track2/wind_recert/make_summary.py", line 131, in <module>
+    main()
+  File "/home/user/evalwork/vecworld/program/track2/wind_recert/make_summary.py", line 108, in main
+    for k, t in d["twin_effect"]["ideal_loss_detectability"].items()},
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'ideal_loss_detectability'

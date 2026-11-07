@@ -1,0 +1,48 @@
+{
+ "interpretation": {
+  "note": "hand-written reading of the numbers above; every figure is copied from the blocks cited",
+  "a_sigma_w": {
+   "verdict": "sigma_w = 0.05 stands; 0.1 is rejected",
+   "declared_rule_outcome": "the literal declared rule returns no sigma (viability.decision.sigma_w = null): 0.05 fails the band part (fusions_per100 25.13 vs band <= 25.00 with 6 members; fusions 24.76 > 24.71 and fissions 24.36 at the 24.36 edge with 9), but so does the sigma_w = 0 control (speed_median 1.686 > 1.681 with 6; 1.677 > 1.674 with 9), and on native data the band part alone false-alarms in 20% (6) / 16% (9) of draws (viability.json per_sigma.*.band_rule_false_alarm_native). The band rule is therefore uninformative at this n; the verdict rests on the paired test and the oracle cost, read after the fact",
+   "paired_test": "0.05 vs 0: no statistic shifts (max |z| 0.9 with 9 members); 0.1 vs 0: speed_p90 +0.092 px/tick, z = 5.3 (9 members), +0.095, z = 5.4 (6 members) (viability.json per_sigma.pooled9 / new6)",
+   "extra_members": "the 16 set-F trajectories at 0.05 (ticks 0..236) lie inside the 16-trajectory native band for all 11 statistics (viability.json set_F_16_members_sigma0.05_window236)",
+   "oracle_cost": "paired branches from 12 wind-free states: dV/V_best coarse at 0.05 = 0.043, 0.027, 0.015, 0.008, 0.012 (SE <= 0.006); at 0.1 = 0.166, 0.098, 0.049, 0.031, 0.055 (SE <= 0.010); 0.1 exceeds the declared 0.10 cap at h = 1. Objects dV is unresolved (0.05: 0.016-0.049 with SE 0.02-0.05). The actuation extrapolation (0.029 / 0.137 at h = 1) was low by 1.5x / 1.2x at h = 1 and matched at h = 4 (viability.json oracle_cost)"
+  },
+  "b_closure": {
+   "free_runs": "coarse ceilings in the wind world (set F, 16 x 236 ticks, 64 items, linear+kNN+MLP) 0.985, 0.941, 0.748, 0.260, 0.007 vs the matched wind-free reference (set M) 0.985, 0.939, 0.733, 0.220, 0.010: equal within 1.7 SE at every horizon; with JAX patchnet the h = 16 values are 0.257 vs 0.214 (z = 2.2). Objects: F 0.82, 0.68, 0.49, 0.31, 0.17 vs M 0.79, 0.73, 0.57, 0.37, 0.15; F - M = -0.05, -0.08, -0.05 at h = 2, 4, 8 (z -1.1, -1.5, -2.2; with slotnet -1.1, -1.7, -2.3): a possible objects-view loss of up to about 0.09 at h = 2-8, not resolved at this size",
+   "oracle_floor": "wind raises V_oracle (common scale) from 0.0006, 0.0009, 0.0022, 0.0087, 0.055 (M) to 0.0010, 0.0018, 0.0043, 0.0173, 0.081 (F) in the coarse view, still <= 0.1 V_best at h <= 8, which is why the coarse ceilings do not move",
+   "size_caveat": "both F and M are far below the 36-trajectory headline at h >= 4 (coarse 0.75 vs 0.85 at h = 4, 0.26 vs 0.49 at h = 8; objects 0.49-0.57 vs 0.63): the deficit is the same with and without wind, so it is data size (8 fit trajectories per fold), not the wind. At this size the JAX nets do not beat ridge at h <= 8 (patchnet wins only at h = 16, slotnet adds 0.005-0.03). The values here are lower bounds; the full-size run is needed for headline-comparable certificates",
+   "program_mix": "under the declared mix (set P, 16 x 200 ticks, 96 items, 24 per class, charges 160-678 nats blind/aimed, 700 regional) the ceilings with input-aware predictors are coarse 0.982, 0.928, 0.688, 0.142, 0.001 and objects 0.826, 0.728, 0.498, 0.311, 0.136; the coarse ceiling is lower than in free runs at h = 4-8 (0.69 vs 0.75, 0.14 vs 0.26), lowest for regional items (0.66, 0.10)"
+  },
+  "exam_effect": {
+   "ideal_loss": "the squared shift of the conditional mean caused by the program (no-input twins with common random numbers): coarse 0.110, 0.115, 0.108, 0.047, 0.070 V_best over program items (aimed 0.10, 0.10, 0.09; regional 0.17, 0.20, 0.19; blind 0.05 at h = 1, 2, 4); objects 0.08-0.10. A predictor of the no-input mean loses this against one that knows the program's effect: over the whole mix (none included) coarse z = 6.4-7.2 at n = 64 and 9.1-10.2 at n = 128 (R = 16, h = 1-16); objects z = 2.3-3.5 (n = 64), 3.2-4.9 (n = 128)",
+   "achieved_by_linear_level1": "the best linear input-aware level-1 predictors ('+u2') beat the best input-blind ones by only 0.012, 0.012, 0.011, 0.004, 0 V_best (coarse, all items; 0.021-0.025 on aimed+regional) and 0.036, 0.028, 0.013, 0, 0 (objects): about one seventh of the ideal loss. Detectability of that achieved loss: coarse z = 4.0, 3.0, 2.2, 1.8 at n = 64 and 5.6, 4.2, 3.1, 2.5 at n = 128 (h = 1, 2, 4, 8); aimed+regional subset alone z = 4.3, 3.3, 2.5 at n = 32 (half of a 64-item exam). Minimal detectable effect (80% power, one-sided 5%) for these pairs: 0.006-0.013 V_best (coarse, n = 64), 0.004-0.009 (n = 128); objects 0.012-0.035 / 0.009-0.025",
+   "replicate_truths": "for the achieved loss z barely depends on R (R = 1 vs 16 within 5%), and for the ideal loss within 5% in the coarse view at h <= 8 (16% at h = 16; objects 23-35% lower at R = 1 for h >= 8): item-to-item variation of the effect dominates, so more items, not more truths per item, buy power",
+   "blind_class": "blind (state-independent) programs give 0.05 V_best of ideal loss in the coarse view but the linear predictors recover ~0 (h = 2-8); the aimed and regional classes carry the detectable signal, as EXAM assumed"
+  },
+  "decides": [
+   "sigma_w = 0.05 is the wind background: viable (no paired shift, 16 extra members in band) and cheap in predictability (dV <= 0.043 V_best); 0.1 shifts the fast-body speed tail and costs 0.17 V_best at h = 1",
+   "the coarse closure certificate survives the wind at h = 1-16 within 1.7 SE at 16 trajectories; the objects view may lose up to ~0.09 at h = 2-8 (unresolved)",
+   "the exam mix makes actions matter at the level of the law (ideal loss ~0.1 V_best per program item, z ~ 7 at 64 items, coarse), but a linear level-1 predictor captures only ~1/7 of it; the 'actions matter' acceptance check will pass for simulation-based baselines and only marginally (z 2-4 at h <= 4) for level-1 ones"
+  ],
+  "deviations_from_declaration": [
+   "viability: the declared band rule failed its own sigma_w = 0 control; the verdict uses the paired test and the oracle cost (both declared as quantities, not as the rule)",
+   "input-aware predictors: the declared dense ridge with input features ('+u') overfits (one lambda chosen on validation rows that mostly carry no input) and is 1.2-1.7 V_best worse than input-blind ridge on all items (coarse) and up to 4 V_best on regional items; it is kept in the tables. A structured variant ('+u2', a blind base refitted on the fold plus a least-squares input response in 9-10 local features per coordinate with coefficients shared across blocks or slots, incl. a coarse semi-Lagrangian shift) was added after seeing this; the exam-effect numbers above use it",
+   "the exam-effect metric is the closure's squared error, not the fair energy score; point predictors only"
+  ],
+  "failed_or_weak": [
+   "declared band rule (above); declared dense input ridge (above)",
+   "JAX nets (rmlp, patchnet, slotnet) do not help at 8 fit trajectories for h <= 8, so all ceilings here are lower bounds below the headline",
+   "objects-view oracle variances are heavy-tailed (tracker identity events): objects dV and the F - M objects difference stay unresolved",
+   "about 0.2 CPU-hours were lost to superseded or crashed P analyses and to tests run alongside the viability simulation (which slowed it to 0.195 s per member-tick)"
+  ],
+  "full_size_cost": {
+   "assumption": "0.13-0.16 s per gliders member-tick on one CPU core (measured here: 0.141-0.159 uncontended, throughput_s_per_member_tick); GPU throughput unmeasured, so no GPU figure",
+   "set_F_at_fresh_layout": "36 trajectories x 300 ticks, 4 test ticks, 5 branches x 32 ticks + 96-tick extension = 47,160 member-ticks -> 1.7-2.1 CPU-hours",
+   "set_P_at_36_trajectories": "36 x (50 + 300) base + 324 items x (5 x 16 program branches + 0.75 x 3 x 16 twins) = 50,184 member-ticks -> 1.8-2.2 CPU-hours",
+   "analysis": "closure with JAX nets at 36 trajectories took 0.6-0.9 CPU-hours per view pair in vw1/fresh (2274 s coarse + 936 s objects incl. learning curves); for F and P plus an input-aware patchnet/slotnet about 2 CPU-hours",
+   "total": "about 5.5-6.5 CPU-hours (this study used 2.3)"
+  },
+  "next_step": "run the full-size F and P sets (about 3.5-4.3 CPU-hours of simulation) with an input-aware patchnet/slotnet (wind displacement as extra input channels, about 2 CPU-hours) to (1) settle the objects-view ceiling change and (2) measure how much of the ~0.1 V_best ideal input effect a learned level-1 predictor recovers; then rescore the same items with vw.scoring.energy_fair on ensemble predictors (CPU-minutes)"
+ }
+}

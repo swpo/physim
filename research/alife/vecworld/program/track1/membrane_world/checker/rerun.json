@@ -1,0 +1,18 @@
+{
+ "main": {
+  "T": 60,
+  "cpu_s_incl_compile": 16.401803653,
+  "L1_maxabs": 0.0,
+  "ev_mismatch": 0,
+  "N_equal_all": true,
+  "L2_maxabs": 0.0,
+  "cpu_s_per_member_tick_compiled": 0.010774565759374998
+ },
+ "dt1": {
+  "T": 40,
+  "cpu_s_incl_compile": 10.656282933,
+  "L1_maxabs": 0.0,
+  "ev_mismatch": 0,
+  "N_equal_all": true
+ }
+}

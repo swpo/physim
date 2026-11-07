@@ -1,0 +1,36 @@
+{
+ "init_burn_1member_s_incl_compile": 22.627763032913208,
+ "s_per_member_tick_1x4": 0.13512974977493286,
+ "crn_null_same_key_no_input_L1_maxabs": 0.0,
+ "program_vs_twin_L1_maxabs_by_tick": [
+  0.0,
+  1.149211567856554,
+  2.099853738041798,
+  3.0608326674630577,
+  4.200663535385244
+ ],
+ "aimed_info": {
+  "klass": "aimed",
+  "C": 400.1501159598308,
+  "target": 0,
+  "tier": 0
+ },
+ "charges": {
+  "none": {
+   "declared_C": 0.0,
+   "charged_nats": 0.0
+  },
+  "blind": {
+   "declared_C": 518.3745528298241,
+   "charged_nats": 518.3745528298242
+  },
+  "aimed": {
+   "declared_C": 232.9669534334133,
+   "charged_nats": 232.96695343341324
+  },
+  "regional": {
+   "declared_C": 700.0,
+   "charged_nats": 700.0
+  }
+ }
+}

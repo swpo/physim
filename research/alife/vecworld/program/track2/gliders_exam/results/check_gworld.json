@@ -1,0 +1,41 @@
+{
+ "equivalence_default_theta": {
+  "max_abs_level0_per_tick": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "states": 2,
+  "ticks": 3,
+  "sigma_w": 0.05,
+  "note": "gworld traces theta_A, n, gw; alpha uses x ** n with a traced n"
+ },
+ "timing": {
+  "compile_plus_first_s": 11.599799633026123,
+  "second_call_s": 4.533251762390137,
+  "s_per_member_tick": 0.15110839207967122,
+  "B": 3,
+  "T": 10
+ },
+ "population_last_tick": [
+  [
+   7.0,
+   1435.0633787097443,
+   1.6647320925422322
+  ],
+  [
+   8.0,
+   1431.6880699074097,
+   1.1768741897516162
+  ],
+  [
+   8.0,
+   1426.4513018089438,
+   0.8768297196014239
+  ]
+ ],
+ "finite": true
+}

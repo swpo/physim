@@ -1,0 +1,104 @@
+{
+ "written": "2026-11-07 18:49:04",
+ "world": "A_gliders + wind channel (actuation/wind.py, unchanged): 8 x 8 x 2 block forces, Gaussian blur 8 px, held for the 20 substeps of a tick, background a~ = u + sigma_w eta once per tick",
+ "sigma_w_main": 0.05,
+ "level1": "Phi_coarse (192) and Phi_objects (144), as vw1/fresh/closure",
+ "a_viability": {
+  "sigmas": [
+   0.0,
+   0.05,
+   0.1
+  ],
+  "members": 6,
+  "seed": 9002,
+  "design": "init + 50 burn-in + 250 ticks, no input; keys shared across sigma_w (paired); pooled with the 3 actuation members (seed 9001, same design) for 9 per sigma_w",
+  "statistics": "actuation/viability.traj_stats (objects present, speed median/p90, mass and rg median, births/deaths/fusions/fissions per 100 ticks, track life median, share of tracks >= 50 ticks)",
+  "native_band": "2.5-97.5% of means of n trajectories resampled from the 36 wind-free closure trajectories (sim_A/sim_B, ticks 0..250), n = number of members compared",
+  "rule": "sigma_w passes if every statistic's member mean lies in the native band for that n AND no paired difference to sigma_w = 0 (same keys) exceeds 3 SE",
+  "oracle_cost": "12 sigma_w = 0 states (6 members x ticks 100, 200), R = 6 branches x 16 ticks at each sigma_w with keys shared across sigma_w; dV(sigma) = V_oracle(sigma) - V_oracle(0) in closure-sd units, relative to the fresh closure V_best (h = 1, 2, 4, 8, 16), both views",
+  "decision": "0.1 replaces 0.05 only if 0.1 passes the viability rule and its measured dV is <= 0.10 V_best at every horizon in both views; otherwise 0.05 stands if it passes"
+ },
+ "b_closure": {
+  "horizons": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "estimator": "closure_lib.closure_ext (the checked line-for-line copy of integrate/analyze.closure, with its 'extra' hook): mean, persistence, AR(1), ridge on 1/2/4/8 lags, kNN, VW-0 MLP (+ kinematic and kin+ridge_p4 for objects); 4 folds by trajectory; errors against the base + 5 branch replicates; unmodified analyze.closure (MLP off) must agree exactly; JAX rmlp/patchnet/slotnet if CPU allows",
+  "set_F": {
+   "J": 16,
+   "T": 236,
+   "test_ticks": [
+    40,
+    100,
+    160,
+    220
+   ],
+   "branches": 5,
+   "branch_ticks": 16,
+   "seed": 9101,
+   "input": "none"
+  },
+  "set_P": {
+   "J": 16,
+   "T": 200,
+   "episodes": [
+    8,
+    24,
+    40,
+    56,
+    72,
+    88,
+    104,
+    120,
+    136,
+    152,
+    168,
+    184
+   ],
+   "test_ticks": [
+    24,
+    56,
+    88,
+    120,
+    152,
+    184
+   ],
+   "branches": 5,
+   "twins_no_input": 3,
+   "branch_ticks": 16,
+   "seed": 9201,
+   "test_classes": "balanced quotas over the 96 test items (24 per class), shuffled (seed 9204); non-test episodes iid with equal shares"
+  },
+  "program_mix": {
+   "classes": [
+    "none",
+    "blind",
+    "aimed",
+    "regional"
+   ],
+   "shares": "equal",
+   "length_ticks": 4,
+   "budget_nats": {
+    "blind": [
+     150.0,
+     700.0,
+     "log-uniform"
+    ],
+    "aimed": [
+     150.0,
+     700.0,
+     "log-uniform"
+    ],
+    "regional": 700.0
+   },
+   "definitions": "wr -- shared pieces of the wind recertification (track2/wind_recert).\n\nThe wind world is actuation/wind.py (imported, not changed) at background sigma_w; level 1 is\n<Phi_coarse (192), Phi_objects (144)> as in vw1/fresh/closure. One run call = one tick per step.\n\nDeclared exam program mix (equal shares; every program lasts T_IN = 4 ticks from the episode start,\nbudget split equally over the 4 ticks; built from the state at the episode start, open loop):\n  none      u = 0\n  blind     a 2 x 2 block group at a uniformly random block corner (i0, j0) and a uniformly random\n            direction, fixed for 4 ticks; force f = sigma_w sqrt(C / (2 T_IN)); C ~ logU[150, 700] nats\n            (state-independent: the blind counterpart of 'aimed')\n  aimed     actuation/programs.wind_aimed on programs.pick_target (the 2 x 2 group follows the target's\n            extrapolated path), C ~ logU[150, 700] nats\n  regional  actuation/programs.wind_regional (4 x 4 blocks around the target, fixed), C = 700 nats\n            (the per-episode budget, EXAM class (d))\nCharges are 0.5 |u|^2 / sigma_w^2 summed over ticks (wind.nats).\n"
+  },
+  "matched_reference": "the same estimator on the wind-free closure data cut to 16 trajectories (8 from sim_A, 8 from sim_B), ticks 0..236, test ticks 40/100/160/220, branches cut to 16 ticks",
+  "inputs": "level-1 predictors with inputs: ridge on 1/2/4 lags plus input features of the declared future commands in [t, t+h): the cumulative block command (128), the block-averaged displacement field 4 * sum E(u) (128), and for coarse the central-difference advection of the block means and m2 by that displacement (192); for objects the displacement at each slot's extrapolated centroid (dx, dy, and the induced change of the 4 position coordinates, 6 per slot) and a kinematic+wind predictor with a ridge residual; the input-blind twins use the same lags and data without the input features",
+  "exam_effect": "per item d = err(best input-blind) - err(best input-aware), by class and pooled, relative to V_best (input-aware best-of); detectability z = mean(d) / (sd(d) / sqrt(n)) at n = 64, 128 for R = 1, 6 and (extrapolated) 16 replicate truths; also the true mean effect of each program from the no-input twins (unbiased squared shift and the paired CRN version)"
+ },
+ "cpu": "core 0 only, one heavy process at a time; about 3 CPU-hours in all"
+}

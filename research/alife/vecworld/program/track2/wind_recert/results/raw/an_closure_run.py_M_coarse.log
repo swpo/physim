@@ -1,0 +1,9 @@
+[     0.3s] M coarse J 16 T 236 test [40, 100, 160, 220] mlp True
+[    79.1s] copy check max |V_analyze - V_copy| = 0.0
+[    95.1s]   fold 0 done in 16.0 s
+[   110.7s]   fold 1 done in 15.5 s
+[   125.9s]   fold 2 done in 15.2 s
+[   149.0s]   fold 3 done in 23.1 s
+[   149.0s] ceiling [0.9847, 0.9393, 0.7332, 0.2197, 0.0098] +- [0.0007, 0.0022, 0.0071, 0.0157, 0.004]
+[   149.0s] best ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ar1'] Vbest [0.0159, 0.062, 0.271, 0.8014, 0.9814] Voracle [0.0006, 0.0009, 0.0022, 0.0086, 0.055]
+[   149.2s] saved /home/user/evalwork/vecworld/program/track2/wind_recert/results/closure_M_coarse.json

@@ -1,0 +1,587 @@
+{
+ "truth_draws": {
+  "checked": false
+ },
+ "hidden": [
+  "lR",
+  "dm_00",
+  "ls_00",
+  "lh"
+ ],
+ "prior_lo": [
+  0.91,
+  -0.15,
+  0.91,
+  0.91
+ ],
+ "prior_hi": [
+  1.09,
+  0.15,
+  1.09,
+  1.09
+ ],
+ "prior_mean": [
+  1.0,
+  0.0,
+  1.0,
+  1.0
+ ],
+ "truths": [
+  [
+   1.0614332060975775,
+   0.056093342857580664,
+   1.0514891502316077,
+   1.0487747572835722
+  ]
+ ],
+ "design": {
+  "P": 3,
+  "queries": {
+   "1": [
+    1,
+    2
+   ],
+   "2": [
+    2
+   ]
+  },
+  "R": 3,
+  "n_items_per_truth": 4,
+  "n_clim": 4,
+  "m_plugin": 3,
+  "m_ridge": 4,
+  "tick_cap": 100.0,
+  "episode_cap": 400.0,
+  "C_aimed": 200.0,
+  "C_regional": 300.0,
+  "sigma_w": 0.05,
+  "ridge_train": {
+   "members_per_theta": 2,
+   "ticks": 12,
+   "burn_in": 50
+  }
+ },
+ "secret_commitment": "4fce4c964e36734d1f1691d1242ef978a02366bf22f99195764e19d8547508e7",
+ "lab_smoke": {
+  "card_keys": [
+   "contract",
+   "information_budget",
+   "inputs",
+   "keys",
+   "max_ticks",
+   "n_in",
+   "n_obs",
+   "notes",
+   "observation",
+   "replay",
+   "reset_cost",
+   "ticks_used",
+   "timing"
+  ],
+  "o_shape": [
+   336
+  ],
+  "step_changed_obs": true,
+  "rejections": {
+   "tick_cap": "input rejected, nothing charged: nats: command costs 200 > per-tick cap 100; nats: investigation total would be 208 > total cap 150",
+   "program_cap": "program entry t=1: input rejected, nothing charged: nats: investigation total would be 152 > total cap 150",
+   "max_ticks": "budget: 2 + 100 ticks > max_ticks=60; nothing ran"
+  },
+  "usage": {
+   "ticks_used": 2,
+   "max_ticks": 60,
+   "resets": 1,
+   "episode_nats": 8.0,
+   "total_nats": 8.0,
+   "episode_left": 392.0,
+   "total_left": 142.0,
+   "episodes": 1,
+   "commands": 1
+  }
+ },
+ "train_seconds": 59.670493602752686,
+ "per_truth": {
+  "0": {
+   "theta": {
+    "lR": 1.0614332060975775,
+    "dm_00": 0.056093342857580664,
+    "ls_00": 1.0514891502316077,
+    "lh": 1.0487747572835722
+   },
+   "report": {
+    "cells": [
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      2
+     ]
+    ],
+    "valid": [
+     true,
+     true,
+     true
+    ],
+    "n_items": 4,
+    "oes": {
+     "climatology": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "oracle": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "plugin_true": [
+      1.001663379390226,
+      1.002825127358853,
+      1.0580415279215063
+     ],
+     "plugin_prior": [
+      0.9683334453920666,
+      0.9554044589404895,
+      1.0049218557864894
+     ],
+     "ridge_true": [
+      0.8775340583697085,
+      0.7579669195732668,
+      0.4043776038158018
+     ],
+     "ridge_prior": [
+      0.8636425006077275,
+      0.7098406980796811,
+      -0.8405364686177222
+     ],
+     "ridge_true_noact": [
+      0.8775340583697089,
+      0.7579669195732665,
+      0.4043776038158018
+     ]
+    },
+    "aggregate": {
+     "climatology": 0.0,
+     "oracle": 1.0,
+     "plugin_true": 1.0208433448901952,
+     "plugin_prior": 0.9762199200396818,
+     "ridge_true": 0.6799595272529256,
+     "ridge_prior": 0.24431557668989548,
+     "ridge_true_noact": 0.6799595272529256
+    },
+    "se": {
+     "climatology": 0.0,
+     "oracle": 0.0,
+     "plugin_true": 0.02576590471998853,
+     "plugin_prior": 0.030239974413569147,
+     "ridge_true": 0.0953091834486506,
+     "ridge_prior": 0.2746407753546656,
+     "ridge_true_noact": 0.09530918344865023
+    },
+    "mean_score": {
+     "climatology": [
+      0.7176849692782993,
+      0.7131549542730906,
+      0.4948910521723232
+     ],
+     "oracle": [
+      0.025016297389675833,
+      0.030529892774166834,
+      0.10515786914446174
+     ],
+     "plugin_true": [
+      0.023864126596600952,
+      0.028601390037087365,
+      0.08253715971981263
+     ],
+     "plugin_prior": [
+      0.04695072771324159,
+      0.06097192673249294,
+      0.10323965862238912
+     ],
+     "ridge_true": [
+      0.10984461853031949,
+      0.19574773918523958,
+      0.3372916814920113
+     ],
+     "ridge_prior": [
+      0.11946686539577503,
+      0.22859990409200934,
+      0.8224760055377063
+     ],
+     "ridge_true_noact": [
+      0.10984461853031928,
+      0.19574773918523983,
+      0.3372916814920113
+     ]
+    },
+    "aggregate_floor0": {
+     "climatology": 0.0,
+     "oracle": 1.0,
+     "plugin_true": 1.0208433448901952,
+     "plugin_prior": 0.9762199200396818,
+     "ridge_true": 0.6799595272529256,
+     "ridge_prior": 0.5244943995624696,
+     "ridge_true_noact": 0.6799595272529256
+    },
+    "se_floor0": {
+     "climatology": 0.0,
+     "oracle": 0.0,
+     "plugin_true": 0.02576590471998853,
+     "plugin_prior": 0.030239974413569147,
+     "ridge_true": 0.08709043688639113,
+     "ridge_prior": 0.04331003887340388,
+     "ridge_true_noact": 0.08709043688639079
+    },
+    "aggregate_pooled": {
+     "climatology": 0.0,
+     "oracle": 1.0,
+     "plugin_true": 1.0145614679956272,
+     "plugin_prior": 0.9714121902105068,
+     "ridge_true": 0.7268143757951723,
+     "ridge_prior": 0.42786214401304046,
+     "ridge_true_noact": 0.7268143757951723
+    },
+    "se_pooled": {
+     "climatology": 0.0,
+     "oracle": 0.0,
+     "plugin_true": 0.012370722128944167,
+     "plugin_prior": 0.014372897587631031,
+     "ridge_true": 0.06628353080245207,
+     "ridge_prior": 0.1986825142439949,
+     "ridge_true_noact": 0.06628353080245164
+    },
+    "by_group": {
+     "a": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "plugin_true": 1.1710983887329613,
+      "plugin_prior": 1.1569296926946633,
+      "ridge_true": 0.6441258840335063,
+      "ridge_prior": 0.8850651538017634,
+      "ridge_true_noact": 0.644125884033506
+     },
+     "b": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "plugin_true": 0.9896885217419426,
+      "plugin_prior": 0.9831509784749445,
+      "ridge_true": 0.7708222506287248,
+      "ridge_prior": 0.532732343280615,
+      "ridge_true_noact": 0.7708222506287244
+     },
+     "c": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "plugin_true": 1.0058433605225288,
+      "plugin_prior": 0.9446845920830969,
+      "ridge_true": 0.8623981418734608,
+      "ridge_prior": 0.4000607847262818,
+      "ridge_true_noact": 0.8623981418734602
+     },
+     "d": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "plugin_true": 1.0196625770362562,
+      "plugin_prior": 0.9256418053179791,
+      "ridge_true": 0.3984366639573034,
+      "ridge_prior": -0.6018702770955466,
+      "ridge_true_noact": 0.3984366639573049
+     }
+    }
+   },
+   "gaps": {
+    "plugin_true-plugin_prior": {
+     "gap": 0.044623424850513405,
+     "se": 0.0211342760573329,
+     "z": 2.111424338806748
+    },
+    "plugin_true-plugin_prior_pooled": {
+     "gap": 0.043149277785120344,
+     "se": 0.013157009518465915,
+     "z": 3.27956574969108
+    },
+    "ridge_true-ridge_prior": {
+     "gap": 0.4356439505630302,
+     "se": 0.1978246983680333,
+     "z": 2.2021716911836644
+    },
+    "ridge_true-ridge_prior_pooled": {
+     "gap": 0.2989522317821318,
+     "se": 0.14464330089125269,
+     "z": 2.0668239036309974
+    },
+    "ridge_true-ridge_true_noact": {
+     "gap": 0.0,
+     "se": 4.0791755676093774e-16,
+     "z": 0.0
+    },
+    "ridge_true-ridge_true_noact_pooled": {
+     "gap": 0.0,
+     "se": 4.559182131852003e-16,
+     "z": 0.0
+    }
+   },
+   "classes": [
+    "c",
+    "b",
+    "a",
+    "d"
+   ],
+   "program_nats": [
+    99.99999999999997,
+    44.14001441805389,
+    0.0,
+    150.00000000000003
+   ],
+   "cells": [
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "seconds": 111.31173586845398,
+   "seconds_exam_build": 104.03277134895325
+  }
+ },
+ "member_ticks_so_far": 792,
+ "pooled": {
+  "n_items": 4,
+  "report": {
+   "cells": [
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "valid": [
+    true,
+    true,
+    true
+   ],
+   "n_items": 4,
+   "oes": {
+    "climatology": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "oracle": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "plugin_true": [
+     1.001663379390226,
+     1.002825127358853,
+     1.0580415279215063
+    ],
+    "plugin_prior": [
+     0.9683334453920666,
+     0.9554044589404895,
+     1.0049218557864894
+    ],
+    "ridge_true": [
+     0.8775340583697085,
+     0.7579669195732668,
+     0.4043776038158018
+    ],
+    "ridge_prior": [
+     0.8636425006077275,
+     0.7098406980796811,
+     -0.8405364686177222
+    ],
+    "ridge_true_noact": [
+     0.8775340583697089,
+     0.7579669195732665,
+     0.4043776038158018
+    ]
+   },
+   "aggregate": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "plugin_true": 1.0208433448901952,
+    "plugin_prior": 0.9762199200396818,
+    "ridge_true": 0.6799595272529256,
+    "ridge_prior": 0.24431557668989548,
+    "ridge_true_noact": 0.6799595272529256
+   },
+   "se": {
+    "climatology": 0.0,
+    "oracle": 0.0,
+    "plugin_true": 0.02576590471998853,
+    "plugin_prior": 0.030239974413569147,
+    "ridge_true": 0.0953091834486506,
+    "ridge_prior": 0.2746407753546656,
+    "ridge_true_noact": 0.09530918344865023
+   },
+   "mean_score": {
+    "climatology": [
+     0.7176849692782993,
+     0.7131549542730906,
+     0.4948910521723232
+    ],
+    "oracle": [
+     0.025016297389675833,
+     0.030529892774166834,
+     0.10515786914446174
+    ],
+    "plugin_true": [
+     0.023864126596600952,
+     0.028601390037087365,
+     0.08253715971981263
+    ],
+    "plugin_prior": [
+     0.04695072771324159,
+     0.06097192673249294,
+     0.10323965862238912
+    ],
+    "ridge_true": [
+     0.10984461853031949,
+     0.19574773918523958,
+     0.3372916814920113
+    ],
+    "ridge_prior": [
+     0.11946686539577503,
+     0.22859990409200934,
+     0.8224760055377063
+    ],
+    "ridge_true_noact": [
+     0.10984461853031928,
+     0.19574773918523983,
+     0.3372916814920113
+    ]
+   },
+   "aggregate_floor0": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "plugin_true": 1.0208433448901952,
+    "plugin_prior": 0.9762199200396818,
+    "ridge_true": 0.6799595272529256,
+    "ridge_prior": 0.5244943995624696,
+    "ridge_true_noact": 0.6799595272529256
+   },
+   "se_floor0": {
+    "climatology": 0.0,
+    "oracle": 0.0,
+    "plugin_true": 0.02576590471998853,
+    "plugin_prior": 0.030239974413569147,
+    "ridge_true": 0.08709043688639113,
+    "ridge_prior": 0.04331003887340388,
+    "ridge_true_noact": 0.08709043688639079
+   },
+   "aggregate_pooled": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "plugin_true": 1.0145614679956272,
+    "plugin_prior": 0.9714121902105068,
+    "ridge_true": 0.7268143757951723,
+    "ridge_prior": 0.42786214401304046,
+    "ridge_true_noact": 0.7268143757951723
+   },
+   "se_pooled": {
+    "climatology": 0.0,
+    "oracle": 0.0,
+    "plugin_true": 0.012370722128944167,
+    "plugin_prior": 0.014372897587631031,
+    "ridge_true": 0.06628353080245207,
+    "ridge_prior": 0.1986825142439949,
+    "ridge_true_noact": 0.06628353080245164
+   },
+   "by_group": {
+    "a": {
+     "climatology": 0.0,
+     "oracle": 1.0,
+     "plugin_true": 1.1710983887329613,
+     "plugin_prior": 1.1569296926946633,
+     "ridge_true": 0.6441258840335063,
+     "ridge_prior": 0.8850651538017634,
+     "ridge_true_noact": 0.644125884033506
+    },
+    "b": {
+     "climatology": 0.0,
+     "oracle": 1.0,
+     "plugin_true": 0.9896885217419426,
+     "plugin_prior": 0.9831509784749445,
+     "ridge_true": 0.7708222506287248,
+     "ridge_prior": 0.532732343280615,
+     "ridge_true_noact": 0.7708222506287244
+    },
+    "c": {
+     "climatology": 0.0,
+     "oracle": 1.0,
+     "plugin_true": 1.0058433605225288,
+     "plugin_prior": 0.9446845920830969,
+     "ridge_true": 0.8623981418734608,
+     "ridge_prior": 0.4000607847262818,
+     "ridge_true_noact": 0.8623981418734602
+    },
+    "d": {
+     "climatology": 0.0,
+     "oracle": 1.0,
+     "plugin_true": 1.0196625770362562,
+     "plugin_prior": 0.9256418053179791,
+     "ridge_true": 0.3984366639573034,
+     "ridge_prior": -0.6018702770955466,
+     "ridge_true_noact": 0.3984366639573049
+    }
+   }
+  },
+  "gaps": {
+   "plugin_true-plugin_prior": {
+    "gap": 0.044623424850513405,
+    "se": 0.0211342760573329,
+    "z": 2.111424338806748
+   },
+   "plugin_true-plugin_prior_pooled": {
+    "gap": 0.043149277785120344,
+    "se": 0.013157009518465915,
+    "z": 3.27956574969108
+   },
+   "ridge_true-ridge_prior": {
+    "gap": 0.4356439505630302,
+    "se": 0.1978246983680333,
+    "z": 2.2021716911836644
+   },
+   "ridge_true-ridge_prior_pooled": {
+    "gap": 0.2989522317821318,
+    "se": 0.14464330089125269,
+    "z": 2.0668239036309974
+   },
+   "ridge_true-ridge_true_noact": {
+    "gap": 0.0,
+    "se": 4.0791755676093774e-16,
+    "z": 0.0
+   },
+   "ridge_true-ridge_true_noact_pooled": {
+    "gap": 0.0,
+    "se": 4.559182131852003e-16,
+    "z": 0.0
+   }
+  }
+ },
+ "member_ticks_total_this_run": 792,
+ "wall_seconds_this_run": 200.3404200077057
+}

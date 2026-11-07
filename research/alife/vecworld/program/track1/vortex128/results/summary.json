@@ -1,0 +1,3310 @@
+{
+ "study": "vortex128 (track 1, round 3): the fed-vortex world's level-2 selection signal at 128^2",
+ "date": "2026-11-07",
+ "core": "taskset -c 2, OMP/XLA single-threaded, float64 (stored float32)",
+ "design128": {
+  "value": {
+   "H": 128,
+   "seeds": 6,
+   "ensemble_seed": 2,
+   "T_ticks": 600,
+   "t_end": 3000.0,
+   "arms": {
+    "sel": "eps 0.2",
+    "neu": "eps 0 (twin, shared keys)"
+   },
+   "sigma_a": 0.005,
+   "mut_dt": 50.0,
+   "tracker": {
+    "sigma": 1.0,
+    "threshold": 0.06,
+    "m_min": 0.5,
+    "fallback_px": 4.0,
+    "K": 56,
+    "max_kept": 72,
+    "max_raw": 160
+   },
+   "W1_t": [
+    500.0,
+    1495.0
+   ],
+   "W2_t": [
+    1500.0,
+    2200.0
+   ],
+   "W3_t": [
+    2205.0,
+    3000.0
+   ],
+   "branch_snapshots_ticks": [
+    100,
+    200,
+    300,
+    400
+   ]
+  },
+  "source": "results/main128_{sel,neu}.json (run.py main ARM 6 440 2, then resumed with run.py main ARM 6 600 2 in chain3.sh)",
+  "note": "designer ensemble(6, seed=2): keys independent of the round-2 pilot (ensemble(1, seed 0)) and checker (ensemble(1, seed 1))"
+ },
+ "timing": {
+  "value": {
+   "main128_sel": {
+    "cpu_s": 1905.7,
+    "member_ticks": 3600,
+    "cpu_s_per_member_tick": 0.5294,
+    "overflow_rows": [
+     [
+      0.0,
+      0.0,
+      45.0,
+      43.0
+     ],
+     [
+      0.0,
+      0.0,
+      45.0,
+      42.0
+     ],
+     [
+      0.0,
+      0.0,
+      44.0,
+      44.0
+     ],
+     [
+      0.0,
+      0.0,
+      46.0,
+      46.0
+     ],
+     [
+      0.0,
+      0.0,
+      47.0,
+      43.0
+     ],
+     [
+      0.0,
+      0.0,
+      48.0,
+      46.0
+     ]
+    ]
+   },
+   "main128_neu": {
+    "cpu_s": 1918.4,
+    "member_ticks": 3600,
+    "cpu_s_per_member_tick": 0.5329,
+    "overflow_rows": [
+     [
+      0.0,
+      0.0,
+      45.0,
+      42.0
+     ],
+     [
+      0.0,
+      0.0,
+      45.0,
+      42.0
+     ],
+     [
+      0.0,
+      0.0,
+      43.0,
+      41.0
+     ],
+     [
+      0.0,
+      0.0,
+      43.0,
+      41.0
+     ],
+     [
+      0.0,
+      0.0,
+      47.0,
+      42.0
+     ],
+     [
+      0.0,
+      0.0,
+      48.0,
+      46.0
+     ]
+    ]
+   },
+   "area64_sel": {
+    "cpu_s": 178.0,
+    "member_ticks": 2000,
+    "cpu_s_per_member_tick": 0.089,
+    "overflow_rows": [
+     [
+      0.0,
+      0.0,
+      14.0,
+      13.0
+     ],
+     [
+      0.0,
+      0.0,
+      12.0,
+      12.0
+     ],
+     [
+      0.0,
+      0.0,
+      11.0,
+      11.0
+     ],
+     [
+      0.0,
+      0.0,
+      13.0,
+      13.0
+     ]
+    ]
+   },
+   "area64_neu": {
+    "cpu_s": 176.7,
+    "member_ticks": 2000,
+    "cpu_s_per_member_tick": 0.0883,
+    "overflow_rows": [
+     [
+      0.0,
+      0.0,
+      14.0,
+      12.0
+     ],
+     [
+      0.0,
+      0.0,
+      10.0,
+      10.0
+     ],
+     [
+      0.0,
+      0.0,
+      11.0,
+      11.0
+     ],
+     [
+      0.0,
+      0.0,
+      12.0,
+      11.0
+     ]
+    ]
+   },
+   "area64x_sel": {
+    "cpu_s": 175.5,
+    "member_ticks": 2000,
+    "cpu_s_per_member_tick": 0.0877,
+    "overflow_rows": [
+     [
+      0.0,
+      0.0,
+      13.0,
+      13.0
+     ],
+     [
+      0.0,
+      0.0,
+      14.0,
+      14.0
+     ],
+     [
+      0.0,
+      0.0,
+      14.0,
+      14.0
+     ],
+     [
+      0.0,
+      0.0,
+      13.0,
+      13.0
+     ]
+    ]
+   },
+   "area64x_neu": {
+    "cpu_s": 177.3,
+    "member_ticks": 2000,
+    "cpu_s_per_member_tick": 0.0887,
+    "overflow_rows": [
+     [
+      0.0,
+      0.0,
+      13.0,
+      12.0
+     ],
+     [
+      0.0,
+      0.0,
+      14.0,
+      14.0
+     ],
+     [
+      0.0,
+      0.0,
+      14.0,
+      14.0
+     ],
+     [
+      0.0,
+      0.0,
+      12.0,
+      11.0
+     ]
+    ]
+   },
+   "box64x_sel": {
+    "cpu_s": 178.3,
+    "member_ticks": 2000,
+    "cpu_s_per_member_tick": 0.0891,
+    "overflow_rows": [
+     [
+      0.0,
+      0.0,
+      13.0,
+      12.0
+     ],
+     [
+      0.0,
+      0.0,
+      14.0,
+      14.0
+     ],
+     [
+      0.0,
+      0.0,
+      14.0,
+      14.0
+     ],
+     [
+      0.0,
+      0.0,
+      12.0,
+      12.0
+     ]
+    ]
+   },
+   "box64x_neu": {
+    "cpu_s": 176.7,
+    "member_ticks": 2000,
+    "cpu_s_per_member_tick": 0.0883,
+    "overflow_rows": [
+     [
+      0.0,
+      0.0,
+      13.0,
+      12.0
+     ],
+     [
+      0.0,
+      0.0,
+      14.0,
+      14.0
+     ],
+     [
+      0.0,
+      0.0,
+      14.0,
+      14.0
+     ],
+     [
+      0.0,
+      0.0,
+      12.0,
+      11.0
+     ]
+    ]
+   },
+   "branch128_sel": {
+    "cpu_s": 1236.1,
+    "member_ticks": 2304,
+    "cpu_s_per_member_tick": 0.5365,
+    "overflow_rows": null
+   },
+   "branch128_neu": {
+    "cpu_s": 1204.8,
+    "member_ticks": 2304,
+    "cpu_s_per_member_tick": 0.5229,
+    "overflow_rows": null
+   }
+  },
+  "source": "results/{main128,area64,area64x,box64x,branch128}_*.json (time.process_time in run.py)",
+  "note": "overflow rows = (raw_overflow_ticks, kept_overflow_ticks, raw_peak, kept_peak) per member; main128 includes the extension from tick 440 to 600 (resumed from the saved carry)"
+ },
+ "selection128": {
+  "per_seed": {
+   "value": {
+    "sel": {
+     "s_b_W1": [
+      0.433,
+      0.219,
+      0.448,
+      0.37,
+      0.287,
+      0.43
+     ],
+     "s_b_W2": [
+      0.885,
+      0.632,
+      0.842,
+      0.735,
+      0.565,
+      0.789
+     ],
+     "s_b_W3": [
+      0.954,
+      0.872,
+      0.895,
+      0.882,
+      0.746,
+      0.786
+     ],
+     "N_W1": [
+      29.465,
+      29.3,
+      31.615,
+      30.89,
+      28.885,
+      28.98
+     ],
+     "N_W2": [
+      34.624,
+      31.894,
+      37.965,
+      37.411,
+      32.071,
+      30.674
+     ],
+     "N_W3": [
+      36.306,
+      33.55,
+      35.825,
+      36.338,
+      36.862,
+      33.231
+     ],
+     "s_b_W1_mean": 0.365,
+     "s_b_W2_mean": 0.741,
+     "s_b_W3_mean": 0.856,
+     "N_W1_mean": 29.856,
+     "N_W2_mean": 34.107,
+     "N_W3_mean": 35.352,
+     "first_t_majority_b": [
+      1095.0,
+      1545.0,
+      1065.0,
+      1240.0,
+      1375.0,
+      1055.0
+     ],
+     "frac_ticks_majority_W2": [
+      1.0,
+      0.922,
+      1.0,
+      1.0,
+      0.596,
+      1.0
+     ],
+     "frac_ticks_majority_W3": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ],
+     "share_b_by_t_mean": {
+      "0": 0.0,
+      "125": 0.0,
+      "250": 0.0,
+      "375": 0.05,
+      "500": 0.098,
+      "625": 0.185,
+      "750": 0.234,
+      "875": 0.265,
+      "1000": 0.339,
+      "1125": 0.475,
+      "1250": 0.5,
+      "1375": 0.588,
+      "1500": 0.655,
+      "1625": 0.711,
+      "1750": 0.742,
+      "1875": 0.769,
+      "2000": 0.759,
+      "2125": 0.798,
+      "2250": 0.821,
+      "2375": 0.837,
+      "2500": 0.867,
+      "2625": 0.868,
+      "2750": 0.88,
+      "2875": 0.884,
+      "3000": 0.882
+     },
+     "N_by_t_mean": {
+      "0": 42.167,
+      "125": 36.667,
+      "250": 34.833,
+      "375": 33.5,
+      "500": 30.333,
+      "625": 29.0,
+      "750": 27.667,
+      "875": 26.667,
+      "1000": 29.0,
+      "1125": 31.0,
+      "1250": 32.333,
+      "1375": 32.0,
+      "1500": 33.0,
+      "1625": 33.667,
+      "1750": 35.333,
+      "1875": 35.167,
+      "2000": 33.333,
+      "2125": 32.833,
+      "2250": 37.0,
+      "2375": 36.833,
+      "2500": 34.0,
+      "2625": 33.667,
+      "2750": 33.5,
+      "2875": 34.333,
+      "3000": 36.5
+     }
+    },
+    "neu": {
+     "s_b_W1": [
+      0.216,
+      0.215,
+      0.185,
+      0.194,
+      0.223,
+      0.24
+     ],
+     "s_b_W2": [
+      0.325,
+      0.35,
+      0.317,
+      0.415,
+      0.284,
+      0.52
+     ],
+     "s_b_W3": [
+      0.414,
+      0.396,
+      0.339,
+      0.361,
+      0.43,
+      0.57
+     ],
+     "N_W1": [
+      29.81,
+      32.32,
+      27.05,
+      30.73,
+      28.635,
+      31.09
+     ],
+     "N_W2": [
+      28.752,
+      29.284,
+      27.908,
+      24.801,
+      26.879,
+      28.787
+     ],
+     "N_W3": [
+      30.094,
+      28.506,
+      27.475,
+      23.231,
+      28.406,
+      28.562
+     ],
+     "s_b_W1_mean": 0.212,
+     "s_b_W2_mean": 0.368,
+     "s_b_W3_mean": 0.418,
+     "N_W1_mean": 29.939,
+     "N_W2_mean": 27.735,
+     "N_W3_mean": 27.712,
+     "first_t_majority_b": [
+      2730.0,
+      2955.0,
+      null,
+      2035.0,
+      2670.0,
+      1705.0
+     ],
+     "frac_ticks_majority_W2": [
+      0.0,
+      0.0,
+      0.0,
+      0.113,
+      0.0,
+      0.56
+     ],
+     "frac_ticks_majority_W3": [
+      0.025,
+      0.05,
+      0.0,
+      0.0,
+      0.138,
+      0.931
+     ],
+     "share_b_by_t_mean": {
+      "0": 0.0,
+      "125": 0.0,
+      "250": 0.0,
+      "375": 0.05,
+      "500": 0.067,
+      "625": 0.119,
+      "750": 0.161,
+      "875": 0.172,
+      "1000": 0.244,
+      "1125": 0.252,
+      "1250": 0.257,
+      "1375": 0.275,
+      "1500": 0.339,
+      "1625": 0.349,
+      "1750": 0.344,
+      "1875": 0.36,
+      "2000": 0.386,
+      "2125": 0.43,
+      "2250": 0.438,
+      "2375": 0.424,
+      "2500": 0.355,
+      "2625": 0.416,
+      "2750": 0.461,
+      "2875": 0.461,
+      "3000": 0.439
+     },
+     "N_by_t_mean": {
+      "0": 42.167,
+      "125": 36.667,
+      "250": 34.833,
+      "375": 33.833,
+      "500": 32.0,
+      "625": 30.833,
+      "750": 30.667,
+      "875": 29.667,
+      "1000": 29.333,
+      "1125": 29.167,
+      "1250": 29.667,
+      "1375": 29.833,
+      "1500": 28.167,
+      "1625": 27.667,
+      "1750": 29.0,
+      "1875": 27.333,
+      "2000": 26.833,
+      "2125": 26.167,
+      "2250": 27.333,
+      "2375": 27.0,
+      "2500": 29.0,
+      "2625": 26.833,
+      "2750": 27.667,
+      "2875": 28.0,
+      "3000": 27.167
+     }
+    }
+   },
+   "source": "results/analysis.json sel128, neu128 (analyse.py)",
+   "note": "W1 = ticks [100, 300) (t 500-1495), W2 = ticks [300, 440] (t 1500-2200), W3 = ticks [441, 600] (t 2205-3000, the extension); first majority = first tick whose centred 9-tick running mean of s_b > 0.5 (None = never)"
+  },
+  "paired_sel_minus_neu": {
+   "value": {
+    "s_b_W1": {
+     "n": 6,
+     "diffs": [
+      0.2175,
+      0.0045,
+      0.2629,
+      0.1763,
+      0.0642,
+      0.1898
+     ],
+     "mean": 0.1525,
+     "n_positive": 6,
+     "sd": 0.0981,
+     "se": 0.04,
+     "t": 3.8105,
+     "p_t_two_sided": 0.0125,
+     "p_signflip_exact_two_sided": 0.0312,
+     "p_signflip_exact_one_sided": 0.0156,
+     "p_wilcoxon_exact_two_sided": 0.0312,
+     "p_sign_test_two_sided": 0.0312
+    },
+    "s_b_W2": {
+     "n": 6,
+     "diffs": [
+      0.5609,
+      0.2826,
+      0.5257,
+      0.3193,
+      0.2802,
+      0.2697
+     ],
+     "mean": 0.3731,
+     "n_positive": 6,
+     "sd": 0.1334,
+     "se": 0.0545,
+     "t": 6.8508,
+     "p_t_two_sided": 0.001,
+     "p_signflip_exact_two_sided": 0.0312,
+     "p_signflip_exact_one_sided": 0.0156,
+     "p_wilcoxon_exact_two_sided": 0.0312,
+     "p_sign_test_two_sided": 0.0312
+    },
+    "s_b_W3": {
+     "n": 6,
+     "diffs": [
+      0.5401,
+      0.4758,
+      0.5558,
+      0.5212,
+      0.3161,
+      0.216
+     ],
+     "mean": 0.4375,
+     "n_positive": 6,
+     "sd": 0.1391,
+     "se": 0.0568,
+     "t": 7.7022,
+     "p_t_two_sided": 0.0006,
+     "p_signflip_exact_two_sided": 0.0312,
+     "p_signflip_exact_one_sided": 0.0156,
+     "p_wilcoxon_exact_two_sided": 0.0312,
+     "p_sign_test_two_sided": 0.0312
+    },
+    "N_W1": {
+     "n": 6,
+     "diffs": [
+      -0.345,
+      -3.02,
+      4.565,
+      0.16,
+      0.25,
+      -2.11
+     ],
+     "mean": -0.0833,
+     "n_positive": 3,
+     "sd": 2.6297,
+     "se": 1.0736,
+     "t": -0.0776,
+     "p_t_two_sided": 0.9411,
+     "p_signflip_exact_two_sided": 0.9062,
+     "p_signflip_exact_one_sided": 0.5625,
+     "p_wilcoxon_exact_two_sided": 0.8438,
+     "p_sign_test_two_sided": 1.0
+    },
+    "N_W2": {
+     "n": 6,
+     "diffs": [
+      5.872,
+      2.61,
+      10.057,
+      12.61,
+      5.192,
+      1.887
+     ],
+     "mean": 6.3713,
+     "n_positive": 6,
+     "sd": 4.2048,
+     "se": 1.7166,
+     "t": 3.7116,
+     "p_t_two_sided": 0.0138,
+     "p_signflip_exact_two_sided": 0.0312,
+     "p_signflip_exact_one_sided": 0.0156,
+     "p_wilcoxon_exact_two_sided": 0.0312,
+     "p_sign_test_two_sided": 0.0312
+    },
+    "N_W3": {
+     "n": 6,
+     "diffs": [
+      6.212,
+      5.044,
+      8.35,
+      13.107,
+      8.456,
+      4.669
+     ],
+     "mean": 7.6397,
+     "n_positive": 6,
+     "sd": 3.1197,
+     "se": 1.2736,
+     "t": 5.9984,
+     "p_t_two_sided": 0.0018,
+     "p_signflip_exact_two_sided": 0.0312,
+     "p_signflip_exact_one_sided": 0.0156,
+     "p_wilcoxon_exact_two_sided": 0.0312,
+     "p_sign_test_two_sided": 0.0312
+    }
+   },
+   "source": "results/analysis.json paired128",
+   "note": "6 seeds; p from a paired t-test, the exact sign-flip permutation test (64 patterns), the exact Wilcoxon signed-rank test and the sign test"
+  },
+  "paired_with_earlier_seeds": {
+   "value": {
+    "s_b_W1": {
+     "n": 8,
+     "diffs": [
+      0.2175,
+      0.0045,
+      0.2629,
+      0.1763,
+      0.0642,
+      0.1898,
+      0.211,
+      0.2388
+     ],
+     "mean": 0.1706,
+     "n_positive": 8,
+     "sd": 0.0897,
+     "se": 0.0317,
+     "t": 5.3806,
+     "p_t_two_sided": 0.001,
+     "p_signflip_exact_two_sided": 0.0078,
+     "p_signflip_exact_one_sided": 0.0039,
+     "p_wilcoxon_exact_two_sided": 0.0078,
+     "p_sign_test_two_sided": 0.0078
+    },
+    "N_W1": {
+     "n": 8,
+     "diffs": [
+      -0.345,
+      -3.02,
+      4.565,
+      0.16,
+      0.25,
+      -2.11,
+      0.695,
+      0.83
+     ],
+     "mean": 0.1281,
+     "n_positive": 5,
+     "sd": 2.257,
+     "se": 0.798,
+     "t": 0.1606,
+     "p_t_two_sided": 0.877,
+     "p_signflip_exact_two_sided": 0.8672,
+     "p_signflip_exact_one_sided": 0.4336,
+     "p_wilcoxon_exact_two_sided": 0.8438,
+     "p_sign_test_two_sided": 0.7266
+    },
+    "s_b_W2": {
+     "n": 7,
+     "diffs": [
+      0.5609,
+      0.2826,
+      0.5257,
+      0.3193,
+      0.2802,
+      0.2697,
+      0.482
+     ],
+     "mean": 0.3886,
+     "n_positive": 7,
+     "sd": 0.1285,
+     "se": 0.0486,
+     "t": 7.9992,
+     "p_t_two_sided": 0.0002,
+     "p_signflip_exact_two_sided": 0.0156,
+     "p_signflip_exact_one_sided": 0.0078,
+     "p_wilcoxon_exact_two_sided": 0.0156,
+     "p_sign_test_two_sided": 0.0156
+    },
+    "N_W2": {
+     "n": 7,
+     "diffs": [
+      5.872,
+      2.61,
+      10.057,
+      12.61,
+      5.192,
+      1.887,
+      5.383
+     ],
+     "mean": 6.2301,
+     "n_positive": 7,
+     "sd": 3.8566,
+     "se": 1.4577,
+     "t": 4.2741,
+     "p_t_two_sided": 0.0052,
+     "p_signflip_exact_two_sided": 0.0156,
+     "p_signflip_exact_one_sided": 0.0078,
+     "p_wilcoxon_exact_two_sided": 0.0156,
+     "p_sign_test_two_sided": 0.0156
+    }
+   },
+   "source": "results/analysis.json paired128_with_earlier_seeds",
+   "note": "adds the round-2 pilot seed (W1 and W2) and the checker's seed 1 (W1 only; it stopped at t 1500)"
+  },
+  "earlier_seeds": {
+   "value": {
+    "sel": [
+     {
+      "t_end": 2200.0,
+      "s_b_W1": [
+       0.442
+      ],
+      "s_b_W2": [
+       0.749
+      ],
+      "N_W1": [
+       30.255
+      ],
+      "N_W2": [
+       34.184
+      ],
+      "first_t_majority_b": [
+       930.0
+      ]
+     },
+     {
+      "t_end": 1500.0,
+      "s_b_W1": [
+       0.402
+      ],
+      "N_W1": [
+       32.07
+      ],
+      "first_t_majority_b": [
+       1090.0
+      ]
+     }
+    ],
+    "neu": [
+     {
+      "t_end": 2200.0,
+      "s_b_W1": [
+       0.231
+      ],
+      "s_b_W2": [
+       0.267
+      ],
+      "N_W1": [
+       29.56
+      ],
+      "N_W2": [
+       28.801
+      ],
+      "first_t_majority_b": [
+       null
+      ]
+     },
+     {
+      "t_end": 1500.0,
+      "s_b_W1": [
+       0.163
+      ],
+      "N_W1": [
+       31.24
+      ],
+      "first_t_majority_b": [
+       null
+      ]
+     }
+    ]
+   },
+   "source": "results/analysis.json earlier_seeds128 (from ../vortex_world/results/pilot_H128.npz, ../vortex_world/checker/seed128_s1.npz)"
+  },
+  "diff_s_b_by_t": {
+   "value": {
+    "0": {
+     "mean": 0.0,
+     "se": 0.0,
+     "n_pos": 0
+    },
+    "250": {
+     "mean": 0.0,
+     "se": 0.0,
+     "n_pos": 0
+    },
+    "500": {
+     "mean": 0.0316,
+     "se": 0.0152,
+     "n_pos": 5
+    },
+    "750": {
+     "mean": 0.0728,
+     "se": 0.0192,
+     "n_pos": 6
+    },
+    "1000": {
+     "mean": 0.0952,
+     "se": 0.0364,
+     "n_pos": 5
+    },
+    "1250": {
+     "mean": 0.2424,
+     "se": 0.0786,
+     "n_pos": 5
+    },
+    "1500": {
+     "mean": 0.3159,
+     "se": 0.0556,
+     "n_pos": 6
+    },
+    "1750": {
+     "mean": 0.398,
+     "se": 0.0601,
+     "n_pos": 6
+    },
+    "2000": {
+     "mean": 0.3731,
+     "se": 0.0581,
+     "n_pos": 6
+    },
+    "2250": {
+     "mean": 0.3831,
+     "se": 0.052,
+     "n_pos": 6
+    },
+    "2500": {
+     "mean": 0.5127,
+     "se": 0.0758,
+     "n_pos": 6
+    },
+    "2750": {
+     "mean": 0.4186,
+     "se": 0.0437,
+     "n_pos": 6
+    },
+    "3000": {
+     "mean": 0.4428,
+     "se": 0.0319,
+     "n_pos": 6
+    }
+   },
+   "source": "results/analysis.json diff_s_b_by_t",
+   "note": "mean, SE and positive count of sel - neu over the 6 seeds"
+  },
+  "mutations": {
+   "value": {
+    "n_to_t2200": 38,
+    "first_t": 300.0,
+    "last_t": 2150.0
+   },
+   "source": "results/analysis.json mutations128 (analyse.mutation_times)",
+   "note": "the accumulated float64 time is 300.0000000000171 at native step 15000, so the first mutation acts at the labelling step (t 300), not at t 350"
+  }
+ },
+ "area64": {
+  "design": {
+   "value": {
+    "H": 64,
+    "seeds": 8,
+    "ensemble_seed": 0,
+    "members": "0-7",
+    "T_ticks": 500,
+    "mut_dt_per_area": 200.0,
+    "mut_dt_per_box": 50.0,
+    "mutations": {
+     "per_box_mut_dt50": {
+      "n_to_t2500": 44,
+      "first_t": 300.0,
+      "last_t": 2450.0
+     },
+     "per_area_mut_dt200": {
+      "n_to_t2500": 11,
+      "times": [
+       400.0,
+       600.0,
+       800.0,
+       1000.0,
+       1200.0,
+       1400.0,
+       1600.0,
+       1800.0,
+       2000.0,
+       2200.0,
+       2400.0
+      ]
+     },
+     "per_area_n_to_t2200": 9,
+     "128_mut_dt50_n_to_t2200": 38
+    }
+   },
+   "source": "results/area64_{sel,neu}.json (members 0-3), area64x_* and box64x_* (members 4-7); per-box members 0-3 from ../vortex_world/results/pilot_H64.npz",
+   "note": "same initial conditions and keys per member at both rates (ensemble(8, seed 0) member j = the round-2 pilot's member j for j < 4); mut_dt 200 at 64^2 = the 128^2 rate per unit area (9 vs 38/4 = 9.5 events per 64^2 of area by t 2200)"
+  },
+  "identical_until_tick": {
+   "value": {
+    "sel": 60,
+    "neu": 60
+   },
+   "source": "results/analysis.json area64.identical_until_tick_members0_3",
+   "note": "level-2 rows equal to the round-2 per-box rows to tick 60; the first per-box mutation acts at t 300"
+  },
+  "neutral_N_identical": {
+   "value": true,
+   "source": "results/analysis.json area64.neutral_N_identical_area_vs_box",
+   "note": "with eps = 0 the labels are passive, so the vortex count does not depend on the mutation schedule"
+  },
+  "per_area": {
+   "value": {
+    "sel": {
+     "s_b_W1": [
+      0.499,
+      0.589,
+      0.395,
+      0.489,
+      0.315,
+      0.494,
+      0.425,
+      0.337
+     ],
+     "s_b_W2": [
+      0.865,
+      0.921,
+      0.853,
+      0.908,
+      0.81,
+      0.947,
+      0.921,
+      0.726
+     ],
+     "N_W1": [
+      6.95,
+      7.45,
+      7.005,
+      8.215,
+      8.29,
+      7.6,
+      6.72,
+      7.73
+     ],
+     "N_W2": [
+      8.378,
+      8.647,
+      8.413,
+      9.02,
+      8.453,
+      8.97,
+      8.085,
+      9.025
+     ],
+     "s_b_W1_mean": 0.443,
+     "s_b_W2_mean": 0.869,
+     "N_W2_mean": 8.624,
+     "first_t_majority_b": [
+      1035.0,
+      990.0,
+      1115.0,
+      910.0,
+      1220.0,
+      1025.0,
+      1025.0,
+      1210.0
+     ],
+     "frac_ticks_majority_W2": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.965
+     ]
+    },
+    "neu": {
+     "s_b_W1": [
+      0.059,
+      0.17,
+      0.427,
+      0.379,
+      0.239,
+      0.172,
+      0.224,
+      0.227
+     ],
+     "s_b_W2": [
+      0.254,
+      0.269,
+      0.424,
+      0.603,
+      0.39,
+      0.449,
+      0.37,
+      0.145
+     ],
+     "N_W1": [
+      6.28,
+      7.38,
+      7.69,
+      6.055,
+      8.17,
+      6.85,
+      7.65,
+      7.55
+     ],
+     "N_W2": [
+      7.95,
+      7.836,
+      6.761,
+      5.866,
+      8.358,
+      7.876,
+      5.965,
+      7.851
+     ],
+     "s_b_W1_mean": 0.237,
+     "s_b_W2_mean": 0.363,
+     "N_W2_mean": 7.308,
+     "first_t_majority_b": [
+      null,
+      null,
+      1025.0,
+      1205.0,
+      2245.0,
+      1795.0,
+      null,
+      null
+     ],
+     "frac_ticks_majority_W2": [
+      0.0,
+      0.0,
+      0.179,
+      0.677,
+      0.144,
+      0.284,
+      0.0,
+      0.0
+     ]
+    }
+   },
+   "source": "results/analysis.json area64.per_area",
+   "note": "W1 = t 500-1495, W2 = t 1500-2500"
+  },
+  "per_box": {
+   "value": {
+    "sel": {
+     "s_b_W1": [
+      0.578,
+      0.394,
+      0.565,
+      0.656,
+      0.666,
+      0.683,
+      0.63,
+      0.547
+     ],
+     "s_b_W2": [
+      0.346,
+      0.437,
+      0.688,
+      0.617,
+      0.656,
+      0.413,
+      0.705,
+      0.776
+     ],
+     "N_W1": [
+      7.345,
+      7.395,
+      9.015,
+      8.15,
+      7.935,
+      7.065,
+      6.77,
+      8.015
+     ],
+     "N_W2": [
+      7.687,
+      8.154,
+      8.592,
+      8.557,
+      7.428,
+      6.522,
+      7.368,
+      8.423
+     ],
+     "s_b_W1_mean": 0.59,
+     "s_b_W2_mean": 0.58,
+     "N_W2_mean": 7.841,
+     "first_t_majority_b": [
+      590.0,
+      605.0,
+      560.0,
+      625.0,
+      505.0,
+      605.0,
+      575.0,
+      615.0
+     ],
+     "frac_ticks_majority_W2": [
+      0.119,
+      0.323,
+      0.856,
+      0.821,
+      0.891,
+      0.164,
+      0.955,
+      1.0
+     ]
+    },
+    "neu": {
+     "s_b_W1": [
+      0.351,
+      0.379,
+      0.27,
+      0.456,
+      0.517,
+      0.714,
+      0.47,
+      0.551
+     ],
+     "s_b_W2": [
+      0.544,
+      0.658,
+      0.452,
+      0.352,
+      0.587,
+      0.605,
+      0.497,
+      0.467
+     ],
+     "N_W1": [
+      6.28,
+      7.38,
+      7.69,
+      6.055,
+      8.17,
+      6.85,
+      7.65,
+      7.55
+     ],
+     "N_W2": [
+      7.95,
+      7.836,
+      6.761,
+      5.866,
+      8.358,
+      7.876,
+      5.965,
+      7.851
+     ],
+     "s_b_W1_mean": 0.463,
+     "s_b_W2_mean": 0.52,
+     "N_W2_mean": 7.308,
+     "first_t_majority_b": [
+      470.0,
+      955.0,
+      925.0,
+      750.0,
+      510.0,
+      510.0,
+      905.0,
+      555.0
+     ],
+     "frac_ticks_majority_W2": [
+      0.512,
+      0.741,
+      0.299,
+      0.109,
+      0.532,
+      0.801,
+      0.348,
+      0.363
+     ]
+    }
+   },
+   "source": "results/analysis.json area64.per_box"
+  },
+  "paired_sel_minus_neu": {
+   "value": {
+    "per_area": {
+     "s_b_W1": {
+      "n": 8,
+      "diffs": [
+       0.4401,
+       0.4183,
+       -0.0323,
+       0.1105,
+       0.076,
+       0.322,
+       0.2012,
+       0.1107
+      ],
+      "mean": 0.2058,
+      "n_positive": 7,
+      "sd": 0.1712,
+      "se": 0.0605,
+      "t": 3.3996,
+      "p_t_two_sided": 0.0114,
+      "p_signflip_exact_two_sided": 0.0156,
+      "p_signflip_exact_one_sided": 0.0078,
+      "p_wilcoxon_exact_two_sided": 0.0156,
+      "p_sign_test_two_sided": 0.0703
+     },
+     "s_b_W2": {
+      "n": 8,
+      "diffs": [
+       0.611,
+       0.652,
+       0.429,
+       0.3051,
+       0.4202,
+       0.498,
+       0.5514,
+       0.5803
+      ],
+      "mean": 0.5059,
+      "n_positive": 8,
+      "sd": 0.1157,
+      "se": 0.0409,
+      "t": 12.3712,
+      "p_t_two_sided": 0.0,
+      "p_signflip_exact_two_sided": 0.0078,
+      "p_signflip_exact_one_sided": 0.0039,
+      "p_wilcoxon_exact_two_sided": 0.0078,
+      "p_sign_test_two_sided": 0.0078
+     },
+     "N_W1": {
+      "n": 8,
+      "diffs": [
+       0.67,
+       0.07,
+       -0.685,
+       2.16,
+       0.12,
+       0.75,
+       -0.93,
+       0.18
+      ],
+      "mean": 0.2919,
+      "n_positive": 6,
+      "sd": 0.9548,
+      "se": 0.3376,
+      "t": 0.8646,
+      "p_t_two_sided": 0.4159,
+      "p_signflip_exact_two_sided": 0.4453,
+      "p_signflip_exact_one_sided": 0.2227,
+      "p_wilcoxon_exact_two_sided": 0.4609,
+      "p_sign_test_two_sided": 0.2891
+     },
+     "N_W2": {
+      "n": 8,
+      "diffs": [
+       0.428,
+       0.811,
+       1.652,
+       3.154,
+       0.095,
+       1.094,
+       2.12,
+       1.174
+      ],
+      "mean": 1.316,
+      "n_positive": 8,
+      "sd": 0.9814,
+      "se": 0.347,
+      "t": 3.7929,
+      "p_t_two_sided": 0.0068,
+      "p_signflip_exact_two_sided": 0.0078,
+      "p_signflip_exact_one_sided": 0.0039,
+      "p_wilcoxon_exact_two_sided": 0.0078,
+      "p_sign_test_two_sided": 0.0078
+     }
+    },
+    "per_box": {
+     "s_b_W1": {
+      "n": 8,
+      "diffs": [
+       0.227,
+       0.0153,
+       0.2957,
+       0.2003,
+       0.1484,
+       -0.0308,
+       0.16,
+       -0.004
+      ],
+      "mean": 0.1265,
+      "n_positive": 6,
+      "sd": 0.1195,
+      "se": 0.0422,
+      "t": 2.9945,
+      "p_t_two_sided": 0.0201,
+      "p_signflip_exact_two_sided": 0.0469,
+      "p_signflip_exact_one_sided": 0.0234,
+      "p_wilcoxon_exact_two_sided": 0.0547,
+      "p_sign_test_two_sided": 0.2891
+     },
+     "s_b_W2": {
+      "n": 8,
+      "diffs": [
+       -0.1977,
+       -0.2207,
+       0.2362,
+       0.2647,
+       0.0686,
+       -0.1927,
+       0.2082,
+       0.3093
+      ],
+      "mean": 0.0595,
+      "n_positive": 5,
+      "sd": 0.2287,
+      "se": 0.0809,
+      "t": 0.7356,
+      "p_t_two_sided": 0.4859,
+      "p_signflip_exact_two_sided": 0.4531,
+      "p_signflip_exact_one_sided": 0.2266,
+      "p_wilcoxon_exact_two_sided": 0.3125,
+      "p_sign_test_two_sided": 0.7266
+     },
+     "N_W1": {
+      "n": 8,
+      "diffs": [
+       1.065,
+       0.015,
+       1.325,
+       2.095,
+       -0.235,
+       0.215,
+       -0.88,
+       0.465
+      ],
+      "mean": 0.5081,
+      "n_positive": 6,
+      "sd": 0.9491,
+      "se": 0.3356,
+      "t": 1.5143,
+      "p_t_two_sided": 0.1737,
+      "p_signflip_exact_two_sided": 0.1797,
+      "p_signflip_exact_one_sided": 0.0898,
+      "p_wilcoxon_exact_two_sided": 0.1953,
+      "p_sign_test_two_sided": 0.2891
+     },
+     "N_W2": {
+      "n": 8,
+      "diffs": [
+       -0.263,
+       0.318,
+       1.831,
+       2.691,
+       -0.93,
+       -1.354,
+       1.403,
+       0.572
+      ],
+      "mean": 0.5335,
+      "n_positive": 5,
+      "sd": 1.3878,
+      "se": 0.4906,
+      "t": 1.0873,
+      "p_t_two_sided": 0.3129,
+      "p_signflip_exact_two_sided": 0.3047,
+      "p_signflip_exact_one_sided": 0.1523,
+      "p_wilcoxon_exact_two_sided": 0.3125,
+      "p_sign_test_two_sided": 0.7266
+     }
+    },
+    "per_area_to_t2200": {
+     "s_b_W1": {
+      "n": 8,
+      "diffs": [
+       0.4401,
+       0.4183,
+       -0.0323,
+       0.1105,
+       0.076,
+       0.322,
+       0.2012,
+       0.1107
+      ],
+      "mean": 0.2058,
+      "n_positive": 7,
+      "sd": 0.1712,
+      "se": 0.0605,
+      "t": 3.3996,
+      "p_t_two_sided": 0.0114,
+      "p_signflip_exact_two_sided": 0.0156,
+      "p_signflip_exact_one_sided": 0.0078,
+      "p_wilcoxon_exact_two_sided": 0.0156,
+      "p_sign_test_two_sided": 0.0703
+     },
+     "s_b_W2": {
+      "n": 8,
+      "diffs": [
+       0.6184,
+       0.6785,
+       0.3835,
+       0.2723,
+       0.4554,
+       0.5156,
+       0.5589,
+       0.5457
+      ],
+      "mean": 0.5035,
+      "n_positive": 8,
+      "sd": 0.1304,
+      "se": 0.0461,
+      "t": 10.9237,
+      "p_t_two_sided": 0.0,
+      "p_signflip_exact_two_sided": 0.0078,
+      "p_signflip_exact_one_sided": 0.0039,
+      "p_wilcoxon_exact_two_sided": 0.0078,
+      "p_sign_test_two_sided": 0.0078
+     },
+     "N_W1": {
+      "n": 8,
+      "diffs": [
+       0.67,
+       0.07,
+       -0.685,
+       2.16,
+       0.12,
+       0.75,
+       -0.93,
+       0.18
+      ],
+      "mean": 0.2919,
+      "n_positive": 6,
+      "sd": 0.9548,
+      "se": 0.3376,
+      "t": 0.8646,
+      "p_t_two_sided": 0.4159,
+      "p_signflip_exact_two_sided": 0.4453,
+      "p_signflip_exact_one_sided": 0.2227,
+      "p_wilcoxon_exact_two_sided": 0.4609,
+      "p_sign_test_two_sided": 0.2891
+     },
+     "N_W2": {
+      "n": 8,
+      "diffs": [
+       0.88,
+       0.582,
+       0.943,
+       3.227,
+       0.248,
+       2.284,
+       1.547,
+       0.837
+      ],
+      "mean": 1.3185,
+      "n_positive": 8,
+      "sd": 0.9914,
+      "se": 0.3505,
+      "t": 3.7616,
+      "p_t_two_sided": 0.0071,
+      "p_signflip_exact_two_sided": 0.0078,
+      "p_signflip_exact_one_sided": 0.0039,
+      "p_wilcoxon_exact_two_sided": 0.0078,
+      "p_sign_test_two_sided": 0.0078
+     }
+    },
+    "per_box_to_t2200": {
+     "s_b_W1": {
+      "n": 8,
+      "diffs": [
+       0.227,
+       0.0153,
+       0.2957,
+       0.2003,
+       0.1484,
+       -0.0308,
+       0.16,
+       -0.004
+      ],
+      "mean": 0.1265,
+      "n_positive": 6,
+      "sd": 0.1195,
+      "se": 0.0422,
+      "t": 2.9945,
+      "p_t_two_sided": 0.0201,
+      "p_signflip_exact_two_sided": 0.0469,
+      "p_signflip_exact_one_sided": 0.0234,
+      "p_wilcoxon_exact_two_sided": 0.0547,
+      "p_sign_test_two_sided": 0.2891
+     },
+     "s_b_W2": {
+      "n": 8,
+      "diffs": [
+       -0.194,
+       -0.1947,
+       0.1959,
+       0.2902,
+       0.0512,
+       -0.2289,
+       0.2203,
+       0.2909
+      ],
+      "mean": 0.0539,
+      "n_positive": 5,
+      "sd": 0.2278,
+      "se": 0.0805,
+      "t": 0.6689,
+      "p_t_two_sided": 0.525,
+      "p_signflip_exact_two_sided": 0.4844,
+      "p_signflip_exact_one_sided": 0.2422,
+      "p_wilcoxon_exact_two_sided": 0.3828,
+      "p_sign_test_two_sided": 0.7266
+     },
+     "N_W1": {
+      "n": 8,
+      "diffs": [
+       1.065,
+       0.015,
+       1.325,
+       2.095,
+       -0.235,
+       0.215,
+       -0.88,
+       0.465
+      ],
+      "mean": 0.5081,
+      "n_positive": 6,
+      "sd": 0.9491,
+      "se": 0.3356,
+      "t": 1.5143,
+      "p_t_two_sided": 0.1737,
+      "p_signflip_exact_two_sided": 0.1797,
+      "p_signflip_exact_one_sided": 0.0898,
+      "p_wilcoxon_exact_two_sided": 0.1953,
+      "p_sign_test_two_sided": 0.2891
+     },
+     "N_W2": {
+      "n": 8,
+      "diffs": [
+       -0.652,
+       0.475,
+       1.354,
+       2.475,
+       -1.071,
+       -0.695,
+       0.951,
+       0.575
+      ],
+      "mean": 0.4265,
+      "n_positive": 5,
+      "sd": 1.1964,
+      "se": 0.423,
+      "t": 1.0083,
+      "p_t_two_sided": 0.3469,
+      "p_signflip_exact_two_sided": 0.3594,
+      "p_signflip_exact_one_sided": 0.1797,
+      "p_wilcoxon_exact_two_sided": 0.5469,
+      "p_sign_test_two_sided": 0.7266
+     }
+    }
+   },
+   "source": "results/analysis.json area64.*.paired*"
+  },
+  "neutral_area_minus_box": {
+   "value": {
+    "s_b_W1": {
+     "n": 8,
+     "diffs": [
+      -0.2914,
+      -0.2084,
+      0.1576,
+      -0.0772,
+      -0.2788,
+      -0.5415,
+      -0.2465,
+      -0.3242
+     ],
+     "mean": -0.2263,
+     "n_positive": 1,
+     "sd": 0.2022,
+     "se": 0.0715,
+     "t": -3.1651,
+     "p_t_two_sided": 0.0158,
+     "p_signflip_exact_two_sided": 0.0234,
+     "p_signflip_exact_one_sided": 0.9922,
+     "p_wilcoxon_exact_two_sided": 0.0234,
+     "p_sign_test_two_sided": 0.0703
+    },
+    "s_b_W2": {
+     "n": 8,
+     "diffs": [
+      -0.2905,
+      -0.3889,
+      -0.0283,
+      0.2504,
+      -0.1976,
+      -0.1569,
+      -0.1268,
+      -0.3219
+     ],
+     "mean": -0.1576,
+     "n_positive": 1,
+     "sd": 0.2014,
+     "se": 0.0712,
+     "t": -2.213,
+     "p_t_two_sided": 0.0625,
+     "p_signflip_exact_two_sided": 0.0703,
+     "p_signflip_exact_one_sided": 0.9688,
+     "p_wilcoxon_exact_two_sided": 0.0781,
+     "p_sign_test_two_sided": 0.0703
+    },
+    "N_W1": {
+     "n": 8,
+     "diffs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "n_positive": 0,
+     "sd": 0.0,
+     "se": 0.0,
+     "t": Infinity,
+     "p_t_two_sided": 0.0,
+     "p_signflip_exact_two_sided": 1.0,
+     "p_signflip_exact_one_sided": 1.0,
+     "p_wilcoxon_exact_two_sided": 1.0,
+     "p_sign_test_two_sided": NaN
+    },
+    "N_W2": {
+     "n": 8,
+     "diffs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "n_positive": 0,
+     "sd": 0.0,
+     "se": 0.0,
+     "t": Infinity,
+     "p_t_two_sided": 0.0,
+     "p_signflip_exact_two_sided": 1.0,
+     "p_signflip_exact_one_sided": 1.0,
+     "p_wilcoxon_exact_two_sided": 1.0,
+     "p_sign_test_two_sided": NaN
+    }
+   },
+   "source": "results/analysis.json area64.area_minus_box_neutral",
+   "note": "paired by member (same initial conditions)"
+  },
+  "favoured_area_minus_box": {
+   "value": {
+    "s_b_W1": {
+     "n": 8,
+     "diffs": [
+      -0.0783,
+      0.1946,
+      -0.1704,
+      -0.167,
+      -0.3512,
+      -0.1887,
+      -0.2053,
+      -0.2095
+     ],
+     "mean": -0.147,
+     "n_positive": 1,
+     "sd": 0.1573,
+     "se": 0.0556,
+     "t": -2.6436,
+     "p_t_two_sided": 0.0333,
+     "p_signflip_exact_two_sided": 0.0469,
+     "p_signflip_exact_one_sided": 0.9805,
+     "p_wilcoxon_exact_two_sided": 0.0781,
+     "p_sign_test_two_sided": 0.0703
+    },
+    "s_b_W2": {
+     "n": 8,
+     "diffs": [
+      0.5182,
+      0.4838,
+      0.1645,
+      0.2908,
+      0.154,
+      0.5338,
+      0.2164,
+      -0.0509
+     ],
+     "mean": 0.2888,
+     "n_positive": 7,
+     "sd": 0.2087,
+     "se": 0.0738,
+     "t": 3.914,
+     "p_t_two_sided": 0.0058,
+     "p_signflip_exact_two_sided": 0.0156,
+     "p_signflip_exact_one_sided": 0.0078,
+     "p_wilcoxon_exact_two_sided": 0.0156,
+     "p_sign_test_two_sided": 0.0703
+    },
+    "N_W1": {
+     "n": 8,
+     "diffs": [
+      -0.395,
+      0.055,
+      -2.01,
+      0.065,
+      0.355,
+      0.535,
+      -0.05,
+      -0.285
+     ],
+     "mean": -0.2163,
+     "n_positive": 4,
+     "sd": 0.7861,
+     "se": 0.2779,
+     "t": -0.7781,
+     "p_t_two_sided": 0.462,
+     "p_signflip_exact_two_sided": 0.6484,
+     "p_signflip_exact_one_sided": 0.6797,
+     "p_wilcoxon_exact_two_sided": 0.9453,
+     "p_sign_test_two_sided": 1.0
+    },
+    "N_W2": {
+     "n": 8,
+     "diffs": [
+      0.691,
+      0.493,
+      -0.179,
+      0.463,
+      1.025,
+      2.448,
+      0.717,
+      0.602
+     ],
+     "mean": 0.7825,
+     "n_positive": 7,
+     "sd": 0.7548,
+     "se": 0.2669,
+     "t": 2.9321,
+     "p_t_two_sided": 0.022,
+     "p_signflip_exact_two_sided": 0.0156,
+     "p_signflip_exact_one_sided": 0.0078,
+     "p_wilcoxon_exact_two_sided": 0.0156,
+     "p_sign_test_two_sided": 0.0703
+    }
+   },
+   "source": "results/analysis.json area64.area_minus_box_sel"
+  }
+ },
+ "closure128": {
+  "design": {
+   "value": {
+    "branch_points_ticks": {
+     "sel": [
+      100,
+      200,
+      300,
+      400
+     ],
+     "neu": [
+      100,
+      200,
+      300,
+      400
+     ]
+    },
+    "R": 3,
+    "H_branch_ticks": 32,
+    "horizons_ticks": [
+     1,
+     2,
+     4,
+     8,
+     16,
+     32
+    ],
+    "n_rows_pooled": 144,
+    "n_branch_points_pooled": 48
+   },
+   "source": "results/branch128_{sel,neu}.json, results/analysis.json closure128",
+   "note": "c = (V0 - Ve)/(V0 - Vu); OLS on the last w level-2 values, leave-one-seed-out with twins held out together; 'branch' = fitted on branch rows (the round-2 definition), 'traj' = fitted on main trajectories, 'traj_t' = 'traj' plus the tick, 'traj_slope' = 'traj' plus the 20-tick mean and 40-tick slope; cchg = (V_change - Ve)/(V_change - Vu) with V_change = var(y(t+h) - y(t)): closure against persistence plus the mean drift; horizons in 5-time-unit ticks; a linear predictor, so c is a lower bound"
+  },
+  "pooled": {
+   "value": {
+    "N": {
+     "V0": [
+      12.293,
+      12.261,
+      12.671,
+      12.676,
+      12.654,
+      11.482
+     ],
+     "Vu": [
+      0.229,
+      0.292,
+      0.625,
+      0.917,
+      2.257,
+      3.535
+     ],
+     "Vu_over_V0": [
+      0.019,
+      0.024,
+      0.049,
+      0.072,
+      0.178,
+      0.308
+     ],
+     "V_change": [
+      1.045,
+      1.645,
+      2.573,
+      3.683,
+      7.119,
+      9.566
+     ],
+     "c_persistence": [
+      0.929,
+      0.885,
+      0.834,
+      0.753,
+      0.514,
+      0.242
+     ],
+     "c_branch_w1": [
+      0.928,
+      0.885,
+      0.843,
+      0.818,
+      0.669,
+      0.59
+     ],
+     "c_branch_w2": [
+      0.942,
+      0.894,
+      0.823,
+      0.777,
+      0.657,
+      0.591
+     ],
+     "c_branch_w4": [
+      0.931,
+      0.895,
+      0.832,
+      0.663,
+      0.442,
+      0.352
+     ],
+     "c_traj_w1": [
+      0.93,
+      0.89,
+      0.845,
+      0.788,
+      0.641,
+      0.578
+     ],
+     "c_traj_w2": [
+      0.935,
+      0.895,
+      0.851,
+      0.786,
+      0.656,
+      0.615
+     ],
+     "c_traj_w4": [
+      0.935,
+      0.896,
+      0.855,
+      0.804,
+      0.665,
+      0.596
+     ],
+     "c_traj_t_w2": [
+      0.935,
+      0.894,
+      0.856,
+      0.805,
+      0.645,
+      0.635
+     ],
+     "c_traj_slope_w2": [
+      0.937,
+      0.9,
+      0.865,
+      0.821,
+      0.678,
+      0.589
+     ],
+     "cchg_branch_w2": [
+      0.146,
+      0.063,
+      -0.095,
+      0.052,
+      0.266,
+      0.461
+     ],
+     "cchg_traj_w2": [
+      0.033,
+      0.069,
+      0.076,
+      0.092,
+      0.264,
+      0.492
+     ],
+     "cchg_traj_slope_w2": [
+      0.075,
+      0.118,
+      0.163,
+      0.24,
+      0.311,
+      0.458
+     ]
+    },
+    "s_b": {
+     "V0": [
+      0.055,
+      0.056,
+      0.057,
+      0.056,
+      0.056,
+      0.052
+     ],
+     "Vu": [
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.002
+     ],
+     "Vu_over_V0": [
+      0.011,
+      0.013,
+      0.013,
+      0.013,
+      0.026,
+      0.046
+     ],
+     "V_change": [
+      0.001,
+      0.001,
+      0.001,
+      0.002,
+      0.003,
+      0.005
+     ],
+     "c_persistence": [
+      0.994,
+      0.994,
+      0.99,
+      0.976,
+      0.948,
+      0.846
+     ],
+     "c_branch_w1": [
+      0.998,
+      0.996,
+      0.993,
+      0.983,
+      0.974,
+      0.958
+     ],
+     "c_branch_w2": [
+      0.997,
+      0.997,
+      0.993,
+      0.982,
+      0.972,
+      0.949
+     ],
+     "c_branch_w4": [
+      0.994,
+      0.994,
+      0.989,
+      0.984,
+      0.968,
+      0.948
+     ],
+     "c_traj_w1": [
+      0.995,
+      0.995,
+      0.993,
+      0.983,
+      0.973,
+      0.944
+     ],
+     "c_traj_w2": [
+      0.995,
+      0.995,
+      0.993,
+      0.984,
+      0.973,
+      0.945
+     ],
+     "c_traj_w4": [
+      0.995,
+      0.995,
+      0.993,
+      0.984,
+      0.973,
+      0.944
+     ],
+     "c_traj_t_w2": [
+      0.995,
+      0.995,
+      0.993,
+      0.983,
+      0.973,
+      0.946
+     ],
+     "c_traj_slope_w2": [
+      0.995,
+      0.995,
+      0.993,
+      0.984,
+      0.975,
+      0.95
+     ],
+     "cchg_branch_w2": [
+      0.299,
+      0.14,
+      -0.108,
+      -0.056,
+      -0.031,
+      -0.021
+     ],
+     "cchg_traj_w2": [
+      -0.318,
+      -0.159,
+      -0.022,
+      0.051,
+      0.002,
+      -0.101
+     ],
+     "cchg_traj_slope_w2": [
+      -0.353,
+      -0.221,
+      -0.039,
+      0.078,
+      0.066,
+      -0.016
+     ]
+    }
+   },
+   "source": "results/analysis.json closure128.pooled"
+  },
+  "sel": {
+   "value": {
+    "N": {
+     "V0": [
+      12.089,
+      12.145,
+      12.009,
+      12.469,
+      13.877,
+      12.826
+     ],
+     "Vu": [
+      0.167,
+      0.375,
+      0.986,
+      1.361,
+      3.708,
+      5.181
+     ],
+     "Vu_over_V0": [
+      0.014,
+      0.031,
+      0.082,
+      0.109,
+      0.267,
+      0.404
+     ],
+     "V_change": [
+      1.436,
+      2.225,
+      3.272,
+      5.368,
+      10.626,
+      13.18
+     ],
+     "c_persistence": [
+      0.875,
+      0.825,
+      0.758,
+      0.575,
+      0.275,
+      -0.048
+     ],
+     "c_branch_w1": [
+      0.875,
+      0.828,
+      0.835,
+      0.795,
+      0.726,
+      0.726
+     ],
+     "c_branch_w2": [
+      0.897,
+      0.836,
+      0.784,
+      0.715,
+      0.72,
+      0.699
+     ],
+     "c_branch_w4": [
+      0.761,
+      0.661,
+      0.62,
+      0.257,
+      0.21,
+      0.557
+     ],
+     "c_traj_w1": [
+      0.883,
+      0.844,
+      0.807,
+      0.695,
+      0.583,
+      0.614
+     ],
+     "c_traj_w2": [
+      0.888,
+      0.848,
+      0.813,
+      0.691,
+      0.609,
+      0.666
+     ],
+     "c_traj_w4": [
+      0.888,
+      0.853,
+      0.823,
+      0.724,
+      0.631,
+      0.647
+     ],
+     "c_traj_t_w2": [
+      0.886,
+      0.843,
+      0.811,
+      0.703,
+      0.577,
+      0.656
+     ],
+     "c_traj_slope_w2": [
+      0.892,
+      0.858,
+      0.843,
+      0.775,
+      0.651,
+      0.681
+     ],
+     "cchg_branch_w2": [
+      0.029,
+      -0.045,
+      -0.042,
+      0.21,
+      0.588,
+      0.712
+     ],
+     "cchg_traj_w2": [
+      -0.055,
+      0.034,
+      0.098,
+      0.142,
+      0.425,
+      0.681
+     ],
+     "cchg_traj_slope_w2": [
+      -0.016,
+      0.099,
+      0.244,
+      0.377,
+      0.487,
+      0.695
+     ]
+    },
+    "s_b": {
+     "V0": [
+      0.076,
+      0.077,
+      0.078,
+      0.075,
+      0.074,
+      0.065
+     ],
+     "Vu": [
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.002,
+      0.002
+     ],
+     "Vu_over_V0": [
+      0.007,
+      0.008,
+      0.008,
+      0.009,
+      0.024,
+      0.034
+     ],
+     "V_change": [
+      0.001,
+      0.001,
+      0.001,
+      0.002,
+      0.004,
+      0.006
+     ],
+     "c_persistence": [
+      0.995,
+      0.996,
+      0.993,
+      0.977,
+      0.949,
+      0.836
+     ],
+     "c_branch_w1": [
+      0.996,
+      0.996,
+      0.994,
+      0.979,
+      0.974,
+      0.948
+     ],
+     "c_branch_w2": [
+      0.996,
+      0.996,
+      0.993,
+      0.973,
+      0.973,
+      0.944
+     ],
+     "c_branch_w4": [
+      0.986,
+      0.981,
+      0.987,
+      0.971,
+      0.934,
+      0.935
+     ],
+     "c_traj_w1": [
+      0.996,
+      0.997,
+      0.995,
+      0.983,
+      0.978,
+      0.952
+     ],
+     "c_traj_w2": [
+      0.996,
+      0.997,
+      0.996,
+      0.984,
+      0.979,
+      0.955
+     ],
+     "c_traj_w4": [
+      0.996,
+      0.997,
+      0.996,
+      0.985,
+      0.979,
+      0.953
+     ],
+     "c_traj_t_w2": [
+      0.996,
+      0.997,
+      0.996,
+      0.983,
+      0.982,
+      0.951
+     ],
+     "c_traj_slope_w2": [
+      0.996,
+      0.996,
+      0.996,
+      0.985,
+      0.982,
+      0.959
+     ],
+     "cchg_branch_w2": [
+      0.156,
+      -0.131,
+      -0.361,
+      -0.384,
+      0.024,
+      0.02
+     ],
+     "cchg_traj_w2": [
+      0.048,
+      0.082,
+      0.238,
+      0.191,
+      0.234,
+      0.212
+     ],
+     "cchg_traj_slope_w2": [
+      -0.008,
+      -0.054,
+      0.15,
+      0.211,
+      0.354,
+      0.288
+     ]
+    }
+   },
+   "source": "results/analysis.json closure128.sel"
+  },
+  "neu": {
+   "value": {
+    "N": {
+     "V0": [
+      8.56,
+      8.153,
+      8.604,
+      7.521,
+      7.336,
+      6.466
+     ],
+     "Vu": [
+      0.292,
+      0.208,
+      0.264,
+      0.472,
+      0.806,
+      1.889
+     ],
+     "Vu_over_V0": [
+      0.034,
+      0.026,
+      0.031,
+      0.063,
+      0.11,
+      0.292
+     ],
+     "V_change": [
+      0.534,
+      0.9,
+      1.604,
+      1.57,
+      3.548,
+      5.999
+     ],
+     "c_persistence": [
+      0.971,
+      0.913,
+      0.84,
+      0.846,
+      0.581,
+      0.12
+     ],
+     "c_branch_w1": [
+      0.967,
+      0.915,
+      0.833,
+      0.85,
+      0.506,
+      0.25
+     ],
+     "c_branch_w2": [
+      0.969,
+      0.884,
+      0.793,
+      0.803,
+      0.124,
+      -0.278
+     ],
+     "c_branch_w4": [
+      0.944,
+      0.849,
+      0.693,
+      0.709,
+      -0.379,
+      -1.013
+     ],
+     "c_traj_w1": [
+      0.974,
+      0.921,
+      0.855,
+      0.863,
+      0.622,
+      0.404
+     ],
+     "c_traj_w2": [
+      0.975,
+      0.922,
+      0.855,
+      0.856,
+      0.605,
+      0.401
+     ],
+     "c_traj_w4": [
+      0.975,
+      0.921,
+      0.855,
+      0.859,
+      0.605,
+      0.376
+     ],
+     "c_traj_t_w2": [
+      0.976,
+      0.921,
+      0.854,
+      0.848,
+      0.595,
+      0.432
+     ],
+     "c_traj_slope_w2": [
+      0.976,
+      0.922,
+      0.857,
+      0.863,
+      0.635,
+      0.375
+     ],
+     "cchg_branch_w2": [
+      -0.054,
+      -0.328,
+      -0.289,
+      -0.264,
+      -1.086,
+      -0.423
+     ],
+     "cchg_traj_w2": [
+      0.154,
+      0.103,
+      0.097,
+      0.073,
+      0.06,
+      0.333
+     ],
+     "cchg_traj_slope_w2": [
+      0.167,
+      0.106,
+      0.111,
+      0.119,
+      0.131,
+      0.304
+     ]
+    },
+    "s_b": {
+     "V0": [
+      0.016,
+      0.016,
+      0.017,
+      0.018,
+      0.015,
+      0.013
+     ],
+     "Vu": [
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.002
+     ],
+     "Vu_over_V0": [
+      0.045,
+      0.05,
+      0.046,
+      0.047,
+      0.071,
+      0.185
+     ],
+     "V_change": [
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.002,
+      0.004
+     ],
+     "c_persistence": [
+      0.981,
+      0.977,
+      0.963,
+      0.945,
+      0.859,
+      0.556
+     ],
+     "c_branch_w1": [
+      0.994,
+      0.987,
+      0.975,
+      0.969,
+      0.936,
+      0.909
+     ],
+     "c_branch_w2": [
+      0.99,
+      0.984,
+      0.974,
+      0.965,
+      0.905,
+      0.847
+     ],
+     "c_branch_w4": [
+      0.987,
+      0.981,
+      0.97,
+      0.97,
+      0.884,
+      0.706
+     ],
+     "c_traj_w1": [
+      0.984,
+      0.981,
+      0.971,
+      0.962,
+      0.928,
+      0.857
+     ],
+     "c_traj_w2": [
+      0.984,
+      0.982,
+      0.971,
+      0.96,
+      0.926,
+      0.85
+     ],
+     "c_traj_w4": [
+      0.984,
+      0.982,
+      0.971,
+      0.962,
+      0.929,
+      0.858
+     ],
+     "c_traj_t_w2": [
+      0.984,
+      0.983,
+      0.972,
+      0.96,
+      0.927,
+      0.851
+     ],
+     "c_traj_slope_w2": [
+      0.984,
+      0.983,
+      0.974,
+      0.964,
+      0.933,
+      0.826
+     ],
+     "cchg_branch_w2": [
+      -1.021,
+      -0.225,
+      -0.144,
+      -0.144,
+      -0.438,
+      -0.439
+     ],
+     "cchg_traj_w2": [
+      -2.172,
+      -0.363,
+      -0.252,
+      -0.305,
+      -0.119,
+      -0.406
+     ],
+     "cchg_traj_slope_w2": [
+      -2.178,
+      -0.32,
+      -0.152,
+      -0.153,
+      -0.014,
+      -0.633
+     ]
+    }
+   },
+   "source": "results/analysis.json closure128.neu"
+  },
+  "bootstrap_pooled_w2": {
+   "value": {
+    "traj": {
+     "N": {
+      "p16": [
+       0.917,
+       0.866,
+       0.82,
+       0.736,
+       0.536,
+       0.472
+      ],
+      "p84": [
+       0.948,
+       0.914,
+       0.871,
+       0.84,
+       0.745,
+       0.724
+      ],
+      "n_draws": 194
+     },
+     "s_b": {
+      "p16": [
+       0.992,
+       0.992,
+       0.99,
+       0.973,
+       0.958,
+       0.935
+      ],
+      "p84": [
+       0.997,
+       0.998,
+       0.995,
+       0.991,
+       0.981,
+       0.954
+      ],
+      "n_draws": 194
+     },
+     "key": "c_traj_w2"
+    },
+    "branch": {
+     "N": {
+      "p16": [
+       0.937,
+       0.891,
+       0.819,
+       0.748,
+       0.606,
+       0.51
+      ],
+      "p84": [
+       0.962,
+       0.927,
+       0.883,
+       0.857,
+       0.756,
+       0.764
+      ],
+      "n_draws": 194
+     },
+     "s_b": {
+      "p16": [
+       0.996,
+       0.993,
+       0.991,
+       0.972,
+       0.965,
+       0.944
+      ],
+      "p84": [
+       1.0,
+       0.999,
+       0.997,
+       0.991,
+       0.979,
+       0.972
+      ],
+      "n_draws": 194
+     },
+     "key": "c_branch_w2"
+    },
+    "cchg_traj": {
+     "N": {
+      "p16": [
+       -0.06,
+       0.001,
+       0.011,
+       -0.036,
+       0.202,
+       0.376
+      ],
+      "p84": [
+       0.055,
+       0.088,
+       0.122,
+       0.197,
+       0.346,
+       0.561
+      ],
+      "n_draws": 194
+     },
+     "s_b": {
+      "p16": [
+       -0.587,
+       -0.44,
+       -0.143,
+       -0.009,
+       -0.201,
+       -0.423
+      ],
+      "p84": [
+       -0.128,
+       -0.011,
+       0.051,
+       0.123,
+       0.115,
+       0.043
+      ],
+      "n_draws": 194
+     },
+     "key": "cchg_traj_w2"
+    }
+   },
+   "source": "results/analysis.json closure128.pooled.bootstrap_*",
+   "note": "16th and 84th percentiles over seed resamples (draws with < 3 distinct seeds dropped)",
+   "checker_seed_heldout": {
+    "traj": {
+     "N": {
+      "p16": [
+       0.917,
+       0.866,
+       0.821,
+       0.735,
+       0.531,
+       0.469
+      ],
+      "p84": [
+       0.947,
+       0.913,
+       0.87,
+       0.835,
+       0.736,
+       0.707
+      ],
+      "n_draws": 194
+     },
+     "s_b": {
+      "p16": [
+       0.992,
+       0.992,
+       0.99,
+       0.973,
+       0.959,
+       0.935
+      ],
+      "p84": [
+       0.997,
+       0.998,
+       0.995,
+       0.991,
+       0.981,
+       0.955
+      ],
+      "n_draws": 194
+     },
+     "key": "c_traj_w2"
+    },
+    "cchg_traj": {
+     "N": {
+      "p16": [
+       -0.058,
+       -0.006,
+       -0.005,
+       -0.049,
+       0.154,
+       0.366
+      ],
+      "p84": [
+       0.066,
+       0.093,
+       0.121,
+       0.198,
+       0.326,
+       0.574
+      ],
+      "n_draws": 194
+     },
+     "s_b": {
+      "p16": [
+       -0.584,
+       -0.41,
+       -0.128,
+       0.004,
+       -0.186,
+       -0.374
+      ],
+      "p84": [
+       -0.136,
+       -0.003,
+       0.059,
+       0.146,
+       0.133,
+       0.022
+      ],
+      "n_draws": 194
+     },
+     "key": "cchg_traj_w2"
+    },
+    "note": "analyse.closure_boot holds out by slot j, so when a seed is drawn twice its copy stays in the training set; recomputed with every copy of the held-out seed removed (same 200 draws, same rng seed 0). Bands move by <= 0.02 (traj) and <= 0.05 (cchg)."
+   }
+  }
+ },
+ "closure64_recomputed": {
+  "value": {
+   "N": {
+    "V0": [
+     1.916,
+     1.876,
+     1.817,
+     1.878,
+     1.89,
+     1.832
+    ],
+    "Vu": [
+     0.065,
+     0.076,
+     0.141,
+     0.301,
+     0.44,
+     0.829
+    ],
+    "Vu_over_V0": [
+     0.034,
+     0.041,
+     0.078,
+     0.16,
+     0.233,
+     0.452
+    ],
+    "V_change": [
+     0.22,
+     0.379,
+     0.606,
+     1.056,
+     1.429,
+     2.027
+    ],
+    "c_persistence": [
+     0.916,
+     0.831,
+     0.721,
+     0.516,
+     0.315,
+     -0.204
+    ],
+    "c_branch_w2": [
+     0.921,
+     0.842,
+     0.768,
+     0.585,
+     0.506,
+     0.436
+    ],
+    "c_traj_w2": [
+     0.921,
+     0.849,
+     0.768,
+     0.619,
+     0.523,
+     0.427
+    ],
+    "c_traj_slope_w2": [
+     0.925,
+     0.858,
+     0.786,
+     0.655,
+     0.498,
+     0.466
+    ],
+    "cchg_branch_w2": [
+     0.054,
+     0.064,
+     0.164,
+     0.133,
+     0.275,
+     0.528
+    ],
+    "cchg_traj_w2": [
+     0.062,
+     0.103,
+     0.166,
+     0.204,
+     0.301,
+     0.52
+    ],
+    "cchg_traj_slope_w2": [
+     0.104,
+     0.155,
+     0.231,
+     0.279,
+     0.264,
+     0.553
+    ]
+   },
+   "s_b": {
+    "V0": [
+     0.045,
+     0.045,
+     0.044,
+     0.042,
+     0.041,
+     0.043
+    ],
+    "Vu": [
+     0.006,
+     0.007,
+     0.007,
+     0.011,
+     0.016,
+     0.021
+    ],
+    "Vu_over_V0": [
+     0.139,
+     0.15,
+     0.162,
+     0.271,
+     0.394,
+     0.498
+    ],
+    "V_change": [
+     0.007,
+     0.009,
+     0.01,
+     0.017,
+     0.027,
+     0.036
+    ],
+    "c_persistence": [
+     0.972,
+     0.935,
+     0.928,
+     0.819,
+     0.575,
+     0.285
+    ],
+    "c_branch_w2": [
+     0.971,
+     0.934,
+     0.933,
+     0.859,
+     0.762,
+     0.662
+    ],
+    "c_traj_w2": [
+     0.974,
+     0.94,
+     0.937,
+     0.867,
+     0.723,
+     0.638
+    ],
+    "c_traj_slope_w2": [
+     0.975,
+     0.942,
+     0.941,
+     0.885,
+     0.764,
+     0.639
+    ],
+    "cchg_branch_w2": [
+     -0.055,
+     -0.014,
+     0.058,
+     0.215,
+     0.441,
+     0.502
+    ],
+    "cchg_traj_w2": [
+     0.072,
+     0.081,
+     0.122,
+     0.26,
+     0.35,
+     0.467
+    ],
+    "cchg_traj_slope_w2": [
+     0.109,
+     0.108,
+     0.178,
+     0.362,
+     0.446,
+     0.468
+    ]
+   },
+   "n_rows": 432,
+   "n_branch_points": 144
+  },
+  "source": "results/analysis.json closure64_recomputed (analyse.closure on ../vortex_world/results/pilot_H64.npz)",
+  "note": "c_branch_w2 reproduces the round-2 checker's 'twins held out together' numbers exactly"
+ },
+ "decisions": {
+  "value": {
+   "selection_128_settled": "yes: kind b's share is higher in the favoured arm in 6/6 new seeds in each window (t 500-1495: +0.15; t 1500-2200: +0.37; t 2205-3000: +0.44), the exact sign-flip p is 0.031 in each, the smallest value 6 seeds can give, and 8/8 and 7/7 with the two earlier seeds (p 0.008, 0.016); settled for this parameter point only (eps 0.2 vs 0, sigma_a 0.005, mut_dt 50, tracker threshold 0.06, world_seed 0); the three windows are the same 6 runs, not independent replicates, and in W1 one seed's difference is +0.0045",
+   "majority": "favoured arm: kind b majority at t 1055-1545 (6/6 seeds); neutral twin: 2/6 seeds by t 2200 (1705, 2035), 5/6 by t 3000, but transient (share of W3 ticks in majority 0-0.14 except one seed at 0.93); the round-2 'neutral never' was a 2-seed observation",
+   "box_size_hypothesis": "supported for the mutation-rate part only (the test changes mutation per unit area, and the first mutation time 300 -> 400, not other box-size effects): at 64^2 with mutation per unit area (mut_dt 200) the late paired difference is +0.51 (8/8, p 0.008) against +0.06 (5/8, p 0.45) at the per-box rate; the favoured arm's late share rises 0.58 -> 0.87 (7/8 members, p 0.016); the neutral twin's falls 0.52 -> 0.36 (7/8, p 0.07); difference in differences +0.45, 8/8 members, exact sign-flip p 0.008 (checker)",
+   "closure_128": "c for s_b stays >= 0.94 to 160 t and N >= 0.59 (c_traj_w2 / c_branch_w2), but this is persistence of a slow, low-noise variable across a heterogeneous sample (persistence alone gives s_b 0.85-0.99); against persistence plus the mean drift, a pooled linear level-2 predictor explains none of the s_b change (cchg -0.32 to +0.05) although the oracle shows 51-56% of it is predictable at 40-160 t; within the favoured arm alone cchg is 0.19-0.24 at 20-160 t (against that arm's own drift); adding the true eps as a regressor to the pooled predictor lifts the pooled s_b cchg only to -0.32..+0.10 (+0.09 to +0.19 at 80-160 t, checker), so eps carries a small part of the predictable change and most of the oracle-predictable 51-56% is not reached by a linear level-2 predictor even with eps known",
+   "E4": "still not established as a world-versus-world claim: this study settles the level-2 selection signal and gives a rough level-2 closure at 128^2, but the gliders comparison remains unmatched (level 2 vs level 1, no I1, linear predictors, 48 branch points)"
+  },
+  "source": "results/analysis.json (paired128, paired128_with_earlier_seeds, sel128/neu128, area64, closure128); the numbers are repeated with their own sources in selection128, area64 and closure128"
+ },
+ "caveats": {
+  "value": [
+   "closure rests on 4 branch points per run (48 pooled, R = 3, 144 rows); bootstrap 16-84% for N at 160 t is 0.47-0.71 (traj w2; seed-level resampling with every copy of a resampled seed held out, checker) and the 16-84% band of the pooled cchg for s_b includes 0 at 20, 80 and 160 t, sits just above 0 at 40 t (0.004-0.15) and is negative at 5-10 t",
+   "the closure V0 pools the rise of s_b across t 500-2000 and both arms, which is why c is high; cchg is the more honest number and it is noisy because V_change - Vu is small (s_b: 0.0002-0.0024)",
+   "neutral-arm cchg for s_b is negative (-2.2 to -0.1): within the neutral arm the s_b change is mostly noise (Vu/V_change 0.54-0.91) and a fitted predictor does worse than persistence plus drift",
+   "at 64^2 the first per-box mutation acts at t 300 (the labelling step, from accumulated float time), the first per-area one at t 400; per-area members also see 9 vs the 128^2 38/4 = 9.5 events per 64^2 of area by t 2200",
+   "the task text estimated 1.1 CPU-hours per arm-seed pair to t 2200; the measured cost is 0.53 s per member-tick, 0.13 CPU-hours per pair, so the budget went to 6 seeds, an extension to t 3000 and 8 seeds at 64^2",
+   "most tracked vortices carry mixed labels: in W2-W3 78-85% (sel) and 61-84% (neu) of present slots have frac_b in 0.2-0.8, 21-41% in 0.4-0.6, so s_b is a threshold count that amplifies small shifts in label share; at 64^2 (round-2 level-0 snapshots, t >= 1500) the |om| weighting of frac_b hardly moves the arm gap (field label-b share gap 0.030 |om|-weighted vs 0.029 area-weighted), but this was not checkable at 128^2 (snapshots deleted) (checker)"
+  ],
+  "source": "results/analysis.json closure128, area64.mutations; results/main128_*.json cpu_s_per_member_tick"
+ },
+ "next_step": {
+  "value": {
+   "what": "an eps-inference exam pilot at 128^2: eps drawn from a prior (5 values in [0, 0.3]) x 4 seeds to t 2200, 4 branch points x R 3 x 32 ticks each; score s_b and N at 40-160 t for prior-mean, inferred-eps and true-eps predictors (the harness toy's gap was too small: 0.83-0.93 vs 0.94)",
+   "member_ticks": 16480,
+   "cpu_hours": 2.4,
+   "gliders_member_tick_equivalents": "0.53 s / (0.13-0.16 s) = 3.3-4.1 gliders member-ticks per vortex member-tick at 128^2, i.e. 55-67k gliders member-ticks",
+   "gpu_hours": "unmeasured (GPU throughput still unmeasured for both worlds)",
+   "then": "a matched closure comparison with gliders (same level, I1, best-of predictor) to decide E4: about 6 seeds x 2 arms x 16 branch points x R 4 x 32 ticks = 24.6k member-ticks, 3.6 CPU-hours for the vortex branch rollouts only; the level-0 snapshots were deleted and run.py saves only 4, so regenerating the 6 x 2 main runs to t 2200 adds 5,280 member-ticks (0.8 CPU-hours), and the gliders side of the matched comparison is not costed (checker)"
+  },
+  "source": "cost from results/main128_*.json cpu_s_per_member_tick (0.53 s); gliders 0.13-0.16 s per member-tick from the task brief"
+ },
+ "cpu_seconds": {
+  "value": {
+   "runs": 7327.5,
+   "total_hours_including_smoke_and_analysis_est": 2.12
+  },
+  "source": "sum of timing cpu_s; +300 s estimate for the smoke test, analysis and compile in this session"
+ },
+ "checker": {
+  "who": "independent checker, core 2 (taskset -c 2), single-threaded; about 15 CPU-minutes (reruns 13.6 min, analysis under 1.5 min)",
+  "reproduction": {
+   "area64x_sel": "run.py area64x sel 4 500 0 200 4 area64x rerun from a copy in scratch: L1 and L2 bit-identical to results/area64x_sel.npz (4 members x 500 ticks, 0.089 s per member-tick)",
+   "main128_sel_to_tick100": "run.py main sel 6 100 2: L1 and L2 (6 x 101 ticks) bit-identical to the first 101 ticks of results/main128_sel.npz (0.524 s per member-tick)",
+   "branch128_sel_p100": "run.py branch sel 3 32 from the regenerated tick-100 snapshot: p100 (6 x 3 x 33 x 2) bit-identical to results/branch128_sel.npz, so the deleted snapshots can be regenerated deterministically as claimed",
+   "scratch": "scratch copies (run.py copy, logs) in /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/chk128/rerun; rerun npz and snapshots deleted after the bit-for-bit comparison"
+  },
+  "recomputed_independently": [
+   "128^2 window means, paired differences, positive counts, exact sign-flip p (0.031 x 3) and paired t p (0.0125, 0.0010, 0.0006) for s_b; N differences -0.08 (3/6), +6.37 (6/6), +7.64 (6/6): all match",
+   "pooled with the 2 earlier seeds: W1 8/8 p 0.0078, W2 7/7 p 0.0156: match",
+   "first majority: sel t 1055-1545 (6/6); neu 1705 and 2035 by t 2200, 5/6 by t 3000; W3 majority-tick share neu 0, 0, 0.025, 0.05, 0.138, 0.931: match",
+   "64^2 per-box late +0.059 (5/8, p 0.45), per-area +0.506 (8/8, p 0.0078); area-minus-box sel +0.29 (7/8, p 0.016), neu -0.16 (7/8 negative, p 0.07); neutral N identical across schedules; area and box rows identical to tick 60, first differ at tick 61: match",
+   "mutation schedule: accumulated t at native step 15000 = 300.0000000000171 > lab_t, so 38 mutations (t 300-2150) by t 2200; confirmed empirically by the area/box rows first differing at tick 61 (step 15000 is a per-box but not a per-area mutation step)",
+   "closure: pooled c_traj_w2 and cchg_traj_w2 reproduced with seed-level grouping; branch row 0 equals the main row at the branch tick for every row; oracle sd of s_b at 160 t 0.0485 (128^2) vs 0.1455 (64^2); 1 - Vu/V_change 0.56, 0.51, 0.51 at 40-160 t",
+   "cpu: run cpu_s sum 7,327.5 s; per member-tick 0.53 s (128^2), 0.088 s (64^2)"
+  ],
+  "added_analysis": {
+   "pooled_cchg_with_eps_regressor": {
+    "N": {
+     "cchg_traj_w2_plus_eps": [
+      0.045,
+      0.084,
+      0.099,
+      0.115,
+      0.267,
+      0.501
+     ],
+     "cchg_traj_w2_check": [
+      0.033,
+      0.069,
+      0.076,
+      0.092,
+      0.264,
+      0.492
+     ]
+    },
+    "s_b": {
+     "cchg_traj_w2_plus_eps": [
+      -0.317,
+      -0.146,
+      -0.024,
+      0.069,
+      0.095,
+      0.086
+     ],
+     "cchg_traj_w2_check": [
+      -0.318,
+      -0.159,
+      -0.022,
+      0.051,
+      0.002,
+      -0.101
+     ]
+    }
+   },
+   "diff_in_diff_64": {
+    "per_member": [
+     0.809,
+     0.873,
+     0.193,
+     0.04,
+     0.352,
+     0.691,
+     0.343,
+     0.271
+    ],
+    "mean": 0.446,
+    "n_positive": 8,
+    "p_signflip_exact_two_sided": 0.0078,
+    "definition": "(area sel - area neu) - (box sel - box neu), s_b mean over ticks 300-500"
+   },
+   "mixed_label_fraction_128": {
+    "sel_W2": 0.779,
+    "sel_W3": 0.847,
+    "neu_W2": 0.607,
+    "neu_W3": 0.835,
+    "definition": "share of present slots with frac_b in (0.2, 0.8), from results/main128_*.npz L1"
+   },
+   "label_share_gap_64_late": {
+    "om_weighted": 0.03,
+    "area_weighted": 0.029,
+    "source": "../vortex_world/results/pilot_H64.npz x snapshots t >= 1500, pixels with blurred |om| > 0.06"
+   },
+   "scripts": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/chk128 (recompute_a.py, recompute_b.py, closure_chk.py, frac.py, weight.py)"
+  },
+  "vw_port_unchanged": "no file under vw1/vw, vw1/port or track1/vortex_world is newer than chain1.sh (latest vw edit 2026-11-07 16:01, before this study); run.py only imports them",
+  "report_only_issues": [
+   "'at most +0.08 for s_b' from the longer memory: pooled cchg gain is up to +0.086 (s_b) and +0.15 (N, 40 t); within arms up to +0.12 (sel s_b) and +0.15 (neu s_b); gains in c are <= 0.004 (s_b)",
+   "the 64^2 numbers quoted as reproducing the checker (s_b 0.64, N 0.43 at 160 t) are the traj variant; the variant that reproduces the round-2 checker exactly (branch w2) gives 0.66 and 0.44",
+   "'the box-size hypothesis holds' should read 'the mutation-rate-per-area part is supported'",
+   "'the selection also shows in N': eps raises the vorticity gain of b-labelled fluid directly, so the N gap is an eps effect downstream of the larger b share, not a separate selection signal"
+  ],
+  "edits": [
+   {
+    "field": "summary.caveats.value.2",
+    "old": "(Vu/V_change 0.55-0.88)",
+    "new": "(Vu/V_change 0.54-0.91)"
+   },
+   {
+    "field": "summary.caveats.value.0",
+    "old": "bootstrap 16-84% for N at 160 t is 0.47-0.72 (traj w2) and the 16-84% band of the pooled cchg for s_b includes 0 at 20-160 t and is negative at 5-10 t",
+    "new": "bootstrap 16-84% for N at 160 t is 0.47-0.71 (traj w2; seed-level resampling with every copy of a resampled seed held out, checker) and the 16-84% band of the pooled cchg for s_b includes 0 at 20, 80 and 160 t, sits just above 0 at 40 t (0.004-0.15) and is negative at 5-10 t"
+   },
+   {
+    "field": "summary.decisions.value.closure_128",
+    "old": "within the favoured arm alone cchg is 0.19-0.24 at 20-160 t: the hidden eps carries the predictable part",
+    "new": "within the favoured arm alone cchg is 0.19-0.24 at 20-160 t (against that arm's own drift); adding the true eps as a regressor to the pooled predictor lifts the pooled s_b cchg only to -0.32..+0.10 (+0.09 to +0.19 at 80-160 t, checker), so eps carries a small part of the predictable change and most of the oracle-predictable 51-56% is not reached by a linear level-2 predictor even with eps known"
+   },
+   {
+    "field": "summary.decisions.value.box_size_hypothesis",
+    "old": "supported: at 64^2",
+    "new": "supported for the mutation-rate part only (the test changes mutation per unit area, and the first mutation time 300 -> 400, not other box-size effects): at 64^2"
+   },
+   {
+    "field": "summary.decisions.value.box_size_hypothesis",
+    "old": "the neutral twin's falls 0.52 -> 0.36 (7/8, p 0.07)",
+    "new": "the neutral twin's falls 0.52 -> 0.36 (7/8, p 0.07); difference in differences +0.45, 8/8 members, exact sign-flip p 0.008 (checker)"
+   },
+   {
+    "field": "summary.decisions.value.selection_128_settled",
+    "old": "(p 0.008, 0.016)",
+    "new": "(p 0.008, 0.016); settled for this parameter point only (eps 0.2 vs 0, sigma_a 0.005, mut_dt 50, tracker threshold 0.06, world_seed 0); the three windows are the same 6 runs, not independent replicates, and in W1 one seed's difference is +0.0045"
+   },
+   {
+    "field": "summary.next_step.value.then",
+    "old": "= 24.6k member-ticks, 3.6 CPU-hours",
+    "new": "= 24.6k member-ticks, 3.6 CPU-hours for the vortex branch rollouts only; the level-0 snapshots were deleted and run.py saves only 4, so regenerating the 6 x 2 main runs to t 2200 adds 5,280 member-ticks (0.8 CPU-hours), and the gliders side of the matched comparison is not costed (checker)"
+   },
+   {
+    "field": "summary.design128.source",
+    "old": "(run.py main ARM 6 440 2)",
+    "new": "(run.py main ARM 6 440 2, then resumed with run.py main ARM 6 600 2 in chain3.sh)"
+   },
+   {
+    "field": "summary.caveats.value[5]",
+    "old": null,
+    "new": "added: mixed-label vortices caveat"
+   },
+   {
+    "field": "summary.closure128.bootstrap_pooled_w2.checker_seed_heldout",
+    "old": null,
+    "new": "added: seed-level held-out bootstrap bands"
+   }
+  ],
+  "verdict": "numbers reproduce; code does what it says; the 128^2 selection signal is robust at this parameter point; closure wording on eps and the next-step cost were overstated and are corrected; E4 remains open",
+  "note": "make_summary.py rewrites summary.json from analysis.json and extra.json and would drop this block and the edits; rerun it only together with this block"
+ }
+}

@@ -1,0 +1,33 @@
+[     0.3s] M coarse J 16 T 236 test [40, 100, 160, 220] mlp True
+[    81.0s] copy check max |V_analyze - V_copy| = 0.0
+[   100.8s]     rmlp seed 0: epochs 26, best epoch per h [0, 0, 0, 0, 1], val gain [0.0, 0.0, 0.0, 0.0, 0.004000000189989805]
+[   101.9s]     rmlp seed 1: epochs 26, best epoch per h [0, 0, 0, 0, 1], val gain [0.0, 0.0, 0.0, 0.0, 0.006000000052154064]
+[   101.9s]   rmlp fold 0: 8 fit traj, 5.2 s, baseline ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ar1']
+[   129.5s]     rmlp seed 0: epochs 67, best epoch per h [42, 42, 22, 13, 6], val gain [0.05999999865889549, 0.09600000083446503, 0.07699999958276749, 0.07100000232458115, 0.17299999296665192]
+[   154.2s]     rmlp seed 1: epochs 71, best epoch per h [46, 35, 22, 14, 6], val gain [0.06700000166893005, 0.11400000005960464, 0.09000000357627869, 0.07800000160932541, 0.16599999368190765]
+[   154.2s]   patchnet fold 0: 8 fit traj, 52.3 s
+[   154.2s]   fold 0 done in 73.1 s
+[   172.6s]     rmlp seed 0: epochs 27, best epoch per h [0, 0, 0, 0, 2], val gain [0.0, 0.0, 0.0, 0.0, 0.014000000432133675]
+[   174.1s]     rmlp seed 1: epochs 28, best epoch per h [0, 0, 0, 0, 3], val gain [0.0, 0.0, 0.0, 0.0, 0.017999999225139618]
+[   174.1s]   rmlp fold 1: 8 fit traj, 4.2 s, baseline ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ar1']
+[   200.5s]     rmlp seed 0: epochs 71, best epoch per h [46, 46, 16, 14, 10], val gain [0.09399999678134918, 0.09399999678134918, 0.06599999964237213, 0.05700000002980232, 0.19599999487400055]
+[   226.6s]     rmlp seed 1: epochs 75, best epoch per h [50, 30, 13, 13, 7], val gain [0.09600000083446503, 0.09600000083446503, 0.07100000232458115, 0.05900000035762787, 0.19200000166893005]
+[   226.7s]   patchnet fold 1: 8 fit traj, 52.6 s
+[   226.7s]   fold 1 done in 72.5 s
+[   244.5s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   245.8s]     rmlp seed 1: epochs 26, best epoch per h [0, 0, 0, 0, 1], val gain [0.0, 0.0, 0.0, 0.0, 0.003000000026077032]
+[   245.8s]   rmlp fold 2: 8 fit traj, 4.1 s, baseline ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ar1']
+[   273.0s]     rmlp seed 0: epochs 71, best epoch per h [46, 35, 19, 19, 6], val gain [0.11500000208616257, 0.11900000274181366, 0.09000000357627869, 0.07500000298023224, 0.19699999690055847]
+[   312.0s]     rmlp seed 1: epochs 109, best epoch per h [84, 37, 19, 19, 9], val gain [0.11699999868869781, 0.11900000274181366, 0.09200000017881393, 0.07900000363588333, 0.1979999989271164]
+[   312.0s]   patchnet fold 2: 8 fit traj, 66.2 s
+[   312.0s]   fold 2 done in 85.3 s
+[   337.7s]     rmlp seed 0: epochs 27, best epoch per h [0, 0, 0, 0, 2], val gain [0.0, 0.0, 0.0, 0.0, 0.012000000104308128]
+[   339.0s]     rmlp seed 1: epochs 27, best epoch per h [0, 0, 0, 0, 2], val gain [0.0, 0.0, 0.0, 0.0, 0.013000000268220901]
+[   339.0s]   rmlp fold 3: 8 fit traj, 4.0 s, baseline ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ar1']
+[   371.8s]     rmlp seed 0: epochs 87, best epoch per h [62, 46, 17, 31, 7], val gain [0.11699999868869781, 0.11599999666213989, 0.08399999886751175, 0.06700000166893005, 0.19099999964237213]
+[   401.4s]     rmlp seed 1: epochs 84, best epoch per h [59, 40, 16, 16, 12], val gain [0.11900000274181366, 0.12399999797344208, 0.09099999815225601, 0.06800000369548798, 0.18799999356269836]
+[   401.5s]   patchnet fold 3: 8 fit traj, 62.5 s
+[   401.5s]   fold 3 done in 89.5 s
+[   401.5s] ceiling [0.9847, 0.9393, 0.7332, 0.2197, 0.2142] +- [0.0007, 0.0022, 0.0071, 0.0157, 0.0144]
+[   401.5s] best ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'patchnet'] Vbest [0.0159, 0.062, 0.271, 0.8014, 0.7901] Voracle [0.0006, 0.0009, 0.0022, 0.0086, 0.055]
+[   401.7s] saved /home/user/evalwork/vecworld/program/track2/wind_recert/results/closure_M_coarse_jax.json

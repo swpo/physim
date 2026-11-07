@@ -1,0 +1,33 @@
+{
+ "decisions": {
+  "value": {
+   "selection_128_settled": "yes: kind b's share is higher in the favoured arm in 6/6 new seeds in each window (t 500-1495: +0.15; t 1500-2200: +0.37; t 2205-3000: +0.44), the exact sign-flip p is 0.031 in each, the smallest value 6 seeds can give, and 8/8 and 7/7 with the two earlier seeds (p 0.008, 0.016)",
+   "majority": "favoured arm: kind b majority at t 1055-1545 (6/6 seeds); neutral twin: 2/6 seeds by t 2200 (1705, 2035), 5/6 by t 3000, but transient (share of W3 ticks in majority 0-0.14 except one seed at 0.93); the round-2 'neutral never' was a 2-seed observation",
+   "box_size_hypothesis": "supported: at 64^2 with mutation per unit area (mut_dt 200) the late paired difference is +0.51 (8/8, p 0.008) against +0.06 (5/8, p 0.45) at the per-box rate; the favoured arm's late share rises 0.58 -> 0.87 (7/8 members, p 0.016); the neutral twin's falls 0.52 -> 0.36 (7/8, p 0.07)",
+   "closure_128": "c for s_b stays >= 0.94 to 160 t and N >= 0.59 (c_traj_w2 / c_branch_w2), but this is persistence of a slow, low-noise variable across a heterogeneous sample (persistence alone gives s_b 0.85-0.99); against persistence plus the mean drift, a pooled linear level-2 predictor explains none of the s_b change (cchg -0.32 to +0.05) although the oracle shows 51-56% of it is predictable at 40-160 t; within the favoured arm alone cchg is 0.19-0.24 at 20-160 t: the hidden eps carries the predictable part",
+   "E4": "still not established as a world-versus-world claim: this study settles the level-2 selection signal and gives a rough level-2 closure at 128^2, but the gliders comparison remains unmatched (level 2 vs level 1, no I1, linear predictors, 48 branch points)"
+  },
+  "source": "results/analysis.json (paired128, paired128_with_earlier_seeds, sel128/neu128, area64, closure128); the numbers are repeated with their own sources in selection128, area64 and closure128"
+ },
+ "caveats": {
+  "value": [
+   "closure rests on 4 branch points per run (48 pooled, R = 3, 144 rows); bootstrap 16-84% for N at 160 t is 0.47-0.72 (traj w2) and the 16-84% band of the pooled cchg for s_b includes 0 at 20-160 t and is negative at 5-10 t",
+   "the closure V0 pools the rise of s_b across t 500-2000 and both arms, which is why c is high; cchg is the more honest number and it is noisy because V_change - Vu is small (s_b: 0.0002-0.0024)",
+   "neutral-arm cchg for s_b is negative (-2.2 to -0.1): within the neutral arm the s_b change is mostly noise (Vu/V_change 0.55-0.88) and a fitted predictor does worse than persistence plus drift",
+   "at 64^2 the first per-box mutation acts at t 300 (the labelling step, from accumulated float time), the first per-area one at t 400; per-area members also see 9 vs the 128^2 38/4 = 9.5 events per 64^2 of area by t 2200",
+   "the task text estimated 1.1 CPU-hours per arm-seed pair to t 2200; the measured cost is 0.53 s per member-tick, 0.13 CPU-hours per pair, so the budget went to 6 seeds, an extension to t 3000 and 8 seeds at 64^2"
+  ],
+  "source": "results/analysis.json closure128, area64.mutations; results/main128_*.json cpu_s_per_member_tick"
+ },
+ "next_step": {
+  "value": {
+   "what": "an eps-inference exam pilot at 128^2: eps drawn from a prior (5 values in [0, 0.3]) x 4 seeds to t 2200, 4 branch points x R 3 x 32 ticks each; score s_b and N at 40-160 t for prior-mean, inferred-eps and true-eps predictors (the harness toy's gap was too small: 0.83-0.93 vs 0.94)",
+   "member_ticks": 16480,
+   "cpu_hours": 2.4,
+   "gliders_member_tick_equivalents": "0.53 s / (0.13-0.16 s) = 3.3-4.1 gliders member-ticks per vortex member-tick at 128^2, i.e. 55-67k gliders member-ticks",
+   "gpu_hours": "unmeasured (GPU throughput still unmeasured for both worlds)",
+   "then": "a matched closure comparison with gliders (same level, I1, best-of predictor) to decide E4: about 6 seeds x 2 arms x 16 branch points x R 4 x 32 ticks = 24.6k member-ticks, 3.6 CPU-hours"
+  },
+  "source": "cost from results/main128_*.json cpu_s_per_member_tick (0.53 s); gliders 0.13-0.16 s per member-tick from the task brief"
+ }
+}

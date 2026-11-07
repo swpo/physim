@@ -1,0 +1,85 @@
+{
+ "config": {
+  "H": 128,
+  "G": 16,
+  "m": 256,
+  "sigma_a": 0.01,
+  "bump_w": 4.0,
+  "tick_time": 10.0,
+  "dt": 0.5
+ },
+ "noise_law": {
+  "n": 8000,
+  "mean_abs_max": 0.00033090203869991946,
+  "std_mean": 0.00999253663470907,
+  "std_min": 0.009762428105975168,
+  "std_max": 0.01021870631834522,
+  "sigma_a": 0.01,
+  "max_abs_offdiag_corr": 0.049466886680500324,
+  "expected_max_abs_offdiag_corr_iid": 0.05097375258178969
+ },
+ "kl_check": {
+  "charge_nats": 17.125,
+  "mc_nats": 17.11882320137754,
+  "mc_se": 0.09286143713105072,
+  "z": -0.06651629366603257,
+  "n": 4000
+ },
+ "program_charge_nats": 17.125,
+ "per_tick_charges": [
+  2.25,
+  8.0,
+  6.875
+ ],
+ "card_guarantee": {
+  "kl_nats": 17.125,
+  "chi2_mean_shift_in_sd": 27371147.346616108,
+  "linear_gaussian_mean_shift_in_sd": 5.852349955359813,
+  "chi2_bound_informative": false
+ },
+ "delivery": {
+  "u": "0.05 on bumps 119, 120, 135, 136",
+  "charge_nats": 50.0,
+  "delivered_total": 18.25372760579632,
+  "target_total": 20.106192982974683,
+  "rel_l2_diff": 0.12810990023565869,
+  "peak_delivered": 0.07059150810257259,
+  "peak_target": 0.07357588823428847
+ },
+ "grid_contrast": {
+  "64": {
+   "channel_nats_u0.05": 12.5,
+   "v1_nats_same_field_S0.18": 2585.6729659175253,
+   "v1_nats_same_field_S0.62": 217.93913656536898,
+   "v1_nats_bump_std2px_S0.18": 11214.91867904308,
+   "v1_nats_bump_std2px_S0.62": 945.2741030202806,
+   "note": "v1 charges drop modes where the v1 noise power exp(-ell^2 k^2) < 1e-10"
+  },
+  "128": {
+   "channel_nats_u0.05": 12.5,
+   "v1_nats_same_field_S0.18": 2585.6729659175244,
+   "v1_nats_same_field_S0.62": 217.9391365653689,
+   "v1_nats_bump_std2px_S0.18": 11162.860037605584,
+   "v1_nats_bump_std2px_S0.62": 940.8862258543732,
+   "note": "v1 charges drop modes where the v1 noise power exp(-ell^2 k^2) < 1e-10"
+  },
+  "continuum": {
+   "v1_nats_bump_std4px_S0.18": 2585.6729659175253,
+   "v1_nats_bump_std4px_S0.62": 217.93913656536898,
+   "v1_nats_bump_std2px_S0.18": Infinity,
+   "v1_nats_bump_std2px_S0.62": Infinity
+  }
+ },
+ "v1_S_noise_sigma_equivalent_per_bump": {
+  "0.18": 0.0006952935636417413,
+  "0.62": 0.0023949000525437755
+ },
+ "example_costs_nats": {
+  "u=0.005 on one coefficient": 0.125,
+  "u=0.01 on one coefficient": 0.5,
+  "u=0.02 on one coefficient": 2.0,
+  "u=0.05 on one coefficient": 12.5,
+  "u=0.1 on one coefficient": 50.0,
+  "u=0.2 on one coefficient": 200.0
+ }
+}

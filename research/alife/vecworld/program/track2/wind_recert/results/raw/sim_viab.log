@@ -1,0 +1,8 @@
+[   139.7s] viab init + burn-in 139.3 s
+[   273.2s] viab tick 50 chunk 133.3 s
+[   500.8s] viab tick 100 chunk 227.6 s
+[   762.0s] viab tick 150 chunk 261.3 s
+[   888.8s] viab tick 200 chunk 126.7 s
+[  1015.6s] viab tick 250 chunk 126.8 s
+[  1016.0s] viab saved /home/user/evalwork/vecworld/program/track2/wind_recert/results/raw/viab.npz {'init_burn': 139.25464987754822, 'run': 875.6703650951385}
+[  1016.0s] done viab

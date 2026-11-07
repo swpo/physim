@@ -1,0 +1,33 @@
+[     0.3s] M objects J 16 T 236 test [40, 100, 160, 220] mlp True
+[    46.9s] copy check max |V_analyze - V_copy| = 0.0
+[    58.1s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[    59.1s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[    59.1s]   rmlp fold 0: 8 fit traj, 4.7 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[    74.7s]     rmlp seed 0: epochs 38, best epoch per h [13, 8, 9, 7, 5], val gain [0.03999999910593033, 0.052000001072883606, 0.057999998331069946, 0.03999999910593033, 0.013000000268220901]
+[    87.7s]     rmlp seed 1: epochs 38, best epoch per h [7, 13, 6, 6, 6], val gain [0.03799999877810478, 0.04899999871850014, 0.05400000140070915, 0.039000000804662704, 0.01899999938905239]
+[    87.8s]   slotnet fold 0: 8 fit traj, 28.7 s
+[    87.8s]   fold 0 done in 40.8 s
+[    97.3s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[    98.5s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[    98.5s]   rmlp fold 1: 8 fit traj, 3.3 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   113.3s]     rmlp seed 0: epochs 39, best epoch per h [14, 10, 10, 7, 5], val gain [0.04800000041723251, 0.04899999871850014, 0.05299999937415123, 0.03099999949336052, 0.012000000104308128]
+[   128.0s]     rmlp seed 1: epochs 42, best epoch per h [17, 13, 9, 9, 4], val gain [0.050999999046325684, 0.04899999871850014, 0.05299999937415123, 0.03200000151991844, 0.006000000052154064]
+[   128.1s]   slotnet fold 1: 8 fit traj, 29.5 s
+[   128.1s]   fold 1 done in 40.3 s
+[   137.9s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   138.8s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   138.8s]   rmlp fold 2: 8 fit traj, 3.0 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   154.9s]     rmlp seed 0: epochs 43, best epoch per h [18, 11, 11, 6, 0], val gain [0.04899999871850014, 0.05000000074505806, 0.04699999839067459, 0.026000000536441803, 0.0]
+[   169.8s]     rmlp seed 1: epochs 42, best epoch per h [17, 12, 8, 8, 4], val gain [0.05400000140070915, 0.05299999937415123, 0.05299999937415123, 0.039000000804662704, 0.004000000189989805]
+[   169.8s]   slotnet fold 2: 8 fit traj, 31.0 s
+[   169.8s]   fold 2 done in 41.7 s
+[   180.3s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   181.4s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   181.4s]   rmlp fold 3: 8 fit traj, 3.5 s, baseline ['ar1', 'ridge_p2', 'ridge_p2', 'ar1', 'ar1']
+[   195.1s]     rmlp seed 0: epochs 36, best epoch per h [5, 11, 10, 5, 6], val gain [0.017000000923871994, 0.07800000160932541, 0.11500000208616257, 0.029999999329447746, 0.01899999938905239]
+[   207.3s]     rmlp seed 1: epochs 35, best epoch per h [8, 8, 10, 6, 6], val gain [0.02500000037252903, 0.08299999684095383, 0.12700000405311584, 0.026000000536441803, 0.012000000104308128]
+[   207.3s]   slotnet fold 3: 8 fit traj, 26.0 s
+[   207.3s]   fold 3 done in 37.5 s
+[   207.4s] ceiling [0.7969, 0.7472, 0.604, 0.3992, 0.1644] +- [0.0606, 0.0247, 0.0218, 0.0187, 0.016]
+[   207.4s] best ['slotnet', 'slotnet', 'slotnet', 'slotnet', 'slotnet'] Vbest [0.2205, 0.2543, 0.4178, 0.6129, 0.8437] Voracle [0.0053, 0.0087, 0.0529, 0.0942, 0.2392]
+[   207.6s] saved /home/user/evalwork/vecworld/program/track2/wind_recert/results/closure_M_objects_jax.json

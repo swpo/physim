@@ -1,0 +1,30 @@
+[     0.1s] P objects J 16 T 200 test [24, 56, 88, 120, 152, 184] mlp True
+[    40.3s] copy check max |V_analyze - V_copy| = 0.0
+[    65.7s]   aware fold 0: 19.1 s
+[    68.5s]   local fold 0: 2.8 s
+[    68.5s]   fold 0 done in 28.2 s
+[    93.0s]   aware fold 1: 17.9 s
+[    95.1s]   local fold 1: 2.1 s
+[    95.1s]   fold 1 done in 26.6 s
+[   119.1s]   aware fold 2: 17.4 s
+[   121.4s]   local fold 2: 2.3 s
+[   121.4s]   fold 2 done in 26.3 s
+[   145.2s]   aware fold 3: 17.4 s
+[   147.3s]   local fold 3: 2.0 s
+[   147.3s]   fold 3 done in 25.9 s
+[   147.4s] ar1 refit check (max |err diff|) 0.0
+[   147.4s] ceiling [0.8261, 0.7276, 0.4981, 0.3105, 0.1362] +- [0.0365, 0.0222, 0.0415, 0.0369, 0.0242]
+[   147.4s] best ['ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1', 'ar1'] Vbest [0.1956, 0.3003, 0.5433, 0.7491, 0.9414] Voracle [0.0073, 0.013, 0.0414, 0.107, 0.301]
+/home/user/evalwork/vecworld/program/track2/wind_recert/closure_run.py:285: RuntimeWarning: invalid value encountered in divide
+  r[f"z_n{n}_R{Rr}"] = d6.mean(0) / se
+[   147.6s]   loss/Vbest all       [0.036, 0.028, 0.013, 0.0, 0.0] z64 R16 [2.5, 2.4, 2.5, nan, nan]
+[   147.6s]   loss/Vbest programs_only [0.047, 0.038, 0.017, 0.0, 0.0] z64 R16 [3.0, 2.8, 3.0, nan, nan]
+[   147.6s]   loss/Vbest none      [0.0, 0.0, 0.0, 0.0, 0.0] z64 R16 [nan, nan, nan, nan, nan]
+[   147.6s]   loss/Vbest blind     [0.016, 0.031, 0.006, 0.0, 0.0] z64 R16 [2.0, 1.8, 2.3, nan, nan]
+[   147.6s]   loss/Vbest aimed     [0.035, 0.029, 0.018, 0.0, 0.0] z64 R16 [8.6, 6.5, 4.7, nan, nan]
+[   147.6s]   loss/Vbest regional  [0.091, 0.053, 0.027, 0.0, 0.0] z64 R16 [3.6, 3.4, 3.1, nan, nan]
+[   147.6s]   twin effect/Vbest blind     [0.013, 0.061, 0.152, 0.142, 0.085]
+[   147.6s]   twin effect/Vbest aimed     [0.058, 0.093, 0.072, 0.058, 0.09]
+[   147.6s]   twin effect/Vbest regional  [0.175, 0.116, 0.085, 0.081, 0.105]
+[   147.6s]   twin effect/Vbest programs  [0.082, 0.09, 0.103, 0.094, 0.093]
+[   147.7s] saved /home/user/evalwork/vecworld/program/track2/wind_recert/results/closure_P_objects.json

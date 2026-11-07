@@ -1,0 +1,22 @@
+{
+ "names": [
+  "lR",
+  "dm_00",
+  "ls_00",
+  "lh"
+ ],
+ "lo": [
+  0.85,
+  -0.25,
+  0.85,
+  0.85
+ ],
+ "hi": [
+  1.15,
+  0.25,
+  1.15,
+  1.15
+ ],
+ "rule": "(declared before looking at the pilot): candidates grouped into families\n{lR}, {dm, dm_g}, {ls, ls_g}, {lh}, {lA, n}, {gw}; within a family the member with the largest headroom\n(min over the two edges) among those viable at both edges; then the 4 families with the largest such\nheadroom. Prior = the scanned box (uniform). A candidate with a non-viable edge is not eligible (its box would\nneed a narrower rescan).",
+ "source": "results/scan.json"
+}

@@ -1,0 +1,9 @@
+[     0.1s] F objects J 16 T 236 test [40, 100, 160, 220] mlp True
+[    47.0s] copy check max |V_analyze - V_copy| = 0.0
+[    54.4s]   fold 0 done in 7.4 s
+[    61.9s]   fold 1 done in 7.5 s
+[    68.8s]   fold 2 done in 6.9 s
+[    76.3s]   fold 3 done in 7.5 s
+[    76.4s] ceiling [0.8235, 0.6769, 0.4932, 0.3132, 0.173] +- [0.0433, 0.0394, 0.0442, 0.0158, 0.0084]
+[    76.4s] best ['kin+ridge_p4', 'ar1', 'ar1', 'ar1', 'ar1'] Vbest [0.1781, 0.351, 0.5317, 0.7924, 0.855] Voracle [0.0093, 0.0399, 0.0776, 0.1953, 0.3192]
+[    76.5s] saved /home/user/evalwork/vecworld/program/track2/wind_recert/results/closure_F_objects.json

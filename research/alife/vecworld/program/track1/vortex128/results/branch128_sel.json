@@ -1,0 +1,17 @@
+{
+ "cpu_s": 1236.0668518950001,
+ "points": [
+  100,
+  200,
+  300,
+  400
+ ],
+ "arm": "sel",
+ "H": 128,
+ "S": 6,
+ "R": 3,
+ "HB": 32,
+ "member_ticks": 2304,
+ "cpu_s_per_member_tick": 0.5364873489127605,
+ "keys": "member_keys(make_key(77, 128, tick), S*R), member-major (seed, replicate)"
+}
