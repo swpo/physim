@@ -60,3 +60,22 @@ Round 3 (7-8 Nov 2026; each independently checked, corrections in each `results/
 - `track1/membrane_world`: phase_membrane as a JAX Level (matches numpy to round-off, 11-13x cheaper per tick than
   gliders), a substrate input channel with exact nats, a cell-list level 1 and a population level 2; cells grow and
   divide (median cycle 1,850 time units); dt 0.5 is adequate.
+
+Round 4 (8 Nov 2026; GPU jobs through the Mac runner, about $12 billed in total; each independently checked,
+corrections in each `round4/<study>/results/summary.json` under `checker`):
+- `round4/wind`: at full size (36 trajectories, H100) the wind world keeps its closure ceilings in both views (block
+  view F - M |z| <= 1.9 at h = 1-32; object-view loss bounded below 0.04, so round 3's open "up to 0.09" is excluded);
+  the wind's own oracle cost is 0.01-0.04 V_best. Under the exam's program mix the inputs move the true dynamics by
+  about 0.2 V_best (block view, h <= 4); learned level-1 predictors recover little of it (input-aware slotnet 44% at
+  h = 1 in the object view, nothing in the block view), so "actions matter" passes for level-1 nets only at h = 1
+  and needs a simulation-trained predictor otherwise. GPU float64 runs are not bit-deterministic.
+- `round4/sbi`: simulate-to-train on the gliders exam pilot (4 hidden parameters, 8 truths, never to be reused as an
+  exam). Synthetic-likelihood inference with the public simulator contracts all 4 parameters from 2 real episodes,
+  with near-nominal marginal coverage (one clear miss at 512 episodes). A net trained on simulated data at posterior
+  draws matches the true-parameter net at every budget; trained on the real data alone it needs about 512 episodes
+  (a ridge catches up by about 128). The prior-mean plug-in loses 0.03-0.09 OES: the parameters matter, modestly.
+- `round4/bias`: the inductive-bias grid on raw Flow-Lenia gliders states (78 configs + 2 random baselines, 2 seeds,
+  cross-fitted). Local closure and local-law encoders learn a mass-like block variable unprompted (cleanest: linear
+  local law, R^2 0.995 with block mass); nonlinear reconstruction at width 1 does not; the receptive field sets the
+  smoothing; nothing learned beats the hand-designed block mass or block channel means in predictable content per
+  number; no bias at <= 4 numbers per block yields the object view. One level-0 theory so far.
