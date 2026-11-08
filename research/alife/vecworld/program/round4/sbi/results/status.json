@@ -1,0 +1,185 @@
+{
+  "billing_window_hours": 4.0,
+  "bundle": {
+    "bundle_sha256": "484b360c892924451f183f1f0cc587a2e2800e81c937bf2bd85a5bd2df494620",
+    "files": {
+      "job.sh": "43f5511ae50e4bb9e7f6acdf16e99ff95d615b2230cdc0153bce67c67a4f3f90",
+      "request.json": "aa2d2dd99247bc16fcf47c47c74093d5b24a3f6a26b7dc70464ee438fe2483e8",
+      "run.sh": "c3efaf176c81aa162b8165025440b08540b4c9c68a4d2022f8c9ed1094d5bb6d",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "c83563b37daac1972b20071061a42c7230da7b83f9d0b0f53916f31d501571c0"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/gliders_exam",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/round4/sbi"
+    ],
+    "ref": "0533b3a67f1d40395612ce3dd34d542d7f081079",
+    "src_bytes": 10283742
+  },
+  "cap_usd": 13.0,
+  "collected": {
+    "error": null,
+    "files": 23,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 2746491,
+    "truncated": false
+  },
+  "cost": {
+    "billed_usd": 3.641,
+    "conservative_usd": 3.8111
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-08T02:32:19Z",
+  "hard_deadline": "2026-11-08T04:37:04Z",
+  "hard_deadline_epoch": 1794112624.319191,
+  "history": [
+    {
+      "at": "2026-11-08T00:36:25Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-08T00:36:50Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $6.47",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-08T00:37:02Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-08T00:42:50Z",
+      "message": "job started on the pod",
+      "state": "running"
+    },
+    {
+      "at": "2026-11-08T02:31:48Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-08T02:32:19Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
+    }
+  ],
+  "job_id": "r4-sbi-002",
+  "max_estimate_usd": 6.47,
+  "message": "job finished (exit 0); pods terminated",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "IN",
+      "data_center": "asia-south-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 2,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    },
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 2,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
+  "plan": {
+    "max_estimate_usd": 6.47,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "IN",
+        "data_center": "asia-south-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 2,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      },
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 2,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-08T00:36:50Z",
+    "window_hours": 3.25
+  },
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r4-sbi-002-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": 3.641,
+      "created_at": "2026-11-08T00:37:21Z",
+      "data_center": "asia-south-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r4-sbi-002-a1",
+      "note": null,
+      "pod_id": "24aacfc66aea43ae917eb913cd0627d7",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-08T00:42:20Z",
+      "requested_at": "2026-11-08T00:37:04Z",
+      "spot": false,
+      "state": "terminated",
+      "terminated_at": "2026-11-08T02:31:58Z"
+    }
+  ],
+  "pods_terminated": true,
+  "run_deadline": "2026-11-08T03:42:50Z",
+  "started_at": "2026-11-08T00:42:50Z",
+  "state": "done",
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\nnet|prior_pred 0.544, net|<ssh-target> 0.459, net|<ssh-target> -0.478, net|<ssh-target> 0.347, net|<ssh-target> 0.545, net|<ssh-target> 0.039, net|true 0.565, oracle 1.000, ridge|<ssh-target> 0.486, ridge|<ssh-target> 0.476, ridge|<ssh-target> 0.484, ridge|<ssh-target> 0.484, ridge|<ssh-target> 0.483, ridge|prior_mean 0.407, ridge|prior_pred 0.443, ridge|<ssh-target> 0.480, ridge|<ssh-target> -1.026, ridge|<ssh-target> 0.458, ridge|<ssh-target> 0.487, ridge|<ssh-target> 0.387, ridge|true 0.485\n02:30:47 [ 107.8 min]   net[amort] step 250/6000 train [0.7505000233650208] val [0.7519000172615051] (5s)\n02:30:47 [ 107.8 min]   net[amort] step 500/6000 train [0.7268000245094299] val [0.7257999777793884] (6s)\n02:30:48 [ 107.8 min]   net[amort] step 750/6000 train [0.6836000084877014] val [0.690500020980835] (6s)\n02:30:49 [ 107.8 min]   net[amort] step 1000/6000 train [0.6588000059127808] val [0.6696000099182129] (7s)\n02:30:49 [ 107.8 min]   net[amort] step 1250/6000 train [0.7081000208854675] val [0.6748999953269958] (8s)\n02:30:50 [ 107.8 min]   net[amort] step 1500/6000 train [0.6104999780654907] val [0.6541000008583069] (8s)\n02:30:50 [ 107.8 min]   net[amort] step 1750/6000 train [0.6829000115394592] val [0.6355000138282776] (9s)\n02:30:51 [ 107.9 min]   net[amort] step 2000/6000 train [0.6373999714851379] val [0.6327000260353088] (9s)\n02:30:51 [ 107.9 min]   net[amort] step 2250/6000 train [0.6399999856948853] val [0.6284000277519226] (10s)\n02:30:52 [ 107.9 min]   net[amort] step 2500/6000 train [0.5633000135421753] val [0.641700029373169] (10s)\n02:30:52 [ 107.9 min]   net[amort] step 2750/6000 train [0.621399998664856] val [0.6169000267982483] (11s)\n02:30:53 [ 107.9 min]   net[amort] step 3000/6000 train [0.635200023651123] val [0.6166999936103821] (11s)\n02:30:54 [ 107.9 min]   net[amort] step 3250/6000 train [0.5576000213623047] val [0.6182000041007996] (12s)\n02:30:54 [ 107.9 min]   net[amort] step 3500/6000 train [0.597000002861023] val [0.6184999942779541] (13s)\n02:30:55 [ 107.9 min]   net[amort] step 3750/6000 train [0.6065999865531921] val [0.6078000068664551] (13s)\n02:30:55 [ 107.9 min]   net[amort] step 4000/6000 train [0.5394999980926514] val [0.5983999967575073] (14s)\n02:30:56 [ 107.9 min]   net[amort] step 4250/6000 train [0.5371000170707703] val [0.6079999804496765] (14s)\n02:30:56 [ 107.9 min]   net[amort] step 4500/6000 train [0.6169999837875366] val [0.5981000065803528] (15s)\n02:30:57 [ 108.0 min]   net[amort] step 4750/6000 train [0.6230000257492065] val [0.5952000021934509] (15s)\n02:30:57 [ 108.0 min]   net[amort] step 5000/6000 train [0.6510999798774719] val [0.5961999893188477] (16s)\n02:30:58 [ 108.0 min]   net[amort] step 5250/6000 train [0.5651000142097473] val [0.5965999960899353] (16s)\n02:30:59 [ 108.0 min]   net[amort] step 5500/6000 train [0.6832000017166138] val [0.5913000106811523] (17s)\n02:30:59 [ 108.0 min]   net[amort] step 5750/6000 train [0.5655999779701233] val [0.5927000045776367] (18s)\n02:31:00 [ 108.0 min]   net[amort] step 6000/6000 train [0.5995000004768372] val [0.5875999927520752] (18s)\n== out/progress.txt\nnet|prior_pred 0.544, net|<ssh-target> 0.459, net|<ssh-target> -0.478, net|<ssh-target> 0.347, net|<ssh-target> 0.545, net|<ssh-target> 0.039, net|true 0.565, oracle 1.000, ridge|<ssh-target> 0.486, ridge|<ssh-target> 0.476, ridge|<ssh-target> 0.484, ridge|<ssh-target> 0.484, ridge|<ssh-target> 0.483, ridge|prior_mean 0.407, ridge|prior_pred 0.443, ridge|<ssh-target> 0.480, ridge|<ssh-target> -1.026, ridge|<ssh-target> 0.458, ridge|<ssh-target> 0.487, ridge|<ssh-target> 0.387, ridge|true 0.485\n02:30:47 [ 107.8 min]   net[amort] step 250/6000 train [0.7505000233650208] val [0.7519000172615051] (5s)\n02:30:47 [ 107.8 min]   net[amort] step 500/6000 train [0.7268000245094299] val [0.7257999777793884] (6s)\n02:30:48 [ 107.8 min]   net[amort] step 750/6000 train [0.6836000084877014] val [0.690500020980835] (6s)\n02:30:49 [ 107.8 min]   net[amort] step 1000/6000 train [0.6588000059127808] val [0.6696000099182129] (7s)\n02:30:49 [ 107.8 min]   net[amort] step 1250/6000 train [0.7081000208854675] val [0.6748999953269958] (8s)\n02:30:50 [ 107.8 min]   net[amort] step 1500/6000 train [0.6104999780654907] val [0.6541000008583069] (8s)\n02:30:50 [ 107.8 min]   net[amort] step 1750/6000 train [0.6829000115394592] val [0.6355000138282776] (9s)\n02:30:51 [ 107.9 min]   net[amort] step 2000/6000 train [0.6373999714851379] val [0.6327000260353088] (9s)\n02:30:51 [ 107.9 min]   net[amort] step 2250/6000 train [0.6399999856948853] val [0.6284000277519226] (10s)\n02:30:52 [ 107.9 min]   net[amort] step 2500/6000 train [0.5633000135421753] val [0.641700029373169] (10s)\n02:30:52 [ 107.9 min]   net[amort] step 2750/6000 train [0.621399998664856] val [0.6169000267982483] (11s)\n02:30:53 [ 107.9 min]   net[amort] step 3000/6000 train [0.635200023651123] val [0.6166999936103821] (11s)\n02:30:54 [ 107.9 min]   net[amort] step 3250/6000 train [0.5576000213623047] val [0.6182000041007996] (12s)\n02:30:54 [ 107.9 min]   net[amort] step 3500/6000 train [0.597000002861023] val [0.6184999942779541] (13s)\n02:30:55 [ 107.9 min]   net[amort] step 3750/6000 train [0.6065999865531921] val [0.6078000068664551] (13s)\n02:30:55 [ 107.9 min]   net[amort] step 4000/6000 train [0.5394999980926514] val [0.5983999967575073] (14s)\n02:30:56 [ 107.9 min]   net[amort] step 4250/6000 train [0.5371000170707703] val [0.6079999804496765] (14s)\n02:30:56 [ 107.9 min]   net[amort] step 4500/6000 train [0.6169999837875366] val [0.5981000065803528] (15s)\n02:30:57 [ 108.0 min]   net[amort] step 4750/6000 train [0.6230000257492065] val [0.5952000021934509] (15s)\n02:30:57 [ 108.0 min]   net[amort] step 5000/6000 train [0.6510999798774719] val [0.5961999893188477] (16s)\n02:30:58 [ 108.0 min]   net[amort] step 5250/6000 train [0.5651000142097473] val [0.5965999960899353] (16s)\n02:30:59 [ 108.0 min]   net[amort] step 5500/6000 train [0.6832000017166138] val [0.5913000106811523] (17s)\n02:30:59 [ 108.0 min]   net[amort] step 5750/6000 train [0.5655999779701233] val [0.5927000045776367] (18s)\n02:31:00 [ 108.0 min]   net[amort] step 6000/6000 train [0.5995000004768372] val [0.5875999927520752] (18s)\n",
+  "updated_at": "2026-11-08T02:32:19Z"
+}

@@ -1,0 +1,145 @@
+{
+ "study": "round4/sbi",
+ "pilot_never_reusable_as_exam": true,
+ "versions": {
+  "python": "3.12.16",
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4"
+ },
+ "backend": "gpu",
+ "devices": [
+  "cuda:0"
+ ],
+ "smoke": false,
+ "config": {
+  "P": 16,
+  "H": 16,
+  "burn": 50,
+  "n_cand": 16,
+  "n_truth": 8,
+  "N_v": 1024,
+  "v_chunk": 512,
+  "N_theta": 2048,
+  "K": 4,
+  "budgets": [
+   2,
+   8,
+   32,
+   128,
+   512
+  ],
+  "lab_chunk": 128,
+  "n_items": 64,
+  "R": 16,
+  "n_clim": 128,
+  "N_sim": 1024,
+  "chunk": 256,
+  "m": 32,
+  "steps_real": {
+   "2": 600,
+   "8": 1000,
+   "32": 1500,
+   "128": 2500,
+   "512": 3000
+  },
+  "steps_sim": 3000,
+  "steps_amort": 6000,
+  "queries": {
+   "1": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "2": [
+    8,
+    16
+   ]
+  },
+  "lags": [
+   0,
+   1,
+   2,
+   4,
+   8
+  ],
+  "hs": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "viab_T": 100,
+  "n_post_draws": 1000
+ },
+ "prior": {
+  "names": [
+   "lR",
+   "dm_00",
+   "ls_00",
+   "lh"
+  ],
+  "lo": [
+   0.91,
+   -0.15,
+   0.91,
+   0.91
+  ],
+  "hi": [
+   1.09,
+   0.15,
+   1.09,
+   1.09
+  ],
+  "rule": "uniform box conditioned on viab_joint.viability (gliders_exam results/prior.json)"
+ },
+ "net": {
+  "BATCH": 128,
+  "BLOCKS": 3,
+  "C": 48,
+  "CLIP": 1.0,
+  "EVAL_EVERY": 250,
+  "HS": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "LAGS": [
+   0,
+   1,
+   2,
+   4,
+   8
+  ],
+  "LR": 0.001,
+  "M_TRAIN": 4,
+  "NG_NOISE": 8,
+  "NL_NOISE": 4,
+  "N_VAL": 1024,
+  "WD": 0.0001
+ },
+ "secret_commitment": "c87707ce2d4acf45c8870549d27a168f81cae9839872170541df779d265c2498",
+ "member_ticks": {
+  "truths": 2400,
+  "viability_design": 153600,
+  "design": 671744,
+  "lab_charged": 135168,
+  "lab_burn_in_designer": 204800,
+  "exam": 232448,
+  "sims_true": 671744,
+  "sims_prior_mean": 83968,
+  "sims_prior_pred": 83968,
+  "sims_post2": 671744,
+  "sims_post8": 671744,
+  "sims_post32": 671744,
+  "sims_post128": 671744,
+  "sims_post512": 671744
+ },
+ "member_ticks_total": 5598560,
+ "hours": 1.8045131505860224,
+ "failed": []
+}
