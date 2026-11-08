@@ -23,10 +23,11 @@
   },
   "cap_usd": 12.0,
   "cost": {
-    "billed_usd": 0.0,
-    "conservative_usd": 0.0
+    "billed_usd": null,
+    "conservative_usd": 0.3904
   },
-  "hard_deadline_epoch": null,
+  "hard_deadline": "2026-11-08T03:00:59Z",
+  "hard_deadline_epoch": 1794106859.7387679,
   "history": [
     {
       "at": "2026-11-08T00:35:02Z",
@@ -42,11 +43,16 @@
       "at": "2026-11-08T00:36:07Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-08T00:41:36Z",
+      "message": "job started on the pod",
+      "state": "running"
     }
   ],
   "job_id": "r4-wind-002",
   "max_estimate_usd": 11.18,
-  "message": "renting a pod",
+  "message": "job started on the pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_h100_sxm5",
@@ -124,7 +130,34 @@
     "planned_at": "2026-11-08T00:35:55Z",
     "window_hours": 2.25
   },
-  "pods": [],
-  "state": "provisioning",
-  "updated_at": "2026-11-08T00:36:07Z"
+  "pod": {
+    "gpu": "H100_80GB",
+    "name": "gpujob-r4-wind-002-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 4.29,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": "2026-11-08T00:36:24Z",
+      "data_center": "us-south-2",
+      "gpu": "H100_80GB",
+      "name": "gpujob-r4-wind-002-a1",
+      "note": null,
+      "pod_id": "313be3c631c042cfbf85f46d013e8584",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 4.29,
+      "ready_at": "2026-11-08T00:41:19Z",
+      "requested_at": "2026-11-08T00:36:09Z",
+      "spot": false,
+      "state": "ready",
+      "terminated_at": null
+    }
+  ],
+  "run_deadline": "2026-11-08T02:41:36Z",
+  "started_at": "2026-11-08T00:41:36Z",
+  "state": "running",
+  "updated_at": "2026-11-08T00:41:36Z"
 }
