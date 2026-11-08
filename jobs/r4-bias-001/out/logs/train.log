@@ -1,0 +1,11 @@
+01:48:41 [btrain     4.8s] data on device (2, 64, 301, 2, 128, 128) channel mean/sd {'A': ([0.0439, 0.044], [0.1611, 0.1914]), 'B': ([0.044, 0.0438], [0.1613, 0.1906])} 9.4 GB peak
+01:48:44 [btrain     7.3s] hand designs queued ('mass', 'chan', 'view', 'tent', 'objmass', 'objfield')
+/root/gpujob/r4-bias-001/.venv/lib/python3.12/site-packages/jax/_src/interpreters/mlir.py:1333: UserWarning: A large amount of constants were captured during lowering (5.05GB total). If this is intentional, disable this warning by setting JAX_CAPTURED_CONSTANTS_WARN_BYTES=-1. To obtain a report of where these constants were encountered, set JAX_CAPTURED_CONSTANTS_REPORT_FRAMES=-1.
+  warnings.warn(message)
+01:49:44 [btrain    68.2s] rand8_c1: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s, total 60.8s, 9.4 GB peak
+01:50:32 [btrain   115.5s] rand8_c4: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s, total 47.3s, 9.4 GB peak
+02:02:22 [btrain   825.3s] N0_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_g']")
+02:03:04 [btrain   867.6s] N4_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:03:44 [btrain   908.2s] N8_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:04:27 [btrain   951.0s] N16_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:05:11 [btrain   994.8s] N0_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")

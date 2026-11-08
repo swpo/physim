@@ -21,10 +21,20 @@
     "src_bytes": 15737455
   },
   "cap_usd": 15.0,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 0.7539
+  "collected": {
+    "error": null,
+    "files": 79,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 514292,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 0.8082,
+    "conservative_usd": 0.9307
+  },
+  "exit_code": null,
+  "finished_at": "2026-11-08T02:06:07Z",
   "hard_deadline": "2026-11-08T05:42:00Z",
   "hard_deadline_epoch": 1794116520.88757,
   "history": [
@@ -47,11 +57,21 @@
       "at": "2026-11-08T01:45:43Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-08T02:05:42Z",
+      "message": "job cancelled; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-08T02:06:08Z",
+      "message": "job cancelled; pods terminated",
+      "state": "cancelled"
     }
   ],
   "job_id": "r4-bias-001",
   "max_estimate_usd": 10.69,
-  "message": "heartbeat",
+  "message": "job cancelled; pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "1A100.22V",
@@ -138,7 +158,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 0.8082,
       "created_at": "2026-11-08T01:42:41Z",
       "data_center": "FIN-01",
       "gpu": "A100_80GB",
@@ -151,13 +171,14 @@
       "ready_at": "2026-11-08T01:45:18Z",
       "requested_at": "2026-11-08T01:42:00Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-08T02:05:47Z"
     }
   ],
+  "pods_terminated": true,
   "run_deadline": "2026-11-08T04:45:43Z",
   "started_at": "2026-11-08T01:45:43Z",
-  "state": "running",
+  "state": "cancelled",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /root/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n01:46:15 [job] nproc 22, cert workers 19, train deadline +7200s, cert deadline +9000s, tiny 0\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n== out/progress.txt\n': 18.3} member-ticks/s {'base': 681.7, 'branch': 560.0} mass drift {'mass_c0': 5.3172852946890075e-15, 'mass_c1': 1.998053755847889e-14}\n01:47:48 [bsim    87.7s] B init + burn-in 64 members 19.0 s\n01:48:01 [bsim   100.7s] B branches at tick 40 {'init_burn': 19.0, 'base': 6.6, 'branch': 6.5}\n01:48:08 [bsim   108.3s] B branches at tick 100 {'init_burn': 19.0, 'base': 11.2, 'branch': 9.5}\n01:48:16 [bsim   115.9s] B branches at tick 160 {'init_burn': 19.0, 'base': 15.7, 'branch': 12.5}\n01:48:24 [bsim   124.4s] B branches at tick 220 {'init_burn': 19.0, 'base': 20.3, 'branch': 16.5}\n01:48:33 [bsim   132.8s] B saved {'init_burn': 19.0, 'base': 27.7, 'branch': 16.5} member-ticks/s {'base': 692.2, 'branch': 621.2} mass drift {'mass_c0': 5.258487905802679e-15, 'mass_c1': 2.0582208168569547e-14}\n01:48:33 [bsim   132.8s] done\n01:48:41 [btrain     4.8s] data on device (2, 64, 301, 2, 128, 128) channel mean/sd {'A': ([0.0439, 0.044], [0.1611, 0.1914]), 'B': ([0.044, 0.0438], [0.1613, 0.1906])} 9.4 GB peak\n01:48:44 [btrain     7.3s] hand designs queued ('mass', 'chan', 'view', 'tent', 'objmass', 'objfield')\n01:48:59 [bcert 17    22.1s] hand_tent__certA q=64 ceiling-input ok in 16.0s\n01:49:00 [bcert 18    23.1s] hand_tent__certB q=64 ceiling-input ok in 14.1s\n01:49:00 [bcert 12    23.3s] hand_mass__certB q=64 ceiling-input ok in 17.3s\n01:49:02 [bcert 1    26.0s] hand_mass__certA q=64 ceiling-input ok in 20.0s\n01:49:02 [bcert 5    25.4s] hand_objmass__certA q=64 ceiling-input ok in 19.4s\n01:49:06 [bcert 19    29.1s] hand_objmass__certB q=64 ceiling-input ok in 20.1s\n01:49:28 [bcert 7    51.4s] hand_chan__certB q=128 ceiling-input ok in 45.4s\n01:49:32 [bcert 4    55.8s] hand_chan__certA q=128 ceiling-input ok in 49.8s\n01:49:44 [btrain    68.2s] rand8_c1: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s, total 60.8s, 9.4 GB peak\n01:49:57 [bcert 18    80.3s] rand8_c1_s1__certA q=64 ceiling-input ok in 12.2s\n01:49:57 [bcert 10    80.5s] rand8_c1_s0__certB q=64 ceiling-input ok in 14.5s\n01:49:58 [bcert 4    82.5s] rand8_c1_s1__certB q=64 ceiling-input ok in 14.8s\n01:50:00 [bcert 1    84.0s] rand8_c1_s0__certA q=64 ceiling-input ok in 16.0s\n01:50:03 [bcert 16    85.9s] hand_view__certB q=192 ceiling-input ok in 79.9s\n01:50:15 [bcert 2    98.5s] hand_view__certA q=192 ceiling-input ok in 92.5s\n01:50:24 [bcert 9   106.9s] hand_objfield__certA q=192 ceiling-input ok in 100.9s\n01:50:32 [bcert 8   114.8s] hand_objfield__certB q=192 ceiling-input ok in 105.8s\n01:50:32 [btrain   115.5s] rand8_c4: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s, total 47.3s, 9.4 GB peak\n01:52:54 [bcert 17   257.0s] rand8_c4_s1__certA q=256 ceiling-input ok in 142.0s\n01:53:07 [bcert 7   270.2s] rand8_c4_s0__certA q=256 ceiling-input ok in 155.8s\n01:53:07 [bcert 15   270.1s] rand8_c4_s1__certB q=256 ceiling-input ok in 156.1s\n01:53:08 [bcert 12   271.1s] rand8_c4_s0__certB q=256 ceiling-input ok in 157.8s\n",
-  "updated_at": "2026-11-08T02:01:15Z"
+  "updated_at": "2026-11-08T02:06:08Z"
 }

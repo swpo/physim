@@ -1,0 +1,7 @@
+/root/gpujob/r4-bias-001/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:565: RuntimeWarning: invalid value encountered in subtract
+  ld["I_avail"] = 0.5 * (l_mean - l_or)
+/root/gpujob/r4-bias-001/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:566: RuntimeWarning: invalid value encountered in subtract
+  ld["I_capt"] = 0.5 * (l_mean - l_best)
+/root/gpujob/r4-bias-001/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:567: RuntimeWarning: invalid value encountered in subtract
+  ld["gapX"] = 0.5 * (l_best - l_or)
+01:50:24 [bcert 9   106.9s] hand_objfield__certA q=192 ceiling-input ok in 100.9s
