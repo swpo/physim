@@ -1,0 +1,36 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r4-wind-002",
+  "purpose": "Round-4 wind study: full-size gliders wind-world certification (F vs M closure at the fresh layout, 2nd F/M pair, MW oracle cost, program-mix set P with input-aware patchnet/slotnet and energy scores)",
+  "requester": "cloud study wind (track 2), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track2/actuation",
+    "research/alife/vecworld/program/track2/wind_recert",
+    "research/alife/vecworld/program/round4/wind"
+  ],
+  "gpu": {
+    "types": [
+      "A100_80GB",
+      "H100_80GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 2.0,
+  "cap_usd": 12,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round4/wind && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "notes": "float64 world (jax_enable_x64) on the GPU with jax.vmap (w4.make_runners, checked against WindWorld's lax.map runner: 1e-14 at tick 1 on CPU), float32 nets. About 300k member-ticks of simulation, then 8 closure analyses in parallel (numpy on the pod CPU, JAX nets on the GPU). CPU smoke tests passed: tiny simulations, every analysis on a fixture of existing data, and job.sh end to end from a git archive of exactly these paths. Resubmission of r4-wind-001 (rejected: cap below H100 rate x (max_hours + 0.25)); same code."
+}
