@@ -21,10 +21,20 @@
     "src_bytes": 15737773
   },
   "cap_usd": 15.0,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 1.4411
+  "collected": {
+    "error": null,
+    "files": 96,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 621146,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 1.1261,
+    "conservative_usd": 1.4703
+  },
+  "exit_code": null,
+  "finished_at": "2026-11-08T02:39:02Z",
   "hard_deadline": "2026-11-08T05:41:40Z",
   "hard_deadline_epoch": 1794116500.4759164,
   "history": [
@@ -47,11 +57,21 @@
       "at": "2026-11-08T02:18:33Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-08T02:38:37Z",
+      "message": "job cancelled; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-08T02:39:02Z",
+      "message": "job cancelled; pods terminated",
+      "state": "cancelled"
     }
   ],
   "job_id": "r4-bias-002",
   "max_estimate_usd": 13.94,
-  "message": "heartbeat",
+  "message": "job cancelled; pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_h100_pcie",
@@ -121,7 +141,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 1.1261,
       "created_at": "2026-11-08T02:12:08Z",
       "data_center": "us-west-3",
       "gpu": "H100_80GB",
@@ -134,13 +154,14 @@
       "ready_at": "2026-11-08T02:18:21Z",
       "requested_at": "2026-11-08T02:11:53Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-08T02:38:41Z"
     }
   ],
+  "pods_terminated": true,
   "run_deadline": "2026-11-08T05:18:33Z",
   "started_at": "2026-11-08T02:18:33Z",
-  "state": "running",
+  "state": "cancelled",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n02:19:13 [job] nproc 26, cert workers 23, train deadline +7200s, cert deadline +9000s, tiny 0\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n== out/progress.txt\n02:22:26 [bcert 1    29.4s] hand_mass__certB q=64 ceiling-input ok in 17.4s\n02:22:26 [bcert 8    29.5s] hand_objmass__certA q=64 ceiling-input ok in 17.5s\n02:22:27 [bcert 20    29.5s] hand_tent__certB q=64 ceiling-input ok in 17.5s\n02:22:29 [bcert 2    32.6s] hand_objmass__certB q=64 ceiling-input ok in 17.6s\n02:22:52 [bcert 4    55.8s] hand_chan__certA q=128 ceiling-input ok in 46.8s\n02:22:55 [bcert 22    57.9s] hand_chan__certB q=128 ceiling-input ok in 45.9s\n02:23:25 [btrain    89.2s] rand8_c1: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s (chunks None), total 75.5s, 9.7 GB peak\n02:23:35 [bcert 16    98.4s] hand_view__certA q=192 ceiling-input ok in 89.4s\n02:23:39 [bcert 13   102.6s] hand_objfield__certA q=192 ceiling-input ok in 90.6s\n02:23:40 [bcert 6   102.9s] hand_view__certB q=192 ceiling-input ok in 90.8s\n02:23:41 [bcert 17   103.8s] hand_objfield__certB q=192 ceiling-input ok in 88.8s\n02:23:41 [bcert 22   104.1s] rand8_c1_s0__certB q=64 ceiling-input ok in 16.2s\n02:23:41 [bcert 4   104.7s] rand8_c1_s0__certA q=64 ceiling-input ok in 15.9s\n02:23:42 [bcert 7   104.9s] rand8_c1_s1__certA q=64 ceiling-input ok in 15.9s\n02:23:42 [bcert 3   106.1s] rand8_c1_s1__certB q=64 ceiling-input ok in 16.8s\n02:24:34 [btrain   157.9s] rand8_c4: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s (chunks None), total 68.8s, 9.7 GB peak\n02:26:14 [btrain   258.0s] N0_clos_c1: chunk 1 of 250 steps (+ val) in 49.9s\n02:26:19 [btrain   263.4s] N0_clos_c1: chunk 2 of 250 steps (+ val) in 4.2s\n02:27:02 [bcert 18   305.4s] rand8_c4_s0__certB q=256 ceiling-input ok in 149.4s\n02:27:04 [bcert 9   306.5s] rand8_c4_s1__certB q=256 ceiling-input ok in 150.5s\n02:27:04 [bcert 17   307.2s] rand8_c4_s1__certA q=256 ceiling-input ok in 149.4s\n02:27:04 [bcert 6   307.6s] rand8_c4_s0__certA q=256 ceiling-input ok in 150.8s\n02:28:06 [btrain   370.6s] N0_clos_c1: steps 3000, val [1.6176999807357788, 1.7157000303268433, 1.6029000282287598, 1.6287000179290771] -> [0.3815000057220459, 0.3864000141620636, 0.39480000734329224, 0.392300009727478] (best at [3000, 3000, 3000, 3000]), train 147.2s (chunks {'first_incl_compile': 49.89728331565857, 'rest_mean': 4.176099473779852}), total 212.7s, 13.5 GB peak\n02:28:21 [bcert 20   383.6s] N0_clos_c1_s0__certB q=64 ceiling-input ok in 15.0s\n02:28:21 [bcert 10   384.2s] N0_clos_c1_s1__certB q=64 ceiling-input ok in 15.2s\n02:28:22 [bcert 9   384.5s] N0_clos_c1_s1__certA q=64 ceiling-input ok in 15.0s\n02:28:22 [bcert 13   385.6s] N0_clos_c1_s0__certA q=64 ceiling-input ok in 16.0s\n02:29:49 [btrain   472.8s] N4_clos_c1: chunk 1 of 250 steps (+ val) in 59.3s\n02:30:02 [btrain   486.2s] N4_clos_c1: chunk 2 of 250 steps (+ val) in 13.1s\n02:33:17 [btrain   681.2s] N4_clos_c1 FAILED: JaxRuntimeError(\"RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_concatenate']\")\n",
-  "updated_at": "2026-11-08T02:33:44Z"
+  "updated_at": "2026-11-08T02:39:02Z"
 }

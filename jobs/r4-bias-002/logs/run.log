@@ -1,0 +1,2 @@
+02:19:13 [job] nproc 26, cert workers 23, train deadline +7200s, cert deadline +9000s, tiny 0
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]

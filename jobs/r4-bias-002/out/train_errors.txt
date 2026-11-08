@@ -1,0 +1,150 @@
+N4_clos_c1
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 383, in main
+    train_config(cid, name, enc, h, obj, c)
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 355, in train_config
+    ch, Zt, ZB = encode_cert(enc, h, Pe, W, glob, fh)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 179, in encode_cert
+    zb = encode_branch(enc, h, P, ch, hidx)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 139, in encode_branch
+    return np.asarray(jnp.concatenate(out), np.float64)[:n]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_concatenate']
+
+N8_clos_c1
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 383, in main
+    train_config(cid, name, enc, h, obj, c)
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 315, in train_config
+    best = np.asarray(val_f(P, hidx))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']
+
+N16_clos_c1
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 383, in main
+    train_config(cid, name, enc, h, obj, c)
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 315, in train_config
+    best = np.asarray(val_f(P, hidx))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']
+
+N0_recon_c1
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 383, in main
+    train_config(cid, name, enc, h, obj, c)
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 315, in train_config
+    best = np.asarray(val_f(P, hidx))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']
+
+N4_recon_c1
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 383, in main
+    train_config(cid, name, enc, h, obj, c)
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 315, in train_config
+    best = np.asarray(val_f(P, hidx))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']
+
+N8_recon_c1
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 383, in main
+    train_config(cid, name, enc, h, obj, c)
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 315, in train_config
+    best = np.asarray(val_f(P, hidx))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']
+
+N16_recon_c1
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 383, in main
+    train_config(cid, name, enc, h, obj, c)
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 315, in train_config
+    best = np.asarray(val_f(P, hidx))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']
+
+N0_local_c1
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 383, in main
+    train_config(cid, name, enc, h, obj, c)
+  File "/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/round4/bias/btrain.py", line 315, in train_config
+    best = np.asarray(val_f(P, hidx))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']
+

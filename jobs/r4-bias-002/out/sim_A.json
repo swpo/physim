@@ -1,0 +1,55 @@
+{
+ "half": "A",
+ "designer_seed": 9701,
+ "branch_key": "make_key(seed + 50, j, i), R_BR members",
+ "world_seed": 0,
+ "J_ALL": 64,
+ "J_CERT": 32,
+ "T": 300,
+ "test_ticks": [
+  40,
+  100,
+  160,
+  220
+ ],
+ "TB": 16,
+ "R_BR": 5,
+ "seconds": {
+  "init_burn": 27.15208649635315,
+  "base": 28.430514574050903,
+  "branch": 20.97402811050415
+ },
+ "member_ticks": {
+  "burn": 3200,
+  "base": 19200,
+  "branch": 10240
+ },
+ "member_ticks_per_s": {
+  "base": 675.3307243170415,
+  "branch": 488.22286048485046
+ },
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "x64": true,
+  "batching": "vmap (vw.World)"
+ },
+ "tiny": false,
+ "tracker": "jax",
+ "mass_drift_max_rel": {
+  "mass_c0": 5.315820292939132e-15,
+  "mass_c1": 2.019163732014934e-14
+ },
+ "mass_mean": {
+  "mass_c0": 719.4535741951868,
+  "mass_c1": 720.2947950230523
+ },
+ "mass_sd_across_members": {
+  "mass_c0": 12.725694027321966,
+  "mass_c1": 9.307077100102692
+ }
+}

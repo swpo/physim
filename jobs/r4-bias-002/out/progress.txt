@@ -1,0 +1,62 @@
+02:19:13 [job] nproc 26, cert workers 23, train deadline +7200s, cert deadline +9000s, tiny 0
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+name, memory.total [MiB], driver_version
+NVIDIA H100 PCIe, 81559 MiB, 570.148.08
+               total        used        free      shared  buff/cache   available
+Mem:             221           2         211           0           7         217
+/dev/vda1       993G   31G  962G   4% /
+02:19:22 [bsim     0.5s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} tiny False
+02:19:51 [bsim    29.3s] A init + burn-in 64 members 27.2 s
+02:20:12 [bsim    51.0s] A branches at tick 40 {'init_burn': 27.2, 'base': 9.8, 'branch': 11.9}
+02:20:20 [bsim    58.6s] A branches at tick 100 {'init_burn': 27.2, 'base': 14.2, 'branch': 15.1}
+02:20:27 [bsim    66.1s] A branches at tick 160 {'init_burn': 27.2, 'base': 18.6, 'branch': 18.1}
+02:20:35 [bsim    73.2s] A branches at tick 220 {'init_burn': 27.2, 'base': 22.9, 'branch': 21.0}
+02:20:41 [bsim    79.7s] A saved {'init_burn': 27.2, 'base': 28.4, 'branch': 21.0} member-ticks/s {'base': 675.3, 'branch': 488.2} mass drift {'mass_c0': 5.315820292939132e-15, 'mass_c1': 2.019163732014934e-14}
+02:21:06 [bsim   104.6s] B init + burn-in 64 members 24.7 s
+02:21:23 [bsim   122.0s] B branches at tick 40 {'init_burn': 24.7, 'base': 9.1, 'branch': 8.3}
+02:21:31 [bsim   129.3s] B branches at tick 100 {'init_burn': 24.7, 'base': 13.2, 'branch': 11.4}
+02:21:38 [bsim   137.0s] B branches at tick 160 {'init_burn': 24.7, 'base': 17.6, 'branch': 14.7}
+02:21:45 [bsim   144.1s] B branches at tick 220 {'init_burn': 24.7, 'base': 21.9, 'branch': 17.7}
+02:21:52 [bsim   150.5s] B saved {'init_burn': 24.7, 'base': 27.4, 'branch': 17.7} member-ticks/s {'base': 700.1, 'branch': 579.1} mass drift {'mass_c0': 5.373619394787835e-15, 'mass_c1': 2.0093022990890403e-14}
+02:21:52 [bsim   150.6s] done
+02:22:05 [btrain     9.5s] data on device (2, 64, 301, 2, 128, 128) (2, 10240, 2, 128, 128) channel mean/sd {'A': ([0.0439, 0.044], [0.1611, 0.1915]), 'B': ([0.044, 0.0438], [0.1613, 0.1909])} 9.7 GB peak
+02:22:10 [btrain    13.6s] hand designs queued ('mass', 'chan', 'view', 'tent', 'objmass', 'objfield')
+02:22:23 [bcert 7    26.0s] hand_mass__certA q=64 ceiling-input ok in 17.0s
+02:22:25 [bcert 3    29.3s] hand_tent__certA q=64 ceiling-input ok in 17.3s
+02:22:26 [bcert 1    29.4s] hand_mass__certB q=64 ceiling-input ok in 17.4s
+02:22:26 [bcert 8    29.5s] hand_objmass__certA q=64 ceiling-input ok in 17.5s
+02:22:27 [bcert 20    29.5s] hand_tent__certB q=64 ceiling-input ok in 17.5s
+02:22:29 [bcert 2    32.6s] hand_objmass__certB q=64 ceiling-input ok in 17.6s
+02:22:52 [bcert 4    55.8s] hand_chan__certA q=128 ceiling-input ok in 46.8s
+02:22:55 [bcert 22    57.9s] hand_chan__certB q=128 ceiling-input ok in 45.9s
+02:23:25 [btrain    89.2s] rand8_c1: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s (chunks None), total 75.5s, 9.7 GB peak
+02:23:35 [bcert 16    98.4s] hand_view__certA q=192 ceiling-input ok in 89.4s
+02:23:39 [bcert 13   102.6s] hand_objfield__certA q=192 ceiling-input ok in 90.6s
+02:23:40 [bcert 6   102.9s] hand_view__certB q=192 ceiling-input ok in 90.8s
+02:23:41 [bcert 17   103.8s] hand_objfield__certB q=192 ceiling-input ok in 88.8s
+02:23:41 [bcert 22   104.1s] rand8_c1_s0__certB q=64 ceiling-input ok in 16.2s
+02:23:41 [bcert 4   104.7s] rand8_c1_s0__certA q=64 ceiling-input ok in 15.9s
+02:23:42 [bcert 7   104.9s] rand8_c1_s1__certA q=64 ceiling-input ok in 15.9s
+02:23:42 [bcert 3   106.1s] rand8_c1_s1__certB q=64 ceiling-input ok in 16.8s
+02:24:34 [btrain   157.9s] rand8_c4: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s (chunks None), total 68.8s, 9.7 GB peak
+02:26:14 [btrain   258.0s] N0_clos_c1: chunk 1 of 250 steps (+ val) in 49.9s
+02:26:19 [btrain   263.4s] N0_clos_c1: chunk 2 of 250 steps (+ val) in 4.2s
+02:27:02 [bcert 18   305.4s] rand8_c4_s0__certB q=256 ceiling-input ok in 149.4s
+02:27:04 [bcert 9   306.5s] rand8_c4_s1__certB q=256 ceiling-input ok in 150.5s
+02:27:04 [bcert 17   307.2s] rand8_c4_s1__certA q=256 ceiling-input ok in 149.4s
+02:27:04 [bcert 6   307.6s] rand8_c4_s0__certA q=256 ceiling-input ok in 150.8s
+02:28:06 [btrain   370.6s] N0_clos_c1: steps 3000, val [1.6176999807357788, 1.7157000303268433, 1.6029000282287598, 1.6287000179290771] -> [0.3815000057220459, 0.3864000141620636, 0.39480000734329224, 0.392300009727478] (best at [3000, 3000, 3000, 3000]), train 147.2s (chunks {'first_incl_compile': 49.89728331565857, 'rest_mean': 4.176099473779852}), total 212.7s, 13.5 GB peak
+02:28:21 [bcert 20   383.6s] N0_clos_c1_s0__certB q=64 ceiling-input ok in 15.0s
+02:28:21 [bcert 10   384.2s] N0_clos_c1_s1__certB q=64 ceiling-input ok in 15.2s
+02:28:22 [bcert 9   384.5s] N0_clos_c1_s1__certA q=64 ceiling-input ok in 15.0s
+02:28:22 [bcert 13   385.6s] N0_clos_c1_s0__certA q=64 ceiling-input ok in 16.0s
+02:29:49 [btrain   472.8s] N4_clos_c1: chunk 1 of 250 steps (+ val) in 59.3s
+02:30:02 [btrain   486.2s] N4_clos_c1: chunk 2 of 250 steps (+ val) in 13.1s
+02:33:17 [btrain   681.2s] N4_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_concatenate']")
+02:34:00 [btrain   723.9s] N8_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:34:41 [btrain   765.4s] N16_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:35:27 [btrain   811.0s] N0_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:36:08 [btrain   852.2s] N4_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:36:49 [btrain   892.6s] N8_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:37:27 [btrain   931.2s] N16_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:38:12 [btrain   976.2s] N0_local_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")

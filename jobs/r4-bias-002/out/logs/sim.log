@@ -1,0 +1,14 @@
+02:19:22 [bsim     0.5s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} tiny False
+02:19:51 [bsim    29.3s] A init + burn-in 64 members 27.2 s
+02:20:12 [bsim    51.0s] A branches at tick 40 {'init_burn': 27.2, 'base': 9.8, 'branch': 11.9}
+02:20:20 [bsim    58.6s] A branches at tick 100 {'init_burn': 27.2, 'base': 14.2, 'branch': 15.1}
+02:20:27 [bsim    66.1s] A branches at tick 160 {'init_burn': 27.2, 'base': 18.6, 'branch': 18.1}
+02:20:35 [bsim    73.2s] A branches at tick 220 {'init_burn': 27.2, 'base': 22.9, 'branch': 21.0}
+02:20:41 [bsim    79.7s] A saved {'init_burn': 27.2, 'base': 28.4, 'branch': 21.0} member-ticks/s {'base': 675.3, 'branch': 488.2} mass drift {'mass_c0': 5.315820292939132e-15, 'mass_c1': 2.019163732014934e-14}
+02:21:06 [bsim   104.6s] B init + burn-in 64 members 24.7 s
+02:21:23 [bsim   122.0s] B branches at tick 40 {'init_burn': 24.7, 'base': 9.1, 'branch': 8.3}
+02:21:31 [bsim   129.3s] B branches at tick 100 {'init_burn': 24.7, 'base': 13.2, 'branch': 11.4}
+02:21:38 [bsim   137.0s] B branches at tick 160 {'init_burn': 24.7, 'base': 17.6, 'branch': 14.7}
+02:21:45 [bsim   144.1s] B branches at tick 220 {'init_burn': 24.7, 'base': 21.9, 'branch': 17.7}
+02:21:52 [bsim   150.5s] B saved {'init_burn': 24.7, 'base': 27.4, 'branch': 17.7} member-ticks/s {'base': 700.1, 'branch': 579.1} mass drift {'mass_c0': 5.373619394787835e-15, 'mass_c1': 2.0093022990890403e-14}
+02:21:52 [bsim   150.6s] done

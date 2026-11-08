@@ -1,0 +1,4 @@
+/home/ubuntu/gpujob/r4-bias-002/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:566: RuntimeWarning: invalid value encountered in subtract
+  ld["I_capt"] = 0.5 * (l_mean - l_best)
+02:23:41 [bcert 17   103.8s] hand_objfield__certB q=192 ceiling-input ok in 88.8s
+02:27:04 [bcert 17   307.2s] rand8_c4_s1__certA q=256 ceiling-input ok in 149.4s

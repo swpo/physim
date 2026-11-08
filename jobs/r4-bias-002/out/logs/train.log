@@ -1,0 +1,21 @@
+02:22:05 [btrain     9.5s] data on device (2, 64, 301, 2, 128, 128) (2, 10240, 2, 128, 128) channel mean/sd {'A': ([0.0439, 0.044], [0.1611, 0.1915]), 'B': ([0.044, 0.0438], [0.1613, 0.1909])} 9.7 GB peak
+02:22:10 [btrain    13.6s] hand designs queued ('mass', 'chan', 'view', 'tent', 'objmass', 'objfield')
+/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/interpreters/mlir.py:1333: UserWarning: A large amount of constants were captured during lowering (5.05GB total). If this is intentional, disable this warning by setting JAX_CAPTURED_CONSTANTS_WARN_BYTES=-1. To obtain a report of where these constants were encountered, set JAX_CAPTURED_CONSTANTS_REPORT_FRAMES=-1.
+  warnings.warn(message)
+/home/ubuntu/gpujob/r4-bias-002/.venv/lib/python3.12/site-packages/jax/_src/interpreters/mlir.py:1333: UserWarning: A large amount of constants were captured during lowering (2.68GB total). If this is intentional, disable this warning by setting JAX_CAPTURED_CONSTANTS_WARN_BYTES=-1. To obtain a report of where these constants were encountered, set JAX_CAPTURED_CONSTANTS_REPORT_FRAMES=-1.
+  warnings.warn(message)
+02:23:25 [btrain    89.2s] rand8_c1: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s (chunks None), total 75.5s, 9.7 GB peak
+02:24:34 [btrain   157.9s] rand8_c4: steps 0, val [nan, nan, nan, nan] -> [nan, nan, nan, nan] (best at [0, 0, 0, 0]), train 0.0s (chunks None), total 68.8s, 9.7 GB peak
+02:26:14 [btrain   258.0s] N0_clos_c1: chunk 1 of 250 steps (+ val) in 49.9s
+02:26:19 [btrain   263.4s] N0_clos_c1: chunk 2 of 250 steps (+ val) in 4.2s
+02:28:06 [btrain   370.6s] N0_clos_c1: steps 3000, val [1.6176999807357788, 1.7157000303268433, 1.6029000282287598, 1.6287000179290771] -> [0.3815000057220459, 0.3864000141620636, 0.39480000734329224, 0.392300009727478] (best at [3000, 3000, 3000, 3000]), train 147.2s (chunks {'first_incl_compile': 49.89728331565857, 'rest_mean': 4.176099473779852}), total 212.7s, 13.5 GB peak
+02:29:49 [btrain   472.8s] N4_clos_c1: chunk 1 of 250 steps (+ val) in 59.3s
+02:30:02 [btrain   486.2s] N4_clos_c1: chunk 2 of 250 steps (+ val) in 13.1s
+02:33:17 [btrain   681.2s] N4_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_concatenate']")
+02:34:00 [btrain   723.9s] N8_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:34:41 [btrain   765.4s] N16_clos_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:35:27 [btrain   811.0s] N0_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:36:08 [btrain   852.2s] N4_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:36:49 [btrain   892.6s] N8_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:37:27 [btrain   931.2s] N16_recon_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
+02:38:12 [btrain   976.2s] N0_local_c1 FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: [0] Failed to load in-memory CUBIN (compiled for a different GPU?).: CUDA_ERROR_OUT_OF_MEMORY: out of memory [executable_name='jit_val']")
