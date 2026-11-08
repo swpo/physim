@@ -9434,7 +9434,7 @@
  },
  "claims": [
   {
-   "claim": "With a block-only receptive field (h = 0), closure and the local-law objective rediscover block mass on their own: the learned c = 1 latent and block mass predict each other with cross-validated R^2 >= 0.93 both ways, identically across seeds (seed R^2 >= 0.997).",
+   "claim": "With a block-only receptive field (h = 0), closure and the local-law objective learn a block-mass-like variable on their own: the learned c = 1 latent and block mass predict each other with cross-validated R^2 >= 0.93 both ways (0.93 / 0.94 N0 closure, 0.97 L0 closure and N0 local law, 0.995 L0 local law), identically across seeds (seed R^2 >= 0.997). Checker: at the weakest arm the agreement metric (global ridge over the 64 block values) does not single out block mass: N0 closure agrees with the designed tent at least as well (R^2 0.96 / 0.95), and block mass and the tent themselves agree at 0.94 / 0.92; N0 closure also holds less predictable content than block mass (I_avail at horizon 1 214 vs 275 nats, participation ratio 44.5 vs 54.1), so it reads as a noisy block mass rather than block mass itself; the identification is clean for L0 local law (0.995 with mass vs 0.95 / 0.93 with the tent).",
    "values": {
     "N0_clos_c1.R2_H_from_Z": 0.933,
     "N0_clos_c1.R2_Z_from_H": 0.94,
@@ -9447,7 +9447,17 @@
     "N0_clos_c1.seed_R2": 0.997,
     "L0_clos_c1.seed_R2": 1.0,
     "N0_local_c1.seed_R2": 0.999,
-    "L0_local_c1.seed_R2": 1.0
+    "L0_local_c1.seed_R2": 1.0,
+    "checker.N0_clos_c1.R2_tent_from_Z": 0.9642,
+    "checker.N0_clos_c1.R2_Z_from_tent": 0.9536,
+    "checker.hand_mass.R2_tent_from_mass": 0.9429,
+    "checker.hand_mass.R2_mass_from_tent": 0.9188,
+    "checker.L0_local_c1.R2_tent_from_Z": 0.9493,
+    "checker.L0_local_c1.R2_Z_from_tent": 0.9273,
+    "checker.N0_clos_c1.I_avail_h1": 213.9244,
+    "checker.hand_mass.I_avail_h1": 275.0624,
+    "checker.N0_clos_c1.participation_ratio": 44.4896,
+    "checker.hand_mass.participation_ratio": 54.0935
    },
    "sources": {
     "N0_clos_c1.R2_H_from_Z": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_H_from_Z",
@@ -9461,11 +9471,21 @@
     "N0_clos_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N0_clos_c1.seed_agreement.mean",
     "L0_clos_c1.seed_R2": "r4-bias-003:out/combined.json:configs.L0_clos_c1.seed_agreement.mean",
     "N0_local_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N0_local_c1.seed_agreement.mean",
-    "L0_local_c1.seed_R2": "r4-bias-003:out/combined.json:configs.L0_local_c1.seed_agreement.mean"
+    "L0_local_c1.seed_R2": "r4-bias-003:out/combined.json:configs.L0_local_c1.seed_agreement.mean",
+    "checker.N0_clos_c1.R2_tent_from_Z": "round4/biaschk/results/recheck.json:configs.N0_clos_c1.agreement.tent.R2_H_from_Z",
+    "checker.N0_clos_c1.R2_Z_from_tent": "round4/biaschk/results/recheck.json:configs.N0_clos_c1.agreement.tent.R2_Z_from_H",
+    "checker.hand_mass.R2_tent_from_mass": "round4/biaschk/results/recheck.json:hand.mass.agreement.tent.R2_H_from_Z",
+    "checker.hand_mass.R2_mass_from_tent": "round4/biaschk/results/recheck.json:hand.mass.agreement.tent.R2_Z_from_H",
+    "checker.L0_local_c1.R2_tent_from_Z": "round4/biaschk/results/recheck.json:configs.L0_local_c1.agreement.tent.R2_H_from_Z",
+    "checker.L0_local_c1.R2_Z_from_tent": "round4/biaschk/results/recheck.json:configs.L0_local_c1.agreement.tent.R2_Z_from_H",
+    "checker.N0_clos_c1.I_avail_h1": "round4/biaschk/results/recheck.json:configs.N0_clos_c1.I_avail[0]",
+    "checker.hand_mass.I_avail_h1": "round4/biaschk/results/recheck.json:hand.mass.I_avail[0]",
+    "checker.N0_clos_c1.participation_ratio": "round4/biaschk/results/recheck.json:configs.N0_clos_c1.participation_ratio",
+    "checker.hand_mass.participation_ratio": "round4/biaschk/results/recheck.json:hand.mass.participation_ratio"
    }
   },
   {
-   "claim": "Reconstruction with the nonlinear local encoder does not: at h = 0 it learns a seed-dependent feature that is not mass and is barely predictable (ceiling at h = 4 of 0.09 vs 0.77 for block mass); the linear (L) and the unconstrained (U) autoencoders at c = 1 do land on block mass (first principal component of block content).",
+   "claim": "Reconstruction with the nonlinear local encoder does not at c = 1 and small halos: at h = 0 it learns a seed-dependent feature that is not mass and is barely predictable (ceiling at h = 4 of 0.09 vs 0.77 for block mass); the linear (L) and the unconstrained (U) autoencoders at c = 1 do land on block mass (first principal component of block content). Checker: the failure is specific to c = 1 with halo 0-4 px (R^2(mass | Z) 0.24 / 0.45, seed R^2 0.08 / 0.36); with halo 8 / 16 px it is 0.79 / 0.83 (seed R^2 0.63 / 0.87), and at c = 4 the nonlinear autoencoders contain mass (R^2(mass | Z) 0.97-0.98) and are seed-stable (seed R^2 0.88-0.93).",
    "values": {
     "N0_recon_c1.R2_mass_from_Z": 0.244,
     "N0_recon_c1.seed_R2": 0.079,
@@ -9484,7 +9504,14 @@
      0.138
     ],
     "L0_recon_c1.R2_mass_from_Z": 0.983,
-    "U_recon_c1.R2_mass_from_Z": 0.971
+    "U_recon_c1.R2_mass_from_Z": 0.971,
+    "checker.N4_recon_c1.R2_mass_from_Z": 0.4463,
+    "checker.N8_recon_c1.R2_mass_from_Z": 0.7924,
+    "checker.N16_recon_c1.R2_mass_from_Z": 0.8254,
+    "checker.N0_recon_c4.R2_mass_from_Z": 0.9774,
+    "checker.N4_recon_c4.R2_mass_from_Z": 0.9766,
+    "checker.N8_recon_c4.R2_mass_from_Z": 0.9773,
+    "checker.N16_recon_c4.R2_mass_from_Z": 0.9679
    },
    "sources": {
     "N0_recon_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_recon_c1.agreement.mass.R2_H_from_Z",
@@ -9492,11 +9519,18 @@
     "N0_recon_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_recon_c1.ceiling_G",
     "hand_mass.ceiling_G": "r4-bias-003:out/combined.json:hand.mass.G.ceiling",
     "L0_recon_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.L0_recon_c1.agreement.mass.R2_H_from_Z",
-    "U_recon_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.U_recon_c1.agreement.mass.R2_H_from_Z"
+    "U_recon_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.U_recon_c1.agreement.mass.R2_H_from_Z",
+    "checker.N4_recon_c1.R2_mass_from_Z": "round4/biaschk/results/recheck.json:configs.N4_recon_c1.agreement.mass.R2_H_from_Z",
+    "checker.N8_recon_c1.R2_mass_from_Z": "round4/biaschk/results/recheck.json:configs.N8_recon_c1.agreement.mass.R2_H_from_Z",
+    "checker.N16_recon_c1.R2_mass_from_Z": "round4/biaschk/results/recheck.json:configs.N16_recon_c1.agreement.mass.R2_H_from_Z",
+    "checker.N0_recon_c4.R2_mass_from_Z": "round4/biaschk/results/recheck.json:configs.N0_recon_c4.agreement.mass.R2_H_from_Z",
+    "checker.N4_recon_c4.R2_mass_from_Z": "round4/biaschk/results/recheck.json:configs.N4_recon_c4.agreement.mass.R2_H_from_Z",
+    "checker.N8_recon_c4.R2_mass_from_Z": "round4/biaschk/results/recheck.json:configs.N8_recon_c4.agreement.mass.R2_H_from_Z",
+    "checker.N16_recon_c4.R2_mass_from_Z": "round4/biaschk/results/recheck.json:configs.N16_recon_c4.agreement.mass.R2_H_from_Z"
    }
   },
   {
-   "claim": "With a halo the closure latent becomes a low-pass filtered mass field: it stays a function of block mass (R^2(Z | mass) 0.88-0.98) but block mass is no longer recoverable from it (R^2(mass | Z) falls 0.93 -> 0.61), it agrees best with the designed tent at h = 4-8 (R^2 0.93-0.97 both ways), its closure ceiling at h = 16 rises 0.16 -> 0.27 -> 0.38 -> 0.55 with halo 0, 4, 8, 16 px, while its effective dimension (participation ratio) falls 44 -> 13 and its predictable content (I_avail at h = 1) falls 214 -> 174 nats.",
+   "claim": "With a halo the closure latent becomes a low-pass filtered mass field: it stays a function of block mass (R^2(Z | mass) 0.88-0.98) but block mass is no longer recoverable from it (R^2(mass | Z) falls 0.93 -> 0.61), it agrees with the designed tent at R^2 0.93-0.97 both ways at halo 4-8 px, but so does the halo-0 latent (0.96 / 0.95) and block mass itself (0.94 / 0.92), so agreement does not single the tent out, and in content the halo latents are not the tent (halo 8 px: I_avail 193 vs 282 nats, participation ratio 22 vs 31, horizon-16 ceiling 0.38 vs 0.33; checker), its closure ceiling at h = 16 rises 0.16 -> 0.27 -> 0.38 -> 0.55 with halo 0, 4, 8, 16 px, while its effective dimension (participation ratio) falls 44 -> 13 and its predictable content (I_avail at h = 1) falls 214 -> 174 nats.",
    "values": {
     "N0_clos_c1.R2_Z_from_mass": 0.94,
     "N0_clos_c1.R2_mass_from_Z": 0.933,
@@ -9573,7 +9607,11 @@
      145.225,
      112.935,
      69.111
-    ]
+    ],
+    "checker.hand_tent.I_avail_h1": 281.7227,
+    "checker.hand_tent.participation_ratio": 31.3001,
+    "checker.hand_tent.ceiling_G_h16": 0.3305,
+    "checker.N8_clos_c1.I_avail_h1": 193.3226
    },
    "sources": {
     "N0_clos_c1.R2_Z_from_mass": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_Z_from_H",
@@ -9603,11 +9641,15 @@
     "N16_clos_c1.R2_Z_from_tent": "r4-bias-003:out/combined.json:configs.N16_clos_c1.agreement.tent.R2_Z_from_H",
     "N16_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N16_clos_c1.ceiling_G",
     "N16_clos_c1.participation_ratio": "r4-bias-003:out/combined.json:configs.N16_clos_c1.nontriv.participation_ratio",
-    "N16_clos_c1.I_avail": "r4-bias-003:out/combined.json:configs.N16_clos_c1.I_avail"
+    "N16_clos_c1.I_avail": "r4-bias-003:out/combined.json:configs.N16_clos_c1.I_avail",
+    "checker.hand_tent.I_avail_h1": "round4/biaschk/results/recheck.json:hand.tent.I_avail[0]",
+    "checker.hand_tent.participation_ratio": "round4/biaschk/results/recheck.json:hand.tent.participation_ratio",
+    "checker.hand_tent.ceiling_G_h16": "round4/biaschk/results/recheck.json:hand.tent.ceiling_G[4]",
+    "checker.N8_clos_c1.I_avail_h1": "round4/biaschk/results/recheck.json:configs.N8_clos_c1.I_avail[0]"
    }
   },
   {
-   "claim": "The hand designs keep the most predictable content per number: block mass I_avail / I_capt at h = 1 = 275 / 165 nats vs at most 266 / 163 for any learned c = 1 latent (L4_local; N arm best N0_local 246 / 146); block channel means (c = 2) 432 / 246 vs at most 404 (U_local) / 227 (N4_local) for learned c = 2 latents. Higher learned closure ceilings are bought by smoothing.",
+   "claim": "The hand designs keep the most predictable content per number: block mass I_avail / I_capt at h = 1 = 275 / 165 nats vs at most 266 / 163 for any learned c = 1 latent (L4_local; N arm best N0_local 246 / 146); block channel means (c = 2) 432 / 246 vs at most 404 (U_local) / 227 (N4_local) for learned c = 2 latents. Higher learned closure ceilings come with smoothing and with lost predictable content; the smoothing itself need not cost content: the designed tent (a smoothed block mass, also a hand design) has more I_avail / I_capt than block mass (282 / 179 nats) and a higher horizon-16 ceiling (0.33 vs 0.14), while the learned N4 / N8 closure latents have about the tent's effective dimension or less (participation ratio 30 / 22 vs 31) and 77 / 88 nats less I_avail (checker). Comparison at c = 1 and 2 only: there is no hand design at c = 4 (learned c = 4 maxima 479 I_avail, N4_recon_c4, and 225 I_capt, N8_local_c4).",
    "values": {
     "hand_mass.I_avail": [
      275.062,
@@ -9686,7 +9728,13 @@
      322.404,
      238.093,
      135.771
-    ]
+    ],
+    "checker.hand_tent.I_avail_h1": 281.7227,
+    "checker.hand_tent.I_capt_h1": 179.2098,
+    "checker.N4_clos_c1.I_avail_h1": 204.7363,
+    "checker.N4_clos_c1.participation_ratio": 29.7558,
+    "checker.N4_recon_c4.I_avail_h1": 478.9078,
+    "checker.N8_local_c4.I_capt_h1": 225.0116
    },
    "sources": {
     "hand_mass.I_avail": "r4-bias-003:out/combined.json:hand.mass.logdet.I_avail",
@@ -9700,11 +9748,17 @@
     "N4_local_c2.I_capt": "r4-bias-003:out/combined.json:configs.N4_local_c2.I_capt",
     "L4_local_c1.I_avail": "r4-bias-003:out/combined.json:configs.L4_local_c1.I_avail",
     "L4_local_c1.I_capt": "r4-bias-003:out/combined.json:configs.L4_local_c1.I_capt",
-    "U_local_c2.I_avail": "r4-bias-003:out/combined.json:configs.U_local_c2.I_avail"
+    "U_local_c2.I_avail": "r4-bias-003:out/combined.json:configs.U_local_c2.I_avail",
+    "checker.hand_tent.I_avail_h1": "round4/biaschk/results/recheck.json:hand.tent.I_avail[0]",
+    "checker.hand_tent.I_capt_h1": "round4/biaschk/results/recheck.json:hand.tent.I_capt[0]",
+    "checker.N4_clos_c1.I_avail_h1": "round4/biaschk/results/recheck.json:configs.N4_clos_c1.I_avail[0]",
+    "checker.N4_clos_c1.participation_ratio": "round4/biaschk/results/recheck.json:configs.N4_clos_c1.participation_ratio",
+    "checker.N4_recon_c4.I_avail_h1": "round4/biaschk/results/recheck.json:configs.N4_recon_c4.I_avail[0]",
+    "checker.N8_local_c4.I_capt_h1": "round4/biaschk/results/recheck.json:configs.N8_local_c4.I_capt[0]"
    }
   },
   {
-   "claim": "A shared local rule (local law) is at least as good a bias as the global closure head at every receptive field: higher captured predictive information at h = 1 and equal or higher ceilings, and closer to block mass.",
+   "claim": "A shared local rule (local law) is a better bias than the global closure head at every receptive field for horizons up to 4 (checker; not at horizon 8 for block-only encoders, see below): higher captured predictive information at h = 1 (I_capt N 146 / 160 / 155 / 128 vs 121 / 115 / 111 / 92 nats, L 148 / 163 / 163 / 131 vs 124 / 121 / 112 / 89 at halo 0 / 4 / 8 / 16), higher ceilings at horizons <= 4 at every receptive field (paired trajectory bootstrap z >= 7.8), and closer to block mass. Checker: not equal or higher ceilings everywhere: for the block-only encoders the global closure head is more closed at horizon 8 (N0 -0.016, z -6.0; L0 -0.022, z -9.1), and at horizon 16 the N8 / L8 differences are within noise (z -0.7 / -1.1).",
    "values": {
     "N0_clos_c1.I_capt": [
      121.298,
@@ -9795,7 +9849,207 @@
      0.873,
      0.558
     ],
-    "N16_local_c1.R2_mass_from_Z": 0.638
+    "N16_local_c1.R2_mass_from_Z": 0.638,
+    "checker.N0_local_minus_clos_c1": {
+     "diff": [
+      0.0082,
+      0.0169,
+      0.0145,
+      -0.0163,
+      0.005
+     ],
+     "paired_boot_se": [
+      0.0002,
+      0.0006,
+      0.0016,
+      0.0027,
+      0.0034
+     ],
+     "z": [
+      34.0,
+      27.4,
+      9.0,
+      -6.0,
+      1.5
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    },
+    "checker.N4_local_minus_clos_c1": {
+     "diff": [
+      0.0075,
+      0.0186,
+      0.0369,
+      0.038,
+      0.0139
+     ],
+     "paired_boot_se": [
+      0.0003,
+      0.0007,
+      0.0017,
+      0.0038,
+      0.0039
+     ],
+     "z": [
+      27.4,
+      25.6,
+      22.1,
+      9.9,
+      3.6
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    },
+    "checker.N8_local_minus_clos_c1": {
+     "diff": [
+      0.0032,
+      0.0075,
+      0.0153,
+      0.0092,
+      -0.0028
+     ],
+     "paired_boot_se": [
+      0.0001,
+      0.0003,
+      0.0009,
+      0.0026,
+      0.0043
+     ],
+     "z": [
+      24.7,
+      25.0,
+      16.6,
+      3.6,
+      -0.7
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    },
+    "checker.N16_local_minus_clos_c1": {
+     "diff": [
+      0.0017,
+      0.0044,
+      0.0111,
+      0.0226,
+      0.011
+     ],
+     "paired_boot_se": [
+      0.0001,
+      0.0002,
+      0.0007,
+      0.0019,
+      0.0039
+     ],
+     "z": [
+      22.1,
+      20.7,
+      15.6,
+      11.9,
+      2.8
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    },
+    "checker.L0_local_minus_clos_c1": {
+     "diff": [
+      0.0081,
+      0.0172,
+      0.0112,
+      -0.022,
+      0.0002
+     ],
+     "paired_boot_se": [
+      0.0002,
+      0.0006,
+      0.0014,
+      0.0024,
+      0.0033
+     ],
+     "z": [
+      33.2,
+      30.5,
+      7.8,
+      -9.1,
+      0.1
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    },
+    "checker.L4_local_minus_clos_c1": {
+     "diff": [
+      0.0076,
+      0.0196,
+      0.0368,
+      0.0287,
+      0.0158
+     ],
+     "paired_boot_se": [
+      0.0003,
+      0.0008,
+      0.002,
+      0.0042,
+      0.0048
+     ],
+     "z": [
+      29.6,
+      24.4,
+      18.8,
+      6.8,
+      3.3
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    },
+    "checker.L8_local_minus_clos_c1": {
+     "diff": [
+      0.0038,
+      0.01,
+      0.0241,
+      0.0248,
+      -0.004
+     ],
+     "paired_boot_se": [
+      0.0001,
+      0.0004,
+      0.0013,
+      0.0029,
+      0.0037
+     ],
+     "z": [
+      25.8,
+      23.7,
+      17.9,
+      8.6,
+      -1.1
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    },
+    "checker.L16_local_minus_clos_c1": {
+     "diff": [
+      0.0018,
+      0.0044,
+      0.0123,
+      0.0243,
+      0.0058
+     ],
+     "paired_boot_se": [
+      0.0001,
+      0.0002,
+      0.0007,
+      0.0018,
+      0.0038
+     ],
+     "z": [
+      22.7,
+      22.6,
+      17.3,
+      13.7,
+      1.5
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    }
    },
    "sources": {
     "N0_clos_c1.I_capt": "r4-bias-003:out/combined.json:configs.N0_clos_c1.I_capt",
@@ -9815,11 +10069,19 @@
     "N16_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N16_clos_c1.agreement.mass.R2_H_from_Z",
     "N16_local_c1.I_capt": "r4-bias-003:out/combined.json:configs.N16_local_c1.I_capt",
     "N16_local_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N16_local_c1.ceiling_G",
-    "N16_local_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N16_local_c1.agreement.mass.R2_H_from_Z"
+    "N16_local_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N16_local_c1.agreement.mass.R2_H_from_Z",
+    "checker.N0_local_minus_clos_c1": "round4/biaschk/results/pairboot.json:N0_local_c1 - N0_clos_c1",
+    "checker.N4_local_minus_clos_c1": "round4/biaschk/results/pairboot.json:N4_local_c1 - N4_clos_c1",
+    "checker.N8_local_minus_clos_c1": "round4/biaschk/results/pairboot.json:N8_local_c1 - N8_clos_c1",
+    "checker.N16_local_minus_clos_c1": "round4/biaschk/results/pairboot.json:N16_local_c1 - N16_clos_c1",
+    "checker.L0_local_minus_clos_c1": "round4/biaschk/results/pairboot.json:L0_local_c1 - L0_clos_c1",
+    "checker.L4_local_minus_clos_c1": "round4/biaschk/results/pairboot.json:L4_local_c1 - L4_clos_c1",
+    "checker.L8_local_minus_clos_c1": "round4/biaschk/results/pairboot.json:L8_local_c1 - L8_clos_c1",
+    "checker.L16_local_minus_clos_c1": "round4/biaschk/results/pairboot.json:L16_local_c1 - L16_clos_c1"
    }
   },
   {
-   "claim": "Locality is what lets closure find mass: the unconstrained encoder trained for closure is less closed than block mass at every horizon, agrees with it poorly and is seed-unstable.",
+   "claim": "Locality is what lets closure find mass in this grid (checker: the U arm also differs in optimisation, 2,000 instead of 3,000 steps, weight decay 0.3, batch 256, and a global 64 x 64 whitening, so locality is not isolated; the same U encoder lands on block mass under reconstruction, R^2 0.97): the unconstrained encoder trained for closure is less closed than block mass at every horizon, agrees with it poorly and is seed-unstable.",
    "values": {
     "U_clos_c1.ceiling_G": [
      0.898,
@@ -9846,7 +10108,7 @@
    }
   },
   {
-   "claim": "The predictive bottleneck lands in between: partly mass, less closed than block mass beyond h = 2.",
+   "claim": "The predictive bottleneck lands in between: partly mass (R^2(mass | Z) 0.74 at halo 0, 0.56 at halo 16 px), less closed than block mass at horizons 1, 2, 4 and 16 (N0_pib: -0.046 / -0.086 / -0.084 / -0.023, paired z <= -3.3) but slightly more closed at horizon 8 (0.394 vs 0.375, z 3.3; checker); N16_pib is less closed at every horizon.",
    "values": {
     "N0_pib_c1.ceiling_G": [
      0.945,
@@ -9865,7 +10127,32 @@
      0.057
     ],
     "N16_pib_c1.R2_mass_from_Z": 0.555,
-    "N16_pib_c1.seed_R2": 0.771
+    "N16_pib_c1.seed_R2": 0.771,
+    "checker.N0_pib_minus_hand_mass": {
+     "diff": [
+      -0.0459,
+      -0.086,
+      -0.0836,
+      0.0194,
+      -0.023
+     ],
+     "paired_boot_se": [
+      0.0016,
+      0.0027,
+      0.004,
+      0.0059,
+      0.0069
+     ],
+     "z": [
+      -29.4,
+      -31.8,
+      -20.7,
+      3.3,
+      -3.3
+     ],
+     "n_boot": 400,
+     "unit": "trajectory (64)"
+    }
    },
    "sources": {
     "N0_pib_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_pib_c1.ceiling_G",
@@ -9873,7 +10160,8 @@
     "N0_pib_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N0_pib_c1.seed_agreement.mean",
     "N16_pib_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N16_pib_c1.ceiling_G",
     "N16_pib_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N16_pib_c1.agreement.mass.R2_H_from_Z",
-    "N16_pib_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N16_pib_c1.seed_agreement.mean"
+    "N16_pib_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N16_pib_c1.seed_agreement.mean",
+    "checker.N0_pib_minus_hand_mass": "round4/biaschk/results/pairboot.json:N0_pib_c1 - hand_mass"
    }
   },
   {
@@ -9937,20 +10225,28 @@
    }
   },
   {
-   "claim": "Closure-type latents are seed-stable and so are their ceilings (largest seed difference of the G ceiling over all c = 1 closure/local configs and horizons is 0.014); nonlinear reconstruction is not (seed R^2 0.08-0.87).",
+   "claim": "Closure-type latents are seed-stable and so are their ceilings (largest seed difference of the G ceiling over all c = 1 closure/local configs and horizons is 0.014); nonlinear reconstruction at c = 1 is not (seed R^2 0.08-0.87). Checker: at c = 2 / 4 the largest closure/local seed difference is 0.032 (N8_clos_c2, horizon 8); nonlinear reconstruction seed R^2 is 0.40-0.60 at c = 2 and 0.88-0.93 at c = 4; seed R^2 comes from latents that stayed on the pod and could not be recomputed.",
    "values": {
     "max_abs_seed_diff_clos_local_c1": 0.014,
     "N4_recon_c1.seed_R2": 0.356,
-    "N8_recon_c1.seed_R2": 0.625
+    "N8_recon_c1.seed_R2": 0.625,
+    "checker.N8_clos_c2.ceiling_G_seed_diff": [
+     -0.001,
+     -0.00012,
+     0.01029,
+     0.03203,
+     0.02195
+    ]
    },
    "sources": {
     "max_abs_seed_diff_clos_local_c1": "r4-bias-003:out/combined.json:configs.*_(clos|local)_c1.ceiling_G_seed_diff",
     "N4_recon_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N4_recon_c1.seed_agreement.mean",
-    "N8_recon_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N8_recon_c1.seed_agreement.mean"
+    "N8_recon_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N8_recon_c1.seed_agreement.mean",
+    "checker.N8_clos_c2.ceiling_G_seed_diff": "round4/biaschk/results/recheck.json:configs.N8_clos_c2.ceiling_G_seed_diff"
    }
   },
   {
-   "claim": "Cost of the study (billed): r4-bias-001 $0.81 (cancelled), r4-bias-002 $1.13 (cancelled), r4-bias-003 $6.01 (done); pod hours 0.396 + 0.447 + 1.951 = 2.79.",
+   "claim": "Cost of the study (billed): r4-bias-001 $0.81 (cancelled), r4-bias-002 $1.13 (cancelled), r4-bias-003 $6.01 (done); pod hours 0.396 + 0.447 + 1.951 = 2.79 (LEDGER column, request to termination; billed GPU-hours = billed / rate = 0.344 + 0.342 + 1.825 = 2.51; r4-bias-001 ran on an A100 80GB PCIe, datacrunch, $2.3489/h, r4-bias-002/003 on an H100 80GB PCIe, lambdalabs, $3.29/h; checker).",
    "values": {
     "r4-bias-001": 0.8082,
     "r4-bias-002": 1.1261,
@@ -9967,5 +10263,100 @@
     "pod_hours": "origin/gpu-jobs:LEDGER.md (pod hours column)"
    }
   }
- ]
+ ],
+ "checker": {
+  "who": "independent checker of round-4 study bias (worktree wt-biaschk), 8 Nov 2026; no GPU job run; about 2 CPU-minutes (nice 10)",
+  "verdict": "The code does what the report says; every ceiling recomputes from the saved per-item errors (max deviation 5.55e-09) and every quoted I_avail / I_capt, agreement R^2 and participation ratio re-averages exactly from the per-half certification files; all 102 claim values match combined.json; job records match; no secret committed. Main direction holds: local closure / local-law encoders learn a mass-like variable, nonlinear c = 1 reconstruction does not, halos smooth, nothing learned beats the hand designs in predictable content, no bias finds objects. Wording overstated in places (edits below): 'rediscovers block mass' at R^2 0.93 is not distinguishable from the tent under this metric and carries 61 nats less content than block mass; the 8-px halo latent does not 'match the tent' in content; 'equal or higher ceilings' for the local law fails at horizon 8 for block-only encoders (paired z -6 / -9); the predictive bottleneck is more closed than block mass at horizon 8; 'smoothing costs content' is contradicted by the hand tent; reconstruction instability and the 0.014 seed bound hold at c = 1 only; the U arm confounds locality with optimisation settings.",
+  "job_records": {
+   "r4-bias-001": "cancelled, exit_code null, A100_80GB PCIe (datacrunch FIN-01, $2.3489/h, not spot), pod ready 01:45:18Z, terminated 02:05:47Z; billed $0.8082, conservative $0.9307, cap $15 (origin/gpu-jobs:jobs/r4-bias-001/status.json)",
+   "r4-bias-002": "cancelled, exit_code null, H100_80GB PCIe (lambdalabs us-west-3, $3.29/h), ready 02:18:21Z, terminated 02:38:41Z; billed $1.1261, conservative $1.4703, cap $15; progress shows CUDA_ERROR_OUT_OF_MEMORY loading 'jit_concatenate' at N4_clos_c1 (02:33:17) (status.json tails)",
+   "r4-bias-003": "done, exit_code 0 (logs/exit.rc 0), NVIDIA H100 PCIe 81559 MiB (logs/sysinfo.txt), lambdalabs us-west-3 $3.29/h, ready 02:57:21Z, terminated 04:46:41Z; billed $6.0058, conservative $6.4202, cap $16; ref 25b044a54; 990 files collected, not truncated; sim backend gpu x64 jax 0.12.0.1, 708 / 739 member-ticks/s base (A / B); 80 configs, none skipped, no train or cert errors",
+   "total": "billed $7.9401 (0.8082 + 1.1261 + 6.0058); billed GPU-hours 2.51; LEDGER pod hours 2.79 (from request); within the study's $25 cap",
+   "copies": "results/combined.json, table.txt, sim_A.json, sim_B.json, progress.txt, train_done.json, status.json and train/*.json (80) are byte-identical to origin/gpu-jobs:jobs/r4-bias-003/; results/windows holds 104 of the 204 window files, all identical; the study code (b4, bsim, bnets, btrain, bcert, bcombine, bwin, job.sh), vw1 and learned_phi2 are unchanged between the job ref 25b044a54 and 53729c104 (only binterp.py and bsummary.py, local, were added/changed)"
+  },
+  "code_review": [
+   "Cross-fitting is honest: each Phi is fitted (and early-stopped on the fit half's last 8 trajectories) on one designer seed and encoded with the fit half's standardisation and whitening on the other half's 32 certification trajectories; branch replicates are never used in fitting; hand designs are not fitted.",
+   "Certification uses learned_phi2's fixed family unchanged (lphi.certify / combine with NJ = 32): ceiling = (V_mean - V_best) / (V_mean - V_oracle), pooled over 2 x 128 test states (64 trajectories x 4 test ticks, 5 fresh-noise branches); bootstrap SE over trajectories. Ceilings of different widths average over different numbers of coordinates.",
+   "Whitening is per channel for the N and L encoders (local, so for c = 1 it is only a scale) and global (64c x 64c) for U; the closure loss is in whitened units, which favours smooth (more predictable) latents, consistent with the halo result.",
+   "Agreement R^2 is a cross-validated global ridge from all 64c latent values to all 64 hand values (4 trajectory folds). It is invariant to local smoothing up to noise, which is why block mass and the tent agree at 0.92-0.94 and why it cannot separate 'block mass' from 'smoothed block mass' near that level.",
+   "The rand8 baselines (untrained random 32-px linear windows) give R^2(mass | Z) 0.18 (c = 1), so mass agreement is not an artefact of any linear local window.",
+   "No exam secret: vw.World(aworld specs['both'], world_seed = 0) with public parameters; designer seeds 9701 / 9702 only randomise initial states."
+  ],
+  "recomputed": {
+   "script": "round4/biaschk/recheck.py (own code, numpy only) on origin/gpu-jobs:jobs/r4-bias-003/out; output results/recheck.json",
+   "ceilings": "G and GL ceilings of all 166 Phi (80 configs x 2 seeds + 6 hand) recomputed from items/*.npz: max |difference| to combined.json 5.55e-09 (float32 copies)",
+   "re-averaged_only": "I_avail, I_capt, agreement R^2 and participation ratio re-averaged from cert/*.json: exact. The log-dets and R^2 themselves need the latents, which stayed on the pod, as do the seed R^2 values: not independently recomputable.",
+   "claim_values": "all 102 combined.json-sourced claim values match (|diff| <= 5e-4, rounding); the seed-difference bound 0.0137 (U_clos_c1) recomputes over the 20 c = 1 closure/local configs",
+   "maxima": "best learned c = 1: I_avail and I_capt L4_local_c1 265.7 / 163.2; c = 2: I_avail U_local_c2 404.5, I_capt N4_local_c2 227.2; best R^2(objmass | Z) N0_recon_c4 0.6848 vs hand mass 0.6877, chan 0.697, view 0.702",
+   "windows": "cosine of the learned raw-unit window to the block-mass window, mean of 4 replicas: L0_clos 0.756, L0_local 0.937 (report 0.75 / 0.94)",
+   "paired_bootstrap": "round4/biaschk/pairboot.py: local minus closure ceilings and N0_pib / N0_clos minus block mass, 400 resamples of the 64 trajectories, both configs on the same items; output results/pairboot.json"
+  },
+  "edits": [
+   {
+    "claim": 0,
+    "old": "closure and the local-law objective rediscover block mass on their own: the learned c = 1 latent and block mass predict each other with cross-validated R^2 >= 0.93 both ways, identically across seeds (seed R^2 >= 0.997).",
+    "new": "closure and the local-law objective learn a block-mass-like variable on their own: the learned c = 1 latent and block mass predict each other with cross-validated R^2 >= 0.93 both ways (0.93 / 0.94 N0 closure, 0.97 L0 closure and N0 local law, 0.995 L0 local law), identically across seeds (seed R^2 >= 0.997). Checker: at the weakest arm the agreement metric (global ridge over the 64 block values) does not single out block mass: N0 closure agrees with the designed tent at least as well (R^2 0.96 / 0.95), and block mass and the tent themselves agree at 0.94 / 0.92; N0 closure also holds less predictable content than block mass (I_avail at horizon 1 214 vs 275 nats, participation ratio 44.5 vs 54.1), so it reads as a noisy block mass rather than block mass itself; the identification is clean for L0 local law (0.995 with mass vs 0.95 / 0.93 with the tent)."
+   },
+   {
+    "claim": 1,
+    "old": "Reconstruction with the nonlinear local encoder does not: at h = 0 it learns",
+    "new": "Reconstruction with the nonlinear local encoder does not at c = 1 and small halos: at h = 0 it learns"
+   },
+   {
+    "claim": 1,
+    "old": "(first principal component of block content).",
+    "new": "(first principal component of block content). Checker: the failure is specific to c = 1 with halo 0-4 px (R^2(mass | Z) 0.24 / 0.45, seed R^2 0.08 / 0.36); with halo 8 / 16 px it is 0.79 / 0.83 (seed R^2 0.63 / 0.87), and at c = 4 the nonlinear autoencoders contain mass (R^2(mass | Z) 0.97-0.98) and are seed-stable (seed R^2 0.88-0.93)."
+   },
+   {
+    "claim": 2,
+    "old": "it agrees best with the designed tent at h = 4-8 (R^2 0.93-0.97 both ways),",
+    "new": "it agrees with the designed tent at R^2 0.93-0.97 both ways at halo 4-8 px, but so does the halo-0 latent (0.96 / 0.95) and block mass itself (0.94 / 0.92), so agreement does not single the tent out, and in content the halo latents are not the tent (halo 8 px: I_avail 193 vs 282 nats, participation ratio 22 vs 31, horizon-16 ceiling 0.38 vs 0.33; checker),"
+   },
+   {
+    "claim": 3,
+    "old": "Higher learned closure ceilings are bought by smoothing.",
+    "new": "Higher learned closure ceilings come with smoothing and with lost predictable content; the smoothing itself need not cost content: the designed tent (a smoothed block mass, also a hand design) has more I_avail / I_capt than block mass (282 / 179 nats) and a higher horizon-16 ceiling (0.33 vs 0.14), while the learned N4 / N8 closure latents have about the tent's effective dimension or less (participation ratio 30 / 22 vs 31) and 77 / 88 nats less I_avail (checker). Comparison at c = 1 and 2 only: there is no hand design at c = 4 (learned c = 4 maxima 479 I_avail, N4_recon_c4, and 225 I_capt, N8_local_c4)."
+   },
+   {
+    "claim": 4,
+    "old": "is at least as good a bias as the global closure head at every receptive field:",
+    "new": "is a better bias than the global closure head at every receptive field for horizons up to 4 (checker; not at horizon 8 for block-only encoders, see below):"
+   },
+   {
+    "claim": 4,
+    "old": "higher captured predictive information at h = 1 and equal or higher ceilings, and closer to block mass.",
+    "new": "higher captured predictive information at h = 1 (I_capt N 146 / 160 / 155 / 128 vs 121 / 115 / 111 / 92 nats, L 148 / 163 / 163 / 131 vs 124 / 121 / 112 / 89 at halo 0 / 4 / 8 / 16), higher ceilings at horizons <= 4 at every receptive field (paired trajectory bootstrap z >= 7.8), and closer to block mass. Checker: not equal or higher ceilings everywhere: for the block-only encoders the global closure head is more closed at horizon 8 (N0 -0.016, z -6.0; L0 -0.022, z -9.1), and at horizon 16 the N8 / L8 differences are within noise (z -0.7 / -1.1)."
+   },
+   {
+    "claim": 5,
+    "old": "Locality is what lets closure find mass:",
+    "new": "Locality is what lets closure find mass in this grid (checker: the U arm also differs in optimisation, 2,000 instead of 3,000 steps, weight decay 0.3, batch 256, and a global 64 x 64 whitening, so locality is not isolated; the same U encoder lands on block mass under reconstruction, R^2 0.97):"
+   },
+   {
+    "claim": 6,
+    "old": "partly mass, less closed than block mass beyond h = 2.",
+    "new": "partly mass (R^2(mass | Z) 0.74 at halo 0, 0.56 at halo 16 px), less closed than block mass at horizons 1, 2, 4 and 16 (N0_pib: -0.046 / -0.086 / -0.084 / -0.023, paired z <= -3.3) but slightly more closed at horizon 8 (0.394 vs 0.375, z 3.3; checker); N16_pib is less closed at every horizon."
+   },
+   {
+    "claim": 9,
+    "old": "nonlinear reconstruction is not (seed R^2 0.08-0.87).",
+    "new": "nonlinear reconstruction at c = 1 is not (seed R^2 0.08-0.87). Checker: at c = 2 / 4 the largest closure/local seed difference is 0.032 (N8_clos_c2, horizon 8); nonlinear reconstruction seed R^2 is 0.40-0.60 at c = 2 and 0.88-0.93 at c = 4; seed R^2 comes from latents that stayed on the pod and could not be recomputed."
+   },
+   {
+    "claim": 10,
+    "old": "pod hours 0.396 + 0.447 + 1.951 = 2.79.",
+    "new": "pod hours 0.396 + 0.447 + 1.951 = 2.79 (LEDGER column, request to termination; billed GPU-hours = billed / rate = 0.344 + 0.342 + 1.825 = 2.51; r4-bias-001 ran on an A100 80GB PCIe, datacrunch, $2.3489/h, r4-bias-002/003 on an H100 80GB PCIe, lambdalabs, $3.29/h; checker)."
+   }
+  ],
+  "report_wording_not_in_summary": [
+   "'recovers local mass conservation': the study measures agreement with block mass, not a conservation law of the latent; read 'recovers a block-mass-like variable'.",
+   "'With an 8-px halo it matches the designed tent window (R^2 0.93 / 0.97)': the halo-0 and halo-4 latents agree with the tent as well (0.96 / 0.95, 0.97 / 0.97), and the halo-8 latent has 88 nats less I_avail than the tent.",
+   "'the local law is at least as good at every receptive field ... with equal or higher ceilings': not at horizon 8 for N0 / L0 (see claim 4).",
+   "'Reconstruction bias gives an unstable, poorly closed variable when the encoder is nonlinear': at c = 1 and small halos only.",
+   "'Stability: closure and local-law ceilings differ by at most 0.014 between seeds': at c = 1; up to 0.032 at c = 2 / 4.",
+   "'Pod-hours 2.79' is the ledger column from request to termination; billed GPU-hours are 2.51. 'The two issues from r4-bias-001': the OOM first appeared in r4-bias-002 (r4-bias-001 was cancelled for slow vmapped convolution gradients).",
+   "'Memory stayed flat at 7.2 GB in use, 18.8 GB peak': 7.2-7.8 GB in use, 18.8-18.9 GB peak over the configs (progress.txt)."
+  ],
+  "secrets": "none: public world parameters, no exam seeds or keys; results/status.json and progress.txt carry no IP (redacted '<ip>') or credentials."
+ }
 }
