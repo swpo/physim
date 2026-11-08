@@ -25,4 +25,7 @@ object mass, object mass + position at block resolution), both directions; seed 
 
 Code: `b4.py` (layout, grid), `bsim.py` (GPU simulation), `bnets.py` (encoders, objectives), `btrain.py`
 (training + encoding), `bcert.py` (CPU certification workers), `bcombine.py` (pooling), `bwin.py` (window
-statistics), `job.sh`. Request: `../../gpu/requests/r4-bias-001.json`.
+statistics), `job.sh`. Requests: `../../gpu/requests/r4-bias-001.json` (cancelled: vmapped convolution
+gradients too slow), `r4-bias-002.json` (cancelled: CUDA out of memory, because jitted functions that closed over the
+5 GB device copy of level 0 embedded it as a constant in every executable), `r4-bias-003.json` (data passed as
+arguments, compiled functions released between configs).

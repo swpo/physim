@@ -8,7 +8,15 @@ whitening computed on all frames of the fit half). Each frozen Phi is applied to
 trajectories (base + branches) -> $B4_WORK/lat/<phi>__cert<h>.npz plus a .ready marker that the CPU certification
 workers (bcert.py) pick up. Hand designs (block mass, block channel means, block view, tent window, object mass and
 object mass + position at block resolution) and untrained random linear windows go first.
+
+Memory (r4-bias-003): every jitted function takes the device data (Xd, XBd, MU, SD) as ARGUMENTS. In JAX 0.12 a
+closed-over device array is embedded in the compiled executable as a constant, so r4-bias-001/002 compiled a copy of
+the 5 GB level-0 data into every training, validation and encoding executable (slow compiles, then
+CUDA_ERROR_OUT_OF_MEMORY when loading further executables). Compiled trainers and encoders are also dropped and the
+JAX caches cleared after every config. Untrained random windows (steps 0) have no validation loss (logged as
+'untrained', stored as null).
 """
+import gc
 import json
 import os
 import time
@@ -51,9 +59,18 @@ def log(*a):
 def mem():
     try:
         st = jax.devices()[0].memory_stats() or {}
-        return f"{st.get('peak_bytes_in_use', 0) / 2**30:.1f} GB peak"
+        return (f"{st.get('peak_bytes_in_use', 0) / 2**30:.1f} GB peak, "
+                f"{st.get('bytes_in_use', 0) / 2**30:.1f} GB in use")
     except Exception:
         return "n/a"
+
+
+def release():
+    """Drop every compiled trainer / encoder and JAX's caches, then collect (between configs)."""
+    _TRAINERS.clear()
+    _ENCD.clear()
+    gc.collect()
+    jax.clear_caches()
 
 
 # ----------------------------------------------------------------------------- data
@@ -90,10 +107,11 @@ VAL_J = np.stack([_rng.integers(N_TR, J, 512) for _ in b4.HALVES])
 VAL_T = np.stack([_rng.integers(T_LO, T_HI + 1, 512) for _ in b4.HALVES])
 
 
-def gather(hidx, j, t, offs):
-    """Standardised frames (F, n, 2, 128, 128) of half hidx at trajectories j, ticks t + offs."""
-    x = Xd[hidx, j[None, :], t[None, :] + jnp.asarray(offs)[:, None]]
-    return (x - MU[hidx][:, None, None]) / SD[hidx][:, None, None]
+def gather(X, mu, sd, hidx, j, t, offs):
+    """Standardised frames (F, n, 2, 128, 128) of half hidx at trajectories j, ticks t + offs (X = Xd, passed as an
+    argument, never closed over)."""
+    x = X[hidx, j[None, :], t[None, :] + jnp.asarray(offs)[:, None]]
+    return (x - mu[hidx][:, None, None]) / sd[hidx][:, None, None]
 
 
 # ----------------------------------------------------------------------------- encoding (frozen Phi)
@@ -106,13 +124,13 @@ def _enc_jit(enc, h, which):
     k = (enc, h, which)
     if k not in _ENCD:
         if which == "base":
-            def g(P, dh, j, t, hi):
-                x = Xd[dh, j, t]
-                return BN.enc_apply(enc, h, P, (x - MU[hi][:, None, None]) / SD[hi][:, None, None])
+            def g(P, X, mu, sd, dh, j, t, hi):
+                x = X[dh, j, t]
+                return BN.enc_apply(enc, h, P, (x - mu[hi][:, None, None]) / sd[hi][:, None, None])
         else:
-            def g(P, dh, kk, hi):
-                x = XBd[dh, kk]
-                return BN.enc_apply(enc, h, P, (x - MU[hi][:, None, None]) / SD[hi][:, None, None])
+            def g(P, X, mu, sd, dh, kk, hi):
+                x = X[dh, kk]
+                return BN.enc_apply(enc, h, P, (x - mu[hi][:, None, None]) / sd[hi][:, None, None])
         _ENCD[k] = jax.jit(g)
     return _ENCD[k]
 
@@ -127,7 +145,7 @@ def encode_base(enc, h, P, data_h, jj, tt, hidx):
     """Base frames (jj, tt) of half data_h -> z (n, 8, 8, c) float64 numpy. One transfer at the end."""
     f = _enc_jit(enc, h, "base")
     (jp, n), (tp, _) = _pad(np.asarray(jj)), _pad(np.asarray(tt))
-    out = [f(P, HI[data_h], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK]), hidx)
+    out = [f(P, Xd, MU, SD, HI[data_h], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK]), hidx)
            for i in range(0, len(jp), ENC_CHUNK)]
     return np.asarray(jnp.concatenate(out), np.float64)[:n]
 
@@ -135,7 +153,7 @@ def encode_base(enc, h, P, data_h, jj, tt, hidx):
 def encode_branch(enc, h, P, data_h, hidx):
     f = _enc_jit(enc, h, "branch")
     kp, n = _pad(np.arange(NBR))
-    out = [f(P, HI[data_h], jnp.asarray(kp[i:i + ENC_CHUNK]), hidx) for i in range(0, len(kp), ENC_CHUNK)]
+    out = [f(P, XBd, MU, SD, HI[data_h], jnp.asarray(kp[i:i + ENC_CHUNK]), hidx) for i in range(0, len(kp), ENC_CHUNK)]
     return np.asarray(jnp.concatenate(out), np.float64)[:n]
 
 
@@ -260,13 +278,13 @@ def trainer(enc, h, obj, c):
     n_steps = float(STEPS[enc])
     l2 = BN.l2_matrices(enc, None)
 
-    def one_step(carry, _):
+    def one_step(carry, X, mu, sd):
         P, M, V, it, key, hidx = carry
         key, kj, kt, kn = jax.random.split(key, 4)
         j = jax.random.randint(kj, (B,), 0, N_TR)
         t = jax.random.randint(kt, (B,), T_LO, T_HI + 1)
-        xe = gather(hidx, j, t, fe)
-        xt = gather(hidx, j, t, ft) if ft else xe[:0]
+        xe = gather(X, mu, sd, hidx, j, t, fe)
+        xt = gather(X, mu, sd, hidx, j, t, ft) if ft else xe[:0]
         g = jax.grad(loss)(P, xe, xt, kn)
         it = it + 1.0
         M = jax.tree_util.tree_map(lambda m, gg: 0.9 * m + 0.1 * gg, M, g)
@@ -276,21 +294,26 @@ def trainer(enc, h, obj, c):
         P = jax.tree_util.tree_map(lambda p, m, v: p - lr_t * (m / c1) / (jnp.sqrt(v / c2) + 1e-8), P, M, V)
         if wd > 0:
             P["enc"] = {k: (v * (1 - lr_t * wd) if k in l2 else v) for k, v in P["enc"].items()}
-        return (P, M, V, it, key, hidx), None
+        return (P, M, V, it, key, hidx)
 
-    def chunk(P, M, V, it, key, hidx):
-        (P, M, V, it, key, _), _ = jax.lax.scan(one_step, (P, M, V, it, key, hidx), None, length=CHUNK)
+    def chunk(P, M, V, it, key, hidx, X, mu, sd):
+        (P, M, V, it, key, _), _ = jax.lax.scan(lambda cr, _: (one_step(cr, X, mu, sd), None),
+                                                (P, M, V, it, key, hidx), None, length=CHUNK)
         return P, M, V, it, key
 
     nv = NV * (2 if (enc == "U" and c == 4) else 1)
 
-    def val(P, hidx):
-        j, t = jnp.asarray(VAL_J)[hidx, :nv], jnp.asarray(VAL_T)[hidx, :nv]
-        xe = gather(hidx, j, t, fe)
-        xt = gather(hidx, j, t, ft) if ft else xe[:0]
+    def val(P, hidx, vj, vt, X, mu, sd):
+        j, t = vj[hidx, :nv], vt[hidx, :nv]
+        xe = gather(X, mu, sd, hidx, j, t, fe)
+        xt = gather(X, mu, sd, hidx, j, t, ft) if ft else xe[:0]
         return loss(P, xe, xt, jax.random.PRNGKey(999))
 
-    out = (jax.jit(jax.vmap(chunk)), jax.jit(jax.vmap(val)), B, nv)
+    chunk_v = jax.jit(jax.vmap(chunk, in_axes=(0, 0, 0, 0, 0, 0, None, None, None)))
+    val_v = jax.jit(jax.vmap(val, in_axes=(0, 0, None, None, None, None, None)))
+    vj, vt = jnp.asarray(VAL_J), jnp.asarray(VAL_T)
+    out = (lambda P, M, V, it, key, hidx: chunk_v(P, M, V, it, key, hidx, Xd, MU, SD),
+           lambda P, hidx: val_v(P, hidx, vj, vt, Xd, MU, SD), B, nv)
     _TRAINERS[key_] = out
     return out
 
@@ -365,8 +388,10 @@ def train_config(cid, name, enc, h, obj, c):
             np.savez_compressed(f"{WIN}/{phi}__fit{fh}.npz", W=np.asarray(Pe["W"], np.float32), sd=STAT[fh][1],
                                 mu=STAT[fh][0], h=h, c=c, enc=enc, obj=obj)
     b4.jdump(infos, f"{TRN}/{name}.json")
-    log(f"{name}: steps {steps}, val {np.round(v_init, 4).tolist()} -> {np.round(best, 4).tolist()} "
-        f"(best at {best_it}), train {t_train:.1f}s (chunks {t_chunks}), total {time.time() - t1:.1f}s, {mem()}")
+    vtxt = (f"val {np.round(v_init, 4).tolist()} -> {np.round(best, 4).tolist()} (best at {best_it})" if steps
+            else "untrained (no validation loss)")
+    log(f"{name}: steps {steps}, {vtxt}, train {t_train:.1f}s (chunks {t_chunks}), total {time.time() - t1:.1f}s, "
+        f"{mem()}")
 
 
 def main():
@@ -386,6 +411,8 @@ def main():
             log(f"{name} FAILED: {exc!r}")
             with open(os.path.join(OUT, "train_errors.txt"), "a") as f:
                 f.write(f"{name}\n{traceback.format_exc()}\n")
+            del exc
+        release()
     b4.jdump({"skipped_by_deadline": skipped, "n_configs": len(todo), "seconds": time.time() - T0,
               "platform": {"backend": jax.default_backend(), "devices": [str(d) for d in jax.devices()]}},
              os.path.join(OUT, "train_done.json"))

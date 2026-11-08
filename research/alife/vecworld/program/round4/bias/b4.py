@@ -138,15 +138,19 @@ def configs():
     add("L", 8, "clos16", 1)
     for o in ("clos", "recon", "local", "pib"):
         add("U", None, o, 1)
-    for c in (2, 4):
+    for c in (2, 4):                    # widths 2 and 4: two receptive fields (N8, N0), U and the L arm first
         for o in ("clos", "recon", "local", "pib"):
-            for h in RF:
+            for h in (8, 0):
                 add("N", h, o, c)
-        for o in ("clos", "recon", "local", "pib"):
             add("U", None, o, c)
         if c == 2:
             for h in RF:
                 add("L", h, "clos", 2)
+    for c in (2, 4):                    # then the remaining receptive fields (r4-bias-003 order; same set as before)
+        for o in ("clos", "recon", "local", "pib"):
+            for h in RF:
+                if h not in (8, 0):
+                    add("N", h, o, c)
     if TINY:
         keep = {"N0_clos_c1", "N16_recon_c1", "N8_local_c1", "N4_pib_c1", "L8_recon_c1", "U_pib_c1", "N8_clos_c4",
                 "U_local_c4", "L8_clos16_c1"}
