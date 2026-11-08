@@ -1,0 +1,39 @@
+[     0.1s] M2 objects J 36 T 300 test [40, 100, 160, 220] quick False
+[    78.8s] copy check: max |V_analyze - V_copy| = 0.0
+[   107.4s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   109.5s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   109.5s]   rmlp fold 0: 18 fit traj, 16.1 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   127.2s]     rmlp seed 0: epochs 38, best epoch per h [13, 11, 8, 6, 4, 0], val gain [0.10000000149011612, 0.10300000011920929, 0.09300000220537186, 0.0689999982714653, 0.028999999165534973, 0.0]
+[   130.8s]     rmlp seed 1: epochs 39, best epoch per h [14, 10, 6, 6, 3, 0], val gain [0.09799999743700027, 0.10199999809265137, 0.09399999678134918, 0.07000000029802322, 0.02800000086426735, 0.0]
+[   130.8s]   slotnet fold 0: 18 fit traj, 21.3 s
+[   130.8s]   fold 0 done in 52.0 s
+[   150.0s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   152.2s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   152.2s]   rmlp fold 1: 18 fit traj, 6.7 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   159.2s]     rmlp seed 0: epochs 41, best epoch per h [16, 13, 9, 5, 4, 0], val gain [0.10700000077486038, 0.1080000028014183, 0.10199999809265137, 0.07000000029802322, 0.02800000086426735, 0.0]
+[   162.8s]     rmlp seed 1: epochs 38, best epoch per h [13, 13, 11, 5, 4, 2], val gain [0.10899999737739563, 0.11299999803304672, 0.10700000077486038, 0.07100000232458115, 0.029999999329447746, 0.0]
+[   162.8s]   slotnet fold 1: 18 fit traj, 10.5 s
+[   162.8s]   fold 1 done in 31.9 s
+[   181.0s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   183.3s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   183.3s]   rmlp fold 2: 18 fit traj, 6.3 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   190.2s]     rmlp seed 0: epochs 37, best epoch per h [12, 12, 9, 5, 5, 0], val gain [0.0949999988079071, 0.10700000077486038, 0.10599999874830246, 0.07400000095367432, 0.028999999165534973, 0.0]
+[   194.1s]     rmlp seed 1: epochs 38, best epoch per h [13, 12, 9, 6, 4, 0], val gain [0.0989999994635582, 0.10899999737739563, 0.10599999874830246, 0.0729999989271164, 0.03200000151991844, 0.0]
+[   194.1s]   slotnet fold 2: 18 fit traj, 10.8 s
+[   194.1s]   fold 2 done in 31.4 s
+[   213.1s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   215.5s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   215.5s]   rmlp fold 3: 18 fit traj, 7.9 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   223.7s]     rmlp seed 0: epochs 40, best epoch per h [15, 9, 7, 4, 4, 0], val gain [0.08399999886751175, 0.08900000154972076, 0.0860000029206276, 0.06599999964237213, 0.029999999329447746, 0.0]
+[   227.5s]     rmlp seed 1: epochs 40, best epoch per h [15, 10, 7, 5, 4, 2], val gain [0.09300000220537186, 0.10000000149011612, 0.09399999678134918, 0.07400000095367432, 0.032999999821186066, 0.0020000000949949026]
+[   227.5s]   slotnet fold 3: 18 fit traj, 12.0 s
+[   227.5s]   fold 3 done in 33.4 s
+00:49:01 [clos4 M2_objects   227.5s]   fold 3 done in 33.4 s
+[   227.8s] ceiling [0.8583, 0.7595, 0.5825, 0.4159, 0.2069, 0.059] +- [0.0161, 0.0175, 0.0177, 0.0183, 0.0254, 0.0175]
+00:49:01 [clos4 M2_objects   227.8s] ceiling [0.8583, 0.7595, 0.5825, 0.4159, 0.2069, 0.059] +- [0.0161, 0.0175, 0.0177, 0.0183, 0.0254, 0.0175]
+[   227.8s] best ['slotnet', 'slotnet', 'slotnet', 'slotnet', 'slotnet', 'ar1'] Vbest [0.148, 0.2455, 0.4675, 0.5998, 0.8299, 0.9515] Voracle [0.0089, 0.0163, 0.0717, 0.099, 0.2635, 0.5955]
+[   228.0s] selection-checked ceiling [0.8579, 0.759, 0.5823, 0.4153, 0.2059, 0.0567]
+00:49:01 [clos4 M2_objects   228.0s] selection-checked ceiling [0.8579, 0.759, 0.5823, 0.4153, 0.2059, 0.0567]
+[   228.2s] MW oracle cost dV/Vbest [0.0009, 0.0165, 0.0329, 0.0298, 0.0517, 0.0456] +- [0.0156, 0.0122, 0.0101, 0.0107, 0.0158, 0.0113]
+[   228.2s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M2_objects.json
+00:49:01 [clos4 M2_objects   228.2s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M2_objects.json

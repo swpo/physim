@@ -1,0 +1,8 @@
+00:42:34 [sim4     0.7s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'batching': 'vmap', 'x64': True} mode fm tiny False
+00:42:48 [sim4    14.0s] FM init + burn-in 12.9 s, 72 members
+00:43:17 [sim4    43.0s] FM branches at tick 40 {'init_burn': 12.9, 'base': 4.5, 'branch': 8.1, 'ext': 8.4, 'mw': 6.2}
+00:43:25 [sim4    51.8s] FM branches at tick 100 {'init_burn': 12.9, 'base': 6.2, 'branch': 12.3, 'ext': 8.4, 'mw': 8.7}
+00:43:34 [sim4    60.5s] FM branches at tick 160 {'init_burn': 12.9, 'base': 7.9, 'branch': 16.5, 'ext': 8.4, 'mw': 11.3}
+00:43:43 [sim4    69.3s] FM branches at tick 220 {'init_burn': 12.9, 'base': 9.6, 'branch': 20.7, 'ext': 8.4, 'mw': 13.9}
+00:43:45 [sim4    71.7s] FM saved {'init_burn': 12.9, 'base': 11.8, 'branch': 20.7, 'ext': 8.4, 'mw': 13.9} member-ticks/s {'burn': 279.4, 'base': 1830.4, 'branch': 2224.1, 'ext': 2726.9, 'mw': 1994.8}
+00:43:45 [sim4    71.7s] done fm

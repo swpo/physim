@@ -1,0 +1,68 @@
+[     0.1s] P objects J 36 T 296 test [24, 56, 88, 120, 152, 184, 216, 248, 280] quick False
+[    82.4s] copy check: max |V_analyze - V_copy| = 0.0
+[   106.1s]   local (+u2) fold 0: 9.3 s
+[   120.4s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   122.4s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   122.4s]   rmlp fold 0: 18 fit traj, 16.4 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   138.9s]     rmlp seed 0: epochs 36, best epoch per h [11, 9, 5, 4, 4], val gain [0.08900000154972076, 0.08399999886751175, 0.07699999958276749, 0.054999999701976776, 0.027000000700354576]
+[   143.6s]     rmlp seed 1: epochs 42, best epoch per h [17, 10, 7, 5, 3], val gain [0.08900000154972076, 0.08900000154972076, 0.0860000029206276, 0.06599999964237213, 0.03200000151991844]
+[   143.6s]   slotnet fold 0: 18 fit traj, 21.2 s
+[   154.6s]     rmlp seed 0: epochs 38, best epoch per h [13, 9, 5, 5, 4], val gain [0.09000000357627869, 0.08500000089406967, 0.07800000160932541, 0.0560000017285347, 0.024000000208616257]
+[   156.6s]     rmlp seed 1: epochs 39, best epoch per h [14, 10, 7, 5, 3], val gain [0.08799999952316284, 0.08799999952316284, 0.08399999886751175, 0.06400000303983688, 0.028999999165534973]
+[   156.6s]   slotnet+u fold 0: 12.9 s, baseline ['ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1+u2']
+[   156.6s]   fold 0 done in 73.9 s
+[   172.5s]   local (+u2) fold 1: 5.1 s
+[   176.3s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   177.6s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   177.7s]   rmlp fold 1: 18 fit traj, 5.2 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   182.7s]     rmlp seed 0: epochs 41, best epoch per h [16, 11, 8, 5, 4], val gain [0.11599999666213989, 0.1120000034570694, 0.10400000214576721, 0.07800000160932541, 0.03799999877810478]
+[   185.1s]     rmlp seed 1: epochs 40, best epoch per h [15, 13, 8, 6, 4], val gain [0.11500000208616257, 0.11400000005960464, 0.10499999672174454, 0.08100000023841858, 0.03999999910593033]
+[   185.1s]   slotnet fold 1: 18 fit traj, 7.4 s
+[   191.2s]     rmlp seed 0: epochs 41, best epoch per h [16, 11, 8, 5, 4], val gain [0.10700000077486038, 0.10599999874830246, 0.10100000351667404, 0.07800000160932541, 0.03799999877810478]
+[   193.7s]     rmlp seed 1: epochs 40, best epoch per h [15, 13, 8, 6, 5], val gain [0.1120000034570694, 0.10899999737739563, 0.10199999809265137, 0.07999999821186066, 0.039000000804662704]
+[   193.7s]   slotnet+u fold 1: 8.6 s, baseline ['ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1+u2']
+[   193.7s]   fold 1 done in 37.1 s
+[   209.3s]   local (+u2) fold 2: 5.7 s
+[   213.0s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   214.6s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   214.6s]   rmlp fold 2: 18 fit traj, 5.3 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   220.0s]     rmlp seed 0: epochs 39, best epoch per h [14, 11, 8, 8, 5], val gain [0.1120000034570694, 0.11699999868869781, 0.1080000028014183, 0.07400000095367432, 0.02500000037252903]
+[   222.9s]     rmlp seed 1: epochs 41, best epoch per h [16, 13, 8, 6, 4], val gain [0.11299999803304672, 0.11400000005960464, 0.10499999672174454, 0.07199999690055847, 0.02500000037252903]
+[   222.9s]   slotnet fold 2: 18 fit traj, 8.2 s
+[   229.6s]     rmlp seed 0: epochs 37, best epoch per h [12, 11, 8, 8, 5], val gain [0.1080000028014183, 0.11400000005960464, 0.10400000214576721, 0.07000000029802322, 0.023000000044703484]
+[   232.0s]     rmlp seed 1: epochs 41, best epoch per h [16, 13, 8, 6, 4], val gain [0.10999999940395355, 0.11100000143051147, 0.10100000351667404, 0.0689999982714653, 0.023000000044703484]
+[   232.0s]   slotnet+u fold 2: 9.2 s, baseline ['ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1+u2']
+[   232.0s]   fold 2 done in 38.3 s
+[   246.5s]   local (+u2) fold 3: 4.7 s
+[   249.6s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   251.3s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   251.3s]   rmlp fold 3: 18 fit traj, 4.8 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   256.6s]     rmlp seed 0: epochs 37, best epoch per h [12, 9, 6, 5, 4], val gain [0.10700000077486038, 0.1080000028014183, 0.10700000077486038, 0.07400000095367432, 0.028999999165534973]
+[   259.5s]     rmlp seed 1: epochs 42, best epoch per h [17, 11, 7, 5, 4], val gain [0.10599999874830246, 0.1120000034570694, 0.10599999874830246, 0.07699999958276749, 0.03099999949336052]
+[   259.5s]   slotnet fold 3: 18 fit traj, 8.2 s
+[   266.1s]     rmlp seed 0: epochs 39, best epoch per h [14, 10, 6, 6, 4], val gain [0.10300000011920929, 0.10400000214576721, 0.10199999809265137, 0.07000000029802322, 0.02500000037252903]
+[   268.7s]     rmlp seed 1: epochs 38, best epoch per h [13, 11, 7, 5, 5], val gain [0.09700000286102295, 0.10400000214576721, 0.10000000149011612, 0.07400000095367432, 0.029999999329447746]
+[   268.7s]   slotnet+u fold 3: 9.2 s, baseline ['ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1+u2', 'ar1+u2']
+[   268.7s]   fold 3 done in 36.6 s
+00:51:02 [clos4 P_objects   268.7s]   fold 3 done in 36.6 s
+[   269.0s] ar1 refit check (max |err diff|) 0.0
+[   269.0s] ceiling [0.8587, 0.7467, 0.5844, 0.4065, 0.2022] +- [0.0119, 0.0142, 0.0154, 0.0139, 0.0125]
+00:51:03 [clos4 P_objects   269.0s] ceiling [0.8587, 0.7467, 0.5844, 0.4065, 0.2022] +- [0.0119, 0.0142, 0.0154, 0.0139, 0.0125]
+[   269.0s] best ['slotnet+u', 'slotnet+u', 'slotnet+u', 'slotnet', 'slotnet']
+/home/ubuntu/gpujob/r4-wind-002/src/research/alife/vecworld/program/round4/wind/p4lib.py:358: RuntimeWarning: invalid value encountered in divide
+  r[f"z_n{n}_R{Rr}"] = d6.mean(0) / se
+[   273.4s]   recovered share best_blind -> best_all       [0.44, 0.178, 0.057, 0.0, 0.0]
+[   273.4s]   recovered share slotnet -> slotnet+u         [0.44, 0.178, 0.057, -0.134, -0.046]
+[   273.4s]   recovered share ridge_p2 -> ridge_p2+u2      [0.45, 0.309, 0.215, -0.009, 0.01]
+[   273.4s]   recovered share slotnet -> aware_base        [-1.864, -2.3, -1.703, -2.294, -0.56]
+/home/ubuntu/gpujob/r4-wind-002/src/research/alife/vecworld/program/round4/wind/p4lib.py:502: RuntimeWarning: invalid value encountered in divide
+  r[f"z_n{n_}_R{Rr}"] = d.mean(0) / np.sqrt((sb2 + sn2 / Rr) / n_)
+[   275.6s] ES oes best aware [0.683, 0.544, 0.403, 0.277, 0.148] ES loss blind->aware (all) [0.00507, 0.00232, 0.00086, 0.0, 0.0] z64 R1 [3.0, 1.34, 0.52, nan, nan]
+[   275.6s]   loss/Vbest all       [0.026, 0.011, 0.004, 0.0, 0.0] z64 R1 [2.4, 1.1, 0.6, nan, nan]
+[   275.6s]   loss/Vbest programs_only [0.04, 0.014, 0.005, 0.0, 0.0] z64 R1 [3.7, 1.4, 0.7, nan, nan]
+[   275.6s]   loss/Vbest none      [-0.016, -0.0, -0.0, 0.0, 0.0] z64 R1 [-1.8, -0.1, -0.1, nan, nan]
+[   275.6s]   loss/Vbest blind     [0.013, 0.008, -0.007, 0.0, 0.0] z64 R1 [1.4, 0.8, -1.1, nan, nan]
+[   275.6s]   loss/Vbest aimed     [0.06, 0.029, 0.02, 0.0, 0.0] z64 R1 [5.8, 2.9, 2.6, nan, nan]
+[   275.6s]   loss/Vbest regional  [0.047, 0.006, 0.004, 0.0, 0.0] z64 R1 [4.1, 0.5, 0.4, nan, nan]
+[   275.7s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_P_objects.json
+00:51:09 [clos4 P_objects   275.7s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_P_objects.json

@@ -1,0 +1,68 @@
+[     0.1s] P coarse J 36 T 296 test [24, 56, 88, 120, 152, 184, 216, 248, 280] quick False
+[   104.6s] copy check: max |V_analyze - V_copy| = 0.0
+[   158.1s]   local (+u2) fold 0: 9.0 s
+[   168.2s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   169.7s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   169.7s]   rmlp fold 0: 18 fit traj, 11.6 s, baseline ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2']
+[   231.5s]     rmlp seed 0: epochs 300, best epoch per h [294, 281, 248, 239, 293], val gain [0.2290000021457672, 0.25999999046325684, 0.2639999985694885, 0.21299999952316284, 0.11599999666213989]
+[   283.7s]     rmlp seed 1: epochs 300, best epoch per h [294, 272, 294, 252, 261], val gain [0.21799999475479126, 0.25, 0.257999986410141, 0.21299999952316284, 0.11800000071525574]
+[   283.7s]   patchnet fold 0: 18 fit traj, 114.0 s
+[   337.5s]     rmlp seed 0: epochs 300, best epoch per h [296, 296, 296, 163, 95], val gain [0.19900000095367432, 0.23000000417232513, 0.22599999606609344, 0.1850000023841858, 0.1080000028014183]
+[   366.5s]     rmlp seed 1: epochs 188, best epoch per h [149, 149, 149, 149, 163], val gain [0.18000000715255737, 0.21699999272823334, 0.22300000488758087, 0.16899999976158142, 0.0949999988079071]
+[   366.5s]   patchnet+u fold 0: 82.8 s, baseline ['ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2']
+[   366.5s]   fold 0 done in 261.7 s
+[   408.1s]   local (+u2) fold 1: 7.3 s
+[   411.2s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   412.4s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   412.4s]   rmlp fold 1: 18 fit traj, 4.4 s, baseline ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2']
+[   450.3s]     rmlp seed 0: epochs 225, best epoch per h [200, 200, 200, 178, 198], val gain [0.23899999260902405, 0.2680000066757202, 0.27300000190734863, 0.21899999678134918, 0.06400000303983688]
+[   491.4s]     rmlp seed 1: epochs 265, best epoch per h [240, 240, 240, 240, 120], val gain [0.2280000001192093, 0.25699999928474426, 0.26499998569488525, 0.21699999272823334, 0.06499999761581421]
+[   491.4s]   patchnet fold 1: 18 fit traj, 79.0 s
+[   531.4s]     rmlp seed 0: epochs 217, best epoch per h [192, 192, 192, 164, 94], val gain [0.20000000298023224, 0.2329999953508377, 0.2329999953508377, 0.17800000309944153, 0.052000001072883606]
+[   572.7s]     rmlp seed 1: epochs 265, best epoch per h [240, 197, 197, 197, 199], val gain [0.20000000298023224, 0.22699999809265137, 0.23199999332427979, 0.18000000715255737, 0.05299999937415123]
+[   572.7s]   patchnet+u fold 1: 81.3 s, baseline ['ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2']
+[   572.7s]   fold 1 done in 206.2 s
+[   615.2s]   local (+u2) fold 2: 7.9 s
+[   618.5s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   619.7s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   619.7s]   rmlp fold 2: 18 fit traj, 4.5 s, baseline ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2']
+[   669.1s]     rmlp seed 0: epochs 297, best epoch per h [272, 253, 160, 190, 142], val gain [0.23100000619888306, 0.2540000081062317, 0.2540000081062317, 0.20200000703334808, 0.057999998331069946]
+[   711.1s]     rmlp seed 1: epochs 266, best epoch per h [241, 215, 215, 237, 236], val gain [0.2150000035762787, 0.24699999392032623, 0.2460000067949295, 0.20200000703334808, 0.05999999865889549]
+[   711.1s]   patchnet fold 2: 18 fit traj, 91.4 s
+[   759.2s]     rmlp seed 0: epochs 274, best epoch per h [240, 240, 172, 249, 192], val gain [0.1979999989271164, 0.22100000083446503, 0.21199999749660492, 0.1679999977350235, 0.050999999046325684]
+[   801.7s]     rmlp seed 1: epochs 266, best epoch per h [232, 241, 129, 174, 118], val gain [0.1860000044107437, 0.21199999749660492, 0.20399999618530273, 0.15700000524520874, 0.050999999046325684]
+[   801.7s]   patchnet+u fold 2: 90.6 s, baseline ['ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2']
+[   801.7s]   fold 2 done in 229.0 s
+[   842.9s]   local (+u2) fold 3: 7.2 s
+[   846.1s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   847.6s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0]
+[   847.6s]   rmlp fold 3: 18 fit traj, 4.6 s, baseline ['ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2', 'ridge_p2']
+[   894.4s]     rmlp seed 0: epochs 285, best epoch per h [260, 238, 237, 188, 203], val gain [0.22200000286102295, 0.25, 0.25600001215934753, 0.20600000023841858, 0.05999999865889549]
+[   941.0s]     rmlp seed 1: epochs 300, best epoch per h [283, 300, 211, 242, 176], val gain [0.2199999988079071, 0.24899999797344208, 0.2540000081062317, 0.20999999344348907, 0.06300000101327896]
+[   941.0s]   patchnet fold 3: 18 fit traj, 93.4 s
+[   985.9s]     rmlp seed 0: epochs 235, best epoch per h [210, 210, 199, 158, 155], val gain [0.18199999630451202, 0.20600000023841858, 0.20600000023841858, 0.16899999976158142, 0.050999999046325684]
+[  1019.3s]     rmlp seed 1: epochs 210, best epoch per h [185, 179, 179, 185, 98], val gain [0.17299999296665192, 0.20000000298023224, 0.19499999284744263, 0.1599999964237213, 0.050999999046325684]
+[  1019.3s]   patchnet+u fold 3: 78.3 s, baseline ['ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2', 'ridge_p2+u2']
+[  1019.3s]   fold 3 done in 217.6 s
+01:03:33 [clos4 P_coarse  1019.3s]   fold 3 done in 217.6 s
+[  1019.5s] ar1 refit check (max |err diff|) 0.0
+[  1019.5s] ceiling [0.9901, 0.9619, 0.8333, 0.4958, 0.1348] +- [0.0002, 0.0007, 0.0031, 0.0074, 0.0092]
+01:03:33 [clos4 P_coarse  1019.5s] ceiling [0.9901, 0.9619, 0.8333, 0.4958, 0.1348] +- [0.0002, 0.0007, 0.0031, 0.0074, 0.0092]
+[  1019.5s] best ['patchnet', 'patchnet', 'patchnet', 'patchnet', 'patchnet']
+/home/ubuntu/gpujob/r4-wind-002/src/research/alife/vecworld/program/round4/wind/p4lib.py:358: RuntimeWarning: invalid value encountered in divide
+  r[f"z_n{n}_R{Rr}"] = d6.mean(0) / se
+[  1023.8s]   recovered share best_blind -> best_all       [0.0, 0.0, 0.0, 0.0, 0.0]
+[  1023.8s]   recovered share patchnet -> patchnet+u       [-0.166, -0.133, -0.131, -0.705, -0.308]
+[  1023.8s]   recovered share ridge_p2 -> ridge_p2+u2      [0.118, 0.134, 0.177, 0.077, -0.004]
+[  1023.8s]   recovered share patchnet -> aware_base       [-1.989, -2.098, -2.361, -4.742, -1.609]
+/home/ubuntu/gpujob/r4-wind-002/src/research/alife/vecworld/program/round4/wind/p4lib.py:502: RuntimeWarning: invalid value encountered in divide
+  r[f"z_n{n_}_R{Rr}"] = d.mean(0) / np.sqrt((sb2 + sn2 / Rr) / n_)
+[  1026.6s] ES oes best aware [0.924, 0.835, 0.628, 0.324, 0.087] ES loss blind->aware (all) [0.0, 0.0, 0.0, 0.0, 0.0] z64 R1 [nan, nan, nan, nan, nan]
+[  1026.6s]   loss/Vbest all       [0.0, 0.0, 0.0, 0.0, 0.0] z64 R1 [nan, nan, nan, nan, nan]
+[  1026.6s]   loss/Vbest programs_only [0.0, 0.0, 0.0, 0.0, 0.0] z64 R1 [nan, nan, nan, nan, nan]
+[  1026.6s]   loss/Vbest none      [0.0, 0.0, 0.0, 0.0, 0.0] z64 R1 [nan, nan, nan, nan, nan]
+[  1026.6s]   loss/Vbest blind     [0.0, 0.0, 0.0, 0.0, 0.0] z64 R1 [nan, nan, nan, nan, nan]
+[  1026.6s]   loss/Vbest aimed     [0.0, 0.0, 0.0, 0.0, 0.0] z64 R1 [nan, nan, nan, nan, nan]
+[  1026.6s]   loss/Vbest regional  [0.0, 0.0, 0.0, 0.0, 0.0] z64 R1 [nan, nan, nan, nan, nan]
+[  1026.7s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_P_coarse.json
+01:03:40 [clos4 P_coarse  1026.7s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_P_coarse.json

@@ -1,0 +1,56 @@
+[     0.1s] M objects J 36 T 300 test [40, 100, 160, 220] quick False
+[    60.3s] copy check: max |V_analyze - V_copy| = 0.0
+[    84.5s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[    85.8s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[    85.8s]   rmlp fold 0: 18 fit traj, 14.6 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   101.1s]     rmlp seed 0: epochs 41, best epoch per h [16, 12, 8, 7, 5, 0], val gain [0.11299999803304672, 0.11800000071525574, 0.11599999666213989, 0.0820000022649765, 0.03200000151991844, 0.0]
+[   104.0s]     rmlp seed 1: epochs 41, best epoch per h [16, 13, 9, 9, 4, 0], val gain [0.11599999666213989, 0.12300000339746475, 0.11900000274181366, 0.0860000029206276, 0.03400000184774399, 0.0]
+[   104.1s]   slotnet fold 0: 18 fit traj, 18.3 s
+[   104.1s]   fold 0 done in 43.7 s
+[   121.4s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   123.7s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   123.7s]   rmlp fold 1: 18 fit traj, 6.0 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   130.6s]     rmlp seed 0: epochs 39, best epoch per h [14, 11, 7, 7, 3, 0], val gain [0.10199999809265137, 0.10300000011920929, 0.09399999678134918, 0.061000000685453415, 0.02500000037252903, 0.0]
+[   137.4s]     rmlp seed 1: epochs 42, best epoch per h [17, 12, 8, 5, 4, 3], val gain [0.10300000011920929, 0.10199999809265137, 0.09700000286102295, 0.0689999982714653, 0.029999999329447746, 0.004000000189989805]
+[   137.4s]   slotnet fold 1: 18 fit traj, 13.7 s
+[   137.4s]   fold 1 done in 33.3 s
+[   156.0s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   160.7s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   160.7s]   rmlp fold 2: 18 fit traj, 11.1 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   167.7s]     rmlp seed 0: epochs 40, best epoch per h [15, 10, 8, 6, 4, 0], val gain [0.10000000149011612, 0.10499999672174454, 0.10499999672174454, 0.07400000095367432, 0.03500000014901161, 0.0]
+[   170.3s]     rmlp seed 1: epochs 35, best epoch per h [10, 10, 10, 5, 5, 0], val gain [0.10000000149011612, 0.11100000143051147, 0.11100000143051147, 0.07500000298023224, 0.03500000014901161, 0.0]
+[   170.3s]   slotnet fold 2: 18 fit traj, 9.6 s
+[   170.3s]   fold 2 done in 32.9 s
+[   194.1s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   196.0s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   196.0s]   rmlp fold 3: 18 fit traj, 6.2 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   207.1s]     rmlp seed 0: epochs 42, best epoch per h [17, 11, 8, 5, 6, 0], val gain [0.10100000351667404, 0.10100000351667404, 0.10000000149011612, 0.07100000232458115, 0.03099999949336052, 0.0]
+[   211.1s]     rmlp seed 1: epochs 42, best epoch per h [17, 11, 9, 6, 5, 1], val gain [0.10100000351667404, 0.10300000011920929, 0.10199999809265137, 0.07900000363588333, 0.03999999910593033, 0.0010000000474974513]
+[   211.1s]   slotnet fold 3: 18 fit traj, 15.1 s
+[   211.1s]   fold 3 done in 40.9 s
+00:47:19 [clos4 M_objects   211.1s]   fold 3 done in 40.9 s
+[   211.4s] ceiling [0.853, 0.7749, 0.6148, 0.4167, 0.2076, 0.0574] +- [0.019, 0.0153, 0.0128, 0.0116, 0.0162, 0.0082]
+00:47:20 [clos4 M_objects   211.4s] ceiling [0.853, 0.7749, 0.6148, 0.4167, 0.2076, 0.0574] +- [0.019, 0.0153, 0.0128, 0.0116, 0.0162, 0.0082]
+[   211.4s] best ['slotnet', 'slotnet', 'slotnet', 'slotnet', 'slotnet', 'ar1'] Vbest [0.1615, 0.2367, 0.3959, 0.5845, 0.8178, 0.9472] Voracle [0.0092, 0.0168, 0.0312, 0.0831, 0.2688, 0.6069]
+[   211.6s] selection-checked ceiling [0.8515, 0.7741, 0.6148, 0.4164, 0.208, 0.0557]
+00:47:20 [clos4 M_objects   211.6s] selection-checked ceiling [0.8515, 0.7741, 0.6148, 0.4164, 0.208, 0.0557]
+[   211.7s] MW oracle cost dV/Vbest [0.0284, 0.0282, 0.0341, 0.0427, 0.0389, 0.0388] +- [0.0077, 0.0074, 0.0094, 0.008, 0.0154, 0.0184]
+[   211.8s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_objects.json
+00:47:20 [clos4 M_objects   211.8s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_objects.json
+[   211.8s] learning curve for ['ar1', 'ridge_p2', 'slotnet']
+[   217.5s]   LC frac 0.25 fold 0: 4 fit trajectories
+[   222.9s]   LC frac 0.25 fold 1: 4 fit trajectories
+[   228.7s]   LC frac 0.25 fold 2: 4 fit trajectories
+[   234.2s]   LC frac 0.25 fold 3: 4 fit trajectories
+[   241.9s]   LC frac 0.5 fold 0: 9 fit trajectories
+[   249.3s]   LC frac 0.5 fold 1: 9 fit trajectories
+[   257.2s]   LC frac 0.5 fold 2: 9 fit trajectories
+[   264.6s]   LC frac 0.5 fold 3: 9 fit trajectories
+[   276.1s]   LC frac 1.0 fold 0: 18 fit trajectories
+[   287.6s]   LC frac 1.0 fold 1: 18 fit trajectories
+[   300.6s]   LC frac 1.0 fold 2: 18 fit trajectories
+[   313.4s]   LC frac 1.0 fold 3: 18 fit trajectories
+[   313.5s] LC best {'0.25': [0.1725, 0.2596, 0.4455, 0.6392, 0.8724, 0.9669], '0.5': [0.1682, 0.2476, 0.4189, 0.6113, 0.8431, 0.9519], '1.0': [0.1615, 0.2367, 0.3959, 0.5845, 0.8178, 0.9477]}
+00:49:02 [clos4 M_objects   313.5s] LC best {'0.25': [0.1725, 0.2596, 0.4455, 0.6392, 0.8724, 0.9669], '0.5': [0.1682, 0.2476, 0.4189, 0.6113, 0.8431, 0.9519], '1.0': [0.1615, 0.2367, 0.3959, 0.5845, 0.8178, 0.9477]}
+[   313.5s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_objects.json
+00:49:02 [clos4 M_objects   313.5s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_objects.json

@@ -1,0 +1,7 @@
+/home/ubuntu/gpujob/r4-wind-002/.venv/lib/python3.12/site-packages/numpy/lib/_nanfunctions_impl.py:1997: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  var = nanvar(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+01:06:38 [combine4    0.5s] F M coarse ceiling F [0.991, 0.966, 0.847, 0.496, 0.175, 0.066] M [0.991, 0.967, 0.856, 0.508, 0.139, 0.069] F-M [-0.0, -0.001, -0.009, -0.012, 0.037, -0.002] se [0.0, 0.001, 0.005, 0.012, 0.019, 0.01]
+01:06:39 [combine4    1.1s] F M objects ceiling F [0.848, 0.768, 0.616, 0.429, 0.214, 0.063] M [0.853, 0.775, 0.615, 0.417, 0.208, 0.057] F-M [-0.005, -0.007, 0.001, 0.012, 0.006, 0.006] se [0.024, 0.028, 0.024, 0.024, 0.024, 0.015]
+01:06:40 [combine4    1.6s] F2 M2 objects ceiling F [0.888, 0.778, 0.622, 0.4, 0.193, 0.035] M [0.858, 0.76, 0.583, 0.416, 0.207, 0.059] F-M [0.03, 0.019, 0.039, -0.016, -0.013, -0.024] se [0.02, 0.023, 0.026, 0.028, 0.034, 0.025]
+01:06:40 [combine4    1.6s] objects pooled F-M [0.012, 0.006, 0.02, -0.002, -0.004, -0.009] se [0.016, 0.018, 0.018, 0.019, 0.021, 0.015]
+01:06:40 [combine4    1.6s] saved /home/ubuntu/gpujob/r4-wind-002/out/combine.json

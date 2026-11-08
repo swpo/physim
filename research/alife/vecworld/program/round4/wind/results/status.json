@@ -1,0 +1,185 @@
+{
+  "billing_window_hours": 2.414,
+  "bundle": {
+    "bundle_sha256": "4037814a70f9b9e086917c99fbc1be07b40d0066d4903206e0b7424e4b81713f",
+    "files": {
+      "job.sh": "e899a1a3d6e3b67c0daaad5940dad348210443394bcb057813165a2e70163af8",
+      "request.json": "be155b42fe4905f1dbda9ba466f506ba0ea5f7b7641bcf32efcedb95c2291e66",
+      "run.sh": "fb8b9d545f5533e13ab2ac5dcd4932879ce3902463d5e9e428448a9e16af5077",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "fd7f286c8b4f5615847b68260cb8eab9b15f7d69f2258a94c1742fa7719f8ce3"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/track2/wind_recert",
+      "research/alife/vecworld/program/round4/wind"
+    ],
+    "ref": "c39d9bd7777d213f64cd7db380ff0d23f02db49e",
+    "src_bytes": 10692147
+  },
+  "cap_usd": 12.0,
+  "collected": {
+    "error": null,
+    "files": 45,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 2547322,
+    "truncated": false
+  },
+  "cost": {
+    "billed_usd": 1.8562,
+    "conservative_usd": 2.2138
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-08T01:07:27Z",
+  "hard_deadline": "2026-11-08T03:00:59Z",
+  "hard_deadline_epoch": 1794106859.7387679,
+  "history": [
+    {
+      "at": "2026-11-08T00:35:02Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-08T00:35:55Z",
+      "message": "accepted: H100_80GB via lambdalabs at $4.29/h, at most $11.18",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-08T00:36:07Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-08T00:41:36Z",
+      "message": "job started on the pod",
+      "state": "running"
+    },
+    {
+      "at": "2026-11-08T01:07:02Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-08T01:07:27Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
+    }
+  ],
+  "job_id": "r4-wind-002",
+  "max_estimate_usd": 11.18,
+  "message": "job finished (exit 0); pods terminated",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_h100_sxm5",
+      "country": "US",
+      "data_center": "us-south-2",
+      "disk_gb": 2816,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 225,
+      "provider": "lambdalabs",
+      "rank": 1,
+      "rate_usd_hr": 4.29,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 26
+    },
+    {
+      "cloud_id": "1H100.80S.30V",
+      "country": "FI",
+      "data_center": "FIN-03",
+      "disk_gb": 120,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 120,
+      "provider": "datacrunch",
+      "rank": 1,
+      "rate_usd_hr": 4.9709,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
+  "plan": {
+    "max_estimate_usd": 11.18,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_h100_sxm5",
+        "country": "US",
+        "data_center": "us-south-2",
+        "disk_gb": 2816,
+        "gpu_memory_gb": 80,
+        "gpu_type": "H100_80GB",
+        "is_spot": false,
+        "memory_gb": 225,
+        "provider": "lambdalabs",
+        "rank": 1,
+        "rate_usd_hr": 4.29,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 26
+      },
+      {
+        "cloud_id": "1H100.80S.30V",
+        "country": "FI",
+        "data_center": "FIN-03",
+        "disk_gb": 120,
+        "gpu_memory_gb": 80,
+        "gpu_type": "H100_80GB",
+        "is_spot": false,
+        "memory_gb": 120,
+        "provider": "datacrunch",
+        "rank": 1,
+        "rate_usd_hr": 4.9709,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-08T00:35:55Z",
+    "window_hours": 2.25
+  },
+  "pod": {
+    "gpu": "H100_80GB",
+    "name": "gpujob-r4-wind-002-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 4.29,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": 1.8562,
+      "created_at": "2026-11-08T00:36:24Z",
+      "data_center": "us-south-2",
+      "gpu": "H100_80GB",
+      "name": "gpujob-r4-wind-002-a1",
+      "note": null,
+      "pod_id": "313be3c631c042cfbf85f46d013e8584",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 4.29,
+      "ready_at": "2026-11-08T00:41:19Z",
+      "requested_at": "2026-11-08T00:36:09Z",
+      "spot": false,
+      "state": "terminated",
+      "terminated_at": "2026-11-08T01:07:06Z"
+    }
+  ],
+  "pods_terminated": true,
+  "run_deadline": "2026-11-08T02:41:36Z",
+  "started_at": "2026-11-08T00:41:36Z",
+  "state": "done",
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n00:41:45 [job] nproc 26, BLAS threads per process 3, analysis timeout 5100s\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n00:42:32 [job] check4 reported a difference (non-fatal; logs/check4.log)\n== out/progress.txt\nos4 M_objects   211.6s] selection-checked ceiling [0.8515, 0.7741, 0.6148, 0.4164, 0.208, 0.0557]\n00:47:20 [clos4 F_objects   211.6s] selection-checked ceiling [0.8477, 0.7678, 0.6158, 0.4289, 0.2141, 0.061]\n00:47:20 [clos4 F_objects   211.7s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F_objects.json\n00:47:20 [clos4 M_objects   211.8s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_objects.json\n00:48:59 [clos4 F_objects   311.0s] LC best {'0.25': [0.1825, 0.2837, 0.4542, 0.6667, 0.9122, 1.0073], '0.5': [0.1731, 0.2682, 0.4302, 0.6364, 0.8807, 0.9914], '1.0': [0.1659, 0.2563, 0.4156, 0.6191, 0.8619, 0.9821]}\n00:48:59 [clos4 F_objects   311.0s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F_objects.json\n00:49:01 [clos4 M2_objects   227.5s]   fold 3 done in 33.4 s\n00:49:01 [clos4 M2_objects   227.8s] ceiling [0.8583, 0.7595, 0.5825, 0.4159, 0.2069, 0.059] +- [0.0161, 0.0175, 0.0177, 0.0183, 0.0254, 0.0175]\n00:49:01 [clos4 M2_objects   228.0s] selection-checked ceiling [0.8579, 0.759, 0.5823, 0.4153, 0.2059, 0.0567]\n00:49:01 [clos4 M2_objects   228.2s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M2_objects.json\n00:49:02 [clos4 M_objects   313.5s] LC best {'0.25': [0.1725, 0.2596, 0.4455, 0.6392, 0.8724, 0.9669], '0.5': [0.1682, 0.2476, 0.4189, 0.6113, 0.8431, 0.9519], '1.0': [0.1615, 0.2367, 0.3959, 0.5845, 0.8178, 0.9477]}\n00:49:02 [clos4 M_objects   313.5s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_objects.json\n00:49:03 [clos4 F2_objects   229.2s]   fold 3 done in 31.1 s\n00:49:03 [clos4 F2_objects   229.4s] ceiling [0.8881, 0.7782, 0.6219, 0.4002, 0.1934, 0.035] +- [0.0109, 0.0128, 0.0204, 0.0187, 0.0266, 0.0207]\n00:49:03 [clos4 F2_objects   229.5s] selection-checked ceiling [0.888, 0.7782, 0.6226, 0.4007, 0.1932, 0.0286]\n00:49:03 [clos4 F2_objects   229.6s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F2_objects.json\n00:51:02 [clos4 P_objects   268.7s]   fold 3 done in 36.6 s\n00:51:03 [clos4 P_objects   269.0s] ceiling [0.8587, 0.7467, 0.5844, 0.4065, 0.2022] +- [0.0119, 0.0142, 0.0154, 0.0139, 0.0125]\n00:51:09 [clos4 P_objects   275.7s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_P_objects.json\n00:55:48 [clos4 F_coarse   720.1s]   fold 3 done in 127.0 s\n00:55:49 [clos4 F_coarse   720.2s] ceiling [0.991, 0.9658, 0.8474, 0.4959, 0.1753, 0.0664] +- [0.0002, 0.0009, 0.0033, 0.0086, 0.0122, 0.0071]\n00:55:49 [clos4 F_coarse   720.4s] selection-checked ceiling [0.991, 0.9658, 0.8474, 0.4958, 0.1752, 0.0665]\n00:55:49 [clos4 F_coarse   720.4s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F_coarse.json\n00:56:13 [clos4 M_coarse   744.4s]   fold 3 done in 138.6 s\n00:56:13 [clos4 M_coarse   744.5s] ceiling [0.9914, 0.9672, 0.8563, 0.5082, 0.1387, 0.0688] +- [0.0002, 0.0009, 0.0039, 0.0112, 0.0144, 0.0072]\n00:56:13 [clos4 M_coarse   744.6s] selection-checked ceiling [0.9914, 0.9672, 0.8563, 0.5081, 0.1387, 0.0688]\n00:56:13 [clos4 M_coarse   744.8s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_coarse.json\n",
+  "updated_at": "2026-11-08T01:07:27Z"
+}

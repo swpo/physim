@@ -1,0 +1,59 @@
+{
+ "set": "FM: F+M+MW",
+ "J": 36,
+ "T": 300,
+ "test_ticks": [
+  40,
+  100,
+  160,
+  220
+ ],
+ "TB": 32,
+ "TX": 96,
+ "R_BR": 5,
+ "seed": 9401,
+ "branch_seed": 9402,
+ "sigma_F": 0.05,
+ "sigma_M": 0.0,
+ "rows": "Y/TAB/B/BG/X rows 0..J-1 = F, J..2J-1 = M (same keys); MW rows = M's members",
+ "seconds": {
+  "init_burn": 12.88449740409851,
+  "base": 11.800418138504028,
+  "branch": 20.718668699264526,
+  "ext": 8.44919466972351,
+  "mw": 13.860129833221436
+ },
+ "member_ticks": {
+  "burn": 3600,
+  "base": 21600,
+  "branch": 46080,
+  "ext": 23040,
+  "mw": 27648
+ },
+ "member_ticks_per_s": {
+  "burn": 279.40554350648193,
+  "base": 1830.443611953084,
+  "branch": 2224.0811255230774,
+  "ext": 2726.887105887212,
+  "mw": 1994.786508689863
+ },
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "batching": "vmap",
+  "x64": true
+ },
+ "tiny": false,
+ "final_mass_mean_F": [
+  719.0756939434049,
+  720.359455421563
+ ],
+ "final_mass_mean_M": [
+  719.0756939434053,
+  720.3594554215634
+ ]
+}
