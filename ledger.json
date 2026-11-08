@@ -27,10 +27,10 @@
     {
       "billed_usd": null,
       "cap_usd": 16.0,
-      "conservative_usd": 5.4647,
+      "conservative_usd": 6.3005,
       "finished_at": null,
       "gpu": "H100_80GB (lambdalabs)",
-      "hours": 1.661,
+      "hours": 1.915,
       "job_id": "r4-bias-003",
       "purpose": "Round-4 study bias (track 1): learned level 1 from raw gliders level 0, grid of encoder locality x latent width x objective (recon, closure, local law, predictive bottleneck), 2 seeds, certified by learned_phi2's fixed family",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -113,8 +113,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 23.7508,
     "prior_spend_usd": 0.0,
-    "spent_usd": 13.2155,
+    "spent_usd": 14.0513,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-08T04:29:15Z"
+    "updated_at": "2026-11-08T04:44:30Z"
   }
 }
