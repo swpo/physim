@@ -1,0 +1,38 @@
+[     0.1s] F2 objects J 36 T 300 test [40, 100, 160, 220] quick False
+[    78.8s] copy check: max |V_analyze - V_copy| = 0.0
+[   108.3s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   110.5s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   110.5s]   rmlp fold 0: 18 fit traj, 16.0 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   128.7s]     rmlp seed 0: epochs 42, best epoch per h [17, 11, 8, 5, 4, 0], val gain [0.11400000005960464, 0.11800000071525574, 0.10999999940395355, 0.07100000232458115, 0.03999999910593033, 0.0]
+[   132.1s]     rmlp seed 1: epochs 39, best epoch per h [14, 13, 8, 5, 4, 2], val gain [0.11500000208616257, 0.11800000071525574, 0.1080000028014183, 0.07199999690055847, 0.03700000047683716, 0.0010000000474974513]
+[   132.1s]   slotnet fold 0: 18 fit traj, 21.6 s
+[   132.1s]   fold 0 done in 53.3 s
+[   150.9s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   153.0s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   153.0s]   rmlp fold 1: 18 fit traj, 6.2 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   160.4s]     rmlp seed 0: epochs 39, best epoch per h [14, 14, 7, 5, 4, 0], val gain [0.11900000274181366, 0.11699999868869781, 0.10599999874830246, 0.07900000363588333, 0.03099999949336052, 0.0]
+[   163.9s]     rmlp seed 1: epochs 41, best epoch per h [16, 15, 10, 5, 4, 0], val gain [0.12600000202655792, 0.12700000405311584, 0.11400000005960464, 0.07400000095367432, 0.029999999329447746, 0.0]
+[   163.9s]   slotnet fold 1: 18 fit traj, 10.9 s
+[   163.9s]   fold 1 done in 31.7 s
+[   183.9s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   186.2s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   186.2s]   rmlp fold 2: 18 fit traj, 7.0 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   194.1s]     rmlp seed 0: epochs 39, best epoch per h [14, 11, 8, 6, 5, 0], val gain [0.11800000071525574, 0.11500000208616257, 0.10199999809265137, 0.0689999982714653, 0.024000000208616257, 0.0]
+[   198.1s]     rmlp seed 1: epochs 42, best epoch per h [17, 12, 7, 6, 4, 0], val gain [0.11900000274181366, 0.10899999737739563, 0.09799999743700027, 0.06800000369548798, 0.024000000208616257, 0.0]
+[   198.2s]   slotnet fold 2: 18 fit traj, 11.9 s
+[   198.2s]   fold 2 done in 34.3 s
+[   216.6s]     rmlp seed 0: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   218.8s]     rmlp seed 1: epochs 25, best epoch per h [0, 0, 0, 0, 0, 0], val gain [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[   218.8s]   rmlp fold 3: 18 fit traj, 6.7 s, baseline ['ar1', 'ar1', 'ar1', 'ar1', 'ar1', 'ar1']
+[   226.3s]     rmlp seed 0: epochs 39, best epoch per h [14, 11, 6, 5, 3, 2], val gain [0.09399999678134918, 0.08699999749660492, 0.08500000089406967, 0.05900000035762787, 0.02500000037252903, 0.004999999888241291]
+[   229.2s]     rmlp seed 1: epochs 41, best epoch per h [16, 12, 7, 4, 2, 1], val gain [0.09799999743700027, 0.08799999952316284, 0.07900000363588333, 0.05700000002980232, 0.02199999988079071, 0.004999999888241291]
+[   229.2s]   slotnet fold 3: 18 fit traj, 10.4 s
+[   229.2s]   fold 3 done in 31.1 s
+00:49:03 [clos4 F2_objects   229.2s]   fold 3 done in 31.1 s
+[   229.4s] ceiling [0.8881, 0.7782, 0.6219, 0.4002, 0.1934, 0.035] +- [0.0109, 0.0128, 0.0204, 0.0187, 0.0266, 0.0207]
+00:49:03 [clos4 F2_objects   229.4s] ceiling [0.8881, 0.7782, 0.6219, 0.4002, 0.1934, 0.035] +- [0.0109, 0.0128, 0.0204, 0.0187, 0.0266, 0.0207]
+[   229.4s] best ['slotnet', 'slotnet', 'slotnet', 'slotnet', 'slotnet', 'ar1'] Vbest [0.1209, 0.2398, 0.4128, 0.6546, 0.8382, 0.9653] Voracle [0.0099, 0.0244, 0.0469, 0.1309, 0.3027, 0.6407]
+[   229.5s] selection-checked ceiling [0.888, 0.7782, 0.6226, 0.4007, 0.1932, 0.0286]
+00:49:03 [clos4 F2_objects   229.5s] selection-checked ceiling [0.888, 0.7782, 0.6226, 0.4007, 0.1932, 0.0286]
+[   229.6s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F2_objects.json
+00:49:03 [clos4 F2_objects   229.6s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F2_objects.json
