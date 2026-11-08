@@ -18,7 +18,7 @@
   ],
   "job_id": "r4-sbi-001",
   "max_estimate_usd": 10.69,
-  "message": "accepted: A100_80GB via datacrunch at $2.3489/h, at most $10.69",
+  "message": "no offer that fits the cap is available right now; will retry",
   "plan": {
     "max_estimate_usd": 10.69,
     "offers": [
@@ -62,5 +62,5 @@
   },
   "pods": [],
   "state": "queued",
-  "updated_at": "2026-11-08T00:29:01Z"
+  "updated_at": "2026-11-08T00:29:12Z"
 }
