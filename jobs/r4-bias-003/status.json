@@ -1,9 +1,31 @@
 {
+  "billing_window_hours": 3.7296,
+  "bundle": {
+    "bundle_sha256": "c2aabf628ce1425033a6e0f9dbdae9760bf9cdcbf022e6b793f8dcf3b5e06449",
+    "files": {
+      "job.sh": "60ce1c7dd9f885e30fc63cda27c666fe03f264e1f67edeb88dc56a49b28cfabb",
+      "request.json": "0c4f59fb0cc168f1624ae400fcd2c93ba39122a230dc517dbeb43b198378397a",
+      "run.sh": "715739f6df5313e705b5c96be9a0e78bfb40560cba08828b0e86a2ecf6e6a358",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "7f6ff5a2eb94e54796e20d320b84b9bcd9734af31f6ae98cdc01a50b4401d738"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/round4/bias"
+    ],
+    "ref": "25b044a542d427dc40eb782216c9181bd0b2ee7e",
+    "src_bytes": 15738177
+  },
   "cap_usd": 16.0,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-08T02:40:37Z",
@@ -14,11 +36,52 @@
       "at": "2026-11-08T02:40:59Z",
       "message": "accepted: H100_80GB via lambdalabs at $3.29/h, at most $15.02",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-08T02:49:33Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r4-bias-003",
   "max_estimate_usd": 15.02,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_h100_pcie",
+      "country": "US",
+      "data_center": "us-west-3",
+      "disk_gb": 1024,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 1,
+      "rate_usd_hr": 3.29,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 26
+    },
+    {
+      "cloud_id": "gpu_1x_h100_sxm5",
+      "country": "US",
+      "data_center": "us-southeast-1",
+      "disk_gb": 2816,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 225,
+      "provider": "lambdalabs",
+      "rank": 1,
+      "rate_usd_hr": 4.29,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 26
+    }
+  ],
   "plan": {
     "max_estimate_usd": 15.02,
     "offers": [
@@ -61,6 +124,6 @@
     "window_hours": 3.5
   },
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-08T02:47:28Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-08T02:49:33Z"
 }
