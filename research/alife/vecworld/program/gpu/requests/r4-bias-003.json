@@ -1,0 +1,38 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r4-bias-003",
+  "purpose": "Round-4 study bias (track 1): learned level 1 from raw gliders level 0, grid of encoder locality x latent width x objective (recon, closure, local law, predictive bottleneck), 2 seeds, certified by learned_phi2's fixed family",
+  "requester": "cloud study bias (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track1/learned_phi2",
+    "research/alife/vecworld/program/round4/bias"
+  ],
+  "gpu": {
+    "types": [
+      "A100_80GB",
+      "H100_80GB",
+      "A100_40GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 3.25,
+  "cap_usd": 16,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round4/bias && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "B4_TRAIN_S": "9000",
+    "B4_CERT_S": "9900"
+  },
+  "notes": "Resubmission of r4-bias-002 (cancelled 20 min in: CUDA_ERROR_OUT_OF_MEMORY loading executables from the second config on). Cause: in JAX 0.12 a jitted function that closes over a device array embeds it as a constant, so every training/validation/encoding executable carried its own copy of the 5 GB level-0 data (also the 50-60 s first-chunk compiles). Now the data are passed as arguments (checked: no large constant in the lowered HLO), compiled functions and JAX caches are released after every config, and widths 2 and 4 are ordered so N8, N0, U and the L arm run before N4/N16. The val nan of rand8_* was by design (untrained baselines; now logged as such). Training stops starting configs 2.5 h after job start, certification 2.75 h. CPU smoke test passed: job.sh end to end at tiny size (B4_TINY=1)."
+}
