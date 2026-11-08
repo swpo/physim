@@ -15,10 +15,10 @@
     {
       "billed_usd": null,
       "cap_usd": 13.0,
-      "conservative_usd": 0.6504,
+      "conservative_usd": 0.6923,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.327,
+      "hours": 0.348,
       "job_id": "r4-sbi-002",
       "purpose": "Round 4 study sbi: simulate-to-train on the gliders exam world: synthetic-likelihood identification of 4 hidden parameters at 5 Lab budgets (8 fresh pilot truths), predictors trained on real vs simulated data",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -27,10 +27,10 @@
     {
       "billed_usd": null,
       "cap_usd": 12.0,
-      "conservative_usd": 1.4678,
+      "conservative_usd": 1.5582,
       "finished_at": null,
       "gpu": "H100_80GB (lambdalabs)",
-      "hours": 0.342,
+      "hours": 0.363,
       "job_id": "r4-wind-002",
       "purpose": "Round-4 wind study: full-size gliders wind-world certification (F vs M closure at the fresh layout, 2nd F/M pair, MW oracle cost, program-mix set P with input-aware patchnet/slotnet and energy scores)",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -77,8 +77,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 25.3193,
     "prior_spend_usd": 0.0,
-    "spent_usd": 2.4375,
+    "spent_usd": 2.5698,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-08T00:56:40Z"
+    "updated_at": "2026-11-08T00:57:56Z"
   }
 }
