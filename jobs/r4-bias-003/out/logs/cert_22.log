@@ -1,0 +1,11 @@
+03:01:25 [bcert 22    30.1s] hand_mass__certB q=64 ceiling-input ok in 18.1s
+03:29:57 [bcert 22  1742.3s] L0_recon_c1_s0__certA q=64 ceiling-input ok in 13.8s
+03:33:11 [bcert 22  1936.7s] L8_recon_c1_s0__certA q=64 ceiling-input ok in 14.4s
+03:36:54 [bcert 22  2158.8s] L8_clos16_c1_s1__certB q=64 ceiling-input ok in 15.0s
+03:37:29 [bcert 22  2194.4s] U_recon_c1_s1__certB q=64 ceiling-input ok in 14.6s
+04:03:19 [bcert 22  3744.1s] N8_recon_c4_s1__certA q=256 ceiling-input ok in 169.0s
+04:08:11 [bcert 22  4036.2s] N0_local_c4_s1__certB q=256 ceiling-input ok in 156.9s
+04:11:13 [bcert 22  4218.2s] N0_pib_c4_s0__certA q=256 ceiling-input ok in 158.1s
+04:13:04 [bcert 22  4329.1s] N4_clos_c2_s0__certA q=128 ceiling-input ok in 38.9s
+04:43:45 [bcert 22  6169.8s] N4_pib_c4_s1__certA q=256 ceiling-input ok in 147.7s
+04:43:45 [bcert 22  6169.8s] worker exits after 10 items

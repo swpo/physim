@@ -1,0 +1,14 @@
+03:01:18 [bcert 5    24.0s] hand_mass__certA q=64 ceiling-input ok in 15.0s
+03:03:50 [bcert 5   176.9s] rand8_c4_s1__certA q=256 ceiling-input ok in 152.9s
+03:05:42 [bcert 5   288.5s] N4_clos_c1_s1__certA q=64 ceiling-input ok in 15.5s
+03:08:34 [bcert 5   460.5s] N8_clos_c1_s1__certA q=64 ceiling-input ok in 13.0s
+03:12:49 [bcert 5   715.3s] N4_recon_c1_s0__certA q=64 ceiling-input ok in 14.7s
+03:14:20 [bcert 5   806.5s] N16_recon_c1_s0__certB q=64 ceiling-input ok in 13.1s
+03:21:29 [bcert 5  1235.6s] N8_local_c1_s0__certB q=64 ceiling-input ok in 15.0s
+03:26:44 [bcert 5  1550.5s] N4_pib_c1_s0__certA q=64 ceiling-input ok in 14.8s
+03:32:11 [bcert 5  1877.2s] L4_local_c1_s1__certB q=64 ceiling-input ok in 14.5s
+03:44:48 [bcert 5  2634.5s] N0_recon_c2_s1__certB q=128 ceiling-input ok in 46.1s
+04:04:06 [bcert 5  3792.7s] U_recon_c4_s1__certB q=256 ceiling-input ok in 161.6s
+04:36:12 [bcert 5  5718.7s] N16_recon_c4_s0__certB q=256 ceiling-input ok in 149.0s
+04:42:07 [bcert 5  6073.3s] N16_local_c4_s1__certB q=256 ceiling-input ok in 144.5s
+04:42:52 [bcert 5  6118.4s] worker exits after 13 items

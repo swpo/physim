@@ -1,0 +1,9 @@
+03:02:37 [bcert 7   102.4s] hand_objfield__certA q=192 ceiling-input ok in 90.4s
+03:32:58 [bcert 7  1923.1s] L8_clos_c1_s0__certA q=64 ceiling-input ok in 14.2s
+03:35:55 [bcert 7  2100.0s] L16_local_c1_s0__certA q=64 ceiling-input ok in 14.8s
+03:37:13 [bcert 7  2177.9s] U_clos_c1_s0__certA q=64 ceiling-input ok in 14.9s
+03:42:55 [bcert 7  2520.5s] N0_clos_c2_s1__certB q=128 ceiling-input ok in 42.5s
+03:44:15 [bcert 7  2600.5s] N8_recon_c2_s0__certA q=128 ceiling-input ok in 41.0s
+04:06:58 [bcert 7  3963.1s] N8_local_c4_s1__certB q=256 ceiling-input ok in 153.0s
+04:45:11 [bcert 7  6256.7s] N16_pib_c4_s1__certA q=256 ceiling-input ok in 141.2s
+04:45:11 [bcert 7  6256.7s] worker exits after 8 items

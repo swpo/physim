@@ -1,0 +1,19 @@
+03:01:33 [bcert 23    37.9s] rand8_c1_s1__certB q=64 ceiling-input ok in 19.9s
+03:02:42 [bcert 23   107.1s] N0_clos_c1_s1__certB q=64 ceiling-input ok in 15.2s
+03:08:35 [bcert 23   460.8s] N8_clos_c1_s0__certA q=64 ceiling-input ok in 14.6s
+03:11:30 [bcert 23   634.9s] N16_clos_c1_s0__certA q=64 ceiling-input ok in 15.1s
+03:12:00 [bcert 23   665.1s] N0_recon_c1_s1__certB q=64 ceiling-input ok in 15.2s
+03:13:34 [bcert 23   759.4s] N8_recon_c1_s0__certB q=64 ceiling-input ok in 13.3s
+03:14:22 [bcert 23   807.3s] N16_recon_c1_s1__certB q=64 ceiling-input ok in 14.9s
+03:29:57 [bcert 23  1742.2s] L0_recon_c1_s1__certA q=64 ceiling-input ok in 13.6s
+03:33:11 [bcert 23  1936.3s] L8_recon_c1_s1__certB q=64 ceiling-input ok in 14.0s
+03:53:01 [bcert 23  3125.8s] L0_clos_c2_s0__certA q=128 ceiling-input ok in 43.0s
+03:53:47 [bcert 23  3172.6s] L4_clos_c2_s1__certA q=128 ceiling-input ok in 40.8s
+03:55:27 [bcert 23  3272.2s] L16_clos_c2_s1__certB q=128 ceiling-input ok in 42.6s
+04:03:45 [bcert 23  3770.5s] N0_recon_c4_s0__certA q=256 ceiling-input ok in 168.1s
+04:08:15 [bcert 23  4039.8s] N0_local_c4_s0__certB q=256 ceiling-input ok in 161.3s
+04:17:43 [bcert 23  4608.8s] N16_recon_c2_s0__certB q=128 ceiling-input ok in 40.6s
+04:25:15 [bcert 23  5060.6s] N4_pib_c2_s0__certB q=128 ceiling-input ok in 40.6s
+04:34:30 [bcert 23  5615.6s] N16_clos_c4_s0__certA q=256 ceiling-input ok in 149.7s
+04:45:09 [bcert 23  6254.1s] N16_pib_c4_s1__certB q=256 ceiling-input ok in 140.2s
+04:45:09 [bcert 23  6254.1s] worker exits after 18 items

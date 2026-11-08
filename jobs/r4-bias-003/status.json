@@ -21,10 +21,20 @@
     "src_bytes": 15738177
   },
   "cap_usd": 16.0,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 6.3005
+  "collected": {
+    "error": null,
+    "files": 990,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 10905247,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 6.0058,
+    "conservative_usd": 6.4202
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-08T04:47:02Z",
   "hard_deadline": "2026-11-08T06:33:22Z",
   "hard_deadline_epoch": 1794119602.8554125,
   "history": [
@@ -47,11 +57,21 @@
       "at": "2026-11-08T02:57:46Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-08T04:46:35Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-08T04:47:02Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "r4-bias-003",
   "max_estimate_usd": 15.02,
-  "message": "heartbeat",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_h100_pcie",
@@ -138,7 +158,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 6.0058,
       "created_at": "2026-11-08T02:49:50Z",
       "data_center": "us-west-3",
       "gpu": "H100_80GB",
@@ -151,13 +171,14 @@
       "ready_at": "2026-11-08T02:57:21Z",
       "requested_at": "2026-11-08T02:49:36Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-08T04:46:41Z"
     }
   ],
+  "pods_terminated": true,
   "run_deadline": "2026-11-08T06:12:46Z",
   "started_at": "2026-11-08T02:57:46Z",
-  "state": "running",
+  "state": "done",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n02:58:26 [job] nproc 26, cert workers 23, train deadline +9000s, cert deadline +9900s, tiny 0\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n== out/progress.txt\n=256 ceiling-input ok in 143.1s\n04:39:44 [btrain  5929.9s] N16_local_c4: steps 3000, val [1.5978000164031982, 1.6052000522613525, 1.5252000093460083, 1.575700044631958] -> [0.17389999330043793, 0.17880000174045563, 0.1648000031709671, 0.17489999532699585] (best at [2750, 2750, 3000, 2750]), train 174.3s (chunks {'first_incl_compile': 18.13052487373352, 'rest_mean': 13.215008453889327}), total 179.6s, 18.9 GB peak, 7.2 GB in use\n04:41:16 [btrain  6022.3s] N4_pib_c4: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.6380000114440918, 0.6376000046730042, 0.6370999813079834, 0.6335999965667725] (best at [3000, 3000, 3000, 3000]), train 86.8s (chunks {'first_incl_compile': 12.194738388061523, 'rest_mean': 5.801267450506037}), total 92.2s, 18.9 GB peak, 7.2 GB in use\n04:42:06 [bcert 1  6071.2s] N16_local_c4_s0__certB q=256 ceiling-input ok in 144.2s\n04:42:07 [bcert 5  6073.3s] N16_local_c4_s1__certB q=256 ceiling-input ok in 144.5s\n04:42:08 [bcert 17  6072.9s] N16_local_c4_s0__certA q=256 ceiling-input ok in 144.1s\n04:42:11 [bcert 16  6076.1s] N16_local_c4_s1__certA q=256 ceiling-input ok in 146.9s\n04:42:50 [btrain  6116.0s] N16_pib_c4: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.6342999935150146, 0.6317999958992004, 0.633400022983551, 0.6291999816894531] (best at [3000, 3000, 3000, 3000]), train 88.0s (chunks {'first_incl_compile': 12.4887855052948, 'rest_mean': 5.803925275802612}), total 93.5s, 18.9 GB peak, 7.2 GB in use\n04:42:50 [btrain  6116.2s] done; skipped []\n04:42:50 [bcert 8  6116.0s] worker exits after 15 items\n04:42:51 [bcert 15  6115.9s] worker exits after 14 items\n04:42:51 [bcert 9  6117.1s] worker exits after 14 items\n04:42:51 [bcert 2  6116.0s] worker exits after 14 items\n04:42:51 [bcert 6  6116.1s] worker exits after 14 items\n04:42:51 [bcert 4  6116.2s] worker exits after 11 items\n04:42:51 [bcert 1  6116.2s] worker exits after 18 items\n04:42:51 [bcert 20  6116.3s] worker exits after 14 items\n04:42:51 [bcert 18  6116.3s] worker exits after 18 items\n04:42:51 [bcert 13  6116.4s] worker exits after 17 items\n04:42:51 [bcert 21  6117.5s] worker exits after 19 items\n04:42:51 [bcert 3  6116.7s] worker exits after 16 items\n04:42:52 [bcert 5  6118.4s] worker exits after 13 items\n04:42:52 [bcert 14  6116.8s] worker exits after 12 items\n04:42:53 [bcert 16  6118.2s] worker exits after 18 items\n04:43:40 [bcert 12  6165.2s] N4_pib_c4_s0__certB q=256 ceiling-input ok in 145.8s\n04:43:40 [bcert 12  6165.2s] worker exits after 9 items\n04:43:41 [bcert 19  6166.6s] N4_pib_c4_s1__certB q=256 ceiling-input ok in 146.6s\n04:43:41 [bcert 19  6166.6s] worker exits after 15 items\n04:43:42 [bcert 11  6167.8s] N4_pib_c4_s0__certA q=256 ceiling-input ok in 147.0s\n04:43:42 [bcert 11  6167.8s] worker exits after 15 items\n04:43:45 [bcert 22  6169.8s] N4_pib_c4_s1__certA q=256 ceiling-input ok in 147.7s\n04:43:45 [bcert 22  6169.8s] worker exits after 10 items\n",
-  "updated_at": "2026-11-08T04:44:30Z"
+  "updated_at": "2026-11-08T04:47:02Z"
 }
