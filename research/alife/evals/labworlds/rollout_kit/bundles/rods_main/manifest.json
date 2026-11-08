@@ -1,6 +1,6 @@
 {
  "schema_version": "physim-lab-bundle-v1",
- "bundle_id": "bundle:sha256:d3dff48856465ac226103f0e9ec4b3eded10f57e22a5e9428de20660e066e7b8",
+ "bundle_id": "bundle:sha256:3647c6b17f5de1c9d0ab19b83b702dc3b15eff648759f49a2fb64e500898e3e5",
  "status": "local-development-verified",
  "licenses": {
   "code": "Apache-2.0",
@@ -19,7 +19,7 @@
      "physim.blobround6": "d1b4a8b4a7231b011b418ab9d8d9d1a49418b879ab1b93a9263c3cc06b4f809b",
      "physim.labworld": "501fffd327c1cf91373e4625394fe8c133e54ee63fd383351a699104f8c3adc7",
      "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6",
-     "physim.blobround6_eval": "9deb1738cba2e3df193970bf08a33dcf264f4c9af4223d3441f0e048dca5bc68",
+     "physim.blobround6_eval": "3d8e3fb3b6f6b1275a33b6b88acdcd5b9b9b78cff91b01dad6231b7d82e4b009",
      "physim.labbundle": "060e39aeeb3b897487e1a01b79c5870b0cd6ec69bfd4b423ead602f246b34ca8"
     },
     "dependencies": {
@@ -32,10 +32,10 @@
     "lab_repository": "physim research/alife",
     "world_sha256": "464e9d2451587715fa79d1f926c2a61648c05419bd76db2df4cfbbf5aef516ba"
    },
-   "id": "world:sha256:04981b5719e19a820a45122e70278a7364f0a2b6ca368ebb98d9b6bb59337cb9"
+   "id": "world:sha256:221a0499e87f92343be5b30d5dd0eda7bc85bdc8a89c98d597ecd555ddb49865"
   },
   "preparation": {
-   "world_id": "world:sha256:04981b5719e19a820a45122e70278a7364f0a2b6ca368ebb98d9b6bb59337cb9",
+   "world_id": "world:sha256:221a0499e87f92343be5b30d5dd0eda7bc85bdc8a89c98d597ecd555ddb49865",
    "file_sha256": "36c881a86f1b23943d22e57d9e29e26a6806b390adda33b3bf32700155fcab8b",
    "state_sha256": "071873339023bc4f884b799bf4772af7b517827af87f10072b627189f2815e52",
    "apparatus_sha256": "04e4e7d85acf7f44f96f514274e899eb3fa29224b491bbd247d998bccfa3ce48",
@@ -47,12 +47,12 @@
     "loader": "gcrods.load_prep",
     "script": "gc_bundle.py"
    },
-   "id": "preparation:sha256:98d64c7f578fff550192c3b9a3f27d1b085241ad68a570ac7737e32fc070bec6"
+   "id": "preparation:sha256:296fd3e91801f2fc04d13030be753b81ac6085b0b14b9a99129ca89542a15551"
   },
   "suite": {
-   "preparation_id": "preparation:sha256:98d64c7f578fff550192c3b9a3f27d1b085241ad68a570ac7737e32fc070bec6",
+   "preparation_id": "preparation:sha256:296fd3e91801f2fc04d13030be753b81ac6085b0b14b9a99129ca89542a15551",
    "file_sha256": "00d149baebb1b712bbba90bbd9d1db9224597319d2232582fc7a513cace42b51",
-   "scoring_source_sha256": "9deb1738cba2e3df193970bf08a33dcf264f4c9af4223d3441f0e048dca5bc68",
+   "scoring_source_sha256": "3d8e3fb3b6f6b1275a33b6b88acdcd5b9b9b78cff91b01dad6231b7d82e4b009",
    "truth_sha256": {
     "truth/c001.npz": "f437462531f6f587a0b6d8b268e5e9bf48351c8db3201df9e2aea0882bae6fbf",
     "truth/c002.npz": "109c25e0b32f0985b2435d02b5ed2d38af07ce0a8ab55891a112651cbf1ffd6e",
@@ -71,7 +71,7 @@
     "truth/c015.npz": "55483fb6dc2df5e1cebc858a1887dd59b2e17ed0593c516236cc0346fee50cca",
     "truth/c016.npz": "e62fdee9f1ad059ece80e89354c64964fde60130bea4c3a9d38c833052b0c813"
    },
-   "id": "suite:sha256:c7af2cada48c63ad9414b1ba6a5e9850616f20ab1897c4e7bd667146558ff65e"
+   "id": "suite:sha256:7260e6271a1f0d062f3031c76e705685405277a2a3faf97b70c6d0aa0fdece0b"
   }
  },
  "files": [
