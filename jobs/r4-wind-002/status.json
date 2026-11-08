@@ -24,7 +24,7 @@
   "cap_usd": 12.0,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.3904
+    "conservative_usd": 1.4678
   },
   "hard_deadline": "2026-11-08T03:00:59Z",
   "hard_deadline_epoch": 1794106859.7387679,
@@ -52,7 +52,7 @@
   ],
   "job_id": "r4-wind-002",
   "max_estimate_usd": 11.18,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_h100_sxm5",
@@ -159,5 +159,6 @@
   "run_deadline": "2026-11-08T02:41:36Z",
   "started_at": "2026-11-08T00:41:36Z",
   "state": "running",
-  "updated_at": "2026-11-08T00:41:36Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n00:41:45 [job] nproc 26, BLAS threads per process 3, analysis timeout 5100s\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n00:42:32 [job] check4 reported a difference (non-fatal; logs/check4.log)\n== out/progress.txt\nos4 M_objects   211.6s] selection-checked ceiling [0.8515, 0.7741, 0.6148, 0.4164, 0.208, 0.0557]\n00:47:20 [clos4 F_objects   211.6s] selection-checked ceiling [0.8477, 0.7678, 0.6158, 0.4289, 0.2141, 0.061]\n00:47:20 [clos4 F_objects   211.7s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F_objects.json\n00:47:20 [clos4 M_objects   211.8s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_objects.json\n00:48:59 [clos4 F_objects   311.0s] LC best {'0.25': [0.1825, 0.2837, 0.4542, 0.6667, 0.9122, 1.0073], '0.5': [0.1731, 0.2682, 0.4302, 0.6364, 0.8807, 0.9914], '1.0': [0.1659, 0.2563, 0.4156, 0.6191, 0.8619, 0.9821]}\n00:48:59 [clos4 F_objects   311.0s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F_objects.json\n00:49:01 [clos4 M2_objects   227.5s]   fold 3 done in 33.4 s\n00:49:01 [clos4 M2_objects   227.8s] ceiling [0.8583, 0.7595, 0.5825, 0.4159, 0.2069, 0.059] +- [0.0161, 0.0175, 0.0177, 0.0183, 0.0254, 0.0175]\n00:49:01 [clos4 M2_objects   228.0s] selection-checked ceiling [0.8579, 0.759, 0.5823, 0.4153, 0.2059, 0.0567]\n00:49:01 [clos4 M2_objects   228.2s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M2_objects.json\n00:49:02 [clos4 M_objects   313.5s] LC best {'0.25': [0.1725, 0.2596, 0.4455, 0.6392, 0.8724, 0.9669], '0.5': [0.1682, 0.2476, 0.4189, 0.6113, 0.8431, 0.9519], '1.0': [0.1615, 0.2367, 0.3959, 0.5845, 0.8178, 0.9477]}\n00:49:02 [clos4 M_objects   313.5s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_objects.json\n00:49:03 [clos4 F2_objects   229.2s]   fold 3 done in 31.1 s\n00:49:03 [clos4 F2_objects   229.4s] ceiling [0.8881, 0.7782, 0.6219, 0.4002, 0.1934, 0.035] +- [0.0109, 0.0128, 0.0204, 0.0187, 0.0266, 0.0207]\n00:49:03 [clos4 F2_objects   229.5s] selection-checked ceiling [0.888, 0.7782, 0.6226, 0.4007, 0.1932, 0.0286]\n00:49:03 [clos4 F2_objects   229.6s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F2_objects.json\n00:51:02 [clos4 P_objects   268.7s]   fold 3 done in 36.6 s\n00:51:03 [clos4 P_objects   269.0s] ceiling [0.8587, 0.7467, 0.5844, 0.4065, 0.2022] +- [0.0119, 0.0142, 0.0154, 0.0139, 0.0125]\n00:51:09 [clos4 P_objects   275.7s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_P_objects.json\n00:55:48 [clos4 F_coarse   720.1s]   fold 3 done in 127.0 s\n00:55:49 [clos4 F_coarse   720.2s] ceiling [0.991, 0.9658, 0.8474, 0.4959, 0.1753, 0.0664] +- [0.0002, 0.0009, 0.0033, 0.0086, 0.0122, 0.0071]\n00:55:49 [clos4 F_coarse   720.4s] selection-checked ceiling [0.991, 0.9658, 0.8474, 0.4958, 0.1752, 0.0665]\n00:55:49 [clos4 F_coarse   720.4s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_F_coarse.json\n00:56:13 [clos4 M_coarse   744.4s]   fold 3 done in 138.6 s\n00:56:13 [clos4 M_coarse   744.5s] ceiling [0.9914, 0.9672, 0.8563, 0.5082, 0.1387, 0.0688] +- [0.0002, 0.0009, 0.0039, 0.0112, 0.0144, 0.0072]\n00:56:13 [clos4 M_coarse   744.6s] selection-checked ceiling [0.9914, 0.9672, 0.8563, 0.5081, 0.1387, 0.0688]\n00:56:13 [clos4 M_coarse   744.8s] saved /home/ubuntu/gpujob/r4-wind-002/out/closure_M_coarse.json\n",
+  "updated_at": "2026-11-08T00:56:40Z"
 }
