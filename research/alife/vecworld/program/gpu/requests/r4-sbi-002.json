@@ -1,0 +1,38 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r4-sbi-002",
+  "purpose": "Round 4 study sbi: simulate-to-train on the gliders exam world: synthetic-likelihood identification of 4 hidden parameters at 5 Lab budgets (8 fresh pilot truths), predictors trained on real vs simulated data",
+  "requester": "cloud session_01BZceC7G6m7DgM6KpXjnWXj (round 4 study sbi, track 2)",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track2/gliders_exam",
+    "research/alife/vecworld/program/track2/actuation",
+    "research/alife/vecworld/program/round4/sbi"
+  ],
+  "gpu": {
+    "types": [
+      "H100_80GB",
+      "A100_80GB",
+      "A100_40GB",
+      "H200_141GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 3.0,
+  "cap_usd": 13,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/program/round4/sbi && python -B run_sbi.py --out $OUT --max-hours 2.6",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "notes": "Pilot only: 8 truths are drawn from the public prior inside the job and written to the outputs; never reusable as an exam. The world secret is generated in the job (os.urandom) and never written (commitment only). float64 world, float32 nets. CPU smoke test (--smoke) and check_lib.py passed. Expected about 1.5-2 h on one A100. Resubmission of r4-sbi-001 (infra_error: datacrunch A100 out of stock, $0 billed); same code, more FP64-capable GPU types."
+}
