@@ -18,7 +18,7 @@
   ],
   "job_id": "r4-bias-002",
   "max_estimate_usd": 13.94,
-  "message": "accepted: H100_80GB via lambdalabs at $4.29/h, at most $13.94",
+  "message": "no offer that fits the cap is available right now; will retry",
   "plan": {
     "max_estimate_usd": 13.94,
     "offers": [
@@ -45,5 +45,5 @@
   },
   "pods": [],
   "state": "queued",
-  "updated_at": "2026-11-08T02:11:13Z"
+  "updated_at": "2026-11-08T02:11:24Z"
 }

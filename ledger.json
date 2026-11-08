@@ -39,10 +39,10 @@
     {
       "billed_usd": null,
       "cap_usd": 13.0,
-      "conservative_usd": 3.1228,
+      "conservative_usd": 3.1292,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 1.569,
+      "hours": 1.572,
       "job_id": "r4-sbi-002",
       "purpose": "Round 4 study sbi: simulate-to-train on the gliders exam world: synthetic-likelihood identification of 4 hidden parameters at 5 Lab budgets (8 fresh pilot truths), predictors trained on real vs simulated data",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -101,8 +101,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 30.9837,
     "prior_spend_usd": 0.0,
-    "spent_usd": 6.1065,
+    "spent_usd": 6.1129,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-08T02:11:13Z"
+    "updated_at": "2026-11-08T02:11:25Z"
   }
 }
