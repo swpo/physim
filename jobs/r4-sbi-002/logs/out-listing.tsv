@@ -1,0 +1,13 @@
+9961	out/lab.json
+62249	out/train_info.json
+697468	out/design_features.npz
+56825	out/prediction.json
+1047540	out/scores.npz
+45514	out/identification.json
+60612	out/viability_design.npz
+10344	out/truths.json
+63353	out/progress.txt
+1981	out/info.json
+551505	out/posterior_draws.npz
+482	out/viability_prior.json
+316273	out/lab_features.npz
