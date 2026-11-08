@@ -40,7 +40,8 @@ else:
     STEPS, CHUNK, BATCH, BATCH_U, NV = {"L": 3000, "N": 3000, "U": 2000}, 250, 128, 256, 256
 LR = {"L": 1e-3, "N": 1e-3, "U": 1e-3}                  # peak; cosine decay to 10% over the run
 WD_U = 0.3
-ENC_CHUNK = 4 if b4.TINY else 256
+ENC_CHUNK = 4 if b4.TINY else 1024
+WSTRIDE = 1 if b4.TINY else 2                          # whitening statistics from every 2nd tick of the fit half
 
 
 def log(*a):
@@ -77,8 +78,10 @@ for h in b4.HALVES:
 MU = jnp.asarray(np.stack([STAT[h][0] for h in b4.HALVES]), jnp.float32)          # (2, 2)
 SD = jnp.asarray(np.stack([STAT[h][1] for h in b4.HALVES]), jnp.float32)
 Xd = jnp.stack([jax.device_put(np.asarray(Xh[h])) for h in b4.HALVES])          # (2, J, T+1, 2, 128, 128)
-jax.block_until_ready(Xd)
-log("data on device", Xd.shape, "channel mean/sd", {h: (STAT[h][0].round(4).tolist(), STAT[h][1].round(4).tolist())
+XBd = jnp.stack([jax.device_put(np.asarray(XBh[h]).reshape((-1, 2, b4.NPIX, b4.NPIX))) for h in b4.HALVES])
+NBR = XBd.shape[1]
+jax.block_until_ready((Xd, XBd))
+log("data on device", Xd.shape, XBd.shape, "channel mean/sd", {h: (STAT[h][0].round(4).tolist(), STAT[h][1].round(4).tolist())
                                                      for h in b4.HALVES}, mem())
 N_TR = J - b4.N_VAL_TRAJ
 T_LO, T_HI = 1, T1 - 1 - TMAXH                                                    # t in [1, T - 16]
@@ -94,52 +97,46 @@ def gather(hidx, j, t, offs):
 
 
 # ----------------------------------------------------------------------------- encoding (frozen Phi)
-_ENC = {}
-
-
-def enc_fn(enc, h):
-    k = (enc, h)
-    if k not in _ENC:
-        _ENC[k] = jax.jit(lambda P, x: BN.enc_apply(enc, h, P, x))
-    return _ENC[k]
-
-
-def encode_frames(enc, h, P, frames, hidx):
-    """frames: numpy (N, 2, 128, 128) raw -> z (N, 8, 8, c) float64 numpy (standardised with half hidx)."""
-    f = enc_fn(enc, h)
-    out = []
-    for i in range(0, len(frames), ENC_CHUNK):
-        x = jnp.asarray(np.asarray(frames[i:i + ENC_CHUNK]))
-        x = (x - MU[hidx][:, None, None]) / SD[hidx][:, None, None]
-        out.append(np.asarray(f(P, x), np.float64))
-    return np.concatenate(out)
-
-
 _ENCD = {}
 
 
-def encode_device(enc, h, P, data_h, n_traj, hidx):
-    """Base frames of half data_h, trajectories 0..n_traj-1, all ticks, read from the device copy Xd ->
-    z (n_traj * (T+1), 8, 8, c) float64 numpy, standardised with half hidx."""
-    k = (enc, h)
+def _enc_jit(enc, h, which):
+    """Jitted encoder reading frames straight from the device copies: 'base' (Xd[half, j, t]) or 'branch'
+    (XBd[half, k]); standardised with the fit half's statistics (hi)."""
+    k = (enc, h, which)
     if k not in _ENCD:
-        def g(P, dh, j, t, hi):
-            x = Xd[dh, j, t]
-            x = (x - MU[hi][:, None, None]) / SD[hi][:, None, None]
-            return BN.enc_apply(enc, h, P, x)
+        if which == "base":
+            def g(P, dh, j, t, hi):
+                x = Xd[dh, j, t]
+                return BN.enc_apply(enc, h, P, (x - MU[hi][:, None, None]) / SD[hi][:, None, None])
+        else:
+            def g(P, dh, kk, hi):
+                x = XBd[dh, kk]
+                return BN.enc_apply(enc, h, P, (x - MU[hi][:, None, None]) / SD[hi][:, None, None])
         _ENCD[k] = jax.jit(g)
-    f = _ENCD[k]
-    jj, tt = np.meshgrid(np.arange(n_traj), np.arange(T1), indexing="ij")
-    jj, tt = jj.ravel(), tt.ravel()
-    out = []
-    for i in range(0, len(jj), ENC_CHUNK):
-        j, t = jj[i:i + ENC_CHUNK], tt[i:i + ENC_CHUNK]
-        if len(j) < ENC_CHUNK:                                  # pad to one compiled shape
-            j = np.concatenate([j, np.zeros(ENC_CHUNK - len(j), int)])
-            t = np.concatenate([t, np.zeros(ENC_CHUNK - len(t), int)])
-        z = np.asarray(f(P, HI[data_h], jnp.asarray(j), jnp.asarray(t), hidx), np.float64)
-        out.append(z[:min(ENC_CHUNK, len(jj) - i)])
-    return np.concatenate(out)
+    return _ENCD[k]
+
+
+def _pad(a):
+    n = len(a)
+    m = -(-n // ENC_CHUNK) * ENC_CHUNK
+    return np.concatenate([a, np.zeros(m - n, a.dtype)]), n
+
+
+def encode_base(enc, h, P, data_h, jj, tt, hidx):
+    """Base frames (jj, tt) of half data_h -> z (n, 8, 8, c) float64 numpy. One transfer at the end."""
+    f = _enc_jit(enc, h, "base")
+    (jp, n), (tp, _) = _pad(np.asarray(jj)), _pad(np.asarray(tt))
+    out = [f(P, HI[data_h], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK]), hidx)
+           for i in range(0, len(jp), ENC_CHUNK)]
+    return np.asarray(jnp.concatenate(out), np.float64)[:n]
+
+
+def encode_branch(enc, h, P, data_h, hidx):
+    f = _enc_jit(enc, h, "branch")
+    kp, n = _pad(np.arange(NBR))
+    out = [f(P, HI[data_h], jnp.asarray(kp[i:i + ENC_CHUNK]), hidx) for i in range(0, len(kp), ENC_CHUNK)]
+    return np.asarray(jnp.concatenate(out), np.float64)[:n]
 
 
 def whitening(z, glob):
@@ -177,8 +174,9 @@ def encode_cert(enc, h, P, W, glob, fit_h):
     """The frozen Phi (fitted on fit_h) on the other half's certification data: Zt (JC, T+1, q), ZB."""
     ch = OTHER[fit_h]
     hidx = HI[fit_h]                       # standardise with the FIT half's statistics (part of the frozen Phi)
-    zt = encode_device(enc, h, P, ch, JC, hidx)
-    zb = encode_frames(enc, h, P, XBh[ch].reshape((-1,) + XBh[ch].shape[4:]), hidx)
+    jj, tt = np.meshgrid(np.arange(JC), np.arange(T1), indexing="ij")
+    zt = encode_base(enc, h, P, ch, jj.ravel(), tt.ravel(), hidx)
+    zb = encode_branch(enc, h, P, ch, hidx)
     zt, zb = apply_white(zt, W, glob), apply_white(zb, W, glob)
     q = zt.shape[1] * zt.shape[2] * zt.shape[3]
     return ch, flat_cm(zt).reshape(JC, T1, q), flat_cm(zb).reshape(XBh[ch].shape[:4] + (q,))
@@ -319,10 +317,15 @@ def train_config(cid, name, enc, h, obj, c):
         bestP = P
         hist.append((0, best.tolist()))
         done = 0
+        tch = []
         while done < steps:
+            tc = time.time()
             P, M, V, it, skeys = chunk_f(P, M, V, it, skeys, hidx)
             done += CHUNK
             v = np.asarray(val_f(P, hidx))
+            tch.append(time.time() - tc)
+            if cid <= 5 and len(tch) <= 2:
+                log(f"{name}: chunk {len(tch)} of {CHUNK} steps (+ val) in {tch[-1]:.1f}s")
             hist.append((done, v.tolist()))
             better = v < best
             for r in np.flatnonzero(better):
@@ -332,17 +335,20 @@ def train_config(cid, name, enc, h, obj, c):
             best = np.where(better, v, best)
         P = bestP
         t_train = time.time() - t1
+        t_chunks = {"first_incl_compile": tch[0], "rest_mean": float(np.mean(tch[1:])) if len(tch) > 1 else None}
     else:
         v_init = best = np.full(len(REPS), np.nan)
         B = nv = 0
         t_train = 0.0
+        t_chunks = None
     glob = enc == "U"
     infos = []
     for r, (fh, s) in enumerate(REPS):
         Pe = pick(P["enc"], r)
         W, mre = None, None
         if obj != "recon":
-            zfit = encode_device(enc, h, Pe, fh, J, HI[fh])
+            jj, tt = np.meshgrid(np.arange(J), np.arange(0, T1, WSTRIDE), indexing="ij")
+            zfit = encode_base(enc, h, Pe, fh, jj.ravel(), tt.ravel(), HI[fh])
             mu, L, mre = whitening(zfit, glob)
             W = (mu, L)
             del zfit
@@ -352,7 +358,7 @@ def train_config(cid, name, enc, h, obj, c):
                 "steps": steps, "batch": B, "lr": LR[enc], "wd": WD_U if enc == "U" else 0.0, "val_n": nv,
                 "val_init": float(v_init[r]), "val_best": float(best[r]), "best_step": best_it[r],
                 "val_hist": [(a, b[r]) for a, b in hist], "min_rel_eig_latent_cov": mre,
-                "train_seconds_config": t_train, "n_params_enc": int(sum(np.size(x) for x in jax.tree_util.tree_leaves(Pe)))}
+                "train_seconds_config": t_train, "chunk_seconds": t_chunks, "n_params_enc": int(sum(np.size(x) for x in jax.tree_util.tree_leaves(Pe)))}
         save_latent(phi, ch, Zt, ZB, (c, b4.G, b4.G), info)
         infos.append(info)
         if enc in ("L", "N") and c <= 2:
@@ -360,7 +366,7 @@ def train_config(cid, name, enc, h, obj, c):
                                 mu=STAT[fh][0], h=h, c=c, enc=enc, obj=obj)
     b4.jdump(infos, f"{TRN}/{name}.json")
     log(f"{name}: steps {steps}, val {np.round(v_init, 4).tolist()} -> {np.round(best, 4).tolist()} "
-        f"(best at {best_it}), train {t_train:.1f}s, total {time.time() - t1:.1f}s, {mem()}")
+        f"(best at {best_it}), train {t_train:.1f}s (chunks {t_chunks}), total {time.time() - t1:.1f}s, {mem()}")
 
 
 def main():

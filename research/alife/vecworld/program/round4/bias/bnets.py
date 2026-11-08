@@ -42,6 +42,25 @@ def conv_win(x, w, h):
     return jax.lax.conv_general_dilated(x, w, (BS, BS), "VALID", dimension_numbers=("NCHW", "OIHW", "NCHW"))
 
 
+def win_apply(x, w, h):
+    """The same map as conv_win, written as matrix products over the 3 x 3 block neighbourhood (no convolution
+    kernels, so jax.vmap over replicas gives batched GEMMs instead of grouped convolutions). The (16 + 2h)^2 window
+    is embedded in a 48 x 48 frame (zeros outside), split into 3 x 3 sub-blocks of 16 x 16; sub-block (a, b) reads
+    block (i + a - 1, j + b - 1), periodic."""
+    N, C = x.shape[:2]
+    O = w.shape[0]
+    xb = x.reshape(N, C, G, BS, G, BS).transpose(0, 2, 4, 1, 3, 5)                   # (N, 8, 8, C, 16, 16)
+    if h == 0:
+        return jnp.einsum("nijcyx,ocyx->noij", xb, w)
+    w48 = jnp.pad(w, ((0, 0), (0, 0), (BS - h, BS - h), (BS - h, BS - h))).reshape(O, C, 3, BS, 3, BS)
+    out = 0.0
+    for a in range(3):
+        for b in range(3):
+            xs = jnp.roll(xb, (1 - a, 1 - b), (1, 2))                                  # xs[i, j] = xb[i + a - 1, j + b - 1]
+            out = out + jnp.einsum("nijcyx,ocyx->noij", xs, w48[:, :, a, :, b, :])
+    return out
+
+
 def blocks(xs):
     """(N, 2, 128, 128) -> (N, 8, 8, 512): each block's content, inner order [channel, dy, dx]."""
     N = xs.shape[0]
@@ -96,11 +115,11 @@ def enc_apply(enc, h, P, xs):
     """xs (N, 2, 128, 128) standardised -> z (N, 8, 8, c)."""
     N = xs.shape[0]
     if enc in ("L", "N"):
-        z = conv_win(xs, P["W"], h) + P["b"][None, :, None, None]                    # (N, c, 8, 8)
+        z = win_apply(xs, P["W"], h) + P["b"][None, :, None, None]                   # (N, c, 8, 8)
         z = z.transpose(0, 2, 3, 1)
         if enc == "N":
             f = jnp.moveaxis(mlp_apply(P["pix"], jnp.moveaxis(xs, 1, -1)), -1, 1)       # (N, 4, 128, 128)
-            a = gelu(conv_win(f, P["Wh"], h) + P["bh"][None, :, None, None]).transpose(0, 2, 3, 1)
+            a = gelu(win_apply(f, P["Wh"], h) + P["bh"][None, :, None, None]).transpose(0, 2, 3, 1)
             z = z + mlp_apply(P["head"], a)
         return z
     x = xs.reshape(N, -1)

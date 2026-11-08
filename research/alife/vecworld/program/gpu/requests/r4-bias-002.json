@@ -1,0 +1,38 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r4-bias-002",
+  "purpose": "Round-4 study bias (track 1): learned level 1 from raw gliders level 0, grid of encoder locality x latent width x objective (recon, closure, local law, predictive bottleneck), 2 seeds, certified by learned_phi2's fixed family",
+  "requester": "cloud study bias (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track1/learned_phi2",
+    "research/alife/vecworld/program/round4/bias"
+  ],
+  "gpu": {
+    "types": [
+      "A100_80GB",
+      "H100_80GB",
+      "A100_40GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 3.0,
+  "cap_usd": 15,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round4/bias && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "B4_TRAIN_S": "7200",
+    "B4_CERT_S": "9000"
+  },
+  "notes": "Resubmission of r4-bias-001 (cancelled after 20 min: jax.vmap over per-replica convolution weights made the training gradients about 25x slower; the local windows are now block matrix products, checked equal to the convolution to 6e-7 in value and gradient, and the frozen encoders read the branch states from the device). Simulation float64 (vw.World, jax.vmap, about 90k member-ticks, raw level 0 kept on the pod; 2.2 min in r4-bias-001), encoders float32 on the GPU (78 configs x 4 replicas), certification on the pod CPUs (lphi.certify, one BLAS thread per worker). Training stops starting new configs 2 h after job start, certification 2.5 h; priority order puts c = 1 and the linear arm first. CPU smoke test passed: job.sh end to end at tiny size (B4_TINY=1)."
+}
