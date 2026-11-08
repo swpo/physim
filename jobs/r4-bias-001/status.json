@@ -9,11 +9,58 @@
       "at": "2026-11-08T01:41:20Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-08T01:41:48Z",
+      "message": "accepted: A100_80GB via datacrunch at $2.3489/h, at most $10.69",
+      "state": "queued"
     }
   ],
   "job_id": "r4-bias-001",
-  "message": "request received",
+  "max_estimate_usd": 10.69,
+  "message": "accepted: A100_80GB via datacrunch at $2.3489/h, at most $10.69",
+  "plan": {
+    "max_estimate_usd": 10.69,
+    "offers": [
+      {
+        "cloud_id": "1A100.22V",
+        "country": "FI",
+        "data_center": "FIN-01",
+        "disk_gb": 120,
+        "gpu_memory_gb": 80,
+        "gpu_type": "A100_80GB",
+        "is_spot": false,
+        "memory_gb": 120,
+        "provider": "datacrunch",
+        "rank": 0,
+        "rate_usd_hr": 2.3489,
+        "security": "secure_cloud",
+        "socket": "PCIe",
+        "stock": "Available",
+        "vcpus": 22
+      },
+      {
+        "cloud_id": "gpu_1x_h100_pcie",
+        "country": "US",
+        "data_center": "us-west-3",
+        "disk_gb": 1024,
+        "gpu_memory_gb": 80,
+        "gpu_type": "H100_80GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 1,
+        "rate_usd_hr": 3.29,
+        "security": "secure_cloud",
+        "socket": "PCIe",
+        "stock": "Available",
+        "vcpus": 26
+      }
+    ],
+    "planned_at": "2026-11-08T01:41:48Z",
+    "window_hours": 3.25
+  },
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-08T01:41:20Z"
+  "state": "queued",
+  "updated_at": "2026-11-08T01:41:48Z"
 }
