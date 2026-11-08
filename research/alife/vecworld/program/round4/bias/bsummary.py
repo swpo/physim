@@ -37,7 +37,7 @@ out["meta"]["layout"] = C["layout"]
 out["meta"]["horizons"] = C["horizons"]
 for nm, r in C["configs"].items():
     row = {k: r[k] for k in ("enc", "h", "obj", "c", "n_seeds")}
-    for k in ("ceiling_G", "ceiling_G_se_mean", "ceiling_G_seed_diff", "ceiling_GL", "I_capt", "tau_half_G"):
+    for k in ("ceiling_G", "ceiling_G_se_mean", "ceiling_G_seed_diff", "ceiling_GL", "I_capt", "I_avail", "tau_half_G"):
         if k in r:
             row[k] = r3(r[k])
     row["r_dyn"] = r3(r["nontriv"]["r_dyn"])
@@ -48,7 +48,8 @@ for nm, r in C["configs"].items():
     out["configs"][nm] = row
 for k, r in C["hand"].items():
     out["hand"][k] = {"ceiling_G": r3(r["G"]["ceiling"]), "se": r3(r["G"]["se"]), "ceiling_GL": r3(r["GL"]["ceiling"]) if "GL" in r else None,
-                      "I_capt": r3(r["logdet"]["I_capt"]), "r_dyn": r3(r["nontriv"]["r_dyn"]),
+                      "I_capt": r3(r["logdet"]["I_capt"]), "I_avail": r3(r["logdet"]["I_avail"]),
+                      "r_dyn": r3(r["nontriv"]["r_dyn"]), "participation_ratio": r3(r["nontriv"]["participation_ratio"]),
                       "agreement": {kk: {d: r3(v) for d, v in a.items()} for kk, a in r["agreement"].items()},
                       "source": src("combined.json", f"hand.{k}")}
 groups = {}

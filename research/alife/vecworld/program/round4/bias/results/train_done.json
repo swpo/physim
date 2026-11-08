@@ -1,0 +1,11 @@
+{
+ "skipped_by_deadline": [],
+ "n_configs": 80,
+ "seconds": 6116.245908021927,
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ]
+ }
+}

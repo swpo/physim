@@ -1,0 +1,471 @@
+02:58:26 [job] nproc 26, cert workers 23, train deadline +9000s, cert deadline +9900s, tiny 0
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+name, memory.total [MiB], driver_version
+NVIDIA H100 PCIe, 81559 MiB, 570.148.08
+               total        used        free      shared  buff/cache   available
+Mem:             221           2         211           0           7         217
+/dev/vda1       993G   31G  962G   4% /
+02:58:34 [bsim     0.5s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} tiny False
+02:58:58 [bsim    24.9s] A init + burn-in 64 members 23.0 s
+02:59:18 [bsim    44.2s] A branches at tick 40 {'init_burn': 23.0, 'base': 8.9, 'branch': 10.5}
+02:59:25 [bsim    51.1s] A branches at tick 100 {'init_burn': 23.0, 'base': 12.9, 'branch': 13.3}
+02:59:32 [bsim    58.0s] A branches at tick 160 {'init_burn': 23.0, 'base': 17.1, 'branch': 16.1}
+02:59:39 [bsim    65.6s] A branches at tick 220 {'init_burn': 23.0, 'base': 21.8, 'branch': 18.9}
+02:59:45 [bsim    71.4s] A saved {'init_burn': 23.0, 'base': 27.1, 'branch': 18.9} member-ticks/s {'base': 708.2, 'branch': 541.3} mass drift {'mass_c0': 5.488612103665042e-15, 'mass_c1': 1.9602570407557604e-14}
+03:00:07 [bsim    93.3s] B init + burn-in 64 members 21.7 s
+03:00:22 [bsim   108.6s] B branches at tick 40 {'init_burn': 21.7, 'base': 7.4, 'branch': 8.0}
+03:00:29 [bsim   115.6s] B branches at tick 100 {'init_burn': 21.7, 'base': 11.5, 'branch': 10.8}
+03:00:36 [bsim   122.7s] B branches at tick 160 {'init_burn': 21.7, 'base': 15.7, 'branch': 13.7}
+03:00:44 [bsim   130.7s] B branches at tick 220 {'init_burn': 21.7, 'base': 20.5, 'branch': 16.9}
+03:00:50 [bsim   136.8s] B saved {'init_burn': 21.7, 'base': 26.0, 'branch': 16.9} member-ticks/s {'base': 739.0, 'branch': 607.3} mass drift {'mass_c0': 5.31603596847206e-15, 'mass_c1': 1.9447766665229766e-14}
+03:00:50 [bsim   136.8s] done
+03:01:02 [btrain     8.6s] data on device (2, 64, 301, 2, 128, 128) (2, 10240, 2, 128, 128) channel mean/sd {'A': ([0.0439, 0.044], [0.1611, 0.1913]), 'B': ([0.044, 0.0438], [0.1612, 0.1908])} 9.7 GB peak, 7.2 GB in use
+03:01:06 [btrain    12.0s] hand designs queued ('mass', 'chan', 'view', 'tent', 'objmass', 'objfield')
+03:01:10 [btrain    16.6s] rand8_c1: steps 0, untrained (no validation loss), train 0.0s (chunks None), total 4.6s, 9.7 GB peak, 7.2 GB in use
+03:01:16 [btrain    22.0s] rand8_c4: steps 0, untrained (no validation loss), train 0.0s (chunks None), total 5.4s, 9.7 GB peak, 7.2 GB in use
+03:01:18 [bcert 5    24.0s] hand_mass__certA q=64 ceiling-input ok in 15.0s
+03:01:21 [bcert 9    28.0s] hand_tent__certA q=64 ceiling-input ok in 16.0s
+03:01:24 [bcert 6    29.8s] hand_tent__certB q=64 ceiling-input ok in 17.8s
+03:01:25 [bcert 22    30.1s] hand_mass__certB q=64 ceiling-input ok in 18.1s
+03:01:25 [bcert 2    30.1s] hand_objmass__certB q=64 ceiling-input ok in 18.1s
+03:01:25 [bcert 10    30.5s] hand_objmass__certA q=64 ceiling-input ok in 18.5s
+03:01:28 [bcert 14    32.6s] rand8_c1_s0__certB q=64 ceiling-input ok in 17.6s
+03:01:31 [bcert 1    36.3s] rand8_c1_s1__certA q=64 ceiling-input ok in 18.3s
+03:01:32 [bcert 20    37.4s] rand8_c1_s0__certA q=64 ceiling-input ok in 19.4s
+03:01:33 [bcert 23    37.9s] rand8_c1_s1__certB q=64 ceiling-input ok in 19.9s
+03:01:35 [btrain    41.4s] N0_clos_c1: chunk 1 of 250 steps (+ val) in 11.1s
+03:01:40 [btrain    46.4s] N0_clos_c1: chunk 2 of 250 steps (+ val) in 4.2s
+03:01:50 [bcert 21    56.2s] hand_chan__certA q=128 ceiling-input ok in 47.2s
+03:01:53 [bcert 11    58.1s] hand_chan__certB q=128 ceiling-input ok in 46.1s
+03:02:27 [btrain    92.9s] N0_clos_c1: steps 3000, val [1.6181999444961548, 1.7308000326156616, 1.6168999671936035, 1.6339999437332153] -> [0.3926999866962433, 0.39469999074935913, 0.3896999955177307, 0.38589999079704285] (best at [3000, 3000, 3000, 3000]), train 66.1s (chunks {'first_incl_compile': 11.147400617599487, 'rest_mean': 4.177312222394076}), total 70.8s, 13.5 GB peak, 7.2 GB in use
+03:02:33 [bcert 8    98.8s] hand_view__certA q=192 ceiling-input ok in 89.8s
+03:02:36 [bcert 19   101.5s] hand_objfield__certB q=192 ceiling-input ok in 89.5s
+03:02:37 [bcert 7   102.4s] hand_objfield__certA q=192 ceiling-input ok in 90.4s
+03:02:38 [bcert 16   102.9s] hand_view__certB q=192 ceiling-input ok in 90.9s
+03:02:42 [bcert 23   107.1s] N0_clos_c1_s1__certB q=64 ceiling-input ok in 15.2s
+03:02:43 [bcert 20   108.4s] N0_clos_c1_s0__certB q=64 ceiling-input ok in 17.0s
+03:02:43 [bcert 6   108.7s] N0_clos_c1_s1__certA q=64 ceiling-input ok in 15.9s
+03:02:44 [bcert 9   110.5s] N0_clos_c1_s0__certA q=64 ceiling-input ok in 16.6s
+03:02:55 [btrain   121.2s] N4_clos_c1: chunk 1 of 250 steps (+ val) in 19.1s
+03:03:09 [btrain   135.4s] N4_clos_c1: chunk 2 of 250 steps (+ val) in 13.1s
+03:03:46 [bcert 13   171.2s] rand8_c4_s0__certA q=256 ceiling-input ok in 150.2s
+03:03:50 [bcert 18   175.5s] rand8_c4_s0__certB q=256 ceiling-input ok in 154.5s
+03:03:50 [bcert 5   176.9s] rand8_c4_s1__certA q=256 ceiling-input ok in 152.9s
+03:03:52 [bcert 3   176.9s] rand8_c4_s1__certB q=256 ceiling-input ok in 155.9s
+03:05:26 [btrain   272.4s] N4_clos_c1: steps 3000, val [1.7122000455856323, 1.5191999673843384, 1.559999942779541, 1.5425000190734863] -> [0.3458999991416931, 0.34299999475479126, 0.3357999920845032, 0.34040001034736633] (best at [3000, 3000, 3000, 3000]), train 173.7s (chunks {'first_incl_compile': 19.088786363601685, 'rest_mean': 13.132637284018777}), total 179.3s, 18.8 GB peak, 7.2 GB in use
+03:05:41 [bcert 14   285.4s] N4_clos_c1_s0__certB q=64 ceiling-input ok in 15.8s
+03:05:41 [bcert 6   286.2s] N4_clos_c1_s1__certB q=64 ceiling-input ok in 15.5s
+03:05:42 [bcert 9   288.4s] N4_clos_c1_s0__certA q=64 ceiling-input ok in 15.8s
+03:05:42 [bcert 5   288.5s] N4_clos_c1_s1__certA q=64 ceiling-input ok in 15.5s
+03:05:51 [btrain   296.9s] N8_clos_c1: chunk 1 of 250 steps (+ val) in 17.3s
+03:06:05 [btrain   311.1s] N8_clos_c1: chunk 2 of 250 steps (+ val) in 13.1s
+03:08:21 [btrain   447.1s] N8_clos_c1: steps 3000, val [1.5074000358581543, 1.5920000076293945, 1.579300045967102, 1.5728000402450562] -> [0.3010999858379364, 0.2994999885559082, 0.29280000925064087, 0.28940001130104065] (best at [3000, 3000, 3000, 3000]), train 169.9s (chunks {'first_incl_compile': 17.323909759521484, 'rest_mean': 13.130360581658103}), total 174.5s, 18.8 GB peak, 7.2 GB in use
+03:08:34 [bcert 5   460.5s] N8_clos_c1_s1__certA q=64 ceiling-input ok in 13.0s
+03:08:35 [bcert 16   459.9s] N8_clos_c1_s0__certB q=64 ceiling-input ok in 14.9s
+03:08:35 [bcert 21   460.8s] N8_clos_c1_s1__certB q=64 ceiling-input ok in 14.5s
+03:08:35 [bcert 23   460.8s] N8_clos_c1_s0__certA q=64 ceiling-input ok in 14.6s
+03:08:45 [btrain   470.9s] N16_clos_c1: chunk 1 of 250 steps (+ val) in 16.8s
+03:08:59 [btrain   485.1s] N16_clos_c1: chunk 2 of 250 steps (+ val) in 13.1s
+03:11:15 [btrain   621.1s] N16_clos_c1: steps 3000, val [1.3910000324249268, 1.55239999294281, 1.573199987411499, 1.4941999912261963] -> [0.24060000479221344, 0.24619999527931213, 0.23720000684261322, 0.23669999837875366] (best at [3000, 3000, 3000, 3000]), train 169.3s (chunks {'first_incl_compile': 16.81739091873169, 'rest_mean': 13.134770068255337}), total 173.8s, 18.8 GB peak, 7.2 GB in use
+03:11:29 [bcert 16   634.0s] N16_clos_c1_s0__certB q=64 ceiling-input ok in 15.1s
+03:11:30 [bcert 23   634.9s] N16_clos_c1_s0__certA q=64 ceiling-input ok in 15.1s
+03:11:30 [bcert 6   635.2s] N16_clos_c1_s1__certB q=64 ceiling-input ok in 15.9s
+03:11:30 [bcert 8   636.2s] N16_clos_c1_s1__certA q=64 ceiling-input ok in 15.3s
+03:11:45 [btrain   650.7s] N0_recon_c1: steps 3000, val [1.728600025177002, 2.269399881362915, 2.002000093460083, 1.9371999502182007] -> [0.6841999888420105, 0.6951000094413757, 0.7062000036239624, 0.6912999749183655] (best at [3000, 3000, 3000, 3000]), train 26.7s (chunks {'first_incl_compile': 6.4274513721466064, 'rest_mean': 0.8396834026683461}), total 29.5s, 18.8 GB peak, 7.2 GB in use
+03:11:58 [bcert 18   662.9s] N0_recon_c1_s0__certB q=64 ceiling-input ok in 13.3s
+03:12:00 [bcert 23   665.1s] N0_recon_c1_s1__certB q=64 ceiling-input ok in 15.2s
+03:12:00 [bcert 6   665.5s] N0_recon_c1_s0__certA q=64 ceiling-input ok in 15.3s
+03:12:00 [bcert 9   666.8s] N0_recon_c1_s1__certA q=64 ceiling-input ok in 15.3s
+03:12:34 [btrain   700.4s] N4_recon_c1: steps 3000, val [2.0104000568389893, 2.3157999515533447, 1.782099962234497, 2.17930006980896] -> [0.7200999855995178, 0.7217000126838684, 0.682200014591217, 0.6687999963760376] (best at [3000, 3000, 3000, 3000]), train 45.7s (chunks {'first_incl_compile': 8.000240325927734, 'rest_mean': 2.364866538481279}), total 49.5s, 18.8 GB peak, 7.2 GB in use
+03:12:49 [bcert 8   714.5s] N4_recon_c1_s0__certB q=64 ceiling-input ok in 15.2s
+03:12:49 [bcert 3   714.0s] N4_recon_c1_s1__certB q=64 ceiling-input ok in 14.9s
+03:12:49 [bcert 5   715.3s] N4_recon_c1_s0__certA q=64 ceiling-input ok in 14.7s
+03:12:49 [bcert 14   714.2s] N4_recon_c1_s1__certA q=64 ceiling-input ok in 14.7s
+03:13:21 [btrain   747.2s] N8_recon_c1: steps 3000, val [2.143399953842163, 1.7907999753952026, 1.9017000198364258, 2.032900094985962] -> [0.713100016117096, 0.7206000089645386, 0.7103000283241272, 0.7038000226020813] (best at [3000, 3000, 3000, 3000]), train 42.4s (chunks {'first_incl_compile': 6.691750526428223, 'rest_mean': 2.385636177929965}), total 46.6s, 18.8 GB peak, 7.2 GB in use
+03:13:34 [bcert 23   759.4s] N8_recon_c1_s0__certB q=64 ceiling-input ok in 13.3s
+03:13:36 [bcert 6   761.4s] N8_recon_c1_s1__certB q=64 ceiling-input ok in 14.9s
+03:13:36 [bcert 19   761.5s] N8_recon_c1_s1__certA q=64 ceiling-input ok in 14.9s
+03:13:36 [bcert 9   762.7s] N8_recon_c1_s0__certA q=64 ceiling-input ok in 15.0s
+03:14:08 [btrain   793.8s] N16_recon_c1: steps 3000, val [2.102099895477295, 1.9214999675750732, 2.4316000938415527, 2.1981000900268555] -> [0.7028999924659729, 0.7177000045776367, 0.7146000266075134, 0.7121000289916992] (best at [3000, 3000, 3000, 3000]), train 42.9s (chunks {'first_incl_compile': 6.992655992507935, 'rest_mean': 2.3682054606350986}), total 46.4s, 18.8 GB peak, 7.2 GB in use
+03:14:20 [bcert 5   806.5s] N16_recon_c1_s0__certB q=64 ceiling-input ok in 13.1s
+03:14:22 [bcert 23   807.3s] N16_recon_c1_s1__certB q=64 ceiling-input ok in 14.9s
+03:14:23 [bcert 16   808.0s] N16_recon_c1_s0__certA q=64 ceiling-input ok in 15.0s
+03:14:23 [bcert 11   808.1s] N16_recon_c1_s1__certA q=64 ceiling-input ok in 14.9s
+03:15:18 [btrain   864.4s] N0_local_c1: steps 3000, val [1.7518999576568604, 1.5104999542236328, 1.6366000175476074, 1.320099949836731] -> [0.30250000953674316, 0.30149999260902405, 0.28780001401901245, 0.29030001163482666] (best at [3000, 3000, 3000, 3000]), train 67.5s (chunks {'first_incl_compile': 10.466573238372803, 'rest_mean': 4.231802246787331}), total 70.4s, 18.8 GB peak, 7.2 GB in use
+03:15:33 [bcert 9   879.4s] N0_local_c1_s0__certA q=64 ceiling-input ok in 14.6s
+03:15:33 [bcert 19   878.3s] N0_local_c1_s1__certB q=64 ceiling-input ok in 14.8s
+03:15:33 [bcert 18   878.6s] N0_local_c1_s1__certA q=64 ceiling-input ok in 14.6s
+03:15:33 [bcert 6   878.6s] N0_local_c1_s0__certB q=64 ceiling-input ok in 15.2s
+03:18:16 [btrain  1042.5s] N4_local_c1: steps 3000, val [1.621899962425232, 1.483299970626831, 1.5378999710083008, 1.4687000513076782] -> [0.24150000512599945, 0.24369999766349792, 0.23360000550746918, 0.23469999432563782] (best at [3000, 3000, 3000, 3000]), train 173.8s (chunks {'first_incl_compile': 18.14697504043579, 'rest_mean': 13.180185968225652}), total 177.9s, 18.8 GB peak, 7.2 GB in use
+03:18:28 [bcert 9  1054.6s] N4_local_c1_s0__certB q=64 ceiling-input ok in 13.2s
+03:18:31 [bcert 15  1055.8s] N4_local_c1_s0__certA q=64 ceiling-input ok in 14.6s
+03:18:31 [bcert 8  1056.4s] N4_local_c1_s1__certB q=64 ceiling-input ok in 14.8s
+03:18:31 [bcert 16  1056.6s] N4_local_c1_s1__certA q=64 ceiling-input ok in 14.5s
+03:21:16 [btrain  1221.6s] N8_local_c1: steps 3000, val [1.590000033378601, 1.528499960899353, 1.5570000410079956, 1.667199969291687] -> [0.2110999971628189, 0.2125999927520752, 0.19699999690055847, 0.19519999623298645] (best at [2750, 2750, 3000, 3000]), train 174.3s (chunks {'first_incl_compile': 18.549318313598633, 'rest_mean': 13.180170774459839}), total 179.0s, 18.8 GB peak, 7.2 GB in use
+03:21:29 [bcert 15  1234.2s] N8_local_c1_s1__certA q=64 ceiling-input ok in 13.4s
+03:21:29 [bcert 5  1235.6s] N8_local_c1_s0__certB q=64 ceiling-input ok in 15.0s
+03:21:30 [bcert 18  1235.3s] N8_local_c1_s0__certA q=64 ceiling-input ok in 14.6s
+03:21:30 [bcert 19  1235.3s] N8_local_c1_s1__certB q=64 ceiling-input ok in 15.0s
+03:24:14 [btrain  1400.3s] N16_local_c1: steps 3000, val [1.507599949836731, 1.5475000143051147, 1.457200050354004, 1.4845000505447388] -> [0.156700000166893, 0.15940000116825104, 0.1436000019311905, 0.14480000734329224] (best at [2500, 3000, 2500, 2750]), train 174.3s (chunks {'first_incl_compile': 18.690934658050537, 'rest_mean': 13.183613603765314}), total 178.5s, 18.8 GB peak, 7.2 GB in use
+03:24:26 [bcert 3  1411.2s] N16_local_c1_s0__certB q=64 ceiling-input ok in 13.0s
+03:24:26 [bcert 9  1412.8s] N16_local_c1_s1__certB q=64 ceiling-input ok in 13.1s
+03:24:28 [bcert 18  1413.3s] N16_local_c1_s1__certA q=64 ceiling-input ok in 13.0s
+03:24:30 [bcert 21  1415.7s] N16_local_c1_s0__certA q=64 ceiling-input ok in 15.7s
+03:25:04 [btrain  1450.3s] N0_pib_c1: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.8224999904632568, 0.8246999979019165, 0.8151000142097473, 0.8145999908447266] (best at [3000, 3000, 3000, 3000]), train 46.6s (chunks {'first_incl_compile': 11.130139112472534, 'rest_mean': 2.1698768355629663}), total 49.8s, 18.8 GB peak, 7.2 GB in use
+03:25:17 [bcert 8  1462.4s] N0_pib_c1_s1__certB q=64 ceiling-input ok in 12.9s
+03:25:18 [bcert 6  1463.4s] N0_pib_c1_s0__certB q=64 ceiling-input ok in 14.6s
+03:25:19 [bcert 18  1463.9s] N0_pib_c1_s0__certA q=64 ceiling-input ok in 14.5s
+03:25:19 [bcert 1  1464.3s] N0_pib_c1_s1__certA q=64 ceiling-input ok in 14.7s
+03:26:30 [btrain  1535.8s] N4_pib_c1: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.805899977684021, 0.8047000169754028, 0.795199990272522, 0.7955999970436096] (best at [3000, 3000, 3000, 3000]), train 81.1s (chunks {'first_incl_compile': 11.939392328262329, 'rest_mean': 5.04312632300637}), total 85.4s, 18.8 GB peak, 7.2 GB in use
+03:26:44 [bcert 3  1549.1s] N4_pib_c1_s1__certB q=64 ceiling-input ok in 14.9s
+03:26:44 [bcert 5  1550.5s] N4_pib_c1_s0__certA q=64 ceiling-input ok in 14.8s
+03:26:44 [bcert 2  1549.7s] N4_pib_c1_s0__certB q=64 ceiling-input ok in 16.3s
+03:26:45 [bcert 6  1549.8s] N4_pib_c1_s1__certA q=64 ceiling-input ok in 14.5s
+03:27:54 [btrain  1620.1s] N8_pib_c1: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.7946000099182129, 0.795799970626831, 0.7867000102996826, 0.7875000238418579] (best at [3000, 3000, 3000, 3000]), train 79.6s (chunks {'first_incl_compile': 12.538020849227905, 'rest_mean': 5.082517168738625}), total 84.1s, 18.8 GB peak, 7.2 GB in use
+03:28:07 [bcert 15  1632.4s] N8_pib_c1_s1__certB q=64 ceiling-input ok in 14.0s
+03:28:07 [bcert 16  1632.6s] N8_pib_c1_s0__certB q=64 ceiling-input ok in 14.9s
+03:28:08 [bcert 6  1633.7s] N8_pib_c1_s0__certA q=64 ceiling-input ok in 14.8s
+03:28:09 [bcert 19  1634.2s] N8_pib_c1_s1__certA q=64 ceiling-input ok in 14.8s
+03:29:16 [btrain  1702.3s] N16_pib_c1: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.7875000238418579, 0.7853000164031982, 0.7778000235557556, 0.777899980545044] (best at [3000, 3000, 3000, 3000]), train 77.4s (chunks {'first_incl_compile': 11.063229084014893, 'rest_mean': 5.032419378107244}), total 82.0s, 18.8 GB peak, 7.2 GB in use
+03:29:29 [bcert 18  1713.9s] N16_pib_c1_s1__certB q=64 ceiling-input ok in 13.0s
+03:29:29 [bcert 21  1715.4s] N16_pib_c1_s0__certB q=64 ceiling-input ok in 14.6s
+03:29:31 [bcert 13  1716.3s] N16_pib_c1_s1__certA q=64 ceiling-input ok in 14.8s
+03:29:32 [bcert 1  1717.3s] N16_pib_c1_s0__certA q=64 ceiling-input ok in 15.9s
+03:29:33 [btrain  1719.3s] L0_clos_c1: steps 3000, val [1.5885000228881836, 1.8186999559402466, 1.2297999858856201, 1.4471999406814575] -> [0.4124000072479248, 0.4142000079154968, 0.40549999475479126, 0.40689998865127563] (best at [3000, 3000, 3000, 3000]), train 15.6s (chunks {'first_incl_compile': 3.871177911758423, 'rest_mean': 0.7540211027318781}), total 16.8s, 18.8 GB peak, 7.2 GB in use
+03:29:43 [btrain  1728.6s] L0_recon_c1: steps 3000, val [1.5351999998092651, 2.358599901199341, 1.842900037765503, 1.7802000045776367] -> [0.8446999788284302, 0.8978000283241272, 0.8651999831199646, 0.8543999791145325] (best at [3000, 3000, 3000, 3000]), train 8.0s (chunks {'first_incl_compile': 2.650373697280884, 'rest_mean': 0.14316227219321512}), total 9.2s, 18.8 GB peak, 7.2 GB in use
+03:29:47 [bcert 19  1732.4s] L0_clos_c1_s0__certB q=64 ceiling-input ok in 14.2s
+03:29:48 [bcert 13  1732.9s] L0_clos_c1_s1__certB q=64 ceiling-input ok in 13.5s
+03:29:49 [bcert 15  1734.5s] L0_clos_c1_s0__certA q=64 ceiling-input ok in 15.1s
+03:29:50 [bcert 17  1735.7s] L0_clos_c1_s1__certA q=64 ceiling-input ok in 16.4s
+03:29:57 [bcert 23  1742.2s] L0_recon_c1_s1__certA q=64 ceiling-input ok in 13.6s
+03:29:57 [bcert 22  1742.3s] L0_recon_c1_s0__certA q=64 ceiling-input ok in 13.8s
+03:29:58 [bcert 4  1743.6s] L0_recon_c1_s1__certB q=64 ceiling-input ok in 15.2s
+03:29:59 [bcert 12  1744.2s] L0_recon_c1_s0__certB q=64 ceiling-input ok in 15.8s
+03:30:04 [btrain  1750.3s] L0_local_c1: steps 3000, val [1.3716000318527222, 1.6700999736785889, 1.4830000400543213, 1.655900001525879] -> [0.3203999996185303, 0.3203999996185303, 0.30809998512268066, 0.31040000915527344] (best at [2750, 2750, 3000, 3000]), train 20.2s (chunks {'first_incl_compile': 5.400711536407471, 'rest_mean': 0.8088148940693248}), total 21.5s, 18.8 GB peak, 7.2 GB in use
+03:30:17 [bcert 4  1762.7s] L0_local_c1_s1__certB q=64 ceiling-input ok in 13.1s
+03:30:18 [bcert 15  1763.8s] L0_local_c1_s0__certB q=64 ceiling-input ok in 14.3s
+03:30:19 [bcert 20  1764.0s] L0_local_c1_s1__certA q=64 ceiling-input ok in 14.2s
+03:30:19 [bcert 16  1764.2s] L0_local_c1_s0__certA q=64 ceiling-input ok in 14.5s
+03:30:51 [btrain  1796.6s] L4_clos_c1: steps 3000, val [1.510699987411499, 1.4386999607086182, 1.729599952697754, 1.4424999952316284] -> [0.3537999987602234, 0.35350000858306885, 0.3522999882698059, 0.35260000824928284] (best at [3000, 3000, 3000, 3000]), train 44.2s (chunks {'first_incl_compile': 5.864469051361084, 'rest_mean': 3.1846702098846436}), total 46.2s, 18.8 GB peak, 7.2 GB in use
+03:31:03 [bcert 1  1808.4s] L4_clos_c1_s0__certB q=64 ceiling-input ok in 13.1s
+03:31:05 [bcert 21  1810.7s] L4_clos_c1_s1__certB q=64 ceiling-input ok in 14.3s
+03:31:05 [bcert 6  1810.0s] L4_clos_c1_s0__certA q=64 ceiling-input ok in 14.2s
+03:31:05 [bcert 13  1810.0s] L4_clos_c1_s1__certA q=64 ceiling-input ok in 14.1s
+03:31:05 [btrain  1811.4s] L4_recon_c1: steps 3000, val [1.6460000276565552, 1.9866000413894653, 2.045799970626831, 1.913100004196167] -> [0.8536999821662903, 0.8629999756813049, 0.8529000282287598, 0.8644000291824341] (best at [3000, 3000, 3000, 3000]), train 12.9s (chunks {'first_incl_compile': 3.3080272674560547, 'rest_mean': 0.46945797313343396}), total 14.7s, 18.8 GB peak, 7.2 GB in use
+03:31:18 [bcert 19  1823.5s] L4_recon_c1_s1__certB q=64 ceiling-input ok in 13.1s
+03:31:19 [bcert 4  1823.9s] L4_recon_c1_s0__certA q=64 ceiling-input ok in 13.2s
+03:31:19 [bcert 11  1824.5s] L4_recon_c1_s0__certB q=64 ceiling-input ok in 14.1s
+03:31:20 [bcert 9  1826.3s] L4_recon_c1_s1__certA q=64 ceiling-input ok in 14.4s
+03:31:56 [btrain  1862.5s] L4_local_c1: steps 3000, val [1.5551999807357788, 1.7058000564575195, 1.6374000310897827, 1.4981000423431396] -> [0.251800000667572, 0.2531999945640564, 0.24240000545978546, 0.2433999925851822] (best at [3000, 3000, 3000, 3000]), train 49.2s (chunks {'first_incl_compile': 7.679671287536621, 'rest_mean': 3.239329359748147}), total 51.0s, 18.8 GB peak, 7.2 GB in use
+03:32:09 [bcert 3  1874.0s] L4_local_c1_s0__certB q=64 ceiling-input ok in 12.8s
+03:32:09 [bcert 2  1874.7s] L4_local_c1_s0__certA q=64 ceiling-input ok in 12.9s
+03:32:11 [bcert 5  1877.2s] L4_local_c1_s1__certB q=64 ceiling-input ok in 14.5s
+03:32:11 [bcert 17  1876.0s] L4_local_c1_s1__certA q=64 ceiling-input ok in 14.2s
+03:32:43 [btrain  1909.3s] L8_clos_c1: steps 3000, val [1.6548000574111938, 1.6051000356674194, 1.43149995803833, 1.420300006866455] -> [0.30809998512268066, 0.3077999949455261, 0.29980000853538513, 0.3034000098705292] (best at [3000, 3000, 3000, 3000]), train 44.7s (chunks {'first_incl_compile': 6.282981872558594, 'rest_mean': 3.183274030685425}), total 46.8s, 18.8 GB peak, 7.2 GB in use
+03:32:57 [btrain  1922.7s] L8_recon_c1: steps 3000, val [2.263200044631958, 1.9144999980926514, 1.9652999639511108, 1.8759000301361084] -> [0.8755000233650208, 0.8776000142097473, 0.8671000003814697, 0.848800003528595] (best at [3000, 3000, 3000, 3000]), train 11.5s (chunks {'first_incl_compile': 2.595726490020752, 'rest_mean': 0.47097294980829413}), total 13.3s, 18.8 GB peak, 7.2 GB in use
+03:32:58 [bcert 20  1922.8s] L8_clos_c1_s0__certB q=64 ceiling-input ok in 14.7s
+03:32:58 [bcert 10  1923.1s] L8_clos_c1_s1__certA q=64 ceiling-input ok in 14.2s
+03:32:58 [bcert 7  1923.1s] L8_clos_c1_s0__certA q=64 ceiling-input ok in 14.2s
+03:32:59 [bcert 11  1923.9s] L8_clos_c1_s1__certB q=64 ceiling-input ok in 15.4s
+03:33:10 [bcert 3  1934.9s] L8_recon_c1_s0__certB q=64 ceiling-input ok in 12.9s
+03:33:10 [bcert 1  1935.4s] L8_recon_c1_s1__certA q=64 ceiling-input ok in 13.0s
+03:33:11 [bcert 23  1936.3s] L8_recon_c1_s1__certB q=64 ceiling-input ok in 14.0s
+03:33:11 [bcert 22  1936.7s] L8_recon_c1_s0__certA q=64 ceiling-input ok in 14.4s
+03:33:48 [btrain  1974.1s] L8_local_c1: steps 3000, val [1.6456999778747559, 1.570099949836731, 1.6750999689102173, 1.7386000156402588] -> [0.21559999883174896, 0.21610000729560852, 0.2045000046491623, 0.20489999651908875] (best at [3000, 2500, 3000, 3000]), train 49.3s (chunks {'first_incl_compile': 7.767544984817505, 'rest_mean': 3.2395868084647437}), total 51.3s, 18.8 GB peak, 7.2 GB in use
+03:34:03 [bcert 20  1988.1s] L8_local_c1_s0__certA q=64 ceiling-input ok in 14.3s
+03:34:03 [bcert 15  1988.2s] L8_local_c1_s1__certA q=64 ceiling-input ok in 14.4s
+03:34:03 [bcert 19  1988.3s] L8_local_c1_s0__certB q=64 ceiling-input ok in 14.7s
+03:34:04 [bcert 2  1989.2s] L8_local_c1_s1__certB q=64 ceiling-input ok in 15.5s
+03:34:35 [btrain  2020.6s] L16_clos_c1: steps 3000, val [1.5094000101089478, 1.447100043296814, 1.5319000482559204, 1.4824999570846558] -> [0.24420000612735748, 0.24459999799728394, 0.2387000024318695, 0.24160000681877136] (best at [3000, 3000, 3000, 3000]), train 44.4s (chunks {'first_incl_compile': 6.1205620765686035, 'rest_mean': 3.1814369721846147}), total 46.4s, 18.8 GB peak, 7.2 GB in use
+03:34:48 [bcert 21  2033.7s] L16_clos_c1_s1__certA q=64 ceiling-input ok in 12.9s
+03:34:48 [btrain  2034.4s] L16_recon_c1: steps 3000, val [2.0622000694274902, 1.7135000228881836, 2.018199920654297, 1.933500051498413] -> [0.8607000112533569, 0.8751000165939331, 0.8628000020980835, 0.8503000140190125] (best at [3000, 3000, 3000, 3000]), train 12.0s (chunks {'first_incl_compile': 3.083228349685669, 'rest_mean': 0.47075952183116565}), total 13.7s, 18.8 GB peak, 7.2 GB in use
+03:34:49 [bcert 11  2034.0s] L16_clos_c1_s1__certB q=64 ceiling-input ok in 14.1s
+03:34:49 [bcert 14  2034.2s] L16_clos_c1_s0__certA q=64 ceiling-input ok in 14.7s
+03:34:50 [bcert 1  2035.7s] L16_clos_c1_s0__certB q=64 ceiling-input ok in 16.3s
+03:35:02 [bcert 11  2047.0s] L16_recon_c1_s0__certA q=64 ceiling-input ok in 13.0s
+03:35:03 [bcert 3  2048.3s] L16_recon_c1_s0__certB q=64 ceiling-input ok in 14.3s
+03:35:03 [bcert 10  2048.8s] L16_recon_c1_s1__certA q=64 ceiling-input ok in 14.7s
+03:35:05 [bcert 4  2050.1s] L16_recon_c1_s1__certB q=64 ceiling-input ok in 16.2s
+03:35:40 [btrain  2085.6s] L16_local_c1: steps 3000, val [1.3992999792099, 1.4408999681472778, 1.5088000297546387, 1.6035000085830688] -> [0.16349999606609344, 0.164000004529953, 0.1501999944448471, 0.1509999930858612] (best at [2750, 3000, 3000, 3000]), train 49.1s (chunks {'first_incl_compile': 7.294717073440552, 'rest_mean': 3.2363856489008125}), total 51.1s, 18.8 GB peak, 7.2 GB in use
+03:35:54 [bcert 3  2099.3s] L16_local_c1_s0__certB q=64 ceiling-input ok in 15.0s
+03:35:55 [bcert 10  2099.8s] L16_local_c1_s1__certB q=64 ceiling-input ok in 15.0s
+03:35:55 [bcert 7  2100.0s] L16_local_c1_s0__certA q=64 ceiling-input ok in 14.8s
+03:35:55 [bcert 2  2100.3s] L16_local_c1_s1__certA q=64 ceiling-input ok in 15.1s
+03:36:10 [btrain  2116.3s] L8_clos1_c1: steps 3000, val [0.8903999924659729, 1.0525000095367432, 0.7181000113487244, 0.6244000196456909] -> [0.005100000184029341, 0.005499999970197678, 0.004699999932199717, 0.004399999976158142] (best at [3000, 3000, 3000, 3000]), train 28.7s (chunks {'first_incl_compile': 5.581974506378174, 'rest_mean': 1.7831618785858154}), total 30.6s, 18.8 GB peak, 7.2 GB in use
+03:36:24 [bcert 16  2129.7s] L8_clos1_c1_s0__certB q=64 ceiling-input ok in 14.4s
+03:36:25 [bcert 2  2130.0s] L8_clos1_c1_s1__certB q=64 ceiling-input ok in 14.7s
+03:36:25 [bcert 14  2129.6s] L8_clos1_c1_s0__certA q=64 ceiling-input ok in 14.4s
+03:36:25 [bcert 8  2130.9s] L8_clos1_c1_s1__certA q=64 ceiling-input ok in 14.4s
+03:36:39 [btrain  2144.9s] L8_clos16_c1: steps 3000, val [2.0378000736236572, 2.0176000595092773, 2.132699966430664, 1.9608999490737915] -> [0.7621999979019165, 0.7656000256538391, 0.7531999945640564, 0.7534000277519226] (best at [3000, 3000, 3000, 2750]), train 26.5s (chunks {'first_incl_compile': 3.909764528274536, 'rest_mean': 1.781561634757302}), total 28.5s, 18.8 GB peak, 7.2 GB in use
+03:36:53 [bcert 1  2158.7s] L8_clos16_c1_s0__certB q=64 ceiling-input ok in 15.0s
+03:36:54 [bcert 22  2158.8s] L8_clos16_c1_s1__certB q=64 ceiling-input ok in 15.0s
+03:36:54 [bcert 20  2159.0s] L8_clos16_c1_s0__certA q=64 ceiling-input ok in 14.7s
+03:36:55 [bcert 15  2160.0s] L8_clos16_c1_s1__certA q=64 ceiling-input ok in 15.7s
+03:36:58 [btrain  2163.7s] U_clos_c1: steps 2000, val [1.613800048828125, 1.6162999868392944, 1.6038000583648682, 1.5980000495910645] -> [0.7286999821662903, 0.7182000279426575, 0.7233999967575073, 0.7139999866485596] (best at [500, 500, 500, 500]), train 16.1s (chunks {'first_incl_compile': 5.894455909729004, 'rest_mean': 0.6420136179242816}), total 18.7s, 18.8 GB peak, 7.4 GB in use
+03:37:11 [bcert 15  2176.0s] U_clos_c1_s1__certA q=64 ceiling-input ok in 13.0s
+03:37:12 [bcert 16  2177.6s] U_clos_c1_s0__certB q=64 ceiling-input ok in 14.9s
+03:37:12 [bcert 10  2177.8s] U_clos_c1_s1__certB q=64 ceiling-input ok in 14.9s
+03:37:13 [bcert 7  2177.9s] U_clos_c1_s0__certA q=64 ceiling-input ok in 14.9s
+03:37:14 [btrain  2180.3s] U_recon_c1: steps 2000, val [2.0409998893737793, 2.0513999462127686, 1.9323999881744385, 1.938099980354309] -> [0.7972000241279602, 0.7975000143051147, 0.7889999747276306, 0.7882999777793884] (best at [1000, 750, 750, 1000]), train 15.2s (chunks {'first_incl_compile': 4.605399131774902, 'rest_mean': 0.40130611828395296}), total 16.6s, 18.8 GB peak, 7.4 GB in use
+03:37:29 [bcert 21  2195.1s] U_recon_c1_s0__certA q=64 ceiling-input ok in 14.3s
+03:37:29 [bcert 20  2194.4s] U_recon_c1_s1__certA q=64 ceiling-input ok in 14.4s
+03:37:29 [bcert 22  2194.4s] U_recon_c1_s1__certB q=64 ceiling-input ok in 14.6s
+03:37:30 [bcert 1  2194.8s] U_recon_c1_s0__certB q=64 ceiling-input ok in 15.1s
+03:37:32 [btrain  2198.2s] U_local_c1: steps 2000, val [1.6334999799728394, 1.649999976158142, 1.6145000457763672, 1.6055999994277954] -> [0.47609999775886536, 0.4805999994277954, 0.47110000252723694, 0.4697999954223633] (best at [500, 500, 500, 500]), train 16.3s (chunks {'first_incl_compile': 4.868580341339111, 'rest_mean': 0.7098864487239293}), total 17.7s, 18.8 GB peak, 7.4 GB in use
+03:37:45 [bcert 21  2211.4s] U_local_c1_s1__certB q=64 ceiling-input ok in 13.3s
+03:37:46 [bcert 20  2211.4s] U_local_c1_s1__certA q=64 ceiling-input ok in 14.0s
+03:37:47 [bcert 17  2211.9s] U_local_c1_s0__certB q=64 ceiling-input ok in 14.8s
+03:37:47 [bcert 12  2212.3s] U_local_c1_s0__certA q=64 ceiling-input ok in 15.0s
+03:38:01 [btrain  2227.5s] U_pib_c1: steps 2000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.8756999969482422, 0.878000020980835, 0.8701000213623047, 0.8722000122070312] (best at [1000, 1500, 500, 1000]), train 27.6s (chunks {'first_incl_compile': 8.176454782485962, 'rest_mean': 1.583926030567714}), total 29.2s, 18.8 GB peak, 7.4 GB in use
+03:38:16 [bcert 8  2242.0s] U_pib_c1_s0__certB q=64 ceiling-input ok in 15.0s
+03:38:17 [bcert 17  2242.2s] U_pib_c1_s1__certB q=64 ceiling-input ok in 15.3s
+03:38:17 [bcert 15  2242.2s] U_pib_c1_s0__certA q=64 ceiling-input ok in 15.3s
+03:38:17 [bcert 18  2242.3s] U_pib_c1_s1__certA q=64 ceiling-input ok in 15.3s
+03:41:05 [btrain  2410.8s] N8_clos_c2: steps 3000, val [1.4427000284194946, 1.55649995803833, 1.541200041770935, 1.666599988937378] -> [0.25270000100135803, 0.26330000162124634, 0.24539999663829803, 0.2556000053882599] (best at [3000, 3000, 3000, 3000]), train 177.1s (chunks {'first_incl_compile': 20.98496103286743, 'rest_mean': 13.248114000667226}), total 183.2s, 18.8 GB peak, 7.2 GB in use
+03:41:42 [bcert 3  2447.4s] N8_clos_c2_s0__certB q=128 ceiling-input ok in 39.0s
+03:41:44 [bcert 10  2449.0s] N8_clos_c2_s1__certB q=128 ceiling-input ok in 40.2s
+03:41:44 [bcert 20  2449.4s] N8_clos_c2_s0__certA q=128 ceiling-input ok in 40.0s
+03:41:44 [bcert 6  2449.5s] N8_clos_c2_s1__certA q=128 ceiling-input ok in 39.3s
+03:42:13 [btrain  2479.5s] N0_clos_c2: steps 3000, val [1.4775999784469604, 1.4844000339508057, 1.5729000568389893, 1.7853000164031982] -> [0.38589999079704285, 0.38940000534057617, 0.3756999969482422, 0.37790000438690186] (best at [3000, 3000, 3000, 3000]), train 64.0s (chunks {'first_incl_compile': 8.316656351089478, 'rest_mean': 4.2835728471929375}), total 68.5s, 18.8 GB peak, 7.2 GB in use
+03:42:39 [btrain  2504.8s] U_clos_c2: steps 2000, val [1.6693999767303467, 1.673200011253357, 1.6687999963760376, 1.6607999801635742] -> [0.7710999846458435, 0.7746999859809875, 0.7681999802589417, 0.7664999961853027] (best at [750, 750, 750, 750]), train 21.9s (chunks {'first_incl_compile': 9.180575609207153, 'rest_mean': 0.8397040707724435}), total 25.2s, 18.8 GB peak, 7.6 GB in use
+03:42:53 [bcert 3  2518.1s] N0_clos_c2_s0__certB q=128 ceiling-input ok in 40.8s
+03:42:55 [bcert 8  2520.4s] N0_clos_c2_s0__certA q=128 ceiling-input ok in 41.4s
+03:42:55 [bcert 7  2520.5s] N0_clos_c2_s1__certB q=128 ceiling-input ok in 42.5s
+03:42:56 [bcert 10  2521.3s] N0_clos_c2_s1__certA q=128 ceiling-input ok in 42.3s
+03:43:20 [bcert 19  2545.3s] U_clos_c2_s0__certA q=128 ceiling-input ok in 40.8s
+03:43:20 [bcert 21  2546.3s] U_clos_c2_s1__certA q=128 ceiling-input ok in 40.8s
+03:43:21 [bcert 1  2546.3s] U_clos_c2_s1__certB q=128 ceiling-input ok in 42.4s
+03:43:22 [bcert 18  2546.8s] U_clos_c2_s0__certB q=128 ceiling-input ok in 43.3s
+03:43:34 [btrain  2560.5s] N8_recon_c2: steps 3000, val [2.343100070953369, 1.844499945640564, 1.767699956893921, 1.8650000095367432] -> [0.5598000288009644, 0.5532000064849854, 0.5550000071525574, 0.5509999990463257] (best at [3000, 3000, 3000, 3000]), train 51.4s (chunks {'first_incl_compile': 9.118319511413574, 'rest_mean': 2.7511021223935215}), total 55.6s, 18.8 GB peak, 7.2 GB in use
+03:44:02 [btrain  2588.5s] N0_recon_c2: steps 3000, val [2.092099905014038, 1.8523999452590942, 1.7883000373840332, 1.9519000053405762] -> [0.5547000169754028, 0.557699978351593, 0.5489000082015991, 0.5566999912261963] (best at [3000, 3000, 3000, 3000]), train 24.8s (chunks {'first_incl_compile': 4.606855154037476, 'rest_mean': 0.9040926586497914}), total 27.9s, 18.8 GB peak, 7.2 GB in use
+03:44:15 [bcert 2  2599.9s] N8_recon_c2_s1__certB q=128 ceiling-input ok in 40.7s
+03:44:15 [bcert 16  2600.0s] N8_recon_c2_s0__certB q=128 ceiling-input ok in 41.3s
+03:44:15 [bcert 7  2600.5s] N8_recon_c2_s0__certA q=128 ceiling-input ok in 41.0s
+03:44:16 [bcert 3  2600.8s] N8_recon_c2_s1__certA q=128 ceiling-input ok in 40.6s
+03:44:22 [btrain  2608.4s] U_recon_c2: steps 2000, val [2.0232999324798584, 1.9818999767303467, 1.9566999673843384, 1.976199984550476] -> [0.6942999958992004, 0.692799985408783, 0.6841999888420105, 0.6887000203132629] (best at [250, 250, 250, 500]), train 18.0s (chunks {'first_incl_compile': 5.302926301956177, 'rest_mean': 0.5622410433632987}), total 19.7s, 18.8 GB peak, 7.5 GB in use
+03:44:44 [bcert 11  2629.4s] N0_recon_c2_s0__certB q=128 ceiling-input ok in 42.1s
+03:44:44 [bcert 20  2629.6s] N0_recon_c2_s0__certA q=128 ceiling-input ok in 42.1s
+03:44:45 [bcert 1  2630.6s] N0_recon_c2_s1__certA q=128 ceiling-input ok in 42.2s
+03:44:48 [bcert 5  2634.5s] N0_recon_c2_s1__certB q=128 ceiling-input ok in 46.1s
+03:45:04 [bcert 4  2648.9s] U_recon_c2_s1__certA q=128 ceiling-input ok in 40.5s
+03:45:04 [bcert 13  2649.3s] U_recon_c2_s1__certB q=128 ceiling-input ok in 40.9s
+03:45:04 [bcert 10  2649.6s] U_recon_c2_s0__certB q=128 ceiling-input ok in 41.2s
+03:45:05 [bcert 19  2649.8s] U_recon_c2_s0__certA q=128 ceiling-input ok in 41.5s
+03:47:25 [btrain  2791.1s] N8_local_c2: steps 3000, val [1.5621999502182007, 1.5355000495910645, 1.5507999658584595, 1.4129999876022339] -> [0.218299999833107, 0.21439999341964722, 0.20640000700950623, 0.20990000665187836] (best at [3000, 3000, 3000, 3000]), train 177.1s (chunks {'first_incl_compile': 19.261780977249146, 'rest_mean': 13.291964509270407}), total 182.6s, 18.8 GB peak, 7.2 GB in use
+03:48:02 [bcert 11  2826.9s] N8_local_c2_s0__certB q=128 ceiling-input ok in 38.5s
+03:48:03 [bcert 16  2827.8s] N8_local_c2_s1__certB q=128 ceiling-input ok in 38.7s
+03:48:03 [bcert 13  2828.2s] N8_local_c2_s1__certA q=128 ceiling-input ok in 37.9s
+03:48:03 [bcert 18  2828.6s] N8_local_c2_s0__certA q=128 ceiling-input ok in 38.7s
+03:48:36 [btrain  2861.9s] N0_local_c2: steps 3000, val [1.6584999561309814, 1.6088000535964966, 1.469099998474121, 1.7036000490188599] -> [0.33469998836517334, 0.3027999997138977, 0.31349998712539673, 0.3188000023365021] (best at [3000, 3000, 3000, 3000]), train 66.6s (chunks {'first_incl_compile': 8.270132541656494, 'rest_mean': 4.328650821339}), total 70.6s, 18.8 GB peak, 7.2 GB in use
+03:48:58 [btrain  2884.0s] U_local_c2: steps 2000, val [1.6842000484466553, 1.6761000156402588, 1.6571999788284302, 1.6608999967575073] -> [0.6528000235557556, 0.6559000015258789, 0.6524999737739563, 0.6524999737739563] (best at [500, 500, 500, 500]), train 19.8s (chunks {'first_incl_compile': 5.473013877868652, 'rest_mean': 0.9297716276986259}), total 22.0s, 18.8 GB peak, 7.6 GB in use
+03:49:15 [bcert 11  2900.0s] N0_local_c2_s0__certB q=128 ceiling-input ok in 40.0s
+03:49:16 [bcert 13  2901.4s] N0_local_c2_s1__certA q=128 ceiling-input ok in 40.1s
+03:49:17 [bcert 21  2902.9s] N0_local_c2_s0__certA q=128 ceiling-input ok in 41.4s
+03:49:17 [bcert 17  2902.1s] N0_local_c2_s1__certB q=128 ceiling-input ok in 41.6s
+03:49:38 [bcert 3  2922.9s] U_local_c2_s1__certB q=128 ceiling-input ok in 40.0s
+03:49:39 [bcert 4  2923.9s] U_local_c2_s0__certA q=128 ceiling-input ok in 40.8s
+03:49:39 [bcert 1  2924.4s] U_local_c2_s0__certB q=128 ceiling-input ok in 41.7s
+03:49:40 [bcert 14  2924.7s] U_local_c2_s1__certA q=128 ceiling-input ok in 41.7s
+03:50:36 [btrain  2981.6s] N8_pib_c2: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.6980999708175659, 0.6952000260353088, 0.6973999738693237, 0.6916000247001648] (best at [3000, 3000, 3000, 3000]), train 92.2s (chunks {'first_incl_compile': 14.690698385238647, 'rest_mean': 5.814475731416182}), total 97.5s, 18.8 GB peak, 7.2 GB in use
+03:51:13 [bcert 14  3017.9s] N8_pib_c2_s0__certB q=128 ceiling-input ok in 39.2s
+03:51:13 [bcert 10  3018.7s] N8_pib_c2_s1__certB q=128 ceiling-input ok in 38.9s
+03:51:14 [bcert 17  3019.5s] N8_pib_c2_s0__certA q=128 ceiling-input ok in 39.3s
+03:51:14 [bcert 16  3019.6s] N8_pib_c2_s1__certA q=128 ceiling-input ok in 38.7s
+03:51:24 [btrain  3030.5s] N0_pib_c2: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.7210000157356262, 0.7196000218391418, 0.7175999879837036, 0.7127000093460083] (best at [3000, 3000, 3000, 3000]), train 44.7s (chunks {'first_incl_compile': 8.709247350692749, 'rest_mean': 2.1814287792552602}), total 48.7s, 18.8 GB peak, 7.2 GB in use
+03:51:58 [btrain  3064.3s] U_pib_c2: steps 2000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.847100019454956, 0.84170001745224, 0.8328999876976013, 0.8410000205039978] (best at [2000, 2000, 1750, 1750]), train 31.6s (chunks {'first_incl_compile': 9.908098459243774, 'rest_mean': 1.7111300400325231}), total 33.7s, 18.8 GB peak, 7.6 GB in use
+03:52:03 [bcert 17  3068.3s] N0_pib_c2_s0__certB q=128 ceiling-input ok in 39.9s
+03:52:04 [bcert 18  3069.7s] N0_pib_c2_s1__certA q=128 ceiling-input ok in 40.0s
+03:52:04 [bcert 12  3069.7s] N0_pib_c2_s1__certB q=128 ceiling-input ok in 41.0s
+03:52:05 [bcert 1  3069.9s] N0_pib_c2_s0__certA q=128 ceiling-input ok in 40.4s
+03:52:18 [btrain  3083.6s] L0_clos_c2: steps 3000, val [1.4911999702453613, 1.5744999647140503, 1.5985000133514404, 1.3878999948501587] -> [0.4575999975204468, 0.4562999904155731, 0.4490000009536743, 0.4456999897956848] (best at [3000, 3000, 3000, 3000]), train 17.2s (chunks {'first_incl_compile': 4.064624071121216, 'rest_mean': 0.8607632680372759}), total 19.1s, 18.8 GB peak, 7.2 GB in use
+03:52:39 [bcert 14  3103.7s] U_pib_c2_s1__certB q=128 ceiling-input ok in 40.8s
+03:52:39 [bcert 8  3104.8s] U_pib_c2_s0__certB q=128 ceiling-input ok in 41.1s
+03:52:39 [bcert 13  3104.5s] U_pib_c2_s0__certA q=128 ceiling-input ok in 41.1s
+03:52:39 [bcert 10  3104.7s] U_pib_c2_s1__certA q=128 ceiling-input ok in 41.0s
+03:52:58 [bcert 15  3123.2s] L0_clos_c2_s1__certB q=128 ceiling-input ok in 40.5s
+03:52:59 [bcert 16  3124.7s] L0_clos_c2_s0__certB q=128 ceiling-input ok in 42.1s
+03:53:00 [bcert 4  3124.8s] L0_clos_c2_s1__certA q=128 ceiling-input ok in 41.9s
+03:53:01 [bcert 23  3125.8s] L0_clos_c2_s0__certA q=128 ceiling-input ok in 43.0s
+03:53:07 [btrain  3132.6s] L4_clos_c2: steps 3000, val [1.412500023841858, 1.5881999731063843, 1.5128999948501587, 1.5124000310897827] -> [0.35499998927116394, 0.34790000319480896, 0.35030001401901245, 0.3497999906539917] (best at [2750, 3000, 3000, 3000]), train 46.5s (chunks {'first_incl_compile': 6.570978403091431, 'rest_mean': 3.303244785829024}), total 48.8s, 18.8 GB peak, 7.2 GB in use
+03:53:45 [bcert 2  3170.6s] L4_clos_c2_s0__certB q=128 ceiling-input ok in 39.5s
+03:53:46 [bcert 8  3172.0s] L4_clos_c2_s1__certB q=128 ceiling-input ok in 40.2s
+03:53:47 [bcert 13  3171.8s] L4_clos_c2_s0__certA q=128 ceiling-input ok in 40.2s
+03:53:47 [bcert 23  3172.6s] L4_clos_c2_s1__certA q=128 ceiling-input ok in 40.8s
+03:53:56 [btrain  3181.7s] L8_clos_c2: steps 3000, val [1.5542000532150269, 1.5468000173568726, 1.583299994468689, 1.5694999694824219] -> [0.2849999964237213, 0.2842999994754791, 0.2930000126361847, 0.2865999937057495] (best at [3000, 3000, 3000, 3000]), train 46.4s (chunks {'first_incl_compile': 6.379220008850098, 'rest_mean': 3.3032935749400747}), total 49.0s, 18.8 GB peak, 7.2 GB in use
+03:54:36 [bcert 8  3221.5s] L8_clos_c2_s1__certB q=128 ceiling-input ok in 40.5s
+03:54:36 [bcert 18  3221.1s] L8_clos_c2_s0__certA q=128 ceiling-input ok in 40.4s
+03:54:36 [bcert 15  3221.3s] L8_clos_c2_s0__certB q=128 ceiling-input ok in 41.1s
+03:54:36 [bcert 1  3221.7s] L8_clos_c2_s1__certA q=128 ceiling-input ok in 40.7s
+03:54:45 [btrain  3230.7s] L16_clos_c2: steps 3000, val [1.465000033378601, 1.5813000202178955, 1.5078999996185303, 1.5693999528884888] -> [0.2110999971628189, 0.2151000052690506, 0.21860000491142273, 0.21559999883174896] (best at [3000, 3000, 2750, 3000]), train 46.4s (chunks {'first_incl_compile': 6.43077540397644, 'rest_mean': 3.3032678474079478}), total 48.9s, 18.8 GB peak, 7.2 GB in use
+03:55:26 [bcert 9  3272.5s] L16_clos_c2_s0__certA q=128 ceiling-input ok in 41.6s
+03:55:27 [bcert 23  3272.2s] L16_clos_c2_s1__certB q=128 ceiling-input ok in 42.6s
+03:55:27 [bcert 8  3273.0s] L16_clos_c2_s1__certA q=128 ceiling-input ok in 42.5s
+03:55:28 [bcert 21  3273.6s] L16_clos_c2_s0__certB q=128 ceiling-input ok in 43.6s
+03:57:46 [btrain  3411.9s] N8_clos_c4: steps 3000, val [1.5927000045776367, 1.6175999641418457, 1.59089994430542, 1.5602999925613403] -> [0.2874000072479248, 0.2896000146865845, 0.2741999924182892, 0.2791000008583069] (best at [3000, 3000, 3000, 3000]), train 175.6s (chunks {'first_incl_compile': 20.813353300094604, 'rest_mean': 13.171620780771429}), total 181.0s, 18.9 GB peak, 7.2 GB in use
+03:58:54 [btrain  3480.1s] N0_clos_c4: steps 3000, val [1.7007999420166016, 1.6858999729156494, 1.657099962234497, 1.5738999843597412] -> [0.42899999022483826, 0.430400013923645, 0.40939998626708984, 0.42489999532699585] (best at [3000, 3000, 3000, 3000]), train 63.4s (chunks {'first_incl_compile': 8.840160369873047, 'rest_mean': 4.207225236025724}), total 68.1s, 18.9 GB peak, 7.2 GB in use
+03:59:34 [btrain  3519.7s] U_clos_c4: steps 2000, val [1.7330000400543213, 1.7288999557495117, 1.7324999570846558, 1.7271000146865845] -> [0.9599999785423279, 0.9605000019073486, 0.9477999806404114, 0.9498000144958496] (best at [500, 500, 500, 500]), train 35.6s (chunks {'first_incl_compile': 14.515871047973633, 'rest_mean': 1.9026927947998047}), total 39.4s, 18.9 GB peak, 7.8 GB in use
+04:00:12 [bcert 12  3557.1s] N8_clos_c4_s0__certB q=256 ceiling-input ok in 148.2s
+04:00:13 [bcert 16  3558.3s] N8_clos_c4_s1__certB q=256 ceiling-input ok in 148.4s
+04:00:16 [bcert 15  3561.1s] N8_clos_c4_s0__certA q=256 ceiling-input ok in 150.7s
+04:00:21 [bcert 13  3565.9s] N8_clos_c4_s1__certA q=256 ceiling-input ok in 154.0s
+04:00:29 [btrain  3575.3s] N8_recon_c4: steps 3000, val [1.9814000129699707, 2.1696999073028564, 2.0065999031066895, 2.087399959564209] -> [0.44200000166893005, 0.45329999923706055, 0.44859999418258667, 0.44690001010894775] (best at [3000, 3000, 3000, 3000]), train 51.2s (chunks {'first_incl_compile': 9.433550834655762, 'rest_mean': 2.753535422411832}), total 55.4s, 18.9 GB peak, 7.2 GB in use
+04:00:57 [btrain  3603.4s] N0_recon_c4: steps 3000, val [2.1907999515533447, 1.943600058555603, 2.0757999420166016, 1.9127999544143677] -> [0.4523000121116638, 0.44859999418258667, 0.44449999928474426, 0.44830000400543213] (best at [3000, 3000, 3000, 3000]), train 24.9s (chunks {'first_incl_compile': 4.86647629737854, 'rest_mean': 0.9048462564294989}), total 27.9s, 18.9 GB peak, 7.2 GB in use
+04:01:24 [btrain  3630.0s] U_recon_c4: steps 2000, val [2.001800060272217, 2.018399953842163, 2.0160999298095703, 2.001699924468994] -> [0.5213000178337097, 0.5228000283241272, 0.5238000154495239, 0.5133000016212463] (best at [750, 500, 500, 750]), train 24.7s (chunks {'first_incl_compile': 7.276433229446411, 'rest_mean': 1.0853102888379778}), total 26.4s, 18.9 GB peak, 7.7 GB in use
+04:01:42 [bcert 6  3646.9s] N0_clos_c4_s0__certA q=256 ceiling-input ok in 167.9s
+04:01:42 [bcert 3  3647.3s] N0_clos_c4_s0__certB q=256 ceiling-input ok in 169.1s
+04:01:43 [bcert 9  3649.5s] N0_clos_c4_s1__certB q=256 ceiling-input ok in 169.9s
+04:01:48 [bcert 14  3653.3s] N0_clos_c4_s1__certA q=256 ceiling-input ok in 174.3s
+04:02:21 [bcert 18  3685.8s] U_clos_c4_s1__certB q=256 ceiling-input ok in 167.6s
+04:02:23 [bcert 21  3688.7s] U_clos_c4_s1__certA q=256 ceiling-input ok in 168.9s
+04:02:24 [bcert 17  3689.1s] U_clos_c4_s0__certA q=256 ceiling-input ok in 170.5s
+04:02:24 [bcert 20  3689.7s] U_clos_c4_s0__certB q=256 ceiling-input ok in 171.7s
+04:03:15 [bcert 13  3740.2s] N8_recon_c4_s1__certB q=256 ceiling-input ok in 165.3s
+04:03:19 [bcert 22  3744.1s] N8_recon_c4_s1__certA q=256 ceiling-input ok in 169.0s
+04:03:19 [bcert 19  3744.5s] N8_recon_c4_s0__certB q=256 ceiling-input ok in 170.2s
+04:03:21 [bcert 4  3745.8s] N8_recon_c4_s0__certA q=256 ceiling-input ok in 170.7s
+04:03:44 [bcert 11  3769.3s] N0_recon_c4_s1__certB q=256 ceiling-input ok in 166.9s
+04:03:45 [bcert 23  3770.5s] N0_recon_c4_s0__certA q=256 ceiling-input ok in 168.1s
+04:03:47 [bcert 12  3772.6s] N0_recon_c4_s0__certB q=256 ceiling-input ok in 170.5s
+04:03:49 [bcert 8  3774.4s] N0_recon_c4_s1__certA q=256 ceiling-input ok in 171.1s
+04:04:05 [bcert 10  3790.7s] U_recon_c4_s1__certA q=256 ceiling-input ok in 160.7s
+04:04:06 [bcert 5  3792.7s] U_recon_c4_s1__certB q=256 ceiling-input ok in 161.6s
+04:04:07 [bcert 2  3792.0s] U_recon_c4_s0__certB q=256 ceiling-input ok in 162.1s
+04:04:07 [bcert 1  3792.5s] U_recon_c4_s0__certA q=256 ceiling-input ok in 162.7s
+04:04:26 [btrain  3812.3s] N8_local_c4: steps 3000, val [1.6132999658584595, 1.5634000301361084, 1.6389000415802002, 1.5887999534606934] -> [0.22759999334812164, 0.2290000021457672, 0.22339999675750732, 0.2362000048160553] (best at [3000, 3000, 3000, 3000]), train 176.8s (chunks {'first_incl_compile': 19.66361927986145, 'rest_mean': 13.214835231954401}), total 182.1s, 18.9 GB peak, 7.2 GB in use
+04:05:35 [btrain  3880.9s] N0_local_c4: steps 3000, val [1.5839999914169312, 1.6028000116348267, 1.6230000257492065, 1.6495000123977661] -> [0.3379000127315521, 0.3458999991416931, 0.3411000072956085, 0.3285999894142151] (best at [3000, 3000, 3000, 3000]), train 64.3s (chunks {'first_incl_compile': 7.4579713344573975, 'rest_mean': 4.250098965384743}), total 68.4s, 18.9 GB peak, 7.2 GB in use
+04:06:08 [btrain  3914.2s] U_local_c4: steps 2000, val [1.7275999784469604, 1.7288000583648682, 1.7390999794006348, 1.7302000522613525] -> [0.8104000091552734, 0.8087999820709229, 0.8084999918937683, 0.802299976348877] (best at [250, 250, 250, 250]), train 30.3s (chunks {'first_incl_compile': 7.073183298110962, 'rest_mean': 2.093888589314052}), total 33.1s, 18.9 GB peak, 7.8 GB in use
+04:06:53 [bcert 21  3959.3s] N8_local_c4_s0__certA q=256 ceiling-input ok in 147.5s
+04:06:54 [bcert 3  3959.0s] N8_local_c4_s0__certB q=256 ceiling-input ok in 149.6s
+04:06:58 [bcert 7  3963.1s] N8_local_c4_s1__certB q=256 ceiling-input ok in 153.0s
+04:06:59 [bcert 12  3964.6s] N8_local_c4_s1__certA q=256 ceiling-input ok in 153.0s
+04:07:46 [btrain  4012.2s] N8_pib_c4: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.6323000192642212, 0.6345000267028809, 0.6309000253677368, 0.6328999996185303] (best at [3000, 3000, 3000, 3000]), train 92.5s (chunks {'first_incl_compile': 15.408591985702515, 'rest_mean': 5.804886969653043}), total 97.9s, 18.9 GB peak, 7.2 GB in use
+04:08:11 [bcert 22  4036.2s] N0_local_c4_s1__certB q=256 ceiling-input ok in 156.9s
+04:08:12 [bcert 11  4037.0s] N0_local_c4_s1__certA q=256 ceiling-input ok in 156.7s
+04:08:12 [bcert 19  4037.6s] N0_local_c4_s0__certA q=256 ceiling-input ok in 158.0s
+04:08:15 [bcert 23  4039.8s] N0_local_c4_s0__certB q=256 ceiling-input ok in 161.3s
+04:08:35 [btrain  4061.4s] N0_pib_c4: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.6482999920845032, 0.6524999737739563, 0.6474999785423279, 0.6466000080108643] (best at [3000, 3000, 3000, 3000]), train 45.1s (chunks {'first_incl_compile': 9.320695877075195, 'rest_mean': 2.1856177069924096}), total 49.0s, 18.9 GB peak, 7.2 GB in use
+04:08:44 [bcert 4  4069.2s] U_local_c4_s0__certA q=256 ceiling-input ok in 155.3s
+04:08:45 [bcert 15  4070.7s] U_local_c4_s0__certB q=256 ceiling-input ok in 158.3s
+04:08:46 [bcert 10  4071.8s] U_local_c4_s1__certB q=256 ceiling-input ok in 158.0s
+04:08:50 [bcert 18  4074.8s] U_local_c4_s1__certA q=256 ceiling-input ok in 160.9s
+04:09:29 [btrain  4114.8s] U_pib_c4: steps 2000, val [1.000499963760376, 1.000499963760376, 0.9973000288009644, 0.9973000288009644] -> [0.8410000205039978, 0.8373000025749207, 0.8233000040054321, 0.8230999708175659] (best at [750, 500, 750, 750]), train 50.3s (chunks {'first_incl_compile': 13.33571481704712, 'rest_mean': 3.704596553530012}), total 53.1s, 18.9 GB peak, 7.8 GB in use
+04:10:21 [bcert 3  4166.1s] N8_pib_c4_s1__certB q=256 ceiling-input ok in 156.1s
+04:10:24 [bcert 21  4170.0s] N8_pib_c4_s0__certB q=256 ceiling-input ok in 159.7s
+04:10:25 [bcert 9  4171.8s] N8_pib_c4_s1__certA q=256 ceiling-input ok in 159.0s
+04:10:25 [bcert 14  4170.2s] N8_pib_c4_s0__certA q=256 ceiling-input ok in 159.7s
+04:11:08 [bcert 8  4214.3s] N0_pib_c4_s0__certB q=256 ceiling-input ok in 154.8s
+04:11:12 [bcert 12  4217.6s] N0_pib_c4_s1__certA q=256 ceiling-input ok in 156.9s
+04:11:13 [bcert 22  4218.2s] N0_pib_c4_s0__certA q=256 ceiling-input ok in 158.1s
+04:11:15 [bcert 16  4220.6s] N0_pib_c4_s1__certB q=256 ceiling-input ok in 161.0s
+04:11:58 [bcert 4  4263.3s] U_pib_c4_s1__certA q=256 ceiling-input ok in 149.0s
+04:11:59 [bcert 1  4264.6s] U_pib_c4_s0__certA q=256 ceiling-input ok in 150.9s
+04:11:59 [bcert 10  4264.8s] U_pib_c4_s1__certB q=256 ceiling-input ok in 151.0s
+04:12:00 [bcert 20  4265.3s] U_pib_c4_s0__certB q=256 ceiling-input ok in 152.3s
+04:12:25 [btrain  4291.5s] N4_clos_c2: steps 3000, val [1.4879000186920166, 1.547700047492981, 1.6411999464035034, 1.562399983406067] -> [0.31700000166893005, 0.32839998602867126, 0.3197000026702881, 0.32030001282691956] (best at [3000, 3000, 3000, 3000]), train 171.2s (chunks {'first_incl_compile': 17.31382727622986, 'rest_mean': 13.24078182740645}), total 176.6s, 18.9 GB peak, 7.2 GB in use
+04:13:04 [bcert 22  4329.1s] N4_clos_c2_s0__certA q=128 ceiling-input ok in 38.9s
+04:13:05 [bcert 10  4330.3s] N4_clos_c2_s0__certB q=128 ceiling-input ok in 41.4s
+04:13:05 [bcert 13  4330.3s] N4_clos_c2_s1__certB q=128 ceiling-input ok in 40.8s
+04:13:06 [bcert 18  4330.9s] N4_clos_c2_s1__certA q=128 ceiling-input ok in 40.0s
+04:15:22 [btrain  4467.6s] N16_clos_c2: steps 3000, val [1.5405000448226929, 1.5744999647140503, 1.5039000511169434, 1.5729000568389893] -> [0.1753000020980835, 0.1712000072002411, 0.16200000047683716, 0.1678999960422516] (best at [3000, 3000, 2750, 3000]), train 171.4s (chunks {'first_incl_compile': 17.52401614189148, 'rest_mean': 13.241982611742886}), total 175.9s, 18.9 GB peak, 7.2 GB in use
+04:16:01 [bcert 10  4506.0s] N16_clos_c2_s0__certB q=128 ceiling-input ok in 40.6s
+04:16:01 [bcert 12  4506.4s] N16_clos_c2_s1__certA q=128 ceiling-input ok in 39.6s
+04:16:01 [bcert 1  4506.5s] N16_clos_c2_s1__certB q=128 ceiling-input ok in 40.7s
+04:16:03 [bcert 11  4508.5s] N16_clos_c2_s0__certA q=128 ceiling-input ok in 42.3s
+04:16:12 [btrain  4518.2s] N4_recon_c2: steps 3000, val [1.8517999649047852, 1.9844000339508057, 2.2511000633239746, 1.833400011062622] -> [0.5577999949455261, 0.5530999898910522, 0.5612000226974487, 0.5565000176429749] (best at [3000, 3000, 3000, 3000]), train 46.9s (chunks {'first_incl_compile': 6.446441650390625, 'rest_mean': 2.7489552064375444}), total 50.4s, 18.9 GB peak, 7.2 GB in use
+04:16:51 [bcert 21  4557.0s] N4_recon_c2_s1__certA q=128 ceiling-input ok in 38.8s
+04:16:51 [bcert 13  4556.8s] N4_recon_c2_s0__certB q=128 ceiling-input ok in 40.4s
+04:16:52 [bcert 8  4558.1s] N4_recon_c2_s1__certB q=128 ceiling-input ok in 40.6s
+04:16:53 [bcert 18  4558.2s] N4_recon_c2_s0__certA q=128 ceiling-input ok in 41.2s
+04:17:04 [btrain  4569.7s] N16_recon_c2: steps 3000, val [2.0878000259399414, 1.8946000337600708, 1.947100043296814, 2.1354000568389893] -> [0.5684000253677368, 0.5569000244140625, 0.5550000071525574, 0.5504999756813049] (best at [3000, 3000, 3000, 3000]), train 47.0s (chunks {'first_incl_compile': 6.311343669891357, 'rest_mean': 2.7529397227547387}), total 51.4s, 18.9 GB peak, 7.2 GB in use
+04:17:43 [bcert 21  4609.4s] N16_recon_c2_s1__certB q=128 ceiling-input ok in 40.4s
+04:17:43 [bcert 23  4608.8s] N16_recon_c2_s0__certB q=128 ceiling-input ok in 40.6s
+04:17:45 [bcert 11  4610.0s] N16_recon_c2_s0__certA q=128 ceiling-input ok in 41.5s
+04:17:46 [bcert 19  4610.9s] N16_recon_c2_s1__certA q=128 ceiling-input ok in 42.0s
+04:20:04 [btrain  4750.1s] N4_local_c2: steps 3000, val [1.5901999473571777, 1.5973000526428223, 1.6468000411987305, 1.6884000301361084] -> [0.2630999982357025, 0.2615000009536743, 0.2524000108242035, 0.2565999925136566] (best at [3000, 3000, 3000, 3000]), train 175.0s (chunks {'first_incl_compile': 18.1913583278656, 'rest_mean': 13.285884271968495}), total 180.3s, 18.9 GB peak, 7.2 GB in use
+04:20:42 [bcert 11  4786.9s] N4_local_c2_s0__certB q=128 ceiling-input ok in 38.8s
+04:20:45 [bcert 2  4789.9s] N4_local_c2_s1__certA q=128 ceiling-input ok in 40.3s
+04:20:45 [bcert 3  4789.9s] N4_local_c2_s1__certB q=128 ceiling-input ok in 41.4s
+04:20:45 [bcert 17  4790.0s] N4_local_c2_s0__certA q=128 ceiling-input ok in 41.2s
+04:23:04 [btrain  4930.4s] N16_local_c2: steps 3000, val [1.4811999797821045, 1.5922000408172607, 1.596500039100647, 1.572100043296814] -> [0.1574999988079071, 0.15469999611377716, 0.1574999988079071, 0.15459999442100525] (best at [2500, 2750, 2750, 2500]), train 174.7s (chunks {'first_incl_compile': 17.855345726013184, 'rest_mean': 13.287622906944968}), total 180.1s, 18.9 GB peak, 7.2 GB in use
+04:23:43 [bcert 2  4968.4s] N16_local_c2_s0__certB q=128 ceiling-input ok in 40.4s
+04:23:43 [bcert 20  4968.6s] N16_local_c2_s1__certB q=128 ceiling-input ok in 40.0s
+04:23:44 [bcert 4  4969.5s] N16_local_c2_s1__certA q=128 ceiling-input ok in 39.8s
+04:23:44 [bcert 13  4969.7s] N16_local_c2_s0__certA q=128 ceiling-input ok in 40.8s
+04:24:37 [btrain  5022.8s] N4_pib_c2: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.7031000256538391, 0.7031999826431274, 0.7001000046730042, 0.7009000182151794] (best at [3000, 3000, 3000, 3000]), train 86.7s (chunks {'first_incl_compile': 11.464169979095459, 'rest_mean': 5.810627308758822}), total 92.2s, 18.9 GB peak, 7.2 GB in use
+04:25:15 [bcert 13  5060.2s] N4_pib_c2_s1__certB q=128 ceiling-input ok in 39.5s
+04:25:15 [bcert 23  5060.6s] N4_pib_c2_s0__certB q=128 ceiling-input ok in 40.6s
+04:25:17 [bcert 6  5062.4s] N4_pib_c2_s0__certA q=128 ceiling-input ok in 40.7s
+04:25:17 [bcert 16  5062.7s] N4_pib_c2_s1__certA q=128 ceiling-input ok in 40.6s
+04:26:10 [btrain  5115.7s] N16_pib_c2: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.6931999921798706, 0.6984000205993652, 0.6881999969482422, 0.691100001335144] (best at [3000, 3000, 3000, 3000]), train 87.4s (chunks {'first_incl_compile': 12.310225486755371, 'rest_mean': 5.814430908723311}), total 92.7s, 18.9 GB peak, 7.2 GB in use
+04:26:49 [bcert 21  5154.8s] N16_pib_c2_s0__certB q=128 ceiling-input ok in 41.1s
+04:26:49 [bcert 18  5154.2s] N16_pib_c2_s1__certB q=128 ceiling-input ok in 40.6s
+04:26:50 [bcert 17  5155.0s] N16_pib_c2_s0__certA q=128 ceiling-input ok in 40.8s
+04:26:50 [bcert 19  5155.5s] N16_pib_c2_s1__certA q=128 ceiling-input ok in 40.2s
+04:29:05 [btrain  5291.0s] N4_clos_c4: steps 3000, val [1.5379999876022339, 1.6267000436782837, 1.6323000192642212, 1.6375999450683594] -> [0.3476000130176544, 0.34139999747276306, 0.3474999964237213, 0.3424000144004822] (best at [3000, 3000, 3000, 3000]), train 170.1s (chunks {'first_incl_compile': 17.31926655769348, 'rest_mean': 13.169434417377818}), total 175.1s, 18.9 GB peak, 7.2 GB in use
+04:31:22 [bcert 13  5426.9s] N4_clos_c4_s0__certB q=256 ceiling-input ok in 138.6s
+04:31:22 [bcert 2  5427.6s] N4_clos_c4_s0__certA q=256 ceiling-input ok in 138.1s
+04:31:23 [bcert 21  5429.3s] N4_clos_c4_s1__certB q=256 ceiling-input ok in 139.4s
+04:31:24 [bcert 9  5430.4s] N4_clos_c4_s1__certA q=256 ceiling-input ok in 139.0s
+04:32:01 [btrain  5467.3s] N16_clos_c4: steps 3000, val [1.5607000589370728, 1.5292999744415283, 1.520400047302246, 1.5583000183105469] -> [0.20110000669956207, 0.20180000364780426, 0.19910000264644623, 0.20550000667572021] (best at [3000, 2750, 3000, 2750]), train 170.5s (chunks {'first_incl_compile': 17.37702989578247, 'rest_mean': 13.170911008661443}), total 176.1s, 18.9 GB peak, 7.2 GB in use
+04:32:53 [btrain  5518.8s] N4_recon_c4: steps 3000, val [1.9259999990463257, 1.9869999885559082, 1.9486000537872314, 1.9285999536514282] -> [0.4458000063896179, 0.44350001215934753, 0.44279998540878296, 0.44769999384880066] (best at [3000, 3000, 3000, 3000]), train 47.1s (chunks {'first_incl_compile': 6.512068271636963, 'rest_mean': 2.7470187057148325}), total 51.4s, 18.9 GB peak, 7.2 GB in use
+04:33:44 [btrain  5570.1s] N16_recon_c4: steps 3000, val [1.9023000001907349, 1.955399990081787, 2.001300096511841, 2.0046000480651855] -> [0.4456000030040741, 0.44929999113082886, 0.44200000166893005, 0.44859999418258667] (best at [3000, 3000, 3000, 3000]), train 47.3s (chunks {'first_incl_compile': 6.514308214187622, 'rest_mean': 2.7528976527127353}), total 51.1s, 18.9 GB peak, 7.2 GB in use
+04:34:28 [bcert 14  5613.2s] N16_clos_c4_s0__certB q=256 ceiling-input ok in 149.2s
+04:34:29 [bcert 10  5614.8s] N16_clos_c4_s1__certA q=256 ceiling-input ok in 148.3s
+04:34:30 [bcert 23  5615.6s] N16_clos_c4_s0__certA q=256 ceiling-input ok in 149.7s
+04:34:32 [bcert 9  5618.8s] N16_clos_c4_s1__certB q=256 ceiling-input ok in 152.3s
+04:35:24 [bcert 13  5669.1s] N4_recon_c4_s0__certB q=256 ceiling-input ok in 152.1s
+04:35:26 [bcert 2  5670.9s] N4_recon_c4_s0__certA q=256 ceiling-input ok in 153.2s
+04:35:27 [bcert 1  5671.8s] N4_recon_c4_s1__certA q=256 ceiling-input ok in 153.7s
+04:35:27 [bcert 18  5672.0s] N4_recon_c4_s1__certB q=256 ceiling-input ok in 154.6s
+04:36:11 [bcert 15  5716.6s] N16_recon_c4_s1__certB q=256 ceiling-input ok in 148.0s
+04:36:12 [bcert 5  5718.7s] N16_recon_c4_s0__certB q=256 ceiling-input ok in 149.0s
+04:36:15 [bcert 20  5720.0s] N16_recon_c4_s0__certA q=256 ceiling-input ok in 151.0s
+04:36:15 [bcert 21  5721.2s] N16_recon_c4_s1__certA q=256 ceiling-input ok in 150.9s
+04:36:44 [btrain  5750.1s] N4_local_c4: steps 3000, val [1.5273000001907349, 1.618499994277954, 1.6390000581741333, 1.6096999645233154] -> [0.27309998869895935, 0.26750001311302185, 0.26190000772476196, 0.26350000500679016] (best at [3000, 3000, 3000, 3000]), train 174.5s (chunks {'first_incl_compile': 18.513702392578125, 'rest_mean': 13.212967612526633}), total 179.8s, 18.9 GB peak, 7.2 GB in use
+04:39:03 [bcert 2  5887.8s] N4_local_c4_s0__certA q=256 ceiling-input ok in 138.9s
+04:39:04 [bcert 14  5888.6s] N4_local_c4_s1__certB q=256 ceiling-input ok in 140.4s
+04:39:04 [bcert 17  5889.7s] N4_local_c4_s1__certA q=256 ceiling-input ok in 140.4s
+04:39:05 [bcert 16  5890.3s] N4_local_c4_s0__certB q=256 ceiling-input ok in 143.1s
+04:39:44 [btrain  5929.9s] N16_local_c4: steps 3000, val [1.5978000164031982, 1.6052000522613525, 1.5252000093460083, 1.575700044631958] -> [0.17389999330043793, 0.17880000174045563, 0.1648000031709671, 0.17489999532699585] (best at [2750, 2750, 3000, 2750]), train 174.3s (chunks {'first_incl_compile': 18.13052487373352, 'rest_mean': 13.215008453889327}), total 179.6s, 18.9 GB peak, 7.2 GB in use
+04:41:16 [btrain  6022.3s] N4_pib_c4: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.6380000114440918, 0.6376000046730042, 0.6370999813079834, 0.6335999965667725] (best at [3000, 3000, 3000, 3000]), train 86.8s (chunks {'first_incl_compile': 12.194738388061523, 'rest_mean': 5.801267450506037}), total 92.2s, 18.9 GB peak, 7.2 GB in use
+04:42:06 [bcert 1  6071.2s] N16_local_c4_s0__certB q=256 ceiling-input ok in 144.2s
+04:42:07 [bcert 5  6073.3s] N16_local_c4_s1__certB q=256 ceiling-input ok in 144.5s
+04:42:08 [bcert 17  6072.9s] N16_local_c4_s0__certA q=256 ceiling-input ok in 144.1s
+04:42:11 [bcert 16  6076.1s] N16_local_c4_s1__certA q=256 ceiling-input ok in 146.9s
+04:42:50 [btrain  6116.0s] N16_pib_c4: steps 3000, val [0.9998000264167786, 0.9998000264167786, 0.9988999962806702, 0.9988999962806702] -> [0.6342999935150146, 0.6317999958992004, 0.633400022983551, 0.6291999816894531] (best at [3000, 3000, 3000, 3000]), train 88.0s (chunks {'first_incl_compile': 12.4887855052948, 'rest_mean': 5.803925275802612}), total 93.5s, 18.9 GB peak, 7.2 GB in use
+04:42:50 [btrain  6116.2s] done; skipped []
+04:42:50 [bcert 8  6116.0s] worker exits after 15 items
+04:42:51 [bcert 15  6115.9s] worker exits after 14 items
+04:42:51 [bcert 9  6117.1s] worker exits after 14 items
+04:42:51 [bcert 2  6116.0s] worker exits after 14 items
+04:42:51 [bcert 6  6116.1s] worker exits after 14 items
+04:42:51 [bcert 4  6116.2s] worker exits after 11 items
+04:42:51 [bcert 1  6116.2s] worker exits after 18 items
+04:42:51 [bcert 20  6116.3s] worker exits after 14 items
+04:42:51 [bcert 18  6116.3s] worker exits after 18 items
+04:42:51 [bcert 13  6116.4s] worker exits after 17 items
+04:42:51 [bcert 21  6117.5s] worker exits after 19 items
+04:42:51 [bcert 3  6116.7s] worker exits after 16 items
+04:42:52 [bcert 5  6118.4s] worker exits after 13 items
+04:42:52 [bcert 14  6116.8s] worker exits after 12 items
+04:42:53 [bcert 16  6118.2s] worker exits after 18 items
+04:43:40 [bcert 12  6165.2s] N4_pib_c4_s0__certB q=256 ceiling-input ok in 145.8s
+04:43:40 [bcert 12  6165.2s] worker exits after 9 items
+04:43:41 [bcert 19  6166.6s] N4_pib_c4_s1__certB q=256 ceiling-input ok in 146.6s
+04:43:41 [bcert 19  6166.6s] worker exits after 15 items
+04:43:42 [bcert 11  6167.8s] N4_pib_c4_s0__certA q=256 ceiling-input ok in 147.0s
+04:43:42 [bcert 11  6167.8s] worker exits after 15 items
+04:43:45 [bcert 22  6169.8s] N4_pib_c4_s1__certA q=256 ceiling-input ok in 147.7s
+04:43:45 [bcert 22  6169.8s] worker exits after 10 items
+04:45:09 [bcert 23  6254.1s] N16_pib_c4_s1__certB q=256 ceiling-input ok in 140.2s
+04:45:09 [bcert 23  6254.1s] worker exits after 18 items
+04:45:09 [bcert 10  6254.3s] N16_pib_c4_s0__certB q=256 ceiling-input ok in 141.1s
+04:45:09 [bcert 10  6254.3s] worker exits after 17 items
+04:45:11 [bcert 7  6256.7s] N16_pib_c4_s1__certA q=256 ceiling-input ok in 141.2s
+04:45:11 [bcert 7  6256.7s] worker exits after 8 items
+04:45:12 [bcert 17  6257.5s] N16_pib_c4_s0__certA q=256 ceiling-input ok in 142.6s
+04:45:12 [bcert 17  6257.5s] worker exits after 13 items
+04:45:12 [job] certification finished; 332 halves certified, 0 left unclaimed
+04:45:38 [bcombine    23.9s] pooled 166 phis; missing 0
+04:46:25 [bcombine    70.8s] written combined.json and table.txt; 80 configs, 6 hand designs, 204 windows
+04:46:25 [job] OUT size 15M; elapsed 6479s; done, FAIL=0

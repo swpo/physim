@@ -29,3 +29,22 @@ statistics), `job.sh`. Requests: `../../gpu/requests/r4-bias-001.json` (cancelle
 gradients too slow), `r4-bias-002.json` (cancelled: CUDA out of memory, because jitted functions that closed over the
 5 GB device copy of level 0 embedded it as a constant in every executable), `r4-bias-003.json` (data passed as
 arguments, compiled functions released between configs).
+
+## Results (GPU job r4-bias-003, H100 80GB PCIe, lambdalabs; 1.95 pod-hours, $6.01 billed; study total $7.94)
+
+Full grid ran: 78 configs + 2 random baselines, 2 seeds x 2 cross-fit halves each (166 certified Phi, none
+skipped). Level 0 float64 on the GPU (64 members per half, 300 ticks, 4 test ticks x 5 fresh-noise branches x 16
+ticks, designer seeds 9701/9702, public parameters, no exam secret); encoders float32 on the GPU; certification on
+the pod CPUs. Numbers with sources: `results/summary.json` (claims under `claims`); figures `results/fig_*.png`.
+
+- Closure with a block-only receptive field rediscovers block mass on its own (R^2 both ways 0.93 N arm, 0.97 L arm;
+  local law 0.97 / 0.995; seed R^2 >= 0.997). Nonlinear reconstruction does not (R^2 0.24 with mass, seed R^2 0.08,
+  ceiling at h = 4 of 0.09 vs 0.77); linear and unconstrained reconstruction at c = 1 land on block mass.
+- With a halo, closure learns a low-pass filtered mass field (the tent at an 8 px halo: R^2 0.93 / 0.97): ceiling at
+  h = 16 rises 0.16 -> 0.55 with the halo, but effective dimension falls 44 -> 13 and predictable content I_avail
+  214 -> 174 nats (block mass 275). The receptive field sets the smoothing, as in learned_phi2.
+- Local law >= global closure; unconstrained closure is worse than block mass and seed-unstable; the predictive
+  bottleneck lies in between; extra width (c = 2, 4) adds less-closed, non-mass content; no bias finds the object
+  view (best R^2(objmass | Z) 0.685 vs 0.688 for block mass).
+- Hand designs keep the most predictable content per number (block channel means 432 / 246 nats I_avail / I_capt
+  at h = 1 vs at most 404 / 227 learned at c = 2).

@@ -1,0 +1,536 @@
+[
+ {
+  "claim": "With a block-only receptive field (h = 0), closure and the local-law objective rediscover block mass on their own: the learned c = 1 latent and block mass predict each other with cross-validated R^2 >= 0.93 both ways, identically across seeds (seed R^2 >= 0.997).",
+  "values": {
+   "N0_clos_c1.R2_H_from_Z": 0.933,
+   "N0_clos_c1.R2_Z_from_H": 0.94,
+   "L0_clos_c1.R2_H_from_Z": 0.974,
+   "L0_clos_c1.R2_Z_from_H": 0.975,
+   "N0_local_c1.R2_H_from_Z": 0.974,
+   "N0_local_c1.R2_Z_from_H": 0.976,
+   "L0_local_c1.R2_H_from_Z": 0.995,
+   "L0_local_c1.R2_Z_from_H": 0.995,
+   "N0_clos_c1.seed_R2": 0.997,
+   "L0_clos_c1.seed_R2": 1.0,
+   "N0_local_c1.seed_R2": 0.999,
+   "L0_local_c1.seed_R2": 1.0
+  },
+  "sources": {
+   "N0_clos_c1.R2_H_from_Z": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_H_from_Z",
+   "N0_clos_c1.R2_Z_from_H": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_Z_from_H",
+   "L0_clos_c1.R2_H_from_Z": "r4-bias-003:out/combined.json:configs.L0_clos_c1.agreement.mass.R2_H_from_Z",
+   "L0_clos_c1.R2_Z_from_H": "r4-bias-003:out/combined.json:configs.L0_clos_c1.agreement.mass.R2_Z_from_H",
+   "N0_local_c1.R2_H_from_Z": "r4-bias-003:out/combined.json:configs.N0_local_c1.agreement.mass.R2_H_from_Z",
+   "N0_local_c1.R2_Z_from_H": "r4-bias-003:out/combined.json:configs.N0_local_c1.agreement.mass.R2_Z_from_H",
+   "L0_local_c1.R2_H_from_Z": "r4-bias-003:out/combined.json:configs.L0_local_c1.agreement.mass.R2_H_from_Z",
+   "L0_local_c1.R2_Z_from_H": "r4-bias-003:out/combined.json:configs.L0_local_c1.agreement.mass.R2_Z_from_H",
+   "N0_clos_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N0_clos_c1.seed_agreement.mean",
+   "L0_clos_c1.seed_R2": "r4-bias-003:out/combined.json:configs.L0_clos_c1.seed_agreement.mean",
+   "N0_local_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N0_local_c1.seed_agreement.mean",
+   "L0_local_c1.seed_R2": "r4-bias-003:out/combined.json:configs.L0_local_c1.seed_agreement.mean"
+  }
+ },
+ {
+  "claim": "Reconstruction with the nonlinear local encoder does not: at h = 0 it learns a seed-dependent feature that is not mass and is barely predictable (ceiling at h = 4 of 0.09 vs 0.77 for block mass); the linear (L) and the unconstrained (U) autoencoders at c = 1 do land on block mass (first principal component of block content).",
+  "values": {
+   "N0_recon_c1.R2_mass_from_Z": 0.244,
+   "N0_recon_c1.seed_R2": 0.079,
+   "N0_recon_c1.ceiling_G": [
+    0.647,
+    0.363,
+    0.094,
+    0.027,
+    0.002
+   ],
+   "hand_mass.ceiling_G": [
+    0.991,
+    0.954,
+    0.77,
+    0.375,
+    0.138
+   ],
+   "L0_recon_c1.R2_mass_from_Z": 0.983,
+   "U_recon_c1.R2_mass_from_Z": 0.971
+  },
+  "sources": {
+   "N0_recon_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_recon_c1.agreement.mass.R2_H_from_Z",
+   "N0_recon_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N0_recon_c1.seed_agreement.mean",
+   "N0_recon_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_recon_c1.ceiling_G",
+   "hand_mass.ceiling_G": "r4-bias-003:out/combined.json:hand.mass.G.ceiling",
+   "L0_recon_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.L0_recon_c1.agreement.mass.R2_H_from_Z",
+   "U_recon_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.U_recon_c1.agreement.mass.R2_H_from_Z"
+  }
+ },
+ {
+  "claim": "With a halo the closure latent becomes a low-pass filtered mass field: it stays a function of block mass (R^2(Z | mass) 0.88-0.98) but block mass is no longer recoverable from it (R^2(mass | Z) falls 0.93 -> 0.61), it agrees best with the designed tent at h = 4-8 (R^2 0.93-0.97 both ways), its closure ceiling at h = 16 rises 0.16 -> 0.27 -> 0.38 -> 0.55 with halo 0, 4, 8, 16 px, while its effective dimension (participation ratio) falls 44 -> 13 and its predictable content (I_avail at h = 1) falls 214 -> 174 nats.",
+  "values": {
+   "N0_clos_c1.R2_Z_from_mass": 0.94,
+   "N0_clos_c1.R2_mass_from_Z": 0.933,
+   "N0_clos_c1.R2_tent_from_Z": 0.964,
+   "N0_clos_c1.R2_Z_from_tent": 0.954,
+   "N0_clos_c1.ceiling_G": [
+    0.983,
+    0.944,
+    0.809,
+    0.485,
+    0.163
+   ],
+   "N0_clos_c1.participation_ratio": 44.49,
+   "N0_clos_c1.I_avail": [
+    213.924,
+    202.847,
+    183.648,
+    143.459,
+    87.476
+   ],
+   "N4_clos_c1.R2_Z_from_mass": 0.879,
+   "N4_clos_c1.R2_mass_from_Z": 0.791,
+   "N4_clos_c1.R2_tent_from_Z": 0.969,
+   "N4_clos_c1.R2_Z_from_tent": 0.972,
+   "N4_clos_c1.ceiling_G": [
+    0.988,
+    0.963,
+    0.873,
+    0.617,
+    0.271
+   ],
+   "N4_clos_c1.participation_ratio": 29.756,
+   "N4_clos_c1.I_avail": [
+    204.736,
+    193.756,
+    176.043,
+    138.257,
+    85.35
+   ],
+   "N8_clos_c1.R2_Z_from_mass": 0.911,
+   "N8_clos_c1.R2_mass_from_Z": 0.636,
+   "N8_clos_c1.R2_tent_from_Z": 0.928,
+   "N8_clos_c1.R2_Z_from_tent": 0.972,
+   "N8_clos_c1.ceiling_G": [
+    0.994,
+    0.981,
+    0.927,
+    0.743,
+    0.38
+   ],
+   "N8_clos_c1.participation_ratio": 22.269,
+   "N8_clos_c1.I_avail": [
+    193.323,
+    184.376,
+    165.509,
+    129.188,
+    78.86
+   ],
+   "N16_clos_c1.R2_Z_from_mass": 0.976,
+   "N16_clos_c1.R2_mass_from_Z": 0.607,
+   "N16_clos_c1.R2_tent_from_Z": 0.798,
+   "N16_clos_c1.R2_Z_from_tent": 0.979,
+   "N16_clos_c1.ceiling_G": [
+    0.997,
+    0.989,
+    0.96,
+    0.85,
+    0.547
+   ],
+   "N16_clos_c1.participation_ratio": 13.125,
+   "N16_clos_c1.I_avail": [
+    173.907,
+    164.104,
+    145.225,
+    112.935,
+    69.111
+   ]
+  },
+  "sources": {
+   "N0_clos_c1.R2_Z_from_mass": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_Z_from_H",
+   "N0_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_H_from_Z",
+   "N0_clos_c1.R2_tent_from_Z": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.tent.R2_H_from_Z",
+   "N0_clos_c1.R2_Z_from_tent": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.tent.R2_Z_from_H",
+   "N0_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_clos_c1.ceiling_G",
+   "N0_clos_c1.participation_ratio": "r4-bias-003:out/combined.json:configs.N0_clos_c1.nontriv.participation_ratio",
+   "N0_clos_c1.I_avail": "r4-bias-003:out/combined.json:configs.N0_clos_c1.I_avail",
+   "N4_clos_c1.R2_Z_from_mass": "r4-bias-003:out/combined.json:configs.N4_clos_c1.agreement.mass.R2_Z_from_H",
+   "N4_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N4_clos_c1.agreement.mass.R2_H_from_Z",
+   "N4_clos_c1.R2_tent_from_Z": "r4-bias-003:out/combined.json:configs.N4_clos_c1.agreement.tent.R2_H_from_Z",
+   "N4_clos_c1.R2_Z_from_tent": "r4-bias-003:out/combined.json:configs.N4_clos_c1.agreement.tent.R2_Z_from_H",
+   "N4_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N4_clos_c1.ceiling_G",
+   "N4_clos_c1.participation_ratio": "r4-bias-003:out/combined.json:configs.N4_clos_c1.nontriv.participation_ratio",
+   "N4_clos_c1.I_avail": "r4-bias-003:out/combined.json:configs.N4_clos_c1.I_avail",
+   "N8_clos_c1.R2_Z_from_mass": "r4-bias-003:out/combined.json:configs.N8_clos_c1.agreement.mass.R2_Z_from_H",
+   "N8_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N8_clos_c1.agreement.mass.R2_H_from_Z",
+   "N8_clos_c1.R2_tent_from_Z": "r4-bias-003:out/combined.json:configs.N8_clos_c1.agreement.tent.R2_H_from_Z",
+   "N8_clos_c1.R2_Z_from_tent": "r4-bias-003:out/combined.json:configs.N8_clos_c1.agreement.tent.R2_Z_from_H",
+   "N8_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N8_clos_c1.ceiling_G",
+   "N8_clos_c1.participation_ratio": "r4-bias-003:out/combined.json:configs.N8_clos_c1.nontriv.participation_ratio",
+   "N8_clos_c1.I_avail": "r4-bias-003:out/combined.json:configs.N8_clos_c1.I_avail",
+   "N16_clos_c1.R2_Z_from_mass": "r4-bias-003:out/combined.json:configs.N16_clos_c1.agreement.mass.R2_Z_from_H",
+   "N16_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N16_clos_c1.agreement.mass.R2_H_from_Z",
+   "N16_clos_c1.R2_tent_from_Z": "r4-bias-003:out/combined.json:configs.N16_clos_c1.agreement.tent.R2_H_from_Z",
+   "N16_clos_c1.R2_Z_from_tent": "r4-bias-003:out/combined.json:configs.N16_clos_c1.agreement.tent.R2_Z_from_H",
+   "N16_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N16_clos_c1.ceiling_G",
+   "N16_clos_c1.participation_ratio": "r4-bias-003:out/combined.json:configs.N16_clos_c1.nontriv.participation_ratio",
+   "N16_clos_c1.I_avail": "r4-bias-003:out/combined.json:configs.N16_clos_c1.I_avail"
+  }
+ },
+ {
+  "claim": "The hand designs keep the most predictable content per number: block mass I_avail / I_capt at h = 1 = 275 / 165 nats vs at most 266 / 163 for any learned c = 1 latent (L4_local; N arm best N0_local 246 / 146); block channel means (c = 2) 432 / 246 vs at most 404 (U_local) / 227 (N4_local) for learned c = 2 latents. Higher learned closure ceilings are bought by smoothing.",
+  "values": {
+   "hand_mass.I_avail": [
+    275.062,
+    253.614,
+    217.544,
+    165.512,
+    102.501
+   ],
+   "hand_mass.I_capt": [
+    165.153,
+    112.273,
+    60.723,
+    28.157,
+    17.344
+   ],
+   "hand_chan.I_avail": [
+    432.184,
+    396.148,
+    340.125,
+    262.295,
+    165.593
+   ],
+   "hand_chan.I_capt": [
+    246.519,
+    171.282,
+    100.163,
+    50.381,
+    30.189
+   ],
+   "hand_mass.participation_ratio": 54.093,
+   "N0_local_c1.I_avail": [
+    245.717,
+    229.664,
+    201.063,
+    152.302,
+    90.421
+   ],
+   "N0_local_c1.I_capt": [
+    146.076,
+    99.572,
+    52.542,
+    17.549,
+    3.967
+   ],
+   "N4_local_c2.I_avail": [
+    385.259,
+    356.576,
+    313.284,
+    241.337,
+    147.455
+   ],
+   "N4_local_c2.I_capt": [
+    227.247,
+    156.627,
+    88.16,
+    38.377,
+    6.325
+   ],
+   "L4_local_c1.I_avail": [
+    265.676,
+    243.902,
+    207.816,
+    154.659,
+    91.34
+   ],
+   "L4_local_c1.I_capt": [
+    163.247,
+    114.245,
+    63.446,
+    24.15,
+    5.862
+   ],
+   "U_local_c2.I_avail": [
+    404.459,
+    374.166,
+    322.404,
+    238.093,
+    135.771
+   ]
+  },
+  "sources": {
+   "hand_mass.I_avail": "r4-bias-003:out/combined.json:hand.mass.logdet.I_avail",
+   "hand_mass.I_capt": "r4-bias-003:out/combined.json:hand.mass.logdet.I_capt",
+   "hand_chan.I_avail": "r4-bias-003:out/combined.json:hand.chan.logdet.I_avail",
+   "hand_chan.I_capt": "r4-bias-003:out/combined.json:hand.chan.logdet.I_capt",
+   "hand_mass.participation_ratio": "r4-bias-003:out/combined.json:hand.mass.nontriv.participation_ratio",
+   "N0_local_c1.I_avail": "r4-bias-003:out/combined.json:configs.N0_local_c1.I_avail",
+   "N0_local_c1.I_capt": "r4-bias-003:out/combined.json:configs.N0_local_c1.I_capt",
+   "N4_local_c2.I_avail": "r4-bias-003:out/combined.json:configs.N4_local_c2.I_avail",
+   "N4_local_c2.I_capt": "r4-bias-003:out/combined.json:configs.N4_local_c2.I_capt",
+   "L4_local_c1.I_avail": "r4-bias-003:out/combined.json:configs.L4_local_c1.I_avail",
+   "L4_local_c1.I_capt": "r4-bias-003:out/combined.json:configs.L4_local_c1.I_capt",
+   "U_local_c2.I_avail": "r4-bias-003:out/combined.json:configs.U_local_c2.I_avail"
+  }
+ },
+ {
+  "claim": "A shared local rule (local law) is at least as good a bias as the global closure head at every receptive field: higher captured predictive information at h = 1 and equal or higher ceilings, and closer to block mass.",
+  "values": {
+   "N0_clos_c1.I_capt": [
+    121.298,
+    84.328,
+    45.817,
+    15.824,
+    3.259
+   ],
+   "N0_clos_c1.ceiling_G": [
+    0.983,
+    0.944,
+    0.809,
+    0.485,
+    0.163
+   ],
+   "N0_clos_c1.R2_mass_from_Z": 0.933,
+   "N0_local_c1.I_capt": [
+    146.076,
+    99.572,
+    52.542,
+    17.549,
+    3.967
+   ],
+   "N0_local_c1.ceiling_G": [
+    0.991,
+    0.961,
+    0.824,
+    0.469,
+    0.168
+   ],
+   "N0_local_c1.R2_mass_from_Z": 0.974,
+   "N4_clos_c1.I_capt": [
+    115.33,
+    81.49,
+    46.109,
+    17.92,
+    3.556
+   ],
+   "N4_clos_c1.ceiling_G": [
+    0.988,
+    0.963,
+    0.873,
+    0.617,
+    0.271
+   ],
+   "N4_clos_c1.R2_mass_from_Z": 0.791,
+   "N4_local_c1.I_capt": [
+    160.284,
+    113.339,
+    63.803,
+    24.257,
+    5.854
+   ],
+   "N4_local_c1.ceiling_G": [
+    0.996,
+    0.981,
+    0.91,
+    0.655,
+    0.285
+   ],
+   "N4_local_c1.R2_mass_from_Z": 0.905,
+   "N16_clos_c1.I_capt": [
+    91.671,
+    63.365,
+    38.253,
+    16.647,
+    1.896
+   ],
+   "N16_clos_c1.ceiling_G": [
+    0.997,
+    0.989,
+    0.96,
+    0.85,
+    0.547
+   ],
+   "N16_clos_c1.R2_mass_from_Z": 0.607,
+   "N16_local_c1.I_capt": [
+    127.673,
+    90.413,
+    52.557,
+    23.349,
+    6.408
+   ],
+   "N16_local_c1.ceiling_G": [
+    0.998,
+    0.993,
+    0.971,
+    0.873,
+    0.558
+   ],
+   "N16_local_c1.R2_mass_from_Z": 0.638
+  },
+  "sources": {
+   "N0_clos_c1.I_capt": "r4-bias-003:out/combined.json:configs.N0_clos_c1.I_capt",
+   "N0_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_clos_c1.ceiling_G",
+   "N0_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_H_from_Z",
+   "N0_local_c1.I_capt": "r4-bias-003:out/combined.json:configs.N0_local_c1.I_capt",
+   "N0_local_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_local_c1.ceiling_G",
+   "N0_local_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_local_c1.agreement.mass.R2_H_from_Z",
+   "N4_clos_c1.I_capt": "r4-bias-003:out/combined.json:configs.N4_clos_c1.I_capt",
+   "N4_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N4_clos_c1.ceiling_G",
+   "N4_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N4_clos_c1.agreement.mass.R2_H_from_Z",
+   "N4_local_c1.I_capt": "r4-bias-003:out/combined.json:configs.N4_local_c1.I_capt",
+   "N4_local_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N4_local_c1.ceiling_G",
+   "N4_local_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N4_local_c1.agreement.mass.R2_H_from_Z",
+   "N16_clos_c1.I_capt": "r4-bias-003:out/combined.json:configs.N16_clos_c1.I_capt",
+   "N16_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N16_clos_c1.ceiling_G",
+   "N16_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N16_clos_c1.agreement.mass.R2_H_from_Z",
+   "N16_local_c1.I_capt": "r4-bias-003:out/combined.json:configs.N16_local_c1.I_capt",
+   "N16_local_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N16_local_c1.ceiling_G",
+   "N16_local_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N16_local_c1.agreement.mass.R2_H_from_Z"
+  }
+ },
+ {
+  "claim": "Locality is what lets closure find mass: the unconstrained encoder trained for closure is less closed than block mass at every horizon, agrees with it poorly and is seed-unstable.",
+  "values": {
+   "U_clos_c1.ceiling_G": [
+    0.898,
+    0.762,
+    0.521,
+    0.267,
+    0.068
+   ],
+   "hand_mass.ceiling_G": [
+    0.991,
+    0.954,
+    0.77,
+    0.375,
+    0.138
+   ],
+   "U_clos_c1.R2_mass_from_Z": 0.545,
+   "U_clos_c1.seed_R2": 0.585
+  },
+  "sources": {
+   "U_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.U_clos_c1.ceiling_G",
+   "hand_mass.ceiling_G": "r4-bias-003:out/combined.json:hand.mass.G.ceiling",
+   "U_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.U_clos_c1.agreement.mass.R2_H_from_Z",
+   "U_clos_c1.seed_R2": "r4-bias-003:out/combined.json:configs.U_clos_c1.seed_agreement.mean"
+  }
+ },
+ {
+  "claim": "The predictive bottleneck lands in between: partly mass, less closed than block mass beyond h = 2.",
+  "values": {
+   "N0_pib_c1.ceiling_G": [
+    0.945,
+    0.868,
+    0.686,
+    0.394,
+    0.115
+   ],
+   "N0_pib_c1.R2_mass_from_Z": 0.736,
+   "N0_pib_c1.seed_R2": 0.991,
+   "N16_pib_c1.ceiling_G": [
+    0.957,
+    0.871,
+    0.625,
+    0.258,
+    0.057
+   ],
+   "N16_pib_c1.R2_mass_from_Z": 0.555,
+   "N16_pib_c1.seed_R2": 0.771
+  },
+  "sources": {
+   "N0_pib_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_pib_c1.ceiling_G",
+   "N0_pib_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_pib_c1.agreement.mass.R2_H_from_Z",
+   "N0_pib_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N0_pib_c1.seed_agreement.mean",
+   "N16_pib_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N16_pib_c1.ceiling_G",
+   "N16_pib_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N16_pib_c1.agreement.mass.R2_H_from_Z",
+   "N16_pib_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N16_pib_c1.seed_agreement.mean"
+  }
+ },
+ {
+  "claim": "Extra width (c = 2, 4) adds content that is less closed: the mass is still contained (R^2(mass | Z) >= 0.93 for N0 closure) but most of the latent is not mass, the second channel is not the per-channel block mass (R^2(Z | channel means) 0.51 for N0_clos_c2), and the h = 16 ceiling falls with width.",
+  "values": {
+   "N0_clos_c1.ceiling_G": [
+    0.983,
+    0.944,
+    0.809,
+    0.485,
+    0.163
+   ],
+   "N0_clos_c1.R2_mass_from_Z": 0.933,
+   "N0_clos_c1.R2_Z_from_mass": 0.94,
+   "N0_clos_c1.R2_Z_from_chan": 0.949,
+   "N0_clos_c2.ceiling_G": [
+    0.965,
+    0.901,
+    0.73,
+    0.421,
+    0.088
+   ],
+   "N0_clos_c2.R2_mass_from_Z": 0.928,
+   "N0_clos_c2.R2_Z_from_mass": 0.462,
+   "N0_clos_c2.R2_Z_from_chan": 0.508,
+   "N0_clos_c4.ceiling_G": [
+    0.95,
+    0.857,
+    0.639,
+    0.341,
+    0.057
+   ],
+   "N0_clos_c4.R2_mass_from_Z": 0.958,
+   "N0_clos_c4.R2_Z_from_mass": 0.317,
+   "N0_clos_c4.R2_Z_from_chan": 0.45
+  },
+  "sources": {
+   "N0_clos_c1.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_clos_c1.ceiling_G",
+   "N0_clos_c1.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_H_from_Z",
+   "N0_clos_c1.R2_Z_from_mass": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.mass.R2_Z_from_H",
+   "N0_clos_c1.R2_Z_from_chan": "r4-bias-003:out/combined.json:configs.N0_clos_c1.agreement.chan.R2_Z_from_H",
+   "N0_clos_c2.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_clos_c2.ceiling_G",
+   "N0_clos_c2.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_clos_c2.agreement.mass.R2_H_from_Z",
+   "N0_clos_c2.R2_Z_from_mass": "r4-bias-003:out/combined.json:configs.N0_clos_c2.agreement.mass.R2_Z_from_H",
+   "N0_clos_c2.R2_Z_from_chan": "r4-bias-003:out/combined.json:configs.N0_clos_c2.agreement.chan.R2_Z_from_H",
+   "N0_clos_c4.ceiling_G": "r4-bias-003:out/combined.json:configs.N0_clos_c4.ceiling_G",
+   "N0_clos_c4.R2_mass_from_Z": "r4-bias-003:out/combined.json:configs.N0_clos_c4.agreement.mass.R2_H_from_Z",
+   "N0_clos_c4.R2_Z_from_mass": "r4-bias-003:out/combined.json:configs.N0_clos_c4.agreement.mass.R2_Z_from_H",
+   "N0_clos_c4.R2_Z_from_chan": "r4-bias-003:out/combined.json:configs.N0_clos_c4.agreement.chan.R2_Z_from_H"
+  }
+ },
+ {
+  "claim": "No bias at c <= 4 finds the object view: the best learned latent explains the object mass field no better than block mass does.",
+  "values": {
+   "N0_recon_c4.R2_objmass_from_Z": 0.685,
+   "hand_mass.R2_objmass_from_Z": 0.688
+  },
+  "sources": {
+   "N0_recon_c4.R2_objmass_from_Z": "r4-bias-003:out/combined.json:configs.N0_recon_c4.agreement.objmass.R2_H_from_Z",
+   "hand_mass.R2_objmass_from_Z": "r4-bias-003:out/combined.json:hand.mass.agreement.objmass.R2_H_from_Z"
+  }
+ },
+ {
+  "claim": "Closure-type latents are seed-stable and so are their ceilings (largest seed difference of the G ceiling over all c = 1 closure/local configs and horizons is 0.014); nonlinear reconstruction is not (seed R^2 0.08-0.87).",
+  "values": {
+   "max_abs_seed_diff_clos_local_c1": 0.014,
+   "N4_recon_c1.seed_R2": 0.356,
+   "N8_recon_c1.seed_R2": 0.625
+  },
+  "sources": {
+   "max_abs_seed_diff_clos_local_c1": "r4-bias-003:out/combined.json:configs.*_(clos|local)_c1.ceiling_G_seed_diff",
+   "N4_recon_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N4_recon_c1.seed_agreement.mean",
+   "N8_recon_c1.seed_R2": "r4-bias-003:out/combined.json:configs.N8_recon_c1.seed_agreement.mean"
+  }
+ },
+ {
+  "claim": "Cost of the study (billed): r4-bias-001 $0.81 (cancelled), r4-bias-002 $1.13 (cancelled), r4-bias-003 $6.01 (done); pod hours 0.396 + 0.447 + 1.951 = 2.79.",
+  "values": {
+   "r4-bias-001": 0.8082,
+   "r4-bias-002": 1.1261,
+   "r4-bias-003": 6.0058,
+   "total": 7.9401,
+   "pod_hours": [
+    0.396,
+    0.447,
+    1.951
+   ]
+  },
+  "sources": {
+   "billed": "origin/gpu-jobs:jobs/<job_id>/status.json:cost.billed_usd",
+   "pod_hours": "origin/gpu-jobs:LEDGER.md (pod hours column)"
+  }
+ }
+]
