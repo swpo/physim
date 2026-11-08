@@ -10,7 +10,7 @@
       "job_id": "r4-sbi-001",
       "purpose": "Round 4 study sbi: simulate-to-train on the gliders exam world: synthetic-likelihood identification of 4 hidden parameters at 5 Lab budgets (8 fresh pilot truths), predictors trained on real vs simulated data",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "queued"
+      "state": "provisioning"
     },
     {
       "billed_usd": 0.0501,
@@ -55,6 +55,6 @@
     "prior_spend_usd": 0.0,
     "spent_usd": 0.3193,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-08T00:29:12Z"
+    "updated_at": "2026-11-08T00:29:52Z"
   }
 }

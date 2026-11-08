@@ -1,9 +1,32 @@
 {
+  "billing_window_hours": 4.0,
+  "bundle": {
+    "bundle_sha256": "494bcb4d90ccff51f9a3e050274d7f307a58b6734cc22bf3c3dc7efffdbce5c0",
+    "files": {
+      "job.sh": "032338fee9c6d55f4043296e54d50ce560d65ea0ebed1770bdff421a1c9ad3eb",
+      "request.json": "8bd1579d687ba5943e690c25ab6c840e79554d6f532ca10d8f209534814686fa",
+      "run.sh": "c3efaf176c81aa162b8165025440b08540b4c9c68a4d2022f8c9ed1094d5bb6d",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "64fdc69beecc6d5951cade08b08bed2115fab6b7e1e79062d57e7ec488856c75"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/gliders_exam",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/round4/sbi"
+    ],
+    "ref": "0e37cb9f0caee784e7a256edf0840715faac5dd1",
+    "src_bytes": 10283783
+  },
   "cap_usd": 12.0,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-08T00:28:32Z",
@@ -14,11 +37,35 @@
       "at": "2026-11-08T00:29:01Z",
       "message": "accepted: A100_80GB via datacrunch at $2.3489/h, at most $10.69",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-08T00:29:51Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r4-sbi-001",
   "max_estimate_usd": 10.69,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "1A100.22V",
+      "country": "FI",
+      "data_center": "FIN-02",
+      "disk_gb": 120,
+      "gpu_memory_gb": 80,
+      "gpu_type": "A100_80GB",
+      "is_spot": false,
+      "memory_gb": 120,
+      "provider": "datacrunch",
+      "rank": 0,
+      "rate_usd_hr": 2.3489,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 22
+    }
+  ],
   "plan": {
     "max_estimate_usd": 10.69,
     "offers": [
@@ -61,6 +108,6 @@
     "window_hours": 3.25
   },
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-08T00:29:12Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-08T00:29:51Z"
 }
