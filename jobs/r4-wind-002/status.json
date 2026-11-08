@@ -9,11 +9,58 @@
       "at": "2026-11-08T00:35:02Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-08T00:35:55Z",
+      "message": "accepted: H100_80GB via lambdalabs at $4.29/h, at most $11.18",
+      "state": "queued"
     }
   ],
   "job_id": "r4-wind-002",
-  "message": "request received",
+  "max_estimate_usd": 11.18,
+  "message": "accepted: H100_80GB via lambdalabs at $4.29/h, at most $11.18",
+  "plan": {
+    "max_estimate_usd": 11.18,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_h100_sxm5",
+        "country": "US",
+        "data_center": "us-south-2",
+        "disk_gb": 2816,
+        "gpu_memory_gb": 80,
+        "gpu_type": "H100_80GB",
+        "is_spot": false,
+        "memory_gb": 225,
+        "provider": "lambdalabs",
+        "rank": 1,
+        "rate_usd_hr": 4.29,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 26
+      },
+      {
+        "cloud_id": "1H100.80S.30V",
+        "country": "FI",
+        "data_center": "FIN-03",
+        "disk_gb": 120,
+        "gpu_memory_gb": 80,
+        "gpu_type": "H100_80GB",
+        "is_spot": false,
+        "memory_gb": 120,
+        "provider": "datacrunch",
+        "rank": 1,
+        "rate_usd_hr": 4.9709,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-08T00:35:55Z",
+    "window_hours": 2.25
+  },
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-08T00:35:02Z"
+  "state": "queued",
+  "updated_at": "2026-11-08T00:35:55Z"
 }
