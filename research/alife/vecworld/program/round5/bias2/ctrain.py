@@ -13,7 +13,9 @@ Hand designs first (chand.py: window means of pixel features; closed-form slow f
 other half); their .ready markers are written only after every hand file exists, because the workers read hand
 designs as agreement targets.
 Memory (round-4 lesson): every jitted function takes the device data as ARGUMENTS; compiled trainers and encoders
-are dropped and the JAX caches cleared after every config.
+are dropped and the JAX caches cleared after every config. The two halves stay TWO device arrays (never stacked:
+with 4 fields the stack would have 2.5e9 elements, past 2^31); the trainer is vmapped over the two seeds of one
+half and called once per half with that half's array, so one compiled executable serves both.
 """
 import gc
 import json
@@ -43,7 +45,7 @@ SUB = c5.out_dir("latsub")
 HI = {h: i for i, h in enumerate(c5.HALVES)}
 OTHER = {"A": "B", "B": "A"}
 TMAXH = max(c5.HTR)
-REPS = [("A", 0), ("A", 1), ("B", 0), ("B", 1)]
+REPS = [("A", 0), ("A", 1), ("B", 0), ("B", 1)]        # replicas of a config: (fit half, seed); halves grouped (half_of)
 if c5.TINY:
     STEPS, CHUNK, BATCH, NV = 4, 2, 2, 4
 else:
@@ -97,15 +99,16 @@ for h in c5.HALVES:
     sd = np.sqrt(np.maximum(s2 / n - mu ** 2, 0.0))
     assert np.all(sd > 1e-8), (h, sd)                  # a constant level-0 field would make the study meaningless
     STAT[h] = (mu, sd)
-MU = jnp.asarray(np.stack([STAT[h][0] for h in c5.HALVES]), jnp.float32)          # (2, 4)
+MU = jnp.asarray(np.stack([STAT[h][0] for h in c5.HALVES]), jnp.float32)          # (2, NCH)
 SD = jnp.asarray(np.stack([STAT[h][1] for h in c5.HALVES]), jnp.float32)
-Xd = jnp.stack([jax.device_put(np.asarray(Xh[h])) for h in c5.HALVES])          # (2, J, T+1, 4, 128, 128)
-XBd = jnp.stack([jax.device_put(np.asarray(XBh[h]).reshape((-1, NC, c5.NPIX, c5.NPIX))) for h in c5.HALVES])
-NBR = XBd.shape[1]
+Xd = tuple(jax.device_put(np.asarray(Xh[h])) for h in c5.HALVES)                # 2 x (J, T+1, NCH, 128, 128)
+XBd = tuple(jax.device_put(np.asarray(XBh[h]).reshape((-1, NC, c5.NPIX, c5.NPIX))) for h in c5.HALVES)
+assert all(a.size < 2 ** 31 for a in Xd + XBd), [a.size for a in Xd + XBd]
+NBR = XBd[0].shape[0]
 BSHAPE = XBh["A"].shape[:4]
 jax.block_until_ready((Xd, XBd))
-log("data on device", Xd.shape, XBd.shape, "field mean/sd", {h: (STAT[h][0].round(4).tolist(), STAT[h][1].round(4).tolist())
-                                                   for h in c5.HALVES}, mem())
+log("data on device 2 x", Xd[0].shape, "2 x", XBd[0].shape, "field mean/sd",
+    {h: (STAT[h][0].round(4).tolist(), STAT[h][1].round(4).tolist()) for h in c5.HALVES}, mem())
 N_TR = J - N_VAL
 T_LO, T_HI = 1, T1 - 1 - TMAXH                                                    # t in [1, T - 16]
 _rng = np.random.default_rng(4242)
@@ -113,11 +116,11 @@ VAL_J = np.stack([_rng.integers(N_TR, J, 512) for _ in c5.HALVES])
 VAL_T = np.stack([_rng.integers(T_LO, T_HI + 1, 512) for _ in c5.HALVES])
 
 
-def gather(X, mu, sd, hidx, j, t, offs):
-    """Standardised frames (F, n, 4, 128, 128) of half hidx at trajectories j, ticks t + offs (X passed as an
-    argument, never closed over)."""
-    x = X[hidx, j[None, :], t[None, :] + jnp.asarray(offs)[:, None]]
-    return (x - mu[hidx][:, None, None]) / sd[hidx][:, None, None]
+def gather(X, mu, sd, j, t, offs):
+    """Standardised frames (F, n, NCH, 128, 128) of one half (X its device array, mu / sd its field statistics
+    (NCH,)) at trajectories j, ticks t + offs (X passed as an argument, never closed over)."""
+    x = X[j[None, :], t[None, :] + jnp.asarray(offs)[:, None]]
+    return (x - mu[:, None, None]) / sd[:, None, None]
 
 
 # ----------------------------------------------------------------------------- encoding (frozen Phi)
@@ -125,8 +128,8 @@ _ENCD = {}
 
 
 def _enc_jit(enc, h, which, parts=False):
-    """Jitted encoder reading frames straight from the device copies: 'base' (Xd[half, j, t]) or 'branch'
-    (XBd[half, k]); standardised with the fit half's statistics (hi)."""
+    """Jitted encoder reading frames straight from one half's device copy: 'base' (X[j, t]) or 'branch' (X[k]);
+    standardised with the fit half's statistics mu, sd (NCH,)."""
     k = (enc, h, which, parts)
     if k not in _ENCD:
         def app(P, xs):
@@ -135,13 +138,11 @@ def _enc_jit(enc, h, which, parts=False):
             lin, nl = BN.enc_parts(enc, h, P, xs)
             return BN.field_parts(enc, h, P, xs), (jnp.zeros_like(lin) if nl is None else nl), lin
         if which == "base":
-            def g(P, X, mu, sd, dh, j, t, hi):
-                x = X[dh, j, t]
-                return app(P, (x - mu[hi][:, None, None]) / sd[hi][:, None, None])
+            def g(P, X, mu, sd, j, t):
+                return app(P, (X[j, t] - mu[:, None, None]) / sd[:, None, None])
         else:
-            def g(P, X, mu, sd, dh, kk, hi):
-                x = X[dh, kk]
-                return app(P, (x - mu[hi][:, None, None]) / sd[hi][:, None, None])
+            def g(P, X, mu, sd, kk):
+                return app(P, (X[kk] - mu[:, None, None]) / sd[:, None, None])
         _ENCD[k] = jax.jit(g)
     return _ENCD[k]
 
@@ -156,7 +157,7 @@ def encode_base(enc, h, P, data_h, jj, tt, hidx):
     """Base frames (jj, tt) of half data_h -> z (n, 8, 8, c) float64 numpy. One transfer at the end."""
     f = _enc_jit(enc, h, "base")
     (jp, n), (tp, _) = _pad(np.asarray(jj)), _pad(np.asarray(tt))
-    out = [f(P, Xd, MU, SD, HI[data_h], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK]), hidx)
+    out = [f(P, Xd[HI[data_h]], MU[hidx], SD[hidx], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK]))
            for i in range(0, len(jp), ENC_CHUNK)]
     return np.asarray(jnp.concatenate(out), np.float64)[:n]
 
@@ -164,7 +165,7 @@ def encode_base(enc, h, P, data_h, jj, tt, hidx):
 def encode_branch(enc, h, P, data_h, hidx):
     f = _enc_jit(enc, h, "branch")
     kp, n = _pad(np.arange(NBR))
-    out = [f(P, XBd, MU, SD, HI[data_h], jnp.asarray(kp[i:i + ENC_CHUNK]), hidx) for i in range(0, len(kp), ENC_CHUNK)]
+    out = [f(P, XBd[HI[data_h]], MU[hidx], SD[hidx], jnp.asarray(kp[i:i + ENC_CHUNK])) for i in range(0, len(kp), ENC_CHUNK)]
     return np.asarray(jnp.concatenate(out), np.float64)[:n]
 
 
@@ -178,7 +179,7 @@ def field_shares(enc, h, P, data_h, hidx):
     (jp, n), (tp, _) = _pad(jj.ravel()), _pad(tt.ravel())
     fp, nl = [], []
     for i in range(0, len(jp), ENC_CHUNK):
-        a, b, _ = f(P, Xd, MU, SD, HI[data_h], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK]), hidx)
+        a, b, _ = f(P, Xd[HI[data_h]], MU[hidx], SD[hidx], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK]))
         fp.append(np.asarray(a, np.float64))
         nl.append(np.asarray(b, np.float64))
     fp, nl = np.concatenate(fp)[:n], np.concatenate(nl)[:n]              # (n, 8, 8, c, 4), (n, 8, 8, c)
@@ -262,15 +263,15 @@ def pooled_features():
             outs.append(CHD.pool(full[:, :nb], hh).reshape(x.shape[0], nb, 64))
         return outs
 
-    fb = jax.jit(lambda X, dh, j, t: one(X[dh, j, t]))
-    fr = jax.jit(lambda X, dh, kk: one(X[dh, kk]))
+    fb = jax.jit(lambda X, j, t: one(X[j, t]))
+    fr = jax.jit(lambda X, kk: one(X[kk]))
     res = {}
     for ch in c5.HALVES:
         jj, tt = np.meshgrid(np.arange(JC), np.arange(T1), indexing="ij")
         (jp, n), (tp, _) = _pad(jj.ravel()), _pad(tt.ravel())
-        ob = [fb(Xd, HI[ch], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK])) for i in range(0, len(jp), ENC_CHUNK)]
+        ob = [fb(Xd[HI[ch]], jnp.asarray(jp[i:i + ENC_CHUNK]), jnp.asarray(tp[i:i + ENC_CHUNK])) for i in range(0, len(jp), ENC_CHUNK)]
         kp, m = _pad(np.arange(NBR))
-        orr = [fr(XBd, HI[ch], jnp.asarray(kp[i:i + ENC_CHUNK])) for i in range(0, len(kp), ENC_CHUNK)]
+        orr = [fr(XBd[HI[ch]], jnp.asarray(kp[i:i + ENC_CHUNK])) for i in range(0, len(kp), ENC_CHUNK)]
         res[ch] = {}
         for a, hh in enumerate(c5.HSMOOTH):
             B = np.concatenate([np.asarray(o[a], np.float64) for o in ob])[:n]
@@ -323,6 +324,8 @@ _TRAINERS = {}
 
 
 def trainer(enc, h, obj, c):
+    """-> (chunk_f(P, M, V, it, key) over the 4 replicas, val_f(P), batch, n_val). One executable (vmapped over the
+    two seeds of a half) is called once per half with that half's device array."""
     key_ = (enc, h, obj, c)
     if key_ in _TRAINERS:
         return _TRAINERS[key_]
@@ -332,36 +335,47 @@ def trainer(enc, h, obj, c):
     n_steps = float(STEPS)
 
     def one_step(carry, X, mu, sd):
-        P, M, V, it, key, hidx = carry
+        P, M, V, it, key = carry
         key, kj, kt = jax.random.split(key, 3)
         j = jax.random.randint(kj, (B,), 0, N_TR)
         t = jax.random.randint(kt, (B,), T_LO, T_HI + 1)
-        xe = gather(X, mu, sd, hidx, j, t, fe)
-        g = jax.grad(loss)(P, xe)
+        g = jax.grad(loss)(P, gather(X, mu, sd, j, t, fe))
         it = it + 1.0
         M = jax.tree_util.tree_map(lambda m, gg: 0.9 * m + 0.1 * gg, M, g)
         V = jax.tree_util.tree_map(lambda v, gg: 0.999 * v + 0.001 * gg * gg, V, g)
         c1, c2 = 1 - 0.9 ** it, 1 - 0.999 ** it
         lr_t = LR * (0.1 + 0.45 * (1 + jnp.cos(jnp.pi * jnp.minimum(it / n_steps, 1.0))))
         P = jax.tree_util.tree_map(lambda p, m, v: p - lr_t * (m / c1) / (jnp.sqrt(v / c2) + 1e-8), P, M, V)
-        return (P, M, V, it, key, hidx)
+        return (P, M, V, it, key)
 
-    def chunk(P, M, V, it, key, hidx, X, mu, sd):
-        (P, M, V, it, key, _), _ = jax.lax.scan(lambda cr, _: (one_step(cr, X, mu, sd), None),
-                                                (P, M, V, it, key, hidx), None, length=CHUNK)
+    def chunk(P, M, V, it, key, X, mu, sd):
+        (P, M, V, it, key), _ = jax.lax.scan(lambda cr, _: (one_step(cr, X, mu, sd), None),
+                                             (P, M, V, it, key), None, length=CHUNK)
         return P, M, V, it, key
 
-    def val(P, hidx, vj, vt, X, mu, sd):
-        j, t = vj[hidx, :NV], vt[hidx, :NV]
-        return loss(P, gather(X, mu, sd, hidx, j, t, fe))
+    def val(P, vj, vt, X, mu, sd):
+        return loss(P, gather(X, mu, sd, vj, vt, fe))
 
-    chunk_v = jax.jit(jax.vmap(chunk, in_axes=(0, 0, 0, 0, 0, 0, None, None, None)))
-    val_v = jax.jit(jax.vmap(val, in_axes=(0, 0, None, None, None, None, None)))
-    vj, vt = jnp.asarray(VAL_J), jnp.asarray(VAL_T)
-    out = (lambda P, M, V, it, key, hidx: chunk_v(P, M, V, it, key, hidx, Xd, MU, SD),
-           lambda P, hidx: val_v(P, hidx, vj, vt, Xd, MU, SD), B, NV)
+    chunk_v = jax.jit(jax.vmap(chunk, in_axes=(0, 0, 0, 0, 0, None, None, None)))
+    val_v = jax.jit(jax.vmap(val, in_axes=(0, None, None, None, None, None)))
+    vj, vt = jnp.asarray(VAL_J[:, :NV]), jnp.asarray(VAL_T[:, :NV])
+    cat = lambda a, b: jax.tree_util.tree_map(lambda x, y: jnp.concatenate([x, y]), a, b)      # noqa: E731
+
+    def chunk_f(P, M, V, it, key):
+        parts = [chunk_v(*half_of((P, M, V, it, key), i), Xd[i], MU[i], SD[i]) for i in range(2)]
+        return cat(parts[0], parts[1])
+
+    def val_f(P):
+        return jnp.concatenate([val_v(half_of(P, i), vj[i], vt[i], Xd[i], MU[i], SD[i]) for i in range(2)])
+
+    out = (chunk_f, val_f, B, NV)
     _TRAINERS[key_] = out
     return out
+
+
+def half_of(tree, i):
+    """The two replicas (seeds 0, 1) fitted on half i of a 4-replica pytree (REPS order: A, A, B, B)."""
+    return jax.tree_util.tree_map(lambda a: a[2 * i:2 * i + 2], tree)
 
 
 def pick(tree, i):
@@ -373,7 +387,6 @@ def train_config(cid, name, enc, h, obj, c):
     steps = 0 if obj == "rand" else STEPS
     keys = [jax.random.PRNGKey(100003 * cid + 1009 * s + 17 * HI[fh] + 5) for fh, s in REPS]
     P = jax.vmap(lambda k: BN.init_model(enc, h, "clos" if obj == "rand" else obj, c, k))(jnp.stack(keys))
-    hidx = jnp.asarray([HI[fh] for fh, _ in REPS])
     hist, best_it = [], [0] * len(REPS)
     if steps:
         chunk_f, val_f, B, nv = trainer(enc, h, obj, c)
@@ -381,7 +394,7 @@ def train_config(cid, name, enc, h, obj, c):
         V = jax.tree_util.tree_map(jnp.zeros_like, P)
         it = jnp.zeros((len(REPS),), jnp.float32)
         skeys = jnp.stack([jax.random.PRNGKey(7 + 31 * cid + 1000 * s + 3 * HI[fh]) for fh, s in REPS])
-        best = np.asarray(val_f(P, hidx))
+        best = np.asarray(val_f(P))
         v_init = best.copy()
         bestP = P
         hist.append((0, best.tolist()))
@@ -389,9 +402,9 @@ def train_config(cid, name, enc, h, obj, c):
         tch = []
         while done < steps:
             tc = time.time()
-            P, M, V, it, skeys = chunk_f(P, M, V, it, skeys, hidx)
+            P, M, V, it, skeys = chunk_f(P, M, V, it, skeys)
             done += CHUNK
-            v = np.asarray(val_f(P, hidx))
+            v = np.asarray(val_f(P))
             tch.append(time.time() - tc)
             if cid <= 5 and len(tch) <= 2:
                 log(f"{name}: chunk {len(tch)} of {CHUNK} steps (+ val) in {tch[-1]:.1f}s")

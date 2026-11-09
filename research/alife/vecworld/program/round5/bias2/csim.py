@@ -146,6 +146,9 @@ def sim_half(h, w, desc):
                 f"halves at J = {c5.J_ALL}, budget {SIM_BUDGET:.0f}s -> J = {J} ({total(J):.0f}s)")
             J_STATE["J"] = J
             J_STATE["rate_burn"] = rate
+            left = c5.deadline("sim") - time.time()
+            if total(J) > left:                                    # fail in minutes, not at the deadline
+                raise RuntimeError(f"simulation too slow: {total(J):.0f}s needed at J = {J}, {left:.0f}s to the deadline")
             if J < ens.B:
                 ens = ens.clone(rep=1, idx=np.arange(J))
     J = ens.B

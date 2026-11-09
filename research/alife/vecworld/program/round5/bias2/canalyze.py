@@ -78,12 +78,13 @@ METRICS = ("ceil1", "ceil4", "ceil16", "I_avail@1", "I_capt@1", "I_capt@4")
 
 
 def at_pr(fam_rows, pr, name):
-    """Linear interpolation in PR of a metric along one hand family; None if pr is outside the family's range."""
+    """Linear interpolation in PR of a metric along one hand family -> (value, clamped). Outside the family's PR
+    range the nearest end is used (clamped = True: the family cannot be matched in effective dimension there)."""
     pts = sorted((p, metric_of(r, name)) for _, p, r in fam_rows)
     xs, ys = [p for p, _ in pts], [y for _, y in pts]
-    if any(y is None for y in ys) or pr < xs[0] - 1e-9 or pr > xs[-1] + 1e-9:
+    if any(y is None for y in ys):
         return None
-    return float(np.interp(pr, xs, ys))
+    return float(np.interp(pr, xs, ys)), bool(pr < xs[0] - 1e-9 or pr > xs[-1] + 1e-9)
 
 
 def analyse(world):
@@ -141,16 +142,17 @@ def analyse(world):
                 mine = metric_of(r, name)
                 if mine is None:
                     continue
-                cands = {f: at_pr(v, pr, name) for f, v in fam.items()}
-                cands = {f: v for f, v in cands.items() if v is not None}
-                e = {"learned": round(mine, 4)}
+                allc = {f: at_pr(v, pr, name) for f, v in fam.items()}
+                allc = {f: v for f, v in allc.items() if v is not None}
+                cands = {f: v[0] for f, v in allc.items() if not v[1]}          # families that bracket the learned PR
+                e = {"learned": round(mine, 4), "n_families_bracketing": len(cands)}
                 if cands:
                     fb = max(cands, key=cands.get)
-                    e.update({"best_hand_family": fb, "best_hand_at_PR": round(cands[fb], 4), "diff_vs_best_hand": round(mine - cands[fb], 4),
-                              "n_families_bracketing": len(cands)})
+                    e.update({"best_hand_family": fb, "best_hand_at_PR": round(cands[fb], 4), "diff_vs_best_hand": round(mine - cands[fb], 4)})
                 bf = row.get("best_feature")
-                if bf in cands:
-                    e.update({"own_family": bf, "own_family_at_PR": round(cands[bf], 4), "diff_vs_own_family": round(mine - cands[bf], 4)})
+                if bf in allc:
+                    e.update({"own_family": bf, "own_family_at_PR": round(allc[bf][0], 4), "own_family_clamped": allc[bf][1],
+                              "diff_vs_own_family": round(mine - allc[bf][0], 4)})
                 m["metrics"][name] = e
             out["matched"][nm] = m
     return out
@@ -182,15 +184,17 @@ def table(a):
                  f"{bf} {b.get('loc1')} (tent {t.get('loc1')}; q {b.get('loc1q')}; 9 {b.get('loc9')}; glob {b.get('glob')}) | "
                  f"{cl.get('sfa_c1', {}).get('loc1')}/{cl.get('sfax_c1', {}).get('loc1')} | {r['seed_loc1']} | {fs[0] if fs else ''}")
     L += ["", "matched effective dimension (c = 1): learned minus the best hand family interpolated at the learned PR",
-          "config | PR | ceil4: learned, best hand (family), diff | ceil16: ... | I_capt@1: ..."]
+          "config | PR | ceil4: learned, best hand (family), diff; own = the best-agreeing feature's family (* = PR outside its range, nearest window used) | ceil16: ... | I_capt@1: ..."]
     for nm, m in a["matched"].items():
         def cell(k):
             e = m["metrics"].get(k)
             if e is None:
                 return "n/a"
+            own = (f"; own {e['own_family']} {e['own_family_at_PR']}{'*' if e['own_family_clamped'] else ''} {e['diff_vs_own_family']:+.3f}"
+                   if "own_family" in e else "")
             if "best_hand_at_PR" not in e:
-                return f"{e['learned']} (no family brackets)"
-            return f"{e['learned']} vs {e['best_hand_at_PR']} ({e['best_hand_family']}) {e['diff_vs_best_hand']:+.3f}"
+                return f"{e['learned']} (no family brackets{own})"
+            return f"{e['learned']} vs {e['best_hand_at_PR']} ({e['best_hand_family']}) {e['diff_vs_best_hand']:+.3f}{own}"
         L.append(f"{nm:15s} | {m['PR']} | {cell('ceil4')} | {cell('ceil16')} | {cell('I_capt@1')}")
     return "\n".join(L) + "\n"
 
