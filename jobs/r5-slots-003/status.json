@@ -23,7 +23,7 @@
   "cap_usd": 6.2,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.2931
+    "conservative_usd": 2.0135
   },
   "hard_deadline": "2026-11-10T00:28:40Z",
   "hard_deadline_epoch": 1794270520.315797,
@@ -51,7 +51,7 @@
   ],
   "job_id": "r5-slots-003",
   "max_estimate_usd": 5.0,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
@@ -158,5 +158,6 @@
   "run_deadline": "2026-11-10T00:14:41Z",
   "started_at": "2026-11-09T23:35:41Z",
   "state": "running",
-  "updated_at": "2026-11-09T23:35:41Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n23:35:47 [job] nproc 16, cert workers 13, train deadline +1140s, cert deadline +1560s, size pilot\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n== out/progress.txt\ned: trk, <ssh-target>, hand_mass, hand_chan\n23:37:44 [scert 3    14.7s] hand_mass__certA q=64 certified in 11.7s\n23:37:44 [scert 4    14.4s] hand_mass__certB q=64 certified in 11.4s\n23:38:15 [scert 1    45.3s] hand_chan__certB q=128 certified in 42.3s\n23:38:18 [scert 5    48.5s] hand_chan__certA q=128 certified in 45.5s\n23:38:20 [strain    52.3s] km_s6: encoded both halves in 49.3s, 5.7 GB peak, 5.2 GB in use\n23:38:48 [scert 10    79.0s] <ssh-target>__certA q=72 certified in 76.0s\n23:38:58 [scert 2    88.3s] <ssh-target>__certB q=72 certified in 85.3s\n23:39:29 [strain   121.2s] km_s3: encoded both halves in 69.0s, 5.7 GB peak, 5.2 GB in use\n23:40:32 [scert 4   181.6s] <ssh-target>__certA q=72 certified in 149.1s\n23:40:35 [scert 9   184.9s] <ssh-target>__certB q=72 certified in 151.9s\n23:41:13 [strain   225.6s] km_s6w: encoded both halves in 104.3s, 5.7 GB peak, 5.2 GB in use\n23:41:32 [strain   244.2s] grid: encoded both halves in 18.6s, 5.7 GB peak, 5.2 GB in use\n23:41:45 [scert 12   255.4s] <ssh-target>__certA q=72 certified in 159.4s\n23:41:47 [scert 5   257.4s] <ssh-target>__certB q=72 certified in 160.9s\n23:43:03 [scert 13   334.5s] trk__certA q=144 certified in 331.5s\n23:43:04 [scert 11   333.7s] trk__certB q=144 certified in 330.7s\n23:43:57 [scert 4   386.7s] <ssh-target>__certA q=72 certified in 196.1s\n23:44:21 [strain   412.7s] km_s6_p1: encoded both halves in 168.5s, 6.3 GB peak, 5.2 GB in use\n23:44:28 [scert 1   418.3s] <ssh-target>__certB q=72 certified in 226.0s\n23:46:33 [strain   544.7s] objective values trk: set [0.6827, 0.5758, 0.527, 0.5241], self [0.5995, 0.5609, 0.5252, 0.5227], rec [0.6473, 0.648, 0.6531, 0.6511] (132.0s)\n23:46:39 [strain   550.7s] objective values km_s6: set [0.3155, 0.3189, 0.3364, 0.3291], self [0.3193, 0.3182, 0.3382, 0.338], rec [0.6031, 0.6027, 0.6229, 0.6224] (5.9s)\n23:46:44 [strain   556.5s] objective values km_s3: set [0.3049, 0.307, 0.3527, 0.365], self [0.3088, 0.3133, 0.3681, 0.3569], rec [0.5578, 0.5581, 0.5731, 0.5698] (5.8s)\n23:46:48 [scert 8   557.8s] km_s3__certA q=144 certified in 461.8s\n23:46:50 [strain   561.9s] objective values km_s6w: set [0.3258, 0.33, 0.3426, 0.3431], self [0.3351, 0.3303, 0.3454, 0.3463], rec [0.588, 0.5888, 0.6041, 0.6034] (5.4s)\n23:46:50 [scert 6   560.3s] km_s3__certB q=144 certified in 464.3s\n23:46:55 [strain   567.5s] objective values grid: set [0.7474, 0.7557, 0.75, 0.7574], self [0.7507, 0.7495, 0.7509, 0.7512], rec [0.7266, 0.7281, 0.7397, 0.7341] (5.6s)\n23:47:53 [scert 4   622.9s] <ssh-target>__certA q=72 certified in 212.1s\n23:49:00 [scert 7   690.3s] km_s6__certB q=144 certified in 657.3s\n23:49:47 [scert 3   737.8s] km_s6__certA q=144 certified in 705.1s\n23:49:57 [scert 8   747.1s] <ssh-target>__certB q=72 certified in 189.3s\n23:50:05 [scert 2   755.0s] km_s6w__certA q=144 certified in 564.6s\n23:50:40 [scert 10   790.6s] grid__certA q=144 certified in 552.6s\n23:50:43 [scert 9   793.2s] km_s6w__certB q=144 certified in 602.3s\n23:51:00 [scert 5   810.1s] grid__certB q=144 certified in 552.7s\n",
+  "updated_at": "2026-11-09T23:51:07Z"
 }
