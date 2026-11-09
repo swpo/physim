@@ -1,0 +1,60 @@
+{
+ "source": "/home/user/physim/research/alife/vecworld/program/round4/sbi/results/summary.json",
+ "compute_gliders": {
+  "prior_predictive_set_member_ticks": 83968,
+  "prior_predictive_set_core_hours": 3.17,
+  "scripted_pipeline_member_ticks_per_hidden_world": 755712,
+  "scripted_pipeline_core_hours": 28.5,
+  "scripted_pipeline_hours_on_4_cores": 7.1,
+  "envelope_4cores_24h_member_ticks": 2541176,
+  "envelope_over_pipeline": 3.36,
+  "envelope_over_prior_predictive_set": 30.3,
+  "gpu_seconds_for_pipeline": 472
+ },
+ "acceptance_ratios_gliders": {
+  "net": {
+   "C": 0.5645,
+   "P0": 0.5436,
+   "D_512": 0.5451,
+   "science_share_vs_P0": 0.037,
+   "science_share_vs_better_null": 0.034,
+   "scripted_share_at_2_episodes": 0.86,
+   "scripted_share_at_8_episodes": 0.87
+  },
+  "amort": {
+   "C": 0.5753,
+   "P0": 0.5455,
+   "D_512": null,
+   "science_share_vs_P0": 0.052,
+   "science_share_vs_better_null": 0.052,
+   "scripted_share_at_2_episodes": 0.94,
+   "scripted_share_at_8_episodes": 0.96
+  },
+  "ridge": {
+   "C": 0.4854,
+   "P0": 0.443,
+   "D_512": 0.4871,
+   "science_share_vs_P0": 0.087,
+   "science_share_vs_better_null": -0.004,
+   "scripted_share_at_2_episodes": 0.77,
+   "scripted_share_at_8_episodes": 0.95
+  }
+ },
+ "rollout_batch": {
+  "n_rollouts": 18,
+  "tokens_usd": [
+   137,
+   414
+  ],
+  "tokens_usd_half_each_model": 275,
+  "gpu_arm_usd_6_rollouts": [
+   96,
+   113
+  ]
+ },
+ "depth_cost_factor_area_times_time": {
+  "b=2": 16,
+  "b=4": 256,
+  "b=8": 4096
+ }
+}

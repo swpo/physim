@@ -1,0 +1,273 @@
+{
+ "world": {
+  "n": 24,
+  "blocks": 6,
+  "sigma": 0.3,
+  "r": 0.2,
+  "theta0": {
+   "D": 0.15,
+   "D2": 0.0125,
+   "gamma": 0.05,
+   "v": 0.05
+  },
+  "prior_sd": {
+   "D": 0.03,
+   "D2": 0.0075,
+   "gamma": 0.01,
+   "v": 0.02
+  },
+  "episode_ticks": 16,
+  "history": 8,
+  "horizons": [
+   1,
+   4,
+   16
+  ]
+ },
+ "observed_level": {
+  "0": {
+   "numbers_per_tick": 24,
+   "fisher_eigs_per_episode_prior_units": [
+    1.6549514583554312,
+    0.13637236301167682,
+    0.09361773369118631,
+    0.05347042164450504
+   ],
+   "episodes_to_halve_prior_variance_by_direction": [
+    0.6042473300055134,
+    7.33286406362538,
+    10.681736895048822,
+    18.701928453986046
+   ],
+   "stiffest_direction": {
+    "D": -0.963,
+    "D2": -0.247,
+    "gamma": -0.107,
+    "v": 0.003
+   },
+   "sloppiest_direction": {
+    "D": -0.127,
+    "D2": 0.769,
+    "gamma": -0.626,
+    "v": -0.029
+   },
+   "log10_condition": 1.490671651166625,
+   "info_gain_one_episode_nats": 0.6229242610629193
+  },
+  "1": {
+   "numbers_per_tick": 6,
+   "fisher_eigs_per_episode_prior_units": [
+    0.14414927655837684,
+    0.036150442068874585,
+    0.01224939430060447,
+    0.0009832219487218067
+   ],
+   "episodes_to_halve_prior_variance_by_direction": [
+    6.93725299131158,
+    27.662179015536765,
+    81.63668957498193,
+    1017.0643579509234
+   ],
+   "stiffest_direction": {
+    "D": -0.472,
+    "D2": -0.383,
+    "gamma": -0.794,
+    "v": 0.006
+   },
+   "sloppiest_direction": {
+    "D": -0.593,
+    "D2": 0.804,
+    "gamma": -0.035,
+    "v": -0.013
+   },
+   "log10_condition": 2.1661609022806396,
+   "info_gain_one_episode_nats": 0.09166571752858559
+  },
+  "2": {
+   "numbers_per_tick": 2,
+   "fisher_eigs_per_episode_prior_units": [
+    0.05758464822371358,
+    0.002109622057179375,
+    8.861664058838909e-05,
+    7.075912924323236e-05
+   ],
+   "episodes_to_halve_prior_variance_by_direction": [
+    17.36573949562127,
+    474.0185554075162,
+    11284.562282662564,
+    14132.452034034088
+   ],
+   "stiffest_direction": {
+    "D": -0.103,
+    "D2": -0.092,
+    "gamma": -0.99,
+    "v": 0.001
+   },
+   "sloppiest_direction": {
+    "D": -0.451,
+    "D2": 0.584,
+    "gamma": -0.008,
+    "v": -0.674
+   },
+   "log10_condition": 2.9105242382651855,
+   "info_gain_one_episode_nats": 0.02912722180299498
+  },
+  "1m": {
+   "numbers_per_tick": 6,
+   "fisher_eigs_per_episode_prior_units": [
+    0.15591115845541753,
+    0.036441736926731416,
+    0.013995052826502938,
+    0.00021480840220697693
+   ],
+   "episodes_to_halve_prior_variance_by_direction": [
+    6.413909112771732,
+    27.441063031945152,
+    71.45382103211956,
+    4655.311383194676
+   ],
+   "stiffest_direction": {
+    "D": -0.441,
+    "D2": -0.379,
+    "gamma": -0.813,
+    "v": 0.004
+   },
+   "sloppiest_direction": {
+    "D": 0.633,
+    "D2": -0.774,
+    "gamma": 0.018,
+    "v": 0.01
+   },
+   "log10_condition": 2.860825933720876,
+   "info_gain_one_episode_nats": 0.0973975831633563
+  }
+ },
+ "regret": {
+  "observe_0_exam_1": {
+   "prior_headroom_nats_per_item": 0.04812900897978127,
+   "episodes_for_10pct_regret": 58.38293438439706,
+   "asymptotic_constant_trHIinv_over_2": 0.3361384489491198,
+   "regret_after_1_2_8_64_episodes": [
+    0.03490860207492216,
+    0.029981333420485784,
+    0.01836987224434265,
+    0.004452715863347007
+   ]
+  },
+  "observe_1_exam_1": {
+   "prior_headroom_nats_per_item": 0.04812900897978127,
+   "episodes_for_10pct_regret": 128.31189585347838,
+   "asymptotic_constant_trHIinv_over_2": 0.86809438428618,
+   "regret_after_1_2_8_64_episodes": [
+    0.04324650403808695,
+    0.039402428667971306,
+    0.02660360304776873,
+    0.008152506267326866
+   ]
+  },
+  "observe_2_exam_2": {
+   "prior_headroom_nats_per_item": 0.016083276557613362,
+   "episodes_for_10pct_regret": 197.90382357596656,
+   "asymptotic_constant_trHIinv_over_2": 1.219450916366867,
+   "regret_after_1_2_8_64_episodes": [
+    0.015232302994432614,
+    0.014469127933634226,
+    0.011152370002445426,
+    0.0037536255682477046
+   ]
+  },
+  "observe_0_exam_2": {
+   "prior_headroom_nats_per_item": 0.016083276557613362,
+   "episodes_for_10pct_regret": 91.28654896602211,
+   "asymptotic_constant_trHIinv_over_2": 0.1683494450316901,
+   "regret_after_1_2_8_64_episodes": [
+    0.013964360668750597,
+    0.01263997404958513,
+    0.008381758274888993,
+    0.0021785625142102787
+   ]
+  },
+  "observe_1_exam_2": {
+   "prior_headroom_nats_per_item": 0.016083276557613362,
+   "episodes_for_10pct_regret": 107.47296719512897,
+   "asymptotic_constant_trHIinv_over_2": 0.21640269080795027,
+   "regret_after_1_2_8_64_episodes": [
+    0.014444847171251395,
+    0.013150189979191741,
+    0.00879929269671375,
+    0.0024608703304629382
+   ]
+  },
+  "observe_1m_exam_1": {
+   "prior_headroom_nats_per_item": 0.04812900897978127,
+   "episodes_for_10pct_regret": 118.92980963153022,
+   "asymptotic_constant_trHIinv_over_2": 1.009636006880784,
+   "regret_after_1_2_8_64_episodes": [
+    0.042903772309999505,
+    0.038860945717762094,
+    0.025802072264064446,
+    0.00773606653747196
+   ]
+  }
+ },
+ "exam_weight_per_unit_lab_information": {
+  "observe_1_exam_1": [
+   0.5896073169085543,
+   0.5455822376175087,
+   0.49255039170463366,
+   0.10844882234166409
+  ],
+  "observe_2_exam_2": [
+   1.2719031663009268,
+   0.5473572107997293,
+   0.5287801048300151,
+   0.09086135080306246
+  ]
+ },
+ "input_pulse": {
+  "across_blocks": {
+   "level1_trace_active_over_passive_at_5_nats": 0.021847817977359615,
+   "level1_nats_of_theta_information_passive": 0.09166571752858559,
+   "level1_nats_of_theta_information_passive_plus_pulse": 0.09357382236654262,
+   "level1_same_at_50_nats": 0.11056106073126365,
+   "level2_trace_active_over_passive_at_5_nats": 0.019076010427862642,
+   "level2_nats_of_theta_information_passive": 0.02912722180299498,
+   "level2_nats_of_theta_information_passive_plus_pulse": 0.029683149999040658,
+   "level2_same_at_50_nats": 0.034668175476041105
+  },
+  "neighbouring_blocks": {
+   "level1_trace_active_over_passive_at_5_nats": 0.04141810046561032,
+   "level1_nats_of_theta_information_passive": 0.09166571752858559,
+   "level1_nats_of_theta_information_passive_plus_pulse": 0.09538979068072538,
+   "level1_same_at_50_nats": 0.12778708174118372,
+   "level2_trace_active_over_passive_at_5_nats": 7.80255481423022e-05,
+   "level2_nats_of_theta_information_passive": 0.02912722180299498,
+   "level2_nats_of_theta_information_passive_plus_pulse": 0.029129546293664158,
+   "level2_same_at_50_nats": 0.029150466360242357
+  },
+  "inside_one_block": {
+   "level1_trace_active_over_passive_at_5_nats": 0.017887753359223164,
+   "level1_nats_of_theta_information_passive": 0.09166571752858559,
+   "level1_nats_of_theta_information_passive_plus_pulse": 0.09331480752681953,
+   "level1_same_at_50_nats": 0.10803536261125367,
+   "level2_trace_active_over_passive_at_5_nats": 0.01500509336043639,
+   "level2_nats_of_theta_information_passive": 0.02912722180299498,
+   "level2_nats_of_theta_information_passive_plus_pulse": 0.02957383106488809,
+   "level2_same_at_50_nats": 0.033578924814973383
+  }
+ },
+ "predictive_order_h1_within_1pct": {
+  "level1_memoryless": [
+   1,
+   0.8088571051092165
+  ],
+  "level1_ema_0.3": [
+   1,
+   0.9327462413627822
+  ],
+  "level2": [
+   1,
+   0.8766805151148616
+  ]
+ }
+}

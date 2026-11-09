@@ -1,0 +1,23 @@
+{
+ "family": {
+  "worlds": 150,
+  "random_C_per_world": 200,
+  "rho": "U(0.6, 0.99)",
+  "tau": 4,
+  "seed": 20261110
+ },
+ "median_over_worlds": {
+  "c_best": 0.8205,
+  "c_med": 0.5775,
+  "I1_best": 0.8701,
+  "I1_med": 0.7485,
+  "PR_best": 2.9339,
+  "PR_med": 3.1466,
+  "share_best": 0.0988,
+  "share_med": 0.0638,
+  "spearman_c_I1": 0.3344,
+  "spearman_c_PR": -0.0087,
+  "frac_worlds_best_ceiling_has_lower_PR_than_median": 0.6,
+  "frac_worlds_best_ceiling_has_lower_I1_than_median": 0.22
+ }
+}

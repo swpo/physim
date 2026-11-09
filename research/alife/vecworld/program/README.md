@@ -55,8 +55,9 @@ Round 3 (7-8 Nov 2026; each independently checked, corrections in each `results/
   0.73 vs 0.99; z about 3 with truths resampled), but a history-only ridge predictor cannot exploit the true
   parameters; the harness runs end to end on the gliders wind world.
 - `track1/vortex128`: the fed-vortex level-2 selection signal holds at 128^2 in 6 of 6 seeds and all windows
-  (paired t-test p 0.0006-0.013); with mutation per unit area the 64^2 box recovers the signal; the predictable part
-  of the kind-share change is carried by the hidden selection coefficient.
+  (paired t-test p 0.0006-0.013); with mutation per unit area the 64^2 box recovers the signal. The oracle shows 51-56%
+  of the kind-share change is predictable, but a linear level-2 predictor reaches at most 0.10 of it even given the
+  true selection coefficient (checker's correction: an earlier wording here said the coefficient "carries" it).
 - `track1/membrane_world`: phase_membrane as a JAX Level (matches numpy to round-off, 11-13x cheaper per tick than
   gliders), a substrate input channel with exact nats, a cell-list level 1 and a population level 2; cells grow and
   divide (median cycle 1,850 time units); dt 0.5 is adequate.
@@ -79,3 +80,11 @@ corrections in each `round4/<study>/results/summary.json` under `checker`):
   local law, R^2 0.995 with block mass); nonlinear reconstruction at width 1 does not; the receptive field sets the
   smoothing; nothing learned beats the hand-designed block mass or block channel means in predictable content per
   number; no bias at <= 4 numbers per block yields the object view. One level-0 theory so far.
+
+Roadmap (9 Nov 2026): `roadmap/ROADMAP.md`, built from four memos on the lead's open questions (`roadmap/Q1_worlds.md`,
+`Q2_difficulty.md`, `Q3_science.md`, `Q4_swarms.md`) and a second reading (`roadmap/CRITIQUE.md`). Its verdict: the
+framework is sound and cheap, but on the gliders pilot a policy with no hypothesis and no experiment (training on
+simulations from the public prior) takes 95% or more of the best reference skill, so the exam does not yet test
+science; a level structure tests science only where the agent cannot buy its way down to level 0. It proposes two
+acceptance quantities (science share sigma, scripted share rho), agents on exams before more worlds, and seven
+decisions for the lead. Thresholds and dates in it are proposals.

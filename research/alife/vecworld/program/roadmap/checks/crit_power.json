@@ -1,0 +1,66 @@
+{
+ "source": "/home/user/physim/research/alife/vecworld/program/round4/sbi/results/summary.json",
+ "n_truths": 8,
+ "pairs": {
+  "amort|post@8 - net|post@8": {
+   "mean_gap": 0.0116,
+   "sd_across_truths": 0.0093,
+   "truths_for_z3_at_gap_0.03": 1,
+   "truths_for_z3_at_gap_0.05": 1
+  },
+  "net|post@8 - ridge|post@8": {
+   "mean_gap": 0.0774,
+   "sd_across_truths": 0.0165,
+   "truths_for_z3_at_gap_0.03": 3,
+   "truths_for_z3_at_gap_0.05": 1
+  },
+  "net|post@8 - net|prior_pred": {
+   "mean_gap": 0.0182,
+   "sd_across_truths": 0.0096,
+   "truths_for_z3_at_gap_0.03": 1,
+   "truths_for_z3_at_gap_0.05": 1
+  },
+  "net|true - net|prior_mean": {
+   "mean_gap": 0.0931,
+   "sd_across_truths": 0.0805,
+   "truths_for_z3_at_gap_0.03": 65,
+   "truths_for_z3_at_gap_0.05": 24
+  },
+  "net|post@8 - net|real@128": {
+   "mean_gap": 0.1034,
+   "sd_across_truths": 0.012,
+   "truths_for_z3_at_gap_0.03": 2,
+   "truths_for_z3_at_gap_0.05": 1
+  },
+  "net|real@512 - net|real@128": {
+   "mean_gap": 0.0875,
+   "sd_across_truths": 0.0126,
+   "truths_for_z3_at_gap_0.03": 2,
+   "truths_for_z3_at_gap_0.05": 1
+  },
+  "ridge|real@128 - ridge|real@32": {
+   "mean_gap": 0.0212,
+   "sd_across_truths": 0.0155,
+   "truths_for_z3_at_gap_0.03": 3,
+   "truths_for_z3_at_gap_0.05": 1
+  }
+ },
+ "sd_range": [
+  0.0093,
+  0.0805
+ ],
+ "sandbox": {
+  "cpu_only_member_ticks_24h_4cores": 2541176,
+  "gpu_8h_member_ticks_at_1600_per_s": 46080000,
+  "sbi_pilot_total_member_ticks": 5598560,
+  "sbi_design_plus_one_posterior_set": 1343488,
+  "gpu_8h_cost_usd_at_1.99_2.35": [
+   15.92,
+   18.8
+  ],
+  "q4_12_rollouts_gpu_usd": [
+   191,
+   226
+  ]
+ }
+}

@@ -1,0 +1,195 @@
+{
+ "source": "/home/user/physim/research/alife/vecworld/program/round4/sbi/results/summary.json",
+ "cells_level_horizon": [
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   1,
+   8
+  ],
+  [
+   1,
+   16
+  ],
+  [
+   2,
+   8
+  ],
+  [
+   2,
+   16
+  ]
+ ],
+ "amort": {
+  "true_minus_prior_pred_per_cell": [
+   0.0003,
+   0.002,
+   0.0044,
+   0.011,
+   0.0106,
+   0.0692,
+   0.1107
+  ],
+  "true_minus_prior_mean_per_cell": [
+   0.0006,
+   0.0023,
+   0.0046,
+   0.0125,
+   0.0129,
+   0.0785,
+   0.1137
+  ],
+  "aggregate_true_minus_prior_pred": 0.0297,
+  "aggregate_true_minus_prior_mean": 0.0322,
+  "level2_share_of_true_minus_prior_pred": 0.864,
+  "level2_share_of_true_minus_prior_mean": 0.854,
+  "level1_h_le_4_max_true_minus_prior_pred": 0.0044,
+  "true_ceiling_per_cell": [
+   0.9167,
+   0.8444,
+   0.6983,
+   0.4604,
+   0.2273,
+   0.4406,
+   0.4394
+  ]
+ },
+ "net": {
+  "true_minus_prior_pred_per_cell": [
+   0.0029,
+   0.0051,
+   0.0094,
+   0.0219,
+   0.0263,
+   0.0299,
+   0.0511
+  ],
+  "true_minus_prior_mean_per_cell": [
+   0.0039,
+   0.0053,
+   0.0065,
+   0.0249,
+   0.0389,
+   0.2313,
+   0.3254
+  ],
+  "aggregate_true_minus_prior_pred": 0.0209,
+  "aggregate_true_minus_prior_mean": 0.0909,
+  "level2_share_of_true_minus_prior_pred": 0.553,
+  "level2_share_of_true_minus_prior_mean": 0.875,
+  "level1_h_le_4_max_true_minus_prior_pred": 0.0094,
+  "true_ceiling_per_cell": [
+   0.9136,
+   0.8375,
+   0.6784,
+   0.4368,
+   0.2053,
+   0.4259,
+   0.4543
+  ]
+ },
+ "ridge": {
+  "true_minus_prior_pred_per_cell": [
+   0.0015,
+   0.0032,
+   0.0054,
+   0.0099,
+   0.0116,
+   0.122,
+   0.1435
+  ],
+  "true_minus_prior_mean_per_cell": [
+   0.0015,
+   0.0033,
+   0.0066,
+   0.0123,
+   0.0127,
+   0.2212,
+   0.2928
+  ],
+  "aggregate_true_minus_prior_pred": 0.0424,
+  "aggregate_true_minus_prior_mean": 0.0786,
+  "level2_share_of_true_minus_prior_pred": 0.894,
+  "level2_share_of_true_minus_prior_mean": 0.934,
+  "level1_h_le_4_max_true_minus_prior_pred": 0.0054,
+  "true_ceiling_per_cell": [
+   0.9142,
+   0.819,
+   0.6059,
+   0.3055,
+   0.1381,
+   0.2709,
+   0.3444
+  ]
+ },
+ "net_data_only_episodes_to_reach_prior_predictive_training": 499.754472961869,
+ "net_value_of_theory": {
+  "target_oes_post_at_2": 0.5616,
+  "real_by_budget": {
+   "2": -0.478,
+   "8": 0.0387,
+   "32": 0.347,
+   "128": 0.4592,
+   "512": 0.5451
+  },
+  "prior_pred_no_interaction": 0.5436,
+  "data_only_episodes_to_match": "> 512 (real@512 0.5451 < target)",
+  "ratio_to_2_episodes": "> 256"
+ },
+ "ridge_data_only_episodes_to_reach_prior_predictive_training": 23.912444314253246,
+ "ridge_value_of_theory": {
+  "target_oes_post_at_2": 0.4758,
+  "real_by_budget": {
+   "2": -1.0255,
+   "8": 0.387,
+   "32": 0.4579,
+   "128": 0.4801,
+   "512": 0.4871
+  },
+  "prior_pred_no_interaction": 0.443,
+  "data_only_episodes_to_match": 97.85764186727907,
+  "ratio_to_2_episodes": 48.928820933639535
+ },
+ "theta_information": {
+  "2": {
+   "ticks": 66,
+   "charged_nats": 214.1,
+   "sum_minus_log_sd_ratio_nats": 4.56,
+   "predicted_residual_headroom_fraction_mean_r2": 0.125
+  },
+  "8": {
+   "ticks": 264,
+   "charged_nats": 1196.4,
+   "sum_minus_log_sd_ratio_nats": 6.67,
+   "predicted_residual_headroom_fraction_mean_r2": 0.044
+  },
+  "32": {
+   "ticks": 1056,
+   "charged_nats": 4811.6,
+   "sum_minus_log_sd_ratio_nats": 8.37,
+   "predicted_residual_headroom_fraction_mean_r2": 0.018
+  },
+  "128": {
+   "ticks": 4224,
+   "charged_nats": 19288.8,
+   "sum_minus_log_sd_ratio_nats": 9.43,
+   "predicted_residual_headroom_fraction_mean_r2": 0.011
+  },
+  "512": {
+   "ticks": 16896,
+   "charged_nats": 76129.6,
+   "sum_minus_log_sd_ratio_nats": 9.9,
+   "predicted_residual_headroom_fraction_mean_r2": 0.008
+  }
+ }
+}

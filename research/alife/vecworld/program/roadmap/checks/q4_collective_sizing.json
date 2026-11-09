@@ -1,0 +1,168 @@
+{
+ "a_wilson95_caught_of_planted": {
+  "6/8": [
+   0.409,
+   0.929
+  ],
+  "7/8": [
+   0.529,
+   0.978
+  ],
+  "8/8": [
+   0.676,
+   1.0
+  ],
+  "9/12": [
+   0.468,
+   0.911
+  ],
+  "10/12": [
+   0.552,
+   0.953
+  ],
+  "11/12": [
+   0.646,
+   0.985
+  ],
+  "12/12": [
+   0.758,
+   1.0
+  ],
+  "12/16": [
+   0.505,
+   0.898
+  ],
+  "14/16": [
+   0.64,
+   0.965
+  ],
+  "16/16": [
+   0.806,
+   1.0
+  ],
+  "15/20": [
+   0.531,
+   0.888
+  ],
+  "17/20": [
+   0.64,
+   0.948
+  ],
+  "20/20": [
+   0.839,
+   1.0
+  ],
+  "24/30": [
+   0.627,
+   0.905
+  ],
+  "27/30": [
+   0.744,
+   0.965
+  ]
+ },
+ "a_collective_contradicted_share": {
+  "7/877": [
+   0.004,
+   0.016
+  ]
+ },
+ "a_false_reject_of_clean_controls": {
+  "0/6": [
+   0.0,
+   0.39
+  ],
+  "1/6": [
+   0.03,
+   0.564
+  ],
+  "1/8": [
+   0.022,
+   0.471
+  ]
+ },
+ "b_expected_max_in_se": {
+  "2": 0.564,
+  "3": 0.846,
+  "5": 1.163,
+  "10": 1.539,
+  "20": 1.867,
+  "80": 2.427,
+  "166": 2.684,
+  "1000": 3.241
+ },
+ "c_exam_resolution": {
+  "oes_se_512_items_range": [
+   0.0059,
+   0.0094
+  ],
+  "oes_se_64_items_range": [
+   0.0167,
+   0.0266
+  ],
+  "paired_gap_keys": [
+   "amort|post@128 - net|post@128",
+   "amort|post@2 - net|post@2",
+   "amort|post@32 - net|post@32",
+   "amort|post@512 - net|post@512",
+   "amort|post@8 - net|post@8",
+   "net|post@128 - net|prior_pred",
+   "net|post@128 - ridge|post@128",
+   "net|post@2 - net|prior_pred",
+   "net|post@2 - ridge|post@2",
+   "net|post@32 - net|prior_pred",
+   "net|post@32 - ridge|post@32",
+   "net|post@512 - net|prior_pred",
+   "net|post@512 - ridge|post@512",
+   "net|post@8 - net|prior_pred",
+   "net|post@8 - ridge|post@8",
+   "net|true - net|post@128",
+   "net|true - net|post@2",
+   "net|true - net|post@32",
+   "net|true - net|post@512",
+   "net|true - net|post@8",
+   "ridge|post@128 - ridge|prior_pred",
+   "ridge|post@2 - ridge|prior_pred",
+   "ridge|post@32 - ridge|prior_pred",
+   "ridge|post@512 - ridge|prior_pred",
+   "ridge|post@8 - ridge|prior_pred",
+   "ridge|true - ridge|post@128",
+   "ridge|true - ridge|post@2",
+   "ridge|true - ridge|post@32",
+   "ridge|true - ridge|post@512",
+   "ridge|true - ridge|post@8"
+  ],
+  "paired_gap_se_512_items_range": [
+   0.0018,
+   0.0062
+  ],
+  "paired_gap_se_64_items_range": [
+   0.0051,
+   0.0175
+  ],
+  "item_z_over_truth_cluster_z_range": [
+   1.17,
+   2.02
+  ],
+  "inference_step_gliders_net": 0.0209,
+  "best_of_k_apparent_paired_gain_64_items": {
+   "2": [
+    0.0029,
+    0.0099
+   ],
+   "5": [
+    0.0059,
+    0.0204
+   ],
+   "10": [
+    0.0078,
+    0.027
+   ],
+   "20": [
+    0.0095,
+    0.0327
+   ]
+  },
+  "note": "best-of-k assumes k equally good submissions with independent paired-gap errors: an upper bound for correlated submissions; item-level SEs understate truth-clustered ones by the ratio above"
+ }
+}

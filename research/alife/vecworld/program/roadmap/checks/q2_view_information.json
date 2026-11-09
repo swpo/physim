@@ -1,0 +1,107 @@
+{
+ "source": "/home/user/physim/research/alife/vecworld/program/round4/sbi/results/job/design_features.npz",
+ "n_draws": 2048,
+ "episodes_per_draw": 4,
+ "param_names": [
+  "lR",
+  "dm_00",
+  "ls_00",
+  "lh"
+ ],
+ "all 22 (block + object views)": {
+  "n_features": 22,
+  "fisher_eigs_per_episode_prior_units": [
+   32.969,
+   11.157,
+   2.967,
+   0.853
+  ],
+  "info_gain_nats_1_episode": 4.009,
+  "info_gain_nats_2_episodes": 5.142,
+  "predicted_posterior_sd_ratio_2_episodes": [
+   0.352,
+   0.157,
+   0.463,
+   0.457
+  ],
+  "episodes_for_mean_sd_ratio_squared_0.125": 2.4,
+  "cv_r2_single_episode_linear_readout": [
+   0.794,
+   0.946,
+   0.623,
+   0.658
+  ]
+ },
+ "block view only (memoryless)": {
+  "n_features": 10,
+  "fisher_eigs_per_episode_prior_units": [
+   23.084,
+   6.688,
+   1.715,
+   0.288
+  ],
+  "info_gain_nats_1_episode": 3.237,
+  "info_gain_nats_2_episodes": 4.231,
+  "predicted_posterior_sd_ratio_2_episodes": [
+   0.543,
+   0.193,
+   0.523,
+   0.588
+  ],
+  "episodes_for_mean_sd_ratio_squared_0.125": 5.77,
+  "cv_r2_single_episode_linear_readout": [
+   0.585,
+   0.928,
+   0.547,
+   0.533
+  ]
+ },
+ "object view only (tracker memory)": {
+  "n_features": 12,
+  "fisher_eigs_per_episode_prior_units": [
+   7.274,
+   1.085,
+   0.654,
+   0.071
+  ],
+  "info_gain_nats_1_episode": 1.71,
+  "info_gain_nats_2_episodes": 2.433,
+  "predicted_posterior_sd_ratio_2_episodes": [
+   0.636,
+   0.529,
+   0.759,
+   0.655
+  ],
+  "episodes_for_mean_sd_ratio_squared_0.125": 22.21,
+  "cv_r2_single_episode_linear_readout": [
+   0.468,
+   0.551,
+   0.36,
+   0.376
+  ]
+ },
+ "level-2 population statistics": {
+  "n_features": 5,
+  "fisher_eigs_per_episode_prior_units": [
+   3.935,
+   0.587,
+   0.003,
+   0.0
+  ],
+  "info_gain_nats_1_episode": 1.031,
+  "info_gain_nats_2_episodes": 1.483,
+  "predicted_posterior_sd_ratio_2_episodes": [
+   0.744,
+   0.639,
+   0.814,
+   0.97
+  ],
+  "episodes_for_mean_sd_ratio_squared_0.125": 6396.7,
+  "cv_r2_single_episode_linear_readout": [
+   0.345,
+   0.412,
+   0.296,
+   0.038
+  ]
+ }
+}

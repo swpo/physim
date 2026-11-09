@@ -1,0 +1,50 @@
+{
+ "family": {
+  "N": 4000,
+  "n0": 16,
+  "n1": 4,
+  "r": 0.05,
+  "tau": 4,
+  "rho": "U(0.2, 0.99)",
+  "seed": 20261109
+ },
+ "median_all": {
+  "c": 0.4842,
+  "share_past": 0.0042,
+  "share_oracle": 0.0099,
+  "I1": 0.304,
+  "rho": 0.6011
+ },
+ "median_top5pct_by_ceiling": {
+  "c": 0.8776,
+  "share_past": 0.4733,
+  "share_oracle": 0.537,
+  "I1": 1.984,
+  "rho": 0.9656
+ },
+ "median_two_part_rule": {
+  "c": 0.7594,
+  "share_past": 0.2437,
+  "share_oracle": 0.3264,
+  "I1": 1.4418,
+  "rho": 0.9202
+ },
+ "frac_two_part_rule": 0.1752,
+ "frac_thin_all": 0.678,
+ "frac_thin_in_top5pct_by_ceiling": 0.02,
+ "frac_top5pct_with_share_past_below_0.10": 0.035,
+ "spearman_ceiling_vs": {
+  "share_past": 0.686,
+  "share_oracle": 0.638,
+  "I1": 0.657,
+  "rho": 0.64
+ },
+ "ceiling_quantiles": [
+  0.2366,
+  0.3715,
+  0.4842,
+  0.6178,
+  0.8228
+ ],
+ "note": "closed form (steady-state Kalman filter); the ceiling is exact here, not a lower bound"
+}
