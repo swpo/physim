@@ -210,8 +210,14 @@ def process(path):
 
 def claim():
     """Oldest .ready file, hand designs first; atomic rename to .claimed.<WID>."""
+    def mtime(p):
+        try:
+            return os.path.getmtime(p)
+        except OSError:                  # another worker renamed it between the listing and here
+            return 0.0
+
     rd = glob.glob(f"{LAT}/*.npz.ready")
-    rd.sort(key=lambda p: (0 if os.path.basename(p).startswith("hand_") else 1, os.path.getmtime(p) if os.path.exists(p) else 0))
+    rd.sort(key=lambda p: (0 if os.path.basename(p).startswith("hand_") else 1, mtime(p)))
     for r in rd:
         tgt = r[:-6] + f".claimed.{WID}"
         try:
