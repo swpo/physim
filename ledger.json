@@ -109,12 +109,12 @@
       "state": "infra_error"
     },
     {
-      "billed_usd": 0.0,
+      "billed_usd": null,
       "cap_usd": 6.2,
-      "conservative_usd": 0.0,
+      "conservative_usd": 0.168,
       "finished_at": null,
-      "gpu": "-",
-      "hours": 0,
+      "gpu": "H200_141GB (nebius)",
+      "hours": 0.025,
       "job_id": "r5-slots-003",
       "purpose": "Round-5 study slots (track 1), pilot: slot encoders with memory on raw gliders level 0 (soft k-means, learned geometric slot attention; closure with and without the dead-direction term, reconstruction, supervised capacity control), reduced size: 48 trajectories per half, 600 steps, 6 configs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -173,8 +173,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 31.6566,
     "prior_spend_usd": 0.0,
-    "spent_usd": 13.7566,
+    "spent_usd": 13.9246,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-09T23:33:03Z"
+    "updated_at": "2026-11-09T23:34:34Z"
   }
 }
