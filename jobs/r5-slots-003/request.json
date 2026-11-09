@@ -1,0 +1,51 @@
+{
+  "request": {
+    "cap_usd": 6.2,
+    "disk_gb": null,
+    "env": {
+      "S5_CERT_S": "1560",
+      "S5_KEEP": "sam_set,sam_set_dg,sam_sup,sam_rec,sam_set_ws,sac_set",
+      "S5_KEEP_ORDER": "1",
+      "S5_OV_STEPS": "300",
+      "S5_SIZE": "pilot",
+      "S5_STEPS": "600",
+      "S5_TRAIN_S": "1140",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_80GB",
+        "H100_80GB",
+        "H200_141GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r5-slots-003",
+    "max_hours": 0.65,
+    "notes": "Replaces r5-slots-002 (infra_error: the H200 offer listed $5.55/h but the pod bills $6.69/h, which the $5.00 cap could not cover for max_hours + 0.25 h; no pod became ready). Cap $6.20 covers $6.69/h x 0.9 h. The code is pinned by ref (a commit on the branch that holds this request): the pilot of r5-slots-002 plus an optional dead-direction term in the closure loss (config sam_set_dg) and an explicit config order. Study budget $25: r5-slots-002 $0.50 conservative, this pilot at most $6.20, the full job at most $18.30. Checks GPU memory, step time, training stability and the whole pipeline (float64 simulation with the tracker re-run for label maps, float32 slot encoders trained 4 replicas at once by truncated BPTT with persistent slot memory, CPU certification workers) at reduced size. Device data are passed to jitted functions as arguments; compiled functions are released between configs. No network or subprocess use outside setup. Training stops starting configs 19 min after job start, certification 26 min. CPU test passed: job.sh end to end at tiny size from a git archive of exactly these paths at the pinned commit's content.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/round5/slots"
+    ],
+    "purpose": "Round-5 study slots (track 1), pilot: slot encoders with memory on raw gliders level 0 (soft k-means, learned geometric slot attention; closure with and without the dead-direction term, reconstruction, supervised capacity control), reduced size: 48 trajectories per half, 600 steps, 6 configs",
+    "ref": "e5d146ef3447142c652c75d0d348a67cf01568f0",
+    "requester": "cloud study slots (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round5/slots && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "1bf3f81f498fa68a7fcb722a1561383c4b9390fd",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r5-slots-003.json",
+    "received_at": "2026-11-09T23:27:47Z",
+    "tip": "eab4aae0bb97a098d1d8a7831b7ee66064fd405f"
+  }
+}
