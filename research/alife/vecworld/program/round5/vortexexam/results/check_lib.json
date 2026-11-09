@@ -1,0 +1,67 @@
+{
+ "T": 84,
+ "H": 64,
+ "B": 2,
+ "backend": "cpu",
+ "jax": "0.12.0.1",
+ "ref_seconds": 24.49240207672119,
+ "default_vs_vw_world": {
+  "map": {
+   "max_abs_diff_L1": 9.392539617181228e-07,
+   "max_abs_diff_L2": 0.0,
+   "seconds": 21.922051191329956,
+   "s_b_end": [
+    0.09090909090909091,
+    0.125
+   ],
+   "N_end": [
+    11.0,
+    8.0
+   ],
+   "a_sum": 707.4039128957329,
+   "b_sum": 84.93044032111602
+  },
+  "batch": {
+   "max_abs_diff_L1": 9.392539617181228e-07,
+   "max_abs_diff_L2": 0.0,
+   "seconds": 24.033093214035034,
+   "s_b_end": [
+    0.09090909090909091,
+    0.125
+   ],
+   "N_end": [
+    11.0,
+    8.0
+   ],
+   "a_sum": 707.403912895018,
+   "b_sum": 84.93044032118846
+  }
+ },
+ "ref_s_b_end": [
+  0.09090909090909091,
+  0.125
+ ],
+ "ref_b_present": true,
+ "mut128": {
+  "values": [
+   50.0,
+   25.0
+  ],
+  "b_sum_end": [
+   46.106823825191384,
+   103.32473449332524
+  ],
+  "first_tick_with_b": [
+   81,
+   61
+  ],
+  "expect": "64^2: mut128 50 -> first mutation at t 400 (tick 80, list after tick 81); 25 -> t 400 too (every 100: 400 is the first multiple after the labelling step unless the labelling step itself mutates), then t 500"
+ },
+ "program_costs_at_200_nats": {
+  "a": 0.0,
+  "b": 200.00000000000003,
+  "c": 200.0,
+  "d": 200.00000000000003
+ },
+ "pass": true
+}
