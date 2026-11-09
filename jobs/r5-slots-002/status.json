@@ -1,9 +1,31 @@
 {
+  "billing_window_hours": 0.9009,
+  "bundle": {
+    "bundle_sha256": "5b87db49d328071777e57924a6097ee0b30ad04c18e4b23a623981b5eef8a3fd",
+    "files": {
+      "job.sh": "127021ca1e9f6dd75842aafb6896d96de5bd45ef932caa525921ae6f14f6b7ff",
+      "request.json": "558f2ae6f272a8b36957b9f338dca447094942f49263a58d9b5778b6c65f0c36",
+      "run.sh": "8b4c6ca87adc3d49b3557e223dd799fafae4fdbaffee54c3bc51123f82c2b483",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "62737a6f7abe75f32124cfcc25fd5ceb06f9ae9bd0ee6efacb8d2d682794cf82"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/round5/slots"
+    ],
+    "ref": "16738525ca39828282ca9008d2523f579d0621da",
+    "src_bytes": 15754324
+  },
   "cap_usd": 5.0,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-09T23:03:40Z",
@@ -14,12 +36,53 @@
       "at": "2026-11-09T23:19:34Z",
       "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-09T23:20:13Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-slots-002",
   "max_estimate_usd": null,
-  "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "US",
+      "data_center": "us-central1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 2,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    },
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "FI",
+      "data_center": "eu-north1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 2,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    }
+  ],
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-09T23:19:34Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-09T23:20:13Z"
 }
