@@ -90,6 +90,12 @@ Results:
   SHA-256, including files that stayed on the Mac (`in_git: false`), and any file
   that was skipped (links, files past the size cap, names git cannot store
   safely). Ask the user or the Mac session for files that stayed on the Mac.
+- `jobs/<job_id>/review.md` holds the Mac's code review of your job, when there
+  is one, and `status.json` then carries `review: {file, summary, at, sha256}`
+  (for example `"summary": "1 major, 4 minor; fine to run"`). It can appear in
+  any state, often before the job starts, and a newer review replaces the older
+  one. Read it when `review.sha256` changes; fixes it asks for usually go into
+  your next request.
 
 ## 3. Cancel
 
