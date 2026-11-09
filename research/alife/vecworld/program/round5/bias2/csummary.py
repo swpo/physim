@@ -39,6 +39,9 @@ for job in sorted(set(JOBS.values())):
     if b is not None and pod.get("rate_usd_hr"):
         e["billed_gpu_hours"] = round(b / pod["rate_usd_hr"], 3)
     out["meta"]["jobs"][job] = e
+p = os.path.join(R, "job_history.json")          # hand-kept record: every submission, why it was resubmitted, code changes
+if os.path.exists(p):
+    out["meta"]["job_history"] = dict(json.load(open(p)), source="results/job_history.json")
 tot = [j["cost"]["billed_usd"] for j in out["meta"]["jobs"].values() if j.get("cost") and j["cost"].get("billed_usd") is not None]
 out["meta"]["billed_usd_total"] = round(float(sum(tot)), 4) if tot else None
 for w, job in JOBS.items():
