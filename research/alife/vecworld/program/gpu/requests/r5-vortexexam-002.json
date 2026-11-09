@@ -1,0 +1,34 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-vortexexam-002",
+  "purpose": "Round-5 study vortexexam (track 2), job 1: GPU throughput of the fed-vortex world with its level-1/2 pipeline (64/96/128 px, several batch sizes), replicator-law runs over 5 selection coefficients, one-at-a-time headroom scan of 13 candidate hidden parameters",
+  "requester": "cloud study vortexexam (track 2), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1/vw",
+    "research/alife/vecworld/program/track1/vortex_world",
+    "research/alife/vecworld/program/round5/vortexexam"
+  ],
+  "gpu": {
+    "types": [
+      "A100_40GB",
+      "A100_80GB",
+      "H100_80GB",
+      "H200_141GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 0.6,
+  "cap_usd": 5.7,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/program/round5/vortexexam && python -B job1.py --out $OUT --max-hours 0.47",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "notes": "Replaces r5-vortexexam-001 (cancelled before it started: its cap of $5.60 for 0.75 h could not cover the only offer in stock, H200 billing $6.69/h). Same code; max_hours 0.6 and cap $5.70 cover $6.69/h x 0.85 h. Pilot only, nothing hidden: every parameter value is public and written to the outputs; never reusable as an exam. float64 world (pseudo-spectral, 250 native steps per tick), float32 stored vortex lists. Stages are sized from the measured throughput and stop inside --max-hours 0.47 (the bench stops adding rows after 22% of it; batch sizes that run out of memory are caught per row). Device constants are passed to jitted functions as arguments; compiled functions are released between configurations. No network or subprocess use outside setup. CPU tests passed: check_lib.py (the batched runner equals the vw World of track1/vortex_world at default parameters) and job1.py --smoke end to end from a git archive of exactly these paths."
+}

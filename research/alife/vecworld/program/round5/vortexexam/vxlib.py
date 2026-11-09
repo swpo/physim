@@ -374,3 +374,88 @@ def make_program(cls, rng, y1_last, K, H, T, nats, centres):
     if np.abs(U).max() > U_MAX + 1e-12:
         U *= U_MAX / np.abs(U).max()
     return U
+
+
+# ----------------------------------------------------------------------------- exam-shaped episodes (job 2)
+S2_NAMES = S1_NAMES + ("near_lo", "near_hi")
+PROG_TICKS = (120, 180, 240, 300)       # a program of the public mix starts at each of these ticks
+T_EP = 340                              # ticks per episode (t = 1700)
+C_PROG = 200.0                          # nats per program (classes b, c, d); episode cap 4 x 200 = 800
+HS = (8, 16, 32)                        # horizons in ticks (40, 80, 160 time units)
+
+
+def summaries2(Y1, K):
+    """summaries plus the shares of vortices just below (0.35-0.5) and just above (0.5-0.65) the kind threshold."""
+    S = summaries(Y1, K)
+    T = tables(Y1, K)
+    pres = T[..., 0] > 0.5
+    n1 = np.maximum(pres.sum(-1), 1.0)
+    lo = (pres & (T[..., 2] > 0.35) & (T[..., 2] <= 0.5)).sum(-1) / n1
+    hi = (pres & (T[..., 2] > 0.5) & (T[..., 2] < 0.65)).sum(-1) / n1
+    return np.concatenate([S, lo[..., None].astype(np.float32), hi[..., None].astype(np.float32)], -1)
+
+
+def first_list(RN, M):
+    return np.asarray(jax.vmap(lambda m: RN.bt.phi(None, m))(M)).astype(np.float32)
+
+
+def run_episodes(RN, Q, keys, seed, classes=None, T=None, prog_ticks=None, nats=C_PROG, log=None, tag="",
+                 keep_lists=False, snaps=None):
+    """Exam-shaped episodes from the declared initial law: T ticks; at every tick of prog_ticks an open-loop
+    program of the public mix starts (class per member and program: classes (B, n_prog) or drawn uniformly from
+    seed), built from the vortex list revealed at that tick (class c is aimed from it). Returns dict:
+      S (B, T+1, 14) level-1 summaries at states 0..T; U (B, T, m) float32; cls (B, n_prog); nats (B,);
+      overflow (B, 4); finite (B,); lists (B, T+1, K*12) if keep_lists; snaps {tick: (X, M)} for ticks in snaps.
+    Index convention: state index = number of ticks done; U[t] acts during tick t (state t -> t+1)."""
+    T = T_EP if T is None else T
+    prog_ticks = PROG_TICKS if prog_ticks is None else tuple(prog_ticks)
+    B = keys.shape[0]
+    rng0 = np.random.default_rng([int(seed), 0])
+    if classes is None:
+        classes = rng0.choice(list(PROGRAM_CLASSES), size=(B, len(prog_ticks)))
+    classes = np.asarray(classes)
+    X, M = RN.init(Q, keys)
+    kp = RN.proc_keys(keys)
+    y = first_list(RN, M)
+    S = np.zeros((B, T + 1, len(S2_NAMES)), np.float32)
+    S[:, 0] = summaries2(y[:, None], RN.K)[:, 0]
+    L = np.zeros((B, T + 1, RN.K * NF), np.float32) if keep_lists else None
+    if keep_lists:
+        L[:, 0] = y
+    U = np.zeros((B, T, RN.m), np.float32)
+    cuts = sorted(set([p for p in prog_ticks if 0 < p < T] + [T] + [s for s in (snaps or ()) if 0 < s < T]))
+    out_snaps = {}
+    t = 0
+    for c in cuts:
+        if t in prog_ticks:
+            j = prog_ticks.index(t)
+            for b in range(B):
+                U[b, t:c] = make_program(classes[b, j], np.random.default_rng([int(seed), 1 + j, b]), y[b], RN.K, RN.H,
+                                         c - t, nats, RN.centres)
+        X, M, Y = RN.run(Q, X, M, kp, t, U[:, t:c].transpose(1, 0, 2))
+        Yt = Y.transpose(1, 0, 2)
+        S[:, t + 1:c + 1] = summaries2(Yt, RN.K)
+        if keep_lists:
+            L[:, t + 1:c + 1] = Yt
+        y = Yt[:, -1]
+        t = c
+        if snaps and t in snaps:
+            out_snaps[t] = (X, M)
+        if log:
+            log(f"    {tag} episodes: tick {t}/{T} x {B}")
+    out = {"S": S, "U": U, "cls": classes, "nats": nats_of(U), "overflow": RN.overflow(M),
+           "finite": np.isfinite(np.asarray(X["om"]).reshape(B, -1)).all(1), "last_list": y}
+    if keep_lists:
+        out["lists"] = L
+    if snaps:
+        out["snaps"] = out_snaps
+    return out
+
+
+def viable(S, overflow, finite, K, n_min=3.0, t_from=20):
+    """The public viability rule on one episode's summaries S (..., T+1, n): fields finite, no tracker overflow
+    (raw or kept), at least n_min vortices at every state from t_from on, never more than K - 1 (slot cap), and
+    some labelled vortex mass after the labelling (mean kind-b + kind-a share defined: N > 0 suffices)."""
+    n = S[..., t_from:, 0]
+    return np.asarray(finite, bool) & (np.asarray(overflow)[..., :2].sum(-1) == 0) & (n.min(-1) >= n_min) \
+        & (n.max(-1) <= K - 1)
