@@ -14,12 +14,17 @@
       "at": "2026-11-09T23:19:30Z",
       "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-09T23:35:24Z",
+      "message": "cancelled before start",
+      "state": "cancelled"
     }
   ],
   "job_id": "r5-bias2-003",
   "max_estimate_usd": null,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "cancelled before start",
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-09T23:34:34Z"
+  "state": "cancelled",
+  "updated_at": "2026-11-09T23:35:24Z"
 }
