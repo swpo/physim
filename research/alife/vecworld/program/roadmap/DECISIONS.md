@@ -8,7 +8,7 @@ order in which they were put to the lead; the roadmap's own number is in bracket
 | 1 [1] | what may be hidden | decided 9 Nov | (a) stays the default; (b) and (c) are subjects of study |
 | 2 [2] | the agent's compute | decided 9 Nov | a compute budget relative to the cost of the full simulation, not a hardware class |
 | 3 [4] | rollouts with real agents | decided 9 Nov | cleared to spend; a cheap model first for mechanics, then Astra |
-| 4 [7] | the same model on v1 and v2 fed vortices | put 9 Nov, open | |
+| 4 [7] | the same model on v1 and v2 fed vortices | decided 9 Nov | not a priority now; not scheduled |
 | 5 [6] | sealer and grader with a private store on the lead's Mac | not yet put | |
 | 6 [5, 6] | defer the collective pilot and the large foundry pass | not yet put | |
 
@@ -57,6 +57,14 @@ looks and if there are leaks or issues or hacking opportunities."
 - Order: a cheap model (Qwen) to prove the mechanics, then Astra.
 - The Astra transcripts are read for leaks, shortcuts and ways to game the exam, not only for the score.
 - The lead named Astra only. A second model, needed before any exam can be said to order two models, is not chosen.
+
+## 4. The same model on v1 and v2 fed vortices
+
+"Regarding the Astra comparison of the two versions I don't think this is a priority at the moment"
+
+Not scheduled. The four fed-vortex rollouts in roadmap section 4 (workstream A, by 21 Dec) are dropped from the plan
+until the lead asks for them. The v2 fed-vortex exam pilot (`../round5/vortexexam`) continues on its own merits as an
+exam candidate; it no longer has to match the v1 suite's items.
 
 ## Earlier standing decisions that bear on the roadmap
 
