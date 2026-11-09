@@ -1,0 +1,49 @@
+{
+  "request": {
+    "cap_usd": 16.45,
+    "disk_gb": null,
+    "env": {
+      "B5_JOB_HARD_S": "7260",
+      "B5_PLAN": "vortex:3000:6250:6550",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_80GB",
+        "H100_80GB",
+        "H200_141GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r5-bias2-005",
+    "max_hours": 2.2,
+    "notes": "Resubmission of r5-bias2-002 (cancelled by the requester before it was planned, $0: its cap was below the only offer, an H200 listed at $5.55/h that bills $6.69/h; cap now 6.69 x (2.2 + 0.25) = $16.39). Same code as r5-bias2-004 on the fed-vortex world (128^2, pseudo-spectral, 250 native steps per tick, float64, jax.vmap; GPU throughput unmeasured, so the simulation times its second burn-in chunk, drops training-only trajectories if both halves would not fit in 35 min, and aborts at once unless the minimum fits in 85% of the time to the 50-min stop). Hard time bound in job.sh: B5_JOB_HARD_S = 7260 s from the start of the script (660 s below the kill time of 7920 s); training stops starting configs at 6250 s, certification at 6550 s, the world ends by 7250 s. Public parameters, no exam secret. No network or subprocess calls after setup. CPU smoke test passed: job.sh end to end at tiny size (B5_TINY=1) from a git archive of exactly these paths at the code commit e24bc7b04. Expected 1.0-1.5 h.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round5/bias2"
+    ],
+    "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the fed-vortex world (vorticity, fuel, two labels; nothing conserved); encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted, certified by the fixed family",
+    "ref": "11c116b39d1ffdb513edb5d39eff39ca16295d13",
+    "ref_source": "commit holding the request",
+    "requester": "cloud study bias2 (track 1, round 5), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round5/bias2 && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "c5bf49adc47200aa79716a7445339cf353816241",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r5-bias2-005.json",
+    "received_at": "2026-11-09T23:41:12Z",
+    "tip": "11c116b39d1ffdb513edb5d39eff39ca16295d13"
+  }
+}
