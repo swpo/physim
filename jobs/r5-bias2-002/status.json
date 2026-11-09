@@ -9,11 +9,16 @@
       "at": "2026-11-09T22:57:52Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-09T23:35:24Z",
+      "message": "cancelled before start",
+      "state": "cancelled"
     }
   ],
   "job_id": "r5-bias2-002",
-  "message": "request received",
+  "message": "cancelled before start",
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-09T22:57:52Z"
+  "state": "cancelled",
+  "updated_at": "2026-11-09T23:35:24Z"
 }
