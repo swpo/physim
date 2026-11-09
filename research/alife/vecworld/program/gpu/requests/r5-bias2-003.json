@@ -1,0 +1,39 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-bias2-003",
+  "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the phase-membrane world (4 fields), plus the gliders anchor at width 1 under the same judges; encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted",
+  "requester": "cloud study bias2 (track 1, round 5), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track1/learned_phi2",
+    "research/alife/vecworld/program/track1/vortex_world",
+    "research/alife/vecworld/program/track1/membrane_world",
+    "research/alife/vecworld/program/round5/bias2"
+  ],
+  "gpu": {
+    "types": [
+      "A100_80GB",
+      "H100_80GB",
+      "H200_141GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 2.1,
+  "cap_usd": 11.7,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round5/bias2 && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "B5_PLAN": "membrane:1200:4000:4500 gliders:600:1500:1800"
+  },
+  "notes": "Resubmission of r5-bias2-001 (cancelled by the requester before it started, $0): the two halves are now two device arrays (stacked, the 4-field data would have had 2.5e9 elements, past 2^31), and the trainer is called once per half. Two worlds in sequence (membrane, then the gliders anchor). Per world: level-0 simulation on the GPU in float64 (public parameters, no exam secret), encoder grid in float32 with data passed to jitted functions as arguments and compiled functions released between configs (round-4 lessons), certification on the pod CPUs. Deadlines inside job.sh: membrane stops starting configs 67 min and certifications 75 min after its start, gliders 25 / 30 min; worst case 1.95 h. No network or subprocess calls after setup. CPU smoke test passed: job.sh end to end at tiny size (B5_TINY=1) from a git archive of exactly these paths at the code commit 6537dbe92. Expected about 1.4 h."
+}
