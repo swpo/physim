@@ -23,8 +23,10 @@ One transducer for every encoder (no-learning and learned): "geometric slot atte
 Objectives (s5.py): 'rec' decodes the token patches from the readout (mixture over slots); 'set' / 'self' predict
 the slots' own future at h = 1, 4, 16 from 2 lags with a permutation-equivariant head ('set': pairwise slot-slot
 messages; 'self': one shared rule on the slot's own past), the error measured in the metric of the joint covariance
-of the 72 slot numbers (running estimate mixed with the batch estimate, relative ridge): redundant, constant or
-collapsed slots make that covariance singular and their noise is amplified, so they cannot lower the loss.
+of the 72 slot numbers (running estimate mixed with the batch estimate, relative ridge): a slot cannot lower the
+loss by shrinking its numbers, and the noise of a nearly redundant slot is amplified. Directions whose variance is
+below the ridge (empty, constant or exactly copied slots) drop out of the whitened error, however; the optional
+dead-direction term (closure_loss, dead=True; the '_dg' configs) counts them as unexplained.
 """
 from __future__ import annotations
 
@@ -398,7 +400,7 @@ def decode(cfg, geom, H, outs_t):
 
 # ----------------------------------------------------------------------------- objectives
 def joint_whitener(Zf, cov_state, mix_w=COV_MIX):
-    """Zf (M, K * DC) -> (mean, Cholesky factor of the mixed joint covariance, batch moments).
+    """Zf (M, K * DC) -> (mean, Cholesky factor of the mixed joint covariance, batch moments, the ridge added).
     cov_state = (sum of batch means, sum of batch second moments, weight): the running estimate (no gradient),
     mixed mix_w : 1 - mix_w with the current batch (which carries the gradient; mix_w = 1: running estimate only)."""
     q = Zf.shape[1]
@@ -410,16 +412,24 @@ def joint_whitener(Zf, cov_state, mix_w=COV_MIX):
     mix = jnp.where(has, mix_w, 0.0)
     mu = mix * s1 / wsafe + (1 - mix) * m1_b
     Cm = mix * s2 / wsafe + (1 - mix) * m2_b - jnp.outer(mu, mu)
-    Cm = Cm + (COV_EPS * jnp.trace(Cm) / q + 1e-6) * jnp.eye(q, dtype=F32)
-    return mu, jnp.linalg.cholesky(Cm), (jax.lax.stop_gradient(m1_b), jax.lax.stop_gradient(m2_b))
+    eps = COV_EPS * jnp.trace(Cm) / q + 1e-6
+    Cm = Cm + eps * jnp.eye(q, dtype=F32)
+    return mu, jnp.linalg.cholesky(Cm), (jax.lax.stop_gradient(m1_b), jax.lax.stop_gradient(m2_b)), eps
 
 
-def closure_loss(obj, H, z, cov_state, anchors, mix_w=COV_MIX):
+def closure_loss(obj, H, z, cov_state, anchors, mix_w=COV_MIX, dead=False):
     """z (B, Lw, K, DC) slots along each window; anchors: tick indices i with i - 1 >= 0 and i + 16 < Lw.
-    Returns the loss (mean squared whitened error over horizons, anchors and the 72 numbers; 1 = the mean
-    predictor), the per-horizon losses and the batch statistics for the running covariance."""
+    Returns the loss (mean squared whitened error over horizons, anchors and the 72 numbers), the per-horizon
+    losses, the batch statistics for the running covariance and the dead-direction term
+    pen = ridge * trace(C_ridged^-1) / 72: the share of the 72 whitened directions whose variance lies below the
+    ridge (an empty or constant slot adds 6 / 72, a slot that copies another one too). The whitened error of the
+    mean predictor is 1 - pen, so without the term dead directions LOWER the loss; with dead=True the term is added
+    to every horizon (the mean predictor then scores exactly 1 whatever the slots do, and a dead direction counts as
+    unexplained). The default (dead=False) is the objective of the pilot r5-slots-002."""
     B, Lw = z.shape[:2]
-    mu, Lc, stats = joint_whitener(z.reshape(B * Lw, K * DC), cov_state, mix_w)
+    mu, Lc, stats, eps = joint_whitener(z.reshape(B * Lw, K * DC), cov_state, mix_w)
+    Li = jax.scipy.linalg.solve_triangular(Lc, jnp.eye(K * DC, dtype=F32), lower=True)
+    pen = eps * jnp.sum(Li ** 2) / (K * DC)
     ia = jnp.asarray(anchors)
     pred = predict(obj, H, z[:, ia], z[:, ia - 1])                                        # (B, A, K, nh, DC)
     per_h = []
@@ -428,7 +438,9 @@ def closure_loss(obj, H, z, cov_state, anchors, mix_w=COV_MIX):
         ew = jax.scipy.linalg.solve_triangular(Lc, e.T, lower=True)
         per_h.append(jnp.mean(ew ** 2))
     per_h = jnp.stack(per_h)
-    return per_h.mean(), per_h, stats
+    if dead:
+        per_h = per_h + pen
+    return per_h.mean(), per_h, stats, pen
 
 
 def recon_loss(cfg, geom, H, outs, x, ticks):

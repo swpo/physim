@@ -262,7 +262,7 @@ def objval_trainer(obj, readout):
     def loss(H, z, f, x, cov):
         if obj == "rec":
             return rec_loss(H, z, f, x), ((jnp.zeros((q,)), jnp.zeros((q, q))), jnp.zeros((len(s5.HTR),)))
-        l, per_h, stats = SN.closure_loss(obj, H, z, cov, anchors)
+        l, per_h, stats, _ = SN.closure_loss(obj, H, z, cov, anchors)
         return l, (stats, per_h)
 
     def one_step(carry, Z, F, X):
@@ -297,9 +297,10 @@ def objval_trainer(obj, readout):
 
     def val(H, hidx, cov, Z, F, X):
         if obj == "rec":
-            return rec_loss(H, Z[N_TR:J][:, v_rec], F[N_TR:J][:, v_rec], X[hidx, N_TR:J][:, v_rec]), jnp.zeros((len(s5.HTR),))
-        l, per_h, _ = SN.closure_loss(obj, H, Z[N_TR:J], cov, v_anch, 1.0)
-        return l, per_h
+            return (rec_loss(H, Z[N_TR:J][:, v_rec], F[N_TR:J][:, v_rec], X[hidx, N_TR:J][:, v_rec]),
+                    jnp.zeros((len(s5.HTR),)), jnp.zeros(()))
+        l, per_h, _, pen = SN.closure_loss(obj, H, Z[N_TR:J], cov, v_anch, 1.0)
+        return l, per_h, pen
 
     def init(key):
         return SN.init_head(cfg, obj, key)
@@ -331,8 +332,10 @@ def objective_values(name, readout, Z, F, reps, objs=("set", "self", "rec")):
             carry, l = chunk_v(carry, Zd, Fd, Xd)
             done += CHUNK
             tr = np.asarray(l).mean(1)
-        v, vh = val_v(carry[0], hidx, carry[6], Zd, Fd, Xd)
+        v, vh, vp = val_v(carry[0], hidx, carry[6], Zd, Fd, Xd)
         res[obj] = {"val": np.asarray(v).tolist(), "val_h": np.asarray(vh).tolist(), "train_last_chunk": tr.tolist()}
+        if obj != "rec":           # the dead-direction term of this readout (snets.closure_loss); val + dead_pen = the
+            res[obj]["dead_pen"] = np.asarray(vp).tolist()        # value under the guarded objective ('_dg' configs)
     res["seconds"] = time.time() - t1
     s5.jdump(res, f"{OBV}/{name}.json")
     return res
@@ -399,7 +402,7 @@ def sup_loss(attn, Mtok):
     return jnp.mean(2.0 - O.max(-2).sum(-1) / tot - O.max(-1).sum(-1) / tot)
 
 
-def trainer(cfg, obj, warm):
+def trainer(cfg, obj, warm, dead=False):
     enc = SN.make_encoder(cfg)
     geom = enc["geom"]
     L = LWIN
@@ -418,7 +421,7 @@ def trainer(cfg, obj, warm):
             return SN.recon_loss(cfg, geom, Pall["head"], outs, x, rec_ticks), (new_st, nostat, jnp.zeros((len(s5.HTR),)))
         if obj == "sup":
             return sup_loss(outs["attn"], tracker_tokens(x, lab, cfg["P"])), (new_st, nostat, jnp.zeros((len(s5.HTR),)))
-        l, per_h, stats = SN.closure_loss(obj, Pall["head"], SN.loss_vector(cfg, outs), cov, anchors)
+        l, per_h, stats, _ = SN.closure_loss(obj, Pall["head"], SN.loss_vector(cfg, outs), cov, anchors, dead=dead)
         return l, (new_st, stats, per_h)
 
     def one_step(carry, X, MAP):
@@ -464,13 +467,13 @@ def trainer(cfg, obj, warm):
     def val(Pall, hidx, cov, X, MAP):
         x = X[hidx, N_TR:J]
         outs, _ = jax.vmap(lambda xx: SN.encode_window(enc, Pall["enc"], xx, enc["init_state"](Pall["enc"]), True))(x)
-        zh = jnp.zeros((len(s5.HTR),))
+        zh, z0 = jnp.zeros((len(s5.HTR),)), jnp.zeros(())
         if obj == "rec":
-            return SN.recon_loss(cfg, geom, Pall["head"], outs, x, v_rec), zh
+            return SN.recon_loss(cfg, geom, Pall["head"], outs, x, v_rec), zh, z0
         if obj == "sup":
-            return sup_loss(outs["attn"][:, v_sup], tracker_tokens(x[:, v_sup], MAP[hidx, N_TR:J][:, v_sup], cfg["P"])), zh
-        l, per_h, _ = SN.closure_loss(obj, Pall["head"], SN.loss_vector(cfg, outs), cov, v_anch, 1.0)
-        return l, per_h
+            return sup_loss(outs["attn"][:, v_sup], tracker_tokens(x[:, v_sup], MAP[hidx, N_TR:J][:, v_sup], cfg["P"])), zh, z0
+        l, per_h, _, pen = SN.closure_loss(obj, Pall["head"], SN.loss_vector(cfg, outs), cov, v_anch, 1.0, dead=dead)
+        return l, per_h, pen
 
     chunk_v = jax.jit(jax.vmap(chunk, in_axes=(0, None, None)))
     val_v = jax.jit(jax.vmap(val, in_axes=(0, 0, 0, None, None)))
@@ -521,10 +524,11 @@ def train_config(cid, c):
             raise RuntimeError(f"{name}: warm start needs {c['init_from']}, which was not trained")
         enc_init = BEST_ENC[c["init_from"]]
     warm = float(STEPS // 8) if enc_init is not None else 0.0
-    chunk_v, val_v, enc, max_p, L, Lw = trainer(cfg, obj, warm)
+    dead = bool(c.get("dead"))
+    chunk_v, val_v, enc, max_p, L, Lw = trainer(cfg, obj, warm, dead)
     carry = init_carry(cfg, obj, cid, enc, max_p, L, enc_init)
     nr = len(REPS)
-    v, vh = val_v(carry[0], carry[5], carry[9], Xd, MAPd)
+    v, vh, vp = val_v(carry[0], carry[5], carry[9], Xd, MAPd)
     v_init = np.asarray(v)                  # set / self: no running covariance yet, so this value is not comparable
     best = np.full(nr, np.inf)
     bestP, best_it = carry[0], [0] * nr
@@ -534,14 +538,15 @@ def train_config(cid, c):
         tc = time.time()
         carry, (l, per_h, gn, ok) = chunk_v(carry, Xd, MAPd)
         done += CHUNK
-        v, vh = val_v(carry[0], carry[5], carry[9], Xd, MAPd)
+        v, vh, vp = val_v(carry[0], carry[5], carry[9], Xd, MAPd)
         v = np.asarray(v)
         tch.append(time.time() - tc)
         l, ok = np.asarray(l), np.asarray(ok)
         bad += int((~ok).sum())
         hist.append({"step": done, "train": np.nanmean(np.where(ok, l, np.nan), 1).tolist(),
                      "train_h": np.asarray(per_h).mean(1).tolist(), "gnorm": np.asarray(gn).mean(1).tolist(),
-                     "val": v.tolist(), "val_h": np.asarray(vh).tolist(), "skipped": int((~ok).sum())})
+                     "val": v.tolist(), "val_h": np.asarray(vh).tolist(), "val_dead_pen": np.asarray(vp).tolist(),
+                     "skipped": int((~ok).sum())})
         if len(tch) <= 2 or done % (10 * CHUNK) == 0:
             log(f"{name}: step {done}, chunk {tch[-1]:.1f}s, train {np.round(hist[-1]['train'], 4).tolist()}, "
                 f"val {np.round(v, 4).tolist()}, skipped {hist[-1]['skipped']}")
@@ -569,7 +574,7 @@ def train_config(cid, c):
             dist = {"Wq_rms": float(jnp.sqrt(jnp.mean(Pe["Wq"] ** 2))), "wb_rms": float(jnp.sqrt(jnp.mean(Pe["wb"] ** 2))),
                     "wc_rms": float(jnp.sqrt(jnp.mean(Pe["wc"] ** 2)))}
         info = {"phi": phi, "config": name, "kind": "learned", "readout": c["readout"], "obj": obj, "seed": s, "fit": fh,
-                "cert": ch, "cfg": cfg, "init_from": c.get("init_from"), "warm_steps": warm, "steps": done, "batch": BATCH,
+                "cert": ch, "cfg": cfg, "init_from": c.get("init_from"), "warm_steps": warm, "dead_guard": dead, "steps": done, "batch": BATCH,
                 "L": L, "Lw": Lw, "lr": LR, "clip": CLIP,
                 "val_init": float(v_init[r]), "val_best": float(best[r]), "best_step": best_it[r],
                 "skipped_steps_all_replicas": bad, "train_seconds_config": t_train,

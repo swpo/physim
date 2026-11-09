@@ -13,7 +13,10 @@ function of the level-0 history (fixed, non-random initialisation at tick 0; mem
   sac_<obj>  slot attention with memory, CODE readout: d = 6 learned numbers per slot
 Objectives <obj>: rec (reconstruction control), set (closure: slots predict their own future, slot-slot interaction
 allowed), self (local law: one shared rule per slot, own past only). Collapse guard for set / self: the error is
-measured in the metric of the JOINT covariance of the 72 slot numbers (running estimate + relative ridge).
+measured in the metric of the JOINT covariance of the 72 slot numbers (running estimate + relative ridge). That
+metric stops slots from shrinking their numbers, but a direction whose variance falls below the ridge (an empty or
+constant slot) drops out of the loss, so emptying slots lowers it; the '_dg' configs add the dead-direction term
+(snets.closure_loss), under which a dead direction counts as unexplained and the mean predictor scores exactly 1.
 Layout (cross-fitting as round4/bias): two halves A, B; per half J_CERT trajectories with fresh-noise branches
 (test ticks, R_BR branches x TB ticks; replicate 0 = the base continuation) plus J_EXTRA training-only
 trajectories. A Phi fitted on one half is certified on the other half.
@@ -145,12 +148,16 @@ def learned_configs():
     fixed initialisation at every tick, i.e. no memory), init_from (warm start of the encoder from that config).
     obj: 'set' | 'self' | 'rec' (s5 docstring), or 'sup': SUPERVISED imitation of the tracker's segmentation (a
     capacity control, not a candidate: can this architecture express the tracker's view at all?).
-    Names: sa = geometric, sg = generic; m = moment readout, c = code readout; _ws = warm-started from sam_sup."""
+    dead: the dead-direction term is added to the closure / local-law loss (snets.closure_loss; '_dg' configs).
+    Names: sa = geometric, sg = generic; m = moment readout, c = code readout; _ws = warm-started from sam_sup;
+    _dg = with the dead-direction term. With S5_KEEP the configs run in the order S5_KEEP lists them (a warm-started
+    config must come after the config it starts from)."""
     out = []
 
-    def add(readout, obj, geo=True, P=4, stopcarry=False, mem=True, tag="", init_from=None):
+    def add(readout, obj, geo=True, P=4, stopcarry=False, mem=True, tag="", init_from=None, dead=False):
         nm = f"s{'a' if geo else 'g'}{'m' if readout == 'mom' else 'c'}_{obj}{tag}"
-        out.append(dict(name=nm, readout=readout, obj=obj, geo=geo, P=P, stopcarry=stopcarry, mem=mem, init_from=init_from))
+        out.append(dict(name=nm, readout=readout, obj=obj, geo=geo, P=P, stopcarry=stopcarry, mem=mem, init_from=init_from,
+                        dead=dead))
     add("mom", "set")
     add("mom", "rec")
     add("mom", "sup")                                     # capacity control
@@ -167,9 +174,19 @@ def learned_configs():
     add("mom", "rec", mem=False, tag="_nomem")            # ablation: no memory (slots re-initialised every tick)
     add("mom", "rec", geo=False)
     add("code", "set", geo=False)
+    add("mom", "set", tag="_dg", dead=True)               # closure / local law with the dead-direction term
+    add("mom", "self", tag="_dg", dead=True)
+    add("code", "set", tag="_dg", dead=True)
+    add("mom", "set", tag="_ws_dg", init_from="sam_sup", dead=True)
+    add("mom", "set", geo=False, tag="_dg", dead=True)
     if os.environ.get("S5_KEEP") or SIZE in ("tiny", "dev"):
         keep = os.environ.get("S5_KEEP", "sam_set_sg,sam_sup,sam_rec_ws,sgc_rec,sam_rec_nomem,sac_self").split(",")
-        out = [c for c in out if c["name"] in keep]
+        if os.environ.get("S5_KEEP_ORDER") == "1":
+            unknown = [k for k in keep if k not in [c["name"] for c in out]]
+            assert not unknown, f"S5_KEEP names unknown configs: {unknown}"
+            out = sorted((c for c in out if c["name"] in keep), key=lambda c: keep.index(c["name"]))
+        else:
+            out = [c for c in out if c["name"] in keep]
     return out
 
 
