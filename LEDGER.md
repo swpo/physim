@@ -12,6 +12,9 @@ Campaign cap $1000.00 · spent $13.76 (billed where Prime has reported it, other
 | r4-sbi-001 | infra_error | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 12.0 | 2026-11-08T00:35:23Z |
 | r4-sbi-002 | done | claude/fisim-agent-world-research-hepmlz | A100_40GB (lambdalabs) | 1.915 | 3.81 | 3.64 | 13.0 | 2026-11-08T02:32:19Z |
 | r4-wind-002 | done | claude/fisim-agent-world-research-hepmlz | H100_80GB (lambdalabs) | 0.516 | 2.21 | 1.86 | 12.0 | 2026-11-08T01:07:27Z |
+| r5-bias2-002 | received | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 12.2 |  |
+| r5-bias2-003 | received | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 11.7 |  |
+| r5-slots-001 | received | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 5.3 |  |
 | smoke-001 | done | claude/gpu-smoke-20261107 | A10_24GB (lambdalabs) | 0.123 | 0.16 | 0.05 | 1.5 | 2026-11-07T21:11:49Z |
 | vw1-agree-001 | done | claude/fisim-agent-world-research-hepmlz | A100_80GB (datacrunch) | 0.075 | 0.18 | 0.08 | 4.0 | 2026-11-07T22:00:40Z |
 | vw1-bench-001 | done | claude/fisim-agent-world-research-hepmlz | A100_80GB (datacrunch), H100_80GB (lambdalabs) | 0.536 | 2.08 | 0.19 | 10.0 | 2026-11-07T21:51:43Z |

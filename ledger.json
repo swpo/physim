@@ -73,6 +73,42 @@
       "state": "done"
     },
     {
+      "billed_usd": 0.0,
+      "cap_usd": 12.2,
+      "conservative_usd": 0.0,
+      "finished_at": null,
+      "gpu": "-",
+      "hours": 0,
+      "job_id": "r5-bias2-002",
+      "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the fed-vortex world (vorticity, fuel, two labels; nothing conserved); encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted, certified by the fixed family",
+      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
+      "state": "received"
+    },
+    {
+      "billed_usd": 0.0,
+      "cap_usd": 11.7,
+      "conservative_usd": 0.0,
+      "finished_at": null,
+      "gpu": "-",
+      "hours": 0,
+      "job_id": "r5-bias2-003",
+      "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the phase-membrane world (4 fields), plus the gliders anchor at width 1 under the same judges; encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted",
+      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
+      "state": "received"
+    },
+    {
+      "billed_usd": 0.0,
+      "cap_usd": 5.3,
+      "conservative_usd": 0.0,
+      "finished_at": null,
+      "gpu": "-",
+      "hours": 0,
+      "job_id": "r5-slots-001",
+      "purpose": "Round-5 study slots (track 1), pilot: slot encoders with memory on raw gliders level 0 (soft k-means, learned geometric slot attention with moment / code readout; closure, reconstruction, supervised capacity control), reduced size: 48 trajectories per half, 600 steps, 6 configs",
+      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
+      "state": "received"
+    },
+    {
       "billed_usd": 0.0501,
       "cap_usd": 1.5,
       "conservative_usd": 0.1585,
@@ -115,6 +151,6 @@
     "prior_spend_usd": 0.0,
     "spent_usd": 13.7566,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-09T22:56:57Z"
+    "updated_at": "2026-11-09T22:57:53Z"
   }
 }
