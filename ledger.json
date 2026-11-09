@@ -97,16 +97,28 @@
       "state": "queued"
     },
     {
-      "billed_usd": 0.0,
+      "billed_usd": null,
       "cap_usd": 5.0,
-      "conservative_usd": 0.0,
+      "conservative_usd": 0.0861,
       "finished_at": null,
-      "gpu": "-",
-      "hours": 0,
+      "gpu": "H200_141GB (nebius)",
+      "hours": 0.013,
       "job_id": "r5-slots-002",
       "purpose": "Round-5 study slots (track 1), pilot: slot encoders with memory on raw gliders level 0 (soft k-means, learned geometric slot attention with moment / code readout; closure, reconstruction, supervised capacity control), reduced size: 48 trajectories per half, 600 steps, 6 configs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
       "state": "provisioning"
+    },
+    {
+      "billed_usd": 0.0,
+      "cap_usd": 5.6,
+      "conservative_usd": 0.0,
+      "finished_at": null,
+      "gpu": "-",
+      "hours": 0,
+      "job_id": "r5-vortexexam-001",
+      "purpose": "Round-5 study vortexexam (track 2), job 1: GPU throughput of the fed-vortex world with its level-1/2 pipeline (64/96/128 px, several batch sizes), replicator-law runs over 5 selection coefficients, one-at-a-time headroom scan of 13 candidate hidden parameters",
+      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
+      "state": "received"
     },
     {
       "billed_usd": 0.0501,
@@ -149,8 +161,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 30.4566,
     "prior_spend_usd": 0.0,
-    "spent_usd": 13.7566,
+    "spent_usd": 13.8427,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-09T23:20:14Z"
+    "updated_at": "2026-11-09T23:21:01Z"
   }
 }
