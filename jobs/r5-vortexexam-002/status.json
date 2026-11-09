@@ -9,11 +9,58 @@
       "at": "2026-11-09T23:29:20Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-09T23:43:59Z",
+      "message": "accepted: H200_141GB via nebius at $5.55/h, at most $4.72",
+      "state": "queued"
     }
   ],
   "job_id": "r5-vortexexam-002",
-  "message": "request received",
+  "max_estimate_usd": 4.72,
+  "message": "accepted: H200_141GB via nebius at $5.55/h, at most $4.72",
+  "plan": {
+    "max_estimate_usd": 4.72,
+    "offers": [
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "US",
+        "data_center": "us-central1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 5.55,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      },
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "FI",
+        "data_center": "eu-north1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 5.55,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-09T23:43:59Z",
+    "window_hours": 0.85
+  },
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-09T23:29:20Z"
+  "state": "queued",
+  "updated_at": "2026-11-09T23:43:59Z"
 }
