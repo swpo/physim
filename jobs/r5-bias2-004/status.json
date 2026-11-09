@@ -9,11 +9,41 @@
       "at": "2026-11-09T23:49:13Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-09T23:59:45Z",
+      "message": "accepted: H200_141GB via nebius at $5.55/h, at most $13.04",
+      "state": "queued"
     }
   ],
   "job_id": "r5-bias2-004",
-  "message": "request received",
+  "max_estimate_usd": 13.04,
+  "message": "accepted: H200_141GB via nebius at $5.55/h, at most $13.04",
+  "plan": {
+    "max_estimate_usd": 13.04,
+    "offers": [
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "FI",
+        "data_center": "eu-north1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "nebius",
+        "rank": 2,
+        "rate_usd_hr": 5.55,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-09T23:59:45Z",
+    "window_hours": 2.35
+  },
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-09T23:49:13Z"
+  "state": "queued",
+  "updated_at": "2026-11-09T23:59:45Z"
 }
