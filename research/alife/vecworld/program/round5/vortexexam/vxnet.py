@@ -73,7 +73,7 @@ def features(S, U, anchors, theta_u=None):
     ix = {n: i for i, n in enumerate(VX.S2_NAMES)}
     cen = np.array([CONST["centre"][k] for k in HIST], np.float32)
     scl = np.array([CONST["scale"][k] for k in HIST], np.float32)
-    Z = (S[..., [ix[k] for k in HIST]] - cen) / scl                              # (E, T1, nH)
+    Z = np.clip((S[..., [ix[k] for k in HIST]] - cen) / scl, -5.0, 5.0)          # (E, T1, nH), clipped
     anchors = np.asarray(anchors, int)
     A = len(anchors)
     lag_idx = np.maximum(anchors[:, None] - np.asarray(LAGS)[None], 0)           # (A, L)
@@ -98,7 +98,7 @@ def features(S, U, anchors, theta_u=None):
             if b > a:
                 prog[:, ai, 0] = (csq[:, b] - csq[:, a]) / (2 * VX.SIGMA_A ** 2) / 200.0
                 w = Uu[:, a:b]
-                prog[:, ai, 1] = np.abs(w).max((1, 2)) / 0.05
+                prog[:, ai, 1] = np.minimum(np.abs(w).max((1, 2)) / 0.05, 5.0)
                 prog[:, ai, 2] = (act[:, b] - act[:, a]) / 4.0
                 prog[:, ai, 3] = (np.abs(w).max(1) > 0).sum(-1) / 4.0
             if a + h < T1:

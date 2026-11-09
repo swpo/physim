@@ -13,11 +13,11 @@ starts. The Lab, the agent's simulations and the exam's main runs all have this 
 
 Stages (each writes to --out as it finishes; progress in OUT/progress.txt):
   A rate       member-ticks/s at the exam size; sizes are scaled to the time budget (declared presets).
-  B truths     candidates from the box (secret rng); the first n_truth whose 2 screening episodes pass the public
-               viability rule are the truths.
-  C design     N_theta box draws x K_d episodes from the public simulator: summaries, viability -> p_v(theta).
-  D Lab        per truth n_lab episodes (secret keys); budgets = nested prefixes; ticks and nats are counted
-               with vw.nats (episode cap = n_prog x c_prog).
+  B episodes   one batch: the design (N_theta box draws x K_d episodes from the public simulator), and for every
+               truth candidate (box draws, secret rng) its n_lab Lab episodes and J_main exam main runs (secret
+               keys). Truths = the first n_truth candidates whose two screening episodes pass the public viability
+               rule. Design -> p_v(theta). Lab budgets = nested prefixes; ticks and nats counted with vw.nats
+               (episode cap = n_prog x c_prog).
   E identify   synthetic likelihood (vxsbi, from round4/sbi) on linear-regression summaries of level-1 histories
                and, separately, of level-2 histories; posterior under p_v by importance sampling.
   F exam       per truth J_main main runs; items = (run, anchor in prog_ticks): history = the run's level-1 list
@@ -71,9 +71,9 @@ os.makedirs(OUT, exist_ok=True)
 T0 = time.time()
 
 PRESETS = {
-    "full": dict(n_cand=20, n_truth=8, N_theta=384, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=12, R=8, n_C=32),
-    "mid": dict(n_cand=16, n_truth=8, N_theta=256, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=10, R=8, n_C=24),
-    "small": dict(n_cand=14, n_truth=6, N_theta=192, K_d=2, n_lab=8, budgets=[1, 2, 4, 8], J_main=8, R=6, n_C=0),
+    "full": dict(n_cand=12, n_truth=8, N_theta=384, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=12, R=8, n_C=32),
+    "mid": dict(n_cand=12, n_truth=8, N_theta=256, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=10, R=8, n_C=24),
+    "small": dict(n_cand=10, n_truth=6, N_theta=192, K_d=2, n_lab=8, budgets=[1, 2, 4, 8], J_main=8, R=6, n_C=0),
 }
 COMMON = dict(m=64, steps_sim=6000, steps_real={1: 600, 2: 800, 4: 1000, 8: 1500, 16: 2000}, steps_C=2500,
               rate_B=[256, 1024], n_post_draws=1000)
@@ -86,7 +86,7 @@ if args.smoke:
     NN.A_MIN, NN.STRIDE, NN.LAGS = 5, 1, (0, 1, 2, 4)
     NN.Cfg.EVAL_EVERY = 10
     SB.WINDOWS = ((3, 10), (10, 17), (17, 25))
-    PRESETS = {"smoke": dict(n_cand=4, n_truth=2, N_theta=10, K_d=2, n_lab=4, budgets=[1, 2, 4], J_main=3, R=3, n_C=3)}
+    PRESETS = {"smoke": dict(n_cand=3, n_truth=2, N_theta=10, K_d=2, n_lab=4, budgets=[1, 2, 4], J_main=3, R=3, n_C=3)}
     COMMON = dict(m=6, steps_sim=30, steps_real={1: 20, 2: 20, 4: 20}, steps_C=20, rate_B=[4], n_post_draws=50)
     N_SUB = 5
 else:
@@ -204,8 +204,8 @@ def stage_rate():
 
     def work(p):
         nt = p["n_truth"]
-        return (p["n_cand"] * 2 * T_EP + p["N_theta"] * p["K_d"] * T_EP + nt * p["n_lab"] * T_EP
-                + nt * p["J_main"] * (T_EP + len(PROG) * p["R"] * HB) + nt * p["n_C"] * T_EP)
+        return ((p["N_theta"] * p["K_d"] + p["n_cand"] * (p["n_lab"] + p["J_main"])) * T_EP
+                + nt * p["J_main"] * len(PROG) * p["R"] * HB + nt * p["n_C"] * T_EP)
     budget = 0.62 * left_s()                       # the rest: compiles, training, scoring, slack
     name = None
     for nm in (["smoke"] if args.smoke else ["full", "mid", "small"]):
@@ -226,7 +226,7 @@ def stage_rate():
         f"of sims at batch {BMAX}; budget {budget / 60:.0f} min")
 
 
-def run_eps(thetas, keys, seed, tag, classes=None, snaps=None, keep_last=False):
+def run_eps(thetas, keys, seed, tag, classes=None, snaps=None):
     """vxlib.run_episodes in member chunks of BMAX; outputs concatenated (snaps: lists of device chunks)."""
     th = np.atleast_2d(np.asarray(thetas, float))
     B = len(th)
@@ -234,7 +234,8 @@ def run_eps(thetas, keys, seed, tag, classes=None, snaps=None, keep_last=False):
     for s in range(0, B, BMAX):
         e = min(s + BMAX, B)
         o = VX.run_episodes(RN, Q_of(th[s:e]), keys[s:e], seed * 1000 + s, T=T_EP, prog_ticks=PROG, nats=VX.C_PROG,
-                            classes=None if classes is None else classes[s:e], snaps=snaps)
+                            classes=None if classes is None else classes[s:e], snaps=snaps,
+                            log=log if (e - s) >= 64 else None, tag=tag)
         outs.append(o)
         log(f"    {tag}: episodes {e}/{B} ({hours():.2f} h)")
     ticks(tag, B * T_EP)
@@ -246,39 +247,64 @@ def run_eps(thetas, keys, seed, tag, classes=None, snaps=None, keep_last=False):
     return out
 
 
-# ----------------------------------------------------------------------------- B truths
-def stage_truths():
-    n = CFG["n_cand"]
+def gather(snap_chunks, chunks, idx):
+    """Device states (X, M) of the global member indices idx from per-chunk snapshots."""
+    idx = np.asarray(idx)
+    Xs, Ms = [], []
+    for (s, e), (X, M) in zip(chunks, snap_chunks):
+        loc = idx[(idx >= s) & (idx < e)] - s
+        if len(loc):
+            Xs.append(VX.take(X, loc))
+            Ms.append(VX.take(M, loc))
+    X = jax.tree_util.tree_map(lambda *xs: jnp.concatenate(xs), *Xs)
+    return X, jnp.concatenate(Ms)
+
+
+# ----------------------------------------------------------------------------- B-D one batch of episodes
+def stage_episodes():
+    """Design episodes (public keys), and for every truth candidate its Lab episodes and exam main runs (secret
+    keys), all in one batch for throughput. The truths are the first n_truth candidates (draw order) whose two
+    screening episodes (Lab episodes 0 and 1) pass the public viability rule."""
+    N, K, nc, nL, J = CFG["N_theta"], CFG["K_d"], CFG["n_cand"], CFG["n_lab"], CFG["J_main"]
     rng = SEC.rng("truth-draws")
-    cand = LO + (HI - LO) * rng.random((n, D_TH))
-    scr = run_eps(np.repeat(cand, 2, 0), SEC.keys(2 * n, "screen"), 11, "screen")
-    ok = scr["viable"].reshape(n, 2).all(1)
-    truths = [c for c, v in zip(cand, ok) if v][:CFG["n_truth"]]
+    cand = LO + (HI - LO) * rng.random((nc, D_TH))
+    Ud = np.random.default_rng(4402).uniform(-1, 1, (N, D_TH))
+    th = np.concatenate([np.repeat(from_u(Ud), K, 0), np.repeat(cand, nL, 0), np.repeat(cand, J, 0)])
+    keys = jnp.concatenate([member_keys(make_key(4402, H), N * K)]
+                           + [SEC.child("lab", i).keys(nL, "episode") for i in range(nc)]
+                           + [SEC.child("exam", i).keys(J, "main") for i in range(nc)])
+    cls = np.concatenate([np.random.default_rng(4405).choice(list(VX.PROGRAM_CLASSES), size=(N * K, len(PROG))),
+                          np.random.default_rng(7700).choice(list(VX.PROGRAM_CLASSES), size=(nc * nL, len(PROG))),
+                          SEC.rng("exam-classes").choice(list(VX.PROGRAM_CLASSES), size=(nc * J, len(PROG)))])
+    allr = run_eps(th, keys, 21, "episodes", classes=cls, snaps=PROG)
+    nD, nLb = N * K, nc * nL
+    sl = {"design": slice(0, nD), "lab": slice(nD, nD + nLb), "exam": slice(nD + nLb, nD + nLb + nc * J)}
+    part = lambda nm: {k: allr[k][sl[nm]] for k in ("S", "U", "cls", "nats", "overflow", "finite", "viable")}  # noqa: E731
+    sim, lab, exm = part("design"), part("lab"), part("exam")
+    ticks("design", nD * T_EP)
+    ticks("lab_all_candidates", nLb * T_EP)
+    ticks("exam_main_all_candidates", nc * J * T_EP)
+    CLOCK.pop("episodes", None)
+    # truths
+    okc = lab["viable"].reshape(nc, nL)[:, :2].all(1)
+    sel = [i for i in range(nc) if okc[i]][:CFG["n_truth"]]
     forced = False
-    if len(truths) < CFG["n_truth"]:
-        if not args.smoke and len(truths) < 4:
-            raise RuntimeError(f"only {len(truths)} viable candidates")
+    if len(sel) < CFG["n_truth"]:
         if args.smoke:
-            truths = list(cand[:CFG["n_truth"]])
-            forced = True
+            sel, forced = list(range(CFG["n_truth"])), True
+        elif len(sel) < 4:
+            raise RuntimeError(f"only {len(sel)} viable candidates")
+    truths = cand[sel]
     jdump("truths.json", {"PILOT_NEVER_REUSE_AS_EXAM": True, "names": NAMES, "candidates": cand.tolist(),
-                          "candidate_viable": ok.tolist(), "n_viable": int(ok.sum()),
-                          "truths": [np.asarray(t).tolist() for t in truths], "forced_smoke": forced,
-                          "secret_commitment": SEC.commitment(),
-                          "screen_N_mean": scr["S"][:, VIAB["t_from"]:, 0].mean(1).reshape(n, 2).tolist(),
-                          "note": "truths drawn inside the job from the public prior (box + viability rule, first "
-                                  "viable candidates in draw order); the secret is not stored"})
-    log(f"truths {np.round(truths, 4).tolist()} ({int(ok.sum())}/{n} candidates viable)")
-    return np.array(truths)
-
-
-# ----------------------------------------------------------------------------- C design
-def stage_design():
-    N, K = CFG["N_theta"], CFG["K_d"]
-    rng = np.random.default_rng(4402)
-    Ud = rng.uniform(-1, 1, (N, D_TH))
-    th = np.repeat(from_u(Ud), K, 0)
-    sim = run_eps(th, member_keys(make_key(4402, H), N * K), 21, "design")
+                          "candidate_viable": okc.tolist(), "n_viable": int(okc.sum()), "selected": sel,
+                          "truths": truths.tolist(), "forced_smoke": forced, "secret_commitment": SEC.commitment(),
+                          "lab_viable_episodes": lab["viable"].reshape(nc, nL).sum(1).tolist(),
+                          "exam_main_viable_runs": exm["viable"].reshape(nc, J).sum(1).tolist(),
+                          "note": "candidates drawn inside the job from the public prior box (secret rng); truths = the "
+                                  "first viable candidates in draw order (screening = Lab episodes 0 and 1 under the "
+                                  "public viability rule); the secret is not stored"})
+    log(f"truths {np.round(truths, 4).tolist()} ({int(okc.sum())}/{nc} candidates viable)")
+    # design -> viability prior
     v = sim["viable"].reshape(N, K)
     pv = SB.ViabilityPrior().fit(Ud, v.all(1).astype(float))
     np.savez_compressed(os.path.join(OUT, "design.npz"), u=Ud, S=sim["S"].astype(np.float16), cls=sim["cls"],
@@ -288,19 +314,10 @@ def stage_design():
                                    "frac_theta_viable": float(v.all(1).mean())})
     log(f"design: {v.mean():.3f} of episodes viable, {v.all(1).mean():.3f} of thetas; p_v {pv.diag}")
     pdraws, pm, psd = SB.prior_draws(pv, D_TH, 20000, np.random.default_rng(4404))
-    return Ud, sim, pv, pdraws, pm, psd
-
-
-# ----------------------------------------------------------------------------- D Lab
-def stage_lab(truths):
-    nT, nL = len(truths), CFG["n_lab"]
-    th = np.repeat(truths, nL, 0)
-    keys = jnp.concatenate([SEC.child("lab", i).keys(nL, "episode") for i in range(nT)])
-    arng = np.random.default_rng(7700)                         # the agent's own program choices
-    classes = arng.choice(list(VX.PROGRAM_CLASSES), size=(nT * nL, len(PROG)))
-    lab = run_eps(th, keys, 31, "lab", classes=classes)
-    S = lab["S"].reshape(nT, nL, T_EP + 1, -1)
-    U = lab["U"].reshape(nT, nL, T_EP, -1)
+    # Lab of the truths: accounting with vw.nats
+    nT = len(sel)
+    labS = lab["S"].reshape(nc, nL, T_EP + 1, -1)[sel]
+    labU = lab["U"].reshape(nc, nL, T_EP, -1)[sel]
     cap = len(PROG) * VX.C_PROG * (1 + 1e-4)                   # programs are stored in float32
     budget = NatsBudget.isotropic(RN.m, VX.SIGMA_A, episode=cap, total=cap * nL)
     out = []
@@ -309,7 +326,7 @@ def stage_lab(truths):
         per_ep = []
         for e in range(nL):
             acct.new_episode()
-            prog = [(t, U[i, e, t].astype(float)) for t in range(T_EP) if np.abs(U[i, e, t]).max() > 0]
+            prog = [(t, labU[i, e, t].astype(float)) for t in range(T_EP) if np.abs(labU[i, e, t]).max() > 0]
             acct.check_program(prog, episode_used=0.0)
             per_ep.append(float(sum(acct.charge(u) for _, u in prog)))
         cum = np.cumsum(per_ep)
@@ -317,13 +334,19 @@ def stage_lab(truths):
                     "per_budget": {str(n): {"episodes": n, "ticks": n * T_EP, "nats": float(cum[n - 1])}
                                    for n in CFG["budgets"]},
                     "caps": {"nats_episode": cap, "ticks_per_episode": T_EP},
-                    "viable_episodes": int(lab["viable"].reshape(nT, nL)[i].sum())})
+                    "viable_episodes": int(lab["viable"].reshape(nc, nL)[sel[i]].sum())})
     jdump("lab.json", out)
-    np.savez_compressed(os.path.join(OUT, "lab.npz"), S=S.astype(np.float16), cls=lab["cls"].reshape(nT, nL, -1),
-                        nats=lab["nats"].reshape(nT, nL), viable=lab["viable"].reshape(nT, nL))
-    log(f"lab: {nT} truths x {nL} episodes; nats per episode mean {lab['nats'].mean():.0f}; "
-        f"viable {lab['viable'].mean():.3f}")
-    return S, U
+    np.savez_compressed(os.path.join(OUT, "lab.npz"), S=labS.astype(np.float16),
+                        cls=lab["cls"].reshape(nc, nL, -1)[sel], nats=lab["nats"].reshape(nc, nL)[sel],
+                        viable=lab["viable"].reshape(nc, nL)[sel])
+    # exam main runs of the truths and their snapshots
+    ex_idx = np.concatenate([nD + nLb + i * J + np.arange(J) for i in sel])
+    exam = {"S": exm["S"].reshape(nc, J, T_EP + 1, -1)[sel], "U": exm["U"].reshape(nc, J, T_EP, -1)[sel],
+            "cls": exm["cls"].reshape(nc, J, -1)[sel], "viable": exm["viable"].reshape(nc, J)[sel],
+            "snaps": {a: gather(allr["snaps"][a], allr["chunks"], ex_idx) for a in PROG}}
+    del allr
+    gc.collect()
+    return truths, Ud, sim, pv, pdraws, pm, psd, labS, labU, exam
 
 
 # ----------------------------------------------------------------------------- E identification
@@ -384,45 +407,37 @@ def stage_identify(Ud, sim, labS, truths, pv, pm, psd):
 
 
 # ----------------------------------------------------------------------------- F exam
-def stage_exam(truths):
+def stage_exam(truths, exam):
     nT, J, R = len(truths), CFG["J_main"], CFG["R"]
     th = np.repeat(truths, J, 0)
-    keys = jnp.concatenate([SEC.child("exam", i).keys(J, "main") for i in range(nT)])
-    erng = SEC.rng("exam-classes")
-    classes = erng.choice(list(VX.PROGRAM_CLASSES), size=(nT * J, len(PROG)))
-    main = run_eps(th, keys, 41, "exam_main", classes=classes, snaps=PROG)
     Bm = nT * J
+    Um = exam["U"].reshape(Bm, T_EP, -1)
     Y = np.zeros((Bm, len(PROG), R, len(HS), 2), np.float32)
     Qall = Q_of(th)
+    idx = np.repeat(np.arange(Bm), R)
+    Qr = {k: v[idx] for k, v in Qall.items()}
     for ai, a in enumerate(PROG):
-        for ci, (s, e) in enumerate(main["chunks"]):
-            X, M = main["snaps"][a][ci]
-            nb = e - s
-            idx = np.repeat(np.arange(nb), R)
-            kr = jnp.concatenate([SEC.child("exam", "rep", a).keys(R, "member", b) for b in range(s, e)])
-            kp = RN.proc_keys(kr, fresh=True)
-            Ur = np.repeat(main["U"][s:e, a:a + HB], R, 0).transpose(1, 0, 2)          # (HB, nb*R, m)
-            Qr = {k: v[s:e][idx] for k, v in Qall.items()}
-            l2 = np.zeros((nb * R, HB, 2), np.float32)
-            for s2 in range(0, nb * R, BMAX):
-                e2 = min(s2 + BMAX, nb * R)
-                ii = idx[s2:e2]
-                _, _, Yl = RN.run({k: v[s2:e2] for k, v in Qr.items()}, VX.take(X, ii), VX.take(M, ii), kp[s2:e2], a,
-                                  Ur[:, s2:e2])
-                l2[s2:e2] = VX.level2(Yl.transpose(1, 0, 2), RN.K)
-            Y[s:e, ai] = l2.reshape(nb, R, HB, 2)[:, :, [h - 1 for h in HS]]
+        X, M = exam["snaps"][a]
+        kr = jnp.concatenate([SEC.child("exam", "rep", a).keys(R, "member", b) for b in range(Bm)])
+        kp = RN.proc_keys(kr, fresh=True)
+        Ur = np.repeat(Um[:, a:a + HB], R, 0).transpose(1, 0, 2)                       # (HB, Bm*R, m)
+        l2 = np.zeros((Bm * R, HB, 2), np.float32)
+        for s2 in range(0, Bm * R, BMAX):
+            e2 = min(s2 + BMAX, Bm * R)
+            ii = idx[s2:e2]
+            _, _, Yl = RN.run({k: v[s2:e2] for k, v in Qr.items()}, VX.take(X, ii), VX.take(M, ii), kp[s2:e2], a,
+                              Ur[:, s2:e2])
+            l2[s2:e2] = VX.level2(Yl.transpose(1, 0, 2), RN.K)
+        Y[:, ai] = l2.reshape(Bm, R, HB, 2)[:, :, [h - 1 for h in HS]]
         log(f"    exam replicates at anchor {a} done ({hours():.2f} h)")
     ticks("exam_replicates", Bm * len(PROG) * R * HB)
-    main.pop("snaps")
-    S = main["S"].reshape(nT, J, T_EP + 1, -1)
-    U = main["U"].reshape(nT, J, T_EP, -1)
+    exam.pop("snaps")
     Y = Y.reshape(nT, J, len(PROG), R, len(HS), 2)
-    cls = main["cls"].reshape(nT, J, len(PROG))
-    np.savez_compressed(os.path.join(OUT, "exam.npz"), S=S.astype(np.float16), Y=Y, cls=cls,
-                        viable=main["viable"].reshape(nT, J), anchors=np.array(PROG), hs=np.array(HS))
+    np.savez_compressed(os.path.join(OUT, "exam.npz"), S=exam["S"].astype(np.float16), Y=Y, cls=exam["cls"],
+                        viable=exam["viable"], anchors=np.array(PROG), hs=np.array(HS))
     log(f"exam: {nT} truths x {J} runs x {len(PROG)} anchors = {nT * J * len(PROG)} items, R = {R}; main runs viable "
-        f"{main['viable'].mean():.3f}")
-    return S, U, Y, cls
+        f"{exam['viable'].mean():.3f}")
+    return exam["S"], exam["U"], Y
 
 
 # ----------------------------------------------------------------------------- G predictors, H report
@@ -686,25 +701,26 @@ def _report(final=False):
             gaps[f"{a} - {b}"] = paired_gap(rep, a, b)
     out["gaps_oes_item_bootstrap"] = gaps
     jdump("prediction.json", out)
-    log("  OES " + ", ".join(f"{k} {agg[k]:.3f}" for k in sorted(agg) if k not in ("oracle", "climatology", "K")))
-    for k, v in acc.items():
-        log(f"  acceptance {k}: " + ", ".join(f"{q} {v[q]:.3f}" if isinstance(v[q], float) else f"{q} {v[q]}" for q in v
-                                               if q in ("sigma", "rho", "null")))
+    show = [k for k in sorted(agg) if k.split("|")[-1] in ("P0", "C", "PM", "Cded") or k.endswith(f"@{CFG['budgets'][-1]}")]
+    log("  OES " + ", ".join(f"{k} {agg[k]:.3f}" for k in show))
+    if final:
+        for k, v in acc.items():
+            log(f"  acceptance {k}: " + ", ".join(f"{q} {v[q]:.3f}" if isinstance(v[q], float) else f"{q} {v[q]}"
+                                                   for q in v if q in ("sigma", "rho", "null")))
     return out
 
 
 def main():
     stage_rate()
-    truths = stage_truths()
-    Ud, sim, pv, pdraws, pm, psd = stage_design()
-    labS, labU = stage_lab(truths)
+    truths, Ud, sim, pv, pdraws, pm, psd, labS, labU, exam = stage_episodes()
+    CFG["n_truth"] = len(truths)
     try:
         draws = stage_identify(Ud, sim, labS, truths, pv, pm, psd)
     except Exception as exc:
         FAILED.append("identify")
         log(f"identify FAILED {exc!r}\n{traceback.format_exc()}")
         draws = None
-    exS, exU, exY, _ = stage_exam(truths)
+    exS, exU, exY = stage_exam(truths, exam)
     Xi, L2a, Yi = stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm)
     try:
         stage_cded(truths, Xi, L2a, Yi)
