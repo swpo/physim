@@ -66,7 +66,7 @@ def job_record(job):
 out = {"what": "Round-5 study 'slots' (track 1): slot encoders with memory on raw Flow-Lenia gliders states; do objects "
                "emerge from an objective plus an object-centric architecture?",
        "jobs": {j: job_record(j) for j in [JOB] + PILOTS}, "main_job": JOB, "meta": {}, "phis": {}, "configs": {},
-       "objective_values": {}, "claims": []}
+       "objective_values": {}, "claims": [], "review": None}
 for h in ("A", "B"):
     p = os.path.join(R, JOB, f"sim_{h}.json")
     if os.path.exists(p):
@@ -153,6 +153,9 @@ for nm, o in C.get("objval", {}).items():
             out["objective_values"][nm][k]["dead_pen"] = r4(np.mean(o[k]["dead_pen"]))
             out["objective_values"][nm][k]["mean_guarded"] = r4(np.mean(o[k]["val"]) + np.mean(o[k]["dead_pen"]))
     out["objective_values"][nm]["source"] = src(f"objval/{nm}.json", "*") + " (also combined.json:objval." + nm + ")"
+p = os.path.join(R, "review.json")
+if os.path.exists(p):                  # the code review of the job and what was fixed
+    out["review"] = json.load(open(p))
 p = os.path.join(R, "interpretation.json")
 if os.path.exists(p):
     for cl in json.load(open(p)):

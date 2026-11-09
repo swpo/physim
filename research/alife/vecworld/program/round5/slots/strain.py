@@ -26,7 +26,11 @@ heads are trained from scratch on the FROZEN readout of the fit half (set, self:
 joint-covariance metric; rec: the mixture decoder on the readout) and evaluated on its held-out trajectories. This
 says which view each objective prefers, separately from what gradient descent on the encoder finds.
 Device data are passed to every jitted function as ARGUMENTS and compiled functions are released between configs
-(round-4 lesson: JAX 0.12 embeds closed-over device arrays as constants).
+(round-4 lesson: JAX 0.12 embeds closed-over device arrays as constants). No device array may exceed 2^31 - 1
+elements: level 0, branches and label maps are one array per half, validation encodes one trajectory at a time,
+and fits() checks the large planned shapes (the largest go to train_done.json).
+A replica whose training is cut by the deadline before the first checkpoint is certified with the weights at the
+cut ('checkpoint': 'last'), never with its initial weights.
 """
 import gc
 import json
@@ -68,7 +72,7 @@ elif s5.SIZE == "dev":
 elif s5.SIZE == "pilot":
     STEPS, CHUNK, BATCH, ENC_J, OV_STEPS = int(os.environ.get("S5_STEPS", 800)), 100, 32, 8, int(os.environ.get("S5_OV_STEPS", 500))
 else:
-    STEPS, CHUNK, BATCH, ENC_J, OV_STEPS = int(os.environ.get("S5_STEPS", 4000)), 100, 32, 8, int(os.environ.get("S5_OV_STEPS", 1500))
+    STEPS, CHUNK, BATCH, ENC_J, OV_STEPS = int(os.environ.get("S5_STEPS", 4000)), 100, 32, 4, int(os.environ.get("S5_OV_STEPS", 1500))
 LR, CLIP, COV_DECAY = 1e-3, 1.0, 0.95
 SNAP_T = (20, 24, 28) if s5.T < 120 else (100, 104, 108)
 
@@ -106,13 +110,37 @@ BLKh = {h: np.load(f"{DATA}/BLK_{h}.npy") for h in s5.HALVES}
 BLKBh = {h: np.load(f"{DATA}/BLKB_{h}.npy") for h in s5.HALVES}
 J, T1 = Xh["A"].shape[:2]
 JC, nT, R_BR, TB = XBh["A"].shape[:4]
-Xd = jax.device_put(np.stack([np.asarray(Xh[h]) for h in s5.HALVES]))                   # (2, J, T+1, 2, 128, 128)
-XBd = jax.device_put(np.stack([np.asarray(XBh[h]).reshape((JC * nT * R_BR, TB, 2, NPIX, NPIX)) for h in s5.HALVES]))
-MAPd = jax.device_put(np.stack([np.asarray(MAPh[h]) for h in s5.HALVES]))               # (2, J, T+1, 128, 128) int8
+MAX_ELEMS = 2 ** 31 - 1                     # no device array may hold more elements (XLA GPU kernels index with int32)
+PLANNED = {}
+
+
+def fits(name, shape):
+    """Record a (planned or real) device array shape and refuse one above MAX_ELEMS."""
+    n = int(np.prod([int(x) for x in shape], dtype=np.float64))
+    PLANNED[name] = (tuple(int(x) for x in shape), n)
+    if n > MAX_ELEMS:
+        raise RuntimeError(f"{name}: shape {tuple(shape)} has {n:.3e} elements, above 2^31")
+    return n
+
+
+def to_device(name, a):
+    fits(name, a.shape)
+    return jax.device_put(a)
+
+
+# One device array per half (tuples indexed by HI[half]); a replica picks its half with hsel.
+Xd = tuple(to_device(f"X_{h}", np.asarray(Xh[h])) for h in s5.HALVES)                   # (J, T+1, 2, 128, 128) each
+XBd = tuple(to_device(f"XB_{h}", np.asarray(XBh[h]).reshape((JC * nT * R_BR, TB, 2, NPIX, NPIX))) for h in s5.HALVES)
+MAPd = tuple(to_device(f"MAP_{h}", np.asarray(MAPh[h])) for h in s5.HALVES)             # (J, T+1, 128, 128) int8 each
 jax.block_until_ready((Xd, XBd, MAPd))
 N_TR = J - s5.N_VAL
 TEST = np.asarray(s5.TEST)
-log("data on device", Xd.shape, XBd.shape, MAPd.shape, "train trajectories per half", N_TR, mem())
+log("data on device", Xd[0].shape, XBd[0].shape, MAPd[0].shape, "per half; train trajectories per half", N_TR, mem())
+
+
+def hsel(A, hidx, f):
+    """A = (half A's array, half B's array), hidx = the replica's half (0 / 1, traced), f indexes one half's array."""
+    return jnp.where(hidx == 0, f(A[0]), f(A[1]))
 
 
 def tracker_tokens(x, lab, P):
@@ -137,10 +165,10 @@ def _encoders(cfg):
     def fresh(Pm, x):
         return jax.vmap(lambda xx: SN.encode_window(enc, Pm, xx, enc["init_state"](Pm), True))(x)
 
-    def base(Pm, X, MAP, dh, js):
-        x = X[dh, js]                                                                    # (n, T+1, 2, 128, 128)
+    def base(Pm, X, MAP, js):                                                            # X, MAP: one half's arrays
+        x = X[js]                                                                        # (n, T+1, 2, 128, 128)
         outs, sts = fresh(Pm, x)
-        Mtok = tracker_tokens(x, MAP[dh, js], P)                                         # (n, T+1, N, 13)
+        Mtok = tracker_tokens(x, MAP[js], P)                                             # (n, T+1, N, 13)
         attn = outs["attn"]                                                              # (n, T+1, N, K)
         lab = jnp.argmax(attn, -1)
         hard = jax.nn.one_hot(lab, K, dtype=jnp.float32)
@@ -150,8 +178,8 @@ def _encoders(cfg):
         mm = jnp.concatenate([outs["feat"], outs["cen"]], -1)                            # (n, T+1, K, 14)
         return SN.certified(cfg, outs), mm, OS, OH, lab.astype(jnp.int8), st_test
 
-    def branch(Pm, XB, dh, idx, st):
-        x = XB[dh, idx]                                                                  # (n, TB, 2, 128, 128)
+    def branch(Pm, XB, idx, st):
+        x = XB[idx]                                                                      # (n, TB, 2, 128, 128)
 
         def one(xx, s):
             tk = enc["tokens"](Pm, xx)
@@ -162,8 +190,8 @@ def _encoders(cfg):
             return jax.lax.scan(body, s, tk)[1]
         return jax.vmap(one)(x, st)
 
-    def feats(Pm, X, dh, js):
-        outs, _ = fresh(Pm, X[dh, js])
+    def feats(Pm, X, js):
+        outs, _ = fresh(Pm, X[js])
         return SN.loss_vector(cfg, outs), outs["feat"]
 
     _JIT[key_] = (jax.jit(base), jax.jit(branch), jax.jit(feats))
@@ -175,16 +203,19 @@ def encode_cert(cfg, Pm, ch):
     fb, fbr, _ = _encoders(cfg)
     dh = HI[ch]
     nj = min(ENC_J, JC) if cfg["P"] > 1 else 1
+    Ntok = (NPIX // cfg["P"]) ** 2
+    fits(f"encode tokens P={cfg['P']}", (nj, T1, Ntok, max(SN.C, 13)))
+    fits(f"encode branch tokens P={cfg['P']}", (nj * nT * R_BR, TB, Ntok, max(SN.C, 13)))
     Zt, MM, OS, OH, LAB, ZB = [], [], [], [], [], []
     for j0 in range(0, JC, nj):
         js = np.arange(j0, min(j0 + nj, JC))
-        y, mm, os_, oh, lab, st = fb(Pm, Xd, MAPd, dh, jnp.asarray(js))
+        y, mm, os_, oh, lab, st = fb(Pm, Xd[dh], MAPd[dh], jnp.asarray(js))
         Zt.append(np.asarray(y)), MM.append(np.asarray(mm)), OS.append(np.asarray(os_)), OH.append(np.asarray(oh))
         LAB.append(np.asarray(lab))
         # branches of these trajectories: (j, i, r) flat index = (j * nT + i) * R + r; state of (j, i) repeated R times
         idx = (js[:, None, None] * nT + np.arange(nT)[None, :, None]) * R_BR + np.arange(R_BR)[None, None, :]
         stb = jax.tree_util.tree_map(lambda a: jnp.repeat(a.reshape((len(js) * nT,) + a.shape[2:]), R_BR, 0), st)
-        zb = fbr(Pm, XBd, dh, jnp.asarray(idx.ravel()), stb)
+        zb = fbr(Pm, XBd[dh], jnp.asarray(idx.ravel()), stb)
         ZB.append(np.asarray(zb).reshape(len(js), nT, R_BR, TB, -1))
     cat = lambda a: np.concatenate(a, 0)
     return cat(Zt), cat(ZB), cat(MM), cat(OS), cat(OH), cat(LAB)
@@ -197,7 +228,7 @@ def encode_fit(cfg, Pm, h):
     nj = min(ENC_J, J) if cfg["P"] > 1 else 1
     Z, F = [], []
     for j0 in range(0, J, nj):
-        z, f = ff(Pm, Xd, HI[h], jnp.asarray(np.arange(j0, min(j0 + nj, J))))
+        z, f = ff(Pm, Xd[HI[h]], jnp.asarray(np.arange(j0, min(j0 + nj, J))))
         Z.append(np.asarray(z)), F.append(np.asarray(f))
     return np.concatenate(Z), np.concatenate(F)
 
@@ -272,7 +303,7 @@ def objval_trainer(obj, readout):
         t = jax.random.randint(kt, (BATCH,), 0, T1 - Lw + 1)
         ar = t[:, None] + (rt[None, :] if obj == "rec" else jnp.arange(Lw)[None, :])
         z, f = Z[j[:, None], ar], F[j[:, None], ar]
-        x = X[hidx, j[:, None], ar] if obj == "rec" else jnp.zeros((1, 1, 2, NPIX, NPIX))
+        x = hsel(X, hidx, lambda a: a[j[:, None], ar]) if obj == "rec" else jnp.zeros((1, 1, 2, NPIX, NPIX))
         (l, (stats, per_h)), g = jax.value_and_grad(loss, has_aux=True)(H, z, f, x, cov)
         gn = jnp.sqrt(sum(jnp.sum(a * a) for a in jax.tree_util.tree_leaves(g)))
         ok = jnp.isfinite(l) & jnp.isfinite(gn)
@@ -297,7 +328,7 @@ def objval_trainer(obj, readout):
 
     def val(H, hidx, cov, Z, F, X):
         if obj == "rec":
-            return (rec_loss(H, Z[N_TR:J][:, v_rec], F[N_TR:J][:, v_rec], X[hidx, N_TR:J][:, v_rec]),
+            return (rec_loss(H, Z[N_TR:J][:, v_rec], F[N_TR:J][:, v_rec], hsel(X, hidx, lambda a: a[N_TR:J][:, v_rec])),
                     jnp.zeros((len(s5.HTR),)), jnp.zeros(()))
         l, per_h, _, pen = SN.closure_loss(obj, H, Z[N_TR:J], cov, v_anch, 1.0)
         return l, per_h, pen
@@ -430,8 +461,8 @@ def trainer(cfg, obj, warm, dead=False):
         idx = jax.random.permutation(kp, N_TR)[:BATCH]
         p0 = ptr[idx]
         ar = p0[:, None] + jnp.arange(Lw)[None, :]
-        x = X[hidx, idx[:, None], ar]
-        lab = MAP[hidx, idx[:, None], ar] if obj == "sup" else jnp.zeros((1,), jnp.int8)
+        x = hsel(X, hidx, lambda a: a[idx[:, None], ar])
+        lab = hsel(MAP, hidx, lambda a: a[idx[:, None], ar]) if obj == "sup" else jnp.zeros((1,), jnp.int8)
         st = jax.tree_util.tree_map(lambda a: a[idx], memst)
         (l, (new_st, stats, per_h)), g = jax.value_and_grad(loss, has_aux=True)(Pall, x, lab, st, fresh[idx], cov)
         gn = jnp.sqrt(sum(jnp.sum(a * a) for a in jax.tree_util.tree_leaves(g)))
@@ -465,16 +496,28 @@ def trainer(cfg, obj, warm, dead=False):
     v_sup = jnp.asarray(tuple(range(4, T1, 4)))
 
     def val(Pall, hidx, cov, X, MAP):
-        x = X[hidx, N_TR:J]
-        outs, _ = jax.vmap(lambda xx: SN.encode_window(enc, Pall["enc"], xx, enc["init_state"](Pall["enc"]), True))(x)
+        x = hsel(X, hidx, lambda a: a[N_TR:J])
+        # one validation trajectory at a time (lax.map): no token array of N_VAL x (T + 1) frames x replicas
+        outs = jax.lax.map(lambda xx: SN.encode_window(enc, Pall["enc"], xx, enc["init_state"](Pall["enc"]), True)[0], x)
         zh, z0 = jnp.zeros((len(s5.HTR),)), jnp.zeros(())
         if obj == "rec":
             return SN.recon_loss(cfg, geom, Pall["head"], outs, x, v_rec), zh, z0
         if obj == "sup":
-            return sup_loss(outs["attn"][:, v_sup], tracker_tokens(x[:, v_sup], MAP[hidx, N_TR:J][:, v_sup], cfg["P"])), zh, z0
+            lab = hsel(MAP, hidx, lambda a: a[N_TR:J][:, v_sup])
+            return sup_loss(outs["attn"][:, v_sup], tracker_tokens(x[:, v_sup], lab, cfg["P"])), zh, z0
         l, per_h, _, pen = SN.closure_loss(obj, Pall["head"], SN.loss_vector(cfg, outs), cov, v_anch, 1.0, dead=dead)
         return l, per_h, pen
 
+    nr, Ntok = len(REPS), geom["N"]
+    fits(f"train tokens {obj}", (nr, BATCH, Lw, Ntok, max(SN.C, 2 * cfg["P"] ** 2)))
+    fits(f"val tokens {obj}", (nr, T1, Ntok, max(SN.C, 2 * cfg["P"] ** 2)))
+    fits(f"val attention {obj}", (nr, J - N_TR, T1, Ntok, K))
+    if obj == "rec":
+        fits("train decoder hidden", (nr, BATCH * len(rec_ticks), K, Ntok, SN.HID))
+        fits("val decoder hidden", (nr, (J - N_TR) * len(v_rec), K, Ntok, SN.HID))
+    if obj == "sup":
+        fits("train tracker tokens", (nr, BATCH, Lw, Ntok, K + 1))
+        fits("val tracker tokens", (nr, J - N_TR, int(v_sup.shape[0]), Ntok, K + 1))
     chunk_v = jax.jit(jax.vmap(chunk, in_axes=(0, None, None)))
     val_v = jax.jit(jax.vmap(val, in_axes=(0, 0, 0, None, None)))
     return chunk_v, val_v, enc, max_p, L, Lw
@@ -560,10 +603,29 @@ def train_config(cid, c):
             log(f"{name}: training deadline reached at step {done}")
             break
     t_train = time.time() - t1
+    # A replica without a checkpoint (training cut before STEPS // 4, or no finite validation value after it) must
+    # not be certified with its INITIAL weights: it takes the weights at the cut if their validation value is
+    # finite ('last'), otherwise it is dropped ('none').
+    cut = done < STEPS
+    ckpt = ["best"] * nr
+    for r in range(nr):
+        if best_it[r] == 0:
+            ckpt[r] = "last" if np.isfinite(v[r]) else "none"
+            if ckpt[r] == "last":
+                best[r], best_it[r] = float(v[r]), done
+    lm = jnp.asarray([c == "last" for c in ckpt])
+    bestP = jax.tree_util.tree_map(lambda b, p: jnp.where(lm.reshape((-1,) + (1,) * (p.ndim - 1)), p, b), bestP, carry[0])
     del carry
-    BEST_ENC[name] = bestP["enc"]
-    infos, labs, ZF = [], {}, []
+    if any(c != "best" for c in ckpt):
+        log(f"{name}: checkpoints {ckpt} (cut by the deadline: {cut})")
+    if "none" not in ckpt:
+        BEST_ENC[name] = bestP["enc"]
+    infos, labs, ZF, reps_ok = [], {}, [], []
     for r, (fh, s) in enumerate(REPS):
+        if ckpt[r] == "none":
+            log(f"{name}_s{s} (fit {fh}): no finite validation value, not certified")
+            continue
+        reps_ok.append((fh, s))
         Pe = pick(bestP["enc"], r)
         ch = OTHER[fh]
         Zt, ZB, MM, OS, OH, lab = encode_cert(cfg, Pe, ch)
@@ -577,6 +639,7 @@ def train_config(cid, c):
                 "cert": ch, "cfg": cfg, "init_from": c.get("init_from"), "warm_steps": warm, "dead_guard": dead, "steps": done, "batch": BATCH,
                 "L": L, "Lw": Lw, "lr": LR, "clip": CLIP,
                 "val_init": float(v_init[r]), "val_best": float(best[r]), "best_step": best_it[r],
+                "checkpoint": ckpt[r], "cut_by_deadline": bool(cut), "steps_planned": STEPS,
                 "skipped_steps_all_replicas": bad, "train_seconds_config": t_train,
                 "chunk_seconds": {"first_incl_compile": tch[0], "rest_mean": float(np.mean(tch[1:])) if len(tch) > 1 else None},
                 "moved_from_kmeans": dist,
@@ -593,12 +656,14 @@ def train_config(cid, c):
             continue
         np.savez_compressed(f"{PAIR}/{name}_s0__vs_{name}_s1__cert{OTHER[fh]}.npz",
                             C=pair_tables(labs[(fh, 0)], labs[(fh, 1)], OTHER[fh], cfg["P"]))
-    s5.jdump({"infos": infos, "hist": hist}, f"{TRN}/{name}.json")
+    s5.jdump({"infos": infos, "hist": hist, "checkpoints": ckpt, "cut_by_deadline": bool(cut)}, f"{TRN}/{name}.json")
     log(f"{name}: steps {done}, val {np.round(v_init, 4).tolist()} -> {np.round(best, 4).tolist()} (best at {best_it}), "
         f"skipped {bad}, train {t_train:.1f}s (chunk {np.mean(tch[1:]) if len(tch) > 1 else tch[0]:.1f}s), "
         f"total {time.time() - t1:.1f}s, {mem()}")
     release()
-    res = objective_values(name, c["readout"], np.stack([z for z, _ in ZF]), np.stack([f for _, f in ZF]), REPS)
+    if "none" in ckpt:
+        raise RuntimeError(f"{name}: replicas without a finite validation value: {ckpt}")
+    res = objective_values(name, c["readout"], np.stack([z for z, _ in ZF]), np.stack([f for _, f in ZF]), reps_ok)
     log(f"objective values {name}: {ov_text(res)} ({res['seconds']:.1f}s)")
 
 
@@ -620,7 +685,10 @@ def main():
             del exc
         release()
     s5.jdump({"skipped_by_deadline": skipped, "n_configs": len(todo), "seconds": time.time() - T0, "steps": STEPS,
-              "ov_steps": OV_STEPS, "batch": BATCH,
+              "ov_steps": OV_STEPS, "batch": BATCH, "enc_j": ENC_J,
+              "largest_device_arrays": {k: {"shape": list(v[0]), "elements": v[1]} for k, v in
+                                        sorted(PLANNED.items(), key=lambda kv: -kv[1][1])[:8]},
+              "max_elements_allowed": MAX_ELEMS,
               "platform": {"backend": jax.default_backend(), "devices": [str(d) for d in jax.devices()],
                            "jax": jax.__version__, "x64": bool(jax.config.jax_enable_x64)}},
              os.path.join(OUT, "train_done.json"))

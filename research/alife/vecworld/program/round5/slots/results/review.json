@@ -1,0 +1,29 @@
+{
+ "source": "code review by the Mac runner, relayed by the coordinator on 9 Nov 2026 (after r5-slots-003 was requested; the pilot r5-slots-003 runs the code before these fixes, pinned by ref e5d146ef3)",
+ "items": [
+  {"id": "1", "severity": "blocker (full job only)",
+   "finding": "validation encoded N_VAL x 301 ticks x 4 replicas in one call; the 3 x 3 token concat built f32[4, 8, 301, 32, 32, 288] = 2.84e9 elements, above 2^31",
+   "status": "fixed",
+   "fix": "snets.make_encoder.tokens: the 3 x 3 neighbourhood is nine block matmuls (same weights, same map; max abs difference 1.2e-6 against the concat form on CPU), so no (frames, tokens, 288) array exists; strain.trainer.val encodes one validation trajectory at a time (lax.map); level 0, branches and label maps are one device array per half (largest 9.5e8 elements at full size, before 1.89e9 for the stacked pair); strain.fits() records every large planned shape and refuses any above 2^31 - 1 elements; the largest are written to train_done.json (largest_device_arrays)"},
+  {"id": "2a", "severity": "minor",
+   "finding": "an encoder cut by the deadline before STEPS // 4 was certified with its initial weights",
+   "status": "fixed",
+   "fix": "strain.train_config: a replica without a checkpoint takes the weights at the cut if their validation value is finite (checkpoint 'last'), otherwise it is not certified (checkpoint 'none', the config is reported as failed); 'checkpoint', 'cut_by_deadline' and 'steps_planned' are stored with every Phi (CPU test: a cut at step 10 of 80 gives 'last' for all four replicas)"},
+  {"id": "2b", "severity": "minor",
+   "finding": "the certification workers' own time limit could exceed the runner's kill time",
+   "status": "fixed",
+   "fix": "job.sh: the workers are killed at S5_HARD_S seconds from the start of the script (default S5_CERT_S + 300, before S5_CERT_S + 900); the request sets it below max_hours with margin for pooling and collection; killed workers and unclaimed items are counted in progress.txt and cert_incomplete.json"},
+  {"id": "2c", "severity": "minor",
+   "finding": "DONE marker, getmtime race, GPU-backend check in the job script",
+   "status": "fixed",
+   "fix": "job.sh writes the DONE marker itself after strain.py exits, whatever its exit code (a crash at import no longer leaves the workers waiting); scert.claim tolerates a marker renamed by another worker between the listing and getmtime; job.sh refuses to run when jax.default_backend() is not 'gpu' unless S5_ALLOW_CPU=1"},
+  {"id": "2d", "severity": "minor",
+   "finding": "'stopcarry' was a no-op (the state entering a window is already detached)",
+   "status": "fixed",
+   "fix": "snets.make_encoder.tick_carry: with stopcarry the carried memory enters EVERY tick without gradient (no backpropagation through time); checked on CPU: same values, different gradients (relative squared difference 0.16)"},
+  {"id": "3", "severity": "prices",
+   "finding": "the nebius H200 listed at $5.55/h bills $6.69/h",
+   "status": "applied",
+   "fix": "caps of r5-slots-003 and later requests are sized as 6.69 x (max_hours + 0.25)"}
+ ]
+}

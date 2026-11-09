@@ -170,7 +170,7 @@ def learned_configs():
     add("mom", "set", geo=False)                          # closure without the k-means prior
     add("code", "self")
     add("mom", "self", tag="_ws", init_from="sam_sup")
-    add("mom", "set", stopcarry=True, tag="_sg")          # robustness: truncated gradient through the memory
+    add("mom", "set", stopcarry=True, tag="_sg")          # no backpropagation through the carried memory
     add("mom", "rec", mem=False, tag="_nomem")            # ablation: no memory (slots re-initialised every tick)
     add("mom", "rec", geo=False)
     add("code", "set", geo=False)

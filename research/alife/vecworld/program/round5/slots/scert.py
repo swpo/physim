@@ -511,9 +511,14 @@ def process(path):
 
 def claim():
     """Oldest .ready file, references first; atomic rename to .claimed.<WID>."""
-    rd = glob.glob(f"{LAT}/*.npz.ready")
     ref = lambda p: 0 if os.path.basename(p).startswith(("trk", "hand_", "km_", "grid")) else 1
-    rd.sort(key=lambda p: (ref(p), os.path.getmtime(p) if os.path.exists(p) else 0))
+    rd = []
+    for p in glob.glob(f"{LAT}/*.npz.ready"):
+        try:                                   # another worker may rename the marker between the listing and here
+            rd.append((ref(p), os.path.getmtime(p), p))
+        except OSError:
+            continue
+    rd = [p for _, _, p in sorted(rd)]
     for r in rd:
         tgt = r[:-6] + f".claimed.{WID}"
         try:

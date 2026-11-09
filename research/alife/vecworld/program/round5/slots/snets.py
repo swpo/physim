@@ -186,8 +186,13 @@ def make_encoder(cfg):
         if learned:
             f = gelu(patches(x, P) @ Pm["W1"] + Pm["b1"])                  # (F, N, C)
             fg = f.reshape(-1, G, G, C)
-            nb = jnp.concatenate([jnp.roll(fg, (-dy, -dx), (1, 2)) for dy in (-1, 0, 1) for dx in (-1, 0, 1)], -1)
-            f = f + gelu(nb.reshape(-1, N, 9 * C) @ Pm["W2"] + Pm["b2"])
+            # the 3 x 3 token neighbourhood as nine block matmuls (W2 = nine C x C blocks, the same map as one
+            # matmul on the concatenated neighbourhood, without the (F, N, 9 C) array)
+            W2 = Pm["W2"].reshape(9, C, C)
+            acc = Pm["b2"]
+            for i, (dy, dx) in enumerate((dy, dx) for dy in (-1, 0, 1) for dx in (-1, 0, 1)):
+                acc = acc + jnp.roll(fg, (-dy, -dx), (1, 2)) @ W2[i]
+            f = f + gelu(acc.reshape(-1, N, C))
             f = lnorm(f + code @ Pm["Wp"])
             out["k"], out["v"] = f @ Pm["Wk"], f @ Pm["Wv"]
         return out
@@ -295,9 +300,13 @@ def make_encoder(cfg):
         return jax.tree_util.tree_map(sel, st_f, st_c), jax.tree_util.tree_map(sel, out_f, out_c)
 
     def tick_carry(Pm, st, tk):
-        """A later tick of a running transducer (no fresh-start branch; used when encoding)."""
+        """A later tick of a running transducer (no fresh-start branch). With 'stopcarry' the carried memory enters
+        every tick without gradient: each tick's loss terms train that tick's own computation only (no
+        backpropagation through time)."""
         if not cfg["mem"]:
             return run_tick(Pm, init_state(Pm), tk, cfg["n_init"] + cfg["n_it"], True)
+        if cfg["stopcarry"]:
+            st = jax.tree_util.tree_map(jax.lax.stop_gradient, st)
         return run_tick(Pm, st, tk, cfg["n_it"], False)
 
     def tick_fresh(Pm, tk):
