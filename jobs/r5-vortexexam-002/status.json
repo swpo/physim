@@ -1,9 +1,28 @@
 {
+  "billing_window_hours": 1.027,
+  "bundle": {
+    "bundle_sha256": "4ab6d600bd8cc626ba616ea7e6e4df96b13f1560f51a218aba01eaceb39a3ee5",
+    "files": {
+      "job.sh": "b4e75172274a958e2caaa0ecf674137feaf88976271028de91554994ef17e3c3",
+      "request.json": "c1be5ceb5079821f0a8c7a46ecaf1a51af00a86db61952dfaa7d12ae2103f935",
+      "run.sh": "494a47f8e306cf0786edf721fdae58f265f3f231b51efd9ef8fef77b6b30bf0d",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "fc724e5ce69c8c6440dababcdaad03a95a7600f3956825ed0ef0bf563c72c0f4"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1/vw",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/round5/vortexexam"
+    ],
+    "ref": "a38a266a6b00093aeade06f04098a41bf795a38e",
+    "src_bytes": 353663
+  },
   "cap_usd": 5.7,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-09T23:29:20Z",
@@ -14,11 +33,52 @@
       "at": "2026-11-09T23:43:59Z",
       "message": "accepted: H200_141GB via nebius at $5.55/h, at most $4.72",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-09T23:44:05Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-vortexexam-002",
   "max_estimate_usd": 4.72,
-  "message": "accepted: H200_141GB via nebius at $5.55/h, at most $4.72",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "US",
+      "data_center": "us-central1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 3,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    },
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "FI",
+      "data_center": "eu-north1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 3,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    }
+  ],
   "plan": {
     "max_estimate_usd": 4.72,
     "offers": [
@@ -61,6 +121,6 @@
     "window_hours": 0.85
   },
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-09T23:43:59Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-09T23:44:05Z"
 }
