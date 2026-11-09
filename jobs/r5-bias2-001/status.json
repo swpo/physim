@@ -9,11 +9,52 @@
       "at": "2026-11-09T22:29:46Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-09T22:56:57Z",
+      "message": "cheapest matching offer H200_141GB at $5.55/h needs $13.88 for max_hours+0.25h margin, over cap $12.50",
+      "state": "rejected"
     }
   ],
   "job_id": "r5-bias2-001",
-  "message": "request received",
+  "message": "cheapest matching offer H200_141GB at $5.55/h needs $13.88 for max_hours+0.25h margin, over cap $12.50",
+  "offers_seen": [
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "US",
+      "data_center": "us-central1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 2,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    },
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "FI",
+      "data_center": "eu-north1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 2,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    }
+  ],
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-09T22:29:46Z"
+  "state": "rejected",
+  "updated_at": "2026-11-09T22:56:57Z"
 }
