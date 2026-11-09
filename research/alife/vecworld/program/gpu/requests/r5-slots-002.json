@@ -1,0 +1,42 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-slots-002",
+  "purpose": "Round-5 study slots (track 1), pilot: slot encoders with memory on raw gliders level 0 (soft k-means, learned geometric slot attention with moment / code readout; closure, reconstruction, supervised capacity control), reduced size: 48 trajectories per half, 600 steps, 6 configs",
+  "requester": "cloud study slots (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track1/learned_phi2",
+    "research/alife/vecworld/program/round5/slots"
+  ],
+  "gpu": {
+    "types": [
+      "A100_80GB",
+      "H100_80GB",
+      "H200_141GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 0.65,
+  "cap_usd": 5.0,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round5/slots && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "S5_SIZE": "pilot",
+    "S5_STEPS": "600",
+    "S5_OV_STEPS": "300",
+    "S5_KEEP": "sam_set,sam_rec,sam_sup,sam_set_ws,sac_set,sgc_rec",
+    "S5_TRAIN_S": "1140",
+    "S5_CERT_S": "1560"
+  },
+  "notes": "Replaces r5-slots-001 (cancelled before it started: its cap of $5.30 could not cover the only offer in stock, H200 at $5.55/h, for max_hours + 0.25 h). Same code and sizes; max_hours 0.65 and cap $5.00 cover H200 (5.55 x 0.9 = $5.00). Pilot before the full job (study cap $20 in total). Checks GPU memory, step time, training stability and the whole pipeline (float64 simulation with the tracker re-run for label maps, float32 slot encoders trained 4 replicas at once by truncated BPTT with persistent slot memory, CPU certification workers) at reduced size. Device data are passed to jitted functions as arguments; compiled functions are released between configs. No network or subprocess use outside setup. Training stops starting configs 19 min after job start, certification 26 min. CPU test passed: job.sh end to end at tiny size from a git archive of exactly these paths."
+}
