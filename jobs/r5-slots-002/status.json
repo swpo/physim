@@ -9,11 +9,17 @@
       "at": "2026-11-09T23:03:40Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-09T23:19:34Z",
+      "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
+      "state": "queued"
     }
   ],
   "job_id": "r5-slots-002",
-  "message": "request received",
+  "max_estimate_usd": null,
+  "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-09T23:03:40Z"
+  "state": "queued",
+  "updated_at": "2026-11-09T23:19:34Z"
 }

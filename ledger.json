@@ -106,7 +106,7 @@
       "job_id": "r5-slots-002",
       "purpose": "Round-5 study slots (track 1), pilot: slot encoders with memory on raw gliders level 0 (soft k-means, learned geometric slot attention with moment / code readout; closure, reconstruction, supervised capacity control), reduced size: 48 trajectories per half, 600 steps, 6 configs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "received"
+      "state": "queued"
     },
     {
       "billed_usd": 0.0501,
@@ -147,10 +147,10 @@
   ],
   "summary": {
     "auto_job_cap_usd": 25.0,
-    "committed_usd": 25.4566,
+    "committed_usd": 30.4566,
     "prior_spend_usd": 0.0,
     "spent_usd": 13.7566,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-09T23:19:30Z"
+    "updated_at": "2026-11-09T23:19:35Z"
   }
 }
