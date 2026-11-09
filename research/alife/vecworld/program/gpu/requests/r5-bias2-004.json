@@ -1,0 +1,40 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-bias2-004",
+  "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the phase-membrane world (4 fields), plus the gliders anchor at width 1 under the same judges; encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted",
+  "requester": "cloud study bias2 (track 1, round 5), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track1/learned_phi2",
+    "research/alife/vecworld/program/track1/vortex_world",
+    "research/alife/vecworld/program/track1/membrane_world",
+    "research/alife/vecworld/program/round5/bias2"
+  ],
+  "gpu": {
+    "types": [
+      "A100_80GB",
+      "H100_80GB",
+      "H200_141GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 2.1,
+  "cap_usd": 15.8,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round5/bias2 && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "B5_PLAN": "membrane:900:3600:3900 gliders:600:1400:1650",
+    "B5_JOB_HARD_S": "6900"
+  },
+  "notes": "Resubmission of r5-bias2-003 (cancelled by the requester while queued, $0: its cap was below the only offer, an H200 listed at $5.55/h that bills $6.69/h; cap now 6.69 x (2.1 + 0.25) = $15.72). Same study code plus the runner's review points: job.sh has a hard time bound (B5_JOB_HARD_S = 6900 s from the start of the script, 660 s below the kill time of 7560 s for setup and collection; every world's deadlines are clipped to it and every stage runs under timeout, so a world ends at most 700 s after its certification deadline: membrane by 4600 s, gliders by 6900 s), touches lat/DONE after ctrain whatever its exit status, and exits at once if the JAX backend is not gpu; csim.py aborts early unless the projected simulation fits in 85% of the time left; ccert.py tolerates the rename race in claim(). Two worlds in sequence (membrane, then the gliders anchor); level-0 simulation on the GPU in float64 (public parameters, no exam secret), encoder grid in float32 with data passed to jitted functions as arguments, certification on the pod CPUs. No network or subprocess calls after setup. CPU smoke test passed: job.sh end to end at tiny size (B5_TINY=1) from a git archive of exactly these paths at the code commit e24bc7b04, including the clipped-deadline and skipped-world paths. Expected about 1.2 h."
+}
