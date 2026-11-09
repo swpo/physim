@@ -1,0 +1,48 @@
+{
+  "request": {
+    "cap_usd": 12.5,
+    "disk_gb": null,
+    "env": {
+      "B5_PLAN": "membrane:1200:4200:4800 gliders:600:1500:1800",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_80GB",
+        "H100_80GB",
+        "H200_141GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r5-bias2-001",
+    "max_hours": 2.25,
+    "notes": "Two worlds in sequence (membrane, then the gliders anchor). Per world: level-0 simulation on the GPU in float64 (public parameters, no exam secret), encoder grid in float32 with data passed to jitted functions as arguments and compiled functions released between configs (round-4 lessons), certification on the pod CPUs. Deadlines inside job.sh: membrane stops starting configs 70 min and certifications 80 min after its start, gliders 25 / 30 min; worst case 2.0 h. No network or subprocess calls after setup. CPU smoke test passed: job.sh end to end at tiny size (B5_TINY=1) from a git archive of exactly these paths at the code commit ce1cb6925. Expected about 1.4 h.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round5/bias2"
+    ],
+    "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the phase-membrane world (4 fields), plus the gliders anchor at width 1 under the same judges; encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted",
+    "ref": "bc207c2930e42ec3ae64a9a5b5b362242b2d4944",
+    "ref_source": "commit holding the request",
+    "requester": "cloud study bias2 (track 1, round 5), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round5/bias2 && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "484038aac0a4c9be7e0e25536c7737965a81278e",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r5-bias2-001.json",
+    "received_at": "2026-11-09T22:29:46Z",
+    "tip": "bc207c2930e42ec3ae64a9a5b5b362242b2d4944"
+  }
+}
