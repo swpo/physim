@@ -1,0 +1,35 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-vortexexam-003",
+  "purpose": "Round-5 study vortexexam (track 2), job 2: the fed-vortex exam pilot at 128 px with 4 hidden parameters: design simulations, Lab episodes, exam items with replicate truths, identification, reference policies K, D(N), P0, S(N), C, O with sigma and rho; then the headroom scan with compact outputs",
+  "requester": "cloud study vortexexam (track 2), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1/vw",
+    "research/alife/vecworld/program/track1/vortex_world",
+    "research/alife/vecworld/program/round5/vortexexam",
+    "research/alife/vecworld/program/round5/agentenv/evaluator"
+  ],
+  "gpu": {
+    "types": [
+      "A100_40GB",
+      "A100_80GB",
+      "H100_80GB",
+      "H200_141GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 2.7,
+  "cap_usd": 19.8,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/program/round5/vortexexam && { rc=0; rc2=0; python -B job2.py --out $OUT --max-hours 2.2 || rc=$?; python -B job1.py --scan-only --H 128 --rate 300 --rate-json $OUT/info.json --bmax 1024 --max-hours 0.25 --out $OUT/scan || rc2=$?; echo \"job2 exit $rc, scan exit $rc2\" | tee -a $OUT/progress.txt; [ $rc -eq 0 ] && [ $rc2 -eq 0 ]; }",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "notes": "Job 2 of the study (job 1 was r5-vortexexam-002). The review of job 1 is acted on: (1) job2.py asserts jax.default_backend() == 'gpu' unless --smoke, and so does job1.py --scan-only; (2) every output file is written atomically and kept under 20 MB (design summaries in parts of 512 episodes, float16; programs stored sparsely), job 2 audits its total (limit 40 MB; expected about 20 MB) and the scan adds about 6 MB with the level-1 rasters scored on the pod instead of saved; (3) turnover is carried across chunk borders. PILOT ONLY, never reusable as an exam: the hidden parameters of the truths are drawn inside the job from the public prior and written to the outputs; the 256-bit world secret comes from os.urandom and is never written (only its commitment). Sizes follow the measured throughput (presets xl/full/mid/small; xl = 768 design points x 2 episodes, 16 truth candidates, 16 Lab episodes and 16 exam runs each, 12 replicate truths per item, about 1.6 million member-ticks, about 1.1 h of simulation at the 444 member-ticks/s measured on the H200); stages stop inside --max-hours 2.2, then the scan takes at most 0.25 h. A100 40 GB is enough (6 GB at batch 1024 in job 1). Scoring is vw.scoring; sigma and rho come from round5/agentenv/evaluator/acceptance.py (shared code, numpy only), which is why that folder is in the paths. No network or subprocess use outside setup. CPU tests passed from a git archive of exactly these paths: job2.py --smoke end to end (exit 0), job1.py --scan-only --smoke (exit 0), and job2.py without --smoke stops at the GPU assert. Cap: $6.69/h x (2.7 + 0.25) h = $19.74; with job 1 ($2.29 billed) the study stays under its $25."
+}
