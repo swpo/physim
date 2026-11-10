@@ -50,6 +50,14 @@
   "a_cleanup_removed_something_after_every_item": true,
   "a_box_clean_after_every_item": true,
   "a_control_without_cleanup_finds_them": true,
+  "a2_default_is_one_box_per_item": true,
+  "a2_box_no_item_saw_the_file_read_earlier": true,
+  "a2_box_no_item_saw_a_directory_touched_earlier": true,
+  "a2_box_process_id_counter_did_not_carry": true,
+  "a2_box_loopback_counter_did_not_carry": true,
+  "a2_shared_cleanup_still_removes_files_processes_and_segments": true,
+  "a2_shared_box_carries_all_four_channels": true,
+  "a2_shared_rollout_is_marked_in_its_trace": true,
   "b_canary_was_in_the_worker_environment": true,
   "b_lab_process_dropped_it_after_loading": true,
   "b_no_canary_in_agent_box": true,
@@ -68,6 +76,21 @@
   "c_verifier_box_cannot_reach_the_lab": true,
   "c_host_listener_saw_no_box": true,
   "d_every_hostile_rollout_is_graded": true,
+  "d_every_reward_is_a_finite_number": true,
+  "d_replaced_tar_duplicate_collision_longpath_score_K": true,
+  "d_control_default_collection_leaves_a_duplicate_member_ungraded": true,
+  "e_raw_tool_submit_of_a_broken_predictor_is_refused": true,
+  "e_then_the_valid_predictor_left_behind_is_graded": true,
+  "e_falsified_check_in_the_agent_box_freezes_but_the_grader_validates": true,
+  "e_unsubmitted_nondeterministic_predictor_scores_K": true,
+  "e_unsubmitted_predictor_failing_one_example_call_scores_K": true,
+  "h_harness_exit_or_kill_leaves_the_trace_without_a_reward": true,
+  "h_settle_records_K_for_such_a_rollout": true,
+  "h_the_same_agent_cannot_open_the_instance_again": true,
+  "f_item_attacks_passed_validation_and_were_submitted": true,
+  "f_overflow_fifo_and_bomb_fail_every_item_and_score_K": true,
+  "f_no_item_attack_hung_the_grader": true,
+  "f_largest_float32_values_are_a_valid_finite_very_bad_reply": true,
   "d_deleted_submission_scores_K": true,
   "d_empty_oversize_huge_and_broken_tar_score_K": true,
   "d_control_default_collection_grades_a_deleted_submission": true,
@@ -79,10 +102,12 @@
   "g_lab_placement_guard_refuses_colocated_url_and_sandbox": true,
   "g_setup_refuses_open_network_and_non_container": true,
   "g_setup_refuses_token_like_harness_variable": true,
-  "g_single_use_refuses_an_instance_already_opened": true
+  "g_setup_refuses_any_variable_not_on_the_allow_list": true,
+  "g_single_use_is_the_default": true,
+  "g_single_use_refuses_the_same_agent_a_second_time": true
  },
- "n_checks_new": 37,
- "n_passed_new": 37,
+ "n_checks_new": 62,
+ "n_passed_new": 62,
  "failed_new": [],
  "PILOT_NEVER_REUSE_AS_EXAM": true,
  "instance_id": "probe-ring-w0",
@@ -92,7 +117,7 @@
    "uid": {
     "validation": 1000,
     "grading": [
-     1000
+     39268
     ]
    },
    "hidden": {
@@ -102,7 +127,7 @@
      "hidden/exam.npz": "FileNotFoundError",
      "agentenv": "FileNotFoundError",
      "vfport": "FileNotFoundError",
-     "store": "FileNotFoundError"
+     "store2": "FileNotFoundError"
     }
    },
    "net": {
@@ -124,7 +149,7 @@
    "hidden/exam.npz": "FileNotFoundError",
    "agentenv": "FileNotFoundError",
    "vfport": "FileNotFoundError",
-   "store": "FileNotFoundError"
+   "store2": "FileNotFoundError"
   },
   "agent_uid": 0,
   "agent_visible_pids": 3,
@@ -145,8 +170,8 @@
    "validate_oversize": "submission larger than 2 MiB"
   },
   "slow": {
-   "cpu_s": 3.997961,
-   "wall_s": 4.028506517410278
+   "cpu_s": 4.001054,
+   "wall_s": 4.085191249847412
   },
   "slow_error": "predictor failed (CPU-time limit): ",
   "memory": "ed (exit code 2): MemoryError: Unable to allocate 128. GiB for an array with shape (17179869184,) and data type float64\n",
@@ -169,7 +194,7 @@
    "n_failed": 0,
    "layers": {
     "rlimits": true,
-    "uid": 1000,
+    "uid": 36352,
     "cleanup": true
    }
   },
@@ -241,7 +266,7 @@
   },
   "a_control_marked_not_an_exam": "cleanup between items was disabled by the operator (test hook)",
   "b_lab_process": {
-   "pid": 21127,
+   "pid": 22561,
    "scrubbed_variables": {
     "count": 9,
     "includes_HF_TOKEN": true,
@@ -279,19 +304,19 @@
    "env_token_like": [],
    "env_needle": [],
    "needle_hits": [],
-   "files_read": 8412,
+   "files_read": 8413,
    "environ_read": 3
   },
   "b_verifier_box_item_1": {
-   "uid": 1000,
+   "uid": 39268,
    "env_token_like": [],
    "env_needle": [],
    "needle_hits": [],
-   "files_read": 5008,
+   "files_read": 5010,
    "environ_read": 1
   },
   "b_trace_scan": {
-   "files_scanned": 89,
+   "files_scanned": 220,
    "needles": [
     "canary",
     "canary_prefix",
@@ -314,6 +339,7 @@
    "public_tcp": "ConnectionRefusedError",
    "public_tcp_443": "ConnectionRefusedError",
    "dns": "gaierror",
+   "host_addresses_tried": 1,
    "host_listener": "ConnectionRefusedError",
    "lab": "HTTP 400",
    "proxy_public": "HTTP 403",
@@ -328,6 +354,9 @@
    ],
    "dns": [
     "gaierror"
+   ],
+   "host_addresses_tried": [
+    1
    ],
    "host_listener": [
     "ConnectionRefusedError"
@@ -435,7 +464,7 @@
    "symlinks": {
     "graded": true,
     "ok": true,
-    "reward": -0.20870009621753846,
+    "reward": -0.10663505861681302,
     "errors": [],
     "n_failed": 0,
     "n_items": 8,
@@ -452,7 +481,7 @@
    "junk": {
     "graded": true,
     "ok": true,
-    "reward": -0.20870009621753846,
+    "reward": -0.10663505861681302,
     "errors": [],
     "n_failed": 0,
     "n_items": 8,
@@ -464,6 +493,193 @@
      "files": 1,
      "bytes": 239,
      "sha256": "f8edf715a0fbf1673d2c5d807012859a9ec15054c548faa5637e7ba6011d7612"
+    }
+   },
+   "tar_duplicate": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission archive names the same file twice",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission archive names the same file twice",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "tar_collision": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission archive names one path as a file and as a directory",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission archive names one path as a file and as a directory",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "tar_longpath": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission has a path longer than 1024 bytes (or a name longer than 255)",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission has a path longer than 1024 bytes (or a name longer than 255)",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "raw_submit_broken": {
+    "graded": true,
+    "ok": true,
+    "reward": -0.10663505861681302,
+    "errors": [],
+    "n_failed": 0,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 239,
+     "sha256": "f8edf715a0fbf1673d2c5d807012859a9ec15054c548faa5637e7ba6011d7612"
+    }
+   },
+   "fake_validator": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "validation failed (reproducibility)",
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 284,
+     "sha256": "298f1e445b95ca6c998cf8a5a2c2e891998369d62c19e7d28777e685e77d39a6"
+    }
+   },
+   "unsubmitted_nondeterministic": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "validation failed (reproducibility)",
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 284,
+     "sha256": "298f1e445b95ca6c998cf8a5a2c2e891998369d62c19e7d28777e685e77d39a6"
+    }
+   },
+   "unsubmitted_partly_working": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "validation failed (example 1)",
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 321,
+     "sha256": "52d97e45bd1d76abc5f58ceaee4b987e9c58fe248b2ed991dc136ead91c62ebc"
+    }
+   },
+   "item_overflow": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 644,
+     "sha256": "0508aa34adda134cf351fc55caaf40cdc61074f12c619f98c3c92ad0b0f143ce"
+    }
+   },
+   "item_fifo": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 537,
+     "sha256": "da57ca430d5e88593f6d4fc9421fa7a2151a63a0e5c1230ce450f3ed13ff0bca"
+    }
+   },
+   "item_bomb": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 677,
+     "sha256": "752ebfe0d102038df921146201722a288c690a7dd8fa440710b3bda9ab27358a"
+    }
+   },
+   "item_extreme": {
+    "graded": true,
+    "ok": true,
+    "reward": -4.078247180100453e+38,
+    "errors": [],
+    "n_failed": 0,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 618,
+     "sha256": "7c3dc6cd488ca9c1be438b62e00cd4751fd8bdeb0d96b87779133a2fc070d584"
     }
    }
   },
@@ -520,6 +736,17 @@
     "episode_errors": [],
     "reward_recorded_as": 0.0,
     "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "tar_duplicate": {
+    "graded": false,
+    "trace_ok": true,
+    "episode_ok": false,
+    "trace_errors": [],
+    "episode_errors": [
+     "EnvError"
+    ],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
    }
   },
   "g_guard_runs": {
@@ -530,13 +757,442 @@
      "TaskError"
     ]
    },
-   "single_use": {
+   "other_env": {
+    "graded": false,
+    "trace_ok": false,
+    "trace_errors": [
+     "TaskError"
+    ]
+   },
+   "single_use_first": {
+    "graded": true,
+    "trace_ok": true,
+    "trace_errors": []
+   },
+   "single_use_again": {
     "graded": false,
     "trace_ok": false,
     "trace_errors": [
      "TaskError"
     ]
    }
+  },
+  "h_harness_dies": {
+   "exit1": {
+    "first": {
+     "graded": false,
+     "trace_ok": false,
+     "errors": [
+      "HarnessError"
+     ],
+     "script_exit_code": 1
+    },
+    "settled": [
+     {
+      "graded": false,
+      "settled_as_K": true,
+      "reward": 0.0,
+      "why": "no reward on the trace (HarnessError)",
+      "laboratory_was_opened": true
+     }
+    ],
+    "grade_record": {
+     "n_items": 8,
+     "n_failed": 8,
+     "settled": true
+    },
+    "again": {
+     "graded": false,
+     "errors": [
+      "TaskError"
+     ]
+    }
+   },
+   "killall": {
+    "first": {
+     "graded": false,
+     "trace_ok": false,
+     "errors": [
+      "HarnessError"
+     ],
+     "script_exit_code": 137
+    },
+    "settled": [
+     {
+      "graded": false,
+      "settled_as_K": true,
+      "reward": 0.0,
+      "why": "no reward on the trace (HarnessError)",
+      "laboratory_was_opened": true
+     }
+    ],
+    "grade_record": {
+     "n_items": 8,
+     "n_failed": 8,
+     "settled": true
+    },
+    "again": {
+     "graded": false,
+     "errors": [
+      "TaskError"
+     ]
+    }
+   }
+  },
+  "a2_channels_one_box_per_item": {
+   "mark_was_read": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "dirs_touched_after_staging": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "lo_rx_packets": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "pid": [
+    102,
+    99,
+    99,
+    100,
+    101,
+    100,
+    100,
+    99
+   ],
+   "forked": [
+    52,
+    77,
+    42,
+    53,
+    65,
+    46,
+    67,
+    62
+   ],
+   "datagrams_sent": [
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "pid_step": [
+    -3,
+    0,
+    1,
+    1,
+    -1,
+    0,
+    -1
+   ],
+   "pid_step_minus_forks_of_the_item_before": [
+    -55,
+    -77,
+    -41,
+    -52,
+    -66,
+    -46,
+    -68
+   ]
+  },
+  "a2_channels_all_items_in_one_box": {
+   "mark_was_read": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "dirs_touched_after_staging": [
+    [],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ]
+   ],
+   "lo_rx_packets": [
+    0,
+    2411,
+    4822,
+    7233,
+    9644,
+    12055,
+    14466,
+    16877
+   ],
+   "pid": [
+    146,
+    218,
+    314,
+    376,
+    449,
+    534,
+    600,
+    687
+   ],
+   "forked": [
+    52,
+    77,
+    42,
+    53,
+    65,
+    46,
+    67,
+    62
+   ],
+   "datagrams_sent": [
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "pid_step": [
+    72,
+    96,
+    62,
+    73,
+    85,
+    66,
+    87
+   ],
+   "pid_step_minus_forks_of_the_item_before": [
+    20,
+    19,
+    20,
+    20,
+    20,
+    20,
+    20
+   ]
+  },
+  "a2_grade": {
+   "isolation": "box",
+   "item_boxes": 8,
+   "item_box_wall_s_mean": 3.3441166281700134,
+   "infrastructure_failed_items": 0,
+   "item_boxes_cpu_s": 12.253607090000003
+  },
+  "e_reports": {
+   "raw_submit_broken": {
+    "mode": "raw_submit_broken",
+    "raw_submit": {
+     "ok": false,
+     "stage": "example 0",
+     "error": "predictor failed (exit code 2): RuntimeError: broken on purpose\n",
+     "files": 1,
+     "cpu_s": 0.262084,
+     "wall_s": 0.26714324951171875,
+     "finalized": false,
+     "accepted": false
+    },
+    "usage_after": {
+     "submitted": false,
+     "submissions": 1,
+     "validations": 0
+    },
+    "lab_still_open": true,
+    "left": [
+     "predict.py"
+    ]
+   },
+   "fake_validator": {
+    "mode": "fake_validator",
+    "submit": {
+     "ok": true,
+     "note": "this box always says yes",
+     "files": 1,
+     "sha256": "298f1e445b95ca6c998cf8a5a2c2e891998369d62c19e7d28777e685e77d39a6",
+     "finalized": true,
+     "accepted": true
+    },
+    "usage_after": {
+     "submitted": true,
+     "submissions": 1
+    },
+    "left": [
+     "predict.py"
+    ]
+   },
+   "unsubmitted_nondeterministic": {
+    "mode": "unsubmitted_nondeterministic",
+    "left": [
+     "predict.py"
+    ]
+   },
+   "unsubmitted_partly_working": {
+    "mode": "unsubmitted_partly_working",
+    "left": [
+     "predict.py"
+    ]
+   }
+  },
+  "f_reports": {
+   "item_overflow": {
+    "mode": "item_overflow",
+    "submit": {
+     "ok": true,
+     "accepted": true,
+     "finalized": true,
+     "stage": null,
+     "error": null
+    },
+    "left": [
+     "predict.py"
+    ]
+   },
+   "item_fifo": {
+    "mode": "item_fifo",
+    "submit": {
+     "ok": true,
+     "accepted": true,
+     "finalized": true,
+     "stage": null,
+     "error": null
+    },
+    "left": [
+     "predict.py"
+    ]
+   },
+   "item_bomb": {
+    "mode": "item_bomb",
+    "submit": {
+     "ok": true,
+     "accepted": true,
+     "finalized": true,
+     "stage": null,
+     "error": null
+    },
+    "left": [
+     "predict.py"
+    ]
+   },
+   "item_extreme": {
+    "mode": "item_extreme",
+    "submit": {
+     "ok": true,
+     "accepted": true,
+     "finalized": true,
+     "stage": null,
+     "error": null
+    },
+    "left": [
+     "predict.py"
+    ]
+   }
+  },
+  "f_grades": {
+   "item_overflow": {
+    "n_items": 8,
+    "n_failed": 8,
+    "non_finite_items": 0,
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.306276
+    },
+    "isolation": "box",
+    "seconds": 23.76883578300476
+   },
+   "item_fifo": {
+    "n_items": 8,
+    "n_failed": 8,
+    "non_finite_items": 0,
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.310102
+    },
+    "isolation": "box",
+    "seconds": 23.72199296951294
+   },
+   "item_bomb": {
+    "n_items": 8,
+    "n_failed": 8,
+    "non_finite_items": 0,
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.300791
+    },
+    "isolation": "box",
+    "seconds": 25.237879753112793
+   },
+   "item_extreme": {
+    "n_items": 8,
+    "n_failed": 0,
+    "non_finite_items": 0,
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.434346
+    },
+    "isolation": "box",
+    "seconds": 24.014512300491333
+   }
+  },
+  "f_first_error": {
+   "item_overflow": "unreadable reply: level arrays must be C-ordered float32 with three axes (as predict_runner.py writes them); got float64 with 3 axes",
+   "item_fifo": "predictor failed (exit code 1): ",
+   "item_bomb": "unreadable reply: the reply must hold one array per level (at most 16)",
+   "item_extreme": "None"
   },
   "verifier_box_identity_item_1": {
    "write_submission": "PermissionError",
@@ -561,28 +1217,38 @@
     "/var/tmp"
    ],
    "world_writable_paths_fixed": 0,
-   "owned_by_predictor_user_before": 0
+   "owned_by_predictor_user_before": 0,
+   "predictor_uid": 39268,
+   "box_limits": {
+    "pids_max": "max",
+    "memory_max": "8589934592"
+   },
+   "container_evidence": [
+    "/.dockerenv",
+    "/proc/1/cgroup"
+   ]
   }
  },
  "rollouts": {
   "probe-agent": {
    "graded": true,
    "ok": true,
-   "reward": -0.20870009621753846,
+   "reward": -0.10663505861681302,
    "wall_s": {
-    "boot": 0.5591413974761963,
-    "setup": 5.489225625991821,
-    "agent": 11.282476902008057,
-    "finalize": 0.07757973670959473,
-    "verifier": 4.922144174575806,
-    "total": 22.330567836761475
+    "boot": 0.669384241104126,
+    "setup": 6.615825414657593,
+    "agent": 17.022328853607178,
+    "finalize": 0.08634448051452637,
+    "verifier": 23.561649799346924,
+    "total": 47.95553278923035
    },
    "cpu_s": {
-    "agent_box": 9.66002,
-    "verifier_box": 3.56594,
-    "worker_in_reward": 0.035469896999998696
+    "agent_box_unverified": 14.2109,
+    "verifier_box": 1.94714,
+    "item_boxes": 8.194254551,
+    "worker_in_reward": 0.22972169300000012
    },
-   "invocation_wall_s": 31.04086399078369,
+   "invocation_wall_s": 57.90316653251648,
    "address_file_matches_tool_url": true
   },
   "probe-grading": {
@@ -590,19 +1256,41 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5473079681396484,
-    "setup": 5.505103588104248,
-    "agent": 1.56754469871521,
-    "finalize": 0.34959888458251953,
-    "verifier": 9.30895733833313,
-    "total": 17.278512477874756
+    "boot": 0.6287193298339844,
+    "setup": 6.601871490478516,
+    "agent": 1.7393162250518799,
+    "finalize": 0.41240787506103516,
+    "verifier": 29.816907167434692,
+    "total": 39.19922208786011
    },
    "cpu_s": {
-    "agent_box": 1.43072,
-    "verifier_box": 6.34912,
-    "worker_in_reward": 0.03276476599999967
+    "agent_box_unverified": 1.63761,
+    "verifier_box": 2.22177,
+    "item_boxes": 12.253607090000003,
+    "worker_in_reward": 0.23968043400000028
    },
-   "invocation_wall_s": 26.192547082901,
+   "invocation_wall_s": 48.934319734573364,
+   "address_file_matches_tool_url": true
+  },
+  "probe-grading-shared": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7424347400665283,
+    "setup": 6.630300283432007,
+    "agent": 1.523542881011963,
+    "finalize": 0.41907358169555664,
+    "verifier": 12.924277067184448,
+    "total": 22.239628553390503
+   },
+   "cpu_s": {
+    "agent_box_unverified": 1.51528,
+    "verifier_box": 9.44096,
+    "item_boxes": null,
+    "worker_in_reward": 0.04774695400000084
+   },
+   "invocation_wall_s": 31.9886577129364,
    "address_file_matches_tool_url": true
   },
   "probe-grading-nocleanup": {
@@ -610,19 +1298,20 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.590986967086792,
-    "setup": 6.56696891784668,
-    "agent": 1.3369653224945068,
-    "finalize": 0.360609769821167,
-    "verifier": 8.533909320831299,
-    "total": 17.389440298080444
+    "boot": 0.7490136623382568,
+    "setup": 6.592272520065308,
+    "agent": 1.649698257446289,
+    "finalize": 0.3937187194824219,
+    "verifier": 11.702071905136108,
+    "total": 21.086775064468384
    },
    "cpu_s": {
-    "agent_box": 1.33643,
-    "verifier_box": 5.46722,
-    "worker_in_reward": 0.03815273599999891
+    "agent_box_unverified": 1.64817,
+    "verifier_box": 8.33291,
+    "item_boxes": null,
+    "worker_in_reward": 0.048442017999999365
    },
-   "invocation_wall_s": 26.352429389953613,
+   "invocation_wall_s": 30.81563401222229,
    "address_file_matches_tool_url": true
   },
   "hostile-delete": {
@@ -630,19 +1319,20 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.606895923614502,
-    "setup": 6.528242111206055,
-    "agent": 0.7296979427337646,
-    "finalize": 0.14261937141418457,
-    "verifier": 0.7443032264709473,
-    "total": 8.751758575439453
+    "boot": 0.7306919097900391,
+    "setup": 6.602131605148315,
+    "agent": 1.0869574546813965,
+    "finalize": 0.18972539901733398,
+    "verifier": 0.7943930625915527,
+    "total": 9.403899431228638
    },
    "cpu_s": {
-    "agent_box": 0.666823,
-    "verifier_box": 0.471322,
-    "worker_in_reward": 0.009345006999998517
+    "agent_box_unverified": 0.863798,
+    "verifier_box": 0.54325,
+    "item_boxes": null,
+    "worker_in_reward": 0.009760198000000386
    },
-   "invocation_wall_s": 17.802112340927124,
+   "invocation_wall_s": 19.75370216369629,
    "address_file_matches_tool_url": true
   },
   "hostile-empty": {
@@ -650,19 +1340,20 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5759429931640625,
-    "setup": 6.551186800003052,
-    "agent": 0.763251543045044,
-    "finalize": 0.35122227668762207,
-    "verifier": 0.7575399875640869,
-    "total": 8.999143600463867
+    "boot": 0.7032098770141602,
+    "setup": 6.665790796279907,
+    "agent": 0.9963972568511963,
+    "finalize": 0.3870551586151123,
+    "verifier": 0.8414857387542725,
+    "total": 9.593938827514648
    },
    "cpu_s": {
-    "agent_box": 0.763343,
-    "verifier_box": 0.486742,
-    "worker_in_reward": 0.009399971999998868
+    "agent_box_unverified": 0.921368,
+    "verifier_box": 0.600639,
+    "item_boxes": null,
+    "worker_in_reward": 0.009484594000001678
    },
-   "invocation_wall_s": 17.86389398574829,
+   "invocation_wall_s": 19.524284601211548,
    "address_file_matches_tool_url": true
   },
   "hostile-oversize": {
@@ -670,19 +1361,20 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5990331172943115,
-    "setup": 6.541924476623535,
-    "agent": 0.8146810531616211,
-    "finalize": 0.36405444145202637,
-    "verifier": 0.7398085594177246,
-    "total": 9.059501647949219
+    "boot": 0.6530382633209229,
+    "setup": 6.606588840484619,
+    "agent": 0.9666697978973389,
+    "finalize": 0.4934053421020508,
+    "verifier": 0.8157773017883301,
+    "total": 9.535479545593262
    },
    "cpu_s": {
-    "agent_box": 0.776523,
-    "verifier_box": 0.47969,
-    "worker_in_reward": 0.009422810000000226
+    "agent_box_unverified": 0.844523,
+    "verifier_box": 0.52486,
+    "item_boxes": null,
+    "worker_in_reward": 0.010129913000000101
    },
-   "invocation_wall_s": 18.122827768325806,
+   "invocation_wall_s": 19.16929340362549,
    "address_file_matches_tool_url": true
   },
   "hostile-huge": {
@@ -690,19 +1382,20 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5516185760498047,
-    "setup": 5.5071728229522705,
-    "agent": 0.8058702945709229,
-    "finalize": 0.3991715908050537,
-    "verifier": 0.7456443309783936,
-    "total": 8.009477615356445
+    "boot": 0.6376972198486328,
+    "setup": 6.6642005443573,
+    "agent": 1.0871059894561768,
+    "finalize": 0.4565296173095703,
+    "verifier": 0.8191018104553223,
+    "total": 9.664635181427002
    },
    "cpu_s": {
-    "agent_box": 0.782015,
-    "verifier_box": 0.483656,
-    "worker_in_reward": 0.009081526999999312
+    "agent_box_unverified": 0.97728,
+    "verifier_box": 0.548942,
+    "item_boxes": null,
+    "worker_in_reward": 0.011880095000000424
    },
-   "invocation_wall_s": 16.886279582977295,
+   "invocation_wall_s": 19.464006662368774,
    "address_file_matches_tool_url": true
   },
   "hostile-no_tar": {
@@ -710,59 +1403,293 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6109066009521484,
-    "setup": 6.526652097702026,
-    "agent": 0.7729349136352539,
-    "finalize": 0.278289794921875,
-    "verifier": 0.7814931869506836,
-    "total": 8.970276594161987
+    "boot": 0.6578738689422607,
+    "setup": 6.60746169090271,
+    "agent": 0.9924764633178711,
+    "finalize": 0.31809043884277344,
+    "verifier": 0.8304059505462646,
+    "total": 9.40630841255188
    },
    "cpu_s": {
-    "agent_box": 0.745907,
-    "verifier_box": 0.500954,
-    "worker_in_reward": 0.00873501499999918
+    "agent_box_unverified": 0.809633,
+    "verifier_box": 0.569902,
+    "item_boxes": null,
+    "worker_in_reward": 0.011125526999999025
    },
-   "invocation_wall_s": 17.861825942993164,
+   "invocation_wall_s": 18.84941601753235,
    "address_file_matches_tool_url": true
   },
   "hostile-symlinks": {
    "graded": true,
    "ok": true,
-   "reward": -0.20870009621753846,
+   "reward": -0.10663505861681302,
    "wall_s": {
-    "boot": 0.608177900314331,
-    "setup": 6.5349836349487305,
-    "agent": 0.786827564239502,
-    "finalize": 0.38670849800109863,
-    "verifier": 5.040814638137817,
-    "total": 13.35751223564148
+    "boot": 0.6505289077758789,
+    "setup": 6.57062292098999,
+    "agent": 1.0423731803894043,
+    "finalize": 0.3811047077178955,
+    "verifier": 22.997469902038574,
+    "total": 31.642099618911743
    },
    "cpu_s": {
-    "agent_box": 0.775666,
-    "verifier_box": 3.65448,
-    "worker_in_reward": 0.03562708199999953
+    "agent_box_unverified": 0.852426,
+    "verifier_box": 1.97239,
+    "item_boxes": 7.952428413000001,
+    "worker_in_reward": 0.22991380999999933
    },
-   "invocation_wall_s": 22.40064024925232,
+   "invocation_wall_s": 41.14474034309387,
    "address_file_matches_tool_url": true
   },
   "hostile-junk": {
    "graded": true,
    "ok": true,
-   "reward": -0.20870009621753846,
+   "reward": -0.10663505861681302,
    "wall_s": {
-    "boot": 0.5604276657104492,
-    "setup": 5.534665584564209,
-    "agent": 0.7811999320983887,
-    "finalize": 0.35016489028930664,
-    "verifier": 5.0375144481658936,
-    "total": 12.263972520828247
+    "boot": 0.6469998359680176,
+    "setup": 6.552684783935547,
+    "agent": 1.081233263015747,
+    "finalize": 0.4790072441101074,
+    "verifier": 23.246153593063354,
+    "total": 32.00607872009277
    },
    "cpu_s": {
-    "agent_box": 0.755082,
-    "verifier_box": 3.59541,
-    "worker_in_reward": 0.03674544100000077
+    "agent_box_unverified": 0.918654,
+    "verifier_box": 1.90026,
+    "item_boxes": 8.032486899999999,
+    "worker_in_reward": 0.22811733799999878
    },
-   "invocation_wall_s": 21.337925910949707,
+   "invocation_wall_s": 42.259440898895264,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-tar_duplicate": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6718199253082275,
+    "setup": 6.611905336380005,
+    "agent": 1.0036163330078125,
+    "finalize": 0.42532944679260254,
+    "verifier": 0.7416121959686279,
+    "total": 9.454283237457275
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.926368,
+    "verifier_box": 0.512236,
+    "item_boxes": null,
+    "worker_in_reward": 0.010612261000000345
+   },
+   "invocation_wall_s": 19.429820775985718,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-tar_collision": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7381091117858887,
+    "setup": 6.565425395965576,
+    "agent": 0.9614303112030029,
+    "finalize": 0.4644935131072998,
+    "verifier": 0.8493537902832031,
+    "total": 9.57881212234497
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.862218,
+    "verifier_box": 0.583198,
+    "item_boxes": null,
+    "worker_in_reward": 0.009994401000000153
+   },
+   "invocation_wall_s": 18.97631549835205,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-tar_longpath": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 1.0505969524383545,
+    "setup": 6.710870265960693,
+    "agent": 1.0034396648406982,
+    "finalize": 0.47970008850097656,
+    "verifier": 0.7788650989532471,
+    "total": 10.02347207069397
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.956391,
+    "verifier_box": 0.525689,
+    "item_boxes": null,
+    "worker_in_reward": 0.011427513999999306
+   },
+   "invocation_wall_s": 20.95811915397644,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-raw_submit_broken": {
+   "graded": true,
+   "ok": true,
+   "reward": -0.10663505861681302,
+   "wall_s": {
+    "boot": 0.6745202541351318,
+    "setup": 6.5901288986206055,
+    "agent": 2.659958600997925,
+    "finalize": 0.42008042335510254,
+    "verifier": 24.115556955337524,
+    "total": 34.46024513244629
+   },
+   "cpu_s": {
+    "agent_box_unverified": 1.71062,
+    "verifier_box": 2.00651,
+    "item_boxes": 8.033212996,
+    "worker_in_reward": 0.22259933399999987
+   },
+   "invocation_wall_s": 44.204559326171875,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-fake_validator": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6242814064025879,
+    "setup": 6.59265923500061,
+    "agent": 1.6931233406066895,
+    "finalize": 0.12216496467590332,
+    "verifier": 2.673755407333374,
+    "total": 11.705984354019165
+   },
+   "cpu_s": {
+    "agent_box_unverified": 1.14337,
+    "verifier_box": 1.77288,
+    "item_boxes": null,
+    "worker_in_reward": 0.02828908899999938
+   },
+   "invocation_wall_s": 22.414617776870728,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-unsubmitted_nondeterministic": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7385218143463135,
+    "setup": 6.702929496765137,
+    "agent": 1.2270047664642334,
+    "finalize": 0.4387941360473633,
+    "verifier": 2.6582767963409424,
+    "total": 11.76552700996399
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.988532,
+    "verifier_box": 1.83395,
+    "item_boxes": null,
+    "worker_in_reward": 0.023449938000000614
+   },
+   "invocation_wall_s": 21.63876748085022,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-unsubmitted_partly_working": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6557121276855469,
+    "setup": 6.638383626937866,
+    "agent": 0.952775239944458,
+    "finalize": 0.38730931282043457,
+    "verifier": 2.8188695907592773,
+    "total": 11.453049898147583
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.818183,
+    "verifier_box": 1.93696,
+    "item_boxes": null,
+    "worker_in_reward": 0.027830604000000037
+   },
+   "invocation_wall_s": 22.215875387191772,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-item_overflow": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.679323673248291,
+    "setup": 6.623656272888184,
+    "agent": 3.494997978210449,
+    "finalize": 0.08840775489807129,
+    "verifier": 24.79228377342224,
+    "total": 35.678669452667236
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.85753,
+    "verifier_box": 2.11119,
+    "item_boxes": 8.785864901,
+    "worker_in_reward": 0.22764823300000003
+   },
+   "invocation_wall_s": 45.801525592803955,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-item_fifo": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6910054683685303,
+    "setup": 6.721220254898071,
+    "agent": 3.6806247234344482,
+    "finalize": 0.0850214958190918,
+    "verifier": 24.687885761260986,
+    "total": 35.86575770378113
+   },
+   "cpu_s": {
+    "agent_box_unverified": 3.01201,
+    "verifier_box": 2.06554,
+    "item_boxes": 8.410850527999997,
+    "worker_in_reward": 0.24656016399999992
+   },
+   "invocation_wall_s": 46.148926734924316,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-item_bomb": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6934525966644287,
+    "setup": 7.637002229690552,
+    "agent": 3.495518922805786,
+    "finalize": 0.1763594150543213,
+    "verifier": 26.238529920578003,
+    "total": 38.24086308479309
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.80752,
+    "verifier_box": 2.00073,
+    "item_boxes": 9.890534924999999,
+    "worker_in_reward": 0.35673458199999963
+   },
+   "invocation_wall_s": 48.64972424507141,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-item_extreme": {
+   "graded": true,
+   "ok": true,
+   "reward": -4.078247180100453e+38,
+   "wall_s": {
+    "boot": 0.7319056987762451,
+    "setup": 6.651335954666138,
+    "agent": 3.376594066619873,
+    "finalize": 0.07631254196166992,
+    "verifier": 24.94923210144043,
+    "total": 35.785380363464355
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.77293,
+    "verifier_box": 2.20109,
+    "item_boxes": 8.891494396,
+    "worker_in_reward": 0.23360991200000036
+   },
+   "invocation_wall_s": 46.56958627700806,
    "address_file_matches_tool_url": true
   },
   "stock-delete": {
@@ -770,19 +1697,20 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5869624614715576,
-    "setup": 6.542507171630859,
-    "agent": 0.733020544052124,
-    "finalize": 0.14428305625915527,
-    "verifier": 0.7333519458770752,
-    "total": 8.740125179290771
+    "boot": 0.7427773475646973,
+    "setup": 6.599018335342407,
+    "agent": 0.8313989639282227,
+    "finalize": 0.17230963706970215,
+    "verifier": 0.7358312606811523,
+    "total": 9.081335544586182
    },
    "cpu_s": {
-    "agent_box": 0.660801,
-    "verifier_box": 0.476861,
-    "worker_in_reward": 0.008777373000000921
+    "agent_box_unverified": 0.698395,
+    "verifier_box": 0.504705,
+    "item_boxes": null,
+    "worker_in_reward": 0.008827282999998687
    },
-   "invocation_wall_s": 17.472262859344482,
+   "invocation_wall_s": 19.513232231140137,
    "address_file_matches_tool_url": true
   },
   "stock-huge": {
@@ -790,19 +1718,20 @@
    "ok": false,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6179304122924805,
-    "setup": 6.5065977573394775,
-    "agent": 0.7978215217590332,
-    "finalize": 0.38016486167907715,
+    "boot": 0.6532068252563477,
+    "setup": 6.632034063339233,
+    "agent": 0.9818418025970459,
+    "finalize": 0.49312925338745117,
     "verifier": null,
-    "total": 8.302514553070068
+    "total": 8.760211944580078
    },
    "cpu_s": {
-    "agent_box": 0.672166,
+    "agent_box_unverified": 0.799913,
     "verifier_box": null,
+    "item_boxes": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 16.50839614868164,
+   "invocation_wall_s": 17.838030576705933,
    "address_file_matches_tool_url": true
   },
   "stock-no_tar": {
@@ -810,19 +1739,20 @@
    "ok": false,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5761260986328125,
-    "setup": 6.544180154800415,
-    "agent": 0.7913088798522949,
-    "finalize": 0.28612351417541504,
+    "boot": 0.9098141193389893,
+    "setup": 6.685010671615601,
+    "agent": 0.9015774726867676,
+    "finalize": 0.35271382331848145,
     "verifier": null,
-    "total": 8.197738647460938
+    "total": 8.849116086959839
    },
    "cpu_s": {
-    "agent_box": 0.649173,
+    "agent_box_unverified": 0.747162,
     "verifier_box": null,
+    "item_boxes": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 16.173475742340088,
+   "invocation_wall_s": 18.27888298034668,
    "address_file_matches_tool_url": true
   },
   "stock-symlinks": {
@@ -830,19 +1760,20 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.578453779220581,
-    "setup": 6.538663864135742,
-    "agent": 0.7802176475524902,
-    "finalize": 0.3543996810913086,
+    "boot": 0.6634807586669922,
+    "setup": 6.6290504932403564,
+    "agent": 0.7462127208709717,
+    "finalize": 0.39777517318725586,
     "verifier": null,
-    "total": 8.251734972000122
+    "total": 8.436519145965576
    },
    "cpu_s": {
-    "agent_box": 0.602871,
+    "agent_box_unverified": 0.662858,
     "verifier_box": null,
+    "item_boxes": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 17.218631982803345,
+   "invocation_wall_s": 18.15589189529419,
    "address_file_matches_tool_url": true
   },
   "stock-junk": {
@@ -850,19 +1781,41 @@
    "ok": false,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6160714626312256,
-    "setup": 6.569239377975464,
-    "agent": 0.8290963172912598,
-    "finalize": 0.4433324337005615,
+    "boot": 0.6895983219146729,
+    "setup": 6.60416316986084,
+    "agent": 0.875990629196167,
+    "finalize": 0.44881367683410645,
     "verifier": null,
-    "total": 8.45773959159851
+    "total": 8.618565797805786
    },
    "cpu_s": {
-    "agent_box": 0.732326,
+    "agent_box_unverified": 0.739549,
     "verifier_box": null,
+    "item_boxes": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 16.948694229125977,
+   "invocation_wall_s": 17.08823275566101,
+   "address_file_matches_tool_url": true
+  },
+  "stock-tar_duplicate": {
+   "graded": false,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6383018493652344,
+    "setup": 6.6403021812438965,
+    "agent": 0.9434356689453125,
+    "finalize": 0.49150633811950684,
+    "verifier": null,
+    "total": 8.71354603767395
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.74685,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 18.426618337631226,
    "address_file_matches_tool_url": true
   },
   "guard-token-env": {
@@ -870,41 +1823,169 @@
    "ok": false,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6041104793548584,
-    "setup": 0.0011529922485351562,
+    "boot": 0.6756720542907715,
+    "setup": 0.0011148452758789062,
     "agent": 0,
     "finalize": 0,
     "verifier": null,
-    "total": 0.6052634716033936
+    "total": 0.6767868995666504
    },
    "cpu_s": {
-    "agent_box": null,
+    "agent_box_unverified": null,
     "verifier_box": null,
+    "item_boxes": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 8.763625383377075,
+   "invocation_wall_s": 9.54641604423523,
    "address_file_matches_tool_url": null
   },
-  "guard-single-use": {
+  "guard-other-env": {
    "graded": false,
    "ok": false,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6000580787658691,
-    "setup": 0.16048192977905273,
+    "boot": 0.8195550441741943,
+    "setup": 0.0013821125030517578,
     "agent": 0,
     "finalize": 0,
     "verifier": null,
-    "total": 0.7605400085449219
+    "total": 0.8209371566772461
    },
    "cpu_s": {
-    "agent_box": null,
+    "agent_box_unverified": null,
     "verifier_box": null,
+    "item_boxes": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 8.97227430343628,
+   "invocation_wall_s": 10.16942048072815,
+   "address_file_matches_tool_url": null
+  },
+  "guard-single-use-first": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6986963748931885,
+    "setup": 7.651709079742432,
+    "agent": 0.7566971778869629,
+    "finalize": 0.4487922191619873,
+    "verifier": 0.86501145362854,
+    "total": 10.42090630531311
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.799071,
+    "verifier_box": 0.629248,
+    "item_boxes": null,
+    "worker_in_reward": 0.00953600799999954
+   },
+   "invocation_wall_s": 21.232335090637207,
+   "address_file_matches_tool_url": true
+  },
+  "guard-single-use-again": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.649289608001709,
+    "setup": 0.1700599193572998,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.8193495273590088
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 9.297853231430054,
+   "address_file_matches_tool_url": null
+  },
+  "harness-exit1": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7703289985656738,
+    "setup": 6.649017095565796,
+    "agent": 0.8470954895019531,
+    "finalize": 0,
+    "verifier": null,
+    "total": 8.266441583633423
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 17.6621732711792,
+   "address_file_matches_tool_url": true
+  },
+  "harness-exit1-again": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.8214218616485596,
+    "setup": 0.19890117645263672,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 1.0203230381011963
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 9.790771722793579,
+   "address_file_matches_tool_url": null
+  },
+  "harness-killall": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.707512378692627,
+    "setup": 6.5758216381073,
+    "agent": 0.8508141040802002,
+    "finalize": 0,
+    "verifier": null,
+    "total": 8.134148120880127
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 16.77633833885193,
+   "address_file_matches_tool_url": true
+  },
+  "harness-killall-again": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.624260663986206,
+    "setup": 0.1630384922027588,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.7872991561889648
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 9.012055397033691,
    "address_file_matches_tool_url": null
   }
  },
- "wall_s": 327.510404586792
+ "wall_s": 932.2640767097473
 }
