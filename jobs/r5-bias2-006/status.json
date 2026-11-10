@@ -1,9 +1,33 @@
 {
+  "billing_window_hours": 2.6,
+  "bundle": {
+    "bundle_sha256": "fa0066e07b4c84c7951d516e12edd0718473460928d437770d4c6bd4cde0f021",
+    "files": {
+      "job.sh": "c486a78181373d02242d5a693e692f60290bef1abcc12cb2c1e753d4e6ae48c5",
+      "request.json": "7d10c85222bd2ce7581b40ccfdddf0b9e6b40cc456c0faa6ab99d11189c8b69e",
+      "run.sh": "b7f6a551f58829edeafda0a938daaa1ff8c2a92ed7b20130a26bde85f7bc59f5",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "91807a0795859a503208265c7f62f0cbcc2a158090ae9410ad89f5039e8905a4"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round5/bias2"
+    ],
+    "ref": "affd4ecb2af5d298b774eb1badbb8f9abac57061",
+    "src_bytes": 18656427
+  },
   "cap_usd": 12.4,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-10T01:39:18Z",
@@ -14,11 +38,35 @@
       "at": "2026-11-10T01:46:50Z",
       "message": "accepted: H100_80GB via lambdalabs at $4.29/h, at most $7.94",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T01:46:58Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-bias2-006",
   "max_estimate_usd": 7.94,
-  "message": "accepted: H100_80GB via lambdalabs at $4.29/h, at most $7.94",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_h100_sxm5",
+      "country": "US",
+      "data_center": "us-southeast-1",
+      "disk_gb": 2816,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 225,
+      "provider": "lambdalabs",
+      "rank": 2,
+      "rate_usd_hr": 4.29,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 26
+    }
+  ],
   "plan": {
     "max_estimate_usd": 7.94,
     "offers": [
@@ -50,6 +98,6 @@
     "sha256": "5ce689b0f9581029cbf9b9172105ca668ada10f39ba04b2b985bfb467e28f4fc",
     "summary": "Fine to run; both earlier points fixed; tiny CPU run passed for all three worlds. 2 info: gliders is skipped only in the worst case; exit 137 still counts as a failure."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T01:46:50Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-10T01:46:58Z"
 }
