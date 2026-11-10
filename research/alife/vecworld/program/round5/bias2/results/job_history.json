@@ -82,6 +82,23 @@
    "started_at": "2026-11-10T00:20:58Z",
    "finished_at": "2026-11-10T00:54:07Z",
    "source": "origin/gpu-jobs:jobs/r5-bias2-005/status.json"
+  },
+  "r5-bias2-006": {
+   "worlds": [
+    "vortex",
+    "membrane",
+    "gliders"
+   ],
+   "code_commit": "affd4ecb2",
+   "cap_usd": 12.4,
+   "max_hours": 1.6,
+   "env": {
+    "B5_ARMS": "w",
+    "B5_PLAN": "vortex:900:1500:1800 membrane:300:1100:1400 gliders:300:800:1100",
+    "B5_JOB_HARD_S": "5100"
+   },
+   "history": "follow-up decided on 10 Nov 2026 01:30 UTC after the analysis of 004/005: the closure latents of the vortex world collapsed onto a box-scale mode (effective dimension 2-8 of 64) because the closure loss normalises pooled variance per channel, so whether closure prefers a transported density (vorticity) cannot be read from 005. New arm Lw / Nw: the same local encoders with the closure loss on latents whitened over all 64 blocks; the per-channel closure configs and all hand designs run again on the same simulated data",
+   "ref": "affd4ecb2af5d298b774eb1badbb8f9abac57061"
   }
  },
  "why_resubmitted": "Coordinator note of 9 Nov about 23:28 UTC, relaying the Mac runner: the nebius H200 listed at $5.55/h bills $6.69/h and offers under $4.98/h (A100 80GB, H100) were scarce, so the caps of 002/003 (which covered at most $4.98/h) fitted no offer for more than 30 minutes. New caps follow the runner's rule 6.69 x (max_hours + 0.25): $15.72 -> 15.8 (004), $16.39 -> 16.45 (005); both below the $25 auto-start limit, together $32.25 of the study cap of $35.",
@@ -99,5 +116,13 @@
  "billed_usd_total": 8.3071,
  "study_cap_usd": 35.0,
  "review_of_004_005": "origin/gpu-jobs:jobs/r5-bias2-004/review.md (same text for 005): fine to run; 2 minor points not yet fixed because no further job was submitted: (1) ctrain killed at the certification deadline would report a false failure and leave no train_done.json (did not happen: both runs finished training 2,000-4,700 s before their deadlines); (2) the pre-loop probes in job.sh have no timeout. Fix both before any resubmission.",
- "instances": "For a few minutes on 9 Nov 2026 (about 23:02-23:47 UTC) two instances of this agent worked in the same worktree (a coordinator mistake, recorded in the channel file); one handed over and stopped. The container then restarted at about 00:12, 00:53 and 01:12 UTC on 10 Nov; the analysis (canalyze, cextra, cpair, cinterp, csummary) was done by the instance started at 01:13 UTC from the outputs on origin/gpu-jobs."
+ "instances": "For a few minutes on 9 Nov 2026 (about 23:02-23:47 UTC) two instances of this agent worked in the same worktree (a coordinator mistake, recorded in the channel file); one handed over and stopped. The container then restarted at about 00:12, 00:53 and 01:12 UTC on 10 Nov; the analysis (canalyze, cextra, cpair, cinterp, csummary) was done by the instance started at 01:13 UTC from the outputs on origin/gpu-jobs.",
+ "code_changes_e24bc7b04_to_affd4ecb2": [
+  "c5.py: B5_ARMS=w selects the follow-up configs (Lw / Nw / L / N x halo 0 / 8, closure with a global head, c = 1); the default grid is unchanged",
+  "cnets.py: encoders Lw / Nw map to L / N (base_enc); train_glob_white(enc) = whitening inside the training loss (all 64 c numbers for U, Lw, Nw); glob_white(enc) = whitening of the frozen Phi (unchanged: U only)",
+  "ctrain.py: field shares and windows are saved for Lw / Nw as for L / N; info records train_whitening",
+  "job.sh: the pre-loop probes run under `timeout 120`; a ctrain stopped by its time limit (exit 124) is reported as a deadline stop, not a failure, and train_done.json is written (the runner's two minor review points on 004/005)",
+  "local tools only (not run on the pod): cfetch.sh B5_SUFFIX, cextra.py / cinterp.py / csummary.py read '<world>_w' as the follow-up job's run of <world>"
+ ],
+ "cpu_smoke_test_006": "job.sh end to end at tiny size (B5_TINY=1, CPU, one certification worker) from a git archive of exactly the requested paths at affd4ecb2 with the request's environment (B5_ARMS=w, the plan of three worlds, B5_JOB_HARD_S=5100): exit 0, FAIL=0, 403 s; the new configs Lw0_clos_c1 and Nw8_clos_c1 train with whitening over all blocks and are frozen with per-channel whitening (checked in the tiny combined.json)."
 }

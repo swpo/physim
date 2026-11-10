@@ -30,8 +30,9 @@ Updated 2026-11-10 01:16 UTC (instance 4, after the restart at about 01:12).
   jobs/r5-bias2-006/status.json is done/failed/timeout/cancelled/rejected/infra_error; (4) cfetch.sh r5-bias2-006
   vortex membrane gliders into results/w/ (NOT over results/<world>/: use RESULTS dir results_w, see cfetch.sh), canalyze,
   cpair, add claims W1.. to cclaims.py, csummary, README, job_history.json; (5) commit, push, remove worktree, report.
-- STATE: step 1 running (started 01:32 UTC). Request NOT yet pushed. If you find origin/gpu-jobs:jobs/r5-bias2-006 it
-  was pushed: never resubmit that id; just watch it.
+- STATE (01:40 UTC): step 1 passed (exit 0, 403 s). Step 2 done: request r5-bias2-006 pushed with ref pinned to
+  affd4ecb2. Now at step 3 (watching). Never resubmit id 006. If it failed: read logs, fix, CPU-test, resubmit as 007
+  only if the remaining cap allows (spent $8.31 + 006's bill; study cap $35).
 
 ## Next if the follow-up is abandoned
 Report from results/summary.json as it is; say the follow-up was not run and why.
