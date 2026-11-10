@@ -295,5 +295,117 @@ S["review_of_job1"] = V({
                       "scan rerun from job 2's measured rate",
     "info: atomic npz": "fixed in job1.py and job2.py (temporary name, then os.replace)"},
     "origin/gpu-jobs:jobs/r5-vortexexam-002/review.md and the coordinator's relay of it")
+
+
+# ----------------------------------------------------------------------------- headline: the numbers of the report
+def headline():
+    """Each entry: value + the summary section (and through it the job file and key) it is taken from."""
+    Hd = {}
+
+    def put(name, value, section, note=None):
+        Hd[name] = {"value": value, "from": f"summary.json {section}", "source": S[section.split(" ")[0]]["source"]}
+        if note:
+            Hd[name]["note"] = note
+    if "throughput" in S:
+        rows = S["throughput"]["value"]
+        put("member_ticks_per_s_H200", {f"{q['H']}px_B{q['B']}": round(q["member_ticks_per_s"]) for q in rows if q.get("track")},
+            "throughput", "job 1, H200, float64, with the vortex tracker")
+        t128 = [q for q in rows if q["H"] == 128 and q["B"] == 1024]
+        if len(t128) == 2:
+            put("tracker_and_host_pipeline_cost_128px", round(1 - t128[0]["member_ticks_per_s"] / t128[1]["member_ticks_per_s"], 4)
+                if t128[1]["track"] is False else round(1 - t128[1]["member_ticks_per_s"] / t128[0]["member_ticks_per_s"], 4),
+                "throughput", "1 - rate with the tracker / rate without, batch 1024")
+    for tag, jid, st in (("", J2, st2), ("_B", J3, st3)):
+        if "platform_job" + tag in S:
+            pj = S["platform_job" + tag]["value"]
+            gpu = ((st or {}).get("pods") or [{}])[0]
+            rate_usd = gpu.get("rate_usd_hr")
+            put("exam_job" + tag, {"job": jid, "gpu": gpu.get("gpu"), "provider": gpu.get("provider"), "usd_per_hour": rate_usd,
+                                  "member_ticks_per_s": round(pj["rate"], 1), "preset": pj["preset"],
+                                  "member_ticks": pj["member_ticks_total"], "hours_in_job": r(pj["hours"]),
+                                  "usd_per_million_member_ticks": round(rate_usd / 3600 / pj["rate"] * 1e6, 2) if rate_usd else None,
+                                  "billed_usd": ((st or {}).get("cost") or {}).get("billed_usd")}, "platform_job" + tag)
+    if st1 and "throughput" in S:
+        rr = [q for q in S["throughput"]["value"] if q["H"] == 128 and q["B"] == 1024 and q.get("track")]
+        rate1 = (st1.get("pods") or [{}])[0].get("rate_usd_hr")
+        if rr and rate1:
+            put("usd_per_million_member_ticks_H200_128px", round(rate1 / 3600 / rr[0]["member_ticks_per_s"] * 1e6, 2), "throughput",
+                f"at the billed ${rate1}/h of job 1")
+    if "law" in S:
+        L = S["law"]["value"]["s_b"]
+        put("law_b1_per_eps", {"eps": S["law"]["value"]["eps"], "b1": L["b1_per_eps"], "se": L["b1_se"]}, "law")
+        put("law_b1_line_eps_positive", L["b1_line_eps_positive"], "law")
+        put("law_b1_proportional_chi2", L["b1_proportional"], "law")
+        put("law_shape_r2", L["shape_r2"], "law")
+        put("law_share_of_change_variance", L["share_of_change_variance_explained_by_law"], "law")
+        put("law_integrated_mean_max_abs_error", {"in_sample": L["integrated_law_max_abs_error_of_mean"],
+                                                  "out_of_sample": L["integrated_law_out_of_sample"]}, "law")
+    if "scan" in S and S["scan"]["value"].get("table"):
+        tb = S["scan"]["value"]["table"]
+        put("headroom_level2_lo_hi", {q: [tb[q]["L2_lo"], tb[q]["L2_hi"]] for q in tb}, "scan")
+        put("headroom_level1_lo_hi", {q: [tb[q]["L1_lo"], tb[q]["L1_hi"]] for q in tb}, "scan")
+        put("headroom_null_floor", {q: S["scan"]["value"]["null_floor"][q] for q in ("L2_mean", "L2_mean_se", "L1_mean", "L1_mean_se")}, "scan")
+    for tag in ("", "_B"):
+        if "ladder" + tag not in S:
+            continue
+        lad, gp, ac = S["ladder" + tag]["value"], S["gaps_by_truth" + tag]["value"], S["acceptance_variants" + tag]["value"]
+        nb = str(lad["budgets_episodes"][-1])
+        fam = lad["families"]
+        sk = {}
+        for f in fam:
+            sk[f] = {q: fam[f][q]["skill"] for q in ("P0", "C", "PM", "Cded", "Cft") if q in fam[f]}
+            for q in ("D", "S", "S2", "Sded", "Sft"):
+                if q in fam[f]:
+                    sk[f][q] = {n: v["skill"] for n, v in fam[f][q].items()}
+        put("skill" + tag, sk, "ladder" + tag, "(L(K) - L) / (L(K) - L(O)), pooled over items and the primary cells")
+        put("refs" + tag, {q: lad[q] for q in ("L_K", "L_O", "skill_K0", "skill_O_noinput", "n_truths", "n_items_per_truth")}, "ladder" + tag)
+        acc = {}
+        for k, v in ac.items():
+            parts = k.split("|")
+            if parts[0].endswith("@" + nb) and (k.endswith("|K|joint") or k.endswith("|finetuned") or k.endswith("|dedicated")
+                                                or k.endswith("|C_full_history")):
+                acc[k] = {q: v[q] for q in ("sigma", "sigma_se_worlds", "null_is", "rho", "rho_se_worlds", "pass_sigma", "pass_rho",
+                                            "worlds_passing_sigma", "n_worlds")}
+        put("acceptance_at_largest_budget" + tag, acc, "acceptance_variants" + tag)
+        put("acceptance_best_over_families" + tag, S["acceptance_best_over_families" + tag]["value"], "acceptance_best_over_families" + tag)
+        keep = {}
+        for k, v in gp.items():
+            if k in ("net|PM - net|C", "net|P0 - net|C", "net|PM - net|P0", "ridge|PM - ridge|C", "net|P0 - net|Cft", "net|C - net|Cft",
+                     "net|Cded - net|Cft", "net~3|P0 - net~3|C", "net~3|P0 - net~3|Cft", "net~3|PM - net~3|C", "net~3|P0 - net|P0",
+                     "net~3|C - net|C", "net~3|Cft - net|Cft", "lin2|P0 - net|P0", "ridge|P0 - net|P0", "law|P0 - net|P0", "K0 - K",
+                     "O_noinput - oracle", f"net|D@{nb} - net|P0", f"net~3|D@{nb} - net~3|P0", f"ridge~3|D@{nb} - net~3|P0"):
+                keep[k] = {q: v[q] for q in ("in_skill_units", "z_truths", "truths_with_sign_of_mean", "n_truths")}
+        put("gaps" + tag, keep, "gaps_by_truth" + tag, "first minus second in skill units (positive: the second is better)")
+        put("theory_T" + tag, {n: {"skill_T": v["skill_T"], "share_of_D_to_C_gap_closed_by_T": v.get("share_of_D_to_C_gap_closed_by_T"),
+                                   **{q: {"in_skill_units": v[q]["in_skill_units"], "z_truths": v[q]["z_truths"]} for q in v
+                                      if isinstance(v[q], dict)}} for n, v in S["theory_T" + tag]["value"].items()}, "theory_T" + tag)
+        cc = S["cchg_by_truth" + tag]["value"]
+        put("predictable_change_s_b" + tag, {
+            "hs_ticks": cc["hs_ticks"], "oracle_share_pooled": [x[1] for x in cc["oracle_predictable_share_pooled"]],
+            "oracle_share_within_truth": [x[1] for x in cc["oracle_predictable_share_within_truth"]],
+            "reached_pooled": {q: [x[1] for x in v] for q, v in cc["reached_pooled"].items()
+                               if q.split("|")[-1] in ("P0", "C", "Cft", "Cded") or q in ("anchor",)},
+            "reached_within_truth": {q: {"value": [x[1] for x in v["value"]], "se_truths": [x[1] for x in v["se_truths"]]}
+                                     for q, v in cc["reached_within_truth"].items()
+                                     if q.split("|")[-1] in ("P0", "C", "Cft", "Cded")}}, "cchg_by_truth" + tag)
+        if "identification_digest" + tag in S:
+            idg = S["identification_digest" + tag]["value"]
+            put("identification" + tag, {"names": idg["names"], "contraction": idg["contraction_by_level_and_budget"],
+                                         "in90": idg["in90"]}, "identification_digest" + tag)
+        if "law_design" + tag in S:
+            ld = S["law_design" + tag]["value"]
+            put("law_on_design" + tag, {q: ld[q] for q in ("share_explained", "b1_at_box_centre", "b1_slope_per_unit_eps",
+                                                           "b1_zero_crossing_eps_at_centre_of_others", "b1_relative_change_across_box",
+                                                           "b2_relative_change_across_box", "per_theta_b1", "n_thetas")}, "law_design" + tag)
+        if "by_program_class" + tag in S:
+            put("oracle_without_program_by_class" + tag, {g: v.get("O_noinput") for g, v in S["by_program_class" + tag]["value"].items()},
+                "by_program_class" + tag, "OES of the oracle that ignores the test program (a none, b blind, c aimed, d regional)")
+    Hd["gliders_reference"] = {"value": {"prior_mean_plug_in_loss_oes": [0.03, 0.09], "sigma_max": 0.05, "rho_range": [0.77, 0.94],
+                                         "usd_per_million_member_ticks_A100": 0.40},
+                               "from": "program/README.md (round 4, round4/sbi) and roadmap/ROADMAP.md sections 1-2; not recomputed here"}
+    return Hd
+
+
+S["headline"] = headline()
 json.dump(S, open(os.path.join(RES, "summary.json"), "w"), indent=1)
 print("wrote", os.path.join(RES, "summary.json"), "keys", list(S))

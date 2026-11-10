@@ -14431,5 +14431,1038 @@
    "info: atomic npz": "fixed in job1.py and job2.py (temporary name, then os.replace)"
   },
   "source": "origin/gpu-jobs:jobs/r5-vortexexam-002/review.md and the coordinator's relay of it"
+ },
+ "headline": {
+  "member_ticks_per_s_H200": {
+   "value": {
+    "64px_B256": 1388,
+    "128px_B256": 425,
+    "96px_B512": 599,
+    "64px_B1024": 1551,
+    "128px_B64": 374,
+    "128px_B1024": 444,
+    "64px_B4096": 1577
+   },
+   "from": "summary.json throughput",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) bench (job out bench.json)",
+   "note": "job 1, H200, float64, with the vortex tracker"
+  },
+  "tracker_and_host_pipeline_cost_128px": {
+   "value": 0.0096,
+   "from": "summary.json throughput",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) bench (job out bench.json)",
+   "note": "1 - rate with the tracker / rate without, batch 1024"
+  },
+  "exam_job": {
+   "value": {
+    "job": "r5-vortexexam-003",
+    "gpu": "A100_40GB",
+    "provider": "lambdalabs",
+    "usd_per_hour": 1.99,
+    "member_ticks_per_s": 169.4,
+    "preset": "small",
+    "member_ticks": 293504,
+    "hours_in_job": 0.544,
+    "usd_per_million_member_ticks": 3.26,
+    "billed_usd": 1.3077
+   },
+   "from": "summary.json platform_job",
+   "source": "origin/gpu-jobs:jobs/r5-vortexexam-003/out/info.json"
+  },
+  "usd_per_million_member_ticks_H200_128px": {
+   "value": 4.18,
+   "from": "summary.json throughput",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) bench (job out bench.json)",
+   "note": "at the billed $6.69/h of job 1"
+  },
+  "law_b1_per_eps": {
+   "value": {
+    "eps": [
+     0.0,
+     0.1,
+     0.2,
+     0.3,
+     0.4
+    ],
+    "b1": [
+     -0.0055,
+     0.0583,
+     0.2038,
+     0.3454,
+     0.4935
+    ],
+    "se": [
+     0.0085,
+     0.007,
+     0.006,
+     0.0085,
+     0.012
+    ]
+   },
+   "from": "summary.json law",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) law (job out law.npz)"
+  },
+  "law_b1_line_eps_positive": {
+   "value": {
+    "c0": -0.0859,
+    "c1": 1.4443,
+    "chi2": 0.0928,
+    "dof": 2,
+    "zero_crossing_eps": 0.0594
+   },
+   "from": "summary.json law",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) law (job out law.npz)"
+  },
+  "law_b1_proportional_chi2": {
+   "value": {
+    "c": 1.1046,
+    "chi2": 85.0278,
+    "dof": 4
+   },
+   "from": "summary.json law",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) law (job out law.npz)"
+  },
+  "law_shape_r2": {
+   "value": [
+    0.95,
+    0.949,
+    0.963,
+    0.969,
+    0.976
+   ],
+   "from": "summary.json law",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) law (job out law.npz)"
+  },
+  "law_share_of_change_variance": {
+   "value": [
+    0.059,
+    0.056,
+    0.122,
+    0.333,
+    0.494
+   ],
+   "from": "summary.json law",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) law (job out law.npz)"
+  },
+  "law_integrated_mean_max_abs_error": {
+   "value": {
+    "in_sample": [
+     0.017,
+     0.015,
+     0.027,
+     0.025,
+     0.053
+    ],
+    "out_of_sample": {
+     "max_abs_error": [
+      0.039,
+      0.026,
+      0.04,
+      0.034,
+      0.056
+     ],
+     "max_abs_z": [
+      3.9,
+      3.6,
+      2.8,
+      6.8,
+      4.5
+     ],
+     "se_of_actual_mean": [
+      0.016,
+      0.018,
+      0.015,
+      0.011,
+      0.01
+     ]
+    }
+   },
+   "from": "summary.json law",
+   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) law (job out law.npz)"
+  },
+  "headroom_level2_lo_hi": {
+   "value": {
+    "eps": [
+     0.404,
+     2.727
+    ],
+    "kF": [
+     0.727,
+     4.931
+    ],
+    "e": [
+     8.402,
+     0.936
+    ],
+    "nu": [
+     0.905,
+     0.269
+    ],
+    "mut128": [
+     -0.013,
+     -0.099
+    ],
+    "k": [
+     0.463,
+     3.211
+    ],
+    "mu": [
+     4.341,
+     1.046
+    ],
+    "kl": [
+     0.169,
+     0.065
+    ],
+    "dl": [
+     0.038,
+     0.031
+    ],
+    "Dl": [
+     -0.036,
+     0.073
+    ],
+    "adv": [
+     0.12,
+     0.135
+    ],
+    "kY": [
+     0.049,
+     0.119
+    ],
+    "wi": [
+     5.792,
+     0.163
+    ]
+   },
+   "from": "summary.json scan",
+   "source": "results/analysis1.json scan (analyse1.py on job r5-vortexexam-002: scan_main.npz, scan_branch_small.npz)"
+  },
+  "headroom_level1_lo_hi": {
+   "value": {
+    "eps": [
+     0.084,
+     0.549
+    ],
+    "kF": [
+     0.044,
+     0.303
+    ],
+    "e": [
+     0.935,
+     0.123
+    ],
+    "nu": [
+     0.082,
+     0.01
+    ],
+    "mut128": [
+     -0.003,
+     0.042
+    ],
+    "k": [
+     0.161,
+     0.53
+    ],
+    "mu": [
+     0.524,
+     0.133
+    ],
+    "kl": [
+     0.03,
+     -0.011
+    ],
+    "dl": [
+     -0.012,
+     -0.017
+    ],
+    "Dl": [
+     -0.035,
+     -0.026
+    ],
+    "adv": [
+     0.1,
+     0.14
+    ],
+    "kY": [
+     0.103,
+     0.038
+    ],
+    "wi": [
+     3.563,
+     0.114
+    ]
+   },
+   "from": "summary.json scan",
+   "source": "results/analysis1.json scan (analyse1.py on job r5-vortexexam-002: scan_main.npz, scan_branch_small.npz)"
+  },
+  "headroom_null_floor": {
+   "value": {
+    "L2_mean": 0.105,
+    "L2_mean_se": 0.049,
+    "L1_mean": 0.013,
+    "L1_mean_se": 0.026
+   },
+   "from": "summary.json scan",
+   "source": "results/analysis1.json scan (analyse1.py on job r5-vortexexam-002: scan_main.npz, scan_branch_small.npz)"
+  },
+  "skill": {
+   "value": {
+    "net": {
+     "P0": 0.5587,
+     "C": 0.557,
+     "PM": 0.3513,
+     "D": {
+      "1": -0.3795,
+      "2": -0.4875,
+      "4": 0.0614,
+      "8": 0.2095
+     },
+     "S": {
+      "1": 0.5625,
+      "2": 0.5502,
+      "4": 0.549,
+      "8": 0.5631
+     },
+     "S2": {
+      "1": 0.5545,
+      "2": 0.5626,
+      "4": 0.5619,
+      "8": 0.5743
+     }
+    },
+    "ridge": {
+     "P0": 0.4559,
+     "C": 0.4876,
+     "PM": -0.1322,
+     "D": {
+      "1": -1.281,
+      "2": -0.5034,
+      "4": -0.1545,
+      "8": 0.3905
+     },
+     "S": {
+      "1": 0.4916,
+      "2": 0.4975,
+      "4": 0.486,
+      "8": 0.4914
+     },
+     "S2": {
+      "1": 0.4714,
+      "2": 0.4843,
+      "4": 0.4897,
+      "8": 0.4943
+     }
+    },
+    "law": {
+     "P0": 0.2114,
+     "C": 0.3495,
+     "PM": -0.0764,
+     "D": {
+      "1": 0.3833,
+      "2": 0.4595,
+      "4": 0.4782,
+      "8": 0.4967
+     },
+     "S": {
+      "1": 0.3436,
+      "2": 0.3553,
+      "4": 0.353,
+      "8": 0.3531
+     },
+     "S2": {
+      "1": 0.3448,
+      "2": 0.361,
+      "4": 0.3577,
+      "8": 0.3555
+     }
+    },
+    "lin2": {
+     "P0": 0.3819,
+     "C": 0.4059,
+     "PM": 0.2211,
+     "D": {
+      "1": -0.7099,
+      "2": 0.2066,
+      "4": 0.3632,
+      "8": 0.5051
+     },
+     "S": {
+      "1": 0.4003,
+      "2": 0.4119,
+      "4": 0.4079,
+      "8": 0.4036
+     },
+     "S2": {
+      "1": 0.3958,
+      "2": 0.4097,
+      "4": 0.4012,
+      "8": 0.3971
+     }
+    }
+   },
+   "from": "summary.json ladder",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) ladder",
+   "note": "(L(K) - L) / (L(K) - L(O)), pooled over items and the primary cells"
+  },
+  "refs": {
+   "value": {
+    "L_K": 0.3871,
+    "L_O": 0.1748,
+    "skill_K0": -3.0554,
+    "skill_O_noinput": 0.7743,
+    "n_truths": 6,
+    "n_items_per_truth": 32
+   },
+   "from": "summary.json ladder",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) ladder"
+  },
+  "acceptance_at_largest_budget": {
+   "value": {
+    "net@8|K|joint": {
+     "sigma": -0.003,
+     "sigma_se_worlds": 0.029,
+     "null_is": "P0",
+     "rho": -2.723,
+     "rho_se_worlds": 2.792,
+     "pass_sigma": false,
+     "pass_rho": true,
+     "worlds_passing_sigma": 1,
+     "n_worlds": 6
+    },
+    "ridge@8|K|joint": {
+     "sigma": 0.065,
+     "sigma_se_worlds": 0.09,
+     "null_is": "P0",
+     "rho": 1.119,
+     "rho_se_worlds": 3.706,
+     "pass_sigma": false,
+     "pass_rho": false,
+     "worlds_passing_sigma": 1,
+     "n_worlds": 6
+    },
+    "law@8|K|joint": {
+     "sigma": -0.421,
+     "sigma_se_worlds": 5.011,
+     "null_is": "D",
+     "rho": 1.026,
+     "rho_se_worlds": 0.146,
+     "pass_sigma": false,
+     "pass_rho": false,
+     "worlds_passing_sigma": 1,
+     "n_worlds": 6
+    },
+    "lin2@8|K|joint": {
+     "sigma": -0.244,
+     "sigma_se_worlds": 0.41,
+     "null_is": "D",
+     "rho": 0.905,
+     "rho_se_worlds": 2.276,
+     "pass_sigma": false,
+     "pass_rho": false,
+     "worlds_passing_sigma": 2,
+     "n_worlds": 6
+    }
+   },
+   "from": "summary.json acceptance_variants",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) acceptance.rows"
+  },
+  "acceptance_best_over_families": {
+   "value": {
+    "full_history": {
+     "1": {
+      "null": "net|P0",
+      "C": "net|C",
+      "P0": "net|P0",
+      "S": "net|S@1",
+      "sigma": -0.003,
+      "sigma_se_truths": 0.028,
+      "rho": -2.35
+     },
+     "2": {
+      "null": "net|P0",
+      "C": "net|C",
+      "P0": "net|P0",
+      "S": "net|S@2",
+      "sigma": -0.003,
+      "sigma_se_truths": 0.028,
+      "rho": 5.224
+     },
+     "4": {
+      "null": "net|P0",
+      "C": "net|C",
+      "P0": "net|P0",
+      "S": "net|S@4",
+      "sigma": -0.003,
+      "sigma_se_truths": 0.027,
+      "rho": 5.913
+     },
+     "8": {
+      "null": "net|P0",
+      "C": "net|C",
+      "P0": "net|P0",
+      "S": "net|S@8",
+      "sigma": -0.003,
+      "sigma_se_truths": 0.028,
+      "rho": -2.723
+     }
+    },
+    "short_history": {
+     "1": {
+      "null": "law|D@1",
+      "C": "law|C",
+      "P0": "law|P0",
+      "S": "law|S@1",
+      "sigma": -0.097,
+      "sigma_se_truths": 2.628,
+      "rho": 0.957
+     },
+     "2": {
+      "null": "law|D@2",
+      "C": "law|C",
+      "P0": "law|P0",
+      "S": "law|S@2",
+      "sigma": -0.315,
+      "sigma_se_truths": 4.225,
+      "rho": 1.042
+     },
+     "4": {
+      "null": "law|D@4",
+      "C": "law|C",
+      "P0": "law|P0",
+      "S": "law|S@4",
+      "sigma": -0.368,
+      "sigma_se_truths": 3.153,
+      "rho": 1.025
+     },
+     "8": {
+      "null": "law|D@8",
+      "C": "law|C",
+      "P0": "law|P0",
+      "S": "law|S@8",
+      "sigma": -0.421,
+      "sigma_se_truths": 3.24,
+      "rho": 1.026
+     }
+    }
+   },
+   "from": "summary.json acceptance_best_over_families",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) acceptance.best_over_families"
+  },
+  "gaps": {
+   "value": {
+    "net|P0 - net|C": {
+     "in_skill_units": -0.0016,
+     "z_truths": -0.1082,
+     "truths_with_sign_of_mean": 3,
+     "n_truths": 6
+    },
+    "net|PM - net|C": {
+     "in_skill_units": 0.2057,
+     "z_truths": 2.423,
+     "truths_with_sign_of_mean": 5,
+     "n_truths": 6
+    },
+    "net|PM - net|P0": {
+     "in_skill_units": 0.2074,
+     "z_truths": 2.4786,
+     "truths_with_sign_of_mean": 5,
+     "n_truths": 6
+    },
+    "net|D@8 - net|P0": {
+     "in_skill_units": 0.3491,
+     "z_truths": 4.4389,
+     "truths_with_sign_of_mean": 6,
+     "n_truths": 6
+    },
+    "ridge|PM - ridge|C": {
+     "in_skill_units": 0.6198,
+     "z_truths": 3.4353,
+     "truths_with_sign_of_mean": 6,
+     "n_truths": 6
+    },
+    "lin2|P0 - net|P0": {
+     "in_skill_units": 0.1768,
+     "z_truths": 4.7512,
+     "truths_with_sign_of_mean": 6,
+     "n_truths": 6
+    },
+    "ridge|P0 - net|P0": {
+     "in_skill_units": 0.1028,
+     "z_truths": 2.5626,
+     "truths_with_sign_of_mean": 5,
+     "n_truths": 6
+    },
+    "law|P0 - net|P0": {
+     "in_skill_units": 0.3473,
+     "z_truths": 6.0865,
+     "truths_with_sign_of_mean": 6,
+     "n_truths": 6
+    },
+    "K0 - K": {
+     "in_skill_units": 3.0554,
+     "z_truths": 2.9854,
+     "truths_with_sign_of_mean": 6,
+     "n_truths": 6
+    },
+    "O_noinput - oracle": {
+     "in_skill_units": 0.2257,
+     "z_truths": 5.6996,
+     "truths_with_sign_of_mean": 6,
+     "n_truths": 6
+    }
+   },
+   "from": "summary.json gaps_by_truth",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) gaps_L_by_truth",
+   "note": "first minus second in skill units (positive: the second is better)"
+  },
+  "theory_T": {
+   "value": {
+    "1": {
+     "skill_T": 0.3833,
+     "share_of_D_to_C_gap_closed_by_T": 0.8145,
+     "net|D@1 - T": {
+      "in_skill_units": 0.7628,
+      "z_truths": 4.3384
+     },
+     "ridge|D@1 - T": {
+      "in_skill_units": 1.6642,
+      "z_truths": 6.8076
+     },
+     "lin2|D@1 - T": {
+      "in_skill_units": 1.0932,
+      "z_truths": 4.633
+     },
+     "net|P0 - T": {
+      "in_skill_units": -0.1754,
+      "z_truths": -2.9458
+     },
+     "law|P0 - T": {
+      "in_skill_units": 0.1719,
+      "z_truths": 1.5463
+     },
+     "net|C - T": {
+      "in_skill_units": -0.1738,
+      "z_truths": -2.4984
+     },
+     "law|C - T": {
+      "in_skill_units": 0.0338,
+      "z_truths": 0.4022
+     },
+     "net|S@1 - T": {
+      "in_skill_units": -0.1792,
+      "z_truths": -2.5389
+     }
+    },
+    "2": {
+     "skill_T": 0.4595,
+     "share_of_D_to_C_gap_closed_by_T": 0.9066,
+     "net|D@2 - T": {
+      "in_skill_units": 0.947,
+      "z_truths": 6.205
+     },
+     "ridge|D@2 - T": {
+      "in_skill_units": 0.9629,
+      "z_truths": 4.4133
+     },
+     "lin2|D@2 - T": {
+      "in_skill_units": 0.2529,
+      "z_truths": 6.2868
+     },
+     "net|P0 - T": {
+      "in_skill_units": -0.0992,
+      "z_truths": -2.5021
+     },
+     "law|P0 - T": {
+      "in_skill_units": 0.2481,
+      "z_truths": 2.9665
+     },
+     "net|C - T": {
+      "in_skill_units": -0.0975,
+      "z_truths": -2.737
+     },
+     "law|C - T": {
+      "in_skill_units": 0.11,
+      "z_truths": 1.8937
+     },
+     "net|S@2 - T": {
+      "in_skill_units": -0.0906,
+      "z_truths": -2.5867
+     }
+    },
+    "4": {
+     "skill_T": 0.4782,
+     "share_of_D_to_C_gap_closed_by_T": 0.8409,
+     "net|D@4 - T": {
+      "in_skill_units": 0.4168,
+      "z_truths": 7.8785
+     },
+     "ridge|D@4 - T": {
+      "in_skill_units": 0.6326,
+      "z_truths": 5.6529
+     },
+     "lin2|D@4 - T": {
+      "in_skill_units": 0.1149,
+      "z_truths": 5.3362
+     },
+     "net|P0 - T": {
+      "in_skill_units": -0.0805,
+      "z_truths": -2.0016
+     },
+     "law|P0 - T": {
+      "in_skill_units": 0.2668,
+      "z_truths": 3.0608
+     },
+     "net|C - T": {
+      "in_skill_units": -0.0789,
+      "z_truths": -2.1137
+     },
+     "law|C - T": {
+      "in_skill_units": 0.1286,
+      "z_truths": 2.2762
+     },
+     "net|S@4 - T": {
+      "in_skill_units": -0.0709,
+      "z_truths": -1.8894
+     }
+    },
+    "8": {
+     "skill_T": 0.4967,
+     "share_of_D_to_C_gap_closed_by_T": 0.8263,
+     "net|D@8 - T": {
+      "in_skill_units": 0.2871,
+      "z_truths": 2.8468
+     },
+     "ridge|D@8 - T": {
+      "in_skill_units": 0.1062,
+      "z_truths": 2.2267
+     },
+     "lin2|D@8 - T": {
+      "in_skill_units": -0.0084,
+      "z_truths": -0.5106
+     },
+     "net|P0 - T": {
+      "in_skill_units": -0.062,
+      "z_truths": -1.2391
+     },
+     "law|P0 - T": {
+      "in_skill_units": 0.2853,
+      "z_truths": 2.9359
+     },
+     "net|C - T": {
+      "in_skill_units": -0.0604,
+      "z_truths": -1.2601
+     },
+     "law|C - T": {
+      "in_skill_units": 0.1472,
+      "z_truths": 2.2172
+     },
+     "net|S@8 - T": {
+      "in_skill_units": -0.0664,
+      "z_truths": -1.3313
+     }
+    }
+   },
+   "from": "summary.json theory_T",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) theory_T"
+  },
+  "predictable_change_s_b": {
+   "value": {
+    "hs_ticks": [
+     8,
+     16,
+     32
+    ],
+    "oracle_share_pooled": [
+     0.482,
+     0.47,
+     0.468
+    ],
+    "oracle_share_within_truth": [
+     0.461,
+     0.427,
+     0.394
+    ],
+    "reached_pooled": {
+     "anchor": [
+      -0.117,
+      -0.514,
+      -0.936
+     ],
+     "net|P0": [
+      0.162,
+      0.426,
+      0.537
+     ],
+     "net|C": [
+      -0.098,
+      0.184,
+      0.506
+     ],
+     "ridge|P0": [
+      0.164,
+      0.403,
+      0.43
+     ],
+     "ridge|C": [
+      0.062,
+      0.357,
+      0.402
+     ],
+     "law|P0": [
+      -0.078,
+      -0.063,
+      -0.115
+     ],
+     "law|C": [
+      0.006,
+      0.162,
+      0.314
+     ],
+     "lin2|P0": [
+      0.032,
+      0.081,
+      -0.033
+     ],
+     "lin2|C": [
+      0.058,
+      0.236,
+      0.253
+     ]
+    },
+    "reached_within_truth": {
+     "net|P0": {
+      "value": [
+       0.089,
+       0.318,
+       0.374
+      ],
+      "se_truths": [
+       0.124,
+       0.099,
+       0.128
+      ]
+     },
+     "net|C": {
+      "value": [
+       -0.195,
+       0.031,
+       0.331
+      ],
+      "se_truths": [
+       0.323,
+       0.145,
+       0.081
+      ]
+     },
+     "ridge|P0": {
+      "value": [
+       0.091,
+       0.292,
+       0.229
+      ],
+      "se_truths": [
+       0.091,
+       0.103,
+       0.125
+      ]
+     },
+     "ridge|C": {
+      "value": [
+       -0.02,
+       0.237,
+       0.191
+      ],
+      "se_truths": [
+       0.089,
+       0.106,
+       0.07
+      ]
+     },
+     "law|P0": {
+      "value": [
+       -0.173,
+       -0.261,
+       -0.509
+      ],
+      "se_truths": [
+       0.138,
+       0.163,
+       0.282
+      ]
+     },
+     "law|C": {
+      "value": [
+       -0.081,
+       0.005,
+       0.071
+      ],
+      "se_truths": [
+       0.044,
+       0.063,
+       0.127
+      ]
+     },
+     "lin2|P0": {
+      "value": [
+       -0.054,
+       -0.091,
+       -0.397
+      ],
+      "se_truths": [
+       0.156,
+       0.153,
+       0.276
+      ]
+     },
+     "lin2|C": {
+      "value": [
+       -0.025,
+       0.093,
+       -0.011
+      ],
+      "se_truths": [
+       0.116,
+       0.101,
+       0.19
+      ]
+     }
+    }
+   },
+   "from": "summary.json cchg_by_truth",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) cchg"
+  },
+  "identification": {
+   "value": {
+    "names": [
+     "eps",
+     "mut128",
+     "nu",
+     "e"
+    ],
+    "contraction": {
+     "L1@1": [
+      0.227,
+      0.436,
+      0.285,
+      0.064
+     ],
+     "L1@2": [
+      0.176,
+      0.367,
+      0.222,
+      0.049
+     ],
+     "L1@4": [
+      0.136,
+      0.335,
+      0.151,
+      0.038
+     ],
+     "L1@8": [
+      0.122,
+      0.308,
+      0.129,
+      0.034
+     ],
+     "L2@1": [
+      0.383,
+      0.652,
+      0.369,
+      0.208
+     ],
+     "L2@2": [
+      0.335,
+      0.574,
+      0.301,
+      0.189
+     ],
+     "L2@4": [
+      0.297,
+      0.527,
+      0.215,
+      0.158
+     ],
+     "L2@8": [
+      0.282,
+      0.484,
+      0.203,
+      0.155
+     ]
+    },
+    "in90": {
+     "L1@1": 0.875,
+     "L1@2": 0.917,
+     "L1@4": 0.958,
+     "L1@8": 0.958,
+     "L2@1": 0.958,
+     "L2@2": 1.0,
+     "L2@4": 0.917,
+     "L2@8": 0.875
+    }
+   },
+   "from": "summary.json identification_digest",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) identification"
+  },
+  "law_on_design": {
+   "value": {
+    "share_explained": {
+     "law_constants_fixed": 0.024,
+     "law_b_linear_in_eps_only": 0.1701,
+     "law_b_linear_in_all_theta": 0.1816,
+     "plus_eps_squared_in_b1": 0.1826
+    },
+    "b1_at_box_centre": 0.1692,
+    "b1_slope_per_unit_eps": 1.2975,
+    "b1_zero_crossing_eps_at_centre_of_others": 0.0696,
+    "b1_relative_change_across_box": {
+     "eps": 3.0683,
+     "mut128": 0.1305,
+     "nu": 0.0531,
+     "e": -0.413
+    },
+    "b2_relative_change_across_box": {
+     "eps": -0.8969,
+     "mut128": -1.2288,
+     "nu": 0.0682,
+     "e": 0.5126
+    },
+    "per_theta_b1": {
+     "r2_linear_in_all_theta": 0.7406,
+     "r2_linear_in_eps_only": 0.7379,
+     "sd_over_thetas": 0.2373,
+     "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta"
+    },
+    "n_thetas": 192
+   },
+   "from": "summary.json law_design",
+   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) law_design"
+  },
+  "oracle_without_program_by_class": {
+   "value": {
+    "a": 1.024,
+    "b": 0.701,
+    "c": 0.778,
+    "d": 0.556
+   },
+   "from": "summary.json by_program_class",
+   "source": "origin/gpu-jobs:jobs/r5-vortexexam-003/out/prediction.json oes_by_program_class",
+   "note": "OES of the oracle that ignores the test program (a none, b blind, c aimed, d regional)"
+  },
+  "gliders_reference": {
+   "value": {
+    "prior_mean_plug_in_loss_oes": [
+     0.03,
+     0.09
+    ],
+    "sigma_max": 0.05,
+    "rho_range": [
+     0.77,
+     0.94
+    ],
+    "usd_per_million_member_ticks_A100": 0.4
+   },
+   "from": "program/README.md (round 4, round4/sbi) and roadmap/ROADMAP.md sections 1-2; not recomputed here"
+  }
  }
 }
