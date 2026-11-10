@@ -85,6 +85,15 @@ sure to take a look at primes verifiers library we're using and make sure we're 
   its local token and publishes the commit hash and file hashes. The local copy is deleted once the upload is
   verified against the hashes, so exam data passes through the laptop but does not stay there. Until the runner has
   this, anything a job writes to `$OUT` is public: no sealed answers in `$OUT`.
+- Where evaluations run (10 Nov, after the verifiers memo): "Mac can run evals". The machine that runs `vf-eval`
+  holds the read token and scores in its own process, so for sealed exams it is the lead's Mac. This replaces the
+  coordinator's earlier wording that grading would run in a separate cloud environment. Exam data passes through the
+  Mac during a run; its local cache is wiped afterwards, like the sealed outputs of GPU jobs.
+- Uploading traces to Prime's platform (the verifiers default): "pilot traces can be uploaded if it buys us
+  something". The coordinator's reading, to be applied run by run: no upload for scripted, model-free runs (nothing in
+  them is worth a hosted viewer); upload allowed for pilot rollouts of real models, where it lets the lead read the
+  transcript in Prime's viewer and keeps a copy off the laptop, after one saved trace has been read to confirm what an
+  upload contains; never for a sealed exam (GRADER_VS_VERIFIERS.md, hole 6).
 - Grader: not to be designed from scratch. The verifiers library (the version the PhySim v1 environment pins) is read
   first for what it already provides; the result is `GRADER_VS_VERIFIERS.md` in this folder. `../round5/agentenv`
   (written before this decision, with its own orchestration and sandbox) is revised in its light before any rollout
