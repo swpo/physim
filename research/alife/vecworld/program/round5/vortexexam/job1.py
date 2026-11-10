@@ -17,7 +17,7 @@ Stages (each writes its outputs to --out as it finishes; progress in OUT/progres
   E law128   (time permitting, if H_exam != 128) the law runs at 128^2 for 3 eps, fewer members.
 --scan-only repeats stage D alone (used inside job 2: the first run's branch file held the level-1 rasters and, at
 40 MB, stayed on the runner; the level-1 scores are now computed here and only they are saved).
-usage: python -B job1.py --out DIR [--smoke] [--max-hours 0.8] [--H 64] [--scan-only --rate 400 --bmax 1024]
+usage: python -B job1.py --out DIR [--smoke] [--max-hours 0.8] [--H 64] [--scan-only --rate 400 --rate-json F --bmax 1024]
 """
 from __future__ import annotations
 
@@ -48,6 +48,7 @@ ap.add_argument("--min-rate", type=float, default=100.0)
 ap.add_argument("--H", type=int, default=0)
 ap.add_argument("--scan-only", action="store_true", help="only stage D at --H (rate from --rate), compact branch outputs")
 ap.add_argument("--rate", type=float, default=400.0)
+ap.add_argument("--rate-json", default="", help="take 0.9 x 'rate' from this info.json (job 2's) when it exists")
 ap.add_argument("--bmax", type=int, default=1024)
 args = ap.parse_args()
 OUT = args.out
@@ -389,8 +390,14 @@ def stage_scan(H, rows, bmax, budget_s):
 def main():
     if args.scan_only:
         H_only = args.H or 128
-        rows = [{"H": H_only, "B": args.bmax, "track": True, "member_ticks_per_s": args.rate}]
-        INFO.update(H_exam=H_only, H_rule="--scan-only", bmax=args.bmax, rate=args.rate)
+        rate = args.rate
+        if args.rate_json and os.path.exists(args.rate_json):
+            try:
+                rate = max(100.0, 0.9 * float(json.load(open(args.rate_json)).get("rate", rate)))
+            except Exception as exc:
+                log(f"  --rate-json unreadable ({exc!r}); using --rate {rate}")
+        rows = [{"H": H_only, "B": args.bmax, "track": True, "member_ticks_per_s": rate}]
+        INFO.update(H_exam=H_only, H_rule="--scan-only", bmax=args.bmax, rate=rate)
         stage_scan(H_only, rows, args.bmax, budget_s=max(left_s() - 90, 60))
         INFO["hours"], INFO["failed"] = hours(), FAILED
         jdump("info.json", INFO)

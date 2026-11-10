@@ -23,7 +23,10 @@ Stages (each writes to --out as it finishes; progress in OUT/progress.txt):
   F exam       per truth J_main main runs; items = (run, anchor in prog_ticks): history = the run's level-1 list
                up to the anchor, test program = the mix program built at the anchor, R replicate truths with fresh
                secret noise from the hidden state, queries: level 2 = (N, s_b) at h in HS ticks.
-               References: O = leave-one-out over the replicates; K = the other main runs at the same tick.
+               References: O = leave-one-out over the replicates; K = the other main runs at the same tick;
+               K0 = design episodes at the same tick (the prior climatology). Time permitting, R_ctl further
+               replicates per item run WITHOUT the test program ('O_noinput': the simulator from the hidden state
+               that ignores the program), which measures how much the programs move level 2 (per program class).
   G predict    families net / ridge / law / lin2 (vxnet; lin2 = linear in the level-2 history only, the round-3
                closure's predictor) under the policies
                  D@n   trained on the Lab's first n episodes          P0   trained on the design (prior) episodes
@@ -87,7 +90,7 @@ PRESETS = {
     "small": dict(n_cand=10, n_truth=6, N_theta=192, K_d=2, n_lab=8, budgets=[1, 2, 4, 8], J_main=8, R=6, n_C=0),
 }
 COMMON = dict(m=64, steps_sim=8000, steps_real={1: 600, 2: 800, 4: 1000, 8: 1500, 16: 2000}, steps_C=3000,
-              rate_B=[256, 1024], n_post_draws=1000, sded_budget=4)
+              rate_B=[256, 1024], n_post_draws=1000, sded_budget=4, R_ctl=6)
 if args.smoke:
     PR = {"H": 32, "names": ["eps", "mut128"], "lo": [0.0, 0.00625], "hi": [0.4, 0.025], "T_ep": 24,
           "prog_ticks": [8, 14], "c_prog": 200.0, "hs": [2, 4, 6], "viability": {"n_min": 1.0, "t_from": 4},
@@ -99,7 +102,7 @@ if args.smoke:
     SB.WINDOWS = ((3, 10), (10, 17), (17, 25))
     PRESETS = {"smoke": dict(n_cand=3, n_truth=2, N_theta=10, K_d=2, n_lab=4, budgets=[1, 2, 4], J_main=3, R=3, n_C=3)}
     COMMON = dict(m=6, steps_sim=30, steps_real={1: 20, 2: 20, 4: 20}, steps_C=20, rate_B=[4], n_post_draws=50,
-                  sded_budget=2)
+                  sded_budget=2, R_ctl=2)
     N_SUB = 5
 else:
     PR = json.load(open(args.prior))
@@ -158,7 +161,7 @@ def jdump(name, obj):
 
 
 FILE_LIMIT = 19 * 2 ** 20          # bytes per output file (the gpu-jobs branch takes 20 MB)
-TOTAL_LIMIT = 47 * 2 ** 20         # bytes in OUT in total (50 MB)
+TOTAL_LIMIT = 40 * 2 ** 20         # bytes of job 2 in OUT (the branch takes 50 MB per request; the scan adds 6)
 
 
 def save_npz(name, **arrays):
@@ -276,7 +279,7 @@ def stage_rate():
     def work(p):
         nt = p["n_truth"]
         return ((p["N_theta"] * p["K_d"] + p["n_cand"] * (p["n_lab"] + p["J_main"])) * T_EP
-                + nt * p["J_main"] * len(PROG) * p["R"] * HB + nt * p["n_C"] * T_EP)
+                + nt * p["J_main"] * len(PROG) * (p["R"] + COMMON["R_ctl"]) * HB + 2 * nt * p["n_C"] * T_EP)
     budget = 0.72 * left_s()                       # the rest: compiles, training, scoring, slack
     name = None
     for nm in (["smoke"] if args.smoke else ["xl", "full", "mid", "small"]):
@@ -479,36 +482,54 @@ def stage_exam(truths, exam):
     th = np.repeat(truths, J, 0)
     Bm = nT * J
     Um = exam["U"].reshape(Bm, T_EP, -1)
-    Y = np.zeros((Bm, len(PROG), R, len(HS), 2), np.float32)
     Qall = Q_of(th)
-    idx = np.repeat(np.arange(Bm), R)
-    Qr = {k: v[idx] for k, v in Qall.items()}
-    for ai, a in enumerate(PROG):
-        X, M = exam["snaps"][a]
-        kr = jnp.concatenate([SEC.child("exam", "rep", a).keys(R, "member", b) for b in range(Bm)])
-        kp = RN.proc_keys(kr, fresh=True)
-        Ur = np.repeat(Um[:, a:a + HB], R, 0).transpose(1, 0, 2)                       # (HB, Bm*R, m)
-        l2 = np.zeros((Bm * R, HB, 2), np.float32)
-        for s2 in range(0, Bm * R, BMAX):
-            e2 = min(s2 + BMAX, Bm * R)
-            ii = idx[s2:e2]
-            _, _, Yl = RN.run({k: v[s2:e2] for k, v in Qr.items()}, VX.take(X, ii), VX.take(M, ii), kp[s2:e2], a,
-                              Ur[:, s2:e2])
-            l2[s2:e2] = VX.level2(Yl.transpose(1, 0, 2), RN.K)
-        Y[:, ai] = l2.reshape(Bm, R, HB, 2)[:, :, [h - 1 for h in HS]]
-        log(f"    exam replicates at anchor {a} done ({hours():.2f} h)")
-    ticks("exam_replicates", Bm * len(PROG) * R * HB)
-    exam.pop("snaps")
-    Y = Y.reshape(nT, J, len(PROG), R, len(HS), 2)
+
+    def replicates(tag, n_rep, with_program):
+        """n_rep fresh-noise continuations of every main run from every anchor -> (Bm, nA, n_rep, nh, 2)."""
+        out = np.zeros((Bm, len(PROG), n_rep, len(HS), 2), np.float32)
+        idx = np.repeat(np.arange(Bm), n_rep)
+        Qr = {k: v[idx] for k, v in Qall.items()}
+        for ai, a in enumerate(PROG):
+            X, M = exam["snaps"][a]
+            kr = jnp.concatenate([SEC.child("exam", tag, a).keys(n_rep, "member", b) for b in range(Bm)])
+            kp = RN.proc_keys(kr, fresh=True)
+            Ur = np.repeat(Um[:, a:a + HB], n_rep, 0).transpose(1, 0, 2)               # (HB, Bm * n_rep, m)
+            if not with_program:
+                Ur = np.zeros_like(Ur)
+            l2 = np.zeros((Bm * n_rep, HB, 2), np.float32)
+            for s2 in range(0, Bm * n_rep, BMAX):
+                e2 = min(s2 + BMAX, Bm * n_rep)
+                ii = idx[s2:e2]
+                _, _, Yl = RN.run({k: v[s2:e2] for k, v in Qr.items()}, VX.take(X, ii), VX.take(M, ii), kp[s2:e2], a,
+                                  Ur[:, s2:e2])
+                l2[s2:e2] = VX.level2(Yl.transpose(1, 0, 2), RN.K)
+            out[:, ai] = l2.reshape(Bm, n_rep, HB, 2)[:, :, [h - 1 for h in HS]]
+            log(f"    exam {tag} replicates at anchor {a} done ({hours():.2f} h)")
+        ticks(f"exam_{tag}", Bm * len(PROG) * n_rep * HB)
+        return out.reshape(nT, J, len(PROG), n_rep, len(HS), 2)
+    Y = replicates("rep", R, True)
     save_npz("exam.npz", S=exam["S"].astype(np.float16), Y=Y, cls=exam["cls"], viable=exam["viable"],
              anchors=np.array(PROG), hs=np.array(HS), **sparse_U(Um))
+    # controls without the test program (how much do the programs move level 2?), if the time allows
+    Rc, Yc = CFG["R_ctl"], None
+    need = Bm * len(PROG) * Rc * HB / (0.8 * INFO["rate"])
+    reserve = 2 * nT * CFG["n_C"] * T_EP / (0.8 * INFO["rate"]) + 1500           # dedicated simulations and training
+    if Rc > 0 and (args.smoke or left_s() > need + reserve):
+        Yc = replicates("ctl", Rc, False)
+        save_npz("exam.npz", S=exam["S"].astype(np.float16), Y=Y, Y_noinput=Yc, cls=exam["cls"], viable=exam["viable"],
+                 anchors=np.array(PROG), hs=np.array(HS), **sparse_U(Um))
+    elif Rc > 0:
+        log(f"  SKIP no-input controls: need {need:.0f}s + reserve {reserve:.0f}s, {left_s():.0f}s left")
+        FAILED.append("skipped input controls")
+    exam.pop("snaps")
     log(f"exam: {nT} truths x {J} runs x {len(PROG)} anchors = {nT * J * len(PROG)} items, R = {R}; main runs viable "
         f"{exam['viable'].mean():.3f}")
-    return exam["S"], exam["U"], Y
+    return exam["S"], exam["U"], Y, Yc, exam["cls"]
 
 
 # ----------------------------------------------------------------------------- G predictors, H report
 CELLS = [(h, c) for h in range(3) for c in ("joint", "N", "s_b")]
+CLASSES = []         # program class of every item, in the pooled item order
 SCORES = {}          # name -> list over truths of (n_items, n_cells)
 MEANS = {}           # name -> list over truths of predictive means (n_items, nh, 2)
 
@@ -579,8 +600,9 @@ def fam_samples(fam, model, X, m, seed):
 FAMS = ("net", "ridge", "law", "lin2")
 
 
-def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm):
+def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, exYc, exCls, draws, pdraws, pm):
     nT, J = exS.shape[:2]
+    CLASSES[:] = np.asarray(exCls).reshape(-1).tolist()          # program class per item (truth, run, anchor order)
     m = CFG["m"]
     nI = J * len(PROG)
     # item features per truth
@@ -594,6 +616,9 @@ def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm)
         Yi.append(exY[i].reshape(nI, CFG["R"], len(HS), 2).astype(float))
     # references
     SCORES["oracle"] = [oracle_cells(Yi[i]) for i in range(nT)]
+    if exYc is not None:                                         # the simulator from the hidden state, program ignored
+        for i in range(nT):
+            put("O_noinput", i, nT, exYc[i].reshape(nI, -1, len(HS), 2).astype(float), Yi[i])
     ix = {n: k for k, n in enumerate(VX.S2_NAMES)}
     clim = []
     for i in range(nT):
@@ -720,7 +745,8 @@ def _report(final=False):
     cl = [f"h{HS[h]}|{c}" for h, c in CELLS]
     valid = np.zeros(len(CELLS), bool)
     valid[prim] = True
-    rep = skill_report(S, cells=cl, valid=valid, n_boot=1000)
+    groups = np.array(CLASSES) if len(CLASSES) == len(S["oracle"]) else None
+    rep = skill_report(S, cells=cl, valid=valid, n_boot=1000, groups=groups)
     L = {k: float(S[k][:, prim].mean()) for k in names}
     per_truth_L = {k: [float(SCORES[k][i][:, prim].mean()) for i in range(nT)] for k in names}
     worlds = np.concatenate([np.full(len(SCORES["oracle"][i]), i) for i in range(nT)])
@@ -780,6 +806,8 @@ def _report(final=False):
            "primary_cells": [cl[i] for i in prim], "L_pooled": L, "L_per_truth": per_truth_L,
            "oes": {k: agg[k] for k in names}, "oes_se_items": {k: rep["se"][k] for k in names},
            "oes_per_cell": {k: rep["oes"][k] for k in names}, "acceptance": acc, "cchg": cchg,
+           "oes_by_program_class": rep.get("by_group"),
+           "items_by_program_class": {g: int((groups == g).sum()) for g in sorted(set(CLASSES))} if groups is not None else None,
            "member_ticks": CLOCK, "hours": hours(), "failed": FAILED}
     gaps = {}
     for fam in FAMS:
@@ -794,7 +822,7 @@ def _report(final=False):
                     gaps[f"{a} - {b}"] = paired_gap(rep, a, b)
     for a, b in (("net|P0", "ridge|P0"), ("net|C", "ridge|C"), ("net|C", "law|C"), ("net|P0", "law|P0"),
                  ("net|C", "lin2|C"), ("net|P0", "lin2|P0"), ("ridge|C", "lin2|C"), ("law|C", "lin2|C"),
-                 ("net|Cded", "lin2|Cded"), ("K", "K0")):
+                 ("net|Cded", "lin2|Cded"), ("K", "K0"), ("oracle", "O_noinput")):
         if a in agg and b in agg:
             gaps[f"{a} - {b}"] = paired_gap(rep, a, b)
     out["gaps_oes_item_bootstrap"] = gaps
@@ -819,8 +847,8 @@ def main():
         FAILED.append("identify")
         log(f"identify FAILED {exc!r}\n{traceback.format_exc()}")
         draws = None
-    exS, exU, exY = stage_exam(truths, exam)
-    Xi, L2a, Yi = stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm)
+    exS, exU, exY, exYc, exCls = stage_exam(truths, exam)
+    Xi, L2a, Yi = stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, exYc, exCls, draws, pdraws, pm)
     nC = CFG["n_C"]
     try:
         stage_dedicated("Cded", [np.repeat(t[None], nC, 0) for t in truths], Xi, L2a, Yi, 51)
