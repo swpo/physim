@@ -9,10 +9,40 @@
       "at": "2026-11-10T02:25:22Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T02:54:47Z",
+      "message": "accepted: H200_141GB via nebius at $5.55/h, at most $16.09",
+      "state": "queued"
     }
   ],
   "job_id": "r5-vortexexam-005",
-  "message": "reviewed; waiting for an offer of H200_141GB/H100_80GB/A100_80GB/A100_40GB that fits the cap (listed now: none); the runner plans and starts it as soon as one fits",
+  "max_estimate_usd": 16.09,
+  "message": "accepted: H200_141GB via nebius at $5.55/h, at most $16.09",
+  "plan": {
+    "max_estimate_usd": 16.09,
+    "offers": [
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "US",
+        "data_center": "us-central1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "nebius",
+        "rank": 0,
+        "rate_usd_hr": 5.55,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-10T02:54:47Z",
+    "window_hours": 2.9
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T02:48:21Z",
@@ -20,6 +50,6 @@
     "sha256": "01973b31fcc57af29782e6d382dfe0014061e0bba5438d3aa68b9a7e7d900d4b",
     "summary": "Gate met; fine to run; no blocker, major or minor findings; secrecy and markers clean. 1 info: the no-input controls may be skipped on an A100 near 169/s."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T02:48:34Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T02:54:47Z"
 }
