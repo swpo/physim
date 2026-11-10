@@ -75,7 +75,7 @@
     {
       "billed_usd": null,
       "cap_usd": 15.8,
-      "conservative_usd": 0.1307,
+      "conservative_usd": 0.1341,
       "finished_at": null,
       "gpu": "H200_141GB (nebius)",
       "hours": 0.02,
@@ -173,8 +173,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 34.9768,
     "prior_spend_usd": 0.0,
-    "spent_usd": 19.3075,
+    "spent_usd": 19.3109,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T00:09:09Z"
+    "updated_at": "2026-11-10T00:09:11Z"
   }
 }

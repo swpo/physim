@@ -24,10 +24,11 @@
   },
   "cap_usd": 15.8,
   "cost": {
-    "billed_usd": 0.0,
-    "conservative_usd": 0.0
+    "billed_usd": null,
+    "conservative_usd": 0.1343
   },
-  "hard_deadline_epoch": null,
+  "hard_deadline": "2026-11-10T02:29:41Z",
+  "hard_deadline_epoch": 1794277781.3754575,
   "history": [
     {
       "at": "2026-11-09T23:49:13Z",
@@ -108,7 +109,31 @@
     "planned_at": "2026-11-09T23:59:45Z",
     "window_hours": 2.35
   },
-  "pods": [],
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": "2026-11-10T00:08:23Z",
+      "data_center": "us-central1",
+      "gpu": "H200_141GB",
+      "name": "gpujob-r5-bias2-004-a1",
+      "note": null,
+      "pod_id": "4950985f67474ad4977a1af72b94fab4",
+      "provider": "nebius",
+      "provision_error": null,
+      "rate_usd_hr": 6.69,
+      "ready_at": null,
+      "requested_at": "2026-11-10T00:07:59Z",
+      "spot": false,
+      "state": "created",
+      "terminated_at": null
+    }
+  ],
+  "review": {
+    "at": "2026-11-10T00:09:11Z",
+    "file": "jobs/r5-bias2-004/review.md",
+    "sha256": "57050297bbdba28eb14d00e3d047b8b50304719bb87b28543922841913634a6c",
+    "summary": "Fine to run; all earlier points fixed. 2 minor: ctrain killed at the cert deadline reports a false failure; pre-loop probes have no timeout."
+  },
   "state": "provisioning",
-  "updated_at": "2026-11-10T00:07:57Z"
+  "updated_at": "2026-11-10T00:08:23Z"
 }
