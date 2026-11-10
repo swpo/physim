@@ -21,3 +21,9 @@ hostile-killall, hostile-hangtar (add `--finalize-timeout 45`).
 ## Status
 - written: all scripts (not yet run).
 - next: recon, overflow, fifo, plainD, hedge, hostile-*.
+- RUN recon (results/recon.json): agent box closed (network, files, proxy, budgets under 24 parallel calls); verifier box:
+  state between items OPEN through access times of read-only submission files (64 of 64 items read all earlier
+  fingerprints), PID counter and /dev/shm mtime; hard links, message queue, System V segment closed.
+- RUN overflow (results/overflow.json): float64 reply written past the runner, all 448 per-item scores -inf, 0 failed
+  items, round-5 table() gives vs_O = +inf; trace reward is null.
+- running: fifo (--scoring-timeout 150). Next: plainD, hedge, hostile-exit1/sigkill/killall/hangtar.

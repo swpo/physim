@@ -21,7 +21,7 @@ def predict(history, program, queries, n_samples, seed):
     res = {}
     for l, ts in queries.items():
         q = sum(1.0 / s ** 2 for s in SCALES[l])
-        a = (1.0e308 / q) ** 0.5
+        a = 1.0e154 / q ** 0.5                               # sum((a / scale) ** 2) = 1e308: finite; times 4: inf
         x = np.zeros((n_samples, len(ts), DIMS[l]))
         x[::2], x[1::2] = a, -a
         res[f"level{l}"] = x
