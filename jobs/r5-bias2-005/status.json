@@ -24,10 +24,11 @@
   },
   "cap_usd": 16.45,
   "cost": {
-    "billed_usd": 0.0,
-    "conservative_usd": 0.0
+    "billed_usd": null,
+    "conservative_usd": 0.3409
   },
-  "hard_deadline_epoch": null,
+  "hard_deadline": "2026-11-10T02:45:27Z",
+  "hard_deadline_epoch": 1794278727.7079751,
   "history": [
     {
       "at": "2026-11-09T23:41:12Z",
@@ -43,11 +44,16 @@
       "at": "2026-11-10T00:17:54Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T00:20:58Z",
+      "message": "job started on the pod",
+      "state": "running"
     }
   ],
   "job_id": "r5-bias2-005",
   "max_estimate_usd": null,
-  "message": "renting a pod",
+  "message": "job started on the pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
@@ -84,13 +90,40 @@
       "vcpus": 16
     }
   ],
-  "pods": [],
+  "pod": {
+    "gpu": "H200_141GB",
+    "name": "gpujob-r5-bias2-005-a1",
+    "provider": "nebius",
+    "rate_usd_hr": 6.69,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": "2026-11-10T00:18:23Z",
+      "data_center": "us-central1",
+      "gpu": "H200_141GB",
+      "name": "gpujob-r5-bias2-005-a1",
+      "note": null,
+      "pod_id": "e634447c80544a0598a286c33dbde745",
+      "provider": "nebius",
+      "provision_error": null,
+      "rate_usd_hr": 6.69,
+      "ready_at": "2026-11-10T00:20:43Z",
+      "requested_at": "2026-11-10T00:17:55Z",
+      "spot": false,
+      "state": "ready",
+      "terminated_at": null
+    }
+  ],
   "review": {
     "at": "2026-11-10T00:09:12Z",
     "file": "jobs/r5-bias2-005/review.md",
     "sha256": "57050297bbdba28eb14d00e3d047b8b50304719bb87b28543922841913634a6c",
     "summary": "Fine to run; all earlier points fixed. 2 minor: ctrain killed at the cert deadline reports a false failure; pre-loop probes have no timeout."
   },
-  "state": "provisioning",
-  "updated_at": "2026-11-10T00:17:54Z"
+  "run_deadline": "2026-11-10T02:32:58Z",
+  "started_at": "2026-11-10T00:20:58Z",
+  "state": "running",
+  "updated_at": "2026-11-10T00:20:58Z"
 }
