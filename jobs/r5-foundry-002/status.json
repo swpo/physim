@@ -9,10 +9,61 @@
       "at": "2026-11-10T05:35:03Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T05:57:37Z",
+      "message": "accepted: H200_141GB via nebius at $6.69/h, at most $10.04",
+      "state": "queued"
     }
   ],
   "job_id": "r5-foundry-002",
-  "message": "reviewed; waiting for an offer of A100_40GB/A100_80GB/H100_80GB/H200_141GB that fits the cap (listed now: none); the runner plans and starts it as soon as one fits",
+  "max_estimate_usd": 10.04,
+  "message": "accepted: H200_141GB via nebius at $6.69/h, at most $10.04",
+  "plan": {
+    "max_estimate_usd": 10.04,
+    "offers": [
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "US",
+        "data_center": "us-central1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "listed_rate_usd_hr": 5.55,
+        "memory_gb": 200,
+        "price_source": "billed by a pod of this offer at 2026-11-10T03:01:21Z",
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 6.69,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      },
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "FI",
+        "data_center": "eu-north1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "listed_rate_usd_hr": 5.55,
+        "memory_gb": 200,
+        "price_source": "billed by a pod of this offer at 2026-11-10T03:01:21Z",
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 6.69,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-10T05:57:37Z",
+    "window_hours": 1.5
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T05:51:19Z",
@@ -20,6 +71,6 @@
     "sha256": "9416742383d086e8454b27e03841a5e3ada12c9c7e440d8a5d9c905358c989af",
     "summary": "Fine to run: no blocker, major or minor findings; world code unchanged; the late arm's 2000-tick burn-in accumulates nothing (9.1 GiB). 4 info."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T05:51:23Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T05:57:37Z"
 }
