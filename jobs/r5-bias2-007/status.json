@@ -1,7 +1,7 @@
 {
   "billing_window_hours": 2.6,
   "bundle": {
-    "bundle_sha256": "20f9ac3da6ae35ffc62afd9582121cefc7c744a36ec93090f9f538230118bdce",
+    "bundle_sha256": "c73dad4589bae2a6afd7fd4dba50c5de808a3ed972e81a1c82b8a7913dfac6b0",
     "files": {
       "job.sh": "2801b1e447ece1031d6ed5cdd180d2a7d0ec37e06467bcc4bf26cb3bdc1df047",
       "request.json": "a4be45694b5415f5bb1faf31a08a809f8bc7132f23c2627a91ee0731857d4d1e",
@@ -48,11 +48,16 @@
       "at": "2026-11-10T02:11:22Z",
       "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_a100_sxm4 available right now. Please try again later.); will retry",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T02:19:46Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-bias2-007",
   "max_estimate_usd": 3.68,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -70,6 +75,23 @@
       "socket": "SXM4",
       "stock": "Available",
       "vcpus": 30
+    },
+    {
+      "cloud_id": "gpu_1x_h100_pcie",
+      "country": "US",
+      "data_center": "us-west-3",
+      "disk_gb": 1024,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 3,
+      "rate_usd_hr": 3.29,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 26
     }
   ],
   "plan": {
@@ -122,6 +144,6 @@
     "sha256": "12e39ce7ba7886d0d7d55ed7a13c0833e591bfc605de6d93ce98a2e73eb68859",
     "summary": "Resubmission of 006 unchanged (same ref and env); its review applies: fine to run."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T02:17:40Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-10T02:19:46Z"
 }
