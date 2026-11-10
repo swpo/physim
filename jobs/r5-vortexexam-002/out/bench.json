@@ -1,0 +1,228 @@
+{
+ "rows": [
+  {
+   "H": 64,
+   "B": 256,
+   "ticks": 2,
+   "track": true,
+   "first_call_s": 6.040969371795654,
+   "run_s": 0.36890459060668945,
+   "member_ticks_per_s": 1387.892731716838,
+   "native_steps_per_s": 346973.1829292095,
+   "memory": {
+    "bytes_in_use": 50981376,
+    "peak_bytes_in_use": 505121536,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 268435456,
+    "pool_bytes": 538968064,
+    "peak_pool_bytes": 538968064
+   },
+   "K": 24,
+   "tracker_update_s_per_member": 6.371550261974334e-06,
+   "host_level12_s_per_member_tick": 5.568377673625946e-06
+  },
+  {
+   "H": 128,
+   "B": 256,
+   "ticks": 2,
+   "track": true,
+   "first_call_s": 8.82518219947815,
+   "run_s": 1.2037591934204102,
+   "member_ticks_per_s": 425.33423860729357,
+   "native_steps_per_s": 106333.5596518234,
+   "memory": {
+    "bytes_in_use": 210189312,
+    "peak_bytes_in_use": 1499406848,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 1073741824,
+    "pool_bytes": 2149580800,
+    "peak_pool_bytes": 2149580800
+   },
+   "K": 56,
+   "tracker_update_s_per_member": 2.5594793260097504e-05,
+   "host_level12_s_per_member_tick": 1.3111159205436707e-05
+  },
+  {
+   "H": 96,
+   "B": 512,
+   "ticks": 2,
+   "track": true,
+   "first_call_s": 8.122629165649414,
+   "run_s": 1.7098994255065918,
+   "member_ticks_per_s": 598.8656319342406,
+   "native_steps_per_s": 149716.40798356014,
+   "memory": {
+    "bytes_in_use": 222964480,
+    "peak_bytes_in_use": 1697504512,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 1073741824,
+    "pool_bytes": 2149580800,
+    "peak_pool_bytes": 2149580800
+   },
+   "K": 32,
+   "tracker_update_s_per_member": 1.0996870696544647e-05,
+   "host_level12_s_per_member_tick": 7.650814950466156e-06
+  },
+  {
+   "H": 64,
+   "B": 1024,
+   "ticks": 2,
+   "track": true,
+   "first_call_s": 7.5365917682647705,
+   "run_s": 1.320134162902832,
+   "member_ticks_per_s": 1551.3574737712036,
+   "native_steps_per_s": 387839.3684428009,
+   "memory": {
+    "bytes_in_use": 201994752,
+    "peak_bytes_in_use": 1697504512,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 1073741824,
+    "pool_bytes": 2149580800,
+    "peak_pool_bytes": 2149580800
+   },
+   "K": 24,
+   "tracker_update_s_per_member": 4.150765016674996e-06,
+   "host_level12_s_per_member_tick": 5.360925570130348e-06
+  },
+  {
+   "H": 128,
+   "B": 64,
+   "ticks": 2,
+   "track": true,
+   "first_call_s": 7.137345314025879,
+   "run_s": 0.34185028076171875,
+   "member_ticks_per_s": 374.43292342714307,
+   "native_steps_per_s": 93608.23085678577,
+   "memory": {
+    "bytes_in_use": 59189760,
+    "peak_bytes_in_use": 1697504512,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 1073741824,
+    "pool_bytes": 2149580800,
+    "peak_pool_bytes": 2149580800
+   },
+   "K": 56,
+   "tracker_update_s_per_member": 4.051178693771362e-05,
+   "host_level12_s_per_member_tick": 1.3073906302452087e-05
+  },
+  {
+   "H": 128,
+   "B": 1024,
+   "ticks": 2,
+   "track": true,
+   "first_call_s": 15.74883770942688,
+   "run_s": 4.611086845397949,
+   "member_ticks_per_s": 444.1469156114435,
+   "native_steps_per_s": 111036.72890286086,
+   "memory": {
+    "bytes_in_use": 814187520,
+    "peak_bytes_in_use": 5974289152,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 4294967296,
+    "pool_bytes": 8592031744,
+    "peak_pool_bytes": 8592031744
+   },
+   "K": 56,
+   "tracker_update_s_per_member": 2.4244002997875213e-05,
+   "host_level12_s_per_member_tick": 1.3815471902489662e-05
+  },
+  {
+   "H": 64,
+   "B": 4096,
+   "ticks": 2,
+   "track": true,
+   "first_call_s": 14.186531782150269,
+   "run_s": 5.196247816085815,
+   "member_ticks_per_s": 1576.5221925406165,
+   "native_steps_per_s": 394130.5481351541,
+   "memory": {
+    "bytes_in_use": 806061568,
+    "peak_bytes_in_use": 6015072000,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 4294967296,
+    "pool_bytes": 8592031744,
+    "peak_pool_bytes": 8592031744
+   },
+   "K": 24,
+   "tracker_update_s_per_member": 3.5866163671016692e-06,
+   "host_level12_s_per_member_tick": 4.968023858964443e-06
+  },
+  {
+   "H": 64,
+   "B": 4096,
+   "ticks": 2,
+   "track": false,
+   "first_call_s": 12.267887592315674,
+   "run_s": 5.172398090362549,
+   "member_ticks_per_s": 1583.7914748409858,
+   "native_steps_per_s": 395947.86871024646,
+   "memory": {
+    "bytes_in_use": 806061568,
+    "peak_bytes_in_use": 6015072000,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 4294967296,
+    "pool_bytes": 8592031744,
+    "peak_pool_bytes": 8592031744
+   },
+   "K": 24
+  },
+  {
+   "H": 96,
+   "B": 512,
+   "ticks": 2,
+   "track": false,
+   "first_call_s": 5.712366342544556,
+   "run_s": 1.704110860824585,
+   "member_ticks_per_s": 600.89987308954,
+   "native_steps_per_s": 150224.968272385,
+   "memory": {
+    "bytes_in_use": 222964480,
+    "peak_bytes_in_use": 6015072000,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 4294967296,
+    "pool_bytes": 8592031744,
+    "peak_pool_bytes": 8592031744
+   },
+   "K": 32
+  },
+  {
+   "H": 128,
+   "B": 1024,
+   "ticks": 2,
+   "track": false,
+   "first_call_s": 12.852437734603882,
+   "run_s": 4.567009210586548,
+   "member_ticks_per_s": 448.4335164581313,
+   "native_steps_per_s": 112108.37911453283,
+   "memory": {
+    "bytes_in_use": 814187520,
+    "peak_bytes_in_use": 6015072000,
+    "bytes_limit": 112516399104,
+    "bytes_reserved": 0,
+    "peak_bytes_reserved": 0,
+    "largest_free_block_bytes": 4294967296,
+    "pool_bytes": 8592031744,
+    "peak_pool_bytes": 8592031744
+   },
+   "K": 56
+  }
+ ]
+}

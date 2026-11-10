@@ -1,0 +1,124 @@
+{
+  "archive_sha256": "d696ed66fb49c1a450d6509fd89d58731935af4824ba6a395e31aefc947ed0a5",
+  "files": [
+    {
+      "bytes": 2660,
+      "in_git": true,
+      "path": "sysinfo.txt",
+      "sha256": "6a5aaafec5658e7ffed27001b03e5017104216abd21fcbeb0a6dcaad49ef66e8"
+    },
+    {
+      "bytes": 0,
+      "in_git": true,
+      "path": "job.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 286,
+      "in_git": true,
+      "path": "setup.log",
+      "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
+    },
+    {
+      "bytes": 8859,
+      "in_git": true,
+      "path": "run.log",
+      "sha256": "2559b8781af5225a14309641324bf6d8341a5ec18ae9e32915c111f931a702cd"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "setup.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "exit.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "setup.start",
+      "sha256": "ea0db82804a5376a0007deaaea6b8daa4a42c6fd871ed3366d429aa39e22d777"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.start",
+      "sha256": "9198e60026ae6ed2cfa07d6204e4e9e453844e88cf7410ef457660c8a46b405b"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.end",
+      "sha256": "5dc4711a50286c632f4db0f244aab58112b57113fff3afe45820197271261c5e"
+    },
+    {
+      "bytes": 172,
+      "in_git": true,
+      "path": "out-listing.tsv",
+      "sha256": "eb22c46966bda958da28e1f540cd8afe98e6c48819f38c64cf106160385f1af8"
+    },
+    {
+      "bytes": 1124,
+      "in_git": true,
+      "path": "out/scan.json",
+      "sha256": "6f6c14db442f8af9fbb74a737c78f17c0067cf37b9c111bda8b4c26693ffc5e0"
+    },
+    {
+      "bytes": 40233058,
+      "in_git": false,
+      "path": "out/scan_branch.npz",
+      "sha256": "39ffff72ca4bdf0c008a0904163b2f4845bf5d0af5bd78614ab84302d09863d9"
+    },
+    {
+      "bytes": 6062,
+      "in_git": true,
+      "path": "out/bench.json",
+      "sha256": "16921920058d30f24c749fd0881bac73886dfe743507f81d26fe3c647517b559"
+    },
+    {
+      "bytes": 581,
+      "in_git": true,
+      "path": "out/law.json",
+      "sha256": "1b625c28a2be2773b8604db82433c75c03238f1c849522bf9cd4748769050d0f"
+    },
+    {
+      "bytes": 1820,
+      "in_git": true,
+      "path": "out/info.json",
+      "sha256": "8f6c4b77440e86c0431885dc80f8388519162a39ff5a9b64b2ea6a049a32e077"
+    },
+    {
+      "bytes": 4301,
+      "in_git": true,
+      "path": "out/progress.txt",
+      "sha256": "3ac31706ada99163ca32e32f58bbceb5d776eacbb77c5cf2b5fe0164d952217e"
+    },
+    {
+      "bytes": 4527462,
+      "in_git": true,
+      "path": "out/law.npz",
+      "sha256": "302c9237d0717714327ffb7fc45668845c3cc9a912bd90c150cb2d498fa73823"
+    },
+    {
+      "bytes": 4123030,
+      "in_git": true,
+      "path": "out/scan_main.npz",
+      "sha256": "004393e3a84fc8d5ca772a9a8cbbf949e2b6f519788cfae8ddfb480a05c89dc2"
+    }
+  ],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r5-vortexexam-002/collected/; ask for them by path.",
+  "skipped": [],
+  "skipped_count": 0,
+  "transfer_bytes": 48871789,
+  "transfer_stopped": null,
+  "truncated": false
+}

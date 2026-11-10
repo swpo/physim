@@ -1,0 +1,99 @@
+{
+ "H": 128,
+ "settings": [
+  "null",
+  "eps@lo",
+  "eps@hi",
+  "kF@lo",
+  "kF@hi",
+  "e@lo",
+  "e@hi",
+  "nu@lo",
+  "nu@hi",
+  "mut128@lo",
+  "mut128@hi",
+  "k@lo",
+  "k@hi",
+  "mu@lo",
+  "mu@hi",
+  "kl@lo",
+  "kl@hi",
+  "dl@lo",
+  "dl@hi",
+  "Dl@lo",
+  "Dl@hi",
+  "adv@lo",
+  "adv@hi",
+  "kY@lo",
+  "kY@hi",
+  "wi@lo",
+  "wi@hi"
+ ],
+ "J": 12,
+ "T": 400,
+ "anchors": [
+  200,
+  320
+ ],
+ "R": 4,
+ "Mc": 4,
+ "HB": 32,
+ "main_seconds": 313.772421836853,
+ "box": {
+  "eps": [
+   0.0,
+   0.4
+  ],
+  "kF": [
+   0.015,
+   0.025
+  ],
+  "e": [
+   7.0,
+   13.0
+  ],
+  "nu": [
+   0.07,
+   0.13
+  ],
+  "mut128": [
+   25.0,
+   100.0
+  ],
+  "k": [
+   0.45,
+   0.55
+  ],
+  "mu": [
+   0.09,
+   0.11
+  ],
+  "kl": [
+   1.0,
+   3.0
+  ],
+  "dl": [
+   0.03,
+   0.07
+  ],
+  "Dl": [
+   0.01,
+   0.04
+  ],
+  "adv": [
+   0.85,
+   1.15
+  ],
+  "kY": [
+   0.7,
+   1.3
+  ],
+  "wi": [
+   0.07,
+   0.13
+  ]
+ },
+ "keys": "member_keys(make_key(5202, 128), J) shared by all settings; branch keys make_key(5203, H, anchor) shared by all settings (truth replicate r and control c have different keys)",
+ "seconds": 709.9403872489929,
+ "member_ticks": 295488
+}

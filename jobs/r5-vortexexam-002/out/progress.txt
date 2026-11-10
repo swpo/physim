@@ -1,0 +1,27 @@
+23:46:30 [   0.0 min] backend gpu devices ['cuda:0'] jax 0.12.0.1 smoke=False
+23:46:42 [   0.2 min]   bench H=64 B=256: 1387.9 member-ticks/s (first call 6s, tracker 0.006 ms/member, host level-1/2 0.006 ms/member-tick, mem {'bytes_in_use': 50981376, 'peak_bytes_in_use': 505121536, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 268435456, 'pool_bytes': 538968064, 'peak_pool_bytes': 538968064})
+23:46:55 [   0.4 min]   bench H=128 B=256: 425.3 member-ticks/s (first call 9s, tracker 0.026 ms/member, host level-1/2 0.013 ms/member-tick, mem {'bytes_in_use': 210189312, 'peak_bytes_in_use': 1499406848, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 1073741824, 'pool_bytes': 2149580800, 'peak_pool_bytes': 2149580800})
+23:47:08 [   0.6 min]   bench H=96 B=512: 598.9 member-ticks/s (first call 8s, tracker 0.011 ms/member, host level-1/2 0.008 ms/member-tick, mem {'bytes_in_use': 222964480, 'peak_bytes_in_use': 1697504512, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 1073741824, 'pool_bytes': 2149580800, 'peak_pool_bytes': 2149580800})
+23:47:20 [   0.8 min]   bench H=64 B=1024: 1551.4 member-ticks/s (first call 8s, tracker 0.004 ms/member, host level-1/2 0.005 ms/member-tick, mem {'bytes_in_use': 201994752, 'peak_bytes_in_use': 1697504512, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 1073741824, 'pool_bytes': 2149580800, 'peak_pool_bytes': 2149580800})
+23:47:32 [   1.0 min]   bench H=128 B=64: 374.4 member-ticks/s (first call 7s, tracker 0.041 ms/member, host level-1/2 0.013 ms/member-tick, mem {'bytes_in_use': 59189760, 'peak_bytes_in_use': 1697504512, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 1073741824, 'pool_bytes': 2149580800, 'peak_pool_bytes': 2149580800})
+23:47:55 [   1.4 min]   bench H=128 B=1024: 444.1 member-ticks/s (first call 16s, tracker 0.024 ms/member, host level-1/2 0.014 ms/member-tick, mem {'bytes_in_use': 814187520, 'peak_bytes_in_use': 5974289152, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 4294967296, 'pool_bytes': 8592031744, 'peak_pool_bytes': 8592031744})
+23:48:18 [   1.8 min]   bench H=64 B=4096: 1576.5 member-ticks/s (first call 14s, tracker 0.004 ms/member, host level-1/2 0.005 ms/member-tick, mem {'bytes_in_use': 806061568, 'peak_bytes_in_use': 6015072000, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 4294967296, 'pool_bytes': 8592031744, 'peak_pool_bytes': 8592031744})
+23:48:36 [   2.1 min]   bench H=64 B=4096 no tracker: 1583.8 member-ticks/s
+23:48:44 [   2.2 min]   bench H=96 B=512 no tracker: 600.9 member-ticks/s
+23:49:02 [   2.5 min]   bench H=128 B=1024 no tracker: 448.4 member-ticks/s
+23:49:02 [   2.5 min] == H_exam = 128 (largest size with >= 100.0 member-ticks/s (444 at B=1024)); batch 1024, 444.1 member-ticks/s
+23:49:02 [   2.5 min]   law: H=128 J=64 x 5 eps x T=440 (budget 426s, est 329s)
+23:54:41 [   8.2 min]     law: members 0-320 of 320 at tick 440/440 (0.14 h)
+23:54:41 [   8.2 min]   law: 415.3 member-ticks/s; s_b(end) by eps [0.427, 0.572, 0.843, 0.943, 0.976] N(end) [27.9, 30.9, 35.2, 36.5, 35.2]
+23:54:41 [   8.2 min]   scan: 27 settings x J=12, T=400, anchors [200, 320], R=4, Mc=4, HB=32: 295488 member-ticks, est 676s of 780s
+23:57:23 [  10.9 min]     scan main: members 0-324 of 324 at tick 200/400 (0.18 h)
+23:58:54 [  12.4 min]     scan main: members 0-324 of 324 at tick 320/400 (0.21 h)
+23:59:55 [  13.4 min]     scan main: members 0-324 of 324 at tick 400/400 (0.22 h)
+23:59:56 [  13.4 min]   scan main done in 314s
+00:01:16 [  14.8 min]     scan branches anchor 200: 1024/2592 (0.25 h)
+00:02:31 [  16.0 min]     scan branches anchor 200: 2048/2592 (0.27 h)
+00:03:16 [  16.8 min]     scan branches anchor 200: 2592/2592 (0.28 h)
+00:04:33 [  18.1 min]     scan branches anchor 320: 1024/2592 (0.30 h)
+00:05:48 [  19.3 min]     scan branches anchor 320: 2048/2592 (0.32 h)
+00:06:28 [  20.0 min]     scan branches anchor 320: 2592/2592 (0.33 h)
+00:06:32 [  20.0 min] done in 0.33 h; failed []
