@@ -98,6 +98,8 @@ def _erfinv(x):
 def frac(mask):
     n = len(mask)
     k = int(np.sum(mask))
+    if n == 0:
+        return dict(n=0, of=0, frac=float("nan"), se=float("nan"))
     p = k / n
     return dict(n=k, of=n, frac=p, se=float(np.sqrt(max(p * (1 - p), 1e-12) / n)))
 
