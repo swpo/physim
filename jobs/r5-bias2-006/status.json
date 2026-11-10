@@ -14,6 +14,12 @@
   "job_id": "r5-bias2-006",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T01:42:25Z",
+    "file": "jobs/r5-bias2-006/review.md",
+    "sha256": "5ce689b0f9581029cbf9b9172105ca668ada10f39ba04b2b985bfb467e28f4fc",
+    "summary": "Fine to run; both earlier points fixed; tiny CPU run passed for all three worlds. 2 info: gliders is skipped only in the worst case; exit 137 still counts as a failure."
+  },
   "state": "received",
   "updated_at": "2026-11-10T01:39:18Z"
 }
