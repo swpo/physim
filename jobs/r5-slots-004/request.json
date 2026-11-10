@@ -1,0 +1,56 @@
+{
+  "request": {
+    "cap_usd": 21.8,
+    "disk_gb": null,
+    "env": {
+      "S5_CERT_O": "refs",
+      "S5_CERT_S": "9100",
+      "S5_CFG_MAX_S": "900",
+      "S5_CFG_MIN_S": "420",
+      "S5_FIXED": "km_s6,km_s3,km_s6w,grid",
+      "S5_HARD_S": "9750",
+      "S5_KEEP": "sam_sup,sam_set,sam_set_ws,sam_rec,sam_self,sgm_set,sac_set,sgc_rec,sam_set_dg,sam_rec_ws,sam_self_ws,sac_rec,sam_set_ws_dg,sam_set_sg",
+      "S5_KEEP_ORDER": "1",
+      "S5_OV_STEPS": "1500",
+      "S5_SIZE": "full",
+      "S5_STEPS": "3000",
+      "S5_TRAIN_S": "8400",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_80GB",
+        "H100_80GB",
+        "H200_141GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r5-slots-004",
+    "max_hours": 2.9,
+    "notes": "The one full job of the study (budget $25: r5-slots-003 billed $3.13; this cap $21.80 covers the H200 that bills $6.69/h for 2.9 + 0.25 h = $21.07). Code pinned by ref 7099a0ded (on the branch): e139c34f3 (the fixes asked by the review of r5-slots-003: block-matmul token neighbourhood, per-half device arrays, validation one trajectory at a time, 2^31 size guard, no certification of initial weights, hard limit for certification workers, DONE marker, claim race, GPU-backend check, stopcarry made effective) plus four small changes: S5_FIXED (subset of the no-learning encoders; km_s6_p1 is dropped, the pilot showed it equals km_s6); S5_CERT_O=refs (the 144-number layout of a LEARNED encoder is not certified; its 6-number sub-view and its agreement with the tracker are; in the pilot family O added at most 0.003 to family S on learned and k-means encoders); S5_CFG_MIN_S / S5_CFG_MAX_S (no new config with under 420 s left before the training deadline; one config's training loop stops after 900 s); a validation diagnostic for every objective (recall and purity of the soft masks against the tracker's label map, stored in the training history). Time limits in seconds from the start of job.sh: training stops at 8400, no new certification item after 9100, certification workers killed at 9750, then pooling (seconds); max_hours 2.9 = 10440 s. Sizing from the pilot (H200, 16 vCPU): 9.6 s per 100 steps for 4 replicas and 90-165 s compile per config; the reference stage (simulation, no-learning encoders, objective values) is expected to take 1000-1500 s at full size, a config 550-950 s, so 7-12 configs before the deadline; configs run in the listed order (the priority) and the rest are skipped and recorded in train_done.json. On a slower GPU fewer configs finish. Device data are passed to jitted functions as arguments, compiled functions are released between configs, no device array above 2^31 - 1 elements (largest planned 9.47e8). No network or subprocess use outside setup; job.sh starts its own CPU certification workers (JAX_PLATFORMS=cpu). CPU test passed on exactly this code: job.sh end to end at tiny size from a git archive of these six paths at 7099a0ded with this request's env (except S5_SIZE=tiny, S5_ALLOW_CPU=1, 2 workers): all 14 configs trained, 124 halves certified, 0 unclaimed, 0 workers killed, no train or cert errors, exit 0, FAIL=0 (1338 s); ssummary.py and sfigs.py run on its outputs.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/round5/slots"
+    ],
+    "purpose": "Round-5 study slots (track 1), full job: slot encoders with memory on raw gliders level 0, 96 trajectories per half, 3000 steps, up to 14 configs in priority order (supervised capacity control, closure, warm start, reconstruction, local law, no k-means prior, code readout, classic slot attention)",
+    "ref": "7099a0ded388a9d9efc852b568184f81586f089d",
+    "requester": "cloud study slots (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round5/slots && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "3b220f1e8e877f26c825d711f4659b09ecf47725",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r5-slots-004.json",
+    "received_at": "2026-11-10T01:40:36Z",
+    "tip": "f639d482392bd272de6e87e2745640ba4b3e466b"
+  }
+}
