@@ -1,0 +1,144 @@
+{
+ "world": "vortex",
+ "world_desc": {
+  "module": "track1/vortex_world",
+  "config": {
+   "H": 128,
+   "W": 128,
+   "dt": 0.02,
+   "n_sub": 250,
+   "lab_t": 300.0,
+   "mut_dt": 50.0,
+   "mut_r": 6.0,
+   "G": 8,
+   "stir_w": 8.0,
+   "sigma_a": 0.005
+  },
+  "theta": {
+   "nu": 0.1,
+   "mu": 0.1,
+   "k": 0.5,
+   "wi": 0.1,
+   "kY": 1.0,
+   "e": 10.0,
+   "kF": 0.02,
+   "hyper": 0.005,
+   "Dl": 0.02,
+   "kl": 2.0,
+   "dl": 0.05,
+   "eps": 0.2,
+   "adv": 1.0,
+   "Y0": 0.6,
+   "noise": 0.06,
+   "L": 4.0
+  },
+  "tick_time": 5.0,
+  "stride_world_ticks_per_study_tick": 1,
+  "study_tick_time": 5.0
+ },
+ "half": "A",
+ "designer_seed": 9711,
+ "branch_key": "make_key(seed + 50, j, i), R_BR members",
+ "world_seed": 0,
+ "spec": "pooled (no tracker)",
+ "J_ALL": 64,
+ "J_CERT": 32,
+ "J_requested": 64,
+ "T": 300,
+ "burn_ticks": 100,
+ "test_ticks": [
+  40,
+  100,
+  160,
+  220
+ ],
+ "units": "T, burn_ticks, test_ticks, TB and member_ticks are in STUDY ticks (stride world ticks each)",
+ "TB": 16,
+ "R_BR": 5,
+ "seconds": {
+  "init": 1.8038177490234375,
+  "burn": 42.88873291015625,
+  "base": 146.40642595291138,
+  "branch": 79.01720118522644
+ },
+ "member_ticks": {
+  "burn": 6400,
+  "base": 19200,
+  "branch": 10240
+ },
+ "member_ticks_per_s": {
+  "burn_chunk2": 158.3680662650958,
+  "base": 131.14178476138258,
+  "branch": 129.59203624532498
+ },
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "x64": true,
+  "batching": "vmap (vw.World)"
+ },
+ "tiny": false,
+ "fields": [
+  "om",
+  "Y",
+  "a",
+  "b"
+ ],
+ "field_stats": {
+  "om": {
+   "mean": 0.0007624447684512033,
+   "sd": 0.05884050572030262,
+   "min": -0.27377235889434814,
+   "max": 0.2727048099040985
+  },
+  "Y": {
+   "mean": 0.6270587965168822,
+   "sd": 0.159153932715813,
+   "min": 0.1606503129005432,
+   "max": 0.9703769683837891
+  },
+  "a": {
+   "mean": 0.06178993694275623,
+   "sd": 0.15240482304358813,
+   "min": 0.0,
+   "max": 0.973874568939209
+  },
+  "b": {
+   "mean": 0.0679731471146562,
+   "sd": 0.16452884713845134,
+   "min": 0.0,
+   "max": 0.9691664576530457
+  }
+ },
+ "global_field_means": {
+  "om": {
+   "mean_first": -0.00017963542416339113,
+   "mean_last": 0.0016208976509183891,
+   "rel_change_first_to_last": 1.4658707379842284,
+   "rel_rms_step": 0.02177320835342833
+  },
+  "Y": {
+   "mean_first": 0.6841668648976622,
+   "mean_last": 0.5882395468473902,
+   "rel_change_first_to_last": 0.15305868578259255,
+   "rel_rms_step": 0.0019748376816775748
+  },
+  "a": {
+   "mean_first": 0.08793056456348497,
+   "mean_last": 0.04845026998825421,
+   "rel_change_first_to_last": 0.6405957902774446,
+   "rel_rms_step": 0.010205125335486351
+  },
+  "b": {
+   "mean_first": 0.014483946251892898,
+   "mean_last": 0.09620998113281876,
+   "rel_change_first_to_last": 1.1950731716731744,
+   "rel_rms_step": 0.01120731170099335
+  }
+ },
+ "note": "base/branch rates include the host transfer of the float64 records"
+}

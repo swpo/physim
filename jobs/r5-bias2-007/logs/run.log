@@ -1,0 +1,12 @@
+02:26:30 [job] plan vortex:900:1500:1800 membrane:300:1100:1400 gliders:300:800:1100, arms w, nproc 30, cert workers 27, sim budget 2400s, hard end +5100s, tiny 0
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+02:26:38 [job] === world vortex: deadlines sim +900s train +1500s cert +1800s (plan 900/1500/1800)
+02:55:44 [job] vortex certification finished; 132 halves certified, 0 left unclaimed
+02:56:13 [job] === world vortex done in 1775s, FAIL=0
+02:56:13 [job] === world membrane: deadlines sim +300s train +1100s cert +1400s (plan 300/1100/1400)
+03:18:06 [job] membrane certification finished; 114 halves certified, 0 left unclaimed
+03:18:33 [job] === world membrane done in 1340s, FAIL=0
+03:18:33 [job] === world gliders: deadlines sim +300s train +800s cert +1100s (plan 300/800/1100)
+03:35:08 [job] gliders certification finished; 92 halves certified, 0 left unclaimed
+03:35:29 [job] === world gliders done in 1016s, FAIL=0
+03:35:30 [job] OUT size 30M; elapsed 4139s; done, FAIL=0

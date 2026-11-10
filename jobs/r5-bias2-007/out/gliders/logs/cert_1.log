@@ -1,0 +1,4 @@
+03:21:19 [ccert 1    51.6s] hand_c1_h8__certB q=64 ok in 39.6s (certify 23.4s)
+03:21:59 [ccert 1    91.6s] hand_c0_h8__certB q=64 ok in 40.0s (certify 21.8s)
+03:24:30 [ccert 1   241.8s] Nw0_clos_c1_s1__certB q=64 ok in 21.2s (certify 12.0s)
+03:34:48 [ccert 1   859.9s] worker exits after 3 items

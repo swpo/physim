@@ -1,0 +1,3 @@
+02:59:35 [ccert 7    74.3s] hand_S_h4__certA q=64 ok in 56.3s (certify 26.6s)
+03:01:25 [ccert 7   184.0s] hand_sfax_c2__certA q=128 ok in 109.7s (certify 73.0s)
+03:17:40 [ccert 7  1159.2s] worker exits after 2 items

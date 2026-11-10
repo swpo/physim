@@ -1,0 +1,8 @@
+03:21:17 [ccert 2    48.6s] hand_c1_h4__certA q=64 ok in 39.6s (certify 24.3s)
+03:21:55 [ccert 2    87.1s] hand_sfax_c1__certB q=64 ok in 38.5s (certify 21.1s)
+03:22:22 [ccert 2   114.3s] Lw0_clos_c1_s0__certB q=64 ok in 27.3s (certify 17.1s)
+03:23:00 [ccert 2   151.6s] Lw8_clos_c1_s0__certB q=64 ok in 22.2s (certify 12.9s)
+03:24:29 [ccert 2   241.5s] Nw0_clos_c1_s0__certA q=64 ok in 20.9s (certify 12.0s)
+03:28:27 [ccert 2   479.3s] Nw8_clos_c1_s1__certB q=64 ok in 21.7s (certify 12.6s)
+03:28:49 [ccert 2   500.8s] L0_clos_c1_s1__certB q=64 ok in 21.5s (certify 12.2s)
+03:34:49 [ccert 2   860.9s] worker exits after 7 items

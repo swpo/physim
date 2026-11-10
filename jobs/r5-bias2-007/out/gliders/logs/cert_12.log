@@ -1,0 +1,3 @@
+03:21:21 [ccert 12    53.5s] hand_c1_h16__certA q=64 ok in 41.5s (certify 26.4s)
+03:22:01 [ccert 12    92.9s] hand_c1_h0__certB q=64 ok in 39.4s (certify 21.9s)
+03:34:49 [ccert 12   861.1s] worker exits after 2 items

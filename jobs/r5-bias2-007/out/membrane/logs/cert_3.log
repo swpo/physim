@@ -1,0 +1,4 @@
+03:00:23 [ccert 3   122.0s] hand_cells__certA q=128 ok in 104.0s (certify 71.2s)
+03:00:57 [ccert 3   155.9s] hand_phiK_h16__certB q=64 ok in 33.9s (certify 16.0s)
+03:01:31 [ccert 3   190.1s] rand0_c1_s1__certA q=64 ok in 34.2s (certify 14.7s)
+03:17:40 [ccert 3  1159.3s] worker exits after 3 items

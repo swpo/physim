@@ -1,0 +1,4 @@
+03:21:17 [ccert 6    49.6s] hand_msq_h8__certA q=64 ok in 37.6s (certify 23.6s)
+03:21:47 [ccert 6    79.9s] hand_pca_c1__certA q=64 ok in 30.2s (certify 17.2s)
+03:22:16 [ccert 6   108.5s] rand0_c1_s0__certA q=64 ok in 28.6s (certify 18.1s)
+03:34:49 [ccert 6   861.6s] worker exits after 3 items

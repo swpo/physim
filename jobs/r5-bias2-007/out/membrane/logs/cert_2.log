@@ -1,0 +1,5 @@
+02:59:27 [ccert 2    66.5s] hand_wall_h16__certA q=64 ok in 48.4s (certify 25.5s)
+03:00:10 [ccert 2   109.9s] hand_K_h16__certB q=64 ok in 43.5s (certify 16.2s)
+03:00:57 [ccert 2   156.8s] hand_wall_h4__certB q=64 ok in 46.9s (certify 23.0s)
+03:01:39 [ccert 2   198.6s] rand8_c1_s0__certB q=64 ok in 41.9s (certify 22.6s)
+03:17:42 [ccert 2  1161.8s] worker exits after 4 items

@@ -1,0 +1,6 @@
+02:37:54 [ccert 3   132.5s] hand_absomY__certA q=128 ok in 114.5s (certify 65.6s)
+02:38:58 [ccert 3   195.8s] hand_Y_h8__certB q=64 ok in 63.3s (certify 25.6s)
+02:40:03 [ccert 3   261.4s] hand_lab_h0__certB q=64 ok in 65.6s (certify 28.5s)
+02:40:46 [ccert 3   304.1s] Lw8_clos_c1_s1__certB q=64 ok in 42.7s (certify 20.2s)
+02:50:57 [ccert 3   914.8s] N0_clos_c1_s0__certA q=64 ok in 31.5s (certify 12.2s)
+02:55:15 [ccert 3  1172.8s] worker exits after 5 items

@@ -1,0 +1,6 @@
+03:21:17 [ccert 10    49.8s] hand_msq_h0__certA q=64 ok in 37.8s (certify 23.4s)
+03:21:55 [ccert 10    87.3s] hand_mass_h0__certB q=64 ok in 37.5s (certify 20.7s)
+03:22:21 [ccert 10   113.4s] rand8_c1_s1__certA q=64 ok in 26.1s (certify 16.9s)
+03:28:49 [ccert 10   500.9s] L0_clos_c1_s0__certB q=64 ok in 21.5s (certify 12.4s)
+03:29:49 [ccert 10   561.1s] L8_clos_c1_s1__certA q=64 ok in 21.2s (certify 12.2s)
+03:34:49 [ccert 10   861.2s] worker exits after 5 items

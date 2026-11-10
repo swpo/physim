@@ -1,0 +1,3 @@
+02:37:05 [ccert 15    82.8s] hand_ens_h8__certA q=64 ok in 64.8s (certify 25.6s)
+02:41:57 [ccert 15   374.8s] hand_pooled__certA q=256 ok in 292.0s (certify 252.0s)
+02:55:15 [ccert 15  1173.0s] worker exits after 2 items

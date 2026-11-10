@@ -1,0 +1,214 @@
+[
+ {
+  "phi": "rand8_c1_s0",
+  "config": "rand8_c1",
+  "enc": "L",
+  "h": 8,
+  "obj": "rand",
+  "c": 1,
+  "seed": 0,
+  "fit": "A",
+  "cert": "B",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 4097,
+  "train_whitening": "per-channel",
+  "field_shares": [
+   {
+    "share": {
+     "phi": 0.2816579269419915,
+     "S": 0.4682209684261626,
+     "K": 0.1445323746295941,
+     "L": 0.10558873000224864,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "phi": 0.6372710474137833,
+     "S": 0.762366198856887,
+     "K": 0.2822968459044479,
+     "L": 0.23208511794575168,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "phi": 0.4419750875001066,
+     "S": 0.6141680587731015,
+     "K": 0.511987210365487,
+     "L": 0.45495691812057193,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand8_c1_s1",
+  "config": "rand8_c1",
+  "enc": "L",
+  "h": 8,
+  "obj": "rand",
+  "c": 1,
+  "seed": 1,
+  "fit": "A",
+  "cert": "B",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 4097,
+  "train_whitening": "per-channel",
+  "field_shares": [
+   {
+    "share": {
+     "phi": 0.28331763287092154,
+     "S": 0.2102518696547106,
+     "K": 0.3018266712214993,
+     "L": 0.20460382625286652,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "phi": 0.5460418596184994,
+     "S": 0.5288433681192104,
+     "K": 0.6157173326494897,
+     "L": 0.4202411130522955,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "phi": 0.5188569848268882,
+     "S": 0.3975692659292575,
+     "K": 0.4902033046929355,
+     "L": 0.48687246415941526,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand8_c1_s0",
+  "config": "rand8_c1",
+  "enc": "L",
+  "h": 8,
+  "obj": "rand",
+  "c": 1,
+  "seed": 0,
+  "fit": "B",
+  "cert": "A",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 4097,
+  "train_whitening": "per-channel",
+  "field_shares": [
+   {
+    "share": {
+     "phi": 0.21717229376645306,
+     "S": 0.4730800812821003,
+     "K": 0.1861888694692348,
+     "L": 0.12355875548220482,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "phi": 0.5484849106701738,
+     "S": 0.7704991614611675,
+     "K": 0.5269747630177787,
+     "L": 0.2930811652229104,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "phi": 0.39594944098115314,
+     "S": 0.6139916886930228,
+     "K": 0.3533164821840877,
+     "L": 0.4215854518942868,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand8_c1_s1",
+  "config": "rand8_c1",
+  "enc": "L",
+  "h": 8,
+  "obj": "rand",
+  "c": 1,
+  "seed": 1,
+  "fit": "B",
+  "cert": "A",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 4097,
+  "train_whitening": "per-channel",
+  "field_shares": [
+   {
+    "share": {
+     "phi": 0.3025457379159256,
+     "S": 0.3607027435216402,
+     "K": 0.11534489778140081,
+     "L": 0.2214066207810254,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "phi": 0.5894017532713379,
+     "S": 0.6170253594211839,
+     "K": 0.3476484717623541,
+     "L": 0.5428145157592285,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "phi": 0.5133098709610475,
+     "S": 0.5845833368340103,
+     "K": 0.331786005549446,
+     "L": 0.4078863301423443,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ }
+]

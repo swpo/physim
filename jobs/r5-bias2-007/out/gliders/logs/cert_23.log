@@ -1,0 +1,3 @@
+03:22:13 [ccert 23   106.1s] hand_fields__certA q=128 ok in 94.1s (certify 76.1s)
+03:23:00 [ccert 23   152.3s] Lw8_clos_c1_s1__certB q=64 ok in 22.2s (certify 12.8s)
+03:34:48 [ccert 23   860.4s] worker exits after 2 items

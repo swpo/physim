@@ -1,0 +1,4 @@
+02:59:34 [ccert 17    73.6s] hand_wall_h4__certA q=64 ok in 55.6s (certify 26.4s)
+03:00:31 [ccert 17   130.1s] hand_phi_h8__certB q=64 ok in 56.5s (certify 25.5s)
+03:01:21 [ccert 17   180.6s] hand_wall_h0__certB q=64 ok in 50.5s (certify 22.8s)
+03:17:40 [ccert 17  1158.8s] worker exits after 3 items

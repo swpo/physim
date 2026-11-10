@@ -1,0 +1,4 @@
+03:21:20 [ccert 16    52.7s] hand_dc_h16__certA q=64 ok in 40.7s (certify 25.1s)
+03:21:54 [ccert 16    86.4s] hand_mass_h8__certB q=64 ok in 33.7s (certify 22.1s)
+03:22:19 [ccert 16   110.9s] rand8_c1_s1__certB q=64 ok in 24.4s (certify 14.8s)
+03:34:49 [ccert 16   861.0s] worker exits after 3 items

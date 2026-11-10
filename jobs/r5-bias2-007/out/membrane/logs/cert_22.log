@@ -1,0 +1,12 @@
+02:59:15 [ccert 22    54.3s] hand_phi_h16__certA q=64 ok in 36.3s (certify 15.6s)
+02:59:50 [ccert 22    90.0s] hand_area_h0__certA q=64 ok in 35.7s (certify 16.3s)
+/home/ubuntu/gpujob/r5-bias2-007/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:565: RuntimeWarning: invalid value encountered in subtract
+  ld["I_avail"] = 0.5 * (l_mean - l_or)
+/home/ubuntu/gpujob/r5-bias2-007/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:566: RuntimeWarning: invalid value encountered in subtract
+  ld["I_capt"] = 0.5 * (l_mean - l_best)
+/home/ubuntu/gpujob/r5-bias2-007/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:567: RuntimeWarning: invalid value encountered in subtract
+  ld["gapX"] = 0.5 * (l_best - l_or)
+03:00:39 [ccert 22   138.5s] hand_area_h16__certB q=64 ok in 48.4s (certify 20.4s)
+03:01:25 [ccert 22   184.6s] rand0_c1_s1__certB q=64 ok in 46.1s (certify 19.3s)
+03:04:14 [ccert 22   353.7s] Nw0_clos_c1_s0__certA q=64 ok in 28.1s (certify 12.7s)
+03:17:41 [ccert 22  1160.9s] worker exits after 5 items

@@ -1,0 +1,4 @@
+03:21:17 [ccert 18    49.0s] hand_mass_h0__certA q=64 ok in 40.0s (certify 22.2s)
+03:21:58 [ccert 18    89.7s] hand_c1_h4__certB q=64 ok in 40.8s (certify 24.6s)
+03:22:25 [ccert 18   116.6s] Lw0_clos_c1_s1__certA q=64 ok in 26.9s (certify 16.3s)
+03:34:49 [ccert 18   860.8s] worker exits after 3 items

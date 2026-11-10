@@ -1,0 +1,5 @@
+02:59:37 [ccert 25    75.9s] hand_S_h0__certA q=64 ok in 57.9s (certify 26.7s)
+03:00:33 [ccert 25   132.8s] hand_phiK_h16__certA q=64 ok in 56.9s (certify 25.9s)
+03:01:26 [ccert 25   185.3s] rand0_c1_s0__certB q=64 ok in 52.5s (certify 25.3s)
+03:02:24 [ccert 25   243.4s] Lw8_clos_c1_s0__certA q=64 ok in 28.1s (certify 12.8s)
+03:17:42 [ccert 25  1161.6s] worker exits after 4 items

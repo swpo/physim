@@ -1,0 +1,4 @@
+03:21:21 [ccert 22    53.7s] hand_dc_h8__certA q=64 ok in 41.6s (certify 26.0s)
+03:22:36 [ccert 22   128.8s] hand_sfax_c2__certA q=128 ok in 75.1s (certify 61.6s)
+03:28:49 [ccert 22   501.3s] L0_clos_c1_s1__certA q=64 ok in 21.4s (certify 12.3s)
+03:34:49 [ccert 22   861.4s] worker exits after 3 items
