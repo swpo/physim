@@ -123,10 +123,10 @@
     {
       "billed_usd": null,
       "cap_usd": 21.2,
-      "conservative_usd": 0.701,
+      "conservative_usd": 0.7603,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.352,
+      "hours": 0.382,
       "job_id": "r5-ladder-002",
       "purpose": "Round-5 study ladder (track 2): reference ladder (K, D(N), P0, prior mean, S(N), C, O) on the gliders wind world in 9 cells, observed view {block, object, population} x {1, 4, 8} hidden parameters, Lab budgets 2-512 episodes; resubmission of r5-ladder-001 with its review fixed",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -155,18 +155,6 @@
       "purpose": "Round-5 study slots (track 1), pilot: slot encoders with memory on raw gliders level 0 (soft k-means, learned geometric slot attention; closure with and without the dead-direction term, reconstruction, supervised capacity control), reduced size: 48 trajectories per half, 600 steps, 6 configs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
       "state": "done"
-    },
-    {
-      "billed_usd": 0.0,
-      "cap_usd": 21.8,
-      "conservative_usd": 0.0,
-      "finished_at": null,
-      "gpu": "-",
-      "hours": 0,
-      "job_id": "r5-slots-004",
-      "purpose": "Round-5 study slots (track 1), full job: slot encoders with memory on raw gliders level 0, 96 trajectories per half, 3000 steps, up to 14 configs in priority order (supervised capacity control, closure, warm start, reconstruction, local law, no k-means prior, code readout, classic slot attention)",
-      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "queued"
     },
     {
       "billed_usd": 2.2917,
@@ -207,10 +195,10 @@
     {
       "billed_usd": null,
       "cap_usd": 19.6,
-      "conservative_usd": 1.827,
+      "conservative_usd": 1.8863,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.918,
+      "hours": 0.948,
       "job_id": "r5-vortexexam-006",
       "purpose": "Round-5 study vortexexam (track 2), job 3: fed-vortex exam pilot at 128 px at planned size, hidden set (eps, mu, e) from the declared rule: design, Lab, exam items, identification, policies K, D(N), P0, S(N), T, C, O, sigma and rho on full-history and short-history items",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -255,10 +243,10 @@
   ],
   "summary": {
     "auto_job_cap_usd": 25.0,
-    "committed_usd": 93.728,
+    "committed_usd": 71.928,
     "prior_spend_usd": 0.0,
-    "spent_usd": 33.656,
+    "spent_usd": 33.7746,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T03:59:58Z"
+    "updated_at": "2026-11-10T04:01:46Z"
   }
 }
