@@ -418,6 +418,22 @@ def headline():
         if "by_program_class" + tag in S:
             put("oracle_without_program_by_class" + tag, {g: v.get("O_noinput") for g, v in S["by_program_class" + tag]["value"].items()},
                 "by_program_class" + tag, "OES of the oracle that ignores the test program (a none, b blind, c aimed, d regional)")
+    # what the prior-predictive training set (P0) costs on CPU: the envelope question of the roadmap
+    v128 = os.path.join(os.path.dirname(os.path.dirname(HERE)), "track1", "vortex128", "results", "summary.json")
+    if os.path.exists(v128):
+        cpu = json.load(open(v128))["timing"]["value"]["main128_sel"]["cpu_s_per_member_tick"]
+        env = {"cpu_s_per_member_tick_128px": cpu, "envelope_core_hours_4_cores_24_h": 96, "gliders_P0_core_hours": 3.2}
+        for tag in ("", "_B"):
+            if "platform_job" + tag in S and PR:
+                cfg = S["platform_job" + tag]["value"]["config"]
+                mt = cfg["N_theta"] * cfg["K_d"] * PR["T_ep"]
+                env["P0_design" + tag] = {"episodes": cfg["N_theta"] * cfg["K_d"], "member_ticks": mt,
+                                          "core_hours": round(mt * cpu / 3600, 1),
+                                          "usd_on_the_job_gpu": Hd.get("exam_job" + tag, {}).get("value", {}).get("usd_per_million_member_ticks")
+                                          and round(mt / 1e6 * Hd["exam_job" + tag]["value"]["usd_per_million_member_ticks"], 2)}
+        Hd["P0_cost_envelope"] = {"value": env, "from": "track1/vortex128/results/summary.json timing.main128_sel.cpu_s_per_member_tick "
+                                  "(one CPU core, round 3) x the design size of each exam job (summary.json platform_job.config); "
+                                  "gliders: roadmap/ROADMAP.md section 3"}
     Hd["gliders_reference"] = {"value": {"prior_mean_plug_in_loss_oes": [0.03, 0.09], "sigma_max": 0.05, "rho_range": [0.77, 0.94],
                                          "usd_per_million_member_ticks_A100": 0.40},
                                "from": "program/README.md (round 4, round4/sbi) and roadmap/ROADMAP.md sections 1-2; not recomputed here"}

@@ -15412,6 +15412,20 @@
    "source": "origin/gpu-jobs:jobs/r5-vortexexam-003/out/prediction.json oes_by_program_class",
    "note": "OES of the oracle that ignores the test program (a none, b blind, c aimed, d regional)"
   },
+  "P0_cost_envelope": {
+   "value": {
+    "cpu_s_per_member_tick_128px": 0.5294,
+    "envelope_core_hours_4_cores_24_h": 96,
+    "gliders_P0_core_hours": 3.2,
+    "P0_design": {
+     "episodes": 384,
+     "member_ticks": 155136,
+     "core_hours": 22.8,
+     "usd_on_the_job_gpu": 0.51
+    }
+   },
+   "from": "track1/vortex128/results/summary.json timing.main128_sel.cpu_s_per_member_tick (one CPU core, round 3) x the design size of each exam job (summary.json platform_job.config); gliders: roadmap/ROADMAP.md section 3"
+  },
   "gliders_reference": {
    "value": {
     "prior_mean_plug_in_loss_oes": [
