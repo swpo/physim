@@ -1,0 +1,35 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-vortexexam-004",
+  "purpose": "Round-5 study vortexexam (track 2), job 3: the fed-vortex exam pilot at 128 px at its planned size, with the hidden set the declared rule picks on the measured level-2 headroom (eps, mu, e): design simulations, Lab episodes, exam items with replicate truths, identification, reference policies K, D(N), P0, S(N), T, C, O with sigma and rho, on the full-history and on a short-history view of the items",
+  "requester": "cloud study vortexexam (track 2), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1/vw",
+    "research/alife/vecworld/program/track1/vortex_world",
+    "research/alife/vecworld/program/round5/vortexexam",
+    "research/alife/vecworld/program/round5/agentenv/evaluator"
+  ],
+  "gpu": {
+    "types": [
+      "A100_40GB",
+      "A100_80GB",
+      "H100_80GB",
+      "H200_141GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 2.65,
+  "cap_usd": 19.4,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/program/round5/vortexexam && python -B job2.py --prior prior_B.json --out $OUT --max-hours 2.4",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "notes": "Job 3 of the study (job 1 = r5-vortexexam-002, $2.29; job 2 = r5-vortexexam-003, $1.31, which fell to its smallest preset on a slow A100: 6 truths, 192 design points, no dedicated models). Same job2.py with these changes since 84550bc04, all tested on CPU: (a) the review of r5-vortexexam-003 is acted on: every JSON and npz output carries PILOT_NEVER_REUSE_AS_EXAM; a file over the per-file limit, an output dropped by the audit and a failed final report give a non-zero exit; the scan-only tail is gone (job 1's branch file, cut down by the runner, gave the headroom table); (b) --prior prior_B.json: hidden set (eps, mu, e), the declared rule applied to that table (3 parameters; boxes eps 0-0.4, mu 0.09-0.11, e 7-13; the rest of the prior file is identical); (c) sizing: two more presets and the stage timings measured in job 2 (simulations at 0.96 of the measured rate, 4 minutes for everything else), so the preset is the largest whose simulations at 0.9 x rate fit in 0.85 of the time: at 169 member-ticks/s (A100) 'full' = 1.05 million member-ticks, about 1.9 h; at 444 (H200) 'xl' = 1.74 million, about 1.4 h; late stages keep their own deadline checks inside --max-hours 2.4; (d) new policies, no new simulations: nets fine-tuned from the P0 net on the dedicated simulations (Cft, Sft@4), and the families net~3 / ridge~3 = the same predictors given only the last three ticks of each item's history. PILOT ONLY, never reusable as an exam: truths are drawn inside the job from the public prior and written to the outputs; the 256-bit secret comes from os.urandom and only its commitment is written. Asserts the GPU backend before any GPU-scale work. Outputs: atomic writes, each file under 19 MiB, total audited (expected under 30 MB at 'xl'). Peak device memory about 10 GB at batch 1024, so A100 40 GB is enough. No network or subprocess use outside setup. CPU tests from a git archive of exactly these paths at the requested commit: job2.py --smoke --prior prior_B.json --smoke-names eps,mu,e end to end (exit 0); without --smoke it stops at the GPU assert (exit 1). Cap: $6.69/h x (2.65 + 0.25) h = $19.40; with $3.60 billed so far the study stays under its $25."
+}

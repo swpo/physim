@@ -26,25 +26,30 @@ PILOT: never to be reused as an exam. Budget $25: job 1 billed $2.29; job 2 hold
   headroom picks (eps, mu, e) -> `prior_B.json` (`select_prior.py $SP/job1 --n-min 8 --out prior_B.json`;
   prior.json is the record of job 2 and must not be overwritten).
 
+- 02:01 UTC: job 2 (`r5-vortexexam-003`) done, exit 0, $1.31 billed, A100 40GB at 169 member-ticks/s, so it
+  took preset `small` (6 truths, 192 design points, no dedicated models). Fetched (`results/job2`, scratch
+  `vx/job2`) and analysed (`results/analysis2.json`). Reading: net P0 0.559 = C 0.557 of oracle skill (sigma
+  -0.003 +- 0.03), prior-mean plug-in 0.35; the law fitted to 1-8 Lab episodes (T) 0.38-0.50 against the
+  data-only net -0.38 to 0.21.
+- 02:10 UTC: follow-up requested as `r5-vortexexam-004` (pilot B: `--prior prior_B.json` = eps, mu, e; new
+  policies Cft / Sft@4 and the short-history families net~3 / ridge~3; sizing fixed). Cap $19.40, max 2.65 h.
+
 ## Running
-- `r5-vortexexam-003`: RUNNING since 01:21 UTC 10 Nov on an A100 40GB (lambdalabs, $1.99/h); run deadline
-  04:03 UTC. DO NOT RESUBMIT. Watcher: a background loop that fetches `origin gpu-jobs` every 60 s until
-  `jobs/r5-vortexexam-003/status.json` is terminal. Its cap ($19.80) is reserved until it ends.
+- `r5-vortexexam-004`: requested 02:10 UTC 10 Nov. DO NOT RESUBMIT while it runs. Watcher: a background loop
+  that fetches `origin gpu-jobs` every 60 s until `jobs/r5-vortexexam-004/status.json` is terminal. Read
+  `jobs/r5-vortexexam-004/review.md` when it appears.
+- Budget: $25 - 2.29 - 1.31 = $21.40 before job 004; its cap reserves $19.40.
 
 ## Next steps (in order)
-1. When job 2 is terminal (SP = the scratch folder below):
-   `python -B fetch_job.py r5-vortexexam-003 job2 $SP`; check `results/job2/info.json` (no `fatal`, `failed`)
-   and `prediction.json` (`final: true`); then
-   `python -B analyse1.py $SP/job1 $SP/job2/scan` ; `python -B analyse2.py $SP/job2` ; `python -B make_summary.py`.
-   Commit.
-2. Follow-up exam job `r5-vortexexam-004` (pilot B), only if job 2's outputs are sane and the cap covers it
-   (25 - 2.29 - billed(job 2) >= 6.69 x (max_hours + 0.25), or list only A100 types):
-   run = `python -B job2.py --prior prior_B.json --out $OUT --max-hours <max_hours - 0.2>`; paths as job 003;
-   CPU test from a git archive first (`job2.py --smoke --prior prior_B.json --smoke-names eps,mu,e`, passed in the
-   worktree at 01:30). Its analysis: `fetch_job.py r5-vortexexam-004 job3 $SP`, then
-   `VX_TAG=B python -B analyse2.py $SP/job3` (-> results/analysis2_B.json); make_summary.py reads results/job3 and it.
-3. README.md, results/summary.json (make_summary.py), report; delete scratch `vx`; remove the worktree.
+1. While job 004 runs: README.md and the report from job 1 and job 2 (results/summary.json).
+2. When job 004 is terminal (SP = the scratch folder below):
+   `python -B fetch_job.py r5-vortexexam-004 job3 $SP`; check `results/job3/info.json` (no `fatal`, `failed`)
+   and `prediction.json` (`final: true`); then `VX_TAG=B python -B analyse2.py $SP/job3` (-> results/analysis2_B.json)
+   and `python -B make_summary.py` (reads results/job3 and analysis2_B.json; sections end in `_B`). Commit.
+   If it failed: read `jobs/r5-vortexexam-004/logs`, fix, test on CPU from a git archive, resubmit as
+   `r5-vortexexam-005` within the cap that is left.
+3. README.md, results/summary.json, report (under 1,200 words); delete scratch `vx`; remove the worktree.
 
-Scratch: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vx` (job1/ = job 1 outputs;
+Scratch: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vx` (job1/, job2/ = job outputs;
 commit.sh = the commit helper: pull --rebase --autostash, add only this folder and the request files, push).
 Channel file: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vortexexam_COORD.txt`.
