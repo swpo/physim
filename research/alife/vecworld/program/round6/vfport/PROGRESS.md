@@ -1,26 +1,38 @@
 # vfport: PROGRESS
 
-## VERDICT, round 2 (of the branch head after the two round-2 re-audits) -- 10 Nov 2026, IN PROGRESS
+## VERDICT, round 2 (of the branch head after the two round-2 re-audits) -- 10 Nov 2026, finished
 - Role: issue the round-2 verdict from the fixer's report and the two re-audits (code, runbook), checking what
-  I rely on at the branch head. Writes only: a section "Re-audit, round 2" in `HOST_SAFETY_AUDIT.md` and, on GO,
-  its first line and the hold notice of `RUNBOOK_MAC.md` (between HOLD-BEGIN and HOLD-END); this note.
-- Worktree /home/user/wt/vfverdict2 (branch wt-vfverdict2), scratch
-  /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfverdict2 (stand-ins only).
-- Done so far (18:00 UTC): both files read in full at head 8193c337b; `sha256sum -c PIN.sha256` 105 of 105,
-  sha256 of `PIN.sha256` 7aa9bbfc...f64c19; since 73829e5c6 only texts, `rehearsal/` and `results/` changed.
-- Checked by me at the head (18:40 UTC), nothing of the port executed on the host:
-  run: 30 fenced commands, all begin with the guard, equal at be2c17ae6, 40c697e54 and the head; 23 of them are in
-  the rehearsal record byte for byte (never issued: the image build and its status, the five of step 3); the guard
-  with `echo` from 36 wrong combinations prints once, for an empty path started inside the folder itself; the 2a
-  start, the status, the stop (aimed at the waiting shell, with the placeholder left in, then at the tool) through
-  my own command tool on a sleeping stand-in: one process line, nothing signalled twice, then `EXIT 143`.
-  read: `_item.py` in full, the three gates, `grading.py:49-87`, verifiers' Docker runtime (no mount option on a
-  box), vf-eval's dry run (returns before any rollout), `tools/run_report.py`, both configs, `rehearsal/issue.py`.
-  run (pure functions only, cut out by ast): the code re-audit's wider N5 holds (`--ipc=host` and `-v /dev:/dev`
-  shaped tables pass); a Mac share is refused wherever it is mounted.
-  container (mine, no mount, no network, removed): the driver check 31 of 31; 6 starts of the box scripts refused.
-- Next: write the verdict section, the first line and the hold notice; commit only those two files.
-- If the container restarted: recreate the worktree as the role text says; nothing else of mine is running.
+  I rely on at the branch head. The verdict follows in the NEXT commit and changes two files only:
+  `HOST_SAFETY_AUDIT.md` (first line, and a section "Re-audit, round 2") and the notice between HOLD-BEGIN and
+  HOLD-END of `RUNBOOK_MAC.md`. This note is the only other thing this role changed.
+- Verdict: GO for the scripted smoke test on the lead's Mac (steps 0 to 2, "If a run was interrupted", step 4),
+  for ONE commit: the one that holds the GO notice (the pushed head after the verdict commit; the coordinator's
+  message gives its 40-character hash). Step 3 is not released: it may be offered to the lead after the smoke
+  test has passed on the Mac and been reported. Judged: code and commands of 40c697e54.
+- Checked by me at the head, nothing of the port executed on the host:
+  run: `sha256sum -c PIN.sha256` 105 of 105 (7aa9bbfc...f64c19); 30 fenced commands, all begin with the guard,
+  equal at be2c17ae6, 40c697e54 and the head; 23 of them are in the rehearsal record byte for byte (never
+  issued: the image build and its status, the five of step 3); only `$HOME` and `$?` as variables, four delete
+  or signal targets, all literal; the guard with `echo` for 9 wrong targets from 4 start folders prints once,
+  for an empty path started inside the folder itself; the 2a start, the status and the stop (aimed at the
+  waiting shell, with the placeholder left in, then at the tool) through my own command tool on a sleeping
+  stand-in: one process line, nothing signalled twice, then `EXIT 143`, nothing left.
+  read: `_item.py` in full, the three gates, `grading.py:49-87`, verifiers' Docker runtime (no mount option on
+  a box), vf-eval's dry run (returns before any rollout), `physim2_env/lab_tools.py` (validate and submit run in
+  the box, never on the host), `tools/run_report.py`, both configs, `rehearsal/issue.py` (refuses off Linux).
+  run (pure functions only, cut out by ast): the code re-audit's wider N5 holds (`--ipc=host` and
+  `-v /dev:/dev` shaped tables pass); a Mac share is refused wherever it is mounted.
+  container (mine, no mount, no network, removed): the driver check 27 + 4 = 31 of 31; 6 starts of the box
+  scripts refused, canary alive.
+- Open items of the two re-audits: the three that the runbook re-audit wanted in before the hold is lifted and
+  that can be said in the notice are in the notice as rules (a time bound for the "must show" branch; the
+  section used once also after a restart; step 4's image list); the rest is minor and listed as residual in
+  the audit file.
+- Not done by me: any rollout, anything on macOS, the red team's attacks, `prove.py --worlds 4`, gliders.
+- State left: no container of mine (vfverdict2-driver-main, -extra, -gate-1..6 ran with --rm), the three
+  images and the daemon untouched, scratch `vfverdict2` deleted, worktree and branch removed after the push.
+- If the container restarted before the verdict commit: recreate the worktree as the role text says and look
+  at `git log -3`; if the commit "round-2 verdict" is not there, the verdict was not issued.
 
 ## RE-AUDIT of the runbook, round 2 (independent; of commit 40c697e54) -- 10 Nov 2026, finished
 - Role: re-audit of `RUNBOOK_MAC.md` only (sha256 b08fb77a...c059 at 40c697e54), read as the Mac session would
