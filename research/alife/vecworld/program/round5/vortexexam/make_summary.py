@@ -415,6 +415,18 @@ def headline():
             put("law_on_design" + tag, {q: ld[q] for q in ("share_explained", "b1_at_box_centre", "b1_slope_per_unit_eps",
                                                            "b1_zero_crossing_eps_at_centre_of_others", "b1_relative_change_across_box",
                                                            "b2_relative_change_across_box", "per_theta_b1", "n_thetas")}, "law_design" + tag)
+        if "scores" + tag in S:
+            Pj = load(JD2 if tag == "" else "job3", "prediction.json")
+            cl = Pj["cells"]
+            want = (["net|P0", "net|C", "net|Cft", "net|Cded", "net|PM", "lin2|P0", "ridge|P0", "law|P0", "law|C", "net~3|P0",
+                     "net~3|C", "net~3|Cft", "O_noinput", f"net|D@{nb}", f"ridge|D@{nb}", f"lin2|D@{nb}", f"ridge~3|D@{nb}",
+                     f"net~3|D@{nb}"] + [f"law|D@{n}" for n in lad["budgets_episodes"]])
+            put("oes_by_coordinate" + tag,
+                {"horizons_ticks": PR["hs"] if PR else None,
+                 **{q: {c: [round(Pj["oes_per_cell"][q][i], 3) for i, name in enumerate(cl) if name.endswith("|" + c)]
+                        for c in ("joint", "N", "s_b")} for q in want if q in Pj["oes_per_cell"]}},
+                "scores" + tag, "OES per cell (vw.scoring.skill_report) by coordinate and horizon; source file prediction.json "
+                                "oes_per_cell; law|D@n = the theory policy T")
         if "by_program_class" + tag in S:
             put("oracle_without_program_by_class" + tag, {g: v.get("O_noinput") for g, v in S["by_program_class" + tag]["value"].items()},
                 "by_program_class" + tag, "OES of the oracle that ignores the test program (a none, b blind, c aimed, d regional)")
