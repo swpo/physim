@@ -9,10 +9,16 @@
       "at": "2026-11-09T23:41:12Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T00:15:41Z",
+      "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
+      "state": "queued"
     }
   ],
   "job_id": "r5-bias2-005",
-  "message": "request received",
+  "max_estimate_usd": null,
+  "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
   "pods": [],
   "review": {
     "at": "2026-11-10T00:09:12Z",
@@ -20,6 +26,6 @@
     "sha256": "57050297bbdba28eb14d00e3d047b8b50304719bb87b28543922841913634a6c",
     "summary": "Fine to run; all earlier points fixed. 2 minor: ctrain killed at the cert deadline reports a false failure; pre-loop probes have no timeout."
   },
-  "state": "received",
-  "updated_at": "2026-11-09T23:41:12Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T00:15:41Z"
 }
