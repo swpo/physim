@@ -113,7 +113,9 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         if chan and port_file:
             await asyncio.to_thread(ACCESS.request, chan, "announce", port=int(Path(port_file).read_text()))
         with open(os.path.join(self.service.dir, "process.json"), "w") as f:
-            json.dump({"pid": os.getpid(), "scrubbed_variables": self.scrubbed, "announced": bool(chan and port_file)}, f)
+            json.dump({"pid": os.getpid(), "scrubbed_variables": self.scrubbed, "announced": bool(chan and port_file),
+                       "token_values_left_in_environ": STORE.environ_still_has(self.scrubbed),
+                       "token_like_names_left_in_os_environ": STORE.token_like(os.environ)}, f)
 
     @vf.tool
     async def call(self, op: str, args: dict | None = None) -> str:

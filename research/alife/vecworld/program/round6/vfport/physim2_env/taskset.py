@@ -50,6 +50,9 @@ class Physim2TaskConfig(vf.TaskConfig):
     item_cleanup: bool = True
     """TEST HOOK. False skips the cleanup between items so that a probe can show what the cleanup prevents;
     such a rollout is marked NOT_AN_EXAM in its trace."""
+    stock_collection: bool = False
+    """TEST HOOK. True leaves the collection of submission/ to verifiers' default (collect after finalize), to
+    show which agent actions then end a rollout without a grade; marked NOT_AN_EXAM in the trace."""
     grading_seed: int = 0
 
 
@@ -148,6 +151,9 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         info = trace.info.setdefault("physim2", {})
         box = self._access.pop(trace.id, None)
         try:
+            if self.config.stock_collection:
+                info["NOT_AN_EXAM"] = "the defensive collection was disabled by the operator (test hook)"
+                raise LookupError("stock collection")
             cfg = BUNDLE.load_config(self.data.config_name)
             frozen = box.frozen if box is not None and box.frozen is not None and box.frozen["ok"] else None
             source = "agent_submission" if frozen is not None else "final_collection"
@@ -159,6 +165,8 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             man = frozen["manifest"]
             state.collection = {"source": source, "ok": frozen["ok"], "error": frozen["error"], "files": len(man["files"]),
                                 "bytes": man.get("bytes", 0), "sha256": man.get("sha256")}
+        except LookupError:
+            state.collection = {"source": "verifiers_default", "ok": None, "error": None, "files": None}
         except Exception as e:
             state.artifacts = {f"{WORKDIR}/submission": None}
             state.collection = {"source": "none", "ok": False, "error": f"collection failed ({type(e).__name__})", "files": 0}
@@ -186,6 +194,16 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                     "submissions": s["state"]["submissions"], "submitted": s["state"]["submitted"], "infrastructure_errors": n_infra}
         except Exception:
             return {"opened": False}
+
+    @vf.stop
+    async def frozen(self, trace: vf.Trace) -> bool:
+        """End a model rollout once the agent has submitted: its graded copy is frozen and the laboratory is
+        closed, so further turns can change nothing. (Checked before each model call; a scripted run has none.)"""
+        try:
+            f = os.path.join(self._hidden(), "labs", trace.state.rollout, "state.json")
+            return bool(trace.state.rollout) and bool(json.load(open(f))["state"]["submitted"])
+        except Exception:
+            return False
 
     async def stage_verifier(self, trace, runtime):
         """After verifiers restored the frozen submission into the fresh box: trusted staging only."""

@@ -133,7 +133,7 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
             c = r.get("cleanup")
             if c is not None:
                 cleanups.append({"item": i, "killed": c["killed"], "removed": c["removed"], "ipc_removed": c["ipc_removed"]})
-                if c["left_pids"] or c["left_files"]:
+                if c["left_pids"] or c["left_files"] or c.get("left_ipc"):
                     dirty = i
             if not r.get("ok"):
                 bad = f"predictor failed ({r.get('why')}): {r.get('stderr', '')}"

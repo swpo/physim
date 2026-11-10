@@ -55,23 +55,52 @@ def user_pids(uid):
     return [int(d) for d in os.listdir("/proc") if d.isdigit() and uid in _uids(d)]
 
 
+def become_reaper():
+    """Orphans of this process tree are re-parented to THIS process (not to the box's init, which may never
+    wait for them), so that killed predictor processes can be reaped instead of staying as zombies: a zombie
+    keeps its pid, its uid and its 15-character name visible to later requests."""
+    try:
+        import ctypes
+        ctypes.CDLL(None, use_errno=True).prctl(36, 1, 0, 0, 0)          # PR_SET_CHILD_SUBREAPER
+    except Exception:
+        pass
+
+
+def reap():
+    n = 0
+    while True:
+        try:
+            pid, _ = os.waitpid(-1, os.WNOHANG)
+        except ChildProcessError:
+            return n
+        if pid == 0:
+            return n
+        n += 1
+
+
+def as_user(uid, fn):
+    """Run fn() in a child that has become uid (things only the owner may do: signal all, remove IPC objects)."""
+    pid = os.fork()
+    if pid == 0:
+        try:
+            os.setgroups([])
+            os.setgid(uid)
+            os.setuid(uid)
+            fn()
+        finally:
+            os._exit(0)
+    os.waitpid(pid, 0)
+
+
 def kill_user(uid, tries=200):
-    """SIGKILL every process running as uid until none is left. Returns (number seen, pids left).
+    """SIGKILL every process running as uid and reap it, until none is left. Returns (number seen, pids left).
     First kill(-1) issued AS that user (one pass of the kernel over its processes, which a fork loop cannot
     outrun), then a /proc scan as the check."""
     seen = set(user_pids(uid))
     if seen:
-        pid = os.fork()
-        if pid == 0:
-            try:
-                os.setgroups([])
-                os.setgid(uid)
-                os.setuid(uid)
-                os.kill(-1, signal.SIGKILL)
-            finally:
-                os._exit(0)
-        os.waitpid(pid, 0)
+        as_user(uid, lambda: os.kill(-1, signal.SIGKILL))
     for _ in range(tries):
+        reap()
         pids = user_pids(uid)
         if not pids:
             return len(seen), []
@@ -82,6 +111,7 @@ def kill_user(uid, tries=200):
             except ProcessLookupError:
                 pass
         time.sleep(0.01)
+    reap()
     return len(seen), user_pids(uid)
 
 
@@ -147,38 +177,67 @@ def wipe_user(uid):
     return n, (owned_by(uid) if paths else [])
 
 
-def ipc_user(uid):
-    """Remove System V shared memory, semaphores and message queues owned by uid (they outlive processes)."""
-    n = 0
-    for table, flag in (("shm", "-m"), ("sem", "-s"), ("msg", "-q")):
+IPC = (("shm", 7, 9), ("sem", 4, 6), ("msg", 7, 9))             # /proc/sysvipc table, uid column, cuid column
+
+
+def ipc_ids(uid):
+    """System V objects whose owner or creator is uid: {table: [ids]}. They outlive every process."""
+    out = {}
+    for table, cu, cc in IPC:
         try:
             with open(f"/proc/sysvipc/{table}") as f:
                 rows = [r.split() for r in f.read().splitlines()[1:]]
         except OSError:
             continue
+        ids = []
         for r in rows:
             try:
-                ident, owner = int(r[1]), int(r[4] if table == "sem" else r[7])
+                if uid in (int(r[cu]), int(r[cc])):
+                    ids.append(int(r[1]))
             except (IndexError, ValueError):
-                continue
-            if owner == uid and shutil.which("ipcrm"):
-                n += subprocess.run(["ipcrm", flag, str(ident)], capture_output=True).returncode == 0
-    return n
+                pass
+        if ids:
+            out[table] = ids
+    return out
+
+
+def ipc_user(uid):
+    """Remove them. Root in a container has no CAP_SYS_ADMIN and may not remove another user's objects, so the
+    removal is issued AS that user. Returns (number removed, what is left)."""
+    before = ipc_ids(uid)
+    if not before:
+        return 0, {}
+
+    def remove():
+        import ctypes
+        libc = ctypes.CDLL(None, use_errno=True)
+        for i in before.get("shm", []):
+            libc.shmctl(i, 0, None)                           # IPC_RMID
+        for i in before.get("sem", []):
+            libc.semctl(i, 0, 0)
+        for i in before.get("msg", []):
+            libc.msgctl(i, 0, None)
+    as_user(uid, remove)
+    left = ipc_ids(uid)
+    return sum(len(v) for v in before.values()) - sum(len(v) for v in left.values()), left
 
 
 def cleanup(uid):
     killed, left = kill_user(uid)
-    ipc = ipc_user(uid)
+    ipc, left_ipc = ipc_user(uid)
     removed, left_files = wipe_user(uid)
     killed2, left = kill_user(uid)                           # anything started while the files went away
     return {"killed": killed + killed2, "removed": removed, "ipc_removed": ipc, "left_pids": left,
-            "left_files": left_files[:5], "mounts": mount_points()}
+            "left_files": left_files[:5], "left_ipc": left_ipc, "mounts": mount_points()}
 
 
 # ----------------------------------------------------------------------------- one request
 def run(a):
     root = os.geteuid() == 0
     drop = root and a.uid is not None and a.uid > 0
+    become_reaper()
+    if drop and not a.no_cleanup and user_pids(a.uid):
+        kill_user(a.uid)                                     # never start a request next to a stray process
     layers = {"rlimits": True, "uid": a.uid if drop else None, "cleanup": bool(drop and not a.no_cleanup)}
     io = tempfile.mkdtemp(prefix="physim2-io-")              # the only place the predictor may write its reply
     os.chmod(io, 0o700)
@@ -232,8 +291,9 @@ def run(a):
         os.killpg(p.pid, signal.SIGKILL)                     # the request's own session, with or without root
     except (ProcessLookupError, PermissionError):
         pass
+    k0 = 0
     if drop and not a.no_cleanup:
-        kill_user(a.uid)                                     # nothing of the predictor runs while root reads its reply
+        k0, _ = kill_user(a.uid)                             # nothing of the predictor runs while root reads its reply
     ok = p.returncode == 0 and os.path.isfile(out_path) and not os.path.islink(out_path)
     if ok and os.path.getsize(out_path) > (int(a.max_reply_mib) << 20):
         ok, res["why"] = False, "reply too large"
@@ -253,6 +313,7 @@ def run(a):
     shutil.rmtree(io, ignore_errors=True)
     if drop and not a.no_cleanup:
         res["cleanup"] = cleanup(a.uid)
+        res["cleanup"]["killed"] += k0
     return res
 
 

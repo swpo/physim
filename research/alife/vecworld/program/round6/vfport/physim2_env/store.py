@@ -71,3 +71,18 @@ def scrub_environment() -> list[str]:
     except Exception:
         pass
     return names
+
+
+def environ_still_has(names) -> bool | None:
+    """After a scrub: does the kernel's view of this process (/proc/self/environ) still hold a value for any of
+    these names? None where /proc is not available."""
+    try:
+        raw = open("/proc/self/environ", "rb").read().split(b"\0")
+    except OSError:
+        return None
+    want = {n.encode() for n in names}
+    for entry in raw:
+        k, sep, v = entry.partition(b"=")
+        if sep and k in want and v.strip(b"x"):
+            return True
+    return False

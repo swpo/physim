@@ -40,7 +40,9 @@ def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=No
            "env": {"id": "isolated-verifier",
                    "taskset": {"id": "physim2-env", "store": store},
                    "agent": {"runtime": {"type": "docker"}, "harness": dict({"id": "physim2-script"}, **harness)},
+                   "retries": {"max_retries": 0},
                    "verifier": {"retries": 0}}}
+    cfg["env"]["agent"]["retries"] = {"max_retries": 0}
     if cpu:
         cfg["env"]["agent"]["runtime"]["cpu"] = cpu
     if instances is not None:

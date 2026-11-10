@@ -58,6 +58,28 @@ def prebuild_C(store, iid, sizes, seed):
     return out
 
 
+def cross_check(store, iid, world, config_name, name="C"):
+    """The same frozen submission through round 5's own grader (evaluator.grader.grade: one process per item in
+    agentenv's local sandbox, on the worker) and through the verifiers route: are the per-item scores equal?"""
+    use_agentenv()
+    import tempfile
+    from evaluator import build_workspace as BW
+    from evaluator import grader as GR
+    from physim2_env.bundle import load_config
+    hidden = os.path.join(store, iid, "hidden")
+    sub = os.path.join(store, iid, "work", "reference_C")
+    with tempfile.TemporaryDirectory(prefix="physim2-xcheck-") as tmp:
+        os.chmod(tmp, 0o755)
+        BW.build(world, load_config(config_name), tmp)
+        g = GR.grade(hidden, sub, os.path.join(tmp, "public"), f"{name}_agentenv", log=lambda *_: None)
+    a_ = np.load(os.path.join(hidden, "grades", f"{name}_agentenv.npz"))
+    b_ = np.load(os.path.join(hidden, "grades", f"{name}.npz"))
+    d = np.abs(a_["es"] - b_["es"])
+    return {"policy": name, "n_items": int(len(d)), "n_failed_agentenv": int(g["n_failed"]), "n_failed_route": int(b_["failed"].sum()),
+            "max_abs_difference": float(d.max()), "identical": bool(np.array_equal(a_["es"], b_["es"])),
+            "agentenv_layers": g.get("layers"), "agentenv_cpu_s_mean": g.get("cpu_s_mean")}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--store", required=True)
@@ -144,6 +166,11 @@ def main():
                 u_true = (theta - (W.PRIOR_LO + W.PRIOR_HI) / 2) / ((W.PRIOR_HI - W.PRIOR_LO) / 2)
                 rec["S_abs_error_over_prior_sd"] = (np.abs(np.load(f).mean(0) - u_true) * np.sqrt(3)).tolist()
         rec["table"] = GR.table(hidden, pols, n_boot=500)
+        if "C" in pols:
+            try:
+                rec["same_submission_through_round5_grader"] = cross_check(a.store, iid, a.world, a.config)
+            except Exception as e:
+                rec["same_submission_through_round5_grader"] = {"error": f"{type(e).__name__}: {str(e)[:200]}"}
         per_world.append(rec)
     rolls = [r for p in pols for r in state["runs"][p]["rollouts"]]
     out = {"world": a.world, "config": json.load(open(os.path.join(agentenv_root(), "configs", f"{a.config}.json"))),

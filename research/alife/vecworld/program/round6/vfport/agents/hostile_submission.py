@@ -7,6 +7,7 @@ predictor), never with an ungraded one.
   delete     remove submission/ and stop
   empty      leave submission/ empty
   oversize   a valid predictor plus padding beyond the declared size cap
+  huge       a valid predictor plus padding beyond the transport budget of the collection
   symlinks   a valid predictor next to an absolute symbolic link and a link loop (links are left out: graded)
   no_tar     a valid predictor, then remove the box's tar (collection cannot run in this box any more)
   junk       fill /logs/artifacts (verifiers' implicit artifact directory) beyond the collection budget
@@ -36,6 +37,8 @@ else:
     open("submission/predict.py", "w").write(GOOD)
     if mode == "oversize":
         open("submission/pad.bin", "wb").write(b"0" * int((cap + 1) * 2 ** 20))
+    elif mode == "huge":
+        open("submission/pad.bin", "wb").write(b"0" * int((cap + 16) * 2 ** 20))
     elif mode == "symlinks":
         os.symlink("/etc/passwd", "submission/passwd")
         os.symlink("loop", "submission/loop")

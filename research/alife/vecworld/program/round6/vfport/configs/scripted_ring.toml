@@ -1,0 +1,35 @@
+# Scripted, model-free rollout of the ring smoke exam: the data-only policy D, run in the agent's box by the
+# physim2-script harness. $0. Run from this folder with PHYSIM2_STORE set (see RUNBOOK_MAC.md):
+#   uv run --no-sync vf-eval @ configs/scripted_ring.toml --no-rich
+model = "none/scripted"          # no model is called; the field only names the run
+num_rollouts = 1
+max_concurrent = 1
+push = false                     # sealed or not: nothing is uploaded
+
+[env]
+id = "isolated-verifier"         # the stock isolated grader
+
+[env.taskset]
+id = "physim2-env"
+image = "physim2-ring:1"
+# store = "/absolute/path"       # default: $PHYSIM2_STORE
+# instances = ["mac-ring-w0"]    # default: every row of <store>/index.json
+
+[env.agent.runtime]
+type = "docker"
+
+[env.agent.harness]
+id = "physim2-script"
+agent_dir = "../../round5/agentenv/agents"
+script = "reference_agent.py"
+args = ["--policy", "D", "--seed", "0"]
+label = "D"
+
+[env.agent.retries]
+max_retries = 0
+
+[env.retries]
+max_retries = 0
+
+[env.verifier]
+retries = 0

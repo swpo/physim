@@ -1,0 +1,44 @@
+# ONE rollout of a cheap model on the ring smoke exam with the stock `bash` harness (a mechanics test, not a
+# measurement). Run from this folder with PHYSIM2_STORE set and Prime credentials in the environment:
+#   uv run --no-sync vf-eval @ configs/qwen_ring_bash.toml --no-rich
+# The caps below bound the spend whatever the model does: 40 turns, 1.5 M tokens in total, 60 k output tokens.
+model = "qwen/qwen3.5-35b-a3b"   # id checked against Prime's Models API on 16 Sep 2026 (coordinator's note)
+num_rollouts = 1
+max_concurrent = 1
+push = false
+
+[sampling]
+max_tokens = 8192
+
+[env]
+id = "isolated-verifier"
+
+[env.taskset]
+id = "physim2-env"
+image = "physim2-ring:1"
+instances = ["mac-ring-w0"]
+
+[env.agent]
+max_turns = 40
+max_total_tokens = 1500000
+max_output_tokens = 60000
+
+[env.agent.timeout]
+rollout = 3600                   # the ring config's envelope: one hour
+
+[env.agent.runtime]
+type = "docker"
+
+[env.agent.harness]
+id = "bash"
+edit = true
+search = false
+
+[env.agent.retries]
+max_retries = 0                  # a rerun would hand the agent a fresh laboratory budget
+
+[env.retries]
+max_retries = 0
+
+[env.verifier]
+retries = 0
