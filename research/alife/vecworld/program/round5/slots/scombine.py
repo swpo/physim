@@ -15,6 +15,7 @@ certified numbers (assignment on shared matter per frame, both directions); the 
 import glob
 import json
 import os
+import sys
 import time
 
 import numpy as np
@@ -211,7 +212,12 @@ def main():
               "size": s5.SIZE, "layout": {"J_CERT": s5.J_CERT, "J_EXTRA": s5.J_EXTRA, "T": s5.T, "test_ticks": list(s5.TEST),
                                           "TB": s5.TB, "R_BR": s5.R_BR, "seeds": s5.SEEDS}},
              os.path.join(OUT, "combined.json"))
-    # readable table
+    write_table(res, configs, objval, os.path.join(OUT, "table.txt"))
+    log("written combined.json and table.txt;", len(res), "phis,", len(configs), "learned configs")
+
+
+def write_table(res, configs, objval, path):
+    """The readable table (also callable on a finished job's combined.json: python scombine.py --table IN OUT)."""
     f3 = lambda v: "   -  " if v is None else f"{v:6.3f}"
     lines = ["phi                     q  fam  ceiling h=1,2,4,8,16             | ARI   rec   prec  spo  massR2 posR2 velR2 | "
              "probe(rff) mass pos vel | territ"]
@@ -230,15 +236,22 @@ def main():
     lines.append("")
     lines.append("objective values (frozen readout, heads trained from scratch; mean over replicas): set, self, rec")
     for nm, o in objval.items():
-        lines.append(f"{nm:22s} " + " ".join(f"{k} {np.mean(o[k]['val']):7.4f}" for k in ("set", "self", "rec") if o.get(k)))
+        # a replica's value can be null (non-finite: a collapsed code readout); the mean is over the finite ones
+        fin = lambda v: [x for x in v if x is not None]
+        lines.append(f"{nm:22s} " + " ".join(f"{k} " + (f"{np.mean(fin(o[k]['val'])):7.4f}" if fin(o[k]["val"]) else "   null")
+                                             + ("" if len(fin(o[k]["val"])) == len(o[k]["val"]) else f" ({len(fin(o[k]['val']))} of {len(o[k]['val'])} finite)")
+                                             for k in ("set", "self", "rec") if o.get(k)))
     lines.append("")
     lines.append("seed pairs: config, ARI(s0, s1), R2(s1|s0), R2(s0|s1), ARI vs km_s6")
     for nm, c in configs.items():
         sp = c.get("seed_pair") or {}
         lines.append(f"{nm:22s} {f3(sp.get('ari'))} {f3(sp.get('R2_s1_from_s0'))} {f3(sp.get('R2_s0_from_s1'))} {f3(c.get('ari_vs_km_s6'))}")
-    open(os.path.join(OUT, "table.txt"), "w").write("\n".join(lines) + "\n")
-    log("written combined.json and table.txt;", len(res), "phis,", len(configs), "learned configs")
+    open(path, "w").write("\n".join(lines) + "\n")
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 4 and sys.argv[1] == "--table":
+        Cj = json.load(open(sys.argv[2]))
+        write_table(Cj["phis"], Cj["configs"], Cj["objval"], sys.argv[3])
+    else:
+        main()

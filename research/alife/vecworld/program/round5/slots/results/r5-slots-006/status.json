@@ -1,0 +1,135 @@
+{
+  "billing_window_hours": 4.5,
+  "bundle": {
+    "bundle_sha256": "fdea2cfa080563706e4f1de743f791277a5aaa0ac431652f3558514d65c2c7d9",
+    "files": {
+      "job.sh": "c6698d8316c65d733ff5f077aad0eed221f94fc1b203171dfd2e5c5fa72b71b7",
+      "request.json": "21587b72a463aa2172d3df64e83720fd4070060bdbecda8bae972e1f844c0d10",
+      "run.sh": "8b4c6ca87adc3d49b3557e223dd799fafae4fdbaffee54c3bc51123f82c2b483",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "5f5da8d974fb3ff07a9a8268ac9f80d8827f1325aeb20aabbbb16d9497e80756"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/round5/slots"
+    ],
+    "ref": "7099a0ded388a9d9efc852b568184f81586f089d",
+    "src_bytes": 15822219
+  },
+  "cap_usd": 18.75,
+  "cost": {
+    "billed_usd": 0.0,
+    "conservative_usd": 0.0
+  },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
+  "history": [
+    {
+      "at": "2026-11-10T04:07:44Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-10T04:49:09Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $7.46",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-10T05:05:45Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T05:11:09Z",
+      "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_a100_sxm4 available right now. Please try again later.); will retry",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-10T05:22:37Z",
+      "message": "cancelled before start",
+      "state": "cancelled"
+    }
+  ],
+  "job_id": "r5-slots-006",
+  "max_estimate_usd": 7.46,
+  "message": "cancelled before start",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
+  "plan": {
+    "max_estimate_usd": 7.46,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-10T04:49:09Z",
+    "window_hours": 3.75
+  },
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": null,
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-slots-006-a1",
+      "note": "no pod with this name after the create",
+      "pod_id": null,
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": null,
+      "requested_at": "2026-11-10T05:05:47Z",
+      "spot": false,
+      "state": "create_failed",
+      "terminated_at": null
+    }
+  ],
+  "pods_terminated": true,
+  "review": {
+    "at": "2026-11-10T04:08:11Z",
+    "file": "jobs/r5-slots-006/review.md",
+    "sha256": "9457f5fb722f1d66466430318559ca7a20fc5dff3c8b9c93207c0611bea0ca37",
+    "summary": "Same code as slots-004/005; the memory recommendation is applied (MEM_FRACTION 0.9, about 36 GiB usable vs about 28 GiB peak); fine to run."
+  },
+  "run_started_epoch": 1794287145.787297,
+  "state": "cancelled",
+  "updated_at": "2026-11-10T05:22:37Z"
+}

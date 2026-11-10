@@ -30,8 +30,18 @@ def r4(v):
     if isinstance(v, (list, tuple, np.ndarray)):
         return [r4(x) for x in v]
     if isinstance(v, (int, float, np.floating, np.integer)):
-        return round(float(v), 4)
+        return round(float(v), 4) if np.isfinite(v) else None
     return v
+
+
+def fmean(v, axis=None):
+    """Mean over the finite entries (a null in a job file is a non-finite value); None if there is none."""
+    a = np.asarray([[np.nan if x is None else x for x in row] if isinstance(row, (list, tuple)) else (np.nan if row is None else row)
+                    for row in v], float)
+    if not np.isfinite(a).any():
+        return None
+    with np.errstate(all="ignore"):
+        return np.nanmean(a, axis)
 
 
 def get(path, tree=None):
@@ -167,13 +177,16 @@ for name, c in C["configs"].items():
                 str(h["step"]): rp(h) for h in hist if h["step"] % 500 == 0 or h is hist[-1]}
     out["configs"][name] = row
 for nm, o in C.get("objval", {}).items():
-    out["objective_values"][nm] = {k: {"mean": r4(np.mean(o[k]["val"])), "replicas": r4(o[k]["val"]),
-                                       "per_horizon_mean": r4(np.mean(o[k]["val_h"], 0)) if k != "rec" else None}
+    # a replica's value is null when it was not finite (a collapsed code readout): means are over the finite replicas
+    out["objective_values"][nm] = {k: {"mean": r4(fmean(o[k]["val"])), "replicas": r4(o[k]["val"]),
+                                       "n_finite": int(sum(x is not None for x in o[k]["val"])),
+                                       "per_horizon_mean": r4(fmean(o[k]["val_h"], 0)) if k != "rec" else None}
                                    for k in ("set", "self", "rec") if o.get(k)}
     for k in ("set", "self"):          # the dead-direction term of the frozen readout and the guarded value
         if o.get(k) and o[k].get("dead_pen") is not None:
-            out["objective_values"][nm][k]["dead_pen"] = r4(np.mean(o[k]["dead_pen"]))
-            out["objective_values"][nm][k]["mean_guarded"] = r4(np.mean(o[k]["val"]) + np.mean(o[k]["dead_pen"]))
+            dp, mv = fmean(o[k]["dead_pen"]), fmean(o[k]["val"])
+            out["objective_values"][nm][k]["dead_pen"] = r4(dp)
+            out["objective_values"][nm][k]["mean_guarded"] = r4(mv + dp) if (mv is not None and dp is not None) else None
     out["objective_values"][nm]["source"] = src(f"objval/{nm}.json", "*") + " (also combined.json:objval." + nm + ")"
 p = os.path.join(R, "review.json")
 if os.path.exists(p):                  # the code review of the job and what was fixed
