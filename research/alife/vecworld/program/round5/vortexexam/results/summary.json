@@ -530,7 +530,10 @@
    "H": 128,
    "J": 12,
    "T": 400,
-   "anchors": null,
+   "anchors": [
+    200,
+    320
+   ],
    "R": 4,
    "Mc": 4,
    "box": {
@@ -587,12 +590,482 @@
      0.13
     ]
    },
-   "has_branches": false,
-   "states_per_setting": 0,
-   "null_floor": null,
-   "table": null,
-   "null_D_h_level2": null,
-   "null_D_h_level1_raster": null,
+   "has_branches": true,
+   "states_per_setting": 24,
+   "null_floor": {
+    "L2": {
+     "8": 0.042,
+     "16": 0.026,
+     "32": 0.246
+    },
+    "L2_mean": 0.105,
+    "L1": {
+     "1": 0.022,
+     "2": 0.005,
+     "4": 0.078,
+     "8": -0.051
+    },
+    "L1_mean": 0.013,
+    "L2_own_D": 0.105,
+    "L2_mean_se": 0.049,
+    "L1_mean_se": 0.026,
+    "n_states": 24
+   },
+   "table": {
+    "eps": {
+     "box": [
+      0.0,
+      0.4
+     ],
+     "viable_both": true,
+     "L2_lo": 0.404,
+     "L2_hi": 2.727,
+     "L2_min_edge": 0.404,
+     "L2_mean_edges": 1.565,
+     "L1_lo": 0.084,
+     "L1_hi": 0.549,
+     "L2_se": [
+      0.055,
+      0.19
+     ],
+     "L1_se": [
+      0.009,
+      0.042
+     ],
+     "L1_mean_edges": 0.317,
+     "z_s_b_late": [
+      -7.091,
+      6.315
+     ],
+     "z_N": [
+      -6.751,
+      4.262
+     ],
+     "max_abs_z": [
+      25.944,
+      21.864
+     ]
+    },
+    "kF": {
+     "box": [
+      0.015,
+      0.025
+     ],
+     "viable_both": true,
+     "L2_lo": 0.727,
+     "L2_hi": 4.931,
+     "L2_min_edge": 0.727,
+     "L2_mean_edges": 2.829,
+     "L1_lo": 0.044,
+     "L1_hi": 0.303,
+     "L2_se": [
+      0.055,
+      0.221
+     ],
+     "L1_se": [
+      0.009,
+      0.048
+     ],
+     "L1_mean_edges": 0.174,
+     "z_s_b_late": [
+      -6.682,
+      -0.084
+     ],
+     "z_N": [
+      -13.687,
+      3.207
+     ],
+     "max_abs_z": [
+      29.124,
+      37.596
+     ]
+    },
+    "e": {
+     "box": [
+      7.0,
+      13.0
+     ],
+     "viable_both": true,
+     "L2_lo": 8.402,
+     "L2_hi": 0.936,
+     "L2_min_edge": 0.936,
+     "L2_mean_edges": 4.669,
+     "L1_lo": 0.935,
+     "L1_hi": 0.123,
+     "L2_se": [
+      0.351,
+      0.068
+     ],
+     "L1_se": [
+      0.091,
+      0.013
+     ],
+     "L1_mean_edges": 0.529,
+     "z_s_b_late": [
+      -2.417,
+      -3.464
+     ],
+     "z_N": [
+      -8.914,
+      -13.675
+     ],
+     "max_abs_z": [
+      36.88,
+      27.739
+     ]
+    },
+    "nu": {
+     "box": [
+      0.07,
+      0.13
+     ],
+     "viable_both": true,
+     "L2_lo": 0.905,
+     "L2_hi": 0.269,
+     "L2_min_edge": 0.269,
+     "L2_mean_edges": 0.587,
+     "L1_lo": 0.082,
+     "L1_hi": 0.01,
+     "L2_se": [
+      0.119,
+      0.065
+     ],
+     "L1_se": [
+      0.017,
+      0.025
+     ],
+     "L1_mean_edges": 0.046,
+     "z_s_b_late": [
+      -0.736,
+      3.291
+     ],
+     "z_N": [
+      15.857,
+      -13.535
+     ],
+     "max_abs_z": [
+      15.857,
+      13.535
+     ]
+    },
+    "mut128": {
+     "box": [
+      25.0,
+      100.0
+     ],
+     "viable_both": true,
+     "L2_lo": -0.013,
+     "L2_hi": -0.099,
+     "L2_min_edge": -0.099,
+     "L2_mean_edges": -0.056,
+     "L1_lo": -0.003,
+     "L1_hi": 0.042,
+     "L2_se": [
+      0.043,
+      0.024
+     ],
+     "L1_se": [
+      0.011,
+      0.027
+     ],
+     "L1_mean_edges": 0.019,
+     "z_s_b_late": [
+      0.629,
+      -1.899
+     ],
+     "z_N": [
+      1.366,
+      -2.217
+     ],
+     "max_abs_z": [
+      5.503,
+      4.521
+     ]
+    },
+    "k": {
+     "box": [
+      0.45,
+      0.55
+     ],
+     "viable_both": true,
+     "L2_lo": 0.463,
+     "L2_hi": 3.211,
+     "L2_min_edge": 0.463,
+     "L2_mean_edges": 1.837,
+     "L1_lo": 0.161,
+     "L1_hi": 0.53,
+     "L2_se": [
+      0.043,
+      0.209
+     ],
+     "L1_se": [
+      0.014,
+      0.046
+     ],
+     "L1_mean_edges": 0.345,
+     "z_s_b_late": [
+      -4.376,
+      -0.491
+     ],
+     "z_N": [
+      -16.681,
+      6.812
+     ],
+     "max_abs_z": [
+      29.968,
+      27.147
+     ]
+    },
+    "mu": {
+     "box": [
+      0.09,
+      0.11
+     ],
+     "viable_both": true,
+     "L2_lo": 4.341,
+     "L2_hi": 1.046,
+     "L2_min_edge": 1.046,
+     "L2_mean_edges": 2.693,
+     "L1_lo": 0.524,
+     "L1_hi": 0.133,
+     "L2_se": [
+      0.224,
+      0.091
+     ],
+     "L1_se": [
+      0.032,
+      0.013
+     ],
+     "L1_mean_edges": 0.329,
+     "z_s_b_late": [
+      -0.652,
+      -2.931
+     ],
+     "z_N": [
+      -1.954,
+      -13.492
+     ],
+     "max_abs_z": [
+      38.205,
+      31.317
+     ]
+    },
+    "kl": {
+     "box": [
+      1.0,
+      3.0
+     ],
+     "viable_both": true,
+     "L2_lo": 0.169,
+     "L2_hi": 0.065,
+     "L2_min_edge": 0.065,
+     "L2_mean_edges": 0.117,
+     "L1_lo": 0.03,
+     "L1_hi": -0.011,
+     "L2_se": [
+      0.044,
+      0.054
+     ],
+     "L1_se": [
+      0.019,
+      0.019
+     ],
+     "L1_mean_edges": 0.01,
+     "z_s_b_late": [
+      -3.589,
+      1.429
+     ],
+     "z_N": [
+      -1.7,
+      1.547
+     ],
+     "max_abs_z": [
+      10.5,
+      3.44
+     ]
+    },
+    "dl": {
+     "box": [
+      0.03,
+      0.07
+     ],
+     "viable_both": true,
+     "L2_lo": 0.038,
+     "L2_hi": 0.031,
+     "L2_min_edge": 0.031,
+     "L2_mean_edges": 0.035,
+     "L1_lo": -0.012,
+     "L1_hi": -0.017,
+     "L2_se": [
+      0.055,
+      0.047
+     ],
+     "L1_se": [
+      0.014,
+      0.015
+     ],
+     "L1_mean_edges": -0.014,
+     "z_s_b_late": [
+      0.597,
+      -0.626
+     ],
+     "z_N": [
+      0.968,
+      -0.298
+     ],
+     "max_abs_z": [
+      2.892,
+      4.178
+     ]
+    },
+    "Dl": {
+     "box": [
+      0.01,
+      0.04
+     ],
+     "viable_both": true,
+     "L2_lo": -0.036,
+     "L2_hi": 0.073,
+     "L2_min_edge": -0.036,
+     "L2_mean_edges": 0.019,
+     "L1_lo": -0.035,
+     "L1_hi": -0.026,
+     "L2_se": [
+      0.036,
+      0.032
+     ],
+     "L1_se": [
+      0.012,
+      0.014
+     ],
+     "L1_mean_edges": -0.03,
+     "z_s_b_late": [
+      2.056,
+      -1.484
+     ],
+     "z_N": [
+      0.166,
+      -0.919
+     ],
+     "max_abs_z": [
+      2.056,
+      2.458
+     ]
+    },
+    "adv": {
+     "box": [
+      0.85,
+      1.15
+     ],
+     "viable_both": true,
+     "L2_lo": 0.12,
+     "L2_hi": 0.135,
+     "L2_min_edge": 0.12,
+     "L2_mean_edges": 0.128,
+     "L1_lo": 0.1,
+     "L1_hi": 0.14,
+     "L2_se": [
+      0.043,
+      0.045
+     ],
+     "L1_se": [
+      0.017,
+      0.025
+     ],
+     "L1_mean_edges": 0.12,
+     "z_s_b_late": [
+      -0.384,
+      3.632
+     ],
+     "z_N": [
+      7.168,
+      -3.719
+     ],
+     "max_abs_z": [
+      7.168,
+      7.83
+     ]
+    },
+    "kY": {
+     "box": [
+      0.7,
+      1.3
+     ],
+     "viable_both": true,
+     "L2_lo": 0.049,
+     "L2_hi": 0.119,
+     "L2_min_edge": 0.049,
+     "L2_mean_edges": 0.084,
+     "L1_lo": 0.103,
+     "L1_hi": 0.038,
+     "L2_se": [
+      0.039,
+      0.052
+     ],
+     "L1_se": [
+      0.021,
+      0.016
+     ],
+     "L1_mean_edges": 0.07,
+     "z_s_b_late": [
+      0.417,
+      0.423
+     ],
+     "z_N": [
+      -2.896,
+      -2.337
+     ],
+     "max_abs_z": [
+      5.469,
+      8.067
+     ]
+    },
+    "wi": {
+     "box": [
+      0.07,
+      0.13
+     ],
+     "viable_both": false,
+     "L2_lo": 5.792,
+     "L2_hi": 0.163,
+     "L2_min_edge": 0.163,
+     "L2_mean_edges": 2.978,
+     "L1_lo": 3.563,
+     "L1_hi": 0.114,
+     "L2_se": [
+      0.356,
+      0.042
+     ],
+     "L1_se": [
+      0.192,
+      0.005
+     ],
+     "L1_mean_edges": 1.839,
+     "z_s_b_late": [
+      -9.542,
+      -4.905
+     ],
+     "z_N": [
+      -41.117,
+      -23.881
+     ],
+     "max_abs_z": [
+      47.875,
+      43.873
+     ]
+    }
+   },
+   "null_D_h_level2": {
+    "8": 0.3135,
+    "16": 0.3208,
+    "32": 0.151
+   },
+   "null_D_h_level1_raster": {
+    "1": 0.5364,
+    "2": 0.4637,
+    "4": 0.3921,
+    "8": 0.3071
+   },
    "paired_shift_z_main_runs": {
     "eps": {
      "N": 4.3,
@@ -852,7 +1325,7 @@
     ]
    }
   },
-  "source": "results/analysis1.json scan (analyse1.py on job r5-vortexexam-002: scan_main.npz, no branch file)",
+  "source": "results/analysis1.json scan (analyse1.py on job r5-vortexexam-002: scan_main.npz, scan_branch_small.npz)",
   "note": "headroom = theta-plug-in deficit / D_h of the null setting; L2 = mean over h 8, 16, 32 ticks of level 2 (N, s_b); L1 = mean over h 1, 2, 4, 8 of the block raster of the vortex list; L2_se, L1_se = SE over the (member, anchor) states of the setting; viability entries: [viable members, of, mean N, min N, max N]; paired_shift_z_main_runs: paired z of trajectory statistics against the null setting (z of N at ticks 100 on and of s_b at ticks 250 on, lo and hi edge; max |z| over 9 statistics)"
  },
  "prior": {
@@ -984,6 +1457,85 @@
    "mutation": "mut128 = time between mutation events per 128 x 128 px of box (declared per unit area); at 128 x 128 px the interval is mut128 x 1"
   },
   "source": "prior.json (select_prior.py)"
+ },
+ "prior_B_rule_on_branch_headroom": {
+  "value": {
+   "names": [
+    "eps",
+    "mu",
+    "e"
+   ],
+   "lo": [
+    0.0,
+    0.09,
+    7.0
+   ],
+   "hi": [
+    0.4,
+    0.11,
+    13.0
+   ],
+   "selection": {
+    "rule_choice_d3": [
+     "eps",
+     "mu",
+     "e"
+    ],
+    "ranked_other_families": [
+     "mu",
+     "e",
+     "nu",
+     "kl",
+     "mut128"
+    ],
+    "basis": "plug-in deficit (scan branches)",
+    "manual_override": false,
+    "why": "",
+    "family_best": {
+     "selection": "eps",
+     "fuel": "e",
+     "flow": "nu",
+     "mutation": "mut128",
+     "growth": "mu",
+     "label": "kl"
+    },
+    "headroom": {
+     "eps": 0.404,
+     "kF": 0.727,
+     "e": 0.936,
+     "nu": 0.269,
+     "mut128": -0.099,
+     "k": 0.463,
+     "mu": 1.046,
+     "kl": 0.065,
+     "dl": 0.031,
+     "Dl": -0.036,
+     "adv": 0.12,
+     "kY": 0.049,
+     "wi": 0.163
+    },
+    "viable_both": {
+     "eps": true,
+     "kF": true,
+     "e": true,
+     "nu": true,
+     "mut128": true,
+     "k": true,
+     "mu": true,
+     "kl": true,
+     "dl": true,
+     "Dl": true,
+     "adv": true,
+     "kY": true,
+     "wi": false
+    },
+    "scan_H": 128,
+    "scan_J": 12,
+    "source": "results/analysis1.json scan (job r5-vortexexam-002, scan_main.npz, scan_branch_small.npz)"
+   }
+  },
+  "source": "prior_B.json (select_prior.py --out prior_B.json)",
+  "note": "the declared rule applied to the level-2 plug-in deficits of job 1's branches (available only after job 2 was requested): eps plus the two families with the largest min-edge headroom; everything else as prior.json"
  },
  "review_of_job2": {
   "value": {

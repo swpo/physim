@@ -1,0 +1,136 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "H": 128,
+ "names": [
+  "eps",
+  "mu",
+  "e"
+ ],
+ "lo": [
+  0.0,
+  0.09,
+  7.0
+ ],
+ "hi": [
+  0.4,
+  0.11,
+  13.0
+ ],
+ "c_prog": 200.0,
+ "hs": [
+  8,
+  16,
+  32
+ ],
+ "T_ep": 404,
+ "prog_ticks": [
+  130,
+  210,
+  290,
+  370
+ ],
+ "viability": {
+  "n_min": 8.0,
+  "t_from": 20,
+  "rule": "fields finite, no tracker overflow, n_min <= N <= K - 1 at every state from t_from on"
+ },
+ "const": {
+  "centre": {
+   "N": 30.874,
+   "s_b": 0.509,
+   "fb_mass": 0.492,
+   "fb_mean": 0.425,
+   "fb_sd": 0.263,
+   "mixed": 0.525,
+   "log_mass_tot": 5.942,
+   "log_mass_mean": 2.519,
+   "speed_mean": 1.686,
+   "turnover": 1.15
+  },
+  "scale": {
+   "N": 3.865,
+   "s_b": 0.241,
+   "fb_mass": 0.164,
+   "fb_mean": 0.181,
+   "fb_sd": 0.07,
+   "mixed": 0.262,
+   "log_mass_tot": 0.127,
+   "log_mass_mean": 0.137,
+   "speed_mean": 0.497,
+   "turnover": 1.148
+  },
+  "sc_N": 4.038,
+  "sc_s": 0.25,
+  "N_ref": 31.5
+ },
+ "selection": {
+  "rule_choice_d3": [
+   "eps",
+   "mu",
+   "e"
+  ],
+  "ranked_other_families": [
+   "mu",
+   "e",
+   "nu",
+   "kl",
+   "mut128"
+  ],
+  "basis": "plug-in deficit (scan branches)",
+  "manual_override": false,
+  "why": "",
+  "family_best": {
+   "selection": "eps",
+   "fuel": "e",
+   "flow": "nu",
+   "mutation": "mut128",
+   "growth": "mu",
+   "label": "kl"
+  },
+  "headroom": {
+   "eps": 0.404,
+   "kF": 0.727,
+   "e": 0.936,
+   "nu": 0.269,
+   "mut128": -0.099,
+   "k": 0.463,
+   "mu": 1.046,
+   "kl": 0.065,
+   "dl": 0.031,
+   "Dl": -0.036,
+   "adv": 0.12,
+   "kY": 0.049,
+   "wi": 0.163
+  },
+  "viable_both": {
+   "eps": true,
+   "kF": true,
+   "e": true,
+   "nu": true,
+   "mut128": true,
+   "k": true,
+   "mu": true,
+   "kl": true,
+   "dl": true,
+   "Dl": true,
+   "adv": true,
+   "kY": true,
+   "wi": false
+  },
+  "scan_H": 128,
+  "scan_J": 12,
+  "source": "results/analysis1.json scan (job r5-vortexexam-002, scan_main.npz, scan_branch_small.npz)"
+ },
+ "mutation": "mut128 = time between mutation events per 128 x 128 px of box (declared per unit area); at 128 x 128 px the interval is mut128 x 1",
+ "program_mix": {
+  "classes": [
+   "a",
+   "b",
+   "c",
+   "d"
+  ],
+  "nats": 200.0,
+  "u_max": 0.2,
+  "doc": "vxlib.make_program"
+ }
+}

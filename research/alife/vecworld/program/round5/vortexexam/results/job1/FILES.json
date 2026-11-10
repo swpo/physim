@@ -1,0 +1,48 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "job_id": "r5-vortexexam-002",
+ "gpu_jobs_commit": "25f9314acd557959926acd66414531636b8c7dda",
+ "files_bytes": [
+  [
+   "manifest.json",
+   4178
+  ],
+  [
+   "bench.json",
+   6062
+  ],
+  [
+   "info.json",
+   1820
+  ],
+  [
+   "law.json",
+   581
+  ],
+  [
+   "law.npz",
+   4527462
+  ],
+  [
+   "progress.txt",
+   4301
+  ],
+  [
+   "scan.json",
+   1124
+  ],
+  [
+   "scan_branch_small.npz",
+   5184779
+  ],
+  [
+   "scan_main.npz",
+   4123030
+  ],
+  [
+   "status.json",
+   11682
+  ]
+ ],
+ "note": "files of origin/gpu-jobs:jobs/<job_id>/out; the JSON copies in this folder carry the pilot marker (added by fetch_job.py where the job had not written it); arrays are not copied here"
+}

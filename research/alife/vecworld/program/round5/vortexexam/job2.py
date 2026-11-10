@@ -82,6 +82,7 @@ ap.add_argument("--prior", default=os.path.join(HERE, "prior.json"))
 ap.add_argument("--smoke", action="store_true")
 ap.add_argument("--max-hours", type=float, default=2.6)
 ap.add_argument("--preset", default="")
+ap.add_argument("--smoke-names", default="", help="smoke only: hidden parameters (and boxes) taken from --prior")
 args = ap.parse_args()
 OUT = args.out
 os.makedirs(OUT, exist_ok=True)
@@ -108,6 +109,11 @@ if args.smoke:
     COMMON = dict(m=6, steps_sim=30, steps_real={1: 20, 2: 20, 4: 20}, steps_C=20, rate_B=[4], n_post_draws=50,
                   sded_budget=2, R_ctl=2)
     N_SUB = 5
+    if args.smoke_names:                           # the smoke test with another hidden set (boxes of --prior)
+        _p = json.load(open(args.prior))
+        _nm = args.smoke_names.split(",")
+        PR.update(names=_nm, lo=[_p["lo"][_p["names"].index(n)] for n in _nm],
+                  hi=[_p["hi"][_p["names"].index(n)] for n in _nm])
 else:
     PR = json.load(open(args.prior))
     N_SUB = VX.N_SUB

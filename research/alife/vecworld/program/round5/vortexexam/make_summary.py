@@ -136,6 +136,12 @@ if PR:
     S["prior"] = V({k: PR[k] for k in ("H", "names", "lo", "hi", "T_ep", "prog_ticks", "c_prog", "hs", "viability", "const",
                                        "selection", "mutation")}, "prior.json (select_prior.py)")
 
+PRB = json.load(open(os.path.join(HERE, "prior_B.json"))) if os.path.exists(os.path.join(HERE, "prior_B.json")) else None
+if PRB:
+    S["prior_B_rule_on_branch_headroom"] = V(
+        {k: PRB[k] for k in ("names", "lo", "hi", "selection")}, "prior_B.json (select_prior.py --out prior_B.json)",
+        "the declared rule applied to the level-2 plug-in deficits of job 1's branches (available only after job 2 was "
+        "requested): eps plus the two families with the largest min-edge headroom; everything else as prior.json")
 P = load(JD2, "prediction.json")
 if P:
     src2 = f"origin/gpu-jobs:jobs/{J2}/out/"

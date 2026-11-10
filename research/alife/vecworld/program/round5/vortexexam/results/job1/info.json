@@ -1,4 +1,5 @@
 {
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
  "study": "round5/vortexexam job1",
  "pilot_never_reusable_as_exam": true,
  "versions": {

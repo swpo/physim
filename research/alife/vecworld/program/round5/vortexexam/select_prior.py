@@ -24,7 +24,11 @@ level-2 law, whose two constants are set by selection (eps) and mutation (mut128
 The exam shape (episode length, program ticks, horizons) and the public scaling constants are set here from job 1's
 law runs: sc_N, sc_s = standard deviations of N and s_b over members and ticks >= 100 at eps = 0.2; history-channel
 centres and scales = means and standard deviations over the scan's null members (ticks >= 100).
-usage: python -B select_prior.py JOB1_OUT_DIR [--H 64] [--names a,b,c] [--why "..."]
+Later the same day the runner cut job 1's branch file down (scan_branch_small.npz: level 2 in full, level-1 rasters
+at 4 horizons), analyse1.py computed the plug-in deficits, and this script, run again with --out prior_B.json,
+applied the rule as written: eps plus the two families with the largest level-2 headroom. prior.json (the proxy
+choice, used by job 2 = r5-vortexexam-003) is kept unchanged as the record of that job.
+usage: python -B select_prior.py JOB1_OUT_DIR [--H 64] [--names a,b,c] [--why "..."] [--out prior_B.json] [--n-min 8]
 """
 import argparse
 import json
@@ -48,6 +52,7 @@ ap.add_argument("--H", type=int, default=0)
 ap.add_argument("--names", default="")
 ap.add_argument("--why", default="")
 ap.add_argument("--n-min", type=float, default=3.0)
+ap.add_argument("--out", default="prior.json", help="file name in this folder (default prior.json)")
 args = ap.parse_args()
 A = json.load(open(os.path.join(HERE, "results", "analysis1.json")))
 scan = A["scan"]
@@ -107,10 +112,13 @@ out = {"PILOT_NEVER_REUSE_AS_EXAM": True, "H": H, "names": chosen, "lo": [box[p]
                      "headroom": {p: round(table[p][key], 3) for p in table},
                      "viable_both": {p: table[p]["viable_both"] for p in table},
                      "scan_H": scan["H"], "scan_J": Jm,
-                     "source": "results/analysis1.json scan (job r5-vortexexam-002, scan_main.npz)"},
+                     "source": "results/analysis1.json scan (job r5-vortexexam-002, scan_main.npz"
+                               + (f", {scan.get('branch_file')})" if "table" in scan else ")")},
        "mutation": "mut128 = time between mutation events per 128 x 128 px of box (declared per unit area); "
                    f"at {H} x {H} px the interval is mut128 x {VX.area_factor(H, H):g}",
        "program_mix": {"classes": list(VX.PROGRAM_CLASSES), "nats": 200.0, "u_max": VX.U_MAX,
                        "doc": "vxlib.make_program"}}
-json.dump(out, open(os.path.join(HERE, "prior.json"), "w"), indent=1)
+if args.out == "prior.json" and os.path.exists(os.path.join(HERE, "prior.json")) and "table" in scan:
+    sys.exit("prior.json is the record of job 2 (proxy choice); write the branch-based choice with --out prior_B.json")
+json.dump(out, open(os.path.join(HERE, args.out), "w"), indent=1)
 print(json.dumps(out, indent=1))
