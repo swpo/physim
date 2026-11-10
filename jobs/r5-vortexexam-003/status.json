@@ -9,10 +9,57 @@
       "at": "2026-11-10T00:53:00Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T01:16:30Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $16.37",
+      "state": "queued"
     }
   ],
   "job_id": "r5-vortexexam-003",
-  "message": "request received",
+  "max_estimate_usd": 16.37,
+  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $16.37",
+  "plan": {
+    "max_estimate_usd": 16.37,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      },
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "US",
+        "data_center": "us-central1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 5.55,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-10T01:16:30Z",
+    "window_hours": 2.95
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T01:11:55Z",
@@ -20,6 +67,6 @@
     "sha256": "f89b26c6bcaaf1d57a6f9c7b0e5bac0ad575a38ba90b2a877084d0d16039443a",
     "summary": "Gate met; exam secrecy clean; fine to run. 1 major: the scan-only run always shrinks to J=3 and one anchor (job1.py:399 rate model). 5 info."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T00:53:00Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T01:16:30Z"
 }
