@@ -95,8 +95,23 @@ try:
     except SystemExit:
         clean_ok = False
     checks["host_env_a_session_without_those_names_is_accepted"] = clean_ok and vfrun.refused_names() == []
+    # a helper that a tool starts gets the tool's own child environment and must pass the same check (and only then)
+    os.environ = vfrun.child_env()
+    own = vfrun.refused_names()
+    os.environ = dict(vfrun.child_env(), PYTHONPATH="/tmp/other-checkout", PRIME_RUNS_MODE="online")
+    other = vfrun.refused_names()
+    ev["env"]["a_tools_own_child_environment"] = {"refused": own, "with_another_PYTHONPATH_and_upload_mode": other}
+    checks["host_env_a_tools_own_child_environment_passes_and_other_values_do_not"] = own == [] and other == ["PRIME_RUNS_MODE", "PYTHONPATH"]
 finally:
     os.environ = real_environ
+
+ends = {"unix:///Users/lead/.docker/run/docker.sock": True, "unix:///var/run/docker.sock": True, "tcp://203.0.113.7:2375": False,
+        "ssh://someone@elsewhere": False, "npipe:////./pipe/docker_engine": False, "": False, "unix:///": False, "unix:///a\ntcp://b": False}
+ev["env"]["endpoints"] = {k: vfrun.endpoint_is_local(k) for k in ends}
+checks["host_env_only_a_unix_socket_counts_as_a_local_docker_engine"] = ev["env"]["endpoints"] == ends
+src = open(os.path.join(ROOT, "tools", "vfrun.py")).read()
+checks["host_env_every_docker_call_of_the_tools_gets_the_allow_listed_environment"] = src.count('subprocess.run(["docker"') == 2 \
+    and src.count("env=env)") >= 2 and all('env=vfrun.child_env()' in open(os.path.join(ROOT, "tools", f)).read() for f in ("prove.py", "check_probe.py"))
 
 # ---- disk (D1) ----
 real_free = vfrun.free_bytes
@@ -223,8 +238,16 @@ else:
     d = EvalClientConfig()
     n = EvalClientConfig(base_url="http://127.0.0.1:9/v1", api_key_var="PHYSIM2_NO_MODEL_KEY")
     k = resolve_api_key(d)
+    before_sdk = len(seen)
+    import prime_runs                                       # what vf-eval does once per run, upload or not (utils/platform.py:93)
+    run = prime_runs.init(mode="disabled", name="x", environments=[], model="none/scripted", framework="verifiers", config={})
+    run.finish()
+    from prime_runs.config import Config as RunsConfig
+    sdk_key = RunsConfig().api_key
     out.update(default_client_key="EMPTY" if k == "EMPTY" else "a key was loaded (%d characters, the made-up one: %s)" % (len(k), k.startswith("FAKE-KEY")),
-               default_client_headers=sorted(d.headers), stand_in_client_key=resolve_api_key(n), tripwire_hits=tw.hits)
+               default_client_headers=sorted(d.headers), stand_in_client_key=resolve_api_key(n), tripwire_hits=tw.hits,
+               opens_by_the_prime_runs_sdk_for_a_disabled_run=len(seen) - before_sdk,
+               key_the_prime_runs_sdk_holds="none" if not sdk_key else "a key was loaded (the made-up one: %s)" % sdk_key.startswith("FAKE-KEY"))
 out["opens_of_the_made_up_credential_file"] = len(seen)
 print("RESULT" + json.dumps(out))
 '''
@@ -519,6 +542,10 @@ def main():
     checks["nokey_through_the_package_the_file_is_never_opened"] = nk["package"]["opens_of_the_made_up_credential_file"] == 0 \
         and nk["package"]["state"] == "stand-in" and nk["package"]["default_client_key"] == "EMPTY" and nk["package"]["default_client_headers"] == []
     checks["nokey_the_stand_in_client_has_no_key"] = nk["package"]["stand_in_client_key"] == "EMPTY" and nk["stock"]["stand_in_client_key"] == "EMPTY"
+    checks["nokey_control_the_prime_runs_sdk_reads_the_file_even_for_a_disabled_run"] = nk["stock"]["opens_by_the_prime_runs_sdk_for_a_disabled_run"] >= 1 \
+        and nk["stock"]["key_the_prime_runs_sdk_holds"].endswith("True)")
+    checks["nokey_through_the_package_the_prime_runs_sdk_opens_nothing_and_holds_no_key"] = nk["package"]["opens_by_the_prime_runs_sdk_for_a_disabled_run"] == 0 \
+        and nk["package"]["key_the_prime_runs_sdk_holds"] == "none" and nk["laboratory in step-3 mode"]["key_the_prime_runs_sdk_holds"] == "none"
     checks["nokey_a_laboratory_process_never_opens_it_even_in_step_3_mode"] = nk["laboratory in step-3 mode"]["opens_of_the_made_up_credential_file"] == 0 \
         and nk["laboratory in step-3 mode"]["state"] == "stand-in"
     checks["nokey_the_launcher_resolves_the_scripted_config_without_opening_it"] = nk["launcher"]["opens_of_the_made_up_credential_file"] == 0 \

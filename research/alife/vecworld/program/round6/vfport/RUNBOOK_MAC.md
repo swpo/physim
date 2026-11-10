@@ -4,12 +4,12 @@
 `af767adbdeac3d00906d7a3394421e1bc4d6e486`) is SUSPENDED since 10 Nov 2026: before running anything, the Mac
 session reviewed that commit read-only and returned three major and eleven minor points and facts about the
 machine (16 GiB free; a Prime credential file in the home folder), and the coordinator added a disk requirement.
-Round 3 of fixes changes the code and this file to meet them; **the text below is being changed and is not
-released**. Do not run af767adb either: its GO is suspended, not replaced. The hold on steps 0 to 2 is lifted
-only by a verdict that says GO: it replaces this notice by one that begins `**GO for steps 0 to 2.**`, and the
-coordinator's message then gives the 40-character hash of the commit that holds the replaced notice. Step 3 (a
-paid model rollout) has a second hold of its own and stays NO-GO until steps 0 to 2 have passed on the Mac and
-been reported.
+Round 3 of fixes changed the code and this file to meet them (`README.md`, section 8.9); **these changes have not
+been re-audited.** Do not run af767adb either: its GO is suspended, not replaced, and its code is not the code
+this file describes. The hold on steps 0 to 2 is lifted only by a verdict that says GO: it replaces this notice
+by one that begins `**GO for steps 0 to 2.**`, and the coordinator's message then gives the 40-character hash of
+the commit that holds the replaced notice. Step 3 (a paid model rollout) has a second hold of its own and stays
+NO-GO until steps 0 to 2 have passed on the Mac and been reported.
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->
@@ -111,7 +111,7 @@ settings, in step 2b one made-up canary value named `HF_TOKEN`) [`tools/vfrun.py
 `MCP_*`, `PHYSIM2_*`, `PYTHON*` or credential of the session can get through, and a tool refuses to start
 (`refused: the environment of this command holds ...`) when the session has one of the names step 0 looks for.
 `PATH` and `HOME` are taken as they are: that is why step 0 has you check, yourself, which `docker` context
-answers.
+answers, and why a tool refuses to start unless that context names a Unix socket of this machine.
 
 **What is signalled or killed on the Mac.** Every target below is a process that the pilot itself started; no
 signal is sent by name, by user or to "all processes".
@@ -124,7 +124,7 @@ signal is sent by name, by user or to "all processes".
 | verifiers, in vf-eval | `git rev-parse`, started once to find its own version [vf:utils/version.py:23-31] | SIGKILL by Python if it has not answered in 5 s |
 | `tools/vfrun.py` | the vf-eval it started (one process) [`stop_child`, `run_child`] | ONE SIGTERM (vf-eval then removes its containers and stops its laboratory); SIGKILL only if it is still there 120 s later. When: a run exceeds its time limit (an hour in 2a and 2b, 90 minutes in 2c), the disk watchdog trips, or the tool itself is stopped or fails. After any of these the tool ends with a status other than 0 (97 disk, 98 stopped or killed, 130 after a stop by signal) and starts nothing further |
 | `tools/vfrun.py` | the helper it started, `tools/make_instances.py` or `tools/build_reference.py` (one process) [`run_helper`] | SIGTERM, SIGKILL 20 s later, only when the tool is told to stop while the helper runs |
-| `tools/vfrun.py`, `tools/check_probe.py`, `tools/prove.py` | their own `docker info`, `docker run --rm` (the control container of 2b) and `docker version` clients | SIGKILL by Python if the client has not answered in 60 s (120 s for the control) |
+| `tools/vfrun.py`, `tools/check_probe.py`, `tools/prove.py` | their own `docker context inspect`, `docker info`, `docker run --rm` (the control container of 2b) and `docker version` clients | SIGKILL by Python if the client has not answered in 60 s (120 s for the control) |
 | Python, in a tool | the tool itself | after a stop by SIGTERM the tool ends itself with the interrupt signal: the log shows a traceback ending `KeyboardInterrupt` and `EXIT 130` |
 | the kernel (Linux only) | the laboratory process, when the vf-eval that started it dies [vf:mcp/server.py:112-118] | SIGKILL. **Not on macOS:** there a laboratory whose vf-eval was killed outright stays until it is stopped ("If a run was interrupted", point 4) |
 | you | ONE process of the pilot: the pid that the status command printed, after the stop command has compared that pid's command line with the eight exact beginnings of the pilot's own programs; it sends nothing otherwise | SIGTERM, only in "If a run was interrupted" |
@@ -181,14 +181,17 @@ of your user.
 On Linux verifiers also makes a Unix socket in a temporary folder that it mounts into a helper container; off
 Linux it does not [vf:runtimes/docker/__init__.py:318-321, 348-408].
 
-**No model credential in steps 0 to 2.** verifiers reads the Prime login `~/.prime/config.json` when it is
-merely imported, and again when it builds a model client without a key in the environment
-[vf:configs/cli/eval.py:86; vf:configs/client.py:37-57, 93-104; vf:utils/prime.py:9-20]. The pilot closes that
-reader before verifiers is imported, in every process it starts (`physim2_env/_nokey.py`, `tools/vfeval.py`), gives
-every scripted run a stand-in client (`base_url = "http://127.0.0.1:9/v1"`, a key variable that is never set) and
-passes no `PRIME_API_KEY` on. Shown in the cloud container with a made-up file in a scratch home: the stock
-import opens the file and loads its key; the pilot's processes never open it (`results/round3_checks.json`,
-`results/rehearsal_round3.json`). The file on this Mac stays where it is; do not move or open it.
+**No model credential in steps 0 to 2.** Two things on the route read the Prime login `~/.prime/config.json`
+and the key in it: verifiers, when it is merely imported and again when it builds a model client without a key
+in the environment [vf:configs/cli/eval.py:86; vf:configs/client.py:37-57, 93-104; vf:utils/prime.py:9-20]; and
+the prime-runs SDK, which vf-eval calls once per run even with uploads off [vf:utils/platform.py:93;
+prime_runs/run.py:456; prime_traces/core/config.py:25-32]. The pilot closes both readers before verifiers is
+imported, in every process it starts (`physim2_env/_nokey.py`, `tools/vfeval.py`), gives every scripted run a
+stand-in client (`base_url = "http://127.0.0.1:9/v1"`, a key variable that is never set) and passes no
+`PRIME_API_KEY` on. Shown in the cloud container with a made-up file in a scratch home: the stock route opens the
+file and loads its key; the pilot's processes never open it, in the tests and through the whole rehearsal, where
+the kernel reported every open of that file (`results/round3_checks.json`, `results/rehearsal_round3.json`).
+The file on this Mac stays where it is; do not move or open it.
 
 **Network.** `uv sync` downloads from PyPI, one wheel from github.com and, if uv has no Python 3.12 of its own,
 that Python from github.com; `docker build` and the first rollout pull `python:3.12-slim` and `alpine:3.22` and
@@ -573,8 +576,8 @@ this section.
 
    Send the signal once; never `kill -9`, never a second pid in the same command.
 3. **Containers of the pilot are still listed and no `VF-EVAL` is** (vf-eval was killed before it could clean up;
-   the tool's log then ends with `EXIT 98`, or with `EXIT 1` if the tool was killed too): remove each one by its
-   exact name, one command per container, the name copied from the status output:
+   the tool's log then ends with a line `refused to go on: vf-eval died of signal 9. ...` and `EXIT 98`): remove
+   each one by its exact name, one command per container, the name copied from the status output:
 
    ```sh
    cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker inspect --format '{{index .Config.Labels "verifiers.run"}}' NAME_FROM_THE_STATUS_LINE | grep -Fx physim2-pilot-20261110 && docker rm -f NAME_FROM_THE_STATUS_LINE

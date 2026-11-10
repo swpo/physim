@@ -66,6 +66,9 @@ ENV_PASS_MODEL = ("PRIME_API_KEY", "PRIME_TEAM_ID")
 # VF_RUN_ID is the one exception: the command that starts a tool sets it.
 ENV_REFUSE = re.compile(r"^(PHYSIM2_|UV_|VIRTUAL_ENV|PYTHON(PATH|HOME)|DOCKER_|BUILDX_|VF_|MCP_HOST|MCP_PORT|PRIME_RUNS_MODE)")
 ENV_REFUSE_EXCEPT = ("VF_RUN_ID",)
+# ...and two names are accepted with exactly the value a tool itself gives its children (child_env), so that a
+# helper started by a tool (tools/make_instances.py) can make the same check: this checkout, and no upload.
+ENV_OWN = {"PYTHONPATH": ROOT, "PRIME_RUNS_MODE": "disabled"}
 MODEL_ENV = "PHYSIM2_MODEL_CREDENTIALS"                      # read by physim2_env/_nokey.py; set here for step 3 only
 
 # ---- no model in a scripted run (M3) ----
@@ -84,7 +87,7 @@ EXIT_STOPPED = 98                                            # vf-eval was stopp
 def refused_names(environ=None) -> list[str]:
     """The names in `environ` (default: this process's own environment) that no tool may be started with."""
     environ = os.environ if environ is None else environ
-    return sorted(k for k in environ if ENV_REFUSE.match(k) and k not in ENV_REFUSE_EXCEPT)
+    return sorted(k for k in environ if ENV_REFUSE.match(k) and k not in ENV_REFUSE_EXCEPT and ENV_OWN.get(k) != environ[k])
 
 
 def require_clean_environment() -> None:
@@ -131,13 +134,26 @@ def child_env(extra: dict | None = None, *, model_credentials: bool = False) -> 
     return env
 
 
+def endpoint_is_local(host: str) -> bool:
+    """Is a Docker endpoint (`docker context inspect`: .Endpoints.docker.Host) a Unix socket of this machine?
+    `tcp://`, `ssh://`, `npipe://` and an empty answer are not."""
+    return isinstance(host, str) and host.startswith("unix:///") and "\n" not in host and len(host) > len("unix:///")
+
+
 def require_docker() -> str:
     """The Docker server's version, or stop: a run started against a daemon that does not answer would be
-    recorded as a finished, failed rollout and never repeated. (On a timeout Python kills this `docker info`
-    client, its own child.)"""
+    recorded as a finished, failed rollout and never repeated. Before that, the engine must be a local one: the
+    context that the `docker` client of this environment uses must name a Unix socket (the allow-list keeps
+    DOCKER_HOST and DOCKER_CONTEXT out, but the context file in the home folder still decides where commands
+    go: finding M1). (On a timeout Python kills these `docker` clients, its own children.)"""
+    env = child_env()
     try:
-        r = subprocess.run(["docker", "info", "--format", "{{.ServerVersion}}"], capture_output=True, text=True, timeout=60,
-                           env=child_env())
+        c = subprocess.run(["docker", "context", "inspect", "--format", "{{.Endpoints.docker.Host}}"], capture_output=True, text=True,
+                           timeout=60, env=env)
+        if c.returncode or not endpoint_is_local(c.stdout.strip()):
+            raise SystemExit("refused: the Docker context of this session does not name a Unix socket of this machine ("
+                             + (c.stdout.strip().split("://")[0][:12] or "no answer") + "); nothing was started. Stop and report.")
+        r = subprocess.run(["docker", "info", "--format", "{{.ServerVersion}}"], capture_output=True, text=True, timeout=60, env=env)
     except (OSError, subprocess.TimeoutExpired) as e:
         raise SystemExit(f"Docker does not answer ({type(e).__name__}); nothing was started. Stop and report.") from None
     if r.returncode or not r.stdout.strip():

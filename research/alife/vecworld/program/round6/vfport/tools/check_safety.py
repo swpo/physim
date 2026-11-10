@@ -50,6 +50,7 @@ import runpy  # noqa: E402
 import signal  # noqa: E402
 import subprocess  # noqa: E402
 import tempfile  # noqa: E402
+import time  # noqa: E402
 import types  # noqa: E402
 
 if sys.platform != "linux" or os.environ.get("PHYSIM2_DEV_MACHINE") != "cloud-container":
@@ -91,11 +92,12 @@ class FakeProc:
         FakeProc.made.append(self)
 
     def communicate(self, timeout=None):
-        self.log.append(f"communicate(timeout={timeout})")
+        self.log.append("communicate()" if timeout is None else "communicate(timeout)")
         if self.raise_in_communicate is not None and self.returncode is None:
             exc, self.raise_in_communicate = self.raise_in_communicate, None
             raise exc
         if timeout is not None and self.returncode is None:
+            time.sleep(min(timeout, 1.5))                    # the stand-in "runs" for as long as it is waited for
             raise subprocess.TimeoutExpired(self.cmd, timeout)
         return "", ""
 
@@ -146,15 +148,20 @@ r2["stop_child_on_a_process_that_has_exited"] = {"result": vfrun.stop_child(_p),
 r2.pop("normal_exit")
 evidence["R2"] = r2
 t1, t2, t3 = r2["timeout_1_obedient_stub"], r2["timeout_1_stub_that_ignores_sigterm"], r2["tool_itself_told_to_stop"]
-checks["R2_timeout_sends_sigterm_and_no_sigkill"] = t1["calls_on_the_process"] == ["communicate(timeout=1)", "send_signal(SIGTERM)", "wait(timeout)",
-                                                                                 "communicate(timeout=None)"] and t1["raised"] is None
-checks["R2_sigkill_only_after_sigterm_and_the_grace_period"] = t2["calls_on_the_process"][:4] == ["communicate(timeout=1)", "send_signal(SIGTERM)",
+checks["R2_timeout_sends_sigterm_and_no_sigkill"] = t1["calls_on_the_process"] == ["communicate(timeout)", "send_signal(SIGTERM)", "wait(timeout)",
+                                                                                 "communicate()"] and t1["raised"] is None
+checks["R2_sigkill_only_after_sigterm_and_the_grace_period"] = t2["calls_on_the_process"][:4] == ["communicate(timeout)", "send_signal(SIGTERM)",
                                                                                                   "wait(timeout)", "kill(SIGKILL)"]
 checks["R2_a_stop_request_to_the_tool_is_passed_on_as_sigterm"] = t3["raised"] == "KeyboardInterrupt" \
     and t3["calls_on_the_process"][1:3] == ["send_signal(SIGTERM)", "wait(timeout)"] and "kill(SIGKILL)" not in t3["calls_on_the_process"]
 checks["R2_an_exited_process_is_not_signalled"] = r2["stop_child_on_a_process_that_has_exited"] == {"result": "had exited", "calls_on_the_process": []}
 checks["R2_sigterm_handler_of_this_process_restored"] = signal.getsignal(signal.SIGTERM) is term_before
-# run_eval end to end with the stand-in: the label is required, Docker must answer, timeout=1 ends in SIGTERM
+# run_eval end to end with the stand-in: the label is required, Docker must answer, timeout=1 ends in SIGTERM and
+# (round 3) in status 98 of the tool. The tool refuses an environment with PHYSIM2_* and the like (round 3, M1): this
+# check itself needs PHYSIM2_DEV_MACHINE, so those names are taken out for these calls and put back afterwards.
+saved_refused = {k: os.environ.pop(k) for k in vfrun.refused_names()}
+real_free = vfrun.free_bytes
+vfrun.free_bytes = lambda path=None: 100 << 30               # the disk watchdog has its own tests (tools/check_round3.py)
 saved_env = os.environ.pop("VF_RUN_ID", None)
 try:
     vfrun.run_eval("stub-run", store=TMP, out_dir=os.path.join(TMP, "runs"), harness={}, timeout=1)
@@ -175,19 +182,28 @@ real_docker, real_popen = vfrun.require_docker, subprocess.Popen
 vfrun.require_docker = lambda: "stand-in"
 FakeProc.made, FakeProc.obeys, FakeProc.raises = [], True, None
 subprocess.Popen = FakeProc
+tool_status = None
 try:
-    res = vfrun.run_eval("stub-run", store=TMP, out_dir=os.path.join(TMP, "runs"), harness={}, timeout=1)
+    with contextlib.redirect_stdout(io.StringIO()):
+        vfrun.run_eval("stub-run", store=TMP, out_dir=os.path.join(TMP, "runs"), harness={}, timeout=1)
+except SystemExit as e:
+    tool_status = e.code
 finally:
-    subprocess.Popen, vfrun.require_docker = real_popen, real_docker
+    subprocess.Popen, vfrun.require_docker, vfrun.free_bytes = real_popen, real_docker, real_free
     if saved_env is None:
         os.environ.pop("VF_RUN_ID", None)
     else:
         os.environ["VF_RUN_ID"] = saved_env
-r2["run_eval_timeout_1"] = {"ended": res["ended"], "run_label": res["run_label"], "command": [os.path.basename(c) for c in FakeProc.made[0].cmd[:4]],
+    os.environ.update(saved_refused)
+res = json.load(open(os.path.join(TMP, "runs", "stub-run.stopped.json")))
+child = FakeProc.made[0].kw.get("env", {})
+r2["run_eval_timeout_1"] = {"ended": res["ended"], "tool_status": tool_status, "run_label_given_to_the_child": child.get("VF_RUN_ID"),
+                            "names_in_the_childs_environment": sorted(child), "command": [os.path.basename(c) for c in FakeProc.made[0].cmd[:6]],
                             "calls_on_the_process": FakeProc.made[0].log, "tripwires_reached": hits()}
 checks["R2_tools_refuse_to_start_without_a_run_label"] = no_label.startswith("VF_RUN_ID is not set") and not r2["run_eval_without_VF_RUN_ID"]["out_dir_created"]
 checks["R2_run_eval_under_timeout_1_records_sigterm"] = "send_signal(SIGTERM)" in r2["run_eval_timeout_1"]["calls_on_the_process"] \
-    and "kill(SIGKILL)" not in r2["run_eval_timeout_1"]["calls_on_the_process"] and res["run_label"] == "physim2-safety-test"
+    and "kill(SIGKILL)" not in r2["run_eval_timeout_1"]["calls_on_the_process"] and child.get("VF_RUN_ID") == "physim2-safety-test" \
+    and res["ended"] == "stopped after 1 s: SIGTERM" and tool_status == 98 and not any(k.startswith(("PHYSIM2_", "DOCKER_", "MCP_")) for k in child)
 
 # ============================================================================= R3: the box scripts refuse here
 MODES = {

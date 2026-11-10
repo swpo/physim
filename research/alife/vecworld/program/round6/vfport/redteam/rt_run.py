@@ -104,7 +104,7 @@ def run(name, a, harness, task=None, agent_timeout=None, timeout=1500):
     th = threading.Thread(target=watch_boxes, args=(seen, stop), daemon=True)
     th.start()
     t0, r0 = time.time(), resource.getrusage(resource.RUSAGE_CHILDREN)
-    cmd = ["nice", "-n", "10", vfrun.VF_EVAL, "@", toml, "--no-rich"]
+    cmd = ["nice", "-n", "10", *vfrun.VF_EVAL, "@", toml, "--no-rich"]   # round 3: VF_EVAL is the launcher, a list
     try:
         rc, out, err, how = vfrun.run_child(cmd, env=vfrun.child_env(), cwd=out_dir, timeout=timeout)
         rc, log = (rc if how == "exited" else "TIMEOUT"), out + err

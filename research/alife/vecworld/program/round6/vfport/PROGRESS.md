@@ -4,12 +4,31 @@
 - Role: the Mac review's findings M1 to M3 and m1 to m11 and the coordinator's disk requirement D1. Worktree
   `/home/user/wt/vfr3fix1` (branch wt-vfr3fix1, pushes to the shared branch), scratch
   `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3fix1/`.
-- DONE so far: `RUNBOOK_MAC.md` is ON HOLD again (notice block; the GO for af767adb is suspended, not replaced);
-  a suspension note stands above the first line of `HOST_SAFETY_AUDIT.md` (the verdict's own text untouched).
-- NOT yet done: everything else. The pinned files still equal `PIN.sha256` 7aa9bbfc...f64c19 at this commit.
-- If the container restarted: recreate the worktree as the role text says, read `git log -5` and this section,
-  continue from the first item that is not marked done. Nothing of mine runs between commits unless a line
-  "Running" below says so.
+- DONE (committed): `RUNBOOK_MAC.md` ON HOLD again (fb54884bc); code: `tools/vfrun.py` (environment allow-list,
+  refusal of a session with DOCKER_*/PHYSIM2_*/... names, local-socket check of the Docker context, disk
+  watchdog, one stop path, status 97/98, helper stop, command form for steps 2c and 3), `tools/vfeval.py` (the
+  launcher), `physim2_env/_nokey.py` (BOTH readers of ~/.prime/config.json closed: verifiers' and the prime-runs
+  SDK's, the second one found here by tracing a rollout), `tools/build_reference.py` (theta by 0600 file),
+  proxy checks for the worker's loopback names (`agents/probe_grading.py`, `tools/check_probe.py`), build backend
+  pinned (`pyproject.toml`, `uv.lock` [manifest]), `tools/check_round3.py` (48 of 48: tripwires, credential
+  trace, real signals in a throwaway container), `tools/check_safety.py` 36 of 36 and `tools/check_interrupt.py`
+  8 of 8 on the new code, `RUNBOOK_MAC.md` rewritten (generated from one set of command templates so that
+  repeated text is identical), `tools/check_runbook.py` for the new text, `rehearsal/issue3.py`,
+  `rehearsal/watch_open.py`.
+- Pre-test in my worktree with the existing environment (scripted rollouts, scratch home, no upload): D and C
+  through `tools/prove.py`, one rollout through the command form of `tools/vfrun.py`, report tool: all as
+  expected. It found two things, both fixed: a helper started by a tool refused the tool's own child environment;
+  the prime-runs SDK reads the credential file even for a disabled run.
+- NOT yet done: `PIN.sha256` regenerated; the rehearsal from a fresh clone (`results/rehearsal_round3.json`);
+  README, `results/summary.json`, `results/host_safety_round3.json`; removal of worktree and scratch.
+- Running: at most one background script of mine at a time (`<scratch>/pre/run*.sh`, a scripted rollout labelled
+  `verifiers.run=vfr3fix1-pretest`); the Docker daemon was started by me after a restart of the container
+  (log in `<scratch>/dockerd.log`); never stop it.
+- If the container restarted: recreate the worktree as the role text says, read `git log -8` and this section,
+  start the daemon (`pgrep -x dockerd >/dev/null || (nohup dockerd --feature containerd-snapshotter=false > <scratch>/dockerd.log 2>&1 &)`),
+  list leftovers with `docker ps -a --filter label=verifiers.run=vfr3fix1-pretest` and
+  `--filter label=verifiers.run=physim2-pilot-20261110` and remove them by exact name, then continue from the
+  first item of "NOT yet done".
 
 ## VERDICT, round 2 (of the branch head after the two round-2 re-audits) -- 10 Nov 2026, finished
 - Role: issue the round-2 verdict from the fixer's report and the two re-audits (code, runbook), checking what
