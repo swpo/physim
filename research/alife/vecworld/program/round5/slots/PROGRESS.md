@@ -1,6 +1,6 @@
 # PROGRESS (study slots, round 5) -- kept for restarts
 
-Updated 04:04 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
+Updated 04:08 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
 
 ## Done
 - r5-slots-001 cancelled, r5-slots-002 infra_error ($0), r5-slots-003 pilot done ($3.13, H200, ref e5d146ef3; outputs in results/r5-slots-003/).
@@ -16,21 +16,22 @@ Updated 04:04 UTC 10 Nov (instance 4, after the third container restart at about
 - results/summary.json, results/interpretation.json, README.md: PRELIMINARY (pilot only), to be rebuilt.
 
 ## Running
-- GPU job r5-slots-005 (requested about 04:05 UTC): the SAME code ref 7099a0ded, S5_SIZE=pilot (48 trajectories per
+- r5-slots-005 was CANCELLED before start ($0) at 04:06: the Mac's review asked for XLA_PYTHON_CLIENT_MEM_FRACTION=0.9
+  on a 40 GB card. GPU job r5-slots-006 (requested about 04:08 UTC) = r5-slots-005 plus that env line: the SAME code ref 7099a0ded, S5_SIZE=pilot (48 trajectories per
   half, fits a 40 GB card), S5_STEPS=2000, types A100_40GB / A100_80GB / H100_80GB, max 3.5 h, cap $18.75
   (about $7.50 expected on an A100_40GB). Limits: training stops at 10400 s, certification 11200 s, workers killed
   at 11900 s. Expected on an A100: the first 9 configs. Status:
-  git fetch origin gpu-jobs; git show origin/gpu-jobs:jobs/r5-slots-005/status.json (and review.md when it appears).
-  Watcher (cheap to restart): bash <scratchpad>/slots/watch.sh r5-slots-005. NEVER resubmit while it is queued or
-  running. Budget: cap $25, $3.13 billed, r5-slots-005 reserves up to $18.75.
+  git fetch origin gpu-jobs; git show origin/gpu-jobs:jobs/r5-slots-006/status.json (and review.md when it appears).
+  Watcher (cheap to restart): bash <scratchpad>/slots/watch.sh r5-slots-006. NEVER resubmit while it is queued or
+  running. Budget: cap $25, $3.13 billed, r5-slots-006 reserves up to $18.75.
 
 ## Next step (exact)
-1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-005 <scratch dir>; look at progress.txt,
+1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-006 <scratch dir>; look at progress.txt,
    table.txt, train_done.json (skipped configs), train/*.json (checkpoints, cut_by_deadline), train_errors.txt.
    Remember: the config still training at the training deadline has NULL objective values; a _ws config cut before
    step 250 still carries sam_sup's encoder (not a result).
-2. rewrite results/interpretation.json for r5-slots-005 (claims with key paths into combined.json), run
-   python -B ssummary.py results r5-slots-005 r5-slots-003 r5-slots-004; python -B sfigs.py <scratch>/r5-slots-005/out results/figs
-   (copy r5-slots-004's status.json into results/r5-slots-004/ first: the job record of the cancelled request).
+2. rewrite results/interpretation.json for r5-slots-006 (claims with key paths into combined.json), run
+   python -B ssummary.py results r5-slots-006 r5-slots-003; python -B sfigs.py <scratch>/r5-slots-006/out results/figs
+   (the cancelled requests 004 and 005 never had a pod; the report lists them at $0).
 3. README.md (short; say that the doubled data was dropped and why), report; commit + push own paths; remove the
    worktree (git worktree remove --force /home/user/wt/slots; git branch -D wt-slots) and the scratch.
