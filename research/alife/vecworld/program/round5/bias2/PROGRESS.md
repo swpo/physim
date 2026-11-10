@@ -46,5 +46,8 @@ Updated 2026-11-10 01:16 UTC (instance 4, after the restart at about 01:12).
   Resubmitted unchanged as r5-bias2-007 (GPU types reordered) at about 01:54 UTC. Watch 007 (same steps, job id 007
   everywhere: cfetch, post-processing, `<world>_w=r5-bias2-007`, cpairs_run.sh paths). Never resubmit ids 006/007.
 
+- 02:25 UTC: r5-bias2-007 RUNNING on an A100 40GB (lambdalabs, $1.99/h) after two failed pod creations; kill time
+  about 04:01 UTC; expected to end 03:15-03:45 UTC. Nothing else is pending.
+
 ## Next if the follow-up is abandoned
 Report from results/summary.json as it is; say the follow-up was not run and why.
