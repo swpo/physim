@@ -1,7 +1,7 @@
 {
   "billing_window_hours": 3.9,
   "bundle": {
-    "bundle_sha256": "602b253c4d3b8a4b0370a342c2d2e8e7ab7e95169754e1e3184c5cf8fc713448",
+    "bundle_sha256": "a5508a71667d710f5ca6c72d63465ff11bd32a215c27b6ea02d21223969d8736",
     "files": {
       "job.sh": "6913c39980c3c326c0a124fb24649bff6c67b9e686af69cd47731afc8821a203",
       "request.json": "b4461c981383a5d3a2300487a2fa20384a806b21b08c367cf9cd0ab446ce939a",
@@ -25,6 +25,9 @@
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
   "hard_deadline": null,
   "hard_deadline_epoch": null,
   "history": [
@@ -47,26 +50,31 @@
       "at": "2026-11-10T02:47:00Z",
       "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_h100_sxm5 available right now. Please try again later.); will retry",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T02:49:06Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-slots-004",
   "max_estimate_usd": 10.36,
-  "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_h100_sxm5 available right now. Please try again later.); will retry",
+  "message": "renting a pod",
   "offers_at_start": [
     {
-      "cloud_id": "gpu_1x_h100_sxm5",
+      "cloud_id": "gpu_1x_h100_pcie",
       "country": "US",
-      "data_center": "us-south-3",
-      "disk_gb": 2816,
+      "data_center": "us-west-3",
+      "disk_gb": 1024,
       "gpu_memory_gb": 80,
       "gpu_type": "H100_80GB",
       "is_spot": false,
-      "memory_gb": 225,
+      "memory_gb": 200,
       "provider": "lambdalabs",
       "rank": 1,
-      "rate_usd_hr": 4.29,
+      "rate_usd_hr": 3.29,
       "security": "secure_cloud",
-      "socket": "SXM5",
+      "socket": "PCIe",
       "stock": "Available",
       "vcpus": 26
     }
@@ -114,13 +122,14 @@
       "terminated_at": null
     }
   ],
-  "pods_terminated": true,
+  "pods_terminated": null,
   "review": {
     "at": "2026-11-10T02:05:32Z",
     "file": "jobs/r5-slots-004/review.md",
     "sha256": "b6eb25065fbaec41a82876e1aa24222969bab6b8b808256d5749f3de096dfac6",
     "summary": "Fine to run: the 2^31 blocker is fixed (largest tensor 6.0e8, checked at compile level) and all pilot points are addressed. 1 minor: the last trained config loses its objective values. 6 info."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T02:47:00Z"
+  "run_started_epoch": 1794278946.59343,
+  "state": "provisioning",
+  "updated_at": "2026-11-10T02:49:06Z"
 }
