@@ -1,9 +1,33 @@
 {
+  "billing_window_hours": 2.964,
+  "bundle": {
+    "bundle_sha256": "5ce222be3bc20830c35d424c3c7845afa82d5d21ec9d915dd0ebf79cdadd6372",
+    "files": {
+      "job.sh": "e250aef126f7d813db29d0eb3d8988cafd6fe607d5250deac6bbc9b45fa58b4c",
+      "request.json": "052d192fd8a35622f5a97cd8a171c417d5e810a2e620ea45397698f8f52448a5",
+      "run.sh": "b7f6a551f58829edeafda0a938daaa1ff8c2a92ed7b20130a26bde85f7bc59f5",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "7bc522d3271b97f50d45dbc976c0b839a4330efad797837ca2f74cfc29215184"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round5/bias2"
+    ],
+    "ref": "11c116b39d1ffdb513edb5d39eff39ca16295d13",
+    "src_bytes": 16286178
+  },
   "cap_usd": 16.45,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-09T23:41:12Z",
@@ -14,11 +38,52 @@
       "at": "2026-11-10T00:15:41Z",
       "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T00:17:54Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-bias2-005",
   "max_estimate_usd": null,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "US",
+      "data_center": "us-central1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 2,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    },
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "FI",
+      "data_center": "eu-north1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 2,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    }
+  ],
   "pods": [],
   "review": {
     "at": "2026-11-10T00:09:12Z",
@@ -26,6 +91,6 @@
     "sha256": "57050297bbdba28eb14d00e3d047b8b50304719bb87b28543922841913634a6c",
     "summary": "Fine to run; all earlier points fixed. 2 minor: ctrain killed at the cert deadline reports a false failure; pre-loop probes have no timeout."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T00:15:47Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-10T00:17:54Z"
 }
