@@ -207,7 +207,7 @@ S = specification review, R = red team (`redteam/PROGRESS.md`). "Reproduced" nam
 | R1 a float64 reply overflows the score: reward null, table +inf | blocker | yes: `units.json: evidence.score` (448 of 448 scores -inf from the red team's samples) | FIXED: strict reply reader, non-finite score = failed item, reward always finite; `hostile-item_overflow` |
 | R3 a named pipe as stderr.txt blocks grading until the timeout | blocker | by the red team's run (`redteam/results/fifo.json`, 168 s); not repeated on the old code | FIXED: `driver_container.json` (returns in under a second), `hostile-item_fifo`, a worker-side timeout per request |
 | R4 a harness that dies leaves no grade | major | yes: `probe_ring.json: evidence.h_harness_dies` | MITIGATED, OPEN in verifiers (hole 2): `single_use` on by default, `tools/settle.py` |
-| R5 a many-member reply makes the worker hold gigabytes | major | yes: `units_before_fix.json: evidence.reply.many_members` (accepted, 91 MiB for 0.6 MB) | FIXED: at most 16 members named level<l>, bounded numbers |
+| R5 a many-member reply makes the worker hold gigabytes | major | yes: `units_before_fix.json: evidence.reply.many_members` (a reply of 3,000 arrays is accepted and held) | FIXED: at most 16 members named level<l>, bounded numbers |
 | R6 one uid for every box: a rollout can starve another's predictor of processes | minor (concurrent rollouts only) | not repeated (the red team's two-container run stands) | FIXED: a random uid per rollout (@@UIDS@@) |
 | R7 no process or disk limit in a box | moderate | yes: `probe_ring.json: evidence.verifier_box_staging.box_limits` (`pids_max`: max) | OPEN (hole 3): a setting of the Docker daemon |
 | R8 a failed item is K, so failing on purpose is free | minor | yes: `proof_ring.json: failed_item_is_K_counterfactual` | OPEN (hole 4): a rule of round 5; the lead's decision |
@@ -216,7 +216,7 @@ S = specification review, R = red team (`redteam/PROGRESS.md`). "Reproduced" nam
 | S5 wording | minor | yes | FIXED in this file |
 | S6 `single_use` off by default | minor | yes | FIXED: on, keyed by agent |
 | S7 the agent box's CPU counter is forgeable | minor | yes, by reading | RENAMED `agent_box_cpu_s_unverified`; no trusted meter (hole 6) |
-| S8 the token guard matches names only | minor | yes: `GITHUB_PAT` passed | FIXED: allow-list (`guard-other-env` refused) |
+| S8 the token guard matches names only | minor | by reading (the pattern knows TOKEN, SECRET, KEY and the like, not PAT) | FIXED: allow-list (`guard-other-env` refused) |
 | S9 runbook | minor | yes | FIXED: RUNBOOK_MAC.md rewritten |
 
 Nothing was rejected: every finding of both reviews was real. The fixer added one of its own: the incident of
@@ -270,7 +270,8 @@ Most severe first. Each is confirmed (how is said) and not fixed (why is said).
 
 `--env.id isolated-verifier`, a Docker runtime, `push = false` (or `PRIME_RUNS_MODE=disabled`), no `--resume`,
 `max_retries = 0` for the agent and the episode, `--env.verifier.retries 0`. Leave at their defaults: `single_use`
-(true), `item_isolation` ("box"), `item_cleanup` and `stock_collection` (a rollout run otherwise is marked
+(true; every opening is recorded in `<store>/<instance>/hidden/opened/`, and only the operator, by removing that
+one file, can let an agent whose rollout died before it started open the instance again), `item_isolation` ("box"), `item_cleanup` and `stock_collection` (a rollout run otherwise is marked
 `NOT_AN_EXAM` or `between_item_state` in its trace). Pass no variable into a box that is not on the allow-list
 (setup refuses). After the run: `tools/settle.py` on the run directory; a rollout without a reward counts as K
 and its instance stays closed for that agent. A dedicated machine with Docker process and disk limits (holes 1

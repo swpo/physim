@@ -39,18 +39,22 @@ Scratch `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 - S4: `results/proof_ring_items.npz` + `tools/recompute_table.py`. S6: single_use default. S7: the agent box CPU
   counter is renamed `agent_box_cpu_s_unverified`. S8: allow-list for variables entering a box. S9: runbook.
 
-### Running (started 04:58 UTC): `<scratch>/run_all.sh`, log `<scratch>/run_all.log`
-units -> units_before -> driver (done, 67/67, 25/46 on the builder's code, 19/19) -> `tools/check_probe.py`
-(store2, probe2; resumable) -> `tools/prove.py --worlds 4` (store2, proof2; resumable). One process at a time.
+### Running (restarted 05:06 UTC on the code of commit 743f6b75e): `<scratch>/run_all.sh` then `<scratch>/run_tail.sh`
+- run_all.sh: units (67/67), units on the builder's code (25/46), driver in a container (19/19), then
+  `tools/check_probe.py` (store2, probe2; resumable), then `tools/prove.py --worlds 4` (store2, proof2; resumable).
+- run_tail.sh starts by itself when run_all prints "=== done": `tools/recompute_table.py`, the red team's attacks
+  again (`redteam/rt_run.py --tag -after-fix overflow | fifo | hostile-exit1` on instance fx-ring-w0 in `<scratch>/store`),
+  gliders smoke (`tools/prove.py --world gliders --config smoke_gliders --worlds 1 --policies D --isolation box`).
+- A first full probe run on the earlier code (rehearsal, 04:38-04:56): 32 of 34 and 61 of 62; the one failure was a
+  mistake in my hostile predictor (it looked for the public examples next to the submission), fixed.
 
 ### Next step (exact)
-1. When run_all is done: `V=/home/user/evalwork/vfport/.venv/bin/python; S=<scratch>; cd` to this folder with
-   `PYTHONPATH=$PWD OMP_NUM_THREADS=1`; `$V -B tools/recompute_table.py --out results/recomputed_table.json`;
-   red-team attacks again: `$V -B redteam/rt_run.py --store $S/store --scratch $S/rt --instance fx-ring-w0 --tag -after-fix overflow`
-   (then `fifo`, `hostile-exit1`); `$V -B tools/make_summary.py --store $S/store2 --scratch $S`.
-2. README.md (sections: findings table, Open holes, incident), then delete `$S/store`, `$S/store2` and run folders.
+1. When both scripts are done: `$V -B tools/make_summary.py --store $S/store2 --scratch $S`, then
+   `python3 $S/fill_readme.py $PWD` (fills README.tmpl.md into README.md; if the scratch is gone, the numbers are in
+   results/*.json and the template is in the repository), then `git rm README.tmpl.md`.
+2. Delete `$S/store` and `$S/store2` by their full paths (hidden pilot instances), commit, push, final report.
 3. If the container restarted: start dockerd (below), then `$S/run_all.sh` again (probe and proof resume; if the
-   scratch is gone, they start again from fresh instances).
+   scratch is gone, they start again from fresh instances: rewrite run_all.sh from this section).
 
 ---
 
