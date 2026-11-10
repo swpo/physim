@@ -35,3 +35,5 @@
   pushed** (ref 28263eb3e, max_hours 2.9, cap $21.2). In the restart steps below read r5-ladder-002.
 - 03:23 UTC. r5-ladder-002: review "fine to run" (origin/gpu-jobs:jobs/r5-ladder-002/review.md; 1 minor:
   run.log lacks the pilot line); state `queued`, accepted for an H200 at $6.69/h (at most $21.07).
+- 03:50 UTC. r5-ladder-002 is RUNNING since 03:44:31Z on an A100_40GB at $1.99/h (expected about 1.8-2.1 h,
+  so until about 05:45Z; hard limit max_hours 2.9).
