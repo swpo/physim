@@ -6,10 +6,17 @@
   coordinator. Changes no file but this section.
 - Worktree `/home/user/wt/vfreaud2a` (branch wt-vfreaud2a); scratch
   `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfreaud2a/` (a `git archive` of the head).
-- Done so far: HOST_SAFETY_AUDIT.md read in full; `physim2_env/public/_item.py` read in full.
-- Next step (exact): read the diff of `grading.py`, `taskset.py`, `access.py`, the three box scripts and the tools;
-  then the pure-function attacks on `foreign_mounts` (host, no destructive call reachable), then
-  `tools/check_safety.py` (tripwires) and `tools/check_driver.py` (throwaway container, no host path).
+- Done so far (all read, nothing run yet): HOST_SAFETY_AUDIT.md in full; `_item.py`, `grading.py`, `taskset.py`,
+  `access.py`, `validate.py`, `physim2_script/__init__.py`, the three box scripts, `tools/tripwires.py`,
+  `check_safety.py`, `check_driver.py`, `check_interrupt.py`, `vfrun.py`, `check_units.py`, `rehearsal/issue.py`,
+  `rehearsal/check_round2.py`, the diffs of `redteam/` and of the other tools; verifiers' Docker, subprocess and
+  base runtime. No file of PIN.sha256 changed in round 2, so the code is the one round 1 judged. Reading so far:
+  A3, A4, A5 closed as specified; no new kill or delete path in the pinned code; the rehearsal tools act on the
+  cloud host by design, behind an environment variable and a scratch-folder check.
+- Next step (exact): rerun `tools/check_safety.py` from the scratch copy under its tripwires (host), then
+  `tools/check_driver.py` (two `docker run --rm --network none` containers, no host path), then my own attacks:
+  crafted mount tables on the pure function, and edge cases of the wipe in a named throwaway container
+  `vfreaud2a-wipe` (no mount; removed by that exact name).
 - If the container restarted: nothing of this role survives but this note; start again from the archive command
   of the role's brief. No container of this role is left unless a name `vfreaud2a-*` shows in `docker ps -a`
   (remove by that exact name).
