@@ -18,10 +18,13 @@ sha256 of `PIN.sha256`: `7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, (1) install, (2) run the scripted, model-free smoke test
-on Docker at $0, (3) run ONE rollout of a cheap model with a stock harness. Evidence: REHEARSAL PENDING in
-this copy. The rehearsal of this text (cloud container, a fresh clone, each command issued the way a session
-issues it, as ONE `sh -c '<text>'`) is recorded in `results/rehearsal_round2.json`; a copy of this file that
-still says PENDING here is the text before that rehearsal.
+on Docker at $0, (3) run ONE rollout of a cheap model with a stock harness. Evidence: every command of steps 0
+to 2 and of step 4 except the image build, and every point of "If a run was interrupted", was rehearsed in the
+cloud container (Linux x86_64, Docker 29.9.2, uv 0.11.32) from a fresh clone, each command issued the way a
+session issues it, as ONE `sh -c '<text>'` (`results/rehearsal_round2.json`: the literal text and the complete
+output of each; the commands are byte for byte the ones below, and the prose around them was corrected
+afterwards in the six places that record lists; what could not be rehearsed there is listed at the end of this
+file).
 **Nothing here has run on a Mac: every statement about macOS and Docker Desktop is inferred.** Step 3 has not
 run anywhere.
 
@@ -286,7 +289,9 @@ cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/t
 
 It prints the last lines of the logs that exist (each under a line `==> <file> <==`), then under `containers:`
 the containers of this pilot (`<name> <state>`), under `processes:` the processes of this pilot, and `status
-done`. A process line is the pid, one space, and the whole command line, which begins with this study folder's
+done`. A container line is a box, `vf-<32 hex> Up ...`, or, for a second at a time, a helper that verifiers or
+the probe tool started under a two-word name chosen by Docker (cloud rehearsal: `tender_gates Up Less than a
+second`); a helper removes itself. A process line is the pid, one space, and the whole command line, which begins with this study folder's
 `.venv/bin/python`: the tool (`... -B tools/prove.py ...` or `... -B tools/check_probe.py ...`), its vf-eval
 (`... /ABSOLUTE/PATH/TO/vfport/.venv/bin/vf-eval @ ...`), the laboratory (`... -m physim2_env.lab_tools ...`),
 and for seconds at a time a helper of the tool (`... tools/make_instances.py ...`, `... reference_agent.py ...`).
@@ -427,15 +432,15 @@ particular do not start the step again before the end of this section.
    pid). **If it prints nothing, no signal was sent**: that pid is not, or no longer, a process of this study
    folder's interpreter. Then run the status command once more; if a tool or a vf-eval is still listed, stop
    and report.
-   The tool passes the signal on; vf-eval removes its containers and stops its laboratory itself (4 seconds in
-   the cloud rehearsals; allow two minutes). Ask for the status again until no process and no container is
+   The tool passes the signal on; vf-eval removes its containers and stops its laboratory itself (2 to 4 seconds
+   in the cloud rehearsals; allow two minutes). Ask for the status again until no process and no container is
    listed. The log of the stopped command then ends in one of three ways, all of them expected here:
 
    | stopped | the log ends with |
    |---|---|
    | a tool, inside a rollout | a Python traceback whose last line is `KeyboardInterrupt`, then `EXIT 130` |
    | a tool, between two rollouts or before the first (no vf-eval was listed) | `EXIT 143`, no traceback; the shell may put one line of its own before it (`Terminated` in the cloud rehearsal) |
-   | the vf-eval of 2c | a line `WARNING interrupted` of vf-eval, then `EXIT 130`, no traceback |
+   | the vf-eval of 2c | lines of vf-eval's own log (one of them says `WARNING interrupted`), then `EXIT 130`; no traceback |
 
    Send the signal once; never `kill -9`, never a second pid in the same command.
 3. **Containers of the pilot are still listed and no vf-eval of the pilot is running** (vf-eval was killed before

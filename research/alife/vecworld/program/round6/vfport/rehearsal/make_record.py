@@ -5,9 +5,9 @@ and, with --scan-store, the hidden side of the rehearsal's store, of which it pr
 often the secret or the first ten characters of a hidden parameter of any instance occur in the record (the
 same needles as tools/run_report.py). It starts nothing and removes nothing.
 
-The record keeps, for every runbook command, the literal text that was issued and its complete output. Two
-things are shortened, and said so in the file: the long paths of the rehearsal are written as <STUDY> and <HOME>
-in a second, readable copy of each output (`output_short`); the literal output stays next to it.
+The record keeps, for every runbook command, the literal text that was issued and its complete output. Next to
+each literal output stands a readable copy (`output_short`): the two long paths of the rehearsal written as
+<STUDY> and <HOME>, each line cut at 170 characters.
 
 usage: python3 -B rehearsal/make_record.py --jsonl RECORD.jsonl --remarks REMARKS.json --study STUDY --home HOME \
            [--scan-store STORE] --out results/rehearsal_round2.json
@@ -56,7 +56,7 @@ def main():
     for e in entries:
         e = dict(e)
         if "output" in e:
-            e["output_short"] = short(e["output"]).splitlines()
+            e["output_short"] = [ln[:170] for ln in short(e["output"]).splitlines()]
         steps.append(e)
     cmds = [e for e in entries if e["kind"] == "runbook command"]
     by_label = collections.Counter(e["label"] for e in cmds)
@@ -70,7 +70,8 @@ def main():
     elif a.scan_store:
         out["hidden_values_in_this_record"] = scan(raw, a.scan_store)
     out["paths"] = {"<STUDY>": a.study, "<HOME>": a.home,
-                    "note": "`text` and `output` are literal; `output_short` is the same output with the two long paths written as <STUDY> and <HOME>"}
+                    "note": "`text` and `output` are literal and complete; `output_short` is the same output with the two long paths written "
+                            "as <STUDY> and <HOME> and each line cut at 170 characters"}
     out["steps"] = steps
     json.dump(out, open(a.out, "w"), indent=1)
     print(json.dumps(out["counts"]))

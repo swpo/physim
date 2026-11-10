@@ -159,7 +159,7 @@ def text_checks(text, checks, ev):
         and text.splitlines()[2].startswith("**ON HOLD. Run nothing from this file.**")
     checks["text_5_step_0_says_what_a_failed_comparison_prints"] = "shasum: WARNING:" in step0 and "FAILED" not in step0
     i2 = flat[flat.index("2. **A tool or a vf-eval of the pilot is still running**"):flat.index("3. **Containers of the pilot are still listed")]
-    checks["text_6_the_three_log_endings_after_a_stop"] = "`KeyboardInterrupt`, then `EXIT 130`" in i2 and "`EXIT 143`, no traceback" in i2 and "`EXIT 130`, no traceback" in i2
+    checks["text_6_the_three_log_endings_after_a_stop"] = "`KeyboardInterrupt`, then `EXIT 130`" in i2 and "`EXIT 143`, no traceback" in i2 and "then `EXIT 130`; no traceback" in i2
     checks["text_6_2c_and_the_padded_numbers"] = "two lines of token counts and a closing `}`" in flat and flat.count("macOS pads") >= 4
     checks["text_same_pass_never_table_step3_gate_and_trace"] = "`--pid`, `--ipc`, `--tmpfs`, `--privileged`, `--volumes-from`" in text \
         and f'test -f "$HOME/{PILOT}/scratch/LEAD-GO-STEP3" && docker info' in pick(text, "3-paid") and "grep -c '\"total_hits\": 0' && mkdir" in pick(text, "3-trace")

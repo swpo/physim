@@ -1,0 +1,84 @@
+{
+ "what": "remaining change 7 of the round-1 verdict (HOST_SAFETY_AUDIT.md, 'Re-audit, round 1'): the rewritten RUNBOOK_MAC.md rehearsed in SESSION MODE in the cloud container from a fresh clone. Every runbook command in `steps` was issued as ONE `sh -c '<text of the fenced command>'` by rehearsal/issue.py (never from a file), one at a time, started in the folder `/` without a terminal; one command and one status were also issued through the rehearsing session's own command tool. Steps 0, 1 (without the image build), 2a, 2b, 2c and 4, every point of 'If a run was interrupted', and five deliberate interruptions. Step 3 was not run.",
+ "where": "cloud container: Linux x86_64, 4 shared cores, Docker 29.9.2, uv 0.11.32, sh = dash, procps-ng 4.0.4, shasum 6.04, root session, behind a TLS-intercepting proxy; 10 Nov 2026, 16:47 to 17:27 UTC",
+ "evidence_labels": "run (steps 0, 1 and 4; the status, stop, remove and reset commands); vf-eval (steps 2a, 2b, 2c and the interrupted starts: 42 finished rollouts and 4 cut ones on Docker, scripted harness, push = false, no model); inferred (everything about macOS)",
+ "commit_rehearsed": "be2c17ae6a4a30c9c94d1eccb828f7477bd51008",
+ "sha256_of_PIN_at_that_commit": "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19",
+ "relation_to_the_commit_a_re_audit_reads": "after the rehearsal the PROSE of the runbook was corrected in the places listed under `mismatches`; its 30 fenced commands are byte for byte the rehearsed ones (compared by script: rehearsal/check_round2.py is not needed for that, `blocks()` of both files are equal), and PIN.sha256 is the same, i.e. the same package, tools, agents and configs",
+ "how": {
+  "clone": "git init; sparse checkout of round6/vfport, round5/agentenv and vw1; git fetch --depth 1 --filter=blob:none origin be2c17ae6a4a30c9c94d1eccb828f7477bd51008; git checkout --detach (as in round 1: the history is 6.3 GB and the machine had 2 GB free)",
+  "issuing": "rehearsal/issue.py of the clone reads the fenced block of the clone's own RUNBOOK_MAC.md, makes the substitutions below, and starts `nice -n 10 sh -c <text>` in `/`; the text is an argument of the shell, never a file. A detached command therefore leaves a waiting shell whose command line is the whole text, which is what finding N1 is about; the entries of kind 'observation' show those shells",
+  "substitutions": "/ABSOLUTE/PATH/TO/vfport -> the clone's study folder (the one substitution the runbook asks for); $HOME -> a folder of the rehearsal's scratch (this session may delete inside its scratch only, and the runbook deletes its pilot folders); PID_FROM_THE_STATUS_LINE and NAME_FROM_THE_STATUS_LINE -> what the status command printed (as the runbook says)",
+  "session_environment": "UV_PYTHON_INSTALL_DIR pointed into the rehearsal's scratch for the two uv commands (so that uv's own Python lands there and not in /root/.local/share/uv); tools/docker_shim first on PATH for the two starts of 2c (this kernel has no IPv6); UV_NATIVE_TLS=true was set already (proxy). The command texts are unchanged by these",
+  "session_tool": "in the clean pass the 2a command and the first status after it were issued through the rehearsing session's own command tool (Claude Code's Bash tool, which runs `/bin/bash -c <wrapper> eval <text>`): the tool returned at once with Docker's version, and the status listed ONE process line, the tool. The observation after it (entry 64) shows the waiting shell that this tool left: `/bin/bash -c source /root/.claude/shell-snapshots/... eval ...`, parent of the tool, not listed by the status"
+ },
+ "outcome": "every command did what the runbook says, with four deviations forced by the machine and six places where the prose did not match what happened (all corrected afterwards; no command changed). The process listing showed the pilot's own interpreter processes and never a waiting shell (sh, and the session's own bash tool); the stop command aimed at a waiting shell printed nothing and signalled nothing; five interruptions were cleared by the runbook's own points and nothing of the pilot was left running or listed after any of them",
+ "tests_named_by_the_verdict": {
+  "change_1": "the 2a command issued as one sh -c: the status listed the tool and not the waiting shell (entries 16 to 18; with the session's own tool: entries 63 to 65). PASS",
+  "change_2": "the stop command aimed at the waiting shell's pid (entry 19): no output, exit status 1, the waiting shell and the tool both still there (entry 20), the tool still listed (entry 21). PASS",
+  "change_3": "step 1: `Using CPython 3.12.13` without a path (entry 4), INTERPRETER-OK (entry 11); after each start of 2a the status showed `<pid> <STUDY>/.venv/bin/python -B tools/prove.py ...`. PASS",
+  "change_4": "uv sync detached with a log and EXIT 0 (entries 6, 7); 'If a run was interrupted' used for step 2 only. PASS (the rule 'use this section once' was NOT exercised as a rule: see deviations)",
+  "change_5": "step 0 printed the commit that the rehearsal had been given and PIN-OK (entries 1, 2). What a failed comparison prints: results/session_mode_round2.json (stand-in copy)",
+  "change_6": "the three log endings were seen: traceback, KeyboardInterrupt, EXIT 130 (entry 24); `Terminated`, EXIT 143 (entry 33); vf-eval alone, EXIT 130 without a traceback (entry 59); the end of single.log (entry 85)"
+ },
+ "interruptions": [
+  {"n": 1, "entries": "15 to 28", "what": "2a started. The stop command aimed at the WAITING SHELL's pid on purpose: nothing printed, nothing signalled. Then aimed at the tool, 12 s after the start, when its first vf-eval had just appeared", "seen": "3 s later no process and no container; prove.log: traceback, KeyboardInterrupt, EXIT 130", "then": "point 6 (folders reset), a new instance"},
+  {"n": 2, "entries": "29 to 36", "what": "2a started and the tool stopped 2 s later, before its first rollout (the status listed the tool only)", "seen": "2 s later nothing listed; prove.log: `Terminated` (written by sh), EXIT 143, no traceback", "then": "point 6, a new instance"},
+  {"n": 3, "entries": "37 to 51", "what": "2a started; SIGKILL of the rehearsal's own vf-eval by its pid, with the agent's box up and the laboratory running (not a runbook command: the case of finding A2)", "seen": "4 s later the status listed exactly one container (Up) and one process, the laboratory; prove.log ended with EXIT 1", "then": "point 3: docker rm -f <that name>; point 4: the stop command aimed at the laboratory's pid printed nothing, because the laboratory had ended by itself in the 10 s between (it had lost its vf-eval: httpx.ConnectError in its log); point 5: nothing listed; point 6; a new instance"},
+  {"n": 4, "entries": "52 to 61", "what": "2c started (out of the runbook's order) and its vf-eval stopped by points 1 and 2, 22 s after the start, with a box up and the laboratory running", "seen": "2 s later nothing listed; single.log: `WARNING interrupted — cleaning up, please wait...`, `INFO interception down`, EXIT 130, no traceback", "then": "point 6, a new instance, then the clean pass"},
+  {"n": 5, "entries": "91 to 105 (appendix, after step 4)", "what": "the pilot folders made again, a new instance, 2a started; SIGKILL of the rehearsal's own vf-eval; points 1, 3 and 4 within 2 s", "seen": "the status listed one container and the laboratory; docker rm -f <that name> printed the name; the stop command aimed at the laboratory's pid printed its command line (`<STUDY>/.venv/bin/python -m physim2_env.lab_tools`) and stopped it; 2 s later nothing listed", "then": "point 6; the rehearsal ended there"}
+ ],
+ "clean_pass": {
+  "2a": "about 7.5 minutes (the tool's own wall time 437 s; EXIT 0 at 17:00:28): all_graded True, all_ok True, 0 failed items; ticks D 392, P0 0, C 0; predictor uids 26266, 40287, 55217; one box per item: identical scores, 64 boxes, 0 infrastructure failures, 2.65 s per item box; table O 1.067, D 0.424, P0 0.916, C 1.0 (results/rehearsal_round2_proof.json)",
+  "2b": "37 rollouts in 1,264 s: round 5's checks 32 of 34 reproduced, failed_round5 []; new checks 65 of 65, failed_new [] (Linux); the agent's own kill inside its box: exit status 137 (results/rehearsal_round2_probe.json)",
+  "2c": "3.5 minutes: ok true, reward present, ticks 392, agent_submission, 64 items, 0 failed, 64 item boxes (2.69 s each), 0 infrastructure failures, 0 hidden-value hits in the run folder",
+  "4": "five file names printed; the two pilot folders deleted; 0 containers of the pilot; the three images as before",
+  "uv": "dry run (3.4 s, which includes the download of uv's Python, 33 MB): `Using CPython 3.12.13`, `Would create project environment at: <STUDY>/.venv`, `Would download 1 package`, `Would install 103 packages`; the detached sync ended with EXIT 0 within 2 s (warm cache); the working tree of the clone stayed clean"
+ },
+ "deviations": [
+  {"n": 1, "what": "the clone is sparse and shallow, fetched by commit", "why": "disk; the Mac has a full checkout"},
+  {"n": 2, "what": "$HOME was replaced textually by a folder in the rehearsal's scratch; uv's own Python was sent to a folder of the scratch (UV_PYTHON_INSTALL_DIR); the by-hand checks differ: uid 0, x86_64, UV_NATIVE_TLS=true, a TLS-intercepting proxy, the file on disk says ON HOLD and the commit was the fixer's own, not one from a GO message", "why": "this session's rules and machine; nothing may run on the Mac before a GO"},
+  {"n": 3, "what": "step 0 printed 1 for the image physim2-ring:1, at which the runbook says stop; the rehearsal went on with that image, and the build command of step 1 and its status command were NOT run", "why": "the image is shared with other roles on this machine; a rebuild needs the proxy's certificate and about 1 GB of the 2 GB free"},
+  {"n": 4, "what": "the two starts of 2c had tools/docker_shim first on PATH (in the environment of the call; the command text is unchanged)", "why": "this kernel has no IPv6 and verifiers' docker run then fails; the tools of 2a and 2b add the shim themselves on such Linux hosts; not applicable to macOS"},
+  {"n": 5, "what": "'If a run was interrupted' was used five times, each time as a FIRST interruption; the runbook allows it once and says: at a second interruption do points 1 to 5, then stop. That rule was not exercised as a rule. Interruption 4 started 2c before 2a; after it the clean pass started again from the instance, as point 6 says. Several entries were issued one after another from one call of the rehearsing session (each is its own sh -c); the Mac session issues one per call", "why": "to see every point and every log ending in one rehearsal"}
+ ],
+ "mismatches": [
+  {"n": 1, "where": "step 1, dry run", "text_said": "`Would download <n> packages`", "happened": "`Would download 1 package` (singular)", "fixed_in_the_runbook": true},
+  {"n": 2, "where": "step 1, interpreter check", "text_said": "the first line begins `<STUDY>/.venv/bin/python -B -c import os, subprocess;`", "happened": "the command prints 160 characters of the line; with the rehearsal's 159-character path only the path showed. The second line was INTERPRETER-OK (it is computed on the whole line)", "fixed_in_the_runbook": true},
+  {"n": 3, "where": "If a run was interrupted, point 2, the tool stopped before its first rollout", "text_said": "`EXIT 143`, no traceback", "happened": "a line `Terminated`, then `EXIT 143`: sh (dash) writes that line into the log; bash does not (stand-in test)", "fixed_in_the_runbook": true},
+  {"n": 4, "where": "If a run was interrupted, point 4", "text_said": "stop the laboratory by its pid with the stop command", "happened": "interruption 3: the laboratory had ended by itself before the stop command ran, which then printed nothing. Interruption 5: it was still there and was stopped", "fixed_in_the_runbook": true},
+  {"n": 5, "where": "the status command, `containers:`", "text_said": "the containers of this pilot, `vf-<32 hex>`", "happened": "twice a helper container with a name chosen by Docker was listed for a moment (`tender_gates Up Less than a second`, `loving_gates Up Less than a second`): started with --rm and the run label by verifiers' Docker runtime or by the probe tool", "fixed_in_the_runbook": true},
+  {"n": 6, "where": "If a run was interrupted, point 2, the vf-eval of 2c", "text_said": "`EXIT 130`, no traceback", "happened": "as said, after two lines of vf-eval's own log (`WARNING interrupted — cleaning up, please wait...`, `INFO interception down`)", "fixed_in_the_runbook": true}
+ ],
+ "also_seen": [
+  "tools/run_report.py prints its JSON over many lines (96 here), not on one; the fields the runbook expects are all there, and the gate of the step-3 trace copy counts lines, so it prints 1 either way (entry 87, a variant on the scripted run; nothing was copied)",
+  "the uv DRY RUN with --managed-python downloads uv's Python when uv has none (found before the rehearsal, written into the runbook, seen again in entry 4)",
+  "after the stop of a tool inside a rollout and after the stop of vf-eval alone, nothing stayed in ~/.cache/verifiers/runtimes/subprocess or in the temp folder; after each hard kill one folder with one log file and one folder with one socket stayed, as the runbook says"
+ ],
+ "left_behind": {
+  "by_the_runbook_as_it_says": [
+   "<STUDY>/.venv (733 MB apparent; 15,361 of its 15,715 files are hard links into uv's cache)",
+   "uv's own Python 3.12.13 (104 MB), here in the rehearsal's scratch",
+   "<STUDY>/docker/extra-ca.crt (empty)",
+   "<HOME>/physim2-pilot-20261110-results with five files",
+   "39 files /tmp/vf-port-<hex> (265 before, 304 after)",
+   "<HOME>/physim2-pilot-20261110/scratch, empty: the appendix episode ended with point 6"
+  ],
+  "by_the_two_hard_kills_only": [
+   "/root/.cache/verifiers/runtimes/subprocess/vf-eecef6526095/vf_tool_lab.log (12 kB) and /root/.cache/verifiers/runtimes/subprocess/vf-751ebf724378/vf_tool_lab.log (empty)",
+   "/tmp/physim2-io-qkjeubw5/io.sock and /tmp/physim2-io-xgsmmbwv/io.sock"
+  ],
+  "docker": "no container; `docker ps -a` and `docker images` equal the baseline taken before step 0 (three images, ids unchanged); no image built",
+  "not_left": "no process of the pilot, no waiting shell, no container of the pilot, no __pycache__ and no change in the clone (git status: nothing)",
+  "removed_by_this_session_afterwards": "the four leftovers of the hard kills, each file and each folder by its exact name (rm of one file, rmdir of one folder); the whole rehearsal folder with the scratch"
+ },
+ "not_rehearsed": [
+  "the image build of step 1 and its status command (deviation 3)",
+  "step 3, its file gate and the copy of its trace: never run (their gates were run with stand-ins: results/session_mode_round2.json)",
+  "the rule 'use this section once; at a second interruption do points 1 to 5, then stop' as a rule (deviation 5)",
+  "the 'must show' rule of 2a in its failing branch with the real tool (with a stand-in interpreter that re-executes: results/session_mode_round2.json)",
+  "anything on macOS or Docker Desktop: zsh as the session's shell, BSD ps, uv's Python there, how a session ends a command at its limit. Inferred only"
+ ],
+ "hidden_values_note": "scanned before step 4 against the store of the clean pass (2 instances, 8 needles: each secret and the first ten characters of each hidden parameter): 0 hits in the record and 0 in the five result files. The instances of the interrupted episodes were deleted by point 6 before any scan; the record holds their public commitments only, by construction of the commands",
+ "PILOT_NEVER_REUSE_AS_EXAM": true
+}
