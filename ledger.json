@@ -135,10 +135,10 @@
     {
       "billed_usd": null,
       "cap_usd": 10.2,
-      "conservative_usd": 1.1655,
+      "conservative_usd": 1.1726,
       "finished_at": null,
       "gpu": "H200_141GB (nebius)",
-      "hours": 0.174,
+      "hours": 0.175,
       "job_id": "r5-foundry-002",
       "purpose": "Round-5 study foundry (track 1), follow-up: late-time types of 2000 screened worlds, a prospective test of the weights-only predictor (3072 selected + 1024 control draws), all 88 candidates at certification size, the type under two other noise levels",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -293,8 +293,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 49.564,
     "prior_spend_usd": 0.0,
-    "spent_usd": 40.5295,
+    "spent_usd": 40.5366,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T06:08:12Z"
+    "updated_at": "2026-11-10T06:08:16Z"
   }
 }

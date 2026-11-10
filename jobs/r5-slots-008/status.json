@@ -12,7 +12,7 @@
     }
   ],
   "job_id": "r5-slots-008",
-  "message": "request received",
+  "message": "reviewed; waiting for an offer of A100_40GB/A100_80GB/H100_80GB that fits the cap (listed now: none); the runner plans and starts it as soon as one fits",
   "pods": [],
   "review": {
     "at": "2026-11-10T06:08:12Z",
@@ -21,5 +21,5 @@
     "summary": "Same code; the platform allocator addresses 007's failure to allocate a contiguous ~18 GiB validation block on the A100 40GB. Fine to run; residual risk noted, 80 GB cards remain safer."
   },
   "state": "received",
-  "updated_at": "2026-11-10T06:07:15Z"
+  "updated_at": "2026-11-10T06:08:15Z"
 }
