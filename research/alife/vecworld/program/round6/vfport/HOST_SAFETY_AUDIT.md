@@ -1,3 +1,8 @@
+> **SUSPENDED, 10 Nov 2026 (note of the round-3 fixer; not a verdict).** The GO of the line below, given for commit
+> `af767adbdeac3d00906d7a3394421e1bc4d6e486`, is suspended: the Mac session's own read-only review of that commit
+> returned three major and eleven minor points, and the code and the runbook are being changed to meet them (round 3).
+> `RUNBOOK_MAC.md` says ON HOLD again. Nothing below this note was changed by the fixer; a new verdict replaces it.
+
 # VERDICT (round 2, 10 Nov 2026): GO for the scripted smoke test on the lead's Mac, from the one commit that holds this line (code and commands as judged at 40c697e542a633d0cb1bba5f30b63567c5896097). The one-model rollout stays NO-GO until that test has passed on the Mac; it may then be offered to the lead. See "Re-audit, round 2" at the end; sections 1 to 6 and "Re-audit, round 1" are the two earlier NO-GO verdicts, kept as they were.
 
 Host-safety audit of `round6/vfport`, 10 Nov 2026. Audited: `round6/vfport` and `round5/agentenv` at

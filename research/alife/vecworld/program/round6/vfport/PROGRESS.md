@@ -1,5 +1,16 @@
 # vfport: PROGRESS
 
+## HOST-SAFETY FIXER, round 3 pass 1 (after the Mac session's read-only review of af767adb) -- 10 Nov 2026, IN PROGRESS
+- Role: the Mac review's findings M1 to M3 and m1 to m11 and the coordinator's disk requirement D1. Worktree
+  `/home/user/wt/vfr3fix1` (branch wt-vfr3fix1, pushes to the shared branch), scratch
+  `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3fix1/`.
+- DONE so far: `RUNBOOK_MAC.md` is ON HOLD again (notice block; the GO for af767adb is suspended, not replaced);
+  a suspension note stands above the first line of `HOST_SAFETY_AUDIT.md` (the verdict's own text untouched).
+- NOT yet done: everything else. The pinned files still equal `PIN.sha256` 7aa9bbfc...f64c19 at this commit.
+- If the container restarted: recreate the worktree as the role text says, read `git log -5` and this section,
+  continue from the first item that is not marked done. Nothing of mine runs between commits unless a line
+  "Running" below says so.
+
 ## VERDICT, round 2 (of the branch head after the two round-2 re-audits) -- 10 Nov 2026, finished
 - Role: issue the round-2 verdict from the fixer's report and the two re-audits (code, runbook), checking what
   I rely on at the branch head. The verdict follows in the NEXT commit and changes two files only:
