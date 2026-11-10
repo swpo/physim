@@ -1,0 +1,45 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-foundry-001",
+  "purpose": "Round-5 study foundry (track 1): screen up to 8192 draws (at least 2048) of the affinity transport NCA family (64^2, 2 kinds) with cheap certificates, certify the top 24, and measure the gliders world with the same estimator",
+  "requester": "cloud study foundry (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/round5/foundry"
+  ],
+  "gpu": {
+    "types": [
+      "A100_40GB",
+      "A100_80GB",
+      "H100_80GB",
+      "H200_141GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 1.75,
+  "cap_usd": 13.5,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round5/foundry && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "FOUNDRY_SIZE": "full",
+    "FOUNDRY_REQUIRE_GPU": "1",
+    "FOUNDRY_N_DRAWS": "8192",
+    "FOUNDRY_N_MIN": "2048",
+    "FOUNDRY_CHUNK": "128",
+    "FOUNDRY_T_SCREEN_S": "2700",
+    "FOUNDRY_T_SCREEN_HARD_S": "4200",
+    "FOUNDRY_T_LATE_S": "5100"
+  },
+  "notes": "The one planned job of the study (budget $25; cap $13.50 covers the H200 that bills $6.69/h for 1.75 + 0.25 h = $13.38). float64 (jax_enable_x64) with jax.vmap over worlds; per-world weights are matmul operands (no convolution), neighbour access by jnp.roll. Work: up to 8192 draws x 3276 member-ticks (6 members x 290 ticks + 8 test states x 6 replicas x 32 ticks; 4 substeps per tick on 2 x 64 x 64) in chunks of 128 draws, the vw blob tracker on 2 members per draw; then 4 certification runs of 24 worlds (16 members x 450 ticks + 32 test states x 8 replicas x 32 ticks), 32 control worlds, and the Flow-Lenia gliders world (128^2, 20 substeps per tick) 16 times at the screen's size and 8 times at the certification size. The GPU throughput of this family is not measured yet, so the screen is deadline-driven: time limits in seconds from the start of job.sh: no new screen chunk after 2700 once 2048 draws are done (4200 at all), no new stage after 5100; max_hours 1.75 = 6300 s. If the screen is fast the job ends early (8192 draws). On an out-of-memory error the chunk is halved (down to 16) and the screen continues. Data are passed to jitted functions as arguments; compiled functions are released and caches cleared between stages. $OUT: under 40 MB (float32 measures per draw, uint8 thumbnails of 1024 draws, uint8 frames of 24 worlds in one file per world). No network or subprocess use outside setup. Code pinned by ref 22134cfd9 (on the branch; the rebased copy of fa6858c86, the tested commit: git diff between the two over these five paths is empty). CPU test passed on exactly this code: job.sh end to end at tiny size (FOUNDRY_SIZE=tiny) from a git archive of these five paths at that ref: every stage ran (checks, weight statistics, 16 draws screened, selection, 4 certification runs, controls, gliders at both sizes), no errors, exit 0, 433 s.",
+  "ref": "22134cfd95e5679079c300cd96bb930f09bbf942"
+}
