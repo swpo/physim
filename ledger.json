@@ -111,10 +111,10 @@
     {
       "billed_usd": null,
       "cap_usd": 12.4,
-      "conservative_usd": 1.1606,
+      "conservative_usd": 1.1645,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.583,
+      "hours": 0.585,
       "job_id": "r5-bias2-007",
       "purpose": "Round-5 study bias2, follow-up: closure trained on spatially whitened latents (local encoders, block and 8-px halo, c = 1) on the vortex, membrane and gliders worlds, with the per-channel closure configs and all hand designs again on the same data",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -202,7 +202,7 @@
       "job_id": "r5-vortexexam-005",
       "purpose": "Round-5 study vortexexam (track 2), job 3: fed-vortex exam pilot at 128 px at planned size, hidden set (eps, mu, e) from the declared rule: design, Lab, exam items, identification, policies K, D(N), P0, S(N), T, C, O, sigma and rho on full-history and short-history items",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "queued"
+      "state": "provisioning"
     },
     {
       "billed_usd": 0.0501,
@@ -245,8 +245,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 82.3916,
     "prior_spend_usd": 0.0,
-    "spent_usd": 29.9522,
+    "spent_usd": 29.9561,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T02:54:47Z"
+    "updated_at": "2026-11-10T02:54:54Z"
   }
 }

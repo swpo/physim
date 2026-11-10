@@ -1,9 +1,33 @@
 {
+  "billing_window_hours": 3.4955,
+  "bundle": {
+    "bundle_sha256": "df3162c542a0d39f723f82c461e5bd37db70770a35189b0546f71e9e98132425",
+    "files": {
+      "job.sh": "ac36656290b7306725351e786d199171d408941712896f444fa1a8241ee9f90c",
+      "request.json": "551afccdc128810cf8d64a974f5d483913c2f29558d133b6682ec823ba813ddd",
+      "run.sh": "25d1d9d68956e6594d9552bac19a9c2b40ad703b8d63aa9aed262a4529da5d25",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "41e4434f968e6a82ecd90c5f40b4c5e69ef7b4950e6ed5931ad522f9465333cc"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1/vw",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/round5/vortexexam",
+      "research/alife/vecworld/program/round5/agentenv/evaluator"
+    ],
+    "ref": "b6de3c6e9e296347b5f4a3a54c017ff6e4373f40",
+    "src_bytes": 614431
+  },
   "cap_usd": 19.4,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-10T02:25:22Z",
@@ -14,11 +38,35 @@
       "at": "2026-11-10T02:54:47Z",
       "message": "accepted: H200_141GB via nebius at $5.55/h, at most $16.09",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T02:54:53Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-vortexexam-005",
   "max_estimate_usd": 16.09,
-  "message": "accepted: H200_141GB via nebius at $5.55/h, at most $16.09",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "US",
+      "data_center": "us-central1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 0,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    }
+  ],
   "plan": {
     "max_estimate_usd": 16.09,
     "offers": [
@@ -44,12 +92,14 @@
     "window_hours": 2.9
   },
   "pods": [],
+  "pods_terminated": null,
   "review": {
     "at": "2026-11-10T02:48:21Z",
     "file": "jobs/r5-vortexexam-005/review.md",
     "sha256": "01973b31fcc57af29782e6d382dfe0014061e0bba5438d3aa68b9a7e7d900d4b",
     "summary": "Gate met; fine to run; no blocker, major or minor findings; secrecy and markers clean. 1 info: the no-input controls may be skipped on an A100 near 169/s."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T02:54:47Z"
+  "run_started_epoch": 1794279293.475803,
+  "state": "provisioning",
+  "updated_at": "2026-11-10T02:54:53Z"
 }
