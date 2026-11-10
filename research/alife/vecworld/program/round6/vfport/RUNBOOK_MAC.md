@@ -189,8 +189,8 @@ Expected, four lines:
 - `Would create project environment at: /ABSOLUTE/PATH/TO/vfport/.venv`, exactly, with your path. `Would
   replace` or `Would use`, or any other path: **stop** (finding A1: `uv sync` deletes and recreates the
   environment it names).
-- `Would download <n> packages` and `Would install <n> packages` (cloud rehearsal: 1 and 103; on the Mac the
-  first number is larger, the cache is empty).
+- `Would download <n> packages` and `Would install <n> packages` (cloud rehearsal: `Would download 1 package`
+  and `Would install 103 packages`; on the Mac the first number is larger, the cache is empty).
 
 An `error` line: stop. This command changes nothing in the study folder. It is not free of effect: if uv has no
 Python 3.12 of its own yet, it downloads one now, before it prints anything (cloud rehearsal: 33 MB; it goes to
@@ -234,10 +234,11 @@ the interpreter shows that path as its own command line:
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B -c "import os, subprocess; line = subprocess.run(['ps', '-ww', '-p', str(os.getpid()), '-o', 'command='], capture_output=True, text=True).stdout.strip(); print(line[:160]); print('INTERPRETER-OK' if line.startswith('/ABSOLUTE/PATH/TO/vfport/.venv/bin/python -B -c ') else 'INTERPRETER-DIFFERS')"
 ```
 
-Expected: two lines. The first begins `/ABSOLUTE/PATH/TO/vfport/.venv/bin/python -B -c import os, subprocess;`
-with your path; the second is `INTERPRETER-OK`. If the second line is `INTERPRETER-DIFFERS` (the first then
-shows another program, for example a `Python.app` of a Python that is not uv's own): **stop**. Nothing after
-this step could find or stop the pilot's processes.
+Expected: two lines. The first is the interpreter's own command line, cut at 160 characters: it begins
+`/ABSOLUTE/PATH/TO/vfport/.venv/bin/python` with your path and goes on with ` -B -c import os, subprocess; ...`
+as far as the 160 characters reach. The second is `INTERPRETER-OK`. If the second line is `INTERPRETER-DIFFERS`
+(the first then shows another program, for example a `Python.app` of a Python that is not uv's own): **stop**.
+Nothing after this step could find or stop the pilot's processes.
 
 The image build takes minutes, so it runs detached:
 
@@ -433,8 +434,8 @@ particular do not start the step again before the end of this section.
    | stopped | the log ends with |
    |---|---|
    | a tool, inside a rollout | a Python traceback whose last line is `KeyboardInterrupt`, then `EXIT 130` |
-   | a tool, between two rollouts or before the first (no vf-eval was listed) | `EXIT 143`, no traceback |
-   | the vf-eval of 2c | `EXIT 130`, no traceback |
+   | a tool, between two rollouts or before the first (no vf-eval was listed) | `EXIT 143`, no traceback; the shell may put one line of its own before it (`Terminated` in the cloud rehearsal) |
+   | the vf-eval of 2c | a line `WARNING interrupted` of vf-eval, then `EXIT 130`, no traceback |
 
    Send the signal once; never `kill -9`, never a second pid in the same command.
 3. **Containers of the pilot are still listed and no vf-eval of the pilot is running** (vf-eval was killed before
@@ -447,7 +448,9 @@ particular do not start the step again before the end of this section.
 
    It prints that name.
 4. **A laboratory process is still listed** (a line with `-m physim2_env.lab_tools`) **and no vf-eval is**:
-   stop it by its pid with the stop command of point 2. It holds no state worth keeping.
+   stop it by its pid with the stop command of point 2. It holds no state worth keeping. A laboratory that has
+   lost its vf-eval may also end by itself within seconds: if the stop command prints nothing here, nothing was
+   signalled and the laboratory is gone already; go on with point 5.
 5. Run the status command again. Expected now: no process line, no container line. If something of the pilot
    is still listed after two minutes: stop and report.
 6. **Delete the two pilot folders and start again from the instance** (first interruption only). A cut rollout

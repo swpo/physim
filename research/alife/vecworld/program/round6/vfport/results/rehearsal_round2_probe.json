@@ -1,0 +1,2047 @@
+{
+ "checks_round5": {
+  "agent_runs_unprivileged": null,
+  "agent_cannot_read_hidden": true,
+  "agent_cannot_read_evaluator_code": true,
+  "agent_sees_only_its_own_processes": true,
+  "agent_has_no_network": true,
+  "agent_cannot_write_outside_workspace": null,
+  "advance_before_reset_rejected": true,
+  "tick_cap_rejected": true,
+  "bounds_rejected": true,
+  "episode_cap_rejected_as_a_block": true,
+  "nan_rejected": true,
+  "bad_shape_rejected": true,
+  "oversized_block_rejected": true,
+  "rejections_charged_nothing": true,
+  "accepted_block_charged": true,
+  "tick_budget_rejected": true,
+  "unknown_operation_rejected": true,
+  "extra_argument_rejected": true,
+  "submission_path_confined": true,
+  "missing_submission_reported": true,
+  "symlink_not_followed": true,
+  "bad_shape_fails_validation": true,
+  "nondeterminism_fails_validation": true,
+  "cpu_limit_enforced": true,
+  "memory_limit_enforced": true,
+  "size_limit_enforced": true,
+  "predictor_runs_unprivileged": true,
+  "predictor_cannot_read_hidden": true,
+  "predictor_has_no_network": true,
+  "predictor_cannot_write_submission": true,
+  "good_submission_validates": true,
+  "submit_freezes": true,
+  "lab_closed_after_submit": true,
+  "graded_without_failures": true
+ },
+ "n_checks_round5": 34,
+ "n_reproduced": 32,
+ "failed_round5": [],
+ "changed_by_design": {
+  "agent_runs_unprivileged": "not reproduced by design: the agent is root (uid 0) INSIDE its own disposable container, started by verifiers without NET_ADMIN/NET_RAW and with no-new-privileges; round 5 ran it as uid 65534 on the evaluator's machine. Nothing of the host is mounted in the box.",
+  "agent_cannot_write_outside_workspace": "not reproduced by design: the whole box is the agent's (probe result: True); what it cannot reach is anything outside the container, which the read and network checks cover."
+ },
+ "checks_new": {
+  "a_every_item_ran_the_probe": true,
+  "a_no_item_found_a_file_left_earlier": true,
+  "a_no_item_found_the_background_process": true,
+  "a_no_item_found_the_shared_memory_mark": true,
+  "a_cleanup_removed_something_after_every_item": true,
+  "a_box_clean_after_every_item": true,
+  "a_control_without_cleanup_finds_them": true,
+  "a2_default_is_one_box_per_item": true,
+  "a2_box_no_item_saw_the_file_read_earlier": true,
+  "a2_box_no_item_saw_a_directory_touched_earlier": true,
+  "a2_box_process_id_counter_did_not_carry": true,
+  "a2_box_loopback_counter_did_not_carry": true,
+  "a2_shared_cleanup_still_removes_files_processes_and_segments": true,
+  "a2_shared_box_carries_all_four_channels": true,
+  "a2_shared_rollout_is_marked_in_its_trace": true,
+  "b_canary_was_in_the_worker_environment": true,
+  "b_lab_process_dropped_it_after_loading": true,
+  "b_no_canary_in_agent_box": true,
+  "b_no_token_like_variable_in_agent_box": true,
+  "b_no_canary_in_verifier_box": true,
+  "b_no_token_like_variable_in_verifier_box": true,
+  "b_canary_absent_from_saved_traces": true,
+  "b_hidden_values_absent_from_saved_traces": true,
+  "c_control_uncut_container_reaches_host_listener": true,
+  "c_agent_box_no_public_route": true,
+  "c_agent_box_cannot_reach_host_listener": true,
+  "c_agent_box_proxy_refuses_other_destinations": true,
+  "c_agent_box_reaches_the_lab": true,
+  "c_verifier_box_no_public_route": true,
+  "c_verifier_box_cannot_reach_host_listener": true,
+  "c_verifier_box_cannot_reach_the_lab": true,
+  "c_host_listener_saw_no_box": true,
+  "d_every_hostile_rollout_is_graded": true,
+  "d_every_reward_is_a_finite_number": true,
+  "d_replaced_tar_duplicate_collision_longpath_score_K": true,
+  "d_control_default_collection_leaves_a_duplicate_member_ungraded": true,
+  "e_raw_tool_submit_of_a_broken_predictor_is_refused": true,
+  "e_then_the_valid_predictor_left_behind_is_graded": true,
+  "e_falsified_check_in_the_agent_box_freezes_but_the_grader_validates": true,
+  "e_unsubmitted_nondeterministic_predictor_scores_K": true,
+  "e_unsubmitted_predictor_failing_one_example_call_scores_K": true,
+  "e_final_collection_respects_the_submission_cap": true,
+  "h_harness_exit_or_kill_leaves_the_trace_without_a_reward": true,
+  "h_kill_all_was_issued_inside_the_box": true,
+  "box_scripts_passed_their_gate_inside_the_box": true,
+  "h_settle_records_K_for_such_a_rollout": true,
+  "h_the_same_agent_cannot_open_the_instance_again": true,
+  "f_item_attacks_passed_validation_and_were_submitted": true,
+  "f_overflow_fifo_and_bomb_fail_every_item_and_score_K": true,
+  "f_no_item_attack_hung_the_grader": true,
+  "f_largest_float32_values_are_a_valid_finite_very_bad_reply": true,
+  "d_deleted_submission_scores_K": true,
+  "d_empty_oversize_huge_and_broken_tar_score_K": true,
+  "d_control_default_collection_grades_a_deleted_submission": true,
+  "d_control_default_collection_leaves_the_others_ungraded": true,
+  "d_links_are_left_out_and_the_rest_is_graded": true,
+  "d_junk_in_logs_artifacts_does_not_matter": true,
+  "predictor_cannot_write_request_or_runtime": true,
+  "one_request_in_the_box_at_a_time": true,
+  "g_lab_placement_guard_refuses_colocated_url_and_sandbox": true,
+  "g_setup_refuses_open_network_and_non_container": true,
+  "g_setup_refuses_token_like_harness_variable": true,
+  "g_setup_refuses_any_variable_not_on_the_allow_list": true,
+  "g_single_use_is_the_default": true,
+  "g_single_use_refuses_the_same_agent_a_second_time": true
+ },
+ "n_checks_new": 65,
+ "n_passed_new": 65,
+ "failed_new": [],
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "instance_id": "probe-ring-w0",
+ "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, --no-push",
+ "evidence": {
+  "predictor_checks": {
+   "uid": {
+    "validation": 52723,
+    "grading": [
+     49152
+    ]
+   },
+   "hidden": {
+    "validation": {
+     "hidden": "FileNotFoundError",
+     "hidden/instance.json": "FileNotFoundError",
+     "hidden/exam.npz": "FileNotFoundError",
+     "agentenv": "FileNotFoundError",
+     "vfport": "FileNotFoundError",
+     "store": "FileNotFoundError"
+    }
+   },
+   "net": {
+    "validation": "ConnectionRefusedError",
+    "grading": [
+     "ConnectionRefusedError"
+    ]
+   },
+   "write_submission": {
+    "validation": "PermissionError",
+    "grading": [
+     "PermissionError"
+    ]
+   }
+  },
+  "agent_reads": {
+   "hidden": "FileNotFoundError",
+   "hidden/instance.json": "FileNotFoundError",
+   "hidden/exam.npz": "FileNotFoundError",
+   "agentenv": "FileNotFoundError",
+   "vfport": "FileNotFoundError",
+   "store": "FileNotFoundError"
+  },
+  "agent_uid": 0,
+  "agent_visible_pids": 3,
+  "messages": {
+   "tick_cap": "program entry t=0: input rejected, nothing charged: nats: command costs 46.7222 > per-tick cap 2; nats: episode total would be 46.7222 > episode cap 8",
+   "bounds": "program entry t=0: input rejected, nothing charged: bound: non-zero values must lie in [-3, 3] (got min 5, max 5)",
+   "episode_cap_whole_block": "program entry t=4: input rejected, nothing charged: nats: episode total would be 9.5 > episode cap 8",
+   "tick_budget": "budget: 5 + 96 ticks > max_ticks=100; nothing ran",
+   "reset_after_submit": "the predictor is submitted; the laboratory is closed",
+   "submit_outside_workspace": "format: the submission path must lie inside the workspace",
+   "network": "[Errno 111] Connection refused"
+  },
+  "validation_messages": {
+   "submit_missing": "submission directory not found",
+   "submit_symlink": "submission has no predict.py",
+   "validate_bad_shape": "predictor failed (exit code 2): ValueError: predict: level 1 has shape (3, 1, 6), expected (8, 5, d)\n",
+   "validate_nondeterministic": "the same request and seed gave different samples",
+   "validate_oversize": "submission larger than 2 MiB"
+  },
+  "slow": {
+   "cpu_s": 3.997543,
+   "wall_s": 4.088009357452393
+  },
+  "slow_error": "predictor failed (CPU-time limit): ",
+  "memory": "ed (exit code 2): MemoryError: Unable to allocate 128. GiB for an array with shape (17179869184,) and data type float64\n",
+  "usage_end": {
+   "ticks_used": 5,
+   "max_ticks": 100,
+   "resets": 1,
+   "episode_nats": 7.6,
+   "total_nats": 7.6,
+   "episode_left": 0.40000000000000036,
+   "total_left": null,
+   "episodes": 1,
+   "commands": 4,
+   "submitted": true,
+   "validations": 9,
+   "submissions": 1
+  },
+  "probe_agent_grade": {
+   "n_items": 8,
+   "n_failed": 0,
+   "layers": {
+    "rlimits": true,
+    "uid": 26910,
+    "cleanup": true
+   }
+  },
+  "a_first_item": {
+   "found_files": [],
+   "daemon_alive": false,
+   "found_shm": false,
+   "other_processes_of_my_user": 0
+  },
+  "a_cleanup_per_item": [
+   {
+    "item": 0,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 1,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 2,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 3,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 4,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 5,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 6,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 7,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   }
+  ],
+  "a_control_item_2": {
+   "found_files": [
+    "/tmp/physim2_probe_marker",
+    "/dev/shm/physim2_probe_marker",
+    "/var/tmp/physim2_probe_marker"
+   ],
+   "daemon_alive": true,
+   "found_shm": true,
+   "other_processes_of_my_user": 1
+  },
+  "a_control_marked_not_an_exam": "cleanup between items was disabled by the operator (test hook)",
+  "b_lab_process": {
+   "pid": 14394,
+   "scrubbed_variables": {
+    "count": 9,
+    "includes_HF_TOKEN": true,
+    "note": "names withheld: they describe the worker's own environment"
+   },
+   "announced": true,
+   "token_values_left_in_environ": false,
+   "token_like_names_left_in_os_environ": []
+  },
+  "b_agent_box": {
+   "uid": 0,
+   "env_names": [
+    "GPG_KEY",
+    "HOME",
+    "HOSTNAME",
+    "HTTPS_PROXY",
+    "HTTP_PROXY",
+    "JAX_PLATFORMS",
+    "LANG",
+    "MKL_NUM_THREADS",
+    "NO_PROXY",
+    "OMP_NUM_THREADS",
+    "OPENBLAS_NUM_THREADS",
+    "PATH",
+    "PHYSIM2_AGENT_HOME",
+    "PWD",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHON_SHA256",
+    "PYTHON_VERSION",
+    "XLA_FLAGS",
+    "http_proxy",
+    "https_proxy",
+    "no_proxy"
+   ],
+   "env_token_like": [],
+   "env_needle": [],
+   "needle_hits": [],
+   "files_read": 8413,
+   "environ_read": 3
+  },
+  "b_verifier_box_item_1": {
+   "uid": 49152,
+   "env_token_like": [],
+   "env_needle": [],
+   "needle_hits": [],
+   "files_read": 5010,
+   "environ_read": 1
+  },
+  "b_trace_scan": {
+   "files_scanned": 227,
+   "needles": [
+    "canary",
+    "canary_prefix",
+    "secret_hex",
+    "theta_D",
+    "theta_c",
+    "theta_gamma"
+   ],
+   "found": {
+    "canary": [],
+    "canary_prefix": [],
+    "secret_hex": [],
+    "theta_D": [],
+    "theta_gamma": [],
+    "theta_c": []
+   }
+  },
+  "c_control": "REACHED",
+  "c_agent_box_net": {
+   "public_tcp": "ConnectionRefusedError",
+   "public_tcp_443": "ConnectionRefusedError",
+   "dns": "gaierror",
+   "host_addresses_tried": 1,
+   "host_listener": "ConnectionRefusedError",
+   "lab": "HTTP 400",
+   "proxy_public": "HTTP 403",
+   "proxy_host_listener": "HTTP 403"
+  },
+  "c_verifier_box_net_all_items": {
+   "public_tcp": [
+    "ConnectionRefusedError"
+   ],
+   "public_tcp_443": [
+    "ConnectionRefusedError"
+   ],
+   "dns": [
+    "gaierror"
+   ],
+   "host_addresses_tried": [
+    1
+   ],
+   "host_listener": [
+    "ConnectionRefusedError"
+   ],
+   "lab": [
+    "URLError"
+   ],
+   "proxy_public": [
+    "no proxy"
+   ],
+   "proxy_host_listener": [
+    "no proxy"
+   ]
+  },
+  "c_listener_hits": {
+   "control": 1,
+   "during_box_runs": 0
+  },
+  "d_hostile": {
+   "delete": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission directory not found",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission directory not found",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "empty": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission has no predict.py",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission has no predict.py",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "oversize": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission larger than 2 MiB",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission larger than 2 MiB",
+     "files": 0,
+     "bytes": 3145728,
+     "sha256": null
+    }
+   },
+   "huge": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "collection failed (SandboxError)",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "collection failed (SandboxError)",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "no_tar": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "collection failed (RuntimeError)",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "collection failed (RuntimeError)",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "symlinks": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.04819242777718825,
+    "errors": [],
+    "n_failed": 0,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 239,
+     "sha256": "f8edf715a0fbf1673d2c5d807012859a9ec15054c548faa5637e7ba6011d7612"
+    }
+   },
+   "junk": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.04819242777718825,
+    "errors": [],
+    "n_failed": 0,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 239,
+     "sha256": "f8edf715a0fbf1673d2c5d807012859a9ec15054c548faa5637e7ba6011d7612"
+    }
+   },
+   "tar_duplicate": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission archive names the same file twice",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission archive names the same file twice",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "tar_collision": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission archive names one path as a file and as a directory",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission archive names one path as a file and as a directory",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "tar_longpath": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission has a path longer than 1024 bytes (or a name longer than 255)",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission has a path longer than 1024 bytes (or a name longer than 255)",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "raw_submit_broken": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.04819242777718825,
+    "errors": [],
+    "n_failed": 0,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 239,
+     "sha256": "f8edf715a0fbf1673d2c5d807012859a9ec15054c548faa5637e7ba6011d7612"
+    }
+   },
+   "fake_validator": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "validation failed (reproducibility)",
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 284,
+     "sha256": "298f1e445b95ca6c998cf8a5a2c2e891998369d62c19e7d28777e685e77d39a6"
+    }
+   },
+   "unsubmitted_nondeterministic": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "validation failed (reproducibility)",
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 284,
+     "sha256": "298f1e445b95ca6c998cf8a5a2c2e891998369d62c19e7d28777e685e77d39a6"
+    }
+   },
+   "unsubmitted_partly_working": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "validation failed (example 1)",
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 321,
+     "sha256": "52d97e45bd1d76abc5f58ceaee4b987e9c58fe248b2ed991dc136ead91c62ebc"
+    }
+   },
+   "submit_cap": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submissions attempt limit (16) reached",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submissions attempt limit (16) reached",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "item_overflow": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 644,
+     "sha256": "0508aa34adda134cf351fc55caaf40cdc61074f12c619f98c3c92ad0b0f143ce"
+    }
+   },
+   "item_fifo": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 537,
+     "sha256": "da57ca430d5e88593f6d4fc9421fa7a2151a63a0e5c1230ce450f3ed13ff0bca"
+    }
+   },
+   "item_bomb": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 677,
+     "sha256": "752ebfe0d102038df921146201722a288c690a7dd8fa440710b3bda9ab27358a"
+    }
+   },
+   "item_extreme": {
+    "graded": true,
+    "ok": true,
+    "reward": -3.902446226646183e+38,
+    "errors": [],
+    "n_failed": 0,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 618,
+     "sha256": "7c3dc6cd488ca9c1be438b62e00cd4751fd8bdeb0d96b87779133a2fc070d584"
+    }
+   }
+  },
+  "d_control_default_collection": {
+   "delete": {
+    "graded": true,
+    "trace_ok": true,
+    "episode_ok": true,
+    "trace_errors": [],
+    "episode_errors": [],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "huge": {
+    "graded": false,
+    "trace_ok": false,
+    "episode_ok": false,
+    "trace_errors": [
+     "SandboxError"
+    ],
+    "episode_errors": [],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "no_tar": {
+    "graded": false,
+    "trace_ok": false,
+    "episode_ok": false,
+    "trace_errors": [
+     "TaskError"
+    ],
+    "episode_errors": [],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "symlinks": {
+    "graded": false,
+    "trace_ok": true,
+    "episode_ok": false,
+    "trace_errors": [],
+    "episode_errors": [
+     "EnvError"
+    ],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "junk": {
+    "graded": false,
+    "trace_ok": false,
+    "episode_ok": false,
+    "trace_errors": [
+     "SandboxError"
+    ],
+    "episode_errors": [],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "tar_duplicate": {
+    "graded": false,
+    "trace_ok": true,
+    "episode_ok": false,
+    "trace_errors": [],
+    "episode_errors": [
+     "EnvError"
+    ],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   }
+  },
+  "g_guard_runs": {
+   "token_env": {
+    "graded": false,
+    "trace_ok": false,
+    "trace_errors": [
+     "TaskError"
+    ]
+   },
+   "other_env": {
+    "graded": false,
+    "trace_ok": false,
+    "trace_errors": [
+     "TaskError"
+    ]
+   },
+   "single_use_first": {
+    "graded": true,
+    "trace_ok": true,
+    "trace_errors": []
+   },
+   "single_use_again": {
+    "graded": false,
+    "trace_ok": false,
+    "trace_errors": [
+     "TaskError"
+    ]
+   }
+  },
+  "h_harness_dies": {
+   "exit1": {
+    "first": {
+     "graded": false,
+     "trace_ok": false,
+     "errors": [
+      "HarnessError"
+     ],
+     "script_exit_code": 1
+    },
+    "settled": [
+     {
+      "graded": false,
+      "settled_as_K": true,
+      "reward": 0.0,
+      "why": "no reward on the trace (HarnessError)",
+      "laboratory_was_opened": true
+     }
+    ],
+    "grade_record": {
+     "n_items": 8,
+     "n_failed": 8,
+     "settled": true
+    },
+    "again": {
+     "graded": false,
+     "errors": [
+      "TaskError"
+     ]
+    }
+   },
+   "killall": {
+    "first": {
+     "graded": false,
+     "trace_ok": false,
+     "errors": [
+      "HarnessError"
+     ],
+     "script_exit_code": 137
+    },
+    "settled": [
+     {
+      "graded": false,
+      "settled_as_K": true,
+      "reward": 0.0,
+      "why": "no reward on the trace (HarnessError)",
+      "laboratory_was_opened": true
+     }
+    ],
+    "grade_record": {
+     "n_items": 8,
+     "n_failed": 8,
+     "settled": true
+    },
+    "again": {
+     "graded": false,
+     "errors": [
+      "TaskError"
+     ]
+    }
+   }
+  },
+  "a2_channels_one_box_per_item": {
+   "mark_was_read": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "dirs_touched_after_staging": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "lo_rx_packets": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "pid": [
+    98,
+    101,
+    100,
+    102,
+    100,
+    101,
+    100,
+    100
+   ],
+   "forked": [
+    79,
+    41,
+    63,
+    76,
+    64,
+    54,
+    48,
+    79
+   ],
+   "datagrams_sent": [
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "pid_step": [
+    3,
+    -1,
+    2,
+    -2,
+    1,
+    -1,
+    0
+   ],
+   "pid_step_minus_forks_of_the_item_before": [
+    -76,
+    -42,
+    -61,
+    -78,
+    -63,
+    -55,
+    -48
+   ]
+  },
+  "a2_channels_all_items_in_one_box": {
+   "mark_was_read": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "dirs_touched_after_staging": [
+    [],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ],
+    [
+     "/dev/shm",
+     "/var/tmp",
+     "/run/lock"
+    ]
+   ],
+   "lo_rx_packets": [
+    0,
+    2411,
+    4822,
+    7233,
+    9644,
+    12055,
+    14466,
+    16877
+   ],
+   "pid": [
+    144,
+    243,
+    304,
+    387,
+    483,
+    567,
+    641,
+    709
+   ],
+   "forked": [
+    79,
+    41,
+    63,
+    76,
+    64,
+    54,
+    48,
+    79
+   ],
+   "datagrams_sent": [
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200,
+    1200
+   ],
+   "pid_step": [
+    99,
+    61,
+    83,
+    96,
+    84,
+    74,
+    68
+   ],
+   "pid_step_minus_forks_of_the_item_before": [
+    20,
+    20,
+    20,
+    20,
+    20,
+    20,
+    20
+   ]
+  },
+  "a2_grade": {
+   "isolation": "box",
+   "item_boxes": 8,
+   "item_box_wall_s_mean": 3.2308796048164368,
+   "infrastructure_failed_items": 0,
+   "item_boxes_cpu_s": 11.780720045999999
+  },
+  "e_reports": {
+   "raw_submit_broken": {
+    "mode": "raw_submit_broken",
+    "raw_submit": {
+     "ok": false,
+     "stage": "example 0",
+     "error": "predictor failed (exit code 2): RuntimeError: broken on purpose\n",
+     "files": 1,
+     "cpu_s": 0.190664,
+     "wall_s": 0.2169334888458252,
+     "finalized": false,
+     "accepted": false
+    },
+    "usage_after": {
+     "submitted": false,
+     "submissions": 1,
+     "validations": 0
+    },
+    "lab_still_open": true,
+    "left": [
+     "predict.py"
+    ]
+   },
+   "fake_validator": {
+    "mode": "fake_validator",
+    "submit": {
+     "ok": true,
+     "note": "this box always says yes",
+     "files": 1,
+     "sha256": "298f1e445b95ca6c998cf8a5a2c2e891998369d62c19e7d28777e685e77d39a6",
+     "finalized": true,
+     "accepted": true
+    },
+    "usage_after": {
+     "submitted": true,
+     "submissions": 1
+    },
+    "left": [
+     "predict.py"
+    ]
+   },
+   "unsubmitted_nondeterministic": {
+    "mode": "unsubmitted_nondeterministic",
+    "left": [
+     "predict.py"
+    ]
+   },
+   "unsubmitted_partly_working": {
+    "mode": "unsubmitted_partly_working",
+    "left": [
+     "predict.py"
+    ]
+   },
+   "submit_cap": {
+    "mode": "submit_cap",
+    "cap": 16,
+    "first": false,
+    "last_within_cap": false,
+    "beyond_cap": "LabError: submissions attempt limit (16) reached",
+    "usage_after": {
+     "submitted": false,
+     "submissions": 16
+    },
+    "left": [
+     "predict.py"
+    ]
+   }
+  },
+  "f_reports": {
+   "item_overflow": {
+    "mode": "item_overflow",
+    "submit": {
+     "ok": true,
+     "accepted": true,
+     "finalized": true,
+     "stage": null,
+     "error": null
+    },
+    "left": [
+     "predict.py"
+    ]
+   },
+   "item_fifo": {
+    "mode": "item_fifo",
+    "submit": {
+     "ok": true,
+     "accepted": true,
+     "finalized": true,
+     "stage": null,
+     "error": null
+    },
+    "left": [
+     "predict.py"
+    ]
+   },
+   "item_bomb": {
+    "mode": "item_bomb",
+    "submit": {
+     "ok": true,
+     "accepted": true,
+     "finalized": true,
+     "stage": null,
+     "error": null
+    },
+    "left": [
+     "predict.py"
+    ]
+   },
+   "item_extreme": {
+    "mode": "item_extreme",
+    "submit": {
+     "ok": true,
+     "accepted": true,
+     "finalized": true,
+     "stage": null,
+     "error": null
+    },
+    "left": [
+     "predict.py"
+    ]
+   }
+  },
+  "f_grades": {
+   "item_overflow": {
+    "n_items": 8,
+    "n_failed": 8,
+    "non_finite_items": 0,
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.307838
+    },
+    "isolation": "box",
+    "seconds": 22.96497416496277
+   },
+   "item_fifo": {
+    "n_items": 8,
+    "n_failed": 8,
+    "non_finite_items": 0,
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.33012099999999994
+    },
+    "isolation": "box",
+    "seconds": 23.23524570465088
+   },
+   "item_bomb": {
+    "n_items": 8,
+    "n_failed": 8,
+    "non_finite_items": 0,
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.349559
+    },
+    "isolation": "box",
+    "seconds": 24.264386892318726
+   },
+   "item_extreme": {
+    "n_items": 8,
+    "n_failed": 0,
+    "non_finite_items": 0,
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.389046
+    },
+    "isolation": "box",
+    "seconds": 24.831475257873535
+   }
+  },
+  "f_first_error": {
+   "item_overflow": "unreadable reply: level arrays must be C-ordered float32 with three axes (as predict_runner.py writes them); got float64 with 3 axes",
+   "item_fifo": "predictor failed (exit code 1): ",
+   "item_bomb": "unreadable reply: the reply must hold one array per level (at most 16)",
+   "item_extreme": "None"
+  },
+  "verifier_box_identity_item_1": {
+   "write_submission": "PermissionError",
+   "write_request": "PermissionError",
+   "write_runtime": "PermissionError",
+   "write_workspace": "PermissionError",
+   "requests_visible": [
+    "item.py",
+    "request.npz"
+   ]
+  },
+  "verifier_box_staging": {
+   "has_predict": true,
+   "network_restricted": true,
+   "writable_dirs": [
+    "/dev/mqueue",
+    "/dev/shm",
+    "/proc/acpi",
+    "/run/lock",
+    "/sys/firmware",
+    "/tmp",
+    "/var/tmp"
+   ],
+   "world_writable_paths_fixed": 0,
+   "owned_by_predictor_user_before": 0,
+   "predictor_uid": 49152,
+   "box_limits": {
+    "pids_max": "max",
+    "memory_max": "8589934592"
+   },
+   "container_evidence": [
+    "/.dockerenv",
+    "/proc/1/cgroup"
+   ]
+  }
+ },
+ "rollouts": {
+  "probe-agent": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.04819242777718825,
+   "wall_s": {
+    "boot": 0.7272181510925293,
+    "setup": 10.710872173309326,
+    "agent": 16.816345930099487,
+    "finalize": 0.07992291450500488,
+    "verifier": 23.85893678665161,
+    "total": 52.19329595565796
+   },
+   "cpu_s": {
+    "agent_box_unverified": 14.2388,
+    "verifier_box": 1.97883,
+    "item_boxes": 8.126877475,
+    "worker_in_reward": 0.25245982400000067
+   },
+   "invocation_wall_s": 68.11576795578003,
+   "address_file_matches_tool_url": true
+  },
+  "probe-grading": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.690753698348999,
+    "setup": 10.712351083755493,
+    "agent": 2.3440358638763428,
+    "finalize": 0.4071044921875,
+    "verifier": 28.8469135761261,
+    "total": 43.001158714294434
+   },
+   "cpu_s": {
+    "agent_box_unverified": 1.91383,
+    "verifier_box": 2.1984,
+    "item_boxes": 11.780720045999999,
+    "worker_in_reward": 0.23095609199999956
+   },
+   "invocation_wall_s": 57.208011865615845,
+   "address_file_matches_tool_url": true
+  },
+  "probe-grading-shared": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7035684585571289,
+    "setup": 9.683881521224976,
+    "agent": 1.7152376174926758,
+    "finalize": 0.4341263771057129,
+    "verifier": 13.593600034713745,
+    "total": 26.13041400909424
+   },
+   "cpu_s": {
+    "agent_box_unverified": 1.66092,
+    "verifier_box": 9.91938,
+    "item_boxes": null,
+    "worker_in_reward": 0.06173311100000056
+   },
+   "invocation_wall_s": 40.28911256790161,
+   "address_file_matches_tool_url": true
+  },
+  "probe-grading-nocleanup": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.682732343673706,
+    "setup": 10.682112216949463,
+    "agent": 1.6025669574737549,
+    "finalize": 0.4120173454284668,
+    "verifier": 12.085310459136963,
+    "total": 25.464739322662354
+   },
+   "cpu_s": {
+    "agent_box_unverified": 1.57418,
+    "verifier_box": 8.46836,
+    "item_boxes": null,
+    "worker_in_reward": 0.0553601179999994
+   },
+   "invocation_wall_s": 39.610620737075806,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-delete": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6510388851165771,
+    "setup": 10.669674396514893,
+    "agent": 1.007098913192749,
+    "finalize": 0.1581096649169922,
+    "verifier": 0.7956290245056152,
+    "total": 13.281550884246826
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.749814,
+    "verifier_box": 0.512332,
+    "item_boxes": null,
+    "worker_in_reward": 0.011481733000000105
+   },
+   "invocation_wall_s": 27.161880254745483,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-empty": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7319478988647461,
+    "setup": 10.697156429290771,
+    "agent": 1.044520378112793,
+    "finalize": 0.3980441093444824,
+    "verifier": 0.7316806316375732,
+    "total": 13.603349447250366
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.952811,
+    "verifier_box": 0.504124,
+    "item_boxes": null,
+    "worker_in_reward": 0.011458205000000277
+   },
+   "invocation_wall_s": 27.532297611236572,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-oversize": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6584270000457764,
+    "setup": 10.710404872894287,
+    "agent": 1.0224392414093018,
+    "finalize": 0.42119550704956055,
+    "verifier": 0.8020215034484863,
+    "total": 13.614488124847412
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.892185,
+    "verifier_box": 0.563805,
+    "item_boxes": null,
+    "worker_in_reward": 0.011365052000000375
+   },
+   "invocation_wall_s": 27.610021591186523,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-huge": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6421432495117188,
+    "setup": 9.659676551818848,
+    "agent": 0.9500846862792969,
+    "finalize": 0.4517953395843506,
+    "verifier": 0.8122856616973877,
+    "total": 12.515985488891602
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.884982,
+    "verifier_box": 0.52348,
+    "item_boxes": null,
+    "worker_in_reward": 0.016105349000000047
+   },
+   "invocation_wall_s": 26.487061977386475,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-no_tar": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7303931713104248,
+    "setup": 10.692338466644287,
+    "agent": 1.084761619567871,
+    "finalize": 0.31043028831481934,
+    "verifier": 0.7656040191650391,
+    "total": 13.583527565002441
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.8947,
+    "verifier_box": 0.515546,
+    "item_boxes": null,
+    "worker_in_reward": 0.011325857000000994
+   },
+   "invocation_wall_s": 27.59919548034668,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-symlinks": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.04819242777718825,
+   "wall_s": {
+    "boot": 0.6978344917297363,
+    "setup": 10.656342506408691,
+    "agent": 1.0274460315704346,
+    "finalize": 0.4098389148712158,
+    "verifier": 23.023714303970337,
+    "total": 35.815176248550415
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.86994,
+    "verifier_box": 1.96558,
+    "item_boxes": 7.775898272999999,
+    "worker_in_reward": 0.23668673600000112
+   },
+   "invocation_wall_s": 49.852652072906494,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-junk": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.04819242777718825,
+   "wall_s": {
+    "boot": 0.6485047340393066,
+    "setup": 10.647106409072876,
+    "agent": 1.0598247051239014,
+    "finalize": 0.41619014739990234,
+    "verifier": 23.563159227371216,
+    "total": 36.3347852230072
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.899467,
+    "verifier_box": 1.96294,
+    "item_boxes": 7.9899609709999995,
+    "worker_in_reward": 0.24529485200000067
+   },
+   "invocation_wall_s": 50.32545185089111,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-tar_duplicate": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7243359088897705,
+    "setup": 10.705843925476074,
+    "agent": 1.067636489868164,
+    "finalize": 0.4839324951171875,
+    "verifier": 0.7587957382202148,
+    "total": 13.740544557571411
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.978931,
+    "verifier_box": 0.507635,
+    "item_boxes": null,
+    "worker_in_reward": 0.011469592000000972
+   },
+   "invocation_wall_s": 28.292611598968506,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-tar_collision": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7098472118377686,
+    "setup": 10.65340805053711,
+    "agent": 0.9849581718444824,
+    "finalize": 0.47173142433166504,
+    "verifier": 0.7950060367584229,
+    "total": 13.614950895309448
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.901285,
+    "verifier_box": 0.517203,
+    "item_boxes": null,
+    "worker_in_reward": 0.011844406000001584
+   },
+   "invocation_wall_s": 27.73663902282715,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-tar_longpath": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6839652061462402,
+    "setup": 10.679450750350952,
+    "agent": 0.9752614498138428,
+    "finalize": 0.4715404510498047,
+    "verifier": 0.7762899398803711,
+    "total": 13.586507797241211
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.937945,
+    "verifier_box": 0.510423,
+    "item_boxes": null,
+    "worker_in_reward": 0.010477092000000354
+   },
+   "invocation_wall_s": 27.408440828323364,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-raw_submit_broken": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.04819242777718825,
+   "wall_s": {
+    "boot": 0.6656417846679688,
+    "setup": 10.646682024002075,
+    "agent": 2.509005546569824,
+    "finalize": 0.42421913146972656,
+    "verifier": 23.41846489906311,
+    "total": 37.664013385772705
+   },
+   "cpu_s": {
+    "agent_box_unverified": 1.66798,
+    "verifier_box": 1.91647,
+    "item_boxes": 7.993171638,
+    "worker_in_reward": 0.2417901190000009
+   },
+   "invocation_wall_s": 51.78012943267822,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-fake_validator": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6876363754272461,
+    "setup": 10.73768949508667,
+    "agent": 1.8181653022766113,
+    "finalize": 0.0764777660369873,
+    "verifier": 2.772366523742676,
+    "total": 16.09233546257019
+   },
+   "cpu_s": {
+    "agent_box_unverified": 1.25863,
+    "verifier_box": 1.96315,
+    "item_boxes": null,
+    "worker_in_reward": 0.03615980100000016
+   },
+   "invocation_wall_s": 30.332969665527344,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-unsubmitted_nondeterministic": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7005040645599365,
+    "setup": 10.691473960876465,
+    "agent": 0.9767138957977295,
+    "finalize": 0.40090084075927734,
+    "verifier": 2.681828260421753,
+    "total": 15.451421022415161
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.914371,
+    "verifier_box": 1.85689,
+    "item_boxes": null,
+    "worker_in_reward": 0.030431545999999088
+   },
+   "invocation_wall_s": 30.157423973083496,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-unsubmitted_partly_working": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6886723041534424,
+    "setup": 10.687516927719116,
+    "agent": 1.0436301231384277,
+    "finalize": 0.4236564636230469,
+    "verifier": 2.785174608230591,
+    "total": 15.628650426864624
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.85272,
+    "verifier_box": 1.93667,
+    "item_boxes": null,
+    "worker_in_reward": 0.02978342099999942
+   },
+   "invocation_wall_s": 30.058147430419922,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-submit_cap": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6858422756195068,
+    "setup": 10.676186084747314,
+    "agent": 15.095745325088501,
+    "finalize": 0.0878608226776123,
+    "verifier": 0.7974839210510254,
+    "total": 27.34311842918396
+   },
+   "cpu_s": {
+    "agent_box_unverified": 13.3105,
+    "verifier_box": 0.511352,
+    "item_boxes": null,
+    "worker_in_reward": 0.011587720999999718
+   },
+   "invocation_wall_s": 42.87396240234375,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-item_overflow": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.685596227645874,
+    "setup": 10.713149309158325,
+    "agent": 3.418536424636841,
+    "finalize": 0.09021711349487305,
+    "verifier": 23.943362951278687,
+    "total": 38.8508620262146
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.83884,
+    "verifier_box": 2.1082,
+    "item_boxes": 8.299902227999999,
+    "worker_in_reward": 0.24787904600000132
+   },
+   "invocation_wall_s": 53.272761821746826,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-item_fifo": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6916952133178711,
+    "setup": 10.658318519592285,
+    "agent": 3.335613965988159,
+    "finalize": 0.08671712875366211,
+    "verifier": 24.186078786849976,
+    "total": 38.95842361450195
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.7641,
+    "verifier_box": 2.12969,
+    "item_boxes": 8.51248522,
+    "worker_in_reward": 0.24398436499999931
+   },
+   "invocation_wall_s": 52.77403521537781,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-item_bomb": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7526836395263672,
+    "setup": 10.675059080123901,
+    "agent": 3.4459292888641357,
+    "finalize": 0.09033513069152832,
+    "verifier": 25.249454736709595,
+    "total": 40.21346187591553
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.79674,
+    "verifier_box": 2.23688,
+    "item_boxes": 9.214763993999998,
+    "worker_in_reward": 0.35278976299999876
+   },
+   "invocation_wall_s": 54.53675603866577,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-item_extreme": {
+   "graded": true,
+   "ok": true,
+   "reward": -3.902446226646183e+38,
+   "wall_s": {
+    "boot": 0.7067484855651855,
+    "setup": 10.704344749450684,
+    "agent": 3.4486937522888184,
+    "finalize": 0.08713340759277344,
+    "verifier": 25.836395740509033,
+    "total": 40.783316135406494
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.79262,
+    "verifier_box": 2.30989,
+    "item_boxes": 9.384427188999998,
+    "worker_in_reward": 0.25956561899999997
+   },
+   "invocation_wall_s": 55.5413544178009,
+   "address_file_matches_tool_url": true
+  },
+  "stock-delete": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7333574295043945,
+    "setup": 10.73718810081482,
+    "agent": 0.9067530632019043,
+    "finalize": 0.1764531135559082,
+    "verifier": 0.8030545711517334,
+    "total": 13.35680627822876
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.795877,
+    "verifier_box": 0.559645,
+    "item_boxes": null,
+    "worker_in_reward": 0.016021740999999423
+   },
+   "invocation_wall_s": 28.795753479003906,
+   "address_file_matches_tool_url": true
+  },
+  "stock-huge": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7007958889007568,
+    "setup": 10.729658842086792,
+    "agent": 0.8807468414306641,
+    "finalize": 0.45900416374206543,
+    "verifier": null,
+    "total": 12.770205736160278
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.738287,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 26.93646812438965,
+   "address_file_matches_tool_url": true
+  },
+  "stock-no_tar": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7642459869384766,
+    "setup": 10.68549132347107,
+    "agent": 0.775505542755127,
+    "finalize": 0.40473365783691406,
+    "verifier": null,
+    "total": 12.629976511001587
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.746756,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 25.776472568511963,
+   "address_file_matches_tool_url": true
+  },
+  "stock-symlinks": {
+   "graded": false,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6620957851409912,
+    "setup": 10.692764520645142,
+    "agent": 0.8162941932678223,
+    "finalize": 0.43706321716308594,
+    "verifier": null,
+    "total": 12.608217716217041
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.718993,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 26.972302198410034,
+   "address_file_matches_tool_url": true
+  },
+  "stock-junk": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7049751281738281,
+    "setup": 10.684882402420044,
+    "agent": 0.8933234214782715,
+    "finalize": 0.4515726566314697,
+    "verifier": null,
+    "total": 12.734753608703613
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.755748,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 25.68462347984314,
+   "address_file_matches_tool_url": true
+  },
+  "stock-tar_duplicate": {
+   "graded": false,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7135138511657715,
+    "setup": 10.756618976593018,
+    "agent": 0.8433246612548828,
+    "finalize": 0.5237107276916504,
+    "verifier": null,
+    "total": 12.837168216705322
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.709763,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 28.182633638381958,
+   "address_file_matches_tool_url": true
+  },
+  "guard-token-env": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7765593528747559,
+    "setup": 0.0011510848999023438,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.7777104377746582
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 15.882582664489746,
+   "address_file_matches_tool_url": null
+  },
+  "guard-other-env": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6947996616363525,
+    "setup": 0.0015540122985839844,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.6963536739349365
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 14.071493148803711,
+   "address_file_matches_tool_url": null
+  },
+  "guard-single-use-first": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7065999507904053,
+    "setup": 10.715521574020386,
+    "agent": 0.8909955024719238,
+    "finalize": 0.44770193099975586,
+    "verifier": 0.909963846206665,
+    "total": 13.670782804489136
+   },
+   "cpu_s": {
+    "agent_box_unverified": 0.838379,
+    "verifier_box": 0.628686,
+    "item_boxes": null,
+    "worker_in_reward": 0.019890274999999846
+   },
+   "invocation_wall_s": 28.080504417419434,
+   "address_file_matches_tool_url": true
+  },
+  "guard-single-use-again": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7292892932891846,
+    "setup": 0.19785380363464355,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.9271430969238281
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 13.968995332717896,
+   "address_file_matches_tool_url": null
+  },
+  "harness-exit1": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7290961742401123,
+    "setup": 11.725012302398682,
+    "agent": 0.9956073760986328,
+    "finalize": 0,
+    "verifier": null,
+    "total": 13.449715852737427
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 28.246797800064087,
+   "address_file_matches_tool_url": true
+  },
+  "harness-exit1-again": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7269766330718994,
+    "setup": 0.18341469764709473,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.9103913307189941
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 15.124719381332397,
+   "address_file_matches_tool_url": null
+  },
+  "harness-killall": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7119858264923096,
+    "setup": 10.67921257019043,
+    "agent": 0.9250445365905762,
+    "finalize": 0,
+    "verifier": null,
+    "total": 12.316242933273315
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 25.628128051757812,
+   "address_file_matches_tool_url": true
+  },
+  "harness-killall-again": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7369279861450195,
+    "setup": 0.18512988090515137,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.9220578670501709
+   },
+   "cpu_s": {
+    "agent_box_unverified": null,
+    "verifier_box": null,
+    "item_boxes": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 14.768264055252075,
+   "address_file_matches_tool_url": null
+  }
+ },
+ "wall_s": 1264.1083948612213,
+ "invocations": 1
+}
