@@ -9,10 +9,42 @@
       "at": "2026-11-10T02:52:25Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T03:16:22Z",
+      "message": "accepted: H200_141GB via nebius at $6.69/h, at most $21.07",
+      "state": "queued"
     }
   ],
   "job_id": "r5-ladder-002",
-  "message": "request received",
+  "max_estimate_usd": 21.07,
+  "message": "accepted: H200_141GB via nebius at $6.69/h, at most $21.07",
+  "plan": {
+    "max_estimate_usd": 21.07,
+    "offers": [
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "US",
+        "data_center": "us-central1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "listed_rate_usd_hr": 5.55,
+        "memory_gb": 200,
+        "price_source": "billed by a pod of this offer at 2026-11-10T03:01:21Z",
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 6.69,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-10T03:16:22Z",
+    "window_hours": 3.15
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T03:16:15Z",
@@ -20,6 +52,6 @@
     "sha256": "9bbfba7f2ced5c9ff48d8eae9c1a7087429cd8dc839c30c7af91330ffa57c344",
     "summary": "Fine to run: the 2^31 blocker is fixed (largest array 1.1e8, peak about 4.3 GB, checked at compile level); failure isolation verified. 1 minor: run.log lacks the pilot marker. 6 info."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T02:52:25Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T03:16:22Z"
 }
