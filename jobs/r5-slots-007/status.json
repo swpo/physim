@@ -22,14 +22,14 @@
   },
   "cap_usd": 21.8,
   "cost": {
-    "billed_usd": 0.0,
-    "conservative_usd": 0.0
+    "billed_usd": null,
+    "conservative_usd": 0.1566
   },
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
-  "hard_deadline": null,
-  "hard_deadline_epoch": null,
+  "hard_deadline": "2026-11-10T09:45:26Z",
+  "hard_deadline_epoch": 1794303926.5696812,
   "history": [
     {
       "at": "2026-11-10T05:24:07Z",
@@ -45,11 +45,16 @@
       "at": "2026-11-10T05:24:51Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T05:29:35Z",
+      "message": "job started on the pod",
+      "state": "running"
     }
   ],
   "job_id": "r5-slots-007",
   "max_estimate_usd": 18.82,
-  "message": "renting a pod",
+  "message": "job started on the pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -127,7 +132,32 @@
     "planned_at": "2026-11-10T05:24:44Z",
     "window_hours": 3.75
   },
-  "pods": [],
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r5-slots-007-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": "2026-11-10T05:25:12Z",
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-slots-007-a1",
+      "note": null,
+      "pod_id": "010fe458487d4c8eb0d2ecf61981eb7c",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-10T05:29:22Z",
+      "requested_at": "2026-11-10T05:24:52Z",
+      "spot": false,
+      "state": "ready",
+      "terminated_at": null
+    }
+  ],
   "pods_terminated": null,
   "review": {
     "at": "2026-11-10T05:24:37Z",
@@ -135,7 +165,9 @@
     "sha256": "45e63d7398cea7f8dee47fff7d93ec82b8b25be2882a1c2ffb23bbf045303d5d",
     "summary": "Resubmission of 006 with the cap raised to cover the H100 at $5.02/h; same code and env; fine to run."
   },
+  "run_deadline": "2026-11-10T08:59:35Z",
   "run_started_epoch": 1794288291.154913,
-  "state": "provisioning",
-  "updated_at": "2026-11-10T05:24:51Z"
+  "started_at": "2026-11-10T05:29:35Z",
+  "state": "running",
+  "updated_at": "2026-11-10T05:29:35Z"
 }
