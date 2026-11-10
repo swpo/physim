@@ -1,0 +1,29 @@
+[project]
+name = "physim2-env"
+version = "0.1.0.dev0"
+description = "The PhySim v2 exam as a Verifiers v1 taskset (isolated grader, host-side laboratory) and a scripted harness"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+# The verifiers wheel is the one PhySim v1 pins (residency-environments/environments/physim/pyproject.toml):
+# upstream commit a24f5e216d14, 0.3.2.dev163. numpy, scipy and jax are the pins of the vw library's environment.
+dependencies = [
+  "verifiers @ https://github.com/swpo/verifiers/releases/download/physim-a24f5e216d14/verifiers-0.3.2.dev163-py3-none-any.whl#sha256=1e4b472427da3d2dc4d57c6ba161c99a7a9d319dc911c71b5db7a5e82029356d",
+  "numpy==2.5.4",
+  "scipy==1.18.1",
+  "jax==0.12.0.1",
+  "jaxlib==0.12.0.1",
+]
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["physim2_env", "physim2_script"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.verifiers.eval]
+num_examples = 1
+rollouts_per_example = 1

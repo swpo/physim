@@ -1,0 +1,18 @@
+#!/bin/sh
+# docker shim for hosts whose kernel has no IPv6 (this cloud container; NOT needed on the Mac).
+# verifiers' restricted Docker runtime starts every box with `--sysctl net.ipv6.conf.all.disable_ipv6=1`
+# (verifiers/v1/runtimes/docker/__init__.py:221-222). Without IPv6 in the kernel that sysctl file does not exist
+# and `docker run` fails ("open sysctl net.ipv6.conf.all.disable_ipv6 file: ... no such file or directory").
+# The option's purpose (no IPv6 in the box) already holds on such a host, so this shim drops that one option
+# and passes everything else through unchanged. Put this directory first on PATH for vf-eval.
+REAL=${PHYSIM2_REAL_DOCKER:-/usr/bin/docker}
+if [ -e /proc/sys/net/ipv6 ]; then exec "$REAL" "$@"; fi
+n=$#
+while [ "$n" -gt 0 ]; do
+  a=$1; shift; n=$((n - 1))
+  if [ "$a" = "--sysctl" ] && [ "$n" -gt 0 ] && [ "$1" = "net.ipv6.conf.all.disable_ipv6=1" ]; then
+    shift; n=$((n - 1)); continue
+  fi
+  set -- "$@" "$a"
+done
+exec "$REAL" "$@"
