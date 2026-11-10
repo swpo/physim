@@ -8,18 +8,36 @@ runs: the builder's `/home/user/evalwork/vfport/.venv` (nothing installed into i
 Rule of this role: nothing of the driver, its cleanup or the hostile scripts runs on this host; host tests run
 under tripwires, real cleanups only in throwaway containers without a host mount.
 
-### State (kept current)
-- 14:30 UTC: container had restarted (uptime 9 min); dockerd started again (classic image store, overlay2, cgroup v1);
-  images physim2-ring:1, localhost/verifiers-network:1, python:3.12-slim present; no container.
-- 15:10 UTC: code of the nine changes and S1, S2 written and tested; candidate for the pin pushed: cac38e324.
-- 15:12 UTC: rehearsal started from a fresh sparse, shallow clone of cac38e324 in scratch `vfsafe1/rehearsal`
-  (its own .venv by `uv sync`, 6.7 s from uv's cache). Step 0 and step 1 as written, except the image build (not
-  run: the shared image exists, proxy, 2 GB disk). Step 2a: interrupted twice on purpose (SIGTERM to the tool by
-  the runbook's own procedure: vf-eval removed its container and laboratory within 4 s; then SIGKILL of vf-eval:
-  one container and the laboratory were left, found by the status command, removed by exact name and pid; the
-  laboratory's working folder under ~/.cache/verifiers stays, which the runbook did not say), then run to the
-  end: all graded, 0 failed items, 2.68 s per item box. Step 2b running since 15:24 (about 18 minutes), then 2c,
-  step 4, the record `results/rehearsal_round1.json`, the runbook's text fixes, README, summary, the pin commit.
+### State (final for this role, 10 Nov 2026, 16:00 UTC)
+- All nine required changes and S1, S2 are in the code; every test the audit named passes
+  (`results/host_safety_round1.json`). RUNBOOK_MAC.md is rewritten, pinned and STILL ON HOLD: these changes have not
+  been re-audited. The rehearsal of steps 0, 1, 2 and 4 is done (`results/rehearsal_round1.json`).
+- Commits: cac38e324 = the commit that was rehearsed. The runbook's text was then corrected in five places; the
+  commit the runbook pins (named in its pin block at the head of the branch) has the same `PIN.sha256`
+  (7aa9bbfc79e7...), i.e. the same package, tools, agents and configs byte for byte.
+- Nothing is running. Docker daemon up, the three images unchanged, no container. Scratch `vfsafe1` deleted, the
+  worktree removed. Left on the machine by this role: nothing besides 60-odd `/tmp/vf-port-*` files that verifiers
+  never removes and uv's cache entry of one wheel.
+
+### Rehearsal (15:12 to 15:50 UTC; fresh sparse, shallow clone of cac38e324 in scratch, its own .venv)
+- As written: step 0; `uv sync` (dry run named the clone's .venv by its absolute path; 6.7 s); step 2a (7.5 min: all
+  graded, 0 failed, 2.68 s per item box); step 2b (37 rollouts, 1,291 s: 32 of 34, 65 of 65); step 2c (3.5 min);
+  step 4.
+- Interruption 1: `kill -TERM` of the tool by the runbook's procedure: the real vf-eval removed its container and
+  its laboratory; nothing listed 4 s later. Interruption 2: SIGKILL of vf-eval: one container and the laboratory
+  stayed, the status command listed exactly those, removed by exact name and pid, folders reset, step run again.
+- Deviations (machine): sparse clone; `$HOME` replaced by a scratch folder; image build NOT run (shared image,
+  proxy, disk); IPv6 shim on PATH for the one direct vf-eval.
+- Five mismatches of text and behaviour, all corrected in the runbook (listed in the record).
+
+### Could not do
+- A run on macOS or Docker Desktop (everything about them is inferred). The image build in the runbook's form.
+  Step 3. A rerun of `prove.py --worlds 4`, of the gliders rollout and of the red team's attacks on the new code.
+- round5/agentenv/mac (finding B12) is outside this folder and was not touched; the runbook's "never" table names it.
+
+### Next step (exact)
+- Coordinator: a re-audit of the diff of changes 3 to 5 (the audit asks for it) and of the runbook, reading the
+  head of the branch; `results/host_safety_round1.json` is the index. Until it says GO, nothing runs on the Mac.
 
 ### Done (code)
 - 1 (A1): runbook guard on every command, uv with --project and a dry run first. 2 (A2): `tools/vfrun.py` needs

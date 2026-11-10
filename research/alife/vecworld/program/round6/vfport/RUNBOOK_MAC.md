@@ -14,9 +14,10 @@ sha256 of `PIN.sha256`: `7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, (1) install, (2) run the scripted, model-free smoke test
-on Docker at $0, (3) run ONE rollout of a cheap model with a stock harness. Evidence: steps 0 to 2 were rehearsed
-in the cloud container (Linux x86_64, Docker 29.9.2) from a fresh clone, with one deliberate interruption
-(`results/rehearsal_round1.json`; what could not be rehearsed there is listed at the end of this file).
+on Docker at $0, (3) run ONE rollout of a cheap model with a stock harness. Evidence: steps 0 to 2 and step 4
+were rehearsed in the cloud container (Linux x86_64, Docker 29.9.2) from a fresh clone, with two deliberate
+interruptions (`results/rehearsal_round1.json`; what could not be rehearsed there is listed at the end of this
+file).
 **Nothing here has run on a Mac: every statement about macOS and Docker Desktop is inferred.** Step 3 has not
 run anywhere.
 
@@ -94,8 +95,10 @@ is a container that verifiers created for it without any Mac folder mounted.
 absent, uv's own Python 3.12 (`~/.cache/uv`, `~/.local/share/uv`); `docker/extra-ca.crt` (empty; git ignores it);
 the folders `$HOME/physim2-pilot-20261110/store` and `.../scratch`, and in step 4
 `$HOME/physim2-pilot-20261110-results`; `~/.cache/verifiers/` (created by verifiers); one small file
-`/tmp/vf-port-<hex>` per rollout, which verifiers never removes (leave them; do not delete by pattern); Docker
-images `physim2-ring:1` (about 560 MB), `python:3.12-slim`, and `localhost/verifiers-network:1` with `alpine:3.22`,
+`/tmp/vf-port-<hex>` per rollout, which verifiers never removes (leave them; do not delete by pattern); only
+after a vf-eval was killed outright, two small folders nobody removes: the laboratory's working folder
+`~/.cache/verifiers/runtimes/subprocess/vf-<12 hex>` (one log file) and `$TMPDIR/physim2-io-<random>` (one socket);
+Docker images `physim2-ring:1` (about 560 MB), `python:3.12-slim`, and `localhost/verifiers-network:1` with `alpine:3.22`,
 which verifiers builds itself at the first rollout.
 
 **What listens on the Mac.** Per box, verifiers' proxy and the container's published port, on 127.0.0.1; per
@@ -218,9 +221,9 @@ command; nothing depends on a variable set earlier.
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 4 "$HOME/physim2-pilot-20261110/scratch/prove.log" "$HOME/physim2-pilot-20261110/scratch/probe.log" "$HOME/physim2-pilot-20261110/scratch/single.log" 2>/dev/null ; echo "containers:" ; docker ps -a --filter label=verifiers.run=physim2-pilot-20261110 --format '{{.Names}} {{.Status}}' ; echo "processes:" ; ps axo pid=,command= | grep "/ABSOLUTE/PATH/TO/vfport/.venv/bin/[p]ython" ; echo "status done" ; }
 ```
 
-It prints the last lines of the logs that exist, then under `containers:` the containers of this pilot, under
-`processes:` the processes of this pilot (the tool, its vf-eval, the laboratory), each with its pid, and
-`status done`. A step is finished when its log ends with an `EXIT` line and nothing is listed under
+It prints the last lines of the logs that exist (each under a line `==> <file> <==`), then under `containers:`
+the containers of this pilot, under `processes:` the processes of this pilot (the tool, its vf-eval, the
+laboratory; each line starts with the pid and goes on with the whole command), and `status done`. A step is finished when its log ends with an `EXIT` line and nothing is listed under
 `containers:` and `processes:`. While a step runs, wait and ask again; start nothing else.
 
 ### 2a. One world, three policies, then C once more with one box per exam item (about 10 minutes)
@@ -229,10 +232,11 @@ It prints the last lines of the logs that exist, then under `containers:` the co
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/prove.py --store "$HOME/physim2-pilot-20261110/store" --scratch "$HOME/physim2-pilot-20261110/scratch/proof" --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out "$HOME/physim2-pilot-20261110/scratch/proof_mac.json" > "$HOME/physim2-pilot-20261110/scratch/prove.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-20261110/scratch/prove.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
-It prints Docker's version and returns at once (the tool runs on, detached). Then use the status command. Expected in `prove.log` when it is
-finished: lines `D: [..]`, `P0: [..]`, `C: [..]` (one skill per world), a line `C (one box per item, world 0): ..`,
-one JSON line with the table on the K-to-C scale, for example (cloud container) `{"O": 1.10, "K": 0.0, "D": 0.45,
-"C": 1.0, "P0": 0.90}`, and `EXIT 0`. The numbers differ on the Mac: the hidden world is new. Then:
+It prints Docker's version and returns at once (the tool runs on, detached). Then use the status command.
+Expected in `prove.log` when it is finished: lines `D: [..]`, `P0: [..]`, `C: [..]` (one skill per world), a line
+`C (one box per item, world 0): ..`, then two JSON lines, the table on the K-to-C scale, for example (cloud
+rehearsal) `{"O": 1.0998, "K": 0.0, "D": 0.5175, "P0": 0.8956, "C": 1.0}`, and a line that begins `{"sigma":`, and
+last `EXIT 0`. The numbers differ on the Mac: the hidden world is new. Then:
 
 ```sh
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B -c "
@@ -300,9 +304,11 @@ the same agent on the same instance is refused.
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 PHYSIM2_STORE="$HOME/physim2-pilot-20261110/store" PRIME_RUNS_MODE=disabled PYTHONDONTWRITEBYTECODE=1 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/vf-eval" @ configs/scripted_ring.toml --no-rich --run.name single-d -o "$HOME/physim2-pilot-20261110/scratch/single" > "$HOME/physim2-pilot-20261110/scratch/single.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-20261110/scratch/single.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
-Then the status command until `single.log` ends with `EXIT 0`. Do not read `single.log` or `traces.jsonl`
-beyond that last line: with `--no-rich` vf-eval prints the whole trace, and in step 3 the trace is the examined
-model's text. Read a run only through the report tool, which prints fixed fields and counts:
+Then the status command until `single.log` ends with `EXIT 0` (it shows the last four lines of that log: here the
+end of the trace that vf-eval prints with `--no-rich`, three lines of token counts). Do not open `single.log` or
+`traces.jsonl` beyond that: in step 3 the same files hold the examined model's text, and step 3 has a status
+command of its own that shows the `EXIT` line only. Read a run only through the report tool, which prints fixed
+fields and counts:
 
 ```sh
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/run_report.py --store "$HOME/physim2-pilot-20261110/store" --run-dir "$HOME/physim2-pilot-20261110/scratch/single/single-d"
@@ -333,12 +339,13 @@ particular do not start the step again before the end of this section.
    cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && kill -TERM PID_FROM_THE_STATUS_LINE
    ```
 
-   The tool passes the signal on; vf-eval removes its containers and stops its laboratory itself, which takes up
-   to two minutes. Ask for the status again until those lines are gone. Send the signal once; never `kill -9`,
-   never a second process in the same command.
+   The tool passes the signal on; vf-eval removes its containers and stops its laboratory itself (4 seconds in
+   the cloud rehearsal; allow two minutes). The tool's log then ends with a Python traceback whose last line is
+   `KeyboardInterrupt`, and `EXIT 130`. Ask for the status again until those lines are gone. Send the signal
+   once; never `kill -9`, never a second process in the same command.
 3. **Containers of the pilot are still listed and no vf-eval of the pilot is running** (vf-eval was killed before
-   it could clean up): remove each one by its exact name, one command per container, the name copied from the
-   status output:
+   it could clean up; the tool's log then ends with `EXIT 1`): remove each one by its exact name, one command per
+   container, the name copied from the status output:
 
    ```sh
    cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker rm -f NAME_FROM_THE_STATUS_LINE
@@ -358,7 +365,10 @@ particular do not start the step again before the end of this section.
    Expected: `pilot folders reset`. (If the interruption came before `make_instances`, the store does not exist
    and this prints nothing: then delete nothing and go on.) Then continue from the `make_instances` command of
    step 1, and run step 2 from 2a. The image and `.venv` stay.
-7. Say in the report that a run was interrupted, at which command, and what the status command listed.
+7. Say in the report that a run was interrupted, at which command, and what the status command listed. If
+   point 3 or 4 was needed, two small folders of the killed vf-eval stay on the Mac and nothing removes them: the
+   laboratory's working folder `~/.cache/verifiers/runtimes/subprocess/vf-<12 hex>` (one log file) and
+   `$TMPDIR/physim2-io-<random>` (one socket). Name them in the report and leave them: do not delete by pattern.
 
 ## 3. ONE rollout of a cheap model, stock harness (SEPARATE HOLD)
 
@@ -470,5 +480,10 @@ is planned (`docker rmi physim2-ring:1`). The `.venv` stays until the lead remov
   mount or the missing sign; nothing is damaged; report it), how `uv` behaves, how a Claude session on the Mac
   ends a command at its limit, that a detached command survives the end of the call that started it.
 - The image build of step 1: the cloud machine sits behind a TLS-intercepting proxy and already had the shared
-  image `physim2-ring:1`; the build was not repeated there (`results/rehearsal_round1.json`).
+  image `physim2-ring:1`, at which step 0 says stop; the rehearsal went on with that image and did not run the
+  build command (`results/rehearsal_round1.json`, deviations).
+- Step 2c as written: the cloud machine's kernel has no IPv6, so a direct `vf-eval` needs `tools/docker_shim` first
+  on PATH there (the tools of 2a and 2b add it themselves on such Linux hosts); the rehearsal added it to that
+  one command. This does not apply to macOS, where the shim must not be used.
+- The by-hand checks: the cloud session is root, on x86_64, with `UV_NATIVE_TLS` set.
 - Step 3: never run.

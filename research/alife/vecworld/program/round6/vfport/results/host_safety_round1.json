@@ -289,7 +289,10 @@
    "audit_test": "the rehearsal itself",
    "result": {
     "source": "results/rehearsal_round1.json",
-    "missing": true
+    "outcome": "steps 0, 1 (without the image build), 2a, 2b, 2c and 4 ended as the runbook says, with four deviations forced by the machine and five places where the text did not match what happened; both interruptions were cleared with the runbook's own procedure, and nothing of the pilot was left running or listed afterwards",
+    "commit_rehearsed": "cac38e32415ff739d264e6ad3eb7528f1ce19559",
+    "deviations": 4,
+    "mismatches_of_text_and_behaviour": 5
    },
    "evidence": "run; vf-eval"
   },

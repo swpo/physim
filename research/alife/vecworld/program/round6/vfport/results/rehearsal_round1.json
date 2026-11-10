@@ -1,0 +1,726 @@
+{
+ "what": "required change 8 of HOST_SAFETY_AUDIT.md: the rewritten RUNBOOK_MAC.md, steps 0, 1, 2 and 4, run once in the cloud container from a fresh clone, with two deliberate interruptions. Step 3 was not run.",
+ "where": "cloud container: Linux x86_64, 4 shared cores, Docker 29.9.2 (overlay2, cgroup v1), uv 0.11.32, root session, behind a TLS-intercepting proxy; 10 Nov 2026, 15:12 to 15:50 UTC",
+ "commit_rehearsed": "cac38e32415ff739d264e6ad3eb7528f1ce19559",
+ "sha256_of_PIN_at_that_commit": "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19",
+ "relation_to_the_pinned_commit": "the runbook's text was corrected after the rehearsal (see mismatches); the commit the runbook pins has the same PIN.sha256, i.e. the same package, tools, agents and configs, byte for byte; only documents and results differ",
+ "how": {
+  "clone": "git init; sparse checkout of round6/vfport, round5/agentenv and vw1; git fetch --depth 1 --filter=blob:none origin <commit>; git checkout --detach (the repository's history is 6.3 GB; the machine had 2 GB free)",
+  "commands": "every fenced command of RUNBOOK_MAC.md was written to a file by a script, with TWO textual substitutions and nothing else: /ABSOLUTE/PATH/TO/vfport -> the clone's study folder; $HOME -> a folder inside the rehearsal's scratch (this session may not delete outside its scratch, and the runbook deletes its pilot folders). Each file was then run as it was, one at a time, and its output kept with time and exit status. In three commands a placeholder the runbook tells the operator to fill was filled: the pid and the container name from the status output",
+  "evidence": "run (commands of steps 0 and 1); vf-eval (steps 2a, 2b, 2c: 45 rollouts on Docker with the scripted harness, no push, no model)"
+ },
+ "outcome": "steps 0, 1 (without the image build), 2a, 2b, 2c and 4 ended as the runbook says, with four deviations forced by the machine and five places where the text did not match what happened; both interruptions were cleared with the runbook's own procedure, and nothing of the pilot was left running or listed afterwards",
+ "numbers": {
+  "2a": "all_graded True, all_ok True, 0 failed items; ticks D 392, P0 0, C 0; predictor uids 36073, 21559, 48975; one box per item: identical scores, 64 boxes, 0 infrastructure failures, 2.68 s per item box; table O 1.100, D 0.518, P0 0.896, C 1.0; 7.5 minutes",
+  "2b": "round 5's checks 32 of 34 reproduced, 0 failed; new checks 65 of 65, failed_new [] (Linux); 1,291 s for 37 rollouts; the agent's own kill inside its box: exit status 137",
+  "2c": "ok true, reward present, ticks 392, agent_submission, 64 items, 0 failed, 64 item boxes, 0 hidden-value hits in the run folder; 3.5 minutes",
+  "uv": "dry run: 'Would create project environment at: <STUDY>/.venv'; sync 6.7 s; the working tree of the clone stayed clean (git status: nothing)"
+ },
+ "interruptions": [
+  {
+   "n": 1,
+   "what": "SIGTERM to the tool by the runbook's point 2 (kill -TERM <pid from the status line>), 23 s after the start of 2a, with the agent's box up and the laboratory running",
+   "seen": "2 s later no container, 4 s later no process; prove.log: KeyboardInterrupt, EXIT 130; the laboratory's working folder was removed by vf-eval itself",
+   "then": "runbook point 6: the two pilot folders deleted, a new instance, 2a started again"
+  },
+  {
+   "n": 2,
+   "what": "SIGKILL of the rehearsal's own vf-eval by its pid (the case the audit describes in A2: vf-eval dies without cleaning up)",
+   "seen": "the status command listed exactly one container (vf-5452..., Up) and one process (the laboratory); prove.log ended with EXIT 1",
+   "then": "runbook points 3, 4, 5, 6: docker rm -f <that name>; kill -TERM <the laboratory's pid>; status: nothing listed; folders reset; new instance; 2a run to the end"
+  }
+ ],
+ "deviations": [
+  {
+   "n": 1,
+   "what": "the clone is sparse and shallow, fetched by commit",
+   "why": "disk; the Mac has a full checkout"
+  },
+  {
+   "n": 2,
+   "what": "$HOME was replaced textually by a folder in the rehearsal's scratch; the by-hand checks differ: uid 0, x86_64, UV_NATIVE_TLS=true set by the session, a TLS-intercepting proxy",
+   "why": "this session's rules and machine"
+  },
+  {
+   "n": 3,
+   "what": "step 0 printed 1 for the image physim2-ring:1, at which the runbook says stop; the rehearsal went on with that image, and the build command of step 1 and its status command were NOT run",
+   "why": "the image is shared with other roles on this machine, a rebuild needs the proxy's certificate and about 1 GB of the 2 GB free; the build command therefore remains unrehearsed in the runbook's form"
+  },
+  {
+   "n": 4,
+   "what": "step 2c was run with tools/docker_shim first on PATH",
+   "why": "this kernel has no IPv6 and verifiers' docker run then fails; the tools of 2a and 2b add the shim themselves on such Linux hosts; not applicable to macOS"
+  }
+ ],
+ "mismatches": [
+  {
+   "n": 1,
+   "where": "step 2a, expected log",
+   "text_said": "one JSON line with the table, then EXIT 0",
+   "happened": "two JSON lines (the table, then a line beginning {\"sigma\":), then EXIT 0",
+   "fixed_in_the_runbook": true
+  },
+  {
+   "n": 2,
+   "where": "If a run was interrupted",
+   "text_said": "nothing about what stays after a hard kill besides containers and the laboratory",
+   "happened": "two small folders stayed that nothing removes: ~/.cache/verifiers/runtimes/subprocess/vf-<12 hex> (the laboratory's log, 11 kB) and /tmp/physim2-io-<random> (the task controller's socket)",
+   "fixed_in_the_runbook": true
+  },
+  {
+   "n": 3,
+   "where": "If a run was interrupted, points 2 and 3",
+   "text_said": "nothing about the log",
+   "happened": "after SIGTERM the tool's log ends with a traceback (KeyboardInterrupt) and EXIT 130, after about 4 s; after a hard kill of vf-eval it ends with EXIT 1",
+   "fixed_in_the_runbook": true
+  },
+  {
+   "n": 4,
+   "where": "step 2c",
+   "text_said": "do not read single.log beyond its last line",
+   "happened": "the status command of step 2 shows the last four lines of single.log (three lines of token counts and EXIT 0)",
+   "fixed_in_the_runbook": true
+  },
+  {
+   "n": 5,
+   "where": "the status command",
+   "text_said": "prints the last lines of the logs, containers, processes",
+   "happened": "each log is headed by '==> file <==' and each process line carries the whole command line (several hundred characters)",
+   "fixed_in_the_runbook": true
+  }
+ ],
+ "left_behind": {
+  "by_the_runbook_as_it_says": [
+   "<STUDY>/.venv (778 MB apparent; 15,361 of its 15,715 files are hard links into uv's cache)",
+   "<STUDY>/docker/extra-ca.crt (empty)",
+   "<HOME>/physim2-pilot-20261110-results with five files",
+   "39 files /tmp/vf-port-<hex> (one per rollout that started a laboratory; 226 before, 265 after)",
+   "uv's cache: one wheel more"
+  ],
+  "by_the_hard_kill_only": [
+   "/root/.cache/verifiers/runtimes/subprocess/vf-e085fcce17df/vf_tool_lab.log",
+   "/tmp/physim2-io-0i6gw1k7/io.sock"
+  ],
+  "docker": "no container; the three images as before (ids unchanged); no image built",
+  "not_left": "no process of the pilot, no container of the pilot, no __pycache__ and no change in the clone (git status: nothing)",
+  "removed_by_this_session_afterwards": "the two leftovers of the hard kill, each file and folder by its exact name; the whole rehearsal folder with the scratch"
+ },
+ "not_rehearsed": [
+  "the image build of step 1 (deviation 3)",
+  "step 3: never run",
+  "anything on macOS or Docker Desktop: inferred only",
+  "how a Claude session on the Mac ends a command at its limit (here: the detached commands returned in under 0.1 s and their tools ran on)"
+ ],
+ "hidden_values_in_this_file": "none by construction: it holds exit codes, times, counts, scores, uids and public commitments. It was not scanned against the rehearsal's store, which step 4 had already deleted",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "steps": [
+  {
+   "n": 0,
+   "command": "by_hand",
+   "output": [
+    "id -u: 0",
+    "uname -m: x86_64",
+    "uv: /root/.local/bin/uv uv 0.11.32 (x86_64-unknown-linux-gnu)",
+    "docker: /usr/bin/docker; context default",
+    "variables:",
+    "UV_NATIVE_TLS=true",
+    "other runs (label verifiers.run): 0",
+    "images physim2-ring: 1",
+    "proxy: HTTPS_PROXY is set",
+    "free disk: 2.0G",
+    "pilot folders: 2 of 2 absent"
+   ],
+   "note": "by-hand checks of section C, as the cloud machine answers them",
+   "what_it_did": "the lead's checks of section C, answered by the cloud machine"
+  },
+  {
+   "n": 1,
+   "command": "0a_commit",
+   "output": [
+    "cac38e32415ff739d264e6ad3eb7528f1ce19559",
+    "0"
+   ],
+   "ended_utc": "15:12:56",
+   "exit": 0,
+   "seconds": 0.1,
+   "what_it_did": "printed the commit of the clone and 0 changed files"
+  },
+  {
+   "n": 2,
+   "command": "0b_pin",
+   "output": [
+    "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19  PIN.sha256",
+    "PIN-OK"
+   ],
+   "ended_utc": "15:12:56",
+   "exit": 0,
+   "seconds": 0.05,
+   "what_it_did": "printed the hash of PIN.sha256 and PIN-OK (105 files compared)"
+  },
+  {
+   "n": 3,
+   "command": "0c_docker_and_folders",
+   "output": [
+    "29.9.2",
+    "0",
+    "1",
+    "3"
+   ],
+   "ended_utc": "15:12:56",
+   "exit": 0,
+   "seconds": 0.17,
+   "what_it_did": "printed Docker's version, 0 containers of the pilot, 1 image (DEVIATION 3), 3 absent paths"
+  },
+  {
+   "n": 4,
+   "command": "1a_uv_dry_run",
+   "output": [
+    "Would create project environment at: <STUDY>/.venv",
+    "Would download 1 package",
+    "Would install 103 packages"
+   ],
+   "ended_utc": "15:13:01",
+   "exit": 0,
+   "seconds": 0.61,
+   "what_it_did": "changed nothing; named the clone's own .venv by its absolute path"
+  },
+  {
+   "n": 5,
+   "command": "1b_uv_sync",
+   "output": [
+    " + uvicorn==0.54.0",
+    " + verifiers==0.3.2.dev163 (from https://github.com/swpo/verifiers/releases/download/physim-a24f5e216d14/verifiers-0.3.2.dev163-py3-none-any.whl)",
+    " + yarl==1.25.1"
+   ],
+   "ended_utc": "15:13:12",
+   "exit": 0,
+   "seconds": 6.73,
+   "what_it_did": "created <STUDY>/.venv (103 packages, 6.7 s, hard links into uv's cache; one wheel downloaded from github.com)"
+  },
+  {
+   "n": 6,
+   "command": "1c_import",
+   "output": [
+    "0.3.2.dev163 2.5.4 1.18.1 0.12.0.1 <STUDY>/physim2_env/__init__.py"
+   ],
+   "ended_utc": "15:13:34",
+   "exit": 0,
+   "seconds": 16.09,
+   "what_it_did": "imported the package from the clone"
+  },
+  {
+   "n": 7,
+   "command": "1d_mkdir_ca",
+   "output": [
+    "0 docker/extra-ca.crt"
+   ],
+   "ended_utc": "15:13:34",
+   "exit": 0,
+   "seconds": 0.01,
+   "what_it_did": "created <HOME>/physim2-pilot-20261110/scratch and an empty docker/extra-ca.crt"
+  },
+  {
+   "n": 8,
+   "command": "1e_build_SKIPPED",
+   "output": [],
+   "note": "1e_build NOT RUN in the rehearsal (the shared image exists; TLS-intercepting proxy; 2 GB disk for everyone)",
+   "what_it_did": "NOT RUN (DEVIATION 3)"
+  },
+  {
+   "n": 9,
+   "command": "1g_image_check",
+   "output": [
+    "2.5.4 1.18.1 0.12.0.1"
+   ],
+   "ended_utc": "15:13:35",
+   "exit": 0,
+   "seconds": 1.41,
+   "what_it_did": "started and removed one container of the existing image"
+  },
+  {
+   "n": 10,
+   "command": "1h_make_instances",
+   "output": [
+    "{\"instance_id\": \"mac-ring-w0\", \"secret_commitment\": \"900c2501e4b639560ab99f944783e865a670ced1b229f6d04fb10405369486e8\", \"n_items\": 64, \"R\": 16, \"seconds\": 5.3}"
+   ],
+   "ended_utc": "15:13:51",
+   "exit": 0,
+   "seconds": 15.65,
+   "what_it_did": "wrote one hidden ring instance into the store (three times in all: after each reset a new one)"
+  },
+  {
+   "n": 11,
+   "command": "2a_prove",
+   "output": [
+    "29.9.2"
+   ],
+   "ended_utc": "15:13:54",
+   "exit": 0,
+   "seconds": 0.08,
+   "what_it_did": "returned in 0.08 s with Docker's version; the tool ran on, detached"
+  },
+  {
+   "n": 12,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "containers:",
+    "processes:",
+    " 8754 <STUDY>/.venv/bin/python -B tools/prove.py --store <HOME>/physim2-pilot-20261110/sto ...",
+    " 8801 <STUDY>/.venv/bin/python <STUDY>/.venv/bin/vf-eval @ <HOME>/physim2-pilot-20261110/s ...",
+    "status done"
+   ],
+   "ended_utc": "15:14:02",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 13,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "containers:",
+    "vf-24ac70d96ded4f518a9fd45d9b3b5a9a Up 5 seconds",
+    "processes:",
+    " 8754 <STUDY>/.venv/bin/python -B tools/prove.py --store <HOME>/physim2-pilot-20261110/sto ...",
+    " 8801 <STUDY>/.venv/bin/python <STUDY>/.venv/bin/vf-eval @ <HOME>/physim2-pilot-20261110/s ...",
+    " 9268 <STUDY>/.venv/bin/python -m physim2_env.lab_tools ...",
+    "status done"
+   ],
+   "ended_utc": "15:14:19",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 14,
+   "command": "I2a_kill_term_tool",
+   "output": [],
+   "ended_utc": "15:14:25",
+   "exit": 0,
+   "seconds": 0.0,
+   "what_it_did": "INTERRUPTION 1 (the runbook's own point 2): SIGTERM to the tool's pid; the tool passed it on, vf-eval removed its container and stopped its laboratory; nothing was listed 4 s later; prove.log ended with KeyboardInterrupt and EXIT 130"
+  },
+  {
+   "n": 15,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "  File \"<STUDY>/tools/vfrun.py\", line 94, in on_term",
+    "    raise KeyboardInterrupt",
+    "KeyboardInterrupt",
+    "EXIT 130",
+    "containers:",
+    "processes:",
+    "status done"
+   ],
+   "ended_utc": "15:14:30",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 16,
+   "command": "I6_reset",
+   "output": [
+    "pilot folders reset"
+   ],
+   "ended_utc": "15:14:35",
+   "exit": 0,
+   "seconds": 0.01,
+   "what_it_did": "deleted the two pilot folders (inside the rehearsal's scratch) and recreated scratch"
+  },
+  {
+   "n": 17,
+   "command": "1h_make_instances",
+   "output": [
+    "{\"instance_id\": \"mac-ring-w0\", \"secret_commitment\": \"a89360dd4691cba00ba4de8d28a2ed64abd030e13c8b66c0d00b8498cf85a166\", \"n_items\": 64, \"R\": 16, \"seconds\": 4.8}"
+   ],
+   "ended_utc": "15:14:49",
+   "exit": 0,
+   "seconds": 14.38,
+   "what_it_did": "wrote one hidden ring instance into the store (three times in all: after each reset a new one)"
+  },
+  {
+   "n": 18,
+   "command": "2a_prove",
+   "output": [
+    "29.9.2"
+   ],
+   "ended_utc": "15:14:49",
+   "exit": 0,
+   "seconds": 0.06,
+   "what_it_did": "returned in 0.08 s with Docker's version; the tool ran on, detached"
+  },
+  {
+   "n": 19,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "containers:",
+    "processes:",
+    " 9753 <STUDY>/.venv/bin/python -B tools/prove.py --store <HOME>/physim2-pilot-20261110/sto ...",
+    "status done"
+   ],
+   "ended_utc": "15:14:54",
+   "exit": 0,
+   "seconds": 0.03,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 20,
+   "command": "DELIBERATE_SIGKILL",
+   "output": [],
+   "note": "DELIBERATE INTERRUPTION 15:15:15: kill -9 9827 (the rehearsal's own vf-eval, by its pid)",
+   "what_it_did": "INTERRUPTION 2, not a runbook command: the rehearsal's own vf-eval was killed with SIGKILL by its pid while the agent's box was up. Left: one container (Up), the laboratory process, EXIT 1 in prove.log, and two small folders (see left_behind)"
+  },
+  {
+   "n": 21,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "15:15:08    INFO interception pool: 1 server(s), multiplex=32",
+    "15:15:09    INFO docker: started container vf-5452e00c899644ed9c53060e1fcca80a (image=physim2-ring:1)",
+    "",
+    "EXIT 1",
+    "containers:",
+    "vf-5452e00c899644ed9c53060e1fcca80a Up 12 seconds",
+    "processes:",
+    "10288 <STUDY>/.venv/bin/python -m physim2_env.lab_tools ...",
+    "status done"
+   ],
+   "ended_utc": "15:15:21",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 22,
+   "command": "I3a_docker_rm_exact",
+   "output": [
+    "vf-5452e00c899644ed9c53060e1fcca80a"
+   ],
+   "ended_utc": "15:15:28",
+   "exit": 0,
+   "seconds": 0.21,
+   "what_it_did": "removed the one leftover container by its exact name"
+  },
+  {
+   "n": 23,
+   "command": "I4a_kill_term_lab",
+   "output": [],
+   "ended_utc": "15:15:28",
+   "exit": 0,
+   "seconds": 0.0,
+   "what_it_did": "stopped the leftover laboratory process by its pid (SIGTERM)"
+  },
+  {
+   "n": 24,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "15:15:08    INFO interception pool: 1 server(s), multiplex=32",
+    "15:15:09    INFO docker: started container vf-5452e00c899644ed9c53060e1fcca80a (image=physim2-ring:1)",
+    "",
+    "EXIT 1",
+    "containers:",
+    "processes:",
+    "status done"
+   ],
+   "ended_utc": "15:15:31",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 25,
+   "command": "I6_reset",
+   "output": [
+    "pilot folders reset"
+   ],
+   "ended_utc": "15:15:47",
+   "exit": 0,
+   "seconds": 0.01,
+   "what_it_did": "deleted the two pilot folders (inside the rehearsal's scratch) and recreated scratch"
+  },
+  {
+   "n": 26,
+   "command": "1h_make_instances",
+   "output": [
+    "{\"instance_id\": \"mac-ring-w0\", \"secret_commitment\": \"651bee7841a6bd41057a443928b6198e62c95040a8741bea675f3eeccf144318\", \"n_items\": 64, \"R\": 16, \"seconds\": 5.0}"
+   ],
+   "ended_utc": "15:16:02",
+   "exit": 0,
+   "seconds": 14.91,
+   "what_it_did": "wrote one hidden ring instance into the store (three times in all: after each reset a new one)"
+  },
+  {
+   "n": 27,
+   "command": "2a_prove",
+   "output": [
+    "29.9.2"
+   ],
+   "ended_utc": "15:16:02",
+   "exit": 0,
+   "seconds": 0.08,
+   "what_it_did": "returned in 0.08 s with Docker's version; the tool ran on, detached"
+  },
+  {
+   "n": 28,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "C (one box per item, world 0): 0.909 (450s)",
+    "{\"O\": 1.0998, \"K\": 0.0, \"D\": 0.5175, \"P0\": 0.8956, \"C\": 1.0}",
+    "{\"sigma\": 0.10444389900236241, \"null_is\": \"P0\", \"rho\": null, \"sigma_worlds\": null, \"rho_worlds\": null}",
+    "EXIT 0",
+    "containers:",
+    "processes:",
+    "status done"
+   ],
+   "ended_utc": "15:23:53",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 29,
+   "command": "2a_check",
+   "output": [
+    "all_graded True all_ok True failed_items 0",
+    "ticks {'D': 392, 'P0': 0, 'C': 0}",
+    "layers {'D': {'rlimits': True, 'uid': 36073, 'cleanup': True}, 'P0': {'rlimits': True, 'uid': 21559, 'cleanup': True}, 'C': {'rlimits': True, 'uid': 48975, 'cleanup': True}}",
+    "box True 64 0 2.68",
+    "table {'O': 1.1, 'K': 0.0, 'D': 0.518, 'P0': 0.896, 'C': 1.0}"
+   ],
+   "ended_utc": "15:23:57",
+   "exit": 0,
+   "seconds": 0.03,
+   "what_it_did": "printed the five lines the runbook expects"
+  },
+  {
+   "n": 30,
+   "command": "2b_probe",
+   "output": [
+    "29.9.2"
+   ],
+   "ended_utc": "15:24:02",
+   "exit": 0,
+   "seconds": 0.07,
+   "what_it_did": "returned at once; 37 rollouts in 1,291 s"
+  },
+  {
+   "n": 31,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "C (one box per item, world 0): 0.909 (450s)",
+    "{\"O\": 1.0998, \"K\": 0.0, \"D\": 0.5175, \"P0\": 0.8956, \"C\": 1.0}",
+    "{\"sigma\": 0.10444389900236241, \"null_is\": \"P0\", \"rho\": null, \"sigma_worlds\": null, \"rho_worlds\": null}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/probe.log <==",
+    "{\"instance_id\": \"probe-ring-w0\", \"secret_commitment\": \"dbf69683bcf035b151be8ce1b965983030b8c13c67813099ff236f57375833aa\", \"n_items\": 8, \"R\": 4, \"seconds\": 4.4}",
+    "containers:",
+    "processes:",
+    " 6900 <STUDY>/.venv/bin/python -B tools/check_probe.py --store <HOME>/physim2-pilot-202611 ...",
+    " 6913 <STUDY>/.venv/bin/python -B <STUDY>/tools/make_instances.py --store <HOME>/physim2-p ...",
+    "status done"
+   ],
+   "ended_utc": "15:24:22",
+   "exit": 0,
+   "seconds": 0.05,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 32,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "C (one box per item, world 0): 0.909 (450s)",
+    "{\"O\": 1.0998, \"K\": 0.0, \"D\": 0.5175, \"P0\": 0.8956, \"C\": 1.0}",
+    "{\"sigma\": 0.10444389900236241, \"null_is\": \"P0\", \"rho\": null, \"sigma_worlds\": null, \"rho_worlds\": null}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/probe.log <==",
+    "harness-killall: graded=False ok=False reward=0.000 (1276s)",
+    "harness-killall-again: graded=False ok=False reward=0.000 (1291s)",
+    "{\"n_checks_round5\": 34, \"n_reproduced\": 32, \"failed_round5\": [], \"n_checks_new\": 65, \"n_passed_new\": 65, \"failed_new\": []}",
+    "EXIT 0",
+    "containers:",
+    "processes:",
+    "status done"
+   ],
+   "ended_utc": "15:45:46",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 33,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "C (one box per item, world 0): 0.909 (450s)",
+    "{\"O\": 1.0998, \"K\": 0.0, \"D\": 0.5175, \"P0\": 0.8956, \"C\": 1.0}",
+    "{\"sigma\": 0.10444389900236241, \"null_is\": \"P0\", \"rho\": null, \"sigma_worlds\": null, \"rho_worlds\": null}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/probe.log <==",
+    "harness-killall: graded=False ok=False reward=0.000 (1276s)",
+    "harness-killall-again: graded=False ok=False reward=0.000 (1291s)",
+    "{\"n_checks_round5\": 34, \"n_reproduced\": 32, \"failed_round5\": [], \"n_checks_new\": 65, \"n_passed_new\": 65, \"failed_new\": []}",
+    "EXIT 0",
+    "containers:",
+    "processes:",
+    "status done"
+   ],
+   "ended_utc": "15:45:56",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 34,
+   "command": "2b_report",
+   "output": [
+    "round5 32 of 34 [] new 65 of 65 []",
+    "staging {'container_evidence': ['/.dockerenv', '/proc/1/cgroup'], 'world_writable_paths_fixed': 0, 'box_limits': {'pids_max': 'max', 'memory_max': '8589934592'}, 'predictor_uid': 56291}",
+    "control REACHED {'control': 1, 'during_box_runs': 0}",
+    "agent box net {'public_tcp': 'ConnectionRefusedError', 'public_tcp_443': 'ConnectionRefusedError', 'dns': 'gaierror', 'host_addresses_tried': 1, 'host_listener': 'ConnectionRefusedError', 'lab': 'HTTP 400', 'proxy_public': 'HTTP 403', 'proxy_host_listener': 'HTTP 403'}",
+    "item box net {'public_tcp': ['ConnectionRefusedError'], 'public_tcp_443': ['ConnectionRefusedError'], 'dns': ['gaierror'], 'host_addresses_tried': [1], 'host_listener': ['ConnectionRefusedError'], 'lab': ['URLError'], 'proxy_public': ['no proxy'], 'proxy_host_listener': ['no proxy']}",
+    "lab env {'token_values_left_in_environ': False, 'token_like_names_left_in_os_environ': []}",
+    "channels [False, False, False, False, False, False, False, False] [[], [], [], [], [], [], [], []] [0, 0, 0, 0, 0, 0, 0, 0] [-1, 3, -1, 1, -1, 1, 0]",
+    "kill in box {'graded': False, 'trace_ok': False, 'errors': ['HarnessError'], 'script_exit_code': 137} wall_s 1291"
+   ],
+   "ended_utc": "15:45:56",
+   "exit": 0,
+   "seconds": 0.03,
+   "what_it_did": "printed the report lines"
+  },
+  {
+   "n": 35,
+   "command": "2c_single_cloud_shim",
+   "output": [
+    "29.9.2"
+   ],
+   "ended_utc": "15:46:05",
+   "exit": 0,
+   "seconds": 0.08,
+   "what_it_did": "returned at once; one rollout in 3.5 minutes (DEVIATION 4: the IPv6 shim on PATH)"
+  },
+  {
+   "n": 36,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "C (one box per item, world 0): 0.909 (450s)",
+    "{\"O\": 1.0998, \"K\": 0.0, \"D\": 0.5175, \"P0\": 0.8956, \"C\": 1.0}",
+    "{\"sigma\": 0.10444389900236241, \"null_is\": \"P0\", \"rho\": null, \"sigma_worlds\": null, \"rho_worlds\": null}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/probe.log <==",
+    "harness-killall: graded=False ok=False reward=0.000 (1276s)",
+    "harness-killall-again: graded=False ok=False reward=0.000 (1291s)",
+    "{\"n_checks_round5\": 34, \"n_reproduced\": 32, \"failed_round5\": [], \"n_checks_new\": 65, \"n_passed_new\": 65, \"failed_new\": []}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/single.log <==",
+    "15:46:18    INFO rollout start: id=e9554482d83e4714a2d30a1c214f89b6 task=0 harness=physim2-script runtime=docker"
+   ],
+   "ended_utc": "15:46:21",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 37,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "C (one box per item, world 0): 0.909 (450s)",
+    "{\"O\": 1.0998, \"K\": 0.0, \"D\": 0.5175, \"P0\": 0.8956, \"C\": 1.0}",
+    "{\"sigma\": 0.10444389900236241, \"null_is\": \"P0\", \"rho\": null, \"sigma_worlds\": null, \"rho_worlds\": null}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/probe.log <==",
+    "harness-killall: graded=False ok=False reward=0.000 (1276s)",
+    "harness-killall-again: graded=False ok=False reward=0.000 (1291s)",
+    "{\"n_checks_round5\": 34, \"n_reproduced\": 32, \"failed_round5\": [], \"n_checks_new\": 65, \"n_passed_new\": 65, \"failed_new\": []}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/single.log <==",
+    "  \"num_output_tokens\": 0,"
+   ],
+   "ended_utc": "15:49:38",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 38,
+   "command": "2c_report",
+   "output": [
+    "{\"1_ok\": true, \"1_reward_present\": true, \"2_network_restricted\": true, \"2_verifier_box_network_restricted\": true, \"2_single_use\": true, \"2_item_isolation\": \"box\", \"3_lab\": {\"ticks_used\": 392, \"resets\": 8, \"requests\": 29, \"rejected\": 0, \"validations\": 1, \"submissions\": 1, \"infrastructure_errors\": 0}, \"4_submission_source\": \"agent_submission\", \"4_stop_condition\": \"agent_completed\", \"5_validation_ok\""
+   ],
+   "ended_utc": "15:49:38",
+   "exit": 0,
+   "seconds": 0.04,
+   "what_it_did": "printed fixed fields and counts"
+  },
+  {
+   "n": 39,
+   "command": "2_status",
+   "output": [
+    "==> <HOME>/physim2-pilot-20261110/scratch/prove.log <==",
+    "C (one box per item, world 0): 0.909 (450s)",
+    "{\"O\": 1.0998, \"K\": 0.0, \"D\": 0.5175, \"P0\": 0.8956, \"C\": 1.0}",
+    "{\"sigma\": 0.10444389900236241, \"null_is\": \"P0\", \"rho\": null, \"sigma_worlds\": null, \"rho_worlds\": null}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/probe.log <==",
+    "harness-killall: graded=False ok=False reward=0.000 (1276s)",
+    "harness-killall-again: graded=False ok=False reward=0.000 (1291s)",
+    "{\"n_checks_round5\": 34, \"n_reproduced\": 32, \"failed_round5\": [], \"n_checks_new\": 65, \"n_passed_new\": 65, \"failed_new\": []}",
+    "EXIT 0",
+    "",
+    "==> <HOME>/physim2-pilot-20261110/scratch/single.log <==",
+    "  \"num_output_tokens\": 0,"
+   ],
+   "ended_utc": "15:50:08",
+   "exit": 0,
+   "seconds": 0.05,
+   "what_it_did": "listed the pilot's logs, containers and processes"
+  },
+  {
+   "n": 40,
+   "command": "4_copy_delete",
+   "output": [
+    "probe.log",
+    "probe_mac.json",
+    "proof_mac.json",
+    "proof_mac_items.npz",
+    "prove.log"
+   ],
+   "ended_utc": "15:50:08",
+   "exit": 0,
+   "seconds": 0.12,
+   "what_it_did": "copied five result files to <HOME>/physim2-pilot-20261110-results, deleted store and scratch, removed the pilot folder"
+  },
+  {
+   "n": 41,
+   "command": "4_docker",
+   "output": [
+    "0",
+    "physim2-ring:1 562MB",
+    "localhost/verifiers-network:1 131MB",
+    "python:3.12-slim 119MB"
+   ],
+   "ended_utc": "15:50:08",
+   "exit": 0,
+   "seconds": 0.05,
+   "what_it_did": "0 containers of the pilot; the three images as before"
+  }
+ ]
+}
