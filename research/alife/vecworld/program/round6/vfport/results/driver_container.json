@@ -1,0 +1,472 @@
+{
+ "where": "inside `docker run --rm --network none physim2-ring:1` (nothing of this ran on the host)",
+ "n_checks": 19,
+ "n_passed": 19,
+ "failed": [],
+ "checks": {
+  "guard_refuses_no_marker": true,
+  "guard_refuses_marker_owned_by_the_predictor_uid": true,
+  "guard_refuses_marker_writable_by_others": true,
+  "guard_refuses_marker_directory_is_a_link": true,
+  "guard_refuses_no_route_variable": true,
+  "guard_refuses_wrong_route_variable": true,
+  "guard_refuses_uid_0": true,
+  "guard_refuses_uid_is_not_the_box_predictor_uid": true,
+  "guard_refuses_uid_below_1000": true,
+  "guard_refuses_no_sign_of_a_container_simulated": true,
+  "cleanup_with_every_layer_removes_the_predictor_uid": true,
+  "cleanup_leaves_another_uid_alone": true,
+  "driver_honest_predictor_runs_as_the_box_uid_with_cleanup": true,
+  "driver_returns_within_seconds_for_every_predictor": true,
+  "driver_named_pipe_or_link_is_never_a_reply": true,
+  "driver_never_returns_root_only_content": true,
+  "driver_box_clean_after_every_predictor": true,
+  "driver_without_route_variable_neither_drops_nor_cleans": true,
+  "driver_on_the_grading_route_refuses_and_runs_nothing_without_the_marker": true
+ },
+ "evidence": {
+  "no_marker": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "no marker (/etc/physim2/predictor_uid written by the environment's setup)"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "marker_owned_by_the_predictor_uid": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "no marker (/etc/physim2/predictor_uid written by the environment's setup)"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "marker_writable_by_others": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "no marker (/etc/physim2/predictor_uid written by the environment's setup)"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "marker_directory_is_a_link": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "no marker (/etc/physim2/predictor_uid written by the environment's setup)"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "no_route_variable": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "wrong_route_variable": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "uid_0": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "the target uid is 0 or not a uid"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "uid_is_not_the_box_predictor_uid": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "the target uid is not this box's predictor uid"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "uid_below_1000": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "the target uid is below 1000"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "no_sign_of_a_container_simulated": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "container_evidence": [
+   "/.dockerenv",
+   "/proc/1/cgroup"
+  ],
+  "all_layers": {
+   "report": {
+    "killed": 1,
+    "removed": 3,
+    "left_pids": [],
+    "left_files": []
+   },
+   "x_alive": false,
+   "x_files": [],
+   "y_alive": true,
+   "y_files": [
+    "/dev/shm",
+    "/tmp",
+    "/var/tmp"
+   ]
+  },
+  "driver": {
+   "honest": {
+    "returned": true,
+    "ok": true,
+    "why": null,
+    "stderr": "",
+    "layers": {
+     "rlimits": true,
+     "uid": 31001,
+     "cleanup": true
+    },
+    "driver_error": null,
+    "cleanup": {
+     "killed": 0,
+     "removed": 0,
+     "left_pids": [],
+     "left_files": []
+    },
+    "seconds": 0.35
+   },
+   "fifo_as_stderr": {
+    "returned": true,
+    "ok": false,
+    "why": "exit code 1",
+    "stderr": "",
+    "layers": {
+     "rlimits": true,
+     "uid": 31001,
+     "cleanup": true
+    },
+    "driver_error": null,
+    "cleanup": {
+     "killed": 0,
+     "removed": 0,
+     "left_pids": [],
+     "left_files": []
+    },
+    "seconds": 0.3
+   },
+   "fifo_as_reply": {
+    "returned": true,
+    "ok": false,
+    "why": "no reply file (not a regular file)",
+    "stderr": "",
+    "layers": {
+     "rlimits": true,
+     "uid": 31001,
+     "cleanup": true
+    },
+    "driver_error": null,
+    "cleanup": {
+     "killed": 0,
+     "removed": 0,
+     "left_pids": [],
+     "left_files": []
+    },
+    "seconds": 0.35
+   },
+   "link_as_stderr": {
+    "returned": true,
+    "ok": false,
+    "why": "exit code 1",
+    "stderr": "",
+    "layers": {
+     "rlimits": true,
+     "uid": 31001,
+     "cleanup": true
+    },
+    "driver_error": null,
+    "cleanup": {
+     "killed": 0,
+     "removed": 0,
+     "left_pids": [],
+     "left_files": []
+    },
+    "seconds": 0.36
+   },
+   "link_as_reply": {
+    "returned": true,
+    "ok": false,
+    "why": "no reply file (missing)",
+    "stderr": "",
+    "layers": {
+     "rlimits": true,
+     "uid": 31001,
+     "cleanup": true
+    },
+    "driver_error": null,
+    "cleanup": {
+     "killed": 0,
+     "removed": 0,
+     "left_pids": [],
+     "left_files": []
+    },
+    "seconds": 0.31
+   },
+   "moved_reply_directory": {
+    "returned": true,
+    "ok": false,
+    "why": "exit code 1",
+    "stderr": "",
+    "layers": {
+     "rlimits": true,
+     "uid": 31001,
+     "cleanup": true
+    },
+    "driver_error": null,
+    "cleanup": {
+     "killed": 0,
+     "removed": 3,
+     "left_pids": [],
+     "left_files": []
+    },
+    "seconds": 0.39
+   }
+  },
+  "driver_without_route_variable": {
+   "returned": true,
+   "ok": false,
+   "why": "exit code 1",
+   "stderr": "",
+   "layers": {
+    "rlimits": true,
+    "uid": null,
+    "cleanup": false,
+    "refused": [
+     "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+    ]
+   },
+   "driver_error": null,
+   "cleanup": {
+    "killed": null,
+    "removed": null,
+    "left_pids": null,
+    "left_files": null
+   },
+   "seconds": 0.32
+  },
+  "driver_with_route_variable_but_no_marker": {
+   "returned": true,
+   "ok": false,
+   "why": "driver error",
+   "stderr": "",
+   "layers": null,
+   "driver_error": "RuntimeError: refused: not a disposable box (no marker (/etc/physim2/predictor_uid written by the environment's setup))",
+   "cleanup": {
+    "killed": null,
+    "removed": null,
+    "left_pids": null,
+    "left_files": null
+   },
+   "seconds": 0.12
+  }
+ }
+}

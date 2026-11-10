@@ -1,8 +1,9 @@
 """make_summary -- results/summary.json: every number of this study with the file and key it comes from.
 
-Reads results/proof_ring.json and results/probe_ring.json (this study), round 5's agentenv/results/proof_ring.json
-and probe_ring.json (the references to reproduce), counts lines, asks Docker for the image sizes.
-usage: python tools/make_summary.py
+Reads results/proof_ring.json, probe_ring.json, units.json, units_before_fix.json, driver_container.json and
+recomputed_table.json (this study), round 5's agentenv/results/proof_ring.json and probe_ring.json (the references
+to reproduce), the red team's results, counts lines, asks Docker for the image sizes.
+usage: python tools/make_summary.py [--store DIR --scratch DIR]    (with the store: scan for hidden values)
 """
 import json
 import os
@@ -71,15 +72,18 @@ def main():
     ref = json.load(open(os.path.join(AE, "results", "proof_ring.json")))
     probe = json.load(open(os.path.join(ROOT, "results", "probe_ring.json")))
     probe5 = json.load(open(os.path.join(AE, "results", "probe_ring.json")))
-    S = {"study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment", "written_unix": time.time(),
-         "PILOT_NEVER_REUSE_AS_EXAM": True,
+    R = lambda f: json.load(open(os.path.join(ROOT, "results", f))) if os.path.exists(os.path.join(ROOT, "results", f)) else None  # noqa: E731
+    head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    dirty = subprocess.run(["git", "status", "--porcelain", "--", "physim2_env", "physim2_script", "agents", "tools"], cwd=ROOT, capture_output=True,
+                           text=True).stdout.strip()
+    S = {"study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment (after the fixes to the two reviews)",
+         "written_unix": time.time(), "PILOT_NEVER_REUSE_AS_EXAM": True,
          "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model "
                          "call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). "
                          "Nothing was run on a Mac.",
-         "code_versions": {"results/proof_ring.json": "package code of commit f12158bb0 (tools of 741d8d7c6)",
-                           "results/probe_ring.json and results/gliders_smoke_D.json": "package code of the final commit; it differs from "
-                           "the proof's by one branch of the reward (an explicit reason when the reward runs outside the isolated grader), "
-                           "which no run took"},
+         "code_versions": {"all results of this file except gliders_smoke": f"package, agents and tools of commit {head}"
+                           + (" plus uncommitted changes" if dirty else "") + " (the commit that precedes the one carrying these results)",
+                           "builder's results": "replaced; the builder's numbers are in the history of this file (commit e4a30854d)"},
          "sources": {"ours_table": "results/proof_ring.json", "round5_table": R5 + "proof_ring.json",
                      "ours_probe": "results/probe_ring.json", "round5_probe": R5 + "probe_ring.json"}}
 
@@ -118,9 +122,20 @@ def main():
     d = [abs(r["reward_skill_vs_O"] - w["table"]["policies"][p]["vs_O"]) for w in ours["per_world"] for p, r in w["rollouts"].items()]
     S["ring_table"]["reward_equals_table"] = {"what": "trace reward (rewards.skill) against per_world[w].table.policies[p].vs_O, 24 rollouts",
                                               "max_abs_difference": float(max(d))}
+    S["ring_table"]["grading_mode"] = ours.get("grading_mode")
+    S["ring_table"]["recomputed_from_per_item_scores"] = dict(R("recomputed_table.json") or {}, what="tools/recompute_table.py: numpy only, from "
+                                                              "results/proof_ring_items.npz, no store, no vw library") or None
+    S["one_box_per_item"] = {"source_key": "results/proof_ring.json:one_box_per_item_check_world_0",
+                             "what": "the taskset's default grading mode (a fresh container per exam item, provisioned through verifiers) on the "
+                                     "first world: the same frozen submission must get the same per-item scores as with all items in one box",
+                             "checks": ours.get("one_box_per_item_check_world_0")}
+    S["failed_item_is_K_counterfactual"] = dict(ours.get("failed_item_is_K_counterfactual") or {}, source_key="results/proof_ring.json:failed_item_is_K_counterfactual")
     old = os.path.join(ROOT, "results", "summary.json")
-    prev = json.load(open(old)).get("hidden_value_scan") if os.path.exists(old) else None
+    prev_all = json.load(open(old)) if os.path.exists(old) else {}
+    prev = prev_all.get("hidden_value_scan")
     S["hidden_value_scan"] = scan_for_hidden(a.store, a.scratch) if a.store and a.scratch else prev
+    if prev_all.get("checker") or prev_all.get("checker_of_the_builders_version"):
+        S["checker_of_the_builders_version"] = prev_all.get("checker") or prev_all.get("checker_of_the_builders_version")
 
     # ---- boundary checks and probes ----
     ev = probe["evidence"]
@@ -137,7 +152,59 @@ def main():
         "probe_c_network": {"control_uncut_container": ev["c_control"], "agent_box": ev["c_agent_box_net"],
                             "verifier_box_all_items": ev["c_verifier_box_net_all_items"], "host_listener_hits": ev["c_listener_hits"]},
         "probe_d_no_ungraded_rollout": {"defensive_collection": {m: {k: h[k] for k in ("graded", "reward", "n_failed", "n_items", "reason")} for m, h in ev["d_hostile"].items()},
-                                        "control_verifiers_default_collection": ev.get("d_control_default_collection")}}
+                                        "control_verifiers_default_collection": ev.get("d_control_default_collection")},
+        "probe_a2_state_of_a_box": {"one_box_per_item": ev.get("a2_channels_one_box_per_item"), "all_items_in_one_box": ev.get("a2_channels_all_items_in_one_box"),
+                                    "grade": ev.get("a2_grade")},
+        "probe_e_trusted_validation": ev.get("e_reports"),
+        "probe_f_replies": {"grades": ev.get("f_grades"), "first_error": ev.get("f_first_error")},
+        "probe_h_harness_dies": ev.get("h_harness_dies")}
+    # ---- the offline checks and the host-safety checks ----
+    u, ub, dc = R("units.json"), R("units_before_fix.json"), R("driver_container.json")
+    S["unit_checks"] = {"source": "results/units.json (fixed code), results/units_before_fix.json (the builder's code, the same script)",
+                        "fixed": None if not u else {k: u[k] for k in ("n_checks", "n_passed", "failed")},
+                        "builders_code": None if not ub else {k: ub[k] for k in ("n_checks", "n_passed", "failed")}}
+    S["host_safety"] = {
+        "incident": {
+            "when": "10 Nov 2026, about 04:31 to 04:34 UTC, in the cloud container",
+            "what_ran": "the first version of tools/check_units.py started physim2_env/public/_item.py (the one-request driver) as root ON THE HOST, "
+                        "outside any container, 14 times (7 test predictors, against the fixed and against the builder's package)",
+            "what_it_did": "the driver's cleanup did on the host what it does in a box: SIGKILL to every process of uid 1000 and deletion of every "
+                           "file owned by uid 1000 on the writable file systems (/ and /var/lib/docker)",
+            "known_loss": "/home/ubuntu, the home directory of the unused default account (recreated from /etc/skel; its earlier content is "
+                          "not known). The coordinator found no tracked file missing in the checkouts and worktrees; the Python environments "
+                          "import; the three Docker images run. Sessions here run as root and own their files as root.",
+            "cause": "the driver decided to drop privileges and to clean up from `euid == 0` alone; nothing told it that it was not in a box",
+            "reported": "to the coordinator's channel at 04:34:53 UTC"},
+        "fix": "physim2_env/public/_item.py: every function that kills, deletes or changes modes (kill_user, wipe_user, ipc_user, cleanup, "
+               "as_user, the fixing part of scan, the uid drop of run) asks require_box(uid) first, which needs ALL of: the marker "
+               "/etc/physim2/predictor_uid (root-owned, written by the environment's setup), a sign of a container (/.dockerenv, "
+               "/run/.containerenv or the control group of pid 1), the variable PHYSIM2_BOX_CLEANUP=disposable-box (set only on the grading "
+               "route's own commands), and a target uid that equals the marker's, is at least 1000 and is neither 0 nor the caller's. "
+               "physim2_env/grading.py: require_container(runtime) before every command sent through a verifiers Runtime (never the "
+               "subprocess runtime). tools/vfrun.py: a run directory is replaced only if it holds nothing but vf-eval's own files. "
+               "tools/check_units.py: refuses to start outside the build container; the real cleanup is tested in a throwaway container only.",
+        "tests_on_the_host": None if not u else {
+            "source": "results/units.json: checks guard_*, evidence.guard_pure, .guard_on_this_machine, .guard_tripwires",
+            "checks": {k: v for k, v in u["checks"].items() if k.startswith("guard_")},
+            "this_machine": u["evidence"].get("guard_on_this_machine"),
+            "how": "every killing or deleting function is called with the route variable set; os.kill, os.fork, os.setuid, os.unlink, os.chmod, "
+                   "os.chown and shutil.rmtree are replaced by tripwires meanwhile, so even a broken guard could do nothing",
+            "the_builders_code_under_the_same_tripwires": None if not ub else ub["evidence"].get("guard_tripwires")},
+        "tests_in_a_throwaway_container": None if not dc else {"source": "results/driver_container.json", "where": dc["where"],
+                                                              "n_checks": dc["n_checks"], "n_passed": dc["n_passed"], "failed": dc["failed"],
+                                                              "checks": dc["checks"]}}
+    # ---- the red team's attacks, run again through the route after the fixes ----
+    rt = {}
+    for nm in ("overflow", "fifo", "hostile-exit1"):
+        f = os.path.join(ROOT, "redteam", "results", f"{nm}-after-fix.json")
+        if os.path.exists(f):
+            x = json.load(open(f))
+            ro = x.get("rollout", {})
+            rt[nm] = {"source": f"redteam/results/{nm}-after-fix.json", "wall_s": x.get("wall_s"), "graded": ro.get("graded"),
+                      "reward_raw_in_trace": ro.get("reward_raw_in_trace"), "errors": ro.get("errors"),
+                      "grade": {k: (ro.get("grade") or {}).get(k) for k in ("n_items", "n_failed", "reason", "skill_vs_O")},
+                      "before_the_fix": f"redteam/results/{nm}.json"}
+    S["red_team_attacks_after_the_fix"] = rt or None
 
     # ---- gliders: loadable, one rollout ----
     gf = os.path.join(ROOT, "results", "gliders_smoke_D.json")
@@ -170,6 +237,7 @@ def main():
     total = int(subprocess.run("git ls-files . ':!results' | xargs cat | wc -l", shell=True, cwd=AE, capture_output=True, text=True).stdout or 0)
     pkg = sorted(os.path.join(ROOT, d, f) for d in ("physim2_env", os.path.join("physim2_env", "public"), "physim2_script")
                  for f in os.listdir(os.path.join(ROOT, d)) if f.endswith(".py"))
+    S["boundary_checks"]["grading_mode_of_the_probes"] = "the taskset's default: one fresh box per exam item (probe-grading-shared and the cleanup-off control: one box)"
     tools = sorted(os.path.join(ROOT, "tools", f) for f in os.listdir(os.path.join(ROOT, "tools")) if f.endswith(".py")) \
         + [os.path.join(ROOT, "tools", "docker_shim", "docker")]
     agents = sorted(os.path.join(ROOT, "agents", f) for f in os.listdir(os.path.join(ROOT, "agents")) if f.endswith(".py"))
@@ -186,13 +254,16 @@ def main():
         "kept_by_import": {"lines": total - sum(dropped.values()) - sum(wrapped.values()),
                            "copied_verbatim": "32 lines (evaluator/submission.py:94-125) into physim2_env/public/validate.py; nothing else is copied"},
         "new": dict(new, totals={k: sum(v.values()) for k, v in new.items()}, total=sum(sum(v.values()) for v in new.values())),
-        "memo_estimates": {"drop": 760, "wrap": 530, "keep": 2370, "new_including_sealer": 750, "scripted_harness": 60}}
+        "memo_estimates": {"drop": 760, "wrap": 530, "keep": 2370, "new_including_sealer": 750, "scripted_harness": 60},
+        "red_team_scripts_not_counted": "redteam/ (the red team's attack scripts, kept as they were; rt_run.py got one line for agent_key)"}
 
     # ---- images ----
     out = subprocess.run(["docker", "images", "--format", "{{.Repository}}:{{.Tag}} {{.Size}}"], capture_output=True, text=True).stdout.split("\n")
     df = subprocess.run(["docker", "system", "df", "--format", "{{.Type}} {{.Size}}"], capture_output=True, text=True).stdout.split("\n")
     S["docker"] = {"images": [x for x in out if x], "system_df": [x for x in df if x], "source": "docker images / docker system df at summary time",
                    "server": ours["platform"].get("docker"), "note": "classic image store (dockerd --feature containerd-snapshotter=false)"}
+    if "gliders_smoke" in S:
+        S["gliders_smoke"]["code"] = (R("gliders_smoke_D.json") or {}).get("grading_mode") and "fixed code" or "the builder's code (not run again after the fixes)"
     json.dump(S, open(os.path.join(ROOT, "results", "summary.json"), "w"), indent=1)
     print(json.dumps({p: {k: (round(v[k], 3) if isinstance(v[k], float) else v[k]) for k in ("ours_vs_C", "round5_vs_C", "z")} for p, v in tab.items()}))
     print(json.dumps(S["ring_table"]["acceptance"]))

@@ -6,25 +6,51 @@ Worktree `/home/user/wt/vfportfix` (branch wt-vfportfix, pushes to `claude/fisim
 Scratch `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfport/fix/`. Venv: the builder's
 `/home/user/evalwork/vfport/.venv`. Docker daemon was found running (classic image store), images kept.
 
-### Plan (finding -> fix), status in brackets
-- S1 duplicate / colliding / over-long tar members end a rollout ungraded -> freeze refuses them, finalize runs
-  verifiers' own restore check inside its try, new hostile agents [todo]
-- S2 = R2 state between items (timestamps, PID counter; also kernel counters of the shared box) -> a FRESH verifier
-  box per item through verifiers' `provision_runtime` (default), the shared box stays as a pilot mode [todo]
-- S3 the trusted side no longer validates -> the three public example calls run in the verifier box before item 1,
-  round 5's rule (invalid = K); the tool ops validate/submit run the in-box validator through the controller [todo]
-- R1 float64 reply overflows the score -> strict reply reader (float32, exact members), non-finite score = failed [todo]
-- R3 FIFO as stderr.txt hangs grading -> non-blocking regular-file reads through a directory fd, per-item timeout [todo]
-- R4 harness exit leaves no grade -> single_use on by default (keyed by agent), tools/settle.py records K [todo]
-- R5 many-member reply -> members capped at the levels, bounded bytes [todo]
-- R6 shared uid 1000 -> random uid per verifier box [todo]
-- R7 no PID / disk limit -> operator setting, recorded per box, Open holes [todo]
-- R8 crash returns K -> lead's decision, measured, Open holes [todo]
-- R9, S4-S9 minors [todo]
+### INCIDENT (10 Nov 2026, about 04:31-04:34 UTC) -- read this first
+- What ran: the first version of my `tools/check_units.py` started `physim2_env/public/_item.py` (the one-request
+  driver) as root ON THE HOST of this cloud container, outside any container.
+- What it did: the driver's cleanup did there what it does in a box: SIGKILL to every process of uid 1000 and deletion
+  of every file owned by uid 1000 on the writable file systems (/ and /var/lib/docker).
+- Known loss: `/home/ubuntu` (home of the unused default account; recreated from /etc/skel, earlier content unknown).
+  Coordinator's check: no tracked file missing in the checkouts and worktrees, the Python environments import.
+- Reported on the coordinator's channel at 04:34:53. Fix (commit 7e034be18): `require_box(uid)` in the driver
+  (marker /etc/physim2/predictor_uid + container evidence + PHYSIM2_BOX_CLEANUP=disposable-box + the box's own uid,
+  never 0); `require_container(runtime)` before every runtime command; the real cleanup is tested only inside a
+  throwaway container (`tools/check_driver.py`); on the host only refusals are tested, under tripwires
+  (`tools/check_units.py`, checks `guard_*`). RUNBOOK_MAC.md is on HOLD until the coordinator's independent audit.
+
+### Done (code; commits c9eb105ac, 86c0d1bd2, 7e034be18 and later)
+- S1: `_rules.freeze` refuses duplicate members, file/directory collisions, paths over 1024 bytes, more than 20,000
+  members; skips names with control characters or undecodable bytes; `finalize` runs verifiers' `_validate_restore`
+  inside its try. Hostile agents tar_duplicate, tar_collision, tar_longpath.
+- S2 = R2: `item_isolation = "box"` (default): one fresh container per exam item through verifiers'
+  `provision_runtime` with the verifier box's config (`grading.fresh_box`); `"shared"` = one box, pilot mode, marked
+  in the trace. Probe (a2) measures four channels in both modes.
+- S3: `grading.validate` (round 5's three example calls) in the verifier box before item 1, invalid = K on every
+  item; tool ops validate/submit run the public validator in the agent's box through the controller
+  (`access.BoxAccess.check`), a failed submit freezes nothing.
+- R1, R5: `_rules.read_reply` strict (float32, level<l> members only, at most 16, bounded numbers, no allocation from
+  a declared size); a non-finite score is a failed item; the reward is always a finite number.
+- R3: the driver reads reply and error text through a directory handle, O_NOFOLLOW | O_NONBLOCK, regular files only;
+  worker-side timeout per request.
+- R4: `single_use` on by default, keyed by `agent_key` (default "<model>|<harness id>"); `tools/settle.py`.
+- R6: random predictor uid per rollout (20000-59999). R9: malformed inputs are format rejections, a rejected
+  experiment charges nothing; the final collection respects the submission cap.
+- S4: `results/proof_ring_items.npz` + `tools/recompute_table.py`. S6: single_use default. S7: the agent box CPU
+  counter is renamed `agent_box_cpu_s_unverified`. S8: allow-list for variables entering a box. S9: runbook.
+
+### Running (started 04:58 UTC): `<scratch>/run_all.sh`, log `<scratch>/run_all.log`
+units -> units_before -> driver (done, 67/67, 25/46 on the builder's code, 19/19) -> `tools/check_probe.py`
+(store2, probe2; resumable) -> `tools/prove.py --worlds 4` (store2, proof2; resumable). One process at a time.
 
 ### Next step (exact)
-- implement in physim2_env/public/_rules.py, _item.py, grading.py, taskset.py, lab_tools.py, access.py; then
-  tools/check_units.py (offline), tools/check_probe.py and tools/prove.py on Docker.
+1. When run_all is done: `V=/home/user/evalwork/vfport/.venv/bin/python; S=<scratch>; cd` to this folder with
+   `PYTHONPATH=$PWD OMP_NUM_THREADS=1`; `$V -B tools/recompute_table.py --out results/recomputed_table.json`;
+   red-team attacks again: `$V -B redteam/rt_run.py --store $S/store --scratch $S/rt --instance fx-ring-w0 --tag -after-fix overflow`
+   (then `fifo`, `hostile-exit1`); `$V -B tools/make_summary.py --store $S/store2 --scratch $S`.
+2. README.md (sections: findings table, Open holes, incident), then delete `$S/store`, `$S/store2` and run folders.
+3. If the container restarted: start dockerd (below), then `$S/run_all.sh` again (probe and proof resume; if the
+   scratch is gone, they start again from fresh instances).
 
 ---
 

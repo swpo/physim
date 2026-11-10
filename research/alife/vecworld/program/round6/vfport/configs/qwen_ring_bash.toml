@@ -1,7 +1,10 @@
 # ONE rollout of a cheap model on the ring smoke exam with the stock `bash` harness (a mechanics test, not a
 # measurement). Run from this folder with PHYSIM2_STORE set and Prime credentials in the environment:
 #   uv run --no-sync vf-eval @ configs/qwen_ring_bash.toml --no-rich
-# The caps below bound the spend whatever the model does: 40 turns, 1.5 M tokens in total, 60 k output tokens.
+# The caps below bound the spend whatever the model does: 40 turns, 1.5 M tokens in total, 60 k output tokens
+# (checked before each model call: the cap plus one request). Give -o a folder outside the checkout.
+# Defaults of the taskset that matter here: single_use = true (this model and harness can open the instance once),
+# item_isolation = "box" (every exam item is graded in a fresh container).
 model = "qwen/qwen3.5-35b-a3b"   # id checked against Prime's Models API on 16 Sep 2026 (coordinator's note)
 num_rollouts = 1
 max_concurrent = 1

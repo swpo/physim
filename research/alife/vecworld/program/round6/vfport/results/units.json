@@ -1,0 +1,673 @@
+{
+ "package_root": ".",
+ "n_checks": 67,
+ "n_passed": 67,
+ "failed": [],
+ "checks": {
+  "freeze_never_raises": true,
+  "freeze_output_always_passes_verifiers_restore_check_and_extracts": true,
+  "freeze_refuses_duplicate_file": true,
+  "freeze_refuses_duplicate_through_dot": true,
+  "freeze_refuses_file_and_directory_same_name": true,
+  "freeze_refuses_file_used_as_parent": true,
+  "freeze_refuses_path_5000_bytes": true,
+  "freeze_refuses_name_300_bytes": true,
+  "freeze_refuses_many_members": true,
+  "freeze_refuses_no_predict": true,
+  "freeze_refuses_predict_is_a_directory": true,
+  "freeze_refuses_truncated": true,
+  "freeze_refuses_garbage": true,
+  "freeze_refuses_none": true,
+  "freeze_keeps_the_rest_of_plain": true,
+  "freeze_keeps_the_rest_of_links_and_special_files": true,
+  "freeze_keeps_the_rest_of_control_character_name": true,
+  "freeze_keeps_the_rest_of_outside_root_and_dotdot": true,
+  "freeze_keeps_the_rest_of_pycache": true,
+  "freeze_keeps_the_rest_of_unicode_name": true,
+  "freeze_keeps_the_rest_of_undecodable_name": true,
+  "freeze_keeps_the_rest_of_file_below_a_link": true,
+  "freeze_plain_keeps_2_files": true,
+  "freeze_links_keeps_1_file": true,
+  "reply_good_accepted_and_equal": true,
+  "reply_refuses_float64": true,
+  "reply_refuses_overflow_float64": true,
+  "reply_refuses_many_members": true,
+  "reply_refuses_lying_header": true,
+  "reply_refuses_extra_member": true,
+  "reply_refuses_object_array": true,
+  "reply_refuses_not_a_zip": true,
+  "reply_refuses_empty": true,
+  "reply_refuses_four_axes": true,
+  "reply_refuses_too_many_values": true,
+  "reply_refuses_int_array": true,
+  "reply_refusals_hold_little_memory": true,
+  "report_ok_must_be_true_itself": true,
+  "report_keeps_typed_fields_only": true,
+  "report_garbage_is_a_failed_report": true,
+  "guard_allows_only_when_every_layer_is_present": true,
+  "guard_refuses_no_marker": true,
+  "guard_refuses_no_sign_of_a_container": true,
+  "guard_refuses_no_route_variable": true,
+  "guard_refuses_wrong_route_value": true,
+  "guard_refuses_uid_0": true,
+  "guard_refuses_uid_is_the_caller": true,
+  "guard_refuses_uid_is_not_the_box_predictor_uid": true,
+  "guard_refuses_uid_below_1000": true,
+  "guard_refuses_uid_not_a_number": true,
+  "guard_refuses_uid_true": true,
+  "guard_refuses_on_this_machine": true,
+  "guard_every_kill_and_delete_function_refuses_on_this_host": true,
+  "guard_scan_changes_no_mode_on_this_host": true,
+  "driver_returns_for_every_predictor": true,
+  "driver_fifo_or_link_is_never_a_reply": true,
+  "driver_does_not_follow_a_link_left_as_stderr": true,
+  "driver_honest_predictor_passes": true,
+  "worker_refuses_a_reply_written_past_the_runner": true,
+  "driver_on_a_host_did_not_drop_or_clean": true,
+  "score_of_float64_overflow_samples_is_not_finite": true,
+  "score_of_any_float32_reply_is_finite": true,
+  "score_extreme_float32_reply_is_worse_than_K": true,
+  "score_overflow_reply_is_refused_before_scoring": true,
+  "lab_malformed_requests_are_format_rejections_not_infrastructure_errors": true,
+  "lab_rejected_requests_charge_nothing": true,
+  "lab_good_experiment_still_runs": true
+ },
+ "evidence": {
+  "freeze": {
+   "plain": {
+    "refused": null,
+    "files": 2,
+    "skipped": 0,
+    "verifiers_restore_check": "passes",
+    "system_tar_exit": 0,
+    "predict_extracted": true
+   },
+   "duplicate_file": {
+    "refused": "submission archive names the same file twice",
+    "files": 0,
+    "skipped": null
+   },
+   "duplicate_through_dot": {
+    "refused": "submission archive names the same file twice",
+    "files": 0,
+    "skipped": null
+   },
+   "file_and_directory_same_name": {
+    "refused": "submission archive names one path as a file and as a directory",
+    "files": 0,
+    "skipped": null
+   },
+   "file_used_as_parent": {
+    "refused": "submission archive names one path as a file and as a directory",
+    "files": 0,
+    "skipped": null
+   },
+   "path_5000_bytes": {
+    "refused": "submission has a path longer than 1024 bytes (or a name longer than 255)",
+    "files": 0,
+    "skipped": null
+   },
+   "name_300_bytes": {
+    "refused": "submission has a path longer than 1024 bytes (or a name longer than 255)",
+    "files": 0,
+    "skipped": null
+   },
+   "depth_60": {
+    "refused": "submission has a path longer than 1024 bytes (or a name longer than 255)",
+    "files": 0,
+    "skipped": null
+   },
+   "control_character_name": {
+    "refused": null,
+    "files": 1,
+    "skipped": 2,
+    "verifiers_restore_check": "passes",
+    "system_tar_exit": 0,
+    "predict_extracted": true
+   },
+   "links_and_special_files": {
+    "refused": null,
+    "files": 1,
+    "skipped": 5,
+    "verifiers_restore_check": "passes",
+    "system_tar_exit": 0,
+    "predict_extracted": true
+   },
+   "file_below_a_link": {
+    "refused": null,
+    "files": 2,
+    "skipped": 1,
+    "verifiers_restore_check": "passes",
+    "system_tar_exit": 0,
+    "predict_extracted": true
+   },
+   "outside_root_and_dotdot": {
+    "refused": null,
+    "files": 1,
+    "skipped": 3,
+    "verifiers_restore_check": "passes",
+    "system_tar_exit": 0,
+    "predict_extracted": true
+   },
+   "pycache": {
+    "refused": null,
+    "files": 1,
+    "skipped": 1,
+    "verifiers_restore_check": "passes",
+    "system_tar_exit": 0,
+    "predict_extracted": true
+   },
+   "many_members": {
+    "refused": "submission has more than 20000 entries",
+    "files": 0,
+    "skipped": null
+   },
+   "no_predict": {
+    "refused": "submission has no predict.py",
+    "files": 0,
+    "skipped": 0
+   },
+   "predict_is_a_directory": {
+    "refused": "submission has no predict.py",
+    "files": 0,
+    "skipped": 0
+   },
+   "unicode_name": {
+    "refused": null,
+    "files": 2,
+    "skipped": 0,
+    "verifiers_restore_check": "passes",
+    "system_tar_exit": 0,
+    "predict_extracted": true
+   },
+   "truncated": {
+    "refused": "submission has no predict.py",
+    "files": 0,
+    "skipped": 0
+   },
+   "garbage": {
+    "refused": "unreadable submission archive",
+    "files": 0,
+    "skipped": null
+   },
+   "empty": {
+    "refused": "unreadable submission archive",
+    "files": 0,
+    "skipped": null
+   },
+   "none": {
+    "refused": "submission directory not found",
+    "files": 0,
+    "skipped": null
+   },
+   "undecodable_name": {
+    "refused": null,
+    "files": 1,
+    "skipped": 1,
+    "verifiers_restore_check": "passes",
+    "system_tar_exit": 0,
+    "predict_extracted": true
+   }
+  },
+  "reply": {
+   "good": {
+    "accepted": true,
+    "levels": [
+     1,
+     2
+    ],
+    "dtypes": [
+     "float64"
+    ],
+    "held_mib": 0.01,
+    "seconds": 0.001,
+    "rss_growth_mib": 0.0
+   },
+   "good_compressed": {
+    "accepted": true,
+    "levels": [
+     1,
+     2
+    ],
+    "dtypes": [
+     "float64"
+    ],
+    "held_mib": 0.01,
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "float64": {
+    "accepted": false,
+    "error": "ValueError: the reply is larger than the request allows",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "overflow_float64": {
+    "accepted": false,
+    "error": "ValueError: the reply is larger than the request allows",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "many_members": {
+    "accepted": false,
+    "error": "ValueError: the reply must hold one array per level (at most 16)",
+    "seconds": 0.006,
+    "rss_growth_mib": 0.0
+   },
+   "lying_header": {
+    "accepted": false,
+    "error": "ValueError: the reply is larger than the request allows",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "extra_member": {
+    "accepted": false,
+    "error": "ValueError: the reply's arrays must be named level<l>, one per level",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "not_a_zip": {
+    "accepted": false,
+    "error": "ValueError: the reply is not an .npz file",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "empty": {
+    "accepted": false,
+    "error": "ValueError: the reply is not an .npz file",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "four_axes": {
+    "accepted": false,
+    "error": "ValueError: level arrays must be C-ordered float32 with three axes (as predict_runner.py writes them); got float32 with 4 ",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "too_many_values": {
+    "accepted": false,
+    "error": "ValueError: the reply is larger than the request allows",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "int_array": {
+    "accepted": false,
+    "error": "ValueError: level arrays must be C-ordered float32 with three axes (as predict_runner.py writes them); got int32 with 3 ax",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   },
+   "object_array": {
+    "accepted": false,
+    "error": "ValueError: level arrays must be C-ordered float32 with three axes (as predict_runner.py writes them); got object with 1 a",
+    "seconds": 0.0,
+    "rss_growth_mib": 0.0
+   }
+  },
+  "report": {
+   "ok": false,
+   "stage": "<6000 characters>",
+   "note": "<4 characters>"
+  },
+  "guard_pure": {
+   "all_layers_present_is_allowed": true,
+   "no_marker": [
+    "no marker (/etc/physim2/predictor_uid written by the environment's setup)"
+   ],
+   "no_sign_of_a_container": [
+    "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)"
+   ],
+   "no_route_variable": [
+    "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+   ],
+   "wrong_route_value": [
+    "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+   ],
+   "uid_0": [
+    "the target uid is 0 or not a uid"
+   ],
+   "uid_is_the_caller": [
+    "the target uid is the caller's own"
+   ],
+   "uid_is_not_the_box_predictor_uid": [
+    "the target uid is not this box's predictor uid"
+   ],
+   "uid_below_1000": [
+    "the target uid is below 1000"
+   ],
+   "uid_not_a_number": [
+    "the target uid is 0 or not a uid"
+   ],
+   "uid_true": [
+    "the target uid is 0 or not a uid"
+   ]
+  },
+  "guard_on_this_machine": {
+   "container_evidence": [],
+   "marker_uid": null,
+   "route_variable_set": false,
+   "decisions": {
+    "1000": {
+     "ok": false,
+     "why": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    },
+    "0": {
+     "ok": false,
+     "why": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route",
+      "the target uid is 0 or not a uid"
+     ]
+    },
+    "31001": {
+     "ok": false,
+     "why": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    }
+   }
+  },
+  "guard_tripwires": {
+   "kill_user(1000)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "kill_user(0)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "kill_user(31001)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "wipe_user(1000)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "wipe_user(0)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "wipe_user(31001)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "ipc_user(1000)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "ipc_user(0)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "ipc_user(31001)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "cleanup(1000)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "cleanup(0)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "cleanup(31001)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "as_user(31001)": {
+    "outcome": "refused",
+    "destructive_calls_reached": []
+   },
+   "scan(31001)": {
+    "outcome": "returned",
+    "fixing": false,
+    "destructive_calls_reached": [],
+    "file_still_world_writable": true
+   }
+  },
+  "driver_host_guard": {
+   "euid": 0,
+   "driver_has_the_box_guard": true,
+   "driver_program_was_run_here": true
+  },
+  "driver": {
+   "fifo_as_stderr": {
+    "returned": true,
+    "ok": false,
+    "why": "exit code 1",
+    "stderr_tail": "",
+    "driver_error": null,
+    "layers": {
+     "rlimits": true,
+     "uid": null,
+     "cleanup": false,
+     "refused": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    },
+    "seconds": 0.23
+   },
+   "fifo_as_reply": {
+    "returned": true,
+    "ok": false,
+    "why": "no reply file (not a regular file)",
+    "stderr_tail": "",
+    "driver_error": null,
+    "layers": {
+     "rlimits": true,
+     "uid": null,
+     "cleanup": false,
+     "refused": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    },
+    "seconds": 0.17
+   },
+   "link_as_stderr": {
+    "returned": true,
+    "ok": false,
+    "why": "exit code 1",
+    "stderr_tail": "",
+    "driver_error": null,
+    "layers": {
+     "rlimits": true,
+     "uid": null,
+     "cleanup": false,
+     "refused": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    },
+    "seconds": 0.16
+   },
+   "link_as_reply": {
+    "returned": true,
+    "ok": false,
+    "why": "no reply file (missing)",
+    "stderr_tail": "",
+    "driver_error": null,
+    "layers": {
+     "rlimits": true,
+     "uid": null,
+     "cleanup": false,
+     "refused": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    },
+    "seconds": 0.16
+   },
+   "directory_as_reply": {
+    "returned": true,
+    "ok": false,
+    "why": "no reply file (not a regular file)",
+    "stderr_tail": "",
+    "driver_error": null,
+    "layers": {
+     "rlimits": true,
+     "uid": null,
+     "cleanup": false,
+     "refused": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    },
+    "seconds": 0.16
+   },
+   "float64_past_the_runner": {
+    "returned": true,
+    "ok": true,
+    "why": null,
+    "stderr_tail": "",
+    "driver_error": null,
+    "layers": {
+     "rlimits": true,
+     "uid": null,
+     "cleanup": false,
+     "refused": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    },
+    "worker_reads_reply": "refused: level arrays must be C-ordered float32 with three axes (as predict_runner.py wri",
+    "seconds": 0.17
+   },
+   "honest": {
+    "returned": true,
+    "ok": true,
+    "why": null,
+    "stderr_tail": "",
+    "driver_error": null,
+    "layers": {
+     "rlimits": true,
+     "uid": null,
+     "cleanup": false,
+     "refused": [
+      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+     ]
+    },
+    "worker_reads_reply": [
+     1,
+     2
+    ],
+    "seconds": 0.17
+   }
+  },
+  "score": {
+   "float64_overflow_samples": {
+    "finite_scores": 0,
+    "of": 448,
+    "minus_inf": 448,
+    "skill_vs_O_if_scored_as_is": "inf"
+   },
+   "largest_float32_samples": {
+    "finite_scores": 448,
+    "of": 448,
+    "skill_vs_O": "-2.4814982332849036e+38"
+   }
+  },
+  "lab": {
+   "inputs_strings": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 40",
+    "ticks": 0,
+    "resets": 0
+   },
+   "inputs_ragged": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 40",
+    "ticks": 0,
+    "resets": 0
+   },
+   "inputs_dict": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 40",
+    "ticks": 0,
+    "resets": 0
+   },
+   "inputs_null": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 40",
+    "ticks": 0,
+    "resets": 0
+   },
+   "experiment_scalar_inputs": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 40",
+    "ticks": 0,
+    "resets": 0
+   },
+   "experiment_bool_n": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: n must be an integer in [1, 4096]",
+    "ticks": 0,
+    "resets": 0
+   },
+   "experiment_float_n": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: n must be an integer in [1, 4096]",
+    "ticks": 0,
+    "resets": 0
+   },
+   "experiment_width": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 40",
+    "ticks": 0,
+    "resets": 0
+   },
+   "experiment_strings": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 40",
+    "ticks": 0,
+    "resets": 0
+   },
+   "experiment_no_block": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: n must be an integer in [1, 4096]",
+    "ticks": 0,
+    "resets": 0
+   },
+   "validate_int_path": {
+    "ok": false,
+    "kind": "request",
+    "error": "format: path must be a string",
+    "ticks": 0,
+    "resets": 0
+   },
+   "experiment_ok": {
+    "ok": true,
+    "rows": 3
+   }
+  }
+ },
+ "hidden_values_in_this_file": "none",
+ "PILOT_NEVER_REUSE_AS_EXAM": true
+}
