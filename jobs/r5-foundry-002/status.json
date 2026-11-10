@@ -17,10 +17,20 @@
     "src_bytes": 14358332
   },
   "cap_usd": 10.2,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 0.283
+  "collected": {
+    "error": null,
+    "files": 97,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 12516169,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 1.5503,
+    "conservative_usd": 1.8725
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-10T06:14:53Z",
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
@@ -46,11 +56,21 @@
       "at": "2026-11-10T06:00:17Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-10T06:13:45Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-10T06:14:53Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "r5-foundry-002",
   "max_estimate_usd": 10.04,
-  "message": "job started on the pod",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
@@ -145,7 +165,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 1.5503,
       "created_at": "2026-11-10T05:58:10Z",
       "data_center": "us-central1",
       "gpu": "H200_141GB",
@@ -158,11 +178,11 @@
       "ready_at": "2026-11-10T06:00:00Z",
       "requested_at": "2026-11-10T05:57:45Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-10T06:14:32Z"
     }
   ],
-  "pods_terminated": null,
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-10T05:51:19Z",
     "file": "jobs/r5-foundry-002/review.md",
@@ -172,6 +192,6 @@
   "run_deadline": "2026-11-10T07:15:17Z",
   "run_started_epoch": 1794290263.7820978,
   "started_at": "2026-11-10T06:00:17Z",
-  "state": "running",
-  "updated_at": "2026-11-10T06:00:17Z"
+  "state": "done",
+  "updated_at": "2026-11-10T06:14:53Z"
 }

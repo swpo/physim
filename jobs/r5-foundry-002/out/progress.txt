@@ -1,0 +1,38 @@
+06:00:23 [job2.sh] start, size full, nproc 16
+versions 3.12.16 0.12.0.1 2.5.4 [CudaDevice(id=0)] gpu
+name, memory.total [MiB], driver_version
+NVIDIA H200, 143771 MiB, 550.163.01
+06:00:31 [      9s] job2.py size=full arms=['enrich', 'late', 'cert', 'sigma010', 'sigma100'] python 3.12.16 jax 0.12.0.1 numpy 2.5.4 devices [CudaDevice(id=0)] x64 True
+06:00:31 [      9s] enrich: start
+06:00:57 [     35s] enrich chunk 0: 128/4096 draws, 25.7s (16334 member-ticks/s)
+06:01:02 [     40s] enrich chunk 1: 256/4096 draws, 4.9s (85580 member-ticks/s)
+06:01:32 [     69s] enrich chunk 7: 1024/4096 draws, 4.9s (85580 member-ticks/s)
+06:02:11 [    109s] enrich chunk 15: 2048/4096 draws, 4.9s (85553 member-ticks/s)
+06:02:51 [    148s] enrich chunk 23: 3072/4096 draws, 4.9s (85206 member-ticks/s)
+06:03:30 [    188s] enrich chunk 31: 4096/4096 draws, 4.9s (85520 member-ticks/s)
+06:03:31 [    188s] enrich: 4096/4096 draws in 179.0s
+06:03:31 [    188s] late: start
+06:04:09 [    227s] late chunk 0: 128/2000 draws, 38.5s (49850 member-ticks/s)
+06:04:30 [    248s] late chunk 1: 256/2000 draws, 21.3s (89814 member-ticks/s)
+06:06:39 [    376s] late chunk 7: 1024/2000 draws, 21.4s (89697 member-ticks/s)
+06:09:29 [    546s] late chunk 15: 2000/2000 draws, 21.1s (56803 member-ticks/s)
+06:09:29 [    546s] late: 2000/2000 draws in 358.3s
+06:09:29 [    546s] cert: start
+06:09:53 [    570s] cert chunk 0: 24/88 draws, 24.1s (15307 member-ticks/s)
+06:09:58 [    575s] cert chunk 1: 48/88 draws, 4.6s (80724 member-ticks/s)
+06:10:07 [    584s] cert chunk 3: 88/88 draws, 4.6s (54039 member-ticks/s)
+06:10:07 [    584s] cert: 88/88 draws in 38.1s
+06:10:07 [    584s] sigma010: start
+06:10:28 [    606s] sigma010 chunk 0: 128/2048 draws, 21.5s (19497 member-ticks/s)
+06:10:33 [    611s] sigma010 chunk 1: 256/2048 draws, 4.9s (86284 member-ticks/s)
+06:11:03 [    640s] sigma010 chunk 7: 1024/2048 draws, 4.8s (86773 member-ticks/s)
+06:11:42 [    679s] sigma010 chunk 15: 2048/2048 draws, 4.8s (86580 member-ticks/s)
+06:11:42 [    679s] sigma010: 2048/2048 draws in 94.9s
+06:11:42 [    679s] sigma100: start
+06:12:03 [    701s] sigma100 chunk 0: 128/2048 draws, 21.6s (19431 member-ticks/s)
+06:12:08 [    706s] sigma100 chunk 1: 256/2048 draws, 4.9s (85499 member-ticks/s)
+06:12:38 [    735s] sigma100 chunk 7: 1024/2048 draws, 4.9s (85599 member-ticks/s)
+06:13:17 [    775s] sigma100 chunk 15: 2048/2048 draws, 4.9s (85628 member-ticks/s)
+06:13:18 [    775s] sigma100: 2048/2048 draws in 95.7s
+06:13:18 [    775s] job2.py end: ok=True errors=0
+06:13:18 [job2.sh] OUT size 13M; done, FAIL=0

@@ -1,0 +1,3 @@
+06:00:23 [job2.sh] start, size full, nproc 16
+versions 3.12.16 0.12.0.1 2.5.4 [CudaDevice(id=0)] gpu
+06:13:18 [job2.sh] OUT size 13M; done, FAIL=0
