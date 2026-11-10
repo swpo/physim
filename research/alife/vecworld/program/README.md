@@ -88,3 +88,57 @@ simulations from the public prior) takes 95% or more of the best reference skill
 science; a level structure tests science only where the agent cannot buy its way down to level 0. It proposes two
 acceptance quantities (science share sigma, scripted share rho), agents on exams before more worlds, and seven
 decisions for the lead. Thresholds and dates in it are proposals.
+
+Decisions (9-10 Nov 2026): the lead's answers to the roadmap's decisions are in `roadmap/DECISIONS.md` (hidden parameters
+of a correct public law stay the default, with an incomplete public law and a law too expensive to simulate as subjects
+of study; the agent's compute is a budget relative to the cost of full simulation; rollouts with real agents are cleared;
+sealed answers go to a private Hugging Face dataset repo and the grader builds on the verifiers library; the collective
+pilot and the large foundry pass wait).
+
+Round 5 (9-10 Nov 2026; six studies, GPU jobs through the Mac runner, $32.51 billed for the round, $46.27 in total;
+each independently checked, and the checkers' corrections, listed in each `round5/<study>/results/summary.json` under
+`checker`, are folded in below):
+- `round5/agentenv`: the exam as an agent-facing environment (task statement, public `physim2` package, Lab service with
+  tick and nats budgets, per-item grader, reference policies K, D, P0, prior mean, S, C, O), proven with scripted agents
+  only. On gliders at full size the science share sigma is 0.03-0.065 and fails its bar in every family. The checker
+  showed three limits of its local sandbox can be evaded (CPU limit by forking, wall-clock stop by detaching, item
+  isolation through shared temporary folders); the sandbox is replaced by the verifiers port (round 6).
+- `round5/ladder`: on the gliders wind world, nine cells (block, object or population view x 1, 4 or 8 hidden
+  parameters): sigma is below 0.15 in all nine at the point estimate (largest 0.113, 95% interval 0.03-0.19), and
+  simulating the public prior is within 0.047 of training at the true parameters. Two Lab episodes of scripted inference
+  match the true-parameter predictor within 0.004 (0.018 in the population view). What predicts sigma is how much the
+  parameters change the level's response given the state (rank correlation +0.77 over cells). Checker: "the number of
+  hidden parameters is not a dial" is not established (the sets are different worlds; block view 1 against 4 differs),
+  the statements about experiments describe the scripted inference, and the data-only budgets are upper bounds.
+- `round5/vortexexam`: an exam pilot on the fed-vortex world (two pilots, 6 and 10 truths). Level 2 has an effective law
+  for the kind share, b1 s(1-s) + b2 (1-2s), real where selection is strong (eps >= 0.2). The prior-mean plug-in loses
+  0.13-0.19 of oracle skill at the median truth (gliders: 0.03). With full-history items the no-experiment policy or a
+  data-only fit still takes nearly all the skill (sigma about 0 and 0.06 in the net family; 0.136 +- 0.054 against the
+  best C of any family). Checker: "without a simulator the law pays" fails a control (a constant in place of the
+  selection term scores the same), each item view fails one acceptance bar and none is shown to fail both, and the gain
+  from showing only the last three ticks is 0.10 +- 0.11 on a like-for-like basis.
+- `round5/bias2`: the inductive-bias grid on two more level-0 theories. Membrane world: nonlinear closure beats the best
+  hand design at 16 ticks (+0.12 to +0.25 depending on the predictor family) and, with spatially whitened latents, is
+  the same variable across fit halves. Fed-vortex world: with the standard loss the closure latents take the run's common
+  transient (a function of the tick alone carries 88% of the linear latent's box mean), not a world variable; with
+  spatially whitened latents linear closure matches block vorticity (R^2 0.77). Gliders: block mass again. No bias gives
+  an object variable. Checker: the "replication" reused the same simulations in two of three worlds; "closure finds the
+  transported density" rests on one new case; replica means hide split outcomes.
+- `round5/slots`: slot encoders with memory on raw gliders states. Closure, local-law and reconstruction objectives all
+  settle on soft parts (about 2.1 slots per tracked body, ARI 0.63 against the tracker), although the architecture can
+  express the tracker's view (supervised ARI 0.85) and all four objectives move a tracker-like start back to parts while
+  their loss falls. By the closure ceiling the parts score above the tracker (+0.389 +- 0.018 at 16 ticks), so closure
+  does not single out objects. Checker: one architecture, two starts, one level-0 theory; no parsimony term was tried.
+- `round5/foundry`: world foundry v0, a two-kind transport neural automaton whose hidden weights are the law. 8,192 prior
+  draws screen in 376 s on one H100 (about $6 per 100,000 draws); 1.07% pass four gates early, 0.35% at screen,
+  certification and late time; a weights-only pre-screen enriches candidates 7.4 times (95% interval 5.6-9.8). Checker:
+  the shortlist of seven "in the gliders band" uses a rule written after the first job and a linear predictor's
+  ceilings; whether actions matter in these worlds is not established.
+What round 5 decides: on two worlds, with a correct public simulator, a policy with no hypothesis and no experiment takes
+nearly all the reachable skill, whatever the observed level or the number of hidden parameters tried; the exam designs
+that remain are those of decision 1. Learned coarse-grainings depend on the level-0 theory and on the loss normalisation,
+and none produces objects. Random weights-as-law worlds are cheap to generate and screen.
+
+Round 6 (10 Nov 2026, in progress): `roadmap/GRADER_VS_VERIFIERS.md` (what the verifiers library already provides for
+the grader) and `round6/vfport` (the exam as a verifiers environment on its stock isolated grader, proven with scripted
+agents on Docker, reviewed and red-teamed; a host-safety audit precedes any run on the lead's Mac; no model rollout yet).
