@@ -18,3 +18,5 @@
    commit and push, remove the worktree.
 4. If it failed: read logs (`jobs/r5-ladder-001/logs/run.log`), fix, test on CPU from a git archive,
    resubmit as r5-ladder-002 with cap <= $25 minus what r5-ladder-001 billed.
+- 02:05 UTC. r5-ladder-001 is `received` (the Mac's local smoke of it passed; its review was still running).
+  README.md drafted (design only, no results). make_summary.py extended and tested on smoke outputs.
