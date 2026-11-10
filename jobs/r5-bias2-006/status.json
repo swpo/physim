@@ -9,10 +9,40 @@
       "at": "2026-11-10T01:39:18Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T01:46:50Z",
+      "message": "accepted: H100_80GB via lambdalabs at $4.29/h, at most $7.94",
+      "state": "queued"
     }
   ],
   "job_id": "r5-bias2-006",
-  "message": "request received",
+  "max_estimate_usd": 7.94,
+  "message": "accepted: H100_80GB via lambdalabs at $4.29/h, at most $7.94",
+  "plan": {
+    "max_estimate_usd": 7.94,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_h100_sxm5",
+        "country": "US",
+        "data_center": "us-southeast-1",
+        "disk_gb": 2816,
+        "gpu_memory_gb": 80,
+        "gpu_type": "H100_80GB",
+        "is_spot": false,
+        "memory_gb": 225,
+        "provider": "lambdalabs",
+        "rank": 2,
+        "rate_usd_hr": 4.29,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 26
+      }
+    ],
+    "planned_at": "2026-11-10T01:46:50Z",
+    "window_hours": 1.85
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T01:42:25Z",
@@ -20,6 +50,6 @@
     "sha256": "5ce689b0f9581029cbf9b9172105ca668ada10f39ba04b2b985bfb467e28f4fc",
     "summary": "Fine to run; both earlier points fixed; tiny CPU run passed for all three worlds. 2 info: gliders is skipped only in the worst case; exit 137 still counts as a failure."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T01:39:18Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T01:46:50Z"
 }
