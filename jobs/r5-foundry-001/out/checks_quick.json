@@ -1,0 +1,132 @@
+{
+ "platform": {
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "dtype": "float64"
+ },
+ "family": {
+  "C": 2,
+  "H": 64,
+  "W": 64,
+  "HID": 16,
+  "NSUB": 4,
+  "sigma": 0.3,
+  "L": 3.0,
+  "GW": 8,
+  "sigma_w": 0.25,
+  "G1": 2.0,
+  "init_contrast": 1.0
+ },
+ "seed": 1,
+ "conservation": {
+  "n_worlds": 4,
+  "ticks": 20,
+  "substeps": 80,
+  "with_wind_commands": true,
+  "total_mass_rel_drift_max": 2.1557953364255237e-16,
+  "n_kappa0": 2,
+  "kind_mass_rel_drift_max_kappa0": 1.689240309826466e-16,
+  "kind_mass_rel_change_max_kappa_pos": 0.7369766518033742,
+  "min_cell": 0.0009834286623766778,
+  "max_cell": 1.8630925700949936,
+  "ok": true,
+  "seconds": 2.2
+ },
+ "symmetry": {
+  "n_worlds": 2,
+  "rel_error_max": {
+   "shift(5,-9)": 0.0,
+   "rot90": 2.3003403146761187e-15,
+   "rot180": 2.827568027390071e-16,
+   "flip_y": 1.5864415963283578e-16,
+   "flip_x": 2.827568027390071e-16,
+   "transpose": 2.3003403146761187e-15
+  },
+  "ok": true,
+  "seconds": 1.7
+ },
+ "vw": {
+  "level": "tnca[C=2,64x64,NSUB=4,sigma=0.3,sigma_w=0.25]",
+  "observation_dim": 192,
+  "steps": 3,
+  "obs_finite": true,
+  "invariant_drift_abs": {
+   "mass_total": 0.0
+  },
+  "charge_of_command_nats": 128.0,
+  "tnca_nats": 128.0,
+  "ok": true,
+  "seconds": 6.0
+ },
+ "wind": {
+  "noise_mean_abs_max": 0.024216215369135444,
+  "noise_std": 0.2503561505706584,
+  "sigma_w": 0.25,
+  "kl_check": {
+   "charge_nats": 12.373414385647978,
+   "mc_nats": 12.509184010368601,
+   "mc_se": 0.2314104509197824,
+   "z": 0.586704810353131,
+   "n": 500
+  },
+  "embedding_dc_gain": 1.0,
+  "delivery": {
+   "command": "x-component 1.0 on all 64 blocks, 4 ticks",
+   "nats_per_tick": 512.0,
+   "passive_world": "beta = gam = kappa = 0",
+   "mu": 0.09369094469768136,
+   "wq": [
+    1.1596797128285854,
+    1.5872699877502792
+   ],
+   "shift_px_per_tick": [
+    0.24770542589565708,
+    0.3599233329772654
+   ],
+   "shift_over_wq": [
+    0.21359813675749878,
+    0.2267562139742865
+   ],
+   "expected_noise_free": [
+    0.26023362520171595,
+    0.4093520990539652
+   ],
+   "twin_same_key_identical": true
+  },
+  "ok": true,
+  "seconds": 2.9
+ },
+ "linear": {
+  "worlds": [
+   {
+    "draw": 17,
+    "symbol_growth": 1.0345244743569066,
+    "jvp_growth": 1.034524474356906,
+    "simulated_growth": 1.0345244745486313,
+    "wavelength_px": 9.050966799187808
+   },
+   {
+    "draw": 27,
+    "symbol_growth": 1.0850250473502914,
+    "jvp_growth": 1.0850250473502934,
+    "simulated_growth": 1.0850238363239657,
+    "wavelength_px": 11.31370849898476
+   },
+   {
+    "draw": 37,
+    "symbol_growth": 1.0222859862173097,
+    "jvp_growth": 1.0222859862173101,
+    "simulated_growth": 1.0222859855942927,
+    "wavelength_px": 9.995120760870789
+   }
+  ],
+  "rel_error_max": 1.1161275296212025e-06,
+  "ok": true,
+  "seconds": 2.0
+ },
+ "ok": true
+}

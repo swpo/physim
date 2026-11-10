@@ -1,0 +1,86 @@
+05:11:46 [     22s] job.py size=full python 3.12.16 jax 0.12.0.1 numpy 2.5.4 devices [CudaDevice(id=0)] x64 True
+05:11:47 [     22s] checks: start
+05:11:50 [     26s] checks: done in 3.7s
+05:11:50 [     26s] wstats: start
+05:11:52 [     28s] wstats: done in 1.7s
+05:11:52 [     28s] screen: start
+05:12:13 [     48s] screen chunk 0: draws 0-127 in 20.6s (20333 member-ticks/s, incl. compile); finite 128/128
+05:12:19 [     54s] screen chunk 1: draws 128-255 in 5.6s (74535 member-ticks/s); finite 128/128
+05:12:24 [     60s] screen chunk 2: draws 256-383 in 5.6s (74324 member-ticks/s); finite 128/128
+05:12:30 [     65s] screen chunk 3: draws 384-511 in 5.6s (74619 member-ticks/s); finite 128/128
+05:12:36 [     71s] screen chunk 4: draws 512-639 in 5.6s (74800 member-ticks/s); finite 128/128
+05:12:41 [     77s] screen chunk 5: draws 640-767 in 5.6s (74496 member-ticks/s); finite 128/128
+05:12:47 [     82s] screen chunk 6: draws 768-895 in 5.6s (74530 member-ticks/s); finite 128/128
+05:12:53 [     88s] screen chunk 7: draws 896-1023 in 5.6s (74894 member-ticks/s); finite 128/128
+05:12:58 [     94s] screen chunk 8: draws 1024-1151 in 5.6s (74789 member-ticks/s); finite 128/128
+05:13:04 [     99s] screen chunk 9: draws 1152-1279 in 5.6s (74639 member-ticks/s); finite 128/128
+05:13:10 [    105s] screen chunk 10: draws 1280-1407 in 5.6s (74728 member-ticks/s); finite 128/128
+05:13:15 [    111s] screen chunk 11: draws 1408-1535 in 5.6s (74704 member-ticks/s); finite 128/128
+05:13:21 [    116s] screen chunk 12: draws 1536-1663 in 5.6s (74780 member-ticks/s); finite 128/128
+05:13:26 [    122s] screen chunk 13: draws 1664-1791 in 5.6s (74895 member-ticks/s); finite 128/128
+05:13:32 [    128s] screen chunk 14: draws 1792-1919 in 5.6s (74614 member-ticks/s); finite 128/128
+05:13:38 [    133s] screen chunk 15: draws 1920-2047 in 5.6s (74854 member-ticks/s); finite 128/128
+05:13:43 [    139s] screen chunk 16: draws 2048-2175 in 5.6s (74727 member-ticks/s); finite 128/128
+05:13:49 [    144s] screen chunk 17: draws 2176-2303 in 5.6s (75041 member-ticks/s); finite 128/128
+05:13:55 [    150s] screen chunk 18: draws 2304-2431 in 5.6s (74397 member-ticks/s); finite 128/128
+05:14:00 [    156s] screen chunk 19: draws 2432-2559 in 5.6s (74516 member-ticks/s); finite 128/128
+05:14:06 [    161s] screen chunk 20: draws 2560-2687 in 5.6s (74568 member-ticks/s); finite 128/128
+05:14:11 [    167s] screen chunk 21: draws 2688-2815 in 5.6s (74383 member-ticks/s); finite 128/128
+05:14:17 [    173s] screen chunk 22: draws 2816-2943 in 5.6s (74676 member-ticks/s); finite 128/128
+05:14:23 [    178s] screen chunk 23: draws 2944-3071 in 5.6s (74758 member-ticks/s); finite 128/128
+05:14:28 [    184s] screen chunk 24: draws 3072-3199 in 5.6s (74825 member-ticks/s); finite 128/128
+05:14:34 [    189s] screen chunk 25: draws 3200-3327 in 5.6s (74640 member-ticks/s); finite 128/128
+05:14:40 [    195s] screen chunk 26: draws 3328-3455 in 5.6s (74644 member-ticks/s); finite 128/128
+05:14:45 [    201s] screen chunk 27: draws 3456-3583 in 5.6s (75036 member-ticks/s); finite 128/128
+05:14:51 [    206s] screen chunk 28: draws 3584-3711 in 5.6s (74819 member-ticks/s); finite 128/128
+05:14:56 [    212s] screen chunk 29: draws 3712-3839 in 5.6s (74696 member-ticks/s); finite 128/128
+05:15:02 [    218s] screen chunk 30: draws 3840-3967 in 5.6s (74877 member-ticks/s); finite 128/128
+05:15:08 [    223s] screen chunk 31: draws 3968-4095 in 5.6s (74327 member-ticks/s); finite 128/128
+05:15:13 [    229s] screen chunk 32: draws 4096-4223 in 5.6s (74374 member-ticks/s); finite 128/128
+05:15:19 [    235s] screen chunk 33: draws 4224-4351 in 5.6s (74274 member-ticks/s); finite 128/128
+05:15:25 [    240s] screen chunk 34: draws 4352-4479 in 5.6s (74917 member-ticks/s); finite 128/128
+05:15:30 [    246s] screen chunk 35: draws 4480-4607 in 5.6s (74282 member-ticks/s); finite 128/128
+05:15:36 [    251s] screen chunk 36: draws 4608-4735 in 5.6s (74983 member-ticks/s); finite 128/128
+05:15:42 [    257s] screen chunk 37: draws 4736-4863 in 5.6s (74393 member-ticks/s); finite 128/128
+05:15:47 [    263s] screen chunk 38: draws 4864-4991 in 5.6s (74400 member-ticks/s); finite 128/128
+05:15:53 [    268s] screen chunk 39: draws 4992-5119 in 5.6s (74998 member-ticks/s); finite 128/128
+05:15:58 [    274s] screen chunk 40: draws 5120-5247 in 5.6s (74818 member-ticks/s); finite 128/128
+05:16:04 [    280s] screen chunk 41: draws 5248-5375 in 5.6s (74885 member-ticks/s); finite 128/128
+05:16:10 [    285s] screen chunk 42: draws 5376-5503 in 5.6s (74640 member-ticks/s); finite 128/128
+05:16:15 [    291s] screen chunk 43: draws 5504-5631 in 5.6s (74564 member-ticks/s); finite 128/128
+05:16:21 [    296s] screen chunk 44: draws 5632-5759 in 5.6s (74997 member-ticks/s); finite 128/128
+05:16:27 [    302s] screen chunk 45: draws 5760-5887 in 5.6s (74760 member-ticks/s); finite 128/128
+05:16:32 [    308s] screen chunk 46: draws 5888-6015 in 5.6s (74977 member-ticks/s); finite 128/128
+05:16:38 [    313s] screen chunk 47: draws 6016-6143 in 5.6s (74346 member-ticks/s); finite 128/128
+05:16:43 [    319s] screen chunk 48: draws 6144-6271 in 5.6s (74866 member-ticks/s); finite 128/128
+05:16:49 [    325s] screen chunk 49: draws 6272-6399 in 5.7s (74101 member-ticks/s); finite 128/128
+05:16:55 [    330s] screen chunk 50: draws 6400-6527 in 5.6s (74611 member-ticks/s); finite 128/128
+05:17:00 [    336s] screen chunk 51: draws 6528-6655 in 5.7s (73980 member-ticks/s); finite 128/128
+05:17:06 [    342s] screen chunk 52: draws 6656-6783 in 5.6s (74468 member-ticks/s); finite 128/128
+05:17:12 [    347s] screen chunk 53: draws 6784-6911 in 5.6s (74791 member-ticks/s); finite 128/128
+05:17:17 [    353s] screen chunk 54: draws 6912-7039 in 5.6s (74898 member-ticks/s); finite 128/128
+05:17:23 [    358s] screen chunk 55: draws 7040-7167 in 5.6s (74676 member-ticks/s); finite 128/128
+05:17:29 [    364s] screen chunk 56: draws 7168-7295 in 5.6s (74766 member-ticks/s); finite 128/128
+05:17:34 [    370s] screen chunk 57: draws 7296-7423 in 5.6s (74743 member-ticks/s); finite 128/128
+05:17:40 [    375s] screen chunk 58: draws 7424-7551 in 5.6s (74914 member-ticks/s); finite 128/128
+05:17:45 [    381s] screen chunk 59: draws 7552-7679 in 5.6s (74657 member-ticks/s); finite 128/128
+05:17:51 [    387s] screen chunk 60: draws 7680-7807 in 5.6s (74629 member-ticks/s); finite 128/128
+05:17:57 [    392s] screen chunk 61: draws 7808-7935 in 5.6s (74383 member-ticks/s); finite 128/128
+05:18:02 [    398s] screen chunk 62: draws 7936-8063 in 5.6s (74717 member-ticks/s); finite 128/128
+05:18:08 [    404s] screen chunk 63: draws 8064-8191 in 5.6s (74560 member-ticks/s); finite 128/128
+05:18:08 [    404s] screen: done in 376.2s
+05:18:08 [    404s] select: start
+05:18:09 [    404s] select: done in 0.3s
+05:18:09 [    404s] certify: start
+05:18:30 [    425s] certify eps010: 24 worlds in 20.3s (18191 member-ticks/s)
+05:18:35 [    431s] certify eps003: 24 worlds in 5.2s (70491 member-ticks/s)
+05:18:40 [    436s] certify eps030: 24 worlds in 5.2s (70385 member-ticks/s)
+05:18:46 [    441s] certify hyp010: 24 worlds in 5.2s (70540 member-ticks/s)
+05:18:46 [    441s] certify: done in 37.4s
+05:18:46 [    441s] controls: start
+05:19:02 [    458s] controls: done in 16.3s
+05:19:02 [    458s] gliders: start
+05:19:40 [    495s] gliders ref_gliders.npz: 16 runs in 37.1s (1412 member-ticks/s incl. compile)
+05:20:41 [    556s] gliders ref_gliders_cert.npz: 8 runs in 60.5s (2035 member-ticks/s incl. compile)
+05:20:41 [    556s] gliders: done in 98.4s
+05:20:41 [    556s] job.py end: ok=True errors=0

@@ -1,0 +1,4 @@
+05:11:25 [job.sh] start, size full, nproc 32
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)] gpu
+05:11:44 [job.sh] check_tnca done
+05:20:41 [job.sh] OUT size 26M; done, FAIL=0
