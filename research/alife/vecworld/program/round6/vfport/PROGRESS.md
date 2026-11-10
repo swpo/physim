@@ -1,34 +1,18 @@
 # vfport: PROGRESS
 
-## RE-AUDIT of the code, round 1 (independent; of commit 73829e5c6) -- 10 Nov 2026, in progress
-- Role: re-auditor of findings A3, A4, A5 and required changes 3, 4, 5; the verdict is returned to the coordinator,
-  not written here. Nothing of the port is changed by this role.
-- Read so far (clean archive of the head): HOST_SAFETY_AUDIT.md, physim2_env/public/_item.py, grading.py,
-  taskset.py, access.py, physim2_script, the three box scripts, tools/{tripwires,check_safety,check_driver,
-  check_units,check_interrupt,vfrun,pin}.py, redteam/{rt_run.py,nproc_cross_box.sh} (diff since 997005f56).
-- Next: rerun tools/check_safety.py (tripwires) and tools/check_driver.py (throwaway containers) from the archive
-  copy and compare with results/; own probes of the mount allow-list and the worker gate.
-- If the container restarted: scratch is /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfreaud1a
-  (recreate with `git archive`); worktree /home/user/wt/vfreaud1a, branch wt-vfreaud1a.
-
-## RE-AUDIT of the runbook, round 1 (independent; of commit 73829e5c6) -- 10 Nov 2026, finished
-- Role: re-auditor of RUNBOOK_MAC.md as the Mac operator reads it (findings A1, A2, B1 to B15; required changes
-  1, 2, 6, 7, 8, 9). The verdict and the replacement texts were returned to the coordinator, not written here.
-  Nothing of the port was changed or executed by this role.
-- Recomputed: sha256 of PIN.sha256 equals the runbook's; 105 of 105 listed files match, at 454812a2b and at the
-  head. The 27 fenced commands are byte-identical at cac38e324 (rehearsed), 454812a2b (pinned) and the head.
-- Run here (scratch only, stand-ins `echo` and `sleep`, no file of the port executed): the folder guard from 8
-  wrong folders x 2 start points prints nothing; `docker info --format` against a socket that does not exist exits
-  1; the detached command shape as a Claude session issues it (`sh -c <text>`) leaves a waiting wrapper shell
-  whose command line holds the command text, so the status command's pattern lists it next to the real process
-  (the rehearsal ran the commands from files and did not see this); SIGTERM to that wrapper leaves the child
-  running and no `EXIT` line; a pattern anchored on the pid and the interpreter path lists the real process only.
-- Open at the end of this role (text of the runbook; no path found that deletes or kills outside the pilot):
-  the process listing and the stop command of "If a run was interrupted"; no branch for a cut in step 1; no limit
-  on repeats; the copy inside the pinned commit does not name the commit step 0 compares; small text mismatches
-  with the rehearsal record, which holds command labels and truncated output; step 3 is gated by text only.
-- Left on the machine by this role: nothing (scratch deleted, worktree removed, no container, no image, no
-  process; the Docker daemon was not touched).
+## RE-AUDIT of the code, round 1 (independent; of commit 73829e5c6) -- 10 Nov 2026, finished
+- Role: re-auditor of findings A3, A4, A5 and required changes 3, 4, 5. The numbered verdict went to the
+  coordinator; nothing of the port was changed by this role. Code at the head = PIN.sha256 (105 files, 0 differences).
+- Reruns from a clean archive of the head, all equal to the recorded files: tools/check_safety.py 36/36 (host, under
+  tripwires), tools/check_driver.py 31/31 and tools/check_interrupt.py 8/8 (throwaway containers, no host path).
+  Not rerun: tools/check_units.py (part of it runs outside its tripwires), tools/check_probe.py (37 rollouts).
+- Own runs: wipe edge cases in a stock container (only paths of the uid removed; links unlinked, not followed);
+  two rollouts through vf-eval (probe-grading graded, 8 item boxes cleaned; harness-killall ended with status 137).
+- Two new minor gaps, both off the runbook and Linux-only, neither run destructively:
+  (1) the mount allow-list accepts any memory or kernel file system below /dev, /proc, /sys (`--tmpfs /dev/extra`:
+  the guard passes and the cleanup walks it); (2) the guard does not look at namespaces (`--pid=host`: the guard
+  passes with the host's processes visible; read of the guard only, under tripwires).
+- Left on the machine by this role: nothing (scratch, worktree, containers and two /tmp/vf-port-* files removed).
 
 ## HOST-SAFETY FIXER, round 1 (after the audit's NO-GO, HOST_SAFETY_AUDIT.md) -- 10 Nov 2026
 
