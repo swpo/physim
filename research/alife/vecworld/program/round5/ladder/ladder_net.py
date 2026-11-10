@@ -51,6 +51,10 @@ class Cfg:
     NG_NOISE = 8
     NL_NOISE = 4
     DMAX = LL.DMAX
+    EVAL_ROWS = 128     # validation rows per chunk (x EVAL_DRAWS noise draws); one net and one chunk at a time
+    EVAL_DRAWS = 8
+    MAX_LOCK = 8        # most nets trained in lockstep
+    MAX_ELEMS = 2 ** 30  # no intermediate device array may exceed this (half of the 2^31 index limit)
 
 
 # ----------------------------------------------------------------------------- arrays (numpy)
@@ -121,6 +125,7 @@ def stack_datasets(dsets):
     E = max(d["X"].shape[0] for d in dsets)
     ntr = max(len(d["tr"]) for d in dsets)
     nva = max(max(len(d["va"]) for d in dsets), 1)
+    nva = -(-nva // Cfg.EVAL_ROWS) * Cfg.EVAL_ROWS          # whole chunks of EVAL_ROWS (padding rows are masked)
 
     def pad(a, n):
         a = np.asarray(a)
@@ -151,6 +156,26 @@ def n_in(view, cond):
     if view == "object":
         return NF * L + 8 + n_glob(cond) + Cfg.NL_NOISE
     return 5 * L + 6 + n_glob(cond)
+
+
+def widest(view, cond):
+    """Elements per sample of the largest intermediate array of one net application: the block net's 3 x 3
+    convolutions build nine shifted copies (G * G * 9 * channels); the slot net concatenates a slot's code
+    with the pooled code; the MLP's widest layer."""
+    if view == "block":
+        return G * G * 9 * max(Cfg.C, n_in(view, cond))
+    if view == "object":
+        return K * max(2 * Cfg.SLOT_H, n_in(view, cond))
+    return max(Cfg.POP_H, n_in(view, cond))
+
+
+def check_elems(view, cond, n_nets, n_samples, what):
+    """Refuse a call whose largest intermediate array (nets x samples x widest) would pass Cfg.MAX_ELEMS."""
+    n = int(n_nets) * int(n_samples) * widest(view, cond)
+    if n >= Cfg.MAX_ELEMS:
+        raise ValueError(f"{what}: {view} net would build an array of {n:.3g} elements "
+                         f"({n_nets} nets x {n_samples} samples), limit {Cfg.MAX_ELEMS:.3g}")
+    return n
 
 
 def _dense(k, ci, co, scale=1.0):
@@ -298,7 +323,7 @@ _FN = {}
 
 def _fns(view, cond, keys):
     """Jitted lockstep step and evaluation for (view, cond); the data set is an argument."""
-    k = (view, cond, Cfg.BATCH, Cfg.M_TRAIN, Cfg.LAGS, Cfg.HS, keys)
+    k = (view, cond, Cfg.BATCH, Cfg.M_TRAIN, Cfg.LAGS, Cfg.HS, Cfg.EVAL_ROWS, Cfg.EVAL_DRAWS, keys)
     if k not in _FN:
         B, M = Cfg.BATCH, Cfg.M_TRAIN
 
@@ -311,16 +336,28 @@ def _fns(view, cond, keys):
             p, s = _adamw(p, g, s, lr)
             return p, s, l
 
-        def eval_one(p, Dk):
-            ex = Dk["va"]
-            nv = ex.shape[0]
-            d = apply(view, p, build_inputs(view, Dk, ex[:, 0], ex[:, 1], ex[:, 2], jax.random.key(12345), 8, cond))
-            es = fair_es(d.reshape(nv, 8, -1), targets(Dk, ex[:, 0], ex[:, 1], ex[:, 2]))
-            mask = (jnp.arange(nv) < Dk["n_va"]).astype(F32)
-            return (es * mask).sum() / jnp.maximum(mask.sum(), 1.0)
+        R, ND = Cfg.EVAL_ROWS, Cfg.EVAL_DRAWS
+
+        def eval_one(a):
+            """Held-out fair energy score of ONE net, in chunks of R rows (lax.map: a sequential loop, so
+            the largest array is R * ND samples of one net, whatever the number of nets and rows)."""
+            p, Dk = a
+            nv = Dk["va"].shape[0]
+            exc = Dk["va"].reshape(nv // R, R, 3)
+            idx = jnp.arange(nv).reshape(nv // R, R)
+
+            def chunk(b):
+                ex, ii = b
+                kk = jax.random.fold_in(jax.random.key(12345), ii[0])
+                d = apply(view, p, build_inputs(view, Dk, ex[:, 0], ex[:, 1], ex[:, 2], kk, ND, cond))
+                es = fair_es(d.reshape(R, ND, -1), targets(Dk, ex[:, 0], ex[:, 1], ex[:, 2]))
+                mask = (ii < Dk["n_va"]).astype(F32)
+                return (es * mask).sum(), mask.sum()
+            sm, cn = jax.lax.map(chunk, (exc, idx))
+            return sm.sum() / jnp.maximum(cn.sum(), 1.0)
         Dax = {kk: 0 for kk in keys}
         _FN[k] = (jax.jit(jax.vmap(step_one, in_axes=(0, 0, Dax, 0, None))),
-                  jax.jit(jax.vmap(eval_one, in_axes=(0, Dax))))
+                  jax.jit(lambda P, D: jax.lax.map(eval_one, (P, D))))
     return _FN[k]
 
 
@@ -333,6 +370,10 @@ def train_nets(view, dsets, cond=False, steps=3000, seed=0, log=None, tag="", de
     Kn = len(dsets)
     t_call = time.time()
     steps_asked = steps
+    if Kn > Cfg.MAX_LOCK:
+        raise ValueError(f"{Kn} nets in lockstep, at most {Cfg.MAX_LOCK}")
+    check_elems(view, cond, Kn, Cfg.BATCH * Cfg.M_TRAIN, "training step")
+    check_elems(view, cond, 1, Cfg.EVAL_ROWS * Cfg.EVAL_DRAWS, "validation chunk")
     D = stack_datasets(dsets)
     vstep, veval = _fns(view, cond, tuple(sorted(D)))
     keys = jax.random.split(jax.random.key(seed), Kn)
@@ -432,6 +473,7 @@ def net_samples(view, params, items, m, seed, hs, SC, cond=False, theta_u=None):
         e = jnp.arange(n)
         th = jnp.asarray(np.broadcast_to(LL.pad_u(theta_u), (n, Cfg.DMAX))) if cond else None
         m_inner = m
+    check_elems(view, cond, 1, int(e.shape[0]) * m_inner, "sampling")
     fn = _sampler(view, cond, m_inner)
     dim = LL.DIM[view]
     out = np.zeros((n, m, len(hs), dim))

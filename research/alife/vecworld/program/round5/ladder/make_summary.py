@@ -145,11 +145,12 @@ def main():
                        - agg_oes({k: v[worlds == w] for k, v in S.items()}, b, valid) for w in range(nT)]
                 return {"gap": r4(g), "se_worlds": r4(se_w), "z_worlds": r4(g / se_w) if se_w > 0 else None,
                         "n_worlds_positive": int(np.sum(np.array(per) > 0)), "n_worlds": nT}
-            bs = [b for b in budgets if f"S@{b}" in A]
+            bs = [b for b in budgets if f"S@{b}" in A and (f"D@{b}" in A or f"Dr@{b}" in A)]
             # data-only learner: the better of the net and the ridge at each budget (by pooled L)
-            dbest = {b: min((f"D@{b}", f"Dr@{b}"), key=lambda a: Lp[a]) for b in bs}
-            curves = {"S": [A[f"S@{b}"] for b in bs], "D_net": [A[f"D@{b}"] for b in bs],
-                      "D_ridge": [A[f"Dr@{b}"] for b in bs], "D": [A[dbest[b]] for b in bs]}
+            dbest = {b: min([a for a in (f"D@{b}", f"Dr@{b}") if a in A], key=lambda a: Lp[a]) for b in bs}
+            NA = float("nan")
+            curves = {"S": [A[f"S@{b}"] for b in bs], "D_net": [A.get(f"D@{b}", NA) for b in bs],
+                      "D_ridge": [A.get(f"Dr@{b}", NA) for b in bs], "D": [A[dbest[b]] for b in bs]}
             target = 0.9 * A["C"]
             n90 = {"S": n_reach(bs, curves["S"], target, v0=A["P0"]), "D": n_reach(bs, curves["D"], target),
                    "D_net": n_reach(bs, curves["D_net"], target), "D_ridge": n_reach(bs, curves["D_ridge"], target)}

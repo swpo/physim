@@ -1,0 +1,271 @@
+{
+ "limit_elems": 1073741824,
+ "two_pow_31": 2147483648,
+ "cases": {
+  "block|cond": {
+   "n_nets": 1,
+   "episodes": 6144,
+   "train_examples": 519820,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    14155776,
+    "concatenate float32[1, 512, 8, 8, 432]"
+   ],
+   "largest_in_validation": [
+    28311552,
+    "concatenate float32[1024, 8, 8, 432]"
+   ],
+   "largest_dataset_array": 38928384,
+   "model_step": 14155776
+  },
+  "block|P0u": {
+   "n_nets": 1,
+   "episodes": 6144,
+   "train_examples": 519820,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    14155776,
+    "concatenate float32[1, 512, 8, 8, 432]"
+   ],
+   "largest_in_validation": [
+    28311552,
+    "concatenate float32[1024, 8, 8, 432]"
+   ],
+   "largest_dataset_array": 38928384,
+   "model_step": 14155776
+  },
+  "block|D_small": {
+   "n_nets": 8,
+   "episodes": 32,
+   "train_examples": 2726,
+   "val_rows_padded": 384,
+   "largest_in_step": [
+    113246208,
+    "concatenate float32[8, 512, 8, 8, 432]"
+   ],
+   "largest_in_validation": [
+    28311552,
+    "concatenate float32[1024, 8, 8, 432]"
+   ],
+   "largest_dataset_array": 1622016,
+   "model_step": 113246208
+  },
+  "block|D_large": {
+   "n_nets": 8,
+   "episodes": 512,
+   "train_examples": 43334,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    113246208,
+    "concatenate float32[8, 512, 8, 8, 432]"
+   ],
+   "largest_in_validation": [
+    28311552,
+    "concatenate float32[1024, 8, 8, 432]"
+   ],
+   "largest_dataset_array": 25952256,
+   "model_step": 113246208,
+   "validation_executed": {
+    "seconds": 19.9,
+    "finite": true,
+    "peak_rss_gb": 2.08
+   }
+  },
+  "block|sampler cond=True per_sample=False": {
+   "largest": [
+    42467328,
+    "concatenate float32[1536, 8, 8, 432]"
+   ]
+  },
+  "block|sampler cond=True per_sample=True": {
+   "largest": [
+    42467328,
+    "concatenate float32[1536, 8, 8, 432]"
+   ]
+  },
+  "block|sampler cond=False per_sample=False": {
+   "largest": [
+    42467328,
+    "concatenate float32[1536, 8, 8, 432]"
+   ]
+  },
+  "object|cond": {
+   "n_nets": 1,
+   "episodes": 6144,
+   "train_examples": 519820,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    1572864,
+    "concatenate float32[1, 512, 12, 256]"
+   ],
+   "largest_in_validation": [
+    3145728,
+    "concatenate float32[1024, 12, 256]"
+   ],
+   "largest_dataset_array": 51904512,
+   "model_step": 1572864
+  },
+  "object|P0u": {
+   "n_nets": 1,
+   "episodes": 6144,
+   "train_examples": 519820,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    1572864,
+    "concatenate float32[1, 512, 12, 256]"
+   ],
+   "largest_in_validation": [
+    3145728,
+    "concatenate float32[1024, 12, 256]"
+   ],
+   "largest_dataset_array": 51904512,
+   "model_step": 1572864
+  },
+  "object|D_small": {
+   "n_nets": 8,
+   "episodes": 32,
+   "train_examples": 2726,
+   "val_rows_padded": 384,
+   "largest_in_step": [
+    12582912,
+    "concatenate float32[8, 512, 12, 256]"
+   ],
+   "largest_in_validation": [
+    3145728,
+    "concatenate float32[1024, 12, 256]"
+   ],
+   "largest_dataset_array": 2162688,
+   "model_step": 12582912
+  },
+  "object|D_large": {
+   "n_nets": 8,
+   "episodes": 512,
+   "train_examples": 43334,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    12582912,
+    "concatenate float32[8, 512, 12, 256]"
+   ],
+   "largest_in_validation": [
+    3145728,
+    "concatenate float32[1024, 12, 256]"
+   ],
+   "largest_dataset_array": 34603008,
+   "model_step": 12582912
+  },
+  "object|sampler cond=True per_sample=False": {
+   "largest": [
+    4718592,
+    "concatenate float32[1536, 12, 256]"
+   ]
+  },
+  "object|sampler cond=True per_sample=True": {
+   "largest": [
+    4718592,
+    "concatenate float32[1536, 12, 256]"
+   ]
+  },
+  "object|sampler cond=False per_sample=False": {
+   "largest": [
+    4718592,
+    "concatenate float32[1536, 12, 256]"
+   ]
+  },
+  "pop|cond": {
+   "n_nets": 1,
+   "episodes": 6144,
+   "train_examples": 519820,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    65536,
+    "dot_general float32[1, 512, 128]"
+   ],
+   "largest_in_validation": [
+    131072,
+    "dot_general float32[1024, 128]"
+   ],
+   "largest_dataset_array": 1559460,
+   "model_step": 65536
+  },
+  "pop|P0u": {
+   "n_nets": 1,
+   "episodes": 6144,
+   "train_examples": 519820,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    65536,
+    "dot_general float32[1, 512, 128]"
+   ],
+   "largest_in_validation": [
+    131072,
+    "dot_general float32[1024, 128]"
+   ],
+   "largest_dataset_array": 1559460,
+   "model_step": 65536
+  },
+  "pop|D_small": {
+   "n_nets": 8,
+   "episodes": 32,
+   "train_examples": 2726,
+   "val_rows_padded": 384,
+   "largest_in_step": [
+    524288,
+    "dot_general float32[8, 512, 128]"
+   ],
+   "largest_in_validation": [
+    131072,
+    "dot_general float32[1024, 128]"
+   ],
+   "largest_dataset_array": 65424,
+   "model_step": 524288
+  },
+  "pop|D_large": {
+   "n_nets": 8,
+   "episodes": 512,
+   "train_examples": 43334,
+   "val_rows_padded": 1024,
+   "largest_in_step": [
+    524288,
+    "dot_general float32[8, 512, 128]"
+   ],
+   "largest_in_validation": [
+    131072,
+    "dot_general float32[1024, 128]"
+   ],
+   "largest_dataset_array": 1040016,
+   "model_step": 524288
+  },
+  "pop|sampler cond=True per_sample=False": {
+   "largest": [
+    196608,
+    "dot_general float32[1536, 128]"
+   ]
+  },
+  "pop|sampler cond=True per_sample=True": {
+   "largest": [
+    196608,
+    "dot_general float32[1536, 128]"
+   ]
+  },
+  "pop|sampler cond=False per_sample=False": {
+   "largest": [
+    196608,
+    "dot_general float32[1536, 128]"
+   ]
+  }
+ },
+ "jax": "0.12.0.1",
+ "sizes": {
+  "T1": 33,
+  "items": 48,
+  "m": 32,
+  "max_lock": 8,
+  "batch": 128,
+  "m_train": 4,
+  "eval_rows": 128,
+  "eval_draws": 8
+ },
+ "largest_elems_overall": 113246208,
+ "fraction_of_2_pow_31": 0.052734375,
+ "ok": true
+}

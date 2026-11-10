@@ -13,7 +13,8 @@ Per hidden set n (order 4, 8, 1; outputs under OUT/n<n>/; simulations are shared
   D design    N_theta box draws x 10 exam-shaped episodes (2 per program class a, b, c, d, e): the agent's
               own simulator. Classes a-d are the public exam mix; e is the blind twin of the aimed push c.
   E Lab       per truth a BatchLab (secret keys; nats caps tick 100 / episode 400): 512 mix episodes
-              (a-d in equal shares, shuffled; budgets = nested prefixes 2, 8, 32, 128, 512) and 128 class-e.
+              (a-d in equal shares, shuffled; budgets = nested prefixes 2, 8, 32, 128, 512) and 128 class-e,
+              so every single-class arm (passive, blind, aimed, regional) has 128 episodes.
   F identify  per view and arm (mix; passive = a; blind = e; aimed = c; regional = d): summaries of the
               view only -> linear-regression summaries -> synthetic likelihood (ladder_lib.Emulator) ->
               posterior by importance sampling under p_v; contraction and coverage per budget.
@@ -23,8 +24,9 @@ Per hidden set n (order 4, 8, 1; outputs under OUT/n<n>/; simulations are shared
               from the hidden state).
   H nets      per view: a theta-conditioned net on the design's mix episodes (policies C, PM, P0, S(N)), an
               unconditioned net on prior-predictive simulations (P0u), unconditioned nets on the Lab's
-              first N episodes (D(N), all truths in lockstep, budgets <= 32 and > 32 as two groups), and a
-              ridge on them (Dr(N)).
+              first N episodes (D(N); budgets <= 32 and > 32 as two groups, at most ladder_net.Cfg.MAX_LOCK
+              nets in lockstep), and a ridge on them (Dr(N)). A failure in one view or one group of nets is
+              recorded and does not stop the other views (their scores are written).
   I scores    fair energy score per item and cell through the exam's own scorer; OES (vw.scoring) and the
               acceptance shares sigma, rho (round5/agentenv/evaluator/acceptance.py) per cell.
 usage: python -B run_ladder.py --out DIR [--smoke] [--sets 4,8,1] [--max-hours 2.2] [--cpu-ok]
@@ -65,15 +67,19 @@ ap.add_argument("--cpu-ok", action="store_true", help="allow a CPU backend (test
 args = ap.parse_args()
 OUT = args.out
 os.makedirs(OUT, exist_ok=True)
+if not os.path.exists(os.path.join(OUT, "progress.txt")):
+    with open(os.path.join(OUT, "progress.txt"), "w") as f:
+        f.write("PILOT_NEVER_REUSE_AS_EXAM: this log lists the hidden parameters of pilot truths\n")
 T0 = time.time()
 T_END = T0 + args.max_hours * 3600
 
-# sizes: N_v and N_theta per hidden set (a 1-parameter box needs fewer design points); member-ticks per set
-# about 1.9-2.3 million (r4-sbi-002 measured 1,080-1,290 member-ticks/s for these stages, 520 for exams)
+# sizes: N_v and N_theta per hidden set (a 1-parameter box needs fewer design points). The member-ticks of
+# a set are counted by estimate_ticks() and logged at the start (burn-in is 50 ticks): about 1.0-1.4 million
+# per set; r4-sbi-002 measured 1,080-1,290 member-ticks/s for these stages and 520/s for the exams.
 FULL = dict(P=16, H=16, burn=GW.BURN, n_cand=48, n_truth=8, N_v={1: 128, 4: 512, 8: 512}, v_chunk=256,
-            N_theta={1: 256, 4: 448, 8: 512}, Kc=2,
-            budgets=[2, 8, 32, 128, 512], arm_budgets=[2, 8, 32, 128], n_mix=512, n_e=32, lab_chunk=128,
-            n_items=36, R=12, n_clim=64, chunk=256, m=32, m_plug=8, n_scale=128,
+            N_theta={1: 384, 4: 768, 8: 768}, Kc=2,
+            budgets=[2, 8, 32, 128, 512], arm_budgets=[2, 8, 32, 128], n_mix=512, n_e=128, lab_chunk=128,
+            n_items=48, R=12, n_clim=96, chunk=256, m=32, m_plug=8, n_scale=128,
             steps_cond=6000, steps_p0=3000, steps_real=(1200, 2500), real_split=32, hs=(1, 2, 4, 8, 16),
             lags=(0, 1, 2, 4, 8), min_steps=300,
             viab_T=100, n_post_draws=500, post_M=20_000, post_M_arm=10_000)
@@ -173,6 +179,20 @@ jdump("info.json", INFO)
 RN = SL.VRunner(burn=CFG["burn"])
 PER_EP = 1 + P + H
 EP_T = CFG["burn"] + P + H
+
+
+def estimate_ticks(n):
+    """Member-ticks of one hidden set, by stage (the stages count the same quantities as they run)."""
+    b, vt, nt, ni = CFG["burn"], CFG["viab_T"], CFG["n_truth"], CFG["n_items"]
+    return {"viability_design": CFG["N_v"][n] * (b + vt), "truths": CFG["n_cand"] * (b + vt),
+            "design": CFG["N_theta"][n] * KD * EP_T, "lab": nt * (CFG["n_mix"] + CFG["n_e"]) * (CFG["burn"] + PER_EP),
+            "exam": nt * (ni * (b + P) + ni * CFG["R"] * H + CFG["n_clim"] * (b + H)),
+            "plugin_prior": nt * ni * CFG["m_plug"] * H}
+
+
+INFO["member_ticks_estimate"] = {f"n{n}": estimate_ticks(n) for n in SETS}
+log("member-ticks planned: " + ", ".join(f"n={n}: {sum(estimate_ticks(n).values()):,}" for n in SETS)
+    + f"; total {sum(sum(estimate_ticks(n).values()) for n in SETS):,}")
 
 
 # ----------------------------------------------------------------------------- A public scales
@@ -423,78 +443,102 @@ def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pm, pv, l
             SCORES[f"t{i}|{v}|plugPM"] = plug[i][:, c]
         SCORES[f"t{i}|classes"] = exams[i].classes
     t_score = 120.0                                 # scoring time of one view (measured from the first on)
-    WGT = {"cond": 3.0, "P0u": 1.5, "D0": 3.0, "D1": 4.0}       # shares of a view's net time; unused time rolls on
     for vi, view in enumerate(LL.VIEWS):
         if time.time() > T_END:
             FAILED.append(f"skipped n={n} view {view} (deadline)")
             log(f"  SKIP n={n} view {view}: deadline")
             continue
-        l = LL.LEVEL[view]
         t0 = time.time()
         # the set's remaining time is shared by its remaining views; a net whose schedule does not fit its
         # share trains for fewer steps (never below min_steps), so every cell is scored
         tv = max((t_stop - t0) / (len(LL.VIEWS) - vi) - t_score, 0.0)
-        kw = dict(log=log, deadline=T_END, min_steps=CFG["min_steps"])
         log(f"  n={n} view {view}: {tv:.0f}s for its nets")
-        todo = dict(WGT)
-
-        def share(name):
-            w = todo.pop(name)
-            return max(t0 + tv - time.time(), 0.0) * w / (w + sum(todo.values()))
-        ds = NN.make_dataset(view, obs_m, U_m, SC, theta_u=th_m, seed=900 + n)
-        pc, TRAIN[f"{view}|cond"] = NN.train_nets(view, [ds], cond=True, steps=CFG["steps_cond"], seed=900 + 10 * n + vi,
-                                                  tag=f"[n{n} {view} cond]", time_budget=share("cond"), **kw)
-        ds = NN.make_dataset(view, obs_m[ep0], U_m[ep0], SC, seed=950 + n)
-        p0, TRAIN[f"{view}|P0u"] = NN.train_nets(view, [ds], cond=False, steps=CFG["steps_p0"], seed=950 + 10 * n + vi,
-                                                 tag=f"[n{n} {view} P0u]", time_budget=share("P0u"), **kw)
-        pD = {}                                 # D(N): two lockstep groups (small and large budgets)
-        for gi, grp in enumerate(([b for b in budgets if b <= CFG["real_split"]],
-                                  [b for b in budgets if b > CFG["real_split"]])):
-            if not grp:
-                continue
-            order = [(i, nb) for i in range(nT) for nb in grp]
-            dsets = [NN.make_dataset(view, labdata[i]["obs"][:nb], labdata[i]["U"][:nb], SC, seed=100 * nb + i)
-                     for i, nb in order]
-            prm, TRAIN[f"{view}|D|group{gi}"] = NN.train_nets(
-                view, dsets, cond=False, steps=CFG["steps_real"][gi], seed=700 + 10 * n + vi + 100 * gi,
-                tag=f"[n{n} {view} D {grp}]", time_budget=share(f"D{gi}"), **kw)
-            TRAIN[f"{view}|D|group{gi}"]["order_truth_budget"] = order
-            pD.update(dict(zip(order, prm)))
-            del dsets
-        del ds
-        t_train = time.time() - t0
-        rng = np.random.default_rng([4407, n, vi])
-        for i in range(nT):
-            items = exams[i].public()
-            ni = len(items)
-            vc = LL.ViewCells(exams[i], l)
-
-            def put(name, S):
-                try:
-                    SCORES[f"t{i}|{view}|{name}"] = vc.score(S)
-                except ValueError as exc:                      # e.g. non-finite samples: the policy is dropped
-                    FAILED.append(f"n={n} {view} t{i} {name}: {exc}")
-                    log(f"  n={n} {view} truth {i} {name} NOT SCORED: {exc}")
-            ut = (truths[i] - cen) / hw
-            put("C", NN.net_samples(view, pc[0], items, m, 400 + i, HS, SC, cond=True, theta_u=ut))
-            put("PM", NN.net_samples(view, pc[0], items, m, 410 + i, HS, SC, cond=True, theta_u=pm))
-            put("P0", NN.net_samples(view, pc[0], items, m, 420 + i, HS, SC, cond=True,
-                                     theta_u=pri_u[rng.choice(len(pri_u), ni * m)].reshape(ni, m, d)))
-            put("P0u", NN.net_samples(view, p0[0], items, m, 430 + i, HS, SC))
-            for b, nb in enumerate(budgets):
-                if draws is not None and (view, i, nb) in draws:
-                    dr = draws[(view, i, nb)]
-                    put(f"S@{nb}", NN.net_samples(view, pc[0], items, m, 440 + i, HS, SC, cond=True,
-                                                  theta_u=dr[rng.choice(len(dr), ni * m)].reshape(ni, m, d)))
-                put(f"D@{nb}", NN.net_samples(view, pD[(i, nb)], items, m, 450 + i, HS, SC))
-                model = LL.ridge_fit(view, labdata[i]["obs"][:nb], labdata[i]["U"][:nb], HS, SC)
-                put(f"Dr@{nb}", LL.ridge_samples(view, model, items, m, 0, HS, SC))
+        try:                                        # a failure in one view must not lose the other views
+            t_train = predict_view(n, vi, view, t0, tv, SCORES, TRAIN, d, nT, budgets, m, cen, hw, obs_m, U_m, th_m,
+                                   ep0, labdata, truths, draws, pri_u, pm, exams, SC)
+            t_score = time.time() - t0 - t_train
+            log(f"  n={n} view {view}: nets {t_train:.0f}s, scored in {t_score:.0f}s")
+        except Exception as exc:
+            FAILED.append(f"n={n} view {view}: {exc!r}"[:300])
+            log(f"  n={n} view {view} FAILED: {exc!r}\n{traceback.format_exc()}")
         npz(f"n{n}/scores.npz", **SCORES)
         jdump(f"n{n}/train_info.json", TRAIN)
-        t_score = time.time() - t0 - t_train
-        log(f"  n={n} view {view}: nets {t_train:.0f}s, scored in {t_score:.0f}s")
     npz(f"n{n}/scores.npz", **SCORES)
     return SCORES
+
+
+def predict_view(n, vi, view, t0, tv, SCORES, TRAIN, d, nT, budgets, m, cen, hw, obs_m, U_m, th_m, ep0, labdata,
+                 truths, draws, pri_u, pm, exams, SC):
+    """Nets and scores of one view. A failed group of nets is recorded and its policies are left out.
+    Returns the seconds spent training."""
+    l = LL.LEVEL[view]
+    kw = dict(log=log, deadline=T_END, min_steps=CFG["min_steps"])
+    # D(N): small and large budgets as two groups, each in lockstep batches of at most MAX_LOCK nets
+    batches = []
+    for gi, grp in enumerate(([b for b in budgets if b <= CFG["real_split"]],
+                              [b for b in budgets if b > CFG["real_split"]])):
+        order = [(i, nb) for i in range(nT) for nb in grp]
+        for j, s0 in enumerate(range(0, len(order), NN.Cfg.MAX_LOCK)):
+            part = order[s0:s0 + NN.Cfg.MAX_LOCK]
+            batches.append((f"D|group{gi}|batch{j}", gi, grp, part, (3.0, 4.0)[gi] * len(part) / len(order)))
+    todo = {"cond": 3.0, "P0u": 1.5, **{b[0]: b[4] for b in batches}}     # shares of the view's net time
+
+    def train(name, dsets, cond, steps, seed, tag):
+        w = todo.pop(name)                           # unused time rolls on to the nets that follow
+        budget = max(t0 + tv - time.time(), 0.0) * w / (w + sum(todo.values()))
+        try:
+            prm, info = NN.train_nets(view, dsets, cond=cond, steps=steps, seed=seed, tag=tag, time_budget=budget, **kw)
+            TRAIN[f"{view}|{name}"] = info
+            return prm
+        except Exception as exc:
+            FAILED.append(f"n={n} {view} nets {name}: {exc!r}"[:300])
+            log(f"  n={n} {view} nets {name} FAILED: {exc!r}\n{traceback.format_exc()}")
+            return None
+    pc = train("cond", [NN.make_dataset(view, obs_m, U_m, SC, theta_u=th_m, seed=900 + n)], True, CFG["steps_cond"],
+               900 + 10 * n + vi, f"[n{n} {view} cond]")
+    p0 = train("P0u", [NN.make_dataset(view, obs_m[ep0], U_m[ep0], SC, seed=950 + n)], False, CFG["steps_p0"],
+               950 + 10 * n + vi, f"[n{n} {view} P0u]")
+    pD = {}
+    for name, gi, grp, part, _ in batches:
+        dsets = [NN.make_dataset(view, labdata[i]["obs"][:nb], labdata[i]["U"][:nb], SC, seed=100 * nb + i)
+                 for i, nb in part]
+        prm = train(name, dsets, False, CFG["steps_real"][gi], 700 + 10 * n + vi + 100 * gi + 1000 * int(name[-1]),
+                    f"[n{n} {view} D {grp} {name[-6:]}]")
+        if prm is not None:
+            TRAIN[f"{view}|{name}"]["order_truth_budget"] = part
+            pD.update(dict(zip(part, prm)))
+        del dsets
+    t_train = time.time() - t0
+    rng = np.random.default_rng([4407, n, vi])
+    for i in range(nT):
+        items = exams[i].public()
+        ni = len(items)
+        vc = LL.ViewCells(exams[i], l)
+
+        def put(name, make):
+            try:
+                SCORES[f"t{i}|{view}|{name}"] = vc.score(make())
+            except Exception as exc:                 # e.g. non-finite samples: the policy is left out
+                FAILED.append(f"n={n} {view} t{i} {name}: {exc!r}"[:300])
+                log(f"  n={n} {view} truth {i} {name} NOT SCORED: {exc!r}")
+        ut = (truths[i] - cen) / hw
+        if pc is not None:
+            put("C", lambda: NN.net_samples(view, pc[0], items, m, 400 + i, HS, SC, cond=True, theta_u=ut))
+            put("PM", lambda: NN.net_samples(view, pc[0], items, m, 410 + i, HS, SC, cond=True, theta_u=pm))
+            put("P0", lambda: NN.net_samples(view, pc[0], items, m, 420 + i, HS, SC, cond=True,
+                                             theta_u=pri_u[rng.choice(len(pri_u), ni * m)].reshape(ni, m, d)))
+        if p0 is not None:
+            put("P0u", lambda: NN.net_samples(view, p0[0], items, m, 430 + i, HS, SC))
+        for nb in budgets:
+            if pc is not None and draws is not None and (view, i, nb) in draws:
+                dr = draws[(view, i, nb)]
+                put(f"S@{nb}", lambda: NN.net_samples(view, pc[0], items, m, 440 + i, HS, SC, cond=True,
+                                                      theta_u=dr[rng.choice(len(dr), ni * m)].reshape(ni, m, d)))
+            if (i, nb) in pD:
+                put(f"D@{nb}", lambda: NN.net_samples(view, pD[(i, nb)], items, m, 450 + i, HS, SC))
+            put(f"Dr@{nb}", lambda: LL.ridge_samples(
+                view, LL.ridge_fit(view, labdata[i]["obs"][:nb], labdata[i]["U"][:nb], HS, SC), items, m, 0, HS, SC))
+    return t_train
 
 
 def report(n, SCORES, nT, budgets):
@@ -503,31 +547,39 @@ def report(n, SCORES, nT, budgets):
     worlds = np.concatenate([[i] * len(SCORES[f"t{i}|classes"]) for i in range(nT)])
     groups = np.concatenate([SCORES[f"t{i}|classes"] for i in range(nT)])
     for view in LL.VIEWS:
-        names = sorted({k.split("|")[2] for k in SCORES if k.count("|") == 2 and k.split("|")[1] == view})
-        names = [a for a in names if all(f"t{i}|{view}|{a}" in SCORES for i in range(nT))]
-        if "C" not in names:
-            continue
-        S = {a: np.concatenate([SCORES[f"t{i}|{view}|{a}"] for i in range(nT)]) for a in names}
-        rep = skill_report({"climatology": S["K"], "oracle": S["O"], **{a: S[a] for a in names if a not in ("K", "O")}},
-                           cells=[(view, h) for h in HS], groups=groups, n_boot=1000,
-                           valid=np.ones(len(HS), bool) if args.smoke else None)
-        valid = np.array(rep["valid"], bool)
-        acc = {}
-        for nb in budgets:
-            if f"S@{nb}" not in S:
-                continue
-            Ld = {a: float(S[a][:, valid].sum(1).mean()) for a in (f"D@{nb}", f"Dr@{nb}")}
-            dbest = min(Ld, key=Ld.get)
-            r = ACC.shares({"K": S["K"], "C": S["C"], "P0": S["P0"], "S": S[f"S@{nb}"], "D": S[dbest]}, valid,
-                           worlds=worlds, n_boot=1000, seed=nb)
-            acc[str(nb)] = {"D_is": dbest, **{k: r[k] for k in ("sigma", "null_is", "rho", "sigma_worlds", "rho_worlds",
-                                                                 "pass_sigma", "pass_rho", "L")}}
-        out[view] = {"report": public_report(rep), "acceptance": acc, "n_items": int(len(worlds))}
-        agg = rep["aggregate"]
-        log(f"  n={n} {view} OES " + ", ".join(f"{k} {agg[k]:.3f}" for k in sorted(agg) if k not in ("climatology", "oracle")))
-        log(f"  n={n} {view} " + "; ".join(f"N={b}: sigma {a['sigma']:.3f} rho {a['rho']:.2f}" for b, a in acc.items()))
+        try:
+            _report_view(view, SCORES, nT, budgets, worlds, groups, out, n)
+        except Exception as exc:                     # one view's report must not lose the others
+            FAILED.append(f"n={n} report {view}: {exc!r}"[:300])
+            log(f"  n={n} report {view} FAILED: {exc!r}\n{traceback.format_exc()}")
     jdump(f"n{n}/prediction.json", out)
     return out
+
+
+def _report_view(view, SCORES, nT, budgets, worlds, groups, out, n):
+    names = sorted({k.split("|")[2] for k in SCORES if k.count("|") == 2 and k.split("|")[1] == view})
+    names = [a for a in names if all(f"t{i}|{view}|{a}" in SCORES for i in range(nT))]
+    if "C" not in names:
+        return
+    S = {a: np.concatenate([SCORES[f"t{i}|{view}|{a}"] for i in range(nT)]) for a in names}
+    rep = skill_report({"climatology": S["K"], "oracle": S["O"], **{a: S[a] for a in names if a not in ("K", "O")}},
+                       cells=[(view, h) for h in HS], groups=groups, n_boot=1000,
+                       valid=np.ones(len(HS), bool) if args.smoke else None)
+    valid = np.array(rep["valid"], bool)
+    acc = {}
+    for nb in budgets:
+        Ld = {a: float(S[a][:, valid].sum(1).mean()) for a in (f"D@{nb}", f"Dr@{nb}") if a in S}
+        if f"S@{nb}" not in S or not Ld:
+            continue
+        dbest = min(Ld, key=Ld.get)
+        r = ACC.shares({"K": S["K"], "C": S["C"], "P0": S["P0"], "S": S[f"S@{nb}"], "D": S[dbest]}, valid,
+                       worlds=worlds, n_boot=1000, seed=nb)
+        acc[str(nb)] = {"D_is": dbest, **{k: r[k] for k in ("sigma", "null_is", "rho", "sigma_worlds", "rho_worlds",
+                                                             "pass_sigma", "pass_rho", "L")}}
+    out[view] = {"report": public_report(rep), "acceptance": acc, "n_items": int(len(worlds))}
+    agg = rep["aggregate"]
+    log(f"  n={n} {view} OES " + ", ".join(f"{k} {agg[k]:.3f}" for k in sorted(agg) if k not in ("climatology", "oracle")))
+    log(f"  n={n} {view} " + "; ".join(f"N={b}: sigma {a['sigma']:.3f} rho {a['rho']:.2f}" for b, a in acc.items()))
 
 
 # ----------------------------------------------------------------------------- main
@@ -609,5 +661,5 @@ if __name__ == "__main__":
         sys.exit(1)
     if not done:
         sys.exit(1)
-    if [f for f in FAILED if not f.startswith("skipped")]:
-        sys.exit(2)
+    if [f for f in FAILED if args.smoke or not f.startswith("skipped")]:
+        sys.exit(2)                                  # in a smoke pass a part skipped on its deadline also fails
