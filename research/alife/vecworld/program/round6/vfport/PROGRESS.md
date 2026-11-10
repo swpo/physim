@@ -6,7 +6,15 @@
 - Worktree `/home/user/wt/vfsafe2` (branch wt-vfsafe2, pushes to `claude/fisim-agent-world-research-hepmlz`). Scratch
   `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/` (the rehearsal's clone, its
   .venv and its pilot folders live in `.../vfsafe2/rehearsal`; nothing there survives a restart).
-- State (16:35 UTC): started; audit and runbook read in full; nothing changed yet, nothing running.
+- State (17:25 UTC): RUNBOOK_MAC.md rewritten for the seven changes (still ON HOLD; says REHEARSAL PENDING); new
+  folder `rehearsal/` (not in PIN.sha256): `issue.py` issues ONE runbook command as `sh -c '<text>'` and records it,
+  `check_round2.py` runs the verdict's tests with stand-ins. First results (scratch, not yet under results/):
+  check_round2 46 of 47 (the one failure was the test's own lookup, fixed); pinned tools/check_runbook.py 32 of 33
+  (the failing check asks for the round-1 `[p]ython` pattern, which change 1 replaces); pin.py --check 105 files,
+  0 differences. Found on the way: the uv DRY RUN with --managed-python already downloads uv's Python (33 MB).
+- Next: push this commit, clone it into <scratch>/vfsafe2/rehearsal/clone (sparse, shallow, by commit), run the
+  rehearsal in session mode with `rehearsal/issue.py` (steps 0, 1, four interruptions, 2a, 2b, 2c, 4), then fix
+  the text where it did not match, write results/, README, summary.json.
 - If the container restarted: `pgrep -x dockerd >/dev/null || (nohup dockerd --feature containerd-snapshotter=false >
   <scratch>/vfsafe2/dockerd.log 2>&1 &)`; `docker ps -a --filter label=verifiers.run=physim2-pilot-20261110` lists
   a cut rehearsal's containers (remove by exact name); then go on from the state line above.
