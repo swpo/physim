@@ -14,6 +14,12 @@
   "job_id": "r5-ladder-001",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T02:20:48Z",
+    "file": "jobs/r5-ladder-001/review.md",
+    "sha256": "0ef0478ec0e0575fd6a9926b58ea613af8d4d9809520e9b1c825fdf3809a08c3",
+    "summary": "NOT STARTED: full-size block-view D(N) validation builds 3.6e9-element arrays, past 2^31 (ladder_net.py:314-323); chunk it and resubmit. Secrecy clean. 2 minor, 5 info."
+  },
   "state": "received",
   "updated_at": "2026-11-10T01:52:10Z"
 }
