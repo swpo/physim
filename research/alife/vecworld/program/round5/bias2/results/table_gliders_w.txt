@@ -1,0 +1,50 @@
+world gliders_w  (fields ['c0', 'c1']; layout {'J_CERT': 32, 'J_EXTRA_requested': 32, 'T': 300, 'TEST': [40, 100, 160, 220], 'TB': 16, 'R_BR': 5, 'BURN': 0, 'STRIDE': 1, 'tiny': False})
+
+hand block designs (c = 1, 16-px block means), by closure ceiling at h = 16:
+feature | ceiling h=1,4,16 | persistence 1,4,16 | PR | I_avail@1 | I_capt@1 | box-mean time var x64
+mass   | 0.992 0.778 0.138 | 0.950 0.407 -1.232 | 53.8 | 274 | 166 | 0
+c0     | 0.986 0.741 0.136 | 0.949 0.398 -1.240 | 53.8 | 265 | 151 | 0
+msq    | 0.982 0.722 0.101 | 0.943 0.369 -1.237 | 55.1 | 209 | 126 | 0.0039
+c1     | 0.977 0.683 0.096 | 0.935 0.327 -1.236 | 56.0 | 251 | 137 | 0
+dc     | 0.865 0.215 0.004 | 0.806 -0.339 -1.324 | 55.8 | 192 | 80 | 0
+sfa_c1 | 0.992 0.783 0.145 | 0.952 0.416 -1.235 | 53.4 | 276 | 168 | 0
+sfax_c1 | 0.975 0.747 0.143 | 0.949 0.451 -1.233 | 51.0 | 168 | 109 | 0.0243
+pca_c1 | 0.992 0.781 0.139 | 0.951 0.409 -1.232 | 53.7 | 275 | 168 | 0
+
+learned configs: ceiling h=1,4,16 | PR | I_capt@1 | best block design (loc1 sym; its tent8; loc1q; loc9; glob) | sfa/sfax loc1 | seed loc1 | field shares
+rand0_c1        | 0.331 0.063 0.002 | 62.0 | 13 | msq 0.2187 (tent 0.1611; q 0.2276; 9 0.2426; glob 0.2282) | 0.2162/0.2095 | 0.0725 | {'c0': 0.504, 'c1': 0.496, 'nonlinear': 0.0}
+rand8_c1        | 0.338 0.045 0.003 | 59.3 | 11 | c0 0.0207 (tent 0.0339; q 0.0226; 9 0.2002; glob 0.1853) | 0.0202/0.0217 | 0.0047 | {'c0': 0.46, 'c1': 0.54, 'nonlinear': 0.0}
+Lw0_clos_c1     | 0.992 0.787 0.145 | 53.3 | 157 | mass 0.9908 (tent 0.8228; q 0.9915; 9 0.9908; glob 0.9904) | 0.9994/0.9748 | 1.0 | {'c0': 0.665, 'c1': 0.335, 'nonlinear': 0.0}
+Lw8_clos_c1     | 0.993 0.884 0.284 | 36.3 | 155 | c0 0.5902 (tent 0.7354; q 0.6065; 9 0.7024; glob 0.7009) | 0.5843/0.6023 | 0.5506 | {'c0': 0.845, 'c1': 0.155, 'nonlinear': 0.0}
+Nw0_clos_c1     | 0.993 0.810 0.161 | 52.0 | 159 | mass 0.9844 (tent 0.8394; q 0.9869; 9 0.9849; glob 0.9841) | 0.9972/0.9785 | 0.9991 | {'c0': 0.093, 'c1': 0.086, 'nonlinear': 0.821}
+Nw8_clos_c1     | 0.990 0.872 0.276 | 41.5 | 146 | c0 0.5014 (tent 0.5894; q 0.5178; 9 0.6394; glob 0.6305) | 0.4674/0.4746 | 0.5589 | {'c0': 0.153, 'c1': 0.084, 'nonlinear': 0.763}
+L0_clos_c1      | 0.983 0.775 0.148 | 49.5 | 125 | mass 0.971 (tent 0.8747; q 0.9765; 9 0.9746; glob 0.974) | 0.9825/0.9665 | 0.9998 | {'c0': 0.684, 'c1': 0.316, 'nonlinear': 0.0}
+L8_clos_c1      | 0.993 0.915 0.370 | 23.1 | 110 | mass 0.5995 (tent 0.9249; q 0.6256; 9 0.6445; glob 0.6552) | 0.6094/0.644 | 0.9998 | {'c0': 0.75, 'c1': 0.25, 'nonlinear': 0.0}
+N0_clos_c1      | 0.982 0.801 0.160 | 44.9 | 119 | mass 0.8747 (tent 0.8658; q 0.9011; 9 0.8845; glob 0.8868) | 0.8856/0.884 | 0.8936 | {'c0': 0.268, 'c1': 0.191, 'nonlinear': 0.541}
+N8_clos_c1      | 0.994 0.925 0.390 | 22.0 | 109 | c0 0.5899 (tent 0.9204; q 0.6106; 9 0.6378; glob 0.6345) | 0.5992/0.6338 | 0.9975 | {'c0': 0.202, 'c1': 0.151, 'nonlinear': 0.646}
+
+matched effective dimension (c = 1): learned minus the best hand family interpolated at the learned PR
+config | PR | ceil4: learned, best hand (family), diff; own = the best-agreeing feature's family (* = PR outside its range, nearest window used) | ceil16: ... | I_capt@1: ...
+rand0_c1        | 61.96 | 0.0627 (no family brackets; own msq 0.7215* -0.659) | 0.0017 (no family brackets; own msq 0.1014* -0.100) | 12.6435 (no family brackets; own msq 125.8456* -113.202)
+rand8_c1        | 59.32 | 0.0448 (no family brackets; own c0 0.7407* -0.696) | 0.0025 (no family brackets; own c0 0.136* -0.134) | 11.0832 (no family brackets; own c0 150.5577* -139.475)
+Lw0_clos_c1     | 53.32 | 0.7867 vs 0.7828 (mass) +0.004; own mass 0.7828 +0.004 | 0.1453 vs 0.141 (mass) +0.004; own mass 0.141 +0.004 | 156.9334 vs 166.5635 (mass) -9.630; own mass 166.5635 -9.630
+Lw8_clos_c1     | 36.32 | 0.8845 vs 0.9117 (mass) -0.027; own c0 0.8974 -0.013 | 0.2841 vs 0.2854 (mass) -0.001; own c0 0.2818 +0.002 | 155.08 vs 177.0656 (mass) -21.986; own c0 163.2097 -8.130
+Nw0_clos_c1     | 52.04 | 0.8103 vs 0.7952 (mass) +0.015; own mass 0.7952 +0.015 | 0.1606 vs 0.1506 (mass) +0.010; own mass 0.1506 +0.010 | 158.6238 vs 166.9519 (mass) -8.328; own mass 166.9519 -8.328
+Nw8_clos_c1     | 41.49 | 0.8719 vs 0.8878 (mass) -0.016; own c0 0.873 -0.001 | 0.2764 vs 0.2343 (mass) +0.042; own c0 0.2323 +0.044 | 146.4561 vs 171.6117 (mass) -25.156; own c0 159.4838 -13.028
+L0_clos_c1      | 49.48 | 0.7749 vs 0.8201 (mass) -0.045; own mass 0.8201 -0.045 | 0.1482 vs 0.1698 (mass) -0.022; own mass 0.1698 -0.022 | 124.5591 vs 167.7296 (mass) -43.170; own mass 167.7296 -43.170
+L8_clos_c1      | 23.09 | 0.9149 vs 0.9314 (mass) -0.017; own mass 0.9314 -0.017 | 0.3702 vs 0.38 (c0) -0.010; own mass 0.3799 -0.010 | 110.194 vs 160.1528 (mass) -49.959; own mass 160.1528 -49.959
+N0_clos_c1      | 44.86 | 0.8007 vs 0.8648 (mass) -0.064; own mass 0.8648 -0.064 | 0.1598 vs 0.2043 (mass) -0.044; own mass 0.2043 -0.044 | 118.7795 vs 169.1305 (mass) -50.351; own mass 169.1305 -50.351
+N8_clos_c1      | 22.04 | 0.9249 vs 0.9308 (mass) -0.006; own c0 0.9177 +0.007 | 0.3895 vs 0.386 (c0) +0.004; own c0 0.386 +0.004 | 108.7882 vs 157.1481 (mass) -48.360; own c0 145.1026 -36.314
+
+dominance (c = 1): learned minus the most closed hand design with at least its effective dimension; any window | same receptive field
+config | PR | h=4: hand (PR) diff ; h=16: hand (PR) diff | same receptive field: h=4 ; h=16
+rand0_c1        | 61.96 | none ; none | none ; none
+rand8_c1        | 59.32 | none ; none | none ; none
+Lw0_clos_c1     | 53.32 | sfa_c1 (53.43) +0.004 ; sfa_c1 (53.43) +0.000 | sfa_c1 (53.43) +0.004 ; sfa_c1 (53.43) +0.000
+Lw8_clos_c1     | 36.32 | mass_h4 (43.42) +0.006 ; c0_h4 (42.95) +0.066 | mass_h4 (43.42) +0.006 ; c0_h4 (42.95) +0.066
+Nw0_clos_c1     | 52.04 | sfa_c1 (53.43) +0.027 ; sfa_c1 (53.43) +0.016 | sfa_c1 (53.43) +0.027 ; sfa_c1 (53.43) +0.016
+Nw8_clos_c1     | 41.49 | mass_h4 (43.42) -0.007 ; c0_h4 (42.95) +0.058 | mass_h4 (43.42) -0.007 ; c0_h4 (42.95) +0.058
+L0_clos_c1      | 49.48 | sfa_c1 (53.43) -0.008 ; sfa_c1 (53.43) +0.003 | sfa_c1 (53.43) -0.008 ; sfa_c1 (53.43) +0.003
+L8_clos_c1      | 23.09 | mass_h8 (30.95) -0.022 ; mass_h8 (30.95) +0.032 | mass_h8 (30.95) -0.022 ; mass_h8 (30.95) +0.032
+N0_clos_c1      | 44.86 | c1_h4 (45.72) -0.022 ; c1_h4 (45.72) -0.006 | sfa_c1 (53.43) +0.018 ; sfa_c1 (53.43) +0.015
+N8_clos_c1      | 22.04 | mass_h8 (30.95) -0.012 ; mass_h8 (30.95) +0.051 | mass_h8 (30.95) -0.012 ; mass_h8 (30.95) +0.051

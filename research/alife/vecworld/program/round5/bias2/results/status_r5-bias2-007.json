@@ -1,0 +1,202 @@
+{
+  "billing_window_hours": 2.6,
+  "bundle": {
+    "bundle_sha256": "c73dad4589bae2a6afd7fd4dba50c5de808a3ed972e81a1c82b8a7913dfac6b0",
+    "files": {
+      "job.sh": "2801b1e447ece1031d6ed5cdd180d2a7d0ec37e06467bcc4bf26cb3bdc1df047",
+      "request.json": "a4be45694b5415f5bb1faf31a08a809f8bc7132f23c2627a91ee0731857d4d1e",
+      "run.sh": "b7f6a551f58829edeafda0a938daaa1ff8c2a92ed7b20130a26bde85f7bc59f5",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "91807a0795859a503208265c7f62f0cbcc2a158090ae9410ad89f5039e8905a4"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round5/bias2"
+    ],
+    "ref": "affd4ecb2af5d298b774eb1badbb8f9abac57061",
+    "src_bytes": 18656427
+  },
+  "cap_usd": 12.4,
+  "collected": {
+    "error": null,
+    "files": 1167,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 23350840,
+    "truncated": false
+  },
+  "cost": {
+    "billed_usd": 2.3364,
+    "conservative_usd": 2.5143
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-10T03:35:57Z",
+  "hard_deadline": "2026-11-10T04:55:48Z",
+  "hard_deadline_epoch": 1794286548.233482,
+  "history": [
+    {
+      "at": "2026-11-10T01:54:16Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-10T01:55:08Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $3.68",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-10T02:05:51Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T02:11:22Z",
+      "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_a100_sxm4 available right now. Please try again later.); will retry",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-10T02:19:46Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T02:25:27Z",
+      "message": "job started on the pod",
+      "state": "running"
+    },
+    {
+      "at": "2026-11-10T03:35:31Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-10T03:35:58Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
+    }
+  ],
+  "job_id": "r5-bias2-007",
+  "max_estimate_usd": 3.68,
+  "message": "job finished (exit 0); pods terminated",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    },
+    {
+      "cloud_id": "gpu_1x_h100_pcie",
+      "country": "US",
+      "data_center": "us-west-3",
+      "disk_gb": 1024,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 3,
+      "rate_usd_hr": 3.29,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 26
+    }
+  ],
+  "plan": {
+    "max_estimate_usd": 3.68,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-10T01:55:08Z",
+    "window_hours": 1.85
+  },
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r5-bias2-007-a2",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": null,
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-bias2-007-a1",
+      "note": "no pod with this name after the create",
+      "pod_id": null,
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": null,
+      "requested_at": "2026-11-10T02:05:52Z",
+      "spot": false,
+      "state": "create_failed",
+      "terminated_at": null
+    },
+    {
+      "billed_usd": 2.3364,
+      "created_at": "2026-11-10T02:20:03Z",
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-bias2-007-a2",
+      "note": null,
+      "pod_id": "d5c610a617e74560bb39e26472cf6c72",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-10T02:25:14Z",
+      "requested_at": "2026-11-10T02:19:48Z",
+      "spot": false,
+      "state": "terminated",
+      "terminated_at": "2026-11-10T03:35:36Z"
+    }
+  ],
+  "pods_terminated": true,
+  "review": {
+    "at": "2026-11-10T01:54:48Z",
+    "file": "jobs/r5-bias2-007/review.md",
+    "sha256": "12e39ce7ba7886d0d7d55ed7a13c0833e591bfc605de6d93ce98a2e73eb68859",
+    "summary": "Resubmission of 006 unchanged (same ref and env); its review applies: fine to run."
+  },
+  "run_deadline": "2026-11-10T04:01:27Z",
+  "started_at": "2026-11-10T02:25:27Z",
+  "state": "done",
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n02:26:30 [job] plan vortex:900:1500:1800 membrane:300:1100:1400 gliders:300:800:1100, arms w, nproc 30, cert workers 27, sim budget 2400s, hard end +5100s, tiny 0\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n02:26:38 [job] === world vortex: deadlines sim +900s train +1500s cert +1800s (plan 900/1500/1800)\n02:55:44 [job] vortex certification finished; 132 halves certified, 0 left unclaimed\n02:56:13 [job] === world vortex done in 1775s, FAIL=0\n02:56:13 [job] === world membrane: deadlines sim +300s train +1100s cert +1400s (plan 300/1100/1400)\n03:18:06 [job] membrane certification finished; 114 halves certified, 0 left unclaimed\n03:18:33 [job] === world membrane done in 1340s, FAIL=0\n03:18:33 [job] === world gliders: deadlines sim +300s train +800s cert +1100s (plan 300/800/1100)\n== out/progress.txt\n03:22:13 [ccert 23   106.1s] hand_fields__certA q=128 ok in 94.1s (certify 76.1s)\n03:22:16 [ccert 6   108.5s] rand0_c1_s0__certA q=64 ok in 28.6s (certify 18.1s)\n03:22:19 [ccert 16   110.9s] rand8_c1_s1__certB q=64 ok in 24.4s (certify 14.8s)\n03:22:20 [ccert 25   111.8s] rand0_c1_s1__certA q=64 ok in 26.9s (certify 16.9s)\n03:22:21 [ccert 10   113.4s] rand8_c1_s1__certA q=64 ok in 26.1s (certify 16.9s)\n03:22:21 [ccert 26   113.8s] rand8_c1_s0__certA q=64 ok in 26.9s (certify 16.8s)\n03:22:22 [ccert 2   114.3s] Lw0_clos_c1_s0__certB q=64 ok in 27.3s (certify 17.1s)\n03:22:23 [ccert 4   115.2s] rand8_c1_s0__certB q=64 ok in 29.1s (certify 18.1s)\n03:22:23 [ccert 13   115.0s] Lw0_clos_c1_s1__certB q=64 ok in 26.7s (certify 16.7s)\n03:22:23 [ccert 17   115.5s] Lw0_clos_c1_s0__certA q=64 ok in 25.3s (certify 15.8s)\n03:22:25 [ccert 18   116.6s] Lw0_clos_c1_s1__certA q=64 ok in 26.9s (certify 16.3s)\n03:22:33 [ccert 24   125.4s] hand_sfa_c2__certB q=128 ok in 72.5s (certify 59.3s)\n03:22:36 [ccert 5   128.2s] hand_fields__certB q=128 ok in 73.5s (certify 59.8s)\n03:22:36 [ccert 15   128.3s] hand_sfax_c2__certB q=128 ok in 75.4s (certify 61.7s)\n03:22:36 [ccert 22   128.8s] hand_sfax_c2__certA q=128 ok in 75.1s (certify 61.6s)\n03:22:38 [ctrain   130.1s] Lw8_clos_c1: steps 3000, val [1.5674999952316284, 1.687000036239624, 1.6435999870300293, 1.6241999864578247] -> [0.4650000035762787, 0.4641999900341034, 0.47049999237060547, 0.46549999713897705] (best at [3000, 3000, 3000, 3000]), train 66.3s (chunks {'first_incl_compile': 10.361467361450195, 'rest_mean': 4.571949763731523}), total 68.4s, 9.7 GB peak, 7.2 GB in use\n03:22:54 [ctrain   146.0s] Nw0_clos_c1: chunk 1 of 250 steps (+ val) in 10.8s\n03:22:59 [ccert 4   151.5s] Lw8_clos_c1_s0__certA q=64 ok in 21.4s (certify 12.3s)\n03:23:00 [ccert 2   151.6s] Lw8_clos_c1_s0__certB q=64 ok in 22.2s (certify 12.9s)\n03:23:00 [ccert 23   152.3s] Lw8_clos_c1_s1__certB q=64 ok in 22.2s (certify 12.8s)\n03:23:00 [ccert 13   152.1s] Lw8_clos_c1_s1__certA q=64 ok in 22.1s (certify 12.7s)\n03:23:01 [ctrain   152.9s] Nw0_clos_c1: chunk 2 of 250 steps (+ val) in 6.5s\n03:24:09 [ctrain   221.1s] Nw0_clos_c1: steps 3000, val [1.7639000415802002, 1.5353000164031982, 1.6955000162124634, 1.6610000133514404] -> [0.49779999256134033, 0.4973999857902527, 0.4887000024318695, 0.48750001192092896] (best at [3000, 3000, 3000, 3000]), train 87.6s (chunks {'first_incl_compile': 10.849786758422852, 'rest_mean': 6.490895357998935}), total 90.9s, 11.0 GB peak, 7.2 GB in use\n03:24:29 [ccert 17   241.6s] Nw0_clos_c1_s0__certB q=64 ok in 21.1s (certify 12.1s)\n03:24:29 [ccert 2   241.5s] Nw0_clos_c1_s0__certA q=64 ok in 20.9s (certify 12.0s)\n03:24:30 [ccert 1   241.8s] Nw0_clos_c1_s1__certB q=64 ok in 21.2s (certify 12.0s)\n03:24:30 [ccert 5   241.9s] Nw0_clos_c1_s1__certA q=64 ok in 20.7s (certify 12.0s)\n03:24:38 [ctrain   250.7s] Nw8_clos_c1: chunk 1 of 250 steps (+ val) in 23.7s\n03:24:57 [ctrain   269.4s] Nw8_clos_c1: chunk 2 of 250 steps (+ val) in 18.4s\n",
+  "updated_at": "2026-11-10T03:35:58Z"
+}
