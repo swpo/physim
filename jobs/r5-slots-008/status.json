@@ -173,10 +173,10 @@
   ],
   "pods_terminated": true,
   "review": {
-    "at": "2026-11-10T06:08:12Z",
+    "at": "2026-11-10T09:12:55Z",
     "file": "jobs/r5-slots-008/review.md",
-    "sha256": "fd40536b6e14546ffbdd19df0ce68a1cc74d88cf8c6b5742d93a5d4812adae2e",
-    "summary": "Same code; the platform allocator addresses 007's failure to allocate a contiguous ~18 GiB validation block on the A100 40GB. Fine to run; residual risk noted, 80 GB cards remain safer."
+    "sha256": "e6965797f3c470d08751edc4e271aacf5344284fe65a29c3bf457c034d86151e",
+    "summary": "After the run: the platform allocator worked (no OOM; 13 of 14 configs trained, certification complete). Exit 1 is a scombine.py table bug after combined.json was written; sam_set_sg skipped by deadline."
   },
   "run_deadline": "2026-11-10T10:00:13Z",
   "run_started_epoch": 1794291851.978595,

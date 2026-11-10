@@ -47,3 +47,25 @@ failure mode does not depend on contiguity in the driver's virtual address space
 not measured on this card. If it fails again, each config fails at its first validation
 (about a minute each) and the job ends with the references and `sam_sup` again, for about
 $1. 80 GB cards (A100 80GB, H100) remain the safer choice for this code.
+
+## After the run (added by the runner Mac)
+
+- **The allocator change worked.** The job ran on an A100 40GB (backend gpu). There was no
+  RESOURCE_EXHAUSTED. 13 of 14 configs trained all 3000 steps, and certification finished
+  with 116 halves certified and none unclaimed. `combined.json` was written in full.
+- **The time estimate above was wrong.** It took `sam_sup`'s 9.4 s per 100-step chunk for
+  every config. `sam_sup` did run at 9.44 s with this allocator, so the allocator cost
+  nothing. But the set and self configs take about 20-21.6 s per chunk (660-740 s per
+  config), and the rec configs about 12-14 s (410-490 s). Training took 9417 s, and
+  `sam_set_sg` was skipped by the training deadline (`train_done.json`).
+- **Exit 1 is a reporting bug in `scombine.py`, line 233.** It runs after `combined.json` is
+  written, so only `table.txt` is missing. The objval table calls `np.mean` on lists that
+  hold None: `objval/sac_set.json` has None for every set and self value, and
+  `objval/sac_rec.json` has None for replicas A0 and A1. A None-safe mean there (or
+  skipping None) fixes it.
+- **For the analysis:** `sac_set` reached val_best 0.001-0.003 and `sgm_set` about 0.02,
+  against 0.2-0.28 for the other set configs. The frozen-readout heads for `sac_set`
+  (all four replicas) and `sac_rec` A0/A1 sit at a constant rec value of about 0.942,
+  with val_h all zero. This looks like a collapsed representation, but the study should
+  judge that, not the runner.
+- **Cost:** $5.36 billed (lambdalabs A100 40GB at $1.99/h, about 2.7 h).
