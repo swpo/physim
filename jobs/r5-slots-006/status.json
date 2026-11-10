@@ -9,10 +9,40 @@
       "at": "2026-11-10T04:07:44Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T04:49:09Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $7.46",
+      "state": "queued"
     }
   ],
   "job_id": "r5-slots-006",
-  "message": "reviewed; waiting for an offer of A100_40GB/A100_80GB/H100_80GB that fits the cap (listed now: H100_80GB datacrunch $5.0199/h); the runner plans and starts it as soon as one fits",
+  "max_estimate_usd": 7.46,
+  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $7.46",
+  "plan": {
+    "max_estimate_usd": 7.46,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-10T04:49:09Z",
+    "window_hours": 3.75
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T04:08:11Z",
@@ -20,6 +50,6 @@
     "sha256": "9457f5fb722f1d66466430318559ca7a20fc5dff3c8b9c93207c0611bea0ca37",
     "summary": "Same code as slots-004/005; the memory recommendation is applied (MEM_FRACTION 0.9, about 36 GiB usable vs about 28 GiB peak); fine to run."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T04:42:56Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T04:49:09Z"
 }
