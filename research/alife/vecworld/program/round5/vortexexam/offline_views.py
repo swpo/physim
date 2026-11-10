@@ -41,6 +41,7 @@ ap.add_argument("job")
 ap.add_argument("--steps", type=int, default=3000)
 ap.add_argument("--tag", default="")
 ap.add_argument("--m", type=int, default=64)
+ap.add_argument("--families", default="ridge,net", help="ridge alone takes seconds; the nets take CPU-minutes")
 args = ap.parse_args()
 D = args.job
 RES = os.environ.get("VX_RES", os.path.join(HERE, "results"))
@@ -57,6 +58,7 @@ VX.T_EP, VX.PROG_TICKS, VX.C_PROG, VX.HS = int(PR["T_ep"]), tuple(PR["prog_ticks
 NN.set_const(PR.get("const", {}))
 PROG, HS = list(VX.PROG_TICKS), list(VX.HS)
 VIEWS = {"full": None, "last3": 3, "state": 1}
+FAMS = tuple(args.families.split(","))
 m = args.m
 
 
@@ -153,7 +155,7 @@ def fit(fam, dsets, d_theta, steps, seed, tag):
 
 
 for view, k in VIEWS.items():
-    for fam in ("ridge", "net"):
+    for fam in FAMS:
         v = f"{fam}[{view}]"
         mp0 = fit(fam, [mds(ds_p0, k)], 0, args.steps, 300, v + "|P0")[0]
         mc = fit(fam, [mds(ds_c, k)], D_TH, args.steps, 301, v + "|cond")[0]
@@ -195,7 +197,7 @@ def share(num_a, num_b, den_a, den_b):
 
 nb = budgets[-1]
 out = {MARK: True, "source_dir": os.path.basename(os.path.normpath(D)), "names": NAMES, "n_truths": nT,
-       "n_items_per_truth": nI, "budgets": budgets, "steps": args.steps, "m": m, "views": {k: (len(NN.LAGS) if v is None else v) for k, v in VIEWS.items()},
+       "n_items_per_truth": nI, "budgets": budgets, "steps": args.steps, "m": m, "families": list(FAMS), "views": {k: (len(NN.LAGS) if v is None else v) for k, v in VIEWS.items()},
        "lags_ticks": list(NN.LAGS), "L_K": Lk, "L_O": Lo, "skill": {k: skill(k) for k in SC},
        "pod_skill_for_comparison": {k: (Lk - pod[k]) / (Lk - Lo) for k in ("net|P0", "net|C", "net|PM", "ridge|P0", "ridge|C",
                                                                               "ridge|PM", f"net|D@{nb}", f"ridge|D@{nb}",
@@ -206,7 +208,7 @@ out = {MARK: True, "source_dir": os.path.basename(os.path.normpath(D)), "names":
                "family and view; rho = (L(P0) - L(S@n)) / (L(P0) - L(C)); pm_loss = skill(C) - skill(PM); history_value "
                "= skill(P0, full) - skill(P0, view); se = bootstrap over truths"}
 for view in VIEWS:
-    for fam in ("ridge", "net"):
+    for fam in FAMS:
         v = f"{fam}[{view}]"
         p0, c, dn = SC[v + "|P0"], SC[v + "|C"], SC[v + f"|D@{nb}"]
         null = p0 if p0.mean() <= dn.mean() else dn
@@ -217,14 +219,14 @@ for view in VIEWS:
         out["pm_loss"][v] = share(SC[v + "|PM"], c, LK, LO_)
         out["history_value"][v] = share(p0, SC[f"{fam}[full]|P0"], LK, LO_)
     # the strongest null of the view against the strongest C of the view (over ridge, net and the law T)
-    cands_null = [f"{f}[{view}]|P0" for f in ("ridge", "net")] + [f"{f}[{view}]|D@{nb}" for f in ("ridge", "net")] + [f"law|D@{nb}"]
-    cands_c = [f"{f}[{view}]|C" for f in ("ridge", "net")]
+    cands_null = [f"{f}[{view}]|P0" for f in FAMS] + [f"{f}[{view}]|D@{nb}" for f in FAMS] + [f"law|D@{nb}"]
+    cands_c = [f"{f}[{view}]|C" for f in FAMS]
     kn, kc = min(cands_null, key=lambda q: SC[q].mean()), min(cands_c, key=lambda q: SC[q].mean())
     out["sigma"][f"best[{view}]"] = dict(share(SC[kn], SC[kc], LK, SC[kc]), null=kn, C=kc)
 TAG = args.tag
 json.dump(out, open(os.path.join(RES, f"offline_views{'_' + TAG if TAG else ''}.json"), "w"), indent=1)
 for view in VIEWS:
-    for fam in ("ridge", "net"):
+    for fam in FAMS:
         v = f"{fam}[{view}]"
         s_ = out["sigma"][v]
         print(f"{v:14s} P0 {skill(v + '|P0'):.3f} C {skill(v + '|C'):.3f} PM {skill(v + '|PM'):.3f} S@{nb} {skill(v + f'|S@{nb}'):.3f} "

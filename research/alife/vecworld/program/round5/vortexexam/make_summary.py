@@ -255,8 +255,9 @@ for tag_ in ("A", "B"):
     for view in OV["views"]:
         by_budget[view] = {}
         for n in OV["budgets"]:
-            nulls = {f"{f}[{view}]|{q}": sk[f"{f}[{view}]|{q}"] for f in ("ridge", "net") for q in ("P0", f"D@{n}")}
-            cs = {f"{f}[{view}]|C": sk[f"{f}[{view}]|C"] for f in ("ridge", "net")}
+            fams_ = OV.get("families", ["ridge", "net"])
+            nulls = {f"{f}[{view}]|{q}": sk[f"{f}[{view}]|{q}"] for f in fams_ for q in ("P0", f"D@{n}")}
+            cs = {f"{f}[{view}]|C": sk[f"{f}[{view}]|C"] for f in fams_}
             kn, kc = max(nulls, key=nulls.get), max(cs, key=cs.get)
             by_budget[view][str(n)] = {"sigma": round(1 - nulls[kn] / cs[kc], 3), "null": kn, "C": kc}
     S[f"offline_views_{tag_}"] = V(
