@@ -142,100 +142,109 @@ if PRB:
         {k: PRB[k] for k in ("names", "lo", "hi", "selection")}, "prior_B.json (select_prior.py --out prior_B.json)",
         "the declared rule applied to the level-2 plug-in deficits of job 1's branches (available only after job 2 was "
         "requested): eps plus the two families with the largest min-edge headroom; everything else as prior.json")
-P = load(JD2, "prediction.json")
-if P:
-    src2 = f"origin/gpu-jobs:jobs/{J2}/out/"
-    info, ident, truths, lab, vp = (load(JD2, f) for f in ("info.json", "identification.json", "truths.json", "lab.json",
-                                                              "viability_prior.json"))
-    S["platform_job2"] = V({k: info.get(k) for k in ("backend", "devices", "versions", "rate", "bmax", "preset", "config",
-                                                     "member_ticks", "member_ticks_total", "hours", "failed",
-                                                     "secret_commitment")}, src2 + "info.json")
-    S["truths"] = V({"names": truths["names"], "truths": r(truths["truths"], 4), "n_candidates": len(truths["candidates"]),
-                     "n_viable": truths["n_viable"], "PILOT_NEVER_REUSE_AS_EXAM": True}, src2 + "truths.json",
-                    "pilot truths are public by design; never to be reused as an exam")
-    S["viability_prior"] = V(r(vp), src2 + "viability_prior.json")
-    S["lab"] = V({"per_budget_truth0": lab[0]["per_budget"], "caps": lab[0]["caps"],
-                  "nats_at_largest_budget_by_truth": [r(x["usage_final"]["total_nats"], 1) for x in lab]}, src2 + "lab.json")
-    if ident:
-        S["identification"] = V({"names": ident["names"], "prior_sd_theta": r(ident["prior_sd_theta"], 4),
-                                 "state": r(ident["state"]), "coverage": r(ident["coverage"])},
-                                src2 + "identification.json",
-                                "L1 = summaries of level-1 histories, L2 = of (N, s_b) only; contraction = posterior sd / "
-                                "prior sd per parameter, mean over truths; in90 = share of (truth, parameter) pairs inside "
-                                "the central 90% interval")
-    names = sorted(P["oes"])
-    fams = ("net", "ridge", "law", "lin2")
-    S["scores"] = V({"n_truths": P["n_truths"], "n_items": P["n_items_pooled"], "primary_cells": P["primary_cells"],
-                     "items_by_program_class": P.get("items_by_program_class"),
-                     "L_pooled": r(P["L_pooled"], 4), "oes": r(P["oes"]), "oes_se_items": r(P["oes_se_items"]),
-                     "oes_per_cell": {k: r(P["oes_per_cell"][k]) for k in names if k.split("|")[-1] in
-                                      ("P0", "C", "PM", "Cded", "K", "K0", "O_noinput") or k in ("oracle",)},
-                     "cells": P["cells"]},
-                    src2 + "prediction.json (L_pooled, oes, oes_se_items, oes_per_cell)",
-                    "L = mean fair energy score (vw.scoring.energy_fair) over items and the primary cells (level 2 = (N, s_b) "
-                    "jointly, scaled, at h = 8, 16, 32 ticks); OES = (L(K) - L) / (L(K) - L(O)), equal-weight mean over the "
-                    "primary cells (vw.scoring.skill_report); K = the truth's other main runs at the same tick, K0 = design "
-                    "episodes at the same tick (prior climatology), O_noinput = replicates from the hidden state without "
-                    "the test program")
-    acc = P["acceptance"]
 
-    def short(a):
-        return None if a is None else {
-            "sigma": r(a["sigma"]), "sigma_se_worlds": r((a.get("sigma_worlds") or {}).get("se")),
-            "sigma_p05_p95_worlds": r([(a.get("sigma_worlds") or {}).get(q) for q in ("p05", "p95")]),
-            "null_is": a["null_is"], "rho": r(a.get("rho")), "rho_se_worlds": r((a.get("rho_worlds") or {}).get("se")),
-            "rho_p05_p95_worlds": r([(a.get("rho_worlds") or {}).get(q) for q in ("p05", "p95")]),
-            "pass_sigma": a["pass_sigma"], "pass_rho": a.get("pass_rho"), "n_worlds": a.get("n_worlds")}
-    S["acceptance"] = V({k: short(v) for k, v in acc.items()}, src2 + "prediction.json acceptance",
-                        "computed by round5/agentenv/evaluator/acceptance.py (shares): sigma = (L(null) - L(C)) / (L(K) - "
-                        "L(C)), null = the better of D@n and P0; rho = (L(P0) - L(S@n)) / (L(P0) - L(C)); one predictor "
-                        "family per row 'family@n'; '|S2' = posterior from level-2 histories only; '|ded' = dedicated "
-                        "models (C = Cded, S = Sded); SE and 5-95% range from the bootstrap clustered by truth; bars "
-                        "sigma >= 0.15 and rho <= 0.7")
-    S["acceptance_per_world"] = V({k: r(v.get("per_world")) for k, v in acc.items() if "|" not in k},
-                                  src2 + "prediction.json acceptance[*].per_world")
-    S["gaps"] = V({k: r(v) for k, v in P["gaps_oes_item_bootstrap"].items()}, src2 + "prediction.json gaps_oes_item_bootstrap",
-                  "OES gaps with a paired bootstrap over items (not clustered by truth)")
-    cc = P["cchg"]
-    keep = [k for k in cc["reached"] if k in ("K", "K0", "anchor", "O_noinput") or k.split("|")[-1] in ("P0", "C", "PM", "Cded")
-            or k.endswith("@16") or k.endswith("@4")]
-    S["cchg"] = V({"hs_ticks": cc["hs"], "coords": cc["coords"],
-                   "pooled": {"oracle_predictable_share": r(cc["oracle_predictable_share"]), "V_change": r(cc["V_change"], 5),
-                              "Vu": r(cc["Vu"], 5), "reached": {k: r(cc["reached"][k]) for k in keep}},
-                   "within_truth": {"oracle_predictable_share": r(cc["within_truth"]["oracle_predictable_share"]),
-                                    "oracle_predictable_share_per_truth": r(cc["within_truth"]["oracle_predictable_share_per_truth"]),
-                                    "reached": {k: r(cc["within_truth"]["reached"][k]) for k in keep}}},
-                  src2 + "prediction.json cchg",
-                  "share of the oracle-predictable change reached, (V_change - Ve) / (V_change - Vu), per horizon (rows) "
-                  "and coordinate (N, s_b): V_change = variance of y(a + h) - y(a) about its mean, Vu = within-item "
-                  "replicate variance, Ve = mean squared error of the predictive mean (64 samples); 'pooled' over all "
-                  "items as in round 3 (track1/vortex128), 'within_truth' about each truth's own mean change, summed over truths")
-    if P.get("oes_by_program_class"):
-        bg = P["oes_by_program_class"]
-        cols = [k for k in ("K0", "O_noinput", "net|P0", "net|C", "net|Cded", "ridge|P0", "ridge|C", "law|C", "lin2|C") if k in P["oes"]]
-        S["by_program_class"] = V({g: {k: r(bg[g][k]) for k in cols} for g in bg}, src2 + "prediction.json oes_by_program_class",
-                                  "OES per program class of the test program (a none, b blind, c aimed, d regional); "
-                                  "1 - OES(O_noinput) = the share of the K-to-O skill that needs the test program")
-A2 = load("analysis2.json")
-if A2:
-    src3 = f"results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/{J2}/out: scores.npz, items.npz, design*.npz)"
-    S["status_job2"] = V(A2["status"], src3 + " status",
-                         "job2 exits 0 even if its report stage fails (the Mac's review, point 5): prediction_final and "
-                         "report_failures_in_progress_txt are the check")
-    S["ladder"] = V(r(A2["ladder"], 4), src3 + " ladder",
-                    "L = fair energy score pooled over items and the primary cells (level 2 jointly at h = 8, 16, 32 ticks); "
-                    "skill = (L(K) - L) / (L(K) - L(O)); families net / ridge / law / lin2; D, S, S2 by Lab episodes")
-    S["gaps_by_truth"] = V(r(A2["gaps_L_by_truth"]["pairs"], 4), src3 + " gaps_L_by_truth", A2["gaps_L_by_truth"]["note"])
-    S["acceptance_variants"] = V(r(A2["acceptance"]["rows"], 3), src3 + " acceptance.rows", A2["acceptance"]["note"])
-    S["acceptance_best_over_families"] = V(r(A2["acceptance"]["best_over_families"], 3), src3 + " acceptance.best_over_families",
-                                           "a sensitivity outside the roadmap's one-family rule: the best null (any D@n "
-                                           "or P0), the best C (any C or Cded) and the best S over the four families")
-    S["theory_T"] = V(r(A2["theory_T"]["by_budget"], 4), src3 + " theory_T", A2["theory_T"]["note"])
-    S["cchg_by_truth"] = V(r(A2["cchg"], 3), src3 + " cchg", A2["cchg"]["note"])
-    if "law_design" in A2:
-        S["law_design"] = V(r(A2["law_design"], 4), src3 + " law_design", A2["law_design"]["note"])
-    if "identification" in A2:
-        S["identification_digest"] = V(r(A2["identification"], 3), src3 + " identification", A2["identification"]["note"])
+def exam_sections(tag, jdir, jid, afile):
+    """The sections of one exam job: tag "" = job 2 (prior.json), "_B" = the follow-up (prior_B.json)."""
+    S = {}
+    P = load(jdir, "prediction.json")
+    if P:
+        src2 = f"origin/gpu-jobs:jobs/{jid}/out/"
+        info, ident, truths, lab, vp = (load(jdir, f) for f in ("info.json", "identification.json", "truths.json", "lab.json",
+                                                                  "viability_prior.json"))
+        S["platform_job"] = V({k: info.get(k) for k in ("backend", "devices", "versions", "rate", "bmax", "preset", "config",
+                                                         "member_ticks", "member_ticks_total", "hours", "failed",
+                                                         "secret_commitment")}, src2 + "info.json")
+        S["truths"] = V({"names": truths["names"], "truths": r(truths["truths"], 4), "n_candidates": len(truths["candidates"]),
+                         "n_viable": truths["n_viable"], "PILOT_NEVER_REUSE_AS_EXAM": True}, src2 + "truths.json",
+                        "pilot truths are public by design; never to be reused as an exam")
+        S["viability_prior"] = V(r(vp), src2 + "viability_prior.json")
+        S["lab"] = V({"per_budget_truth0": lab[0]["per_budget"], "caps": lab[0]["caps"],
+                      "nats_at_largest_budget_by_truth": [r(x["usage_final"]["total_nats"], 1) for x in lab]}, src2 + "lab.json")
+        if ident:
+            S["identification"] = V({"names": ident["names"], "prior_sd_theta": r(ident["prior_sd_theta"], 4),
+                                     "state": r(ident["state"]), "coverage": r(ident["coverage"])},
+                                    src2 + "identification.json",
+                                    "L1 = summaries of level-1 histories, L2 = of (N, s_b) only; contraction = posterior sd / "
+                                    "prior sd per parameter, mean over truths; in90 = share of (truth, parameter) pairs inside "
+                                    "the central 90% interval")
+        names = sorted(P["oes"])
+        fams = ("net", "ridge", "law", "lin2")
+        S["scores"] = V({"n_truths": P["n_truths"], "n_items": P["n_items_pooled"], "primary_cells": P["primary_cells"],
+                         "items_by_program_class": P.get("items_by_program_class"),
+                         "L_pooled": r(P["L_pooled"], 4), "oes": r(P["oes"]), "oes_se_items": r(P["oes_se_items"]),
+                         "oes_per_cell": {k: r(P["oes_per_cell"][k]) for k in names if k.split("|")[-1] in
+                                          ("P0", "C", "PM", "Cded", "K", "K0", "O_noinput") or k in ("oracle",)},
+                         "cells": P["cells"]},
+                        src2 + "prediction.json (L_pooled, oes, oes_se_items, oes_per_cell)",
+                        "L = mean fair energy score (vw.scoring.energy_fair) over items and the primary cells (level 2 = (N, s_b) "
+                        "jointly, scaled, at h = 8, 16, 32 ticks); OES = (L(K) - L) / (L(K) - L(O)), equal-weight mean over the "
+                        "primary cells (vw.scoring.skill_report); K = the truth's other main runs at the same tick, K0 = design "
+                        "episodes at the same tick (prior climatology), O_noinput = replicates from the hidden state without "
+                        "the test program")
+        acc = P["acceptance"]
+
+        def short(a):
+            return None if a is None else {
+                "sigma": r(a["sigma"]), "sigma_se_worlds": r((a.get("sigma_worlds") or {}).get("se")),
+                "sigma_p05_p95_worlds": r([(a.get("sigma_worlds") or {}).get(q) for q in ("p05", "p95")]),
+                "null_is": a["null_is"], "rho": r(a.get("rho")), "rho_se_worlds": r((a.get("rho_worlds") or {}).get("se")),
+                "rho_p05_p95_worlds": r([(a.get("rho_worlds") or {}).get(q) for q in ("p05", "p95")]),
+                "pass_sigma": a["pass_sigma"], "pass_rho": a.get("pass_rho"), "n_worlds": a.get("n_worlds")}
+        S["acceptance"] = V({k: short(v) for k, v in acc.items()}, src2 + "prediction.json acceptance",
+                            "computed by round5/agentenv/evaluator/acceptance.py (shares): sigma = (L(null) - L(C)) / (L(K) - "
+                            "L(C)), null = the better of D@n and P0; rho = (L(P0) - L(S@n)) / (L(P0) - L(C)); one predictor "
+                            "family per row 'family@n'; '|S2' = posterior from level-2 histories only; '|ded' = dedicated "
+                            "models (C = Cded, S = Sded); SE and 5-95% range from the bootstrap clustered by truth; bars "
+                            "sigma >= 0.15 and rho <= 0.7")
+        S["acceptance_per_world"] = V({k: r(v.get("per_world")) for k, v in acc.items() if "|" not in k},
+                                      src2 + "prediction.json acceptance[*].per_world")
+        S["gaps"] = V({k: r(v) for k, v in P["gaps_oes_item_bootstrap"].items()}, src2 + "prediction.json gaps_oes_item_bootstrap",
+                      "OES gaps with a paired bootstrap over items (not clustered by truth)")
+        cc = P["cchg"]
+        keep = [k for k in cc["reached"] if k in ("K", "K0", "anchor", "O_noinput") or k.split("|")[-1] in ("P0", "C", "PM", "Cded")
+                or k.endswith("@16") or k.endswith("@4")]
+        S["cchg"] = V({"hs_ticks": cc["hs"], "coords": cc["coords"],
+                       "pooled": {"oracle_predictable_share": r(cc["oracle_predictable_share"]), "V_change": r(cc["V_change"], 5),
+                                  "Vu": r(cc["Vu"], 5), "reached": {k: r(cc["reached"][k]) for k in keep}},
+                       "within_truth": {"oracle_predictable_share": r(cc["within_truth"]["oracle_predictable_share"]),
+                                        "oracle_predictable_share_per_truth": r(cc["within_truth"]["oracle_predictable_share_per_truth"]),
+                                        "reached": {k: r(cc["within_truth"]["reached"][k]) for k in keep}}},
+                      src2 + "prediction.json cchg",
+                      "share of the oracle-predictable change reached, (V_change - Ve) / (V_change - Vu), per horizon (rows) "
+                      "and coordinate (N, s_b): V_change = variance of y(a + h) - y(a) about its mean, Vu = within-item "
+                      "replicate variance, Ve = mean squared error of the predictive mean (64 samples); 'pooled' over all "
+                      "items as in round 3 (track1/vortex128), 'within_truth' about each truth's own mean change, summed over truths")
+        if P.get("oes_by_program_class"):
+            bg = P["oes_by_program_class"]
+            cols = [k for k in ("K0", "O_noinput", "net|P0", "net|C", "net|Cded", "ridge|P0", "ridge|C", "law|C", "lin2|C") if k in P["oes"]]
+            S["by_program_class"] = V({g: {k: r(bg[g][k]) for k in cols} for g in bg}, src2 + "prediction.json oes_by_program_class",
+                                      "OES per program class of the test program (a none, b blind, c aimed, d regional); "
+                                      "1 - OES(O_noinput) = the share of the K-to-O skill that needs the test program")
+    A2 = load(afile)
+    if A2:
+        src3 = f"results/{afile} (analyse2.py on origin/gpu-jobs:jobs/{jid}/out: scores.npz, items.npz, design*.npz)"
+        S["status_job"] = V(A2["status"], src3 + " status",
+                             "job2 exits 0 even if its report stage fails (the Mac's review, point 5): prediction_final and "
+                             "report_failures_in_progress_txt are the check")
+        S["ladder"] = V(r(A2["ladder"], 4), src3 + " ladder",
+                        "L = fair energy score pooled over items and the primary cells (level 2 jointly at h = 8, 16, 32 ticks); "
+                        "skill = (L(K) - L) / (L(K) - L(O)); families net / ridge / law / lin2; D, S, S2 by Lab episodes")
+        S["gaps_by_truth"] = V(r(A2["gaps_L_by_truth"]["pairs"], 4), src3 + " gaps_L_by_truth", A2["gaps_L_by_truth"]["note"])
+        S["acceptance_variants"] = V(r(A2["acceptance"]["rows"], 3), src3 + " acceptance.rows", A2["acceptance"]["note"])
+        S["acceptance_best_over_families"] = V(r(A2["acceptance"]["best_over_families"], 3), src3 + " acceptance.best_over_families",
+                                               "a sensitivity outside the roadmap's one-family rule: the best null (any D@n "
+                                               "or P0), the best C (any C or Cded) and the best S over the four families")
+        S["theory_T"] = V(r(A2["theory_T"]["by_budget"], 4), src3 + " theory_T", A2["theory_T"]["note"])
+        S["cchg_by_truth"] = V(r(A2["cchg"], 3), src3 + " cchg", A2["cchg"]["note"])
+        if "law_design" in A2:
+            S["law_design"] = V(r(A2["law_design"], 4), src3 + " law_design", A2["law_design"]["note"])
+        if "identification" in A2:
+            S["identification_digest"] = V(r(A2["identification"], 3), src3 + " identification", A2["identification"]["note"])
+    return {k + tag: v for k, v in S.items()}
+
+
+S.update(exam_sections("", JD2, J2, "analysis2.json"))
+S.update(exam_sections("_B", "job3", J3, "analysis2_B.json"))
 S["review_of_job2"] = V({
     "major: the closing scan shrank to J = 3, one anchor": "as predicted by the review (job1.py's rate table in --scan-only "
         "mode); fixed in job1.py after the run (rate table of two rows or job 1's bench rows, flat 0.8 x below the smallest "
@@ -247,7 +256,7 @@ S["review_of_job2"] = V({
     "3 size limit checked by construction": "job2.py now records a file over the per-file limit and exits non-zero",
     "4 out-of-memory ends job 2": "not changed (peak about 10 GB at batch 1024)",
     "5 exit 0 if the final report fails": "job2.py now exits non-zero in that case (after the run); for the run itself "
-        "see status_job2 (prediction_final, report_failures_in_progress_txt)",
+        "see status_job (prediction_final, report_failures_in_progress_txt)",
     "6 _paths.py of track1/vortex_world puts /home/user/evalwork first on sys.path": "not changed (not this study's file); "
         "vxlib imports vw from the repository copy first; the two vw copies were compared file by file on 10 Nov (identical)"},
     "origin/gpu-jobs:jobs/r5-vortexexam-003/review.md")

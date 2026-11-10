@@ -1,6 +1,6 @@
 """analyse2 -- analysis of GPU job 2 (the fed-vortex exam pilot) beyond the report written on the pod.
 
-    python -B analyse2.py JOB2_OUT_DIR        -> results/analysis2.json
+    python -B analyse2.py JOB2_OUT_DIR        -> results/analysis2.json   (VX_TAG=B: results/analysis2_B.json)
 
 PILOT: the truths of job 2 are public by design; never to be reused as an exam.
 
@@ -390,7 +390,8 @@ def clean(o):
     return o
 
 
-json.dump(clean(out), open(os.path.join(RES, "analysis2.json"), "w"), indent=1, allow_nan=False)
+TAG = os.environ.get("VX_TAG", "")                 # "" = job 2; "B" = the follow-up exam job -> analysis2_B.json
+json.dump(clean(out), open(os.path.join(RES, f"analysis2{'_' + TAG if TAG else ''}.json"), "w"), indent=1, allow_nan=False)
 st = out["status"]
 print("status:", {k: st[k] for k in ("backend", "preset", "rate", "hours", "failed", "fatal", "prediction_final",
                                      "report_failures_in_progress_txt")})

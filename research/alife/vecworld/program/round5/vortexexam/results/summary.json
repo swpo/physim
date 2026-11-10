@@ -1543,7 +1543,7 @@
    "2 pilot marker": "job2.py now writes PILOT_NEVER_REUSE_AS_EXAM into every JSON and npz output (after the run); the copies in results/job2 carry it (fetch_job.py); the files on gpu-jobs:jobs/r5-vortexexam-003/out other than info.json and truths.json do not, and are pilot data never to be reused as an exam",
    "3 size limit checked by construction": "job2.py now records a file over the per-file limit and exits non-zero",
    "4 out-of-memory ends job 2": "not changed (peak about 10 GB at batch 1024)",
-   "5 exit 0 if the final report fails": "job2.py now exits non-zero in that case (after the run); for the run itself see status_job2 (prediction_final, report_failures_in_progress_txt)",
+   "5 exit 0 if the final report fails": "job2.py now exits non-zero in that case (after the run); for the run itself see status_job (prediction_final, report_failures_in_progress_txt)",
    "6 _paths.py of track1/vortex_world puts /home/user/evalwork first on sys.path": "not changed (not this study's file); vxlib imports vw from the repository copy first; the two vw copies were compared file by file on 10 Nov (identical)"
   },
   "source": "origin/gpu-jobs:jobs/r5-vortexexam-003/review.md"
