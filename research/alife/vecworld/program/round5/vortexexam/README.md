@@ -4,8 +4,8 @@
 job from the public prior and written to its outputs (`truths.json`); every result file carries
 `PILOT_NEVER_REUSE_AS_EXAM`. The 256-bit world secret is never written.
 
-DRAFT of 10 Nov 2026, 01:35 UTC: job 1 (throughput, law, headroom scan) is analysed; the exam pilot
-(GPU job `r5-vortexexam-003`) is still running. State and next steps: `PROGRESS.md`.
+DRAFT of 10 Nov 2026, 02:15 UTC: jobs 1 and 2 are analysed; the follow-up exam job `r5-vortexexam-004` (pilot B)
+is requested. State and next steps: `PROGRESS.md`.
 
 Question: does a world whose level 2 has its own effective law give an exam where understanding matters more
 than on the gliders, where a predictor trained on prior simulations (P0) takes nearly all the skill?
@@ -38,7 +38,8 @@ than on the gliders, where a predictor trained on prior simulations (P0) takes n
 | `results/summary.json` | every number with its source |
 
 GPU jobs: `r5-vortexexam-001` cancelled before start (cap too low for the only offer); `r5-vortexexam-002`
-(job 1) done, H200, 0.33 h, $2.29 billed; `r5-vortexexam-003` (job 2) running on an A100 40GB.
+(job 1) done, H200, 0.33 h, $2.29 billed; `r5-vortexexam-003` (job 2, pilot A) done, A100 40GB, 0.65 h, $1.31
+billed; `r5-vortexexam-004` (job 3, pilot B) requested.
 
 ## Results so far (job 1; sources in `results/summary.json`)
 
@@ -62,6 +63,30 @@ GPU jobs: `r5-vortexexam-001` cancelled before start (cap too low for the only o
    mutation interval: (eps, mut128, nu, e). With the deficits the rule picks (eps, mu, e) (`prior_B.json`); the
    mutation interval has no headroom and nu little.
 
-## Exam pilot
+## Exam pilot A (job 2, hidden set eps, mut128, nu, e; SMALL: 6 truths, 192 design points, 192 items)
 
-Pending (`r5-vortexexam-003`).
+The A100 it ran on gave 169 member-ticks/s (the H200 of job 1: 444), and the sizing rule then fell to the
+smallest preset: no dedicated models, Lab budgets up to 8 episodes. First reading (skill = share of the
+climatology-to-oracle gap of the pooled fair energy score; unit of the errors = truth):
+
+- P0 (net trained on prior simulations) 0.559, C (the same net given the true parameters) 0.557, S (posterior
+  from 1-8 Lab episodes) 0.55-0.56: science share sigma = -0.003 +- 0.029. The exam fails the bar (0.15) as the
+  gliders did. rho is undefined when P0 equals C.
+- The parameters do matter: the prior-mean plug-in scores 0.351 (0.21 below C, 5 of 6 truths; gliders: 0.03-0.09
+  below), and the prior climatology is 3 skill units worse than the truth's own. P0 reads them off the item's
+  history.
+- Theory policy T (the replicator-mutator law with constants fitted to n Lab episodes; never runs level 0):
+  0.38, 0.46, 0.48, 0.50 at n = 1, 2, 4, 8, against -0.38, -0.49, 0.06, 0.21 for the data-only net. T closes
+  81-91% of the gap between the data-only net and C.
+- The test programs matter: an oracle that ignores them reaches 0.77 (1.02 without a program, 0.56 under a
+  regional one).
+- Identification from 1 Lab episode (posterior sd / prior sd): level-1 summaries eps 0.23, mut128 0.44, nu 0.28,
+  e 0.06; from (N, s_b) only 0.38, 0.65, 0.37, 0.21. 88-100% of truths inside the 90% intervals.
+- Share of the oracle-predictable change of s_b reached (pooled over items as in round 3) at 40 / 80 / 160 time
+  units: linear level-2 predictor 0.03 / 0.08 / -0.03 (P0) and 0.06 / 0.24 / 0.25 (given the true parameters); net
+  0.16 / 0.43 / 0.54 (P0). The oracle-predictable share itself is 0.48 / 0.47 / 0.47.
+
+## Exam pilot B (job 3)
+
+Pending (`r5-vortexexam-004`): hidden set (eps, mu, e), planned size, dedicated and fine-tuned models at the true
+parameters, and a short-history view of every item (the last three ticks only).
