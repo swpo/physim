@@ -1,0 +1,58 @@
+{
+  "request": {
+    "cap_usd": 20.8,
+    "disk_gb": null,
+    "env": {
+      "S5_CERT_O": "refs",
+      "S5_CERT_S": "11200",
+      "S5_CFG_MAX_S": "1500",
+      "S5_CFG_MIN_S": "1000",
+      "S5_FIXED": "km_s6,km_s3,km_s6w,grid",
+      "S5_HARD_S": "11900",
+      "S5_KEEP": "sam_sup,sam_set,sam_set_ws,sam_rec,sam_self,sgm_set,sgc_rec,sac_set,sam_set_dg,sam_rec_ws,sam_self_ws,sac_rec,sam_set_ws_dg,sam_set_sg",
+      "S5_KEEP_ORDER": "1",
+      "S5_OV_STEPS": "1000",
+      "S5_SIZE": "pilot",
+      "S5_STEPS": "3000",
+      "S5_TRAIN_S": "10400",
+      "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+      "XLA_PYTHON_CLIENT_MEM_FRACTION": "0.9",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_40GB",
+        "A100_80GB",
+        "H100_80GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r5-slots-008",
+    "max_hours": 3.5,
+    "notes": "Replaces r5-slots-007, which FAILED on an A100_40GB ($1.04 billed): the references and sam_sup ran (9.4 s per 100 training steps, as on the H200; sam_sup 2000 steps in 264 s), then all 13 other configs died at their first validation after a training chunk with RESOURCE_EXHAUSTED in jit_val (17-19 GiB) while only 17% of the BFC pool was in use (logs/train.log): the pool, capped at 36 GiB, could not supply a second contiguous block of that size (small arrays that outlive a call sit inside the one large region), and it could not grow. SAME code, same ref 7099a0ded; env changes only: XLA_PYTHON_CLIENT_ALLOCATOR=platform (every device allocation goes to CUDA directly and is released when freed, so no contiguous pool is needed; this workload makes few, large allocations, 100 training steps per call, so the per-allocation cost is negligible; the job fails within the first minute if this JAX build rejects the value) and S5_STEPS=3000 (the measured speed leaves room: about 450 s per config, all 14 configs and the references in about 1.9 h on this card). Memory with that allocator: resident data 5.2 GiB plus one call's temporaries at a time (17-19 GiB validation, about 22-25 GiB training chunk; at the failure the chunk's block was already free, so they do not overlap), about 27-30 GiB of 40. cap_usd 20.80 = what is left of the study's $25 ($3.13 + $1.04 billed); it covers an H100 offer up to $5.52/h at max_hours 3.5. Expected spend: about $4 on an A100_40GB at $1.99/h, about $9 on the H100 at $5.02/h. Limits as before (training stops at 10400 s, no new certification item after 11200 s, workers killed at 11900 s; the job ends early when the config list is done; no config starts with under 1000 s left before the training deadline). An error in one config is caught and the grid goes on (that is what happened in r5-slots-007: its 32 certified halves and sam_sup's outputs were written). 48 trajectories per half (the doubled data of the full size stays dropped so that the job fits a 40 GB card). No network or subprocess use outside setup; job.sh starts its own CPU certification workers.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/round5/slots"
+    ],
+    "purpose": "Round-5 study slots (track 1), main job at 48 trajectories per half (fits a 40 GB card): slot encoders with memory on raw gliders level 0, 3000 steps, up to 14 configs in priority order (supervised capacity control, closure, warm start, reconstruction, local law, no k-means prior, classic slot AE)",
+    "ref": "7099a0ded388a9d9efc852b568184f81586f089d",
+    "requester": "cloud study slots (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round5/slots && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "1138cea5a980c83f650bca1eccf40ed6e8a33af1",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r5-slots-008.json",
+    "received_at": "2026-11-10T06:07:15Z",
+    "tip": "4bf0364f9f3ddc908c778f8392da1aae7011527f"
+  }
+}
