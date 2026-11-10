@@ -1,5 +1,19 @@
 # vfport: PROGRESS
 
+## RE-AUDIT of the code, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, IN PROGRESS
+- Role: re-audit of the CODE only (M1, M3, m1, m5, D1; the whole diff since 40c697e54; the tests; the pin). Report
+  goes back to the coordinator as text; this note is for a restart. Nothing of the port runs on the host outside
+  tripwires; real signals only in a named throwaway container without a mount.
+- Done so far (read): `HOST_SAFETY_AUDIT.md` and `RUNBOOK_MAC.md` in full; the diff of the 18 pinned files;
+  `tools/check_round3.py`; `rehearsal/issue3.py`, `watch_open.py`; verifiers `utils/prime.py`, `configs/client.py`,
+  `mcp/launch.py`, `mcp/server.py`, `runtimes/subprocess.py`, `cli/eval/main.py`. Pin recomputed from a clean
+  `git archive` of the head: 109 of 109 files, sha256 of `PIN.sha256` cd67eb4b...03e4 = the runbook's pin block.
+- Next (exact): my own credential trace under tripwires with a made-up file in a scratch home; my own container
+  run (theta in the process list, exit status after SIGKILL, the watchdog); rerun `tools/check_round3.py`,
+  `tools/check_runbook.py`, `tools/check_interrupt.py`; then the verdict in this note.
+- Scratch: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3code1` (deleted at the
+  end); worktree `/home/user/wt/vfr3code1`, branch `wt-vfr3code1` (removed at the end).
+
 ## HOST-SAFETY FIXER, round 3 pass 1 (after the Mac session's read-only review of af767adb) -- 10 Nov 2026, finished
 - Role: the Mac review's findings M1 to M3 and m1 to m11 and the coordinator's disk requirement D1.
   `RUNBOOK_MAC.md` is ON HOLD (first act of this role, commit fb54884bc; a suspension note stands above the first
