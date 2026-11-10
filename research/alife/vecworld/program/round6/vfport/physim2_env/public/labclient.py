@@ -122,34 +122,26 @@ class Lab:
 
     def validate(self, path: str = "submission") -> dict:
         """Format, limits and reproducibility on two public example requests, run in this box with the grader's
-        runner (physim2/validate.py). The laboratory only counts the attempt."""
+        driver (physim2/validate.py). The laboratory starts the check and returns its report; you can also run
+        `python -m physim2.validate <path>` yourself, without the laboratory."""
         from . import validate as V
         try:
             V.resolve(path)
         except ValueError as e:
             raise LabError(str(e), "request") from None
-        reg = self._call("validate", path=str(path))
-        if reg.get("finalized"):
-            return reg
-        return V.check(path, self.card())
+        return self._call("validate", path=str(path))
 
     def submit(self, path: str = "submission") -> dict:
-        """Validate, then freeze: the grader's worker takes its copy of submission/ now and the laboratory
-        closes. A directory other than submission/ is copied there first (only submission/ is collected)."""
+        """Validate, then freeze: if the check passes, the grader's worker takes its copy of submission/ now and
+        the laboratory closes ("accepted": True); if not, nothing is frozen. A directory other than submission/
+        is copied there first (only submission/ is collected)."""
         from . import validate as V
         try:
             src = V.resolve(path)
         except ValueError as e:
             raise LabError(str(e), "request") from None
-        if self.usage().get("submitted"):
-            return self._call("submit", path=str(path))
-        rep = V.check(path, self.card())
-        if not rep["ok"]:
-            return dict(rep, accepted=False)
         dst = os.path.join(V.WORKSPACE, "submission")
-        if os.path.realpath(src) != os.path.realpath(dst):
+        if os.path.isdir(src) and os.path.realpath(src) != os.path.realpath(dst) and not self.usage().get("submitted"):
             shutil.rmtree(dst, ignore_errors=True)
             shutil.copytree(src, dst, symlinks=True)
-        fin = self._call("submit", path="submission")
-        rep.update(fin)
-        return rep
+        return self._call("submit", path="submission")

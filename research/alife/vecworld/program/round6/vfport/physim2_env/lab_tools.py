@@ -34,12 +34,38 @@ class LabToolsConfig(vf.ToolsetConfig):
     """Instance store on the worker (default: $PHYSIM2_STORE). Never a path inside a box."""
 
 
-def make_service(hidden: str, name: str, freeze=None):
-    """agentenv's LabService with the two operations that needed the agent's files replaced (see _check)."""
+def make_service(hidden: str, name: str, check=None):
+    """agentenv's LabService with the operations that needed the agent's files replaced (_check), and with two
+    request checks moved in front of anything that runs or is charged (advance, experiment).
+    `check(path, final)` asks the task controller (access.BoxAccess.check)."""
     use_agentenv()
-    from evaluator.lab_service import LabService, Rejected
+    from evaluator.lab_service import MAX_BLOCK, LabService, Rejected
 
     class VfLabService(LabService):
+        def _inputs(self, inputs):
+            """A block of inputs as a float array, or a format rejection (round 5 let numpy's own error through,
+            which the agent then saw as "infrastructure error")."""
+            n_in = self.lab.world.n_in
+            try:
+                U = np.asarray(inputs, float)
+            except (ValueError, TypeError, OverflowError):
+                U = None
+            if U is None or U.ndim != 2 or U.shape[1] != n_in or not 1 <= U.shape[0] <= MAX_BLOCK or not np.all(np.isfinite(U)):
+                raise Rejected(f"format: inputs must be finite numbers with shape (T, {n_in}), 1 <= T <= {MAX_BLOCK}")
+            return U
+
+        def advance(self, inputs=None, n=None):
+            return super().advance(inputs=None if inputs is None else self._inputs(inputs), n=n)
+
+        def experiment(self, label, inputs=None, n=None):
+            # everything about the block is checked BEFORE the reset is charged
+            if inputs is None:
+                if isinstance(n, bool) or not isinstance(n, int) or not 1 <= n <= MAX_BLOCK:
+                    raise Rejected(f"format: n must be an integer in [1, {MAX_BLOCK}]")
+            else:
+                inputs = self._inputs(inputs)
+            return super().experiment(label, inputs=inputs, n=n)
+
         def _check(self, path, final: bool):
             # head: verbatim from LabService._check (attempt caps and counters)
             if self.state["submitted"]:
@@ -48,19 +74,22 @@ def make_service(hidden: str, name: str, freeze=None):
             cap = self.cfg["validation"]["max_attempts"]
             if cap is not None and self.state[kind] >= cap:
                 raise Rejected(f"{kind} attempt limit ({cap}) reached", "budget")
-            if not isinstance(path, str):
+            if not isinstance(path, str) or not 0 < len(path) <= 1024:
                 raise Rejected("format: path must be a string")
             self.state[kind] += 1
-            if not final:                                    # the check itself is public and runs in the agent's box
-                return {"ok": True, "counted": self.state[kind], "finalized": False, "runs": "physim2/validate.py"}
-            got = freeze() if freeze is not None else {"ok": False, "error": "no collection channel"}
-            if not got.get("ok"):
-                return {"ok": False, "stage": "artifact", "error": got.get("error") or "the submission could not be collected",
-                        "finalized": False, "accepted": False}
-            self.state["submitted"] = True
-            json.dump({"files": got.get("files"), "bytes": got.get("bytes"), "sha256": got.get("sha256"),
-                       "usage": self.lab.usage(), "time": time.time()}, open(os.path.join(self.dir, "frozen.json"), "w"), indent=1)
-            return {"ok": True, "accepted": True, "finalized": True, "files": got.get("files"), "sha256": got.get("sha256")}
+            if check is None:
+                return {"ok": False, "stage": "artifact", "error": "no channel to the box", "finalized": False, "accepted": False}
+            got = check(path, final)
+            rep, frozen = dict(got["report"]), got.get("frozen")
+            if final and rep["ok"] and not (frozen and frozen.get("ok")):
+                rep = {"ok": False, "stage": "artifact", "error": (frozen or {}).get("error") or "the submission could not be collected"}
+            if final and rep["ok"]:
+                self.state["submitted"] = True
+                json.dump({"files": frozen.get("files"), "bytes": frozen.get("bytes"), "sha256": frozen.get("sha256"),
+                           "usage": self.lab.usage(), "time": time.time()}, open(os.path.join(self.dir, "frozen.json"), "w"), indent=1)
+                rep.update(files=frozen.get("files"), sha256=frozen.get("sha256"))
+            rep.update(finalized=self.state["submitted"], accepted=bool(final and rep["ok"]))
+            return rep
 
     return VfLabService(hidden, "", "/nonexistent-workspace", name)
 
@@ -104,8 +133,8 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         state = (await _channel_request("GET", url, secret, client=self._state_client)).json() if url else {}
         hidden = STORE.hidden_dir(STORE.store_root(self.config.store), task.instance_id)
         chan = state.get("access") or None
-        freeze = (lambda: ACCESS.request(chan, "freeze")) if chan else None
-        self.service = make_service(hidden, state.get("rollout") or f"lab-{os.getpid()}", freeze)
+        check = (lambda path, final: ACCESS.request(chan, "check", path=path, final=final)) if chan else None
+        self.service = make_service(hidden, state.get("rollout") or f"lab-{os.getpid()}", check)
         if json.load(open(os.path.join(hidden, "instance.json")))["secret_commitment"] != task.secret_commitment:
             raise RuntimeError("the stored instance is not the one the task row commits to")
         self.scrubbed = STORE.scrub_environment()            # hole 5: after loading, no token stays in this process
@@ -127,8 +156,10 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         op "reset": {"label": str|int} -> o(0), a list of n_obs numbers; starts a new episode (costs reset_cost ticks).
         op "advance": {"inputs": [[n_in numbers] x T]} or {"n": T} -> T observations after each tick.
         op "experiment": {"label": ..., "inputs": [...] or "n": T} -> T + 1 observations, row 0 is o(0).
-        op "validate": {"path": "submission"} -> counts one validation attempt (the check runs in your box).
-        op "submit": {"path": "submission"} -> freezes submission/ as it is now and closes the laboratory.
+        op "validate": {"path": "submission"} -> runs the public check in your box (physim2/validate.py: format,
+        limits, same seed -> same samples; no accuracy feedback) and returns its report.
+        op "submit": {"path": "submission"} -> the same check; if it passes, submission/ is frozen as it is now
+        and the laboratory closes ("accepted": true). If it fails nothing is frozen and the laboratory stays open.
         From Python in the workspace the same operations are `physim2.Lab()` methods (see TASK.md)."""
         if self.service is None:
             return NEUTRAL

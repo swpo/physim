@@ -8,16 +8,23 @@ network policy. What happens, and where:
   agent box (container)               TASK.md, the public physim2 package, an empty submission/; its only ways
                                       out are the model route and the laboratory's URL
   verifier box (fresh container)      the public package again, the frozen submission/, the public driver;
-                                      no network; the predictor as an unprivileged user, one item at a time
+                                      no network; the predictor as an unprivileged user; here run the three
+                                      public validation calls (round 5's rule: an invalid predictor is K)
+  item boxes (fresh containers)       one per exam item (default), provisioned by the reward through verifiers'
+                                      `provision_runtime` with the verifier box's own config and staged the
+                                      same way, so that nothing in a box can carry from one item to the next
 
 A task row carries pointers only (instance id, world, config name, the public commitment of the secret): rows
 are saved in every trace. Hidden values are read on the worker from the store, by the laboratory and the reward.
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import math
 import os
 import time
+from typing import Literal
 
 import verifiers.v1 as vf
 from pydantic import Field
@@ -36,17 +43,32 @@ MIB = 1 << 20
 
 class Physim2State(vf.State):
     # Host-only: `state` is excluded from saved traces (verifiers/v1/trace.py:412-417).
-    access: dict = Field(default_factory=dict)               # socket of the task controller (announce, freeze)
+    access: dict = Field(default_factory=dict)               # socket of the task controller (announce, check, freeze)
     rollout: str = ""                                        # names this rollout's records in the store
+    uid: int = 0                                             # the predictor's uid in this rollout's grading boxes
     finalized: bool = False                                  # set by finalize: setup then runs in verifier mode
     collection: dict = Field(default_factory=dict)           # how submission/ was obtained (no file content)
 
 
 class Physim2TaskConfig(vf.TaskConfig):
     tools: LabToolsConfig = LabToolsConfig()
-    single_use: bool = False
-    """Sealed exams: refuse an instance whose laboratory was already opened by another rollout (a rerun would
-    hand the agent a fresh budget). Pilots and proofs leave it off."""
+    single_use: bool = True
+    """Refuse an instance that the SAME agent already opened (a rerun would hand it a fresh laboratory budget;
+    round 5 refused a reused rollout name, run_rollout.py:66-67). The agent is named by `agent_key`. Every
+    opening is recorded in the store whatever this flag says."""
+    agent_key: str = ""
+    """Who is examined, for `single_use` (default: "<model>|<harness id>" of the rollout). Reference policies run
+    by the evaluator on the same instance get distinct keys (tools/vfrun.py: the run name)."""
+    item_isolation: Literal["box", "shared"] = "box"
+    """"box": every exam item runs in a fresh container of its own (nothing in a box survives to the next item).
+    "shared": all items in the one verifier box with the driver's cleanup between them: cheaper, for pilots and
+    reference tables; timestamps, the process-id counter and kernel counters of the box survive that cleanup, so
+    a rollout graded this way is marked `between_item_state: possible` in its trace."""
+    item_boxes_parallel: int = Field(1, ge=1, le=16)
+    """With item_isolation "box": how many item boxes may exist at once."""
+    box_env_allow: list[str] = Field(default_factory=list)
+    """Extra variable NAMES the operator may pass into a box (harness env, forward_env, verifier env) besides
+    BOX_ENV_ALLOW. Anything else is refused at setup: a box is no place for a credential, whatever its name."""
     item_cleanup: bool = True
     """TEST HOOK. False skips the cleanup between items so that a probe can show what the cleanup prevents;
     such a rollout is marked NOT_AN_EXAM in its trace."""
@@ -74,6 +96,19 @@ class Physim2Data(vf.TaskData):
     world: str
     config_name: str
     secret_commitment: str = Field(pattern=r"^[0-9a-f]{64}$")
+
+
+BOX_ENV_ALLOW = {"PHYSIM2_AGENT_HOME", "PHYSIM2_PROBE_PATHS", "PYTHONDONTWRITEBYTECODE", "PYTHONUNBUFFERED",
+                 "OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "JAX_PLATFORMS", "XLA_FLAGS",
+                 "LANG", "LC_ALL", "TZ", "TERM"}
+
+
+def agent_identity(trace, configured: str = "") -> str:
+    if configured:
+        return configured
+    cfg = getattr(getattr(trace, "agent", None), "config", None)
+    harness = getattr(getattr(cfg, "harness", None), "id", None)
+    return f"{getattr(cfg, 'model', None) or 'model?'}|{harness or 'harness?'}"
 
 
 class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
@@ -109,11 +144,15 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         # ---- guard 2 (v1 taskset.py:461-462): a container with framework-only network, or nothing ----
         if runtime.config.type not in ("docker", "prime") or not runtime.config.network_restricted:
             raise vf.TaskError("PhySim v2 requires a Docker or Prime runtime with framework-only network access")
-        # ---- guard 3: no token-like variable may enter a box ----
+        # ---- guard 3: only allow-listed variable names may be configured for a box (a credential under any
+        #      name, GITHUB_PAT or HF_KEY as much as HF_TOKEN, has no business in one) ----
         harness = getattr(getattr(trace.agent, "config", None), "harness", None)
         names = list(runtime.env) + list(getattr(harness, "env", {}) or {}) + list(getattr(harness, "forward_env", []) or [])
-        if STORE.token_like(names):
-            raise vf.TaskError("a token-like variable is configured for a box (runtime env, harness env or forward_env)")
+        allow = BOX_ENV_ALLOW | set(self.config.box_env_allow)
+        refused = sorted(n for n in set(names) if n not in allow or STORE.token_like([n]))
+        if refused:
+            raise vf.TaskError(f"{len(refused)} variable(s) configured for a box are not on the allow-list (runtime env, harness "
+                               "env or forward_env); see Physim2TaskConfig.box_env_allow")
         hidden = self._hidden()
         inst = json.load(open(os.path.join(hidden, "instance.json")))
         cfg = BUNDLE.load_config(self.data.config_name)
@@ -121,20 +160,27 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                 or inst["config"] != cfg:
             raise vf.TaskError("the stored instance differs from the task row (commitment, world or config)")
         del inst
-        raw, info = BUNDLE.public_bundle(self.data.world, self.data.config_name)
-        await runtime.write("/tmp/physim2-workspace.tar", raw)
-        r = await runtime.run(["sh", "-c", f"umask 022; mkdir -p {WORKDIR} /etc/physim2 && chmod 755 {WORKDIR} /etc/physim2 && "
-                                            f"tar -xf /tmp/physim2-workspace.tar -C {WORKDIR} && rm -f /tmp/physim2-workspace.tar"], {})
-        if r.exit_code:
-            raise vf.TaskError("could not build the workspace in the box")
+        info = await self._public_files(runtime)
         state = trace.state
         if state.finalized:                                  # the verifier box: public files only, no laboratory
             trace.info.setdefault("physim2", {})["verifier_started_unix"] = time.time()
             return
-        labs = os.path.join(hidden, "labs")
-        if self.config.single_use and os.path.isdir(labs) and os.listdir(labs):
-            raise vf.TaskError("this instance was already opened by another rollout (single_use)")
-        box = ACCESS.BoxAccess(runtime, list(self.data.artifacts), self.data.artifact_max_bytes, cfg["predictor"]["artifact_mib"])
+        # ---- single use: one laboratory budget per agent and instance (memo hole 3) ----
+        key = agent_identity(trace, self.config.agent_key)
+        opened = os.path.join(hidden, "opened")
+        os.makedirs(opened, exist_ok=True)
+        marker = os.path.join(opened, hashlib.sha256(key.encode()).hexdigest()[:32] + ".json")
+        try:
+            fd = os.open(marker, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+        except FileExistsError:
+            if self.config.single_use:
+                raise vf.TaskError("this instance was already opened by this agent (single_use): a rerun would hand it "
+                                   "a fresh laboratory budget") from None
+        else:
+            with os.fdopen(fd, "w") as f:
+                json.dump({"agent_key": key, "first_rollout": trace.id, "time": time.time()}, f)
+        box = ACCESS.BoxAccess(runtime, list(self.data.artifacts), self.data.artifact_max_bytes, cfg["predictor"]["artifact_mib"],
+                               WORKDIR, cfg["predictor"])
         self._access[trace.id] = box
         state.access = await box.start()
         state.rollout = trace.id
@@ -142,7 +188,18 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             "instance_id": self.data.instance_id, "world": self.data.world, "config_name": self.data.config_name,
             "secret_commitment": self.data.secret_commitment, "bundle": {k: info[k] for k in ("files", "bytes", "manifest_sha256")},
             "verifiers_version": __import__("verifiers").__version__, "runtime": runtime.config.type,
-            "network_restricted": bool(runtime.config.network_restricted)}
+            "network_restricted": bool(runtime.config.network_restricted), "single_use": bool(self.config.single_use),
+            "agent_key": key, "item_isolation": self.config.item_isolation}
+
+    async def _public_files(self, runtime) -> dict:
+        """TASK.md, the public physim2 package and an empty submission/ into a box (any of the three kinds)."""
+        raw, info = BUNDLE.public_bundle(self.data.world, self.data.config_name)
+        await runtime.write("/tmp/physim2-workspace.tar", raw)
+        r = await runtime.run(["sh", "-c", f"umask 022; mkdir -p {WORKDIR} /etc/physim2 && chmod 755 {WORKDIR} /etc/physim2 && "
+                                            f"tar -xf /tmp/physim2-workspace.tar -C {WORKDIR} && rm -f /tmp/physim2-workspace.tar"], {})
+        if r.exit_code:
+            raise vf.TaskError("could not build the workspace in the box")
+        return info
 
     async def finalize(self, trace, runtime):
         """Runs in the agent's box after the harness ended and the laboratory stopped. Collects the submission
@@ -158,8 +215,23 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             frozen = box.frozen if box is not None and box.frozen is not None and box.frozen["ok"] else None
             source = "agent_submission" if frozen is not None else "final_collection"
             if frozen is None:
-                frozen = await ACCESS.collect_frozen(runtime, list(self.data.artifacts), self.data.artifact_max_bytes,
-                                                     cfg["predictor"]["artifact_mib"])
+                # round 5: the final collection is one more submission attempt (run_rollout.py:97-98) and is
+                # refused like any other once the attempts are used up
+                cap, used = cfg["validation"]["max_attempts"], self._lab_usage(state.rollout).get("submissions", 0)
+                if cap is not None and used >= cap:
+                    frozen = {"root": f"{WORKDIR}/submission", "archive": None, "manifest": {"files": [], "bytes": 0},
+                              "error": f"submissions attempt limit ({cap}) reached", "ok": False}
+                else:
+                    frozen = await ACCESS.collect_frozen(runtime, list(self.data.artifacts), self.data.artifact_max_bytes,
+                                                         cfg["predictor"]["artifact_mib"])
+            if frozen["archive"] is not None:
+                # verifiers' own check of what it will restore (utils/artifacts.py:208-290), HERE, inside the try:
+                # an archive it would refuse later, after finalize, would end the rollout without a grade
+                try:
+                    from verifiers.v1.utils.artifacts import _validate_restore
+                    _validate_restore(frozen["root"], frozen["archive"])
+                except Exception as e:
+                    frozen = dict(frozen, archive=None, ok=False, error=f"the frozen archive did not pass the restore check ({type(e).__name__})")
             # A non-empty mapping makes verifiers skip its own collection (rollout.py:501); None = nothing to restore.
             state.artifacts = {frozen["root"]: frozen["archive"]}
             man = frozen["manifest"]
@@ -181,7 +253,9 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         info["submission"] = dict(state.collection)
         info["lab"] = self._lab_usage(state.rollout)
         info["stop_condition"] = trace.stop_condition
-        info["agent_box_cpu_s"] = await GRADING.box_cpu_seconds(runtime)
+        # read by a command inside the agent's box, where the agent is root: informational, NOT a trusted meter
+        info["agent_box_cpu_s_unverified"] = await GRADING.box_cpu_seconds(runtime)
+        state.uid = GRADING.new_uid()
 
     def _lab_usage(self, rollout: str) -> dict:
         """Counters of the laboratory of this rollout (its process has stopped; its records are on the worker)."""
@@ -207,11 +281,14 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
 
     async def stage_verifier(self, trace, runtime):
         """After verifiers restored the frozen submission into the fresh box: trusted staging only."""
-        staged = await GRADING.stage(runtime, WORKDIR)
+        if not trace.state.uid:
+            trace.state.uid = GRADING.new_uid()
+        staged = await GRADING.stage(runtime, WORKDIR, trace.state.uid)
         trace.info.setdefault("physim2", {})["verifier_box"] = {
             "has_predict": staged["has_predict"], "network_restricted": bool(runtime.config.network_restricted),
             "writable_dirs": staged["scan"].get("writable_dirs"), "world_writable_paths_fixed": staged["scan"].get("fixed"),
-            "owned_by_predictor_user_before": len(staged["scan"].get("owned_by_user", []))}
+            "owned_by_predictor_user_before": len(staged["scan"].get("owned_by_user", [])),
+            "predictor_uid": trace.state.uid, "box_limits": staged["scan"].get("box_limits")}
 
     @vf.reward(weight=1)
     async def skill(self, trace, runtime) -> float:
@@ -229,9 +306,22 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                 g = GRADING.score_as_k(hidden, name, (trace.state.collection or {}).get("error") or "no predictor")
             else:
                 budget = self.data.timeout.scoring
-                g = await GRADING.grade(runtime, hidden, name, self._limits(), WORKDIR, seed=self.config.grading_seed,
-                                        cleanup=self.config.item_cleanup,
-                                        deadline=None if budget is None else t0 + 0.9 * budget)
+                uid, prepare = trace.state.uid, None
+                if self.config.item_isolation == "box" and self.config.item_cleanup:
+                    artifacts = dict(trace.state.artifacts)
+
+                    async def prepare(rt):                   # what verifiers and stage_verifier did for the verifier box
+                        await self._public_files(rt)
+                        await vf.restore(rt, artifacts)
+                        if not (await GRADING.stage(rt, WORKDIR, uid))["has_predict"]:
+                            raise RuntimeError("the predictor did not reach the item box")
+                else:
+                    info["between_item_state"] = "possible: all items ran in one box (item_isolation = shared)"
+                g = await GRADING.grade(runtime, hidden, name, self._limits(), WORKDIR, uid=uid,
+                                        examples=BUNDLE.public_examples(self.data.world, self.data.config_name),
+                                        seed=self.config.grading_seed, cleanup=self.config.item_cleanup,
+                                        deadline=None if budget is None else t0 + 0.9 * budget,
+                                        prepare=prepare, parallel=self.config.item_boxes_parallel)
         except Exception as e:
             info["grading_error"] = type(e).__name__
             try:
@@ -244,8 +334,11 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             g["verifier_wall_s"] = time.time() - info["verifier_started_unix"]
         if not self.config.item_cleanup:
             info["NOT_AN_EXAM"] = "cleanup between items was disabled by the operator (test hook)"
+        skill = g.get("skill_vs_O")
+        if not isinstance(skill, (int, float)) or not math.isfinite(skill):   # never a reward that is not a number
+            g["skill_not_finite"], g["skill_vs_O"], skill = repr(skill), 0.0, 0.0
         info["grade"] = g
-        return float(g["skill_vs_O"])
+        return float(skill)
 
 
 class Physim2Taskset(vf.Taskset[Physim2Task, Physim2Config]):
@@ -275,7 +368,7 @@ class Physim2Taskset(vf.Taskset[Physim2Task, Physim2Config]):
                     artifact_max_bytes=int(lim["artifact_mib"] + 8) * MIB,   # transport; the 64 MiB cap is on file bytes
                     resources=vf.TaskResources(cpu=env["cpus"], memory=env["memory_gib"]),
                     timeout=vf.TaskTimeout(setup=900, agent=env["wall_hours"] * 3600.0, finalize=900,
-                                           scoring=max(1800.0, cfg["exam"]["n_items"] * (lim["wall_seconds"] + 20.0) + 600.0)),
+                                           scoring=max(1800.0, (cfg["exam"]["n_items"] + 3) * (lim["wall_seconds"] + 40.0) + 600.0)),
                 ),
                 config,
             )

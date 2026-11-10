@@ -29,13 +29,19 @@ ADDENDUM = """
 - The laboratory is the tool `call` of the tool server `lab` (one call = one operation: card, usage, reset,
   advance, experiment, validate, submit). `physim2.Lab()` calls the same tool over HTTP from any Python script;
   its address is in `/etc/physim2/lab.json`. There is no other way out of this box.
-- `lab.validate(path)` runs in this box (`python -m physim2.validate`): the grader's freeze rules and the
-  grader's one-request driver on two public example requests. The laboratory only counts the attempt.
-- `lab.submit(path)` validates here, copies `path` to `submission/` if it is another directory, and the grader's
-  worker takes its copy of `submission/` at that moment (regular files only; links are left out). Without a
-  submit, `submission/` is collected as it is when your run ends. A missing or unusable submission is scored as K.
-- The grader runs your predictor in another, fresh box with no network: one request at a time, as an
-  unprivileged user, and after every request that user's processes are killed and its files deleted.
+- `lab.validate(path)` (tool op `validate`) runs the public check in this box and returns its report: the
+  grader's freeze rules, then three calls on two public example requests through the grader's one-request driver
+  (example 0 twice with the same seed: the samples must be identical). You can run the same check yourself, as
+  often as you like and without the laboratory: `python -m physim2.validate submission`.
+- `lab.submit(path)` (tool op `submit`, which takes `submission` only) runs that check once more; if it passes,
+  the grader's worker takes its copy of `submission/` at that moment (regular files only; links are left out) and
+  the laboratory closes. If it fails, nothing is frozen and the laboratory stays open. Without a submit,
+  `submission/` is collected as it is when your run ends.
+- Grading happens in other, fresh boxes with no network. The three example calls are repeated there first: a
+  predictor that fails them, a missing predictor, or an archive the freeze rules refuse is scored as K on every
+  item. Then each exam item is one request, as an unprivileged user, in a box of its own.
+- The reply must be what `physim2/predict_runner.py` writes (one float32 array per level). A request that fails,
+  times out or returns anything else is scored as K for that item.
 """
 _CACHE: dict = {}
 
@@ -57,6 +63,11 @@ def public_card(world: str, cfg: dict) -> dict:
 
 def task_text(world: str, config_name: str) -> str:
     return public_bundle(world, config_name)[1]["task_md"]
+
+
+def public_examples(world: str, config_name: str) -> dict:
+    """The two public example requests (history, prefix, test), as the bundle ships them in physim2/examples.npz."""
+    return public_bundle(world, config_name)[1]["examples"]
 
 
 def public_bundle(world: str, config_name: str):
@@ -84,8 +95,9 @@ def public_bundle(world: str, config_name: str):
         # two public example requests: verbatim recipe of evaluator/instance.py:122-126 (prior mean, public noise)
         sim = W.Simulator(chunk=2)
         e = sim.episodes(np.tile(W.PRIOR_MEAN, (2, 1)), seed=12345, P=d["P"], H=d["H"])
-        np.savez_compressed(os.path.join(pkg, "examples.npz"), history=e["obs"][:, :d["P"] + 1],
-                            prefix=np.zeros((2, d["P"], W.N_IN)), test=e["U"][:, d["P"]:])
+        examples = {"history": np.asarray(e["obs"][:, :d["P"] + 1]), "prefix": np.zeros((2, d["P"], W.N_IN)),
+                    "test": np.asarray(e["U"][:, d["P"]:])}
+        np.savez_compressed(os.path.join(pkg, "examples.npz"), **examples)
         json.dump(public_card(world, cfg), open(os.path.join(pkg, "exam.json"), "w"), indent=1)
         task_md = open(os.path.join(pub, "TASK.md")).read() + ADDENDUM
         open(os.path.join(pub, "TASK.md"), "w").write(task_md)
@@ -111,6 +123,7 @@ def public_bundle(world: str, config_name: str):
             sub.type, sub.mode = tarfile.DIRTYPE, 0o755
             tar.addfile(sub)
         info = {"files": len(man), "bytes": sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(pub) for f in fs),
-                "manifest_sha256": hashlib.sha256(json.dumps(man, sort_keys=True).encode()).hexdigest(), "task_md": task_md}
+                "manifest_sha256": hashlib.sha256(json.dumps(man, sort_keys=True).encode()).hexdigest(), "task_md": task_md,
+                "examples": examples}
     _CACHE[key] = (buf.getvalue(), info)
     return _CACHE[key]

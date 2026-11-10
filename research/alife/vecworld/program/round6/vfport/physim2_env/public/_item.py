@@ -4,7 +4,15 @@ Public and trusted: the same file runs in the grader's box (as /runtime/item.py,
 item) and in your own box when you call `lab.validate(...)`. It is the port of PhySim v1's predictor launcher
 and worker (v1: physim/runtime_sandbox.py:156-179, physim/container_worker.py:14-19) with one addition: after
 every request, root kills every process of the unprivileged user and deletes everything that user owns, so a
-predictor cannot leave a file, a shared-memory segment or a background process for the next item.
+predictor cannot leave a file, a shared-memory segment or a background process for the next item. What this
+cleanup does NOT reset: timestamps of files the user may read, the box's process-id counter and the kernel's
+counters of the box (loopback traffic, cgroup statistics). The grader therefore gives every exam item a box of
+its own by default; one box for all items is a pilot mode.
+
+Root never trusts what the predictor leaves in its reply directory: the directory is held open before the
+predictor starts and the reply and the error text are read through that handle, without following a link and
+without blocking, and only from regular files (a named pipe left as stderr.txt would otherwise block root for
+ever).
 
     python -I -B _item.py --submission DIR --runner physim2/predict_runner.py --request request.npz \
         --cpu 30 --wall 60 --mem-gib 4 [--uid 1000] [--file-mib 256] [--max-reply-mib 64] [--no-cleanup]
@@ -26,6 +34,7 @@ import os
 import resource
 import shutil
 import signal
+import stat
 import subprocess
 import sys
 import tempfile
@@ -232,6 +241,52 @@ def cleanup(uid):
 
 
 # ----------------------------------------------------------------------------- one request
+def read_regular(dir_fd, name, max_bytes, tail=False):
+    """(bytes | None, why). The content of the REGULAR file `name` inside the directory held open as dir_fd:
+    never follows a link, never blocks (a fifo has no writer once the predictor's processes are gone), never
+    reads more than max_bytes (`tail`: the last max_bytes; otherwise a larger file is refused)."""
+    try:
+        fd = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK | os.O_CLOEXEC, dir_fd=dir_fd)
+    except OSError:
+        return None, "missing"
+    try:
+        st = os.fstat(fd)
+        if not stat.S_ISREG(st.st_mode):
+            return None, "not a regular file"
+        if tail:
+            os.lseek(fd, max(0, st.st_size - max_bytes), os.SEEK_SET)
+        elif st.st_size > max_bytes:
+            return None, "too large"
+        chunks, left = [], max_bytes
+        while left > 0:
+            b = os.read(fd, min(left, 1 << 20))
+            if not b:
+                break
+            chunks.append(b)
+            left -= len(b)
+        return b"".join(chunks), None
+    except OSError:
+        return None, "unreadable"
+    finally:
+        os.close(fd)
+
+
+def box_cpu_s():
+    """CPU seconds of every process of this box so far (its cgroup counter; cgroup v2, then v1), or None."""
+    try:
+        with open("/sys/fs/cgroup/cpu.stat") as f:
+            for line in f:
+                if line.startswith("usage_usec"):
+                    return int(line.split()[1]) / 1e6
+    except (OSError, ValueError, IndexError):
+        pass
+    try:
+        with open("/sys/fs/cgroup/cpuacct/cpuacct.usage") as f:
+            return int(f.read().split()[0]) / 1e9
+    except (OSError, ValueError, IndexError):
+        return None
+
+
 def run(a):
     root = os.geteuid() == 0
     drop = root and a.uid is not None and a.uid > 0
@@ -241,6 +296,7 @@ def run(a):
     layers = {"rlimits": True, "uid": a.uid if drop else None, "cleanup": bool(drop and not a.no_cleanup)}
     io = tempfile.mkdtemp(prefix="physim2-io-")              # the only place the predictor may write its reply
     os.chmod(io, 0o700)
+    io_fd = os.open(io, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)    # root reads the reply through THIS handle
     err_path = os.path.join(io, "stderr.txt")
     out_path = os.path.join(io, "reply.npz")
     if drop:
@@ -294,26 +350,26 @@ def run(a):
     k0 = 0
     if drop and not a.no_cleanup:
         k0, _ = kill_user(a.uid)                             # nothing of the predictor runs while root reads its reply
-    ok = p.returncode == 0 and os.path.isfile(out_path) and not os.path.islink(out_path)
-    if ok and os.path.getsize(out_path) > (int(a.max_reply_mib) << 20):
-        ok, res["why"] = False, "reply too large"
+    ok = p.returncode == 0
     if ok:
-        with open(out_path, "rb") as f:
-            res["reply_b64"] = base64.b64encode(f.read()).decode("ascii")
-    else:
-        try:
-            with open(err_path, "rb") as f:
-                f.seek(max(0, os.path.getsize(err_path) - 4000))
-                res["stderr"] = f.read().decode("utf-8", "replace")
-        except OSError:
-            res["stderr"] = ""
+        reply, why = read_regular(io_fd, "reply.npz", int(a.max_reply_mib) << 20)
+        if reply is None:
+            ok, res["why"] = False, "reply too large" if why == "too large" else f"no reply file ({why})"
+        else:
+            res["reply_b64"] = base64.b64encode(reply).decode("ascii")
+            del reply
+    if not ok:
+        err, _ = read_regular(io_fd, "stderr.txt", 4000, tail=True)
+        res["stderr"] = (err or b"").decode("utf-8", "replace")
         res.setdefault("why", "wall-clock limit" if timed_out else "CPU-time limit" if cpu and res["cpu_s"] >= 0.98 * cpu
                        else f"exit code {p.returncode}")
     res["ok"] = bool(ok)
+    os.close(io_fd)
     shutil.rmtree(io, ignore_errors=True)
     if drop and not a.no_cleanup:
         res["cleanup"] = cleanup(a.uid)
         res["cleanup"]["killed"] += k0
+    res["box_cpu_s"] = box_cpu_s()
     return res
 
 
@@ -357,9 +413,18 @@ def scan(uid, fix=True):
                         fixed_files.append(p)
                     except OSError:
                         pass
+    limits = {}
+    for nm, path in (("pids_max", "/sys/fs/cgroup/pids.max"), ("pids_max", "/sys/fs/cgroup/pids/pids.max"),
+                     ("memory_max", "/sys/fs/cgroup/memory.max"), ("memory_max", "/sys/fs/cgroup/memory/memory.limit_in_bytes")):
+        try:
+            with open(path) as f:
+                limits.setdefault(nm, f.read().strip())
+        except OSError:
+            pass
     return {"writable_dirs": sorted(set(dirs) - set(fixed_dirs)), "fixed_dirs": sorted(set(fixed_dirs))[:20],
             "fixed_files": fixed_files[:20], "fixed": len(set(fixed_dirs)) + len(fixed_files),
-            "owned_by_user": owned_by(uid)[:20], "user_pids": user_pids(uid), "root": os.geteuid() == 0}
+            "owned_by_user": owned_by(uid)[:20], "user_pids": user_pids(uid), "root": os.geteuid() == 0,
+            "box_limits": limits}
 
 
 def main(argv=None):

@@ -53,7 +53,9 @@ def run_request(sub_dir: str, public_dir: str, req: dict, limits: dict, hide=(),
         if not r["ok"]:
             return dict(res, ok=False, error=f"predictor failed ({r.get('why')}): {r.get('stderr', '')}")
         try:
-            S = _rules.read_reply(base64.b64decode(r["reply_b64"]), 1 << 26)
+            S = _rules.read_reply(base64.b64decode(r["reply_b64"]), 1 << 24)
+        except ValueError as e:
+            return dict(res, ok=False, error=f"unreadable reply: {e}")
         except Exception as e:
             return dict(res, ok=False, error=f"unreadable reply: {type(e).__name__}")
         return dict(res, ok=True, samples=S)

@@ -1,20 +1,36 @@
-"""The reward's work: the frozen exam item by item in the fresh verifier box, scored on the worker.
+"""The reward's work: the frozen predictor on the frozen exam, request by request in a verifier box, scored on
+the worker.
 
-One request at a time (memo hole 1): the worker writes ONE request file into the box, root starts the public
-driver (public/_item.py), which runs agentenv's predict_runner.py as an unprivileged user under the declared
-limits, returns the reply and then kills that user's processes and deletes everything it owns. The next item's
-request only then enters the box. Truths, the climatology pool, item ids and program classes never enter it.
+Order of work (all of it after the agent's box is gone):
 
-Arithmetic: agentenv's, unchanged and by import -- FrozenExam.request / score / references
-(evaluator/instance.py:149-172), check_shapes (evaluator/submission.py:94-102), failed item = K
-(evaluator/grader.py:45-56), pooled L and skill (evaluator/acceptance.py:61-68).
+  1. validation     the three public example calls of round 5 (evaluator/submission.py:105-125: example 0 twice
+                    with the same seed, example 1), run in the verifier box verifiers gave us and compared ON THE
+                    WORKER. A predictor that fails one of them is not graded item by item: every item is K
+                    (round 5's rule: only a validated predictor is frozen, run_rollout.py:97-108).
+  2. the exam       one request at a time (memo hole 1). `isolation="box"` (default): every item gets a FRESH box
+                    from verifiers' `provision_runtime` with the verifier's own resolved config (same image, same
+                    network policy), staged like the verifier box and destroyed after its one request, so that
+                    nothing in a box can carry from one item to the next. `isolation="shared"`: all items in the
+                    one verifier box, with the driver's cleanup between them (cheaper; a pilot mode, because
+                    timestamps, the process-id counter and kernel counters of a box survive that cleanup).
+  3. scoring        agentenv's arithmetic, unchanged and by import -- FrozenExam.request / score / references
+                    (evaluator/instance.py:149-172), check_shapes (evaluator/submission.py:94-102), failed item
+                    = K (evaluator/grader.py:45-56), pooled L and skill (evaluator/acceptance.py:61-68). Added:
+                    a reply must be what predict_runner.py writes (float32, one array per level; _rules.read_reply)
+                    and an item whose score is not finite is a failed item.
+
+Truths, the climatology pool, item ids and program classes never enter a box. In every box the predictor runs
+through public/_item.py as an unprivileged user (a random uid per rollout) under the declared limits.
 """
 from __future__ import annotations
 
+import asyncio
 import base64
+import contextlib
 import io
 import json
 import os
+import secrets
 import time
 
 import numpy as np
@@ -23,7 +39,14 @@ from ._paths import use_agentenv
 from .public import _rules
 
 RUNTIME_DIR = "/runtime"
-UID = 1000
+SLACK_S = 120.0                                              # worker-side allowance per request beyond the wall limit
+BOX_S = 240.0                                                # ... and for provisioning and staging a fresh box
+
+
+def new_uid() -> int:
+    """The predictor's uid in the boxes of ONE rollout. Process limits are counted per uid across every container
+    that shares the host's user namespace, so a fixed uid would let one rollout's predictor starve another's."""
+    return 20000 + secrets.randbelow(40000)
 
 
 def exam(hidden: str):
@@ -32,9 +55,9 @@ def exam(hidden: str):
     return INST.FrozenExam(hidden)
 
 
-def request_bytes(ex, i: int, m: int, seed: int) -> bytes:
+def npz_bytes(req: dict) -> bytes:
     buf = io.BytesIO()
-    np.savez(buf, **ex.request(i, m, seed))
+    np.savez(buf, **req)
     return buf.getvalue()
 
 
@@ -60,27 +83,28 @@ def summary(ex, es, refs) -> dict:
             "valid_cells": valid.tolist()}
 
 
-def score_as_k(hidden: str, name: str, reason: str) -> dict:
+def score_as_k(hidden: str, name: str, reason: str, extra: dict | None = None) -> dict:
     """No usable predictor: every item is scored as K (run_rollout.finalize, lines 103-108)."""
     ex = exam(hidden)
     refs = ex.references()
     es = refs["K"].copy()
-    rec = {"name": name, "n_items": ex.n, "n_failed": ex.n, "reason": reason, "errors": [], "seconds": 0.0}
+    rec = dict({"name": name, "n_items": ex.n, "n_failed": ex.n, "reason": reason, "errors": [], "seconds": 0.0}, **(extra or {}))
     save(hidden, name, es, np.ones(ex.n, bool), np.zeros(ex.n), rec)
     return dict(summary(ex, es, refs), n_items=ex.n, n_failed=ex.n, reason=reason)
 
 
 async def box_cpu_seconds(runtime) -> float | None:
-    """CPU seconds consumed so far by every process of the box (its cgroup counter; cgroup v2, then v1)."""
+    """CPU seconds consumed so far by every process of the box (its cgroup counter; cgroup v2, then v1), read by
+    a command INSIDE the box: trustworthy for a verifier box (root is ours there), not for the agent's box."""
     try:
-        r = await runtime.run(["sh", "-c", "cat /sys/fs/cgroup/cpu.stat 2>/dev/null | awk '$1==\"usage_usec\"{print $2/1e6; f=1} END{exit !f}' "
-                                           "|| awk '{print $1/1e9}' /sys/fs/cgroup/cpuacct/cpuacct.usage"], {})
+        r = await asyncio.wait_for(runtime.run(["sh", "-c", "cat /sys/fs/cgroup/cpu.stat 2>/dev/null | awk '$1==\"usage_usec\"{print $2/1e6; f=1} END{exit !f}' "
+                                                            "|| awk '{print $1/1e9}' /sys/fs/cgroup/cpuacct/cpuacct.usage"], {}), 30)
         return float(r.stdout.strip().splitlines()[-1]) if r.exit_code == 0 else None
     except Exception:
         return None
 
 
-async def stage(runtime, workdir: str) -> dict:
+async def stage(runtime, workdir: str, uid: int) -> dict:
     """Trusted staging after the artifacts are restored: the driver and its directory, root-owned and
     read-only; the restored submission read-only and owned by root. No submitted code runs here."""
     here = os.path.dirname(os.path.abspath(__file__))
@@ -90,73 +114,212 @@ async def stage(runtime, workdir: str) -> dict:
                            f'umask 022; mkdir -p {RUNTIME_DIR} && chown -R 0:0 {RUNTIME_DIR} && chmod 755 {RUNTIME_DIR} && chmod 644 {RUNTIME_DIR}/item.py; '
                            f'if [ -d {sub} ]; then chown -R -h 0:0 {sub} && chmod -R a-w,a+rX {sub}; fi; '
                            f'chown -R -h 0:0 {workdir}/physim2 {workdir}/TASK.md && chmod -R go-w {workdir}; '
-                           f'test -f {sub}/predict.py && echo HAS_PREDICT || echo NO_PREDICT'], {})
+                           f'test -f {sub}/predict.py && echo HAS_PREDICT || echo NO_PREDICT; '
+                           f'python3 -I -B {RUNTIME_DIR}/item.py --scan --uid {int(uid)}'], {})
     if r.exit_code:
         raise RuntimeError("staging the verifier box failed")
-    scan = await runtime.run(["python3", "-I", "-B", f"{RUNTIME_DIR}/item.py", "--scan", "--uid", str(UID)], {})
-    rep = json.loads(scan.stdout.strip().splitlines()[-1]) if scan.exit_code == 0 and scan.stdout.strip() else {}
+    try:
+        rep = json.loads(r.stdout.strip().splitlines()[-1])
+    except Exception:
+        rep = {}
     return {"has_predict": "HAS_PREDICT" in r.stdout, "scan": rep}
 
 
-async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, seed: int = 0, cleanup: bool = True,
-                deadline: float | None = None) -> dict:
-    """The loop of evaluator/grader.py:34-64, with the request sent into the box one item at a time."""
+def driver_cmd(limits: dict, workdir: str, uid: int, cleanup: bool = True) -> list[str]:
+    return ["python3", "-I", "-B", f"{RUNTIME_DIR}/item.py", "--submission", f"{workdir}/submission",
+            "--runner", f"{workdir}/physim2/predict_runner.py", "--request", f"{RUNTIME_DIR}/request.npz",
+            "--cpu", str(limits.get("cpu_seconds") or 0), "--wall", str(limits.get("wall_seconds") or 0),
+            "--mem-gib", str(limits.get("memory_gib") or 0), "--uid", str(int(uid))] + ([] if cleanup else ["--no-cleanup"])
+
+
+async def run_request(runtime, cmd: list[str], request: bytes, wall: float) -> dict:
+    """ONE request in `runtime`: the driver's JSON line, or a "driver error" record. Never raises; never waits
+    longer than the predictor's wall limit plus SLACK_S (a hung box is then a failed request, not a hung reward)."""
+    try:
+        async with asyncio.timeout(float(wall or 0) + SLACK_S):
+            await runtime.write(f"{RUNTIME_DIR}/request.npz", request)
+            out = await runtime.run(cmd, {})
+        return json.loads(out.stdout.strip().splitlines()[-1])
+    except TimeoutError:
+        return {"ok": False, "why": "driver error", "stderr": "the box did not answer in time", "cpu_s": 0.0, "wall_s": 0.0, "hung": True}
+    except Exception as e:                                   # the box or the driver, not the predictor
+        return {"ok": False, "why": "driver error", "stderr": type(e).__name__, "cpu_s": 0.0, "wall_s": 0.0}
+
+
+def judge(r: dict, queries: dict, dims: dict, m: int, max_values: int):
+    """(samples | None, error text | None) from one driver record. The reply is parsed on the worker."""
     use_agentenv()
     from evaluator import submission as SUB
+    if not r.get("ok"):
+        return None, f"predictor failed ({r.get('why')}): {r.get('stderr', '')}"
+    try:
+        smp = _rules.read_reply(base64.b64decode(r["reply_b64"]), max_values)
+    except ValueError as e:
+        return None, f"unreadable reply: {e}"
+    except Exception as e:
+        return None, f"unreadable reply: {type(e).__name__}"
+    bad = SUB.check_shapes(smp, queries, dims, m)
+    return (None, bad) if bad else (smp, None)
+
+
+async def validate(run_one, examples: dict, queries: dict, dims: dict, limits: dict, max_values: int) -> dict:
+    """evaluator/submission.py:105-125 (validate), with each request run in the verifier box: example 0 twice
+    with the same seed, example 1; shapes, finite values, same seed -> same samples."""
+    n = int(limits["n_samples"])
+    q = json.dumps({str(l): v for l, v in queries.items()})
+    runs, recs = [], []
+    for i, seed in ((0, 0), (0, 0), (1, 1)):
+        req = {"history": examples["history"][i], "prefix": examples["prefix"][i], "test": examples["test"][i],
+               "queries": q, "n_samples": n, "seed": seed}
+        r = await run_one(npz_bytes(req))
+        recs.append(r)
+        smp, bad = judge(r, queries, dims, n, max_values)
+        if bad:
+            return {"ok": False, "stage": f"example {i}", "error": bad[:2000], "records": recs}
+        runs.append(smp)
+    if not all(np.array_equal(runs[0][l], runs[1][l]) for l in queries):
+        return {"ok": False, "stage": "reproducibility", "error": "the same request and seed gave different samples", "records": recs}
+    return {"ok": True, "cpu_s_per_request": max(r.get("cpu_s", 0.0) for r in recs), "wall_s_per_request": max(r.get("wall_s", 0.0) for r in recs),
+            "records": recs}
+
+
+@contextlib.asynccontextmanager
+async def fresh_box(config, prepare):
+    """A new box from verifiers' own provisioning, with the verifier box's resolved config, prepared by the task
+    (public files, restored submission, staging) and cut from the network before anything of the predictor runs:
+    the sequence of IsolatedVerifierEnv.grade (envs/isolated_verifier/env.py:148-173)."""
+    from verifiers.v1.runtimes import provision_runtime
+    async with provision_runtime(config, env={}) as rt:
+        if not rt.network_restricted:
+            raise RuntimeError("a per-item box without the network policy")
+        await rt.prepare_setup()
+        await prepare(rt)
+        await rt.prepare_execution([])
+        yield rt
+
+
+async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, uid: int, examples: dict, seed: int = 0,
+                cleanup: bool = True, deadline: float | None = None, prepare=None, parallel: int = 1) -> dict:
+    """The loop of evaluator/grader.py:34-64. `prepare` (async: stage a fresh box) selects one box per item;
+    None runs every item in `runtime`."""
     ex = exam(hidden)
     m = int(limits["n_samples"])
+    wall = float(limits.get("wall_seconds") or 0)
     refs = ex.references()
     S = {l: np.zeros((ex.n, m, len(ts), ex.dims[l])) for l, ts in ex.queries.items()}
-    max_values = 4 * m * sum(len(ts) * ex.dims[l] for l, ts in ex.queries.items())
-    failed, cpu, wall, errors = np.zeros(ex.n, bool), np.zeros(ex.n), np.zeros(ex.n), []
-    cleanups, layers, dirty = [], None, None
-    cmd = ["python3", "-I", "-B", f"{RUNTIME_DIR}/item.py", "--submission", f"{workdir}/submission",
-           "--runner", f"{workdir}/physim2/predict_runner.py", "--request", f"{RUNTIME_DIR}/request.npz",
-           "--cpu", str(limits.get("cpu_seconds") or 0), "--wall", str(limits.get("wall_seconds") or 0),
-           "--mem-gib", str(limits.get("memory_gib") or 0), "--uid", str(UID)] + ([] if cleanup else ["--no-cleanup"])
+    max_values = m * sum(len(ts) * ex.dims[l] for l, ts in ex.queries.items())
+    failed, cpu, wall_s, errors = np.zeros(ex.n, bool), np.zeros(ex.n), np.zeros(ex.n), []
+    cleanups, layers, dirty, infra, box_cpu, box_s = [], None, None, [], 0.0, []
+    isolation = "box" if prepare is not None else "shared"
+    cmd = driver_cmd(limits, workdir, uid, cleanup)
     t0 = time.time()
-    for i in range(ex.n):
-        bad = None
-        if dirty is not None:
-            bad = "the box could not be cleaned after an earlier item"
-        elif deadline is not None and time.time() > deadline:
-            bad = "grading ran out of time"
-        if bad is None:
+
+    # ---- 1. validation, in the verifier box ----
+    val = await validate(lambda req: run_request(runtime, cmd, req, wall), examples, ex.queries, ex.dims, limits, max_values)
+    vrecs = val.pop("records")
+    for r in vrecs:
+        c = r.get("cleanup")
+        if c is not None and (c["left_pids"] or c["left_files"] or c.get("left_ipc")):
+            dirty = -1
+    val_layers = next((r.get("layers") for r in vrecs if r.get("layers")), None)
+    if not val["ok"]:
+        reason = f"validation failed ({val['stage']}): {val['error']}"
+        g = score_as_k(hidden, name, reason[:4000], {"validation": val, "layers": val_layers, "isolation": isolation})
+        return dict(g, validation={"ok": False, "stage": val["stage"]}, layers=val_layers, isolation=isolation,
+                    seconds=time.time() - t0, reason=f"validation failed ({val['stage']})")
+
+    # ---- 2. the exam ----
+    async def one_shared(i):
+        return await run_request(runtime, cmd, npz_bytes(ex.request(i, m, seed)), wall)
+
+    async def one_box(i):
+        """Item i in a box of its own. A box that cannot be provisioned or staged is the evaluator's failure:
+        tried twice, then recorded as an infrastructure failure of that item (scored as K, and counted)."""
+        last = "?"
+        for attempt in range(2):
+            started = False
+            tb = time.time()
             try:
-                await runtime.write(f"{RUNTIME_DIR}/request.npz", request_bytes(ex, i, m, seed))
-                out = await runtime.run(cmd, {})
-                r = json.loads(out.stdout.strip().splitlines()[-1])
-            except Exception as e:                           # the box or the driver, not the predictor
-                r = {"ok": False, "why": "driver error", "stderr": type(e).__name__, "cpu_s": 0.0, "wall_s": 0.0}
-            cpu[i], wall[i] = r.get("cpu_s", 0.0), r.get("wall_s", 0.0)
-            layers = r.get("layers") or layers
-            c = r.get("cleanup")
-            if c is not None:
-                cleanups.append({"item": i, "killed": c["killed"], "removed": c["removed"], "ipc_removed": c["ipc_removed"]})
-                if c["left_pids"] or c["left_files"] or c.get("left_ipc"):
-                    dirty = i
-            if not r.get("ok"):
-                bad = f"predictor failed ({r.get('why')}): {r.get('stderr', '')}"
-            else:
-                try:
-                    smp = _rules.read_reply(base64.b64decode(r["reply_b64"]), max_values)
-                    bad = SUB.check_shapes(smp, ex.queries, ex.dims, m)
-                except Exception as e:
-                    bad = f"unreadable reply: {type(e).__name__}"
+                async with asyncio.timeout(wall + SLACK_S + BOX_S):
+                    async with fresh_box(runtime.config, prepare) as rt:
+                        started = True
+                        r = await run_request(rt, cmd, npz_bytes(ex.request(i, m, seed)), wall)
+                box_s.append(time.time() - tb)
+                return r
+            except Exception as e:                           # includes TimeoutError
+                last = type(e).__name__
+                if started:
+                    break
+        infra.append(i)
+        return {"ok": False, "why": "infrastructure", "stderr": f"no box for this item ({last})", "cpu_s": 0.0, "wall_s": 0.0}
+
+    async def one(i):
+        if dirty is not None:
+            return {"skip": "the box could not be cleaned after an earlier request"}
+        if deadline is not None and time.time() > deadline:
+            return {"skip": "grading ran out of time"}
+        return await (one_box(i) if prepare is not None else one_shared(i))
+
+    sem = asyncio.Semaphore(max(1, int(parallel)) if prepare is not None else 1)
+
+    async def guarded(i):
+        async with sem:
+            return await one(i)
+
+    async def handle(i, r):
+        nonlocal layers, dirty, box_cpu
+        if "skip" in r:
+            return r["skip"]
+        cpu[i], wall_s[i] = r.get("cpu_s", 0.0), r.get("wall_s", 0.0)
+        layers = r.get("layers") or layers
+        if prepare is not None:
+            box_cpu += float(r.get("box_cpu_s") or 0.0)
+        c = r.get("cleanup")
+        if c is not None:
+            cleanups.append({"item": i, "killed": c["killed"], "removed": c["removed"], "ipc_removed": c["ipc_removed"]})
+            if prepare is None and (c["left_pids"] or c["left_files"] or c.get("left_ipc")):
+                dirty = i
+        if r.get("hung") and prepare is None:
+            dirty = i                                        # a shared box that stopped answering serves no later item
+        smp, bad = judge(r, ex.queries, ex.dims, m, max_values)
+        if bad is None:
+            for l in ex.queries:
+                S[l][i] = smp[l]
+        return bad
+
+    if prepare is not None and parallel > 1:
+        results = await asyncio.gather(*(guarded(i) for i in range(ex.n)))
+        bads = [await handle(i, r) for i, r in enumerate(results)]
+    else:
+        bads = []
+        for i in range(ex.n):
+            bads.append(await handle(i, await one(i)))
+    for i, bad in enumerate(bads):
         if bad:
             failed[i] = True
             errors.append({"item": i, "error": bad[:4000]})
-            continue
-        for l in ex.queries:
-            S[l][i] = smp[l]
-    sc = ex.score(S)
+
+    # ---- 3. scoring ----
+    with np.errstate(all="ignore"):
+        sc = ex.score(S)
+    wild = ~np.isfinite(sc).all(1) & ~failed                 # a reply whose score overflows is a failed item
+    for i in np.flatnonzero(wild):
+        failed[i] = True
+        errors.append({"item": int(i), "error": "the samples give a score that is not finite"})
     sc[failed] = refs["K"][failed]                           # a failed request is scored as K
+    out = dict(summary(ex, sc, refs), n_items=ex.n, n_failed=int(failed.sum()), cpu_s_mean=float(cpu.mean()),
+               cpu_s_max=float(cpu.max()), wall_s_mean=float(wall_s.mean()), seconds=time.time() - t0, layers=layers or val_layers,
+               items_with_leftovers=sum(1 for c in cleanups if c["killed"] or c["removed"] or c["ipc_removed"]),
+               box_not_clean_after_item=dirty, cleanup_between_items=cleanup, isolation=isolation,
+               validation={"ok": True, "cpu_s_per_request": val["cpu_s_per_request"]},
+               infrastructure_failed_items=len(infra), non_finite_items=int(wild.sum()))
+    if prepare is not None:
+        out.update(item_boxes=len(box_s), item_box_wall_s_mean=float(np.mean(box_s)) if box_s else None, item_boxes_cpu_s=box_cpu,
+                   item_boxes_parallel=int(parallel))
     rec = {"name": name, "n_items": ex.n, "n_failed": int(failed.sum()), "cpu_s_mean": float(cpu.mean()),
-           "cpu_s_max": float(cpu.max()), "wall_s_mean": float(wall.mean()), "seconds": time.time() - t0,
-           "errors": errors, "layers": layers, "cleanups": cleanups, "box_not_clean_after_item": dirty,
-           "cleanup_between_items": cleanup}
+           "cpu_s_max": float(cpu.max()), "wall_s_mean": float(wall_s.mean()), "seconds": time.time() - t0,
+           "errors": errors, "layers": layers or val_layers, "cleanups": cleanups, "box_not_clean_after_item": dirty,
+           "cleanup_between_items": cleanup, "isolation": isolation, "validation": val, "infrastructure_failed_items": infra,
+           "non_finite_items": [int(i) for i in np.flatnonzero(wild)]}
     save(hidden, name, sc, failed, cpu, rec)
-    return dict(summary(ex, sc, refs), n_items=ex.n, n_failed=int(failed.sum()), cpu_s_mean=float(cpu.mean()),
-                cpu_s_max=float(cpu.max()), wall_s_mean=float(wall.mean()), seconds=time.time() - t0, layers=layers,
-                items_with_leftovers=sum(1 for c in cleanups if c["killed"] or c["removed"] or c["ipc_removed"]),
-                box_not_clean_after_item=dirty, cleanup_between_items=cleanup)
+    return out

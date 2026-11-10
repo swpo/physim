@@ -5,8 +5,16 @@ the vf-eval process and holds the verifiers Runtime of that box, listens on a Un
 
     announce {port}   write the laboratory's address into the box (/etc/physim2/lab.json), so that
                       `physim2.Lab()` works from any Python script under any harness
-    freeze            collect submission/ from the box NOW with verifiers' own `collect`, apply the public freeze
-                      rules on the worker, keep the frozen archive for the grader (the agent called `submit`)
+    check {path, final}
+                      run the public validator (physim2/validate.py: freeze rules, then the three example calls
+                      through the grader's driver) IN THE AGENT'S BOX and return its report. final (the agent
+                      called `submit`): if the report is good, collect submission/ from the box NOW with
+                      verifiers' own `collect`, apply the freeze rules on the worker and keep the frozen archive
+                      for the grader.
+
+The report of `check` comes from a box in which the agent is root: it is feedback FOR the agent (round 5's
+"validate before you freeze", so that a submit of a broken predictor is refused and the laboratory stays open),
+never evidence for the grader. The grader repeats the three calls in the verifier box (grading.validate).
 
 The socket path and a 256-bit secret travel in `trace.state` (never saved in a trace) over verifiers' state
 channel; the socket is never reachable from a box. Pattern: PhySim v1, physim/runtime_access.py.
@@ -15,6 +23,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import posixpath
 import secrets
 import socket
 import tempfile
@@ -46,10 +55,41 @@ async def collect_frozen(runtime, artifacts, transport_bytes: int, max_mib: floa
     return {"root": root, "archive": frozen, "manifest": man, "error": err0 or err, "ok": frozen is not None}
 
 
+REPORT_KEYS = {"ok": bool, "stage": str, "error": str, "note": str, "files": int, "cpu_s": float, "wall_s": float,
+               "cpu_s_per_request": float, "wall_s_per_request": float}
+VALIDATE = ("import json, sys\n"
+            "sys.path.insert(0, sys.argv[1])\n"
+            "import physim2.validate as V\n"
+            "print(json.dumps(V.check(sys.argv[2]), default=str))\n")
+
+
+def clean_report(text: str) -> dict:
+    """The validator's last output line as a small, typed report (the box is the agent's: take nothing else)."""
+    try:
+        raw = json.loads(text.strip().splitlines()[-1])
+        assert isinstance(raw, dict)
+    except Exception:
+        return {"ok": False, "stage": "validator", "error": "the validator in the box returned no report"}
+    out = {}
+    for k, typ in REPORT_KEYS.items():
+        v = raw.get(k)
+        if typ is bool:
+            if k in raw:
+                out[k] = v is True
+        elif typ is str and isinstance(v, str):
+            out[k] = v[:3000]
+        elif typ in (int, float) and isinstance(v, (int, float)) and not isinstance(v, bool) and v == v and abs(v) < 1e12:
+            out[k] = typ(v)
+    out.setdefault("ok", False)
+    return out
+
+
 class BoxAccess:
-    def __init__(self, runtime, artifacts, transport_bytes: int, max_mib: float):
+    def __init__(self, runtime, artifacts, transport_bytes: int, max_mib: float, workdir: str = "/workspace", limits: dict | None = None):
         self._runtime = weakref.ref(runtime)
         self.artifacts, self.transport_bytes, self.max_mib = artifacts, transport_bytes, max_mib
+        self.workdir = workdir
+        self.check_timeout = 3 * float((limits or {}).get("wall_seconds") or 60) + 120.0
         self.directory = tempfile.TemporaryDirectory(prefix="physim2-io-")
         self.path = str(Path(self.directory.name) / "io.sock")
         self.secret = secrets.token_hex(32)
@@ -80,14 +120,14 @@ class BoxAccess:
 
     async def handle(self, reader, writer):
         try:
-            async with asyncio.timeout(600):
+            async with asyncio.timeout(self.check_timeout + 600):
                 request = json.loads(await reader.readline())
                 if not secrets.compare_digest(request.pop("secret", ""), self.secret):
                     raise PermissionError("unauthorized")
                 if request["op"] == "announce":
                     value = await self.announce(int(request["port"]))
-                elif request["op"] == "freeze":
-                    value = await self.freeze()
+                elif request["op"] == "check":
+                    value = await self.check(str(request["path"]), bool(request["final"]))
                 else:
                     raise ValueError("unknown operation")
                 response = {"value": value}
@@ -111,15 +151,29 @@ class BoxAccess:
         await self.runtime.run(["chmod", "644", ADDRESS_FILE], {})
         return {"written": ADDRESS_FILE}
 
-    async def freeze(self) -> dict:
+    async def check(self, path: str, final: bool) -> dict:
+        """{"report": the in-box validator's report, "frozen": None | {ok, error, files, bytes, sha256}}."""
+        if final and posixpath.normpath(posixpath.join(self.workdir, path)) != posixpath.join(self.workdir, self.artifacts[0].source):
+            return {"report": {"ok": False, "stage": "artifact", "error": "format: only submission/ is collected; copy your "
+                               "directory there first (physim2.Lab().submit(path) does it)"}, "frozen": None}
+        try:
+            async with asyncio.timeout(self.check_timeout):
+                r = await self.runtime.run(["python3", "-B", "-c", VALIDATE, self.workdir, path], {})
+            report = clean_report(r.stdout)
+        except TimeoutError:
+            report = {"ok": False, "stage": "validator", "error": "the validator in the box did not finish in time"}
+        except Exception as e:
+            report = {"ok": False, "stage": "validator", "error": f"the validator could not run in the box ({type(e).__name__})"}
+        if not final or not report["ok"]:
+            return {"report": report, "frozen": None}
         if self.frozen is None or not self.frozen["ok"]:
             self.frozen = await collect_frozen(self.runtime, self.artifacts, self.transport_bytes, self.max_mib)
         f = self.frozen
-        return {"ok": f["ok"], "error": f["error"], "files": len(f["manifest"]["files"]),
-                "bytes": f["manifest"].get("bytes", 0), "sha256": f["manifest"].get("sha256")}
+        return {"report": report, "frozen": {"ok": f["ok"], "error": f["error"], "files": len(f["manifest"]["files"]),
+                                             "bytes": f["manifest"].get("bytes", 0), "sha256": f["manifest"].get("sha256")}}
 
 
-def request(access: dict, op: str, timeout: float = 620.0, **args):
+def request(access: dict, op: str, timeout: float = 1800.0, **args):
     """Blocking client, used by the laboratory process."""
     with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as c:
         c.settimeout(timeout)

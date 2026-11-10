@@ -28,13 +28,18 @@ def child_env(extra: dict | None = None) -> dict:
                 "XLA_FLAGS": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1"})
     if not os.path.exists("/proc/sys/net/ipv6") and sys.platform == "linux":   # see tools/docker_shim/docker
         env["PATH"] = os.path.join(HERE, "docker_shim") + os.pathsep + env.get("PATH", "")
+    # THIS checkout's physim2_env and physim2_script, wherever the environment's editable install points
+    env["PYTHONPATH"] = ROOT + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
     env.update(extra or {})
     return env
 
 
 def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=None, task: dict | None = None,
-             cpu: float | None = 2, env: dict | None = None, timeout: float = 3600, image: str | None = None) -> dict:
-    """Returns {"episodes": [...], "wall_s", "host_cpu_s", "returncode", "run_dir", "log_tail"}."""
+             cpu: float | None = 2, env: dict | None = None, timeout: float = 3600, image: str | None = None,
+             timeouts: dict | None = None) -> dict:
+    """Returns {"episodes": [...], "wall_s", "host_cpu_s", "returncode", "run_dir", "log_tail"}.
+    The task option `agent_key` defaults to the run name: `single_use` stays ON, and each scripted policy or
+    probe is its own agent (the same run name on the same instance is refused, as a re-roll would be)."""
     cfg = {"model": "none/scripted", "num_rollouts": 1, "max_concurrent": 1, "push": False, "output_dir": out_dir,
            "run": {"name": name},
            "env": {"id": "isolated-verifier",
@@ -49,8 +54,9 @@ def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=No
         cfg["env"]["taskset"]["instances"] = list(instances)
     if image:
         cfg["env"]["taskset"]["image"] = image
-    if task:
-        cfg["env"]["taskset"]["task"] = task
+    cfg["env"]["taskset"]["task"] = dict({"agent_key": name}, **(task or {}))
+    if timeouts:
+        cfg["env"]["agent"]["timeout"] = timeouts
     os.makedirs(out_dir, exist_ok=True)
     run_dir = os.path.join(out_dir, name)
     if os.path.exists(run_dir):
@@ -85,9 +91,10 @@ def rollout(ep: dict) -> dict:
             "scored_as_K_because_ungraded": reward is None,
             "script_exit_code": sc.get("exit_code"), "address_file_matches_tool_url": sc.get("address_file_matches_tool_url"),
             "submission": ph.get("submission"), "lab": ph.get("lab"), "grade": g, "verifier_box": ph.get("verifier_box"),
+            "item_isolation": g.get("isolation"),
             "wall_s": {"boot": span("boot"), "setup": span("setup"), "agent": span("agent"), "finalize": span("finalize"),
                        "verifier": g.get("verifier_wall_s"),
                        "total": span("boot") + span("setup") + span("agent") + span("finalize") + (g.get("verifier_wall_s") or 0.0)},
-            "cpu_s": {"agent_box": ph.get("agent_box_cpu_s"), "verifier_box": g.get("verifier_box_cpu_s"),
-                      "worker_in_reward": g.get("worker_cpu_s")},
+            "cpu_s": {"agent_box_unverified": ph.get("agent_box_cpu_s_unverified"), "verifier_box": g.get("verifier_box_cpu_s"),
+                      "item_boxes": g.get("item_boxes_cpu_s"), "worker_in_reward": g.get("worker_cpu_s")},
             "info": ph}
