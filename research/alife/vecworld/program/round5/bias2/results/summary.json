@@ -76420,7 +76420,7 @@
    }
   },
   {
-   "claim": "V3 (vortex, the latent is mostly a box-scale mode). Effective dimension of the linear closure latent 7.0 of 64 (block vorticity 32.7, block fuel 34.2); the box mean carries 0.358 of its variance, and that box mean is a linear function of the box means of the four fields (R2 0.9986; of label b alone 0.968, of fuel alone 0.961). Its autocorrelation is 0.89 over 20 ticks and 0.394 over 80. The nonlinear encoders go further: box-mean share 0.552 (N0 closure, effective dimension 3.2), 0.706 (N8 local law, 2.0).",
+   "claim": "V3 (vortex, the latent is mostly a box-scale mode). Effective dimension of the linear closure latent 7.0 of 64 (block vorticity 32.7, block fuel 34.2); the box mean carries 0.358 of its variance, and that box mean is a linear function of the box means of the four fields (R2 0.9986; of label b alone 0.968, of fuel alone 0.961). Its autocorrelation is 0.89 over 20 ticks and 0.394 over 80. The nonlinear encoders go further: box-mean share 0.552 (N0 closure, effective dimension 3.2), 0.706 (N8 local law, 2.0). Checker: this box-scale mode is mostly the run's common transient, not a fluctuating variable. In every trajectory the box-mean label b rises (0.014, 0.058, 0.087, 0.096 at ticks 0, 100, 200, 300) and the fuel falls (0.686 to 0.587). The across-trajectory mean time course, a function of the tick alone, carries 0.88 of the variance of the latent's box mean and 0.34 of the latent's whole per-block variance (N0 closure 0.56, N8 closure 0.54, N8 local law 0.70; block vorticity 0.000; every membrane and gliders latent at most 0.002). With that time course removed, the latent's block autocorrelation over 20 ticks falls from 0.46 to 0.23 (N0 closure 0.60 to 0.34), below block vorticity's 0.39.",
    "values": {
     "pr": 7.0,
     "pr_om": 32.7,
@@ -76453,7 +76453,7 @@
    }
   },
   {
-   "claim": "V4 (vortex, the control without locality). The dense encoder with per-channel whitening trained for closure puts 0.999 of its variance on one mode, a global number with closure ceiling 0.944 at h = 16; that number is predicted from the box means of the four fields at R2 0.895 (label b alone 0.894). With full 64 x 64 whitening the dense encoder is less closed than block vorticity (-0.126 at h = 16, z -15.0) and than the linear local encoder (-0.135, z -12.5), and is not a per-block variable (seed agreement 0.0002).",
+   "claim": "V4 (vortex, the control without locality). The dense encoder with per-channel whitening trained for closure puts 0.999 of its variance on one mode, a global number with closure ceiling 0.944 at h = 16; that number is predicted from the box means of the four fields at R2 0.895 (label b alone 0.894). With full 64 x 64 whitening the dense encoder is less closed than block vorticity (-0.126 at h = 16, z -15.0) and than the linear local encoder (-0.135, z -12.5), and is not a per-block variable (seed agreement 0.0002). Checker: 0.93 of the variance of that global number is the across-trajectory mean time course, so the tick alone predicts it better than the box-mean label b does; its ceiling of 0.944 is the predictability of the run's common transient.",
    "values": {
     "pc1": 0.999,
     "c16": 0.944,
@@ -76690,7 +76690,7 @@
    }
   },
   {
-   "claim": "M3 (membrane, learned closure is more closed than every hand design at long horizons). Paired ceiling differences to block K at h = 8 and 16: linear closure 0.1 (z 20.8) and 0.101 (z 10.8); nonlinear closure 0.141 (z 28.9) and 0.252 (z 29.8). Against hand windows of lower effective dimension, which favours the hand side: linear closure (37.6) against the 8-px tent of K (33.3) 0.166 (z 12.7); nonlinear halo closure (32.9) against the 16-px tent (14.5) 0.382 (z 16.4); nonlinear halo local law against the 8-px tent 0.355 (z 31.1). At h = 1 and 2 the closure latents are below block K by at most -0.005. Ceilings at h = 16: 0.32, 0.471, 0.519, 0.508 against 0.219; the most closed hand design of any window or width at h = 16 is sfax_c1 with 0.273.",
+   "claim": "M3 (membrane, learned closure is more closed than every hand design at long horizons). Paired ceiling differences to block K at h = 8 and 16: linear closure 0.1 (z 20.8) and 0.101 (z 10.8); nonlinear closure 0.141 (z 28.9) and 0.252 (z 29.8). Against hand windows of lower effective dimension, which favours the hand side: linear closure (37.6) against the 8-px tent of K (33.3) 0.166 (z 12.7); nonlinear halo closure (32.9) against the 16-px tent (14.5) 0.382 (z 16.4); nonlinear halo local law against the 8-px tent 0.355 (z 31.1). At h = 1 and 2 the closure latents are below block K by at most -0.005. Ceilings at h = 16: 0.32, 0.471, 0.519, 0.508 against 0.219; the most closed hand design of any window or width at h = 16 is sfax_c1 with 0.273. Checker: that ranking is for the family G. With the local equivariant ridge that the pod also certified (family GL), the most closed hand design at h = 16 is the four block field means (0.461; 0.198 under G). Nonlinear closure with one number per block stays above it (0.582; difference 0.121, z 15) and above the closed-form extended slow feature (0.249, z 33), so the result holds under both families.",
    "values": {
     "l8": 0.1,
     "zl8": 20.8,
@@ -76819,7 +76819,7 @@
    }
   },
   {
-   "claim": "M6 (membrane, controls and width). The dense encoder with per-channel whitening collapses onto one mode (0.975 of the variance) that is neither slow (autocorrelation over 20 ticks 0.17) nor a function of the box means (R2 0.037); ceiling at h = 16 0.1. With full whitening the dense closure encoder is above block K at h = 16 (0.045, z 5.7) and below the linear local encoder (-0.055, z -8.4). With two numbers per block the nonlinear halo closure reaches 0.761 at h = 16, 0.563 above the four block field means (z 70.4).",
+   "claim": "M6 (membrane, controls and width). The dense encoder with per-channel whitening collapses onto one mode (0.975 of the variance) that is neither slow (autocorrelation over 20 ticks 0.17) nor a function of the box means (R2 0.037); ceiling at h = 16 0.1. With full whitening the dense closure encoder is above block K at h = 16 (0.045, z 5.7) and below the linear local encoder (-0.055, z -8.4). With two numbers per block the nonlinear halo closure reaches 0.761 at h = 16, 0.563 above the four block field means (z 70.4). Checker: under the family GL the last difference is 0.357 (0.818 against 0.461, z 54), not 0.563: the global ridges of family G handicap a design of 256 numbers.",
    "values": {
     "pc1": 0.975,
     "ac": 0.17,
@@ -76867,7 +76867,7 @@
    }
   },
   {
-   "claim": "X1 (the map, linear block-only closure with a global head, one number per block). Gliders: block mass (R2 0.971, flat window share 0.834, box-mean share 0.0004, seed agreement 1.0). Vortex: the block reading of a slow box-scale fuel and label mode (R2 from block means 0.967, with the closed-form slow feature 0.948; box-mean share 0.358; seed agreement 0.999; vorticity share 0.0). Membrane: a within-block gradient of phi - K + L (flat window share 0.015, gradient share 0.45; box-mean share 0.0017; seed agreement 0.586). 'Closure finds mass' holds only in the mass-conserving theory.",
+   "claim": "X1 (the map, linear block-only closure with a global head, one number per block). Gliders: block mass (R2 0.971, flat window share 0.834, box-mean share 0.0004, seed agreement 1.0). Vortex: the block reading of a slow box-scale fuel and label mode (R2 from block means 0.967, with the closed-form slow feature 0.948; box-mean share 0.358; seed agreement 0.999; vorticity share 0.0). Membrane: a within-block gradient of phi - K + L (flat window share 0.015, gradient share 0.45; box-mean share 0.0017; seed agreement 0.586). 'Closure finds mass' holds only in the mass-conserving theory. Checker: the vortex mode is mostly the run's common transient (V3), a trend the other two worlds lack; and the membrane world, which conserves nothing, shows no collapse onto the box mean (share 0.0017). So the collapse cannot be put down to the absence of a conservation law: stationarity is confounded with it.",
    "values": {
     "g_a": 0.971,
     "g_dc": 0.834,
@@ -76900,7 +76900,7 @@
    }
   },
   {
-   "claim": "X2 (learned against the most closed hand design of at least the same effective dimension and the same receptive field, closure ceiling at h = 16). Gliders: 0.041 (z 15.1; nonlinear halo local law against the 8-px c0 tent) and 0.007 (z 4.6; linear local law against the closed-form slow feature). Vortex: 0.204 (z 13.7; nonlinear closure against block vorticity, with a tenth of its effective dimension), and -0.192 (z -13.1) against the 16-px vorticity tent. Membrane: 0.198 (z 29.5; nonlinear closure against the closed-form extended slow feature, the most closed hand design there), 0.246 (z 32.9) with the halo, 0.047 (z 5.3) linear. Round 4's 'nothing learned beats the hand designs' carries over to the vortex world (tent-smoothed vorticity) but not to the membrane world, where no hand design, closed-form slow features included, is as closed at long horizons.",
+   "claim": "X2 (learned against the most closed hand design of at least the same effective dimension and the same receptive field, closure ceiling at h = 16). Gliders: 0.041 (z 15.1; nonlinear halo local law against the 8-px c0 tent) and 0.007 (z 4.6; linear local law against the closed-form slow feature). Vortex: 0.204 (z 13.7; nonlinear closure against block vorticity, with a tenth of its effective dimension), and -0.192 (z -13.1) against the 16-px vorticity tent. Membrane: 0.198 (z 29.5; nonlinear closure against the closed-form extended slow feature, the most closed hand design there), 0.246 (z 32.9) with the halo, 0.047 (z 5.3) linear. Round 4's 'nothing learned beats the hand designs' carries over to the vortex world (tent-smoothed vorticity) but not to the membrane world, where no hand design, closed-form slow features included, is as closed at long horizons. Checker: the z values are trajectory bootstraps with the trained encoders held fixed. The vortex difference of 0.204 was 0.130 (z 10.5) when the same config was trained again on almost the same data (W5), and the vortex per-channel latents owe part of their ceilings to the run's common trend (V3). The membrane result holds under the family GL (M3).",
    "values": {
     "g": 0.041,
     "zg": 15.1,
@@ -77039,7 +77039,7 @@
    }
   },
   {
-   "claim": "W3 (membrane, closure on spatially whitened latents). Nonlinear block-only: a reproducible variable (seed agreement 0.925 against 0.143 for the per-channel closure latent on the same data) of effective dimension 48.9; it is no single hand block mean (best: phi K, R2 0.545; closed-form extended slow feature 0.713); ceiling at h = 16 0.427, 0.154 (z 23.7) above the closed-form extended slow feature and 0.208 (z 23.6) above block K. Linear block-only: again phi - K + L (variance shares phi 0.885, K -0.813, L 0.665), now partly a block mean (window: flat share 0.294, gradient share 0.207; K opposite to phi in every replica, cosines [-1.0, -1.0, -0.999, -1.0]); not reproducible (seed agreement 0.092); above block K by 0.107 at h = 8 (z 26.0) and 0.06 at h = 16 (z 9.3). With the halo, nonlinear: seed agreement 0.543, 0.213 (z 27.4) above the closed-form extended slow feature at h = 16.",
+   "claim": "W3 (membrane, closure on spatially whitened latents). Nonlinear block-only: a reproducible variable (seed agreement 0.925 against 0.143 for the per-channel closure latent on the same data) of effective dimension 48.9; it is no single hand block mean (best: phi K, R2 0.545; closed-form extended slow feature 0.713); ceiling at h = 16 0.427, 0.154 (z 23.7) above the closed-form extended slow feature and 0.208 (z 23.6) above block K. Linear block-only: again phi - K + L (variance shares phi 0.885, K -0.813, L 0.665), as two different solutions whose means are the window numbers that follow (checker): seed 0, on both fit halves, is the within-block gradient (flat share 0.00-0.02, gradient share 0.34-0.41, R2 from block K 0.01-0.05); seed 1, on both fit halves, is a flat block window that reads block cell material (flat share 0.52-0.64, gradient share 0.03-0.06, R2 from block K 0.88-0.92), with the lower validation loss (0.396 against 0.414 and 0.393 against 0.403) and the lower ceiling at h = 16 (0.25 against 0.31). Means over the 4 replicas: flat share 0.294, gradient share 0.207; K opposite to phi in every replica, cosines [-1.0, -1.0, -0.999, -1.0]; seed agreement 0.092; above block K by 0.107 at h = 8 (z 26.0) and 0.06 at h = 16 (z 9.3). With the halo, nonlinear: seed agreement 0.543, 0.213 (z 27.4) above the closed-form extended slow feature at h = 16.",
    "values": {
     "s_n": 0.925,
     "s_ref": 0.143,
@@ -77099,7 +77099,7 @@
    }
   },
   {
-   "claim": "W4 (gliders, closure on spatially whitened latents). Block-only: block mass, R2 0.991 (linear; window flat share 0.999; seed agreement 1.0) and 0.984 (nonlinear; seed agreement 0.999); paired with block mass 0.008 (z 5.1) and 0.032 (z 16.3) at h = 4, 0.008 (z 5.6) and 0.023 (z 11.2) at h = 16. With the 8-px halo the spatial whitening works against the taper: agreement with the 8-px mass tent 0.708 (per-channel closure on the same data 0.925), seed agreement 0.551 (1.0), effective dimension 36.3 (23.1), and -0.054 (z -6.3) below the 8-px mass tent at h = 16.",
+   "claim": "W4 (gliders, closure on spatially whitened latents). Block-only: block mass, R2 0.991 (linear; window flat share 0.999; seed agreement 1.0) and 0.984 (nonlinear; seed agreement 0.999); paired with block mass 0.008 (z 5.1) and 0.032 (z 16.3) at h = 4, 0.008 (z 5.6) and 0.023 (z 11.2) at h = 16. With the 8-px halo the replicas split (checker; the wording was 'the spatial whitening works against the taper'): three of the four linear replicas are the mass tent (R2 with the 8-px mass tent 0.89, 0.94, 0.98; ceiling at h = 16 0.33) and one (fit B, seed 1) is not mass at all (R2 0.03, ceiling 0.15); two of the four nonlinear replicas are the tent (0.80, 0.98) and two are not (0.26, 0.09). Means over the linear replicas: agreement with the 8-px mass tent 0.708 (per-channel closure on the same data 0.925), seed agreement 0.551 (1.0), effective dimension 36.3 (23.1), and -0.054 (z -6.3) below the 8-px mass tent at h = 16.",
    "values": {
     "a_l": 0.991,
     "dc": 0.999,
@@ -77148,7 +77148,7 @@
    }
   },
   {
-   "claim": "W5 (replication: the per-channel closure configs again, on fresh simulations with the same designer seeds, an A100 instead of the H200; first run in brackets). Vortex, linear closure: ceiling at h = 16 0.353 (0.352), effective dimension 7.1 (7.0), R2 with the closed-form slow feature 0.948 (0.948), paired with block vorticity 0.01 (0.009). Vortex, nonlinear closure: ceiling at h = 16 0.473 (0.547), effective dimension 4.1 (3.2). Membrane, nonlinear closure minus block K at h = 16: 0.251 (0.252); seed agreement 0.143 (0.332). Gliders, linear closure with block mass: R2 0.971 (0.971). The linear results reproduce to within 0.001 (effective dimension 0.1). The nonlinear closure ceiling of the vortex world differs between the runs by more than its seeds differ within the first run (-0.042); the membrane difference reproduces although the latent itself does not.",
+   "claim": "W5 (retraining check: the per-channel closure configs trained again with other training seeds on an A100 instead of the H200; first run in brackets. The simulations were run again with the same designer seeds, which reproduced the first run's data in the membrane world, almost reproduced it in the vortex world, and gave statistically fresh data only in gliders). Vortex, linear closure: ceiling at h = 16 0.353 (0.352), effective dimension 7.1 (7.0), R2 with the closed-form slow feature 0.948 (0.948), paired with block vorticity 0.01 (0.009). Vortex, nonlinear closure: ceiling at h = 16 0.473 (0.547), effective dimension 4.1 (3.2). Membrane, nonlinear closure minus block K at h = 16: 0.251 (0.252); seed agreement 0.143 (0.332). Gliders, linear closure with block mass: R2 0.971 (0.971). The linear results reproduce to within 0.001 (effective dimension 0.1). The nonlinear closure ceiling of the vortex world differs between the runs by more than its seeds differ within the first run (-0.042); the membrane difference reproduces although the latent itself does not. Checker: because the vortex data are almost the same in both runs, that difference (0.473 against 0.547; nonlinear closure minus block vorticity 0.130, z 10.5, against 0.204, z 13.7) is variability between training runs, which the trajectory-bootstrap z values do not include.",
    "values": {
     "v_c": 0.353,
     "v_c0": 0.352,
@@ -77193,7 +77193,7 @@
    }
   },
   {
-   "claim": "X3 (the map with the collapse closed off: block-only closure on spatially whitened latents, one number per block). Gliders: block mass, R2 0.991 (seed agreement 1.0). Vortex: block vorticity, R2 0.768 linear and 0.862 nonlinear (seed agreement 0.997, 0.969). Membrane: nonlinear, a reproducible variable (seed agreement 0.925) that is no hand block mean (best R2 0.545) and is 0.154 (z 23.7) more closed at h = 16 than the most closed hand design; linear, not reproducible (0.092). So the closure bias finds the block density of the transported field in both theories that have one (mass, conserved; vorticity, advected but fed and dissipated), provided the loss weights the spatial modes equally; weighted by variance it follows the largest slow mode instead (X1).",
+   "claim": "X3 (the map with the collapse closed off: block-only closure on spatially whitened latents, one number per block). Gliders: block mass, R2 0.991 (seed agreement 1.0). Vortex: block vorticity, R2 0.768 linear and 0.862 nonlinear (seed agreement 0.997, 0.969). Membrane: nonlinear, a reproducible variable (seed agreement 0.925) that is no hand block mean (best R2 0.545) and is 0.154 (z 23.7) more closed at h = 16 than the most closed hand design; linear, not reproducible (0.092). So with a loss that weights the spatial modes equally, block-only closure finds block mass in gliders (as it did without that loss, G1) and mostly block vorticity in the vortex world (the one new case); weighted by variance it follows the largest slow mode instead (X1). Checker: the wording was 'finds the block density of the transported field in both theories that have one (mass, conserved; vorticity, advected but fed and dissipated)'. All four vortex fields are advected by the flow (track1/vortex_world/vortex_jax.py), so transport does not single out vorticity; what does is that block vorticity is the most closed hand block mean (V1) and the only field without the run's common trend (V3). In the membrane world the linear encoder reaches a block mean of cell material in 2 of 4 replicas (W3).",
    "values": {
     "g": 0.991,
     "gs": 1.0,
@@ -77228,7 +77228,7 @@
   "comparisons at matched effective dimension: interpolation along each hand family (`matched_effective_dimension`), the most closed hand design with at least the learned latent's effective dimension (`dominance`), and paired trajectory bootstraps against the hand windows on both sides (`paired_bootstrap`)",
   "the dense controls U (64 c x 64 c whitening) and Uc (per-channel whitening) have exactly the training settings of the local encoders (3,000 steps, batch 128, the same learning-rate schedule, no weight decay)"
  ],
- "follow_up_arm": "r5-bias2-007 (worlds '<world>_w'): encoders Lw / Nw are the local encoders L / N trained with the closure loss on latents whitened over all 64 blocks of a frame (the U control's whitening, so every spatial mode has equal weight in the loss); the frozen Phi keeps per-channel whitening and is judged like every other local latent. The job re-simulated the three worlds with the same designer seeds on another GPU type and also re-ran the per-channel closure configs and all hand designs, so comparisons within '<world>_w' are paired on the same items.",
+ "follow_up_arm": "r5-bias2-007 (worlds '<world>_w'): encoders Lw / Nw are the local encoders L / N trained with the closure loss on latents whitened over all 64 blocks of a frame (the U control's whitening, so every spatial mode has equal weight in the loss); the frozen Phi keeps per-channel whitening and is judged like every other local latent. The job re-simulated the three worlds with the same designer seeds on another GPU type and also re-ran the per-channel closure configs and all hand designs, so comparisons within '<world>_w' are paired on the same items. Checker: with the same designer seeds the re-simulation reproduced the first run's data: identical at the stored precision in the membrane world, identical up to about tick 200 in the vortex world (correlation 0.88-0.92 at tick 300), statistically fresh only in gliders (correlation below 0.13 from tick 40). The second run of the per-channel configs is a retraining with other training seeds, not a replication on new data, except in gliders.",
  "caveats": [
   "one world seed (0) and public parameters per world; the two designer seeds are the cross-fit halves; 2 training seeds per config",
   "the hand designs of the vortex and membrane worlds are this study's choices (block means of the fields and of simple nonlinear features at 4 windows, 4-5 multi-channel designs, closed-form SFA / PCA); object views (vortex list, cell list) were not rasterised to blocks, so 'no hand design is as closed' is relative to that list",
@@ -77237,6 +77237,127 @@
   "the certification family is fixed and mostly linear (mean, persistence, AR(1), ridges with 1-8 lags, kNN; plus a local ridge in GL), so ceilings are lower bounds on closure",
   "horizons reach 16 study ticks: 80 time units in the vortex world, 640 in the membrane world (a third of a division cycle), 16 ticks in gliders",
   "float64 simulation on the GPU is not bit-deterministic (round-4 finding); numbers reproduce statistically, not bitwise",
-  "the runner's two minor review points on job.sh (false failure if ctrain is killed at the certification deadline; pre-loop probes without a timeout) are not fixed because no further job was submitted"
- ]
+  "the runner's two minor review points on job.sh (false failure if ctrain is killed at the certification deadline; pre-loop probes without a timeout) are not fixed because no further job was submitted",
+  "checker: the vortex data are a transient shared by all trajectories (fuel falls and label b rises over the 300 ticks, the selection sweep after the labelling event), and the certifier's mean predictor is the pooled mean, so every variable that carries this trend (fuel, labels, the closed-form slow feature, all per-channel closure latents) takes ceiling from it; block vorticity and the spatially whitened latents do not carry it. No run separates 'nothing is conserved' from 'the data are not stationary'",
+  "checker: z values are trajectory bootstraps over the 64 certification trajectories with the trained encoders held fixed; they include neither the variability between training runs (vortex nonlinear closure: 0.074 at h = 16 between two trainings on almost the same data) nor the world seed",
+  "checker: 'seed agreement' compares two training seeds fitted on the same half and applied to the same frames; latents fitted on different halves are never applied to the same frames. Replica means can hide two different solutions (membrane Lw0, gliders Lw8 and Nw8, vortex L8 closure, where one of four replicas is the vorticity tent at R2 0.86)",
+  "checker: the grid counts 34 / 34 / 19 include two untrained random-window baselines per world (32 / 32 / 17 trained configs; 8 trained in the follow-up)"
+ ],
+ "checker": {
+  "who": "independent checker of round-5 study bias2 (worktree wt-bias2chk), 10 Nov 2026; CPU only, about 8 CPU-minutes, no GPU job",
+  "inputs": "origin/gpu-jobs:jobs/r5-bias2-00{1..7} (status.json, request.json, logs/sysinfo.txt, out/<world>/{items,latsub,windows,train,combined.json,sim_*.json}); code read: c5.py, cnets.py, ctrain.py, chand.py, ccert.py, ccombine.py, canalyze.py, cpair.py, cextra.py, cwin.py; learned_phi2/lphi.py (certify, combine), closure_lib.closure_ext, track1/vortex_world/vortex_jax.py",
+  "verdict": "No number in the 27 claims is wrong. Six points of wording or interpretation are corrected here (edits) and explained in findings. The measured facts stand: per-channel closure finds block mass only in gliders; closure on spatially whitened latents finds block mass in gliders and mostly block vorticity in the vortex world; in the membrane world nonlinear closure latents are more closed at h = 16 than every hand design of the study under both predictor families. The general readings ('transported density', 'conservation removes the collapse', 'replicated on fresh simulations') are not supported as worded.",
+  "verified": {
+   "job_records": "r5-bias2-004 and -005: nebius NVIDIA H200 (sysinfo), exit 0, billed 4.6802 and 3.6269 USD at 6.69 USD/h (0.700 and 0.542 billed hours); r5-bias2-007: lambdalabs A100-SXM4-40GB, exit 0, billed 2.3364 USD at 1.99 USD/h (1.174 h); 001 rejected, 002 and 003 cancelled before start, 006 infra_error with no pod, all 0 USD; total 10.6435 USD. Source: status.json:cost.billed_usd, pod, exit_code of each job. train_done.json of every world: skipped_by_deadline [] (34, 19, 34, 10, 10, 10 entries, each including 2 untrained random windows).",
+   "committed_copies": "results/<world>/combined.json.gz and results/status_*.json equal the gpu-jobs files (6 of 6, 3 of 3)",
+   "claim_values": "388 values in 27 claims. 222 are read from the pod's combined.json: all match; of these 148 were also recomputed with the checker's own code (47 closure ceilings from per-item errors; 51 agreements, 40 seed agreements and 10 box-mean shares from the latent subsamples, every 20th tick, tolerance 0.02) with no difference beyond tolerance; 74 (participation ratios, field shares, I_capt, 3 two-channel agreements) were checked for transcription only. 122 paired-bootstrap entries (44 pairs) were recomputed with a different seed and 600 resamples: every difference matches, every z is within 12% of the reported one (bootstrap noise; for example -13.1 against -14.6). 10 raw_r2 values recomputed from per-item errors. 32 window and global-part values recomputed from windows/ and latsub/: all match (an alternative smoothing, 4 x 4 pixel averaging, gives the same reading: membrane L0 closure flat share 0.015, gradient share 0.69).",
+   "design": "cross-fitting is clean (encoder, field statistics, whitening and closed forms fitted on one half and applied to the other; validation trajectories are training-only); the frozen Lw / Nw encoders keep per-channel whitening as stated; U, Uc, L and N share training settings",
+   "secrets": "none: public default parameters, world seed 0, designer seeds 9700 (pilot, marked never reused) and 9711-9732; no credential-like strings in the folder"
+  },
+  "findings": {
+   "F1_follow_up_data_are_not_fresh": "Hand designs of the follow-up job against the first run, same designer seeds (latsub, hand_*_h0): membrane, every stored block value equal at float16 on all 16 sampled ticks of both halves and all certification items' oracle spreads equal within 0.1%; vortex, correlation 1.000 up to tick 200-220 and 0.88-0.92 at tick 300 (label b 0.81), 86% of the vorticity items' oracle spreads equal within 0.1%; gliders, correlation 0.65 at tick 0 and below 0.13 from tick 40. The training seeds of the per-channel configs differ between the runs (the config index enters the key). So 'reproduces to within 0.001' is agreement between two trainings on the same data on two GPU types; only the gliders numbers are a replication on new data.",
+   "F2_vortex_trend": "Share of variance on the across-trajectory mean time course (both halves, 16 sampled ticks; job 005 unless stated): box mean of label b 0.87, of fuel 0.83, of vorticity 0.00; per-block variance of hand b 0.145, Y 0.104, b - a 0.19, closed-form slow feature 0.29, vorticity 0.000; of the latents L0 closure 0.34, L0 local law 0.31, L8 closure 0.42, N0 closure 0.56, N8 closure 0.54, N8 local law 0.70; first principal component of Uc closure 0.93; follow-up Lw0 0.002, Nw0 0.001; membrane and gliders latents and hand designs at most 0.002. Block autocorrelation over 20 ticks before and after removing that time course: L0 closure 0.455 and 0.233, N0 closure 0.595 and 0.340, N8 closure 0.760 and 0.539, block vorticity 0.393 and 0.393, Lw0 0.361 and 0.360, Nw0 0.390 and 0.389. Standard deviation of the common course of box-mean b 0.027 against 0.010 across trajectories at a fixed tick. The certifier's 'mean' predictor is the pooled mean over ticks (closure_lib.closure_ext), so trend counts as predictable content.",
+   "F3_transport": "vortex_jax.py: d om, d Y, d a and d b each contain -u.grad of the field. Block vorticity is the most closed hand block mean at h = 16 (0.343, V1). The spatially whitened linear latent is vorticity at R2 0.77 with 0.21 of its variance on fuel and label a in all four replicas (om 0.75-0.81, Y 0.10-0.17, a 0.07-0.08).",
+   "F4_replica_splits": "Per replica (fit half, seed), from windows/, latsub/, train/ and items/. Membrane Lw0 closure (job 007): A0 flat 0.015, gradient 0.337, R2 from block K 0.05, validation loss 0.4139, ceiling at h = 16 0.311; B0 0.000, 0.409, 0.006, 0.4026, 0.312; A1 0.640, 0.025, 0.915, 0.3957, 0.251; B1 0.523, 0.059, 0.879, 0.3933, 0.255. Gliders Lw8 closure: R2 with the 8-px mass tent B0 0.893, A0 0.979, A1 0.938, B1 0.025 (effective dimension 48, ceiling at h = 16 0.154 against 0.325-0.330); Nw8: 0.795, 0.259, 0.975, 0.092. Vortex L8 closure (job 005): three replicas follow the label difference (R2 with its 8-px tent 0.71-0.73), one (fit A, seed 1) is the vorticity tent (0.855, effective dimension 10.5, ceiling at h = 16 0.66).",
+   "F5_training_variability": "Vortex N0 closure ceiling at h = 16 per replica: first run 0.499, 0.567, 0.592, 0.541 (mean 0.547); second training on almost the same data 0.460, 0.507, 0.482, 0.444 (mean 0.473). N0 closure minus block vorticity: 0.204 (z 13.7) and 0.130 (z 10.5). Membrane N0 closure minus the extended slow feature: 0.198 and 0.197; N8: 0.246 and 0.252 (same data).",
+   "F6_predictor_family": "Ceilings at h = 16 under G and under GL (G plus the local equivariant ridge; per-item errors of 'lridge' are in items/): membrane block K 0.219 and 0.363, extended slow feature 0.273 and 0.333, four block field means 0.198 and 0.461, N0 closure 0.471 and 0.582, N8 closure 0.519 and 0.631, Nw0 0.427 and 0.570, N8 closure with two numbers 0.761 and 0.818. Paired under GL: N0 closure minus the extended slow feature 0.249 (z 33), minus the four field means 0.121 (z 15); Nw0 minus the four field means 0.109 (z 15); N8 closure with two numbers minus the four field means 0.357 (z 54). Vortex and gliders comparisons change by at most 0.03. In the membrane world, for one number per block, the best member of either family captures 0.2-0.6 of the predictable variance at h = 16, and the encoders were trained for linear predictability, so these are comparisons of lower bounds.",
+   "F7_membrane_Nw0_supports_the_report": "The membrane Nw0 latent is the same variable on both fit halves, which the report's seed agreement does not test: a per-block quadratic readout from the seven hand block designs explains 0.80 of it (0.77-0.82 over replicas) and, fitted for the encoder of one half, explains 0.79 (0.76-0.82) of the other half's encoder on the other half's data. For the per-channel N0 closure the same readout gives 0.40 (0.00-0.75). So the latent is no single hand block mean (best 0.545) but four fifths of it is a quadratic function of the hand block means of its own block."
+  },
+  "consequences_for_the_conclusions": [
+   "Conclusion 1 (closure recovers the transported density once modes are weighted equally; conservation only removed the collapse): the measurement stands for two worlds, one of them new; the mechanism is not shown. The vortex collapse is onto a trend that gliders and the membrane world lack, and the membrane world neither conserves nor collapses. A run on detrended or stationary vortex data would separate the two.",
+   "Conclusion 2 (variance-weighted closure surfaces the kind-share level): what it surfaced is mostly the ensemble-mean sweep, which a clock predicts (0.88 of the box mean of the linear block-only latent, 0.70-0.96 over the local encoders); the trajectory-specific part is 0.13 of the variance of box-mean b.",
+   "Conclusion 3 (learned beats hand in the membrane world): holds under both predictor families and across two trainings; the size against multi-channel hand designs is family-dependent (0.36 instead of 0.56 at two numbers per block).",
+   "Conclusion 4 (no object variable): not tested beyond agreement with block designs; unchanged."
+  ],
+  "edits": [
+   {
+    "claim": "W5",
+    "kind": "wording replaced",
+    "was": "W5 (replication: the per-channel closure configs again, on fresh simulations with the same designer seeds, an A100 instead of the H200; first run in brackets).",
+    "now": "W5 (retraining check: the per-channel closure configs trained again with other training seeds on an A100 instead of the H200; first run in brackets. The simulations were run again with the same designer seeds, which reproduced the first run's data in the membrane world, almost reproduced it in the vortex world, and gave statistically fresh data only in gliders).",
+    "why": "the follow-up's simulations are not fresh data in two of the three worlds (checker.findings.F1)"
+   },
+   {
+    "claim": "W5",
+    "kind": "sentence added",
+    "added": "Checker: because the vortex data are almost the same in both runs, that difference (0.473 against 0.547; nonlinear closure minus block vorticity 0.130, z 10.5, against 0.204, z 13.7) is variability between training runs, which the trajectory-bootstrap z values do not include.",
+    "why": "names what the non-reproduced number measures (checker.findings.F1, F5)"
+   },
+   {
+    "claim": "W3",
+    "kind": "wording replaced",
+    "was": "now partly a block mean (window: flat share 0.294, gradient share 0.207; K opposite to phi in every replica, cosines [-1.0, -1.0, -0.999, -1.0]); not reproducible (seed agreement 0.092)",
+    "now": "as two different solutions whose means are the window numbers that follow (checker): seed 0, on both fit halves, is the within-block gradient (flat share 0.00-0.02, gradient share 0.34-0.41, R2 from block K 0.01-0.05); seed 1, on both fit halves, is a flat block window that reads block cell material (flat share 0.52-0.64, gradient share 0.03-0.06, R2 from block K 0.88-0.92), with the lower validation loss (0.396 against 0.414 and 0.393 against 0.403) and the lower ceiling at h = 16 (0.25 against 0.31). Means over the 4 replicas: flat share 0.294, gradient share 0.207; K opposite to phi in every replica, cosines [-1.0, -1.0, -0.999, -1.0]; seed agreement 0.092",
+    "why": "the averaged window shares described a latent that no replica has (checker.findings.F4)"
+   },
+   {
+    "claim": "W4",
+    "kind": "wording replaced",
+    "was": "With the 8-px halo the spatial whitening works against the taper: agreement with the 8-px mass tent 0.708",
+    "now": "With the 8-px halo the replicas split (checker; the wording was 'the spatial whitening works against the taper'): three of the four linear replicas are the mass tent (R2 with the 8-px mass tent 0.89, 0.94, 0.98; ceiling at h = 16 0.33) and one (fit B, seed 1) is not mass at all (R2 0.03, ceiling 0.15); two of the four nonlinear replicas are the tent (0.80, 0.98) and two are not (0.26, 0.09). Means over the linear replicas: agreement with the 8-px mass tent 0.708",
+    "why": "the mean of 0.708 is three replicas near 0.94 and one at 0.03 (checker.findings.F4)"
+   },
+   {
+    "claim": "V3",
+    "kind": "sentence added",
+    "added": "Checker: this box-scale mode is mostly the run's common transient, not a fluctuating variable. In every trajectory the box-mean label b rises (0.014, 0.058, 0.087, 0.096 at ticks 0, 100, 200, 300) and the fuel falls (0.686 to 0.587). The across-trajectory mean time course, a function of the tick alone, carries 0.88 of the variance of the latent's box mean and 0.34 of the latent's whole per-block variance (N0 closure 0.56, N8 closure 0.54, N8 local law 0.70; block vorticity 0.000; every membrane and gliders latent at most 0.002). With that time course removed, the latent's block autocorrelation over 20 ticks falls from 0.46 to 0.23 (N0 closure 0.60 to 0.34), below block vorticity's 0.39.",
+    "why": "undisclosed confound: the vortex data set is a transient shared by all trajectories (checker.findings.F2)"
+   },
+   {
+    "claim": "V4",
+    "kind": "sentence added",
+    "added": "Checker: 0.93 of the variance of that global number is the across-trajectory mean time course, so the tick alone predicts it better than the box-mean label b does; its ceiling of 0.944 is the predictability of the run's common transient.",
+    "why": "the dense control found the clock (checker.findings.F2)"
+   },
+   {
+    "claim": "X1",
+    "kind": "sentence added",
+    "added": "Checker: the vortex mode is mostly the run's common transient (V3), a trend the other two worlds lack; and the membrane world, which conserves nothing, shows no collapse onto the box mean (share 0.0017). So the collapse cannot be put down to the absence of a conservation law: stationarity is confounded with it.",
+    "why": "the contrast between gliders and the vortex world has a second explanation (checker.findings.F2)"
+   },
+   {
+    "claim": "X3",
+    "kind": "wording replaced",
+    "was": "So the closure bias finds the block density of the transported field in both theories that have one (mass, conserved; vorticity, advected but fed and dissipated), provided the loss weights the spatial modes equally; weighted by variance it follows the largest slow mode instead (X1).",
+    "now": "So with a loss that weights the spatial modes equally, block-only closure finds block mass in gliders (as it did without that loss, G1) and mostly block vorticity in the vortex world (the one new case); weighted by variance it follows the largest slow mode instead (X1). Checker: the wording was 'finds the block density of the transported field in both theories that have one (mass, conserved; vorticity, advected but fed and dissipated)'. All four vortex fields are advected by the flow (track1/vortex_world/vortex_jax.py), so transport does not single out vorticity; what does is that block vorticity is the most closed hand block mean (V1) and the only field without the run's common trend (V3). In the membrane world the linear encoder reaches a block mean of cell material in 2 of 4 replicas (W3).",
+    "why": "the generalisation rests on one new case and on a property (transport) all four vortex fields share (checker.findings.F3)"
+   },
+   {
+    "claim": "M3",
+    "kind": "sentence added",
+    "added": "Checker: that ranking is for the family G. With the local equivariant ridge that the pod also certified (family GL), the most closed hand design at h = 16 is the four block field means (0.461; 0.198 under G). Nonlinear closure with one number per block stays above it (0.582; difference 0.121, z 15) and above the closed-form extended slow feature (0.249, z 33), so the result holds under both families.",
+    "why": "the hand ranking depends on the predictor family; the conclusion does not (checker.findings.F6)"
+   },
+   {
+    "claim": "M6",
+    "kind": "sentence added",
+    "added": "Checker: under the family GL the last difference is 0.357 (0.818 against 0.461, z 54), not 0.563: the global ridges of family G handicap a design of 256 numbers.",
+    "why": "0.563 is specific to family G (checker.findings.F6)"
+   },
+   {
+    "claim": "X2",
+    "kind": "sentence added",
+    "added": "Checker: the z values are trajectory bootstraps with the trained encoders held fixed. The vortex difference of 0.204 was 0.130 (z 10.5) when the same config was trained again on almost the same data (W5), and the vortex per-channel latents owe part of their ceilings to the run's common trend (V3). The membrane result holds under the family GL (M3).",
+    "why": "states what the z values leave out (checker.findings.F5)"
+   },
+   {
+    "field": "follow_up_arm",
+    "kind": "sentence added",
+    "added": "Checker: with the same designer seeds the re-simulation reproduced the first run's data: identical at the stored precision in the membrane world, identical up to about tick 200 in the vortex world (correlation 0.88-0.92 at tick 300), statistically fresh only in gliders (correlation below 0.13 from tick 40). The second run of the per-channel configs is a retraining with other training seeds, not a replication on new data, except in gliders.",
+    "why": "checker.findings.F1"
+   },
+   {
+    "field": "caveats",
+    "kind": "4 entries added",
+    "added": [
+     "checker: the vortex data are a transient shared by all trajectories (fuel falls and label b rises over the 300 ticks, the selection sweep after the labelling event), and the certifier's mean predictor is the pooled mean, so every variable that carries this trend (fuel, labels, the closed-form slow feature, all per-channel closure latents) takes ceiling from it; block vorticity and the spatially whitened latents do not carry it. No run separates 'nothing is conserved' from 'the data are not stationary'",
+     "checker: z values are trajectory bootstraps over the 64 certification trajectories with the trained encoders held fixed; they include neither the variability between training runs (vortex nonlinear closure: 0.074 at h = 16 between two trainings on almost the same data) nor the world seed",
+     "checker: 'seed agreement' compares two training seeds fitted on the same half and applied to the same frames; latents fitted on different halves are never applied to the same frames. Replica means can hide two different solutions (membrane Lw0, gliders Lw8 and Nw8, vortex L8 closure, where one of four replicas is the vorticity tent at R2 0.86)",
+     "checker: the grid counts 34 / 34 / 19 include two untrained random-window baselines per world (32 / 32 / 17 trained configs; 8 trained in the follow-up)"
+    ],
+    "why": "checker.findings.F1-F5"
+   }
+  ],
+  "note": "Only claim wording, follow_up_arm and caveats were changed, and this block was added; no value, source or result table was changed. csummary.py would overwrite these edits if run again."
+ }
 }
