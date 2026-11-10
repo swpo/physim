@@ -1,0 +1,158 @@
+{
+  "billing_window_hours": 3.65,
+  "bundle": {
+    "bundle_sha256": "8eddd02145fe1a74cc3a5cba2337100795d380bb4a0ae2ef92d1555ca25c0586",
+    "files": {
+      "job.sh": "6d70bf1f963f23748ab4805a21052848360f4bd34e2a222ebced3a5d3ce2135a",
+      "request.json": "6d3c8d6183f190615b093a2a9500258cb7fd2c19241a4aee59c30d0e53790f11",
+      "run.sh": "25d1d9d68956e6594d9552bac19a9c2b40ad703b8d63aa9aed262a4529da5d25",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "68ac6962947f12151d64717fcb2500784b4388510494403ae12d5ef164971797"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1/vw",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/round5/vortexexam",
+      "research/alife/vecworld/program/round5/agentenv/evaluator"
+    ],
+    "ref": "f5daa49789d8235da1a67e908de6b6a45342acee",
+    "src_bytes": 628929
+  },
+  "cap_usd": 19.6,
+  "collected": {
+    "error": null,
+    "files": 26,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 14072809,
+    "truncated": false
+  },
+  "cost": {
+    "billed_usd": 3.7164,
+    "conservative_usd": 3.8592
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-10T05:01:35Z",
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": "2026-11-10T06:43:53Z",
+  "hard_deadline_epoch": 1794293033.734346,
+  "history": [
+    {
+      "at": "2026-11-10T03:03:54Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-10T03:04:45Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $5.77",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-10T03:04:51Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T03:09:25Z",
+      "message": "job started on the pod",
+      "state": "running"
+    },
+    {
+      "at": "2026-11-10T05:01:10Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-10T05:01:36Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
+    }
+  ],
+  "job_id": "r5-vortexexam-006",
+  "max_estimate_usd": 5.77,
+  "message": "job finished (exit 0); pods terminated",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 3,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
+  "plan": {
+    "max_estimate_usd": 5.77,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 3,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-10T03:04:45Z",
+    "window_hours": 2.9
+  },
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r5-vortexexam-006-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": 3.7164,
+      "created_at": "2026-11-10T03:05:08Z",
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-vortexexam-006-a1",
+      "note": null,
+      "pod_id": "6fcc18431b204760b19b3a07fb0e503f",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-10T03:09:18Z",
+      "requested_at": "2026-11-10T03:04:53Z",
+      "spot": false,
+      "state": "terminated",
+      "terminated_at": "2026-11-10T05:01:15Z"
+    }
+  ],
+  "pods_terminated": true,
+  "review": {
+    "at": "2026-11-10T03:04:36Z",
+    "file": "jobs/r5-vortexexam-006/review.md",
+    "sha256": "935f76390743a41540f0d895dbb3cb93728eda20770c1ce14f2c57d8c5239a31",
+    "summary": "Resubmission of 005 (same executed code; cap now covers the H200's billed rate); 005's review applies: gate met, fine to run."
+  },
+  "run_deadline": "2026-11-10T05:48:25Z",
+  "run_started_epoch": 1794279891.949638,
+  "started_at": "2026-11-10T03:09:25Z",
+  "state": "done",
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n4:47:07 [  97.1 min]   net[net|Cft] step 2000/3000 train [0.33820000290870667, 0.3249000012874603, 0.14830000698566437, 0.14800000190734863, 0.25839999318122864, 0.1451999992132187, 0.3910999894142151, 0.07280000299215317] val [0.4893999993801117, 0.4779999852180481, 0.3239000141620636, 0.3716000020503998, 0.45509999990463257, 0.2791000008583069, 0.5047000050544739, 0.18770000338554382] (4s)\n04:47:08 [  97.1 min]   net[net|Cft] step 3000/3000 train [0.3188000023365021, 0.30320000648498535, 0.13220000267028809, 0.13899999856948853, 0.24529999494552612, 0.1281999945640564, 0.3910999894142151, 0.07599999755620956] val [0.4860999882221222, 0.47929999232292175, 0.3312000036239624, 0.37560001015663147, 0.46560001373291016, 0.2881999909877777, 0.5077999830245972, 0.1923999935388565] (5s)\n04:47:12 [  97.1 min]   net[net~3|Cft] step 1000/3000 train [0.4115000069141388, 0.3824000060558319, 0.18950000405311584, 0.2143000066280365, 0.29910001158714294, 0.2013999968767166, 0.40059998631477356, 0.09719999879598618] val [0.44589999318122864, 0.4311999976634979, 0.25450000166893005, 0.3052999973297119, 0.4154999852180481, 0.2304999977350235, 0.4772000014781952, 0.15569999814033508] (3s)\n04:47:13 [  97.2 min]   net[net~3|Cft] step 2000/3000 train [0.37869998812675476, 0.37059998512268066, 0.17599999904632568, 0.19040000438690186, 0.310699999332428, 0.1834000051021576, 0.42260000109672546, 0.08659999817609787] val [0.4537000060081482, 0.44830000400543213, 0.28290000557899475, 0.3206000030040741, 0.4300999939441681, 0.24390000104904175, 0.4846000075340271, 0.16760000586509705] (4s)\n04:47:14 [  97.2 min]   net[net~3|Cft] step 3000/3000 train [0.36629998683929443, 0.34700000286102295, 0.17870000004768372, 0.1851000040769577, 0.30379998683929443, 0.15970000624656677, 0.4359000027179718, 0.08919999748468399] val [0.45399999618530273, 0.45159998536109924, 0.2955000102519989, 0.3230000138282776, 0.435699999332428, 0.251800000667572, 0.487199991941452, 0.1738000065088272] (5s)\n04:47:14 [  97.2 min]     wrote scores.npz: 3.2 MB\n04:47:23 [  97.3 min]   OES law|C 0.142, law|Cded 0.422, law|<ssh-target> 0.422, law|P0 0.171, law|PM 0.146, law|<ssh-target> 0.149, law|<ssh-target> 0.144, lin2|C 0.266, lin2|Cded 0.482, lin2|<ssh-target> 0.457, lin2|P0 0.256, lin2|PM 0.250, lin2|<ssh-target> 0.269, lin2|<ssh-target> 0.268, net|C 0.526, net|Cded 0.392, net|Cft 0.526, net|<ssh-target> 0.277, net|P0 0.489, net|PM -0.060, net|<ssh-target> 0.504, net|<ssh-target> 0.513, net~3|C 0.577, net~3|Cded 0.483, net~3|Cft 0.527, net~3|<ssh-target> 0.391, net~3|P0 0.431, net~3|PM -2.444, net~3|<ssh-target> 0.512, net~3|<ssh-target> 0.564, ridge|C 0.455, ridge|Cded 0.548, ridge|<ssh-target> 0.446, ridge|P0 0.403, ridge|PM -0.569, ridge|<ssh-target> 0.444, ridge|<ssh-target> 0.458, ridge~3|C 0.371, ridge~3|Cded 0.560, ridge~3|<ssh-target> 0.514, ridge~3|P0 0.264, ridge~3|PM -0.701, ridge~3|<ssh-target> 0.352, ridge~3|<ssh-target> 0.374\n04:51:33 [ 101.5 min]     <ssh-target> episodes: tick 130/404 x 320\n04:54:07 [ 104.1 min]     <ssh-target> episodes: tick 210/404 x 320\n04:56:41 [ 106.6 min]     <ssh-target> episodes: tick 290/404 x 320\n== out/progress.txt\n4:47:07 [  97.1 min]   net[net|Cft] step 2000/3000 train [0.33820000290870667, 0.3249000012874603, 0.14830000698566437, 0.14800000190734863, 0.25839999318122864, 0.1451999992132187, 0.3910999894142151, 0.07280000299215317] val [0.4893999993801117, 0.4779999852180481, 0.3239000141620636, 0.3716000020503998, 0.45509999990463257, 0.2791000008583069, 0.5047000050544739, 0.18770000338554382] (4s)\n04:47:08 [  97.1 min]   net[net|Cft] step 3000/3000 train [0.3188000023365021, 0.30320000648498535, 0.13220000267028809, 0.13899999856948853, 0.24529999494552612, 0.1281999945640564, 0.3910999894142151, 0.07599999755620956] val [0.4860999882221222, 0.47929999232292175, 0.3312000036239624, 0.37560001015663147, 0.46560001373291016, 0.2881999909877777, 0.5077999830245972, 0.1923999935388565] (5s)\n04:47:12 [  97.1 min]   net[net~3|Cft] step 1000/3000 train [0.4115000069141388, 0.3824000060558319, 0.18950000405311584, 0.2143000066280365, 0.29910001158714294, 0.2013999968767166, 0.40059998631477356, 0.09719999879598618] val [0.44589999318122864, 0.4311999976634979, 0.25450000166893005, 0.3052999973297119, 0.4154999852180481, 0.2304999977350235, 0.4772000014781952, 0.15569999814033508] (3s)\n04:47:13 [  97.2 min]   net[net~3|Cft] step 2000/3000 train [0.37869998812675476, 0.37059998512268066, 0.17599999904632568, 0.19040000438690186, 0.310699999332428, 0.1834000051021576, 0.42260000109672546, 0.08659999817609787] val [0.4537000060081482, 0.44830000400543213, 0.28290000557899475, 0.3206000030040741, 0.4300999939441681, 0.24390000104904175, 0.4846000075340271, 0.16760000586509705] (4s)\n04:47:14 [  97.2 min]   net[net~3|Cft] step 3000/3000 train [0.36629998683929443, 0.34700000286102295, 0.17870000004768372, 0.1851000040769577, 0.30379998683929443, 0.15970000624656677, 0.4359000027179718, 0.08919999748468399] val [0.45399999618530273, 0.45159998536109924, 0.2955000102519989, 0.3230000138282776, 0.435699999332428, 0.251800000667572, 0.487199991941452, 0.1738000065088272] (5s)\n04:47:14 [  97.2 min]     wrote scores.npz: 3.2 MB\n04:47:23 [  97.3 min]   OES law|C 0.142, law|Cded 0.422, law|<ssh-target> 0.422, law|P0 0.171, law|PM 0.146, law|<ssh-target> 0.149, law|<ssh-target> 0.144, lin2|C 0.266, lin2|Cded 0.482, lin2|<ssh-target> 0.457, lin2|P0 0.256, lin2|PM 0.250, lin2|<ssh-target> 0.269, lin2|<ssh-target> 0.268, net|C 0.526, net|Cded 0.392, net|Cft 0.526, net|<ssh-target> 0.277, net|P0 0.489, net|PM -0.060, net|<ssh-target> 0.504, net|<ssh-target> 0.513, net~3|C 0.577, net~3|Cded 0.483, net~3|Cft 0.527, net~3|<ssh-target> 0.391, net~3|P0 0.431, net~3|PM -2.444, net~3|<ssh-target> 0.512, net~3|<ssh-target> 0.564, ridge|C 0.455, ridge|Cded 0.548, ridge|<ssh-target> 0.446, ridge|P0 0.403, ridge|PM -0.569, ridge|<ssh-target> 0.444, ridge|<ssh-target> 0.458, ridge~3|C 0.371, ridge~3|Cded 0.560, ridge~3|<ssh-target> 0.514, ridge~3|P0 0.264, ridge~3|PM -0.701, ridge~3|<ssh-target> 0.352, ridge~3|<ssh-target> 0.374\n04:51:33 [ 101.5 min]     <ssh-target> episodes: tick 130/404 x 320\n04:54:07 [ 104.1 min]     <ssh-target> episodes: tick 210/404 x 320\n04:56:41 [ 106.6 min]     <ssh-target> episodes: tick 290/404 x 320\n",
+  "updated_at": "2026-11-10T05:01:36Z"
+}

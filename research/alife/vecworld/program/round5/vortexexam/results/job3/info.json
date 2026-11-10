@@ -1,0 +1,355 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "study": "round5/vortexexam job2",
+ "pilot_never_reusable_as_exam": true,
+ "versions": {
+  "python": "3.12.16",
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4"
+ },
+ "backend": "gpu",
+ "devices": [
+  "cuda:0"
+ ],
+ "smoke": false,
+ "prior": {
+  "PILOT_NEVER_REUSE_AS_EXAM": true,
+  "H": 128,
+  "names": [
+   "eps",
+   "mu",
+   "e"
+  ],
+  "lo": [
+   0.0,
+   0.09,
+   7.0
+  ],
+  "hi": [
+   0.4,
+   0.11,
+   13.0
+  ],
+  "c_prog": 200.0,
+  "hs": [
+   8,
+   16,
+   32
+  ],
+  "T_ep": 404,
+  "prog_ticks": [
+   130,
+   210,
+   290,
+   370
+  ],
+  "viability": {
+   "n_min": 8.0,
+   "t_from": 20,
+   "rule": "fields finite, no tracker overflow, n_min <= N <= K - 1 at every state from t_from on"
+  },
+  "const": {
+   "centre": {
+    "N": 30.874,
+    "s_b": 0.509,
+    "fb_mass": 0.492,
+    "fb_mean": 0.425,
+    "fb_sd": 0.263,
+    "mixed": 0.525,
+    "log_mass_tot": 5.942,
+    "log_mass_mean": 2.519,
+    "speed_mean": 1.686,
+    "turnover": 1.15
+   },
+   "scale": {
+    "N": 3.865,
+    "s_b": 0.241,
+    "fb_mass": 0.164,
+    "fb_mean": 0.181,
+    "fb_sd": 0.07,
+    "mixed": 0.262,
+    "log_mass_tot": 0.127,
+    "log_mass_mean": 0.137,
+    "speed_mean": 0.497,
+    "turnover": 1.148
+   },
+   "sc_N": 4.038,
+   "sc_s": 0.25,
+   "N_ref": 31.5
+  },
+  "selection": {
+   "rule_choice_d3": [
+    "eps",
+    "mu",
+    "e"
+   ],
+   "ranked_other_families": [
+    "mu",
+    "e",
+    "nu",
+    "kl",
+    "mut128"
+   ],
+   "basis": "plug-in deficit (scan branches)",
+   "manual_override": false,
+   "why": "",
+   "family_best": {
+    "selection": "eps",
+    "fuel": "e",
+    "flow": "nu",
+    "mutation": "mut128",
+    "growth": "mu",
+    "label": "kl"
+   },
+   "headroom": {
+    "eps": 0.404,
+    "kF": 0.727,
+    "e": 0.936,
+    "nu": 0.269,
+    "mut128": -0.099,
+    "k": 0.463,
+    "mu": 1.046,
+    "kl": 0.065,
+    "dl": 0.031,
+    "Dl": -0.036,
+    "adv": 0.12,
+    "kY": 0.049,
+    "wi": 0.163
+   },
+   "viable_both": {
+    "eps": true,
+    "kF": true,
+    "e": true,
+    "nu": true,
+    "mut128": true,
+    "k": true,
+    "mu": true,
+    "kl": true,
+    "dl": true,
+    "Dl": true,
+    "adv": true,
+    "kY": true,
+    "wi": false
+   },
+   "scan_H": 128,
+   "scan_J": 12,
+   "source": "results/analysis1.json scan (job r5-vortexexam-002, scan_main.npz, scan_branch_small.npz)"
+  },
+  "mutation": "mut128 = time between mutation events per 128 x 128 px of box (declared per unit area); at 128 x 128 px the interval is mut128 x 1",
+  "program_mix": {
+   "classes": [
+    "a",
+    "b",
+    "c",
+    "d"
+   ],
+   "nats": 200.0,
+   "u_max": 0.2,
+   "doc": "vxlib.make_program"
+  }
+ },
+ "common": {
+  "m": 64,
+  "steps_sim": 8000,
+  "steps_real": {
+   "1": 600,
+   "2": 800,
+   "4": 1000,
+   "8": 1500,
+   "16": 2000
+  },
+  "steps_C": 3000,
+  "rate_B": [
+   256,
+   1024
+  ],
+  "n_post_draws": 1000,
+  "sded_budget": 4,
+  "R_ctl": 6,
+  "lr_ft": 0.0003
+ },
+ "net": {
+  "BATCH": 512,
+  "CLIP": 1.0,
+  "DEPTH": 3,
+  "EVAL_EVERY": 250,
+  "LR": 0.001,
+  "M_TRAIN": 8,
+  "NOISE": 8,
+  "WD": 0.0001,
+  "WIDTH": 128
+ },
+ "lags": [
+  0,
+  1,
+  2,
+  4,
+  8,
+  16,
+  32,
+  64
+ ],
+ "hist": [
+  "N",
+  "s_b",
+  "fb_mass",
+  "fb_mean",
+  "fb_sd",
+  "mixed",
+  "log_mass_tot",
+  "log_mass_mean",
+  "speed_mean",
+  "near_lo",
+  "near_hi",
+  "turnover"
+ ],
+ "feature_windows": [
+  [
+   60,
+   146
+  ],
+  [
+   146,
+   232
+  ],
+  [
+   232,
+   319
+  ],
+  [
+   319,
+   405
+  ]
+ ],
+ "const": {
+  "centre": {
+   "N": 30.874,
+   "s_b": 0.509,
+   "fb_mass": 0.492,
+   "fb_mean": 0.425,
+   "fb_sd": 0.263,
+   "mixed": 0.525,
+   "log_mass_tot": 5.942,
+   "log_mass_mean": 2.519,
+   "speed_mean": 1.686,
+   "near_lo": 0.1,
+   "near_hi": 0.1,
+   "turnover": 1.15
+  },
+  "scale": {
+   "N": 3.865,
+   "s_b": 0.241,
+   "fb_mass": 0.164,
+   "fb_mean": 0.181,
+   "fb_sd": 0.07,
+   "mixed": 0.262,
+   "log_mass_tot": 0.127,
+   "log_mass_mean": 0.137,
+   "speed_mean": 0.497,
+   "near_lo": 0.15,
+   "near_hi": 0.15,
+   "turnover": 1.148
+  },
+  "sc_N": 4.038,
+  "sc_s": 0.25,
+  "N_ref": 31.5
+ },
+ "precision": "float64 world, float32 vortex lists and nets",
+ "secret_commitment": "99740083b90cf02509da91ae3935f7a19883124a3c7794442e3951d364b74c09",
+ "rate_rows": [
+  {
+   "B": 256,
+   "member_ticks_per_s": 165.8537375916711,
+   "first_call_s": 8.220354318618774
+  },
+  {
+   "B": 1024,
+   "member_ticks_per_s": 169.41022117826515,
+   "first_call_s": 17.65134358406067
+  }
+ ],
+ "bmax": 1024,
+ "rate": 169.41022117826515,
+ "preset": "full",
+ "config": {
+  "n_cand": 14,
+  "n_truth": 10,
+  "N_theta": 512,
+  "K_d": 2,
+  "n_lab": 16,
+  "budgets": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "J_main": 12,
+  "R": 8,
+  "n_C": 32,
+  "m": 64,
+  "steps_sim": 8000,
+  "steps_real": {
+   "1": 600,
+   "2": 800,
+   "4": 1000,
+   "8": 1500,
+   "16": 2000
+  },
+  "steps_C": 3000,
+  "rate_B": [
+   256,
+   1024
+  ],
+  "n_post_draws": 1000,
+  "sded_budget": 4,
+  "R_ctl": 6,
+  "lr_ft": 0.0003
+ },
+ "planned_member_ticks": 1045664,
+ "planned_sim_seconds_at_0p9_rate": 6858.198288203113,
+ "outputs": {
+  "total_bytes": 14444676,
+  "largest": [
+   [
+    "design_S_00.npz",
+    3624451
+   ],
+   [
+    "design_S_01.npz",
+    3610841
+   ],
+   [
+    "scores.npz",
+    3520445
+   ],
+   [
+    "lab.npz",
+    1150557
+   ],
+   [
+    "posterior_draws.npz",
+    1060779
+   ],
+   [
+    "exam.npz",
+    905814
+   ]
+  ],
+  "dropped": [],
+  "file_limit": 19922944,
+  "total_limit": 41943040
+ },
+ "member_ticks": {
+  "design": 413696,
+  "lab_all_candidates": 90496,
+  "exam_main_all_candidates": 67872,
+  "exam_rep": 122880,
+  "exam_ctl": 92160,
+  "sims_Cded": 129280,
+  "sims_Sded@4": 129280
+ },
+ "member_ticks_total": 1045664,
+ "hours": 1.8474082609679965,
+ "failed": []
+}
