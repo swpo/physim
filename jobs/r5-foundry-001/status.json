@@ -18,7 +18,7 @@
   ],
   "job_id": "r5-foundry-001",
   "max_estimate_usd": 13.38,
-  "message": "accepted: H200_141GB via nebius at $6.69/h, at most $13.38",
+  "message": "no offer that fits the cap is available right now; will retry",
   "plan": {
     "max_estimate_usd": 13.38,
     "offers": [
@@ -53,5 +53,5 @@
     "summary": "Fine to run: no blocker or major findings; peak about 19 GiB, largest array 0.84 x 2^31. 3 minor: cert-size gliders time guard, job_state written per stage, no OOM fallback in certification."
   },
   "state": "queued",
-  "updated_at": "2026-11-10T04:57:12Z"
+  "updated_at": "2026-11-10T05:03:28Z"
 }
