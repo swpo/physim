@@ -25,7 +25,7 @@
   "cap_usd": 15.8,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.1343
+    "conservative_usd": 0.2782
   },
   "hard_deadline": "2026-11-10T02:29:41Z",
   "hard_deadline_epoch": 1794277781.3754575,
@@ -44,11 +44,16 @@
       "at": "2026-11-10T00:07:57Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T00:10:28Z",
+      "message": "job started on the pod",
+      "state": "running"
     }
   ],
   "job_id": "r5-bias2-004",
   "max_estimate_usd": 13.04,
-  "message": "renting a pod",
+  "message": "job started on the pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
@@ -109,6 +114,13 @@
     "planned_at": "2026-11-09T23:59:45Z",
     "window_hours": 2.35
   },
+  "pod": {
+    "gpu": "H200_141GB",
+    "name": "gpujob-r5-bias2-004-a1",
+    "provider": "nebius",
+    "rate_usd_hr": 6.69,
+    "spot": false
+  },
   "pods": [
     {
       "billed_usd": null,
@@ -121,10 +133,10 @@
       "provider": "nebius",
       "provision_error": null,
       "rate_usd_hr": 6.69,
-      "ready_at": null,
+      "ready_at": "2026-11-10T00:10:14Z",
       "requested_at": "2026-11-10T00:07:59Z",
       "spot": false,
-      "state": "created",
+      "state": "ready",
       "terminated_at": null
     }
   ],
@@ -134,6 +146,8 @@
     "sha256": "57050297bbdba28eb14d00e3d047b8b50304719bb87b28543922841913634a6c",
     "summary": "Fine to run; all earlier points fixed. 2 minor: ctrain killed at the cert deadline reports a false failure; pre-loop probes have no timeout."
   },
-  "state": "provisioning",
-  "updated_at": "2026-11-10T00:08:23Z"
+  "run_deadline": "2026-11-10T02:16:28Z",
+  "started_at": "2026-11-10T00:10:28Z",
+  "state": "running",
+  "updated_at": "2026-11-10T00:10:28Z"
 }
