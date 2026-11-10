@@ -171,10 +171,10 @@
     {
       "billed_usd": null,
       "cap_usd": 19.8,
-      "conservative_usd": 1.1789,
+      "conservative_usd": 1.1829,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.592,
+      "hours": 0.594,
       "job_id": "r5-vortexexam-003",
       "purpose": "Round-5 study vortexexam (track 2), job 2: the fed-vortex exam pilot at 128 px with 4 hidden parameters: design simulations, Lab episodes, exam items with replicate truths, identification, reference policies K, D(N), P0, S(N), C, O with sigma and rho; then the headroom scan with compact outputs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -221,8 +221,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 59.6839,
     "prior_spend_usd": 0.0,
-    "spent_usd": 28.6628,
+    "spent_usd": 28.6668,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T01:52:11Z"
+    "updated_at": "2026-11-10T01:52:18Z"
   }
 }
