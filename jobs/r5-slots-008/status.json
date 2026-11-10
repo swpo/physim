@@ -22,14 +22,14 @@
   },
   "cap_usd": 20.8,
   "cost": {
-    "billed_usd": 0.0,
-    "conservative_usd": 0.0
+    "billed_usd": null,
+    "conservative_usd": 0.1994
   },
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
-  "hard_deadline": null,
-  "hard_deadline_epoch": null,
+  "hard_deadline": "2026-11-10T10:54:13Z",
+  "hard_deadline_epoch": 1794308053.503664,
   "history": [
     {
       "at": "2026-11-10T06:07:15Z",
@@ -55,11 +55,16 @@
       "at": "2026-11-10T06:24:11Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T06:30:13Z",
+      "message": "job started on the pod",
+      "state": "running"
     }
   ],
   "job_id": "r5-slots-008",
   "max_estimate_usd": 7.46,
-  "message": "renting a pod",
+  "message": "job started on the pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -103,6 +108,13 @@
     "planned_at": "2026-11-10T06:16:28Z",
     "window_hours": 3.75
   },
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r5-slots-008-a2",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
   "pods": [
     {
       "billed_usd": null,
@@ -120,6 +132,23 @@
       "spot": false,
       "state": "create_failed",
       "terminated_at": null
+    },
+    {
+      "billed_usd": null,
+      "created_at": "2026-11-10T06:24:28Z",
+      "data_center": "asia-south-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-slots-008-a2",
+      "note": null,
+      "pod_id": "bf5c1bfc54074c45858a7a25baeb7c95",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-10T06:29:27Z",
+      "requested_at": "2026-11-10T06:24:13Z",
+      "spot": false,
+      "state": "ready",
+      "terminated_at": null
     }
   ],
   "pods_terminated": null,
@@ -129,7 +158,9 @@
     "sha256": "fd40536b6e14546ffbdd19df0ce68a1cc74d88cf8c6b5742d93a5d4812adae2e",
     "summary": "Same code; the platform allocator addresses 007's failure to allocate a contiguous ~18 GiB validation block on the A100 40GB. Fine to run; residual risk noted, 80 GB cards remain safer."
   },
+  "run_deadline": "2026-11-10T10:00:13Z",
   "run_started_epoch": 1794291851.978595,
-  "state": "provisioning",
-  "updated_at": "2026-11-10T06:24:11Z"
+  "started_at": "2026-11-10T06:30:13Z",
+  "state": "running",
+  "updated_at": "2026-11-10T06:30:13Z"
 }
