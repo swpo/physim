@@ -74,12 +74,17 @@ sure to take a look at primes verifiers library we're using and make sure we're 
 - Store: one private Hugging Face dataset repo holds hidden parameters, exam answers and reference runs. The public
   exam package and salted hashes of the answers stay in this repo. Retiring an exam means publishing its files, which
   anyone can check against the hash.
-- Access: two tokens scoped to that one repo, one that can write (sealing; GPU jobs upload reference answers directly,
-  so they no longer land on the public `gpu-jobs` branch) and one read-only (grading). The sandbox in which an agent
-  takes the exam gets neither. Tokens are entered through a secure form or set on the Mac by the lead, never pasted
-  into a chat or committed.
-- The Mac holds the write token only, because GPU jobs start through its runner and job requests sit on a public
-  branch. It holds no exam data.
+- Access: two tokens scoped to that one repo, one that can write (sealing) and one read-only (grading). The sandbox
+  in which an agent takes the exam gets neither. Tokens are entered through a secure form or set on the Mac by the
+  lead, never pasted into a chat or committed.
+- No token goes to a GPU pod (the Mac runner's standing rule from the lead: Prime credentials, the Hugging Face token
+  and the SSH key stay on the Mac). Design agreed with the Mac runner on 10 Nov, replacing the coordinator's first
+  wording that pods would upload directly: a sealed job declares `"sealed_outputs": true` and writes its answers to a
+  private directory `$SEALED`, separate from `$OUT`; the runner collects `$SEALED` but never publishes it to the
+  public `gpu-jobs` branch (the manifest carries counts and hashes only); the Mac uploads it to the private repo with
+  its local token and publishes the commit hash and file hashes. The local copy is deleted once the upload is
+  verified against the hashes, so exam data passes through the laptop but does not stay there. Until the runner has
+  this, anything a job writes to `$OUT` is public: no sealed answers in `$OUT`.
 - Grader: not to be designed from scratch. The verifiers library (the version the PhySim v1 environment pins) is read
   first for what it already provides; the result is `GRADER_VS_VERIFIERS.md` in this folder. `../round5/agentenv`
   (written before this decision, with its own orchestration and sandbox) is revised in its light before any rollout
