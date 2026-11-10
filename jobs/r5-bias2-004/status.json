@@ -23,10 +23,20 @@
     "src_bytes": 16289851
   },
   "cap_usd": 15.8,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 3.6941
+  "collected": {
+    "error": null,
+    "files": 1156,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 23360648,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 4.6802,
+    "conservative_usd": 4.9996
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-10T00:53:10Z",
   "hard_deadline": "2026-11-10T02:29:41Z",
   "hard_deadline_epoch": 1794277781.3754575,
   "history": [
@@ -49,11 +59,21 @@
       "at": "2026-11-10T00:10:28Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-10T00:52:02Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-10T00:53:10Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "r5-bias2-004",
   "max_estimate_usd": 13.04,
-  "message": "heartbeat",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
@@ -123,7 +143,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 4.6802,
       "created_at": "2026-11-10T00:08:23Z",
       "data_center": "us-central1",
       "gpu": "H200_141GB",
@@ -136,10 +156,11 @@
       "ready_at": "2026-11-10T00:10:14Z",
       "requested_at": "2026-11-10T00:07:59Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-10T00:52:49Z"
     }
   ],
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-10T00:09:11Z",
     "file": "jobs/r5-bias2-004/review.md",
@@ -148,7 +169,7 @@
   },
   "run_deadline": "2026-11-10T02:16:28Z",
   "started_at": "2026-11-10T00:10:28Z",
-  "state": "running",
+  "state": "done",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n00:10:38 [job] plan membrane:900:3600:3900 gliders:600:1400:1650, nproc 16, cert workers 13, sim budget 2400s, hard end +6900s, tiny 0\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n00:10:44 [job] === world membrane: deadlines sim +900s train +3600s cert +3900s (plan 900/3600/3900)\n00:38:52 [job] membrane certification finished; 210 halves certified, 0 left unclaimed\n00:39:24 [job] === world membrane done in 1720s, FAIL=0\n00:39:24 [job] === world gliders: deadlines sim +600s train +1400s cert +1650s (plan 600/1400/1650)\n== out/progress.txt\ntems\n00:38:47 [ccert 1  1574.5s] U_local_c2_s0__certB q=128 ok in 66.7s (certify 49.8s)\n00:38:47 [ccert 1  1574.5s] worker exits after 20 items\n00:38:48 [ccert 3  1574.5s] U_local_c2_s0__certA q=128 ok in 66.7s (certify 49.1s)\n00:38:48 [ccert 3  1574.5s] worker exits after 16 items\n00:38:52 [ccert 11  1578.8s] U_local_c2_s1__certA q=128 ok in 69.4s (certify 52.5s)\n00:38:52 [ccert 11  1578.8s] worker exits after 12 items\n00:38:52 [job] membrane certification finished; 210 halves certified, 0 left unclaimed\n00:39:09 [ccombine    15.3s] pooled 105 phis; missing 0 []\n00:39:23 [ccombine    29.1s] written combined.json and table.txt; 34 configs, 37 hand designs, 104 windows\n00:39:24 [job] === world membrane done in 1720s, FAIL=0\n00:39:24 [job] === world gliders: deadlines sim +600s train +1400s cert +1650s (plan 600/1400/1650)\n00:39:27 [csim     0.4s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '<ip>', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} world gliders tiny False\n00:39:36 [csim     9.4s] A init + burn-in 64 members {'init': 8.7, 'burn': 0.0, 'base': 0.0, 'branch': 0.0}\n00:39:43 [csim    16.3s] A branches at tick 40 {'init': 8.7, 'burn': 0.0, 'base': 3.2, 'branch': 3.7}\n00:39:47 [csim    20.9s] A branches at tick 100 {'init': 8.7, 'burn': 0.0, 'base': 5.9, 'branch': 5.6}\n00:39:53 [csim    26.5s] A branches at tick 160 {'init': 8.7, 'burn': 0.0, 'base': 9.5, 'branch': 7.6}\n00:39:57 [csim    31.1s] A branches at tick 220 {'init': 8.7, 'burn': 0.0, 'base': 12.2, 'branch': 9.5}\n00:40:04 [csim    38.2s] A saved {'init': 8.7, 'burn': 0.0, 'base': 15.8, 'branch': 9.5} member-ticks/s {'burn_chunk2': None, 'base': 1212.1, 'branch': 1077.5}\n00:40:05 [csim    39.2s] B init + burn-in 64 members {'init': 1.1, 'burn': 0.0, 'base': 0.0, 'branch': 0.0}\n00:40:09 [csim    43.0s] B branches at tick 40 {'init': 1.1, 'burn': 0.0, 'base': 1.8, 'branch': 1.9}\n00:40:14 [csim    47.6s] B branches at tick 100 {'init': 1.1, 'burn': 0.0, 'base': 4.6, 'branch': 3.8}\n00:40:18 [csim    52.2s] B branches at tick 160 {'init': 1.1, 'burn': 0.0, 'base': 7.4, 'branch': 5.6}\n00:40:23 [csim    56.8s] B branches at tick 220 {'init': 1.1, 'burn': 0.0, 'base': 10.1, 'branch': 7.5}\n00:40:36 [csim    69.4s] B saved {'init': 1.1, 'burn': 0.0, 'base': 13.7, 'branch': 7.5} member-ticks/s {'burn_chunk2': None, 'base': 1398.6, 'branch': 1369.7}\n00:40:36 [csim    69.4s] done\n00:40:47 [ctrain     7.6s] data on device 2 x (64, 301, 2, 128, 128) 2 x (10240, 2, 128, 128) field mean/sd {'A': ([0.044, 0.0441], [0.1611, 0.1918]), 'B': ([0.044, 0.0441], [0.1612, 0.1917])} 7.2 GB peak, 7.2 GB in use\n00:40:50 [ctrain    10.3s] hand designs queued: 52 files (26 designs x 2 halves) in 2.7s\n00:40:53 [ctrain    14.0s] rand0_c1: steps 0, untrained (no validation loss), train 0.0s (chunks None), total 3.7s, 9.9 GB peak, 7.2 GB in use\n00:41:00 [ctrain    21.1s] rand8_c1: steps 0, untrained (no validation loss), train 0.0s (chunks None), total 7.0s, 9.9 GB peak, 7.2 GB in use\n",
-  "updated_at": "2026-11-10T00:41:06Z"
+  "updated_at": "2026-11-10T00:53:10Z"
 }

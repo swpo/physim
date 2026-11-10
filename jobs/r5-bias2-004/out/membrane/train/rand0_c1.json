@@ -1,0 +1,210 @@
+[
+ {
+  "phi": "rand0_c1_s0",
+  "config": "rand0_c1",
+  "enc": "L",
+  "h": 0,
+  "obj": "rand",
+  "c": 1,
+  "seed": 0,
+  "fit": "A",
+  "cert": "B",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 1025,
+  "field_shares": [
+   {
+    "share": {
+     "phi": 0.6816923869954763,
+     "S": -0.19673654354221554,
+     "K": 0.17135532964216701,
+     "L": 0.3436888269045663,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "phi": 0.5668780559619434,
+     "S": -0.24183039125593878,
+     "K": 0.27454024274939137,
+     "L": 0.48098249503990187,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "phi": 1.2025379706023418,
+     "S": 0.8135310972308742,
+     "K": 0.6241537776980308,
+     "L": 0.7145557903849581,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand0_c1_s1",
+  "config": "rand0_c1",
+  "enc": "L",
+  "h": 0,
+  "obj": "rand",
+  "c": 1,
+  "seed": 1,
+  "fit": "A",
+  "cert": "B",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 1025,
+  "field_shares": [
+   {
+    "share": {
+     "phi": -0.017541712758794608,
+     "S": 0.10244195179472572,
+     "K": 0.15507144246562077,
+     "L": 0.7600283184984418,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "phi": -0.03083338111806267,
+     "S": 0.10347085992761884,
+     "K": 0.16715517557636853,
+     "L": 0.7122434641188911,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "phi": 0.5689195321014732,
+     "S": 0.9900560589366624,
+     "K": 0.9277094886886883,
+     "L": 1.0670906182883193,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand0_c1_s0",
+  "config": "rand0_c1",
+  "enc": "L",
+  "h": 0,
+  "obj": "rand",
+  "c": 1,
+  "seed": 0,
+  "fit": "B",
+  "cert": "A",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 1025,
+  "field_shares": [
+   {
+    "share": {
+     "phi": 0.24321659161099507,
+     "S": 0.21269272230903588,
+     "K": 0.16332249566589402,
+     "L": 0.3807681904140686,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "phi": 0.7386575769175365,
+     "S": 0.8200235904091814,
+     "K": 0.5004088100720417,
+     "L": 0.79836115649956,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "phi": 0.32926839067427266,
+     "S": 0.2593739067956629,
+     "K": 0.32637813799157767,
+     "L": 0.47693726994880226,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand0_c1_s1",
+  "config": "rand0_c1",
+  "enc": "L",
+  "h": 0,
+  "obj": "rand",
+  "c": 1,
+  "seed": 1,
+  "fit": "B",
+  "cert": "A",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 1025,
+  "field_shares": [
+   {
+    "share": {
+     "phi": 0.29351331351074883,
+     "S": 0.4879612222819284,
+     "K": 0.03764381074760664,
+     "L": 0.18088165345972232,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "phi": 0.80348351007798,
+     "S": 0.9515029218036206,
+     "K": 0.19362221228629725,
+     "L": 0.6018943567400635,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "phi": 0.3653009798325079,
+     "S": 0.5128320797554399,
+     "K": 0.19441886497993865,
+     "L": 0.30052060039140494,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,23 @@
+00:13:36 [ccert 2    62.9s] hand_S_h8__certB q=64 ok in 41.9s (certify 21.6s)
+00:14:05 [ccert 2    92.5s] hand_phi_h4__certB q=64 ok in 29.5s (certify 14.8s)
+00:14:45 [ccert 2   132.3s] hand_S_h4__certA q=64 ok in 39.8s (certify 22.8s)
+00:15:29 [ccert 2   176.0s] hand_wall_h0__certB q=64 ok in 43.7s (certify 19.6s)
+00:16:10 [ccert 2   217.3s] hand_S_h16__certA q=64 ok in 41.3s (certify 18.6s)
+/home/ubuntu/gpujob/r5-bias2-004/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:565: RuntimeWarning: invalid value encountered in subtract
+  ld["I_avail"] = 0.5 * (l_mean - l_or)
+/home/ubuntu/gpujob/r5-bias2-004/src/research/alife/vecworld/program/track1/learned_phi2/lphi.py:566: RuntimeWarning: invalid value encountered in subtract
+  ld["I_capt"] = 0.5 * (l_mean - l_best)
+00:16:56 [ccert 2   263.3s] hand_area_h16__certB q=64 ok in 46.0s (certify 23.8s)
+00:17:41 [ccert 2   307.7s] hand_pca_c1__certB q=64 ok in 44.4s (certify 20.7s)
+00:18:24 [ccert 2   350.7s] rand8_c1_s1__certB q=64 ok in 43.0s (certify 19.8s)
+00:19:03 [ccert 2   390.0s] N0_recon_c1_s1__certA q=64 ok in 39.2s (certify 24.7s)
+00:19:42 [ccert 2   429.0s] N8_recon_c1_s0__certA q=64 ok in 27.1s (certify 13.6s)
+00:22:23 [ccert 2   590.3s] L0_recon_c1_s1__certB q=64 ok in 26.3s (certify 13.8s)
+00:23:38 [ccert 2   665.2s] L8_clos_c1_s0__certB q=64 ok in 26.8s (certify 12.7s)
+00:26:01 [ccert 2   808.5s] Uc_clos_c1_s1__certA q=64 ok in 29.3s (certify 15.2s)
+00:29:10 [ccert 2   996.7s] N0_local_c2_s1__certB q=128 ok in 59.1s (certify 40.1s)
+00:31:58 [ccert 2  1165.5s] N8_recon_c2_s1__certB q=128 ok in 54.8s (certify 37.2s)
+00:34:56 [ccert 2  1343.1s] L0_clos_c2_s0__certA q=128 ok in 78.6s (certify 47.2s)
+00:36:13 [ccert 2  1419.7s] L8_clos_c2_s1__certA q=128 ok in 58.6s (certify 39.4s)
+00:37:34 [ccert 2  1500.8s] L8_local_c2_s0__certB q=128 ok in 63.1s (certify 41.8s)
+00:37:43 [ccert 2  1509.8s] worker exits after 18 items

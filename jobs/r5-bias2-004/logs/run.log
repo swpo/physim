@@ -1,0 +1,9 @@
+00:10:38 [job] plan membrane:900:3600:3900 gliders:600:1400:1650, nproc 16, cert workers 13, sim budget 2400s, hard end +6900s, tiny 0
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+00:10:44 [job] === world membrane: deadlines sim +900s train +3600s cert +3900s (plan 900/3600/3900)
+00:38:52 [job] membrane certification finished; 210 halves certified, 0 left unclaimed
+00:39:24 [job] === world membrane done in 1720s, FAIL=0
+00:39:24 [job] === world gliders: deadlines sim +600s train +1400s cert +1650s (plan 600/1400/1650)
+00:51:18 [job] gliders certification finished; 128 halves certified, 0 left unclaimed
+00:51:36 [job] === world gliders done in 732s, FAIL=0
+00:51:36 [job] OUT size 30M; elapsed 2458s; done, FAIL=0

@@ -1,0 +1,13 @@
+00:14:36 [ccert 11   122.3s] hand_sfa_c2__certA q=128 ok in 101.3s (certify 64.9s)
+00:15:13 [ccert 11   159.6s] hand_wall_h16__certB q=64 ok in 37.3s (certify 16.7s)
+00:15:45 [ccert 11   191.9s] hand_K_h4__certA q=64 ok in 32.3s (certify 16.0s)
+00:16:26 [ccert 11   232.5s] hand_sfax_c1__certA q=64 ok in 40.6s (certify 23.1s)
+00:20:17 [ccert 11   463.3s] hand_fields__certB q=256 ok in 230.7s (certify 202.2s)
+00:22:45 [ccert 11   611.5s] L0_local_c1_s1__certB q=64 ok in 25.2s (certify 12.6s)
+00:23:39 [ccert 11   665.7s] L8_clos_c1_s1__certA q=64 ok in 27.2s (certify 12.7s)
+00:25:28 [ccert 11   774.3s] U_recon_c1_s1__certB q=64 ok in 27.7s (certify 14.1s)
+00:34:23 [ccert 11  1309.7s] N8_local_c2_s0__certB q=128 ok in 64.3s (certify 40.7s)
+00:35:23 [ccert 11  1369.3s] L0_local_c2_s1__certB q=128 ok in 59.6s (certify 39.4s)
+00:36:28 [ccert 11  1434.4s] L8_recon_c2_s0__certB q=128 ok in 56.0s (certify 39.4s)
+00:38:52 [ccert 11  1578.8s] U_local_c2_s1__certA q=128 ok in 69.4s (certify 52.5s)
+00:38:52 [ccert 11  1578.8s] worker exits after 12 items
