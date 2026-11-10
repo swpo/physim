@@ -1,4 +1,4 @@
-# VERDICT: NO-GO for the scripted smoke test on the lead's Mac. NO-GO for the one-model rollout.
+# VERDICT (round 2, 10 Nov 2026): GO for the scripted smoke test on the lead's Mac, from the one commit that holds this line (code and commands as judged at 40c697e542a633d0cb1bba5f30b63567c5896097). The one-model rollout stays NO-GO until that test has passed on the Mac; it may then be offered to the lead. See "Re-audit, round 2" at the end; sections 1 to 6 and "Re-audit, round 1" are the two earlier NO-GO verdicts, kept as they were.
 
 Host-safety audit of `round6/vfport`, 10 Nov 2026. Audited: `round6/vfport` and `round5/agentenv` at
 branch head 216eddf37, identical in both folders to 997005f56 (archives compared by me). All three lenses
@@ -335,3 +335,126 @@ By hand, on the Mac, in addition to section 5 and to section C of the runbook:
 
 Not covered by this round: the same as section 6, and the red team's attacks, `tools/prove.py --worlds 4` and the
 gliders rollout on the new code (not rerun by anyone).
+
+## Re-audit, round 2
+
+**VERDICT, 10 Nov 2026: GO for the scripted smoke test on the lead's Mac. The one-model rollout stays NO-GO
+until that test has passed on the Mac and been reported; it may then be offered to the lead.**
+
+The GO covers steps 0, 1 and 2 of `RUNBOOK_MAC.md`, its section "If a run was interrupted", and step 4 once the
+lead says the pilot is over. It holds for ONE commit: the commit that carries this section and the GO notice at
+the top of the runbook. A commit cannot name itself: the coordinator's message gives its 40-character hash, the
+lead checks it out, and step 0 compares it. This verdict changed the first line of this file, added this section
+and replaced the notice between `HOLD-BEGIN` and `HOLD-END` of the runbook; it changed nothing else.
+
+Judged: the code and the commands of commit `40c697e542a633d0cb1bba5f30b63567c5896097`. Its pinned files are
+those of round 1 (sha256 of `PIN.sha256` `7aa9bbfc…f64c19`, 105 of 105 files, recomputed by me at the branch
+head). Since 73829e5c6 only texts, `rehearsal/` and `results/` changed; since 40c697e54 only `PROGRESS.md`, this
+file and the notice. Inputs: the fixer's report, the re-audit of the code (GO on the code; N5 is wider than
+recorded) and the re-audit of the runbook (GO for steps 0 to 2, with prose items). What I rely on I checked at
+the head myself; where a row rests on somebody else's run it says whose. Labels as in section 1 and round 1:
+
+| evidence label | meaning in this round |
+|---|---|
+| read | the cited lines were read by me |
+| run | run by me in scratch with stand-ins; no file of the port was executed on the host |
+| container (mine) | my own named throwaway containers, no host path, no network, removed on exit |
+| tripwire, vf-eval | runs of the fixer and the re-auditors, recorded in `results/`; none by me |
+| inferred | reasoned, not run: every statement about macOS and Docker Desktop |
+
+### Status of the findings and changes
+
+Runbook lines are those of the text at 40c697e54. The GO notice is 16 lines longer than the notice it replaced,
+so in the commit that holds this section every later line lies 16 lines lower.
+
+| finding, change | status | evidence |
+|---|---|---|
+| A1, change 1 | closed | run: all 30 fenced commands begin with the folder guard (the inline one of step 3 too: read); they use no variable but `$HOME` and `$?`, no `$(…)`, no backtick; `uv` occurs in two, both after `cd /` with `--project <absolute path>`, the dry run first (185, 214). The guard with `echo` for 9 wrong targets from 4 start folders printed once: for an empty path started inside the study folder itself, where the shell stays in that folder. uv on macOS: inferred. |
+| A2, change 2, and N1 (round-1 changes 1, 2) | closed | run, through my own command tool (`/bin/bash -c … eval …`) on a stand-in folder whose tool only sleeps: the 2a start returned at once; the status (287) listed ONE process line, the tool, while its waiting shell was alive and not listed; the stop command (428) aimed at the waiting shell, and with its placeholder left in, printed nothing and signalled nothing; aimed at the tool it printed the tool's command line, the log ended `EXIT 143`, nothing was left. read: containers are found by the run label only (verifiers `cli/eval/runner.py:138`, `runtimes/docker/__init__.py:102`); the four delete or signal targets of the runbook are literal (428, 451, 466, 578). vf-eval (fixer, `results/rehearsal_round2.json`): five interruptions, two of them a SIGKILL of vf-eval with a box up, each cleared by the runbook's own points. |
+| N2, interpreter (round-1 change 3) | closed | read: `--managed-python` on both uv commands; the interpreter prints its own process line and `INTERPRETER-OK` or `INTERPRETER-DIFFERS` (237); the "must show" rule after 2a, 2b, 2c (309-313, 344, 387). run (fixer): a stand-in that re-executes gives `DIFFERS` and an empty listing. On the Mac: inferred; a difference is a stop in step 1. |
+| N3, step 1 (round-1 change 4) | closed | read: 181-182, 214-225, 408-414. Record: the detached sync ended `EXIT 0`. |
+| N4, pin handover (round-1 change 5) | closed | read: 2-18, 33-36, 136-138, 157-170; this verdict uses it. run: step 0's first two commands in my worktree print the checked-out hash, `0`, the pin hash and `PIN-OK` (Linux). |
+| round-1 change 6, text | closed | read: 439-443, 389-391, 158, 177, 206, 590; the record's six prose mismatches are corrected in the text. |
+| round-1 change 7 and change 8 (B10), rehearsal | closed, with limits | run: the 30 fenced commands are equal at be2c17ae6 (rehearsed), 40c697e54 and the head, and 23 of them stand in the record byte for byte after undoing its two substitutions (81 commands, each as one `sh -c '<text>'` started in `/`; the 2a start and one status also through the session's own tool). Never issued: the image build and its status (249, 256) and the five commands of step 3. Deviations of the record: `$HOME` in scratch, root, x86_64, the IPv6 shim for 2c, the section used five times. |
+| A3, change 3 | closed | read: the gate is the first statement of `agents/hostile_submission.py` (45-62), `agents/probe_grading.py` (29-46), `redteam/agent_rt.py` (22-39) and stands again before the kill (`hostile_submission.py:202`, `agent_rt.py:483`), the mount (`agent_rt.py:243`) and the replacement of `tar` (`agent_rt.py:486`); `redteam/` is outside the pin and unchanged since 73829e5c6 (run: `git diff --stat`). container (mine): 6 starts without the marker (`killall`, `delete`, `no_tar`, the probe, `hostile killall`, `recon`), each `refused:`, a canary process alive, `tar` in place. tripwire (fixer, re-auditor): 34 starts. The Mac has neither sign (inferred). |
+| A4, changes 4c and 5 | closed as specified | container (mine): the script of `tools/check_driver.py`, taken out of the source without running the tool's host part, 27 of 27 and, with `--tmpfs /extra`, 4 of 4: every function refuses, the driver on the grading route runs nothing. read: `physim2_env/grading.py:49-87`, `taskset.py:144-148`; verifiers starts a box with no mount option (`runtimes/docker/__init__.py:196-244`) and, off Linux, no helper with a folder (318-321). |
+| A5, changes 4a and 4b | closed | read: `_item.py` in full: no `rmtree`; `rmdir` or `unlink` of listed paths, never a mount point (367-391); an unreadable table raises (169-177). container (mine): a root-owned file below a directory of the uid survives, a mount point is not removed, another uid is left alone. |
+| change 6 (B3, B6 to B9, B12) | closed | read: the never-table (56-67), the inventory (69-130); the deletes and signals of the code that runs on the Mac itself are the ones the inventory names (run: a search of the tools, the package and the pinned round-5 files; read: `tools/vfrun.py:60-111`, `tools/prove.py:142-156`, `physim2_env/bundle.py:84-92`). Nothing is uploaded: `push = false` in both configs and in `vfrun.py:133`, and `PRIME_RUNS_MODE=disabled` (verifiers `utils/platform.py:68`). No model-written code runs on the Mac: `validate` and `submit` are sent into the box (`physim2_env/lab_tools.py:69-94`). |
+| change 7 (B11), pin | closed | run: `sha256sum -c PIN.sha256` 105 of 105 at the head; the sha256 of `PIN.sha256` equals the runbook's line 17. |
+| change 9 (B13 to B15), step 3 | in place as text, never run | read: a STOP line and a block of its own (499-521), now behind a file that the lead creates (`LEAD-GO-STEP3`, 511-518); output to a file; `tools/run_report.py` prints flags, numbers and words from fixed lists, never text (37-59, 122-151); caps as in `configs/qwen_ring_bash.toml:26-28`; no `claude_code` or `codex` in the runbook (run: 0 matches); the disk limit in the by-hand list (483). The free dry run returns before any rollout (verifiers `cli/eval/main.py:114-117`). Open, minor: the price fields are blank; the dry run (494) is not behind the lead's file; "writes it here" (507) asks the lead to edit this file. |
+| S1, S2 | closed in round 1 | same pinned files. container (mine): uid 1000, 19999 and 60000 refused; a helper whose identity did not change signals nothing. |
+| N5, wider (code re-audit, item 5) | confirmed; minor, Linux only | run, the driver's two pure functions cut out of the source (the module was not imported) on the stored and on crafted mount tables: a table shaped like `--ipc=host` (`/dev/shm` with source `tmpfs`), like `-v /dev:/dev` (`devtmpfs` at `/dev`) and like `--tmpfs /dev/extra` passes; a Mac share (`virtiofs`, `fakeowner`, `fuse.grpcfuse`) is refused wherever it is mounted, below `/dev` too. Needs a container started by hand with such an option and the route's commands replayed in it; the runbook forbids every `docker run` by hand (61); verifiers passes no such option (read). On the Mac those options show Docker Desktop's virtual machine, not the Mac (inferred). |
+| N6, N7, N8 | open; minor | as in round 1: unchanged code. |
+| `rehearsal/` (new, outside the pin) | minor | read: `rehearsal/issue.py:146-154` and `check_round2.py:357` refuse unless `PHYSIM2_DEV_MACHINE=cloud-container` and Linux, so they refuse on the Mac; on the never-list (64). On the cloud host `issue.py` acts for real inside whatever `--inside` names (code re-audit, item 6). |
+| runbook re-audit, items 7, 8, 9 | closed by the notice | The three rules of the GO notice: a 60-minute bound for the "must show" branch; the section used once also when a restarted session cannot tell; step 4's image list may lack the two base images (the record's step 4 printed three images, without `alpine:3.22`: read). They change no command and were not rehearsed. |
+| runbook re-audit, items 10, 11, 12 | minor; residual | 10: rule A.1 tests for the old notice, not for the new one; section C's "right text" check is the positive one (138). 11: `docker rm -f` (451) trusts the copied name; the name comes from a listing by label, and a name that begins `vf-` cannot be taken for a container id. 12: a stop in step 1 or 4 has no recovery; see the by-hand list. |
+| runbook re-audit, item 14 (step 3) | minor; with the offer of step 3 | see change 9 above and "What remains". |
+
+The lead's note on traces: the smoke test uploads nothing and needs no trace; five result files leave the pilot
+folder in step 4, and after a stop the scratch folder with its traces is still on the Mac for the lead. For step 3
+the runbook copies the trace out only on the lead's request and only when the report counts no hidden value
+(559-569); an upload is the lead's own act.
+
+### What remains
+
+**Before the smoke test: nothing in the repository.** The by-hand list below is the lead's.
+
+**The one-model rollout.** Not now. It may be offered to the lead when all of these hold; none needs a commit:
+
+1. Steps 0 to 2 have passed on the Mac with no deviation but the one that step 2b names, and the lead has read
+   the report. In it: `failed_new` holds `b_lab_process_dropped_it_after_loading` and nothing else, and the lines
+   `control`, `agent box net` and `item box net` show what a box reaches on the Mac. The network cut was measured
+   on Linux only; in step 3 it stands between the model and the Mac's own services.
+2. The offer states the price bound: the lead reads p_in and p_out from Prime's Models API, the bound is
+   `1.5 x p_in + 0.06 x p_out` dollars plus one request, and it binds only if the provider reports usage. The
+   lead gives the price in the go message and does not edit the runbook.
+3. The lead's go is the file `LEAD-GO-STEP3`, created by the lead by hand, and the words. The dry run before it
+   is free and starts nothing (read); it is not behind that file.
+4. Docker Desktop's disk limit is below the Mac's free space.
+
+**A later pass, with a re-audit of its diff, not needed for the Mac run:**
+
+- Code, before the package runs on any Linux machine other than the cloud container: N5 as an exact list of
+  (mount point, type) with source `shm` for `/dev/shm`, with the `--ipc=host` and `-v /dev:/dev` tables as
+  fixtures; N6; N7; N8; `rehearsal/issue.py` refuses unless `--inside` holds a marker file the operator made.
+- Runbook body: the notice's three rules written into their places; rule A.1 as "unless its notice begins
+  `**GO for steps 0 to 2.**`"; the removal of point 3 with its own label check (runbook re-audit, item 11); after
+  line 182 what a stop in step 1 leaves; step 3's dry run behind the lead's file and "states it in the go
+  message" for "writes it here".
+- Stale after this verdict: `README.md` lines 13 and 81 and `results/summary.json` still say that the runbook is
+  on hold; the pinned `tools/check_runbook.py` fails one check, which asks for the listing that round 2 replaced.
+
+### Residual risks, also with this GO
+
+- Nothing has run on macOS or Docker Desktop. Inferred only: zsh as the session's shell and that a detached
+  command outlives its call; BSD `ps`, `shasum`, `tail`; uv and its Python there; the signs of a container and
+  the stock mount table in Docker Desktop (if they differ, staging refuses and damages nothing); how a session
+  ends a command at its limit. Each of these ends in a stop, not in a repair.
+- A vf-eval that is killed outright leaves one container and the laboratory process. The session finds them by
+  label and by path and removes them by exact name and pid; `docker rm -f` acts on the name it was given.
+- The tools and the laboratory run on the Mac as the lead. `uv sync` runs an unpinned build backend and writes
+  `.venv` (about 1 GB), uv's cache and uv's own Python; none of it is removed by the pilot.
+- Never run in the runbook's form: the image build of step 1 and its status command; the notice's three rules.
+- A stop in step 1 or in step 4 has no recovery in the runbook; what is left is removed by the lead.
+- N5 to N8 on Linux hosts; the cloud rehearsal's own scripts act for real on the cloud host.
+- Step 3: an untrusted model is root in a container for up to an hour. Docker Desktop's virtual machine and
+  verifiers' network cut are the walls, and neither is tested on a Mac before step 2b. The laboratory on the Mac
+  answers the model's requests. No command of step 3 has run anywhere, the dry run included.
+
+### By hand, on the Mac (the lead)
+
+In addition to section C of the runbook, section 5 above and the list of round 1:
+
+| when | check | expected |
+|---|---|---|
+| before | the coordinator's GO message; `git rev-parse HEAD`; the first text line of `RUNBOOK_MAC.md` on disk | a 40-character hash; equal to it; it begins `**GO for steps 0 to 2.**` |
+| before | the session | started in the study folder, given that path and the hash; no subagents; one command per call; at any deviation it stops and reports, and nobody repairs by hand what the runbook does not name |
+| during | the pilot folders in `$HOME` | not opened in Finder: a `.DS_Store` makes step 4's `rmdir` fail after its deletes (a stop, nothing lost) |
+| a stop in step 1 | `.venv` in the study folder; `$HOME/physim2-pilot-20261110`; the image `physim2-ring:1`; a running `uv` or `docker build` | the lead removes what exists before any new start: step 0 expects none of the first three |
+| staging says `the box is not recognised as a disposable box` | Docker Desktop differs from stock Docker | a finding to report; change no setting to make it pass |
+| after step 2 | the report: the "must hold" line of 2a; both lists of 2b; `control`, `agent box net`, `item box net`, `container_evidence` | as the runbook says; these lines decide whether step 3 can be offered |
+| after step 4 | `docker ps -a` and `docker images` against the baseline | no container; at most the four images the runbook names. Left on the Mac: `.venv`, uv's cache and Python, `~/.cache/verifiers`, `/tmp/vf-port-*`, the results folder |
+| step 3, if offered | the price in the go message; `LEAD-GO-STEP3` made by the lead; the disk limit; the trace | as under "What remains"; the trace is copied only by the runbook's own command, and uploaded only by the lead |
+
+Not covered by this round: the same as section 6 and round 1. By me: no rollout, nothing on macOS, not the red
+team's attacks, not `tools/prove.py --worlds 4`, not the gliders rollout.

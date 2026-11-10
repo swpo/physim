@@ -1,12 +1,28 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
-**ON HOLD. Run nothing from this file.** The host-safety audit's round-1 verdict was NO-GO, narrowly: the code
-passed, the stop-and-recover text of this file did not (`HOST_SAFETY_AUDIT.md`, "Re-audit, round 1"). This file
-was changed to meet the seven remaining changes of that verdict; these changes have not been re-audited. The
-hold on steps 0 to 2 is lifted only by a verdict that says GO: it replaces this notice by one that begins
-`**GO for steps 0 to 2.**`, and the coordinator's message then gives the 40-character hash of the commit that
-holds the replaced notice. Step 3 (a paid model rollout) has a second hold of its own and stays NO-GO until
-steps 0 to 2 have passed on the Mac and been reported.
+**GO for steps 0 to 2.** Round-2 verdict of the host-safety audit, 10 Nov 2026 (`HOST_SAFETY_AUDIT.md`,
+"Re-audit, round 2"). Steps 0, 1 and 2 of this file and "If a run was interrupted" may run on the lead's Mac,
+as written, from ONE commit: the commit that holds this notice. Its 40-character hash is in the coordinator's
+GO message (a commit cannot name itself); the lead checks it out and gives it to the session, and step 0
+compares it. Step 4 is covered too; run it only when the lead says the pilot is over, because it deletes the
+store that step 3 would need. Judged were the code and the commands of commit
+`40c697e542a633d0cb1bba5f30b63567c5896097`; in the folders the pilot uses, the commits after it changed this
+notice, `HOST_SAFETY_AUDIT.md` and `PROGRESS.md` and nothing else, and step 0 proves the code by the pin below.
+
+**Step 3 (the paid model rollout) is not released by this notice.** It keeps its own stop, and it may be
+offered to the lead only after steps 0 to 2 have passed on this Mac and been reported.
+
+The verdict adds three rules. Where the text below says something else, these three hold. No command changes.
+
+1. The "must show" rule after the start of 2a, 2b and 2c. If the process line is missing and the log has no
+   `EXIT` line: ask for the status every few minutes until the log ends with an `EXIT` line or 60 minutes have
+   passed since the start, whichever comes first; then stop and report. Send no signal, remove nothing.
+2. "If a run was interrupted" is used once. If you cannot tell whether it was used before in this pilot (for
+   example after a restart of the session), treat the interruption as the second one: points 1 to 5, then stop
+   and report.
+3. Step 4, the last check. `python:3.12-slim` and `alpine:3.22` may be missing from the image list (Docker
+   Desktop does not always list the base images of a build): that is not a deviation. A new image other than
+   the four that step 4 names, or a container of the pilot, is a deviation.
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->
