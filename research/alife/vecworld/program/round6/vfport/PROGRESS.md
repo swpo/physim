@@ -20,8 +20,19 @@
   (`Modules/getpath.c:901-902`, read; run here with a bare one-liner: `sys.executable` becomes the variable's
   value and the venv is no longer found, `sys.prefix` /usr). So a session that holds one of them fails step 1's
   import check (a stop), unless the value points into an environment with the same four package versions.
-- Next step (exact): read verifiers' credential readers (`configs/client.py`, `utils/prime.py`) for M3; scan the
-  changed runbook commands for macOS; then write "Re-audit, round 3" and the verdict.
+- 21:50 UTC. Also done: M3 under tripwires by me (made-up file in a scratch home): package first -> `stand-in`,
+  0 opens, 0 stats over 195 modules; stock control -> the file is opened. M2 searched in the verifiers source:
+  the ten rows match; the one missing sender is the `docker rm --force` client (30 s). Item 10 of the runbook
+  re-audit run here: with PYTHONEXECUTABLE or __PYVENV_LAUNCHER__ a package of the environment cannot be
+  imported (ModuleNotFoundError), so step 1's import check stops such a session: minor.
+- DECIDED: GO for steps 0 to 2. The six text items of the runbook re-audit go into the GO notice (two rules,
+  four corrections, no command); item 10 is residual with a by-hand check. The notice is written in the
+  worktree's `RUNBOOK_MAC.md` (NOT committed yet: it is committed only together with the audit section).
+- Next step (exact): append "Re-audit, round 3" to `HOST_SAFETY_AUDIT.md` (verdict; table M1-M3, m1-m11, D1;
+  rounds 1 and 2 not reopened; the re-auditors' items; what remains; residual; by hand with the disk question
+  of step 3), replace its first line and the fixer's suspension note; check that the runbook differs from
+  db3ff5a6e only inside the notice; final note here (own commit); then ONE commit with the two files; push;
+  report that head. Delete scratch `vfr3verdict1`, remove the worktree.
 - If the container restarted: reuse the worktree if it exists (see the task), start from "Next step".
 
 ## RE-AUDIT of the runbook, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, finished
