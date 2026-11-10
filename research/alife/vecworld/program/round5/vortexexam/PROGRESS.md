@@ -42,10 +42,12 @@ PILOT: never to be reused as an exam. Budget $25: job 1 billed $2.29; job 2 hold
   cap $19.40 was 0.1 cent under 6.69 x 2.90 = 19.401. Lesson: round caps UP with a margin.
 
 ## Running
-- `r5-vortexexam-006`: requested 03:00 UTC 10 Nov (same job as 005, cap $19.60). DO NOT RESUBMIT while it runs.
-  Watcher: a background loop that fetches `origin gpu-jobs` every 60 s until
-  `jobs/r5-vortexexam-006/status.json` is terminal. On an H200: preset xl, about 1.5 h.
-- Budget: $25 - 2.29 - 1.31 - 0.35 (005, conservative) = $21.05 before job 006; its cap reserves $19.60.
+- `r5-vortexexam-006`: RUNNING since 03:09 UTC on an A100 40GB (lambdalabs, $1.99/h) at 169 member-ticks/s, preset
+  `full` (10 truths, 512 design points, 16 Lab episodes, 12 runs x 4 anchors, 8 replicates, 32 dedicated
+  simulations per truth; 1.05 million member-ticks). Expected end about 05:10 UTC; run deadline 05:48.
+  DO NOT RESUBMIT. Watcher: a background loop that fetches `origin gpu-jobs` every 60 s until
+  `jobs/r5-vortexexam-006/status.json` is terminal (re-arm it: background commands end after 2 h).
+- Budget: $25 - 2.29 - 1.31 - 0.35 (005, conservative) = $21.05 before job 006; expected bill about $4.5.
 
 ## Next steps (in order)
 1. While job 006 runs: README.md and the report from job 1 and job 2 (results/summary.json).
