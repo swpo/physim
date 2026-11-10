@@ -11502,7 +11502,7 @@
    }
   },
   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) theory_T",
-  "note": "T = the replicator-mutator law for s_b and linear relaxation for N with constants fitted to the first n Lab episodes (vxnet.fit_law); it never runs level 0"
+  "note": "T = the replicator-mutator law for s_b and linear relaxation for N with constants fitted to the first n Lab episodes (vxnet.fit_law); it never runs level 0; checker: T's skill does not come from the replicator form: with the selection term s (1 - s) replaced by a constant (d s_b = a0 + a1 (1 - 2 s): the same number of constants, the same N equation and residual resampling) the skill is the same at every budget in both pilots (T minus control -0.021 to +0.016, |z| <= 1.3 over truths; checker.controls_for_T)"
  },
  "cchg_by_truth": {
   "value": {
@@ -13713,7 +13713,7 @@
     "r2_linear_in_all_theta": 0.7406,
     "r2_linear_in_eps_only": 0.7379,
     "sd_over_thetas": 0.2373,
-    "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta"
+    "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta; checker: these R2 do not show that eps alone sets the rate: in the pooled fit (b1_relative_change_across_box, coefficients_box_units in results/analysis2*.json) b1 falls across the e box by 0.41 of its centre value in pilot A (3.8 se) and 0.63 in pilot B (7.8 se), and across the mu box by 0.50 in pilot B (6.2 se); eps is the largest term (2.9-3.1), not the only one"
    },
    "note": "d s_b over h ticks = (b1_0 + sum_i b1_i u_i) s (1 - s) + (b2_0 + sum_i b2_i u_i) (1 - 2 s); u in box units [-1, 1]; design episodes carry the public program mix; states from the given tick on"
   },
@@ -33585,7 +33585,7 @@
    }
   },
   "source": "results/analysis2_B.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-006/out: scores.npz, items.npz, design*.npz) theory_T",
-  "note": "T = the replicator-mutator law for s_b and linear relaxation for N with constants fitted to the first n Lab episodes (vxnet.fit_law); it never runs level 0"
+  "note": "T = the replicator-mutator law for s_b and linear relaxation for N with constants fitted to the first n Lab episodes (vxnet.fit_law); it never runs level 0; checker: T's skill does not come from the replicator form: with the selection term s (1 - s) replaced by a constant (d s_b = a0 + a1 (1 - 2 s): the same number of constants, the same N equation and residual resampling) the skill is the same at every budget in both pilots (T minus control -0.021 to +0.016, |z| <= 1.3 over truths; checker.controls_for_T)"
  },
  "cchg_by_truth_B": {
   "value": {
@@ -37502,7 +37502,7 @@
     "r2_linear_in_all_theta": 0.6599,
     "r2_linear_in_eps_only": 0.6588,
     "sd_over_thetas": 0.2578,
-    "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta"
+    "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta; checker: these R2 do not show that eps alone sets the rate: in the pooled fit (b1_relative_change_across_box, coefficients_box_units in results/analysis2*.json) b1 falls across the e box by 0.41 of its centre value in pilot A (3.8 se) and 0.63 in pilot B (7.8 se), and across the mu box by 0.50 in pilot B (6.2 se); eps is the largest term (2.9-3.1), not the only one"
    },
    "note": "d s_b over h ticks = (b1_0 + sum_i b1_i u_i) s (1 - s) + (b2_0 + sum_i b2_i u_i) (1 - 2 s); u in box units [-1, 1]; design episodes carry the public program mix; states from the given tick on"
   },
@@ -39753,7 +39753,7 @@
      "r2_linear_in_all_theta": 0.7406,
      "r2_linear_in_eps_only": 0.7379,
      "sd_over_thetas": 0.2373,
-     "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta"
+     "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta; checker: these R2 do not show that eps alone sets the rate: in the pooled fit (b1_relative_change_across_box, coefficients_box_units in results/analysis2*.json) b1 falls across the e box by 0.41 of its centre value in pilot A (3.8 se) and 0.63 in pilot B (7.8 se), and across the mu box by 0.50 in pilot B (6.2 se); eps is the largest term (2.9-3.1), not the only one"
     },
     "n_thetas": 192
    },
@@ -41552,7 +41552,7 @@
      "r2_linear_in_all_theta": 0.6599,
      "r2_linear_in_eps_only": 0.6588,
      "sd_over_thetas": 0.2578,
-     "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta"
+     "note": "b1 fitted per design point from its own episodes (noisy), then regressed on theta; checker: these R2 do not show that eps alone sets the rate: in the pooled fit (b1_relative_change_across_box, coefficients_box_units in results/analysis2*.json) b1 falls across the e box by 0.41 of its centre value in pilot A (3.8 se) and 0.63 in pilot B (7.8 se), and across the mu box by 0.50 in pilot B (6.2 se); eps is the largest term (2.9-3.1), not the only one"
     },
     "n_thetas": 495
    },
@@ -42008,5 +42008,650 @@
    },
    "from": "program/README.md (round 4, round4/sbi) and roadmap/ROADMAP.md sections 1-2; not recomputed here"
   }
+ },
+ "checker": {
+  "who": "independent checker (round5/vortexexamchk), 10 Nov 2026; CPU only, no GPU job; own code (plain numpy, own fair energy scorer) on origin/gpu-jobs:jobs/r5-vortexexam-{002,003,006}/out; the checker's scripts are not committed, every formula is stated below",
+  "verdict": "The numbers stand: 272 values of headline (skill tables, references, identification digest) recompute within 0.0005, and sigma, rho, their truth-clustered errors, the gaps, the law fits, the headroom table and the predictable-change shares recompute too. The job records match (platform, exit 0, billed $7.3158). No secret is committed. Five conclusions are stronger than the evidence and one does not survive a control: (1) 'fails both bars' - each item view fails one bar, none is shown to fail both, and B's full-history sigma against the best C (0.136 +- 0.054) does not exclude the 0.15 bar; (2) 'without a simulator the law pays' - T's skill is that of any four-constant drift model: a control with no selection term scores the same; (3) 'eps alone sets the rate' - e and mu move it at 4-8 se; (4) 'the linear level-2 predictor misses most' - true of the P0 variant only; (5) 'what an item reveals moves sigma from 0.06 to 0.23' - 0.045 of the move is the conditional net getting better with less history, and the rest rests on one truth; (6) 'parameters matter far more than on the gliders' - direction supported at z 2.0-2.4, size carried by two or three truths.",
+  "job_records": {
+   "r5-vortexexam-001": "cancelled before start, $0 (origin/gpu-jobs:jobs/r5-vortexexam-001/status.json)",
+   "r5-vortexexam-002": "done, exit_code 0 (logs/exit.rc 0); NVIDIA H200 143771 MiB (nebius us-central1, billed rate $6.69/h, not spot); pod created 23:44:35Z, terminated 00:07:26Z = 0.381 h; billed $2.2917, conservative $2.6008, cap $5.7; ref a38a266a6 (status.json, logs/sysinfo.txt)",
+   "r5-vortexexam-003": "done, exit_code 0; NVIDIA A100-SXM4-40GB (lambdalabs us-east-1, $1.99/h, not spot); pod 01:16:54Z to 02:00:35Z = 0.728 h; billed $1.3077, conservative $1.4573, cap $19.8; ref 84550bc04; backend gpu, cuda:0, jax 0.12.0.1, numpy 2.5.4, python 3.12.16 (out/info.json)",
+   "r5-vortexexam-004": "rejected (purpose line over 300 characters), no pod, $0",
+   "r5-vortexexam-005": "infra_error at provisioning (H200 bills $6.69/h, cap $19.40 one tenth of a cent short); no job code ran; billed $0.00 so far, conservative $0.3527",
+   "r5-vortexexam-006": "done, exit_code 0; NVIDIA A100-SXM4-40GB (lambdalabs us-east-1, $1.99/h, not spot); pod 03:05:08Z to 05:01:15Z = 1.935 h; billed $3.7164, conservative $3.8592, cap $19.6; ref f5daa4978; same versions",
+   "totals": "3.044 pod-hours, $7.3158 billed (LEDGER.md agrees: 2.29 + 1.31 + 3.72 + 0.00)",
+   "code_at_head_vs_job_refs": "job2.py, vxlib.py, vxnet.py, vxsbi.py, prior_B.json, vw1/vw and agentenv/evaluator/acceptance.py are unchanged between f5daa4978 (job 006) and the branch head; job 003 ran the older job2.py / vxnet.py of 84550bc04 (the later changes add policies and markers, as the file says); results/job3/{truths,prediction,identification,info}.json are byte-identical to the job's out/",
+   "secrets": "only the two commitments (0d79f640..., 99740083...) and bundle hashes appear as 64-hex strings under round5/vortexexam; the pilots' hidden parameters are in results/job2/truths.json and results/job3/truths.json, both marked PILOT_NEVER_REUSE_AS_EXAM"
+  },
+  "recomputed": {
+   "scorer": "own fair energy score (RMS norm over coordinates, as vw.scoring) reproduces the stored K and oracle scores of every item: largest difference 2e-4 (K, float16 storage of the histories) and 3e-8 (oracle), pilots A and B",
+   "headline_tables": "headline.skill, skill_B, refs, refs_B, identification, identification_B: 272 values, largest difference 0.0005 (rounding)",
+   "sigma_rho": {
+    "A net full history": "sigma -0.003, cluster bootstrap over truths se 0.028, jackknife 0.027",
+    "B net full history": "sigma 0.061, bootstrap se 0.047-0.049, jackknife 0.045",
+    "B net last three ticks": "sigma 0.232, bootstrap se 0.150-0.157 at budgets 1-8 (5-95% 0.07 to 0.55), jackknife 0.141; rho 0.920, 0.854, 0.964, 0.908, 0.895 at 1, 2, 4, 8, 16 Lab episodes",
+    "B best null against best C": "0.136 (se 0.051-0.055; 0.057-0.063 when the policies are re-picked inside every bootstrap resample) up to 8 Lab episodes; 0.093 +- 0.013 at 16",
+    "B net with K0": "0.018 +- 0.011"
+   },
+   "law_job1": "b1 per eps -0.0055, 0.0583, 0.2038, 0.3454, 0.4935; shape R2 0.950, 0.949, 0.963, 0.969, 0.976; share of single-trajectory change 0.059-0.494; line through eps > 0: -0.0860 + 1.4454 eps, zero crossing 0.0595 (its value at eps = 0 is 9.8 se from the measured b1); proportional fit chi2 82 on 4 dof (bootstrap draws differ from the study's)",
+   "headroom": "all 27 settings of headline.headroom_level2_lo_hi reproduce to three decimals from scan_main.npz and scan_branch_small.npz (null 0.105; se over the 12 members 0.064)",
+   "predictable_change": "within-truth shares of headline.predictable_change_s_b and _B reproduce to three decimals",
+   "taken_as_given": "throughput (bench.json, info.json rate_rows), identification (identification.json; not re-derived), the CPU retraining of offline_views_A.json / _B.json, the CPU time per member-tick of round 3 (0.5294 s) behind P0_cost_envelope"
+  },
+  "controls_for_T": {
+   "what": "per truth and budget n the checker refits T on the first n Lab episodes (anchors 100, 102, ..., horizons 8, 16, 32 ticks; d N = c0 + c1 (N - N_ref) and d s_b = b1 s (1 - s) + b2 (1 - 2 s), residuals resampled as in vxnet.fit_law, 64 samples) and three controls that never use the law: 'linear drift' d s_b = a0 + a1 (1 - 2 s) with the same N equation (same number of constants); 'constant drift' d s_b = a0 with the same N equation; 'resampled Lab increments' (a constant for each coordinate). Scored on the pod's items against the replicate truths with the fair energy score; skill = (L(K) - L) / (L(K) - L(O)) on the joint cells; differences in skill units with z over truths (positive = T better)",
+   "pilot_A_by_lab_episodes": {
+    "1": {
+     "T_stored": 0.383,
+     "T_refitted_by_checker": 0.38,
+     "control_linear_drift_same_constants": 0.377,
+     "control_constant_drift": 0.373,
+     "control_resampled_lab_increments": 0.326,
+     "T_minus_linear_drift": [
+      0.003,
+      "z 0.4"
+     ],
+     "T_minus_constant_drift": [
+      0.007,
+      "z 0.5"
+     ],
+     "T_minus_increments": [
+      0.054,
+      "z 0.7"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.765,
+      "linear_drift": 0.753,
+      "constant_drift": 0.713,
+      "T_minus_linear_drift": [
+       0.012,
+       "z 1.1"
+      ],
+      "T_minus_constant_drift": [
+       0.052,
+       "z 4.4"
+      ]
+     }
+    },
+    "2": {
+     "T_stored": 0.46,
+     "T_refitted_by_checker": 0.459,
+     "control_linear_drift_same_constants": 0.455,
+     "control_constant_drift": 0.457,
+     "control_resampled_lab_increments": 0.329,
+     "T_minus_linear_drift": [
+      0.005,
+      "z 1.3"
+     ],
+     "T_minus_constant_drift": [
+      0.002,
+      "z 0.1"
+     ],
+     "T_minus_increments": [
+      0.131,
+      "z 1.4"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.762,
+      "linear_drift": 0.754,
+      "constant_drift": 0.71,
+      "T_minus_linear_drift": [
+       0.008,
+       "z 0.5"
+      ],
+      "T_minus_constant_drift": [
+       0.052,
+       "z 5.3"
+      ]
+     }
+    },
+    "4": {
+     "T_stored": 0.478,
+     "T_refitted_by_checker": 0.491,
+     "control_linear_drift_same_constants": 0.488,
+     "control_constant_drift": 0.473,
+     "control_resampled_lab_increments": 0.335,
+     "T_minus_linear_drift": [
+      0.002,
+      "z 0.4"
+     ],
+     "T_minus_constant_drift": [
+      0.018,
+      "z 2.6"
+     ],
+     "T_minus_increments": [
+      0.156,
+      "z 1.8"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.763,
+      "linear_drift": 0.751,
+      "constant_drift": 0.725,
+      "T_minus_linear_drift": [
+       0.012,
+       "z 1.3"
+      ],
+      "T_minus_constant_drift": [
+       0.037,
+       "z 3.8"
+      ]
+     }
+    },
+    "8": {
+     "T_stored": 0.497,
+     "T_refitted_by_checker": 0.476,
+     "control_linear_drift_same_constants": 0.497,
+     "control_constant_drift": 0.494,
+     "control_resampled_lab_increments": 0.337,
+     "T_minus_linear_drift": [
+      -0.021,
+      "z -1.3"
+     ],
+     "T_minus_constant_drift": [
+      -0.018,
+      "z -0.9"
+     ],
+     "T_minus_increments": [
+      0.139,
+      "z 2.0"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.766,
+      "linear_drift": 0.753,
+      "constant_drift": 0.723,
+      "T_minus_linear_drift": [
+       0.013,
+       "z 1.3"
+      ],
+      "T_minus_constant_drift": [
+       0.043,
+       "z 3.2"
+      ]
+     }
+    }
+   },
+   "pilot_B_by_lab_episodes": {
+    "1": {
+     "T_stored": 0.16,
+     "T_refitted_by_checker": 0.167,
+     "control_linear_drift_same_constants": 0.15,
+     "control_constant_drift": 0.17,
+     "control_resampled_lab_increments": 0.165,
+     "T_minus_linear_drift": [
+      0.016,
+      "z 0.9"
+     ],
+     "T_minus_constant_drift": [
+      -0.004,
+      "z -0.1"
+     ],
+     "T_minus_increments": [
+      0.002,
+      "z 0.0"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.531,
+      "linear_drift": 0.505,
+      "constant_drift": 0.567,
+      "T_minus_linear_drift": [
+       0.026,
+       "z 0.4"
+      ],
+      "T_minus_constant_drift": [
+       -0.036,
+       "z -0.5"
+      ]
+     }
+    },
+    "2": {
+     "T_stored": 0.377,
+     "T_refitted_by_checker": 0.375,
+     "control_linear_drift_same_constants": 0.389,
+     "control_constant_drift": 0.363,
+     "control_resampled_lab_increments": 0.188,
+     "T_minus_linear_drift": [
+      -0.014,
+      "z -1.0"
+     ],
+     "T_minus_constant_drift": [
+      0.012,
+      "z 1.6"
+     ],
+     "T_minus_increments": [
+      0.187,
+      "z 2.9"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.637,
+      "linear_drift": 0.663,
+      "constant_drift": 0.566,
+      "T_minus_linear_drift": [
+       -0.027,
+       "z -0.6"
+      ],
+      "T_minus_constant_drift": [
+       0.071,
+       "z 2.2"
+      ]
+     }
+    },
+    "4": {
+     "T_stored": 0.402,
+     "T_refitted_by_checker": 0.412,
+     "control_linear_drift_same_constants": 0.41,
+     "control_constant_drift": 0.397,
+     "control_resampled_lab_increments": 0.2,
+     "T_minus_linear_drift": [
+      0.002,
+      "z 0.2"
+     ],
+     "T_minus_constant_drift": [
+      0.016,
+      "z 1.5"
+     ],
+     "T_minus_increments": [
+      0.213,
+      "z 3.3"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.676,
+      "linear_drift": 0.688,
+      "constant_drift": 0.597,
+      "T_minus_linear_drift": [
+       -0.013,
+       "z -0.4"
+      ],
+      "T_minus_constant_drift": [
+       0.078,
+       "z 2.2"
+      ]
+     }
+    },
+    "8": {
+     "T_stored": 0.437,
+     "T_refitted_by_checker": 0.444,
+     "control_linear_drift_same_constants": 0.436,
+     "control_constant_drift": 0.408,
+     "control_resampled_lab_increments": 0.204,
+     "T_minus_linear_drift": [
+      0.008,
+      "z 1.2"
+     ],
+     "T_minus_constant_drift": [
+      0.035,
+      "z 4.4"
+     ],
+     "T_minus_increments": [
+      0.24,
+      "z 3.4"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.704,
+      "linear_drift": 0.7,
+      "constant_drift": 0.592,
+      "T_minus_linear_drift": [
+       0.004,
+       "z 0.2"
+      ],
+      "T_minus_constant_drift": [
+       0.112,
+       "z 3.8"
+      ]
+     }
+    },
+    "16": {
+     "T_stored": 0.435,
+     "T_refitted_by_checker": 0.434,
+     "control_linear_drift_same_constants": 0.441,
+     "control_constant_drift": 0.41,
+     "control_resampled_lab_increments": 0.204,
+     "T_minus_linear_drift": [
+      -0.007,
+      "z -0.9"
+     ],
+     "T_minus_constant_drift": [
+      0.024,
+      "z 2.8"
+     ],
+     "T_minus_increments": [
+      0.229,
+      "z 3.5"
+     ],
+     "s_b_cells_only": {
+      "T_refitted": 0.703,
+      "linear_drift": 0.699,
+      "constant_drift": 0.603,
+      "T_minus_linear_drift": [
+       0.004,
+       "z 0.2"
+      ],
+      "T_minus_constant_drift": [
+       0.1,
+       "z 3.4"
+      ]
+     }
+    }
+   },
+   "reading": "the checker's refit reproduces the stored T within 0.02. Dropping the selection term changes nothing measurable (joint cells: -0.021 to +0.016; s_b cells: -0.027 to +0.026; |z| <= 1.3). Even a constant drift for s_b stays within 0.035 of T on the joint cells; what T adds over raw Lab increments is the relaxation of N (0.05-0.24). So T beats the data-only nets and ridges at 1-4 Lab episodes because it has four constants per horizon, not because it holds the level-2 law; T as scored here cannot serve as the reference of a 'theory ratio'",
+   "source": "origin/gpu-jobs:jobs/r5-vortexexam-003/out and -006/out: lab.npz, items.npz, exam.npz, scores.npz; prior.json / prior_B.json const"
+  },
+  "findings": [
+   {
+    "id": 1,
+    "claim": "The exam still fails both acceptance bars",
+    "check": "No item view passes both bars; none is shown to fail both. Full-history items fail sigma in the net family (A -0.003 +- 0.029, B 0.061 +- 0.048), but net|C is not a ceiling there: in B the same conditional net given only the last three ticks is better by 0.045 in 10 of 10 truths (z 4.8), which a well-trained predictor with more inputs cannot be; in A's CPU retraining C scores 0.601 (state only), 0.569 (last three ticks), 0.577 (full) against the pod's 0.557. Against the best C, B's full-history sigma is 0.136 +- 0.054 (5-95% 0.07 to 0.25: the bar 0.15 is inside) and A's about 0.07-0.08 (point values, no error). Short-history items in B pass sigma on the point estimate up to 8 Lab episodes (0.232 +- 0.157), carried by the four truths with e < 9 and mostly by one (without truth 6: 0.126), fall to 0.093 +- 0.013 at 16 once the null may be any family (a ridge on the Lab data alone), and fail rho at every budget on the point estimate (5-95% lower bound above 0.7 only at 4 and 16 episodes). In A the short-history 0.18 +- 0.20 is against P0 only: at 8 Lab episodes a ridge on the Lab data alone (0.533) beats P0 (0.465) and sigma is 0.064 +- 0.101.",
+    "numbers": {
+     "B_net_C_full_minus_last3_skill": [
+      -0.045,
+      "z -4.8",
+      "10 of 10 truths"
+     ],
+     "B_sigma_full_history_against_best_C": {
+      "value": 0.1358,
+      "se_truths": 0.0544,
+      "p05_p95": [
+       0.071,
+       0.246
+      ],
+      "share_of_resamples_positive": 1.0
+     },
+     "B_sigma_short_history_per_truth": [
+      0.827,
+      0.947,
+      0.013,
+      0.005,
+      0.36,
+      0.031,
+      2.982,
+      0.001,
+      0.125,
+      0.02
+     ],
+     "B_sigma_short_history_without_truth_6": 0.1256,
+     "B_truths_eps_mu_e": "truths 0, 1, 4, 6 have e = 7.44, 8.96, 8.19, 8.50; the other six have e >= 9.89 (results/job3/truths.json)",
+     "A_C_by_view_cpu": {
+      "state": 0.601,
+      "last3": 0.569,
+      "full": 0.577,
+      "pod_full": 0.557,
+      "source": "offline_views_A.json skill net[view]|C"
+     },
+     "A_sigma_last3_best_null": [
+      0.064,
+      0.101,
+      "offline_views_A.json sigma best[last3] (null ridge[last3]|D@8)"
+     ]
+    },
+    "source": "scores.npz of jobs 003 and 006 (per-truth means of the primary cells; cluster bootstrap over truths, 4,000 resamples); offline_views_A.json"
+   },
+   {
+    "id": 2,
+    "claim": "Without a simulator the law pays; at 1-4 Lab episodes T is the only good policy; this world suits the no-simulator arm and the theory ratio",
+    "check": "T does beat every data-only net, ridge and lin2 up to 4 Lab episodes (recomputed: nearest family 0.76 / 0.92 below at one episode, 0.11 / 0.17 at four, pilots A / B), and closes 64-91% of the data-only net's gap to C. But the law's form earns none of it: see controls_for_T. Supported: a four-constant persistence-plus-relaxation model is the best cheap policy without a simulator at small budgets. Not supported: that knowing the level-2 law pays, or that T can anchor a theory ratio. At the largest budgets the data-only linear models catch up (B, 16 episodes: ridge~3|D 0.512, lin2|D 0.460, ridge|D 0.451 against T 0.435).",
+    "source": "checker.controls_for_T; scores.npz"
+   },
+   {
+    "id": 3,
+    "claim": "Roadmap finding 6 changes: a simulation-trained predictor reaches most of the predictable kind-share change that the linear one misses (0.09 / 0.08 / 0.20 against 0.30 / 0.49 / 0.72)",
+    "check": "The table compares the P0 variants: one linear map for the whole prior against one net. A linear level-2 predictor fitted to the truth's own data reaches far more in B: 0.19 / 0.31 / 0.55 on 32 simulations at the truth (lin2|Cded), 0.13 / 0.27 / 0.51 on 16 Lab episodes (lin2|D@16); the best net given the truth (net|Cft) reaches 0.30 / 0.43 / 0.72, so the linear predictor's shortfall is 0.11 +- 0.09 / 0.12 +- 0.03 / 0.17 +- 0.04, not 0.22 / 0.41 / 0.53. 'Most' holds at 160 time units only. In pilot A nothing is resolved (net|P0 0.09 / 0.32 / 0.37 +- 0.11-0.16; lin2 on 8 Lab episodes -0.04 / -0.05 / -0.02, as in round 3). Round 3's 'at most 0.10' is therefore not reproduced in B, and the change to finding 6 rests on B's 10 truths.",
+    "numbers": {
+     "B_s_b_within_truth_h_8_16_32": {
+      "lin2|P0": [
+       0.088,
+       0.081,
+       0.195
+      ],
+      "lin2|Cded": [
+       0.191,
+       0.309,
+       0.552
+      ],
+      "lin2|D@16": [
+       0.13,
+       0.273,
+       0.51
+      ],
+      "ridge|Cded": [
+       0.284,
+       0.459,
+       0.701
+      ],
+      "net|P0": [
+       0.304,
+       0.487,
+       0.721
+      ],
+      "net|Cft": [
+       0.303,
+       0.43,
+       0.718
+      ],
+      "net|Cft - lin2|Cded": [
+       [
+        0.112,
+        0.121,
+        0.166
+       ],
+       "jackknife se over truths",
+       [
+        0.085,
+        0.034,
+        0.043
+       ]
+      ],
+      "net|P0 - lin2|P0": [
+       [
+        0.216,
+        0.406,
+        0.526
+       ],
+       "jackknife se over truths",
+       [
+        0.035,
+        0.056,
+        0.066
+       ]
+      ]
+     },
+     "A_s_b_within_truth_h_8_16_32": {
+      "net|P0": [
+       0.089,
+       0.318,
+       0.374
+      ],
+      "lin2|P0": [
+       -0.054,
+       -0.091,
+       -0.397
+      ],
+      "lin2|D@8": [
+       -0.035,
+       -0.047,
+       -0.016
+      ]
+     }
+    },
+    "source": "items.npz and the 'mean|...' arrays of scores.npz, jobs 003 and 006: (V_change - Ve) / (V_change - Vu) summed over truths"
+   },
+   {
+    "id": 4,
+    "claim": "Over both priors eps alone sets the rate (R2 0.74 and 0.66, unchanged by adding the other parameters)",
+    "check": "The R2 are right but are of noisy per-design-point fits. The pooled fit on the same design episodes (recomputed, bootstrap over design points) gives b1 slopes per half box of +0.251 +- 0.007 (eps), -0.043 +- 0.007 (mu), -0.054 +- 0.007 (e) in B and +0.260 +- 0.010 (eps), -0.035 +- 0.009 (e), +0.011 +- 0.008 (mut128), +0.004 +- 0.009 (nu) in A. eps dominates; e and mu also move the rate.",
+    "source": "design.npz, design_S_*.npz of jobs 003 and 006; results/analysis2.json and analysis2_B.json law_design.coefficients_box_units agree"
+   },
+   {
+    "id": 5,
+    "claim": "The dials are in the exam, not the world: what an item reveals moves sigma from 0.06 to 0.23",
+    "check": "Each sigma uses its own view's C, and the short view's C is the better net (finding 1). With one C for both (net~3|C) the move is 0.136 to 0.232, a difference of 0.097 +- 0.106 (positive in 88% of resamples). Directly, hiding the history costs the P0 net 0.054 +- 0.047 of skill (5 of 10 truths, one truth gives 0.47) and the P0 ridge 0.122 +- 0.056 (A, CPU: net 0.087 +- 0.051, ridge 0.135 +- 0.046). A dial, of uncertain size. 'P0 reads the parameters off the history' is an inference; no test decodes theta from an item's history.",
+    "numbers": {
+     "sigma_short_minus_sigma_full_own_C": {
+      "value": 0.1709,
+      "se_truths": 0.115,
+      "p05_p95": [
+       0.044,
+       0.406
+      ],
+      "share_of_resamples_positive": 0.998
+     },
+     "sigma_short_minus_sigma_full_common_C_net~3": {
+      "value": 0.0965,
+      "se_truths": 0.1062,
+      "p05_p95": [
+       -0.017,
+       0.307
+      ],
+      "share_of_resamples_positive": 0.883
+     },
+     "P0_history_value_net (skill full - skill short)": {
+      "value": 0.0545,
+      "se_truths": 0.047,
+      "p05_p95": [
+       -0.011,
+       0.142
+      ],
+      "share_of_resamples_positive": 0.881
+     },
+     "P0_history_value_ridge": {
+      "value": 0.1215,
+      "se_truths": 0.0564,
+      "p05_p95": [
+       0.04,
+       0.225
+      ],
+      "share_of_resamples_positive": 1.0
+     },
+     "P0_history_value_net_per_truth": [
+      0.12,
+      0.056,
+      -0.041,
+      -0.013,
+      0.081,
+      -0.039,
+      0.467,
+      0.002,
+      -0.029,
+      -0.058
+     ]
+    },
+    "source": "scores.npz of job 006; offline_views_A.json history_value"
+   },
+   {
+    "id": 6,
+    "claim": "The hidden parameters matter far more than on the gliders: the prior-mean plug-in loses 0.21 and 0.53 of oracle skill against 0.03-0.09",
+    "check": "Recomputed: 0.206 (z 2.4 over 6 truths, 5 positive) and 0.533 (z 2.0 over 10, 9 positive). B's mean is two truths (1.32 and 2.63); the median truth loses 0.19 (A) and 0.13 (B). The gliders' range mixes policies: 0.03 is the like-for-like one (the amortised theta-conditional net fed the prior mean), 0.08-0.09 are a ridge and a net trained at the box centre; its cells include level 1, here level 2 only. 'More, in the tail' is supported; the factor is not.",
+    "numbers": {
+     "pilot_A": {
+      "per_truth": [
+       0.39,
+       0.338,
+       0.031,
+       0.05,
+       0.447,
+       -0.022
+      ],
+      "mean": 0.2057,
+      "median": 0.1941,
+      "mean_without_two_largest": 0.0993,
+      "z_truths": 2.42
+     },
+     "pilot_B": {
+      "per_truth": [
+       0.638,
+       1.324,
+       0.064,
+       0.062,
+       0.19,
+       0.067,
+       2.628,
+       0.327,
+       0.027,
+       -0.0
+      ],
+      "mean": 0.5327,
+      "median": 0.1284,
+      "mean_without_two_largest": 0.1719,
+      "z_truths": 2.0
+     }
+    },
+    "source": "scores.npz net|PM and net|C, jobs 003 and 006; round4/sbi/results/summary.json for the gliders"
+   },
+   {
+    "id": 7,
+    "claim": "Level 2 has an effective law: R2 0.95-0.98, ensemble mean within 0.015-0.053, rate linear in eps above 0.1",
+    "check": "Holds for eps >= 0.2: there a straight-line drift in s reaches a shape R2 of only 0.64, 0.50, 0.42 against the law's 0.96-0.98; at eps 0 and 0.1 the two are indistinguishable (0.95 / 0.96 against 0.95). 0.015-0.053 is the in-sample error; out of sample (constants from half of the members) it is 0.026-0.056 with |z| up to 6.8, so the law is a good approximation, not exact. 'Linear above 0.1' is four points; one set of 64 keys, default values of the other parameters.",
+    "source": "law.npz of job 002; summary law, headline.law_integrated_mean_max_abs_error"
+   },
+   {
+    "id": 8,
+    "claim": "Headroom table: six parameters with headroom, six others at the noise floor",
+    "check": "Reproduces. The scan has 13 parameters: the thirteenth, wi, has 5.79 / 0.16 at level 2 and 3.56 / 0.11 at level 1 and is left out because its low edge is not viable (N falls to 1); 'at level 1 the largest is 0.94 (e)' is among the viable ones. The null floor 0.105 is 1.6-2.1 se above zero.",
+    "source": "scan_main.npz, scan_branch_small.npz of job 002"
+   },
+   {
+    "id": 9,
+    "claim": "Table of full-history skills: D(max) 0.21 and 0.28",
+    "check": "Right for the net family, which is the worst data-only family. The best data-only policy at the largest budget scores 0.505 (A, lin2|D@8) and 0.512 (B, ridge~3|D@16), which in B is above P0 (0.488): at 16 Lab episodes a linear fit to Lab data needs no simulator to match P0.",
+    "source": "scores.npz, jobs 003 and 006"
+   },
+   {
+    "id": 10,
+    "claim": "$3.3-4.2 per million member-ticks",
+    "check": "This is rate / throughput (A100 $1.99/h at 169.4/s; H200 $6.69/h at 444/s on a 2-tick benchmark; the 440-tick law run made 415/s). Billed cost per simulated member-tick of the exam jobs, training and pod overhead included, is $4.46 (003) and $3.55 (006) per million.",
+    "source": "status.json billed_usd, out/info.json member_ticks_total, out/law.json"
+   },
+   {
+    "id": 11,
+    "claim": "choices made after seeing results",
+    "check": "The short-history families, the fine-tuned nets and the hidden set of pilot B were added after pilot A showed P0 = C (stated in job2.py); the three-tick view was fixed in the code of job 006 before it ran, so B's short-history numbers are not picked after the fact, but A's (CPU) are. 'Best over families' picks policies on the scored items (stated in its note); re-picking inside the bootstrap leaves the intervals nearly unchanged. No error includes the training seed of the nets: A's full-history sigma is -0.003 on the pod and 0.045 on CPU retraining.",
+    "source": "job2.py docstring; offline_views_A.json"
+   }
+  ],
+  "corrected_wording": [
+   "No item view passes both bars. Full history: sigma -0.003 +- 0.029 (A) and 0.061 +- 0.048 (B) in the net family, 0.136 +- 0.054 against the best C in B, which does not exclude the 0.15 bar. Last three ticks (B): sigma 0.232 +- 0.157 up to 8 Lab episodes, from four of ten truths (0.126 without one of them) and 0.093 +- 0.013 at 16; rho 0.85-0.96.",
+   "Without a simulator a four-constant drift model fitted to 1-4 Lab episodes beats the data-only nets and ridges; the replicator form of the law adds nothing measurable to it, so T is not yet a reference for a theory ratio.",
+   "eps dominates the rate of the law; e and mu also move it (b1 falls by 0.4-0.6 of its centre value across their boxes, 4-8 se).",
+   "In B a linear level-2 predictor fitted to the truth's own data reaches 0.19 / 0.31 / 0.55 of the predictable kind-share change, the best net 0.30 / 0.49 / 0.72; in A neither is resolved.",
+   "Hiding the history raises sigma by 0.10 +- 0.11 with a common C; it costs the P0 net 0.05 +- 0.05 and the P0 ridge 0.12 +- 0.06 of skill.",
+   "The prior-mean plug-in loses 0.21 (z 2.4) and 0.53 (z 2.0) on average, 0.19 and 0.13 at the median truth."
+  ],
+  "edits": [
+   {
+    "key": "theory_T.note",
+    "old": "T = the replicator-mutator law for s_b and linear relaxation for N with constants fitted to the first n Lab episodes (vxnet.fit_law); it never runs level 0",
+    "new": "old text + '; checker: T's skill does not come from the replicator form: with the selection term s (1 - s) replaced by a constant (d s_b = a0 + a1 (1 - 2 s): the same number of constants, the same N equation and residual resampling) the skill is the same at every budget in both pilots (T minus control -0.021 to +0.016, |z| <= 1.3 over truths; checker.controls_for_T)'",
+    "why": "the note read as if the law's form earned T's skill; a control with no selection term scores the same"
+   },
+   {
+    "key": "theory_T_B.note",
+    "old": "T = the replicator-mutator law for s_b and linear relaxation for N with constants fitted to the first n Lab episodes (vxnet.fit_law); it never runs level 0",
+    "new": "old text + '; checker: T's skill does not come from the replicator form: with the selection term s (1 - s) replaced by a constant (d s_b = a0 + a1 (1 - 2 s): the same number of constants, the same N equation and residual resampling) the skill is the same at every budget in both pilots (T minus control -0.021 to +0.016, |z| <= 1.3 over truths; checker.controls_for_T)'",
+    "why": "the note read as if the law's form earned T's skill; a control with no selection term scores the same"
+   },
+   {
+    "key": "law_design.value.per_theta_b1.note",
+    "old": "b1 fitted per design point from its own episodes (noisy), then regressed on theta",
+    "new": "old text + '; checker: these R2 do not show that eps alone sets the rate: in the pooled fit (b1_relative_change_across_box, coefficients_box_units in results/analysis2*.json) b1 falls across the e box by 0.41 of its centre value in pilot A (3.8 se) and 0.63 in pilot B (7.8 se), and across the mu box by 0.50 in pilot B (6.2 se); eps is the largest term (2.9-3.1), not the only one'",
+    "why": "README and report read the two R2 as 'eps alone sets the rate'; the same analysis has e and mu moving b1 at 4-8 se"
+   },
+   {
+    "key": "law_design_B.value.per_theta_b1.note",
+    "old": "b1 fitted per design point from its own episodes (noisy), then regressed on theta",
+    "new": "old text + '; checker: these R2 do not show that eps alone sets the rate: in the pooled fit (b1_relative_change_across_box, coefficients_box_units in results/analysis2*.json) b1 falls across the e box by 0.41 of its centre value in pilot A (3.8 se) and 0.63 in pilot B (7.8 se), and across the mu box by 0.50 in pilot B (6.2 se); eps is the largest term (2.9-3.1), not the only one'",
+    "why": "README and report read the two R2 as 'eps alone sets the rate'; the same analysis has e and mu moving b1 at 4-8 se"
+   },
+   {
+    "key": "headline.law_on_design.value.per_theta_b1.note",
+    "old": "b1 fitted per design point from its own episodes (noisy), then regressed on theta",
+    "new": "old text + '; checker: these R2 do not show that eps alone sets the rate: in the pooled fit (b1_relative_change_across_box, coefficients_box_units in results/analysis2*.json) b1 falls across the e box by 0.41 of its centre value in pilot A (3.8 se) and 0.63 in pilot B (7.8 se), and across the mu box by 0.50 in pilot B (6.2 se); eps is the largest term (2.9-3.1), not the only one'",
+    "why": "README and report read the two R2 as 'eps alone sets the rate'; the same analysis has e and mu moving b1 at 4-8 se"
+   },
+   {
+    "key": "headline.law_on_design_B.value.per_theta_b1.note",
+    "old": "b1 fitted per design point from its own episodes (noisy), then regressed on theta",
+    "new": "old text + '; checker: these R2 do not show that eps alone sets the rate: in the pooled fit (b1_relative_change_across_box, coefficients_box_units in results/analysis2*.json) b1 falls across the e box by 0.41 of its centre value in pilot A (3.8 se) and 0.63 in pilot B (7.8 se), and across the mu box by 0.50 in pilot B (6.2 se); eps is the largest term (2.9-3.1), not the only one'",
+    "why": "README and report read the two R2 as 'eps alone sets the rate'; the same analysis has e and mu moving b1 at 4-8 se"
+   }
+  ],
+  "budget": "about 5 CPU-minutes (nice 10, one process); no GPU"
  }
 }
