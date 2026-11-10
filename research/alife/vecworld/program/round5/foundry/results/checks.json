@@ -34,7 +34,7 @@
   "min_cell": 1.0359251456556491e-05,
   "max_cell": 3.479227098573671,
   "ok": true,
-  "seconds": 9.3
+  "seconds": 9.1
  },
  "symmetry": {
   "n_worlds": 4,
@@ -60,7 +60,7 @@
   "charge_of_command_nats": 128.0,
   "tnca_nats": 128.0,
   "ok": true,
-  "seconds": 12.2
+  "seconds": 11.3
  },
  "wind": {
   "noise_mean_abs_max": 0.007240574458845525,
@@ -98,35 +98,35 @@
    "twin_same_key_identical": true
   },
   "ok": true,
-  "seconds": 6.6
+  "seconds": 6.0
  },
  "linear": {
   "worlds": [
    {
     "draw": 17,
-    "symbol_growth": 1.0345244743569062,
+    "symbol_growth": 1.0345244743569066,
     "jvp_growth": 1.0345244743569062,
     "simulated_growth": 1.0345244745089393,
     "wavelength_px": 9.050966799187808
    },
    {
     "draw": 27,
-    "symbol_growth": 1.0850250473502923,
+    "symbol_growth": 1.0850250473502931,
     "jvp_growth": 1.0850250473502934,
     "simulated_growth": 1.0850238362254294,
     "wavelength_px": 11.31370849898476
    },
    {
     "draw": 37,
-    "symbol_growth": 1.0222859862173101,
+    "symbol_growth": 1.02228598621731,
     "jvp_growth": 1.0222859862173101,
     "simulated_growth": 1.022285987155459,
     "wavelength_px": 9.995120760870789
    }
   ],
-  "rel_error_max": 1.116218345198483e-06,
+  "rel_error_max": 1.1162183459756392e-06,
   "ok": true,
-  "seconds": 2.9
+  "seconds": 2.5
  },
  "ok": true
 }

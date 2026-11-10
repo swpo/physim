@@ -1,6 +1,6 @@
 # PROGRESS (study foundry, round 5) -- kept for restarts
 
-Updated 2026-11-10 04:25 UTC (instance 1; the study started at 03:40 UTC).
+Updated 2026-11-10 04:35 UTC (instance 1; the study started at 03:40 UTC).
 
 ## Done
 - Worktree /home/user/wt/foundry (branch wt-foundry, sparse research/alife/vecworld).
@@ -16,15 +16,17 @@ Updated 2026-11-10 04:25 UTC (instance 1; the study started at 03:40 UTC).
 - job.sh passed end to end on CPU at tiny size from a git archive of the request paths (twice, exit 0).
 
 ## Running
-- GPU request r5-foundry-001 (cap $13.50, max 1.75 h, ref fa6858c86): see below for its state.
+- GPU request r5-foundry-001 (cap $13.50, max 1.75 h, ref 22134cfd9 = the rebased copy of the tested
+  fa6858c86): PUSHED 04:31 UTC (commit 91273504f). The queue held 2 running jobs and 1 received before it.
+  results/checks.json written (CPU checks all ok).
 
 ## Next step
-1. If the request is not pushed yet: wait for the final tiny CPU test (scratch arch/job_stdout.log must end
-   with "exit 0"), then commit gpu/requests/r5-foundry-001.json and push.
+1. (done) final tiny CPU test passed (exit 0, 433 s); request pushed.
 2. Watch: `bash watch.sh r5-foundry-001` in the background (exits at a final state). Read
    origin/gpu-jobs:jobs/r5-foundry-001/review.md when it appears.
 3. When done: `bash fetch.sh r5-foundry-001`; `python -B analyze.py work/r5-foundry-001/out`;
-   then figures/posters (figs.py, to write), results/summary.json (make_summary.py, to write), README.md,
+   then `python -B figs.py work/r5-foundry-001/out` (posters, GIFs, charts), results/summary.json
+   (make_summary.py, to write), README.md,
    report. If the job failed: read logs under work/r5-foundry-001/logs, fix, CPU test, resubmit as
    r5-foundry-002 (caps in total <= $25).
 
