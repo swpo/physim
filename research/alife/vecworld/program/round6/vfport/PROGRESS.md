@@ -14,6 +14,25 @@
   passes with the host's processes visible; read of the guard only, under tripwires).
 - Left on the machine by this role: nothing (scratch, worktree, containers and two /tmp/vf-port-* files removed).
 
+## RE-AUDIT of the runbook, round 1 (independent; of commit 73829e5c6) -- 10 Nov 2026, finished
+- Role: re-auditor of RUNBOOK_MAC.md as the Mac operator reads it (findings A1, A2, B1 to B15; required changes
+  1, 2, 6, 7, 8, 9). The verdict and the replacement texts were returned to the coordinator, not written here.
+  Nothing of the port was changed or executed by this role.
+- Recomputed: sha256 of PIN.sha256 equals the runbook's; 105 of 105 listed files match, at 454812a2b and at the
+  head. The 27 fenced commands are byte-identical at cac38e324 (rehearsed), 454812a2b (pinned) and the head.
+- Run here (scratch only, stand-ins `echo` and `sleep`, no file of the port executed): the folder guard from 8
+  wrong folders x 2 start points prints nothing; `docker info --format` against a socket that does not exist exits
+  1; the detached command shape as a Claude session issues it (`sh -c <text>`) leaves a waiting wrapper shell
+  whose command line holds the command text, so the status command's pattern lists it next to the real process
+  (the rehearsal ran the commands from files and did not see this); SIGTERM to that wrapper leaves the child
+  running and no `EXIT` line; a pattern anchored on the pid and the interpreter path lists the real process only.
+- Open at the end of this role (text of the runbook; no path found that deletes or kills outside the pilot):
+  the process listing and the stop command of "If a run was interrupted"; no branch for a cut in step 1; no limit
+  on repeats; the copy inside the pinned commit does not name the commit step 0 compares; small text mismatches
+  with the rehearsal record, which holds command labels and truncated output; step 3 is gated by text only.
+- Left on the machine by this role: nothing (scratch deleted, worktree removed, no container, no image, no
+  process; the Docker daemon was not touched).
+
 ## HOST-SAFETY FIXER, round 1 (after the audit's NO-GO, HOST_SAFETY_AUDIT.md) -- 10 Nov 2026
 
 Worktree `/home/user/wt/vfsafe1` (branch wt-vfsafe1, pushes to `claude/fisim-agent-world-research-hepmlz`).
