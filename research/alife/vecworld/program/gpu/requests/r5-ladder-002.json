@@ -1,0 +1,41 @@
+{
+ "schema": "gpu-job/v1",
+ "job_id": "r5-ladder-002",
+ "purpose": "Round-5 study ladder (track 2): reference ladder (K, D(N), P0, prior mean, S(N), C, O) on the gliders wind world in 9 cells, observed view {block, object, population} x {1, 4, 8} hidden parameters, Lab budgets 2-512 episodes; resubmission of r5-ladder-001 with its review fixed",
+ "ref": "28263eb3e78445c8ae0355cd204a8b69a48185e1",
+ "requester": "cloud study ladder (track 2), session_01BZceC7G6m7DgM6KpXjnWXj",
+ "paths": [
+  "research/alife/vecworld/vw1",
+  "research/alife/vecworld/integrate",
+  "research/alife/vecworld/spec",
+  "research/alife/vecworld/level0",
+  "research/alife/vecworld/program/track2/gliders_exam",
+  "research/alife/vecworld/program/track2/actuation",
+  "research/alife/vecworld/program/round4/sbi",
+  "research/alife/vecworld/program/round5/agentenv/evaluator",
+  "research/alife/vecworld/program/round5/ladder"
+ ],
+ "gpu": {
+  "types": [
+   "A100_40GB",
+   "A100_80GB",
+   "H100_80GB",
+   "H200_141GB"
+  ],
+  "count": 1,
+  "spot": false
+ },
+ "max_hours": 2.9,
+ "cap_usd": 21.2,
+ "setup": [
+  "curl -LsSf https://astral.sh/uv/install.sh | sh",
+  "export PATH=$HOME/.local/bin:$PATH",
+  "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+  "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+ ],
+ "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/program/round5/ladder && python -B run_ladder.py --smoke --sets 8 --out $OUT/presmoke --max-hours 0.2 && python -B run_ladder.py --out $OUT --max-hours 2.6",
+ "env": {
+  "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+ },
+ "notes": "Resubmission of r5-ladder-001 (rejected by review before any pod, $0). Fixes, by the review's numbering. (1) Validation is evaluated one net and one chunk of 128 rows x 8 draws at a time (lax.map over nets and chunks), so its largest array no longer grows with the number of nets or rows; at most 8 nets train in lockstep; ladder_net.check_elems refuses any training step, validation chunk or sampling call whose largest intermediate array would pass 2^30 elements; check_shapes.py traces the step, the validation pass and the sampler of every view at the FULL job's shapes (jax.make_jaxpr, sub-programs included) and executes the block view's validation once: results/check_shapes.json. (2) One view, one group of nets, one policy or one view's report can fail without losing the rest; scores.npz and train_info.json are written after every view. (3) progress.txt starts with the PILOT_NEVER_REUSE_AS_EXAM line. (6) In a smoke pass a part skipped on its deadline now fails the pass. (7) The Lab has 128 class-e episodes, so the blind arm reaches 128 like the others. (8) Member-ticks are counted by run_ladder.estimate_ticks and logged: about 3.6 million in all (burn-in is 50 ticks, not the 132 I assumed), which paid for 48 items, 96 climatology runs and 768 design points again. Not changed: (4) the fixed sys.path entries of gworld.py, wind.py and viab_joint.py (other studies' files); (5) writes stay tmp + os.replace. Pilot only: 8 truths per hidden set are drawn from the public priors inside the job and written to the outputs; never reusable as an exam; the world secret (os.urandom) is never written. float64 world, float32 nets. The run repeats the CPU-tested smoke pass on the GPU for one hidden set (about 5 minutes), then the full pass; both assert a GPU backend before any simulation. Time: simulation about 60 minutes at r4-sbi-002's measured rates (1,080-1,290 member-ticks/s; 520/s for exams), identification about 10, nets and scoring about 35-45: expected 1.8-2.1 h. Guards: hidden sets run in the order 4, 8, 1 and share the time left equally; each view's nets share their set's time and cut their steps to fit (never below 300); a set is skipped if the time left does not cover its simulation part; the script's limit is 2.6 h. Outputs about 15 MB, every file below 20 MB. No network or subprocess use outside setup. Cap: $6.69/h x (2.9 + 0.25) h = $21.07. Code pinned to ref 28263eb3e. CPU tests from a git archive of exactly these paths: at that commit, run_ladder.py --smoke --sets 8 --cpu-ok (the job's own first step; D nets in two lockstep batches; exit 0, failed []) and make_summary.py --smoke on its outputs; at its parent 33f6c69a4 (the same code except that the smoke pass used one lockstep batch), the three hidden sets end to end (exit 0, failed []), check_lib.py and check_shapes.py (largest intermediate array 1.13e8 elements = 0.053 x 2^31; the block view's full-size validation pass ran on CPU with a peak of 2.1 GB)."
+}

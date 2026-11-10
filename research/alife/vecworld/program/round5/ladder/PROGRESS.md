@@ -30,3 +30,6 @@
 - NEXT: the 3-set CPU smoke from a git archive of ac871b3f1 is running; when it passes, set `ref` in the
   untracked request `gpu/requests/r5-ladder-002.json` to the pushed commit that holds this code, commit and
   push it, start the watcher. In step 1-4 below read r5-ladder-002 for r5-ladder-001.
+- 02:50 UTC. CPU tests passed after the fixes (3-set smoke at 33f6c69a4, 1-set smoke with two lockstep batches
+  at 28263eb3e, check_lib, check_shapes, make_summary --smoke). **GPU request r5-ladder-002 committed and
+  pushed** (ref 28263eb3e, max_hours 2.9, cap $21.2). In the restart steps below read r5-ladder-002.
