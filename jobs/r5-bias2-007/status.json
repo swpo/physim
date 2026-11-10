@@ -43,11 +43,16 @@
       "at": "2026-11-10T02:05:51Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T02:11:22Z",
+      "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_a100_sxm4 available right now. Please try again later.); will retry",
+      "state": "queued"
     }
   ],
   "job_id": "r5-bias2-007",
   "max_estimate_usd": 3.68,
-  "message": "renting a pod",
+  "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_a100_sxm4 available right now. Please try again later.); will retry",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -91,13 +96,32 @@
     "planned_at": "2026-11-10T01:55:08Z",
     "window_hours": 1.85
   },
-  "pods": [],
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": null,
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-bias2-007-a1",
+      "note": "no pod with this name after the create",
+      "pod_id": null,
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": null,
+      "requested_at": "2026-11-10T02:05:52Z",
+      "spot": false,
+      "state": "create_failed",
+      "terminated_at": null
+    }
+  ],
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-10T01:54:48Z",
     "file": "jobs/r5-bias2-007/review.md",
     "sha256": "12e39ce7ba7886d0d7d55ed7a13c0833e591bfc605de6d93ce98a2e73eb68859",
     "summary": "Resubmission of 006 unchanged (same ref and env); its review applies: fine to run."
   },
-  "state": "provisioning",
-  "updated_at": "2026-11-10T02:05:51Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T02:11:22Z"
 }
