@@ -9,10 +9,40 @@
       "at": "2026-11-10T01:40:36Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T02:35:09Z",
+      "message": "accepted: H100_80GB via lambdalabs at $3.29/h, at most $10.36",
+      "state": "queued"
     }
   ],
   "job_id": "r5-slots-004",
-  "message": "reviewed; waiting for an offer of A100_80GB/H100_80GB/H200_141GB that fits the cap (listed now: none); the runner plans and starts it as soon as one fits",
+  "max_estimate_usd": 10.36,
+  "message": "accepted: H100_80GB via lambdalabs at $3.29/h, at most $10.36",
+  "plan": {
+    "max_estimate_usd": 10.36,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_h100_pcie",
+        "country": "US",
+        "data_center": "us-west-3",
+        "disk_gb": 1024,
+        "gpu_memory_gb": 80,
+        "gpu_type": "H100_80GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 1,
+        "rate_usd_hr": 3.29,
+        "security": "secure_cloud",
+        "socket": "PCIe",
+        "stock": "Available",
+        "vcpus": 26
+      }
+    ],
+    "planned_at": "2026-11-10T02:35:09Z",
+    "window_hours": 3.15
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T02:05:32Z",
@@ -20,6 +50,6 @@
     "sha256": "b6eb25065fbaec41a82876e1aa24222969bab6b8b808256d5749f3de096dfac6",
     "summary": "Fine to run: the 2^31 blocker is fixed (largest tensor 6.0e8, checked at compile level) and all pilot points are addressed. 1 minor: the last trained config loses its objective values. 6 info."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T02:33:03Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T02:35:09Z"
 }
