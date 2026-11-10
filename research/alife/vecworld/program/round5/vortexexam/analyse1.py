@@ -112,9 +112,20 @@ def law_block(tag):
         pred = A @ c
         r2 = 1 - ((b1 - pred) ** 2).sum() / max(((b1 - b1.mean()) ** 2).sum(), 1e-12)
         chi2 = float((((b1 - pred) / se) ** 2).sum())
+        # strict proportionality b1 = c eps (no intercept), and the same line fitted without eps = 0
+        c_prop = float((W * eps * b1).sum() / max((W * eps * eps).sum(), 1e-12))
+        chi2_prop = float((((b1 - c_prop * eps) / se) ** 2).sum())
+        pos = eps > 0
+        cp = np.linalg.solve((A[pos] * W[pos, None]).T @ A[pos], (A[pos] * W[pos, None]).T @ b1[pos]) if pos.sum() > 2 \
+            else np.array([np.nan, np.nan])
+        chi2_pos = float((((b1[pos] - A[pos] @ cp) / se[pos]) ** 2).sum()) if pos.sum() > 2 else None
         res["vars"][var] = {"per_eps": rows, "b1_line": {"c0": float(c[0]), "c1": float(c[1]), "r2": float(r2),
                                                            "chi2": chi2, "dof": int(nE - 2),
                                                            "c0_over_c1_times_0p2": float(c[0] / (c[1] * 0.2)) if c[1] else None},
+                            "b1_proportional": {"c": c_prop, "chi2": chi2_prop, "dof": int(nE - 1)},
+                            "b1_line_eps_positive": {"c0": float(cp[0]), "c1": float(cp[1]), "chi2": chi2_pos,
+                                                     "dof": int(pos.sum() - 2), "zero_crossing_eps": float(-cp[0] / cp[1])
+                                                     if np.isfinite(cp[1]) and cp[1] else None},
                             "b2_mean": float(np.mean([r["b2"] for r in rows])),
                             "b2_range": [float(min(r["b2"] for r in rows)), float(max(r["b2"] for r in rows))]}
     N = S[..., IX["N"]]

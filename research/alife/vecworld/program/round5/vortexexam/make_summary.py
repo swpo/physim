@@ -76,6 +76,8 @@ if A1:
                                  "b1_se": r([q["b1_se"] for q in v["per_eps"]], 4),
                                  "b2_per_eps": r([q["b2"] for q in v["per_eps"]], 4),
                                  "b1_line": r(v["b1_line"], 4),
+                                 "b1_proportional": r(v.get("b1_proportional"), 4),
+                                 "b1_line_eps_positive": r(v.get("b1_line_eps_positive"), 4),
                                  "share_of_change_variance_explained_by_law": r([q["explained_by_law"] for q in v["per_eps"]]),
                                  "by_binned_drift": r([q["explained_by_binned_drift"] for q in v["per_eps"]]),
                                  "shape_r2": r([q["shape_r2"] for q in v["per_eps"]]),
@@ -85,7 +87,8 @@ if A1:
                         "N_mean_by_eps": r(L["N_mean_ticks_100_on_by_eps"], 2)},
                        src + f" {tag} (job out {tag}.npz)",
                        "x(t+16) - x(t) = b1 x(1-x) + b2 (1-2x) + e per eps, pooled over members and ticks >= 64; "
-                       "b1_line: weighted straight line b1 = c0 + c1 eps over the eps values")
+                       "b1_line: weighted straight line b1 = c0 + c1 eps over the eps values; b1_proportional: b1 = c eps; "
+                       "b1_line_eps_positive: the line fitted without eps = 0 (chi2 against the member-bootstrap SEs)")
     if "scan" in A1:
         sc = A1["scan"]
         S["scan"] = V({"H": sc["H"], "J": sc["J"], "T": sc["T"], "anchors": sc.get("branch", {}).get("anchors_done"),
@@ -96,7 +99,8 @@ if A1:
                        "null_D_h_level1_raster": r(sc.get("branch", {}).get("null_D_h_level1_raster"), 4),
                        "viability": {k: [v["viable_members"], v["of"], r(v["N_mean"], 1), v["N_min"], v["N_max"]]
                                      for k, v in sc["viability"].items()}},
-                      src + " scan (job out scan_main.npz, scan_branch.npz)",
+                      f"results/analysis1.json scan (analyse1.py; scan files of {sc.get('scan_dir')}: scan_main.npz, "
+                      f"{sc.get('branch_file')})",
                       "headroom = theta-plug-in deficit / D_h of the null setting; L2 = mean over h 8, 16, 32 ticks of "
                       "level 2 (N, s_b); L1 = mean over h 1, 2, 4, 8 of the block raster of the vortex list; "
                       "viability entries: [viable members, of, mean N, min N, max N]")
@@ -127,22 +131,68 @@ if P:
                                 "prior sd per parameter, mean over truths; in90 = share of (truth, parameter) pairs inside "
                                 "the central 90% interval")
     names = sorted(P["oes"])
+    fams = ("net", "ridge", "law", "lin2")
     S["scores"] = V({"n_truths": P["n_truths"], "n_items": P["n_items_pooled"], "primary_cells": P["primary_cells"],
+                     "items_by_program_class": P.get("items_by_program_class"),
                      "L_pooled": r(P["L_pooled"], 4), "oes": r(P["oes"]), "oes_se_items": r(P["oes_se_items"]),
                      "oes_per_cell": {k: r(P["oes_per_cell"][k]) for k in names if k.split("|")[-1] in
-                                      ("P0", "C", "PM", "Cded", "K") or k in ("oracle",)},
+                                      ("P0", "C", "PM", "Cded", "K", "K0", "O_noinput") or k in ("oracle",)},
                      "cells": P["cells"]},
                     src2 + "prediction.json (L_pooled, oes, oes_se_items, oes_per_cell)",
-                    "L = mean fair energy score over items and the primary cells (level 2 = (N, s_b) jointly, scaled, at "
-                    "h = 8, 16, 32 ticks); OES = (L(K) - L) / (L(K) - L(O)), equal-weight mean over the primary cells")
-    S["acceptance"] = V(r(P["acceptance"]), src2 + "prediction.json acceptance",
-                        "sigma = (L(null) - L(C)) / (L(K) - L(C)), null = better of D@n and P0; rho = (L(P0) - L(S@n)) / "
-                        "(L(P0) - L(C)); one predictor family per row; intervals: 16-84% over truth resamples")
+                    "L = mean fair energy score (vw.scoring.energy_fair) over items and the primary cells (level 2 = (N, s_b) "
+                    "jointly, scaled, at h = 8, 16, 32 ticks); OES = (L(K) - L) / (L(K) - L(O)), equal-weight mean over the "
+                    "primary cells (vw.scoring.skill_report); K = the truth's other main runs at the same tick, K0 = design "
+                    "episodes at the same tick (prior climatology), O_noinput = replicates from the hidden state without "
+                    "the test program")
+    acc = P["acceptance"]
+
+    def short(a):
+        return None if a is None else {
+            "sigma": r(a["sigma"]), "sigma_se_worlds": r((a.get("sigma_worlds") or {}).get("se")),
+            "sigma_p05_p95_worlds": r([(a.get("sigma_worlds") or {}).get(q) for q in ("p05", "p95")]),
+            "null_is": a["null_is"], "rho": r(a.get("rho")), "rho_se_worlds": r((a.get("rho_worlds") or {}).get("se")),
+            "rho_p05_p95_worlds": r([(a.get("rho_worlds") or {}).get(q) for q in ("p05", "p95")]),
+            "pass_sigma": a["pass_sigma"], "pass_rho": a.get("pass_rho"), "n_worlds": a.get("n_worlds")}
+    S["acceptance"] = V({k: short(v) for k, v in acc.items()}, src2 + "prediction.json acceptance",
+                        "computed by round5/agentenv/evaluator/acceptance.py (shares): sigma = (L(null) - L(C)) / (L(K) - "
+                        "L(C)), null = the better of D@n and P0; rho = (L(P0) - L(S@n)) / (L(P0) - L(C)); one predictor "
+                        "family per row 'family@n'; '|S2' = posterior from level-2 histories only; '|ded' = dedicated "
+                        "models (C = Cded, S = Sded); SE and 5-95% range from the bootstrap clustered by truth; bars "
+                        "sigma >= 0.15 and rho <= 0.7")
+    S["acceptance_per_world"] = V({k: r(v.get("per_world")) for k, v in acc.items() if "|" not in k},
+                                  src2 + "prediction.json acceptance[*].per_world")
     S["gaps"] = V({k: r(v) for k, v in P["gaps_oes_item_bootstrap"].items()}, src2 + "prediction.json gaps_oes_item_bootstrap",
                   "OES gaps with a paired bootstrap over items (not clustered by truth)")
-    S["cchg"] = V(r(P["cchg"]), src2 + "prediction.json cchg",
-                  "share of the oracle-predictable change reached: (V_change - Ve) / (V_change - Vu) per horizon and "
-                  "coordinate (N, s_b); V_change = variance of y(a + h) - y(a) about its pooled mean, Vu = within-item "
-                  "replicate variance, Ve = mean squared error of the predictive mean")
+    cc = P["cchg"]
+    keep = [k for k in cc["reached"] if k in ("K", "K0", "anchor", "O_noinput") or k.split("|")[-1] in ("P0", "C", "PM", "Cded")
+            or k.endswith("@16") or k.endswith("@4")]
+    S["cchg"] = V({"hs_ticks": cc["hs"], "coords": cc["coords"],
+                   "pooled": {"oracle_predictable_share": r(cc["oracle_predictable_share"]), "V_change": r(cc["V_change"], 5),
+                              "Vu": r(cc["Vu"], 5), "reached": {k: r(cc["reached"][k]) for k in keep}},
+                   "within_truth": {"oracle_predictable_share": r(cc["within_truth"]["oracle_predictable_share"]),
+                                    "oracle_predictable_share_per_truth": r(cc["within_truth"]["oracle_predictable_share_per_truth"]),
+                                    "reached": {k: r(cc["within_truth"]["reached"][k]) for k in keep}}},
+                  src2 + "prediction.json cchg",
+                  "share of the oracle-predictable change reached, (V_change - Ve) / (V_change - Vu), per horizon (rows) "
+                  "and coordinate (N, s_b): V_change = variance of y(a + h) - y(a) about its mean, Vu = within-item "
+                  "replicate variance, Ve = mean squared error of the predictive mean (64 samples); 'pooled' over all "
+                  "items as in round 3 (track1/vortex128), 'within_truth' about each truth's own mean change, summed over truths")
+    if P.get("oes_by_program_class"):
+        bg = P["oes_by_program_class"]
+        cols = [k for k in ("K0", "O_noinput", "net|P0", "net|C", "net|Cded", "ridge|P0", "ridge|C", "law|C", "lin2|C") if k in P["oes"]]
+        S["by_program_class"] = V({g: {k: r(bg[g][k]) for k in cols} for g in bg}, src2 + "prediction.json oes_by_program_class",
+                                  "OES per program class of the test program (a none, b blind, c aimed, d regional); "
+                                  "1 - OES(O_noinput) = the share of the K-to-O skill that needs the test program")
+S["review_of_job1"] = V({
+    "1 GPU-backend check": "fixed: job2.py and job1.py --scan-only assert jax.default_backend() == 'gpu' unless --smoke",
+    "2 output size": "fixed: every file written atomically and under 20 MB (design summaries in parts, programs sparse, level-1 "
+                     "rasters of the scan scored on the pod); job 2 audits its total",
+    "3 turnover at chunk starts": "fixed: vxlib.summaries takes the previous list (job 2, scan rerun); job 1's arrays keep the "
+                                  "zeros and analyse1.py / select_prior.py drop those ticks from turnover statistics",
+    "4 bench memory": "relabelled process_peak_bytes_so_far in results/analysis1.json (bench.json of job 1 is unchanged)",
+    "5 stage sizers": "not changed in job 1 (finished); job 2 takes its sizes from presets against the measured rate and the "
+                      "scan rerun from job 2's measured rate",
+    "info: atomic npz": "fixed in job1.py and job2.py (temporary name, then os.replace)"},
+    "origin/gpu-jobs:jobs/r5-vortexexam-002/review.md and the coordinator's relay of it")
 json.dump(S, open(os.path.join(RES, "summary.json"), "w"), indent=1)
 print("wrote", os.path.join(RES, "summary.json"), "keys", list(S))

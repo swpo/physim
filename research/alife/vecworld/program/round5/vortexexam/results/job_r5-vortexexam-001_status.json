@@ -1,0 +1,24 @@
+{
+  "cap_usd": 5.6,
+  "cost": {
+    "billed_usd": 0.0,
+    "conservative_usd": 0.0
+  },
+  "history": [
+    {
+      "at": "2026-11-09T23:21:00Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-09T23:29:20Z",
+      "message": "cancelled before start",
+      "state": "cancelled"
+    }
+  ],
+  "job_id": "r5-vortexexam-001",
+  "message": "cancelled before start",
+  "pods": [],
+  "state": "cancelled",
+  "updated_at": "2026-11-09T23:29:20Z"
+}

@@ -1,0 +1,868 @@
+{
+ "study": "round 5, vortexexam (track 2): exam pilot on the fed-vortex world",
+ "date": "2026-11-09/10",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "gpu": {
+  "value": {
+   "r5-vortexexam-002": {
+    "state": "done",
+    "billed_usd": 2.2917,
+    "conservative_usd": 2.6008,
+    "pod_hours": null,
+    "gpu": [
+     "H200_141GB"
+    ],
+    "provider": [
+     "nebius"
+    ],
+    "rate_usd_hr": [
+     6.69
+    ],
+    "cap_usd": 5.7,
+    "pods": [
+     {
+      "created_at": "2026-11-09T23:44:35Z",
+      "ready_at": "2026-11-09T23:46:09Z",
+      "terminated_at": "2026-11-10T00:07:26Z",
+      "billed_usd": 2.2917,
+      "state": "terminated"
+     }
+    ]
+   },
+   "r5-vortexexam-003": null,
+   "r5-vortexexam-001": {
+    "state": "cancelled",
+    "billed_usd": 0.0
+   }
+  },
+  "source": "origin/gpu-jobs:jobs/<job>/status.json (copied to results/job1, results/job2)"
+ },
+ "platform_job1": {
+  "value": {
+   "backend": "gpu",
+   "devices": [
+    "cuda:0"
+   ],
+   "versions": {
+    "python": "3.12.16",
+    "jax": "0.12.0.1",
+    "numpy": "2.5.4"
+   },
+   "H_exam": 128,
+   "H_rule": "largest size with >= 100.0 member-ticks/s (444 at B=1024)",
+   "bmax": 1024,
+   "rate": 444.1469156114435,
+   "hours": 0.33404520478513505,
+   "failed": []
+  },
+  "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) info"
+ },
+ "throughput": {
+  "value": [
+   {
+    "H": 64,
+    "B": 256,
+    "track": true,
+    "member_ticks_per_s": 1387.8927,
+    "native_steps_per_s": 346973.1829,
+    "first_call_s": 6.041,
+    "tracker_update_s_per_member": 0.0,
+    "host_level12_s_per_member_tick": 0.0,
+    "K": 24,
+    "error": null,
+    "process_peak_bytes_so_far": 505121536
+   },
+   {
+    "H": 128,
+    "B": 256,
+    "track": true,
+    "member_ticks_per_s": 425.3342,
+    "native_steps_per_s": 106333.5597,
+    "first_call_s": 8.8252,
+    "tracker_update_s_per_member": 0.0,
+    "host_level12_s_per_member_tick": 0.0,
+    "K": 56,
+    "error": null,
+    "process_peak_bytes_so_far": 1499406848
+   },
+   {
+    "H": 96,
+    "B": 512,
+    "track": true,
+    "member_ticks_per_s": 598.8656,
+    "native_steps_per_s": 149716.408,
+    "first_call_s": 8.1226,
+    "tracker_update_s_per_member": 0.0,
+    "host_level12_s_per_member_tick": 0.0,
+    "K": 32,
+    "error": null,
+    "process_peak_bytes_so_far": 1697504512
+   },
+   {
+    "H": 64,
+    "B": 1024,
+    "track": true,
+    "member_ticks_per_s": 1551.3575,
+    "native_steps_per_s": 387839.3684,
+    "first_call_s": 7.5366,
+    "tracker_update_s_per_member": 0.0,
+    "host_level12_s_per_member_tick": 0.0,
+    "K": 24,
+    "error": null,
+    "process_peak_bytes_so_far": 1697504512
+   },
+   {
+    "H": 128,
+    "B": 64,
+    "track": true,
+    "member_ticks_per_s": 374.4329,
+    "native_steps_per_s": 93608.2309,
+    "first_call_s": 7.1373,
+    "tracker_update_s_per_member": 0.0,
+    "host_level12_s_per_member_tick": 0.0,
+    "K": 56,
+    "error": null,
+    "process_peak_bytes_so_far": 1697504512
+   },
+   {
+    "H": 128,
+    "B": 1024,
+    "track": true,
+    "member_ticks_per_s": 444.1469,
+    "native_steps_per_s": 111036.7289,
+    "first_call_s": 15.7488,
+    "tracker_update_s_per_member": 0.0,
+    "host_level12_s_per_member_tick": 0.0,
+    "K": 56,
+    "error": null,
+    "process_peak_bytes_so_far": 5974289152
+   },
+   {
+    "H": 64,
+    "B": 4096,
+    "track": true,
+    "member_ticks_per_s": 1576.5222,
+    "native_steps_per_s": 394130.5481,
+    "first_call_s": 14.1865,
+    "tracker_update_s_per_member": 0.0,
+    "host_level12_s_per_member_tick": 0.0,
+    "K": 24,
+    "error": null,
+    "process_peak_bytes_so_far": 6015072000
+   },
+   {
+    "H": 64,
+    "B": 4096,
+    "track": false,
+    "member_ticks_per_s": 1583.7915,
+    "native_steps_per_s": 395947.8687,
+    "first_call_s": 12.2679,
+    "tracker_update_s_per_member": null,
+    "host_level12_s_per_member_tick": null,
+    "K": 24,
+    "error": null,
+    "process_peak_bytes_so_far": 6015072000
+   },
+   {
+    "H": 96,
+    "B": 512,
+    "track": false,
+    "member_ticks_per_s": 600.8999,
+    "native_steps_per_s": 150224.9683,
+    "first_call_s": 5.7124,
+    "tracker_update_s_per_member": null,
+    "host_level12_s_per_member_tick": null,
+    "K": 32,
+    "error": null,
+    "process_peak_bytes_so_far": 6015072000
+   },
+   {
+    "H": 128,
+    "B": 1024,
+    "track": false,
+    "member_ticks_per_s": 448.4335,
+    "native_steps_per_s": 112108.3791,
+    "first_call_s": 12.8524,
+    "tracker_update_s_per_member": null,
+    "host_level12_s_per_member_tick": null,
+    "K": 56,
+    "error": null,
+    "process_peak_bytes_so_far": 6015072000
+   }
+  ],
+  "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) bench (job out bench.json)",
+  "note": "member-ticks per second, float64 world with the vortex tracker, jax.vmap batch B; one tick = 250 native steps = 5 time units"
+ },
+ "law": {
+  "value": {
+   "H": 128,
+   "J_per_eps": 64,
+   "T_ticks": 440,
+   "eps": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4
+   ],
+   "member_ticks_per_s": 415.3,
+   "s_b": {
+    "b1_per_eps": [
+     -0.0055,
+     0.0583,
+     0.2038,
+     0.3454,
+     0.4935
+    ],
+    "b1_se": [
+     0.0085,
+     0.007,
+     0.006,
+     0.0085,
+     0.012
+    ],
+    "b2_per_eps": [
+     0.0399,
+     0.0405,
+     0.0307,
+     0.0194,
+     0.0139
+    ],
+    "b1_line": {
+     "c0": -0.042,
+     "c1": 1.2707,
+     "r2": 0.9828,
+     "chi2": 40.4977,
+     "dof": 3,
+     "c0_over_c1_times_0p2": -0.1652
+    },
+    "b1_proportional": {
+     "c": 1.1046,
+     "chi2": 85.0278,
+     "dof": 4
+    },
+    "b1_line_eps_positive": {
+     "c0": -0.0859,
+     "c1": 1.4443,
+     "chi2": 0.0928,
+     "dof": 2,
+     "zero_crossing_eps": 0.0594
+    },
+    "share_of_change_variance_explained_by_law": [
+     0.059,
+     0.056,
+     0.122,
+     0.333,
+     0.494
+    ],
+    "by_binned_drift": [
+     0.061,
+     0.057,
+     0.125,
+     0.325,
+     0.481
+    ],
+    "shape_r2": [
+     0.95,
+     0.949,
+     0.963,
+     0.969,
+     0.976
+    ],
+    "mean_by_tick": [
+     {
+      "100": 0.091,
+      "150": 0.18,
+      "200": 0.252,
+      "250": 0.286,
+      "300": 0.342,
+      "350": 0.375,
+      "400": 0.414,
+      "440": 0.429
+     },
+     {
+      "100": 0.101,
+      "150": 0.201,
+      "200": 0.3,
+      "250": 0.396,
+      "300": 0.451,
+      "350": 0.513,
+      "400": 0.552,
+      "440": 0.576
+     },
+     {
+      "100": 0.112,
+      "150": 0.244,
+      "200": 0.401,
+      "250": 0.577,
+      "300": 0.708,
+      "350": 0.782,
+      "400": 0.827,
+      "440": 0.851
+     },
+     {
+      "100": 0.114,
+      "150": 0.291,
+      "200": 0.55,
+      "250": 0.78,
+      "300": 0.906,
+      "350": 0.938,
+      "400": 0.951,
+      "440": 0.948
+     },
+     {
+      "100": 0.115,
+      "150": 0.308,
+      "200": 0.71,
+      "250": 0.913,
+      "300": 0.954,
+      "350": 0.975,
+      "400": 0.978,
+      "440": 0.978
+     }
+    ],
+    "first_tick_mean_above_half": [
+     null,
+     335,
+     229,
+     191,
+     176
+    ]
+   },
+   "fb_mass": {
+    "b1_per_eps": [
+     0.0068,
+     0.0391,
+     0.1165,
+     0.2032,
+     0.2668
+    ],
+    "b1_se": [
+     0.0038,
+     0.0044,
+     0.0051,
+     0.0068,
+     0.0085
+    ],
+    "b2_per_eps": [
+     0.0374,
+     0.0487,
+     0.0628,
+     0.0699,
+     0.0773
+    ],
+    "b1_line": {
+     "c0": -0.0059,
+     "c1": 0.6497,
+     "r2": 0.9794,
+     "chi2": 40.7489,
+     "dof": 3,
+     "c0_over_c1_times_0p2": -0.0456
+    },
+    "b1_proportional": {
+     "c": 0.6259,
+     "chi2": 44.0527,
+     "dof": 4
+    },
+    "b1_line_eps_positive": {
+     "c0": -0.0384,
+     "c1": 0.78,
+     "chi2": 1.9433,
+     "dof": 2,
+     "zero_crossing_eps": 0.0492
+    },
+    "share_of_change_variance_explained_by_law": [
+     0.129,
+     0.235,
+     0.464,
+     0.636,
+     0.708
+    ],
+    "by_binned_drift": [
+     0.121,
+     0.229,
+     0.463,
+     0.641,
+     0.716
+    ],
+    "shape_r2": [
+     0.999,
+     0.991,
+     0.978,
+     0.976,
+     0.974
+    ],
+    "mean_by_tick": [
+     {
+      "100": 0.089,
+      "150": 0.178,
+      "200": 0.25,
+      "250": 0.307,
+      "300": 0.348,
+      "350": 0.39,
+      "400": 0.422,
+      "440": 0.438
+     },
+     {
+      "100": 0.117,
+      "150": 0.238,
+      "200": 0.337,
+      "250": 0.418,
+      "300": 0.467,
+      "350": 0.502,
+      "400": 0.523,
+      "440": 0.534
+     },
+     {
+      "100": 0.154,
+      "150": 0.331,
+      "200": 0.471,
+      "250": 0.57,
+      "300": 0.629,
+      "350": 0.655,
+      "400": 0.665,
+      "440": 0.662
+     },
+     {
+      "100": 0.181,
+      "150": 0.423,
+      "200": 0.602,
+      "250": 0.696,
+      "300": 0.734,
+      "350": 0.743,
+      "400": 0.745,
+      "440": 0.743
+     },
+     {
+      "100": 0.214,
+      "150": 0.493,
+      "200": 0.689,
+      "250": 0.756,
+      "300": 0.773,
+      "350": 0.775,
+      "400": 0.775,
+      "440": 0.775
+     }
+    ],
+    "first_tick_mean_above_half": [
+     null,
+     345,
+     212,
+     171,
+     152
+    ]
+   },
+   "N_mean_by_eps": [
+    28.81,
+    29.64,
+    31.5,
+    32.56,
+    32.34
+   ]
+  },
+  "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) law (job out law.npz)",
+  "note": "x(t+16) - x(t) = b1 x(1-x) + b2 (1-2x) + e per eps, pooled over members and ticks >= 64; b1_line: weighted straight line b1 = c0 + c1 eps over the eps values; b1_proportional: b1 = c eps; b1_line_eps_positive: the line fitted without eps = 0 (chi2 against the member-bootstrap SEs)"
+ },
+ "scan": {
+  "value": {
+   "H": 128,
+   "J": 12,
+   "T": 400,
+   "anchors": null,
+   "R": 4,
+   "Mc": 4,
+   "box": {
+    "eps": [
+     0.0,
+     0.4
+    ],
+    "kF": [
+     0.015,
+     0.025
+    ],
+    "e": [
+     7.0,
+     13.0
+    ],
+    "nu": [
+     0.07,
+     0.13
+    ],
+    "mut128": [
+     25.0,
+     100.0
+    ],
+    "k": [
+     0.45,
+     0.55
+    ],
+    "mu": [
+     0.09,
+     0.11
+    ],
+    "kl": [
+     1.0,
+     3.0
+    ],
+    "dl": [
+     0.03,
+     0.07
+    ],
+    "Dl": [
+     0.01,
+     0.04
+    ],
+    "adv": [
+     0.85,
+     1.15
+    ],
+    "kY": [
+     0.7,
+     1.3
+    ],
+    "wi": [
+     0.07,
+     0.13
+    ]
+   },
+   "null_floor": null,
+   "table": null,
+   "null_D_h_level2": null,
+   "null_D_h_level1_raster": null,
+   "viability": {
+    "null": [
+     12,
+     12,
+     30.9,
+     22.0,
+     46.0
+    ],
+    "eps@lo": [
+     12,
+     12,
+     28.1,
+     21.0,
+     46.0
+    ],
+    "eps@hi": [
+     12,
+     12,
+     32.4,
+     20.0,
+     52.0
+    ],
+    "kF@lo": [
+     12,
+     12,
+     23.8,
+     18.0,
+     46.0
+    ],
+    "kF@hi": [
+     12,
+     12,
+     32.3,
+     17.0,
+     46.0
+    ],
+    "e@lo": [
+     12,
+     12,
+     26.0,
+     13.0,
+     46.0
+    ],
+    "e@hi": [
+     12,
+     12,
+     24.5,
+     19.0,
+     46.0
+    ],
+    "nu@lo": [
+     12,
+     12,
+     40.2,
+     27.0,
+     55.0
+    ],
+    "nu@hi": [
+     12,
+     12,
+     24.6,
+     16.0,
+     46.0
+    ],
+    "mut128@lo": [
+     12,
+     12,
+     31.3,
+     18.0,
+     46.0
+    ],
+    "mut128@hi": [
+     12,
+     12,
+     29.6,
+     18.0,
+     46.0
+    ],
+    "k@lo": [
+     12,
+     12,
+     21.9,
+     16.0,
+     46.0
+    ],
+    "k@hi": [
+     12,
+     12,
+     34.3,
+     19.0,
+     49.0
+    ],
+    "mu@lo": [
+     12,
+     12,
+     29.9,
+     14.0,
+     46.0
+    ],
+    "mu@hi": [
+     12,
+     12,
+     24.9,
+     19.0,
+     46.0
+    ],
+    "kl@lo": [
+     12,
+     12,
+     29.9,
+     18.0,
+     46.0
+    ],
+    "kl@hi": [
+     12,
+     12,
+     31.5,
+     20.0,
+     46.0
+    ],
+    "dl@lo": [
+     12,
+     12,
+     31.3,
+     20.0,
+     46.0
+    ],
+    "dl@hi": [
+     12,
+     12,
+     30.8,
+     20.0,
+     46.0
+    ],
+    "Dl@lo": [
+     12,
+     12,
+     30.9,
+     20.0,
+     46.0
+    ],
+    "Dl@hi": [
+     12,
+     12,
+     30.5,
+     21.0,
+     46.0
+    ],
+    "adv@lo": [
+     12,
+     12,
+     33.5,
+     23.0,
+     49.0
+    ],
+    "adv@hi": [
+     12,
+     12,
+     29.2,
+     18.0,
+     46.0
+    ],
+    "kY@lo": [
+     12,
+     12,
+     29.5,
+     19.0,
+     47.0
+    ],
+    "kY@hi": [
+     12,
+     12,
+     30.2,
+     21.0,
+     46.0
+    ],
+    "wi@lo": [
+     11,
+     12,
+     13.4,
+     1.0,
+     52.0
+    ],
+    "wi@hi": [
+     12,
+     12,
+     12.1,
+     8.0,
+     43.0
+    ]
+   }
+  },
+  "source": "results/analysis1.json scan (analyse1.py; scan files of job1: scan_main.npz, None)",
+  "note": "headroom = theta-plug-in deficit / D_h of the null setting; L2 = mean over h 8, 16, 32 ticks of level 2 (N, s_b); L1 = mean over h 1, 2, 4, 8 of the block raster of the vortex list; viability entries: [viable members, of, mean N, min N, max N]"
+ },
+ "prior": {
+  "value": {
+   "H": 128,
+   "names": [
+    "eps",
+    "mut128",
+    "nu",
+    "e"
+   ],
+   "lo": [
+    0.0,
+    25.0,
+    0.07,
+    7.0
+   ],
+   "hi": [
+    0.4,
+    100.0,
+    0.13,
+    13.0
+   ],
+   "T_ep": 404,
+   "prog_ticks": [
+    130,
+    210,
+    290,
+    370
+   ],
+   "c_prog": 200.0,
+   "hs": [
+    8,
+    16,
+    32
+   ],
+   "viability": {
+    "n_min": 8.0,
+    "t_from": 20,
+    "rule": "fields finite, no tracker overflow, n_min <= N <= K - 1 at every state from t_from on"
+   },
+   "const": {
+    "centre": {
+     "N": 30.874,
+     "s_b": 0.509,
+     "fb_mass": 0.492,
+     "fb_mean": 0.425,
+     "fb_sd": 0.263,
+     "mixed": 0.525,
+     "log_mass_tot": 5.942,
+     "log_mass_mean": 2.519,
+     "speed_mean": 1.686,
+     "turnover": 1.15
+    },
+    "scale": {
+     "N": 3.865,
+     "s_b": 0.241,
+     "fb_mass": 0.164,
+     "fb_mean": 0.181,
+     "fb_sd": 0.07,
+     "mixed": 0.262,
+     "log_mass_tot": 0.127,
+     "log_mass_mean": 0.137,
+     "speed_mean": 0.497,
+     "turnover": 1.148
+    },
+    "sc_N": 4.038,
+    "sc_s": 0.25,
+    "N_ref": 31.5
+   },
+   "selection": {
+    "rule_choice_d3": [
+     "eps",
+     "nu",
+     "e"
+    ],
+    "ranked_other_families": [
+     "nu",
+     "e",
+     "k",
+     "mut128",
+     "kl"
+    ],
+    "basis": "proxy: max |paired z| of N, s_b early, s_b late over the main runs (no branches)",
+    "manual_override": true,
+    "why": "d = 4 because the measured throughput (444 member-ticks/s at 128^2) allows a 768-1024 point design; eps, nu and e are the rule's choice on the main-run proxy (selection, flow, fuel); mut128 is added instead of the next family by the proxy (growth: k) because it sets the mutation constant of the level-2 law, which is the study's question",
+    "family_best": {
+     "selection": "eps",
+     "fuel": "e",
+     "flow": "nu",
+     "mutation": "mut128",
+     "growth": "k",
+     "label": "kl"
+    },
+    "headroom": {
+     "eps": 7.091,
+     "kF": 3.207,
+     "e": 8.914,
+     "nu": 13.535,
+     "mut128": 4.521,
+     "k": 6.812,
+     "mu": 3.784,
+     "kl": 1.547,
+     "dl": 0.626,
+     "Dl": 1.484,
+     "adv": 3.719,
+     "kY": 2.337,
+     "wi": 23.881
+    },
+    "viable_both": {
+     "eps": true,
+     "kF": true,
+     "e": true,
+     "nu": true,
+     "mut128": true,
+     "k": true,
+     "mu": true,
+     "kl": true,
+     "dl": true,
+     "Dl": true,
+     "adv": true,
+     "kY": true,
+     "wi": false
+    },
+    "scan_H": 128,
+    "scan_J": 12,
+    "source": "results/analysis1.json scan (job r5-vortexexam-002, scan_main.npz)"
+   },
+   "mutation": "mut128 = time between mutation events per 128 x 128 px of box (declared per unit area); at 128 x 128 px the interval is mut128 x 1"
+  },
+  "source": "prior.json (select_prior.py)"
+ },
+ "review_of_job1": {
+  "value": {
+   "1 GPU-backend check": "fixed: job2.py and job1.py --scan-only assert jax.default_backend() == 'gpu' unless --smoke",
+   "2 output size": "fixed: every file written atomically and under 20 MB (design summaries in parts, programs sparse, level-1 rasters of the scan scored on the pod); job 2 audits its total",
+   "3 turnover at chunk starts": "fixed: vxlib.summaries takes the previous list (job 2, scan rerun); job 1's arrays keep the zeros and analyse1.py / select_prior.py drop those ticks from turnover statistics",
+   "4 bench memory": "relabelled process_peak_bytes_so_far in results/analysis1.json (bench.json of job 1 is unchanged)",
+   "5 stage sizers": "not changed in job 1 (finished); job 2 takes its sizes from presets against the measured rate and the scan rerun from job 2's measured rate",
+   "info: atomic npz": "fixed in job1.py and job2.py (temporary name, then os.replace)"
+  },
+  "source": "origin/gpu-jobs:jobs/r5-vortexexam-002/review.md and the coordinator's relay of it"
+ }
+}

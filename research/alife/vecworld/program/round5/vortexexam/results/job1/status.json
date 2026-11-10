@@ -1,0 +1,181 @@
+{
+  "billing_window_hours": 1.027,
+  "bundle": {
+    "bundle_sha256": "4ab6d600bd8cc626ba616ea7e6e4df96b13f1560f51a218aba01eaceb39a3ee5",
+    "files": {
+      "job.sh": "b4e75172274a958e2caaa0ecf674137feaf88976271028de91554994ef17e3c3",
+      "request.json": "c1be5ceb5079821f0a8c7a46ecaf1a51af00a86db61952dfaa7d12ae2103f935",
+      "run.sh": "494a47f8e306cf0786edf721fdae58f265f3f231b51efd9ef8fef77b6b30bf0d",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "fc724e5ce69c8c6440dababcdaad03a95a7600f3956825ed0ef0bf563c72c0f4"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1/vw",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/round5/vortexexam"
+    ],
+    "ref": "a38a266a6b00093aeade06f04098a41bf795a38e",
+    "src_bytes": 353663
+  },
+  "cap_usd": 5.7,
+  "collected": {
+    "error": null,
+    "files": 18,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 48871789,
+    "truncated": false
+  },
+  "cost": {
+    "billed_usd": 2.2917,
+    "conservative_usd": 2.6008
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-10T00:07:46Z",
+  "hard_deadline": "2026-11-10T00:35:13Z",
+  "hard_deadline_epoch": 1794270913.899969,
+  "history": [
+    {
+      "at": "2026-11-09T23:29:20Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-09T23:43:59Z",
+      "message": "accepted: H200_141GB via nebius at $5.55/h, at most $4.72",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-09T23:44:05Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-09T23:46:16Z",
+      "message": "job started on the pod",
+      "state": "running"
+    },
+    {
+      "at": "2026-11-10T00:06:36Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-10T00:07:47Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
+    }
+  ],
+  "job_id": "r5-vortexexam-002",
+  "max_estimate_usd": 4.72,
+  "message": "job finished (exit 0); pods terminated",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "US",
+      "data_center": "us-central1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 3,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    },
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "FI",
+      "data_center": "eu-north1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "nebius",
+      "rank": 3,
+      "rate_usd_hr": 5.55,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    }
+  ],
+  "plan": {
+    "max_estimate_usd": 4.72,
+    "offers": [
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "US",
+        "data_center": "us-central1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 5.55,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      },
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "FI",
+        "data_center": "eu-north1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 5.55,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-09T23:43:59Z",
+    "window_hours": 0.85
+  },
+  "pod": {
+    "gpu": "H200_141GB",
+    "name": "gpujob-r5-vortexexam-002-a1",
+    "provider": "nebius",
+    "rate_usd_hr": 6.69,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": 2.2917,
+      "created_at": "2026-11-09T23:44:35Z",
+      "data_center": "us-central1",
+      "gpu": "H200_141GB",
+      "name": "gpujob-r5-vortexexam-002-a1",
+      "note": null,
+      "pod_id": "d8a36a48c8814555a3370aea08e0b82f",
+      "provider": "nebius",
+      "provision_error": null,
+      "rate_usd_hr": 6.69,
+      "ready_at": "2026-11-09T23:46:09Z",
+      "requested_at": "2026-11-09T23:44:06Z",
+      "spot": false,
+      "state": "terminated",
+      "terminated_at": "2026-11-10T00:07:26Z"
+    }
+  ],
+  "pods_terminated": true,
+  "run_deadline": "2026-11-10T00:22:16Z",
+  "started_at": "2026-11-09T23:46:16Z",
+  "state": "done",
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n6.5 member-ticks/s (first call 14s, tracker 0.004 ms/member, host <host>/2 0.005 ms/member-tick, mem {'bytes_in_use': 806061568, 'peak_bytes_in_use': 6015072000, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 4294967296, 'pool_bytes': 8592031744, 'peak_pool_bytes': 8592031744})\n23:48:36 [   2.1 min]   bench H=64 B=4096 no tracker: 1583.8 member-ticks/s\n23:48:44 [   2.2 min]   bench H=96 B=512 no tracker: 600.9 member-ticks/s\nE1109 23:48:49.231716    2789 slow_operation_alarm.cc:74] Constant folding an instruction is taking > 4s:\n\n  %reduce.16 = (s32[1024,72]{1,0}, s64[1024,72]{1,0}) reduce(%broadcast_in_dim.105, %iota.61, %constant.628, %constant.629), dimensions={1}, to_apply=%region_32.96, metadata={op_name=\"jit(init)/vmap()/reduce\" stack_frame_id=509}\n\nThis isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.\n\nIf you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.\nE1109 23:48:50.349108    2664 slow_operation_alarm.cc:141] The operation took 5.117480718s\nConstant folding an instruction is taking > 4s:\n\n  %reduce.16 = (s32[1024,72]{1,0}, s64[1024,72]{1,0}) reduce(%broadcast_in_dim.105, %iota.61, %constant.628, %constant.629), dimensions={1}, to_apply=%region_32.96, metadata={op_name=\"jit(init)/vmap()/reduce\" stack_frame_id=509}\n\nThis isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.\n\nIf you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.\n23:49:02 [   2.5 min]   bench H=128 B=1024 no tracker: 448.4 member-ticks/s\n23:49:02 [   2.5 min] == H_exam = 128 (largest size with >= 100.0 member-ticks/s (444 at B=1024)); batch 1024, 444.1 member-ticks/s\n23:49:02 [   2.5 min]   law: H=128 J=64 x 5 eps x T=440 (budget 426s, est 329s)\n23:54:41 [   8.2 min]     law: members 0-320 of 320 at tick 440/440 (0.14 h)\n23:54:41 [   8.2 min]   law: 415.3 member-ticks/s; s_b(end) by eps [0.427, 0.572, 0.843, 0.943, 0.976] N(end) [27.9, 30.9, 35.2, 36.5, 35.2]\n23:54:41 [   8.2 min]   scan: 27 settings x J=12, T=400, anchors [200, 320], R=4, Mc=4, HB=32: 295488 member-ticks, est 676s of 780s\n23:57:23 [  10.9 min]     scan main: members 0-324 of 324 at tick 200/400 (0.18 h)\n23:58:54 [  12.4 min]     scan main: members 0-324 of 324 at tick 320/400 (0.21 h)\n23:59:55 [  13.4 min]     scan main: members 0-324 of 324 at tick 400/400 (0.22 h)\n23:59:56 [  13.4 min]   scan main done in 314s\n00:01:16 [  14.8 min]     scan branches anchor 200: 1024/2592 (0.25 h)\n== out/progress.txt\n(first call 8s, tracker 0.011 ms/member, host <host>/2 0.008 ms/member-tick, mem {'bytes_in_use': 222964480, 'peak_bytes_in_use': 1697504512, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 1073741824, 'pool_bytes': 2149580800, 'peak_pool_bytes': 2149580800})\n23:47:20 [   0.8 min]   bench H=64 B=1024: 1551.4 member-ticks/s (first call 8s, tracker 0.004 ms/member, host <host>/2 0.005 ms/member-tick, mem {'bytes_in_use': 201994752, 'peak_bytes_in_use': 1697504512, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 1073741824, 'pool_bytes': 2149580800, 'peak_pool_bytes': 2149580800})\n23:47:32 [   1.0 min]   bench H=128 B=64: 374.4 member-ticks/s (first call 7s, tracker 0.041 ms/member, host <host>/2 0.013 ms/member-tick, mem {'bytes_in_use': 59189760, 'peak_bytes_in_use': 1697504512, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 1073741824, 'pool_bytes': 2149580800, 'peak_pool_bytes': 2149580800})\n23:47:55 [   1.4 min]   bench H=128 B=1024: 444.1 member-ticks/s (first call 16s, tracker 0.024 ms/member, host <host>/2 0.014 ms/member-tick, mem {'bytes_in_use': 814187520, 'peak_bytes_in_use': 5974289152, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 4294967296, 'pool_bytes': 8592031744, 'peak_pool_bytes': 8592031744})\n23:48:18 [   1.8 min]   bench H=64 B=4096: 1576.5 member-ticks/s (first call 14s, tracker 0.004 ms/member, host <host>/2 0.005 ms/member-tick, mem {'bytes_in_use': 806061568, 'peak_bytes_in_use': 6015072000, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 4294967296, 'pool_bytes': 8592031744, 'peak_pool_bytes': 8592031744})\n23:48:36 [   2.1 min]   bench H=64 B=4096 no tracker: 1583.8 member-ticks/s\n23:48:44 [   2.2 min]   bench H=96 B=512 no tracker: 600.9 member-ticks/s\n23:49:02 [   2.5 min]   bench H=128 B=1024 no tracker: 448.4 member-ticks/s\n23:49:02 [   2.5 min] == H_exam = 128 (largest size with >= 100.0 member-ticks/s (444 at B=1024)); batch 1024, 444.1 member-ticks/s\n23:49:02 [   2.5 min]   law: H=128 J=64 x 5 eps x T=440 (budget 426s, est 329s)\n23:54:41 [   8.2 min]     law: members 0-320 of 320 at tick 440/440 (0.14 h)\n23:54:41 [   8.2 min]   law: 415.3 member-ticks/s; s_b(end) by eps [0.427, 0.572, 0.843, 0.943, 0.976] N(end) [27.9, 30.9, 35.2, 36.5, 35.2]\n23:54:41 [   8.2 min]   scan: 27 settings x J=12, T=400, anchors [200, 320], R=4, Mc=4, HB=32: 295488 member-ticks, est 676s of 780s\n23:57:23 [  10.9 min]     scan main: members 0-324 of 324 at tick 200/400 (0.18 h)\n23:58:54 [  12.4 min]     scan main: members 0-324 of 324 at tick 320/400 (0.21 h)\n23:59:55 [  13.4 min]     scan main: members 0-324 of 324 at tick 400/400 (0.22 h)\n23:59:56 [  13.4 min]   scan main done in 314s\n00:01:16 [  14.8 min]     scan branches anchor 200: 1024/2592 (0.25 h)\n",
+  "updated_at": "2026-11-10T00:07:47Z"
+}
