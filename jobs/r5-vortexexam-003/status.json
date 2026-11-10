@@ -14,6 +14,12 @@
   "job_id": "r5-vortexexam-003",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T01:11:55Z",
+    "file": "jobs/r5-vortexexam-003/review.md",
+    "sha256": "f89b26c6bcaaf1d57a6f9c7b0e5bac0ad575a38ba90b2a877084d0d16039443a",
+    "summary": "Gate met; exam secrecy clean; fine to run. 1 major: the scan-only run always shrinks to J=3 and one anchor (job1.py:399 rate model). 5 info."
+  },
   "state": "received",
   "updated_at": "2026-11-10T00:53:00Z"
 }
