@@ -1,24 +1,27 @@
 # PROGRESS (study slots, round 5) -- kept for restarts
 
-Updated 01:33 UTC 10 Nov (instance 4, after the third container restart).
+Updated 01:42 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
 
 ## Done
 - r5-slots-001 cancelled, r5-slots-002 infra_error ($0), r5-slots-003 pilot done ($3.13, H200, ref e5d146ef3; outputs in results/r5-slots-003/).
 - Review fixes on origin as e139c34f3 (results/review.json).
 - Changes after the pilot (S5_FIXED, S5_CERT_O=refs, S5_CFG_MIN_S / S5_CFG_MAX_S, tracker recall/purity diagnostic at
   validation, ssummary/scombine for agreement-only Phis) and the pilot's outputs: pushed as 7099a0ded.
-  Checked before the commit: syntax of every module, ssummary.py on the pilot's outputs (22 Phis, 2 configs).
+- Tiny end-to-end run of job.sh on CPU from a git archive of 7099a0ded (six request paths, the request's env with
+  S5_SIZE=tiny S5_ALLOW_CPU=1 S5_WORKERS=2), 01:17-01:39 UTC: EXIT 0, FAIL=0, 14 configs trained, 124 halves
+  certified, 0 unclaimed, no errors; ssummary.py and sfigs.py run on its outputs.
+- Request gpu/requests/r5-slots-004.json (the full job, ref 7099a0ded, cap $21.80, max 2.9 h) committed with this file.
 
 ## Running
-- 01:31 UTC: tiny end-to-end run of job.sh on CPU from a git archive of 7099a0ded (six request paths), env of the
-  draft request with S5_SIZE=tiny S5_ALLOW_CPU=1 S5_WORKERS=2; script scratchpad/slots/run_tiny.sh, output
-  scratchpad/slots/t3/ (job.stdout ends with "EXIT <code>"). About 16 minutes. If the container restarts: rerun it.
-- nothing on the GPU. No request for the full job is on the branch yet (requests on the branch: 001-003).
+- GPU job r5-slots-004 (requested about 01:43 UTC). Status: git fetch origin gpu-jobs; git show
+  origin/gpu-jobs:jobs/r5-slots-004/status.json. Read jobs/r5-slots-004/review.md when it appears.
+  Watcher (cheap to restart): scratchpad/slots/watch.sh r5-slots-004 (in /tmp/claude-0/-home-user/<session>/scratchpad).
+  NEVER resubmit while it is queued or running. Budget left after it: about $0 (cap $25, $3.13 + up to $21.07).
 
 ## Next step (exact)
-1. tiny run passes (EXIT 0, FAIL=0, 14 configs trained, table.txt written): set "ref" in the untracked draft
-   gpu/requests/r5-slots-004.json to the tested commit (the code must not change between test and request),
-   commit + push the request only, start the watcher (scratchpad/slots/watch.sh r5-slots-004).
-2. when the job ends: sfetch.sh r5-slots-004 <scratch>, write results/interpretation.json, run
-   ssummary.py results r5-slots-004 r5-slots-003, sfigs.py, README.md, report.
-Budget: $25 cap, $3.13 spent; r5-slots-004 cap $21.80 (H200 bills $6.69/h; 2.9 h + 0.25 h = $21.07).
+1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-004 <scratch dir>; look at progress.txt,
+   table.txt, train_done.json (skipped configs), train/*.json (checkpoints, cut_by_deadline).
+2. write results/interpretation.json (claims with key paths into combined.json), run
+   python -B ssummary.py results r5-slots-004 r5-slots-003; python -B sfigs.py <scratch>/r5-slots-004/out results/figs
+3. README.md (short), report; commit + push own paths; remove the worktree and the scratch.
+If the job fails early at $ small cost: read logs, fix, test on CPU, resubmit as r5-slots-005 only within the $25 cap.
