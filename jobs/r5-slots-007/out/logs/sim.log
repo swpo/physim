@@ -1,0 +1,14 @@
+05:29:54 [ssim     0.4s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} size pilot
+05:30:11 [ssim    17.8s] A init + burn-in 48 members 16.4 s
+05:30:30 [ssim    37.1s] A branches at tick 40 {'init_burn': 16.4, 'base': 10.2, 'branch': 9.0, 'tracker': 5.6}
+05:30:37 [ssim    43.3s] A branches at tick 100 {'init_burn': 16.4, 'base': 14.5, 'branch': 10.9, 'tracker': 6.0}
+05:30:43 [ssim    49.6s] A branches at tick 160 {'init_burn': 16.4, 'base': 18.8, 'branch': 12.8, 'tracker': 6.3}
+05:30:50 [ssim    56.7s] A branches at tick 220 {'init_burn': 16.4, 'base': 24.1, 'branch': 14.7, 'tracker': 6.8}
+05:30:57 [ssim    63.2s] A saved {'init_burn': 16.4, 'base': 30.0, 'branch': 14.7, 'tracker': 7.2} member-ticks/s {'base': 480.7, 'branch': 347.4} tracker check {'mem_maxabs_vs_world': 2.9558577807620168e-12, 'readout_maxabs_vs_L1': 0.0} objects {'count_mean': 7.544296788482835, 'count_min': 2, 'count_max': 12, 'mass_in_objects_mean': 1438.51220703125, 'events_per_traj': {'birth': 0.0, 'fission': 133.25, 'fusion': 67.27083333333333, 'fused': 68.72916666666667, 'death': 0.0}}
+05:31:12 [ssim    78.8s] B init + burn-in 48 members 15.4 s
+05:31:30 [ssim    96.2s] B branches at tick 40 {'init_burn': 15.4, 'base': 9.6, 'branch': 7.8, 'tracker': 5.7}
+05:31:36 [ssim   102.5s] B branches at tick 100 {'init_burn': 15.4, 'base': 13.9, 'branch': 9.7, 'tracker': 6.0}
+05:31:42 [ssim   108.7s] B branches at tick 160 {'init_burn': 15.4, 'base': 18.3, 'branch': 11.6, 'tracker': 6.4}
+05:31:49 [ssim   115.7s] B branches at tick 220 {'init_burn': 15.4, 'base': 23.2, 'branch': 13.6, 'tracker': 6.8}
+05:31:55 [ssim   122.0s] B saved {'init_burn': 15.4, 'base': 29.0, 'branch': 13.6, 'tracker': 7.2} member-ticks/s {'base': 495.8, 'branch': 376.3} tracker check {'mem_maxabs_vs_world': 1.8189894035458565e-12, 'readout_maxabs_vs_L1': 1.4901161193847656e-08} objects {'count_mean': 7.657945736434108, 'count_min': 3, 'count_max': 12, 'mass_in_objects_mean': 1441.4781494140625, 'events_per_traj': {'birth': 0.0, 'fission': 140.58333333333334, 'fusion': 70.04166666666667, 'fused': 71.875, 'death': 0.0}}
+05:31:55 [ssim   122.1s] done

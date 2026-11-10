@@ -1,0 +1,184 @@
+05:29:43 [job] nproc 30, cert workers 27, train deadline +10400s, cert deadline +11200s, workers killed at +11900s, size pilot
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)] backend gpu
+name, memory.total [MiB], driver_version
+NVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08
+               total        used        free      shared  buff/cache   available
+Mem:             216           1         207           0           7         212
+/dev/vda1       497G   31G  466G   7% /
+05:29:54 [ssim     0.4s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} size pilot
+05:30:11 [ssim    17.8s] A init + burn-in 48 members 16.4 s
+05:30:30 [ssim    37.1s] A branches at tick 40 {'init_burn': 16.4, 'base': 10.2, 'branch': 9.0, 'tracker': 5.6}
+05:30:37 [ssim    43.3s] A branches at tick 100 {'init_burn': 16.4, 'base': 14.5, 'branch': 10.9, 'tracker': 6.0}
+05:30:43 [ssim    49.6s] A branches at tick 160 {'init_burn': 16.4, 'base': 18.8, 'branch': 12.8, 'tracker': 6.3}
+05:30:50 [ssim    56.7s] A branches at tick 220 {'init_burn': 16.4, 'base': 24.1, 'branch': 14.7, 'tracker': 6.8}
+05:30:57 [ssim    63.2s] A saved {'init_burn': 16.4, 'base': 30.0, 'branch': 14.7, 'tracker': 7.2} member-ticks/s {'base': 480.7, 'branch': 347.4} tracker check {'mem_maxabs_vs_world': 2.9558577807620168e-12, 'readout_maxabs_vs_L1': 0.0} objects {'count_mean': 7.544296788482835, 'count_min': 2, 'count_max': 12, 'mass_in_objects_mean': 1438.51220703125, 'events_per_traj': {'birth': 0.0, 'fission': 133.25, 'fusion': 67.27083333333333, 'fused': 68.72916666666667, 'death': 0.0}}
+05:31:12 [ssim    78.8s] B init + burn-in 48 members 15.4 s
+05:31:30 [ssim    96.2s] B branches at tick 40 {'init_burn': 15.4, 'base': 9.6, 'branch': 7.8, 'tracker': 5.7}
+05:31:36 [ssim   102.5s] B branches at tick 100 {'init_burn': 15.4, 'base': 13.9, 'branch': 9.7, 'tracker': 6.0}
+05:31:42 [ssim   108.7s] B branches at tick 160 {'init_burn': 15.4, 'base': 18.3, 'branch': 11.6, 'tracker': 6.4}
+05:31:49 [ssim   115.7s] B branches at tick 220 {'init_burn': 15.4, 'base': 23.2, 'branch': 13.6, 'tracker': 6.8}
+05:31:55 [ssim   122.0s] B saved {'init_burn': 15.4, 'base': 29.0, 'branch': 13.6, 'tracker': 7.2} member-ticks/s {'base': 495.8, 'branch': 376.3} tracker check {'mem_maxabs_vs_world': 1.8189894035458565e-12, 'readout_maxabs_vs_L1': 1.4901161193847656e-08} objects {'count_mean': 7.657945736434108, 'count_min': 3, 'count_max': 12, 'mass_in_objects_mean': 1441.4781494140625, 'events_per_traj': {'birth': 0.0, 'fission': 140.58333333333334, 'fusion': 70.04166666666667, 'fused': 71.875, 'death': 0.0}}
+05:31:55 [ssim   122.1s] done
+05:32:01 [strain     2.8s] data on device (48, 301, 2, 128, 128) (320, 16, 2, 128, 128) (48, 301, 128, 128) per half; train trajectories per half 44 5.2 GB peak, 5.2 GB in use
+05:32:02 [strain     2.9s] references queued: trk, trk@mp6, hand_mass, hand_chan
+05:32:09 [scert 10     9.5s] hand_mass__certA q=64 certified in 6.5s
+05:32:09 [scert 15     9.6s] hand_mass__certB q=64 certified in 6.6s
+05:32:26 [scert 7    26.4s] hand_chan__certA q=128 certified in 23.4s
+05:32:27 [scert 5    26.8s] hand_chan__certB q=128 certified in 23.8s
+05:32:51 [strain    52.6s] km_s6: encoded both halves in 49.7s, 5.7 GB peak, 5.2 GB in use
+05:33:13 [scert 19    73.7s] trk@mp6__certA q=72 certified in 70.7s
+05:33:19 [scert 26    79.3s] trk@mp6__certB q=72 certified in 76.3s
+05:33:51 [strain   112.1s] km_s3: encoded both halves in 59.5s, 5.7 GB peak, 5.2 GB in use
+05:34:37 [scert 11   156.8s] km_s6@mp6__certB q=72 certified in 129.8s
+05:34:50 [scert 22   170.6s] km_s6@mp6__certA q=72 certified in 143.6s
+05:35:24 [strain   205.0s] km_s6w: encoded both halves in 92.9s, 5.7 GB peak, 5.2 GB in use
+05:35:34 [strain   215.2s] grid: encoded both halves in 10.2s, 5.7 GB peak, 5.2 GB in use
+05:35:57 [scert 21   237.3s] km_s3@mp6__certA q=72 certified in 153.3s
+05:35:57 [scert 14   237.4s] trk__certA q=144 certified in 234.4s
+05:36:03 [scert 20   243.6s] trk__certB q=144 certified in 240.6s
+05:36:06 [scert 25   246.3s] km_s3@mp6__certB q=72 certified in 162.3s
+05:37:14 [strain   315.1s] objective values trk: set [0.576, 0.561, 0.4176, 0.4168], self [0.5773, 0.5727, 0.4276, 0.4216], rec [0.512, 0.5199, 0.5584, 0.5926] (99.9s)
+05:37:38 [scert 24   338.7s] km_s6w@mp6__certA q=72 certified in 176.7s
+05:37:51 [scert 9   351.4s] km_s6w@mp6__certB q=72 certified in 189.3s
+05:37:58 [strain   359.3s] objective values km_s6: set [0.3831, 0.3855, 0.2519, 0.2459], self [0.3994, 0.3946, 0.2566, 0.2563], rec [0.5319, 0.5456, 0.5076, 0.5244] (44.1s)
+05:38:12 [scert 7   372.5s] km_s3__certA q=144 certified in 289.0s
+05:38:27 [scert 18   387.3s] km_s3__certB q=144 certified in 303.3s
+05:38:42 [strain   403.4s] objective values km_s3: set [0.3641, 0.3618, 0.311, 0.3095], self [0.3847, 0.3838, 0.3148, 0.3018], rec [0.4721, 0.471, 0.4685, 0.4863] (44.1s)
+05:38:56 [scert 5   415.9s] km_s6__certA q=144 certified in 389.1s
+05:39:26 [strain   447.5s] objective values km_s6w: set [0.3173, 0.3289, 0.3065, 0.3009], self [0.3328, 0.3331, 0.3098, 0.311], rec [0.5086, 0.5088, 0.4927, 0.5105] (44.0s)
+05:39:45 [scert 19   465.3s] km_s6w__certA q=144 certified in 304.5s
+05:40:10 [strain   491.5s] objective values grid: set [0.6832, 0.6754, 0.6847, 0.6732], self [0.6909, 0.6903, 0.6841, 0.6868], rec [0.6467, 0.6541, 0.6596, 0.6582] (44.0s)
+05:40:33 [scert 17   513.2s] km_s6__certB q=144 certified in 486.2s
+05:40:35 [scert 22   515.3s] grid__certB q=144 certified in 302.6s
+05:40:37 [scert 12   517.3s] km_s6w__certB q=144 certified in 355.2s
+05:40:39 [scert 11   519.6s] grid__certA q=144 certified in 308.7s
+05:41:35 [strain   576.8s] sam_sup: step 100, chunk 68.6s, train [0.3283, 0.2947, 0.2786, 0.2615], val [0.2282000035047531, 0.24009999632835388, 0.1453000009059906, 0.17389999330043793], tracker recall+purity [1.7719999551773071, 1.7599999904632568, 1.8550000190734863, 1.8259999752044678], skipped 2
+05:41:45 [strain   586.8s] sam_sup: step 200, chunk 9.4s, train [0.1664, 0.174, 0.1458, 0.1543], val [0.12710000574588776, 0.11699999868869781, 0.131400004029274, 0.13120000064373016], tracker recall+purity [1.8730000257492065, 1.8830000162124634, 1.86899995803833, 1.86899995803833], skipped 0
+05:41:49 [scert 26   589.0s] grid@mp6__certA q=72 certified in 377.7s
+05:41:56 [scert 16   596.5s] grid@mp6__certB q=72 certified in 383.4s
+05:43:01 [strain   662.0s] sam_sup: step 1000, chunk 9.4s, train [0.1057, 0.4575, 0.21, 0.1862], val [0.09749999642372131, 0.5285999774932861, 0.19509999454021454, 0.19030000269412994], tracker recall+purity [1.9019999504089355, 1.4709999561309814, 1.8049999475479126, 1.809999942779541], skipped 0
+05:44:35 [strain   755.9s] sam_sup: step 2000, chunk 9.4s, train [0.1005, 0.3915, 0.1767, 0.1317], val [0.08980000019073486, 0.37369999289512634, 0.18080000579357147, 0.12330000102519989], tracker recall+purity [1.909999966621399, 1.6260000467300415, 1.819000005722046, 1.8769999742507935], skipped 0
+05:44:55 [scert 22   775.0s] sam_sup_s0__certB q=144 agreement only in 1.7s
+05:44:56 [scert 15   776.6s] sam_sup_s1__certB q=144 agreement only in 1.8s
+05:44:58 [scert 15   778.4s] sam_sup_s0__certA q=144 agreement only in 1.8s
+05:45:00 [scert 26   779.9s] sam_sup_s1__certA q=144 agreement only in 1.9s
+05:45:00 [strain   781.0s] sam_sup: steps 2000, val [0.3522000014781952, 0.3522000014781952, 0.36800000071525574, 0.36800000071525574] -> [0.0898, 0.1573, 0.1777, 0.1233] (best at [2000, 1300, 1900, 2000]), skipped 2, train 264.2s (chunk 9.4s), total 289.2s, 16.4 GB peak, 5.3 GB in use
+05:46:01 [strain   842.2s] objective values sam_sup: set [0.4877, 0.4558, 0.3797, 0.4502], self [0.4907, 0.4569, 0.3786, 0.4491], rec [0.557, 0.5554, 0.5782, 0.597] (60.6s)
+05:46:11 [scert 16   851.4s] sam_sup_s0@mp6__certB q=72 certified in 77.9s
+05:46:14 [scert 12   854.5s] sam_sup_s1@mp6__certA q=72 certified in 76.1s
+05:46:24 [scert 24   864.0s] sam_sup_s0@mp6__certA q=72 certified in 87.3s
+05:47:19 [strain   920.5s] sam_set FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.85GiB with allocator GPU_0_bfc on device 0. [tf-allocator-allocation-error=''] [executable_name='jit_val']")
+05:47:59 [scert 22   959.6s] sam_sup_s1@mp6__certB q=72 certified in 184.6s
+05:48:28 [strain   989.4s] sam_set_ws FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.85GiB with allocator GPU_0_bfc on device 0. [executable_name='jit_val'] [tf-allocator-allocation-error='']")
+05:49:35 [strain  1056.5s] sam_rec FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 19.07GiB with allocator GPU_0_bfc on device 0. [tf-allocator-allocation-error=''] [executable_name='jit_val']")
+05:50:40 [strain  1121.1s] sam_self FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.49GiB with allocator GPU_0_bfc on device 0. [executable_name='jit_val'] [tf-allocator-allocation-error='']")
+05:51:24 [strain  1165.5s] sgm_set FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 16.11GiB with allocator GPU_0_bfc on device 0. [tf-allocator-allocation-error=''] [executable_name='jit_val']")
+05:52:10 [strain  1211.8s] sgc_rec FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.76GiB with allocator GPU_0_bfc on device 0. [executable_name='jit_val'] [tf-allocator-allocation-error='']")
+05:53:12 [strain  1273.4s] sac_set FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 16.61GiB with allocator GPU_0_bfc on device 0. [executable_name='jit_val'] [tf-allocator-allocation-error='']")
+05:54:22 [strain  1343.5s] sam_set_dg FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.85GiB with allocator GPU_0_bfc on device 0. [executable_name='jit_val'] [tf-allocator-allocation-error='']")
+05:55:29 [strain  1410.1s] sam_rec_ws FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 19.07GiB with allocator GPU_0_bfc on device 0. [executable_name='jit_val'] [tf-allocator-allocation-error='']")
+05:56:33 [strain  1474.5s] sam_self_ws FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.49GiB with allocator GPU_0_bfc on device 0. [tf-allocator-allocation-error=''] [executable_name='jit_val']")
+05:57:36 [strain  1537.5s] sac_rec FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 18.54GiB with allocator GPU_0_bfc on device 0. [tf-allocator-allocation-error=''] [executable_name='jit_val']")
+05:58:41 [strain  1602.7s] sam_set_ws_dg FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.85GiB with allocator GPU_0_bfc on device 0. [tf-allocator-allocation-error=''] [executable_name='jit_val']")
+05:59:46 [strain  1667.6s] sam_set_sg FAILED: JaxRuntimeError("RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.23GiB with allocator GPU_0_bfc on device 0. [tf-allocator-allocation-error=''] [executable_name='jit_val']")
+05:59:46 [strain  1667.9s] done; skipped []
+05:59:47 [scert 5  1667.1s] worker exits after 2 items
+05:59:47 [scert 16  1667.5s] worker exits after 2 items
+05:59:47 [scert 12  1667.6s] worker exits after 2 items
+05:59:47 [scert 22  1667.7s] worker exits after 4 items
+05:59:48 [scert 26  1668.0s] worker exits after 3 items
+05:59:48 [scert 24  1668.2s] worker exits after 2 items
+05:59:48 [scert 1  1668.3s] worker exits after 0 items
+05:59:48 [scert 23  1668.3s] worker exits after 0 items
+05:59:48 [scert 4  1668.3s] worker exits after 0 items
+05:59:48 [scert 6  1668.3s] worker exits after 0 items
+05:59:48 [scert 13  1668.3s] worker exits after 0 items
+05:59:48 [scert 2  1668.3s] worker exits after 0 items
+05:59:48 [scert 27  1668.3s] worker exits after 0 items
+05:59:48 [scert 17  1668.4s] worker exits after 1 items
+05:59:48 [scert 3  1668.3s] worker exits after 0 items
+05:59:48 [scert 8  1668.3s] worker exits after 0 items
+05:59:48 [scert 19  1668.5s] worker exits after 2 items
+05:59:48 [scert 18  1668.5s] worker exits after 1 items
+05:59:48 [scert 25  1668.5s] worker exits after 1 items
+05:59:48 [scert 21  1668.6s] worker exits after 1 items
+05:59:48 [scert 9  1668.6s] worker exits after 1 items
+05:59:48 [scert 14  1668.7s] worker exits after 1 items
+05:59:48 [scert 7  1668.7s] worker exits after 2 items
+05:59:48 [scert 11  1668.8s] worker exits after 2 items
+05:59:49 [scert 20  1668.8s] worker exits after 1 items
+05:59:49 [scert 10  1668.8s] worker exits after 1 items
+05:59:49 [scert 15  1669.6s] worker exits after 3 items
+05:59:49 [job] certification finished; 32 halves certified, 0 left unclaimed, 0 workers killed at the hard limit (their items are not certified)
+05:59:49 [job] train errors:
+sam_set
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r5-slots-007/src/research/alife/vecworld/program/round5/slots/strain.py", line 698, in main
+    train_config(cid, c)
+  File "/home/ubuntu/gpujob/r5-slots-007/src/research/alife/vecworld/program/round5/slots/strain.py", line 599, in train_config
+    v = np.asarray(v)
+        ^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-007/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-007/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-007/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.85GiB with allocator GPU_0_bfc on device 0. [tf-allocator-allocation-error=''] [executable_name='jit_val']
+
+sam_set_ws
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r5-slots-007/src/research/alife/vecworld/program/round5/slots/strain.py", line 698, in main
+    train_config(cid, c)
+  File "/home/ubuntu/gpujob/r5-slots-007/src/research/alife/vecworld/program/round5/slots/strain.py", line 599, in train_config
+    v = np.asarray(v)
+        ^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-007/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 448, in __array__
+    return np.asarray(self._value, dtype=dtype, **kwds)  # pyrefly: ignore[no-matching-overload]
+                      ^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-007/.venv/lib/python3.12/site-packages/jax/_src/profiler.py", line 588, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-007/.venv/lib/python3.12/site-packages/jax/_src/array.py", line 696, in _value
+    npy_value, did_copy = self._to_np_array_did_copy()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jax.errors.JaxRuntimeError: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 17.85GiB with allocator GPU_0_bfc on device 0. [executable_name='jit_val'] [tf-allocator-allocation-error='']
+
+sam_rec
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r5-slots-007/src/research/alife/vecworld/program/round5/slots/strain.py", line 698, in main
+    train_config(cid, c)
+05:59:55 [scombine     2.9s] pooled 16 phis; problems []
+05:59:56 [scombine     3.1s] written combined.json and table.txt; 16 phis, 1 learned configs
+phi                     q  fam  ceiling h=1,2,4,8,16             | ARI   rec   prec  spo  massR2 posR2 velR2 | probe(rff) mass pos vel | territ
+grid                   144   O  0.888  0.744  0.530  0.258  0.053 | 0.638 0.741 0.821 1.676 0.390 0.948-1.119 | 0.588 0.871 0.491 | 0.901
+grid@mp6                72   S  0.950  0.864  0.661  0.339  0.076 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+hand_chan              128  GL  0.988  0.953  0.817  0.477  0.216 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+hand_mass               64  GL  0.991  0.952  0.779  0.431  0.197 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+km_s3                  144   O  0.885  0.813  0.671  0.571  0.385 | 0.638 0.787 0.989 2.096-0.161 0.984 0.461 | 0.548 0.957 0.774 | 0.089
+km_s3@mp6               72   S  0.972  0.927  0.864  0.784  0.570 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+km_s6                  144   O  0.913  0.830  0.638  0.505  0.337 | 0.723 0.729 0.938 2.064-0.072 0.972-0.401 | 0.467 0.930 0.686 | 0.091
+km_s6@mp6               72   S  0.972  0.929  0.822  0.681  0.487 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+km_s6w                 144   O  0.863  0.761  0.649  0.551  0.368 | 0.725 0.784 0.962 1.958 0.082 0.978 0.071 | 0.611 0.944 0.740 | 0.083
+km_s6w@mp6              72   S  0.965  0.915  0.836  0.729  0.524 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+sam_sup_s0             144   -    nan    nan    nan    nan    nan | 0.846 0.893 0.926 1.250 0.637 0.970-2.114 | 0.772 0.938 0.694 | 0.091
+sam_sup_s0@mp6          72   S  0.945  0.879  0.779  0.611  0.381 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+sam_sup_s1             144   -    nan    nan    nan    nan    nan | 0.850 0.899 0.946 1.263 0.689 0.983-4.328 | 0.791 0.964 0.670 | 0.081
+sam_sup_s1@mp6          72   S  0.920  0.900  0.792  0.617  0.375 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+trk                    144   O  0.822  0.726  0.577  0.393  0.168 |   -     -     -     -     -     -     -   |   -     -     -   | 0.157
+trk@mp6                 72   S  0.914  0.847  0.689  0.465  0.196 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+
+objective values (frozen readout, heads trained from scratch; mean over replicas): set, self, rec
+grid                   set  0.6791 self  0.6880 rec  0.6547
+km_s3                  set  0.3366 self  0.3463 rec  0.4745
+km_s6                  set  0.3166 self  0.3267 rec  0.5274
+km_s6w                 set  0.3134 self  0.3217 rec  0.5052
+sam_sup                set  0.4434 self  0.4438 rec  0.5719
+trk                    set  0.4929 self  0.4998 rec  0.5457
+
+seed pairs: config, ARI(s0, s1), R2(s1|s0), R2(s0|s1), ARI vs km_s6
+sam_sup                 0.826  0.838  0.827  0.746
+05:59:56 [job] OUT size 2.6M; elapsed 1813s; done, FAIL=1

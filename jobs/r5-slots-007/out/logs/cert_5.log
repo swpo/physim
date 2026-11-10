@@ -1,0 +1,3 @@
+05:32:27 [scert 5    26.8s] hand_chan__certB q=128 certified in 23.8s
+05:38:56 [scert 5   415.9s] km_s6__certA q=144 certified in 389.1s
+05:59:47 [scert 5  1667.1s] worker exits after 2 items

@@ -1,0 +1,220 @@
+{
+ "stem": "sam_sup_s0__certA",
+ "meta": {
+  "phi": "sam_sup_s0",
+  "config": "sam_sup",
+  "kind": "learned",
+  "readout": "mom",
+  "obj": "sup",
+  "seed": 0,
+  "fit": "B",
+  "cert": "A",
+  "cfg": {
+   "P": 4,
+   "readout": "mom",
+   "learned": true,
+   "geo": true,
+   "sigma": 6.0,
+   "prior": false,
+   "freeze_p": false,
+   "mem": true,
+   "stopcarry": false,
+   "n_it": 2,
+   "n_init": 4
+  },
+  "init_from": null,
+  "warm_steps": 0.0,
+  "dead_guard": false,
+  "steps": 2000,
+  "batch": 32,
+  "L": 16,
+  "Lw": 16,
+  "lr": 0.001,
+  "clip": 1.0,
+  "val_init": 0.3680061101913452,
+  "val_best": 0.17766332626342773,
+  "best_step": 1900,
+  "checkpoint": "best",
+  "cut_by_deadline": false,
+  "steps_planned": 2000,
+  "skipped_steps_all_replicas": 2,
+  "train_seconds_config": 264.16133642196655,
+  "chunk_seconds": {
+   "first_incl_compile": 68.58931803703308,
+   "rest_mean": 9.385997747120104
+  },
+  "moved_from_kmeans": {
+   "Wq_rms": 0.06242543086409569,
+   "wb_rms": 0.06104673445224762,
+   "wc_rms": 0.09360810369253159
+  },
+  "n_params_enc": 29408,
+  "layout": "trk",
+  "d": 12
+ },
+ "q": 144,
+ "layout": "trk",
+ "certified": false,
+ "nontriv": {
+  "r_dyn": 0.8425594718679825,
+  "participation_ratio": 72.9243601841603,
+  "n_nonconst": 144
+ },
+ "agreement": {
+  "n_pairs": 35504,
+  "recall": 0.8660795919342825,
+  "precision": 0.9106129689349854,
+  "clean_match_rate(recall,precision>=0.9)": 0.6532503379900856,
+  "ari_hard_matter_weighted": 0.8037620319450042,
+  "slots_per_object": 1.3453581091216096,
+  "objects_per_slot": 1.113591480117026,
+  "direct": {
+   "mass_R2": 0.546994289035547,
+   "mass_corr2": 0.576782629934982,
+   "pos_err_px_median": 0.08251751223194446,
+   "pos_err_px_mean": 4.018409534415181,
+   "pos_R2": 0.9604516579948854,
+   "vel_R2": -1.4462089919718233,
+   "n_vel": 32319
+  },
+  "identity_persistence": 0.9685633837680622,
+  "probe_linear": {
+   "mass_R2": 0.6904169874362367,
+   "pos_R2": 0.920913804600775,
+   "vel_R2": 0.35570279843411406,
+   "lam": 0.0001,
+   "n": 32319
+  },
+  "probe_rff": {
+   "mass_R2": 0.7076395094804395,
+   "pos_R2": 0.9174289582971393,
+   "vel_R2": 0.6799650764286697,
+   "lam": 0.01,
+   "n": 32319
+  },
+  "by_ticks_since_event": {
+   "fusion": [
+    {
+     "ticks": [
+      0,
+      0
+     ],
+     "n": 1036,
+     "recall": 0.6585678024548304,
+     "precision": 0.9889810940558361
+    },
+    {
+     "ticks": [
+      1,
+      1
+     ],
+     "n": 919,
+     "recall": 0.7173469496202614,
+     "precision": 0.9910142925116766
+    },
+    {
+     "ticks": [
+      2,
+      3
+     ],
+     "n": 1527,
+     "recall": 0.7712232368126128,
+     "precision": 0.9936466274583912
+    },
+    {
+     "ticks": [
+      4,
+      7
+     ],
+     "n": 2077,
+     "recall": 0.8122546472102224,
+     "precision": 0.9945524916145339
+    },
+    {
+     "ticks": [
+      8,
+      15
+     ],
+     "n": 934,
+     "recall": 0.8461463943367528,
+     "precision": 0.9860323431793956
+    },
+    {
+     "ticks": [
+      16,
+      1000000
+     ],
+     "n": 240,
+     "recall": 0.9415107998405586,
+     "precision": 0.9828874677184039
+    }
+   ],
+   "fission": [
+    {
+     "ticks": [
+      0,
+      0
+     ],
+     "n": 2042,
+     "recall": 0.7315959320465681,
+     "precision": 0.7389814267866041
+    },
+    {
+     "ticks": [
+      1,
+      1
+     ],
+     "n": 1899,
+     "recall": 0.7762883468962448,
+     "precision": 0.7732934052104845
+    },
+    {
+     "ticks": [
+      2,
+      3
+     ],
+     "n": 3470,
+     "recall": 0.8224217102756631,
+     "precision": 0.8234770463562737
+    },
+    {
+     "ticks": [
+      4,
+      7
+     ],
+     "n": 5603,
+     "recall": 0.8780570506263046,
+     "precision": 0.8853895746657428
+    },
+    {
+     "ticks": [
+      8,
+      15
+     ],
+     "n": 6768,
+     "recall": 0.9215092347438169,
+     "precision": 0.934557258496244
+    },
+    {
+     "ticks": [
+      16,
+      1000000
+     ],
+     "n": 7662,
+     "recall": 0.9516295878727602,
+     "precision": 0.9475774380038023
+    }
+   ]
+  }
+ },
+ "territory": {
+  "resultant_length": 0.07960001151639007,
+  "slot_speed_px": 1.860762190791841,
+  "slots_present_mean": 8.452450166112957,
+  "mass_in_present_slots": 1422.088611348919
+ },
+ "seconds": {
+  "certify": 0.004812002182006836,
+  "total": 1.8013849258422852
+ }
+}

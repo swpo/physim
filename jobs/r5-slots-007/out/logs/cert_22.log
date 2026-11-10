@@ -1,0 +1,5 @@
+05:34:50 [scert 22   170.6s] km_s6@mp6__certA q=72 certified in 143.6s
+05:40:35 [scert 22   515.3s] grid__certB q=144 certified in 302.6s
+05:44:55 [scert 22   775.0s] sam_sup_s0__certB q=144 agreement only in 1.7s
+05:47:59 [scert 22   959.6s] sam_sup_s1@mp6__certB q=72 certified in 184.6s
+05:59:47 [scert 22  1667.7s] worker exits after 4 items

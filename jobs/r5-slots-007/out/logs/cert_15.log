@@ -1,0 +1,4 @@
+05:32:09 [scert 15     9.6s] hand_mass__certB q=64 certified in 6.6s
+05:44:56 [scert 15   776.6s] sam_sup_s1__certB q=144 agreement only in 1.8s
+05:44:58 [scert 15   778.4s] sam_sup_s0__certA q=144 agreement only in 1.8s
+05:59:49 [scert 15  1669.6s] worker exits after 3 items

@@ -1,0 +1,4 @@
+05:33:19 [scert 26    79.3s] trk@mp6__certB q=72 certified in 76.3s
+05:41:49 [scert 26   589.0s] grid@mp6__certA q=72 certified in 377.7s
+05:45:00 [scert 26   779.9s] sam_sup_s1__certA q=144 agreement only in 1.9s
+05:59:48 [scert 26  1668.0s] worker exits after 3 items
