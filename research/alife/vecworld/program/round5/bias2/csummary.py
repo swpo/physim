@@ -47,7 +47,8 @@ out["meta"]["billed_usd_total"] = round(float(sum(tot)), 4) if tot else None
 for w, job in JOBS.items():
     if w not in A:
         continue
-    src = lambda f, k, w=w, job=job: f"{job}:out/{w}/{f}:{k}"            # noqa: E731
+    wb = w[:-2] if w.endswith("_w") else w        # "<world>_w" = the follow-up job's run of <world>
+    src = lambda f, k, wb=wb, job=job: f"{job}:out/{wb}/{f}:{k}"            # noqa: E731
     a = A[w]
     m = {"job": job, "layout": a["layout"], "fields": a["fields"]}
     for h in ("A", "B"):
@@ -79,13 +80,13 @@ for w, job in JOBS.items():
         W["paired_bootstrap"] = {k: {kk: (r4(v[kk]) if kk in ("ceiling_A", "ceiling_B", "diff", "se", "z") else v[kk])
                                      for kk in ("ceiling_A", "ceiling_B", "diff", "se", "z", "n_seeds", "n_trajectories", "horizons")}
                                  for k, v in pj.items()}
-        W["paired_bootstrap"]["source"] = f"results/pairs_{w}.json = cpair.py on {job}:out/{w}/items/*.npz (400 trajectory resamples, both sides on the same items)"
+        W["paired_bootstrap"]["source"] = f"results/pairs_{w}.json = cpair.py on {job}:out/{wb}/items/*.npz (400 trajectory resamples, both sides on the same items)"
     p = os.path.join(R, "extra.json")                # local follow-up readings (cextra.py)
     if os.path.exists(p):
         xj = json.load(open(p)).get(w)
         if xj:
             W["extra"] = {"global": {k: v for k, v in xj["global"].items() if not k.endswith("_c2")}, "windows": xj["windows"],
-                          "source": f"results/extra.json:{w} = cextra.py on {job}:out/{w}/latsub/*.npz and windows/*.npz"}
+                          "source": f"results/extra.json:{w} = cextra.py on {job}:out/{wb}/latsub/*.npz and windows/*.npz"}
     for k, r in a["hand"].items():
         W["hand"][k] = dict(r, source=src("combined.json", f"hand.{k}"))
     for k, r in a["configs"].items():

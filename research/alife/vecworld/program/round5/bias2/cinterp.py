@@ -43,13 +43,18 @@ def _walk(v, path):
     return v
 
 
+def bw(w):
+    """Folder of the world on the gpu-jobs branch ("<world>_w" = the follow-up job's run of <world>)."""
+    return w[:-2] if w.endswith("_w") else w
+
+
 def cfg(w, nm, *path):
     """A key of combined.json:configs.<nm> (seed means)."""
-    return _walk(C[w]["configs"][nm], path), f"{JOBS[w]}:out/{w}/combined.json:configs.{nm}." + ".".join(str(p) for p in path)
+    return _walk(C[w]["configs"][nm], path), f"{JOBS[w]}:out/{bw(w)}/combined.json:configs.{nm}." + ".".join(str(p) for p in path)
 
 
 def hand(w, k, *path):
-    return _walk(C[w]["hand"][k], path), f"{JOBS[w]}:out/{w}/combined.json:hand.{k}." + ".".join(str(p) for p in path)
+    return _walk(C[w]["hand"][k], path), f"{JOBS[w]}:out/{bw(w)}/combined.json:hand.{k}." + ".".join(str(p) for p in path)
 
 
 def ana(w, *path):

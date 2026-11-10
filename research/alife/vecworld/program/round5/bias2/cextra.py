@@ -32,7 +32,9 @@ import numpy as np
 
 FETCH, OUTP = sys.argv[1], sys.argv[2]
 JOBS = dict(a.split("=") for a in sys.argv[3:])
-FIELDS = {"vortex": ("om", "Y", "a", "b"), "membrane": ("phi", "S", "K", "L"), "gliders": ("c0", "c1")}
+_F = {"vortex": ("om", "Y", "a", "b"), "membrane": ("phi", "S", "K", "L"), "gliders": ("c0", "c1")}
+base = lambda w: w[:-2] if w.endswith("_w") else w      # noqa: E731  ("<world>_w" = the follow-up job's run of <world>)
+FIELDS = {w + s_: f for w, f in _F.items() for s_ in ("", "_w")}
 r4 = lambda v: None if v is None else round(float(v), 4)   # noqa: E731
 
 
@@ -64,7 +66,7 @@ def load_lat(d, stem):
 
 
 def global_part(world, job):
-    d = os.path.join(FETCH, "jobs", job, "out", world, "latsub")
+    d = os.path.join(FETCH, "jobs", job, "out", base(world), "latsub")
     stems = sorted({os.path.basename(p).split("__cert")[0] for p in glob.glob(d + "/*.npz")})
     hand = [s for s in stems if s.startswith("hand_") and s.endswith("_h0")]
     H = {s[5:-3]: load_lat(d, s) for s in hand}
@@ -152,7 +154,7 @@ def moments(w):
 
 
 def windows_part(world, job):
-    d = os.path.join(FETCH, "jobs", job, "out", world, "windows")
+    d = os.path.join(FETCH, "jobs", job, "out", base(world), "windows")
     out = {}
     for cfg in sorted({os.path.basename(p).split("_s")[0] for p in glob.glob(d + "/*0_*_c1_s*__fit*.npz")}):
         Ws = []
@@ -200,7 +202,7 @@ def windows_part(world, job):
 if __name__ == "__main__":
     res = {}
     for w, job in JOBS.items():
-        res[w] = {"job": job, "source": f"{job}:out/{w}/latsub/*.npz and {job}:out/{w}/windows/*.npz (cextra.py)",
+        res[w] = {"job": job, "source": f"{job}:out/{base(w)}/latsub/*.npz and {job}:out/{base(w)}/windows/*.npz (cextra.py)",
                   "global": global_part(w, job), "windows": windows_part(w, job)}
         print("==", w)
         for k, e in res[w]["global"].items():
