@@ -292,6 +292,88 @@ def main():
         "where C itself is poor is 'easy' by this measure; read it beside oes_C and sigma",
         "the views are levels of one exam per truth (same hidden states and programs), the hidden sets are different "
         "truths and simulations"]
+    # headline: the numbers the README and the report quote, derived from the entries above
+    C = out["cells"]
+    sets = sorted(int(k[1:].split("|")[0]) for k in C if k.endswith("|block"))
+
+    def cell(n, v):
+        return C.get(f"n{n}|{v}")
+    head = {"note": "derived from cells / identification_arms of this file (same sources); budgets in Lab episodes"}
+    if all(cell(n, v) for n in sets for v in LL.VIEWS) and sets:
+        mid = str(budgets[min(2, len(budgets) - 1)])
+        last = str(budgets[-1])
+        tab = {}
+        for n in sets:
+            for v in LL.VIEWS:
+                c = cell(n, v)
+                a, pm = c["acceptance"], c["params_matter"]
+                sg = pm["state_given_O_minus_plugPM"]["gap"]
+                tab[f"n{n}|{v}"] = {
+                    "oes": {k: c["oes"][k]["mean"] for k in ("C", "P0", "P0u", "PM", "plugPM", f"S@{budgets[0]}", f"D@{last}")
+                            if k in c["oes"]},
+                    "D_best_at_last_budget": c["curves"]["D"][-1],
+                    "C_minus_P0": [pm["C_minus_P0"]["gap"], pm["C_minus_P0"]["z_worlds"]],
+                    "C_minus_PM": [pm["C_minus_PM"]["gap"], pm["C_minus_PM"]["z_worlds"]],
+                    "state_given_gap": sg,
+                    "share_of_state_given_gap_kept_by_history_predictor": r4(pm["C_minus_PM"]["gap"] / sg) if sg else None,
+                    "sigma": {b: [a["P0"][b]["sigma"], a["P0"][b]["sigma_se_worlds"], a["P0"][b]["null_is"]] for b in a["P0"]},
+                    "sigma_with_P0u_as_P0": {b: a["P0u"][b]["sigma"] for b in (mid, last) if b in a["P0u"]},
+                    "rho": {b: [a["P0"][b]["rho"], a["P0"][b]["rho_se_worlds"]] for b in a["P0"]},
+                    "geo_contraction": {b: x["geo_mean_contraction"] for b, x in c["identifiability_mix"].items()},
+                    "N90": c["budget_to_90pct_of_C"], "S_minus_C_at_first_and_last": [
+                        [c["S_minus_C"][str(budgets[0])]["gap"], c["S_minus_C"][str(budgets[0])]["z_worlds"]],
+                        [c["S_minus_C"][last]["gap"], c["S_minus_C"][last]["z_worlds"]]],
+                    "value_of_theory_at_90pct_of_C": c["value_of_theory"]["at_90pct_of_C"]["ratio"],
+                    "value_of_theory_is_lower_bound": c["value_of_theory"]["at_90pct_of_C"]["ratio_is_lower_bound"]}
+        head["table"] = tab
+        sig = {k: v["sigma"][mid][0] for k, v in tab.items()}
+        sig_last = {k: v["sigma"][last][0] for k, v in tab.items()}
+        kmax = max(sig, key=sig.get)
+        head["acceptance"] = {
+            "bars": {"sigma_min": 0.15, "rho_max": 0.7},
+            "sigma_at_mid_budget": sig, "sigma_at_last_budget": sig_last,
+            "largest_sigma": {"cell": kmax, "budget": int(mid), "sigma": sig[kmax], "se_worlds": tab[kmax]["sigma"][mid][1],
+                              "at_last_budget": sig_last[kmax]},
+            "cells_with_sigma_ge_0.15_at_any_budget": [k for k, v in tab.items() if any(x[0] >= 0.15 for x in v["sigma"].values())],
+            "largest_sigma_with_P0u_as_P0": max(max(v["sigma_with_P0u_as_P0"].values()) for v in tab.values()),
+            "cells_with_rho_le_0.7_at_first_budget": [k for k, v in tab.items() if v["rho"][str(budgets[0])][0] <= 0.7],
+            "cells_with_rho_le_0.7_at_mid_budget": [k for k, v in tab.items() if v["rho"][mid][0] <= 0.7],
+            "note": "rho is undefined in practice where C - P0 is zero within error (n8|object, n1|object: see rho SE)"}
+        head["by_view_mean_over_hidden_sets"] = {
+            v: {"sigma_mid": r4(np.mean([sig[f"n{n}|{v}"] for n in sets])),
+                "C_minus_P0": r4(np.mean([tab[f"n{n}|{v}"]["C_minus_P0"][0] for n in sets])),
+                "state_given_gap": r4(np.mean([tab[f"n{n}|{v}"]["state_given_gap"] for n in sets])),
+                "share_kept": r4(np.mean([tab[f"n{n}|{v}"]["share_of_state_given_gap_kept_by_history_predictor"] for n in sets])),
+                "geo_contraction_first": r4(np.mean([tab[f"n{n}|{v}"]["geo_contraction"][str(budgets[0])] for n in sets])),
+                "geo_contraction_last": r4(np.mean([tab[f"n{n}|{v}"]["geo_contraction"][last] for n in sets])),
+                "N90_D": r4(np.mean([tab[f"n{n}|{v}"]["N90"]["D"] or np.nan for n in sets]))} for v in LL.VIEWS}
+        head["by_hidden_set_mean_over_views"] = {
+            f"n{n}": {"sigma_mid": r4(np.mean([sig[f"n{n}|{v}"] for v in LL.VIEWS])),
+                      "C_minus_P0": r4(np.mean([tab[f"n{n}|{v}"]["C_minus_P0"][0] for v in LL.VIEWS])),
+                      "state_given_gap": r4(np.mean([tab[f"n{n}|{v}"]["state_given_gap"] for v in LL.VIEWS])),
+                      "geo_contraction_first": r4(np.mean([tab[f"n{n}|{v}"]["geo_contraction"][str(budgets[0])] for v in LL.VIEWS])),
+                      "geo_contraction_last": r4(np.mean([tab[f"n{n}|{v}"]["geo_contraction"][last] for v in LL.VIEWS])),
+                      "N90_D": r4(np.mean([tab[f"n{n}|{v}"]["N90"]["D"] or np.nan for v in LL.VIEWS]))} for n in sets}
+        # input arms at equal episodes: ratio of geometric-mean posterior sd (below 1: the first arm contracts more)
+        arms = {}
+        for k, v in out["identification_arms"].items():
+            arms[k] = {pair: {nb: [v["paired_over_truths"][f"{pair}|{nb}"]["ratio_of_geo_contractions"],
+                                   v["paired_over_truths"][f"{pair}|{nb}"]["t"]]
+                              for nb in arm_budgets if f"{pair}|{nb}" in v["paired_over_truths"]}
+                       for pair in ("aimed-blind", "aimed-passive", "blind-passive")}
+        head["input_arms_ratio_of_posterior_sd_and_t_over_truths"] = arms
+        nb = arm_budgets[-1]
+        head["input_arms_at_largest_arm_budget"] = {
+            "budget": nb,
+            **{pair: {"cells_first_arm_better_t_le_-3": [k for k in arms if nb in arms[k][pair] and (arms[k][pair][nb][1] or 0) <= -3],
+                      "cells_first_arm_worse_t_ge_3": [k for k in arms if nb in arms[k][pair] and (arms[k][pair][nb][1] or 0) >= 3],
+                      "ratio_by_cell": {k: arms[k][pair][nb][0] for k in arms if nb in arms[k][pair]}}
+               for pair in ("aimed-blind", "aimed-passive", "blind-passive")}}
+        # per-horizon share of the parameter gain (population view: where knowing theta pays)
+        head["C_minus_P0_per_horizon"] = {k: [r4(a - b) for a, b in zip(C[k]["oes_per_cell"]["C"], C[k]["oes_per_cell"]["P0"])]
+                                          for k in C}
+        head["horizons"] = hs
+    out["headline"] = head
     json.dump(out, open(args.out, "w"), indent=1)
     print("wrote", args.out)
     for r in rows:

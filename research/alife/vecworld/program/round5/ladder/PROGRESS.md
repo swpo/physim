@@ -42,3 +42,5 @@
   which stays at origin/gpu-jobs:jobs/r5-ladder-002/out), status in results/status.json,
   `make_summary.py --job r5-ladder-002` wrote results/summary.json.
 - NEXT: read the summary, write README.md (results) and the report, commit, push, remove the worktree.
+- 05:20 UTC. summary.json regenerated with a `headline` block; README.md written with the results.
+  NEXT (last steps): final commit and push, remove the worktree, return the report.
