@@ -1,5 +1,29 @@
 # vfport: PROGRESS
 
+## HOST-SAFETY FIXER, round 1 (after the audit's NO-GO, HOST_SAFETY_AUDIT.md) -- 10 Nov 2026
+
+Worktree `/home/user/wt/vfsafe1` (branch wt-vfsafe1, pushes to `claude/fisim-agent-world-research-hepmlz`).
+Scratch `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe1/`. Venv for development
+runs: the builder's `/home/user/evalwork/vfport/.venv` (nothing installed into it). The rehearsal gets its own.
+Rule of this role: nothing of the driver, its cleanup or the hostile scripts runs on this host; host tests run
+under tripwires, real cleanups only in throwaway containers without a host mount.
+
+### State (kept current)
+- 14:30 UTC: container had restarted (uptime 9 min); dockerd started again (classic image store, overlay2, cgroup v1);
+  images physim2-ring:1, localhost/verifiers-network:1, python:3.12-slim present; no container.
+- Read in full: HOST_SAFETY_AUDIT.md, `_item.py`, grading.py, taskset.py, access.py, validate.py, vfrun.py,
+  check_units.py, check_driver.py, prove.py, check_probe.py, the three box scripts, rt_run.py, RUNBOOK_MAC.md,
+  verifiers runtimes (base.py, docker/__init__.py, utils/scope.py).
+- Next: the nine required changes in code, each with the audit's test; then the regression, the runbook, the pin,
+  the rehearsal from a fresh clone.
+
+### Done
+- (nothing committed yet besides this note)
+
+---
+
+# (record of the first fixer, kept)
+
 ## FIXER (role after the builder, the specification review and the red team) -- 10 Nov 2026
 
 Worktree `/home/user/wt/vfportfix` (branch wt-vfportfix, pushes to `claude/fisim-agent-world-research-hepmlz`).
