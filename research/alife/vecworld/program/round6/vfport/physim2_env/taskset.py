@@ -222,7 +222,10 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         t0, c0 = time.time(), time.process_time()
         try:
             hidden = self._hidden()
-            if not info.get("verifier_box", {}).get("has_predict"):
+            if "verifier_box" not in info:                   # stage_verifier never ran: this is not the isolated grader
+                info["grading_error"] = "NotIsolatedVerifier"
+                g = GRADING.score_as_k(hidden, name, "the reward ran outside the isolated grader (use --env.id isolated-verifier)")
+            elif not info["verifier_box"].get("has_predict"):
                 g = GRADING.score_as_k(hidden, name, (trace.state.collection or {}).get("error") or "no predictor")
             else:
                 budget = self.data.timeout.scoring

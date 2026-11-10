@@ -1,0 +1,842 @@
+{
+ "study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment",
+ "written_unix": 1794280946.4144766,
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). Nothing was run on a Mac.",
+ "sources": {
+  "ours_table": "results/proof_ring.json",
+  "round5_table": "round5/agentenv/results/proof_ring.json",
+  "ours_probe": "results/probe_ring.json",
+  "round5_probe": "round5/agentenv/results/probe_ring.json"
+ },
+ "ring_table": {
+  "source_keys": "pooled.policies[policy].vs_C and .L; per_world[w].table.policies[policy].vs_C; pooled.acceptance",
+  "size": {
+   "n_worlds": 4,
+   "n_items": 256,
+   "sizes": {
+    "n_lab": 8,
+    "n_design": 256,
+    "k_design": 2,
+    "n_train": 512
+   },
+   "round5_n_worlds": 4,
+   "round5_n_items": 256,
+   "round5_sizes": {
+    "n_lab": 8,
+    "n_design": 256,
+    "k_design": 2,
+    "n_train": 512
+   }
+  },
+  "policies": {
+   "S": {
+    "ours_vs_C": 0.9789713951597979,
+    "round5_vs_C": 0.9881488941763523,
+    "ours_L": 3.9999423330601758,
+    "round5_L": 3.7826364602362905,
+    "ours_per_world_vs_C": [
+     0.9962606400812829,
+     0.9646584246535265,
+     0.9896923855670282,
+     0.9836330994345637
+    ],
+    "round5_per_world_vs_C": [
+     0.9954980377347505,
+     0.9687270827422387,
+     1.0005314172250253,
+     0.9974386003733596
+    ],
+    "difference_of_world_means": -0.006987647084743309,
+    "se_of_that_difference": 0.010016617834984785,
+    "z": -0.6976054392669083
+   },
+   "D": {
+    "ours_vs_C": 0.39354422634000197,
+    "round5_vs_C": 0.3428577227246503,
+    "ours_L": 4.878168451683884,
+    "round5_L": 4.551261847102566,
+    "ours_per_world_vs_C": [
+     0.37024657212875717,
+     0.5720106182275625,
+     0.3584102945846749,
+     0.38971833363350633
+    ],
+    "round5_per_world_vs_C": [
+     0.31487852827982615,
+     0.39663681747869817,
+     0.6085438529543393,
+     0.451327197391732
+    ],
+    "difference_of_world_means": -0.020250144382523594,
+    "se_of_that_difference": 0.0797415659136113,
+    "z": -0.25394716231760184
+   },
+   "P0": {
+    "ours_vs_C": 0.8629704336710814,
+    "round5_vs_C": 0.9639764402759281,
+    "ours_L": 4.173960690237262,
+    "round5_L": 3.811428984530281,
+    "ours_per_world_vs_C": [
+     0.9885129320782745,
+     0.7294317324824835,
+     0.952535075035686,
+     0.9377336940635969
+    ],
+    "round5_per_world_vs_C": [
+     0.948440555957631,
+     0.9883634997019416,
+     0.9835515081550759,
+     0.9546032153405019
+    ],
+    "difference_of_world_means": -0.0666863363737773,
+    "se_of_that_difference": 0.059379676872320465,
+    "z": -1.1230498360098486
+   },
+   "PM": {
+    "ours_vs_C": 0.846438690108773,
+    "round5_vs_C": 0.9700915089892995,
+    "ours_L": 4.198760716194509,
+    "round5_L": 3.8041451454457405,
+    "ours_per_world_vs_C": [
+     0.9936273415851746,
+     0.6765041596456095,
+     0.9469911359601214,
+     0.9599503791634506
+    ],
+    "round5_per_world_vs_C": [
+     0.9488881338763323,
+     0.9981074501118241,
+     0.9940959334235367,
+     0.9423024344337402
+    ],
+    "difference_of_world_means": -0.07658023387276935,
+    "se_of_that_difference": 0.07470380511587815,
+    "z": -1.0251182487154509
+   },
+   "C": {
+    "ours_vs_C": 1.0,
+    "round5_vs_C": 1.0,
+    "ours_L": 3.968396359466034,
+    "round5_L": 3.7685202578125043,
+    "ours_per_world_vs_C": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "round5_per_world_vs_C": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    "difference_of_world_means": 0.0,
+    "se_of_that_difference": 0.0,
+    "z": null
+   },
+   "null": {
+    "ours_vs_C": -0.04334453924241428,
+    "round5_vs_C": 0.00833583183638428,
+    "ours_L": 5.5335653059864445,
+    "round5_L": 4.9497207586367,
+    "ours_per_world_vs_C": [
+     -0.031042156629477926,
+     -0.09480717934511736,
+     0.0003818683859537393,
+     0.011005105637121718
+    ],
+    "round5_per_world_vs_C": [
+     -0.02537790861346916,
+     -0.003939574574007577,
+     0.03908407256982894,
+     0.008080983941640748
+    ],
+    "difference_of_world_means": -0.03307748381887819,
+    "se_of_that_difference": 0.027341449602499356,
+    "z": -1.2097926152333376
+   },
+   "O": {
+    "ours_vs_C": 1.0858020022486001,
+    "round5_vs_C": 1.0831556825767907,
+    "ours_L": 3.839680844679043,
+    "round5_L": 3.669471066504145,
+    "ours_per_world_vs_C": [
+     1.063562904871807,
+     1.0969368574016916,
+     1.0773736946113426,
+     1.09023244896196
+    ],
+    "round5_per_world_vs_C": [
+     1.0808666777595384,
+     1.0643879595141412,
+     1.079769855396801,
+     1.0873848548147975
+    ],
+    "difference_of_world_means": 0.003924139590380626,
+    "se_of_that_difference": 0.008835915268088083,
+    "z": 0.44411240616499625
+   }
+  },
+  "acceptance": {
+   "sigma": {
+    "ours": 0.13702956632891855,
+    "round5": 0.036023559724071876
+   },
+   "rho": {
+    "ours": 0.8465396526927178,
+    "round5": 0.6710179139867614
+   },
+   "null_is": {
+    "ours": "P0",
+    "round5": "P0"
+   },
+   "sigma_worlds": {
+    "ours": {
+     "se": 0.06375888669406288,
+     "p05": 0.03144269377759889,
+     "p95": 0.22274690728438376
+    },
+    "round5": {
+     "se": 0.008909277459757984,
+     "p05": 0.021786368433700853,
+     "p95": 0.05293484494546244
+    }
+   },
+   "rho_worlds": {
+    "ours": {
+     "se": 0.05372479678389038,
+     "p05": 0.7217552071513195,
+     "p95": 0.8624483408597213
+    },
+    "round5": {
+     "se": 0.3798279058959497,
+     "p05": 0.009024079261444383,
+     "p95": 0.9325818940935824
+    }
+   }
+  },
+  "all_rollouts_graded": true,
+  "failed_items_total": 0,
+  "max_abs_z_over_policies": 1.2097926152333376,
+  "verdict": "NOT identical numbers, and they cannot be: both runs draw fresh secrets and hidden parameters (os.urandom), and round 5 deleted its instances. The comparison is between two samples of 4 hidden worlds; z is the difference of the world means over its standard error. The arithmetic itself is identical: see same_submission_through_round5_grader.",
+  "same_submission_through_round5_grader": {
+   "source_key": "per_world[w].same_submission_through_round5_grader",
+   "what": "the frozen C submission of each world graded twice: by round 5's evaluator.grader.grade in agentenv's local sandbox on the worker, and by this study's reward in the verifier box; per-item, per-cell scores compared",
+   "per_world": [
+    {
+     "policy": "C",
+     "n_items": 64,
+     "n_failed_agentenv": 0,
+     "n_failed_route": 0,
+     "max_abs_difference": 0.0,
+     "identical": true,
+     "agentenv_layers": {
+      "rlimits": true,
+      "mount_ns": true,
+      "net_ns": true,
+      "pid_ns": true,
+      "uid": 65534,
+      "hidden_paths": 1,
+      "binds": [
+       "submission",
+       "public",
+       "io"
+      ]
+     },
+     "agentenv_cpu_s_mean": 0.12417593749999956
+    },
+    {
+     "policy": "C",
+     "n_items": 64,
+     "n_failed_agentenv": 0,
+     "n_failed_route": 0,
+     "max_abs_difference": 0.0,
+     "identical": true,
+     "agentenv_layers": {
+      "rlimits": true,
+      "mount_ns": true,
+      "net_ns": true,
+      "pid_ns": true,
+      "uid": 65534,
+      "hidden_paths": 1,
+      "binds": [
+       "submission",
+       "public",
+       "io"
+      ]
+     },
+     "agentenv_cpu_s_mean": 0.126721250000001
+    },
+    {
+     "policy": "C",
+     "n_items": 64,
+     "n_failed_agentenv": 0,
+     "n_failed_route": 0,
+     "max_abs_difference": 0.0,
+     "identical": true,
+     "agentenv_layers": {
+      "rlimits": true,
+      "mount_ns": true,
+      "net_ns": true,
+      "pid_ns": true,
+      "uid": 65534,
+      "hidden_paths": 1,
+      "binds": [
+       "submission",
+       "public",
+       "io"
+      ]
+     },
+     "agentenv_cpu_s_mean": 0.12487529687499954
+    },
+    {
+     "policy": "C",
+     "n_items": 64,
+     "n_failed_agentenv": 0,
+     "n_failed_route": 0,
+     "max_abs_difference": 0.0,
+     "identical": true,
+     "agentenv_layers": {
+      "rlimits": true,
+      "mount_ns": true,
+      "net_ns": true,
+      "pid_ns": true,
+      "uid": 65534,
+      "hidden_paths": 1,
+      "binds": [
+       "submission",
+       "public",
+       "io"
+      ]
+     },
+     "agentenv_cpu_s_mean": 0.12403189062499909
+    }
+   ],
+   "all_identical": true
+  },
+  "reward_equals_table": {
+   "what": "trace reward (rewards.skill) against per_world[w].table.policies[p].vs_O, 24 rollouts",
+   "max_abs_difference": 0.0
+  }
+ },
+ "hidden_value_scan": {
+  "instances": 5,
+  "needles": 20,
+  "what": "the 64-hex secret and the first 10 characters of every hidden parameter of every instance in the store",
+  "files_scanned": 181,
+  "hits": 0,
+  "where": "results/*.json and every file under the runs' scratch directories (traces.jsonl, configs, logs, notes)"
+ },
+ "boundary_checks": {
+  "source_keys": "checks_round5, changed_by_design, checks_new, evidence",
+  "round5": {
+   "n_checks": 34,
+   "n_passed": 34
+  },
+  "ours_on_the_same_34": {
+   "reproduced": 32,
+   "failed": [],
+   "changed_by_design": {
+    "agent_runs_unprivileged": "not reproduced by design: the agent is root (uid 0) INSIDE its own disposable container, started by verifiers without NET_ADMIN/NET_RAW and with no-new-privileges; round 5 ran it as uid 65534 on the evaluator's machine. Nothing of the host is mounted in the box.",
+    "agent_cannot_write_outside_workspace": "not reproduced by design: the whole box is the agent's (probe result: True); what it cannot reach is anything outside the container, which the read and network checks cover."
+   }
+  },
+  "new_checks": {
+   "n": 37,
+   "passed": 37,
+   "failed": [],
+   "all": {
+    "a_every_item_ran_the_probe": true,
+    "a_no_item_found_a_file_left_earlier": true,
+    "a_no_item_found_the_background_process": true,
+    "a_no_item_found_the_shared_memory_mark": true,
+    "a_cleanup_removed_something_after_every_item": true,
+    "a_box_clean_after_every_item": true,
+    "a_control_without_cleanup_finds_them": true,
+    "b_canary_was_in_the_worker_environment": true,
+    "b_lab_process_dropped_it_after_loading": true,
+    "b_no_canary_in_agent_box": true,
+    "b_no_token_like_variable_in_agent_box": true,
+    "b_no_canary_in_verifier_box": true,
+    "b_no_token_like_variable_in_verifier_box": true,
+    "b_canary_absent_from_saved_traces": true,
+    "b_hidden_values_absent_from_saved_traces": true,
+    "c_control_uncut_container_reaches_host_listener": true,
+    "c_agent_box_no_public_route": true,
+    "c_agent_box_cannot_reach_host_listener": true,
+    "c_agent_box_proxy_refuses_other_destinations": true,
+    "c_agent_box_reaches_the_lab": true,
+    "c_verifier_box_no_public_route": true,
+    "c_verifier_box_cannot_reach_host_listener": true,
+    "c_verifier_box_cannot_reach_the_lab": true,
+    "c_host_listener_saw_no_box": true,
+    "d_every_hostile_rollout_is_graded": true,
+    "d_deleted_submission_scores_K": true,
+    "d_empty_oversize_huge_and_broken_tar_score_K": true,
+    "d_control_default_collection_grades_a_deleted_submission": true,
+    "d_control_default_collection_leaves_the_others_ungraded": true,
+    "d_links_are_left_out_and_the_rest_is_graded": true,
+    "d_junk_in_logs_artifacts_does_not_matter": true,
+    "predictor_cannot_write_request_or_runtime": true,
+    "one_request_in_the_box_at_a_time": true,
+    "g_lab_placement_guard_refuses_colocated_url_and_sandbox": true,
+    "g_setup_refuses_open_network_and_non_container": true,
+    "g_setup_refuses_token_like_harness_variable": true,
+    "g_single_use_refuses_an_instance_already_opened": true
+   }
+  },
+  "probe_a_persistence": {
+   "with_cleanup_first_item": {
+    "found_files": [],
+    "daemon_alive": false,
+    "found_shm": false,
+    "other_processes_of_my_user": 0
+   },
+   "cleanup_per_item": [
+    {
+     "item": 0,
+     "killed": 1,
+     "removed": 4,
+     "ipc_removed": 1
+    },
+    {
+     "item": 1,
+     "killed": 1,
+     "removed": 4,
+     "ipc_removed": 1
+    },
+    {
+     "item": 2,
+     "killed": 1,
+     "removed": 4,
+     "ipc_removed": 1
+    },
+    {
+     "item": 3,
+     "killed": 1,
+     "removed": 4,
+     "ipc_removed": 1
+    },
+    {
+     "item": 4,
+     "killed": 1,
+     "removed": 4,
+     "ipc_removed": 1
+    },
+    {
+     "item": 5,
+     "killed": 1,
+     "removed": 4,
+     "ipc_removed": 1
+    },
+    {
+     "item": 6,
+     "killed": 1,
+     "removed": 4,
+     "ipc_removed": 1
+    },
+    {
+     "item": 7,
+     "killed": 1,
+     "removed": 4,
+     "ipc_removed": 1
+    }
+   ],
+   "control_without_cleanup_item_2": {
+    "found_files": [
+     "/tmp/physim2_probe_marker",
+     "/dev/shm/physim2_probe_marker",
+     "/var/tmp/physim2_probe_marker"
+    ],
+    "daemon_alive": true,
+    "found_shm": true,
+    "other_processes_of_my_user": 1
+   }
+  },
+  "probe_b_canary": {
+   "lab_process": {
+    "pid": 21127,
+    "scrubbed_variables": [
+     "AWS_ACCESS_KEY_ID",
+     "AWS_SECRET_ACCESS_KEY",
+     "CLAUDE_CODE_MESSAGING_TOKEN",
+     "CLAUDE_SESSION_INGRESS_TOKEN_FILE",
+     "CLOUDSDK_AUTH_ACCESS_TOKEN",
+     "GH_TOKEN",
+     "GITHUB_TOKEN",
+     "HF_TOKEN",
+     "MAX_THINKING_TOKENS"
+    ],
+    "announced": true,
+    "token_values_left_in_environ": false,
+    "token_like_names_left_in_os_environ": []
+   },
+   "agent_box": {
+    "env_token_like": [],
+    "env_needle": [],
+    "needle_hits": [],
+    "files_read": 8412
+   },
+   "verifier_box_item_1": {
+    "uid": 1000,
+    "env_token_like": [],
+    "env_needle": [],
+    "needle_hits": [],
+    "files_read": 5008,
+    "environ_read": 1
+   },
+   "saved_files_scan": {
+    "files_scanned": 89,
+    "needles": [
+     "canary",
+     "canary_prefix",
+     "secret_hex",
+     "theta_D",
+     "theta_c",
+     "theta_gamma"
+    ],
+    "found": {
+     "canary": [],
+     "canary_prefix": [],
+     "secret_hex": [],
+     "theta_D": [],
+     "theta_gamma": [],
+     "theta_c": []
+    }
+   }
+  },
+  "probe_c_network": {
+   "control_uncut_container": "REACHED",
+   "agent_box": {
+    "public_tcp": "ConnectionRefusedError",
+    "public_tcp_443": "ConnectionRefusedError",
+    "dns": "gaierror",
+    "host_listener": "ConnectionRefusedError",
+    "lab": "HTTP 400",
+    "proxy_public": "HTTP 403",
+    "proxy_host_listener": "HTTP 403"
+   },
+   "verifier_box_all_items": {
+    "public_tcp": [
+     "ConnectionRefusedError"
+    ],
+    "public_tcp_443": [
+     "ConnectionRefusedError"
+    ],
+    "dns": [
+     "gaierror"
+    ],
+    "host_listener": [
+     "ConnectionRefusedError"
+    ],
+    "lab": [
+     "URLError"
+    ],
+    "proxy_public": [
+     "no proxy"
+    ],
+    "proxy_host_listener": [
+     "no proxy"
+    ]
+   },
+   "host_listener_hits": {
+    "control": 1,
+    "during_box_runs": 0
+   }
+  },
+  "probe_d_no_ungraded_rollout": {
+   "defensive_collection": {
+    "delete": {
+     "graded": true,
+     "reward": 0.0,
+     "n_failed": 8,
+     "n_items": 8,
+     "reason": "submission directory not found"
+    },
+    "empty": {
+     "graded": true,
+     "reward": 0.0,
+     "n_failed": 8,
+     "n_items": 8,
+     "reason": "submission has no predict.py"
+    },
+    "oversize": {
+     "graded": true,
+     "reward": 0.0,
+     "n_failed": 8,
+     "n_items": 8,
+     "reason": "submission larger than 2 MiB"
+    },
+    "huge": {
+     "graded": true,
+     "reward": 0.0,
+     "n_failed": 8,
+     "n_items": 8,
+     "reason": "collection failed (SandboxError)"
+    },
+    "no_tar": {
+     "graded": true,
+     "reward": 0.0,
+     "n_failed": 8,
+     "n_items": 8,
+     "reason": "collection failed (RuntimeError)"
+    },
+    "symlinks": {
+     "graded": true,
+     "reward": -0.20870009621753846,
+     "n_failed": 0,
+     "n_items": 8,
+     "reason": null
+    },
+    "junk": {
+     "graded": true,
+     "reward": -0.20870009621753846,
+     "n_failed": 0,
+     "n_items": 8,
+     "reason": null
+    }
+   },
+   "control_verifiers_default_collection": {
+    "delete": {
+     "graded": true,
+     "trace_ok": true,
+     "episode_ok": true,
+     "trace_errors": [],
+     "episode_errors": [],
+     "reward_recorded_as": 0.0,
+     "marked": "the defensive collection was disabled by the operator (test hook)"
+    },
+    "huge": {
+     "graded": false,
+     "trace_ok": false,
+     "episode_ok": false,
+     "trace_errors": [
+      "SandboxError"
+     ],
+     "episode_errors": [],
+     "reward_recorded_as": 0.0,
+     "marked": "the defensive collection was disabled by the operator (test hook)"
+    },
+    "no_tar": {
+     "graded": false,
+     "trace_ok": false,
+     "episode_ok": false,
+     "trace_errors": [
+      "TaskError"
+     ],
+     "episode_errors": [],
+     "reward_recorded_as": 0.0,
+     "marked": "the defensive collection was disabled by the operator (test hook)"
+    },
+    "symlinks": {
+     "graded": false,
+     "trace_ok": true,
+     "episode_ok": false,
+     "trace_errors": [],
+     "episode_errors": [
+      "EnvError"
+     ],
+     "reward_recorded_as": 0.0,
+     "marked": "the defensive collection was disabled by the operator (test hook)"
+    },
+    "junk": {
+     "graded": false,
+     "trace_ok": false,
+     "episode_ok": false,
+     "trace_errors": [
+      "SandboxError"
+     ],
+     "episode_errors": [],
+     "reward_recorded_as": 0.0,
+     "marked": "the defensive collection was disabled by the operator (test hook)"
+    }
+   }
+  }
+ },
+ "cost_per_rollout": {
+  "n_rollouts": 24,
+  "wall_s_per_rollout_mean": 51.31205632289251,
+  "wall_s_per_rollout_max": 57.101834774017334,
+  "agent_box_cpu_s_mean": 7.4694908333333325,
+  "verifier_box_cpu_s_mean": 26.911162500000003,
+  "vf_eval_host_cpu_s_per_rollout": 15.488860583333334,
+  "vf_eval_wall_s_per_policy": {
+   "S": 234.41832613945007,
+   "D": 218.89245653152466,
+   "P0": 229.27691960334778,
+   "PM": 219.05157685279846,
+   "C": 195.40516591072083,
+   "null": 212.2246766090393
+  },
+  "note": "wall = boot + setup + agent + finalize of the solver trace plus the verifier phase (setup, restore, staging, reward); box CPU = the cgroup counter of each container; host CPU = vf-eval and its children (laboratory process, docker CLI), shared by the rollouts of one invocation",
+  "source_key": "results/proof_ring.json:rollout_cost",
+  "round5_wall_s_whole_proof": 512.1392886638641,
+  "ours_wall_s_whole_proof": 1409.9527814388275,
+  "probe_rollouts": {
+   "probe-agent": {
+    "wall_s_total": 22.330567836761475,
+    "invocation_wall_s": 31.04086399078369
+   },
+   "probe-grading": {
+    "wall_s_total": 17.278512477874756,
+    "invocation_wall_s": 26.192547082901
+   },
+   "probe-grading-nocleanup": {
+    "wall_s_total": 17.389440298080444,
+    "invocation_wall_s": 26.352429389953613
+   },
+   "hostile-delete": {
+    "wall_s_total": 8.751758575439453,
+    "invocation_wall_s": 17.802112340927124
+   },
+   "hostile-empty": {
+    "wall_s_total": 8.999143600463867,
+    "invocation_wall_s": 17.86389398574829
+   },
+   "hostile-oversize": {
+    "wall_s_total": 9.059501647949219,
+    "invocation_wall_s": 18.122827768325806
+   },
+   "hostile-huge": {
+    "wall_s_total": 8.009477615356445,
+    "invocation_wall_s": 16.886279582977295
+   },
+   "hostile-no_tar": {
+    "wall_s_total": 8.970276594161987,
+    "invocation_wall_s": 17.861825942993164
+   },
+   "hostile-symlinks": {
+    "wall_s_total": 13.35751223564148,
+    "invocation_wall_s": 22.40064024925232
+   },
+   "hostile-junk": {
+    "wall_s_total": 12.263972520828247,
+    "invocation_wall_s": 21.337925910949707
+   },
+   "stock-delete": {
+    "wall_s_total": 8.740125179290771,
+    "invocation_wall_s": 17.472262859344482
+   },
+   "stock-huge": {
+    "wall_s_total": 8.302514553070068,
+    "invocation_wall_s": 16.50839614868164
+   },
+   "stock-no_tar": {
+    "wall_s_total": 8.197738647460938,
+    "invocation_wall_s": 16.173475742340088
+   },
+   "stock-symlinks": {
+    "wall_s_total": 8.251734972000122,
+    "invocation_wall_s": 17.218631982803345
+   },
+   "stock-junk": {
+    "wall_s_total": 8.45773959159851,
+    "invocation_wall_s": 16.948694229125977
+   },
+   "guard-token-env": {
+    "wall_s_total": 0.6052634716033936,
+    "invocation_wall_s": 8.763625383377075
+   },
+   "guard-single-use": {
+    "wall_s_total": 0.7605400085449219,
+    "invocation_wall_s": 8.97227430343628
+   }
+  }
+ },
+ "code": {
+  "agentenv_total_lines_tracked": 3670,
+  "dropped_from_the_route": {
+   "evaluator/sandbox.py": 139,
+   "run_rollout.py": 230,
+   "evaluator/lab_service.py:230-295 (socket server)": 66,
+   "physim2/wire.py": 55,
+   "physim2/labclient.py": 114,
+   "mac/ (compose, Dockerfiles)": 49,
+   "tests_tcp.py": 45,
+   "evaluator/submission.py:27-91 (snapshot, run_request)": 65,
+   "total": 763,
+   "note": "not on the route any more; the files stay in round 5 untouched. evaluator/sandbox.py and submission.run_request are still used once, as the reference grader of the cross-check"
+  },
+  "wrapped": {
+   "evaluator/lab_service.py:43-227 (LabService)": 185,
+   "evaluator/build_workspace.py": 112,
+   "evaluator/grader.py:34-64 (grading loop)": 31,
+   "prove.py": 97,
+   "check_probe.py": 108,
+   "total": 533
+  },
+  "kept_by_import": {
+   "lines": 2374,
+   "copied_verbatim": "32 lines (evaluator/submission.py:94-125) into physim2_env/public/validate.py; nothing else is copied"
+  },
+  "new": {
+   "package": {
+    "physim2_env/__init__.py": 9,
+    "physim2_env/_paths.py": 31,
+    "physim2_env/access.py": 133,
+    "physim2_env/bundle.py": 116,
+    "physim2_env/grading.py": 162,
+    "physim2_env/lab_tools.py": 142,
+    "physim2_env/public/__init__.py": 2,
+    "physim2_env/public/_item.py": 388,
+    "physim2_env/public/_rules.py": 95,
+    "physim2_env/public/labclient.py": 155,
+    "physim2_env/public/validate.py": 145,
+    "physim2_env/store.py": 88,
+    "physim2_env/taskset.py": 281,
+    "physim2_script/__init__.py": 107
+   },
+   "tools": {
+    "tools/check_probe.py": 368,
+    "tools/make_instances.py": 55,
+    "tools/make_summary.py": 188,
+    "tools/prove.py": 207,
+    "tools/vfrun.py": 93,
+    "tools/docker_shim/docker": 18
+   },
+   "agents": {
+    "agents/hostile_submission.py": 54,
+    "agents/install_prebuilt.py": 24,
+    "agents/probe_grading.py": 213
+   },
+   "build_and_config": {
+    "docker/Dockerfile.ring": 29,
+    "docker/Dockerfile.network": 16,
+    "configs/scripted_ring.toml": 35,
+    "configs/qwen_ring_bash.toml": 44,
+    "pyproject.toml": 29
+   },
+   "totals": {
+    "package": 1854,
+    "tools": 929,
+    "agents": 291,
+    "build_and_config": 153
+   },
+   "total": 3227
+  },
+  "memo_estimates": {
+   "drop": 760,
+   "wrap": 530,
+   "keep": 2370,
+   "new_including_sealer": 750,
+   "scripted_harness": 60
+  }
+ },
+ "docker": {
+  "images": [
+   "physim2-ring:1 562MB",
+   "localhost/verifiers-network:1 131MB",
+   "python:3.12-slim 119MB"
+  ],
+  "system_df": [
+   "Images 573.4MB",
+   "Containers 0B",
+   "Local Volumes 0B",
+   "Build Cache 0B"
+  ],
+  "source": "docker images / docker system df at summary time",
+  "server": "29.9.2",
+  "note": "classic image store (dockerd --feature containerd-snapshotter=false)"
+ }
+}

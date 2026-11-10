@@ -138,6 +138,12 @@ def main():
     for mode in STOCK:                                       # control: the same agents under verifiers' default collection
         go(f"stock-{mode}", {"agent_dir": mine, "script": "hostile_submission.py", "label": f"stock_{mode}", "args": [mode]},
            task={"stock_collection": True}, may_fail=True)
+    # ---- operator guards (memo hole 4) ----
+    G3 = go("guard-token-env", {"agent_dir": mine, "script": "hostile_submission.py", "label": "guard_token", "args": ["empty"],
+                                "env": {"HF_TOKEN": "not-a-real-token"}}, may_fail=True)
+    G4 = go("guard-single-use", {"agent_dir": mine, "script": "hostile_submission.py", "label": "guard_single_use", "args": ["empty"]},
+            task={"single_use": True}, may_fail=True)
+    labs_after = sorted(os.listdir(os.path.join(hidden, "labs")))
     srv.close()
 
     # ---- evaluate part 1 ----
@@ -281,6 +287,38 @@ def main():
                                                                          and i["write_workspace"] != "WRITABLE" for i in items),
         "one_request_in_the_box_at_a_time": bool(items) and all(i["requests_visible"] == ["item.py", "request.npz"] for i in items),
     }
+    import asyncio
+    import types
+
+    import verifiers.v1 as vf
+    from physim2_env import Physim2Task, Physim2TaskConfig
+    from physim2_env.lab_tools import LabToolsConfig
+
+    def refused(**kw):
+        try:
+            Physim2Task.toolsets(Physim2TaskConfig(tools=LabToolsConfig(**kw)))
+            return False
+        except ValueError:
+            return True
+
+    def setup_refused(rt):
+        try:
+            asyncio.run(Physim2Task.setup(types.SimpleNamespace(), None, rt))
+            return False
+        except vf.TaskError:
+            return True
+        except Exception:
+            return False
+    fake = lambda typ, restricted: types.SimpleNamespace(config=types.SimpleNamespace(type=typ, network_restricted=restricted), env={})  # noqa: E731
+    used = {r["trace_id"] for r in runs.values() if r.get("trace_id")}
+    new.update({
+        "g_lab_placement_guard_refuses_colocated_url_and_sandbox": refused(colocated=True) and refused(url="http://127.0.0.1:1/mcp")
+        and refused(runtime=vf.DockerConfig()) and not refused(),
+        "g_setup_refuses_open_network_and_non_container": setup_refused(fake("docker", False)) and setup_refused(fake("subprocess", True)),
+        "g_setup_refuses_token_like_harness_variable": not G3["graded"] and "TaskError" in G3["errors"] and G3.get("trace_id") not in labs_after,
+        "g_single_use_refuses_an_instance_already_opened": not G4["graded"] and "TaskError" in G4["errors"] and G4.get("trace_id") not in labs_after,
+    })
+    del used
     res = {"checks_round5": checks, "n_checks_round5": len(checks), "n_reproduced": sum(v is True for v in checks.values()),
            "failed_round5": [k for k, v in checks.items() if v is False], "changed_by_design": changed,
            "checks_new": new, "n_checks_new": len(new), "n_passed_new": sum(v is True for v in new.values()),
@@ -313,6 +351,7 @@ def main():
                "d_control_default_collection": {m: {"graded": h["graded"], "trace_ok": h["ok"], "episode_ok": h.get("episode_ok"), "trace_errors": h["errors"],
                                                     "episode_errors": h.get("episode_errors"), "reward_recorded_as": h["reward_skill_vs_O"],
                                                     "marked": h["info"].get("NOT_AN_EXAM")} for m, h in stock.items()},
+               "g_guard_runs": {k: {"graded": v["graded"], "trace_ok": v["ok"], "trace_errors": v["errors"]} for k, v in (("token_env", G3), ("single_use", G4))},
                "verifier_box_identity_item_1": {k: items[0][k] for k in ("write_submission", "write_request", "write_runtime", "write_workspace", "requests_visible")} if items else None,
                "verifier_box_staging": B["verifier_box"],
            },

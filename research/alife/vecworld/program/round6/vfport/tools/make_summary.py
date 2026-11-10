@@ -35,7 +35,38 @@ def per_world(proof, pol):
     return [w["table"]["policies"][pol]["vs_C"] for w in proof["per_world"] if pol in w["table"]["policies"]]
 
 
+def scan_for_hidden(store, scratch):
+    """While the pilot's store still exists: do the committed results or any file the runs saved (traces, configs,
+    logs, the scripts' notes) contain a secret or a hidden parameter of any instance? Returns counts only."""
+    needles = {}
+    for iid in sorted(os.listdir(store)):
+        f = os.path.join(store, iid, "hidden", "instance.json")
+        if os.path.isfile(f):
+            inst = json.load(open(f))
+            needles[f"{iid}:secret"] = inst["secret_hex"]
+            for n, v in zip(inst["theta_names"], inst["theta"]):
+                needles[f"{iid}:{n}"] = repr(float(v))[:10]
+    files = [os.path.join(ROOT, "results", f) for f in os.listdir(os.path.join(ROOT, "results"))]
+    for root, _, fs in os.walk(scratch):
+        if os.path.abspath(root).startswith(os.path.abspath(store)):
+            continue
+        files += [os.path.join(root, f) for f in fs]
+    hits = 0
+    for f in files:
+        raw = open(f, "rb").read()
+        hits += sum(v.encode() in raw for v in needles.values())
+    return {"instances": len([k for k in needles if k.endswith(":secret")]), "needles": len(needles),
+            "what": "the 64-hex secret and the first 10 characters of every hidden parameter of every instance in the store",
+            "files_scanned": len(files), "hits": hits,
+            "where": "results/*.json and every file under the runs' scratch directories (traces.jsonl, configs, logs, notes)"}
+
+
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--store", default=None)
+    ap.add_argument("--scratch", default=None)
+    a = ap.parse_args()
     ours = json.load(open(os.path.join(ROOT, "results", "proof_ring.json")))
     ref = json.load(open(os.path.join(AE, "results", "proof_ring.json")))
     probe = json.load(open(os.path.join(ROOT, "results", "probe_ring.json")))
@@ -79,6 +110,13 @@ def main():
             "what": "the frozen C submission of each world graded twice: by round 5's evaluator.grader.grade in agentenv's local "
                     "sandbox on the worker, and by this study's reward in the verifier box; per-item, per-cell scores compared",
             "per_world": xs, "all_identical": all(bool(x and x.get("identical")) for x in xs)}}
+
+    d = [abs(r["reward_skill_vs_O"] - w["table"]["policies"][p]["vs_O"]) for w in ours["per_world"] for p, r in w["rollouts"].items()]
+    S["ring_table"]["reward_equals_table"] = {"what": "trace reward (rewards.skill) against per_world[w].table.policies[p].vs_O, 24 rollouts",
+                                              "max_abs_difference": float(max(d))}
+    old = os.path.join(ROOT, "results", "summary.json")
+    prev = json.load(open(old)).get("hidden_value_scan") if os.path.exists(old) else None
+    S["hidden_value_scan"] = scan_for_hidden(a.store, a.scratch) if a.store and a.scratch else prev
 
     # ---- boundary checks and probes ----
     ev = probe["evidence"]

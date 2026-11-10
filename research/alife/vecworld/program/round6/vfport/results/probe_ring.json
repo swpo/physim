@@ -75,10 +75,14 @@
   "d_links_are_left_out_and_the_rest_is_graded": true,
   "d_junk_in_logs_artifacts_does_not_matter": true,
   "predictor_cannot_write_request_or_runtime": true,
-  "one_request_in_the_box_at_a_time": true
+  "one_request_in_the_box_at_a_time": true,
+  "g_lab_placement_guard_refuses_colocated_url_and_sandbox": true,
+  "g_setup_refuses_open_network_and_non_container": true,
+  "g_setup_refuses_token_like_harness_variable": true,
+  "g_single_use_refuses_an_instance_already_opened": true
  },
- "n_checks_new": 33,
- "n_passed_new": 33,
+ "n_checks_new": 37,
+ "n_passed_new": 37,
  "failed_new": [],
  "PILOT_NEVER_REUSE_AS_EXAM": true,
  "instance_id": "probe-ring-w0",
@@ -141,8 +145,8 @@
    "validate_oversize": "submission larger than 2 MiB"
   },
   "slow": {
-   "cpu_s": 4.001577,
-   "wall_s": 4.041100025177002
+   "cpu_s": 3.997961,
+   "wall_s": 4.028506517410278
   },
   "slow_error": "predictor failed (CPU-time limit): ",
   "memory": "ed (exit code 2): MemoryError: Unable to allocate 128. GiB for an array with shape (17179869184,) and data type float64\n",
@@ -237,7 +241,7 @@
   },
   "a_control_marked_not_an_exam": "cleanup between items was disabled by the operator (test hook)",
   "b_lab_process": {
-   "pid": 21808,
+   "pid": 21127,
    "scrubbed_variables": [
     "AWS_ACCESS_KEY_ID",
     "AWS_SECRET_ACCESS_KEY",
@@ -293,7 +297,7 @@
    "environ_read": 1
   },
   "b_trace_scan": {
-   "files_scanned": 79,
+   "files_scanned": 89,
    "needles": [
     "canary",
     "canary_prefix",
@@ -437,7 +441,7 @@
    "symlinks": {
     "graded": true,
     "ok": true,
-    "reward": -0.04250841771561189,
+    "reward": -0.20870009621753846,
     "errors": [],
     "n_failed": 0,
     "n_items": 8,
@@ -454,7 +458,7 @@
    "junk": {
     "graded": true,
     "ok": true,
-    "reward": -0.04250841771561189,
+    "reward": -0.20870009621753846,
     "errors": [],
     "n_failed": 0,
     "n_items": 8,
@@ -524,6 +528,22 @@
     "marked": "the defensive collection was disabled by the operator (test hook)"
    }
   },
+  "g_guard_runs": {
+   "token_env": {
+    "graded": false,
+    "trace_ok": false,
+    "trace_errors": [
+     "TaskError"
+    ]
+   },
+   "single_use": {
+    "graded": false,
+    "trace_ok": false,
+    "trace_errors": [
+     "TaskError"
+    ]
+   }
+  },
   "verifier_box_identity_item_1": {
    "write_submission": "PermissionError",
    "write_request": "PermissionError",
@@ -554,21 +574,21 @@
   "probe-agent": {
    "graded": true,
    "ok": true,
-   "reward": -0.04250841771561189,
+   "reward": -0.20870009621753846,
    "wall_s": {
-    "boot": 0.7233195304870605,
-    "setup": 6.651846408843994,
-    "agent": 12.089905023574829,
-    "finalize": 0.08078932762145996,
-    "verifier": 5.792295932769775,
-    "total": 25.33815622329712
+    "boot": 0.5591413974761963,
+    "setup": 5.489225625991821,
+    "agent": 11.282476902008057,
+    "finalize": 0.07757973670959473,
+    "verifier": 4.922144174575806,
+    "total": 22.330567836761475
    },
    "cpu_s": {
-    "agent_box": 9.95075,
-    "verifier_box": 3.80988,
-    "worker_in_reward": 0.03977596100000014
+    "agent_box": 9.66002,
+    "verifier_box": 3.56594,
+    "worker_in_reward": 0.035469896999998696
    },
-   "invocation_wall_s": 35.29928994178772,
+   "invocation_wall_s": 31.04086399078369,
    "address_file_matches_tool_url": true
   },
   "probe-grading": {
@@ -576,19 +596,19 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.7928557395935059,
-    "setup": 6.915066957473755,
-    "agent": 1.7445416450500488,
-    "finalize": 0.4358503818511963,
-    "verifier": 10.152066230773926,
-    "total": 20.04038095474243
+    "boot": 0.5473079681396484,
+    "setup": 5.505103588104248,
+    "agent": 1.56754469871521,
+    "finalize": 0.34959888458251953,
+    "verifier": 9.30895733833313,
+    "total": 17.278512477874756
    },
    "cpu_s": {
-    "agent_box": 1.51638,
-    "verifier_box": 6.53572,
-    "worker_in_reward": 0.034043545000001174
+    "agent_box": 1.43072,
+    "verifier_box": 6.34912,
+    "worker_in_reward": 0.03276476599999967
    },
-   "invocation_wall_s": 30.3475079536438,
+   "invocation_wall_s": 26.192547082901,
    "address_file_matches_tool_url": true
   },
   "probe-grading-nocleanup": {
@@ -596,19 +616,19 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6387424468994141,
-    "setup": 6.575656890869141,
-    "agent": 1.4193298816680908,
-    "finalize": 0.4545934200286865,
-    "verifier": 9.304743766784668,
-    "total": 18.39306640625
+    "boot": 0.590986967086792,
+    "setup": 6.56696891784668,
+    "agent": 1.3369653224945068,
+    "finalize": 0.360609769821167,
+    "verifier": 8.533909320831299,
+    "total": 17.389440298080444
    },
    "cpu_s": {
-    "agent_box": 1.42493,
-    "verifier_box": 5.75247,
-    "worker_in_reward": 0.03711479900000114
+    "agent_box": 1.33643,
+    "verifier_box": 5.46722,
+    "worker_in_reward": 0.03815273599999891
    },
-   "invocation_wall_s": 28.722196340560913,
+   "invocation_wall_s": 26.352429389953613,
    "address_file_matches_tool_url": true
   },
   "hostile-delete": {
@@ -616,19 +636,19 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6260418891906738,
-    "setup": 6.551738262176514,
-    "agent": 0.8683338165283203,
-    "finalize": 0.1701819896697998,
-    "verifier": 0.9671173095703125,
-    "total": 9.18341326713562
+    "boot": 0.606895923614502,
+    "setup": 6.528242111206055,
+    "agent": 0.7296979427337646,
+    "finalize": 0.14261937141418457,
+    "verifier": 0.7443032264709473,
+    "total": 8.751758575439453
    },
    "cpu_s": {
-    "agent_box": 0.651467,
-    "verifier_box": 0.503181,
-    "worker_in_reward": 0.009174963999999619
+    "agent_box": 0.666823,
+    "verifier_box": 0.471322,
+    "worker_in_reward": 0.009345006999998517
    },
-   "invocation_wall_s": 19.045000791549683,
+   "invocation_wall_s": 17.802112340927124,
    "address_file_matches_tool_url": true
   },
   "hostile-empty": {
@@ -636,19 +656,19 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6077218055725098,
-    "setup": 6.55446457862854,
-    "agent": 0.7252142429351807,
-    "finalize": 0.3454091548919678,
-    "verifier": 0.8548305034637451,
-    "total": 9.087640285491943
+    "boot": 0.5759429931640625,
+    "setup": 6.551186800003052,
+    "agent": 0.763251543045044,
+    "finalize": 0.35122227668762207,
+    "verifier": 0.7575399875640869,
+    "total": 8.999143600463867
    },
    "cpu_s": {
-    "agent_box": 0.743616,
-    "verifier_box": 0.554687,
-    "worker_in_reward": 0.009559857999999366
+    "agent_box": 0.763343,
+    "verifier_box": 0.486742,
+    "worker_in_reward": 0.009399971999998868
    },
-   "invocation_wall_s": 18.636464834213257,
+   "invocation_wall_s": 17.86389398574829,
    "address_file_matches_tool_url": true
   },
   "hostile-oversize": {
@@ -656,19 +676,19 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5877358913421631,
-    "setup": 6.526666879653931,
-    "agent": 0.7593097686767578,
-    "finalize": 0.5043737888336182,
-    "verifier": 0.7438240051269531,
-    "total": 9.121910333633423
+    "boot": 0.5990331172943115,
+    "setup": 6.541924476623535,
+    "agent": 0.8146810531616211,
+    "finalize": 0.36405444145202637,
+    "verifier": 0.7398085594177246,
+    "total": 9.059501647949219
    },
    "cpu_s": {
-    "agent_box": 0.800745,
-    "verifier_box": 0.477756,
-    "worker_in_reward": 0.009470046000000565
+    "agent_box": 0.776523,
+    "verifier_box": 0.47969,
+    "worker_in_reward": 0.009422810000000226
    },
-   "invocation_wall_s": 17.90860867500305,
+   "invocation_wall_s": 18.122827768325806,
    "address_file_matches_tool_url": true
   },
   "hostile-huge": {
@@ -676,19 +696,19 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5762171745300293,
-    "setup": 6.563749074935913,
-    "agent": 0.8109109401702881,
-    "finalize": 0.4334092140197754,
-    "verifier": 0.7467906475067139,
-    "total": 9.13107705116272
+    "boot": 0.5516185760498047,
+    "setup": 5.5071728229522705,
+    "agent": 0.8058702945709229,
+    "finalize": 0.3991715908050537,
+    "verifier": 0.7456443309783936,
+    "total": 8.009477615356445
    },
    "cpu_s": {
-    "agent_box": 0.764827,
-    "verifier_box": 0.495059,
-    "worker_in_reward": 0.00945777599999964
+    "agent_box": 0.782015,
+    "verifier_box": 0.483656,
+    "worker_in_reward": 0.009081526999999312
    },
-   "invocation_wall_s": 18.23854660987854,
+   "invocation_wall_s": 16.886279582977295,
    "address_file_matches_tool_url": true
   },
   "hostile-no_tar": {
@@ -696,59 +716,59 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6050527095794678,
-    "setup": 6.52928352355957,
-    "agent": 0.8325867652893066,
-    "finalize": 0.31987977027893066,
-    "verifier": 0.8468153476715088,
-    "total": 9.133618116378784
+    "boot": 0.6109066009521484,
+    "setup": 6.526652097702026,
+    "agent": 0.7729349136352539,
+    "finalize": 0.278289794921875,
+    "verifier": 0.7814931869506836,
+    "total": 8.970276594161987
    },
    "cpu_s": {
-    "agent_box": 0.749796,
-    "verifier_box": 0.527723,
-    "worker_in_reward": 0.009818872000000312
+    "agent_box": 0.745907,
+    "verifier_box": 0.500954,
+    "worker_in_reward": 0.00873501499999918
    },
-   "invocation_wall_s": 18.27962565422058,
+   "invocation_wall_s": 17.861825942993164,
    "address_file_matches_tool_url": true
   },
   "hostile-symlinks": {
    "graded": true,
    "ok": true,
-   "reward": -0.04250841771561189,
+   "reward": -0.20870009621753846,
    "wall_s": {
-    "boot": 0.6318199634552002,
-    "setup": 6.5892016887664795,
-    "agent": 0.7814505100250244,
-    "finalize": 0.3853280544281006,
-    "verifier": 5.1960601806640625,
-    "total": 13.583860397338867
+    "boot": 0.608177900314331,
+    "setup": 6.5349836349487305,
+    "agent": 0.786827564239502,
+    "finalize": 0.38670849800109863,
+    "verifier": 5.040814638137817,
+    "total": 13.35751223564148
    },
    "cpu_s": {
-    "agent_box": 0.762113,
-    "verifier_box": 3.76438,
-    "worker_in_reward": 0.03670916100000099
+    "agent_box": 0.775666,
+    "verifier_box": 3.65448,
+    "worker_in_reward": 0.03562708199999953
    },
-   "invocation_wall_s": 22.64008927345276,
+   "invocation_wall_s": 22.40064024925232,
    "address_file_matches_tool_url": true
   },
   "hostile-junk": {
    "graded": true,
    "ok": true,
-   "reward": -0.04250841771561189,
+   "reward": -0.20870009621753846,
    "wall_s": {
-    "boot": 0.6462225914001465,
-    "setup": 6.574154376983643,
-    "agent": 0.7923531532287598,
-    "finalize": 0.3635861873626709,
-    "verifier": 5.281987905502319,
-    "total": 13.658304214477539
+    "boot": 0.5604276657104492,
+    "setup": 5.534665584564209,
+    "agent": 0.7811999320983887,
+    "finalize": 0.35016489028930664,
+    "verifier": 5.0375144481658936,
+    "total": 12.263972520828247
    },
    "cpu_s": {
-    "agent_box": 0.75951,
-    "verifier_box": 3.80788,
-    "worker_in_reward": 0.04204587599999954
+    "agent_box": 0.755082,
+    "verifier_box": 3.59541,
+    "worker_in_reward": 0.03674544100000077
    },
-   "invocation_wall_s": 23.34359884262085,
+   "invocation_wall_s": 21.337925910949707,
    "address_file_matches_tool_url": true
   },
   "stock-delete": {
@@ -756,19 +776,19 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.5992212295532227,
-    "setup": 6.537464618682861,
-    "agent": 0.7576227188110352,
-    "finalize": 0.15144753456115723,
-    "verifier": 0.808903694152832,
-    "total": 8.854659795761108
+    "boot": 0.5869624614715576,
+    "setup": 6.542507171630859,
+    "agent": 0.733020544052124,
+    "finalize": 0.14428305625915527,
+    "verifier": 0.7333519458770752,
+    "total": 8.740125179290771
    },
    "cpu_s": {
-    "agent_box": 0.693264,
-    "verifier_box": 0.50685,
-    "worker_in_reward": 0.008667749999998975
+    "agent_box": 0.660801,
+    "verifier_box": 0.476861,
+    "worker_in_reward": 0.008777373000000921
    },
-   "invocation_wall_s": 18.348906993865967,
+   "invocation_wall_s": 17.472262859344482,
    "address_file_matches_tool_url": true
   },
   "stock-huge": {
@@ -776,19 +796,19 @@
    "ok": false,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6478817462921143,
-    "setup": 6.564934730529785,
-    "agent": 0.8473892211914062,
-    "finalize": 0.39291977882385254,
+    "boot": 0.6179304122924805,
+    "setup": 6.5065977573394775,
+    "agent": 0.7978215217590332,
+    "finalize": 0.38016486167907715,
     "verifier": null,
-    "total": 8.453125476837158
+    "total": 8.302514553070068
    },
    "cpu_s": {
-    "agent_box": 0.694525,
+    "agent_box": 0.672166,
     "verifier_box": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 16.730692148208618,
+   "invocation_wall_s": 16.50839614868164,
    "address_file_matches_tool_url": true
   },
   "stock-no_tar": {
@@ -796,19 +816,19 @@
    "ok": false,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6243681907653809,
-    "setup": 6.556517601013184,
-    "agent": 0.8185245990753174,
-    "finalize": 0.31139683723449707,
+    "boot": 0.5761260986328125,
+    "setup": 6.544180154800415,
+    "agent": 0.7913088798522949,
+    "finalize": 0.28612351417541504,
     "verifier": null,
-    "total": 8.310807228088379
+    "total": 8.197738647460938
    },
    "cpu_s": {
-    "agent_box": 0.678825,
+    "agent_box": 0.649173,
     "verifier_box": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 16.411747455596924,
+   "invocation_wall_s": 16.173475742340088,
    "address_file_matches_tool_url": true
   },
   "stock-symlinks": {
@@ -816,19 +836,19 @@
    "ok": true,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6067695617675781,
-    "setup": 6.55675196647644,
-    "agent": 0.7675235271453857,
-    "finalize": 0.3479158878326416,
+    "boot": 0.578453779220581,
+    "setup": 6.538663864135742,
+    "agent": 0.7802176475524902,
+    "finalize": 0.3543996810913086,
     "verifier": null,
-    "total": 8.278960943222046
+    "total": 8.251734972000122
    },
    "cpu_s": {
-    "agent_box": 0.621115,
+    "agent_box": 0.602871,
     "verifier_box": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 17.24705696105957,
+   "invocation_wall_s": 17.218631982803345,
    "address_file_matches_tool_url": true
   },
   "stock-junk": {
@@ -836,21 +856,61 @@
    "ok": false,
    "reward": 0.0,
    "wall_s": {
-    "boot": 0.6354930400848389,
-    "setup": 6.543367624282837,
-    "agent": 0.7491488456726074,
-    "finalize": 0.42944908142089844,
+    "boot": 0.6160714626312256,
+    "setup": 6.569239377975464,
+    "agent": 0.8290963172912598,
+    "finalize": 0.4433324337005615,
     "verifier": null,
-    "total": 8.357458591461182
+    "total": 8.45773959159851
    },
    "cpu_s": {
-    "agent_box": 0.66485,
+    "agent_box": 0.732326,
     "verifier_box": null,
     "worker_in_reward": null
    },
-   "invocation_wall_s": 16.599753856658936,
+   "invocation_wall_s": 16.948694229125977,
    "address_file_matches_tool_url": true
+  },
+  "guard-token-env": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6041104793548584,
+    "setup": 0.0011529922485351562,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.6052634716033936
+   },
+   "cpu_s": {
+    "agent_box": null,
+    "verifier_box": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 8.763625383377075,
+   "address_file_matches_tool_url": null
+  },
+  "guard-single-use": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6000580787658691,
+    "setup": 0.16048192977905273,
+    "agent": 0,
+    "finalize": 0,
+    "verifier": null,
+    "total": 0.7605400085449219
+   },
+   "cpu_s": {
+    "agent_box": null,
+    "verifier_box": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 8.97227430343628,
+   "address_file_matches_tool_url": null
   }
  },
- "wall_s": 327.59729957580566
+ "wall_s": 327.510404586792
 }

@@ -69,7 +69,8 @@ the table on the K-to-C scale, for example (cloud container, one world) `{"O": 1
 - `per_world[0].rollouts.*.grade.layers` is `{"rlimits": true, "uid": 1000, "cleanup": true}`;
 - `per_world[0].same_submission_through_round5_grader.identical` is `true` (the same frozen submission graded by
   round 5's own grader and by this route gives the same 64 x 7 scores). This check runs agentenv's local
-  sandbox, which needs Linux; on the Mac it will record an error instead. That is expected; ignore it there.
+  sandbox, written for Linux (namespaces, prlimit); on the Mac it may record an error or differ in the last
+  digits (another numpy build than the box's). Report what it says; it is not a blocker there.
 - D below P0 below C, O above C (ordering, not values).
 
 Expected from (b): the last line reports `"failed_round5": []` and `"failed_new": []`. Open questions that only
