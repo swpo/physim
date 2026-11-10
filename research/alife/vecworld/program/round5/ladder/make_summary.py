@@ -217,6 +217,11 @@ def main():
                          "C_minus_P0": cell["params_matter"]["C_minus_P0"]["gap"],
                          "state_given_gap": r4(1.0 - A["plugPM"]), "oes_C": r4(A["C"]),
                          "geo_contraction_2": cell["identifiability_mix"].get(str(bs[0]), {}).get("geo_mean_contraction"),
+                         "geo_contraction_last": cell["identifiability_mix"].get(str(bs[-1]), {}).get("geo_mean_contraction"),
+                         "projection_r2_mean": r4(np.mean(ident["emulators"][ck]["projection_r2"])) if ck in ident["emulators"] else None,
+                         "D_last_minus_P0": r4(curves["D"][-1] - A["P0"]), "oes_P0": r4(A["P0"]),
+                         "sigma_last": acc["P0"][str(bs[-1])]["sigma"], "sigma_first": acc["P0"][str(bs[0])]["sigma"],
+                         "vot_at_S2": vot["at_skill_of_S_at_2"]["ratio"],
                          "N90_S": n90["S"], "N90_D": n90["D"],
                          "N90_D_rank": n90["D"] if n90["D"] is not None else 4.0 * bs[-1],
                          "predictable_fraction": cell["predictable_fraction_L"]})
@@ -252,11 +257,40 @@ def main():
         "table": rows,
         "rank_correlations_spearman": {
             f"{a} ~ {b}": spearman([r[a] for r in rows], [r[b] for r in rows])
-            for a in ("sigma_mid", "N90_D_rank", "rho_2")
+            for a in ("sigma_mid", "sigma_last", "N90_D_rank", "rho_2", "C_minus_P0")
             for b in ("n_hidden", "dim", "C_minus_PM", "C_minus_P0", "state_given_gap", "geo_contraction_2",
-                      "predictable_fraction", "oes_C")} if len(rows) >= 4 else None,
+                      "projection_r2_mean", "predictable_fraction", "oes_C") if a != b} if len(rows) >= 4 else None,
         "note": "one row per cell; sigma_mid = science share at the middle budget; descriptive only (at most 9 cells, "
                 "which share simulations within a hidden set)"}
+    # depth and hidden-set comparisons at a glance (ROADMAP: does depth alone cost over 30 times the episodes?)
+    byc = {r["cell"]: r for r in rows}
+
+    def ratio(a, b):
+        return r4(a / b) if a and b else None
+    depth, hidden = {}, {}
+    for n in info.get("sets_done", []):
+        rr = {v: byc.get(f"n{n}|{v}") for v in LL.VIEWS}
+        if all(rr.values()):
+            depth[f"n{n}"] = {
+                "N90_D": {v: r4(rr[v]["N90_D"]) for v in rr}, "N90_S": {v: r4(rr[v]["N90_S"]) for v in rr},
+                "N90_D_ratio_to_block": {v: ratio(rr[v]["N90_D"], rr["block"]["N90_D"]) for v in ("object", "pop")},
+                "sigma_mid": {v: rr[v]["sigma_mid"] for v in rr}, "sigma_last": {v: rr[v]["sigma_last"] for v in rr},
+                "rho_2": {v: rr[v]["rho_2"] for v in rr}, "C_minus_P0": {v: rr[v]["C_minus_P0"] for v in rr},
+                "geo_contraction_2": {v: rr[v]["geo_contraction_2"] for v in rr}}
+    for v in LL.VIEWS:
+        rr = {n: byc.get(f"n{n}|{v}") for n in sorted(info.get("sets_done", []))}
+        if all(rr.values()) and rr:
+            hidden[v] = {k: {f"n{n}": (r4(rr[n][k]) if isinstance(rr[n][k], float) else rr[n][k]) for n in rr}
+                         for k in ("N90_D", "N90_S", "sigma_mid", "sigma_last", "rho_2", "C_minus_P0", "C_minus_PM",
+                                   "geo_contraction_2", "geo_contraction_last", "state_given_gap")}
+    out["across_cells"]["by_depth_at_fixed_hidden_set"] = depth
+    out["across_cells"]["by_hidden_set_at_fixed_view"] = hidden
+    out["across_cells"]["caveats"] = [
+        "the conditioned net, the P0u net and each D net are one trained net each (no training-seed variance in any SE)",
+        "N90 is the budget at which a curve reaches 90% of the OES of C in that cell: a relative target, so a cell "
+        "where C itself is poor is 'easy' by this measure; read it beside oes_C and sigma",
+        "the views are levels of one exam per truth (same hidden states and programs), the hidden sets are different "
+        "truths and simulations"]
     json.dump(out, open(args.out, "w"), indent=1)
     print("wrote", args.out)
     for r in rows:
