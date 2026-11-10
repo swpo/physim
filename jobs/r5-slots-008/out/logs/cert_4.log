@@ -1,0 +1,9 @@
+06:34:07 [scert 4    71.5s] trk@mp6__certB q=72 certified in 68.5s
+06:39:15 [scert 4   379.9s] km_s3__certA q=144 certified in 296.4s
+06:47:41 [scert 4   885.6s] sam_sup_s0__certB q=144 agreement only in 1.7s
+06:47:42 [scert 4   887.3s] sam_sup_s1__certB q=144 agreement only in 1.7s
+06:49:38 [scert 4  1002.9s] sam_sup_s0@mp6__certA q=72 certified in 115.6s
+07:15:46 [scert 4  2570.8s] sam_set_ws_s1@mp6__certA q=72 certified in 73.7s
+08:23:24 [scert 4  6629.2s] sam_set_dg_s0__certB q=144 agreement only in 1.7s
+08:57:51 [scert 4  8696.1s] sac_rec_s0__certB q=72 certified in 158.5s
+09:09:54 [scert 4  9419.3s] worker exits after 8 items

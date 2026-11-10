@@ -1,0 +1,7 @@
+06:39:53 [scert 14   418.1s] km_s6__certB q=144 certified in 388.1s
+07:37:13 [scert 14  3858.3s] sam_self_s0__certB q=144 agreement only in 1.7s
+07:37:15 [scert 14  3860.0s] sam_self_s1__certB q=144 agreement only in 1.7s
+07:37:17 [scert 14  3861.7s] sam_self_s0__certA q=144 agreement only in 1.7s
+07:49:13 [scert 14  4577.6s] sgm_set_s0__certA q=144 agreement only in 1.7s
+07:49:14 [scert 14  4579.4s] sgm_set_s1__certA q=144 agreement only in 1.7s
+09:09:51 [scert 14  9416.4s] worker exits after 6 items

@@ -1,0 +1,4 @@
+06:37:01 [scert 19   245.8s] trk__certB q=144 certified in 242.8s
+08:13:24 [scert 19  6029.1s] sac_set_s1__certA q=72 certified in 217.3s
+09:08:48 [scert 19  9352.6s] sam_set_ws_dg_s1__certA q=144 agreement only in 1.8s
+09:09:54 [scert 19  9418.7s] worker exits after 3 items

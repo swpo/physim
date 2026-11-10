@@ -1,0 +1,22 @@
+06:30:28 [job] nproc 30, cert workers 27, train deadline +10400s, cert deadline +11200s, workers killed at +11900s, size pilot
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)] backend gpu
+09:10:10 [job] certification finished; 116 halves certified, 0 left unclaimed, 0 workers killed at the hard limit (their items are not certified)
+09:10:23 [job] scombine FAILED
+09:10:20 [scombine     7.2s] pooled 58 phis; problems []
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r5-slots-008/src/research/alife/vecworld/program/round5/slots/scombine.py", line 244, in <module>
+    main()
+  File "/home/ubuntu/gpujob/r5-slots-008/src/research/alife/vecworld/program/round5/slots/scombine.py", line 233, in main
+    lines.append(f"{nm:22s} " + " ".join(f"{k} {np.mean(o[k]['val']):7.4f}" for k in ("set", "self", "rec") if o.get(k)))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-008/src/research/alife/vecworld/program/round5/slots/scombine.py", line 233, in <genexpr>
+    lines.append(f"{nm:22s} " + " ".join(f"{k} {np.mean(o[k]['val']):7.4f}" for k in ("set", "self", "rec") if o.get(k)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-008/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 3862, in mean
+    return _methods._mean(a, axis=axis, dtype=dtype,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-008/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py", line 132, in _mean
+    ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'NoneType'
+09:10:23 [job] OUT size 11M; elapsed 9595s; done, FAIL=1

@@ -1,0 +1,3 @@
+06:39:21 [scert 12   386.1s] km_s3__certB q=144 certified in 302.0s
+07:01:20 [scert 12  1705.0s] sam_set_s1__certA q=144 agreement only in 1.8s
+09:09:52 [scert 12  9416.5s] worker exits after 2 items

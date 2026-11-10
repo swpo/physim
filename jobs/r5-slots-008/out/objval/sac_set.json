@@ -1,0 +1,132 @@
+{
+ "name": "sac_set",
+ "reps": [
+  "A0",
+  "A1",
+  "B0",
+  "B1"
+ ],
+ "steps": 1000,
+ "batch": 32,
+ "set": {
+  "val": [
+   null,
+   null,
+   null,
+   null
+  ],
+  "val_h": [
+   [
+    null,
+    null,
+    null
+   ],
+   [
+    null,
+    null,
+    null
+   ],
+   [
+    null,
+    null,
+    null
+   ],
+   [
+    null,
+    null,
+    null
+   ]
+  ],
+  "train_last_chunk": [
+   null,
+   null,
+   null,
+   null
+  ],
+  "dead_pen": [
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ "self": {
+  "val": [
+   null,
+   null,
+   null,
+   null
+  ],
+  "val_h": [
+   [
+    null,
+    null,
+    null
+   ],
+   [
+    null,
+    null,
+    null
+   ],
+   [
+    null,
+    null,
+    null
+   ],
+   [
+    null,
+    null,
+    null
+   ]
+  ],
+  "train_last_chunk": [
+   null,
+   null,
+   null,
+   null
+  ],
+  "dead_pen": [
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ "rec": {
+  "val": [
+   0.9421352744102478,
+   0.9421146512031555,
+   0.9415597915649414,
+   0.9415625333786011
+  ],
+  "val_h": [
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "train_last_chunk": [
+   0.9418380260467529,
+   0.9418997764587402,
+   0.9416784644126892,
+   0.9416906237602234
+  ]
+ },
+ "seconds": 61.43813943862915
+}

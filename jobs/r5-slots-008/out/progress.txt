@@ -1,0 +1,288 @@
+06:30:28 [job] nproc 30, cert workers 27, train deadline +10400s, cert deadline +11200s, workers killed at +11900s, size pilot
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)] backend gpu
+name, memory.total [MiB], driver_version
+NVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08
+               total        used        free      shared  buff/cache   available
+Mem:             216           1         207           0           7         212
+/dev/vda1       497G   31G  466G   7% /
+06:30:37 [ssim     0.4s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} size pilot
+06:30:55 [ssim    19.0s] A init + burn-in 48 members 17.7 s
+06:31:16 [ssim    39.4s] A branches at tick 40 {'init_burn': 17.7, 'base': 10.8, 'branch': 9.4, 'tracker': 5.8}
+06:31:23 [ssim    46.6s] A branches at tick 100 {'init_burn': 17.7, 'base': 15.7, 'branch': 11.6, 'tracker': 6.2}
+06:31:30 [ssim    54.0s] A branches at tick 160 {'init_burn': 17.7, 'base': 20.6, 'branch': 14.2, 'tracker': 6.7}
+06:31:38 [ssim    61.6s] A branches at tick 220 {'init_burn': 17.7, 'base': 26.0, 'branch': 16.4, 'tracker': 7.1}
+06:31:45 [ssim    69.1s] A saved {'init_burn': 17.7, 'base': 32.5, 'branch': 16.4, 'tracker': 7.6} member-ticks/s {'base': 442.6, 'branch': 312.0} tracker check {'mem_maxabs_vs_world': 2.5011104298755527e-12, 'readout_maxabs_vs_L1': 1.4901161193847656e-08} objects {'count_mean': 7.3986018826135105, 'count_min': 3, 'count_max': 12, 'mass_in_objects_mean': 1438.506103515625, 'events_per_traj': {'birth': 0.0, 'fission': 131.29166666666666, 'fusion': 66.5625, 'fused': 68.0625, 'death': 0.0}}
+06:32:02 [ssim    86.3s] B init + burn-in 48 members 16.9 s
+06:32:21 [ssim   104.8s] B branches at tick 40 {'init_burn': 16.9, 'base': 10.2, 'branch': 8.3, 'tracker': 5.9}
+06:32:29 [ssim   112.4s] B branches at tick 100 {'init_burn': 16.9, 'base': 15.5, 'branch': 10.6, 'tracker': 6.3}
+06:32:36 [ssim   119.6s] B branches at tick 160 {'init_burn': 16.9, 'base': 20.4, 'branch': 12.8, 'tracker': 6.8}
+06:32:43 [ssim   126.7s] B branches at tick 220 {'init_burn': 16.9, 'base': 25.3, 'branch': 15.1, 'tracker': 7.2}
+06:32:51 [ssim   134.6s] B saved {'init_burn': 16.9, 'base': 31.9, 'branch': 15.1, 'tracker': 7.7} member-ticks/s {'base': 451.3, 'branch': 340.1} tracker check {'mem_maxabs_vs_world': 2.2737367544323206e-12, 'readout_maxabs_vs_L1': 0.0} objects {'count_mean': 7.531976744186046, 'count_min': 3, 'count_max': 12, 'mass_in_objects_mean': 1441.21875, 'events_per_traj': {'birth': 0.020833333333333332, 'fission': 138.02083333333334, 'fusion': 69.35416666666667, 'fused': 70.97916666666667, 'death': 0.0}}
+06:32:51 [ssim   134.6s] done
+06:32:57 [strain     2.8s] data on device (48, 301, 2, 128, 128) (320, 16, 2, 128, 128) (48, 301, 128, 128) per half; train trajectories per half 44 0.0 GB peak, 0.0 GB in use
+06:32:57 [strain     2.9s] references queued: trk, trk@mp6, hand_mass, hand_chan
+06:33:04 [scert 8     9.4s] hand_mass__certA q=64 certified in 6.4s
+06:33:05 [scert 13     9.6s] hand_mass__certB q=64 certified in 6.6s
+06:33:22 [scert 26    26.6s] hand_chan__certB q=128 certified in 23.6s
+06:33:22 [scert 18    27.3s] hand_chan__certA q=128 certified in 24.3s
+06:33:47 [strain    52.5s] km_s6: encoded both halves in 49.6s, 0.0 GB peak, 0.0 GB in use
+06:34:07 [scert 4    71.5s] trk@mp6__certB q=72 certified in 68.5s
+06:34:11 [scert 20    76.1s] trk@mp6__certA q=72 certified in 73.1s
+06:34:46 [strain   112.3s] km_s3: encoded both halves in 59.8s, 0.0 GB peak, 0.0 GB in use
+06:35:46 [scert 1   171.0s] km_s6@mp6__certB q=72 certified in 141.0s
+06:35:49 [scert 26   173.6s] km_s6@mp6__certA q=72 certified in 144.0s
+06:36:20 [strain   206.0s] km_s6w: encoded both halves in 93.7s, 0.0 GB peak, 0.0 GB in use
+06:36:30 [strain   215.8s] grid: encoded both halves in 9.9s, 0.0 GB peak, 0.0 GB in use
+06:36:58 [scert 3   242.5s] km_s3@mp6__certA q=72 certified in 158.5s
+06:37:01 [scert 19   245.8s] trk__certB q=144 certified in 242.8s
+06:37:01 [scert 15   246.2s] km_s3@mp6__certB q=72 certified in 162.1s
+06:37:14 [scert 21   258.8s] trk__certA q=144 certified in 255.8s
+06:38:14 [strain   319.9s] objective values trk: set [0.4498, 0.4489, 0.4555, 0.4567], self [0.447, 0.4564, 0.4601, 0.4601], rec [0.5195, 0.5293, 0.5586, 0.5888] (104.0s)
+06:38:30 [scert 22   335.1s] km_s6w@mp6__certA q=72 certified in 173.0s
+06:38:47 [scert 25   352.2s] km_s6w@mp6__certB q=72 certified in 190.1s
+06:39:00 [strain   365.5s] objective values km_s6: set [0.36, 0.3712, 0.3359, 0.3439], self [0.3795, 0.3869, 0.351, 0.3479], rec [0.532, 0.5446, 0.5336, 0.5558] (45.6s)
+06:39:15 [scert 4   379.9s] km_s3__certA q=144 certified in 296.4s
+06:39:21 [scert 12   386.1s] km_s3__certB q=144 certified in 302.0s
+06:39:45 [strain   411.1s] objective values km_s3: set [0.3229, 0.3067, 0.3296, 0.3246], self [0.329, 0.3345, 0.3384, 0.3189], rec [0.4676, 0.4683, 0.4734, 0.4832] (45.5s)
+06:39:53 [scert 14   418.1s] km_s6__certB q=144 certified in 388.1s
+06:40:13 [scert 13   437.4s] km_s6__certA q=144 certified in 409.8s
+06:40:31 [strain   456.7s] objective values km_s6w: set [0.317, 0.316, 0.3213, 0.3122], self [0.3245, 0.3305, 0.3205, 0.3167], rec [0.5039, 0.5066, 0.5016, 0.5208] (45.6s)
+06:41:16 [strain   502.1s] objective values grid: set [0.6929, 0.6879, 0.686, 0.6678], self [0.7009, 0.6958, 0.6765, 0.6832], rec [0.6474, 0.6545, 0.665, 0.6671] (45.4s)
+06:41:32 [scert 6   517.0s] km_s6w__certB q=144 certified in 354.9s
+06:41:36 [scert 26   521.2s] grid__certA q=144 certified in 308.5s
+06:41:42 [scert 17   527.3s] km_s6w__certA q=144 certified in 365.3s
+06:41:49 [scert 7   533.6s] grid__certB q=144 certified in 320.5s
+06:42:43 [strain   589.5s] sam_sup: step 100, chunk 70.8s, train [0.3121, 0.2981, 0.3184, 0.2775], val [0.3100999891757965, 0.29420000314712524, 0.35589998960494995, 0.16850000619888306], tracker recall+purity [1.690000057220459, 1.7059999704360962, 1.6440000534057617, 1.8320000171661377], skipped 0
+06:42:50 [scert 16   594.5s] grid@mp6__certB q=72 certified in 381.4s
+06:42:54 [strain   599.6s] sam_sup: step 200, chunk 9.4s, train [0.2434, 0.2616, 0.2728, 0.1841], val [0.2295999974012375, 0.2874000072479248, 0.2175000011920929, 0.2037000060081482], tracker recall+purity [1.7699999809265137, 1.7130000591278076, 1.7829999923706055, 1.7960000038146973], skipped 0
+06:43:09 [scert 1   613.9s] grid@mp6__certA q=72 certified in 400.9s
+06:44:10 [strain   675.7s] sam_sup: step 1000, chunk 9.4s, train [0.1581, 0.2573, 0.1584, 0.123], val [0.1468999981880188, 0.18889999389648438, 0.1662999987602234, 0.1370999962091446], tracker recall+purity [1.8530000448226929, 1.8109999895095825, 1.8339999914169312, 1.8630000352859497], skipped 0
+06:45:45 [strain   770.7s] sam_sup: step 2000, chunk 9.4s, train [0.1385, 0.1646, 0.1501, 0.1543], val [0.13500000536441803, 0.1582999974489212, 0.15639999508857727, 0.1339000016450882], tracker recall+purity [1.8650000095367432, 1.8420000076293945, 1.843999981880188, 1.8660000562667847], skipped 0
+06:47:20 [strain   865.8s] sam_sup: step 3000, chunk 9.4s, train [0.1311, 0.1473, 0.1459, 0.2848], val [0.13529999554157257, 0.13940000534057617, 0.14980000257492065, 0.304500013589859], tracker recall+purity [1.8650000095367432, 1.8609999418258667, 1.850000023841858, 1.6959999799728394], skipped 0
+06:47:41 [scert 4   885.6s] sam_sup_s0__certB q=144 agreement only in 1.7s
+06:47:42 [scert 4   887.3s] sam_sup_s1__certB q=144 agreement only in 1.7s
+06:47:44 [scert 26   888.9s] sam_sup_s0__certA q=144 agreement only in 1.7s
+06:47:46 [scert 6   890.8s] sam_sup_s1__certA q=144 agreement only in 1.8s
+06:47:46 [strain   892.2s] sam_sup: steps 3000, val [0.3531999886035919, 0.3531999886035919, 0.3977000117301941, 0.3977000117301941] -> [0.1293, 0.1327, 0.1415, 0.1251] (best at [2400, 2800, 2700, 900]), skipped 0, train 363.6s (chunk 9.4s), total 389.9s, 0.0 GB peak, 0.0 GB in use
+06:48:49 [strain   954.7s] objective values sam_sup: set [0.4105, 0.4038, 0.4041, 0.465], self [0.4134, 0.4002, 0.4047, 0.4634], rec [0.5533, 0.5457, 0.5788, 0.5808] (62.0s)
+06:49:38 [scert 4  1002.9s] sam_sup_s0@mp6__certA q=72 certified in 115.6s
+06:49:41 [scert 16  1005.4s] sam_sup_s1@mp6__certB q=72 certified in 119.9s
+06:49:42 [scert 1  1007.0s] sam_sup_s0@mp6__certB q=72 certified in 123.1s
+06:50:07 [scert 20  1031.9s] sam_sup_s1@mp6__certA q=72 certified in 142.6s
+06:50:28 [strain  1054.1s] sam_set: step 100, chunk 85.3s, train [0.3717, 0.4111, 0.3576, 0.3784], val [0.3142000138759613, 0.3174999952316284, 0.2768999934196472, 0.26669999957084656], tracker recall+purity [1.6460000276565552, 1.6490000486373901, 1.6430000066757202, 1.6449999809265137], skipped 24
+06:50:50 [strain  1076.4s] sam_set: step 200, chunk 21.5s, train [0.2828, 0.2889, 0.3147, 0.2918], val [0.3813999891281128, 0.3294999897480011, 0.28380000591278076, 0.2702000141143799], tracker recall+purity [1.6519999504089355, 1.652999997138977, 1.6490000486373901, 1.6430000066757202], skipped 8
+06:53:44 [strain  1250.2s] sam_set: step 1000, chunk 21.6s, train [0.2444, 0.25, 0.2489, 0.2536], val [0.3149999976158142, 0.26579999923706055, 0.22509999573230743, 0.2703999876976013], tracker recall+purity [1.6510000228881836, 1.6549999713897705, 1.659999966621399, 1.6449999809265137], skipped 0
+06:57:22 [strain  1467.5s] sam_set: step 2000, chunk 21.6s, train [0.2362, 0.2327, 0.2415, 0.2416], val [0.2953000068664551, 0.21070000529289246, 0.23880000412464142, 0.24809999763965607], tracker recall+purity [1.6519999504089355, 1.6549999713897705, 1.6460000276565552, 1.6490000486373901], skipped 0
+07:00:59 [strain  1684.8s] sam_set: step 3000, chunk 21.6s, train [0.2313, 0.2289, 0.2331, 0.237], val [0.2879999876022339, 0.2517000138759613, 0.2282000035047531, 0.2515999972820282], tracker recall+purity [1.652999997138977, 1.652999997138977, 1.652999997138977, 1.6469999551773071], skipped 0
+07:01:15 [scert 2  1700.1s] sam_set_s0__certB q=144 agreement only in 1.8s
+07:01:17 [scert 1  1701.7s] sam_set_s1__certB q=144 agreement only in 1.7s
+07:01:18 [scert 8  1703.5s] sam_set_s0__certA q=144 agreement only in 1.8s
+07:01:20 [scert 12  1705.0s] sam_set_s1__certA q=144 agreement only in 1.8s
+07:01:20 [strain  1706.3s] sam_set: steps 3000, val [0.770799994468689, 0.770799994468689, 0.7782999873161316, 0.7782999873161316] -> [0.2388, 0.2061, 0.2068, 0.2448] (best at [1500, 2100, 2500, 900]), skipped 36, train 730.1s (chunk 21.6s), total 751.4s, 0.0 GB peak, 0.0 GB in use
+07:02:21 [scert 27  1766.0s] sam_set_s0@mp6__certB q=72 certified in 67.7s
+07:02:23 [strain  1769.2s] objective values sam_set: set [0.2982, 0.2693, 0.2941, 0.2953], self [0.3054, 0.2818, 0.2897, 0.2906], rec [0.4621, 0.4609, 0.4629, 0.4765] (62.4s)
+07:02:26 [scert 16  1770.6s] sam_set_s0@mp6__certA q=72 certified in 69.1s
+07:02:27 [scert 2  1772.0s] sam_set_s1@mp6__certB q=72 certified in 71.9s
+07:02:39 [scert 8  1784.4s] sam_set_s1@mp6__certA q=72 certified in 80.9s
+07:03:43 [strain  1848.6s] sam_set_ws: step 100, chunk 67.4s, train [0.4781, 0.4602, 0.5181, 0.5338], val [0.4341000020503998, 0.4088999927043915, 0.5885999798774719, 0.4814000129699707], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0
+07:04:05 [strain  1870.9s] sam_set_ws: step 200, chunk 21.5s, train [0.4107, 0.3951, 0.4638, 0.4557], val [0.4291999936103821, 0.4043999910354614, 0.44190001487731934, 0.46639999747276306], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0
+07:06:58 [strain  2044.4s] sam_set_ws: step 1000, chunk 21.6s, train [0.2728, 0.2598, 0.2415, 0.2753], val [0.3003999888896942, 0.30000001192092896, 0.23960000276565552, 0.26440000534057617], tracker recall+purity [1.656000018119812, 1.659000039100647, 1.6540000438690186, 1.6490000486373901], skipped 0
+07:10:36 [strain  2261.6s] sam_set_ws: step 2000, chunk 21.6s, train [0.2349, 0.2318, 0.2192, 0.2434], val [0.24459999799728394, 0.28060001134872437, 0.22550000250339508, 0.22859999537467957], tracker recall+purity [1.6579999923706055, 1.656000018119812, 1.6519999504089355, 1.6440000534057617], skipped 0
+07:14:13 [strain  2478.6s] sam_set_ws: step 3000, chunk 21.6s, train [0.2287, 0.2313, 0.2204, 0.2349], val [0.2513999938964844, 0.26570001244544983, 0.20579999685287476, 0.2484000027179718], tracker recall+purity [1.6679999828338623, 1.656000018119812, 1.6510000228881836, 1.6480000019073486], skipped 0
+07:14:29 [scert 2  2493.8s] sam_set_ws_s0__certB q=144 agreement only in 1.7s
+07:14:30 [scert 15  2495.2s] sam_set_ws_s1__certB q=144 agreement only in 1.7s
+07:14:32 [scert 8  2497.2s] sam_set_ws_s0__certA q=144 agreement only in 1.8s
+07:14:34 [scert 8  2498.9s] sam_set_ws_s1__certA q=144 agreement only in 1.7s
+07:14:34 [strain  2500.0s] sam_set_ws: steps 3000, val [0.9010999798774719, 0.8805999755859375, 0.883899986743927, 0.91839998960495] -> [0.2303, 0.221, 0.2006, 0.2207] (best at [1600, 1900, 2600, 2600]), skipped 0, train 709.2s (chunk 21.6s), total 730.6s, 0.0 GB peak, 0.0 GB in use
+07:15:29 [scert 27  2553.4s] sam_set_ws_s0@mp6__certB q=72 certified in 61.3s
+07:15:37 [strain  2563.0s] objective values sam_set_ws: set [0.3023, 0.2916, 0.2811, 0.2936], self [0.3151, 0.3156, 0.2922, 0.2927], rec [0.4668, 0.4639, 0.4613, 0.4778] (62.3s)
+07:15:40 [scert 10  2564.8s] sam_set_ws_s1@mp6__certB q=72 certified in 71.3s
+07:15:42 [scert 22  2567.2s] sam_set_ws_s0@mp6__certA q=72 certified in 71.8s
+07:15:46 [scert 4  2570.8s] sam_set_ws_s1@mp6__certA q=72 certified in 73.7s
+07:16:50 [strain  2635.8s] sam_rec: step 100, chunk 61.3s, train [0.8543, 0.8833, 0.8971, 0.8765], val [0.6097000241279602, 0.6593999862670898, 0.6531000137329102, 0.6071000099182129], tracker recall+purity [1.6410000324249268, 1.6460000276565552, 1.6410000324249268, 1.6430000066757202], skipped 0
+07:17:05 [strain  2650.7s] sam_rec: step 200, chunk 14.2s, train [0.5695, 0.5847, 0.583, 0.5735], val [0.5598000288009644, 0.564300000667572, 0.5551999807357788, 0.5559999942779541], tracker recall+purity [1.6490000486373901, 1.6480000019073486, 1.6419999599456787, 1.6460000276565552], skipped 0
+07:19:00 [strain  2765.7s] sam_rec: step 1000, chunk 14.3s, train [0.4306, 0.4385, 0.4295, 0.4264], val [0.42980000376701355, 0.43810001015663147, 0.42590001225471497, 0.421099990606308], tracker recall+purity [1.6519999504089355, 1.6540000438690186, 1.6449999809265137, 1.6480000019073486], skipped 0
+07:21:24 [strain  2909.5s] sam_rec: step 2000, chunk 14.3s, train [0.3823, 0.3833, 0.3819, 0.3765], val [0.39079999923706055, 0.3894999921321869, 0.3828999996185303, 0.3783000111579895], tracker recall+purity [1.652999997138977, 1.6519999504089355, 1.649999976158142, 1.6449999809265137], skipped 0
+07:23:47 [strain  3053.2s] sam_rec: step 3000, chunk 14.3s, train [0.3731, 0.3763, 0.3753, 0.3693], val [0.3790000081062317, 0.3806000053882599, 0.3774000108242035, 0.3720000088214874], tracker recall+purity [1.6540000438690186, 1.6510000228881836, 1.6460000276565552, 1.6449999809265137], skipped 0
+07:24:03 [scert 24  3068.2s] sam_rec_s0__certB q=144 agreement only in 1.7s
+07:24:05 [scert 24  3069.9s] sam_rec_s1__certB q=144 agreement only in 1.7s
+07:24:07 [scert 24  3071.8s] sam_rec_s0__certA q=144 agreement only in 1.8s
+07:24:09 [scert 17  3073.4s] sam_rec_s1__certA q=144 agreement only in 1.7s
+07:24:09 [strain  3074.7s] sam_rec: steps 3000, val [1.0, 1.0, 1.0, 1.0] -> [0.379, 0.3777, 0.3756, 0.372] (best at [3000, 2500, 2900, 3000]), skipped 0, train 490.1s (chunk 14.3s), total 511.5s, 0.0 GB peak, 0.0 GB in use
+07:25:12 [strain  3137.7s] objective values sam_rec: set [0.3428, 0.3137, 0.284, 0.2825], self [0.3513, 0.3326, 0.2835, 0.2788], rec [0.4751, 0.4639, 0.4602, 0.4795] (62.4s)
+07:25:22 [scert 22  3146.9s] sam_rec_s1@mp6__certB q=72 certified in 78.7s
+07:25:27 [scert 21  3152.1s] sam_rec_s0@mp6__certA q=72 certified in 81.9s
+07:25:31 [scert 24  3155.9s] sam_rec_s1@mp6__certA q=72 certified in 84.2s
+07:25:34 [scert 5  3159.4s] sam_rec_s0@mp6__certB q=72 certified in 92.9s
+07:26:33 [strain  3219.4s] sam_self: step 100, chunk 67.7s, train [0.3617, 0.4274, 0.4515, 0.3944], val [0.3262999951839447, 0.3619000017642975, 0.2856000065803528, 0.2637999951839447], tracker recall+purity [1.649999976158142, 1.6460000276565552, 1.6449999809265137, 1.6430000066757202], skipped 26
+07:26:56 [strain  3241.5s] sam_self: step 200, chunk 21.3s, train [0.2929, 0.2786, 0.2911, 0.2921], val [0.3221000134944916, 0.3449999988079071, 0.2644999921321869, 0.26589998602867126], tracker recall+purity [1.6510000228881836, 1.6490000486373901, 1.6449999809265137, 1.6449999809265137], skipped 1
+07:29:47 [strain  3413.4s] sam_self: step 1000, chunk 21.4s, train [0.2588, 0.2603, 0.2682, 0.2602], val [0.273499995470047, 0.29100000858306885, 0.26600000262260437, 0.24899999797344208], tracker recall+purity [1.6540000438690186, 1.649999976158142, 1.6480000019073486, 1.649999976158142], skipped 0
+07:33:22 [strain  3628.4s] sam_self: step 2000, chunk 21.4s, train [0.2428, 0.2453, 0.2541, 0.2518], val [0.2793999910354614, 0.30250000953674316, 0.25110000371932983, 0.24580000340938568], tracker recall+purity [1.6540000438690186, 1.649999976158142, 1.6490000486373901, 1.6490000486373901], skipped 0
+07:36:57 [strain  3843.3s] sam_self: step 3000, chunk 21.4s, train [0.2428, 0.2451, 0.2526, 0.2487], val [0.2872999906539917, 0.2962999939918518, 0.23109999299049377, 0.24120000004768372], tracker recall+purity [1.6549999713897705, 1.649999976158142, 1.649999976158142, 1.6490000486373901], skipped 0
+07:37:13 [scert 14  3858.3s] sam_self_s0__certB q=144 agreement only in 1.7s
+07:37:15 [scert 14  3860.0s] sam_self_s1__certB q=144 agreement only in 1.7s
+07:37:17 [scert 14  3861.7s] sam_self_s0__certA q=144 agreement only in 1.7s
+07:37:19 [scert 18  3863.8s] sam_self_s1__certA q=144 agreement only in 1.8s
+07:37:19 [strain  3864.7s] sam_self: steps 3000, val [0.770799994468689, 0.770799994468689, 0.7782999873161316, 0.7782999873161316] -> [0.2551, 0.2586, 0.2299, 0.2285] (best at [1300, 1600, 2600, 1500]), skipped 29, train 705.4s (chunk 21.4s), total 726.8s, 0.0 GB peak, 0.0 GB in use
+07:38:22 [strain  3927.8s] objective values sam_self: set [0.3081, 0.3084, 0.292, 0.2912], self [0.3132, 0.3338, 0.2874, 0.286], rec [0.4624, 0.464, 0.4636, 0.4777] (62.4s)
+07:38:24 [scert 21  3928.9s] sam_self_s0@mp6__certA q=72 certified in 68.7s
+07:38:25 [scert 6  3930.3s] sam_self_s1@mp6__certB q=72 certified in 72.0s
+07:38:28 [scert 16  3933.0s] sam_self_s1@mp6__certA q=72 certified in 71.1s
+07:38:29 [scert 17  3933.8s] sam_self_s0@mp6__certB q=72 certified in 77.2s
+07:39:18 [strain  3983.9s] sgm_set: step 100, chunk 45.2s, train [0.0403, 0.0394, 0.0539, 0.0408], val [0.025699999183416367, 0.024700000882148743, 0.02329999953508377, 0.02419999986886978], tracker recall+purity [0.3569999933242798, 0.3569999933242798, 0.36500000953674316, 0.36500000953674316], skipped 0
+07:39:38 [strain  4004.4s] sgm_set: step 200, chunk 19.8s, train [0.0232, 0.0229, 0.0226, 0.0227], val [0.02290000021457672, 0.023000000044703484, 0.02199999988079071, 0.02199999988079071], tracker recall+purity [0.3569999933242798, 0.3569999933242798, 0.36500000953674316, 0.36500000953674316], skipped 0
+07:42:18 [strain  4164.0s] sgm_set: step 1000, chunk 19.9s, train [0.0202, 0.0199, 0.0198, 0.0199], val [0.02160000056028366, 0.020500000566244125, 0.020600000396370888, 0.02070000022649765], tracker recall+purity [0.3569999933242798, 0.3569999933242798, 0.36500000953674316, 0.36500000953674316], skipped 0
+07:45:37 [strain  4363.3s] sgm_set: step 2000, chunk 19.8s, train [0.0184, 0.0181, 0.0179, 0.0179], val [0.02019999921321869, 0.01979999989271164, 0.019700000062584877, 0.019099999219179153], tracker recall+purity [0.3569999933242798, 0.3569999933242798, 0.36500000953674316, 0.36500000953674316], skipped 0
+07:48:57 [strain  4562.5s] sgm_set: step 3000, chunk 19.8s, train [0.0177, 0.0172, 0.0171, 0.0171], val [0.019899999722838402, 0.019300000742077827, 0.01940000057220459, 0.019200000911951065], tracker recall+purity [0.3569999933242798, 0.3569999933242798, 0.36500000953674316, 0.36500000953674316], skipped 0
+07:49:09 [scert 5  4574.3s] sgm_set_s0__certB q=144 agreement only in 1.6s
+07:49:11 [scert 5  4575.9s] sgm_set_s1__certB q=144 agreement only in 1.6s
+07:49:13 [scert 14  4577.6s] sgm_set_s0__certA q=144 agreement only in 1.7s
+07:49:14 [strain  4580.3s] sgm_set: steps 3000, val [0.09809999912977219, 0.08860000222921371, 0.08980000019073486, 0.05559999868273735] -> [0.0199, 0.0191, 0.019, 0.0191] (best at [3000, 2600, 2900, 2900]), skipped 0, train 634.6s (chunk 19.8s), total 652.2s, 0.0 GB peak, 0.0 GB in use
+07:49:14 [scert 14  4579.4s] sgm_set_s1__certA q=144 agreement only in 1.7s
+07:49:47 [scert 15  4611.9s] sgm_set_s1@mp6__certB q=72 certified in 37.3s
+07:49:47 [scert 9  4612.3s] sgm_set_s0@mp6__certB q=72 certified in 39.5s
+07:49:49 [scert 17  4614.0s] sgm_set_s0@mp6__certA q=72 certified in 38.1s
+07:49:52 [scert 18  4617.1s] sgm_set_s1@mp6__certA q=72 certified in 39.2s
+07:50:17 [strain  4642.6s] objective values sgm_set: set [0.0207, 0.0209, 0.0202, 0.0204], self [0.0213, 0.0212, 0.0207, 0.0209], rec [0.9269, 0.9268, 0.9216, 0.9215] (61.9s)
+07:51:07 [strain  4692.6s] sgc_rec: step 100, chunk 40.0s, train [0.9439, 0.9442, 0.9439, 0.944], val [0.9419000148773193, 0.9419000148773193, 0.9416999816894531, 0.9416999816894531], tracker recall+purity [0.3580000102519989, 0.3610000014305115, 0.367000013589859, 0.367000013589859], skipped 0
+07:51:20 [strain  4705.5s] sgc_rec: step 200, chunk 12.2s, train [0.9419, 0.9419, 0.9417, 0.9417], val [0.9419000148773193, 0.9419000148773193, 0.9416999816894531, 0.9416000247001648], tracker recall+purity [0.35899999737739563, 0.36000001430511475, 0.367000013589859, 0.36899998784065247], skipped 0
+07:52:59 [strain  4804.5s] sgc_rec: step 1000, chunk 12.3s, train [0.899, 0.9177, 0.9416, 0.9417], val [0.9449999928474426, 0.9136000275611877, 0.9416999816894531, 0.9417999982833862], tracker recall+purity [0.6000000238418579, 0.6769999861717224, 0.3700000047683716, 0.4099999964237213], skipped 0
+07:55:02 [strain  4928.1s] sgc_rec: step 2000, chunk 12.3s, train [0.863, 0.7494, 0.9407, 0.9408], val [0.8723000288009644, 0.744700014591217, 0.9394000172615051, 0.9416000247001648], tracker recall+purity [0.9879999756813049, 1.2369999885559082, 0.492000013589859, 0.42800000309944153], skipped 0
+07:57:06 [strain  5051.7s] sgc_rec: step 3000, chunk 12.3s, train [0.8631, 0.6587, 0.939, 0.9292], val [0.8669999837875366, 0.6589000225067139, 0.9379000067710876, 0.9287999868392944], tracker recall+purity [0.9950000047683716, 1.4259999990463257, 0.4819999933242798, 0.47099998593330383], skipped 0
+07:57:25 [strain  5070.6s] sgc_rec: steps 3000, val [1.0, 1.0, 1.0, 1.0] -> [0.8619, 0.6589, 0.9379, 0.9288] (best at [1500, 3000, 3000, 3000]), skipped 0, train 409.0s (chunk 12.3s), total 427.9s, 0.0 GB peak, 0.0 GB in use
+07:58:14 [scert 21  5119.4s] sgc_rec_s0__certA q=72 certified in 53.3s
+07:58:22 [scert 6  5126.4s] sgc_rec_s1__certA q=72 certified in 58.9s
+07:58:26 [strain  5132.4s] objective values sgc_rec: set [0.646, 0.3891, 0.2347, 0.4821], self [0.6814, 0.4017, 0.2395, 0.5022], rec [0.8566, 0.6482, 0.9378, 0.9226] (61.2s)
+07:58:42 [scert 18  5146.8s] sgc_rec_s1__certB q=72 certified in 82.6s
+07:58:51 [scert 2  5155.6s] sgc_rec_s0__certB q=72 certified in 93.4s
+07:59:42 [strain  5207.6s] sac_set: step 100, chunk 62.6s, train [0.1293, 0.0837, 0.1019, 0.0981], val [0.002300000051036477, 0.006599999964237213, 0.0020000000949949026, 0.004000000189989805], tracker recall+purity [1.6440000534057617, 1.6419999599456787, 1.6419999599456787, 1.6430000066757202], skipped 15
+08:00:03 [strain  5228.6s] sac_set: step 200, chunk 20.0s, train [0.0046, 0.0142, 0.0057, 0.0054], val [0.004800000227987766, 0.004999999888241291, 0.005200000014156103, 0.004999999888241291], tracker recall+purity [1.6419999599456787, 1.6419999599456787, 1.6419999599456787, 1.6440000534057617], skipped 0
+08:02:44 [strain  5389.8s] sac_set: step 1000, chunk 20.1s, train [0.0042, 0.0016, 0.0052, 0.0031], val [0.0032999999821186066, 0.0015999999595806003, 0.0044999998062849045, 0.002199999988079071], tracker recall+purity [1.6410000324249268, 1.6390000581741333, 1.6410000324249268, 1.6460000276565552], skipped 0
+08:06:05 [strain  5591.5s] sac_set: step 2000, chunk 20.1s, train [0.0063, 0.0013, 0.007, 0.0036], val [0.005799999926239252, 0.0012000000569969416, 0.010300000198185444, 0.003000000026077032], tracker recall+purity [1.6030000448226929, 1.6390000581741333, 1.6410000324249268, 1.6449999809265137], skipped 1
+08:09:27 [strain  5793.1s] sac_set: step 3000, chunk 20.1s, train [0.0064, 0.0013, 0.0148, 0.0031], val [0.005799999926239252, 0.001500000013038516, 0.008899999782443047, 0.0026000000070780516], tracker recall+purity [1.6080000400543213, 1.6390000581741333, 1.6419999599456787, 1.6430000066757202], skipped 5
+08:09:49 [strain  5814.6s] sac_set: steps 3000, val [1.2431000471115112, 1.2029000520706177, 1.1562999486923218, 1.2051000595092773] -> [0.0031, 0.0007, 0.0032, 0.0021] (best at [1100, 1800, 1100, 1100]), skipped 43, train 660.6s (chunk 20.1s), total 682.0s, 0.0 GB peak, 0.0 GB in use
+08:10:51 [strain  5876.7s] objective values sac_set: set [nan, nan, nan, nan], self [nan, nan, nan, nan], rec [0.9421, 0.9421, 0.9416, 0.9416] (61.4s)
+08:12:37 [strain  5983.0s] sam_set_dg: step 100, chunk 91.8s, train [0.3596, 0.3868, 0.3649, 0.3856], val [0.310699999332428, 0.33809998631477356, 0.2930000126361847, 0.27889999747276306], tracker recall+purity [1.6510000228881836, 1.6460000276565552, 1.6440000534057617, 1.6440000534057617], skipped 22
+08:13:00 [strain  6005.6s] sam_set_dg: step 200, chunk 21.6s, train [0.3092, 0.3017, 0.3038, 0.313], val [0.3650999963283539, 0.350600004196167, 0.32910001277923584, 0.29789999127388], tracker recall+purity [1.6519999504089355, 1.6510000228881836, 1.6440000534057617, 1.6480000019073486], skipped 0
+08:13:24 [scert 19  6029.1s] sac_set_s1__certA q=72 certified in 217.3s
+08:13:28 [scert 9  6032.7s] sac_set_s0__certB q=72 certified in 226.2s
+08:13:48 [scert 25  6052.7s] sac_set_s0__certA q=72 certified in 242.6s
+08:15:00 [scert 17  6125.1s] sac_set_s1__certB q=72 certified in 316.9s
+08:15:54 [strain  6179.6s] sam_set_dg: step 1000, chunk 21.6s, train [0.2776, 0.2759, 0.2818, 0.2794], val [0.2786000072956085, 0.36399999260902405, 0.31929999589920044, 0.26980000734329224], tracker recall+purity [1.656999945640564, 1.6519999504089355, 1.6519999504089355, 1.6469999551773071], skipped 0
+08:19:31 [strain  6397.0s] sam_set_dg: step 2000, chunk 21.6s, train [0.2631, 0.2609, 0.2625, 0.266], val [0.24940000474452972, 0.2904999852180481, 0.25949999690055847, 0.25679999589920044], tracker recall+purity [1.656000018119812, 1.6510000228881836, 1.652999997138977, 1.6469999551773071], skipped 0
+08:23:08 [strain  6614.3s] sam_set_dg: step 3000, chunk 21.7s, train [0.2526, 0.2545, 0.2593, 0.2595], val [0.22910000383853912, 0.2858999967575073, 0.25769999623298645, 0.27480000257492065], tracker recall+purity [1.659999966621399, 1.6510000228881836, 1.652999997138977, 1.6469999551773071], skipped 0
+08:23:24 [scert 4  6629.2s] sam_set_dg_s0__certB q=144 agreement only in 1.7s
+08:23:27 [scert 6  6631.4s] sam_set_dg_s1__certB q=144 agreement only in 1.7s
+08:23:28 [scert 11  6633.0s] sam_set_dg_s0__certA q=144 agreement only in 1.9s
+08:23:30 [strain  6635.7s] sam_set_dg: steps 3000, val [0.7985000014305115, 0.7985000014305115, 0.8062000274658203, 0.8062000274658203] -> [0.2217, 0.2816, 0.2487, 0.2568] (best at [2400, 2600, 1900, 2000]), skipped 23, train 737.5s (chunk 21.6s), total 758.8s, 0.0 GB peak, 0.0 GB in use
+08:23:30 [scert 11  6634.9s] sam_set_dg_s1__certA q=144 agreement only in 1.8s
+08:24:31 [scert 7  6695.6s] sam_set_dg_s0@mp6__certB q=72 certified in 68.0s
+08:24:32 [strain  6698.3s] objective values sam_set_dg: set [0.2666, 0.319, 0.3037, 0.2919], self [0.276, 0.349, 0.2988, 0.2804], rec [0.4612, 0.4682, 0.4664, 0.4797] (62.0s)
+08:24:37 [scert 9  6701.8s] sam_set_dg_s1@mp6__certB q=72 certified in 72.0s
+08:24:40 [scert 23  6705.2s] sam_set_dg_s0@mp6__certA q=72 certified in 74.0s
+08:24:45 [scert 13  6710.4s] sam_set_dg_s1@mp6__certA q=72 certified in 76.9s
+08:25:45 [strain  6771.2s] sam_rec_ws: step 100, chunk 60.8s, train [0.8775, 0.9147, 0.918, 0.8785], val [0.6844000220298767, 0.7325000166893005, 0.7437000274658203, 0.6995000243186951], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0
+08:26:00 [strain  6786.1s] sam_rec_ws: step 200, chunk 14.2s, train [0.6697, 0.6812, 0.6905, 0.6847], val [0.6442000269889832, 0.6567999720573425, 0.6669999957084656, 0.6622999906539917], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0
+08:27:56 [strain  6901.6s] sam_rec_ws: step 1000, chunk 14.4s, train [0.3994, 0.4255, 0.4522, 0.4192], val [0.4000000059604645, 0.426800012588501, 0.4507000148296356, 0.41519999504089355], tracker recall+purity [1.6549999713897705, 1.649999976158142, 1.652999997138977, 1.6440000534057617], skipped 0
+08:30:20 [strain  7046.1s] sam_rec_ws: step 2000, chunk 14.4s, train [0.3671, 0.386, 0.3837, 0.3769], val [0.3707999885082245, 0.3894999921321869, 0.3903999924659729, 0.3790000081062317], tracker recall+purity [1.656000018119812, 1.6549999713897705, 1.6430000066757202, 1.6440000534057617], skipped 0
+08:32:45 [strain  7190.5s] sam_rec_ws: step 3000, chunk 14.4s, train [0.3597, 0.3802, 0.374, 0.3701], val [0.36480000615119934, 0.3840999901294708, 0.38260000944137573, 0.3725999891757965], tracker recall+purity [1.656999945640564, 1.6519999504089355, 1.6480000019073486, 1.6469999551773071], skipped 0
+08:33:00 [scert 16  7205.3s] sam_rec_ws_s0__certB q=144 agreement only in 1.7s
+08:33:02 [scert 13  7207.2s] sam_rec_ws_s1__certB q=144 agreement only in 1.7s
+08:33:04 [scert 13  7208.9s] sam_rec_ws_s0__certA q=144 agreement only in 1.7s
+08:33:06 [scert 13  7210.7s] sam_rec_ws_s1__certA q=144 agreement only in 1.8s
+08:33:06 [strain  7211.9s] sam_rec_ws: steps 3000, val [1.0, 1.0, 1.0, 1.0] -> [0.3648, 0.3827, 0.382, 0.3726] (best at [3000, 2900, 2900, 3000]), skipped 0, train 492.1s (chunk 14.4s), total 513.4s, 0.0 GB peak, 0.0 GB in use
+08:34:09 [strain  7275.3s] objective values sam_rec_ws: set [0.3624, 0.2914, 0.3029, 0.292], self [0.3717, 0.3177, 0.3, 0.2936], rec [0.4759, 0.4661, 0.4633, 0.4779] (62.7s)
+08:34:16 [scert 22  7280.8s] sam_rec_ws_s0@mp6__certB q=72 certified in 77.1s
+08:34:24 [scert 27  7288.5s] sam_rec_ws_s0@mp6__certA q=72 certified in 81.2s
+08:34:27 [scert 9  7291.7s] sam_rec_ws_s1@mp6__certA q=72 certified in 82.8s
+08:34:30 [scert 7  7294.9s] sam_rec_ws_s1@mp6__certB q=72 certified in 89.2s
+08:35:30 [strain  7355.7s] sam_self_ws: step 100, chunk 66.8s, train [0.4802, 0.456, 0.5022, 0.5376], val [0.4343000054359436, 0.4065999984741211, 0.4456999897956848, 0.49059998989105225], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0
+08:35:52 [strain  7377.8s] sam_self_ws: step 200, chunk 21.3s, train [0.4137, 0.3934, 0.4333, 0.464], val [0.42980000376701355, 0.4050000011920929, 0.43059998750686646, 0.4853000044822693], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0
+08:38:44 [strain  7549.9s] sam_self_ws: step 1000, chunk 21.4s, train [0.2641, 0.2604, 0.2586, 0.2796], val [0.24089999496936798, 0.2639000117778778, 0.24819999933242798, 0.3043999969959259], tracker recall+purity [1.6649999618530273, 1.6820000410079956, 1.7000000476837158, 1.6519999504089355], skipped 0
+08:42:19 [strain  7764.9s] sam_self_ws: step 2000, chunk 21.4s, train [0.2426, 0.2458, 0.2534, 0.2571], val [0.3043999969959259, 0.28859999775886536, 0.2515000104904175, 0.21490000188350677], tracker recall+purity [1.652999997138977, 1.652999997138977, 1.659999966621399, 1.649999976158142], skipped 0
+08:45:54 [strain  7979.9s] sam_self_ws: step 3000, chunk 21.4s, train [0.2401, 0.2445, 0.2447, 0.2492], val [0.28130000829696655, 0.296999990940094, 0.23520000278949738, 0.23430000245571136], tracker recall+purity [1.656000018119812, 1.659000039100647, 1.656000018119812, 1.6510000228881836], skipped 0
+08:46:10 [scert 15  7995.2s] sam_self_ws_s0__certB q=144 agreement only in 1.7s
+08:46:12 [scert 22  7996.8s] sam_self_ws_s1__certB q=144 agreement only in 1.8s
+08:46:14 [scert 27  7998.4s] sam_self_ws_s0__certA q=144 agreement only in 1.8s
+08:46:15 [scert 27  8000.2s] sam_self_ws_s1__certA q=144 agreement only in 1.8s
+08:46:15 [strain  8001.3s] sam_self_ws: steps 3000, val [0.9010999798774719, 0.8805999755859375, 0.883899986743927, 0.91839998960495] -> [0.2409, 0.227, 0.2191, 0.2149] (best at [1000, 1600, 2400, 2000]), skipped 0, train 704.4s (chunk 21.4s), total 725.8s, 0.0 GB peak, 0.0 GB in use
+08:47:16 [scert 15  8060.6s] sam_self_ws_s1@mp6__certB q=72 certified in 65.3s
+08:47:18 [strain  8064.3s] objective values sam_self_ws: set [0.2872, 0.2756, 0.2852, 0.2693], self [0.2939, 0.293, 0.2827, 0.2676], rec [0.4691, 0.4669, 0.4732, 0.4793] (62.3s)
+08:47:19 [scert 5  8063.7s] sam_self_ws_s0@mp6__certB q=72 certified in 70.1s
+08:47:27 [scert 6  8071.8s] sam_self_ws_s0@mp6__certA q=72 certified in 75.0s
+08:47:30 [scert 23  8075.3s] sam_self_ws_s1@mp6__certA q=72 certified in 76.9s
+08:48:26 [strain  8132.3s] sac_rec: step 100, chunk 55.9s, train [0.9447, 0.9445, 0.9448, 0.9445], val [0.9422000050544739, 0.9419000148773193, 0.9416999816894531, 0.9419000148773193], tracker recall+purity [1.6440000534057617, 1.6449999809265137, 1.6410000324249268, 1.6369999647140503], skipped 3
+08:48:40 [strain  8146.3s] sac_rec: step 200, chunk 13.3s, train [0.9422, 0.9419, 0.9418, 0.9418], val [0.9422000050544739, 0.9419000148773193, 0.9415000081062317, 0.9416999816894531], tracker recall+purity [1.6369999647140503, 1.6369999647140503, 1.6380000114440918, 1.6399999856948853], skipped 0
+08:50:28 [strain  8254.3s] sac_rec: step 1000, chunk 13.4s, train [0.9418, 0.9418, 0.9415, 0.6634], val [0.9422000050544739, 0.9422000050544739, 0.9422000050544739, 0.6208000183105469], tracker recall+purity [1.6399999856948853, 1.6419999599456787, 1.6410000324249268, 1.649999976158142], skipped 0
+08:52:43 [strain  8389.2s] sac_rec: step 2000, chunk 13.4s, train [0.9415, 0.9416, 0.8755, 0.539], val [0.9426000118255615, 0.942799985408783, 0.8453999757766724, 0.5304999947547913], tracker recall+purity [1.6490000486373901, 1.6380000114440918, 1.6339999437332153, 1.6490000486373901], skipped 0
+08:54:58 [strain  8524.1s] sac_rec: step 3000, chunk 13.4s, train [0.9412, 0.9415, 0.6759, 0.5265], val [0.9424999952316284, 0.942799985408783, 0.6682999730110168, 0.521399974822998], tracker recall+purity [1.6440000534057617, 1.6390000581741333, 1.6469999551773071, 1.6490000486373901], skipped 0
+08:55:20 [strain  8545.8s] sac_rec: steps 3000, val [1.0, 1.0, 1.0, 1.0] -> [0.9422, 0.942, 0.6683, 0.5214] (best at [800, 800, 3000, 3000]), skipped 3, train 459.7s (chunk 13.4s), total 481.3s, 0.0 GB peak, 0.0 GB in use
+08:56:22 [strain  8607.9s] objective values sac_rec: set [nan, nan, 0.3551, 0.3176], self [nan, nan, 0.3647, 0.3298], rec [0.9421, 0.9422, 0.6482, 0.5684] (61.4s)
+08:56:51 [scert 22  8635.6s] sac_rec_s1__certA q=72 certified in 92.7s
+08:57:09 [scert 8  8654.6s] sac_rec_s0__certA q=72 certified in 112.5s
+08:57:51 [scert 4  8696.1s] sac_rec_s0__certB q=72 certified in 158.5s
+08:57:55 [strain  8701.3s] sam_set_ws_dg: step 100, chunk 79.4s, train [0.4892, 0.4672, 0.5125, 0.5434], val [0.4424999952316284, 0.41519999504089355, 0.46160000562667847, 0.4927000105381012], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0
+08:58:07 [scert 6  8711.9s] sac_rec_s1__certB q=72 certified in 172.0s
+08:58:18 [strain  8723.8s] sam_set_ws_dg: step 200, chunk 21.5s, train [0.4223, 0.4027, 0.4296, 0.4673], val [0.43689998984336853, 0.41190001368522644, 0.4528000056743622, 0.4812000095844269], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0
+09:01:12 [strain  8897.6s] sam_set_ws_dg: step 1000, chunk 21.6s, train [0.2913, 0.2807, 0.2775, 0.2969], val [0.3603000044822693, 0.32899999618530273, 0.24570000171661377, 0.296099990606308], tracker recall+purity [1.6610000133514404, 1.6929999589920044, 1.6510000228881836, 1.6490000486373901], skipped 0
+09:04:49 [strain  9114.9s] sam_set_ws_dg: step 2000, chunk 21.6s, train [0.2592, 0.2533, 0.2571, 0.2629], val [0.27410000562667847, 0.3172999918460846, 0.22779999673366547, 0.2750999927520752], tracker recall+purity [1.652999997138977, 1.6699999570846558, 1.6519999504089355, 1.6480000019073486], skipped 0
+09:08:26 [strain  9332.1s] sam_set_ws_dg: step 3000, chunk 21.6s, train [0.2566, 0.246, 0.2569, 0.2667], val [0.2635999917984009, 0.2791999876499176, 0.23589999973773956, 0.2728999853134155], tracker recall+purity [1.6579999923706055, 1.6619999408721924, 1.6519999504089355, 1.6469999551773071], skipped 0
+09:08:43 [scert 3  9347.9s] sam_set_ws_dg_s0__certB q=144 agreement only in 1.7s
+09:08:44 [scert 13  9348.9s] sam_set_ws_dg_s1__certB q=144 agreement only in 1.7s
+09:08:46 [scert 10  9350.8s] sam_set_ws_dg_s0__certA q=144 agreement only in 1.7s
+09:08:48 [scert 19  9352.6s] sam_set_ws_dg_s1__certA q=144 agreement only in 1.8s
+09:08:48 [strain  9353.7s] sam_set_ws_dg: steps 3000, val [0.9200999736785889, 0.9017000198364258, 0.904699981212616, 0.9366999864578247] -> [0.2505, 0.2157, 0.2246, 0.27] (best at [2700, 2200, 1900, 2800]), skipped 0, train 724.1s (chunk 21.6s), total 745.6s, 0.0 GB peak, 0.0 GB in use
+09:09:51 [strain  9417.2s] objective values sam_set_ws_dg: set [0.2943, 0.2495, 0.2693, 0.3098], self [0.3055, 0.2672, 0.2679, 0.3204], rec [0.4654, 0.4612, 0.4644, 0.4776] (62.8s)
+09:09:51 [strain  9417.4s] done; skipped ['sam_set_sg']
+09:09:51 [scert 14  9416.4s] worker exits after 6 items
+09:09:52 [scert 25  9416.4s] worker exits after 2 items
+09:09:52 [scert 11  9416.5s] worker exits after 2 items
+09:09:52 [scert 2  9416.5s] worker exits after 4 items
+09:09:52 [scert 18  9416.7s] worker exits after 4 items
+09:09:52 [scert 26  9416.5s] worker exits after 4 items
+09:09:52 [scert 12  9416.5s] worker exits after 2 items
+09:09:52 [scert 8  9416.7s] worker exits after 6 items
+09:09:52 [scert 27  9416.6s] worker exits after 5 items
+09:09:52 [scert 23  9416.6s] worker exits after 2 items
+09:09:52 [scert 17  9416.8s] worker exits after 5 items
+09:09:52 [scert 3  9416.9s] worker exits after 2 items
+09:09:52 [scert 15  9416.9s] worker exits after 5 items
+09:09:52 [scert 10  9416.8s] worker exits after 2 items
+09:09:52 [scert 5  9417.0s] worker exits after 4 items
+09:09:52 [scert 6  9417.0s] worker exits after 7 items
+09:09:53 [scert 13  9417.9s] worker exits after 7 items
+09:09:54 [scert 1  9418.5s] sam_set_ws_dg_s1@mp6__certB q=72 certified in 71.3s
+09:09:54 [scert 1  9418.5s] worker exits after 5 items
+09:09:54 [scert 19  9418.7s] worker exits after 3 items
+09:09:54 [scert 22  9418.8s] worker exits after 6 items
+09:09:54 [scert 21  9419.3s] worker exits after 4 items
+09:09:54 [scert 4  9419.3s] worker exits after 8 items
+09:09:54 [scert 9  9419.2s] worker exits after 4 items
+09:09:54 [scert 7  9419.3s] worker exits after 3 items
+09:09:57 [scert 20  9421.9s] sam_set_ws_dg_s0@mp6__certA q=72 certified in 72.4s
+09:09:57 [scert 20  9421.9s] worker exits after 3 items
+09:10:02 [scert 24  9426.7s] sam_set_ws_dg_s0@mp6__certB q=72 certified in 80.5s
+09:10:02 [scert 24  9426.7s] worker exits after 5 items
+09:10:10 [scert 16  9434.5s] sam_set_ws_dg_s1@mp6__certA q=72 certified in 83.7s
+09:10:10 [scert 16  9434.5s] worker exits after 6 items
+09:10:10 [job] certification finished; 116 halves certified, 0 left unclaimed, 0 workers killed at the hard limit (their items are not certified)
+09:10:20 [scombine     7.2s] pooled 58 phis; problems []
+09:10:23 [job] scombine FAILED
+09:10:20 [scombine     7.2s] pooled 58 phis; problems []
+Traceback (most recent call last):
+  File "/home/ubuntu/gpujob/r5-slots-008/src/research/alife/vecworld/program/round5/slots/scombine.py", line 244, in <module>
+    main()
+  File "/home/ubuntu/gpujob/r5-slots-008/src/research/alife/vecworld/program/round5/slots/scombine.py", line 233, in main
+    lines.append(f"{nm:22s} " + " ".join(f"{k} {np.mean(o[k]['val']):7.4f}" for k in ("set", "self", "rec") if o.get(k)))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-008/src/research/alife/vecworld/program/round5/slots/scombine.py", line 233, in <genexpr>
+    lines.append(f"{nm:22s} " + " ".join(f"{k} {np.mean(o[k]['val']):7.4f}" for k in ("set", "self", "rec") if o.get(k)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-008/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 3862, in mean
+    return _methods._mean(a, axis=axis, dtype=dtype,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/gpujob/r5-slots-008/.venv/lib/python3.12/site-packages/numpy/_core/_methods.py", line 132, in _mean
+    ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'NoneType'
+09:10:23 [job] OUT size 11M; elapsed 9595s; done, FAIL=1

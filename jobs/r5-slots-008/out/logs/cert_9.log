@@ -1,0 +1,5 @@
+07:49:47 [scert 9  4612.3s] sgm_set_s0@mp6__certB q=72 certified in 39.5s
+08:13:28 [scert 9  6032.7s] sac_set_s0__certB q=72 certified in 226.2s
+08:24:37 [scert 9  6701.8s] sam_set_dg_s1@mp6__certB q=72 certified in 72.0s
+08:34:27 [scert 9  7291.7s] sam_rec_ws_s1@mp6__certA q=72 certified in 82.8s
+09:09:54 [scert 9  9419.2s] worker exits after 4 items

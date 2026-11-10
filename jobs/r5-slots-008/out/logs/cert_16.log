@@ -1,0 +1,7 @@
+06:42:50 [scert 16   594.5s] grid@mp6__certB q=72 certified in 381.4s
+06:49:41 [scert 16  1005.4s] sam_sup_s1@mp6__certB q=72 certified in 119.9s
+07:02:26 [scert 16  1770.6s] sam_set_s0@mp6__certA q=72 certified in 69.1s
+07:38:28 [scert 16  3933.0s] sam_self_s1@mp6__certA q=72 certified in 71.1s
+08:33:00 [scert 16  7205.3s] sam_rec_ws_s0__certB q=144 agreement only in 1.7s
+09:10:10 [scert 16  9434.5s] sam_set_ws_dg_s1@mp6__certA q=72 certified in 83.7s
+09:10:10 [scert 16  9434.5s] worker exits after 6 items

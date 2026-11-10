@@ -1,0 +1,3 @@
+08:24:40 [scert 23  6705.2s] sam_set_dg_s0@mp6__certA q=72 certified in 74.0s
+08:47:30 [scert 23  8075.3s] sam_self_ws_s1@mp6__certA q=72 certified in 76.9s
+09:09:52 [scert 23  9416.6s] worker exits after 2 items

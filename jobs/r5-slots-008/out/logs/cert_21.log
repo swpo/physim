@@ -1,0 +1,5 @@
+06:37:14 [scert 21   258.8s] trk__certA q=144 certified in 255.8s
+07:25:27 [scert 21  3152.1s] sam_rec_s0@mp6__certA q=72 certified in 81.9s
+07:38:24 [scert 21  3928.9s] sam_self_s0@mp6__certA q=72 certified in 68.7s
+07:58:14 [scert 21  5119.4s] sgc_rec_s0__certA q=72 certified in 53.3s
+09:09:54 [scert 21  9419.3s] worker exits after 4 items

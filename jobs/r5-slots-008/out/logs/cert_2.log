@@ -1,0 +1,5 @@
+07:01:15 [scert 2  1700.1s] sam_set_s0__certB q=144 agreement only in 1.8s
+07:02:27 [scert 2  1772.0s] sam_set_s1@mp6__certB q=72 certified in 71.9s
+07:14:29 [scert 2  2493.8s] sam_set_ws_s0__certB q=144 agreement only in 1.7s
+07:58:51 [scert 2  5155.6s] sgc_rec_s0__certB q=72 certified in 93.4s
+09:09:52 [scert 2  9416.5s] worker exits after 4 items

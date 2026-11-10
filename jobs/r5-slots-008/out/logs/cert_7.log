@@ -1,0 +1,4 @@
+06:41:49 [scert 7   533.6s] grid__certB q=144 certified in 320.5s
+08:24:31 [scert 7  6695.6s] sam_set_dg_s0@mp6__certB q=72 certified in 68.0s
+08:34:30 [scert 7  7294.9s] sam_rec_ws_s1@mp6__certB q=72 certified in 89.2s
+09:09:54 [scert 7  9419.3s] worker exits after 3 items

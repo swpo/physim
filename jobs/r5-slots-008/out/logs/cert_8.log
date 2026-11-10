@@ -1,0 +1,7 @@
+06:33:04 [scert 8     9.4s] hand_mass__certA q=64 certified in 6.4s
+07:01:18 [scert 8  1703.5s] sam_set_s0__certA q=144 agreement only in 1.8s
+07:02:39 [scert 8  1784.4s] sam_set_s1@mp6__certA q=72 certified in 80.9s
+07:14:32 [scert 8  2497.2s] sam_set_ws_s0__certA q=144 agreement only in 1.8s
+07:14:34 [scert 8  2498.9s] sam_set_ws_s1__certA q=144 agreement only in 1.7s
+08:57:09 [scert 8  8654.6s] sac_rec_s0__certA q=72 certified in 112.5s
+09:09:52 [scert 8  9416.7s] worker exits after 6 items

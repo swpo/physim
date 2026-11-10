@@ -21,10 +21,20 @@
     "src_bytes": 15822219
   },
   "cap_usd": 20.8,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 5.2879
+  "collected": {
+    "error": null,
+    "files": 383,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 9027389,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 5.3569,
+    "conservative_usd": 5.5223
+  },
+  "exit_code": 1,
+  "finished_at": "2026-11-10T09:11:04Z",
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
@@ -60,11 +70,21 @@
       "at": "2026-11-10T06:30:13Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-10T09:10:32Z",
+      "message": "job failed; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-10T09:11:04Z",
+      "message": "job failed (exit 1); pods terminated",
+      "state": "failed"
     }
   ],
   "job_id": "r5-slots-008",
   "max_estimate_usd": 7.46,
-  "message": "heartbeat",
+  "message": "job failed (exit 1); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -134,7 +154,7 @@
       "terminated_at": null
     },
     {
-      "billed_usd": null,
+      "billed_usd": 5.3569,
       "created_at": "2026-11-10T06:24:28Z",
       "data_center": "asia-south-1",
       "gpu": "A100_40GB",
@@ -147,11 +167,11 @@
       "ready_at": "2026-11-10T06:29:27Z",
       "requested_at": "2026-11-10T06:24:13Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-10T09:10:43Z"
     }
   ],
-  "pods_terminated": null,
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-10T06:08:12Z",
     "file": "jobs/r5-slots-008/review.md",
@@ -161,7 +181,7 @@
   "run_deadline": "2026-11-10T10:00:13Z",
   "run_started_epoch": 1794291851.978595,
   "started_at": "2026-11-10T06:30:13Z",
-  "state": "running",
+  "state": "failed",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n06:30:28 [job] nproc 30, cert workers 27, train deadline +10400s, cert deadline +11200s, workers killed at +11900s, size pilot\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)] backend gpu\n== out/progress.txt\n9s, train [0.9447, 0.9445, 0.9448, 0.9445], val [0.9422000050544739, 0.9419000148773193, 0.9416999816894531, 0.9419000148773193], tracker recall+purity [1.6440000534057617, 1.6449999809265137, 1.6410000324249268, 1.6369999647140503], skipped 3\n08:48:40 [strain  8146.3s] sac_rec: step 200, chunk 13.3s, train [0.9422, 0.9419, 0.9418, 0.9418], val [0.9422000050544739, 0.9419000148773193, 0.9415000081062317, 0.9416999816894531], tracker recall+purity [1.6369999647140503, 1.6369999647140503, 1.6380000114440918, 1.6399999856948853], skipped 0\n08:50:28 [strain  8254.3s] sac_rec: step 1000, chunk 13.4s, train [0.9418, 0.9418, 0.9415, 0.6634], val [0.9422000050544739, 0.9422000050544739, 0.9422000050544739, 0.6208000183105469], tracker recall+purity [1.6399999856948853, 1.6419999599456787, 1.6410000324249268, 1.649999976158142], skipped 0\n08:52:43 [strain  8389.2s] sac_rec: step 2000, chunk 13.4s, train [0.9415, 0.9416, 0.8755, 0.539], val [0.9426000118255615, 0.942799985408783, 0.8453999757766724, 0.5304999947547913], tracker recall+purity [1.6490000486373901, 1.6380000114440918, 1.6339999437332153, 1.6490000486373901], skipped 0\n08:54:58 [strain  8524.1s] sac_rec: step 3000, chunk 13.4s, train [0.9412, 0.9415, 0.6759, 0.5265], val [0.9424999952316284, 0.942799985408783, 0.6682999730110168, 0.521399974822998], tracker recall+purity [1.6440000534057617, 1.6390000581741333, 1.6469999551773071, 1.6490000486373901], skipped 0\n08:55:20 [strain  8545.8s] sac_rec: steps 3000, val [1.0, 1.0, 1.0, 1.0] -> [0.9422, 0.942, 0.6683, 0.5214] (best at [800, 800, 3000, 3000]), skipped 3, train 459.7s (chunk 13.4s), total 481.3s, 0.0 GB peak, 0.0 GB in use\n08:56:22 [strain  8607.9s] objective values sac_rec: set [nan, nan, 0.3551, 0.3176], self [nan, nan, 0.3647, 0.3298], rec [0.9421, 0.9422, 0.6482, 0.5684] (61.4s)\n08:56:51 [scert 22  8635.6s] sac_rec_s1__certA q=72 certified in 92.7s\n08:57:09 [scert 8  8654.6s] sac_rec_s0__certA q=72 certified in 112.5s\n08:57:51 [scert 4  8696.1s] sac_rec_s0__certB q=72 certified in 158.5s\n08:57:55 [strain  8701.3s] sam_set_ws_dg: step 100, chunk 79.4s, train [0.4892, 0.4672, 0.5125, 0.5434], val [0.4424999952316284, 0.41519999504089355, 0.46160000562667847, 0.4927000105381012], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0\n08:58:07 [scert 6  8711.9s] sac_rec_s1__certB q=72 certified in 172.0s\n08:58:18 [strain  8723.8s] sam_set_ws_dg: step 200, chunk 21.5s, train [0.4223, 0.4027, 0.4296, 0.4673], val [0.43689998984336853, 0.41190001368522644, 0.4528000056743622, 0.4812000095844269], tracker recall+purity [1.871000051498413, 1.8669999837875366, 1.8580000400543213, 1.875], skipped 0\n09:01:12 [strain  8897.6s] sam_set_ws_dg: step 1000, chunk 21.6s, train [0.2913, 0.2807, 0.2775, 0.2969], val [0.3603000044822693, 0.32899999618530273, 0.24570000171661377, 0.296099990606308], tracker recall+purity [1.6610000133514404, 1.6929999589920044, 1.6510000228881836, 1.6490000486373901], skipped 0\n",
-  "updated_at": "2026-11-10T09:03:39Z"
+  "updated_at": "2026-11-10T09:11:04Z"
 }

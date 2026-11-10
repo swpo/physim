@@ -1,0 +1,216 @@
+{
+ "stem": "sgm_set_s1__certB",
+ "meta": {
+  "phi": "sgm_set_s1",
+  "config": "sgm_set",
+  "kind": "learned",
+  "readout": "mom",
+  "obj": "set",
+  "seed": 1,
+  "fit": "A",
+  "cert": "B",
+  "cfg": {
+   "P": 4,
+   "readout": "mom",
+   "learned": true,
+   "geo": false,
+   "sigma": 6.0,
+   "prior": false,
+   "freeze_p": false,
+   "mem": true,
+   "stopcarry": false,
+   "n_it": 2,
+   "n_init": 4
+  },
+  "init_from": null,
+  "warm_steps": 0.0,
+  "dead_guard": false,
+  "steps": 3000,
+  "batch": 32,
+  "L": 16,
+  "Lw": 33,
+  "lr": 0.001,
+  "clip": 1.0,
+  "val_init": 0.08864574879407883,
+  "val_best": 0.019059810787439346,
+  "best_step": 2600,
+  "checkpoint": "best",
+  "cut_by_deadline": false,
+  "steps_planned": 3000,
+  "skipped_steps_all_replicas": 0,
+  "train_seconds_config": 634.5718898773193,
+  "chunk_seconds": {
+   "first_incl_compile": 45.22677206993103,
+   "rest_mean": 19.845460710854365
+  },
+  "moved_from_kmeans": {},
+  "n_params_enc": 29408,
+  "layout": "trk",
+  "d": 12
+ },
+ "q": 144,
+ "layout": "trk",
+ "certified": false,
+ "nontriv": {
+  "r_dyn": 0.7760986832150808,
+  "participation_ratio": 10.650782278626329,
+  "n_nonconst": 132
+ },
+ "agreement": {
+  "n_pairs": 35293,
+  "recall": 0.08333385960601665,
+  "precision": 0.136361023481687,
+  "clean_match_rate(recall,precision>=0.9)": 0.0,
+  "ari_hard_matter_weighted": 0.0018938647414416445,
+  "slots_per_object": 11.999999979510843,
+  "objects_per_slot": 5.851276156763599,
+  "direct": {
+   "mass_R2": -0.4184062317612762,
+   "mass_corr2": 0.0002884396403476943,
+   "pos_err_px_median": 44.84346862434713,
+   "pos_err_px_mean": 44.011993576605676,
+   "pos_R2": 0.1664498768308208,
+   "vel_R2": -4.660480126189451,
+   "n_vel": 31938
+  },
+  "identity_persistence": 0.7844573861857349,
+  "probe_linear": {
+   "mass_R2": 0.006391595624309132,
+   "pos_R2": 0.0111056632095492,
+   "vel_R2": -0.0013049398233000442,
+   "lam": 1.0,
+   "n": 31938
+  },
+  "probe_rff": {
+   "mass_R2": 0.002257775957003605,
+   "pos_R2": 0.004136927540592972,
+   "vel_R2": 0.00019830214941157775,
+   "lam": 100.0,
+   "n": 31938
+  },
+  "by_ticks_since_event": {
+   "fusion": [
+    {
+     "ticks": [
+      0,
+      0
+     ],
+     "n": 1081,
+     "recall": 0.08333449330158528,
+     "precision": 0.2671994229833999
+    },
+    {
+     "ticks": [
+      1,
+      1
+     ],
+     "n": 968,
+     "recall": 0.08333433653907828,
+     "precision": 0.25938235888515376
+    },
+    {
+     "ticks": [
+      2,
+      3
+     ],
+     "n": 1575,
+     "recall": 0.08333414883073759,
+     "precision": 0.2484653084023372
+    },
+    {
+     "ticks": [
+      4,
+      7
+     ],
+     "n": 2082,
+     "recall": 0.08333412465040022,
+     "precision": 0.22802534075380254
+    },
+    {
+     "ticks": [
+      8,
+      15
+     ],
+     "n": 980,
+     "recall": 0.08333371414475402,
+     "precision": 0.208722663798207
+    },
+    {
+     "ticks": [
+      16,
+      1000000
+     ],
+     "n": 208,
+     "recall": 0.08333332891907577,
+     "precision": 0.12961332532741812
+    }
+   ],
+   "fission": [
+    {
+     "ticks": [
+      0,
+      0
+     ],
+     "n": 2156,
+     "recall": 0.08333366196180986,
+     "precision": 0.1316226218746138
+    },
+    {
+     "ticks": [
+      1,
+      1
+     ],
+     "n": 2003,
+     "recall": 0.08333385874381165,
+     "precision": 0.1291724452019319
+    },
+    {
+     "ticks": [
+      2,
+      3
+     ],
+     "n": 3600,
+     "recall": 0.08333365053290193,
+     "precision": 0.12562020862921416
+    },
+    {
+     "ticks": [
+      4,
+      7
+     ],
+     "n": 5722,
+     "recall": 0.0833336422807425,
+     "precision": 0.11992480996486539
+    },
+    {
+     "ticks": [
+      8,
+      15
+     ],
+     "n": 6541,
+     "recall": 0.08333344339760748,
+     "precision": 0.10576737552715854
+    },
+    {
+     "ticks": [
+      16,
+      1000000
+     ],
+     "n": 7005,
+     "recall": 0.08333336423506522,
+     "precision": 0.09517411845486058
+    }
+   ]
+  }
+ },
+ "territory": {
+  "resultant_length": 0.020626945070067067,
+  "slot_speed_px": 2.068216091326022,
+  "slots_present_mean": 12.0,
+  "mass_in_present_slots": 1446.9222778006645
+ },
+ "seconds": {
+  "certify": 0.004387617111206055,
+  "total": 1.6344645023345947
+ }
+}
