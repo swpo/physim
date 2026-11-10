@@ -1,6 +1,6 @@
 # PROGRESS (study slots, round 5) -- kept for restarts
 
-Updated 05:24 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
+Updated 05:32 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
 
 ## Done
 - r5-slots-001 cancelled, r5-slots-002 infra_error ($0), r5-slots-003 pilot done ($3.13, H200, ref e5d146ef3; outputs in results/r5-slots-003/).
@@ -26,6 +26,10 @@ Updated 05:24 UTC 10 Nov (instance 4, after the third container restart at about
   git fetch origin gpu-jobs; git show origin/gpu-jobs:jobs/r5-slots-007/status.json (and review.md when it appears).
   Watcher (cheap to restart): bash <scratchpad>/slots/watch.sh r5-slots-007. NEVER resubmit while it is queued or
   running. Budget: cap $25, $3.13 billed, r5-slots-007 reserves up to $21.80.
+
+- 05:29:35 UTC: r5-slots-007 STARTED on an A100_40GB (lambdalabs, $1.99/h; review: fine to run). job.sh ends at the
+  latest about 11960 s later (about 08:50 UTC), then collection; the runner's hard deadline is 09:45 UTC.
+  Expected cost about $7.50. Heartbeats: status.json log tails every 15 minutes.
 
 ## Next step (exact)
 1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-007 <scratch dir>; look at progress.txt,
