@@ -79,7 +79,9 @@ def uncut_container(port, image):
             "for h in (gw,'host.docker.internal'):\n"
             f" try:\n  socket.create_connection((h,{port}),timeout=3).close(); out.append('REACHED')\n except Exception as e:\n  out.append(type(e).__name__)\n"
             "print('REACHED' if 'REACHED' in out else out[0])\n")
-    r = subprocess.run(["docker", "run", "--rm", image, "python3", "-c", code], capture_output=True, text=True, timeout=120)
+    # the run label on this container too: if the tool is cut off here, the listing by label finds it
+    r = subprocess.run(["docker", "run", "--rm", "--label", f"verifiers.run={vfrun.run_label()}", image, "python3", "-c", code],
+                       capture_output=True, text=True, timeout=120)
     return r.stdout.strip() or r.stderr.strip()[-200:]
 
 
@@ -256,8 +258,9 @@ def main():
         and "wall-clock" not in val("validate_slow").get("error", ""),
         "memory_limit_enforced": val("validate_memory").get("ok") is False,
         "size_limit_enforced": val("validate_oversize").get("ok") is False,
-        "predictor_runs_unprivileged": leak.get("uid") == 1000 and len(P["uid"]["grading"]) == 1 and P["uid"]["grading"][0] >= 20000
-        and P["uid"]["grading"][0] == (B["verifier_box"] or {}).get("predictor_uid"),
+        # both uids come from the reserved range now (the agent box's marker is no longer 1000: audit S1)
+        "predictor_runs_unprivileged": isinstance(leak.get("uid"), int) and 20000 <= leak["uid"] <= 59999 and len(P["uid"]["grading"]) == 1
+        and 20000 <= P["uid"]["grading"][0] <= 59999 and P["uid"]["grading"][0] == (B["verifier_box"] or {}).get("predictor_uid"),
         "predictor_cannot_read_hidden": bool(leak) and all(unreadable(leak.get(p)) for p in hid),
         "predictor_has_no_network": leak.get("net") not in (None, "REACHABLE") and bool(items) and "REACHED" not in P["net"]["grading"],
         "predictor_cannot_write_submission": leak.get("write_submission") not in (None, "WRITABLE") and bool(items)
@@ -387,6 +390,12 @@ def main():
         and "limit" in hrep("submit_cap").get("beyond_cap", "") and all_k("submit_cap") and "attempt limit" in str(hostile["submit_cap"]["submission"].get("error")),
         # (h) the harness dies: verifiers leaves the trace ungraded; the books are closed by tools/settle.py and single use
         "h_harness_exit_or_kill_leaves_the_trace_without_a_reward": all(not H[m]["first"]["graded"] for m in H),
+        # the box scripts carry a gate that refuses outside an exam box (audit A3): INSIDE the box it must let them work.
+        # 137 = the harness's shell was killed by SIGKILL, i.e. `kill -9 -1` was issued in the box; 1 = the script's own exit
+        "h_kill_all_was_issued_inside_the_box": H["killall"]["first"]["script_exit_code"] == 137 and H["exit1"]["first"]["script_exit_code"] == 1,
+        "box_scripts_passed_their_gate_inside_the_box": all(hrep(m).get("mode") == m for m in HOSTILE + VALIDATION + ITEMS)
+        and not any(r.get("script_refused_to_run") for r in runs.values()) and "agent_box" in json.load(
+            open(os.path.join(notes, B["trace_id"], "probe_grading_report.json"))),
         "h_settle_records_K_for_such_a_rollout": all(len(H[m]["settled"]) == 1 and H[m]["settled"][0]["settled_as_K"] is True
                                                      and H[m]["grade_record"].get("n_failed") == H[m]["grade_record"].get("n_items") for m in H),
         "h_the_same_agent_cannot_open_the_instance_again": all(not H[m]["again"]["graded"] and "TaskError" in H[m]["again"]["errors"] for m in H),

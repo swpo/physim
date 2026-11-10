@@ -182,6 +182,7 @@ def rollout(ep: dict) -> dict:
             "graded": reward is not None, "reward_skill_vs_O": 0.0 if reward is None else reward,
             "scored_as_K_because_ungraded": reward is None,
             "script_exit_code": sc.get("exit_code"), "address_file_matches_tool_url": sc.get("address_file_matches_tool_url"),
+            "script_refused_to_run": "refused:" in (sc.get("log_tail") or ""),      # a box script's gate (agents/*.py) said no
             "submission": ph.get("submission"), "lab": ph.get("lab"), "grade": g, "verifier_box": ph.get("verifier_box"),
             "item_isolation": g.get("isolation"),
             "wall_s": {"boot": span("boot"), "setup": span("setup"), "agent": span("agent"), "finalize": span("finalize"),
