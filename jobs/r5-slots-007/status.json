@@ -1,9 +1,35 @@
 {
+  "billing_window_hours": 4.3427,
+  "bundle": {
+    "bundle_sha256": "99fc5e82ea4c70bbc268824db0df5620f80f2b96a7667b8e2d87b89655011a49",
+    "files": {
+      "job.sh": "82aa82638d9de02a31a8ac8e194d8483632a41bce6a7e683c30c09cd3dadb1cc",
+      "request.json": "86d675626132afb10796a0acb6f05344aef8d7bf5324f64ce358cac32b28b06c",
+      "run.sh": "8b4c6ca87adc3d49b3557e223dd799fafae4fdbaffee54c3bc51123f82c2b483",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "5f5da8d974fb3ff07a9a8268ac9f80d8827f1325aeb20aabbbb16d9497e80756"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/round5/slots"
+    ],
+    "ref": "7099a0ded388a9d9efc852b568184f81586f089d",
+    "src_bytes": 15822219
+  },
   "cap_usd": 21.8,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-10T05:24:07Z",
@@ -14,11 +40,52 @@
       "at": "2026-11-10T05:24:44Z",
       "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $18.82",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T05:24:51Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-slots-007",
   "max_estimate_usd": 18.82,
-  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $18.82",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    },
+    {
+      "cloud_id": "1H100.80S.32V",
+      "country": "FI",
+      "data_center": "FIN-02",
+      "disk_gb": 120,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 170,
+      "provider": "datacrunch",
+      "rank": 2,
+      "rate_usd_hr": 5.0199,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 32
+    }
+  ],
   "plan": {
     "max_estimate_usd": 18.82,
     "offers": [
@@ -61,12 +128,14 @@
     "window_hours": 3.75
   },
   "pods": [],
+  "pods_terminated": null,
   "review": {
     "at": "2026-11-10T05:24:37Z",
     "file": "jobs/r5-slots-007/review.md",
     "sha256": "45e63d7398cea7f8dee47fff7d93ec82b8b25be2882a1c2ffb23bbf045303d5d",
     "summary": "Resubmission of 006 with the cap raised to cover the H100 at $5.02/h; same code and env; fine to run."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T05:24:44Z"
+  "run_started_epoch": 1794288291.154913,
+  "state": "provisioning",
+  "updated_at": "2026-11-10T05:24:51Z"
 }
