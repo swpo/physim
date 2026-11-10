@@ -442,7 +442,8 @@ def train_config(cid, name, enc, h, obj, c):
                 "val_hist": [(a, b[r]) for a, b in hist], "min_rel_eig_latent_cov": mre,
                 "train_seconds_config": t_train, "chunk_seconds": t_chunks, "n_val_traj": N_VAL, "n_train_traj": N_TR,
                 "n_params_enc": int(sum(np.size(x) for x in jax.tree_util.tree_leaves(Pe)))}
-        if enc in ("L", "N"):
+        info["train_whitening"] = "global" if BN.train_glob_white(enc) else "per-channel"
+        if BN.base_enc(enc) in ("L", "N"):
             info["field_shares"] = field_shares(enc, h, Pe, ch, HI[fh])
             if c <= 2:
                 np.savez_compressed(f"{WIN}/{phi}__fit{fh}.npz", W=np.asarray(Pe["W"], np.float32), sd=STAT[fh][1],

@@ -83,12 +83,19 @@ def mlp_apply(P, x):
 
 # ----------------------------------------------------------------------------- encoders
 def base_enc(enc):
-    """'Uc' is the U encoder (it differs in the whitening only)."""
-    return "U" if enc == "Uc" else enc
+    """'Uc' is the U encoder (it differs in the whitening only). 'Lw' / 'Nw' are the L / N encoders trained with the
+    closure loss on SPATIALLY whitened latents (all 64 c numbers of a frame, as U) and frozen like L / N."""
+    return {"Uc": "U", "Lw": "L", "Nw": "N"}.get(enc, enc)
 
 
 def glob_white(enc):
+    """Whitening of the frozen Phi: over all 64 c numbers (U) or per block-channel (every other encoder)."""
     return enc == "U"
+
+
+def train_glob_white(enc):
+    """Whitening inside the training loss (closure objectives)."""
+    return enc in ("U", "Lw", "Nw")
 
 
 def init_enc(enc, h, c, key):
@@ -184,7 +191,7 @@ def init_model(enc, h, obj, c, key):
 
 def make_loss(enc, h, obj, c):
     """loss(P, enc_frames (F, N, 4, 128, 128)) -> scalar."""
-    glob = glob_white(enc)
+    glob = train_glob_white(enc)
     nh = len(c5.HTR)
 
     def loss(P, xe):

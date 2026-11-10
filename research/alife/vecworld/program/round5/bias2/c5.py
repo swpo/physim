@@ -224,10 +224,24 @@ def cname(e, h, o, c):
     return f"{e}{'' if h is None else h}_{o}_c{c}"
 
 
+ARMS = os.environ.get("B5_ARMS", "grid")   # "grid": the round-5 grid; "w": the follow-up job (see configs)
+
+
 def configs():
-    """Training configs in priority order: (name, enc, h, obj, c). enc in N, L, U, Uc; h None for U / Uc."""
+    """Training configs in priority order: (name, enc, h, obj, c). enc in N, L, U, Uc; h None for U / Uc.
+    B5_ARMS=w (follow-up job): closure with a global head at c = 1 for the encoders Lw / Nw (L / N trained on spatially
+    whitened latents, so that the loss weights all 64 spatial modes equally instead of by their variance), plus the
+    L / N closure configs again as references on the same simulated data."""
     out = []
     add = lambda e, h, o, c: out.append((cname(e, h, o, c), e, h, o, c))      # noqa: E731
+    if ARMS == "w":
+        for e in ("Lw", "Nw", "L", "N"):
+            for h in RF:
+                add(e, h, "clos", 1)
+        if TINY:
+            out = [x for x in out if x[0] in {"Lw0_clos_c1", "Nw8_clos_c1", "L0_clos_c1"}]
+        return out
+    assert ARMS == "grid", ARMS
     for c in CS:
         for e in ("N", "L"):
             for h in RF:

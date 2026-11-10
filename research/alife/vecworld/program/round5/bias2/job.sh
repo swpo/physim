@@ -27,13 +27,13 @@ NW=$(( NP - 3 )); [ "$NW" -lt 1 ] && NW=1
 [ -n "${B5_WORKERS:-}" ] && NW=$B5_WORKERS
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1
 P() { echo "$(date +%T) [job] $*" | tee -a "$B5_OUT/progress.txt"; }
-P "plan $PLAN, nproc $NP, cert workers $NW, sim budget ${B5_SIM_BUDGET_S:-2400}s, hard end +${B5_JOB_HARD_S:-none}s, tiny ${B5_TINY:-0}"
-$PY -c 'import jax, numpy, scipy, platform; print("versions", platform.python_version(), jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' 2>&1 | tee -a "$B5_OUT/progress.txt"
-nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv >> "$B5_OUT/progress.txt" 2>&1 || true
+P "plan $PLAN, arms ${B5_ARMS:-grid}, nproc $NP, cert workers $NW, sim budget ${B5_SIM_BUDGET_S:-2400}s, hard end +${B5_JOB_HARD_S:-none}s, tiny ${B5_TINY:-0}"
+timeout -k 10 120 $PY -c 'import jax, numpy, scipy, platform; print("versions", platform.python_version(), jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' 2>&1 | tee -a "$B5_OUT/progress.txt"
+timeout -k 10 120 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv >> "$B5_OUT/progress.txt" 2>&1 || true
 free -g | head -2 >> "$B5_OUT/progress.txt" 2>&1 || true
-df -h "$B5_WORK" | tail -1 >> "$B5_OUT/progress.txt" 2>&1 || true
+timeout -k 10 120 df -h "$B5_WORK" | tail -1 >> "$B5_OUT/progress.txt" 2>&1 || true
 if [ "${B5_TINY:-0}" != 1 ] && [ "${B5_ALLOW_CPU:-0}" != 1 ]; then    # a GPU job without a GPU backend would only burn pod time
-  $PY -c 'import jax, sys; sys.exit(0 if jax.default_backend() == "gpu" else 3)' || { P "jax.default_backend() is not gpu: abort"; exit 3; }
+  timeout -k 10 120 $PY -c 'import jax, sys; sys.exit(0 if jax.default_backend() == "gpu" else 3)' || { P "jax.default_backend() is not gpu (or the probe hung): abort"; exit 3; }
 fi
 FAIL=0
 for ENTRY in $PLAN; do
@@ -61,7 +61,13 @@ for ENTRY in $PLAN; do
     JAX_PLATFORMS=cpu timeout -k 10 "$WT" $PY -B ccert.py "$i" > "$O/logs/cert_$i.log" 2>&1 &
     PIDS+=($!)
   done
-  timeout -k 10 $(( CD - NOW )) $PY -B ctrain.py > "$O/logs/train.log" 2>&1 || { P "ctrain FAILED ($W)"; tail -30 "$O/logs/train.log" | tee -a "$B5_OUT/progress.txt"; WFAIL=1; }
+  timeout -k 10 $(( CD - NOW )) $PY -B ctrain.py > "$O/logs/train.log" 2>&1; RC=$?
+  if [ "$RC" -eq 124 ]; then    # stopped by its time limit = the certification deadline: a deadline stop, not a failure
+    P "ctrain stopped at the certification deadline ($W); the configs it finished are certified"
+    [ -f "$O/train_done.json" ] || echo '{"stopped_at_cert_deadline": true}' > "$O/train_done.json"
+  elif [ "$RC" -ne 0 ]; then
+    P "ctrain FAILED ($W, exit $RC)"; tail -30 "$O/logs/train.log" | tee -a "$B5_OUT/progress.txt"; WFAIL=1
+  fi
   mkdir -p "$B5_WORK/$W/lat" && touch "$B5_WORK/$W/lat/DONE"   # whatever ctrain's exit status (it may die at import): the workers must not poll to the deadline
   for p in "${PIDS[@]}"; do wait "$p" || { P "a cert worker exited non-zero ($p)"; WFAIL=1; }; done
   P "$W certification finished; $(ls "$B5_WORK/$W/cert"/*.json 2>/dev/null | wc -l) halves certified, $(ls "$B5_WORK/$W/lat"/*.ready 2>/dev/null | wc -l) left unclaimed"
