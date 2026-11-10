@@ -42,11 +42,16 @@
       "at": "2026-11-10T02:41:30Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T02:47:00Z",
+      "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_h100_sxm5 available right now. Please try again later.); will retry",
+      "state": "queued"
     }
   ],
   "job_id": "r5-slots-004",
   "max_estimate_usd": 10.36,
-  "message": "renting a pod",
+  "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_h100_sxm5 available right now. Please try again later.); will retry",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_h100_sxm5",
@@ -90,14 +95,32 @@
     "planned_at": "2026-11-10T02:35:09Z",
     "window_hours": 3.15
   },
-  "pods": [],
-  "pods_terminated": null,
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": null,
+      "data_center": "us-south-3",
+      "gpu": "H100_80GB",
+      "name": "gpujob-r5-slots-004-a1",
+      "note": "no pod with this name after the create",
+      "pod_id": null,
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 4.29,
+      "ready_at": null,
+      "requested_at": "2026-11-10T02:41:31Z",
+      "spot": false,
+      "state": "create_failed",
+      "terminated_at": null
+    }
+  ],
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-10T02:05:32Z",
     "file": "jobs/r5-slots-004/review.md",
     "sha256": "b6eb25065fbaec41a82876e1aa24222969bab6b8b808256d5749f3de096dfac6",
     "summary": "Fine to run: the 2^31 blocker is fixed (largest tensor 6.0e8, checked at compile level) and all pilot points are addressed. 1 minor: the last trained config loses its objective values. 6 info."
   },
-  "state": "provisioning",
-  "updated_at": "2026-11-10T02:41:30Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T02:47:00Z"
 }
