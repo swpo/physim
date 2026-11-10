@@ -17,7 +17,7 @@ NO-GO until steps 0 to 2 have passed on the Mac and been reported.
 40-character hash in the coordinator's GO message. The lead checks it out (section C) and gives it to the
 session, and the first line that step 0 prints must equal it. The code is identified by the sha256 of
 `PIN.sha256`, the list of the sha256 of every file the pilot executes or imports; step 0 recomputes both.
-sha256 of `PIN.sha256`: `7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19`
+sha256 of `PIN.sha256`: `cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4`
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, the session and the disk, (1) install, (2) run the scripted,
