@@ -11493,7 +11493,7 @@
    }
   },
   {
-   "claim": "NO OBJECTS FROM THE OBJECTIVES. With the geometric encoder (which starts as soft k-means) every unsupervised objective ends at the k-means parts, not at the tracker's objects: closure (sam_set), closure with the dead-direction term (sam_set_dg), local law (sam_self) and reconstruction (sam_rec) all give ARI 0.63 against the tracker, 2.1 slots per tracked object, all 12 slots in use, high precision and low recall (a slot lies inside one object, an object is split over slots), matched-slot mass unrelated to the object's mass, position recovered. The no-learning soft k-means km_s3 has the same numbers.",
+   "claim": "NO OBJECTS FROM THE OBJECTIVES. With the geometric encoder (which starts as soft k-means) every unsupervised objective ends at the k-means parts, not at the tracker's objects: closure (sam_set), closure with the dead-direction term (sam_set_dg), local law (sam_self) and reconstruction (sam_rec) all give ARI 0.63 against the tracker, 2.1 slots per tracked object, all 12 slots in use, high precision and low recall (a slot lies inside one object, an object is split over slots), matched-slot mass unrelated to the object's mass, position recovered. The no-learning soft k-means km_s3 has the same numbers. [checker] The encoders do not start at km_s3 but at the sigma = 6 k-means with fewer iterations: the untrained encoder scores ARI 0.72 against the tracker and 0.95 against km_s6 (pilot r5-slots-003, sam_set_dg rows, which are initial weights; a different realisation of the same seeds). In this run km_s6 scores 0.72, km_s6w 0.72 and the 12 fixed regions (grid) 0.65 against the tracker. Training on any of the four objectives therefore LOWERS the agreement with the tracker by about 0.09, to the level of the narrower k-means km_s3 and below the fixed grid; km_s3 is the k-means variant that matched afterwards, not the start. On this ARI scale 'no object information' is 0.63-0.72 and the supervised control 0.85.",
    "values": {
     "sam_set_ari": 0.6272,
     "sam_set_slots_per_object": 2.1449,
@@ -11520,7 +11520,18 @@
     "km_s3_recall": 0.7755,
     "km_s3_precision": 0.9884,
     "km_s3_mass_R2_mask": -0.1896,
-    "km_s3_position_R2_mask": 0.9834
+    "km_s3_position_R2_mask": 0.9834,
+    "km_s6_ari": 0.7158,
+    "km_s6w_ari": 0.7217,
+    "grid_ari": 0.6459,
+    "untrained_encoder_ari_pilot": 0.716,
+    "untrained_encoder_ari_vs_km_s6_pilot": 0.9544,
+    "untrained_encoder_best_step_pilot": [
+     0,
+     0,
+     0,
+     0
+    ]
    },
    "sources": {
     "sam_set_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.ari_hard_matter_weighted",
@@ -11548,11 +11559,17 @@
     "km_s3_recall": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.recall",
     "km_s3_precision": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.precision",
     "km_s3_mass_R2_mask": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.direct.mass_R2",
-    "km_s3_position_R2_mask": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.direct.pos_R2"
+    "km_s3_position_R2_mask": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.direct.pos_R2",
+    "km_s6_ari": "r5-slots-008:out/combined.json:phis.\"km_s6\".agreement.ari_hard_matter_weighted [added by the checker]",
+    "km_s6w_ari": "r5-slots-008:out/combined.json:phis.\"km_s6w\".agreement.ari_hard_matter_weighted [added by the checker]",
+    "grid_ari": "r5-slots-008:out/combined.json:phis.\"grid\".agreement.ari_hard_matter_weighted [added by the checker]",
+    "untrained_encoder_ari_pilot": "r5-slots-003:out/combined.json:phis.\"sam_set_dg_s0\".agreement.ari_hard_matter_weighted [added by the checker]",
+    "untrained_encoder_ari_vs_km_s6_pilot": "r5-slots-003:out/combined.json:configs.sam_set_dg.ari_vs_km_s6 [added by the checker]",
+    "untrained_encoder_best_step_pilot": "r5-slots-003:out/combined.json:configs.sam_set_dg.best_step [added by the checker]"
    }
   },
   {
-   "claim": "THE OBJECTIVES LEAVE THE TRACKER-LIKE VIEW. Started from the supervised encoder (encoder frozen for the first 375 steps while the new head warms up), each objective walks back to the parts: recall + purity of the masks against the tracker on held-out trajectories (2 = the tracker's segmentation) is 1.87 at the start, 1.71 at step 500, 1.65 at step 1000 and stays there, the value of the cold-started encoders; the certified agreement of the warm-started encoders equals that of the cold-started ones. So the tracker-like view is not a minimum that the optimiser failed to find from a k-means start.",
+   "claim": "THE OBJECTIVES LEAVE THE TRACKER-LIKE VIEW. Started from the supervised encoder (encoder frozen for the first 375 steps while the new head warms up), each objective walks back to the parts: recall + purity of the masks against the tracker on held-out trajectories (2 = the tracker's segmentation) is 1.87 at the start, 1.71 at step 500, 1.65 at step 1000 and stays there, the value of the cold-started encoders; the certified agreement of the warm-started encoders equals that of the cold-started ones. So the tracker-like view is not a minimum that the optimiser failed to find from a k-means start. [checker] The move is driven by the objective: the closure value of sam_set_ws on the held-out trajectories is 0.43 with the tracker-like encoder frozen and the head warmed up (step 300), 0.28 at step 1000 and 0.24 at step 3000, while recall + purity falls (it was 0.44 and 0.43 at steps 200 and 300, so the fall is not the head still warming up). Limits: recall + purity is measured on 4 held-out trajectories per replica (4 replicas); the warm-started encoders are certified from checkpoints chosen after step 750, that is after the walk back; and the tracker-like view is fragile under its own supervised objective too: one of the four sam_sup replicas (fit B, seed 1) oscillated between 1.61 and 1.87 after step 1200 (1.61 at step 1500, 1.87 at step 2000, 1.70 at step 3000) and is certified from its step-900 checkpoint (the 1.82 quoted for sam_sup at step 3000 is the mean including it; the other three are at 1.85-1.86).",
    "values": {
     "sam_set_ws_ari": 0.6272,
     "sam_set_ws_slots_per_object": 2.1423,
@@ -11583,7 +11600,28 @@
     "sam_set_ws_dg_recall_plus_purity_step_1000": 1.6633,
     "sam_set_ws_dg_recall_plus_purity_step_3000": 1.6546,
     "sam_sup_recall_plus_purity_step_3000": 1.8177,
-    "sam_set_recall_plus_purity_step_3000": 1.6516
+    "sam_set_recall_plus_purity_step_3000": 1.6516,
+    "sam_set_ws_closure_val_step_300_encoder_frozen": 0.4285,
+    "sam_set_ws_closure_val_step_1000": 0.2761,
+    "sam_set_ws_closure_val_step_3000": 0.2428,
+    "sam_sup_recall_plus_purity_step_1500_per_replica": [
+     1.8579,
+     1.8383,
+     1.8366,
+     1.6096
+    ],
+    "sam_sup_recall_plus_purity_step_3000_per_replica": [
+     1.8647,
+     1.8606,
+     1.8502,
+     1.6955
+    ],
+    "sam_sup_best_step_per_replica": [
+     2400,
+     2800,
+     2700,
+     900
+    ]
    },
    "sources": {
     "sam_set_ws_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_ws_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_set_ws_s1\".agreement.ari_hard_matter_weighted",
@@ -11615,11 +11653,17 @@
     "sam_set_ws_dg_recall_plus_purity_step_1000": "r5-slots-008:out/train/sam_set_ws_dg.json:hist[10].val_trk_recall_purity (rowsum_mean)",
     "sam_set_ws_dg_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_set_ws_dg.json:hist[30].val_trk_recall_purity (rowsum_mean)",
     "sam_sup_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_sup.json:hist[30].val_trk_recall_purity (rowsum_mean)",
-    "sam_set_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_set.json:hist[30].val_trk_recall_purity (rowsum_mean)"
+    "sam_set_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_set.json:hist[30].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_closure_val_step_300_encoder_frozen": "r5-slots-008:out/train/sam_set_ws.json:hist[3].val (mean) [added by the checker]",
+    "sam_set_ws_closure_val_step_1000": "r5-slots-008:out/train/sam_set_ws.json:hist[10].val (mean) [added by the checker]",
+    "sam_set_ws_closure_val_step_3000": "r5-slots-008:out/train/sam_set_ws.json:hist[30].val (mean) [added by the checker]",
+    "sam_sup_recall_plus_purity_step_1500_per_replica": "r5-slots-008:out/train/sam_sup.json:hist[15].val_trk_recall_purity (rowsum) [added by the checker]",
+    "sam_sup_recall_plus_purity_step_3000_per_replica": "r5-slots-008:out/train/sam_sup.json:hist[30].val_trk_recall_purity (rowsum) [added by the checker]",
+    "sam_sup_best_step_per_replica": "r5-slots-008:out/combined.json:configs.sam_sup.best_step [added by the checker]"
    }
   },
   {
-   "claim": "CLOSURE RANKS THE PARTS ABOVE THE OBJECTS. Each view judged in its own coordinates with the same permutation-equivariant predictor family (S: shared linear rule and shared attention network over slots; 6 numbers per slot = mass, position, size; h = 1, 2, 4, 8, 16; SE 0.01-0.02): the tracker's object view has the lowest ceiling of the object-like views, the supervised tracker-like encoder is in between, the parts (k-means or any objective-trained encoder) are highest; only the fixed grid is lower than the tracker at long horizons.",
+   "claim": "CLOSURE RANKS THE PARTS ABOVE THE OBJECTS. Each view judged in its own coordinates with the same permutation-equivariant predictor family (S: shared linear rule and shared attention network over slots; 6 numbers per slot = mass, position, size; h = 1, 2, 4, 8, 16; SE 0.01-0.02): the tracker's object view has the lowest ceiling of the object-like views, the supervised tracker-like encoder is in between, the parts (k-means or any objective-trained encoder) are highest; only the fixed grid is lower than the tracker at long horizons. [checker] Paired by certification trajectory (checker's bootstrap over the 32 trajectories, from out/items/*.npz): km_s3 minus the tracker is +0.05, +0.17, +0.39 at h = 1, 4, 16 (z 5, 7, 21), the supervised encoder minus the tracker +0.24 at h = 16 (z 18). The eight cold-started encoders do not differ from km_s3 at any horizon (|difference| <= 0.01, |z| <= 1.8); against km_s6, the bandwidth they start from (0.96 / 0.83 / 0.48 at h = 1 / 4 / 16), sam_set is +0.08 at h = 8 and 16 (z 4 to 5). km_s3 is the best of the three k-means variants at h = 16 (km_s6w 0.55) and became the reference after the results. The views compared have different slot counts (12 parts, 7.4 objects with empty slots as zeros) in a slot-indexed layout, and the same measure puts a frozen code highest (sac_set 0.90 at h = 16), so a higher ceiling alone does not make a view the better description.",
    "values": {
     "ceiling_trk": [
      0.9227,
@@ -11711,6 +11755,20 @@
      0.7712,
      0.4303,
      0.1861
+    ],
+    "ceiling_km_s6": [
+     0.9585,
+     0.9149,
+     0.8337,
+     0.6874,
+     0.4817
+    ],
+    "ceiling_km_s6w": [
+     0.9766,
+     0.9399,
+     0.8763,
+     0.731,
+     0.5477
     ]
    },
    "sources": {
@@ -11726,11 +11784,13 @@
     "ceiling_grid": "r5-slots-008:out/combined.json:phis.\"grid@mp6\".families.S.ceiling",
     "ceiling_trk_family_O_12_numbers": "r5-slots-008:out/combined.json:phis.\"trk\".families.O.ceiling",
     "ceiling_km_s3_family_O_12_numbers": "r5-slots-008:out/combined.json:phis.\"km_s3\".families.O.ceiling",
-    "ceiling_hand_block_mass_64_numbers": "r5-slots-008:out/combined.json:phis.\"hand_mass\".families.GL.ceiling"
+    "ceiling_hand_block_mass_64_numbers": "r5-slots-008:out/combined.json:phis.\"hand_mass\".families.GL.ceiling",
+    "ceiling_km_s6": "r5-slots-008:out/combined.json:phis.\"km_s6@mp6\".families.S.ceiling [added by the checker]",
+    "ceiling_km_s6w": "r5-slots-008:out/combined.json:phis.\"km_s6w@mp6\".families.S.ceiling [added by the checker]"
    }
   },
   {
-   "claim": "PREDICTABLE CONTENT. The parts also hold more predictable nats per frame in the same 72 numbers (captured by family S). Diagonal Gaussian measure at h = 1 / 4 / 16: 200 / 102 / 29 for km_s3 against 111 / 43 / 5 for the tracker's view. Log-det measure at h = 1: 192 against 81, with the supervised encoder in between (119); the tracker's log-det is ill-conditioned at longer horizons (empty slots make its covariance nearly singular; its available content is undefined), so only h = 1 is quoted for it. The diagonal measure counts redundant coordinates repeatedly (the collapsed sgm_set scores highest on it, and negative on the log-det), so it is quoted here only for views whose slots are distinct.",
+   "claim": "PREDICTABLE CONTENT. The parts also hold more predictable nats per frame in the same 72 numbers (captured by family S). Diagonal Gaussian measure at h = 1 / 4 / 16: 200 / 102 / 29 for km_s3 against 111 / 43 / 5 for the tracker's view. Log-det measure at h = 1: 192 against 81, with the supervised encoder in between (119); the tracker's log-det is ill-conditioned at longer horizons (empty slots make its covariance nearly singular; its available content is undefined), so only h = 1 is quoted for it. The diagonal measure counts redundant coordinates repeatedly (the collapsed sgm_set scores highest on it, and negative on the log-det), so it is quoted here only for views whose slots are distinct. [checker] The tracker's log-det value at h = 1 is the mean of two halves that disagree (58 and 103); at h = 4 half A is negative (-26); so 81 is known to about +-23 only. 'The same 72 numbers' counts the tracker's empty slots: the parts have 12 present slots against 7.4 (ratio 1.6), and the ratio of diagonal content is 1.8 at h = 1, 2.4 at h = 4 and 5.9 at h = 16, so at h = 1 most of the gap is the slot count and the excess per slot appears at the longer horizons. On the diagonal measure the tracker's view holds about what the fixed grid holds (124 / 40 / 2).",
    "values": {
     "logdet_capt_trk": [
      80.7772,
@@ -11822,6 +11882,27 @@
      null,
      null,
      null
+    ],
+    "logdet_capt_trk_half_A": [
+     58.0651,
+     10.8232,
+     -26.1002,
+     -2.981,
+     null
+    ],
+    "logdet_capt_trk_half_B": [
+     103.4892,
+     69.6908,
+     31.6152,
+     10.6561,
+     -0.5119
+    ],
+    "diag_capt_grid": [
+     124.2331,
+     80.683,
+     39.5264,
+     15.6443,
+     2.3052
     ]
    },
    "sources": {
@@ -11837,11 +11918,14 @@
     "diag_capt_sgm_set_collapsed": "r5-slots-008:out/combined.json:phis.\"sgm_set_s0@mp6\".families.S.I_capt_diag",
     "logdet_capt_sgm_set_collapsed": "r5-slots-008:out/combined.json:phis.\"sgm_set_s0@mp6\".logdet.I_capt_S",
     "diag_capt_sam_sup": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0@mp6\".families.S.I_capt_diag; r5-slots-008:out/combined.json:phis.\"sam_sup_s1@mp6\".families.S.I_capt_diag",
-    "logdet_avail_trk": "r5-slots-008:out/combined.json:phis.\"trk@mp6\".logdet.I_avail"
+    "logdet_avail_trk": "r5-slots-008:out/combined.json:phis.\"trk@mp6\".logdet.I_avail",
+    "logdet_capt_trk_half_A": "r5-slots-008:out/cert/trk@mp6__certA.json:ld.I_capt_S [added by the checker]",
+    "logdet_capt_trk_half_B": "r5-slots-008:out/cert/trk@mp6__certB.json:ld.I_capt_S [added by the checker]",
+    "diag_capt_grid": "r5-slots-008:out/combined.json:phis.\"grid@mp6\".families.S.I_capt_diag [added by the checker]"
    }
   },
   {
-   "claim": "THE OBJECTIVES THEMSELVES PREFER THE PARTS. Value of each objective on each frozen view, with a fresh head trained for 1000 steps (lower is better; mean of 4 replicas): closure and local law score the tracker's view worst of the object-like views (0.45), the supervised tracker-like encoder next (0.42), k-means parts 0.32-0.35 and the objective-trained encoders 0.28-0.31; reconstruction also prefers parts (0.47) to the tracker's view (0.55). Training therefore improves the objective a little beyond k-means (0.29 against 0.32) without changing which matter a slot holds. Between runs the tracker's closure value moves by about 0.05 (0.49 in r5-slots-007, a different simulation), far less than the gap.",
+   "claim": "THE OBJECTIVES THEMSELVES PREFER THE PARTS. Value of each objective on each frozen view, with a fresh head trained for 1000 steps (lower is better; mean of 4 replicas): closure and local law score the tracker's view worst of the object-like views (0.45), the supervised tracker-like encoder next (0.42), k-means parts 0.32-0.35 and the objective-trained encoders 0.28-0.31; reconstruction also prefers parts (0.47) to the tracker's view (0.55). Whether training improves the objective beyond k-means (0.29 against 0.32-0.35 in this run) is not resolved (checker's note below). Between runs the tracker's closure value moves by about 0.05 (0.49 in r5-slots-007, a different simulation), far less than the gap. [checker] Each value is measured on 4 held-out trajectories per half, the ones on which the trained encoders' checkpoints were selected. Under the same protocol (1000 head steps) a fixed view's value moves by up to 0.04 between runs: km_s6 0.317 in r5-slots-007 and 0.353 here, km_s3 0.337 and 0.321 (their order flips), the tracker 0.493 and 0.453. The values also depend on the head's budget: with 300 head steps (pilot r5-slots-003) the tracker scored 0.577, km_s3 0.332, km_s6 0.325 and the trained sam_set 0.334 (no gain over k-means). The order tracker > supervised > parts holds in all three runs and under the dead-direction term (objective_values.*.set.mean_guarded); the tracker's gap to the parts (0.10-0.25) is the robust part of this claim. That the encoders do move 'which matter a slot holds' is shown under claim 1 (from the sigma-6 start to the km_s3-like parts).",
    "values": {
     "set_trk": 0.4527,
     "set_sam_sup": 0.4208,
@@ -11876,7 +11960,15 @@
     ],
     "set_trk_in_r5-slots-007": 0.4929,
     "set_km_s3_in_r5-slots-007": 0.3366,
-    "set_sam_sup_in_r5-slots-007": 0.4434
+    "set_sam_sup_in_r5-slots-007": 0.4434,
+    "set_km_s6_in_r5-slots-007": 0.3166,
+    "set_km_s6w_in_r5-slots-007": 0.3134,
+    "set_trk_in_r5-slots-003_300_head_steps": 0.5774,
+    "set_km_s3_in_r5-slots-003_300_head_steps": 0.3324,
+    "set_km_s6_in_r5-slots-003_300_head_steps": 0.325,
+    "set_sam_set_in_r5-slots-003_300_head_steps": 0.3342,
+    "head_steps_in_r5-slots-003": 300,
+    "head_steps_in_r5-slots-007": 1000
    },
    "sources": {
     "set_trk": "r5-slots-008:out/combined.json:objval.trk.set.val (mean)",
@@ -11902,11 +11994,19 @@
     "set_km_s3_replicas": "r5-slots-008:out/combined.json:objval.km_s3.set.val",
     "set_trk_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.trk.set.val (mean)",
     "set_km_s3_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.km_s3.set.val (mean)",
-    "set_sam_sup_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.sam_sup.set.val (mean)"
+    "set_sam_sup_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.sam_sup.set.val (mean)",
+    "set_km_s6_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.km_s6.set.val (mean) [added by the checker]",
+    "set_km_s6w_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.km_s6w.set.val (mean) [added by the checker]",
+    "set_trk_in_r5-slots-003_300_head_steps": "r5-slots-003:out/combined.json:objval.trk.set.val (mean) [added by the checker]",
+    "set_km_s3_in_r5-slots-003_300_head_steps": "r5-slots-003:out/combined.json:objval.km_s3.set.val (mean) [added by the checker]",
+    "set_km_s6_in_r5-slots-003_300_head_steps": "r5-slots-003:out/combined.json:objval.km_s6.set.val (mean) [added by the checker]",
+    "set_sam_set_in_r5-slots-003_300_head_steps": "r5-slots-003:out/combined.json:objval.sam_set.set.val (mean) [added by the checker]",
+    "head_steps_in_r5-slots-003": "r5-slots-003:out/combined.json:objval.trk.steps [added by the checker]",
+    "head_steps_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.trk.steps [added by the checker]"
    }
   },
   {
-   "claim": "WHAT THE TRACKER'S LOGIC ADDS: INDIVIDUATION AND EVENTS. The tracker says how many objects there are (one per connected blob) and re-labels at once when blobs fuse or split; this world has about 67 fusions and 131 fissions per 300-tick trajectory for 7.4 objects. The parts keep all 12 slots in use and never merge: just after a fusion the best slot holds 0.42 of the fused object and still only 0.72 more than 16 ticks later, while after a fission recall is 0.79 at once. The supervised encoder learned to empty slots (8.0 present) and to merge, but with a lag of 4 to 8 ticks after either event (recall 0.69 at a fusion and 0.67 at a fission, 0.93-0.96 by ticks 8-15). Each objective scores those jumps as unpredictable change of the slot numbers, which is what it is asked to avoid.",
+   "claim": "WHAT THE TRACKER'S LOGIC ADDS: INDIVIDUATION AND EVENTS. The tracker says how many objects there are (one per connected blob) and re-labels at once when blobs fuse or split; this world has about 67-71 fusions and about as many fissions per 300-tick trajectory for 7.4 objects (corrected by the checker: 131-138 is the number of slot rows that carry the fission flag, and the tracker flags both the parent and the product of a fission, vw/objects.py; 68-71 slots per trajectory are absorbed by fusions and, with births and deaths near zero and a stationary count, as many are created by fissions). The parts keep all 12 slots in use and never merge: just after a fusion the best slot holds 0.42 of the fused object and still only 0.72 more than 16 ticks later, while after a fission recall is 0.79 at once. The supervised encoder learned to empty slots (8.0 present) and to merge, but with a lag of 4 to 8 ticks after either event (recall 0.69 at a fusion and 0.67 at a fission, 0.93-0.96 by ticks 8-15). Each objective scores those jumps as unpredictable change of the slot numbers, which is what it is asked to avoid.",
    "values": {
     "fusions_per_trajectory_half_A": 66.5625,
     "fissions_per_trajectory_half_A": 131.2917,
@@ -11929,7 +12029,13 @@
     "sam_sup_slots_present": 7.9886,
     "sam_set_slots_present": 11.9829,
     "sam_set_identity_persistence": 0.9088,
-    "sam_sup_identity_persistence": 0.9695
+    "sam_sup_identity_persistence": 0.9695,
+    "slots_absorbed_by_fusion_per_trajectory_half_A": 68.0625,
+    "slots_absorbed_by_fusion_per_trajectory_half_B": 70.9792,
+    "births_per_trajectory_half_A": 0.0,
+    "births_per_trajectory_half_B": 0.0208,
+    "deaths_per_trajectory_half_A": 0.0,
+    "deaths_per_trajectory_half_B": 0.0
    },
    "sources": {
     "fusions_per_trajectory_half_A": "r5-slots-008:out/sim_A.json:objects.events_per_traj.fusion",
@@ -11953,7 +12059,13 @@
     "sam_sup_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".territory.slots_present_mean",
     "sam_set_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".territory.slots_present_mean",
     "sam_set_identity_persistence": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.identity_persistence; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.identity_persistence",
-    "sam_sup_identity_persistence": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.identity_persistence; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.identity_persistence"
+    "sam_sup_identity_persistence": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.identity_persistence; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.identity_persistence",
+    "slots_absorbed_by_fusion_per_trajectory_half_A": "r5-slots-008:out/sim_A.json:objects.events_per_traj.fused [added by the checker]",
+    "slots_absorbed_by_fusion_per_trajectory_half_B": "r5-slots-008:out/sim_B.json:objects.events_per_traj.fused [added by the checker]",
+    "births_per_trajectory_half_A": "r5-slots-008:out/sim_A.json:objects.events_per_traj.birth [added by the checker]",
+    "births_per_trajectory_half_B": "r5-slots-008:out/sim_B.json:objects.events_per_traj.birth [added by the checker]",
+    "deaths_per_trajectory_half_A": "r5-slots-008:out/sim_A.json:objects.events_per_traj.death [added by the checker]",
+    "deaths_per_trajectory_half_B": "r5-slots-008:out/sim_B.json:objects.events_per_traj.death [added by the checker]"
    }
   },
   {
@@ -12036,7 +12148,7 @@
    }
   },
   {
-   "claim": "SEED STABILITY AND REPLICATION. The parts are a stable outcome: two seeds fitted on the same half agree (hard segmentations: ARI 0.91-0.94; matched slots' numbers: R2 0.81-0.90), and all agree with the no-learning km_s6 at ARI 0.80. Three GPU runs with different simulations (GPU float64 is not bit-deterministic) give the same picture: the pilot's sam_set (600 steps, H200), the failed run's supervised encoder and references (2000 steps), and this run.",
+   "claim": "SEED STABILITY AND REPLICATION. The parts are a stable outcome: two seeds fitted on the same half agree (hard segmentations: ARI 0.91-0.94; matched slots' numbers: R2 0.81-0.90), and all sit at ARI 0.80 against the no-learning km_s6 (checker: the untrained encoder is at 0.95 against km_s6 and its two seeds at 1.00 against each other, pilot's sam_set_dg rows, so 0.80 measures how far training moved the masks from their start, and part of the seed agreement is inherited from the shared deterministic start). Three GPU runs with different simulations (GPU float64 is not bit-deterministic) give the same picture: the pilot's sam_set (600 steps, H200), the failed run's supervised encoder and references (2000 steps), and this run. [checker] The three runs share the designer seeds 9801 / 9802; they differ through GPU non-determinism (objects per frame in half A: 7.39, 7.54, 7.40), so they are different realisations of the same ensemble, not independent seeds.",
    "values": {
     "sam_set_seed_pair_ari": 0.9133,
     "sam_set_seed_pair_R2": 0.8102,
@@ -12072,7 +12184,12 @@
      0.6895,
      0.4653,
      0.196
-    ]
+    ],
+    "untrained_encoder_seed_pair_ari_pilot": 1.0,
+    "untrained_encoder_ari_vs_km_s6_pilot": 0.9544,
+    "objects_per_frame_half_A_r5-slots-003": 7.3884,
+    "objects_per_frame_half_A_r5-slots-007": 7.5443,
+    "objects_per_frame_half_A_r5-slots-008": 7.3986
    },
    "sources": {
     "sam_set_seed_pair_ari": "r5-slots-008:out/combined.json:configs.sam_set.seed_pair.ari",
@@ -12097,7 +12214,12 @@
     "pilot_r5-slots-003_sam_set_s0_ari_vs_tracker": "r5-slots-003:out/combined.json:phis.\"sam_set_s0\".agreement.ari_hard_matter_weighted",
     "r5-slots-007_sam_sup_s0_ari_vs_tracker": "r5-slots-007:out/combined.json:phis.\"sam_sup_s0\".agreement.ari_hard_matter_weighted",
     "r5-slots-007_km_s3_ceiling": "r5-slots-007:out/combined.json:phis.\"km_s3@mp6\".families.S.ceiling",
-    "r5-slots-007_trk_ceiling": "r5-slots-007:out/combined.json:phis.\"trk@mp6\".families.S.ceiling"
+    "r5-slots-007_trk_ceiling": "r5-slots-007:out/combined.json:phis.\"trk@mp6\".families.S.ceiling",
+    "untrained_encoder_seed_pair_ari_pilot": "r5-slots-003:out/combined.json:configs.sam_set_dg.seed_pair.ari [added by the checker]",
+    "untrained_encoder_ari_vs_km_s6_pilot": "r5-slots-003:out/combined.json:configs.sam_set_dg.ari_vs_km_s6 [added by the checker]",
+    "objects_per_frame_half_A_r5-slots-003": "r5-slots-003:out/sim_A.json:objects.count_mean [added by the checker]",
+    "objects_per_frame_half_A_r5-slots-007": "r5-slots-007:out/sim_A.json:objects.count_mean [added by the checker]",
+    "objects_per_frame_half_A_r5-slots-008": "r5-slots-008:out/sim_A.json:objects.count_mean [added by the checker]"
    }
   }
  ],
@@ -12153,5 +12275,317 @@
   "pod_hours_created_to_terminated": 3.975,
   "study_cap_usd": 25.0,
   "source": "sum over jobs.*.cost.billed_usd and jobs.*.pod_hours_created_to_terminated"
+ },
+ "checker": {
+  "who": "independent checker of round-5 study slots (worktree wt-slotschk), 10 Nov 2026; no GPU job run; about 3 CPU-minutes (nice 10, one thread); own code read origin/gpu-jobs:jobs/r5-slots-00{3,7,8}/ (combined.json, cert/*.json, items/*.npz, train/*.json, objval/*.json, masks/*.npz, sim_*.json, status.json, logs)",
+  "verdict": "The numbers hold; some of the wording did not. All 183 claim values re-resolve from the job files (max deviation 5e-5), every table entry of the report recomputes from the per-half certification files and the per-item errors, the job records and the bill match, the code at ref 7099a0ded is what the report describes, no secret is committed. The main direction is supported for this architecture: no objective produced the tracker's objects, all four moved a tracker-like start back to parts while their loss fell, and the tracker's view is less closed than the parts by a wide margin (ceiling at h = 16 0.17 against 0.56, paired z 21). Corrections: (1) the fission count was doubled (about 68-71 per trajectory, not 131-138); (2) the trained encoders did not stay at k-means: they start at the sigma-6 k-means (ARI 0.72 against the tracker) and training lowers that to 0.63, the level of km_s3 and below a fixed grid (0.65), which the report's table does not show (of the k-means variants it lists km_s3 only); (3) 'training improves the objective beyond k-means' is not resolved (0.03-0.06 against a run-to-run movement of up to 0.04, none in the pilot); (4) the tracker's log-det content at h = 1 (81) averages two halves at 58 and 103; (5) at h = 1 most of the 'more predictable nats' is the slot count (12 against 7.4); (6) 'designer's convention' and 'individuation must be supplied' are readings, not results: no parsimony or connectivity term was run, and the closure measures used also rank a frozen code and a collapsed view highest.",
+  "job_records": {
+   "r5-slots-008": "state failed, exit_code 1 (logs/run.log: TypeError in scombine.py line 233, the table printer, after 'pooled 58 phis; problems []' and after combined.json was written; job.sh FAIL=1 from that step only); NVIDIA A100-SXM4-40GB 40960 MiB (logs/sysinfo.txt), lambdalabs asia-south-1 $1.99/h, 30 vCPU; pod created 06:24:28Z, terminated 09:10:43Z (2.771 h); billed $5.3569, conservative $5.5223, cap $20.80; ref 7099a0ded; 383 files collected, not truncated; sim backend gpu x64, training x64 off, jax 0.12.0.1; 13 of 14 configs at 3000 steps with checkpoints 'best' and cut_by_deadline false, sam_set_sg skipped by the deadline (train_done.json); 116 cert files, 0 unclaimed, 0 workers killed; no train_errors.txt",
+   "r5-slots-007": "failed, exit 1, A100_40GB lambdalabs $1.99/h, 05:25:12Z-06:00:29Z (0.588 h), billed $1.0395",
+   "r5-slots-003": "done, exit 0, NVIDIA H200 143771 MiB, nebius $6.69/h billed rate, 16 vCPU, 23:33:34Z-00:06:52Z (0.555 h), billed $3.1285, ref e5d146ef3",
+   "r5-slots-002": "infra_error, two pods for 3.7 minutes in total, billed $0 (conservative $0.50)",
+   "r5-slots-001_004_005_006": "cancelled before start, $0; 004 waited 2 h 21 min (01:40:36Z-04:01:44Z); refs of 004-007 are 7099a0ded",
+   "total": "billed $9.5249 (3.1285 + 1.0395 + 5.3569), 3.975 pod-hours created-to-terminated (LEDGER.md hours column: 4.007); within $25",
+   "copies": "results/r5-slots-00{3,7,8}/* are byte-identical to the job outputs, except results/r5-slots-008/status.json, which is the copy taken before the runner added its after-run review (only the 'review' field differs), and results/r5-slots-008/table.txt, which was rendered locally (stated in the README)"
+  },
+  "code_review": [
+   "s5.py, ssim.py, snets.py, strain.py, scert.py are unchanged since the job ref; scombine.py, ssummary.py, sfigs.py, stable.py changed after the job (null handling, table mode), as the report says",
+   "a learned Phi is certified on the half it was not fitted on (strain.train_config: ch = OTHER[fh]); a Phi name such as sam_set_s0 pools two separately trained encoders (fit A and fit B, seed 0); checkpoints are the best validation value of the config's own objective after step 750 on 4 held-out trajectories of the fit half",
+   "warm start: the encoder is frozen while it <= 375 (STEPS // 8), each replica starts from the sam_sup replica of the same half and seed",
+   "ARI is matter-weighted, on the hard token labels, over tracked matter only (scert.agreement); recall + purity in the training history is on the soft masks",
+   "event counts: ssim.py counts slot rows by event code; vw/objects.py sets 'fission' on the parent slot and on the product, 'fusion' on the survivor and 'fused' on each absorbed slot",
+   "objective values (strain.objective_values): heads trained from scratch for S5_OV_STEPS on trajectories 0-43 of the fit half, value on trajectories 44-47 (the validation trajectories used for checkpoint selection)",
+   "not reported: the cold-started closure and local-law configs skipped non-finite steps (sam_set 36, sam_self 29, sam_set_dg 23, sac_set 43 over the 4 replicas; for the three sam configs 22-26 of them in the first 100 steps); the warm starts, sam_rec and sam_sup skipped none"
+  ],
+  "recomputed": {
+   "claims": "183 claim values re-resolved from origin/gpu-jobs with the checker's own resolver: 0 mismatches, max abs deviation 4.9e-5 (rounding); 68 phi rows (ceilings, ARI) against combined.json: 0 mismatches",
+   "agreement": "ARI, slots per object, slots present, mass R2 (mask, probe), recall, precision re-averaged from out/cert/<phi>__cert{A,B}.json for 17 views: equal to the report's table. Per (seed, half) ARI: sam_sup 0.835, 0.848, 0.867, 0.834; sam_set 0.629, 0.630, 0.625, 0.625; sgc_rec 0.177, 0.321, 0.100, 0.528",
+   "ceilings": "family-S ceilings recomputed from out/items/*.npz (pooled halves, best predictor per horizon): tracker 0.923 / 0.703 / 0.170, km_s3 0.975 / 0.871 / 0.558, km_s6 0.958 / 0.834 / 0.482, km_s6w 0.977 / 0.876 / 0.548, grid 0.953 / 0.633 / 0.063, sam_sup 0.953 / 0.822 / 0.405, sam_set 0.974 / 0.866 / 0.558 at h = 1 / 4 / 16; own bootstrap SE 0.005-0.019",
+   "paired_ceiling_differences_h_1_2_4_8_16": {
+    "km_s3_minus_trk": {
+     "diff": [
+      0.052,
+      0.088,
+      0.168,
+      0.285,
+      0.389
+     ],
+     "se": [
+      0.01,
+      0.017,
+      0.024,
+      0.019,
+      0.018
+     ]
+    },
+    "sam_sup_minus_trk": {
+     "diff": [
+      0.03,
+      0.052,
+      0.119,
+      0.176,
+      0.236
+     ],
+     "se": [
+      0.012,
+      0.018,
+      0.021,
+      0.016,
+      0.013
+     ]
+    },
+    "km_s3_minus_sam_sup": {
+     "diff": [
+      0.021,
+      0.036,
+      0.049,
+      0.109,
+      0.153
+     ],
+     "se": [
+      0.006,
+      0.008,
+      0.018,
+      0.02,
+      0.016
+     ]
+    },
+    "km_s3_minus_km_s6": {
+     "diff": [
+      0.016,
+      0.029,
+      0.037,
+      0.07,
+      0.077
+     ],
+     "se": [
+      0.013,
+      0.012,
+      0.021,
+      0.019,
+      0.017
+     ]
+    },
+    "km_s3_minus_km_s6w": {
+     "diff": [
+      -0.002,
+      0.004,
+      -0.005,
+      0.026,
+      0.01
+     ],
+     "se": [
+      0.005,
+      0.01,
+      0.013,
+      0.015,
+      0.014
+     ]
+    },
+    "sam_set_minus_km_s3": {
+     "diff": [
+      0.0,
+      -0.008,
+      -0.005,
+      0.01,
+      -0.001
+     ],
+     "se": [
+      0.004,
+      0.007,
+      0.008,
+      0.012,
+      0.011
+     ]
+    },
+    "sam_set_minus_km_s6": {
+     "diff": [
+      0.016,
+      0.02,
+      0.032,
+      0.079,
+      0.076
+     ],
+     "se": [
+      0.013,
+      0.013,
+      0.019,
+      0.016,
+      0.018
+     ]
+    },
+    "eight_cold_started_minus_km_s3": {
+     "diff": [
+      0.0,
+      -0.008,
+      -0.003,
+      0.0,
+      -0.004
+     ],
+     "se": [
+      0.003,
+      0.004,
+      0.008,
+      0.011,
+      0.008
+     ]
+    },
+    "eight_warm_started_minus_eight_cold_started": {
+     "diff": [
+      0.002,
+      0.003,
+      0.012,
+      0.017,
+      0.022
+     ],
+     "se": [
+      0.003,
+      0.004,
+      0.011,
+      0.006,
+      0.006
+     ]
+    },
+    "trk_minus_grid": {
+     "diff": [
+      -0.031,
+      -0.013,
+      0.069,
+      0.138,
+      0.107
+     ],
+     "se": [
+      0.013,
+      0.018,
+      0.026,
+      0.026,
+      0.015
+     ]
+    },
+    "method": "1000 bootstrap resamples of the 32 certification trajectories, the same resample for both views, best predictor re-chosen inside each resample; training-seed variance is not included; no correction for the ten contrasts"
+   },
+   "warm_start_history": "recall + purity (mean of 4 replicas) from train/*.json: sam_set_ws 1.868 (steps 0-300), 1.827 (400), 1.714 (500), 1.673 (600), 1.655 (1000), 1.656 (3000); sam_self_ws, sam_rec_ws, sam_set_ws_dg end at 1.656, 1.651, 1.655; cold starts 1.649-1.653; all 16 warm-started replicas are at 1.72 or below by step 800 and at 1.65-1.68 by step 1500",
+   "objective_values": "per-replica values recomputed from out/objval/*.json: tracker 0.449-0.457, sam_sup 0.404-0.465, km_s3 0.307-0.330, km_s6 0.336-0.371, km_s6w 0.312-0.321, sam_set 0.269-0.298; all eight trained moment encoders (0.279-0.312) are below all three k-means (0.317-0.353) in this run",
+   "snapshot_segmentations": "matter-weighted ARI between hard segmentations on the 6 saved frames (out/masks/*.npz, trajectory 0, ticks 100 / 104 / 108, both halves; a rough check): sam_set_s0 against km_s3 0.91 and against km_s6 0.77; sam_rec_s0 0.88 and 0.76; sam_self_s0 0.89 and 0.75; sam_set_ws_s0 0.89 and 0.77; km_s3 against km_s6 0.78; sam_set_ws_s0 against sam_set_s0 0.92; sam_sup_s0 against sam_set_ws_s0 0.52",
+   "logdet": "per-half I_capt_S of trk@mp6: half A [58.1, 10.8, -26.1, -3.0, null], half B [103.5, 69.7, 31.6, 10.7, -0.5]; I_avail is null in every horizon of half A; km_s3@mp6 197.5 / 185.8 at h = 1"
+  },
+  "findings": [
+   {
+    "id": "F1",
+    "severity": "wrong number",
+    "what": "131-138 'fissions per trajectory' counts flagged slot rows (parent and product); the number of fissions is about that of fusions, 68-71 per trajectory. Fixed in claims[6]; the README and the report still say 131-138."
+   },
+   {
+    "id": "F2",
+    "severity": "omission that changes the reading",
+    "what": "The cold-started encoders start at the sigma-6 k-means (ARI 0.72 against the tracker; km_s6 0.72, km_s6w 0.72, grid 0.65). Every objective moved them to the km_s3-like parts at 0.63. So training made the agreement with the tracker worse than no training, and 'ARI 0.63' is not above a fixed grid. This strengthens 'the objectives prefer parts' and replaces 'the same numbers as soft k-means' by 'the numbers of the narrower of the k-means variants tried'."
+   },
+   {
+    "id": "F3",
+    "severity": "claim not supported",
+    "what": "'Training improves the objective a little beyond k-means (0.29 against 0.32)': the difference is of the size of the run-to-run movement of a fixed view under the same protocol, the order of km_s3 and km_s6 flips between r5-slots-007 and 008, the pilot shows no gain, and the values are from 4 held-out trajectories per half that also selected the checkpoints. Reworded in claims[5]."
+   },
+   {
+    "id": "F4",
+    "severity": "caveat",
+    "what": "The objective values depend on the head's budget (tracker 0.58 at 300 head steps, 0.45-0.49 at 1000); no convergence check exists. The order tracker > supervised > parts is the same at both budgets and in the independent certification."
+   },
+   {
+    "id": "F5",
+    "severity": "caveat",
+    "what": "The tracker-like view is fragile: under its own objective one of four supervised replicas oscillated between recall + purity 1.61 and 1.87 after step 1200; the other three stayed at 1.80 or more from step 1100 on. The warm-start result still stands: 16 of 16 replicas are at 1.72 or below within 425 steps of the unfreezing, with a falling loss, and none comes back (at most 1.70 from step 1000 on). 'Not a minimum the optimiser missed' is shown for these four objectives with this covariance guard; a control that continues the supervised objective from the same start was not run."
+   },
+   {
+    "id": "F6",
+    "severity": "caveat",
+    "what": "Predictable content: the tracker's log-det at h = 1 is 58 in one half and 103 in the other; the available content of the reference view is undefined in half A at every horizon. Recommending the log-det measure (decision 4 of the report) needs more branches per item or a regularised estimate before it can rank views with empty slots."
+   },
+   {
+    "id": "F7",
+    "severity": "wording",
+    "what": "'The tracker's object view is a designer's convention' and 'individuation must be supplied' are interpretations. What is measured: in a slot-indexed layout with K = 12, fixed-count parts are more closed than 7.4 objects with event jumps. No parsimony, connectivity or slot-count term was run, K was not varied, and no set-matched (identity-free) score was used; the same closure measures rank a frozen code (sac_set) and a collapsed view (sgm_set) highest."
+   },
+   {
+    "id": "F8",
+    "severity": "scope",
+    "what": "Only encoders that start at k-means or at the supervised encoder gave a usable view; the two encoders without the k-means distance term collapsed (sgm_set) or were unstable (sgc_rec, per-replica ARI 0.10-0.53). 'Objectives end at parts' is therefore tested from two starting points of one architecture, on one level-0 theory, with public parameters."
+   },
+   {
+    "id": "F9",
+    "severity": "minor",
+    "what": "km_s3 (ceilings 0.97 / 0.87 / 0.56) is the best of three k-means variants at h = 16 and was chosen as 'the' soft k-means after the results; km_s6 has 0.96 / 0.83 / 0.48. As a level-1 candidate it has not been tested under inputs or with an agent."
+   }
+  ],
+  "consequences_for_the_conclusions": {
+   "1_tracker_view_is_a_convention": "supported in the weaker form 'less closed than fixed-count parts in this layout'; 'iterating on biases with these objectives yields parts' holds for this architecture and K",
+   "2_individuation_must_be_supplied": "a reasonable hypothesis and the right next experiment; not shown here",
+   "3_soft_k_means_as_level_1": "a candidate; quote the range over the variants (h = 16: 0.48-0.56)",
+   "4_log_det_with_participation_ratio": "sound in principle; at this size the log-det fails on the reference view itself"
+  },
+  "edits": [
+   {
+    "where": "claims[1].claim",
+    "before": "(nothing; text appended)",
+    "after": "[checker] The encoders do not start at km_s3 but at the sigma = 6 k-means with fewer iterations: the untrained encoder scores ARI 0.72 against the tracker and 0.95 against km_s6 (pilot r5-slots-003, sam_set_dg rows, which are initial weights; a different realisation of the same seeds). In this run km_s6 scores 0.72, km_s6w 0.72 and the 12 fixed regions (grid) 0.65 against the tracker. Training on any of the four objectives therefore LOWERS the agreement with the tracker by about 0.09, to the level of the narrower k-means km_s3 and below the fixed grid; km_s3 is the k-means variant that matched afterwards, not the start. On this ARI scale 'no object information' is 0.63-0.72 and the supervised control 0.85.",
+    "why": "the table and the claim showed km_s3 only; the encoders' own starting point (sigma 6) and two no-learning baselines agree with the tracker better than every trained encoder"
+   },
+   {
+    "where": "claims[2].claim",
+    "before": "(nothing; text appended)",
+    "after": "[checker] The move is driven by the objective: the closure value of sam_set_ws on the held-out trajectories is 0.43 with the tracker-like encoder frozen and the head warmed up (step 300), 0.28 at step 1000 and 0.24 at step 3000, while recall + purity falls (it was 0.44 and 0.43 at steps 200 and 300, so the fall is not the head still warming up). Limits: recall + purity is measured on 4 held-out trajectories per replica (4 replicas); the warm-started encoders are certified from checkpoints chosen after step 750, that is after the walk back; and the tracker-like view is fragile under its own supervised objective too: one of the four sam_sup replicas (fit B, seed 1) oscillated between 1.61 and 1.87 after step 1200 (1.61 at step 1500, 1.87 at step 2000, 1.70 at step 3000) and is certified from its step-900 checkpoint (the 1.82 quoted for sam_sup at step 3000 is the mean including it; the other three are at 1.85-1.86).",
+    "why": "the claim gave the mask agreement only; the loss values that show the direction, the sample behind them and the instability of the supervised replica were missing"
+   },
+   {
+    "where": "claims[3].claim",
+    "before": "(nothing; text appended)",
+    "after": "[checker] Paired by certification trajectory (checker's bootstrap over the 32 trajectories, from out/items/*.npz): km_s3 minus the tracker is +0.05, +0.17, +0.39 at h = 1, 4, 16 (z 5, 7, 21), the supervised encoder minus the tracker +0.24 at h = 16 (z 18). The eight cold-started encoders do not differ from km_s3 at any horizon (|difference| <= 0.01, |z| <= 1.8); against km_s6, the bandwidth they start from (0.96 / 0.83 / 0.48 at h = 1 / 4 / 16), sam_set is +0.08 at h = 8 and 16 (z 4 to 5). km_s3 is the best of the three k-means variants at h = 16 (km_s6w 0.55) and became the reference after the results. The views compared have different slot counts (12 parts, 7.4 objects with empty slots as zeros) in a slot-indexed layout, and the same measure puts a frozen code highest (sac_set 0.90 at h = 16), so a higher ceiling alone does not make a view the better description.",
+    "why": "adds the paired uncertainty of the headline differences and the two limits of the ranking (reference chosen after the fact; the ceiling also rewards degenerate views)"
+   },
+   {
+    "where": "claims[4].claim",
+    "before": "(nothing; text appended)",
+    "after": "[checker] The tracker's log-det value at h = 1 is the mean of two halves that disagree (58 and 103); at h = 4 half A is negative (-26); so 81 is known to about +-23 only. 'The same 72 numbers' counts the tracker's empty slots: the parts have 12 present slots against 7.4 (ratio 1.6), and the ratio of diagonal content is 1.8 at h = 1, 2.4 at h = 4 and 5.9 at h = 16, so at h = 1 most of the gap is the slot count and the excess per slot appears at the longer horizons. On the diagonal measure the tracker's view holds about what the fixed grid holds (124 / 40 / 2).",
+    "why": "the quoted log-det for the tracker averages two halves that differ by a factor 1.8; the content gap at h = 1 is mostly the number of occupied slots"
+   },
+   {
+    "where": "claims[5].claim",
+    "before": "Training therefore improves the objective a little beyond k-means (0.29 against 0.32) without changing which matter a slot holds.",
+    "after": "Whether training improves the objective beyond k-means (0.29 against 0.32-0.35 in this run) is not resolved (checker's note below).",
+    "why": "a difference of 0.03-0.06 against k-means values that move by up to 0.04 between runs under the same protocol; the pilot shows none"
+   },
+   {
+    "where": "claims[5].claim",
+    "before": "(nothing; text appended)",
+    "after": "[checker] Each value is measured on 4 held-out trajectories per half, the ones on which the trained encoders' checkpoints were selected. Under the same protocol (1000 head steps) a fixed view's value moves by up to 0.04 between runs: km_s6 0.317 in r5-slots-007 and 0.353 here, km_s3 0.337 and 0.321 (their order flips), the tracker 0.493 and 0.453. The values also depend on the head's budget: with 300 head steps (pilot r5-slots-003) the tracker scored 0.577, km_s3 0.332, km_s6 0.325 and the trained sam_set 0.334 (no gain over k-means). The order tracker > supervised > parts holds in all three runs and under the dead-direction term (objective_values.*.set.mean_guarded); the tracker's gap to the parts (0.10-0.25) is the robust part of this claim. That the encoders do move 'which matter a slot holds' is shown under claim 1 (from the sigma-6 start to the km_s3-like parts).",
+    "why": "puts the run-to-run and budget dependence next to the claim and removes the statement that the masks did not change"
+   },
+   {
+    "where": "claims[6].claim",
+    "before": "this world has about 67 fusions and 131 fissions per 300-tick trajectory for 7.4 objects",
+    "after": "this world has about 67-71 fusions and about as many fissions per 300-tick trajectory for 7.4 objects (corrected by the checker: 131-138 is the number of slot rows that carry the fission flag, and the tracker flags both the parent and the product of a fission, vw/objects.py; 68-71 slots per trajectory are absorbed by fusions and, with births and deaths near zero and a stationary count, as many are created by fissions)",
+    "why": "the fission count was twice the number of events: ssim.py counts slot rows with event code 2, which the tracker sets on the fission parent and on the product"
+   },
+   {
+    "where": "claims[8].claim",
+    "before": "and all agree with the no-learning km_s6 at ARI 0.80.",
+    "after": "and all sit at ARI 0.80 against the no-learning km_s6 (checker: the untrained encoder is at 0.95 against km_s6 and its two seeds at 1.00 against each other, pilot's sam_set_dg rows, so 0.80 measures how far training moved the masks from their start, and part of the seed agreement is inherited from the shared deterministic start).",
+    "why": "0.80 against km_s6 was presented as agreement; it is a departure from a start at 0.95"
+   },
+   {
+    "where": "claims[8].claim",
+    "before": "(nothing; text appended)",
+    "after": "[checker] The three runs share the designer seeds 9801 / 9802; they differ through GPU non-determinism (objects per frame in half A: 7.39, 7.54, 7.40), so they are different realisations of the same ensemble, not independent seeds.",
+    "why": "'different simulations' could be read as different seeds"
+   }
+  ],
+  "report_wording_not_in_summary": [
+   "README.md and the report: '67-69 fusions and 131-138 fissions per trajectory' should read 'about 67-71 fusions and as many fissions'",
+   "report table: add the rows km_s6 (ARI 0.72, 2.12 slots per object, ceiling 0.96 / 0.83 / 0.48, closure value 0.35) and grid (0.65, 1.66, 0.95 / 0.63 / 0.06, 0.68), and the untrained encoder's ARI 0.72",
+   "report 'Answer': 'the objectives prefer soft k-means parts' is right; add 'for one architecture with K = 12 and one collapse guard'",
+   "README: 'they walk back to the parts within about 600 steps' is steps counted from 0; from the unfreezing at step 375 it is 125-425 steps"
+  ],
+  "secrets": "none: the world uses the public gliders parameters (aworld specs['both'], world_seed 0), designer seeds 9801 / 9802 are published and the README marks the data as never to be reused as an exam; no key or token in the study's files or requests",
+  "note_on_regeneration": "ssummary.py rebuilds summary.json from results/interpretation.json and would drop this block, the reworded claims and the added values; interpretation.json was not edited (only this file was committed by the checker)",
+  "budget": "CPU only, about 3 CPU-minutes; $0"
  }
 }
