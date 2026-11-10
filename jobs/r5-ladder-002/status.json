@@ -1,9 +1,38 @@
 {
+  "billing_window_hours": 3.9,
+  "bundle": {
+    "bundle_sha256": "7147dbcb02e030ed775705a02d6423802388e2750b2f09376a0a6df32d0a8b72",
+    "files": {
+      "job.sh": "b4da0d1b05cf089aa96e50a0502e33714888122483c269805237bae842a41412",
+      "request.json": "345820a805ecf4eeeb88e412fc559b3556a160177fafea7c624dfe8738119b2a",
+      "run.sh": "4e469c7d8334190fba3cf91ff126d26d1c57a73390a828026e92916f0996d936",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "16bcd17ae26c680393b12515fda71aeb18e7f3c3bbf6f8bf6f47491690d725a0"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/gliders_exam",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/round4/sbi",
+      "research/alife/vecworld/program/round5/agentenv/evaluator",
+      "research/alife/vecworld/program/round5/ladder"
+    ],
+    "ref": "28263eb3e78445c8ae0355cd204a8b69a48185e1",
+    "src_bytes": 13266151
+  },
   "cap_usd": 21.2,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-10T02:52:25Z",
@@ -14,11 +43,35 @@
       "at": "2026-11-10T03:16:22Z",
       "message": "accepted: H200_141GB via nebius at $6.69/h, at most $21.07",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T03:38:49Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-ladder-002",
   "max_estimate_usd": 21.07,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
   "plan": {
     "max_estimate_usd": 21.07,
     "offers": [
@@ -46,12 +99,14 @@
     "window_hours": 3.15
   },
   "pods": [],
+  "pods_terminated": null,
   "review": {
     "at": "2026-11-10T03:16:15Z",
     "file": "jobs/r5-ladder-002/review.md",
     "sha256": "9bbfba7f2ced5c9ff48d8eae9c1a7087429cd8dc839c30c7af91330ffa57c344",
     "summary": "Fine to run: the 2^31 blocker is fixed (largest array 1.1e8, peak about 4.3 GB, checked at compile level); failure isolation verified. 1 minor: run.log lacks the pilot marker. 6 info."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T03:36:42Z"
+  "run_started_epoch": 1794281929.046648,
+  "state": "provisioning",
+  "updated_at": "2026-11-10T03:38:49Z"
 }
