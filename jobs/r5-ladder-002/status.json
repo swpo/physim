@@ -14,6 +14,12 @@
   "job_id": "r5-ladder-002",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T03:16:15Z",
+    "file": "jobs/r5-ladder-002/review.md",
+    "sha256": "9bbfba7f2ced5c9ff48d8eae9c1a7087429cd8dc839c30c7af91330ffa57c344",
+    "summary": "Fine to run: the 2^31 blocker is fixed (largest array 1.1e8, peak about 4.3 GB, checked at compile level); failure isolation verified. 1 minor: run.log lacks the pilot marker. 6 info."
+  },
   "state": "received",
   "updated_at": "2026-11-10T02:52:25Z"
 }
