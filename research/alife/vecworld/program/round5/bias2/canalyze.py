@@ -21,10 +21,18 @@ import sys
 import numpy as np
 
 R = sys.argv[1]
-WORLDS = sys.argv[2:] or [w for w in ("gliders", "vortex", "membrane") if os.path.exists(os.path.join(R, w, "combined.json"))]
+WORLDS = sys.argv[2:] or [w for w in ("gliders", "vortex", "membrane")
+                          if os.path.exists(os.path.join(R, w, "combined.json")) or os.path.exists(os.path.join(R, w, "combined.json.gz"))]
 HZ = [1, 2, 4, 8, 16]
 HI = {h: i for i, h in enumerate(HZ)}
 f4 = lambda v: None if v is None else (np.round(np.asarray(v, float), 4).tolist() if np.ndim(v) else round(float(v), 4))   # noqa: E731
+
+
+def load_combined(r, world):
+    """results/<world>/combined.json, or its committed gzip copy combined.json.gz."""
+    import gzip
+    p = os.path.join(r, world, "combined.json")
+    return json.load(open(p)) if os.path.exists(p) else json.load(gzip.open(p + ".gz", "rt"))
 
 
 def nz(v):
@@ -88,7 +96,7 @@ def at_pr(fam_rows, pr, name):
 
 
 def analyse(world):
-    C = json.load(open(os.path.join(R, world, "combined.json")))
+    C = load_combined(R, world)
     out = {"world": world, "fields": C["fields"], "layout": C["layout"], "hand": {}, "configs": {}, "matched": {}}
     fam = families(C)
     for k, r in C["hand"].items():
