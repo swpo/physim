@@ -45,11 +45,16 @@
       "at": "2026-11-10T05:05:45Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T05:11:09Z",
+      "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_a100_sxm4 available right now. Please try again later.); will retry",
+      "state": "queued"
     }
   ],
   "job_id": "r5-slots-006",
   "max_estimate_usd": 7.46,
-  "message": "renting a pod",
+  "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_a100_sxm4 available right now. Please try again later.); will retry",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -93,8 +98,26 @@
     "planned_at": "2026-11-10T04:49:09Z",
     "window_hours": 3.75
   },
-  "pods": [],
-  "pods_terminated": null,
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": null,
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-slots-006-a1",
+      "note": "no pod with this name after the create",
+      "pod_id": null,
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": null,
+      "requested_at": "2026-11-10T05:05:47Z",
+      "spot": false,
+      "state": "create_failed",
+      "terminated_at": null
+    }
+  ],
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-10T04:08:11Z",
     "file": "jobs/r5-slots-006/review.md",
@@ -102,6 +125,6 @@
     "summary": "Same code as slots-004/005; the memory recommendation is applied (MEM_FRACTION 0.9, about 36 GiB usable vs about 28 GiB peak); fine to run."
   },
   "run_started_epoch": 1794287145.787297,
-  "state": "provisioning",
-  "updated_at": "2026-11-10T05:05:45Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T05:11:09Z"
 }
