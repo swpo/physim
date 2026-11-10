@@ -161,11 +161,16 @@ def flat(k):
     return SC[k].reshape(nT * nI, nC)
 
 
-def acc_row(fam, n, K="K", valid=PRIM, s=None, c=None, d=None):
+ANCH = list(PR["prog_ticks"])
+anchor_of = np.tile(np.arange(len(ANCH)), nT * nI // len(ANCH)) if nI % len(ANCH) == 0 else None   # item = (run, anchor)
+
+
+def acc_row(fam, n, K="K", valid=PRIM, s=None, c=None, d=None, rows=None):
     pol = {"K": K, "D": d or f"{fam}|D@{n}", "P0": f"{fam}|P0", "S": s or f"{fam}|S@{n}", "C": c or f"{fam}|C"}
     if any(pol[q] not in SC for q in ("K", "P0", "C")):
         return None
-    a = ACC.shares({q: flat(v) for q, v in pol.items() if v in SC}, valid, worlds=worlds, n_boot=1000)
+    sel = slice(None) if rows is None else rows
+    a = ACC.shares({q: flat(v)[sel] for q, v in pol.items() if v in SC}, valid, worlds=worlds[sel], n_boot=1000)
     return {"sigma": a["sigma"], "sigma_se_worlds": (a.get("sigma_worlds") or {}).get("se"),
             "sigma_p05_p95_worlds": [(a.get("sigma_worlds") or {}).get(q) for q in ("p05", "p95")],
             "null_is": a["null_is"], "rho": a.get("rho"), "rho_se_worlds": (a.get("rho_worlds") or {}).get("se"),
@@ -192,6 +197,11 @@ for fam in FAMS:
             r_ = acc_row(fam, n, "K", PRIM, s=f"{fam}|Sded@{n}", c=f"{fam}|Cded")
             if r_:
                 acc[f"{fam}@{n}|K|joint|dedicated"] = r_
+        if anchor_of is not None and n == budgets[-1]:           # by anchor tick (history length), largest budget
+            for ai, a_ in enumerate(ANCH):
+                r_ = acc_row(fam, n, "K", PRIM, rows=np.flatnonzero(anchor_of == ai))
+                if r_:
+                    acc[f"{fam}@{n}|K|joint|anchor{a_}"] = r_
 # the strongest null and the strongest C over the families (not the roadmap's one-family rule; a sensitivity)
 best = {}
 for n in budgets:
@@ -207,7 +217,8 @@ for n in budgets:
                         "rho": None if ks is None or L[kp0] == L[kc] else (L[kp0] - L[ks]) / (L[kp0] - L[kc])}
 out["acceptance"] = {"note": "rows 'family@n|K reference|cells'; sigma = (L(null) - L(C)) / (L(K) - L(C)), null = the "
                              "better of D@n and P0; rho = (L(P0) - L(S@n)) / (L(P0) - L(C)); SE and 5-95% range from the "
-                             "bootstrap clustered by truth; L per cell (mean over the cells used)",
+                             "bootstrap clustered by truth; L per cell (mean over the cells used); 'anchor<t>' = only the items "
+                             "whose history ends at tick t (largest budget)",
                      "rows": acc, "best_over_families": best}
 
 # ----------------------------------------------------------------------------- theory policy T = law|D@n

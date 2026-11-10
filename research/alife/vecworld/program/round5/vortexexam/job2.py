@@ -92,6 +92,10 @@ PRESETS = {
     "xl": dict(n_cand=16, n_truth=12, N_theta=768, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=16, R=12, n_C=48),
     "full": dict(n_cand=14, n_truth=10, N_theta=512, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=12, R=8, n_C=32),
     "mid": dict(n_cand=12, n_truth=8, N_theta=384, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=12, R=8, n_C=24),
+    # two steps added after r5-vortexexam-003: on an A100 at 169 member-ticks/s 'mid' missed its budget by 43 s and
+    # the job fell from 773 thousand planned member-ticks to the 294 thousand of 'small'
+    "mid2": dict(n_cand=11, n_truth=8, N_theta=320, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=10, R=8, n_C=16),
+    "low": dict(n_cand=10, n_truth=8, N_theta=256, K_d=2, n_lab=8, budgets=[1, 2, 4, 8], J_main=10, R=6, n_C=12),
     "small": dict(n_cand=10, n_truth=6, N_theta=192, K_d=2, n_lab=8, budgets=[1, 2, 4, 8], J_main=8, R=6, n_C=0),
 }
 COMMON = dict(m=64, steps_sim=8000, steps_real={1: 600, 2: 800, 4: 1000, 8: 1500, 16: 2000}, steps_C=3000,
@@ -302,7 +306,7 @@ def stage_rate():
                 + nt * p["J_main"] * len(PROG) * (p["R"] + COMMON["R_ctl"]) * HB + 2 * nt * p["n_C"] * T_EP)
     budget = 0.72 * left_s()                       # the rest: compiles, training, scoring, slack
     name = None
-    for nm in (["smoke"] if args.smoke else ["xl", "full", "mid", "small"]):
+    for nm in (["smoke"] if args.smoke else ["xl", "full", "mid", "mid2", "low", "small"]):
         if args.preset and nm != args.preset:
             continue
         if args.smoke or args.preset or work(PRESETS[nm]) / (0.8 * rate) <= budget:
