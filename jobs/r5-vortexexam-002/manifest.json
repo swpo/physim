@@ -108,6 +108,17 @@
       "in_git": true,
       "path": "out/scan_main.npz",
       "sha256": "004393e3a84fc8d5ca772a9a8cbbf949e2b6f519788cfae8ddfb480a05c89dc2"
+    },
+    {
+      "bytes": 5184779,
+      "derived_by": "runner Mac on 2026-11-10, at the vortexexam study's request via the coordinator: R1h = R1[:, :, :, :, [0, 1, 3, 7], :] (level-1 raster at horizons 1, 2, 4, 8 ticks; axis 4 of R1 is horizon - 1), hs1 = [1, 2, 4, 8]; L2, settings, anchors, R, Mc copied unchanged; checked element-wise against the source",
+      "derived_from": {
+        "path": "out/scan_branch.npz",
+        "sha256": "39ffff72ca4bdf0c008a0904163b2f4845bf5d0af5bd78614ab84302d09863d9"
+      },
+      "in_git": true,
+      "path": "out/scan_branch_small.npz",
+      "sha256": "9ce80607ac60ed50cdeb41611af1b09e90d9e5f05cb8a06a98aca3596a3f649b"
     }
   ],
   "git_limits": {
