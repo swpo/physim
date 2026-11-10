@@ -110,6 +110,18 @@
     },
     {
       "billed_usd": 0.0,
+      "cap_usd": 21.2,
+      "conservative_usd": 0.0,
+      "finished_at": null,
+      "gpu": "-",
+      "hours": 0,
+      "job_id": "r5-ladder-001",
+      "purpose": "Round-5 study ladder (track 2): reference ladder (K, D(N), P0, prior mean, S(N), C, O) on the gliders wind world in 9 cells, observed view {block, object, population} x {1, 4, 8} hidden parameters, Lab budgets 2-512 episodes; identification by passive, blind and aimed inputs",
+      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
+      "state": "received"
+    },
+    {
+      "billed_usd": 0.0,
       "cap_usd": 5.0,
       "conservative_usd": 0.4976,
       "finished_at": "2026-11-09T23:25:04Z",
@@ -159,10 +171,10 @@
     {
       "billed_usd": null,
       "cap_usd": 19.8,
-      "conservative_usd": 1.0062,
+      "conservative_usd": 1.1789,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.506,
+      "hours": 0.592,
       "job_id": "r5-vortexexam-003",
       "purpose": "Round-5 study vortexexam (track 2), job 2: the fed-vortex exam pilot at 128 px with 4 hidden parameters: design simulations, Lab episodes, exam items with replicate truths, identification, reference policies K, D(N), P0, S(N), C, O with sigma and rho; then the headroom scan with compact outputs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -209,8 +221,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 59.6839,
     "prior_spend_usd": 0.0,
-    "spent_usd": 28.4901,
+    "spent_usd": 28.6628,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T01:46:59Z"
+    "updated_at": "2026-11-10T01:52:11Z"
   }
 }
