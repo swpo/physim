@@ -18,7 +18,7 @@
   ],
   "job_id": "r5-ladder-002",
   "max_estimate_usd": 21.07,
-  "message": "accepted: H200_141GB via nebius at $6.69/h, at most $21.07",
+  "message": "no offer that fits the cap is available right now; will retry",
   "plan": {
     "max_estimate_usd": 21.07,
     "offers": [
@@ -53,5 +53,5 @@
     "summary": "Fine to run: the 2^31 blocker is fixed (largest array 1.1e8, peak about 4.3 GB, checked at compile level); failure isolation verified. 1 minor: run.log lacks the pilot marker. 6 info."
   },
   "state": "queued",
-  "updated_at": "2026-11-10T03:16:22Z"
+  "updated_at": "2026-11-10T03:36:42Z"
 }
