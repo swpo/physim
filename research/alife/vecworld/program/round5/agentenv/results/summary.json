@@ -2,7 +2,7 @@
  "study": "round 5, study agentenv (track 2): the PhySim-v2 exam as an agent-facing environment, proved end to end with scripted agents; no GPU, no model calls",
  "folder": "research/alife/vecworld/program/round5/agentenv",
  "PILOT_NEVER_REUSE_AS_EXAM": true,
- "hidden_values": "none in git: every instance's theta and secret were drawn at run time in a scratch directory and deleted; results hold scores, counters and commitment hashes",
+ "hidden_values": "no theta, secret or exam item is in git: every instance was drawn at run time in a scratch directory and deleted; results hold scores, counters, commitment hashes and, for policy S, the posterior's sd and absolute error in prior-sd units (a function of theta: it bounds single coordinates of deleted instances, all of them marked PILOT_NEVER_REUSE_AS_EXAM)",
  "gpu": {
   "jobs": [],
   "gpu_hours": 0.0,
@@ -158,7 +158,7 @@
      "p95": 0.9325818940935824
     },
     "pass_sigma": false,
-    "pass_rho": true,
+    "pass_rho": null,
     "per_world": {
      "sigma": [
       0.05155944404236906,
@@ -450,7 +450,7 @@
     "sigma_worlds": null,
     "rho_worlds": null,
     "pass_sigma": false,
-    "pass_rho": true,
+    "pass_rho": null,
     "per_world": null
    },
    "source": "results/proof_gliders.json [pooled.acceptance]"
@@ -598,7 +598,8 @@
    "lab_closed_after_submit": true,
    "graded_without_failures": true
   },
-  "source": "results/probe_ring.json"
+  "source": "results/probe_ring.json",
+  "checker_note": "34 of 34 reproduced on a fresh instance. Two checks are narrower than their names: 'agent_cannot_write_outside_workspace' tried /mnt only (/tmp, /var/tmp and /dev/shm are writable and shared by all sandboxed processes); 'cpu_limit_enforced' tried one process (the limit is per process). The hidden-file reads also fail on the scratch directory's own permissions; see checker.findings"
  },
  "acceptance_gliders_full_size": {
   "value": {
@@ -851,7 +852,19 @@
      "value": 0.15,
      "source": "task statement of this study; EXAM.md section 5 has 0.136 (closure study)",
      "measured_here_agent_sandbox": 0.16351221353861786,
-     "measured_note": "whole P0 agent process (import, compile, simulation, fit) / member-ticks, tiny run, shared CPU"
+     "measured_note": "whole P0 agent process (import, compile, simulation, fit) / member-ticks, tiny run, shared CPU",
+     "checker_measurements": {
+      "bench_second_call_cpu_s": 0.191,
+      "bench_second_call_wall_s": 0.138,
+      "bench_note": "run_rollout.py bench --world gliders (chunk 2, 164 member-ticks, compile excluded), thread caps set, load average 2.5-4 on 4 shared cores",
+      "marginal_from_this_study_S_minus_P0": 0.104,
+      "marginal_note": "(365.3 - 160.9) CPU-s / (2952 - 984) member-ticks of results/proof_gliders.json: the 0.164 above carries about 59 s of import and compilation",
+      "envelope_4c_8h_over_S_full_round4_at_0.104_0.15_0.191": [
+       1.47,
+       1.02,
+       0.8
+      ]
+     }
     },
     "membrane": {
      "value": 0.012269576799999982,
@@ -967,15 +980,122 @@
     "dry_run": {
      "agent_envelope": 8,
      "exam_build_cpu_4_cores": 0.30266666666666664,
+     "exam_build_one_process": 1.2107,
      "grading_worst_case": 2.1333333333333333,
-     "total_upper_bound": 10.436
+     "total_upper_bound": 11.344
     },
     "exam": {
      "agent_envelope": 24,
-     "total_upper_bound": 26.436
-    }
+     "total_upper_bound": 27.344
+    },
+    "checker_note": "the exam is built by one process (prepare; MapWorld runs members one after another), so the bound uses 1.21 h, not the 0.30 h of a 4-way split that the code does not do; references (the ladder) are not included"
    }
   },
   "source": "results/cost.json (cost_model.py)"
+ },
+ "checker": {
+  "by": "independent checker of study agentenv (round 5), 10 Nov 2026",
+  "platform": "CPU only: x86_64, 4 shared cores, Python 3.12.3, jax 0.12.0.1 float64, numpy 2.5.4; about 12 CPU-minutes; no GPU job",
+  "verdict": "The reported numbers are what the saved files hold, the full-size gliders shares are right, and a fresh four-world run of the ring proof reproduces the table except D and the side of the rho bar. Ready for a mechanics test and a dry run. Not ready to score an exam: the local sandbox's CPU, wall-clock and no-carried-state limits can each be evaded (tested).",
+  "verified": {
+   "gpu_records": "no request file r5-agentenv-* on the branch and no jobs/r5-agentenv-* on origin/gpu-jobs: 0 GPU-hours, $0 billed. Source job of the full-size shares: origin/gpu-jobs:jobs/r4-sbi-002/status.json state done, exit 0, A100_40GB (lambdalabs, $1.99/h), billed $3.641; its out/scores.npz is the same git blob (462a0aa8) as round4/sbi/results/job/scores.npz",
+   "acceptance_gliders_full_size": "all 15 (family, budget) cells recomputed with own code from scores.npz: sigma, rho, null_is and both oes-mean variants agree to the printed digits; own world-cluster bootstrap SEs (4,000 resamples) agree within 0.001 (sigma) and 0.004 (rho); jackknife SEs over the 8 worlds agree within 20%",
+   "summary_vs_sources": "every skill, sigma and rho of proof_ring and proof_gliders recomputed from the pooled L of the proof files; the cost arithmetic recomputed from its inputs; all agree. Per-item scores of the two proofs were deleted with the scratch instances, so their SEs cannot be recomputed; the replication below stands in for that",
+   "probe": "check_probe.py on a fresh instance: 34 of 34",
+   "bundle": "gliders bundle rebuilt: 37 files, 417,938 bytes (TASK.md differs by config); imports in the sandbox with every checkout hidden",
+   "lab": "same label twice: o(0) differs by observation noise only (max 0.42 against 2.5 for another label), later ticks differ; rejected commands charged nothing",
+   "secrets": "no theta, secret hex, exam item or array file in round5/agentenv; the 64-digit strings are commitments and manifest hashes"
+  },
+  "replication_ring": {
+   "what": "prove.py, committed code, configs/smoke_ring.json, the same sizes, 4 fresh hidden worlds (256 items), 487 s; scored with own code from the per-item scores; instances deleted, never to be reused",
+   "skill_vs_C": {
+    "S": 0.9894,
+    "P0": 0.9572,
+    "PM": 0.9777,
+    "D": 0.1369,
+    "null": -0.0197,
+    "O": 1.0876
+   },
+   "reported": {
+    "S": 0.9881,
+    "P0": 0.964,
+    "PM": 0.9701,
+    "D": 0.3429,
+    "null": 0.0083,
+    "O": 1.0832
+   },
+   "sigma": 0.0428,
+   "sigma_se_worlds": 0.0197,
+   "sigma_per_world": [
+    0.06,
+    0.113,
+    0.006,
+    0.018
+   ],
+   "rho": 0.751,
+   "rho_se_worlds": 0.359,
+   "rho_per_world": [
+    1.01,
+    0.98,
+    -0.21,
+    -0.62
+   ],
+   "failed_items": 0,
+   "isolation": "uid 65534, mount, network and PID namespaces, 5 hidden paths"
+  },
+  "findings": [
+   "Ring rho is undetermined, not a pass: 0.67 (SE 0.38) reported, 0.75 (SE 0.36) in the replication; per-world values run from -2.1 to 1.0.",
+   "Ring D at budget is not determined: 0.343 reported, 0.137 in the replication (8 lab episodes; per world -0.07 to 0.28).",
+   "Ring sigma fails its bar in both runs (0.036 and 0.043), but its SE from 4 worlds is itself uncertain (0.009 reported, 0.020 replicated). On the ring the prior-mean policy beats P0 (replication: item-paired L difference 0.019, SE 0.003), so against the better no-experiment policy sigma is 0.030 (reported run) and 0.022 (replication). On gliders at full size P0 beats the prior mean in all families.",
+   "'The ring fails the sigma bar more than gliders' holds for the ridge family only (0.036-0.043 against 0.065); gliders with the net (0.030) and the amortised net (0.039) is level with the ring.",
+   "Gliders rho at full size: bootstrap P(rho <= 0.7) is 0.19 for the ridge at 2 episodes, 0.055 and 0.011 for the net at 2 and 8, and 0 in the other cells of the 2 and 8 episode columns; 'fails' is clear for the amortised net and for the ridge from 8 episodes.",
+   "Simulator cost: the 0.164 CPU-s per member-tick is a whole tiny process; the same file gives 0.104 marginal, and the checker's bench 0.191 CPU-s (0.138 wall-s). The rate is known to about +-30%, so 4 cores x 8 h buy 0.8 to 1.5 times round 4's full recipe (1.0 reported), at least 4.8 times the shrunk recipe and 7 times P0's set.",
+   "Wall clock per rollout: 11.3 h (dry run) and 27.3 h (exam profile), not 10.4 and 26.4; corrected above. The reference ladder for a single hidden world is 15.7 core-hours (C, S, P0, prior mean at 1,024 episodes); 'about 12' is the three-world average.",
+   "Sandbox, tested with evaluator/sandbox.run as uid 65534 in all namespaces: (a) the CPU limit is per process: four forked children used 3.24 CPU-s under a 1 s limit, exit 0; (b) a process that calls setsid() survives the wall-clock stop and wrote a file 3 s after it; (c) /tmp, /var/tmp and /dev/shm are shared: a file written by one sandboxed process was read by the next, so state can pass between items and from the agent to its predictor outside the frozen, size-limited submission. TASK.md declares each of these limits; none of this changes a reported number.",
+   "Sandbox, by reading the code: only <run>/hidden and PHYSIM2_HIDE are covered; other rollouts' workspaces (C's model, trained at the true theta) stay mounted and are protected by directory permissions alone. In the probe the scratch root was mode 0700, so the hidden-file reads failed on permissions as well (the public copy, which is not hidden, gave the same PermissionError); the tmpfs layer itself works (as root inside: hidden listing empty). `rollout --cmd` binds agents/ (the reference policies) into the agent's sandbox, and C's theta is on a command line. In the container fallback (uid drop only) the predictor sees /run_dir outside hidden/ (not run).",
+   "'Gliders is the only world with an exam' was true at commit 593071565; round5/vortexexam has since built a fed-vortex exam pilot.",
+   "After the fact: the gliders S rerun (design 12 -> 24, cross-fitted, a second lab budget on the same instance) followed the failed first run; it is smoke size and the report says so. The grader gives every item seed 0, so item-bootstrap SEs are a little optimistic."
+  ],
+  "edits": [
+   {
+    "key": "hidden_values",
+    "was": "none in git: every instance's theta and secret were drawn at run time in a scratch directory and deleted; results hold scores, counters and commitment hashes",
+    "why": "the S error diagnostics are functions of theta; allowed because every instance is a deleted pilot"
+   },
+   {
+    "key": "proof_ring.acceptance.value.pass_rho",
+    "was": true,
+    "now": null,
+    "why": "0.67 with SE 0.38; the replication gives 0.75"
+   },
+   {
+    "key": "proof_gliders.acceptance.value.pass_rho",
+    "was": true,
+    "now": null,
+    "why": "rho -0.67 with item SE 28 at smoke size: noise, as the block's own note says"
+   },
+   {
+    "key": "cost.value.wall_clock_per_rollout_hours.dry_run.total_upper_bound",
+    "was": 10.436,
+    "now": 11.344,
+    "why": "exam build is one process: 1.21 h, not 0.30 h (key exam_build_one_process added; checker_note added)"
+   },
+   {
+    "key": "cost.value.wall_clock_per_rollout_hours.exam.total_upper_bound",
+    "was": 26.436,
+    "now": 27.344,
+    "why": "as above"
+   },
+   {
+    "key": "probe.checker_note",
+    "was": null,
+    "why": "added: two checks are narrower than their names"
+   },
+   {
+    "key": "cost.value.cpu_s_per_member_tick.gliders.checker_measurements",
+    "was": null,
+    "why": "added: bench and marginal rates"
+   }
+  ]
  }
 }
