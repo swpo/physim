@@ -1,0 +1,401 @@
+{
+ "world": "gliders",
+ "config": {
+  "exam": {
+   "n_items": 8,
+   "R": 6,
+   "n_clim": 16
+  },
+  "lab": {
+   "max_ticks": 132,
+   "reset_cost": 1,
+   "total_nats": null
+  },
+  "predictor": {
+   "n_samples": 16,
+   "cpu_seconds": 60,
+   "wall_seconds": 120,
+   "memory_gib": 4,
+   "artifact_mib": 64
+  },
+  "envelope": {
+   "cpus": 4,
+   "wall_hours": 1,
+   "memory_gib": 8,
+   "gpu": false
+  },
+  "validation": {
+   "max_attempts": 16
+  }
+ },
+ "sizes": {
+  "n_lab": 4,
+  "n_design": 24,
+  "k_design": 1,
+  "n_train": 12,
+  "chunk": 4
+ },
+ "n_worlds": 1,
+ "policy_labels": {
+  "K": "long-run average of the hidden world (climatology pool)",
+  "D": "ridge fitted to the real episodes the budget allows",
+  "P0": "ridge trained on simulations at prior draws",
+  "PM": "ridge trained on simulations at the prior mean",
+  "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+  "C": "ridge trained on simulations at the true parameters",
+  "O": "oracle: replicate futures from the hidden state (leave one out)",
+  "null": "null agent: prior-predictive long-run law, no history, no program"
+ },
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "hidden_values_in_this_file": "none (theta, secrets and items stay in the worker's store, which is deleted)",
+ "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, --no-push",
+ "platform": {
+  "machine": "x86_64",
+  "python": "3.12.3",
+  "cpu_count": 4,
+  "backend": "cpu",
+  "verifiers": "0.3.2.dev163",
+  "box_cpus": 2,
+  "docker": "29.9.2"
+ },
+ "pooled": {
+  "n_items": 8,
+  "n_worlds": 1,
+  "cells": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    1,
+    8
+   ],
+   [
+    1,
+    16
+   ],
+   [
+    2,
+    8
+   ],
+   [
+    2,
+    16
+   ]
+  ],
+  "valid_cells": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "policies": {
+   "O": {
+    "L": 0.6188959091402335,
+    "vs_C": null,
+    "vs_O": 1.0
+   },
+   "K": {
+    "L": 4.71485122326248,
+    "vs_C": null,
+    "vs_O": 0.0
+   },
+   "D": {
+    "L": 3.7287895475776383,
+    "vs_C": null,
+    "vs_O": 0.24074034018023763
+   }
+  },
+  "oes": {
+   "climatology": {
+    "mean": 0.0,
+    "se": 0.0,
+    "pooled": 0.0,
+    "per_cell": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "oracle": {
+    "mean": 1.0,
+    "se": 0.0,
+    "pooled": 1.0,
+    "per_cell": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "D": {
+    "mean": 0.12547605043390928,
+    "se": 0.26265822093431934,
+    "pooled": 0.24074034018023768,
+    "per_cell": [
+     0.9190422666948238,
+     0.8120716480568901,
+     0.5451692060789962,
+     0.20138264794066463,
+     -0.09303957917151696,
+     -0.20012656442869314,
+     -1.3061672721337994
+    ]
+   }
+  },
+  "oes_by_program_class": {
+   "a": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "D": 0.17471090854034355
+   },
+   "b": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "D": 0.11516350000625088
+   },
+   "c": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "D": -0.7105391781179963
+   },
+   "d": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "D": 0.4297154418761721
+   }
+  },
+  "policy_labels": {
+   "K": "long-run average of the hidden world (climatology pool)",
+   "D": "ridge fitted to the real episodes the budget allows",
+   "P0": "ridge trained on simulations at prior draws",
+   "PM": "ridge trained on simulations at the prior mean",
+   "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+   "C": "ridge trained on simulations at the true parameters",
+   "O": "oracle: replicate futures from the hidden state (leave one out)",
+   "null": "null agent: prior-predictive long-run law, no history, no program"
+  }
+ },
+ "per_world": [
+  {
+   "instance_id": "gl-smoke-w0",
+   "secret_commitment": "befb2b20ff1f066cfb00d056b7004b5576897806895d221b4abbded1065c4c49",
+   "rollouts": {
+    "D": {
+     "trace_id": "93e81caf42aa41a29706d8f100f95414",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 3,
+      "bytes": 384927,
+      "sha256": "14b8ff4a800ea9092e10f9ef3ca130865c8e9a9d8b832f92c64119ac672c4ad9"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 132,
+     "lab_total_nats": 648.0108707961028,
+     "lab_requests": 20,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": 4,
+     "member_ticks_simulated": 0,
+     "train_episodes": 4,
+     "agent_cpu_s": 1.114187424,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": 0.24074034018023763,
+     "wall_s": {
+      "boot": 0.6162619590759277,
+      "setup": 6.582658052444458,
+      "agent": 58.39371061325073,
+      "finalize": 0.08494806289672852,
+      "verifier": 5.3748414516448975,
+      "total": 71.05242013931274
+     },
+     "cpu_s": {
+      "agent_box": 4.17746,
+      "verifier_box": 3.90566,
+      "worker_in_reward": 0.06194917999999916
+     },
+     "grade": {
+      "n_items": 8,
+      "n_failed": 0,
+      "cpu_s_mean": 0.22867712499999998,
+      "cpu_s_max": 0.24627999999999997,
+      "layers": {
+       "rlimits": true,
+       "uid": 1000,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 4.43294620513916
+     }
+    }
+   },
+   "table": {
+    "n_items": 8,
+    "n_worlds": 1,
+    "cells": [
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      1,
+      8
+     ],
+     [
+      1,
+      16
+     ],
+     [
+      2,
+      8
+     ],
+     [
+      2,
+      16
+     ]
+    ],
+    "valid_cells": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "policies": {
+     "O": {
+      "L": 0.6188959091402335,
+      "vs_C": null,
+      "vs_O": 1.0
+     },
+     "K": {
+      "L": 4.71485122326248,
+      "vs_C": null,
+      "vs_O": 0.0
+     },
+     "D": {
+      "L": 3.7287895475776383,
+      "vs_C": null,
+      "vs_O": 0.24074034018023763
+     }
+    },
+    "oes": {
+     "climatology": {
+      "mean": 0.0,
+      "se": 0.0,
+      "pooled": 0.0,
+      "per_cell": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "oracle": {
+      "mean": 1.0,
+      "se": 0.0,
+      "pooled": 1.0,
+      "per_cell": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "D": {
+      "mean": 0.12547605043390928,
+      "se": 0.2742066812318982,
+      "pooled": 0.24074034018023768,
+      "per_cell": [
+       0.9190422666948238,
+       0.8120716480568901,
+       0.5451692060789962,
+       0.20138264794066463,
+       -0.09303957917151696,
+       -0.20012656442869314,
+       -1.3061672721337994
+      ]
+     }
+    },
+    "oes_by_program_class": {
+     "a": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "D": 0.17471090854034355
+     },
+     "b": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "D": 0.11516350000625088
+     },
+     "c": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "D": -0.7105391781179963
+     },
+     "d": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "D": 0.4297154418761721
+     }
+    },
+    "policy_labels": {}
+   }
+  }
+ ],
+ "rollout_cost": {
+  "n_rollouts": 1,
+  "wall_s_per_rollout_mean": 71.05242013931274,
+  "wall_s_per_rollout_max": 71.05242013931274,
+  "agent_box_cpu_s_mean": 4.17746,
+  "verifier_box_cpu_s_mean": 3.90566,
+  "vf_eval_host_cpu_s_per_rollout": 155.06512700000007,
+  "vf_eval_wall_s_per_policy": {
+   "D": 107.26070404052734
+  },
+  "note": "wall = boot + setup + agent + finalize of the solver trace plus the verifier phase (setup, restore, staging, reward); box CPU = the cgroup counter of each container; host CPU = vf-eval and its children (laboratory process, docker CLI), shared by the rollouts of one invocation"
+ },
+ "all_graded": true,
+ "all_ok": true,
+ "n_failed_items_total": 0,
+ "wall_s": 479.59040451049805,
+ "driver_cpu_s": 2.151018695
+}

@@ -242,17 +242,11 @@
   "a_control_marked_not_an_exam": "cleanup between items was disabled by the operator (test hook)",
   "b_lab_process": {
    "pid": 21127,
-   "scrubbed_variables": [
-    "AWS_ACCESS_KEY_ID",
-    "AWS_SECRET_ACCESS_KEY",
-    "CLAUDE_CODE_MESSAGING_TOKEN",
-    "CLAUDE_SESSION_INGRESS_TOKEN_FILE",
-    "CLOUDSDK_AUTH_ACCESS_TOKEN",
-    "GH_TOKEN",
-    "GITHUB_TOKEN",
-    "HF_TOKEN",
-    "MAX_THINKING_TOKENS"
-   ],
+   "scrubbed_variables": {
+    "count": 9,
+    "includes_HF_TOKEN": true,
+    "note": "names withheld: they describe the worker's own environment"
+   },
    "announced": true,
    "token_values_left_in_environ": false,
    "token_like_names_left_in_os_environ": []

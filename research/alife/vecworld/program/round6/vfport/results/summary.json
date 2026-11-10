@@ -1,8 +1,12 @@
 {
  "study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment",
- "written_unix": 1794280946.4144766,
+ "written_unix": 1794281516.134458,
  "PILOT_NEVER_REUSE_AS_EXAM": true,
  "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). Nothing was run on a Mac.",
+ "code_versions": {
+  "results/proof_ring.json": "package code of commit f12158bb0 (tools of 741d8d7c6)",
+  "results/probe_ring.json and results/gliders_smoke_D.json": "package code of the final commit; it differs from the proof's by one branch of the reward (an explicit reason when the reward runs outside the isolated grader), which no run took"
+ },
  "sources": {
   "ours_table": "results/proof_ring.json",
   "round5_table": "round5/agentenv/results/proof_ring.json",
@@ -321,10 +325,10 @@
   }
  },
  "hidden_value_scan": {
-  "instances": 5,
-  "needles": 20,
+  "instances": 6,
+  "needles": 25,
   "what": "the 64-hex secret and the first 10 characters of every hidden parameter of every instance in the store",
-  "files_scanned": 181,
+  "files_scanned": 192,
   "hits": 0,
   "where": "results/*.json and every file under the runs' scratch directories (traces.jsonl, configs, logs, notes)"
  },
@@ -457,17 +461,11 @@
   "probe_b_canary": {
    "lab_process": {
     "pid": 21127,
-    "scrubbed_variables": [
-     "AWS_ACCESS_KEY_ID",
-     "AWS_SECRET_ACCESS_KEY",
-     "CLAUDE_CODE_MESSAGING_TOKEN",
-     "CLAUDE_SESSION_INGRESS_TOKEN_FILE",
-     "CLOUDSDK_AUTH_ACCESS_TOKEN",
-     "GH_TOKEN",
-     "GITHUB_TOKEN",
-     "HF_TOKEN",
-     "MAX_THINKING_TOKENS"
-    ],
+    "scrubbed_variables": {
+     "count": 9,
+     "includes_HF_TOKEN": true,
+     "note": "names withheld: they describe the worker's own environment"
+    },
     "announced": true,
     "token_values_left_in_environ": false,
     "token_like_names_left_in_os_environ": []
@@ -654,6 +652,35 @@
    }
   }
  },
+ "gliders_smoke": {
+  "source": "results/gliders_smoke_D.json",
+  "what": "ONE hidden gliders world (config smoke_gliders: 8 items, R 6, 132 lab ticks) and ONE scripted rollout (policy D) through the same route and the same image; a loadability check, not a measurement",
+  "graded": true,
+  "n_failed_items": 0,
+  "n_items": 8,
+  "reward_skill_vs_O": 0.24074034018023763,
+  "lab_ticks_used": 132,
+  "lab_episodes": 4,
+  "wall_s": {
+   "boot": 0.6162619590759277,
+   "setup": 6.582658052444458,
+   "agent": 58.39371061325073,
+   "finalize": 0.08494806289672852,
+   "verifier": 5.3748414516448975,
+   "total": 71.05242013931274
+  },
+  "cpu_s": {
+   "agent_box": 4.17746,
+   "verifier_box": 3.90566,
+   "worker_in_reward": 0.06194917999999916
+  },
+  "predictor_layers": {
+   "rlimits": true,
+   "uid": 1000,
+   "cleanup": true
+  },
+  "whole_run_wall_s_including_instance_build": 479.59040451049805
+ },
  "cost_per_rollout": {
   "n_rollouts": 24,
   "wall_s_per_rollout_mean": 51.31205632289251,
@@ -788,9 +815,9 @@
     "physim2_script/__init__.py": 107
    },
    "tools": {
-    "tools/check_probe.py": 368,
+    "tools/check_probe.py": 370,
     "tools/make_instances.py": 55,
-    "tools/make_summary.py": 188,
+    "tools/make_summary.py": 205,
     "tools/prove.py": 207,
     "tools/vfrun.py": 93,
     "tools/docker_shim/docker": 18
@@ -809,11 +836,11 @@
    },
    "totals": {
     "package": 1854,
-    "tools": 929,
+    "tools": 948,
     "agents": 291,
     "build_and_config": 153
    },
-   "total": 3227
+   "total": 3246
   },
   "memo_estimates": {
    "drop": 760,

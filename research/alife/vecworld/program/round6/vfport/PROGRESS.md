@@ -33,15 +33,23 @@ Venv: `/home/user/evalwork/vfport/.venv` (python 3.12, verifiers 0.3.2.dev163 wh
 - Written: README.md (two placeholders left: line counts and the proof numbers), RUNBOOK_MAC.md, configs/, uv.lock,
   tools/make_summary.py.
 
+- tools/prove.py RUN (02:52-03:16 UTC): results/proof_ring.json. 24 rollouts, all graded, 0 failed items; table within
+  noise of round 5's; the same C submission through round 5's grader gives identical per-item scores (4 worlds).
+- tools/check_probe.py RUN again on the final code (03:16-03:22): results/probe_ring.json, 32 of 34 + 37 of 37.
+- Gliders smoke: one instance and one D rollout through the route, graded (results/gliders_smoke_D.json).
+- tools/make_summary.py -> results/summary.json (hidden-value scan: 6 instances, 192 files, 0 hits).
+- README.md, RUNBOOK_MAC.md, uv.lock complete. Scratch stores and run outputs deleted (hidden instances).
+
 ## Running
-- tools/prove.py, 4 worlds x (S, D, P0, PM, C, null), started 02:52 UTC on the final code; log $S/prove.log; state
-  $S/proof/prove_state.json (resumable per policy); writes results/proof_ring.json. About 35 minutes.
+- nothing. The Docker daemon is up (classic image store); images kept for the next role: physim2-ring:1 (562 MB
+  with its 119 MB base), localhost/verifiers-network:1 (+12 MB). `docker system df`: 573 MB.
 
 ## Next step (exact)
-1. When prove.py ends: `python -B tools/make_summary.py` -> results/summary.json; fill the two placeholders of
-   README.md (LINES_PLACEHOLDER, PROOF_PLACEHOLDER) and GLIDERS_PLACEHOLDER from results/summary.json.
-2. Optional, only if cheap: one gliders smoke instance + `Physim2Taskset.load()`; do not chase it.
-3. Delete $S/store, $S/proof, $S/probe; final commit; final report.
+- For another role: `S=<scratch>; V=/home/user/evalwork/vfport/.venv/bin/python; cd` to this folder, then
+  `$V -B tools/prove.py --store $S/store --scratch $S/proof --worlds 1 --prefix check-ring --policies D,P0,C --out $S/check.json`
+  (about 4 minutes, $0) and `$V -B tools/check_probe.py --store $S/store --scratch $S/probe --out $S/probe.json`
+  (about 6 minutes). Delete $S/store afterwards.
+- Not done: any model rollout, anything on macOS, the sealer and private store, compute metering (README section 6).
 
 ## If the container restarted
 - `S=/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfport; mkdir -p $S;

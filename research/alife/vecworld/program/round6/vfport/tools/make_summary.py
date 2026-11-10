@@ -76,6 +76,10 @@ def main():
          "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model "
                          "call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). "
                          "Nothing was run on a Mac.",
+         "code_versions": {"results/proof_ring.json": "package code of commit f12158bb0 (tools of 741d8d7c6)",
+                           "results/probe_ring.json and results/gliders_smoke_D.json": "package code of the final commit; it differs from "
+                           "the proof's by one branch of the reward (an explicit reason when the reward runs outside the isolated grader), "
+                           "which no run took"},
          "sources": {"ours_table": "results/proof_ring.json", "round5_table": R5 + "proof_ring.json",
                      "ours_probe": "results/probe_ring.json", "round5_probe": R5 + "probe_ring.json"}}
 
@@ -134,6 +138,19 @@ def main():
                             "verifier_box_all_items": ev["c_verifier_box_net_all_items"], "host_listener_hits": ev["c_listener_hits"]},
         "probe_d_no_ungraded_rollout": {"defensive_collection": {m: {k: h[k] for k in ("graded", "reward", "n_failed", "n_items", "reason")} for m, h in ev["d_hostile"].items()},
                                         "control_verifiers_default_collection": ev.get("d_control_default_collection")}}
+
+    # ---- gliders: loadable, one rollout ----
+    gf = os.path.join(ROOT, "results", "gliders_smoke_D.json")
+    if os.path.exists(gf):
+        g = json.load(open(gf))
+        r = g["per_world"][0]["rollouts"]["D"]
+        S["gliders_smoke"] = {
+            "source": "results/gliders_smoke_D.json", "what": "ONE hidden gliders world (config smoke_gliders: 8 items, R 6, 132 lab ticks) and ONE "
+            "scripted rollout (policy D) through the same route and the same image; a loadability check, not a measurement",
+            "graded": r["graded"], "n_failed_items": r["grade"]["n_failed"], "n_items": r["grade"]["n_items"],
+            "reward_skill_vs_O": r["reward_skill_vs_O"], "lab_ticks_used": r["lab_ticks_used"], "lab_episodes": r["lab_episodes"],
+            "wall_s": r["wall_s"], "cpu_s": r["cpu_s"], "predictor_layers": r["grade"]["layers"],
+            "whole_run_wall_s_including_instance_build": g["wall_s"]}
 
     # ---- cost ----
     S["cost_per_rollout"] = dict(ours["rollout_cost"], source_key="results/proof_ring.json:rollout_cost",
