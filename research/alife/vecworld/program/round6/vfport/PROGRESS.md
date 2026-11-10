@@ -1,25 +1,36 @@
 # vfport: PROGRESS
 
-## RE-AUDIT of the code, round 2 (independent; of commit 40c697e54) -- 10 Nov 2026, in progress
-- Role: re-audit of the CODE only (findings A3, A4, A5; required changes 3, 4, 5; the whole diff since 997005f56
-  for new destructive paths; the required tests). Returns a numbered list and a GO or NO-GO on the code to the
-  coordinator. Changes no file but this section.
-- Worktree `/home/user/wt/vfreaud2a` (branch wt-vfreaud2a); scratch
-  `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfreaud2a/` (a `git archive` of the head).
-- Done so far (all read, nothing run yet): HOST_SAFETY_AUDIT.md in full; `_item.py`, `grading.py`, `taskset.py`,
-  `access.py`, `validate.py`, `physim2_script/__init__.py`, the three box scripts, `tools/tripwires.py`,
-  `check_safety.py`, `check_driver.py`, `check_interrupt.py`, `vfrun.py`, `check_units.py`, `rehearsal/issue.py`,
-  `rehearsal/check_round2.py`, the diffs of `redteam/` and of the other tools; verifiers' Docker, subprocess and
-  base runtime. No file of PIN.sha256 changed in round 2, so the code is the one round 1 judged. Reading so far:
-  A3, A4, A5 closed as specified; no new kill or delete path in the pinned code; the rehearsal tools act on the
-  cloud host by design, behind an environment variable and a scratch-folder check.
-- Next step (exact): rerun `tools/check_safety.py` from the scratch copy under its tripwires (host), then
-  `tools/check_driver.py` (two `docker run --rm --network none` containers, no host path), then my own attacks:
-  crafted mount tables on the pure function, and edge cases of the wipe in a named throwaway container
-  `vfreaud2a-wipe` (no mount; removed by that exact name).
-- If the container restarted: nothing of this role survives but this note; start again from the archive command
-  of the role's brief. No container of this role is left unless a name `vfreaud2a-*` shows in `docker ps -a`
-  (remove by that exact name).
+## RE-AUDIT of the code, round 2 (independent; of commit 40c697e54) -- 10 Nov 2026, finished
+- Role: re-audit of the CODE only (A3, A4, A5; required changes 3, 4, 5; the whole diff since 997005f56; the
+  required tests). Verdict returned to the coordinator: GO on the code, for the pinned hash only. This section is
+  the only thing this role changed.
+- No pinned file changed in round 2 (my own `sha256sum -c PIN.sha256` at the head: 105 of 105; sha256
+  7aa9bbfc...f64c19; since 73829e5c6 only texts, `rehearsal/` and `results/` differ).
+- A3, A4 (4c, 5), A5 (4a, 4b): closed as specified. Read: `_item.py`, `grading.py`, `taskset.py`, `access.py`,
+  `validate.py`, `physim2_script/__init__.py`, the three box scripts, every tool of the diff, verifiers' Docker,
+  subprocess and base runtime.
+- Reruns, each equal to its recorded file: `tools/check_safety.py` 36 of 36 (host, under its 65 tripwires; only
+  the name of the temporary folder differs); the in-container script of `tools/check_driver.py` 31 of 31 (two
+  `docker run --rm --network none` containers with names of my own; the tool's host part was not executed, its
+  script text was taken from the source). Not rerun: `check_interrupt.py`, `check_units.py`, the probe rollouts.
+- My own attacks. Host, pure functions under tripwires: 33 crafted mount tables. Throwaway containers without any
+  host path, removed: a missing, an empty and a garbage mount table with every other layer present (all five
+  functions refuse, canaries alive); nine shapes of trees for the wipe (files, directories and link targets of
+  other owners all survive); the three box scripts without the marker (7 starts refused).
+- New, minor, Linux only, for the later pass that already holds N5 and N6: a container started by hand with
+  `--ipc=host` has a mount table of the stock shape (captured from a container that only ran `cat`; only the
+  source name of `/dev/shm` differs, `tmpfs` instead of `shm`), so the guard's mount condition passes and the
+  cleanup would walk the host's `/dev/shm` for the one uid. `-v /dev:/dev` passes for the same reason (devtmpfs
+  is an accepted type). The fix proposed for N5 ("stock mount points only") does not cover either: it has to be
+  an exact list of (mount point, type), with source `shm` for `/dev/shm`.
+- Also seen: with a hand-made marker in a container the environment did not prepare, `redteam/agent_rt.py hostile
+  killall` does issue `kill -9 -1` (the processes of that container only): the gate is the two files, as change 3
+  specifies; N7 stands. `rehearsal/issue.py` acts for real on the cloud host by design (the runbook's own `rm -rf`,
+  `docker rm -f`, `kill`); its folder check rests on `--inside`, which the caller chooses.
+- Could not do: anything on macOS (inferred only: the gate and the guard pass in a stock Docker Desktop box, and
+  refuse without damage if its mount table differs).
+- Left on the machine by this role: nothing. Scratch deleted, no container, the three images untouched, the
+  daemon untouched, worktree and branch removed.
 
 ## HOST-SAFETY FIXER, round 2 (after the round-1 verdict, NO-GO narrow) -- 10 Nov 2026, finished
 - Role: the seven remaining changes of "Re-audit, round 1" (HOST_SAFETY_AUDIT.md): runbook text and one rehearsal
