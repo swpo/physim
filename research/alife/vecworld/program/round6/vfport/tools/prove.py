@@ -9,6 +9,13 @@ For each of --worlds fresh hidden instances (tools/make_instances.py; they live 
 Every rollout is graded by the reward of physim2_env (one item at a time in the verifier box); the per-item
 scores stay in the store and evaluator.grader.table (agentenv, unchanged) computes the table from them.
 The output JSON holds no hidden value: no theta, no secret, no item; only scores, counters, commitments.
+Next to it, <out minus .json>_items.npz holds the per-item, per-cell scores of every policy and of K and O for
+every world, so that the table can be recomputed without the store (tools/recompute_table.py).
+
+Grading mode: the reference policies are the evaluator's own, so the table is graded with all items of a rollout
+in ONE verifier box (--isolation shared, 0.6 s per item). The default of the taskset, one fresh box per item, is
+exercised on --box-check policies of the first world: the same frozen submission must get the same per-item
+scores in both modes.
 
 usage: python tools/prove.py --store DIR --scratch DIR --worlds 4 --out results/proof_ring.json
 """
@@ -91,6 +98,8 @@ def main():
     ap.add_argument("--sizes", default='{"n_lab": 8, "n_design": 256, "k_design": 2, "n_train": 512}')
     ap.add_argument("--policies", default=",".join(POLICIES))
     ap.add_argument("--cpu", type=float, default=2)
+    ap.add_argument("--isolation", default="shared", choices=["shared", "box"])
+    ap.add_argument("--box-check", default="C,D", help="policies re-run on the first world with one box per item ('' = none)")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     sizes, pols = json.loads(a.sizes), a.policies.split(",")
@@ -117,14 +126,39 @@ def main():
         else:
             harness = {"agent_dir": ae_agents, "script": "reference_agent.py", "label": pol,
                        "args": ["--policy", pol, "--sizes", json.dumps(sizes), "--seed", "{idx}"],
-                       "collect": [f"agent_log_{pol}.json"] + (["posterior_draws_u.npy"] if pol == "S" else []), "collect_dir": notes}
-        r = vfrun.run_eval(f"proof-{pol.lower()}", store=a.store, out_dir=out_dir, harness=harness, instances=ids, cpu=a.cpu)
+                       "collect": [f"agent_log_{pol}.json"] + (["posterior_draws_u.npy"] if pol == "S" else []), "collect_dir": notes,
+                       "collect_tree": "submission" if pol in a.box_check.split(",") else ""}
+        r = vfrun.run_eval(f"proof-{pol.lower()}", store=a.store, out_dir=out_dir, harness=harness, instances=ids, cpu=a.cpu,
+                           task={"item_isolation": a.isolation})
         rolls = [vfrun.rollout(ep) for ep in r["episodes"]]
         if len(rolls) != len(ids):
             raise SystemExit(f"policy {pol}: {len(rolls)} episodes for {len(ids)} instances\n{r['log_tail']}")
         state["runs"][pol] = {"rollouts": rolls, "wall_s": r["wall_s"], "host_cpu_s": r["host_cpu_s"], "returncode": r["returncode"]}
         json.dump(state, open(state_f, "w"))
         print(f"{pol}: {[round(x['reward_skill_vs_O'], 3) for x in rolls]} ({time.time() - t0:.0f}s)", flush=True)
+    # ---- the taskset's default, one fresh box per item, on the first world: same submission, same scores? ----
+    state.setdefault("box", {})
+    for pol in [p for p in a.box_check.split(",") if p and p in pols and a.isolation == "shared"]:
+        if pol in state["box"]:
+            continue
+        if pol == "C":
+            harness = {"agent_dir": os.path.join(a.store, "{instance_id}", "work", "reference_C"), "script": "install_prebuilt.py", "label": "C-box"}
+        else:                                                # the SAME frozen files as the shared-mode rollout, re-installed
+            x = next(r for r in state["runs"][pol]["rollouts"] if r["instance_id"] == ids[0])
+            src, dst = os.path.join(notes, x["trace_id"], "submission_copy"), os.path.join(a.store, ids[0], "work", f"reference_{pol}")
+            if not os.path.isdir(src):
+                continue
+            shutil.rmtree(dst, ignore_errors=True)
+            shutil.copytree(src, dst)
+            shutil.copy(os.path.join(ROOT, "agents", "install_prebuilt.py"), os.path.join(dst, "install_prebuilt.py"))
+            harness = {"agent_dir": dst, "script": "install_prebuilt.py", "label": f"{pol}-box"}
+        r = vfrun.run_eval(f"proof-{pol.lower()}-box", store=a.store, out_dir=out_dir, harness=harness, instances=ids[:1], cpu=a.cpu,
+                           task={"item_isolation": "box"})
+        if len(r["episodes"]) != 1:
+            raise SystemExit(f"box check {pol}: no episode\n{r['log_tail']}")
+        state["box"][pol] = {"rollout": vfrun.rollout(r["episodes"][0]), "wall_s": r["wall_s"], "host_cpu_s": r["host_cpu_s"]}
+        json.dump(state, open(state_f, "w"))
+        print(f"{pol} (one box per item, world 0): {state['box'][pol]['rollout']['reward_skill_vs_O']:.3f} ({time.time() - t0:.0f}s)", flush=True)
 
     use_agentenv()
     from evaluator import grader as GR
@@ -172,6 +206,35 @@ def main():
             except Exception as e:
                 rec["same_submission_through_round5_grader"] = {"error": f"{type(e).__name__}: {str(e)[:200]}"}
         per_world.append(rec)
+    # ---- per-item scores, for anyone who wants to recompute the table without the store ----
+    items = {"policies": np.array(pols), "instance_ids": np.array(ids)}
+    for k in ("K", "O"):
+        items[k] = np.stack([INST.FrozenExam(h).references()[k] for h in hiddens])
+    for pol in pols:
+        z = [np.load(os.path.join(h, "grades", f"{pol}.npz")) for h in hiddens]
+        items[f"es_{pol}"], items[f"failed_{pol}"] = np.stack([x["es"] for x in z]), np.stack([x["failed"] for x in z])
+    items_f = os.path.splitext(os.path.abspath(a.out))[0] + "_items.npz"
+    os.makedirs(os.path.dirname(items_f), exist_ok=True)
+    np.savez_compressed(items_f, **items)
+    # ---- one box per item against one box for all items: identical per-item scores for the same frozen files ----
+    box = {}
+    for pol, b in state.get("box", {}).items():
+        x = b["rollout"]
+        g = os.path.join(hiddens[0], "grades")
+        if not x["graded"]:
+            box[pol] = {"graded": False, "errors": x["errors"]}
+            continue
+        zb, zs = np.load(os.path.join(g, f"{x['trace_id']}.npz")), np.load(os.path.join(g, f"{pol}.npz"))
+        xs = next(r for r in state["runs"][pol]["rollouts"] if r["instance_id"] == ids[0])
+        box[pol] = {"graded": True, "trace_id": x["trace_id"], "n_failed": int(zb["failed"].sum()), "identical_per_item_scores": bool(np.array_equal(zb["es"], zs["es"])),
+                    "max_abs_difference": float(np.abs(zb["es"] - zs["es"]).max()), "reward_box": x["reward_skill_vs_O"], "reward_shared": xs["reward_skill_vs_O"],
+                    "same_frozen_files": (x["submission"] or {}).get("sha256") == (xs["submission"] or {}).get("sha256"),
+                    "grade": {k: x["grade"].get(k) for k in ("isolation", "item_boxes", "item_box_wall_s_mean", "item_boxes_cpu_s", "infrastructure_failed_items",
+                                                              "seconds", "layers", "validation")},
+                    "wall_s": x["wall_s"], "cpu_s": x["cpu_s"], "vf_eval_wall_s": b["wall_s"], "vf_eval_host_cpu_s": b["host_cpu_s"],
+                    "shared_grade_seconds": xs["grade"].get("seconds")}
+    # ---- red team 8: a failed item is scored as K, so "crash where I would lose to K" is free ----
+    crash = {p: None for p in ("D", "S", "P0") if p in pols}  # filled below, once the valid cells are known
     rolls = [r for p in pols for r in state["runs"][p]["rollouts"]]
     out = {"world": a.world, "config": json.load(open(os.path.join(agentenv_root(), "configs", f"{a.config}.json"))),
            "sizes": sizes, "n_worlds": a.worlds, "policy_labels": LABELS, "PILOT_NEVER_REUSE_AS_EXAM": True,
@@ -180,6 +243,8 @@ def main():
            "platform": {"machine": platform.machine(), "python": platform.python_version(), "cpu_count": os.cpu_count(),
                         "backend": "cpu", "verifiers": __import__("verifiers").__version__, "box_cpus": a.cpu,
                         "docker": subprocess.run(["docker", "version", "--format", "{{.Server.Version}}"], capture_output=True, text=True).stdout.strip()},
+           "grading_mode": {"table": f"item_isolation = {a.isolation}", "taskset_default": "item_isolation = box (one fresh box per item)"},
+           "one_box_per_item_check_world_0": box, "per_item_scores_file": os.path.basename(items_f),
            "pooled": GR.table(hiddens, pols, labels=LABELS), "per_world": per_world,
            "rollout_cost": {
                "n_rollouts": len(rolls),
@@ -195,6 +260,16 @@ def main():
            "all_graded": all(r["graded"] for r in rolls), "all_ok": all(r["ok"] for r in rolls),
            "n_failed_items_total": int(sum((r["grade"].get("n_failed") or 0) for r in rolls)),
            "wall_s": time.time() - t0, "driver_cpu_s": time.process_time() - c0}
+    valid = np.array(out["pooled"]["valid_cells"], bool)
+    Kf, Of = items["K"].reshape(-1, len(valid))[:, valid].sum(1), items["O"].reshape(-1, len(valid))[:, valid].sum(1)
+    for pol in crash:
+        e = items[f"es_{pol}"].reshape(-1, len(valid))[:, valid].sum(1)
+        worse = e > Kf
+        sk = lambda v: float((Kf.mean() - v.mean()) / (Kf.mean() - Of.mean()))  # noqa: E731
+        crash[pol] = {"items": int(len(e)), "items_scored_worse_than_K": int(worse.sum()), "skill_vs_O": sk(e),
+                      "skill_vs_O_had_exactly_those_items_failed": sk(np.where(worse, Kf, e))}
+    out["failed_item_is_K_counterfactual"] = dict(crash, note="what a predictor would gain if it could fail exactly the items on which it "
+                                                              "scores worse than K (it cannot know them; this is the upper bound of the effect)")
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     json.dump(out, open(a.out, "w"), indent=1)
     p = out["pooled"]

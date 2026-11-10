@@ -2,15 +2,25 @@
 
 Part 1  agentenv's agents/probe_agent.py, unmodified, run in the agent's box by the scripted harness: the 34
         boundary checks of round 5 (results/probe_ring.json there), each evaluated where it now lives.
-Part 2  four new probes:
+Part 2  the probes of this port:
         (a) a predictor that leaves files, a shared-memory segment and a background process on every item finds
             none of them on the next item; with the cleanup switched off (control) it finds all of them
+        (a2) what no cleanup of one box resets (access time of a read-only file, directory times, the process-id
+            counter, the loopback packet counter): with one box per item (default) no item sees any of it; with
+            all items in one box (item_isolation = shared, the pilot mode) every item sees all of it
         (b) with a canary value in the worker's environment under a token-like name (HF_TOKEN), scripts dump the
             environment and the files of both boxes and find no canary; the saved traces contain neither the
             canary nor a hidden value
         (c) network checks from inside both boxes: no route except the declared ones
-        (d) deleting submission/ (and five other ways of breaking the collection) gives a K score, never an
-            ungraded rollout
+        (d) deleting submission/ (and nine other ways of breaking the collection, among them a replaced tar that
+            writes duplicate, colliding or over-long members) gives a K score, never an ungraded rollout
+        (e) the trusted side validates: a broken predictor submitted through the raw tool is refused and the
+            laboratory stays open; a predictor that passes only a falsified check in the agent's box, or was never
+            submitted and fails one of the three public example calls, is scored as K on every item
+        (h) a harness that exits non-zero or is killed leaves its trace without a reward (verifiers' behaviour, which
+            no task hook can change): tools/settle.py records K for it and the same agent cannot open the instance again
+        (f) what a predictor returns on exam items cannot break the grader: a float64 reply whose score overflows,
+            a named pipe left as stderr.txt, a reply of 3,000 members: K on those items, a finite reward, no hang
 Every check is a named boolean with its evidence; the output holds no hidden value.
 
 usage: python tools/check_probe.py --store DIR --scratch DIR --out results/probe_ring.json
@@ -32,8 +42,10 @@ sys.path.insert(0, HERE)
 import vfrun  # noqa: E402
 from physim2_env._paths import agentenv_root  # noqa: E402
 
-HOSTILE = ["delete", "empty", "oversize", "huge", "no_tar", "symlinks", "junk"]
-STOCK = ["delete", "huge", "no_tar", "symlinks", "junk"]
+HOSTILE = ["delete", "empty", "oversize", "huge", "no_tar", "symlinks", "junk", "tar_duplicate", "tar_collision", "tar_longpath"]
+VALIDATION = ["raw_submit_broken", "fake_validator", "unsubmitted_nondeterministic", "unsubmitted_partly_working"]
+ITEMS = ["item_overflow", "item_fifo", "item_bomb", "item_extreme"]
+STOCK = ["delete", "huge", "no_tar", "symlinks", "junk", "tar_duplicate"]
 
 
 def listener():
@@ -131,18 +143,40 @@ def main():
     B = go("probe-grading", {"agent_dir": mine, "script": "probe_grading.py", "label": "probe_grading",
                              "args": ["--host-port", str(port)], "collect": ["probe_grading_report.json"]})
     hits_after_probe = len(hits)
+    B1 = go("probe-grading-shared", {"agent_dir": mine, "script": "probe_grading.py", "label": "probe_grading_shared",
+                                     "args": ["--host-port", str(port)]}, task={"item_isolation": "shared"})
     B0 = go("probe-grading-nocleanup", {"agent_dir": mine, "script": "probe_grading.py", "label": "probe_grading_control",
                                         "args": ["--host-port", str(port)]}, task={"item_cleanup": False})
-    for mode in HOSTILE:
-        go(f"hostile-{mode}", {"agent_dir": mine, "script": "hostile_submission.py", "label": f"hostile_{mode}", "args": [mode]})
+    for mode in HOSTILE + VALIDATION + ITEMS:
+        go(f"hostile-{mode}", {"agent_dir": mine, "script": "hostile_submission.py", "label": f"hostile_{mode}", "args": [mode],
+                               "collect": ["hostile_report.json"]})
     for mode in STOCK:                                       # control: the same agents under verifiers' default collection
         go(f"stock-{mode}", {"agent_dir": mine, "script": "hostile_submission.py", "label": f"stock_{mode}", "args": [mode]},
            task={"stock_collection": True}, may_fail=True)
     # ---- operator guards (memo hole 4) ----
     G3 = go("guard-token-env", {"agent_dir": mine, "script": "hostile_submission.py", "label": "guard_token", "args": ["empty"],
                                 "env": {"HF_TOKEN": "not-a-real-token"}}, may_fail=True)
-    G4 = go("guard-single-use", {"agent_dir": mine, "script": "hostile_submission.py", "label": "guard_single_use", "args": ["empty"]},
-            task={"single_use": True}, may_fail=True)
+    G3b = go("guard-other-env", {"agent_dir": mine, "script": "hostile_submission.py", "label": "guard_env", "args": ["empty"],
+                                 "env": {"GITHUB_PAT": "not-a-real-value"}}, may_fail=True)
+    # single use is the default: the same agent (agent_key) on the same instance a second time is refused
+    G4a = go("guard-single-use-first", {"agent_dir": mine, "script": "hostile_submission.py", "label": "guard_single_use", "args": ["empty"]},
+             task={"agent_key": "one-agent"})
+    G4 = go("guard-single-use-again", {"agent_dir": mine, "script": "hostile_submission.py", "label": "guard_single_use", "args": ["empty"]},
+            task={"agent_key": "one-agent"}, may_fail=True)
+    # ---- (h) the harness dies ----
+    import settle as SETTLE
+    H = {}
+    for mode in ("exit1", "killall"):
+        h1 = go(f"harness-{mode}", {"agent_dir": mine, "script": "hostile_submission.py", "label": f"harness_{mode}", "args": [mode]},
+                task={"agent_key": f"agent-{mode}"}, may_fail=True)
+        st = SETTLE.settle(a.store, h1["run_dir"]) if h1.get("trace_id") else []
+        h2 = go(f"harness-{mode}-again", {"agent_dir": mine, "script": "hostile_submission.py", "label": f"harness_{mode}", "args": ["empty"]},
+                task={"agent_key": f"agent-{mode}"}, may_fail=True)
+        gk = grade_record(a.store, iid, h1.get("trace_id") or "-")
+        H[mode] = {"first": {"graded": h1["graded"], "trace_ok": h1["ok"], "errors": h1["errors"], "script_exit_code": h1.get("script_exit_code")},
+                   "settled": [{k: r.get(k) for k in ("graded", "settled_as_K", "reward", "why", "laboratory_was_opened")} for r in st],
+                   "grade_record": {k: gk.get(k) for k in ("n_items", "n_failed", "settled")},
+                   "again": {"graded": h2["graded"], "errors": h2["errors"]}}
     labs_after = sorted(os.listdir(os.path.join(hidden, "labs")))
     srv.close()
 
@@ -200,7 +234,8 @@ def main():
         and "wall-clock" not in val("validate_slow").get("error", ""),
         "memory_limit_enforced": val("validate_memory").get("ok") is False,
         "size_limit_enforced": val("validate_oversize").get("ok") is False,
-        "predictor_runs_unprivileged": leak.get("uid") == 1000 and P["uid"]["grading"] == [1000],
+        "predictor_runs_unprivileged": leak.get("uid") == 1000 and len(P["uid"]["grading"]) == 1 and P["uid"]["grading"][0] >= 20000
+        and P["uid"]["grading"][0] == (B["verifier_box"] or {}).get("predictor_uid"),
         "predictor_cannot_read_hidden": bool(leak) and all(unreadable(leak.get(p)) for p in hid),
         "predictor_has_no_network": leak.get("net") not in (None, "REACHABLE") and bool(items) and "REACHED" not in P["net"]["grading"],
         "predictor_cannot_write_submission": leak.get("write_submission") not in (None, "WRITABLE") and bool(items)
@@ -241,8 +276,31 @@ def main():
                     if v.encode() in raw:
                         found[k].append(os.path.relpath(p, a.scratch))
     vb_net = {k: sorted({i["box"]["net"][k] for i in items}) for k in (items[0]["box"]["net"] if items else {})}
-    hostile = {m: runs[f"hostile-{m}"] for m in HOSTILE}
+    hostile = {m: runs[f"hostile-{m}"] for m in HOSTILE + VALIDATION + ITEMS}
     stock = {m: runs[f"stock-{m}"] for m in STOCK}
+    gB1 = grade_record(a.store, iid, B1["trace_id"])
+    items1 = [i for i in (probe_json(e["error"]) for e in gB1.get("errors", [])) if i]
+
+    def chan(its):
+        """What each item read of the four channels, and how the process id moved against the forks of the item before."""
+        ch = [i.get("channels", {}) for i in its]
+        dpid = [ch[k + 1].get("pid", 0) - ch[k].get("pid", 0) for k in range(len(ch) - 1)]
+        return {"mark_was_read": [c.get("mark_was_read") for c in ch], "dirs_touched_after_staging": [c.get("dirs_touched_after_staging") for c in ch],
+                "lo_rx_packets": [c.get("lo_rx_packets") for c in ch], "pid": [c.get("pid") for c in ch], "forked": [c.get("forked") for c in ch],
+                "datagrams_sent": [c.get("datagrams_sent") for c in ch], "pid_step": dpid,
+                "pid_step_minus_forks_of_the_item_before": [d - ch[k].get("forked", 0) for k, d in enumerate(dpid)]}
+    cb, c1 = chan(items), chan(items1)
+
+    def hrep(m):
+        f = os.path.join(notes, hostile[m].get("trace_id") or "-", "hostile_report.json")
+        return json.load(open(f)) if os.path.exists(f) else {}
+
+    def all_k(m):
+        h = hostile[m]
+        return h["graded"] and h["ok"] and h["reward_skill_vs_O"] == 0.0 and h["grade"].get("n_failed") == h["grade"].get("n_items")
+
+    def reason(m):
+        return str(hostile[m]["grade"].get("reason"))
     new = {
         # (a)
         "a_every_item_ran_the_probe": len(items) == n_items > 1,
@@ -253,6 +311,21 @@ def main():
         "a_box_clean_after_every_item": gB.get("box_not_clean_after_item") is None,
         "a_control_without_cleanup_finds_them": len(items0) > 1 and all(len(i["found_files"]) == 3 and i["daemon_alive"] and i["found_shm"] for i in items0[1:])
         and items0[0]["found_files"] == [],
+        # (a2) one box per item: nothing of the box carries
+        "a2_default_is_one_box_per_item": B["grade"].get("isolation") == "box" and B["grade"].get("item_boxes") == n_items
+        and B["grade"].get("infrastructure_failed_items") == 0,
+        "a2_box_no_item_saw_the_file_read_earlier": bool(items) and all(v is False for v in cb["mark_was_read"]),
+        "a2_box_no_item_saw_a_directory_touched_earlier": bool(items) and all(v == [] for v in cb["dirs_touched_after_staging"]),
+        "a2_box_process_id_counter_did_not_carry": len(items) > 1 and all(abs(d) < 40 for d in cb["pid_step"]) and all(f >= 40 for f in cb["forked"]),
+        "a2_box_loopback_counter_did_not_carry": bool(items) and all(isinstance(v, int) and v < 1000 for v in cb["lo_rx_packets"])
+        and all(v >= 1000 for v in cb["datagrams_sent"]),
+        # (a2) all items in one box, cleanup on: the pilot mode keeps these four channels (documented, marked in the trace)
+        "a2_shared_cleanup_still_removes_files_processes_and_segments": len(items1) == n_items and all(i["found_files"] == [] and i["daemon_alive"] is False
+                                                                                                    and i["found_shm"] is False for i in items1),
+        "a2_shared_box_carries_all_four_channels": len(items1) > 1 and all(v is True for v in c1["mark_was_read"][1:]) and c1["mark_was_read"][0] is False
+        and all(len(v) >= 2 for v in c1["dirs_touched_after_staging"][1:]) and all(d >= 40 for d in c1["pid_step"])
+        and all(v >= 1000 for v in c1["lo_rx_packets"][1:]),
+        "a2_shared_rollout_is_marked_in_its_trace": "possible" in str(B1["info"].get("between_item_state")) and "between_item_state" not in B["info"],
         # (b)
         "b_canary_was_in_the_worker_environment": "HF_TOKEN" in lab_proc.get("scrubbed_variables", []),
         "b_lab_process_dropped_it_after_loading": lab_proc.get("token_values_left_in_environ") is False,
@@ -275,6 +348,31 @@ def main():
         "c_host_listener_saw_no_box": hits_after_probe == control_hits and len(hits) == control_hits,
         # (d)
         "d_every_hostile_rollout_is_graded": all(h["graded"] and h["ok"] for h in hostile.values()),
+        "d_every_reward_is_a_finite_number": all(isinstance(h["reward_skill_vs_O"], (int, float)) and abs(h["reward_skill_vs_O"]) < float("inf")
+                                                 and h["reward_skill_vs_O"] == h["reward_skill_vs_O"] for h in hostile.values()),
+        "d_replaced_tar_duplicate_collision_longpath_score_K": all(all_k(m) for m in ("tar_duplicate", "tar_collision", "tar_longpath")),
+        "d_control_default_collection_leaves_a_duplicate_member_ungraded": not stock["tar_duplicate"]["graded"],
+        # (e) the trusted side validates
+        "e_raw_tool_submit_of_a_broken_predictor_is_refused": hrep("raw_submit_broken").get("raw_submit", {}).get("accepted") is False
+        and hrep("raw_submit_broken").get("usage_after", {}).get("submitted") is False and hrep("raw_submit_broken").get("lab_still_open") is True,
+        "e_then_the_valid_predictor_left_behind_is_graded": hostile["raw_submit_broken"]["grade"].get("n_failed") == 0
+        and hostile["raw_submit_broken"]["submission"]["source"] == "final_collection",
+        "e_falsified_check_in_the_agent_box_freezes_but_the_grader_validates": hrep("fake_validator").get("submit", {}).get("accepted") is True
+        and all_k("fake_validator") and "validation failed (reproducibility)" in reason("fake_validator"),
+        "e_unsubmitted_nondeterministic_predictor_scores_K": all_k("unsubmitted_nondeterministic") and "reproducibility" in reason("unsubmitted_nondeterministic"),
+        "e_unsubmitted_predictor_failing_one_example_call_scores_K": all_k("unsubmitted_partly_working") and "validation failed (example 1)" in reason("unsubmitted_partly_working"),
+        # (h) the harness dies: verifiers leaves the trace ungraded; the books are closed by tools/settle.py and single use
+        "h_harness_exit_or_kill_leaves_the_trace_without_a_reward": all(not H[m]["first"]["graded"] for m in H),
+        "h_settle_records_K_for_such_a_rollout": all(len(H[m]["settled"]) == 1 and H[m]["settled"][0]["settled_as_K"] is True
+                                                     and H[m]["grade_record"].get("n_failed") == H[m]["grade_record"].get("n_items") for m in H),
+        "h_the_same_agent_cannot_open_the_instance_again": all(not H[m]["again"]["graded"] and "TaskError" in H[m]["again"]["errors"] for m in H),
+        # (f) what the predictor returns on exam items
+        "f_item_attacks_passed_validation_and_were_submitted": all(hrep(m).get("submit", {}).get("accepted") is True
+                                                                   and hostile[m]["grade"].get("validation", {}).get("ok") is True for m in ITEMS),
+        "f_overflow_fifo_and_bomb_fail_every_item_and_score_K": all(all_k(m) for m in ("item_overflow", "item_fifo", "item_bomb")),
+        "f_no_item_attack_hung_the_grader": all((hostile[m]["wall_s"].get("verifier") or 1e9) < 300 for m in ITEMS),
+        "f_largest_float32_values_are_a_valid_finite_very_bad_reply": hostile["item_extreme"]["grade"].get("n_failed") == 0
+        and hostile["item_extreme"]["reward_skill_vs_O"] < -1e30,
         "d_deleted_submission_scores_K": hostile["delete"]["reward_skill_vs_O"] == 0.0 and hostile["delete"]["grade"].get("n_failed") == hostile["delete"]["grade"].get("n_items"),
         "d_empty_oversize_huge_and_broken_tar_score_K": all(hostile[m]["reward_skill_vs_O"] == 0.0 and hostile[m]["grade"].get("n_failed") == hostile[m]["grade"].get("n_items")
                                                             for m in ("empty", "oversize", "huge", "no_tar")),
@@ -316,7 +414,10 @@ def main():
         and refused(runtime=vf.DockerConfig()) and not refused(),
         "g_setup_refuses_open_network_and_non_container": setup_refused(fake("docker", False)) and setup_refused(fake("subprocess", True)),
         "g_setup_refuses_token_like_harness_variable": not G3["graded"] and "TaskError" in G3["errors"] and G3.get("trace_id") not in labs_after,
-        "g_single_use_refuses_an_instance_already_opened": not G4["graded"] and "TaskError" in G4["errors"] and G4.get("trace_id") not in labs_after,
+        "g_setup_refuses_any_variable_not_on_the_allow_list": not G3b["graded"] and "TaskError" in G3b["errors"] and G3b.get("trace_id") not in labs_after,
+        "g_single_use_is_the_default": Physim2TaskConfig().single_use is True and A["info"].get("single_use") is True,
+        "g_single_use_refuses_the_same_agent_a_second_time": G4a["graded"] and not G4["graded"] and "TaskError" in G4["errors"]
+        and G4.get("trace_id") not in labs_after,
     })
     del used
     res = {"checks_round5": checks, "n_checks_round5": len(checks), "n_reproduced": sum(v is True for v in checks.values()),
@@ -353,7 +454,15 @@ def main():
                "d_control_default_collection": {m: {"graded": h["graded"], "trace_ok": h["ok"], "episode_ok": h.get("episode_ok"), "trace_errors": h["errors"],
                                                     "episode_errors": h.get("episode_errors"), "reward_recorded_as": h["reward_skill_vs_O"],
                                                     "marked": h["info"].get("NOT_AN_EXAM")} for m, h in stock.items()},
-               "g_guard_runs": {k: {"graded": v["graded"], "trace_ok": v["ok"], "trace_errors": v["errors"]} for k, v in (("token_env", G3), ("single_use", G4))},
+               "g_guard_runs": {k: {"graded": v["graded"], "trace_ok": v["ok"], "trace_errors": v["errors"]}
+                                for k, v in (("token_env", G3), ("other_env", G3b), ("single_use_first", G4a), ("single_use_again", G4))},
+               "h_harness_dies": H,
+               "a2_channels_one_box_per_item": cb, "a2_channels_all_items_in_one_box": c1,
+               "a2_grade": {k: B["grade"].get(k) for k in ("isolation", "item_boxes", "item_box_wall_s_mean", "infrastructure_failed_items", "item_boxes_cpu_s")},
+               "e_reports": {m: hrep(m) for m in VALIDATION}, "f_reports": {m: hrep(m) for m in ITEMS},
+               "f_grades": {m: {k: hostile[m]["grade"].get(k) for k in ("n_items", "n_failed", "non_finite_items", "validation", "isolation", "seconds")}
+                            for m in ITEMS},
+               "f_first_error": {m: str((grade_record(a.store, iid, hostile[m]["trace_id"]).get("errors") or [{}])[0].get("error"))[:140] for m in ITEMS},
                "verifier_box_identity_item_1": {k: items[0][k] for k in ("write_submission", "write_request", "write_runtime", "write_workspace", "requests_visible")} if items else None,
                "verifier_box_staging": B["verifier_box"],
            },

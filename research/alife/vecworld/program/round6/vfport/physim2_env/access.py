@@ -77,7 +77,7 @@ def clean_report(text: str) -> dict:
             if k in raw:
                 out[k] = v is True
         elif typ is str and isinstance(v, str):
-            out[k] = v[:3000]
+            out[k] = v[:6000]
         elif typ in (int, float) and isinstance(v, (int, float)) and not isinstance(v, bool) and v == v and abs(v) < 1e12:
             out[k] = typ(v)
     out.setdefault("ok", False)

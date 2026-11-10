@@ -1,11 +1,16 @@
 """probe_grading -- what can a submitted predictor see, reach and leave behind in the GRADER's box?
 
-The agent part (this script, in the agent's box) records its own box, then submits a predictor that examines the
+The agent part (this script, in the agent's box) records its own box, then leaves a predictor that examines the
 grader's box at every exam item and reports through its error text (every item then fails and is scored as K;
-the report stays on the worker, in the grade record). Four questions:
+the report stays on the worker, in the grade record). On the two public example requests it answers plainly, so
+that the grader's validation passes and the exam items run at all. Questions:
 
   (a) persistence   does item k find the files, the System V shared-memory segment or the background process
                     that item k-1 left?
+  (a2) box state    what no cleanup of ONE box resets (specification review 2, red team 2): the access time of a
+                    read-only submission file that an earlier item read, the modification time of directories it
+                    wrote to, the box's process-id counter after it forked, the loopback packet counter after it
+                    sent datagrams. With one box per item (the default) none of them can carry.
   (b) leak          is a canary value (worker environment, token-like name) or any token-like variable visible
                     in the environment or in any readable file of either box?
   (c) network       which routes exist from each box? (a public address, DNS, a listener on the host, the
@@ -120,6 +125,76 @@ def box_report(host_port, lab_url, full):
 
 PREDICT = BOX + r'''
 import ctypes, time
+import numpy as np
+
+EXAMPLES = np.load(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "physim2", "examples.npz"))["history"]
+MARK = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mark.bin")
+TOUCH = ["/dev/shm", "/var/tmp", "/run/lock"]
+
+
+def lo_rx_packets():
+    try:
+        for line in open("/proc/net/dev"):
+            if line.strip().startswith("lo:"):
+                return int(line.split(":")[1].split()[1])
+    except Exception:
+        pass
+    return None
+
+
+def channels_read():
+    ch = {"pid": os.getpid(), "lo_rx_packets": lo_rx_packets()}
+    try:
+        st = os.stat(MARK)
+        ch["mark_was_read"] = st.st_atime_ns > st.st_ctime_ns
+    except Exception as e:
+        ch["mark_was_read"] = type(e).__name__
+    try:
+        ref = os.stat("/runtime/item.py").st_mtime_ns              # written when the box was staged
+        ch["dirs_touched_after_staging"] = [d for d in TOUCH if os.path.isdir(d) and os.stat(d).st_mtime_ns > ref]
+    except Exception as e:
+        ch["dirs_touched_after_staging"] = type(e).__name__
+    return ch
+
+
+def channels_write(history):
+    fp = int(abs(float(np.sum(history))) * 1e6) %% 40
+    try:
+        with open(MARK, "rb") as f:
+            f.read(1)
+    except Exception:
+        pass
+    for d in TOUCH:
+        try:
+            p = os.path.join(d, "physim2_probe_touch")
+            open(p, "w").close()
+            os.unlink(p)
+        except Exception:
+            pass
+    n = 0
+    for _ in range(40 + fp):
+        try:
+            pid = os.fork()
+        except OSError:
+            break
+        if pid == 0:
+            os._exit(0)
+        os.waitpid(pid, 0)
+        n += 1
+    sent = 0
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        for _ in range(1200):
+            try:
+                s.sendto(b"x", ("127.0.0.1", 9))
+                sent += 1
+            except OSError:
+                pass
+        s.close()
+    except Exception:
+        pass
+    return {"forked": n, "datagrams_sent": sent}
+
 
 HOST_PORT = %(host_port)d
 LAB_URL = %(lab_url)r
@@ -147,7 +222,10 @@ def shm(write):
 
 
 def predict(history, program, queries, n_samples, seed):
+    if any(history.shape == e.shape and np.array_equal(history, e) for e in EXAMPLES):   # a public example: validation
+        return {l: np.zeros((n_samples, len(ts), {1: history.shape[1], 2: 3}[l])) for l, ts in queries.items()}
     out = {"found_files": [m for m in MARKS if os.path.exists(m)], "found_shm": shm(False), "daemon_alive": False}
+    out["channels"] = channels_read()
     if os.path.exists(PIDFILE):
         try:
             out["daemon_alive"] = os.path.exists("/proc/%%d" %% int(open(PIDFILE).read()))
@@ -168,6 +246,7 @@ def predict(history, program, queries, n_samples, seed):
     out["box"] = box_report(HOST_PORT, LAB_URL, False)
     out["box"].pop("env_names")
     # leave something for the next item
+    out["channels"].update(channels_write(history))
     for m in MARKS:
         try:
             open(m, "w").write("left by an earlier item")
@@ -205,6 +284,7 @@ def main():
     rep["agent_box"]["address_file"] = os.path.exists("/etc/physim2/lab.json")
     os.makedirs("submission", exist_ok=True)
     open("submission/predict.py", "w").write(PREDICT % {"host_port": host_port, "lab_url": lab.address})
+    open("submission/mark.bin", "wb").write(b"m")
     json.dump(rep, open("probe_grading_report.json", "w"), indent=1)
     print(json.dumps({"agent_box": {k: rep["agent_box"][k] for k in ("uid", "env_token_like", "env_needle", "needle_hits", "net")}}))
 

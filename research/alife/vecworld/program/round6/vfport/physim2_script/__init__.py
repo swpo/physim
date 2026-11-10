@@ -38,6 +38,9 @@ class ScriptHarnessConfig(vf.HarnessConfig):
     """Files the script leaves in the working directory that the operator wants back (reports, logs)."""
     collect_dir: str = ""
     """Host directory for them: <collect_dir>/<trace id>/<file>. They are the script's own notes, at most 4 MiB each."""
+    collect_tree: str = ""
+    """A directory of the working directory to copy out as well (regular top-level files only, at most 16 MiB
+    each): <collect_dir>/<trace id>/<name>_copy/. For the operator's own cross-checks of reference agents."""
 
 
 def fill(text: str, data) -> str:
@@ -100,6 +103,18 @@ class ScriptHarness(vf.Harness[ScriptHarnessConfig]):
                 with open(os.path.join(out, os.path.basename(nm)), "wb") as f:
                     f.write(blob)
                 got.append(os.path.basename(nm))
+            if c.collect_tree:
+                ls = await runtime.run(["sh", "-c", f"cd {shlex.quote(c.collect_tree)} && find . -maxdepth 1 -type f | cut -c3-"], {})
+                tree = os.path.join(out, os.path.basename(c.collect_tree.rstrip("/")) + "_copy")
+                os.makedirs(tree, exist_ok=True)
+                for nm in [n for n in ls.stdout.splitlines() if n and "/" not in n][:64]:
+                    try:
+                        blob = await runtime.read(f"{c.collect_tree}/{nm}", max_bytes=16 << 20)
+                    except Exception:
+                        continue
+                    with open(os.path.join(tree, nm), "wb") as f:
+                        f.write(blob)
+                got.append(os.path.basename(tree) + "/")
             info["collected"] = got
         return result
 

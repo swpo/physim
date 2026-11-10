@@ -23,9 +23,11 @@ Prints one JSON line:
     layers {uid, rlimits}, cleanup {killed, removed, ipc_removed, left_pids, left_files, roots}
 
 Layers: resource limits always (CPU seconds hard = soft, address space, file size, no core dumps, process
-count); when started as root also a drop to --uid with no supplementary groups, and the cleanup. Without root
-(your own tests) the request still runs, without the drop and without the cleanup. The network policy and the
-absence of hidden files are properties of the box, not of this file.
+count); when started as root INSIDE A PREPARED BOX (the directory /etc/physim2 exists) also a drop to --uid with
+no supplementary groups, and the cleanup. Without root, or as root on any other machine, the request still runs,
+without the drop and without the cleanup: the cleanup deletes every file of that uid on every writable file
+system and must never run on a machine that is not a disposable box. The network policy and the absence of
+hidden files are properties of the box, not of this file.
 """
 import argparse
 import base64
@@ -287,13 +289,26 @@ def box_cpu_s():
         return None
 
 
+BOX_MARKER = "/etc/physim2"
+
+
+def in_box():
+    """True only inside a box the environment prepared (its setup creates BOX_MARKER). The cleanup kills every
+    process and deletes every file of one uid on EVERY writable file system it can see: right in a disposable
+    box, destructive on a real machine. Started as root anywhere else, this driver therefore neither drops to
+    that uid nor cleans up."""
+    return os.path.isdir(BOX_MARKER) and not os.path.islink(BOX_MARKER)
+
+
 def run(a):
     root = os.geteuid() == 0
-    drop = root and a.uid is not None and a.uid > 0
+    drop = root and a.uid is not None and a.uid > 0 and in_box()
     become_reaper()
     if drop and not a.no_cleanup and user_pids(a.uid):
         kill_user(a.uid)                                     # never start a request next to a stray process
     layers = {"rlimits": True, "uid": a.uid if drop else None, "cleanup": bool(drop and not a.no_cleanup)}
+    if root and not drop and a.uid:
+        layers["note"] = f"root outside a prepared box (no {BOX_MARKER}): no uid drop, no cleanup"
     io = tempfile.mkdtemp(prefix="physim2-io-")              # the only place the predictor may write its reply
     os.chmod(io, 0o700)
     io_fd = os.open(io, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)    # root reads the reply through THIS handle
