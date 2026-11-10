@@ -14,7 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.environ.get("VX_RES", os.path.join(HERE, "results"))
 J1, J2 = "r5-vortexexam-002", os.environ.get("VX_JOB2", "r5-vortexexam-003")
 JD2 = os.environ.get("VX_JOB2_DIR", "job2")          # folder under results/ with job 2's small files
-J3 = os.environ.get("VX_JOB3", "r5-vortexexam-005")       # the follow-up exam job, pilot B (results/job3)
+J3 = os.environ.get("VX_JOB3", "r5-vortexexam-006")       # the follow-up exam job, pilot B (results/job3)
 
 
 def load(*p):
@@ -68,10 +68,16 @@ A1 = load("analysis1.json")
 st1, st2, st3 = load("job1", "status.json"), load(JD2, "status.json"), load("job3", "status.json")
 old = [load("job_r5-vortexexam-001_status.json")]
 S["gpu"] = V({J1: job_cost(st1), J2: job_cost(st2), **({J3: job_cost(st3)} if st3 else {}),
-              "billed_usd_total": round(sum(((x or {}).get("cost") or {}).get("billed_usd") or 0.0 for x in (st1, st2, st3)), 4),
+              "billed_usd_total": round(sum(((x or {}).get("cost") or {}).get("billed_usd") or 0.0
+                                            for x in (st1, st2, st3, load("job_r5-vortexexam-005_status.json"))), 4),
+              "conservative_usd_total": round(sum(((x or {}).get("cost") or {}).get("conservative_usd") or 0.0
+                                                  for x in (st1, st2, st3, load("job_r5-vortexexam-005_status.json"))), 4),
               "pod_hours_total": round(sum((job_cost(x) or {}).get("pod_hours") or 0.0 for x in (st1, st2, st3)), 3),
               "r5-vortexexam-004": {"state": "rejected", "billed_usd": 0.0,
                                     "why": "invalid request: purpose line over 300 characters; resubmitted as r5-vortexexam-005"},
+              "r5-vortexexam-005": dict(job_cost(load("job_r5-vortexexam-005_status.json")) or {},
+                                        why="infra_error at provisioning: cap $19.40 was 0.1 cent under $6.69/h x (2.65 + 0.25) h; "
+                                            "no job time; resubmitted as r5-vortexexam-006 with cap $19.60"),
               "cap_usd_study": 25.0,
               "r5-vortexexam-001": {"state": (old[0] or {}).get("state"), "billed_usd": ((old[0] or {}).get("cost") or {}).get("billed_usd")}},
              f"origin/gpu-jobs:jobs/<job>/status.json (copied to results/job1, results/job2)")

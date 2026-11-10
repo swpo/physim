@@ -38,21 +38,23 @@ PILOT: never to be reused as an exam. Budget $25: job 1 billed $2.29; job 2 hold
   the pod's scores reproduce; with the last three ticks only, net sigma 0.18 (P0 0.47, C 0.57), rho about 1.
 - `make_summary.py` writes a computed `headline` section (the report's numbers with sources).
 
+- 02:58 UTC: `r5-vortexexam-005` ended in infra_error at provisioning (no job time; conservative cost $0.35):
+  cap $19.40 was 0.1 cent under 6.69 x 2.90 = 19.401. Lesson: round caps UP with a margin.
+
 ## Running
-- `r5-vortexexam-005`: reviewed 02:48 (gate met, no findings; `jobs/r5-vortexexam-005/review.md`), accepted 02:54 on
-  an H200 (nebius, bills $6.69/h), preset xl expected, about 1.5 h, so done about 04:30 UTC. DO NOT RESUBMIT.
+- `r5-vortexexam-006`: requested 03:00 UTC 10 Nov (same job as 005, cap $19.60). DO NOT RESUBMIT while it runs.
   Watcher: a background loop that fetches `origin gpu-jobs` every 60 s until
-  `jobs/r5-vortexexam-005/status.json` is terminal.
-- Budget: $25 - 2.29 - 1.31 = $21.40 before job 005; its cap reserves $19.40 (expected bill about $10.5).
+  `jobs/r5-vortexexam-006/status.json` is terminal. On an H200: preset xl, about 1.5 h.
+- Budget: $25 - 2.29 - 1.31 - 0.35 (005, conservative) = $21.05 before job 006; its cap reserves $19.60.
 
 ## Next steps (in order)
-1. While job 005 runs: README.md and the report from job 1 and job 2 (results/summary.json).
-2. When job 005 is terminal (SP = the scratch folder below):
-   `python -B fetch_job.py r5-vortexexam-005 job3 $SP`; check `results/job3/info.json` (no `fatal`, `failed`)
+1. While job 006 runs: README.md and the report from job 1 and job 2 (results/summary.json).
+2. When job 006 is terminal (SP = the scratch folder below):
+   `python -B fetch_job.py r5-vortexexam-006 job3 $SP`; check `results/job3/info.json` (no `fatal`, `failed`)
    and `prediction.json` (`final: true`); then `VX_TAG=B python -B analyse2.py $SP/job3` (-> results/analysis2_B.json)
    and `python -B make_summary.py` (reads results/job3 and analysis2_B.json; sections end in `_B`). Commit.
-   If it failed: read `jobs/r5-vortexexam-005/logs`, fix, test on CPU from a git archive, resubmit as
-   `r5-vortexexam-006` within the cap that is left.
+   If it failed: read `jobs/r5-vortexexam-006/logs`, fix, test on CPU from a git archive, resubmit as
+   `r5-vortexexam-007` within the cap that is left.
 3. README.md, results/summary.json, report (under 1,200 words); delete scratch `vx`; remove the worktree.
 
 Scratch: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vx` (job1/, job2/ = job outputs;
