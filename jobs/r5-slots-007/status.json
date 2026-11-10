@@ -14,6 +14,12 @@
   "job_id": "r5-slots-007",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T05:24:37Z",
+    "file": "jobs/r5-slots-007/review.md",
+    "sha256": "45e63d7398cea7f8dee47fff7d93ec82b8b25be2882a1c2ffb23bbf045303d5d",
+    "summary": "Resubmission of 006 with the cap raised to cover the H100 at $5.02/h; same code and env; fine to run."
+  },
   "state": "received",
   "updated_at": "2026-11-10T05:24:07Z"
 }
