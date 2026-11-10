@@ -222,27 +222,47 @@ for fam in FAMS:
                 r_ = acc_row(fam, n, "K", PRIM, rows=np.flatnonzero(anchor_of == ai))
                 if r_:
                     acc[f"{fam}@{n}|K|joint|anchor{a_}"] = r_
-# the strongest null and the strongest C over the families (not the roadmap's one-family rule; a sensitivity),
-# separately for the full-history view and the short-history view (net~3, ridge~3 and the law family)
+# the strongest null and the strongest C over the families (not the roadmap's one-family rule; a sensitivity).
+# Views: 'all' = every family (an item carries its full history and a policy may ignore part of it);
+# 'full_history' = net, ridge, lin2, law; 'short_history' = net~3, ridge~3 and law (the law uses the anchor state
+# only). The law fitted to Lab data is the theory policy T, so the law family is never a null here; it may be a C.
+# The policies are picked on the same items they are scored on, so these shares lean towards the picked ones.
 best = {}
 rng_b = np.random.default_rng(5)
+boots_b = rng_b.integers(0, nT, size=(1000, nT))
+
+
+def _ratio(num, den):
+    a_, d_ = num.mean(1), den.mean(1)                                   # per truth
+    bs = np.array([a_[q].mean() / d_[q].mean() for q in boots_b])
+    bs = bs[np.isfinite(bs)]
+    return float(a_.mean() / d_.mean()), float(bs.std()), [float(np.quantile(bs, 0.05)), float(np.quantile(bs, 0.95))]
+
+
+VIEWS_B = (("all", lambda k: True), ("full_history", lambda k: "~" not in k),
+           ("short_history", lambda k: "~" in k or k.startswith("law|")))
 for n in budgets:
-    for view, ok in (("full_history", lambda k: "~" not in k), ("short_history", lambda k: "~" in k or k.startswith("law|"))):
-        if view == "short_history" and not any("~" in k for k in SC):
+    for view, ok in VIEWS_B:
+        if view != "full_history" and not any("~" in k for k in SC):
             continue                                              # this job has no short-history families
-        cands_null = [k for k in SC if ok(k) and (k.endswith("|P0") or k.endswith(f"|D@{n}"))]
-        cands_c = [k for k in SC if ok(k) and k.split("|")[-1] in ("C", "Cded", "Cft")]
-        cands_s = [k for k in SC if ok(k) and k.split("|")[-1] in (f"S@{n}", f"Sded@{n}", f"Sft@{n}")]
-        if cands_null and cands_c:
-            kn, kc = min(cands_null, key=lambda k: L[k]), min(cands_c, key=lambda k: L[k])
-            kp0 = min([k for k in SC if ok(k) and k.endswith("|P0")], key=lambda k: L[k])
-            ks = min(cands_s, key=lambda k: L[k]) if cands_s else None
-            dn, dc = (Lit[kn] - Lit[kc]).mean(1), (Lit["K"] - Lit[kc]).mean(1)       # per truth
-            bsig = np.array([dn[q].mean() / dc[q].mean() for q in rng_b.integers(0, nT, size=(1000, nT))])
-            best.setdefault(view, {})[str(n)] = {
-                "null": kn, "C": kc, "P0": kp0, "S": ks, "sigma": (L[kn] - L[kc]) / (LK - L[kc]),
-                "sigma_se_truths": float(bsig.std()),
-                "rho": None if ks is None or L[kp0] == L[kc] else (L[kp0] - L[ks]) / (L[kp0] - L[kc])}
+        fam_ok = [k for k in SC if "|" in k and ok(k)]
+        cands_null = [k for k in fam_ok if not k.startswith("law|") and k.split("|")[-1] in ("P0", f"D@{n}")]
+        cands_p0 = [k for k in fam_ok if not k.startswith("law|") and k.endswith("|P0")]
+        cands_c = [k for k in fam_ok if k.split("|")[-1] in ("C", "Cded", "Cft")]
+        cands_s = [k for k in fam_ok if k.split("|")[-1] in (f"S@{n}", f"Sded@{n}", f"Sft@{n}")]
+        if not (cands_null and cands_c):
+            continue
+        kn, kc = min(cands_null, key=lambda k: L[k]), min(cands_c, key=lambda k: L[k])
+        kp0 = min(cands_p0, key=lambda k: L[k])
+        ks = min(cands_s, key=lambda k: L[k]) if cands_s else None
+        sg, sg_se, sg_q = _ratio(Lit[kn] - Lit[kc], Lit["K"] - Lit[kc])
+        row = {"null": kn, "C": kc, "P0": kp0, "S": ks, "skill_null": skill(kn), "skill_C": skill(kc), "skill_P0": skill(kp0),
+               "skill_S": skill(ks) if ks else None, "sigma": sg, "sigma_se_truths": sg_se, "sigma_p05_p95": sg_q,
+               "rho": None, "rho_se_truths": None}
+        if ks is not None and L[kp0] != L[kc]:
+            rh, rh_se, rh_q = _ratio(Lit[kp0] - Lit[ks], Lit[kp0] - Lit[kc])
+            row.update(rho=rh, rho_se_truths=rh_se, rho_p05_p95=rh_q)
+        best.setdefault(view, {})[str(n)] = row
 out["acceptance"] = {"note": "rows 'family@n|K reference|cells'; sigma = (L(null) - L(C)) / (L(K) - L(C)), null = the "
                              "better of D@n and P0; rho = (L(P0) - L(S@n)) / (L(P0) - L(C)); SE and 5-95% range from the "
                              "bootstrap clustered by truth; L per cell (mean over the cells used); 'anchor<t>' = only the items "

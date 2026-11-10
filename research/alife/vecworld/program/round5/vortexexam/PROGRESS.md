@@ -41,24 +41,15 @@ PILOT: never to be reused as an exam. Budget $25: job 1 billed $2.29; job 2 hold
 - 02:58 UTC: `r5-vortexexam-005` ended in infra_error at provisioning (no job time; conservative cost $0.35):
   cap $19.40 was 0.1 cent under 6.69 x 2.90 = 19.401. Lesson: round caps UP with a margin.
 
+- 05:01 UTC: job 3 (`r5-vortexexam-006`) done, exit 0, $3.72 billed, A100 40GB, preset `full` (10 truths, 512
+  design points). Fetched (`results/job3`), analysed (`VX_TAG=B analyse2.py` -> results/analysis2_B.json;
+  `offline_views.py --families ridge --tag B`), summary rebuilt (sections ending in `_B`, `headline`).
+- README.md rewritten with all three jobs. Total billed $7.32 of $25 (at most $0.35 more for the pod of 005).
+
 ## Running
-- `r5-vortexexam-006`: RUNNING since 03:09 UTC on an A100 40GB (lambdalabs, $1.99/h) at 169 member-ticks/s, preset
-  `full` (10 truths, 512 design points, 16 Lab episodes, 12 runs x 4 anchors, 8 replicates, 32 dedicated
-  simulations per truth; 1.05 million member-ticks). Expected end about 05:10 UTC; run deadline 05:48.
-  DO NOT RESUBMIT. Watcher: a background loop that fetches `origin gpu-jobs` every 60 s until
-  `jobs/r5-vortexexam-006/status.json` is terminal (re-arm it: background commands end after 2 h).
-- Budget: $25 - 2.29 - 1.31 - 0.35 (005, conservative) = $21.05 before job 006; expected bill about $4.5.
+Nothing. The study is FINISHED (10 Nov 2026, about 05:20 UTC). No GPU job is pending and none should be sent.
 
-## Next steps (in order)
-1. While job 006 runs: README.md and the report from job 1 and job 2 (results/summary.json).
-2. When job 006 is terminal (SP = the scratch folder below):
-   `python -B fetch_job.py r5-vortexexam-006 job3 $SP`; check `results/job3/info.json` (no `fatal`, `failed`)
-   and `prediction.json` (`final: true`); then `VX_TAG=B python -B analyse2.py $SP/job3` (-> results/analysis2_B.json)
-   and `python -B make_summary.py` (reads results/job3 and analysis2_B.json; sections end in `_B`). Commit.
-   If it failed: read `jobs/r5-vortexexam-006/logs`, fix, test on CPU from a git archive, resubmit as
-   `r5-vortexexam-007` within the cap that is left.
-3. README.md, results/summary.json, report (under 1,200 words); delete scratch `vx`; remove the worktree.
-
-Scratch: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vx` (job1/, job2/ = job outputs;
-commit.sh = the commit helper: pull --rebase --autostash, add only this folder and the request files, push).
-Channel file: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vortexexam_COORD.txt`.
+## If you are a restarted self
+Check that `git log origin/claude/fisim-agent-world-research-hepmlz -- research/alife/vecworld/program/round5/vortexexam`
+shows the commit "round5/vortexexam: final". If it does, only the report to the coordinator is left (README.md
+has its content). Then remove the worktree and the scratch folder `vx`.

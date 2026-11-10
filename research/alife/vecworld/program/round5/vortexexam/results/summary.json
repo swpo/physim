@@ -11166,41 +11166,93 @@
      "C": "net|C",
      "P0": "net|P0",
      "S": "net|S@1",
+     "skill_null": 0.559,
+     "skill_C": 0.557,
+     "skill_P0": 0.559,
+     "skill_S": 0.562,
      "sigma": -0.003,
      "sigma_se_truths": 0.028,
-     "rho": -2.35
+     "sigma_p05_p95": [
+      -0.047,
+      0.047
+     ],
+     "rho": -2.35,
+     "rho_se_truths": 2.073,
+     "rho_p05_p95": [
+      -2.35,
+      3.705
+     ]
     },
     "2": {
      "null": "net|P0",
      "C": "net|C",
      "P0": "net|P0",
      "S": "net|S@2",
+     "skill_null": 0.559,
+     "skill_C": 0.557,
+     "skill_P0": 0.559,
+     "skill_S": 0.55,
      "sigma": -0.003,
      "sigma_se_truths": 0.028,
-     "rho": 5.224
+     "sigma_p05_p95": [
+      -0.047,
+      0.047
+     ],
+     "rho": 5.224,
+     "rho_se_truths": 2.414,
+     "rho_p05_p95": [
+      -1.955,
+      5.224
+     ]
     },
     "4": {
      "null": "net|P0",
      "C": "net|C",
      "P0": "net|P0",
      "S": "net|S@4",
+     "skill_null": 0.559,
+     "skill_C": 0.557,
+     "skill_P0": 0.559,
+     "skill_S": 0.549,
      "sigma": -0.003,
      "sigma_se_truths": 0.028,
-     "rho": 5.913
+     "sigma_p05_p95": [
+      -0.047,
+      0.047
+     ],
+     "rho": 5.913,
+     "rho_se_truths": 3.179,
+     "rho_p05_p95": [
+      -4.055,
+      6.702
+     ]
     },
     "8": {
      "null": "net|P0",
      "C": "net|C",
      "P0": "net|P0",
      "S": "net|S@8",
+     "skill_null": 0.559,
+     "skill_C": 0.557,
+     "skill_P0": 0.559,
+     "skill_S": 0.563,
      "sigma": -0.003,
-     "sigma_se_truths": 0.03,
-     "rho": -2.723
+     "sigma_se_truths": 0.028,
+     "sigma_p05_p95": [
+      -0.047,
+      0.047
+     ],
+     "rho": -2.723,
+     "rho_se_truths": 2.865,
+     "rho_p05_p95": [
+      -2.723,
+      2.712
+     ]
     }
    }
   },
   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) acceptance.best_over_families",
-  "note": "a sensitivity outside the roadmap's one-family rule: the best null (any D@n or P0), the best C (any C, Cded or Cft) and the best S over the families; full_history = net, ridge, law, lin2; short_history = net~3, ridge~3, law"
+  "note": "a sensitivity outside the roadmap's one-family rule: the best null (any D@n or P0; never the law family, whose Lab fit is T), the best C (any C, Cded or Cft) and the best S over the families; views: all = every family, full_history = net, ridge, lin2, law, short_history = net~3, ridge~3, law; se = bootstrap over truths; the policies are picked on the scored items"
  },
  "theory_T": {
   "value": {
@@ -32884,51 +32936,228 @@
  },
  "acceptance_best_over_families_B": {
   "value": {
+   "all": {
+    "1": {
+     "null": "net|P0",
+     "C": "net~3|C",
+     "P0": "net|P0",
+     "S": "net~3|S@1",
+     "skill_null": 0.488,
+     "skill_C": 0.564,
+     "skill_P0": 0.488,
+     "skill_S": 0.554,
+     "sigma": 0.136,
+     "sigma_se_truths": 0.051,
+     "sigma_p05_p95": [
+      0.073,
+      0.234
+     ],
+     "rho": 0.863,
+     "rho_se_truths": 0.161,
+     "rho_p05_p95": [
+      0.566,
+      1.076
+     ]
+    },
+    "2": {
+     "null": "net|P0",
+     "C": "net~3|C",
+     "P0": "net|P0",
+     "S": "net~3|S@2",
+     "skill_null": 0.488,
+     "skill_C": 0.564,
+     "skill_P0": 0.488,
+     "skill_S": 0.545,
+     "sigma": 0.136,
+     "sigma_se_truths": 0.051,
+     "sigma_p05_p95": [
+      0.073,
+      0.234
+     ],
+     "rho": 0.749,
+     "rho_se_truths": 0.124,
+     "rho_p05_p95": [
+      0.513,
+      0.919
+     ]
+    },
+    "4": {
+     "null": "net|P0",
+     "C": "net~3|C",
+     "P0": "net|P0",
+     "S": "net~3|S@4",
+     "skill_null": 0.488,
+     "skill_C": 0.564,
+     "skill_P0": 0.488,
+     "skill_S": 0.559,
+     "sigma": 0.136,
+     "sigma_se_truths": 0.051,
+     "sigma_p05_p95": [
+      0.073,
+      0.234
+     ],
+     "rho": 0.938,
+     "rho_se_truths": 0.075,
+     "rho_p05_p95": [
+      0.801,
+      1.044
+     ]
+    },
+    "8": {
+     "null": "net|P0",
+     "C": "net~3|C",
+     "P0": "net|P0",
+     "S": "net~3|S@8",
+     "skill_null": 0.488,
+     "skill_C": 0.564,
+     "skill_P0": 0.488,
+     "skill_S": 0.552,
+     "sigma": 0.136,
+     "sigma_se_truths": 0.051,
+     "sigma_p05_p95": [
+      0.073,
+      0.234
+     ],
+     "rho": 0.843,
+     "rho_se_truths": 0.081,
+     "rho_p05_p95": [
+      0.681,
+      0.951
+     ]
+    },
+    "16": {
+     "null": "ridge~3|D@16",
+     "C": "net~3|C",
+     "P0": "net|P0",
+     "S": "net~3|S@16",
+     "skill_null": 0.512,
+     "skill_C": 0.564,
+     "skill_P0": 0.488,
+     "skill_S": 0.55,
+     "sigma": 0.093,
+     "sigma_se_truths": 0.013,
+     "sigma_p05_p95": [
+      0.074,
+      0.115
+     ],
+     "rho": 0.82,
+     "rho_se_truths": 0.061,
+     "rho_p05_p95": [
+      0.715,
+      0.912
+     ]
+    }
+   },
    "full_history": {
     "1": {
      "null": "net|P0",
      "C": "ridge|Cded",
      "P0": "net|P0",
      "S": "net|S@1",
+     "skill_null": 0.488,
+     "skill_C": 0.539,
+     "skill_P0": 0.488,
+     "skill_S": 0.517,
      "sigma": 0.095,
      "sigma_se_truths": 0.073,
-     "rho": 0.574
+     "sigma_p05_p95": [
+      0.002,
+      0.239
+     ],
+     "rho": 0.574,
+     "rho_se_truths": 4.076,
+     "rho_p05_p95": [
+      0.168,
+      1.288
+     ]
     },
     "2": {
      "null": "net|P0",
      "C": "ridge|Cded",
      "P0": "net|P0",
      "S": "net|S@2",
+     "skill_null": 0.488,
+     "skill_C": 0.539,
+     "skill_P0": 0.488,
+     "skill_S": 0.505,
      "sigma": 0.095,
-     "sigma_se_truths": 0.076,
-     "rho": 0.332
+     "sigma_se_truths": 0.073,
+     "sigma_p05_p95": [
+      0.002,
+      0.239
+     ],
+     "rho": 0.332,
+     "rho_se_truths": 1.301,
+     "rho_p05_p95": [
+      -0.288,
+      0.705
+     ]
     },
     "4": {
      "null": "net|P0",
      "C": "ridge|Cded",
      "P0": "net|P0",
      "S": "ridge|Sded@4",
+     "skill_null": 0.488,
+     "skill_C": 0.539,
+     "skill_P0": 0.488,
+     "skill_S": 0.525,
      "sigma": 0.095,
-     "sigma_se_truths": 0.079,
-     "rho": 0.721
+     "sigma_se_truths": 0.073,
+     "sigma_p05_p95": [
+      0.002,
+      0.239
+     ],
+     "rho": 0.721,
+     "rho_se_truths": 3.389,
+     "rho_p05_p95": [
+      0.205,
+      1.315
+     ]
     },
     "8": {
      "null": "net|P0",
      "C": "ridge|Cded",
      "P0": "net|P0",
      "S": "net|S@8",
+     "skill_null": 0.488,
+     "skill_C": 0.539,
+     "skill_P0": 0.488,
+     "skill_S": 0.504,
      "sigma": 0.095,
-     "sigma_se_truths": 0.078,
-     "rho": 0.312
+     "sigma_se_truths": 0.073,
+     "sigma_p05_p95": [
+      0.002,
+      0.239
+     ],
+     "rho": 0.312,
+     "rho_se_truths": 1.372,
+     "rho_p05_p95": [
+      -0.235,
+      0.625
+     ]
     },
     "16": {
      "null": "net|P0",
      "C": "ridge|Cded",
      "P0": "net|P0",
      "S": "net|S@16",
+     "skill_null": 0.488,
+     "skill_C": 0.539,
+     "skill_P0": 0.488,
+     "skill_S": 0.506,
      "sigma": 0.095,
-     "sigma_se_truths": 0.076,
-     "rho": 0.363
+     "sigma_se_truths": 0.073,
+     "sigma_p05_p95": [
+      0.002,
+      0.239
+     ],
+     "rho": 0.363,
+     "rho_se_truths": 2.714,
+     "rho_p05_p95": [
+      -0.187,
+      0.743
+     ]
     }
    },
    "short_history": {
@@ -32937,50 +33166,115 @@
      "C": "net~3|C",
      "P0": "net~3|P0",
      "S": "net~3|S@1",
+     "skill_null": 0.433,
+     "skill_C": 0.564,
+     "skill_P0": 0.433,
+     "skill_S": 0.554,
      "sigma": 0.232,
-     "sigma_se_truths": 0.15,
-     "rho": 0.92
+     "sigma_se_truths": 0.143,
+     "sigma_p05_p95": [
+      0.064,
+      0.514
+     ],
+     "rho": 0.92,
+     "rho_se_truths": 0.135,
+     "rho_p05_p95": [
+      0.642,
+      1.05
+     ]
     },
     "2": {
      "null": "net~3|P0",
      "C": "net~3|C",
      "P0": "net~3|P0",
      "S": "net~3|S@2",
+     "skill_null": 0.433,
+     "skill_C": 0.564,
+     "skill_P0": 0.433,
+     "skill_S": 0.545,
      "sigma": 0.232,
-     "sigma_se_truths": 0.148,
-     "rho": 0.854
+     "sigma_se_truths": 0.143,
+     "sigma_p05_p95": [
+      0.064,
+      0.514
+     ],
+     "rho": 0.854,
+     "rho_se_truths": 0.14,
+     "rho_p05_p95": [
+      0.548,
+      0.961
+     ]
     },
     "4": {
      "null": "net~3|P0",
      "C": "net~3|C",
      "P0": "net~3|P0",
      "S": "net~3|S@4",
+     "skill_null": 0.433,
+     "skill_C": 0.564,
+     "skill_P0": 0.433,
+     "skill_S": 0.559,
      "sigma": 0.232,
-     "sigma_se_truths": 0.145,
-     "rho": 0.964
+     "sigma_se_truths": 0.143,
+     "sigma_p05_p95": [
+      0.064,
+      0.514
+     ],
+     "rho": 0.964,
+     "rho_se_truths": 0.067,
+     "rho_p05_p95": [
+      0.805,
+      1.02
+     ]
     },
     "8": {
-     "null": "law|D@8",
+     "null": "net~3|P0",
      "C": "net~3|C",
      "P0": "net~3|P0",
      "S": "net~3|S@8",
-     "sigma": 0.226,
-     "sigma_se_truths": 0.055,
-     "rho": 0.908
+     "skill_null": 0.433,
+     "skill_C": 0.564,
+     "skill_P0": 0.433,
+     "skill_S": 0.552,
+     "sigma": 0.232,
+     "sigma_se_truths": 0.143,
+     "sigma_p05_p95": [
+      0.064,
+      0.514
+     ],
+     "rho": 0.908,
+     "rho_se_truths": 0.123,
+     "rho_p05_p95": [
+      0.659,
+      0.977
+     ]
     },
     "16": {
      "null": "ridge~3|D@16",
      "C": "net~3|C",
      "P0": "net~3|P0",
      "S": "net~3|S@16",
+     "skill_null": 0.512,
+     "skill_C": 0.564,
+     "skill_P0": 0.433,
+     "skill_S": 0.55,
      "sigma": 0.093,
      "sigma_se_truths": 0.013,
-     "rho": 0.895
+     "sigma_p05_p95": [
+      0.074,
+      0.115
+     ],
+     "rho": 0.895,
+     "rho_se_truths": 0.072,
+     "rho_p05_p95": [
+      0.747,
+      0.955
+     ]
     }
    }
   },
   "source": "results/analysis2_B.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-006/out: scores.npz, items.npz, design*.npz) acceptance.best_over_families",
-  "note": "a sensitivity outside the roadmap's one-family rule: the best null (any D@n or P0), the best C (any C, Cded or Cft) and the best S over the families; full_history = net, ridge, law, lin2; short_history = net~3, ridge~3, law"
+  "note": "a sensitivity outside the roadmap's one-family rule: the best null (any D@n or P0; never the law family, whose Lab fit is T), the best C (any C, Cded or Cft) and the best S over the families; views: all = every family, full_history = net, ridge, lin2, law, short_history = net~3, ridge~3, law; se = bootstrap over truths; the policies are picked on the scored items"
  },
  "theory_T_B": {
   "value": {
@@ -38889,36 +39183,88 @@
       "C": "net|C",
       "P0": "net|P0",
       "S": "net|S@1",
+      "skill_null": 0.559,
+      "skill_C": 0.557,
+      "skill_P0": 0.559,
+      "skill_S": 0.562,
       "sigma": -0.003,
       "sigma_se_truths": 0.028,
-      "rho": -2.35
+      "sigma_p05_p95": [
+       -0.047,
+       0.047
+      ],
+      "rho": -2.35,
+      "rho_se_truths": 2.073,
+      "rho_p05_p95": [
+       -2.35,
+       3.705
+      ]
      },
      "2": {
       "null": "net|P0",
       "C": "net|C",
       "P0": "net|P0",
       "S": "net|S@2",
+      "skill_null": 0.559,
+      "skill_C": 0.557,
+      "skill_P0": 0.559,
+      "skill_S": 0.55,
       "sigma": -0.003,
       "sigma_se_truths": 0.028,
-      "rho": 5.224
+      "sigma_p05_p95": [
+       -0.047,
+       0.047
+      ],
+      "rho": 5.224,
+      "rho_se_truths": 2.414,
+      "rho_p05_p95": [
+       -1.955,
+       5.224
+      ]
      },
      "4": {
       "null": "net|P0",
       "C": "net|C",
       "P0": "net|P0",
       "S": "net|S@4",
+      "skill_null": 0.559,
+      "skill_C": 0.557,
+      "skill_P0": 0.559,
+      "skill_S": 0.549,
       "sigma": -0.003,
       "sigma_se_truths": 0.028,
-      "rho": 5.913
+      "sigma_p05_p95": [
+       -0.047,
+       0.047
+      ],
+      "rho": 5.913,
+      "rho_se_truths": 3.179,
+      "rho_p05_p95": [
+       -4.055,
+       6.702
+      ]
      },
      "8": {
       "null": "net|P0",
       "C": "net|C",
       "P0": "net|P0",
       "S": "net|S@8",
+      "skill_null": 0.559,
+      "skill_C": 0.557,
+      "skill_P0": 0.559,
+      "skill_S": 0.563,
       "sigma": -0.003,
-      "sigma_se_truths": 0.03,
-      "rho": -2.723
+      "sigma_se_truths": 0.028,
+      "sigma_p05_p95": [
+       -0.047,
+       0.047
+      ],
+      "rho": -2.723,
+      "rho_se_truths": 2.865,
+      "rho_p05_p95": [
+       -2.723,
+       2.712
+      ]
      }
     }
    },
@@ -40083,51 +40429,228 @@
   },
   "acceptance_best_over_families_B": {
    "value": {
+    "all": {
+     "1": {
+      "null": "net|P0",
+      "C": "net~3|C",
+      "P0": "net|P0",
+      "S": "net~3|S@1",
+      "skill_null": 0.488,
+      "skill_C": 0.564,
+      "skill_P0": 0.488,
+      "skill_S": 0.554,
+      "sigma": 0.136,
+      "sigma_se_truths": 0.051,
+      "sigma_p05_p95": [
+       0.073,
+       0.234
+      ],
+      "rho": 0.863,
+      "rho_se_truths": 0.161,
+      "rho_p05_p95": [
+       0.566,
+       1.076
+      ]
+     },
+     "2": {
+      "null": "net|P0",
+      "C": "net~3|C",
+      "P0": "net|P0",
+      "S": "net~3|S@2",
+      "skill_null": 0.488,
+      "skill_C": 0.564,
+      "skill_P0": 0.488,
+      "skill_S": 0.545,
+      "sigma": 0.136,
+      "sigma_se_truths": 0.051,
+      "sigma_p05_p95": [
+       0.073,
+       0.234
+      ],
+      "rho": 0.749,
+      "rho_se_truths": 0.124,
+      "rho_p05_p95": [
+       0.513,
+       0.919
+      ]
+     },
+     "4": {
+      "null": "net|P0",
+      "C": "net~3|C",
+      "P0": "net|P0",
+      "S": "net~3|S@4",
+      "skill_null": 0.488,
+      "skill_C": 0.564,
+      "skill_P0": 0.488,
+      "skill_S": 0.559,
+      "sigma": 0.136,
+      "sigma_se_truths": 0.051,
+      "sigma_p05_p95": [
+       0.073,
+       0.234
+      ],
+      "rho": 0.938,
+      "rho_se_truths": 0.075,
+      "rho_p05_p95": [
+       0.801,
+       1.044
+      ]
+     },
+     "8": {
+      "null": "net|P0",
+      "C": "net~3|C",
+      "P0": "net|P0",
+      "S": "net~3|S@8",
+      "skill_null": 0.488,
+      "skill_C": 0.564,
+      "skill_P0": 0.488,
+      "skill_S": 0.552,
+      "sigma": 0.136,
+      "sigma_se_truths": 0.051,
+      "sigma_p05_p95": [
+       0.073,
+       0.234
+      ],
+      "rho": 0.843,
+      "rho_se_truths": 0.081,
+      "rho_p05_p95": [
+       0.681,
+       0.951
+      ]
+     },
+     "16": {
+      "null": "ridge~3|D@16",
+      "C": "net~3|C",
+      "P0": "net|P0",
+      "S": "net~3|S@16",
+      "skill_null": 0.512,
+      "skill_C": 0.564,
+      "skill_P0": 0.488,
+      "skill_S": 0.55,
+      "sigma": 0.093,
+      "sigma_se_truths": 0.013,
+      "sigma_p05_p95": [
+       0.074,
+       0.115
+      ],
+      "rho": 0.82,
+      "rho_se_truths": 0.061,
+      "rho_p05_p95": [
+       0.715,
+       0.912
+      ]
+     }
+    },
     "full_history": {
      "1": {
       "null": "net|P0",
       "C": "ridge|Cded",
       "P0": "net|P0",
       "S": "net|S@1",
+      "skill_null": 0.488,
+      "skill_C": 0.539,
+      "skill_P0": 0.488,
+      "skill_S": 0.517,
       "sigma": 0.095,
       "sigma_se_truths": 0.073,
-      "rho": 0.574
+      "sigma_p05_p95": [
+       0.002,
+       0.239
+      ],
+      "rho": 0.574,
+      "rho_se_truths": 4.076,
+      "rho_p05_p95": [
+       0.168,
+       1.288
+      ]
      },
      "2": {
       "null": "net|P0",
       "C": "ridge|Cded",
       "P0": "net|P0",
       "S": "net|S@2",
+      "skill_null": 0.488,
+      "skill_C": 0.539,
+      "skill_P0": 0.488,
+      "skill_S": 0.505,
       "sigma": 0.095,
-      "sigma_se_truths": 0.076,
-      "rho": 0.332
+      "sigma_se_truths": 0.073,
+      "sigma_p05_p95": [
+       0.002,
+       0.239
+      ],
+      "rho": 0.332,
+      "rho_se_truths": 1.301,
+      "rho_p05_p95": [
+       -0.288,
+       0.705
+      ]
      },
      "4": {
       "null": "net|P0",
       "C": "ridge|Cded",
       "P0": "net|P0",
       "S": "ridge|Sded@4",
+      "skill_null": 0.488,
+      "skill_C": 0.539,
+      "skill_P0": 0.488,
+      "skill_S": 0.525,
       "sigma": 0.095,
-      "sigma_se_truths": 0.079,
-      "rho": 0.721
+      "sigma_se_truths": 0.073,
+      "sigma_p05_p95": [
+       0.002,
+       0.239
+      ],
+      "rho": 0.721,
+      "rho_se_truths": 3.389,
+      "rho_p05_p95": [
+       0.205,
+       1.315
+      ]
      },
      "8": {
       "null": "net|P0",
       "C": "ridge|Cded",
       "P0": "net|P0",
       "S": "net|S@8",
+      "skill_null": 0.488,
+      "skill_C": 0.539,
+      "skill_P0": 0.488,
+      "skill_S": 0.504,
       "sigma": 0.095,
-      "sigma_se_truths": 0.078,
-      "rho": 0.312
+      "sigma_se_truths": 0.073,
+      "sigma_p05_p95": [
+       0.002,
+       0.239
+      ],
+      "rho": 0.312,
+      "rho_se_truths": 1.372,
+      "rho_p05_p95": [
+       -0.235,
+       0.625
+      ]
      },
      "16": {
       "null": "net|P0",
       "C": "ridge|Cded",
       "P0": "net|P0",
       "S": "net|S@16",
+      "skill_null": 0.488,
+      "skill_C": 0.539,
+      "skill_P0": 0.488,
+      "skill_S": 0.506,
       "sigma": 0.095,
-      "sigma_se_truths": 0.076,
-      "rho": 0.363
+      "sigma_se_truths": 0.073,
+      "sigma_p05_p95": [
+       0.002,
+       0.239
+      ],
+      "rho": 0.363,
+      "rho_se_truths": 2.714,
+      "rho_p05_p95": [
+       -0.187,
+       0.743
+      ]
      }
     },
     "short_history": {
@@ -40136,45 +40659,110 @@
       "C": "net~3|C",
       "P0": "net~3|P0",
       "S": "net~3|S@1",
+      "skill_null": 0.433,
+      "skill_C": 0.564,
+      "skill_P0": 0.433,
+      "skill_S": 0.554,
       "sigma": 0.232,
-      "sigma_se_truths": 0.15,
-      "rho": 0.92
+      "sigma_se_truths": 0.143,
+      "sigma_p05_p95": [
+       0.064,
+       0.514
+      ],
+      "rho": 0.92,
+      "rho_se_truths": 0.135,
+      "rho_p05_p95": [
+       0.642,
+       1.05
+      ]
      },
      "2": {
       "null": "net~3|P0",
       "C": "net~3|C",
       "P0": "net~3|P0",
       "S": "net~3|S@2",
+      "skill_null": 0.433,
+      "skill_C": 0.564,
+      "skill_P0": 0.433,
+      "skill_S": 0.545,
       "sigma": 0.232,
-      "sigma_se_truths": 0.148,
-      "rho": 0.854
+      "sigma_se_truths": 0.143,
+      "sigma_p05_p95": [
+       0.064,
+       0.514
+      ],
+      "rho": 0.854,
+      "rho_se_truths": 0.14,
+      "rho_p05_p95": [
+       0.548,
+       0.961
+      ]
      },
      "4": {
       "null": "net~3|P0",
       "C": "net~3|C",
       "P0": "net~3|P0",
       "S": "net~3|S@4",
+      "skill_null": 0.433,
+      "skill_C": 0.564,
+      "skill_P0": 0.433,
+      "skill_S": 0.559,
       "sigma": 0.232,
-      "sigma_se_truths": 0.145,
-      "rho": 0.964
+      "sigma_se_truths": 0.143,
+      "sigma_p05_p95": [
+       0.064,
+       0.514
+      ],
+      "rho": 0.964,
+      "rho_se_truths": 0.067,
+      "rho_p05_p95": [
+       0.805,
+       1.02
+      ]
      },
      "8": {
-      "null": "law|D@8",
+      "null": "net~3|P0",
       "C": "net~3|C",
       "P0": "net~3|P0",
       "S": "net~3|S@8",
-      "sigma": 0.226,
-      "sigma_se_truths": 0.055,
-      "rho": 0.908
+      "skill_null": 0.433,
+      "skill_C": 0.564,
+      "skill_P0": 0.433,
+      "skill_S": 0.552,
+      "sigma": 0.232,
+      "sigma_se_truths": 0.143,
+      "sigma_p05_p95": [
+       0.064,
+       0.514
+      ],
+      "rho": 0.908,
+      "rho_se_truths": 0.123,
+      "rho_p05_p95": [
+       0.659,
+       0.977
+      ]
      },
      "16": {
       "null": "ridge~3|D@16",
       "C": "net~3|C",
       "P0": "net~3|P0",
       "S": "net~3|S@16",
+      "skill_null": 0.512,
+      "skill_C": 0.564,
+      "skill_P0": 0.433,
+      "skill_S": 0.55,
       "sigma": 0.093,
       "sigma_se_truths": 0.013,
-      "rho": 0.895
+      "sigma_p05_p95": [
+       0.074,
+       0.115
+      ],
+      "rho": 0.895,
+      "rho_se_truths": 0.072,
+      "rho_p05_p95": [
+       0.747,
+       0.955
+      ]
      }
     }
    },
