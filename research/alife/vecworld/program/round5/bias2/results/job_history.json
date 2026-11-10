@@ -97,8 +97,27 @@
     "B5_PLAN": "vortex:900:1500:1800 membrane:300:1100:1400 gliders:300:800:1100",
     "B5_JOB_HARD_S": "5100"
    },
-   "history": "follow-up decided on 10 Nov 2026 01:30 UTC after the analysis of 004/005: the closure latents of the vortex world collapsed onto a box-scale mode (effective dimension 2-8 of 64) because the closure loss normalises pooled variance per channel, so whether closure prefers a transported density (vorticity) cannot be read from 005. New arm Lw / Nw: the same local encoders with the closure loss on latents whitened over all 64 blocks; the per-channel closure configs and all hand designs run again on the same simulated data",
-   "ref": "affd4ecb2af5d298b774eb1badbb8f9abac57061"
+   "history": "follow-up decided on 10 Nov 2026 01:30 UTC after the analysis of 004/005: the closure latents of the vortex world collapsed onto a box-scale mode (effective dimension 2-8 of 64) because the closure loss normalises pooled variance per channel, so whether closure prefers a transported density (vorticity) cannot be read from 005. New arm Lw / Nw: the same local encoders with the closure loss on latents whitened over all 64 blocks; the per-channel closure configs and all hand designs run again on the same simulated data; received 01:39:18Z, accepted 01:46:50Z on an H100 80GB at lambdalabs ($4.29/h), infra_error 01:52:28Z: the provider returned HTTP 503 (type not available) when the pod was requested; nothing ran",
+   "ref": "affd4ecb2af5d298b774eb1badbb8f9abac57061",
+   "state": "infra_error",
+   "billed_usd": 0.0
+  },
+  "r5-bias2-007": {
+   "worlds": [
+    "vortex",
+    "membrane",
+    "gliders"
+   ],
+   "code_commit": "affd4ecb2",
+   "ref": "affd4ecb2af5d298b774eb1badbb8f9abac57061",
+   "cap_usd": 12.4,
+   "max_hours": 1.6,
+   "env": {
+    "B5_ARMS": "w",
+    "B5_PLAN": "vortex:900:1500:1800 membrane:300:1100:1400 gliders:300:800:1100",
+    "B5_JOB_HARD_S": "5100"
+   },
+   "history": "resubmission of r5-bias2-006 (same ref, paths, environment, caps; GPU types reordered: A100 40GB, A100 80GB, H200, H100)"
   }
  },
  "why_resubmitted": "Coordinator note of 9 Nov about 23:28 UTC, relaying the Mac runner: the nebius H200 listed at $5.55/h bills $6.69/h and offers under $4.98/h (A100 80GB, H100) were scarce, so the caps of 002/003 (which covered at most $4.98/h) fitted no offer for more than 30 minutes. New caps follow the runner's rule 6.69 x (max_hours + 0.25): $15.72 -> 15.8 (004), $16.39 -> 16.45 (005); both below the $25 auto-start limit, together $32.25 of the study cap of $35.",

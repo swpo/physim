@@ -42,5 +42,9 @@ Updated 2026-11-10 01:16 UTC (instance 4, after the restart at about 01:12).
   `<world>_w=r5-bias2-006` added; `bash cpairs_run.sh FETCH`; then add claims W1.. to cclaims.py (worlds "vortex_w" etc.),
   cinterp.py and csummary.py with the three `_w` worlds added, README, job_history.json (final state and bill of 006).
 
+- 01:52 UTC: r5-bias2-006 ended in infra_error before a pod existed (lambdalabs HTTP 503 for the listed H100), $0.
+  Resubmitted unchanged as r5-bias2-007 (GPU types reordered) at about 01:54 UTC. Watch 007 (same steps, job id 007
+  everywhere: cfetch, post-processing, `<world>_w=r5-bias2-007`, cpairs_run.sh paths). Never resubmit ids 006/007.
+
 ## Next if the follow-up is abandoned
 Report from results/summary.json as it is; say the follow-up was not run and why.

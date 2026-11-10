@@ -1,0 +1,43 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-bias2-007",
+  "purpose": "Round-5 study bias2, follow-up: closure trained on spatially whitened latents (local encoders, block and 8-px halo, c = 1) on the vortex, membrane and gliders worlds, with the per-channel closure configs and all hand designs again on the same data",
+  "requester": "cloud study bias2 (track 1, round 5), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "ref": "affd4ecb2af5d298b774eb1badbb8f9abac57061",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track1/learned_phi2",
+    "research/alife/vecworld/program/track1/vortex_world",
+    "research/alife/vecworld/program/track1/membrane_world",
+    "research/alife/vecworld/program/round5/bias2"
+  ],
+  "gpu": {
+    "types": [
+      "A100_40GB",
+      "A100_80GB",
+      "H200_141GB",
+      "H100_80GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 1.6,
+  "cap_usd": 12.4,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round5/bias2 && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "B5_ARMS": "w",
+    "B5_PLAN": "vortex:900:1500:1800 membrane:300:1100:1400 gliders:300:800:1100",
+    "B5_JOB_HARD_S": "5100"
+  },
+  "notes": "Resubmission of r5-bias2-006, which ended in infra_error before a pod existed (lambdalabs returned HTTP 503 for the H100 offer it had listed; nothing ran). Same ref, paths, environment and caps; only the order of GPU types changed (H200 before H100, because the listed lambdalabs H100 could not be rented). Why: in r5-bias2-005 the closure latents of the vortex world collapsed onto a box-scale mode (effective dimension 2-8 of 64, box mean 36-71% of the variance) because the closure loss normalises the pooled variance per channel; whether closure prefers a transported density (vorticity) once that collapse is closed off cannot be read from those runs. New arm (B5_ARMS=w): encoders Lw / Nw = the same local encoders L / N with the closure loss computed on latents whitened over all 64 block values (the U control's whitening, so every spatial mode has equal weight); the frozen Phi keeps per-channel whitening. 8 configs per world (Lw0, Lw8, Nw0, Nw8, and L0, L8, N0, N8 closure again as references on the same simulated data) + 2 random windows + all hand designs; everything else is the code of r5-bias2-004/005 (simulation, training settings, certification, pooling unchanged). The two minor points of the review of 004/005 are fixed (probes under timeout 120; a ctrain stopped by its time limit is reported as a deadline stop and train_done.json is written). Timing from 004/005 on an H200: vortex simulation about 250 s, 8 configs about 6-8 min, certification of about 130 halves on 13 workers about 14 min; expected 45-50 min in total, peak GPU memory 22.6 GB in 005 (so 40 GB is enough). Hard time bound: B5_JOB_HARD_S = 5100 s (660 s below the kill time of 5760 s); worlds are clipped to it. cap = 6.69 x (1.6 + 0.25) = $12.38. Public parameters, no exam secret. No network or subprocess calls after setup. CPU smoke test: job.sh end to end at tiny size (B5_TINY=1, this exact environment) from a git archive of exactly these paths at ref (affd4ecb2): exit 0, FAIL=0 for the three worlds, 403 s on CPU. ref is pinned to that tested commit; later commits changed only local analysis tools."
+}
