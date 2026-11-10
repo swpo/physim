@@ -14,6 +14,12 @@
   "job_id": "r5-bias2-005",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T00:09:12Z",
+    "file": "jobs/r5-bias2-005/review.md",
+    "sha256": "57050297bbdba28eb14d00e3d047b8b50304719bb87b28543922841913634a6c",
+    "summary": "Fine to run; all earlier points fixed. 2 minor: ctrain killed at the cert deadline reports a false failure; pre-loop probes have no timeout."
+  },
   "state": "received",
   "updated_at": "2026-11-09T23:41:12Z"
 }
