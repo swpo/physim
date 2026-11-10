@@ -1,4 +1,35 @@
-# vfport: PROGRESS (builder)
+# vfport: PROGRESS
+
+## FIXER (role after the builder, the specification review and the red team) -- 10 Nov 2026
+
+Worktree `/home/user/wt/vfportfix` (branch wt-vfportfix, pushes to `claude/fisim-agent-world-research-hepmlz`).
+Scratch `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfport/fix/`. Venv: the builder's
+`/home/user/evalwork/vfport/.venv`. Docker daemon was found running (classic image store), images kept.
+
+### Plan (finding -> fix), status in brackets
+- S1 duplicate / colliding / over-long tar members end a rollout ungraded -> freeze refuses them, finalize runs
+  verifiers' own restore check inside its try, new hostile agents [todo]
+- S2 = R2 state between items (timestamps, PID counter; also kernel counters of the shared box) -> a FRESH verifier
+  box per item through verifiers' `provision_runtime` (default), the shared box stays as a pilot mode [todo]
+- S3 the trusted side no longer validates -> the three public example calls run in the verifier box before item 1,
+  round 5's rule (invalid = K); the tool ops validate/submit run the in-box validator through the controller [todo]
+- R1 float64 reply overflows the score -> strict reply reader (float32, exact members), non-finite score = failed [todo]
+- R3 FIFO as stderr.txt hangs grading -> non-blocking regular-file reads through a directory fd, per-item timeout [todo]
+- R4 harness exit leaves no grade -> single_use on by default (keyed by agent), tools/settle.py records K [todo]
+- R5 many-member reply -> members capped at the levels, bounded bytes [todo]
+- R6 shared uid 1000 -> random uid per verifier box [todo]
+- R7 no PID / disk limit -> operator setting, recorded per box, Open holes [todo]
+- R8 crash returns K -> lead's decision, measured, Open holes [todo]
+- R9, S4-S9 minors [todo]
+
+### Next step (exact)
+- implement in physim2_env/public/_rules.py, _item.py, grading.py, taskset.py, lab_tools.py, access.py; then
+  tools/check_units.py (offline), tools/check_probe.py and tools/prove.py on Docker.
+
+---
+
+# (builder's record, kept)
+
 
 Study: PhySim v2 exam as a verifiers environment (round 6). Worktree `/home/user/wt/vfport`, branch pushes to
 `claude/fisim-agent-world-research-hepmlz`. Scratch: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfport/`.
