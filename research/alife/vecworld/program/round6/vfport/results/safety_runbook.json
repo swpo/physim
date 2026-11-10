@@ -1,9 +1,9 @@
 {
  "what": "RUNBOOK_MAC.md checked as text (required changes 1, 2, 6, 7, 9 of HOST_SAFETY_AUDIT.md) and its guard run with echo in place of the command; no command of the runbook was run by this tool",
  "evidence_label": "read (text checks); run (the guard line: cd, test, echo only)",
- "copy": "the pinned commit's own copy (no commit named)",
- "n_checks": 33,
- "n_passed": 33,
+ "copy": "head of the branch (a commit is named)",
+ "n_checks": 35,
+ "n_passed": 35,
  "failed": [],
  "checks": {
   "guard_every_command_starts_with_the_guard": true,
@@ -38,6 +38,8 @@
   "pin_block_names_the_hash_of_PIN_sha256": true,
   "pin_file_matches_the_files_on_disk": true,
   "pin_commands_compare_commit_and_hashes": true,
+  "pin_names_one_commit_that_holds_this_PIN_sha256": true,
+  "pin_runbook_in_the_pinned_commit_differs_in_the_pin_block_only": true,
   "hold": true
  },
  "evidence": {
@@ -148,11 +150,14 @@
   "pin": {
    "sha256_of_PIN.sha256": "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19",
    "named_in_the_pin_block": true,
-   "commit_named": null,
+   "commit_named": "454812a2bc497e5c5e7e38109dd7121fcc57c1cf",
    "pin.py --check": [
     "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19  PIN.sha256   (105 files listed, 0 differences)"
    ],
-   "files_listed": 105
+   "files_listed": 105,
+   "pinned_commit_is_a_commit": true,
+   "PIN.sha256_in_the_pinned_commit_is_this_one": true,
+   "runbook_in_the_pinned_commit_differs_in_the_pin_block_only": true
   }
  }
 }

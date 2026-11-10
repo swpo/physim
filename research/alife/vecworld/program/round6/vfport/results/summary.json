@@ -1,6 +1,6 @@
 {
  "study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment (after the fixes to the two reviews and round 1 of the fixes to the host-safety audit)",
- "written_unix": 1794325929.6833706,
+ "written_unix": 1794325986.2527254,
  "PILOT_NEVER_REUSE_AS_EXAM": true,
  "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). Nothing was run on a Mac. Which result file ran on which code: code_versions.",
  "code_versions": {
@@ -1750,9 +1750,9 @@
    }
   },
   "runbook": {
-   "copy": "the pinned commit's own copy (no commit named)",
-   "n_checks": 33,
-   "n_passed": 33,
+   "copy": "head of the branch (a commit is named)",
+   "n_checks": 35,
+   "n_passed": 35,
    "failed": []
   },
   "rehearsal": {

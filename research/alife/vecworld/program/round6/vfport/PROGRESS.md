@@ -12,9 +12,10 @@ under tripwires, real cleanups only in throwaway containers without a host mount
 - All nine required changes and S1, S2 are in the code; every test the audit named passes
   (`results/host_safety_round1.json`). RUNBOOK_MAC.md is rewritten, pinned and STILL ON HOLD: these changes have not
   been re-audited. The rehearsal of steps 0, 1, 2 and 4 is done (`results/rehearsal_round1.json`).
-- Commits: cac38e324 = the commit that was rehearsed. The runbook's text was then corrected in five places; the
-  commit the runbook pins (named in its pin block at the head of the branch) has the same `PIN.sha256`
-  (7aa9bbfc79e7...), i.e. the same package, tools, agents and configs byte for byte.
+- Commits: cac38e324 = the commit that was rehearsed. The runbook's text was then corrected in five places;
+  454812a2b = the commit the runbook pins (its pin block at the head of the branch names it). Both have the same
+  `PIN.sha256` (7aa9bbfc79e7...), i.e. the same package, tools, agents and configs byte for byte. The commit after
+  454812a2b changes the pin block of the runbook, results and this file only. A re-audit reads the head.
 - Nothing is running. Docker daemon up, the three images unchanged, no container. Scratch `vfsafe1` deleted, the
   worktree removed. Left on the machine by this role: nothing besides 60-odd `/tmp/vf-port-*` files that verifiers
   never removes and uv's cache entry of one wheel.

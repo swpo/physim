@@ -268,16 +268,18 @@
    "audit_test": "(none named) the comparison commands of step 0 were run in the rehearsal",
    "result": {
     "source": "results/safety_runbook.json",
-    "n_checks": 3,
-    "n_passed": 3,
+    "n_checks": 5,
+    "n_passed": 5,
     "failed": [],
     "checks": [
      "pin_block_names_the_hash_of_PIN_sha256",
      "pin_commands_compare_commit_and_hashes",
-     "pin_file_matches_the_files_on_disk"
+     "pin_file_matches_the_files_on_disk",
+     "pin_names_one_commit_that_holds_this_PIN_sha256",
+     "pin_runbook_in_the_pinned_commit_differs_in_the_pin_block_only"
     ],
     "sha256_of_PIN": "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19",
-    "commit_named": null
+    "commit_named": "454812a2bc497e5c5e7e38109dd7121fcc57c1cf"
    },
    "evidence": "run"
   },
