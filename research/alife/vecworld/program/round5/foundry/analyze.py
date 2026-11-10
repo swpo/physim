@@ -300,8 +300,11 @@ def main():
         if not os.path.exists(gp):
             continue
         gm = dict(np.load(gp))
-        gst = st["stages"]["gliders"]
-        gs = gst["sizes"] if key == "gliders_same_estimator" else gst["cert_size"]["sizes"]
+        gst = st["stages"].get("gliders") or {}
+        gs = gst.get("sizes") if key == "gliders_same_estimator" else (gst.get("cert_size") or {}).get("sizes")
+        if not gs:                                                    # the job was cut before it recorded the sizes
+            gs = dict(T=int(st["stages"]["screen"]["sizes"]["T"] if key == "gliders_same_estimator"
+                            else st["stages"]["certify"]["sizes"]["T"]), note="sizes not in job_state.json")
         gd = CR.derive(gm, gs["T"])
         gt = CR.classify(gd)
         ggt = CR.gates(gd, gt)

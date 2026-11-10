@@ -243,8 +243,9 @@ def stage_screen(ths_all):
         STATE["stages"]["screen"] = dict(done=done, chunks=c)
         save_state()
     info.update(n_done=done, n_chunks=c, chunk_final=CHUNK)
-    if len(times) > 1:
-        info["member_ticks_per_s_steady"] = float(member_ticks(SZ, CHUNK) / np.median(times[1:]))
+    rates = [ch["member_ticks"] / ch["seconds"] for ch in info["chunks"][1:]]
+    if rates:                                               # per-chunk rates, so a halved chunk does not distort it
+        info["member_ticks_per_s_steady"] = float(np.median(rates))
     del fn
     return info
 
@@ -286,7 +287,8 @@ def stage_select():
     order = np.argsort(-s, kind="stable")
     top = [int(m["index"][i]) for i in order[:N_CERT] if s[i] > 0]
     if len(top) < N_CERT:                                   # fill with the most active remaining worlds
-        rest = [int(m["index"][i]) for i in np.argsort(-np.nan_to_num(d["moved"])) if int(m["index"][i]) not in top]
+        rest = [int(m["index"][i]) for i in np.argsort(-np.nan_to_num(d["moved"]))
+                if int(m["index"][i]) not in top and t[i] >= 3]     # never invalid, point or uniform worlds
         top += rest[:N_CERT - len(top)]
     sel = dict(n=len(t), types={CR.TYPES[i]: int((t == i).sum()) for i in range(len(CR.TYPES))},
                gates={k: int(v.sum()) for k, v in g.items()}, top=top,
@@ -310,7 +312,22 @@ def stage_certify(ths_all, top):
             P(f"certify: deadline before {name}")
             break
         ths2 = neighbours(ths, idx, eps, hyper)
-        res, dt = run_chunk(fn, ths, ths2, keys)
+        try:
+            res, dt = run_chunk(fn, ths, ths2, keys)
+        except Exception as e:                              # out of memory: the same worlds in two halves
+            P(f"certify {name}: failed at {len(idx)} worlds ({repr(e)[:200]}); retrying in two halves")
+            STATE["errors"].append(dict(stage="certify", run=name, error=repr(e)[:300], optional=True))
+            del fn
+            release()
+            fn = SC.make_chunk_fn(wd, SZC, map_batch=4)
+            h = len(idx) // 2
+            parts, dt = [], 0.0
+            for sl in (slice(0, h), slice(h, 2 * h)):
+                r, d1 = run_chunk(fn, take(ths, sl), take(ths2, sl), keys[sl])
+                parts.append(r)
+                dt += d1
+            res = {k: np.concatenate([q[k] for q in parts]) for k in parts[0]}
+            idx, ths, keys = idx[:2 * h], take(ths, slice(0, 2 * h)), keys[:2 * h]
         res.pop("thumb")
         fr = res.pop("frames")
         tab = res.pop("tab")
@@ -353,9 +370,16 @@ def stage_gliders():
     theta' = theta here, so pl is a null check of the plug-in loss estimator."""
     wd, p = SC.gliders_world()
     out = gliders_run(wd, p, SZG, N_GLID, RUN_SEED + 4, "ref_gliders.npz")
-    if el() < T_LATE:
+    out["cert_size"] = dict(skipped="not run yet")
+    STATE["stages"]["gliders"] = dict(out)                  # on disk before the longest unit of the job
+    save_state()
+    if el() + 2.5 * out["seconds"] < T_LATE:
         szc = SC.Sizes(**(vars(SZC) | dict(frame_every=0)))
-        out["cert_size"] = gliders_run(wd, p, szc, N_GLID2, RUN_SEED + 5, "ref_gliders_cert.npz")
+        try:
+            out["cert_size"] = gliders_run(wd, p, szc, N_GLID2, RUN_SEED + 5, "ref_gliders_cert.npz")
+        except Exception as e:
+            out["cert_size"] = dict(failed=repr(e)[:300])
+            STATE["errors"].append(dict(stage="gliders_cert_size", error=repr(e)[:300], optional=True))
     else:
         out["cert_size"] = dict(skipped="deadline")
     return out

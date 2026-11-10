@@ -1,6 +1,6 @@
 # PROGRESS (study foundry, round 5) -- kept for restarts
 
-Updated 2026-11-10 04:42 UTC (instance 1; the study started at 03:40 UTC).
+Updated 2026-11-10 05:08 UTC (instance 1; the study started at 03:40 UTC).
 
 ## Done
 - Worktree /home/user/wt/foundry (branch wt-foundry, sparse research/alife/vecworld).
@@ -30,6 +30,15 @@ Updated 2026-11-10 04:42 UTC (instance 1; the study started at 03:40 UTC).
   second job: prospective test that weight statistics alone enrich the draws; index mode passed job.sh at
   tiny size with FOUNDRY_GLIDERS=0, exit 0). Decide on job 2 only after job 1's results (budget left:
   25 - billed(job 1); cap of job 2 = 6.69 x (max_hours + 0.25) + 0.10).
+
+- 05:04 UTC: r5-foundry-001 is `queued` (accepted for an H200 at $6.69/h, at most $13.38; no offer in stock
+  right now, the runner retries; r5-slots-006 is queued too). The Mac's review (results of reading
+  origin/gpu-jobs:jobs/r5-foundry-001/review.md): fine to run, 3 minor points, all fixed in job.py /
+  analyze.py after the pinned ref (time guard and early job_state for the cert-size gliders run, OOM
+  fallback in certification, fill-in candidates restricted to structured worlds, steady rate per chunk).
+  They only matter for a second job.
+- results/recheck_cpu_first8.json: draws 0-7 of prior seed 2026 on CPU at screen size (7 uniform, 1 frozen),
+  to compare with the GPU's types for the same draws.
 
 ## Next step
 1. (done) final tiny CPU test passed (exit 0, 433 s); request pushed.
