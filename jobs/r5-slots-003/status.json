@@ -176,6 +176,12 @@
     }
   ],
   "pods_terminated": true,
+  "review": {
+    "at": "2026-11-10T00:09:07Z",
+    "file": "jobs/r5-slots-003/review.md",
+    "sha256": "101b767c1b321208be16078a20d2396722ed3dad5e073610591586387b6beed0",
+    "summary": "Pilot fine to run. FULL job blocked: validation tensor of 2.84e9 elements, past 2^31 (strain.py:464-476). 7 minor."
+  },
   "run_deadline": "2026-11-10T00:14:41Z",
   "started_at": "2026-11-09T23:35:41Z",
   "state": "done",
