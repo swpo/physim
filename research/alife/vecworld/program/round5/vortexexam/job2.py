@@ -311,12 +311,16 @@ def stage_rate():
         nt = p["n_truth"]
         return ((p["N_theta"] * p["K_d"] + p["n_cand"] * (p["n_lab"] + p["J_main"])) * T_EP
                 + nt * p["J_main"] * len(PROG) * (p["R"] + COMMON["R_ctl"]) * HB + 2 * nt * p["n_C"] * T_EP)
-    budget = 0.72 * left_s()                       # the rest: compiles, training, scoring, slack
+    # r5-vortexexam-003 measured its stages: simulations ran at 0.96-0.97 of this rate and everything else (compiles,
+    # identification, training, scoring) took 4 minutes of 33; the first sizing (0.72 of the time, 0.8 of the rate)
+    # was far too cautious, so: 0.85 of the time left against 0.9 of the rate. The late stages keep their own
+    # deadline checks (controls, dedicated simulations, D@n).
+    budget = 0.85 * left_s()
     name = None
     for nm in (["smoke"] if args.smoke else ["xl", "full", "mid", "mid2", "low", "small"]):
         if args.preset and nm != args.preset:
             continue
-        if args.smoke or args.preset or work(PRESETS[nm]) / (0.8 * rate) <= budget:
+        if args.smoke or args.preset or work(PRESETS[nm]) / (0.9 * rate) <= budget:
             name = nm
             break
     if name is None:
@@ -325,9 +329,9 @@ def stage_rate():
     INFO.update(rate_rows=rows, bmax=BMAX, rate=rate, preset=name, config={k: (v if not isinstance(v, dict) else
                 {str(a): b for a, b in v.items()}) for k, v in CFG.items()},
                 planned_member_ticks=work(PRESETS[name]),
-                planned_sim_seconds_at_0p8_rate=work(PRESETS[name]) / (0.8 * rate))
+                planned_sim_seconds_at_0p9_rate=work(PRESETS[name]) / (0.9 * rate))
     jdump("info.json", INFO)
-    log(f"== preset {name}: {work(PRESETS[name])} member-ticks planned, est {work(PRESETS[name]) / (0.8 * rate) / 60:.0f} min "
+    log(f"== preset {name}: {work(PRESETS[name])} member-ticks planned, est {work(PRESETS[name]) / (0.9 * rate) / 60:.0f} min "
         f"of sims at batch {BMAX}; budget {budget / 60:.0f} min")
 
 
