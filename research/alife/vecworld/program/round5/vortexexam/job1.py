@@ -17,7 +17,16 @@ Stages (each writes its outputs to --out as it finishes; progress in OUT/progres
   E law128   (time permitting, if H_exam != 128) the law runs at 128^2 for 3 eps, fewer members.
 --scan-only repeats stage D alone (used inside job 2: the first run's branch file held the level-1 rasters and, at
 40 MB, stayed on the runner; the level-1 scores are now computed here and only they are saved).
-usage: python -B job1.py --out DIR [--smoke] [--max-hours 0.8] [--H 64] [--scan-only --rate 400 --rate-json F --bmax 1024]
+usage: python -B job1.py --out DIR [--smoke] [--max-hours 0.8] [--H 64]
+       python -B job1.py --out DIR --scan-only [--H 128] [--rate 400 | --rate-json F | --bench-json F] [--bmax 1024]
+                         [--J 12 --anchors 200,320]
+
+Sizing in --scan-only mode (changed after the Mac's review of r5-vortexexam-003, whose scan shrank to J = 3 and one
+anchor: the rate table was a single row at B = bmax and the rate was scaled linearly below it, so the estimated
+cost did not depend on J). Now: the rate table is job 1's bench rows (--bench-json) or two rows, (64, 0.8 x rate)
+and (bmax, rate); below the smallest measured batch the rate is taken flat at 0.8 x down to B = 64 (measured at
+128 px: 374 / 425 / 444 member-ticks/s at B = 64 / 256 / 1024) and linear only below 64; --J and --anchors set the
+design explicitly (the branch stage still stops at its deadline).
 """
 from __future__ import annotations
 
@@ -50,6 +59,9 @@ ap.add_argument("--scan-only", action="store_true", help="only stage D at --H (r
 ap.add_argument("--rate", type=float, default=400.0)
 ap.add_argument("--rate-json", default="", help="take 0.9 x 'rate' from this info.json (job 2's) when it exists")
 ap.add_argument("--bmax", type=int, default=1024)
+ap.add_argument("--bench-json", default="", help="scan-only: take the rate table from this bench.json (job 1's rows)")
+ap.add_argument("--J", type=int, default=0, help="scan: members per setting (0 = sized from the rate table)")
+ap.add_argument("--anchors", default="", help="scan: anchor ticks, comma separated (default: from the config)")
 args = ap.parse_args()
 OUT = args.out
 os.makedirs(OUT, exist_ok=True)
@@ -214,15 +226,18 @@ def best_rate(rows, H):
 
 
 def rate_at(rows, H, B):
-    """Member-ticks/s expected at batch B: log-log interpolation of the bench rows of size H (linear in B below
-    the smallest measured batch, flat above the largest)."""
+    """Member-ticks/s expected at batch B: log-log interpolation of the bench rows of size H; flat above the
+    largest measured batch; below the smallest one, 0.8 x its rate down to B = 64 and linear in B below 64
+    (it was linear all the way, which made the estimated cost of a stage independent of its size)."""
     ok = sorted([(r["B"], r["member_ticks_per_s"]) for r in rows
                  if r.get("H") == H and "error" not in r and r.get("track")])
     if not ok:
         return 0.0
     bs, rs = np.array([b for b, _ in ok], float), np.array([r for _, r in ok], float)
-    if B <= bs[0]:
-        return float(rs[0] * B / bs[0])
+    if B == bs[0]:
+        return float(rs[0])
+    if B < bs[0]:
+        return float(0.8 * rs[0] * min(1.0, B / 64.0)) if bs[0] > 64 else float(rs[0] * B / bs[0])
     if B >= bs[-1]:
         return float(rs[-1])
     return float(np.exp(np.interp(np.log(B), np.log(bs), np.log(rs))))
@@ -304,15 +319,19 @@ def stage_scan(H, rows, bmax, budget_s):
         main = nS * J_ * T / max(rate_at(rows, H, min(nS * J_, bmax)), 1e-9)
         br = nS * J_ * na * (R + Mc) * HB / max(rate_at(rows, H, min(nS * J_ * (R + Mc), bmax)), 1e-9)
         return main + br
-    J, anchors = CFG["J"][-1], list(CFG["anchors"])[:1]
+    all_anchors = [int(a) for a in args.anchors.split(",")] if args.anchors else list(CFG["anchors"])
+    assert all(0 < a <= T for a in all_anchors), all_anchors
+    J, anchors = CFG["J"][-1], all_anchors[:1]
     done = False
-    for na in (len(CFG["anchors"]), 1):
-        for j in CFG["J"]:
-            if est(j, na) <= budget_s:
-                J, anchors, done = j, list(CFG["anchors"])[:na], True
-                break
+    if args.J > 0:                                 # explicit design (the branch stage keeps its deadline check)
+        J, anchors, done = args.J, all_anchors, True
+    for na in (len(all_anchors), 1):
         if done:
             break
+        for j in CFG["J"]:
+            if est(j, na) <= budget_s:
+                J, anchors, done = j, all_anchors[:na], True
+                break
     log(f"  scan: {nS} settings x J={J}, T={T}, anchors {anchors}, R={R}, Mc={Mc}, HB={HB}: "
         f"{nS * J * T + nS * J * len(anchors) * (R + Mc) * HB} member-ticks, est {est(J, len(anchors)):.0f}s of {budget_s:.0f}s")
     over = {k: np.full(nS * J, VX.THETA0[k]) for k in BOX}
@@ -396,8 +415,18 @@ def main():
                 rate = max(100.0, 0.9 * float(json.load(open(args.rate_json)).get("rate", rate)))
             except Exception as exc:
                 log(f"  --rate-json unreadable ({exc!r}); using --rate {rate}")
-        rows = [{"H": H_only, "B": args.bmax, "track": True, "member_ticks_per_s": rate}]
-        INFO.update(H_exam=H_only, H_rule="--scan-only", bmax=args.bmax, rate=rate)
+        rows = []
+        if args.bench_json and os.path.exists(args.bench_json):
+            try:
+                rows = [r for r in json.load(open(args.bench_json))["rows"]
+                        if r.get("H") == H_only and r.get("track") and "error" not in r]
+            except Exception as exc:
+                log(f"  --bench-json unreadable ({exc!r}); using the flat-rate table")
+        if not rows:                               # two rows: the measured batch dependence at 128 px is 0.84 from 1024 to 64
+            rows = [{"H": H_only, "B": 64, "track": True, "member_ticks_per_s": 0.8 * rate},
+                    {"H": H_only, "B": args.bmax, "track": True, "member_ticks_per_s": rate}]
+        INFO.update(H_exam=H_only, H_rule="--scan-only", bmax=args.bmax, rate=rate,
+                    rate_table=[[r["B"], r["member_ticks_per_s"]] for r in rows])
         stage_scan(H_only, rows, args.bmax, budget_s=max(left_s() - 90, 60))
         INFO["hours"], INFO["failed"] = hours(), FAILED
         jdump("info.json", INFO)

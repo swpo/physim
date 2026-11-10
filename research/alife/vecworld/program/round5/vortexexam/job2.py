@@ -42,6 +42,10 @@ No grader is defined here: scoring and acceptance are the shared modules above.
 Outputs: every file is written atomically and kept under 20 MB (design summaries in parts); the total is audited
 at the end (limit 50 MB on the gpu-jobs branch).
 usage: python -B job2.py --out DIR [--prior prior.json] [--smoke] [--max-hours 2.6]
+
+Changed AFTER the run of r5-vortexexam-003 (which used this file at 84550bc04), following the Mac's review of that
+job: every JSON and npz output now carries PILOT_NEVER_REUSE_AS_EXAM; a file over the per-file limit, an output
+dropped by the audit and a failed final report now give a non-zero exit. Nothing else differs.
 """
 from __future__ import annotations
 
@@ -145,6 +149,9 @@ def log(msg):
         f.write(line + "\n")
 
 
+MARK = "PILOT_NEVER_REUSE_AS_EXAM"
+
+
 def jdump(name, obj):
     def conv(o):
         if isinstance(o, (np.floating, np.integer)):
@@ -154,6 +161,10 @@ def jdump(name, obj):
         if isinstance(o, np.bool_):
             return bool(o)
         return str(o)
+    if isinstance(obj, dict):                      # every output says what it is (the Mac's review of job 2, point 2)
+        obj = {MARK: True, **obj}
+    elif isinstance(obj, list):
+        obj = [({MARK: True, **o} if isinstance(o, dict) else o) for o in obj]
     p = os.path.join(OUT, name)
     with open(p + ".tmp", "w") as f:
         json.dump(obj, f, indent=1, default=conv)
@@ -168,11 +179,14 @@ def save_npz(name, **arrays):
     """Atomic compressed npz in OUT; returns its size in bytes (logged when large)."""
     p = os.path.join(OUT, name)
     tmp = p + ".tmp.npz"
-    np.savez_compressed(tmp, **arrays)
+    np.savez_compressed(tmp, **{MARK: np.array(True)}, **arrays)
     os.replace(tmp, p)
     n = os.path.getsize(p)
     if n > 2 ** 20:
         log(f"    wrote {name}: {n / 2 ** 20:.1f} MB")
+    if n > FILE_LIMIT and f"output over the per-file limit: {name}" not in FAILED:
+        log(f"    WARNING {name} is over the per-file limit ({n} > {FILE_LIMIT} bytes)")
+        FAILED.append(f"output over the per-file limit: {name}")
     return n
 
 
@@ -209,7 +223,7 @@ def audit_outputs():
     log(f"outputs: {sum(sizes.values()) / 2 ** 20:.1f} MB in {len(sizes)} files; largest "
         f"{[(k, round(v / 2 ** 20, 1)) for k, v in INFO['outputs']['largest'][:3]]}; dropped {dropped}")
     if dropped:
-        FAILED.append("skipped outputs over the size limits")
+        FAILED.append("dropped outputs over the size limits")
 
 
 def hours():
@@ -733,6 +747,8 @@ def report(final=False):
         return _report(final)
     except Exception as exc:
         log(f"  report failed: {exc!r}\n{traceback.format_exc()}")
+        if final:
+            FAILED.append("final report")
         return None
 
 

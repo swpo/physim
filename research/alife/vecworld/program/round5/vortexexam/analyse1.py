@@ -1,6 +1,6 @@
 """analyse1 -- analysis of GPU job 1 (throughput, effective law, headroom scan) -> results/analysis1.json.
 
-    python -B analyse1.py JOB1_OUT_DIR [SCAN_DIR]     (SCAN_DIR: a --scan-only rerun, default JOB1_OUT_DIR)
+    python -B analyse1.py JOB1_OUT_DIR [SCAN_DIR]     (SCAN_DIR: a --scan-only rerun -> "scan2"; "scan" = JOB1_OUT_DIR)
 
 Index convention of job 1's arrays: S[..., i, :] is the level-1 summary of the state after i + 1 ticks.
 
@@ -33,7 +33,7 @@ from vw.scoring import energy_fair, energy_loo  # noqa: E402
 
 D = sys.argv[1]
 SCAN_D = sys.argv[2] if len(sys.argv) > 2 else D                 # the scan may come from a second run (job 2, scan/)
-RES = os.path.join(HERE, "results")
+RES = os.environ.get("VX_RES", os.path.join(HERE, "results"))
 os.makedirs(RES, exist_ok=True)
 IX = {n: i for i, n in enumerate(VX.S1_NAMES)}
 out = {"source_dir": os.path.basename(os.path.normpath(D))}
@@ -139,7 +139,10 @@ out["law"] = law_block("law")
 out["law128"] = law_block("law128")
 
 # ----------------------------------------------------------------------------- scan
-if os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
+def scan_block(SCAN_D):
+    """The scan analysis of one folder (scan_main.npz, scan.json and, when present, the branch file)."""
+    if not os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
+        return None
     Z = np.load(os.path.join(SCAN_D, "scan_main.npz"))
     S, names = Z["S"].astype(float), [str(s) for s in Z["settings"]]
     nS, Jm, T, _ = S.shape
@@ -188,12 +191,15 @@ if os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
         def deficits(Yall, hs, scale):
             """Yall (nS, J, nA, R + Mc, HB, d): per setting and h: mean over states of ES(controls, truths) - ES_loo."""
             de, orc, cl = np.zeros((nS, len(hs))), np.zeros((nS, len(hs))), np.zeros((nS, len(hs)))
+            dse = np.zeros((nS, len(hs)))
             for k, h in enumerate(hs):
                 Yh = Yall[:, :, done][:, :, :, :, h - 1] / scale        # (nS, J, nA', R + Mc, d)
                 tr, ct = Yh[:, :, :, :R], Yh[:, :, :, R:]
                 es_c = energy_fair(ct, tr)                               # (nS, J, nA')
                 es_o = energy_loo(tr)
                 de[:, k] = (es_c - es_o).mean((1, 2))
+                dd = (es_c - es_o).reshape(nS, -1)
+                dse[:, k] = dd.std(1, ddof=1) / np.sqrt(dd.shape[1]) if dd.shape[1] > 1 else np.nan
                 orc[:, k] = es_o.mean((1, 2))
                 for i in range(nS):                                      # climatology: the other members' truths
                     v = []
@@ -202,8 +208,8 @@ if os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
                         for a in range(len(done)):
                             v.append(energy_fair(tr[i, oth, a].reshape(-1, tr.shape[-1]), tr[i, j, a]))
                     cl[i, k] = np.mean(v)
-            return de, orc, cl
-        d2, o2, c2 = deficits(L2, hs2, sc2)
+            return de, orc, cl, dse
+        d2, o2, c2, d2se = deficits(L2, hs2, sc2)
         # level-1 raster: scored in the job (es_c1, es_o1, es_k1: (nS, J, nA, n_h)), or here from the rasters
         if "es_c1" in B.files:
             E1 = {k: B[k] for k in ("es_c1", "es_o1", "es_k1")}
@@ -220,6 +226,8 @@ if os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
                     E1["es_c1"][:, :, a, k], E1["es_o1"][:, :, a, k], E1["es_k1"][:, :, a, k], _ = \
                         VX.raster_scores(R1h[:, :, a, :, k], R, sc1)
         d1 = (E1["es_c1"] - E1["es_o1"])[:, :, done].mean((1, 2))
+        _dd = (E1["es_c1"] - E1["es_o1"])[:, :, done].reshape(nS, -1, len(hs1))
+        d1se = _dd.std(1, ddof=1) / np.sqrt(_dd.shape[1]) if _dd.shape[1] > 1 else np.full(d1.shape, np.nan)
         o1 = E1["es_o1"][:, :, done].mean((1, 2))
         c1 = E1["es_k1"][:, :, done].mean((1, 2))
         D2, D1 = c2[0] - o2[0], c1[0] - o1[0]
@@ -232,7 +240,11 @@ if os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
         for i, nm in enumerate(names):
             head[nm] = {"L2": dict(zip(map(str, hs2), (d2[i] / D2).tolist())), "L2_mean": float((d2[i] / D2).mean()),
                         "L1": dict(zip(map(str, hs1), (d1[i] / D1).tolist())), "L1_mean": float((d1[i] / D1).mean()),
-                        "L2_own_D": float(np.mean(d2[i] / np.maximum(c2[i] - o2[i], 1e-9)))}
+                        "L2_own_D": float(np.mean(d2[i] / np.maximum(c2[i] - o2[i], 1e-9))),
+                        # SE of the mean over the (member, anchor) states of this setting (D_h taken as fixed)
+                        "L2_mean_se": float(np.sqrt((d2se[i] ** 2).sum()) / len(hs2) / np.mean(D2)) if np.isfinite(d2se[i]).all() else None,
+                        "L1_mean_se": float(np.sqrt((d1se[i] ** 2).sum()) / len(hs1) / np.mean(D1)) if np.isfinite(d1se[i]).all() else None,
+                        "n_states": int(Jm * len(done))}
         scan["headroom"] = head
         table = {}
         for p in sc["box"]:
@@ -244,6 +256,8 @@ if os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
                             "L2_min_edge": min(head[lo]["L2_mean"], head[hi]["L2_mean"]),
                             "L2_mean_edges": (head[lo]["L2_mean"] + head[hi]["L2_mean"]) / 2,
                             "L1_lo": head[lo]["L1_mean"], "L1_hi": head[hi]["L1_mean"],
+                            "L2_se": [head[lo]["L2_mean_se"], head[hi]["L2_mean_se"]],
+                            "L1_se": [head[lo]["L1_mean_se"], head[hi]["L1_mean_se"]],
                             "L1_mean_edges": (head[lo]["L1_mean"] + head[hi]["L1_mean"]) / 2,
                             "z_s_b_late": [shift[lo]["s_b_late"]["z_paired"], shift[hi]["s_b_late"]["z_paired"]],
                             "z_N": [shift[lo]["N"]["z_paired"], shift[hi]["N"]["z_paired"]],
@@ -251,8 +265,17 @@ if os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
                                           max(abs(v["z_paired"]) for v in shift[hi].values())]}
         scan["table"] = table
         scan["null_floor"] = head["null"]
-    out["scan"] = scan
+    return scan
 
+
+# "scan" = job 1's own scan (main runs; its branch file stayed on the runner unless the reduced file is there);
+# "scan2" = a --scan-only rerun (compact branch outputs), when a second folder is given
+out["scan"] = scan_block(D)
+if SCAN_D != D:
+    out["scan2"] = scan_block(SCAN_D)
+for _k in ("scan", "scan2"):
+    if out.get(_k) is None:
+        out.pop(_k, None)
 
 
 def clean(o):
@@ -280,10 +303,14 @@ for tag in ("law", "law128"):
                 print("     eps", r["eps"], "b1", round(r["b1"], 4), "+-", round(r["b1_se"], 4), "b2", round(r["b2"], 4),
                       "law R2", round(r["explained_by_law"], 3), "binned", round(r["explained_by_binned_drift"], 3),
                       "shape", round(r["shape_r2"], 3), "mean@", r["mean_by_tick"])
-if "scan" in out and "table" in out["scan"]:
-    print("scan null floor", out["scan"]["null_floor"])
-    for p, t in sorted(out["scan"]["table"].items(), key=lambda kv: -kv[1]["L2_min_edge"]):
-        print(f"  {p:7s} viable {t['viable_both']!s:5s} L2 lo {t['L2_lo']:+.3f} hi {t['L2_hi']:+.3f} | L1 lo {t['L1_lo']:+.3f} "
-              f"hi {t['L1_hi']:+.3f} | z s_b late {np.round(t['z_s_b_late'], 1).tolist()} z N {np.round(t['z_N'], 1).tolist()} "
-              f"max|z| {np.round(t['max_abs_z'], 1).tolist()}")
-    print("viability:", {k: (v["viable_members"], round(v["N_mean"], 1), v["N_min"], v["N_max"]) for k, v in out["scan"]["viability"].items()})
+for _k in ("scan", "scan2"):
+    if _k in out and "table" in out[_k]:
+        sc_ = out[_k]
+        print(_k, "J", sc_["J"], "anchors", sc_["branch"]["anchors_done"], "null floor", sc_["null_floor"])
+        for p, t in sorted(sc_["table"].items(), key=lambda kv: -kv[1]["L2_min_edge"]):
+            print(f"  {p:7s} viable {t['viable_both']!s:5s} L2 lo {t['L2_lo']:+.3f} hi {t['L2_hi']:+.3f} | L1 lo {t['L1_lo']:+.3f} "
+                  f"hi {t['L1_hi']:+.3f} | z s_b late {np.round(t['z_s_b_late'], 1).tolist()} z N {np.round(t['z_N'], 1).tolist()} "
+                  f"max|z| {np.round(t['max_abs_z'], 1).tolist()}")
+    if _k in out:
+        print(_k, "viability:", {k: (v["viable_members"], round(v["N_mean"], 1), v["N_min"], v["N_max"])
+                                 for k, v in out[_k]["viability"].items()})
