@@ -6,7 +6,8 @@ this tool did not start a moment before, and no host path is ever mounted:
 
   stop_*   `docker run --rm --network none <image>` runs tools/vfrun.py with a stand-in for vf-eval (a real process
            in that container which writes down every signal it gets):
-             - under timeout=1 the stand-in records SIGTERM, cleans up and exits; it is never killed
+             - under timeout=1 the stand-in records SIGTERM, cleans up and exits; it is never killed; the tool then
+               ends with status 98 (round 3: a vf-eval that had to be stopped ends the tool)
              - a stand-in that ignores SIGTERM is killed, but only after the grace period
              - `kill <pid of the tool>` while a run is under way reaches the stand-in as SIGTERM
   label_*  two containers are started here (`sleep`, no mount): `vf-other` with the run label of somebody else's
@@ -56,6 +57,8 @@ sys.modules["tomli_w"] = types.SimpleNamespace(dump=lambda cfg, f: f.write(json.
 sys.path.insert(0, "/t")
 import vfrun
 vfrun.require_docker = lambda: "none in this container"
+vfrun.VF_EVAL = [VF]                               # the stand-in, in place of tools/vfeval.py
+vfrun.DISK_FLOOR_GIB = 0.25                        # the disk watchdog has its own tests (tools/check_round3.py)
 os.environ["VF_RUN_ID"] = "physim2-interrupt-test"
 checks, ev = {}, {}
 
@@ -86,11 +89,16 @@ def stub_running():
 # 1. timeout=1, a stand-in that obeys SIGTERM
 fresh()
 t0 = time.time()
-r = vfrun.run_eval("stub-a", store="/t/store", out_dir="/t/runs", harness={}, timeout=1)
+try:
+    vfrun.run_eval("stub-a", store="/t/store", out_dir="/t/runs", harness={}, timeout=1)
+    status = None
+except SystemExit as e:
+    status = e.code
+r = json.load(open("/t/runs/stub-a.stopped.json"))
 ev["timeout_1"] = {"ended": r["ended"], "returncode": r["returncode"], "seconds": round(time.time() - t0, 2), "stub_log": log(),
-                   "stub_still_running": stub_running(), "run_label": r["run_label"]}
+                   "stub_still_running": stub_running(), "tool_status": status}
 checks["stop_under_timeout_1_the_stand_in_records_sigterm_and_exits_by_itself"] = r["ended"] == "stopped after 1 s: SIGTERM" and r["returncode"] == 130 \
-    and log()[1:] == ["got SIGTERM", "cleaned up, exiting"] and not stub_running()
+    and log()[1:] == ["got SIGTERM", "cleaned up, exiting"] and not stub_running() and status == 98
 # 2. a stand-in that ignores SIGTERM: SIGKILL, but only after the grace period
 fresh()
 vfrun.STOP_GRACE_S = 2.0
@@ -107,6 +115,7 @@ tool = subprocess.Popen([sys.executable, "-B", "-c",
                          "import json, sys, types\n"
                          "sys.modules['tomli_w'] = types.SimpleNamespace(dump=lambda cfg, f: f.write(json.dumps(cfg).encode()))\n"
                          "sys.path.insert(0, '/t')\nimport vfrun\nvfrun.require_docker = lambda: 'none'\n"
+                         f"vfrun.VF_EVAL = [{VF!r}]\nvfrun.DISK_FLOOR_GIB = 0.25\n"
                          "vfrun.run_eval('stub-c', store='/t/store', out_dir='/t/runs', harness={}, timeout=50)\n"],
                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 for _ in range(100):

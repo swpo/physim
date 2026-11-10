@@ -15,8 +15,21 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["hatchling>=1.27,<2"]
+# The build backend runs on the operator's machine when `uv sync` installs this project (editable). It is pinned
+# to one version, and [tool.uv] build-constraint-dependencies below pins what it pulls in; uv writes those
+# constraints into uv.lock ([manifest] build-constraints), so `uv sync --locked` refuses a pyproject that differs.
+requires = ["hatchling==1.33.0"]
 build-backend = "hatchling.build"
+
+[tool.uv]
+build-constraint-dependencies = [
+  "hatchling==1.33.0",
+  "packaging==26.3",
+  "pathspec==1.1.1",
+  "pluggy==1.7.0",
+  "tomlkit==0.15.2",
+  "trove-classifiers==2026.9.21.13",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["physim2_env", "physim2_script"]
