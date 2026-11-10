@@ -333,7 +333,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.35
+    "seconds": 0.43
    },
    "fifo_as_stderr": {
     "returned": true,
@@ -352,7 +352,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.3
+    "seconds": 0.31
    },
    "fifo_as_reply": {
     "returned": true,
@@ -371,7 +371,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.35
+    "seconds": 0.36
    },
    "link_as_stderr": {
     "returned": true,
@@ -390,7 +390,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.36
+    "seconds": 0.35
    },
    "link_as_reply": {
     "returned": true,
@@ -409,7 +409,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.31
+    "seconds": 0.38
    },
    "moved_reply_directory": {
     "returned": true,
@@ -428,7 +428,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.39
+    "seconds": 0.45
    }
   },
   "driver_without_route_variable": {
@@ -466,7 +466,7 @@
     "left_pids": null,
     "left_files": null
    },
-   "seconds": 0.12
+   "seconds": 0.09
   }
  }
 }

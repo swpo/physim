@@ -3290,8 +3290,8 @@
      "float64"
     ],
     "held_mib": 90.82,
-    "seconds": 0.283,
-    "rss_growth_mib": 79.5
+    "seconds": 0.244,
+    "rss_growth_mib": 79.4
    },
    "lying_header": {
     "accepted": false,

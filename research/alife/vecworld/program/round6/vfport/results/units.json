@@ -251,7 +251,7 @@
    "many_members": {
     "accepted": false,
     "error": "ValueError: the reply must hold one array per level (at most 16)",
-    "seconds": 0.006,
+    "seconds": 0.007,
     "rss_growth_mib": 0.0
    },
    "lying_header": {
@@ -455,7 +455,7 @@
       "PHYSIM2_BOX_CLEANUP is not set by the grading route"
      ]
     },
-    "seconds": 0.23
+    "seconds": 0.17
    },
    "fifo_as_reply": {
     "returned": true,
@@ -473,7 +473,7 @@
       "PHYSIM2_BOX_CLEANUP is not set by the grading route"
      ]
     },
-    "seconds": 0.17
+    "seconds": 0.16
    },
    "link_as_stderr": {
     "returned": true,
@@ -491,7 +491,7 @@
       "PHYSIM2_BOX_CLEANUP is not set by the grading route"
      ]
     },
-    "seconds": 0.16
+    "seconds": 0.17
    },
    "link_as_reply": {
     "returned": true,
@@ -509,7 +509,7 @@
       "PHYSIM2_BOX_CLEANUP is not set by the grading route"
      ]
     },
-    "seconds": 0.16
+    "seconds": 0.17
    },
    "directory_as_reply": {
     "returned": true,
@@ -527,7 +527,7 @@
       "PHYSIM2_BOX_CLEANUP is not set by the grading route"
      ]
     },
-    "seconds": 0.16
+    "seconds": 0.21
    },
    "float64_past_the_runner": {
     "returned": true,
@@ -568,7 +568,7 @@
      1,
      2
     ],
-    "seconds": 0.17
+    "seconds": 0.22
    }
   },
   "score": {
