@@ -1,6 +1,6 @@
 # PROGRESS (study slots, round 5) -- kept for restarts
 
-Updated 02:13 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
+Updated 02:37 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
 
 ## Done
 - r5-slots-001 cancelled, r5-slots-002 infra_error ($0), r5-slots-003 pilot done ($3.13, H200, ref e5d146ef3; outputs in results/r5-slots-003/).
@@ -22,6 +22,11 @@ Updated 02:13 UTC 10 Nov (instance 4, after the third container restart at about
   For the analysis: (a) the config still training at S5_TRAIN_S has NULL objective values; (b) a _ws config cut
   before about step 375 still carries sam_sup's encoder: do not report it as a result; (c) expect 8-11 configs.
   At 02:11 the job was still 'received' (two other pods hold the two slots: r5-vortexexam-003, r5-bias2-007).
+
+- 02:33 UTC: the Mac says r5-slots-004 WAITS FOR STOCK (no A100_80GB / H100_80GB / H200_141GB offer since 02:05);
+  it stays 'received' until an offer fits. Do not resubmit; keep watching (COORD.txt has the exchange).
+- results/summary.json and results/interpretation.json are PRELIMINARY (pilot r5-slots-003 only), a fallback in case
+  of a restart; they are rebuilt with r5-slots-004 as the main job when it is done.
 
 ## Next step (exact)
 1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-004 <scratch dir>; look at progress.txt,
