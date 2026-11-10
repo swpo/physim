@@ -243,7 +243,7 @@ def run(a):
     else:
         try:
             with open(err_path, "rb") as f:
-                f.seek(max(0, os.path.getsize(err_path) - 1500))
+                f.seek(max(0, os.path.getsize(err_path) - 4000))
                 res["stderr"] = f.read().decode("utf-8", "replace")
         except OSError:
             res["stderr"] = ""

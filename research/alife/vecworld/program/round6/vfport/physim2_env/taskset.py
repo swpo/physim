@@ -126,6 +126,7 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             raise vf.TaskError("could not build the workspace in the box")
         state = trace.state
         if state.finalized:                                  # the verifier box: public files only, no laboratory
+            trace.info.setdefault("physim2", {})["verifier_started_unix"] = time.time()
             return
         labs = os.path.join(hidden, "labs")
         if self.config.single_use and os.path.isdir(labs) and os.listdir(labs):
@@ -172,6 +173,7 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         info["submission"] = dict(state.collection)
         info["lab"] = self._lab_usage(state.rollout)
         info["stop_condition"] = trace.stop_condition
+        info["agent_box_cpu_s"] = await GRADING.box_cpu_seconds(runtime)
 
     def _lab_usage(self, rollout: str) -> dict:
         """Counters of the laboratory of this rollout (its process has stopped; its records are on the worker)."""
@@ -216,6 +218,9 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             except Exception:
                 g = {"skill_vs_O": 0.0, "n_failed": None, "reason": "grading error and the store is unreadable"}
         g["worker_wall_s"], g["worker_cpu_s"] = time.time() - t0, time.process_time() - c0
+        g["verifier_box_cpu_s"] = await GRADING.box_cpu_seconds(runtime)
+        if info.get("verifier_started_unix"):
+            g["verifier_wall_s"] = time.time() - info["verifier_started_unix"]
         if not self.config.item_cleanup:
             info["NOT_AN_EXAM"] = "cleanup between items was disabled by the operator (test hook)"
         info["grade"] = g

@@ -22,6 +22,8 @@ RUN set -e; if [ -s /tmp/extra-ca.crt ]; then export PIP_CERT=/tmp/extra-ca.crt;
 
 FROM python:3.12-slim
 COPY --from=build /opt/site /usr/local/lib/python3.12/site-packages
+# bytecode once, here: the predictor runs as an unprivileged user with -B and cannot cache it (import numpy: 0.40 -> 0.22 s)
+RUN python -m compileall -q /usr/local/lib/python3.12/site-packages > /dev/null || true
 ENV OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 JAX_PLATFORMS=cpu \
     XLA_FLAGS="--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1"
 WORKDIR /workspace

@@ -18,13 +18,21 @@ Venv: `/home/user/evalwork/vfport/.venv` (python 3.12, verifiers 0.3.2.dev163 wh
   /proc/sys/net/ipv6 is absent. The iptables cut itself was run by hand in a container here and works.
 - Venv /home/user/evalwork/vfport/.venv: verifiers 0.3.2.dev163 wheel + numpy 2.5.4, scipy 1.18.1, jax 0.12.0.1.
 
+- Built and working (commit 25b083f30 and later): physim2_env/ (taskset.py, lab_tools.py, access.py, bundle.py,
+  grading.py, store.py, public/{labclient,validate,_item,_rules}.py), physim2_script/ (scripted harness),
+  agents/ (install_prebuilt, probe_grading, hostile_submission), tools/ (make_instances, vfrun, prove, docker_shim).
+- First rollouts through `vf-eval physim2-env --env.id isolated-verifier` on Docker here: D, C, P0 on one world
+  graded with 0 failed items; about 75 s wall per rollout (57 s of it the 64-item verifier phase).
+- Found: `docker exec` runs with umask 0000 in this container, so files written by verifiers' Runtime.write were
+  world-writable; staging now chmods explicitly and the driver's --scan fixes any leftover.
+
 ## Running
-- nothing
+- tools/prove.py, 4 worlds x (S, D, P0, PM, C, null), started 02:37 UTC; log $S/prove.log; state
+  $S/proof/prove_state.json (resumable per policy); writes results/proof_ring.json.
 
 ## Next step (exact)
-1. Write physim2_env/ (public/{labclient,validate,_item,_rules}.py, access.py, lab_tools.py, taskset.py,
-   grading.py), physim2_script/ (scripted harness), tools/{make_instances,prove,check_probe}.py, pyproject.toml.
-2. `uv pip install -e .` into the venv; tools/make_instances.py for 1 ring world; one D rollout through vf-eval.
+1. When prove.py ends: check results/proof_ring.json against agentenv's results/proof_ring.json.
+2. tools/check_probe.py (boundary checks + probes a-d), then results/summary.json, README.md, RUNBOOK_MAC.md, uv.lock.
 
 ## If the container restarted
 - `S=/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfport; mkdir -p $S;

@@ -46,11 +46,18 @@ def save(hidden: str, name: str, es, failed, cpu, record: dict) -> None:
 
 
 def summary(ex, es, refs) -> dict:
-    """Pooled L of this predictor, of K and of O, and the skill on the K-to-O scale (acceptance.skill)."""
+    """Pooled L of this predictor, of K and of O, and the skill on the K-to-O scale, over the cells whose
+    K-to-O gap is significant (vw.scoring.cells_ok, decided on the references before any agent): the same
+    number as policies[...]["vs_O"] of evaluator.grader.table for this world."""
     use_agentenv()
     from evaluator import acceptance as ACC
-    s = ACC.skill({"K": refs["K"], "O": refs["O"], "agent": es})
-    return {"L": s["agent"]["L"], "L_K": s["K"]["L"], "L_O": s["O"]["L"], "skill_vs_O": s["agent"]["vs_O"]}
+    from vw.scoring import cells_ok
+    valid = np.asarray(cells_ok(refs["K"], refs["O"], 3.0), bool)
+    if not valid.any():
+        valid = np.ones(len(valid), bool)
+    s = ACC.skill({"K": refs["K"], "O": refs["O"], "agent": es}, valid)
+    return {"L": s["agent"]["L"], "L_K": s["K"]["L"], "L_O": s["O"]["L"], "skill_vs_O": s["agent"]["vs_O"],
+            "valid_cells": valid.tolist()}
 
 
 def score_as_k(hidden: str, name: str, reason: str) -> dict:
@@ -61,6 +68,16 @@ def score_as_k(hidden: str, name: str, reason: str) -> dict:
     rec = {"name": name, "n_items": ex.n, "n_failed": ex.n, "reason": reason, "errors": [], "seconds": 0.0}
     save(hidden, name, es, np.ones(ex.n, bool), np.zeros(ex.n), rec)
     return dict(summary(ex, es, refs), n_items=ex.n, n_failed=ex.n, reason=reason)
+
+
+async def box_cpu_seconds(runtime) -> float | None:
+    """CPU seconds consumed so far by every process of the box (its cgroup counter; cgroup v2, then v1)."""
+    try:
+        r = await runtime.run(["sh", "-c", "cat /sys/fs/cgroup/cpu.stat 2>/dev/null | awk '$1==\"usage_usec\"{print $2/1e6; f=1} END{exit !f}' "
+                                           "|| awk '{print $1/1e9}' /sys/fs/cgroup/cpuacct/cpuacct.usage"], {})
+        return float(r.stdout.strip().splitlines()[-1]) if r.exit_code == 0 else None
+    except Exception:
+        return None
 
 
 async def stage(runtime, workdir: str) -> dict:
@@ -128,7 +145,7 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
                     bad = f"unreadable reply: {type(e).__name__}"
         if bad:
             failed[i] = True
-            errors.append({"item": i, "error": bad[:1500]})
+            errors.append({"item": i, "error": bad[:4000]})
             continue
         for l in ex.queries:
             S[l][i] = smp[l]
