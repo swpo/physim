@@ -12,7 +12,7 @@
     }
   ],
   "job_id": "r5-vortexexam-005",
-  "message": "request received",
+  "message": "reviewed; waiting for an offer of H200_141GB/H100_80GB/A100_80GB/A100_40GB that fits the cap (listed now: none); the runner plans and starts it as soon as one fits",
   "pods": [],
   "review": {
     "at": "2026-11-10T02:48:21Z",
@@ -21,5 +21,5 @@
     "summary": "Gate met; fine to run; no blocker, major or minor findings; secrecy and markers clean. 1 info: the no-input controls may be skipped on an A100 near 169/s."
   },
   "state": "received",
-  "updated_at": "2026-11-10T02:25:22Z"
+  "updated_at": "2026-11-10T02:48:34Z"
 }
