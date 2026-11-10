@@ -77,6 +77,10 @@ git show origin/gpu-jobs:LEDGER.md
 and ends in one of `done | failed | timeout | cancelled | rejected | infra_error`.
 A job whose GPU types are momentarily out of stock stays `queued` (or
 `needs_approval`) and is retried; only budget and validation problems reject.
+The same holds when the provider refuses the create itself (for example
+"HTTP 503 ... not available right now") and no pod ever existed: the job goes
+back to `queued` with a "will retry" message instead of ending in `infra_error`,
+so there is no need to resubmit. `infra_error` means a pod existed (or might have).
 It also holds `message`, the pod and its rate, cost so far, deadlines, and log
 tails (refreshed every 15 minutes while the job runs). When the job finishes the
 Mac also sends a cross-session message to the requesting session when it can
