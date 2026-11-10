@@ -1,0 +1,14 @@
+{
+ "what": "the public bundle (TASK.md + physim2 package with vendored simulator sources) built by evaluator/build_workspace.py for the proof runs",
+ "ring": {
+  "files": 22,
+  "bytes": 235108,
+  "manifest_sha256": "9ba7c904d8aff112b09f2faedd08ae4b011c3bec7fcf02df81d9b0cd9ad50834"
+ },
+ "gliders": {
+  "files": 37,
+  "bytes": 417935,
+  "manifest_sha256": "cd6703f253f68202a50acf56ae0d6ca26b6ee1ef13763ece942d71d19354267f"
+ },
+ "source": "<scratch>/<run>/prepare.json [bundle] of world 0 of each proof run"
+}

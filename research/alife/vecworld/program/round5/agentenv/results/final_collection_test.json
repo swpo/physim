@@ -1,0 +1,27 @@
+{
+ "what": "final collection and failure paths on a ring instance (8 items): an agent that writes submission/ but never submits, an agent that does nothing, an agent stopped by the wall-clock limit",
+ "nosubmit": {
+  "submitted_before_finalization": false,
+  "final_collection_accepted": true,
+  "graded_failed_items": 0
+ },
+ "idle": {
+  "submitted_before_finalization": false,
+  "final_collection": "submission has no predict.py",
+  "grade": null
+ },
+ "timeout": {
+  "timed_out": true,
+  "wall_s": 3.0,
+  "grade": null
+ },
+ "skill_vs_O": {
+  "O": 1.0,
+  "K": 0.0,
+  "nosubmit": 0.2952,
+  "idle": 0.0,
+  "timeout": 0.0
+ },
+ "ok": true,
+ "note": "8 items and a 32-run climatology pool: the skill of the 'nosubmit' predictor (an unconditional Gaussian) is within item noise of 0 and decides nothing; the test is about the paths (collection, no predictor -> every item scored as K, wall-clock stop)"
+}

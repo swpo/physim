@@ -1,0 +1,122 @@
+{
+ "checks": {
+  "agent_runs_unprivileged": true,
+  "agent_cannot_read_hidden": true,
+  "agent_cannot_read_evaluator_code": true,
+  "agent_sees_only_its_own_processes": true,
+  "agent_has_no_network": true,
+  "agent_cannot_write_outside_workspace": true,
+  "advance_before_reset_rejected": true,
+  "tick_cap_rejected": true,
+  "bounds_rejected": true,
+  "episode_cap_rejected_as_a_block": true,
+  "nan_rejected": true,
+  "bad_shape_rejected": true,
+  "oversized_block_rejected": true,
+  "rejections_charged_nothing": true,
+  "accepted_block_charged": true,
+  "tick_budget_rejected": true,
+  "unknown_operation_rejected": true,
+  "extra_argument_rejected": true,
+  "submission_path_confined": true,
+  "missing_submission_reported": true,
+  "symlink_not_followed": true,
+  "bad_shape_fails_validation": true,
+  "nondeterminism_fails_validation": true,
+  "cpu_limit_enforced": true,
+  "memory_limit_enforced": true,
+  "size_limit_enforced": true,
+  "predictor_runs_unprivileged": true,
+  "predictor_cannot_read_hidden": true,
+  "predictor_has_no_network": true,
+  "predictor_cannot_write_submission": true,
+  "good_submission_validates": true,
+  "submit_freezes": true,
+  "lab_closed_after_submit": true,
+  "graded_without_failures": true
+ },
+ "n_checks": 34,
+ "n_passed": 34,
+ "failed": [],
+ "skipped_no_capability": [],
+ "sandbox_capabilities": {
+  "root": true,
+  "namespaces": true,
+  "pid_namespace": true,
+  "setpriv": true
+ },
+ "agent_layers": {
+  "rlimits": true,
+  "mount_ns": true,
+  "net_ns": true,
+  "pid_ns": true,
+  "uid": 65534,
+  "hidden_paths": 10,
+  "binds": [
+   "workspace",
+   "ipc",
+   "agent_home"
+  ]
+ },
+ "predictor_layers": {
+  "rlimits": true,
+  "mount_ns": true,
+  "net_ns": true,
+  "pid_ns": true,
+  "uid": 65534,
+  "hidden_paths": 10,
+  "binds": [
+   "submission",
+   "public",
+   "io"
+  ]
+ },
+ "evidence": {
+  "predictor_probe": {
+   "uid": 65534,
+   "/home/user/wt/agentenv/research/alife/vecworld/program/round5/agentenv": "FileNotFoundError",
+   "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/pr/probe/public": "PermissionError",
+   "net": "OSError",
+   "write_submission": "OSError",
+   "hidden": "PermissionError",
+   "hidden/instance.json": "PermissionError",
+   "hidden/exam.npz": "PermissionError"
+  },
+  "agent_reads": {
+   "hidden": "PermissionError",
+   "hidden/instance.json": "PermissionError",
+   "hidden/exam.npz": "PermissionError",
+   "/home/user/wt/agentenv/research/alife/vecworld/program/round5/agentenv": "FileNotFoundError",
+   "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/pr/probe/public": "PermissionError"
+  },
+  "messages": {
+   "tick_cap": "program entry t=0: input rejected, nothing charged: nats: command costs 46.7222 > per-tick cap 2; nats: episode total would be 46.7222 > episode cap 8",
+   "bounds": "program entry t=0: input rejected, nothing charged: bound: non-zero values must lie in [-3, 3] (got min 5, max 5)",
+   "episode_cap_whole_block": "program entry t=4: input rejected, nothing charged: nats: episode total would be 9.5 > episode cap 8",
+   "tick_budget": "budget: 5 + 96 ticks > max_ticks=100; nothing ran",
+   "reset_after_submit": "the predictor is submitted; the laboratory is closed",
+   "submit_outside_workspace": "format: the submission path must lie inside the workspace"
+  },
+  "slow": {
+   "error": "predictor failed (CPU-time limit): unshare: sigprocmask unblock failed: Invalid argument\n",
+   "cpu_s": 4.0158059999999995,
+   "wall_s": 4.077455520629883
+  },
+  "memory": "predictor failed (exit code 2): MemoryError: Unable to allocate 128. GiB for an array with shape (17179869184,) and data type float64\n",
+  "usage_end": {
+   "ticks_used": 5,
+   "max_ticks": 100,
+   "resets": 1,
+   "episode_nats": 7.6,
+   "total_nats": 7.6,
+   "episode_left": 0.40000000000000036,
+   "total_left": null,
+   "episodes": 1,
+   "commands": 4,
+   "submitted": true,
+   "validations": 10,
+   "submissions": 1
+  },
+  "graded_items": 8
+ }
+}

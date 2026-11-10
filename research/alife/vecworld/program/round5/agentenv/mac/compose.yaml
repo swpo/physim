@@ -1,0 +1,36 @@
+# One rollout = two containers. NOT RUN in the cloud container that wrote it (no Docker daemon): treat the first
+# use as a test. Variables: REPO (checkout of swpo/physim), RUN (a new empty directory on the Mac), NAME (rollout
+# name, e.g. sol-w0).
+#
+#   lab     holds the hidden side: the instance (theta, secret) in the named volume `hidden` (never on the Mac's
+#           file system, never mounted in the agent container), the Lab server, the grader. No network at all.
+#   agent   4 CPUs, 8 GiB: the workspace, the Lab socket, and the network your harness needs for model calls.
+services:
+  lab:
+    image: physim2:cpu
+    network_mode: none
+    working_dir: /repo/research/alife/vecworld/program/round5/agentenv
+    volumes:
+      - ${REPO}:/repo:ro
+      - ${RUN}:/run_dir
+      - hidden:/run_dir/hidden
+      - ipc:/ipc
+    environment:
+      - PHYSIM2_IPC_DIR=/tmp/physim2-ipc      # sockets of in-container scripted rollouts stay off the host mount
+    command: >
+      python -B -m evaluator.lab_service --hidden /run_dir/hidden --public /run_dir/public
+      --workspace /run_dir/workspaces/${NAME} --listen unix:/ipc/lab.sock --name ${NAME}
+  agent:
+    image: physim2-agent:cpu
+    cpus: 4
+    mem_limit: 8g
+    working_dir: /workspace
+    volumes:
+      - ${RUN}/workspaces/${NAME}:/workspace
+      - ipc:/ipc:ro
+    environment:
+      - PHYSIM2_LAB=unix:/ipc/lab.sock
+      - PYTHONPATH=/workspace
+volumes:
+  hidden: {}
+  ipc: {}

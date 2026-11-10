@@ -1,0 +1,109 @@
+# Task: learn a hidden world well enough to predict it
+
+You are given a simulated world whose law is public **except for {n_theta} hidden numbers** ({theta_names}).
+You can experiment on the real world within a budget, simulate the public law yourself with any parameter
+values, and must submit a program that predicts how the real world will behave in situations you have not seen.
+No background is assumed: everything you need is in this file and in the `physim2` package next to it.
+
+## 1. What you submit
+
+A directory `submission/` containing `predict.py` (plus any files it needs) with one function:
+
+```python
+def predict(history, program, queries, n_samples, seed):
+    # history : array (P + 1, n_obs)   observations o(0..P) of one real episode you have never seen (P = {P})
+    # program : {{"prefix": array (P, n_in),  inputs applied during the history (all zeros in this exam)
+    #            "test":   array (H, n_in)}}  inputs that WILL be applied from tick P on (H = {H})
+    # queries : {{level: [times after P]}}    here {queries}
+    # return  : {{level: array (n_samples, len(times), d_level)}}  with d_level = {level_dims}
+    #           SAMPLES of the level's value at tick P + time. Row i of every array belongs to the same imagined
+    #           future, and the spread of the rows is your uncertainty. The grader asks for n_samples = {n_samples}.
+```
+
+The future is random (the world has noise), so a good answer is a cloud of samples distributed like the real
+futures, not one best guess.
+
+## 2. The world
+
+{world_doc}
+
+Level 1 is what you observe (`n_obs` = {n_obs} numbers per tick). Inputs have `n_in` = {n_in} coordinates, each
+bounded in [{in_lo}, {in_hi}]. The world module documents the layout: `W = physim2.load_world(); help(W)`.
+
+The hidden parameters were drawn from the public prior: uniform on the box
+{prior_table}
+{viability_note}
+
+## 3. What you can do
+
+**Experiment on the real world** (hidden parameters, hidden noise) through `physim2.Lab`:
+
+```python
+import physim2
+lab = physim2.Lab()
+lab.card(); lab.usage()
+o0  = lab.reset("any-name")        # new episode from a fresh hidden start; costs {reset_cost} tick(s)
+obs = lab.advance(U)               # U: (T, n_in) inputs, or an integer T for T ticks without input -> (T, n_obs)
+obs = lab.experiment("name", U)    # reset + advance -> (T + 1, n_obs)
+```
+
+Budgets, all enforced before anything runs (a rejected command costs nothing):
+- **ticks**: {max_ticks} real ticks in total, resets included;
+- **information**: an input `u` at one tick costs `|u|^2 / (2 * {sigma_in}^2)` nats; at most {tick_cap} nats per tick,
+  {episode_cap} per episode{total_nats_note}. (Inputs enter the world as a shift of Gaussian noise that is always
+  present, so this cost is exactly how distinguishable your action is from no action.) The exam's own test
+  programs obey the same per-tick and per-episode caps.
+- The same label gives the same hidden start again, with fresh noise afterwards. You cannot replay noise.
+
+**Simulate the public law yourself**, with any parameters and your own noise, as much as your compute allows:
+
+```python
+W = physim2.load_world()
+sim = W.Simulator()
+ep = sim.episodes(thetas, seed)    # exam-shaped episodes: P ticks without input, then a test program
+W.prior_sample(rng, n); W.draw_program(cls, rng, history, H); W.level(2, obs); W.scales()
+```
+
+**Compute envelope (part of the exam):** {cpus} CPU cores, {memory_gib} GiB of memory, no GPU, {wall_hours} hours of
+wall-clock time for the whole investigation, including all simulation and training. One real tick of this world
+costs about {cpu_s_tick} CPU-seconds to simulate on one core.
+
+## 4. How you are graded
+
+- The grader holds {n_items} items. Each item is a real episode: after the world's start-up, {P} ticks are run
+  without input and revealed to your predictor as `history`; then a test program is applied. Test programs come
+  from the public mix `W.program_mix()` in equal shares ({program_classes}); some are built from the history
+  itself (for example a push aimed at a visible feature).
+- For every item the real world was continued {R} times with fresh noise. Your samples are compared with those
+  real futures by the **energy score** (lower is better): mean distance from your samples to a real future minus
+  half the mean distance between your samples, with every coordinate divided by a public scale (`W.scales()`)
+  and distances taken as root mean square. It rewards being right and being honest about uncertainty: samples
+  that are too narrow or too wide both lose. It is computed separately for every queried (level, time) and
+  averaged over items.
+- Your score is reported next to reference policies: **K** (samples from the world's long-run average, ignoring
+  history and program), a predictor trained on simulations at the prior mean, **P0** (trained on simulations at
+  prior draws: no experiment), **D** (fitted to real episodes only: no simulator), **S** (scripted parameter
+  inference, then training on simulations), **C** (trained at the true hidden parameters) and **O** (the true
+  simulator run from the true hidden state, which no predictor can match). Doing well means beating both P0
+  and D, and approaching C.
+- Your predictor runs once per item in a fresh process with no network: at most {pred_cpu} CPU-seconds,
+  {pred_wall} s of wall clock and {pred_mem} GiB per item; the submission may be at most {artifact_mib} MiB. It may
+  import numpy, scipy, jax and `physim2`. Nothing is carried from one item to the next. A request that fails or
+  runs out of time is scored as K.
+
+## 5. Finishing
+
+```python
+lab.validate("submission")   # runs your predictor on two public example requests: format, limits, same seed ->
+                             # same samples. No accuracy feedback. At most {max_attempts} attempts.
+lab.submit("submission")     # validates, then freezes the directory. The laboratory closes.
+```
+
+You can also run `python physim2/predict_runner.py submission request.npz reply.npz` yourself. If time runs out
+before you submit, the grader tries to collect `submission/` as it is. Only the frozen directory is graded.
+
+## 6. What is hidden, and what is not
+
+Hidden: the {n_theta} parameters, all noise of the real world, and the exam items. Public: the law (code), the
+coarse-grainings, the prior, the test-program generator, the scales and the scoring rule. Reading files outside
+your workspace is not part of the task and will not help: the hidden values are in another process.

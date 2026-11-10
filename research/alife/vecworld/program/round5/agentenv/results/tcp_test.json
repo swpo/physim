@@ -1,0 +1,10 @@
+{
+ "bad_token_rejected": true,
+ "card_world": "ring",
+ "experiment_shape": [
+  6,
+  6
+ ],
+ "ticks_used": 6,
+ "ok": true
+}

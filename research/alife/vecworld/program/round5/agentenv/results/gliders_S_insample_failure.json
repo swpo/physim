@@ -1,0 +1,28 @@
+{
+ "what": "the first gliders smoke run of policy S, with the regression summaries and the synthetic likelihood fitted on the SAME 12 design episodes (22 features, 4 parameters): the posterior collapsed on a wrong point. Kept as the record of a failure; agents/inference.py now cross-fits (projection on one half of the design, likelihood on the other)",
+ "sizes": {
+  "n_lab": 4,
+  "n_design": 12,
+  "k_design": 1,
+  "n_train": 12,
+  "chunk": 4
+ },
+ "n_items": 8,
+ "S_skill_vs_C": 0.9143260560043098,
+ "P0_skill_vs_C": 0.9780715569651514,
+ "posterior_sd_over_prior_sd": [
+  0.0001612198544071124,
+  0.0013058982539186895,
+  0.0006493061321603854,
+  0.0019569923629151257
+ ],
+ "abs_error_over_prior_sd": [
+  0.9511220108160872,
+  1.3419395658628253,
+  1.0462407177757072,
+  2.607746277918304
+ ],
+ "source": "prove.py run of 9 Nov 2026 23:28-23:47 UTC on the instance with secret commitment 14659dbdef62f96f50af78ced2904813b3b1d6763060e202a48f3f96d3de0832",
+ "first_invocation_wall_s": 1117.7,
+ "first_invocation_note": "that invocation also produced the D, P0, C and null rollouts kept in results/proof_gliders.json (their sandbox had no PID namespace yet); S was rerun on the same instance and frozen exam with a new laboratory budget"
+}

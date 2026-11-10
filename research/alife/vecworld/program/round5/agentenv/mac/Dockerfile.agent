@@ -1,0 +1,6 @@
+# Agent image = exam image + the LLM harness of your choice. Fill in the harness install line; nothing else.
+FROM physim2:cpu
+# Example (adapt to the harness used for PhySim v1 rollouts):
+#   RUN apt-get update && apt-get install -y --no-install-recommends nodejs npm git && npm install -g <harness-cli>
+ENV PHYSIM2_LAB=unix:/ipc/lab.sock PYTHONPATH=/workspace
+WORKDIR /workspace

@@ -1,0 +1,131 @@
+{
+ "cpu_s_per_member_tick": {
+  "gliders": {
+   "value": 0.15,
+   "source": "task statement of this study; EXAM.md section 5 has 0.136 (closure study)",
+   "measured_here_agent_sandbox": 0.16351221353861786,
+   "measured_note": "whole P0 agent process (import, compile, simulation, fit) / member-ticks, tiny run, shared CPU"
+  },
+  "membrane": {
+   "value": 0.012269576799999982,
+   "source": "track1/membrane_world/results/summary.json [timing.world_tick_L0_L1_L2_B1_per_member_s]"
+  },
+  "ring": {
+   "value": 0.0002494329660135905,
+   "source": "this study: results/proof_ring.json, P0 agent process CPU / member-ticks"
+  }
+ },
+ "episode_shape_ticks": {
+  "gliders": {
+   "burn": 50,
+   "P": 16,
+   "H": 16,
+   "source": "gliders_exam/pilot.py, round4/sbi config"
+  },
+  "membrane": {
+   "burn": 150,
+   "P": 16,
+   "H": 16,
+   "source": "no exam exists; burn 150 ticks = the start tick of membrane_world/probe_input.py [summary.json probe_input.design.t0_tick], P and H assumed as gliders"
+  },
+  "ring": {
+   "burn": 0,
+   "P": 16,
+   "H": 32,
+   "source": "physim2/world_ring.py"
+  }
+ },
+ "recipes_gliders": {
+  "P0_set_round4": {
+   "episodes": 1024,
+   "member_ticks": 83968,
+   "source": "round4/sbi summary.json [job.member_ticks.sims_prior_pred]",
+   "core_hours_at_0.15": 3.4986666666666664,
+   "hours_on_4_cores": 0.8746666666666666
+  },
+  "S_full_round4": {
+   "episodes": 9216,
+   "member_ticks": 755712,
+   "source": "round4/sbi summary.json [job.member_ticks.design + sims_post2 / n_truth] (as roadmap_envelope.py)",
+   "core_hours_at_0.15": 31.488,
+   "hours_on_4_cores": 7.872
+  },
+  "S_shrunk_proposed": {
+   "episodes": 1536,
+   "member_ticks": 125952,
+   "source": "this study's reference agent at dry-run size (design 256 x 2, training 1,024); NOT validated at this size on gliders",
+   "core_hours_at_0.15": 5.248,
+   "hours_on_4_cores": 1.312
+  }
+ },
+ "envelopes": {
+  "dry_run_4c_8h": {
+   "cpus": 4,
+   "wall_hours": 8,
+   "core_hours": 32,
+   "gliders_member_ticks": 768000,
+   "gliders_episodes": 9365,
+   "over_P0_set": 9.146341463414634,
+   "over_S_full_round4": 1.016260162601626,
+   "over_S_shrunk": 6.097560975609756,
+   "membrane_member_ticks": 9389076
+  },
+  "exam_4c_24h": {
+   "cpus": 4,
+   "wall_hours": 24,
+   "core_hours": 96,
+   "gliders_member_ticks": 2304000,
+   "gliders_episodes": 28097,
+   "over_P0_set": 27.4390243902439,
+   "over_S_full_round4": 3.048780487804878,
+   "over_S_shrunk": 18.29268292682927,
+   "membrane_member_ticks": 28167230
+  }
+ },
+ "worlds": {
+  "gliders": {
+   "cpu_s_per_episode": 12.299999999999999,
+   "ticks_per_episode": 82
+  },
+  "membrane": {
+   "cpu_s_per_episode": 2.233062977599997,
+   "ticks_per_episode": 182,
+   "cheaper_than_gliders_per_tick": 12.225360535662503,
+   "cheaper_than_gliders_per_episode": 5.508129472111676
+  }
+ },
+ "evaluator_gliders_dry_run": {
+  "exam_member_ticks": 29056,
+  "exam_core_hours": 1.2106666666666666,
+  "lab_exam_shaped_episodes_in_budget": 121,
+  "lab_member_ticks_incl_hidden_burn_in": 10050,
+  "lab_cpu_minutes": 25.125,
+  "grading_cpu_minutes_worst_case": 64.0,
+  "references_member_ticks_per_world_C_and_S": 209920,
+  "references_member_ticks_shared_P0_and_PM": 167936,
+  "references_core_hours_3_worlds_cpu": 33.23733333333333,
+  "references_gpu_seconds_3_worlds": 498.56,
+  "references_gpu_usd_3_worlds_at_1.99_per_h_excluding_pod_startup": 0.2755928888888889,
+  "gpu_rate_source": "program/gpu/bench/README.md (1,400-1,700 member-ticks/s float64 at B >= 64 on A100/H100); $1.99/h is r4-sbi-002's A100 40GB rate"
+ },
+ "inference_usd_per_rollout": {
+  "small_model_mechanics_test": "cents (Qwen3.5 9B at about $0.02 per million tokens)",
+  "pilot_models": [
+   7.6,
+   23.0
+  ],
+  "source": "evals/labworlds/rollout_kit/README.md: the October BF case study (PhySim v1); no v2 rollout exists, so this is an extrapolation, not a measurement"
+ },
+ "wall_clock_per_rollout_hours": {
+  "dry_run": {
+   "agent_envelope": 8,
+   "exam_build_cpu_4_cores": 0.30266666666666664,
+   "grading_worst_case": 2.1333333333333333,
+   "total_upper_bound": 10.436
+  },
+  "exam": {
+   "agent_envelope": 24,
+   "total_upper_bound": 26.436
+  }
+ }
+}

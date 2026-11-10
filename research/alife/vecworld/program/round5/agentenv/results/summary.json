@@ -1,0 +1,981 @@
+{
+ "study": "round 5, study agentenv (track 2): the PhySim-v2 exam as an agent-facing environment, proved end to end with scripted agents; no GPU, no model calls",
+ "folder": "research/alife/vecworld/program/round5/agentenv",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "hidden_values": "none in git: every instance's theta and secret were drawn at run time in a scratch directory and deleted; results hold scores, counters and commitment hashes",
+ "gpu": {
+  "jobs": [],
+  "gpu_hours": 0.0,
+  "billed_usd": 0.0,
+  "cap_usd": 0.0,
+  "source": "no request file was submitted"
+ },
+ "proof_ring": {
+  "source": "results/proof_ring.json",
+  "note": "the cheap mechanics world at statistical size; its sigma and rho describe the toy, not an exam candidate",
+  "world": "ring",
+  "n_worlds": 4,
+  "n_items": 256,
+  "config": {
+   "exam": {
+    "n_items": 64,
+    "R": 16,
+    "n_clim": 256
+   },
+   "lab": {
+    "max_ticks": 400,
+    "reset_cost": 1,
+    "total_nats": null
+   },
+   "predictor": {
+    "n_samples": 32,
+    "cpu_seconds": 30,
+    "wall_seconds": 60,
+    "memory_gib": 4,
+    "artifact_mib": 64
+   },
+   "envelope": {
+    "cpus": 4,
+    "wall_hours": 1,
+    "memory_gib": 8,
+    "gpu": false
+   },
+   "validation": {
+    "max_attempts": 16
+   }
+  },
+  "sizes": {
+   "n_lab": 8,
+   "n_design": 256,
+   "k_design": 2,
+   "n_train": 512
+  },
+  "platform": {
+   "machine": "x86_64",
+   "python": "3.12.3",
+   "cpu_count": 4,
+   "backend": "cpu",
+   "sandbox_capabilities": {
+    "root": true,
+    "namespaces": true,
+    "pid_namespace": true,
+    "setpriv": true
+   }
+  },
+  "wall_s": 512.1,
+  "policies": {
+   "value": {
+    "O": {
+     "L": 3.6695,
+     "skill_vs_C": 1.0832,
+     "skill_vs_O": 1.0
+    },
+    "K": {
+     "L": 4.9596,
+     "skill_vs_C": 0.0,
+     "skill_vs_O": 0.0
+    },
+    "S": {
+     "L": 3.7826,
+     "skill_vs_C": 0.9881,
+     "skill_vs_O": 0.9123
+    },
+    "D": {
+     "L": 4.5513,
+     "skill_vs_C": 0.3429,
+     "skill_vs_O": 0.3165
+    },
+    "P0": {
+     "L": 3.8114,
+     "skill_vs_C": 0.964,
+     "skill_vs_O": 0.89
+    },
+    "PM": {
+     "L": 3.8041,
+     "skill_vs_C": 0.9701,
+     "skill_vs_O": 0.8956
+    },
+    "C": {
+     "L": 3.7685,
+     "skill_vs_C": 1.0,
+     "skill_vs_O": 0.9232
+    },
+    "null": {
+     "L": 4.9497,
+     "skill_vs_C": 0.0083,
+     "skill_vs_O": 0.0077
+    }
+   },
+   "source": "results/proof_ring.json [pooled.policies]",
+   "definition": "L = item mean of the fair energy score summed over the declared cells; skill_vs_C = (L(K) - L) / (L(K) - L(C)); skill_vs_O likewise with the oracle"
+  },
+  "oes_mean": {
+   "value": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.7111,
+    "D": -2.4919,
+    "P0": 0.5949,
+    "PM": 0.6716,
+    "C": 0.8027,
+    "null": 0.081
+   },
+   "se": {
+    "climatology": 0.0,
+    "oracle": 0.0,
+    "S": 0.0466,
+    "D": 0.5341,
+    "P0": 0.0518,
+    "PM": 0.0392,
+    "C": 0.0339,
+    "null": 0.0282
+   },
+   "source": "results/proof_ring.json [pooled.oes]"
+  },
+  "acceptance": {
+   "value": {
+    "sigma": 0.036023559724071876,
+    "null_is": "P0",
+    "rho": 0.6710179139867614,
+    "sigma_items": {
+     "se": 0.0036898072536383614,
+     "p05": 0.03004813225600583,
+     "p95": 0.04208639382603418
+    },
+    "rho_items": {
+     "se": 0.06957757513441548,
+     "p05": 0.5455962107888563,
+     "p95": 0.7723904896447681
+    },
+    "sigma_worlds": {
+     "se": 0.008909277459757984,
+     "p05": 0.021786368433700853,
+     "p95": 0.05293484494546244
+    },
+    "rho_worlds": {
+     "se": 0.3798279058959497,
+     "p05": 0.009024079261444383,
+     "p95": 0.9325818940935824
+    },
+    "pass_sigma": false,
+    "pass_rho": true,
+    "per_world": {
+     "sigma": [
+      0.05155944404236906,
+      0.012918513435123994,
+      0.024361109794265767,
+      0.054631729628543665
+     ],
+     "rho": [
+      0.9126840417140658,
+      -2.085088369957288,
+      0.9763030628229001,
+      0.9024623251700643
+     ]
+    }
+   },
+   "source": "results/proof_ring.json [pooled.acceptance]"
+  },
+  "wall_s_note": null,
+  "per_policy_totals": {
+   "S": {
+    "lab_ticks_used": 1568,
+    "lab_episodes": 32,
+    "member_ticks_simulated": 196608,
+    "agent_cpu_s": 25.5,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.20171299999999803,
+    "submitted_by_agent": true
+   },
+   "D": {
+    "lab_ticks_used": 1568,
+    "lab_episodes": 32,
+    "member_ticks_simulated": 0,
+    "agent_cpu_s": 2.8,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.17820999999999998,
+    "submitted_by_agent": true
+   },
+   "P0": {
+    "lab_ticks_used": 0,
+    "lab_episodes": null,
+    "member_ticks_simulated": 98304,
+    "agent_cpu_s": 24.5,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.1596230000000034,
+    "submitted_by_agent": true
+   },
+   "PM": {
+    "lab_ticks_used": 0,
+    "lab_episodes": null,
+    "member_ticks_simulated": 98304,
+    "agent_cpu_s": 24.3,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.18631400000001008,
+    "submitted_by_agent": true
+   },
+   "C": {
+    "lab_ticks_used": 0,
+    "lab_episodes": null,
+    "member_ticks_simulated": 98304,
+    "agent_cpu_s": 25.3,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.23401699999999437,
+    "submitted_by_agent": true
+   },
+   "null": {
+    "lab_ticks_used": 0,
+    "lab_episodes": null,
+    "member_ticks_simulated": 98304,
+    "agent_cpu_s": 23.3,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.17483299999997826,
+    "submitted_by_agent": true
+   }
+  },
+  "S_inference": {
+   "posterior_sd_over_prior_sd": [
+    [
+     0.949723392042389,
+     0.4704549284322551,
+     0.3081951460463711
+    ],
+    [
+     0.4933146913739692,
+     0.41811803581893814,
+     0.281013199942305
+    ],
+    [
+     0.876620509796141,
+     0.6460591238147398,
+     0.37308302414869876
+    ],
+    [
+     1.025343791388238,
+     0.6167757788609006,
+     0.295185263934232
+    ]
+   ],
+   "abs_error_over_prior_sd": [
+    [
+     0.055169199403766044,
+     0.1637461353778725,
+     0.0037064328751518247
+    ],
+    [
+     0.48052304519117606,
+     0.5991294172275181,
+     0.24134465632540467
+    ],
+    [
+     0.7024087741701658,
+     0.19031134626278445,
+     0.11295968637250071
+    ],
+    [
+     0.3848933319062344,
+     0.12546993227588185,
+     0.18006422860482932
+    ]
+   ],
+   "source": "results/proof_ring.json [per_world[*].rollouts.S.posterior_sd_over_prior_sd, per_world[*].S_abs_error_over_prior_sd]"
+  },
+  "isolation_layers": {
+   "agent": {
+    "rlimits": true,
+    "mount_ns": true,
+    "net_ns": true,
+    "pid_ns": true,
+    "uid": 65534,
+    "hidden_paths": 10,
+    "binds": [
+     "workspace",
+     "ipc",
+     "agent_home"
+    ]
+   },
+   "predictor": {
+    "rlimits": true,
+    "mount_ns": true,
+    "net_ns": true,
+    "pid_ns": true,
+    "uid": 65534,
+    "hidden_paths": 10,
+    "binds": [
+     "submission",
+     "public",
+     "io"
+    ]
+   },
+   "source": "results/proof_ring.json [per_world[0].rollouts.S]"
+  },
+  "secret_commitments": [
+   "f3e4aa58bdaa1cb8fdd00b8a464fb2288cddfe08e8476a3f69e67f89c7202518",
+   "8e85977e6c72ef3aa6539ffdbb24d9dce178efaf202557fe26482ff3bffd70b3",
+   "b426536d3a71b7ab896e8b7b0b416645afc4cec456d9bb0bda6d081905ac3755",
+   "e9570ca47403bdd1424f055e4b3890fc2e37ed1f24b03d1306b95f9e72ab4716"
+  ]
+ },
+ "proof_gliders": {
+  "source": "results/proof_gliders.json",
+  "note": "SMOKE SIZE (8 items, 12 training episodes per policy): proves the gliders adapter, bundle and interface end to end on CPU; its scores, sigma and rho are noise and decide nothing",
+  "world": "gliders",
+  "n_worlds": 1,
+  "n_items": 8,
+  "config": {
+   "exam": {
+    "n_items": 8,
+    "R": 6,
+    "n_clim": 16
+   },
+   "lab": {
+    "max_ticks": 132,
+    "reset_cost": 1,
+    "total_nats": null
+   },
+   "predictor": {
+    "n_samples": 16,
+    "cpu_seconds": 60,
+    "wall_seconds": 120,
+    "memory_gib": 4,
+    "artifact_mib": 64
+   },
+   "envelope": {
+    "cpus": 4,
+    "wall_hours": 1,
+    "memory_gib": 8,
+    "gpu": false
+   },
+   "validation": {
+    "max_attempts": 16
+   }
+  },
+  "sizes": {
+   "n_lab": 4,
+   "n_design": 24,
+   "k_design": 1,
+   "n_train": 12,
+   "chunk": 4
+  },
+  "platform": {
+   "machine": "x86_64",
+   "python": "3.12.3",
+   "cpu_count": 4,
+   "backend": "cpu",
+   "sandbox_capabilities": {
+    "root": true,
+    "namespaces": true,
+    "pid_namespace": true,
+    "setpriv": true
+   }
+  },
+  "wall_s": 433.2,
+  "policies": {
+   "value": {
+    "O": {
+     "L": 0.5474,
+     "skill_vs_C": 1.8623,
+     "skill_vs_O": 1.0
+    },
+    "K": {
+     "L": 4.6488,
+     "skill_vs_C": 0.0,
+     "skill_vs_O": 0.0
+    },
+    "S": {
+     "L": 2.5273,
+     "skill_vs_C": 0.9633,
+     "skill_vs_O": 0.5173
+    },
+    "D": {
+     "L": 2.9539,
+     "skill_vs_C": 0.7696,
+     "skill_vs_O": 0.4132
+    },
+    "P0": {
+     "L": 2.4948,
+     "skill_vs_C": 0.9781,
+     "skill_vs_O": 0.5252
+    },
+    "C": {
+     "L": 2.4465,
+     "skill_vs_C": 1.0,
+     "skill_vs_O": 0.537
+    },
+    "null": {
+     "L": 5.1678,
+     "skill_vs_C": -0.2357,
+     "skill_vs_O": -0.1265
+    }
+   },
+   "source": "results/proof_gliders.json [pooled.policies]",
+   "definition": "L = item mean of the fair energy score summed over the declared cells; skill_vs_C = (L(K) - L) / (L(K) - L(C)); skill_vs_O likewise with the oracle"
+  },
+  "oes_mean": {
+   "value": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.4787,
+    "D": 0.3522,
+    "P0": 0.4894,
+    "C": 0.5015,
+    "null": -0.1423
+   },
+   "se": {
+    "climatology": 0.0,
+    "oracle": 0.0,
+    "S": 0.0291,
+    "D": 0.0507,
+    "P0": 0.0336,
+    "C": 0.0294,
+    "null": 0.0443
+   },
+   "source": "results/proof_gliders.json [pooled.oes]"
+  },
+  "acceptance": {
+   "value": {
+    "sigma": 0.021928443034848644,
+    "null_is": "P0",
+    "rho": -0.673723388182981,
+    "sigma_items": {
+     "se": 0.03803647682875336,
+     "p05": -0.03881717633003096,
+     "p95": 0.08668331150621417
+    },
+    "rho_items": {
+     "se": 27.910726176496524,
+     "p05": -8.270002768898735,
+     "p95": 7.232260382023843
+    },
+    "sigma_worlds": null,
+    "rho_worlds": null,
+    "pass_sigma": false,
+    "pass_rho": true,
+    "per_world": null
+   },
+   "source": "results/proof_gliders.json [pooled.acceptance]"
+  },
+  "wall_s_note": "this file's wall_s is the second invocation (the S rerun); the first took 1117.7 s (results/gliders_S_insample_failure.json)",
+  "per_policy_totals": {
+   "S": {
+    "lab_ticks_used": 132,
+    "lab_episodes": 4,
+    "member_ticks_simulated": 2952,
+    "agent_cpu_s": 365.3,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.13669799999996712,
+    "submitted_by_agent": true
+   },
+   "D": {
+    "lab_ticks_used": 132,
+    "lab_episodes": 4,
+    "member_ticks_simulated": 0,
+    "agent_cpu_s": 0.9,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.15924400000000105,
+    "submitted_by_agent": true
+   },
+   "P0": {
+    "lab_ticks_used": 0,
+    "lab_episodes": null,
+    "member_ticks_simulated": 984,
+    "agent_cpu_s": 160.9,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.16070300000001225,
+    "submitted_by_agent": true
+   },
+   "C": {
+    "lab_ticks_used": 0,
+    "lab_episodes": null,
+    "member_ticks_simulated": 984,
+    "agent_cpu_s": 162.7,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.15817600000002585,
+    "submitted_by_agent": true
+   },
+   "null": {
+    "lab_ticks_used": 0,
+    "lab_episodes": null,
+    "member_ticks_simulated": 984,
+    "agent_cpu_s": 166.8,
+    "failed_items": 0,
+    "predictor_cpu_s_per_item_max": 0.1761709999999539,
+    "submitted_by_agent": true
+   }
+  },
+  "S_inference": {
+   "posterior_sd_over_prior_sd": [
+    [
+     0.6572708846616412,
+     0.30508289146003537,
+     0.7930875981025881,
+     0.5761107229681881
+    ]
+   ],
+   "abs_error_over_prior_sd": [
+    [
+     0.17373105950291468,
+     1.0102294636869646,
+     0.8628115348643627,
+     0.8520531802903182
+    ]
+   ],
+   "source": "results/proof_gliders.json [per_world[*].rollouts.S.posterior_sd_over_prior_sd, per_world[*].S_abs_error_over_prior_sd]"
+  },
+  "isolation_layers": {
+   "agent": {
+    "rlimits": true,
+    "mount_ns": true,
+    "net_ns": true,
+    "pid_ns": true,
+    "uid": 65534,
+    "hidden_paths": 10,
+    "binds": [
+     "workspace",
+     "ipc",
+     "agent_home"
+    ]
+   },
+   "predictor": {
+    "rlimits": true,
+    "mount_ns": true,
+    "net_ns": true,
+    "pid_ns": true,
+    "uid": 65534,
+    "hidden_paths": 10,
+    "binds": [
+     "submission",
+     "public",
+     "io"
+    ]
+   },
+   "source": "results/proof_gliders.json [per_world[0].rollouts.S]"
+  },
+  "secret_commitments": [
+   "14659dbdef62f96f50af78ced2904813b3b1d6763060e202a48f3f96d3de0832"
+  ]
+ },
+ "probe": {
+  "value": {
+   "n_checks": 34,
+   "n_passed": 34,
+   "failed": [],
+   "skipped_no_capability": []
+  },
+  "checks": {
+   "agent_runs_unprivileged": true,
+   "agent_cannot_read_hidden": true,
+   "agent_cannot_read_evaluator_code": true,
+   "agent_sees_only_its_own_processes": true,
+   "agent_has_no_network": true,
+   "agent_cannot_write_outside_workspace": true,
+   "advance_before_reset_rejected": true,
+   "tick_cap_rejected": true,
+   "bounds_rejected": true,
+   "episode_cap_rejected_as_a_block": true,
+   "nan_rejected": true,
+   "bad_shape_rejected": true,
+   "oversized_block_rejected": true,
+   "rejections_charged_nothing": true,
+   "accepted_block_charged": true,
+   "tick_budget_rejected": true,
+   "unknown_operation_rejected": true,
+   "extra_argument_rejected": true,
+   "submission_path_confined": true,
+   "missing_submission_reported": true,
+   "symlink_not_followed": true,
+   "bad_shape_fails_validation": true,
+   "nondeterminism_fails_validation": true,
+   "cpu_limit_enforced": true,
+   "memory_limit_enforced": true,
+   "size_limit_enforced": true,
+   "predictor_runs_unprivileged": true,
+   "predictor_cannot_read_hidden": true,
+   "predictor_has_no_network": true,
+   "predictor_cannot_write_submission": true,
+   "good_submission_validates": true,
+   "submit_freezes": true,
+   "lab_closed_after_submit": true,
+   "graded_without_failures": true
+  },
+  "source": "results/probe_ring.json"
+ },
+ "acceptance_gliders_full_size": {
+  "value": {
+   "ridge": {
+    "2": {
+     "sigma": 0.0647,
+     "sigma_se_worlds": 0.0068,
+     "null_is": "P0",
+     "rho": 0.775,
+     "rho_se_worlds": 0.091,
+     "sigma_oes_mean": 0.0874,
+     "rho_oes_mean": 0.773
+    },
+    "8": {
+     "sigma": 0.0647,
+     "sigma_se_worlds": 0.0069,
+     "null_is": "P0",
+     "rho": 0.953,
+     "rho_se_worlds": 0.033,
+     "sigma_oes_mean": 0.0874,
+     "rho_oes_mean": 0.953
+    },
+    "32": {
+     "sigma": 0.0415,
+     "sigma_se_worlds": 0.008,
+     "null_is": "D",
+     "rho": 0.953,
+     "rho_se_worlds": 0.042,
+     "sigma_oes_mean": 0.0566,
+     "rho_oes_mean": 0.96
+    },
+    "128": {
+     "sigma": 0.0087,
+     "sigma_se_worlds": 0.0045,
+     "null_is": "D",
+     "rho": 1.011,
+     "rho_se_worlds": 0.048,
+     "sigma_oes_mean": 0.0111,
+     "rho_oes_mean": 1.01
+    },
+    "512": {
+     "sigma": -0.0024,
+     "sigma_se_worlds": 0.0029,
+     "null_is": "D",
+     "rho": 0.973,
+     "rho_se_worlds": 0.043,
+     "sigma_oes_mean": -0.0035,
+     "rho_oes_mean": 0.977
+    }
+   },
+   "net": {
+    "2": {
+     "sigma": 0.0304,
+     "sigma_se_worlds": 0.0063,
+     "null_is": "P0",
+     "rho": 0.895,
+     "rho_se_worlds": 0.143,
+     "sigma_oes_mean": 0.0371,
+     "rho_oes_mean": 0.858
+    },
+    "8": {
+     "sigma": 0.0304,
+     "sigma_se_worlds": 0.0067,
+     "null_is": "P0",
+     "rho": 0.904,
+     "rho_se_worlds": 0.131,
+     "sigma_oes_mean": 0.0371,
+     "rho_oes_mean": 0.87
+    },
+    "32": {
+     "sigma": 0.0304,
+     "sigma_se_worlds": 0.0065,
+     "null_is": "P0",
+     "rho": 1.136,
+     "rho_se_worlds": 0.169,
+     "sigma_oes_mean": 0.0371,
+     "rho_oes_mean": 1.153
+    },
+    "128": {
+     "sigma": 0.0304,
+     "sigma_se_worlds": 0.0067,
+     "null_is": "P0",
+     "rho": 0.997,
+     "rho_se_worlds": 0.213,
+     "sigma_oes_mean": 0.0371,
+     "rho_oes_mean": 0.969
+    },
+    "512": {
+     "sigma": 0.0284,
+     "sigma_se_worlds": 0.0036,
+     "null_is": "D",
+     "rho": 0.996,
+     "rho_se_worlds": 0.139,
+     "sigma_oes_mean": 0.0343,
+     "rho_oes_mean": 0.974
+    }
+   },
+   "amort": {
+    "2": {
+     "sigma": 0.0387,
+     "sigma_se_worlds": 0.0078,
+     "null_is": "P0",
+     "rho": 0.936,
+     "rho_se_worlds": 0.045,
+     "sigma_oes_mean": 0.0517,
+     "rho_oes_mean": 0.938
+    },
+    "8": {
+     "sigma": 0.0387,
+     "sigma_se_worlds": 0.0075,
+     "null_is": "P0",
+     "rho": 0.955,
+     "rho_se_worlds": 0.023,
+     "sigma_oes_mean": 0.0517,
+     "rho_oes_mean": 0.958
+    },
+    "32": {
+     "sigma": 0.0387,
+     "sigma_se_worlds": 0.0077,
+     "null_is": "P0",
+     "rho": 0.988,
+     "rho_se_worlds": 0.008,
+     "sigma_oes_mean": 0.0517,
+     "rho_oes_mean": 0.989
+    },
+    "128": {
+     "sigma": 0.0387,
+     "sigma_se_worlds": 0.0078,
+     "null_is": "P0",
+     "rho": 0.989,
+     "rho_se_worlds": 0.011,
+     "sigma_oes_mean": 0.0517,
+     "rho_oes_mean": 0.989
+    },
+    "512": {
+     "sigma": 0.0387,
+     "sigma_se_worlds": 0.0074,
+     "null_is": "P0",
+     "rho": 0.996,
+     "rho_se_worlds": 0.007,
+     "sigma_oes_mean": 0.0517,
+     "rho_oes_mean": 0.997
+    }
+   }
+  },
+  "bars": {
+   "sigma_min": 0.15,
+   "rho_max": 0.7
+  },
+  "n_items": 512,
+  "n_worlds": 8,
+  "source": "results/acceptance_gliders_round4.json [families.<family>.by_budget_episodes.<N>], recomputed with evaluator/acceptance.py from program/round4/sbi/results/job/scores.npz (GPU job r4-sbi-002)",
+  "note": "sigma, rho: pooled-L definition (ROADMAP section 1) with world-clustered bootstrap SE; *_oes_mean: the arithmetic of roadmap/checks/roadmap_envelope.py, reproduced"
+ },
+ "gliders_S_insample_failure": {
+  "value": {
+   "what": "the first gliders smoke run of policy S, with the regression summaries and the synthetic likelihood fitted on the SAME 12 design episodes (22 features, 4 parameters): the posterior collapsed on a wrong point. Kept as the record of a failure; agents/inference.py now cross-fits (projection on one half of the design, likelihood on the other)",
+   "sizes": {
+    "n_lab": 4,
+    "n_design": 12,
+    "k_design": 1,
+    "n_train": 12,
+    "chunk": 4
+   },
+   "n_items": 8,
+   "S_skill_vs_C": 0.9143260560043098,
+   "P0_skill_vs_C": 0.9780715569651514,
+   "posterior_sd_over_prior_sd": [
+    0.0001612198544071124,
+    0.0013058982539186895,
+    0.0006493061321603854,
+    0.0019569923629151257
+   ],
+   "abs_error_over_prior_sd": [
+    0.9511220108160872,
+    1.3419395658628253,
+    1.0462407177757072,
+    2.607746277918304
+   ],
+   "source": "prove.py run of 9 Nov 2026 23:28-23:47 UTC on the instance with secret commitment 14659dbdef62f96f50af78ced2904813b3b1d6763060e202a48f3f96d3de0832",
+   "first_invocation_wall_s": 1117.7,
+   "first_invocation_note": "that invocation also produced the D, P0, C and null rollouts kept in results/proof_gliders.json (their sandbox had no PID namespace yet); S was rerun on the same instance and frozen exam with a new laboratory budget"
+  },
+  "source": "results/gliders_S_insample_failure.json"
+ },
+ "bundles": {
+  "value": {
+   "what": "the public bundle (TASK.md + physim2 package with vendored simulator sources) built by evaluator/build_workspace.py for the proof runs",
+   "ring": {
+    "files": 22,
+    "bytes": 235108,
+    "manifest_sha256": "9ba7c904d8aff112b09f2faedd08ae4b011c3bec7fcf02df81d9b0cd9ad50834"
+   },
+   "gliders": {
+    "files": 37,
+    "bytes": 417935,
+    "manifest_sha256": "cd6703f253f68202a50acf56ae0d6ca26b6ee1ef13763ece942d71d19354267f"
+   },
+   "source": "<scratch>/<run>/prepare.json [bundle] of world 0 of each proof run"
+  },
+  "source": "results/bundles.json"
+ },
+ "final_collection_test": {
+  "value": {
+   "what": "final collection and failure paths on a ring instance (8 items): an agent that writes submission/ but never submits, an agent that does nothing, an agent stopped by the wall-clock limit",
+   "nosubmit": {
+    "submitted_before_finalization": false,
+    "final_collection_accepted": true,
+    "graded_failed_items": 0
+   },
+   "idle": {
+    "submitted_before_finalization": false,
+    "final_collection": "submission has no predict.py",
+    "grade": null
+   },
+   "timeout": {
+    "timed_out": true,
+    "wall_s": 3.0,
+    "grade": null
+   },
+   "skill_vs_O": {
+    "O": 1.0,
+    "K": 0.0,
+    "nosubmit": 0.2952,
+    "idle": 0.0,
+    "timeout": 0.0
+   },
+   "ok": true,
+   "note": "8 items and a 32-run climatology pool: the skill of the 'nosubmit' predictor (an unconditional Gaussian) is within item noise of 0 and decides nothing; the test is about the paths (collection, no predictor -> every item scored as K, wall-clock stop)"
+  },
+  "source": "results/final_collection_test.json"
+ },
+ "tcp_transport_test": {
+  "value": {
+   "bad_token_rejected": true,
+   "card_world": "ring",
+   "experiment_shape": [
+    6,
+    6
+   ],
+   "ticks_used": 6,
+   "ok": true
+  },
+  "source": "results/tcp_test.json (tests_tcp.py)"
+ },
+ "cost": {
+  "value": {
+   "cpu_s_per_member_tick": {
+    "gliders": {
+     "value": 0.15,
+     "source": "task statement of this study; EXAM.md section 5 has 0.136 (closure study)",
+     "measured_here_agent_sandbox": 0.16351221353861786,
+     "measured_note": "whole P0 agent process (import, compile, simulation, fit) / member-ticks, tiny run, shared CPU"
+    },
+    "membrane": {
+     "value": 0.012269576799999982,
+     "source": "track1/membrane_world/results/summary.json [timing.world_tick_L0_L1_L2_B1_per_member_s]"
+    },
+    "ring": {
+     "value": 0.0002494329660135905,
+     "source": "this study: results/proof_ring.json, P0 agent process CPU / member-ticks"
+    }
+   },
+   "episode_shape_ticks": {
+    "gliders": {
+     "burn": 50,
+     "P": 16,
+     "H": 16,
+     "source": "gliders_exam/pilot.py, round4/sbi config"
+    },
+    "membrane": {
+     "burn": 150,
+     "P": 16,
+     "H": 16,
+     "source": "no exam exists; burn 150 ticks = the start tick of membrane_world/probe_input.py [summary.json probe_input.design.t0_tick], P and H assumed as gliders"
+    },
+    "ring": {
+     "burn": 0,
+     "P": 16,
+     "H": 32,
+     "source": "physim2/world_ring.py"
+    }
+   },
+   "recipes_gliders": {
+    "P0_set_round4": {
+     "episodes": 1024,
+     "member_ticks": 83968,
+     "source": "round4/sbi summary.json [job.member_ticks.sims_prior_pred]",
+     "core_hours_at_0.15": 3.4986666666666664,
+     "hours_on_4_cores": 0.8746666666666666
+    },
+    "S_full_round4": {
+     "episodes": 9216,
+     "member_ticks": 755712,
+     "source": "round4/sbi summary.json [job.member_ticks.design + sims_post2 / n_truth] (as roadmap_envelope.py)",
+     "core_hours_at_0.15": 31.488,
+     "hours_on_4_cores": 7.872
+    },
+    "S_shrunk_proposed": {
+     "episodes": 1536,
+     "member_ticks": 125952,
+     "source": "this study's reference agent at dry-run size (design 256 x 2, training 1,024); NOT validated at this size on gliders",
+     "core_hours_at_0.15": 5.248,
+     "hours_on_4_cores": 1.312
+    }
+   },
+   "envelopes": {
+    "dry_run_4c_8h": {
+     "cpus": 4,
+     "wall_hours": 8,
+     "core_hours": 32,
+     "gliders_member_ticks": 768000,
+     "gliders_episodes": 9365,
+     "over_P0_set": 9.146341463414634,
+     "over_S_full_round4": 1.016260162601626,
+     "over_S_shrunk": 6.097560975609756,
+     "membrane_member_ticks": 9389076
+    },
+    "exam_4c_24h": {
+     "cpus": 4,
+     "wall_hours": 24,
+     "core_hours": 96,
+     "gliders_member_ticks": 2304000,
+     "gliders_episodes": 28097,
+     "over_P0_set": 27.4390243902439,
+     "over_S_full_round4": 3.048780487804878,
+     "over_S_shrunk": 18.29268292682927,
+     "membrane_member_ticks": 28167230
+    }
+   },
+   "worlds": {
+    "gliders": {
+     "cpu_s_per_episode": 12.299999999999999,
+     "ticks_per_episode": 82
+    },
+    "membrane": {
+     "cpu_s_per_episode": 2.233062977599997,
+     "ticks_per_episode": 182,
+     "cheaper_than_gliders_per_tick": 12.225360535662503,
+     "cheaper_than_gliders_per_episode": 5.508129472111676
+    }
+   },
+   "evaluator_gliders_dry_run": {
+    "exam_member_ticks": 29056,
+    "exam_core_hours": 1.2106666666666666,
+    "lab_exam_shaped_episodes_in_budget": 121,
+    "lab_member_ticks_incl_hidden_burn_in": 10050,
+    "lab_cpu_minutes": 25.125,
+    "grading_cpu_minutes_worst_case": 64.0,
+    "references_member_ticks_per_world_C_and_S": 209920,
+    "references_member_ticks_shared_P0_and_PM": 167936,
+    "references_core_hours_3_worlds_cpu": 33.23733333333333,
+    "references_gpu_seconds_3_worlds": 498.56,
+    "references_gpu_usd_3_worlds_at_1.99_per_h_excluding_pod_startup": 0.2755928888888889,
+    "gpu_rate_source": "program/gpu/bench/README.md (1,400-1,700 member-ticks/s float64 at B >= 64 on A100/H100); $1.99/h is r4-sbi-002's A100 40GB rate"
+   },
+   "inference_usd_per_rollout": {
+    "small_model_mechanics_test": "cents (Qwen3.5 9B at about $0.02 per million tokens)",
+    "pilot_models": [
+     7.6,
+     23.0
+    ],
+    "source": "evals/labworlds/rollout_kit/README.md: the October BF case study (PhySim v1); no v2 rollout exists, so this is an extrapolation, not a measurement"
+   },
+   "wall_clock_per_rollout_hours": {
+    "dry_run": {
+     "agent_envelope": 8,
+     "exam_build_cpu_4_cores": 0.30266666666666664,
+     "grading_worst_case": 2.1333333333333333,
+     "total_upper_bound": 10.436
+    },
+    "exam": {
+     "agent_envelope": 24,
+     "total_upper_bound": 26.436
+    }
+   }
+  },
+  "source": "results/cost.json (cost_model.py)"
+ }
+}
