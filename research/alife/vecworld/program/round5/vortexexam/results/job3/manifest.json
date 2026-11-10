@@ -1,172 +1,173 @@
 {
-  "archive_sha256": "6d631234b460db25af42fa21a740b2e78487e8cc962b6d463960a24a7e943d05",
-  "files": [
-    {
-      "bytes": 2688,
-      "in_git": true,
-      "path": "sysinfo.txt",
-      "sha256": "1b007e23882a242ceac567168d4519f694fa332452cd6d72c04fd238613deba5"
-    },
-    {
-      "bytes": 0,
-      "in_git": true,
-      "path": "job.log",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    {
-      "bytes": 286,
-      "in_git": true,
-      "path": "setup.log",
-      "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
-    },
-    {
-      "bytes": 39279,
-      "in_git": true,
-      "path": "run.log",
-      "sha256": "5f28af9a0c33f983ca4b0c0c0a6bd8d2345c2f7902fb73c39ccceef1110783ca"
-    },
-    {
-      "bytes": 2,
-      "in_git": true,
-      "path": "setup.rc",
-      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
-    },
-    {
-      "bytes": 2,
-      "in_git": true,
-      "path": "exit.rc",
-      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
-    },
-    {
-      "bytes": 11,
-      "in_git": true,
-      "path": "setup.start",
-      "sha256": "8cad6320746b38a08059fa66591c10de0507f3fffa1be9de4a7c1d2af2899596"
-    },
-    {
-      "bytes": 11,
-      "in_git": true,
-      "path": "run.start",
-      "sha256": "46844914548bec2c6a95dee3f0666581275b586d97654f98e9807a377e686583"
-    },
-    {
-      "bytes": 11,
-      "in_git": true,
-      "path": "run.end",
-      "sha256": "cbe2aed5b529ec120b30e8d76f33e10b812b835b1edb5f5424e7e3bf0cd32eae"
-    },
-    {
-      "bytes": 385,
-      "in_git": true,
-      "path": "out-listing.tsv",
-      "sha256": "096c8f7be60f3fc3bcf1041b5720eaee10dc3f7a75f803215043f0fb8cfa794e"
-    },
-    {
-      "bytes": 8098,
-      "in_git": true,
-      "path": "out/lab.json",
-      "sha256": "dec63ef97b70286e48f9fbe2328184c891ad80f13b4df2d4adac0959e110d3df"
-    },
-    {
-      "bytes": 905814,
-      "in_git": true,
-      "path": "out/exam.npz",
-      "sha256": "417bf2915a1e6afff595d783d0ec91a12a88f3dd91033e446c61479fe75f790f"
-    },
-    {
-      "bytes": 53959,
-      "in_git": true,
-      "path": "out/train_info.json",
-      "sha256": "1585b06eb8529c9fb970b651d9320193757fc9a1d616c42e3392ebc0c963d079"
-    },
-    {
-      "bytes": 315419,
-      "in_git": true,
-      "path": "out/prediction.json",
-      "sha256": "a22fbc37d3ffdacf34a62291091178cb9111d8b69535b18caefb955482d6cde0"
-    },
-    {
-      "bytes": 43824,
-      "in_git": true,
-      "path": "out/design.npz",
-      "sha256": "f0f117bf772fc46e4d089f24d740bc1ddbbc41b819a9bd3cbfd6e89772004abb"
-    },
-    {
-      "bytes": 3520445,
-      "in_git": true,
-      "path": "out/scores.npz",
-      "sha256": "73bcfde7497dedda363f6b588d67dd07fc59368cd4ea035991db77f357518a55"
-    },
-    {
-      "bytes": 3624451,
-      "in_git": true,
-      "path": "out/design_S_00.npz",
-      "sha256": "9c6dd086302df1756255f2df03fa2c6d6b44ac306c1a1a64b2f4debb988a7c9f"
-    },
-    {
-      "bytes": 3610841,
-      "in_git": true,
-      "path": "out/design_S_01.npz",
-      "sha256": "2960f0dd76dcec2e5cfd0bbf441010cc1214578ed1318218bf0f799207106adb"
-    },
-    {
-      "bytes": 80543,
-      "in_git": true,
-      "path": "out/identification.json",
-      "sha256": "1b15cd48dab6403f476300931a2a4ea1cd97f2cf113549d16c94bd55216b2b7f"
-    },
-    {
-      "bytes": 1150557,
-      "in_git": true,
-      "path": "out/lab.npz",
-      "sha256": "600237e166eaa84b7b58c635e981d668ab9329eea0016876b89599fadc08e88d"
-    },
-    {
-      "bytes": 2772,
-      "in_git": true,
-      "path": "out/truths.json",
-      "sha256": "5bc97f35533a1b899a954cd883aafae12e2ff05ba7a902ec37fb6efceebf3c3f"
-    },
-    {
-      "bytes": 36228,
-      "in_git": true,
-      "path": "out/progress.txt",
-      "sha256": "b8a3a147fc2b177c72555d85598993d325a9bf61d9d2c9d80c624a2aca2eb910"
-    },
-    {
-      "bytes": 5613,
-      "in_git": true,
-      "path": "out/info.json",
-      "sha256": "5574c2b832196cf55a358a7f022bc4958dcfe123e51371df14651cde29dabead"
-    },
-    {
-      "bytes": 1060779,
-      "in_git": true,
-      "path": "out/posterior_draws.npz",
-      "sha256": "38cbb3e10715fcc81f97db40fd71a52519f18a3595af21cb6f025853caaca2ba"
-    },
-    {
-      "bytes": 615,
-      "in_git": true,
-      "path": "out/viability_prior.json",
-      "sha256": "7b722d6ef8514af53308ea5ccc04a6ab54c006734919a15b9a7a47c3346d295f"
-    },
-    {
-      "bytes": 25602,
-      "in_git": true,
-      "path": "out/items.npz",
-      "sha256": "0e6209fe5117b5978677c228064f2335c934e988a6067eace68a61fa4129488d"
-    }
-  ],
-  "git_limits": {
-    "file_max_mb": 20,
-    "max_files": 2000,
-    "max_mb": 50.0
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "archive_sha256": "6d631234b460db25af42fa21a740b2e78487e8cc962b6d463960a24a7e943d05",
+ "files": [
+  {
+   "bytes": 2688,
+   "in_git": true,
+   "path": "sysinfo.txt",
+   "sha256": "1b007e23882a242ceac567168d4519f694fa332452cd6d72c04fd238613deba5"
   },
-  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r5-vortexexam-006/collected/; ask for them by path.",
-  "skipped": [],
-  "skipped_count": 0,
-  "transfer_bytes": 14072809,
-  "transfer_stopped": null,
-  "truncated": false
+  {
+   "bytes": 0,
+   "in_git": true,
+   "path": "job.log",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "bytes": 286,
+   "in_git": true,
+   "path": "setup.log",
+   "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
+  },
+  {
+   "bytes": 39279,
+   "in_git": true,
+   "path": "run.log",
+   "sha256": "5f28af9a0c33f983ca4b0c0c0a6bd8d2345c2f7902fb73c39ccceef1110783ca"
+  },
+  {
+   "bytes": 2,
+   "in_git": true,
+   "path": "setup.rc",
+   "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+   "bytes": 2,
+   "in_git": true,
+   "path": "exit.rc",
+   "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+   "bytes": 11,
+   "in_git": true,
+   "path": "setup.start",
+   "sha256": "8cad6320746b38a08059fa66591c10de0507f3fffa1be9de4a7c1d2af2899596"
+  },
+  {
+   "bytes": 11,
+   "in_git": true,
+   "path": "run.start",
+   "sha256": "46844914548bec2c6a95dee3f0666581275b586d97654f98e9807a377e686583"
+  },
+  {
+   "bytes": 11,
+   "in_git": true,
+   "path": "run.end",
+   "sha256": "cbe2aed5b529ec120b30e8d76f33e10b812b835b1edb5f5424e7e3bf0cd32eae"
+  },
+  {
+   "bytes": 385,
+   "in_git": true,
+   "path": "out-listing.tsv",
+   "sha256": "096c8f7be60f3fc3bcf1041b5720eaee10dc3f7a75f803215043f0fb8cfa794e"
+  },
+  {
+   "bytes": 8098,
+   "in_git": true,
+   "path": "out/lab.json",
+   "sha256": "dec63ef97b70286e48f9fbe2328184c891ad80f13b4df2d4adac0959e110d3df"
+  },
+  {
+   "bytes": 905814,
+   "in_git": true,
+   "path": "out/exam.npz",
+   "sha256": "417bf2915a1e6afff595d783d0ec91a12a88f3dd91033e446c61479fe75f790f"
+  },
+  {
+   "bytes": 53959,
+   "in_git": true,
+   "path": "out/train_info.json",
+   "sha256": "1585b06eb8529c9fb970b651d9320193757fc9a1d616c42e3392ebc0c963d079"
+  },
+  {
+   "bytes": 315419,
+   "in_git": true,
+   "path": "out/prediction.json",
+   "sha256": "a22fbc37d3ffdacf34a62291091178cb9111d8b69535b18caefb955482d6cde0"
+  },
+  {
+   "bytes": 43824,
+   "in_git": true,
+   "path": "out/design.npz",
+   "sha256": "f0f117bf772fc46e4d089f24d740bc1ddbbc41b819a9bd3cbfd6e89772004abb"
+  },
+  {
+   "bytes": 3520445,
+   "in_git": true,
+   "path": "out/scores.npz",
+   "sha256": "73bcfde7497dedda363f6b588d67dd07fc59368cd4ea035991db77f357518a55"
+  },
+  {
+   "bytes": 3624451,
+   "in_git": true,
+   "path": "out/design_S_00.npz",
+   "sha256": "9c6dd086302df1756255f2df03fa2c6d6b44ac306c1a1a64b2f4debb988a7c9f"
+  },
+  {
+   "bytes": 3610841,
+   "in_git": true,
+   "path": "out/design_S_01.npz",
+   "sha256": "2960f0dd76dcec2e5cfd0bbf441010cc1214578ed1318218bf0f799207106adb"
+  },
+  {
+   "bytes": 80543,
+   "in_git": true,
+   "path": "out/identification.json",
+   "sha256": "1b15cd48dab6403f476300931a2a4ea1cd97f2cf113549d16c94bd55216b2b7f"
+  },
+  {
+   "bytes": 1150557,
+   "in_git": true,
+   "path": "out/lab.npz",
+   "sha256": "600237e166eaa84b7b58c635e981d668ab9329eea0016876b89599fadc08e88d"
+  },
+  {
+   "bytes": 2772,
+   "in_git": true,
+   "path": "out/truths.json",
+   "sha256": "5bc97f35533a1b899a954cd883aafae12e2ff05ba7a902ec37fb6efceebf3c3f"
+  },
+  {
+   "bytes": 36228,
+   "in_git": true,
+   "path": "out/progress.txt",
+   "sha256": "b8a3a147fc2b177c72555d85598993d325a9bf61d9d2c9d80c624a2aca2eb910"
+  },
+  {
+   "bytes": 5613,
+   "in_git": true,
+   "path": "out/info.json",
+   "sha256": "5574c2b832196cf55a358a7f022bc4958dcfe123e51371df14651cde29dabead"
+  },
+  {
+   "bytes": 1060779,
+   "in_git": true,
+   "path": "out/posterior_draws.npz",
+   "sha256": "38cbb3e10715fcc81f97db40fd71a52519f18a3595af21cb6f025853caaca2ba"
+  },
+  {
+   "bytes": 615,
+   "in_git": true,
+   "path": "out/viability_prior.json",
+   "sha256": "7b722d6ef8514af53308ea5ccc04a6ab54c006734919a15b9a7a47c3346d295f"
+  },
+  {
+   "bytes": 25602,
+   "in_git": true,
+   "path": "out/items.npz",
+   "sha256": "0e6209fe5117b5978677c228064f2335c934e988a6067eace68a61fa4129488d"
+  }
+ ],
+ "git_limits": {
+  "file_max_mb": 20,
+  "max_files": 2000,
+  "max_mb": 50.0
+ },
+ "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r5-vortexexam-006/collected/; ask for them by path.",
+ "skipped": [],
+ "skipped_count": 0,
+ "transfer_bytes": 14072809,
+ "transfer_stopped": null,
+ "truncated": false
 }

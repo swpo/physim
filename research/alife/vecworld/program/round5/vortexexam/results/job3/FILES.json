@@ -1,7 +1,7 @@
 {
  "PILOT_NEVER_REUSE_AS_EXAM": true,
  "job_id": "r5-vortexexam-006",
- "gpu_jobs_commit": "f7c35a92a8870a55a562544555669f6d1b249b5b",
+ "gpu_jobs_commit": "be6a46fc476e31aa6f2c0bd759c273ba45520f86",
  "files_bytes": [
   [
    "manifest.json",

@@ -1,3 +1,4 @@
+PILOT_NEVER_REUSE_AS_EXAM: pilot data, never to be reused as an exam (line added by fetch_job.py)
 23:46:30 [   0.0 min] backend gpu devices ['cuda:0'] jax 0.12.0.1 smoke=False
 23:46:42 [   0.2 min]   bench H=64 B=256: 1387.9 member-ticks/s (first call 6s, tracker 0.006 ms/member, host level-1/2 0.006 ms/member-tick, mem {'bytes_in_use': 50981376, 'peak_bytes_in_use': 505121536, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 268435456, 'pool_bytes': 538968064, 'peak_pool_bytes': 538968064})
 23:46:55 [   0.4 min]   bench H=128 B=256: 425.3 member-ticks/s (first call 9s, tracker 0.026 ms/member, host level-1/2 0.013 ms/member-tick, mem {'bytes_in_use': 210189312, 'peak_bytes_in_use': 1499406848, 'bytes_limit': 112516399104, 'bytes_reserved': 0, 'peak_bytes_reserved': 0, 'largest_free_block_bytes': 1073741824, 'pool_bytes': 2149580800, 'peak_pool_bytes': 2149580800})

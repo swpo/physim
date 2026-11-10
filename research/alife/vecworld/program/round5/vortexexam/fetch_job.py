@@ -6,7 +6,9 @@ SCRATCH_DIR/NAME gets every file of jobs/JOB_ID/out (arrays included; not commit
 results/NAME gets status.json and the small JSON / text outputs (under 2 MB each). JSON outputs that hold pilot
 truths, Lab episodes, posteriors or exam answers get the entry PILOT_NEVER_REUSE_AS_EXAM when the job did not
 write it (the Mac's review of r5-vortexexam-003, point 2): a dict gets the key, a list of dicts gets it in every
-element. Nothing else in the copies is changed; the originals stay on the gpu-jobs branch.
+element; status.json and manifest.json get it too (the log tails in status.json quote the pilot truths), and
+text logs get a first line with it. Nothing else in the copies is changed; the originals stay on the gpu-jobs
+branch.
 This is an analysis helper (it calls git); it is never part of a GPU job.
 """
 import json
@@ -58,11 +60,12 @@ def main():
         if len(blob) <= SMALL and out_rel.endswith((".json", ".txt")):
             q = os.path.join(res, out_rel)
             os.makedirs(os.path.dirname(q), exist_ok=True)
-            if out_rel.endswith(".json") and out_rel not in ("status.json", "manifest.json"):
+            if out_rel.endswith(".json"):                 # status.json too: its log tails quote the pilot truths
                 json.dump(mark(json.loads(blob)), open(q, "w"), indent=1)
-            else:
+            else:                                         # text logs: the marker as a first line
                 with open(q, "wb") as fh:
-                    fh.write(blob)
+                    fh.write((MARK + ": pilot data, never to be reused as an exam (line added by fetch_job.py)\n").encode()
+                             + blob)
     json.dump({MARK: True, "job_id": job, "gpu_jobs_commit": git(repo, "rev-parse", ref).strip(),
                "files_bytes": listing,
                "note": "files of origin/gpu-jobs:jobs/<job_id>/out; the JSON copies in this folder carry the pilot "
