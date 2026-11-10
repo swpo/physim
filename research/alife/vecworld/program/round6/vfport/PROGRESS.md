@@ -1,5 +1,16 @@
 # vfport: PROGRESS
 
+## HOST-SAFETY FIXER, round 2 (after the round-1 verdict, NO-GO narrow) -- 10 Nov 2026, IN PROGRESS
+- Role: implement the seven remaining changes of "Re-audit, round 1" (HOST_SAFETY_AUDIT.md): runbook text and one
+  rehearsal in session mode. No file listed in PIN.sha256 changes (sha256 7aa9bbfc...f64c19 must stay).
+- Worktree `/home/user/wt/vfsafe2` (branch wt-vfsafe2, pushes to `claude/fisim-agent-world-research-hepmlz`). Scratch
+  `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/` (the rehearsal's clone, its
+  .venv and its pilot folders live in `.../vfsafe2/rehearsal`; nothing there survives a restart).
+- State (16:35 UTC): started; audit and runbook read in full; nothing changed yet, nothing running.
+- If the container restarted: `pgrep -x dockerd >/dev/null || (nohup dockerd --feature containerd-snapshotter=false >
+  <scratch>/vfsafe2/dockerd.log 2>&1 &)`; `docker ps -a --filter label=verifiers.run=physim2-pilot-20261110` lists
+  a cut rehearsal's containers (remove by exact name); then go on from the state line above.
+
 ## VERDICT, round 1 (of the branch at 73829e5c6, after the two re-audits) -- 10 Nov 2026, finished
 - Verdict: NO-GO for the smoke test on the Mac, NO-GO for the model rollout. RUNBOOK_MAC.md stays ON HOLD and was
   not changed. The verdict, its table, the seven remaining changes and the residual risks are the section
