@@ -11,8 +11,15 @@ under tripwires, real cleanups only in throwaway containers without a host mount
 ### State (kept current)
 - 14:30 UTC: container had restarted (uptime 9 min); dockerd started again (classic image store, overlay2, cgroup v1);
   images physim2-ring:1, localhost/verifiers-network:1, python:3.12-slim present; no container.
-- 15:25 UTC: code of the nine changes and S1, S2 written and tested; candidate for the pin committed. Next: the
-  rehearsal of steps 0 to 2 from a fresh clone (scratch `vfsafe1/rehearsal`), then README, summary, the pin commit.
+- 15:10 UTC: code of the nine changes and S1, S2 written and tested; candidate for the pin pushed: cac38e324.
+- 15:12 UTC: rehearsal started from a fresh sparse, shallow clone of cac38e324 in scratch `vfsafe1/rehearsal`
+  (its own .venv by `uv sync`, 6.7 s from uv's cache). Step 0 and step 1 as written, except the image build (not
+  run: the shared image exists, proxy, 2 GB disk). Step 2a: interrupted twice on purpose (SIGTERM to the tool by
+  the runbook's own procedure: vf-eval removed its container and laboratory within 4 s; then SIGKILL of vf-eval:
+  one container and the laboratory were left, found by the status command, removed by exact name and pid; the
+  laboratory's working folder under ~/.cache/verifiers stays, which the runbook did not say), then run to the
+  end: all graded, 0 failed items, 2.68 s per item box. Step 2b running since 15:24 (about 18 minutes), then 2c,
+  step 4, the record `results/rehearsal_round1.json`, the runbook's text fixes, README, summary, the pin commit.
 
 ### Done (code)
 - 1 (A1): runbook guard on every command, uv with --project and a dry run first. 2 (A2): `tools/vfrun.py` needs
