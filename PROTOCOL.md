@@ -117,6 +117,11 @@ including while the pod is still being provisioned. The Mac sees it within about
   without asking. Larger caps wait in `needs_approval` until the user approves
   them on the Mac.
 - At most 2 pods run at the same time. Extra jobs wait in `queued`.
+- An offer is priced at the higher of its listed rate and the rate a pod of the
+  same offer actually billed in the last 7 days (a nebius H200 is listed at
+  $5.55/h but bills $6.69/h). Size `cap_usd` to rate x (`max_hours` + 0.25) at
+  the billed rate, rounded up with a little headroom: a pod whose billed rate
+  does not fit the cap is stopped as soon as it reports its price.
 
 ## Tips
 
