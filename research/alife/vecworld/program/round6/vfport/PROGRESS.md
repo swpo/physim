@@ -1,5 +1,19 @@
 # vfport: PROGRESS
 
+## RE-AUDIT of the code, round 2 (independent; of commit 40c697e54) -- 10 Nov 2026, in progress
+- Role: re-audit of the CODE only (findings A3, A4, A5; required changes 3, 4, 5; the whole diff since 997005f56
+  for new destructive paths; the required tests). Returns a numbered list and a GO or NO-GO on the code to the
+  coordinator. Changes no file but this section.
+- Worktree `/home/user/wt/vfreaud2a` (branch wt-vfreaud2a); scratch
+  `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfreaud2a/` (a `git archive` of the head).
+- Done so far: HOST_SAFETY_AUDIT.md read in full; `physim2_env/public/_item.py` read in full.
+- Next step (exact): read the diff of `grading.py`, `taskset.py`, `access.py`, the three box scripts and the tools;
+  then the pure-function attacks on `foreign_mounts` (host, no destructive call reachable), then
+  `tools/check_safety.py` (tripwires) and `tools/check_driver.py` (throwaway container, no host path).
+- If the container restarted: nothing of this role survives but this note; start again from the archive command
+  of the role's brief. No container of this role is left unless a name `vfreaud2a-*` shows in `docker ps -a`
+  (remove by that exact name).
+
 ## HOST-SAFETY FIXER, round 2 (after the round-1 verdict, NO-GO narrow) -- 10 Nov 2026, finished
 - Role: the seven remaining changes of "Re-audit, round 1" (HOST_SAFETY_AUDIT.md): runbook text and one rehearsal
   in session mode. No file listed in PIN.sha256 changed (sha256 7aa9bbfc...f64c19; `tools/pin.py --check`: 105
