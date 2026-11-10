@@ -1,5 +1,18 @@
 # vfport: PROGRESS
 
+## VERDICT, round 3 pass 1 (of branch head db3ff5a6e) -- 10 Nov 2026, UNDER WAY
+- Role: the round-3 verdict from the fixer's report and the two re-audits (code: GO; runbook: NO-GO as written,
+  narrowly). I check what I rely on at the head myself. I write only `HOST_SAFETY_AUDIT.md` (first line and a new
+  section "Re-audit, round 3"), the hold notice of `RUNBOOK_MAC.md` (only if GO) and this note.
+- Worktree `/home/user/wt/vfr3verdict1` (branch `wt-vfr3verdict1`), scratch
+  `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3verdict1/`.
+- Done so far: `HOST_SAFETY_AUDIT.md` and `RUNBOOK_MAC.md` read in full at the head.
+- Next step (exact): read `tools/vfrun.py`, `physim2_env/_nokey.py`, `tools/vfeval.py`, `tools/prove.py`,
+  `tools/build_reference.py` and the diff of the other pinned files since 40c697e54; recompute the pin from a
+  clean archive; check the open items of the runbook re-audit (2, 5, 6, 7, 10, 11, 12) one by one against the
+  text; then write the section and the verdict.
+- If the container restarted: reuse the worktree if it exists (see the task), start from "Next step".
+
 ## RE-AUDIT of the runbook, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, finished
 - Role: re-audit of `RUNBOOK_MAC.md` only, read as the Mac session reads it. The report went back to the coordinator
   as text. **My verdict on the runbook: NO-GO as written, narrowly** (prose, and one line of one command; no pinned
