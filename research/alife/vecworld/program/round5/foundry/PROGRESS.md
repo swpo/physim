@@ -1,6 +1,6 @@
 # PROGRESS (study foundry, round 5) -- kept for restarts
 
-Updated 2026-11-10 05:08 UTC (instance 1; the study started at 03:40 UTC).
+Updated 2026-11-10 05:13 UTC (instance 1; the study started at 03:40 UTC).
 
 ## Done
 - Worktree /home/user/wt/foundry (branch wt-foundry, sparse research/alife/vecworld).
@@ -39,6 +39,9 @@ Updated 2026-11-10 05:08 UTC (instance 1; the study started at 03:40 UTC).
   They only matter for a second job.
 - results/recheck_cpu_first8.json: draws 0-7 of prior seed 2026 on CPU at screen size (7 uniform, 1 frozen),
   to compare with the GPU's types for the same draws.
+
+- 05:10:56 UTC: r5-foundry-001 RUNNING on an H100 80GB (datacrunch, $5.02/h); run deadline 06:55:56 UTC.
+  Expected end about 06:00 UTC.
 
 ## Next step
 1. (done) final tiny CPU test passed (exit 0, 433 s); request pushed.
