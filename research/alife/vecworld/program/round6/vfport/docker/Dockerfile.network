@@ -1,0 +1,16 @@
+# Network helper for verifiers' Docker runtime: it runs iptables in the box's network namespace when a task
+# declares a network policy. verifiers builds its own from alpine:3.22 (verifiers/v1/runtimes/docker/__init__.py:
+# 176-192) when `localhost/verifiers-network:1` is absent. Use this twin ONLY where that build cannot reach the
+# package mirror directly (a session behind a TLS-intercepting proxy); it shares the base image of the exam.
+#
+#   cp <proxy CA bundle> docker/extra-ca.crt
+#   docker build --network host --build-arg HTTPS_PROXY=$HTTPS_PROXY -f docker/Dockerfile.network \
+#       -t localhost/verifiers-network:1 docker/
+FROM python:3.12-slim
+ARG HTTPS_PROXY=""
+COPY extra-ca.crt /tmp/extra-ca.crt
+RUN set -e; if [ -s /tmp/extra-ca.crt ]; then \
+      sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.list.d/debian.sources; \
+      printf 'Acquire::https::Proxy "%s";\nAcquire::https::CaInfo "/tmp/extra-ca.crt";\n' "$HTTPS_PROXY" > /etc/apt/apt.conf.d/99proxy; fi; \
+    apt-get update -q && apt-get install -y -q --no-install-recommends iptables iproute2 \
+ && rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/99proxy /tmp/extra-ca.crt
