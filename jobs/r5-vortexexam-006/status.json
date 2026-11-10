@@ -1,9 +1,33 @@
 {
+  "billing_window_hours": 3.65,
+  "bundle": {
+    "bundle_sha256": "8eddd02145fe1a74cc3a5cba2337100795d380bb4a0ae2ef92d1555ca25c0586",
+    "files": {
+      "job.sh": "6d70bf1f963f23748ab4805a21052848360f4bd34e2a222ebced3a5d3ce2135a",
+      "request.json": "6d3c8d6183f190615b093a2a9500258cb7fd2c19241a4aee59c30d0e53790f11",
+      "run.sh": "25d1d9d68956e6594d9552bac19a9c2b40ad703b8d63aa9aed262a4529da5d25",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "68ac6962947f12151d64717fcb2500784b4388510494403ae12d5ef164971797"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1/vw",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/round5/vortexexam",
+      "research/alife/vecworld/program/round5/agentenv/evaluator"
+    ],
+    "ref": "f5daa49789d8235da1a67e908de6b6a45342acee",
+    "src_bytes": 628929
+  },
   "cap_usd": 19.6,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-10T03:03:54Z",
@@ -14,11 +38,35 @@
       "at": "2026-11-10T03:04:45Z",
       "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $5.77",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T03:04:51Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-vortexexam-006",
   "max_estimate_usd": 5.77,
-  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $5.77",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 3,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
   "plan": {
     "max_estimate_usd": 5.77,
     "offers": [
@@ -44,12 +92,14 @@
     "window_hours": 2.9
   },
   "pods": [],
+  "pods_terminated": null,
   "review": {
     "at": "2026-11-10T03:04:36Z",
     "file": "jobs/r5-vortexexam-006/review.md",
     "sha256": "935f76390743a41540f0d895dbb3cb93728eda20770c1ce14f2c57d8c5239a31",
     "summary": "Resubmission of 005 (same executed code; cap now covers the H200's billed rate); 005's review applies: gate met, fine to run."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T03:04:45Z"
+  "run_started_epoch": 1794279891.949638,
+  "state": "provisioning",
+  "updated_at": "2026-11-10T03:04:51Z"
 }
