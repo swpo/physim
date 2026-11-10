@@ -175,8 +175,15 @@ def main():
             sig_p0_only = (Lp["P0"] - Lp["C"]) / (Lp["K"] - Lp["C"])
             ck = f"{view}|mix"
             contr = {str(b): ident["summary"][f"{ck}|{b}"] for b in bs if f"{ck}|{b}" in ident["summary"]}
+            tinfo = J(d, "train_info.json")
+            nets = {k.split("|", 1)[1]: {"steps": v["steps"], "steps_asked": v.get("steps_asked", v["steps"]),
+                                         "stopped_early": v.get("stopped_early"), "seconds": r4(v["seconds"])}
+                    for k, v in tinfo.items() if isinstance(v, dict) and k.startswith(view + "|")}
             cell = {
-                "n_hidden": n, "view": view, "dim": LL.DIM[view], "n_items": int(len(worlds)), "n_worlds": nT,
+                "n_hidden": n, "view": view,
+                "nets": {**nets, "any_schedule_cut": bool(any(v["steps"] < v["steps_asked"] or v["stopped_early"]
+                                                               for v in nets.values())),
+                         "source": src(f"{d}/train_info.json")}, "dim": LL.DIM[view], "n_items": int(len(worlds)), "n_worlds": nT,
                 "valid_cells": rep["valid"], "horizons": hs,
                 "oes": {a: {"mean": r4(A[a]), "se_items": r4(SE[a])} for a in A if a not in ("climatology", "oracle")},
                 "oes_per_cell": {a: [r4(x) for x in rep["oes"][a]] for a in ("C", "PM", "P0", "plugPM")},

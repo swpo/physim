@@ -423,7 +423,7 @@ def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pm, pv, l
             SCORES[f"t{i}|{v}|plugPM"] = plug[i][:, c]
         SCORES[f"t{i}|classes"] = exams[i].classes
     t_score = 120.0                                 # scoring time of one view (measured from the first on)
-    FRAC = {"cond": 0.40, "P0u": 0.15, "D0": 0.20, "D1": 0.25}
+    WGT = {"cond": 3.0, "P0u": 1.5, "D0": 3.0, "D1": 4.0}       # shares of a view's net time; unused time rolls on
     for vi, view in enumerate(LL.VIEWS):
         if time.time() > T_END:
             FAILED.append(f"skipped n={n} view {view} (deadline)")
@@ -436,12 +436,17 @@ def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pm, pv, l
         tv = max((t_stop - t0) / (len(LL.VIEWS) - vi) - t_score, 0.0)
         kw = dict(log=log, deadline=T_END, min_steps=CFG["min_steps"])
         log(f"  n={n} view {view}: {tv:.0f}s for its nets")
+        todo = dict(WGT)
+
+        def share(name):
+            w = todo.pop(name)
+            return max(t0 + tv - time.time(), 0.0) * w / (w + sum(todo.values()))
         ds = NN.make_dataset(view, obs_m, U_m, SC, theta_u=th_m, seed=900 + n)
         pc, TRAIN[f"{view}|cond"] = NN.train_nets(view, [ds], cond=True, steps=CFG["steps_cond"], seed=900 + 10 * n + vi,
-                                                  tag=f"[n{n} {view} cond]", time_budget=FRAC["cond"] * tv, **kw)
+                                                  tag=f"[n{n} {view} cond]", time_budget=share("cond"), **kw)
         ds = NN.make_dataset(view, obs_m[ep0], U_m[ep0], SC, seed=950 + n)
         p0, TRAIN[f"{view}|P0u"] = NN.train_nets(view, [ds], cond=False, steps=CFG["steps_p0"], seed=950 + 10 * n + vi,
-                                                 tag=f"[n{n} {view} P0u]", time_budget=FRAC["P0u"] * tv, **kw)
+                                                 tag=f"[n{n} {view} P0u]", time_budget=share("P0u"), **kw)
         pD = {}                                 # D(N): two lockstep groups (small and large budgets)
         for gi, grp in enumerate(([b for b in budgets if b <= CFG["real_split"]],
                                   [b for b in budgets if b > CFG["real_split"]])):
@@ -452,7 +457,7 @@ def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pm, pv, l
                      for i, nb in order]
             prm, TRAIN[f"{view}|D|group{gi}"] = NN.train_nets(
                 view, dsets, cond=False, steps=CFG["steps_real"][gi], seed=700 + 10 * n + vi + 100 * gi,
-                tag=f"[n{n} {view} D {grp}]", time_budget=FRAC[f"D{gi}"] * tv, **kw)
+                tag=f"[n{n} {view} D {grp}]", time_budget=share(f"D{gi}"), **kw)
             TRAIN[f"{view}|D|group{gi}"]["order_truth_budget"] = order
             pD.update(dict(zip(order, prm)))
             del dsets

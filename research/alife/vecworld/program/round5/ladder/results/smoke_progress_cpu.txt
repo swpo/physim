@@ -1,0 +1,166 @@
+01:23:05 [   0.0 min] backend cpu devices ['cpu:0'] jax 0.12.0.1 x64 True smoke=True
+01:23:05 [   0.0 min] == A public scales
+01:23:37 [   0.5 min] == A public scales done in 32s
+01:23:37 [   0.5 min] n=4: 23.5 min left, this set's share ends in 7.5 min
+01:23:37 [   0.5 min] == n=4 C prior
+01:24:06 [   1.0 min]   n=4 box shrink 1.000: 0.000 viable of 6
+01:24:06 [   1.0 min] == n=4 C prior done in 29s
+01:24:06 [   1.0 min] == n=4 B truths
+01:24:27 [   1.4 min]   n=4 truths [[0.963, 0.065, 0.937, 0.987], [1.056, 0.138, 1.069, 1.08]] (1/4 viable)
+01:24:27 [   1.4 min] == n=4 B truths done in 21s
+01:24:27 [   1.4 min] == n=4 D design
+01:25:45 [   2.7 min] == n=4 D design done in 79s
+01:25:46 [   2.7 min] == n=4 E Lab
+01:26:23 [   3.3 min]   n=4 Lab truth 0: {'ticks_used': 108, 'max_ticks': 108, 'resets': 12, 'episode_nats': 199.99999960000002, 'total_nats': 1799.9999983999992, 'episode_left': 200.00000039999998, 'total_left': 3000.000001600001, 'episodes': 12, 'commands': 32}
+01:26:37 [   3.5 min]   n=4 Lab truth 1: {'ticks_used': 108, 'max_ticks': 108, 'resets': 12, 'episode_nats': 199.99999960000005, 'total_nats': 1838.0267089365018, 'episode_left': 200.00000039999995, 'total_left': 2961.9732910634984, 'episodes': 12, 'commands': 33}
+01:26:37 [   3.5 min] == n=4 E Lab done in 51s
+01:26:37 [   3.5 min] == n=4 F identification
+01:26:37 [   3.5 min]   n=4 block mix N=2: sd/prior [0.537, 0.47, 0.471, 0.198]
+01:26:37 [   3.5 min]   n=4 block mix N=8: sd/prior [0.383, 0.368, 0.328, 0.174]
+01:26:37 [   3.5 min]   n=4 object mix N=2: sd/prior [0.536, 0.457, 0.529, 0.503]
+01:26:37 [   3.5 min]   n=4 object mix N=8: sd/prior [0.401, 0.366, 0.41, 0.442]
+01:26:37 [   3.5 min]   n=4 pop mix N=2: sd/prior [0.566, 0.605, 0.605, 0.768]
+01:26:37 [   3.5 min]   n=4 pop mix N=8: sd/prior [0.392, 0.622, 0.455, 0.609]
+01:26:37 [   3.5 min] == n=4 F identification done in 1s
+01:26:37 [   3.5 min] == n=4 G exams
+01:27:02 [   3.9 min]   n=4 exam truth 0: classes {np.str_('a'): np.int64(1), np.str_('b'): np.int64(1), np.str_('c'): np.int64(1), np.str_('d'): np.int64(1)}
+01:27:23 [   4.3 min]   n=4 exam truth 1: classes {np.str_('a'): np.int64(1), np.str_('b'): np.int64(1), np.str_('c'): np.int64(1), np.str_('d'): np.int64(1)}
+01:27:23 [   4.3 min] == n=4 G exams done in 45s
+01:27:23 [   4.3 min] == n=4 H nets and I scores
+01:27:23 [   4.3 min]   n=4 view block: 0s for its nets
+01:27:47 [   4.7 min]   net[n4 block cond] steps 70 -> 40 (575.9 ms/step, budget 0s)
+01:27:53 [   4.8 min]   net[n4 block cond] step 40/40 train 0.1626 val [0.17649999260902405] (27s)
+01:28:10 [   5.1 min]   net[n4 block P0u] step 20/20 train 0.1513 val [0.14810000360012054] (16s)
+01:28:41 [   5.6 min]   net[n4 block D [2]] step 20/20 train 0.1872 val [0.1266999989748001, 0.2637999951839447] (28s)
+01:29:08 [   6.0 min]   net[n4 block D [8]] step 20/20 train 0.2087 val [0.2280000001192093, 0.259799987077713] (27s)
+01:29:16 [   6.2 min]   n=4 view block: nets 105s, scored in 8s
+01:29:16 [   6.2 min]   n=4 view object: 47s for its nets
+01:29:26 [   6.3 min]   net[n4 object cond] step 40/70 train 0.5547 val [0.7217000126838684] (7s)
+01:29:28 [   6.4 min]   net[n4 object cond] step 70/70 train 0.5325 val [0.6682999730110168] (9s)
+01:29:35 [   6.5 min]   net[n4 object P0u] step 20/20 train 0.4180 val [0.3075999915599823] (7s)
+01:29:46 [   6.7 min]   net[n4 object D [2]] step 20/20 train 0.3380 val [0.2526000142097473, 0.713699996471405] (8s)
+01:29:52 [   6.8 min]   net[n4 object D [8]] step 20/20 train 0.4284 val [0.567300021648407, 0.7236999869346619] (7s)
+01:29:57 [   6.9 min]   n=4 view object: nets 36s, scored in 4s
+01:29:57 [   6.9 min]   n=4 view pop: 65s for its nets
+01:30:01 [   6.9 min]   net[n4 pop cond] step 40/70 train 0.9967 val [1.2475999593734741] (3s)
+01:30:01 [   6.9 min]   net[n4 pop cond] step 70/70 train 0.9905 val [1.2405999898910522] (3s)
+01:30:04 [   7.0 min]   net[n4 pop P0u] step 20/20 train 0.5037 val [0.6513000130653381] (3s)
+01:30:08 [   7.0 min]   net[n4 pop D [2]] step 20/20 train 0.3157 val [0.15379999577999115, 1.0140000581741333] (3s)
+01:30:10 [   7.1 min]   net[n4 pop D [8]] step 20/20 train 0.5462 val [0.8734999895095825, 0.9527999758720398] (3s)
+01:30:13 [   7.1 min]   n=4 view pop: nets 14s, scored in 3s
+01:30:13 [   7.1 min] == n=4 H nets and I scores done in 171s
+01:30:13 [   7.1 min]   n=4 block OES C 0.712, D@2 0.683, D@8 0.686, Dr@2 0.800, Dr@8 0.846, P0 0.725, P0u 0.694, PM 0.727, S@2 0.722, S@8 0.722, plugPM 0.945
+01:30:13 [   7.1 min]   n=4 block N=2: sigma -0.124 rho 0.23; N=8: sigma -0.189 rho 0.25
+01:30:13 [   7.1 min]   n=4 object OES C 0.616, D@2 0.496, D@8 0.540, Dr@2 0.280, Dr@8 0.583, P0 0.617, P0u 0.536, PM 0.613, S@2 0.630, S@8 0.630, plugPM 0.909
+01:30:13 [   7.1 min]   n=4 object N=2: sigma -0.002 rho -13.66; N=8: sigma -0.002 rho -13.20
+01:30:13 [   7.1 min]   n=4 pop OES C -0.020, D@2 -0.135, D@8 -0.180, Dr@2 -0.268, Dr@8 -0.068, P0 0.026, P0u -0.275, PM 0.035, S@2 0.007, S@8 0.003, plugPM 0.945
+01:30:13 [   7.1 min]   n=4 pop N=2: sigma 5.195 rho 0.36; N=8: sigma 5.195 rho 0.45
+01:30:13 [   7.1 min] n=8: 16.9 min left, this set's share ends in 7.9 min
+01:30:13 [   7.1 min] == n=8 C prior
+01:30:21 [   7.3 min]   n=8 box shrink 1.000: 0.000 viable of 6
+01:30:21 [   7.3 min] == n=8 C prior done in 7s
+01:30:21 [   7.3 min] == n=8 B truths
+01:30:26 [   7.3 min]   n=8 truths [[1.016, 0.112, 1.075, 0.931, 0.078, 0.95, -0.019, 1.138], [0.932, 0.066, 1.078, 1.034, 0.017, 1.017, 0.131, 1.139]] (0/4 viable)
+01:30:26 [   7.3 min] == n=8 B truths done in 5s
+01:30:26 [   7.3 min] == n=8 D design
+01:31:43 [   8.6 min] == n=8 D design done in 77s
+01:31:43 [   8.6 min] == n=8 E Lab
+01:32:01 [   8.9 min]   n=8 Lab truth 0: {'ticks_used': 108, 'max_ticks': 108, 'resets': 12, 'episode_nats': 199.99999960000002, 'total_nats': 1805.2017424211758, 'episode_left': 200.00000039999998, 'total_left': 2994.798257578824, 'episodes': 12, 'commands': 33}
+01:32:20 [   9.2 min]   n=8 Lab truth 1: {'ticks_used': 108, 'max_ticks': 108, 'resets': 12, 'episode_nats': 199.99999960000002, 'total_nats': 1847.3782182876919, 'episode_left': 200.00000039999998, 'total_left': 2952.621781712308, 'episodes': 12, 'commands': 34}
+01:32:20 [   9.2 min] == n=8 E Lab done in 36s
+01:32:20 [   9.2 min] == n=8 F identification
+01:32:20 [   9.2 min]   n=8 block mix N=2: sd/prior [0.872, 0.575, 0.832, 0.77, 0.752, 0.761, 0.9, 0.844]
+01:32:20 [   9.2 min]   n=8 block mix N=8: sd/prior [0.788, 0.553, 0.773, 0.743, 0.694, 0.823, 0.844, 0.778]
+01:32:21 [   9.3 min]   n=8 object mix N=2: sd/prior [0.799, 0.516, 0.663, 0.634, 0.893, 0.724, 0.872, 0.87]
+01:32:21 [   9.3 min]   n=8 object mix N=8: sd/prior [0.389, 0.469, 0.477, 0.57, 0.544, 0.37, 0.674, 0.692]
+01:32:21 [   9.3 min]   n=8 pop mix N=2: sd/prior [0.952, 0.819, 0.667, 0.691, 0.606, 0.628, 0.663, 0.722]
+01:32:21 [   9.3 min]   n=8 pop mix N=8: sd/prior [0.707, 0.613, 0.468, 0.502, 0.596, 0.575, 0.745, 0.672]
+01:32:21 [   9.3 min] == n=8 F identification done in 2s
+01:32:21 [   9.3 min] == n=8 G exams
+01:32:48 [   9.7 min]   n=8 exam truth 0: classes {np.str_('a'): np.int64(1), np.str_('b'): np.int64(1), np.str_('c'): np.int64(1), np.str_('d'): np.int64(1)}
+01:33:14 [  10.1 min]   n=8 exam truth 1: classes {np.str_('a'): np.int64(1), np.str_('b'): np.int64(1), np.str_('c'): np.int64(1), np.str_('d'): np.int64(1)}
+01:33:14 [  10.1 min] == n=8 G exams done in 53s
+01:33:14 [  10.1 min] == n=8 H nets and I scores
+01:33:14 [  10.1 min]   n=8 view block: 0s for its nets
+01:33:40 [  10.6 min]   net[n8 block cond] steps 70 -> 40 (862.9 ms/step, budget 0s)
+01:33:48 [  10.7 min]   net[n8 block cond] step 40/40 train 0.1410 val [0.17560000717639923] (34s)
+01:34:03 [  11.0 min]   net[n8 block P0u] step 20/20 train 0.2078 val [0.21780000627040863] (15s)
+01:34:29 [  11.4 min]   net[n8 block D [2]] step 20/20 train 0.2548 val [0.20559999346733093, 0.2092999964952469] (27s)
+01:35:02 [  11.9 min]   net[n8 block D [8]] step 20/20 train 0.2609 val [0.16040000319480896, 0.20970000326633453] (32s)
+01:35:02 [  11.9 min]   n=8 view block: nets 108s, scored in 0s
+01:35:02 [  11.9 min]   n=8 view object: 93s for its nets
+01:35:05 [  12.0 min]   net[n8 object cond] step 40/70 train 0.3538 val [0.3806999921798706] (3s)
+01:35:07 [  12.0 min]   net[n8 object cond] step 70/70 train 0.3331 val [0.3578000068664551] (5s)
+01:35:09 [  12.1 min]   net[n8 object P0u] step 20/20 train 0.5305 val [0.6396999955177307] (1s)
+01:35:12 [  12.1 min]   net[n8 object D [2]] step 20/20 train 0.6999 val [0.8583999872207642, 0.40149998664855957] (3s)
+01:35:15 [  12.2 min]   net[n8 object D [8]] step 20/20 train 0.7509 val [0.2985000014305115, 0.3986999988555908] (3s)
+01:35:15 [  12.2 min]   n=8 view object: nets 13s, scored in 0s
+01:35:15 [  12.2 min]   n=8 view pop: 174s for its nets
+01:35:15 [  12.2 min]   net[n8 pop cond] step 40/70 train 0.4775 val [0.39730000495910645] (0s)
+01:35:15 [  12.2 min]   net[n8 pop cond] step 70/70 train 0.5546 val [0.3862000107765198] (0s)
+01:35:15 [  12.2 min]   net[n8 pop P0u] step 20/20 train 0.5849 val [0.7773000001907349] (0s)
+01:35:15 [  12.2 min]   net[n8 pop D [2]] step 20/20 train 0.9567 val [0.8048999905586243, 1.0414999723434448] (0s)
+01:35:15 [  12.2 min]   net[n8 pop D [8]] step 20/20 train 1.3849 val [0.211899995803833, 0.9681000113487244] (0s)
+01:35:15 [  12.2 min]   n=8 view pop: nets 0s, scored in 0s
+01:35:15 [  12.2 min] == n=8 H nets and I scores done in 121s
+01:35:16 [  12.2 min]   n=8 block OES C 0.593, D@2 0.580, D@8 0.586, Dr@2 0.708, Dr@8 0.783, P0 0.606, P0u 0.568, PM 0.601, S@2 0.609, S@8 0.609, plugPM 0.895
+01:35:16 [  12.2 min]   n=8 block N=2: sigma -0.190 rho -0.21; N=8: sigma -0.312 rho -0.21
+01:35:16 [  12.2 min]   n=8 object OES C -0.101, D@2 -0.223, D@8 -0.225, Dr@2 -0.178, Dr@8 0.170, P0 -0.091, P0u -0.217, PM -0.090, S@2 -0.087, S@8 -0.086, plugPM 0.730
+01:35:16 [  12.2 min]   n=8 object N=2: sigma 0.109 rho -0.42; N=8: sigma 2.932 rho -0.56
+01:35:16 [  12.2 min]   n=8 pop OES C 0.082, D@2 0.159, D@8 0.074, Dr@2 -0.252, Dr@8 0.080, P0 0.103, P0u 0.092, PM 0.098, S@2 0.098, S@8 0.109, plugPM 0.696
+01:35:16 [  12.2 min]   n=8 pop N=2: sigma -0.445 rho 0.20; N=8: sigma -0.135 rho -0.31
+01:35:16 [  12.2 min] n=1: 11.8 min left, this set's share ends in 10.8 min
+01:35:16 [  12.2 min] == n=1 C prior
+01:35:23 [  12.3 min]   n=1 box shrink 1.000: 0.000 viable of 6
+01:35:23 [  12.3 min] == n=1 C prior done in 8s
+01:35:23 [  12.3 min] == n=1 B truths
+01:35:29 [  12.4 min]   n=1 truths [[0.987], [0.977]] (0/4 viable)
+01:35:29 [  12.4 min] == n=1 B truths done in 5s
+01:35:29 [  12.4 min] == n=1 D design
+01:37:02 [  13.9 min] == n=1 D design done in 93s
+01:37:02 [  13.9 min] == n=1 E Lab
+01:37:20 [  14.2 min]   n=1 Lab truth 0: {'ticks_used': 108, 'max_ticks': 108, 'resets': 12, 'episode_nats': 199.9999996, 'total_nats': 1845.9727397646552, 'episode_left': 200.0000004, 'total_left': 2954.027260235345, 'episodes': 12, 'commands': 34}
+01:37:39 [  14.6 min]   n=1 Lab truth 1: {'ticks_used': 108, 'max_ticks': 108, 'resets': 12, 'episode_nats': 199.99999960000002, 'total_nats': 1857.728404806305, 'episode_left': 200.00000039999998, 'total_left': 2942.2715951936952, 'episodes': 12, 'commands': 34}
+01:37:39 [  14.6 min] == n=1 E Lab done in 37s
+01:37:39 [  14.6 min] == n=1 F identification
+01:37:39 [  14.6 min]   n=1 block mix N=2: sd/prior [0.279]
+01:37:39 [  14.6 min]   n=1 block mix N=8: sd/prior [0.164]
+01:37:39 [  14.6 min]   n=1 object mix N=2: sd/prior [0.153]
+01:37:39 [  14.6 min]   n=1 object mix N=8: sd/prior [0.086]
+01:37:39 [  14.6 min]   n=1 pop mix N=2: sd/prior [0.209]
+01:37:39 [  14.6 min]   n=1 pop mix N=8: sd/prior [0.122]
+01:37:39 [  14.6 min] == n=1 F identification done in 0s
+01:37:39 [  14.6 min] == n=1 G exams
+01:38:05 [  15.0 min]   n=1 exam truth 0: classes {np.str_('a'): np.int64(1), np.str_('b'): np.int64(1), np.str_('c'): np.int64(1), np.str_('d'): np.int64(1)}
+01:38:29 [  15.4 min]   n=1 exam truth 1: classes {np.str_('a'): np.int64(1), np.str_('b'): np.int64(1), np.str_('c'): np.int64(1), np.str_('d'): np.int64(1)}
+01:38:29 [  15.4 min] == n=1 G exams done in 50s
+01:38:29 [  15.4 min] == n=1 H nets and I scores
+01:38:29 [  15.4 min]   n=1 view block: 32s for its nets
+01:38:49 [  15.7 min]   net[n1 block cond] steps 70 -> 40 (669.5 ms/step, budget 13s)
+01:38:56 [  15.8 min]   net[n1 block cond] step 40/40 train 0.1799 val [0.18000000715255737] (27s)
+01:39:08 [  16.0 min]   net[n1 block P0u] step 20/20 train 0.2185 val [0.23839999735355377] (12s)
+01:39:32 [  16.5 min]   net[n1 block D [2]] step 20/20 train 0.2108 val [0.13830000162124634, 0.1671999990940094] (24s)
+01:39:50 [  16.7 min]   net[n1 block D [8]] step 20/20 train 0.1982 val [0.22709999978542328, 0.15790000557899475] (17s)
+01:39:50 [  16.7 min]   n=1 view block: nets 81s, scored in 0s
+01:39:50 [  16.7 min]   n=1 view object: 187s for its nets
+01:39:52 [  16.8 min]   net[n1 object cond] step 40/70 train 0.6000 val [0.5753999948501587] (2s)
+01:39:53 [  16.8 min]   net[n1 object cond] step 70/70 train 0.5290 val [0.5335000157356262] (3s)
+01:39:54 [  16.8 min]   net[n1 object P0u] step 20/20 train 0.6050 val [0.7384999990463257] (1s)
+01:39:56 [  16.8 min]   net[n1 object D [2]] step 20/20 train 0.6566 val [0.6930000185966492, 0.23810000717639923] (2s)
+01:39:59 [  16.9 min]   net[n1 object D [8]] step 20/20 train 0.5889 val [0.35280001163482666, 0.21359999477863312] (3s)
+01:39:59 [  16.9 min]   n=1 view object: nets 9s, scored in 0s
+01:39:59 [  16.9 min]   n=1 view pop: 366s for its nets
+01:39:59 [  16.9 min]   net[n1 pop cond] step 40/70 train 1.0195 val [1.1478999853134155] (0s)
+01:39:59 [  16.9 min]   net[n1 pop cond] step 70/70 train 0.7243 val [1.1366000175476074] (0s)
+01:39:59 [  16.9 min]   net[n1 pop P0u] step 20/20 train 0.9339 val [1.0657999515533447] (0s)
+01:39:59 [  16.9 min]   net[n1 pop D [2]] step 20/20 train 0.5785 val [0.48170000314712524, 0.16519999504089355] (0s)
+01:40:00 [  16.9 min]   net[n1 pop D [8]] step 20/20 train 0.6224 val [0.5867000222206116, 0.08730000257492065] (0s)
+01:40:00 [  16.9 min]   n=1 view pop: nets 0s, scored in 0s
+01:40:00 [  16.9 min] == n=1 H nets and I scores done in 91s
+01:40:00 [  16.9 min]   n=1 block OES C 0.749, D@2 0.711, D@8 0.707, Dr@2 0.702, Dr@8 0.837, P0 0.770, P0u 0.707, PM 0.749, S@2 0.766, S@8 0.765, plugPM 0.998
+01:40:00 [  16.9 min]   n=1 block N=2: sigma -0.027 rho 0.21; N=8: sigma -0.115 rho 0.23
+01:40:00 [  16.9 min]   n=1 object OES C 0.381, D@2 0.181, D@8 0.210, Dr@2 0.137, Dr@8 0.410, P0 0.388, P0u 0.206, PM 0.399, S@2 0.354, S@8 0.354, plugPM 0.980
+01:40:00 [  16.9 min]   n=1 object N=2: sigma -0.020 rho 4.51; N=8: sigma -0.066 rho 4.54
+01:40:00 [  16.9 min]   n=1 pop OES C 0.070, D@2 -0.030, D@8 -0.006, Dr@2 -0.069, Dr@8 0.134, P0 0.071, P0u 0.037, PM 0.069, S@2 0.069, S@8 0.069, plugPM 0.980
+01:40:00 [  16.9 min]   n=1 pop N=2: sigma 0.018 rho -0.23; N=8: sigma -0.062 rho -0.28
+01:40:00 [  16.9 min] done: sets [4, 8, 1], 3436 member-ticks, 0.28 h, failed []
