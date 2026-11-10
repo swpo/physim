@@ -1,6 +1,6 @@
 # Decisions on the roadmap
 
-The lead's answers to the decisions of `ROADMAP.md` section 6, taken one at a time from 9 Nov 2026. The numbering is the
+The lead's answers to the decisions of `ROADMAP.md` section 6, taken one at a time on 9 and 10 Nov 2026. The numbering is the
 order in which they were put to the lead; the roadmap's own number is in brackets. Quotes are the lead's words.
 
 | # | question | status | decision |
@@ -9,7 +9,7 @@ order in which they were put to the lead; the roadmap's own number is in bracket
 | 2 [2] | the agent's compute | decided 9 Nov | a compute budget relative to the cost of the full simulation, not a hardware class |
 | 3 [4] | rollouts with real agents | decided 9 Nov | cleared to spend; a cheap model first for mechanics, then Astra |
 | 4 [7] | the same model on v1 and v2 fed vortices | decided 9 Nov | not a priority now; not scheduled |
-| 5 [6] | sealer and grader with a private store on the lead's Mac | not yet put | |
+| 5 [6] | where sealed answers live, and who grades | decided 10 Nov | a private Hugging Face dataset repo, not the lead's Mac; the grader must build on the verifiers library, not reinvent it |
 | 6 [5, 6] | defer the collective pilot and the large foundry pass | not yet put | |
 
 Roadmap decision 3 (the acceptance definition) was not put separately. The two quantities of roadmap section 1
@@ -65,6 +65,28 @@ looks and if there are leaks or issues or hacking opportunities."
 Not scheduled. The four fed-vortex rollouts in roadmap section 4 (workstream A, by 21 Dec) are dropped from the plan
 until the lead asks for them. The v2 fed-vortex exam pilot (`../round5/vortexexam`) continues on its own merits as an
 exam candidate; it no longer has to match the v1 suite's items.
+
+## 5. Where sealed answers live, and who grades
+
+"Can we use huggingface to store this stuff not on my laptop ?" and then: "Hf approach is good. For the grader Make
+sure to take a look at primes verifiers library we're using and make sure we're not reinventing an isolated grader"
+
+- Store: one private Hugging Face dataset repo holds hidden parameters, exam answers and reference runs. The public
+  exam package and salted hashes of the answers stay in this repo. Retiring an exam means publishing its files, which
+  anyone can check against the hash.
+- Access: two tokens scoped to that one repo, one that can write (sealing; GPU jobs upload reference answers directly,
+  so they no longer land on the public `gpu-jobs` branch) and one read-only (grading). The sandbox in which an agent
+  takes the exam gets neither. Tokens are entered through a secure form or set on the Mac by the lead, never pasted
+  into a chat or committed.
+- The Mac holds the write token only, because GPU jobs start through its runner and job requests sit on a public
+  branch. It holds no exam data.
+- Grader: not to be designed from scratch. The verifiers library (the version the PhySim v1 environment pins) is read
+  first for what it already provides; the result is `GRADER_VS_VERIFIERS.md` in this folder. `../round5/agentenv`
+  (written before this decision, with its own orchestration and sandbox) is revised in its light before any rollout
+  that is to be quoted.
+- Not needed for the Qwen mechanics check or the first Astra look, which use pilot worlds that are never reused.
+- Still needed from the lead when it is built: the private repo under an account or organisation of the lead's choice,
+  and the two tokens.
 
 ## Earlier standing decisions that bear on the roadmap
 
