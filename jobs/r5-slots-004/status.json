@@ -1,9 +1,32 @@
 {
+  "billing_window_hours": 3.9,
+  "bundle": {
+    "bundle_sha256": "602b253c4d3b8a4b0370a342c2d2e8e7ab7e95169754e1e3184c5cf8fc713448",
+    "files": {
+      "job.sh": "6913c39980c3c326c0a124fb24649bff6c67b9e686af69cd47731afc8821a203",
+      "request.json": "b4461c981383a5d3a2300487a2fa20384a806b21b08c367cf9cd0ab446ce939a",
+      "run.sh": "8b4c6ca87adc3d49b3557e223dd799fafae4fdbaffee54c3bc51123f82c2b483",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "5f5da8d974fb3ff07a9a8268ac9f80d8827f1325aeb20aabbbb16d9497e80756"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/round5/slots"
+    ],
+    "ref": "7099a0ded388a9d9efc852b568184f81586f089d",
+    "src_bytes": 15822219
+  },
   "cap_usd": 21.8,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-10T01:40:36Z",
@@ -14,11 +37,35 @@
       "at": "2026-11-10T02:35:09Z",
       "message": "accepted: H100_80GB via lambdalabs at $3.29/h, at most $10.36",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T02:41:30Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-slots-004",
   "max_estimate_usd": 10.36,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_h100_sxm5",
+      "country": "US",
+      "data_center": "us-south-3",
+      "disk_gb": 2816,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 225,
+      "provider": "lambdalabs",
+      "rank": 1,
+      "rate_usd_hr": 4.29,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 26
+    }
+  ],
   "plan": {
     "max_estimate_usd": 10.36,
     "offers": [
@@ -44,12 +91,13 @@
     "window_hours": 3.15
   },
   "pods": [],
+  "pods_terminated": null,
   "review": {
     "at": "2026-11-10T02:05:32Z",
     "file": "jobs/r5-slots-004/review.md",
     "sha256": "b6eb25065fbaec41a82876e1aa24222969bab6b8b808256d5749f3de096dfac6",
     "summary": "Fine to run: the 2^31 blocker is fixed (largest tensor 6.0e8, checked at compile level) and all pilot points are addressed. 1 minor: the last trained config loses its objective values. 6 info."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T02:39:24Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-10T02:41:30Z"
 }
