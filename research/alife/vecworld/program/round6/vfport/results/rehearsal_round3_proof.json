@@ -1,0 +1,741 @@
+{
+ "world": "ring",
+ "config": {
+  "exam": {
+   "n_items": 64,
+   "R": 16,
+   "n_clim": 256
+  },
+  "lab": {
+   "max_ticks": 400,
+   "reset_cost": 1,
+   "total_nats": null
+  },
+  "predictor": {
+   "n_samples": 32,
+   "cpu_seconds": 30,
+   "wall_seconds": 60,
+   "memory_gib": 4,
+   "artifact_mib": 64
+  },
+  "envelope": {
+   "cpus": 4,
+   "wall_hours": 1,
+   "memory_gib": 8,
+   "gpu": false
+  },
+  "validation": {
+   "max_attempts": 16
+  }
+ },
+ "sizes": {
+  "n_lab": 8,
+  "n_design": 256,
+  "k_design": 2,
+  "n_train": 512
+ },
+ "n_worlds": 1,
+ "policy_labels": {
+  "K": "long-run average of the hidden world (climatology pool)",
+  "D": "ridge fitted to the real episodes the budget allows",
+  "P0": "ridge trained on simulations at prior draws",
+  "PM": "ridge trained on simulations at the prior mean",
+  "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+  "C": "ridge trained on simulations at the true parameters",
+  "O": "oracle: replicate futures from the hidden state (leave one out)",
+  "null": "null agent: prior-predictive long-run law, no history, no program"
+ },
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "hidden_values_in_this_file": "none (theta, secrets and items stay in the worker's store, which is deleted)",
+ "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, --no-push",
+ "platform": {
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "cpu_count": 4,
+  "backend": "cpu",
+  "verifiers": "0.3.2.dev163",
+  "box_cpus": 2,
+  "docker": "29.9.2"
+ },
+ "grading_mode": {
+  "table": "item_isolation = shared",
+  "taskset_default": "item_isolation = box (one fresh box per item)"
+ },
+ "one_box_per_item_check_world_0": {
+  "C": {
+   "graded": true,
+   "trace_id": "7236c13774254c0397acea60e60621a0",
+   "n_failed": 0,
+   "identical_per_item_scores": true,
+   "max_abs_difference": 0.0,
+   "reward_box": 0.9387976626627803,
+   "reward_shared": 0.9387976626627803,
+   "same_frozen_files": true,
+   "grade": {
+    "isolation": "box",
+    "item_boxes": 64,
+    "item_boxes_parallel": 1,
+    "item_box_wall_s_mean": 2.437810018658638,
+    "item_boxes_cpu_s": 61.81517671100001,
+    "infrastructure_failed_items": 0,
+    "seconds": 157.71426939964294,
+    "layers": {
+     "rlimits": true,
+     "uid": 44178,
+     "cleanup": true
+    },
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.25004699999999996
+    }
+   },
+   "wall_s": {
+    "boot": 0.628615140914917,
+    "setup": 9.60210132598877,
+    "agent": 2.8636395931243896,
+    "finalize": 0.07797384262084961,
+    "verifier": 159.7881510257721,
+    "total": 172.96048092842102
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.38283,
+    "verifier_box": 1.84918,
+    "item_boxes": 61.81517671100001,
+    "worker_in_reward": 2.9015054739999986
+   },
+   "vf_eval_wall_s": 186.22424221038818,
+   "vf_eval_host_cpu_s": 67.75654300000001,
+   "shared_grade_seconds": 37.74294352531433
+  }
+ },
+ "per_item_scores_file": "proof_mac_items.npz",
+ "pooled": {
+  "n_items": 64,
+  "n_worlds": 1,
+  "cells": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    1,
+    8
+   ],
+   [
+    1,
+    16
+   ],
+   [
+    2,
+    16
+   ],
+   [
+    2,
+    32
+   ]
+  ],
+  "valid_cells": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   false
+  ],
+  "policies": {
+   "O": {
+    "L": 2.86315638674663,
+    "vs_C": 1.0651922557664097,
+    "vs_O": 1.0
+   },
+   "K": {
+    "L": 3.8500965585455176,
+    "vs_C": 0.0,
+    "vs_O": 0.0
+   },
+   "D": {
+    "L": 3.500811478809808,
+    "vs_C": 0.37697904353319406,
+    "vs_O": 0.3539070449418131
+   },
+   "P0": {
+    "L": 2.9691250322142846,
+    "vs_C": 0.950821614331821,
+    "vs_O": 0.8926291091439651
+   },
+   "C": {
+    "L": 2.923559432072719,
+    "vs_C": 1.0,
+    "vs_O": 0.9387976626627803
+   }
+  },
+  "oes": {
+   "climatology": {
+    "mean": 0.0,
+    "se": 0.0,
+    "pooled": 0.0,
+    "per_cell": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "oracle": {
+    "mean": 1.0,
+    "se": 0.0,
+    "pooled": 1.0,
+    "per_cell": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "D": {
+    "mean": -0.4324414250440247,
+    "se": 0.20679889747549896,
+    "pooled": 0.353907044941812,
+    "per_cell": [
+     0.8263178314451195,
+     0.6512195870871142,
+     0.37715173730415485,
+     -0.25240675728841444,
+     -2.602965678953429,
+     -1.5939652698586937,
+     -14.498114624034436
+    ]
+   },
+   "P0": {
+    "mean": 0.7964447433192791,
+    "se": 0.044771747271239566,
+    "pooled": 0.8926291091439644,
+    "per_cell": [
+     0.9344191357568763,
+     0.9131579528223972,
+     0.9303862840591448,
+     0.8053792095554393,
+     0.5380639948759192,
+     0.6572618828458973,
+     -0.6514242512283985
+    ]
+   },
+   "C": {
+    "mean": 0.9359849338623224,
+    "se": 0.027916634926783878,
+    "pooled": 0.9387976626627809,
+    "per_cell": [
+     0.9413501337668605,
+     0.9332197664166998,
+     0.9570867546324545,
+     0.8886680733667827,
+     0.893708278727892,
+     1.0018765962632443,
+     -0.2315549151109089
+    ]
+   }
+  },
+  "oes_by_program_class": {
+   "a": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "D": -1.612630911641024,
+    "P0": 0.723022782157816,
+    "C": 1.0579138014034803
+   },
+   "b": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "D": -0.9017617845672498,
+    "P0": 0.8805731685440464,
+    "C": 1.0254508947034966
+   },
+   "c": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "D": -0.589013062005182,
+    "P0": 0.7603351518358087,
+    "C": 0.8526384178025689
+   },
+   "d": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "D": -0.1546522205513761,
+    "P0": 0.8086611919796681,
+    "C": 0.9453023141544699
+   }
+  },
+  "acceptance": {
+   "L": {
+    "K": 3.8500965585455176,
+    "D": 3.500811478809808,
+    "P0": 2.9691250322142846,
+    "C": 2.923559432072719
+   },
+   "n_items": 64,
+   "sigma": 0.049178385668178996,
+   "null_is": "P0",
+   "rho": null,
+   "sigma_items": {
+    "se": 0.007226792237381135,
+    "p05": 0.037297365635764926,
+    "p95": 0.06132556269890101
+   },
+   "rho_items": null,
+   "bars": {
+    "sigma_min": 0.15,
+    "rho_max": 0.7
+   },
+   "pass_sigma": false,
+   "pass_rho": null
+  },
+  "policy_labels": {
+   "K": "long-run average of the hidden world (climatology pool)",
+   "D": "ridge fitted to the real episodes the budget allows",
+   "P0": "ridge trained on simulations at prior draws",
+   "PM": "ridge trained on simulations at the prior mean",
+   "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+   "C": "ridge trained on simulations at the true parameters",
+   "O": "oracle: replicate futures from the hidden state (leave one out)",
+   "null": "null agent: prior-predictive long-run law, no history, no program"
+  }
+ },
+ "per_world": [
+  {
+   "instance_id": "mac-ring-w0",
+   "secret_commitment": "ddb652d0a965e2a17a46355de1e421a9e95f887299e05df19efcb83a18dbb4ca",
+   "rollouts": {
+    "D": {
+     "trace_id": "45270dbe298e4fa58827614229b26176",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 3,
+      "bytes": 63519,
+      "sha256": "d31d89597166d1cfc056a2939ed230fd93da54649d3e334b68e492b12f51c3a8"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 392,
+     "lab_total_nats": 46.660430182829714,
+     "lab_requests": 29,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": 8,
+     "member_ticks_simulated": 0,
+     "train_episodes": 8,
+     "agent_cpu_s": 1.025153139,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": 0.3539070449418131,
+     "wall_s": {
+      "boot": 0.7153403759002686,
+      "setup": 9.590278625488281,
+      "agent": 6.548506736755371,
+      "finalize": 0.07964301109313965,
+      "verifier": 39.67877221107483,
+      "total": 56.61254096031189
+     },
+     "cpu_s": {
+      "agent_box_unverified": 4.72821,
+      "verifier_box": 28.852,
+      "item_boxes": null,
+      "worker_in_reward": 1.3675642900000007
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "cpu_s_mean": 0.228314078125,
+      "cpu_s_max": 0.277232,
+      "layers": {
+       "rlimits": true,
+       "uid": 56856,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 37.67402672767639,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.21414999999999998
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    },
+    "P0": {
+     "trace_id": "d5c7eedd05cd4f4295bb77842f9ec9ab",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 3,
+      "bytes": 558859,
+      "sha256": "1702acd4d14d8a5c05b6064f1b7897963fe6b281b546bc6f78b027d8e3b7749c"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 0,
+     "lab_total_nats": 0.0,
+     "lab_requests": 5,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": null,
+     "member_ticks_simulated": 24576,
+     "train_episodes": 512,
+     "agent_cpu_s": 6.945733976,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": 0.8926291091439651,
+     "wall_s": {
+      "boot": 0.6013429164886475,
+      "setup": 9.63401746749878,
+      "agent": 9.256224870681763,
+      "finalize": 0.08387541770935059,
+      "verifier": 39.20649194717407,
+      "total": 58.78195261955261
+     },
+     "cpu_s": {
+      "agent_box_unverified": 10.7049,
+      "verifier_box": 28.4982,
+      "item_boxes": null,
+      "worker_in_reward": 1.417856919
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "cpu_s_mean": 0.225959328125,
+      "cpu_s_max": 0.31364899999999996,
+      "layers": {
+       "rlimits": true,
+       "uid": 34474,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 37.16797995567322,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.26570299999999997
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    },
+    "C": {
+     "trace_id": "ca787f8f492941e5b3c53a89d23c8718",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 3,
+      "bytes": 558822,
+      "sha256": "1a01e4fdc6befe93f144221c2f552d507e5c513c6c067ba13b741e94945e557e"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 0,
+     "lab_total_nats": 0.0,
+     "lab_requests": 2,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": null,
+     "member_ticks_simulated": null,
+     "train_episodes": null,
+     "agent_cpu_s": null,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": 0.9387976626627803,
+     "wall_s": {
+      "boot": 0.601355791091919,
+      "setup": 10.644161939620972,
+      "agent": 3.0761561393737793,
+      "finalize": 0.08970952033996582,
+      "verifier": 39.716612577438354,
+      "total": 54.12799596786499
+     },
+     "cpu_s": {
+      "agent_box_unverified": 2.45791,
+      "verifier_box": 28.8873,
+      "item_boxes": null,
+      "worker_in_reward": 1.3939332849999992
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "cpu_s_mean": 0.229397515625,
+      "cpu_s_max": 0.308019,
+      "layers": {
+       "rlimits": true,
+       "uid": 28968,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 37.74294352531433,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.25148
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    }
+   },
+   "table": {
+    "n_items": 64,
+    "n_worlds": 1,
+    "cells": [
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      1,
+      8
+     ],
+     [
+      1,
+      16
+     ],
+     [
+      2,
+      16
+     ],
+     [
+      2,
+      32
+     ]
+    ],
+    "valid_cells": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     false
+    ],
+    "policies": {
+     "O": {
+      "L": 2.86315638674663,
+      "vs_C": 1.0651922557664097,
+      "vs_O": 1.0
+     },
+     "K": {
+      "L": 3.8500965585455176,
+      "vs_C": 0.0,
+      "vs_O": 0.0
+     },
+     "D": {
+      "L": 3.500811478809808,
+      "vs_C": 0.37697904353319406,
+      "vs_O": 0.3539070449418131
+     },
+     "P0": {
+      "L": 2.9691250322142846,
+      "vs_C": 0.950821614331821,
+      "vs_O": 0.8926291091439651
+     },
+     "C": {
+      "L": 2.923559432072719,
+      "vs_C": 1.0,
+      "vs_O": 0.9387976626627803
+     }
+    },
+    "oes": {
+     "climatology": {
+      "mean": 0.0,
+      "se": 0.0,
+      "pooled": 0.0,
+      "per_cell": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "oracle": {
+      "mean": 1.0,
+      "se": 0.0,
+      "pooled": 1.0,
+      "per_cell": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "D": {
+      "mean": -0.4324414250440247,
+      "se": 0.21655191756421802,
+      "pooled": 0.353907044941812,
+      "per_cell": [
+       0.8263178314451195,
+       0.6512195870871142,
+       0.37715173730415485,
+       -0.25240675728841444,
+       -2.602965678953429,
+       -1.5939652698586937,
+       -14.498114624034436
+      ]
+     },
+     "P0": {
+      "mean": 0.7964447433192791,
+      "se": 0.044751351258444365,
+      "pooled": 0.8926291091439644,
+      "per_cell": [
+       0.9344191357568763,
+       0.9131579528223972,
+       0.9303862840591448,
+       0.8053792095554393,
+       0.5380639948759192,
+       0.6572618828458973,
+       -0.6514242512283985
+      ]
+     },
+     "C": {
+      "mean": 0.9359849338623224,
+      "se": 0.02830842337675425,
+      "pooled": 0.9387976626627809,
+      "per_cell": [
+       0.9413501337668605,
+       0.9332197664166998,
+       0.9570867546324545,
+       0.8886680733667827,
+       0.893708278727892,
+       1.0018765962632443,
+       -0.2315549151109089
+      ]
+     }
+    },
+    "oes_by_program_class": {
+     "a": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "D": -1.612630911641024,
+      "P0": 0.723022782157816,
+      "C": 1.0579138014034803
+     },
+     "b": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "D": -0.9017617845672498,
+      "P0": 0.8805731685440464,
+      "C": 1.0254508947034966
+     },
+     "c": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "D": -0.589013062005182,
+      "P0": 0.7603351518358087,
+      "C": 0.8526384178025689
+     },
+     "d": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "D": -0.1546522205513761,
+      "P0": 0.8086611919796681,
+      "C": 0.9453023141544699
+     }
+    },
+    "acceptance": {
+     "L": {
+      "K": 3.8500965585455176,
+      "D": 3.500811478809808,
+      "P0": 2.9691250322142846,
+      "C": 2.923559432072719
+     },
+     "n_items": 64,
+     "sigma": 0.049178385668178996,
+     "null_is": "P0",
+     "rho": null,
+     "sigma_items": {
+      "se": 0.007341208244553199,
+      "p05": 0.03783038488923423,
+      "p95": 0.06230257419220441
+     },
+     "rho_items": null,
+     "bars": {
+      "sigma_min": 0.15,
+      "rho_max": 0.7
+     },
+     "pass_sigma": false,
+     "pass_rho": null
+    },
+    "policy_labels": {}
+   }
+  }
+ ],
+ "rollout_cost": {
+  "n_rollouts": 3,
+  "wall_s_per_rollout_mean": 56.50749651590983,
+  "wall_s_per_rollout_max": 58.78195261955261,
+  "agent_box_cpu_s_unverified_mean": 5.9636733333333325,
+  "verifier_box_cpu_s_mean": 28.745833333333334,
+  "vf_eval_host_cpu_s_per_rollout": 31.189118999999994,
+  "vf_eval_wall_s_per_policy": {
+   "D": 70.13515377044678,
+   "P0": 72.02706456184387,
+   "C": 67.34051704406738
+  },
+  "note": "wall = boot + setup + agent + finalize of the solver trace plus the verifier phase (setup, restore, staging, reward); box CPU = the cgroup counter of each container (the agent box's is read inside a box where the agent is root: unverified); host CPU = vf-eval and its children (laboratory process, docker CLI), shared by the rollouts of one invocation"
+ },
+ "all_graded": true,
+ "all_ok": true,
+ "n_failed_items_total": 0,
+ "wall_s": 408.2357008457184,
+ "invocations": 1,
+ "driver_cpu_s": 7.022053618,
+ "failed_item_is_K_counterfactual": {
+  "D": {
+   "items": 64,
+   "items_scored_worse_than_K": 15,
+   "skill_vs_O": 0.3539070449418131,
+   "skill_vs_O_had_exactly_those_items_failed": 0.42195851855183897
+  },
+  "P0": {
+   "items": 64,
+   "items_scored_worse_than_K": 0,
+   "skill_vs_O": 0.8926291091439651,
+   "skill_vs_O_had_exactly_those_items_failed": 0.8926291091439651
+  },
+  "note": "what a predictor would gain if it could fail exactly the items on which it scores worse than K (it cannot know them; this is the upper bound of the effect)"
+ }
+}

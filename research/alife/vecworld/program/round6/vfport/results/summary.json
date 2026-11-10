@@ -1694,7 +1694,8 @@
       "chmod"
      ]
     }
-   }
+   },
+   "stale_since_round_3": "this entry describes the code and the text before round 3; see round_3_of_fixes"
   },
   "tests_in_a_throwaway_container": {
    "source": "results/driver_container.json",
@@ -1749,14 +1750,16 @@
     "label_old_listing_by_name_would_have_shown_vf_other": true,
     "label_no_host_path_in_the_test_containers": true,
     "label_both_test_containers_removed_by_exact_name": true
-   }
+   },
+   "stale_since_round_3": "this entry describes the code and the text before round 3; see round_3_of_fixes"
   },
   "runbook": {
    "copy": "head of the branch (a commit is named)",
    "n_checks": 35,
    "n_passed": 35,
    "failed": [],
-   "note": "the pinned text checker on the ROUND-1 runbook; for the runbook as it is now see round_2_of_fixes.pinned_text_checker and results/session_mode_round2.json"
+   "note": "the pinned text checker on the ROUND-1 runbook; for the runbook as it is now see round_2_of_fixes.pinned_text_checker and results/session_mode_round2.json",
+   "stale_since_round_3": "this entry describes the code and the text before round 3; see round_3_of_fixes"
   },
   "rehearsal": {
    "outcome": "steps 0, 1 (without the image build), 2a, 2b, 2c and 4 ended as the runbook says, with four deviations forced by the machine and five places where the text did not match what happened; both interruptions were cleared with the runbook's own procedure, and nothing of the pilot was left running or listed afterwards",
@@ -1914,6 +1917,266 @@
      "probe.log": 0
     }
    }
+  },
+  "re_audit_round_2": {
+   "file": "HOST_SAFETY_AUDIT.md, section 'Re-audit, round 2' (commit af767adbd)",
+   "verdict": "GO for steps 0 to 2 on the Mac, for that one commit; SUSPENDED on 10 Nov 2026 after the Mac session's own read-only review"
+  },
+  "round_3_of_fixes": {
+   "what": "round 3 of fixes after the host-safety audit: the Mac session's read-only review of commit af767adbd (three major, eleven minor points) and the coordinator's disk requirement, each confirmed against the code and the verifiers source first",
+   "status": "RUNBOOK_MAC.md is ON HOLD: the round-2 GO is suspended and these changes have not been re-audited",
+   "rehearsed_commit": "00947b226eb326a23b1c76d15b3e74ff3bcafc51",
+   "sha256_of_PIN.sha256": "cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4",
+   "files_in_PIN.sha256": 109,
+   "rejected_findings": [],
+   "deferred": [
+    "m7: the laboratory's bearer (before step 3)"
+   ],
+   "checks": {
+    "tools/check_round3.py": "48 of 48",
+    "tools/check_safety.py": "36 of 36",
+    "tools/check_interrupt.py": "8 of 8",
+    "tools/check_runbook.py": "46 of 46",
+    "failed": []
+   },
+   "findings": {
+    "M1": {
+     "status": "closed",
+     "changed": "a step-0 command the session runs itself (names only, the docker context and its address); child_env is an allow-list of nine names; a tool refuses an environment that holds a name of the step-0 list; a tool refuses a Docker context that is not a Unix socket of the machine; every docker call of the tools gets the allow-listed environment; the laboratory binds 127.0.0.1 whatever MCP_HOST says"
+    },
+    "M2": {
+     "status": "closed (text re-derived from the source)",
+     "changed": "the table has ten rows, each with who can be the target; the status command shows verifiers' probe as PROBE"
+    },
+    "M3": {
+     "status": "closed; one more reader found here and closed too",
+     "changed": "section B lists six listeners with who can connect and what each needs; physim2_env/_nokey.py closes both readers before verifiers is imported (first line of the package; tools/vfeval.py is the only way vf-eval is started and refuses without it); every scripted run gets a stand-in client; PRIME_API_KEY is not on the allow-list; step 3 has --model-credentials prime on its one command"
+    },
+    "m1": {
+     "status": "closed",
+     "changed": "tools/build_reference.py reads the parameters from a 0600 file in the store and runs the script in its own process; process lines are cut at 160 characters, log lines at 200"
+    },
+    "m2": {
+     "status": "closed",
+     "changed": "awk with index(): the command line must be the interpreter's path followed by one of eight exact beginnings; every listed line carries a word (TOOL, VF-EVAL, LAB, HELPER, PROBE, OTHER)"
+    },
+    "m3": {
+     "status": "closed",
+     "changed": "`test ! -L` on the pilot folder and its two subfolders before both rm -rf; step 0 and step 1 refuse links"
+    },
+    "m4": {
+     "status": "closed",
+     "changed": "vfrun.run_helper stops the helper with its tool; HELPER in the status and stop commands; point 4 of the section"
+    },
+    "m5": {
+     "status": "closed (macOS: inferred)",
+     "changed": "a vf-eval that the tool stopped, or that died of a signal, ends the tool: status 98 (97 for the disk) and a line `refused to go on`; section B and point 4 say what macOS does"
+    },
+    "m6": {
+     "status": "closed",
+     "changed": "the command reads the run label Docker has for that exact name and removes only if it is this pilot's"
+    },
+    "m7": {
+     "status": "rule in the runbook now; the bearer is DEFERRED to before step 3",
+     "changed": "a command before step 2 that must list no running container; section B says why; step 3 names the bearer as an open condition"
+    },
+    "m8": {
+     "status": "closed (measured on Linux)",
+     "changed": "the probe asks the box's proxy, with the box's credentials, for the four names at the listener's port, by GET and by CONNECT (over a plain socket: urllib would bypass the proxy for names on NO_PROXY); a new check requires HTTP 403 eight times"
+    },
+    "m9": {
+     "status": "closed for versions; hashes are not possible",
+     "changed": "hatchling==1.33.0 and five packages under it as [tool.uv] build-constraint-dependencies; uv 0.11.32 records them in uv.lock ([manifest] build-constraints) and --locked refuses a pyproject.toml that differs"
+    },
+    "m10": {
+     "status": "closed (text)",
+     "changed": "section B and step 4 name it; step 4 prints `docker system df`; removing it is the lead's"
+    },
+    "m11": {
+     "status": "closed",
+     "changed": "no count: each listing is followed by a word that is printed only if the listing command succeeded"
+    },
+    "D1": {
+     "status": "closed",
+     "changed": "tools/vfrun.py: refusal before a run, a look every 15 s during a run, the one stop path (one SIGTERM to vf-eval), the reason in the log and in <run>.stopped.json, status 97, nothing deleted; --disk-floor-gib on prove.py, check_probe.py and the command form; runbook: rule 7, a disk command in step 0, the same check in front of the three starts of step 1, the lead's decision in step 3"
+    }
+   },
+   "index": "results/host_safety_round3.json"
+  },
+  "rehearsal_round_3": {
+   "outcome": "every command did what the runbook says, with the deviations forced by the machine and three places where the prose did not match what happened (corrected afterwards; no command changed). Step 0 printed its three sentinels and the session check (`6 names, 0 refused`; with DOCKER_HOST and PYTHONPATH in the session: two FOUND lines and `8 names, 2 refused`). The status command listed the pilot's processes with their words (TOOL, VF-EVAL, LAB, PROBE) and never a waiting shell. The stop command aimed at the waiting shell printed and signalled nothing; aimed at the tool it stopped the run in 6 s (traceback, KeyboardInterrupt, EXIT 130). After a hard kill of vf-eval the tool ended with `refused to go on: vf-eval died of signal 9 ...` and EXIT 98, the box was left, and the removal command refused a name nobody has and a container with another label before it removed the pilot's box. The disk watchdog refused at the runbook's own floor (EXIT 97, nothing started) and stopped a running rollout one second after the free space fell under the floor (one SIGTERM, containers removed by vf-eval, EXIT 97, a stopped record, nothing deleted). The clean pass of 2a, 2b and 2c gave the expected results, and step 4 copied five files and removed the two folders. The made-up credential file was not opened once in the whole rehearsal.",
+   "counts": {
+    "entries": 79,
+    "runbook_commands_issued": 65,
+    "by_label": {
+     "0a-commit": 1,
+     "0b-pin": 1,
+     "0c-session": 2,
+     "0d-docker-and-folders": 1,
+     "0e-disk": 2,
+     "1a-uv-dry-run": 2,
+     "1b-mkdir-ca": 1,
+     "1c-status": 2,
+     "1c-uv-sync": 1,
+     "1d-import": 1,
+     "1e-interpreter": 1,
+     "1g-image-check": 1,
+     "1h-make-instances": 4,
+     "2-quiet": 3,
+     "2-status": 22,
+     "2a-check": 1,
+     "2a-prove": 5,
+     "2b-probe": 1,
+     "2b-report": 1,
+     "2c-report": 1,
+     "2c-single": 1,
+     "4a-copy-delete": 1,
+     "4b-docker": 1,
+     "I2-stop": 2,
+     "I3-docker-rm": 3,
+     "I6-reset": 3
+    },
+    "status_commands_with_their_complete_output": 24,
+    "exit_statuses_other_than_0": [
+     [
+      8,
+      "1a-uv-dry-run",
+      1
+     ],
+     [
+      27,
+      "I2-stop",
+      1
+     ],
+     [
+      40,
+      "I3-docker-rm",
+      1
+     ],
+     [
+      42,
+      "I3-docker-rm",
+      1
+     ]
+    ]
+   },
+   "interruptions": [
+    {
+     "n": 1,
+     "entries": "22 to 32",
+     "what": "2a started (floor 0.5). With TOOL, VF-EVAL, LAB and a box listed, the stop command was aimed at the WAITING SHELL's pid on purpose: nothing printed, exit status 1. Then at the TOOL's pid",
+     "seen": "6 s later no process and no container; prove.log: traceback, KeyboardInterrupt, EXIT 130",
+     "then": "point 6 (`pilot folders reset`), a new instance"
+    },
+    {
+     "n": 2,
+     "entries": "34 to 46",
+     "what": "2a started again; with a box up, the rehearsal's own vf-eval was killed with SIGKILL (issue3.py --hard-kill: refused unless the pid's command line is the clone's vf-eval launcher)",
+     "seen": "4 s later: prove.log ends `refused to go on: vf-eval died of signal 9. Its containers and its laboratory process may be left. ...` and EXIT 98 (round 2: EXIT 1 after the tool went on); the box `Up 13 seconds`; no LAB (Linux: the laboratory dies with its parent); one PROBE line, verifiers' port probe, which stayed listed for about four minutes, through the reset and the next two starts, and then was gone. Point 3: the removal command with a name no container has printed `error: no such object: ...` and removed nothing; with the name of a container of the rehearsal's own that carried another run label it printed nothing and removed nothing (that container was still there, and was then removed by its exact name by the operator); with the pilot's box it printed the label and the name. Point 5: no container; the PROBE line. Point 6: reset",
+     "then": "a new instance"
+    }
+   ],
+   "disk_watchdog": [
+    {
+     "n": 1,
+     "entries": "6, 8, 19 to 21",
+     "what": "the runbook's own floor of 8 GiB on a machine with 1.8 GiB free: the step-0 disk command, the dry run of step 1 and the 2a start were issued byte for byte",
+     "seen": "step 0: `refused: 1 GiB free on the file system of the home folder, the floor is 8 GiB`; step 1: `refused: under 8 GiB free ...`, uv not started; 2a: prove.log holds `refused: the disk watchdog did not start the tool: 1.78 GiB free ..., the floor is 8.00 GiB. Nothing was started and nothing was deleted. Stop and report.` and EXIT 97; the status listed nothing; no run folder was created"
+    },
+    {
+     "n": 2,
+     "entries": "47 to 53",
+     "what": "2a started with a floor 24 MiB under the free space of that moment (1.7544 GiB). When its first rollout ran (TOOL, VF-EVAL, LAB, one box), 48 MiB of zeros were written to the rehearsal's scratch (issue3.py --ballast-mb 48)",
+     "seen": "the watchdog's next look, one second later, found 1.73 GiB: vf-eval got one SIGTERM, removed its box and stopped its laboratory (`interception down` in the log), and the tool ended with `refused: stopped by the disk watchdog (1.73 GiB free ..., floor 1.75 GiB): SIGTERM. The run was stopped through the tool's one stop path; nothing was deleted. ...` and EXIT 97, 7 s after the ballast. proof-d.stopped.json: ended, returncode 130, the two byte counts, `deleted_by_the_watchdog: nothing`. The run folder, its config and that record were still there; the ballast file was removed by the operator",
+     "then": "the runbook says: points 1 to 5, then stop and report. The rehearsal went on (reset, new instance) to make the clean pass"
+    }
+   ],
+   "made_up_credential_file": {
+    "file": "<HOME>/.prime/config.json with the text FAKE-KEY-NOT-A-CREDENTIAL, made before step 0",
+    "watcher": "rehearsal/watch_open.py: inotify on <HOME>/.prime (open, read, write, close of every file in it, by any process), from before step 0 until after step 4",
+    "events_during_the_rehearsal": 0,
+    "control_after_step_4": "the stock import (`python -B -c 'import verifiers.v1.configs.cli.eval'`, the clone's interpreter, the same HOME, without the package): 3 events (open, read, close of config.json)",
+    "watcher_counts_at_its_end": {
+     "open config.json": 1,
+     "read config.json": 1,
+     "close config.json": 1
+    },
+    "laboratory_environment": "results/rehearsal_round3_probe.json, evidence.b_lab_process: the laboratory scrubbed exactly 1 token-like variable, the canary the tool gave it (round 2: every token-like name of the session reached it)"
+   },
+   "mismatches": [
+    {
+     "n": 1,
+     "where": "'If a run was interrupted', point 3",
+     "text_said": "if it prints nothing, nothing was removed",
+     "happened": "for a name no container has, Docker prints one line `error: no such object: <name>`; for a container with another label nothing is printed (entries 40, 42)",
+     "fixed_in_the_runbook": true
+    },
+    {
+     "n": 2,
+     "where": "point 4 and point 5, and the description of the status command",
+     "text_said": "a PROBE line ends by itself within nine minutes",
+     "happened": "the probe of the killed vf-eval stayed listed for about four minutes, through the reset and the next two starts (entries 39 to 60), so the status of a NEW start showed it next to the new TOOL",
+     "fixed_in_the_runbook": true
+    },
+    {
+     "n": 3,
+     "where": "step 1, interpreter check; the status lines",
+     "text_said": "the line goes on with ` -B -c import os, subprocess; ...` as far as the 160 characters reach",
+     "happened": "with the rehearsal's 158-character path only the path fits into 160 characters; the same holds for every status line, where the word in front (TOOL, VF-EVAL, LAB, PROBE) is then the only sign of what the process is. On a path of ordinary length the program's name is visible",
+     "fixed_in_the_runbook": "no change needed: the text says `as far as the 160 characters reach`, and the word is there for this"
+    }
+   ],
+   "deviations": [
+    {
+     "n": 1,
+     "what": "the clone is sparse and shallow, fetched by commit",
+     "why": "disk; the Mac has a full checkout"
+    },
+    {
+     "n": 2,
+     "what": "the home folder is a folder of the rehearsal's scratch (as HOME); uv's cache and uv's own Python were pointed elsewhere for the two uv commands; the by-hand checks differ: uid 0, x86_64, a TLS-intercepting proxy, the file on disk says ON HOLD and the commit was the fixer's own, not one from a GO message",
+     "why": "this session's rules and machine; nothing may run on the Mac before a GO"
+    },
+    {
+     "n": 3,
+     "what": "step 0: the Docker context is `default` at unix:///var/run/docker.sock (the Mac: `desktop-linux`, a socket in the home folder); an image id stands before IMAGES-LISTED (the shared image physim2-ring:1 exists here, at which the runbook says stop); the session has 6 variables",
+     "why": "the machine; the image is shared and must not be rebuilt or removed"
+    },
+    {
+     "n": 4,
+     "what": "the image build of step 1 and its status command were not issued",
+     "why": "as in rounds 1 and 2: the image exists and the machine is behind a proxy"
+    },
+    {
+     "n": 5,
+     "what": "the disk floor was 0.5 GiB instead of 8 GiB in the commands that had to run",
+     "why": "1.8 GiB free on the shared machine"
+    },
+    {
+     "n": 6,
+     "what": "after each interruption and after the watchdog stop the rehearsal went on with a reset as if it were the first interruption; after EXIT 97 the runbook says stop and report",
+     "why": "to rehearse every branch in one sitting"
+    },
+    {
+     "n": 7,
+     "what": "2-quiet printed only RUNNING-LISTED here; on a shared machine another container could have been listed",
+     "why": "nobody else's container ran at those moments"
+    }
+   ],
+   "not_rehearsed": [
+    "the image build of step 1 and its status command (deviation 4); its disk check ran in the two other commands that carry it",
+    "step 3: its file gate, its dry run, its paid command and the copy of its trace were never issued; both start commands are new in round 3 (`tools/vfrun.py --model-credentials prime` ran with a stand-in for vf-eval in a throwaway container only: results/round3_checks.json)",
+    "point 4 of the interruption section (a LAB or HELPER left without its vf-eval): on Linux the laboratory died with vf-eval; the stop command's list holds both kinds (run on made-up ps lines only)",
+    "the rule 'use this section once' and the 60-minute bound of the 'must show' rule, as rules",
+    "a stop of a vf-eval by its own pid",
+    "anything on macOS: zsh, BSD ps, df, awk, shasum, Docker Desktop's context, uv's Python there"
+   ],
+   "hidden_values_in_this_record": {
+    "instances_in_the_store": 2,
+    "needles": 8,
+    "total_hits": 0
+   },
+   "file": "results/rehearsal_round3.json"
   }
  },
  "red_team_attacks_after_the_fix": {

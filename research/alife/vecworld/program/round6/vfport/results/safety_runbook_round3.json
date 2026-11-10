@@ -1,0 +1,189 @@
+{
+ "what": "RUNBOOK_MAC.md checked as text (required changes 1, 2, 6, 7, 9 of HOST_SAFETY_AUDIT.md) and its guard run with echo in place of the command; no command of the runbook was run by this tool",
+ "evidence_label": "read (text checks); run (the guard line: cd, test, echo only)",
+ "copy": "the pinned commit's own copy (no commit named)",
+ "n_checks": 46,
+ "n_passed": 46,
+ "failed": [],
+ "checks": {
+  "guard_every_command_starts_with_the_guard": true,
+  "guard_no_command_relies_on_an_earlier_cd": true,
+  "guard_from_a_wrong_folder_prints_nothing": true,
+  "guard_with_the_study_folder_runs": true,
+  "uv_only_two_commands_and_the_dry_run_first": true,
+  "uv_names_the_project_by_its_absolute_path_and_is_locked": true,
+  "uv_run_is_not_used": true,
+  "uv_no_subagents_rule": true,
+  "run_every_rollout_command_carries_the_run_label": true,
+  "run_every_rollout_command_is_detached_with_a_log_and_an_exit_line": true,
+  "run_every_detached_command_has_a_docker_info_gate": true,
+  "run_the_dry_run_is_alone_in_its_block_behind_the_leads_file": true,
+  "run_containers_are_listed_by_the_run_label_only": true,
+  "run_if_interrupted_section": true,
+  "run_store_path_is_on_every_command_that_needs_it": true,
+  "r3_processes_are_matched_letter_for_letter_not_by_a_pattern_of_the_path": true,
+  "r3_the_stop_command_signals_only_after_its_own_comparison": true,
+  "r3_process_lines_are_cut_at_160_characters_and_no_command_carries_theta": true,
+  "r3_step_0_checks_the_sessions_own_environment_with_the_tools_own_list": true,
+  "r3_no_command_sets_a_variable_but_the_run_label": true,
+  "r3_vf_eval_is_never_started_by_a_command_of_the_runbook": true,
+  "r3_no_count_can_hide_a_failed_command": true,
+  "r3_no_rm_rf_follows_a_linked_pilot_folder": true,
+  "r3_docker_rm_reads_the_label_back_first": true,
+  "r3_disk_floor_is_on_every_start": true,
+  "r3_no_other_container_runs_during_step_2": true,
+  "r3_build_cache_is_in_the_inventory_and_in_step_4": true,
+  "text_no_banned_construct_in_any_command": true,
+  "text_every_rm_rf_is_chained_behind_its_checks_and_names_the_two_pilot_folders": true,
+  "text_step_4_copies_the_results_out_before_it_deletes": true,
+  "text_the_shared_image_is_kept": true,
+  "text_the_never_table_is_there": true,
+  "text_the_inventory_is_there": true,
+  "text_stop_rule_and_the_known_macos_exception": true,
+  "text_extra_ca_is_created_only_if_absent": true,
+  "text_the_three_rules_of_the_round_2_notice_are_in_the_body": true,
+  "step3_the_paid_command_stands_alone_under_a_stop_line_with_the_price": true,
+  "step3_output_goes_to_a_file_and_is_never_displayed": true,
+  "step3_the_run_is_read_through_the_report_tool": true,
+  "step3_no_other_harness_is_offered": true,
+  "step3_disk_decision_bearer_and_own_hold": true,
+  "step3_model_credentials_only_on_the_paid_command_behind_the_leads_file": true,
+  "pin_block_names_the_hash_of_PIN_sha256": true,
+  "pin_file_matches_the_files_on_disk": true,
+  "pin_commands_compare_commit_and_hashes": true,
+  "hold": true
+ },
+ "evidence": {
+  "command_blocks": 33,
+  "inline_commands": 2,
+  "guard_with_echo": {
+   "line": "cd \"/ABSOLUTE/PATH/TO/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && echo WOULD-RUN",
+   "runs": {
+    "a folder that does not exist; started in the other project": {
+     "stdout": "",
+     "exit": 1
+    },
+    "a folder that does not exist; started in /": {
+     "stdout": "",
+     "exit": 1
+    },
+    "the placeholder, not replaced; started in the other project": {
+     "stdout": "",
+     "exit": 1
+    },
+    "the placeholder, not replaced; started in /": {
+     "stdout": "",
+     "exit": 1
+    },
+    "another project (pyproject.toml, .venv); started in the other project": {
+     "stdout": "",
+     "exit": 1
+    },
+    "another project (pyproject.toml, .venv); started in /": {
+     "stdout": "",
+     "exit": 1
+    },
+    "a subfolder of that other project; started in the other project": {
+     "stdout": "",
+     "exit": 1
+    },
+    "a subfolder of that other project; started in /": {
+     "stdout": "",
+     "exit": 1
+    },
+    "a folder with a RUNBOOK_MAC.md only; started in the other project": {
+     "stdout": "",
+     "exit": 1
+    },
+    "a folder with a RUNBOOK_MAC.md only; started in /": {
+     "stdout": "",
+     "exit": 1
+    },
+    "the repository's round6 folder; started in the other project": {
+     "stdout": "",
+     "exit": 1
+    },
+    "the repository's round6 folder; started in /": {
+     "stdout": "",
+     "exit": 1
+    },
+    "a subfolder of the study folder (tools); started in the other project": {
+     "stdout": "",
+     "exit": 1
+    },
+    "a subfolder of the study folder (tools); started in /": {
+     "stdout": "",
+     "exit": 1
+    },
+    "an empty path; started in the other project": {
+     "stdout": "",
+     "exit": 1
+    },
+    "an empty path; started in /": {
+     "stdout": "",
+     "exit": 1
+    },
+    "the study folder; started in the other project": {
+     "stdout": "WOULD-RUN",
+     "exit": 0
+    },
+    "the study folder; started in /": {
+     "stdout": "WOULD-RUN",
+     "exit": 0
+    }
+   },
+   "other_projects_environment_untouched": true
+  },
+  "uv_commands": [
+   "test -f pyproject.toml && test -f uv.lock && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print \"refused: under 8 G",
+   "test -f pyproject.toml && test -f uv.lock && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print \"refused: under 8 G"
+  ],
+  "commands_that_start_a_rollout": [
+   "docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup \"/ABSOLUTE/PATH/TO/vfp",
+   "docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup \"/ABSOLUTE/PATH/TO/vfp",
+   "docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup \"/ABSOLUTE/PATH/TO/vfp",
+   "test -f \"$HOME/physim2-pilot-20261110/scratch/LEAD-GO-STEP3\" && docker info --format '{{.ServerVersion}}' && {"
+  ],
+  "process_matching": {
+   "status_commands": 2,
+   "stop_commands": 1,
+   "literals_of_the_stop_command": [
+    "\"-B tools/prove.py \"",
+    "\"-B tools/check_probe.py \"",
+    "\"-B tools/vfrun.py \"",
+    "\"-B \" p \"/tools/vfeval.py @ \"",
+    "\"-m physim2_env.lab_tools\"",
+    "\"-B \" p \"/tools/make_instances.py \"",
+    "\"-B tools/make_instances.py \"",
+    "\"-B \" p \"/tools/build_reference.py \""
+   ]
+  },
+  "variables_set_on_commands": [
+   "VF_RUN_ID"
+  ],
+  "banned_in_commands": {
+   "export": false,
+   "sudo": false,
+   "pkill / killall": false,
+   "prune": false,
+   "--clean": false,
+   "command substitution": false,
+   "a mount option": false,
+   "docker socket": false,
+   "removal by filter": false,
+   "kill -9 or -1": false,
+   "docker_shim": false,
+   "a variable as a path": false
+  },
+  "pin": {
+   "sha256_of_PIN.sha256": "cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4",
+   "named_in_the_pin_block": true,
+   "commit_named": null,
+   "pin.py --check": [
+    "cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4  PIN.sha256   (109 files listed, 0 differences)"
+   ],
+   "files_listed": 109
+  },
+  "notice": "ON HOLD"
+ }
+}

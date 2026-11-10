@@ -153,7 +153,8 @@ def main():
                "confirmed": ["the old agents/probe_grading.py:156-157 asked for example.com and the gateway address only"],
                "changed": "the probe asks the box's proxy, with the box's credentials, for the four names at the listener's port, by GET and by CONNECT (over a "
                           "plain socket: urllib would bypass the proxy for names on NO_PROXY); a new check requires HTTP 403 eight times",
-               "files": [span("agents/probe_grading.py", "LOOPBACK_NAMES = (", "        return type(e).__name__"), line("tools/check_probe.py", '"c_agent_box_proxy_refuses_the_workers_own_loopback_names"')],
+               "files": [span("agents/probe_grading.py", "LOOPBACK_NAMES = (", "def box_report(host_port, lab_url, full):"), line("agents/probe_grading.py", '"proxy_loopback_names": {n:'),
+                         line("tools/check_probe.py", '"c_agent_box_proxy_refuses_the_workers_own_loopback_names"')],
                "test": "rehearsal, step 2b: one real box", "result": probe.get("proxy_loopback_names"), "record": ["results/rehearsal_round3_probe.json"]}
     E["m9"] = {"finding": "hatchling is unpinned and runs on the Mac", "status": "closed for versions; hashes are not possible",
                "confirmed": ["the old pyproject.toml:18: hatchling>=1.27,<2"],

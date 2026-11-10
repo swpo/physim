@@ -418,8 +418,9 @@ with this study folder's `.venv/bin/python` followed by the program's own name:
 | `OTHER` | anything else | not expected: stop and report the line |
 
 The waiting shell of a detached command is not listed, nor is any process of another checkout. A step is finished
-when its log ends with an `EXIT` line and nothing is listed under `containers:` and `processes:`. While a step
-runs, wait and ask again; start nothing else. A Docker error under `containers:` (Docker does not answer): stop.
+when its log ends with an `EXIT` line and nothing is listed under `containers:` and `processes:` (a `PROBE` line
+left by an interrupted run does not count: it goes away by itself). While a step runs, wait and ask again; start
+nothing else. A Docker error under `containers:` (Docker does not answer): stop.
 
 **The "must show" rule.** Right after you started 2a, 2b or 2c, the status must show a `TOOL` line. If it does
 not, and the log of that step has no `EXIT` line: send no signal and start nothing; ask for the status every few
@@ -584,14 +585,16 @@ this section.
    ```
 
    It prints two lines: `physim2-pilot-20261110`, the run label that Docker has on record for that name, and then
-   the name. **If it prints nothing, nothing was removed**: no container of that exact name carries this pilot's
-   label. Stop and report.
+   the name. **If it prints nothing, or one line that begins `error:`, nothing was removed**: no container of
+   that exact name carries this pilot's label (cloud rehearsal: nothing for a container with another label,
+   `error: no such object: <name>` for a name no container has). Stop and report.
 4. **A `LAB` or a `HELPER` line is still listed and no `VF-EVAL` and no `TOOL` is:** stop it by its pid with the
    stop command of point 2. Neither holds state worth keeping. On Linux a laboratory that has lost its vf-eval
    ends by itself at once; **on macOS it does not (inferred: verifiers asks the kernel for that on Linux
    only), so expect to need this point after a vf-eval was killed outright.** If the stop command prints
    nothing, nothing was signalled and the process is gone already; go on with point 5. A `PROBE` line needs
-   nothing: it ends by itself within nine minutes.
+   nothing: it ends by itself within nine minutes (cloud rehearsal: the probe of a killed vf-eval was listed for
+   four minutes, through the reset and the next start, and then was gone).
 5. Run the status command again. Expected now: no process line (a `PROBE` line may remain for some minutes), no
    container line. If something else of the pilot is still listed after two minutes: stop and report.
 6. **Delete the two pilot folders and start again from the instance** (first interruption only, and never after
@@ -774,9 +777,11 @@ folder.
   cache and uv's own Python pointed elsewhere for the two uv commands; the machine has 2 GiB free for everyone,
   so `8` was replaced by a lower floor in the commands that carry it, except where the refusal itself was
   rehearsed.
-- "If a run was interrupted": every point was rehearsed as a first interruption. Its rule for a second
-  interruption (points 1 to 5, then stop) and the 60-minute bound of the "must show" rule were not exercised as
-  rules.
+- "If a run was interrupted": points 1, 2, 3, 5 and 6 were rehearsed, each as part of a first interruption (a stop
+  by the stop command, a vf-eval killed outright, a stop by the disk watchdog). Point 4 did not arise: on Linux
+  the laboratory dies with its vf-eval, and no helper happened to be running at a stop; its stop command is the
+  one of point 2. The rule for a second interruption (points 1 to 5, then stop), the stop of a vf-eval by its own
+  pid and the 60-minute bound of the "must show" rule were not exercised.
 - Step 3, its file gate, its dry run and the copy of its trace: never run. Its two start commands are new in
   round 3 and were not issued; `tools/vfrun.py --model-credentials prime` was run with a stand-in for vf-eval in
   a throwaway container only (`results/round3_checks.json`).

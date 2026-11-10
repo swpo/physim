@@ -1,42 +1,48 @@
 # vfport: PROGRESS
 
-## HOST-SAFETY FIXER, round 3 pass 1 (after the Mac session's read-only review of af767adb) -- 10 Nov 2026, IN PROGRESS
-- Role: the Mac review's findings M1 to M3 and m1 to m11 and the coordinator's disk requirement D1. Worktree
-  `/home/user/wt/vfr3fix1` (branch wt-vfr3fix1, pushes to the shared branch), scratch
-  `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3fix1/`.
-- DONE (committed): `RUNBOOK_MAC.md` ON HOLD again (fb54884bc); code: `tools/vfrun.py` (environment allow-list,
-  refusal of a session with DOCKER_*/PHYSIM2_*/... names, local-socket check of the Docker context, disk
-  watchdog, one stop path, status 97/98, helper stop, command form for steps 2c and 3), `tools/vfeval.py` (the
-  launcher), `physim2_env/_nokey.py` (BOTH readers of ~/.prime/config.json closed: verifiers' and the prime-runs
-  SDK's, the second one found here by tracing a rollout), `tools/build_reference.py` (theta by 0600 file),
-  proxy checks for the worker's loopback names (`agents/probe_grading.py`, `tools/check_probe.py`), build backend
-  pinned (`pyproject.toml`, `uv.lock` [manifest]), `tools/check_round3.py` (48 of 48: tripwires, credential
-  trace, real signals in a throwaway container), `tools/check_safety.py` 36 of 36 and `tools/check_interrupt.py`
-  8 of 8 on the new code, `RUNBOOK_MAC.md` rewritten (generated from one set of command templates so that
-  repeated text is identical), `tools/check_runbook.py` for the new text, `rehearsal/issue3.py`,
-  `rehearsal/watch_open.py`.
-- Pre-test in my worktree with the existing environment (scripted rollouts, scratch home, no upload): D and C
-  through `tools/prove.py`, one rollout through the command form of `tools/vfrun.py`, report tool: all as
-  expected. It found two things, both fixed: a helper started by a tool refused the tool's own child environment;
-  the prime-runs SDK reads the credential file even for a disabled run.
-- DONE since: `PIN.sha256` regenerated (109 files, sha256 cd67eb4b...03e4) and committed as 00947b226, the commit
-  the rehearsal runs from (fresh sparse clone in `<scratch>/rehearsal/clone`; record lines in
-  `<scratch>/rehearsal/record.jsonl`, written by `rehearsal/issue3.py`; an inotify watcher on the made-up
-  credential folder writes `<scratch>/rehearsal/opens.jsonl`). Rehearsed so far, all as the runbook says: step 0
-  (with the deliberate dirty-session and disk refusals), step 1 without the image build, the stop command (first
-  aimed at the waiting shell on purpose), a hard kill of vf-eval with the label-checked container removal, a
-  watchdog refusal before a run (the runbook's own 8 GiB) and a watchdog stop during a run (ballast), three resets.
-- RUNNING NOW (20:07 UTC): the clean pass of step 2a in the rehearsal clone, then 2b (20 minutes), 2c, step 4.
-- NOT yet done: the rest of the rehearsal and `results/rehearsal_round3.json`; README, `results/summary.json`,
-  `results/host_safety_round3.json`; removal of worktree and scratch.
-- Running: at most one background script of mine at a time (`<scratch>/pre/run*.sh`, a scripted rollout labelled
-  `verifiers.run=vfr3fix1-pretest`); the Docker daemon was started by me after a restart of the container
-  (log in `<scratch>/dockerd.log`); never stop it.
-- If the container restarted: recreate the worktree as the role text says, read `git log -8` and this section,
-  start the daemon (`pgrep -x dockerd >/dev/null || (nohup dockerd --feature containerd-snapshotter=false > <scratch>/dockerd.log 2>&1 &)`),
-  list leftovers with `docker ps -a --filter label=verifiers.run=vfr3fix1-pretest` and
-  `--filter label=verifiers.run=physim2-pilot-20261110` and remove them by exact name, then continue from the
-  first item of "NOT yet done".
+## HOST-SAFETY FIXER, round 3 pass 1 (after the Mac session's read-only review of af767adb) -- 10 Nov 2026, finished
+- Role: the Mac review's findings M1 to M3 and m1 to m11 and the coordinator's disk requirement D1.
+  `RUNBOOK_MAC.md` is ON HOLD (first act of this role, commit fb54884bc; a suspension note stands above the first
+  line of `HOST_SAFETY_AUDIT.md`, whose own text was not touched). Round 3 is NOT re-audited.
+- Index: `results/host_safety_round3.json` (one entry per finding: status, where confirmed, what changed with
+  file and lines, test, result, record). README sections 8.9 to 8.11. `results/summary.json`:
+  `host_safety.round_3_of_fixes`, `.rehearsal_round_3`, `.re_audit_round_2`.
+- Status: M1, M2, M3, m1 to m6, m8 to m11, D1 closed; m7 as a rule in the runbook, its bearer deferred to before
+  step 3 (said in the runbook, step 3). No finding was rejected. One thing the review did not have was found and
+  closed: the prime-runs SDK reads `~/.prime/config.json` and its key for every run, uploads off or not.
+- Pinned code changed: 14 files changed, 4 added (`physim2_env/_nokey.py`, `tools/vfeval.py`,
+  `tools/build_reference.py`, `tools/check_round3.py`), 91 of 109 unchanged (the driver, its guard, grading,
+  taskset, access, store, the scripted harness, round 5, vw: byte for byte the round-2 pin). `PIN.sha256`: 109
+  files, sha256 cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4.
+- Checks on the new code (none kills or deletes on a host): `tools/check_round3.py` 48 of 48 (22 under tripwires,
+  8 traces of a made-up credential file, 18 with real signals in one throwaway container without a mount);
+  `tools/check_safety.py` 36 of 36 (65 tripwires); `tools/check_interrupt.py` 8 of 8 (containers);
+  `tools/check_runbook.py` 46 of 46 on the final text; `tools/pin.py --check` 0 differences.
+- Rehearsal: fresh sparse clone of 00947b226 (same pin), 20:01 to 20:37 UTC, 65 commands each as one `sh -c`,
+  `$HOME` given as a variable (commands byte for byte but for the study path, pid/name and, on this 1.8 GiB
+  machine, the disk floor). Steps 0, 1 (no image build), 2a, 2b (37 rollouts: 32 of 34, 66 of 66), 2c, 4; a stop
+  by the stop command, a hard kill with the label-checked removal, a watchdog refusal at the runbook's own 8 GiB
+  and a watchdog stop during a rollout. The kernel's record of every open of a made-up credential file in the
+  rehearsal's home: 0 events in 45 rollouts; 3 for the stock import as a control. Three prose mismatches,
+  corrected; the 33 fenced commands of the final runbook equal the rehearsed ones. `results/rehearsal_round3.json`.
+- Not done, and why: nothing on macOS (inferred only); the image build (the shared image exists); step 3 (never
+  run; its two start commands are new); point 4 of the interruption section on a live case (Linux kills the
+  laboratory with its parent); `tools/check_units.py`, `tools/check_driver.py`, `prove.py --worlds 4`, gliders,
+  the red team's attacks were not run again (their code did not change).
+- Left on the machine by this role: nothing of the pilot (no container, no process); the Docker daemon, which I
+  started after a restart of the container and did not stop; the three images untouched; files `/tmp/vf-port-*`
+  that verifiers never removes (one per rollout, as the runbook says: not deleted by pattern). Scratch `vfr3fix1`
+  deleted and worktree `wt-vfr3fix1` removed after the last push.
+- Next step (exact), for the coordinator: a re-audit of round 3. To read: `git diff af767adbd..HEAD --
+  research/alife/vecworld/program/round6/vfport` (the pinned diff is in the 18 files named above),
+  `RUNBOOK_MAC.md`, `results/host_safety_round3.json`. To repeat the checks in the cloud container, from this
+  folder, with `V=/home/user/evalwork/vfport/.venv/bin/python` and
+  `D="env -i PATH=$PATH HOME=$HOME PHYSIM2_DEV_MACHINE=cloud-container"`:
+  `$D $V -B tools/check_round3.py --scratch <a fresh scratch folder> --out <scratch>/r3.json` (host under tripwires
+  and one container named vfr3fix1-check-round3, removed by --rm), `$D $V -B tools/check_safety.py --out ...`,
+  `$D $V -B tools/check_interrupt.py --out ...`, `$V -B tools/check_runbook.py --out ...`, `$V -B tools/pin.py --check`.
+  The pilot's tools now start only from a clean environment: `env -i PATH=$PATH HOME=$HOME VF_RUN_ID=<label>`.
+- If the container restarted after this note: nothing of this role is running; recreate nothing.
 
 ## VERDICT, round 2 (of the branch head after the two round-2 re-audits) -- 10 Nov 2026, finished
 - Role: issue the round-2 verdict from the fixer's report and the two re-audits (code, runbook), checking what
