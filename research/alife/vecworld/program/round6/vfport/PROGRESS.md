@@ -8,9 +8,18 @@
   /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfverdict2 (stand-ins only).
 - Done so far (18:00 UTC): both files read in full at head 8193c337b; `sha256sum -c PIN.sha256` 105 of 105,
   sha256 of `PIN.sha256` 7aa9bbfc...f64c19; since 73829e5c6 only texts, `rehearsal/` and `results/` changed.
-- Next: fenced commands by script (guard, byte equality with the rehearsal record); the status and stop commands
-  through my own command tool on a stand-in; the cited lines of the driver, the gates and verifiers' Docker
-  runtime; step 3 against change 9. Then the verdict.
+- Checked by me at the head (18:40 UTC), nothing of the port executed on the host:
+  run: 30 fenced commands, all begin with the guard, equal at be2c17ae6, 40c697e54 and the head; 23 of them are in
+  the rehearsal record byte for byte (never issued: the image build and its status, the five of step 3); the guard
+  with `echo` from 36 wrong combinations prints once, for an empty path started inside the folder itself; the 2a
+  start, the status, the stop (aimed at the waiting shell, with the placeholder left in, then at the tool) through
+  my own command tool on a sleeping stand-in: one process line, nothing signalled twice, then `EXIT 143`.
+  read: `_item.py` in full, the three gates, `grading.py:49-87`, verifiers' Docker runtime (no mount option on a
+  box), vf-eval's dry run (returns before any rollout), `tools/run_report.py`, both configs, `rehearsal/issue.py`.
+  run (pure functions only, cut out by ast): the code re-audit's wider N5 holds (`--ipc=host` and `-v /dev:/dev`
+  shaped tables pass); a Mac share is refused wherever it is mounted.
+  container (mine, no mount, no network, removed): the driver check 31 of 31; 6 starts of the box scripts refused.
+- Next: write the verdict section, the first line and the hold notice; commit only those two files.
 - If the container restarted: recreate the worktree as the role text says; nothing else of mine is running.
 
 ## RE-AUDIT of the runbook, round 2 (independent; of commit 40c697e54) -- 10 Nov 2026, finished
