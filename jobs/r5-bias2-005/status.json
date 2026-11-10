@@ -25,7 +25,7 @@
   "cap_usd": 16.45,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.3409
+    "conservative_usd": 2.0713
   },
   "hard_deadline": "2026-11-10T02:45:27Z",
   "hard_deadline_epoch": 1794278727.7079751,
@@ -53,7 +53,7 @@
   ],
   "job_id": "r5-bias2-005",
   "max_estimate_usd": null,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
@@ -125,5 +125,6 @@
   "run_deadline": "2026-11-10T02:32:58Z",
   "started_at": "2026-11-10T00:20:58Z",
   "state": "running",
-  "updated_at": "2026-11-10T00:20:58Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n00:21:04 [job] plan vortex:3000:6250:6550, nproc 16, cert workers 13, sim budget 2400s, hard end +7260s, tiny 0\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n00:21:14 [job] === world vortex: deadlines sim +3000s train +6250s cert +6550s (plan 3000/6250/6550)\n== out/progress.txt\n 9   568.9s] N0_local_c1_s1__certA q=64 ok in 49.6s (certify 21.1s)\n00:35:02 [ctrain   573.2s] L0_recon_c1: steps 3000, val [1.6820000410079956, 1.9139000177383423, 2.215399980545044, 1.7177000045776367] -> [0.8995000123977661, 0.9441999793052673, 0.9154000282287598, 0.8865000009536743] (best at [3000, 3000, 3000, 3000]), train 10.0s (chunks {'first_incl_compile': 3.467939853668213, 'rest_mean': 0.2355785369873047}), total 12.1s, 22.6 GB peak, 14.4 GB in use\n00:35:03 [ccert 11   574.4s] N8_recon_c1_s1__certA q=64 ok in 37.6s (certify 14.7s)\n00:35:04 [ccert 10   575.7s] N8_clos_c1_s1__certA q=64 ok in 45.6s (certify 20.8s)\n00:35:06 [ccert 2   576.7s] N8_clos_c1_s0__certA q=64 ok in 47.9s (certify 22.7s)\n00:35:08 [ccert 8   579.4s] N8_recon_c1_s0__certB q=64 ok in 48.3s (certify 22.8s)\n00:35:13 [ccert 13   585.1s] N8_recon_c1_s0__certA q=64 ok in 48.7s (certify 20.4s)\n00:35:15 [ccert 5   586.1s] N8_local_c1_s1__certB q=64 ok in 42.7s (certify 14.1s)\n00:35:21 [ccert 7   591.7s] N8_local_c1_s0__certB q=64 ok in 50.3s (certify 21.2s)\n00:35:28 [ccert 3   598.9s] N8_local_c1_s1__certA q=64 ok in 43.9s (certify 18.6s)\n00:35:28 [ccert 12   599.3s] N8_local_c1_s0__certA q=64 ok in 48.6s (certify 20.6s)\n00:35:29 [ctrain   600.5s] L0_local_c1: steps 3000, val [1.2180999517440796, 1.1612999439239502, 1.200700044631958, 0.9934999942779541] -> [0.250900000333786, 0.25220000743865967, 0.22679999470710754, 0.2280000001192093] (best at [3000, 2750, 2750, 2750]), train 25.3s (chunks {'first_incl_compile': 10.214879989624023, 'rest_mean': 0.8074036944996227}), total 27.1s, 22.6 GB peak, 14.4 GB in use\n00:35:34 [ccert 6   604.9s] L0_clos_c1_s0__certB q=64 ok in 39.2s (certify 20.0s)\n00:35:35 [ccert 4   606.6s] L0_clos_c1_s1__certB q=64 ok in 38.0s (certify 19.0s)\n00:35:39 [ccert 1   609.7s] L0_clos_c1_s0__certA q=64 ok in 41.2s (certify 19.9s)\n00:35:40 [ccert 10   611.7s] L0_recon_c1_s1__certB q=64 ok in 35.9s (certify 16.7s)\n00:35:42 [ccert 9   612.5s] L0_clos_c1_s1__certA q=64 ok in 43.6s (certify 20.7s)\n00:35:42 [ccert 11   613.7s] L0_recon_c1_s0__certB q=64 ok in 39.3s (certify 17.9s)\n00:35:44 [ccert 8   615.3s] L0_recon_c1_s1__certA q=64 ok in 35.9s (certify 16.2s)\n00:35:48 [ccert 2   619.3s] L0_recon_c1_s0__certA q=64 ok in 42.6s (certify 20.6s)\n00:36:01 [ccert 7   632.0s] L0_local_c1_s0__certB q=64 ok in 31.3s (certify 15.1s)\n00:36:01 [ccert 5   632.2s] L0_local_c1_s1__certB q=64 ok in 31.1s (certify 14.9s)\n00:36:02 [ccert 3   633.3s] L0_local_c1_s0__certA q=64 ok in 31.5s (certify 16.1s)\n00:36:03 [ccert 13   634.5s] L0_local_c1_s1__certA q=64 ok in 31.5s (certify 15.5s)\n00:36:23 [ctrain   654.0s] L8_clos_c1: steps 3000, val [1.1327999830245972, 1.041200041770935, 1.0676000118255615, 1.1059000492095947] -> [0.16410000622272491, 0.16009999811649323, 0.1451999992132187, 0.14569999277591705] (best at [3000, 3000, 3000, 3000]), train 51.6s (chunks {'first_incl_compile': 7.161741733551025, 'rest_mean': 3.744779435071078}), total 53.3s, 22.6 GB peak, 14.4 GB in use\n",
+  "updated_at": "2026-11-10T00:36:29Z"
 }

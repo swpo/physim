@@ -75,10 +75,10 @@
     {
       "billed_usd": null,
       "cap_usd": 15.8,
-      "conservative_usd": 1.968,
+      "conservative_usd": 3.1797,
       "finished_at": null,
       "gpu": "H200_141GB (nebius)",
-      "hours": 0.294,
+      "hours": 0.475,
       "job_id": "r5-bias2-004",
       "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the phase-membrane world (4 fields), plus the gliders anchor at width 1 under the same judges; encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -87,10 +87,10 @@
     {
       "billed_usd": null,
       "cap_usd": 16.45,
-      "conservative_usd": 0.8594,
+      "conservative_usd": 2.0711,
       "finished_at": null,
       "gpu": "H200_141GB (nebius)",
-      "hours": 0.128,
+      "hours": 0.31,
       "job_id": "r5-bias2-005",
       "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the fed-vortex world (vorticity, fuel, two labels; nothing conserved); encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted, certified by the fixed family",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -173,8 +173,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 51.4268,
     "prior_spend_usd": 0.0,
-    "spent_usd": 22.0042,
+    "spent_usd": 24.4276,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T00:25:38Z"
+    "updated_at": "2026-11-10T00:36:30Z"
   }
 }
