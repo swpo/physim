@@ -14,6 +14,12 @@
   "job_id": "r5-vortexexam-006",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T03:04:36Z",
+    "file": "jobs/r5-vortexexam-006/review.md",
+    "sha256": "935f76390743a41540f0d895dbb3cb93728eda20770c1ce14f2c57d8c5239a31",
+    "summary": "Resubmission of 005 (same executed code; cap now covers the H200's billed rate); 005's review applies: gate met, fine to run."
+  },
   "state": "received",
   "updated_at": "2026-11-10T03:03:54Z"
 }
