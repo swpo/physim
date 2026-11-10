@@ -1,9 +1,33 @@
 {
+  "billing_window_hours": 2.6,
+  "bundle": {
+    "bundle_sha256": "20f9ac3da6ae35ffc62afd9582121cefc7c744a36ec93090f9f538230118bdce",
+    "files": {
+      "job.sh": "2801b1e447ece1031d6ed5cdd180d2a7d0ec37e06467bcc4bf26cb3bdc1df047",
+      "request.json": "a4be45694b5415f5bb1faf31a08a809f8bc7132f23c2627a91ee0731857d4d1e",
+      "run.sh": "b7f6a551f58829edeafda0a938daaa1ff8c2a92ed7b20130a26bde85f7bc59f5",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "91807a0795859a503208265c7f62f0cbcc2a158090ae9410ad89f5039e8905a4"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track1/learned_phi2",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round5/bias2"
+    ],
+    "ref": "affd4ecb2af5d298b774eb1badbb8f9abac57061",
+    "src_bytes": 18656427
+  },
   "cap_usd": 12.4,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-10T01:54:16Z",
@@ -14,11 +38,35 @@
       "at": "2026-11-10T01:55:08Z",
       "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $3.68",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T02:05:51Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-bias2-007",
   "max_estimate_usd": 3.68,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
   "plan": {
     "max_estimate_usd": 3.68,
     "offers": [
@@ -50,6 +98,6 @@
     "sha256": "12e39ce7ba7886d0d7d55ed7a13c0833e591bfc605de6d93ce98a2e73eb68859",
     "summary": "Resubmission of 006 unchanged (same ref and env); its review applies: fine to run."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T02:03:44Z"
+  "state": "provisioning",
+  "updated_at": "2026-11-10T02:05:51Z"
 }

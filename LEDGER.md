@@ -15,7 +15,7 @@ Campaign cap $1000.00 · spent $28.79 (billed where Prime has reported it, other
 | r5-bias2-004 | done | claude/fisim-agent-world-research-hepmlz | H200_141GB (nebius) | 0.747 | 5.00 | 4.68 | 15.8 | 2026-11-10T00:53:10Z |
 | r5-bias2-005 | done | claude/fisim-agent-world-research-hepmlz | H200_141GB (nebius) | 0.598 | 4.00 | 3.63 | 16.45 | 2026-11-10T00:54:07Z |
 | r5-bias2-006 | infra_error | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 12.4 | 2026-11-10T01:52:27Z |
-| r5-bias2-007 | queued | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 12.4 |  |
+| r5-bias2-007 | provisioning | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 12.4 |  |
 | r5-ladder-001 | received | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 21.2 |  |
 | r5-slots-002 | infra_error | claude/fisim-agent-world-research-hepmlz | H200_141GB (nebius) | 0.074 | 0.50 | 0.00 | 5.0 | 2026-11-09T23:25:04Z |
 | r5-slots-003 | done | claude/fisim-agent-world-research-hepmlz | H200_141GB (nebius) | 0.564 | 3.77 | 3.13 | 6.2 | 2026-11-10T00:07:13Z |
