@@ -865,5 +865,140 @@
   "source": "docker images / docker system df at summary time",
   "server": "29.9.2",
   "note": "classic image store (dockerd --feature containerd-snapshotter=false)"
+ },
+ "checker": {
+  "role": "independent reviewer of round6/vfport at commit e4a30854d, 10 Nov 2026; this block is the only change the reviewer made",
+  "what_was_run": "RUN in the cloud container (Docker 29.9.2, no model, push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed): tools/prove.py for policies D and C on one fresh ring world; the reviewer's own recomputation of that table; one extra hostile agent through the same route; a two-item test of the item driver in a container started as verifiers starts it; `vf-eval --dry-run` of both configs; `uv lock --check --offline`. READ only: everything else, including the verifiers source and RUNBOOK_MAC.md. Nothing was run on a Mac.",
+  "PILOT_NEVER_REUSE_AS_EXAM": true,
+  "rerun": {
+   "what": "one fresh hidden ring world (smoke_ring, 64 items), policies D and C, vf-eval physim2-env --env.id isolated-verifier, docker; the instance and its traces were deleted afterwards",
+   "all_graded": true,
+   "failed_items": 0,
+   "items": 128,
+   "D": {
+    "reward_skill_vs_O": 0.18959683730413252,
+    "vs_C": 0.2162866019185118,
+    "lab_ticks_used": 392
+   },
+   "C": {
+    "reward_skill_vs_O": 0.8766000095353346,
+    "vs_C": 1.0,
+    "lab_ticks_used": 0
+   },
+   "O_vs_C": 1.1407711488961505,
+   "wall_s_per_rollout_mean": 48.18393313884735,
+   "predictor_layers": {
+    "rlimits": true,
+    "uid": 1000,
+    "cleanup": true
+   },
+   "task_row_fields": "idx, id, name, prompt (public TASK.md), image, workdir, network_allow [], artifacts [submission, required false], timeouts, resources, instance_id, world, config_name, secret_commitment: pointers only",
+   "saved_files_scanned_for_secret_and_theta": {
+    "files": 17,
+    "hits": 0
+   },
+   "upload": "none: no platform line in eval.log",
+   "recomputed_by_reviewer": "K and O recomputed from the frozen truths and the climatology pool with separate numpy code (no import of agentenv, vw or physim2_env), D and C from the saved per-item scores (64 x 7): L, vs_C and vs_O of K, O, D, C equal prove.py's output, maximum absolute difference 0.0; the trace reward equals vs_O for both rollouts; the C submission through round 5's grader is identical per item (max abs difference 0.0)"
+  },
+  "reported_table": {
+   "per_item_scores_of_the_4_world_proof": "NOT available: they lived in the store, which the builder deleted, and proof_ring.json holds pooled and per-world aggregates only. The reported table could therefore not be recomputed from per-item scores; it was recomputed from the L values and per-world values in proof_ring.json instead",
+   "recomputed_from_proof_ring_json": "vs_C of S, P0, PM, D, null, O from pooled L; sigma and rho from pooled L; z of every policy from per_world tables of both rounds; counts (24 rollouts, 1,536 items, 0 failed); cost means: all equal the reported values",
+   "wrong_numbers": []
+  },
+  "wrong_or_overstated_wording": [
+   {
+    "where": "builder's report, check (b); README 4.3 (b)",
+    "text": "192 saved files hold no canary, secret or theta",
+    "correction": "192 files were scanned for secrets and hidden parameters (hidden_value_scan; its needles hold no canary). The canary was searched in 89 files of the probe runs (results/probe_ring.json: evidence.b_trace_scan.files_scanned)"
+   },
+   {
+    "where": "README 4.3 (a), heading",
+    "text": "Nothing survives from one item to the next",
+    "correction": "files, System V memory and processes do not survive; timestamps do (finding 2)"
+   },
+   {
+    "where": "README 1, row 'Collection of the submission'; README 4.3 (d), heading 'No ungraded rollout'",
+    "text": "nothing the agent does to its box can end the rollout ungraded",
+    "correction": "true for the seven agents tested; an eighth ends ungraded (finding 1)"
+   },
+   {
+    "where": "README 6",
+    "text": "single_use ... exists and is off; it was not exercised",
+    "correction": "it was exercised once: probe_ring.json: checks_new.g_single_use_refuses_an_instance_already_opened is true (rollout guard-single-use)"
+   },
+   {
+    "where": "builder's report and README 4.2",
+    "text": "32 of round 5's 34 boundary checks reproduced",
+    "correction": "the count is right. Eight of the 32 (path confined, missing submission, symlink, bad shape, nondeterminism, CPU, memory, size) are now answered by the public validator inside the agent's box, where the agent is root; in round 5 the evaluator answered them. They no longer describe the trusted boundary (finding 3)"
+   },
+   {
+    "where": "RUNBOOK_MAC.md, Cost",
+    "text": "The caps bound the spend at 1.5 M tokens in total",
+    "correction": "token caps are checked between turns, so the turn that crosses a cap still completes (verifiers/v1/session.py:88-89): the bound is the cap plus one request"
+   }
+  ],
+  "findings": [
+   {
+    "n": 1,
+    "severity": "major (must be fixed before a sealed exam; not needed for the pilot)",
+    "memo_hole": 3,
+    "what": "an agent can still end its rollout without a grade",
+    "evidence": "RUN: an agent that replaces the box's tar so that the collected archive lists predict.py twice. Result: no reward, episode error EnvError 'IsolatedVerifierEnv.finalize(): RuntimeError: duplicate artifact member workspace/submission/predict.py'. physim2_env/public/_rules.py:44-62 keeps every regular member without checking names against each other; verifiers refuses the archive at restore (utils/artifacts.py:234-235), after finalize. RUN on the worker, no container: a file and a directory of one name is refused the same way; a path longer than 4,096 bytes passes verifiers' check and then fails `tar -xf` (exit 2)",
+    "fix": "in freeze: refuse duplicate names, a name that is both a file and a directory, components over 255 bytes and paths over about 4,000 bytes; in finalize, pass the frozen archive through verifiers' own restore check inside the try and score K when it fails; add these agents to agents/hostile_submission.py"
+   },
+   {
+    "n": 2,
+    "severity": "major (must be fixed before a sealed exam; not needed for the pilot)",
+    "memo_hole": 1,
+    "what": "the cleanup between items leaves a channel: timestamps",
+    "evidence": "RUN: physim2_env/public/_item.py as /runtime/item.py in a physim2-ring:1 container (cap-drop NET_ADMIN and NET_RAW, no-new-privileges, entrypoint sleep), three requests as uid 1000 with the cleanup on. Request 2 called os.utime on /tmp, /var/tmp, /dev/shm, /run/lock and /dev/mqueue at a chosen second (value 37 modulo 64) and read /etc/hostname; request 3 read 37 from the modification time of all five directories and saw the changed access time. The cleanup reported nothing to remove. The probe of check (a) tests files, shared memory and a process only",
+    "fix": "after each item root resets access and modification times of every directory the predictor's user can write (scan: writable_dirs) and of files whose access time moved, or marks the box dirty when they changed; or one fresh container per item for sealed exams. Add both timestamps to probe (a)"
+   },
+   {
+    "n": 3,
+    "severity": "major (exam rule changed against round 5)",
+    "memo_hole": null,
+    "what": "the trusted side no longer validates a submission before freezing it",
+    "evidence": "READ: round 5 froze a predictor only after the evaluator ran the three example calls (round5/agentenv/evaluator/lab_service.py:163-185, used again for the final collection, run_rollout.py:97-98). physim2_env/lab_tools.py:43-63 replaces _check: `submit` freezes any directory with a predict.py; the three calls run only in the client inside the agent's box (public/labclient.py:136-155). Consequences: a model that calls the tool `call` with op submit directly freezes an untested predictor and closes the laboratory; the rule 'same seed, same samples' is not enforced by anyone the agent does not control; an unsubmitted, partly working predictor is graded item by item where round 5 scored it K",
+    "fix": "run the three public example calls in the verifier box before item 1 with the same driver and apply round 5's rule (K when they fail), or say in README section 5 and in TASK.md that the rule changed"
+   },
+   {
+    "n": 4,
+    "severity": "minor",
+    "memo_hole": 3,
+    "what": "single_use is off by default; round 5 refused a reused rollout name by default (run_rollout.py:66-67)",
+    "fix": "default true; pilots switch it off"
+   },
+   {
+    "n": 5,
+    "severity": "minor",
+    "memo_hole": null,
+    "what": "agent_box_cpu_s is read by commands run inside the agent's box (physim2_env/grading.py:73-80, taskset.py:184), where the agent is root and can replace sh, cat and awk: the number can be forged",
+    "fix": "for the compute budget read the container's counter from the host (docker stats or the host's cgroup file)"
+   },
+   {
+    "n": 6,
+    "severity": "minor",
+    "memo_hole": 4,
+    "what": "guard 3 matches names only (physim2_env/store.py:19): GITHUB_PAT, HF_KEY or KAGGLE_KEY in harness.env pass",
+    "fix": "allow-list the variable names a box may receive instead of a deny pattern"
+   },
+   {
+    "n": 7,
+    "severity": "minor",
+    "memo_hole": null,
+    "what": "RUNBOOK_MAC.md",
+    "evidence": "READ, and both configs resolved with --dry-run here (caps 40 turns, 1,500,000 total and 60,000 output tokens, no retries, push false). No command uploads or spends before step 3. (a) step 3's --dry-run has no -o: it writes outputs/<run>/configs/ inside the public checkout, and a resolved config carries the team-id header of the worker's Prime settings; (b) `uv sync --locked` does not pin Python 3.12 (requires-python allows 3.13, and `uv lock --check` picked CPython 3.13 here); (c) step 2 (b) binds a listener on every interface of the Mac for about 10 minutes (tools/check_probe.py:39-43), which the macOS firewall may ask about; (d) the single scripted rollout runs on every instance in the store, two after step 2 (b); (e) step 2 (a) prints D, P0, C in that order, not D, C, P0",
+    "fix": "add `-o $SCRATCH/qwen` to the dry run and `outputs/` to .gitignore; `uv sync --locked --python 3.12`; name the listener in the runbook; add `--env.taskset.instances '[\"mac-ring-w0\"]'` to the single rollout"
+   }
+  ],
+  "confirmed": [
+   "laboratory in a host process (physim2_env/taskset.py:91-97; verifiers/v1/mcp/toolset.py:16-19, launch.py:420-423; the server binds 127.0.0.1, mcp/server.py:278); budgets under LabService's lock by import",
+   "network_allow [] (taskset.py:273), image (272), NEEDS_CONTAINER (80), three guards (91-97, 110-116); in the rerun's trace the agent runtime has allow [] and block ['*'] and both boxes report network_restricted true",
+   "Artifact(required=False) (taskset.py:274); truths never written into a box (physim2_env/grading.py:35-38, 126); the reward's body is inside one try (taskset.py:223-240)",
+   "no upload: push false in both configs and in tools/vfrun.py:38, PRIME_RUNS_MODE=disabled and PRIME_API_KEY removed (vfrun.py:25-26)",
+   "the proof's package code differs from the final commit by one reward branch only (git diff f12158bb0 e4a30854d)",
+   "line counts 763, 533, 2,374 and 3,246; 32 lines copied verbatim (diff of evaluator/submission.py:94-125 against public/validate.py:65-96 is empty); uv.lock matches pyproject.toml and has macOS arm64 wheels"
+  ]
  }
 }
