@@ -1,0 +1,321 @@
+{
+ "what": "round 2 of fixes after the host-safety audit: the seven remaining changes of the round-1 verdict (HOST_SAFETY_AUDIT.md, 'Re-audit, round 1', commit 971c66bc8), each with the test the verdict names, its result and the file that records it",
+ "status": "RUNBOOK_MAC.md stays ON HOLD: these changes have not been re-audited",
+ "scope": "runbook text and one rehearsal. No file listed in PIN.sha256 changed: 7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19  PIN.sha256   (105 files listed, 0 differences)",
+ "runbook_sha256": "b08fb77a3443fd7e1867c5fb152d347b17e8a1464955eb948f1388c769bac059",
+ "evidence_labels": {
+  "read": "the cited text was read or checked as text",
+  "run with stand-ins": "the runbook's own command texts issued as one `<shell> -c '<text>'` against a stand-in study folder in scratch; no file of the port executed",
+  "run": "a command of the runbook run in the rehearsal's clone in the cloud container",
+  "tripwire": "run on the cloud host with every destructive primitive of the Python process replaced by a recorder that raises (tools/tripwires.py)",
+  "container": "run in a throwaway container started without any host mount, removed afterwards",
+  "vf-eval": "rollouts through vf-eval physim2-env --env.id isolated-verifier on Docker, scripted harness, no push",
+  "inferred": "every statement about macOS and Docker Desktop: nothing ran there"
+ },
+ "changes": {
+  "1 process listing (N1)": {
+   "changed": "both status commands list the pilot's processes with `ps axww -o pid= -o command= | grep -E \"^ *[0-9]+ /ABSOLUTE/PATH/TO/vfport/\\.venv/bin/python\"` (step 3's keeps its `cut -c 1-160`); the round-1 pattern `[p]ython` is gone; section C has a by-hand check that the study path holds only letters, digits and / . _ - (it is now a search pattern); point 1 of 'If a run was interrupted' forbids any other ps or pgrep",
+   "files": [
+    "RUNBOOK_MAC.md line 287 (status command of step 2), line 526 (status command of step 3), line 142 (section C), lines 290-300 (what the status prints)"
+   ],
+   "differs_from_the_verdicts_literal_text": "the verdict wrote `ps axwwo pid=,command=`. POSIX lets the header text after `=` run to the end of the argument, and a BSD ps may then print the pid column only, under the header `,command=`. Two -o options mean the same and are unambiguous. On this Linux both forms print the same lines (compared here: 77 lines, equal). macOS: inferred",
+   "verdict_test": "the 2a command issued as one `sh -c '<text>'` lists the tool and not the waiting shell",
+   "result": {
+    "source": "results/session_mode_round2.json",
+    "n_checks": 10,
+    "n_passed": 10,
+    "failed": [],
+    "checks": [
+     "standin_1_bash_control_the_round1_listing_shows_the_waiting_shell_too",
+     "standin_1_bash_the_detached_2a_command_returns_at_once_and_leaves_the_tool_and_one_waiting_shell",
+     "standin_1_bash_the_status_lists_the_tool_and_not_the_waiting_shell",
+     "standin_1_sh_control_the_round1_listing_shows_the_waiting_shell_too",
+     "standin_1_sh_the_detached_2a_command_returns_at_once_and_leaves_the_tool_and_one_waiting_shell",
+     "standin_1_sh_the_status_lists_the_tool_and_not_the_waiting_shell",
+     "text_1_both_status_commands_list_by_the_anchored_pattern",
+     "text_1_no_other_command_lists_processes",
+     "text_1_section_C_checks_that_the_path_is_plain",
+     "text_1_the_old_pattern_is_gone"
+    ],
+    "rehearsal": "the 2a command issued as one sh -c: the status listed the tool and not the waiting shell (entries 16 to 18; with the session's own tool: entries 63 to 65). PASS"
+   },
+   "evidence": "read (text_1_*); run with stand-ins, sh and bash, with the round-1 listing as a control that shows the waiting shell (standin_1_*); vf-eval (the real tool, results/rehearsal_round2.json entries 16 to 18 and 63 to 65, the latter through the session's own command tool)"
+  },
+  "2 stop command (N1)": {
+   "changed": "the stop command is `... && ps -ww -p PID_FROM_THE_STATUS_LINE -o command= | grep -E \"^/ABSOLUTE/PATH/TO/vfport/\\.venv/bin/python\" && kill -TERM PID_FROM_THE_STATUS_LINE`: it prints the command line of the process it signals, and prints and signals nothing for any other pid; the text says what to do when it prints nothing",
+   "files": [
+    "RUNBOOK_MAC.md line 428 (the command), lines 423-445 (point 2), line 90 (inventory)"
+   ],
+   "verdict_test": "aimed at the waiting shell's pid it prints nothing and signals nothing",
+   "result": {
+    "source": "results/session_mode_round2.json",
+    "n_checks": 10,
+    "n_passed": 10,
+    "failed": [],
+    "checks": [
+     "standin_2_bash_aimed_at_a_pid_that_is_gone_it_prints_nothing",
+     "standin_2_bash_aimed_at_a_process_that_is_not_the_pilots_it_signals_nothing",
+     "standin_2_bash_aimed_at_the_tool_it_prints_its_command_line_and_stops_it",
+     "standin_2_bash_aimed_at_the_waiting_shell_it_prints_nothing_and_signals_nothing",
+     "standin_2_sh_aimed_at_a_pid_that_is_gone_it_prints_nothing",
+     "standin_2_sh_aimed_at_a_process_that_is_not_the_pilots_it_signals_nothing",
+     "standin_2_sh_aimed_at_the_tool_it_prints_its_command_line_and_stops_it",
+     "standin_2_sh_aimed_at_the_waiting_shell_it_prints_nothing_and_signals_nothing",
+     "text_2_it_is_the_only_command_that_signals",
+     "text_2_the_stop_command_looks_before_it_signals"
+    ],
+    "rehearsal": "the stop command aimed at the waiting shell's pid (entry 19): no output, exit status 1, the waiting shell and the tool both still there (entry 20), the tool still listed (entry 21). PASS"
+   },
+   "evidence": "read; run with stand-ins (also `sh -xc`: the shell executed ps and grep and no kill; a foreign `sleep` and a pid that is gone: nothing); vf-eval (the real waiting shell, the real tool twice, the real vf-eval of 2c, a live laboratory, a laboratory that was gone)"
+  },
+  "3 interpreter (N2)": {
+   "changed": "`--managed-python` on both uv commands; the dry run's expected lines taken from the rehearsal (`Using CPython 3.12.<n>` without a path); a new command after the import check prints the interpreter's own process line and INTERPRETER-OK or INTERPRETER-DIFFERS; after the start of 2a (and 2b, 2c) the text says what `processes:` must show and: if not, send no signal, wait for EXIT, stop and report",
+   "files": [
+    "RUNBOOK_MAC.md lines 185-200 (dry run), line 214 (sync), lines 233-244 (interpreter check), lines 308-313 (2a)"
+   ],
+   "found_on_the_way": "with --managed-python the DRY RUN already downloads uv's own Python when uv has none (33 MB here); the runbook now says so in step 1 and in the inventory",
+   "verdict_test": "(the rehearsal) the interpreter's own process line begins with the study folder's .venv/bin/python",
+   "result": {
+    "source": "results/session_mode_round2.json",
+    "n_checks": 8,
+    "n_passed": 8,
+    "failed": [],
+    "checks": [
+     "standin_3_bash_the_interpreter_check_passes_where_the_interpreter_keeps_its_path",
+     "standin_3_control_it_ends_by_itself_with_an_exit_line",
+     "standin_3_control_the_interpreter_check_says_DIFFERS_for_a_reexecuting_interpreter",
+     "standin_3_control_the_status_lists_nothing_while_that_tool_runs_which_the_2a_rule_catches",
+     "standin_3_sh_the_interpreter_check_passes_where_the_interpreter_keeps_its_path",
+     "text_3_2a_says_what_processes_must_show_and_what_to_do_if_not",
+     "text_3_both_uv_commands_require_a_managed_python",
+     "text_3_the_interpreter_check_follows_the_import_check"
+    ],
+    "rehearsal": "step 1: `Using CPython 3.12.13` without a path (entry 4), INTERPRETER-OK (entry 11); after each start of 2a the status showed `<pid> <STUDY>/.venv/bin/python -B tools/prove.py ...`. PASS"
+   },
+   "evidence": "read; run with stand-ins, including an interpreter that re-executes under another path, as a framework Python does: INTERPRETER-DIFFERS, and the status lists nothing while its tool runs; run (the rehearsal's own .venv on uv's Python 3.12.13: INTERPRETER-OK). macOS: inferred"
+  },
+  "4 step 1 and the head of 'If a run was interrupted' (N3)": {
+   "changed": "the pilot folders are made before the sync; the real `uv sync` runs detached with a log, an EXIT line and a status command; step 1 says: a cut or an unexpected output: run nothing more, report, stop. 'If a run was interrupted' begins: for step 2 only; a cut in step 0, 1 or 4: stop; use it once, at a second interruption points 1 to 5 and stop; a Docker error under containers: stop. Point 6 and step 4: 'If it prints nothing: stop and report'",
+   "files": [
+    "RUNBOOK_MAC.md lines 181-225 (step 1), lines 406-414 (head of the section), line 469 (point 6), line 581 (step 4)"
+   ],
+   "verdict_test": "(the rehearsal) the changed commands of step 1",
+   "result": {
+    "source": "results/session_mode_round2.json",
+    "n_checks": 3,
+    "n_passed": 3,
+    "failed": [],
+    "checks": [
+     "text_4_prints_nothing_means_stop_in_point_6_and_in_step_4",
+     "text_4_the_real_uv_sync_runs_detached_with_a_log_and_an_exit_line",
+     "text_4_the_section_is_for_step_2_only_once_and_stops_on_a_docker_error"
+    ],
+    "rehearsal": "uv sync detached with a log and EXIT 0 (entries 6, 7); 'If a run was interrupted' used for step 2 only. PASS (the rule 'use this section once' was NOT exercised as a rule: see deviations)"
+   },
+   "evidence": "read; run (the detached sync and its status in the rehearsal). The rule 'use this section once' was not exercised as a rule"
+  },
+  "5 pin handover (N4)": {
+   "changed": "the file names no commit. Rule A.1, section C and step 0 say: the commit is the 40-character hash of the coordinator's GO message, the lead gives it to the session, the first line of step 0 must equal it; the code is identified by the sha256 of PIN.sha256 (unchanged). The hold notice stands between HOLD-BEGIN and HOLD-END and is the only text a verdict edits. Step 0 says what a failed comparison prints",
+   "files": [
+    "RUNBOOK_MAC.md lines 2-18 (hold notice and pin block), line 33 (rule A.1), lines 136-138 (section C), lines 157-170 (step 0)"
+   ],
+   "verdict_test": "(none named) what `shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK` prints when a listed file was changed or is missing",
+   "result": {
+    "source": "results/session_mode_round2.json",
+    "n_checks": 7,
+    "n_passed": 7,
+    "failed": [],
+    "checks": [
+     "standin_5_a_changed_file_gives_a_shasum_WARNING_line_and_no_PIN_OK",
+     "standin_5_a_missing_file_gives_no_such_file_and_a_WARNING_line",
+     "standin_5_intact_the_pin_comparison_prints_the_hash_and_PIN_OK",
+     "text_5_rule_A1_section_C_and_step_0_name_the_hash_of_the_GO_message",
+     "text_5_step_0_says_what_a_failed_comparison_prints",
+     "text_5_the_file_names_no_commit",
+     "text_5_the_hold_notice_is_marked_as_the_only_text_a_verdict_edits"
+    ],
+    "rehearsal": "step 0 printed the commit that the rehearsal had been given and PIN-OK (entries 1, 2). What a failed comparison prints: results/session_mode_round2.json (stand-in copy)",
+    "pin": {
+     "sha256_of_PIN.sha256": "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19",
+     "tools/pin.py --check": [
+      "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19  PIN.sha256   (105 files listed, 0 differences)"
+     ]
+    }
+   },
+   "evidence": "read; run on a copy of the three trees in scratch (shasum 6.04, the Perl script that macOS also ships: inferred to print the same there)"
+  },
+  "6 text that would trip the stop rule": {
+   "changed": "what each log shows after a stop, as seen in the rehearsal (a table in point 2); the end of single.log (two lines of token counts and a closing brace); the numbers that macOS pads (four places); and the six places where this rehearsal differed from the text (results/rehearsal_round2.json, mismatches)",
+   "files": [
+    "RUNBOOK_MAC.md lines 439-443 (the three endings), line 391 (2c), lines 158, 177, 206, 590 (padding)"
+   ],
+   "verdict_test": "(the rehearsal) take the log endings from it",
+   "result": {
+    "source": "results/session_mode_round2.json",
+    "n_checks": 2,
+    "n_passed": 2,
+    "failed": [],
+    "checks": [
+     "text_6_2c_and_the_padded_numbers",
+     "text_6_the_three_log_endings_after_a_stop"
+    ],
+    "rehearsal": "the three log endings were seen: traceback, KeyboardInterrupt, EXIT 130 (entry 24); `Terminated`, EXIT 143 (entry 33); vf-eval alone, EXIT 130 without a traceback (entry 59); the end of single.log (entry 85)",
+    "mismatches_found_and_corrected": 6
+   },
+   "evidence": "read; vf-eval (the three endings were each seen once)"
+  },
+  "7 rehearsal in session mode": {
+   "changed": "rehearsal/issue.py issues ONE fenced command of the runbook as `sh -c '<text>'` and records its literal text and complete output; rehearsal/make_record.py writes the record; rehearsal/check_round2.py is the stand-in test",
+   "files": [
+    "rehearsal/issue.py",
+    "rehearsal/make_record.py",
+    "rehearsal/remarks_round2.json",
+    "rehearsal/check_round2.py",
+    "results/rehearsal_round2.json",
+    "results/rehearsal_round2_proof.json",
+    "results/rehearsal_round2_probe.json"
+   ],
+   "verdict_test": "at least: step 0; the changed commands of step 1; 2a with a status while it runs; one stop by points 1 and 2, first aimed at the waiting shell's pid on purpose; one hard kill with points 3 to 6; 2a to its end; a status and a stop during 2c",
+   "result": {
+    "source": "results/rehearsal_round2.json",
+    "commit_rehearsed": "be2c17ae6a4a30c9c94d1eccb828f7477bd51008",
+    "outcome": "every command did what the runbook says, with four deviations forced by the machine and six places where the prose did not match what happened (all corrected afterwards; no command changed). The process listing showed the pilot's own interpreter processes and never a waiting shell (sh, and the session's own bash tool); the stop command aimed at a waiting shell printed nothing and signalled nothing; five interruptions were cleared by the runbook's own points and nothing of the pilot was left running or listed after any of them",
+    "counts": {
+     "entries": 106,
+     "runbook_commands_issued": 81,
+     "by_label": {
+      "0a-commit": 1,
+      "0b-pin": 1,
+      "0c-docker-and-folders": 1,
+      "1a-uv-dry-run": 1,
+      "1b-mkdir-ca": 2,
+      "1c-status": 1,
+      "1c-uv-sync": 1,
+      "1d-import": 1,
+      "1e-interpreter": 1,
+      "1g-image-check": 1,
+      "1h-make-instances": 6,
+      "2-status": 39,
+      "2a-check": 1,
+      "2a-prove": 4,
+      "2b-probe": 1,
+      "2b-report": 1,
+      "2c-report": 1,
+      "2c-single": 2,
+      "4a-copy-delete": 1,
+      "4b-docker": 1,
+      "I2-stop": 6,
+      "I3-docker-rm": 2,
+      "I6-reset": 5
+     },
+     "status_commands_with_their_complete_output": 40,
+     "exit_statuses_other_than_0": [
+      [
+       19,
+       "I2-stop",
+       1
+      ],
+      [
+       47,
+       "I2-stop",
+       1
+      ]
+     ]
+    },
+    "interruptions": 5,
+    "deviations": 5,
+    "mismatches": 6,
+    "hidden_values_in_the_record": {
+     "when": "before step 4 of the clean pass, with its store still there",
+     "instances_in_the_store": 2,
+     "needles": 8,
+     "total_hits_in_the_record": 0,
+     "hits_in_the_five_result_files": {
+      "proof_mac.json": 0,
+      "proof_mac_items.npz": 0,
+      "probe_mac.json": 0,
+      "prove.log": 0,
+      "probe.log": 0
+     }
+    }
+   },
+   "evidence": "run; vf-eval (42 finished and 4 cut rollouts, scripted harness, push = false, no model)"
+  },
+  "same pass, not gating (the audit file's list)": {
+   "changed": "the never table forbids any `docker run` by hand for anything of this repository, whatever its options; the paid command of step 3 has `test -f \"$HOME/physim2-pilot-20261110/scratch/LEAD-GO-STEP3\" &&` after its guard (a file the lead creates by hand); a command, used only if the lead asks for it, copies the run folder of step 3 out before step 4, unread, and only when the report tool counts no hidden value (the lead decided that pilot traces may be uploaded where that helps; the upload is the lead's own act)",
+   "files": [
+    "RUNBOOK_MAC.md line 61 (never table), line 518 (paid command), lines 559-569 (trace)"
+   ],
+   "verdict_test": "(none named)",
+   "result": {
+    "source": "results/session_mode_round2.json",
+    "n_checks": 5,
+    "n_passed": 5,
+    "failed": [],
+    "checks": [
+     "standin_same_pass_bash_the_paid_command_starts_nothing_without_the_leads_file",
+     "standin_same_pass_bash_the_trace_is_copied_only_when_the_report_counts_no_hidden_value",
+     "standin_same_pass_sh_the_paid_command_starts_nothing_without_the_leads_file",
+     "standin_same_pass_sh_the_trace_is_copied_only_when_the_report_counts_no_hidden_value",
+     "text_same_pass_never_table_step3_gate_and_trace"
+    ]
+   },
+   "evidence": "read; run with stand-ins for vf-eval and for the report tool. Step 3 was never run; the gate of the trace copy was also run once on the scripted run of 2c (rehearsal entry 87)"
+  }
+ },
+ "regression": {
+  "tools/check_safety.py": {
+   "rerun_from_the_rehearsals_clone": true,
+   "how": "host, 65 tripwires installed before the package is imported",
+   "n_checks": 36,
+   "n_passed": 36,
+   "failed": [],
+   "every_check_equal_to": "results/safety_host.json: True"
+  },
+  "tools/check_driver.py": {
+   "rerun_from_the_rehearsals_clone": true,
+   "how": "two throwaway containers without a host path, one with --tmpfs /extra",
+   "n_checks": 31,
+   "n_passed": 31,
+   "failed": [],
+   "every_check_equal_to": "results/driver_container.json: True"
+  },
+  "tools/check_interrupt.py": {
+   "rerun_from_the_rehearsals_clone": true,
+   "how": "a throwaway container; two labelled containers of its own, removed by exact name",
+   "n_checks": 8,
+   "n_passed": 8,
+   "failed": [],
+   "every_check_equal_to": "results/safety_interrupt.json: True"
+  },
+  "tools/check_probe.py": {
+   "rerun": "step 2b of the rehearsal (37 rollouts through vf-eval; the driver, its wipe, the hostile agents)",
+   "source": "results/rehearsal_round2_probe.json",
+   "summary": "37 rollouts in 1,264 s: round 5's checks 32 of 34 reproduced, failed_round5 []; new checks 65 of 65, failed_new [] (Linux); the agent's own kill inside its box: exit status 137 (results/rehearsal_round2_probe.json)"
+  },
+  "tools/prove.py": {
+   "rerun": "one world with the Mac's arguments, step 2a of the rehearsal",
+   "source": "results/rehearsal_round2_proof.json",
+   "summary": "about 7.5 minutes (the tool's own wall time 437 s; EXIT 0 at 17:00:28): all_graded True, all_ok True, 0 failed items; ticks D 392, P0 0, C 0; predictor uids 26266, 40287, 55217; one box per item: identical scores, 64 boxes, 0 infrastructure failures, 2.65 s per item box; table O 1.067, D 0.424, P0 0.916, C 1.0 (results/rehearsal_round2_proof.json)"
+  },
+  "a direct vf-eval rollout": {
+   "rerun": "step 2c of the rehearsal",
+   "summary": "3.5 minutes: ok true, reward present, ticks 392, agent_submission, 64 items, 0 failed, 64 item boxes (2.69 s each), 0 infrastructure failures, 0 hidden-value hits in the run folder"
+  },
+  "tools/check_runbook.py (pinned, unchanged)": {
+   "source": "results/safety_runbook_round2.json",
+   "n_checks": 33,
+   "n_passed": 32,
+   "failed": [
+    "run_processes_are_listed_by_this_checkouts_own_environment"
+   ],
+   "why_one_fails": "run_processes_are_listed_by_this_checkouts_own_environment asks for the round-1 pattern `grep \"<path>/.venv/bin/[p]ython\"`, which change 1 replaces; the tool is listed in PIN.sha256 and was not changed. rehearsal/check_round2.py checks the new pattern (text_1_*)"
+  },
+  "NOT rerun": {
+   "tools/check_units.py": "no file listed in PIN.sha256 changed since results/units.json (66 of 66) was made on this same code; and a part of this tool runs outside its tripwires (the round-1 re-audit's N8), which this role may not do on this host",
+   "tools/prove.py --worlds 4, the gliders rollout, the red team's attacks": "as before: not rerun by anyone on the code of the pin"
+  }
+ },
+ "all_named_tests_pass": true,
+ "hidden_values_in_this_file": "none"
+}

@@ -611,4 +611,7 @@ physim2-ring:1`). The `.venv` stays until the lead removes the checkout.
   of that one call. This does not apply to macOS, where the shim must not be used.
 - The by-hand checks: the cloud session is root, on x86_64, with `UV_NATIVE_TLS` set; `$HOME` was replaced by a
   folder of the rehearsal, and uv's own Python went to a folder of the rehearsal.
-- Step 3, its file gate and the copy of its trace: never run.
+- "If a run was interrupted": every point was rehearsed, the section five times, each time as a first
+  interruption. Its rule for a second interruption (points 1 to 5, then stop) was not exercised as a rule; nor
+  was the "must show" rule of 2a in its failing branch with the real tool (with a stand-in interpreter only).
+- Step 3, its file gate and the copy of its trace: never run (their gates were run with stand-ins).

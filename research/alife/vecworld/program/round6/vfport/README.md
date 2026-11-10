@@ -7,9 +7,12 @@ laboratory, a per-item predictor driver, and a scripted harness that proves the 
 
 Status, 10 Nov 2026: built by one agent, reviewed by two (a specification review and a red team, `redteam/`), then
 fixed by a fourth. An independent host-safety audit then returned **NO-GO for the Mac** (`HOST_SAFETY_AUDIT.md`); a
-fifth agent made the audit's nine required changes (section 8). This file describes the code after those changes;
-they have not been re-audited, and `RUNBOOK_MAC.md` stays on hold. Everything was RUN on Docker in the cloud
-container (Linux x86_64, 4 cores, Docker 29.9.2) with scripted agents only. No model call, no GPU job, no upload.
+fifth agent made the audit's nine required changes (section 8.3). A re-audit passed the code and returned NO-GO
+again, narrowly, for the runbook's stop-and-recover text (section 8.5); a sixth agent changed that text and
+rehearsed it as a session issues commands (sections 8.6 and 8.7). This file describes the code and the runbook
+as they are now; the round-2 changes have not been re-audited, and `RUNBOOK_MAC.md` stays on hold. Everything was
+RUN on Docker in the cloud container (Linux x86_64, 4 cores, Docker 29.9.2) with scripted agents only. No model
+call, no GPU job, no upload.
 **Nothing was run on a Mac.** Numbers and their sources: `results/summary.json`, which also says which result file
 ran on which code (`code_versions`): the 4-world table of section 4.1 and the costs of 4.5 were NOT run again
 after the host-safety changes. Every pilot instance used here is deleted and must never be reused as an exam.
@@ -58,17 +61,26 @@ tools/                  make_instances.py, vfrun.py (drives vf-eval; run label, 
                         development checks, cloud container only: check_safety.py and check_units.py (host, under
                         tripwires.py), check_driver.py and check_interrupt.py (throwaway containers),
                         check_runbook.py (the runbook as text), fixtures/mounts/ (stored mount tables)
+rehearsal/              cloud container only, not for the Mac: issue.py (issues ONE runbook command as `sh -c '<text>'`
+                        and records it), check_round2.py (the round-1 verdict's tests, with stand-ins), make_record.py,
+                        make_round2_index.py, remarks_round2.json; not listed in PIN.sha256 (the pilot executes none of it)
 redteam/                the red team's attack scripts and results, kept; three attacks run again after the first fixes
                         (*-after-fix.json); not run again after the host-safety changes
 docker/                 Dockerfile.ring (the one image of every box), Dockerfile.network (proxy-bound hosts only)
 configs/                scripted_ring.toml, qwen_ring_bash.toml
 results/                proof_ring.json + proof_ring_items.npz, recomputed_table.json, probe_ring.json, units.json,
                         units_before_fix.json, driver_container.json, gliders_smoke_D.json, summary.json;
-                        host safety: host_safety_round1.json (one entry per required change), safety_host.json,
+                        host safety, round 1: host_safety_round1.json (one entry per required change), safety_host.json,
                         safety_interrupt.json, safety_runbook.json, rehearsal_round1.json
-HOST_SAFETY_AUDIT.md    the independent audit of 10 Nov 2026: NO-GO, nine required changes
+                        host safety, round 2: host_safety_round2.json (one entry per remaining change),
+                        session_mode_round2.json (stand-in tests), rehearsal_round2.json (every command's literal text
+                        and complete output), rehearsal_round2_proof.json and rehearsal_round2_probe.json (what steps 2a
+                        and 2b of that rehearsal produced), safety_runbook_round2.json (the pinned text checker)
+HOST_SAFETY_AUDIT.md    the independent audit of 10 Nov 2026 (NO-GO, nine required changes) and its re-audit, round 1
+                        (NO-GO, narrowly: seven remaining changes, all of them runbook text and one rehearsal)
 RUNBOOK_MAC.md          verify, install, scripted smoke test, one cheap model rollout (ON HOLD until a re-audit says GO)
-PIN.sha256              sha256 of every file the Mac pilot executes or imports (tools/pin.py; the runbook pins its hash)
+PIN.sha256              sha256 of every file the Mac pilot executes or imports (tools/pin.py; the runbook carries its hash;
+                        unchanged since round 1: 7aa9bbfc...f64c19)
 ```
 
 Round 5's code is reused BY IMPORT from `../../round5/agentenv` (set `PHYSIM2_AGENTENV` to point elsewhere), so the
@@ -358,7 +370,7 @@ are; A4: in any Docker container three of the four guard conditions come for fre
 with a host folder mounted would be cleaned; A5: the wipe used `rmtree`, which deletes files of any owner below a
 directory of the uid), fifteen minor ones, nine required changes, two hardening items.
 
-### 8.3 Round 1 of changes (this code; not re-audited)
+### 8.3 Round 1 of changes (this code; re-audited in 8.5)
 
 `results/host_safety_round1.json` has one entry per change: what changed, the test the audit named, its result
 and the file that records it. Evidence labels: **tripwire** = run on the cloud host with 65 primitives of `os`,
@@ -369,13 +381,13 @@ through the route; **read** = checked as text; **inferred** = everything about m
 
 | change | what the code does now | test and result |
 |---|---|---|
-| 1 working directory (A1) | every runbook command starts with `cd "<absolute study folder>" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py &&`; `uv` appears in two commands only, both with `--project <absolute path>`, the dry run first and started from `/` so that uv prints the environment's absolute path; no `uv run`; no subagents | with `echo` in place of the command the guard prints nothing for 8 wrong folders from 2 starting points and prints for the study folder: `safety_runbook.json`, `guard_*`, `uv_*` (run: cd, test, echo only) |
-| 2 interruption (A2) | `tools/vfrun.py` requires `VF_RUN_ID` (verifiers writes it on every container as the label `verifiers.run`), checks that Docker answers, and stops vf-eval with ONE SIGTERM, SIGKILL only 120 s later; a stop request to a tool is passed on. Runbook: long commands detached with a log, a status command that lists containers by that label and processes by the checkout's own `.venv` path, a section "If a run was interrupted" | a stand-in for vf-eval records SIGTERM and no SIGKILL under `timeout=1`: `safety_host.json` `R2_*` (tripwire, no process) and `safety_interrupt.json` `stop_*` (container, a real process); a foreign `vf-other` is absent from the label listing and present in the old name listing: `label_*` (container). With the real vf-eval: the rehearsal |
+| 1 working directory (A1) | every runbook command starts with `cd "<absolute study folder>" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py &&`; `uv` appears in two commands only, both with `--project <absolute path>`, the dry run first and started from `/` so that uv prints the environment's absolute path; no `uv run`; no subagents (round 2: both with `--managed-python`, the real sync detached) | with `echo` in place of the command the guard prints nothing for 8 wrong folders from 2 starting points and prints for the study folder: `safety_runbook.json`, `guard_*`, `uv_*` (run: cd, test, echo only) |
+| 2 interruption (A2) | `tools/vfrun.py` requires `VF_RUN_ID` (verifiers writes it on every container as the label `verifiers.run`), checks that Docker answers, and stops vf-eval with ONE SIGTERM, SIGKILL only 120 s later; a stop request to a tool is passed on. Runbook: long commands detached with a log, a status command that lists containers by that label and processes by the checkout's own `.venv` path, a section "If a run was interrupted" (round 2 replaced the process listing and the stop command: 8.6) | a stand-in for vf-eval records SIGTERM and no SIGKILL under `timeout=1`: `safety_host.json` `R2_*` (tripwire, no process) and `safety_interrupt.json` `stop_*` (container, a real process); a foreign `vf-other` is absent from the label listing and present in the old name listing: `label_*` (container). With the real vf-eval: the rehearsal |
 | 3 box scripts (A3) | `agents/hostile_submission.py`, `agents/probe_grading.py`, `redteam/agent_rt.py`: the first statement exits unless `/.dockerenv` exists and `/etc/physim2/predictor_uid` is a root-owned regular file; asked again directly before each `kill -9 -1` and before the box's `tar` is replaced | 34 starts through `runpy`, every mode: `SystemExit("refused: ...")`, no tripwire reached, nothing imported; also with one of the two signs simulated: `safety_host.json` `R3_*` (tripwire). The `harness-killall` rollout still ends by the agent's own kill inside the box (status 137): `probe_ring.json` (vf-eval) |
 | 4 driver (A4, A5) | `_item.py`: (a) the wipe unlinks and rmdirs exactly the paths the uid owns, deepest first, never a mount point; no `rmtree`, `shutil` is not imported; (b) an unreadable mount table raises, nothing falls back to `/`; (c) a mount condition in the guard: an overlay root, kernel file systems at or below `/proc`, `/sys`, `/dev`, and Docker's three `/etc` files; anything else refuses | the pure function on 13 stored mount tables (3 captured here, 10 written by hand, among them a host folder, a volume, a macOS share): `safety_host.json` `R4_*` (tripwire). In containers: a root-owned file below a directory of the uid survives the cleanup; with `--tmpfs /extra` the guard, every function and the driver refuse and the canaries survive; the 19 earlier checks pass: `driver_container.json`, 31 of 31 |
 | 5 worker gate (A4) | `grading.container_gate`: only an object whose class is exactly verifiers' `DockerRuntime` or `PrimeRuntime`, with the matching type, not borrowed (`info.borrowed`: a container somebody else started and attached), not nested, with a container name verifiers generated; used by the taskset and by the scripted harness | recording stand-ins typed `docker`, `subprocess` and `prime` receive zero commands from ten entry points (`stage`, `run_request`, `_public_files`, `setup`, `BoxAccess.check`, ...); a subclass of the real class, a borrowed and a hand-named container are refused: `safety_host.json` `R5_*` (tripwire). 37 rollouts pass the gate with real runtimes (vf-eval) |
 | 6 runbook text | an inventory of what is signalled, deleted, written and listening on the Mac; the store path on every command; "stop and report" instead of the Docker shim; a `docker info` gate before each run; step 4 as one `&&` chain that copies the results out first and keeps the shared image; the one expected macOS failure named; the "never" table | `safety_runbook.json` `text_*` (read) |
-| 7 pin | `PIN.sha256`: the sha256 of the 105 tracked files the pilot executes or imports (this folder, round 5's `agentenv`, the `vw` library); the runbook's pin block carries the hash of that list and, at the head of the branch, one commit | `safety_runbook.json` `pin_*`; step 0 of the runbook in the rehearsal (run) |
+| 7 pin | `PIN.sha256`: the sha256 of the 105 tracked files the pilot executes or imports (this folder, round 5's `agentenv`, the `vw` library); the runbook's pin block carries the hash of that list (round 2: and no commit; the commit is the one the coordinator's GO message names: 8.6) | `safety_runbook.json` `pin_*`; step 0 of the runbook in the rehearsal (run) |
 | 8 rehearsal | steps 0 to 2 and 4 of the rewritten runbook, once in the cloud container from a fresh clone of the pushed commit with its own `.venv`, two interruptions | `results/rehearsal_round1.json`; section 8.4 |
 | 9 step 3 | its own hold; the paid command alone between STOP lines with the price formula; output to a file that is never displayed; `tools/run_report.py` prints fixed fields and counts, never message text; no other harness offered; Docker Desktop's disk limit below the free space | `safety_runbook.json` `step3_*` (read). Step 3 was not run; the report tool was run on scripted traces |
 | S1 driver hardening | uid range 20000-59999 (1000 is refused even with a marker that says 1000); `--uid` has no default; the guard requires a root caller; the identity is verified after the set-id calls and before `kill(-1)`; outside a box nothing runs unless `--no-box` is given; the agent box's marker comes from the range; the validator runs only where the marker exists | `safety_host.json` `S1_*` (tripwire); `driver_container.json` (container); `probe_ring.json` `predictor_runs_unprivileged` (vf-eval) |
@@ -416,17 +428,105 @@ session's scratch) (`results/rehearsal_round1.json`: every command, its exit sta
   the log of 2c, which the text told the reader not to look at; the shape of the status output.
 - **Not rehearsed:** the image build in the runbook's form, step 3, anything on macOS.
 
-### 8.5 What remains
+### 8.5 The re-audit of round 1: NO-GO, narrowly
 
+The re-audit (`HOST_SAFETY_AUDIT.md`, "Re-audit, round 1") closed A1, A3, A4 and A5 and passed the code: the
+verdict on the code holds for the files that `PIN.sha256` lists (sha256 7aa9bbfc...f64c19, 105 files). It kept
+A2 open, for four reasons that are all in the runbook:
+
+- **The waiting shell.** A session issues every command as `<shell> -c <text>`. A detached command then leaves
+  a waiting shell whose command line is that whole text, so the status command's process listing showed it next
+  to the tool; a stop signal sent to that line stops nothing, and the log never gets its `EXIT` line. The first
+  rehearsal ran the commands from files and could not see this.
+- **The interpreter.** On a Mac whose Python 3.12 is a framework build, the process line may not begin with the
+  `.venv` path, and the listing would show nothing while the pilot runs (inferred).
+- **Step 1 had no branch** for a cut: the real `uv sync` ran in the foreground.
+- **The pin handover.** The copy of the runbook inside the pinned commit named no commit.
+
+It also reported two minor gaps of the guard on Linux hosts, off the runbook (a memory file system mounted below
+`/dev`, `/proc` or `/sys` passes the mount condition; the guard does not look at the process namespace) and two
+minor ones of the tools (the box scripts' gate does not look at mounts; `check_units.py` runs `tar` and `chmod
+-R` on a temp folder before its tripwires). These four are NOT fixed here: they need a change of pinned files and
+a re-audit of its diff, and they are to be closed before the package runs on any Linux machine other than the
+cloud container.
+
+### 8.6 Round 2 of changes (runbook text and one rehearsal; not re-audited)
+
+No file listed in `PIN.sha256` was changed. `results/host_safety_round2.json` has one entry per remaining
+change: what changed, the lines, the test the verdict names, its result and the file that records it.
+
+| change | what the runbook does now | test and result |
+|---|---|---|
+| 1 process listing | both status commands list processes with `ps axww -o pid= -o command= \| grep -E "^ *[0-9]+ <study folder>/\.venv/bin/python"`: the pid, then a command line that BEGINS with the checkout's interpreter. A waiting shell begins with the shell's name and is not listed. The path is now a pattern, so section C checks by hand that it holds only letters, digits and `/ . _ -`. (The verdict wrote `ps axwwo pid=,command=`; two `-o` options mean the same and cannot be misread by a BSD `ps`; on Linux both print the same.) | the 2a command issued as ONE `sh -c '<text>'` and as `bash -c`, with a stand-in tool: the status lists the tool and not the waiting shell, and the round-1 listing, as a control, lists both (`session_mode_round2.json`, `standin_1_*`); the same with the real tool, also through the session's own command tool (`rehearsal_round2.json`) |
+| 2 stop command | `... && ps -ww -p <pid> -o command= \| grep -E "^<study folder>/\.venv/bin/python" && kill -TERM <pid>`: it prints the command line of the process it signals; for any other pid it prints nothing and sends nothing | aimed at the waiting shell's pid: no output, no signal (under `sh -x` the shell ran `ps` and `grep` and no `kill`), both processes alive, no `EXIT` line; aimed at a foreign `sleep` and at a pid that is gone: nothing; aimed at the tool: its command line, then `EXIT 143` (`standin_2_*`); in the rehearsal on the real waiting shell, tool, vf-eval and laboratory |
+| 3 interpreter | `--managed-python` on both uv commands (uv then uses its own Python, which does not re-execute under another path; if it has none, the DRY RUN already downloads it: found here, and now said in the runbook); a command after the import check prints the interpreter's own process line and `INTERPRETER-OK` or `INTERPRETER-DIFFERS`; after each detached start the text says what `processes:` must show and, if it does not: send no signal, wait for `EXIT`, stop and report | with a stand-in interpreter that re-executes under another path the check prints `INTERPRETER-DIFFERS`, and the status lists nothing while its tool runs (`standin_3_*`); in the rehearsal `Using CPython 3.12.13` without a path and `INTERPRETER-OK` |
+| 4 step 1 | the pilot folders are made first; the real `uv sync` runs detached with a log, an `EXIT` line and a status command; a cut or an unexpected output in step 0, 1 or 4 is a stop. "If a run was interrupted" is for step 2 only, is used once (a second interruption: points 1 to 5, then stop), and stops on a Docker error; a reset or a step-4 command that prints nothing is a stop | `text_4_*`; the detached sync in the rehearsal. The "once" rule was not exercised as a rule |
+| 5 pin handover | the file names no commit. The commit is the 40-character hash of the coordinator's GO message; the lead gives it to the session and the first line of step 0 must equal it; the code is identified by the sha256 of `PIN.sha256`. The hold notice stands between two markers and is the only text a verdict edits. Step 0 says what a failed comparison prints | on a copy of the three trees: intact, the hash and `PIN-OK`; one file changed, `shasum: WARNING: 1 computed checksum did NOT match` and no `PIN-OK`; one file missing, `shasum: <file>: No such file or directory` and a `WARNING` line (`standin_5_*`) |
+| 6 text | what each log shows after a stop (a traceback and `EXIT 130`; `EXIT 143`; `EXIT 130` without a traceback), the end of `single.log`, the numbers that macOS pads, and six places where the second rehearsal differed | `text_6_*`; `rehearsal_round2.json`, `mismatches` |
+| 7 rehearsal | section 8.7 | `rehearsal_round2.json` |
+| same pass, not gating | the never table forbids any `docker run` by hand, whatever its options; the paid command of step 3 starts nothing without a file `LEAD-GO-STEP3` that the lead creates by hand; a command for the lead's use copies the run folder of step 3 out before step 4, unread, and only when the report tool counts no hidden value (the lead decided that pilot traces may be uploaded where that helps; the upload is the lead's own act) | with stand-ins for vf-eval and the report tool (`standin_same_pass_*`). Step 3 was never run |
+
+All named tests pass: `rehearsal/check_round2.py` 47 of 47. The pinned text checker `tools/check_runbook.py`
+passes 32 of 33; the one that fails asks for the round-1 `[p]ython` pattern, which change 1 replaces (the tool is
+pinned and was not changed). `tools/pin.py --check`: 105 files, 0 differences.
+
+Run again on the pinned code, from the rehearsal's clone: `check_safety.py` 36 of 36 (host, tripwires),
+`check_driver.py` 31 of 31 and `check_interrupt.py` 8 of 8 (throwaway containers), each check equal to the
+recorded file; in the rehearsal `check_probe.py` (37 rollouts: 32 of 34 and 65 of 65), one world of `prove.py`
+and one direct `vf-eval` rollout. NOT run again: `check_units.py` (no pinned file changed; a part of it runs
+outside its tripwires), `prove.py --worlds 4`, the gliders rollout, the red team's attacks.
+
+### 8.7 The second rehearsal, in session mode
+
+Run once in the cloud container (16:47 to 17:27 UTC, 10 Nov 2026) from a fresh clone of the pushed commit
+be2c17ae6 with its own `.venv`. Every command was issued as ONE `sh -c '<text of the fenced command>'`, started
+in `/`, never from a file, with the same two substitutions as before (the study folder; `$HOME`).
+`results/rehearsal_round2.json` holds the literal text and the complete output of each of the 81 commands
+(40 of them status commands).
+
+- **What ran as written.** Step 0. Step 1 without the image build: the dry run downloaded uv's Python and
+  printed `Using CPython 3.12.13` and the clone's own `.venv` path; the detached sync ended with `EXIT 0`;
+  `INTERPRETER-OK`. Step 2a (7.5 minutes): all graded, 0 failed items, ticks 392 / 0 / 0, one box per item with
+  identical scores, 64 boxes, 2.65 s per box. Step 2b (37 rollouts, 1,264 s): 32 of 34 and 65 of 65, both failure
+  lists empty (Linux). Step 2c (3.5 minutes): the report's fixed fields, 0 hidden-value hits. Step 4: five files
+  copied out, the pilot folders deleted, Docker as in the baseline.
+- **The session's own tool.** In the clean pass the 2a command and the first status were issued through the
+  rehearsing session's own command tool. It left the waiting shell the re-audit described (`/bin/bash -c ...
+  eval ...`, parent of the tool); the status listed one line, the tool.
+- **Five interruptions**, each cleared by the runbook's own points, with nothing of the pilot listed afterwards.
+  (1) The stop command aimed at the waiting shell on purpose: nothing printed, nothing signalled; then at the
+  tool inside its first rollout: traceback, `EXIT 130`, nothing listed 3 s later. (2) The tool stopped before
+  its first rollout: `EXIT 143`. (3) SIGKILL of vf-eval: one container and the laboratory listed; the container
+  removed by name; the laboratory had ended by itself before the stop command, which printed nothing. (4) The
+  vf-eval of 2c stopped: `EXIT 130` without a traceback, nothing listed 2 s later. (5) SIGKILL again, and the
+  stop command on the laboratory while it was still there: it printed its command line and stopped it.
+- **Deviations forced by the machine or chosen:** the four of the first rehearsal (sparse clone; `$HOME` and the
+  by-hand checks; no image build; the IPv6 shim for 2c, here on the PATH of that call); uv's Python sent to the
+  scratch folder; and the section "If a run was interrupted" used five times, each time as a first interruption.
+- **Six places where the text did not match**, all prose, all corrected (the 30 commands are byte for byte the
+  rehearsed ones): `Would download 1 package` in the singular; the interpreter line is cut at 160 characters; a
+  line `Terminated` from the shell before `EXIT 143`; a laboratory that ends by itself before point 4; a helper
+  container with a name chosen by Docker under `containers:` for a moment; vf-eval's own log lines before its
+  `EXIT 130`.
+- **Not rehearsed:** the image build, step 3 with its file gate and its trace copy, the "once" rule as a rule,
+  anything on macOS (zsh, BSD `ps`, uv's Python there).
+
+### 8.8 What remains
+
+- A re-audit of the round-2 runbook, then a verdict. Until it says GO, nothing runs on the Mac.
 - Nothing ran on macOS or Docker Desktop. Inferred: that containers there carry `/.dockerenv` and Docker's usual
   mount table. If not, staging stops with "not recognised as a disposable box" and names the reason; nothing is
   damaged, and nothing is graded.
 - The guard still rests on Docker conventions; in a long-lived container that was prepared by this environment,
   the files of the predictor uid can still be removed. That is its job.
 - A vf-eval killed with SIGKILL still leaves its containers and its laboratory process; they are now findable (by
-  label, by the checkout's `.venv` path) without touching anything else, and the runbook says how.
+  label, by a command line that begins with the checkout's `.venv` path) without touching anything else, and the
+  runbook says how. The session does that recovery itself, once.
+- The two minor gaps of the guard and the two of the tools that the re-audit reported (8.5) are open.
 - The laboratory runs on the worker as the operator; verifiers signals only process groups it started.
-- `uv sync` runs an unpinned build backend (hatchling) on the machine and replaces `./.venv` of the study folder.
+- `uv sync` runs an unpinned build backend (hatchling) on the machine, replaces `./.venv` of the study folder and,
+  with `--managed-python`, installs uv's own Python if uv has none. The image build of step 1 has never run in
+  the runbook's form.
 - In step 3 an untrusted model is root in a container for an hour; Docker Desktop's virtual machine is the only
   wall, and it was not tested.
 - Not touched (outside this folder): round 5's `agentenv/mac/` runbook and compose file, which mount host folders

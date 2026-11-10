@@ -7,7 +7,9 @@
   "package (physim2_env, physim2_script) now": "commit ffb17ce97 (after round 1 of the host-safety fixes; pinned by PIN.sha256)",
   "run on the package as it is now": "results/probe_ring.json (37 rollouts), units.json, driver_container.json, safety_host.json, safety_interrupt.json, safety_runbook.json, rehearsal_round1.json (one world of the proof with the Mac's arguments, the probes, one direct vf-eval rollout)",
   "NOT run again after the host-safety fixes (package code of commit 743f6b75e)": "results/proof_ring.json and proof_ring_items.npz (the 4-world table, cost per rollout, one box per item), recomputed_table.json, gliders_smoke_D.json, units_before_fix.json, redteam/results/*. The driver, the staging and the worker gate changed since; the arithmetic of scoring did not",
-  "builder's results": "replaced; the builder's numbers are in the history of this file (commit e4a30854d)"
+  "builder's results": "replaced; the builder's numbers are in the history of this file (commit e4a30854d)",
+  "round 2 of the host-safety fixes": "changed no file of the package, the tools, the agents or the configs (PIN.sha256 unchanged); it changed RUNBOOK_MAC.md and added rehearsal/ (cloud-only test tooling, not on the pilot's route) and results/*round2*",
+  "run again in round 2 on the same code": "results/rehearsal_round2_proof.json (one world of the proof with the Mac's arguments), rehearsal_round2_probe.json (the probes, 37 rollouts), one direct vf-eval rollout, and reruns of check_safety.py, check_driver.py, check_interrupt.py that equal the recorded files"
  },
  "sources": {
   "ours_table": "results/proof_ring.json",
@@ -1753,12 +1755,165 @@
    "copy": "head of the branch (a commit is named)",
    "n_checks": 35,
    "n_passed": 35,
-   "failed": []
+   "failed": [],
+   "note": "the pinned text checker on the ROUND-1 runbook; for the runbook as it is now see round_2_of_fixes.pinned_text_checker and results/session_mode_round2.json"
   },
   "rehearsal": {
    "outcome": "steps 0, 1 (without the image build), 2a, 2b, 2c and 4 ended as the runbook says, with four deviations forced by the machine and five places where the text did not match what happened; both interruptions were cleared with the runbook's own procedure, and nothing of the pilot was left running or listed afterwards",
    "commit_rehearsed": "cac38e32415ff739d264e6ad3eb7528f1ce19559",
-   "where": "cloud container: Linux x86_64, 4 shared cores, Docker 29.9.2 (overlay2, cgroup v1), uv 0.11.32, root session, behind a TLS-intercepting proxy; 10 Nov 2026, 15:12 to 15:50 UTC"
+   "where": "cloud container: Linux x86_64, 4 shared cores, Docker 29.9.2 (overlay2, cgroup v1), uv 0.11.32, root session, behind a TLS-intercepting proxy; 10 Nov 2026, 15:12 to 15:50 UTC",
+   "note": "the first rehearsal (round 1, commands run from files); the second, in session mode, is rehearsal_round_2"
+  },
+  "re_audit_round_1": {
+   "file": "HOST_SAFETY_AUDIT.md, section 'Re-audit, round 1' (commit 971c66bc8)",
+   "verdict": "NO-GO for the Mac, narrowly: the code passed (A1, A3, A4, A5 closed; the verdict on the code holds for PIN.sha256 7aa9bbfc...f64c19), the runbook's stop-and-recover text did not (A2: the waiting shell in the process listing, the interpreter's process line, no branch for a cut in step 1, the pin handover, a rehearsal that hid the first of these)",
+   "open_and_not_fixed_in_round_2": "two minor gaps of the guard on Linux hosts (a memory file system below /dev, /proc or /sys passes the mount condition; the guard ignores the process namespace) and two of the tools (the box scripts' gate does not look at mounts; check_units.py runs tar and chmod -R on a temp folder before its tripwires): they need a change of pinned files and a re-audit of its diff"
+  },
+  "round_2_of_fixes": {
+   "source": "results/host_safety_round2.json (one entry per remaining change: what changed, the lines, the verdict's test, its result)",
+   "status": "RUNBOOK_MAC.md stays ON HOLD: these changes have not been re-audited",
+   "scope": "runbook text and one rehearsal. No file listed in PIN.sha256 changed: 7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19  PIN.sha256   (105 files listed, 0 differences)",
+   "all_named_tests_pass": true,
+   "named_tests": {
+    "1 process listing (N1)": [
+     10,
+     10
+    ],
+    "2 stop command (N1)": [
+     10,
+     10
+    ],
+    "3 interpreter (N2)": [
+     8,
+     8
+    ],
+    "4 step 1 and the head of 'If a run was interrupted' (N3)": [
+     3,
+     3
+    ],
+    "5 pin handover (N4)": [
+     7,
+     7
+    ],
+    "6 text that would trip the stop rule": [
+     2,
+     2
+    ],
+    "same pass, not gating (the audit file's list)": [
+     5,
+     5
+    ]
+   },
+   "stand_in_tests": "results/session_mode_round2.json: 47 of 47 (rehearsal/check_round2.py)",
+   "pinned_text_checker": {
+    "source": "results/safety_runbook_round2.json",
+    "n_checks": 33,
+    "n_passed": 32,
+    "failed": [
+     "run_processes_are_listed_by_this_checkouts_own_environment"
+    ],
+    "note": "the failing check asks for the round-1 process pattern, which change 1 replaces"
+   },
+   "regression": {
+    "tools/check_safety.py": {
+     "n_checks": 36,
+     "n_passed": 36,
+     "failed": [],
+     "every_check_equal_to": "results/safety_host.json: True"
+    },
+    "tools/check_driver.py": {
+     "n_checks": 31,
+     "n_passed": 31,
+     "failed": [],
+     "every_check_equal_to": "results/driver_container.json: True"
+    },
+    "tools/check_interrupt.py": {
+     "n_checks": 8,
+     "n_passed": 8,
+     "failed": [],
+     "every_check_equal_to": "results/safety_interrupt.json: True"
+    },
+    "tools/check_probe.py": {
+     "rerun": "step 2b of the rehearsal (37 rollouts through vf-eval; the driver, its wipe, the hostile agents)",
+     "summary": "37 rollouts in 1,264 s: round 5's checks 32 of 34 reproduced, failed_round5 []; new checks 65 of 65, failed_new [] (Linux); the agent's own kill inside its box: exit status 137 (results/rehearsal_round2_probe.json)"
+    },
+    "tools/prove.py": {
+     "rerun": "one world with the Mac's arguments, step 2a of the rehearsal",
+     "summary": "about 7.5 minutes (the tool's own wall time 437 s; EXIT 0 at 17:00:28): all_graded True, all_ok True, 0 failed items; ticks D 392, P0 0, C 0; predictor uids 26266, 40287, 55217; one box per item: identical scores, 64 boxes, 0 infrastructure failures, 2.65 s per item box; table O 1.067, D 0.424, P0 0.916, C 1.0 (results/rehearsal_round2_proof.json)"
+    },
+    "a direct vf-eval rollout": {
+     "rerun": "step 2c of the rehearsal",
+     "summary": "3.5 minutes: ok true, reward present, ticks 392, agent_submission, 64 items, 0 failed, 64 item boxes (2.69 s each), 0 infrastructure failures, 0 hidden-value hits in the run folder"
+    },
+    "tools/check_runbook.py (pinned, unchanged)": {
+     "n_checks": 33,
+     "n_passed": 32,
+     "failed": [
+      "run_processes_are_listed_by_this_checkouts_own_environment"
+     ]
+    },
+    "NOT rerun": {}
+   }
+  },
+  "rehearsal_round_2": {
+   "outcome": "every command did what the runbook says, with four deviations forced by the machine and six places where the prose did not match what happened (all corrected afterwards; no command changed). The process listing showed the pilot's own interpreter processes and never a waiting shell (sh, and the session's own bash tool); the stop command aimed at a waiting shell printed nothing and signalled nothing; five interruptions were cleared by the runbook's own points and nothing of the pilot was left running or listed after any of them",
+   "commit_rehearsed": "be2c17ae6a4a30c9c94d1eccb828f7477bd51008",
+   "where": "cloud container: Linux x86_64, 4 shared cores, Docker 29.9.2, uv 0.11.32, sh = dash, procps-ng 4.0.4, shasum 6.04, root session, behind a TLS-intercepting proxy; 10 Nov 2026, 16:47 to 17:27 UTC",
+   "counts": {
+    "entries": 106,
+    "runbook_commands_issued": 81,
+    "by_label": {
+     "0a-commit": 1,
+     "0b-pin": 1,
+     "0c-docker-and-folders": 1,
+     "1a-uv-dry-run": 1,
+     "1b-mkdir-ca": 2,
+     "1c-status": 1,
+     "1c-uv-sync": 1,
+     "1d-import": 1,
+     "1e-interpreter": 1,
+     "1g-image-check": 1,
+     "1h-make-instances": 6,
+     "2-status": 39,
+     "2a-check": 1,
+     "2a-prove": 4,
+     "2b-probe": 1,
+     "2b-report": 1,
+     "2c-report": 1,
+     "2c-single": 2,
+     "4a-copy-delete": 1,
+     "4b-docker": 1,
+     "I2-stop": 6,
+     "I3-docker-rm": 2,
+     "I6-reset": 5
+    },
+    "status_commands_with_their_complete_output": 40,
+    "exit_statuses_other_than_0": [
+     [
+      19,
+      "I2-stop",
+      1
+     ],
+     [
+      47,
+      "I2-stop",
+      1
+     ]
+    ]
+   },
+   "hidden_values_in_this_record": {
+    "when": "before step 4 of the clean pass, with its store still there",
+    "instances_in_the_store": 2,
+    "needles": 8,
+    "total_hits_in_the_record": 0,
+    "hits_in_the_five_result_files": {
+     "proof_mac.json": 0,
+     "proof_mac_items.npz": 0,
+     "probe_mac.json": 0,
+     "prove.log": 0,
+     "probe.log": 0
+    }
+   }
   }
  },
  "red_team_attacks_after_the_fix": {
@@ -2097,7 +2252,11 @@
    "new_including_sealer": 750,
    "scripted_harness": 60
   },
-  "red_team_scripts_not_counted": "redteam/ (the red team's attack scripts; after the host-safety audit agent_rt.py got a box gate and rt_run.py and nproc_cross_box.sh stopped deleting paths and container names they did not make)"
+  "red_team_scripts_not_counted": "redteam/ (the red team's attack scripts; after the host-safety audit agent_rt.py got a box gate and rt_run.py and nproc_cross_box.sh stopped deleting paths and container names they did not make)",
+  "rehearsal_folder_round_2": {
+   "lines_of_python": 916,
+   "note": "cloud-only test tooling of round 2; not counted in `new`, not listed in PIN.sha256"
+  }
  },
  "docker": {
   "images": [

@@ -1,7 +1,7 @@
 {
  "what": "the tests the round-1 verdict names for its remaining changes 1 to 6: RUNBOOK_MAC.md read as text, and its own command texts issued as ONE `<shell> -c '<text>'` (sh and bash) against a stand-in study folder",
  "evidence_label": "read (text_*); run with stand-ins, no file of the port executed (standin_*)",
- "runbook_sha256": "1b375864ff158798706f59dd898e8603bb32bdc0fc65c6a297fe277a73ac4d82",
+ "runbook_sha256": "b08fb77a3443fd7e1867c5fb152d347b17e8a1464955eb948f1388c769bac059",
  "machine": {
   "sh": "/usr/bin/dash",
   "bash": "GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)",
@@ -100,55 +100,55 @@
    ]
   },
   "session_mode_sh": {
-   "study": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport",
+   "study": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport",
    "issued_as": "sh -c '<text>' in /, no terminal",
    "2a": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python\" -B tools/prove.py --store \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/store\" --scratch \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/proof\" --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/proof_mac.json\" > \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/prove.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/prove.log\" ) > /dev/null 2>&1 < /dev/null & }",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python\" -B tools/prove.py --store \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/store\" --scratch \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/proof\" --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/proof_mac.json\" > \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/prove.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/prove.log\" ) > /dev/null 2>&1 < /dev/null & }",
     "returned": {
      "exit": 0,
      "stdout": "29.9.2\n",
      "stderr": "",
-     "seconds": 0.08
+     "seconds": 0.06
     },
     "process_table": [
      {
-      "pid": 24382,
+      "pid": 25040,
       "ppid": 1,
-      "command": "sh -c cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && t"
+      "command": "sh -c cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && t"
      },
      {
-      "pid": 24383,
-      "ppid": 24382,
-      "command": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python -B tools/prove.py --stor"
+      "pid": 25041,
+      "ppid": 25040,
+      "command": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python -B tools/prove.py --stor"
      }
     ]
    },
    "status": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 4 \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/prove.log\" \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/probe.log\" \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/single.log\" 2>/dev/null ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-pilot-20261110 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | grep -E \"^ *[0-9]+ /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/\\.venv/bin/python\" ; echo \"status done\" ; }",
-    "output": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/prove.log <==\ncontainers:\nprocesses:\n24383 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/proof_mac.json\nstatus done\n",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 4 \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/prove.log\" \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/probe.log\" \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/single.log\" 2>/dev/null ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-pilot-20261110 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | grep -E \"^ *[0-9]+ /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/\\.venv/bin/python\" ; echo \"status done\" ; }",
+    "output": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\ncontainers:\nprocesses:\n25041 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/proof_mac.json\nstatus done\n",
     "listed_under_processes": [
-     "24383 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/proof_mac.json"
+     "25041 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/proof_mac.json"
     ],
-    "tool_pid": 24383,
-    "waiting_shell_pid": 24382
+    "tool_pid": 25041,
+    "waiting_shell_pid": 25040
    },
    "control_the_round1_listing": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { echo \"processes:\" ; ps axo pid=,command= | grep \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/[p]ython\" ; echo \"status done\" ; }",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { echo \"processes:\" ; ps axo pid=,command= | grep \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/[p]ython\" ; echo \"status done\" ; }",
     "lines": [
-     "24382 sh -c cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport\" && test -f RUNBOOK_MAC.m",
-     "24383 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python -B tools/prove.py "
+     "25040 sh -c cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport\" && test -f RUNBOOK_MAC.m",
+     "25041 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python -B tools/prove.py "
     ]
    },
    "stop_aimed_at_the_waiting_shell": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && ps -ww -p 24382 -o command= | grep -E \"^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/\\.venv/bin/python\" && kill -TERM 24382",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && ps -ww -p 25040 -o command= | grep -E \"^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/\\.venv/bin/python\" && kill -TERM 25040",
     "stdout": "",
     "exit": 1,
     "commands_the_shell_executed_(-x)": [
-     "+ cd /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport",
+     "+ cd /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport",
      "+ test -f RUNBOOK_MAC.md",
      "+ test -f physim2_env/taskset.py",
-     "+ ps -ww -p 24382 -o command=",
-     "+ grep -E ^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/\\.venv/bin/python"
+     "+ ps -ww -p 25040 -o command=",
+     "+ grep -E ^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/\\.venv/bin/python"
     ],
     "tool_alive_after": true,
     "waiting_shell_alive_after": true,
@@ -161,21 +161,21 @@
     "alive_after": true
    },
    "stop_aimed_at_the_tool": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && ps -ww -p 24383 -o command= | grep -E \"^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/\\.venv/bin/python\" && kill -TERM 24383",
-    "stdout": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/proof_mac.json\n",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && ps -ww -p 25041 -o command= | grep -E \"^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/\\.venv/bin/python\" && kill -TERM 25041",
+    "stdout": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/proof_mac.json\n",
     "exit": 0,
     "tool_alive_after": false,
     "waiting_shell_alive_after": false,
     "log_after": "stand-in for tools/prove.py: it sleeps and starts nothing\nTerminated\nEXIT 143\n",
-    "status_after": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\nTerminated\nEXIT 143\ncontainers:\nprocesses:\nstatus done\n"
+    "status_after": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\nTerminated\nEXIT 143\ncontainers:\nprocesses:\nstatus done\n"
    },
    "stop_aimed_at_a_pid_that_is_gone": {
     "stdout": "",
     "exit": 1
    },
    "interpreter_check": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python\" -B -c \"import os, subprocess; line = subprocess.run(['ps', '-ww', '-p', str(os.getpid()), '-o', 'command='], capture_output=True, text=True).stdout.strip(); print(line[:160]); print('INTERPRETER-OK' if line.startswith('/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python -B -c ') else 'INTERPRETER-DIFFERS')\"",
-    "output": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-sh/vfport/.venv/bin/python -B -c import os, subprocess; line \nINTERPRETER-OK\n"
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python\" -B -c \"import os, subprocess; line = subprocess.run(['ps', '-ww', '-p', str(os.getpid()), '-o', 'command='], capture_output=True, text=True).stdout.strip(); print(line[:160]); print('INTERPRETER-OK' if line.startswith('/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python -B -c ') else 'INTERPRETER-DIFFERS')\"",
+    "output": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-sh/vfport/.venv/bin/python -B -c import os, subprocess; line \nINTERPRETER-OK\n"
    },
    "step3_file_gate": {
     "without_the_file": {
@@ -203,55 +203,55 @@
    }
   },
   "session_mode_bash": {
-   "study": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport",
+   "study": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport",
    "issued_as": "bash -c '<text>' in /, no terminal",
    "2a": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python\" -B tools/prove.py --store \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/store\" --scratch \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/proof\" --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/proof_mac.json\" > \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/prove.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/prove.log\" ) > /dev/null 2>&1 < /dev/null & }",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python\" -B tools/prove.py --store \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/store\" --scratch \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/proof\" --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/proof_mac.json\" > \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/prove.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/prove.log\" ) > /dev/null 2>&1 < /dev/null & }",
     "returned": {
      "exit": 0,
      "stdout": "29.9.2\n",
      "stderr": "",
-     "seconds": 0.07
+     "seconds": 0.06
     },
     "process_table": [
      {
-      "pid": 24508,
+      "pid": 25165,
       "ppid": 1,
-      "command": "bash -c cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport\" && test -f RUNBOOK_MAC.md "
+      "command": "bash -c cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport\" && test -f RUNBOOK_MAC.md "
      },
      {
-      "pid": 24509,
-      "ppid": 24508,
-      "command": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python -B tools/prove.py --st"
+      "pid": 25166,
+      "ppid": 25165,
+      "command": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python -B tools/prove.py --st"
      }
     ]
    },
    "status": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 4 \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/prove.log\" \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/probe.log\" \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/single.log\" 2>/dev/null ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-pilot-20261110 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | grep -E \"^ *[0-9]+ /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/\\.venv/bin/python\" ; echo \"status done\" ; }",
-    "output": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\ncontainers:\nprocesses:\n24509 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/proof_mac.json\nstatus done\n",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 4 \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/prove.log\" \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/probe.log\" \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/single.log\" 2>/dev/null ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-pilot-20261110 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | grep -E \"^ *[0-9]+ /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/\\.venv/bin/python\" ; echo \"status done\" ; }",
+    "output": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\ncontainers:\nprocesses:\n25166 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/proof_mac.json\nstatus done\n",
     "listed_under_processes": [
-     "24509 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/proof_mac.json"
+     "25166 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/proof_mac.json"
     ],
-    "tool_pid": 24509,
-    "waiting_shell_pid": 24508
+    "tool_pid": 25166,
+    "waiting_shell_pid": 25165
    },
    "control_the_round1_listing": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { echo \"processes:\" ; ps axo pid=,command= | grep \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/[p]ython\" ; echo \"status done\" ; }",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { echo \"processes:\" ; ps axo pid=,command= | grep \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/[p]ython\" ; echo \"status done\" ; }",
     "lines": [
-     "24508 bash -c cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport\" && test -f RUNBOOK_M",
-     "24509 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python -B tools/prove.p"
+     "25165 bash -c cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport\" && test -f RUNBOOK_M",
+     "25166 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python -B tools/prove.p"
     ]
    },
    "stop_aimed_at_the_waiting_shell": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && ps -ww -p 24508 -o command= | grep -E \"^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/\\.venv/bin/python\" && kill -TERM 24508",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && ps -ww -p 25165 -o command= | grep -E \"^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/\\.venv/bin/python\" && kill -TERM 25165",
     "stdout": "",
     "exit": 1,
     "commands_the_shell_executed_(-x)": [
-     "+ cd /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport",
+     "+ cd /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport",
      "+ test -f RUNBOOK_MAC.md",
      "+ test -f physim2_env/taskset.py",
-     "+ ps -ww -p 24508 -o command=",
-     "+ grep -E '^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/\\.venv/bin/python'"
+     "+ ps -ww -p 25165 -o command=",
+     "+ grep -E '^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/\\.venv/bin/python'"
     ],
     "tool_alive_after": true,
     "waiting_shell_alive_after": true,
@@ -264,21 +264,21 @@
     "alive_after": true
    },
    "stop_aimed_at_the_tool": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && ps -ww -p 24509 -o command= | grep -E \"^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/\\.venv/bin/python\" && kill -TERM 24509",
-    "stdout": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/proof_mac.json\n",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && ps -ww -p 25166 -o command= | grep -E \"^/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/\\.venv/bin/python\" && kill -TERM 25166",
+    "stdout": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/store --scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/proof --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/proof_mac.json\n",
     "exit": 0,
     "tool_alive_after": false,
     "waiting_shell_alive_after": false,
     "log_after": "stand-in for tools/prove.py: it sleeps and starts nothing\nEXIT 143\n",
-    "status_after": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\nEXIT 143\ncontainers:\nprocesses:\nstatus done\n"
+    "status_after": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\nEXIT 143\ncontainers:\nprocesses:\nstatus done\n"
    },
    "stop_aimed_at_a_pid_that_is_gone": {
     "stdout": "",
     "exit": 1
    },
    "interpreter_check": {
-    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python\" -B -c \"import os, subprocess; line = subprocess.run(['ps', '-ww', '-p', str(os.getpid()), '-o', 'command='], capture_output=True, text=True).stdout.strip(); print(line[:160]); print('INTERPRETER-OK' if line.startswith('/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python -B -c ') else 'INTERPRETER-DIFFERS')\"",
-    "output": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-bash/vfport/.venv/bin/python -B -c import os, subprocess; lin\nINTERPRETER-OK\n"
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python\" -B -c \"import os, subprocess; line = subprocess.run(['ps', '-ww', '-p', str(os.getpid()), '-o', 'command='], capture_output=True, text=True).stdout.strip(); print(line[:160]); print('INTERPRETER-OK' if line.startswith('/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python -B -c ') else 'INTERPRETER-DIFFERS')\"",
+    "output": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-bash/vfport/.venv/bin/python -B -c import os, subprocess; lin\nINTERPRETER-OK\n"
    },
    "step3_file_gate": {
     "without_the_file": {
@@ -306,17 +306,17 @@
    }
   },
   "interpreter_that_reexecutes": {
-   "study": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-reexec/vfport",
+   "study": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-reexec/vfport",
    "launcher": "#!/bin/sh\nexec \"/usr/bin/python3.13\" \"$@\"\n",
    "interpreter_check": {
     "output": "/usr/bin/python3.13 -B -c import os, subprocess; line = subprocess.run(['ps', '-ww', '-p', str(os.getpid()), '-o', 'command='], capture_output=True, text=True).\nINTERPRETER-DIFFERS\n"
    },
    "status_while_its_tool_runs": {
-    "output": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/standin-reexec/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\ncontainers:\nprocesses:\nstatus done\n",
+    "output": "==> /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/standin-reexec/home/physim2-pilot-20261110/scratch/prove.log <==\nstand-in for tools/prove.py: it sleeps and starts nothing\ncontainers:\nprocesses:\nstatus done\n",
     "the_tool_really_runs": [
      {
-      "pid": 24634,
-      "ppid": 24633,
+      "pid": 25296,
+      "ppid": 25295,
       "command": "/usr/bin/python3.13 -B tools/prove.py --store /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/v"
      }
     ]
@@ -324,7 +324,7 @@
    "its_log_at_the_end": "stand-in for tools/prove.py: it sleeps and starts nothing\nEXIT 0\n"
   },
   "pin_comparison": {
-   "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins2/pincopy/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK",
+   "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/standins3/pincopy/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK",
    "intact": {
     "stdout": "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19  PIN.sha256\nPIN-OK\n",
     "stderr": "",

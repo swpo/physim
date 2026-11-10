@@ -1,32 +1,45 @@
 # vfport: PROGRESS
 
-## HOST-SAFETY FIXER, round 2 (after the round-1 verdict, NO-GO narrow) -- 10 Nov 2026, IN PROGRESS
-- Role: implement the seven remaining changes of "Re-audit, round 1" (HOST_SAFETY_AUDIT.md): runbook text and one
-  rehearsal in session mode. No file listed in PIN.sha256 changes (sha256 7aa9bbfc...f64c19 must stay).
-- Worktree `/home/user/wt/vfsafe2` (branch wt-vfsafe2, pushes to `claude/fisim-agent-world-research-hepmlz`). Scratch
-  `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/` (the rehearsal's clone, its
-  .venv and its pilot folders live in `.../vfsafe2/rehearsal`; nothing there survives a restart).
-- State (16:55 UTC): RUNBOOK_MAC.md rewritten for the seven changes (still ON HOLD; says REHEARSAL PENDING), pushed
-  as be2c17ae6 = THE COMMIT BEING REHEARSED. New folder `rehearsal/` (not in PIN.sha256): `issue.py` issues ONE
-  runbook command as `sh -c '<text>'` and records it, `check_round2.py` runs the verdict's tests with stand-ins,
-  `make_record.py` writes the record. Stand-in tests: 46 of 47 (the one failure was the test's own lookup, fixed,
-  to be rerun); pinned tools/check_runbook.py 32 of 33 (the failing check asks for the round-1 `[p]ython`
-  pattern, which change 1 replaces); pin.py --check 105 files, 0 differences.
-- Rehearsal so far (clone of be2c17ae6 in <scratch>/vfsafe2/rehearsal/clone; record in .../rehearsal/record.jsonl,
-  which does not survive a restart): step 0; step 1 without the image build (the dry run with --managed-python
-  downloaded uv's Python, 33 MB; sync detached, EXIT 0; INTERPRETER-OK); four interruptions, each cleared by the
-  runbook's own procedure: (1) stop aimed at the waiting shell: nothing printed, nothing signalled; then the tool
-  inside a rollout: traceback, EXIT 130; (2) the tool before its first rollout: `Terminated`, EXIT 143;
-  (3) SIGKILL of vf-eval: one container and the laboratory listed, container removed by name, the laboratory had
-  ended by itself before the stop command (a mismatch with the text: fix); (4) the vf-eval of 2c: EXIT 130, no
-  traceback. Running now: the clean pass (2a, then 2b, 2c, step 4).
-- Next: finish the clean pass, fix the text where it did not match (interpreter line cut at 160; `package`
-  singular; point 4; `Terminated` before EXIT 143), write results/, README, summary.json.
-- Left outside scratch by the hard kill, to remove by exact name at the end:
-  /root/.cache/verifiers/runtimes/subprocess/vf-eecef6526095/vf_tool_lab.log and /tmp/physim2-io-qkjeubw5/io.sock.
-- If the container restarted: `pgrep -x dockerd >/dev/null || (nohup dockerd --feature containerd-snapshotter=false >
-  <scratch>/vfsafe2/dockerd.log 2>&1 &)`; `docker ps -a --filter label=verifiers.run=physim2-pilot-20261110` lists
-  a cut rehearsal's containers (remove by exact name); then go on from the state line above.
+## HOST-SAFETY FIXER, round 2 (after the round-1 verdict, NO-GO narrow) -- 10 Nov 2026, finished
+- Role: the seven remaining changes of "Re-audit, round 1" (HOST_SAFETY_AUDIT.md): runbook text and one rehearsal
+  in session mode. No file listed in PIN.sha256 changed (sha256 7aa9bbfc...f64c19; `tools/pin.py --check`: 105
+  files, 0 differences). RUNBOOK_MAC.md is rewritten and STILL ON HOLD: round 2 has not been re-audited.
+- Index: `results/host_safety_round2.json` (one entry per change: lines, the verdict's test, result, record file).
+  README section 8.5 to 8.8 and `results/summary.json` (host_safety.round_2_of_fixes) describe the state.
+- Done: 1 the process listing anchored on the pid and the interpreter path (`ps axww -o pid= -o command= | grep -E
+  "^ *[0-9]+ <path>/\.venv/bin/python"`; two -o options instead of the verdict's `pid=,command=`, which a BSD ps
+  may misread) and a by-hand check that the path is plain; 2 a stop command that looks at the pid's command line
+  before it signals; 3 `--managed-python` on both uv commands, an interpreter check in step 1, the "must show"
+  rule after each detached start; 4 `uv sync` detached with a log, and the new head of "If a run was interrupted"
+  (step 2 only, once, stop on a Docker error); 5 the pin handover (no commit in the file; the hash of the GO
+  message; a marked hold notice; what a failed comparison prints); 6 the three log endings and the other text;
+  7 the rehearsal. Same pass, not gating: no `docker run` by hand at all; a file gate LEAD-GO-STEP3 on the paid
+  command; a command for the lead that copies the step-3 trace out before step 4.
+- Tests: `rehearsal/check_round2.py` 47 of 47 (text, and the runbook's own commands as `sh -c` / `bash -c` against
+  stand-ins): `results/session_mode_round2.json`. Pinned `tools/check_runbook.py`: 32 of 33; the one failure asks
+  for the round-1 `[p]ython` pattern (`results/safety_runbook_round2.json`).
+- Rehearsal (16:47 to 17:27 UTC; fresh sparse clone of the pushed commit be2c17ae6, its own .venv on uv's Python
+  3.12.13; every command as ONE `sh -c '<text>'` by `rehearsal/issue.py`; 81 commands, 40 of them statuses, literal
+  text and complete output in `results/rehearsal_round2.json`): steps 0, 1 (no image build), 2a (7.5 min, all
+  graded), 2b (37 rollouts, 1,264 s: 32 of 34 and 65 of 65), 2c, 4; five interruptions cleared by the runbook's
+  own points (the stop aimed at the waiting shell: nothing printed, nothing signalled; a tool inside a rollout:
+  EXIT 130 with a traceback; a tool before its first rollout: EXIT 143; SIGKILL of vf-eval twice: container
+  removed by name, the laboratory once gone by itself and once stopped by the stop command; the vf-eval of 2c:
+  EXIT 130 without a traceback). The 2a start and one status also through this session's own Bash tool: one
+  process line, the tool. Six places of prose differed and were corrected; the 30 commands did not change.
+- Regression on the pinned code, from the clone: check_safety.py 36 of 36 (host, tripwires), check_driver.py 31 of
+  31 and check_interrupt.py 8 of 8 (throwaway containers), each equal to the recorded file. NOT rerun:
+  check_units.py (nothing pinned changed; part of it runs outside its tripwires, which this role may not do on
+  this host), prove.py --worlds 4, gliders, the red team's attacks.
+- Could not do: anything on macOS (zsh, BSD ps, uv's Python there: inferred); the image build in the runbook's
+  form; step 3; the rule "use the section once" as a rule. Not touched: the four minor code gaps the re-audit
+  deferred (they need a change of pinned files).
+- Next step (exact): a re-audit of RUNBOOK_MAC.md at the head of the branch (this commit), reading
+  `results/host_safety_round2.json` first, then a round-2 verdict. A GO edits the hold notice only, and the
+  coordinator's message names the commit that holds that edit.
+- Left on the machine by this role: nothing but 39 more `/tmp/vf-port-*` files, which verifiers never removes
+  (scratch deleted, the four leftovers of the two hard kills removed by exact name, worktree removed, no container,
+  the three images unchanged, the Docker daemon not touched).
 
 ## VERDICT, round 1 (of the branch at 73829e5c6, after the two re-audits) -- 10 Nov 2026, finished
 - Verdict: NO-GO for the smoke test on the Mac, NO-GO for the model rollout. RUNBOOK_MAC.md stays ON HOLD and was
