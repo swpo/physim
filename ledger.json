@@ -169,6 +169,18 @@
       "state": "done"
     },
     {
+      "billed_usd": 0.0,
+      "cap_usd": 21.8,
+      "conservative_usd": 0.0,
+      "finished_at": null,
+      "gpu": "-",
+      "hours": 0,
+      "job_id": "r5-slots-007",
+      "purpose": "Round-5 study slots (track 1), main job at 48 trajectories per half (fits a 40 GB card): slot encoders with memory on raw gliders level 0, 2000 steps, up to 14 configs in priority order (supervised capacity control, closure, warm start, reconstruction, local law, no k-means prior, classic slot AE)",
+      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
+      "state": "received"
+    },
+    {
       "billed_usd": 2.2917,
       "cap_usd": 5.7,
       "conservative_usd": 2.6008,
@@ -259,6 +271,6 @@
     "prior_spend_usd": 0.0,
     "spent_usd": 38.3245,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T05:22:38Z"
+    "updated_at": "2026-11-10T05:24:08Z"
   }
 }
