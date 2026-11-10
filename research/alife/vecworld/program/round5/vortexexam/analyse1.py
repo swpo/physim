@@ -1,6 +1,6 @@
 """analyse1 -- analysis of GPU job 1 (throughput, effective law, headroom scan) -> results/analysis1.json.
 
-    python -B analyse1.py JOB_OUT_DIR
+    python -B analyse1.py JOB1_OUT_DIR [SCAN_DIR]     (SCAN_DIR: a --scan-only rerun, default JOB1_OUT_DIR)
 
 Index convention of job 1's arrays: S[..., i, :] is the level-1 summary of the state after i + 1 ticks.
 
@@ -32,6 +32,7 @@ import numpy as np  # noqa: E402
 from vw.scoring import energy_fair, energy_loo  # noqa: E402
 
 D = sys.argv[1]
+SCAN_D = sys.argv[2] if len(sys.argv) > 2 else D                 # the scan may come from a second run (job 2, scan/)
 RES = os.path.join(HERE, "results")
 os.makedirs(RES, exist_ok=True)
 IX = {n: i for i, n in enumerate(VX.S1_NAMES)}
@@ -47,9 +48,11 @@ info = J("info.json")
 out["info"] = {k: info.get(k) for k in ("backend", "devices", "versions", "H_exam", "H_rule", "bmax", "rate", "hours",
                                          "failed")}
 bench = J("bench.json")
+# memory: bench.json's per-row figure is the process-wide running peak up to that row, not the row's own peak
+# (the Mac's review, point 4), so it is named accordingly here
 out["bench"] = [{k: r.get(k) for k in ("H", "B", "track", "member_ticks_per_s", "native_steps_per_s", "first_call_s",
                                        "tracker_update_s_per_member", "host_level12_s_per_member_tick", "K", "error")}
-                | {"peak_bytes": (r.get("memory") or {}).get("peak_bytes_in_use")} for r in bench["rows"]]
+                | {"process_peak_bytes_so_far": (r.get("memory") or {}).get("peak_bytes_in_use")} for r in bench["rows"]]
 
 
 # ----------------------------------------------------------------------------- law
@@ -125,11 +128,11 @@ out["law"] = law_block("law")
 out["law128"] = law_block("law128")
 
 # ----------------------------------------------------------------------------- scan
-if os.path.exists(os.path.join(D, "scan_main.npz")):
-    Z = np.load(os.path.join(D, "scan_main.npz"))
+if os.path.exists(os.path.join(SCAN_D, "scan_main.npz")):
+    Z = np.load(os.path.join(SCAN_D, "scan_main.npz"))
     S, names = Z["S"].astype(float), [str(s) for s in Z["settings"]]
     nS, Jm, T, _ = S.shape
-    sc = J("scan.json")
+    sc = json.load(open(os.path.join(SCAN_D, "scan.json")))
     Hx = sc["H"]
     Kslots = VX.Runner.__init__.__defaults__ and VX.VW.slots_for(VX.VJ.Config(H=Hx, W=Hx))["K"]
     Nn = S[..., IX["N"]]
@@ -143,27 +146,33 @@ if os.path.exists(os.path.join(D, "scan_main.npz")):
              "log_mass_mean": ("log_mass_mean", 99, T), "speed": ("speed_mean", 99, T), "rg": ("rg_mean", 99, T),
              "turnover": ("turnover", 99, T), "N_pre": ("N", 19, 59)}
     shift = {}
+    # job 1 computed the summaries per 40-tick chunk, so 'turnover' is 0 at the first tick of every chunk (array
+    # index i with i % 40 == 0): those ticks are dropped from the turnover statistic (the Mac's review, point 3)
     for i, nm in enumerate(names):
         shift[nm] = {}
         for st, (v, a, b) in stats.items():
-            x = S[i][:, a:b, IX[v]].mean(1)
-            x0 = S[0][:, a:b, IX[v]].mean(1)
+            tt = np.arange(a, b)
+            tt = tt[tt % 40 != 0] if v == "turnover" else tt
+            x = S[i][:, tt, IX[v]].mean(1)
+            x0 = S[0][:, tt, IX[v]].mean(1)
             d = x - x0
             se = d.std(ddof=1) / np.sqrt(Jm) if Jm > 1 else np.nan
             shift[nm][st] = {"mean": float(x.mean()), "diff": float(d.mean()), "z_paired": float(d.mean() / se) if se > 0 else 0.0}
-    scan = {"H": Hx, "J": int(Jm), "T": int(T), "settings": names, "box": sc["box"], "viability": viab, "shift": shift,
+    scan = {"scan_dir": os.path.basename(os.path.normpath(SCAN_D)), "H": Hx, "J": int(Jm), "T": int(T), "settings": names,
+            "box": sc["box"], "viability": viab, "shift": shift,
             "anchors": sc["anchors"], "R": sc["R"], "Mc": sc["Mc"]}
-    pb = os.path.join(D, "scan_branch.npz")
+    pb = os.path.join(SCAN_D, "scan_branch.npz")
+    if not os.path.exists(pb):                                       # the first run's file cut down on the runner Mac
+        pb = os.path.join(SCAN_D, "scan_branch_small.npz")           # (L2 in full, level-1 rasters at 4 horizons)
     if os.path.exists(pb):
         B = np.load(pb)
-        L2, R1 = B["L2"].astype(float), B["R1"].astype(float)       # (nS, J, nA, R + Mc, HB, d)
+        scan["branch_file"] = os.path.basename(pb)
+        L2 = B["L2"].astype(float)                                   # (nS, J, nA, R + Mc, HB, 2)
         R, Mc = int(B["R"]), int(B["Mc"])
         nA = L2.shape[2]
         done = [a for a in range(nA) if np.abs(L2[:, :, a]).sum() > 0]
         sc2 = np.array([Nn[0][:, 99:].std(), max(S[0][:, 99:, IX["s_b"]].std(), 0.05)])
-        hs2, hs1 = [8, 16, 32], [1, 2, 4, 8]
-        G2 = R1.shape[-1] // 2
-        sc1 = np.r_[np.full(G2, max(R1[0][..., :G2].std(), 1e-6)), np.full(G2, max(R1[0][..., G2:].std(), 1e-6))]
+        hs2, hs1 = [8, 16, 32], [int(h) for h in B["hs1"]]
 
         def deficits(Yall, hs, scale):
             """Yall (nS, J, nA, R + Mc, HB, d): per setting and h: mean over states of ES(controls, truths) - ES_loo."""
@@ -184,7 +193,24 @@ if os.path.exists(os.path.join(D, "scan_main.npz")):
                     cl[i, k] = np.mean(v)
             return de, orc, cl
         d2, o2, c2 = deficits(L2, hs2, sc2)
-        d1, o1, c1 = deficits(R1, hs1, sc1)
+        # level-1 raster: scored in the job (es_c1, es_o1, es_k1: (nS, J, nA, n_h)), or here from the rasters
+        if "es_c1" in B.files:
+            E1 = {k: B[k] for k in ("es_c1", "es_o1", "es_k1")}
+        else:
+            R1h = B["R1h"].astype(float)                             # (nS, J, nA, R + Mc, n_h, G2)
+            E1 = {k: np.full(R1h.shape[:3] + (len(hs1),), np.nan) for k in ("es_c1", "es_o1", "es_k1")}
+            sc1 = None
+            for a in done:
+                if sc1 is None:
+                    g = R1h.shape[-1] // 2
+                    sc1 = np.r_[np.full(g, max(R1h[0, :, a, :R, :, :g].std(), 1e-6)),
+                                np.full(g, max(R1h[0, :, a, :R, :, g:].std(), 1e-6))]
+                for k in range(len(hs1)):
+                    E1["es_c1"][:, :, a, k], E1["es_o1"][:, :, a, k], E1["es_k1"][:, :, a, k], _ = \
+                        VX.raster_scores(R1h[:, :, a, :, k], R, sc1)
+        d1 = (E1["es_c1"] - E1["es_o1"])[:, :, done].mean((1, 2))
+        o1 = E1["es_o1"][:, :, done].mean((1, 2))
+        c1 = E1["es_k1"][:, :, done].mean((1, 2))
         D2, D1 = c2[0] - o2[0], c1[0] - o1[0]
         scan["branch"] = {"anchors_done": [sc["anchors"][a] for a in done], "scales_level2": sc2.tolist(),
                           "null_D_h_level2": dict(zip(map(str, hs2), D2.tolist())),
@@ -216,7 +242,20 @@ if os.path.exists(os.path.join(D, "scan_main.npz")):
         scan["null_floor"] = head["null"]
     out["scan"] = scan
 
-json.dump(out, open(os.path.join(RES, "analysis1.json"), "w"), indent=1)
+
+
+def clean(o):
+    """NaN and infinities -> null (strict JSON)."""
+    if isinstance(o, dict):
+        return {k: clean(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [clean(v) for v in o]
+    if isinstance(o, float) and not np.isfinite(o):
+        return None
+    return o
+
+
+json.dump(clean(out), open(os.path.join(RES, "analysis1.json"), "w"), indent=1, allow_nan=False)
 print("bench:")
 for r in out["bench"]:
     print("  ", r)

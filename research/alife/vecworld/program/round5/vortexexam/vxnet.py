@@ -15,7 +15,9 @@ Families (each outputs samples):
          sbi_net (same optimiser, clipping, schedule, early stopping on held-out episodes); several nets (one per
          data set) are trained in lockstep with jax.vmap.
   ridge  linear in the inputs, one model per horizon; samples = mean + resampled joint residuals (the LINEAR
-         level-2 predictor of the round-3 closure, with level-1 summaries added).
+         level-2 predictor of the round-3 closure, with level-1 summaries and the replicator terms added).
+  lin2   the same ridge restricted to level 2: N and s_b at the lags, time, program, theta (lin2_cols): the
+         linear level-2 predictor of the round-3 closure itself.
   law    the level-2 effective law with fitted constants (roadmap policy T): per horizon
              d s_b = b1 s (1 - s) + b2 (1 - 2 s) + e_s,      d N = c0 + c1 (N - N_ref) + e_N
          (replicator-mutator drift for the share, linear relaxation for the count); residuals resampled jointly
@@ -143,7 +145,7 @@ class Cfg:
     WIDTH = 128
     DEPTH = 3
     NOISE = 8
-    BATCH = 256
+    BATCH = 512
     M_TRAIN = 8
     LR = 1e-3
     WD = 1e-4
@@ -313,11 +315,23 @@ def _h_index(X, d_theta):
     return np.argmax(X[..., o:o + len(VX.HS)], -1)
 
 
-def fit_ridge(ds, lam=1.0, max_res=20000, seed=0):
-    """Per horizon: ridge of the scaled change on the inputs (the one-hot dropped) + bias; residual table."""
+def lin2_cols(d_theta=0):
+    """Feature columns of the LINEAR LEVEL-2 predictor (the round-3 closure's family, track1/vortex128): N and s_b
+    at the lags, the time since the labelling, the program block, and theta if conditional. No level-1 summary and
+    no replicator term (s (1 - s), 1 - 2 s are nonlinear in level 2; (N - N_ref) / sc_N repeats N at lag 0)."""
+    nH, nL = len(HIST), len(LAGS)
+    i_n, i_s = HIST.index("N"), HIST.index("s_b")
+    o = nH * nL
+    cols = [l * nH + c for l in range(nL) for c in (i_n, i_s)] + [o] + list(range(o + 4, o + 8))
+    return np.array(cols + list(range(n_feat(0), n_feat(d_theta))))
+
+
+def fit_ridge(ds, lam=1.0, max_res=20000, seed=0, cols=None):
+    """Per horizon: ridge of the scaled change on the inputs (the one-hot dropped) + bias; residual table.
+    cols: use only these feature columns (lin2_cols)."""
     X, Y = np.asarray(ds["Xtr"], float), np.asarray(ds["Ytr"], float)
     o = len(HIST) * len(LAGS) + 1 + 3 + 4
-    keep = np.r_[np.arange(o), np.arange(o + len(VX.HS), X.shape[1])]
+    keep = np.r_[np.arange(o), np.arange(o + len(VX.HS), X.shape[1])] if cols is None else np.asarray(cols, int)
     hi = np.argmax(X[:, o:o + len(VX.HS)], 1)
     rng = np.random.default_rng(seed)
     model = {"keep": keep}

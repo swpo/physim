@@ -272,9 +272,11 @@ def level2(Y1, K):
     return np.stack([n, nb / np.maximum(n, 1.0)], -1)
 
 
-def summaries(Y1, K):
+def summaries(Y1, K, prev=None):
     """Permutation-invariant level-1 statistics per tick: Y1 (B, T, K*12) -> (B, T, len(S1_NAMES)).
-    turnover = slots whose presence changed since the previous tick (0 at the first tick)."""
+    turnover = slots whose presence changed since the previous tick; at the first tick it is taken against
+    `prev` (B, K*12), the list before the first tick, and is 0 when prev is None (job 1 computed summaries per
+    40-tick chunk without prev, so its turnover is 0 at ticks 1, 41, 81, ...: the Mac's review, point 3)."""
     T = tables(Y1, K)
     pres = T[..., 0] > 0.5
     n = pres.sum(-1).astype(float)
@@ -293,6 +295,8 @@ def summaries(Y1, K):
     rg = np.where(pres, T[..., 7], 0.0).sum(-1) / n1
     turn = np.zeros_like(n)
     turn[:, 1:] = (pres[:, 1:] != pres[:, :-1]).sum(-1)
+    if prev is not None:
+        turn[:, 0] = (pres[:, 0] != (tables(prev, K)[..., 0] > 0.5)).sum(-1)
     sb = (pres & (T[..., 2] > 0.5)).sum(-1) / n1
     return np.stack([n, sb, fbm, fbu, fbsd, mixed, np.log(mt1), np.log(np.maximum(mm, 1e-9)), mcv, spd, rg, turn],
                     -1).astype(np.float32)
@@ -317,6 +321,28 @@ def raster(Y1, K, H, block=16):
     np.add.at(out[:, 0], (rows, flat.ravel()), mass.ravel())
     np.add.at(out[:, 1], (rows, flat.ravel()), mb.ravel())
     return out.reshape(T.shape[:-2] + (2 * G * G,))
+
+
+def raster_scores(r1, R, sc1=None):
+    """Level-1 scores of one branch point of the headroom scan. r1 (nS, J, R + Mc, G2): block rasters of the R
+    truths (under each setting's theta) and the Mc controls (under theta_0) of every member, at one anchor and
+    horizon. Returns (es_c, es_o, es_k), each (nS, J): fair energy score of the controls against the truths, the
+    leave-one-out oracle of the truths, and the climatology (the other members' truths of the same setting);
+    and sc1, the public scales (sd of the null setting's truths per raster half), computed when not given."""
+    from vw.scoring import energy_fair, energy_loo
+    r1 = np.asarray(r1, float)
+    nS, J, _, G2 = r1.shape
+    if sc1 is None:
+        g = G2 // 2
+        sc1 = np.r_[np.full(g, max(r1[0, :, :R, :g].std(), 1e-6)), np.full(g, max(r1[0, :, :R, g:].std(), 1e-6))]
+    tr, ct = r1[:, :, :R] / sc1, r1[:, :, R:] / sc1
+    es_c, es_o = energy_fair(ct, tr), energy_loo(tr)
+    es_k = np.zeros((nS, J))
+    for i in range(nS):
+        for j in range(J):
+            oth = [q for q in range(J) if q != j]
+            es_k[i, j] = energy_fair(tr[i, oth].reshape(-1, G2), tr[i, j])
+    return es_c, es_o, es_k, sc1
 
 
 # ----------------------------------------------------------------------------- stirring programs
@@ -384,9 +410,9 @@ C_PROG = 200.0                          # nats per program (classes b, c, d); ep
 HS = (8, 16, 32)                        # horizons in ticks (40, 80, 160 time units)
 
 
-def summaries2(Y1, K):
+def summaries2(Y1, K, prev=None):
     """summaries plus the shares of vortices just below (0.35-0.5) and just above (0.5-0.65) the kind threshold."""
-    S = summaries(Y1, K)
+    S = summaries(Y1, K, prev)
     T = tables(Y1, K)
     pres = T[..., 0] > 0.5
     n1 = np.maximum(pres.sum(-1), 1.0)
@@ -434,7 +460,7 @@ def run_episodes(RN, Q, keys, seed, classes=None, T=None, prog_ticks=None, nats=
                                          c - t, nats, RN.centres)
         X, M, Y = RN.run(Q, X, M, kp, t, U[:, t:c].transpose(1, 0, 2))
         Yt = Y.transpose(1, 0, 2)
-        S[:, t + 1:c + 1] = summaries2(Yt, RN.K)
+        S[:, t + 1:c + 1] = summaries2(Yt, RN.K, prev=y)
         if keep_lists:
             L[:, t + 1:c + 1] = Yt
         y = Yt[:, -1]

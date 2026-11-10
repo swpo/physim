@@ -1,0 +1,43 @@
+{
+ "nats": [
+  400.0000244028656,
+  400.0000244028656,
+  400.0000244028656,
+  200.0000059604645,
+  200.0000059604645
+ ],
+ "classes": [
+  [
+   "d",
+   "c"
+  ],
+  [
+   "c",
+   "d"
+  ],
+  [
+   "c",
+   "d"
+  ],
+  [
+   "d",
+   "a"
+  ],
+  [
+   "a",
+   "b"
+  ]
+ ],
+ "anchors": {
+  "8": {
+   "max_abs_diff_replay_vs_main": 0.0,
+   "max_abs_diff_fresh_vs_replay": 8.660400390625
+  },
+  "14": {
+   "max_abs_diff_replay_vs_main": 0.0,
+   "max_abs_diff_fresh_vs_replay": 5.507745742797852
+  }
+ },
+ "summaries_match_level2": true,
+ "pass": true
+}

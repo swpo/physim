@@ -1,0 +1,193 @@
+{
+ "source": "origin/gpu-jobs:jobs/r5-vortexexam-002/out/law.npz",
+ "eps": [
+  0.0,
+  0.1,
+  0.2,
+  0.3,
+  0.4
+ ],
+ "train_members_per_eps": 48,
+ "test_members_per_eps": 16,
+ "anchors": [
+  130,
+  210,
+  290,
+  370
+ ],
+ "hs": [
+  8,
+  16,
+  32
+ ],
+ "steps": 3000,
+ "m": 32,
+ "history_channels": [
+  "N",
+  "s_b",
+  "fb_mass",
+  "fb_mean",
+  "fb_sd",
+  "mixed",
+  "log_mass_tot",
+  "log_mass_mean",
+  "speed_mean",
+  "turnover"
+ ],
+ "note": "one truth per item: no oracle; compare predictors with each other",
+ "n_items": 320,
+ "n_train_examples": 104760,
+ "V_change_scaled": [
+  [
+   0.6334,
+   0.0279
+  ],
+  [
+   0.7742,
+   0.0524
+  ],
+  [
+   1.0835,
+   0.1141
+  ]
+ ],
+ "predictors": {
+  "lin2|P0": {
+   "explained_N": [
+    0.165,
+    0.236,
+    0.373
+   ],
+   "explained_s_b": [
+    0.094,
+    0.151,
+    0.296
+   ],
+   "energy_joint": [
+    0.2927,
+    0.32,
+    0.3558
+   ]
+  },
+  "ridge|P0": {
+   "explained_N": [
+    0.209,
+    0.286,
+    0.393
+   ],
+   "explained_s_b": [
+    0.21,
+    0.322,
+    0.5
+   ],
+   "energy_joint": [
+    0.2838,
+    0.3074,
+    0.3451
+   ]
+  },
+  "law|P0": {
+   "explained_N": [
+    0.061,
+    0.12,
+    0.165
+   ],
+   "explained_s_b": [
+    0.015,
+    0.067,
+    0.128
+   ],
+   "energy_joint": [
+    0.3073,
+    0.344,
+    0.4097
+   ]
+  },
+  "net|P0": {
+   "explained_N": [
+    0.296,
+    0.293,
+    0.401
+   ],
+   "explained_s_b": [
+    0.095,
+    0.258,
+    0.466
+   ],
+   "energy_joint": [
+    0.2653,
+    0.3092,
+    0.3405
+   ]
+  },
+  "lin2|C": {
+   "explained_N": [
+    0.171,
+    0.241,
+    0.372
+   ],
+   "explained_s_b": [
+    0.113,
+    0.222,
+    0.413
+   ],
+   "energy_joint": [
+    0.2917,
+    0.3175,
+    0.3516
+   ]
+  },
+  "ridge|C": {
+   "explained_N": [
+    0.254,
+    0.335,
+    0.421
+   ],
+   "explained_s_b": [
+    0.227,
+    0.33,
+    0.498
+   ],
+   "energy_joint": [
+    0.2751,
+    0.2967,
+    0.3387
+   ]
+  },
+  "law|C": {
+   "explained_N": [
+    0.09,
+    0.137,
+    0.232
+   ],
+   "explained_s_b": [
+    0.078,
+    0.236,
+    0.459
+   ],
+   "energy_joint": [
+    0.3031,
+    0.3375,
+    0.3828
+   ]
+  },
+  "net|C": {
+   "explained_N": [
+    0.293,
+    0.34,
+    0.416
+   ],
+   "explained_s_b": [
+    0.159,
+    0.277,
+    0.519
+   ],
+   "energy_joint": [
+    0.2644,
+    0.2948,
+    0.3344
+   ]
+  }
+ },
+ "seconds": 98.49177145957947
+}

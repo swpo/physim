@@ -15,7 +15,9 @@ Stages (each writes its outputs to --out as it finishes; progress in OUT/progres
              at the anchor ticks, from every member's state: R truths under the setting's theta and Mc controls
              under theta_0 (the box centre = default), fresh noise, no input, HB ticks.
   E law128   (time permitting, if H_exam != 128) the law runs at 128^2 for 3 eps, fewer members.
-usage: python -B job1.py --out DIR [--smoke] [--max-hours 0.8] [--H 64]
+--scan-only repeats stage D alone (used inside job 2: the first run's branch file held the level-1 rasters and, at
+40 MB, stayed on the runner; the level-1 scores are now computed here and only they are saved).
+usage: python -B job1.py --out DIR [--smoke] [--max-hours 0.8] [--H 64] [--scan-only --rate 400 --bmax 1024]
 """
 from __future__ import annotations
 
@@ -44,6 +46,9 @@ ap.add_argument("--smoke", action="store_true")
 ap.add_argument("--max-hours", type=float, default=0.8)
 ap.add_argument("--min-rate", type=float, default=100.0)
 ap.add_argument("--H", type=int, default=0)
+ap.add_argument("--scan-only", action="store_true", help="only stage D at --H (rate from --rate), compact branch outputs")
+ap.add_argument("--rate", type=float, default=400.0)
+ap.add_argument("--bmax", type=int, default=1024)
 args = ap.parse_args()
 OUT = args.out
 os.makedirs(OUT, exist_ok=True)
@@ -116,7 +121,16 @@ INFO = {"study": "round5/vortexexam job1", "pilot_never_reusable_as_exam": True,
         "config": CFG, "box": BOX, "theta0": VX.THETA0, "lab_t": VX.LAB_T, "sigma_a": VX.SIGMA_A,
         "precision": "float64 world, float32 stored vortex lists"}
 log(f"backend {INFO['backend']} devices {INFO['devices']} jax {jax.__version__} smoke={args.smoke}")
+if args.scan_only and not args.smoke:            # a CPU fallback must not spend GPU-pod time (the Mac's review, point 1)
+    assert jax.default_backend() == "gpu", f"the scan needs the GPU backend, got {jax.default_backend()!r}"
 jdump("info.json", INFO)
+
+
+def save_npz(name, **arrays):
+    """Atomic compressed npz in OUT (a kill mid-write must not leave a truncated file; the Mac's review)."""
+    p = os.path.join(OUT, name)
+    np.savez_compressed(p + ".tmp.npz", **arrays)
+    os.replace(p + ".tmp.npz", p)
 
 
 # ----------------------------------------------------------------------------- A bench
@@ -229,11 +243,13 @@ def run_main(RN, Q, keys, T, bmax, tag, snaps=()):
         X, M = RN.init(Qc, kc)
         kp = RN.proc_keys(kc)
         t = 0
+        prev = None                          # the list before the chunk (turnover across chunk borders; review point 3)
         for c in cuts:
             while t < c:
                 n = min(CFG["chunk"], c - t)
                 X, M, Y = RN.run(Qc, X, M, kp, t, np.zeros((n, e - s, RN.m)))
-                S[s:e, t:t + n] = VX.summaries(Y.transpose(1, 0, 2), RN.K)
+                S[s:e, t:t + n] = VX.summaries(Y.transpose(1, 0, 2), RN.K, prev=prev)
+                prev = Y[-1]
                 t += n
             if c in snap:
                 snap[c].append((X, M))
@@ -263,7 +279,7 @@ def stage_law(H, rows, bmax, tag="law", eps_list=None, Js=None, T=None, budget_s
     t0 = time.time()
     S, _, ovf, fin = run_main(RN, Q, keys, T, bmax, tag)
     dt = time.time() - t0
-    np.savez_compressed(os.path.join(OUT, f"{tag}.npz"), S=S.reshape(len(eps_list), J, T, -1), eps=np.array(eps_list),
+    save_npz(f"{tag}.npz", S=S.reshape(len(eps_list), J, T, -1), eps=np.array(eps_list),
                         overflow=ovf, finite=fin, names=np.array(VX.S1_NAMES))
     info = {"H": H, "eps": eps_list, "J": J, "T": T, "seconds": dt, "member_ticks": J * len(eps_list) * T,
             "member_ticks_per_s": J * len(eps_list) * T / dt, "keys": f"member_keys(make_key(5101, {H}), J), shared by all eps",
@@ -310,7 +326,7 @@ def stage_scan(H, rows, bmax, budget_s):
     RN = VX.Runner(H, n_sub=CFG["n_sub"])
     t0 = time.time()
     S, snap, ovf, fin = run_main(RN, Q, keys, T, bmax, "scan main", snaps=anchors)
-    np.savez_compressed(os.path.join(OUT, "scan_main.npz"), S=S.reshape(nS, J, T, -1), settings=np.array(names),
+    save_npz("scan_main.npz", S=S.reshape(nS, J, T, -1), settings=np.array(names),
                         overflow=ovf.reshape(nS, J, 4), finite=fin.reshape(nS, J), names=np.array(VX.S1_NAMES))
     info = {"H": H, "settings": names, "J": J, "T": T, "anchors": anchors, "R": R, "Mc": Mc, "HB": HB,
             "main_seconds": time.time() - t0, "box": BOX,
@@ -318,11 +334,16 @@ def stage_scan(H, rows, bmax, budget_s):
                     f"shared by all settings (truth replicate r and control c have different keys)"}
     jdump("scan.json", info)
     log(f"  scan main done in {info['main_seconds']:.0f}s")
-    # branches
+    # branches: level 2 is saved in full; the level-1 block raster (2 x (H/16)^2 numbers per state) is scored
+    # here and only the scores are saved (the rasters of the first run were 40 MB, over the 20 MB git limit)
     G2 = 2 * (H // 16) ** 2
-    L2b = np.zeros((nS, J, len(anchors), R + Mc, HB, 2), np.float32)
-    R1b = np.zeros((nS, J, len(anchors), R + Mc, HB, G2), np.float32)
+    HS1 = [h for h in (1, 2, 4, 8) if h <= HB]
     nrep = R + Mc
+    L2b = np.zeros((nS, J, len(anchors), nrep, HB, 2), np.float32)
+    es_c1 = np.full((nS, J, len(anchors), len(HS1)), np.nan)         # ES_fair(controls, truths), level-1 raster
+    es_o1 = np.full((nS, J, len(anchors), len(HS1)), np.nan)         # ES_loo(truths)
+    es_k1 = np.full((nS, J, len(anchors), len(HS1)), np.nan)         # ES_fair(other members' truths, truths)
+    sc1 = None
     for ai, a in enumerate(anchors):
         if left_s() < 240 and not args.smoke:
             log(f"  scan branches at anchor {a} skipped (time)")
@@ -338,7 +359,7 @@ def stage_scan(H, rows, bmax, budget_s):
         kb = jnp.concatenate([kb1] * nS)
         kp = RN.proc_keys(kb, fresh=True)
         l2 = np.zeros((Bm * nrep, HB, 2), np.float32)
-        r1 = np.zeros((Bm * nrep, HB, G2), np.float32)
+        r1 = np.zeros((Bm * nrep, len(HS1), G2), np.float32)
         for s in range(0, Bm * nrep, bmax):
             e = min(s + bmax, Bm * nrep)
             ii = idx[s:e]
@@ -346,12 +367,17 @@ def stage_scan(H, rows, bmax, budget_s):
             _, _, Y = RN.run({k: v[s:e] for k, v in Qb.items()}, Xc, Mc_, kp[s:e], a, np.zeros((HB, e - s, RN.m)))
             Yt = Y.transpose(1, 0, 2)
             l2[s:e] = VX.level2(Yt, RN.K)
-            r1[s:e] = VX.raster(Yt, RN.K, H)
+            r1[s:e] = VX.raster(Yt[:, [h - 1 for h in HS1]], RN.K, H)
             log(f"    scan branches anchor {a}: {e}/{Bm * nrep} ({hours():.2f} h)")
         L2b[:, :, ai] = l2.reshape(nS, J, nrep, HB, 2)
-        R1b[:, :, ai] = r1.reshape(nS, J, nrep, HB, G2)
-        np.savez_compressed(os.path.join(OUT, "scan_branch.npz"), L2=L2b, R1=R1b, settings=np.array(names),
-                            anchors=np.array(anchors), R=R, Mc=Mc)
+        r1 = r1.reshape(nS, J, nrep, len(HS1), G2).astype(float)
+        if sc1 is None:                                            # public scales: sd of the null truths per raster half
+            g = G2 // 2
+            sc1 = np.r_[np.full(g, max(r1[0, :, :R, :, :g].std(), 1e-6)), np.full(g, max(r1[0, :, :R, :, g:].std(), 1e-6))]
+        for k in range(len(HS1)):
+            es_c1[:, :, ai, k], es_o1[:, :, ai, k], es_k1[:, :, ai, k], _ = VX.raster_scores(r1[:, :, :, k], R, sc1)
+        save_npz("scan_branch.npz", L2=L2b, es_c1=es_c1, es_o1=es_o1, es_k1=es_k1,
+                            hs1=np.array(HS1), sc1=sc1, settings=np.array(names), anchors=np.array(anchors), R=R, Mc=Mc)
     info["seconds"] = time.time() - t0
     info["member_ticks"] = nS * J * T + nS * J * len(anchors) * (R + Mc) * HB
     jdump("scan.json", info)
@@ -361,6 +387,15 @@ def stage_scan(H, rows, bmax, budget_s):
 
 
 def main():
+    if args.scan_only:
+        H_only = args.H or 128
+        rows = [{"H": H_only, "B": args.bmax, "track": True, "member_ticks_per_s": args.rate}]
+        INFO.update(H_exam=H_only, H_rule="--scan-only", bmax=args.bmax, rate=args.rate)
+        stage_scan(H_only, rows, args.bmax, budget_s=max(left_s() - 90, 60))
+        INFO["hours"], INFO["failed"] = hours(), FAILED
+        jdump("info.json", INFO)
+        log(f"done (scan only) in {hours():.2f} h; failed {FAILED}")
+        return
     rows = stage_bench()
     hs = sorted(set(h for h, _ in CFG["bench"]), reverse=True)
     sizes = [h for h in (128, 96, 64) if h in hs] or hs

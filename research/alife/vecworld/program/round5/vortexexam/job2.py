@@ -24,13 +24,20 @@ Stages (each writes to --out as it finishes; progress in OUT/progress.txt):
                up to the anchor, test program = the mix program built at the anchor, R replicate truths with fresh
                secret noise from the hidden state, queries: level 2 = (N, s_b) at h in HS ticks.
                References: O = leave-one-out over the replicates; K = the other main runs at the same tick.
-  G predict    families net / ridge / law (vxnet) under the policies
+  G predict    families net / ridge / law / lin2 (vxnet; lin2 = linear in the level-2 history only, the round-3
+               closure's predictor) under the policies
                  D@n   trained on the Lab's first n episodes          P0   trained on the design (prior) episodes
                  S@n   theta-conditional, theta ~ posterior(n)        C    theta-conditional at the true theta
                  PM    theta-conditional at the prior mean            PP   theta-conditional, theta ~ prior
                  S2@n  as S@n with the level-2-only posterior         Cded trained on n_C simulations at the truth
-  H report     fair energy scores per item and cell, OES, sigma and rho per family and budget, the share of the
-               oracle-predictable change of s_b reached by each predictor.
+                 Sded@4  unconditional, trained on n_C simulations at posterior(4) draws (time permitting)
+  H report     fair energy scores per item and cell (vw.scoring), OES (vw.scoring.skill_report), sigma and rho per
+               family and budget (round5/agentenv/evaluator/acceptance.py: the program's one implementation, with
+               its bootstrap clustered by hidden world), the share of the oracle-predictable change of s_b reached
+               by each predictor (pooled as in round 3, and within each truth).
+No grader is defined here: scoring and acceptance are the shared modules above.
+Outputs: every file is written atomically and kept under 20 MB (design summaries in parts); the total is audited
+at the end (limit 50 MB on the gpu-jobs branch).
 usage: python -B job2.py --out DIR [--prior prior.json] [--smoke] [--max-hours 2.6]
 """
 from __future__ import annotations
@@ -49,6 +56,9 @@ sys.path.insert(0, HERE)
 import vxlib as VX  # noqa: E402
 import vxsbi as SB  # noqa: E402
 import vxnet as NN  # noqa: E402
+
+sys.path.insert(1, os.path.join(os.path.dirname(HERE), "agentenv"))
+from evaluator import acceptance as ACC  # noqa: E402  (sigma and rho: the shared implementation)
 
 import jax  # noqa: E402
 import jax.numpy as jnp  # noqa: E402
@@ -71,12 +81,13 @@ os.makedirs(OUT, exist_ok=True)
 T0 = time.time()
 
 PRESETS = {
-    "full": dict(n_cand=12, n_truth=8, N_theta=384, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=12, R=8, n_C=32),
-    "mid": dict(n_cand=12, n_truth=8, N_theta=256, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=10, R=8, n_C=24),
+    "xl": dict(n_cand=16, n_truth=12, N_theta=768, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=16, R=12, n_C=48),
+    "full": dict(n_cand=14, n_truth=10, N_theta=512, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=12, R=8, n_C=32),
+    "mid": dict(n_cand=12, n_truth=8, N_theta=384, K_d=2, n_lab=16, budgets=[1, 2, 4, 8, 16], J_main=12, R=8, n_C=24),
     "small": dict(n_cand=10, n_truth=6, N_theta=192, K_d=2, n_lab=8, budgets=[1, 2, 4, 8], J_main=8, R=6, n_C=0),
 }
-COMMON = dict(m=64, steps_sim=6000, steps_real={1: 600, 2: 800, 4: 1000, 8: 1500, 16: 2000}, steps_C=2500,
-              rate_B=[256, 1024], n_post_draws=1000)
+COMMON = dict(m=64, steps_sim=8000, steps_real={1: 600, 2: 800, 4: 1000, 8: 1500, 16: 2000}, steps_C=3000,
+              rate_B=[256, 1024], n_post_draws=1000, sded_budget=4)
 if args.smoke:
     PR = {"H": 32, "names": ["eps", "mut128"], "lo": [0.0, 0.00625], "hi": [0.4, 0.025], "T_ep": 24,
           "prog_ticks": [8, 14], "c_prog": 200.0, "hs": [2, 4, 6], "viability": {"n_min": 1.0, "t_from": 4},
@@ -87,7 +98,8 @@ if args.smoke:
     NN.Cfg.EVAL_EVERY = 10
     SB.WINDOWS = ((3, 10), (10, 17), (17, 25))
     PRESETS = {"smoke": dict(n_cand=3, n_truth=2, N_theta=10, K_d=2, n_lab=4, budgets=[1, 2, 4], J_main=3, R=3, n_C=3)}
-    COMMON = dict(m=6, steps_sim=30, steps_real={1: 20, 2: 20, 4: 20}, steps_C=20, rate_B=[4], n_post_draws=50)
+    COMMON = dict(m=6, steps_sim=30, steps_real={1: 20, 2: 20, 4: 20}, steps_C=20, rate_B=[4], n_post_draws=50,
+                  sded_budget=2)
     N_SUB = 5
 else:
     PR = json.load(open(args.prior))
@@ -100,6 +112,10 @@ D_TH = len(NAMES)
 VX.T_EP, VX.PROG_TICKS, VX.C_PROG, VX.HS = int(PR["T_ep"]), tuple(PR["prog_ticks"]), float(PR["c_prog"]), tuple(PR["hs"])
 NN.set_const(PR.get("const", {}))
 T_EP, PROG, HS, HB = VX.T_EP, VX.PROG_TICKS, VX.HS, max(VX.HS)
+if not args.smoke:                                # four equal windows from the labelling to the end of the episode
+    _e = np.linspace(VX.LAB_TICK, T_EP + 1, 5).round().astype(int)
+    SB.WINDOWS = tuple((int(a), int(b)) for a, b in zip(_e[:-1], _e[1:]))
+assert max(PROG) + HB <= T_EP, "the last anchor plus the longest horizon must fit in the episode"
 VIAB = PR["viability"]
 FAILED = []
 CLOCK = {}
@@ -141,6 +157,58 @@ def jdump(name, obj):
     os.replace(p + ".tmp", p)
 
 
+FILE_LIMIT = 19 * 2 ** 20          # bytes per output file (the gpu-jobs branch takes 20 MB)
+TOTAL_LIMIT = 47 * 2 ** 20         # bytes in OUT in total (50 MB)
+
+
+def save_npz(name, **arrays):
+    """Atomic compressed npz in OUT; returns its size in bytes (logged when large)."""
+    p = os.path.join(OUT, name)
+    tmp = p + ".tmp.npz"
+    np.savez_compressed(tmp, **arrays)
+    os.replace(tmp, p)
+    n = os.path.getsize(p)
+    if n > 2 ** 20:
+        log(f"    wrote {name}: {n / 2 ** 20:.1f} MB")
+    return n
+
+
+def sparse_U(U):
+    """Dense programs (E, T, m) float32 -> the non-zero entries (programs are a few ticks x a few coefficients)."""
+    U = np.asarray(U, np.float32)
+    idx = np.argwhere(U != 0)
+    return {"U_idx": idx.astype(np.int32), "U_val": U[tuple(idx.T)], "U_shape": np.array(U.shape)}
+
+
+def audit_outputs():
+    """Sizes of everything in OUT; files over the per-file limit or beyond the total are deleted, least needed
+    first (the design summaries are the only large ones), and the deletion is recorded."""
+    def listing():
+        out = {}
+        for root, _, files in os.walk(OUT):
+            for f in files:
+                q = os.path.join(root, f)
+                out[os.path.relpath(q, OUT)] = os.path.getsize(q)
+        return out
+    sizes, dropped = listing(), []
+    for f, n in sorted(sizes.items()):
+        if n > FILE_LIMIT:
+            os.remove(os.path.join(OUT, f))
+            dropped.append([f, n, "over the per-file limit"])
+    order = sorted([f for f in listing() if f.startswith("design_S_")], reverse=True)
+    while sum(listing().values()) > TOTAL_LIMIT and order:
+        f = order.pop(0)
+        dropped.append([f, os.path.getsize(os.path.join(OUT, f)), "total over the limit"])
+        os.remove(os.path.join(OUT, f))
+    sizes = listing()
+    INFO["outputs"] = {"total_bytes": int(sum(sizes.values())), "largest": sorted(sizes.items(), key=lambda kv: -kv[1])[:6],
+                       "dropped": dropped, "file_limit": FILE_LIMIT, "total_limit": TOTAL_LIMIT}
+    log(f"outputs: {sum(sizes.values()) / 2 ** 20:.1f} MB in {len(sizes)} files; largest "
+        f"{[(k, round(v / 2 ** 20, 1)) for k, v in INFO['outputs']['largest'][:3]]}; dropped {dropped}")
+    if dropped:
+        FAILED.append("skipped outputs over the size limits")
+
+
 def hours():
     return (time.time() - T0) / 3600
 
@@ -164,8 +232,11 @@ INFO = {"study": "round5/vortexexam job2", "pilot_never_reusable_as_exam": True,
         "prior": PR, "common": {k: (v if not isinstance(v, dict) else {str(a): b for a, b in v.items()})
                                 for k, v in COMMON.items()},
         "net": {k: getattr(NN.Cfg, k) for k in dir(NN.Cfg) if k.isupper()}, "lags": NN.LAGS, "hist": NN.HIST,
+        "feature_windows": SB.WINDOWS,
         "const": NN.CONST, "precision": "float64 world, float32 vortex lists and nets"}
 log(f"backend {INFO['backend']} devices {INFO['devices']} jax {jax.__version__} smoke={args.smoke} H={H} theta={NAMES}")
+if not args.smoke:                               # a CPU fallback must not spend GPU-pod time (the Mac's review, point 1)
+    assert jax.default_backend() == "gpu", f"job2 needs the GPU backend, got {jax.default_backend()!r} ({jax.devices()})"
 SEC = Secret()
 INFO["secret_commitment"] = SEC.commitment()
 jdump("info.json", INFO)
@@ -206,9 +277,9 @@ def stage_rate():
         nt = p["n_truth"]
         return ((p["N_theta"] * p["K_d"] + p["n_cand"] * (p["n_lab"] + p["J_main"])) * T_EP
                 + nt * p["J_main"] * len(PROG) * p["R"] * HB + nt * p["n_C"] * T_EP)
-    budget = 0.62 * left_s()                       # the rest: compiles, training, scoring, slack
+    budget = 0.72 * left_s()                       # the rest: compiles, training, scoring, slack
     name = None
-    for nm in (["smoke"] if args.smoke else ["full", "mid", "small"]):
+    for nm in (["smoke"] if args.smoke else ["xl", "full", "mid", "small"]):
         if args.preset and nm != args.preset:
             continue
         if args.smoke or args.preset or work(PRESETS[nm]) / (0.8 * rate) <= budget:
@@ -226,38 +297,32 @@ def stage_rate():
         f"of sims at batch {BMAX}; budget {budget / 60:.0f} min")
 
 
-def run_eps(thetas, keys, seed, tag, classes=None, snaps=None):
-    """vxlib.run_episodes in member chunks of BMAX; outputs concatenated (snaps: lists of device chunks)."""
+def run_eps(thetas, keys, seed, tag, classes=None, snaps=None, snap_idx=None):
+    """vxlib.run_episodes in member chunks of BMAX; outputs concatenated. snaps: ticks at which the device states
+    of the members snap_idx (sorted global indices) are kept -> out["snaps"][tick] = (X, M) in snap_idx order."""
     th = np.atleast_2d(np.asarray(thetas, float))
     B = len(th)
     outs = []
+    kept = {a: [] for a in (snaps or ())}
+    snap_idx = np.arange(B) if snap_idx is None else np.asarray(snap_idx)
+    assert (np.diff(snap_idx) > 0).all()
     for s in range(0, B, BMAX):
         e = min(s + BMAX, B)
+        loc = snap_idx[(snap_idx >= s) & (snap_idx < e)] - s
         o = VX.run_episodes(RN, Q_of(th[s:e]), keys[s:e], seed * 1000 + s, T=T_EP, prog_ticks=PROG, nats=VX.C_PROG,
-                            classes=None if classes is None else classes[s:e], snaps=snaps,
+                            classes=None if classes is None else classes[s:e], snaps=snaps if len(loc) else None,
                             log=log if (e - s) >= 64 else None, tag=tag)
+        for a, (X, M) in (o.pop("snaps", None) or {}).items():       # keep only the members that are branched later
+            kept[a].append((VX.take(X, loc), VX.take(M, loc)))
         outs.append(o)
         log(f"    {tag}: episodes {e}/{B} ({hours():.2f} h)")
     ticks(tag, B * T_EP)
     out = {k: np.concatenate([o[k] for o in outs]) for k in ("S", "U", "cls", "nats", "overflow", "finite")}
     out["viable"] = VX.viable(out["S"], out["overflow"], out["finite"], RN.K, VIAB["n_min"], VIAB["t_from"])
     if snaps:
-        out["snaps"] = {a: [o["snaps"][a] for o in outs] for a in snaps}
-        out["chunks"] = [(s, min(s + BMAX, B)) for s in range(0, B, BMAX)]
+        out["snaps"] = {a: (jax.tree_util.tree_map(lambda *xs: jnp.concatenate(xs), *[x for x, _ in kept[a]]),
+                            jnp.concatenate([m for _, m in kept[a]])) for a in snaps}
     return out
-
-
-def gather(snap_chunks, chunks, idx):
-    """Device states (X, M) of the global member indices idx from per-chunk snapshots."""
-    idx = np.asarray(idx)
-    Xs, Ms = [], []
-    for (s, e), (X, M) in zip(chunks, snap_chunks):
-        loc = idx[(idx >= s) & (idx < e)] - s
-        if len(loc):
-            Xs.append(VX.take(X, loc))
-            Ms.append(VX.take(M, loc))
-    X = jax.tree_util.tree_map(lambda *xs: jnp.concatenate(xs), *Xs)
-    return X, jnp.concatenate(Ms)
 
 
 # ----------------------------------------------------------------------------- B-D one batch of episodes
@@ -276,8 +341,8 @@ def stage_episodes():
     cls = np.concatenate([np.random.default_rng(4405).choice(list(VX.PROGRAM_CLASSES), size=(N * K, len(PROG))),
                           np.random.default_rng(7700).choice(list(VX.PROGRAM_CLASSES), size=(nc * nL, len(PROG))),
                           SEC.rng("exam-classes").choice(list(VX.PROGRAM_CLASSES), size=(nc * J, len(PROG)))])
-    allr = run_eps(th, keys, 21, "episodes", classes=cls, snaps=PROG)
     nD, nLb = N * K, nc * nL
+    allr = run_eps(th, keys, 21, "episodes", classes=cls, snaps=PROG, snap_idx=np.arange(nD + nLb, nD + nLb + nc * J))
     sl = {"design": slice(0, nD), "lab": slice(nD, nD + nLb), "exam": slice(nD + nLb, nD + nLb + nc * J)}
     part = lambda nm: {k: allr[k][sl[nm]] for k in ("S", "U", "cls", "nats", "overflow", "finite", "viable")}  # noqa: E731
     sim, lab, exm = part("design"), part("lab"), part("exam")
@@ -307,8 +372,11 @@ def stage_episodes():
     # design -> viability prior
     v = sim["viable"].reshape(N, K)
     pv = SB.ViabilityPrior().fit(Ud, v.all(1).astype(float))
-    np.savez_compressed(os.path.join(OUT, "design.npz"), u=Ud, S=sim["S"].astype(np.float16), cls=sim["cls"],
-                        nats=sim["nats"], viable=v, overflow=sim["overflow"], names=np.array(VX.S2_NAMES))
+    save_npz("design.npz", u=Ud, cls=sim["cls"], nats=sim["nats"], viable=v, overflow=sim["overflow"],
+             names=np.array(VX.S2_NAMES), theta_names=np.array(NAMES), lo=LO, hi=HI, K_d=K, **sparse_U(sim["U"]))
+    per_file = 512                                           # episodes per file: 512 x (T+1) x 14 float16 = 5.8 MB raw
+    for q, s0 in enumerate(range(0, nD, per_file)):          # level-1 summaries of the design episodes, in parts
+        save_npz(f"design_S_{q:02d}.npz", S=sim["S"][s0:s0 + per_file].astype(np.float16), first_episode=s0)
     jdump("viability_prior.json", {"diag": pv.diag, "w": pv.w.tolist(), "features": "poly_feats(u, 2)",
                                    "rule": VIAB, "frac_episodes_viable": float(v.mean()),
                                    "frac_theta_viable": float(v.all(1).mean())})
@@ -336,14 +404,14 @@ def stage_episodes():
                     "caps": {"nats_episode": cap, "ticks_per_episode": T_EP},
                     "viable_episodes": int(lab["viable"].reshape(nc, nL)[sel[i]].sum())})
     jdump("lab.json", out)
-    np.savez_compressed(os.path.join(OUT, "lab.npz"), S=labS.astype(np.float16),
-                        cls=lab["cls"].reshape(nc, nL, -1)[sel], nats=lab["nats"].reshape(nc, nL)[sel],
-                        viable=lab["viable"].reshape(nc, nL)[sel])
-    # exam main runs of the truths and their snapshots
-    ex_idx = np.concatenate([nD + nLb + i * J + np.arange(J) for i in sel])
+    save_npz("lab.npz", S=labS.astype(np.float16), cls=lab["cls"].reshape(nc, nL, -1)[sel],
+             nats=lab["nats"].reshape(nc, nL)[sel], viable=lab["viable"].reshape(nc, nL)[sel],
+             **sparse_U(labU.reshape(len(sel) * nL, T_EP, -1)))
+    # exam main runs of the truths and their snapshots (snapshots hold all candidates' runs, in member order)
+    ex_loc = np.concatenate([i * J + np.arange(J) for i in sel])
     exam = {"S": exm["S"].reshape(nc, J, T_EP + 1, -1)[sel], "U": exm["U"].reshape(nc, J, T_EP, -1)[sel],
             "cls": exm["cls"].reshape(nc, J, -1)[sel], "viable": exm["viable"].reshape(nc, J)[sel],
-            "snaps": {a: gather(allr["snaps"][a], allr["chunks"], ex_idx) for a in PROG}}
+            "snaps": {a: (VX.take(allr["snaps"][a][0], ex_loc), VX.take(allr["snaps"][a][1], ex_loc)) for a in PROG}}
     del allr
     gc.collect()
     return truths, Ud, sim, pv, pdraws, pm, psd, labS, labU, exam
@@ -400,9 +468,8 @@ def stage_identify(Ud, sim, labS, truths, pv, pm, psd):
                   "(vxsbi, from round4/sbi/sbi_lib)",
         "names": NAMES, "prior_mean_u": pm.tolist(), "prior_sd_u": psd.tolist(), "prior_sd_theta": (psd * HW).tolist(),
         "state": state, "per_truth_budget": res, "coverage": cov})
-    np.savez_compressed(os.path.join(OUT, "posterior_draws.npz"),
-                        **{f"L{l}_t{i}_n{n}": from_u(d[:CFG["n_post_draws"]]).astype(np.float32)
-                           for (l, i, n), d in draws.items()})
+    save_npz("posterior_draws.npz", **{f"L{l}_t{i}_n{n}": from_u(d[:CFG["n_post_draws"]]).astype(np.float32)
+                                       for (l, i, n), d in draws.items()})
     return draws
 
 
@@ -433,8 +500,8 @@ def stage_exam(truths, exam):
     ticks("exam_replicates", Bm * len(PROG) * R * HB)
     exam.pop("snaps")
     Y = Y.reshape(nT, J, len(PROG), R, len(HS), 2)
-    np.savez_compressed(os.path.join(OUT, "exam.npz"), S=exam["S"].astype(np.float16), Y=Y, cls=exam["cls"],
-                        viable=exam["viable"], anchors=np.array(PROG), hs=np.array(HS))
+    save_npz("exam.npz", S=exam["S"].astype(np.float16), Y=Y, cls=exam["cls"], viable=exam["viable"],
+             anchors=np.array(PROG), hs=np.array(HS), **sparse_U(Um))
     log(f"exam: {nT} truths x {J} runs x {len(PROG)} anchors = {nT * J * len(PROG)} items, R = {R}; main runs viable "
         f"{exam['viable'].mean():.3f}")
     return exam["S"], exam["U"], Y
@@ -484,7 +551,7 @@ def save_scores():
     for k, v in MEANS.items():
         if all(a is not None for a in v):
             blob["mean|" + k] = np.stack(v).astype(np.float32)
-    np.savez_compressed(os.path.join(OUT, "scores.npz"), **blob)
+    save_npz("scores.npz", **blob)
     jdump("train_info.json", TRAIN)
 
 
@@ -496,18 +563,20 @@ def fam_fit(fam, ds, d_theta, steps, seed, tag):
         return params
     if fam == "ridge":
         return [NN.fit_ridge(d, seed=seed) for d in ds]
+    if fam == "lin2":
+        return [NN.fit_ridge(d, seed=seed, cols=NN.lin2_cols(d_theta)) for d in ds]
     return [NN.fit_law(d, d_theta=d_theta, seed=seed) for d in ds]
 
 
 def fam_samples(fam, model, X, m, seed):
     if fam == "net":
         return NN.net_samples(model, X, m, seed)
-    if fam == "ridge":
+    if fam in ("ridge", "lin2"):
         return NN.ridge_samples(model, X, m, seed)
     return NN.law_samples(model, X, m, seed)
 
 
-FAMS = ("net", "ridge", "law")
+FAMS = ("net", "ridge", "law", "lin2")
 
 
 def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm):
@@ -538,7 +607,21 @@ def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm)
         MEANS.setdefault("K", [None] * nT)[i] = smp.mean(1)
     SCORES["K"] = clim
     MEANS["anchor"] = [L2a[i][:, None, :].repeat(len(HS), 1) for i in range(nT)]
-    np.savez_compressed(os.path.join(OUT, "items.npz"), L2a=np.stack(L2a), Y=np.stack(Yi).astype(np.float32))
+    # K0: the prior climatology (level 2 of m viable design episodes at the same tick): no history, no Lab, no theta
+    okd = np.flatnonzero(sim["viable"])
+    L2d = sim["S"][..., [ix["N"], ix["s_b"]]].astype(float)
+    rk = np.random.default_rng(77)
+    k0 = []
+    for i in range(nT):
+        smp = np.zeros((nI, m, len(HS), 2))
+        for j in range(J):
+            for ai, a in enumerate(PROG):
+                pick = rk.choice(okd, size=m, replace=len(okd) < m)
+                smp[j * len(PROG) + ai] = np.stack([L2d[pick, a + h] for h in HS], 1)
+        k0.append(es_cells(smp, Yi[i]))
+        MEANS.setdefault("K0", [None] * nT)[i] = smp.mean(1)
+    SCORES["K0"] = k0
+    save_npz("items.npz", L2a=np.stack(L2a), Y=np.stack(Yi).astype(np.float32))
     save_scores()
 
     def score_all(fam, name, models, Xlist, seed):
@@ -580,6 +663,10 @@ def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm)
         report()
     # ---- data-only: D@n
     for n in CFG["budgets"]:
+        if left_s() < 600 and not args.smoke:
+            log(f"  SKIP D@{n}: {left_s():.0f}s left")
+            FAILED.append(f"skipped D@{n}")
+            continue
         ds = [NN.dataset(labS[i][:n], labU[i][:n], seed=100 + n + i) for i in range(nT)]
         for fam in FAMS:
             try:
@@ -593,25 +680,26 @@ def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm)
     return Xi, L2a, Yi
 
 
-def stage_cded(truths, Xi, L2a, Yi):
-    """Dedicated C: per truth n_C simulations at the true theta, unconditional models trained on them."""
-    nT, nC = len(truths), CFG["n_C"]
+def stage_dedicated(name, thetas, Xi, L2a, Yi, seed):
+    """Dedicated (unconditional) models per truth, trained on n_C simulations at thetas[i] (n_C, d): at the true
+    theta ('Cded') or at posterior draws ('Sded@n')."""
+    nT, nC = len(thetas), CFG["n_C"]
     if nC <= 0:
         return
     need = nT * nC * T_EP / (0.8 * INFO["rate"]) + 240
     if left_s() < need and not args.smoke:
-        log(f"  SKIP Cded: needs {need:.0f}s, {left_s():.0f}s left")
-        FAILED.append("skipped Cded")
+        log(f"  SKIP {name}: needs {need:.0f}s, {left_s():.0f}s left")
+        FAILED.append(f"skipped {name}")
         return
-    sim = run_eps(np.repeat(truths, nC, 0), member_keys(make_key(5500, H), nT * nC), 51, "sims_true")
+    sim = run_eps(np.concatenate(thetas), member_keys(make_key(5500, H, seed), nT * nC), seed, f"sims_{name}")
     S = sim["S"].reshape(nT, nC, T_EP + 1, -1)
     U = sim["U"].reshape(nT, nC, T_EP, -1)
     ds = [NN.dataset(S[i], U[i], seed=700 + i) for i in range(nT)]
     for fam in FAMS:
-        mdl = fam_fit(fam, ds, 0, CFG["steps_C"], 710, f"{fam}|Cded")
+        mdl = fam_fit(fam, ds, 0, CFG["steps_C"], 710 + seed, f"{fam}|{name}")
         for i in range(nT):
             smp = fam_samples(fam, mdl[i], Xi[i], CFG["m"], 720 + i)
-            put(f"{fam}|Cded", i, nT, NN.to_level2(smp, L2a[i]), Yi[i])
+            put(f"{fam}|{name}", i, nT, NN.to_level2(smp, L2a[i]), Yi[i])
     save_scores()
 
 
@@ -635,50 +723,58 @@ def _report(final=False):
     rep = skill_report(S, cells=cl, valid=valid, n_boot=1000)
     L = {k: float(S[k][:, prim].mean()) for k in names}
     per_truth_L = {k: [float(SCORES[k][i][:, prim].mean()) for i in range(nT)] for k in names}
+    worlds = np.concatenate([np.full(len(SCORES["oracle"][i]), i) for i in range(nT)])
 
-    def shares(Lx, fam, n):
-        d, p0, s, c, k = (Lx.get(f"{fam}|D@{n}"), Lx.get(f"{fam}|P0"), Lx.get(f"{fam}|S@{n}"), Lx.get(f"{fam}|C"),
-                          Lx.get("K"))
-        out = {}
-        if None not in (d, p0, c, k):
-            null = min(d, p0)
-            out["sigma"] = (null - c) / (k - c)
-            out["null"] = "D" if d < p0 else "P0"
-        if None not in (p0, s, c) and abs(p0 - c) > 0:
-            out["rho"] = (p0 - s) / (p0 - c)
+    # acceptance (roadmap section 1) with the shared implementation: one predictor family per row; bootstrap over
+    # items and clustered by hidden world (truth). Variants: S2 = the posterior from level-2 histories only;
+    # ded = dedicated models (C = Cded, S = Sded at its budget) instead of the theta-conditional one.
+    def shares(fam, n, s_name=None, c_name=None):
+        pol = {"K": "K", "D": f"{fam}|D@{n}", "P0": f"{fam}|P0", "S": s_name or f"{fam}|S@{n}", "C": c_name or f"{fam}|C"}
+        if any(pol[q] not in S for q in ("K", "P0", "C")):
+            return None
+        out = ACC.shares({q: S[v] for q, v in pol.items() if v in S}, valid, worlds=worlds, n_boot=1000)
+        out["policies"] = {q: v for q, v in pol.items() if v in S}
+        out.pop("L", None)
         return out
-    rng = np.random.default_rng(0)
-    boot = rng.integers(0, nT, size=(1000, nT))
     acc = {}
     for fam in FAMS:
         for n in CFG["budgets"]:
-            pt = shares(L, fam, n)
-            if not pt:
-                continue
-            bs = {"sigma": [], "rho": []}
-            for b in boot:
-                Lb = {k: float(np.mean([per_truth_L[k][i] for i in b])) for k in names}
-                sh = shares(Lb, fam, n)
-                for q in bs:
-                    if q in sh:
-                        bs[q].append(sh[q])
-            for q in ("sigma", "rho"):
-                if q in pt and bs[q]:
-                    pt[q + "_boot_truths_p16_p84"] = [float(np.percentile(bs[q], 16)), float(np.percentile(bs[q], 84))]
-            acc[f"{fam}@{n}"] = pt
-    # the share of the oracle-predictable change reached (round-3 cchg), from predictive means
-    Y = np.concatenate([np.load(os.path.join(OUT, "items.npz"))["Y"][i] for i in range(nT)]).astype(float)
-    L2a = np.concatenate(list(np.load(os.path.join(OUT, "items.npz"))["L2a"])).astype(float)
+            for tag, kw in (("", {}), ("|S2", {"s_name": f"{fam}|S2@{n}"}),
+                            ("|ded", {"s_name": f"{fam}|Sded@{n}", "c_name": f"{fam}|Cded"})):
+                if tag == "|S2" and f"{fam}|S2@{n}" not in S:
+                    continue
+                if tag == "|ded" and f"{fam}|Cded" not in S:
+                    continue
+                r_ = shares(fam, n, **kw)
+                if r_:
+                    acc[f"{fam}@{n}{tag}"] = r_
+    # the share of the oracle-predictable change reached (round-3 cchg), from predictive means: pooled over all
+    # items (as round 3 pooled its two arms), and within each truth (change about that truth's own mean drift)
+    items = np.load(os.path.join(OUT, "items.npz"))
+    Yt = items["Y"].astype(float)                                                   # (nT, nI, R, nh, 2)
+    La = items["L2a"].astype(float)                                                 # (nT, nI, 2)
+    Y = np.concatenate(list(Yt))
+    L2a = np.concatenate(list(La))
     chg = Y - L2a[:, None, None, :]
     Vc = ((chg - chg.mean((0, 1), keepdims=True)) ** 2).mean((0, 1))                 # (nh, 2)
     Vu = Y.var(1, ddof=1).mean(0)
+    chg_t = Yt - La[:, :, None, None, :]
+    Vc_t = ((chg_t - chg_t.mean((1, 2), keepdims=True)) ** 2).mean((1, 2))           # (nT, nh, 2)
+    Vu_t = Yt.var(2, ddof=1).mean(1)                                                # (nT, nh, 2)
     cchg = {"V_change": Vc.tolist(), "Vu": Vu.tolist(), "oracle_predictable_share": (1 - Vu / Vc).tolist(),
-            "coords": ["N", "s_b"], "hs": list(HS), "reached": {}}
+            "coords": ["N", "s_b"], "hs": list(HS), "reached": {},
+            "within_truth": {"V_change_mean": Vc_t.mean(0).tolist(), "Vu_mean": Vu_t.mean(0).tolist(),
+                             "oracle_predictable_share": (1 - Vu_t.sum(0) / Vc_t.sum(0)).tolist(),
+                             "oracle_predictable_share_per_truth": (1 - Vu_t / Vc_t).tolist(), "reached": {},
+                             "note": "sums over truths of (V_change - Ve) / (V_change - Vu), each truth about its own mean change"}}
     for k, v in MEANS.items():
         if all(a is not None for a in v):
-            mu = np.concatenate(v).astype(float)
+            mu_t = np.stack(v).astype(float)                                        # (nT, nI, nh, 2)
+            mu = np.concatenate(list(mu_t))
             Ve = ((Y - mu[:, None]) ** 2).mean((0, 1))
             cchg["reached"][k] = ((Vc - Ve) / (Vc - Vu)).tolist()
+            Ve_t = ((Yt - mu_t[:, :, None]) ** 2).mean((1, 2))
+            cchg["within_truth"]["reached"][k] = ((Vc_t.sum(0) - Ve_t.sum(0)) / (Vc_t.sum(0) - Vu_t.sum(0))).tolist()
     agg = rep["aggregate"]
     out = {"final": final, "n_truths": nT, "n_items_pooled": int(S["oracle"].shape[0]), "cells": cl,
            "primary_cells": [cl[i] for i in prim], "L_pooled": L, "L_per_truth": per_truth_L,
@@ -696,17 +792,20 @@ def _report(final=False):
                          (f"{fam}|P0", f"{fam}|D@{n}"), (f"{fam}|S@{n}", f"{fam}|S2@{n}")):
                 if a in agg and b in agg:
                     gaps[f"{a} - {b}"] = paired_gap(rep, a, b)
-    for a, b in (("net|P0", "ridge|P0"), ("net|C", "ridge|C"), ("net|C", "law|C"), ("net|P0", "law|P0")):
+    for a, b in (("net|P0", "ridge|P0"), ("net|C", "ridge|C"), ("net|C", "law|C"), ("net|P0", "law|P0"),
+                 ("net|C", "lin2|C"), ("net|P0", "lin2|P0"), ("ridge|C", "lin2|C"), ("law|C", "lin2|C"),
+                 ("net|Cded", "lin2|Cded"), ("K", "K0")):
         if a in agg and b in agg:
             gaps[f"{a} - {b}"] = paired_gap(rep, a, b)
     out["gaps_oes_item_bootstrap"] = gaps
     jdump("prediction.json", out)
-    show = [k for k in sorted(agg) if k.split("|")[-1] in ("P0", "C", "PM", "Cded") or k.endswith(f"@{CFG['budgets'][-1]}")]
+    show = [k for k in sorted(agg) if k.split("|")[-1] in ("P0", "C", "PM", "Cded") or k.endswith(f"@{CFG['budgets'][-1]}")
+            or "Sded" in k]
     log("  OES " + ", ".join(f"{k} {agg[k]:.3f}" for k in show))
     if final:
         for k, v in acc.items():
             log(f"  acceptance {k}: " + ", ".join(f"{q} {v[q]:.3f}" if isinstance(v[q], float) else f"{q} {v[q]}"
-                                                   for q in v if q in ("sigma", "rho", "null")))
+                                                   for q in ("sigma", "rho", "null_is") if v.get(q) is not None))
     return out
 
 
@@ -722,12 +821,24 @@ def main():
         draws = None
     exS, exU, exY = stage_exam(truths, exam)
     Xi, L2a, Yi = stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, draws, pdraws, pm)
+    nC = CFG["n_C"]
     try:
-        stage_cded(truths, Xi, L2a, Yi)
+        stage_dedicated("Cded", [np.repeat(t[None], nC, 0) for t in truths], Xi, L2a, Yi, 51)
+        report()
     except Exception as exc:
         FAILED.append("Cded")
         log(f"Cded FAILED {exc!r}\n{traceback.format_exc()}")
+    try:
+        nb = CFG["sded_budget"]
+        if draws is not None and nb in CFG["budgets"] and nC > 0:
+            rng = np.random.default_rng(601)
+            ths = [from_u(draws[(1, i, nb)][rng.choice(len(draws[(1, i, nb)]), nC)]) for i in range(len(truths))]
+            stage_dedicated(f"Sded@{nb}", ths, Xi, L2a, Yi, 52)
+    except Exception as exc:
+        FAILED.append("Sded")
+        log(f"Sded FAILED {exc!r}\n{traceback.format_exc()}")
     report(final=True)
+    audit_outputs()
     INFO["member_ticks"] = CLOCK
     INFO["member_ticks_total"] = int(sum(CLOCK.values()))
     INFO["hours"] = hours()
