@@ -54,8 +54,20 @@ def mean_tree(a, b):
 
 def pool_phi(phi, chs):
     js = {ch: json.load(open(f"{CERT}/{phi}__cert{ch}.json")) for ch in chs}
-    nz = {ch: np.load(f"{CERT}/{phi}__cert{ch}.npz") for ch in chs}
     layout = js[chs[0]]["layout"]
+    if not all(js[ch].get("certified", True) for ch in chs):       # agreement only (scert, S5_CERT_O=refs)
+        res = {"phi": phi, "layout": layout, "q": js[chs[0]]["q"], "halves": list(chs), "families": {}, "certified": False}
+        for k in ("agreement", "territory", "nontriv"):
+            if all(k in js[ch] for ch in chs):
+                v = js[chs[0]][k]
+                for ch in chs[1:]:
+                    v = mean_tree(v, js[ch][k])
+                res[k] = v
+        res["meta"] = {ch: {k: v for k, v in js[ch]["meta"].items() if k not in ("cfg",)} for ch in chs}
+        res["cfg"] = js[chs[0]]["meta"].get("cfg")
+        res["cert_seconds"] = [js[ch]["seconds"]["total"] for ch in chs]
+        return res
+    nz = {ch: np.load(f"{CERT}/{phi}__cert{ch}.npz") for ch in chs}
     names = sorted(set.intersection(*[set(str(n) for n in nz[ch]["names"]) for ch in chs]))
     err = {nm: np.concatenate([nz[ch]["err"][list(nz[ch]["names"]).index(nm)] for ch in chs]) for nm in names}
     orac = np.concatenate([nz[ch]["orac"] for ch in chs])
@@ -205,8 +217,8 @@ def main():
              "probe(rff) mass pos vel | territ"]
     for phi in sorted(res):
         r = res[phi]
-        fam = "O" if "O" in r["families"] else ("S" if "S" in r["families"] else "GL")
-        c = r["families"][fam]["ceiling"]
+        fam = "O" if "O" in r["families"] else ("S" if "S" in r["families"] else ("GL" if "GL" in r["families"] else "-"))
+        c = r["families"][fam]["ceiling"] if fam != "-" else [float("nan")] * len(HZ)
         a = r.get("agreement")
         t = r.get("territory") or {}
         ag = "".join(f3(x) for x in ((a["ari_hard_matter_weighted"], a["recall"], a["precision"], a["slots_per_object"],

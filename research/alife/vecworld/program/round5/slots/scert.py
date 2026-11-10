@@ -51,6 +51,7 @@ LAMS = (1e-4, 1e-2, 1.0, 1e2)
 FAM_G = list(LP.FAM_G)
 TINY = s5.SIZE in ("tiny", "dev")
 NET_KW = dict(epochs=3, seeds=(0,), batch=32) if TINY else dict(epochs=300, seeds=(0, 1), batch=256)
+CERT_O = os.environ.get("S5_CERT_O", "all")          # all | refs (see process)
 
 
 def log(*a):
@@ -486,13 +487,17 @@ def process(path):
     ch = stem.rsplit("__cert", 1)[1]
     layout = meta["layout"]
     res = {"stem": stem, "meta": meta, "q": int(Zt.shape[-1]), "layout": layout}
-    cert = certify(Zt, ZB, layout, int(meta.get("d", 0)), gshape=tuple(meta["gshape"]) if "gshape" in meta else None)
-    np.savez_compressed(f"{CERT}/{stem}.npz", names=np.array(cert["names"]), err=cert["err"], orac=cert["orac"],
-                        item_j=cert["item_j"], Vc=cert["Vc"], Vc_orac=cert["Vc_orac"], eff=cert["eff"])
-    np.savez_compressed(f"{OUTI}/{stem}.npz", names=np.array(cert["names"]), err=cert["err"].astype(np.float32),
-                        orac=cert["orac"].astype(np.float32), item_j=cert["item_j"], Vc=cert["Vc"].astype(np.float32),
-                        Vc_orac=cert["Vc_orac"].astype(np.float32), eff=cert["eff"])
-    res.update(ld=cert["ld"], n_eff=cert["n_eff"], net_info=cert["net_info"])
+    # S5_CERT_O=refs: the 12-number layout of a LEARNED Phi is not certified (family O costs about 10 CPU-minutes
+    # per half at pilot size); its 6-number sub-view (family S) and its agreement with the tracker still are
+    res["certified"] = not (CERT_O == "refs" and layout == "trk" and meta.get("kind") == "learned")
+    if res["certified"]:
+        cert = certify(Zt, ZB, layout, int(meta.get("d", 0)), gshape=tuple(meta["gshape"]) if "gshape" in meta else None)
+        np.savez_compressed(f"{CERT}/{stem}.npz", names=np.array(cert["names"]), err=cert["err"], orac=cert["orac"],
+                            item_j=cert["item_j"], Vc=cert["Vc"], Vc_orac=cert["Vc_orac"], eff=cert["eff"])
+        np.savez_compressed(f"{OUTI}/{stem}.npz", names=np.array(cert["names"]), err=cert["err"].astype(np.float32),
+                            orac=cert["orac"].astype(np.float32), item_j=cert["item_j"], Vc=cert["Vc"].astype(np.float32),
+                            Vc_orac=cert["Vc_orac"].astype(np.float32), eff=cert["eff"])
+        res.update(ld=cert["ld"], n_eff=cert["n_eff"], net_info=cert["net_info"])
     t_cert = time.time() - t1
     res["nontriv"] = nontriv(Zt)
     if "MM" in d.files:
@@ -545,7 +550,7 @@ def main():
         try:
             res = process(p)
             n += 1
-            log(f"{res['stem']} q={res['q']} certified in {res['seconds']['total']:.1f}s")
+            log(f"{res['stem']} q={res['q']} {'certified' if res['certified'] else 'agreement only'} in {res['seconds']['total']:.1f}s")
         except Exception as exc:
             log(f"{os.path.basename(p)} FAILED: {exc!r}")
             with open(os.path.join(s5.out_dir(), f"cert_errors_{WID}.txt"), "a") as f:

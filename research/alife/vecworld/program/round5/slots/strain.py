@@ -11,7 +11,11 @@ the held-out trajectories of the fit half (encoded from tick 0, as at certificat
 quarter of the steps) are frozen. Objective 'sup' (capacity control) imitates the tracker's segmentation: the loss
 is 2 - recall - purity of the soft masks against the tracker's label map (best slot per object, best object per
 slot, matter-weighted). '_ws' configs start from the 'sup' encoder (frozen for the first eighth of the steps while
-the new head warms up) and continue with their own objective.
+the new head warms up) and continue with their own objective. At every validation the training history also
+records the recall and purity of the soft masks against the tracker's label map on the held-out trajectories
+('val_trk_recall_purity'; a diagnostic for every objective, the loss itself for 'sup'). Time limits: no new config
+starts with less than S5_CFG_MIN_S seconds left before the training deadline, and one config's training loop stops
+after S5_CFG_MAX_S seconds ('cut_by_deadline' is then true for its Phi, as for a cut at the training deadline).
 Each frozen Phi is run as a transducer over the OTHER half's certification trajectories (301 ticks from a fresh
 start; the branches continue from the state at their test tick) -> $S5_WORK/lat/<phi>__cert<h>.npz with
   Zt (JC, T+1, q), ZB (JC, nT, R, TB, q)   the certified readout (q = 144 moment layout / 72 code)
@@ -74,6 +78,8 @@ elif s5.SIZE == "pilot":
 else:
     STEPS, CHUNK, BATCH, ENC_J, OV_STEPS = int(os.environ.get("S5_STEPS", 4000)), 100, 32, 4, int(os.environ.get("S5_OV_STEPS", 1500))
 LR, CLIP, COV_DECAY = 1e-3, 1.0, 0.95
+CFG_MIN_S = float(os.environ.get("S5_CFG_MIN_S", 0))          # no new config with less than this left before the training deadline
+CFG_MAX_S = float(os.environ.get("S5_CFG_MAX_S", "inf"))      # one config's training loop stops after this many seconds
 SNAP_T = (20, 24, 28) if s5.T < 120 else (100, 104, 108)
 
 
@@ -428,9 +434,15 @@ def sup_loss(attn, Mtok):
     """attn (B, L, N, K) soft masks, Mtok (B, L, N, 13) tracker matter per token: 2 - recall - purity, where recall
     is the matter of each tracked object held by its best slot and purity the matter of each slot that belongs to
     its best object (both matter-weighted over the frame; untracked matter ignored)."""
+    rec, pur = sup_parts(attn, Mtok)
+    return 2.0 - rec - pur
+
+
+def sup_parts(attn, Mtok):
+    """(recall, purity) of the soft masks against the tracker's label map, means over frames (see sup_loss)."""
     O = jnp.einsum("blnk,blns->blks", attn, Mtok[..., 1:])                               # (B, L, K, 12)
     tot = O.sum((-2, -1)) + 1e-6
-    return jnp.mean(2.0 - O.max(-2).sum(-1) / tot - O.max(-1).sum(-1) / tot)
+    return jnp.mean(O.max(-2).sum(-1) / tot), jnp.mean(O.max(-1).sum(-1) / tot)
 
 
 def trainer(cfg, obj, warm, dead=False):
@@ -500,13 +512,15 @@ def trainer(cfg, obj, warm, dead=False):
         # one validation trajectory at a time (lax.map): no token array of N_VAL x (T + 1) frames x replicas
         outs = jax.lax.map(lambda xx: SN.encode_window(enc, Pall["enc"], xx, enc["init_state"](Pall["enc"]), True)[0], x)
         zh, z0 = jnp.zeros((len(s5.HTR),)), jnp.zeros(())
+        # diagnostic for every objective: recall and purity of the soft masks against the tracker's label map
+        lab = hsel(MAP, hidx, lambda a: a[N_TR:J][:, v_sup])
+        agr = jnp.stack(sup_parts(outs["attn"][:, v_sup], tracker_tokens(x[:, v_sup], lab, cfg["P"])))
         if obj == "rec":
-            return SN.recon_loss(cfg, geom, Pall["head"], outs, x, v_rec), zh, z0
+            return SN.recon_loss(cfg, geom, Pall["head"], outs, x, v_rec), zh, z0, agr
         if obj == "sup":
-            lab = hsel(MAP, hidx, lambda a: a[N_TR:J][:, v_sup])
-            return sup_loss(outs["attn"][:, v_sup], tracker_tokens(x[:, v_sup], lab, cfg["P"])), zh, z0
+            return 2.0 - agr[0] - agr[1], zh, z0, agr
         l, per_h, _, pen = SN.closure_loss(obj, Pall["head"], SN.loss_vector(cfg, outs), cov, v_anch, 1.0, dead=dead)
-        return l, per_h, pen
+        return l, per_h, pen, agr
 
     nr, Ntok = len(REPS), geom["N"]
     fits(f"train tokens {obj}", (nr, BATCH, Lw, Ntok, max(SN.C, 2 * cfg["P"] ** 2)))
@@ -517,7 +531,7 @@ def trainer(cfg, obj, warm, dead=False):
         fits("val decoder hidden", (nr, (J - N_TR) * len(v_rec), K, Ntok, SN.HID))
     if obj == "sup":
         fits("train tracker tokens", (nr, BATCH, Lw, Ntok, K + 1))
-        fits("val tracker tokens", (nr, J - N_TR, int(v_sup.shape[0]), Ntok, K + 1))
+    fits("val tracker tokens", (nr, J - N_TR, int(v_sup.shape[0]), Ntok, K + 1))
     chunk_v = jax.jit(jax.vmap(chunk, in_axes=(0, None, None)))
     val_v = jax.jit(jax.vmap(val, in_axes=(0, 0, 0, None, None)))
     return chunk_v, val_v, enc, max_p, L, Lw
@@ -571,17 +585,17 @@ def train_config(cid, c):
     chunk_v, val_v, enc, max_p, L, Lw = trainer(cfg, obj, warm, dead)
     carry = init_carry(cfg, obj, cid, enc, max_p, L, enc_init)
     nr = len(REPS)
-    v, vh, vp = val_v(carry[0], carry[5], carry[9], Xd, MAPd)
+    v, vh, vp, va = val_v(carry[0], carry[5], carry[9], Xd, MAPd)
     v_init = np.asarray(v)                  # set / self: no running covariance yet, so this value is not comparable
     best = np.full(nr, np.inf)
     bestP, best_it = carry[0], [0] * nr
-    hist = [{"step": 0, "val": v_init.tolist(), "val_h": np.asarray(vh).tolist()}]
+    hist = [{"step": 0, "val": v_init.tolist(), "val_h": np.asarray(vh).tolist(), "val_trk_recall_purity": np.asarray(va).tolist()}]
     done, tch, bad = 0, [], 0
     while done < STEPS:
         tc = time.time()
         carry, (l, per_h, gn, ok) = chunk_v(carry, Xd, MAPd)
         done += CHUNK
-        v, vh, vp = val_v(carry[0], carry[5], carry[9], Xd, MAPd)
+        v, vh, vp, va = val_v(carry[0], carry[5], carry[9], Xd, MAPd)
         v = np.asarray(v)
         tch.append(time.time() - tc)
         l, ok = np.asarray(l), np.asarray(ok)
@@ -589,10 +603,11 @@ def train_config(cid, c):
         hist.append({"step": done, "train": np.nanmean(np.where(ok, l, np.nan), 1).tolist(),
                      "train_h": np.asarray(per_h).mean(1).tolist(), "gnorm": np.asarray(gn).mean(1).tolist(),
                      "val": v.tolist(), "val_h": np.asarray(vh).tolist(), "val_dead_pen": np.asarray(vp).tolist(),
-                     "skipped": int((~ok).sum())})
+                     "val_trk_recall_purity": np.asarray(va).tolist(), "skipped": int((~ok).sum())})
         if len(tch) <= 2 or done % (10 * CHUNK) == 0:
             log(f"{name}: step {done}, chunk {tch[-1]:.1f}s, train {np.round(hist[-1]['train'], 4).tolist()}, "
-                f"val {np.round(v, 4).tolist()}, skipped {hist[-1]['skipped']}")
+                f"val {np.round(v, 4).tolist()}, tracker recall+purity {np.round(np.asarray(va).sum(1), 3).tolist()}, "
+                f"skipped {hist[-1]['skipped']}")
         better = np.isfinite(v) & (v < best) & (done >= STEPS // 4)
         for r in np.flatnonzero(better):
             best_it[r] = done
@@ -601,6 +616,9 @@ def train_config(cid, c):
         best = np.where(better, v, best)
         if time.time() > s5.deadline("train"):
             log(f"{name}: training deadline reached at step {done}")
+            break
+        if done < STEPS and time.time() - t1 > CFG_MAX_S:
+            log(f"{name}: the config's own time limit ({CFG_MAX_S:.0f}s) reached at step {done}")
             break
     t_train = time.time() - t1
     # A replica without a checkpoint (training cut before STEPS // 4, or no finite validation value after it) must
@@ -673,7 +691,7 @@ def main():
     dl = s5.deadline("train")
     skipped = []
     for cid, c in enumerate(todo):
-        if time.time() > dl:
+        if time.time() + CFG_MIN_S > dl:
             skipped.append(c["name"])
             continue
         try:

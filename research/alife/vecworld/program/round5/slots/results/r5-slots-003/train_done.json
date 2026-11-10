@@ -1,0 +1,21 @@
+{
+ "skipped_by_deadline": [
+  "sam_sup",
+  "sam_rec",
+  "sam_set_ws",
+  "sac_set"
+ ],
+ "n_configs": 6,
+ "seconds": 1133.3550388813019,
+ "steps": 600,
+ "ov_steps": 300,
+ "batch": 32,
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "jax": "0.12.0.1",
+  "x64": false
+ }
+}

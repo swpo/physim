@@ -84,14 +84,19 @@ out["meta"]["problems"] = C.get("problems")
 
 
 def phi_row(phi, r):
-    fam = "O" if "O" in r["families"] else ("S" if "S" in r["families"] else "GL")
-    row = {"q": r["q"], "layout": r["layout"], "n_items": r["n_items"], "family": fam,
-           "ceiling": r4(r["families"][fam]["ceiling"]), "ceiling_se": r4(r["families"][fam]["se"]),
-           "best": r["families"][fam]["best"], "ceiling_G": r4(r["families"]["G"]["ceiling"]),
-           "I_avail_logdet": r4(r["logdet"].get("I_avail")), "I_capt_logdet": r4(r["logdet"].get(f"I_capt_{fam}")),
-           "I_avail_diag": r4(r.get("I_avail_diag")), "I_capt_diag": r4(r["families"][fam].get("I_capt_diag")),
-           "source": src("combined.json", f'phis."{phi}"')}
-    if "S" in r["families"] and fam != "S":
+    if not r["families"]:          # agreement only: the 12-number layout of a learned Phi was not certified
+        row = {"q": r["q"], "layout": r["layout"], "family": None, "ceiling": None,
+               "note": "not certified (S5_CERT_O=refs); ceilings on the 6-number sub-view " + phi + "@mp6",
+               "source": src("combined.json", f'phis."{phi}"')}
+    else:
+        fam = "O" if "O" in r["families"] else ("S" if "S" in r["families"] else "GL")
+        row = {"q": r["q"], "layout": r["layout"], "n_items": r["n_items"], "family": fam,
+               "ceiling": r4(r["families"][fam]["ceiling"]), "ceiling_se": r4(r["families"][fam]["se"]),
+               "best": r["families"][fam]["best"], "ceiling_G": r4(r["families"]["G"]["ceiling"]),
+               "I_avail_logdet": r4(r["logdet"].get("I_avail")), "I_capt_logdet": r4(r["logdet"].get(f"I_capt_{fam}")),
+               "I_avail_diag": r4(r.get("I_avail_diag")), "I_capt_diag": r4(r["families"][fam].get("I_capt_diag")),
+               "source": src("combined.json", f'phis."{phi}"')}
+    if "S" in r["families"] and row["family"] != "S":
         row["ceiling_S"] = r4(r["families"]["S"]["ceiling"])
     a = r.get("agreement")
     if a:
@@ -123,8 +128,8 @@ def seed_mean(phis, f):
 for name, c in C["configs"].items():
     ph = sorted(c["phis"])
     row = {"obj": c["obj"], "readout": c["readout"], "phis": ph, "n_seeds": len(ph),
-           "ceiling": seed_mean(ph, lambda r: r["ceiling"]), "ceiling_family": out["phis"][ph[0]]["family"],
-           "ceiling_seeds": [out["phis"][p]["ceiling"] for p in ph],
+           "ceiling": seed_mean(ph, lambda r: r.get("ceiling")), "ceiling_family": out["phis"][ph[0]].get("family"),
+           "ceiling_seeds": [out["phis"][p].get("ceiling") for p in ph],
            "ari": seed_mean(ph, lambda r: r["agreement"]["ari"]), "recall": seed_mean(ph, lambda r: r["agreement"]["recall"]),
            "precision": seed_mean(ph, lambda r: r["agreement"]["precision"]),
            "slots_per_object": seed_mean(ph, lambda r: r["agreement"]["slots_per_object"]),
@@ -143,6 +148,23 @@ for name, c in C["configs"].items():
     sub = [p + "@mp6" for p in ph if p + "@mp6" in out["phis"]]
     if sub:
         row["ceiling_mp6_S"] = seed_mean(sub, lambda r: r["ceiling"])
+        row["ceiling_mp6_S_se"] = seed_mean(sub, lambda r: r["ceiling_se"])
+        row["I_capt_diag_mp6_S"] = seed_mean(sub, lambda r: r["I_capt_diag"])
+        row["I_avail_diag_mp6"] = seed_mean(sub, lambda r: r["I_avail_diag"])
+    tp = os.path.join(R, JOB, "train", f"{name}.json")
+    if os.path.exists(tp):         # training record: steps, checkpoints, and the masks' agreement with the tracker along training
+        tj = json.load(open(tp))
+        hist = tj["hist"]
+        row["training"] = {"steps_done": hist[-1]["step"], "checkpoints": tj.get("checkpoints"),
+                           "cut_by_deadline": tj.get("cut_by_deadline"),
+                           "replicas": [f'{i["fit"]}{i["seed"]}' for i in tj["infos"]],
+                           "best_step": [i["best_step"] for i in tj["infos"]],
+                           "val_by_step": {str(h["step"]): r4(h["val"]) for h in hist if h["step"] % 500 == 0 or h is hist[-1]},
+                           "source": src(f"train/{name}.json", "hist, infos")}
+        if "val_trk_recall_purity" in hist[0]:
+            rp = lambda h: r4(np.asarray(h["val_trk_recall_purity"], float).sum(1))
+            row["training"]["val_tracker_recall_plus_purity_by_step"] = {
+                str(h["step"]): rp(h) for h in hist if h["step"] % 500 == 0 or h is hist[-1]}
     out["configs"][name] = row
 for nm, o in C.get("objval", {}).items():
     out["objective_values"][nm] = {k: {"mean": r4(np.mean(o[k]["val"])), "replicas": r4(o[k]["val"]),

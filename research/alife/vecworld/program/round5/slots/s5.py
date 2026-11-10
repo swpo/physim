@@ -197,6 +197,8 @@ def fixed_configs():
            ("km_s6w", "km", dict(sigma=6.0, P=4, prior=True)), ("grid", "grid", dict(sigma=3.0, P=4, prior=False))]
     if SIZE in ("pilot", "full"):
         out.append(("km_s6_p1", "km", dict(sigma=6.0, P=1, prior=False)))
+    if os.environ.get("S5_FIXED"):                 # a subset, e.g. "km_s6,km_s3,grid" (km_s6 is needed for the pairs)
+        out = [c for c in out if c[0] in os.environ["S5_FIXED"].split(",")]
     return out
 
 
