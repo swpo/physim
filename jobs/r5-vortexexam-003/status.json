@@ -21,7 +21,7 @@
   "cap_usd": 19.8,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.1594
+    "conservative_usd": 0.6721
   },
   "hard_deadline": "2026-11-10T04:50:42Z",
   "hard_deadline_epoch": 1794286242.1440163,
@@ -49,7 +49,7 @@
   ],
   "job_id": "r5-vortexexam-003",
   "max_estimate_usd": 16.37,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -162,5 +162,6 @@
   "run_deadline": "2026-11-10T04:03:26Z",
   "started_at": "2026-11-10T01:21:26Z",
   "state": "running",
-  "updated_at": "2026-11-10T01:21:26Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\nn compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.\n\nIf you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.\nE1110 01:21:45.363074    3030 slow_operation_alarm.cc:141] The operation took 1.248200337s\nConstant folding an instruction is taking > 1s:\n\n  %reduce.16 = (s32[256,72]{1,0}, s64[256,72]{1,0}) reduce(%broadcast_in_dim.105, %iota.61, %constant.628, %constant.629), dimensions={1}, to_apply=%region_32.96, metadata={op_name=\"jit(init)/vmap()/reduce\" stack_frame_id=508}\n\nThis isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.\n\nIf you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.\n01:21:58 [   0.3 min]   rate H=128 B=256: 165.8 member-ticks/s (first call 8s)\nE1110 01:22:01.994767    3251 slow_operation_alarm.cc:74] Constant folding an instruction is taking > 2s:\n\n  %reduce.16 = (s32[1024,72]{1,0}, s64[1024,72]{1,0}) reduce(%broadcast_in_dim.105, %iota.61, %constant.628, %constant.629), dimensions={1}, to_apply=%region_32.96, metadata={op_name=\"jit(init)/vmap()/reduce\" stack_frame_id=508}\n\nThis isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.\n\nIf you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.\nE1110 01:22:02.138019    3030 slow_operation_alarm.cc:141] The operation took 2.143346156s\nConstant folding an instruction is taking > 2s:\n\n  %reduce.16 = (s32[1024,72]{1,0}, s64[1024,72]{1,0}) reduce(%broadcast_in_dim.105, %iota.61, %constant.628, %constant.629), dimensions={1}, to_apply=%region_32.96, metadata={op_name=\"jit(init)/vmap()/reduce\" stack_frame_id=508}\n\nThis isn't necessarily a bug; constant-folding is inherently a trade-off between compilation time and speed at runtime. XLA has some guards that attempt to keep constant folding from taking too long, but fundamentally you'll always be able to come up with an input program that takes a long time.\n\nIf you'd like to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.\n01:22:33 [   0.9 min]   rate H=128 B=1024: 169.4 member-ticks/s (first call 18s)\n01:22:33 [   0.9 min] == preset small: 293504 member-ticks planned, est 36 min of sims at batch 1024; budget 94 min\n01:29:44 [   8.0 min]     episodes episodes: tick 130/404 x 544\n01:34:09 [  12.5 min]     episodes episodes: tick 210/404 x 544\n== out/progress.txt\n01:21:42 [   0.0 min] backend gpu devices ['cuda:0'] jax <ip> smoke=False H=128 theta=['eps', 'mut128', 'nu', 'e']\n01:21:58 [   0.3 min]   rate H=128 B=256: 165.8 member-ticks/s (first call 8s)\n01:22:33 [   0.9 min]   rate H=128 B=1024: 169.4 member-ticks/s (first call 18s)\n01:22:33 [   0.9 min] == preset small: 293504 member-ticks planned, est 36 min of sims at batch 1024; budget 94 min\n01:29:44 [   8.0 min]     episodes episodes: tick 130/404 x 544\n01:34:09 [  12.5 min]     episodes episodes: tick 210/404 x 544\n",
+  "updated_at": "2026-11-10T01:36:54Z"
 }
