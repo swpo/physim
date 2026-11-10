@@ -15,42 +15,26 @@ Updated 2026-11-10 05:13 UTC (instance 1; the study started at 03:40 UTC).
 - Thresholds in criteria.py fixed from that pilot before any GPU run (GPU screen uses prior seed 2026).
 - job.sh passed end to end on CPU at tiny size from a git archive of the request paths (twice, exit 0).
 
+## Job 1 DONE
+- r5-foundry-001: done, exit 0, H100 80GB (datacrunch), 05:10:56-05:21:36 UTC, billed $0.9246 (status.json:cost).
+  8192 draws screened in 376 s (74,700 member-ticks/s). Outputs fetched to work/r5-foundry-001 (scratch, not in git);
+  results/analysis.json, results/per_draw.json.gz, results/fig/ (posters, 6 GIFs, charts), results/jobs/r5-foundry-001/
+  committed. Types: uniform 65.2%, frozen 19.7%, active 15.1% (movers 3.2%); candidates (all four gates) 88 = 1.07%.
+  All 24 certified worlds pass every gate again. Gliders by the same estimator: mover, ceilings 0.99/0.96/0.83/0.47/0.20/0.02.
+
 ## Running
-- GPU request r5-foundry-001 (cap $13.50, max 1.75 h, ref 22134cfd9 = the rebased copy of the tested
-  fa6858c86): PUSHED 04:31 UTC (commit 91273504f). The queue held 2 running jobs and 1 received before it.
-  results/checks.json written (CPU checks all ok).
-
-- Mac received the request 04:33:32 UTC (status.json state `received`; two jobs running and r5-slots-006
-  ahead in the queue). A watcher (`bash watch.sh r5-foundry-001`) only lives as long as the instance: restart it.
-- Extra CPU tools written while waiting: `wind_probe.py` (paired wind commands at 50/200/800 nats; tested on
-  prior seed 1), `recheck_cpu.py` (screen certificates of chosen draws on CPU with the job's keys).
-
-- Also written and tested on CPU (tiny): `longrun.py` (windowed descriptors over 1500+ ticks), `make_summary.py`,
-  README draft, `select_enriched.py` + `FOUNDRY_INDEX_FILE` mode of job.py + `analyze.py --sel` (a possible
-  second job: prospective test that weight statistics alone enrich the draws; index mode passed job.sh at
-  tiny size with FOUNDRY_GLIDERS=0, exit 0). Decide on job 2 only after job 1's results (budget left:
-  25 - billed(job 1); cap of job 2 = 6.69 x (max_hours + 0.25) + 0.10).
-
-- 05:04 UTC: r5-foundry-001 is `queued` (accepted for an H200 at $6.69/h, at most $13.38; no offer in stock
-  right now, the runner retries; r5-slots-006 is queued too). The Mac's review (results of reading
-  origin/gpu-jobs:jobs/r5-foundry-001/review.md): fine to run, 3 minor points, all fixed in job.py /
-  analyze.py after the pinned ref (time guard and early job_state for the cert-size gliders run, OOM
-  fallback in certification, fill-in candidates restricted to structured worlds, steady rate per chunk).
-  They only matter for a second job.
-- results/recheck_cpu_first8.json: draws 0-7 of prior seed 2026 on CPU at screen size (7 uniform, 1 frozen),
-  to compare with the GPU's types for the same draws.
-
-- 05:10:56 UTC: r5-foundry-001 RUNNING on an H100 80GB (datacrunch, $5.02/h); run deadline 06:55:56 UTC.
-  Expected end about 06:00 UTC.
+- GPU request r5-foundry-002 (cap $10.20, max 1.25 h, ref ee9648d4e): PUSHED 05:34 UTC. Arms: enrich (prospective
+  test of the weights-only predictor: 3072 selected + 1024 control draws of prior seed 2027; predictions in sel_r2.json),
+  late (2000 draws with a 2000-tick burn-in), cert (the 88 candidates at certification size), sigma010, sigma100.
+  Watcher: `bash watch.sh r5-foundry-002`.
 
 ## Next step
-1. (done) final tiny CPU test passed (exit 0, 433 s); request pushed.
-2. Watch: `bash watch.sh r5-foundry-001` in the background (exits at a final state). Read
-   origin/gpu-jobs:jobs/r5-foundry-001/review.md when it appears.
-3. When done: `bash fetch.sh r5-foundry-001`; `python -B analyze.py work/r5-foundry-001/out`;
-   then `python -B figs.py work/r5-foundry-001/out` (posters, GIFs, charts), results/summary.json
-   (make_summary.py, to write), README.md,
-   report. If the job failed: read logs under work/r5-foundry-001/logs, fix, CPU test, resubmit as
-   r5-foundry-002 (caps in total <= $25).
+1. CPU follow-ups on top candidates of job 1 (each a minute or two): `python -B wind_probe.py --draws 1672,4470,262,60`,
+   `python -B longrun.py --draws 1672,4470,262,60`, `python -B recheck_cpu.py --draws 1672,4470,262,60`.
+2. When job 2 is done: `bash fetch.sh r5-foundry-002`; `python -B analyze2.py work/r5-foundry-002/out`.
+   If it failed: logs under work/r5-foundry-002/logs; fix, CPU test (FOUNDRY_SIZE=tiny bash job2.sh from a git archive),
+   resubmit as r5-foundry-003 (caps in total <= $25; billed so far $0.92).
+3. `python -B make_summary.py` (needs results/interpretation.json, to write by hand from the analyses), README.md
+   (replace the DRAFT status with the results), report; remove the worktree and scratch.
 
-Budget: $25 total; nothing spent yet.
+Budget: $25 total; billed $0.92 (job 1); job 2 cap $10.20.

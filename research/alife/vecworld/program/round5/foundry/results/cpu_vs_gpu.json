@@ -1,0 +1,89 @@
+{
+ "what": "CPU (this container) against the H100 of r5-foundry-001: the screen's descriptors of the same draws with the same keys (float32-stored values of float64 runs)",
+ "recheck_cpu.json": {
+  "worlds": [
+   {
+    "draw": 1672,
+    "cpu_type": "active:movers",
+    "gpu_type": "active:movers",
+    "max_rel_diff": 0.0
+   },
+   {
+    "draw": 4470,
+    "cpu_type": "active:movers",
+    "gpu_type": "active:movers",
+    "max_rel_diff": 7.910769682291623e-08
+   },
+   {
+    "draw": 262,
+    "cpu_type": "active:movers",
+    "gpu_type": "active:movers",
+    "max_rel_diff": 9.023161295645307e-05
+   },
+   {
+    "draw": 60,
+    "cpu_type": "active:movers",
+    "gpu_type": "active:movers",
+    "max_rel_diff": 0.008090307994020827
+   }
+  ],
+  "max_rel_diff": 0.008090307994020827,
+  "values_identical": 194,
+  "values_compared": 304
+ },
+ "recheck_cpu_first8.json": {
+  "worlds": [
+   {
+    "draw": 0,
+    "cpu_type": "uniform",
+    "gpu_type": "uniform",
+    "max_rel_diff": 0.0
+   },
+   {
+    "draw": 1,
+    "cpu_type": "frozen",
+    "gpu_type": "frozen",
+    "max_rel_diff": 0.0
+   },
+   {
+    "draw": 2,
+    "cpu_type": "uniform",
+    "gpu_type": "uniform",
+    "max_rel_diff": 0.0
+   },
+   {
+    "draw": 3,
+    "cpu_type": "uniform",
+    "gpu_type": "uniform",
+    "max_rel_diff": 0.0
+   },
+   {
+    "draw": 4,
+    "cpu_type": "uniform",
+    "gpu_type": "uniform",
+    "max_rel_diff": 0.0
+   },
+   {
+    "draw": 5,
+    "cpu_type": "uniform",
+    "gpu_type": "uniform",
+    "max_rel_diff": 0.0
+   },
+   {
+    "draw": 6,
+    "cpu_type": "uniform",
+    "gpu_type": "uniform",
+    "max_rel_diff": 0.0
+   },
+   {
+    "draw": 7,
+    "cpu_type": "uniform",
+    "gpu_type": "uniform",
+    "max_rel_diff": 0.0
+   }
+  ],
+  "max_rel_diff": 0.0,
+  "values_identical": 608,
+  "values_compared": 608
+ }
+}
