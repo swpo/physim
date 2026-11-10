@@ -256,3 +256,107 @@ claim("X2 (learned against the most closed hand design of at least the same effe
        "m8": pair(M_, "N8_clos_c1", "hand_sfax_c1", 16), "zm8": pz(M_, "N8_clos_c1", "hand_sfax_c1", 16),
        "ml": pair(M_, "L0_clos_c1", "hand_sfax_c1", 16), "zml": pz(M_, "L0_clos_c1", "hand_sfax_c1", 16)},
       {k: 1 for k in ("zg", "zg0", "zv", "zv16", "zm", "zm8", "zml")})
+# ------------------------------------------------------------------ follow-up job r5-bias2-007: closure on spatially
+# whitened latents (encoders Lw / Nw = L / N with the closure loss computed on latents whitened over all 64 blocks; the
+# frozen Phi keeps per-channel whitening). Worlds "<world>_w" = that job's run of <world> (fresh simulations, same
+# designer seeds, an A100 instead of the H200), with the per-channel closure configs and all hand designs again.
+if "vortex_w" in JOBS:
+    VW, MW, GW = "vortex_w", "membrane_w", "gliders_w"
+    claim("W1 (vortex, closure on spatially whitened latents finds block vorticity). Per-block R2 both ways with block vorticity "
+          "{a_l} (linear block-only), {a_n} (nonlinear); variance shares of the linear latent: vorticity {s_om}, Y {sY}, a {sa}, b {sb}; "
+          "its window is flat on vorticity (flat share {dc}); seed agreement {sd_l}, {sd_n}; effective dimension {pr_l}, {pr_n} "
+          "(block vorticity {pr_om}; the per-channel closure latent trained on the same data {pr_ref}); box-mean share {bm} "
+          "(per-channel {bm_ref}); R2 with the closed-form slow feature {sfa} (per-channel {sfa_ref}). With the 8-px halo the "
+          "latent is the tent-windowed vorticity: {t_l} (linear), {t_n} (nonlinear).",
+          {"a_l": agree(VW, "Lw0_clos_c1", "om_h0"), "a_n": agree(VW, "Nw0_clos_c1", "om_h0"), "s_om": share(VW, "Lw0_clos_c1", "om"),
+           "sY": share(VW, "Lw0_clos_c1", "Y"), "sa": share(VW, "Lw0_clos_c1", "a"), "sb": share(VW, "Lw0_clos_c1", "b"),
+           "dc": ext(VW, "windows", "Lw0_clos_c1", "fields", "om", "dc"), "sd_l": seed(VW, "Lw0_clos_c1"), "sd_n": seed(VW, "Nw0_clos_c1"),
+           "pr_l": pr(VW, "Lw0_clos_c1"), "pr_n": pr(VW, "Nw0_clos_c1"), "pr_om": pr(VW, "hand_om_h0"), "pr_ref": pr(VW, "L0_clos_c1"),
+           "bm": bms(VW, "Lw0_clos_c1"), "bm_ref": bms(VW, "L0_clos_c1"), "sfa": agree(VW, "Lw0_clos_c1", "sfa_c1"),
+           "sfa_ref": agree(VW, "L0_clos_c1", "sfa_c1"), "t_l": agree(VW, "Lw8_clos_c1", "om_h8"), "t_n": agree(VW, "Nw8_clos_c1", "om_h8")},
+          {"pr_l": 1, "pr_n": 1, "pr_om": 1, "pr_ref": 1})
+    claim("W2 (vortex, its closure). Paired with the hand block vorticity the whitened-closure latents are a little more closed at short "
+          "horizons and a little less at h = 16: linear {l4} (z {zl4}) at h = 4 and {l16} (z {zl16}) at h = 16; nonlinear {n4} "
+          "(z {zn4}), {n8} (z {zn8}) at h = 8, {n16} (z {zn16}). They are less closed than the per-channel closure latents trained "
+          "on the same data (linear {r8} at h = 8, z {zr8}; nonlinear {rn16} at h = 16, z {zrn16}), which keep {pr_ref} and "
+          "{pr_refn} effective dimensions against {pr_l} and {pr_n}. With the halo: {h16} (z {zh16}) against the 8-px vorticity tent "
+          "and {h4} (z {zh4}) against the 4-px tent at h = 16 (nonlinear). Predictable content at h = 1: I_capt {i_l} and {i_n} nats "
+          "against {i_om} for block vorticity and {i_ref} for the per-channel latent.",
+          {"l4": pair(VW, "Lw0_clos_c1", "hand_om_h0", 4), "zl4": pz(VW, "Lw0_clos_c1", "hand_om_h0", 4),
+           "l16": pair(VW, "Lw0_clos_c1", "hand_om_h0", 16), "zl16": pz(VW, "Lw0_clos_c1", "hand_om_h0", 16),
+           "n4": pair(VW, "Nw0_clos_c1", "hand_om_h0", 4), "zn4": pz(VW, "Nw0_clos_c1", "hand_om_h0", 4),
+           "n8": pair(VW, "Nw0_clos_c1", "hand_om_h0", 8), "zn8": pz(VW, "Nw0_clos_c1", "hand_om_h0", 8),
+           "n16": pair(VW, "Nw0_clos_c1", "hand_om_h0", 16), "zn16": pz(VW, "Nw0_clos_c1", "hand_om_h0", 16),
+           "r8": pair(VW, "Lw0_clos_c1", "L0_clos_c1", 8), "zr8": pz(VW, "Lw0_clos_c1", "L0_clos_c1", 8),
+           "rn16": pair(VW, "Nw0_clos_c1", "N0_clos_c1", 16), "zrn16": pz(VW, "Nw0_clos_c1", "N0_clos_c1", 16),
+           "pr_ref": pr(VW, "L0_clos_c1"), "pr_refn": pr(VW, "N0_clos_c1"), "pr_l": pr(VW, "Lw0_clos_c1"), "pr_n": pr(VW, "Nw0_clos_c1"),
+           "h16": pair(VW, "Nw8_clos_c1", "hand_om_h8", 16), "zh16": pz(VW, "Nw8_clos_c1", "hand_om_h8", 16),
+           "h4": pair(VW, "Nw8_clos_c1", "hand_om_h4", 16), "zh4": pz(VW, "Nw8_clos_c1", "hand_om_h4", 16),
+           "i_l": cfg(VW, "Lw0_clos_c1", "I_capt", 0), "i_n": cfg(VW, "Nw0_clos_c1", "I_capt", 0),
+           "i_om": hand(VW, "om_h0", "logdet", "I_capt", 0), "i_ref": cfg(VW, "L0_clos_c1", "I_capt", 0)},
+          {k: 1 for k in ("zl4", "zl16", "zn4", "zn8", "zn16", "zr8", "zrn16", "pr_ref", "pr_refn", "pr_l", "pr_n", "zh16", "zh4")}
+          | {k: 0 for k in ("i_l", "i_n", "i_om", "i_ref")})
+    claim("W3 (membrane, closure on spatially whitened latents). Nonlinear block-only: a reproducible variable (seed agreement {s_n} "
+          "against {s_ref} for the per-channel closure latent on the same data) of effective dimension {pr_n}; it is no single hand "
+          "block mean (best: phi K, R2 {a_pk}; closed-form extended slow feature {a_sfax}); ceiling at h = 16 {c_n}, {d_sfax} "
+          "(z {zd_sfax}) above the closed-form extended slow feature and {d_K} (z {zd_K}) above block K. Linear block-only: again "
+          "phi - K + L (variance shares phi {s_phi}, K {s_K}, L {s_L}), now partly a block mean (window: flat share {dc}, gradient "
+          "share {dip}; K opposite to phi in every replica, cosines {cK}); not reproducible (seed agreement {s_l}); above block K by "
+          "{l8} at h = 8 (z {zl8}) and {l16} at h = 16 (z {zl16}). With the halo, nonlinear: seed agreement {s_n8}, {d8_sfax} "
+          "(z {zd8_sfax}) above the closed-form extended slow feature at h = 16.",
+          {"s_n": seed(MW, "Nw0_clos_c1"), "s_ref": seed(MW, "N0_clos_c1"), "pr_n": pr(MW, "Nw0_clos_c1"),
+           "a_pk": agree(MW, "Nw0_clos_c1", "phiK_h0"), "a_sfax": agree(MW, "Nw0_clos_c1", "sfax_c1"), "c_n": ceil(MW, "Nw0_clos_c1", 16),
+           "d_sfax": pair(MW, "Nw0_clos_c1", "hand_sfax_c1", 16), "zd_sfax": pz(MW, "Nw0_clos_c1", "hand_sfax_c1", 16),
+           "d_K": pair(MW, "Nw0_clos_c1", "hand_K_h0", 16), "zd_K": pz(MW, "Nw0_clos_c1", "hand_K_h0", 16),
+           "s_phi": share(MW, "Lw0_clos_c1", "phi"), "s_K": share(MW, "Lw0_clos_c1", "K"), "s_L": share(MW, "Lw0_clos_c1", "L"),
+           "dc": ext(MW, "windows", "Lw0_clos_c1", "all_fields", "dc"), "dip": ext(MW, "windows", "Lw0_clos_c1", "all_fields", "dipole"),
+           "cK": ext(MW, "windows", "Lw0_clos_c1", "dipole_cos_with_first_field", "K"), "s_l": seed(MW, "Lw0_clos_c1"),
+           "l8": pair(MW, "Lw0_clos_c1", "hand_K_h0", 8), "zl8": pz(MW, "Lw0_clos_c1", "hand_K_h0", 8),
+           "l16": pair(MW, "Lw0_clos_c1", "hand_K_h0", 16), "zl16": pz(MW, "Lw0_clos_c1", "hand_K_h0", 16),
+           "s_n8": seed(MW, "Nw8_clos_c1"), "d8_sfax": pair(MW, "Nw8_clos_c1", "hand_sfax_c1", 16),
+           "zd8_sfax": pz(MW, "Nw8_clos_c1", "hand_sfax_c1", 16)},
+          {"pr_n": 1, "zd_sfax": 1, "zd_K": 1, "zl8": 1, "zl16": 1, "zd8_sfax": 1})
+    claim("W4 (gliders, closure on spatially whitened latents). Block-only: block mass, R2 {a_l} (linear; window flat share {dc}; seed "
+          "agreement {s_l}) and {a_n} (nonlinear; seed agreement {s_n}); paired with block mass {l4} (z {zl4}) and {n4} (z {zn4}) at "
+          "h = 4, {l16} (z {zl16}) and {n16} (z {zn16}) at h = 16. With the 8-px halo the spatial whitening works against the taper: "
+          "agreement with the 8-px mass tent {t_l} (per-channel closure on the same data {t_ref}), seed agreement {s_l8} ({s_ref8}), "
+          "effective dimension {pr_l8} ({pr_ref8}), and {d8} (z {zd8}) below the 8-px mass tent at h = 16.",
+          {"a_l": agree(GW, "Lw0_clos_c1", "mass_h0"), "dc": ext(GW, "windows", "Lw0_clos_c1", "all_fields", "dc"),
+           "s_l": seed(GW, "Lw0_clos_c1"), "a_n": agree(GW, "Nw0_clos_c1", "mass_h0"), "s_n": seed(GW, "Nw0_clos_c1"),
+           "l4": pair(GW, "Lw0_clos_c1", "hand_mass_h0", 4), "zl4": pz(GW, "Lw0_clos_c1", "hand_mass_h0", 4),
+           "n4": pair(GW, "Nw0_clos_c1", "hand_mass_h0", 4), "zn4": pz(GW, "Nw0_clos_c1", "hand_mass_h0", 4),
+           "l16": pair(GW, "Lw0_clos_c1", "hand_mass_h0", 16), "zl16": pz(GW, "Lw0_clos_c1", "hand_mass_h0", 16),
+           "n16": pair(GW, "Nw0_clos_c1", "hand_mass_h0", 16), "zn16": pz(GW, "Nw0_clos_c1", "hand_mass_h0", 16),
+           "t_l": agree(GW, "Lw8_clos_c1", "mass_h8"), "t_ref": agree(GW, "L8_clos_c1", "mass_h8"), "s_l8": seed(GW, "Lw8_clos_c1"),
+           "s_ref8": seed(GW, "L8_clos_c1"), "pr_l8": pr(GW, "Lw8_clos_c1"), "pr_ref8": pr(GW, "L8_clos_c1"),
+           "d8": pair(GW, "Lw8_clos_c1", "hand_mass_h8", 16), "zd8": pz(GW, "Lw8_clos_c1", "hand_mass_h8", 16)},
+          {"zl4": 1, "zn4": 1, "zl16": 1, "zn16": 1, "pr_l8": 1, "pr_ref8": 1, "zd8": 1})
+    claim("W5 (replication: the per-channel closure configs again, on fresh simulations with the same designer seeds, an A100 instead "
+          "of the H200; first run in brackets). Vortex, linear closure: ceiling at h = 16 {v_c} ({v_c0}), effective dimension {v_pr} "
+          "({v_pr0}), R2 with the closed-form slow feature {v_sfa} ({v_sfa0}), paired with block vorticity {v_d} ({v_d0}). Vortex, "
+          "nonlinear closure: ceiling at h = 16 {vn_c} ({vn_c0}), effective dimension {vn_pr} ({vn_pr0}). Membrane, nonlinear "
+          "closure minus block K at h = 16: {m_d} ({m_d0}); seed agreement {m_s} ({m_s0}). Gliders, linear closure with block mass: "
+          "R2 {g_a} ({g_a0}). The linear results reproduce to within 0.001 (effective dimension 0.1). The nonlinear closure "
+          "ceiling of the vortex world differs between the runs by more than its seeds differ within the first run ({vn_sd}); the "
+          "membrane difference reproduces although the latent itself does not.",
+          {"v_c": ceil(VW, "L0_clos_c1", 16), "v_c0": ceil(V_, "L0_clos_c1", 16), "v_pr": pr(VW, "L0_clos_c1"), "v_pr0": pr(V_, "L0_clos_c1"),
+           "v_sfa": agree(VW, "L0_clos_c1", "sfa_c1"), "v_sfa0": agree(V_, "L0_clos_c1", "sfa_c1"),
+           "v_d": pair(VW, "L0_clos_c1", "hand_om_h0", 16), "v_d0": pair(V_, "L0_clos_c1", "hand_om_h0", 16),
+           "vn_c": ceil(VW, "N0_clos_c1", 16), "vn_c0": ceil(V_, "N0_clos_c1", 16), "vn_pr": pr(VW, "N0_clos_c1"), "vn_pr0": pr(V_, "N0_clos_c1"),
+           "vn_sd": cfg(V_, "N0_clos_c1", "ceiling_G_seed_diff", 4),
+           "m_d": pair(MW, "N0_clos_c1", "hand_K_h0", 16), "m_d0": pair(M_, "N0_clos_c1", "hand_K_h0", 16),
+           "m_s": seed(MW, "N0_clos_c1"), "m_s0": seed(M_, "N0_clos_c1"),
+           "g_a": agree(GW, "L0_clos_c1", "mass_h0"), "g_a0": agree(G_, "L0_clos_c1", "mass_h0")},
+          {"v_pr": 1, "v_pr0": 1, "vn_pr": 1, "vn_pr0": 1})
+    claim("X3 (the map with the collapse closed off: block-only closure on spatially whitened latents, one number per block). Gliders: "
+          "block mass, R2 {g} (seed agreement {gs}). Vortex: block vorticity, R2 {v} linear and {vn} nonlinear (seed agreement {vs}, "
+          "{vns}). Membrane: nonlinear, a reproducible variable (seed agreement {ms}) that is no hand block mean (best R2 {ma}) and "
+          "is {md} (z {zmd}) more closed at h = 16 than the most closed hand design; linear, not reproducible ({mls}). So the closure "
+          "bias finds the block density of the transported field in both theories that have one (mass, conserved; vorticity, "
+          "advected but fed and dissipated), provided the loss weights the spatial modes equally; weighted by variance it follows "
+          "the largest slow mode instead (X1).",
+          {"g": agree(GW, "Lw0_clos_c1", "mass_h0"), "gs": seed(GW, "Lw0_clos_c1"), "v": agree(VW, "Lw0_clos_c1", "om_h0"),
+           "vn": agree(VW, "Nw0_clos_c1", "om_h0"), "vs": seed(VW, "Lw0_clos_c1"), "vns": seed(VW, "Nw0_clos_c1"),
+           "ms": seed(MW, "Nw0_clos_c1"), "ma": agree(MW, "Nw0_clos_c1", "phiK_h0"),
+           "md": pair(MW, "Nw0_clos_c1", "hand_sfax_c1", 16), "zmd": pz(MW, "Nw0_clos_c1", "hand_sfax_c1", 16),
+           "mls": seed(MW, "Lw0_clos_c1")}, {"zmd": 1})

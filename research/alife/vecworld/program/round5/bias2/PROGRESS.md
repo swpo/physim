@@ -19,35 +19,12 @@ Updated 2026-11-10 01:16 UTC (instance 4, after the restart at about 01:12).
 - cclaims.py + cinterp.py -> results/interpretation.json (21 claims); csummary.py -> results/summary.json; README.md.
   All pushed. The study is reportable as it stands from this point.
 
-## Follow-up GPU job r5-bias2-006 (decided 01:30 UTC; why: results/job_history.json and the request's notes)
-- Question: in the vortex world the closure latents collapsed onto a box-scale mode (effective dimension 2-8) because the
-  closure loss normalises pooled variance per channel. New arm Lw / Nw (B5_ARMS=w): closure loss on latents whitened over
-  all 64 blocks. Does closure then find vorticity (vortex), cell material (membrane), mass (gliders)?
-- Code: commit affd4ecb2 (c5.configs under B5_ARMS=w, cnets.train_glob_white, job.sh review fixes).
-- Steps: (1) tiny CPU test of job.sh from a git archive of the requested paths at affd4ecb2 with the request's exact
-  env (scratch t6; redo if a restart lost it); (2) commit + push ../../gpu/requests/r5-bias2-006.json (cap $12.4,
-  max_hours 1.6; drafted in the worktree); (3) watcher: loop fetching origin/gpu-jobs every 60 s until
-  jobs/r5-bias2-006/status.json is done/failed/timeout/cancelled/rejected/infra_error; (4) cfetch.sh r5-bias2-006
-  vortex membrane gliders into results/w/ (NOT over results/<world>/: use RESULTS dir results_w, see cfetch.sh), canalyze,
-  cpair, add claims W1.. to cclaims.py, csummary, README, job_history.json; (5) commit, push, remove worktree, report.
-- STATE (01:40 UTC): step 1 passed (exit 0, 403 s). Step 2 done: request r5-bias2-006 pushed with ref pinned to
-  affd4ecb2. Now at step 3 (watching). Never resubmit id 006. If it failed: read logs, fix, CPU-test, resubmit as 007
-  only if the remaining cap allows (spent $8.31 + 006's bill; study cap $35).
+## Follow-up GPU job (decided 01:30 UTC; details in results/job_history.json)
+- r5-bias2-006: infra_error before a pod existed ($0). r5-bias2-007 (same ref affd4ecb2): done, exit 0, A100 40GB,
+  $2.3364 billed, 02:25-03:36 UTC; all configs trained, 132 / 114 / 92 halves certified.
+- Fetched into results/<world>_w (cfetch.sh with B5_SUFFIX=_w), analysed (canalyze, cextra, cpairs_run.sh), claims
+  W1-W5 and X3 added to cclaims.py, summary.json and README rebuilt (27 claims). Billed in total $10.6435 of $35.
 
-- 01:47 UTC: r5-bias2-006 accepted (H100 80GB, lambdalabs, $4.29/h, at most $7.94), provisioning. Review read
-  (fine to run; 2 info points, nothing to change). Watcher = scratch watch6.sh (re-create: loop `git fetch origin gpu-jobs`
-  every 60 s until jobs/r5-bias2-006/status.json is terminal). After it ends: run the steps of scratch post6.sh =
-  `B5_SUFFIX=_w bash cfetch.sh r5-bias2-006 vortex membrane gliders`; unpack items/latsub/windows of 006 into the scratch
-  fetch folder; `canalyze.py results gliders vortex membrane gliders_w vortex_w membrane_w`; cextra.py with
-  `<world>_w=r5-bias2-006` added; `bash cpairs_run.sh FETCH`; then add claims W1.. to cclaims.py (worlds "vortex_w" etc.),
-  cinterp.py and csummary.py with the three `_w` worlds added, README, job_history.json (final state and bill of 006).
-
-- 01:52 UTC: r5-bias2-006 ended in infra_error before a pod existed (lambdalabs HTTP 503 for the listed H100), $0.
-  Resubmitted unchanged as r5-bias2-007 (GPU types reordered) at about 01:54 UTC. Watch 007 (same steps, job id 007
-  everywhere: cfetch, post-processing, `<world>_w=r5-bias2-007`, cpairs_run.sh paths). Never resubmit ids 006/007.
-
-- 02:25 UTC: r5-bias2-007 RUNNING on an A100 40GB (lambdalabs, $1.99/h) after two failed pod creations; kill time
-  about 04:01 UTC; expected to end 03:15-03:45 UTC. Nothing else is pending.
-
-## Next if the follow-up is abandoned
-Report from results/summary.json as it is; say the follow-up was not run and why.
+## State: FINISHED (10 Nov 2026 03:45 UTC)
+Everything is pushed. Nothing is running or queued. Remaining for a restarted instance: nothing but the report
+(from results/summary.json `claims` and README.md) and removing the worktree /home/user/wt/bias2.

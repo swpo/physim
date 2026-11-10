@@ -108,6 +108,11 @@ out["method_changes_after_round4_checker"] = [
     "every learned latent is compared explicitly with the tent-windowed (8-px halo) version of each hand feature as well as with its block mean",
     "comparisons at matched effective dimension: interpolation along each hand family (`matched_effective_dimension`), the most closed hand design with at least the learned latent's effective dimension (`dominance`), and paired trajectory bootstraps against the hand windows on both sides (`paired_bootstrap`)",
     "the dense controls U (64 c x 64 c whitening) and Uc (per-channel whitening) have exactly the training settings of the local encoders (3,000 steps, batch 128, the same learning-rate schedule, no weight decay)"]
+out["follow_up_arm"] = ("r5-bias2-007 (worlds '<world>_w'): encoders Lw / Nw are the local encoders L / N trained with the closure loss on latents "
+                       "whitened over all 64 blocks of a frame (the U control's whitening, so every spatial mode has equal weight in the loss); "
+                       "the frozen Phi keeps per-channel whitening and is judged like every other local latent. The job re-simulated the three "
+                       "worlds with the same designer seeds on another GPU type and also re-ran the per-channel closure configs and all hand "
+                       "designs, so comparisons within '<world>_w' are paired on the same items.")
 out["caveats"] = [
     "one world seed (0) and public parameters per world; the two designer seeds are the cross-fit halves; 2 training seeds per config",
     "the hand designs of the vortex and membrane worlds are this study's choices (block means of the fields and of simple nonlinear features at 4 windows, 4-5 multi-channel designs, closed-form SFA / PCA); object views (vortex list, cell list) were not rasterised to blocks, so 'no hand design is as closed' is relative to that list",

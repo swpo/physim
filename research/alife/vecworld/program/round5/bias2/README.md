@@ -32,9 +32,13 @@ Hand designs: block means and 4 / 8 / 16-px tents of each field and of |om|, om^
 vorticity (vortex); of phi, S, K, L, wall 4 phi (1 - phi), phi K, cell area (membrane); of mass, c0, c1, c0 - c1,
 mass^2 (gliders); 1 to 5 multi-channel designs; closed-form slow features (SFA) and PCA fitted on the other half.
 
-## Results (GPU jobs r5-bias2-004 and r5-bias2-005, nebius H200, 0.70 + 0.54 pod-hours, $4.68 + $3.63 = $8.31 billed)
+## Results
 
-All configs trained, none skipped: 34 (vortex), 34 (membrane), 19 (gliders); 228 / 210 / 128 half-certifications.
+GPU jobs: r5-bias2-004 (membrane, gliders) and r5-bias2-005 (vortex) on a nebius H200, 0.70 + 0.54 pod-hours,
+$4.68 + $3.63; follow-up r5-bias2-007 (three worlds) on a lambdalabs A100 40GB, 1.17 pod-hours, $2.34. Billed in total
+$10.64 of the $35 cap. All configs trained, none skipped by a deadline: 34 / 34 / 19 (grid), 10 per world (follow-up).
+
+### The grid (closure loss on per-channel whitened latents)
 
 What a linear block-only closure encoder (one number per block) finds:
 
@@ -44,12 +48,12 @@ What a linear block-only closure encoder (one number per block) finds:
 | vortex | nothing | the block reading of a slow box-scale fuel and label mode; no vorticity | R2 0.967 from the four block means, weights on Y, a, b (0.98, 0.22, -0.20), vorticity 0.000; R2 0.948 with closed-form SFA; seed agreement 0.999; effective dimension 7 of 64; box mean 36% of its variance, and that box mean is the box-mean label b / fuel (R2 0.97 each, 0.999 jointly) |
 | membrane | nothing | a within-block spatial gradient of phi - K + L; not a block mean | R2 0.044 from the four block means; window: flat share 0.015, gradient share 0.45, K gradient opposite to phi's in 4 of 4 replicas; direction arbitrary, so seed agreement 0.59 with equal ceilings |
 
-- "Closure finds mass" is specific to the mass-conserving theory. Where nothing is conserved the closure objective
-  takes the most predictable variance it can reach, whatever its kind: a box-scale composition mode in the vortex
-  world (the nonlinear encoders push further: effective dimension 2-4, box mean 50-71% of the variance; the dense
-  encoder with per-channel whitening collapses onto one global number with ceiling 0.94 at h = 16, which is the
-  box-mean label b at R2 0.89), a sub-block geometric moment in the membrane world. In gliders the same collapse finds
-  nothing (ceiling 0.004): the conserved total is constant.
+- With this loss, "closure finds mass" holds only in the mass-conserving theory. The loss rewards predicted variance
+  per unit of pooled variance, so where nothing is conserved it takes the largest slow mode it can reach: a box-scale
+  composition mode in the vortex world (the nonlinear encoders push further: effective dimension 2-4, box mean 50-71%
+  of the variance; the dense encoder with per-channel whitening collapses onto one global number with ceiling 0.94
+  at h = 16, which is the box-mean label b at R2 0.89), a sub-block geometric moment in the membrane world. In gliders
+  the same collapse finds nothing (ceiling 0.004): the conserved total is constant.
 - Vorticity, the most closed hand block mean of the vortex world (ceiling 0.34 at h = 16), is not chosen at c = 1; at
   c = 2 linear closure holds it as the second variable (R2 0.93).
 - Learned against hand designs of at least the same effective dimension (h = 16): gliders, small gains (+0.007 to
@@ -68,6 +72,33 @@ What a linear block-only closure encoder (one number per block) finds:
 - Seed agreement of closure with a global head: gliders 0.987-1.000; vortex 0.999 linear block-only, 0.52 linear with
   the halo, 0.49-0.88 nonlinear; membrane 0.12-0.59.
 
+### The follow-up (closure loss on spatially whitened latents, `B5_ARMS=w`, encoders Lw / Nw)
+
+Why: the vortex result above is a collapse (effective dimension 2-8) allowed by the loss's normalisation, so it could
+not say whether closure prefers a transported density. Lw / Nw are the same local encoders with the closure loss
+computed on latents whitened over all 64 blocks (every spatial mode has equal weight); the frozen Phi keeps per-channel
+whitening. The job re-simulated the worlds and re-ran the per-channel closure configs and the hand designs on the
+same data.
+
+| world | block-only closure on spatially whitened latents finds | evidence |
+|---|---|---|
+| gliders | block mass | R2 0.991 linear (flat window share 0.999), 0.984 nonlinear; seed agreement 1.000 / 0.999 |
+| vortex | block vorticity | R2 0.768 linear, 0.862 nonlinear; vorticity 78% of the linear latent's variance, flat window; seed agreement 0.997 / 0.969; effective dimension 34 (block vorticity 33; per-channel closure 7); R2 with SFA 0.018; with the halo, the vorticity tent (0.87) |
+| membrane | nonlinear: a reproducible variable that is no hand block mean; linear: phi - K + L again, not reproducible | nonlinear: seed agreement 0.925 (per-channel 0.14), best block mean phi K 0.545, closed-form extended SFA 0.713, ceiling 0.43 at h = 16, +0.15 (z 24) above the most closed hand design; linear: seed agreement 0.09 |
+
+- So closure finds the block density of the transported field in both theories that have one (mass, conserved;
+  vorticity, advected but fed and dissipated) once the loss weights spatial modes equally. Conservation is not
+  required; what conservation gave gliders for free is a constant global mode, which removes the collapse.
+- The price: in the vortex world the whitened-closure latents are about as closed as hand block vorticity (+0.03 to
+  +0.08 at h = 4, -0.02 to -0.04 at h = 16) and less closed than the collapsed per-channel latents (-0.12 at h = 8),
+  with 5 to 8 times their effective dimension and more predictable content (I_capt 102-130 nats against 82).
+- With the 8-px halo the spatial whitening works against the taper in gliders (agreement with the mass tent 0.71
+  against 0.93 per-channel; seed agreement 0.55).
+- Replication: the per-channel linear results reproduce on fresh simulations and another GPU type to within 0.001
+  (vortex ceiling 0.353 against 0.352, SFA agreement 0.948 twice; gliders mass 0.971 twice); the membrane advantage of
+  nonlinear closure over block K reproduces (+0.251 against +0.252); the vortex nonlinear closure ceiling does not
+  (0.47 against 0.55 at h = 16).
+
 ## Files
 
 `c5.py` (layout, grid, hand designs), `csim.py` (GPU simulation), `cnets.py`, `ctrain.py` (training, encoding),
@@ -76,6 +107,7 @@ What a linear block-only closure encoder (one number per block) finds:
 shapes), `cpair.py` + `cpairs_run.sh` (paired bootstraps), `cclaims.py` + `cinterp.py` (claims), `csummary.py`;
 `cpilot.py` (CPU pilots of the time scales; their designer seeds are never reused).
 `results/`: `summary.json`, `analysis.json`, `extra.json`, `pairs_<world>.json`, `table_<world>.txt`,
-`<world>/combined.json.gz` (the pod's pooled output), status and progress files of the jobs.
+`<world>/combined.json.gz` (the pod's pooled output), status and progress files of the jobs; `<world>_w` = the
+follow-up job's run of `<world>`.
 Raw arrays are not committed; per-item errors, latent subsamples and windows are at
 `origin/gpu-jobs:jobs/<job_id>/out/<world>/{items,latsub,windows}`.

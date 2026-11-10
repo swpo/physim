@@ -117,7 +117,16 @@
     "B5_PLAN": "vortex:900:1500:1800 membrane:300:1100:1400 gliders:300:800:1100",
     "B5_JOB_HARD_S": "5100"
    },
-   "history": "resubmission of r5-bias2-006 (same ref, paths, environment, caps; GPU types reordered: A100 40GB, A100 80GB, H200, H100)"
+   "history": "resubmission of r5-bias2-006 (same ref, paths, environment, caps; GPU types reordered: A100 40GB, A100 80GB, H200, H100); received 01:54:16Z; two pod creations refused by the provider (HTTP 503), retried by the runner; ran 2026-11-10 02:25:27-03:35:57Z on an A100 40GB at lambdalabs ($1.99/h); job.sh elapsed 4,139 s; all 8 configs trained in each world, none skipped; 132 + 114 + 92 halves certified, 0 unclaimed (results/progress_r5-bias2-007.txt). The A100 simulated the vortex world at 130-137 member-ticks/s against 292-316 on the H200 of r5-bias2-005.",
+   "state": "done",
+   "exit_code": 0,
+   "billed_usd": 2.3364,
+   "gpu": "A100_40GB",
+   "provider": "lambdalabs",
+   "rate_usd_hr": 1.99,
+   "started_at": "2026-11-10T02:25:27Z",
+   "finished_at": "2026-11-10T03:35:57Z",
+   "source": "origin/gpu-jobs:jobs/r5-bias2-007/status.json"
   }
  },
  "why_resubmitted": "Coordinator note of 9 Nov about 23:28 UTC, relaying the Mac runner: the nebius H200 listed at $5.55/h bills $6.69/h and offers under $4.98/h (A100 80GB, H100) were scarce, so the caps of 002/003 (which covered at most $4.98/h) fitted no offer for more than 30 minutes. New caps follow the runner's rule 6.69 x (max_hours + 0.25): $15.72 -> 15.8 (004), $16.39 -> 16.45 (005); both below the $25 auto-start limit, together $32.25 of the study cap of $35.",
@@ -132,7 +141,7 @@
  ],
  "cpu_smoke_tests": "job.sh end to end at tiny size (B5_TINY=1, CPU, one certification worker) from a git archive of exactly the requested paths at e24bc7b04: both exact request environments (r5-bias2-004: membrane + gliders with B5_JOB_HARD_S=6900; r5-bias2-005: vortex with B5_JOB_HARD_S=7260) exit 0; the clipped-deadline path (B5_JOB_HARD_S=1500: membrane runs with clipped deadlines, gliders skipped, exit 1) and the all-skipped path (B5_JOB_HARD_S=700, exit 1) behave as designed.",
  "note_requested_paths": "The requested paths at both request commits (11c116b39, bb0bfb923) are identical to the tested code commit e24bc7b04 (git diff empty).",
- "billed_usd_total": 8.3071,
+ "billed_usd_total": 10.6435,
  "study_cap_usd": 35.0,
  "review_of_004_005": "origin/gpu-jobs:jobs/r5-bias2-004/review.md (same text for 005): fine to run; 2 minor points not yet fixed because no further job was submitted: (1) ctrain killed at the certification deadline would report a false failure and leave no train_done.json (did not happen: both runs finished training 2,000-4,700 s before their deadlines); (2) the pre-loop probes in job.sh have no timeout. Fix both before any resubmission.",
  "instances": "For a few minutes on 9 Nov 2026 (about 23:02-23:47 UTC) two instances of this agent worked in the same worktree (a coordinator mistake, recorded in the channel file); one handed over and stopped. The container then restarted at about 00:12, 00:53 and 01:12 UTC on 10 Nov; the analysis (canalyze, cextra, cpair, cinterp, csummary) was done by the instance started at 01:13 UTC from the outputs on origin/gpu-jobs.",
@@ -143,5 +152,6 @@
   "job.sh: the pre-loop probes run under `timeout 120`; a ctrain stopped by its time limit (exit 124) is reported as a deadline stop, not a failure, and train_done.json is written (the runner's two minor review points on 004/005)",
   "local tools only (not run on the pod): cfetch.sh B5_SUFFIX, cextra.py / cinterp.py / csummary.py read '<world>_w' as the follow-up job's run of <world>"
  ],
- "cpu_smoke_test_006": "job.sh end to end at tiny size (B5_TINY=1, CPU, one certification worker) from a git archive of exactly the requested paths at affd4ecb2 with the request's environment (B5_ARMS=w, the plan of three worlds, B5_JOB_HARD_S=5100): exit 0, FAIL=0, 403 s; the new configs Lw0_clos_c1 and Nw8_clos_c1 train with whitening over all blocks and are frozen with per-channel whitening (checked in the tiny combined.json)."
+ "cpu_smoke_test_006": "job.sh end to end at tiny size (B5_TINY=1, CPU, one certification worker) from a git archive of exactly the requested paths at affd4ecb2 with the request's environment (B5_ARMS=w, the plan of three worlds, B5_JOB_HARD_S=5100): exit 0, FAIL=0, 403 s; the new configs Lw0_clos_c1 and Nw8_clos_c1 train with whitening over all blocks and are frozen with per-channel whitening (checked in the tiny combined.json).",
+ "review_of_006_007": "origin/gpu-jobs:jobs/r5-bias2-006/review.md: fine to run; both earlier points fixed; 2 info points (gliders would be skipped only if the first two worlds ran to their limits: they did not; a ctrain killed with SIGKILL, exit 137, would still count as a failure: did not occur)."
 }
