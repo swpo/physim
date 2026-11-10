@@ -225,7 +225,7 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
     S = {l: np.zeros((ex.n, m, len(ts), ex.dims[l])) for l, ts in ex.queries.items()}
     max_values = m * sum(len(ts) * ex.dims[l] for l, ts in ex.queries.items())
     failed, cpu, wall_s, errors = np.zeros(ex.n, bool), np.zeros(ex.n), np.zeros(ex.n), []
-    cleanups, layers, dirty, infra, box_cpu, box_s = [], None, None, [], 0.0, []
+    cleanups, layers, dirty, infra, box_cpu, box_s, fatal = [], None, None, [], 0.0, [], None
     isolation = "box" if prepare is not None else "shared"
     cmd = driver_cmd(limits, workdir, uid, cleanup)
     t0 = time.time()
@@ -253,24 +253,27 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
         tried twice, then recorded as an infrastructure failure of that item (scored as K, and counted)."""
         last = "?"
         for attempt in range(2):
-            started = False
+            started, r = False, None
             tb = time.time()
             try:
                 async with asyncio.timeout(wall + SLACK_S + BOX_S):
                     async with fresh_box(runtime.config, prepare) as rt:
                         started = True
                         r = await run_request(rt, cmd, npz_bytes(ex.request(i, m, seed)), wall)
-                box_s.append(time.time() - tb)
-                return r
             except Exception as e:                           # includes TimeoutError
                 last = type(e).__name__
-                if started:
-                    break
+            if r is not None:                                # the request was answered; a slow or failed teardown changes nothing
+                box_s.append(time.time() - tb)
+                return r
+            if started:
+                break
         infra.append(i)
         return {"ok": False, "why": "infrastructure", "stderr": f"no box for this item ({last})", "cpu_s": 0.0, "wall_s": 0.0}
 
     async def one(i):
-        if dirty is not None:
+        if fatal:
+            return {"skip": fatal}
+        if dirty is not None and prepare is None:            # one box for all items: an unclean box serves no later item
             return {"skip": "the box could not be cleaned after an earlier request"}
         if deadline is not None and time.time() > deadline:
             return {"skip": "grading ran out of time"}
@@ -283,7 +286,7 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
             return await one(i)
 
     async def handle(i, r):
-        nonlocal layers, dirty, box_cpu
+        nonlocal layers, dirty, box_cpu, fatal
         if "skip" in r:
             return r["skip"]
         cpu[i], wall_s[i] = r.get("cpu_s", 0.0), r.get("wall_s", 0.0)
@@ -298,8 +301,8 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
         if r.get("hung") and prepare is None:
             dirty = i                                        # a shared box that stopped answering serves no later item
         if r.get("ok") and (r.get("layers") or {}).get("uid") != uid and cleanup:
-            dirty = i                                        # never accept a reply from a run that was not unprivileged
-            return "the driver did not run the predictor as the box's unprivileged user"
+            fatal = "the driver did not run the predictor as the box's unprivileged user"    # never accept such a reply
+            return fatal
         smp, bad = judge(r, ex.queries, ex.dims, m, max_values)
         if bad is None:
             for l in ex.queries:

@@ -412,8 +412,8 @@ def run(a):
             os.setuid(a.uid)
         os.nice(10)
 
-    if root:
-        os.chmod(a.request, 0o444)                           # whatever umask the transport used
+    if drop:
+        os.chmod(a.request, 0o444)                           # whatever umask the transport used (in a box only)
     cmd = [sys.executable, "-I", "-B", os.path.abspath(a.runner), os.path.abspath(a.submission),
            os.path.abspath(a.request), out_path]
     t0 = time.time()
