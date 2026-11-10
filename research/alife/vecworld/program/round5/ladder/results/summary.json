@@ -1,0 +1,8753 @@
+{
+ "what": "round 5 study ladder (track 2): difficulty of the gliders wind world as a function of the observed view (block 192, object 144, population 5 numbers) and of the number of hidden parameters (1, 4, 8): reference ladder K, D(N), P0, PM, S(N), C, O per cell at Lab budgets of 2-512 episodes; identification split by passive, blind and aimed inputs",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "grader": "fair energy score per item and cell: vw.harness.HistoryExam._per_cell + vw.scoring.energy_fair; OES: vw.scoring.skill_report; sigma, rho: round5/agentenv/evaluator/acceptance.py",
+ "job": {
+  "id": "r5-ladder-002",
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "versions": {
+   "python": "3.12.16",
+   "jax": "0.12.0.1",
+   "numpy": "2.5.4"
+  },
+  "hours_in_script": 1.2146,
+  "member_ticks": {
+   "scales": 10496,
+   "viability_design": 172800,
+   "truths": 21600,
+   "design": 1574400,
+   "lab_charged": 506880,
+   "lab_burn_in_designer": 768000,
+   "exam": 449280,
+   "plugin_prior": 147456
+  },
+  "member_ticks_total": 3650912,
+  "sets_done": [
+   4,
+   8,
+   1
+  ],
+  "failed_or_skipped": [],
+  "seconds_per_set": [
+   1651.0215587615967,
+   1533.735286474228,
+   1152.4405071735382
+  ],
+  "source": "r5-ladder-002:out/info.json",
+  "status": {
+   "state": "done",
+   "exit_code": 0,
+   "cost": {
+    "billed_usd": 2.5555,
+    "conservative_usd": 2.732
+   },
+   "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r5-ladder-002-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+   },
+   "pods": [
+    {
+     "billed_usd": 2.5555,
+     "created_at": "2026-11-10T03:39:06Z",
+     "data_center": "us-east-1",
+     "gpu": "A100_40GB",
+     "name": "gpujob-r5-ladder-002-a1",
+     "note": null,
+     "pod_id": "dee593f9e72a447abe83568a45d1687b",
+     "provider": "lambdalabs",
+     "provision_error": null,
+     "rate_usd_hr": 1.99,
+     "ready_at": "2026-11-10T03:44:18Z",
+     "requested_at": "2026-11-10T03:38:50Z",
+     "spot": false,
+     "state": "terminated",
+     "terminated_at": "2026-11-10T05:01:12Z"
+    }
+   ],
+   "started_at": "2026-11-10T03:44:31Z",
+   "finished_at": "2026-11-10T05:01:34Z",
+   "review": {
+    "at": "2026-11-10T03:16:15Z",
+    "file": "jobs/r5-ladder-002/review.md",
+    "sha256": "9bbfba7f2ced5c9ff48d8eae9c1a7087429cd8dc839c30c7af91330ffa57c344",
+    "summary": "Fine to run: the 2^31 blocker is fixed (largest array 1.1e8, peak about 4.3 GB, checked at compile level); failure isolation verified. 1 minor: run.log lacks the pilot marker. 6 info."
+   }
+  }
+ },
+ "config": {
+  "P": 16,
+  "H": 16,
+  "burn": 50,
+  "n_cand": 48,
+  "n_truth": 8,
+  "N_v": {
+   "1": 128,
+   "4": 512,
+   "8": 512
+  },
+  "v_chunk": 256,
+  "N_theta": {
+   "1": 384,
+   "4": 768,
+   "8": 768
+  },
+  "Kc": 2,
+  "budgets": [
+   2,
+   8,
+   32,
+   128,
+   512
+  ],
+  "arm_budgets": [
+   2,
+   8,
+   32,
+   128
+  ],
+  "n_mix": 512,
+  "n_e": 128,
+  "lab_chunk": 128,
+  "n_items": 48,
+  "R": 12,
+  "n_clim": 96,
+  "chunk": 256,
+  "m": 32,
+  "m_plug": 8,
+  "n_scale": 128,
+  "steps_cond": 6000,
+  "steps_p0": 3000,
+  "steps_real": [
+   1200,
+   2500
+  ],
+  "real_split": 32,
+  "hs": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "lags": [
+   0,
+   1,
+   2,
+   4,
+   8
+  ],
+  "min_steps": 300,
+  "viab_T": 100,
+  "n_post_draws": 500,
+  "post_M": 20000,
+  "post_M_arm": 10000,
+  "source": "r5-ladder-002:out/info.json [config]"
+ },
+ "cells": {
+  "n4|block": {
+   "n_hidden": 4,
+   "view": "block",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 23.5307
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 13.3435
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 26.6728
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 21.2513
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 21.2564
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 48.3581
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 45.0843
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n4/train_info.json"
+   },
+   "dim": 192,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.6502,
+     "se_items": 0.003
+    },
+    "D@128": {
+     "mean": 0.5334,
+     "se_items": 0.0035
+    },
+    "D@2": {
+     "mean": 0.0209,
+     "se_items": 0.0081
+    },
+    "D@32": {
+     "mean": 0.4389,
+     "se_items": 0.0051
+    },
+    "D@512": {
+     "mean": 0.599,
+     "se_items": 0.003
+    },
+    "D@8": {
+     "mean": 0.1899,
+     "se_items": 0.0102
+    },
+    "Dr@128": {
+     "mean": 0.5436,
+     "se_items": 0.0024
+    },
+    "Dr@2": {
+     "mean": -0.4782,
+     "se_items": 0.1565
+    },
+    "Dr@32": {
+     "mean": 0.5381,
+     "se_items": 0.0023
+    },
+    "Dr@512": {
+     "mean": 0.5451,
+     "se_items": 0.0023
+    },
+    "Dr@8": {
+     "mean": 0.512,
+     "se_items": 0.0026
+    },
+    "P0": {
+     "mean": 0.6372,
+     "se_items": 0.0033
+    },
+    "P0u": {
+     "mean": 0.6177,
+     "se_items": 0.0031
+    },
+    "PM": {
+     "mean": 0.6404,
+     "se_items": 0.0032
+    },
+    "S@128": {
+     "mean": 0.6499,
+     "se_items": 0.0029
+    },
+    "S@2": {
+     "mean": 0.6472,
+     "se_items": 0.0029
+    },
+    "S@32": {
+     "mean": 0.6497,
+     "se_items": 0.0029
+    },
+    "S@512": {
+     "mean": 0.65,
+     "se_items": 0.0029
+    },
+    "S@8": {
+     "mean": 0.6493,
+     "se_items": 0.0029
+    },
+    "plugPM": {
+     "mean": 0.8041,
+     "se_items": 0.0052
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.9289,
+     0.8601,
+     0.7072,
+     0.4909,
+     0.264
+    ],
+    "PM": [
+     0.9276,
+     0.8577,
+     0.6994,
+     0.4735,
+     0.2439
+    ],
+    "P0": [
+     0.9279,
+     0.858,
+     0.6967,
+     0.4679,
+     0.2357
+    ],
+    "plugPM": [
+     0.9698,
+     0.9506,
+     0.8944,
+     0.7373,
+     0.4684
+    ]
+   },
+   "pooled_L": {
+    "C": 1.3589,
+    "D@128": 1.6875,
+    "D@2": 3.1201,
+    "D@32": 1.9526,
+    "D@512": 1.5024,
+    "D@8": 2.6313,
+    "Dr@128": 1.6627,
+    "Dr@2": 4.3405,
+    "Dr@32": 1.6769,
+    "Dr@512": 1.6587,
+    "Dr@8": 1.7457,
+    "K": 3.3757,
+    "O": 0.3956,
+    "P0": 1.3942,
+    "P0u": 1.4499,
+    "PM": 1.3858,
+    "S@128": 1.3596,
+    "S@2": 1.3668,
+    "S@32": 1.3601,
+    "S@512": 1.3594,
+    "S@8": 1.3612,
+    "plugPM": 0.9162
+   },
+   "predictable_fraction_L": 0.8828,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.0098,
+     "se_worlds": 0.0024,
+     "z_worlds": 4.1285,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": 0.013,
+     "se_worlds": 0.0027,
+     "z_worlds": 4.8786,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.1959,
+     "se_items": 0.0052,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.0326,
+     "se_worlds": 0.0015,
+     "z_worlds": 21.3924,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.4778,
+      0.1936,
+      0.4777,
+      0.5231
+     ],
+     "geo_mean_contraction": 0.3784,
+     "in90_frac": 0.875,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 10418.2286
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.3167,
+      0.1184,
+      0.2918,
+      0.3413
+     ],
+     "geo_mean_contraction": 0.2405,
+     "in90_frac": 0.7812,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 3261.5021
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.1962,
+      0.079,
+      0.1724,
+      0.2201
+     ],
+     "geo_mean_contraction": 0.1532,
+     "in90_frac": 0.8125,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 1560.2739
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.1219,
+      0.0615,
+      0.1036,
+      0.1466
+     ],
+     "geo_mean_contraction": 0.101,
+     "in90_frac": 0.7188,
+     "hpd_le_90_frac": 0.625,
+     "ess_min": 9149.9906
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.0976,
+      0.0563,
+      0.083,
+      0.1229
+     ],
+     "geo_mean_contraction": 0.0835,
+     "in90_frac": 0.8125,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 7456.2196
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.6472,
+     0.6493,
+     0.6497,
+     0.6499,
+     0.65
+    ],
+    "D_net": [
+     0.0209,
+     0.1899,
+     0.4389,
+     0.5334,
+     0.599
+    ],
+    "D_ridge": [
+     -0.4782,
+     0.512,
+     0.5381,
+     0.5436,
+     0.5451
+    ],
+    "D": [
+     0.0209,
+     0.512,
+     0.5381,
+     0.5436,
+     0.599
+    ],
+    "D_is": [
+     "D@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 0.0,
+    "D": 362.2661,
+    "D_net": 382.3663,
+    "D_ridge": null
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 362.2661,
+     "N_S": 0.0,
+     "ratio": 181.1331,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": -0.003,
+     "se_worlds": 0.001,
+     "z_worlds": -3.0799,
+     "n_worlds_positive": 1,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": -0.0009,
+     "se_worlds": 0.0007,
+     "z_worlds": -1.3998,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": -0.0005,
+     "se_worlds": 0.0006,
+     "z_worlds": -0.8393,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": -0.0003,
+     "se_worlds": 0.0006,
+     "z_worlds": -0.5411,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": -0.0002,
+     "se_worlds": 0.0006,
+     "z_worlds": -0.4331,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": 0.01,
+     "se_worlds": 0.0033,
+     "z_worlds": 3.0455,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0121,
+     "se_worlds": 0.0029,
+     "z_worlds": 4.1872,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0125,
+     "se_worlds": 0.0028,
+     "z_worlds": 4.47,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0127,
+     "se_worlds": 0.0028,
+     "z_worlds": 4.5178,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0127,
+     "se_worlds": 0.0028,
+     "z_worlds": 4.539,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": 0.0175,
+      "sigma_se_worlds": 0.0038,
+      "null_is": "P0",
+      "D_is": "D@2",
+      "rho": 0.7744,
+      "rho_se_worlds": 0.1205,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0175,
+      "sigma_se_worlds": 0.0036,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.9338,
+      "rho_se_worlds": 0.0527,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0175,
+      "sigma_se_worlds": 0.0038,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.9661,
+      "rho_se_worlds": 0.0423,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0175,
+      "sigma_se_worlds": 0.0038,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.9794,
+      "rho_se_worlds": 0.0408,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0175,
+      "sigma_se_worlds": 0.0036,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.984,
+      "rho_se_worlds": 0.0401,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.0451,
+      "sigma_se_worlds": 0.0026,
+      "null_is": "P0",
+      "D_is": "D@2",
+      "rho": 0.9125,
+      "rho_se_worlds": 0.03,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0451,
+      "sigma_se_worlds": 0.0026,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.9743,
+      "rho_se_worlds": 0.0167,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0451,
+      "sigma_se_worlds": 0.0026,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.9869,
+      "rho_se_worlds": 0.015,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0451,
+      "sigma_se_worlds": 0.0026,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.992,
+      "rho_se_worlds": 0.0147,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0451,
+      "sigma_se_worlds": 0.0025,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.9938,
+      "rho_se_worlds": 0.0148,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": 0.0175,
+   "emulator": {
+    "emulator": {
+     "N_theta": 768,
+     "K": 8,
+     "q": 4,
+     "d": 4,
+     "deg_mean": 3,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.07485282568548415,
+      "2": 0.04115959809669059,
+      "3": 0.035436505781388836
+     },
+     "cv_chi2_mean_with_misfit": 3.8714566718969046,
+     "chi2_expected": 4.0,
+     "cv_r2_of_mean": [
+      0.9738129159856063,
+      0.9911509650395632,
+      0.9292815549412458,
+      0.9640099646603479
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.09569319454464674,
+      0.21569615798095426,
+      0.05217636567331733,
+      0.087900540638258
+     ]
+    },
+    "projection_r2": [
+     0.5857725814341115,
+     0.9303004241822195,
+     0.516101628792255,
+     0.5478594636765248
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n4/scores.npz; r5-ladder-002:out/n4/identification.json [summary]"
+  },
+  "n4|object": {
+   "n_hidden": 4,
+   "view": "object",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 13.3115
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 7.7954
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 8.5366
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 2.1468
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 2.1417
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 7.7983
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 4.5201
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n4/train_info.json"
+   },
+   "dim": 144,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.43,
+     "se_items": 0.0063
+    },
+    "D@128": {
+     "mean": 0.3646,
+     "se_items": 0.0065
+    },
+    "D@2": {
+     "mean": -0.4253,
+     "se_items": 0.0267
+    },
+    "D@32": {
+     "mean": 0.2958,
+     "se_items": 0.007
+    },
+    "D@512": {
+     "mean": 0.4048,
+     "se_items": 0.0062
+    },
+    "D@8": {
+     "mean": 0.0696,
+     "se_items": 0.0148
+    },
+    "Dr@128": {
+     "mean": 0.3788,
+     "se_items": 0.0058
+    },
+    "Dr@2": {
+     "mean": -0.0076,
+     "se_items": 0.0152
+    },
+    "Dr@32": {
+     "mean": 0.3541,
+     "se_items": 0.0078
+    },
+    "Dr@512": {
+     "mean": 0.3828,
+     "se_items": 0.0057
+    },
+    "Dr@8": {
+     "mean": 0.2398,
+     "se_items": 0.0235
+    },
+    "P0": {
+     "mean": 0.4267,
+     "se_items": 0.0064
+    },
+    "P0u": {
+     "mean": 0.4096,
+     "se_items": 0.0064
+    },
+    "PM": {
+     "mean": 0.4246,
+     "se_items": 0.0064
+    },
+    "S@128": {
+     "mean": 0.4295,
+     "se_items": 0.0063
+    },
+    "S@2": {
+     "mean": 0.4291,
+     "se_items": 0.0063
+    },
+    "S@32": {
+     "mean": 0.4295,
+     "se_items": 0.0063
+    },
+    "S@512": {
+     "mean": 0.4295,
+     "se_items": 0.0063
+    },
+    "S@8": {
+     "mean": 0.4296,
+     "se_items": 0.0064
+    },
+    "plugPM": {
+     "mean": 0.7637,
+     "se_items": 0.0077
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.6873,
+     0.5718,
+     0.4326,
+     0.3023,
+     0.1562
+    ],
+    "PM": [
+     0.6844,
+     0.5684,
+     0.4303,
+     0.2931,
+     0.1471
+    ],
+    "P0": [
+     0.6844,
+     0.5714,
+     0.4305,
+     0.2941,
+     0.1531
+    ],
+    "plugPM": [
+     0.9528,
+     0.9116,
+     0.8393,
+     0.652,
+     0.4629
+    ]
+   },
+   "pooled_L": {
+    "C": 2.2312,
+    "D@128": 2.3808,
+    "D@2": 4.1388,
+    "D@32": 2.5335,
+    "D@512": 2.2947,
+    "D@8": 3.0318,
+    "Dr@128": 2.3611,
+    "Dr@2": 3.1972,
+    "Dr@32": 2.4098,
+    "Dr@512": 2.3531,
+    "Dr@8": 2.6299,
+    "K": 3.4709,
+    "O": 0.8555,
+    "P0": 2.2393,
+    "P0u": 2.281,
+    "PM": 2.2436,
+    "S@128": 2.2328,
+    "S@2": 2.234,
+    "S@32": 2.2328,
+    "S@512": 2.2327,
+    "S@8": 2.2324,
+    "plugPM": 1.3577
+   },
+   "predictable_fraction_L": 0.7535,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.0054,
+     "se_worlds": 0.0019,
+     "z_worlds": 2.7674,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": 0.0033,
+     "se_worlds": 0.002,
+     "z_worlds": 1.7026,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.2363,
+     "se_items": 0.0077,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.0204,
+     "se_worlds": 0.0014,
+     "z_worlds": 14.6851,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.5869,
+      0.5129,
+      0.7356,
+      0.5953
+     ],
+     "geo_mean_contraction": 0.5908,
+     "in90_frac": 0.8438,
+     "hpd_le_90_frac": 0.625,
+     "ess_min": 1670.8435
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.428,
+      0.3661,
+      0.5834,
+      0.4071
+     ],
+     "geo_mean_contraction": 0.4232,
+     "in90_frac": 0.8125,
+     "hpd_le_90_frac": 0.625,
+     "ess_min": 9915.0991
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.2907,
+      0.2744,
+      0.4472,
+      0.2566
+     ],
+     "geo_mean_contraction": 0.2923,
+     "in90_frac": 0.8438,
+     "hpd_le_90_frac": 0.625,
+     "ess_min": 3426.2377
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.2308,
+      0.2023,
+      0.35,
+      0.1901
+     ],
+     "geo_mean_contraction": 0.2238,
+     "in90_frac": 0.75,
+     "hpd_le_90_frac": 0.625,
+     "ess_min": 1978.1672
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.1989,
+      0.176,
+      0.3059,
+      0.1541
+     ],
+     "geo_mean_contraction": 0.1882,
+     "in90_frac": 0.7188,
+     "hpd_le_90_frac": 0.375,
+     "ess_min": 1642.4589
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.4291,
+     0.4296,
+     0.4295,
+     0.4295,
+     0.4295
+    ],
+    "D_net": [
+     -0.4253,
+     0.0696,
+     0.2958,
+     0.3646,
+     0.4048
+    ],
+    "D_ridge": [
+     -0.0076,
+     0.2398,
+     0.3541,
+     0.3788,
+     0.3828
+    ],
+    "D": [
+     -0.0076,
+     0.2398,
+     0.3541,
+     0.3788,
+     0.4048
+    ],
+    "D_is": [
+     "Dr@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 0.0,
+    "D": 198.4612,
+    "D_net": 277.2249,
+    "D_ridge": null
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 198.4612,
+     "N_S": 0.0,
+     "ratio": 99.2306,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": -0.001,
+     "se_worlds": 0.0008,
+     "z_worlds": -1.1445,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": -0.0004,
+     "se_worlds": 0.001,
+     "z_worlds": -0.4072,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": -0.0005,
+     "se_worlds": 0.0009,
+     "z_worlds": -0.5992,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": -0.0005,
+     "se_worlds": 0.0009,
+     "z_worlds": -0.6228,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": -0.0005,
+     "se_worlds": 0.0009,
+     "z_worlds": -0.6011,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": 0.0024,
+     "se_worlds": 0.0015,
+     "z_worlds": 1.5541,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.003,
+     "se_worlds": 0.0014,
+     "z_worlds": 2.0866,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0028,
+     "se_worlds": 0.0015,
+     "z_worlds": 1.8732,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0028,
+     "se_worlds": 0.0016,
+     "z_worlds": 1.7847,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0028,
+     "se_worlds": 0.0016,
+     "z_worlds": 1.8111,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": 0.0065,
+      "sigma_se_worlds": 0.0039,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.6644,
+      "rho_se_worlds": 12.1076,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "8": {
+      "sigma": 0.0065,
+      "sigma_se_worlds": 0.0037,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.855,
+      "rho_se_worlds": 8.2074,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0065,
+      "sigma_se_worlds": 0.0038,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.8114,
+      "rho_se_worlds": 5.8175,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0065,
+      "sigma_se_worlds": 0.0039,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.8097,
+      "rho_se_worlds": 22.2393,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0065,
+      "sigma_se_worlds": 0.0039,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.8162,
+      "rho_se_worlds": 38.1199,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.0401,
+      "sigma_se_worlds": 0.003,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.9453,
+      "rho_se_worlds": 0.0357,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0401,
+      "sigma_se_worlds": 0.003,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.9764,
+      "rho_se_worlds": 0.044,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0401,
+      "sigma_se_worlds": 0.0029,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.9693,
+      "rho_se_worlds": 0.0394,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0401,
+      "sigma_se_worlds": 0.0029,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.969,
+      "rho_se_worlds": 0.0368,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0401,
+      "sigma_se_worlds": 0.0029,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.97,
+      "rho_se_worlds": 0.0374,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": 0.0065,
+   "emulator": {
+    "emulator": {
+     "N_theta": 768,
+     "K": 8,
+     "q": 4,
+     "d": 4,
+     "deg_mean": 3,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.14237852477593696,
+      "2": 0.08140999803384484,
+      "3": 0.07192493124968033
+     },
+     "cv_chi2_mean_with_misfit": 4.058455564696017,
+     "chi2_expected": 4.0,
+     "cv_r2_of_mean": [
+      0.9673964502004392,
+      0.9400656519243045,
+      0.9608470408869413,
+      0.8439937604934843
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.14370884154865773,
+      0.08415452197978913,
+      0.11617186566000294,
+      0.069999735576947
+     ]
+    },
+    "projection_r2": [
+     0.5076242748283877,
+     0.5417528904820019,
+     0.318513916343368,
+     0.37475180895985527
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n4/scores.npz; r5-ladder-002:out/n4/identification.json [summary]"
+  },
+  "n4|pop": {
+   "n_hidden": 4,
+   "view": "pop",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 9.5834
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 5.8336
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 5.4525
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 1.0944
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 1.0717
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 4.525
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 2.2144
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n4/train_info.json"
+   },
+   "dim": 5,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.3493,
+     "se_items": 0.015
+    },
+    "D@128": {
+     "mean": 0.2716,
+     "se_items": 0.0168
+    },
+    "D@2": {
+     "mean": -0.7179,
+     "se_items": 0.0616
+    },
+    "D@32": {
+     "mean": 0.1382,
+     "se_items": 0.0254
+    },
+    "D@512": {
+     "mean": 0.3309,
+     "se_items": 0.0156
+    },
+    "D@8": {
+     "mean": -0.1848,
+     "se_items": 0.0388
+    },
+    "Dr@128": {
+     "mean": 0.2813,
+     "se_items": 0.0154
+    },
+    "Dr@2": {
+     "mean": -0.5327,
+     "se_items": 0.0539
+    },
+    "Dr@32": {
+     "mean": 0.2545,
+     "se_items": 0.0171
+    },
+    "Dr@512": {
+     "mean": 0.3006,
+     "se_items": 0.0147
+    },
+    "Dr@8": {
+     "mean": 0.1231,
+     "se_items": 0.0201
+    },
+    "P0": {
+     "mean": 0.3019,
+     "se_items": 0.0172
+    },
+    "P0u": {
+     "mean": 0.3023,
+     "se_items": 0.0197
+    },
+    "PM": {
+     "mean": 0.3015,
+     "se_items": 0.0175
+    },
+    "S@128": {
+     "mean": 0.3392,
+     "se_items": 0.015
+    },
+    "S@2": {
+     "mean": 0.3312,
+     "se_items": 0.0153
+    },
+    "S@32": {
+     "mean": 0.3377,
+     "se_items": 0.0152
+    },
+    "S@512": {
+     "mean": 0.3392,
+     "se_items": 0.015
+    },
+    "S@8": {
+     "mean": 0.3383,
+     "se_items": 0.0152
+    },
+    "plugPM": {
+     "mean": 0.6513,
+     "se_items": 0.0162
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.5993,
+     0.4292,
+     0.293,
+     0.2058,
+     0.2193
+    ],
+    "PM": [
+     0.5884,
+     0.4024,
+     0.2462,
+     0.1463,
+     0.1241
+    ],
+    "P0": [
+     0.5861,
+     0.4012,
+     0.2455,
+     0.1514,
+     0.1255
+    ],
+    "plugPM": [
+     0.8651,
+     0.8305,
+     0.7563,
+     0.5022,
+     0.3022
+    ]
+   },
+   "pooled_L": {
+    "C": 2.559,
+    "D@128": 2.7634,
+    "D@2": 5.3978,
+    "D@32": 3.1235,
+    "D@512": 2.613,
+    "D@8": 3.9803,
+    "Dr@128": 2.7536,
+    "Dr@2": 4.7456,
+    "Dr@32": 2.8206,
+    "Dr@512": 2.7087,
+    "Dr@8": 3.1521,
+    "K": 3.6462,
+    "O": 0.7261,
+    "P0": 2.6816,
+    "P0u": 2.6895,
+    "PM": 2.682,
+    "S@128": 2.5831,
+    "S@2": 2.603,
+    "S@32": 2.5869,
+    "S@512": 2.5827,
+    "S@8": 2.5855,
+    "plugPM": 1.6176
+   },
+   "predictable_fraction_L": 0.8009,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.0479,
+     "se_worlds": 0.0155,
+     "z_worlds": 3.0963,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": 0.0474,
+     "se_worlds": 0.0133,
+     "z_worlds": 3.5536,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.3487,
+     "se_items": 0.0162,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.047,
+     "se_worlds": 0.0215,
+     "z_worlds": 2.1882,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.6371,
+      0.5943,
+      0.7849,
+      0.9378
+     ],
+     "geo_mean_contraction": 0.7176,
+     "in90_frac": 0.9062,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 1737.3696
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.5426,
+      0.4951,
+      0.7527,
+      0.8496
+     ],
+     "geo_mean_contraction": 0.6264,
+     "in90_frac": 0.8438,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 6459.6697
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.4668,
+      0.4611,
+      0.6777,
+      0.7475
+     ],
+     "geo_mean_contraction": 0.5576,
+     "in90_frac": 0.8125,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 6903.3879
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.4063,
+      0.4263,
+      0.6016,
+      0.6967
+     ],
+     "geo_mean_contraction": 0.5014,
+     "in90_frac": 0.7812,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 6640.02
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.3801,
+      0.397,
+      0.5448,
+      0.6534
+     ],
+     "geo_mean_contraction": 0.4636,
+     "in90_frac": 0.7812,
+     "hpd_le_90_frac": 0.5,
+     "ess_min": 3491.6026
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.3312,
+     0.3383,
+     0.3377,
+     0.3392,
+     0.3392
+    ],
+    "D_net": [
+     -0.7179,
+     -0.1848,
+     0.1382,
+     0.2716,
+     0.3309
+    ],
+    "D_ridge": [
+     -0.5327,
+     0.1231,
+     0.2545,
+     0.2813,
+     0.3006
+    ],
+    "D": [
+     -0.5327,
+     0.1231,
+     0.2545,
+     0.2813,
+     0.3309
+    ],
+    "D_is": [
+     "Dr@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 2.0,
+    "D": 323.0607,
+    "D_net": 348.4481,
+    "D_ridge": null
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 323.0607,
+     "N_S": 2.0,
+     "ratio": 161.5304,
+     "ratio_is_lower_bound": false,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": -0.0181,
+     "se_worlds": 0.0038,
+     "z_worlds": -4.79,
+     "n_worlds_positive": 0,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": -0.011,
+     "se_worlds": 0.0031,
+     "z_worlds": -3.5883,
+     "n_worlds_positive": 1,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": -0.0116,
+     "se_worlds": 0.0029,
+     "z_worlds": -3.9781,
+     "n_worlds_positive": 1,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": -0.0102,
+     "se_worlds": 0.0028,
+     "z_worlds": -3.5765,
+     "n_worlds_positive": 1,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": -0.0101,
+     "se_worlds": 0.0028,
+     "z_worlds": -3.676,
+     "n_worlds_positive": 1,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": 0.0293,
+     "se_worlds": 0.0126,
+     "z_worlds": 2.3203,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0364,
+     "se_worlds": 0.0115,
+     "z_worlds": 3.1638,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0358,
+     "se_worlds": 0.0116,
+     "z_worlds": 3.0802,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0372,
+     "se_worlds": 0.0117,
+     "z_worlds": 3.1772,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0373,
+     "se_worlds": 0.0116,
+     "z_worlds": 3.2169,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": 0.1127,
+      "sigma_se_worlds": 0.0359,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.641,
+      "rho_se_worlds": 0.1693,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "8": {
+      "sigma": 0.1127,
+      "sigma_se_worlds": 0.0338,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.7838,
+      "rho_se_worlds": 0.0637,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.1127,
+      "sigma_se_worlds": 0.0345,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.7721,
+      "rho_se_worlds": 0.0775,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.1127,
+      "sigma_se_worlds": 0.0354,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.8035,
+      "rho_se_worlds": 0.0718,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0497,
+      "sigma_se_worlds": 0.0321,
+      "null_is": "D",
+      "D_is": "D@512",
+      "rho": 0.8068,
+      "rho_se_worlds": 0.0578,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.1201,
+      "sigma_se_worlds": 0.0614,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.6629,
+      "rho_se_worlds": 3.7018,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "8": {
+      "sigma": 0.1201,
+      "sigma_se_worlds": 0.0587,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.797,
+      "rho_se_worlds": 0.8016,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.1201,
+      "sigma_se_worlds": 0.06,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.786,
+      "rho_se_worlds": 0.6048,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.1201,
+      "sigma_se_worlds": 0.0585,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.8155,
+      "rho_se_worlds": 1.693,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0497,
+      "sigma_se_worlds": 0.0313,
+      "null_is": "D",
+      "D_is": "D@512",
+      "rho": 0.8186,
+      "rho_se_worlds": 1.0309,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": 0.1127,
+   "emulator": {
+    "emulator": {
+     "N_theta": 768,
+     "K": 8,
+     "q": 4,
+     "d": 4,
+     "deg_mean": 3,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.15064534234791263,
+      "2": 0.07245436518062262,
+      "3": 0.06279044041998252
+     },
+     "cv_chi2_mean_with_misfit": 3.9523643138574394,
+     "chi2_expected": 4.0,
+     "cv_r2_of_mean": [
+      0.9499729637899559,
+      0.9259741740641778,
+      0.962664243495343,
+      0.9102294173152695
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.15442487393124807,
+      0.11170326936251469,
+      0.11057380590983337,
+      0.1230347479924559
+     ]
+    },
+    "projection_r2": [
+     0.4310391481209255,
+     0.44108871876471556,
+     0.26906410858192287,
+     0.08095670759537921
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n4/scores.npz; r5-ladder-002:out/n4/identification.json [summary]"
+  },
+  "n8|block": {
+   "n_hidden": 8,
+   "view": "block",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 16.9041
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 8.3177
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 21.2469
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 21.2474
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 21.2522
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 45.0784
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 45.0856
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n8/train_info.json"
+   },
+   "dim": 192,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.681,
+     "se_items": 0.0029
+    },
+    "D@128": {
+     "mean": 0.5569,
+     "se_items": 0.0036
+    },
+    "D@2": {
+     "mean": 0.0887,
+     "se_items": 0.007
+    },
+    "D@32": {
+     "mean": 0.4585,
+     "se_items": 0.0052
+    },
+    "D@512": {
+     "mean": 0.6303,
+     "se_items": 0.0032
+    },
+    "D@8": {
+     "mean": 0.2713,
+     "se_items": 0.0079
+    },
+    "Dr@128": {
+     "mean": 0.5604,
+     "se_items": 0.0024
+    },
+    "Dr@2": {
+     "mean": 0.4023,
+     "se_items": 0.0071
+    },
+    "Dr@32": {
+     "mean": 0.554,
+     "se_items": 0.0025
+    },
+    "Dr@512": {
+     "mean": 0.5617,
+     "se_items": 0.0024
+    },
+    "Dr@8": {
+     "mean": 0.5293,
+     "se_items": 0.0029
+    },
+    "P0": {
+     "mean": 0.6714,
+     "se_items": 0.0031
+    },
+    "P0u": {
+     "mean": 0.6467,
+     "se_items": 0.0029
+    },
+    "PM": {
+     "mean": 0.6731,
+     "se_items": 0.003
+    },
+    "S@128": {
+     "mean": 0.6801,
+     "se_items": 0.0029
+    },
+    "S@2": {
+     "mean": 0.6773,
+     "se_items": 0.0029
+    },
+    "S@32": {
+     "mean": 0.6798,
+     "se_items": 0.0029
+    },
+    "S@512": {
+     "mean": 0.6802,
+     "se_items": 0.0029
+    },
+    "S@8": {
+     "mean": 0.6789,
+     "se_items": 0.0029
+    },
+    "plugPM": {
+     "mean": 0.8672,
+     "se_items": 0.0038
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.9334,
+     0.8745,
+     0.7475,
+     0.539,
+     0.3107
+    ],
+    "PM": [
+     0.9329,
+     0.8731,
+     0.7416,
+     0.5262,
+     0.292
+    ],
+    "P0": [
+     0.9325,
+     0.8726,
+     0.7411,
+     0.5238,
+     0.2871
+    ],
+    "plugPM": [
+     0.9823,
+     0.9679,
+     0.9304,
+     0.8267,
+     0.6288
+    ]
+   },
+   "pooled_L": {
+    "C": 1.3073,
+    "D@128": 1.6832,
+    "D@2": 3.1022,
+    "D@32": 1.98,
+    "D@512": 1.4602,
+    "D@8": 2.5404,
+    "Dr@128": 1.6765,
+    "Dr@2": 2.1266,
+    "Dr@32": 1.6943,
+    "Dr@512": 1.6726,
+    "Dr@8": 1.7654,
+    "K": 3.5362,
+    "O": 0.3578,
+    "P0": 1.3353,
+    "P0u": 1.4105,
+    "PM": 1.3305,
+    "S@128": 1.31,
+    "S@2": 1.3184,
+    "S@32": 1.3109,
+    "S@512": 1.3096,
+    "S@8": 1.3134,
+    "plugPM": 0.7417
+   },
+   "predictable_fraction_L": 0.8988,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.0079,
+     "se_worlds": 0.0018,
+     "z_worlds": 4.4972,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": 0.0096,
+     "se_worlds": 0.0023,
+     "z_worlds": 4.1141,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.1328,
+     "se_items": 0.0038,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.0344,
+     "se_worlds": 0.0013,
+     "z_worlds": 26.1782,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.6337,
+      0.434,
+      0.6319,
+      0.8656,
+      0.8554,
+      0.9314,
+      0.7907,
+      0.5956
+     ],
+     "geo_mean_contraction": 0.6895,
+     "in90_frac": 0.9844,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 1945.3583
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.5499,
+      0.3506,
+      0.5201,
+      0.8712,
+      0.8111,
+      0.9222,
+      0.7668,
+      0.5743
+     ],
+     "geo_mean_contraction": 0.634,
+     "in90_frac": 0.9375,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 1990.0844
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.4725,
+      0.2787,
+      0.4384,
+      0.8474,
+      0.6986,
+      0.8722,
+      0.6857,
+      0.5134
+     ],
+     "geo_mean_contraction": 0.5602,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 1682.3785
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.4382,
+      0.2509,
+      0.4157,
+      0.8463,
+      0.6414,
+      0.8626,
+      0.669,
+      0.5005
+     ],
+     "geo_mean_contraction": 0.5336,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 3457.9195
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.4184,
+      0.2363,
+      0.3968,
+      0.8311,
+      0.5956,
+      0.8389,
+      0.647,
+      0.481
+     ],
+     "geo_mean_contraction": 0.5096,
+     "in90_frac": 0.9688,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 3539.8643
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.6773,
+     0.6789,
+     0.6798,
+     0.6801,
+     0.6802
+    ],
+    "D_net": [
+     0.0887,
+     0.2713,
+     0.4585,
+     0.5569,
+     0.6303
+    ],
+    "D_ridge": [
+     0.4023,
+     0.5293,
+     0.554,
+     0.5604,
+     0.5617
+    ],
+    "D": [
+     0.4023,
+     0.5293,
+     0.554,
+     0.5604,
+     0.6303
+    ],
+    "D_is": [
+     "Dr@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 0.0,
+    "D": 363.0298,
+    "D_net": 368.9581,
+    "D_ridge": null
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 363.0298,
+     "N_S": 0.0,
+     "ratio": 181.5149,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": -0.0037,
+     "se_worlds": 0.0015,
+     "z_worlds": -2.4792,
+     "n_worlds_positive": 0,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": -0.0021,
+     "se_worlds": 0.0008,
+     "z_worlds": -2.6129,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": -0.0012,
+     "se_worlds": 0.0005,
+     "z_worlds": -2.236,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": -0.0009,
+     "se_worlds": 0.0004,
+     "z_worlds": -2.0862,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": -0.0008,
+     "se_worlds": 0.0005,
+     "z_worlds": -1.6646,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": 0.0059,
+     "se_worlds": 0.0028,
+     "z_worlds": 2.1046,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0075,
+     "se_worlds": 0.0024,
+     "z_worlds": 3.1054,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0084,
+     "se_worlds": 0.0024,
+     "z_worlds": 3.5181,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0087,
+     "se_worlds": 0.0024,
+     "z_worlds": 3.5738,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0088,
+     "se_worlds": 0.0024,
+     "z_worlds": 3.5915,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": 0.0126,
+      "sigma_se_worlds": 0.0032,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.6051,
+      "rho_se_worlds": 0.2011,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "8": {
+      "sigma": 0.0126,
+      "sigma_se_worlds": 0.0032,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.7804,
+      "rho_se_worlds": 0.1043,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0126,
+      "sigma_se_worlds": 0.0032,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.8724,
+      "rho_se_worlds": 0.0686,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0126,
+      "sigma_se_worlds": 0.0032,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.9041,
+      "rho_se_worlds": 0.0589,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0126,
+      "sigma_se_worlds": 0.0032,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.9174,
+      "rho_se_worlds": 0.0612,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.0463,
+      "sigma_se_worlds": 0.0017,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.8926,
+      "rho_se_worlds": 0.0398,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0463,
+      "sigma_se_worlds": 0.0017,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.9403,
+      "rho_se_worlds": 0.0209,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0463,
+      "sigma_se_worlds": 0.0016,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.9653,
+      "rho_se_worlds": 0.0139,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0463,
+      "sigma_se_worlds": 0.0017,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.9739,
+      "rho_se_worlds": 0.012,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0463,
+      "sigma_se_worlds": 0.0017,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.9775,
+      "rho_se_worlds": 0.0126,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": 0.0126,
+   "emulator": {
+    "emulator": {
+     "N_theta": 768,
+     "K": 8,
+     "q": 8,
+     "d": 8,
+     "deg_mean": 2,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.1319753466994142,
+      "2": 0.07046795731899616,
+      "3": 0.07584195745364747
+     },
+     "cv_chi2_mean_with_misfit": 7.779348686042298,
+     "chi2_expected": 8.0,
+     "cv_r2_of_mean": [
+      0.9333059273342976,
+      0.9798533315777492,
+      0.8825277149989761,
+      0.9531925771976374,
+      0.8222563222605832,
+      0.9468867745267117,
+      0.950303594075432,
+      0.9679415516497173
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.3528401934722159,
+      0.30037773499543285,
+      0.29148654490868015,
+      0.32855161358023455,
+      0.27917181008647896,
+      0.3006704593924592,
+      0.27838907551127623,
+      0.29214431618403647
+     ]
+    },
+    "projection_r2": [
+     0.4765674259326099,
+     0.759380413235818,
+     0.4594121940054232,
+     0.19019190530110563,
+     0.10917778905871012,
+     0.16451275243333296,
+     0.3660513334906108,
+     0.5192070004735607
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n8/scores.npz; r5-ladder-002:out/n8/identification.json [summary]"
+  },
+  "n8|object": {
+   "n_hidden": 8,
+   "view": "object",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 5.8321
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 2.8889
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 2.1478
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 2.1418
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 2.1432
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 4.5216
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 4.5199
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n8/train_info.json"
+   },
+   "dim": 144,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.4384,
+     "se_items": 0.0074
+    },
+    "D@128": {
+     "mean": 0.371,
+     "se_items": 0.0079
+    },
+    "D@2": {
+     "mean": -0.2919,
+     "se_items": 0.0219
+    },
+    "D@32": {
+     "mean": 0.3011,
+     "se_items": 0.009
+    },
+    "D@512": {
+     "mean": 0.412,
+     "se_items": 0.0075
+    },
+    "D@8": {
+     "mean": 0.0892,
+     "se_items": 0.0141
+    },
+    "Dr@128": {
+     "mean": 0.3805,
+     "se_items": 0.0073
+    },
+    "Dr@2": {
+     "mean": -0.1759,
+     "se_items": 0.0275
+    },
+    "Dr@32": {
+     "mean": 0.3603,
+     "se_items": 0.0079
+    },
+    "Dr@512": {
+     "mean": 0.3844,
+     "se_items": 0.0073
+    },
+    "Dr@8": {
+     "mean": 0.2489,
+     "se_items": 0.0161
+    },
+    "P0": {
+     "mean": 0.4384,
+     "se_items": 0.0074
+    },
+    "P0u": {
+     "mean": 0.419,
+     "se_items": 0.0075
+    },
+    "PM": {
+     "mean": 0.4376,
+     "se_items": 0.0073
+    },
+    "S@128": {
+     "mean": 0.4387,
+     "se_items": 0.0075
+    },
+    "S@2": {
+     "mean": 0.4377,
+     "se_items": 0.0075
+    },
+    "S@32": {
+     "mean": 0.4387,
+     "se_items": 0.0075
+    },
+    "S@512": {
+     "mean": 0.4388,
+     "se_items": 0.0075
+    },
+    "S@8": {
+     "mean": 0.4385,
+     "se_items": 0.0075
+    },
+    "plugPM": {
+     "mean": 0.8329,
+     "se_items": 0.0069
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.7023,
+     0.5807,
+     0.441,
+     0.3004,
+     0.1675
+    ],
+    "PM": [
+     0.7037,
+     0.5832,
+     0.4399,
+     0.2987,
+     0.1627
+    ],
+    "P0": [
+     0.7038,
+     0.5823,
+     0.4405,
+     0.3003,
+     0.1653
+    ],
+    "plugPM": [
+     0.972,
+     0.9473,
+     0.8922,
+     0.7549,
+     0.5979
+    ]
+   },
+   "pooled_L": {
+    "C": 2.0983,
+    "D@128": 2.2623,
+    "D@2": 3.8368,
+    "D@32": 2.427,
+    "D@512": 2.1648,
+    "D@8": 2.9347,
+    "Dr@128": 2.2472,
+    "Dr@2": 3.5132,
+    "Dr@32": 2.2917,
+    "Dr@512": 2.2386,
+    "Dr@8": 2.5375,
+    "K": 3.3655,
+    "O": 0.6902,
+    "P0": 2.0975,
+    "P0u": 2.1477,
+    "PM": 2.0991,
+    "S@128": 2.0973,
+    "S@2": 2.0999,
+    "S@32": 2.0974,
+    "S@512": 2.0972,
+    "S@8": 2.098,
+    "plugPM": 1.0635
+   },
+   "predictable_fraction_L": 0.7949,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.0008,
+     "se_worlds": 0.001,
+     "z_worlds": 0.7366,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": -0.0001,
+     "se_worlds": 0.0013,
+     "z_worlds": -0.0409,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.1671,
+     "se_items": 0.0069,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.0193,
+     "se_worlds": 0.0012,
+     "z_worlds": 15.9172,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.7816,
+      0.6126,
+      0.6975,
+      0.8437,
+      0.7931,
+      0.9229,
+      0.8063,
+      0.9229
+     ],
+     "geo_mean_contraction": 0.7776,
+     "in90_frac": 0.9062,
+     "hpd_le_90_frac": 0.5,
+     "ess_min": 1964.5058
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.7712,
+      0.5516,
+      0.6783,
+      0.8763,
+      0.7606,
+      0.9179,
+      0.7591,
+      0.8826
+     ],
+     "geo_mean_contraction": 0.7615,
+     "in90_frac": 0.9375,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 4595.1117
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.7376,
+      0.4725,
+      0.609,
+      0.8431,
+      0.727,
+      0.8869,
+      0.6801,
+      0.8386
+     ],
+     "geo_mean_contraction": 0.7086,
+     "in90_frac": 0.9688,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 5121.9793
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.704,
+      0.4291,
+      0.5868,
+      0.8105,
+      0.6697,
+      0.8532,
+      0.5939,
+      0.8006
+     ],
+     "geo_mean_contraction": 0.6616,
+     "in90_frac": 0.9375,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 3714.1158
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.6601,
+      0.3978,
+      0.556,
+      0.7691,
+      0.6207,
+      0.8179,
+      0.5421,
+      0.7511
+     ],
+     "geo_mean_contraction": 0.618,
+     "in90_frac": 0.9688,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 1573.6847
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.4377,
+     0.4385,
+     0.4387,
+     0.4387,
+     0.4388
+    ],
+    "D_net": [
+     -0.2919,
+     0.0892,
+     0.3011,
+     0.371,
+     0.412
+    ],
+    "D_ridge": [
+     -0.1759,
+     0.2489,
+     0.3603,
+     0.3805,
+     0.3844
+    ],
+    "D": [
+     -0.1759,
+     0.2489,
+     0.3603,
+     0.3805,
+     0.412
+    ],
+    "D_is": [
+     "Dr@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 0.0,
+    "D": 237.7128,
+    "D_net": 283.9401,
+    "D_ridge": null
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 237.7128,
+     "N_S": 0.0,
+     "ratio": 118.8564,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": -0.0007,
+     "se_worlds": 0.0014,
+     "z_worlds": -0.4994,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0001,
+     "se_worlds": 0.0009,
+     "z_worlds": 0.0817,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0003,
+     "se_worlds": 0.0009,
+     "z_worlds": 0.3489,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0003,
+     "se_worlds": 0.0008,
+     "z_worlds": 0.3974,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0004,
+     "se_worlds": 0.0007,
+     "z_worlds": 0.5194,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": -0.0007,
+     "se_worlds": 0.0017,
+     "z_worlds": -0.4282,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0,
+     "se_worlds": 0.0013,
+     "z_worlds": 0.0157,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0002,
+     "se_worlds": 0.0013,
+     "z_worlds": 0.1867,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0003,
+     "se_worlds": 0.0014,
+     "z_worlds": 0.2043,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0003,
+     "se_worlds": 0.0013,
+     "z_worlds": 0.253,
+     "n_worlds_positive": 4,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": -0.0006,
+      "sigma_se_worlds": 0.0024,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 2.9063,
+      "rho_se_worlds": 660.544,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": -0.0006,
+      "sigma_se_worlds": 0.0023,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.5898,
+      "rho_se_worlds": 151.7285,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "32": {
+      "sigma": -0.0006,
+      "sigma_se_worlds": 0.0023,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": -0.1341,
+      "rho_se_worlds": 159.2176,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "128": {
+      "sigma": -0.0006,
+      "sigma_se_worlds": 0.0023,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": -0.1842,
+      "rho_se_worlds": 43.2755,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "512": {
+      "sigma": -0.0006,
+      "sigma_se_worlds": 0.0023,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": -0.4081,
+      "rho_se_worlds": 113.5484,
+      "pass_sigma": false,
+      "pass_rho": true
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.039,
+      "sigma_se_worlds": 0.0028,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.9683,
+      "rho_se_worlds": 0.0682,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.039,
+      "sigma_se_worlds": 0.0026,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 1.0068,
+      "rho_se_worlds": 0.042,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.039,
+      "sigma_se_worlds": 0.0027,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 1.0189,
+      "rho_se_worlds": 0.0381,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.039,
+      "sigma_se_worlds": 0.0028,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 1.0197,
+      "rho_se_worlds": 0.0367,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.039,
+      "sigma_se_worlds": 0.0027,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 1.0234,
+      "rho_se_worlds": 0.034,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": -0.0006,
+   "emulator": {
+    "emulator": {
+     "N_theta": 768,
+     "K": 8,
+     "q": 8,
+     "d": 8,
+     "deg_mean": 2,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.18197154604046262,
+      "2": 0.10914400474876741,
+      "3": 0.11771138089303015
+     },
+     "cv_chi2_mean_with_misfit": 7.538104991527965,
+     "chi2_expected": 8.0,
+     "cv_r2_of_mean": [
+      0.8951628333447743,
+      0.9178037760047237,
+      0.9390811658812849,
+      0.914296848935308,
+      0.7154313249285024,
+      0.9168246420347481,
+      0.9255873236272097,
+      0.9026817000751467
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.5831507079416758,
+      0.30055140437983735,
+      0.38650789052070345,
+      0.2468113146316013,
+      0.4028660503119336,
+      0.27617326480505433,
+      0.28561955019811547,
+      0.35465100801303334
+     ]
+    },
+    "projection_r2": [
+     0.34740812000898313,
+     0.5074514566787272,
+     0.32597889156566695,
+     0.1717550385080594,
+     0.16598287184124128,
+     0.1521825766467224,
+     0.292889020665276,
+     0.20233937017694748
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n8/scores.npz; r5-ladder-002:out/n8/identification.json [summary]"
+  },
+  "n8|pop": {
+   "n_hidden": 8,
+   "view": "pop",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 5.3226
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 2.6677
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 1.0731
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 1.0609
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 1.0633
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 2.2043
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 2.2093
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n8/train_info.json"
+   },
+   "dim": 5,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.393,
+     "se_items": 0.0142
+    },
+    "D@128": {
+     "mean": 0.3245,
+     "se_items": 0.0166
+    },
+    "D@2": {
+     "mean": -0.5615,
+     "se_items": 0.0545
+    },
+    "D@32": {
+     "mean": 0.2193,
+     "se_items": 0.0212
+    },
+    "D@512": {
+     "mean": 0.367,
+     "se_items": 0.0156
+    },
+    "D@8": {
+     "mean": -0.0781,
+     "se_items": 0.0361
+    },
+    "Dr@128": {
+     "mean": 0.3583,
+     "se_items": 0.0141
+    },
+    "Dr@2": {
+     "mean": -0.5714,
+     "se_items": 0.055
+    },
+    "Dr@32": {
+     "mean": 0.3244,
+     "se_items": 0.0147
+    },
+    "Dr@512": {
+     "mean": 0.3629,
+     "se_items": 0.0145
+    },
+    "Dr@8": {
+     "mean": 0.1823,
+     "se_items": 0.0243
+    },
+    "P0": {
+     "mean": 0.3739,
+     "se_items": 0.0146
+    },
+    "P0u": {
+     "mean": 0.3625,
+     "se_items": 0.0159
+    },
+    "PM": {
+     "mean": 0.369,
+     "se_items": 0.015
+    },
+    "S@128": {
+     "mean": 0.3921,
+     "se_items": 0.0146
+    },
+    "S@2": {
+     "mean": 0.3897,
+     "se_items": 0.0146
+    },
+    "S@32": {
+     "mean": 0.3902,
+     "se_items": 0.0145
+    },
+    "S@512": {
+     "mean": 0.3915,
+     "se_items": 0.0146
+    },
+    "S@8": {
+     "mean": 0.3928,
+     "se_items": 0.0146
+    },
+    "plugPM": {
+     "mean": 0.7588,
+     "se_items": 0.0112
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.6563,
+     0.5047,
+     0.3263,
+     0.2473,
+     0.2303
+    ],
+    "PM": [
+     0.6528,
+     0.4937,
+     0.3033,
+     0.2166,
+     0.1785
+    ],
+    "P0": [
+     0.6513,
+     0.4915,
+     0.3134,
+     0.2298,
+     0.1834
+    ],
+    "plugPM": [
+     0.8775,
+     0.8633,
+     0.809,
+     0.7154,
+     0.5288
+    ]
+   },
+   "pooled_L": {
+    "C": 2.1835,
+    "D@128": 2.3606,
+    "D@2": 4.6195,
+    "D@32": 2.6406,
+    "D@512": 2.2521,
+    "D@8": 3.4095,
+    "Dr@128": 2.2871,
+    "Dr@2": 4.6676,
+    "Dr@32": 2.3674,
+    "Dr@512": 2.2753,
+    "Dr@8": 2.7311,
+    "K": 3.3249,
+    "O": 0.5576,
+    "P0": 2.2301,
+    "P0u": 2.2612,
+    "PM": 2.2427,
+    "S@128": 2.1872,
+    "S@2": 2.192,
+    "S@32": 2.192,
+    "S@512": 2.189,
+    "S@8": 2.185,
+    "plugPM": 1.169
+   },
+   "predictable_fraction_L": 0.8323,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.024,
+     "se_worlds": 0.0048,
+     "z_worlds": 4.9847,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": 0.0191,
+     "se_worlds": 0.0049,
+     "z_worlds": 3.8789,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.2412,
+     "se_items": 0.0112,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.0304,
+     "se_worlds": 0.008,
+     "z_worlds": 3.8088,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.8085,
+      0.8206,
+      0.7878,
+      0.9607,
+      0.9472,
+      0.9688,
+      0.9321,
+      0.9748
+     ],
+     "geo_mean_contraction": 0.893,
+     "in90_frac": 0.9844,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 1592.6146
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.7357,
+      0.7707,
+      0.7536,
+      0.9489,
+      0.9375,
+      0.957,
+      0.9139,
+      0.9653
+     ],
+     "geo_mean_contraction": 0.8647,
+     "in90_frac": 0.9844,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 1583.8161
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.7195,
+      0.7234,
+      0.7547,
+      0.9201,
+      0.9126,
+      0.9321,
+      0.893,
+      0.9324
+     ],
+     "geo_mean_contraction": 0.8401,
+     "in90_frac": 0.9844,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 4394.0651
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.6736,
+      0.6363,
+      0.6996,
+      0.8887,
+      0.8808,
+      0.9153,
+      0.8393,
+      0.9122
+     ],
+     "geo_mean_contraction": 0.7932,
+     "in90_frac": 0.9531,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 4150.1453
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.6304,
+      0.5501,
+      0.6834,
+      0.8717,
+      0.8786,
+      0.8942,
+      0.7867,
+      0.8958
+     ],
+     "geo_mean_contraction": 0.7564,
+     "in90_frac": 0.9531,
+     "hpd_le_90_frac": 0.625,
+     "ess_min": 4183.1738
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.3897,
+     0.3928,
+     0.3902,
+     0.3921,
+     0.3915
+    ],
+    "D_net": [
+     -0.5615,
+     -0.0781,
+     0.2193,
+     0.3245,
+     0.367
+    ],
+    "D_ridge": [
+     -0.5714,
+     0.1823,
+     0.3244,
+     0.3583,
+     0.3629
+    ],
+    "D": [
+     -0.5615,
+     0.1823,
+     0.3244,
+     0.3583,
+     0.367
+    ],
+    "D_is": [
+     "D@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 0.0,
+    "D": 105.8574,
+    "D_net": 331.1071,
+    "D_ridge": 105.8574
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 105.8574,
+     "N_S": 0.0,
+     "ratio": 52.9287,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": -0.0033,
+     "se_worlds": 0.0051,
+     "z_worlds": -0.6503,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": -0.0002,
+     "se_worlds": 0.0037,
+     "z_worlds": -0.0446,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": -0.0028,
+     "se_worlds": 0.0041,
+     "z_worlds": -0.6721,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": -0.0008,
+     "se_worlds": 0.0048,
+     "z_worlds": -0.1728,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": -0.0014,
+     "se_worlds": 0.0051,
+     "z_worlds": -0.2833,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": 0.0158,
+     "se_worlds": 0.0065,
+     "z_worlds": 2.4117,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0189,
+     "se_worlds": 0.0059,
+     "z_worlds": 3.2293,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0163,
+     "se_worlds": 0.006,
+     "z_worlds": 2.7034,
+     "n_worlds_positive": 5,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0182,
+     "se_worlds": 0.0062,
+     "z_worlds": 2.9376,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0176,
+     "se_worlds": 0.0066,
+     "z_worlds": 2.6734,
+     "n_worlds_positive": 6,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": 0.0408,
+      "sigma_se_worlds": 0.0123,
+      "null_is": "P0",
+      "D_is": "D@2",
+      "rho": 0.817,
+      "rho_se_worlds": 0.3035,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0408,
+      "sigma_se_worlds": 0.0126,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.9686,
+      "rho_se_worlds": 0.2863,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0408,
+      "sigma_se_worlds": 0.0125,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.8167,
+      "rho_se_worlds": 0.2451,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0408,
+      "sigma_se_worlds": 0.0126,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.921,
+      "rho_se_worlds": 0.3542,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0408,
+      "sigma_se_worlds": 0.0132,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.8824,
+      "rho_se_worlds": 0.3217,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.0681,
+      "sigma_se_worlds": 0.0173,
+      "null_is": "P0",
+      "D_is": "D@2",
+      "rho": 0.8903,
+      "rho_se_worlds": 0.1499,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0681,
+      "sigma_se_worlds": 0.0171,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.9812,
+      "rho_se_worlds": 0.1107,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0681,
+      "sigma_se_worlds": 0.017,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.8901,
+      "rho_se_worlds": 0.113,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0681,
+      "sigma_se_worlds": 0.0153,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.9527,
+      "rho_se_worlds": 0.1427,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0601,
+      "sigma_se_worlds": 0.0145,
+      "null_is": "D",
+      "D_is": "D@512",
+      "rho": 0.9295,
+      "rho_se_worlds": 0.1409,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": 0.0408,
+   "emulator": {
+    "emulator": {
+     "N_theta": 768,
+     "K": 8,
+     "q": 8,
+     "d": 8,
+     "deg_mean": 2,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.2538857583230429,
+      "2": 0.12351281059069597,
+      "3": 0.1258366902638465
+     },
+     "cv_chi2_mean_with_misfit": 7.721806701357505,
+     "chi2_expected": 8.0,
+     "cv_r2_of_mean": [
+      0.8877156952955372,
+      0.9159206447410507,
+      0.9224946338933547,
+      0.8744002400574593,
+      0.7889333289469005,
+      0.8640135240161182,
+      0.9172838149425347,
+      0.8412028174638667
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.47291458668746567,
+      0.30478952997592546,
+      0.46550710342752355,
+      0.268034827918805,
+      0.45764191793273096,
+      0.3658978730552557,
+      0.24218324995620977,
+      0.3232868682298366
+     ]
+    },
+    "projection_r2": [
+     0.327737982192994,
+     0.3007238801786032,
+     0.30618862644319156,
+     0.0438744230789625,
+     0.05131500931691979,
+     0.10158697405655215,
+     0.1004204299604734,
+     0.03898101600568982
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n8/scores.npz; r5-ladder-002:out/n8/identification.json [summary]"
+  },
+  "n1|block": {
+   "n_hidden": 1,
+   "view": "block",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 20.2618
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 11.6892
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 21.2553
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 21.251
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 21.2532
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 45.0843
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 45.0997
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n1/train_info.json"
+   },
+   "dim": 192,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.6883,
+     "se_items": 0.0029
+    },
+    "D@128": {
+     "mean": 0.5556,
+     "se_items": 0.0034
+    },
+    "D@2": {
+     "mean": 0.0809,
+     "se_items": 0.0067
+    },
+    "D@32": {
+     "mean": 0.4688,
+     "se_items": 0.0044
+    },
+    "D@512": {
+     "mean": 0.6254,
+     "se_items": 0.0031
+    },
+    "D@8": {
+     "mean": 0.2724,
+     "se_items": 0.0066
+    },
+    "Dr@128": {
+     "mean": 0.5606,
+     "se_items": 0.0025
+    },
+    "Dr@2": {
+     "mean": 0.4224,
+     "se_items": 0.0082
+    },
+    "Dr@32": {
+     "mean": 0.5566,
+     "se_items": 0.0025
+    },
+    "Dr@512": {
+     "mean": 0.5621,
+     "se_items": 0.0025
+    },
+    "Dr@8": {
+     "mean": 0.5331,
+     "se_items": 0.0026
+    },
+    "P0": {
+     "mean": 0.6844,
+     "se_items": 0.0028
+    },
+    "P0u": {
+     "mean": 0.6525,
+     "se_items": 0.0028
+    },
+    "PM": {
+     "mean": 0.6832,
+     "se_items": 0.0029
+    },
+    "S@128": {
+     "mean": 0.6876,
+     "se_items": 0.0029
+    },
+    "S@2": {
+     "mean": 0.6875,
+     "se_items": 0.0029
+    },
+    "S@32": {
+     "mean": 0.6875,
+     "se_items": 0.0029
+    },
+    "S@512": {
+     "mean": 0.6875,
+     "se_items": 0.0029
+    },
+    "S@8": {
+     "mean": 0.6875,
+     "se_items": 0.0029
+    },
+    "plugPM": {
+     "mean": 0.873,
+     "se_items": 0.0031
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.9343,
+     0.875,
+     0.7512,
+     0.5537,
+     0.3274
+    ],
+    "PM": [
+     0.9335,
+     0.8729,
+     0.7454,
+     0.5462,
+     0.3182
+    ],
+    "P0": [
+     0.9335,
+     0.8731,
+     0.7469,
+     0.5478,
+     0.3205
+    ],
+    "plugPM": [
+     0.9755,
+     0.9608,
+     0.9282,
+     0.8366,
+     0.6638
+    ]
+   },
+   "pooled_L": {
+    "C": 1.2843,
+    "D@128": 1.6836,
+    "D@2": 3.1189,
+    "D@32": 1.9474,
+    "D@512": 1.4718,
+    "D@8": 2.5289,
+    "Dr@128": 1.6732,
+    "Dr@2": 2.0689,
+    "Dr@32": 1.6845,
+    "Dr@512": 1.6691,
+    "Dr@8": 1.7515,
+    "K": 3.5272,
+    "O": 0.3587,
+    "P0": 1.2962,
+    "P0u": 1.3909,
+    "PM": 1.2996,
+    "S@128": 1.2864,
+    "S@2": 1.2864,
+    "S@32": 1.2865,
+    "S@512": 1.2864,
+    "S@8": 1.2864,
+    "plugPM": 0.7277
+   },
+   "predictable_fraction_L": 0.8983,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.0051,
+     "se_worlds": 0.0012,
+     "z_worlds": 4.2986,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": 0.0039,
+     "se_worlds": 0.001,
+     "z_worlds": 3.769,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.127,
+     "se_items": 0.0031,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.0358,
+     "se_worlds": 0.0021,
+     "z_worlds": 16.8825,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.2748
+     ],
+     "geo_mean_contraction": 0.2699,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 2530.9203
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.1618
+     ],
+     "geo_mean_contraction": 0.1609,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 2807.294
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.0852
+     ],
+     "geo_mean_contraction": 0.0846,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 1513.077
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.0446
+     ],
+     "geo_mean_contraction": 0.0443,
+     "in90_frac": 0.75,
+     "hpd_le_90_frac": 0.625,
+     "ess_min": 15355.6302
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.0265
+     ],
+     "geo_mean_contraction": 0.0263,
+     "in90_frac": 0.875,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 15166.8807
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.6875,
+     0.6875,
+     0.6875,
+     0.6876,
+     0.6875
+    ],
+    "D_net": [
+     0.0809,
+     0.2724,
+     0.4688,
+     0.5556,
+     0.6254
+    ],
+    "D_ridge": [
+     0.4224,
+     0.5331,
+     0.5566,
+     0.5606,
+     0.5621
+    ],
+    "D": [
+     0.4224,
+     0.5331,
+     0.5566,
+     0.5606,
+     0.6254
+    ],
+    "D_is": [
+     "Dr@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 0.0,
+    "D": 451.4251,
+    "D_net": 455.4704,
+    "D_ridge": null
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 451.4251,
+     "N_S": 0.0,
+     "ratio": 225.7125,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": -0.0008,
+     "se_worlds": 0.0006,
+     "z_worlds": -1.2958,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": -0.0008,
+     "se_worlds": 0.0006,
+     "z_worlds": -1.3631,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": -0.0008,
+     "se_worlds": 0.0005,
+     "z_worlds": -1.4428,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": -0.0008,
+     "se_worlds": 0.0006,
+     "z_worlds": -1.3656,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": -0.0008,
+     "se_worlds": 0.0006,
+     "z_worlds": -1.3857,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": 0.0032,
+     "se_worlds": 0.0009,
+     "z_worlds": 3.633,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0032,
+     "se_worlds": 0.0009,
+     "z_worlds": 3.672,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0032,
+     "se_worlds": 0.0009,
+     "z_worlds": 3.5198,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0032,
+     "se_worlds": 0.0009,
+     "z_worlds": 3.5404,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0032,
+     "se_worlds": 0.0009,
+     "z_worlds": 3.4833,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": 0.0053,
+      "sigma_se_worlds": 0.0014,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.8199,
+      "rho_se_worlds": 0.1426,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0053,
+      "sigma_se_worlds": 0.0014,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.8197,
+      "rho_se_worlds": 0.1387,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0053,
+      "sigma_se_worlds": 0.0014,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.8174,
+      "rho_se_worlds": 0.1318,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0053,
+      "sigma_se_worlds": 0.0014,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.8241,
+      "rho_se_worlds": 0.1345,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0053,
+      "sigma_se_worlds": 0.0014,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.8205,
+      "rho_se_worlds": 0.1384,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.0475,
+      "sigma_se_worlds": 0.0025,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.9799,
+      "rho_se_worlds": 0.016,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0475,
+      "sigma_se_worlds": 0.0025,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.9798,
+      "rho_se_worlds": 0.0156,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0475,
+      "sigma_se_worlds": 0.0025,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.9796,
+      "rho_se_worlds": 0.0147,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0475,
+      "sigma_se_worlds": 0.0026,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.9803,
+      "rho_se_worlds": 0.0149,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0475,
+      "sigma_se_worlds": 0.0025,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.9799,
+      "rho_se_worlds": 0.015,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": 0.0053,
+   "emulator": {
+    "emulator": {
+     "N_theta": 384,
+     "K": 8,
+     "q": 1,
+     "d": 1,
+     "deg_mean": 2,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.027594848080879156,
+      "2": 0.02555789065768077,
+      "3": 0.025735555493262285
+     },
+     "cv_chi2_mean_with_misfit": 1.0010227418246271,
+     "chi2_expected": 1.0,
+     "cv_r2_of_mean": [
+      0.9744421750744112
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.020361168231831952
+     ]
+    },
+    "projection_r2": [
+     0.82655589144678
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n1/scores.npz; r5-ladder-002:out/n1/identification.json [summary]"
+  },
+  "n1|object": {
+   "n_hidden": 1,
+   "view": "object",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 9.0236
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 6.0865
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 2.1473
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 2.1422
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 2.1418
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 4.5189
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 4.516
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n1/train_info.json"
+   },
+   "dim": 144,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.4365,
+     "se_items": 0.007
+    },
+    "D@128": {
+     "mean": 0.371,
+     "se_items": 0.0072
+    },
+    "D@2": {
+     "mean": -0.3041,
+     "se_items": 0.0201
+    },
+    "D@32": {
+     "mean": 0.3114,
+     "se_items": 0.0081
+    },
+    "D@512": {
+     "mean": 0.4105,
+     "se_items": 0.0071
+    },
+    "D@8": {
+     "mean": 0.1474,
+     "se_items": 0.0112
+    },
+    "Dr@128": {
+     "mean": 0.3822,
+     "se_items": 0.0065
+    },
+    "Dr@2": {
+     "mean": -0.0365,
+     "se_items": 0.024
+    },
+    "Dr@32": {
+     "mean": 0.3658,
+     "se_items": 0.0068
+    },
+    "Dr@512": {
+     "mean": 0.3842,
+     "se_items": 0.0065
+    },
+    "Dr@8": {
+     "mean": 0.232,
+     "se_items": 0.0287
+    },
+    "P0": {
+     "mean": 0.4336,
+     "se_items": 0.007
+    },
+    "P0u": {
+     "mean": 0.421,
+     "se_items": 0.007
+    },
+    "PM": {
+     "mean": 0.433,
+     "se_items": 0.0069
+    },
+    "S@128": {
+     "mean": 0.4368,
+     "se_items": 0.0071
+    },
+    "S@2": {
+     "mean": 0.4367,
+     "se_items": 0.007
+    },
+    "S@32": {
+     "mean": 0.4368,
+     "se_items": 0.0071
+    },
+    "S@512": {
+     "mean": 0.4368,
+     "se_items": 0.0071
+    },
+    "S@8": {
+     "mean": 0.4367,
+     "se_items": 0.0071
+    },
+    "plugPM": {
+     "mean": 0.837,
+     "se_items": 0.0054
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.6971,
+     0.5815,
+     0.4449,
+     0.3043,
+     0.1545
+    ],
+    "PM": [
+     0.6957,
+     0.5803,
+     0.4409,
+     0.3012,
+     0.1471
+    ],
+    "P0": [
+     0.6947,
+     0.5809,
+     0.443,
+     0.3023,
+     0.1472
+    ],
+    "plugPM": [
+     0.9592,
+     0.9449,
+     0.8704,
+     0.7771,
+     0.6335
+    ]
+   },
+   "pooled_L": {
+    "C": 2.1015,
+    "D@128": 2.2593,
+    "D@2": 3.8659,
+    "D@32": 2.4001,
+    "D@512": 2.1669,
+    "D@8": 2.7875,
+    "Dr@128": 2.2397,
+    "Dr@2": 3.2019,
+    "Dr@32": 2.275,
+    "Dr@512": 2.2356,
+    "Dr@8": 2.5664,
+    "K": 3.353,
+    "O": 0.7015,
+    "P0": 2.1079,
+    "P0u": 2.1412,
+    "PM": 2.1095,
+    "S@128": 2.101,
+    "S@2": 2.1013,
+    "S@32": 2.1011,
+    "S@512": 2.1011,
+    "S@8": 2.1013,
+    "plugPM": 1.072
+   },
+   "predictable_fraction_L": 0.7908,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.0034,
+     "se_worlds": 0.0008,
+     "z_worlds": 4.3112,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": 0.0028,
+     "se_worlds": 0.0009,
+     "z_worlds": 3.2938,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.163,
+     "se_items": 0.0054,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.0155,
+     "se_worlds": 0.0007,
+     "z_worlds": 21.919,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.2996
+     ],
+     "geo_mean_contraction": 0.2977,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 5337.2693
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.163
+     ],
+     "geo_mean_contraction": 0.1611,
+     "in90_frac": 0.875,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 2719.8757
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.0875
+     ],
+     "geo_mean_contraction": 0.0858,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 1700.3233
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.046
+     ],
+     "geo_mean_contraction": 0.045,
+     "in90_frac": 0.75,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 15140.5161
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.0263
+     ],
+     "geo_mean_contraction": 0.0258,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 15094.4784
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.4367,
+     0.4367,
+     0.4368,
+     0.4368,
+     0.4368
+    ],
+    "D_net": [
+     -0.3041,
+     0.1474,
+     0.3114,
+     0.371,
+     0.4105
+    ],
+    "D_ridge": [
+     -0.0365,
+     0.232,
+     0.3658,
+     0.3822,
+     0.3842
+    ],
+    "D": [
+     -0.0365,
+     0.232,
+     0.3658,
+     0.3822,
+     0.4105
+    ],
+    "D_is": [
+     "Dr@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 0.0,
+    "D": 215.2206,
+    "D_net": 275.3445,
+    "D_ridge": null
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 215.2206,
+     "N_S": 0.0,
+     "ratio": 107.6103,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": 0.0002,
+     "se_worlds": 0.0007,
+     "z_worlds": 0.3007,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0002,
+     "se_worlds": 0.0007,
+     "z_worlds": 0.3083,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0003,
+     "se_worlds": 0.0007,
+     "z_worlds": 0.436,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0003,
+     "se_worlds": 0.0008,
+     "z_worlds": 0.4628,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0003,
+     "se_worlds": 0.0007,
+     "z_worlds": 0.4271,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": 0.003,
+     "se_worlds": 0.0009,
+     "z_worlds": 3.2666,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0031,
+     "se_worlds": 0.001,
+     "z_worlds": 3.1562,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0032,
+     "se_worlds": 0.001,
+     "z_worlds": 3.2371,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0032,
+     "se_worlds": 0.001,
+     "z_worlds": 3.2157,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0032,
+     "se_worlds": 0.001,
+     "z_worlds": 3.2124,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": 0.0052,
+      "sigma_se_worlds": 0.0015,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 1.0277,
+      "rho_se_worlds": 0.4744,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0052,
+      "sigma_se_worlds": 0.0015,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 1.0316,
+      "rho_se_worlds": 0.396,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0052,
+      "sigma_se_worlds": 0.0015,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 1.0663,
+      "rho_se_worlds": 0.3258,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0052,
+      "sigma_se_worlds": 0.0015,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 1.0756,
+      "rho_se_worlds": 0.3377,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0052,
+      "sigma_se_worlds": 0.0015,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 1.0659,
+      "rho_se_worlds": 0.3322,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.0317,
+      "sigma_se_worlds": 0.0015,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 1.0045,
+      "rho_se_worlds": 0.0407,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "8": {
+      "sigma": 0.0317,
+      "sigma_se_worlds": 0.0015,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 1.0051,
+      "rho_se_worlds": 0.0429,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0317,
+      "sigma_se_worlds": 0.0015,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 1.0108,
+      "rho_se_worlds": 0.0445,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0317,
+      "sigma_se_worlds": 0.0014,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 1.0123,
+      "rho_se_worlds": 0.0444,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0317,
+      "sigma_se_worlds": 0.0014,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 1.0107,
+      "rho_se_worlds": 0.0431,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": 0.0052,
+   "emulator": {
+    "emulator": {
+     "N_theta": 384,
+     "K": 8,
+     "q": 1,
+     "d": 1,
+     "deg_mean": 3,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.02363475435555614,
+      "2": 0.022207932110919353,
+      "3": 0.021098458277627376
+     },
+     "cv_chi2_mean_with_misfit": 0.9735851255532605,
+     "chi2_expected": 1.0,
+     "cv_r2_of_mean": [
+      0.9789017085075188
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.0
+     ]
+    },
+    "projection_r2": [
+     0.849176323318358
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n1/scores.npz; r5-ladder-002:out/n1/identification.json [summary]"
+  },
+  "n1|pop": {
+   "n_hidden": 1,
+   "view": "pop",
+   "nets": {
+    "cond": {
+     "steps": 6000,
+     "steps_asked": 6000,
+     "stopped_early": null,
+     "seconds": 7.0729
+    },
+    "P0u": {
+     "steps": 3000,
+     "steps_asked": 3000,
+     "stopped_early": null,
+     "seconds": 4.5396
+    },
+    "D|group0|batch0": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 1.0572
+    },
+    "D|group0|batch1": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 1.0758
+    },
+    "D|group0|batch2": {
+     "steps": 1200,
+     "steps_asked": 1200,
+     "stopped_early": null,
+     "seconds": 1.0758
+    },
+    "D|group1|batch0": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 2.225
+    },
+    "D|group1|batch1": {
+     "steps": 2500,
+     "steps_asked": 2500,
+     "stopped_early": null,
+     "seconds": 2.2311
+    },
+    "any_schedule_cut": false,
+    "source": "r5-ladder-002:out/n1/train_info.json"
+   },
+   "dim": 5,
+   "n_items": 384,
+   "n_worlds": 8,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "horizons": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "oes": {
+    "C": {
+     "mean": 0.3889,
+     "se_items": 0.0133
+    },
+    "D@128": {
+     "mean": 0.3018,
+     "se_items": 0.0154
+    },
+    "D@2": {
+     "mean": -0.8324,
+     "se_items": 0.0638
+    },
+    "D@32": {
+     "mean": 0.1827,
+     "se_items": 0.0195
+    },
+    "D@512": {
+     "mean": 0.3568,
+     "se_items": 0.0146
+    },
+    "D@8": {
+     "mean": -0.1305,
+     "se_items": 0.0311
+    },
+    "Dr@128": {
+     "mean": 0.3548,
+     "se_items": 0.0131
+    },
+    "Dr@2": {
+     "mean": -0.3366,
+     "se_items": 0.0323
+    },
+    "Dr@32": {
+     "mean": 0.3205,
+     "se_items": 0.0142
+    },
+    "Dr@512": {
+     "mean": 0.3543,
+     "se_items": 0.013
+    },
+    "Dr@8": {
+     "mean": 0.1253,
+     "se_items": 0.0233
+    },
+    "P0": {
+     "mean": 0.3517,
+     "se_items": 0.014
+    },
+    "P0u": {
+     "mean": 0.3619,
+     "se_items": 0.0137
+    },
+    "PM": {
+     "mean": 0.3573,
+     "se_items": 0.0142
+    },
+    "S@128": {
+     "mean": 0.3823,
+     "se_items": 0.0135
+    },
+    "S@2": {
+     "mean": 0.3771,
+     "se_items": 0.0136
+    },
+    "S@32": {
+     "mean": 0.3822,
+     "se_items": 0.0134
+    },
+    "S@512": {
+     "mean": 0.3824,
+     "se_items": 0.0135
+    },
+    "S@8": {
+     "mean": 0.3805,
+     "se_items": 0.0135
+    },
+    "plugPM": {
+     "mean": 0.745,
+     "se_items": 0.0112
+    }
+   },
+   "oes_per_cell": {
+    "C": [
+     0.6268,
+     0.5032,
+     0.3266,
+     0.2545,
+     0.2332
+    ],
+    "PM": [
+     0.6239,
+     0.4818,
+     0.3209,
+     0.1997,
+     0.1603
+    ],
+    "P0": [
+     0.6187,
+     0.4859,
+     0.3063,
+     0.1972,
+     0.1502
+    ],
+    "plugPM": [
+     0.8054,
+     0.8684,
+     0.7958,
+     0.6829,
+     0.5723
+    ]
+   },
+   "pooled_L": {
+    "C": 2.1462,
+    "D@128": 2.3633,
+    "D@2": 5.2787,
+    "D@32": 2.6698,
+    "D@512": 2.2294,
+    "D@8": 3.4662,
+    "Dr@128": 2.241,
+    "Dr@2": 3.9906,
+    "Dr@32": 2.3252,
+    "Dr@512": 2.2414,
+    "Dr@8": 2.7946,
+    "K": 3.2418,
+    "O": 0.5617,
+    "P0": 2.2347,
+    "P0u": 2.215,
+    "PM": 2.2205,
+    "S@128": 2.1619,
+    "S@2": 2.1737,
+    "S@32": 2.1618,
+    "S@512": 2.1616,
+    "S@8": 2.166,
+    "plugPM": 1.2056
+   },
+   "predictable_fraction_L": 0.8267,
+   "params_matter": {
+    "C_minus_PM": {
+     "gap": 0.0315,
+     "se_worlds": 0.0081,
+     "z_worlds": 3.9138,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    },
+    "C_minus_P0": {
+     "gap": 0.0372,
+     "se_worlds": 0.0071,
+     "z_worlds": 5.2234,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "state_given_O_minus_plugPM": {
+     "gap": 0.255,
+     "se_items": 0.0112,
+     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+    },
+    "C_minus_P0u": {
+     "gap": 0.027,
+     "se_worlds": 0.0099,
+     "z_worlds": 2.73,
+     "n_worlds_positive": 8,
+     "n_worlds": 8
+    }
+   },
+   "identifiability_mix": {
+    "2": {
+     "sd_over_prior_sd_per_param": [
+      0.3944
+     ],
+     "geo_mean_contraction": 0.3924,
+     "in90_frac": 0.875,
+     "hpd_le_90_frac": 0.875,
+     "ess_min": 6571.0317
+    },
+    "8": {
+     "sd_over_prior_sd_per_param": [
+      0.2384
+     ],
+     "geo_mean_contraction": 0.2364,
+     "in90_frac": 0.75,
+     "hpd_le_90_frac": 0.75,
+     "ess_min": 4137.4472
+    },
+    "32": {
+     "sd_over_prior_sd_per_param": [
+      0.155
+     ],
+     "geo_mean_contraction": 0.1514,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 2253.706
+    },
+    "128": {
+     "sd_over_prior_sd_per_param": [
+      0.1115
+     ],
+     "geo_mean_contraction": 0.1073,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 1552.1564
+    },
+    "512": {
+     "sd_over_prior_sd_per_param": [
+      0.0933
+     ],
+     "geo_mean_contraction": 0.0895,
+     "in90_frac": 1.0,
+     "hpd_le_90_frac": 1.0,
+     "ess_min": 1520.979
+    }
+   },
+   "curves": {
+    "budgets": [
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "S": [
+     0.3771,
+     0.3805,
+     0.3822,
+     0.3823,
+     0.3824
+    ],
+    "D_net": [
+     -0.8324,
+     -0.1305,
+     0.1827,
+     0.3018,
+     0.3568
+    ],
+    "D_ridge": [
+     -0.3366,
+     0.1253,
+     0.3205,
+     0.3548,
+     0.3543
+    ],
+    "D": [
+     -0.3366,
+     0.1253,
+     0.3205,
+     0.3548,
+     0.3568
+    ],
+    "D_is": [
+     "Dr@2",
+     "Dr@8",
+     "Dr@32",
+     "Dr@128",
+     "D@512"
+    ]
+   },
+   "budget_to_90pct_of_C": {
+    "S": 0.0,
+    "D": 105.3582,
+    "D_net": 431.0664,
+    "D_ridge": 105.3582
+   },
+   "budget_note": "episodes; log2-interpolated; 0 = P0 already there; None = not reached by 512; a value equal to the smallest budget means reached at or before it",
+   "value_of_theory": {
+    "at_90pct_of_C": {
+     "N_D": 105.3582,
+     "N_S": 0.0,
+     "ratio": 52.6791,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": null
+    },
+    "at_skill_of_S_at_2": {
+     "N_D": null,
+     "N_S": 2.0,
+     "ratio": null,
+     "ratio_is_lower_bound": true,
+     "ratio_lower_bound_if_D_never": 256.0
+    }
+   },
+   "S_minus_C": {
+    "2": {
+     "gap": -0.0118,
+     "se_worlds": 0.0046,
+     "z_worlds": -2.553,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": -0.0084,
+     "se_worlds": 0.0041,
+     "z_worlds": -2.0312,
+     "n_worlds_positive": 3,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": -0.0066,
+     "se_worlds": 0.0032,
+     "z_worlds": -2.0552,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": -0.0065,
+     "se_worlds": 0.0033,
+     "z_worlds": -1.9553,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": -0.0065,
+     "se_worlds": 0.0033,
+     "z_worlds": -1.9419,
+     "n_worlds_positive": 2,
+     "n_worlds": 8
+    }
+   },
+   "S_minus_P0": {
+    "2": {
+     "gap": 0.0254,
+     "se_worlds": 0.0073,
+     "z_worlds": 3.4862,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "8": {
+     "gap": 0.0288,
+     "se_worlds": 0.0065,
+     "z_worlds": 4.4105,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "32": {
+     "gap": 0.0306,
+     "se_worlds": 0.0066,
+     "z_worlds": 4.6597,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "128": {
+     "gap": 0.0307,
+     "se_worlds": 0.0065,
+     "z_worlds": 4.7264,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    },
+    "512": {
+     "gap": 0.0307,
+     "se_worlds": 0.0067,
+     "z_worlds": 4.6144,
+     "n_worlds_positive": 7,
+     "n_worlds": 8
+    }
+   },
+   "acceptance": {
+    "P0": {
+     "2": {
+      "sigma": 0.0808,
+      "sigma_se_worlds": 0.0183,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.6898,
+      "rho_se_worlds": 0.1351,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "8": {
+      "sigma": 0.0808,
+      "sigma_se_worlds": 0.0174,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.7768,
+      "rho_se_worlds": 0.1023,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0808,
+      "sigma_se_worlds": 0.0175,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.8233,
+      "rho_se_worlds": 0.0832,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0808,
+      "sigma_se_worlds": 0.0196,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.8222,
+      "rho_se_worlds": 0.0882,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0759,
+      "sigma_se_worlds": 0.0222,
+      "null_is": "D",
+      "D_is": "D@512",
+      "rho": 0.8255,
+      "rho_se_worlds": 0.0883,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    },
+    "P0u": {
+     "2": {
+      "sigma": 0.0628,
+      "sigma_se_worlds": 0.0266,
+      "null_is": "P0",
+      "D_is": "Dr@2",
+      "rho": 0.601,
+      "rho_se_worlds": 0.1864,
+      "pass_sigma": false,
+      "pass_rho": true
+     },
+     "8": {
+      "sigma": 0.0628,
+      "sigma_se_worlds": 0.0257,
+      "null_is": "P0",
+      "D_is": "Dr@8",
+      "rho": 0.7129,
+      "rho_se_worlds": 0.136,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "32": {
+      "sigma": 0.0628,
+      "sigma_se_worlds": 0.0264,
+      "null_is": "P0",
+      "D_is": "Dr@32",
+      "rho": 0.7727,
+      "rho_se_worlds": 0.1076,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "128": {
+      "sigma": 0.0628,
+      "sigma_se_worlds": 0.0259,
+      "null_is": "P0",
+      "D_is": "Dr@128",
+      "rho": 0.7712,
+      "rho_se_worlds": 0.1051,
+      "pass_sigma": false,
+      "pass_rho": false
+     },
+     "512": {
+      "sigma": 0.0628,
+      "sigma_se_worlds": 0.0267,
+      "null_is": "P0",
+      "D_is": "D@512",
+      "rho": 0.7755,
+      "rho_se_worlds": 0.1054,
+      "pass_sigma": false,
+      "pass_rho": false
+     }
+    }
+   },
+   "sigma_vs_P0_only": 0.0808,
+   "emulator": {
+    "emulator": {
+     "N_theta": 384,
+     "K": 8,
+     "q": 1,
+     "d": 1,
+     "deg_mean": 3,
+     "deg_var": 2,
+     "cv_rel_err_by_degree": {
+      "1": 0.05705051527850181,
+      "2": 0.05265742780345582,
+      "3": 0.04886321280690659
+     },
+     "cv_chi2_mean_with_misfit": 1.004268657727982,
+     "chi2_expected": 1.0,
+     "cv_r2_of_mean": [
+      0.9511367917083325
+     ],
+     "misfit_sd_over_episode_sd": [
+      0.10028259535188698
+     ]
+    },
+    "projection_r2": [
+     0.7189577980876891
+    ],
+    "K": 8
+   },
+   "source": "r5-ladder-002:out/n1/scores.npz; r5-ladder-002:out/n1/identification.json [summary]"
+  }
+ },
+ "identification_arms": {
+  "n4|block": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.4039,
+      "sd_over_prior_sd_per_param": [
+       0.5287,
+       0.1956,
+       0.5085,
+       0.5509
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.2712,
+      "sd_over_prior_sd_per_param": [
+       0.3834,
+       0.1227,
+       0.329,
+       0.3916
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.7812
+     },
+     "32": {
+      "geo_mean_contraction": 0.1921,
+      "sd_over_prior_sd_per_param": [
+       0.3034,
+       0.0897,
+       0.1966,
+       0.2978
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.7188
+     },
+     "128": {
+      "geo_mean_contraction": 0.1583,
+      "sd_over_prior_sd_per_param": [
+       0.2714,
+       0.0763,
+       0.1425,
+       0.26
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.7812
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.4001,
+      "sd_over_prior_sd_per_param": [
+       0.5185,
+       0.198,
+       0.5204,
+       0.5393
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.9062
+     },
+     "8": {
+      "geo_mean_contraction": 0.2934,
+      "sd_over_prior_sd_per_param": [
+       0.4129,
+       0.1278,
+       0.3484,
+       0.4569
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9688
+     },
+     "32": {
+      "geo_mean_contraction": 0.223,
+      "sd_over_prior_sd_per_param": [
+       0.3379,
+       0.0899,
+       0.2487,
+       0.3816
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.9688
+     },
+     "128": {
+      "geo_mean_contraction": 0.1947,
+      "sd_over_prior_sd_per_param": [
+       0.3024,
+       0.0782,
+       0.2102,
+       0.3495
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 0.9375
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.378,
+      "sd_over_prior_sd_per_param": [
+       0.4788,
+       0.1959,
+       0.4596,
+       0.5359
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.9375
+     },
+     "8": {
+      "geo_mean_contraction": 0.2483,
+      "sd_over_prior_sd_per_param": [
+       0.3545,
+       0.1215,
+       0.2773,
+       0.3688
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9062
+     },
+     "32": {
+      "geo_mean_contraction": 0.171,
+      "sd_over_prior_sd_per_param": [
+       0.2546,
+       0.0882,
+       0.1784,
+       0.2514
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.875
+     },
+     "128": {
+      "geo_mean_contraction": 0.138,
+      "sd_over_prior_sd_per_param": [
+       0.2076,
+       0.0701,
+       0.1518,
+       0.2073
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 0.7188
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.376,
+      "sd_over_prior_sd_per_param": [
+       0.4385,
+       0.2016,
+       0.5162,
+       0.4914
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 0.9062
+     },
+     "8": {
+      "geo_mean_contraction": 0.2601,
+      "sd_over_prior_sd_per_param": [
+       0.3071,
+       0.1398,
+       0.337,
+       0.3426
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 0.9375
+     },
+     "32": {
+      "geo_mean_contraction": 0.1984,
+      "sd_over_prior_sd_per_param": [
+       0.2403,
+       0.1183,
+       0.2144,
+       0.2747
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 0.9375
+     },
+     "128": {
+      "geo_mean_contraction": 0.1681,
+      "sd_over_prior_sd_per_param": [
+       0.2005,
+       0.1109,
+       0.1705,
+       0.2325
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 0.9688
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": -0.0568,
+     "se_truths": 0.0394,
+     "t": -1.4426,
+     "ratio_of_geo_contractions": 0.9448,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": -0.1668,
+     "se_truths": 0.0696,
+     "t": -2.396,
+     "ratio_of_geo_contractions": 0.8464,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": -0.2658,
+     "se_truths": 0.0825,
+     "t": -3.2203,
+     "ratio_of_geo_contractions": 0.7666,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": -0.3447,
+     "se_truths": 0.0903,
+     "t": -3.8177,
+     "ratio_of_geo_contractions": 0.7084,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": -0.0662,
+     "se_truths": 0.0401,
+     "t": -1.6504,
+     "ratio_of_geo_contractions": 0.936,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": -0.0883,
+     "se_truths": 0.0521,
+     "t": -1.695,
+     "ratio_of_geo_contractions": 0.9155,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": -0.1166,
+     "se_truths": 0.031,
+     "t": -3.7605,
+     "ratio_of_geo_contractions": 0.8899,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": -0.1376,
+     "se_truths": 0.0363,
+     "t": -3.7873,
+     "ratio_of_geo_contractions": 0.8715,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": -0.0093,
+     "se_truths": 0.0268,
+     "t": -0.3484,
+     "ratio_of_geo_contractions": 0.9907,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": 0.0785,
+     "se_truths": 0.0368,
+     "t": 2.1328,
+     "ratio_of_geo_contractions": 1.0816,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": 0.1491,
+     "se_truths": 0.0616,
+     "t": 2.4223,
+     "ratio_of_geo_contractions": 1.1608,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": 0.2071,
+     "se_truths": 0.0564,
+     "t": 3.6719,
+     "ratio_of_geo_contractions": 1.2301,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n4/identification.json [summary, per_truth_budget]"
+  },
+  "n4|object": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.6049,
+      "sd_over_prior_sd_per_param": [
+       0.582,
+       0.5199,
+       0.7354,
+       0.6533
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.4693,
+      "sd_over_prior_sd_per_param": [
+       0.4521,
+       0.4209,
+       0.6094,
+       0.4657
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.8438
+     },
+     "32": {
+      "geo_mean_contraction": 0.3761,
+      "sd_over_prior_sd_per_param": [
+       0.3529,
+       0.3427,
+       0.5393,
+       0.3557
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.875
+     },
+     "128": {
+      "geo_mean_contraction": 0.3171,
+      "sd_over_prior_sd_per_param": [
+       0.2961,
+       0.2981,
+       0.4507,
+       0.2965
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9062
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.5911,
+      "sd_over_prior_sd_per_param": [
+       0.6297,
+       0.5151,
+       0.7879,
+       0.5261
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.4335,
+      "sd_over_prior_sd_per_param": [
+       0.5203,
+       0.333,
+       0.6598,
+       0.3567
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9062
+     },
+     "32": {
+      "geo_mean_contraction": 0.3384,
+      "sd_over_prior_sd_per_param": [
+       0.451,
+       0.2208,
+       0.5438,
+       0.2854
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.9375
+     },
+     "128": {
+      "geo_mean_contraction": 0.2927,
+      "sd_over_prior_sd_per_param": [
+       0.3998,
+       0.1998,
+       0.4966,
+       0.2449
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 0.875
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.608,
+      "sd_over_prior_sd_per_param": [
+       0.5297,
+       0.5554,
+       0.738,
+       0.6869
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.8125
+     },
+     "8": {
+      "geo_mean_contraction": 0.4418,
+      "sd_over_prior_sd_per_param": [
+       0.3747,
+       0.4489,
+       0.6008,
+       0.4667
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.8125
+     },
+     "32": {
+      "geo_mean_contraction": 0.3419,
+      "sd_over_prior_sd_per_param": [
+       0.3124,
+       0.3199,
+       0.5192,
+       0.3244
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.8125
+     },
+     "128": {
+      "geo_mean_contraction": 0.3164,
+      "sd_over_prior_sd_per_param": [
+       0.2774,
+       0.3131,
+       0.5207,
+       0.2973
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 0.8125
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.6165,
+      "sd_over_prior_sd_per_param": [
+       0.6441,
+       0.5044,
+       0.766,
+       0.6206
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 0.9062
+     },
+     "8": {
+      "geo_mean_contraction": 0.4622,
+      "sd_over_prior_sd_per_param": [
+       0.5449,
+       0.3665,
+       0.6687,
+       0.3958
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 0.9062
+     },
+     "32": {
+      "geo_mean_contraction": 0.3846,
+      "sd_over_prior_sd_per_param": [
+       0.496,
+       0.3138,
+       0.6179,
+       0.2682
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 0.8438
+     },
+     "128": {
+      "geo_mean_contraction": 0.3525,
+      "sd_over_prior_sd_per_param": [
+       0.4965,
+       0.2993,
+       0.6012,
+       0.2079
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 0.8438
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": 0.0282,
+     "se_truths": 0.0413,
+     "t": 0.6817,
+     "ratio_of_geo_contractions": 1.0286,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": 0.0192,
+     "se_truths": 0.0639,
+     "t": 0.2995,
+     "ratio_of_geo_contractions": 1.0193,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": 0.0104,
+     "se_truths": 0.0599,
+     "t": 0.1733,
+     "ratio_of_geo_contractions": 1.0104,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": 0.0779,
+     "se_truths": 0.068,
+     "t": 1.1448,
+     "ratio_of_geo_contractions": 1.081,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": 0.0051,
+     "se_truths": 0.0377,
+     "t": 0.1363,
+     "ratio_of_geo_contractions": 1.0051,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": -0.0602,
+     "se_truths": 0.0557,
+     "t": -1.0813,
+     "ratio_of_geo_contractions": 0.9416,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": -0.0953,
+     "se_truths": 0.0239,
+     "t": -3.9858,
+     "ratio_of_geo_contractions": 0.9091,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": -0.0023,
+     "se_truths": 0.0473,
+     "t": -0.0493,
+     "ratio_of_geo_contractions": 0.9977,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": -0.023,
+     "se_truths": 0.026,
+     "t": -0.8856,
+     "ratio_of_geo_contractions": 0.9772,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": -0.0793,
+     "se_truths": 0.0292,
+     "t": -2.7173,
+     "ratio_of_geo_contractions": 0.9237,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": -0.1057,
+     "se_truths": 0.0488,
+     "t": -2.1644,
+     "ratio_of_geo_contractions": 0.8997,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": -0.0802,
+     "se_truths": 0.0637,
+     "t": -1.2584,
+     "ratio_of_geo_contractions": 0.9229,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n4/identification.json [summary, per_truth_budget]"
+  },
+  "n4|pop": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.7431,
+      "sd_over_prior_sd_per_param": [
+       0.6665,
+       0.6523,
+       0.8382,
+       0.8975
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9062
+     },
+     "8": {
+      "geo_mean_contraction": 0.6351,
+      "sd_over_prior_sd_per_param": [
+       0.5602,
+       0.5424,
+       0.7411,
+       0.8003
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.875
+     },
+     "32": {
+      "geo_mean_contraction": 0.5598,
+      "sd_over_prior_sd_per_param": [
+       0.4704,
+       0.4818,
+       0.6827,
+       0.7319
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.7812
+     },
+     "128": {
+      "geo_mean_contraction": 0.5263,
+      "sd_over_prior_sd_per_param": [
+       0.4562,
+       0.4442,
+       0.6777,
+       0.6563
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.8125
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.7574,
+      "sd_over_prior_sd_per_param": [
+       0.6875,
+       0.6663,
+       0.8063,
+       0.9174
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.6436,
+      "sd_over_prior_sd_per_param": [
+       0.5677,
+       0.4933,
+       0.7642,
+       0.8573
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9062
+     },
+     "32": {
+      "geo_mean_contraction": 0.586,
+      "sd_over_prior_sd_per_param": [
+       0.5185,
+       0.4149,
+       0.7138,
+       0.8315
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.7812
+     },
+     "128": {
+      "geo_mean_contraction": 0.5369,
+      "sd_over_prior_sd_per_param": [
+       0.4728,
+       0.3758,
+       0.6703,
+       0.7869
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 0.8125
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.731,
+      "sd_over_prior_sd_per_param": [
+       0.6451,
+       0.6541,
+       0.7842,
+       0.9077
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.8438
+     },
+     "8": {
+      "geo_mean_contraction": 0.5903,
+      "sd_over_prior_sd_per_param": [
+       0.4694,
+       0.5104,
+       0.7001,
+       0.8051
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.8438
+     },
+     "32": {
+      "geo_mean_contraction": 0.5497,
+      "sd_over_prior_sd_per_param": [
+       0.4185,
+       0.4696,
+       0.6727,
+       0.7791
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.9062
+     },
+     "128": {
+      "geo_mean_contraction": 0.5248,
+      "sd_over_prior_sd_per_param": [
+       0.4103,
+       0.4556,
+       0.6738,
+       0.7128
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 0.875
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.7277,
+      "sd_over_prior_sd_per_param": [
+       0.6109,
+       0.6445,
+       0.8318,
+       0.9068
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 0.8438
+     },
+     "8": {
+      "geo_mean_contraction": 0.6694,
+      "sd_over_prior_sd_per_param": [
+       0.5693,
+       0.5395,
+       0.8288,
+       0.8547
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 0.9062
+     },
+     "32": {
+      "geo_mean_contraction": 0.6167,
+      "sd_over_prior_sd_per_param": [
+       0.5222,
+       0.4737,
+       0.7766,
+       0.8226
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 0.8438
+     },
+     "128": {
+      "geo_mean_contraction": 0.5524,
+      "sd_over_prior_sd_per_param": [
+       0.4852,
+       0.4422,
+       0.7087,
+       0.7131
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 0.8125
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": -0.0355,
+     "se_truths": 0.0354,
+     "t": -1.0041,
+     "ratio_of_geo_contractions": 0.9651,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": -0.0863,
+     "se_truths": 0.027,
+     "t": -3.2022,
+     "ratio_of_geo_contractions": 0.9173,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": -0.064,
+     "se_truths": 0.0467,
+     "t": -1.3694,
+     "ratio_of_geo_contractions": 0.938,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": -0.0228,
+     "se_truths": 0.0525,
+     "t": -0.4337,
+     "ratio_of_geo_contractions": 0.9775,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": -0.0164,
+     "se_truths": 0.053,
+     "t": -0.309,
+     "ratio_of_geo_contractions": 0.9837,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": -0.0731,
+     "se_truths": 0.0341,
+     "t": -2.1414,
+     "ratio_of_geo_contractions": 0.9295,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": -0.0183,
+     "se_truths": 0.0533,
+     "t": -0.3426,
+     "ratio_of_geo_contractions": 0.9819,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": -0.0029,
+     "se_truths": 0.0609,
+     "t": -0.0471,
+     "ratio_of_geo_contractions": 0.9971,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": 0.0191,
+     "se_truths": 0.0309,
+     "t": 0.6191,
+     "ratio_of_geo_contractions": 1.0193,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": 0.0133,
+     "se_truths": 0.0278,
+     "t": 0.4775,
+     "ratio_of_geo_contractions": 1.0133,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": 0.0457,
+     "se_truths": 0.0311,
+     "t": 1.4699,
+     "ratio_of_geo_contractions": 1.0468,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": 0.0199,
+     "se_truths": 0.0323,
+     "t": 0.6151,
+     "ratio_of_geo_contractions": 1.0201,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n4/identification.json [summary, per_truth_budget]"
+  },
+  "n8|block": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.71,
+      "sd_over_prior_sd_per_param": [
+       0.6377,
+       0.452,
+       0.6175,
+       0.8843,
+       0.9302,
+       0.9179,
+       0.7947,
+       0.6353
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9531
+     },
+     "8": {
+      "geo_mean_contraction": 0.6344,
+      "sd_over_prior_sd_per_param": [
+       0.5474,
+       0.3621,
+       0.536,
+       0.8649,
+       0.856,
+       0.8946,
+       0.7311,
+       0.5459
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9844
+     },
+     "32": {
+      "geo_mean_contraction": 0.5637,
+      "sd_over_prior_sd_per_param": [
+       0.4654,
+       0.2846,
+       0.4676,
+       0.8458,
+       0.8295,
+       0.8701,
+       0.6165,
+       0.4809
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.5336,
+      "sd_over_prior_sd_per_param": [
+       0.4446,
+       0.2509,
+       0.4376,
+       0.8704,
+       0.828,
+       0.8298,
+       0.5702,
+       0.4474
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9844
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.7,
+      "sd_over_prior_sd_per_param": [
+       0.6335,
+       0.4497,
+       0.6289,
+       0.8831,
+       0.884,
+       0.9311,
+       0.7719,
+       0.6298
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.9219
+     },
+     "8": {
+      "geo_mean_contraction": 0.6209,
+      "sd_over_prior_sd_per_param": [
+       0.5433,
+       0.3576,
+       0.5369,
+       0.8471,
+       0.8325,
+       0.8861,
+       0.6957,
+       0.5588
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9844
+     },
+     "32": {
+      "geo_mean_contraction": 0.568,
+      "sd_over_prior_sd_per_param": [
+       0.4401,
+       0.3017,
+       0.4443,
+       0.8698,
+       0.8053,
+       0.8529,
+       0.6377,
+       0.5443
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.5401,
+      "sd_over_prior_sd_per_param": [
+       0.42,
+       0.2649,
+       0.4119,
+       0.8705,
+       0.7658,
+       0.8377,
+       0.6197,
+       0.5113
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 0.9844
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.7255,
+      "sd_over_prior_sd_per_param": [
+       0.7739,
+       0.4555,
+       0.6946,
+       0.8986,
+       0.8264,
+       0.8947,
+       0.8048,
+       0.6218
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.9688
+     },
+     "8": {
+      "geo_mean_contraction": 0.6542,
+      "sd_over_prior_sd_per_param": [
+       0.6913,
+       0.3569,
+       0.5782,
+       0.8784,
+       0.8031,
+       0.871,
+       0.7616,
+       0.5394
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9688
+     },
+     "32": {
+      "geo_mean_contraction": 0.6143,
+      "sd_over_prior_sd_per_param": [
+       0.6651,
+       0.301,
+       0.5125,
+       0.8877,
+       0.7618,
+       0.8536,
+       0.7241,
+       0.4998
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.9688
+     },
+     "128": {
+      "geo_mean_contraction": 0.5803,
+      "sd_over_prior_sd_per_param": [
+       0.6555,
+       0.28,
+       0.4696,
+       0.874,
+       0.7056,
+       0.8316,
+       0.691,
+       0.4554
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 0.9688
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.7232,
+      "sd_over_prior_sd_per_param": [
+       0.7258,
+       0.4576,
+       0.6385,
+       0.9057,
+       0.9006,
+       0.9051,
+       0.766,
+       0.6553
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 0.9531
+     },
+     "8": {
+      "geo_mean_contraction": 0.6524,
+      "sd_over_prior_sd_per_param": [
+       0.5927,
+       0.4045,
+       0.5116,
+       0.8673,
+       0.8315,
+       0.8703,
+       0.7346,
+       0.6108
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 0.9844
+     },
+     "32": {
+      "geo_mean_contraction": 0.6054,
+      "sd_over_prior_sd_per_param": [
+       0.5272,
+       0.3712,
+       0.4483,
+       0.8348,
+       0.7933,
+       0.8703,
+       0.6657,
+       0.5724
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.5752,
+      "sd_over_prior_sd_per_param": [
+       0.4957,
+       0.3466,
+       0.4192,
+       0.783,
+       0.7785,
+       0.8381,
+       0.6625,
+       0.5378
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 0.9844
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": 0.0358,
+     "se_truths": 0.0291,
+     "t": 1.23,
+     "ratio_of_geo_contractions": 1.0365,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": 0.0522,
+     "se_truths": 0.0291,
+     "t": 1.796,
+     "ratio_of_geo_contractions": 1.0536,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": 0.0782,
+     "se_truths": 0.0159,
+     "t": 4.9124,
+     "ratio_of_geo_contractions": 1.0814,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": 0.0717,
+     "se_truths": 0.0224,
+     "t": 3.2018,
+     "ratio_of_geo_contractions": 1.0744,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": 0.0217,
+     "se_truths": 0.0314,
+     "t": 0.6904,
+     "ratio_of_geo_contractions": 1.0219,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": 0.0307,
+     "se_truths": 0.0143,
+     "t": 2.1504,
+     "ratio_of_geo_contractions": 1.0312,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": 0.0859,
+     "se_truths": 0.0121,
+     "t": 7.1071,
+     "ratio_of_geo_contractions": 1.0897,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": 0.0839,
+     "se_truths": 0.0113,
+     "t": 7.454,
+     "ratio_of_geo_contractions": 1.0875,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": -0.0142,
+     "se_truths": 0.0097,
+     "t": -1.464,
+     "ratio_of_geo_contractions": 0.9859,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": -0.0215,
+     "se_truths": 0.0221,
+     "t": -0.9706,
+     "ratio_of_geo_contractions": 0.9787,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": 0.0077,
+     "se_truths": 0.0171,
+     "t": 0.4485,
+     "ratio_of_geo_contractions": 1.0077,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": 0.0122,
+     "se_truths": 0.0266,
+     "t": 0.4566,
+     "ratio_of_geo_contractions": 1.0122,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n8/identification.json [summary, per_truth_budget]"
+  },
+  "n8|object": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.8194,
+      "sd_over_prior_sd_per_param": [
+       0.7873,
+       0.6608,
+       0.7796,
+       0.8861,
+       0.8031,
+       0.9286,
+       0.868,
+       0.9
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9844
+     },
+     "8": {
+      "geo_mean_contraction": 0.7707,
+      "sd_over_prior_sd_per_param": [
+       0.7612,
+       0.5907,
+       0.7324,
+       0.8812,
+       0.7297,
+       0.9074,
+       0.7966,
+       0.8372
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9688
+     },
+     "32": {
+      "geo_mean_contraction": 0.7306,
+      "sd_over_prior_sd_per_param": [
+       0.7434,
+       0.5211,
+       0.6806,
+       0.8954,
+       0.6525,
+       0.8578,
+       0.7764,
+       0.8181
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9688
+     },
+     "128": {
+      "geo_mean_contraction": 0.7004,
+      "sd_over_prior_sd_per_param": [
+       0.7158,
+       0.5052,
+       0.6688,
+       0.8711,
+       0.6028,
+       0.8207,
+       0.7405,
+       0.7816
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9688
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.8318,
+      "sd_over_prior_sd_per_param": [
+       0.811,
+       0.6882,
+       0.8022,
+       0.9262,
+       0.8131,
+       0.9426,
+       0.7956,
+       0.9326
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.9844
+     },
+     "8": {
+      "geo_mean_contraction": 0.7823,
+      "sd_over_prior_sd_per_param": [
+       0.7937,
+       0.6384,
+       0.7282,
+       0.8677,
+       0.7335,
+       0.914,
+       0.7455,
+       0.9158
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9688
+     },
+     "32": {
+      "geo_mean_contraction": 0.7422,
+      "sd_over_prior_sd_per_param": [
+       0.7576,
+       0.6075,
+       0.692,
+       0.808,
+       0.663,
+       0.8761,
+       0.7105,
+       0.9115
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.9844
+     },
+     "128": {
+      "geo_mean_contraction": 0.7096,
+      "sd_over_prior_sd_per_param": [
+       0.7288,
+       0.5897,
+       0.6206,
+       0.7575,
+       0.6436,
+       0.85,
+       0.6851,
+       0.8899
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 0.9688
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.8066,
+      "sd_over_prior_sd_per_param": [
+       0.8294,
+       0.5904,
+       0.7917,
+       0.8847,
+       0.8609,
+       0.9125,
+       0.7805,
+       0.889
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.9219
+     },
+     "8": {
+      "geo_mean_contraction": 0.779,
+      "sd_over_prior_sd_per_param": [
+       0.8135,
+       0.5735,
+       0.8019,
+       0.8317,
+       0.822,
+       0.8996,
+       0.7092,
+       0.8628
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.7167,
+      "sd_over_prior_sd_per_param": [
+       0.7782,
+       0.5026,
+       0.7173,
+       0.7922,
+       0.7678,
+       0.8627,
+       0.6301,
+       0.7809
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.9844
+     },
+     "128": {
+      "geo_mean_contraction": 0.6679,
+      "sd_over_prior_sd_per_param": [
+       0.7517,
+       0.4643,
+       0.7163,
+       0.7274,
+       0.7297,
+       0.8301,
+       0.5497,
+       0.6829
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 1.0
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.8278,
+      "sd_over_prior_sd_per_param": [
+       0.8034,
+       0.645,
+       0.7699,
+       0.9359,
+       0.8462,
+       0.9254,
+       0.8455,
+       0.9302
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 0.9688
+     },
+     "8": {
+      "geo_mean_contraction": 0.7757,
+      "sd_over_prior_sd_per_param": [
+       0.7865,
+       0.5613,
+       0.6947,
+       0.9013,
+       0.7977,
+       0.8929,
+       0.7875,
+       0.8725
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 0.9844
+     },
+     "32": {
+      "geo_mean_contraction": 0.7325,
+      "sd_over_prior_sd_per_param": [
+       0.7479,
+       0.4816,
+       0.6646,
+       0.8909,
+       0.7494,
+       0.8535,
+       0.7482,
+       0.8544
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 0.9688
+     },
+     "128": {
+      "geo_mean_contraction": 0.6818,
+      "sd_over_prior_sd_per_param": [
+       0.6777,
+       0.4171,
+       0.5943,
+       0.8826,
+       0.6912,
+       0.7975,
+       0.7197,
+       0.8324
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 0.9531
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": -0.0308,
+     "se_truths": 0.0227,
+     "t": -1.3576,
+     "ratio_of_geo_contractions": 0.9696,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": -0.0042,
+     "se_truths": 0.0171,
+     "t": -0.2439,
+     "ratio_of_geo_contractions": 0.9958,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": -0.035,
+     "se_truths": 0.0178,
+     "t": -1.97,
+     "ratio_of_geo_contractions": 0.9656,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": -0.0605,
+     "se_truths": 0.017,
+     "t": -3.5518,
+     "ratio_of_geo_contractions": 0.9413,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": -0.0158,
+     "se_truths": 0.0214,
+     "t": -0.739,
+     "ratio_of_geo_contractions": 0.9843,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": 0.0107,
+     "se_truths": 0.0082,
+     "t": 1.292,
+     "ratio_of_geo_contractions": 1.0107,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": -0.0193,
+     "se_truths": 0.0126,
+     "t": -1.5335,
+     "ratio_of_geo_contractions": 0.9809,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": -0.0475,
+     "se_truths": 0.0058,
+     "t": -8.2564,
+     "ratio_of_geo_contractions": 0.9536,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": 0.015,
+     "se_truths": 0.0199,
+     "t": 0.7527,
+     "ratio_of_geo_contractions": 1.0151,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": 0.0148,
+     "se_truths": 0.0209,
+     "t": 0.7102,
+     "ratio_of_geo_contractions": 1.0149,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": 0.0157,
+     "se_truths": 0.0191,
+     "t": 0.824,
+     "ratio_of_geo_contractions": 1.0159,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": 0.013,
+     "se_truths": 0.0198,
+     "t": 0.6585,
+     "ratio_of_geo_contractions": 1.0131,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n8/identification.json [summary, per_truth_budget]"
+  },
+  "n8|pop": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.889,
+      "sd_over_prior_sd_per_param": [
+       0.7952,
+       0.8532,
+       0.7809,
+       0.9442,
+       0.9667,
+       0.962,
+       0.9051,
+       0.9442
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9844
+     },
+     "8": {
+      "geo_mean_contraction": 0.8473,
+      "sd_over_prior_sd_per_param": [
+       0.7135,
+       0.7975,
+       0.7589,
+       0.8983,
+       0.9348,
+       0.9263,
+       0.8673,
+       0.9411
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9844
+     },
+     "32": {
+      "geo_mean_contraction": 0.8004,
+      "sd_over_prior_sd_per_param": [
+       0.628,
+       0.7327,
+       0.7244,
+       0.8353,
+       0.9152,
+       0.8809,
+       0.8324,
+       0.9423
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9531
+     },
+     "128": {
+      "geo_mean_contraction": 0.7532,
+      "sd_over_prior_sd_per_param": [
+       0.5698,
+       0.6614,
+       0.6917,
+       0.7915,
+       0.8763,
+       0.839,
+       0.7999,
+       0.8874
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.9219
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.8918,
+      "sd_over_prior_sd_per_param": [
+       0.8024,
+       0.8645,
+       0.8202,
+       0.9551,
+       0.9084,
+       0.9653,
+       0.918,
+       0.9407
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.9688
+     },
+     "8": {
+      "geo_mean_contraction": 0.8592,
+      "sd_over_prior_sd_per_param": [
+       0.782,
+       0.8255,
+       0.7757,
+       0.9069,
+       0.8835,
+       0.9326,
+       0.8737,
+       0.9278
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9688
+     },
+     "32": {
+      "geo_mean_contraction": 0.8008,
+      "sd_over_prior_sd_per_param": [
+       0.6886,
+       0.7684,
+       0.7293,
+       0.8148,
+       0.8244,
+       0.8919,
+       0.8522,
+       0.8859
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.9531
+     },
+     "128": {
+      "geo_mean_contraction": 0.7507,
+      "sd_over_prior_sd_per_param": [
+       0.6254,
+       0.7046,
+       0.6655,
+       0.749,
+       0.7986,
+       0.8541,
+       0.8074,
+       0.854
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 0.9219
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.8692,
+      "sd_over_prior_sd_per_param": [
+       0.831,
+       0.7286,
+       0.8041,
+       0.9314,
+       0.9473,
+       0.9044,
+       0.9213,
+       0.9424
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.9688
+     },
+     "8": {
+      "geo_mean_contraction": 0.8682,
+      "sd_over_prior_sd_per_param": [
+       0.7912,
+       0.7604,
+       0.819,
+       0.9333,
+       0.9358,
+       0.9194,
+       0.884,
+       0.9434
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.9844
+     },
+     "32": {
+      "geo_mean_contraction": 0.7963,
+      "sd_over_prior_sd_per_param": [
+       0.6543,
+       0.6904,
+       0.7274,
+       0.8643,
+       0.9049,
+       0.8714,
+       0.8339,
+       0.8956
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.9531
+     },
+     "128": {
+      "geo_mean_contraction": 0.7683,
+      "sd_over_prior_sd_per_param": [
+       0.596,
+       0.6552,
+       0.6975,
+       0.8307,
+       0.897,
+       0.8617,
+       0.8093,
+       0.8922
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 0.9531
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.8842,
+      "sd_over_prior_sd_per_param": [
+       0.8213,
+       0.8022,
+       0.7653,
+       0.9909,
+       0.91,
+       0.8929,
+       0.958,
+       0.9754
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 1.0
+     },
+     "8": {
+      "geo_mean_contraction": 0.8502,
+      "sd_over_prior_sd_per_param": [
+       0.758,
+       0.7505,
+       0.7537,
+       0.926,
+       0.9109,
+       0.8986,
+       0.9119,
+       0.9394
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 0.9688
+     },
+     "32": {
+      "geo_mean_contraction": 0.8066,
+      "sd_over_prior_sd_per_param": [
+       0.7013,
+       0.6982,
+       0.6973,
+       0.893,
+       0.8784,
+       0.8576,
+       0.873,
+       0.9082
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 0.9531
+     },
+     "128": {
+      "geo_mean_contraction": 0.7637,
+      "sd_over_prior_sd_per_param": [
+       0.6408,
+       0.6619,
+       0.6646,
+       0.8557,
+       0.8499,
+       0.8157,
+       0.8208,
+       0.866
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 0.9375
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": -0.0256,
+     "se_truths": 0.0264,
+     "t": -0.9726,
+     "ratio_of_geo_contractions": 0.9747,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": 0.0105,
+     "se_truths": 0.0101,
+     "t": 1.0382,
+     "ratio_of_geo_contractions": 1.0105,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": -0.0057,
+     "se_truths": 0.0214,
+     "t": -0.2672,
+     "ratio_of_geo_contractions": 0.9943,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": 0.0232,
+     "se_truths": 0.0138,
+     "t": 1.6787,
+     "ratio_of_geo_contractions": 1.0235,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": -0.0226,
+     "se_truths": 0.0242,
+     "t": -0.9338,
+     "ratio_of_geo_contractions": 0.9777,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": 0.0244,
+     "se_truths": 0.01,
+     "t": 2.4544,
+     "ratio_of_geo_contractions": 1.0247,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": -0.0051,
+     "se_truths": 0.0164,
+     "t": -0.3111,
+     "ratio_of_geo_contractions": 0.9949,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": 0.0199,
+     "se_truths": 0.0121,
+     "t": 1.6515,
+     "ratio_of_geo_contractions": 1.0201,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": 0.0031,
+     "se_truths": 0.0156,
+     "t": 0.1962,
+     "ratio_of_geo_contractions": 1.0031,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": 0.014,
+     "se_truths": 0.0123,
+     "t": 1.1381,
+     "ratio_of_geo_contractions": 1.0141,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": 0.0006,
+     "se_truths": 0.0125,
+     "t": 0.0487,
+     "ratio_of_geo_contractions": 1.0006,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": -0.0033,
+     "se_truths": 0.0111,
+     "t": -0.2984,
+     "ratio_of_geo_contractions": 0.9967,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n8/identification.json [summary, per_truth_budget]"
+  },
+  "n1|block": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.2693,
+      "sd_over_prior_sd_per_param": [
+       0.284
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.1897,
+      "sd_over_prior_sd_per_param": [
+       0.1911
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.133,
+      "sd_over_prior_sd_per_param": [
+       0.1337
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.1141,
+      "sd_over_prior_sd_per_param": [
+       0.1147
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.2463,
+      "sd_over_prior_sd_per_param": [
+       0.2562
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 1.0
+     },
+     "8": {
+      "geo_mean_contraction": 0.1557,
+      "sd_over_prior_sd_per_param": [
+       0.1557
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.0822,
+      "sd_over_prior_sd_per_param": [
+       0.0822
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.875
+     },
+     "128": {
+      "geo_mean_contraction": 0.0463,
+      "sd_over_prior_sd_per_param": [
+       0.0464
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 0.75
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.2934,
+      "sd_over_prior_sd_per_param": [
+       0.295
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.1807,
+      "sd_over_prior_sd_per_param": [
+       0.1819
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.1032,
+      "sd_over_prior_sd_per_param": [
+       0.1042
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.0699,
+      "sd_over_prior_sd_per_param": [
+       0.0708
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 1.0
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.2767,
+      "sd_over_prior_sd_per_param": [
+       0.2815
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 1.0
+     },
+     "8": {
+      "geo_mean_contraction": 0.1622,
+      "sd_over_prior_sd_per_param": [
+       0.1631
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 0.875
+     },
+     "32": {
+      "geo_mean_contraction": 0.0994,
+      "sd_over_prior_sd_per_param": [
+       0.0999
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.0754,
+      "sd_over_prior_sd_per_param": [
+       0.0757
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 1.0
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": 0.1752,
+     "se_truths": 0.1305,
+     "t": 1.3423,
+     "ratio_of_geo_contractions": 1.1915,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": 0.1493,
+     "se_truths": 0.0413,
+     "t": 3.6149,
+     "ratio_of_geo_contractions": 1.161,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": 0.2282,
+     "se_truths": 0.0386,
+     "t": 5.9088,
+     "ratio_of_geo_contractions": 1.2564,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": 0.4122,
+     "se_truths": 0.0391,
+     "t": 10.5448,
+     "ratio_of_geo_contractions": 1.5101,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": 0.0858,
+     "se_truths": 0.1453,
+     "t": 0.5906,
+     "ratio_of_geo_contractions": 1.0896,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": -0.0488,
+     "se_truths": 0.0329,
+     "t": -1.4835,
+     "ratio_of_geo_contractions": 0.9524,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": -0.2536,
+     "se_truths": 0.0208,
+     "t": -12.1781,
+     "ratio_of_geo_contractions": 0.776,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": -0.4901,
+     "se_truths": 0.0226,
+     "t": -21.6392,
+     "ratio_of_geo_contractions": 0.6126,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": -0.0894,
+     "se_truths": 0.0733,
+     "t": -1.219,
+     "ratio_of_geo_contractions": 0.9145,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": -0.1981,
+     "se_truths": 0.044,
+     "t": -4.505,
+     "ratio_of_geo_contractions": 0.8203,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": -0.4819,
+     "se_truths": 0.032,
+     "t": -15.0592,
+     "ratio_of_geo_contractions": 0.6176,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": -0.9022,
+     "se_truths": 0.0269,
+     "t": -33.5046,
+     "ratio_of_geo_contractions": 0.4057,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n1/identification.json [summary, per_truth_budget]"
+  },
+  "n1|object": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.2812,
+      "sd_over_prior_sd_per_param": [
+       0.2836
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     },
+     "8": {
+      "geo_mean_contraction": 0.1701,
+      "sd_over_prior_sd_per_param": [
+       0.1719
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.1255,
+      "sd_over_prior_sd_per_param": [
+       0.1263
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.1034,
+      "sd_over_prior_sd_per_param": [
+       0.104
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.2793,
+      "sd_over_prior_sd_per_param": [
+       0.2829
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 1.0
+     },
+     "8": {
+      "geo_mean_contraction": 0.1781,
+      "sd_over_prior_sd_per_param": [
+       0.1807
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.875
+     },
+     "32": {
+      "geo_mean_contraction": 0.1316,
+      "sd_over_prior_sd_per_param": [
+       0.1326
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.1081,
+      "sd_over_prior_sd_per_param": [
+       0.1086
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 1.0
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.2826,
+      "sd_over_prior_sd_per_param": [
+       0.2847
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.1563,
+      "sd_over_prior_sd_per_param": [
+       0.1574
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.0979,
+      "sd_over_prior_sd_per_param": [
+       0.0988
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 0.875
+     },
+     "128": {
+      "geo_mean_contraction": 0.0743,
+      "sd_over_prior_sd_per_param": [
+       0.075
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 1.0
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.285,
+      "sd_over_prior_sd_per_param": [
+       0.2881
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.1964,
+      "sd_over_prior_sd_per_param": [
+       0.1973
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.163,
+      "sd_over_prior_sd_per_param": [
+       0.1638
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.154,
+      "sd_over_prior_sd_per_param": [
+       0.155
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 1.0
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": 0.0118,
+     "se_truths": 0.0409,
+     "t": 0.2875,
+     "ratio_of_geo_contractions": 1.0118,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": -0.1309,
+     "se_truths": 0.0328,
+     "t": -3.9903,
+     "ratio_of_geo_contractions": 0.8773,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": -0.2955,
+     "se_truths": 0.0265,
+     "t": -11.147,
+     "ratio_of_geo_contractions": 0.7442,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": -0.3743,
+     "se_truths": 0.032,
+     "t": -11.7099,
+     "ratio_of_geo_contractions": 0.6877,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": 0.0052,
+     "se_truths": 0.0216,
+     "t": 0.2392,
+     "ratio_of_geo_contractions": 1.0052,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": -0.0846,
+     "se_truths": 0.0327,
+     "t": -2.5879,
+     "ratio_of_geo_contractions": 0.9189,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": -0.2479,
+     "se_truths": 0.0375,
+     "t": -6.6114,
+     "ratio_of_geo_contractions": 0.7804,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": -0.3301,
+     "se_truths": 0.0429,
+     "t": -7.688,
+     "ratio_of_geo_contractions": 0.7189,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": -0.0066,
+     "se_truths": 0.0482,
+     "t": -0.1369,
+     "ratio_of_geo_contractions": 0.9934,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": 0.0463,
+     "se_truths": 0.0247,
+     "t": 1.8734,
+     "ratio_of_geo_contractions": 1.0474,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": 0.0476,
+     "se_truths": 0.0203,
+     "t": 2.3451,
+     "ratio_of_geo_contractions": 1.0487,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": 0.0442,
+     "se_truths": 0.0163,
+     "t": 2.7196,
+     "ratio_of_geo_contractions": 1.0452,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n1/identification.json [summary, per_truth_budget]"
+  },
+  "n1|pop": {
+   "arms": {
+    "passive": {
+     "2": {
+      "geo_mean_contraction": 0.3672,
+      "sd_over_prior_sd_per_param": [
+       0.3728
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.2484,
+      "sd_over_prior_sd_per_param": [
+       0.2517
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.1934,
+      "sd_over_prior_sd_per_param": [
+       0.198
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.168,
+      "sd_over_prior_sd_per_param": [
+       0.1733
+      ],
+      "nats_mean": 0.0,
+      "in90_frac": 1.0
+     }
+    },
+    "blind": {
+     "2": {
+      "geo_mean_contraction": 0.3784,
+      "sd_over_prior_sd_per_param": [
+       0.3832
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 1.0
+     },
+     "8": {
+      "geo_mean_contraction": 0.2294,
+      "sd_over_prior_sd_per_param": [
+       0.2317
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.875
+     },
+     "32": {
+      "geo_mean_contraction": 0.1434,
+      "sd_over_prior_sd_per_param": [
+       0.1462
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.0846,
+      "sd_over_prior_sd_per_param": [
+       0.0871
+      ],
+      "nats_mean": 25599.9999,
+      "in90_frac": 1.0
+     }
+    },
+    "aimed": {
+     "2": {
+      "geo_mean_contraction": 0.414,
+      "sd_over_prior_sd_per_param": [
+       0.4158
+      ],
+      "nats_mean": 400.0,
+      "in90_frac": 0.875
+     },
+     "8": {
+      "geo_mean_contraction": 0.229,
+      "sd_over_prior_sd_per_param": [
+       0.2306
+      ],
+      "nats_mean": 1600.0,
+      "in90_frac": 0.875
+     },
+     "32": {
+      "geo_mean_contraction": 0.1237,
+      "sd_over_prior_sd_per_param": [
+       0.1249
+      ],
+      "nats_mean": 6400.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.0753,
+      "sd_over_prior_sd_per_param": [
+       0.0765
+      ],
+      "nats_mean": 25600.0,
+      "in90_frac": 1.0
+     }
+    },
+    "regional": {
+     "2": {
+      "geo_mean_contraction": 0.3912,
+      "sd_over_prior_sd_per_param": [
+       0.3956
+      ],
+      "nats_mean": 600.0,
+      "in90_frac": 1.0
+     },
+     "8": {
+      "geo_mean_contraction": 0.2862,
+      "sd_over_prior_sd_per_param": [
+       0.2879
+      ],
+      "nats_mean": 2400.0,
+      "in90_frac": 1.0
+     },
+     "32": {
+      "geo_mean_contraction": 0.2439,
+      "sd_over_prior_sd_per_param": [
+       0.2462
+      ],
+      "nats_mean": 9600.0,
+      "in90_frac": 1.0
+     },
+     "128": {
+      "geo_mean_contraction": 0.2342,
+      "sd_over_prior_sd_per_param": [
+       0.2373
+      ],
+      "nats_mean": 38400.0,
+      "in90_frac": 1.0
+     }
+    }
+   },
+   "paired_over_truths": {
+    "aimed-blind|2": {
+     "mean_log_ratio": 0.0899,
+     "se_truths": 0.0551,
+     "t": 1.6322,
+     "ratio_of_geo_contractions": 1.0941,
+     "n_truths": 8
+    },
+    "aimed-blind|8": {
+     "mean_log_ratio": -0.0014,
+     "se_truths": 0.0321,
+     "t": -0.0441,
+     "ratio_of_geo_contractions": 0.9986,
+     "n_truths": 8
+    },
+    "aimed-blind|32": {
+     "mean_log_ratio": -0.1478,
+     "se_truths": 0.0346,
+     "t": -4.2691,
+     "ratio_of_geo_contractions": 0.8626,
+     "n_truths": 8
+    },
+    "aimed-blind|128": {
+     "mean_log_ratio": -0.1159,
+     "se_truths": 0.0354,
+     "t": -3.276,
+     "ratio_of_geo_contractions": 0.8906,
+     "n_truths": 8
+    },
+    "aimed-passive|2": {
+     "mean_log_ratio": 0.1199,
+     "se_truths": 0.0563,
+     "t": 2.13,
+     "ratio_of_geo_contractions": 1.1274,
+     "n_truths": 8
+    },
+    "aimed-passive|8": {
+     "mean_log_ratio": -0.0811,
+     "se_truths": 0.0351,
+     "t": -2.3074,
+     "ratio_of_geo_contractions": 0.9221,
+     "n_truths": 8
+    },
+    "aimed-passive|32": {
+     "mean_log_ratio": -0.4466,
+     "se_truths": 0.0514,
+     "t": -8.6864,
+     "ratio_of_geo_contractions": 0.6398,
+     "n_truths": 8
+    },
+    "aimed-passive|128": {
+     "mean_log_ratio": -0.8018,
+     "se_truths": 0.0621,
+     "t": -12.9193,
+     "ratio_of_geo_contractions": 0.4485,
+     "n_truths": 8
+    },
+    "blind-passive|2": {
+     "mean_log_ratio": 0.03,
+     "se_truths": 0.0853,
+     "t": 0.3515,
+     "ratio_of_geo_contractions": 1.0304,
+     "n_truths": 8
+    },
+    "blind-passive|8": {
+     "mean_log_ratio": -0.0796,
+     "se_truths": 0.0537,
+     "t": -1.4819,
+     "ratio_of_geo_contractions": 0.9234,
+     "n_truths": 8
+    },
+    "blind-passive|32": {
+     "mean_log_ratio": -0.2988,
+     "se_truths": 0.0218,
+     "t": -13.6958,
+     "ratio_of_geo_contractions": 0.7417,
+     "n_truths": 8
+    },
+    "blind-passive|128": {
+     "mean_log_ratio": -0.6859,
+     "se_truths": 0.0461,
+     "t": -14.893,
+     "ratio_of_geo_contractions": 0.5036,
+     "n_truths": 8
+    }
+   },
+   "note": "arms at equal ticks; blind (class e) and aimed (class c) spend the same nats on the same ticks with the same number of coefficients; regional (class d) spends 300 nats; passive none. A log ratio below 0 means the first arm contracts more.",
+   "source": "r5-ladder-002:out/n1/identification.json [summary, per_truth_budget]"
+  }
+ },
+ "hidden_sets": {
+  "4": {
+   "names": [
+    "lR",
+    "dm_00",
+    "ls_00",
+    "lh"
+   ],
+   "lo": [
+    0.91,
+    -0.15,
+    0.91,
+    0.91
+   ],
+   "hi": [
+    1.09,
+    0.15,
+    1.09,
+    1.09
+   ],
+   "shrink_rule_tries": [
+    {
+     "extra_shrink": 1.0,
+     "frac_viable": 0.9296875
+    }
+   ],
+   "frac_viable_box": 0.9296875,
+   "prior_sd_u": [
+    0.5685875017736807,
+    0.563394158293562,
+    0.5641560130513666,
+    0.5750076661345931
+   ],
+   "n_truths": 8,
+   "n_viable_of_candidates": [
+    43,
+    48
+   ],
+   "truths_theta": [
+    [
+     1.0142636659899653,
+     -0.029852568761834425,
+     1.0362919727741309,
+     0.9450180687011148
+    ],
+    [
+     0.9506297215016538,
+     0.0032052918318795365,
+     1.0865622726399158,
+     0.9402826302655485
+    ],
+    [
+     0.9120577399870324,
+     0.03784308735670505,
+     0.910947153652681,
+     1.0610923772809704
+    ],
+    [
+     0.9663923467982765,
+     0.08938606358417614,
+     1.0247508103007108,
+     1.0430275278662264
+    ],
+    [
+     1.0015793874983798,
+     -0.1451776446277391,
+     1.0725673633876998,
+     0.9968204197237277
+    ],
+    [
+     0.9370216507803878,
+     0.005484288956911443,
+     1.0139823370187846,
+     1.008215647671368
+    ],
+    [
+     0.9973193584585546,
+     -0.04685528007920563,
+     1.0060249977330373,
+     1.0476264077052764
+    ],
+    [
+     0.9979504287410688,
+     -0.0933304381520364,
+     0.9198714009259171,
+     0.9419196458889095
+    ]
+   ],
+   "secret_commitment": "c0e633c8a4df316a0d9e66303defc85d70136042b8ed753fd8b038c5f8608a03",
+   "source": "r5-ladder-002:out/n4/prior.json; r5-ladder-002:out/n4/truths.json"
+  },
+  "8": {
+   "names": [
+    "lR",
+    "dm_00",
+    "ls_00",
+    "lh",
+    "dm_10",
+    "ls_01",
+    "dm_01",
+    "lA"
+   ],
+   "lo": [
+    0.91,
+    -0.15,
+    0.91,
+    0.91,
+    -0.15,
+    0.91,
+    -0.15,
+    0.85
+   ],
+   "hi": [
+    1.09,
+    0.15,
+    1.09,
+    1.09,
+    0.15,
+    1.09,
+    0.15,
+    1.15
+   ],
+   "shrink_rule_tries": [
+    {
+     "extra_shrink": 1.0,
+     "frac_viable": 0.912109375
+    }
+   ],
+   "frac_viable_box": 0.912109375,
+   "prior_sd_u": [
+    0.5745880738774312,
+    0.5673623785839629,
+    0.5740816046188099,
+    0.5754186733937521,
+    0.5776942109085764,
+    0.5725311388208055,
+    0.5789763689512212,
+    0.5726014093122154
+   ],
+   "n_truths": 8,
+   "n_viable_of_candidates": [
+    39,
+    48
+   ],
+   "truths_theta": [
+    [
+     0.9906792708897001,
+     0.027629485460946734,
+     1.0140325336717828,
+     1.0512307360138249,
+     0.01923143912001568,
+     0.943052636195526,
+     0.006416395332582092,
+     0.870411575976557
+    ],
+    [
+     0.9402850386058899,
+     0.11684314636294293,
+     0.9764468685449985,
+     1.0265548638894018,
+     -0.0943880833790273,
+     1.0386385021949007,
+     -0.09460383644511719,
+     0.9731115104228067
+    ],
+    [
+     0.9580485048136939,
+     0.07390963186654481,
+     1.0395967107883906,
+     0.9812581044692985,
+     -0.11658700275039688,
+     0.9911192097928088,
+     0.058257032059055996,
+     0.9194996485078757
+    ],
+    [
+     0.9948238640833948,
+     0.0634809532601952,
+     1.0054502344476481,
+     1.0558399432248906,
+     0.023622339773896717,
+     0.9693569674292913,
+     0.014058613949825716,
+     0.9319750614662426
+    ],
+    [
+     1.025603733757442,
+     0.017192052820508896,
+     1.0059907778482966,
+     0.9348373629998773,
+     0.12829982517393176,
+     0.9607534177435584,
+     0.1145130782042261,
+     0.9714801139643476
+    ],
+    [
+     1.0167808785626133,
+     5.020679668260586e-05,
+     0.9550782791723512,
+     0.9530953389810756,
+     0.005739284842133874,
+     0.9414800664012326,
+     -0.01541986128861872,
+     0.8702991207782511
+    ],
+    [
+     0.9849270329511794,
+     0.01910456904910468,
+     0.994401683636624,
+     1.030021519495333,
+     0.0907166740956645,
+     1.07008870214218,
+     -0.015237122030040046,
+     0.9645736030138676
+    ],
+    [
+     0.9757229071036932,
+     -0.027032809113384154,
+     0.9476776859518528,
+     1.0467354061250662,
+     0.13170860814742333,
+     1.0492280720668283,
+     0.001759878560431527,
+     0.9579417370300842
+    ]
+   ],
+   "secret_commitment": "c0e633c8a4df316a0d9e66303defc85d70136042b8ed753fd8b038c5f8608a03",
+   "source": "r5-ladder-002:out/n8/prior.json; r5-ladder-002:out/n8/truths.json"
+  },
+  "1": {
+   "names": [
+    "lR"
+   ],
+   "lo": [
+    0.91
+   ],
+   "hi": [
+    1.09
+   ],
+   "shrink_rule_tries": [
+    {
+     "extra_shrink": 1.0,
+     "frac_viable": 1.0
+    }
+   ],
+   "frac_viable_box": 1.0,
+   "prior_sd_u": [
+    0.5784059742059993
+   ],
+   "n_truths": 8,
+   "n_viable_of_candidates": [
+    48,
+    48
+   ],
+   "truths_theta": [
+    [
+     0.9317132379848312
+    ],
+    [
+     0.9533956027594456
+    ],
+    [
+     1.0587299581396348
+    ],
+    [
+     1.0713406133461711
+    ],
+    [
+     0.9666197955495606
+    ],
+    [
+     1.036195371766031
+    ],
+    [
+     1.0598873951158212
+    ],
+    [
+     1.0593115280310386
+    ]
+   ],
+   "secret_commitment": "c0e633c8a4df316a0d9e66303defc85d70136042b8ed753fd8b038c5f8608a03",
+   "source": "r5-ladder-002:out/n1/prior.json; r5-ladder-002:out/n1/truths.json"
+  }
+ },
+ "across_cells": {
+  "table": [
+   {
+    "cell": "n4|block",
+    "n_hidden": 4,
+    "dim": 192,
+    "sigma_mid": 0.0175,
+    "rho_2": 0.7744,
+    "C_minus_PM": 0.0098,
+    "C_minus_P0": 0.013,
+    "state_given_gap": 0.1959,
+    "oes_C": 0.6502,
+    "geo_contraction_2": 0.3784,
+    "geo_contraction_last": 0.0835,
+    "projection_r2_mean": 0.645,
+    "D_last_minus_P0": -0.0382,
+    "oes_P0": 0.6372,
+    "sigma_last": 0.0175,
+    "sigma_first": 0.0175,
+    "vot_at_S2": null,
+    "N90_S": 0.0,
+    "N90_D": 362.2661057043512,
+    "N90_D_rank": 362.2661057043512,
+    "predictable_fraction": 0.8828
+   },
+   {
+    "cell": "n4|object",
+    "n_hidden": 4,
+    "dim": 144,
+    "sigma_mid": 0.0065,
+    "rho_2": 0.6644,
+    "C_minus_PM": 0.0054,
+    "C_minus_P0": 0.0033,
+    "state_given_gap": 0.2363,
+    "oes_C": 0.43,
+    "geo_contraction_2": 0.5908,
+    "geo_contraction_last": 0.1882,
+    "projection_r2_mean": 0.4357,
+    "D_last_minus_P0": -0.0219,
+    "oes_P0": 0.4267,
+    "sigma_last": 0.0065,
+    "sigma_first": 0.0065,
+    "vot_at_S2": null,
+    "N90_S": 0.0,
+    "N90_D": 198.4611777349147,
+    "N90_D_rank": 198.4611777349147,
+    "predictable_fraction": 0.7535
+   },
+   {
+    "cell": "n4|pop",
+    "n_hidden": 4,
+    "dim": 5,
+    "sigma_mid": 0.1127,
+    "rho_2": 0.641,
+    "C_minus_PM": 0.0479,
+    "C_minus_P0": 0.0474,
+    "state_given_gap": 0.3487,
+    "oes_C": 0.3493,
+    "geo_contraction_2": 0.7176,
+    "geo_contraction_last": 0.4636,
+    "projection_r2_mean": 0.3055,
+    "D_last_minus_P0": 0.0289,
+    "oes_P0": 0.3019,
+    "sigma_last": 0.0497,
+    "sigma_first": 0.1127,
+    "vot_at_S2": null,
+    "N90_S": 2.0,
+    "N90_D": 323.06074440467575,
+    "N90_D_rank": 323.06074440467575,
+    "predictable_fraction": 0.8009
+   },
+   {
+    "cell": "n8|block",
+    "n_hidden": 8,
+    "dim": 192,
+    "sigma_mid": 0.0126,
+    "rho_2": 0.6051,
+    "C_minus_PM": 0.0079,
+    "C_minus_P0": 0.0096,
+    "state_given_gap": 0.1328,
+    "oes_C": 0.681,
+    "geo_contraction_2": 0.6895,
+    "geo_contraction_last": 0.5096,
+    "projection_r2_mean": 0.3806,
+    "D_last_minus_P0": -0.0412,
+    "oes_P0": 0.6714,
+    "sigma_last": 0.0126,
+    "sigma_first": 0.0126,
+    "vot_at_S2": null,
+    "N90_S": 0.0,
+    "N90_D": 363.02978196276797,
+    "N90_D_rank": 363.02978196276797,
+    "predictable_fraction": 0.8988
+   },
+   {
+    "cell": "n8|object",
+    "n_hidden": 8,
+    "dim": 144,
+    "sigma_mid": -0.0006,
+    "rho_2": 2.9063,
+    "C_minus_PM": 0.0008,
+    "C_minus_P0": -0.0001,
+    "state_given_gap": 0.1671,
+    "oes_C": 0.4384,
+    "geo_contraction_2": 0.7776,
+    "geo_contraction_last": 0.618,
+    "projection_r2_mean": 0.2707,
+    "D_last_minus_P0": -0.0265,
+    "oes_P0": 0.4384,
+    "sigma_last": -0.0006,
+    "sigma_first": -0.0006,
+    "vot_at_S2": null,
+    "N90_S": 0.0,
+    "N90_D": 237.71283525088344,
+    "N90_D_rank": 237.71283525088344,
+    "predictable_fraction": 0.7949
+   },
+   {
+    "cell": "n8|pop",
+    "n_hidden": 8,
+    "dim": 5,
+    "sigma_mid": 0.0408,
+    "rho_2": 0.817,
+    "C_minus_PM": 0.024,
+    "C_minus_P0": 0.0191,
+    "state_given_gap": 0.2412,
+    "oes_C": 0.393,
+    "geo_contraction_2": 0.893,
+    "geo_contraction_last": 0.7564,
+    "projection_r2_mean": 0.1589,
+    "D_last_minus_P0": -0.0069,
+    "oes_P0": 0.3739,
+    "sigma_last": 0.0408,
+    "sigma_first": 0.0408,
+    "vot_at_S2": null,
+    "N90_S": 0.0,
+    "N90_D": 105.85744348173921,
+    "N90_D_rank": 105.85744348173921,
+    "predictable_fraction": 0.8323
+   },
+   {
+    "cell": "n1|block",
+    "n_hidden": 1,
+    "dim": 192,
+    "sigma_mid": 0.0053,
+    "rho_2": 0.8199,
+    "C_minus_PM": 0.0051,
+    "C_minus_P0": 0.0039,
+    "state_given_gap": 0.127,
+    "oes_C": 0.6883,
+    "geo_contraction_2": 0.2699,
+    "geo_contraction_last": 0.0263,
+    "projection_r2_mean": 0.8266,
+    "D_last_minus_P0": -0.059,
+    "oes_P0": 0.6844,
+    "sigma_last": 0.0053,
+    "sigma_first": 0.0053,
+    "vot_at_S2": null,
+    "N90_S": 0.0,
+    "N90_D": 451.42506557448155,
+    "N90_D_rank": 451.42506557448155,
+    "predictable_fraction": 0.8983
+   },
+   {
+    "cell": "n1|object",
+    "n_hidden": 1,
+    "dim": 144,
+    "sigma_mid": 0.0052,
+    "rho_2": 1.0277,
+    "C_minus_PM": 0.0034,
+    "C_minus_P0": 0.0028,
+    "state_given_gap": 0.163,
+    "oes_C": 0.4365,
+    "geo_contraction_2": 0.2977,
+    "geo_contraction_last": 0.0258,
+    "projection_r2_mean": 0.8492,
+    "D_last_minus_P0": -0.0231,
+    "oes_P0": 0.4336,
+    "sigma_last": 0.0052,
+    "sigma_first": 0.0052,
+    "vot_at_S2": null,
+    "N90_S": 0.0,
+    "N90_D": 215.2206158076925,
+    "N90_D_rank": 215.2206158076925,
+    "predictable_fraction": 0.7908
+   },
+   {
+    "cell": "n1|pop",
+    "n_hidden": 1,
+    "dim": 5,
+    "sigma_mid": 0.0808,
+    "rho_2": 0.6898,
+    "C_minus_PM": 0.0315,
+    "C_minus_P0": 0.0372,
+    "state_given_gap": 0.255,
+    "oes_C": 0.3889,
+    "geo_contraction_2": 0.3924,
+    "geo_contraction_last": 0.0895,
+    "projection_r2_mean": 0.719,
+    "D_last_minus_P0": 0.0051,
+    "oes_P0": 0.3517,
+    "sigma_last": 0.0759,
+    "sigma_first": 0.0808,
+    "vot_at_S2": null,
+    "N90_S": 0.0,
+    "N90_D": 105.35823378093616,
+    "N90_D_rank": 105.35823378093616,
+    "predictable_fraction": 0.8267
+   }
+  ],
+  "rank_correlations_spearman": {
+   "sigma_mid ~ n_hidden": -0.05,
+   "sigma_mid ~ dim": -0.5,
+   "sigma_mid ~ C_minus_PM": 1.0,
+   "sigma_mid ~ C_minus_P0": 0.9833,
+   "sigma_mid ~ state_given_gap": 0.7667,
+   "sigma_mid ~ geo_contraction_2": 0.2667,
+   "sigma_mid ~ projection_r2_mean": -0.25,
+   "sigma_mid ~ predictable_fraction": 0.25,
+   "sigma_mid ~ oes_C": -0.6333,
+   "sigma_last ~ n_hidden": -0.0833,
+   "sigma_last ~ dim": -0.4667,
+   "sigma_last ~ C_minus_PM": 0.9833,
+   "sigma_last ~ C_minus_P0": 0.9667,
+   "sigma_last ~ state_given_gap": 0.75,
+   "sigma_last ~ geo_contraction_2": 0.2167,
+   "sigma_last ~ projection_r2_mean": -0.1833,
+   "sigma_last ~ predictable_fraction": 0.2667,
+   "sigma_last ~ oes_C": -0.6167,
+   "N90_D_rank ~ n_hidden": -0.1,
+   "N90_D_rank ~ dim": 0.65,
+   "N90_D_rank ~ C_minus_PM": -0.25,
+   "N90_D_rank ~ C_minus_P0": -0.15,
+   "N90_D_rank ~ state_given_gap": -0.65,
+   "N90_D_rank ~ geo_contraction_2": -0.3333,
+   "N90_D_rank ~ projection_r2_mean": 0.15,
+   "N90_D_rank ~ predictable_fraction": 0.5833,
+   "N90_D_rank ~ oes_C": 0.75,
+   "rho_2 ~ n_hidden": -0.1833,
+   "rho_2 ~ dim": 0.0833,
+   "rho_2 ~ C_minus_PM": -0.6667,
+   "rho_2 ~ C_minus_P0": -0.6,
+   "rho_2 ~ state_given_gap": -0.35,
+   "rho_2 ~ geo_contraction_2": -0.1667,
+   "rho_2 ~ projection_r2_mean": 0.1667,
+   "rho_2 ~ predictable_fraction": -0.25,
+   "rho_2 ~ oes_C": 0.25,
+   "C_minus_P0 ~ n_hidden": -0.1333,
+   "C_minus_P0 ~ dim": -0.45,
+   "C_minus_P0 ~ C_minus_PM": 0.9833,
+   "C_minus_P0 ~ state_given_gap": 0.6833,
+   "C_minus_P0 ~ geo_contraction_2": 0.2,
+   "C_minus_P0 ~ projection_r2_mean": -0.2,
+   "C_minus_P0 ~ predictable_fraction": 0.3667,
+   "C_minus_P0 ~ oes_C": -0.55
+  },
+  "note": "one row per cell; sigma_mid = science share at the middle budget; descriptive only (at most 9 cells, which share simulations within a hidden set)",
+  "by_depth_at_fixed_hidden_set": {
+   "n4": {
+    "N90_D": {
+     "block": 362.2661,
+     "object": 198.4612,
+     "pop": 323.0607
+    },
+    "N90_S": {
+     "block": 0.0,
+     "object": 0.0,
+     "pop": 2.0
+    },
+    "N90_D_ratio_to_block": {
+     "object": 0.5478,
+     "pop": 0.8918
+    },
+    "sigma_mid": {
+     "block": 0.0175,
+     "object": 0.0065,
+     "pop": 0.1127
+    },
+    "sigma_last": {
+     "block": 0.0175,
+     "object": 0.0065,
+     "pop": 0.0497
+    },
+    "rho_2": {
+     "block": 0.7744,
+     "object": 0.6644,
+     "pop": 0.641
+    },
+    "C_minus_P0": {
+     "block": 0.013,
+     "object": 0.0033,
+     "pop": 0.0474
+    },
+    "geo_contraction_2": {
+     "block": 0.3784,
+     "object": 0.5908,
+     "pop": 0.7176
+    }
+   },
+   "n8": {
+    "N90_D": {
+     "block": 363.0298,
+     "object": 237.7128,
+     "pop": 105.8574
+    },
+    "N90_S": {
+     "block": 0.0,
+     "object": 0.0,
+     "pop": 0.0
+    },
+    "N90_D_ratio_to_block": {
+     "object": 0.6548,
+     "pop": 0.2916
+    },
+    "sigma_mid": {
+     "block": 0.0126,
+     "object": -0.0006,
+     "pop": 0.0408
+    },
+    "sigma_last": {
+     "block": 0.0126,
+     "object": -0.0006,
+     "pop": 0.0408
+    },
+    "rho_2": {
+     "block": 0.6051,
+     "object": 2.9063,
+     "pop": 0.817
+    },
+    "C_minus_P0": {
+     "block": 0.0096,
+     "object": -0.0001,
+     "pop": 0.0191
+    },
+    "geo_contraction_2": {
+     "block": 0.6895,
+     "object": 0.7776,
+     "pop": 0.893
+    }
+   },
+   "n1": {
+    "N90_D": {
+     "block": 451.4251,
+     "object": 215.2206,
+     "pop": 105.3582
+    },
+    "N90_S": {
+     "block": 0.0,
+     "object": 0.0,
+     "pop": 0.0
+    },
+    "N90_D_ratio_to_block": {
+     "object": 0.4768,
+     "pop": 0.2334
+    },
+    "sigma_mid": {
+     "block": 0.0053,
+     "object": 0.0052,
+     "pop": 0.0808
+    },
+    "sigma_last": {
+     "block": 0.0053,
+     "object": 0.0052,
+     "pop": 0.0759
+    },
+    "rho_2": {
+     "block": 0.8199,
+     "object": 1.0277,
+     "pop": 0.6898
+    },
+    "C_minus_P0": {
+     "block": 0.0039,
+     "object": 0.0028,
+     "pop": 0.0372
+    },
+    "geo_contraction_2": {
+     "block": 0.2699,
+     "object": 0.2977,
+     "pop": 0.3924
+    }
+   }
+  },
+  "by_hidden_set_at_fixed_view": {
+   "block": {
+    "N90_D": {
+     "n1": 451.4251,
+     "n4": 362.2661,
+     "n8": 363.0298
+    },
+    "N90_S": {
+     "n1": 0.0,
+     "n4": 0.0,
+     "n8": 0.0
+    },
+    "sigma_mid": {
+     "n1": 0.0053,
+     "n4": 0.0175,
+     "n8": 0.0126
+    },
+    "sigma_last": {
+     "n1": 0.0053,
+     "n4": 0.0175,
+     "n8": 0.0126
+    },
+    "rho_2": {
+     "n1": 0.8199,
+     "n4": 0.7744,
+     "n8": 0.6051
+    },
+    "C_minus_P0": {
+     "n1": 0.0039,
+     "n4": 0.013,
+     "n8": 0.0096
+    },
+    "C_minus_PM": {
+     "n1": 0.0051,
+     "n4": 0.0098,
+     "n8": 0.0079
+    },
+    "geo_contraction_2": {
+     "n1": 0.2699,
+     "n4": 0.3784,
+     "n8": 0.6895
+    },
+    "geo_contraction_last": {
+     "n1": 0.0263,
+     "n4": 0.0835,
+     "n8": 0.5096
+    },
+    "state_given_gap": {
+     "n1": 0.127,
+     "n4": 0.1959,
+     "n8": 0.1328
+    }
+   },
+   "object": {
+    "N90_D": {
+     "n1": 215.2206,
+     "n4": 198.4612,
+     "n8": 237.7128
+    },
+    "N90_S": {
+     "n1": 0.0,
+     "n4": 0.0,
+     "n8": 0.0
+    },
+    "sigma_mid": {
+     "n1": 0.0052,
+     "n4": 0.0065,
+     "n8": -0.0006
+    },
+    "sigma_last": {
+     "n1": 0.0052,
+     "n4": 0.0065,
+     "n8": -0.0006
+    },
+    "rho_2": {
+     "n1": 1.0277,
+     "n4": 0.6644,
+     "n8": 2.9063
+    },
+    "C_minus_P0": {
+     "n1": 0.0028,
+     "n4": 0.0033,
+     "n8": -0.0001
+    },
+    "C_minus_PM": {
+     "n1": 0.0034,
+     "n4": 0.0054,
+     "n8": 0.0008
+    },
+    "geo_contraction_2": {
+     "n1": 0.2977,
+     "n4": 0.5908,
+     "n8": 0.7776
+    },
+    "geo_contraction_last": {
+     "n1": 0.0258,
+     "n4": 0.1882,
+     "n8": 0.618
+    },
+    "state_given_gap": {
+     "n1": 0.163,
+     "n4": 0.2363,
+     "n8": 0.1671
+    }
+   },
+   "pop": {
+    "N90_D": {
+     "n1": 105.3582,
+     "n4": 323.0607,
+     "n8": 105.8574
+    },
+    "N90_S": {
+     "n1": 0.0,
+     "n4": 2.0,
+     "n8": 0.0
+    },
+    "sigma_mid": {
+     "n1": 0.0808,
+     "n4": 0.1127,
+     "n8": 0.0408
+    },
+    "sigma_last": {
+     "n1": 0.0759,
+     "n4": 0.0497,
+     "n8": 0.0408
+    },
+    "rho_2": {
+     "n1": 0.6898,
+     "n4": 0.641,
+     "n8": 0.817
+    },
+    "C_minus_P0": {
+     "n1": 0.0372,
+     "n4": 0.0474,
+     "n8": 0.0191
+    },
+    "C_minus_PM": {
+     "n1": 0.0315,
+     "n4": 0.0479,
+     "n8": 0.024
+    },
+    "geo_contraction_2": {
+     "n1": 0.3924,
+     "n4": 0.7176,
+     "n8": 0.893
+    },
+    "geo_contraction_last": {
+     "n1": 0.0895,
+     "n4": 0.4636,
+     "n8": 0.7564
+    },
+    "state_given_gap": {
+     "n1": 0.255,
+     "n4": 0.3487,
+     "n8": 0.2412
+    }
+   }
+  },
+  "caveats": [
+   "the conditioned net, the P0u net and each D net are one trained net each (no training-seed variance in any SE)",
+   "N90 is the budget at which a curve reaches 90% of the OES of C in that cell: a relative target, so a cell where C itself is poor is 'easy' by this measure; read it beside oes_C and sigma",
+   "the views are levels of one exam per truth (same hidden states and programs), the hidden sets are different truths and simulations"
+  ]
+ }
+}

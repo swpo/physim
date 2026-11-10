@@ -1,0 +1,165 @@
+{
+  "billing_window_hours": 3.9,
+  "bundle": {
+    "bundle_sha256": "7147dbcb02e030ed775705a02d6423802388e2750b2f09376a0a6df32d0a8b72",
+    "files": {
+      "job.sh": "b4da0d1b05cf089aa96e50a0502e33714888122483c269805237bae842a41412",
+      "request.json": "345820a805ecf4eeeb88e412fc559b3556a160177fafea7c624dfe8738119b2a",
+      "run.sh": "4e469c7d8334190fba3cf91ff126d26d1c57a73390a828026e92916f0996d936",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "16bcd17ae26c680393b12515fda71aeb18e7f3c3bbf6f8bf6f47491690d725a0"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/gliders_exam",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/round4/sbi",
+      "research/alife/vecworld/program/round5/agentenv/evaluator",
+      "research/alife/vecworld/program/round5/ladder"
+    ],
+    "ref": "28263eb3e78445c8ae0355cd204a8b69a48185e1",
+    "src_bytes": 13266151
+  },
+  "cap_usd": 21.2,
+  "collected": {
+    "error": null,
+    "files": 56,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 11438497,
+    "truncated": false
+  },
+  "cost": {
+    "billed_usd": 2.5555,
+    "conservative_usd": 2.732
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-10T05:01:34Z",
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": "2026-11-10T07:32:50Z",
+  "hard_deadline_epoch": 1794295970.65992,
+  "history": [
+    {
+      "at": "2026-11-10T02:52:25Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-10T03:16:22Z",
+      "message": "accepted: H200_141GB via nebius at $6.69/h, at most $21.07",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-10T03:38:49Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T03:44:31Z",
+      "message": "job started on the pod",
+      "state": "running"
+    },
+    {
+      "at": "2026-11-10T05:01:08Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-10T05:01:34Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
+    }
+  ],
+  "job_id": "r5-ladder-002",
+  "max_estimate_usd": 21.07,
+  "message": "job finished (exit 0); pods terminated",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
+  "plan": {
+    "max_estimate_usd": 21.07,
+    "offers": [
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "US",
+        "data_center": "us-central1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "listed_rate_usd_hr": 5.55,
+        "memory_gb": 200,
+        "price_source": "billed by a pod of this offer at 2026-11-10T03:01:21Z",
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 6.69,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-10T03:16:22Z",
+    "window_hours": 3.15
+  },
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r5-ladder-002-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": 2.5555,
+      "created_at": "2026-11-10T03:39:06Z",
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r5-ladder-002-a1",
+      "note": null,
+      "pod_id": "dee593f9e72a447abe83568a45d1687b",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-10T03:44:18Z",
+      "requested_at": "2026-11-10T03:38:50Z",
+      "spot": false,
+      "state": "terminated",
+      "terminated_at": "2026-11-10T05:01:12Z"
+    }
+  ],
+  "pods_terminated": true,
+  "review": {
+    "at": "2026-11-10T03:16:15Z",
+    "file": "jobs/r5-ladder-002/review.md",
+    "sha256": "9bbfba7f2ced5c9ff48d8eae9c1a7087429cd8dc839c30c7af91330ffa57c344",
+    "summary": "Fine to run: the 2^31 blocker is fixed (largest array 1.1e8, peak about 4.3 GB, checked at compile level); failure isolation verified. 1 minor: run.log lacks the pilot marker. 6 info."
+  },
+  "run_deadline": "2026-11-10T06:38:31Z",
+  "run_started_epoch": 1794281929.046648,
+  "started_at": "2026-11-10T03:44:31Z",
+  "state": "done",
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n2500 train 0.3879 val [0.4560999870300293, 0.4641999900341034, 0.4869000017642975, 0.4101000130176544, 0.484499990940094, 0.44119998812675476, 0.3955000042915344, 0.3847000002861023] (2s)\n04:41:15 [  53.5 min]   net[n8 pop D [128, 512] batch1] step 1000/2500 train 0.4247 val [0.39160001277923584, 0.4000000059604645, 0.5181999802589417, 0.4049000144004822, 0.5411999821662903, 0.42820000648498535, 0.46160000562667847, 0.3889999985694885] (1s)\n04:41:16 [  53.5 min]   net[n8 pop D [128, 512] batch1] step 2000/2500 train 0.3927 val [0.4025999903678894, 0.39399999380111694, 0.5256999731063843, 0.4000000059604645, 0.5608999729156494, 0.42500001192092896, 0.4749999940395355, 0.3889000117778778] (2s)\n04:41:16 [  53.5 min]   net[n8 pop D [128, 512] batch1] step 2500/2500 train 0.3613 val [0.4099000096321106, 0.39559999108314514, 0.5343000292778015, 0.39500001072883606, 0.5623000264167786, 0.4259999990463257, 0.47360000014305115, 0.38960000872612] (2s)\n04:41:22 [  53.6 min]   n=8 view pop: nets 17s, scored in 6s\n04:41:22 [  53.6 min] == n=8 H nets and I scores done in 388s\n04:41:23 [  53.6 min]   n=8 block OES C 0.681, <ssh-target> 0.557, <ssh-target> 0.089, <ssh-target> 0.459, <ssh-target> 0.630, <ssh-target> 0.271, <ssh-target> 0.560, <ssh-target> 0.402, <ssh-target> 0.554, <ssh-target> 0.562, <ssh-target> 0.529, P0 0.671, P0u 0.647, PM 0.673, <ssh-target> 0.680, <ssh-target> 0.677, <ssh-target> 0.680, <ssh-target> 0.680, <ssh-target> 0.679, plugPM 0.867\n04:41:23 [  53.6 min]   n=8 block N=2: sigma 0.013 rho 0.61; N=8: sigma 0.013 rho 0.78; N=32: sigma 0.013 rho 0.87; N=128: sigma 0.013 rho 0.90; N=512: sigma 0.013 rho 0.92\n04:41:24 [  53.7 min]   n=8 object OES C 0.438, <ssh-target> 0.371, <ssh-target> -0.292, <ssh-target> 0.301, <ssh-target> 0.412, <ssh-target> 0.089, <ssh-target> 0.380, <ssh-target> -0.176, <ssh-target> 0.360, <ssh-target> 0.384, <ssh-target> 0.249, P0 0.438, P0u 0.419, PM 0.438, <ssh-target> 0.439, <ssh-target> 0.438, <ssh-target> 0.439, <ssh-target> 0.439, <ssh-target> 0.438, plugPM 0.833\n04:41:24 [  53.7 min]   n=8 object N=2: sigma -0.001 rho 2.91; N=8: sigma -0.001 rho 0.59; N=32: sigma -0.001 rho -0.13; N=128: sigma -0.001 rho -0.18; N=512: sigma -0.001 rho -0.41\n04:41:24 [  53.7 min]   n=8 pop OES C 0.393, <ssh-target> 0.325, <ssh-target> -0.562, <ssh-target> 0.219, <ssh-target> 0.367, <ssh-target> -0.078, <ssh-target> 0.358, <ssh-target> -0.571, <ssh-target> 0.324, <ssh-target> 0.363, <ssh-target> 0.182, P0 0.374, P0u 0.363, PM 0.369, <ssh-target> 0.392, <ssh-target> 0.390, <ssh-target> 0.390, <ssh-target> 0.392, <ssh-target> 0.393, plugPM 0.759\n04:41:24 [  53.7 min]   n=8 pop N=2: sigma 0.041 rho 0.82; N=8: sigma 0.041 rho 0.97; N=32: sigma 0.041 rho 0.82; N=128: sigma 0.041 rho 0.92; N=512: sigma 0.041 rho 0.88\n04:41:24 [  53.7 min] n=1: 102.3 min left, this set's share ends in 101.3 min\n04:41:24 [  53.7 min] == n=1 C prior\n04:41:59 [  54.2 min]   n=1 box shrink 1.000: 1.000 viable of 128\n04:41:59 [  54.2 min] == n=1 C prior done in 34s\n04:41:59 [  54.2 min] == n=1 B truths\n04:42:05 [  54.3 min]   n=1 truths [[0.932], [0.953], [1.059], [1.071], [0.967], [1.036], [1.06], [1.059]] (48/48 viable)\n04:42:05 [  54.3 min] == n=1 B truths done in 6s\n04:42:05 [  54.3 min] == n=1 D design\n04:46:05 [  58.3 min] == n=1 D design done in 240s\n04:46:05 [  58.3 min] == n=1 E Lab\n== out/progress.txt\n2500 train 0.3879 val [0.4560999870300293, 0.4641999900341034, 0.4869000017642975, 0.4101000130176544, 0.484499990940094, 0.44119998812675476, 0.3955000042915344, 0.3847000002861023] (2s)\n04:41:15 [  53.5 min]   net[n8 pop D [128, 512] batch1] step 1000/2500 train 0.4247 val [0.39160001277923584, 0.4000000059604645, 0.5181999802589417, 0.4049000144004822, 0.5411999821662903, 0.42820000648498535, 0.46160000562667847, 0.3889999985694885] (1s)\n04:41:16 [  53.5 min]   net[n8 pop D [128, 512] batch1] step 2000/2500 train 0.3927 val [0.4025999903678894, 0.39399999380111694, 0.5256999731063843, 0.4000000059604645, 0.5608999729156494, 0.42500001192092896, 0.4749999940395355, 0.3889000117778778] (2s)\n04:41:16 [  53.5 min]   net[n8 pop D [128, 512] batch1] step 2500/2500 train 0.3613 val [0.4099000096321106, 0.39559999108314514, 0.5343000292778015, 0.39500001072883606, 0.5623000264167786, 0.4259999990463257, 0.47360000014305115, 0.38960000872612] (2s)\n04:41:22 [  53.6 min]   n=8 view pop: nets 17s, scored in 6s\n04:41:22 [  53.6 min] == n=8 H nets and I scores done in 388s\n04:41:23 [  53.6 min]   n=8 block OES C 0.681, <ssh-target> 0.557, <ssh-target> 0.089, <ssh-target> 0.459, <ssh-target> 0.630, <ssh-target> 0.271, <ssh-target> 0.560, <ssh-target> 0.402, <ssh-target> 0.554, <ssh-target> 0.562, <ssh-target> 0.529, P0 0.671, P0u 0.647, PM 0.673, <ssh-target> 0.680, <ssh-target> 0.677, <ssh-target> 0.680, <ssh-target> 0.680, <ssh-target> 0.679, plugPM 0.867\n04:41:23 [  53.6 min]   n=8 block N=2: sigma 0.013 rho 0.61; N=8: sigma 0.013 rho 0.78; N=32: sigma 0.013 rho 0.87; N=128: sigma 0.013 rho 0.90; N=512: sigma 0.013 rho 0.92\n04:41:24 [  53.7 min]   n=8 object OES C 0.438, <ssh-target> 0.371, <ssh-target> -0.292, <ssh-target> 0.301, <ssh-target> 0.412, <ssh-target> 0.089, <ssh-target> 0.380, <ssh-target> -0.176, <ssh-target> 0.360, <ssh-target> 0.384, <ssh-target> 0.249, P0 0.438, P0u 0.419, PM 0.438, <ssh-target> 0.439, <ssh-target> 0.438, <ssh-target> 0.439, <ssh-target> 0.439, <ssh-target> 0.438, plugPM 0.833\n04:41:24 [  53.7 min]   n=8 object N=2: sigma -0.001 rho 2.91; N=8: sigma -0.001 rho 0.59; N=32: sigma -0.001 rho -0.13; N=128: sigma -0.001 rho -0.18; N=512: sigma -0.001 rho -0.41\n04:41:24 [  53.7 min]   n=8 pop OES C 0.393, <ssh-target> 0.325, <ssh-target> -0.562, <ssh-target> 0.219, <ssh-target> 0.367, <ssh-target> -0.078, <ssh-target> 0.358, <ssh-target> -0.571, <ssh-target> 0.324, <ssh-target> 0.363, <ssh-target> 0.182, P0 0.374, P0u 0.363, PM 0.369, <ssh-target> 0.392, <ssh-target> 0.390, <ssh-target> 0.390, <ssh-target> 0.392, <ssh-target> 0.393, plugPM 0.759\n04:41:24 [  53.7 min]   n=8 pop N=2: sigma 0.041 rho 0.82; N=8: sigma 0.041 rho 0.97; N=32: sigma 0.041 rho 0.82; N=128: sigma 0.041 rho 0.92; N=512: sigma 0.041 rho 0.88\n04:41:24 [  53.7 min] n=1: 102.3 min left, this set's share ends in 101.3 min\n04:41:24 [  53.7 min] == n=1 C prior\n04:41:59 [  54.2 min]   n=1 box shrink 1.000: 1.000 viable of 128\n04:41:59 [  54.2 min] == n=1 C prior done in 34s\n04:41:59 [  54.2 min] == n=1 B truths\n04:42:05 [  54.3 min]   n=1 truths [[0.932], [0.953], [1.059], [1.071], [0.967], [1.036], [1.06], [1.059]] (48/48 viable)\n04:42:05 [  54.3 min] == n=1 B truths done in 6s\n04:42:05 [  54.3 min] == n=1 D design\n04:46:05 [  58.3 min] == n=1 D design done in 240s\n04:46:05 [  58.3 min] == n=1 E Lab\n",
+  "updated_at": "2026-11-10T05:01:34Z"
+}

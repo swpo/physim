@@ -37,3 +37,8 @@
   run.log lacks the pilot line); state `queued`, accepted for an H200 at $6.69/h (at most $21.07).
 - 03:50 UTC. r5-ladder-002 is RUNNING since 03:44:31Z on an A100_40GB at $1.99/h (expected about 1.8-2.1 h,
   so until about 05:45Z; hard limit max_hours 2.9).
+- 05:03 UTC. **r5-ladder-002 DONE** (exit 0, failed [], A100_40GB at $1.99/h, 03:44:31Z-05:01:34Z, billed
+  $2.5555; script 1.21 h, 3,650,912 member-ticks). Outputs copied to results/job (without posterior_draws.npz,
+  which stays at origin/gpu-jobs:jobs/r5-ladder-002/out), status in results/status.json,
+  `make_summary.py --job r5-ladder-002` wrote results/summary.json.
+- NEXT: read the summary, write README.md (results) and the report, commit, push, remove the worktree.

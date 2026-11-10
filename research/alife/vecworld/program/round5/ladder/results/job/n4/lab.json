@@ -1,0 +1,677 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "per_truth": [
+  {
+   "truth": 0,
+   "usage_final": {
+    "ticks_used": 21120,
+    "max_ticks": 21120,
+    "resets": 640,
+    "episode_nats": 199.99999960000002,
+    "total_nats": 102054.29618580236,
+    "episode_left": 200.00000039999998,
+    "total_left": 153945.70381419762,
+    "episodes": 640,
+    "commands": 2041
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 66,
+     "nats": 40.7543145954489,
+     "classes": {
+      "a": 1,
+      "b": 1,
+      "c": 0,
+      "d": 0
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 264,
+     "nats": 1188.508835617557,
+     "classes": {
+      "a": 2,
+      "b": 2,
+      "c": 2,
+      "d": 2
+     }
+    },
+    "32": {
+     "episodes": 32,
+     "ticks": 1056,
+     "nats": 4716.7087810863495,
+     "classes": {
+      "a": 7,
+      "b": 12,
+      "c": 5,
+      "d": 8
+     }
+    },
+    "128": {
+     "episodes": 128,
+     "ticks": 4224,
+     "nats": 19375.858714654805,
+     "classes": {
+      "a": 36,
+      "b": 28,
+      "c": 27,
+      "d": 37
+     }
+    },
+    "512": {
+     "episodes": 512,
+     "ticks": 16896,
+     "nats": 76454.29623700272,
+     "classes": {
+      "a": 128,
+      "b": 128,
+      "c": 128,
+      "d": 128
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 97.29918935158376,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000008
+   },
+   "caps": {
+    "max_ticks": 21120,
+    "nats_total": 256000.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  },
+  {
+   "truth": 1,
+   "usage_final": {
+    "ticks_used": 21120,
+    "max_ticks": 21120,
+    "resets": 640,
+    "episode_nats": 199.99999960000002,
+    "total_nats": 102771.92795330033,
+    "episode_left": 200.00000039999998,
+    "total_left": 153228.07204669967,
+    "episodes": 640,
+    "commands": 2074
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 66,
+     "nats": 100.2673832445659,
+     "classes": {
+      "a": 1,
+      "b": 1,
+      "c": 0,
+      "d": 0
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 264,
+     "nats": 1029.5958034141343,
+     "classes": {
+      "a": 2,
+      "b": 2,
+      "c": 3,
+      "d": 1
+     }
+    },
+    "32": {
+     "episodes": 32,
+     "ticks": 1056,
+     "nats": 5229.481324150683,
+     "classes": {
+      "a": 4,
+      "b": 9,
+      "c": 12,
+      "d": 7
+     }
+    },
+    "128": {
+     "episodes": 128,
+     "ticks": 4224,
+     "nats": 21316.120855597044,
+     "classes": {
+      "a": 23,
+      "b": 34,
+      "c": 36,
+      "d": 35
+     }
+    },
+    "512": {
+     "episodes": 512,
+     "ticks": 16896,
+     "nats": 77171.92800450076,
+     "classes": {
+      "a": 128,
+      "b": 128,
+      "c": 128,
+      "d": 128
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 102.90568753516227,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000008
+   },
+   "caps": {
+    "max_ticks": 21120,
+    "nats_total": 256000.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  },
+  {
+   "truth": 2,
+   "usage_final": {
+    "ticks_used": 21120,
+    "max_ticks": 21120,
+    "resets": 640,
+    "episode_nats": 199.99999960000005,
+    "total_nats": 101899.17475373218,
+    "episode_left": 200.00000039999995,
+    "total_left": 154100.82524626784,
+    "episodes": 640,
+    "commands": 2026
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 66,
+     "nats": 391.4188599545839,
+     "classes": {
+      "a": 0,
+      "b": 1,
+      "c": 0,
+      "d": 1
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 264,
+     "nats": 870.5404668290797,
+     "classes": {
+      "a": 3,
+      "b": 3,
+      "c": 0,
+      "d": 2
+     }
+    },
+    "32": {
+     "episodes": 32,
+     "ticks": 1056,
+     "nats": 4975.280136285557,
+     "classes": {
+      "a": 8,
+      "b": 7,
+      "c": 8,
+      "d": 9
+     }
+    },
+    "128": {
+     "episodes": 128,
+     "ticks": 4224,
+     "nats": 18609.779390443677,
+     "classes": {
+      "a": 32,
+      "b": 34,
+      "c": 32,
+      "d": 30
+     }
+    },
+    "512": {
+     "episodes": 512,
+     "ticks": 16896,
+     "nats": 76299.17480493258,
+     "classes": {
+      "a": 128,
+      "b": 128,
+      "c": 128,
+      "d": 128
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 96.08730316353581,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000008
+   },
+   "caps": {
+    "max_ticks": 21120,
+    "nats_total": 256000.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  },
+  {
+   "truth": 3,
+   "usage_final": {
+    "ticks_used": 21120,
+    "max_ticks": 21120,
+    "resets": 640,
+    "episode_nats": 199.99999960000005,
+    "total_nats": 102347.97052767033,
+    "episode_left": 200.00000039999995,
+    "total_left": 153652.02947232965,
+    "episodes": 640,
+    "commands": 2027
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 66,
+     "nats": 0.0,
+     "classes": {
+      "a": 2,
+      "b": 0,
+      "c": 0,
+      "d": 0
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 264,
+     "nats": 1003.7629828167453,
+     "classes": {
+      "a": 3,
+      "b": 3,
+      "c": 1,
+      "d": 1
+     }
+    },
+    "32": {
+     "episodes": 32,
+     "ticks": 1056,
+     "nats": 4286.910882604423,
+     "classes": {
+      "a": 11,
+      "b": 7,
+      "c": 8,
+      "d": 6
+     }
+    },
+    "128": {
+     "episodes": 128,
+     "ticks": 4224,
+     "nats": 19783.124912996034,
+     "classes": {
+      "a": 30,
+      "b": 38,
+      "c": 25,
+      "d": 35
+     }
+    },
+    "512": {
+     "episodes": 512,
+     "ticks": 16896,
+     "nats": 76747.97057887074,
+     "classes": {
+      "a": 128,
+      "b": 128,
+      "c": 128,
+      "d": 128
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 99.59352014742761,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000008
+   },
+   "caps": {
+    "max_ticks": 21120,
+    "nats_total": 256000.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  },
+  {
+   "truth": 4,
+   "usage_final": {
+    "ticks_used": 21120,
+    "max_ticks": 21120,
+    "resets": 640,
+    "episode_nats": 199.9999996,
+    "total_nats": 102906.38345035995,
+    "episode_left": 200.0000004,
+    "total_left": 153093.61654964005,
+    "episodes": 640,
+    "commands": 2056
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 66,
+     "nats": 0.0,
+     "classes": {
+      "a": 2,
+      "b": 0,
+      "c": 0,
+      "d": 0
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 264,
+     "nats": 1153.964269641286,
+     "classes": {
+      "a": 2,
+      "b": 2,
+      "c": 2,
+      "d": 2
+     }
+    },
+    "32": {
+     "episodes": 32,
+     "ticks": 1056,
+     "nats": 4303.473947831036,
+     "classes": {
+      "a": 8,
+      "b": 10,
+      "c": 10,
+      "d": 4
+     }
+    },
+    "128": {
+     "episodes": 128,
+     "ticks": 4224,
+     "nats": 19316.71075433009,
+     "classes": {
+      "a": 31,
+      "b": 31,
+      "c": 37,
+      "d": 29
+     }
+    },
+    "512": {
+     "episodes": 512,
+     "ticks": 16896,
+     "nats": 77306.38350156037,
+     "classes": {
+      "a": 128,
+      "b": 128,
+      "c": 128,
+      "d": 128
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 103.95612110594038,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000008
+   },
+   "caps": {
+    "max_ticks": 21120,
+    "nats_total": 256000.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  },
+  {
+   "truth": 5,
+   "usage_final": {
+    "ticks_used": 21120,
+    "max_ticks": 21120,
+    "resets": 640,
+    "episode_nats": 199.99999960000005,
+    "total_nats": 102481.16645662273,
+    "episode_left": 200.00000039999995,
+    "total_left": 153518.8335433773,
+    "episodes": 640,
+    "commands": 2051
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 66,
+     "nats": 0.0,
+     "classes": {
+      "a": 2,
+      "b": 0,
+      "c": 0,
+      "d": 0
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 264,
+     "nats": 627.7249375895414,
+     "classes": {
+      "a": 4,
+      "b": 2,
+      "c": 2,
+      "d": 0
+     }
+    },
+    "32": {
+     "episodes": 32,
+     "ticks": 1056,
+     "nats": 4075.923758512186,
+     "classes": {
+      "a": 8,
+      "b": 11,
+      "c": 8,
+      "d": 5
+     }
+    },
+    "128": {
+     "episodes": 128,
+     "ticks": 4224,
+     "nats": 17855.922245411806,
+     "classes": {
+      "a": 35,
+      "b": 33,
+      "c": 34,
+      "d": 26
+     }
+    },
+    "512": {
+     "episodes": 512,
+     "ticks": 16896,
+     "nats": 76881.16650782304,
+     "classes": {
+      "a": 128,
+      "b": 128,
+      "c": 128,
+      "d": 128
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 100.63411334236766,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000008
+   },
+   "caps": {
+    "max_ticks": 21120,
+    "nats_total": 256000.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  },
+  {
+   "truth": 6,
+   "usage_final": {
+    "ticks_used": 21120,
+    "max_ticks": 21120,
+    "resets": 640,
+    "episode_nats": 199.99999960000002,
+    "total_nats": 102078.24767391324,
+    "episode_left": 200.00000039999998,
+    "total_left": 153921.75232608675,
+    "episodes": 640,
+    "commands": 2032
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 66,
+     "nats": 405.45599125338254,
+     "classes": {
+      "a": 0,
+      "b": 1,
+      "c": 0,
+      "d": 1
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 264,
+     "nats": 1591.8109481480406,
+     "classes": {
+      "a": 1,
+      "b": 2,
+      "c": 1,
+      "d": 4
+     }
+    },
+    "32": {
+     "episodes": 32,
+     "ticks": 1056,
+     "nats": 5187.198621462301,
+     "classes": {
+      "a": 5,
+      "b": 10,
+      "c": 7,
+      "d": 10
+     }
+    },
+    "128": {
+     "episodes": 128,
+     "ticks": 4224,
+     "nats": 19021.26860296609,
+     "classes": {
+      "a": 33,
+      "b": 28,
+      "c": 36,
+      "d": 31
+     }
+    },
+    "512": {
+     "episodes": 512,
+     "ticks": 16896,
+     "nats": 76478.24772511363,
+     "classes": {
+      "a": 128,
+      "b": 128,
+      "c": 128,
+      "d": 128
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 97.48631035245022,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000008
+   },
+   "caps": {
+    "max_ticks": 21120,
+    "nats_total": 256000.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  },
+  {
+   "truth": 7,
+   "usage_final": {
+    "ticks_used": 21120,
+    "max_ticks": 21120,
+    "resets": 640,
+    "episode_nats": 199.99999960000002,
+    "total_nats": 101956.97961497749,
+    "episode_left": 200.00000039999998,
+    "total_left": 154043.0203850225,
+    "episodes": 640,
+    "commands": 2031
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 66,
+     "nats": 200.0,
+     "classes": {
+      "a": 1,
+      "b": 0,
+      "c": 1,
+      "d": 0
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 264,
+     "nats": 1300.0,
+     "classes": {
+      "a": 3,
+      "b": 0,
+      "c": 2,
+      "d": 3
+     }
+    },
+    "32": {
+     "episodes": 32,
+     "ticks": 1056,
+     "nats": 5535.057242534787,
+     "classes": {
+      "a": 4,
+      "b": 9,
+      "c": 10,
+      "d": 9
+     }
+    },
+    "128": {
+     "episodes": 128,
+     "ticks": 4224,
+     "nats": 18006.98235926604,
+     "classes": {
+      "a": 36,
+      "b": 29,
+      "c": 35,
+      "d": 28
+     }
+    },
+    "512": {
+     "episodes": 512,
+     "ticks": 16896,
+     "nats": 76356.97966617788,
+     "classes": {
+      "a": 128,
+      "b": 128,
+      "c": 128,
+      "d": 128
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 96.53890364201459,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000008
+   },
+   "caps": {
+    "max_ticks": 21120,
+    "nats_total": 256000.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  }
+ ]
+}
