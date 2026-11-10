@@ -34,5 +34,13 @@ Updated 2026-11-10 01:16 UTC (instance 4, after the restart at about 01:12).
   affd4ecb2. Now at step 3 (watching). Never resubmit id 006. If it failed: read logs, fix, CPU-test, resubmit as 007
   only if the remaining cap allows (spent $8.31 + 006's bill; study cap $35).
 
+- 01:47 UTC: r5-bias2-006 accepted (H100 80GB, lambdalabs, $4.29/h, at most $7.94), provisioning. Review read
+  (fine to run; 2 info points, nothing to change). Watcher = scratch watch6.sh (re-create: loop `git fetch origin gpu-jobs`
+  every 60 s until jobs/r5-bias2-006/status.json is terminal). After it ends: run the steps of scratch post6.sh =
+  `B5_SUFFIX=_w bash cfetch.sh r5-bias2-006 vortex membrane gliders`; unpack items/latsub/windows of 006 into the scratch
+  fetch folder; `canalyze.py results gliders vortex membrane gliders_w vortex_w membrane_w`; cextra.py with
+  `<world>_w=r5-bias2-006` added; `bash cpairs_run.sh FETCH`; then add claims W1.. to cclaims.py (worlds "vortex_w" etc.),
+  cinterp.py and csummary.py with the three `_w` worlds added, README, job_history.json (final state and bill of 006).
+
 ## Next if the follow-up is abandoned
 Report from results/summary.json as it is; say the follow-up was not run and why.
