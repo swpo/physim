@@ -19,7 +19,13 @@ command of the runbook.
              files, and (in the copy at the head of the branch) names one commit
   step3_*    (change 9) the paid command stands alone between STOP lines, writes to a file, is read through
              tools/run_report.py only; no `claude_code` / `codex`
-  hold       the first lines say ON HOLD
+  r3_*       (round 3: the Mac session's review and the disk requirement) the pilot's processes are matched letter
+             for letter and their lines cut; the stop command signals only after its own comparison; step 0 checks
+             the session's own environment with the list the tools use; no command sets a variable but the run
+             label or starts vf-eval itself; no count can hide a failed command; no rm -rf follows a linked folder;
+             docker rm reads the label back; the disk floor is on every start; no other container during step 2;
+             the build cache is named
+  hold       the first lines say ON HOLD (in a copy a verdict released: GO for steps 0 to 2)
 
 usage: python -B tools/check_runbook.py --out results/safety_runbook.json [--runbook RUNBOOK_MAC.md]
 """
@@ -117,64 +123,119 @@ def main():
     checks["uv_no_subagents_rule"] = "No subagents" in text
 
     # ---- change 2: runs ----
-    starts = [c for c in cmds if re.search(r"tools/(prove|check_probe)\.py|bin/vf-eval\"", c)]
-    dry = [c for c in starts if "--dry-run" in c]
-    real = [c for c in starts if "--dry-run" not in c]
+    START = r'nohup "[^"]+/\.venv/bin/python" -B tools/(prove|check_probe|vfrun)\.py '
+    real = [c for c in cmds if re.search(START, c)]
+    dry = [c for c in cmds if "tools/vfrun.py" in c and "--dry-run" in c]
+    starts = real + dry
     ev["commands_that_start_a_rollout"] = [re.sub(r"\s+", " ", c[len(GUARD):])[:110] for c in real]
-    checks["run_every_rollout_command_carries_the_run_label"] = len(real) == 4 and all(f"VF_RUN_ID={LABEL} " in c for c in starts)
+    checks["run_every_rollout_command_carries_the_run_label"] = len(real) == 4 and len(dry) == 1 and all(f"VF_RUN_ID={LABEL} " in c for c in starts)
     checks["run_every_rollout_command_is_detached_with_a_log_and_an_exit_line"] = all(
         "{ ( " in c and "nohup " in c and c.rstrip().endswith("> /dev/null 2>&1 < /dev/null & }") and 'echo "EXIT $?" >>' in c and ".log\" 2>&1 < /dev/null" in c
         for c in real)
     checks["run_every_detached_command_has_a_docker_info_gate"] = all("docker info --format '{{.ServerVersion}}' && { ( " in c for c in cmds if "nohup " in c)
-    checks["run_the_dry_run_is_alone_in_its_block"] = len(dry) == 1 and dry[0].count("vf-eval") == 1
+    checks["run_the_dry_run_is_alone_in_its_block_behind_the_leads_file"] = len(dry) == 1 and dry[0].count("tools/vfrun.py") == 1 and "nohup" not in dry[0] \
+        and f'test -f {PILOT}/scratch/LEAD-GO-STEP3" && ' in dry[0]
     ps = [c for c in cmds if "docker ps" in c]
-    checks["run_containers_are_listed_by_the_run_label_only"] = len(ps) >= 4 and all(f"--filter label=verifiers.run={LABEL}" in c for c in ps) \
+    labelled = [c for c in ps if "docker ps -a" in c]
+    checks["run_containers_are_listed_by_the_run_label_only"] = len(labelled) >= 4 and all(f"docker ps -a --filter label=verifiers.run={LABEL}" in c for c in labelled) \
         and "name=vf-" not in "\n".join(cmds)
     checks["run_if_interrupted_section"] = all(k in text for k in ("## If a run was interrupted", "kill -TERM PID_FROM_THE_STATUS_LINE",
                                                                   "docker rm -f NAME_FROM_THE_STATUS_LINE", "pilot folders reset", "make_instances"))
-    checks["run_processes_are_listed_by_this_checkouts_own_environment"] = text.count(f'grep "{PLACE}/.venv/bin/[p]ython"') >= 2
-    checks["run_store_path_is_on_every_command_that_needs_it"] = all(f'--store {PILOT}/store"' in c for c in cmds if re.search(r"tools/(prove|check_probe|make_instances|run_report|settle)\.py", c)) \
-        and all(f'PHYSIM2_STORE={PILOT}/store"' in c for c in cmds if 'bin/vf-eval"' in c)
+    invoked = [c for c in cmds if re.search(r'\.venv/bin/python" -B tools/(prove|check_probe|make_instances|run_report|settle|vfrun)\.py ', c)]
+    checks["run_store_path_is_on_every_command_that_needs_it"] = len(invoked) >= 9 and all(f'--store {PILOT}/store"' in c for c in invoked)
+
+    # ---- round 3: exact matching of the pilot's processes (m2), cut output (m1) ----
+    joined = "\n".join(cmds)
+    status = [c for c in cmds if 'echo "processes:"' in c]
+    stop = [c for c in cmds if "kill -TERM PID_FROM_THE_STATUS_LINE" in c]
+    lits = lambda c: re.findall(r'index\(r, ((?:"[^"]*"|p| )+)\) == 1', c)  # noqa: E731
+    want = ['"-B tools/prove.py "', '"-B tools/check_probe.py "', '"-B tools/vfrun.py "', '"-B " p "/tools/vfeval.py @ "', '"-m physim2_env.lab_tools"',
+            '"-B " p "/tools/make_instances.py "', '"-B tools/make_instances.py "', '"-B " p "/tools/build_reference.py "']
+    ev["process_matching"] = {"status_commands": len(status), "stop_commands": len(stop), "literals_of_the_stop_command": lits(stop[0]) if stop else None}
+    checks["r3_processes_are_matched_letter_for_letter_not_by_a_pattern_of_the_path"] = len(status) == 2 and len(stop) == 1 \
+        and all(lits(c) == want + ['"-c"'] for c in status) and lits(stop[0]) == want \
+        and all(f'awk -v p="{PLACE}" ' in c and 'py = p "/.venv/bin/python "' in c for c in status + stop) \
+        and not re.search(r'grep -E "\^[^"]*\.venv', joined) and "pgrep" not in joined
+    checks["r3_the_stop_command_signals_only_after_its_own_comparison"] = bool(stop) and stop[0].count("kill") == 1 \
+        and re.search(r"ps -ww -p PID_FROM_THE_STATUS_LINE -o command= \| awk .* END \{ exit !ok \}' && kill -TERM PID_FROM_THE_STATUS_LINE$", stop[0]) is not None
+    checks["r3_process_lines_are_cut_at_160_characters_and_no_command_carries_theta"] = all(c.count("substr($0, 1, 160)") == 1 for c in status + stop) \
+        and "--theta" not in joined and "cut -c 1-200" in status[0]
+    # ---- round 3: the session's own environment and engine (M1) ----
+    sys.path.insert(0, HERE)
+    import vfrun
+    envcheck = [c for c in cmds if "env | cut -d= -f1 | awk" in c]
+    checks["r3_step_0_checks_the_sessions_own_environment_with_the_tools_own_list"] = len(envcheck) == 1 and f"awk '/{vfrun.ENV_REFUSE.pattern}/ " in envcheck[0] \
+        and "docker context show && docker context inspect --format '{{.Endpoints.docker.Host}}'" in envcheck[0]
+    assigns = sorted(set(re.findall(r"(?:^|[\s(;&])([A-Z][A-Z0-9_]*)=", joined)))
+    ev["variables_set_on_commands"] = assigns
+    checks["r3_no_command_sets_a_variable_but_the_run_label"] = assigns == ["VF_RUN_ID"]
+    checks["r3_vf_eval_is_never_started_by_a_command_of_the_runbook"] = "bin/vf-eval" not in joined and not re.search(r'python" -B [^ ]*vfeval\.py', joined)
+    # ---- round 3: counts that fail loudly (m11), links (m3), the label re-check (m6) ----
+    checks["r3_no_count_can_hide_a_failed_command"] = "| wc -l" not in joined and joined.count("grep -c") == 1 \
+        and all(k in joined for k in ('&& echo "TREE-LISTED"', '&& echo "CONTAINERS-LISTED"', '&& echo "IMAGES-LISTED"', '&& echo "NO-PILOT-FOLDERS"', '&& echo "RUNNING-LISTED"'))
+    rm = [c for c in cmds if re.search(r"\brm -rf\b", c)]
+    nolink = f'test ! -L {PILOT}" && test ! -L {PILOT}/store" && test ! -L {PILOT}/scratch" && '
+    checks["r3_no_rm_rf_follows_a_linked_pilot_folder"] = len(rm) == 2 and all(nolink in c.split("rm -rf")[0] for c in rm) \
+        and f'test ! -e {PILOT}" && test ! -L {PILOT}"' in joined and "test ! -L docker/extra-ca.crt" in joined
+    drm = [c for c in cmds if "docker rm" in c]
+    checks["r3_docker_rm_reads_the_label_back_first"] = len(drm) == 1 and drm[0].endswith(
+        "docker inspect --format '{{index .Config.Labels \"verifiers.run\"}}' NAME_FROM_THE_STATUS_LINE | grep -Fx " + LABEL + " && docker rm -f NAME_FROM_THE_STATUS_LINE")
+    # ---- round 3: the disk floor (D1), other containers (m7), the build cache (m10) ----
+    gate = "df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print \"refused: under 8 GiB free on the file system of the home folder\" ; exit 1 }' && "
+    gated = [c for c in cmds if gate in c]
+    checks["r3_disk_floor_is_on_every_start"] = all("--disk-floor-gib 8" in c for c in real) and len(gated) == 3 \
+        and all(any(k in c for c in gated) for k in ("--dry-run 2>&1 | grep", "nohup uv sync", "nohup docker build")) \
+        and any("DISK-OK" in c and "8388608" in c for c in cmds) and "**You never\n   make room:**" in text and "EXIT 97" in text
+    quiet = [c for c in cmds if c.endswith("docker ps --format '{{.Names}} {{.Image}}' && echo \"RUNNING-LISTED\"")]
+    checks["r3_no_other_container_runs_during_step_2"] = len(quiet) == 1 and text.index(quiet[0]) < text.index("### 2a.") \
+        and "A bearer for the laboratory" in text
+    checks["r3_build_cache_is_in_the_inventory_and_in_step_4"] = "the build cache of those two builds" in text and any(c.endswith("&& docker system df") for c in cmds) \
+        and "docker builder\nprune" in text
 
     # ---- change 6: the text ----
-    joined = "\n".join(cmds)
     banned = {"export": r"\bexport ", "sudo": r"\bsudo\b", "pkill / killall": r"(^|[\s;&|(])(pkill|killall)\s", "prune": r"\bprune\b", "--clean": r"--clean\b",
-              "command substitution": r"\$\(|`", "a mount option": r"(^|\s)(-v|--volume|--mount)(\s|=)", "docker socket": r"docker\.sock",
+              "command substitution": r"\$\(|`", "a mount option": r"docker [^|;&\n]*\s(-v|--volume|--mount)(\s|=)", "docker socket": r"docker\.sock",
               "removal by filter": r"docker (rm|rmi)[^\n]*(--filter|-q)", "kill -9 or -1": r"kill\s+(-9|-KILL|-1)\b", "docker_shim": r"docker_shim",
               "a variable as a path": r"\$\{?(STUDY|S|DIR|ROOT|V)\b"}
     found = {k: bool(re.search(v, joined)) for k, v in banned.items()}
     ev["banned_in_commands"] = found
     checks["text_no_banned_construct_in_any_command"] = not any(found.values())
-    rm = [c for c in cmds if re.search(r"\brm -rf\b", c)]
     want_rm = f'rm -rf {PILOT}/store" {PILOT}/scratch"'
     checks["text_every_rm_rf_is_chained_behind_its_checks_and_names_the_two_pilot_folders"] = len(rm) == 2 and all(
         c.count("rm -rf") == 1 and f'test -f {PILOT}/store/index.json" && test -d {PILOT}/scratch"' in c.split("rm -rf")[0]
         and re.search(r"&& rm -rf ", c) and want_rm in c and "\n" not in c and ";" not in c for c in rm)
     checks["text_step_4_copies_the_results_out_before_it_deletes"] = any("cp " in c.split("rm -rf")[0] and "physim2-pilot-20261110-results" in c.split("rm -rf")[0]
                                                                         and "test -s " in c.split("rm -rf")[0] for c in rm)
-    checks["text_the_shared_image_is_kept"] = "docker rmi" not in joined and "is not this pilot's to remove" in text
+    checks["text_the_shared_image_is_kept"] = "docker rmi" not in joined and "is not this pilot's to\nremove" in text
     never = ("`sudo`", "`docker run` with `-v`, `--mount`", "pasting the route's own commands", "`physim2_env/public/_item.py`", "`agents/*.py`",
-             "`redteam/`", "round5/agentenv", "`pkill`, `killall`", "another harness", "`tools/docker_shim`", "`tools/check_units.py`")
+             "`redteam/`", "round5/agentenv", "`pkill`, `killall`", "another harness", "`tools/docker_shim`", "`tools/check_units.py`",
+             "`.venv/bin/vf-eval`, `tools/vfeval.py`", "opening `~/.prime/config.json`", "deleting anything to make room", "`docker context use`")
     checks["text_the_never_table_is_there"] = all(k in text for k in never)
     inventory = ("What is signalled or killed on the Mac", "What is deleted on the Mac", "What is written and left on the Mac", "What listens on the Mac",
-                 "~/.cache/verifiers/runtimes/subprocess", "/tmp/vf-port-", "docker/extra-ca.crt", "SIGTERM")
+                 "~/.cache/verifiers/runtimes/subprocess", "/tmp/vf-port-", "docker/extra-ca.crt", "SIGTERM",
+                 "What reaches those processes from your session", "at every stop of vf-eval", "verifiers' interception server", "io.sock", "git rev-parse",
+                 "No model credential in steps 0 to 2", "**Not on macOS:**", "reference_C.theta.json")
     checks["text_the_inventory_is_there"] = all(k in text for k in inventory)
     checks["text_stop_rule_and_the_known_macos_exception"] = "Stop rule" in text and "stop and report" in text.lower() \
         and '"failed_new": ["b_lab_process_dropped_it_after_loading"]' in text
     checks["text_extra_ca_is_created_only_if_absent"] = "(test -e docker/extra-ca.crt || : > docker/extra-ca.crt)" in joined
+    checks["text_the_three_rules_of_the_round_2_notice_are_in_the_body"] = "60 minutes have passed since the start" in text \
+        and "treat the interruption as\nthe second one" in text and "may or may not be listed" in text
 
     # ---- change 9: step 3 ----
     paid = [c for c in real if "qwen_ring_bash.toml" in c]
     i_paid = text.index(paid[0].splitlines()[0]) if paid else -1
     before, after = text[:i_paid], text[i_paid:]
     checks["step3_the_paid_command_stands_alone_under_a_stop_line_with_the_price"] = len(paid) == 1 and before.rstrip().endswith("```sh") \
-        and "STOP. THE NEXT COMMAND SPENDS MONEY" in before[-2500:] and "1.5 x p_in + 0.06 x p_out" in before[-2500:] and "bound = ______" in before[-2500:]
+        and "STOP. THE NEXT COMMAND SPENDS MONEY" in before[-2500:] and "1.5 x p_in + 0.06 x p_out" in before[-2500:] and "in the go message" in before[-2500:]
     checks["step3_output_goes_to_a_file_and_is_never_displayed"] = bool(paid) and "qwen.log\" 2>&1 < /dev/null" in paid[0] and "Never display `qwen.log`" in after \
         and "cut -c 1-12" in after
     checks["step3_the_run_is_read_through_the_report_tool"] = "tools/run_report.py" in after and os.path.isfile(os.path.join(HERE, "run_report.py"))
     checks["step3_no_other_harness_is_offered"] = "claude_code" not in text and "codex" not in text
-    checks["step3_disk_limit_and_own_hold"] = "virtual disk limit is below the Mac's free disk space" in text.replace("\n", " ") and "SEPARATE HOLD" in text \
+    checks["step3_disk_decision_bearer_and_own_hold"] = "The lead's decision about Docker Desktop's disk" in text and "SEPARATE HOLD" in text \
         and "NO-GO until steps 0 to 2 have passed on this Mac" in text
+    checks["step3_model_credentials_only_on_the_paid_command_behind_the_leads_file"] = joined.count("--model-credentials prime") == 1 \
+        and bool(paid) and "--model-credentials prime" in paid[0] and f'test -f {PILOT}/scratch/LEAD-GO-STEP3" && ' in paid[0]
 
     # ---- change 7: the pin ----
     m = re.search(r"<!-- PIN-BEGIN -->(.*?)<!-- PIN-END -->", text, re.S)
@@ -189,7 +250,7 @@ def main():
         ev["pin"]["files_listed"] = len(open(pin_file).read().splitlines())
     checks["pin_block_names_the_hash_of_PIN_sha256"] = bool(pin_hash) and pin_hash in pin_block
     checks["pin_file_matches_the_files_on_disk"] = chk.returncode == 0
-    checks["pin_commands_compare_commit_and_hashes"] = "git rev-parse HEAD && git status --porcelain" in joined \
+    checks["pin_commands_compare_commit_and_hashes"] = f'git rev-parse HEAD && pwd -P | grep -Fx "{PLACE}" && git status --porcelain' in joined \
         and "shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK" in joined and "git checkout --detach" in text
     if commit:                                               # the copy at the head of the branch
         r = subprocess.run(["git", "cat-file", "-t", commit.group(0)], cwd=ROOT, capture_output=True, text=True)
@@ -201,7 +262,9 @@ def main():
         ev["pin"]["runbook_in_the_pinned_commit_differs_in_the_pin_block_only"] = strip(there.stdout) == strip(text)
         checks["pin_names_one_commit_that_holds_this_PIN_sha256"] = ev["pin"]["pinned_commit_is_a_commit"] and ev["pin"]["PIN.sha256_in_the_pinned_commit_is_this_one"]
         checks["pin_runbook_in_the_pinned_commit_differs_in_the_pin_block_only"] = ev["pin"]["runbook_in_the_pinned_commit_differs_in_the_pin_block_only"]
-    checks["hold"] = text.splitlines()[2].startswith("**ON HOLD. Run nothing from this file.**")
+    first = text.splitlines()[2]
+    ev["notice"] = "ON HOLD" if first.startswith("**ON HOLD") else ("GO for steps 0 to 2" if first.startswith("**GO for steps 0 to 2.**") else "?")
+    checks["hold"] = first.startswith("**ON HOLD. Run nothing from this file.**") or first.startswith("**GO for steps 0 to 2.**")
     out = {"what": "RUNBOOK_MAC.md checked as text (required changes 1, 2, 6, 7, 9 of HOST_SAFETY_AUDIT.md) and its guard run with echo in place "
                    "of the command; no command of the runbook was run by this tool",
            "evidence_label": "read (text checks); run (the guard line: cd, test, echo only)",
