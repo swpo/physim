@@ -6,15 +6,24 @@
 - Worktree `/home/user/wt/vfsafe2` (branch wt-vfsafe2, pushes to `claude/fisim-agent-world-research-hepmlz`). Scratch
   `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe2/` (the rehearsal's clone, its
   .venv and its pilot folders live in `.../vfsafe2/rehearsal`; nothing there survives a restart).
-- State (17:25 UTC): RUNBOOK_MAC.md rewritten for the seven changes (still ON HOLD; says REHEARSAL PENDING); new
-  folder `rehearsal/` (not in PIN.sha256): `issue.py` issues ONE runbook command as `sh -c '<text>'` and records it,
-  `check_round2.py` runs the verdict's tests with stand-ins. First results (scratch, not yet under results/):
-  check_round2 46 of 47 (the one failure was the test's own lookup, fixed); pinned tools/check_runbook.py 32 of 33
-  (the failing check asks for the round-1 `[p]ython` pattern, which change 1 replaces); pin.py --check 105 files,
-  0 differences. Found on the way: the uv DRY RUN with --managed-python already downloads uv's Python (33 MB).
-- Next: push this commit, clone it into <scratch>/vfsafe2/rehearsal/clone (sparse, shallow, by commit), run the
-  rehearsal in session mode with `rehearsal/issue.py` (steps 0, 1, four interruptions, 2a, 2b, 2c, 4), then fix
-  the text where it did not match, write results/, README, summary.json.
+- State (16:55 UTC): RUNBOOK_MAC.md rewritten for the seven changes (still ON HOLD; says REHEARSAL PENDING), pushed
+  as be2c17ae6 = THE COMMIT BEING REHEARSED. New folder `rehearsal/` (not in PIN.sha256): `issue.py` issues ONE
+  runbook command as `sh -c '<text>'` and records it, `check_round2.py` runs the verdict's tests with stand-ins,
+  `make_record.py` writes the record. Stand-in tests: 46 of 47 (the one failure was the test's own lookup, fixed,
+  to be rerun); pinned tools/check_runbook.py 32 of 33 (the failing check asks for the round-1 `[p]ython`
+  pattern, which change 1 replaces); pin.py --check 105 files, 0 differences.
+- Rehearsal so far (clone of be2c17ae6 in <scratch>/vfsafe2/rehearsal/clone; record in .../rehearsal/record.jsonl,
+  which does not survive a restart): step 0; step 1 without the image build (the dry run with --managed-python
+  downloaded uv's Python, 33 MB; sync detached, EXIT 0; INTERPRETER-OK); four interruptions, each cleared by the
+  runbook's own procedure: (1) stop aimed at the waiting shell: nothing printed, nothing signalled; then the tool
+  inside a rollout: traceback, EXIT 130; (2) the tool before its first rollout: `Terminated`, EXIT 143;
+  (3) SIGKILL of vf-eval: one container and the laboratory listed, container removed by name, the laboratory had
+  ended by itself before the stop command (a mismatch with the text: fix); (4) the vf-eval of 2c: EXIT 130, no
+  traceback. Running now: the clean pass (2a, then 2b, 2c, step 4).
+- Next: finish the clean pass, fix the text where it did not match (interpreter line cut at 160; `package`
+  singular; point 4; `Terminated` before EXIT 143), write results/, README, summary.json.
+- Left outside scratch by the hard kill, to remove by exact name at the end:
+  /root/.cache/verifiers/runtimes/subprocess/vf-eecef6526095/vf_tool_lab.log and /tmp/physim2-io-qkjeubw5/io.sock.
 - If the container restarted: `pgrep -x dockerd >/dev/null || (nohup dockerd --feature containerd-snapshotter=false >
   <scratch>/vfsafe2/dockerd.log 2>&1 &)`; `docker ps -a --filter label=verifiers.run=physim2-pilot-20261110` lists
   a cut rehearsal's containers (remove by exact name); then go on from the state line above.
