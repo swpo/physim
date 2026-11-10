@@ -1,5 +1,18 @@
 # vfport: PROGRESS
 
+## VERDICT, round 2 (of the branch head after the two round-2 re-audits) -- 10 Nov 2026, IN PROGRESS
+- Role: issue the round-2 verdict from the fixer's report and the two re-audits (code, runbook), checking what
+  I rely on at the branch head. Writes only: a section "Re-audit, round 2" in `HOST_SAFETY_AUDIT.md` and, on GO,
+  its first line and the hold notice of `RUNBOOK_MAC.md` (between HOLD-BEGIN and HOLD-END); this note.
+- Worktree /home/user/wt/vfverdict2 (branch wt-vfverdict2), scratch
+  /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfverdict2 (stand-ins only).
+- Done so far (18:00 UTC): both files read in full at head 8193c337b; `sha256sum -c PIN.sha256` 105 of 105,
+  sha256 of `PIN.sha256` 7aa9bbfc...f64c19; since 73829e5c6 only texts, `rehearsal/` and `results/` changed.
+- Next: fenced commands by script (guard, byte equality with the rehearsal record); the status and stop commands
+  through my own command tool on a stand-in; the cited lines of the driver, the gates and verifiers' Docker
+  runtime; step 3 against change 9. Then the verdict.
+- If the container restarted: recreate the worktree as the role text says; nothing else of mine is running.
+
 ## RE-AUDIT of the runbook, round 2 (independent; of commit 40c697e54) -- 10 Nov 2026, finished
 - Role: re-audit of `RUNBOOK_MAC.md` only (sha256 b08fb77a...c059 at 40c697e54), read as the Mac session would
   follow it. Verdict returned to the coordinator: GO for steps 0 to 2 as far as the runbook goes, with prose
