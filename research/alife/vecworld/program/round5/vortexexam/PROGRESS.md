@@ -34,11 +34,16 @@ PILOT: never to be reused as an exam. Budget $25: job 1 billed $2.29; job 2 hold
 - 02:10 UTC: follow-up requested as `r5-vortexexam-004` (pilot B: `--prior prior_B.json` = eps, mu, e; new
   policies Cft / Sft@4 and the short-history families net~3 / ridge~3; sizing fixed). Cap $19.40, max 2.65 h.
 
+- 02:37 UTC: `offline_views.py` (CPU) recomputed pilot A on three views of the items (results/offline_views_A.json):
+  the pod's scores reproduce; with the last three ticks only, net sigma 0.18 (P0 0.47, C 0.57), rho about 1.
+- `make_summary.py` writes a computed `headline` section (the report's numbers with sources).
+
 ## Running
-- `r5-vortexexam-005`: requested 02:25 UTC 10 Nov (004 was rejected at 02:15 without cost: purpose line over 300 characters). DO NOT RESUBMIT while it runs. Watcher: a background loop
-  that fetches `origin gpu-jobs` every 60 s until `jobs/r5-vortexexam-005/status.json` is terminal. Read
-  `jobs/r5-vortexexam-005/review.md` when it appears.
-- Budget: $25 - 2.29 - 1.31 = $21.40 before job 005; its cap reserves $19.40.
+- `r5-vortexexam-005`: reviewed 02:48 (gate met, no findings; `jobs/r5-vortexexam-005/review.md`), accepted 02:54 on
+  an H200 (nebius, bills $6.69/h), preset xl expected, about 1.5 h, so done about 04:30 UTC. DO NOT RESUBMIT.
+  Watcher: a background loop that fetches `origin gpu-jobs` every 60 s until
+  `jobs/r5-vortexexam-005/status.json` is terminal.
+- Budget: $25 - 2.29 - 1.31 = $21.40 before job 005; its cap reserves $19.40 (expected bill about $10.5).
 
 ## Next steps (in order)
 1. While job 005 runs: README.md and the report from job 1 and job 2 (results/summary.json).
