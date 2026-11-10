@@ -13807,6 +13807,609 @@
   "source": "results/analysis2.json (analyse2.py on origin/gpu-jobs:jobs/r5-vortexexam-003/out: scores.npz, items.npz, design*.npz) identification",
   "note": "contraction = posterior sd / prior sd per parameter (mean over truths); L1 = from level-1 summaries, L2 = from (N, s_b) only; in90 = share of (truth, parameter) pairs inside the central 90% interval"
  },
+ "offline_views_A": {
+  "value": {
+   "views_lags_kept": {
+    "full": 8,
+    "last3": 3,
+    "state": 1
+   },
+   "lags_ticks": [
+    0,
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+   ],
+   "n_truths": 6,
+   "steps": 2000,
+   "skill": {
+    "ridge[full]|P0": 0.458,
+    "ridge[full]|C": 0.494,
+    "ridge[full]|PM": -0.14,
+    "ridge[full]|S@1": 0.489,
+    "ridge[full]|D@1": -1.276,
+    "ridge[full]|S@2": 0.495,
+    "ridge[full]|D@2": -0.503,
+    "ridge[full]|S@4": 0.486,
+    "ridge[full]|D@4": -0.155,
+    "ridge[full]|S@8": 0.485,
+    "ridge[full]|D@8": 0.39,
+    "net[full]|P0": 0.551,
+    "net[full]|C": 0.577,
+    "net[full]|PM": 0.352,
+    "net[full]|S@1": 0.575,
+    "net[full]|D@1": -0.389,
+    "net[full]|S@2": 0.575,
+    "net[full]|D@2": -0.451,
+    "net[full]|S@4": 0.571,
+    "net[full]|D@4": 0.025,
+    "net[full]|S@8": 0.577,
+    "net[full]|D@8": 0.247,
+    "ridge[last3]|P0": 0.323,
+    "ridge[last3]|C": 0.423,
+    "ridge[last3]|PM": -0.249,
+    "ridge[last3]|S@1": 0.421,
+    "ridge[last3]|D@1": -0.526,
+    "ridge[last3]|S@2": 0.43,
+    "ridge[last3]|D@2": -0.041,
+    "ridge[last3]|S@4": 0.426,
+    "ridge[last3]|D@4": 0.241,
+    "ridge[last3]|S@8": 0.422,
+    "ridge[last3]|D@8": 0.533,
+    "net[last3]|P0": 0.465,
+    "net[last3]|C": 0.569,
+    "net[last3]|PM": 0.09,
+    "net[last3]|S@1": 0.585,
+    "net[last3]|D@1": -0.663,
+    "net[last3]|S@2": 0.574,
+    "net[last3]|D@2": -0.391,
+    "net[last3]|S@4": 0.575,
+    "net[last3]|D@4": 0.029,
+    "net[last3]|S@8": 0.581,
+    "net[last3]|D@8": 0.304,
+    "ridge[state]|P0": 0.298,
+    "ridge[state]|C": 0.401,
+    "ridge[state]|PM": -0.211,
+    "ridge[state]|S@1": 0.398,
+    "ridge[state]|D@1": -0.242,
+    "ridge[state]|S@2": 0.412,
+    "ridge[state]|D@2": 0.088,
+    "ridge[state]|S@4": 0.405,
+    "ridge[state]|D@4": 0.296,
+    "ridge[state]|S@8": 0.405,
+    "ridge[state]|D@8": 0.543,
+    "net[state]|P0": 0.481,
+    "net[state]|C": 0.601,
+    "net[state]|PM": 0.041,
+    "net[state]|S@1": 0.597,
+    "net[state]|D@1": -0.723,
+    "net[state]|S@2": 0.589,
+    "net[state]|D@2": -0.334,
+    "net[state]|S@4": 0.602,
+    "net[state]|D@4": 0.01,
+    "net[state]|S@8": 0.612,
+    "net[state]|D@8": 0.43,
+    "law|D@1": 0.383,
+    "law|D@2": 0.46,
+    "law|D@4": 0.478,
+    "law|D@8": 0.497
+   },
+   "pod_skill_for_comparison": {
+    "net|P0": 0.559,
+    "net|C": 0.557,
+    "net|PM": 0.351,
+    "ridge|P0": 0.456,
+    "ridge|C": 0.488,
+    "ridge|PM": -0.132,
+    "net|D@8": 0.21,
+    "ridge|D@8": 0.39,
+    "law|D@8": 0.497,
+    "net|S@8": 0.563
+   },
+   "sigma_same_family": {
+    "ridge[full]": {
+     "value": 0.073,
+     "se_truths": 0.085,
+     "p05_p95": [
+      0.01,
+      0.178
+     ],
+     "null_is": "P0"
+    },
+    "ridge[full] (null = P0)": {
+     "value": 0.073,
+     "se_truths": 0.085,
+     "p05_p95": [
+      0.01,
+      0.178
+     ]
+    },
+    "net[full]": {
+     "value": 0.045,
+     "se_truths": 0.034,
+     "p05_p95": [
+      0.003,
+      0.112
+     ],
+     "null_is": "P0"
+    },
+    "net[full] (null = P0)": {
+     "value": 0.045,
+     "se_truths": 0.034,
+     "p05_p95": [
+      0.003,
+      0.112
+     ]
+    },
+    "best[full]": {
+     "value": 0.045,
+     "se_truths": 0.034,
+     "p05_p95": [
+      0.003,
+      0.112
+     ],
+     "null": "net[full]|P0",
+     "C": "net[full]|C"
+    },
+    "ridge[last3]": {
+     "value": -0.259,
+     "se_truths": 0.292,
+     "p05_p95": [
+      -0.703,
+      0.026
+     ],
+     "null_is": "D"
+    },
+    "ridge[last3] (null = P0)": {
+     "value": 0.238,
+     "se_truths": 0.32,
+     "p05_p95": [
+      0.022,
+      0.701
+     ]
+    },
+    "net[last3]": {
+     "value": 0.184,
+     "se_truths": 0.196,
+     "p05_p95": [
+      0.02,
+      0.487
+     ],
+     "null_is": "P0"
+    },
+    "net[last3] (null = P0)": {
+     "value": 0.184,
+     "se_truths": 0.196,
+     "p05_p95": [
+      0.02,
+      0.487
+     ]
+    },
+    "best[last3]": {
+     "value": 0.064,
+     "se_truths": 0.101,
+     "p05_p95": [
+      -0.076,
+      0.194
+     ],
+     "null": "ridge[last3]|D@8",
+     "C": "net[last3]|C"
+    },
+    "ridge[state]": {
+     "value": -0.352,
+     "se_truths": 0.402,
+     "p05_p95": [
+      -0.985,
+      0.001
+     ],
+     "null_is": "D"
+    },
+    "ridge[state] (null = P0)": {
+     "value": 0.257,
+     "se_truths": 0.36,
+     "p05_p95": [
+      0.035,
+      0.761
+     ]
+    },
+    "net[state]": {
+     "value": 0.2,
+     "se_truths": 0.159,
+     "p05_p95": [
+      0.045,
+      0.494
+     ],
+     "null_is": "P0"
+    },
+    "net[state] (null = P0)": {
+     "value": 0.2,
+     "se_truths": 0.159,
+     "p05_p95": [
+      0.045,
+      0.494
+     ]
+    },
+    "best[state]": {
+     "value": 0.097,
+     "se_truths": 0.061,
+     "p05_p95": [
+      0.002,
+      0.196
+     ],
+     "null": "ridge[state]|D@8",
+     "C": "net[state]|C"
+    }
+   },
+   "rho": {
+    "ridge[full]@1": {
+     "value": 0.873,
+     "se_truths": 2.464,
+     "p05_p95": [
+      0.337,
+      1.107
+     ]
+    },
+    "ridge[full]@2": {
+     "value": 1.045,
+     "se_truths": 1.053,
+     "p05_p95": [
+      0.674,
+      1.374
+     ]
+    },
+    "ridge[full]@4": {
+     "value": 0.797,
+     "se_truths": 6.44,
+     "p05_p95": [
+      -0.339,
+      1.141
+     ]
+    },
+    "ridge[full]@8": {
+     "value": 0.756,
+     "se_truths": 1.237,
+     "p05_p95": [
+      0.386,
+      0.927
+     ]
+    },
+    "net[full]@1": {
+     "value": 0.896,
+     "se_truths": 4.164,
+     "p05_p95": [
+      0.305,
+      2.187
+     ]
+    },
+    "net[full]@2": {
+     "value": 0.918,
+     "se_truths": 3.453,
+     "p05_p95": [
+      0.544,
+      1.644
+     ]
+    },
+    "net[full]@4": {
+     "value": 0.748,
+     "se_truths": 5.758,
+     "p05_p95": [
+      0.098,
+      1.945
+     ]
+    },
+    "net[full]@8": {
+     "value": 0.975,
+     "se_truths": 8.539,
+     "p05_p95": [
+      0.604,
+      2.923
+     ]
+    },
+    "ridge[last3]@1": {
+     "value": 0.975,
+     "se_truths": 1.905,
+     "p05_p95": [
+      0.41,
+      1.198
+     ]
+    },
+    "ridge[last3]@2": {
+     "value": 1.068,
+     "se_truths": 1.046,
+     "p05_p95": [
+      0.715,
+      1.389
+     ]
+    },
+    "ridge[last3]@4": {
+     "value": 1.027,
+     "se_truths": 1.843,
+     "p05_p95": [
+      0.515,
+      1.603
+     ]
+    },
+    "ridge[last3]@8": {
+     "value": 0.988,
+     "se_truths": 0.929,
+     "p05_p95": [
+      0.807,
+      1.608
+     ]
+    },
+    "net[last3]@1": {
+     "value": 1.152,
+     "se_truths": 0.886,
+     "p05_p95": [
+      0.971,
+      1.596
+     ]
+    },
+    "net[last3]@2": {
+     "value": 1.049,
+     "se_truths": 0.271,
+     "p05_p95": [
+      0.892,
+      1.259
+     ]
+    },
+    "net[last3]@4": {
+     "value": 1.055,
+     "se_truths": 0.343,
+     "p05_p95": [
+      0.887,
+      1.576
+     ]
+    },
+    "net[last3]@8": {
+     "value": 1.114,
+     "se_truths": 0.45,
+     "p05_p95": [
+      0.964,
+      1.73
+     ]
+    },
+    "ridge[state]@1": {
+     "value": 0.972,
+     "se_truths": 7.252,
+     "p05_p95": [
+      0.38,
+      1.237
+     ]
+    },
+    "ridge[state]@2": {
+     "value": 1.103,
+     "se_truths": 4.752,
+     "p05_p95": [
+      0.911,
+      1.469
+     ]
+    },
+    "ridge[state]@4": {
+     "value": 1.039,
+     "se_truths": 37.606,
+     "p05_p95": [
+      0.57,
+      1.614
+     ]
+    },
+    "ridge[state]@8": {
+     "value": 1.033,
+     "se_truths": 4.117,
+     "p05_p95": [
+      0.831,
+      1.75
+     ]
+    },
+    "net[state]@1": {
+     "value": 0.968,
+     "se_truths": 2.629,
+     "p05_p95": [
+      0.889,
+      1.185
+     ]
+    },
+    "net[state]@2": {
+     "value": 0.901,
+     "se_truths": 10.541,
+     "p05_p95": [
+      0.65,
+      0.985
+     ]
+    },
+    "net[state]@4": {
+     "value": 1.009,
+     "se_truths": 3.276,
+     "p05_p95": [
+      0.793,
+      1.111
+     ]
+    },
+    "net[state]@8": {
+     "value": 1.09,
+     "se_truths": 1.522,
+     "p05_p95": [
+      0.94,
+      1.235
+     ]
+    }
+   },
+   "pm_loss": {
+    "ridge[full]": {
+     "value": 0.633,
+     "se_truths": 0.12,
+     "p05_p95": [
+      0.402,
+      0.802
+     ]
+    },
+    "net[full]": {
+     "value": 0.225,
+     "se_truths": 0.093,
+     "p05_p95": [
+      0.074,
+      0.378
+     ]
+    },
+    "ridge[last3]": {
+     "value": 0.672,
+     "se_truths": 0.186,
+     "p05_p95": [
+      0.381,
+      1.009
+     ]
+    },
+    "net[last3]": {
+     "value": 0.479,
+     "se_truths": 0.168,
+     "p05_p95": [
+      0.207,
+      0.766
+     ]
+    },
+    "ridge[state]": {
+     "value": 0.612,
+     "se_truths": 0.196,
+     "p05_p95": [
+      0.306,
+      0.968
+     ]
+    },
+    "net[state]": {
+     "value": 0.56,
+     "se_truths": 0.165,
+     "p05_p95": [
+      0.289,
+      0.845
+     ]
+    }
+   },
+   "history_value": {
+    "ridge[full]": {
+     "value": 0.0,
+     "se_truths": 0.0,
+     "p05_p95": [
+      0.0,
+      0.0
+     ]
+    },
+    "net[full]": {
+     "value": 0.0,
+     "se_truths": 0.0,
+     "p05_p95": [
+      0.0,
+      0.0
+     ]
+    },
+    "ridge[last3]": {
+     "value": 0.135,
+     "se_truths": 0.046,
+     "p05_p95": [
+      0.067,
+      0.213
+     ]
+    },
+    "net[last3]": {
+     "value": 0.087,
+     "se_truths": 0.051,
+     "p05_p95": [
+      0.016,
+      0.179
+     ]
+    },
+    "ridge[state]": {
+     "value": 0.16,
+     "se_truths": 0.048,
+     "p05_p95": [
+      0.084,
+      0.244
+     ]
+    },
+    "net[state]": {
+     "value": 0.07,
+     "se_truths": 0.048,
+     "p05_p95": [
+      0.006,
+      0.156
+     ]
+    }
+   },
+   "sigma_best_null_by_budget": {
+    "full": {
+     "1": {
+      "sigma": 0.045,
+      "null": "net[full]|P0",
+      "C": "net[full]|C"
+     },
+     "2": {
+      "sigma": 0.045,
+      "null": "net[full]|P0",
+      "C": "net[full]|C"
+     },
+     "4": {
+      "sigma": 0.045,
+      "null": "net[full]|P0",
+      "C": "net[full]|C"
+     },
+     "8": {
+      "sigma": 0.045,
+      "null": "net[full]|P0",
+      "C": "net[full]|C"
+     }
+    },
+    "last3": {
+     "1": {
+      "sigma": 0.184,
+      "null": "net[last3]|P0",
+      "C": "net[last3]|C"
+     },
+     "2": {
+      "sigma": 0.184,
+      "null": "net[last3]|P0",
+      "C": "net[last3]|C"
+     },
+     "4": {
+      "sigma": 0.184,
+      "null": "net[last3]|P0",
+      "C": "net[last3]|C"
+     },
+     "8": {
+      "sigma": 0.064,
+      "null": "ridge[last3]|D@8",
+      "C": "net[last3]|C"
+     }
+    },
+    "state": {
+     "1": {
+      "sigma": 0.2,
+      "null": "net[state]|P0",
+      "C": "net[state]|C"
+     },
+     "2": {
+      "sigma": 0.2,
+      "null": "net[state]|P0",
+      "C": "net[state]|C"
+     },
+     "4": {
+      "sigma": 0.2,
+      "null": "net[state]|P0",
+      "C": "net[state]|C"
+     },
+     "8": {
+      "sigma": 0.097,
+      "null": "ridge[state]|D@8",
+      "C": "net[state]|C"
+     }
+    }
+   }
+  },
+  "source": "results/offline_views_A.json (offline_views.py on the arrays of origin/gpu-jobs:jobs/r5-vortexexam-003/out; CPU)",
+  "note": "skill = (L(K) - L) / (L(K) - L(O)) on the pod's primary cells (level 2 jointly at the horizons), pooled; sigma = (L(null) - L(C)) / (L(K) - L(C)), null = the better of D at the largest budget and P0, same family and view; rho = (L(P0) - L(S@n)) / (L(P0) - L(C)); pm_loss = skill(C) - skill(PM); history_value = skill(P0, full) - skill(P0, view); se = bootstrap over truths; sigma_best_null_by_budget = 1 - skill(best null) / skill(best C), null over ridge and net P0 and D@n of the view, C over ridge and net of the view (point estimates); in sigma_same_family the 'best[view]' rows also admit the law fitted to Lab data (T) as a null, which never was the best"
+ },
  "review_of_job2": {
   "value": {
    "major: the closing scan shrank to J = 3, one anchor": "as predicted by the review (job1.py's rate table in --scan-only mode); fixed in job1.py after the run (rate table of two rows or job 1's bench rows, flat 0.8 x below the smallest measured batch down to B = 64, explicit --J and --anchors); the scan of job 2 is reported as 'scan2' and marked noisy unless the scan-only job replaced it",

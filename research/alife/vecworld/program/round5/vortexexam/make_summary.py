@@ -246,6 +246,29 @@ def exam_sections(tag, jdir, jid, afile):
 
 S.update(exam_sections("", JD2, J2, "analysis2.json"))
 S.update(exam_sections("_B", "job3", J3, "analysis2_B.json"))
+for tag_ in ("A", "B"):
+    OV = load(f"offline_views_{tag_}.json")
+    if not OV:
+        continue
+    sk = OV["skill"]
+    by_budget = {}
+    for view in OV["views"]:
+        by_budget[view] = {}
+        for n in OV["budgets"]:
+            nulls = {f"{f}[{view}]|{q}": sk[f"{f}[{view}]|{q}"] for f in ("ridge", "net") for q in ("P0", f"D@{n}")}
+            cs = {f"{f}[{view}]|C": sk[f"{f}[{view}]|C"] for f in ("ridge", "net")}
+            kn, kc = max(nulls, key=nulls.get), max(cs, key=cs.get)
+            by_budget[view][str(n)] = {"sigma": round(1 - nulls[kn] / cs[kc], 3), "null": kn, "C": kc}
+    S[f"offline_views_{tag_}"] = V(
+        {"views_lags_kept": OV["views"], "lags_ticks": OV["lags_ticks"], "n_truths": OV["n_truths"], "steps": OV["steps"],
+         "skill": r(sk), "pod_skill_for_comparison": r(OV["pod_skill_for_comparison"]),
+         "sigma_same_family": r(OV["sigma"]), "rho": r(OV["rho"]), "pm_loss": r(OV["pm_loss"]),
+         "history_value": r(OV["history_value"]), "sigma_best_null_by_budget": by_budget},
+        f"results/offline_views_{tag_}.json (offline_views.py on the arrays of origin/gpu-jobs:jobs/"
+        f"{J2 if tag_ == 'A' else J3}/out; CPU)",
+        OV["note"] + "; sigma_best_null_by_budget = 1 - skill(best null) / skill(best C), null over ridge and net P0 and D@n of "
+        "the view, C over ridge and net of the view (point estimates); in sigma_same_family the 'best[view]' rows also "
+        "admit the law fitted to Lab data (T) as a null, which never was the best")
 S["review_of_job2"] = V({
     "major: the closing scan shrank to J = 3, one anchor": "as predicted by the review (job1.py's rate table in --scan-only "
         "mode); fixed in job1.py after the run (rate table of two rows or job 1's bench rows, flat 0.8 x below the smallest "
