@@ -1,5 +1,30 @@
 # vfport: PROGRESS
 
+## RE-AUDIT of the runbook, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, finished
+- Role: re-audit of `RUNBOOK_MAC.md` only, read as the Mac session reads it. The report went back to the coordinator
+  as text. **My verdict on the runbook: NO-GO as written, narrowly** (prose, and one line of one command; no pinned
+  file). The hold notice was not touched. No file but this note was changed.
+- Evidence labels: read / run (my own scripts and stand-ins in scratch; no file of the port executed, nothing
+  signalled) / tripwire (mine: the package imported from a clean archive with every kill, delete and process start
+  replaced, a made-up credential file in a scratch home) / inferred (everything about macOS).
+- Closed: M1 (the session's own step-0 command, all name classes), M3 (six listeners match the source; tripwire:
+  package first -> `stand-in`, 0 opens, key EMPTY; stock import -> 4 opens, key loaded), m1 to m6, m8 to m11, D1,
+  the three removals (literal, label or `test ! -L` guarded), step 3 (file gate on both commands; `tools/vfrun.py`
+  refuses a model config without `--model-credentials`).
+- Open, with replacement text in the report: (1) M2, one row missing in the signal table: Python kills verifiers'
+  `docker rm --force <box>` client after 30 s (verifiers `runtimes/docker/__init__.py:553-567`); (2) m7, the
+  "nothing else runs in Docker" check stands before 2a only; (3) section C says 8 GiB is enough while steps 1 and 2
+  write about 3; (4) `~/.docker/buildx/` is not among the writes; (5) the opening lines claim point 4 was rehearsed;
+  (6) nobody is named for the pilot folders after a stop without point 6; (7) new, macOS, inferred: PYTHONEXECUTABLE
+  or __PYVENV_LAUNCHER__ in the session moves `sys.executable`, so the tools' children would not be listed by the
+  status command; step 1's interpreter check should also compare `sys.executable` (one command changes).
+- Rehearsal record: all 65 recorded commands equal one of the 33 fenced blocks of the head after undoing the
+  recorded substitutions (my script); 26 blocks issued, 7 never (image build and its status, the five of step 3).
+- Left on the machine by this role: nothing. Scratch `vfr3book1` deleted; worktree `wt-vfr3book1` removed after the
+  push. The Docker daemon was not used.
+- Next step (exact), for the coordinator: a prose pass on the items above, one Linux rehearsal of the changed
+  interpreter-check line, then pass 2 of this re-audit.
+
 ## RE-AUDIT of the code, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, finished
 - Role: re-audit of the CODE only (M1, M3, m1, m5, D1; the whole diff since 40c697e54; the tests; the pin). The
   report went back to the coordinator as text. **My verdict on the code: GO** (for the scripted steps 0 to 2; the
