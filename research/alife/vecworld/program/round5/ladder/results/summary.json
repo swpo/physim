@@ -371,7 +371,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.1959,
      "se_items": 0.0052,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.0326,
@@ -950,7 +950,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.2363,
      "se_items": 0.0077,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.0204,
@@ -1529,7 +1529,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.3487,
      "se_items": 0.0162,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.047,
@@ -2108,7 +2108,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.1328,
      "se_items": 0.0038,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.0344,
@@ -2719,7 +2719,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.1671,
      "se_items": 0.0069,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.0193,
@@ -3330,7 +3330,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.2412,
      "se_items": 0.0112,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.0304,
@@ -3941,7 +3941,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.127,
      "se_items": 0.0031,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.0358,
@@ -4496,7 +4496,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.163,
      "se_items": 0.0054,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.0155,
@@ -5051,7 +5051,7 @@
     "state_given_O_minus_plugPM": {
      "gap": 0.255,
      "se_items": 0.0112,
-     "note": "1 - OES of the simulator at the box centre run from the hidden state"
+     "note": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)"
     },
     "C_minus_P0u": {
      "gap": 0.027,
@@ -8415,8 +8415,8 @@
    }
   ],
   "rank_correlations_spearman": {
-   "sigma_mid ~ n_hidden": -0.05,
-   "sigma_mid ~ dim": -0.5,
+   "sigma_mid ~ n_hidden": 0.0,
+   "sigma_mid ~ dim": -0.527,
    "sigma_mid ~ C_minus_PM": 1.0,
    "sigma_mid ~ C_minus_P0": 0.9833,
    "sigma_mid ~ state_given_gap": 0.7667,
@@ -8424,8 +8424,8 @@
    "sigma_mid ~ projection_r2_mean": -0.25,
    "sigma_mid ~ predictable_fraction": 0.25,
    "sigma_mid ~ oes_C": -0.6333,
-   "sigma_last ~ n_hidden": -0.0833,
-   "sigma_last ~ dim": -0.4667,
+   "sigma_last ~ n_hidden": -0.0527,
+   "sigma_last ~ dim": -0.527,
    "sigma_last ~ C_minus_PM": 0.9833,
    "sigma_last ~ C_minus_P0": 0.9667,
    "sigma_last ~ state_given_gap": 0.75,
@@ -8433,8 +8433,8 @@
    "sigma_last ~ projection_r2_mean": -0.1833,
    "sigma_last ~ predictable_fraction": 0.2667,
    "sigma_last ~ oes_C": -0.6167,
-   "N90_D_rank ~ n_hidden": -0.1,
-   "N90_D_rank ~ dim": 0.65,
+   "N90_D_rank ~ n_hidden": 0.0527,
+   "N90_D_rank ~ dim": 0.7906,
    "N90_D_rank ~ C_minus_PM": -0.25,
    "N90_D_rank ~ C_minus_P0": -0.15,
    "N90_D_rank ~ state_given_gap": -0.65,
@@ -8442,8 +8442,8 @@
    "N90_D_rank ~ projection_r2_mean": 0.15,
    "N90_D_rank ~ predictable_fraction": 0.5833,
    "N90_D_rank ~ oes_C": 0.75,
-   "rho_2 ~ n_hidden": -0.1833,
-   "rho_2 ~ dim": 0.0833,
+   "rho_2 ~ n_hidden": -0.1581,
+   "rho_2 ~ dim": 0.0527,
    "rho_2 ~ C_minus_PM": -0.6667,
    "rho_2 ~ C_minus_P0": -0.6,
    "rho_2 ~ state_given_gap": -0.35,
@@ -8451,8 +8451,8 @@
    "rho_2 ~ projection_r2_mean": 0.1667,
    "rho_2 ~ predictable_fraction": -0.25,
    "rho_2 ~ oes_C": 0.25,
-   "C_minus_P0 ~ n_hidden": -0.1333,
-   "C_minus_P0 ~ dim": -0.45,
+   "C_minus_P0 ~ n_hidden": -0.0527,
+   "C_minus_P0 ~ dim": -0.4743,
    "C_minus_P0 ~ C_minus_PM": 0.9833,
    "C_minus_P0 ~ state_given_gap": 0.6833,
    "C_minus_P0 ~ geo_contraction_2": 0.2,
@@ -9699,7 +9699,13 @@
    "cells_with_rho_le_0.7_at_mid_budget": [
     "n8|object"
    ],
-   "note": "rho is undefined in practice where C - P0 is zero within error (n8|object, n1|object: see rho SE)"
+   "note": "rho is undefined in practice where C - P0 is zero within error: all three object cells (rho SE over worlds 0.3 for n1, 1.7-7 for n4, over 100 for n8); the two lists above include such cells",
+   "cells_with_rho_le_0.7_at_first_budget_where_rho_is_defined": [
+    "n1|pop",
+    "n4|pop",
+    "n8|block"
+   ],
+   "cells_with_rho_le_0.7_at_mid_budget_where_rho_is_defined": []
   },
   "by_view_mean_over_hidden_sets": {
    "block": {
@@ -10403,5 +10409,599 @@
    8,
    16
   ]
+ },
+ "checker": {
+  "who": "independent checker (round5/ladderchk), 10 Nov 2026; CPU only, no GPU job; own code (plain numpy / scipy) on the saved outputs",
+  "verdict": "The numbers stand; three conclusions are stronger than the evidence. Every value of the report's table and of headline.table was recomputed from r5-ladder-002:out/n*/scores.npz and identification.json (largest difference 1e-4, the rounding). Job record checked against origin/gpu-jobs:jobs/r5-ladder-002: A100-SXM4-40GB (lambdalabs, $1.99/h), exit 0, billed $2.5555, failed []; results/job equals the job's out/ blob for blob (posterior_draws.npz left out); r5-ladder-001 rejected before any pod, $0. 'No cell passes' holds at the point estimates: eight cells fail clearly, n4|pop does not exclude the bar.",
+  "edits": [
+   {
+    "key": "across_cells.rank_correlations_spearman['sigma_mid ~ n_hidden']",
+    "old": -0.05,
+    "new": 0.0,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['sigma_mid ~ dim']",
+    "old": -0.5,
+    "new": -0.527,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['sigma_last ~ n_hidden']",
+    "old": -0.0833,
+    "new": -0.0527,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['sigma_last ~ dim']",
+    "old": -0.4667,
+    "new": -0.527,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['N90_D_rank ~ n_hidden']",
+    "old": -0.1,
+    "new": 0.0527,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['N90_D_rank ~ dim']",
+    "old": 0.65,
+    "new": 0.7906,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['rho_2 ~ n_hidden']",
+    "old": -0.1833,
+    "new": -0.1581,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['rho_2 ~ dim']",
+    "old": 0.0833,
+    "new": 0.0527,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['C_minus_P0 ~ n_hidden']",
+    "old": -0.1333,
+    "new": -0.0527,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "across_cells.rank_correlations_spearman['C_minus_P0 ~ dim']",
+    "old": -0.45,
+    "new": -0.4743,
+    "why": "ties ranked by row order (argsort of argsort); now average ranks (scipy.stats.spearmanr)"
+   },
+   {
+    "key": "cells[*].params_matter.state_given_O_minus_plugPM.note",
+    "cells": 9,
+    "old": "1 - OES of the simulator at the box centre run from the hidden state",
+    "new": "1 - OES of the simulator at the viability-conditioned prior mean run from the hidden state (run_ladder.stage_exams; within 0.06 box half-widths of the box centre)",
+    "why": "the code passes (lo + hi) / 2 + prior_mean_u * (hi - lo) / 2; prior_mean_u is in n*/prior.json"
+   },
+   {
+    "key": "headline.acceptance.note",
+    "old": "rho is undefined in practice where C - P0 is zero within error (n8|object, n1|object: see rho SE)",
+    "new": "rho is undefined in practice where C - P0 is zero within error: all three object cells (rho SE over worlds 0.3 for n1, 1.7-7 for n4, over 100 for n8); the two lists above include such cells",
+    "why": "n4|object was missing; its rho SE is 1.7-7.2 (cells['n4|object'].acceptance.P0[*].rho_se_worlds)"
+   },
+   {
+    "key": "headline.acceptance.cells_with_rho_le_0.7_at_{first,mid}_budget_where_rho_is_defined",
+    "old": null,
+    "new": [
+     [
+      "n1|pop",
+      "n4|pop",
+      "n8|block"
+     ],
+     []
+    ],
+    "why": "added: the original mid-budget list holds only n8|object, where rho is -0.13 with SE 158"
+   }
+  ],
+  "findings": [
+   {
+    "id": 1,
+    "claim": "no cell passes sigma >= 0.15",
+    "check": "holds at the point estimates. Eight cells have a 95% upper bound of at most 0.13; n4|pop is 0.113 with a 95% interval of 0.03 to 0.19 over 8 worlds (2 of its worlds are above 0.15), it is the largest of nine estimates, and no SE includes training-seed variance. With P0u as the null it is 0.120 +/- 0.060 (the report gives 0.120 without the SE) and n1|pop falls from 0.081 to 0.063 (P0u beats P0 there).",
+    "numbers": {
+     "n4|block": {
+      "sigma": 0.0175,
+      "se_worlds_bootstrap": 0.0037,
+      "se_worlds_t": 0.004,
+      "interval95_t7": [
+       0.008,
+       0.027
+      ],
+      "worlds_at_or_above_0.15": 0,
+      "with_P0u_as_null": [
+       0.0451,
+       0.0025
+      ]
+     },
+     "n4|object": {
+      "sigma": 0.0065,
+      "se_worlds_bootstrap": 0.0038,
+      "se_worlds_t": 0.0041,
+      "interval95_t7": [
+       -0.003,
+       0.016
+      ],
+      "worlds_at_or_above_0.15": 0,
+      "with_P0u_as_null": [
+       0.0401,
+       0.0029
+      ]
+     },
+     "n4|pop": {
+      "sigma": 0.1127,
+      "se_worlds_bootstrap": 0.0359,
+      "se_worlds_t": 0.0343,
+      "interval95_t7": [
+       0.032,
+       0.194
+      ],
+      "worlds_at_or_above_0.15": 2,
+      "with_P0u_as_null": [
+       0.1201,
+       0.0614
+      ]
+     },
+     "n8|block": {
+      "sigma": 0.0126,
+      "se_worlds_bootstrap": 0.0033,
+      "se_worlds_t": 0.0036,
+      "interval95_t7": [
+       0.004,
+       0.021
+      ],
+      "worlds_at_or_above_0.15": 0,
+      "with_P0u_as_null": [
+       0.0463,
+       0.0016
+      ]
+     },
+     "n8|object": {
+      "sigma": -0.0006,
+      "se_worlds_bootstrap": 0.0024,
+      "se_worlds_t": 0.0027,
+      "interval95_t7": [
+       -0.007,
+       0.006
+      ],
+      "worlds_at_or_above_0.15": 0,
+      "with_P0u_as_null": [
+       0.039,
+       0.0028
+      ]
+     },
+     "n8|pop": {
+      "sigma": 0.0408,
+      "se_worlds_bootstrap": 0.0127,
+      "se_worlds_t": 0.0122,
+      "interval95_t7": [
+       0.012,
+       0.07
+      ],
+      "worlds_at_or_above_0.15": 0,
+      "with_P0u_as_null": [
+       0.0681,
+       0.0169
+      ]
+     },
+     "n1|block": {
+      "sigma": 0.0053,
+      "se_worlds_bootstrap": 0.0014,
+      "se_worlds_t": 0.0014,
+      "interval95_t7": [
+       0.002,
+       0.009
+      ],
+      "worlds_at_or_above_0.15": 0,
+      "with_P0u_as_null": [
+       0.0475,
+       0.0026
+      ]
+     },
+     "n1|object": {
+      "sigma": 0.0052,
+      "se_worlds_bootstrap": 0.0015,
+      "se_worlds_t": 0.0017,
+      "interval95_t7": [
+       0.001,
+       0.009
+      ],
+      "worlds_at_or_above_0.15": 0,
+      "with_P0u_as_null": [
+       0.0317,
+       0.0015
+      ]
+     },
+     "n1|pop": {
+      "sigma": 0.0808,
+      "se_worlds_bootstrap": 0.0178,
+      "se_worlds_t": 0.02,
+      "interval95_t7": [
+       0.033,
+       0.128
+      ],
+      "worlds_at_or_above_0.15": 1,
+      "with_P0u_as_null": [
+       0.0628,
+       0.0258
+      ]
+     }
+    },
+    "source": "r5-ladder-002:out/n*/scores.npz [t*|view|K, C, P0, P0u, D@N, Dr@N]"
+   },
+   {
+    "id": 2,
+    "claim": "C - P0 with z over 8 worlds of 3.3 to 5.2",
+    "check": "the z is a cluster bootstrap over 8 worlds; as a t statistic with 7 degrees of freedom the eight non-zero gaps are 1.6 to 4.7 (p about 0.002 to 0.02 for the seven with t >= 3)",
+    "numbers": {
+     "n4|block": {
+      "C_minus_P0": 0.013,
+      "z_cluster_bootstrap": 4.92,
+      "t_over_8_worlds_7df": 4.6,
+      "worlds_positive": 8
+     },
+     "n4|object": {
+      "C_minus_P0": 0.0033,
+      "z_cluster_bootstrap": 1.65,
+      "t_over_8_worlds_7df": 1.58,
+      "worlds_positive": 5
+     },
+     "n4|pop": {
+      "C_minus_P0": 0.0474,
+      "z_cluster_bootstrap": 3.42,
+      "t_over_8_worlds_7df": 3.38,
+      "worlds_positive": 7
+     },
+     "n8|block": {
+      "C_minus_P0": 0.0096,
+      "z_cluster_bootstrap": 4.03,
+      "t_over_8_worlds_7df": 3.82,
+      "worlds_positive": 8
+     },
+     "n8|object": {
+      "C_minus_P0": -0.0001,
+      "z_cluster_bootstrap": -0.04,
+      "t_over_8_worlds_7df": -0.05,
+      "worlds_positive": 5
+     },
+     "n8|pop": {
+      "C_minus_P0": 0.0191,
+      "z_cluster_bootstrap": 3.7,
+      "t_over_8_worlds_7df": 3.68,
+      "worlds_positive": 7
+     },
+     "n1|block": {
+      "C_minus_P0": 0.0039,
+      "z_cluster_bootstrap": 3.8,
+      "t_over_8_worlds_7df": 3.61,
+      "worlds_positive": 7
+     },
+     "n1|object": {
+      "C_minus_P0": 0.0028,
+      "z_cluster_bootstrap": 3.34,
+      "t_over_8_worlds_7df": 3.01,
+      "worlds_positive": 7
+     },
+     "n1|pop": {
+      "C_minus_P0": 0.0372,
+      "z_cluster_bootstrap": 5.02,
+      "t_over_8_worlds_7df": 4.66,
+      "worlds_positive": 7
+     }
+    },
+    "source": "r5-ladder-002:out/n*/scores.npz"
+   },
+   {
+    "id": 3,
+    "claim": "the number of hidden parameters makes no measurable difference; not a difficulty dial",
+    "check": "not established either way. The hidden sets are different worlds, and the eight n8 truths happen to sit close to the prior mean on the four parameters shared with n4 (RMS 0.39 box half-widths, none beyond 0.78, against 0.55 for the n4 truths and 0.58 expected), which makes the n8 worlds easier for a reason unrelated to the count. In the block view 1 against 4 hidden parameters does differ (sigma 0.005 against 0.018, Welch t 2.9, p 0.02, uncorrected); in the population view the design cannot see differences below about 0.07. Nested truths (the same four values with parameters 5-8 added) would separate count from draw.",
+    "numbers": {
+     "per_world_sigma_between_sets": {
+      "block": {
+       "n1_vs_n4": {
+        "mean_of_world_sigmas": [
+         0.0054,
+         0.0181
+        ],
+        "welch_t": -2.92,
+        "p": 0.018
+       },
+       "n4_vs_n8": {
+        "mean_of_world_sigmas": [
+         0.0181,
+         0.013
+        ],
+        "welch_t": 0.94,
+        "p": 0.364
+       },
+       "n1_vs_n8": {
+        "mean_of_world_sigmas": [
+         0.0054,
+         0.013
+        ],
+        "welch_t": -1.97,
+        "p": 0.08
+       }
+      },
+      "object": {
+       "n1_vs_n4": {
+        "mean_of_world_sigmas": [
+         0.005,
+         0.0069
+        ],
+        "welch_t": -0.43,
+        "p": 0.676
+       },
+       "n4_vs_n8": {
+        "mean_of_world_sigmas": [
+         0.0069,
+         -0.0004
+        ],
+        "welch_t": 1.51,
+        "p": 0.156
+       },
+       "n1_vs_n8": {
+        "mean_of_world_sigmas": [
+         0.005,
+         -0.0004
+        ],
+        "welch_t": 1.72,
+        "p": 0.112
+       }
+      },
+      "pop": {
+       "n1_vs_n4": {
+        "mean_of_world_sigmas": [
+         0.0794,
+         0.1087
+        ],
+        "welch_t": -0.74,
+        "p": 0.475
+       },
+       "n4_vs_n8": {
+        "mean_of_world_sigmas": [
+         0.1087,
+         0.0413
+        ],
+        "welch_t": 1.86,
+        "p": 0.098
+       },
+       "n1_vs_n8": {
+        "mean_of_world_sigmas": [
+         0.0794,
+         0.0413
+        ],
+        "welch_t": 1.63,
+        "p": 0.131
+       }
+      }
+     },
+     "truths": {
+      "n4": {
+       "rms_u_of_truths_on_lR_dm00_ls00_lh": 0.5482,
+       "largest_abs_u_on_them": 0.9895
+      },
+      "n8": {
+       "rms_u_of_truths_on_lR_dm00_ls00_lh": 0.3919,
+       "largest_abs_u_on_them": 0.779
+      },
+      "expected_rms_uniform_box": 0.5774
+     }
+    },
+    "source": "r5-ladder-002:out/n*/scores.npz; hidden_sets[*].truths_theta of this file"
+   },
+   {
+    "id": 4,
+    "claim": "identifiability worsens with the number of hidden parameters; passive episodes identify as well as inputs once 4 or more are hidden, so experiments are not needed",
+    "check": "both are statements about this scripted inference at a fixed design size, not about the world. The design has 768 points in 4 and in 8 dimensions and the posterior is floored by the emulator's misfit: for the shared parameter lR the block-view SD ratio at 512 episodes is 0.026, 0.098, 0.418 for 1, 4, 8 hidden parameters while its projection R2 falls 0.83, 0.59, 0.48, and 256 times more data moves the n8 contraction only from 0.69 to 0.51. The single-class arms have 2 design episodes per point. With 1 hidden parameter, where the floor is low, the aimed push does help (0.45-0.72 of the passive SD). What is supported: identification is not the bottleneck for these predictors (S(2) within 0.004 of C; 0.018 in the population view). Whether designed inputs carry more information at 4-8 parameters is untested.",
+    "numbers": {
+     "n1": {
+      "lR_sd_over_prior_sd_block_at_512": 0.0265,
+      "lR_projection_r2_block": 0.8266,
+      "design_points": 384,
+      "emulator_degree": 2
+     },
+     "n4": {
+      "lR_sd_over_prior_sd_block_at_512": 0.0976,
+      "lR_projection_r2_block": 0.5858,
+      "design_points": 768,
+      "emulator_degree": 3
+     },
+     "n8": {
+      "lR_sd_over_prior_sd_block_at_512": 0.4184,
+      "lR_projection_r2_block": 0.4766,
+      "design_points": 768,
+      "emulator_degree": 2
+     }
+    },
+    "source": "r5-ladder-002:out/n*/identification.json [emulators, per_truth_budget]"
+   },
+   {
+    "id": 5,
+    "claim": "with rollouts expect agents at S whatever their strength (block, object views)",
+    "check": "not supported. sigma and rho are relative to C, one net per view trained once for 6,000 steps (5-24 seconds; best validation at the last or second-to-last evaluation in all nine cells), which sees 5 lagged frames of the history. C is at 0.35-0.69 OES, so 0.31-0.65 of the oracle's skill is not reached, and whether a stronger history-only predictor reaches more of it was not tested. The study shows that knowing the parameters adds little for this net family; it does not show that C is the ceiling, and an agent that predicts better than C scores above S.",
+    "source": "r5-ladder-002:out/n*/train_info.json [view|cond]; cells[*].oes of this file"
+   },
+   {
+    "id": 6,
+    "claim": "the data-only learner needs 105-451 episodes and never reaches S(2); value of theory 53-226x and more than 256x",
+    "check": "numbers reproduced, but D(512) is limited by its schedule in the block and object views: 47 of 48 nets have their best validation step at 2,250 or later of 2,500 (31 at the last evaluation), so N90 of D is an upper bound there and the ratios are inflated by an unknown factor. N90 is interpolated in log2 between two measured budgets a factor 4 apart. In n4|pop D(512) equals S(2) within 0.0004 OES, so 'more than 256x' is 'about 256x' there. P0 reaches 90% of C in n1|pop by 0.002 OES only (P0 / C = 0.904).",
+    "numbers": {
+     "n4|block": {
+      "best_validation_step_of_2500": [
+       2250,
+       2500,
+       2250,
+       2500,
+       2500,
+       2500,
+       2250,
+       2250
+      ]
+     },
+     "n4|object": {
+      "best_validation_step_of_2500": [
+       2500,
+       2500,
+       2500,
+       2250,
+       2500,
+       2500,
+       2500,
+       2250
+      ]
+     },
+     "n4|pop": {
+      "best_validation_step_of_2500": [
+       2500,
+       2500,
+       1500,
+       2250,
+       2250,
+       2250,
+       1750,
+       2500
+      ]
+     },
+     "n8|block": {
+      "best_validation_step_of_2500": [
+       2500,
+       2500,
+       2500,
+       2500,
+       2250,
+       2500,
+       2250,
+       2250
+      ]
+     },
+     "n8|object": {
+      "best_validation_step_of_2500": [
+       2500,
+       2500,
+       2500,
+       2500,
+       2500,
+       2500,
+       2500,
+       2250
+      ]
+     },
+     "n8|pop": {
+      "best_validation_step_of_2500": [
+       1750,
+       2000,
+       2000,
+       1750,
+       2250,
+       500,
+       2000,
+       1750
+      ]
+     },
+     "n1|block": {
+      "best_validation_step_of_2500": [
+       2250,
+       2250,
+       2250,
+       2500,
+       2500,
+       2250,
+       2500,
+       2000
+      ]
+     },
+     "n1|object": {
+      "best_validation_step_of_2500": [
+       2500,
+       2500,
+       2500,
+       2250,
+       2500,
+       2250,
+       2500,
+       2500
+      ]
+     },
+     "n1|pop": {
+      "best_validation_step_of_2500": [
+       750,
+       1500,
+       1500,
+       2500,
+       1500,
+       2000,
+       1500,
+       2250
+      ]
+     }
+    },
+    "source": "r5-ladder-002:out/n*/train_info.json [view|D|group1|batch*: best_step, order_truth_budget]"
+   },
+   {
+    "id": 7,
+    "claim": "P0u (the literal P0) is below P0 in the block and object views",
+    "check": "confounded: P0u trained for 3,000 steps and the conditioned net for 6,000, and both were still improving (block n1: conditioned 0.217 at 3,000 and 0.207 at 6,000; P0u 0.2295 at 3,000)",
+    "source": "r5-ladder-002:out/n*/train_info.json [hist]; info.json [config.steps_cond, steps_p0]"
+   },
+   {
+    "id": 8,
+    "claim": "the state-given gap predicts sigma (rank correlation +0.77 over nine cells); a cheap screen",
+    "check": "+0.77 reproduced (unadjusted p 0.02; one of 44 correlations; the nine cells are 3 sets of worlds in 3 views). Better evidence, not in the report: over the 24 worlds of a view, the per-world sigma against the per-world gap has a rank correlation of +0.74 (block), +0.47 (object), +0.52 (population), positive in all nine cells. Across views the screen mis-orders: object gaps (0.16-0.24) exceed block gaps (0.13-0.20) while sigma is lower. Use it within one view and predictor family.",
+    "numbers": {
+     "block": {
+      "spearman_24_worlds": 0.7367,
+      "p": 4e-05,
+      "within_cell_spearman_8_worlds": {
+       "n1": 0.5952,
+       "n4": 0.7619,
+       "n8": 0.6905
+      }
+     },
+     "object": {
+      "spearman_24_worlds": 0.467,
+      "p": 0.021,
+      "within_cell_spearman_8_worlds": {
+       "n1": 0.5238,
+       "n4": 0.5952,
+       "n8": 0.4286
+      }
+     },
+     "pop": {
+      "spearman_24_worlds": 0.5165,
+      "p": 0.0098,
+      "within_cell_spearman_8_worlds": {
+       "n1": 0.5,
+       "n4": 0.4524,
+       "n8": 0.6429
+      }
+     }
+    },
+    "source": "r5-ladder-002:out/n*/scores.npz [t*|view|plugPM, O, K, C, P0]"
+   },
+   {
+    "id": 9,
+    "claim": "rank correlation of sigma with the number of hidden parameters -0.05, with the view dimension -0.50",
+    "check": "wrong by the tie handling: 0.00 and -0.53 (edits above); no conclusion changes"
+   },
+   {
+    "id": 10,
+    "claim": "depth does not cost episodes (ratios 0.2-0.9); the 30x trigger is not met",
+    "check": "ratios reproduced (0.48, 0.55, 0.65 object; 0.23, 0.89, 0.29 population). The trigger is not met on this evidence, with two caveats: each view has its own net family and its own target (90% of a C at 0.35-0.69), and finding 6 applies to the block and object values."
+   },
+   {
+    "id": 11,
+    "claim": "pilot only; no secret committed",
+    "check": "no exam secret is in round5/ladder or its request files: the only secret-derived value is the SHA-256 commitment. Every output of the job carries the pilot marker. Two logs list pilot truths without the marker line inside the file: results/status.json (its log tail has the 8 n=1 truths) and origin/gpu-jobs:jobs/r5-ladder-002/logs/run.log (all 24). They are the pilot truths of this file, which is marked PILOT_NEVER_REUSE_AS_EXAM, so nothing reusable is exposed; add the marker to the status copy and print it to stdout in later jobs."
+   }
+  ],
+  "budget": "about 2 CPU-minutes; no GPU"
  }
 }
