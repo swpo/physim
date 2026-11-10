@@ -1,0 +1,41 @@
+{
+ "schema": "gpu-job/v1",
+ "job_id": "r5-ladder-001",
+ "purpose": "Round-5 study ladder (track 2): reference ladder (K, D(N), P0, prior mean, S(N), C, O) on the gliders wind world in 9 cells, observed view {block, object, population} x {1, 4, 8} hidden parameters, Lab budgets 2-512 episodes; identification by passive, blind and aimed inputs",
+ "ref": "a92093604fa646be838a60d8f5302a92c15ced05",
+ "requester": "cloud study ladder (track 2), session_01BZceC7G6m7DgM6KpXjnWXj",
+ "paths": [
+  "research/alife/vecworld/vw1",
+  "research/alife/vecworld/integrate",
+  "research/alife/vecworld/spec",
+  "research/alife/vecworld/level0",
+  "research/alife/vecworld/program/track2/gliders_exam",
+  "research/alife/vecworld/program/track2/actuation",
+  "research/alife/vecworld/program/round4/sbi",
+  "research/alife/vecworld/program/round5/agentenv/evaluator",
+  "research/alife/vecworld/program/round5/ladder"
+ ],
+ "gpu": {
+  "types": [
+   "A100_40GB",
+   "A100_80GB",
+   "H100_80GB",
+   "H200_141GB"
+  ],
+  "count": 1,
+  "spot": false
+ },
+ "max_hours": 2.9,
+ "cap_usd": 21.2,
+ "setup": [
+  "curl -LsSf https://astral.sh/uv/install.sh | sh",
+  "export PATH=$HOME/.local/bin:$PATH",
+  "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+  "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+ ],
+ "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/program/round5/ladder && python -B run_ladder.py --smoke --sets 8 --out $OUT/presmoke --max-hours 0.2 && python -B run_ladder.py --out $OUT --max-hours 2.6",
+ "env": {
+  "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+ },
+ "notes": "Pilot only: the truths (8 per hidden set, 24 in all) are drawn from the public priors inside the job and written to the outputs; never reusable as an exam; every output file carries PILOT_NEVER_REUSE_AS_EXAM. The world secret is generated in the job (os.urandom) and never written (commitment only). float64 world, float32 nets. The run first repeats the CPU-tested smoke pass on the GPU for one hidden set (about 4 minutes, exits non-zero on any failure), then the full pass; both assert a GPU backend before any simulation. Time: about 5.2 million member-ticks (r4-sbi-002 measured 1,080-1,290 member-ticks/s for these stages and 520/s for exams on an A100: about 80 minutes), identification about 10 minutes, nets and scoring about 30 minutes; expected 2.0-2.3 h in all. Guards: hidden sets run in the order 4, 8, 1 and share the time left equally; each view's nets get a share of their set's time and cut their number of steps to fit it (never below 300); a set is skipped if the time left does not cover its simulation part; the script's limit is 2.6 h (plus about 0.15 h of setup and smoke pass inside max_hours 2.9). Device arrays are passed to jitted functions as arguments and checked to stay under 2^31 elements; the largest training tensor is about 1.4 GB (24 block nets in lockstep). Every output file is far below 20 MB and $OUT below 50 MB (features, scores, posterior draws; no raw observations). No network or subprocess use outside setup. Cap: $6.69/h x (2.9 + 0.25) h = $21.07. Code pinned to ref a92093604. CPU tests from a git archive of exactly these paths: at that commit, run_ladder.py --smoke --sets 8 --cpu-ok end to end (the job's own first step; the step-cutting path included; exit 0) and make_summary.py --smoke on its outputs; at its parent (the same code except how a view's net time is shared out), the three hidden sets end to end (exit 0) and check_lib.py."
+}
