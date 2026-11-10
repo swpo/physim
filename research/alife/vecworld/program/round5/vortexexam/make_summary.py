@@ -43,12 +43,20 @@ def job_cost(st):
     if st is None:
         return None
     pods = st.get("pods") or []
-    hrs = None
-    for k in ("pod_hours", "hours"):
-        if k in st:
-            hrs = st[k]
+    from datetime import datetime
+    hrs = 0.0
+    for p in pods:                                   # GPU-hours = pod lifetime (created to terminated), summed
+        if p.get("created_at") and p.get("terminated_at"):
+            t0, t1 = (datetime.strptime(p[k], "%Y-%m-%dT%H:%M:%SZ") for k in ("created_at", "terminated_at"))
+            hrs += (t1 - t0).total_seconds() / 3600
+    hrs = round(hrs, 3) if hrs else None
+    run_h = None
+    if st.get("started_at") and st.get("finished_at"):
+        run_h = round((datetime.strptime(st["finished_at"], "%Y-%m-%dT%H:%M:%SZ")
+                       - datetime.strptime(st["started_at"], "%Y-%m-%dT%H:%M:%SZ")).total_seconds() / 3600, 3)
     return {"state": st.get("state"), "billed_usd": (st.get("cost") or {}).get("billed_usd"),
             "conservative_usd": (st.get("cost") or {}).get("conservative_usd"), "pod_hours": hrs,
+            "run_hours_started_to_finished": run_h, "exit_code": st.get("exit_code"),
             "gpu": [p.get("gpu") for p in pods], "provider": [p.get("provider") for p in pods],
             "rate_usd_hr": [p.get("rate_usd_hr") for p in pods], "cap_usd": st.get("cap_usd"),
             "pods": [{k: p.get(k) for k in ("created_at", "ready_at", "terminated_at", "billed_usd", "state")} for p in pods]}
@@ -61,6 +69,9 @@ st1, st2, st3 = load("job1", "status.json"), load(JD2, "status.json"), load("job
 old = [load("job_r5-vortexexam-001_status.json")]
 S["gpu"] = V({J1: job_cost(st1), J2: job_cost(st2), **({J3: job_cost(st3)} if st3 else {}),
               "billed_usd_total": round(sum(((x or {}).get("cost") or {}).get("billed_usd") or 0.0 for x in (st1, st2, st3)), 4),
+              "pod_hours_total": round(sum((job_cost(x) or {}).get("pod_hours") or 0.0 for x in (st1, st2, st3)), 3),
+              "r5-vortexexam-004": {"state": "rejected", "billed_usd": 0.0,
+                                    "why": "invalid request: purpose line over 300 characters; resubmitted as r5-vortexexam-005"},
               "cap_usd_study": 25.0,
               "r5-vortexexam-001": {"state": (old[0] or {}).get("state"), "billed_usd": ((old[0] or {}).get("cost") or {}).get("billed_usd")}},
              f"origin/gpu-jobs:jobs/<job>/status.json (copied to results/job1, results/job2)")

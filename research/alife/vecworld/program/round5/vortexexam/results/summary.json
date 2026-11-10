@@ -8,7 +8,9 @@
     "state": "done",
     "billed_usd": 2.2917,
     "conservative_usd": 2.6008,
-    "pod_hours": null,
+    "pod_hours": 0.381,
+    "run_hours_started_to_finished": 0.358,
+    "exit_code": 0,
     "gpu": [
      "H200_141GB"
     ],
@@ -33,7 +35,9 @@
     "state": "done",
     "billed_usd": 1.3077,
     "conservative_usd": 1.4573,
-    "pod_hours": null,
+    "pod_hours": 0.728,
+    "run_hours_started_to_finished": 0.658,
+    "exit_code": 0,
     "gpu": [
      "A100_40GB"
     ],
@@ -55,6 +59,12 @@
     ]
    },
    "billed_usd_total": 3.5994,
+   "pod_hours_total": 1.109,
+   "r5-vortexexam-004": {
+    "state": "rejected",
+    "billed_usd": 0.0,
+    "why": "invalid request: purpose line over 300 characters; resubmitted as r5-vortexexam-005"
+   },
    "cap_usd_study": 25.0,
    "r5-vortexexam-001": {
     "state": "cancelled",
@@ -11119,7 +11129,7 @@
      "P0": "net|P0",
      "S": "net|S@4",
      "sigma": -0.003,
-     "sigma_se_truths": 0.027,
+     "sigma_se_truths": 0.028,
      "rho": 5.913
     },
     "8": {
@@ -11128,46 +11138,8 @@
      "P0": "net|P0",
      "S": "net|S@8",
      "sigma": -0.003,
-     "sigma_se_truths": 0.028,
+     "sigma_se_truths": 0.03,
      "rho": -2.723
-    }
-   },
-   "short_history": {
-    "1": {
-     "null": "law|D@1",
-     "C": "law|C",
-     "P0": "law|P0",
-     "S": "law|S@1",
-     "sigma": -0.097,
-     "sigma_se_truths": 2.628,
-     "rho": 0.957
-    },
-    "2": {
-     "null": "law|D@2",
-     "C": "law|C",
-     "P0": "law|P0",
-     "S": "law|S@2",
-     "sigma": -0.315,
-     "sigma_se_truths": 4.225,
-     "rho": 1.042
-    },
-    "4": {
-     "null": "law|D@4",
-     "C": "law|C",
-     "P0": "law|P0",
-     "S": "law|S@4",
-     "sigma": -0.368,
-     "sigma_se_truths": 3.153,
-     "rho": 1.025
-    },
-    "8": {
-     "null": "law|D@8",
-     "C": "law|C",
-     "P0": "law|P0",
-     "S": "law|S@8",
-     "sigma": -0.421,
-     "sigma_se_truths": 3.24,
-     "rho": 1.026
     }
    }
   },
@@ -14894,7 +14866,7 @@
       "P0": "net|P0",
       "S": "net|S@4",
       "sigma": -0.003,
-      "sigma_se_truths": 0.027,
+      "sigma_se_truths": 0.028,
       "rho": 5.913
      },
      "8": {
@@ -14903,46 +14875,8 @@
       "P0": "net|P0",
       "S": "net|S@8",
       "sigma": -0.003,
-      "sigma_se_truths": 0.028,
+      "sigma_se_truths": 0.03,
       "rho": -2.723
-     }
-    },
-    "short_history": {
-     "1": {
-      "null": "law|D@1",
-      "C": "law|C",
-      "P0": "law|P0",
-      "S": "law|S@1",
-      "sigma": -0.097,
-      "sigma_se_truths": 2.628,
-      "rho": 0.957
-     },
-     "2": {
-      "null": "law|D@2",
-      "C": "law|C",
-      "P0": "law|P0",
-      "S": "law|S@2",
-      "sigma": -0.315,
-      "sigma_se_truths": 4.225,
-      "rho": 1.042
-     },
-     "4": {
-      "null": "law|D@4",
-      "C": "law|C",
-      "P0": "law|P0",
-      "S": "law|S@4",
-      "sigma": -0.368,
-      "sigma_se_truths": 3.153,
-      "rho": 1.025
-     },
-     "8": {
-      "null": "law|D@8",
-      "C": "law|C",
-      "P0": "law|P0",
-      "S": "law|S@8",
-      "sigma": -0.421,
-      "sigma_se_truths": 3.24,
-      "rho": 1.026
      }
     }
    },

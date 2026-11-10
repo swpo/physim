@@ -228,6 +228,8 @@ best = {}
 rng_b = np.random.default_rng(5)
 for n in budgets:
     for view, ok in (("full_history", lambda k: "~" not in k), ("short_history", lambda k: "~" in k or k.startswith("law|"))):
+        if view == "short_history" and not any("~" in k for k in SC):
+            continue                                              # this job has no short-history families
         cands_null = [k for k in SC if ok(k) and (k.endswith("|P0") or k.endswith(f"|D@{n}"))]
         cands_c = [k for k in SC if ok(k) and k.split("|")[-1] in ("C", "Cded", "Cft")]
         cands_s = [k for k in SC if ok(k) and k.split("|")[-1] in (f"S@{n}", f"Sded@{n}", f"Sft@{n}")]
