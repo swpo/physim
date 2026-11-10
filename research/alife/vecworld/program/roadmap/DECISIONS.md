@@ -10,7 +10,7 @@ order in which they were put to the lead; the roadmap's own number is in bracket
 | 3 [4] | rollouts with real agents | decided 9 Nov | cleared to spend; a cheap model first for mechanics, then Astra |
 | 4 [7] | the same model on v1 and v2 fed vortices | decided 9 Nov | not a priority now; not scheduled |
 | 5 [6] | where sealed answers live, and who grades | decided 10 Nov | a private Hugging Face dataset repo, not the lead's Mac; the grader must build on the verifiers library, not reinvent it |
-| 6 [5, 6] | defer the collective pilot and the large foundry pass | not yet put | |
+| 6 [5, 6] | the collective pilot and the large foundry pass | decided 10 Nov | both wait; a collective, if run, is run from the coordinator's session with Claude sessions as agents |
 
 Roadmap decision 3 (the acceptance definition) was not put separately. The two quantities of roadmap section 1
 (science share sigma, scripted share rho) are in use as provisional and are to be recalibrated on the first agent table.
@@ -87,6 +87,17 @@ sure to take a look at primes verifiers library we're using and make sure we're 
 - Not needed for the Qwen mechanics check or the first Astra look, which use pilot worlds that are never reused.
 - Still needed from the lead when it is built: the private repo under an account or organisation of the lead's choice,
   and the two tokens.
+
+## 6. The collective pilot and the large foundry pass
+
+"Yeah let's wait on it. If we run a collective we'll do it from here (you'll run Claude sessions as agents)."
+
+- Both wait: the agent collective pilot (roadmap estimate about $2,150) and the large neural-CA foundry pass
+  ($150-300 of GPU). The trigger proposed to the lead, and not objected to, is that one exam has ordered two models.
+- If a collective is run, the coordinator runs it from its own session, with Claude sessions as the agents (as the
+  ALife collective and this program's rounds were run). The roadmap's cost estimate for the pilot assumed otherwise
+  and is to be redone on that basis before the pilot is proposed again.
+- The small foundry screen of round 5 (`../round5/foundry`, cap $25) is not affected.
 
 ## Earlier standing decisions that bear on the roadmap
 
