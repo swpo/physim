@@ -75,22 +75,22 @@
     {
       "billed_usd": null,
       "cap_usd": 15.8,
-      "conservative_usd": 4.8607,
+      "conservative_usd": 4.9996,
       "finished_at": null,
       "gpu": "H200_141GB (nebius)",
-      "hours": 0.727,
+      "hours": 0.747,
       "job_id": "r5-bias2-004",
       "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the phase-membrane world (4 fields), plus the gliders anchor at width 1 under the same judges; encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "running"
+      "state": "collecting"
     },
     {
       "billed_usd": null,
       "cap_usd": 16.45,
-      "conservative_usd": 3.7521,
+      "conservative_usd": 3.9126,
       "finished_at": null,
       "gpu": "H200_141GB (nebius)",
-      "hours": 0.561,
+      "hours": 0.585,
       "job_id": "r5-bias2-005",
       "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the fed-vortex world (vorticity, fuel, two labels; nothing conserved); encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted, certified by the fixed family",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -133,6 +133,18 @@
       "state": "done"
     },
     {
+      "billed_usd": 0.0,
+      "cap_usd": 19.8,
+      "conservative_usd": 0.0,
+      "finished_at": null,
+      "gpu": "-",
+      "hours": 0,
+      "job_id": "r5-vortexexam-003",
+      "purpose": "Round-5 study vortexexam (track 2), job 2: the fed-vortex exam pilot at 128 px with 4 hidden parameters: design simulations, Lab episodes, exam items with replicate truths, identification, reference policies K, D(N), P0, S(N), C, O with sigma and rho; then the headroom scan with compact outputs",
+      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
+      "state": "received"
+    },
+    {
       "billed_usd": 0.0501,
       "cap_usd": 1.5,
       "conservative_usd": 0.1585,
@@ -173,8 +185,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 51.4268,
     "prior_spend_usd": 0.0,
-    "spent_usd": 27.7896,
+    "spent_usd": 28.089,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T00:51:34Z"
+    "updated_at": "2026-11-10T00:53:01Z"
   }
 }
