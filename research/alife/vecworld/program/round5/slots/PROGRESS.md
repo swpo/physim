@@ -1,6 +1,6 @@
 # PROGRESS (study slots, round 5) -- kept for restarts
 
-Updated 05:32 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
+Updated 06:16 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
 
 ## Done
 - r5-slots-001 cancelled, r5-slots-002 infra_error ($0), r5-slots-003 pilot done ($3.13, H200, ref e5d146ef3; outputs in results/r5-slots-003/).
@@ -16,28 +16,29 @@ Updated 05:32 UTC 10 Nov (instance 4, after the third container restart at about
 - results/summary.json, results/interpretation.json, README.md: PRELIMINARY (pilot only), to be rebuilt.
 
 ## Running
-- r5-slots-005 was CANCELLED before start ($0) at 04:06: the Mac's review asked for XLA_PYTHON_CLIENT_MEM_FRACTION=0.9
-  on a 40 GB card. r5-slots-006 (= 005 plus that env line) was CANCELLED before start ($0) at 05:22: its cap $18.75
-  missed the only rentable offer (H100 via datacrunch at $5.0199/h) by 7 cents. GPU job r5-slots-007 (requested about
-  05:24 UTC) = r5-slots-006 with cap $21.80: the SAME code ref 7099a0ded, S5_SIZE=pilot (48 trajectories per
-  half, fits a 40 GB card), S5_STEPS=2000, types A100_40GB / A100_80GB / H100_80GB, max 3.5 h, cap $21.80
-  (about $7.50 expected on an A100_40GB). Limits: training stops at 10400 s, certification 11200 s, workers killed
-  at 11900 s. Expected on an A100: the first 9 configs. Status:
-  git fetch origin gpu-jobs; git show origin/gpu-jobs:jobs/r5-slots-007/status.json (and review.md when it appears).
-  Watcher (cheap to restart): bash <scratchpad>/slots/watch.sh r5-slots-007. NEVER resubmit while it is queued or
-  running. Budget: cap $25, $3.13 billed, r5-slots-007 reserves up to $21.80.
-
-- 05:29:35 UTC: r5-slots-007 STARTED on an A100_40GB (lambdalabs, $1.99/h; review: fine to run). job.sh ends at the
-  latest about 11960 s later (about 08:50 UTC), then collection; the runner's hard deadline is 09:45 UTC.
-  Expected cost about $7.50. Heartbeats: status.json log tails every 15 minutes.
+- r5-slots-005 (cancelled before start, $0: the Mac asked for XLA_PYTHON_CLIENT_MEM_FRACTION=0.9) and r5-slots-006
+  (cancelled before start, $0: cap 7 cents under the rentable H100 offer) never had a pod.
+- r5-slots-007 (same ref 7099a0ded, S5_SIZE=pilot, 2000 steps) ran 05:29-06:00 UTC on an A100_40GB (lambdalabs,
+  $1.99/h) and FAILED, $1.04 billed: references and sam_sup fine (9.4 s per 100 steps, as on the H200; sam_sup
+  ARI 0.85 against the tracker), then all 13 other configs hit RESOURCE_EXHAUSTED in jit_val (17-19 GiB) with 17% of
+  the BFC pool in use: the 36 GiB pool could not supply a second contiguous block. Outputs kept in
+  results/r5-slots-007/ (32 certified halves: references and sam_sup; train_errors.txt).
+- GPU job r5-slots-008 (requested about 06:17 UTC): same ref 7099a0ded, same env plus
+  XLA_PYTHON_CLIENT_ALLOCATOR=platform (no pool, so no contiguity problem; valid value in jaxlib 0.12.0.1) and
+  S5_STEPS=3000; types A100_40GB / A100_80GB / H100_80GB, max 3.5 h, cap $20.80 (= what is left of $25: billed so
+  far $3.13 + $1.04). Expected: all 14 configs in about 1.9 h, about $4 on the A100_40GB. Status:
+  git fetch origin gpu-jobs; git show origin/gpu-jobs:jobs/r5-slots-008/status.json (and review.md).
+  Watcher: bash <scratchpad>/slots/watch.sh r5-slots-008; heartbeat: <scratchpad>/slots/hb.sh r5-slots-008.
+  NEVER resubmit while it is queued or running. If it fails again there is no budget for another long job on an
+  H100; an A100_40GB job of 2 h costs about $4.
 
 ## Next step (exact)
-1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-007 <scratch dir>; look at progress.txt,
+1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-008 <scratch dir>; look at progress.txt,
    table.txt, train_done.json (skipped configs), train/*.json (checkpoints, cut_by_deadline), train_errors.txt.
    Remember: the config still training at the training deadline has NULL objective values; a _ws config cut before
    step 250 still carries sam_sup's encoder (not a result).
-2. rewrite results/interpretation.json for r5-slots-007 (claims with key paths into combined.json), run
-   python -B ssummary.py results r5-slots-007 r5-slots-003; python -B sfigs.py <scratch>/r5-slots-007/out results/figs
-   (the cancelled requests 004, 005 and 006 never had a pod; the report lists them at $0).
+2. rewrite results/interpretation.json for r5-slots-008 (claims with key paths into combined.json), run
+   python -B ssummary.py results r5-slots-008 r5-slots-003 r5-slots-007; python -B sfigs.py <scratch>/r5-slots-008/out results/figs
+   (the cancelled requests 004, 005 and 006 never had a pod; the report lists them at $0; 007 failed at $1.04).
 3. README.md (short; say that the doubled data was dropped and why), report; commit + push own paths; remove the
    worktree (git worktree remove --force /home/user/wt/slots; git branch -D wt-slots) and the scratch.

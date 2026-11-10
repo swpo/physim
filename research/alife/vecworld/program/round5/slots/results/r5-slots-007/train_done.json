@@ -1,0 +1,98 @@
+{
+ "skipped_by_deadline": [],
+ "n_configs": 14,
+ "seconds": 1667.8517456054688,
+ "steps": 2000,
+ "ov_steps": 1000,
+ "batch": 32,
+ "enc_j": 8,
+ "largest_device_arrays": {
+  "X_A": {
+   "shape": [
+    48,
+    301,
+    2,
+    128,
+    128
+   ],
+   "elements": 473432064
+  },
+  "X_B": {
+   "shape": [
+    48,
+    301,
+    2,
+    128,
+    128
+   ],
+   "elements": 473432064
+  },
+  "train decoder hidden": {
+   "shape": [
+    4,
+    128,
+    12,
+    1024,
+    64
+   ],
+   "elements": 402653184
+  },
+  "val decoder hidden": {
+   "shape": [
+    4,
+    96,
+    12,
+    1024,
+    64
+   ],
+   "elements": 301989888
+  },
+  "MAP_A": {
+   "shape": [
+    48,
+    301,
+    128,
+    128
+   ],
+   "elements": 236716032
+  },
+  "MAP_B": {
+   "shape": [
+    48,
+    301,
+    128,
+    128
+   ],
+   "elements": 236716032
+  },
+  "XB_A": {
+   "shape": [
+    320,
+    16,
+    2,
+    128,
+    128
+   ],
+   "elements": 167772160
+  },
+  "XB_B": {
+   "shape": [
+    320,
+    16,
+    2,
+    128,
+    128
+   ],
+   "elements": 167772160
+  }
+ },
+ "max_elements_allowed": 2147483647,
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "jax": "0.12.0.1",
+  "x64": false
+ }
+}
