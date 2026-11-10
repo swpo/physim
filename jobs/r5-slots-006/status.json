@@ -54,7 +54,7 @@
   ],
   "job_id": "r5-slots-006",
   "max_estimate_usd": 7.46,
-  "message": "no pod could be rented (create failed: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_a100_sxm4 available right now. Please try again later.); will retry",
+  "message": "no offer that fits the cap is available right now; will retry",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -126,5 +126,5 @@
   },
   "run_started_epoch": 1794287145.787297,
   "state": "queued",
-  "updated_at": "2026-11-10T05:11:09Z"
+  "updated_at": "2026-11-10T05:13:16Z"
 }
