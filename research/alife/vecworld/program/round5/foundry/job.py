@@ -50,13 +50,14 @@ OUT = os.environ.get("OUT") or os.path.join(HERE, "out")
 T_START = env("T_START", str(T0), float)          # job.sh passes its own start time
 PRIOR_SEED = env("PRIOR_SEED", 2026)
 RUN_SEED = env("RUN_SEED", 5150)
-N_DRAWS = env("N_DRAWS", 16 if TINY else 4096)
+N_DRAWS = env("N_DRAWS", 16 if TINY else 8192)
 N_MIN = env("N_MIN", 8 if TINY else 2048)
 CHUNK = env("CHUNK", 8 if TINY else 128)
 N_THUMB = env("N_THUMB", 8 if TINY else 1024)
 N_CERT = env("N_CERT", 4 if TINY else 24)
 N_CTRL = env("N_CTRL", 4 if TINY else 32)
 N_GLID = env("N_GLID", 2 if TINY else 16)
+N_GLID2 = env("N_GLID2", 1 if TINY else 8)          # gliders runs at the certification size
 EPS = 0.1
 T_SCREEN = env("T_SCREEN_S", 2400, float)          # no new screen chunk after this (once N_MIN is done)
 T_SCREEN_HARD = env("T_SCREEN_HARD_S", 3000, float)  # no new screen chunk after this at all
@@ -317,29 +318,36 @@ def stage_certify(ths_all, top):
 
 
 # ----------------------------------------------------------------------------- stage: gliders reference
-def stage_gliders():
-    wd, p = SC.gliders_world()
-    n = N_GLID
-    ths = {k: np.broadcast_to(np.asarray(v), (n,) + np.shape(v)).copy() for k, v in p.items()} \
-        if isinstance(p, dict) else None
-    if ths is None:
-        ths = jax.tree_util.tree_map(lambda v: np.broadcast_to(np.asarray(v), (n,) + np.shape(v)).copy(), p)
-    fn = SC.make_chunk_fn(wd, SZG, map_batch=4)
-    keys = draw_keys(RUN_SEED + 4, range(n))
+def gliders_run(wd, p, sz, n, seed, fname):
+    thd = jax.tree_util.tree_map(lambda v: jnp.asarray(np.broadcast_to(np.asarray(v), (n,) + np.shape(v)).copy()), p)
+    fn = SC.make_chunk_fn(wd, sz, map_batch=4)
     t = time.time()
-    thd = jax.tree_util.tree_map(jnp.asarray, ths)
-    res = SC.to_host(fn(thd, thd, keys))
+    res = SC.to_host(fn(thd, thd, draw_keys(seed, range(n))))
     dt = time.time() - t
     res.pop("thumb")
-    np.savez_compressed(os.path.join(OUT, "ref_gliders.npz"), **res)
-    d = CR.derive(res, SZG.T)
+    np.savez_compressed(os.path.join(OUT, fname), **res)
+    d = CR.derive(res, sz.T)
     ty = CR.classify(d)
-    mt = member_ticks(SZG, n)
+    mt = member_ticks(sz, n)
     del fn
-    return dict(n=n, sizes=vars(SZG) | dict(NS=SZG.NS), seconds=dt, member_ticks=mt, member_ticks_per_s=mt / dt,
+    release()
+    P(f"gliders {fname}: {n} runs in {dt:.1f}s ({mt / dt:.0f} member-ticks/s incl. compile)")
+    return dict(n=n, sizes=vars(sz) | dict(NS=sz.NS), seconds=dt, member_ticks=mt, member_ticks_per_s=mt / dt,
                 types={CR.TYPES[i]: int((ty == i).sum()) for i in range(len(CR.TYPES))},
-                ceil_mean={str(h): float(np.nanmean(d[f"ceil{h}"])) for h in SZG.hz},
-                note="theta' = theta here, so pl is a null check of the plug-in loss estimator")
+                ceil_mean={str(h): float(np.nanmean(d[f"ceil{h}"])) for h in sz.hz})
+
+
+def stage_gliders():
+    """The gliders world at the screen's size and, if time allows, at the certification size (no frames).
+    theta' = theta here, so pl is a null check of the plug-in loss estimator."""
+    wd, p = SC.gliders_world()
+    out = gliders_run(wd, p, SZG, N_GLID, RUN_SEED + 4, "ref_gliders.npz")
+    if el() < T_LATE:
+        szc = SC.Sizes(**(vars(SZC) | dict(frame_every=0)))
+        out["cert_size"] = gliders_run(wd, p, szc, N_GLID2, RUN_SEED + 5, "ref_gliders_cert.npz")
+    else:
+        out["cert_size"] = dict(skipped="deadline")
+    return out
 
 
 # ----------------------------------------------------------------------------- main
