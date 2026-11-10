@@ -1,15 +1,52 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
-**ON HOLD. Run nothing from this file.** The round-2 GO for steps 0 to 2 (given for commit
-`af767adbdeac3d00906d7a3394421e1bc4d6e486`) is SUSPENDED since 10 Nov 2026: before running anything, the Mac
-session reviewed that commit read-only and returned three major and eleven minor points and facts about the
-machine (16 GiB free; a Prime credential file in the home folder), and the coordinator added a disk requirement.
-Round 3 of fixes changed the code and this file to meet them (`README.md`, section 8.9); **these changes have not
-been re-audited.** Do not run af767adb either: its GO is suspended, not replaced, and its code is not the code
-this file describes. The hold on steps 0 to 2 is lifted only by a verdict that says GO: it replaces this notice
-by one that begins `**GO for steps 0 to 2.**`, and the coordinator's message then gives the 40-character hash of
-the commit that holds the replaced notice. Step 3 (a paid model rollout) has a second hold of its own and stays
-NO-GO until steps 0 to 2 have passed on the Mac and been reported.
+**GO for steps 0 to 2.** Round-3 verdict of the host-safety audit, 10 Nov 2026 (`HOST_SAFETY_AUDIT.md`,
+"Re-audit, round 3"). Steps 0, 1 and 2 of this file and "If a run was interrupted" may run on the lead's Mac,
+as written, from ONE commit: the commit that holds this notice. Its 40-character hash is in the coordinator's
+GO message (a commit cannot name itself); the lead checks it out and gives it to the session, and step 0
+compares it. Step 4 is covered too; run it only when the lead says the pilot is over, because it deletes the
+store that step 3 would need. Judged were the code and the commands of commit
+`db3ff5a6eacc6a4ccc66374df5ac3fc0051c75e3`; in the folders the pilot uses, the commits after it changed this
+notice, `HOST_SAFETY_AUDIT.md` and `PROGRESS.md` and nothing else, and step 0 proves the code by the pin below.
+This GO replaces the round-2 GO, which was suspended after the Mac session's own review: do not run commit
+`af767adbdeac3d00906d7a3394421e1bc4d6e486`.
+
+**Step 3 (the paid model rollout) is not released by this notice.** It keeps its own stop. It may be offered to
+the lead only after steps 0 to 2 have passed on this Mac and been reported, and after the three points that
+step 3 lists as open are settled (the lead's decision about Docker Desktop's disk, the bearer for the
+laboratory, the price).
+
+The verdict adds two rules and four corrections. Where the text below says something else, these six hold. No
+command changes.
+
+1. **Rule: nothing else runs in Docker, checked before each part of step 2.** Run the command that stands under
+   "Before 2a: nothing else runs in Docker" again before you start 2b and before you start 2c. Expected each
+   time: one line, `RUNNING-LISTED`. A line before it: stop and report; do not stop that container.
+2. **Rule: after a stop under the stop rule (A.5) that does not end in point 6 of "If a run was interrupted"**
+   (a second interruption, `EXIT 97`, a deviation in step 1, 2 or 4): leave both pilot folders as they are, the
+   hidden store included, and say in the report that they are still there. If both result files exist, step 4
+   removes them later, on the lead's word. If not, step 4 cannot, nothing else in this file may, and they are
+   the lead's to remove, by hand.
+3. **Correction, section B, the signal table: one row more.** Who sends: Python, in vf-eval. To what: the
+   `docker rm --force <its box>` client that verifiers starts at the end of every box
+   [vf:runtimes/docker/__init__.py:553-567]. Which signal, when: SIGKILL by Python if that client has not
+   answered in 30 s; the box then stays and is found by its run label. For this row, for the `git rev-parse` row
+   and for the row of the tools' own `docker` clients: Python sends the same SIGKILL to that one client also
+   when the process that waits for it is itself interrupted during the call, not only at the time limit. Every
+   target is a process the pilot started.
+4. **Correction, section B, what is written and left:** also small state files of the `docker` client's
+   builder under `~/.docker/buildx/` (seen on Linux in the cloud container; inferred for the Mac).
+5. **Correction, section C, the row "room":** have at least 11 GiB free before step 0, not 8: the pilot's floor
+   of 8 GiB plus the about 3 GiB that steps 1 and 2 write. With less, a later command refuses or the watchdog
+   stops a run. That is a stop like any other: nothing is lost, and nothing is deleted to make room.
+6. **Correction, the opening lines:** rehearsed were every command of steps 0 to 2 and of step 4 except the
+   image build and its status command, and every point of "If a run was interrupted" except point 4 (the last
+   section of this file says the same).
+
+Known gap, not closed by this verdict: step 0 and the tools do not look for the variables `PYTHONEXECUTABLE` and
+`__PYVENV_LAUNCHER__`. A session that holds one of them fails the import check of step 1 (`ModuleNotFoundError`
+where the versions should be): a stop like any other. The lead looks for both by hand before the session starts
+(`HOST_SAFETY_AUDIT.md`, "Re-audit, round 3", the by-hand list).
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->

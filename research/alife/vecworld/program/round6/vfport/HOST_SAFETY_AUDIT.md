@@ -1,9 +1,4 @@
-> **SUSPENDED, 10 Nov 2026 (note of the round-3 fixer; not a verdict).** The GO of the line below, given for commit
-> `af767adbdeac3d00906d7a3394421e1bc4d6e486`, is suspended: the Mac session's own read-only review of that commit
-> returned three major and eleven minor points, and the code and the runbook are being changed to meet them (round 3).
-> `RUNBOOK_MAC.md` says ON HOLD again. Nothing below this note was changed by the fixer; a new verdict replaces it.
-
-# VERDICT (round 2, 10 Nov 2026): GO for the scripted smoke test on the lead's Mac, from the one commit that holds this line (code and commands as judged at 40c697e542a633d0cb1bba5f30b63567c5896097). The one-model rollout stays NO-GO until that test has passed on the Mac; it may then be offered to the lead. See "Re-audit, round 2" at the end; sections 1 to 6 and "Re-audit, round 1" are the two earlier NO-GO verdicts, kept as they were.
+# VERDICT (round 3, 10 Nov 2026): GO for the scripted smoke test on the lead's Mac (steps 0 to 2 of `RUNBOOK_MAC.md`), from the one commit that holds this line (code and commands as judged at db3ff5a6eacc6a4ccc66374df5ac3fc0051c75e3; sha256 of `PIN.sha256` cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4). It replaces the round-2 GO for af767adbdeac3d00906d7a3394421e1bc4d6e486, which was suspended after the Mac session's own review: that commit is not to be run. The one-model rollout stays NO-GO until the smoke test has passed on the Mac and the open points of step 3 are settled. See "Re-audit, round 3" at the end; sections 1 to 6, "Re-audit, round 1" and "Re-audit, round 2" are the three earlier verdicts, kept as they were.
 
 Host-safety audit of `round6/vfport`, 10 Nov 2026. Audited: `round6/vfport` and `round5/agentenv` at
 branch head 216eddf37, identical in both folders to 997005f56 (archives compared by me). All three lenses
@@ -463,3 +458,180 @@ In addition to section C of the runbook, section 5 above and the list of round 1
 
 Not covered by this round: the same as section 6 and round 1. By me: no rollout, nothing on macOS, not the red
 team's attacks, not `tools/prove.py --worlds 4`, not the gliders rollout.
+
+## Re-audit, round 3
+
+**VERDICT, 10 Nov 2026: GO for the scripted smoke test on the lead's Mac (steps 0, 1 and 2 of
+`RUNBOOK_MAC.md`). The one-model rollout stays NO-GO until that test has passed on the Mac and been reported,
+and until the three points that step 3 lists as open are settled.**
+
+The GO covers steps 0, 1 and 2, the section "If a run was interrupted", and step 4 once the lead says the pilot
+is over. It holds for ONE commit: the commit that carries this section and the GO notice at the top of the
+runbook; the coordinator's message gives its 40-character hash, the lead checks it out, and step 0 compares it.
+It replaces the round-2 GO, which was suspended when the Mac session reviewed that commit before running it
+(three major and eleven minor points) and the coordinator added a disk requirement (D1):
+`af767adbdeac3d00906d7a3394421e1bc4d6e486` is not to be run. This verdict replaced the first line of this file
+together with the fixer's suspension note above it, added this section, and replaced the notice between
+`HOLD-BEGIN` and `HOLD-END` of the runbook. Apart from notes in `PROGRESS.md` it changed nothing else, and no
+command.
+
+Why GO although the re-audit of the runbook said "NO-GO as written, narrowly". Its open items are six texts
+and one command. The six texts are now in the GO notice (two rules and four corrections, the means round 2 used
+for its three rules). The one command, a comparison of `sys.executable` in step 1, answers a gap that is minor:
+I could run it here, and it ends in a stop at step 1 (G1 below). The re-audit of the code said GO. No finding
+of the Mac review was rejected: the fixer confirmed each before changing anything, and I confirmed M1, M2, M3,
+m5 and m9 against the round-2 code and the verifiers source myself.
+
+Judged: the code and the commands of commit `db3ff5a6eacc6a4ccc66374df5ac3fc0051c75e3`. The two re-audits read
+`33173af09acb5e91a9e2757cce84cbdf3da42305`; since then only `PROGRESS.md` changed (run: `git diff --stat`).
+Pinned files: sha256 of `PIN.sha256` `cd67eb4b…03e4`, equal to the runbook's pin block; 109 of 109 files match
+in a clean archive of the head (run). Against the round-2 pin: 91 files identical, 14 changed, 4 added (run).
+Inputs: the fixer's report, the re-audit of the code (GO; minor items) and the re-audit of the runbook. What I
+rely on I checked at the head myself; where a row rests on somebody else's run it says whose.
+
+| evidence label | meaning in this round |
+|---|---|
+| read | the cited lines were read by me (verifiers: the pinned checkout, equal to the installed files) |
+| run | run by me in scratch: my own scripts over the texts and records, or the interpreter with a one-line program; no file of the port was executed on the host outside tripwires |
+| tripwire (mine) | the package imported on the cloud host in a process where `tools/tripwires.py` was installed first; a made-up credential file in a scratch home |
+| container (mine) | one named throwaway container (`python:3.12-slim`, no host path, no network, gone afterwards), `tools/vfrun.py` of the pin and stand-in children |
+| container, tripwire, vf-eval (fixer, re-auditors) | their runs, recorded in `results/`; no rollout was made by me |
+| inferred | reasoned, not run: every statement about macOS and Docker Desktop |
+
+### The Mac review's findings
+
+Runbook lines are those of the text at db3ff5a6e. The GO notice is 37 lines longer than the notice it replaced,
+so in the commit that holds this section every later line of the runbook lies 37 lines lower.
+
+| finding | status | evidence |
+|---|---|---|
+| M1, the session's environment | closed | read: `tools/vfrun.py:62-72` (nine names pass; the refuse pattern), `87-102`, `116-134` (a child's environment is built from nothing), `137-161` (the Docker context must name a Unix socket); every tool makes the check before it imports the package (`prove.py:41`, `check_probe.py:44`, `make_instances.py:20`, `settle.py:54`, `vfrun.py:404`); `physim2_env/lab_tools.py:174-176`; runbook 250 (a command the session runs itself, the same list), 106-114. The finding was right: at 40c697e54 `child_env` copied everything but one name (read). container (mine): of 28 made-up session names (every `DOCKER_*`, `MCP_*` and `PHYSIM2_*` one, `PYTHONPATH`, keys, proxies) none reaches a child; a child gets 18 names, 10 from the pass list and the run label, 8 set by the tool; the dirty session is refused, 15 names listed, no value printed. vf-eval (fixer, record entries 3 and 4): `6 names, 0 refused`; with `DOCKER_HOST` and `PYTHONPATH` two `FOUND` lines and `tcp://…` as the address. Left open, minor: G1. |
+| M2, the signal table | closed by the GO notice, point 3 | read, verifiers `v1/` searched for every kill, group kill, signal and every process start with a time limit: the ten rows of runbook 119-130 match `runtimes/container.py:44-65`, `runtimes/subprocess.py:45-53, 103-129, 197-228`, `utils/version.py:23-31`, `mcp/server.py:112-118` and `tools/vfrun.py:200-215, 264-284`. One sender was missing, as the runbook re-audit found: `runtimes/docker/__init__.py:553-567`, the teardown of every box (`runtimes/base.py:180-195`), starts `docker rm --force <box>` with a limit of 30 s, and Python kills that client at the limit. Python does the same when the waiting process is itself interrupted (CPython 3.12.13 `Lib/subprocess.py:549-568`, read): also in the notice. Not on the route of steps 0 to 2: `runtimes/container.py:136-173` (only through `open_process`, which only the ACP harness calls, `acp/__init__.py:242`), `serve/pool.py`, the package build of `mcp/launch.py:173` (the laboratory runs in the subprocess runtime: `launch.py:335-337`). |
+| M3, listeners and the Prime key | closed | read: `physim2_env/_nokey.py:71-91`, `physim2_env/__init__.py:7-9`, `tools/vfeval.py:25-38`, `tools/vfrun.py:75-77, 325, 369-387`, `configs/scripted_ring.toml:12-15`. verifiers reads the file through one function (`utils/prime.py:9-20`; callers `configs/client.py:41, 103`, `runtimes/prime.py:150`, `interception/tunnel/prime.py:36`), the prime-runs SDK through `prime_traces/core/config.py:22-39`. tripwire (mine): the package first gives `stand-in`, key `EMPTY` for the stand-in and for the default client, an empty prime-runs configuration, an exit from `ensure_prime_auth`, and 0 opens and 0 stats of the made-up file with 195 modules of verifiers, the package and the Prime SDKs loaded (vf-eval's entry point, the Docker runtime, the interception server, the laboratory module among them); control, verifiers' client module alone: the file is opened. Both re-auditors: the same with their own traces. vf-eval (fixer): the kernel reported 0 events on the made-up file through 45 rollouts and 3 for the stock import. Listeners: runbook 169-182 names six; read by me `interception/server.py:346, 444-447`, `mcp/server.py:278-283`; the others as the runbook re-audit read them. |
+| m1, theta in the status | closed | read: `tools/prove.py:54-74`, `tools/build_reference.py:23-50`; runbook 399 (process lines cut at 160 characters, log lines at 200). container (code re-auditor): the builder's command line and environment hold the path of the 0600 file, not the values. |
+| m2, the patterns | closed | read: runbook 399, 560: comparisons with `index()`, letter for letter, against eight beginnings; no pattern is left. vf-eval (fixer, entries 27, 28): the stop command aimed at the waiting shell printed nothing and ended with status 1. |
+| m3, a linked pilot folder | closed | read: runbook 261, 605, 735: `test ! -L` on the pilot folder, on `store` and on `scratch` before each `rm -rf`. |
+| m4, an orphaned helper | closed; not seen live | read: `tools/vfrun.py:264-284`; runbook 591 and the word `HELPER`. container (code re-auditor): the helper stops with its tool. |
+| m5, the laboratory on macOS | closed; macOS inferred | read: verifiers `mcp/server.py:112-118` (the kernel's help is asked for on Linux only); `tools/vfrun.py:299-314`; runbook 129, 591-597. container (mine): a child that dies of SIGKILL ends the tool with status 98 and the line "may be left". vf-eval (fixer, entry 39): `EXIT 98`. Point 4 has never met a live case. |
+| m6, the removal | closed | read: runbook 584 (the label is read back before `docker rm -f`). vf-eval (fixer, entries 40 to 43): an unknown name and a container with another label were not removed, the pilot's box was. |
+| m7, the laboratory's open port | rule in place, widened by the notice (point 1); bearer deferred to before step 3 | read: runbook 177, 216, 386-394, 633-636. The check command ran three times in the rehearsal, each time before 2a (entries 18, 33, 57); before 2b and 2c it is new. |
+| m8, the proxy check | closed; Linux | read: `agents/probe_grading.py:113-134, 180`, `tools/check_probe.py:384`. vf-eval (fixer): `HTTP 403` eight times, 0 hits on the listener. |
+| m9, the build backend | closed for versions | read: `pyproject.toml:17-31`, `uv.lock:9-17` (`hatchling==1.33.0` and five packages under it). uv records no hashes for build requirements. |
+| m10, the build cache | closed | read: runbook 163-167, 744-758. |
+| m11, counts | closed | read: runbook 226, 250, 261: sentinels (`TREE-LISTED`, `CONTAINERS-LISTED`, `IMAGES-LISTED`, `NO-PILOT-FOLDERS`), no count. |
+| D1, the disk | closed | read: `tools/vfrun.py:80-84, 164-185, 218-261, 287-314`; the floor is on every start (`prove.py:119-125`, `check_probe.py:113-118`, `vfrun.py:410-422`), and inside the pin vf-eval is started by `vfrun.run_eval` and `vfrun.main` only; the watchdog path holds no delete (the one delete of the file is `clear_run_dir`, an earlier run folder of the same name). Runbook 61-68, 217, 269, 283, 313, 350, 399 (`free:`), 627-632. container (mine): below the floor nothing starts (status 97); a trip sends ONE SIGTERM (the child counted one), status 97, the record written, no file removed (tree compared before and after); a child that ignores SIGTERM gets SIGKILL only after the grace period; the time limit takes the same path (status 98). vf-eval (fixer, entries 6, 8, 20, 47 to 52): the refusal at 8 GiB and a trip that removed the box and stopped the laboratory. Limits: residual risks, the disk. |
+
+### Rounds 1 and 2: nothing reopened
+
+| earlier finding | status | evidence |
+|---|---|---|
+| A1, working directory | closed | run: all 33 fenced commands begin with the folder guard; they use no variable but `$HOME` and `$?`, no `$(…)`, no backtick. `uv` stands in two (283, 313), both with `--project <absolute path>`, the dry run first: the round-2 text with the disk check in front. |
+| A2, N1 to N3, interruption | closed | The status and stop commands are new in round 3 and were rehearsed as a session issues them (`results/rehearsal_round3.json`: 65 commands, each one `sh -c '<text>'`): two interruptions (a stop by the stop command, a vf-eval killed outright), each cleared by the runbook's own points, and two watchdog cases (a refusal before the start, a stop of a running rollout), after which the status listed nothing. run: 11 of the 33 commands are byte for byte the round-2 ones, the interpreter check (338) among them; 22 are new or changed in round 3 (the detached sync, 313, by the disk check in front). |
+| A3, A4, A5, S1, S2 | closed | run: byte-identical to the round-2 pin are the driver `_item.py`, `grading.py`, `taskset.py`, `access.py`, `bundle.py`, `store.py`, `agents/hostile_submission.py`, `physim2_script/__init__.py`, `tools/tripwires.py`, `tools/run_report.py`. `agents/probe_grading.py` changed in its opening text and inside the report script it sends into the box; its gate is untouched (read: the diff). |
+| N4, pin handover | closed | used by this verdict as in round 2. |
+| the three rules of the round-2 notice | now in the body | read: 427, 538-540, 750. |
+| change 9, step 3 | in place as text, never run | read: both commands, the dry run too, stand behind `LEAD-GO-STEP3` (654, 674); the price comes in the go message (664-669); `tools/vfrun.py:380-386` refuses a model config without `--model-credentials`. |
+| the rehearsal | closed, with limits | run: the 33 fenced commands are equal, block for block, at the rehearsed commit 00947b226 and at the head; each of the 65 recorded commands equals one of them after undoing the recorded substitutions; 26 were issued. Never issued: the image build and its status (350, 357) and the five commands of step 3 (654, 674, 682, 690, 720). After the rehearsal only prose changed: four places of the body (421-423, 588-590, 596-597, 780-784) and the six points of the notice. Deviations of the record: `$HOME` pointed into scratch, root, x86_64, the floor lowered to 0.5 GiB wherever a command had to run (1.8 GiB free there), the Docker context `default`, and the rehearsal went on after `EXIT 97`. |
+
+### The re-auditors' open items, and what is new
+
+| item | status | evidence |
+|---|---|---|
+| runbook re-audit 2: one row of the signal table | closed by the notice, point 3 | see M2. |
+| runbook re-audit 5: the Docker check before 2a only | closed by the notice, point 1 | see m7. |
+| runbook re-audit 6: section C asks for 8 GiB | closed by the notice, point 5 | the floor is 8 GiB and steps 1 and 2 write about 3. This Mac had 16 at its review. |
+| runbook re-audit 7: `~/.docker/buildx/` | closed by the notice, point 4 | as the re-audit saw it on Linux; inferred for the Mac. |
+| runbook re-audit 11: the folders after a stop | closed by the notice, point 2 | read: point 6 runs only at a first interruption and never after `EXIT 97` (600-611); step 4 needs both result files (735). |
+| runbook re-audit 12: the opening lines | closed by the notice, point 6 | read: 27-28 against 780-784. |
+| G1 (runbook re-audit 10, code re-audit 1): `PYTHONEXECUTABLE`, `__PYVENV_LAUNCHER__` | minor; residual; by hand | Both re-audits call it macOS-only and inferred. It is neither. read: CPython 3.12 takes both variables on every POSIX system (`Modules/getpath.c:901-902`, v3.12.13) and uses them for `sys.executable` AND for the search for the environment (`Modules/getpath.py:302-320, 349`). run (the port's interpreter with a one-line program): with either variable set, `sys.executable` is the variable's value, `sys.prefix` leaves the environment (here `/usr`), and a package of the environment is not found (`ModuleNotFoundError`). A session that holds one of them therefore fails step 1's import check, before step 2: a stop (on the Mac: inferred from the same code). It passes only if the interpreter then finds the same four package versions elsewhere (the value points into another environment that has them, or the user's own site-packages do); the tool's vf-eval and laboratory would then run under the interpreter the variable names and the status command would not list them (the tool stays listed and stoppable; containers are found by label). Not closed: step 0 and `ENV_REFUSE` do not name the two. The proposed comparison of `sys.executable` in step 1 would stand after the import check, which already stops the likely case. |
+| runbook re-audit 15: no command to wait | minor; residual | the session waits by asking for the status again; it issues no `sleep` of its own. |
+| code re-audit 4: a vf-eval that ends with 130 after a SIGTERM from outside the tool counts as ended | minor | read: `vfrun.py:304`. Off the runbook's path, which signals the tool first; `prove.py` then stops for lack of an episode. |
+| code re-audit 5: four limits of the watchdog | minor | read: `vfrun.py:255-257` (a stop of the tool during the grace period sends a second SIGTERM and loses the record), `307-310` (no "may be left" after a SIGKILL; the words `SIGTERM, then SIGKILL` are in the line: container, mine), a failing `statvfs` ends the tool with status 1 after the stop path ran, and `uv sync`, `docker build` and the helpers are checked before they start, not while they run. |
+| code re-audit 7: `rehearsal/issue3.py` accepts `HOME` | minor; cloud host only | outside the pin, refuses off Linux, on the Mac's never-list (as the code re-audit read it; not checked by me). |
+| new, by me | nothing of major severity | Python's kill of a client when its caller is interrupted (in the notice, point 3); the watchdog's reach in step 3 (below); stale texts (below). |
+
+### What remains
+
+**Before the smoke test: nothing in the repository.** The by-hand list below is the lead's.
+
+**The one-model rollout.** Not now. It may be offered to the lead when all of these hold:
+
+1. Steps 0 to 2 have passed on the Mac with no deviation but the one that step 2b names, and the lead has read
+   the report: `failed_new` holds `b_lab_process_dropped_it_after_loading` and nothing else, and the lines
+   `control`, `agent box net`, `item box net` and `proxy_loopback_names` show what a box reaches on the Mac.
+2. The lead has decided about Docker Desktop's disk and says so in the go message (see "By hand").
+3. The laboratory has a bearer, built and audited, or the lead accepts in the go message that the network cut
+   of the box is the only thing between a container and the laboratory's port.
+4. The go message states the price bound, and the lead has created `LEAD-GO-STEP3` by hand.
+5. The two start commands of step 3 are new in round 3. The runbook re-audit read them (its item 14); they
+   have run nowhere. Before the offer the free dry run is rehearsed in the cloud container: it calls no model
+   and loads no credential.
+
+**A later pass, with a rehearsal and a re-audit of its diff; not needed for steps 0 to 2:**
+
+- Runbook body: the six points of the notice written into their places. G1: both names in step 0's pattern and
+  in `ENV_REFUSE` (`tools/vfrun.py:67`, a pinned file, so a new pin); it can be rehearsed on Linux. A command to
+  wait.
+- Code: status 130 and 143 of vf-eval treated as a stop (`vfrun.py:304`); no second SIGTERM and no lost record
+  in the grace period (`255-257`); "may be left" in the disk message; a record when `statvfs` fails;
+  `rehearsal/issue3.py` refuses `HOME` and `PATH`.
+- Before step 3: the bearer; a size limit for what a box can write, if the lead does not lower Docker Desktop's
+  limit (verifiers has none: `runtimes/container.py:38-41`).
+- Still open from rounds 1 and 2, Linux hosts only: N5 to N8.
+- Stale after this verdict: `README.md` (lines 14 and 99-100) and `results/summary.json`
+  (`host_safety.round_3_of_fixes.status`) still say that the runbook is on hold.
+
+### Residual risks, also with this GO
+
+- **Nothing has run on macOS or Docker Desktop.** Inferred only: zsh as the session's shell and that a detached
+  command outlives its call; BSD `ps`, `awk`, `df -Pk`, `cut`, `nohup`, `shasum`; uv 0.12.8 on the Mac against
+  0.11.32 in the rehearsal (the wording of the dry run may differ); the Docker context and its socket; the signs
+  of a container and the mount table in Docker Desktop; that a laboratory outlives a killed vf-eval there. Each
+  of these ends in a stop, not in a repair.
+- **The session's environment.** G1. `PATH` and `HOME` reach every process as they are: another `docker` binary
+  or another local engine is caught only by step 0's context lines and by the lead's `command -v`. Other
+  `PYTHON*`, `DYLD_*` and proxy names reach the tool's own process, not its children.
+- **The disk.** The watchdog is a brake, not a wall. It looks every 15 s and stops a rollout; `uv sync`, the
+  image build and the helpers are checked before they start only. It frees nothing: after a trip the Mac is
+  still near the floor. With 16 GiB free, about 3 GiB written and a disk that is 97% full, a trip in steps 1 or
+  2 cannot be excluded on this Mac; it is a clean stop, and what step 1 left is then the lead's to remove.
+- **A vf-eval that is killed outright** leaves its box and, on macOS, its laboratory; the session finds them by
+  label and by exact command line and removes them by exact name and pid. Two small folders stay.
+- **The laboratory's port has no secret** in steps 0 to 2. Another process on the Mac, or a container that
+  reaches the Mac's loopback, could spend a rollout's budget: a risk to the pilot's result, not to the Mac. The
+  rule: nothing else runs in Docker.
+- **As the lead.** The tools and the laboratory run on the Mac as the lead. `uv sync` runs a build backend
+  whose versions are pinned but not hashed, and writes `.venv` (about 1 GB), uv's cache and uv's own Python;
+  the pilot removes none of it. The `docker` client reads its own configuration in the home folder and may ask
+  its credential helper when it pulls the two public base images (inferred; no model credential is involved).
+- **Never run in the runbook's form:** the image build and its status command; point 4 of "If a run was
+  interrupted"; the rule for a second interruption; a stop of a vf-eval by its own pid; `EXIT 143`; a `HELPER`
+  line; the Docker check before 2b and 2c; every command of step 3.
+- **Step 3.** An untrusted model is root in a container for up to an hour; Docker Desktop's virtual machine and
+  verifiers' network cut are the walls, neither tested on a Mac before step 2b. The disk and the bearer are
+  open (above).
+- **Linux hosts:** N5 to N8; the cloud rehearsal's own scripts act for real on the cloud host.
+
+### By hand (the lead, and the Mac session before its first command)
+
+In addition to section C of the runbook and to the lists of rounds 1 and 2:
+
+| when | check | expected |
+|---|---|---|
+| before | the coordinator's GO message; `git rev-parse HEAD`; the first text line of `RUNBOOK_MAC.md` on disk | a 40-character hash; equal to it; it begins `**GO for steps 0 to 2.**` and names round 3. Not `af767adb…` |
+| before | G1: in the terminal that starts the session, `env \| cut -d= -f1 \| grep -E '^(PYTHONEXECUTABLE\|__PYVENV_LAUNCHER__)$'`; the Mac session, which listed the names of its own environment in its review, says the same for these two | nothing. If the session holds one: do not start; report |
+| before | the disk, steps 0 to 2: `df -Pk "$HOME"` | at least 11 GiB available (the notice, point 5); 16 at the review. Nothing else that writes much runs for the 45 minutes (downloads, backups, sync). Docker Desktop's limit need not change for these steps |
+| before | the checkout | directly under the home folder, not opened in Finder: a `.DS_Store` is an untracked file, and step 0 then stops |
+| during | Docker | no other container for the whole of step 2; the session checks before 2a, 2b and 2c, and the lead starts none in between |
+| the floor trips (`refused:`, `EXIT 97`) | the session stops and reports; nobody deletes anything to go on | the lead decides whether to free space and start again; after a stop in step 1 the lead first removes `.venv`, the pilot folder and the image, as round 2's list says |
+| any stop that does not end in point 6 | `$HOME/physim2-pilot-20261110`, the hidden store in it | still there (the notice, point 2). If both result files exist, step 4 removes it on the lead's word; if not, the lead removes it by hand |
+| after step 2 | the report: the "must hold" line of 2a; both lists of 2b; `control`, `agent box net` with `proxy_loopback_names`, `item box net`, `container_evidence` | as the runbook says; these lines decide whether step 3 can be offered |
+| step 3, the disk: the lead's decision, in the go message | The facts: 16 GiB free at the review; Docker Desktop's disk image can grow to its limit, far above that (apparent size about 460 GiB). The watchdog looks every 15 s and then gives vf-eval up to 120 s to remove the box (`tools/vfrun.py:56, 82`); it does not give space back. That is enough against slow growth. A model that writes as fast as the disk allows can use 8 GiB between two looks, so the Mac's disk can be full before the rollout is stopped (inferred from the code; not measured) | one of: (a) lower Docker Desktop's limit to below the free space less the floor: the sure wall; Docker Desktop may then discard its disk image with the lead's other images, containers and volumes (inferred: read Docker's own warning first); (b) leave the limit and accept the watchdog as the only brake for this one hour. The session changes no Docker setting and deletes nothing |
+| step 3, the rest | the bearer or its acceptance; the price; `LEAD-GO-STEP3` made by the lead; the trace | as under "What remains"; the trace is copied only by the runbook's own command and uploaded only by the lead |
+
+Not covered by this round: the same as section 6 and rounds 1 and 2. By me: no rollout, nothing on macOS. I did
+not rerun `tools/check_round3.py`, `tools/check_interrupt.py` and `tools/check_runbook.py` (the code re-auditor
+did: 48 of 48, 8 of 8, 46 of 46), nor `tools/check_safety.py`, the red team's attacks, `tools/prove.py
+--worlds 4` or the gliders rollout. Of the changed check tools (pinned, on the Mac's never-list) I read the
+opening texts and searched the added lines for calls that kill or delete: they stand in scripts that are sent
+into containers and in the harness that starts them. The code re-audit read that diff in full.
