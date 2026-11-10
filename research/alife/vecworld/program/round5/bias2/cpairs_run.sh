@@ -31,3 +31,25 @@ $PY -B "$HERE/cpair.py" "$F/jobs/r5-bias2-004/out/gliders/items" "$HERE/results/
   L0_recon_c1=hand_mass_h0 N0_recon_c1=hand_mass_h0 U_clos_c1=hand_mass_h0 U_local_c1=hand_mass_h0 U_clos_c1=L0_clos_c1 \
   L0_local_c1=L0_clos_c1 N8_local_c1=hand_c0_h8 N8_clos_c1=hand_c0_h8 L8_local_c1=hand_c0_h8 N0_local_c1=hand_sfa_c1 \
   L0_local_c1=hand_sfa_c1 L0_clos_c1=hand_sfa_c1 N0_clos_c1=hand_msq_h4
+# follow-up job r5-bias2-006 (closure on spatially whitened latents: Lw / Nw), same items for both sides within the job
+if [ -d "$F/jobs/r5-bias2-006/out/vortex/items" ]; then
+$PY -B "$HERE/cpair.py" "$F/jobs/r5-bias2-006/out/vortex/items" "$HERE/results/pairs_vortex_w.json" \
+  Lw0_clos_c1=L0_clos_c1 Nw0_clos_c1=N0_clos_c1 Lw8_clos_c1=L8_clos_c1 Nw8_clos_c1=N8_clos_c1 \
+  Lw0_clos_c1=hand_om_h0 Nw0_clos_c1=hand_om_h0 Lw8_clos_c1=hand_om_h8 Nw8_clos_c1=hand_om_h8 Lw8_clos_c1=hand_om_h4 Nw8_clos_c1=hand_om_h4 \
+  Lw8_clos_c1=hand_om_h16 Nw8_clos_c1=hand_om_h16 Lw0_clos_c1=hand_Y_h0 Nw0_clos_c1=hand_Y_h0 Lw0_clos_c1=hand_dab_h0 \
+  L0_clos_c1=hand_om_h0 N0_clos_c1=hand_om_h0 N8_clos_c1=hand_om_h16 Lw0_clos_c1=hand_sfa_c1 L0_clos_c1=hand_sfa_c1
+fi
+if [ -d "$F/jobs/r5-bias2-006/out/membrane/items" ]; then
+$PY -B "$HERE/cpair.py" "$F/jobs/r5-bias2-006/out/membrane/items" "$HERE/results/pairs_membrane_w.json" \
+  Lw0_clos_c1=L0_clos_c1 Nw0_clos_c1=N0_clos_c1 Lw8_clos_c1=L8_clos_c1 Nw8_clos_c1=N8_clos_c1 \
+  Lw0_clos_c1=hand_K_h0 Nw0_clos_c1=hand_K_h0 Lw0_clos_c1=hand_sfax_c1 Nw0_clos_c1=hand_sfax_c1 Lw8_clos_c1=hand_K_h8 Nw8_clos_c1=hand_K_h8 \
+  Lw8_clos_c1=hand_K_h4 Nw8_clos_c1=hand_K_h4 Lw8_clos_c1=hand_sfax_c1 Nw8_clos_c1=hand_sfax_c1 Lw0_clos_c1=hand_phi_h0 \
+  L0_clos_c1=hand_K_h0 N0_clos_c1=hand_K_h0 N0_clos_c1=hand_sfax_c1 N8_clos_c1=hand_sfax_c1
+fi
+if [ -d "$F/jobs/r5-bias2-006/out/gliders/items" ]; then
+$PY -B "$HERE/cpair.py" "$F/jobs/r5-bias2-006/out/gliders/items" "$HERE/results/pairs_gliders_w.json" \
+  Lw0_clos_c1=L0_clos_c1 Nw0_clos_c1=N0_clos_c1 Lw8_clos_c1=L8_clos_c1 Nw8_clos_c1=N8_clos_c1 \
+  Lw0_clos_c1=hand_mass_h0 Nw0_clos_c1=hand_mass_h0 Lw8_clos_c1=hand_mass_h8 Nw8_clos_c1=hand_mass_h8 Lw8_clos_c1=hand_mass_h4 \
+  Nw8_clos_c1=hand_mass_h4 Lw8_clos_c1=hand_mass_h16 Nw8_clos_c1=hand_mass_h16 L0_clos_c1=hand_mass_h0 N0_clos_c1=hand_mass_h0 \
+  Lw0_clos_c1=hand_sfa_c1
+fi
