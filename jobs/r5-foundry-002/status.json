@@ -14,6 +14,12 @@
   "job_id": "r5-foundry-002",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T05:51:19Z",
+    "file": "jobs/r5-foundry-002/review.md",
+    "sha256": "9416742383d086e8454b27e03841a5e3ada12c9c7e440d8a5d9c905358c989af",
+    "summary": "Fine to run: no blocker, major or minor findings; world code unchanged; the late arm's 2000-tick burn-in accumulates nothing (9.1 GiB). 4 info."
+  },
   "state": "received",
   "updated_at": "2026-11-10T05:35:03Z"
 }
