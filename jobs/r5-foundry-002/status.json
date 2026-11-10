@@ -12,7 +12,7 @@
     }
   ],
   "job_id": "r5-foundry-002",
-  "message": "request received",
+  "message": "reviewed; waiting for an offer of A100_40GB/A100_80GB/H100_80GB/H200_141GB that fits the cap (listed now: none); the runner plans and starts it as soon as one fits",
   "pods": [],
   "review": {
     "at": "2026-11-10T05:51:19Z",
@@ -21,5 +21,5 @@
     "summary": "Fine to run: no blocker, major or minor findings; world code unchanged; the late arm's 2000-tick burn-in accumulates nothing (9.1 GiB). 4 info."
   },
   "state": "received",
-  "updated_at": "2026-11-10T05:35:03Z"
+  "updated_at": "2026-11-10T05:51:23Z"
 }
