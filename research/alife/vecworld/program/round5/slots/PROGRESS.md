@@ -1,6 +1,6 @@
 # PROGRESS (study slots, round 5) -- kept for restarts
 
-Updated 06:16 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
+Updated 06:32 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
 
 ## Done
 - r5-slots-001 cancelled, r5-slots-002 infra_error ($0), r5-slots-003 pilot done ($3.13, H200, ref e5d146ef3; outputs in results/r5-slots-003/).
@@ -31,6 +31,12 @@ Updated 06:16 UTC 10 Nov (instance 4, after the third container restart at about
   Watcher: bash <scratchpad>/slots/watch.sh r5-slots-008; heartbeat: <scratchpad>/slots/hb.sh r5-slots-008.
   NEVER resubmit while it is queued or running. If it fails again there is no budget for another long job on an
   H100; an A100_40GB job of 2 h costs about $4.
+
+- 06:30 UTC: r5-slots-008 STARTED on an A100_40GB (lambdalabs, $1.99/h; the Mac's review: fine to run). Coordinator's
+  conditions (COORD.txt 06:07): watch the first validation of the SECOND config (sam_set, about 20 minutes in); if
+  it is RESOURCE_EXHAUSTED again, push gpu/requests/r5-slots-008.cancel at once; if 008 fails on memory, the next
+  request is 80 GB cards only (no third try of this code on a 40 GB card); report what the platform allocator cost
+  in step time (reference: 9.4 s per 100 steps).
 
 ## Next step (exact)
 1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-008 <scratch dir>; look at progress.txt,
