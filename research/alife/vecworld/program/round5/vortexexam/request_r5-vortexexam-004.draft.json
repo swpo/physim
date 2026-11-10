@@ -1,0 +1,24 @@
+{
+  "DRAFT": "not a request until copied to program/gpu/requests/r5-vortexexam-004.json (without this key); to be sent only after job r5-vortexexam-003 has finished and only if origin/gpu-jobs:jobs/r5-vortexexam-002/out/scan_branch_small.npz has not arrived; set max_hours and cap_usd from the rate job 2 measured",
+  "schema": "gpu-job/v1",
+  "job_id": "r5-vortexexam-004",
+  "purpose": "Round-5 study vortexexam (track 2), job 3: the one-at-a-time headroom scan of 13 candidate hidden parameters at 128 px with the sizer fixed (12 members per setting, anchors 200 and 320, 4 truths and 4 controls per state), level 2 saved and the level-1 block raster scored on the pod",
+  "requester": "cloud study vortexexam (track 2), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1/vw",
+    "research/alife/vecworld/program/track1/vortex_world",
+    "research/alife/vecworld/program/round5/vortexexam"
+  ],
+  "gpu": {"types": ["A100_40GB", "A100_80GB", "H100_80GB", "H200_141GB"], "count": 1, "spot": false},
+  "max_hours": 0.5,
+  "cap_usd": 5.05,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "python -c 'import jax, numpy, scipy; print(jax.__version__, numpy.__version__, scipy.__version__, jax.devices())' && cd research/alife/vecworld/program/round5/vortexexam && python -B job1.py --scan-only --H 128 --J 12 --anchors 200,320 --bench-json results/job1/bench.json --bmax 1024 --max-hours 0.42 --out $OUT",
+  "env": {"XLA_PYTHON_CLIENT_PREALLOCATE": "false"},
+  "notes": "Follow-up to the Mac's review of r5-vortexexam-003 (major point: the scan inside that job shrank to 3 members and one anchor). job1.py now takes the design explicitly (--J 12 --anchors 200,320) and its rate table from job 1's bench rows (results/job1/bench.json, in the requested paths); it asserts the GPU backend. 295,488 member-ticks: about 11 min at the 444 member-ticks/s of the H200, about 20 min at 250. The branch stage stops at its deadline inside --max-hours 0.42. Outputs under 8 MB (scan_main.npz 4 MB, scan_branch.npz about 2 MB: level 2 in full, level-1 raster scores only), written atomically. Pilot only, nothing hidden: every parameter value is public. No network or subprocess use outside setup. CPU tests from a git archive of exactly these paths: job1.py --scan-only --smoke (exit 0) and, without --smoke, the stop at the GPU assert. Cap: $6.69/h x (0.5 + 0.25) h = $5.02."
+}

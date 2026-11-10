@@ -329,7 +329,37 @@
      229,
      191,
      176
-    ]
+    ],
+    "integrated_law_max_abs_error_of_mean": [
+     0.017,
+     0.015,
+     0.027,
+     0.025,
+     0.053
+    ],
+    "integrated_law_out_of_sample": {
+     "max_abs_error": [
+      0.039,
+      0.026,
+      0.04,
+      0.034,
+      0.056
+     ],
+     "max_abs_z": [
+      3.9,
+      3.6,
+      2.8,
+      6.8,
+      4.5
+     ],
+     "se_of_actual_mean": [
+      0.016,
+      0.018,
+      0.015,
+      0.011,
+      0.01
+     ]
+    }
    },
    "fb_mass": {
     "b1_per_eps": [
@@ -452,7 +482,37 @@
      212,
      171,
      152
-    ]
+    ],
+    "integrated_law_max_abs_error_of_mean": [
+     0.01,
+     0.017,
+     0.019,
+     0.025,
+     0.03
+    ],
+    "integrated_law_out_of_sample": {
+     "max_abs_error": [
+      0.02,
+      0.031,
+      0.026,
+      0.046,
+      0.027
+     ],
+     "max_abs_z": [
+      2.8,
+      2.6,
+      2.8,
+      4.7,
+      2.2
+     ],
+     "se_of_actual_mean": [
+      0.009,
+      0.012,
+      0.01,
+      0.009,
+      0.01
+     ]
+    }
    },
    "N_mean_by_eps": [
     28.81,
@@ -463,7 +523,7 @@
    ]
   },
   "source": "results/analysis1.json (analyse1.py on origin/gpu-jobs:jobs/r5-vortexexam-002/out) law (job out law.npz)",
-  "note": "x(t+16) - x(t) = b1 x(1-x) + b2 (1-2x) + e per eps, pooled over members and ticks >= 64; b1_line: weighted straight line b1 = c0 + c1 eps over the eps values; b1_proportional: b1 = c eps; b1_line_eps_positive: the line fitted without eps = 0 (chi2 against the member-bootstrap SEs)"
+  "note": "x(t+16) - x(t) = b1 x(1-x) + b2 (1-2x) + e per eps, pooled over members and ticks >= 64; b1_line: weighted straight line b1 = c0 + c1 eps over the eps values; b1_proportional: b1 = c eps; b1_line_eps_positive: the line fitted without eps = 0 (chi2 against the member-bootstrap SEs); integrated_law: every member's share at tick 100 iterated with the fitted map every 16 ticks to tick 436 (1,680 time units), error of the ensemble mean; out_of_sample: constants fitted on the first half of the members, applied to the second half (z against the SE of that half's mean)"
  },
  "scan": {
   "value": {

@@ -65,6 +65,34 @@ def law_fit(x, h=16, t0=63):
     return b, a, d, A
 
 
+def integrate(x, b, h=16, t_start=99):
+    """The fitted law as a long-range predictor of the ensemble mean: every member's share at tick t_start + 1 is
+    iterated with the deterministic map x <- x + b1 x (1 - x) + b2 (1 - 2 x) every h ticks to the end; the mean
+    over members is compared with the actual mean at the same ticks (x (J, T); index i = state after i + 1 ticks).
+    Also the same with half of the members' fit applied to the other half (out of sample)."""
+    idx = np.arange(t_start, x.shape[1], h)
+
+    def run(xs, bb):
+        cur, pred = xs[:, idx[0]].copy(), []
+        for _ in idx:
+            pred.append(cur.mean())
+            cur = np.clip(cur + bb[0] * cur * (1 - cur) + bb[1] * (1 - 2 * cur), 0.0, 1.0)
+        return np.array(pred)
+    act = x[:, idx].mean(0)
+    pred = run(x, b)
+    half = x.shape[0] // 2
+    b_a = law_fit(x[:half])[0]
+    pred_o = run(x[half:], b_a)
+    act_o = x[half:, idx].mean(0)
+    se_o = x[half:, idx].std(0, ddof=1) / np.sqrt(x.shape[0] - half)
+    return {"ticks": (idx + 1).tolist(), "actual_mean": np.round(act, 4).tolist(), "law_mean": np.round(pred, 4).tolist(),
+            "max_abs_error": float(np.abs(pred - act).max()), "rms_error": float(np.sqrt(((pred - act) ** 2).mean())),
+            "out_of_sample": {"max_abs_error": float(np.abs(pred_o - act_o).max()),
+                              "rms_error": float(np.sqrt(((pred_o - act_o) ** 2).mean())),
+                              "max_abs_z": float(np.abs((pred_o - act_o)[1:] / np.maximum(se_o[1:], 1e-9)).max()),
+                              "mean_se_of_actual": float(se_o.mean())}}
+
+
 def law_block(tag):
     p = os.path.join(D, f"{tag}.npz")
     if not os.path.exists(p):
@@ -103,7 +131,8 @@ def law_block(tag):
                          "mean_by_tick": {str(t): float(X[e][:, t - 1].mean()) for t in (100, 150, 200, 250, 300, 350, 400, 440)
                                           if t <= T},
                          "first_tick_mean_above_half": int(np.argmax(X[e].mean(0) > 0.5)) + 1
-                         if (X[e].mean(0) > 0.5).any() else None})
+                         if (X[e].mean(0) > 0.5).any() else None,
+                         "integrated": integrate(X[e], b)})
         b1 = np.array([r["b1"] for r in rows])
         se = np.maximum(np.array([r["b1_se"] for r in rows]), 1e-6)
         A = np.stack([np.ones(nE), eps], 1)

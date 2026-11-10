@@ -86,13 +86,21 @@ if A1:
                                  "by_binned_drift": r([q["explained_by_binned_drift"] for q in v["per_eps"]]),
                                  "shape_r2": r([q["shape_r2"] for q in v["per_eps"]]),
                                  "mean_by_tick": [r(q["mean_by_tick"]) for q in v["per_eps"]],
-                                 "first_tick_mean_above_half": [q["first_tick_mean_above_half"] for q in v["per_eps"]]}
+                                 "first_tick_mean_above_half": [q["first_tick_mean_above_half"] for q in v["per_eps"]],
+                                 "integrated_law_max_abs_error_of_mean": r([q["integrated"]["max_abs_error"] for q in v["per_eps"]]),
+                                 "integrated_law_out_of_sample": {
+                                     "max_abs_error": r([q["integrated"]["out_of_sample"]["max_abs_error"] for q in v["per_eps"]]),
+                                     "max_abs_z": r([q["integrated"]["out_of_sample"]["max_abs_z"] for q in v["per_eps"]], 1),
+                                     "se_of_actual_mean": r([q["integrated"]["out_of_sample"]["mean_se_of_actual"] for q in v["per_eps"]])}}
                            for var, v in L["vars"].items()},
                         "N_mean_by_eps": r(L["N_mean_ticks_100_on_by_eps"], 2)},
                        src + f" {tag} (job out {tag}.npz)",
                        "x(t+16) - x(t) = b1 x(1-x) + b2 (1-2x) + e per eps, pooled over members and ticks >= 64; "
                        "b1_line: weighted straight line b1 = c0 + c1 eps over the eps values; b1_proportional: b1 = c eps; "
-                       "b1_line_eps_positive: the line fitted without eps = 0 (chi2 against the member-bootstrap SEs)")
+                       "b1_line_eps_positive: the line fitted without eps = 0 (chi2 against the member-bootstrap SEs); "
+                       "integrated_law: every member's share at tick 100 iterated with the fitted map every 16 ticks to tick "
+                       "436 (1,680 time units), error of the ensemble mean; out_of_sample: constants fitted on the first half "
+                       "of the members, applied to the second half (z against the SE of that half's mean)")
     SCAN_SRC = {"scan": f"job {J1}: scan_main.npz" , "scan2": f"the --scan-only rerun ({os.environ.get('VX_SCAN2', J2 + ' out/scan')})"}
     for key in ("scan", "scan2"):
         if key not in A1:
