@@ -69,7 +69,7 @@ if TINY:
     SZG = SC.Sizes(M=3, M_fit=2, M_trk=1, burn=2, T=36, n_snap=1, R=2, R2=2, HB=32)
 else:
     SZ = SC.Sizes(M=6, M_fit=4, M_trk=2, burn=50, T=240, n_snap=4, R=4, R2=2, HB=32)
-    SZC = SC.Sizes(M=16, M_fit=8, M_trk=4, burn=50, T=400, n_snap=4, R=6, R2=2, HB=32, frame_every=2)
+    SZC = SC.Sizes(M=16, M_fit=8, M_trk=4, burn=50, T=400, n_snap=4, R=6, R2=2, HB=32, frame_every=4)
     SZG = SZ
 
 os.makedirs(os.path.join(OUT, "screen"), exist_ok=True)
@@ -304,8 +304,10 @@ def stage_certify(ths_all, top):
         tab = res.pop("tab")
         if name == "eps010":
             u, sc = SC.quantise(fr)
-            np.savez_compressed(os.path.join(OUT, "cert", "frames.npz"), index=idx, frames=u, scale=sc,
-                                tab=tab.astype(np.float32), frame_every=SZC.frame_every)
+            for j, i in enumerate(idx):                     # one small file per world (20 MB per-file limit)
+                np.savez_compressed(os.path.join(OUT, "cert", f"frames_{int(i):05d}.npz"), index=int(i),
+                                    frames=u[j], scale=sc[j], tab=tab[j].astype(np.float32),
+                                    frame_every=SZC.frame_every)
         np.savez_compressed(os.path.join(OUT, "cert", f"{name}.npz"), index=idx, eps=eps, hyper=hyper, **res)
         mt = member_ticks(SZC, len(idx))
         info["runs"].append(dict(name=name, eps=eps, hyper=hyper, seconds=dt, member_ticks=mt))

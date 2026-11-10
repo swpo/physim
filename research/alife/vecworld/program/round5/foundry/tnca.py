@@ -332,8 +332,15 @@ def linear_symbol(th, fam: Family = FAM):
         d = jnp.zeros((fam.C, fam.H, fam.W)).at[c, 0, 0].set(1.0)
         return jax.jvp(f, (x0,), (d,))[1]                         # (C, H, W): response of every kind
     J = jnp.stack([col(c) for c in range(fam.C)], 1)              # (C_out, C_in, H, W)
-    M = jnp.fft.fft2(J, axes=(-2, -1))                            # symbol
-    lam = jnp.linalg.eigvals(jnp.moveaxis(M, (0, 1), (-2, -1)))   # (H, W, C)
+    M = jnp.moveaxis(jnp.fft.fft2(J, axes=(-2, -1)), (0, 1), (-2, -1))   # symbol (H, W, C, C)
+    if fam.C == 2:                                                # closed form (eigvals has no GPU kernel)
+        tr, det = M[..., 0, 0] + M[..., 1, 1], M[..., 0, 0] * M[..., 1, 1] - M[..., 0, 1] * M[..., 1, 0]
+        disc = jnp.sqrt(tr * tr - 4.0 * det + 0j)
+        lam = jnp.stack([(tr + disc) / 2.0, (tr - disc) / 2.0], -1)
+    elif fam.C == 1:
+        lam = M[..., 0, :]
+    else:
+        lam = jnp.linalg.eigvals(M)                               # CPU only
     return dict(xbar=xbar, resid=resid, lam=lam)
 
 
