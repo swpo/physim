@@ -324,10 +324,15 @@ def _fns(view, cond, keys):
     return _FN[k]
 
 
-def train_nets(view, dsets, cond=False, steps=3000, seed=0, log=None, tag="", deadline=None):
+def train_nets(view, dsets, cond=False, steps=3000, seed=0, log=None, tag="", deadline=None, time_budget=None,
+               min_steps=300):
     """Train one net per dataset in lockstep (vmap). Returns (list of best params, info). deadline (epoch
-    seconds): training stops at the next evaluation after it (info['stopped_early'])."""
+    seconds): training stops at the next evaluation after it (info['stopped_early']). time_budget (seconds,
+    counted from the call): after 30 timed steps the number of steps is cut (never below min_steps, never
+    raised) so that the whole cosine schedule fits the budget (info['steps'] is the number used)."""
     Kn = len(dsets)
+    t_call = time.time()
+    steps_asked = steps
     D = stack_datasets(dsets)
     vstep, veval = _fns(view, cond, tuple(sorted(D)))
     keys = jax.random.split(jax.random.key(seed), Kn)
@@ -338,10 +343,25 @@ def train_nets(view, dsets, cond=False, steps=3000, seed=0, log=None, tag="", de
     hist, key, t0 = [], jax.random.key(seed + 1), time.time()
     has_val = np.array([d["n_val_ep"] > 0 for d in dsets])
     stopped = None
-    for it in range(1, steps + 1):
+    it, t1, probe = 0, None, 30
+    while it < steps:
+        it += 1
         lr = Cfg.LR * min(1.0, it / 100) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * it / steps)))
         key, sub = jax.random.split(key)
         P, st, l = vstep(P, st, D, jax.random.split(sub, Kn), lr)
+        if time_budget is not None and steps > 2 * probe:
+            if it == 1:
+                l.block_until_ready()
+                t1 = time.time()                          # the first step holds the compilation
+            elif it == probe:
+                l.block_until_ready()
+                dt = (time.time() - t1) / (probe - 1)
+                fit = int(0.85 * (time_budget - (time.time() - t_call)) / max(dt, 1e-6))
+                new = max(min(steps, fit), min(steps, min_steps))
+                if new < steps:
+                    if log:
+                        log(f"  net{tag} steps {steps} -> {new} ({dt * 1e3:.1f} ms/step, budget {time_budget:.0f}s)")
+                    steps = new
         if it % Cfg.EVAL_EVERY == 0 or it == steps:
             v = np.asarray(veval(P, D))
             v = np.where(has_val, v, -it)                 # no held-out episodes: keep the last parameters
@@ -362,7 +382,9 @@ def train_nets(view, dsets, cond=False, steps=3000, seed=0, log=None, tag="", de
                 break
     params = [jax.tree_util.tree_map(lambda a, k=k: a[k], best) for k in range(Kn)]
     info = {"best_val": best_val.tolist(), "best_step": best_step.tolist(), "hist": hist,
-            "seconds": time.time() - t0, "steps": steps, "stopped_early": stopped,
+            "seconds": time.time() - t0, "steps": steps, "steps_asked": steps_asked, "stopped_early": stopped,
+            "seconds_with_setup": time.time() - t_call,
+            "time_budget": time_budget,
             "n_train_examples": [len(d["tr"]) for d in dsets], "n_episodes": [d["n_ep"] for d in dsets]}
     del D
     return params, info

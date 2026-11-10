@@ -68,17 +68,21 @@ os.makedirs(OUT, exist_ok=True)
 T0 = time.time()
 T_END = T0 + args.max_hours * 3600
 
-FULL = dict(P=16, H=16, burn=GW.BURN, n_cand=24, n_truth=8, N_v=768, v_chunk=256, N_theta=768, Kc=2,
-            budgets=[2, 8, 32, 128, 512], arm_budgets=[2, 8, 32, 128], n_mix=512, n_e=128, lab_chunk=128,
-            n_items=48, R=12, n_clim=96, chunk=256, m=32, m_plug=12, n_scale=192,
+# sizes: N_v and N_theta per hidden set (a 1-parameter box needs fewer design points); member-ticks per set
+# about 1.9-2.3 million (r4-sbi-002 measured 1,080-1,290 member-ticks/s for these stages, 520 for exams)
+FULL = dict(P=16, H=16, burn=GW.BURN, n_cand=48, n_truth=8, N_v={1: 128, 4: 512, 8: 512}, v_chunk=256,
+            N_theta={1: 256, 4: 448, 8: 512}, Kc=2,
+            budgets=[2, 8, 32, 128, 512], arm_budgets=[2, 8, 32, 128], n_mix=512, n_e=32, lab_chunk=128,
+            n_items=36, R=12, n_clim=64, chunk=256, m=32, m_plug=8, n_scale=128,
             steps_cond=6000, steps_p0=3000, steps_real=(1200, 2500), real_split=32, hs=(1, 2, 4, 8, 16),
-            lags=(0, 1, 2, 4, 8),
-            viab_T=100, n_post_draws=500, post_M=30_000)
-SMOKE = dict(P=4, H=4, burn=2, n_cand=4, n_truth=2, N_v=6, v_chunk=6, N_theta=5, Kc=2, budgets=[2, 8],
+            lags=(0, 1, 2, 4, 8), min_steps=300,
+            viab_T=100, n_post_draws=500, post_M=20_000, post_M_arm=10_000)
+SMOKE = dict(P=4, H=4, burn=2, n_cand=4, n_truth=2, N_v={1: 6, 4: 6, 8: 6}, v_chunk=6, N_theta={1: 5, 4: 5, 8: 5},
+             Kc=2, budgets=[2, 8],
              arm_budgets=[2], n_mix=8, n_e=4, lab_chunk=4, n_items=4, R=3, n_clim=4, chunk=8, m=4, m_plug=3,
-             n_scale=4, steps_cond=20, steps_p0=20, steps_real=(20, 20), real_split=2, hs=(1, 2, 4),
-             lags=(0, 1, 2, 4), viab_T=6,
-             n_post_draws=50, post_M=2000)
+             n_scale=4, steps_cond=70, steps_p0=20, steps_real=(20, 20), real_split=2, hs=(1, 2, 4),
+             lags=(0, 1, 2, 4), min_steps=40, viab_T=6,
+             n_post_draws=50, post_M=2000, post_M_arm=1000)
 CFG = SMOKE if args.smoke else FULL
 P, H = CFG["P"], CFG["H"]
 HS = list(CFG["hs"])
@@ -112,6 +116,8 @@ def jdump(name, obj):
         return str(o)
     p = os.path.join(OUT, name)
     os.makedirs(os.path.dirname(p), exist_ok=True)
+    if isinstance(obj, dict):
+        obj = {"PILOT_NEVER_REUSE_AS_EXAM": True, **obj}
     with open(p + ".tmp", "w") as f:
         json.dump(obj, f, indent=1, default=conv)
     os.replace(p + ".tmp", p)
@@ -120,7 +126,7 @@ def jdump(name, obj):
 def npz(name, **arrs):
     p = os.path.join(OUT, name)
     os.makedirs(os.path.dirname(p), exist_ok=True)
-    np.savez_compressed(p + ".tmp.npz", **arrs)
+    np.savez_compressed(p + ".tmp.npz", PILOT_NEVER_REUSE_AS_EXAM=np.array(True), **arrs)
     os.replace(p + ".tmp.npz", p)
 
 
@@ -146,11 +152,12 @@ class Timer:
 
 
 # ----------------------------------------------------------------------------- setup
-INFO = {"study": "round5/ladder", "pilot_never_reusable_as_exam": True,
+INFO = {"study": "round5/ladder",
         "versions": {"python": platform.python_version(), "jax": jax.__version__, "numpy": np.__version__},
         "backend": jax.default_backend(), "devices": [str(d) for d in jax.devices()], "smoke": args.smoke,
         "x64": bool(jax.config.jax_enable_x64), "sets": SETS, "max_hours": args.max_hours,
-        "config": {k: (list(v) if isinstance(v, tuple) else v) for k, v in CFG.items()},
+        "config": {k: (list(v) if isinstance(v, tuple) else {str(a): b for a, b in v.items()} if isinstance(v, dict) else v)
+                   for k, v in CFG.items()},
         "views": {v: {"level_key": LL.LEVEL[v], "dim": LL.DIM[v]} for v in LL.VIEWS},
         "pop_names": LL.POP_NAMES, "design_classes_per_theta": DCLS, "arms": {k: list(v) for k, v in LL.ARMS.items()},
         "features": LL.FEATS, "net": {k: getattr(NN.Cfg, k) for k in dir(NN.Cfg) if k.isupper()},
@@ -184,7 +191,7 @@ def stage_scales():
 
 # ----------------------------------------------------------------------------- C prior, B truths
 def viab_design(names, lo, hi, n, tag):
-    N, d = CFG["N_v"], len(names)
+    N, d = CFG["N_v"][n], len(names)
     rng = np.random.default_rng([4401, n, tag])
     U = rng.uniform(-1, 1, (N, d))
     th = (lo + hi) / 2 + U * (hi - lo) / 2
@@ -233,7 +240,7 @@ def stage_truths(n, names, lo, hi):
         if not args.smoke:
             raise RuntimeError(f"only {len(truths)} viable candidates")
         truths, forced = list(cand[:CFG["n_truth"]]), True
-    jdump(f"n{n}/truths.json", {"PILOT_NEVER_REUSE_AS_EXAM": True, "names": names, "candidates": rows,
+    jdump(f"n{n}/truths.json", {"names": names, "candidates": rows,
                                 "n_viable": int(sum(ok)), "truths": [t.tolist() for t in truths],
                                 "forced_smoke": forced, "secret_commitment": SEC.commitment(),
                                 "note": "truths drawn inside the job from the public prior (box + viability rule, "
@@ -244,7 +251,7 @@ def stage_truths(n, names, lo, hi):
 
 # ----------------------------------------------------------------------------- D design, E Lab
 def stage_design(n, names, lo, hi):
-    N, d = CFG["N_theta"], len(names)
+    N, d = CFG["N_theta"][n], len(names)
     rng = np.random.default_rng([4402, n])
     U = rng.uniform(-1, 1, (N, d))
     th = np.repeat((lo + hi) / 2 + U * (hi - lo) / 2, KD, 0)
@@ -289,7 +296,7 @@ def stage_lab(n, names, world, truths):
                              "nats_episode": SL.EP_CAP, "nats_tick": PL.TICK_CAP}})
         labdata.append({"obs": obs, "U": U, "cls": classes, "nats": nats})
         log(f"  n={n} Lab truth {i}: {lab.usage()}")
-    jdump(f"n{n}/lab.json", out)
+    jdump(f"n{n}/lab.json", {"per_truth": out})
     return labdata
 
 
@@ -319,7 +326,7 @@ def stage_identify(n, names, lo, hi, Ud, design, labdata, truths, pv, psd):
                     if nb > len(lsel):
                         continue
                     sbar = proj(Fl[i][lsel[:nb]]).mean(0)
-                    post = LL.posterior(em, pv, sbar, nb, rng, M=CFG["post_M"])
+                    post = LL.posterior(em, pv, sbar, nb, rng, M=CFG["post_M"] if arm == "mix" else CFG["post_M_arm"])
                     chk = SL.posterior_checks(post, em, pv, sbar, nb, ut)
                     if arm == "mix":
                         draws[(view, i, nb)] = post["u"]
@@ -360,9 +367,9 @@ def stage_identify(n, names, lo, hi, Ud, design, labdata, truths, pv, psd):
 
 
 # ----------------------------------------------------------------------------- G exams
-def stage_exams(n, names, world, truths, SC):
+def stage_exams(n, names, world, truths, SC, th_pm):
     exams, refs, plug = [], [], []
-    p0 = GW.theta_to_params({})
+    p0 = GW.theta_to_params(dict(zip(names, map(float, th_pm))))        # the prior mean under p_v
     for i, th in enumerate(truths):
         world.params = GW.theta_to_params(dict(zip(names, th)))
         ex = PL.GExam(world, SEC.child("truth", n, i), PL.MIX, n_items=CFG["n_items"], prefix=P, queries=QUERIES,
@@ -370,7 +377,7 @@ def stage_exams(n, names, world, truths, SC):
                       nats=PL.budget(), n_clim=CFG["n_clim"], name="ladder-pilot")
         ni, m = CFG["n_items"], CFG["m_plug"]
         ticks("exam", ni * (CFG["burn"] + P) + ni * CFG["R"] * ex.H + CFG["n_clim"] * (CFG["burn"] + ex.H))
-        # state-given prior-mean plug-in: the simulator at the box centre from the hidden state x_P
+        # state-given prior-mean plug-in: the simulator at the prior mean from the hidden state x_P
         world.params = p0
         try:
             rep = ex._snap.clone(rep=m, keys=SEC.child("truth", n, i).keys(ni * m, "plug-prior"))
@@ -397,7 +404,7 @@ def stage_exams(n, names, world, truths, SC):
 
 
 # ----------------------------------------------------------------------------- H nets, I scores
-def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pv, lo, hi, exams, refs, plug, SC, t_stop):
+def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pm, pv, lo, hi, exams, refs, plug, SC, t_stop):
     N, d = Ud.shape
     nT, budgets, m = len(truths), [b for b in CFG["budgets"] if b <= CFG["n_mix"]], CFG["m"]
     cen, hw = (lo + hi) / 2, (hi - lo) / 2
@@ -415,19 +422,26 @@ def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pv, lo, h
             SCORES[f"t{i}|{v}|O"] = refs[i]["oracle"]["es"][:, c]
             SCORES[f"t{i}|{v}|plugPM"] = plug[i][:, c]
         SCORES[f"t{i}|classes"] = exams[i].classes
+    t_score = 120.0                                 # scoring time of one view (measured from the first on)
+    FRAC = {"cond": 0.40, "P0u": 0.15, "D0": 0.20, "D1": 0.25}
     for vi, view in enumerate(LL.VIEWS):
-        if time.time() > t_stop:
+        if time.time() > T_END:
             FAILED.append(f"skipped n={n} view {view} (deadline)")
             log(f"  SKIP n={n} view {view}: deadline")
             continue
         l = LL.LEVEL[view]
         t0 = time.time()
+        # the set's remaining time is shared by its remaining views; a net whose schedule does not fit its
+        # share trains for fewer steps (never below min_steps), so every cell is scored
+        tv = max((t_stop - t0) / (len(LL.VIEWS) - vi) - t_score, 0.0)
+        kw = dict(log=log, deadline=T_END, min_steps=CFG["min_steps"])
+        log(f"  n={n} view {view}: {tv:.0f}s for its nets")
         ds = NN.make_dataset(view, obs_m, U_m, SC, theta_u=th_m, seed=900 + n)
         pc, TRAIN[f"{view}|cond"] = NN.train_nets(view, [ds], cond=True, steps=CFG["steps_cond"], seed=900 + 10 * n + vi,
-                                                  log=log, tag=f"[n{n} {view} cond]", deadline=t_stop)
+                                                  tag=f"[n{n} {view} cond]", time_budget=FRAC["cond"] * tv, **kw)
         ds = NN.make_dataset(view, obs_m[ep0], U_m[ep0], SC, seed=950 + n)
         p0, TRAIN[f"{view}|P0u"] = NN.train_nets(view, [ds], cond=False, steps=CFG["steps_p0"], seed=950 + 10 * n + vi,
-                                                 log=log, tag=f"[n{n} {view} P0u]", deadline=t_stop)
+                                                 tag=f"[n{n} {view} P0u]", time_budget=FRAC["P0u"] * tv, **kw)
         pD = {}                                 # D(N): two lockstep groups (small and large budgets)
         for gi, grp in enumerate(([b for b in budgets if b <= CFG["real_split"]],
                                   [b for b in budgets if b > CFG["real_split"]])):
@@ -437,8 +451,8 @@ def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pv, lo, h
             dsets = [NN.make_dataset(view, labdata[i]["obs"][:nb], labdata[i]["U"][:nb], SC, seed=100 * nb + i)
                      for i, nb in order]
             prm, TRAIN[f"{view}|D|group{gi}"] = NN.train_nets(
-                view, dsets, cond=False, steps=CFG["steps_real"][gi], seed=700 + 10 * n + vi + 100 * gi, log=log,
-                tag=f"[n{n} {view} D {grp}]", deadline=t_stop)
+                view, dsets, cond=False, steps=CFG["steps_real"][gi], seed=700 + 10 * n + vi + 100 * gi,
+                tag=f"[n{n} {view} D {grp}]", time_budget=FRAC[f"D{gi}"] * tv, **kw)
             TRAIN[f"{view}|D|group{gi}"]["order_truth_budget"] = order
             pD.update(dict(zip(order, prm)))
             del dsets
@@ -458,7 +472,7 @@ def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pv, lo, h
                     log(f"  n={n} {view} truth {i} {name} NOT SCORED: {exc}")
             ut = (truths[i] - cen) / hw
             put("C", NN.net_samples(view, pc[0], items, m, 400 + i, HS, SC, cond=True, theta_u=ut))
-            put("PM", NN.net_samples(view, pc[0], items, m, 410 + i, HS, SC, cond=True, theta_u=np.zeros(d)))
+            put("PM", NN.net_samples(view, pc[0], items, m, 410 + i, HS, SC, cond=True, theta_u=pm))
             put("P0", NN.net_samples(view, pc[0], items, m, 420 + i, HS, SC, cond=True,
                                      theta_u=pri_u[rng.choice(len(pri_u), ni * m)].reshape(ni, m, d)))
             put("P0u", NN.net_samples(view, p0[0], items, m, 430 + i, HS, SC))
@@ -472,7 +486,8 @@ def stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pv, lo, h
                 put(f"Dr@{nb}", LL.ridge_samples(view, model, items, m, 0, HS, SC))
         npz(f"n{n}/scores.npz", **SCORES)
         jdump(f"n{n}/train_info.json", TRAIN)
-        log(f"  n={n} view {view}: nets {t_train:.0f}s, scored in {time.time() - t0 - t_train:.0f}s")
+        t_score = time.time() - t0 - t_train
+        log(f"  n={n} view {view}: nets {t_train:.0f}s, scored in {t_score:.0f}s")
     npz(f"n{n}/scores.npz", **SCORES)
     return SCORES
 
@@ -512,6 +527,8 @@ def report(n, SCORES, nT, budgets):
 
 # ----------------------------------------------------------------------------- main
 def run_set(n, world_box, SC, t_stop):
+    """One hidden set. Returns the seconds of the stages before the nets (simulation and identification)."""
+    t_set = time.time()
     with Timer(f"n={n} C prior"):
         names, lo, hi, pv, pri_u, pm, psd = stage_prior(n)
     with Timer(f"n={n} B truths"):
@@ -531,38 +548,44 @@ def run_set(n, world_box, SC, t_stop):
         FAILED.append(f"n={n} identification")
         log(f"  identification FAILED: {exc!r}\n{traceback.format_exc()}")
     with Timer(f"n={n} G exams"):
-        exams, refs, plug = stage_exams(n, names, world, truths, SC)
+        exams, refs, plug = stage_exams(n, names, world, truths, SC, (lo + hi) / 2 + pm * (hi - lo) / 2)
+    fixed = time.time() - t_set
     with Timer(f"n={n} H nets and I scores"):
-        SCORES = stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pv, lo, hi, exams, refs, plug,
+        SCORES = stage_predict(n, names, Ud, design, labdata, truths, draws, pri_u, pm, pv, lo, hi, exams, refs, plug,
                                SC, t_stop)
     try:
         report(n, SCORES, len(truths), CFG["budgets"])
     except Exception as exc:
         FAILED.append(f"n={n} report")
         log(f"  report FAILED: {exc!r}\n{traceback.format_exc()}")
+    return fixed
 
 
 def main():
     with Timer("A public scales"):
         SC = stage_scales()
-    world_box, done, per_set = [None], [], []
+    world_box, done, per_set, fixed = [None], [], [], []
     for k, n in enumerate(SETS):
         left = T_END - time.time()
-        need = (1.05 * max(per_set)) if per_set else 0.0
-        if per_set and left < need:
+        # a set is skipped when the time left does not cover the longest simulation part so far plus the
+        # shortest net schedules; otherwise the time left is shared equally by the remaining sets
+        need = (1.05 * max(fixed) + 420) if fixed else 0.0
+        if fixed and left < need:
             FAILED.append(f"skipped n={n} (deadline: {left / 60:.0f} min left, {need / 60:.0f} min needed)")
             log(f"SKIP n={n}: {left / 60:.0f} min left, about {need / 60:.0f} min needed")
             continue
         t = time.time()
+        t_stop = t + (left - 60) / (len(SETS) - k)
+        log(f"n={n}: {left / 60:.1f} min left, this set's share ends in {(t_stop - t) / 60:.1f} min")
         try:
-            run_set(n, world_box, SC, T_END - 120)
+            fixed.append(run_set(n, world_box, SC, t_stop))
             done.append(n)
         except Exception as exc:
             FAILED.append(f"n={n}")
             log(f"n={n} FAILED: {exc!r}\n{traceback.format_exc()}")
         per_set.append(time.time() - t)
         INFO.update(member_ticks=CLOCK["member_ticks"], hours=hours(), failed=FAILED, sets_done=done,
-                    seconds_per_set=per_set)
+                    seconds_per_set=per_set, seconds_before_nets_per_set=fixed)
         jdump("info.json", INFO)
     INFO["member_ticks_total"] = int(sum(CLOCK["member_ticks"].values()))
     jdump("info.json", INFO)
