@@ -142,7 +142,7 @@
       "job_id": "r5-vortexexam-003",
       "purpose": "Round-5 study vortexexam (track 2), job 2: the fed-vortex exam pilot at 128 px with 4 hidden parameters: design simulations, Lab episodes, exam items with replicate truths, identification, reference policies K, D(N), P0, S(N), C, O with sigma and rho; then the headroom scan with compact outputs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "queued"
+      "state": "provisioning"
     },
     {
       "billed_usd": 0.0501,
@@ -187,6 +187,6 @@
     "prior_spend_usd": 0.0,
     "spent_usd": 27.4839,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T01:16:31Z"
+    "updated_at": "2026-11-10T01:16:37Z"
   }
 }
