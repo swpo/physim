@@ -178,6 +178,8 @@ def main():
     ap.add_argument("job_out")
     ap.add_argument("--job", default="r5-foundry-001")
     ap.add_argument("--out", default=os.path.join(HERE, "results"))
+    ap.add_argument("--name", default="analysis.json")
+    ap.add_argument("--sel", default="", help="index file of select_enriched.py: adds the yields per arm")
     a = ap.parse_args()
     D = a.job_out
     os.makedirs(a.out, exist_ok=True)
@@ -327,7 +329,25 @@ def main():
                                          types={CR.TYPES[i]: int((ct == i).sum()) for i in range(len(CR.TYPES))},
                                          cv_cell=q(cd["cv_cell"]), vp_main1=q(cd["vp_main1"]), pl8=q(cd["pl8"]),
                                          v_orc8=q(cd["v_orc8"]), moved=q(cd["moved"]))
-    with open(os.path.join(a.out, "analysis.json"), "w") as f:
+    # ---------------- arms of a prospective enrichment job
+    if a.sel:
+        sel = json.load(open(a.sel))
+        targets = dict(structured=(t >= 3), active=(t >= 5), movers=(t == 7), closure_gate=g["closure"],
+                       candidate=g["candidate"])
+        arms = {}
+        for arm in ("enriched", "control"):
+            mk = np.isin(idx, np.asarray(sel[arm]))
+            arms[arm] = dict(n=int(mk.sum()), planned=len(sel[arm]),
+                             yields={k: frac(v[mk]) for k, v in targets.items()} if mk.any() else None,
+                             types={CR.TYPES[i]: int((t[mk] == i).sum()) for i in range(len(CR.TYPES))},
+                             score_q=q(s[mk]), n_score_above_0p5=int((s[mk] > 0.5).sum()))
+        en, co = arms["enriched"]["yields"], arms["control"]["yields"]
+        res["arms"] = dict(src="screen/chunk_*.npz + " + os.path.basename(a.sel), target=sel["target"], pool=sel["pool"],
+                           prior_seed=sel["prior_seed"], share_selected=sel["prediction_from_job1"]["share_selected"],
+                           prediction_from_job1=sel["prediction_from_job1"], arms=arms,
+                           enrichment_observed={k: (en[k]["frac"] / co[k]["frac"] if co[k]["frac"] > 0 else None)
+                                                for k in en} if en and co else None)
+    with open(os.path.join(a.out, a.name), "w") as f:
         json.dump(res, f, indent=1, default=float)
     # a compact per-draw table for later use (types, score, a few descriptors): small, committed
     keep = ["cv_cell", "pr", "moved", "wavelength", "nb_mean", "body_frac", "rg", "v_net", "events100", "ceil1", "ceil4",
@@ -335,11 +355,11 @@ def main():
     tab = dict(draw=idx.tolist(), type=[int(x) for x in t], score=[round(float(x), 4) for x in s],
                candidate=[bool(x) for x in g["candidate"]], types=list(CR.TYPES),
                **{k: [None if not np.isfinite(x) else round(float(x), 4) for x in d[k]] for k in keep})
-    with open(os.path.join(a.out, "per_draw.json"), "w") as f:
+    with open(os.path.join(a.out, "per_draw.json" if a.name == "analysis.json" else "per_draw_" + a.name), "w") as f:
         json.dump(tab, f, separators=(",", ":"))
     print("types", {k: v["n"] for k, v in types.items()})
     print("gates", {k: v["n"] for k, v in res["gates"].items() if isinstance(v, dict)})
-    print("wrote", os.path.join(a.out, "analysis.json"))
+    print("wrote", os.path.join(a.out, a.name))
 
 
 if __name__ == "__main__":

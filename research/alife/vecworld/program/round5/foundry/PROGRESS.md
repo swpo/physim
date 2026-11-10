@@ -1,6 +1,6 @@
 # PROGRESS (study foundry, round 5) -- kept for restarts
 
-Updated 2026-11-10 04:40 UTC (instance 1; the study started at 03:40 UTC).
+Updated 2026-11-10 04:42 UTC (instance 1; the study started at 03:40 UTC).
 
 ## Done
 - Worktree /home/user/wt/foundry (branch wt-foundry, sparse research/alife/vecworld).
@@ -24,6 +24,12 @@ Updated 2026-11-10 04:40 UTC (instance 1; the study started at 03:40 UTC).
   ahead in the queue). A watcher (`bash watch.sh r5-foundry-001`) only lives as long as the instance: restart it.
 - Extra CPU tools written while waiting: `wind_probe.py` (paired wind commands at 50/200/800 nats; tested on
   prior seed 1), `recheck_cpu.py` (screen certificates of chosen draws on CPU with the job's keys).
+
+- Also written and tested on CPU (tiny): `longrun.py` (windowed descriptors over 1500+ ticks), `make_summary.py`,
+  README draft, `select_enriched.py` + `FOUNDRY_INDEX_FILE` mode of job.py + `analyze.py --sel` (a possible
+  second job: prospective test that weight statistics alone enrich the draws; index mode passed job.sh at
+  tiny size with FOUNDRY_GLIDERS=0, exit 0). Decide on job 2 only after job 1's results (budget left:
+  25 - billed(job 1); cap of job 2 = 6.69 x (max_hours + 0.25) + 0.10).
 
 ## Next step
 1. (done) final tiny CPU test passed (exit 0, 433 s); request pushed.
