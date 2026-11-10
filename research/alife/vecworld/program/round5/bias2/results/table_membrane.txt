@@ -70,3 +70,25 @@ U_recon_c1      | 53.17 | 0.9493 vs 0.9311 (K) +0.018; own K 0.9311 +0.018 | 0.2
 U_local_c1      | 53.74 | 0.9449 vs 0.9312 (K) +0.014; own S 0.9365* +0.008 | 0.2906 vs 0.2132 (K) +0.077; own S 0.1774* +0.113 | 195.8624 vs 200.4829 (phi) -4.621; own S 162.3412* +33.521
 Uc_clos_c1      | 1.17 | 0.8576 (no family brackets; own phiK 0.9009* -0.043) | 0.1002 (no family brackets; own phiK 0.1726* -0.072) | 150.3226 (no family brackets; own phiK 131.6134* +18.709)
 Uc_local_c1     | 1.23 | 0.865 (no family brackets; own wall 0.7268* +0.138) | 0.1265 (no family brackets; own wall 0.0052* +0.121) | 148.2859 (no family brackets; own wall 97.0938* +51.192)
+
+dominance (c = 1): learned minus the most closed hand design with at least its effective dimension; any window | same receptive field
+config | PR | h=4: hand (PR) diff ; h=16: hand (PR) diff | same receptive field: h=4 ; h=16
+rand0_c1        | 56.73 | none ; none | none ; none
+rand8_c1        | 46.35 | pca_c1 (52.56) -0.137 ; sfax_c1 (48.68) -0.198 | pca_c1 (52.56) -0.137 ; sfax_c1 (48.68) -0.198
+N0_clos_c1      | 39.98 | pca_c1 (52.56) -0.014 ; sfax_c1 (48.68) +0.198 | pca_c1 (52.56) -0.014 ; sfax_c1 (48.68) +0.198
+N0_recon_c1     | 57.0 | none ; none | none ; none
+N0_local_c1     | 54.21 | K_h0 (55.31) +0.039 ; K_h0 (55.31) +0.131 | K_h0 (55.31) +0.039 ; K_h0 (55.31) +0.131
+N8_clos_c1      | 32.88 | pca_c1 (52.56) -0.010 ; sfax_c1 (48.68) +0.246 | pca_c1 (52.56) -0.010 ; sfax_c1 (48.68) +0.246
+N8_recon_c1     | 56.7 | none ; none | none ; none
+N8_local_c1     | 37.08 | pca_c1 (52.56) +0.019 ; sfax_c1 (48.68) +0.235 | pca_c1 (52.56) +0.019 ; sfax_c1 (48.68) +0.235
+L0_clos_c1      | 37.57 | pca_c1 (52.56) -0.009 ; sfax_c1 (48.68) +0.047 | pca_c1 (52.56) -0.009 ; sfax_c1 (48.68) +0.047
+L0_recon_c1     | 52.45 | pca_c1 (52.56) -0.015 ; pca_c1 (52.56) -0.001 | pca_c1 (52.56) -0.015 ; pca_c1 (52.56) -0.001
+L0_local_c1     | 51.64 | pca_c1 (52.56) +0.007 ; sfa_c1 (52.19) -0.020 | pca_c1 (52.56) +0.007 ; sfa_c1 (52.19) -0.020
+L8_clos_c1      | 25.27 | pca_c1 (52.56) +0.000 ; sfax_c1 (48.68) +0.131 | pca_c1 (52.56) +0.000 ; sfax_c1 (48.68) +0.131
+L8_recon_c1     | 52.27 | pca_c1 (52.56) -0.018 ; pca_c1 (52.56) -0.001 | pca_c1 (52.56) -0.018 ; pca_c1 (52.56) -0.001
+L8_local_c1     | 41.04 | pca_c1 (52.56) +0.007 ; sfax_c1 (48.68) +0.069 | pca_c1 (52.56) +0.007 ; sfax_c1 (48.68) +0.069
+U_clos_c1       | 53.72 | K_h0 (55.31) +0.007 ; K_h0 (55.31) +0.045 | K_h0 (55.31) +0.007 ; K_h0 (55.31) +0.045
+U_recon_c1      | 53.17 | K_h0 (55.31) +0.018 ; K_h0 (55.31) +0.000 | K_h0 (55.31) +0.018 ; K_h0 (55.31) +0.000
+U_local_c1      | 53.74 | K_h0 (55.31) +0.013 ; K_h0 (55.31) +0.071 | K_h0 (55.31) +0.013 ; K_h0 (55.31) +0.071
+Uc_clos_c1      | 1.17 | pca_c1 (52.56) -0.103 ; sfax_c1 (48.68) -0.173 | pca_c1 (52.56) -0.103 ; sfax_c1 (48.68) -0.173
+Uc_local_c1     | 1.23 | pca_c1 (52.56) -0.095 ; sfax_c1 (48.68) -0.146 | pca_c1 (52.56) -0.095 ; sfax_c1 (48.68) -0.146

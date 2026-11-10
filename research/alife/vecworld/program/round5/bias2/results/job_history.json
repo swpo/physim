@@ -49,7 +49,16 @@
     "B5_PLAN": "membrane:900:3600:3900 gliders:600:1400:1650",
     "B5_JOB_HARD_S": "6900"
    },
-   "history": "resubmission of r5-bias2-003 with a cap that covers the H200 offer"
+   "history": "resubmission of r5-bias2-003 with a cap that covers the H200 offer; ran 2026-11-10 00:10:28-00:52:02Z on a nebius H200 (listed $5.55/h, billed $6.69/h); all 34 membrane and 19 gliders configs trained, none skipped by a deadline; 210 + 128 halves certified, 0 unclaimed (results/progress_r5-bias2-004.txt)",
+   "state": "done",
+   "exit_code": 0,
+   "billed_usd": 4.6802,
+   "gpu": "H200_141GB",
+   "provider": "nebius",
+   "rate_usd_hr": 6.69,
+   "started_at": "2026-11-10T00:10:28Z",
+   "finished_at": "2026-11-10T00:53:10Z",
+   "source": "origin/gpu-jobs:jobs/r5-bias2-004/status.json"
   },
   "r5-bias2-005": {
    "worlds": [
@@ -63,7 +72,16 @@
     "B5_PLAN": "vortex:3000:6250:6550",
     "B5_JOB_HARD_S": "7260"
    },
-   "history": "resubmission of r5-bias2-002 with a cap that covers the H200 offer"
+   "history": "resubmission of r5-bias2-002 with a cap that covers the H200 offer; ran 2026-11-10 00:20:58-00:53:08Z on a nebius H200 (listed $5.55/h, billed $6.69/h); all 34 configs trained, none skipped; 228 halves certified, 0 unclaimed (results/progress_r5-bias2-005.txt)",
+   "state": "done",
+   "exit_code": 0,
+   "billed_usd": 3.6269,
+   "gpu": "H200_141GB",
+   "provider": "nebius",
+   "rate_usd_hr": 6.69,
+   "started_at": "2026-11-10T00:20:58Z",
+   "finished_at": "2026-11-10T00:54:07Z",
+   "source": "origin/gpu-jobs:jobs/r5-bias2-005/status.json"
   }
  },
  "why_resubmitted": "Coordinator note of 9 Nov about 23:28 UTC, relaying the Mac runner: the nebius H200 listed at $5.55/h bills $6.69/h and offers under $4.98/h (A100 80GB, H100) were scarce, so the caps of 002/003 (which covered at most $4.98/h) fitted no offer for more than 30 minutes. New caps follow the runner's rule 6.69 x (max_hours + 0.25): $15.72 -> 15.8 (004), $16.39 -> 16.45 (005); both below the $25 auto-start limit, together $32.25 of the study cap of $35.",
@@ -77,5 +95,9 @@
   "cpair.py (new, local analysis only, not run on the pod): paired trajectory bootstrap of closure-ceiling differences between two Phi from the per-item errors."
  ],
  "cpu_smoke_tests": "job.sh end to end at tiny size (B5_TINY=1, CPU, one certification worker) from a git archive of exactly the requested paths at e24bc7b04: both exact request environments (r5-bias2-004: membrane + gliders with B5_JOB_HARD_S=6900; r5-bias2-005: vortex with B5_JOB_HARD_S=7260) exit 0; the clipped-deadline path (B5_JOB_HARD_S=1500: membrane runs with clipped deadlines, gliders skipped, exit 1) and the all-skipped path (B5_JOB_HARD_S=700, exit 1) behave as designed.",
- "note_requested_paths": "The requested paths at both request commits (11c116b39, bb0bfb923) are identical to the tested code commit e24bc7b04 (git diff empty)."
+ "note_requested_paths": "The requested paths at both request commits (11c116b39, bb0bfb923) are identical to the tested code commit e24bc7b04 (git diff empty).",
+ "billed_usd_total": 8.3071,
+ "study_cap_usd": 35.0,
+ "review_of_004_005": "origin/gpu-jobs:jobs/r5-bias2-004/review.md (same text for 005): fine to run; 2 minor points not yet fixed because no further job was submitted: (1) ctrain killed at the certification deadline would report a false failure and leave no train_done.json (did not happen: both runs finished training 2,000-4,700 s before their deadlines); (2) the pre-loop probes in job.sh have no timeout. Fix both before any resubmission.",
+ "instances": "For a few minutes on 9 Nov 2026 (about 23:02-23:47 UTC) two instances of this agent worked in the same worktree (a coordinator mistake, recorded in the channel file); one handed over and stopped. The container then restarted at about 00:12, 00:53 and 01:12 UTC on 10 Nov; the analysis (canalyze, cextra, cpair, cinterp, csummary) was done by the instance started at 01:13 UTC from the outputs on origin/gpu-jobs."
 }

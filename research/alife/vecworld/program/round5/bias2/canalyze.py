@@ -13,6 +13,14 @@ RESULTS_DIR/analysis.json and RESULTS_DIR/table_<world>.txt. Per world:
               is a family over windows (block, tents with a 4 / 8 / 16-px halo) whose PR falls with smoothing; a
               metric is interpolated linearly in PR inside each family that brackets the learned latent's PR; the
               comparison is with the best such family and with the family of the best-agreeing feature
+  dominance   each learned c = 1 latent against the best hand design (c = 1, any feature, closed forms included) that
+              has AT LEAST its effective dimension: `any_window` over all hand windows, `same_rf` over the windows the
+              encoder's receptive field could compute (block means and closed forms for block-only encoders, halo
+              <= 8 px for the 8-px-halo encoders, all for the dense ones). A positive difference means the learned
+              latent is more closed than every hand design that keeps as many effective dimensions.
+  raw_r2      per hand design and config: ceiling_G x (1 - oracle share of V0) = the share of the variable's variance
+              the fixed family predicts, which is what the closure objectives reward (the ceiling divides it by the
+              predictable share)
 """
 import json
 import os
@@ -59,7 +67,8 @@ def hand_row(r):
             "PR": f4(nt["participation_ratio"]), "r_dyn": f4(nt["r_dyn"]), "I_avail": f4(r["logdet"]["I_avail"]),
             "I_capt": f4(r["logdet"]["I_capt"]), "box_mean_var_share": f4(nt["box_mean_var_share"]),
             "box_mean_time_var_x64": f4(nt["box_mean_time_var_x64"]), "box_mean_drift_sd": f4(nt["box_mean_drift_sd"]),
-            "block_autocorr": {h: f4(v) for h, v in nt["block_autocorr"].items()}, "q": r["q"]}
+            "block_autocorr": {h: f4(v) for h, v in nt["block_autocorr"].items()}, "q": r["q"],
+            "raw_r2": f4(np.asarray(r["G"]["ceiling"], float) * (1 - np.asarray(r["oracle_share_of_V0"], float)))}
 
 
 def families(C):
@@ -97,7 +106,9 @@ def at_pr(fam_rows, pr, name):
 
 def analyse(world):
     C = load_combined(R, world)
-    out = {"world": world, "fields": C["fields"], "layout": C["layout"], "hand": {}, "configs": {}, "matched": {}}
+    out = {"world": world, "fields": C["fields"], "layout": C["layout"], "hand": {}, "configs": {}, "matched": {}, "dominance": {}}
+    H1 = {k: (float(r["nontriv"]["participation_ratio"]), r["G"]["ceiling"], int(k.rsplit("_h", 1)[1]) if "_h" in k else 0)
+          for k, r in C["hand"].items() if r["q"] == 64}
     fam = families(C)
     for k, r in C["hand"].items():
         out["hand"][k] = hand_row(r)
@@ -107,6 +118,14 @@ def analyse(world):
                     out["hand"][k]["box_mean_time_var_x64"][0]) for k in out["hand"] if k.endswith("_h0")], key=lambda r: -r[1])
     out["hand_block_designs_by_ceiling16"] = [{"feature": a, "ceiling16": b, "block_autocorr16": c, "box_mean_time_var_x64": d}
                                               for a, b, c, d in slow]
+    out["hand_most_closed"] = {}                     # over every hand design (any window, closed forms; c = 1 and wider)
+    for tag, keep in (("c1", lambda r: r["q"] == 64), ("any_width", lambda r: True)):
+        e = {}
+        for h in HZ:
+            b = max((k for k, r in C["hand"].items() if keep(r)), key=lambda k: C["hand"][k]["G"]["ceiling"][HI[h]])
+            e[f"h{h}"] = {"design": b, "ceiling": round(C["hand"][b]["G"]["ceiling"][HI[h]], 4),
+                          "PR": round(float(C["hand"][b]["nontriv"]["participation_ratio"]), 2)}
+        out["hand_most_closed"][tag] = e
     out["families_PR"] = {f: [(h, round(p, 2)) for h, p, _ in v] for f, v in fam.items()}
     for nm, r in C["configs"].items():
         agr = r["agreement"]
@@ -117,7 +136,21 @@ def analyse(world):
                     "r_dyn": f4(r["nontriv"]["r_dyn"]), "I_avail": f4(r["I_avail"]), "I_capt": f4(r["I_capt"]),
                     "box_mean_time_var_x64": f4(r["nontriv"]["box_mean_time_var_x64"]),
                     "box_mean_var_share": f4(r["nontriv"]["box_mean_var_share"]),
-                    "seed_loc1": f4(r["seed_agreement"].get("loc1_mean")), "seed_glob": f4(r["seed_agreement"].get("glob_mean"))})
+                    "seed_loc1": f4(r["seed_agreement"].get("loc1_mean")), "seed_glob": f4(r["seed_agreement"].get("glob_mean")),
+                    "raw_r2": f4(np.asarray(r["ceiling_G"], float) * (1 - np.asarray(r["oracle_share_of_V0"], float)))})
+        if r["c"] == 1:
+            pr_, cg = float(r["nontriv"]["participation_ratio"]), r["ceiling_G"]
+            dom = {"PR": round(pr_, 2), "ceiling_G": f4(cg)}
+            for tag, hmax in (("any_window", 99), ("same_rf", 99 if r["h"] is None else r["h"])):
+                cand = {k: v for k, v in H1.items() if v[0] >= pr_ and v[2] <= hmax}
+                e = {"n_candidates": len(cand)}
+                for h in (4, 16):
+                    if cand:
+                        b = max(cand, key=lambda k: cand[k][1][HI[h]])
+                        e[f"h{h}"] = {"best_hand": b, "hand_PR": round(cand[b][0], 2), "hand_ceiling": round(cand[b][1][HI[h]], 4),
+                                      "diff": round(cg[HI[h]] - cand[b][1][HI[h]], 4)}
+                dom[tag] = e
+            out["dominance"][nm] = dom
         if "train" in r:
             row["best_step"] = r["train"]["best_step"]
             row["val_best_over_init"] = f4(np.mean(np.asarray(r["train"]["val_best"], float) / np.asarray(r["train"]["val_init"], float))) \
@@ -204,6 +237,13 @@ def table(a):
                 return f"{e['learned']} (no family brackets{own})"
             return f"{e['learned']} vs {e['best_hand_at_PR']} ({e['best_hand_family']}) {e['diff_vs_best_hand']:+.3f}{own}"
         L.append(f"{nm:15s} | {m['PR']} | {cell('ceil4')} | {cell('ceil16')} | {cell('I_capt@1')}")
+    L += ["", "dominance (c = 1): learned minus the most closed hand design with at least its effective dimension; any window | same receptive field",
+          "config | PR | h=4: hand (PR) diff ; h=16: hand (PR) diff | same receptive field: h=4 ; h=16"]
+    for nm, d in a["dominance"].items():
+        def dc(tag):
+            e = d[tag]
+            return " ; ".join(f"{e[k]['best_hand']} ({e[k]['hand_PR']}) {e[k]['diff']:+.3f}" if k in e else "none" for k in ("h4", "h16"))
+        L.append(f"{nm:15s} | {d['PR']} | {dc('any_window')} | {dc('same_rf')}")
     return "\n".join(L) + "\n"
 
 

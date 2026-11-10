@@ -71,7 +71,21 @@ for w, job in JOBS.items():
         m["cpu_pilot"]["source"] = f"results/pilot_{w}.json (cpilot.py, CPU; a designer seed never reused)"
     out["meta"]["worlds"][w] = m
     W = {"hand": {}, "configs": {}, "matched_effective_dimension": {}, "hand_block_designs_by_ceiling16": a["hand_block_designs_by_ceiling16"],
-         "hand_families_PR": a["families_PR"]}
+         "hand_families_PR": a["families_PR"], "hand_most_closed": a.get("hand_most_closed"),
+         "dominance": dict(a.get("dominance", {}), source=f"analysis:{w}.dominance (from " + src("combined.json", "hand.*, configs.*") + ")")}
+    p = os.path.join(R, f"pairs_{w}.json")           # paired trajectory bootstraps (cpair.py via cpairs_run.sh)
+    if os.path.exists(p):
+        pj = json.load(open(p))
+        W["paired_bootstrap"] = {k: {kk: (r4(v[kk]) if kk in ("ceiling_A", "ceiling_B", "diff", "se", "z") else v[kk])
+                                     for kk in ("ceiling_A", "ceiling_B", "diff", "se", "z", "n_seeds", "n_trajectories", "horizons")}
+                                 for k, v in pj.items()}
+        W["paired_bootstrap"]["source"] = f"results/pairs_{w}.json = cpair.py on {job}:out/{w}/items/*.npz (400 trajectory resamples, both sides on the same items)"
+    p = os.path.join(R, "extra.json")                # local follow-up readings (cextra.py)
+    if os.path.exists(p):
+        xj = json.load(open(p)).get(w)
+        if xj:
+            W["extra"] = {"global": {k: v for k, v in xj["global"].items() if not k.endswith("_c2")}, "windows": xj["windows"],
+                          "source": f"results/extra.json:{w} = cextra.py on {job}:out/{w}/latsub/*.npz and windows/*.npz"}
     for k, r in a["hand"].items():
         W["hand"][k] = dict(r, source=src("combined.json", f"hand.{k}"))
     for k, r in a["configs"].items():
@@ -88,6 +102,20 @@ for w, job in JOBS.items():
 p = os.path.join(R, "interpretation.json")
 if os.path.exists(p):
     out["claims"] = json.load(open(p))
+out["method_changes_after_round4_checker"] = [
+    "agreement with hand designs is judged by per-block local readouts with weights shared over blocks (loc1: the block's own numbers; loc1q: plus squares and products; loc9: the 3 x 3 neighbourhood), both directions, cross-validated over trajectories; round 4's all-block ridge is kept only as `glob`",
+    "every learned latent is compared explicitly with the tent-windowed (8-px halo) version of each hand feature as well as with its block mean",
+    "comparisons at matched effective dimension: interpolation along each hand family (`matched_effective_dimension`), the most closed hand design with at least the learned latent's effective dimension (`dominance`), and paired trajectory bootstraps against the hand windows on both sides (`paired_bootstrap`)",
+    "the dense controls U (64 c x 64 c whitening) and Uc (per-channel whitening) have exactly the training settings of the local encoders (3,000 steps, batch 128, the same learning-rate schedule, no weight decay)"]
+out["caveats"] = [
+    "one world seed (0) and public parameters per world; the two designer seeds are the cross-fit halves; 2 training seeds per config",
+    "the hand designs of the vortex and membrane worlds are this study's choices (block means of the fields and of simple nonlinear features at 4 windows, 4-5 multi-channel designs, closed-form SFA / PCA); object views (vortex list, cell list) were not rasterised to blocks, so 'no hand design is as closed' is relative to that list",
+    "the reading of the membrane linear closure latent as a gradient filter comes from moments of the low-pass part of its window (32% of the window norm; the rest is on pixel-scale patterns the fields never excite, left at initialisation because there is no weight decay), not from an intervention; the nonlinear closure latents, which are the most closed, are not identified (seed agreement 0.19-0.33)",
+    "closure latents in the vortex world have an effective dimension of 2-8 out of 64, so their ceilings are bought with dimension; ceilings are compared with hand designs of at least the same effective dimension where that matters",
+    "the certification family is fixed and mostly linear (mean, persistence, AR(1), ridges with 1-8 lags, kNN; plus a local ridge in GL), so ceilings are lower bounds on closure",
+    "horizons reach 16 study ticks: 80 time units in the vortex world, 640 in the membrane world (a third of a division cycle), 16 ticks in gliders",
+    "float64 simulation on the GPU is not bit-deterministic (round-4 finding); numbers reproduce statistically, not bitwise",
+    "the runner's two minor review points on job.sh (false failure if ctrain is killed at the certification deadline; pre-loop probes without a timeout) are not fixed because no further job was submitted"]
 json.dump(out, open(os.path.join(R, "summary.json"), "w"), indent=1)
 print("summary.json:", {w: (len(v["configs"]), len(v["hand"])) for w, v in out["worlds"].items()}, len(out["claims"]), "claims; billed",
       out["meta"]["billed_usd_total"])

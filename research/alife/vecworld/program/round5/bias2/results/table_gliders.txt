@@ -53,3 +53,25 @@ U_recon_c1      | 56.11 | 0.6099 vs 0.6753 (c1) -0.066; own mass 0.7711* -0.161 
 U_local_c1      | 59.29 | 0.7765 (no family brackets; own mass 0.7711* +0.005) | 0.1098 (no family brackets; own mass 0.1427* -0.033) | 137.6974 (no family brackets; own mass 163.6975* -26.000)
 Uc_clos_c1      | 1.15 | 0.5108 (no family brackets; own dc 0.3171* +0.194) | 0.0035 (no family brackets; own dc 0.053* -0.050) | 5.0516 (no family brackets; own dc 65.2493* -60.198)
 Uc_local_c1     | 1.11 | 0.4907 (no family brackets; own c0 0.912* -0.421) | 0.0248 (no family brackets; own c0 0.4181* -0.393) | 5.1137 (no family brackets; own c0 126.6532* -121.540)
+
+dominance (c = 1): learned minus the most closed hand design with at least its effective dimension; any window | same receptive field
+config | PR | h=4: hand (PR) diff ; h=16: hand (PR) diff | same receptive field: h=4 ; h=16
+rand0_c1        | 61.91 | none ; none | none ; none
+rand8_c1        | 59.39 | none ; none | none ; none
+N0_clos_c1      | 44.87 | msq_h4 (45.46) -0.027 ; msq_h4 (45.46) -0.002 | sfa_c1 (53.9) +0.030 ; sfa_c1 (53.9) +0.027
+N0_recon_c1     | 62.07 | none ; none | none ; none
+N0_local_c1     | 49.23 | sfa_c1 (53.9) +0.048 ; sfa_c1 (53.9) +0.033 | sfa_c1 (53.9) +0.048 ; sfa_c1 (53.9) +0.033
+N8_clos_c1      | 22.39 | mass_h8 (31.49) -0.015 ; c0_h8 (30.92) +0.034 | mass_h8 (31.49) -0.015 ; c0_h8 (30.92) +0.034
+N8_recon_c1     | 57.87 | dc_h4 (58.79) -0.047 ; dc_h4 (58.79) -0.005 | dc_h4 (58.79) -0.047 ; dc_h4 (58.79) -0.005
+N8_local_c1     | 26.07 | mass_h8 (31.49) +0.006 ; c0_h8 (30.92) +0.041 | mass_h8 (31.49) +0.006 ; c0_h8 (30.92) +0.041
+L0_clos_c1      | 50.08 | sfa_c1 (53.9) -0.005 ; sfa_c1 (53.9) +0.005 | sfa_c1 (53.9) -0.005 ; sfa_c1 (53.9) +0.005
+L0_recon_c1     | 55.91 | c1_h0 (56.49) +0.030 ; c1_h0 (56.49) -0.007 | c1_h0 (56.49) +0.030 ; c1_h0 (56.49) -0.007
+L0_local_c1     | 53.0 | sfa_c1 (53.9) +0.007 ; sfa_c1 (53.9) +0.007 | sfa_c1 (53.9) +0.007 ; sfa_c1 (53.9) +0.007
+L8_clos_c1      | 23.6 | mass_h8 (31.49) -0.025 ; c0_h8 (30.92) +0.016 | mass_h8 (31.49) -0.025 ; c0_h8 (30.92) +0.016
+L8_recon_c1     | 56.03 | c1_h0 (56.49) +0.037 ; c1_h0 (56.49) -0.005 | c1_h0 (56.49) +0.037 ; c1_h0 (56.49) -0.005
+L8_local_c1     | 28.16 | mass_h8 (31.49) +0.002 ; c0_h8 (30.92) +0.018 | mass_h8 (31.49) +0.002 ; c0_h8 (30.92) +0.018
+U_clos_c1       | 59.8 | none ; none | none ; none
+U_recon_c1      | 56.11 | c1_h0 (56.49) -0.060 ; c1_h0 (56.49) -0.022 | c1_h0 (56.49) -0.060 ; c1_h0 (56.49) -0.022
+U_local_c1      | 59.29 | none ; none | none ; none
+Uc_clos_c1      | 1.15 | mass_h8 (31.49) -0.425 ; c0_h16 (16.1) -0.415 | mass_h8 (31.49) -0.425 ; c0_h16 (16.1) -0.415
+Uc_local_c1     | 1.11 | mass_h8 (31.49) -0.445 ; c0_h16 (16.1) -0.393 | mass_h8 (31.49) -0.445 ; c0_h16 (16.1) -0.393
