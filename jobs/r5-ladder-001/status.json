@@ -9,10 +9,15 @@
       "at": "2026-11-10T01:52:10Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T02:20:50Z",
+      "message": "Review blocker (see review.md): the full-size block-view D(N) validation eval builds 3.6e9-element arrays (past 2^31; 34.5 GiB eval temp on CPU), which the smoke and presmoke never reach. Chunk the validation eval, then resubmit under a new id.",
+      "state": "rejected"
     }
   ],
   "job_id": "r5-ladder-001",
-  "message": "request received",
+  "message": "Review blocker (see review.md): the full-size block-view D(N) validation eval builds 3.6e9-element arrays (past 2^31; 34.5 GiB eval temp on CPU), which the smoke and presmoke never reach. Chunk the validation eval, then resubmit under a new id.",
   "pods": [],
   "review": {
     "at": "2026-11-10T02:20:48Z",
@@ -20,6 +25,6 @@
     "sha256": "0ef0478ec0e0575fd6a9926b58ea613af8d4d9809520e9b1c825fdf3809a08c3",
     "summary": "NOT STARTED: full-size block-view D(N) validation builds 3.6e9-element arrays, past 2^31 (ladder_net.py:314-323); chunk it and resubmit. Secrecy clean. 2 minor, 5 info."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T01:52:10Z"
+  "state": "rejected",
+  "updated_at": "2026-11-10T02:20:50Z"
 }

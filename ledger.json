@@ -111,7 +111,7 @@
     {
       "billed_usd": null,
       "cap_usd": 12.4,
-      "conservative_usd": 0.0334,
+      "conservative_usd": 0.0346,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
       "hours": 0.017,
@@ -119,18 +119,6 @@
       "purpose": "Round-5 study bias2, follow-up: closure trained on spatially whitened latents (local encoders, block and 8-px halo, c = 1) on the vortex, membrane and gliders worlds, with the per-channel closure configs and all hand designs again on the same data",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
       "state": "provisioning"
-    },
-    {
-      "billed_usd": 0.0,
-      "cap_usd": 21.2,
-      "conservative_usd": 0.0,
-      "finished_at": null,
-      "gpu": "-",
-      "hours": 0,
-      "job_id": "r5-ladder-001",
-      "purpose": "Round-5 study ladder (track 2): reference ladder (K, D(N), P0, prior mean, S(N), C, O) on the gliders wind world in 9 cells, observed view {block, object, population} x {1, 4, 8} hidden parameters, Lab budgets 2-512 episodes; identification by passive, blind and aimed inputs",
-      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "received"
     },
     {
       "billed_usd": 0.0,
@@ -233,8 +221,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 41.1916,
     "prior_spend_usd": 0.0,
-    "spent_usd": 28.825,
+    "spent_usd": 28.8262,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T02:20:48Z"
+    "updated_at": "2026-11-10T02:20:50Z"
   }
 }
