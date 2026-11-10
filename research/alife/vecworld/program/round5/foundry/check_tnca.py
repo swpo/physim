@@ -135,18 +135,19 @@ def check_wind(seed, n_paths=4000):
     th_np = TN.draw_theta(seed + 1000, 3)
     th_np = dict(th_np, beta=np.float64(0.0), gam=np.float64(0.0), kappa=np.float64(0.0))   # passive matter
     th = dev(th_np)
+    mu_ = float(th_np["mu"])
     u1 = np.zeros(fam.NW)
     u1[fam.GW * fam.GW:] = 1.0                                         # x-component, every block
     X = jnp.arange(fam.W)
 
     def com_x(x):                                                     # circular mean of column index, per kind
-        ang = 2 * jnp.pi * X / fam.W
+        ang = 2 * jnp.pi * X[None, None, :] / fam.W
         return jnp.arctan2((x * jnp.sin(ang)).sum((1, 2)), (x * jnp.cos(ang)).sum((1, 2))) * fam.W / (2 * jnp.pi)
 
     def run(k, u):
         x = TN.init(th, jax.random.fold_in(k, 1))
         # one dense patch per kind so that a centre of mass exists
-        bump = jnp.exp(-((X[None, :] - 32.0) ** 2 + (X[:, None] - 32.0) ** 2) / 50.0)
+        bump = jnp.exp(-((X[None, :] - 16.0) ** 2 + (X[:, None] - 32.0) ** 2) / 50.0)   # centre column 16
         x = x * 0.2 + bump[None] * th["dens"][:, None, None] * 5
 
         def body(x, t):
@@ -163,10 +164,12 @@ def check_wind(seed, n_paths=4000):
                            passive_world="beta = gam = kappa = 0", mu=float(th_np["mu"]),
                            wq=[float(v) for v in th_np["wq"]], shift_px_per_tick=[float(v) for v in shift],
                            shift_over_wq=[float(s / q) for s, q in zip(shift, th_np["wq"])],
-                           expected_small_command=float(th_np["mu"]) * 0.5 * TN.FAM.NSUB,
+                           expected_noise_free=[float(fam.NSUB * 0.25 * mu_ * 2 * np.sinh(q) / (
+                               1 - mu_ + 0.25 * mu_ * (2 + 2 * np.cosh(q)))) for q in th_np["wq"]],
                            twin_same_key_identical=bool((np.asarray(xz) == np.asarray(xz2)).all()))
     out["ok"] = bool(abs(klc["z"]) < 4 and abs(out["noise_std"] / fam.sigma_w - 1) < 0.01
-                     and abs(out["embedding_dc_gain"] - 1) < 1e-12 and all(s > 0 for s in shift))
+                     and abs(out["embedding_dc_gain"] - 1) < 1e-12
+                     and all(0.5 < s / e < 2.0 for s, e in zip(shift, out["delivery"]["expected_noise_free"])))
     return out
 
 

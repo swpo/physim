@@ -261,7 +261,7 @@ def stage_controls(ths_all):
     del fn
     return dict(n=int(N_CTRL), seconds=dt, types={CR.TYPES[i]: int((t == i).sum()) for i in range(len(CR.TYPES))},
                 cv_cell_max=float(d["cv_cell"].max()), cv_cell_median=float(np.median(d["cv_cell"])),
-                vp_main1_median=float(np.median(d["vp_main1"])), pl4_max=float(np.nanmax(d["pl4"])))
+                vp_main1_median=float(np.median(d["vp_main1"])), pl8_max=float(np.nanmax(d["pl8"])))
 
 
 # ----------------------------------------------------------------------------- stage: select

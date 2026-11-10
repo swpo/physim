@@ -17,11 +17,12 @@ Types (first rule that applies):
 Gates (declared targets, after track1/DESIGN.md section 3):
   viable       type active
   closure      ceiling c(1) >= C1_MIN, the oracle predicts at 8 ticks (V_orc(8) <= VORC8_MAX) and the cheap
-               level-1 predictor leaves an intermediate gap: GAP_MIN <= max_h [V_pred(h) - V_orc(h)] and
-               c(32) <= C32_MAX (not closed forever)
+               level-1 predictor leaves an intermediate gap: GAP_MIN <= max_h [V_cheap(h) - V_orc(h)] and
+               c(32) <= C32_MAX (not closed forever). V_cheap = min(V_pred, V_clim): the ridge or, where it
+               is worse, climatology; c(h) = (V_clim - V_cheap) / (V_clim - V_orc)
   structures   sub-type movers, at least EVENTS_MIN fusions + fissions per 100 ticks and member, no kept
                overflow in the tracker
-  sensitive    plug-in loss of a 10% weight neighbour at 4 ticks: PL(4) >= PL_MIN and PL(4) >= V_orc(4)
+  sensitive    plug-in loss of a 10% weight neighbour at 8 ticks: PL(8) >= PL_MIN and PL(8) >= V_orc(8)
 A candidate passes all four. The score ranks viable worlds (geometric mean of desirabilities in [0, 1]).
 """
 from __future__ import annotations
@@ -55,13 +56,17 @@ def derive(m: dict, T: int) -> dict:
               "survive", "age_mean", "mean_S", "kind_frac0"):
         d[k] = f(k)
     vc, vo, vp, vs, pl = f("v_clim"), f("v_orc"), f("v_pred"), f("v_pers"), f("pl")
+    vch = np.minimum(vp, vc)                        # the cheap level-1 predictor: ridge or climatology
+    with np.errstate(divide="ignore", invalid="ignore"):
+        ceil = (vc - vch) / np.where(np.abs(vc - vo) > 1e-12, vc - vo, np.nan)
     for i, h in enumerate(HZ[:vc.shape[1]]):
         d[f"vp_main{h}"] = f("vp_main")[:, i]
         d[f"v_orc{h}"], d[f"v_pred{h}"], d[f"v_pers{h}"], d[f"v_clim{h}"] = vo[:, i], vp[:, i], vs[:, i], vc[:, i]
-        d[f"ceil{h}"] = f("ceil")[:, i]
-        d[f"gap{h}"] = vp[:, i] - vo[:, i]
+        d[f"ceil{h}"] = ceil[:, i]
+        d[f"ceil_raw{h}"] = f("ceil")[:, i]
+        d[f"gap{h}"] = vch[:, i] - vo[:, i]
         d[f"pl{h}"] = pl[:, i]
-    gaps = vp - vo
+    gaps = vch - vo
     d["gap_max"] = np.nanmax(gaps, 1)
     d["gap_argmax_h"] = np.asarray(HZ)[np.nanargmax(np.nan_to_num(gaps, nan=-1e9), 1)].astype(float)
     g = f("glob")                                   # next_uid, births, deaths, fusions, fissions over T ticks
@@ -110,7 +115,7 @@ def gates(d: dict, t: np.ndarray) -> dict:
     closure = ((d["ceil1"] >= C1_MIN) & (d["v_orc8"] <= VORC8_MAX) & (d["gap_max"] >= GAP_MIN)
                & (d["ceil32"] <= C32_MAX))
     structures = (t == 7) & (d["events100"] >= EVENTS_MIN) & (d["ovf_kept_ticks"] == 0)
-    sensitive = (d["pl4"] >= PL_MIN) & (d["pl4"] >= d["v_orc4"])
+    sensitive = (d["pl8"] >= PL_MIN) & (d["pl8"] >= d["v_orc8"])
     g = dict(viable=viable, closure=viable & closure, structures=viable & structures, sensitive=viable & sensitive)
     g["candidate"] = g["closure"] & g["structures"] & g["sensitive"]
     return g
@@ -126,6 +131,6 @@ def score(d: dict, t: np.ndarray) -> np.ndarray:
     d_bod = np.where(nb_ok, 1.0, 0.3) * (0.1 + 0.9 * c(d["body_frac"] / 0.3))
     d_move = 0.1 + 0.9 * c(d["v_net"] / 0.3)
     d_int = 0.1 + 0.9 * c(d["events100"] / 10.0)
-    d_sens = 0.1 + 0.9 * c(d["pl4"] / 0.05)
+    d_sens = 0.1 + 0.9 * c(d["pl8"] / 0.05)
     s = (d_gap * d_c1 * d_orc * d_bod * d_move * d_int * d_sens) ** (1.0 / 7.0)
     return np.where(t >= 5, s, 0.0)
