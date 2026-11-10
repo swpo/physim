@@ -1,9 +1,34 @@
 {
+  "billing_window_hours": 2.0179,
+  "bundle": {
+    "bundle_sha256": "3ee7972f8205f0947a4a4d317c7e08f5f3785a01ad6c28be38de2a4791387ac6",
+    "files": {
+      "job.sh": "c5286718d5375a68b99c68285d775e5bdd9a5766ed956567a88098bde930e77d",
+      "request.json": "8ed08734dc27123c893fdba1ab9e009ed1f86c368442f942f4686df79f57d932",
+      "run.sh": "672c7304051b6846e0f9faeb1623b0195c938398bf1ed5d5514cae173ae4bf07",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "07bc0e88fcbf2c8a99f950a7ec07a3a80cbdec8c702fa0aef9b82f31c6e763b2"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/round5/foundry"
+    ],
+    "ref": "22134cfd95e5679079c300cd96bb930f09bbf942",
+    "src_bytes": 10046168
+  },
   "cap_usd": 13.5,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-10T04:33:32Z",
@@ -14,11 +39,54 @@
       "at": "2026-11-10T04:57:12Z",
       "message": "accepted: H200_141GB via nebius at $6.69/h, at most $13.38",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-10T05:07:42Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r5-foundry-001",
   "max_estimate_usd": 13.38,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "1H100.80S.32V",
+      "country": "FI",
+      "data_center": "FIN-02",
+      "disk_gb": 120,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 170,
+      "provider": "datacrunch",
+      "rank": 2,
+      "rate_usd_hr": 5.0199,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 32
+    },
+    {
+      "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+      "country": "US",
+      "data_center": "us-central1",
+      "disk_gb": 1500,
+      "gpu_memory_gb": 141,
+      "gpu_type": "H200_141GB",
+      "is_spot": false,
+      "listed_rate_usd_hr": 5.55,
+      "memory_gb": 200,
+      "price_source": "billed by a pod of this offer at 2026-11-10T03:01:21Z",
+      "provider": "nebius",
+      "rank": 3,
+      "rate_usd_hr": 6.69,
+      "security": "secure_cloud",
+      "socket": "SXM5",
+      "stock": "Available",
+      "vcpus": 16
+    }
+  ],
   "plan": {
     "max_estimate_usd": 13.38,
     "offers": [
@@ -46,12 +114,14 @@
     "window_hours": 2.0
   },
   "pods": [],
+  "pods_terminated": null,
   "review": {
     "at": "2026-11-10T04:57:04Z",
     "file": "jobs/r5-foundry-001/review.md",
     "sha256": "476a83c807ab3a702cef19afeda0a85eae5e92b34b26a3b8eca541be83ef32e2",
     "summary": "Fine to run: no blocker or major findings; peak about 19 GiB, largest array 0.84 x 2^31. 3 minor: cert-size gliders time guard, job_state written per stage, no OOM fallback in certification."
   },
-  "state": "queued",
-  "updated_at": "2026-11-10T05:05:35Z"
+  "run_started_epoch": 1794287262.990988,
+  "state": "provisioning",
+  "updated_at": "2026-11-10T05:07:42Z"
 }

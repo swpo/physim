@@ -130,7 +130,7 @@
       "job_id": "r5-foundry-001",
       "purpose": "Round-5 study foundry (track 1): screen up to 8192 draws (at least 2048) of the affinity transport NCA family (64^2, 2 kinds) with cheap certificates, certify the top 24, and measure the gliders world with the same estimator",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "queued"
+      "state": "provisioning"
     },
     {
       "billed_usd": 2.5555,
@@ -271,6 +271,6 @@
     "prior_spend_usd": 0.0,
     "spent_usd": 37.3999,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T05:05:47Z"
+    "updated_at": "2026-11-10T05:07:44Z"
   }
 }
