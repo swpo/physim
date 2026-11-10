@@ -34,6 +34,10 @@ Stages (each writes to --out as it finishes; progress in OUT/progress.txt):
                  PM    theta-conditional at the prior mean            PP   theta-conditional, theta ~ prior
                  S2@n  as S@n with the level-2-only posterior         Cded trained on n_C simulations at the truth
                  Sded@4  unconditional, trained on n_C simulations at posterior(4) draws (time permitting)
+                 Cft, Sft@4  the P0 net trained further on the simulations of Cded / Sded@4 (fine-tuned)
+               and, for net and ridge, the same policies on the short-history view of the items ('net~3',
+               'ridge~3': the level-1 summaries of the last three ticks only), where the item's own history
+               gives less of the hidden parameters away
   H report     fair energy scores per item and cell (vw.scoring), OES (vw.scoring.skill_report), sigma and rho per
                family and budget (round5/agentenv/evaluator/acceptance.py: the program's one implementation, with
                its bootstrap clustered by hidden world), the share of the oracle-predictable change of s_b reached
@@ -45,7 +49,10 @@ usage: python -B job2.py --out DIR [--prior prior.json] [--smoke] [--max-hours 2
 
 Changed AFTER the run of r5-vortexexam-003 (which used this file at 84550bc04), following the Mac's review of that
 job: every JSON and npz output now carries PILOT_NEVER_REUSE_AS_EXAM; a file over the per-file limit, an output
-dropped by the audit and a failed final report now give a non-zero exit. Nothing else differs.
+dropped by the audit and a failed final report now give a non-zero exit. For the follow-up job (r5-vortexexam-004,
+--prior prior_B.json) three things were added, none of which changes what the earlier policies compute: two
+intermediate size presets (mid2, low); the fine-tuned dedicated nets Cft and Sft@4; the short-history families
+net~3 and ridge~3.
 """
 from __future__ import annotations
 
@@ -99,7 +106,7 @@ PRESETS = {
     "small": dict(n_cand=10, n_truth=6, N_theta=192, K_d=2, n_lab=8, budgets=[1, 2, 4, 8], J_main=8, R=6, n_C=0),
 }
 COMMON = dict(m=64, steps_sim=8000, steps_real={1: 600, 2: 800, 4: 1000, 8: 1500, 16: 2000}, steps_C=3000,
-              rate_B=[256, 1024], n_post_draws=1000, sded_budget=4, R_ctl=6)
+              rate_B=[256, 1024], n_post_draws=1000, sded_budget=4, R_ctl=6, lr_ft=3e-4)
 if args.smoke:
     PR = {"H": 32, "names": ["eps", "mut128"], "lo": [0.0, 0.00625], "hi": [0.4, 0.025], "T_ep": 24,
           "prog_ticks": [8, 14], "c_prog": 200.0, "hs": [2, 4, 6], "viability": {"n_min": 1.0, "t_from": 4},
@@ -111,7 +118,7 @@ if args.smoke:
     SB.WINDOWS = ((3, 10), (10, 17), (17, 25))
     PRESETS = {"smoke": dict(n_cand=3, n_truth=2, N_theta=10, K_d=2, n_lab=4, budgets=[1, 2, 4], J_main=3, R=3, n_C=3)}
     COMMON = dict(m=6, steps_sim=30, steps_real={1: 20, 2: 20, 4: 20}, steps_C=20, rate_B=[4], n_post_draws=50,
-                  sded_budget=2, R_ctl=2)
+                  sded_budget=2, R_ctl=2, lr_ft=3e-4)
     N_SUB = 5
     if args.smoke_names:                           # the smoke test with another hidden set (boxes of --prior)
         _p = json.load(open(args.prior))
@@ -600,10 +607,28 @@ def save_scores():
     jdump("train_info.json", TRAIN)
 
 
-def fam_fit(fam, ds, d_theta, steps, seed, tag):
+def fam_base(fam):
+    """'net~3' -> ('net', 3): the family 'net' on the short-history view (history channels at the first 3 lags
+    only, i.e. the last three ticks before the anchor); 'net' -> ('net', None)."""
+    b, _, k = fam.partition("~")
+    return b, (int(k) if k else None)
+
+
+def fam_mask(fam, X):
+    """Zero the history channels beyond the family's lags (no-op for the full-history families)."""
+    _, k = fam_base(fam)
+    if k is None:
+        return X
+    return np.asarray(X, np.float32) * NN.lag_mask(k, np.shape(X)[-1])
+
+
+def fam_fit(fam, ds, d_theta, steps, seed, tag, init=None, lr=None):
     """Fit one family on a list of data sets -> list of models."""
+    if fam_base(fam)[1] is not None:
+        ds = [dict(d, Xtr=fam_mask(fam, d["Xtr"]), Xva=fam_mask(fam, d["Xva"])) for d in ds]
+        fam = fam_base(fam)[0]
     if fam == "net":
-        params, info = NN.train_nets(ds, steps=steps, seed=seed, log=log, tag=f"[{tag}]")
+        params, info = NN.train_nets(ds, steps=steps, seed=seed, log=log, tag=f"[{tag}]", init=init, lr=lr)
         TRAIN[tag] = info
         return params
     if fam == "ridge":
@@ -614,6 +639,8 @@ def fam_fit(fam, ds, d_theta, steps, seed, tag):
 
 
 def fam_samples(fam, model, X, m, seed):
+    X = fam_mask(fam, X)
+    fam = fam_base(fam)[0]
     if fam == "net":
         return NN.net_samples(model, X, m, seed)
     if fam in ("ridge", "lin2"):
@@ -621,7 +648,12 @@ def fam_samples(fam, model, X, m, seed):
     return NN.law_samples(model, X, m, seed)
 
 
-FAMS = ("net", "ridge", "law", "lin2")
+# 'net~3', 'ridge~3': the same families on the SHORT-HISTORY view of every item (the last three ticks of the
+# level-1 summaries instead of lags up to 64 ticks; added after r5-vortexexam-003, where the net trained on prior
+# simulations matched the net given the true parameters: with the full history an item gives the parameters away).
+# The law family uses only the state at the anchor, so it is its own short-history version.
+FAMS = ("net", "ridge", "law", "lin2", "net~3", "ridge~3")
+NETP0 = {}           # family -> parameters of its P0 net (the start of the fine-tuned dedicated nets)
 
 
 def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, exYc, exCls, draws, pdraws, pm):
@@ -690,6 +722,8 @@ def stage_predict(truths, Ud, sim, labS, labU, exS, exU, exY, exYc, exCls, draws
         t0 = time.time()
         try:
             mp0 = fam_fit(fam, [ds_p0], 0, CFG["steps_sim"], 300, f"{fam}|P0")
+            if fam_base(fam)[0] == "net":
+                NETP0[fam] = mp0[0]
             mc = fam_fit(fam, [ds_c], D_TH, CFG["steps_sim"], 301, f"{fam}|cond")
             score_all(fam, "P0", mp0, Xi, 400)
             score_all(fam, "C", mc, [NN.with_theta(Xc[i], to_u(truths[i])) for i in range(nT)], 410)
@@ -750,6 +784,21 @@ def stage_dedicated(name, thetas, Xi, L2a, Yi, seed):
             smp = fam_samples(fam, mdl[i], Xi[i], CFG["m"], 720 + i)
             put(f"{fam}|{name}", i, nT, NN.to_level2(smp, L2a[i]), Yi[i])
     save_scores()
+    # fine-tuned: the P0 net of the family, trained further on the same simulations ('Cft', 'Sft@n'): what a
+    # policy that simulates at its parameters gains over P0, without the handicap of training from scratch
+    ft = name.replace("Cded", "Cft").replace("Sded", "Sft")
+    for fam in FAMS:
+        if fam not in NETP0:
+            continue
+        try:
+            mdl = fam_fit(fam, ds, 0, CFG["steps_C"], 730 + seed, f"{fam}|{ft}", init=NETP0[fam], lr=CFG["lr_ft"])
+            for i in range(nT):
+                smp = fam_samples(fam, mdl[i], Xi[i], CFG["m"], 740 + i)
+                put(f"{fam}|{ft}", i, nT, NN.to_level2(smp, L2a[i]), Yi[i])
+        except Exception as exc:
+            FAILED.append(f"{fam} {ft}")
+            log(f"  {fam} {ft} FAILED {exc!r}\n{traceback.format_exc()}")
+    save_scores()
 
 
 def report(final=False):
@@ -792,10 +841,13 @@ def _report(final=False):
     for fam in FAMS:
         for n in CFG["budgets"]:
             for tag, kw in (("", {}), ("|S2", {"s_name": f"{fam}|S2@{n}"}),
-                            ("|ded", {"s_name": f"{fam}|Sded@{n}", "c_name": f"{fam}|Cded"})):
+                            ("|ded", {"s_name": f"{fam}|Sded@{n}", "c_name": f"{fam}|Cded"}),
+                            ("|ft", {"s_name": f"{fam}|Sft@{n}", "c_name": f"{fam}|Cft"})):
                 if tag == "|S2" and f"{fam}|S2@{n}" not in S:
                     continue
                 if tag == "|ded" and f"{fam}|Cded" not in S:
+                    continue
+                if tag == "|ft" and f"{fam}|Cft" not in S:
                     continue
                 r_ = shares(fam, n, **kw)
                 if r_:
@@ -838,7 +890,8 @@ def _report(final=False):
     gaps = {}
     for fam in FAMS:
         for a, b in ((f"{fam}|C", f"{fam}|PM"), (f"{fam}|C", f"{fam}|P0"), (f"{fam}|C", f"{fam}|PP"),
-                     (f"{fam}|Cded", f"{fam}|C"), (f"{fam}|P0", f"{fam}|PP")):
+                     (f"{fam}|Cded", f"{fam}|C"), (f"{fam}|P0", f"{fam}|PP"), (f"{fam}|Cft", f"{fam}|P0"),
+                     (f"{fam}|Cft", f"{fam}|C"), (f"{fam}|Cft", f"{fam}|Cded")):
             if a in agg and b in agg:
                 gaps[f"{a} - {b}"] = paired_gap(rep, a, b)
         for n in CFG["budgets"]:
@@ -848,13 +901,14 @@ def _report(final=False):
                     gaps[f"{a} - {b}"] = paired_gap(rep, a, b)
     for a, b in (("net|P0", "ridge|P0"), ("net|C", "ridge|C"), ("net|C", "law|C"), ("net|P0", "law|P0"),
                  ("net|C", "lin2|C"), ("net|P0", "lin2|P0"), ("ridge|C", "lin2|C"), ("law|C", "lin2|C"),
-                 ("net|Cded", "lin2|Cded"), ("K", "K0"), ("oracle", "O_noinput")):
+                 ("net|Cded", "lin2|Cded"), ("K", "K0"), ("oracle", "O_noinput"), ("net|P0", "net~3|P0"),
+                 ("net|C", "net~3|C"), ("net~3|C", "net~3|P0"), ("net~3|Cft", "net~3|P0"), ("ridge|P0", "ridge~3|P0")):
         if a in agg and b in agg:
             gaps[f"{a} - {b}"] = paired_gap(rep, a, b)
     out["gaps_oes_item_bootstrap"] = gaps
     jdump("prediction.json", out)
-    show = [k for k in sorted(agg) if k.split("|")[-1] in ("P0", "C", "PM", "Cded") or k.endswith(f"@{CFG['budgets'][-1]}")
-            or "Sded" in k]
+    show = [k for k in sorted(agg) if k.split("|")[-1] in ("P0", "C", "PM", "Cded", "Cft") or k.endswith(f"@{CFG['budgets'][-1]}")
+            or "Sded" in k or "Sft" in k]
     log("  OES " + ", ".join(f"{k} {agg[k]:.3f}" for k in show))
     if final:
         for k, v in acc.items():

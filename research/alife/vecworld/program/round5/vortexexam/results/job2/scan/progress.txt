@@ -1,0 +1,7 @@
+01:54:22 [   0.0 min] backend gpu devices ['cuda:0'] jax 0.12.0.1 smoke=False
+01:54:22 [   0.0 min]   scan: 27 settings x J=3, T=400, anchors [200], R=4, Mc=4, HB=32: 53136 member-ticks, est 2902s of 810s
+01:56:16 [   1.9 min]     scan main: members 0-81 of 81 at tick 200/400 (0.03 h)
+01:57:59 [   3.6 min]     scan main: members 0-81 of 81 at tick 400/400 (0.06 h)
+01:58:00 [   3.6 min]   scan main done in 217s
+02:00:08 [   5.8 min]     scan branches anchor 200: 648/648 (0.10 h)
+02:00:09 [   5.8 min] done (scan only) in 0.10 h; failed []

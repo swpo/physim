@@ -1,0 +1,353 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "study": "round5/vortexexam job2",
+ "pilot_never_reusable_as_exam": true,
+ "versions": {
+  "python": "3.12.16",
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4"
+ },
+ "backend": "gpu",
+ "devices": [
+  "cuda:0"
+ ],
+ "smoke": false,
+ "prior": {
+  "PILOT_NEVER_REUSE_AS_EXAM": true,
+  "H": 128,
+  "names": [
+   "eps",
+   "mut128",
+   "nu",
+   "e"
+  ],
+  "lo": [
+   0.0,
+   25.0,
+   0.07,
+   7.0
+  ],
+  "hi": [
+   0.4,
+   100.0,
+   0.13,
+   13.0
+  ],
+  "c_prog": 200.0,
+  "hs": [
+   8,
+   16,
+   32
+  ],
+  "T_ep": 404,
+  "prog_ticks": [
+   130,
+   210,
+   290,
+   370
+  ],
+  "viability": {
+   "n_min": 8.0,
+   "t_from": 20,
+   "rule": "fields finite, no tracker overflow, n_min <= N <= K - 1 at every state from t_from on"
+  },
+  "const": {
+   "centre": {
+    "N": 30.874,
+    "s_b": 0.509,
+    "fb_mass": 0.492,
+    "fb_mean": 0.425,
+    "fb_sd": 0.263,
+    "mixed": 0.525,
+    "log_mass_tot": 5.942,
+    "log_mass_mean": 2.519,
+    "speed_mean": 1.686,
+    "turnover": 1.15
+   },
+   "scale": {
+    "N": 3.865,
+    "s_b": 0.241,
+    "fb_mass": 0.164,
+    "fb_mean": 0.181,
+    "fb_sd": 0.07,
+    "mixed": 0.262,
+    "log_mass_tot": 0.127,
+    "log_mass_mean": 0.137,
+    "speed_mean": 0.497,
+    "turnover": 1.148
+   },
+   "sc_N": 4.038,
+   "sc_s": 0.25,
+   "N_ref": 31.5
+  },
+  "selection": {
+   "rule_choice_d3": [
+    "eps",
+    "nu",
+    "e"
+   ],
+   "ranked_other_families": [
+    "nu",
+    "e",
+    "k",
+    "mut128",
+    "kl"
+   ],
+   "basis": "proxy: max |paired z| of N, s_b early, s_b late over the main runs (no branches)",
+   "manual_override": true,
+   "why": "d = 4 because the measured throughput (444 member-ticks/s at 128^2) allows a 768-1024 point design; eps, nu and e are the rule's choice on the main-run proxy (selection, flow, fuel); mut128 is added instead of the next family by the proxy (growth: k) because it sets the mutation constant of the level-2 law, which is the study's question",
+   "family_best": {
+    "selection": "eps",
+    "fuel": "e",
+    "flow": "nu",
+    "mutation": "mut128",
+    "growth": "k",
+    "label": "kl"
+   },
+   "headroom": {
+    "eps": 7.091,
+    "kF": 3.207,
+    "e": 8.914,
+    "nu": 13.535,
+    "mut128": 4.521,
+    "k": 6.812,
+    "mu": 3.784,
+    "kl": 1.547,
+    "dl": 0.626,
+    "Dl": 1.484,
+    "adv": 3.719,
+    "kY": 2.337,
+    "wi": 23.881
+   },
+   "viable_both": {
+    "eps": true,
+    "kF": true,
+    "e": true,
+    "nu": true,
+    "mut128": true,
+    "k": true,
+    "mu": true,
+    "kl": true,
+    "dl": true,
+    "Dl": true,
+    "adv": true,
+    "kY": true,
+    "wi": false
+   },
+   "scan_H": 128,
+   "scan_J": 12,
+   "source": "results/analysis1.json scan (job r5-vortexexam-002, scan_main.npz)"
+  },
+  "mutation": "mut128 = time between mutation events per 128 x 128 px of box (declared per unit area); at 128 x 128 px the interval is mut128 x 1",
+  "program_mix": {
+   "classes": [
+    "a",
+    "b",
+    "c",
+    "d"
+   ],
+   "nats": 200.0,
+   "u_max": 0.2,
+   "doc": "vxlib.make_program"
+  }
+ },
+ "common": {
+  "m": 64,
+  "steps_sim": 8000,
+  "steps_real": {
+   "1": 600,
+   "2": 800,
+   "4": 1000,
+   "8": 1500,
+   "16": 2000
+  },
+  "steps_C": 3000,
+  "rate_B": [
+   256,
+   1024
+  ],
+  "n_post_draws": 1000,
+  "sded_budget": 4,
+  "R_ctl": 6
+ },
+ "net": {
+  "BATCH": 512,
+  "CLIP": 1.0,
+  "DEPTH": 3,
+  "EVAL_EVERY": 250,
+  "LR": 0.001,
+  "M_TRAIN": 8,
+  "NOISE": 8,
+  "WD": 0.0001,
+  "WIDTH": 128
+ },
+ "lags": [
+  0,
+  1,
+  2,
+  4,
+  8,
+  16,
+  32,
+  64
+ ],
+ "hist": [
+  "N",
+  "s_b",
+  "fb_mass",
+  "fb_mean",
+  "fb_sd",
+  "mixed",
+  "log_mass_tot",
+  "log_mass_mean",
+  "speed_mean",
+  "near_lo",
+  "near_hi",
+  "turnover"
+ ],
+ "feature_windows": [
+  [
+   60,
+   146
+  ],
+  [
+   146,
+   232
+  ],
+  [
+   232,
+   319
+  ],
+  [
+   319,
+   405
+  ]
+ ],
+ "const": {
+  "centre": {
+   "N": 30.874,
+   "s_b": 0.509,
+   "fb_mass": 0.492,
+   "fb_mean": 0.425,
+   "fb_sd": 0.263,
+   "mixed": 0.525,
+   "log_mass_tot": 5.942,
+   "log_mass_mean": 2.519,
+   "speed_mean": 1.686,
+   "near_lo": 0.1,
+   "near_hi": 0.1,
+   "turnover": 1.15
+  },
+  "scale": {
+   "N": 3.865,
+   "s_b": 0.241,
+   "fb_mass": 0.164,
+   "fb_mean": 0.181,
+   "fb_sd": 0.07,
+   "mixed": 0.262,
+   "log_mass_tot": 0.127,
+   "log_mass_mean": 0.137,
+   "speed_mean": 0.497,
+   "near_lo": 0.15,
+   "near_hi": 0.15,
+   "turnover": 1.148
+  },
+  "sc_N": 4.038,
+  "sc_s": 0.25,
+  "N_ref": 31.5
+ },
+ "precision": "float64 world, float32 vortex lists and nets",
+ "secret_commitment": "0d79f6409cc2d90e049a5c51c63e945dc0141bf3410e57d123877939740f5217",
+ "rate_rows": [
+  {
+   "B": 256,
+   "member_ticks_per_s": 165.8138722601896,
+   "first_call_s": 8.264021635055542
+  },
+  {
+   "B": 1024,
+   "member_ticks_per_s": 169.39994792144483,
+   "first_call_s": 17.6835515499115
+  }
+ ],
+ "bmax": 1024,
+ "rate": 169.39994792144483,
+ "preset": "small",
+ "config": {
+  "n_cand": 10,
+  "n_truth": 6,
+  "N_theta": 192,
+  "K_d": 2,
+  "n_lab": 8,
+  "budgets": [
+   1,
+   2,
+   4,
+   8
+  ],
+  "J_main": 8,
+  "R": 6,
+  "n_C": 0,
+  "m": 64,
+  "steps_sim": 8000,
+  "steps_real": {
+   "1": 600,
+   "2": 800,
+   "4": 1000,
+   "8": 1500,
+   "16": 2000
+  },
+  "steps_C": 3000,
+  "rate_B": [
+   256,
+   1024
+  ],
+  "n_post_draws": 1000,
+  "sded_budget": 4,
+  "R_ctl": 6
+ },
+ "planned_member_ticks": 293504,
+ "planned_sim_seconds_at_0p8_rate": 2165.7621770352125,
+ "outputs": {
+  "total_bytes": 5013041,
+  "largest": [
+   [
+    "design_S_00.npz",
+    2704163
+   ],
+   [
+    "scores.npz",
+    730504
+   ],
+   [
+    "posterior_draws.npz",
+    695355
+   ],
+   [
+    "exam.npz",
+    330968
+   ],
+   [
+    "lab.npz",
+    315665
+   ],
+   [
+    "prediction.json",
+    127427
+   ]
+  ],
+  "dropped": [],
+  "file_limit": 19922944,
+  "total_limit": 41943040
+ },
+ "member_ticks": {
+  "design": 155136,
+  "lab_all_candidates": 32320,
+  "exam_main_all_candidates": 32320,
+  "exam_rep": 36864,
+  "exam_ctl": 36864
+ },
+ "member_ticks_total": 293504,
+ "hours": 0.5439756245745553,
+ "failed": []
+}

@@ -36,7 +36,7 @@ from evaluator import acceptance as ACC  # noqa: E402
 D = sys.argv[1]
 RES = os.environ.get("VX_RES", os.path.join(HERE, "results"))
 MARK = "PILOT_NEVER_REUSE_AS_EXAM"
-FAMS = ("net", "ridge", "law", "lin2")
+FAMS = ("net", "ridge", "law", "lin2", "net~3", "ridge~3")   # those present in the job's scores are used
 
 
 def J(name):
@@ -99,10 +99,10 @@ ladder = {"L_K": LK, "L_K0": L.get("K0"), "L_O": LO, "L_O_noinput": L.get("O_noi
           "n_truths": nT, "n_items_per_truth": nI, "budgets_episodes": budgets, "families": {}}
 for fam in FAMS:
     row = {}
-    for pol in ("P0", "PP", "PM", "C", "Cded"):
+    for pol in ("P0", "PP", "PM", "C", "Cded", "Cft"):
         if f"{fam}|{pol}" in L:
             row[pol] = {"L": L[f"{fam}|{pol}"], "skill": skill(f"{fam}|{pol}")}
-    for pol in ("D", "S", "S2", "Sded"):
+    for pol in ("D", "S", "S2", "Sded", "Sft"):
         r_ = {str(n): {"L": L[f"{fam}|{pol}@{n}"], "skill": skill(f"{fam}|{pol}@{n}")} for n in budgets
               if f"{fam}|{pol}@{n}" in L}
         if r_:
@@ -130,13 +130,15 @@ def gap(a, b):
 
 gaps = {}
 for fam in FAMS:
-    for a, b in (("P0", "C"), ("PM", "C"), ("PP", "C"), ("C", "Cded"), ("P0", "Cded"), ("PP", "P0")):
+    for a, b in (("P0", "C"), ("PM", "C"), ("PP", "C"), ("C", "Cded"), ("P0", "Cded"), ("PP", "P0"), ("P0", "Cft"),
+                 ("C", "Cft"), ("Cded", "Cft"), ("PM", "P0")):
         g = gap(f"{fam}|{a}", f"{fam}|{b}")
         if g:
             gaps[f"{fam}|{a} - {fam}|{b}"] = g
     for n in budgets:
         for a, b in ((f"S@{n}", "C"), ("P0", f"S@{n}"), (f"D@{n}", "P0"), (f"D@{n}", "C"), (f"D@{n}", f"S@{n}"),
-                     (f"S2@{n}", f"S@{n}"), (f"Sded@{n}", "Cded"), ("P0", f"Sded@{n}")):
+                     (f"S2@{n}", f"S@{n}"), (f"Sded@{n}", "Cded"), ("P0", f"Sded@{n}"), (f"Sft@{n}", "Cft"),
+                     ("P0", f"Sft@{n}")):
             g = gap(f"{fam}|{a}", f"{fam}|{b}")
             if g:
                 gaps[f"{fam}|{a} - {fam}|{b}"] = g
@@ -145,7 +147,13 @@ for pol in ["P0", "C", "PM", "Cded"] + [f"D@{n}" for n in budgets]:
         g = gap(f"{a}|{pol}", f"{b}|{pol}")
         if g:
             gaps[f"{a}|{pol} - {b}|{pol}"] = g
-for a, b in (("K0", "K"), ("O_noinput", "oracle"), ("K", "net|P0"), ("K", "net|C"), ("net|C", "oracle"), ("net|Cded", "oracle")):
+for pol in ["P0", "C", "PM", "Cded", "Cft"] + [f"D@{n}" for n in budgets] + [f"S@{n}" for n in budgets]:
+    for a, b in (("net~3", "net"), ("ridge~3", "ridge"), ("law", "net~3"), ("ridge~3", "net~3")):
+        g = gap(f"{a}|{pol}", f"{b}|{pol}")
+        if g:
+            gaps[f"{a}|{pol} - {b}|{pol}"] = g
+for a, b in (("K0", "K"), ("O_noinput", "oracle"), ("K", "net|P0"), ("K", "net|C"), ("net|C", "oracle"), ("net|Cded", "oracle"),
+             ("net|Cft", "oracle"), ("net~3|P0", "net|C"), ("net~3|P0", "net|Cft")):
     g = gap(a, b)
     if g:
         gaps[f"{a} - {b}"] = g
@@ -197,24 +205,42 @@ for fam in FAMS:
             r_ = acc_row(fam, n, "K", PRIM, s=f"{fam}|Sded@{n}", c=f"{fam}|Cded")
             if r_:
                 acc[f"{fam}@{n}|K|joint|dedicated"] = r_
+        if f"{fam}|Cft" in SC:
+            r_ = acc_row(fam, n, "K", PRIM, s=f"{fam}|Sft@{n}", c=f"{fam}|Cft")
+            if r_:
+                acc[f"{fam}@{n}|K|joint|finetuned"] = r_
+        if fam.endswith("~3") and f"{fam.split('~')[0]}|C" in SC:
+            # short-history null against the full-history C of the same base family: what the item's history is
+            # worth to a policy that cannot infer the parameters (reported, not an acceptance quantity)
+            b = fam.split("~")[0]
+            cbest = f"{b}|Cft" if f"{b}|Cft" in SC else f"{b}|C"
+            r_ = acc_row(fam, n, "K", PRIM, c=cbest)
+            if r_:
+                acc[f"{fam}@{n}|K|joint|C_full_history"] = r_
         if anchor_of is not None and n == budgets[-1]:           # by anchor tick (history length), largest budget
             for ai, a_ in enumerate(ANCH):
                 r_ = acc_row(fam, n, "K", PRIM, rows=np.flatnonzero(anchor_of == ai))
                 if r_:
                     acc[f"{fam}@{n}|K|joint|anchor{a_}"] = r_
-# the strongest null and the strongest C over the families (not the roadmap's one-family rule; a sensitivity)
+# the strongest null and the strongest C over the families (not the roadmap's one-family rule; a sensitivity),
+# separately for the full-history view and the short-history view (net~3, ridge~3 and the law family)
 best = {}
+rng_b = np.random.default_rng(5)
 for n in budgets:
-    cands_null = [k for k in SC if k.endswith("|P0") or k.endswith(f"|D@{n}")]
-    cands_c = [k for k in SC if k.endswith("|C") or k.endswith("|Cded")]
-    cands_s = [k for k in SC if k.endswith(f"|S@{n}") or k.endswith(f"|Sded@{n}")]
-    if cands_null and cands_c:
-        kn, kc = min(cands_null, key=lambda k: L[k]), min(cands_c, key=lambda k: L[k])
-        kp0 = min([k for k in SC if k.endswith("|P0")], key=lambda k: L[k])
-        ks = min(cands_s, key=lambda k: L[k]) if cands_s else None
-        best[str(n)] = {"null": kn, "C": kc, "P0": kp0, "S": ks,
-                        "sigma": (L[kn] - L[kc]) / (LK - L[kc]),
-                        "rho": None if ks is None or L[kp0] == L[kc] else (L[kp0] - L[ks]) / (L[kp0] - L[kc])}
+    for view, ok in (("full_history", lambda k: "~" not in k), ("short_history", lambda k: "~" in k or k.startswith("law|"))):
+        cands_null = [k for k in SC if ok(k) and (k.endswith("|P0") or k.endswith(f"|D@{n}"))]
+        cands_c = [k for k in SC if ok(k) and k.split("|")[-1] in ("C", "Cded", "Cft")]
+        cands_s = [k for k in SC if ok(k) and k.split("|")[-1] in (f"S@{n}", f"Sded@{n}", f"Sft@{n}")]
+        if cands_null and cands_c:
+            kn, kc = min(cands_null, key=lambda k: L[k]), min(cands_c, key=lambda k: L[k])
+            kp0 = min([k for k in SC if ok(k) and k.endswith("|P0")], key=lambda k: L[k])
+            ks = min(cands_s, key=lambda k: L[k]) if cands_s else None
+            dn, dc = (Lit[kn] - Lit[kc]).mean(1), (Lit["K"] - Lit[kc]).mean(1)       # per truth
+            bsig = np.array([dn[q].mean() / dc[q].mean() for q in rng_b.integers(0, nT, size=(1000, nT))])
+            best.setdefault(view, {})[str(n)] = {
+                "null": kn, "C": kc, "P0": kp0, "S": ks, "sigma": (L[kn] - L[kc]) / (LK - L[kc]),
+                "sigma_se_truths": float(bsig.std()),
+                "rho": None if ks is None or L[kp0] == L[kc] else (L[kp0] - L[ks]) / (L[kp0] - L[kc])}
 out["acceptance"] = {"note": "rows 'family@n|K reference|cells'; sigma = (L(null) - L(C)) / (L(K) - L(C)), null = the "
                              "better of D@n and P0; rho = (L(P0) - L(S@n)) / (L(P0) - L(C)); SE and 5-95% range from the "
                              "bootstrap clustered by truth; L per cell (mean over the cells used); 'anchor<t>' = only the items "
@@ -258,7 +284,7 @@ cchg = {"hs_ticks": HS, "coords": ["N", "s_b"],
         "reached_within_truth": {}, "reached_pooled": {},
         "note": "reached = (V_change - Ve) / (V_change - Vu), Ve = mean squared error of the predictive mean; "
                 "se = bootstrap over truths; rows = horizons, columns = (N, s_b)"}
-keep = [k for k in MU if k in ("K", "K0", "anchor", "O_noinput") or k.split("|")[-1] in ("P0", "C", "PM", "Cded")
+keep = [k for k in MU if k in ("K", "K0", "anchor", "O_noinput") or k.split("|")[-1] in ("P0", "C", "PM", "Cded", "Cft")
         or k.split("@")[-1] in (str(budgets[-1]) if budgets else "", "4")]
 for k in keep:
     Ve_t = ((Yt - MU[k][:, :, None]) ** 2).mean((1, 2))               # (nT, nh, 2)
@@ -270,7 +296,8 @@ for k in keep:
     cchg["reached_pooled"][k] = ((Vc_p - Ve_p) / (Vc_p - Vu_p)).tolist()
 # nonlinear against linear at the true parameters: difference of reached shares with the truth bootstrap
 for a, b in (("net|C", "lin2|C"), ("law|C", "lin2|C"), ("ridge|C", "lin2|C"), ("net|Cded", "lin2|Cded"), ("net|C", "law|C"),
-             ("net|C", "net|P0"), ("net|Cded", "net|P0")):
+             ("net|C", "net|P0"), ("net|Cded", "net|P0"), ("net|Cft", "net|P0"), ("net|P0", "lin2|P0"), ("net|P0", "ridge|P0"),
+             ("net|Cft", "lin2|Cded"), ("net|P0", "net~3|P0")):
     if a in MU and b in MU:
         na = Vc_t - ((Yt - MU[a][:, :, None]) ** 2).mean((1, 2))
         nb = Vc_t - ((Yt - MU[b][:, :, None]) ** 2).mean((1, 2))

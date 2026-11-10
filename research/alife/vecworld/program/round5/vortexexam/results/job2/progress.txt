@@ -1,0 +1,100 @@
+01:21:42 [   0.0 min] backend gpu devices ['cuda:0'] jax 0.12.0.1 smoke=False H=128 theta=['eps', 'mut128', 'nu', 'e']
+01:21:58 [   0.3 min]   rate H=128 B=256: 165.8 member-ticks/s (first call 8s)
+01:22:33 [   0.9 min]   rate H=128 B=1024: 169.4 member-ticks/s (first call 18s)
+01:22:33 [   0.9 min] == preset small: 293504 member-ticks planned, est 36 min of sims at batch 1024; budget 94 min
+01:29:44 [   8.0 min]     episodes episodes: tick 130/404 x 544
+01:34:09 [  12.5 min]     episodes episodes: tick 210/404 x 544
+01:38:29 [  16.8 min]     episodes episodes: tick 290/404 x 544
+01:42:49 [  21.1 min]     episodes episodes: tick 370/404 x 544
+01:44:44 [  23.0 min]     episodes episodes: tick 404/404 x 544
+01:44:44 [  23.0 min]     episodes: episodes 544/544 (0.38 h)
+01:44:44 [  23.0 min] truths [[0.0045, 95.7587, 0.0732, 7.4596], [0.2637, 82.6245, 0.0804, 11.9917], [0.1208, 60.4736, 0.1229, 12.0871], [0.0938, 70.9464, 0.1263, 12.8804], [0.15, 84.4682, 0.1135, 8.9923], [0.3135, 91.187, 0.0955, 12.8825]] (10/10 candidates viable)
+01:44:45 [  23.1 min]     wrote design_S_00.npz: 2.6 MB
+01:44:45 [  23.1 min] design: 0.997 of episodes viable, 0.995 of thetas; p_v {'n': 192, 'frac_viable': 0.9947916666666666, 'mean_loglik': -0.0038005199324131563}
+01:44:45 [  23.1 min]   level-1 summaries: projection R2 [0.96, 0.787, 0.906, 0.995], emulator CV R2 [0.972, 0.857, 0.952, 0.998]
+01:45:12 [  23.5 min]   level-2 summaries: projection R2 [0.824, 0.642, 0.767, 0.89], emulator CV R2 [0.897, 0.75, 0.906, 0.978]
+01:45:38 [  23.9 min]   L1@1: contraction [0.227, 0.436, 0.285, 0.064] in90 0.88 err/prior sd [0.2, 0.16, 0.11, 0.07]
+01:45:38 [  23.9 min]   L1@2: contraction [0.176, 0.367, 0.222, 0.049] in90 0.92 err/prior sd [0.14, 0.16, 0.09, 0.04]
+01:45:38 [  23.9 min]   L1@4: contraction [0.136, 0.335, 0.151, 0.038] in90 0.96 err/prior sd [0.09, 0.31, 0.11, 0.02]
+01:45:38 [  23.9 min]   L1@8: contraction [0.122, 0.308, 0.129, 0.034] in90 0.96 err/prior sd [0.09, 0.29, 0.08, 0.02]
+01:45:38 [  23.9 min]   L2@1: contraction [0.383, 0.652, 0.369, 0.208] in90 0.96 err/prior sd [0.33, 0.47, 0.29, 0.18]
+01:45:38 [  23.9 min]   L2@2: contraction [0.335, 0.574, 0.301, 0.189] in90 1.00 err/prior sd [0.23, 0.29, 0.11, 0.16]
+01:45:38 [  23.9 min]   L2@4: contraction [0.297, 0.527, 0.215, 0.158] in90 0.92 err/prior sd [0.21, 0.48, 0.07, 0.16]
+01:45:38 [  23.9 min]   L2@8: contraction [0.282, 0.484, 0.203, 0.155] in90 0.88 err/prior sd [0.23, 0.43, 0.11, 0.18]
+01:46:40 [  25.0 min]     exam rep replicates at anchor 130 done (0.42 h)
+01:47:35 [  25.9 min]     exam rep replicates at anchor 210 done (0.43 h)
+01:48:30 [  26.8 min]     exam rep replicates at anchor 290 done (0.45 h)
+01:49:26 [  27.7 min]     exam rep replicates at anchor 370 done (0.46 h)
+01:50:21 [  28.7 min]     exam ctl replicates at anchor 130 done (0.48 h)
+01:51:17 [  29.6 min]     exam ctl replicates at anchor 210 done (0.49 h)
+01:52:12 [  30.5 min]     exam ctl replicates at anchor 290 done (0.51 h)
+01:53:08 [  31.4 min]     exam ctl replicates at anchor 370 done (0.52 h)
+01:53:08 [  31.4 min] exam: 6 truths x 8 runs x 4 anchors = 192 items, R = 6; main runs viable 1.000
+01:53:09 [  31.5 min]   design training set: 383 episodes, 148695 examples, 107 inputs
+01:53:16 [  31.6 min]   net[net|P0] step 1000/8000 train [0.2768999934196472] val [0.30079999566078186] (6s)
+01:53:17 [  31.6 min]   net[net|P0] step 2000/8000 train [0.287200003862381] val [0.30630001425743103] (7s)
+01:53:18 [  31.6 min]   net[net|P0] step 3000/8000 train [0.2793000042438507] val [0.31349998712539673] (8s)
+01:53:19 [  31.6 min]   net[net|P0] step 4000/8000 train [0.2653000056743622] val [0.3179999887943268] (9s)
+01:53:20 [  31.6 min]   net[net|P0] step 5000/8000 train [0.2700999975204468] val [0.32499998807907104] (10s)
+01:53:21 [  31.7 min]   net[net|P0] step 6000/8000 train [0.2378000020980835] val [0.3310000002384186] (11s)
+01:53:22 [  31.7 min]   net[net|P0] step 7000/8000 train [0.25679999589920044] val [0.3336000144481659] (12s)
+01:53:22 [  31.7 min]   net[net|P0] step 8000/8000 train [0.24130000174045563] val [0.336899995803833] (12s)
+01:53:27 [  31.8 min]   net[net|cond] step 1000/8000 train [0.27559998631477356] val [0.2937000095844269] (5s)
+01:53:28 [  31.8 min]   net[net|cond] step 2000/8000 train [0.28049999475479126] val [0.3001999855041504] (5s)
+01:53:29 [  31.8 min]   net[net|cond] step 3000/8000 train [0.2712000012397766] val [0.3018999993801117] (6s)
+01:53:30 [  31.8 min]   net[net|cond] step 4000/8000 train [0.23350000381469727] val [0.31220000982284546] (7s)
+01:53:31 [  31.8 min]   net[net|cond] step 5000/8000 train [0.24220000207424164] val [0.32089999318122864] (8s)
+01:53:32 [  31.8 min]   net[net|cond] step 6000/8000 train [0.23350000381469727] val [0.32089999318122864] (9s)
+01:53:33 [  31.9 min]   net[net|cond] step 7000/8000 train [0.23880000412464142] val [0.32589998841285706] (10s)
+01:53:33 [  31.9 min]   net[net|cond] step 8000/8000 train [0.24879999458789825] val [0.32739999890327454] (11s)
+01:53:39 [  32.0 min]   family net: simulation-trained policies scored in 30s
+01:53:39 [  32.0 min]   OES net|C 0.561, net|P0 0.557, net|PM 0.344, net|S2@8 0.575, net|S@8 0.564
+01:53:42 [  32.0 min]   family ridge: simulation-trained policies scored in 3s
+01:53:43 [  32.0 min]   OES net|C 0.561, net|P0 0.557, net|PM 0.344, net|S2@8 0.575, net|S@8 0.564, ridge|C 0.484, ridge|P0 0.448, ridge|PM -0.181, ridge|S2@8 0.489, ridge|S@8 0.487
+01:53:46 [  32.1 min]   family law: simulation-trained policies scored in 3s
+01:53:47 [  32.1 min]   OES law|C 0.340, law|P0 0.193, law|PM -0.116, law|S2@8 0.343, law|S@8 0.341, net|C 0.561, net|P0 0.557, net|PM 0.344, net|S2@8 0.575, net|S@8 0.564, ridge|C 0.484, ridge|P0 0.448, ridge|PM -0.181, ridge|S2@8 0.489, ridge|S@8 0.487
+01:53:50 [  32.1 min]   family lin2: simulation-trained policies scored in 3s
+01:53:52 [  32.2 min]   OES law|C 0.340, law|P0 0.193, law|PM -0.116, law|S2@8 0.343, law|S@8 0.341, lin2|C 0.394, lin2|P0 0.368, lin2|PM 0.188, lin2|S2@8 0.383, lin2|S@8 0.390, net|C 0.561, net|P0 0.557, net|PM 0.344, net|S2@8 0.575, net|S@8 0.564, ridge|C 0.484, ridge|P0 0.448, ridge|PM -0.181, ridge|S2@8 0.489, ridge|S@8 0.487
+01:53:58 [  32.3 min]   net[net|D@1] step 600/600 train [0.10300000011920929, 0.04390000179409981, 0.03539999946951866, 0.039799999445676804, 0.038100000470876694, 0.03799999877810478] val [-600.0, -600.0, -600.0, -600.0, -600.0, -600.0] (5s)
+01:54:02 [  32.3 min]   net[net|D@2] step 800/800 train [0.15690000355243683, 0.061000000685453415, 0.03700000047683716, 0.0421999990940094, 0.04989999905228615, 0.04839999973773956] val [-800.0, -800.0, -800.0, -800.0, -800.0, -800.0] (2s)
+01:54:07 [  32.4 min]   net[net|D@4] step 1000/1000 train [0.12999999523162842, 0.057100001722574234, 0.04450000077486038, 0.0414000004529953, 0.05260000005364418, 0.05000000074505806] val [0.7074999809265137, 0.399399995803833, 0.22290000319480896, 0.29120001196861267, 0.541700005531311, 0.36230000853538513] (4s)
+01:54:11 [  32.5 min]   net[net|D@8] step 1000/1500 train [0.20649999380111694, 0.0851999968290329, 0.05130000039935112, 0.05400000140070915, 0.10180000215768814, 0.07829999923706055] val [0.5806999802589417, 0.41670000553131104, 0.1850000023841858, 0.17020000517368317, 0.5267999768257141, 0.3050999939441681] (3s)
+01:54:12 [  32.5 min]   net[net|D@8] step 1500/1500 train [0.18219999969005585, 0.07240000367164612, 0.048900000751018524, 0.048700001090765, 0.07919999957084656, 0.06790000200271606] val [0.6438000202178955, 0.42579999566078186, 0.18970000743865967, 0.1851000040769577, 0.5526000261306763, 0.3179999887943268] (3s)
+01:54:15 [  32.6 min]   OES law|C 0.340, law|D@8 0.490, law|P0 0.193, law|PM -0.116, law|S2@8 0.343, law|S@8 0.341, lin2|C 0.394, lin2|D@8 0.499, lin2|P0 0.368, lin2|PM 0.188, lin2|S2@8 0.383, lin2|S@8 0.390, net|C 0.561, net|D@8 0.194, net|P0 0.557, net|PM 0.344, net|S2@8 0.575, net|S@8 0.564, ridge|C 0.484, ridge|D@8 0.371, ridge|P0 0.448, ridge|PM -0.181, ridge|S2@8 0.489, ridge|S@8 0.487
+01:54:17 [  32.6 min]   OES law|C 0.340, law|D@8 0.490, law|P0 0.193, law|PM -0.116, law|S2@8 0.343, law|S@8 0.341, lin2|C 0.394, lin2|D@8 0.499, lin2|P0 0.368, lin2|PM 0.188, lin2|S2@8 0.383, lin2|S@8 0.390, net|C 0.561, net|D@8 0.194, net|P0 0.557, net|PM 0.344, net|S2@8 0.575, net|S@8 0.564, ridge|C 0.484, ridge|D@8 0.371, ridge|P0 0.448, ridge|PM -0.181, ridge|S2@8 0.489, ridge|S@8 0.487
+01:54:20 [  32.6 min]   OES law|C 0.340, law|D@8 0.490, law|P0 0.193, law|PM -0.116, law|S2@8 0.343, law|S@8 0.341, lin2|C 0.394, lin2|D@8 0.499, lin2|P0 0.368, lin2|PM 0.188, lin2|S2@8 0.383, lin2|S@8 0.390, net|C 0.561, net|D@8 0.194, net|P0 0.557, net|PM 0.344, net|S2@8 0.575, net|S@8 0.564, ridge|C 0.484, ridge|D@8 0.371, ridge|P0 0.448, ridge|PM -0.181, ridge|S2@8 0.489, ridge|S@8 0.487
+01:54:20 [  32.6 min]   acceptance net@1: sigma -0.003, rho -2.350, null_is P0
+01:54:20 [  32.6 min]   acceptance net@1|S2: sigma -0.003, rho 2.583, null_is P0
+01:54:20 [  32.6 min]   acceptance net@2: sigma -0.003, rho 5.224, null_is P0
+01:54:20 [  32.6 min]   acceptance net@2|S2: sigma -0.003, rho -2.398, null_is P0
+01:54:20 [  32.6 min]   acceptance net@4: sigma -0.003, rho 5.913, null_is P0
+01:54:20 [  32.6 min]   acceptance net@4|S2: sigma -0.003, rho -1.998, null_is P0
+01:54:20 [  32.6 min]   acceptance net@8: sigma -0.003, rho -2.723, null_is P0
+01:54:20 [  32.6 min]   acceptance net@8|S2: sigma -0.003, rho -9.608, null_is P0
+01:54:20 [  32.6 min]   acceptance ridge@1: sigma 0.065, rho 1.126, null_is P0
+01:54:20 [  32.6 min]   acceptance ridge@1|S2: sigma 0.065, rho 0.487, null_is P0
+01:54:20 [  32.6 min]   acceptance ridge@2: sigma 0.065, rho 1.313, null_is P0
+01:54:20 [  32.6 min]   acceptance ridge@2|S2: sigma 0.065, rho 0.896, null_is P0
+01:54:20 [  32.6 min]   acceptance ridge@4: sigma 0.065, rho 0.949, null_is P0
+01:54:20 [  32.6 min]   acceptance ridge@4|S2: sigma 0.065, rho 1.065, null_is P0
+01:54:20 [  32.6 min]   acceptance ridge@8: sigma 0.065, rho 1.119, null_is P0
+01:54:20 [  32.6 min]   acceptance ridge@8|S2: sigma 0.065, rho 1.212, null_is P0
+01:54:20 [  32.6 min]   acceptance law@1: sigma -0.097, rho 0.957, null_is D
+01:54:20 [  32.6 min]   acceptance law@1|S2: sigma -0.097, rho 0.966, null_is D
+01:54:20 [  32.6 min]   acceptance law@2: sigma -0.315, rho 1.042, null_is D
+01:54:20 [  32.6 min]   acceptance law@2|S2: sigma -0.315, rho 1.083, null_is D
+01:54:20 [  32.6 min]   acceptance law@4: sigma -0.368, rho 1.025, null_is D
+01:54:20 [  32.6 min]   acceptance law@4|S2: sigma -0.368, rho 1.059, null_is D
+01:54:20 [  32.6 min]   acceptance law@8: sigma -0.421, rho 1.026, null_is D
+01:54:20 [  32.6 min]   acceptance law@8|S2: sigma -0.421, rho 1.043, null_is D
+01:54:20 [  32.6 min]   acceptance lin2@1: sigma 0.059, rho 0.765, null_is P0
+01:54:20 [  32.6 min]   acceptance lin2@1|S2: sigma 0.059, rho 0.580, null_is P0
+01:54:20 [  32.6 min]   acceptance lin2@2: sigma 0.059, rho 1.249, null_is P0
+01:54:20 [  32.6 min]   acceptance lin2@2|S2: sigma 0.059, rho 1.158, null_is P0
+01:54:20 [  32.6 min]   acceptance lin2@4: sigma 0.059, rho 1.082, null_is P0
+01:54:20 [  32.6 min]   acceptance lin2@4|S2: sigma 0.059, rho 0.803, null_is P0
+01:54:20 [  32.6 min]   acceptance lin2@8: sigma -0.244, rho 0.905, null_is D
+01:54:20 [  32.6 min]   acceptance lin2@8|S2: sigma -0.244, rho 0.633, null_is D
+01:54:20 [  32.6 min] outputs: 4.8 MB in 15 files; largest [('design_S_00.npz', 2.6), ('scores.npz', 0.7), ('posterior_draws.npz', 0.7)]; dropped []
+01:54:20 [  32.6 min] done: 293504 member-ticks, 0.54 h, failed []
+job2 exit 0, scan exit 0

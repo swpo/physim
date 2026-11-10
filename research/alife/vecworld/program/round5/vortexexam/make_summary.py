@@ -233,7 +233,8 @@ def exam_sections(tag, jdir, jid, afile):
         S["acceptance_variants"] = V(r(A2["acceptance"]["rows"], 3), src3 + " acceptance.rows", A2["acceptance"]["note"])
         S["acceptance_best_over_families"] = V(r(A2["acceptance"]["best_over_families"], 3), src3 + " acceptance.best_over_families",
                                                "a sensitivity outside the roadmap's one-family rule: the best null (any D@n "
-                                               "or P0), the best C (any C or Cded) and the best S over the four families")
+                                               "or P0), the best C (any C, Cded or Cft) and the best S over the families; "
+                                               "full_history = net, ridge, law, lin2; short_history = net~3, ridge~3, law")
         S["theory_T"] = V(r(A2["theory_T"]["by_budget"], 4), src3 + " theory_T", A2["theory_T"]["note"])
         S["cchg_by_truth"] = V(r(A2["cchg"], 3), src3 + " cchg", A2["cchg"]["note"])
         if "law_design" in A2:

@@ -114,6 +114,15 @@ def features(S, U, anchors, theta_u=None):
     return X, Y, L2[:, anchors]
 
 
+def lag_mask(n_keep, n_cols):
+    """0/1 vector over the feature columns that zeroes the history channels at all but the first n_keep lags
+    (LAGS[:n_keep]): the 'short-history' view of an item (e.g. n_keep = 3: the last three ticks). The time,
+    the anchor-state terms, the program block, the horizon and theta are kept."""
+    m = np.ones(n_cols, np.float32)
+    m[n_keep * len(HIST):len(LAGS) * len(HIST)] = 0.0
+    return m
+
+
 def train_anchors(T1):
     return list(range(A_MIN, T1 - min(VX.HS), STRIDE))
 
@@ -204,9 +213,11 @@ def _adamw(params, grads, st, lr):
     return new, {"t": t, "m": mm, "v": vv}
 
 
-def train_nets(dsets, steps=3000, seed=0, log=None, tag=""):
+def train_nets(dsets, steps=3000, seed=0, log=None, tag="", init=None, lr=None):
     """One net per data set, trained in lockstep (vmap); data are passed to the jitted step as arguments.
-    Returns (list of best params, info)."""
+    Returns (list of best params, info). init: parameters of one trained net to start every net from (fine
+    tuning); the start is then also the first early-stopping candidate, so a fine-tuned net is never worse than
+    its start on its own held-out episodes. lr: peak learning rate (default Cfg.LR)."""
     K = len(dsets)
     n_in = dsets[0]["Xtr"].shape[1]
     ntr = max(len(d["Xtr"]) for d in dsets)
@@ -225,6 +236,9 @@ def train_nets(dsets, steps=3000, seed=0, log=None, tag=""):
          "n_va": jnp.asarray(np.array([len(d["Xva"]) for d in dsets], np.int32))}
     keys = jax.random.split(jax.random.key(seed), K)
     P = jax.vmap(lambda k: init_params(k, n_in))(keys)
+    if init is not None:
+        P = jax.tree_util.tree_map(lambda a: jnp.broadcast_to(jnp.asarray(a), (K,) + tuple(np.shape(a))) + 0.0, init)
+    base_lr = Cfg.LR if lr is None else float(lr)
     st = {"t": jnp.zeros((K,), F32), "m": jax.tree_util.tree_map(jnp.zeros_like, P),
           "v": jax.tree_util.tree_map(jnp.zeros_like, P)}
     B, M = Cfg.BATCH, Cfg.M_TRAIN
@@ -255,11 +269,14 @@ def train_nets(dsets, steps=3000, seed=0, log=None, tag=""):
     key = jax.random.key(seed + 1)
     t0 = time.time()
     has_val = np.array([d["n_val_ep"] > 0 for d in dsets])
+    if init is not None:                                       # the start is the first candidate
+        v0 = np.asarray(veval(P, D))
+        best_val = np.where(has_val, v0, np.inf)
     for it in range(1, steps + 1):
         frac = it / steps
-        lr = Cfg.LR * min(1.0, it / 100) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * frac)))
+        lr_t = base_lr * min(1.0, it / 100) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * frac)))
         key, sub = jax.random.split(key)
-        P, st, l = vstep(P, st, D, jax.random.split(sub, K), lr)
+        P, st, l = vstep(P, st, D, jax.random.split(sub, K), lr_t)
         if it % Cfg.EVAL_EVERY == 0 or it == steps:
             v = np.asarray(veval(P, D))
             v = np.where(has_val, v, -it)             # no held-out episodes: keep the last parameters
@@ -276,6 +293,7 @@ def train_nets(dsets, steps=3000, seed=0, log=None, tag=""):
                     f"val {np.round(v, 4).tolist()[:8]} ({time.time() - t0:.0f}s)")
     params = [jax.tree_util.tree_map(lambda a, k=k: a[k], best) for k in range(K)]
     info = {"best_val": best_val.tolist(), "best_step": best_step.tolist(), "hist": hist[-4:],
+            "warm_start": init is not None, "peak_lr": base_lr,
             "seconds": time.time() - t0, "steps": steps, "n_train_examples": [len(d["Xtr"]) for d in dsets],
             "n_episodes": [d["n_ep"] for d in dsets]}
     del vstep, veval, D
