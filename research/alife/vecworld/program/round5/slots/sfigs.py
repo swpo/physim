@@ -173,7 +173,9 @@ def fig_objval():
         return
     fig, ax = plt.subplots(1, 3, figsize=(15, 4.2))
     for a, k in zip(ax, ("set", "self", "rec")):
-        v = [np.mean(ov[n][k]["val"]) if ov[n].get(k) else np.nan for n in names]
+        # null = a non-finite value (collapsed code readout): mean over the finite replicas, no bar if there is none
+        fin = lambda a: [x for x in a if x is not None]
+        v = [np.mean(fin(ov[n][k]["val"])) if ov[n].get(k) and fin(ov[n][k]["val"]) else np.nan for n in names]
         a.bar(range(len(names)), v, color=["k" if n == "trk" else ("#888" if n.startswith(("km", "grid")) else
                                                                     ("#c33" if "sup" in n else "#37a")) for n in names])
         for i, n in enumerate(names):

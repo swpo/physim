@@ -30,7 +30,9 @@
    "source": "origin/gpu-jobs:jobs/r5-slots-008/status.json (copy results/r5-slots-008/status.json)",
    "started_at": "2026-11-10T06:30:13Z",
    "finished_at": "2026-11-10T09:11:04Z",
-   "billing_window_hours": 4.5
+   "billing_window_hours": 4.5,
+   "pod_hours_created_to_terminated": 2.771,
+   "run_hours_started_to_finished": 2.681
   },
   "r5-slots-003": {
    "job_id": "r5-slots-003",
@@ -54,7 +56,9 @@
    "source": "origin/gpu-jobs:jobs/r5-slots-003/status.json (copy results/r5-slots-003/status.json)",
    "started_at": "2026-11-09T23:35:41Z",
    "finished_at": "2026-11-10T00:07:13Z",
-   "billing_window_hours": 1.1171
+   "billing_window_hours": 1.1171,
+   "pod_hours_created_to_terminated": 0.555,
+   "run_hours_started_to_finished": 0.526
   },
   "r5-slots-007": {
    "job_id": "r5-slots-007",
@@ -78,7 +82,9 @@
    "source": "origin/gpu-jobs:jobs/r5-slots-007/status.json (copy results/r5-slots-007/status.json)",
    "started_at": "2026-11-10T05:29:35Z",
    "finished_at": "2026-11-10T06:00:50Z",
-   "billing_window_hours": 4.3427
+   "billing_window_hours": 4.3427,
+   "pod_hours_created_to_terminated": 0.588,
+   "run_hours_started_to_finished": 0.521
   },
   "r5-slots-001": {
    "job_id": "r5-slots-001",
@@ -91,7 +97,8 @@
    },
    "cap_usd": 5.3,
    "pods": [],
-   "source": "origin/gpu-jobs:jobs/r5-slots-001/status.json (copy results/r5-slots-001/status.json)"
+   "source": "origin/gpu-jobs:jobs/r5-slots-001/status.json (copy results/r5-slots-001/status.json)",
+   "pod_hours_created_to_terminated": 0
   },
   "r5-slots-002": {
    "job_id": "r5-slots-002",
@@ -121,7 +128,8 @@
    ],
    "source": "origin/gpu-jobs:jobs/r5-slots-002/status.json (copy results/r5-slots-002/status.json)",
    "finished_at": "2026-11-09T23:25:04Z",
-   "billing_window_hours": 0.9009
+   "billing_window_hours": 0.9009,
+   "pod_hours_created_to_terminated": 0.061
   },
   "r5-slots-004": {
    "job_id": "r5-slots-004",
@@ -150,7 +158,8 @@
     }
    ],
    "source": "origin/gpu-jobs:jobs/r5-slots-004/status.json (copy results/r5-slots-004/status.json)",
-   "billing_window_hours": 3.9
+   "billing_window_hours": 3.9,
+   "pod_hours_created_to_terminated": 0
   },
   "r5-slots-005": {
    "job_id": "r5-slots-005",
@@ -163,7 +172,8 @@
    },
    "cap_usd": 18.75,
    "pods": [],
-   "source": "origin/gpu-jobs:jobs/r5-slots-005/status.json (copy results/r5-slots-005/status.json)"
+   "source": "origin/gpu-jobs:jobs/r5-slots-005/status.json (copy results/r5-slots-005/status.json)",
+   "pod_hours_created_to_terminated": 0
   },
   "r5-slots-006": {
    "job_id": "r5-slots-006",
@@ -185,7 +195,8 @@
     }
    ],
    "source": "origin/gpu-jobs:jobs/r5-slots-006/status.json (copy results/r5-slots-006/status.json)",
-   "billing_window_hours": 4.5
+   "billing_window_hours": 4.5,
+   "pod_hours_created_to_terminated": 0
   }
  },
  "main_job": "r5-slots-008",
@@ -11453,7 +11464,643 @@
    "source": "r5-slots-008:out/objval/trk.json:* (also combined.json:objval.trk)"
   }
  },
- "claims": [],
+ "claims": [
+  {
+   "claim": "CAPACITY CONTROL. The slot architecture can express a largely tracker-like view: trained to imitate the tracker's segmentation (sam_sup, 3000 steps) it reaches ARI 0.85 against the tracker on the half it was not fitted on, about 1.2 slots per tracked object, leaves about a third of its 12 slots empty (the tracker has 7.4 objects per frame), and the matched slot's mass follows the object's mass.",
+   "values": {
+    "sam_sup_ari": 0.8458,
+    "sam_sup_recall": 0.8921,
+    "sam_sup_precision": 0.9266,
+    "sam_sup_slots_per_object": 1.2395,
+    "sam_sup_slots_present": 7.9886,
+    "sam_sup_mass_R2_mask": 0.6556,
+    "sam_sup_mass_R2_probe": 0.7949,
+    "sam_sup_velocity_R2_probe": 0.6945,
+    "tracker_objects_per_frame_half_A": 7.3986,
+    "seed_pair_ari": 0.8575
+   },
+   "sources": {
+    "sam_sup_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.ari_hard_matter_weighted",
+    "sam_sup_recall": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.recall; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.recall",
+    "sam_sup_precision": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.precision; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.precision",
+    "sam_sup_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.slots_per_object",
+    "sam_sup_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".territory.slots_present_mean",
+    "sam_sup_mass_R2_mask": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.direct.mass_R2; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.direct.mass_R2",
+    "sam_sup_mass_R2_probe": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.probe_rff.mass_R2; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.probe_rff.mass_R2",
+    "sam_sup_velocity_R2_probe": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.probe_rff.vel_R2; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.probe_rff.vel_R2",
+    "tracker_objects_per_frame_half_A": "r5-slots-008:out/sim_A.json:objects.count_mean",
+    "seed_pair_ari": "r5-slots-008:out/combined.json:configs.sam_sup.seed_pair.ari"
+   }
+  },
+  {
+   "claim": "NO OBJECTS FROM THE OBJECTIVES. With the geometric encoder (which starts as soft k-means) every unsupervised objective ends at the k-means parts, not at the tracker's objects: closure (sam_set), closure with the dead-direction term (sam_set_dg), local law (sam_self) and reconstruction (sam_rec) all give ARI 0.63 against the tracker, 2.1 slots per tracked object, all 12 slots in use, high precision and low recall (a slot lies inside one object, an object is split over slots), matched-slot mass unrelated to the object's mass, position recovered. The no-learning soft k-means km_s3 has the same numbers.",
+   "values": {
+    "sam_set_ari": 0.6272,
+    "sam_set_slots_per_object": 2.1449,
+    "sam_set_slots_present": 11.9829,
+    "sam_set_mass_R2_mask": -0.1956,
+    "sam_set_ari_vs_km_s6": 0.8043,
+    "sam_set_dg_ari": 0.6278,
+    "sam_set_dg_slots_per_object": 2.1428,
+    "sam_set_dg_slots_present": 11.9666,
+    "sam_set_dg_mass_R2_mask": -0.1948,
+    "sam_set_dg_ari_vs_km_s6": 0.804,
+    "sam_self_ari": 0.627,
+    "sam_self_slots_per_object": 2.1464,
+    "sam_self_slots_present": 11.9768,
+    "sam_self_mass_R2_mask": -0.2006,
+    "sam_self_ari_vs_km_s6": 0.8026,
+    "sam_rec_ari": 0.6276,
+    "sam_rec_slots_per_object": 2.1541,
+    "sam_rec_slots_present": 11.9921,
+    "sam_rec_mass_R2_mask": -0.2137,
+    "sam_rec_ari_vs_km_s6": 0.8123,
+    "km_s3_ari": 0.6324,
+    "km_s3_slots_per_object": 2.1388,
+    "km_s3_recall": 0.7755,
+    "km_s3_precision": 0.9884,
+    "km_s3_mass_R2_mask": -0.1896,
+    "km_s3_position_R2_mask": 0.9834
+   },
+   "sources": {
+    "sam_set_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.ari_hard_matter_weighted",
+    "sam_set_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.slots_per_object",
+    "sam_set_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".territory.slots_present_mean",
+    "sam_set_mass_R2_mask": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.direct.mass_R2; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.direct.mass_R2",
+    "sam_set_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_set.ari_vs_km_s6",
+    "sam_set_dg_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_dg_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_set_dg_s1\".agreement.ari_hard_matter_weighted",
+    "sam_set_dg_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_dg_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_set_dg_s1\".agreement.slots_per_object",
+    "sam_set_dg_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_dg_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_set_dg_s1\".territory.slots_present_mean",
+    "sam_set_dg_mass_R2_mask": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_dg_s0\".agreement.direct.mass_R2; r5-slots-008:out/combined.json:phis.\"sam_set_dg_s1\".agreement.direct.mass_R2",
+    "sam_set_dg_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_set_dg.ari_vs_km_s6",
+    "sam_self_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_self_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_self_s1\".agreement.ari_hard_matter_weighted",
+    "sam_self_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_self_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_self_s1\".agreement.slots_per_object",
+    "sam_self_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_self_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_self_s1\".territory.slots_present_mean",
+    "sam_self_mass_R2_mask": "mean of r5-slots-008:out/combined.json:phis.\"sam_self_s0\".agreement.direct.mass_R2; r5-slots-008:out/combined.json:phis.\"sam_self_s1\".agreement.direct.mass_R2",
+    "sam_self_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_self.ari_vs_km_s6",
+    "sam_rec_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_rec_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_rec_s1\".agreement.ari_hard_matter_weighted",
+    "sam_rec_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_rec_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_rec_s1\".agreement.slots_per_object",
+    "sam_rec_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_rec_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_rec_s1\".territory.slots_present_mean",
+    "sam_rec_mass_R2_mask": "mean of r5-slots-008:out/combined.json:phis.\"sam_rec_s0\".agreement.direct.mass_R2; r5-slots-008:out/combined.json:phis.\"sam_rec_s1\".agreement.direct.mass_R2",
+    "sam_rec_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_rec.ari_vs_km_s6",
+    "km_s3_ari": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.ari_hard_matter_weighted",
+    "km_s3_slots_per_object": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.slots_per_object",
+    "km_s3_recall": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.recall",
+    "km_s3_precision": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.precision",
+    "km_s3_mass_R2_mask": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.direct.mass_R2",
+    "km_s3_position_R2_mask": "r5-slots-008:out/combined.json:phis.\"km_s3\".agreement.direct.pos_R2"
+   }
+  },
+  {
+   "claim": "THE OBJECTIVES LEAVE THE TRACKER-LIKE VIEW. Started from the supervised encoder (encoder frozen for the first 375 steps while the new head warms up), each objective walks back to the parts: recall + purity of the masks against the tracker on held-out trajectories (2 = the tracker's segmentation) is 1.87 at the start, 1.71 at step 500, 1.65 at step 1000 and stays there, the value of the cold-started encoders; the certified agreement of the warm-started encoders equals that of the cold-started ones. So the tracker-like view is not a minimum that the optimiser failed to find from a k-means start.",
+   "values": {
+    "sam_set_ws_ari": 0.6272,
+    "sam_set_ws_slots_per_object": 2.1423,
+    "sam_set_ws_slots_present": 11.9675,
+    "sam_set_ws_dg_ari": 0.6286,
+    "sam_set_ws_dg_slots_per_object": 2.1381,
+    "sam_set_ws_dg_slots_present": 11.9601,
+    "sam_self_ws_ari": 0.6301,
+    "sam_self_ws_slots_per_object": 2.1285,
+    "sam_self_ws_slots_present": 11.9472,
+    "sam_rec_ws_ari": 0.6299,
+    "sam_rec_ws_slots_per_object": 2.1482,
+    "sam_rec_ws_slots_present": 11.9912,
+    "sam_set_ws_recall_plus_purity_step_0": 1.8679,
+    "sam_set_ws_recall_plus_purity_step_300": 1.8679,
+    "sam_set_ws_recall_plus_purity_step_400": 1.8273,
+    "sam_set_ws_recall_plus_purity_step_500": 1.7143,
+    "sam_set_ws_recall_plus_purity_step_700": 1.6792,
+    "sam_set_ws_recall_plus_purity_step_1000": 1.6546,
+    "sam_set_ws_recall_plus_purity_step_3000": 1.6557,
+    "sam_self_ws_recall_plus_purity_step_0": 1.8679,
+    "sam_self_ws_recall_plus_purity_step_1000": 1.675,
+    "sam_self_ws_recall_plus_purity_step_3000": 1.6556,
+    "sam_rec_ws_recall_plus_purity_step_0": 1.8679,
+    "sam_rec_ws_recall_plus_purity_step_1000": 1.6506,
+    "sam_rec_ws_recall_plus_purity_step_3000": 1.6509,
+    "sam_set_ws_dg_recall_plus_purity_step_0": 1.8679,
+    "sam_set_ws_dg_recall_plus_purity_step_1000": 1.6633,
+    "sam_set_ws_dg_recall_plus_purity_step_3000": 1.6546,
+    "sam_sup_recall_plus_purity_step_3000": 1.8177,
+    "sam_set_recall_plus_purity_step_3000": 1.6516
+   },
+   "sources": {
+    "sam_set_ws_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_ws_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_set_ws_s1\".agreement.ari_hard_matter_weighted",
+    "sam_set_ws_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_ws_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_set_ws_s1\".agreement.slots_per_object",
+    "sam_set_ws_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_ws_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_set_ws_s1\".territory.slots_present_mean",
+    "sam_set_ws_dg_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_ws_dg_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_set_ws_dg_s1\".agreement.ari_hard_matter_weighted",
+    "sam_set_ws_dg_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_ws_dg_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_set_ws_dg_s1\".agreement.slots_per_object",
+    "sam_set_ws_dg_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_ws_dg_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_set_ws_dg_s1\".territory.slots_present_mean",
+    "sam_self_ws_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_self_ws_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_self_ws_s1\".agreement.ari_hard_matter_weighted",
+    "sam_self_ws_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_self_ws_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_self_ws_s1\".agreement.slots_per_object",
+    "sam_self_ws_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_self_ws_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_self_ws_s1\".territory.slots_present_mean",
+    "sam_rec_ws_ari": "mean of r5-slots-008:out/combined.json:phis.\"sam_rec_ws_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sam_rec_ws_s1\".agreement.ari_hard_matter_weighted",
+    "sam_rec_ws_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sam_rec_ws_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sam_rec_ws_s1\".agreement.slots_per_object",
+    "sam_rec_ws_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_rec_ws_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_rec_ws_s1\".territory.slots_present_mean",
+    "sam_set_ws_recall_plus_purity_step_0": "r5-slots-008:out/train/sam_set_ws.json:hist[0].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_recall_plus_purity_step_300": "r5-slots-008:out/train/sam_set_ws.json:hist[3].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_recall_plus_purity_step_400": "r5-slots-008:out/train/sam_set_ws.json:hist[4].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_recall_plus_purity_step_500": "r5-slots-008:out/train/sam_set_ws.json:hist[5].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_recall_plus_purity_step_700": "r5-slots-008:out/train/sam_set_ws.json:hist[7].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_recall_plus_purity_step_1000": "r5-slots-008:out/train/sam_set_ws.json:hist[10].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_set_ws.json:hist[30].val_trk_recall_purity (rowsum_mean)",
+    "sam_self_ws_recall_plus_purity_step_0": "r5-slots-008:out/train/sam_self_ws.json:hist[0].val_trk_recall_purity (rowsum_mean)",
+    "sam_self_ws_recall_plus_purity_step_1000": "r5-slots-008:out/train/sam_self_ws.json:hist[10].val_trk_recall_purity (rowsum_mean)",
+    "sam_self_ws_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_self_ws.json:hist[30].val_trk_recall_purity (rowsum_mean)",
+    "sam_rec_ws_recall_plus_purity_step_0": "r5-slots-008:out/train/sam_rec_ws.json:hist[0].val_trk_recall_purity (rowsum_mean)",
+    "sam_rec_ws_recall_plus_purity_step_1000": "r5-slots-008:out/train/sam_rec_ws.json:hist[10].val_trk_recall_purity (rowsum_mean)",
+    "sam_rec_ws_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_rec_ws.json:hist[30].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_dg_recall_plus_purity_step_0": "r5-slots-008:out/train/sam_set_ws_dg.json:hist[0].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_dg_recall_plus_purity_step_1000": "r5-slots-008:out/train/sam_set_ws_dg.json:hist[10].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_ws_dg_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_set_ws_dg.json:hist[30].val_trk_recall_purity (rowsum_mean)",
+    "sam_sup_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_sup.json:hist[30].val_trk_recall_purity (rowsum_mean)",
+    "sam_set_recall_plus_purity_step_3000": "r5-slots-008:out/train/sam_set.json:hist[30].val_trk_recall_purity (rowsum_mean)"
+   }
+  },
+  {
+   "claim": "CLOSURE RANKS THE PARTS ABOVE THE OBJECTS. Each view judged in its own coordinates with the same permutation-equivariant predictor family (S: shared linear rule and shared attention network over slots; 6 numbers per slot = mass, position, size; h = 1, 2, 4, 8, 16; SE 0.01-0.02): the tracker's object view has the lowest ceiling of the object-like views, the supervised tracker-like encoder is in between, the parts (k-means or any objective-trained encoder) are highest; only the fixed grid is lower than the tracker at long horizons.",
+   "values": {
+    "ceiling_trk": [
+     0.9227,
+     0.855,
+     0.7027,
+     0.4719,
+     0.1696
+    ],
+    "ceiling_trk_se": [
+     0.0104,
+     0.0151,
+     0.0176,
+     0.0159,
+     0.0138
+    ],
+    "ceiling_sam_sup": [
+     0.9532,
+     0.9072,
+     0.8222,
+     0.6484,
+     0.4055
+    ],
+    "ceiling_km_s3": [
+     0.9745,
+     0.9435,
+     0.871,
+     0.7569,
+     0.5582
+    ],
+    "ceiling_km_s3_se": [
+     0.0042,
+     0.0063,
+     0.0165,
+     0.0183,
+     0.013
+    ],
+    "ceiling_sam_set": [
+     0.9742,
+     0.9351,
+     0.8659,
+     0.7664,
+     0.5575
+    ],
+    "ceiling_sam_self": [
+     0.9718,
+     0.9381,
+     0.8725,
+     0.7618,
+     0.5649
+    ],
+    "ceiling_sam_rec": [
+     0.9786,
+     0.9376,
+     0.8678,
+     0.7503,
+     0.545
+    ],
+    "ceiling_sam_set_ws_dg": [
+     0.9796,
+     0.9501,
+     0.8943,
+     0.7802,
+     0.5845
+    ],
+    "ceiling_grid": [
+     0.9534,
+     0.8677,
+     0.6334,
+     0.3341,
+     0.0627
+    ],
+    "ceiling_trk_family_O_12_numbers": [
+     0.8576,
+     0.7647,
+     0.5896,
+     0.3758,
+     0.1558
+    ],
+    "ceiling_km_s3_family_O_12_numbers": [
+     0.9084,
+     0.8257,
+     0.6595,
+     0.5553,
+     0.3858
+    ],
+    "ceiling_hand_block_mass_64_numbers": [
+     0.99,
+     0.9493,
+     0.7712,
+     0.4303,
+     0.1861
+    ]
+   },
+   "sources": {
+    "ceiling_trk": "r5-slots-008:out/combined.json:phis.\"trk@mp6\".families.S.ceiling",
+    "ceiling_trk_se": "r5-slots-008:out/combined.json:phis.\"trk@mp6\".families.S.se",
+    "ceiling_sam_sup": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0@mp6\".families.S.ceiling; r5-slots-008:out/combined.json:phis.\"sam_sup_s1@mp6\".families.S.ceiling",
+    "ceiling_km_s3": "r5-slots-008:out/combined.json:phis.\"km_s3@mp6\".families.S.ceiling",
+    "ceiling_km_s3_se": "r5-slots-008:out/combined.json:phis.\"km_s3@mp6\".families.S.se",
+    "ceiling_sam_set": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0@mp6\".families.S.ceiling; r5-slots-008:out/combined.json:phis.\"sam_set_s1@mp6\".families.S.ceiling",
+    "ceiling_sam_self": "mean of r5-slots-008:out/combined.json:phis.\"sam_self_s0@mp6\".families.S.ceiling; r5-slots-008:out/combined.json:phis.\"sam_self_s1@mp6\".families.S.ceiling",
+    "ceiling_sam_rec": "mean of r5-slots-008:out/combined.json:phis.\"sam_rec_s0@mp6\".families.S.ceiling; r5-slots-008:out/combined.json:phis.\"sam_rec_s1@mp6\".families.S.ceiling",
+    "ceiling_sam_set_ws_dg": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_ws_dg_s0@mp6\".families.S.ceiling; r5-slots-008:out/combined.json:phis.\"sam_set_ws_dg_s1@mp6\".families.S.ceiling",
+    "ceiling_grid": "r5-slots-008:out/combined.json:phis.\"grid@mp6\".families.S.ceiling",
+    "ceiling_trk_family_O_12_numbers": "r5-slots-008:out/combined.json:phis.\"trk\".families.O.ceiling",
+    "ceiling_km_s3_family_O_12_numbers": "r5-slots-008:out/combined.json:phis.\"km_s3\".families.O.ceiling",
+    "ceiling_hand_block_mass_64_numbers": "r5-slots-008:out/combined.json:phis.\"hand_mass\".families.GL.ceiling"
+   }
+  },
+  {
+   "claim": "PREDICTABLE CONTENT. The parts also hold more predictable nats per frame in the same 72 numbers (captured by family S). Diagonal Gaussian measure at h = 1 / 4 / 16: 200 / 102 / 29 for km_s3 against 111 / 43 / 5 for the tracker's view. Log-det measure at h = 1: 192 against 81, with the supervised encoder in between (119); the tracker's log-det is ill-conditioned at longer horizons (empty slots make its covariance nearly singular; its available content is undefined), so only h = 1 is quoted for it. The diagonal measure counts redundant coordinates repeatedly (the collapsed sgm_set scores highest on it, and negative on the log-det), so it is quoted here only for views whose slots are distinct.",
+   "values": {
+    "logdet_capt_trk": [
+     80.7772,
+     40.257,
+     2.7575,
+     3.8375,
+     null
+    ],
+    "logdet_capt_sam_sup": [
+     118.7093,
+     82.4582,
+     51.7105,
+     27.1208,
+     9.3016
+    ],
+    "logdet_capt_km_s3": [
+     191.6566,
+     145.4478,
+     97.7681,
+     56.6324,
+     25.382
+    ],
+    "logdet_capt_sam_set": [
+     180.7435,
+     140.6368,
+     98.694,
+     56.9222,
+     25.0765
+    ],
+    "logdet_capt_grid": [
+     98.9893,
+     58.7036,
+     23.1698,
+     1.292,
+     -3.6333
+    ],
+    "logdet_avail_km_s3": [
+     309.6976,
+     284.5219,
+     245.191,
+     182.1738,
+     114.6546
+    ],
+    "logdet_avail_sam_sup": [
+     291.4709,
+     260.3398,
+     217.2022,
+     143.9483,
+     76.3192
+    ],
+    "diag_capt_trk": [
+     111.4166,
+     78.6838,
+     42.7283,
+     21.1258,
+     4.9959
+    ],
+    "diag_capt_km_s3": [
+     199.5315,
+     151.4398,
+     101.7927,
+     63.3065,
+     29.4235
+    ],
+    "diag_capt_sgm_set_collapsed": [
+     239.2641,
+     188.4401,
+     138.0284,
+     94.637,
+     66.2977
+    ],
+    "logdet_capt_sgm_set_collapsed": [
+     -56.9778,
+     null,
+     -120.0406,
+     null,
+     null
+    ],
+    "diag_capt_sam_sup": [
+     119.7231,
+     89.9631,
+     63.7425,
+     37.1552,
+     16.612
+    ],
+    "logdet_avail_trk": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   "sources": {
+    "logdet_capt_trk": "r5-slots-008:out/combined.json:phis.\"trk@mp6\".logdet.I_capt_S",
+    "logdet_capt_sam_sup": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0@mp6\".logdet.I_capt_S; r5-slots-008:out/combined.json:phis.\"sam_sup_s1@mp6\".logdet.I_capt_S",
+    "logdet_capt_km_s3": "r5-slots-008:out/combined.json:phis.\"km_s3@mp6\".logdet.I_capt_S",
+    "logdet_capt_sam_set": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0@mp6\".logdet.I_capt_S; r5-slots-008:out/combined.json:phis.\"sam_set_s1@mp6\".logdet.I_capt_S",
+    "logdet_capt_grid": "r5-slots-008:out/combined.json:phis.\"grid@mp6\".logdet.I_capt_S",
+    "logdet_avail_km_s3": "r5-slots-008:out/combined.json:phis.\"km_s3@mp6\".logdet.I_avail",
+    "logdet_avail_sam_sup": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0@mp6\".logdet.I_avail; r5-slots-008:out/combined.json:phis.\"sam_sup_s1@mp6\".logdet.I_avail",
+    "diag_capt_trk": "r5-slots-008:out/combined.json:phis.\"trk@mp6\".families.S.I_capt_diag",
+    "diag_capt_km_s3": "r5-slots-008:out/combined.json:phis.\"km_s3@mp6\".families.S.I_capt_diag",
+    "diag_capt_sgm_set_collapsed": "r5-slots-008:out/combined.json:phis.\"sgm_set_s0@mp6\".families.S.I_capt_diag",
+    "logdet_capt_sgm_set_collapsed": "r5-slots-008:out/combined.json:phis.\"sgm_set_s0@mp6\".logdet.I_capt_S",
+    "diag_capt_sam_sup": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0@mp6\".families.S.I_capt_diag; r5-slots-008:out/combined.json:phis.\"sam_sup_s1@mp6\".families.S.I_capt_diag",
+    "logdet_avail_trk": "r5-slots-008:out/combined.json:phis.\"trk@mp6\".logdet.I_avail"
+   }
+  },
+  {
+   "claim": "THE OBJECTIVES THEMSELVES PREFER THE PARTS. Value of each objective on each frozen view, with a fresh head trained for 1000 steps (lower is better; mean of 4 replicas): closure and local law score the tracker's view worst of the object-like views (0.45), the supervised tracker-like encoder next (0.42), k-means parts 0.32-0.35 and the objective-trained encoders 0.28-0.31; reconstruction also prefers parts (0.47) to the tracker's view (0.55). Training therefore improves the objective a little beyond k-means (0.29 against 0.32) without changing which matter a slot holds. Between runs the tracker's closure value moves by about 0.05 (0.49 in r5-slots-007, a different simulation), far less than the gap.",
+   "values": {
+    "set_trk": 0.4527,
+    "set_sam_sup": 0.4208,
+    "set_km_s3": 0.321,
+    "set_km_s6": 0.3527,
+    "set_km_s6w": 0.3166,
+    "set_sam_set": 0.2892,
+    "set_sam_self": 0.2999,
+    "set_sam_rec": 0.3058,
+    "set_grid": 0.6837,
+    "self_trk": 0.4559,
+    "self_sam_sup": 0.4204,
+    "self_km_s3": 0.3302,
+    "self_sam_set": 0.2919,
+    "self_sam_self": 0.3051,
+    "rec_trk": 0.5491,
+    "rec_sam_sup": 0.5646,
+    "rec_km_s3": 0.4731,
+    "rec_sam_rec": 0.4697,
+    "rec_grid": 0.6585,
+    "set_trk_replicas": [
+     0.4498,
+     0.4489,
+     0.4555,
+     0.4567
+    ],
+    "set_km_s3_replicas": [
+     0.3229,
+     0.3067,
+     0.3296,
+     0.3246
+    ],
+    "set_trk_in_r5-slots-007": 0.4929,
+    "set_km_s3_in_r5-slots-007": 0.3366,
+    "set_sam_sup_in_r5-slots-007": 0.4434
+   },
+   "sources": {
+    "set_trk": "r5-slots-008:out/combined.json:objval.trk.set.val (mean)",
+    "set_sam_sup": "r5-slots-008:out/combined.json:objval.sam_sup.set.val (mean)",
+    "set_km_s3": "r5-slots-008:out/combined.json:objval.km_s3.set.val (mean)",
+    "set_km_s6": "r5-slots-008:out/combined.json:objval.km_s6.set.val (mean)",
+    "set_km_s6w": "r5-slots-008:out/combined.json:objval.km_s6w.set.val (mean)",
+    "set_sam_set": "r5-slots-008:out/combined.json:objval.sam_set.set.val (mean)",
+    "set_sam_self": "r5-slots-008:out/combined.json:objval.sam_self.set.val (mean)",
+    "set_sam_rec": "r5-slots-008:out/combined.json:objval.sam_rec.set.val (mean)",
+    "set_grid": "r5-slots-008:out/combined.json:objval.grid.set.val (mean)",
+    "self_trk": "r5-slots-008:out/combined.json:objval.trk.self.val (mean)",
+    "self_sam_sup": "r5-slots-008:out/combined.json:objval.sam_sup.self.val (mean)",
+    "self_km_s3": "r5-slots-008:out/combined.json:objval.km_s3.self.val (mean)",
+    "self_sam_set": "r5-slots-008:out/combined.json:objval.sam_set.self.val (mean)",
+    "self_sam_self": "r5-slots-008:out/combined.json:objval.sam_self.self.val (mean)",
+    "rec_trk": "r5-slots-008:out/combined.json:objval.trk.rec.val (mean)",
+    "rec_sam_sup": "r5-slots-008:out/combined.json:objval.sam_sup.rec.val (mean)",
+    "rec_km_s3": "r5-slots-008:out/combined.json:objval.km_s3.rec.val (mean)",
+    "rec_sam_rec": "r5-slots-008:out/combined.json:objval.sam_rec.rec.val (mean)",
+    "rec_grid": "r5-slots-008:out/combined.json:objval.grid.rec.val (mean)",
+    "set_trk_replicas": "r5-slots-008:out/combined.json:objval.trk.set.val",
+    "set_km_s3_replicas": "r5-slots-008:out/combined.json:objval.km_s3.set.val",
+    "set_trk_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.trk.set.val (mean)",
+    "set_km_s3_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.km_s3.set.val (mean)",
+    "set_sam_sup_in_r5-slots-007": "r5-slots-007:out/combined.json:objval.sam_sup.set.val (mean)"
+   }
+  },
+  {
+   "claim": "WHAT THE TRACKER'S LOGIC ADDS: INDIVIDUATION AND EVENTS. The tracker says how many objects there are (one per connected blob) and re-labels at once when blobs fuse or split; this world has about 67 fusions and 131 fissions per 300-tick trajectory for 7.4 objects. The parts keep all 12 slots in use and never merge: just after a fusion the best slot holds 0.42 of the fused object and still only 0.72 more than 16 ticks later, while after a fission recall is 0.79 at once. The supervised encoder learned to empty slots (8.0 present) and to merge, but with a lag of 4 to 8 ticks after either event (recall 0.69 at a fusion and 0.67 at a fission, 0.93-0.96 by ticks 8-15). Each objective scores those jumps as unpredictable change of the slot numbers, which is what it is asked to avoid.",
+   "values": {
+    "fusions_per_trajectory_half_A": 66.5625,
+    "fissions_per_trajectory_half_A": 131.2917,
+    "fusions_per_trajectory_half_B": 69.3542,
+    "fissions_per_trajectory_half_B": 138.0208,
+    "objects_per_frame_half_A": 7.3986,
+    "objects_per_frame_half_B": 7.532,
+    "sam_set_recall_fusion_tick_0": 0.4217,
+    "sam_set_recall_fusion_ticks_8_15": 0.4935,
+    "sam_set_recall_fusion_16plus": 0.722,
+    "sam_set_recall_fission_tick_0": 0.788,
+    "sam_set_precision_fission_tick_0": 0.9698,
+    "sam_sup_recall_fusion_tick_0": 0.6911,
+    "sam_sup_recall_fusion_ticks_4_7": 0.9026,
+    "sam_sup_recall_fusion_ticks_8_15": 0.9282,
+    "sam_sup_recall_fusion_16plus": 0.9604,
+    "sam_sup_recall_fission_tick_0": 0.6742,
+    "sam_sup_precision_fission_tick_0": 0.6913,
+    "sam_sup_recall_fission_ticks_8_15": 0.9593,
+    "sam_sup_slots_present": 7.9886,
+    "sam_set_slots_present": 11.9829,
+    "sam_set_identity_persistence": 0.9088,
+    "sam_sup_identity_persistence": 0.9695
+   },
+   "sources": {
+    "fusions_per_trajectory_half_A": "r5-slots-008:out/sim_A.json:objects.events_per_traj.fusion",
+    "fissions_per_trajectory_half_A": "r5-slots-008:out/sim_A.json:objects.events_per_traj.fission",
+    "fusions_per_trajectory_half_B": "r5-slots-008:out/sim_B.json:objects.events_per_traj.fusion",
+    "fissions_per_trajectory_half_B": "r5-slots-008:out/sim_B.json:objects.events_per_traj.fission",
+    "objects_per_frame_half_A": "r5-slots-008:out/sim_A.json:objects.count_mean",
+    "objects_per_frame_half_B": "r5-slots-008:out/sim_B.json:objects.count_mean",
+    "sam_set_recall_fusion_tick_0": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.by_ticks_since_event.fusion[0].recall; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.by_ticks_since_event.fusion[0].recall",
+    "sam_set_recall_fusion_ticks_8_15": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.by_ticks_since_event.fusion[4].recall; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.by_ticks_since_event.fusion[4].recall",
+    "sam_set_recall_fusion_16plus": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.by_ticks_since_event.fusion[5].recall; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.by_ticks_since_event.fusion[5].recall",
+    "sam_set_recall_fission_tick_0": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.by_ticks_since_event.fission[0].recall; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.by_ticks_since_event.fission[0].recall",
+    "sam_set_precision_fission_tick_0": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.by_ticks_since_event.fission[0].precision; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.by_ticks_since_event.fission[0].precision",
+    "sam_sup_recall_fusion_tick_0": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fusion[0].recall; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fusion[0].recall",
+    "sam_sup_recall_fusion_ticks_4_7": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fusion[3].recall; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fusion[3].recall",
+    "sam_sup_recall_fusion_ticks_8_15": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fusion[4].recall; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fusion[4].recall",
+    "sam_sup_recall_fusion_16plus": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fusion[5].recall; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fusion[5].recall",
+    "sam_sup_recall_fission_tick_0": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fission[0].recall; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fission[0].recall",
+    "sam_sup_precision_fission_tick_0": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fission[0].precision; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fission[0].precision",
+    "sam_sup_recall_fission_ticks_8_15": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fission[4].recall; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fission[4].recall",
+    "sam_sup_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".territory.slots_present_mean",
+    "sam_set_slots_present": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".territory.slots_present_mean; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".territory.slots_present_mean",
+    "sam_set_identity_persistence": "mean of r5-slots-008:out/combined.json:phis.\"sam_set_s0\".agreement.identity_persistence; r5-slots-008:out/combined.json:phis.\"sam_set_s1\".agreement.identity_persistence",
+    "sam_sup_identity_persistence": "mean of r5-slots-008:out/combined.json:phis.\"sam_sup_s0\".agreement.identity_persistence; r5-slots-008:out/combined.json:phis.\"sam_sup_s1\".agreement.identity_persistence"
+   }
+  },
+  {
+   "claim": "COLLAPSE WITHOUT THE GEOMETRIC PRIOR OR THE MOMENT READOUT. Plain slot attention under closure (sgm_set, no k-means distance term) collapses to 12 identical slots that each take a twelfth of everything: ARI 0.00, 12 slots per object, closure value 0.02, about 6 effective dimensions in 72 numbers, negative captured log-det content, both seeds identical. A learned 6-number code under closure (sac_set, k-means masks kept) becomes a nearly frozen code: about 1.6 effective dimensions, probes of mass, position and velocity at R2 0.00, ceiling 0.90 at h = 16, non-finite objective values. The joint-covariance metric did not stop either (directions below its ridge drop out of the loss); the dead-direction term was only run with the moment readout, where there is no collapse to prevent. The classic slot-attention autoencoder (sgc_rec) finds neither objects nor a stable view (ARI 0.28, 6.5 slots per object, seed-pair ARI 0.16); a reconstruction-trained code on k-means masks (sac_rec) carries little about the objects (mass probe R2 0.06).",
+   "values": {
+    "sgm_set_ari": 0.002,
+    "sgm_set_slots_per_object": 12.0,
+    "sgm_set_closure_value": 0.0206,
+    "sgm_set_participation_ratio": 5.8675,
+    "sgm_set_logdet_capt": [
+     -56.9778,
+     null,
+     -120.0406,
+     null,
+     null
+    ],
+    "sgm_set_seed_pair_R2": 1.0,
+    "sgm_set_ceiling": [
+     0.9961,
+     0.9846,
+     0.9378,
+     0.7619,
+     0.4268
+    ],
+    "sac_set_participation_ratio": 1.5954,
+    "sac_set_mass_probe_R2": 0.0017,
+    "sac_set_position_probe_R2": -0.001,
+    "sac_set_velocity_probe_R2": -0.0033,
+    "sac_set_ceiling": [
+     0.9668,
+     0.9528,
+     0.9381,
+     0.9163,
+     0.9045
+    ],
+    "sac_set_val_best": [
+     0.0031,
+     0.0007,
+     0.0032,
+     0.0021
+    ],
+    "sac_set_set_values": [
+     null,
+     null,
+     null,
+     null
+    ],
+    "sac_set_ari": 0.6401,
+    "sac_set_ari_vs_km_s6": 0.8359,
+    "sgc_rec_ari": 0.2813,
+    "sgc_rec_slots_per_object": 6.5405,
+    "sgc_rec_seed_pair_ari": 0.1561,
+    "sac_rec_mass_probe_R2": 0.0562,
+    "sac_rec_ari": 0.6357,
+    "km_s3_participation_ratio": 42.8314
+   },
+   "sources": {
+    "sgm_set_ari": "mean of r5-slots-008:out/combined.json:phis.\"sgm_set_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sgm_set_s1\".agreement.ari_hard_matter_weighted",
+    "sgm_set_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sgm_set_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sgm_set_s1\".agreement.slots_per_object",
+    "sgm_set_closure_value": "r5-slots-008:out/combined.json:objval.sgm_set.set.val (mean)",
+    "sgm_set_participation_ratio": "r5-slots-008:out/combined.json:phis.\"sgm_set_s0@mp6\".nontriv.participation_ratio",
+    "sgm_set_logdet_capt": "r5-slots-008:out/combined.json:phis.\"sgm_set_s0@mp6\".logdet.I_capt_S",
+    "sgm_set_seed_pair_R2": "r5-slots-008:out/combined.json:configs.sgm_set.seed_pair.R2_s1_from_s0",
+    "sgm_set_ceiling": "mean of r5-slots-008:out/combined.json:phis.\"sgm_set_s0@mp6\".families.S.ceiling; r5-slots-008:out/combined.json:phis.\"sgm_set_s1@mp6\".families.S.ceiling",
+    "sac_set_participation_ratio": "mean of r5-slots-008:out/combined.json:phis.\"sac_set_s0\".nontriv.participation_ratio; r5-slots-008:out/combined.json:phis.\"sac_set_s1\".nontriv.participation_ratio",
+    "sac_set_mass_probe_R2": "mean of r5-slots-008:out/combined.json:phis.\"sac_set_s0\".agreement.probe_rff.mass_R2; r5-slots-008:out/combined.json:phis.\"sac_set_s1\".agreement.probe_rff.mass_R2",
+    "sac_set_position_probe_R2": "mean of r5-slots-008:out/combined.json:phis.\"sac_set_s0\".agreement.probe_rff.pos_R2; r5-slots-008:out/combined.json:phis.\"sac_set_s1\".agreement.probe_rff.pos_R2",
+    "sac_set_velocity_probe_R2": "mean of r5-slots-008:out/combined.json:phis.\"sac_set_s0\".agreement.probe_rff.vel_R2; r5-slots-008:out/combined.json:phis.\"sac_set_s1\".agreement.probe_rff.vel_R2",
+    "sac_set_ceiling": "mean of r5-slots-008:out/combined.json:phis.\"sac_set_s0\".families.S.ceiling; r5-slots-008:out/combined.json:phis.\"sac_set_s1\".families.S.ceiling",
+    "sac_set_val_best": "r5-slots-008:out/combined.json:configs.sac_set.val_best",
+    "sac_set_set_values": "r5-slots-008:out/combined.json:objval.sac_set.set.val",
+    "sac_set_ari": "mean of r5-slots-008:out/combined.json:phis.\"sac_set_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sac_set_s1\".agreement.ari_hard_matter_weighted",
+    "sac_set_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sac_set.ari_vs_km_s6",
+    "sgc_rec_ari": "mean of r5-slots-008:out/combined.json:phis.\"sgc_rec_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sgc_rec_s1\".agreement.ari_hard_matter_weighted",
+    "sgc_rec_slots_per_object": "mean of r5-slots-008:out/combined.json:phis.\"sgc_rec_s0\".agreement.slots_per_object; r5-slots-008:out/combined.json:phis.\"sgc_rec_s1\".agreement.slots_per_object",
+    "sgc_rec_seed_pair_ari": "r5-slots-008:out/combined.json:configs.sgc_rec.seed_pair.ari",
+    "sac_rec_mass_probe_R2": "mean of r5-slots-008:out/combined.json:phis.\"sac_rec_s0\".agreement.probe_rff.mass_R2; r5-slots-008:out/combined.json:phis.\"sac_rec_s1\".agreement.probe_rff.mass_R2",
+    "sac_rec_ari": "mean of r5-slots-008:out/combined.json:phis.\"sac_rec_s0\".agreement.ari_hard_matter_weighted; r5-slots-008:out/combined.json:phis.\"sac_rec_s1\".agreement.ari_hard_matter_weighted",
+    "km_s3_participation_ratio": "r5-slots-008:out/combined.json:phis.\"km_s3@mp6\".nontriv.participation_ratio"
+   }
+  },
+  {
+   "claim": "SEED STABILITY AND REPLICATION. The parts are a stable outcome: two seeds fitted on the same half agree (hard segmentations: ARI 0.91-0.94; matched slots' numbers: R2 0.81-0.90), and all agree with the no-learning km_s6 at ARI 0.80. Three GPU runs with different simulations (GPU float64 is not bit-deterministic) give the same picture: the pilot's sam_set (600 steps, H200), the failed run's supervised encoder and references (2000 steps), and this run.",
+   "values": {
+    "sam_set_seed_pair_ari": 0.9133,
+    "sam_set_seed_pair_R2": 0.8102,
+    "sam_set_ari_vs_km_s6": 0.8043,
+    "sam_set_dg_seed_pair_ari": 0.9398,
+    "sam_set_dg_seed_pair_R2": 0.871,
+    "sam_set_dg_ari_vs_km_s6": 0.804,
+    "sam_self_seed_pair_ari": 0.9432,
+    "sam_self_seed_pair_R2": 0.8536,
+    "sam_self_ari_vs_km_s6": 0.8026,
+    "sam_rec_seed_pair_ari": 0.9439,
+    "sam_rec_seed_pair_R2": 0.9035,
+    "sam_rec_ari_vs_km_s6": 0.8123,
+    "sam_set_ws_seed_pair_ari": 0.919,
+    "sam_set_ws_seed_pair_R2": 0.8229,
+    "sam_set_ws_ari_vs_km_s6": 0.8001,
+    "sam_sup_seed_pair_ari": 0.8575,
+    "sam_sup_seed_pair_R2": 0.8571,
+    "sam_sup_ari_vs_km_s6": 0.743,
+    "pilot_r5-slots-003_sam_set_seed_pair_ari": 0.9432,
+    "pilot_r5-slots-003_sam_set_s0_ari_vs_tracker": 0.6355,
+    "r5-slots-007_sam_sup_s0_ari_vs_tracker": 0.846,
+    "r5-slots-007_km_s3_ceiling": [
+     0.9716,
+     0.9272,
+     0.8635,
+     0.7836,
+     0.5698
+    ],
+    "r5-slots-007_trk_ceiling": [
+     0.9137,
+     0.8469,
+     0.6895,
+     0.4653,
+     0.196
+    ]
+   },
+   "sources": {
+    "sam_set_seed_pair_ari": "r5-slots-008:out/combined.json:configs.sam_set.seed_pair.ari",
+    "sam_set_seed_pair_R2": "r5-slots-008:out/combined.json:configs.sam_set.seed_pair.R2_s1_from_s0",
+    "sam_set_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_set.ari_vs_km_s6",
+    "sam_set_dg_seed_pair_ari": "r5-slots-008:out/combined.json:configs.sam_set_dg.seed_pair.ari",
+    "sam_set_dg_seed_pair_R2": "r5-slots-008:out/combined.json:configs.sam_set_dg.seed_pair.R2_s1_from_s0",
+    "sam_set_dg_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_set_dg.ari_vs_km_s6",
+    "sam_self_seed_pair_ari": "r5-slots-008:out/combined.json:configs.sam_self.seed_pair.ari",
+    "sam_self_seed_pair_R2": "r5-slots-008:out/combined.json:configs.sam_self.seed_pair.R2_s1_from_s0",
+    "sam_self_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_self.ari_vs_km_s6",
+    "sam_rec_seed_pair_ari": "r5-slots-008:out/combined.json:configs.sam_rec.seed_pair.ari",
+    "sam_rec_seed_pair_R2": "r5-slots-008:out/combined.json:configs.sam_rec.seed_pair.R2_s1_from_s0",
+    "sam_rec_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_rec.ari_vs_km_s6",
+    "sam_set_ws_seed_pair_ari": "r5-slots-008:out/combined.json:configs.sam_set_ws.seed_pair.ari",
+    "sam_set_ws_seed_pair_R2": "r5-slots-008:out/combined.json:configs.sam_set_ws.seed_pair.R2_s1_from_s0",
+    "sam_set_ws_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_set_ws.ari_vs_km_s6",
+    "sam_sup_seed_pair_ari": "r5-slots-008:out/combined.json:configs.sam_sup.seed_pair.ari",
+    "sam_sup_seed_pair_R2": "r5-slots-008:out/combined.json:configs.sam_sup.seed_pair.R2_s1_from_s0",
+    "sam_sup_ari_vs_km_s6": "r5-slots-008:out/combined.json:configs.sam_sup.ari_vs_km_s6",
+    "pilot_r5-slots-003_sam_set_seed_pair_ari": "r5-slots-003:out/combined.json:configs.sam_set.seed_pair.ari",
+    "pilot_r5-slots-003_sam_set_s0_ari_vs_tracker": "r5-slots-003:out/combined.json:phis.\"sam_set_s0\".agreement.ari_hard_matter_weighted",
+    "r5-slots-007_sam_sup_s0_ari_vs_tracker": "r5-slots-007:out/combined.json:phis.\"sam_sup_s0\".agreement.ari_hard_matter_weighted",
+    "r5-slots-007_km_s3_ceiling": "r5-slots-007:out/combined.json:phis.\"km_s3@mp6\".families.S.ceiling",
+    "r5-slots-007_trk_ceiling": "r5-slots-007:out/combined.json:phis.\"trk@mp6\".families.S.ceiling"
+   }
+  }
+ ],
  "review": {
   "source": "code review by the Mac runner, relayed by the coordinator on 9 Nov 2026 (after r5-slots-003 was requested; the pilot r5-slots-003 runs the code before these fixes, pinned by ref e5d146ef3)",
   "items": [
@@ -11500,5 +12147,11 @@
     "fix": "caps of r5-slots-003 and later requests are sized as 6.69 x (max_hours + 0.25)"
    }
   ]
+ },
+ "totals": {
+  "billed_usd": 9.5249,
+  "pod_hours_created_to_terminated": 3.975,
+  "study_cap_usd": 25.0,
+  "source": "sum over jobs.*.cost.billed_usd and jobs.*.pod_hours_created_to_terminated"
  }
 }

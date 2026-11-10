@@ -4,7 +4,8 @@ usage: python -B ssummary.py RESULTS_DIR JOB_ID [PILOT_JOB_ID ...]
 Reads RESULTS_DIR/<JOB_ID>/{combined.json, sim_A.json, sim_B.json, train_done.json, status.json} (copied from
 origin/gpu-jobs:jobs/<JOB_ID>/out/ and the job's status.json), the same for the pilot jobs if given (job records
 only), and RESULTS_DIR/interpretation.json (the hand-written reading: a list of {"claim", "refs"}; each ref is a key
-path into the main job's combined.json, or {"mean": [paths]} for a mean over seeds / replicas). Writes
+path into the main job's combined.json, {"mean": [paths]} for a mean over seeds / replicas, or {"file", "path",
+optional "job", optional "op"} for a key of another copied job file, e.g. a training history). Writes
 RESULTS_DIR/summary.json: job records (state, GPU, hours, billed cost), platform, sizes, one row per Phi and per
 learned config (seed means with both seeds' sources), objective values, and the claims with their values resolved
 from the source keys (so a claim cannot drift from its source).
@@ -70,6 +71,15 @@ def job_record(job):
               "billing_window_hours", "hours"):
         if k in st:
             rec[k] = st[k]
+    # derived from the same file: hours between the pods' created_at and terminated_at, and between the job's
+    # started_at and finished_at (status.json itself only carries the timestamps and the billed amount)
+    from datetime import datetime
+    ts = lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%SZ")
+    ph = [(ts(p_["terminated_at"]) - ts(p_["created_at"])).total_seconds() / 3600 for p_ in pods
+          if p_.get("created_at") and p_.get("terminated_at")]
+    rec["pod_hours_created_to_terminated"] = round(sum(ph), 3)
+    if st.get("started_at") and st.get("finished_at"):
+        rec["run_hours_started_to_finished"] = round((ts(st["finished_at"]) - ts(st["started_at"])).total_seconds() / 3600, 3)
     return rec
 
 
@@ -88,6 +98,9 @@ for h in ("A", "B"):
 p = os.path.join(R, JOB, "train_done.json")
 if os.path.exists(p):
     out["meta"]["train_done"] = dict(json.load(open(p)), source=src("train_done.json", "*"))
+out["totals"] = {"billed_usd": round(sum((j.get("cost") or {}).get("billed_usd") or 0.0 for j in out["jobs"].values()), 4),
+                 "pod_hours_created_to_terminated": round(sum(j.get("pod_hours_created_to_terminated") or 0.0 for j in out["jobs"].values()), 3),
+                 "study_cap_usd": 25.0, "source": "sum over jobs.*.cost.billed_usd and jobs.*.pod_hours_created_to_terminated"}
 out["meta"]["layout"] = C["layout"]
 out["meta"]["horizons"] = HZ
 out["meta"]["problems"] = C.get("problems")
@@ -193,12 +206,31 @@ if os.path.exists(p):                  # the code review of the job and what was
     out["review"] = json.load(open(p))
 p = os.path.join(R, "interpretation.json")
 if os.path.exists(p):
+    _files = {}
+
+    def other(job, fname):
+        """Another JSON file of a job (the copy under RESULTS_DIR/<job>/)."""
+        if (job, fname) not in _files:
+            _files[(job, fname)] = json.load(open(os.path.join(R, job, fname)))
+        return _files[(job, fname)]
+
     for cl in json.load(open(p)):
         vals, srcs = {}, {}
         for label, ref in cl.get("refs", {}).items():
             if isinstance(ref, dict) and "mean" in ref:
                 vals[label] = r4(np.mean(np.asarray([get(q) for q in ref["mean"]], float), 0))
                 srcs[label] = "mean of " + "; ".join(src("combined.json", q) for q in ref["mean"])
+            elif isinstance(ref, dict):
+                # {"file": name, "path": key path, "job": optional other job, "op": optional "mean" | "rowsum_mean"}
+                job, fname = ref.get("job", JOB), ref.get("file", "combined.json")
+                v = get(ref["path"], other(job, fname))
+                op = ref.get("op")
+                if op == "mean":
+                    v = fmean(v)
+                elif op == "rowsum_mean":            # (replicas, parts): sum over the parts, mean over the replicas
+                    v = float(np.mean(np.sum(np.asarray(v, float), -1)))
+                vals[label] = r4(v)
+                srcs[label] = f"{job}:out/{fname}:{ref['path']}" + (f" ({op})" if op else "")
             else:
                 vals[label] = r4(get(ref))
                 srcs[label] = src("combined.json", ref)

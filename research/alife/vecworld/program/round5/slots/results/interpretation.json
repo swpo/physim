@@ -1,0 +1,808 @@
+[
+ {
+  "claim": "CAPACITY CONTROL. The slot architecture can express a largely tracker-like view: trained to imitate the tracker's segmentation (sam_sup, 3000 steps) it reaches ARI 0.85 against the tracker on the half it was not fitted on, about 1.2 slots per tracked object, leaves about a third of its 12 slots empty (the tracker has 7.4 objects per frame), and the matched slot's mass follows the object's mass.",
+  "refs": {
+   "sam_sup_ari": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_sup_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_sup_recall": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.recall",
+     "phis.\"sam_sup_s1\".agreement.recall"
+    ]
+   },
+   "sam_sup_precision": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.precision",
+     "phis.\"sam_sup_s1\".agreement.precision"
+    ]
+   },
+   "sam_sup_slots_per_object": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.slots_per_object",
+     "phis.\"sam_sup_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_sup_slots_present": {
+    "mean": [
+     "phis.\"sam_sup_s0\".territory.slots_present_mean",
+     "phis.\"sam_sup_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_sup_mass_R2_mask": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.direct.mass_R2",
+     "phis.\"sam_sup_s1\".agreement.direct.mass_R2"
+    ]
+   },
+   "sam_sup_mass_R2_probe": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.probe_rff.mass_R2",
+     "phis.\"sam_sup_s1\".agreement.probe_rff.mass_R2"
+    ]
+   },
+   "sam_sup_velocity_R2_probe": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.probe_rff.vel_R2",
+     "phis.\"sam_sup_s1\".agreement.probe_rff.vel_R2"
+    ]
+   },
+   "tracker_objects_per_frame_half_A": {
+    "file": "sim_A.json",
+    "path": "objects.count_mean"
+   },
+   "seed_pair_ari": "configs.sam_sup.seed_pair.ari"
+  }
+ },
+ {
+  "claim": "NO OBJECTS FROM THE OBJECTIVES. With the geometric encoder (which starts as soft k-means) every unsupervised objective ends at the k-means parts, not at the tracker's objects: closure (sam_set), closure with the dead-direction term (sam_set_dg), local law (sam_self) and reconstruction (sam_rec) all give ARI 0.63 against the tracker, 2.1 slots per tracked object, all 12 slots in use, high precision and low recall (a slot lies inside one object, an object is split over slots), matched-slot mass unrelated to the object's mass, position recovered. The no-learning soft k-means km_s3 has the same numbers.",
+  "refs": {
+   "sam_set_ari": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_set_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_set_slots_per_object": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.slots_per_object",
+     "phis.\"sam_set_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_set_slots_present": {
+    "mean": [
+     "phis.\"sam_set_s0\".territory.slots_present_mean",
+     "phis.\"sam_set_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_set_mass_R2_mask": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.direct.mass_R2",
+     "phis.\"sam_set_s1\".agreement.direct.mass_R2"
+    ]
+   },
+   "sam_set_ari_vs_km_s6": "configs.sam_set.ari_vs_km_s6",
+   "sam_set_dg_ari": {
+    "mean": [
+     "phis.\"sam_set_dg_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_set_dg_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_set_dg_slots_per_object": {
+    "mean": [
+     "phis.\"sam_set_dg_s0\".agreement.slots_per_object",
+     "phis.\"sam_set_dg_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_set_dg_slots_present": {
+    "mean": [
+     "phis.\"sam_set_dg_s0\".territory.slots_present_mean",
+     "phis.\"sam_set_dg_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_set_dg_mass_R2_mask": {
+    "mean": [
+     "phis.\"sam_set_dg_s0\".agreement.direct.mass_R2",
+     "phis.\"sam_set_dg_s1\".agreement.direct.mass_R2"
+    ]
+   },
+   "sam_set_dg_ari_vs_km_s6": "configs.sam_set_dg.ari_vs_km_s6",
+   "sam_self_ari": {
+    "mean": [
+     "phis.\"sam_self_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_self_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_self_slots_per_object": {
+    "mean": [
+     "phis.\"sam_self_s0\".agreement.slots_per_object",
+     "phis.\"sam_self_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_self_slots_present": {
+    "mean": [
+     "phis.\"sam_self_s0\".territory.slots_present_mean",
+     "phis.\"sam_self_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_self_mass_R2_mask": {
+    "mean": [
+     "phis.\"sam_self_s0\".agreement.direct.mass_R2",
+     "phis.\"sam_self_s1\".agreement.direct.mass_R2"
+    ]
+   },
+   "sam_self_ari_vs_km_s6": "configs.sam_self.ari_vs_km_s6",
+   "sam_rec_ari": {
+    "mean": [
+     "phis.\"sam_rec_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_rec_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_rec_slots_per_object": {
+    "mean": [
+     "phis.\"sam_rec_s0\".agreement.slots_per_object",
+     "phis.\"sam_rec_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_rec_slots_present": {
+    "mean": [
+     "phis.\"sam_rec_s0\".territory.slots_present_mean",
+     "phis.\"sam_rec_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_rec_mass_R2_mask": {
+    "mean": [
+     "phis.\"sam_rec_s0\".agreement.direct.mass_R2",
+     "phis.\"sam_rec_s1\".agreement.direct.mass_R2"
+    ]
+   },
+   "sam_rec_ari_vs_km_s6": "configs.sam_rec.ari_vs_km_s6",
+   "km_s3_ari": "phis.\"km_s3\".agreement.ari_hard_matter_weighted",
+   "km_s3_slots_per_object": "phis.\"km_s3\".agreement.slots_per_object",
+   "km_s3_recall": "phis.\"km_s3\".agreement.recall",
+   "km_s3_precision": "phis.\"km_s3\".agreement.precision",
+   "km_s3_mass_R2_mask": "phis.\"km_s3\".agreement.direct.mass_R2",
+   "km_s3_position_R2_mask": "phis.\"km_s3\".agreement.direct.pos_R2"
+  }
+ },
+ {
+  "claim": "THE OBJECTIVES LEAVE THE TRACKER-LIKE VIEW. Started from the supervised encoder (encoder frozen for the first 375 steps while the new head warms up), each objective walks back to the parts: recall + purity of the masks against the tracker on held-out trajectories (2 = the tracker's segmentation) is 1.87 at the start, 1.71 at step 500, 1.65 at step 1000 and stays there, the value of the cold-started encoders; the certified agreement of the warm-started encoders equals that of the cold-started ones. So the tracker-like view is not a minimum that the optimiser failed to find from a k-means start.",
+  "refs": {
+   "sam_set_ws_ari": {
+    "mean": [
+     "phis.\"sam_set_ws_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_set_ws_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_set_ws_slots_per_object": {
+    "mean": [
+     "phis.\"sam_set_ws_s0\".agreement.slots_per_object",
+     "phis.\"sam_set_ws_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_set_ws_slots_present": {
+    "mean": [
+     "phis.\"sam_set_ws_s0\".territory.slots_present_mean",
+     "phis.\"sam_set_ws_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_set_ws_dg_ari": {
+    "mean": [
+     "phis.\"sam_set_ws_dg_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_set_ws_dg_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_set_ws_dg_slots_per_object": {
+    "mean": [
+     "phis.\"sam_set_ws_dg_s0\".agreement.slots_per_object",
+     "phis.\"sam_set_ws_dg_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_set_ws_dg_slots_present": {
+    "mean": [
+     "phis.\"sam_set_ws_dg_s0\".territory.slots_present_mean",
+     "phis.\"sam_set_ws_dg_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_self_ws_ari": {
+    "mean": [
+     "phis.\"sam_self_ws_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_self_ws_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_self_ws_slots_per_object": {
+    "mean": [
+     "phis.\"sam_self_ws_s0\".agreement.slots_per_object",
+     "phis.\"sam_self_ws_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_self_ws_slots_present": {
+    "mean": [
+     "phis.\"sam_self_ws_s0\".territory.slots_present_mean",
+     "phis.\"sam_self_ws_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_rec_ws_ari": {
+    "mean": [
+     "phis.\"sam_rec_ws_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sam_rec_ws_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sam_rec_ws_slots_per_object": {
+    "mean": [
+     "phis.\"sam_rec_ws_s0\".agreement.slots_per_object",
+     "phis.\"sam_rec_ws_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sam_rec_ws_slots_present": {
+    "mean": [
+     "phis.\"sam_rec_ws_s0\".territory.slots_present_mean",
+     "phis.\"sam_rec_ws_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_set_ws_recall_plus_purity_step_0": {
+    "file": "train/sam_set_ws.json",
+    "path": "hist[0].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_recall_plus_purity_step_300": {
+    "file": "train/sam_set_ws.json",
+    "path": "hist[3].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_recall_plus_purity_step_400": {
+    "file": "train/sam_set_ws.json",
+    "path": "hist[4].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_recall_plus_purity_step_500": {
+    "file": "train/sam_set_ws.json",
+    "path": "hist[5].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_recall_plus_purity_step_700": {
+    "file": "train/sam_set_ws.json",
+    "path": "hist[7].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_recall_plus_purity_step_1000": {
+    "file": "train/sam_set_ws.json",
+    "path": "hist[10].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_recall_plus_purity_step_3000": {
+    "file": "train/sam_set_ws.json",
+    "path": "hist[30].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_self_ws_recall_plus_purity_step_0": {
+    "file": "train/sam_self_ws.json",
+    "path": "hist[0].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_self_ws_recall_plus_purity_step_1000": {
+    "file": "train/sam_self_ws.json",
+    "path": "hist[10].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_self_ws_recall_plus_purity_step_3000": {
+    "file": "train/sam_self_ws.json",
+    "path": "hist[30].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_rec_ws_recall_plus_purity_step_0": {
+    "file": "train/sam_rec_ws.json",
+    "path": "hist[0].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_rec_ws_recall_plus_purity_step_1000": {
+    "file": "train/sam_rec_ws.json",
+    "path": "hist[10].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_rec_ws_recall_plus_purity_step_3000": {
+    "file": "train/sam_rec_ws.json",
+    "path": "hist[30].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_dg_recall_plus_purity_step_0": {
+    "file": "train/sam_set_ws_dg.json",
+    "path": "hist[0].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_dg_recall_plus_purity_step_1000": {
+    "file": "train/sam_set_ws_dg.json",
+    "path": "hist[10].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_ws_dg_recall_plus_purity_step_3000": {
+    "file": "train/sam_set_ws_dg.json",
+    "path": "hist[30].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_sup_recall_plus_purity_step_3000": {
+    "file": "train/sam_sup.json",
+    "path": "hist[30].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   },
+   "sam_set_recall_plus_purity_step_3000": {
+    "file": "train/sam_set.json",
+    "path": "hist[30].val_trk_recall_purity",
+    "op": "rowsum_mean"
+   }
+  }
+ },
+ {
+  "claim": "CLOSURE RANKS THE PARTS ABOVE THE OBJECTS. Each view judged in its own coordinates with the same permutation-equivariant predictor family (S: shared linear rule and shared attention network over slots; 6 numbers per slot = mass, position, size; h = 1, 2, 4, 8, 16; SE 0.01-0.02): the tracker's object view has the lowest ceiling of the object-like views, the supervised tracker-like encoder is in between, the parts (k-means or any objective-trained encoder) are highest; only the fixed grid is lower than the tracker at long horizons.",
+  "refs": {
+   "ceiling_trk": "phis.\"trk@mp6\".families.S.ceiling",
+   "ceiling_trk_se": "phis.\"trk@mp6\".families.S.se",
+   "ceiling_sam_sup": {
+    "mean": [
+     "phis.\"sam_sup_s0@mp6\".families.S.ceiling",
+     "phis.\"sam_sup_s1@mp6\".families.S.ceiling"
+    ]
+   },
+   "ceiling_km_s3": "phis.\"km_s3@mp6\".families.S.ceiling",
+   "ceiling_km_s3_se": "phis.\"km_s3@mp6\".families.S.se",
+   "ceiling_sam_set": {
+    "mean": [
+     "phis.\"sam_set_s0@mp6\".families.S.ceiling",
+     "phis.\"sam_set_s1@mp6\".families.S.ceiling"
+    ]
+   },
+   "ceiling_sam_self": {
+    "mean": [
+     "phis.\"sam_self_s0@mp6\".families.S.ceiling",
+     "phis.\"sam_self_s1@mp6\".families.S.ceiling"
+    ]
+   },
+   "ceiling_sam_rec": {
+    "mean": [
+     "phis.\"sam_rec_s0@mp6\".families.S.ceiling",
+     "phis.\"sam_rec_s1@mp6\".families.S.ceiling"
+    ]
+   },
+   "ceiling_sam_set_ws_dg": {
+    "mean": [
+     "phis.\"sam_set_ws_dg_s0@mp6\".families.S.ceiling",
+     "phis.\"sam_set_ws_dg_s1@mp6\".families.S.ceiling"
+    ]
+   },
+   "ceiling_grid": "phis.\"grid@mp6\".families.S.ceiling",
+   "ceiling_trk_family_O_12_numbers": "phis.\"trk\".families.O.ceiling",
+   "ceiling_km_s3_family_O_12_numbers": "phis.\"km_s3\".families.O.ceiling",
+   "ceiling_hand_block_mass_64_numbers": "phis.\"hand_mass\".families.GL.ceiling"
+  }
+ },
+ {
+  "claim": "PREDICTABLE CONTENT. The parts also hold more predictable nats per frame in the same 72 numbers (captured by family S). Diagonal Gaussian measure at h = 1 / 4 / 16: 200 / 102 / 29 for km_s3 against 111 / 43 / 5 for the tracker's view. Log-det measure at h = 1: 192 against 81, with the supervised encoder in between (119); the tracker's log-det is ill-conditioned at longer horizons (empty slots make its covariance nearly singular; its available content is undefined), so only h = 1 is quoted for it. The diagonal measure counts redundant coordinates repeatedly (the collapsed sgm_set scores highest on it, and negative on the log-det), so it is quoted here only for views whose slots are distinct.",
+  "refs": {
+   "logdet_capt_trk": "phis.\"trk@mp6\".logdet.I_capt_S",
+   "logdet_capt_sam_sup": {
+    "mean": [
+     "phis.\"sam_sup_s0@mp6\".logdet.I_capt_S",
+     "phis.\"sam_sup_s1@mp6\".logdet.I_capt_S"
+    ]
+   },
+   "logdet_capt_km_s3": "phis.\"km_s3@mp6\".logdet.I_capt_S",
+   "logdet_capt_sam_set": {
+    "mean": [
+     "phis.\"sam_set_s0@mp6\".logdet.I_capt_S",
+     "phis.\"sam_set_s1@mp6\".logdet.I_capt_S"
+    ]
+   },
+   "logdet_capt_grid": "phis.\"grid@mp6\".logdet.I_capt_S",
+   "logdet_avail_km_s3": "phis.\"km_s3@mp6\".logdet.I_avail",
+   "logdet_avail_sam_sup": {
+    "mean": [
+     "phis.\"sam_sup_s0@mp6\".logdet.I_avail",
+     "phis.\"sam_sup_s1@mp6\".logdet.I_avail"
+    ]
+   },
+   "diag_capt_trk": "phis.\"trk@mp6\".families.S.I_capt_diag",
+   "diag_capt_km_s3": "phis.\"km_s3@mp6\".families.S.I_capt_diag",
+   "diag_capt_sgm_set_collapsed": "phis.\"sgm_set_s0@mp6\".families.S.I_capt_diag",
+   "logdet_capt_sgm_set_collapsed": "phis.\"sgm_set_s0@mp6\".logdet.I_capt_S",
+   "diag_capt_sam_sup": {
+    "mean": [
+     "phis.\"sam_sup_s0@mp6\".families.S.I_capt_diag",
+     "phis.\"sam_sup_s1@mp6\".families.S.I_capt_diag"
+    ]
+   },
+   "logdet_avail_trk": "phis.\"trk@mp6\".logdet.I_avail"
+  }
+ },
+ {
+  "claim": "THE OBJECTIVES THEMSELVES PREFER THE PARTS. Value of each objective on each frozen view, with a fresh head trained for 1000 steps (lower is better; mean of 4 replicas): closure and local law score the tracker's view worst of the object-like views (0.45), the supervised tracker-like encoder next (0.42), k-means parts 0.32-0.35 and the objective-trained encoders 0.28-0.31; reconstruction also prefers parts (0.47) to the tracker's view (0.55). Training therefore improves the objective a little beyond k-means (0.29 against 0.32) without changing which matter a slot holds. Between runs the tracker's closure value moves by about 0.05 (0.49 in r5-slots-007, a different simulation), far less than the gap.",
+  "refs": {
+   "set_trk": {
+    "file": "combined.json",
+    "path": "objval.trk.set.val",
+    "op": "mean"
+   },
+   "set_sam_sup": {
+    "file": "combined.json",
+    "path": "objval.sam_sup.set.val",
+    "op": "mean"
+   },
+   "set_km_s3": {
+    "file": "combined.json",
+    "path": "objval.km_s3.set.val",
+    "op": "mean"
+   },
+   "set_km_s6": {
+    "file": "combined.json",
+    "path": "objval.km_s6.set.val",
+    "op": "mean"
+   },
+   "set_km_s6w": {
+    "file": "combined.json",
+    "path": "objval.km_s6w.set.val",
+    "op": "mean"
+   },
+   "set_sam_set": {
+    "file": "combined.json",
+    "path": "objval.sam_set.set.val",
+    "op": "mean"
+   },
+   "set_sam_self": {
+    "file": "combined.json",
+    "path": "objval.sam_self.set.val",
+    "op": "mean"
+   },
+   "set_sam_rec": {
+    "file": "combined.json",
+    "path": "objval.sam_rec.set.val",
+    "op": "mean"
+   },
+   "set_grid": {
+    "file": "combined.json",
+    "path": "objval.grid.set.val",
+    "op": "mean"
+   },
+   "self_trk": {
+    "file": "combined.json",
+    "path": "objval.trk.self.val",
+    "op": "mean"
+   },
+   "self_sam_sup": {
+    "file": "combined.json",
+    "path": "objval.sam_sup.self.val",
+    "op": "mean"
+   },
+   "self_km_s3": {
+    "file": "combined.json",
+    "path": "objval.km_s3.self.val",
+    "op": "mean"
+   },
+   "self_sam_set": {
+    "file": "combined.json",
+    "path": "objval.sam_set.self.val",
+    "op": "mean"
+   },
+   "self_sam_self": {
+    "file": "combined.json",
+    "path": "objval.sam_self.self.val",
+    "op": "mean"
+   },
+   "rec_trk": {
+    "file": "combined.json",
+    "path": "objval.trk.rec.val",
+    "op": "mean"
+   },
+   "rec_sam_sup": {
+    "file": "combined.json",
+    "path": "objval.sam_sup.rec.val",
+    "op": "mean"
+   },
+   "rec_km_s3": {
+    "file": "combined.json",
+    "path": "objval.km_s3.rec.val",
+    "op": "mean"
+   },
+   "rec_sam_rec": {
+    "file": "combined.json",
+    "path": "objval.sam_rec.rec.val",
+    "op": "mean"
+   },
+   "rec_grid": {
+    "file": "combined.json",
+    "path": "objval.grid.rec.val",
+    "op": "mean"
+   },
+   "set_trk_replicas": "objval.trk.set.val",
+   "set_km_s3_replicas": "objval.km_s3.set.val",
+   "set_trk_in_r5-slots-007": {
+    "job": "r5-slots-007",
+    "file": "combined.json",
+    "path": "objval.trk.set.val",
+    "op": "mean"
+   },
+   "set_km_s3_in_r5-slots-007": {
+    "job": "r5-slots-007",
+    "file": "combined.json",
+    "path": "objval.km_s3.set.val",
+    "op": "mean"
+   },
+   "set_sam_sup_in_r5-slots-007": {
+    "job": "r5-slots-007",
+    "file": "combined.json",
+    "path": "objval.sam_sup.set.val",
+    "op": "mean"
+   }
+  }
+ },
+ {
+  "claim": "WHAT THE TRACKER'S LOGIC ADDS: INDIVIDUATION AND EVENTS. The tracker says how many objects there are (one per connected blob) and re-labels at once when blobs fuse or split; this world has about 67 fusions and 131 fissions per 300-tick trajectory for 7.4 objects. The parts keep all 12 slots in use and never merge: just after a fusion the best slot holds 0.42 of the fused object and still only 0.72 more than 16 ticks later, while after a fission recall is 0.79 at once. The supervised encoder learned to empty slots (8.0 present) and to merge, but with a lag of 4 to 8 ticks after either event (recall 0.69 at a fusion and 0.67 at a fission, 0.93-0.96 by ticks 8-15). Each objective scores those jumps as unpredictable change of the slot numbers, which is what it is asked to avoid.",
+  "refs": {
+   "fusions_per_trajectory_half_A": {
+    "file": "sim_A.json",
+    "path": "objects.events_per_traj.fusion"
+   },
+   "fissions_per_trajectory_half_A": {
+    "file": "sim_A.json",
+    "path": "objects.events_per_traj.fission"
+   },
+   "fusions_per_trajectory_half_B": {
+    "file": "sim_B.json",
+    "path": "objects.events_per_traj.fusion"
+   },
+   "fissions_per_trajectory_half_B": {
+    "file": "sim_B.json",
+    "path": "objects.events_per_traj.fission"
+   },
+   "objects_per_frame_half_A": {
+    "file": "sim_A.json",
+    "path": "objects.count_mean"
+   },
+   "objects_per_frame_half_B": {
+    "file": "sim_B.json",
+    "path": "objects.count_mean"
+   },
+   "sam_set_recall_fusion_tick_0": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.by_ticks_since_event.fusion[0].recall",
+     "phis.\"sam_set_s1\".agreement.by_ticks_since_event.fusion[0].recall"
+    ]
+   },
+   "sam_set_recall_fusion_ticks_8_15": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.by_ticks_since_event.fusion[4].recall",
+     "phis.\"sam_set_s1\".agreement.by_ticks_since_event.fusion[4].recall"
+    ]
+   },
+   "sam_set_recall_fusion_16plus": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.by_ticks_since_event.fusion[5].recall",
+     "phis.\"sam_set_s1\".agreement.by_ticks_since_event.fusion[5].recall"
+    ]
+   },
+   "sam_set_recall_fission_tick_0": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.by_ticks_since_event.fission[0].recall",
+     "phis.\"sam_set_s1\".agreement.by_ticks_since_event.fission[0].recall"
+    ]
+   },
+   "sam_set_precision_fission_tick_0": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.by_ticks_since_event.fission[0].precision",
+     "phis.\"sam_set_s1\".agreement.by_ticks_since_event.fission[0].precision"
+    ]
+   },
+   "sam_sup_recall_fusion_tick_0": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fusion[0].recall",
+     "phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fusion[0].recall"
+    ]
+   },
+   "sam_sup_recall_fusion_ticks_4_7": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fusion[3].recall",
+     "phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fusion[3].recall"
+    ]
+   },
+   "sam_sup_recall_fusion_ticks_8_15": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fusion[4].recall",
+     "phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fusion[4].recall"
+    ]
+   },
+   "sam_sup_recall_fusion_16plus": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fusion[5].recall",
+     "phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fusion[5].recall"
+    ]
+   },
+   "sam_sup_recall_fission_tick_0": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fission[0].recall",
+     "phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fission[0].recall"
+    ]
+   },
+   "sam_sup_precision_fission_tick_0": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fission[0].precision",
+     "phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fission[0].precision"
+    ]
+   },
+   "sam_sup_recall_fission_ticks_8_15": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.by_ticks_since_event.fission[4].recall",
+     "phis.\"sam_sup_s1\".agreement.by_ticks_since_event.fission[4].recall"
+    ]
+   },
+   "sam_sup_slots_present": {
+    "mean": [
+     "phis.\"sam_sup_s0\".territory.slots_present_mean",
+     "phis.\"sam_sup_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_set_slots_present": {
+    "mean": [
+     "phis.\"sam_set_s0\".territory.slots_present_mean",
+     "phis.\"sam_set_s1\".territory.slots_present_mean"
+    ]
+   },
+   "sam_set_identity_persistence": {
+    "mean": [
+     "phis.\"sam_set_s0\".agreement.identity_persistence",
+     "phis.\"sam_set_s1\".agreement.identity_persistence"
+    ]
+   },
+   "sam_sup_identity_persistence": {
+    "mean": [
+     "phis.\"sam_sup_s0\".agreement.identity_persistence",
+     "phis.\"sam_sup_s1\".agreement.identity_persistence"
+    ]
+   }
+  }
+ },
+ {
+  "claim": "COLLAPSE WITHOUT THE GEOMETRIC PRIOR OR THE MOMENT READOUT. Plain slot attention under closure (sgm_set, no k-means distance term) collapses to 12 identical slots that each take a twelfth of everything: ARI 0.00, 12 slots per object, closure value 0.02, about 6 effective dimensions in 72 numbers, negative captured log-det content, both seeds identical. A learned 6-number code under closure (sac_set, k-means masks kept) becomes a nearly frozen code: about 1.6 effective dimensions, probes of mass, position and velocity at R2 0.00, ceiling 0.90 at h = 16, non-finite objective values. The joint-covariance metric did not stop either (directions below its ridge drop out of the loss); the dead-direction term was only run with the moment readout, where there is no collapse to prevent. The classic slot-attention autoencoder (sgc_rec) finds neither objects nor a stable view (ARI 0.28, 6.5 slots per object, seed-pair ARI 0.16); a reconstruction-trained code on k-means masks (sac_rec) carries little about the objects (mass probe R2 0.06).",
+  "refs": {
+   "sgm_set_ari": {
+    "mean": [
+     "phis.\"sgm_set_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sgm_set_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sgm_set_slots_per_object": {
+    "mean": [
+     "phis.\"sgm_set_s0\".agreement.slots_per_object",
+     "phis.\"sgm_set_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sgm_set_closure_value": {
+    "file": "combined.json",
+    "path": "objval.sgm_set.set.val",
+    "op": "mean"
+   },
+   "sgm_set_participation_ratio": "phis.\"sgm_set_s0@mp6\".nontriv.participation_ratio",
+   "sgm_set_logdet_capt": "phis.\"sgm_set_s0@mp6\".logdet.I_capt_S",
+   "sgm_set_seed_pair_R2": "configs.sgm_set.seed_pair.R2_s1_from_s0",
+   "sgm_set_ceiling": {
+    "mean": [
+     "phis.\"sgm_set_s0@mp6\".families.S.ceiling",
+     "phis.\"sgm_set_s1@mp6\".families.S.ceiling"
+    ]
+   },
+   "sac_set_participation_ratio": {
+    "mean": [
+     "phis.\"sac_set_s0\".nontriv.participation_ratio",
+     "phis.\"sac_set_s1\".nontriv.participation_ratio"
+    ]
+   },
+   "sac_set_mass_probe_R2": {
+    "mean": [
+     "phis.\"sac_set_s0\".agreement.probe_rff.mass_R2",
+     "phis.\"sac_set_s1\".agreement.probe_rff.mass_R2"
+    ]
+   },
+   "sac_set_position_probe_R2": {
+    "mean": [
+     "phis.\"sac_set_s0\".agreement.probe_rff.pos_R2",
+     "phis.\"sac_set_s1\".agreement.probe_rff.pos_R2"
+    ]
+   },
+   "sac_set_velocity_probe_R2": {
+    "mean": [
+     "phis.\"sac_set_s0\".agreement.probe_rff.vel_R2",
+     "phis.\"sac_set_s1\".agreement.probe_rff.vel_R2"
+    ]
+   },
+   "sac_set_ceiling": {
+    "mean": [
+     "phis.\"sac_set_s0\".families.S.ceiling",
+     "phis.\"sac_set_s1\".families.S.ceiling"
+    ]
+   },
+   "sac_set_val_best": "configs.sac_set.val_best",
+   "sac_set_set_values": "objval.sac_set.set.val",
+   "sac_set_ari": {
+    "mean": [
+     "phis.\"sac_set_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sac_set_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sac_set_ari_vs_km_s6": "configs.sac_set.ari_vs_km_s6",
+   "sgc_rec_ari": {
+    "mean": [
+     "phis.\"sgc_rec_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sgc_rec_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "sgc_rec_slots_per_object": {
+    "mean": [
+     "phis.\"sgc_rec_s0\".agreement.slots_per_object",
+     "phis.\"sgc_rec_s1\".agreement.slots_per_object"
+    ]
+   },
+   "sgc_rec_seed_pair_ari": "configs.sgc_rec.seed_pair.ari",
+   "sac_rec_mass_probe_R2": {
+    "mean": [
+     "phis.\"sac_rec_s0\".agreement.probe_rff.mass_R2",
+     "phis.\"sac_rec_s1\".agreement.probe_rff.mass_R2"
+    ]
+   },
+   "sac_rec_ari": {
+    "mean": [
+     "phis.\"sac_rec_s0\".agreement.ari_hard_matter_weighted",
+     "phis.\"sac_rec_s1\".agreement.ari_hard_matter_weighted"
+    ]
+   },
+   "km_s3_participation_ratio": "phis.\"km_s3@mp6\".nontriv.participation_ratio"
+  }
+ },
+ {
+  "claim": "SEED STABILITY AND REPLICATION. The parts are a stable outcome: two seeds fitted on the same half agree (hard segmentations: ARI 0.91-0.94; matched slots' numbers: R2 0.81-0.90), and all agree with the no-learning km_s6 at ARI 0.80. Three GPU runs with different simulations (GPU float64 is not bit-deterministic) give the same picture: the pilot's sam_set (600 steps, H200), the failed run's supervised encoder and references (2000 steps), and this run.",
+  "refs": {
+   "sam_set_seed_pair_ari": "configs.sam_set.seed_pair.ari",
+   "sam_set_seed_pair_R2": "configs.sam_set.seed_pair.R2_s1_from_s0",
+   "sam_set_ari_vs_km_s6": "configs.sam_set.ari_vs_km_s6",
+   "sam_set_dg_seed_pair_ari": "configs.sam_set_dg.seed_pair.ari",
+   "sam_set_dg_seed_pair_R2": "configs.sam_set_dg.seed_pair.R2_s1_from_s0",
+   "sam_set_dg_ari_vs_km_s6": "configs.sam_set_dg.ari_vs_km_s6",
+   "sam_self_seed_pair_ari": "configs.sam_self.seed_pair.ari",
+   "sam_self_seed_pair_R2": "configs.sam_self.seed_pair.R2_s1_from_s0",
+   "sam_self_ari_vs_km_s6": "configs.sam_self.ari_vs_km_s6",
+   "sam_rec_seed_pair_ari": "configs.sam_rec.seed_pair.ari",
+   "sam_rec_seed_pair_R2": "configs.sam_rec.seed_pair.R2_s1_from_s0",
+   "sam_rec_ari_vs_km_s6": "configs.sam_rec.ari_vs_km_s6",
+   "sam_set_ws_seed_pair_ari": "configs.sam_set_ws.seed_pair.ari",
+   "sam_set_ws_seed_pair_R2": "configs.sam_set_ws.seed_pair.R2_s1_from_s0",
+   "sam_set_ws_ari_vs_km_s6": "configs.sam_set_ws.ari_vs_km_s6",
+   "sam_sup_seed_pair_ari": "configs.sam_sup.seed_pair.ari",
+   "sam_sup_seed_pair_R2": "configs.sam_sup.seed_pair.R2_s1_from_s0",
+   "sam_sup_ari_vs_km_s6": "configs.sam_sup.ari_vs_km_s6",
+   "pilot_r5-slots-003_sam_set_seed_pair_ari": {
+    "job": "r5-slots-003",
+    "file": "combined.json",
+    "path": "configs.sam_set.seed_pair.ari"
+   },
+   "pilot_r5-slots-003_sam_set_s0_ari_vs_tracker": {
+    "job": "r5-slots-003",
+    "file": "combined.json",
+    "path": "phis.\"sam_set_s0\".agreement.ari_hard_matter_weighted"
+   },
+   "r5-slots-007_sam_sup_s0_ari_vs_tracker": {
+    "job": "r5-slots-007",
+    "file": "combined.json",
+    "path": "phis.\"sam_sup_s0\".agreement.ari_hard_matter_weighted"
+   },
+   "r5-slots-007_km_s3_ceiling": {
+    "job": "r5-slots-007",
+    "file": "combined.json",
+    "path": "phis.\"km_s3@mp6\".families.S.ceiling"
+   },
+   "r5-slots-007_trk_ceiling": {
+    "job": "r5-slots-007",
+    "file": "combined.json",
+    "path": "phis.\"trk@mp6\".families.S.ceiling"
+   }
+  }
+ }
+]
