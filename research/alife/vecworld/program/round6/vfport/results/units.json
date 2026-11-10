@@ -1,7 +1,7 @@
 {
  "package_root": ".",
- "n_checks": 67,
- "n_passed": 67,
+ "n_checks": 66,
+ "n_passed": 66,
  "failed": [],
  "checks": {
   "freeze_never_raises": true,
@@ -51,19 +51,18 @@
   "guard_refuses_wrong_route_value": true,
   "guard_refuses_uid_0": true,
   "guard_refuses_uid_is_the_caller": true,
+  "guard_refuses_caller_is_not_root": true,
   "guard_refuses_uid_is_not_the_box_predictor_uid": true,
   "guard_refuses_uid_below_1000": true,
+  "guard_refuses_uid_1000_the_uid_of_the_incident": true,
+  "guard_refuses_uid_above_the_reserved_range": true,
+  "guard_refuses_a_mount_that_a_prepared_box_does_not_have": true,
+  "guard_refuses_an_unreadable_mount_table": true,
   "guard_refuses_uid_not_a_number": true,
   "guard_refuses_uid_true": true,
   "guard_refuses_on_this_machine": true,
   "guard_every_kill_and_delete_function_refuses_on_this_host": true,
   "guard_scan_changes_no_mode_on_this_host": true,
-  "driver_returns_for_every_predictor": true,
-  "driver_fifo_or_link_is_never_a_reply": true,
-  "driver_does_not_follow_a_link_left_as_stderr": true,
-  "driver_honest_predictor_passes": true,
-  "worker_refuses_a_reply_written_past_the_runner": true,
-  "driver_on_a_host_did_not_drop_or_clean": true,
   "score_of_float64_overflow_samples_is_not_finite": true,
   "score_of_any_float32_reply_is_finite": true,
   "score_extreme_float32_reply_is_worse_than_K": true,
@@ -220,7 +219,7 @@
      "float64"
     ],
     "held_mib": 0.01,
-    "seconds": 0.001,
+    "seconds": 0.002,
     "rss_growth_mib": 0.0
    },
    "good_compressed": {
@@ -251,7 +250,7 @@
    "many_members": {
     "accepted": false,
     "error": "ValueError: the reply must hold one array per level (at most 16)",
-    "seconds": 0.007,
+    "seconds": 0.008,
     "rss_growth_mib": 0.0
    },
    "lying_header": {
@@ -326,13 +325,29 @@
     "the target uid is 0 or not a uid"
    ],
    "uid_is_the_caller": [
+    "the caller is not root",
     "the target uid is the caller's own"
+   ],
+   "caller_is_not_root": [
+    "the caller is not root"
    ],
    "uid_is_not_the_box_predictor_uid": [
     "the target uid is not this box's predictor uid"
    ],
    "uid_below_1000": [
-    "the target uid is below 1000"
+    "the target uid is outside 20000-59999"
+   ],
+   "uid_1000_the_uid_of_the_incident": [
+    "the target uid is outside 20000-59999"
+   ],
+   "uid_above_the_reserved_range": [
+    "the target uid is outside 20000-59999"
+   ],
+   "a_mount_that_a_prepared_box_does_not_have": [
+    "mounted file systems that a prepared box does not have: /workspace (ext4)"
+   ],
+   "an_unreadable_mount_table": [
+    "the mount table cannot be read"
    ],
    "uid_not_a_number": [
     "the target uid is 0 or not a uid"
@@ -351,7 +366,9 @@
      "why": [
       "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
       "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route",
+      "the target uid is outside 20000-59999",
+      "mounted file systems that a prepared box does not have: / (ext4) and 5 more"
      ]
     },
     "0": {
@@ -360,7 +377,8 @@
       "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
       "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
       "PHYSIM2_BOX_CLEANUP is not set by the grading route",
-      "the target uid is 0 or not a uid"
+      "the target uid is 0 or not a uid",
+      "mounted file systems that a prepared box does not have: / (ext4) and 5 more"
      ]
     },
     "31001": {
@@ -368,7 +386,8 @@
      "why": [
       "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
       "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+      "PHYSIM2_BOX_CLEANUP is not set by the grading route",
+      "mounted file systems that a prepared box does not have: / (ext4) and 5 more"
      ]
     }
    }
@@ -431,157 +450,27 @@
     "fixing": false,
     "destructive_calls_reached": [],
     "file_still_world_writable": true
-   }
+   },
+   "tripwires_installed": 65
   },
   "driver_host_guard": {
    "euid": 0,
    "driver_has_the_box_guard": true,
-   "driver_program_was_run_here": true
+   "driver_program_was_run_here": false,
+   "why_not": "this process is root (or the driver has no guard): the driver is never started as root on a host; see results/driver_container.json for the same cases in a container"
   },
-  "driver": {
-   "fifo_as_stderr": {
-    "returned": true,
-    "ok": false,
-    "why": "exit code 1",
-    "stderr_tail": "",
-    "driver_error": null,
-    "layers": {
-     "rlimits": true,
-     "uid": null,
-     "cleanup": false,
-     "refused": [
-      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
-      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
-     ]
-    },
-    "seconds": 0.17
-   },
-   "fifo_as_reply": {
-    "returned": true,
-    "ok": false,
-    "why": "no reply file (not a regular file)",
-    "stderr_tail": "",
-    "driver_error": null,
-    "layers": {
-     "rlimits": true,
-     "uid": null,
-     "cleanup": false,
-     "refused": [
-      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
-      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
-     ]
-    },
-    "seconds": 0.16
-   },
-   "link_as_stderr": {
-    "returned": true,
-    "ok": false,
-    "why": "exit code 1",
-    "stderr_tail": "",
-    "driver_error": null,
-    "layers": {
-     "rlimits": true,
-     "uid": null,
-     "cleanup": false,
-     "refused": [
-      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
-      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
-     ]
-    },
-    "seconds": 0.17
-   },
-   "link_as_reply": {
-    "returned": true,
-    "ok": false,
-    "why": "no reply file (missing)",
-    "stderr_tail": "",
-    "driver_error": null,
-    "layers": {
-     "rlimits": true,
-     "uid": null,
-     "cleanup": false,
-     "refused": [
-      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
-      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
-     ]
-    },
-    "seconds": 0.17
-   },
-   "directory_as_reply": {
-    "returned": true,
-    "ok": false,
-    "why": "no reply file (not a regular file)",
-    "stderr_tail": "",
-    "driver_error": null,
-    "layers": {
-     "rlimits": true,
-     "uid": null,
-     "cleanup": false,
-     "refused": [
-      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
-      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
-     ]
-    },
-    "seconds": 0.21
-   },
-   "float64_past_the_runner": {
-    "returned": true,
-    "ok": true,
-    "why": null,
-    "stderr_tail": "",
-    "driver_error": null,
-    "layers": {
-     "rlimits": true,
-     "uid": null,
-     "cleanup": false,
-     "refused": [
-      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
-      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
-     ]
-    },
-    "worker_reads_reply": "refused: level arrays must be C-ordered float32 with three axes (as predict_runner.py wri",
-    "seconds": 0.17
-   },
-   "honest": {
-    "returned": true,
-    "ok": true,
-    "why": null,
-    "stderr_tail": "",
-    "driver_error": null,
-    "layers": {
-     "rlimits": true,
-     "uid": null,
-     "cleanup": false,
-     "refused": [
-      "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
-      "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
-      "PHYSIM2_BOX_CLEANUP is not set by the grading route"
-     ]
-    },
-    "worker_reads_reply": [
-     1,
-     2
-    ],
-    "seconds": 0.22
-   }
-  },
+  "driver": {},
   "score": {
    "float64_overflow_samples": {
     "finite_scores": 0,
-    "of": 448,
-    "minus_inf": 448,
+    "of": 56,
+    "minus_inf": 56,
     "skill_vs_O_if_scored_as_is": "inf"
    },
    "largest_float32_samples": {
-    "finite_scores": 448,
-    "of": 448,
-    "skill_vs_O": "-2.4814982332849036e+38"
+    "finite_scores": 56,
+    "of": 56,
+    "skill_vs_O": "-1.6896288092284952e+38"
    }
   },
   "lab": {

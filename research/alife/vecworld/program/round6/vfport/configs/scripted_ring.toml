@@ -1,6 +1,6 @@
 # Scripted, model-free rollout of the ring smoke exam: the data-only policy D, run in the agent's box by the
-# physim2-script harness. $0. Run from this folder with PHYSIM2_STORE set (see RUNBOOK_MAC.md):
-#   uv run --no-sync vf-eval @ configs/scripted_ring.toml --no-rich -o <a folder outside the checkout>
+# physim2-script harness. $0. The exact command (run label, store path, output folder, detached with a log) is
+# in RUNBOOK_MAC.md, step 2c; `agent_dir` below is relative to the study folder, so vf-eval must start there.
 # It can run ONCE per instance: single_use (default) refuses the same agent a second time. Grading uses the
 # taskset's default, one fresh box per exam item.
 model = "none/scripted"          # no model is called; the field only names the run

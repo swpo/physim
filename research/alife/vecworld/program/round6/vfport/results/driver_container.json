@@ -1,7 +1,7 @@
 {
- "where": "inside `docker run --rm --network none physim2-ring:1` (nothing of this ran on the host)",
- "n_checks": 19,
- "n_passed": 19,
+ "where": "inside `docker run --rm --network none physim2-ring:1` and a second one with `--tmpfs /extra` (nothing of this ran on the host; no host path was mounted)",
+ "n_checks": 31,
+ "n_passed": 31,
  "failed": [],
  "checks": {
   "guard_refuses_no_marker": true,
@@ -14,6 +14,12 @@
   "guard_refuses_uid_is_not_the_box_predictor_uid": true,
   "guard_refuses_uid_below_1000": true,
   "guard_refuses_no_sign_of_a_container_simulated": true,
+  "guard_refuses_uid_1000_with_a_marker_that_says_1000": true,
+  "guard_refuses_uid_19999_just_below_the_reserved_range": true,
+  "guard_refuses_uid_60000_just_above_the_reserved_range": true,
+  "cleanup_signals_nothing_when_the_identity_did_not_change": true,
+  "cleanup_leaves_a_root_owned_file_below_a_directory_of_the_uid": true,
+  "cleanup_never_removes_a_mount_point": true,
   "cleanup_with_every_layer_removes_the_predictor_uid": true,
   "cleanup_leaves_another_uid_alone": true,
   "driver_honest_predictor_runs_as_the_box_uid_with_cleanup": true,
@@ -21,8 +27,14 @@
   "driver_named_pipe_or_link_is_never_a_reply": true,
   "driver_never_returns_root_only_content": true,
   "driver_box_clean_after_every_predictor": true,
+  "driver_without_route_variable_and_without_no_box_runs_nothing": true,
+  "driver_uid_has_no_default": true,
   "driver_without_route_variable_neither_drops_nor_cleans": true,
-  "driver_on_the_grading_route_refuses_and_runs_nothing_without_the_marker": true
+  "driver_on_the_grading_route_refuses_and_runs_nothing_without_the_marker": true,
+  "guard_refuses_everything_with_a_tmpfs_mounted_at_extra": true,
+  "mount_guard_names_the_extra_mount": true,
+  "mount_driver_on_the_grading_route_runs_nothing": true,
+  "mount_scan_changes_nothing_and_the_canary_on_the_mount_survives": true
  },
  "evidence": {
   "no_marker": {
@@ -249,7 +261,7 @@
     "ipc_user": "refused"
    },
    "why": [
-    "the target uid is below 1000"
+    "the target uid is outside 20000-59999"
    ],
    "canaries_alive": [
     true,
@@ -295,14 +307,130 @@
     ]
    ]
   },
+  "uid_1000_with_a_marker_that_says_1000": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "the target uid is outside 20000-59999"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "uid_19999_just_below_the_reserved_range": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "the target uid is outside 20000-59999"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "uid_60000_just_above_the_reserved_range": {
+   "cleanup_refused": true,
+   "each_function": {
+    "kill_user": "refused",
+    "wipe_user": "refused",
+    "ipc_user": "refused"
+   },
+   "why": [
+    "the target uid is outside 20000-59999"
+   ],
+   "canaries_alive": [
+    true,
+    true
+   ],
+   "canary_files": [
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ],
+    [
+     "/dev/shm",
+     "/tmp",
+     "/var/tmp"
+    ]
+   ]
+  },
+  "mount_table": {
+   "walked_by_the_cleanup": [
+    "/",
+    "/dev",
+    "/dev/mqueue",
+    "/dev/shm",
+    "/etc/hostname",
+    "/etc/hosts",
+    "/etc/resolv.conf",
+    "/proc/acpi",
+    "/proc/interrupts",
+    "/proc/keys",
+    "/proc/timer_list",
+    "/sys/firmware",
+    "/sys/fs/cgroup"
+   ],
+   "foreign": []
+  },
   "container_evidence": [
    "/.dockerenv",
    "/proc/1/cgroup"
   ],
+  "identity_not_changed": {
+   "as_user": "refused: the helper process did not become the predictor uid",
+   "canaries_alive": [
+    true,
+    true
+   ]
+  },
+  "root_file_below_a_directory_of_the_uid": {
+   "root_canary_survives": true,
+   "its_directories_survive": true,
+   "file_of_the_uid_removed": true,
+   "reported_left": [
+    "/tmp/owned_by_x",
+    "/tmp/owned_by_x/sub",
+    "/dev/shm"
+   ]
+  },
   "all_layers": {
    "report": {
     "killed": 1,
-    "removed": 3,
+    "removed": 4,
     "left_pids": [],
     "left_files": []
    },
@@ -352,7 +480,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.31
+    "seconds": 0.39
    },
    "fifo_as_reply": {
     "returned": true,
@@ -371,7 +499,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.36
+    "seconds": 0.38
    },
    "link_as_stderr": {
     "returned": true,
@@ -390,7 +518,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.35
+    "seconds": 0.38
    },
    "link_as_reply": {
     "returned": true,
@@ -409,7 +537,7 @@
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.38
+    "seconds": 0.46
    },
    "moved_reply_directory": {
     "returned": true,
@@ -424,12 +552,34 @@
     "driver_error": null,
     "cleanup": {
      "killed": 0,
-     "removed": 3,
+     "removed": 2,
      "left_pids": [],
      "left_files": []
     },
-    "seconds": 0.45
+    "seconds": 0.44
    }
+  },
+  "driver_without_route_variable_and_without_no_box": {
+   "returned": true,
+   "ok": false,
+   "why": "driver error",
+   "stderr": "",
+   "layers": null,
+   "driver_error": "RuntimeError: refused: not a disposable box (PHYSIM2_BOX_CLEANUP is not set by the grading route); nothing was run (--no-box runs the predictor as the calling user, without the uid drop and the cleanup: for your own code in a box of your own)",
+   "cleanup": {
+    "killed": null,
+    "removed": null,
+    "left_pids": null,
+    "left_files": null
+   },
+   "seconds": 0.12
+  },
+  "driver_without_uid": {
+   "returned": true,
+   "no_reply": true,
+   "exit_code": 2,
+   "stderr": "nup]\n               [--no-box]\nitem.py: error: the following arguments are required: --uid",
+   "seconds": 0.08
   },
   "driver_without_route_variable": {
    "returned": true,
@@ -451,7 +601,7 @@
     "left_pids": null,
     "left_files": null
    },
-   "seconds": 0.32
+   "seconds": 0.38
   },
   "driver_with_route_variable_but_no_marker": {
    "returned": true,
@@ -466,7 +616,77 @@
     "left_pids": null,
     "left_files": null
    },
-   "seconds": 0.09
+   "seconds": 0.1
+  },
+  "container_with_tmpfs_extra": {
+   "everything_with_a_tmpfs_mounted_at_extra": {
+    "cleanup_refused": true,
+    "each_function": {
+     "kill_user": "refused",
+     "wipe_user": "refused",
+     "ipc_user": "refused"
+    },
+    "why": [
+     "mounted file systems that a prepared box does not have: /extra (tmpfs)"
+    ],
+    "canaries_alive": [
+     true,
+     true
+    ],
+    "canary_files": [
+     [
+      "/dev/shm",
+      "/tmp",
+      "/var/tmp"
+     ],
+     [
+      "/dev/shm",
+      "/tmp",
+      "/var/tmp"
+     ]
+    ]
+   },
+   "mount_table": {
+    "walked_by_the_cleanup": [
+     "/",
+     "/dev",
+     "/dev/mqueue",
+     "/dev/shm",
+     "/etc/hostname",
+     "/etc/hosts",
+     "/etc/resolv.conf",
+     "/extra",
+     "/proc/acpi",
+     "/proc/interrupts",
+     "/proc/keys",
+     "/proc/timer_list",
+     "/sys/firmware",
+     "/sys/fs/cgroup"
+    ],
+    "foreign": [
+     "/extra (tmpfs)"
+    ]
+   },
+   "extra": {
+    "guard_why": [
+     "mounted file systems that a prepared box does not have: /extra (tmpfs)"
+    ],
+    "driver": {
+     "on_the_grading_route": {
+      "driver_error": "RuntimeError: refused: not a disposable box (mounted file systems that a prepared box does not have: /extra (tmpfs))",
+      "predictor_ran": false
+     },
+     "with_no_box_on_the_grading_route": {
+      "driver_error": "RuntimeError: refused: not a disposable box (mounted file systems that a prepared box does not have: /extra (tmpfs))",
+      "predictor_ran": false
+     }
+    },
+    "scan": {
+     "fixing": false,
+     "guard_ok": false
+    },
+    "canary_on_the_mount": true
+   }
   }
  }
 }

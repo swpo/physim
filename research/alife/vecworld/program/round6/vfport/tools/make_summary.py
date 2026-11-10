@@ -77,17 +77,21 @@ def main():
                                 text=True).stdout.strip()
     dirty = subprocess.run(["git", "status", "--porcelain", "--", "physim2_env", "physim2_script"], cwd=ROOT, capture_output=True,
                            text=True).stdout.strip()
-    S = {"study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment (after the fixes to the two reviews)",
+    S = {"study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment (after the fixes to the two reviews and round 1 "
+                  "of the fixes to the host-safety audit)",
          "written_unix": time.time(), "PILOT_NEVER_REUSE_AS_EXAM": True,
          "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model "
                          "call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). "
-                         "Nothing was run on a Mac.",
-         "code_versions": {"package (physim2_env, physim2_script)": f"commit {pkg_commit}" + (" PLUS UNCOMMITTED CHANGES" if dirty else "")
-                           + ": every rollout of every result file here ran on this package code",
-                           "tools and agents": "the commit that carries this file. After the rollouts three tools changed without any rollout "
-                           "being repeated: tools/prove.py (its aggregation step read a key that had been renamed; the tool was started "
-                           "again and resumed from its saved rollouts; wall time added up from the logs), tools/check_probe.py and "
-                           "agents/hostile_submission.py (one more hostile agent, submit_cap, run as a 37th rollout on resume)",
+                         "Nothing was run on a Mac. Which result file ran on which code: code_versions.",
+         "code_versions": {"package (physim2_env, physim2_script) now": f"commit {pkg_commit}" + (" PLUS UNCOMMITTED CHANGES" if dirty else "")
+                           + " (after round 1 of the host-safety fixes; pinned by PIN.sha256)",
+                           "run on the package as it is now": "results/probe_ring.json (37 rollouts), units.json, driver_container.json, "
+                           "safety_host.json, safety_interrupt.json, safety_runbook.json, rehearsal_round1.json (one world of the proof with the "
+                           "Mac's arguments, the probes, one direct vf-eval rollout)",
+                           "NOT run again after the host-safety fixes (package code of commit 743f6b75e)": "results/proof_ring.json and "
+                           "proof_ring_items.npz (the 4-world table, cost per rollout, one box per item), recomputed_table.json, "
+                           "gliders_smoke_D.json, units_before_fix.json, redteam/results/*. The driver, the staging and the worker gate changed "
+                           "since; the arithmetic of scoring did not",
                            "builder's results": "replaced; the builder's numbers are in the history of this file (commit e4a30854d)"},
          "sources": {"ours_table": "results/proof_ring.json", "round5_table": R5 + "proof_ring.json",
                      "ours_probe": "results/probe_ring.json", "round5_probe": R5 + "probe_ring.json"}}
@@ -139,6 +143,11 @@ def main():
     prev_all = json.load(open(old)) if os.path.exists(old) else {}
     prev = prev_all.get("hidden_value_scan")
     S["hidden_value_scan"] = scan_for_hidden(a.store, a.scratch) if a.store and a.scratch else prev
+    if a.store and a.scratch and prev and prev != S["hidden_value_scan"]:      # a new scan does not erase what an earlier one covered
+        S["hidden_value_scan_of_earlier_runs"] = dict({k: v for k, v in prev.items() if k != "earlier"},
+                                                      note="made while the store of those runs still existed; that store is deleted")
+    elif prev_all.get("hidden_value_scan_of_earlier_runs"):
+        S["hidden_value_scan_of_earlier_runs"] = prev_all["hidden_value_scan_of_earlier_runs"]
     if prev_all.get("checker") or prev_all.get("checker_of_the_builders_version"):
         S["checker_of_the_builders_version"] = prev_all.get("checker") or prev_all.get("checker_of_the_builders_version")
 
@@ -180,24 +189,42 @@ def main():
                           "import; the three Docker images run. Sessions here run as root and own their files as root.",
             "cause": "the driver decided to drop privileges and to clean up from `euid == 0` alone; nothing told it that it was not in a box",
             "reported": "to the coordinator's channel at 04:34:53 UTC"},
-        "fix": "physim2_env/public/_item.py: every function that kills, deletes or changes modes (kill_user, wipe_user, ipc_user, cleanup, "
-               "as_user, the fixing part of scan, the uid drop of run) asks require_box(uid) first, which needs ALL of: the marker "
-               "/etc/physim2/predictor_uid (root-owned, written by the environment's setup), a sign of a container (/.dockerenv, "
-               "/run/.containerenv or the control group of pid 1), the variable PHYSIM2_BOX_CLEANUP=disposable-box (set only on the grading "
-               "route's own commands), and a target uid that equals the marker's, is at least 1000 and is neither 0 nor the caller's. "
-               "physim2_env/grading.py: require_container(runtime) before every command sent through a verifiers Runtime (never the "
-               "subprocess runtime). tools/vfrun.py: a run directory is replaced only if it holds nothing but vf-eval's own files. "
-               "tools/check_units.py: refuses to start outside the build container; the real cleanup is tested in a throwaway container only.",
+        "first_fix": "commit 7e034be18: a box guard of four conditions in the driver (marker, sign of a container, route variable, the box's "
+                     "own uid), require_container(runtime) by the runtime's type string, tests under 12 tripwires and in a throwaway container",
+        "audit": {"file": "HOST_SAFETY_AUDIT.md", "verdict": "NO-GO for the Mac (10 Nov 2026): five major findings (A1 to A5), fifteen minor ones, "
+                  "nine required changes, two hardening items"},
+        "round_1_of_fixes": {
+            "source": "results/host_safety_round1.json (one entry per required change: what changed, the audit's test, its result)",
+            "driver": "physim2_env/public/_item.py: the guard now needs ALL of: a root caller; the marker /etc/physim2/predictor_uid (root-owned); a "
+                      "sign of a container; PHYSIM2_BOX_CLEANUP=disposable-box; a target uid equal to the marker's and inside 20000-59999; and a "
+                      "mount table that holds nothing but an overlay root, kernel file systems at or below /proc, /sys and /dev, and Docker's "
+                      "three /etc files (an unreadable table refuses; no fallback to /). The wipe unlinks and rmdirs listed paths only (no "
+                      "rmtree, never a mount point). The identity is verified after the set-id calls and before kill(-1). --uid has no "
+                      "default. Outside a box nothing runs unless --no-box is given",
+            "worker": "physim2_env/grading.py: container_gate accepts only verifiers' own DockerRuntime or PrimeRuntime object, not borrowed, "
+                      "with a container name verifiers generated; physim2_script uses the same gate",
+            "box_scripts": "agents/hostile_submission.py, agents/probe_grading.py, redteam/agent_rt.py exit at their first statement outside an "
+                           "exam box, and ask again before each kill -9 -1",
+            "tools": "tools/vfrun.py: VF_RUN_ID required (container label), SIGTERM before SIGKILL, Docker must answer; tools/check_units.py never "
+                     "starts the driver as root; red-team tools delete nothing they did not make",
+            "runbook": "RUNBOOK_MAC.md rewritten and pinned (PIN.sha256); ON HOLD until a re-audit",
+            "summary": None if not R("host_safety_round1.json") else {k: R("host_safety_round1.json")[k] for k in ("status", "all_named_tests_pass")}},
         "tests_on_the_host": None if not u else {
-            "source": "results/units.json: checks guard_*, evidence.guard_pure, .guard_on_this_machine, .guard_tripwires",
+            "source": "results/units.json: checks guard_*, evidence.guard_pure, .guard_on_this_machine, .guard_tripwires; results/safety_host.json",
             "checks": {k: v for k, v in u["checks"].items() if k.startswith("guard_")},
             "this_machine": u["evidence"].get("guard_on_this_machine"),
-            "how": "every killing or deleting function is called with the route variable set; os.kill, os.fork, os.setuid, os.unlink, os.chmod, "
-                   "os.chown and shutil.rmtree are replaced by tripwires meanwhile, so even a broken guard could do nothing",
-            "the_builders_code_under_the_same_tripwires": None if not ub else ub["evidence"].get("guard_tripwires")},
+            "how": "tools/tripwires.py replaces 65 primitives of os, shutil, subprocess and pathlib (kill, unlink, rmdir, rename, chmod, chown, "
+                   "set*id, fork, exec, rmtree, subprocess.run and Popen, ...) by recorders that raise, BEFORE the driver's file is imported; every "
+                   "killing or deleting function is then called with the route variable set and must refuse",
+            "driver_as_a_program_on_this_host": u["evidence"].get("driver_host_guard"),
+            "safety_host": None if not R("safety_host.json") else {k: R("safety_host.json")[k] for k in ("tripwires_installed", "n_checks", "n_passed", "failed")},
+            "the_builders_code_under_the_first_fixers_tripwires": None if not ub else ub["evidence"].get("guard_tripwires")},
         "tests_in_a_throwaway_container": None if not dc else {"source": "results/driver_container.json", "where": dc["where"],
                                                               "n_checks": dc["n_checks"], "n_passed": dc["n_passed"], "failed": dc["failed"],
-                                                              "checks": dc["checks"]}}
+                                                              "checks": dc["checks"]},
+        "interruption": None if not R("safety_interrupt.json") else {k: R("safety_interrupt.json")[k] for k in ("n_checks", "n_passed", "failed", "checks")},
+        "runbook": None if not R("safety_runbook.json") else {k: R("safety_runbook.json")[k] for k in ("copy", "n_checks", "n_passed", "failed")},
+        "rehearsal": None if not R("rehearsal_round1.json") else {k: R("rehearsal_round1.json").get(k) for k in ("outcome", "commit_rehearsed", "where")}}
     # ---- the red team's attacks, run again through the route after the fixes ----
     rt = {}
     for nm in ("overflow", "fifo", "hostile-exit1"):
@@ -260,7 +287,8 @@ def main():
                            "copied_verbatim": "32 lines (evaluator/submission.py:94-125) into physim2_env/public/validate.py; nothing else is copied"},
         "new": dict(new, totals={k: sum(v.values()) for k, v in new.items()}, total=sum(sum(v.values()) for v in new.values())),
         "memo_estimates": {"drop": 760, "wrap": 530, "keep": 2370, "new_including_sealer": 750, "scripted_harness": 60},
-        "red_team_scripts_not_counted": "redteam/ (the red team's attack scripts, kept as they were; rt_run.py got one line for agent_key)"}
+        "red_team_scripts_not_counted": "redteam/ (the red team's attack scripts; after the host-safety audit agent_rt.py got a box gate and "
+                                        "rt_run.py and nproc_cross_box.sh stopped deleting paths and container names they did not make)"}
 
     # ---- images ----
     out = subprocess.run(["docker", "images", "--format", "{{.Repository}}:{{.Tag}} {{.Size}}"], capture_output=True, text=True).stdout.split("\n")

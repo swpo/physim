@@ -138,7 +138,7 @@ def main():
 
     # ---- change 6: the text ----
     joined = "\n".join(cmds)
-    banned = {"export": r"\bexport ", "sudo": r"\bsudo\b", "pkill / killall": r"\b(pkill|killall)\b", "prune": r"\bprune\b", "--clean": r"--clean\b",
+    banned = {"export": r"\bexport ", "sudo": r"\bsudo\b", "pkill / killall": r"(^|[\s;&|(])(pkill|killall)\s", "prune": r"\bprune\b", "--clean": r"--clean\b",
               "command substitution": r"\$\(|`", "a mount option": r"(^|\s)(-v|--volume|--mount)(\s|=)", "docker socket": r"docker\.sock",
               "removal by filter": r"docker (rm|rmi)[^\n]*(--filter|-q)", "kill -9 or -1": r"kill\s+(-9|-KILL|-1)\b", "docker_shim": r"docker_shim",
               "a variable as a path": r"\$\{?(STUDY|S|DIR|ROOT|V)\b"}

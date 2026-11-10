@@ -10,7 +10,7 @@ own and stays NO-GO until steps 0 to 2 have passed on the Mac and been reported.
 **Pin.** Commit: not named in this copy (this copy is part of the pinned commit, and a commit cannot name its own
 hash; the copy at the head of the branch and the coordinator's GO message name it; everything outside this block
 is identical in the two copies).
-sha256 of `PIN.sha256`: `PIN_SHA256_PLACEHOLDER`
+sha256 of `PIN.sha256`: `7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19`
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, (1) install, (2) run the scripted, model-free smoke test

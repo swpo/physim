@@ -1,0 +1,887 @@
+{
+ "what": "host-side tests of HOST_SAFETY_AUDIT.md section 4, run with every destructive primitive of the process replaced by a tripwire before the package was imported; nothing was started, killed or deleted on this machine",
+ "evidence_label": "tripwire",
+ "tripwires_installed": 65,
+ "n_checks": 36,
+ "n_passed": 36,
+ "failed": [],
+ "checks": {
+  "R2_timeout_sends_sigterm_and_no_sigkill": true,
+  "R2_sigkill_only_after_sigterm_and_the_grace_period": true,
+  "R2_a_stop_request_to_the_tool_is_passed_on_as_sigterm": true,
+  "R2_an_exited_process_is_not_signalled": true,
+  "R2_sigterm_handler_of_this_process_restored": true,
+  "R2_tools_refuse_to_start_without_a_run_label": true,
+  "R2_run_eval_under_timeout_1_records_sigterm": true,
+  "R3_this_machine_is_not_a_box": true,
+  "R3_every_mode_of_every_script_ends_in_SystemExit_refused": true,
+  "R3_no_tripwire_reached_and_nothing_imported": true,
+  "R3_one_sign_of_a_box_is_not_enough": true,
+  "R3_modes_started": true,
+  "R3_gate_is_the_first_statement_and_precedes_each_kill": true,
+  "R4_allow_list_on_every_stored_mount_table": true,
+  "R4_stock_docker_tables_have_no_foreign_mount": true,
+  "R4_tmpfs_extra_and_host_folders_are_foreign": true,
+  "R4_unreadable_mount_table_raises_and_never_falls_back_to_root": true,
+  "R4_driver_has_no_rmtree_and_no_shutil": true,
+  "R4_guard_refuses_a_foreign_mount_and_an_unreadable_table": true,
+  "S1_guard_uid_range_20000_to_59999": true,
+  "S1_guard_requires_a_root_caller": true,
+  "guard_each_missing_condition_is_one_reason": true,
+  "R4_every_kill_and_delete_function_refuses_on_this_host": true,
+  "R4_scan_walks_nothing_on_this_host": true,
+  "R4_guard_on_this_host_names_its_mounts": true,
+  "S1_driver_runs_nothing_outside_a_box": true,
+  "S1_uid_has_no_default": true,
+  "R4_wipe_reaches_unlink_for_the_deepest_listed_path_first": true,
+  "R4_wipe_never_touches_a_mount_point": true,
+  "R5_recording_fakes_receive_zero_commands": true,
+  "R5_every_entry_point_was_exercised": true,
+  "R5_stage_public_files_setup_announce_and_harness_raise": true,
+  "R5_run_request_and_check_report_a_failure_without_a_command": true,
+  "R5_gate_passes_only_the_real_unborrowed_runtime": true,
+  "S1_validator_runs_nothing_outside_a_box": true,
+  "no_tripwire_was_reached_outside_the_two_tests_that_expect_one": true
+ },
+ "evidence": {
+  "R2": {
+   "timeout_1_obedient_stub": {
+    "returned": {
+     "returncode": 130,
+     "ended": "stopped after 1 s: SIGTERM"
+    },
+    "raised": null,
+    "calls_on_the_process": [
+     "communicate(timeout=1)",
+     "send_signal(SIGTERM)",
+     "wait(timeout)",
+     "communicate(timeout=None)"
+    ],
+    "processes_made": 1,
+    "tripwires_reached": []
+   },
+   "timeout_1_stub_that_ignores_sigterm": {
+    "returned": {
+     "returncode": -9,
+     "ended": "stopped after 1 s: SIGTERM, then SIGKILL"
+    },
+    "raised": null,
+    "calls_on_the_process": [
+     "communicate(timeout=1)",
+     "send_signal(SIGTERM)",
+     "wait(timeout)",
+     "kill(SIGKILL)",
+     "wait",
+     "communicate(timeout=None)"
+    ],
+    "processes_made": 1,
+    "tripwires_reached": []
+   },
+   "tool_itself_told_to_stop": {
+    "returned": null,
+    "raised": "KeyboardInterrupt",
+    "calls_on_the_process": [
+     "communicate(timeout=1)",
+     "send_signal(SIGTERM)",
+     "wait(timeout)"
+    ],
+    "processes_made": 1,
+    "tripwires_reached": []
+   },
+   "stop_child_on_a_process_that_has_exited": {
+    "result": "had exited",
+    "calls_on_the_process": []
+   },
+   "run_eval_without_VF_RUN_ID": {
+    "outcome": "VF_RUN_ID is not set (or not a plain label of 6 to 63 charac",
+    "tripwires_reached": [],
+    "out_dir_created": false
+   },
+   "run_eval_docker_check_is_a_subprocess": {
+    "outcome": "tripwire: subprocess.run",
+    "tripwires_reached": [
+     "subprocess.run (['docker', 'info', '--format', '{{.ServerVersion}}'],)"
+    ]
+   },
+   "run_eval_timeout_1": {
+    "ended": "stopped after 1 s: SIGTERM",
+    "run_label": "physim2-safety-test",
+    "command": [
+     "nice",
+     "-n",
+     "10",
+     "vf-eval"
+    ],
+    "calls_on_the_process": [
+     "communicate(timeout=1)",
+     "send_signal(SIGTERM)",
+     "wait(timeout)",
+     "communicate(timeout=None)"
+    ],
+    "tripwires_reached": []
+   }
+  },
+  "R3": {
+   "this_machine": {
+    "/.dockerenv": false,
+    "/etc/physim2/predictor_uid": false
+   },
+   "runs": {
+    "agents/hostile_submission.py delete": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py empty": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py oversize": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py huge": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py symlinks": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py no_tar": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py junk": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py tar_duplicate": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py tar_collision": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py tar_longpath": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py raw_submit_broken": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py fake_validator": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py unsubmitted_nondeterministic": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py unsubmitted_partly_working": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py submit_cap": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py exit1": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py killall": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py item_overflow": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py item_fifo": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py item_bomb": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py item_extreme": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py no-such-mode": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/hostile_submission.py": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/probe_grading.py --host-port 9": {
+     "ended": "SystemExit: refused: agents/probe_grading.py runs inside a PhySim exam box only (i",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "agents/probe_grading.py": {
+     "ended": "SystemExit: refused: agents/probe_grading.py runs inside a PhySim exam box only (i",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py recon --host-port 9 --sibling 127.0.0.1:9": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py overflow": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py fifo": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py hedge --rule True": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py hostile exit1": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py hostile killall": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py hostile hangtar": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py hostile sigkill": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    },
+    "redteam/agent_rt.py": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": [],
+     "modules_imported": []
+    }
+   },
+   "one_sign_only": {
+    "agents/hostile_submission.py: /.dockerenv only": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": []
+    },
+    "agents/hostile_submission.py: marker only": {
+     "ended": "SystemExit: refused: agents/hostile_submission.py runs inside a PhySim exam box on",
+     "tripwires_reached": []
+    },
+    "agents/probe_grading.py: /.dockerenv only": {
+     "ended": "SystemExit: refused: agents/probe_grading.py runs inside a PhySim exam box only (i",
+     "tripwires_reached": []
+    },
+    "agents/probe_grading.py: marker only": {
+     "ended": "SystemExit: refused: agents/probe_grading.py runs inside a PhySim exam box only (i",
+     "tripwires_reached": []
+    },
+    "redteam/agent_rt.py: /.dockerenv only": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": []
+    },
+    "redteam/agent_rt.py: marker only": {
+     "ended": "SystemExit: refused: redteam/agent_rt.py runs inside a PhySim exam box only (it ki",
+     "tripwires_reached": []
+    }
+   },
+   "static": {
+    "agents/hostile_submission.py": {
+     "gate_is_the_first_statement": true,
+     "kill_lines": [
+      203
+     ],
+     "each_kill_directly_preceded_by_the_gate": true
+    },
+    "agents/probe_grading.py": {
+     "gate_is_the_first_statement": true,
+     "kill_lines": [],
+     "each_kill_directly_preceded_by_the_gate": true
+    },
+    "redteam/agent_rt.py": {
+     "gate_is_the_first_statement": true,
+     "kill_lines": [
+      484
+     ],
+     "each_kill_directly_preceded_by_the_gate": true
+    }
+   }
+  },
+  "R4_mount_tables": {
+   "docker_plain.mountinfo": {
+    "foreign": [],
+    "expected": [],
+    "as_expected": true,
+    "source": "docker run --rm --network none physim2-ring:1 cat /proc/self/mountinfo (cloud container, Docker 29.9.2, overlay2, cgroup v1)"
+   },
+   "docker_verifiers_options.mountinfo": {
+    "foreign": [],
+    "expected": [],
+    "as_expected": true,
+    "source": "the options verifiers gives a restricted box (--network bridge --publish 127.0.0.1::8000 --cap-drop NET_ADMIN --cap-drop NET_RAW --security-opt no-new-privileges --cpus 2), same image, cloud container"
+   },
+   "docker_tmpfs_extra.mountinfo": {
+    "foreign": [
+     "/extra (tmpfs)"
+    ],
+    "expected": [
+     "/extra (tmpfs)"
+    ],
+    "as_expected": true,
+    "source": "docker run --rm --network none --tmpfs /extra physim2-ring:1 cat /proc/self/mountinfo (cloud container)"
+   },
+   "synthetic_bind_workspace.mountinfo": {
+    "foreign": [
+     "/workspace (ext4)"
+    ],
+    "expected": [
+     "/workspace (ext4)"
+    ],
+    "as_expected": true,
+    "source": "the plain table plus one line written by hand: a host folder bind-mounted at /workspace (docker run -v \"$PWD\":/workspace). NOT captured: no container with a host mount was started for this study"
+   },
+   "synthetic_named_volume.mountinfo": {
+    "foreign": [
+     "/data (ext4)"
+    ],
+    "expected": [
+     "/data (ext4)"
+    ],
+    "as_expected": true,
+    "source": "the plain table plus a Docker volume at /data, written by hand"
+   },
+   "synthetic_bind_below_dev.mountinfo": {
+    "foreign": [
+     "/dev/shm/project (ext4)"
+    ],
+    "expected": [
+     "/dev/shm/project (ext4)"
+    ],
+    "as_expected": true,
+    "source": "a host folder mounted below /dev/shm: allowed by position, refused by its file-system type"
+   },
+   "synthetic_macos_share.mountinfo": {
+    "foreign": [
+     "/workspace (fakeowner)"
+    ],
+    "expected": [
+     "/workspace (fakeowner)"
+    ],
+    "as_expected": true,
+    "source": "a Docker Desktop file share at /workspace as its type is believed to read (fakeowner); written from memory, NOT captured on a Mac"
+   },
+   "synthetic_space_in_mount_point.mountinfo": {
+    "foreign": [
+     "/mnt/my folder (tmpfs)"
+    ],
+    "expected": [
+     "/mnt/my folder (tmpfs)"
+    ],
+    "as_expected": true,
+    "source": "a mount point with a space, which the kernel writes as \\040"
+   },
+   "synthetic_directory_over_etc_hosts.mountinfo": {
+    "foreign": [
+     "/etc/hosts (not a regular file)"
+    ],
+    "expected": [
+     "/etc/hosts (not a regular file)"
+    ],
+    "as_expected": true,
+    "source": "the plain table, evaluated with isfile('/etc/hosts') = False (a directory mounted where Docker's hosts file belongs)"
+   },
+   "synthetic_linux_host.mountinfo": {
+    "foreign": [
+     "/ (ext4)",
+     "/run (tmpfs)",
+     "/home (ext4)"
+    ],
+    "expected": [
+     "/ (ext4)",
+     "/run (tmpfs)",
+     "/home (ext4)"
+    ],
+    "as_expected": true,
+    "source": "a Linux machine that is not a container: its root is no overlay"
+   },
+   "synthetic_two_roots.mountinfo": {
+    "foreign": [
+     "/ (2 entries)",
+     "/ (ext4)"
+    ],
+    "expected": [
+     "/ (2 entries)",
+     "/ (ext4)"
+    ],
+    "as_expected": true,
+    "source": "a second mount on /"
+   },
+   "synthetic_garbage.mountinfo": {
+    "raised": "ValueError: a line of the mount table cannot be read",
+    "expected": "ValueError",
+    "as_expected": true,
+    "source": "not a mount table"
+   },
+   "synthetic_empty.mountinfo": {
+    "raised": "ValueError: the mount table is empty",
+    "expected": "ValueError",
+    "as_expected": true,
+    "source": "an empty table (an unreadable table must never read as 'no mounts')"
+   }
+  },
+  "R4_unreadable_mount_table": {
+   "box_mounts": {
+    "raised": "refused: the mount table /tmp/physim2-safety-3mswi9ct/no-such-table cannot be read (FileNo"
+   },
+   "mount_points": {
+    "raised": "refused: the mount table /tmp/physim2-safety-3mswi9ct/no-such-table cannot be read (FileNo"
+   },
+   "owned_by": {
+    "raised": "refused: the mount table /tmp/physim2-safety-3mswi9ct/no-such-table cannot be read (FileNo"
+   },
+   "scan": {
+    "returned": [
+     "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+     "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+     "PHYSIM2_BOX_CLEANUP is not set by the grading route",
+     "the mount table cannot be read"
+    ]
+   },
+   "box_guard": [
+    "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+    "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+    "PHYSIM2_BOX_CLEANUP is not set by the grading route",
+    "the mount table cannot be read"
+   ],
+   "tripwires_reached": []
+  },
+  "R4_driver_static": {
+   "imports": [
+    "argparse",
+    "base64",
+    "ctypes",
+    "json",
+    "os",
+    "re",
+    "resource",
+    "signal",
+    "stat",
+    "subprocess",
+    "sys",
+    "tempfile",
+    "time"
+   ],
+   "uses_rmtree": false,
+   "imports_shutil": false,
+   "destructive_calls_named": [
+    "chmod",
+    "chown",
+    "fchown",
+    "kill",
+    "killpg",
+    "remove",
+    "rmdir",
+    "unlink"
+   ]
+  },
+  "guard_pure": {
+   "all_conditions_met": [],
+   "foreign_mount": [
+    "mounted file systems that a prepared box does not have: /workspace (ext4)"
+   ],
+   "mount_table_unreadable": [
+    "the mount table cannot be read"
+   ],
+   "caller_not_root": [
+    "the caller is not root"
+   ],
+   "uid_1000_the_incident_uid": [
+    "the target uid is outside 20000-59999"
+   ],
+   "uid_19999": [
+    "the target uid is outside 20000-59999"
+   ],
+   "uid_20000": [],
+   "uid_59999": [],
+   "uid_60000": [
+    "the target uid is outside 20000-59999"
+   ],
+   "uid_0": [
+    "the target uid is 0 or not a uid"
+   ],
+   "no_marker": [
+    "no marker (/etc/physim2/predictor_uid written by the environment's setup)"
+   ],
+   "no_container": [
+    "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)"
+   ],
+   "no_route": [
+    "PHYSIM2_BOX_CLEANUP is not set by the grading route"
+   ],
+   "not_the_box_uid": [
+    "the target uid is not this box's predictor uid"
+   ]
+  },
+  "on_this_machine": {
+   "guard": {
+    "1000": [
+     "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+     "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+     "the target uid is outside 20000-59999",
+     "mounted file systems that a prepared box does not have: / (ext4) and 5 more"
+    ],
+    "31001": [
+     "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+     "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+     "mounted file systems that a prepared box does not have: / (ext4) and 5 more"
+    ],
+    "0": [
+     "no marker (/etc/physim2/predictor_uid written by the environment's setup)",
+     "no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)",
+     "the target uid is 0 or not a uid",
+     "mounted file systems that a prepared box does not have: / (ext4) and 5 more"
+    ]
+   },
+   "calls": {
+    "kill_user(1000)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "kill_user(31001)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "kill_user(0)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "wipe_user(1000)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "wipe_user(31001)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "wipe_user(0)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "ipc_user(1000)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "ipc_user(31001)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "ipc_user(0)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "cleanup(1000)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "cleanup(31001)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "cleanup(0)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "as_user(31001)": {
+     "outcome": "refused",
+     "tripwires_reached": []
+    },
+    "scan(31001)": {
+     "outcome": "returned without a walk",
+     "tripwires_reached": []
+    }
+   },
+   "driver_main_with_route_variable": {
+    "reply": "RuntimeError: refused: not a disposable box (no marker (/etc/physim2/p",
+    "tripwires_reached": []
+   },
+   "driver_main_without_route_variable_and_without_no_box": {
+    "reply": "RuntimeError: refused: not a disposable box (no marker (/etc/physim2/p",
+    "ends_with": "rop and the cleanup: for your own code in a box of your own)",
+    "tripwires_reached": []
+   },
+   "driver_main_without_uid": "SystemExit(2): afety.py: error: the following arguments are required: --uid"
+  },
+  "R4_wipe_logic": {
+   "a tree of the uid": {
+    "outcome": "tripwire: os.unlink",
+    "tripwires_reached": [
+     "os.unlink ('/tmp/physim2-safety-3mswi9ct/wipe/owned/deeper/file',)"
+    ]
+   },
+   "a mount point of the uid": {
+    "outcome": "returned: 0 removed, 1 left",
+    "tripwires_reached": []
+   },
+   "everything_still_there": true,
+   "listed": [
+    "owned",
+    "owned/deeper",
+    "owned/deeper/file",
+    "owned/file",
+    "mountpoint"
+   ],
+   "note": "guard and inputs faked for this test only; the first destructive call is a tripwire, so nothing is removed"
+  },
+  "imports_reached_tripwires": [],
+  "package_under_test": {
+   "physim2_env": "physim2_env",
+   "vfrun": "tools/vfrun.py",
+   "verifiers": "0.3.2.dev163"
+  },
+  "R5": {
+   "recording fake typed docker": {
+    "grading.stage": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "grading.run_request": {
+     "outcome": "returned: {\"ok\": false, \"why\": \"driver error\", \"stderr\": \"RuntimeError\", \"cpu_s\": 0.0, \"wall_s\": 0.0}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "Physim2Task._public_files": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "Physim2Task.setup": {
+     "outcome": "TaskError: PhySim v2 runs only in a box that verifiers itself provisioned: __main__.Recording is not ",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.check": {
+     "outcome": "returned: {\"report\": {\"ok\": false, \"stage\": \"validator\", \"error\": \"the validator could not run in the box (RuntimeError)\"}, \"frozen\": null}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.check(final)": {
+     "outcome": "returned: {\"report\": {\"ok\": false, \"stage\": \"validator\", \"error\": \"the validator could not run in the box (RuntimeError)\"}, \"frozen\": null}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.announce": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "access.collect_frozen": {
+     "outcome": "returned: {\"root\": \"/workspace/submission\", \"archive\": null, \"manifest\": {\"files\": [], \"bytes\": 0}, \"error\": \"collection failed (RuntimeError)\", \"ok\": false}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "ScriptHarness.setup": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "ScriptHarness.install": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    }
+   },
+   "recording fake typed subprocess": {
+    "grading.stage": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "grading.run_request": {
+     "outcome": "returned: {\"ok\": false, \"why\": \"driver error\", \"stderr\": \"RuntimeError\", \"cpu_s\": 0.0, \"wall_s\": 0.0}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "Physim2Task._public_files": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "Physim2Task.setup": {
+     "outcome": "TaskError: PhySim v2 requires a Docker or Prime runtime with framework-only network access",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.check": {
+     "outcome": "returned: {\"report\": {\"ok\": false, \"stage\": \"validator\", \"error\": \"the validator could not run in the box (RuntimeError)\"}, \"frozen\": null}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.check(final)": {
+     "outcome": "returned: {\"report\": {\"ok\": false, \"stage\": \"validator\", \"error\": \"the validator could not run in the box (RuntimeError)\"}, \"frozen\": null}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.announce": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "access.collect_frozen": {
+     "outcome": "returned: {\"root\": \"/workspace/submission\", \"archive\": null, \"manifest\": {\"files\": [], \"bytes\": 0}, \"error\": \"collection failed (RuntimeError)\", \"ok\": false}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "ScriptHarness.setup": {
+     "outcome": "RuntimeError: physim2-script runs its script in a container runtime only",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "ScriptHarness.install": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    }
+   },
+   "recording fake typed prime": {
+    "grading.stage": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "grading.run_request": {
+     "outcome": "returned: {\"ok\": false, \"why\": \"driver error\", \"stderr\": \"RuntimeError\", \"cpu_s\": 0.0, \"wall_s\": 0.0}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "Physim2Task._public_files": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "Physim2Task.setup": {
+     "outcome": "TaskError: PhySim v2 runs only in a box that verifiers itself provisioned: __main__.Recording is not ",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.check": {
+     "outcome": "returned: {\"report\": {\"ok\": false, \"stage\": \"validator\", \"error\": \"the validator could not run in the box (RuntimeError)\"}, \"frozen\": null}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.check(final)": {
+     "outcome": "returned: {\"report\": {\"ok\": false, \"stage\": \"validator\", \"error\": \"the validator could not run in the box (RuntimeError)\"}, \"frozen\": null}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "BoxAccess.announce": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "access.collect_frozen": {
+     "outcome": "returned: {\"root\": \"/workspace/submission\", \"archive\": null, \"manifest\": {\"files\": [], \"bytes\": 0}, \"error\": \"collection failed (RuntimeError)\", \"ok\": false}",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "ScriptHarness.setup": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    },
+    "ScriptHarness.install": {
+     "outcome": "RuntimeError: refused: not a box provisioned by verifiers (__main__.Recording is not verifiers' Docker o",
+     "commands_received": [],
+     "tripwires_reached": []
+    }
+   }
+  },
+  "R5_gate": {
+   "recording fake typed docker": [
+    "__main__.Recording is not verifiers' Docker or Prime runtime"
+   ],
+   "recording fake typed subprocess": [
+    "__main__.Recording is not verifiers' Docker or Prime runtime"
+   ],
+   "subclass of DockerRuntime": [
+    "__main__.Subclassed is not verifiers' Docker or Prime runtime",
+    "the box was not provisioned by verifiers for this run (borrowed, or no runtime info)"
+   ],
+   "real SubprocessRuntime": [
+    "verifiers.v1.runtimes.subprocess.SubprocessRuntime is not verifiers' Docker or Prime runtime"
+   ],
+   "real DockerRuntime, never started": [
+    "the container does not carry a name verifiers generated"
+   ],
+   "real DockerRuntime, borrowed (attach)": [
+    "the box was not provisioned by verifiers for this run (borrowed, or no runtime info)"
+   ],
+   "real DockerRuntime, a hand-named container": [
+    "the container does not carry a name verifiers generated"
+   ],
+   "real DockerRuntime, nested in another runtime": [
+    "a Docker engine nested in another runtime"
+   ],
+   "real DockerRuntime as verifiers starts it": [],
+   "its with_env view": [],
+   "None": [
+    "builtins.NoneType is not verifiers' Docker or Prime runtime",
+    "the box was not provisioned by verifiers for this run (borrowed, or no runtime info)"
+   ]
+  },
+  "R5_tripwires_reached": [],
+  "S1_validator_on_this_machine": {
+   "report": {
+    "ok": false,
+    "stage": "validator",
+    "error": "this check runs inside an exam box only (/etc/physim2/predictor_uid is missing or not root's); nothing was run",
+    "finalized": false
+   },
+   "run_request": {
+    "ok": false,
+    "error": "this check runs inside an exam box only (/etc/physim2/predictor_uid is missing or not root's); nothing was run"
+   },
+   "tripwires_reached": []
+  }
+ },
+ "hidden_values_in_this_file": "none"
+}

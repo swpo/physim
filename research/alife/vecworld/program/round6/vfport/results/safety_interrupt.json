@@ -1,0 +1,79 @@
+{
+ "what": "audit A2 / required change 2: stopping vf-eval with SIGTERM first (real signals, inside `docker run --rm --network none`), and listing the containers of one run by its label (two containers started and removed by this tool)",
+ "evidence_label": "container",
+ "n_checks": 8,
+ "n_passed": 8,
+ "failed": [],
+ "checks": {
+  "stop_under_timeout_1_the_stand_in_records_sigterm_and_exits_by_itself": true,
+  "stop_sigkill_comes_only_after_sigterm_and_the_grace_period": true,
+  "stop_a_sigterm_to_the_tool_reaches_the_stand_in_as_sigterm": true,
+  "label_listing_by_run_label_shows_this_run_only": true,
+  "label_foreign_vf_other_is_absent_from_the_label_listing": true,
+  "label_old_listing_by_name_would_have_shown_vf_other": true,
+  "label_no_host_path_in_the_test_containers": true,
+  "label_both_test_containers_removed_by_exact_name": true
+ },
+ "evidence": {
+  "in_a_throwaway_container": {
+   "timeout_1": {
+    "ended": "stopped after 1 s: SIGTERM",
+    "returncode": 130,
+    "seconds": 1.32,
+    "stub_log": [
+     "started pid 6 argv @ /t/runs/stub-a.toml",
+     "got SIGTERM",
+     "cleaned up, exiting"
+    ],
+    "stub_still_running": false,
+    "run_label": "physim2-interrupt-test"
+   },
+   "ignores_sigterm": {
+    "ended": "stopped after 1 s: SIGTERM, then SIGKILL",
+    "returncode": -9,
+    "seconds": 3.0,
+    "stub_log": [
+     "started pid 7 argv @ x.toml",
+     "got SIGTERM"
+    ],
+    "stub_still_running": false
+   },
+   "tool_told_to_stop": {
+    "tool_returncode": -2,
+    "tool_last_line": "KeyboardInterrupt",
+    "stub_log": [
+     "started pid 9 argv @ /t/runs/stub-c.toml",
+     "got SIGTERM",
+     "cleaned up, exiting"
+    ],
+    "stub_still_running": false
+   }
+  },
+  "label_listing": {
+   "started_by_this_test": [
+    "vf-other",
+    "vfsafe-labelled-1e1083ab"
+   ],
+   "run_label_of_this_test": "physim2-label-test-e4c13eb8",
+   "docker ps -a --filter label=verifiers.run=<this label>": [
+    "vfsafe-labelled-1e1083ab"
+   ],
+   "docker ps -a --filter name=vf- (the old runbook's listing)": [
+    "vf-other"
+   ],
+   "docker ps -a --filter label=verifiers.run (any verifiers run)": [
+    "vf-other",
+    "vfsafe-labelled-1e1083ab"
+   ],
+   "others_listed_by_name_and_left_alone": 0,
+   "mounts_of_the_two_containers": {
+    "vf-other": "[]",
+    "vfsafe-labelled-1e1083ab": "[]"
+   },
+   "removed_by_exact_name": {
+    "vf-other": true,
+    "vfsafe-labelled-1e1083ab": true
+   }
+  }
+ }
+}

@@ -1,0 +1,425 @@
+{
+ "what": "round 1 of fixes after the host-safety audit's NO-GO (HOST_SAFETY_AUDIT.md, commit 3fda8505a): the nine required changes and the two hardening items, each with the test the audit named and its result",
+ "status": "RUNBOOK_MAC.md stays ON HOLD: these changes have not been re-audited",
+ "evidence_labels": {
+  "read": "the cited text was read or checked as text",
+  "tripwire": "run on the cloud host with every destructive primitive of the Python process replaced by a recorder that raises (tools/tripwires.py)",
+  "container": "run in a throwaway container started without any host mount, removed afterwards",
+  "vf-eval": "rollouts through vf-eval physim2-env --env.id isolated-verifier on Docker, scripted harness, no push",
+  "inferred": "every statement about macOS and Docker Desktop: nothing ran there"
+ },
+ "changes": {
+  "1 working directory (A1)": {
+   "changed": "RUNBOOK_MAC.md: every command starts with `cd \"<absolute study folder>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py &&`; uv is used in two commands only, both with --project <absolute path>, the dry run first (started from / so that uv prints the environment's absolute path); no `uv run`; rule 'no subagents'",
+   "files": [
+    "RUNBOOK_MAC.md (rules A.1 to A.3, step 1)",
+    "tools/check_runbook.py"
+   ],
+   "audit_test": "from a wrong folder, the guarded line with echo in place of uv prints nothing",
+   "result": {
+    "source": "results/safety_runbook.json",
+    "n_checks": 8,
+    "n_passed": 8,
+    "failed": [],
+    "checks": [
+     "guard_every_command_starts_with_the_guard",
+     "guard_from_a_wrong_folder_prints_nothing",
+     "guard_no_command_relies_on_an_earlier_cd",
+     "guard_with_the_study_folder_runs",
+     "uv_names_the_project_by_its_absolute_path_and_is_locked",
+     "uv_no_subagents_rule",
+     "uv_only_two_commands_and_the_dry_run_first",
+     "uv_run_is_not_used"
+    ]
+   },
+   "evidence": "run (cd, test, echo only); uv's wording read from a dry run in the cloud container"
+  },
+  "2 interruption (A2)": {
+   "changed": "tools/vfrun.py: VF_RUN_ID is required (it becomes the container label verifiers.run), Docker must answer before a run, vf-eval is stopped with ONE SIGTERM and killed only 120 s later, a stop request to the tool is passed on; RUNBOOK_MAC.md: long commands run detached with a log and an EXIT line, a status command lists the pilot's containers by label and the pilot's processes by this checkout's own .venv path, a section 'If a run was interrupted' (stop by pid, remove by exact name, delete the two pilot folders, restart from make_instances), step 4 lists by label",
+   "files": [
+    "tools/vfrun.py (run_label, require_docker, clear_run_dir, stop_child, run_child, run_eval)",
+    "tools/check_probe.py (label on its control container)",
+    "RUNBOOK_MAC.md (step 2, 'If a run was interrupted', step 4)",
+    "tools/check_interrupt.py",
+    "tools/check_safety.py (R2)"
+   ],
+   "audit_test": "a stub for vf-eval records SIGTERM under timeout=1; in the cloud container a foreign vf-other is absent from the label listing",
+   "result": {
+    "stand-in without a process, host under tripwires": {
+     "source": "results/safety_host.json",
+     "n_checks": 7,
+     "n_passed": 7,
+     "failed": [],
+     "checks": [
+      "R2_a_stop_request_to_the_tool_is_passed_on_as_sigterm",
+      "R2_an_exited_process_is_not_signalled",
+      "R2_run_eval_under_timeout_1_records_sigterm",
+      "R2_sigkill_only_after_sigterm_and_the_grace_period",
+      "R2_sigterm_handler_of_this_process_restored",
+      "R2_timeout_sends_sigterm_and_no_sigkill",
+      "R2_tools_refuse_to_start_without_a_run_label"
+     ]
+    },
+    "a real process and real signals in a throwaway container; label listing": {
+     "source": "results/safety_interrupt.json",
+     "n_checks": 8,
+     "n_passed": 8,
+     "failed": [],
+     "checks": [
+      "label_both_test_containers_removed_by_exact_name",
+      "label_foreign_vf_other_is_absent_from_the_label_listing",
+      "label_listing_by_run_label_shows_this_run_only",
+      "label_no_host_path_in_the_test_containers",
+      "label_old_listing_by_name_would_have_shown_vf_other",
+      "stop_a_sigterm_to_the_tool_reaches_the_stand_in_as_sigterm",
+      "stop_sigkill_comes_only_after_sigterm_and_the_grace_period",
+      "stop_under_timeout_1_the_stand_in_records_sigterm_and_exits_by_itself"
+     ]
+    },
+    "runbook text": {
+     "source": "results/safety_runbook.json",
+     "n_checks": 8,
+     "n_passed": 8,
+     "failed": [],
+     "checks": [
+      "run_containers_are_listed_by_the_run_label_only",
+      "run_every_detached_command_has_a_docker_info_gate",
+      "run_every_rollout_command_carries_the_run_label",
+      "run_every_rollout_command_is_detached_with_a_log_and_an_exit_line",
+      "run_if_interrupted_section",
+      "run_processes_are_listed_by_this_checkouts_own_environment",
+      "run_store_path_is_on_every_command_that_needs_it",
+      "run_the_dry_run_is_alone_in_its_block"
+     ]
+    }
+   },
+   "evidence": "tripwire; container; read"
+  },
+  "3 box scripts (A3)": {
+   "changed": "agents/hostile_submission.py, agents/probe_grading.py, redteam/agent_rt.py: the first statement exits unless /.dockerenv exists and /etc/physim2/predictor_uid is a root-owned regular file; asked again directly before each `kill -9 -1`, before the box's tar is removed or replaced and before the mount attempt",
+   "files": [
+    "agents/hostile_submission.py",
+    "agents/probe_grading.py",
+    "redteam/agent_rt.py",
+    "tools/check_safety.py (R3)",
+    "tools/check_probe.py (two checks)"
+   ],
+   "audit_test": "runpy.run_path under recorders, every mode: SystemExit, empty recorder; the harness-killall rollout still passes",
+   "result": {
+    "runpy on the host under tripwires (34 starts, and 6 with one sign of a box simulated)": {
+     "source": "results/safety_host.json",
+     "n_checks": 6,
+     "n_passed": 6,
+     "failed": [],
+     "checks": [
+      "R3_every_mode_of_every_script_ends_in_SystemExit_refused",
+      "R3_gate_is_the_first_statement_and_precedes_each_kill",
+      "R3_modes_started",
+      "R3_no_tripwire_reached_and_nothing_imported",
+      "R3_one_sign_of_a_box_is_not_enough",
+      "R3_this_machine_is_not_a_box"
+     ]
+    },
+    "through vf-eval: the kill is issued inside the box (exit status 137), every box script gets past its gate there": {
+     "source": "results/probe_ring.json: checks_new",
+     "n_checks": 5,
+     "n_passed": 5,
+     "failed": [],
+     "checks": [
+      "box_scripts_passed_their_gate_inside_the_box",
+      "h_harness_exit_or_kill_leaves_the_trace_without_a_reward",
+      "h_kill_all_was_issued_inside_the_box",
+      "h_settle_records_K_for_such_a_rollout",
+      "h_the_same_agent_cannot_open_the_instance_again"
+     ]
+    }
+   },
+   "evidence": "tripwire; vf-eval"
+  },
+  "4 driver (A4, A5)": {
+   "changed": "physim2_env/public/_item.py: (a) wipe_user unlinks and rmdirs exactly the paths owned_by listed, deepest first, never a mount point; shutil is no longer imported and the reply directory is removed through its handle (remove_io); (b) the mount table is read from /proc/self/mountinfo and an unreadable table raises (box_mounts, mount_points; no fallback to /); (c) the guard has a mount condition: anything but an overlay root, kernel file systems at or below /proc, /sys, /dev and Docker's three /etc files is refused (parse_mounts, foreign_mounts, guard_reasons); scan walks nothing outside a box",
+   "files": [
+    "physim2_env/public/_item.py",
+    "tools/fixtures/mounts/ (3 captured tables, 10 written by hand, EXPECTED.json)",
+    "tools/check_driver.py",
+    "tools/check_safety.py (R4)",
+    "tools/check_units.py (guard block)"
+   ],
+   "audit_test": "the pure function on stored mount tables; in the check_driver.py container a root-owned canary below a uid-owned directory survives, --tmpfs /extra makes everything refuse, the 19 existing checks pass",
+   "result": {
+    "pure function, unreadable table, no rmtree, refusals on this host, wipe logic (host under tripwires)": {
+     "source": "results/safety_host.json",
+     "n_checks": 11,
+     "n_passed": 11,
+     "failed": [],
+     "checks": [
+      "R4_allow_list_on_every_stored_mount_table",
+      "R4_driver_has_no_rmtree_and_no_shutil",
+      "R4_every_kill_and_delete_function_refuses_on_this_host",
+      "R4_guard_on_this_host_names_its_mounts",
+      "R4_guard_refuses_a_foreign_mount_and_an_unreadable_table",
+      "R4_scan_walks_nothing_on_this_host",
+      "R4_stock_docker_tables_have_no_foreign_mount",
+      "R4_tmpfs_extra_and_host_folders_are_foreign",
+      "R4_unreadable_mount_table_raises_and_never_falls_back_to_root",
+      "R4_wipe_never_touches_a_mount_point",
+      "R4_wipe_reaches_unlink_for_the_deepest_listed_path_first"
+     ]
+    },
+    "in two throwaway containers (the 19 earlier checks are among them)": {
+     "source": "results/driver_container.json",
+     "n_checks": 31,
+     "n_passed": 31,
+     "failed": [],
+     "the_audits_three": {
+      "cleanup_leaves_a_root_owned_file_below_a_directory_of_the_uid": true,
+      "guard_refuses_everything_with_a_tmpfs_mounted_at_extra": true,
+      "mount_driver_on_the_grading_route_runs_nothing": true,
+      "cleanup_never_removes_a_mount_point": true
+     }
+    },
+    "guard block of the unit checks (host under tripwires)": {
+     "source": "results/units.json",
+     "n_checks": 19,
+     "n_passed": 19,
+     "failed": [],
+     "checks": [
+      "guard_allows_only_when_every_layer_is_present",
+      "guard_every_kill_and_delete_function_refuses_on_this_host",
+      "guard_refuses_a_mount_that_a_prepared_box_does_not_have",
+      "guard_refuses_an_unreadable_mount_table",
+      "guard_refuses_caller_is_not_root",
+      "guard_refuses_no_marker",
+      "guard_refuses_no_route_variable",
+      "guard_refuses_no_sign_of_a_container",
+      "guard_refuses_on_this_machine",
+      "guard_refuses_uid_0",
+      "guard_refuses_uid_1000_the_uid_of_the_incident",
+      "guard_refuses_uid_above_the_reserved_range",
+      "guard_refuses_uid_below_1000",
+      "guard_refuses_uid_is_not_the_box_predictor_uid",
+      "guard_refuses_uid_is_the_caller",
+      "guard_refuses_uid_not_a_number",
+      "guard_refuses_uid_true",
+      "guard_refuses_wrong_route_value",
+      "guard_scan_changes_no_mode_on_this_host"
+     ]
+    }
+   },
+   "evidence": "tripwire; container"
+  },
+  "5 worker gate (A4)": {
+   "changed": "physim2_env/grading.py: container_gate / require_container accept only an object whose class is exactly verifiers' DockerRuntime or PrimeRuntime, with the matching config type, not borrowed (info.borrowed), for Docker not nested and with a container name verifiers generated (vf-<32 hex>); called by stage, run_request, _public_files, setup, BoxAccess.check / announce, collect_frozen and by the scripted harness (setup, install, launch)",
+   "files": [
+    "physim2_env/grading.py (container_gate, require_container)",
+    "physim2_env/taskset.py (setup, _public_files)",
+    "physim2_script/__init__.py (require_box)",
+    "tools/check_safety.py (R5)"
+   ],
+   "audit_test": "recording fakes typed docker and subprocess receive zero commands from stage, run_request, _public_files, BoxAccess.check",
+   "result": {
+    "source": "results/safety_host.json",
+    "n_checks": 5,
+    "n_passed": 5,
+    "failed": [],
+    "checks": [
+     "R5_every_entry_point_was_exercised",
+     "R5_gate_passes_only_the_real_unborrowed_runtime",
+     "R5_recording_fakes_receive_zero_commands",
+     "R5_run_request_and_check_report_a_failure_without_a_command",
+     "R5_stage_public_files_setup_announce_and_harness_raise"
+    ]
+   },
+   "evidence": "tripwire; and 37 rollouts through vf-eval pass the gate with real runtimes (results/probe_ring.json)"
+  },
+  "6 runbook text (B3, B6 to B9, B12)": {
+   "changed": "RUNBOOK_MAC.md rewritten: an inventory of what is signalled, deleted, written and listening on the Mac; the store path on each command; 'stop and report' replaces the Docker shim; a docker info gate before each run; step 4 is one && chain that copies the results out first and keeps the images; the one expected macOS failure is named and any other deviation is a stop; the 'never' table",
+   "files": [
+    "RUNBOOK_MAC.md",
+    "tools/check_runbook.py"
+   ],
+   "audit_test": "review against section 3 of the audit (a reading task; the mechanical part is checked as text)",
+   "result": {
+    "source": "results/safety_runbook.json",
+    "n_checks": 9,
+    "n_passed": 9,
+    "failed": [],
+    "checks": [
+     "hold",
+     "text_every_rm_rf_is_chained_behind_its_checks_and_names_the_two_pilot_folders",
+     "text_extra_ca_is_created_only_if_absent",
+     "text_no_banned_construct_in_any_command",
+     "text_step_4_copies_the_results_out_before_it_deletes",
+     "text_stop_rule_and_the_known_macos_exception",
+     "text_the_inventory_is_there",
+     "text_the_never_table_is_there",
+     "text_the_shared_image_is_kept"
+    ]
+   },
+   "evidence": "read"
+  },
+  "7 pin (B11)": {
+   "changed": "PIN.sha256 lists the sha256 of every tracked file the pilot executes or imports (this folder's package, tools, agents, configs, Dockerfiles, pyproject.toml, uv.lock; round 5's agentenv; the vw library); the runbook's pin block carries the hash of that list and, in the copy at the head of the branch, one commit; the lead checks that commit out detached, step 0 compares commit, status and hashes",
+   "files": [
+    "PIN.sha256",
+    "tools/pin.py",
+    "RUNBOOK_MAC.md (pin block, by-hand table, step 0)"
+   ],
+   "audit_test": "(none named) the comparison commands of step 0 were run in the rehearsal",
+   "result": {
+    "source": "results/safety_runbook.json",
+    "n_checks": 3,
+    "n_passed": 3,
+    "failed": [],
+    "checks": [
+     "pin_block_names_the_hash_of_PIN_sha256",
+     "pin_commands_compare_commit_and_hashes",
+     "pin_file_matches_the_files_on_disk"
+    ],
+    "sha256_of_PIN": "7aa9bbfc79e7df6421af9a6ec6fa9ef9d507cf2a2583c4c11da2b18ab0f64c19",
+    "commit_named": null
+   },
+   "evidence": "run"
+  },
+  "8 rehearsal (B10)": {
+   "changed": "steps 0 to 2 (and step 4) of the rewritten runbook were run once in the cloud container from a fresh clone of the pushed commit with its own .venv, the commands copied from the runbook, with one deliberate interruption",
+   "files": [
+    "results/rehearsal_round1.json"
+   ],
+   "audit_test": "the rehearsal itself",
+   "result": {
+    "source": "results/rehearsal_round1.json",
+    "missing": true
+   },
+   "evidence": "run; vf-eval"
+  },
+  "9 step 3 only (B13 to B15)": {
+   "changed": "RUNBOOK_MAC.md step 3: its own hold; the paid command alone between STOP lines with the price formula and a line the lead fills in; output to a file that is never displayed; tools/run_report.py prints fixed fields and counts, never message text; no claude_code / codex; Docker Desktop's disk limit below the free space. Step 3 was not run",
+   "files": [
+    "RUNBOOK_MAC.md (step 3)",
+    "tools/run_report.py",
+    "configs/qwen_ring_bash.toml (comment)"
+   ],
+   "audit_test": "(none named) text checks; the report tool was run on scripted rollouts only",
+   "result": {
+    "source": "results/safety_runbook.json",
+    "n_checks": 5,
+    "n_passed": 5,
+    "failed": [],
+    "checks": [
+     "step3_disk_limit_and_own_hold",
+     "step3_no_other_harness_is_offered",
+     "step3_output_goes_to_a_file_and_is_never_displayed",
+     "step3_the_paid_command_stands_alone_under_a_stop_line_with_the_price",
+     "step3_the_run_is_read_through_the_report_tool"
+    ]
+   },
+   "evidence": "read; the report tool run on scripted traces"
+  },
+  "S1 driver hardening (B1 to B3)": {
+   "changed": "_item.py: uid range 20000-59999 (MIN_UID, MAX_UID); --uid required, no default; the guard requires a root caller; the identity is verified after the set-id calls, before kill(-1) (as_user, is_only) and before the predictor starts; outside a box nothing runs unless --no-box is given. taskset.py: the agent box's marker is drawn from the reserved range instead of 1000. validate.py: runs only where the marker exists and passes --uid and --no-box",
+   "files": [
+    "physim2_env/public/_item.py",
+    "physim2_env/public/validate.py",
+    "physim2_env/taskset.py",
+    "physim2_env/grading.py (UID_RANGE)"
+   ],
+   "result": {
+    "host under tripwires": {
+     "source": "results/safety_host.json",
+     "n_checks": 5,
+     "n_passed": 5,
+     "failed": [],
+     "checks": [
+      "S1_driver_runs_nothing_outside_a_box",
+      "S1_guard_requires_a_root_caller",
+      "S1_guard_uid_range_20000_to_59999",
+      "S1_uid_has_no_default",
+      "S1_validator_runs_nothing_outside_a_box"
+     ]
+    },
+    "in the container": {
+     "guard_refuses_uid_1000_with_a_marker_that_says_1000": true,
+     "guard_refuses_uid_19999_just_below_the_reserved_range": true,
+     "guard_refuses_uid_60000_just_above_the_reserved_range": true,
+     "cleanup_signals_nothing_when_the_identity_did_not_change": true,
+     "driver_without_route_variable_and_without_no_box_runs_nothing": true,
+     "driver_uid_has_no_default": true
+    },
+    "through vf-eval": {
+     "predictor_runs_unprivileged": true,
+     "uids": {
+      "validation": 35936,
+      "grading": [
+       26251
+      ]
+     }
+    }
+   },
+   "evidence": "tripwire; container; vf-eval"
+  },
+  "S2 tools (B4, B5)": {
+   "changed": "tools/check_units.py: the driver is never started as a program by root, the guard block runs under tools/tripwires.py (65 names, installed before the driver is imported) and is skipped for code without a guard. redteam/rt_run.py: a new agents directory per call instead of deleting one, run folders through vfrun.clear_run_dir, a sibling container with a name of its own. redteam/nproc_cross_box.sh: container names of its own (not rerun)",
+   "files": [
+    "tools/check_units.py",
+    "tools/tripwires.py",
+    "redteam/rt_run.py",
+    "redteam/nproc_cross_box.sh"
+   ],
+   "result": {
+    "source": "results/units.json",
+    "n_checks": 66,
+    "n_passed": 66,
+    "failed": [],
+    "driver_as_a_program_on_this_host": {
+     "euid": 0,
+     "driver_has_the_box_guard": true,
+     "driver_program_was_run_here": false,
+     "why_not": "this process is root (or the driver has no guard): the driver is never started as root on a host; see results/driver_container.json for the same cases in a container"
+    }
+   },
+   "evidence": "tripwire (check_units); read only (rt_run.py, nproc_cross_box.sh were not run)"
+  }
+ },
+ "regression": {
+  "tools/check_units.py": {
+   "source": "results/units.json",
+   "n_checks": 66,
+   "n_passed": 66,
+   "failed": [],
+   "how": "host; tripwires around every call into the driver"
+  },
+  "tools/check_driver.py": {
+   "source": "results/driver_container.json",
+   "n_checks": 31,
+   "n_passed": 31,
+   "failed": [],
+   "how": "two throwaway containers"
+  },
+  "tools/check_probe.py": {
+   "source": "results/probe_ring.json",
+   "round5_checks": [
+    32,
+    34
+   ],
+   "failed_round5": [],
+   "new_checks": [
+    65,
+    65
+   ],
+   "failed_new": [],
+   "rollouts": 37,
+   "wall_s": 1072.1152784824371,
+   "how": "vf-eval, Docker, scripted harness, no push"
+  },
+  "tools/prove.py": "one world with the Mac's arguments, in the rehearsal (results/rehearsal_round1.json)",
+  "not_rerun": [
+   "tools/prove.py --worlds 4 (results/proof_ring.json, recomputed_table.json: package code of commit 743f6b75e)",
+   "the gliders smoke rollout (results/gliders_smoke_D.json)",
+   "the red team's attacks (redteam/results/*)",
+   "anything on macOS, any model rollout"
+  ]
+ },
+ "all_named_tests_pass": true,
+ "hidden_values_in_this_file": "none"
+}

@@ -11,14 +11,36 @@ under tripwires, real cleanups only in throwaway containers without a host mount
 ### State (kept current)
 - 14:30 UTC: container had restarted (uptime 9 min); dockerd started again (classic image store, overlay2, cgroup v1);
   images physim2-ring:1, localhost/verifiers-network:1, python:3.12-slim present; no container.
-- Read in full: HOST_SAFETY_AUDIT.md, `_item.py`, grading.py, taskset.py, access.py, validate.py, vfrun.py,
-  check_units.py, check_driver.py, prove.py, check_probe.py, the three box scripts, rt_run.py, RUNBOOK_MAC.md,
-  verifiers runtimes (base.py, docker/__init__.py, utils/scope.py).
-- Next: the nine required changes in code, each with the audit's test; then the regression, the runbook, the pin,
-  the rehearsal from a fresh clone.
+- 15:25 UTC: code of the nine changes and S1, S2 written and tested; candidate for the pin committed. Next: the
+  rehearsal of steps 0 to 2 from a fresh clone (scratch `vfsafe1/rehearsal`), then README, summary, the pin commit.
 
-### Done
-- (nothing committed yet besides this note)
+### Done (code)
+- 1 (A1): runbook guard on every command, uv with --project and a dry run first. 2 (A2): `tools/vfrun.py` needs
+  VF_RUN_ID, stops vf-eval with SIGTERM first, checks Docker; runbook: detached commands, status command, "If a run
+  was interrupted". 3 (A3): box gate at the top of the three box scripts and before each `kill -9 -1`. 4 (A4, A5):
+  `_item.py` mount allow-list in the guard, unreadable mount table raises, wipe by unlink/rmdir only, no rmtree.
+  5 (A4): `grading.container_gate` (the real verifiers runtime object, not borrowed). 6, 7, 9: RUNBOOK_MAC.md
+  rewritten, `PIN.sha256` + `tools/pin.py`, `tools/run_report.py`. S1: uid range 20000-59999, --uid required, root
+  caller, identity verified before kill(-1), nothing runs outside a box without --no-box, agent box marker from the
+  range. S2: `check_units.py` never starts the driver as root; red-team tools delete nothing they did not make.
+
+### Results so far (all on the code of this commit; `results/host_safety_round1.json` names every test)
+- `tools/check_safety.py` (host, 65 tripwires installed before the package is imported): 36 of 36.
+- `tools/check_driver.py` (two throwaway containers, one with `--tmpfs /extra`): 31 of 31 (the 19 earlier ones among them).
+- `tools/check_interrupt.py` (a throwaway container; two containers of its own for the label listing): 8 of 8.
+- `tools/check_runbook.py` (text; the guard with echo): 33 of 33.
+- `tools/check_units.py` (host, tripwires): 66 of 66; the driver is not started as a program (this process is root).
+- `tools/check_probe.py` through vf-eval (14:49-15:07 UTC, 37 rollouts, 1,072 s): round 5's checks 32 of 34 reproduced,
+  0 failed, 2 changed by design; 65 of 65 new checks (two new: the kill is issued inside the box; box scripts pass
+  their gate there).
+- NOT rerun: `tools/prove.py --worlds 4` (results/proof_ring.json stays from commit 743f6b75e), gliders, red team.
+
+### If the container restarted
+- `S=/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfsafe1; mkdir -p $S;
+  pgrep -x dockerd >/dev/null || (nohup dockerd --feature containerd-snapshotter=false > $S/dockerd.log 2>&1 &)`
+- scratch (`$S/dev`: the probe's store and runs; `$S/rehearsal`: the clone, its .venv and its pilot folders) does not
+  survive; the committed results do. A cut rehearsal: `docker ps -a --filter label=verifiers.run=physim2-pilot-20261110`
+  lists its containers (remove by exact name), then start the rehearsal again from the clone.
 
 ---
 
