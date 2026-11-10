@@ -1,6 +1,6 @@
 # PROGRESS (study foundry, round 5) -- kept for restarts
 
-Updated 2026-11-10 05:13 UTC (instance 1; the study started at 03:40 UTC).
+Updated 2026-11-10 06:09 UTC (instance 1; the study started at 03:40 UTC).
 
 ## Done
 - Worktree /home/user/wt/foundry (branch wt-foundry, sparse research/alife/vecworld).
@@ -28,10 +28,16 @@ Updated 2026-11-10 05:13 UTC (instance 1; the study started at 03:40 UTC).
   late (2000 draws with a 2000-tick burn-in), cert (the 88 candidates at certification size), sigma010, sigma100.
   Watcher: `bash watch.sh r5-foundry-002`.
 
+- 06:00:17 UTC: r5-foundry-002 RUNNING on an H200 (nebius, $6.69/h); review: fine to run (analyze2.py now reads only
+  the chunks recorded in job2_state.json, as the review asked). Expected end about 06:16 UTC.
+- CPU follow-ups DONE and committed: results/wind_probe.json (aimed 200-nat commands move the block view by only
+  0.0002-0.023 V0 at 4 ticks on draws 1672, 4470, 262, 60: the wind is weak on the candidates), results/longrun.json
+  (those four stay active over 2000 ticks), results/recheck_cpu.json + cpu_vs_gpu.json (12 of 12 draws same type on
+  CPU and H100; 8 identical in every stored value).
+
 ## Next step
-1. CPU follow-ups on top candidates of job 1 (each a minute or two): `python -B wind_probe.py --draws 1672,4470,262,60`,
-   `python -B longrun.py --draws 1672,4470,262,60`, `python -B recheck_cpu.py --draws 1672,4470,262,60`.
-2. When job 2 is done: `bash fetch.sh r5-foundry-002`; `python -B analyze2.py work/r5-foundry-002/out`.
+1. (done) CPU follow-ups.
+2. When job 2 is done: `bash fetch.sh r5-foundry-002`; `python -B analyze2.py work/r5-foundry-002/out`; `python -B figs2.py`.
    If it failed: logs under work/r5-foundry-002/logs; fix, CPU test (FOUNDRY_SIZE=tiny bash job2.sh from a git archive),
    resubmit as r5-foundry-003 (caps in total <= $25; billed so far $0.92).
 3. `python -B make_summary.py` (needs results/interpretation.json, to write by hand from the analyses), README.md

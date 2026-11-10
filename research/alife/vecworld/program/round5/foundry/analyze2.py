@@ -33,11 +33,15 @@ import criteria as CR  # noqa: E402
 frac, q = AN.frac, AN.q
 
 
-def load_arm(D, name):
+def load_arm(D, name, st=None):
+    """The arm's chunks. Only the chunks recorded in job2_state.json are read (a chunk file is written
+    before the state, so a file without a record may be incomplete: review of r5-foundry-002, point 3)."""
     d = os.path.join(D, name)
     if not os.path.isdir(d):
         return None
     files = sorted(f for f in os.listdir(d) if f.startswith("chunk_"))
+    if st is not None:
+        files = files[:len((st["arms"].get(name) or {}).get("chunks", []))]
     if not files:
         return None
     parts = [dict(np.load(os.path.join(d, f))) for f in files]
@@ -91,7 +95,7 @@ def main():
         return dict(structured=(t >= 3), active=(t >= 5), movers=(t == 7), closure_gate=g["closure"], candidate=g["candidate"])
 
     # ---------------- enrich
-    m = load_arm(D, "enrich")
+    m = load_arm(D, "enrich", st)
     if m is not None:
         sel = json.load(open(os.path.join(HERE, "sel_r2.json")))
         d, t, g, s = typed(m, st["arms"]["enrich"]["sizes"]["T"])
@@ -117,7 +121,7 @@ def main():
             top_enriched=[dict(draw=int(idx[i]), **AN.world_row(d, i, t, g, s))
                           for i in np.argsort(-s, kind="stable")[:12]])
     # ---------------- late
-    m = load_arm(D, "late")
+    m = load_arm(D, "late", st)
     if m is not None:
         d, t, g, s = typed(m, st["arms"]["late"]["sizes"]["T"])
         idx = m["index"].astype(int)
@@ -146,7 +150,7 @@ def main():
             validity=dict(mass_drift_max=float(np.nanmax(d["mass_drift"])), finite_all=bool((d["finite"] > 0.5).all())))
     # ---------------- sigma
     for name in ("sigma010", "sigma100"):
-        m = load_arm(D, name)
+        m = load_arm(D, name, st)
         if m is None:
             continue
         d, t, g, s = typed(m, st["arms"][name]["sizes"]["T"])
@@ -164,7 +168,7 @@ def main():
                          candidates_stay=frac(g["candidate"][p_cand[j]]),
                          twin_doubling_active_q=q(d["twin_doubling"][t >= 5]), v_orc8_active_q=q(d["v_orc8"][t >= 5]))
     # ---------------- cert
-    m = load_arm(D, "cert")
+    m = load_arm(D, "cert", st)
     if m is not None:
         d, t, g, s = typed(m, st["arms"]["cert"]["sizes"]["T"])
         idx = m["index"].astype(int)
