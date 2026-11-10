@@ -1,0 +1,244 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "study": "round5/ladder",
+ "versions": {
+  "python": "3.12.16",
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4"
+ },
+ "backend": "gpu",
+ "devices": [
+  "cuda:0"
+ ],
+ "smoke": true,
+ "x64": true,
+ "sets": [
+  8
+ ],
+ "max_hours": 0.2,
+ "config": {
+  "P": 4,
+  "H": 4,
+  "burn": 2,
+  "n_cand": 4,
+  "n_truth": 2,
+  "N_v": {
+   "1": 6,
+   "4": 6,
+   "8": 6
+  },
+  "v_chunk": 6,
+  "N_theta": {
+   "1": 5,
+   "4": 5,
+   "8": 5
+  },
+  "Kc": 2,
+  "budgets": [
+   2,
+   8
+  ],
+  "arm_budgets": [
+   2
+  ],
+  "n_mix": 8,
+  "n_e": 4,
+  "lab_chunk": 4,
+  "n_items": 4,
+  "R": 3,
+  "n_clim": 4,
+  "chunk": 8,
+  "m": 4,
+  "m_plug": 3,
+  "n_scale": 4,
+  "steps_cond": 70,
+  "steps_p0": 20,
+  "steps_real": [
+   20,
+   20
+  ],
+  "real_split": 2,
+  "hs": [
+   1,
+   2,
+   4
+  ],
+  "lags": [
+   0,
+   1,
+   2,
+   4
+  ],
+  "min_steps": 40,
+  "viab_T": 6,
+  "n_post_draws": 50,
+  "post_M": 2000,
+  "post_M_arm": 1000
+ },
+ "views": {
+  "block": {
+   "level_key": 1,
+   "dim": 192
+  },
+  "object": {
+   "level_key": 2,
+   "dim": 144
+  },
+  "pop": {
+   "level_key": 3,
+   "dim": 5
+  }
+ },
+ "pop_names": [
+  "count",
+  "tracked_mass",
+  "mean_speed",
+  "mass_sd",
+  "mass_max"
+ ],
+ "design_classes_per_theta": [
+  "a",
+  "a",
+  "b",
+  "b",
+  "c",
+  "c",
+  "d",
+  "d",
+  "e",
+  "e"
+ ],
+ "arms": {
+  "mix": [
+   "a",
+   "b",
+   "c",
+   "d"
+  ],
+  "passive": [
+   "a"
+  ],
+  "blind": [
+   "e"
+  ],
+  "aimed": [
+   "c"
+  ],
+  "regional": [
+   "d"
+  ]
+ },
+ "features": {
+  "block": [
+   "mass_c0",
+   "mass_c1",
+   "log_m2_mean",
+   "log_sd_c0",
+   "log_sd_c1",
+   "corr_c0c1",
+   "log_sd_m2",
+   "log_dC1",
+   "log_dC4",
+   "log_max_m2",
+   "resp_flux",
+   "d_log_sd_m2",
+   "d_log_dC1"
+  ],
+  "object": [
+   "count_mean",
+   "count_sd",
+   "count_absdiff",
+   "log_mass_body",
+   "mass_cv",
+   "frac_c1",
+   "log_rg",
+   "aniso",
+   "speed_mean",
+   "speed_sd",
+   "log_tracked_mass",
+   "log_density",
+   "resp_v",
+   "d_speed",
+   "d_count"
+  ],
+  "pop": [
+   "count_mean",
+   "log_mass",
+   "speed_mean",
+   "log_mass_sd",
+   "log_mass_max",
+   "count_sd",
+   "count_absdiff",
+   "speed_tsd",
+   "log_dmass",
+   "d_speed",
+   "d_count",
+   "d_log_mass_max"
+  ]
+ },
+ "net": {
+  "BATCH": 128,
+  "BLOCKS": 3,
+  "C": 48,
+  "CLIP": 1.0,
+  "DMAX": 8,
+  "EVAL_DRAWS": 8,
+  "EVAL_EVERY": 10,
+  "EVAL_ROWS": 128,
+  "HS": [
+   1,
+   2,
+   4
+  ],
+  "LAGS": [
+   0,
+   1,
+   2,
+   4
+  ],
+  "LR": 0.001,
+  "MAX_ELEMS": 1073741824,
+  "MAX_LOCK": 1,
+  "M_TRAIN": 4,
+  "NG_NOISE": 8,
+  "NL_NOISE": 4,
+  "N_VAL": 1024,
+  "POP_H": 128,
+  "SLOT_H": 128,
+  "WD": 0.0001
+ },
+ "grader": "fair energy score per item and cell: vw.harness.HistoryExam._per_cell + vw.scoring.energy_fair; OES: vw.scoring.skill_report; sigma, rho: round5/agentenv/evaluator/acceptance.py",
+ "secret_commitment": "37b838f8076c2f738552572023d98036b5c69985c7d0be46021de9fbf5bd538c",
+ "member_ticks_estimate": {
+  "n8": {
+   "viability_design": 48,
+   "truths": 32,
+   "design": 500,
+   "lab": 264,
+   "exam": 192,
+   "plugin_prior": 96
+  }
+ },
+ "member_ticks": {
+  "scales": 40,
+  "viability_design": 48,
+  "truths": 32,
+  "design": 500,
+  "lab_charged": 216,
+  "lab_burn_in_designer": 48,
+  "exam": 192,
+  "plugin_prior": 96
+ },
+ "hours": 0.04271427730719248,
+ "failed": [],
+ "sets_done": [
+  8
+ ],
+ "seconds_per_set": [
+  135.03616881370544
+ ],
+ "seconds_before_nets_per_set": [
+  66.03796720504761
+ ],
+ "member_ticks_total": 1172
+}

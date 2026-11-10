@@ -1,0 +1,36 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "names": [
+  "lR"
+ ],
+ "lo": [
+  0.91
+ ],
+ "hi": [
+  1.09
+ ],
+ "shrink_rule_tries": [
+  {
+   "extra_shrink": 1.0,
+   "frac_viable": 1.0
+  }
+ ],
+ "diag": {
+  "n": 128,
+  "frac_viable": 1.0,
+  "mean_loglik": 6.75903777391567e-13
+ },
+ "w": [
+  28.757344079091496,
+  -1.9639748232958773e-10,
+  1.527582540721815e-09
+ ],
+ "features": "poly_feats(u, 2)",
+ "prior_mean_u": [
+  0.0004219915741587749
+ ],
+ "prior_sd_u": [
+  0.5784059742059993
+ ],
+ "rule": "uniform box conditioned on viab_joint.viability; boxes 1-4 = gliders_exam prior.json, boxes 5-8 = scanned box x 0.6 x extra_shrink"
+}

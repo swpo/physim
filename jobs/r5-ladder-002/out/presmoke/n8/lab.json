@@ -1,0 +1,107 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "per_truth": [
+  {
+   "truth": 0,
+   "usage_final": {
+    "ticks_used": 108,
+    "max_ticks": 108,
+    "resets": 12,
+    "episode_nats": 199.99999960000002,
+    "total_nats": 1805.2017424211758,
+    "episode_left": 200.00000039999998,
+    "total_left": 2994.798257578824,
+    "episodes": 12,
+    "commands": 33
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 18,
+     "nats": 199.99999999999997,
+     "classes": {
+      "a": 1,
+      "b": 0,
+      "c": 1,
+      "d": 0
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 72,
+     "nats": 1005.2017440211771,
+     "classes": {
+      "a": 2,
+      "b": 2,
+      "c": 2,
+      "d": 2
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 2.6008720105885548,
+    "c": 200.0,
+    "d": 300.0,
+    "e": 199.99999960000002
+   },
+   "caps": {
+    "max_ticks": 108,
+    "nats_total": 4800.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  },
+  {
+   "truth": 1,
+   "usage_final": {
+    "ticks_used": 108,
+    "max_ticks": 108,
+    "resets": 12,
+    "episode_nats": 199.99999960000002,
+    "total_nats": 1847.3782182876919,
+    "episode_left": 200.00000039999998,
+    "total_left": 2952.621781712308,
+    "episodes": 12,
+    "commands": 34
+   },
+   "mix_per_budget": {
+    "2": {
+     "episodes": 2,
+     "ticks": 18,
+     "nats": 300.00000000000006,
+     "classes": {
+      "a": 0,
+      "b": 1,
+      "c": 0,
+      "d": 1
+     }
+    },
+    "8": {
+     "episodes": 8,
+     "ticks": 72,
+     "nats": 1047.3782198876931,
+     "classes": {
+      "a": 2,
+      "b": 2,
+      "c": 2,
+      "d": 2
+     }
+    }
+   },
+   "nats_per_episode_by_class": {
+    "a": 0.0,
+    "b": 23.689109943846532,
+    "c": 200.0,
+    "d": 300.00000000000006,
+    "e": 199.99999960000002
+   },
+   "caps": {
+    "max_ticks": 108,
+    "nats_total": 4800.0,
+    "nats_episode": 400.0,
+    "nats_tick": 100.0
+   }
+  }
+ ]
+}

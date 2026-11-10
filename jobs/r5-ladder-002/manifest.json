@@ -1,0 +1,352 @@
+{
+  "archive_sha256": "8ba850db483c74de24f70c8f1cf8f946d8f2e998db5698924db37c90072534ff",
+  "files": [
+    {
+      "bytes": 2688,
+      "in_git": true,
+      "path": "sysinfo.txt",
+      "sha256": "bedf09d72452baeb4b5c39f3619a9e6f54a25ac9c18dcef9d0faa41fa8f20fb9"
+    },
+    {
+      "bytes": 0,
+      "in_git": true,
+      "path": "job.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 286,
+      "in_git": true,
+      "path": "setup.log",
+      "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
+    },
+    {
+      "bytes": 65062,
+      "in_git": true,
+      "path": "run.log",
+      "sha256": "b84a8e0ddfb3031e319ee7f5aa0606ee71325bb10516b87bbf5b6c5feac44e3f"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "setup.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "exit.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "setup.start",
+      "sha256": "5b7aedd327ecd29d682ee632c5de1e38658e89ebf86f2bbe6a802a895708dee6"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.start",
+      "sha256": "6163a603c2c38638766cb53639df45e742458a085e109e54c82789ff35cd872d"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.end",
+      "sha256": "79b425a0b26628b8ac3e604ec98d48ef23a40b354a7025a8ee00b8f5fc810d71"
+    },
+    {
+      "bytes": 1368,
+      "in_git": true,
+      "path": "out-listing.tsv",
+      "sha256": "371852cf098c941a4fc155a5f6aa04491b5b69436484bc77dc9d788121875b74"
+    },
+    {
+      "bytes": 59106,
+      "in_git": true,
+      "path": "out/progress.txt",
+      "sha256": "d0f65484bcffdde7a489e60ce886aeb5bcb1015e4425158825d1f35de43fc61a"
+    },
+    {
+      "bytes": 11836,
+      "in_git": true,
+      "path": "out/n8/lab.json",
+      "sha256": "bbbc4ad16687a8c3f422a787cb3d533fb686b21fe546701d5f8cc0cde8dabf84"
+    },
+    {
+      "bytes": 1772471,
+      "in_git": true,
+      "path": "out/n8/features.npz",
+      "sha256": "78b78e296eabf25f3beb6d18c2bf8a5c034f246bfa39c979cf034eb8aa550ac1"
+    },
+    {
+      "bytes": 38923,
+      "in_git": true,
+      "path": "out/n8/train_info.json",
+      "sha256": "a5fb3677cfc732dfe6003308cc867abe72065bda32a2d3b23c191b57169fe32c"
+    },
+    {
+      "bytes": 50912,
+      "in_git": true,
+      "path": "out/n8/prediction.json",
+      "sha256": "add0fab1017bd8d23fdf8a1985029b4aad1982433d620ce3cd640bddfdd51120"
+    },
+    {
+      "bytes": 1089155,
+      "in_git": true,
+      "path": "out/n8/scores.npz",
+      "sha256": "357564be0c5a9f4e0aa054c72b75ba54d7ddaaea5ec0825fa4b10493fbe174d0"
+    },
+    {
+      "bytes": 855060,
+      "in_git": true,
+      "path": "out/n8/identification.json",
+      "sha256": "74846ec93c534562b18fe124d1458c2f50d7870da21e6723a26311ba5d15a0e0"
+    },
+    {
+      "bytes": 47394,
+      "in_git": true,
+      "path": "out/n8/viability_design.npz",
+      "sha256": "0e6269e961d792d2cb8f0f732a4df6f6e21da99e73844ecd1936fa8ab39f1dcd"
+    },
+    {
+      "bytes": 35502,
+      "in_git": true,
+      "path": "out/n8/truths.json",
+      "sha256": "8a161d93d616d6bc772a3bf534d155b90a2dc5abf1a729c7283e5af8106fab04"
+    },
+    {
+      "bytes": 2069,
+      "in_git": true,
+      "path": "out/n8/prior.json",
+      "sha256": "6d66585af30fb3412bed3e8571a1c7d5ea4fd5957ad93d13215e01ec1762dcfb"
+    },
+    {
+      "bytes": 1735938,
+      "in_git": true,
+      "path": "out/n8/posterior_draws.npz",
+      "sha256": "50493189d204d8bafa133494a306a8c52a71ab5bf0eaff3b6774d43c6150f0d5"
+    },
+    {
+      "bytes": 3972,
+      "in_git": true,
+      "path": "out/info.json",
+      "sha256": "118c536e83d133f7eb0557c540a007d3e750047689adef19c83bce8c6a78d4eb"
+    },
+    {
+      "bytes": 6075,
+      "in_git": true,
+      "path": "out/presmoke/progress.txt",
+      "sha256": "51cc1b84fa835a9bb9bafc1946bf86237bcaab31ea8d54c565a14f76bf3fd447"
+    },
+    {
+      "bytes": 1934,
+      "in_git": true,
+      "path": "out/presmoke/n8/lab.json",
+      "sha256": "a007ad98eecb433a7825750e8db86e96b0e8a028cdb874eb881b55a6a8e186a5"
+    },
+    {
+      "bytes": 12784,
+      "in_git": true,
+      "path": "out/presmoke/n8/features.npz",
+      "sha256": "98493b7673a127f98134bd81f0a1b8fbf9e2f6c643c7de06f0588c20c19d8247"
+    },
+    {
+      "bytes": 12425,
+      "in_git": true,
+      "path": "out/presmoke/n8/train_info.json",
+      "sha256": "ecf0cc4591a128e7e74376801d7bfd12e504f519e77433f7e74b5c0121e9ed61"
+    },
+    {
+      "bytes": 24182,
+      "in_git": true,
+      "path": "out/presmoke/n8/prediction.json",
+      "sha256": "d0748914a77e5a58d6f762ad046957aaba12c15a13c9a06863bda2ec420cc75a"
+    },
+    {
+      "bytes": 23908,
+      "in_git": true,
+      "path": "out/presmoke/n8/scores.npz",
+      "sha256": "3ec1e9195004fc414fa3fc8f953a9c0e941591dd6dfeb6e6e3f4c17072235055"
+    },
+    {
+      "bytes": 88111,
+      "in_git": true,
+      "path": "out/presmoke/n8/identification.json",
+      "sha256": "91451c8e1b4e3bbbde1ba9fa7960ba07d272d06935a436354590ac4b63f8497e"
+    },
+    {
+      "bytes": 2395,
+      "in_git": true,
+      "path": "out/presmoke/n8/viability_design.npz",
+      "sha256": "488dfd2981efb96647c13326fdfd779e6663a4e8b3b6cf41dc55c1be49c03dd2"
+    },
+    {
+      "bytes": 3615,
+      "in_git": true,
+      "path": "out/presmoke/n8/truths.json",
+      "sha256": "a8cd71680f39ff76d1b1b576a1506bf16bbcf40e9bd68a4fdf38ad60d56859d1"
+    },
+    {
+      "bytes": 2103,
+      "in_git": true,
+      "path": "out/presmoke/n8/prior.json",
+      "sha256": "1ac4ed4deea9047ac05c10d58a78b25694e87cc01177d0b71ee5de3408ca6670"
+    },
+    {
+      "bytes": 15306,
+      "in_git": true,
+      "path": "out/presmoke/n8/posterior_draws.npz",
+      "sha256": "71c226fc3de662b2643cbc858f4867ea90c15143a6ebf7257d2de6ad61a9acfd"
+    },
+    {
+      "bytes": 3393,
+      "in_git": true,
+      "path": "out/presmoke/info.json",
+      "sha256": "5e1a20c90d156ea75116c678f03bb5acbaa0442e873d6e1f96d36da08d4189ff"
+    },
+    {
+      "bytes": 4242,
+      "in_git": true,
+      "path": "out/presmoke/scales.json",
+      "sha256": "a936ac429bbb32d87c504d4af33c5c64e4d980c5eae4cea63b57570ee3ab29d5"
+    },
+    {
+      "bytes": 11805,
+      "in_git": true,
+      "path": "out/n4/lab.json",
+      "sha256": "7996f66cc9b431a76ad0040d67b446f6bd4ddf2805ae2208ac2c622ff52c589d"
+    },
+    {
+      "bytes": 1748248,
+      "in_git": true,
+      "path": "out/n4/features.npz",
+      "sha256": "157802102e5554e9c3822c7e8b65053254c322611b965f66257fce59d2b0af60"
+    },
+    {
+      "bytes": 38927,
+      "in_git": true,
+      "path": "out/n4/train_info.json",
+      "sha256": "c51e68b2446fcbbf5b35f32498903f5d66a25cc79389149f599e7b7f016e1855"
+    },
+    {
+      "bytes": 50894,
+      "in_git": true,
+      "path": "out/n4/prediction.json",
+      "sha256": "58f8681bf5a90d2e0698f2d72553b5b34e5960b8c50fcc7b067faf0d6fb81cad"
+    },
+    {
+      "bytes": 1089553,
+      "in_git": true,
+      "path": "out/n4/scores.npz",
+      "sha256": "3e04330f60360df1ec97c378d668225615dd6ceb8db68d5f6b5f91182306739c"
+    },
+    {
+      "bytes": 551787,
+      "in_git": true,
+      "path": "out/n4/identification.json",
+      "sha256": "7de13eb04e23eb38dc99bae57937e4882ef98106b1997fed79cb4f181052bb32"
+    },
+    {
+      "bytes": 31694,
+      "in_git": true,
+      "path": "out/n4/viability_design.npz",
+      "sha256": "409ee1cf5de872411d9d443e59fcad3c631f3250fe8eea0ece471b826a333ab1"
+    },
+    {
+      "bytes": 28477,
+      "in_git": true,
+      "path": "out/n4/truths.json",
+      "sha256": "e2758d2d3cf45b892c252f999185df0d0497d9a3506623990507290870cdd0e0"
+    },
+    {
+      "bytes": 1104,
+      "in_git": true,
+      "path": "out/n4/prior.json",
+      "sha256": "7fcb90117cce955058094319584d578c486c775ec40c068d4d86a244419c3752"
+    },
+    {
+      "bytes": 890130,
+      "in_git": true,
+      "path": "out/n4/posterior_draws.npz",
+      "sha256": "3d4e529987516d6b562b57d89f3a410c7fef8b31e8798600cca6d1c29b318e4f"
+    },
+    {
+      "bytes": 11817,
+      "in_git": true,
+      "path": "out/n1/lab.json",
+      "sha256": "cd1b70ed5c7303af63f7216a6d2176a4aec3ecf64aa4206ddbc6a8b22d41b2f8"
+    },
+    {
+      "bytes": 1212493,
+      "in_git": true,
+      "path": "out/n1/features.npz",
+      "sha256": "37c060e1ffcb8f10e25936887320b3bb91caf3e9339bb628f486a51a05c7a90d"
+    },
+    {
+      "bytes": 38940,
+      "in_git": true,
+      "path": "out/n1/train_info.json",
+      "sha256": "fd89a8ef5d38428f07c15333a5e0c89de7208a1ed792e9d1ee096f18b342e8e5"
+    },
+    {
+      "bytes": 50820,
+      "in_git": true,
+      "path": "out/n1/prediction.json",
+      "sha256": "7866d873c7f61a2884aa6317501e7169272f315deefdc069be8a46178d53829f"
+    },
+    {
+      "bytes": 1089258,
+      "in_git": true,
+      "path": "out/n1/scores.npz",
+      "sha256": "c6aac5b007f2e83e0d298a2c679c87fe35d635c63311e16a47e36e7c97be4f6d"
+    },
+    {
+      "bytes": 312918,
+      "in_git": true,
+      "path": "out/n1/identification.json",
+      "sha256": "2fa28654bdc233a9ce7d383d868ee28f7a60e1d6bda0f341c0ddb669cb6a1f3f"
+    },
+    {
+      "bytes": 6713,
+      "in_git": true,
+      "path": "out/n1/viability_design.npz",
+      "sha256": "7491bdf9a550b1e429bc21456601db130e23ff2ae57fbec3861223013d10f2f3"
+    },
+    {
+      "bytes": 23146,
+      "in_git": true,
+      "path": "out/n1/truths.json",
+      "sha256": "58338ca5f006720eaf94a0e5f9a838ed3b3918c91115b360619c98a794e10ef4"
+    },
+    {
+      "bytes": 620,
+      "in_git": true,
+      "path": "out/n1/prior.json",
+      "sha256": "affcef14eb12d9e0fa501fb011357b98e9f65148fb97f678a97a8bfc49524e61"
+    },
+    {
+      "bytes": 229868,
+      "in_git": true,
+      "path": "out/n1/posterior_draws.npz",
+      "sha256": "c3ba9b51f681bd424dc501e2de8584f3a951355f8260c8d70249c66a3fba1532"
+    },
+    {
+      "bytes": 4191,
+      "in_git": true,
+      "path": "out/scales.json",
+      "sha256": "1fa1cdaba34e7e4be938e1e6c48cbe4530ab338eb7887a95c6ed313915d14f92"
+    }
+  ],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r5-ladder-002/collected/; ask for them by path.",
+  "skipped": [],
+  "skipped_count": 0,
+  "transfer_bytes": 11438497,
+  "transfer_stopped": null,
+  "truncated": false
+}

@@ -1,0 +1,66 @@
+PILOT_NEVER_REUSE_AS_EXAM: this log lists the hidden parameters of pilot truths
+03:45:07 [   0.0 min] backend gpu devices ['cuda:0'] jax 0.12.0.1 x64 True smoke=True
+03:45:07 [   0.0 min] member-ticks planned: n=8: 1,132; total 1,132
+03:45:07 [   0.0 min] == A public scales
+03:45:26 [   0.3 min] == A public scales done in 19s
+03:45:26 [   0.3 min] n=8: 11.7 min left, this set's share ends in 10.7 min
+03:45:26 [   0.3 min] == n=8 C prior
+03:45:45 [   0.6 min]   n=8 box shrink 1.000: 0.167 viable of 6
+03:45:45 [   0.6 min] == n=8 C prior done in 19s
+03:45:45 [   0.6 min] == n=8 B truths
+03:46:05 [   1.0 min]   n=8 truths [[0.947, 0.004, 0.915, 1.015, 0.131, 0.915, -0.044, 1.148], [0.975, -0.082, 0.932, 1.062, 0.021, 1.02, 0.03, 1.141]] (0/4 viable)
+03:46:05 [   1.0 min] == n=8 B truths done in 20s
+03:46:05 [   1.0 min] == n=8 D design
+03:46:05 [   1.0 min] == n=8 D design done in 1s
+03:46:06 [   1.0 min] == n=8 E Lab
+03:46:24 [   1.3 min]   n=8 Lab truth 0: {'ticks_used': 108, 'max_ticks': 108, 'resets': 12, 'episode_nats': 199.99999960000002, 'total_nats': 1805.2017424211758, 'episode_left': 200.00000039999998, 'total_left': 2994.798257578824, 'episodes': 12, 'commands': 33}
+03:46:24 [   1.3 min]   n=8 Lab truth 1: {'ticks_used': 108, 'max_ticks': 108, 'resets': 12, 'episode_nats': 199.99999960000002, 'total_nats': 1847.3782182876919, 'episode_left': 200.00000039999998, 'total_left': 2952.621781712308, 'episodes': 12, 'commands': 34}
+03:46:24 [   1.3 min] == n=8 E Lab done in 19s
+03:46:24 [   1.3 min] == n=8 F identification
+03:46:25 [   1.3 min]   n=8 block mix N=2: sd/prior [0.956, 0.699, 0.754, 0.701, 0.869, 0.99, 1.001, 1.075]
+03:46:25 [   1.3 min]   n=8 block mix N=8: sd/prior [0.878, 0.708, 0.664, 0.666, 0.764, 0.958, 0.936, 1.06]
+03:46:25 [   1.3 min]   n=8 object mix N=2: sd/prior [0.892, 0.833, 1.138, 0.922, 0.822, 1.122, 1.017, 1.004]
+03:46:25 [   1.3 min]   n=8 object mix N=8: sd/prior [0.94, 0.862, 0.918, 0.873, 0.85, 0.927, 0.926, 0.97]
+03:46:26 [   1.3 min]   n=8 pop mix N=2: sd/prior [0.852, 0.934, 1.012, 0.9, 0.767, 1.101, 1.038, 0.983]
+03:46:26 [   1.3 min]   n=8 pop mix N=8: sd/prior [0.952, 0.919, 1.119, 0.957, 0.894, 1.015, 0.99, 1.011]
+03:46:26 [   1.3 min] == n=8 F identification done in 2s
+03:46:26 [   1.3 min] == n=8 G exams
+03:46:32 [   1.4 min]   n=8 exam truth 0: classes {np.str_('a'): np.int64(1), np.str_('b'): np.int64(1), np.str_('c'): np.int64(1), np.str_('d'): np.int64(1)}
+03:46:32 [   1.4 min]   n=8 exam truth 1: classes {np.str_('a'): np.int64(1), np.str_('b'): np.int64(1), np.str_('c'): np.int64(1), np.str_('d'): np.int64(1)}
+03:46:32 [   1.4 min] == n=8 G exams done in 6s
+03:46:32 [   1.4 min] == n=8 H nets and I scores
+03:46:32 [   1.4 min]   n=8 view block: 72s for its nets
+03:46:40 [   1.5 min]   net[n8 block cond] step 40/70 train 0.1338 val [0.16699999570846558] (7s)
+03:46:40 [   1.6 min]   net[n8 block cond] step 70/70 train 0.1212 val [0.15780000388622284] (7s)
+03:46:46 [   1.6 min]   net[n8 block P0u] step 20/20 train 0.2371 val [0.23690000176429749] (5s)
+03:46:50 [   1.7 min]   net[n8 block D [2] batch0] step 20/20 train 0.0936 val [0.12120000272989273] (4s)
+03:46:50 [   1.7 min]   net[n8 block D [2] batch1] step 20/20 train 0.2360 val [0.08349999785423279] (0s)
+03:46:54 [   1.8 min]   net[n8 block D [8] batch0] step 20/20 train 0.0954 val [0.13689999282360077] (4s)
+03:46:54 [   1.8 min]   net[n8 block D [8] batch1] step 20/20 train 0.1470 val [0.08810000121593475] (0s)
+03:47:01 [   1.9 min]   n=8 view block: nets 22s, scored in 7s
+03:47:01 [   1.9 min]   n=8 view object: 267s for its nets
+03:47:09 [   2.0 min]   net[n8 object cond] step 40/70 train 0.3503 val [0.4984999895095825] (7s)
+03:47:09 [   2.0 min]   net[n8 object cond] step 70/70 train 0.3348 val [0.47189998626708984] (7s)
+03:47:14 [   2.1 min]   net[n8 object P0u] step 20/20 train 0.7184 val [0.6801999807357788] (5s)
+03:47:18 [   2.2 min]   net[n8 object D [2] batch0] step 20/20 train 0.2042 val [0.21889999508857727] (4s)
+03:47:18 [   2.2 min]   net[n8 object D [2] batch1] step 20/20 train 0.2857 val [0.18019999563694] (0s)
+03:47:21 [   2.2 min]   net[n8 object D [8] batch0] step 20/20 train 0.2147 val [0.3540000021457672] (3s)
+03:47:21 [   2.2 min]   net[n8 object D [8] batch1] step 20/20 train 0.2674 val [0.14259999990463257] (0s)
+03:47:26 [   2.3 min]   n=8 view object: nets 21s, scored in 4s
+03:47:26 [   2.3 min]   n=8 view pop: 517s for its nets
+03:47:31 [   2.4 min]   net[n8 pop cond] step 40/70 train 0.4611 val [0.6431000232696533] (4s)
+03:47:31 [   2.4 min]   net[n8 pop cond] step 70/70 train 0.5382 val [0.6345999836921692] (4s)
+03:47:34 [   2.4 min]   net[n8 pop P0u] step 20/20 train 0.6188 val [0.6019999980926514] (3s)
+03:47:36 [   2.5 min]   net[n8 pop D [2] batch0] step 20/20 train 0.1263 val [0.38089999556541443] (2s)
+03:47:36 [   2.5 min]   net[n8 pop D [2] batch1] step 20/20 train 0.2641 val [0.19910000264644623] (0s)
+03:47:38 [   2.5 min]   net[n8 pop D [8] batch0] step 20/20 train 0.1370 val [1.0250999927520752] (2s)
+03:47:39 [   2.5 min]   net[n8 pop D [8] batch1] step 20/20 train 0.6579 val [0.12330000102519989] (0s)
+03:47:41 [   2.6 min]   n=8 view pop: nets 13s, scored in 2s
+03:47:41 [   2.6 min] == n=8 H nets and I scores done in 69s
+03:47:41 [   2.6 min]   n=8 block OES C 0.822, D@2 0.794, D@8 0.802, Dr@2 0.826, Dr@8 0.862, P0 0.830, P0u 0.788, PM 0.824, S@2 0.827, S@8 0.827, plugPM 0.917
+03:47:41 [   2.6 min]   n=8 block N=2: sigma -0.010 rho 0.35; N=8: sigma -0.049 rho 0.29
+03:47:41 [   2.6 min]   n=8 object OES C 0.738, D@2 0.605, D@8 0.641, Dr@2 0.661, Dr@8 0.756, P0 0.749, P0u 0.673, PM 0.741, S@2 0.729, S@8 0.732, plugPM 0.761
+03:47:41 [   2.6 min]   n=8 object N=2: sigma -0.015 rho 1.79; N=8: sigma -0.027 rho 1.48
+03:47:41 [   2.6 min]   n=8 pop OES C 0.859, D@2 0.665, D@8 0.769, Dr@2 0.537, Dr@8 0.568, P0 0.864, P0u 0.792, PM 0.862, S@2 0.855, S@8 0.855, plugPM 0.772
+03:47:41 [   2.6 min]   n=8 pop N=2: sigma -0.005 rho 2.03; N=8: sigma -0.005 rho 2.09
+03:47:41 [   2.6 min] done: sets [8], 1172 member-ticks, 0.04 h, failed []
