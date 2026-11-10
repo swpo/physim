@@ -21,5 +21,5 @@
     "summary": "Same code as slots-004/005; the memory recommendation is applied (MEM_FRACTION 0.9, about 36 GiB usable vs about 28 GiB peak); fine to run."
   },
   "state": "received",
-  "updated_at": "2026-11-10T04:08:15Z"
+  "updated_at": "2026-11-10T04:38:49Z"
 }
