@@ -121,4 +121,5 @@ rho is "not defined" where C - P0 is at most 0.003: its world-cluster SE is 0.3 
 | `ladder_lib.py`, `ladder_net.py` | views, hidden sets, summaries, synthetic likelihood, ridges; the three view nets |
 | `run_ladder.py`, `make_summary.py` | the GPU job; the summary from its outputs (CPU, about 2 minutes) |
 | `check_lib.py`, `check_shapes.py` | the checks |
+| `recheck.py` | plain-numpy recomputation of the table's skills and shares from the saved scores (`results/recheck.json`: agrees to 5e-5) |
 | `PROGRESS.md` | log of the study |

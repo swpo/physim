@@ -44,3 +44,5 @@
 - NEXT: read the summary, write README.md (results) and the report, commit, push, remove the worktree.
 - 05:20 UTC. summary.json regenerated with a `headline` block; README.md written with the results.
   NEXT (last steps): final commit and push, remove the worktree, return the report.
+- 05:25 UTC. STUDY FINISHED. recheck.py (plain numpy) agrees with summary.json to 5e-5. Spend: $2.56 of the
+  $25 cap (r5-ladder-001 $0, r5-ladder-002 $2.5555). Nothing is running; no further step.
