@@ -9,10 +9,42 @@
       "at": "2026-11-10T04:33:32Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T04:57:12Z",
+      "message": "accepted: H200_141GB via nebius at $6.69/h, at most $13.38",
+      "state": "queued"
     }
   ],
   "job_id": "r5-foundry-001",
-  "message": "request received",
+  "max_estimate_usd": 13.38,
+  "message": "accepted: H200_141GB via nebius at $6.69/h, at most $13.38",
+  "plan": {
+    "max_estimate_usd": 13.38,
+    "offers": [
+      {
+        "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
+        "country": "FI",
+        "data_center": "eu-north1",
+        "disk_gb": 1500,
+        "gpu_memory_gb": 141,
+        "gpu_type": "H200_141GB",
+        "is_spot": false,
+        "listed_rate_usd_hr": 5.55,
+        "memory_gb": 200,
+        "price_source": "billed by a pod of this offer at 2026-11-10T03:01:21Z",
+        "provider": "nebius",
+        "rank": 3,
+        "rate_usd_hr": 6.69,
+        "security": "secure_cloud",
+        "socket": "SXM5",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-10T04:57:12Z",
+    "window_hours": 2.0
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T04:57:04Z",
@@ -20,6 +52,6 @@
     "sha256": "476a83c807ab3a702cef19afeda0a85eae5e92b34b26a3b8eca541be83ef32e2",
     "summary": "Fine to run: no blocker or major findings; peak about 19 GiB, largest array 0.84 x 2^31. 3 minor: cert-size gliders time guard, job_state written per stage, no OOM fallback in certification."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T04:33:32Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T04:57:12Z"
 }
