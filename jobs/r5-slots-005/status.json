@@ -9,10 +9,40 @@
       "at": "2026-11-10T04:02:36Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T04:04:14Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $7.46",
+      "state": "queued"
     }
   ],
   "job_id": "r5-slots-005",
-  "message": "request received",
+  "max_estimate_usd": 7.46,
+  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $7.46",
+  "plan": {
+    "max_estimate_usd": 7.46,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-10T04:04:14Z",
+    "window_hours": 3.75
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T04:04:07Z",
@@ -20,6 +50,6 @@
     "sha256": "d2ee95427061292959e512a5954a53a6b2b9e52a9aee92e59a15bec95bbb57f0",
     "summary": "Same code as slots-004 (reviewed); fine to run. Thin memory margin on an A100 40GB (peak about 27-28 GiB vs about 30 GiB usable): add XLA_PYTHON_CLIENT_MEM_FRACTION=0.9."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T04:02:36Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T04:04:14Z"
 }
