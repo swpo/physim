@@ -1,5 +1,32 @@
 # vfport: PROGRESS
 
+## RE-AUDIT of the runbook, round 2 (independent; of commit 40c697e54) -- 10 Nov 2026, finished
+- Role: re-audit of `RUNBOOK_MAC.md` only (sha256 b08fb77a...c059 at 40c697e54), read as the Mac session would
+  follow it. Verdict returned to the coordinator: GO for steps 0 to 2 as far as the runbook goes, with prose
+  replacements recommended before the hold notice is replaced; step 3 keeps its own hold. This section is the only
+  thing this role changed. The hold notice was NOT touched: that is the verdict's act.
+- Labels: read; run = stand-ins in scratch, no file of the port executed; container = two throwaway containers of
+  mine without any mount, removed by exact name; inferred = everything about macOS. I ran no rollout.
+- Pin: `sha256sum -c PIN.sha256` and `shasum -a 256 -c` on a clean archive of 40c697e54: 105 of 105; sha256 of
+  `PIN.sha256` 7aa9bbfc...f64c19 = the runbook's line 17.
+- Closed: A1 and change 1 (30 of 30 fenced commands and the inline one begin with the guard; the guard with `echo`
+  prints nothing for the placeholder, another project's folder and an empty path: run); A2, changes 1 and 2 of the
+  round-1 verdict (run through my own command tool against a stand-in folder: the status listed the tool and not the
+  waiting shell; the stop command printed and signalled nothing for the waiting shell and for an unreplaced
+  placeholder, and stopped the tool with `EXIT 143`); interpreter, step 1, pin handover, text (read).
+  `docker info --format` returns 1 against a dead socket (run, client 29.9.2).
+- Rehearsal record: 23 of the 30 fenced commands match its literal texts after undoing its two substitutions; the
+  30 fenced commands are equal at be2c17ae6 and at 40c697e54 (run). Never run: the image build with its status, all
+  of step 3. Not in its list of mismatches: step 4 printed three images, the text names four.
+- New, all minor, none reaches beyond the pilot: (1) the failing branch of 2a's "must show" rule has no time bound
+  (lines 310-312); (2) "use this section once" cannot be known by a restarted session (409); (3) step 4's image
+  list (590-592) is probably false under BuildKit, where base images are not listed (inferred); (4) rule A.1 tests
+  for ON HOLD, not for the GO notice (35); (5) what a stop in step 1 or 4 leaves is not listed for the lead;
+  (6) hardening: `docker rm -f` (451) has no check of its own; a label-checked form was run in containers;
+  (7) step 3 only: the dry run (494) is not behind the lead's file, and "writes it here" (507) contradicts line 2.
+  Exact replacement texts: in the report to the coordinator.
+- State left: no container of mine, images untouched, daemon untouched, scratch `vfreaud2b` and my worktree removed.
+
 ## RE-AUDIT of the code, round 2 (independent; of commit 40c697e54) -- 10 Nov 2026, finished
 - Role: re-audit of the CODE only (A3, A4, A5; required changes 3, 4, 5; the whole diff since 997005f56; the
   required tests). Verdict returned to the coordinator: GO on the code, for the pinned hash only. This section is
