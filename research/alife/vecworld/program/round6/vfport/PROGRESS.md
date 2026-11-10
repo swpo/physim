@@ -1,5 +1,16 @@
 # vfport: PROGRESS
 
+## RE-AUDIT of the code, round 1 (independent; of commit 73829e5c6) -- 10 Nov 2026, in progress
+- Role: re-auditor of findings A3, A4, A5 and required changes 3, 4, 5; the verdict is returned to the coordinator,
+  not written here. Nothing of the port is changed by this role.
+- Read so far (clean archive of the head): HOST_SAFETY_AUDIT.md, physim2_env/public/_item.py, grading.py,
+  taskset.py, access.py, physim2_script, the three box scripts, tools/{tripwires,check_safety,check_driver,
+  check_units,check_interrupt,vfrun,pin}.py, redteam/{rt_run.py,nproc_cross_box.sh} (diff since 997005f56).
+- Next: rerun tools/check_safety.py (tripwires) and tools/check_driver.py (throwaway containers) from the archive
+  copy and compare with results/; own probes of the mount allow-list and the worker gate.
+- If the container restarted: scratch is /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfreaud1a
+  (recreate with `git archive`); worktree /home/user/wt/vfreaud1a, branch wt-vfreaud1a.
+
 ## HOST-SAFETY FIXER, round 1 (after the audit's NO-GO, HOST_SAFETY_AUDIT.md) -- 10 Nov 2026
 
 Worktree `/home/user/wt/vfsafe1` (branch wt-vfsafe1, pushes to `claude/fisim-agent-world-research-hepmlz`).
