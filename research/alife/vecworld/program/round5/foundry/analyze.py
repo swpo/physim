@@ -202,7 +202,11 @@ def main():
     g = CR.gates(d, t)
     s = CR.score(d, t)
     sc = dict(np.load(os.path.join(D, "thetas_scalars.npz")))
-    kap = sc["kappa"][idx] > 0
+    ids = sc.pop("ids", None)                                         # prior index of every array position
+    posmap = {int(v): i for i, v in enumerate(ids)} if ids is not None else None
+    pidx = np.array([posmap[int(i)] for i in idx]) if posmap else idx  # positions of the screened draws
+    P = (lambda i: posmap[int(i)]) if posmap else (lambda i: int(i))
+    kap = sc["kappa"][pidx] > 0
     types = {}
     for i, name in enumerate(CR.TYPES):
         types[name] = dict(frac(t == i), kappa0=frac((t == i)[~kap]), kappa_pos=frac((t == i)[kap]))
@@ -233,7 +237,8 @@ def main():
         chaotic_half_spread_within_32=frac(np.isfinite(d["twin_half_h"])[act]) if act.any() else None)
     # ---------------- weights
     ws_all = dict(np.load(os.path.join(D, "wstats.npz")))
-    ws = {k: v[idx] for k, v in ws_all.items()}
+    ws_all.pop("ids", None)
+    ws = {k: v[pidx] for k, v in ws_all.items()}
     res["weights"] = weights_part(ws, t, g, "wstats.npz against screen/chunk_*.npz")
     res["weights"]["lin_unstable_share"] = frac(ws["lin_growth"] > 1e-4)
     # ---------------- candidates (screen size)
@@ -241,7 +246,7 @@ def main():
     cand = [int(i) for i in order if g["candidate"][i]]
     res["candidates_screen"] = dict(src="screen/chunk_*.npz", n_candidates=len(cand),
                                     top=[dict(draw=int(idx[i]), **world_row(d, i, t, g, s),
-                                              theta={k: (float(v[idx[i]]) if v.ndim == 1 else [float(x) for x in v[idx[i]]])
+                                              theta={k: (float(v[pidx[i]]) if v.ndim == 1 else [float(x) for x in v[pidx[i]]])
                                                      for k, v in sc.items()}) for i in order[:40]])
     # ---------------- certification
     cdir = os.path.join(D, "cert")
@@ -274,9 +279,9 @@ def main():
                                    candidate=bool(g["candidate"][pos[i]]),
                                    **{k: float(d[k][pos[i]]) for k in ("ceil1", "ceil8", "ceil32", "gap_max", "v_orc8",
                                                                        "nb_mean", "v_net", "events100", "pl8")})
-            r["theta"] = {k: (float(v[i]) if v.ndim == 1 else [float(x) for x in v[i]]) for k, v in sc.items()}
-            r["weights"] = {k: float(ws_all[k][i]) for k in ("lin_growth", "lin_wavelength", "lin_omega", "affx_00",
-                                                             "affx_01", "affx_10", "affx_11", "aff_cross_prod")}
+            r["theta"] = {k: (float(v[P(i)]) if v.ndim == 1 else [float(x) for x in v[P(i)]]) for k, v in sc.items()}
+            r["weights"] = {k: float(ws_all[k][P(i)]) for k in ("lin_growth", "lin_wavelength", "lin_omega", "affx_00",
+                                                                "affx_01", "affx_10", "affx_11", "aff_cross_prod")}
             rows.append(r)
         rows.sort(key=lambda r: -r["score"])
         scr_c = np.array([r.get("screen", {}).get("candidate", False) for r in rows])

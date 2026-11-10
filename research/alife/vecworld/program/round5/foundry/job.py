@@ -51,6 +51,16 @@ T_START = env("T_START", str(T0), float)          # job.sh passes its own start 
 PRIOR_SEED = env("PRIOR_SEED", 2026)
 RUN_SEED = env("RUN_SEED", 5150)
 N_DRAWS = env("N_DRAWS", 16 if TINY else 8192)
+INDEX_FILE = os.environ.get("FOUNDRY_INDEX_FILE", "")     # JSON list of prior indices to screen (in that order)
+if INDEX_FILE:
+    with open(os.path.join(HERE, INDEX_FILE)) as _f:
+        IDS = np.asarray(json.load(_f)["index"], np.int64)
+    if TINY:
+        IDS = IDS[:N_DRAWS]
+    N_DRAWS = len(IDS)
+else:
+    IDS = np.arange(N_DRAWS, dtype=np.int64)
+POS = {int(v): i for i, v in enumerate(IDS)}              # prior index -> position in the arrays
 N_MIN = env("N_MIN", 8 if TINY else 2048)
 CHUNK = env("CHUNK", 8 if TINY else 128)
 N_THUMB = env("N_THUMB", 8 if TINY else 1024)
@@ -174,7 +184,7 @@ def stage_wstats(ths_all):
         r = f(dev(take(ths_all, idx)))
         parts.append({k: np.asarray(v)[:b - a] for k, v in r.items()})
     ws = {k: np.concatenate([p[k] for p in parts]) for k in parts[0]}
-    np.savez_compressed(os.path.join(OUT, "wstats.npz"), **ws)
+    np.savez_compressed(os.path.join(OUT, "wstats.npz"), ids=IDS, **ws)
     del f
     return dict(n=n, n_unstable=int((ws["lin_growth"] > 1e-6).sum()), keys=sorted(ws))
 
@@ -197,12 +207,13 @@ def stage_screen(ths_all):
         if (done >= N_MIN and el() > T_SCREEN) or el() > T_SCREEN_HARD:
             P(f"screen: deadline, stopping at {done} draws")
             break
-        idx = np.arange(done, min(N_DRAWS, done + CHUNK))
-        pad = idx if len(idx) == CHUNK else np.concatenate([idx, np.full(CHUNK - len(idx), idx[0])])
+        pos = np.arange(done, min(N_DRAWS, done + CHUNK))
+        pad = pos if len(pos) == CHUNK else np.concatenate([pos, np.full(CHUNK - len(pos), pos[0])])
+        idx = IDS[pos]                                      # prior indices of this chunk
         ths = take(ths_all, pad)
-        ths2 = neighbours(ths, pad, EPS)
+        ths2 = neighbours(ths, IDS[pad], EPS)
         try:
-            res, dt = run_chunk(fn, ths, ths2, draw_keys(RUN_SEED, pad))
+            res, dt = run_chunk(fn, ths, ths2, draw_keys(RUN_SEED, IDS[pad]))
         except Exception as e:                              # most likely out of memory: halve the chunk once or twice
             msg = repr(e)[:300]
             P(f"screen: chunk of {CHUNK} failed: {msg}")
@@ -217,7 +228,7 @@ def stage_screen(ths_all):
         n = len(idx)
         res = {k: v[:n] for k, v in res.items()}
         thumb = res.pop("thumb")
-        keep = idx < N_THUMB
+        keep = pos < N_THUMB
         if keep.any():
             u, sc = SC.quantise(thumb[keep])
             res["thumb_u8"], res["thumb_scale"], res["thumb_index"] = u, sc, idx[keep]
@@ -249,8 +260,8 @@ def load_screen():
 def stage_controls(ths_all):
     """No-affinity worlds: the first N_CTRL draws with beta = 0, gam = 0, kappa = 0 (noisy diffusion with
     crowding): the floor of every measure."""
-    idx = np.arange(N_CTRL)
-    ths = take(ths_all, idx)
+    idx = IDS[:N_CTRL]
+    ths = take(ths_all, np.arange(N_CTRL))
     ths = dict(ths, beta=0 * ths["beta"], gam=0 * ths["gam"], kappa=0 * ths["kappa"])
     wd = SC.tnca_world()
     fn = SC.make_chunk_fn(wd, SZ)
@@ -290,7 +301,7 @@ def stage_certify(ths_all, top):
     wd = SC.tnca_world()
     fn = SC.make_chunk_fn(wd, SZC, map_batch=8)
     idx = np.asarray(top)
-    ths = take(ths_all, idx)
+    ths = take(ths_all, np.array([POS[int(i)] for i in idx]))
     keys = draw_keys(RUN_SEED + 3, idx)
     info = dict(sizes=vars(SZC) | dict(NS=SZC.NS), index=[int(i) for i in idx], runs=[])
     for name, eps, hyper in (("eps010", 0.1, False), ("eps003", 0.03, False), ("eps030", 0.3, False),
@@ -384,13 +395,14 @@ def main():
     STATE["platform"] = dict(jax=jax.__version__, numpy=np.__version__, python=sys.version.split()[0],
                              devices=[str(d) for d in jax.devices()], backend=jax.default_backend(), dtype="float64")
     STATE["config"] = dict(prior_seed=PRIOR_SEED, run_seed=RUN_SEED, n_draws=N_DRAWS, n_min=N_MIN, chunk=CHUNK,
+                           index_file=INDEX_FILE or None,
                            eps=EPS, family=vars(TN.FAM), prior=TN.PRIOR, thresholds=CR.THRESHOLDS)
     if os.environ.get("FOUNDRY_REQUIRE_GPU", "0") == "1" and jax.default_backend() != "gpu":
         P("no GPU backend: abort")
         save_state()
         return 2
-    ths_all = TN.draw_thetas(PRIOR_SEED, range(N_DRAWS))
-    np.savez_compressed(os.path.join(OUT, "thetas_scalars.npz"),
+    ths_all = TN.draw_thetas(PRIOR_SEED, IDS)
+    np.savez_compressed(os.path.join(OUT, "thetas_scalars.npz"), ids=IDS,
                         **{k: ths_all[k] for k in ("beta", "gam", "alpha", "mu", "kappa", "gr", "dens", "wq")})
     run_stage("checks", stage_checks)
     run_stage("wstats", stage_wstats, ths_all)
