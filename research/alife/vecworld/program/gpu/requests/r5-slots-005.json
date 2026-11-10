@@ -1,0 +1,49 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r5-slots-005",
+  "purpose": "Round-5 study slots (track 1), main job at 48 trajectories per half (fits a 40 GB card): slot encoders with memory on raw gliders level 0, 2000 steps, up to 14 configs in priority order (supervised capacity control, closure, warm start, reconstruction, local law, no k-means prior, classic slot AE)",
+  "requester": "cloud study slots (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track1/learned_phi2",
+    "research/alife/vecworld/program/round5/slots"
+  ],
+  "gpu": {
+    "types": [
+      "A100_40GB",
+      "A100_80GB",
+      "H100_80GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 3.5,
+  "cap_usd": 18.75,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round5/slots && bash job.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "S5_SIZE": "pilot",
+    "S5_STEPS": "2000",
+    "S5_OV_STEPS": "1000",
+    "S5_KEEP": "sam_sup,sam_set,sam_set_ws,sam_rec,sam_self,sgm_set,sgc_rec,sac_set,sam_set_dg,sam_rec_ws,sam_self_ws,sac_rec,sam_set_ws_dg,sam_set_sg",
+    "S5_KEEP_ORDER": "1",
+    "S5_FIXED": "km_s6,km_s3,km_s6w,grid",
+    "S5_CERT_O": "refs",
+    "S5_CFG_MIN_S": "1000",
+    "S5_CFG_MAX_S": "1500",
+    "S5_TRAIN_S": "10400",
+    "S5_CERT_S": "11200",
+    "S5_HARD_S": "11900"
+  },
+  "notes": "Replaces r5-slots-004 (cancelled before any pod existed: no A100_80GB / H100_80GB / H200_141GB could be rented for more than two hours). SAME code, pinned by the same ref 7099a0ded (reviewed clean by the Mac for r5-slots-004; CPU test of job.sh end to end at tiny size from a git archive of these six paths at that commit: 14 configs, 124 halves certified, exit 0, FAIL=0). Only the env, the GPU types and the limits differ. S5_SIZE=pilot: 48 trajectories per half (16 certification + 32 training-only, 4 for validation), the size of r5-slots-003; the doubled data of the full size is dropped so that the job fits a 40 GB card. Memory: resident device data about 5.2 GiB (measured in r5-slots-003) plus training temporaries of up to about 24.7 GiB for the rec configs and far less for sup / set / self (the Mac's estimate for this code), so about 30 GiB at the peak; preallocation stays off. An out-of-memory or any other error in one config is caught in strain.main (the config goes to train_errors.txt, compiled functions are released, the next config runs; latents, training records and certification of the other configs are written; the job then exits non-zero). Device arrays are far below 2^31 elements at this size (largest 4.7e8). Timing is set for the SLOWER card. Measured on the H200 at this size (r5-slots-003): reference stage 570 s including a no-learning encoder that is now dropped, 9.6 s per 100 training steps, 90-165 s compile per config. Assuming the A100 is 2.6 times slower on the GPU part: reference stage about 1300 s, a config about 1000 s (2000 steps about 500 s, compile about 250 s, encoding and objective values about 250 s). Time limits in seconds from the start of job.sh: training stops at 10400, no new certification item after 11200, workers killed at 11900; max_hours 3.5 = 12600 s. No config starts with under 1000 s left before the training deadline (S5_CFG_MIN_S), so a started config is expected to train all its steps; S5_CFG_MAX_S=1500 only stops a config that runs far over. Expected to finish: on an A100 (40 or 80 GB) the first 9 configs (sam_sup, sam_set, sam_set_ws, sam_rec, sam_self, sgm_set, sgc_rec, sac_set, sam_set_dg), at least the first 7 if the card is slower than assumed; the first 5 are the ones the study's question needs; on an H100 all 14 in about 2.3 h, after which the job ends early. Skipped configs are recorded in train_done.json. Budget: study cap $25, $3.13 billed so far; this cap $18.75 covers an H100 offer up to $4.97/h (4.97 x 3.75 = $18.64, plus $0.10); on an A100_40GB at about $2/h the job costs about $7.50; the H200 is not listed (its rate does not fit this cap at 3.5 h). No network or subprocess use outside setup; job.sh starts its own CPU certification workers.",
+  "ref": "7099a0ded388a9d9efc852b568184f81586f089d"
+}
