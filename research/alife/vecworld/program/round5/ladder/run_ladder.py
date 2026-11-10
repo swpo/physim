@@ -95,6 +95,7 @@ HS = list(CFG["hs"])
 NN.Cfg.LAGS, NN.Cfg.HS = tuple(CFG["lags"]), tuple(CFG["hs"])
 if args.smoke:
     NN.Cfg.EVAL_EVERY = 10
+    NN.Cfg.MAX_LOCK = 1                             # two truths: so that a group of D nets runs in several batches
 VJ.T = CFG["viab_T"]
 QUERIES = {l: HS for l in (1, 2, 3)}
 DCLS = [c for c in ("a", "b", "c", "d", "e") for _ in range(CFG["Kc"])]      # design classes per theta
