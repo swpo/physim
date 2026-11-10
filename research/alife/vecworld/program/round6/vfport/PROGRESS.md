@@ -1,5 +1,16 @@
 # vfport: PROGRESS
 
+## VERDICT, round 1 (of the head after the two re-audits) -- 10 Nov 2026, in progress
+- Role: issues the round-1 verdict from the fixer's report and the two re-audits; changes only
+  HOST_SAFETY_AUDIT.md (section "Re-audit, round 1") and, on GO only, the hold notice of RUNBOOK_MAC.md.
+  Worktree `/home/user/wt/vfverdict1`, scratch `.../scratchpad/vfverdict1/` (stand-ins only).
+- Checked so far by this role: PIN.sha256 at the head, 105 of 105 files (run); the box gates, the driver guard,
+  the worker gate and vfrun (read); the runbook's process listing with a sleeping stand-in, issued the way a
+  session issues it: the waiting wrapper shell is listed next to the real process, and SIGTERM to it leaves the
+  tool running with no `EXIT` line (run, scratch).
+- If this role was cut: nothing of it runs; scratch may hold `standin/` (a sleeping script, no code of the port);
+  the verdict section is not written until the last commit of the role. Start the role again from the top.
+
 ## RE-AUDIT of the code, round 1 (independent; of commit 73829e5c6) -- 10 Nov 2026, finished
 - Role: re-auditor of findings A3, A4, A5 and required changes 3, 4, 5. The numbered verdict went to the
   coordinator; nothing of the port was changed by this role. Code at the head = PIN.sha256 (105 files, 0 differences).
