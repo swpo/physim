@@ -1,0 +1,16 @@
+8098	out/lab.json
+905814	out/exam.npz
+53959	out/train_info.json
+315419	out/prediction.json
+43824	out/design.npz
+3520445	out/scores.npz
+3624451	out/design_S_00.npz
+3610841	out/design_S_01.npz
+80543	out/identification.json
+1150557	out/lab.npz
+2772	out/truths.json
+36228	out/progress.txt
+5613	out/info.json
+1060779	out/posterior_draws.npz
+615	out/viability_prior.json
+25602	out/items.npz

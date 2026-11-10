@@ -1,0 +1,28 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "diag": {
+  "n": 512,
+  "frac_viable": 0.955078125,
+  "mean_loglik": -0.012731772037080567
+ },
+ "w": [
+  20.608069682835715,
+  -4.077768550006522,
+  4.820482843903516,
+  6.0702256394044545,
+  -1.1493277084065883,
+  2.4696064469868855,
+  1.3120933642346224,
+  -5.622625784396709,
+  -4.879331328676583,
+  -11.932645516157837
+ ],
+ "features": "poly_feats(u, 2)",
+ "rule": {
+  "n_min": 8.0,
+  "t_from": 20,
+  "rule": "fields finite, no tracker overflow, n_min <= N <= K - 1 at every state from t_from on"
+ },
+ "frac_episodes_viable": 0.9609375,
+ "frac_theta_viable": 0.955078125
+}
