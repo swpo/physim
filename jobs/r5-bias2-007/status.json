@@ -9,10 +9,40 @@
       "at": "2026-11-10T01:54:16Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T01:55:08Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $3.68",
+      "state": "queued"
     }
   ],
   "job_id": "r5-bias2-007",
-  "message": "request received",
+  "max_estimate_usd": 3.68,
+  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $3.68",
+  "plan": {
+    "max_estimate_usd": 3.68,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-10T01:55:08Z",
+    "window_hours": 1.85
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T01:54:48Z",
@@ -20,6 +50,6 @@
     "sha256": "12e39ce7ba7886d0d7d55ed7a13c0833e591bfc605de6d93ce98a2e73eb68859",
     "summary": "Resubmission of 006 unchanged (same ref and env); its review applies: fine to run."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T01:54:16Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T01:55:08Z"
 }
