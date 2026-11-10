@@ -9,10 +9,40 @@
       "at": "2026-11-10T03:03:54Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-10T03:04:45Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $5.77",
+      "state": "queued"
     }
   ],
   "job_id": "r5-vortexexam-006",
-  "message": "request received",
+  "max_estimate_usd": 5.77,
+  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $5.77",
+  "plan": {
+    "max_estimate_usd": 5.77,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 3,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-10T03:04:45Z",
+    "window_hours": 2.9
+  },
   "pods": [],
   "review": {
     "at": "2026-11-10T03:04:36Z",
@@ -20,6 +50,6 @@
     "sha256": "935f76390743a41540f0d895dbb3cb93728eda20770c1ce14f2c57d8c5239a31",
     "summary": "Resubmission of 005 (same executed code; cap now covers the H200's billed rate); 005's review applies: gate met, fine to run."
   },
-  "state": "received",
-  "updated_at": "2026-11-10T03:03:54Z"
+  "state": "queued",
+  "updated_at": "2026-11-10T03:04:45Z"
 }
