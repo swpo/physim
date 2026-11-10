@@ -1,39 +1,37 @@
 # vfport: PROGRESS
 
-## VERDICT, round 3 pass 1 (of branch head db3ff5a6e) -- 10 Nov 2026, UNDER WAY
-- Role: the round-3 verdict from the fixer's report and the two re-audits (code: GO; runbook: NO-GO as written,
-  narrowly). I check what I rely on at the head myself. I write only `HOST_SAFETY_AUDIT.md` (first line and a new
-  section "Re-audit, round 3"), the hold notice of `RUNBOOK_MAC.md` (only if GO) and this note.
-- Worktree `/home/user/wt/vfr3verdict1` (branch `wt-vfr3verdict1`), scratch
-  `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3verdict1/`.
-- Done so far (21:15 UTC): both files read in full; `tools/vfrun.py`, `physim2_env/_nokey.py`, `tools/vfeval.py`,
-  `tools/build_reference.py` and the diff of the other pinned files read. Pin from a clean archive of the head:
-  109 of 109, sha256 of `PIN.sha256` cd67eb4b...03e4; against the round-2 pin 91 identical (driver, grading,
-  taskset, access, box scripts among them), 14 changed, 4 added. Runbook: 33 fenced commands, equal block for
-  block at the rehearsed commit 00947b226 and at the head; all 65 recorded commands match one of them; never
-  issued: 350, 357, 654, 674, 682, 690, 720. My container run (python:3.12-slim, no mount, no network): of 28
-  made-up session names none reaches a child; the watchdog refuses at the floor (97), a trip sends ONE SIGTERM,
-  removes nothing, writes the record; SIGKILL only after the grace.
-- Found so far: (1) M2's table lacks one row, confirmed in the source: Python kills verifiers' `docker rm
-  --force <box>` client after 30 s (verifiers `runtimes/docker/__init__.py:553-567`, the normal teardown of every
-  box). (2) PYTHONEXECUTABLE / __PYVENV_LAUNCHER__ are NOT macOS-only: CPython 3.12 reads both on Linux too
-  (`Modules/getpath.c:901-902`, read; run here with a bare one-liner: `sys.executable` becomes the variable's
-  value and the venv is no longer found, `sys.prefix` /usr). So a session that holds one of them fails step 1's
-  import check (a stop), unless the value points into an environment with the same four package versions.
-- 21:50 UTC. Also done: M3 under tripwires by me (made-up file in a scratch home): package first -> `stand-in`,
-  0 opens, 0 stats over 195 modules; stock control -> the file is opened. M2 searched in the verifiers source:
-  the ten rows match; the one missing sender is the `docker rm --force` client (30 s). Item 10 of the runbook
-  re-audit run here: with PYTHONEXECUTABLE or __PYVENV_LAUNCHER__ a package of the environment cannot be
-  imported (ModuleNotFoundError), so step 1's import check stops such a session: minor.
-- DECIDED: GO for steps 0 to 2. The six text items of the runbook re-audit go into the GO notice (two rules,
-  four corrections, no command); item 10 is residual with a by-hand check. The notice is written in the
-  worktree's `RUNBOOK_MAC.md` (NOT committed yet: it is committed only together with the audit section).
-- Next step (exact): append "Re-audit, round 3" to `HOST_SAFETY_AUDIT.md` (verdict; table M1-M3, m1-m11, D1;
-  rounds 1 and 2 not reopened; the re-auditors' items; what remains; residual; by hand with the disk question
-  of step 3), replace its first line and the fixer's suspension note; check that the runbook differs from
-  db3ff5a6e only inside the notice; final note here (own commit); then ONE commit with the two files; push;
-  report that head. Delete scratch `vfr3verdict1`, remove the worktree.
-- If the container restarted: reuse the worktree if it exists (see the task), start from "Next step".
+## VERDICT, round 3 pass 1 (of branch head db3ff5a6e) -- 10 Nov 2026, finished: GO for steps 0 to 2
+- This note was written just before the verdict commit. The verdict is the commit right after it: the last
+  commit that touched `HOST_SAFETY_AUDIT.md` and `RUNBOOK_MAC.md` (it holds those two files and nothing else).
+  If no commit after this note touched them, the verdict was NOT committed: redo the last step below.
+- **Verdict: GO for the scripted smoke test on the lead's Mac (runbook steps 0 to 2, "If a run was interrupted",
+  step 4 on the lead's word), from that ONE commit; the coordinator's message names its hash.** It replaces the
+  suspended round-2 GO (af767adb is not to be run). The one-model rollout stays NO-GO. Judged: code and commands
+  of db3ff5a6eacc6a4ccc66374df5ac3fc0051c75e3; sha256 of `PIN.sha256` cd67eb4b...03e4 (109 of 109 from a clean
+  archive; 91 files identical to the round-2 pin, 14 changed, 4 added).
+- What the verdict wrote: the first line of `HOST_SAFETY_AUDIT.md` (the fixer's suspension note went with it),
+  the section "Re-audit, round 3", and the notice between HOLD-BEGIN and HOLD-END of `RUNBOOK_MAC.md` (37 lines
+  longer than the hold notice; the rest of the runbook is byte for byte the judged text, 33 fenced commands
+  equal). No command changed.
+- Status of the Mac's findings: M1, M3, m1 to m6, m8 to m11, D1 closed; M2 closed by the notice (the one missing
+  row: Python kills verifiers' `docker rm --force <box>` client after 30 s); m7 as a rule, widened by the notice,
+  bearer deferred to before step 3. The six text items of the runbook re-audit are the notice's two rules and
+  four corrections. Its item 10 (PYTHONEXECUTABLE, __PYVENV_LAUNCHER__) is residual G1: not macOS-only, run
+  here; such a session fails step 1's import check (a stop); by hand for the lead.
+- Evidence of my own: read (vfrun.py, _nokey.py, vfeval.py, build_reference.py, the diff of the other pinned
+  files, the verifiers kill sites and credential readers, CPython 3.12.13 getpath and subprocess); run (pin;
+  the commands against the rehearsal record: 65 of 65 match, 26 of 33 blocks issued; PYTHONEXECUTABLE with a
+  one-line program); container (mine: allow-list, floor, one SIGTERM, nothing removed, 97 and 98); tripwire
+  (mine: 0 opens and 0 stats of a made-up credential file with the package first, the stock control opens it).
+  No rollout by me; nothing on macOS.
+- Left on the machine by this role: nothing (no container, no process). Scratch `vfr3verdict1` is deleted and
+  the worktree `wt-vfr3verdict1` removed after the push. The Docker daemon was running before and was not touched.
+- Next step (exact), for the coordinator: the GO message to the lead with the 40-character hash of the verdict
+  commit and the by-hand list of "Re-audit, round 3" (G1 in the starting terminal; 11 GiB free; nothing else in
+  Docker; the pilot folders after a stop). Later pass, not gating: the notice's six points into the runbook
+  body, G1 into step 0 and `ENV_REFUSE` (new pin), the minor items of the code re-audit; before step 3: the
+  lead's disk decision, the bearer, a rehearsal of the free dry run in the cloud container. Stale: `README.md`
+  lines 14 and 99-100 and `results/summary.json` still say ON HOLD.
 
 ## RE-AUDIT of the runbook, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, finished
 - Role: re-audit of `RUNBOOK_MAC.md` only, read as the Mac session reads it. The report went back to the coordinator
