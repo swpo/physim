@@ -1,0 +1,6 @@
+00:21:04 [job] plan vortex:3000:6250:6550, nproc 16, cert workers 13, sim budget 2400s, hard end +7260s, tiny 0
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+00:21:14 [job] === world vortex: deadlines sim +3000s train +6250s cert +6550s (plan 3000/6250/6550)
+00:52:33 [job] vortex certification finished; 228 halves certified, 0 left unclaimed
+00:53:08 [job] === world vortex done in 1914s, FAIL=0
+00:53:08 [job] OUT size 21M; elapsed 1924s; done, FAIL=0

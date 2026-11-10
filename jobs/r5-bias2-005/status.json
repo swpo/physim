@@ -23,10 +23,20 @@
     "src_bytes": 16286178
   },
   "cap_usd": 16.45,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 3.7523
+  "collected": {
+    "error": null,
+    "files": 745,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 15586916,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 3.6269,
+    "conservative_usd": 3.9976
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-10T00:54:07Z",
   "hard_deadline": "2026-11-10T02:45:27Z",
   "hard_deadline_epoch": 1794278727.7079751,
   "history": [
@@ -49,11 +59,21 @@
       "at": "2026-11-10T00:20:58Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-10T00:53:08Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-10T00:54:08Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "r5-bias2-005",
   "max_estimate_usd": null,
-  "message": "heartbeat",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu-h200-sxm_1gpu-16vcpu-200gb",
@@ -99,7 +119,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 3.6269,
       "created_at": "2026-11-10T00:18:23Z",
       "data_center": "us-central1",
       "gpu": "H200_141GB",
@@ -112,10 +132,11 @@
       "ready_at": "2026-11-10T00:20:43Z",
       "requested_at": "2026-11-10T00:17:55Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-10T00:53:46Z"
     }
   ],
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-10T00:09:12Z",
     "file": "jobs/r5-bias2-005/review.md",
@@ -124,7 +145,7 @@
   },
   "run_deadline": "2026-11-10T02:32:58Z",
   "started_at": "2026-11-10T00:20:58Z",
-  "state": "running",
+  "state": "done",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n00:21:04 [job] plan vortex:3000:6250:6550, nproc 16, cert workers 13, sim budget 2400s, hard end +7260s, tiny 0\nversions 3.12.16 <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\n00:21:14 [job] === world vortex: deadlines sim +3000s train +6250s cert +6550s (plan 3000/6250/6550)\n== out/progress.txt\n  1409.3s] L0_local_c2_s1__certB q=128 ok in 70.6s (certify 41.3s)\n00:49:01 [ccert 6  1412.7s] L0_local_c2_s0__certB q=128 ok in 89.3s (certify 60.3s)\n00:49:15 [ccert 2  1426.1s] L0_local_c2_s1__certA q=128 ok in 76.3s (certify 49.4s)\n00:49:21 [ccert 8  1432.6s] L0_local_c2_s0__certA q=128 ok in 90.4s (certify 56.1s)\n00:49:44 [ccert 5  1455.4s] L8_clos_c2_s1__certA q=128 ok in 69.5s (certify 44.1s)\n00:49:45 [ccert 9  1456.4s] L8_clos_c2_s1__certB q=128 ok in 71.8s (certify 46.8s)\n00:49:49 [ccert 13  1460.7s] L8_clos_c2_s0__certB q=128 ok in 75.1s (certify 50.0s)\n00:49:53 [ccert 4  1465.4s] L8_clos_c2_s0__certA q=128 ok in 79.1s (certify 51.1s)\n00:49:57 [ctrain  1468.3s] L8_local_c2: steps 3000, val [1.1172000169754028, 1.0967999696731567, 1.0923999547958374, 0.9093000292778015] -> [0.13779999315738678, 0.13819999992847443, 0.12520000338554382, 0.12530000507831573] (best at [3000, 3000, 2500, 3000]), train 59.0s (chunks {'first_incl_compile': 9.11643362045288, 'rest_mean': 3.968006589195945}), total 61.3s, 22.6 GB peak, 14.4 GB in use\n00:50:03 [ccert 12  1474.0s] L8_recon_c2_s0__certB q=128 ok in 66.5s (certify 40.8s)\n00:50:05 [ccert 7  1475.5s] L8_recon_c2_s0__certA q=128 ok in 67.5s (certify 42.7s)\n00:50:05 [ccert 3  1475.6s] L8_recon_c2_s1__certA q=128 ok in 67.2s (certify 41.6s)\n00:50:11 [ccert 10  1482.1s] L8_recon_c2_s1__certB q=128 ok in 74.2s (certify 47.5s)\n00:50:23 [ctrain  1494.2s] U_clos_c2: steps 3000, val [1.301300048828125, 1.2961000204086304, 1.2793999910354614, 1.2769999504089355] -> [0.7276999950408936, 0.7368000149726868, 0.7195000052452087, 0.7164999842643738] (best at [1000, 1500, 750, 1000]), train 23.2s (chunks {'first_incl_compile': 7.6534459590911865, 'rest_mean': 0.7950938831676136}), total 25.7s, 22.6 GB peak, 15.1 GB in use\n00:50:46 [ctrain  1517.2s] U_recon_c2: steps 3000, val [2.0297000408172607, 1.9769999980926514, 1.9989999532699585, 1.9710999727249146] -> [0.7089999914169312, 0.705299973487854, 0.7149999737739563, 0.7163000106811523] (best at [1000, 750, 750, 1000]), train 21.4s (chunks {'first_incl_compile': 7.945495367050171, 'rest_mean': 0.40992227467623626}), total 22.9s, 22.6 GB peak, 15.2 GB in use\n00:51:12 [ctrain  1542.8s] U_local_c2: steps 3000, val [1.2932000160217285, 1.2975000143051147, 1.280500054359436, 1.2891000509262085] -> [0.659500002861023, 0.651199996471405, 0.6564000248908997, 0.6449999809265137] (best at [500, 500, 750, 500]), train 23.2s (chunks {'first_incl_compile': 5.8990654945373535, 'rest_mean': 0.8664127479900013}), total 25.3s, 22.6 GB peak, 15.1 GB in use\n00:51:12 [ctrain  1543.0s] done; skipped []\n00:51:15 [ccert 13  1546.7s] L8_local_c2_s1__certA q=128 ok in 77.0s (certify 44.4s)\n00:51:16 [ccert 8  1546.9s] L8_local_c2_s1__certB q=128 ok in 78.3s (certify 43.8s)\n00:51:17 [ccert 9  1548.2s] L8_local_c2_s0__certA q=128 ok in 79.7s (certify 44.2s)\n00:51:20 [ccert 2  1550.5s] L8_local_c2_s0__certB q=128 ok in 82.4s (certify 43.8s)\n00:51:20 [ccert 2  1550.5s] worker exits after 15 items\n",
-  "updated_at": "2026-11-10T00:51:34Z"
+  "updated_at": "2026-11-10T00:54:08Z"
 }

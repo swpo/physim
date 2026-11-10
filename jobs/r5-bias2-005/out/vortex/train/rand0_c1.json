@@ -1,0 +1,210 @@
+[
+ {
+  "phi": "rand0_c1_s0",
+  "config": "rand0_c1",
+  "enc": "L",
+  "h": 0,
+  "obj": "rand",
+  "c": 1,
+  "seed": 0,
+  "fit": "A",
+  "cert": "B",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 1025,
+  "field_shares": [
+   {
+    "share": {
+     "om": 0.5117768391485898,
+     "Y": 0.19591380207064912,
+     "a": 0.20398413858946177,
+     "b": 0.08832522019130043,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "om": 0.7202891051047356,
+     "Y": 0.39700359100986965,
+     "a": 0.487584875673409,
+     "b": 0.20494758723973658,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "om": 0.7105158685888682,
+     "Y": 0.4934811838157369,
+     "a": 0.4183561647759007,
+     "b": 0.4309649183036362,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand0_c1_s1",
+  "config": "rand0_c1",
+  "enc": "L",
+  "h": 0,
+  "obj": "rand",
+  "c": 1,
+  "seed": 1,
+  "fit": "A",
+  "cert": "B",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 1025,
+  "field_shares": [
+   {
+    "share": {
+     "om": 0.20320899892693559,
+     "Y": 0.21871638410307964,
+     "a": 0.21297739697465454,
+     "b": 0.3650972199953229,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "om": 0.4606922416411717,
+     "Y": 0.35506459181096456,
+     "a": 0.3782593696343421,
+     "b": 0.5323199345823506,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "om": 0.44109490145313307,
+     "Y": 0.615990411737602,
+     "a": 0.563045925816819,
+     "b": 0.6858605065800742,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand0_c1_s0",
+  "config": "rand0_c1",
+  "enc": "L",
+  "h": 0,
+  "obj": "rand",
+  "c": 1,
+  "seed": 0,
+  "fit": "B",
+  "cert": "A",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 1025,
+  "field_shares": [
+   {
+    "share": {
+     "om": 0.170141725235895,
+     "Y": 0.20195535312322177,
+     "a": 0.18596405127218857,
+     "b": 0.4419388703687041,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "om": 0.4169940632617136,
+     "Y": 0.6501884518545096,
+     "a": 0.4689534724443196,
+     "b": 0.7351012480837132,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "om": 0.40801953846789113,
+     "Y": 0.3106104892315323,
+     "a": 0.39655117660797085,
+     "b": 0.6011945586009618,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand0_c1_s1",
+  "config": "rand0_c1",
+  "enc": "L",
+  "h": 0,
+  "obj": "rand",
+  "c": 1,
+  "seed": 1,
+  "fit": "B",
+  "cert": "A",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 1025,
+  "field_shares": [
+   {
+    "share": {
+     "om": 0.20498223140321073,
+     "Y": 0.46855881607649374,
+     "a": 0.09378526229502362,
+     "b": 0.23267369022527062,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "om": 0.4537089264663156,
+     "Y": 0.7770370714991108,
+     "a": 0.33044033012638147,
+     "b": 0.5605974676088129,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "om": 0.4517923704955563,
+     "Y": 0.6030070292174341,
+     "a": 0.2838190551956965,
+     "b": 0.4150459173811881,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ }
+]

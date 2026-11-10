@@ -1,0 +1,210 @@
+[
+ {
+  "phi": "rand8_c1_s0",
+  "config": "rand8_c1",
+  "enc": "L",
+  "h": 8,
+  "obj": "rand",
+  "c": 1,
+  "seed": 0,
+  "fit": "A",
+  "cert": "B",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 4097,
+  "field_shares": [
+   {
+    "share": {
+     "om": 0.1928664704269549,
+     "Y": 0.3682866493043236,
+     "a": 0.23650050914432816,
+     "b": 0.20234637112439408,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "om": 0.4318137206686049,
+     "Y": 0.5845764178592673,
+     "a": 0.4859313270478286,
+     "b": 0.4086376760733088,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "om": 0.4466427563448595,
+     "Y": 0.6300059975956576,
+     "a": 0.4866953332297718,
+     "b": 0.4951730664406323,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand8_c1_s1",
+  "config": "rand8_c1",
+  "enc": "L",
+  "h": 8,
+  "obj": "rand",
+  "c": 1,
+  "seed": 1,
+  "fit": "A",
+  "cert": "B",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 4097,
+  "field_shares": [
+   {
+    "share": {
+     "om": 0.27080521730426,
+     "Y": 0.16776929451783815,
+     "a": 0.33150102073300197,
+     "b": 0.22992446744489492,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "om": 0.5222831603863997,
+     "Y": 0.41110161113951404,
+     "a": 0.6002513489251676,
+     "b": 0.49490650830210864,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "om": 0.5185026779418099,
+     "Y": 0.40809690347066757,
+     "a": 0.5522703469581536,
+     "b": 0.46458162014014337,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand8_c1_s0",
+  "config": "rand8_c1",
+  "enc": "L",
+  "h": 8,
+  "obj": "rand",
+  "c": 1,
+  "seed": 0,
+  "fit": "B",
+  "cert": "A",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 4097,
+  "field_shares": [
+   {
+    "share": {
+     "om": 0.21653395290911898,
+     "Y": 0.36731400773786554,
+     "a": 0.197948489474982,
+     "b": 0.2182035498780312,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "om": 0.4653911872819847,
+     "Y": 0.5942318984642392,
+     "a": 0.4469987916093122,
+     "b": 0.4370629811748622,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "om": 0.46527299791329974,
+     "Y": 0.6181324306001901,
+     "a": 0.442838981202423,
+     "b": 0.49924967173262225,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ },
+ {
+  "phi": "rand8_c1_s1",
+  "config": "rand8_c1",
+  "enc": "L",
+  "h": 8,
+  "obj": "rand",
+  "c": 1,
+  "seed": 1,
+  "fit": "B",
+  "cert": "A",
+  "steps": 0,
+  "batch": 0,
+  "lr": 0.001,
+  "wd": 0.0,
+  "val_n": 0,
+  "whitening": "per-channel",
+  "val_init": null,
+  "val_best": null,
+  "best_step": 0,
+  "val_hist": [],
+  "min_rel_eig_latent_cov": 1.0,
+  "train_seconds_config": 0.0,
+  "chunk_seconds": null,
+  "n_val_traj": 8,
+  "n_train_traj": 56,
+  "n_params_enc": 4097,
+  "field_shares": [
+   {
+    "share": {
+     "om": 0.24369262444199025,
+     "Y": 0.3608899400254072,
+     "a": 0.13979813232683141,
+     "b": 0.2556193032057746,
+     "nonlinear": 0.0
+    },
+    "corr_with_z": {
+     "om": 0.49272960308672736,
+     "Y": 0.6218356169953028,
+     "a": 0.3576060835438515,
+     "b": 0.546229912784126,
+     "nonlinear": 0.0
+    },
+    "sd_part_over_sd_z": {
+     "om": 0.4945767879895313,
+     "Y": 0.5803622857262827,
+     "a": 0.39092772399574877,
+     "b": 0.46797016645039935,
+     "nonlinear": 0.0
+    }
+   }
+  ]
+ }
+]

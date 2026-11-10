@@ -1,0 +1,314 @@
+00:21:04 [job] plan vortex:3000:6250:6550, nproc 16, cert workers 13, sim budget 2400s, hard end +7260s, tiny 0
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+name, memory.total [MiB], driver_version
+NVIDIA H200, 143771 MiB, 550.163.01
+               total        used        free      shared  buff/cache   available
+Mem:             196           0         188           0           6         194
+/dev/vda1       1.5T   23G  1.4T   2% /
+00:21:14 [job] === world vortex: deadlines sim +3000s train +6250s cert +6550s (plan 3000/6250/6550)
+00:21:16 [csim     0.4s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} world vortex tiny False
+00:21:23 [csim     7.2s] A burn-in rate 389.4 member-ticks/s at B = 64; projected 184s for both halves at J = 64, budget 2098s -> J = 64 (184s)
+00:21:36 [csim    20.3s] A init + burn-in 64 members {'init': 1.4, 'burn': 17.9, 'base': 0.0, 'branch': 0.0}
+00:21:56 [csim    40.5s] A branches at tick 40 {'init': 1.4, 'burn': 17.9, 'base': 9.8, 'branch': 10.4}
+00:22:17 [csim    61.7s] A branches at tick 100 {'init': 1.4, 'burn': 17.9, 'base': 22.9, 'branch': 18.5}
+00:22:38 [csim    82.5s] A branches at tick 160 {'init': 1.4, 'burn': 17.9, 'base': 35.7, 'branch': 26.5}
+00:22:59 [csim   103.8s] A branches at tick 220 {'init': 1.4, 'burn': 17.9, 'base': 48.7, 'branch': 34.8}
+00:23:24 [csim   128.5s] A saved {'init': 1.4, 'burn': 17.9, 'base': 65.8, 'branch': 34.8} member-ticks/s {'burn_chunk2': 389.4, 'base': 291.7, 'branch': 294.1}
+00:23:41 [csim   145.1s] B init + burn-in 64 members {'init': 0.1, 'burn': 16.5, 'base': 0.0, 'branch': 0.0}
+00:23:57 [csim   161.7s] B branches at tick 40 {'init': 0.1, 'burn': 16.5, 'base': 8.6, 'branch': 8.0}
+00:24:19 [csim   183.2s] B branches at tick 100 {'init': 0.1, 'burn': 16.5, 'base': 22.0, 'branch': 16.1}
+00:24:40 [csim   204.0s] B branches at tick 160 {'init': 0.1, 'burn': 16.5, 'base': 34.8, 'branch': 24.1}
+00:25:01 [csim   225.2s] B branches at tick 220 {'init': 0.1, 'burn': 16.5, 'base': 47.8, 'branch': 32.4}
+00:25:25 [csim   249.8s] B saved {'init': 0.1, 'burn': 16.5, 'base': 64.8, 'branch': 32.4} member-ticks/s {'burn_chunk2': 389.4, 'base': 296.1, 'branch': 316.3}
+00:25:25 [csim   249.8s] done
+00:25:45 [ctrain    15.6s] data on device 2 x (64, 301, 4, 128, 128) 2 x (10240, 4, 128, 128) field mean/sd {'A': ([0.0008, 0.6267, 0.0617, 0.0684], [0.0589, 0.1592, 0.1518, 0.1649]), 'B': ([-0.0002, 0.6317, 0.0628, 0.0653], [0.0585, 0.1608, 0.1538, 0.1601])} 14.4 GB peak, 14.4 GB in use
+00:25:49 [ctrain    20.3s] hand designs queued: 92 files (46 designs x 2 halves) in 4.7s
+00:25:54 [ctrain    25.2s] rand0_c1: steps 0, untrained (no validation loss), train 0.0s (chunks None), total 4.9s, 19.2 GB peak, 14.4 GB in use
+00:26:02 [ctrain    33.0s] rand8_c1: steps 0, untrained (no validation loss), train 0.0s (chunks None), total 7.7s, 19.2 GB peak, 14.4 GB in use
+00:26:26 [ctrain    57.4s] N0_clos_c1: chunk 1 of 250 steps (+ val) in 15.5s
+00:26:30 [ctrain    61.2s] N0_clos_c1: chunk 2 of 250 steps (+ val) in 3.0s
+00:26:36 [ccert 3    67.0s] hand_om_h8__certA q=64 ok in 46.0s (certify 22.2s)
+00:26:37 [ccert 4    69.4s] hand_om_h0__certA q=64 ok in 45.4s (certify 23.0s)
+00:26:40 [ccert 11    71.3s] hand_b_h16__certA q=64 ok in 50.3s (certify 22.4s)
+00:26:41 [ccert 13    73.4s] hand_om_h4__certA q=64 ok in 49.4s (certify 19.3s)
+00:26:41 [ccert 6    72.6s] hand_dab_h4__certA q=64 ok in 51.6s (certify 22.7s)
+00:26:42 [ccert 8    72.8s] hand_om_h16__certA q=64 ok in 51.8s (certify 21.9s)
+00:26:42 [ccert 12    72.5s] hand_om_h0__certB q=64 ok in 51.5s (certify 21.2s)
+00:26:42 [ccert 5    73.1s] hand_dab_h16__certA q=64 ok in 52.1s (certify 21.8s)
+00:26:42 [ccert 10    73.5s] hand_kb_h8__certA q=64 ok in 52.5s (certify 23.1s)
+00:26:43 [ccert 7    74.3s] hand_kb_h4__certA q=64 ok in 53.3s (certify 23.3s)
+00:27:05 [ctrain    95.8s] N0_clos_c1: steps 3000, val [1.1449999809265137, 1.1368000507354736, 1.17739999294281, 1.1919000148773193] -> [0.16940000653266907, 0.17139999568462372, 0.1851000040769577, 0.14630000293254852] (best at [2500, 3000, 3000, 3000]), train 57.9s (chunks {'first_incl_compile': 15.45258378982544, 'rest_mean': 2.980758450248025}), total 62.7s, 19.2 GB peak, 14.4 GB in use
+00:27:10 [ccert 4   102.3s] hand_ens_h4__certA q=64 ok in 32.8s (certify 12.8s)
+00:27:20 [ccert 3   111.2s] hand_a_h16__certA q=64 ok in 44.2s (certify 17.2s)
+00:27:22 [ccert 11   113.2s] hand_Y_h0__certA q=64 ok in 41.8s (certify 15.6s)
+00:27:27 [ccert 10   118.3s] hand_lab_h0__certA q=64 ok in 44.8s (certify 15.6s)
+00:27:27 [ctrain   118.4s] N0_recon_c1: chunk 1 of 250 steps (+ val) in 11.1s
+00:27:29 [ctrain   120.2s] N0_recon_c1: chunk 2 of 250 steps (+ val) in 0.7s
+00:27:32 [ccert 7   122.6s] hand_Y_h4__certA q=64 ok in 48.3s (certify 22.2s)
+00:27:33 [ccert 8   123.8s] hand_Y_h16__certA q=64 ok in 51.0s (certify 22.0s)
+00:27:33 [ccert 9   124.1s] hand_sfa_c2__certA q=128 ok in 103.1s (certify 59.1s)
+00:27:34 [ccert 12   125.1s] hand_pca_c1__certA q=64 ok in 52.6s (certify 22.2s)
+00:27:35 [ccert 5   125.6s] hand_sfa_c1__certA q=64 ok in 52.6s (certify 22.0s)
+00:27:36 [ccert 6   127.2s] hand_ens_h0__certA q=64 ok in 54.5s (certify 21.8s)
+00:27:38 [ccert 2   128.9s] hand_absomY__certA q=128 ok in 107.9s (certify 70.1s)
+00:27:40 [ctrain   130.9s] N0_recon_c1: steps 3000, val [1.5699000358581543, 1.8834999799728394, 2.0169999599456787, 2.587100028991699] -> [0.715399980545044, 0.7211999893188477, 0.7506999969482422, 0.7160999774932861] (best at [3000, 3000, 3000, 3000]), train 31.4s (chunks {'first_incl_compile': 11.053951025009155, 'rest_mean': 0.7125057523900812}), total 34.8s, 19.2 GB peak, 14.4 GB in use
+00:27:40 [ccert 1   131.3s] hand_ab__certA q=128 ok in 110.3s (certify 69.8s)
+00:28:01 [ccert 11   152.0s] hand_absom_h4__certA q=64 ok in 38.9s (certify 15.1s)
+00:28:05 [ccert 4   156.7s] hand_absom_h0__certA q=64 ok in 54.4s (certify 24.0s)
+00:28:06 [ctrain   157.1s] N0_local_c1: chunk 1 of 250 steps (+ val) in 15.6s
+00:28:10 [ctrain   161.2s] N0_local_c1: chunk 2 of 250 steps (+ val) in 3.1s
+00:28:10 [ccert 3   161.1s] hand_absom_h16__certA q=64 ok in 49.9s (certify 22.8s)
+00:28:12 [ccert 10   163.2s] hand_Y_h8__certA q=64 ok in 44.9s (certify 20.3s)
+00:28:17 [ccert 9   168.3s] hand_a_h4__certA q=64 ok in 44.2s (certify 15.3s)
+00:28:19 [ccert 12   169.7s] hand_om_h4__certB q=64 ok in 44.6s (certify 23.1s)
+00:28:21 [ccert 5   172.1s] hand_a_h8__certA q=64 ok in 46.4s (certify 23.8s)
+00:28:22 [ccert 8   173.4s] hand_kb_h0__certA q=64 ok in 49.6s (certify 20.7s)
+00:28:24 [ccert 1   174.5s] hand_lab_h8__certA q=64 ok in 43.3s (certify 16.4s)
+00:28:26 [ccert 2   177.0s] hand_lab_h16__certA q=64 ok in 48.0s (certify 22.8s)
+00:28:30 [ccert 13   182.0s] hand_sfax_c2__certA q=128 ok in 108.6s (certify 66.0s)
+00:28:45 [ctrain   195.7s] N0_local_c1: steps 3000, val [1.0978000164031982, 1.1023999452590942, 1.2029999494552612, 1.1287000179290771] -> [0.1859000027179718, 0.1639000028371811, 0.15360000729560852, 0.15600000321865082] (best at [3000, 3000, 3000, 3000]), train 60.8s (chunks {'first_incl_compile': 15.624115705490112, 'rest_mean': 3.0665562586350874}), total 64.5s, 19.2 GB peak, 14.4 GB in use
+00:28:47 [ccert 11   198.6s] hand_dab_h0__certA q=64 ok in 46.6s (certify 20.0s)
+00:28:50 [ccert 10   201.1s] hand_b_h0__certA q=64 ok in 37.9s (certify 15.5s)
+00:28:52 [ccert 12   202.7s] hand_sfax_c1__certA q=64 ok in 33.0s (certify 13.0s)
+00:28:55 [ccert 4   207.0s] hand_lab_h4__certA q=64 ok in 50.3s (certify 22.2s)
+00:28:58 [ccert 3   209.1s] hand_b_h4__certA q=64 ok in 47.9s (certify 21.1s)
+00:29:05 [ccert 9   216.2s] hand_kb_h16__certA q=64 ok in 47.9s (certify 19.3s)
+00:29:10 [ccert 5   220.7s] hand_ens_h8__certA q=64 ok in 48.6s (certify 19.7s)
+00:29:12 [ccert 7   223.1s] hand_kinds__certA q=128 ok in 100.5s (certify 59.4s)
+00:29:15 [ccert 8   226.6s] hand_absom_h8__certA q=64 ok in 53.2s (certify 21.6s)
+00:29:16 [ccert 1   227.4s] hand_dab_h8__certA q=64 ok in 52.9s (certify 22.0s)
+00:29:17 [ccert 2   228.4s] hand_ens_h16__certA q=64 ok in 51.5s (certify 22.4s)
+00:29:18 [ctrain   228.9s] N8_clos_c1: chunk 1 of 250 steps (+ val) in 20.6s
+00:29:28 [ctrain   239.5s] N8_clos_c1: chunk 2 of 250 steps (+ val) in 9.6s
+00:29:36 [ccert 11   247.3s] hand_b_h8__certA q=64 ok in 48.7s (certify 22.0s)
+00:29:37 [ccert 12   248.1s] hand_dab_h16__certB q=64 ok in 45.4s (certify 21.2s)
+00:29:41 [ccert 10   252.6s] hand_a_h0__certA q=64 ok in 51.5s (certify 24.4s)
+00:29:49 [ccert 4   260.8s] hand_dab_h0__certB q=64 ok in 53.7s (certify 22.6s)
+00:29:51 [ccert 2   262.4s] hand_b_h16__certB q=64 ok in 34.0s (certify 16.6s)
+00:29:56 [ccert 9   266.5s] hand_absom_h8__certB q=64 ok in 50.2s (certify 21.8s)
+00:29:59 [ccert 7   269.8s] hand_a_h4__certB q=64 ok in 46.7s (certify 15.0s)
+00:30:05 [ccert 8   276.0s] hand_dab_h8__certB q=64 ok in 49.4s (certify 22.1s)
+00:30:05 [ccert 1   276.2s] hand_kb_h8__certB q=64 ok in 48.8s (certify 22.3s)
+00:30:20 [ccert 5   290.5s] hand_kinds__certB q=128 ok in 69.8s (certify 43.4s)
+00:30:26 [ccert 11   296.9s] hand_Y_h8__certB q=64 ok in 49.5s (certify 22.2s)
+00:30:26 [ccert 12   297.2s] hand_kb_h4__certB q=64 ok in 49.1s (certify 20.1s)
+00:30:31 [ccert 10   302.1s] hand_kb_h0__certB q=64 ok in 49.5s (certify 21.6s)
+00:30:37 [ccert 4   308.9s] hand_sfa_c1__certB q=64 ok in 48.2s (certify 22.0s)
+00:30:44 [ccert 9   314.9s] hand_lab_h4__certB q=64 ok in 48.4s (certify 19.9s)
+00:30:55 [ccert 8   325.9s] hand_a_h8__certB q=64 ok in 49.9s (certify 22.8s)
+00:30:55 [ccert 1   326.0s] hand_Y_h0__certB q=64 ok in 49.8s (certify 23.0s)
+00:31:05 [ccert 5   336.2s] hand_lab_h8__certB q=64 ok in 45.7s (certify 16.2s)
+00:31:09 [ccert 4   341.0s] hand_ens_h16__certB q=64 ok in 32.1s (certify 13.0s)
+00:31:13 [ctrain   344.2s] N8_clos_c1: steps 3000, val [1.1038999557495117, 1.0851000547409058, 1.0406999588012695, 1.162500023841858] -> [0.11649999767541885, 0.09719999879598618, 0.08340000361204147, 0.08760000020265579] (best at [3000, 3000, 3000, 2750]), train 139.5s (chunks {'first_incl_compile': 20.57672095298767, 'rest_mean': 9.597871043465354}), total 148.1s, 22.6 GB peak, 14.4 GB in use
+00:31:20 [ccert 11   351.0s] hand_absom_h16__certB q=64 ok in 54.1s (certify 22.6s)
+00:31:36 [ccert 9   367.0s] hand_absom_h4__certB q=64 ok in 52.1s (certify 19.9s)
+00:31:42 [ccert 6   372.9s] hand_pooled__certA q=256 ok in 245.7s (certify 183.8s)
+00:31:44 [ccert 8   375.2s] hand_lab_h16__certB q=64 ok in 49.3s (certify 21.6s)
+00:31:46 [ccert 1   377.2s] hand_b_h0__certB q=64 ok in 51.2s (certify 20.9s)
+00:31:52 [ccert 7   383.2s] hand_ab__certB q=128 ok in 113.5s (certify 71.2s)
+00:31:53 [ccert 4   385.0s] hand_Y_h4__certB q=64 ok in 44.0s (certify 20.7s)
+00:31:56 [ccert 5   386.7s] hand_b_h8__certB q=64 ok in 50.5s (certify 26.6s)
+00:31:58 [ccert 11   389.7s] hand_ens_h4__certB q=64 ok in 38.7s (certify 21.1s)
+00:32:08 [ctrain   398.7s] N8_recon_c1: steps 3000, val [2.1326000690460205, 2.0882999897003174, 2.152400016784668, 1.792199969291687] -> [0.7085000276565552, 0.7077999711036682, 0.7089999914169312, 0.7035999894142151] (best at [3000, 3000, 3000, 3000]), train 48.7s (chunks {'first_incl_compile': 11.249603986740112, 'rest_mean': 1.9147773872722278}), total 54.2s, 22.6 GB peak, 14.4 GB in use
+00:32:12 [ccert 12   402.7s] hand_sfax_c2__certB q=128 ok in 105.6s (certify 70.6s)
+00:32:23 [ccert 10   414.7s] hand_sfa_c2__certB q=128 ok in 112.6s (certify 65.6s)
+00:32:24 [ccert 9   415.5s] hand_dab_h4__certB q=64 ok in 48.5s (certify 19.7s)
+00:32:30 [ccert 6   421.3s] hand_Y_h16__certB q=64 ok in 48.4s (certify 22.0s)
+00:32:34 [ccert 8   425.3s] hand_om_h16__certB q=64 ok in 50.1s (certify 22.5s)
+00:32:34 [ccert 5   425.4s] hand_om_h8__certB q=64 ok in 38.7s (certify 17.1s)
+00:32:40 [ccert 4   432.1s] hand_sfax_c1__certB q=64 ok in 47.1s (certify 19.7s)
+00:32:40 [ccert 1   431.4s] hand_ens_h8__certB q=64 ok in 54.2s (certify 24.8s)
+00:32:47 [ccert 11   438.4s] hand_a_h0__certB q=64 ok in 48.8s (certify 19.2s)
+00:32:57 [ccert 10   448.2s] hand_absom_h0__certB q=64 ok in 33.5s (certify 15.6s)
+00:33:02 [ccert 12   452.5s] hand_ens_h0__certB q=64 ok in 49.8s (certify 19.8s)
+00:33:12 [ccert 4   463.9s] hand_lab_h0__certB q=64 ok in 31.8s (certify 13.5s)
+00:33:15 [ccert 7   465.9s] hand_absomY__certB q=128 ok in 82.6s (certify 50.3s)
+00:33:17 [ccert 9   467.6s] hand_a_h16__certB q=64 ok in 52.1s (certify 22.2s)
+00:33:19 [ccert 6   469.8s] hand_pca_c1__certB q=64 ok in 48.6s (certify 19.1s)
+00:33:25 [ccert 5   475.7s] hand_b_h4__certB q=64 ok in 50.3s (certify 21.5s)
+00:33:28 [ccert 10   479.7s] rand0_c1_s0__certA q=64 ok in 31.5s (certify 13.5s)
+00:33:29 [ccert 8   480.0s] hand_kb_h16__certB q=64 ok in 54.7s (certify 23.8s)
+00:33:30 [ccert 1   481.4s] rand0_c1_s0__certB q=64 ok in 50.0s (certify 20.5s)
+00:33:34 [ccert 13   486.1s] hand_fields__certA q=256 ok in 304.1s (certify 233.5s)
+00:33:35 [ccert 11   486.5s] rand0_c1_s1__certB q=64 ok in 48.1s (certify 21.4s)
+00:33:45 [ccert 4   496.9s] rand8_c1_s0__certB q=64 ok in 32.9s (certify 14.0s)
+00:33:51 [ccert 12   501.7s] rand0_c1_s1__certA q=64 ok in 49.2s (certify 19.5s)
+00:33:52 [ccert 7   502.7s] rand8_c1_s1__certB q=64 ok in 36.8s (certify 15.5s)
+00:33:54 [ccert 3   504.9s] hand_pooled__certB q=256 ok in 295.8s (certify 228.5s)
+00:33:58 [ccert 5   509.2s] N0_clos_c1_s0__certB q=64 ok in 33.5s (certify 15.6s)
+00:34:08 [ccert 9   519.3s] rand8_c1_s0__certA q=64 ok in 51.7s (certify 22.7s)
+00:34:08 [ccert 6   519.6s] rand8_c1_s1__certA q=64 ok in 49.7s (certify 19.7s)
+00:34:17 [ccert 4   528.5s] N0_recon_c1_s0__certA q=64 ok in 31.7s (certify 13.5s)
+00:34:18 [ccert 2   528.8s] hand_fields__certB q=256 ok in 266.4s (certify 198.0s)
+00:34:19 [ccert 10   530.1s] N0_clos_c1_s1__certB q=64 ok in 50.4s (certify 22.4s)
+00:34:20 [ccert 8   531.1s] N0_clos_c1_s0__certA q=64 ok in 51.1s (certify 21.7s)
+00:34:20 [ccert 1   530.9s] N0_clos_c1_s1__certA q=64 ok in 49.5s (certify 20.2s)
+00:34:24 [ccert 13   536.4s] N0_recon_c1_s0__certB q=64 ok in 50.2s (certify 20.6s)
+00:34:26 [ccert 11   536.8s] N0_recon_c1_s1__certB q=64 ok in 50.3s (certify 22.2s)
+00:34:27 [ccert 7   538.4s] N0_local_c1_s0__certB q=64 ok in 35.7s (certify 15.8s)
+00:34:30 [ctrain   540.8s] N8_local_c1: steps 3000, val [1.1205999851226807, 1.0637999773025513, 1.1358000040054321, 0.9645000100135803] -> [0.07900000363588333, 0.08209999650716782, 0.06509999930858612, 0.06689999997615814] (best at [3000, 2750, 3000, 3000]), train 135.7s (chunks {'first_incl_compile': 21.886515617370605, 'rest_mean': 9.660101175308228}), total 141.8s, 22.6 GB peak, 14.4 GB in use
+00:34:32 [ccert 5   543.4s] N0_local_c1_s0__certA q=64 ok in 34.2s (certify 13.2s)
+00:34:40 [ccert 12   550.7s] N0_recon_c1_s1__certA q=64 ok in 48.9s (certify 19.4s)
+00:34:44 [ccert 3   555.0s] N0_local_c1_s1__certB q=64 ok in 50.1s (certify 21.1s)
+00:34:50 [ctrain   561.0s] L0_clos_c1: steps 3000, val [1.066499948501587, 1.0614999532699585, 0.9817000031471252, 1.0638999938964844] -> [0.2881999909877777, 0.2870999872684479, 0.2563999891281128, 0.2574000060558319] (best at [3000, 3000, 2750, 2750]), train 17.8s (chunks {'first_incl_compile': 5.649397611618042, 'rest_mean': 0.725128477269953}), total 19.8s, 22.6 GB peak, 14.4 GB in use
+00:34:54 [ccert 6   565.7s] N8_clos_c1_s0__certB q=64 ok in 46.1s (certify 19.9s)
+00:34:57 [ccert 4   568.6s] N8_clos_c1_s1__certB q=64 ok in 40.1s (certify 14.9s)
+00:34:58 [ccert 1   568.5s] N8_recon_c1_s1__certB q=64 ok in 37.6s (certify 17.2s)
+00:34:58 [ccert 9   568.9s] N0_local_c1_s1__certA q=64 ok in 49.6s (certify 21.1s)
+00:35:02 [ctrain   573.2s] L0_recon_c1: steps 3000, val [1.6820000410079956, 1.9139000177383423, 2.215399980545044, 1.7177000045776367] -> [0.8995000123977661, 0.9441999793052673, 0.9154000282287598, 0.8865000009536743] (best at [3000, 3000, 3000, 3000]), train 10.0s (chunks {'first_incl_compile': 3.467939853668213, 'rest_mean': 0.2355785369873047}), total 12.1s, 22.6 GB peak, 14.4 GB in use
+00:35:03 [ccert 11   574.4s] N8_recon_c1_s1__certA q=64 ok in 37.6s (certify 14.7s)
+00:35:04 [ccert 10   575.7s] N8_clos_c1_s1__certA q=64 ok in 45.6s (certify 20.8s)
+00:35:06 [ccert 2   576.7s] N8_clos_c1_s0__certA q=64 ok in 47.9s (certify 22.7s)
+00:35:08 [ccert 8   579.4s] N8_recon_c1_s0__certB q=64 ok in 48.3s (certify 22.8s)
+00:35:13 [ccert 13   585.1s] N8_recon_c1_s0__certA q=64 ok in 48.7s (certify 20.4s)
+00:35:15 [ccert 5   586.1s] N8_local_c1_s1__certB q=64 ok in 42.7s (certify 14.1s)
+00:35:21 [ccert 7   591.7s] N8_local_c1_s0__certB q=64 ok in 50.3s (certify 21.2s)
+00:35:28 [ccert 3   598.9s] N8_local_c1_s1__certA q=64 ok in 43.9s (certify 18.6s)
+00:35:28 [ccert 12   599.3s] N8_local_c1_s0__certA q=64 ok in 48.6s (certify 20.6s)
+00:35:29 [ctrain   600.5s] L0_local_c1: steps 3000, val [1.2180999517440796, 1.1612999439239502, 1.200700044631958, 0.9934999942779541] -> [0.250900000333786, 0.25220000743865967, 0.22679999470710754, 0.2280000001192093] (best at [3000, 2750, 2750, 2750]), train 25.3s (chunks {'first_incl_compile': 10.214879989624023, 'rest_mean': 0.8074036944996227}), total 27.1s, 22.6 GB peak, 14.4 GB in use
+00:35:34 [ccert 6   604.9s] L0_clos_c1_s0__certB q=64 ok in 39.2s (certify 20.0s)
+00:35:35 [ccert 4   606.6s] L0_clos_c1_s1__certB q=64 ok in 38.0s (certify 19.0s)
+00:35:39 [ccert 1   609.7s] L0_clos_c1_s0__certA q=64 ok in 41.2s (certify 19.9s)
+00:35:40 [ccert 10   611.7s] L0_recon_c1_s1__certB q=64 ok in 35.9s (certify 16.7s)
+00:35:42 [ccert 9   612.5s] L0_clos_c1_s1__certA q=64 ok in 43.6s (certify 20.7s)
+00:35:42 [ccert 11   613.7s] L0_recon_c1_s0__certB q=64 ok in 39.3s (certify 17.9s)
+00:35:44 [ccert 8   615.3s] L0_recon_c1_s1__certA q=64 ok in 35.9s (certify 16.2s)
+00:35:48 [ccert 2   619.3s] L0_recon_c1_s0__certA q=64 ok in 42.6s (certify 20.6s)
+00:36:01 [ccert 7   632.0s] L0_local_c1_s0__certB q=64 ok in 31.3s (certify 15.1s)
+00:36:01 [ccert 5   632.2s] L0_local_c1_s1__certB q=64 ok in 31.1s (certify 14.9s)
+00:36:02 [ccert 3   633.3s] L0_local_c1_s0__certA q=64 ok in 31.5s (certify 16.1s)
+00:36:03 [ccert 13   634.5s] L0_local_c1_s1__certA q=64 ok in 31.5s (certify 15.5s)
+00:36:23 [ctrain   654.0s] L8_clos_c1: steps 3000, val [1.1327999830245972, 1.041200041770935, 1.0676000118255615, 1.1059000492095947] -> [0.16410000622272491, 0.16009999811649323, 0.1451999992132187, 0.14569999277591705] (best at [3000, 3000, 3000, 3000]), train 51.6s (chunks {'first_incl_compile': 7.161741733551025, 'rest_mean': 3.744779435071078}), total 53.3s, 22.6 GB peak, 14.4 GB in use
+00:36:37 [ctrain   668.1s] L8_recon_c1: steps 3000, val [1.7625000476837158, 2.4800000190734863, 1.9329999685287476, 1.7630000114440918] -> [0.8787000179290771, 0.97079998254776, 0.8912000060081482, 0.8828999996185303] (best at [3000, 3000, 3000, 3000]), train 12.4s (chunks {'first_incl_compile': 2.432325601577759, 'rest_mean': 0.6426700028506193}), total 14.0s, 22.6 GB peak, 14.4 GB in use
+00:36:52 [ccert 10   683.5s] L8_clos_c1_s0__certB q=64 ok in 29.8s (certify 12.2s)
+00:36:52 [ccert 3   683.3s] L8_clos_c1_s1__certA q=64 ok in 28.9s (certify 12.2s)
+00:36:54 [ccert 4   686.1s] L8_clos_c1_s1__certB q=64 ok in 31.4s (certify 12.4s)
+00:36:55 [ccert 8   686.2s] L8_clos_c1_s0__certA q=64 ok in 31.9s (certify 12.5s)
+00:37:06 [ccert 6   697.2s] L8_recon_c1_s0__certB q=64 ok in 29.3s (certify 13.1s)
+00:37:07 [ccert 12   697.8s] L8_recon_c1_s1__certA q=64 ok in 29.5s (certify 13.4s)
+00:37:07 [ccert 7   697.8s] L8_recon_c1_s1__certB q=64 ok in 29.7s (certify 13.4s)
+00:37:07 [ccert 5   698.1s] L8_recon_c1_s0__certA q=64 ok in 29.9s (certify 13.6s)
+00:37:37 [ctrain   728.2s] L8_local_c1: steps 3000, val [0.9472000002861023, 1.1323000192642212, 1.031000018119812, 1.0963000059127808] -> [0.14180000126361847, 0.14180000126361847, 0.12129999697208405, 0.12250000238418579] (best at [3000, 3000, 2750, 3000]), train 58.3s (chunks {'first_incl_compile': 10.460529088973999, 'rest_mean': 3.8179433345794678}), total 60.0s, 22.6 GB peak, 14.4 GB in use
+00:37:55 [ctrain   746.5s] U_clos_c1: steps 3000, val [1.204200029373169, 1.2065000534057617, 1.1971999406814575, 1.1854000091552734] -> [0.6301000118255615, 0.6269000172615051, 0.6026999950408936, 0.6129999756813049] (best at [500, 500, 500, 500]), train 15.8s (chunks {'first_incl_compile': 5.364115238189697, 'rest_mean': 0.5853161811828613}), total 18.1s, 22.6 GB peak, 14.8 GB in use
+00:38:08 [ccert 12   758.8s] L8_local_c1_s0__certB q=64 ok in 31.1s (certify 13.3s)
+00:38:08 [ccert 5   759.4s] L8_local_c1_s0__certA q=64 ok in 31.3s (certify 12.9s)
+00:38:09 [ccert 8   760.2s] L8_local_c1_s1__certB q=64 ok in 32.0s (certify 13.4s)
+00:38:09 [ccert 10   760.2s] L8_local_c1_s1__certA q=64 ok in 31.7s (certify 13.2s)
+00:38:12 [ctrain   763.4s] U_recon_c1: steps 3000, val [2.0048999786376953, 2.039599895477295, 2.08240008354187, 2.0044000148773193] -> [0.8321999907493591, 0.8317000269889832, 0.8373000025749207, 0.8370000123977661] (best at [1000, 1000, 1500, 1000]), train 15.7s (chunks {'first_incl_compile': 5.3493616580963135, 'rest_mean': 0.29643399065191095}), total 16.8s, 22.6 GB peak, 14.9 GB in use
+00:38:27 [ccert 3   778.3s] U_clos_c1_s0__certB q=64 ok in 32.0s (certify 14.0s)
+00:38:28 [ccert 9   779.2s] U_clos_c1_s0__certA q=64 ok in 31.6s (certify 14.1s)
+00:38:28 [ccert 13   780.5s] U_clos_c1_s1__certB q=64 ok in 31.9s (certify 14.1s)
+00:38:29 [ccert 1   780.0s] U_clos_c1_s1__certA q=64 ok in 32.3s (certify 13.6s)
+00:38:31 [ctrain   781.7s] U_local_c1: steps 3000, val [1.2173000574111938, 1.204800009727478, 1.2031999826431274, 1.187000036239624] -> [0.5638999938964844, 0.5684999823570251, 0.552299976348877, 0.5511999726295471] (best at [250, 250, 250, 250]), train 16.9s (chunks {'first_incl_compile': 4.4100446701049805, 'rest_mean': 0.6475238800048828}), total 18.2s, 22.6 GB peak, 14.9 GB in use
+00:38:43 [ccert 11   794.2s] U_recon_c1_s1__certB q=64 ok in 30.6s (certify 13.3s)
+00:38:43 [ccert 7   794.1s] U_recon_c1_s0__certA q=64 ok in 30.3s (certify 13.2s)
+00:38:43 [ccert 2   794.3s] U_recon_c1_s0__certB q=64 ok in 31.0s (certify 13.2s)
+00:38:44 [ctrain   795.4s] Uc_clos_c1: steps 3000, val [1.0901999473571777, 1.0942000150680542, 1.0586999654769897, 1.069700002670288] -> [0.010300000198185444, 0.011300000362098217, 0.011599999852478504, 0.01119999960064888] (best at [1500, 1750, 1750, 1000]), train 12.2s (chunks {'first_incl_compile': 3.702967882156372, 'rest_mean': 0.530878868970004}), total 13.6s, 22.6 GB peak, 14.8 GB in use
+00:38:45 [ccert 12   795.5s] U_recon_c1_s1__certA q=64 ok in 30.7s (certify 13.6s)
+00:39:02 [ccert 9   813.0s] U_local_c1_s0__certB q=64 ok in 30.9s (certify 13.4s)
+00:39:03 [ccert 13   814.8s] U_local_c1_s1__certB q=64 ok in 31.3s (certify 13.4s)
+00:39:04 [ccert 1   814.8s] U_local_c1_s0__certA q=64 ok in 31.8s (certify 12.9s)
+00:39:04 [ccert 5   814.9s] U_local_c1_s1__certA q=64 ok in 31.5s (certify 13.9s)
+00:39:07 [ctrain   818.2s] Uc_local_c1: steps 3000, val [1.0901000499725342, 1.089900016784668, 1.083299994468689, 1.0751999616622925] -> [0.009200000204145908, 0.009399999864399433, 0.01140000019222498, 0.011300000362098217] (best at [1250, 500, 250, 250]), train 21.4s (chunks {'first_incl_compile': 8.791777610778809, 'rest_mean': 0.6100749319249933}), total 22.7s, 22.6 GB peak, 14.9 GB in use
+00:39:16 [ccert 12   827.1s] Uc_clos_c1_s0__certB q=64 ok in 31.6s (certify 13.3s)
+00:39:17 [ccert 8   827.9s] Uc_clos_c1_s1__certB q=64 ok in 31.7s (certify 13.4s)
+00:39:17 [ccert 10   828.3s] Uc_clos_c1_s1__certA q=64 ok in 32.0s (certify 13.7s)
+00:39:17 [ccert 6   828.4s] Uc_clos_c1_s0__certA q=64 ok in 32.2s (certify 13.9s)
+00:39:38 [ccert 5   848.6s] Uc_local_c1_s0__certB q=64 ok in 30.7s (certify 14.8s)
+00:39:38 [ccert 11   848.9s] Uc_local_c1_s1__certB q=64 ok in 30.6s (certify 14.6s)
+00:39:38 [ccert 7   848.8s] Uc_local_c1_s0__certA q=64 ok in 30.7s (certify 14.9s)
+00:39:39 [ccert 2   849.5s] Uc_local_c1_s1__certA q=64 ok in 31.2s (certify 15.2s)
+00:40:03 [ctrain   873.9s] N0_clos_c2: steps 3000, val [1.093999981880188, 1.1017999649047852, 1.0672999620437622, 1.1545000076293945] -> [0.22310000658035278, 0.2484000027179718, 0.23199999332427979, 0.22349999845027924] (best at [3000, 3000, 3000, 3000]), train 52.4s (chunks {'first_incl_compile': 8.948948383331299, 'rest_mean': 3.1184038682417436}), total 55.6s, 22.6 GB peak, 14.4 GB in use
+00:40:25 [ctrain   896.5s] N0_recon_c2: steps 3000, val [2.0037999153137207, 2.105600118637085, 1.8911000490188599, 2.27239990234375] -> [0.5462999939918518, 0.5185999870300293, 0.5152000188827515, 0.5169000029563904] (best at [3000, 3000, 3000, 3000]), train 20.3s (chunks {'first_incl_compile': 6.210588455200195, 'rest_mean': 0.7438508597287264}), total 22.4s, 22.6 GB peak, 14.4 GB in use
+00:41:07 [ccert 2   938.4s] N0_clos_c2_s0__certA q=128 ok in 64.8s (certify 41.5s)
+00:41:08 [ccert 6   939.3s] N0_clos_c2_s1__certB q=128 ok in 65.9s (certify 41.0s)
+00:41:08 [ccert 7   939.5s] N0_clos_c2_s0__certB q=128 ok in 66.6s (certify 42.2s)
+00:41:10 [ccert 4   941.7s] N0_clos_c2_s1__certA q=128 ok in 66.5s (certify 41.4s)
+00:41:25 [ctrain   955.8s] N0_local_c2: steps 3000, val [1.1790000200271606, 1.1074999570846558, 1.1689000129699707, 1.1885000467300415] -> [0.19220000505447388, 0.1940000057220459, 0.1657000035047531, 0.1834000051021576] (best at [3000, 3000, 3000, 3000]), train 56.5s (chunks {'first_incl_compile': 10.235934972763062, 'rest_mean': 3.1907189109108667}), total 59.1s, 22.6 GB peak, 14.4 GB in use
+00:41:28 [ccert 1   959.5s] N0_recon_c2_s0__certB q=128 ok in 63.7s (certify 41.3s)
+00:41:30 [ccert 11   961.7s] N0_recon_c2_s1__certA q=128 ok in 64.8s (certify 40.6s)
+00:41:32 [ccert 5   962.7s] N0_recon_c2_s0__certA q=128 ok in 66.1s (certify 41.6s)
+00:41:34 [ccert 12   964.5s] N0_recon_c2_s1__certB q=128 ok in 68.4s (certify 44.1s)
+00:42:26 [ccert 3  1016.7s] N0_local_c2_s1__certB q=128 ok in 61.4s (certify 38.3s)
+00:42:26 [ccert 13  1017.9s] N0_local_c2_s0__certB q=128 ok in 62.0s (certify 38.7s)
+00:42:27 [ccert 2  1018.4s] N0_local_c2_s1__certA q=128 ok in 62.0s (certify 38.7s)
+00:42:28 [ccert 4  1019.7s] N0_local_c2_s0__certA q=128 ok in 63.0s (certify 39.4s)
+00:43:39 [ctrain  1089.9s] N8_clos_c2: steps 3000, val [1.1416000127792358, 1.1460000276565552, 1.0981999635696411, 1.1208000183105469] -> [0.12250000238418579, 0.11349999904632568, 0.09960000216960907, 0.10260000079870224] (best at [3000, 2750, 2750, 3000]), train 129.1s (chunks {'first_incl_compile': 14.593680620193481, 'rest_mean': 9.725900238210505}), total 133.9s, 22.6 GB peak, 14.4 GB in use
+00:44:20 [ctrain  1130.6s] N8_recon_c2: steps 3000, val [1.811900019645691, 2.0618999004364014, 1.8499000072479248, 1.9325000047683716] -> [0.5220000147819519, 0.521399974822998, 0.5231999754905701, 0.516700029373169] (best at [3000, 3000, 3000, 3000]), train 37.1s (chunks {'first_incl_compile': 6.831708192825317, 'rest_mean': 2.139513926072554}), total 40.6s, 22.6 GB peak, 14.4 GB in use
+00:44:41 [ccert 1  1151.5s] N8_clos_c2_s0__certB q=128 ok in 63.1s (certify 38.5s)
+00:44:43 [ccert 7  1154.5s] N8_clos_c2_s0__certA q=128 ok in 65.0s (certify 38.5s)
+00:44:45 [ccert 13  1156.5s] N8_clos_c2_s1__certB q=128 ok in 66.7s (certify 38.3s)
+00:44:45 [ccert 2  1155.8s] N8_clos_c2_s1__certA q=128 ok in 65.4s (certify 38.8s)
+00:45:22 [ccert 4  1193.9s] N8_recon_c2_s0__certB q=128 ok in 63.2s (certify 39.6s)
+00:45:23 [ccert 3  1193.5s] N8_recon_c2_s1__certA q=128 ok in 62.8s (certify 39.4s)
+00:45:23 [ccert 8  1194.7s] N8_recon_c2_s1__certB q=128 ok in 63.7s (certify 40.0s)
+00:45:24 [ccert 5  1195.2s] N8_recon_c2_s0__certA q=128 ok in 64.5s (certify 41.2s)
+00:46:37 [ctrain  1267.8s] N8_local_c2: steps 3000, val [1.0931999683380127, 1.1885000467300415, 0.9240999817848206, 1.1325000524520874] -> [0.09440000355243683, 0.093299999833107, 0.0835999995470047, 0.08340000361204147] (best at [3000, 3000, 3000, 3000]), train 133.2s (chunks {'first_incl_compile': 16.052780628204346, 'rest_mean': 9.772823702205311}), total 137.0s, 22.6 GB peak, 14.4 GB in use
+00:46:53 [ctrain  1284.5s] L0_clos_c2: steps 3000, val [1.1698999404907227, 1.0942000150680542, 1.1374000310897827, 1.1581000089645386] -> [0.3018999993801117, 0.3018999993801117, 0.27790001034736633, 0.27730000019073486] (best at [3000, 3000, 3000, 3000]), train 15.0s (chunks {'first_incl_compile': 3.183258056640625, 'rest_mean': 0.8936152024702593}), total 16.5s, 22.6 GB peak, 14.4 GB in use
+00:47:06 [ctrain  1297.4s] L0_recon_c2: steps 3000, val [1.9495999813079834, 2.0139000415802, 2.318000078201294, 1.6128000020980835] -> [0.7878000140190125, 0.7825999855995178, 0.8034999966621399, 0.788100004196167] (best at [3000, 3000, 3000, 3000]), train 11.0s (chunks {'first_incl_compile': 4.739734888076782, 'rest_mean': 0.19950957731767135}), total 12.8s, 22.6 GB peak, 14.4 GB in use
+00:47:33 [ctrain  1324.1s] L0_local_c2: steps 3000, val [1.1447999477386475, 1.0885000228881836, 1.1217999458312988, 1.1095000505447388] -> [0.25279998779296875, 0.2515000104904175, 0.23119999468326569, 0.23149999976158142] (best at [3000, 3000, 2750, 3000]), train 24.0s (chunks {'first_incl_compile': 6.901093006134033, 'rest_mean': 0.964068282734264}), total 26.5s, 22.6 GB peak, 14.4 GB in use
+00:47:47 [ccert 11  1338.7s] N8_local_c2_s0__certA q=128 ok in 70.9s (certify 41.8s)
+00:47:51 [ccert 8  1342.2s] N8_local_c2_s0__certB q=128 ok in 75.5s (certify 41.2s)
+00:47:59 [ccert 2  1349.8s] N8_local_c2_s1__certB q=128 ok in 83.0s (certify 40.7s)
+00:48:01 [ccert 4  1353.3s] N8_local_c2_s1__certA q=128 ok in 84.3s (certify 41.0s)
+00:48:12 [ccert 10  1362.9s] L0_clos_c2_s0__certB q=128 ok in 78.5s (certify 50.9s)
+00:48:16 [ccert 13  1367.6s] L0_clos_c2_s0__certA q=128 ok in 82.0s (certify 51.7s)
+00:48:19 [ccert 9  1369.7s] L0_clos_c2_s1__certB q=128 ok in 85.5s (certify 54.8s)
+00:48:29 [ccert 5  1379.9s] L0_clos_c2_s1__certA q=128 ok in 94.7s (certify 61.5s)
+00:48:34 [ctrain  1385.2s] L8_clos_c2: steps 3000, val [1.020799994468689, 1.1452000141143799, 1.0993000268936157, 1.1518000364303589] -> [0.16660000383853912, 0.16760000586509705, 0.15209999680519104, 0.15219999849796295] (best at [3000, 2750, 3000, 3000]), train 57.2s (chunks {'first_incl_compile': 10.145416259765625, 'rest_mean': 3.906066742810336}), total 60.8s, 22.6 GB peak, 14.4 GB in use
+00:48:40 [ccert 1  1390.9s] L0_recon_c2_s0__certA q=128 ok in 92.3s (certify 66.0s)
+00:48:42 [ccert 12  1392.5s] L0_recon_c2_s0__certB q=128 ok in 94.9s (certify 59.9s)
+00:48:42 [ccert 3  1393.4s] L0_recon_c2_s1__certA q=128 ok in 94.8s (certify 65.5s)
+00:48:45 [ccert 7  1395.9s] L0_recon_c2_s1__certB q=128 ok in 97.5s (certify 62.3s)
+00:48:56 [ctrain  1406.8s] L8_recon_c2: steps 3000, val [1.9467999935150146, 1.7416000366210938, 2.0244998931884766, 2.161900043487549] -> [0.7831000089645386, 0.7767999768257141, 0.7889999747276306, 0.7955999970436096] (best at [3000, 3000, 3000, 3000]), train 18.3s (chunks {'first_incl_compile': 5.117535829544067, 'rest_mean': 0.8106633966619318}), total 21.4s, 22.6 GB peak, 14.4 GB in use
+00:48:58 [ccert 11  1409.3s] L0_local_c2_s1__certB q=128 ok in 70.6s (certify 41.3s)
+00:49:01 [ccert 6  1412.7s] L0_local_c2_s0__certB q=128 ok in 89.3s (certify 60.3s)
+00:49:15 [ccert 2  1426.1s] L0_local_c2_s1__certA q=128 ok in 76.3s (certify 49.4s)
+00:49:21 [ccert 8  1432.6s] L0_local_c2_s0__certA q=128 ok in 90.4s (certify 56.1s)
+00:49:44 [ccert 5  1455.4s] L8_clos_c2_s1__certA q=128 ok in 69.5s (certify 44.1s)
+00:49:45 [ccert 9  1456.4s] L8_clos_c2_s1__certB q=128 ok in 71.8s (certify 46.8s)
+00:49:49 [ccert 13  1460.7s] L8_clos_c2_s0__certB q=128 ok in 75.1s (certify 50.0s)
+00:49:53 [ccert 4  1465.4s] L8_clos_c2_s0__certA q=128 ok in 79.1s (certify 51.1s)
+00:49:57 [ctrain  1468.3s] L8_local_c2: steps 3000, val [1.1172000169754028, 1.0967999696731567, 1.0923999547958374, 0.9093000292778015] -> [0.13779999315738678, 0.13819999992847443, 0.12520000338554382, 0.12530000507831573] (best at [3000, 3000, 2500, 3000]), train 59.0s (chunks {'first_incl_compile': 9.11643362045288, 'rest_mean': 3.968006589195945}), total 61.3s, 22.6 GB peak, 14.4 GB in use
+00:50:03 [ccert 12  1474.0s] L8_recon_c2_s0__certB q=128 ok in 66.5s (certify 40.8s)
+00:50:05 [ccert 7  1475.5s] L8_recon_c2_s0__certA q=128 ok in 67.5s (certify 42.7s)
+00:50:05 [ccert 3  1475.6s] L8_recon_c2_s1__certA q=128 ok in 67.2s (certify 41.6s)
+00:50:11 [ccert 10  1482.1s] L8_recon_c2_s1__certB q=128 ok in 74.2s (certify 47.5s)
+00:50:23 [ctrain  1494.2s] U_clos_c2: steps 3000, val [1.301300048828125, 1.2961000204086304, 1.2793999910354614, 1.2769999504089355] -> [0.7276999950408936, 0.7368000149726868, 0.7195000052452087, 0.7164999842643738] (best at [1000, 1500, 750, 1000]), train 23.2s (chunks {'first_incl_compile': 7.6534459590911865, 'rest_mean': 0.7950938831676136}), total 25.7s, 22.6 GB peak, 15.1 GB in use
+00:50:46 [ctrain  1517.2s] U_recon_c2: steps 3000, val [2.0297000408172607, 1.9769999980926514, 1.9989999532699585, 1.9710999727249146] -> [0.7089999914169312, 0.705299973487854, 0.7149999737739563, 0.7163000106811523] (best at [1000, 750, 750, 1000]), train 21.4s (chunks {'first_incl_compile': 7.945495367050171, 'rest_mean': 0.40992227467623626}), total 22.9s, 22.6 GB peak, 15.2 GB in use
+00:51:12 [ctrain  1542.8s] U_local_c2: steps 3000, val [1.2932000160217285, 1.2975000143051147, 1.280500054359436, 1.2891000509262085] -> [0.659500002861023, 0.651199996471405, 0.6564000248908997, 0.6449999809265137] (best at [500, 500, 750, 500]), train 23.2s (chunks {'first_incl_compile': 5.8990654945373535, 'rest_mean': 0.8664127479900013}), total 25.3s, 22.6 GB peak, 15.1 GB in use
+00:51:12 [ctrain  1543.0s] done; skipped []
+00:51:15 [ccert 13  1546.7s] L8_local_c2_s1__certA q=128 ok in 77.0s (certify 44.4s)
+00:51:16 [ccert 8  1546.9s] L8_local_c2_s1__certB q=128 ok in 78.3s (certify 43.8s)
+00:51:17 [ccert 9  1548.2s] L8_local_c2_s0__certA q=128 ok in 79.7s (certify 44.2s)
+00:51:20 [ccert 2  1550.5s] L8_local_c2_s0__certB q=128 ok in 82.4s (certify 43.8s)
+00:51:20 [ccert 2  1550.5s] worker exits after 15 items
+00:51:39 [ccert 12  1569.9s] U_clos_c2_s1__certA q=128 ok in 75.0s (certify 46.7s)
+00:51:39 [ccert 12  1569.9s] worker exits after 19 items
+00:51:41 [ccert 10  1572.1s] U_clos_c2_s0__certB q=128 ok in 78.0s (certify 50.7s)
+00:51:41 [ccert 10  1572.1s] worker exits after 18 items
+00:51:46 [ccert 4  1578.4s] U_clos_c2_s1__certB q=128 ok in 83.0s (certify 48.1s)
+00:51:46 [ccert 4  1578.4s] worker exits after 21 items
+00:51:51 [ccert 5  1581.5s] U_clos_c2_s0__certA q=128 ok in 87.1s (certify 50.7s)
+00:51:51 [ccert 5  1581.5s] worker exits after 22 items
+00:52:08 [ccert 11  1599.0s] U_recon_c2_s1__certB q=128 ok in 81.7s (certify 55.8s)
+00:52:08 [ccert 11  1599.0s] worker exits after 19 items
+00:52:12 [ccert 6  1603.3s] U_recon_c2_s0__certA q=128 ok in 85.5s (certify 57.0s)
+00:52:12 [ccert 6  1603.3s] worker exits after 13 items
+00:52:13 [ccert 1  1603.8s] U_recon_c2_s0__certB q=128 ok in 86.9s (certify 63.4s)
+00:52:13 [ccert 1  1603.8s] worker exits after 17 items
+00:52:14 [ccert 7  1604.6s] U_recon_c2_s1__certA q=128 ok in 87.1s (certify 62.5s)
+00:52:14 [ccert 7  1604.6s] worker exits after 18 items
+00:52:22 [ccert 8  1613.6s] U_local_c2_s0__certA q=128 ok in 66.7s (certify 41.4s)
+00:52:22 [ccert 8  1613.6s] worker exits after 20 items
+00:52:29 [ccert 13  1621.2s] U_local_c2_s1__certB q=128 ok in 74.4s (certify 50.2s)
+00:52:29 [ccert 13  1621.2s] worker exits after 14 items
+00:52:32 [ccert 9  1623.1s] U_local_c2_s1__certA q=128 ok in 74.9s (certify 51.7s)
+00:52:32 [ccert 9  1623.1s] worker exits after 17 items
+00:52:32 [ccert 3  1623.4s] U_local_c2_s0__certB q=128 ok in 78.7s (certify 55.6s)
+00:52:32 [ccert 3  1623.4s] worker exits after 15 items
+00:52:33 [job] vortex certification finished; 228 halves certified, 0 left unclaimed
+00:52:52 [ccombine    17.6s] pooled 114 phis; missing 0 []
+00:53:07 [ccombine    32.0s] written combined.json and table.txt; 34 configs, 46 hand designs, 104 windows
+00:53:08 [job] === world vortex done in 1914s, FAIL=0
+00:53:08 [job] OUT size 21M; elapsed 1924s; done, FAIL=0

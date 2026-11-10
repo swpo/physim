@@ -1,0 +1,15 @@
+00:21:16 [csim     0.4s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} world vortex tiny False
+00:21:23 [csim     7.2s] A burn-in rate 389.4 member-ticks/s at B = 64; projected 184s for both halves at J = 64, budget 2098s -> J = 64 (184s)
+00:21:36 [csim    20.3s] A init + burn-in 64 members {'init': 1.4, 'burn': 17.9, 'base': 0.0, 'branch': 0.0}
+00:21:56 [csim    40.5s] A branches at tick 40 {'init': 1.4, 'burn': 17.9, 'base': 9.8, 'branch': 10.4}
+00:22:17 [csim    61.7s] A branches at tick 100 {'init': 1.4, 'burn': 17.9, 'base': 22.9, 'branch': 18.5}
+00:22:38 [csim    82.5s] A branches at tick 160 {'init': 1.4, 'burn': 17.9, 'base': 35.7, 'branch': 26.5}
+00:22:59 [csim   103.8s] A branches at tick 220 {'init': 1.4, 'burn': 17.9, 'base': 48.7, 'branch': 34.8}
+00:23:24 [csim   128.5s] A saved {'init': 1.4, 'burn': 17.9, 'base': 65.8, 'branch': 34.8} member-ticks/s {'burn_chunk2': 389.4, 'base': 291.7, 'branch': 294.1}
+00:23:41 [csim   145.1s] B init + burn-in 64 members {'init': 0.1, 'burn': 16.5, 'base': 0.0, 'branch': 0.0}
+00:23:57 [csim   161.7s] B branches at tick 40 {'init': 0.1, 'burn': 16.5, 'base': 8.6, 'branch': 8.0}
+00:24:19 [csim   183.2s] B branches at tick 100 {'init': 0.1, 'burn': 16.5, 'base': 22.0, 'branch': 16.1}
+00:24:40 [csim   204.0s] B branches at tick 160 {'init': 0.1, 'burn': 16.5, 'base': 34.8, 'branch': 24.1}
+00:25:01 [csim   225.2s] B branches at tick 220 {'init': 0.1, 'burn': 16.5, 'base': 47.8, 'branch': 32.4}
+00:25:25 [csim   249.8s] B saved {'init': 0.1, 'burn': 16.5, 'base': 64.8, 'branch': 32.4} member-ticks/s {'burn_chunk2': 389.4, 'base': 296.1, 'branch': 316.3}
+00:25:25 [csim   249.8s] done

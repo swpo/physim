@@ -85,16 +85,16 @@
       "state": "done"
     },
     {
-      "billed_usd": null,
+      "billed_usd": 3.6269,
       "cap_usd": 16.45,
-      "conservative_usd": 3.931,
-      "finished_at": null,
+      "conservative_usd": 3.9976,
+      "finished_at": "2026-11-10T00:54:07Z",
       "gpu": "H200_141GB (nebius)",
-      "hours": 0.588,
+      "hours": 0.598,
       "job_id": "r5-bias2-005",
       "purpose": "Round-5 study bias2 (track 1): inductive-bias grid on raw level 0 of the fed-vortex world (vorticity, fuel, two labels; nothing conserved); encoders N/L/U x halo 0/8 x width 1/2 x recon/closure/local law, 2 seeds, cross-fitted, certified by the fixed family",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "collecting"
+      "state": "done"
     },
     {
       "billed_usd": 0.0,
@@ -183,10 +183,10 @@
   ],
   "summary": {
     "auto_job_cap_usd": 25.0,
-    "committed_usd": 40.307,
+    "committed_usd": 27.4839,
     "prior_spend_usd": 0.0,
-    "spent_usd": 27.788,
+    "spent_usd": 27.4839,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T00:53:11Z"
+    "updated_at": "2026-11-10T00:54:08Z"
   }
 }
