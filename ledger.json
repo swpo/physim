@@ -123,10 +123,10 @@
     {
       "billed_usd": null,
       "cap_usd": 13.5,
-      "conservative_usd": 0.728,
+      "conservative_usd": 0.818,
       "finished_at": null,
       "gpu": "H100_80GB (datacrunch)",
-      "hours": 0.145,
+      "hours": 0.163,
       "job_id": "r5-foundry-001",
       "purpose": "Round-5 study foundry (track 1): screen up to 8192 draws (at least 2048) of the affinity transport NCA family (64^2, 2 kinds) with cheap certificates, certify the top 24, and measure the gliders world with the same estimator",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -269,8 +269,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 69.6499,
     "prior_spend_usd": 0.0,
-    "spent_usd": 38.1279,
+    "spent_usd": 38.2179,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T05:16:26Z"
+    "updated_at": "2026-11-10T05:17:31Z"
   }
 }
