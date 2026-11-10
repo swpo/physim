@@ -6,14 +6,20 @@ with the exam image and feeds one script to the Python inside. There, as root:
 
   guard_*    with a canary process and canary files of two unprivileged uids in place, the cleanup is asked for
              with one layer of the guard missing at a time (no marker, marker not root's, no route variable, uid 0,
-             a uid that is not the box's predictor uid, a uid below 1000, no sign of a container [simulated]):
+             a uid that is not the box's predictor uid, a uid below the reserved range, uid 1000 with a marker
+             that says 1000 [the uid of the incident], a uid above the range, no sign of a container [simulated]):
              every call must be refused and every canary must survive
   cleanup_*  with every layer present, the cleanup removes the process and the files of the box's predictor uid and
-             leaves the other uid's alone
+             leaves the other uid's alone; a ROOT-OWNED file below a directory of the predictor uid survives, with
+             that directory (the wipe unlinks and rmdirs listed paths only: audit A5); a mount point the uid owns
+             is not removed; a helper process whose identity did not change signals nothing
   driver_*   the driver as the grader starts it: an honest predictor; a named pipe or a link left as stderr.txt or
              reply.npz (red team 3: root must neither block nor follow); the driver without the route variable
-             (runs, no drop, no cleanup); with the route variable but without the marker (refuses, and the
-             predictor does not run at all)
+             (without --no-box: runs nothing; with it: runs, no drop, no cleanup); with the route variable but
+             without the marker (refuses, and the predictor does not run at all); without --uid (no default)
+  mount_*    a SECOND throwaway container, started with `--tmpfs /extra` (a mount a prepared box does not have; no
+             host path is ever mounted by this tool): with every other layer present, the guard refuses, every
+             function refuses, the canaries survive, and the driver on the grading route runs nothing (audit A4)
 
 usage: python tools/check_driver.py --out results/driver_container.json [--image physim2-ring:1]
 """
@@ -30,6 +36,7 @@ sys.path.insert(0, ROOT)
 from physim2_env._paths import agentenv_root  # noqa: E402
 
 INSIDE = r'''
+MODE = "MODE_PLACEHOLDER"
 import base64, importlib.util, json, os, shutil, signal, subprocess, sys, time
 assert os.path.exists("/.dockerenv") or "docker" in open("/proc/1/cgroup").read(), "this script is for a throwaway container only"
 ITEM, RUNNER = "/runtime/item.py", "/w/physim2/predict_runner.py"
@@ -98,7 +105,13 @@ CASES = [  # name, marker kwargs (None = no marker), route variable, target uid,
     ("uid_is_not_the_box_predictor_uid", dict(uid=X), VAL, Y, False),
     ("uid_below_1000", dict(uid=500), VAL, 500, False),
     ("no_sign_of_a_container_simulated", dict(), VAL, X, True),
+    ("uid_1000_with_a_marker_that_says_1000", dict(uid=1000), VAL, 1000, False),
+    ("uid_19999_just_below_the_reserved_range", dict(uid=19999), VAL, 19999, False),
+    ("uid_60000_just_above_the_reserved_range", dict(uid=60000), VAL, 60000, False),
 ]
+if MODE == "extra":            # the second container: every layer present, but a file system mounted that a box does not have
+    CASES = [("everything_with_a_tmpfs_mounted_at_extra", dict(), VAL, X, False)]
+    open("/extra/canary_on_the_mount", "w").write("canary"); os.chown("/extra/canary_on_the_mount", X, X)
 for name, mk, route, uid, no_ev in CASES:
     marker(**mk) if mk is not None else marker(uid=None)
     os.environ.pop(VAR, None)
@@ -116,10 +129,59 @@ for name, mk, route, uid, no_ev in CASES:
                 "canaries_alive": [alive(px), alive(py)], "canary_files": [files(X), files(Y)]}
     checks[f"guard_refuses_{name}"] = r and set(each.values()) == {"refused"} and alive(px) and alive(py) and len(files(X)) == 3 and len(files(Y)) == 3
 item.container_evidence = real_evidence
+ev["mount_table"] = {"walked_by_the_cleanup": item.mount_points(), "foreign": item.foreign_mounts(item.box_mounts(), isfile=item._regular)}
+if MODE == "extra":
+    marker(uid=X); os.environ[VAR] = VAL
+    g = item.box_guard(X)
+    os.makedirs("/w/mark", exist_ok=True); os.chmod("/w", 0o755); os.chmod("/w/mark", 0o755)
+    open("/w/mark/predict.py", "w").write("import os\ndef predict(h, p, q, n, s):\n    open('/tmp/predictor_ran', 'w').close(); os._exit(1)\n")
+    import numpy as np
+    np.savez("/runtime/request.npz", history=np.zeros((17, 6)), prefix=np.zeros((16, 24)), test=np.zeros((32, 24)),
+             queries=json.dumps({"1": [1, 2], "2": [16]}), n_samples=4, seed=0)
+    out = {}
+    for name, extra_args in (("on_the_grading_route", []), ("with_no_box_on_the_grading_route", ["--no-box"])):
+        p = subprocess.run([sys.executable, "-I", "-B", ITEM, "--submission", "/w/mark", "--runner", RUNNER, "--request", "/runtime/request.npz",
+                            "--cpu", "20", "--wall", "30", "--mem-gib", "4", "--uid", str(X)] + extra_args, capture_output=True, text=True, timeout=60,
+                           env=dict(os.environ, **{VAR: VAL}))
+        out[name] = {"driver_error": json.loads(p.stdout.strip().splitlines()[-1]).get("driver_error", "")[:400], "predictor_ran": os.path.exists("/tmp/predictor_ran")}
+    sc = item.scan(X)
+    ev["extra"] = {"guard_why": g["why"], "driver": out, "scan": {"fixing": sc["fixing"], "guard_ok": sc["guard"]["ok"]},
+                   "canary_on_the_mount": os.path.exists("/extra/canary_on_the_mount")}
+    checks["mount_guard_names_the_extra_mount"] = g["ok"] is False and len(g["why"]) == 1 and "/extra (tmpfs)" in g["why"][0]
+    checks["mount_driver_on_the_grading_route_runs_nothing"] = all(v["driver_error"].startswith("RuntimeError: refused: not a disposable box")
+                                                                  and not v["predictor_ran"] for v in out.values())
+    checks["mount_scan_changes_nothing_and_the_canary_on_the_mount_survives"] = sc["fixing"] is False and ev["extra"]["canary_on_the_mount"]
+    print("RESULT" + json.dumps({"checks": checks, "evidence": ev}))
+    sys.exit(0)
 # ---- every layer present: the cleanup works, and only on the box's predictor uid ----
 marker(uid=X); os.environ[VAR] = VAL
 ev["container_evidence"] = item.container_evidence()
+# audit A5: a directory of the predictor uid with a ROOT-OWNED file below it, and one of its own
+os.makedirs("/tmp/owned_by_x/sub"); open("/tmp/owned_by_x/sub/root_canary", "w").write("root's"); open("/tmp/owned_by_x/own", "w").write("x's")
+for p_ in ("/tmp/owned_by_x", "/tmp/owned_by_x/sub", "/tmp/owned_by_x/own"):
+    os.chown(p_, X, X)
+os.chown("/dev/shm", X, X)                                   # a mount point that the uid owns
+# S1: a helper whose identity does not change must do nothing (here: setuid replaced by a call that does nothing)
+real_setuid = os.setuid
+os.setuid = lambda uid: None
+try:
+    item.as_user(X, lambda: os.kill(-1, signal.SIGKILL))
+    unchanged = "RAN"
+except RuntimeError as e:
+    unchanged = str(e)[:60]
+finally:
+    os.setuid = real_setuid
+ev["identity_not_changed"] = {"as_user": unchanged, "canaries_alive": [alive(px), alive(py)]}
+checks["cleanup_signals_nothing_when_the_identity_did_not_change"] = unchanged.startswith("refused: the helper process did not become") and alive(px) and alive(py)
 rep = item.cleanup(X)
+ev["root_file_below_a_directory_of_the_uid"] = {"root_canary_survives": os.path.exists("/tmp/owned_by_x/sub/root_canary"),
+                                                "its_directories_survive": os.path.isdir("/tmp/owned_by_x/sub"), "file_of_the_uid_removed": not os.path.exists("/tmp/owned_by_x/own"),
+                                                "reported_left": rep["left_files"]}
+checks["cleanup_leaves_a_root_owned_file_below_a_directory_of_the_uid"] = ev["root_file_below_a_directory_of_the_uid"]["root_canary_survives"] \
+    and ev["root_file_below_a_directory_of_the_uid"]["file_of_the_uid_removed"] and "/tmp/owned_by_x" in rep["left_files"]
+checks["cleanup_never_removes_a_mount_point"] = os.path.ismount("/dev/shm") and "/dev/shm" in rep["left_files"] and files(Y) != [] and "/dev/shm" in files(Y)
+os.chown("/dev/shm", 0, 0); os.unlink("/tmp/owned_by_x/sub/root_canary"); os.rmdir("/tmp/owned_by_x/sub"); os.rmdir("/tmp/owned_by_x")
+rep = dict(rep, left_files=[p_ for p_ in rep["left_files"] if p_ not in ("/dev/shm", "/tmp/owned_by_x", "/tmp/owned_by_x/sub")])
 time.sleep(0.2)
 try:
     os.waitpid(px, os.WNOHANG)
@@ -150,7 +212,7 @@ PRED = {
 }
 
 
-def drive(name, route=True, mk=True, uid=X):
+def drive(name, route=True, mk=True, uid=X, no_box=False, with_uid=True):
     sub = f"/w/{name}"
     os.makedirs(sub, exist_ok=True); open(f"{sub}/predict.py", "w").write(PRED[name]); os.chmod(sub, 0o755); os.chmod(f"{sub}/predict.py", 0o644)
     marker(uid=X) if mk else marker(uid=None)
@@ -160,7 +222,10 @@ def drive(name, route=True, mk=True, uid=X):
     t0 = time.time()
     try:
         p = subprocess.run([sys.executable, "-I", "-B", ITEM, "--submission", sub, "--runner", RUNNER, "--request", "/runtime/request.npz",
-                            "--cpu", "20", "--wall", "30", "--mem-gib", "4", "--uid", str(uid)], capture_output=True, text=True, timeout=60, env=env)
+                            "--cpu", "20", "--wall", "30", "--mem-gib", "4"] + (["--uid", str(uid)] if with_uid else []) + (["--no-box"] if no_box else []),
+                           capture_output=True, text=True, timeout=60, env=env)
+        if not p.stdout.strip():
+            return {"returned": True, "no_reply": True, "exit_code": p.returncode, "stderr": p.stderr.strip()[-90:], "seconds": round(time.time() - t0, 2)}
         r = json.loads(p.stdout.strip().splitlines()[-1])
         return {"returned": True, "ok": r.get("ok"), "why": r.get("why"), "stderr": (r.get("stderr") or "")[-80:], "layers": r.get("layers"),
                 "driver_error": r.get("driver_error"), "cleanup": {k: (r.get("cleanup") or {}).get(k) for k in ("killed", "removed", "left_pids", "left_files")},
@@ -176,10 +241,18 @@ checks["driver_returns_within_seconds_for_every_predictor"] = all(v["returned"] 
 checks["driver_named_pipe_or_link_is_never_a_reply"] = D["fifo_as_reply"].get("ok") is False and D["link_as_reply"].get("ok") is False
 checks["driver_never_returns_root_only_content"] = all("ROOT-ONLY" not in json.dumps(v) for v in D.values())
 checks["driver_box_clean_after_every_predictor"] = all(v["returned"] and v["cleanup"]["left_pids"] == [] and v["cleanup"]["left_files"] == [] for v in D.values())
-no_route = drive("leaves_a_mark", route=False)
+no_route_no_flag = drive("leaves_a_mark", route=False)
+ran_without_route_and_flag = os.path.exists("/tmp/predictor_ran")
+no_uid = drive("leaves_a_mark", route=True, with_uid=False)
+ran_without_uid = os.path.exists("/tmp/predictor_ran")
+no_route = drive("leaves_a_mark", route=False, no_box=True)
 ran_without_route = os.path.exists("/tmp/predictor_ran")
 if ran_without_route:
     os.unlink("/tmp/predictor_ran")
+ev["driver_without_route_variable_and_without_no_box"], ev["driver_without_uid"] = no_route_no_flag, no_uid
+checks["driver_without_route_variable_and_without_no_box_runs_nothing"] = no_route_no_flag.get("ok") is False and not ran_without_route_and_flag \
+    and "refused: not a disposable box" in str(no_route_no_flag.get("driver_error")) and "--no-box" in str(no_route_no_flag.get("driver_error"))
+checks["driver_uid_has_no_default"] = no_uid.get("no_reply") is True and no_uid.get("exit_code") == 2 and "--uid" in no_uid.get("stderr", "") and not ran_without_uid
 no_marker = drive("leaves_a_mark", route=True, mk=False)
 ev["driver_without_route_variable"], ev["driver_with_route_variable_but_no_marker"] = no_route, no_marker
 checks["driver_without_route_variable_neither_drops_nor_cleans"] = no_route["returned"] and no_route["layers"].get("uid") is None \
@@ -198,14 +271,21 @@ def main():
     a = ap.parse_args()
     item = open(os.path.join(a.package_root, "physim2_env", "public", "_item.py"), "rb").read()
     runner = open(os.path.join(agentenv_root(), "physim2", "predict_runner.py"), "rb").read()
-    script = f"ITEM_B64 = {base64.b64encode(item).decode()!r}\nRUNNER_B64 = {base64.b64encode(runner).decode()!r}\n" + INSIDE
-    p = subprocess.run(["docker", "run", "--rm", "-i", "--network", "none", a.image, "python3", "-B", "-"], input=script, capture_output=True,
-                       text=True, timeout=600)
-    line = next((ln for ln in p.stdout.splitlines() if ln.startswith("RESULT")), None)
-    if line is None:
-        raise SystemExit("the container gave no result:\n" + (p.stdout + p.stderr)[-2000:])
-    res = json.loads(line[6:])
-    out = {"where": f"inside `docker run --rm --network none {a.image}` (nothing of this ran on the host)", "n_checks": len(res["checks"]),
+    head = f"ITEM_B64 = {base64.b64encode(item).decode()!r}\nRUNNER_B64 = {base64.b64encode(runner).decode()!r}\n"
+    res = {"checks": {}, "evidence": {}}
+    # two throwaway containers; neither gets a host path (-v / --mount are never used here), both are removed on exit
+    for mode, options in (("main", []), ("extra", ["--tmpfs", "/extra"])):
+        p = subprocess.run(["docker", "run", "--rm", "-i", "--network", "none", *options, a.image, "python3", "-B", "-"],
+                           input=head + INSIDE.replace("MODE_PLACEHOLDER", mode), capture_output=True, text=True, timeout=600)
+        line = next((ln for ln in p.stdout.splitlines() if ln.startswith("RESULT")), None)
+        if line is None:
+            raise SystemExit(f"the container ({mode}) gave no result:\n" + (p.stdout + p.stderr)[-2000:])
+        got = json.loads(line[6:])
+        res["checks"].update(got["checks"])
+        res["evidence"]["main" if mode == "main" else "container_with_tmpfs_extra"] = got["evidence"]
+    res["evidence"] = dict(res["evidence"].pop("main"), **res["evidence"])
+    out = {"where": f"inside `docker run --rm --network none {a.image}` and a second one with `--tmpfs /extra` (nothing of this ran on the "
+                    "host; no host path was mounted)", "n_checks": len(res["checks"]),
            "n_passed": sum(v is True for v in res["checks"].values()), "failed": [k for k, v in res["checks"].items() if v is not True], **res}
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     json.dump(out, open(a.out, "w"), indent=1)

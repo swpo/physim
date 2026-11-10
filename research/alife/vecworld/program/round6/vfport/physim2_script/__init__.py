@@ -26,6 +26,14 @@ LOG = "/logs/agent/script.log"
 ADDRESS_FILE = "/etc/physim2/lab.json"
 
 
+def require_box(runtime) -> None:
+    """This harness writes, unpacks and runs as root through `runtime`: only in a box that verifiers itself
+    provisioned for this run (the same gate as the taskset: physim2_env.grading.container_gate), never through
+    the subprocess runtime, a borrowed container or an object that merely says "docker"."""
+    from physim2_env.grading import require_container
+    require_container(runtime)
+
+
 class ScriptHarnessConfig(vf.HarnessConfig):
     agent_dir: str = ""
     """Host directory with the script and its helper modules (regular files, top level only)."""
@@ -59,11 +67,13 @@ class ScriptHarness(vf.Harness[ScriptHarnessConfig]):
             raise ValueError("physim2-script needs --env.agent.harness.agent-dir and --env.agent.harness.script")
         if getattr(runtime.config, "type", None) not in ("docker", "prime"):   # its commands write as root: never on a host
             raise RuntimeError("physim2-script runs its script in a container runtime only")
+        require_box(runtime)
         r = await runtime.run(["mkdir", "-p", AGENT_HOME, "/logs/agent"], {})
         if r.exit_code:
             raise RuntimeError("could not prepare the box for the script")
 
     async def install(self, runtime: vf.Runtime, agent_dir: str) -> None:
+        require_box(runtime)
         buf = io.BytesIO()
         with tarfile.open(fileobj=buf, mode="w") as tar:
             for nm in sorted(os.listdir(agent_dir)):
@@ -81,6 +91,7 @@ class ScriptHarness(vf.Harness[ScriptHarnessConfig]):
 
     async def launch(self, ctx, trace, runtime, endpoint, secret, mcp_urls, data) -> vf.ProgramResult:
         c = self.config
+        require_box(runtime)
         await self.install(runtime, fill(c.agent_dir, data))
         args = [fill(a, data) for a in c.args]
         # the address the task controller wrote into the box must be the tool URL verifiers serves to harnesses

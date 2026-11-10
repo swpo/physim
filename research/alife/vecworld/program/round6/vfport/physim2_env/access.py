@@ -162,7 +162,8 @@ class BoxAccess:
         try:
             require_container(self.runtime)
             async with asyncio.timeout(self.check_timeout):
-                # ROUTE_ENV: in the agent's box too the predictor then runs as the box's unprivileged user (1000)
+                # ROUTE_ENV: in the agent's box too the predictor then runs as the box's unprivileged user (the
+                # uid setup wrote into /etc/physim2/predictor_uid, from the reserved range)
                 r = await self.runtime.run(["python3", "-B", "-c", VALIDATE, self.workdir, path], dict(ROUTE_ENV))
             report = clean_report(r.stdout)
         except TimeoutError:

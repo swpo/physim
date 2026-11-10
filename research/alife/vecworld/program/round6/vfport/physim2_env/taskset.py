@@ -144,6 +144,9 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         # ---- guard 2 (v1 taskset.py:461-462): a container with framework-only network, or nothing ----
         if runtime.config.type not in ("docker", "prime") or not runtime.config.network_restricted:
             raise vf.TaskError("PhySim v2 requires a Docker or Prime runtime with framework-only network access")
+        gate = GRADING.container_gate(runtime)               # the real runtime object, provisioned by verifiers for this run
+        if gate:
+            raise vf.TaskError("PhySim v2 runs only in a box that verifiers itself provisioned: " + "; ".join(gate))
         # ---- guard 3: only allow-listed variable names may be configured for a box (a credential under any
         #      name, GITHUB_PAT or HF_KEY as much as HF_TOKEN, has no business in one) ----
         harness = getattr(getattr(trace.agent, "config", None), "harness", None)
@@ -160,8 +163,8 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                 or inst["config"] != cfg:
             raise vf.TaskError("the stored instance differs from the task row (commitment, world or config)")
         del inst
-        info = await self._public_files(runtime)
         state = trace.state
+        info = await self._public_files(runtime, state.uid if state.finalized else None)
         if state.finalized:                                  # the verifier box: public files only, no laboratory
             trace.info.setdefault("physim2", {})["verifier_started_unix"] = time.time()
             return
@@ -191,15 +194,17 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             "network_restricted": bool(runtime.config.network_restricted), "single_use": bool(self.config.single_use),
             "agent_key": key, "item_isolation": self.config.item_isolation}
 
-    async def _public_files(self, runtime) -> dict:
+    async def _public_files(self, runtime, uid: int | None = None) -> dict:
         """TASK.md, the public physim2 package and an empty submission/ into a box (any of the three kinds), and
-        the marker of a prepared box: /etc/physim2/predictor_uid (1000 in the agent's box, where only the agent's
-        own validation uses it; the grading boxes get the rollout's uid at staging)."""
+        the marker of a prepared box: /etc/physim2/predictor_uid. In the agent's box, where only the agent's own
+        validation uses it, the number is drawn here from the reserved range (never 1000, the first account of
+        most machines); the grading boxes get the rollout's uid, here and again at staging."""
         GRADING.require_container(runtime)
+        uid = int(uid) if uid else GRADING.new_uid()
         raw, info = BUNDLE.public_bundle(self.data.world, self.data.config_name)
         await runtime.write("/tmp/physim2-workspace.tar", raw)
         r = await runtime.run(["sh", "-c", f"umask 022; mkdir -p {WORKDIR} {GRADING.BOX_DIR} && chmod 755 {WORKDIR} {GRADING.BOX_DIR} && "
-                                            f"echo 1000 > {GRADING.BOX_DIR}/predictor_uid && chmod 644 {GRADING.BOX_DIR}/predictor_uid && "
+                                            f"echo {uid} > {GRADING.BOX_DIR}/predictor_uid && chmod 644 {GRADING.BOX_DIR}/predictor_uid && "
                                             f"tar -xf /tmp/physim2-workspace.tar -C {WORKDIR} && rm -f /tmp/physim2-workspace.tar"], {})
         if r.exit_code:
             raise vf.TaskError("could not build the workspace in the box")
@@ -316,7 +321,7 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                     artifacts = dict(trace.state.artifacts)
 
                     async def prepare(rt):                   # what verifiers and stage_verifier did for the verifier box
-                        await self._public_files(rt)
+                        await self._public_files(rt, uid)
                         await vf.restore(rt, artifacts)
                         if not (await GRADING.stage(rt, WORKDIR, uid))["has_predict"]:
                             raise RuntimeError("the predictor did not reach the item box")

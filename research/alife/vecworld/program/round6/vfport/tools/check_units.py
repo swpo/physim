@@ -16,10 +16,14 @@ builder's code (--package-root <its checkout>) the failing ones reproduce the fi
   guard_*     HOST SAFETY. The driver's cleanup kills every process and deletes every file of one uid; it once ran
               on a development host. Here: (1) the guard's decision for every missing layer, as a pure function;
               (2) on THIS machine the guard refuses; (3) every function that kills or deletes is called with the
-              route variable set and must refuse BEFORE touching anything -- while it is called, os.kill, os.fork,
-              os.setuid, os.unlink, os.chmod, os.chown and shutil.rmtree are replaced by tripwires and the walk is
-              confined to an empty temporary directory, so that even a broken guard could do nothing here.
+              route variable set and must refuse BEFORE touching anything. From before the driver's file is even
+              imported until the last of these calls, every destructive primitive of this process is a tripwire
+              (tools/tripwires.py: 65 names of os, shutil, subprocess and pathlib) and the walk is confined to an
+              empty temporary directory, so that even a broken guard could do nothing here. If the code under
+              --package-root has NO guard, its kill and delete functions are not called at all (audit B4).
               The real cleanup is tested in a throwaway container only (tools/check_driver.py).
+  driver_*    (see above) are run ONLY when this process is not root: as root the driver is never started on a
+              host, whatever its guard says (audit B4); tools/check_driver.py covers the same cases in a container.
 
 usage: python tools/check_units.py [--store DIR --instance ID] [--package-root DIR] --out results/units.json
 """
@@ -37,6 +41,9 @@ import zipfile
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import tripwires  # noqa: E402
+
 if sys.platform != "linux" or os.environ.get("PHYSIM2_DEV_MACHINE") != "cloud-container":
     raise SystemExit("check_units.py is a development check for the Linux build container (it starts test predictors on the machine it "
                      "runs on). It is NOT part of the Mac runbook: do not run it on a personal machine. In the build container: "
@@ -242,62 +249,73 @@ except ImportError:
 # ----------------------------------------------------------------------------- the box guard, on this host
 ITEM = os.path.join(os.path.abspath(a.package_root), "physim2_env", "public", "_item.py")
 import importlib.util  # noqa: E402
-import shutil  # noqa: E402
 
-_spec = importlib.util.spec_from_file_location("item_under_test", ITEM)
-item = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(item)
-HAS_GUARD = hasattr(item, "guard_reasons")
-if HAS_GUARD:
-    ok_in = dict(dedicated=31001, evidence=["/.dockerenv"], route=item.ROUTE_VALUE, caller=0)
-    pure = {
-        "all_layers_present_is_allowed": item.guard_reasons(31001, **ok_in) == [],
-        "no_marker": item.guard_reasons(31001, **dict(ok_in, dedicated=None)),
-        "no_sign_of_a_container": item.guard_reasons(31001, **dict(ok_in, evidence=[])),
-        "no_route_variable": item.guard_reasons(31001, **dict(ok_in, route=None)),
-        "wrong_route_value": item.guard_reasons(31001, **dict(ok_in, route="1")),
-        "uid_0": item.guard_reasons(0, **dict(ok_in, dedicated=0)),
-        "uid_is_the_caller": item.guard_reasons(31001, **dict(ok_in, caller=31001)),
-        "uid_is_not_the_box_predictor_uid": item.guard_reasons(31002, **ok_in),
-        "uid_below_1000": item.guard_reasons(500, **dict(ok_in, dedicated=500)),
-        "uid_not_a_number": item.guard_reasons(None, **ok_in),
-        "uid_true": item.guard_reasons(True, **dict(ok_in, dedicated=1)),
-    }
-    evidence["guard_pure"] = pure
-    checks["guard_allows_only_when_every_layer_is_present"] = pure["all_layers_present_is_allowed"] is True
-    for k, v in pure.items():
-        if k != "all_layers_present_is_allowed":
-            checks[f"guard_refuses_{k}"] = isinstance(v, list) and len(v) == 1 if k not in ("uid_true", "uid_not_a_number", "uid_0") else bool(v)
-    here_guard = {str(u): item.box_guard(u) for u in (1000, 0, os.getuid(), 31001)}
-    evidence["guard_on_this_machine"] = {"container_evidence": item.container_evidence(), "marker_uid": item.dedicated_uid(),
-                                         "route_variable_set": os.environ.get(item.ROUTE_VAR) is not None, "decisions": here_guard}
-    checks["guard_refuses_on_this_machine"] = all(not g["ok"] for g in here_guard.values())
-
-# every function that kills or deletes, called on this host under tripwires (see the docstring)
-reached, saved = [], {}
+# From here to TW.restore() below this process cannot kill, delete, re-own, change identity or start anything:
+# the tripwires go in BEFORE the driver's file is imported.
+empty = tempfile.mkdtemp(prefix="physim2-units-empty-")      # the only place a walk could go; removed after restore()
+ww = os.path.join(empty, "world_writable")
+open(ww, "w").close()
+os.chmod(ww, 0o666)
+os.chmod(empty, 0o755)
+TW = tripwires.install()
 
 
-def _trip(name):
-    def f(*args, **kw):
-        reached.append(name)
-        raise AssertionError("tripwire: " + name)
-    return f
+def reached():
+    return [h[0] for h in TW.take()]
+
+
+def short(why):
+    """Guard reasons without the layout of this machine: of the foreign mounts only the first and a count."""
+    out = []
+    for w in why:
+        head, sep, tail = w.partition("does not have: ")
+        out.append(head + sep + tail.split(", ")[0] + (f" and {len(tail.split(', ')) - 1} more" if ", " in tail else "") if sep else w)
+    return out
 
 
 trip_ev = {}
-with tempfile.TemporaryDirectory() as empty:
-    env_before = os.environ.get("PHYSIM2_BOX_CLEANUP")
-    try:
+env_before = os.environ.get("PHYSIM2_BOX_CLEANUP")
+try:
+    _spec = importlib.util.spec_from_file_location("item_under_test", ITEM)
+    item = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(item)
+    HAS_GUARD = hasattr(item, "guard_reasons")
+    if HAS_GUARD:
+        ok_in = dict(dedicated=31001, evidence=["/.dockerenv"], route=item.ROUTE_VALUE, caller=0, mounts=[])
+        pure = {
+            "all_layers_present_is_allowed": item.guard_reasons(31001, **ok_in) == [],
+            "no_marker": item.guard_reasons(31001, **dict(ok_in, dedicated=None)),
+            "no_sign_of_a_container": item.guard_reasons(31001, **dict(ok_in, evidence=[])),
+            "no_route_variable": item.guard_reasons(31001, **dict(ok_in, route=None)),
+            "wrong_route_value": item.guard_reasons(31001, **dict(ok_in, route="1")),
+            "uid_0": item.guard_reasons(0, **dict(ok_in, dedicated=0)),
+            "uid_is_the_caller": item.guard_reasons(31001, **dict(ok_in, caller=31001)),
+            "caller_is_not_root": item.guard_reasons(31001, **dict(ok_in, caller=501)),
+            "uid_is_not_the_box_predictor_uid": item.guard_reasons(31002, **ok_in),
+            "uid_below_1000": item.guard_reasons(500, **dict(ok_in, dedicated=500)),
+            "uid_1000_the_uid_of_the_incident": item.guard_reasons(1000, **dict(ok_in, dedicated=1000)),
+            "uid_above_the_reserved_range": item.guard_reasons(60000, **dict(ok_in, dedicated=60000)),
+            "a_mount_that_a_prepared_box_does_not_have": item.guard_reasons(31001, **dict(ok_in, mounts=["/workspace (ext4)"])),
+            "an_unreadable_mount_table": item.guard_reasons(31001, **dict(ok_in, mounts=None)),
+            "uid_not_a_number": item.guard_reasons(None, **ok_in),
+            "uid_true": item.guard_reasons(True, **dict(ok_in, dedicated=1)),
+        }
+        evidence["guard_pure"] = pure
+        checks["guard_allows_only_when_every_layer_is_present"] = pure["all_layers_present_is_allowed"] is True
+        for k, v in pure.items():
+            if k != "all_layers_present_is_allowed":
+                checks[f"guard_refuses_{k}"] = isinstance(v, list) and len(v) == 1 if k not in ("uid_true", "uid_not_a_number", "uid_0", "uid_is_the_caller") else bool(v)
+        here_guard = {str(u): item.box_guard(u) for u in (1000, 0, os.getuid(), 31001)}
+        evidence["guard_on_this_machine"] = {"container_evidence": item.container_evidence(), "marker_uid": item.dedicated_uid(),
+                                             "route_variable_set": os.environ.get(item.ROUTE_VAR) is not None,
+                                             "decisions": {u: {"ok": g["ok"], "why": short(g["why"])} for u, g in here_guard.items()}}
+        checks["guard_refuses_on_this_machine"] = all(not g["ok"] for g in here_guard.values())
+        # every function that kills or deletes, called on this host under the tripwires (see the docstring)
         os.environ["PHYSIM2_BOX_CLEANUP"] = "disposable-box"         # the worst case: the route variable leaked onto a host
-        saved_mounts, item.mount_points = item.mount_points, (lambda: [empty])
-        for mod, names in ((os, ("kill", "killpg", "fork", "setuid", "setgid", "setgroups", "unlink", "remove", "rmdir", "chmod", "chown")),
-                           (shutil, ("rmtree",))):
-            for nm in names:
-                saved[(mod, nm)] = getattr(mod, nm)
-                setattr(mod, nm, _trip(nm))
+        item.mount_points = lambda mounts=None: [empty]
+        item.box_mounts = lambda: [(empty, "tmpfs", "/")]
         for fn in ("kill_user", "wipe_user", "ipc_user", "cleanup"):
             for uid in (1000, 0, 31001):
-                reached.clear()
                 try:
                     getattr(item, fn)(uid)
                     out = "RETURNED"
@@ -307,39 +325,38 @@ with tempfile.TemporaryDirectory() as empty:
                     out = str(e)
                 except Exception as e:
                     out = f"{type(e).__name__}"
-                trip_ev[f"{fn}({uid})"] = {"outcome": out, "destructive_calls_reached": list(reached)}
-        reached.clear()
+                trip_ev[f"{fn}({uid})"] = {"outcome": out, "destructive_calls_reached": reached()}
         try:
             item.as_user(31001, lambda: None)
-            trip_ev["as_user(31001)"] = {"outcome": "RETURNED", "destructive_calls_reached": list(reached)}
+            out = "RETURNED"
         except RuntimeError as e:
-            trip_ev["as_user(31001)"] = {"outcome": "refused" if str(e).startswith("refused") else str(e)[:80], "destructive_calls_reached": list(reached)}
+            out = "refused" if str(e).startswith("refused") else str(e)[:80]
         except AssertionError as e:
-            trip_ev["as_user(31001)"] = {"outcome": str(e), "destructive_calls_reached": list(reached)}
-        ww = os.path.join(empty, "world_writable")
-        saved[(os, "chmod")](empty, 0o755)
-        open(ww, "w").close()
-        saved[(os, "chmod")](ww, 0o666)
-        reached.clear()
+            out = str(e)
+        trip_ev["as_user(31001)"] = {"outcome": out, "destructive_calls_reached": reached()}
         try:
             sc = item.scan(31001)
-            trip_ev["scan(31001)"] = {"outcome": "returned", "fixing": sc.get("fixing"), "destructive_calls_reached": list(reached),
+            trip_ev["scan(31001)"] = {"outcome": "returned", "fixing": sc.get("fixing"), "destructive_calls_reached": reached(),
                                       "file_still_world_writable": bool(os.stat(ww).st_mode & 0o002)}
         except AssertionError as e:
-            trip_ev["scan(31001)"] = {"outcome": str(e), "destructive_calls_reached": list(reached)}
-    finally:
-        for (mod, nm), fn in saved.items():
-            setattr(mod, nm, fn)
-        item.mount_points = saved_mounts
-        if env_before is None:
-            os.environ.pop("PHYSIM2_BOX_CLEANUP", None)
-        else:
-            os.environ["PHYSIM2_BOX_CLEANUP"] = env_before
-evidence["guard_tripwires"] = trip_ev
-checks["guard_every_kill_and_delete_function_refuses_on_this_host"] = all(v["outcome"] == "refused" and not v["destructive_calls_reached"]
-                                                                          for k, v in trip_ev.items() if not k.startswith("scan"))
-checks["guard_scan_changes_no_mode_on_this_host"] = trip_ev["scan(31001)"].get("fixing") is False and not trip_ev["scan(31001)"]["destructive_calls_reached"] \
-    and trip_ev["scan(31001)"].get("file_still_world_writable") is True
+            trip_ev["scan(31001)"] = {"outcome": str(e), "destructive_calls_reached": reached()}
+    else:
+        evidence["guard_tripwires_skipped"] = ("the driver under --package-root has no box guard: its kill and delete functions are NOT called "
+                                               "on this host, not even under tripwires")
+finally:
+    TW.restore()
+    if env_before is None:
+        os.environ.pop("PHYSIM2_BOX_CLEANUP", None)
+    else:
+        os.environ["PHYSIM2_BOX_CLEANUP"] = env_before
+    os.unlink(ww)                                            # this test's own two entries, by name
+    os.rmdir(empty)
+evidence["guard_tripwires"] = dict(trip_ev, tripwires_installed=len(TW.names))
+if HAS_GUARD:
+    checks["guard_every_kill_and_delete_function_refuses_on_this_host"] = all(v["outcome"] == "refused" and not v["destructive_calls_reached"]
+                                                                              for k, v in trip_ev.items() if not k.startswith("scan"))
+    checks["guard_scan_changes_no_mode_on_this_host"] = trip_ev["scan(31001)"].get("fixing") is False and not trip_ev["scan(31001)"]["destructive_calls_reached"] \
+        and trip_ev["scan(31001)"].get("file_still_world_writable") is True
 
 # ----------------------------------------------------------------------------- the driver, without root
 RUNNER = os.path.join(agentenv_root(), "physim2", "predict_runner.py")
@@ -357,10 +374,12 @@ PRED = {
 }
 drv = {}
 src_item = open(ITEM).read()
-# the driver as a program runs on this host ONLY if it cannot clean up here: not root, or the guard above refused
-SAFE = os.geteuid() != 0 or (HAS_GUARD and checks.get("guard_refuses_on_this_machine") is True
-                             and checks.get("guard_every_kill_and_delete_function_refuses_on_this_host") is True)
-evidence["driver_host_guard"] = {"euid": os.geteuid(), "driver_has_the_box_guard": HAS_GUARD, "driver_program_was_run_here": SAFE}
+# the driver as a program is started on this host ONLY by a user who is not root (audit B4): as root it is never
+# started here, whatever its guard says; tools/check_driver.py runs the same predictors in a throwaway container
+SAFE = os.geteuid() != 0 and HAS_GUARD
+evidence["driver_host_guard"] = {"euid": os.geteuid(), "driver_has_the_box_guard": HAS_GUARD, "driver_program_was_run_here": SAFE,
+                                 "why_not": None if SAFE else "this process is root (or the driver has no guard): the driver is never started as "
+                                                              "root on a host; see results/driver_container.json for the same cases in a container"}
 del src_item
 with tempfile.TemporaryDirectory() as d:
     req = os.path.join(d, "request.npz")
@@ -373,7 +392,7 @@ with tempfile.TemporaryDirectory() as d:
         t0 = time.time()
         try:
             p = subprocess.run([sys.executable, "-I", "-B", ITEM, "--submission", sub, "--runner", RUNNER, "--request", req, "--cpu", "20",
-                                "--wall", "30", "--mem-gib", "4"], capture_output=True, text=True, timeout=45,
+                                "--wall", "30", "--mem-gib", "4", "--uid", "31001", "--no-box"], capture_output=True, text=True, timeout=45,
                                env={k: v for k, v in os.environ.items() if k != "PHYSIM2_BOX_CLEANUP"})
             r = json.loads(p.stdout.strip().splitlines()[-1])
             rec = {"returned": True, "ok": r.get("ok"), "why": r.get("why"), "stderr_tail": (r.get("stderr") or "")[-60:],

@@ -4,9 +4,15 @@
 
 What runs: the freeze rules of physim2/_rules.py (regular files only, size cap, predict.py at the top), then
 your predictor on two public example requests through physim2/_item.py, the same driver the grader uses (one
-request per process, unprivileged user when this box runs as root, CPU, memory and wall-clock limits), three
-calls in all: example 0 twice with the same seed (the samples must be identical) and example 1.
+request per process, CPU, memory and wall-clock limits), three calls in all: example 0 twice with the same seed
+(the samples must be identical) and example 1.
 The example requests were simulated at the prior mean with public noise: passing says nothing about accuracy.
+
+Where it runs: ONLY inside an exam box, which the environment marks with /etc/physim2/predictor_uid. Started by
+the laboratory (lab.validate, lab.submit) the predictor runs as that unprivileged uid and its leftovers are
+removed; started by you (python -m physim2.validate) it runs as you, under the limits only (the driver's
+--no-box). Without the marker nothing runs: this check executes the predict.py it is given, and a machine that
+is not an exam box is no place for that.
 
 `check_shapes` and `validate` below are copied verbatim from agentenv's evaluator/submission.py (lines 94-125);
 `run_request` has the same signature and return value as the function they called there.
@@ -18,6 +24,7 @@ import io
 import json
 import os
 import shutil
+import stat
 import subprocess
 import sys
 import tarfile
@@ -29,10 +36,27 @@ from . import _rules
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE = os.path.dirname(HERE)
+UID_FILE = "/etc/physim2/predictor_uid"
+NOT_A_BOX = f"this check runs inside an exam box only ({UID_FILE} is missing or not root's); nothing was run"
+
+
+def box_uid():
+    """The predictor uid the environment wrote into this box, or None outside a prepared box."""
+    try:
+        st = os.lstat(UID_FILE)
+        if not stat.S_ISREG(st.st_mode) or st.st_uid != 0:
+            return None
+        with open(UID_FILE) as f:
+            return int(f.read(32).strip())
+    except (OSError, ValueError):
+        return None
 
 
 def run_request(sub_dir: str, public_dir: str, req: dict, limits: dict, hide=(), work=None) -> dict:
     """Returns {"ok", "samples" {level: array} | "error", "cpu_s", "wall_s", "timed_out", "layers"}."""
+    uid = box_uid()
+    if uid is None:
+        return {"ok": False, "error": NOT_A_BOX, "cpu_s": 0.0, "wall_s": 0.0, "timed_out": False, "layers": None}
     tmp = tempfile.mkdtemp(prefix="physim2-req-", dir=work)
     try:
         os.chmod(tmp, 0o755)
@@ -42,7 +66,9 @@ def run_request(sub_dir: str, public_dir: str, req: dict, limits: dict, hide=(),
         cmd = [sys.executable, "-I", "-B", os.path.join(HERE, "_item.py"), "--submission", sub_dir,
                "--runner", os.path.join(public_dir, "physim2", "predict_runner.py"), "--request", rq,
                "--cpu", str(limits.get("cpu_seconds") or 0), "--wall", str(limits.get("wall_seconds") or 0),
-               "--mem-gib", str(limits.get("memory_gib") or 0)]
+               "--mem-gib", str(limits.get("memory_gib") or 0), "--uid", str(uid), "--no-box"]
+        # --no-box matters only when YOU start this check (no route variable): the predictor then runs as you.
+        # Started by the laboratory, the driver drops to `uid` and cleans up, or refuses and runs nothing.
         p = subprocess.run(cmd, capture_output=True, text=True)
         try:
             r = json.loads(p.stdout.strip().splitlines()[-1])
@@ -50,6 +76,8 @@ def run_request(sub_dir: str, public_dir: str, req: dict, limits: dict, hide=(),
             return {"ok": False, "error": "the request driver failed: " + p.stderr[-300:], "cpu_s": 0.0, "wall_s": 0.0,
                     "timed_out": False, "layers": None}
         res = {"cpu_s": r["cpu_s"], "wall_s": r["wall_s"], "timed_out": r["timed_out"], "layers": r.get("layers")}
+        if r.get("driver_error"):
+            return dict(res, ok=False, error="the request driver refused or failed: " + str(r["driver_error"]))
         if not r["ok"]:
             return dict(res, ok=False, error=f"predictor failed ({r.get('why')}): {r.get('stderr', '')}")
         try:
@@ -110,6 +138,8 @@ def resolve(path, workspace: str = WORKSPACE) -> str:
 
 def check(path="submission", decl: dict | None = None, workspace: str = WORKSPACE) -> dict:
     """Freeze rules, then the three example calls. `decl` is lab.card() (or physim2/exam.json, its public part)."""
+    if box_uid() is None:
+        return {"ok": False, "stage": "validator", "error": NOT_A_BOX, "finalized": False}
     if decl is None:
         decl = json.load(open(os.path.join(HERE, "exam.json")))
     limits = decl["predictor_limits"]

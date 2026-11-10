@@ -1,0 +1,6 @@
+1 0 254:0 / / rw,relatime - ext4 /dev/vda rw,discard
+2 1 0:5 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw
+3 1 0:6 / /sys rw,nosuid,nodev,noexec,relatime - sysfs sysfs rw
+4 1 0:7 / /dev rw,nosuid - devtmpfs devtmpfs rw
+5 1 0:8 / /run rw,nosuid,nodev - tmpfs tmpfs rw
+6 1 254:16 / /home rw,relatime - ext4 /dev/vdb rw

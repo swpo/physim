@@ -1,0 +1,78 @@
+{
+ "docker_plain.mountinfo": {
+  "captured": "docker run --rm --network none physim2-ring:1 cat /proc/self/mountinfo (cloud container, Docker 29.9.2, overlay2, cgroup v1)",
+  "foreign": []
+ },
+ "docker_verifiers_options.mountinfo": {
+  "captured": "the options verifiers gives a restricted box (--network bridge --publish 127.0.0.1::8000 --cap-drop NET_ADMIN --cap-drop NET_RAW --security-opt no-new-privileges --cpus 2), same image, cloud container",
+  "foreign": []
+ },
+ "docker_tmpfs_extra.mountinfo": {
+  "captured": "docker run --rm --network none --tmpfs /extra physim2-ring:1 cat /proc/self/mountinfo (cloud container)",
+  "foreign": [
+   "/extra (tmpfs)"
+  ]
+ },
+ "synthetic_bind_workspace.mountinfo": {
+  "synthetic": "the plain table plus one line written by hand: a host folder bind-mounted at /workspace (docker run -v \"$PWD\":/workspace). NOT captured: no container with a host mount was started for this study",
+  "foreign": [
+   "/workspace (ext4)"
+  ]
+ },
+ "synthetic_named_volume.mountinfo": {
+  "synthetic": "the plain table plus a Docker volume at /data, written by hand",
+  "foreign": [
+   "/data (ext4)"
+  ]
+ },
+ "synthetic_bind_below_dev.mountinfo": {
+  "synthetic": "a host folder mounted below /dev/shm: allowed by position, refused by its file-system type",
+  "foreign": [
+   "/dev/shm/project (ext4)"
+  ]
+ },
+ "synthetic_macos_share.mountinfo": {
+  "synthetic": "a Docker Desktop file share at /workspace as its type is believed to read (fakeowner); written from memory, NOT captured on a Mac",
+  "foreign": [
+   "/workspace (fakeowner)"
+  ]
+ },
+ "synthetic_space_in_mount_point.mountinfo": {
+  "synthetic": "a mount point with a space, which the kernel writes as \\040",
+  "foreign": [
+   "/mnt/my folder (tmpfs)"
+  ]
+ },
+ "synthetic_directory_over_etc_hosts.mountinfo": {
+  "synthetic": "the plain table, evaluated with isfile('/etc/hosts') = False (a directory mounted where Docker's hosts file belongs)",
+  "isfile_false_for": [
+   "/etc/hosts"
+  ],
+  "foreign": [
+   "/etc/hosts (not a regular file)"
+  ]
+ },
+ "synthetic_linux_host.mountinfo": {
+  "synthetic": "a Linux machine that is not a container: its root is no overlay",
+  "foreign": [
+   "/ (ext4)",
+   "/run (tmpfs)",
+   "/home (ext4)"
+  ]
+ },
+ "synthetic_two_roots.mountinfo": {
+  "synthetic": "a second mount on /",
+  "foreign": [
+   "/ (2 entries)",
+   "/ (ext4)"
+  ]
+ },
+ "synthetic_garbage.mountinfo": {
+  "synthetic": "not a mount table",
+  "raises": "ValueError"
+ },
+ "synthetic_empty.mountinfo": {
+  "synthetic": "an empty table (an unreadable table must never read as 'no mounts')",
+  "raises": "ValueError"
+ }
+}

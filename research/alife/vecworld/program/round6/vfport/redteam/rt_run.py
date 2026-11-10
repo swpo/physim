@@ -9,15 +9,23 @@ push = false and PRIME_RUNS_MODE=disabled (tools/vfrun.child_env), no retries, n
 Writes redteam/results/<attack>.json. The instance is a pilot made for these attacks: results carry
 PILOT_NEVER_REUSE_AS_EXAM and no hidden value (no theta, no secret, no history; 16-bit fingerprints of exam
 histories appear in the recon result as evidence of the between-item channel).
+
+Host safety (audit of 10 Nov 2026, B5): this tool deletes nothing it did not make and removes no container by a
+fixed name. The agent scripts are copied into a NEW directory of --scratch on every call; a run folder of an
+earlier call is replaced only if it holds nothing but vf-eval's own files (vfrun.clear_run_dir); the sibling
+container of `recon` gets a name of its own and is removed by exactly that name; vf-eval is stopped with SIGTERM
+first (vfrun.run_child). VF_RUN_ID must be set (vfrun.run_label). For the cloud container only: not on the Mac.
 """
 import argparse
 import json
 import os
 import resource
+import secrets
 import shutil
 import socket
 import subprocess
 import sys
+import tempfile
 import threading
 import time
 
@@ -84,9 +92,11 @@ def run(name, a, harness, task=None, agent_timeout=None, timeout=1500):
     cfg["env"]["taskset"]["task"] = dict({"agent_key": name}, **(task or {}))
     if agent_timeout:
         cfg["env"]["agent"]["timeout"] = agent_timeout
+    vfrun.run_label()
+    vfrun.require_docker()
     os.makedirs(out_dir, exist_ok=True)
     run_dir = os.path.join(out_dir, name)
-    shutil.rmtree(run_dir, ignore_errors=True)
+    vfrun.clear_run_dir(run_dir, name)
     toml = os.path.join(out_dir, f"{name}.toml")
     with open(toml, "wb") as f:
         tomli_w.dump(cfg, f)
@@ -96,11 +106,10 @@ def run(name, a, harness, task=None, agent_timeout=None, timeout=1500):
     t0, r0 = time.time(), resource.getrusage(resource.RUSAGE_CHILDREN)
     cmd = ["nice", "-n", "10", vfrun.VF_EVAL, "@", toml, "--no-rich"]
     try:
-        p = subprocess.run(cmd, env=vfrun.child_env(), capture_output=True, text=True, timeout=timeout, cwd=out_dir)
-        rc, log = p.returncode, (p.stdout + p.stderr)
-    except subprocess.TimeoutExpired as e:
-        rc, log = "TIMEOUT", ((e.stdout or b"").decode("utf-8", "replace") + (e.stderr or b"").decode("utf-8", "replace"))
-    stop.set()
+        rc, out, err, how = vfrun.run_child(cmd, env=vfrun.child_env(), cwd=out_dir, timeout=timeout)
+        rc, log = (rc if how == "exited" else "TIMEOUT"), out + err
+    finally:
+        stop.set()
     th.join(3)
     r1 = resource.getrusage(resource.RUSAGE_CHILDREN)
     eps = []
@@ -199,9 +208,9 @@ def main():
     ap.add_argument("--tag", default="")
     a = ap.parse_args()
     os.makedirs(a.scratch, exist_ok=True)
-    agents = os.path.join(a.scratch, "agents")               # reference agents of round 5 + the red-team scripts, top level
-    shutil.rmtree(agents, ignore_errors=True)
-    os.makedirs(agents)
+    # reference agents of round 5 + the red-team scripts, top level, in a directory made now (nothing is deleted)
+    agents = tempfile.mkdtemp(prefix="agents-", dir=a.scratch)
+    os.chmod(agents, 0o755)
     for d in (os.path.join(agentenv_root(), "agents"), HERE):
         for nm in os.listdir(d):
             if nm.endswith(".py"):
@@ -212,14 +221,17 @@ def main():
     res = {"attack": a.attack, "PILOT_NEVER_REUSE_AS_EXAM": True, "instance_id": a.instance,
            "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, push=false, PRIME_RUNS_MODE=disabled"}
     srv, port, hits = listener()
-    sib = None
+    sib, sib_name = None, None
     tmo = {k: v for k, v in (("scoring", a.scoring_timeout), ("finalize", a.finalize_timeout)) if v} or None
     try:
         if a.attack == "recon":
-            sh("docker", "rm", "-f", "rt-sibling")
-            sh("docker", "run", "-d", "--rm", "--name", "rt-sibling", "python:3.12-slim", "python3", "-m", "http.server", "9000")
+            sib_name = "rt-sibling-" + secrets.token_hex(6)      # a name of this call's own; no container is removed by a fixed name
+            made = sh("docker", "run", "-d", "--rm", "--label", f"verifiers.run={vfrun.run_label()}", "--name", sib_name,
+                      "python:3.12-slim", "python3", "-m", "http.server", "9000")
+            if made.returncode:
+                raise SystemExit("could not start the sibling container: " + made.stderr.strip()[-200:])
             time.sleep(1.5)
-            ip = sh("docker", "inspect", "--format", "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}", "rt-sibling").stdout.strip()
+            ip = sh("docker", "inspect", "--format", "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}", sib_name).stdout.strip()
             sib = f"{ip}:9000"
             ctl = sh("docker", "run", "--rm", "python:3.12-slim", "python3", "-c",
                      "import socket,struct\n"
@@ -245,8 +257,8 @@ def main():
         r = run(name, a, h, agent_timeout=tmo)
     finally:
         srv.close()
-        if sib:
-            sh("docker", "rm", "-f", "rt-sibling")
+        if sib_name:
+            sh("docker", "rm", "-f", sib_name)               # exactly the container this call started
     res.update(command=r["command"], returncode=r["returncode"], wall_s=r["wall_s"], episodes_saved=len(r["episodes"]),
                timeouts_overridden=tmo, host_listener_hits_during_rollout=len(hits) - hits0, boxes=r["boxes"])
     if not r["episodes"]:

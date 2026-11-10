@@ -12,20 +12,46 @@
 It uses nothing a model's own shell commands would not have: the files of the box and the laboratory address in
 /etc/physim2/lab.json. Report: /workspace/rt_report.json (the harness copies it out for the operator).
 """
-import argparse
-import base64
-import io
-import json
-import os
-import socket
-import struct
-import subprocess
-import sys
-import tarfile
-import threading
-import time
-import urllib.error
-import urllib.request
+# HOST SAFETY, before anything else: modes of this script send SIGKILL to every process they may signal, replace
+# the box's tar, try to mount a tmpfs over /mnt and write under /workspace. It is copied into the agent's box and
+# run THERE.
+import os as _os
+import stat as _stat
+
+
+def _in_exam_box():
+    """True only inside a box this environment prepared: the file Docker puts into every container AND the marker
+    the environment's setup writes as root. A development machine, a Mac, a container this environment did not prepare:
+    False."""
+    try:
+        st = _os.lstat("/etc/physim2/predictor_uid")
+        return _os.path.exists("/.dockerenv") and _stat.S_ISREG(st.st_mode) and st.st_uid == 0
+    except OSError:
+        return False
+
+
+def _box_only(what="this script"):
+    if not _in_exam_box():
+        raise SystemExit(f"refused: {what} runs inside a PhySim exam box only (it kills processes, replaces system files and tries to mount there). "
+                         "Never run it on a machine of your own.")
+
+
+_box_only("redteam/agent_rt.py")
+
+import argparse  # noqa: E402
+import base64  # noqa: E402
+import io  # noqa: E402
+import json  # noqa: E402
+import os  # noqa: E402
+import socket  # noqa: E402
+import struct  # noqa: E402
+import subprocess  # noqa: E402
+import sys  # noqa: E402
+import tarfile  # noqa: E402
+import threading  # noqa: E402
+import time  # noqa: E402
+import urllib.error  # noqa: E402
+import urllib.request  # noqa: E402
 
 sys.path.insert(0, os.getcwd())
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -214,6 +240,7 @@ def recon_net(a):
             n[f"socket_{nm}"] = type(e).__name__
     for tool in ("iptables", "ip", "nft", "nsenter", "mount"):
         n.setdefault("tools", {})[tool] = bool(subprocess.run(["sh", "-c", f"command -v {tool}"], capture_output=True).stdout)
+    _box_only("mount -t tmpfs none /mnt")
     r = subprocess.run(["sh", "-c", "mount -t tmpfs none /mnt 2>&1; echo rc=$?"], capture_output=True, text=True)
     n["mount_tmpfs"] = r.stdout.strip()[-120:]
     # the framework proxy WITH its credential (verifiers puts it into the environment of every command after the cut)
@@ -453,8 +480,10 @@ def mode_hostile(a):
     if a.what == "sigkill":
         os.kill(os.getpid(), 9)
     if a.what == "killall":
+        _box_only("kill -9 -1")                              # asked again, immediately before the kill
         os.system("kill -9 -1")
     if a.what == "hangtar":
+        _box_only("replacing the box's tar")
         for p in ("/usr/bin/tar", "/bin/tar"):
             if os.path.exists(p) and not os.path.islink(p):
                 os.unlink(p)

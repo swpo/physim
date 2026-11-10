@@ -36,10 +36,35 @@ passes everywhere:
   item_bomb       a reply of 3,000 members
   item_extreme    the largest float32 values (a valid reply; finite, very bad score)
 """
-import json
-import os
-import shutil
-import sys
+# HOST SAFETY, before anything else: this script deletes files (submission/, the box's tar) and, in mode
+# `killall`, sends SIGKILL to every process it may signal. It is copied into the agent's box and run THERE.
+import os as _os
+import stat as _stat
+
+
+def _in_exam_box():
+    """True only inside a box this environment prepared: the file Docker puts into every container AND the marker
+    the environment's setup writes as root. A development machine, a Mac, a container this environment did not prepare:
+    False."""
+    try:
+        st = _os.lstat("/etc/physim2/predictor_uid")
+        return _os.path.exists("/.dockerenv") and _stat.S_ISREG(st.st_mode) and st.st_uid == 0
+    except OSError:
+        return False
+
+
+def _box_only(what="this script"):
+    if not _in_exam_box():
+        raise SystemExit(f"refused: {what} runs inside a PhySim exam box only (it deletes files and kills processes there). "
+                         "Never run it on a machine of your own.")
+
+
+_box_only("agents/hostile_submission.py")
+
+import json  # noqa: E402
+import os  # noqa: E402
+import shutil  # noqa: E402
+import sys  # noqa: E402
 
 sys.path.insert(0, os.getcwd())
 import physim2  # noqa: E402
@@ -162,6 +187,7 @@ else:
         os.symlink("loop", "submission/loop")
         os.symlink("/", "submission/root")
     elif mode == "no_tar":
+        _box_only("removing the box's tar")
         for p in ("/usr/bin/tar", "/bin/tar"):
             if os.path.exists(p) and not os.path.islink(p):
                 os.unlink(p)
@@ -173,9 +199,11 @@ else:
         json.dump(rep, open("hostile_report.json", "w"))
         sys.stdout.flush()
         if mode == "killall":
+            _box_only("kill -9 -1")                          # asked again, immediately before the kill
             os.system("kill -9 -1")
         sys.exit(1)
     elif mode.startswith("tar_"):
+        _box_only("replacing the box's tar")
         open("/tmp/fake_tar_mode", "w").write(mode)
         for p in ("/usr/bin/tar", "/bin/tar"):
             if os.path.exists(p) and not os.path.islink(p):

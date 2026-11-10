@@ -30,6 +30,7 @@ import contextlib
 import io
 import json
 import os
+import re
 import secrets
 import time
 
@@ -42,22 +43,60 @@ RUNTIME_DIR = "/runtime"
 BOX_DIR = "/etc/physim2"                                     # the marker of a prepared box (public/_item.py: require_box)
 ROUTE_ENV = {"PHYSIM2_BOX_CLEANUP": "disposable-box"}        # set on the grading route's own commands, nowhere else
 CONTAINER_RUNTIMES = ("docker", "prime")
+VF_CONTAINER_NAME = re.compile(r"^vf-[0-9a-f]{32}$")         # the name verifiers gives a container it creates itself
+
+
+def container_gate(runtime) -> list[str]:
+    """Why `runtime` is NOT a box that verifiers itself provisioned (empty list = it is). Every command this
+    package sends through a verifiers Runtime changes files as root (mkdir, chown, chmod -R, tar -x, rm, the
+    driver's cleanup), so the object must be the real thing, not something that merely says "docker":
+      class     exactly verifiers' DockerRuntime or PrimeRuntime (a `with_env` view keeps the class); never a
+                test double, the subprocess runtime (the worker itself) or another engine
+      type      its config says the same ("docker" for DockerRuntime, "prime" for PrimeRuntime)
+      owned     not borrowed (`info.borrowed`): `DockerRuntime.attach` wraps a container somebody else started,
+                for example by hand with a host folder mounted; verifiers' own `start()` passes no mount
+      docker    not nested in another runtime, and the container carries the name verifiers generated"""
+    why = []
+    try:
+        from verifiers.v1.runtimes import DockerRuntime, PrimeRuntime
+    except Exception as e:                                   # no verifiers, no gate that could pass
+        return [f"verifiers' runtime classes cannot be imported ({type(e).__name__})"]
+    cls = type(runtime)
+    typ = getattr(getattr(runtime, "config", None), "type", None)
+    want = {DockerRuntime: "docker", PrimeRuntime: "prime"}.get(cls)
+    if want is None:
+        why.append(f"{cls.__module__}.{cls.__qualname__} is not verifiers' Docker or Prime runtime")
+    elif typ != want:
+        why.append(f"runtime type {typ!r} does not belong to {cls.__name__}")
+    if getattr(getattr(runtime, "info", None), "borrowed", True) is not False:
+        why.append("the box was not provisioned by verifiers for this run (borrowed, or no runtime info)")
+    if cls is DockerRuntime:
+        if getattr(runtime, "_host", None) is not None:
+            why.append("a Docker engine nested in another runtime")
+        if not VF_CONTAINER_NAME.match(str(getattr(runtime, "_container", None) or "")):
+            why.append("the container does not carry a name verifiers generated")
+    return why
 
 
 def require_container(runtime) -> None:
-    """Every command this package sends through a verifiers Runtime changes files as root (mkdir, chown, tar,
-    the driver's cleanup). On the `subprocess` runtime those commands would run on the worker itself: refuse."""
-    typ = getattr(getattr(runtime, "config", None), "type", None)
-    if typ not in CONTAINER_RUNTIMES:
-        raise RuntimeError(f"refused: runtime {typ!r} is not a container runtime; nothing of physim2_env runs on a host")
+    """Refuse (RuntimeError) unless `runtime` is a container verifiers itself provisioned: see container_gate.
+    Called before EVERY command this package sends into a box."""
+    why = container_gate(runtime)
+    if why:
+        raise RuntimeError("refused: not a box provisioned by verifiers (" + "; ".join(why) + "); nothing of physim2_env runs "
+                           "anywhere else")
 SLACK_S = 120.0                                              # worker-side allowance per request beyond the wall limit
 BOX_S = 240.0                                                # ... and for provisioning and staging a fresh box
 
 
+UID_RANGE = (20000, 59999)                                   # the driver accepts no other uid (public/_item.py: MIN_UID, MAX_UID)
+
+
 def new_uid() -> int:
-    """The predictor's uid in the boxes of ONE rollout. Process limits are counted per uid across every container
-    that shares the host's user namespace, so a fixed uid would let one rollout's predictor starve another's."""
-    return 20000 + secrets.randbelow(40000)
+    """The predictor's uid in the boxes of ONE rollout (and, drawn again, in the agent's box). Process limits are
+    counted per uid across every container that shares the host's user namespace, so a fixed uid would let one
+    rollout's predictor starve another's."""
+    return UID_RANGE[0] + secrets.randbelow(UID_RANGE[1] - UID_RANGE[0] + 1)
 
 
 def exam(hidden: str):

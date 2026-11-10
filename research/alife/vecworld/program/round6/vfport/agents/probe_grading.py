@@ -19,9 +19,35 @@ that the grader's validation passes and the exam items run at all. Questions:
 
 usage (by the scripted harness): probe_grading.py --host-port N
 """
-import json
-import os
-import sys
+# HOST SAFETY, before anything else: this script reads every readable file from / down, opens network
+# connections and leaves a predictor that forks, writes marks and starts a background process. It is copied into
+# the agent's box and run THERE.
+import os as _os
+import stat as _stat
+
+
+def _in_exam_box():
+    """True only inside a box this environment prepared: the file Docker puts into every container AND the marker
+    the environment's setup writes as root. A development machine, a Mac, a container this environment did not prepare:
+    False."""
+    try:
+        st = _os.lstat("/etc/physim2/predictor_uid")
+        return _os.path.exists("/.dockerenv") and _stat.S_ISREG(st.st_mode) and st.st_uid == 0
+    except OSError:
+        return False
+
+
+def _box_only(what="this script"):
+    if not _in_exam_box():
+        raise SystemExit(f"refused: {what} runs inside a PhySim exam box only (it reads every file and probes the network there). "
+                         "Never run it on a machine of your own.")
+
+
+_box_only("agents/probe_grading.py")
+
+import json  # noqa: E402
+import os  # noqa: E402
+import sys  # noqa: E402
 
 sys.path.insert(0, os.getcwd())
 import physim2  # noqa: E402
