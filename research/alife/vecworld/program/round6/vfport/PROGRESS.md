@@ -11,6 +11,22 @@
 - If the container restarted: scratch is /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfreaud1a
   (recreate with `git archive`); worktree /home/user/wt/vfreaud1a, branch wt-vfreaud1a.
 
+## RE-AUDIT of the runbook, round 1 (independent; of commit 73829e5c6) -- 10 Nov 2026, in progress
+- Role: re-auditor of RUNBOOK_MAC.md as the Mac operator reads it (findings A1, A2, B1 to B15; required changes
+  1, 2, 6, 7, 8, 9); the verdict is returned to the coordinator, not written here. Nothing of the port is changed
+  by this role; nothing of the port is executed by it (reading, hashing and `git diff` only so far).
+- Done (read or recomputed): the pin (sha256 of PIN.sha256 equals the runbook's; 105 of 105 listed files match, at
+  454812a2b and at the head); every fenced command walked as zsh on macOS; results/rehearsal_round1.json against
+  the runbook; the fenced commands of cac38e324 (rehearsed) against 454812a2b (pinned); tools/{vfrun,prove,
+  check_probe,make_instances,run_report,settle,pin}.py and the cited verifiers files for the inventory.
+- Open points being written up (all about the text, none found that deletes or kills outside the pilot): the copy
+  of the runbook inside the pinned commit does not name the commit that step 0 must compare; "If a run was
+  interrupted" has no branch for a cut during step 1 (uv sync, image build) and no limit on repeats; the process
+  listing depends on the interpreter keeping `.venv/bin/python` as argv[0] (not so for a framework Python on
+  macOS: inferred); the rehearsal record holds command labels and truncated output, not the commands.
+- If the container restarted: scratch is /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfreaud1b
+  (recreate with `git archive`); worktree /home/user/wt/vfreaud1b, branch wt-vfreaud1b.
+
 ## HOST-SAFETY FIXER, round 1 (after the audit's NO-GO, HOST_SAFETY_AUDIT.md) -- 10 Nov 2026
 
 Worktree `/home/user/wt/vfsafe1` (branch wt-vfsafe1, pushes to `claude/fisim-agent-world-research-hepmlz`).
