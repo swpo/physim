@@ -1,6 +1,6 @@
 # PROGRESS (study foundry, round 5) -- kept for restarts
 
-Updated 2026-11-10 04:35 UTC (instance 1; the study started at 03:40 UTC).
+Updated 2026-11-10 04:40 UTC (instance 1; the study started at 03:40 UTC).
 
 ## Done
 - Worktree /home/user/wt/foundry (branch wt-foundry, sparse research/alife/vecworld).
@@ -19,6 +19,11 @@ Updated 2026-11-10 04:35 UTC (instance 1; the study started at 03:40 UTC).
 - GPU request r5-foundry-001 (cap $13.50, max 1.75 h, ref 22134cfd9 = the rebased copy of the tested
   fa6858c86): PUSHED 04:31 UTC (commit 91273504f). The queue held 2 running jobs and 1 received before it.
   results/checks.json written (CPU checks all ok).
+
+- Mac received the request 04:33:32 UTC (status.json state `received`; two jobs running and r5-slots-006
+  ahead in the queue). A watcher (`bash watch.sh r5-foundry-001`) only lives as long as the instance: restart it.
+- Extra CPU tools written while waiting: `wind_probe.py` (paired wind commands at 50/200/800 nats; tested on
+  prior seed 1), `recheck_cpu.py` (screen certificates of chosen draws on CPU with the job's keys).
 
 ## Next step
 1. (done) final tiny CPU test passed (exit 0, 433 s); request pushed.
