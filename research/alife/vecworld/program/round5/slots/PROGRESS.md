@@ -1,6 +1,6 @@
 # PROGRESS (study slots, round 5) -- kept for restarts
 
-Updated 07:03 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
+Updated 08:35 UTC 10 Nov (instance 4, after the third container restart at about 01:12).
 
 ## Done
 - r5-slots-001 cancelled, r5-slots-002 infra_error ($0), r5-slots-003 pilot done ($3.13, H200, ref e5d146ef3; outputs in results/r5-slots-003/).
@@ -42,6 +42,10 @@ Updated 07:03 UTC 10 Nov (instance 4, after the third container restart at about
   steps in 364 s at 9.4 s per 100 steps); sam_set (second config) is training past step 2000, 21.6 s per 100 steps
   on this card (2.25 times the H200's 9.6 s). At about 830 s per config expect 10-12 of the 14 configs before the
   training deadline (10400 s from 06:30:28 = 09:23:48 UTC); job.sh ends by 09:49 UTC at the latest; about $7.
+
+- 08:18 UTC heartbeat: 8 configs trained (sam_sup, sam_set, sam_set_ws, sam_rec, sam_self, sgm_set, sgc_rec,
+  sac_set), none failed; about 700-800 s per config; expect 13 (all but sam_set_sg); job end about 09:25 UTC.
+  stable.py (new) prints the README tables from results/summary.json.
 
 ## Next step (exact)
 1. when the job ends (done / failed / timeout): bash sfetch.sh r5-slots-008 <scratch dir>; look at progress.txt,
