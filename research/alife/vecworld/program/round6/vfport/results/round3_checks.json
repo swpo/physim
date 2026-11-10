@@ -1,0 +1,468 @@
+{
+ "what": "round 3 of the host-safety fixes: the environment allow-list (M1), the one stop path and its exit statuses (M2, m5), no model credential in a scripted run (M3), theta by file (m1), helpers stopped with their tool (m4), the disk watchdog (D1)",
+ "evidence_labels": {
+  "host_*": "run on the cloud host in a child process under tools/tripwires.py (pure functions on made-up inputs)",
+  "nokey_*": "run on the cloud host: imports of verifiers and of the package under tripwires with an audit hook on every open; the launcher's dry run without tripwires (verifiers' own config resolution, no rollout); a made-up credential file in a scratch home",
+  "box_*": "run in a throwaway container (docker run --rm --network none, no host path): real processes and real signals, a stand-in for vf-eval"
+ },
+ "n_checks": 48,
+ "n_passed": 48,
+ "failed": [],
+ "checks": {
+  "host_env_only_the_allow_list_is_taken_from_the_session": true,
+  "host_env_no_docker_mcp_physim2_python_or_credential_name_gets_through": true,
+  "host_env_fixed_values_are_set_by_the_tool": true,
+  "host_env_model_credentials_only_when_asked_and_never_the_inference_url": true,
+  "host_env_refused_names_are_those_of_the_step_0_check": true,
+  "host_env_a_tool_refuses_such_a_session_and_prints_names_only": true,
+  "host_env_a_session_without_those_names_is_accepted": true,
+  "host_env_a_tools_own_child_environment_passes_and_other_values_do_not": true,
+  "host_env_only_a_unix_socket_counts_as_a_local_docker_engine": true,
+  "host_env_every_docker_call_of_the_tools_gets_the_allow_listed_environment": true,
+  "host_disk_floor_is_8_gib_by_default": true,
+  "host_disk_a_floor_outside_its_range_is_refused": true,
+  "host_disk_one_byte_under_the_floor_refuses_with_status_97": true,
+  "host_disk_exactly_the_floor_is_accepted": true,
+  "host_disk_free_space_is_read_with_statvfs_of_the_home_folder": true,
+  "host_config_the_scripted_config_is_accepted": true,
+  "host_config_a_model_config_needs_the_credentials_flag": true,
+  "host_config_upload_and_the_default_key_variable_are_refused": true,
+  "host_config_stand_in_client_is_loopback_discard_and_a_name_never_set": true,
+  "host_theta_is_read_from_a_0600_regular_file_only": true,
+  "host_theta_prove_py_puts_no_value_on_a_command_line": true,
+  "host_no_tripwire_was_reached": true,
+  "nokey_control_the_stock_import_of_verifiers_opens_the_file_and_loads_its_key": true,
+  "nokey_through_the_package_the_file_is_never_opened": true,
+  "nokey_the_stand_in_client_has_no_key": true,
+  "nokey_control_the_prime_runs_sdk_reads_the_file_even_for_a_disabled_run": true,
+  "nokey_through_the_package_the_prime_runs_sdk_opens_nothing_and_holds_no_key": true,
+  "nokey_a_laboratory_process_never_opens_it_even_in_step_3_mode": true,
+  "nokey_the_launcher_resolves_the_scripted_config_without_opening_it": true,
+  "nokey_no_tripwire_was_reached_by_the_imports": true,
+  "box_time_limit_one_sigterm_then_the_tool_ends_with_status_98": true,
+  "box_sigkill_only_after_sigterm_and_the_grace_period_then_status_98": true,
+  "box_a_vf_eval_that_dies_of_sigkill_ends_the_tool_with_status_98": true,
+  "box_watchdog_refuses_before_a_run_and_starts_nothing": true,
+  "box_watchdog_stops_a_run_through_the_one_stop_path_with_status_97": true,
+  "box_watchdog_deletes_nothing": true,
+  "box_a_run_that_ends_by_itself_returns_normally": true,
+  "box_the_child_gets_the_allow_list_and_nothing_else_of_the_session": true,
+  "box_the_config_of_a_tool_run_names_the_stand_in_client_and_no_upload": true,
+  "box_a_session_with_docker_host_is_refused_before_anything_starts": true,
+  "box_command_form_starts_a_scripted_config_without_any_credential": true,
+  "box_command_form_refuses_a_model_config_without_the_flag": true,
+  "box_command_form_dry_run_of_a_model_config_gets_no_credential": true,
+  "box_command_form_passes_the_key_only_with_the_step_3_flag": true,
+  "box_command_form_is_refused_under_the_floor": true,
+  "box_a_sigterm_to_the_tool_reaches_the_stand_in_as_sigterm": true,
+  "box_a_helper_is_stopped_with_its_tool": true,
+  "box_the_test_container_is_gone": true
+ },
+ "evidence": {
+  "host_under_tripwires": {
+   "env": {
+    "names_in_the_made_up_session": 31,
+    "names_the_child_gets": [
+     "HF_TOKEN",
+     "HOME",
+     "JAX_PLATFORMS",
+     "LANG",
+     "MKL_NUM_THREADS",
+     "OMP_NUM_THREADS",
+     "OPENBLAS_NUM_THREADS",
+     "PATH",
+     "PRIME_RUNS_MODE",
+     "PYTHONDONTWRITEBYTECODE",
+     "PYTHONPATH",
+     "TMPDIR",
+     "USER",
+     "VF_RUN_ID",
+     "XLA_FLAGS"
+    ],
+    "taken_from_the_session_unchanged": [
+     "HOME",
+     "LANG",
+     "TMPDIR",
+     "USER",
+     "VF_RUN_ID"
+    ],
+    "refused_names_of_the_made_up_session": [
+     "BUILDX_BUILDER",
+     "DOCKER_CONFIG",
+     "DOCKER_CONTEXT",
+     "DOCKER_HOST",
+     "MCP_HOST",
+     "MCP_PORT",
+     "PHYSIM2_AGENTENV",
+     "PHYSIM2_STORE",
+     "PRIME_RUNS_MODE",
+     "PYTHONHOME",
+     "PYTHONPATH",
+     "UV_PROJECT_ENVIRONMENT",
+     "VF_STATE_SECRET",
+     "VIRTUAL_ENV"
+    ],
+    "refusal_first_line": "refused: the environment of this command holds BUILDX_BUILDER, DOCKER_CONFIG, DOCKER_CONTEXT, DOCKER_HOST, MCP_HOST, MCP_PORT, PHYSIM2_AGENTENV, PHYSIM2_STORE, PRIME_RUNS_MODE, PYTHONHOME, PYTHONPATH,",
+    "a_tools_own_child_environment": {
+     "refused": [],
+     "with_another_PYTHONPATH_and_upload_mode": [
+      "PRIME_RUNS_MODE",
+      "PYTHONPATH"
+     ]
+    },
+    "endpoints": {
+     "unix:///Users/lead/.docker/run/docker.sock": true,
+     "unix:///var/run/docker.sock": true,
+     "tcp://203.0.113.7:2375": false,
+     "ssh://someone@elsewhere": false,
+     "npipe:////./pipe/docker_engine": false,
+     "": false,
+     "unix:///": false,
+     "unix:///a\ntcp://b": false
+    }
+   },
+   "disk": {
+    "one byte under the floor": {
+     "status": 97,
+     "said": "refused: the disk watchdog did not start the run x: 8.00 GiB free on the file system of the home folder, the floor is 8.00 GiB. Nothing was started and nothing was deleted. Stop and report."
+    },
+    "free_bytes_of_this_host_home": 2062266368
+   },
+   "config": {
+    "scripted": null,
+    "model config, no credentials flag": "refused: without --model-credentials this tool starts scripted rollouts only: the config must have",
+    "model config, dry run": null,
+    "model config, credentials flag": null,
+    "push = true": "refused: the config does not say `push = false`",
+    "scripted with the default key variable": "refused: without --model-credentials this tool starts scripted rollouts only: the config must have"
+   },
+   "theta": {
+    "mode 0600": [
+     0.25,
+     1.5,
+     -3.0
+    ],
+    "mode 0644": "refused",
+    "a symbolic link": "refused",
+    "missing": "FileNotFoundError"
+   },
+   "tripwires": {
+    "installed": 65,
+    "hits": []
+   }
+  },
+  "made_up_credential_file": {
+   "file": "<scratch>/check_round3/home/.prime/config.json, holding the text FAKE-KEY-NOT-A-CREDENTIAL",
+   "traces": {
+    "stock": {
+     "mode": "stock",
+     "home": "<scratch>/home",
+     "default_client_key": "a key was loaded (30 characters, the made-up one: True)",
+     "default_client_headers": [
+      "X-Prime-Team-ID"
+     ],
+     "stand_in_client_key": "EMPTY",
+     "tripwire_hits": [],
+     "opens_by_the_prime_runs_sdk_for_a_disabled_run": 2,
+     "key_the_prime_runs_sdk_holds": "a key was loaded (the made-up one: True)",
+     "opens_of_the_made_up_credential_file": 5
+    },
+    "package": {
+     "mode": "package",
+     "home": "<scratch>/home",
+     "state": "stand-in",
+     "default_client_key": "EMPTY",
+     "default_client_headers": [],
+     "stand_in_client_key": "EMPTY",
+     "tripwire_hits": [],
+     "opens_by_the_prime_runs_sdk_for_a_disabled_run": 0,
+     "key_the_prime_runs_sdk_holds": "none",
+     "opens_of_the_made_up_credential_file": 0
+    },
+    "laboratory in step-3 mode": {
+     "mode": "package",
+     "home": "<scratch>/home",
+     "state": "stand-in",
+     "default_client_key": "EMPTY",
+     "default_client_headers": [],
+     "stand_in_client_key": "EMPTY",
+     "tripwire_hits": [],
+     "opens_by_the_prime_runs_sdk_for_a_disabled_run": 0,
+     "key_the_prime_runs_sdk_holds": "none",
+     "opens_of_the_made_up_credential_file": 0
+    },
+    "launcher": {
+     "mode": "launcher",
+     "home": null,
+     "exit": 0,
+     "state": "stand-in",
+     "resolved_config_written": [
+      "resolved"
+     ],
+     "opens_of_the_made_up_credential_file": 0
+    }
+   }
+  },
+  "in_a_throwaway_container": {
+   "time_limit": {
+    "status": 98,
+    "printed": "refused to go on: vf-eval stopped after 1 s: SIGTERM. Nothing further was started. Stop and report (RUNBOOK_MAC.md, \"If a run was interrupted\").",
+    "seconds": 1.37,
+    "stub_log": [
+     "started",
+     "got SIGTERM",
+     "cleaned up, exiting"
+    ],
+    "stub_still_running": false,
+    "record": {
+     "ended": "stopped after 1 s: SIGTERM",
+     "returncode": 130,
+     "time_unix": 1794340770.735957,
+     "free_bytes_now": 2061930496,
+     "disk_floor_bytes": 268435456,
+     "deleted_by_the_watchdog": "nothing"
+    }
+   },
+   "ignores_sigterm": {
+    "status": 98,
+    "printed": "refused to go on: vf-eval stopped after 1 s: SIGTERM, then SIGKILL. Its containers and its laboratory process may be left. Nothing further was started. Stop and report (RUNBOOK_MAC.md, \"If a run was interrupted\").",
+    "seconds": 3.0,
+    "stub_log": [
+     "started",
+     "got SIGTERM"
+    ],
+    "stub_still_running": false,
+    "record": {
+     "ended": "stopped after 1 s: SIGTERM, then SIGKILL",
+     "returncode": -9,
+     "time_unix": 1794340773.7410293,
+     "free_bytes_now": 2061922304,
+     "disk_floor_bytes": 268435456,
+     "deleted_by_the_watchdog": "nothing"
+    }
+   },
+   "dies_of_sigkill": {
+    "status": 98,
+    "printed": "refused to go on: vf-eval died of signal 9. Its containers and its laboratory process may be left. Nothing further was started. Stop and report (RUNBOOK_MAC.md, \"If a run was interrupted\").",
+    "seconds": 0.03,
+    "stub_log": [
+     "started"
+    ],
+    "record": {
+     "ended": "exited",
+     "returncode": -9,
+     "time_unix": 1794340773.768023,
+     "free_bytes_now": 2061914112,
+     "disk_floor_bytes": 268435456,
+     "deleted_by_the_watchdog": "nothing"
+    }
+   },
+   "watchdog_before_a_run": {
+    "status": 97,
+    "printed": "refused: the disk watchdog did not start the run stub-d: 3.00 GiB free on the file system of the home folder, the floor is 8.00 GiB. Nothing was started and nothing was deleted. Stop and report.",
+    "seconds": 0.0,
+    "stub_log": [],
+    "out_dir_created": false
+   },
+   "watchdog_during_a_run": {
+    "status": 97,
+    "printed": "refused: stopped by the disk watchdog (7.00 GiB free on the file system of the home folder, floor 8.00 GiB): SIGTERM. The run was stopped through the tool's one stop path; nothing was deleted. Stop and report (RUNBOOK_MAC.md, \"If a run was interrupted\", points 1 to 5).",
+    "seconds": 1.22,
+    "stub_log": [
+     "started",
+     "got SIGTERM",
+     "cleaned up, exiting"
+    ],
+    "stub_still_running": false,
+    "record": {
+     "ended": "stopped by the disk watchdog (7.00 GiB free on the file system of the home folder, floor 8.00 GiB): SIGTERM",
+     "returncode": 130,
+     "time_unix": 1794340774.987283,
+     "free_bytes_now": 7516192768,
+     "disk_floor_bytes": 8589934592,
+     "deleted_by_the_watchdog": "nothing"
+    },
+    "looks_at_the_disk": 5,
+    "files_of_earlier_runs_still_there": true
+   },
+   "ends_by_itself": {
+    "returned": "exited",
+    "printed": "",
+    "seconds": 0.04,
+    "stub_log": [
+     "started",
+     "ended by itself"
+    ],
+    "record": null
+   },
+   "child_environment": {
+    "session_names": [
+     "AWS_SECRET_ACCESS_KEY",
+     "HF_TOKEN",
+     "HOME",
+     "HTTPS_PROXY",
+     "LANG",
+     "LD_PRELOAD",
+     "PATH",
+     "PRIME_API_KEY",
+     "PRIME_TEAM_ID",
+     "PYTHONSTARTUP",
+     "SSH_AUTH_SOCK",
+     "TMPDIR",
+     "VF_RUN_ID",
+     "XDG_CACHE_HOME"
+    ],
+    "child_names": [
+     "HOME",
+     "JAX_PLATFORMS",
+     "LANG",
+     "MKL_NUM_THREADS",
+     "OMP_NUM_THREADS",
+     "OPENBLAS_NUM_THREADS",
+     "PATH",
+     "PRIME_RUNS_MODE",
+     "PYTHONDONTWRITEBYTECODE",
+     "PYTHONPATH",
+     "TMPDIR",
+     "VF_RUN_ID",
+     "XLA_FLAGS"
+    ],
+    "child_argv": [
+     "@",
+     "/t/runs/stub-g.toml",
+     "--no-rich"
+    ],
+    "client_in_the_config": {
+     "type": "eval",
+     "base_url": "http://127.0.0.1:9/v1",
+     "api_key_var": "PHYSIM2_NO_MODEL_KEY"
+    }
+   },
+   "dirty_session": {
+    "status": "refused: the environment of this command holds DOCKER_HOST.\nA tool of the pilot starts only from an environment without PHYSIM2_*, UV_*, VIRTUAL_ENV, PYTHONPATH, PYTHONHOME, DOCKER_*, BUILDX_*, VF_* (other than the VF_RUN_ID of the command itself), MCP_HOST, MCP_PORT and PRIME_RUNS_MODE: one of them",
+    "printed": "",
+    "seconds": 0.0,
+    "stub_log": []
+   },
+   "command_scripted": {
+    "returned": 0,
+    "printed": "",
+    "seconds": 0.1,
+    "child_argv": [
+     "@",
+     "/t/configs/scripted.toml",
+     "--run.name",
+     "single-d",
+     "-o",
+     "/t/single",
+     "--no-rich"
+    ],
+    "child_cwd": "/t",
+    "child_env": [
+     "HOME",
+     "JAX_PLATFORMS",
+     "LC_CTYPE",
+     "MKL_NUM_THREADS",
+     "OMP_NUM_THREADS",
+     "OPENBLAS_NUM_THREADS",
+     "PATH",
+     "PHYSIM2_STORE",
+     "PRIME_RUNS_MODE",
+     "PYTHONDONTWRITEBYTECODE",
+     "PYTHONPATH",
+     "VF_RUN_ID",
+     "XLA_FLAGS"
+    ],
+    "store": "/t/store"
+   },
+   "command_model_without_flag": {
+    "status": "refused: without --model-credentials this tool starts scripted rollouts only: the config must have\n    [client]\n    base_url = \"http://127.0.0.1:9/v1\"\n    api_key_var = \"PHYSIM2_NO_MODEL_KEY\"\nand the harness physim2-script. A model rollout is step 3 of RUNBOOK_MAC.md and has its own command.",
+    "printed": "",
+    "seconds": 0.0,
+    "stub_log": []
+   },
+   "command_model_dry_run": {
+    "returned": 0,
+    "printed": "",
+    "seconds": 0.03,
+    "child_argv": [
+     "@",
+     "/t/configs/model.toml",
+     "--run.name",
+     "single-d",
+     "-o",
+     "/t/single",
+     "--dry-run"
+    ],
+    "child_env": [
+     "HOME",
+     "JAX_PLATFORMS",
+     "LC_CTYPE",
+     "MKL_NUM_THREADS",
+     "OMP_NUM_THREADS",
+     "OPENBLAS_NUM_THREADS",
+     "PATH",
+     "PHYSIM2_STORE",
+     "PRIME_RUNS_MODE",
+     "PYTHONDONTWRITEBYTECODE",
+     "PYTHONPATH",
+     "VF_RUN_ID",
+     "XLA_FLAGS"
+    ]
+   },
+   "command_model_with_flag": {
+    "returned": 0,
+    "printed": "",
+    "seconds": 0.03,
+    "child_env": [
+     "HOME",
+     "JAX_PLATFORMS",
+     "LC_CTYPE",
+     "MKL_NUM_THREADS",
+     "OMP_NUM_THREADS",
+     "OPENBLAS_NUM_THREADS",
+     "PATH",
+     "PHYSIM2_MODEL_CREDENTIALS",
+     "PHYSIM2_STORE",
+     "PRIME_API_KEY",
+     "PRIME_RUNS_MODE",
+     "PRIME_TEAM_ID",
+     "PYTHONDONTWRITEBYTECODE",
+     "PYTHONPATH",
+     "VF_RUN_ID",
+     "XLA_FLAGS"
+    ]
+   },
+   "command_under_the_floor": {
+    "status": 97,
+    "printed": "refused: the disk watchdog did not start the run single-d: 5.00 GiB free on the file system of the home folder, the floor is 8.00 GiB. Nothing was started and nothing was deleted. Stop and report.",
+    "seconds": 0.0,
+    "stub_log": []
+   },
+   "tool_told_to_stop": {
+    "tool_returncode": -2,
+    "tool_last_line": "KeyboardInterrupt",
+    "stub_log": [
+     "started",
+     "got SIGTERM",
+     "cleaned up, exiting"
+    ],
+    "stub_still_running": false
+   },
+   "helper": {
+    "helper_log": [
+     "helper started 19",
+     "helper got SIGTERM"
+    ],
+    "helper_still_running": false,
+    "tool_returncode": -2,
+    "tool_last_line": "KeyboardInterrupt"
+   }
+  },
+  "container": {
+   "started_as": "docker run --rm -i --name vfr3fix1-check-round3 --network none physim2-ring:1 python3 -B -   (no mount, no socket, not privileged)",
+   "still_there_afterwards": false
+  }
+ },
+ "left_behind": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3fix1/t3/check_round3 (small files of this test; the caller removes its scratch)"
+}

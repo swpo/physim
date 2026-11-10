@@ -19,8 +19,16 @@
   through `tools/prove.py`, one rollout through the command form of `tools/vfrun.py`, report tool: all as
   expected. It found two things, both fixed: a helper started by a tool refused the tool's own child environment;
   the prime-runs SDK reads the credential file even for a disabled run.
-- NOT yet done: `PIN.sha256` regenerated; the rehearsal from a fresh clone (`results/rehearsal_round3.json`);
-  README, `results/summary.json`, `results/host_safety_round3.json`; removal of worktree and scratch.
+- DONE since: `PIN.sha256` regenerated (109 files, sha256 cd67eb4b...03e4) and committed as 00947b226, the commit
+  the rehearsal runs from (fresh sparse clone in `<scratch>/rehearsal/clone`; record lines in
+  `<scratch>/rehearsal/record.jsonl`, written by `rehearsal/issue3.py`; an inotify watcher on the made-up
+  credential folder writes `<scratch>/rehearsal/opens.jsonl`). Rehearsed so far, all as the runbook says: step 0
+  (with the deliberate dirty-session and disk refusals), step 1 without the image build, the stop command (first
+  aimed at the waiting shell on purpose), a hard kill of vf-eval with the label-checked container removal, a
+  watchdog refusal before a run (the runbook's own 8 GiB) and a watchdog stop during a run (ballast), three resets.
+- RUNNING NOW (20:07 UTC): the clean pass of step 2a in the rehearsal clone, then 2b (20 minutes), 2c, step 4.
+- NOT yet done: the rest of the rehearsal and `results/rehearsal_round3.json`; README, `results/summary.json`,
+  `results/host_safety_round3.json`; removal of worktree and scratch.
 - Running: at most one background script of mine at a time (`<scratch>/pre/run*.sh`, a scripted rollout labelled
   `verifiers.run=vfr3fix1-pretest`); the Docker daemon was started by me after a restart of the container
   (log in `<scratch>/dockerd.log`); never stop it.
