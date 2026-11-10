@@ -111,14 +111,14 @@
     {
       "billed_usd": null,
       "cap_usd": 12.4,
-      "conservative_usd": 0.1852,
+      "conservative_usd": 0.1876,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.093,
+      "hours": 0.094,
       "job_id": "r5-bias2-007",
       "purpose": "Round-5 study bias2, follow-up: closure trained on spatially whitened latents (local encoders, block and 8-px halo, c = 1) on the vortex, membrane and gliders worlds, with the per-channel closure configs and all hand designs again on the same data",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "provisioning"
+      "state": "running"
     },
     {
       "billed_usd": 0.0,
@@ -233,8 +233,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 41.1916,
     "prior_spend_usd": 0.0,
-    "spent_usd": 28.9768,
+    "spent_usd": 28.9792,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-10T02:25:23Z"
+    "updated_at": "2026-11-10T02:25:27Z"
   }
 }
