@@ -23,7 +23,7 @@ Part 2  the probes of this port:
             a named pipe left as stderr.txt, a reply of 3,000 members: K on those items, a finite reward, no hang
 Every check is a named boolean with its evidence; the output holds no hidden value.
 
-usage: python tools/check_probe.py --store DIR --scratch DIR --out results/probe_ring.json
+usage: VF_RUN_ID=<label> python tools/check_probe.py --store DIR --scratch DIR --disk-floor-gib 8 --out results/probe_ring.json
 """
 import argparse
 import json
@@ -40,12 +40,15 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
 sys.path.insert(0, HERE)
 import vfrun  # noqa: E402
+
+vfrun.require_clean_environment()                          # before the package is imported: see vfrun.ENV_REFUSE
 from physim2_env._paths import agentenv_root  # noqa: E402
 
 HOSTILE = ["delete", "empty", "oversize", "huge", "no_tar", "symlinks", "junk", "tar_duplicate", "tar_collision", "tar_longpath"]
 VALIDATION = ["raw_submit_broken", "fake_validator", "unsubmitted_nondeterministic", "unsubmitted_partly_working", "submit_cap"]
 ITEMS = ["item_overflow", "item_fifo", "item_bomb", "item_extreme"]
 STOCK = ["delete", "huge", "no_tar", "symlinks", "junk", "tar_duplicate"]
+LOOPBACK_NAMES = ["127.0.0.1", "localhost", "vf.host.internal", "host.docker.internal"]   # as agents/probe_grading.py asks them
 
 
 def listener():
@@ -80,8 +83,9 @@ def uncut_container(port, image):
             f" try:\n  socket.create_connection((h,{port}),timeout=3).close(); out.append('REACHED')\n except Exception as e:\n  out.append(type(e).__name__)\n"
             "print('REACHED' if 'REACHED' in out else out[0])\n")
     # the run label on this container too: if the tool is cut off here, the listing by label finds it
+    # (on a timeout Python kills this `docker run` client, its own child; the container then ends by itself and --rm removes it)
     r = subprocess.run(["docker", "run", "--rm", "--label", f"verifiers.run={vfrun.run_label()}", image, "python3", "-c", code],
-                       capture_output=True, text=True, timeout=120)
+                       capture_output=True, text=True, timeout=120, env=vfrun.child_env())
     return r.stdout.strip() or r.stderr.strip()[-200:]
 
 
@@ -106,13 +110,20 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--image", default="physim2-ring:1")
     ap.add_argument("--cpu", type=float, default=2)
+    ap.add_argument("--disk-floor-gib", type=float, default=vfrun.DISK_FLOOR_GIB,
+                    help="the disk watchdog: no run starts, and a run is stopped, when the file system of the home folder has less free space")
     a = ap.parse_args()
+    vfrun.DISK_FLOOR_GIB = a.disk_floor_gib
+    vfrun.run_label()
+    vfrun.require_disk(vfrun.disk_floor_bytes(), "the tool")
     t0 = time.time()
     iid = "probe-ring-w0"
     idx = os.path.join(a.store, "index.json")
     if not (os.path.exists(idx) and any(r["instance_id"] == iid for r in json.load(open(idx)))):
-        subprocess.run([sys.executable, "-B", os.path.join(HERE, "make_instances.py"), "--store", a.store, "--world", "ring",
-                        "--config", "probe_ring", "--n", "1", "--prefix", "probe-ring"], check=True, env=vfrun.child_env())
+        r = vfrun.run_helper([sys.executable, "-B", os.path.join(HERE, "make_instances.py"), "--store", a.store, "--world", "ring",
+                              "--config", "probe_ring", "--n", "1", "--prefix", "probe-ring"])
+        if r.returncode:
+            raise SystemExit(f"make_instances.py ended with status {r.returncode}")
     hidden = os.path.join(a.store, iid, "hidden")
     out_dir, notes = os.path.join(a.scratch, "runs"), os.path.join(a.scratch, "notes")
     # resumable: a finished rollout is never repeated (its laboratory is spent, and this machine restarts)
@@ -300,7 +311,8 @@ def main():
                 for k, v in needles.items():
                     if v.encode() in raw:
                         found[k].append(os.path.relpath(p, a.scratch))
-    vb_net = {k: sorted({i["box"]["net"][k] for i in items}) for k in (items[0]["box"]["net"] if items else {})}
+    flat = lambda v: json.dumps(v, sort_keys=True) if isinstance(v, (dict, list)) else v  # noqa: E731
+    vb_net = {k: sorted({flat(i["box"]["net"][k]) for i in items}) for k in (items[0]["box"]["net"] if items else {})}
     hostile = {m: runs[f"hostile-{m}"] for m in HOSTILE + VALIDATION + ITEMS}
     stock = {m: runs[f"stock-{m}"] for m in STOCK}
     gB1 = grade_record(a.store, iid, B1["trace_id"])
@@ -365,6 +377,12 @@ def main():
         "c_agent_box_no_public_route": ab["net"]["public_tcp"] != "REACHED" and ab["net"]["public_tcp_443"] != "REACHED" and ab["net"]["dns"] != "RESOLVED",
         "c_agent_box_cannot_reach_host_listener": ab["net"]["host_listener"] != "REACHED",
         "c_agent_box_proxy_refuses_other_destinations": ab["net"]["proxy_public"] == "HTTP 403" and ab["net"]["proxy_host_listener"] == "HTTP 403",
+        # round 3, m8: the proxy runs on the worker, where these four names mean the worker's own loopback (on Docker
+        # Desktop the box also knows host.docker.internal). Asked for the host listener's port, by GET and by
+        # CONNECT, with the box's own proxy credentials, each must be refused; the listener sees no connection
+        # (c_host_listener_saw_no_box). Scheme "http": a refusal is HTTP 403 for both verbs.
+        "c_agent_box_proxy_refuses_the_workers_own_loopback_names": sorted(ab["net"].get("proxy_loopback_names", {})) == sorted(LOOPBACK_NAMES)
+        and all(v == {"GET": "HTTP 403", "CONNECT": "HTTP 403"} for v in ab["net"]["proxy_loopback_names"].values()),
         "c_agent_box_reaches_the_lab": ab["net"]["lab"].startswith("HTTP ") and A["address_file_matches_tool_url"] is True,
         "c_verifier_box_no_public_route": bool(items) and all(i["box"]["net"]["public_tcp"] != "REACHED" and i["box"]["net"]["public_tcp_443"] != "REACHED"
                                                               and i["box"]["net"]["dns"] != "RESOLVED" for i in items),

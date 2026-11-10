@@ -170,4 +170,8 @@ class LabTools(vf.Toolset[LabToolsConfig]):
 
 
 if __name__ == "__main__":
+    # The laboratory answers on this machine's loopback, on a port the system chooses, whatever the environment
+    # of the worker says: verifiers' server would otherwise bind $MCP_HOST and $MCP_PORT (mcp/server.py:278-283).
+    os.environ["MCP_HOST"] = "127.0.0.1"
+    os.environ.pop("MCP_PORT", None)
     LabTools.run()

@@ -14,7 +14,8 @@ that the grader's validation passes and the exam items run at all. Questions:
   (b) leak          is a canary value (worker environment, token-like name) or any token-like variable visible
                     in the environment or in any readable file of either box?
   (c) network       which routes exist from each box? (a public address, DNS, a listener on the host, the
-                    laboratory's address, the box's HTTP proxy)
+                    laboratory's address, the box's HTTP proxy: a public name, the host's gateway address, and the
+                    four names under which the proxy's own machine is its loopback)
   (d) identity      which user runs the predictor, can it write the submission or its request?
 
 usage (by the scripted harness): probe_grading.py --host-port N
@@ -53,7 +54,7 @@ sys.path.insert(0, os.getcwd())
 import physim2  # noqa: E402
 
 BOX = r'''
-import json, os, re, socket, struct, urllib.request
+import base64, json, os, re, socket, struct, urllib.parse, urllib.request
 
 NEEDLE = ("physim2-" + "canary-").encode()               # never contiguous in any file of ours
 TOKEN = re.compile(r"(TOKEN|SECRET|PASSWORD|PASSWD|CREDENTIAL|API_?KEY|ACCESS_?KEY|PRIVATE_?KEY)", re.I)
@@ -109,6 +110,27 @@ def http(url, proxy=None, data=None):
         return type(e).__name__
 
 
+LOOPBACK_NAMES = ("127.0.0.1", "localhost", "vf.host.internal", "host.docker.internal")
+
+
+def via_proxy(method, host, port, proxy):
+    """Ask the box's proxy, with the box's own proxy credentials, for http://host:port/ (GET) or for a tunnel to
+    host:port (CONNECT), over a plain socket: urllib would not ask the proxy at all for a name on NO_PROXY, and
+    these names are on it. Returns the proxy's answer ("HTTP 403" = refused) or the name of the error."""
+    try:
+        u = urllib.parse.urlsplit(proxy)
+        auth = base64.b64encode((urllib.parse.unquote(u.username or "") + ":" + urllib.parse.unquote(u.password or "")).encode()).decode()
+        target = f"{host}:{int(port)}" if method == "CONNECT" else f"http://{host}:{int(port)}/"
+        with socket.create_connection((u.hostname, u.port), timeout=4) as s:
+            s.settimeout(6)
+            s.sendall((f"{method} {target} HTTP/1.1\r\nHost: {host}:{int(port)}\r\nProxy-Authorization: Basic {auth}\r\n"
+                       "Connection: close\r\n\r\n").encode())
+            line = s.recv(256).split(b"\r\n")[0].decode("latin-1").split()
+        return "HTTP " + line[1] if len(line) > 1 and line[0].startswith("HTTP/") else "no answer"
+    except Exception as e:
+        return type(e).__name__
+
+
 def box_report(host_port, lab_url, full):
     env = dict(os.environ)
     rep = {"uid": os.getuid(), "env_names": sorted(env), "env_token_like": sorted(k for k in env if TOKEN.search(k)),
@@ -154,7 +176,9 @@ def box_report(host_port, lab_url, full):
                   "host_listener": ("REACHED" if "REACHED" in tries else tries[0]) if tries else "no gateway",
                   "lab": http(lab_url, data=b"{}") if lab_url else "no address",
                   "proxy_public": http("http://example.com/", proxy) if proxy else "no proxy",
-                  "proxy_host_listener": http(f"http://{gw}:{host_port}/", proxy) if proxy and gw else "no proxy"}
+                  "proxy_host_listener": http(f"http://{gw}:{host_port}/", proxy) if proxy and gw else "no proxy",
+                  "proxy_loopback_names": {n: {m: via_proxy(m, n, host_port, proxy) for m in ("GET", "CONNECT")}
+                                           for n in LOOPBACK_NAMES} if proxy else "no proxy"}
     return rep
 '''
 

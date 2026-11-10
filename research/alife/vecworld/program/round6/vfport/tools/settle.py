@@ -49,6 +49,9 @@ def settle(store: str, run_dir: str, write: bool = True) -> list[dict]:
 
 
 if __name__ == "__main__":
+    sys.path.insert(0, HERE)
+    import vfrun
+    vfrun.require_clean_environment()                      # before the package is imported: see vfrun.ENV_REFUSE
     ap = argparse.ArgumentParser()
     ap.add_argument("--store", required=True)
     ap.add_argument("--run-dir", required=True)

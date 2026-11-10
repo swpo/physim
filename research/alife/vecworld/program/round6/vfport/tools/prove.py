@@ -4,8 +4,10 @@ predictor runs in the verifier box), the reference table and the acceptance shar
 
 For each of --worlds fresh hidden instances (tools/make_instances.py; they live in --store only):
   S, D, P0, PM, null   agentenv's agents/reference_agent.py, run in the agent's box by the physim2-script harness
-  C                    needs the true parameters: built on the worker (same script, --no-submit --theta), then
-                       installed and submitted from the agent's box by agents/install_prebuilt.py
+  C                    needs the true parameters: built on the worker by tools/build_reference.py (the same script,
+                       --no-submit; the parameters go from a file of mode 0600 in the store into that process's
+                       memory, never onto a command line), then installed and submitted from the agent's box by
+                       agents/install_prebuilt.py
 Every rollout is graded by the reward of physim2_env (one item at a time in the verifier box); the per-item
 scores stay in the store and evaluator.grader.table (agentenv, unchanged) computes the table from them.
 The output JSON holds no hidden value: no theta, no secret, no item; only scores, counters, commitments.
@@ -17,7 +19,7 @@ in ONE verifier box (--isolation shared, 0.6 s per item). The default of the tas
 exercised on --box-check policies of the first world: the same frozen submission must get the same per-item
 scores in both modes.
 
-usage: python tools/prove.py --store DIR --scratch DIR --worlds 4 --out results/proof_ring.json
+usage: VF_RUN_ID=<label> python tools/prove.py --store DIR --scratch DIR --worlds 4 --disk-floor-gib 8 --out results/proof_ring.json
 """
 import argparse
 import json
@@ -35,6 +37,8 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
 sys.path.insert(0, HERE)
 import vfrun  # noqa: E402
+
+vfrun.require_clean_environment()                          # before the package is imported: see vfrun.ENV_REFUSE
 from physim2_env._paths import agentenv_root, use_agentenv  # noqa: E402
 
 POLICIES = ["S", "D", "P0", "PM", "C", "null"]
@@ -51,14 +55,23 @@ def prebuild_C(store, iid, sizes, seed):
     if os.path.exists(os.path.join(out, "predict.py")):
         return out
     os.makedirs(out, exist_ok=True)
-    theta = json.load(open(os.path.join(store, iid, "hidden", "instance.json")))["theta"]
     ae = agentenv_root()
-    cmd = [sys.executable, "-B", os.path.join(ae, "agents", "reference_agent.py"), "--policy", "C", "--sizes", json.dumps(sizes),
-           "--seed", str(seed), "--theta", ",".join(repr(float(v)) for v in theta), "--no-submit", "--out", out]
+    # The hidden parameters go to the builder through a file of mode 0600 beside (never inside) the folder that
+    # is later copied into the agent's box, and from there into the builder's memory: not onto a command line,
+    # which every `ps` on this machine shows (finding m1). The file stays in the store and goes with it.
+    theta_file = os.path.join(store, iid, "work", "reference_C.theta.json")
+    if not os.path.lexists(theta_file):
+        theta = json.load(open(os.path.join(store, iid, "hidden", "instance.json")))["theta"]
+        fd = os.open(theta_file, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0), 0o600)
+        with os.fdopen(fd, "w") as f:
+            json.dump({"theta": [float(v) for v in theta]}, f)
+        del theta
+    cmd = [sys.executable, "-B", os.path.join(HERE, "build_reference.py"), "--theta-file", theta_file,
+           "--script", os.path.join(ae, "agents", "reference_agent.py"), "--",
+           "--policy", "C", "--sizes", json.dumps(sizes), "--seed", str(seed), "--no-submit", "--out", out]
     tmp = os.path.join(store, iid, "work", "reference_C_cwd")
     os.makedirs(tmp, exist_ok=True)
-    env = vfrun.child_env({"PYTHONPATH": ae})
-    r = subprocess.run(["nice", "-n", "10"] + cmd, cwd=tmp, env=env, capture_output=True, text=True)
+    r = vfrun.run_helper(cmd, cwd=tmp, env=vfrun.child_env({"PYTHONPATH": ae}), capture=True)
     if r.returncode:
         raise RuntimeError("building C failed: " + r.stderr[-500:])
     shutil.copy(os.path.join(ROOT, "agents", "install_prebuilt.py"), os.path.join(out, "install_prebuilt.py"))
@@ -103,16 +116,23 @@ def main():
     ap.add_argument("--no-cross-check", action="store_true",
                     help="skip the comparison with round 5's own grader, which runs the evaluator's reference predictor in agentenv's "
                          "local sandbox ON THIS MACHINE (written for Linux; use this flag on a Mac)")
+    ap.add_argument("--disk-floor-gib", type=float, default=vfrun.DISK_FLOOR_GIB,
+                    help="the disk watchdog: no run starts, and a run is stopped, when the file system of the home folder has less free space")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
+    vfrun.DISK_FLOOR_GIB = a.disk_floor_gib
+    vfrun.run_label()
+    vfrun.require_disk(vfrun.disk_floor_bytes(), "the tool")
     sizes, pols = json.loads(a.sizes), a.policies.split(",")
     t0, c0 = time.time(), time.process_time()
     ids = [f"{a.prefix}-w{w}" for w in range(a.worlds)]
     idx = os.path.join(a.store, "index.json")
     have = {r["instance_id"] for r in json.load(open(idx))} if os.path.exists(idx) else set()
     if not set(ids) <= have:
-        subprocess.run([sys.executable, "-B", os.path.join(HERE, "make_instances.py"), "--store", a.store, "--world", a.world,
-                        "--config", a.config, "--n", str(a.worlds), "--prefix", a.prefix], check=True, env=vfrun.child_env())
+        r = vfrun.run_helper([sys.executable, "-B", os.path.join(HERE, "make_instances.py"), "--store", a.store, "--world", a.world,
+                              "--config", a.config, "--n", str(a.worlds), "--prefix", a.prefix])
+        if r.returncode:
+            raise SystemExit(f"make_instances.py ended with status {r.returncode}")
     index = {r["instance_id"]: r for r in json.load(open(idx))}
     out_dir, notes = os.path.join(a.scratch, "runs"), os.path.join(a.scratch, "notes")
     state_f = os.path.join(a.scratch, "prove_state.json")
@@ -246,7 +266,8 @@ def main():
            "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, --no-push",
            "platform": {"machine": platform.machine(), "python": platform.python_version(), "cpu_count": os.cpu_count(),
                         "backend": "cpu", "verifiers": __import__("verifiers").__version__, "box_cpus": a.cpu,
-                        "docker": subprocess.run(["docker", "version", "--format", "{{.Server.Version}}"], capture_output=True, text=True).stdout.strip()},
+                        "docker": subprocess.run(["docker", "version", "--format", "{{.Server.Version}}"], capture_output=True, text=True,
+                                                 timeout=60, env=vfrun.child_env()).stdout.strip()},
            "grading_mode": {"table": f"item_isolation = {a.isolation}", "taskset_default": "item_isolation = box (one fresh box per item)"},
            "one_box_per_item_check_world_0": box, "per_item_scores_file": os.path.basename(items_f),
            "pooled": GR.table(hiddens, pols, labels=LABELS), "per_world": per_world,

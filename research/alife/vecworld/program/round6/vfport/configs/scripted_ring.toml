@@ -1,12 +1,18 @@
 # Scripted, model-free rollout of the ring smoke exam: the data-only policy D, run in the agent's box by the
-# physim2-script harness. $0. The exact command (run label, store path, output folder, detached with a log) is
-# in RUNBOOK_MAC.md, step 2c; `agent_dir` below is relative to the study folder, so vf-eval must start there.
+# physim2-script harness. $0. The exact command (run label, store path, output folder, disk floor, detached with a
+# log) is in RUNBOOK_MAC.md, step 2c: it starts vf-eval through tools/vfrun.py, which starts it in the study
+# folder (`agent_dir` below is relative to it). Do not start vf-eval on this file by hand.
 # It can run ONCE per instance: single_use (default) refuses the same agent a second time. Grading uses the
 # taskset's default, one fresh box per exam item.
 model = "none/scripted"          # no model is called; the field only names the run
 num_rollouts = 1
 max_concurrent = 1
 push = false                     # sealed or not: nothing is uploaded
+
+[client]                         # a stand-in: no model is called, so no model credential is looked for or loaded.
+type = "eval"                    # tools/vfrun.py refuses a scripted start without exactly these two values
+base_url = "http://127.0.0.1:9/v1"       # the discard port on loopback: nothing listens there
+api_key_var = "PHYSIM2_NO_MODEL_KEY"     # a name that is never set (verifiers reads ~/.prime/config.json for the default name only)
 
 [env]
 id = "isolated-verifier"         # the stock isolated grader

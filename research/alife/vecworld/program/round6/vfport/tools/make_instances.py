@@ -14,6 +14,10 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
+sys.path.insert(0, HERE)
+import vfrun  # noqa: E402
+
+vfrun.require_clean_environment()                          # before the package is imported: see vfrun.ENV_REFUSE
 from physim2_env._paths import config_path, use_agentenv  # noqa: E402
 
 
