@@ -1,15 +1,24 @@
 # vfport: PROGRESS
 
-## VERDICT, round 1 (of the head after the two re-audits) -- 10 Nov 2026, in progress
-- Role: issues the round-1 verdict from the fixer's report and the two re-audits; changes only
-  HOST_SAFETY_AUDIT.md (section "Re-audit, round 1") and, on GO only, the hold notice of RUNBOOK_MAC.md.
-  Worktree `/home/user/wt/vfverdict1`, scratch `.../scratchpad/vfverdict1/` (stand-ins only).
-- Checked so far by this role: PIN.sha256 at the head, 105 of 105 files (run); the box gates, the driver guard,
-  the worker gate and vfrun (read); the runbook's process listing with a sleeping stand-in, issued the way a
-  session issues it: the waiting wrapper shell is listed next to the real process, and SIGTERM to it leaves the
-  tool running with no `EXIT` line (run, scratch).
-- If this role was cut: nothing of it runs; scratch may hold `standin/` (a sleeping script, no code of the port);
-  the verdict section is not written until the last commit of the role. Start the role again from the top.
+## VERDICT, round 1 (of the branch at 73829e5c6, after the two re-audits) -- 10 Nov 2026, finished
+- Verdict: NO-GO for the smoke test on the Mac, NO-GO for the model rollout. RUNBOOK_MAC.md stays ON HOLD and was
+  not changed. The verdict, its table, the seven remaining changes and the residual risks are the section
+  "Re-audit, round 1" of HOST_SAFETY_AUDIT.md, in the commit after this one (that commit changes that file only).
+- Why: the code is GO (A1, A3, A4, A5 closed; code = PIN.sha256 7aa9bbfc..., 105 of 105 files at the head). A2 is
+  open, narrowed: issued as a session issues commands, the status command lists the waiting wrapper shell next to
+  the tool, and SIGTERM to it stops nothing and loses the `EXIT` line (run here with a sleeping stand-in). Also
+  open: the interpreter's process line on a Mac with a framework Python (inferred), no branch for a cut in step 1,
+  the handover of the pin, and a rehearsal in session mode.
+- Own runs: the pin at the head; the script of tools/check_driver.py in two named throwaway containers, 31 of 31,
+  plus a guard-only probe with `--tmpfs /dev/extra` (the guard passes: the code re-auditor's minor gap); the three
+  box scripts started in a container without the marker (all refused); the folder guard with `echo` from wrong
+  folders (nothing printed). Nothing of the driver or of the box scripts ran on the host itself; no vf-eval, no
+  model, no upload.
+- Next step (exact): a fixer makes the seven changes of "What remains before GO for the smoke test" (runbook text
+  and one rehearsal in session mode; no file listed in PIN.sha256 changes), then a re-audit of the runbook and a
+  round-2 verdict.
+- Left on the machine by this role: nothing (scratch deleted, worktree removed, no container, images unchanged,
+  the Docker daemon not touched).
 
 ## RE-AUDIT of the code, round 1 (independent; of commit 73829e5c6) -- 10 Nov 2026, finished
 - Role: re-auditor of findings A3, A4, A5 and required changes 3, 4, 5. The numbered verdict went to the
