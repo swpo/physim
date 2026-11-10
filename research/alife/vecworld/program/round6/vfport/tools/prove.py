@@ -194,7 +194,8 @@ def main():
                 "posterior_sd_over_prior_sd": None if post is None else post["sd_over_prior_sd"],
                 "reward_skill_vs_O": x["reward_skill_vs_O"], "wall_s": x["wall_s"], "cpu_s": x["cpu_s"],
                 "grade": {k: gr.get(k) for k in ("n_items", "n_failed", "cpu_s_mean", "cpu_s_max", "layers", "items_with_leftovers",
-                                                 "cleanup_between_items", "seconds")}}
+                                                 "cleanup_between_items", "seconds", "isolation", "validation", "item_boxes",
+                                                 "item_box_wall_s_mean", "infrastructure_failed_items")}}
         if "S" in pols:                                      # how close was the scripted inference (no theta is written)
             x = next(r for r in state["runs"]["S"]["rollouts"] if r["instance_id"] == iid)
             f = os.path.join(notes, x["trace_id"], "posterior_draws_u.npy")
@@ -253,16 +254,20 @@ def main():
                "n_rollouts": len(rolls),
                "wall_s_per_rollout_mean": float(np.mean([r["wall_s"]["total"] for r in rolls])),
                "wall_s_per_rollout_max": float(np.max([r["wall_s"]["total"] for r in rolls])),
-               "agent_box_cpu_s_mean": float(np.mean([r["cpu_s"]["agent_box"] or 0 for r in rolls])),
+               "agent_box_cpu_s_unverified_mean": float(np.mean([r["cpu_s"]["agent_box_unverified"] or 0 for r in rolls])),
                "verifier_box_cpu_s_mean": float(np.mean([r["cpu_s"]["verifier_box"] or 0 for r in rolls])),
                "vf_eval_host_cpu_s_per_rollout": float(sum(state["runs"][p]["host_cpu_s"] for p in pols) / len(rolls)),
                "vf_eval_wall_s_per_policy": {p: state["runs"][p]["wall_s"] for p in pols},
                "note": "wall = boot + setup + agent + finalize of the solver trace plus the verifier phase (setup, restore, staging, "
-                       "reward); box CPU = the cgroup counter of each container; host CPU = vf-eval and its children (laboratory "
+                       "reward); box CPU = the cgroup counter of each container (the agent box's is read inside a box where the agent is root: "
+                       "unverified); host CPU = vf-eval and its children (laboratory "
                        "process, docker CLI), shared by the rollouts of one invocation"},
            "all_graded": all(r["graded"] for r in rolls), "all_ok": all(r["ok"] for r in rolls),
            "n_failed_items_total": int(sum((r["grade"].get("n_failed") or 0) for r in rolls)),
-           "wall_s": time.time() - t0, "driver_cpu_s": time.process_time() - c0}
+           "wall_s": state.get("wall_s_before", 0.0) + time.time() - t0, "invocations": state.get("invocations", 0) + 1,
+           "driver_cpu_s": time.process_time() - c0}
+    state["wall_s_before"], state["invocations"] = out["wall_s"], out["invocations"]   # this tool is resumable: wall time adds up
+    json.dump(state, open(state_f, "w"))
     valid = np.array(out["pooled"]["valid_cells"], bool)
     Kf, Of = items["K"].reshape(-1, len(valid))[:, valid].sum(1), items["O"].reshape(-1, len(valid))[:, valid].sum(1)
     for pol in crash:

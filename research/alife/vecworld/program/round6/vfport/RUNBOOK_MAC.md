@@ -95,7 +95,7 @@ child's environment (tools/vfrun.py).
 # (a) one world, three policies through the whole route, then C once more with one box per exam item (about 10 minutes)
 uv run --no-sync python -B tools/prove.py --store "$HOME/physim2-pilot-20261110/store" --scratch "$HOME/physim2-pilot-20261110/scratch/proof" \
     --worlds 1 --prefix mac-ring --policies D,P0,C --box-check C --no-cross-check --out "$HOME/physim2-pilot-20261110/scratch/proof_mac.json"
-# (b) the boundary checks and the probes, on their own small instance (36 short rollouts; 15 minutes in the cloud container)
+# (b) the boundary checks and the probes, on their own small instance (37 short rollouts; 16 minutes in the cloud container)
 uv run --no-sync python -B tools/check_probe.py --store "$HOME/physim2-pilot-20261110/store" --scratch "$HOME/physim2-pilot-20261110/scratch/probe" \
     --out "$HOME/physim2-pilot-20261110/scratch/probe_mac.json"
 ```

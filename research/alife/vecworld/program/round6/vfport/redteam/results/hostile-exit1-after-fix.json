@@ -1,0 +1,109 @@
+{
+ "attack": "hostile-exit1",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "instance_id": "fx-ring-w0",
+ "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, push=false, PRIME_RUNS_MODE=disabled",
+ "command": "10 /home/user/evalwork/vfport/.venv/bin/vf-eval @ /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfport/fix/rt/runs/rt-hostile-exit1-after-fix.toml --no-rich   # config: runs/rt-hostile-exit1-after-fix.toml",
+ "returncode": 0,
+ "wall_s": 16.693114519119263,
+ "episodes_saved": 1,
+ "timeouts_overridden": null,
+ "host_listener_hits_during_rollout": 0,
+ "boxes": {
+  "vf-06a10bf20ae1489081495320cb7513af": {
+   "t": 1794290784.2759235,
+   "host_config": {
+    "PidsLimit": null,
+    "Memory": 8589934592,
+    "NanoCpus": 2000000000,
+    "CapAdd": null,
+    "CapDrop": [
+     "CAP_NET_ADMIN",
+     "CAP_NET_RAW"
+    ],
+    "SecurityOpt": [
+     "no-new-privileges"
+    ],
+    "ReadonlyRootfs": false,
+    "StorageOpt": null,
+    "Ulimits": null,
+    "Binds": null,
+    "Privileged": false,
+    "NetworkMode": "bridge",
+    "UsernsMode": "",
+    "Tmpfs": null
+   },
+   "mounts": [],
+   "env_names": [
+    "PATH",
+    "LANG",
+    "GPG_KEY",
+    "PYTHON_VERSION",
+    "PYTHON_SHA256",
+    "OMP_NUM_THREADS",
+    "OPENBLAS_NUM_THREADS",
+    "MKL_NUM_THREADS",
+    "PYTHONDONTWRITEBYTECODE",
+    "JAX_PLATFORMS",
+    "XLA_FLAGS"
+   ],
+   "user": ""
+  }
+ },
+ "rollout": {
+  "trace_id": "48e48d8ff69342858d6bf18ce81e3c91",
+  "ok": false,
+  "errors": [
+   "HarnessError"
+  ],
+  "stop_condition": "harness_error",
+  "graded": false,
+  "reward_skill_vs_O": 0.0,
+  "scored_as_K_because_ungraded": true,
+  "script_exit_code": 1,
+  "submission": null,
+  "lab": null,
+  "grade": {},
+  "verifier_box": null,
+  "wall_s": {
+   "boot": 0.6133236885070801,
+   "setup": 6.561357736587524,
+   "agent": 0.9710137844085693,
+   "finalize": 0,
+   "verifier": null,
+   "total": 8.145695209503174
+  },
+  "reward_raw_in_trace": "None",
+  "trace_reward_field": "None",
+  "trace_error_messages": [
+   "harness 'physim2-script' exited 1: <no output>"
+  ],
+  "episode_ok": false,
+  "episode_errors": [],
+  "script_log_tail": ""
+ },
+ "grade_record": {
+  "n_items": null,
+  "n_failed": null,
+  "reason": null,
+  "box_not_clean_after_item": null,
+  "seconds": null,
+  "layers": null,
+  "first_errors": []
+ },
+ "agent_report": {
+  "mode": "hostile",
+  "hostile": "exit1",
+  "wall_s": 0.010549306869506836
+ },
+ "hidden_value_scan": {
+  "files_and_members_scanned": 6,
+  "hits": {
+   "secret_hex": 0,
+   "theta_D": 0,
+   "theta_gamma": 0,
+   "theta_c": 0
+  }
+ },
+ "hidden_value_in_this_result_file": false
+}

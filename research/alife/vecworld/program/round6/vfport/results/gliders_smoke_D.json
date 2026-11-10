@@ -58,6 +58,12 @@
   "box_cpus": 2,
   "docker": "29.9.2"
  },
+ "grading_mode": {
+  "table": "item_isolation = box",
+  "taskset_default": "item_isolation = box (one fresh box per item)"
+ },
+ "one_box_per_item_check_world_0": {},
+ "per_item_scores_file": "gliders_smoke_D_items.npz",
  "pooled": {
   "n_items": 8,
   "n_worlds": 1,
@@ -102,19 +108,19 @@
   ],
   "policies": {
    "O": {
-    "L": 0.6188959091402335,
+    "L": 0.657519477970721,
     "vs_C": null,
     "vs_O": 1.0
    },
    "K": {
-    "L": 4.71485122326248,
+    "L": 4.488480022933249,
     "vs_C": null,
     "vs_O": 0.0
    },
    "D": {
-    "L": 3.7287895475776383,
+    "L": 2.773100411632444,
     "vs_C": null,
-    "vs_O": 0.24074034018023763
+    "vs_O": 0.4477674962109493
    }
   },
   "oes": {
@@ -147,17 +153,17 @@
     ]
    },
    "D": {
-    "mean": 0.12547605043390928,
-    "se": 0.26265822093431934,
-    "pooled": 0.24074034018023768,
+    "mean": 0.37062226536569753,
+    "se": 0.044260960922569356,
+    "pooled": 0.44776749621094913,
     "per_cell": [
-     0.9190422666948238,
-     0.8120716480568901,
-     0.5451692060789962,
-     0.20138264794066463,
-     -0.09303957917151696,
-     -0.20012656442869314,
-     -1.3061672721337994
+     0.9116583003508819,
+     0.8242545082378021,
+     0.5808201502396949,
+     0.20021852593952424,
+     -0.1517327599734134,
+     0.38959835191293274,
+     -0.16046121914753972
     ]
    }
   },
@@ -165,22 +171,22 @@
    "a": {
     "climatology": 0.0,
     "oracle": 1.0,
-    "D": 0.17471090854034355
+    "D": 0.39003461694762215
    },
    "b": {
     "climatology": 0.0,
     "oracle": 1.0,
-    "D": 0.11516350000625088
+    "D": 0.29468431129058253
    },
    "c": {
     "climatology": 0.0,
     "oracle": 1.0,
-    "D": -0.7105391781179963
+    "D": 0.3139106389704184
    },
    "d": {
     "climatology": 0.0,
     "oracle": 1.0,
-    "D": 0.4297154418761721
+    "D": 0.388440030275995
    }
   },
   "policy_labels": {
@@ -196,11 +202,11 @@
  },
  "per_world": [
   {
-   "instance_id": "gl-smoke-w0",
-   "secret_commitment": "befb2b20ff1f066cfb00d056b7004b5576897806895d221b4abbded1065c4c49",
+   "instance_id": "gliders-smoke-w0",
+   "secret_commitment": "4a05fe4b2214c60dae8f4fc5a939a465079fe6e2c89133dac67f7798c2c4438b",
    "rollouts": {
     "D": {
-     "trace_id": "93e81caf42aa41a29706d8f100f95414",
+     "trace_id": "1848bed602a346aa8b52ca15e3d678d2",
      "graded": true,
      "ok": true,
      "script_exit_code": 0,
@@ -209,46 +215,55 @@
       "ok": true,
       "error": null,
       "files": 3,
-      "bytes": 384927,
-      "sha256": "14b8ff4a800ea9092e10f9ef3ca130865c8e9a9d8b832f92c64119ac672c4ad9"
+      "bytes": 382388,
+      "sha256": "b3390b7136377ce527355d12cbd5409166e2b9026edfd8184f51d4db452325a5"
      },
      "submitted_before_finalization": true,
      "lab_ticks_used": 132,
      "lab_total_nats": 648.0108707961028,
-     "lab_requests": 20,
+     "lab_requests": 17,
      "lab_infrastructure_errors": 0,
      "lab_episodes": 4,
      "member_ticks_simulated": 0,
      "train_episodes": 4,
-     "agent_cpu_s": 1.114187424,
+     "agent_cpu_s": 1.179823374,
      "posterior_sd_over_prior_sd": null,
-     "reward_skill_vs_O": 0.24074034018023763,
+     "reward_skill_vs_O": 0.4477674962109493,
      "wall_s": {
-      "boot": 0.6162619590759277,
-      "setup": 6.582658052444458,
-      "agent": 58.39371061325073,
-      "finalize": 0.08494806289672852,
-      "verifier": 5.3748414516448975,
-      "total": 71.05242013931274
+      "boot": 0.6076493263244629,
+      "setup": 6.552446365356445,
+      "agent": 56.6805853843689,
+      "finalize": 0.09493875503540039,
+      "verifier": 21.34665536880493,
+      "total": 85.28227519989014
      },
      "cpu_s": {
-      "agent_box": 4.17746,
-      "verifier_box": 3.90566,
-      "worker_in_reward": 0.06194917999999916
+      "agent_box_unverified": 4.90733,
+      "verifier_box": 1.8266,
+      "item_boxes": 7.517551713,
+      "worker_in_reward": 0.2512570159999967
      },
      "grade": {
       "n_items": 8,
       "n_failed": 0,
-      "cpu_s_mean": 0.22867712499999998,
-      "cpu_s_max": 0.24627999999999997,
+      "cpu_s_mean": 0.22091899999999998,
+      "cpu_s_max": 0.234278,
       "layers": {
        "rlimits": true,
-       "uid": 1000,
+       "uid": 40158,
        "cleanup": true
       },
       "items_with_leftovers": 0,
       "cleanup_between_items": true,
-      "seconds": 4.43294620513916
+      "seconds": 20.434702396392822,
+      "isolation": "box",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.23157599999999998
+      },
+      "item_boxes": 8,
+      "item_box_wall_s_mean": 2.3399735391139984,
+      "infrastructure_failed_items": 0
      }
     }
    },
@@ -296,19 +311,19 @@
     ],
     "policies": {
      "O": {
-      "L": 0.6188959091402335,
+      "L": 0.657519477970721,
       "vs_C": null,
       "vs_O": 1.0
      },
      "K": {
-      "L": 4.71485122326248,
+      "L": 4.488480022933249,
       "vs_C": null,
       "vs_O": 0.0
      },
      "D": {
-      "L": 3.7287895475776383,
+      "L": 2.773100411632444,
       "vs_C": null,
-      "vs_O": 0.24074034018023763
+      "vs_O": 0.4477674962109493
      }
     },
     "oes": {
@@ -341,17 +356,17 @@
       ]
      },
      "D": {
-      "mean": 0.12547605043390928,
-      "se": 0.2742066812318982,
-      "pooled": 0.24074034018023768,
+      "mean": 0.37062226536569753,
+      "se": 0.045042727842156204,
+      "pooled": 0.44776749621094913,
       "per_cell": [
-       0.9190422666948238,
-       0.8120716480568901,
-       0.5451692060789962,
-       0.20138264794066463,
-       -0.09303957917151696,
-       -0.20012656442869314,
-       -1.3061672721337994
+       0.9116583003508819,
+       0.8242545082378021,
+       0.5808201502396949,
+       0.20021852593952424,
+       -0.1517327599734134,
+       0.38959835191293274,
+       -0.16046121914753972
       ]
      }
     },
@@ -359,22 +374,22 @@
      "a": {
       "climatology": 0.0,
       "oracle": 1.0,
-      "D": 0.17471090854034355
+      "D": 0.39003461694762215
      },
      "b": {
       "climatology": 0.0,
       "oracle": 1.0,
-      "D": 0.11516350000625088
+      "D": 0.29468431129058253
      },
      "c": {
       "climatology": 0.0,
       "oracle": 1.0,
-      "D": -0.7105391781179963
+      "D": 0.3139106389704184
      },
      "d": {
       "climatology": 0.0,
       "oracle": 1.0,
-      "D": 0.4297154418761721
+      "D": 0.388440030275995
      }
     },
     "policy_labels": {}
@@ -383,19 +398,29 @@
  ],
  "rollout_cost": {
   "n_rollouts": 1,
-  "wall_s_per_rollout_mean": 71.05242013931274,
-  "wall_s_per_rollout_max": 71.05242013931274,
-  "agent_box_cpu_s_mean": 4.17746,
-  "verifier_box_cpu_s_mean": 3.90566,
-  "vf_eval_host_cpu_s_per_rollout": 155.06512700000007,
+  "wall_s_per_rollout_mean": 85.28227519989014,
+  "wall_s_per_rollout_max": 85.28227519989014,
+  "agent_box_cpu_s_unverified_mean": 4.90733,
+  "verifier_box_cpu_s_mean": 1.8266,
+  "vf_eval_host_cpu_s_per_rollout": 156.712177,
   "vf_eval_wall_s_per_policy": {
-   "D": 107.26070404052734
+   "D": 121.45983695983887
   },
-  "note": "wall = boot + setup + agent + finalize of the solver trace plus the verifier phase (setup, restore, staging, reward); box CPU = the cgroup counter of each container; host CPU = vf-eval and its children (laboratory process, docker CLI), shared by the rollouts of one invocation"
+  "note": "wall = boot + setup + agent + finalize of the solver trace plus the verifier phase (setup, restore, staging, reward); box CPU = the cgroup counter of each container (the agent box's is read inside a box where the agent is root: unverified); host CPU = vf-eval and its children (laboratory process, docker CLI), shared by the rollouts of one invocation"
  },
  "all_graded": true,
  "all_ok": true,
  "n_failed_items_total": 0,
- "wall_s": 479.59040451049805,
- "driver_cpu_s": 2.151018695
+ "wall_s": 525.1854426860809,
+ "invocations": 2,
+ "driver_cpu_s": 2.1321682010000003,
+ "failed_item_is_K_counterfactual": {
+  "D": {
+   "items": 8,
+   "items_scored_worse_than_K": 0,
+   "skill_vs_O": 0.4477674962109493,
+   "skill_vs_O_had_exactly_those_items_failed": 0.4477674962109493
+  },
+  "note": "what a predictor would gain if it could fail exactly the items on which it scores worse than K (it cannot know them; this is the upper bound of the effect)"
+ }
 }

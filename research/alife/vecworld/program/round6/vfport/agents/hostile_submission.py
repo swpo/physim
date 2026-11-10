@@ -24,6 +24,8 @@ Validation (specification review 3):
   unsubmitted_nondeterministic   the same predictor, never submitted
   unsubmitted_partly_working     a predictor that fails only the third public example call (seed 1), unsubmitted:
                                  every exam item would run, round 5's rule says K
+  submit_cap               use up every submission attempt on a predictor that raises, then leave a valid one,
+                           unsubmitted: in round 5 the final collection was one more attempt and was refused (K)
 The harness itself (red team 4; verifiers then runs neither finalize nor the reward: tools/settle.py records K):
   exit1       a valid predictor, then exit with status 1
   killall     a valid predictor, then SIGKILL to every process of the box
@@ -129,6 +131,18 @@ elif mode == "fake_validator":
     except Exception as e:
         rep["submit"] = {"raised": f"{type(e).__name__}: {e}"[:200]}
     rep["usage_after"] = {k: lab.usage().get(k) for k in ("submitted", "submissions")}
+elif mode == "submit_cap":
+    open("submission/predict.py", "w").write(RAISES)
+    cap_n = lab.card()["validation_attempts"]
+    tries = []
+    for _ in range(cap_n + 1):
+        try:
+            tries.append(lab._call("submit", path="submission").get("accepted"))
+        except Exception as e:
+            tries.append(f"{type(e).__name__}: {e}"[:80])
+    rep.update(cap=cap_n, first=tries[0], last_within_cap=tries[cap_n - 1], beyond_cap=tries[cap_n],
+               usage_after={k: lab.usage().get(k) for k in ("submitted", "submissions")})
+    open("submission/predict.py", "w").write(GOOD)
 elif mode == "unsubmitted_nondeterministic":
     open("submission/predict.py", "w").write(NONDET)
 elif mode == "unsubmitted_partly_working":

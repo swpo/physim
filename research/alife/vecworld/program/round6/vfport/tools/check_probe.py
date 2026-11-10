@@ -43,7 +43,7 @@ import vfrun  # noqa: E402
 from physim2_env._paths import agentenv_root  # noqa: E402
 
 HOSTILE = ["delete", "empty", "oversize", "huge", "no_tar", "symlinks", "junk", "tar_duplicate", "tar_collision", "tar_longpath"]
-VALIDATION = ["raw_submit_broken", "fake_validator", "unsubmitted_nondeterministic", "unsubmitted_partly_working"]
+VALIDATION = ["raw_submit_broken", "fake_validator", "unsubmitted_nondeterministic", "unsubmitted_partly_working", "submit_cap"]
 ITEMS = ["item_overflow", "item_fifo", "item_bomb", "item_extreme"]
 STOCK = ["delete", "huge", "no_tar", "symlinks", "junk", "tar_duplicate"]
 
@@ -186,8 +186,8 @@ def main():
             task={"agent_key": "one-agent"}, may_fail=True)
     # ---- (h) the harness dies ----
     import settle as SETTLE
-    H = {}
-    for mode in ("exit1", "killall"):
+    H = state.setdefault("harness_dies", {})                 # settled once: a second settle finds the record and leaves it
+    for mode in [m for m in ("exit1", "killall") if m not in H]:
         h1 = go(f"harness-{mode}", {"agent_dir": mine, "script": "hostile_submission.py", "label": f"harness_{mode}", "args": [mode]},
                 task={"agent_key": f"agent-{mode}"}, may_fail=True)
         st = SETTLE.settle(a.store, h1["run_dir"]) if h1.get("trace_id") else []
@@ -198,6 +198,7 @@ def main():
                    "settled": [{k: r.get(k) for k in ("graded", "settled_as_K", "reward", "why", "laboratory_was_opened")} for r in st],
                    "grade_record": {k: gk.get(k) for k in ("n_items", "n_failed", "settled")},
                    "again": {"graded": h2["graded"], "errors": h2["errors"]}}
+        json.dump(state, open(state_f, "w"), default=str)
     labs_after = sorted(os.listdir(os.path.join(hidden, "labs")))
     srv.close()
 
@@ -382,6 +383,8 @@ def main():
         and all_k("fake_validator") and "validation failed (reproducibility)" in reason("fake_validator"),
         "e_unsubmitted_nondeterministic_predictor_scores_K": all_k("unsubmitted_nondeterministic") and "reproducibility" in reason("unsubmitted_nondeterministic"),
         "e_unsubmitted_predictor_failing_one_example_call_scores_K": all_k("unsubmitted_partly_working") and "validation failed (example 1)" in reason("unsubmitted_partly_working"),
+        "e_final_collection_respects_the_submission_cap": hrep("submit_cap").get("beyond_cap", "").startswith("LabError")
+        and "limit" in hrep("submit_cap").get("beyond_cap", "") and all_k("submit_cap") and "attempt limit" in str(hostile["submit_cap"]["submission"].get("error")),
         # (h) the harness dies: verifiers leaves the trace ungraded; the books are closed by tools/settle.py and single use
         "h_harness_exit_or_kill_leaves_the_trace_without_a_reward": all(not H[m]["first"]["graded"] for m in H),
         "h_settle_records_K_for_such_a_rollout": all(len(H[m]["settled"]) == 1 and H[m]["settled"][0]["settled_as_K"] is True
@@ -490,7 +493,9 @@ def main():
            "rollouts": {k: {"graded": v["graded"], "ok": v["ok"], "reward": v["reward_skill_vs_O"], "wall_s": v["wall_s"], "cpu_s": v["cpu_s"],
                             "invocation_wall_s": v["invocation_wall_s"], "address_file_matches_tool_url": v["address_file_matches_tool_url"]}
                         for k, v in runs.items()},
-           "wall_s": time.time() - t0}
+           "wall_s": state.get("wall_s_total", 0.0) + time.time() - t0, "invocations": state.get("invocations", 0) + 1}
+    state["wall_s_total"], state["invocations"] = res["wall_s"], res["invocations"]
+    json.dump(state, open(state_f, "w"), default=str)
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     json.dump(res, open(a.out, "w"), indent=1)
     print(json.dumps({k: res[k] for k in ("n_checks_round5", "n_reproduced", "failed_round5", "n_checks_new", "n_passed_new", "failed_new")}))

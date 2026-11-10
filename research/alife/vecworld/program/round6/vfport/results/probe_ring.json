@@ -84,6 +84,7 @@
   "e_falsified_check_in_the_agent_box_freezes_but_the_grader_validates": true,
   "e_unsubmitted_nondeterministic_predictor_scores_K": true,
   "e_unsubmitted_predictor_failing_one_example_call_scores_K": true,
+  "e_final_collection_respects_the_submission_cap": true,
   "h_harness_exit_or_kill_leaves_the_trace_without_a_reward": true,
   "h_settle_records_K_for_such_a_rollout": true,
   "h_the_same_agent_cannot_open_the_instance_again": true,
@@ -106,8 +107,8 @@
   "g_single_use_is_the_default": true,
   "g_single_use_refuses_the_same_agent_a_second_time": true
  },
- "n_checks_new": 62,
- "n_passed_new": 62,
+ "n_checks_new": 63,
+ "n_passed_new": 63,
  "failed_new": [],
  "PILOT_NEVER_REUSE_AS_EXAM": true,
  "instance_id": "probe-ring-w0",
@@ -316,7 +317,7 @@
    "environ_read": 1
   },
   "b_trace_scan": {
-   "files_scanned": 220,
+   "files_scanned": 227,
    "needles": [
     "canary",
     "canary_prefix",
@@ -612,6 +613,23 @@
      "files": 1,
      "bytes": 321,
      "sha256": "52d97e45bd1d76abc5f58ceaee4b987e9c58fe248b2ed991dc136ead91c62ebc"
+    }
+   },
+   "submit_cap": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submissions attempt limit (16) reached",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submissions attempt limit (16) reached",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
     }
    },
    "item_overflow": {
@@ -1083,6 +1101,20 @@
    },
    "unsubmitted_partly_working": {
     "mode": "unsubmitted_partly_working",
+    "left": [
+     "predict.py"
+    ]
+   },
+   "submit_cap": {
+    "mode": "submit_cap",
+    "cap": 16,
+    "first": false,
+    "last_within_cap": false,
+    "beyond_cap": "LabError: submissions attempt limit (16) reached",
+    "usage_after": {
+     "submitted": false,
+     "submissions": 16
+    },
     "left": [
      "predict.py"
     ]
@@ -1985,7 +2017,29 @@
    },
    "invocation_wall_s": 9.012055397033691,
    "address_file_matches_tool_url": null
+  },
+  "hostile-submit_cap": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.611574649810791,
+    "setup": 6.531717300415039,
+    "agent": 13.384490966796875,
+    "finalize": 0.08011579513549805,
+    "verifier": 0.7368474006652832,
+    "total": 21.344746112823486
+   },
+   "cpu_s": {
+    "agent_box_unverified": 11.7625,
+    "verifier_box": 0.507492,
+    "item_boxes": null,
+    "worker_in_reward": 0.008488279999999904
+   },
+   "invocation_wall_s": 30.483840703964233,
+   "address_file_matches_tool_url": true
   }
  },
- "wall_s": 932.2640767097473
+ "wall_s": 962.7677481174469,
+ "invocations": 2
 }

@@ -73,16 +73,21 @@ def main():
     probe = json.load(open(os.path.join(ROOT, "results", "probe_ring.json")))
     probe5 = json.load(open(os.path.join(AE, "results", "probe_ring.json")))
     R = lambda f: json.load(open(os.path.join(ROOT, "results", f))) if os.path.exists(os.path.join(ROOT, "results", f)) else None  # noqa: E731
-    head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
-    dirty = subprocess.run(["git", "status", "--porcelain", "--", "physim2_env", "physim2_script", "agents", "tools"], cwd=ROOT, capture_output=True,
+    pkg_commit = subprocess.run(["git", "log", "-1", "--format=%h", "--", "physim2_env", "physim2_script"], cwd=ROOT, capture_output=True,
+                                text=True).stdout.strip()
+    dirty = subprocess.run(["git", "status", "--porcelain", "--", "physim2_env", "physim2_script"], cwd=ROOT, capture_output=True,
                            text=True).stdout.strip()
     S = {"study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment (after the fixes to the two reviews)",
          "written_unix": time.time(), "PILOT_NEVER_REUSE_AS_EXAM": True,
          "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model "
                          "call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). "
                          "Nothing was run on a Mac.",
-         "code_versions": {"all results of this file except gliders_smoke": f"package, agents and tools of commit {head}"
-                           + (" plus uncommitted changes" if dirty else "") + " (the commit that precedes the one carrying these results)",
+         "code_versions": {"package (physim2_env, physim2_script)": f"commit {pkg_commit}" + (" PLUS UNCOMMITTED CHANGES" if dirty else "")
+                           + ": every rollout of every result file here ran on this package code",
+                           "tools and agents": "the commit that carries this file. After the rollouts three tools changed without any rollout "
+                           "being repeated: tools/prove.py (its aggregation step read a key that had been renamed; the tool was started "
+                           "again and resumed from its saved rollouts; wall time added up from the logs), tools/check_probe.py and "
+                           "agents/hostile_submission.py (one more hostile agent, submit_cap, run as a 37th rollout on resume)",
                            "builder's results": "replaced; the builder's numbers are in the history of this file (commit e4a30854d)"},
          "sources": {"ours_table": "results/proof_ring.json", "round5_table": R5 + "proof_ring.json",
                      "ours_probe": "results/probe_ring.json", "round5_probe": R5 + "probe_ring.json"}}

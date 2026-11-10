@@ -19,7 +19,7 @@ Scratch `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   throwaway container (`tools/check_driver.py`); on the host only refusals are tested, under tripwires
   (`tools/check_units.py`, checks `guard_*`). RUNBOOK_MAC.md is on HOLD until the coordinator's independent audit.
 
-### Done (code; commits c9eb105ac, 86c0d1bd2, 7e034be18 and later)
+### Done (code; package final at commit 743f6b75e)
 - S1: `_rules.freeze` refuses duplicate members, file/directory collisions, paths over 1024 bytes, more than 20,000
   members; skips names with control characters or undecodable bytes; `finalize` runs verifiers' `_validate_restore`
   inside its try. Hostile agents tar_duplicate, tar_collision, tar_longpath.
@@ -39,22 +39,31 @@ Scratch `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 - S4: `results/proof_ring_items.npz` + `tools/recompute_table.py`. S6: single_use default. S7: the agent box CPU
   counter is renamed `agent_box_cpu_s_unverified`. S8: allow-list for variables entering a box. S9: runbook.
 
-### Running (restarted 05:06 UTC on the code of commit 743f6b75e): `<scratch>/run_all.sh` then `<scratch>/run_tail.sh`
-- run_all.sh: units (67/67), units on the builder's code (25/46), driver in a container (19/19), then
-  `tools/check_probe.py` (store2, probe2; resumable), then `tools/prove.py --worlds 4` (store2, proof2; resumable).
-- run_tail.sh starts by itself when run_all prints "=== done": `tools/recompute_table.py`, the red team's attacks
-  again (`redteam/rt_run.py --tag -after-fix overflow | fifo | hostile-exit1` on instance fx-ring-w0 in `<scratch>/store`),
-  gliders smoke (`tools/prove.py --world gliders --config smoke_gliders --worlds 1 --policies D --isolation box`).
-- A first full probe run on the earlier code (rehearsal, 04:38-04:56): 32 of 34 and 61 of 62; the one failure was a
-  mistake in my hostile predictor (it looked for the public examples next to the submission), fixed.
+### Results (all on the package code of commit 743f6b75e; `results/summary.json` names every source)
+- `tools/check_units.py`: 67 of 67 (the builder's code: 25 of 46). `tools/check_driver.py` (in a container): 19 of 19.
+- `tools/check_probe.py` (05:07-05:22, one more rollout at 06:03): round 5's 34 checks: 32 reproduced, 0 failed, 2
+  changed by design; 63 of 63 new checks; 37 rollouts, 963 s.
+- `tools/prove.py --worlds 4` (05:22-05:54, aggregation at 06:10): 24 rollouts graded, 0 failed items of 1,536;
+  S 0.984, P0 0.930, PM 0.916, D 0.210, null -0.046, O 1.096 (of C); sigma 0.070, rho 0.776; C through round 5's
+  grader identical in 4 of 4 worlds; C and D with one box per item identical to one box (2.6 s per item box).
+  The tool was started three times: the first run ended in an exception in its aggregation step after every
+  rollout was done (a key I had renamed); no rollout was repeated; wall time added from the logs (1,973 s).
+- `tools/recompute_table.py`: 26 numbers, maximum difference 0. Gliders smoke (D, one box per item): graded, 0 of 8
+  failed. Red team's attacks again: overflow and fifo graded as K in 24 s and 23 s; hostile-exit1 still without a
+  reward on the trace (open hole 2; `tools/settle.py`).
+
+### Running
+- nothing. Docker daemon up (classic image store), images kept for the host-safety audit: physim2-ring:1,
+  localhost/verifiers-network:1, python:3.12-slim (573 MB in all). No container. Scratch stores with the hidden pilot
+  instances deleted; only logs are left in `<scratch>/`.
 
 ### Next step (exact)
-1. When both scripts are done: `$V -B tools/make_summary.py --store $S/store2 --scratch $S`, then
-   `python3 $S/fill_readme.py $PWD` (fills README.tmpl.md into README.md; if the scratch is gone, the numbers are in
-   results/*.json and the template is in the repository), then `git rm README.tmpl.md`.
-2. Delete `$S/store` and `$S/store2` by their full paths (hidden pilot instances), commit, push, final report.
-3. If the container restarted: start dockerd (below), then `$S/run_all.sh` again (probe and proof resume; if the
-   scratch is gone, they start again from fresh instances: rewrite run_all.sh from this section).
+- Coordinator: the independent host-safety audit (task 35) of this folder, then release RUNBOOK_MAC.md to the Mac.
+  The audit can repeat the checks with: `V=/home/user/evalwork/vfport/.venv/bin/python; cd` to this folder;
+  `PYTHONPATH=$PWD $V -B tools/check_driver.py --out /tmp/claude-0/.../driver.json` (container only) and
+  `PYTHONPATH=$PWD PHYSIM2_DEV_MACHINE=cloud-container $V -B tools/check_units.py --out /tmp/claude-0/.../units.json`
+  (host: refusals under tripwires; it starts test predictors, never the cleanup).
+- Open holes and decisions for the lead: README section 6.
 
 ---
 

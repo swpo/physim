@@ -1,0 +1,273 @@
+{
+ "attack": "overflow",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "instance_id": "fx-ring-w0",
+ "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, push=false, PRIME_RUNS_MODE=disabled",
+ "command": "10 /home/user/evalwork/vfport/.venv/bin/vf-eval @ /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfport/fix/rt/runs/rt-overflow-after-fix.toml --no-rich   # config: runs/rt-overflow-after-fix.toml",
+ "returncode": 0,
+ "wall_s": 24.060006618499756,
+ "episodes_saved": 1,
+ "timeouts_overridden": null,
+ "host_listener_hits_during_rollout": 0,
+ "boxes": {
+  "vf-b463c381226e4870ad478a81ef9e8563": {
+   "t": 1794290731.1078165,
+   "host_config": {
+    "PidsLimit": null,
+    "Memory": 8589934592,
+    "NanoCpus": 2000000000,
+    "CapAdd": null,
+    "CapDrop": [
+     "CAP_NET_ADMIN",
+     "CAP_NET_RAW"
+    ],
+    "SecurityOpt": [
+     "no-new-privileges"
+    ],
+    "ReadonlyRootfs": false,
+    "StorageOpt": null,
+    "Ulimits": null,
+    "Binds": null,
+    "Privileged": false,
+    "NetworkMode": "bridge",
+    "UsernsMode": "",
+    "Tmpfs": null
+   },
+   "mounts": [],
+   "env_names": [
+    "PATH",
+    "LANG",
+    "GPG_KEY",
+    "PYTHON_VERSION",
+    "PYTHON_SHA256",
+    "OMP_NUM_THREADS",
+    "OPENBLAS_NUM_THREADS",
+    "MKL_NUM_THREADS",
+    "PYTHONDONTWRITEBYTECODE",
+    "JAX_PLATFORMS",
+    "XLA_FLAGS"
+   ],
+   "user": ""
+  },
+  "vf-37b8148aecd142a8aa6a2ab9638aae40": {
+   "t": 1794290742.0131419,
+   "host_config": {
+    "PidsLimit": null,
+    "Memory": 8589934592,
+    "NanoCpus": 2000000000,
+    "CapAdd": null,
+    "CapDrop": [
+     "CAP_NET_ADMIN",
+     "CAP_NET_RAW"
+    ],
+    "SecurityOpt": [
+     "no-new-privileges"
+    ],
+    "ReadonlyRootfs": false,
+    "StorageOpt": null,
+    "Ulimits": null,
+    "Binds": null,
+    "Privileged": false,
+    "NetworkMode": "bridge",
+    "UsernsMode": "",
+    "Tmpfs": null
+   },
+   "mounts": [],
+   "env_names": [
+    "PATH",
+    "LANG",
+    "GPG_KEY",
+    "PYTHON_VERSION",
+    "PYTHON_SHA256",
+    "OMP_NUM_THREADS",
+    "OPENBLAS_NUM_THREADS",
+    "MKL_NUM_THREADS",
+    "PYTHONDONTWRITEBYTECODE",
+    "JAX_PLATFORMS",
+    "XLA_FLAGS"
+   ],
+   "user": ""
+  }
+ },
+ "rollout": {
+  "trace_id": "75ac1a328f5b4dbe945f845f2cf1e1c2",
+  "ok": true,
+  "errors": [],
+  "stop_condition": "agent_completed",
+  "graded": true,
+  "reward_skill_vs_O": 0.0,
+  "scored_as_K_because_ungraded": false,
+  "script_exit_code": 0,
+  "submission": {
+   "source": "final_collection",
+   "ok": true,
+   "error": null,
+   "files": 1,
+   "bytes": 20,
+   "sha256": "92cc1901c01054392c42771924ca11ecc7a3d5f24ef8a1c24af100a35dd4a5fb"
+  },
+  "lab": {
+   "ticks_used": 0,
+   "resets": 0,
+   "total_nats": 0.0,
+   "episodes": 0,
+   "requests": 3,
+   "rejected": 0,
+   "validations": 0,
+   "submissions": 1,
+   "submitted": false,
+   "infrastructure_errors": 0
+  },
+  "grade": {
+   "L": 7.025367664568213,
+   "L_K": 7.025367664568213,
+   "L_O": 4.374545955016311,
+   "skill_vs_O": 0.0,
+   "valid_cells": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "n_items": 64,
+   "n_failed": 64,
+   "reason": "validation failed (example 0)",
+   "validation": {
+    "ok": false,
+    "stage": "example 0"
+   },
+   "layers": {
+    "rlimits": true,
+    "uid": 29754,
+    "cleanup": true
+   },
+   "isolation": "box",
+   "seconds": 1.6874940395355225,
+   "worker_wall_s": 2.9029347896575928,
+   "worker_cpu_s": 2.3485380189999994,
+   "verifier_box_cpu_s": 1.02248,
+   "verifier_wall_s": 3.8928914070129395
+  },
+  "verifier_box": {
+   "has_predict": true,
+   "network_restricted": true,
+   "writable_dirs": [
+    "/dev/mqueue",
+    "/dev/shm",
+    "/proc/acpi",
+    "/run/lock",
+    "/sys/firmware",
+    "/tmp",
+    "/var/tmp"
+   ],
+   "world_writable_paths_fixed": 0,
+   "owned_by_predictor_user_before": 0,
+   "predictor_uid": 29754,
+   "box_limits": {
+    "pids_max": "max",
+    "memory_max": "8589934592"
+   },
+   "container_evidence": [
+    "/.dockerenv",
+    "/proc/1/cgroup"
+   ]
+  },
+  "wall_s": {
+   "boot": 0.6673095226287842,
+   "setup": 6.595198392868042,
+   "agent": 2.7832014560699463,
+   "finalize": 0.41408276557922363,
+   "verifier": 3.8928914070129395,
+   "total": 14.352683544158936
+  },
+  "reward_raw_in_trace": "0.0",
+  "trace_reward_field": "None",
+  "trace_error_messages": [],
+  "episode_ok": true,
+  "episode_errors": [],
+  "script_log_tail": "{\"mode\": \"overflow\", \"keys\": [\"mode\", \"public_inputs\", \"submit\", \"swapped_after_submit\", \"usage\", \"wall_s\"]}\n"
+ },
+ "grade_record": {
+  "n_items": 64,
+  "n_failed": 64,
+  "reason": "validation failed (example 0): predictor failed (exit code 7): ",
+  "box_not_clean_after_item": null,
+  "seconds": 0.0,
+  "layers": {
+   "rlimits": true,
+   "uid": 29754,
+   "cleanup": true
+  },
+  "first_errors": []
+ },
+ "agent_report": {
+  "mode": "overflow",
+  "public_inputs": {
+   "scales": {
+    "1": [
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5,
+     1.5
+    ],
+    "2": [
+     4.3,
+     2.7,
+     2.7
+    ]
+   },
+   "dims": {
+    "1": 6,
+    "2": 3
+   },
+   "n_samples": 32
+  },
+  "submit": {
+   "_s": 0.8603,
+   "_http": 200,
+   "_isError": false,
+   "ok": true,
+   "result_shape": [
+    "accepted",
+    "cpu_s",
+    "error",
+    "files",
+    "finalized",
+    "ok",
+    "stage",
+    "wall_s"
+   ]
+  },
+  "swapped_after_submit": true,
+  "usage": {
+   "ticks_used": 0,
+   "max_ticks": 400,
+   "resets": 0,
+   "episode_nats": 0.0,
+   "total_nats": 0.0,
+   "episode_left": 8.0,
+   "total_left": null,
+   "episodes": 0,
+   "commands": 0,
+   "submitted": false,
+   "validations": 0,
+   "submissions": 1
+  },
+  "wall_s": 1.7370684146881104
+ },
+ "hidden_value_scan": {
+  "files_and_members_scanned": 6,
+  "hits": {
+   "secret_hex": 0,
+   "theta_D": 0,
+   "theta_gamma": 0,
+   "theta_c": 0
+  }
+ },
+ "hidden_value_in_this_result_file": false
+}
