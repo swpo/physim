@@ -33,3 +33,5 @@
 - 02:50 UTC. CPU tests passed after the fixes (3-set smoke at 33f6c69a4, 1-set smoke with two lockstep batches
   at 28263eb3e, check_lib, check_shapes, make_summary --smoke). **GPU request r5-ladder-002 committed and
   pushed** (ref 28263eb3e, max_hours 2.9, cap $21.2). In the restart steps below read r5-ladder-002.
+- 03:23 UTC. r5-ladder-002: review "fine to run" (origin/gpu-jobs:jobs/r5-ladder-002/review.md; 1 minor:
+  run.log lacks the pilot line); state `queued`, accepted for an H200 at $6.69/h (at most $21.07).
