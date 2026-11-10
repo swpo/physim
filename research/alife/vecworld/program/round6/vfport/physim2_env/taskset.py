@@ -192,10 +192,14 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             "agent_key": key, "item_isolation": self.config.item_isolation}
 
     async def _public_files(self, runtime) -> dict:
-        """TASK.md, the public physim2 package and an empty submission/ into a box (any of the three kinds)."""
+        """TASK.md, the public physim2 package and an empty submission/ into a box (any of the three kinds), and
+        the marker of a prepared box: /etc/physim2/predictor_uid (1000 in the agent's box, where only the agent's
+        own validation uses it; the grading boxes get the rollout's uid at staging)."""
+        GRADING.require_container(runtime)
         raw, info = BUNDLE.public_bundle(self.data.world, self.data.config_name)
         await runtime.write("/tmp/physim2-workspace.tar", raw)
-        r = await runtime.run(["sh", "-c", f"umask 022; mkdir -p {WORKDIR} /etc/physim2 && chmod 755 {WORKDIR} /etc/physim2 && "
+        r = await runtime.run(["sh", "-c", f"umask 022; mkdir -p {WORKDIR} {GRADING.BOX_DIR} && chmod 755 {WORKDIR} {GRADING.BOX_DIR} && "
+                                            f"echo 1000 > {GRADING.BOX_DIR}/predictor_uid && chmod 644 {GRADING.BOX_DIR}/predictor_uid && "
                                             f"tar -xf /tmp/physim2-workspace.tar -C {WORKDIR} && rm -f /tmp/physim2-workspace.tar"], {})
         if r.exit_code:
             raise vf.TaskError("could not build the workspace in the box")
@@ -288,7 +292,8 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             "has_predict": staged["has_predict"], "network_restricted": bool(runtime.config.network_restricted),
             "writable_dirs": staged["scan"].get("writable_dirs"), "world_writable_paths_fixed": staged["scan"].get("fixed"),
             "owned_by_predictor_user_before": len(staged["scan"].get("owned_by_user", [])),
-            "predictor_uid": trace.state.uid, "box_limits": staged["scan"].get("box_limits")}
+            "predictor_uid": trace.state.uid, "box_limits": staged["scan"].get("box_limits"),
+            "container_evidence": staged["scan"].get("container_evidence")}
 
     @vf.reward(weight=1)
     async def skill(self, trace, runtime) -> float:

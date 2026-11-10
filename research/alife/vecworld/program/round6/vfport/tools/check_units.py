@@ -13,6 +13,13 @@ builder's code (--package-root <its checkout>) the failing ones reproduce the fi
               up (its cleanup deletes every file of one uid; see _item.in_box), which is checked first: these
               checks are skipped, loudly, if this process is root and the driver would not refuse.
   report_*    the validator's report from the agent's box is reduced to typed fields
+  guard_*     HOST SAFETY. The driver's cleanup kills every process and deletes every file of one uid; it once ran
+              on a development host. Here: (1) the guard's decision for every missing layer, as a pure function;
+              (2) on THIS machine the guard refuses; (3) every function that kills or deletes is called with the
+              route variable set and must refuse BEFORE touching anything -- while it is called, os.kill, os.fork,
+              os.setuid, os.unlink, os.chmod, os.chown and shutil.rmtree are replaced by tripwires and the walk is
+              confined to an empty temporary directory, so that even a broken guard could do nothing here.
+              The real cleanup is tested in a throwaway container only (tools/check_driver.py).
 
 usage: python tools/check_units.py [--store DIR --instance ID] [--package-root DIR] --out results/units.json
 """
@@ -30,6 +37,10 @@ import zipfile
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+if sys.platform != "linux" or os.environ.get("PHYSIM2_DEV_MACHINE") != "cloud-container":
+    raise SystemExit("check_units.py is a development check for the Linux build container (it starts test predictors on the machine it "
+                     "runs on). It is NOT part of the Mac runbook: do not run it on a personal machine. In the build container: "
+                     "PHYSIM2_DEV_MACHINE=cloud-container python tools/check_units.py ...")
 ap = argparse.ArgumentParser()
 ap.add_argument("--store", default="")
 ap.add_argument("--instance", default="")
@@ -228,8 +239,109 @@ try:
 except ImportError:
     evidence["report"] = "not applicable to this package (no access.clean_report)"
 
-# ----------------------------------------------------------------------------- the driver, without root
+# ----------------------------------------------------------------------------- the box guard, on this host
 ITEM = os.path.join(os.path.abspath(a.package_root), "physim2_env", "public", "_item.py")
+import importlib.util  # noqa: E402
+import shutil  # noqa: E402
+
+_spec = importlib.util.spec_from_file_location("item_under_test", ITEM)
+item = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(item)
+HAS_GUARD = hasattr(item, "guard_reasons")
+if HAS_GUARD:
+    ok_in = dict(dedicated=31001, evidence=["/.dockerenv"], route=item.ROUTE_VALUE, caller=0)
+    pure = {
+        "all_layers_present_is_allowed": item.guard_reasons(31001, **ok_in) == [],
+        "no_marker": item.guard_reasons(31001, **dict(ok_in, dedicated=None)),
+        "no_sign_of_a_container": item.guard_reasons(31001, **dict(ok_in, evidence=[])),
+        "no_route_variable": item.guard_reasons(31001, **dict(ok_in, route=None)),
+        "wrong_route_value": item.guard_reasons(31001, **dict(ok_in, route="1")),
+        "uid_0": item.guard_reasons(0, **dict(ok_in, dedicated=0)),
+        "uid_is_the_caller": item.guard_reasons(31001, **dict(ok_in, caller=31001)),
+        "uid_is_not_the_box_predictor_uid": item.guard_reasons(31002, **ok_in),
+        "uid_below_1000": item.guard_reasons(500, **dict(ok_in, dedicated=500)),
+        "uid_not_a_number": item.guard_reasons(None, **ok_in),
+        "uid_true": item.guard_reasons(True, **dict(ok_in, dedicated=1)),
+    }
+    evidence["guard_pure"] = pure
+    checks["guard_allows_only_when_every_layer_is_present"] = pure["all_layers_present_is_allowed"] is True
+    for k, v in pure.items():
+        if k != "all_layers_present_is_allowed":
+            checks[f"guard_refuses_{k}"] = isinstance(v, list) and len(v) == 1 if k not in ("uid_true", "uid_not_a_number", "uid_0") else bool(v)
+    here_guard = {str(u): item.box_guard(u) for u in (1000, 0, os.getuid(), 31001)}
+    evidence["guard_on_this_machine"] = {"container_evidence": item.container_evidence(), "marker_uid": item.dedicated_uid(),
+                                         "route_variable_set": os.environ.get(item.ROUTE_VAR) is not None, "decisions": here_guard}
+    checks["guard_refuses_on_this_machine"] = all(not g["ok"] for g in here_guard.values())
+
+# every function that kills or deletes, called on this host under tripwires (see the docstring)
+reached, saved = [], {}
+
+
+def _trip(name):
+    def f(*args, **kw):
+        reached.append(name)
+        raise AssertionError("tripwire: " + name)
+    return f
+
+
+trip_ev = {}
+with tempfile.TemporaryDirectory() as empty:
+    env_before = os.environ.get("PHYSIM2_BOX_CLEANUP")
+    try:
+        os.environ["PHYSIM2_BOX_CLEANUP"] = "disposable-box"         # the worst case: the route variable leaked onto a host
+        saved_mounts, item.mount_points = item.mount_points, (lambda: [empty])
+        for mod, names in ((os, ("kill", "killpg", "fork", "setuid", "setgid", "setgroups", "unlink", "remove", "rmdir", "chmod", "chown")),
+                           (shutil, ("rmtree",))):
+            for nm in names:
+                saved[(mod, nm)] = getattr(mod, nm)
+                setattr(mod, nm, _trip(nm))
+        for fn in ("kill_user", "wipe_user", "ipc_user", "cleanup"):
+            for uid in (1000, 0, 31001):
+                reached.clear()
+                try:
+                    getattr(item, fn)(uid)
+                    out = "RETURNED"
+                except RuntimeError as e:
+                    out = "refused" if str(e).startswith("refused") else f"RuntimeError: {e}"[:80]
+                except AssertionError as e:
+                    out = str(e)
+                except Exception as e:
+                    out = f"{type(e).__name__}"
+                trip_ev[f"{fn}({uid})"] = {"outcome": out, "destructive_calls_reached": list(reached)}
+        reached.clear()
+        try:
+            item.as_user(31001, lambda: None)
+            trip_ev["as_user(31001)"] = {"outcome": "RETURNED", "destructive_calls_reached": list(reached)}
+        except RuntimeError as e:
+            trip_ev["as_user(31001)"] = {"outcome": "refused" if str(e).startswith("refused") else str(e)[:80], "destructive_calls_reached": list(reached)}
+        except AssertionError as e:
+            trip_ev["as_user(31001)"] = {"outcome": str(e), "destructive_calls_reached": list(reached)}
+        ww = os.path.join(empty, "world_writable")
+        saved[(os, "chmod")](empty, 0o755)
+        open(ww, "w").close()
+        saved[(os, "chmod")](ww, 0o666)
+        reached.clear()
+        try:
+            sc = item.scan(31001)
+            trip_ev["scan(31001)"] = {"outcome": "returned", "fixing": sc.get("fixing"), "destructive_calls_reached": list(reached),
+                                      "file_still_world_writable": bool(os.stat(ww).st_mode & 0o002)}
+        except AssertionError as e:
+            trip_ev["scan(31001)"] = {"outcome": str(e), "destructive_calls_reached": list(reached)}
+    finally:
+        for (mod, nm), fn in saved.items():
+            setattr(mod, nm, fn)
+        item.mount_points = saved_mounts
+        if env_before is None:
+            os.environ.pop("PHYSIM2_BOX_CLEANUP", None)
+        else:
+            os.environ["PHYSIM2_BOX_CLEANUP"] = env_before
+evidence["guard_tripwires"] = trip_ev
+checks["guard_every_kill_and_delete_function_refuses_on_this_host"] = all(v["outcome"] == "refused" and not v["destructive_calls_reached"]
+                                                                          for k, v in trip_ev.items() if not k.startswith("scan"))
+checks["guard_scan_changes_no_mode_on_this_host"] = trip_ev["scan(31001)"].get("fixing") is False and not trip_ev["scan(31001)"]["destructive_calls_reached"] \
+    and trip_ev["scan(31001)"].get("file_still_world_writable") is True
+
+# ----------------------------------------------------------------------------- the driver, without root
 RUNNER = os.path.join(agentenv_root(), "physim2", "predict_runner.py")
 PRED = {
     "fifo_as_stderr": "import os, sys\ndef predict(h, p, q, n, s):\n    io = os.path.dirname(sys.argv[3]); p = os.path.join(io, 'stderr.txt')\n"
@@ -245,9 +357,11 @@ PRED = {
 }
 drv = {}
 src_item = open(ITEM).read()
-SAFE = os.geteuid() != 0 or ("def in_box" in src_item and not os.path.isdir("/etc/physim2"))
-evidence["driver_host_guard"] = {"euid": os.geteuid(), "driver_refuses_cleanup_outside_a_box": "def in_box" in src_item,
-                                 "ran": SAFE}
+# the driver as a program runs on this host ONLY if it cannot clean up here: not root, or the guard above refused
+SAFE = os.geteuid() != 0 or (HAS_GUARD and checks.get("guard_refuses_on_this_machine") is True
+                             and checks.get("guard_every_kill_and_delete_function_refuses_on_this_host") is True)
+evidence["driver_host_guard"] = {"euid": os.geteuid(), "driver_has_the_box_guard": HAS_GUARD, "driver_program_was_run_here": SAFE}
+del src_item
 with tempfile.TemporaryDirectory() as d:
     req = os.path.join(d, "request.npz")
     np.savez(req, history=np.zeros((17, 6)), prefix=np.zeros((16, 24)), test=np.zeros((32, 24)), queries=json.dumps({"1": [1, 2], "2": [16]}),
@@ -259,7 +373,8 @@ with tempfile.TemporaryDirectory() as d:
         t0 = time.time()
         try:
             p = subprocess.run([sys.executable, "-I", "-B", ITEM, "--submission", sub, "--runner", RUNNER, "--request", req, "--cpu", "20",
-                                "--wall", "30", "--mem-gib", "4"], capture_output=True, text=True, timeout=45)
+                                "--wall", "30", "--mem-gib", "4"], capture_output=True, text=True, timeout=45,
+                               env={k: v for k, v in os.environ.items() if k != "PHYSIM2_BOX_CLEANUP"})
             r = json.loads(p.stdout.strip().splitlines()[-1])
             rec = {"returned": True, "ok": r.get("ok"), "why": r.get("why"), "stderr_tail": (r.get("stderr") or "")[-60:],
                    "driver_error": r.get("driver_error"), "layers": r.get("layers")}

@@ -142,6 +142,9 @@ class Lab:
             raise LabError(str(e), "request") from None
         dst = os.path.join(V.WORKSPACE, "submission")
         if os.path.isdir(src) and os.path.realpath(src) != os.path.realpath(dst) and not self.usage().get("submitted"):
+            # replacing submission/ is for the exam box only (its marker); anywhere else, copy it yourself
+            if not (os.path.isdir("/etc/physim2") and os.path.isfile(os.path.join(V.WORKSPACE, "TASK.md"))):
+                raise LabError("submit(path) replaces submission/ only inside the exam box; copy your directory there yourself", "request")
             shutil.rmtree(dst, ignore_errors=True)
             shutil.copytree(src, dst, symlinks=True)
         return self._call("submit", path="submission")

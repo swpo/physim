@@ -80,8 +80,8 @@ def run(name, a, harness, task=None, agent_timeout=None, timeout=1500):
                    "agent": {"runtime": {"type": "docker", "cpu": 2}, "harness": dict({"id": "physim2-script"}, **harness),
                              "retries": {"max_retries": 0}},
                    "retries": {"max_retries": 0}, "verifier": {"retries": 0}}}
-    if task:
-        cfg["env"]["taskset"]["task"] = task
+    # (fixer) single_use is on by default now and names the agent by `agent_key`: one key per attack
+    cfg["env"]["taskset"]["task"] = dict({"agent_key": name}, **(task or {}))
     if agent_timeout:
         cfg["env"]["agent"]["timeout"] = agent_timeout
     os.makedirs(out_dir, exist_ok=True)

@@ -100,6 +100,9 @@ def main():
     ap.add_argument("--cpu", type=float, default=2)
     ap.add_argument("--isolation", default="shared", choices=["shared", "box"])
     ap.add_argument("--box-check", default="C,D", help="policies re-run on the first world with one box per item ('' = none)")
+    ap.add_argument("--no-cross-check", action="store_true",
+                    help="skip the comparison with round 5's own grader, which runs the evaluator's reference predictor in agentenv's "
+                         "local sandbox ON THIS MACHINE (written for Linux; use this flag on a Mac)")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     sizes, pols = json.loads(a.sizes), a.policies.split(",")
@@ -153,7 +156,7 @@ def main():
             shutil.copy(os.path.join(ROOT, "agents", "install_prebuilt.py"), os.path.join(dst, "install_prebuilt.py"))
             harness = {"agent_dir": dst, "script": "install_prebuilt.py", "label": f"{pol}-box"}
         r = vfrun.run_eval(f"proof-{pol.lower()}-box", store=a.store, out_dir=out_dir, harness=harness, instances=ids[:1], cpu=a.cpu,
-                           task={"item_isolation": "box"})
+                           task={"item_isolation": "box", "item_boxes_parallel": 2 if pol == "D" else 1})
         if len(r["episodes"]) != 1:
             raise SystemExit(f"box check {pol}: no episode\n{r['log_tail']}")
         state["box"][pol] = {"rollout": vfrun.rollout(r["episodes"][0]), "wall_s": r["wall_s"], "host_cpu_s": r["host_cpu_s"]}
@@ -200,7 +203,7 @@ def main():
                 u_true = (theta - (W.PRIOR_LO + W.PRIOR_HI) / 2) / ((W.PRIOR_HI - W.PRIOR_LO) / 2)
                 rec["S_abs_error_over_prior_sd"] = (np.abs(np.load(f).mean(0) - u_true) * np.sqrt(3)).tolist()
         rec["table"] = GR.table(hidden, pols, n_boot=500)
-        if "C" in pols:
+        if "C" in pols and not a.no_cross_check:
             try:
                 rec["same_submission_through_round5_grader"] = cross_check(a.store, iid, a.world, a.config)
             except Exception as e:
@@ -229,7 +232,7 @@ def main():
         box[pol] = {"graded": True, "trace_id": x["trace_id"], "n_failed": int(zb["failed"].sum()), "identical_per_item_scores": bool(np.array_equal(zb["es"], zs["es"])),
                     "max_abs_difference": float(np.abs(zb["es"] - zs["es"]).max()), "reward_box": x["reward_skill_vs_O"], "reward_shared": xs["reward_skill_vs_O"],
                     "same_frozen_files": (x["submission"] or {}).get("sha256") == (xs["submission"] or {}).get("sha256"),
-                    "grade": {k: x["grade"].get(k) for k in ("isolation", "item_boxes", "item_box_wall_s_mean", "item_boxes_cpu_s", "infrastructure_failed_items",
+                    "grade": {k: x["grade"].get(k) for k in ("isolation", "item_boxes", "item_boxes_parallel", "item_box_wall_s_mean", "item_boxes_cpu_s", "infrastructure_failed_items",
                                                               "seconds", "layers", "validation")},
                     "wall_s": x["wall_s"], "cpu_s": x["cpu_s"], "vf_eval_wall_s": b["wall_s"], "vf_eval_host_cpu_s": b["host_cpu_s"],
                     "shared_grade_seconds": xs["grade"].get("seconds")}

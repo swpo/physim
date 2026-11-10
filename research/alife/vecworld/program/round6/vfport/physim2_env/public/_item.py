@@ -23,11 +23,14 @@ Prints one JSON line:
     layers {uid, rlimits}, cleanup {killed, removed, ipc_removed, left_pids, left_files, roots}
 
 Layers: resource limits always (CPU seconds hard = soft, address space, file size, no core dumps, process
-count); when started as root INSIDE A PREPARED BOX (the directory /etc/physim2 exists) also a drop to --uid with
-no supplementary groups, and the cleanup. Without root, or as root on any other machine, the request still runs,
-without the drop and without the cleanup: the cleanup deletes every file of that uid on every writable file
-system and must never run on a machine that is not a disposable box. The network policy and the absence of
-hidden files are properties of the box, not of this file.
+count); when started as root INSIDE A DISPOSABLE BOX also a drop to --uid with no supplementary groups, and the
+cleanup. "Inside a disposable box" is decided by require_box below and needs all of: the marker the
+environment's setup writes (/etc/physim2/predictor_uid), signs of a container, the variable
+PHYSIM2_BOX_CLEANUP=disposable-box that only the grading route sets, and a target uid equal to the marker's.
+Without root, or as root anywhere else, the request still runs, without the drop and without the cleanup, and
+`layers.refused` says why: the cleanup deletes every file of that uid on every writable file system and must
+never run on a machine that is not a disposable box. The network policy and the absence of hidden files are
+properties of the box, not of this file.
 """
 import argparse
 import base64
@@ -50,7 +53,84 @@ ENV = {"PATH": "/usr/local/bin:/usr/bin:/bin", "HOME": "/tmp", "OMP_NUM_THREADS"
        "XLA_FLAGS": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1"}
 
 
-# ----------------------------------------------------------------------------- cleanup (root only)
+# ----------------------------------------------------------------------------- the box guard
+# The cleanup below kills every process and deletes every file of one uid on EVERY writable file system it can
+# see. That is right in a disposable box and destructive on a real machine (it happened once: a test ran this
+# file as root on a development host and the home directory of uid 1000 was deleted). Every function that kills,
+# deletes or changes modes therefore asks require_box(uid) first, and that needs ALL of:
+#   marker      /etc/physim2 is a root-owned directory (no link) and /etc/physim2/predictor_uid a root-owned
+#               regular file that only root may write: the environment's setup writes both into every box
+#   container   this process runs inside a container (see container_evidence)
+#   route       the variable PHYSIM2_BOX_CLEANUP=disposable-box is set: the grading route sets it on its own
+#               commands, nothing else does
+#   uid         the target uid is the one written in the marker, is at least MIN_UID, is not 0 and is not the
+#               real uid of the caller
+BOX_DIR = "/etc/physim2"
+UID_FILE = BOX_DIR + "/predictor_uid"
+ROUTE_VAR, ROUTE_VALUE = "PHYSIM2_BOX_CLEANUP", "disposable-box"
+MIN_UID = 1000
+
+
+def container_evidence():
+    """Signs that this process is inside a container: the file Docker creates in every container, the one Podman
+    creates, or a control-group path of pid 1 that names a container engine. Empty on an ordinary machine."""
+    ev = [p for p in ("/.dockerenv", "/run/.containerenv") if os.path.exists(p)]
+    try:
+        with open("/proc/1/cgroup") as f:
+            cg = f.read()
+        if any(k in cg for k in ("docker", "containerd", "kubepods", "libpod", "lxc")):
+            ev.append("/proc/1/cgroup")
+    except OSError:
+        pass
+    return ev
+
+
+def dedicated_uid():
+    """The predictor uid the environment wrote into this box, or None (no marker, or a marker root does not own)."""
+    try:
+        d, f = os.lstat(BOX_DIR), os.lstat(UID_FILE)
+        if not stat.S_ISDIR(d.st_mode) or not stat.S_ISREG(f.st_mode) or d.st_uid != 0 or f.st_uid != 0 or f.st_mode & 0o022:
+            return None
+        with open(UID_FILE) as fh:
+            return int(fh.read(32).strip())
+    except (OSError, ValueError):
+        return None
+
+
+def guard_reasons(uid, *, dedicated, evidence, route, caller):
+    """Why a cleanup for `uid` must be refused (empty list = allowed). Pure: every input is passed in."""
+    why = []
+    if dedicated is None:
+        why.append(f"no marker ({UID_FILE} written by the environment's setup)")
+    if not evidence:
+        why.append("no sign of a container (/.dockerenv, /run/.containerenv, control group of pid 1)")
+    if route != ROUTE_VALUE:
+        why.append(f"{ROUTE_VAR} is not set by the grading route")
+    if not isinstance(uid, int) or isinstance(uid, bool) or uid <= 0:
+        why.append("the target uid is 0 or not a uid")
+    else:
+        if uid < MIN_UID:
+            why.append(f"the target uid is below {MIN_UID}")
+        if uid == caller:
+            why.append("the target uid is the caller's own")
+        if dedicated is not None and uid != dedicated:
+            why.append("the target uid is not this box's predictor uid")
+    return why
+
+
+def box_guard(uid):
+    why = guard_reasons(uid, dedicated=dedicated_uid(), evidence=container_evidence(), route=os.environ.get(ROUTE_VAR),
+                        caller=os.getuid())
+    return {"ok": not why, "why": why}
+
+
+def require_box(uid):
+    g = box_guard(uid)
+    if not g["ok"]:
+        raise RuntimeError("refused: not a disposable box (" + "; ".join(g["why"]) + ")")
+
+
+# ----------------------------------------------------------------------------- cleanup (root, in a box only)
 def _uids(pid):
     try:
         with open(f"/proc/{pid}/status") as f:
@@ -91,6 +171,7 @@ def reap():
 
 def as_user(uid, fn):
     """Run fn() in a child that has become uid (things only the owner may do: signal all, remove IPC objects)."""
+    require_box(uid)
     pid = os.fork()
     if pid == 0:
         try:
@@ -107,6 +188,7 @@ def kill_user(uid, tries=200):
     """SIGKILL every process running as uid and reap it, until none is left. Returns (number seen, pids left).
     First kill(-1) issued AS that user (one pass of the kernel over its processes, which a fork loop cannot
     outrun), then a /proc scan as the check."""
+    require_box(uid)
     seen = set(user_pids(uid))
     if seen:
         as_user(uid, lambda: os.kill(-1, signal.SIGKILL))
@@ -174,6 +256,7 @@ def owned_by(uid, mounts=None):
 
 def wipe_user(uid):
     """Delete everything owned by uid, deepest first. Returns (number removed, paths that survived)."""
+    require_box(uid)
     paths = sorted(owned_by(uid), key=len, reverse=True)
     n = 0
     for p in paths:
@@ -215,6 +298,7 @@ def ipc_ids(uid):
 def ipc_user(uid):
     """Remove them. Root in a container has no CAP_SYS_ADMIN and may not remove another user's objects, so the
     removal is issued AS that user. Returns (number removed, what is left)."""
+    require_box(uid)
     before = ipc_ids(uid)
     if not before:
         return 0, {}
@@ -234,6 +318,7 @@ def ipc_user(uid):
 
 
 def cleanup(uid):
+    require_box(uid)
     killed, left = kill_user(uid)
     ipc, left_ipc = ipc_user(uid)
     removed, left_files = wipe_user(uid)
@@ -289,26 +374,19 @@ def box_cpu_s():
         return None
 
 
-BOX_MARKER = "/etc/physim2"
-
-
-def in_box():
-    """True only inside a box the environment prepared (its setup creates BOX_MARKER). The cleanup kills every
-    process and deletes every file of one uid on EVERY writable file system it can see: right in a disposable
-    box, destructive on a real machine. Started as root anywhere else, this driver therefore neither drops to
-    that uid nor cleans up."""
-    return os.path.isdir(BOX_MARKER) and not os.path.islink(BOX_MARKER)
-
-
 def run(a):
     root = os.geteuid() == 0
-    drop = root and a.uid is not None and a.uid > 0 and in_box()
+    guard = box_guard(a.uid) if root and a.uid else {"ok": False, "why": ["not started as root"]}
+    drop = root and guard["ok"]
+    if root and not drop and os.environ.get(ROUTE_VAR) == ROUTE_VALUE:
+        # the grading route asked for the unprivileged run and this is not a disposable box: run NOTHING as root
+        raise RuntimeError("refused: not a disposable box (" + "; ".join(guard["why"]) + ")")
     become_reaper()
     if drop and not a.no_cleanup and user_pids(a.uid):
         kill_user(a.uid)                                     # never start a request next to a stray process
     layers = {"rlimits": True, "uid": a.uid if drop else None, "cleanup": bool(drop and not a.no_cleanup)}
-    if root and not drop and a.uid:
-        layers["note"] = f"root outside a prepared box (no {BOX_MARKER}): no uid drop, no cleanup"
+    if root and not drop:
+        layers["refused"] = guard["why"]                     # root, but not a disposable box: no uid drop, no cleanup
     io = tempfile.mkdtemp(prefix="physim2-io-")              # the only place the predictor may write its reply
     os.chmod(io, 0o700)
     io_fd = os.open(io, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)    # root reads the reply through THIS handle
@@ -389,11 +467,14 @@ def run(a):
 
 
 def scan(uid, fix=True):
-    """Before the first request (grader's box): what could a later request find or leave? Removes the write bit
+    """Before the first request (grader's box): what could a later request find or leave? Changes nothing unless
+    this is a disposable box (require_box); the report then says so in "guard". In a box: removes the write bit
     of world-writable regular files and of world-writable directories that are not sticky temporary directories
     (some container engines run setup commands with umask 0), then lists where the unprivileged user can still
     write and anything it already owns."""
     dirs, fixed_dirs, fixed_files = [], [], []
+    guard = box_guard(uid)
+    fix = bool(fix and guard["ok"] and os.geteuid() == 0)
     for m in mount_points():
         try:
             dev = os.lstat(m).st_dev
@@ -439,7 +520,7 @@ def scan(uid, fix=True):
     return {"writable_dirs": sorted(set(dirs) - set(fixed_dirs)), "fixed_dirs": sorted(set(fixed_dirs))[:20],
             "fixed_files": fixed_files[:20], "fixed": len(set(fixed_dirs)) + len(fixed_files),
             "owned_by_user": owned_by(uid)[:20], "user_pids": user_pids(uid), "root": os.geteuid() == 0,
-            "box_limits": limits}
+            "box_limits": limits, "guard": guard, "fixing": fix, "container_evidence": container_evidence()}
 
 
 def main(argv=None):

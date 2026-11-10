@@ -32,6 +32,7 @@ from pathlib import Path
 
 import verifiers.v1 as vf
 
+from .grading import ROUTE_ENV, require_container
 from .public import _rules
 
 ADDRESS_FILE = "/etc/physim2/lab.json"
@@ -43,6 +44,7 @@ async def collect_frozen(runtime, artifacts, transport_bytes: int, max_mib: floa
     workdir = str(getattr(runtime.config, "workdir", None) or "/").rstrip("/")
     root = f"{workdir}/{artifacts[0].source}" if not artifacts[0].source.startswith("/") else artifacts[0].source
     try:
+        require_container(runtime)
         got = await vf.collect(runtime, artifacts, max_bytes=transport_bytes, sweep=False)
         raw = got.get(root)
         err0 = None
@@ -145,6 +147,7 @@ class BoxAccess:
 
     async def announce(self, port: int) -> dict:
         # the same translation verifiers applies to the tool URL it hands to the harness (mcp/launch.py:457-460)
+        require_container(self.runtime)
         self.address = self.runtime.host_url(f"http://127.0.0.1:{port}").rstrip("/") + "/mcp"
         await self.runtime.write(ADDRESS_FILE, json.dumps({"url": self.address, "tool": "call"}).encode())
         await self.runtime.run(["chmod", "755", "/etc/physim2"], {})
@@ -157,8 +160,10 @@ class BoxAccess:
             return {"report": {"ok": False, "stage": "artifact", "error": "format: only submission/ is collected; copy your "
                                "directory there first (physim2.Lab().submit(path) does it)"}, "frozen": None}
         try:
+            require_container(self.runtime)
             async with asyncio.timeout(self.check_timeout):
-                r = await self.runtime.run(["python3", "-B", "-c", VALIDATE, self.workdir, path], {})
+                # ROUTE_ENV: in the agent's box too the predictor then runs as the box's unprivileged user (1000)
+                r = await self.runtime.run(["python3", "-B", "-c", VALIDATE, self.workdir, path], dict(ROUTE_ENV))
             report = clean_report(r.stdout)
         except TimeoutError:
             report = {"ok": False, "stage": "validator", "error": "the validator in the box did not finish in time"}

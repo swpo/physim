@@ -49,10 +49,13 @@ STOCK = ["delete", "huge", "no_tar", "symlinks", "junk", "tar_duplicate"]
 
 
 def listener():
-    """A TCP listener on every host interface: the thing a box must NOT be able to reach."""
+    """A TCP listener on the host: the thing a box must NOT be able to reach. It accepts a connection, records the
+    peer address and closes it; it serves nothing. On Linux a container reaches the host at its bridge gateway,
+    so the listener binds every interface for the minutes this tool runs; elsewhere (Docker Desktop forwards
+    `host.docker.internal` to the host's loopback) it binds 127.0.0.1 only."""
     srv = socket.socket()
     srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    srv.bind(("0.0.0.0", 0))
+    srv.bind(("0.0.0.0" if sys.platform == "linux" else "127.0.0.1", 0))
     srv.listen(16)
     hits = []
 
@@ -72,7 +75,10 @@ def uncut_container(port, image):
     """Control: the same image WITHOUT verifiers' network policy reaches the listener through the bridge gateway."""
     code = ("import socket,struct\n"
             "gw=[socket.inet_ntoa(struct.pack('<L',int(l.split()[2],16))) for l in open('/proc/net/route').read().splitlines()[1:] if l.split()[1]=='00000000'][0]\n"
-            f"try:\n socket.create_connection((gw,{port}),timeout=3).close(); print('REACHED')\nexcept Exception as e:\n print(type(e).__name__)\n")
+            "out=[]\n"
+            "for h in (gw,'host.docker.internal'):\n"
+            f" try:\n  socket.create_connection((h,{port}),timeout=3).close(); out.append('REACHED')\n except Exception as e:\n  out.append(type(e).__name__)\n"
+            "print('REACHED' if 'REACHED' in out else out[0])\n")
     r = subprocess.run(["docker", "run", "--rm", image, "python3", "-c", code], capture_output=True, text=True, timeout=120)
     return r.stdout.strip() or r.stderr.strip()[-200:]
 
@@ -107,17 +113,33 @@ def main():
                         "--config", "probe_ring", "--n", "1", "--prefix", "probe-ring"], check=True, env=vfrun.child_env())
     hidden = os.path.join(a.store, iid, "hidden")
     out_dir, notes = os.path.join(a.scratch, "runs"), os.path.join(a.scratch, "notes")
-    canary = "physim2-" + "canary-" + secrets.token_hex(12)
+    # resumable: a finished rollout is never repeated (its laboratory is spent, and this machine restarts)
+    os.makedirs(a.scratch, exist_ok=True)
+    state_f = os.path.join(a.scratch, "probe_state.json")
+    state = json.load(open(state_f)) if os.path.exists(state_f) else {"canary": "physim2-" + "canary-" + secrets.token_hex(12), "runs": {}}
+    canary = state["canary"]
     wenv = {"HF_TOKEN": canary}
     srv, port, hits = listener()
-    control = uncut_container(port, a.image)
-    control_hits = len(hits)
+    if "control" not in state:
+        state["control"] = uncut_container(port, a.image)
+        state["control_hits"] = len(hits)
+        json.dump(state, open(state_f, "w"))
+    control, control_hits = state["control"], state["control_hits"]
     ae, mine = agentenv_root(), os.path.join(ROOT, "agents")
     host_paths = [hidden, os.path.join(hidden, "instance.json"), os.path.join(hidden, "exam.npz"), ae, ROOT, a.store]
     common = dict(store=a.store, out_dir=out_dir, instances=[iid], cpu=a.cpu, env=wenv)
-    runs = {}
+    runs = state["runs"]
 
     def go(name, harness, task=None, may_fail=False):
+        if name in runs:
+            return runs[name]
+        x = go1(name, harness, task, may_fail)
+        x["listener_hits_during_this_rollout"] = len(hits) - go.hits0
+        json.dump(state, open(state_f, "w"), default=str)
+        return x
+
+    def go1(name, harness, task=None, may_fail=False):
+        go.hits0 = len(hits)
         r = vfrun.run_eval(name, harness=dict(harness, collect_dir=notes), task=task, **common)
         if len(r["episodes"]) != 1:
             if not may_fail:
@@ -142,7 +164,6 @@ def main():
     # ---- part 2 ----
     B = go("probe-grading", {"agent_dir": mine, "script": "probe_grading.py", "label": "probe_grading",
                              "args": ["--host-port", str(port)], "collect": ["probe_grading_report.json"]})
-    hits_after_probe = len(hits)
     B1 = go("probe-grading-shared", {"agent_dir": mine, "script": "probe_grading.py", "label": "probe_grading_shared",
                                      "args": ["--host-port", str(port)]}, task={"item_isolation": "shared"})
     B0 = go("probe-grading-nocleanup", {"agent_dir": mine, "script": "probe_grading.py", "label": "probe_grading_control",
@@ -345,7 +366,7 @@ def main():
                                                               and i["box"]["net"]["dns"] != "RESOLVED" for i in items),
         "c_verifier_box_cannot_reach_host_listener": bool(items) and all(i["box"]["net"]["host_listener"] != "REACHED" for i in items),
         "c_verifier_box_cannot_reach_the_lab": bool(items) and all(not i["box"]["net"]["lab"].startswith("HTTP ") for i in items),
-        "c_host_listener_saw_no_box": hits_after_probe == control_hits and len(hits) == control_hits,
+        "c_host_listener_saw_no_box": all(r.get("listener_hits_during_this_rollout", 0) == 0 for r in runs.values()),
         # (d)
         "d_every_hostile_rollout_is_graded": all(h["graded"] and h["ok"] for h in hostile.values()),
         "d_every_reward_is_a_finite_number": all(isinstance(h["reward_skill_vs_O"], (int, float)) and abs(h["reward_skill_vs_O"]) < float("inf")
@@ -447,7 +468,7 @@ def main():
                "b_verifier_box_item_1": {k: items[0]["box"][k] for k in ("uid", "env_token_like", "env_needle", "needle_hits", "files_read", "environ_read")} if items else None,
                "b_trace_scan": {"files_scanned": scanned, "needles": sorted(needles), "found": found},
                "c_control": control, "c_agent_box_net": ab["net"], "c_verifier_box_net_all_items": vb_net,
-               "c_listener_hits": {"control": control_hits, "during_box_runs": len(hits) - control_hits},
+               "c_listener_hits": {"control": control_hits, "during_box_runs": sum(r.get("listener_hits_during_this_rollout", 0) for r in runs.values())},
                "d_hostile": {m: {"graded": h["graded"], "ok": h["ok"], "reward": h["reward_skill_vs_O"], "errors": h["errors"],
                                  "n_failed": h["grade"].get("n_failed"), "n_items": h["grade"].get("n_items"), "reason": h["grade"].get("reason"),
                                  "submission": h["submission"]} for m, h in hostile.items()},

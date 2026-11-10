@@ -39,6 +39,17 @@ from ._paths import use_agentenv
 from .public import _rules
 
 RUNTIME_DIR = "/runtime"
+BOX_DIR = "/etc/physim2"                                     # the marker of a prepared box (public/_item.py: require_box)
+ROUTE_ENV = {"PHYSIM2_BOX_CLEANUP": "disposable-box"}        # set on the grading route's own commands, nowhere else
+CONTAINER_RUNTIMES = ("docker", "prime")
+
+
+def require_container(runtime) -> None:
+    """Every command this package sends through a verifiers Runtime changes files as root (mkdir, chown, tar,
+    the driver's cleanup). On the `subprocess` runtime those commands would run on the worker itself: refuse."""
+    typ = getattr(getattr(runtime, "config", None), "type", None)
+    if typ not in CONTAINER_RUNTIMES:
+        raise RuntimeError(f"refused: runtime {typ!r} is not a container runtime; nothing of physim2_env runs on a host")
 SLACK_S = 120.0                                              # worker-side allowance per request beyond the wall limit
 BOX_S = 240.0                                                # ... and for provisioning and staging a fresh box
 
@@ -107,21 +118,25 @@ async def box_cpu_seconds(runtime) -> float | None:
 async def stage(runtime, workdir: str, uid: int) -> dict:
     """Trusted staging after the artifacts are restored: the driver and its directory, root-owned and
     read-only; the restored submission read-only and owned by root. No submitted code runs here."""
+    require_container(runtime)
     here = os.path.dirname(os.path.abspath(__file__))
     await runtime.write(f"{RUNTIME_DIR}/item.py", open(os.path.join(here, "public", "_item.py"), "rb").read())
     sub = f"{workdir}/submission"
     r = await runtime.run(["sh", "-c",
-                           f'umask 022; mkdir -p {RUNTIME_DIR} && chown -R 0:0 {RUNTIME_DIR} && chmod 755 {RUNTIME_DIR} && chmod 644 {RUNTIME_DIR}/item.py; '
+                           f'umask 022; mkdir -p {RUNTIME_DIR} {BOX_DIR} && chown -R 0:0 {RUNTIME_DIR} {BOX_DIR} && chmod 755 {RUNTIME_DIR} {BOX_DIR} && '
+                           f'chmod 644 {RUNTIME_DIR}/item.py && echo {int(uid)} > {BOX_DIR}/predictor_uid && chmod 644 {BOX_DIR}/predictor_uid; '
                            f'if [ -d {sub} ]; then chown -R -h 0:0 {sub} && chmod -R a-w,a+rX {sub}; fi; '
                            f'chown -R -h 0:0 {workdir}/physim2 {workdir}/TASK.md && chmod -R go-w {workdir}; '
                            f'test -f {sub}/predict.py && echo HAS_PREDICT || echo NO_PREDICT; '
-                           f'python3 -I -B {RUNTIME_DIR}/item.py --scan --uid {int(uid)}'], {})
+                           f'python3 -I -B {RUNTIME_DIR}/item.py --scan --uid {int(uid)}'], dict(ROUTE_ENV))
     if r.exit_code:
         raise RuntimeError("staging the verifier box failed")
     try:
         rep = json.loads(r.stdout.strip().splitlines()[-1])
     except Exception:
         rep = {}
+    if not (rep.get("guard") or {}).get("ok"):               # the driver would refuse to drop privileges and to clean up
+        raise RuntimeError("the box is not recognised as a disposable box: " + "; ".join((rep.get("guard") or {}).get("why", ["no report"])))
     return {"has_predict": "HAS_PREDICT" in r.stdout, "scan": rep}
 
 
@@ -136,9 +151,10 @@ async def run_request(runtime, cmd: list[str], request: bytes, wall: float) -> d
     """ONE request in `runtime`: the driver's JSON line, or a "driver error" record. Never raises; never waits
     longer than the predictor's wall limit plus SLACK_S (a hung box is then a failed request, not a hung reward)."""
     try:
+        require_container(runtime)
         async with asyncio.timeout(float(wall or 0) + SLACK_S):
             await runtime.write(f"{RUNTIME_DIR}/request.npz", request)
-            out = await runtime.run(cmd, {})
+            out = await runtime.run(cmd, dict(ROUTE_ENV))
         return json.loads(out.stdout.strip().splitlines()[-1])
     except TimeoutError:
         return {"ok": False, "why": "driver error", "stderr": "the box did not answer in time", "cpu_s": 0.0, "wall_s": 0.0, "hung": True}
@@ -281,6 +297,9 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
                 dirty = i
         if r.get("hung") and prepare is None:
             dirty = i                                        # a shared box that stopped answering serves no later item
+        if r.get("ok") and (r.get("layers") or {}).get("uid") != uid and cleanup:
+            dirty = i                                        # never accept a reply from a run that was not unprivileged
+            return "the driver did not run the predictor as the box's unprivileged user"
         smp, bad = judge(r, ex.queries, ex.dims, m, max_values)
         if bad is None:
             for l in ex.queries:

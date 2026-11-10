@@ -57,6 +57,8 @@ class ScriptHarness(vf.Harness[ScriptHarnessConfig]):
         c = self.config
         if not c.agent_dir or not c.script:
             raise ValueError("physim2-script needs --env.agent.harness.agent-dir and --env.agent.harness.script")
+        if getattr(runtime.config, "type", None) not in ("docker", "prime"):   # its commands write as root: never on a host
+            raise RuntimeError("physim2-script runs its script in a container runtime only")
         r = await runtime.run(["mkdir", "-p", AGENT_HOME, "/logs/agent"], {})
         if r.exit_code:
             raise RuntimeError("could not prepare the box for the script")

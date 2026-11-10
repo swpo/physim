@@ -60,6 +60,10 @@ def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=No
     os.makedirs(out_dir, exist_ok=True)
     run_dir = os.path.join(out_dir, name)
     if os.path.exists(run_dir):
+        # only ever a directory an earlier call of this function made (vf-eval writes traces.jsonl / its config there)
+        inside = set(os.listdir(run_dir)) if os.path.isdir(run_dir) and not os.path.islink(run_dir) else {"?"}
+        if not name or not inside <= {"traces.jsonl", "configs", "logs", "metadata.json", "results.jsonl"}:
+            raise SystemExit(f"refusing to replace {run_dir}: it does not look like an earlier run of this tool (found {sorted(inside)[:6]})")
         shutil.rmtree(run_dir)
     toml = os.path.join(out_dir, f"{name}.toml")
     with open(toml, "wb") as f:

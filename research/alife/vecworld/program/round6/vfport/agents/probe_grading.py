@@ -114,9 +114,18 @@ def box_report(host_port, lab_url, full):
     rep.update(files_read=n_files, environ_read=n_environ, needle_hits=hits[:5])
     gw = gateway()
     proxy = env.get("HTTP_PROXY") or env.get("http_proxy")
+    hosts = [gw] if gw else []
+    try:                                                     # Docker Desktop: the host is an alias in /etc/hosts
+        for line in open("/etc/hosts").read().splitlines():
+            f = line.split("#")[0].split()
+            if len(f) > 1 and any(n.endswith(("host.internal", "docker.internal")) for n in f[1:]) and f[0] not in hosts:
+                hosts.append(f[0])
+    except Exception:
+        pass
+    tries = [tcp(h, host_port) for h in hosts]
     rep["net"] = {"public_tcp": tcp("1.1.1.1", 53), "public_tcp_443": tcp("1.1.1.1", 443),
-                  "dns": dns("example.com"),
-                  "host_listener": tcp(gw, host_port) if gw else "no gateway",
+                  "dns": dns("example.com"), "host_addresses_tried": len(hosts),
+                  "host_listener": ("REACHED" if "REACHED" in tries else tries[0]) if tries else "no gateway",
                   "lab": http(lab_url, data=b"{}") if lab_url else "no address",
                   "proxy_public": http("http://example.com/", proxy) if proxy else "no proxy",
                   "proxy_host_listener": http(f"http://{gw}:{host_port}/", proxy) if proxy and gw else "no proxy"}
@@ -126,8 +135,9 @@ def box_report(host_port, lab_url, full):
 PREDICT = BOX + r'''
 import ctypes, time
 import numpy as np
+import physim2 as _physim2
 
-EXAMPLES = np.load(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "physim2", "examples.npz"))["history"]
+EXAMPLES = np.load(os.path.join(os.path.dirname(os.path.abspath(_physim2.__file__)), "examples.npz"))["history"]
 MARK = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mark.bin")
 TOUCH = ["/dev/shm", "/var/tmp", "/run/lock"]
 

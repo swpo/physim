@@ -56,8 +56,8 @@ NONDET = ("import os\nimport numpy as np\n"
 PARTLY = GOOD.replace("    r = np.random.default_rng(seed)\n", "    if seed == 1:\n        raise RuntimeError('fails the third example call only')\n"
                                                                  "    r = np.random.default_rng(seed)\n")
 # honest on the two public examples (so that every validation passes), `ATTACK` on anything else
-ON_ITEMS = ("import os, sys\nimport numpy as np\n"
-            "EX = np.load(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'physim2', 'examples.npz'))['history']\n"
+ON_ITEMS = ("import os, sys\nimport numpy as np\nimport physim2\n"
+            "EX = np.load(os.path.join(os.path.dirname(os.path.abspath(physim2.__file__)), 'examples.npz'))['history']\n"
             "def predict(history, program, queries, n_samples, seed):\n"
             "    d = {1: history.shape[1], 2: 3}\n"
             "    if any(history.shape == e.shape and np.array_equal(history, e) for e in EX):\n"
