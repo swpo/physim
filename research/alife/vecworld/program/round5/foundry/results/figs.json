@@ -42,5 +42,7 @@
    "bytes": 348286,
    "ticks_per_frame": 4
   }
- ]
+ ],
+ "enrichment": "fig/enrichment.png",
+ "late_types": "fig/late_types.png"
 }

@@ -129,17 +129,48 @@ def main():
           "stages.checks", "job_state.json")
     a2 = load("analysis_r2.json")
     if a2:
-        A("R1", "job 2 (prospective enrichment): types over the screened draws", "types.table", "screen/chunk_*.npz",
-          lambda v: {k: {kk: x[kk] for kk in ("n", "frac", "se")} for k, x in v.items()}, an=a2, job=JOB2,
-          afile="results/analysis_r2.json")
-        if "arms" in a2:
-            A("R2", "job 2: yields in the enriched arm and in the control arm, with the yields predicted from job 1 before the run",
-              "arms", "screen/chunk_*.npz + sel_r2.json", an=a2, job=JOB2, afile="results/analysis_r2.json")
-    for name, cid, text in (("wind_probe.json", "X1", "wind probe (CPU): paired effect of 4-tick wind commands on the block view of top worlds"),
-                            ("recheck_cpu.json", "X2", "CPU recheck of top worlds at the screen's size (same keys)")):
-        d = load(name)
-        if d:
-            claim(cid, text, d.get("worlds"), "local CPU", f"results/{name}", "worlds")
+        R = dict(an=a2, job=JOB2, afile="results/analysis_r2.json")
+        A("R0", "job 2 arms: draws done, seconds, member-ticks, steady member-ticks per second", "arms_run", "job2_state.json",
+          lambda v: {k: {kk: x[kk] for kk in ("n_planned", "n_done", "seconds", "member_ticks", "member_ticks_per_s_steady",
+                                              "prior_seed", "family_sigma")} for k, x in v.items()}, **R)
+        A("R1", "prospective test of the weights-only predictor: yields per arm, the yields predicted from job 1 before the "
+          "run, the pool rate (arms weighted by their shares), enrichment over the pool, share of all found in the selected draws",
+          "enrich", "enrich/chunk_*.npz + sel_r2.json",
+          lambda v: dict(pool=v["pool"], prior_seed=v["prior_seed"], share_selected=v["share_selected"], control_is=v["control_is"],
+                         predicted_yield=v["prediction_from_job1"]["predicted_yield"],
+                         enriched={k: {kk: x[kk] for kk in ("n", "of", "frac", "se")} for k, x in v["arms"]["enriched"]["yields"].items()},
+                         control={k: {kk: x[kk] for kk in ("n", "of", "frac", "se")} for k, x in v["arms"]["control"]["yields"].items()},
+                         pool_rate=v["pool_rate"], enrichment_over_pool=v["enrichment_over_pool"],
+                         share_of_all_found_in_selected=v["share_of_all_found_in_selected"],
+                         observed_minus_predicted_in_se=v["observed_minus_predicted_in_se"]), **R)
+        A("R2", "late time (ticks 2000-2240) against the screen (ticks 50-290) for the same 2000 draws: transition counts and "
+          "what remains of the active worlds, the movers and the candidates", "late", "late/chunk_*.npz + results/per_draw.json.gz",
+          lambda v: {k: x for k, x in v.items() if k != "late_candidates"}, **R)
+        for arm, cid in (("sigma010", "R3"), ("sigma100", "R4")):
+            A(cid, f"logit noise {0.1 if arm == 'sigma010' else 1.0} instead of 0.3 for draws 0-2047: types, transitions, movers, candidates",
+              arm, f"{arm}/chunk_*.npz + results/per_draw.json.gz", **R)
+        A("R5", "all 88 candidates of job 1 at certification size: gates, types, quantiles (10, 50, 90%), gliders-like closure profiles",
+          "cert", "cert/chunk_*.npz", lambda v: {k: x for k, x in v.items() if k != "worlds"}, **R)
+        A("R6", "shortlist: candidates at the screen, at certification size and at late time, with both sets of descriptors",
+          "shortlist", "cert/chunk_*.npz + late/chunk_*.npz", **R)
+    d = load("wind_probe.json")
+    if d:
+        claim("X1", "wind probe (CPU): paired effect E of 4-tick wind commands on the block view of four top worlds at horizons "
+              "1, 2, 4, 8, 16 ticks, and E / (2 D0) against the noise floor",
+              [dict(draw=w["draw"], noise_floor_D0=w["noise_floor_D0"], **{k: w["programs"][k] for k in ("blind_200", "aimed_200", "aimed_800")})
+               for w in d["worlds"]], "local CPU", "results/wind_probe.json", "worlds")
+    d = load("cpu_vs_gpu.json")
+    if d:
+        claim("X2", "CPU (this container) against the H100 of job 1: the screen's descriptors of 12 draws with the same keys",
+              {k: {kk: v[kk] for kk in ("max_rel_diff", "values_identical", "values_compared", "worlds")}
+               for k, v in d.items() if isinstance(v, dict)}, "local CPU + " + JOB1,
+              "results/cpu_vs_gpu.json (from results/recheck_cpu*.json and screen/chunk_*.npz)", "*")
+    d = load("longrun.json")
+    if d:
+        claim("X3", "CPU runs of 2000 ticks of four top worlds: windows of 250 ticks (moved, bodies, net speed, events, vp16)",
+              [dict(draw=w["draw"], first=w["windows"][0], last=w["windows"][-1]) for w in d["worlds"]], "local CPU",
+              "results/longrun.json", "worlds")
+    out["pilots_never_exam"] = (interp or {}).get("never_reuse_as_exam") if (interp := load("interpretation.json")) else None
     out["figures"] = load("figs.json")
     interp = load("interpretation.json")
     if interp:

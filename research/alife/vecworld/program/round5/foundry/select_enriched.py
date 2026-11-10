@@ -9,8 +9,9 @@
 2. Predict before looking: the out-of-fold yield of the target (and of the other targets) in the top
    n_enriched / pool share of job 1's draws ranked by the out-of-fold score.
 3. Draw a fresh pool from the prior (another prior seed), compute its weight statistics (no simulation),
-   keep the n_enriched best by the fitted score, and add n_control draws taken at random from the pool
-   (the first n_control pool indices not selected: the pool is iid).
+   keep the n_enriched best by the fitted score, and add n_control control draws: the first n_control
+   pool indices that were NOT selected. The control arm is therefore a random sample of the unselected
+   part of the pool, not of the whole prior (analyze2.py reweights the two arms to get the pool rate).
 4. Write the index file for job.py (FOUNDRY_INDEX_FILE): chunks of 128 = 96 enriched + 32 control, so a
    deadline cut keeps the arms balanced.
 The second GPU job then measures the yield in both arms with the same certificates.

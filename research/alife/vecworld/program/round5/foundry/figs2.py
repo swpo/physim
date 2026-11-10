@@ -29,7 +29,7 @@ def enrichment(a2, out):
     names = ["structured", "active", "movers", "closure_gate", "candidate"]
     labels = ["structured", "active", "movers", "closure gate", "candidate (all gates)"]
     en, co, pr = e["arms"]["enriched"]["yields"], e["arms"]["control"]["yields"], e["prediction_from_job1"]["predicted_yield"]
-    fig, ax = plt.subplots(figsize=(7.4, 3.6))
+    fig, ax = plt.subplots(figsize=(7.6, 4.3))
     y = np.arange(len(names))[::-1]
     for yi, n in zip(y, names):
         c, o, p = max(co[n]["frac"], 1e-4), en[n]["frac"], pr[n]
@@ -39,8 +39,8 @@ def enrichment(a2, out):
         ax.scatter([p], [yi], s=70, marker="D", facecolor="none", edgecolor=F.AQUA, lw=1.8, zorder=4)
         ax.text(c, yi + 0.26, f"{100 * co[n]['frac']:.1f}%", ha="center", color=F.INK, fontsize=8.5)
         ax.text(o, yi + 0.26, f"{100 * o:.1f}%", ha="center", color=F.INK, fontsize=8.5)
-    ax.scatter([], [], s=70, color=F.ORANGE, label=f"control arm ({e['arms']['control']['n']} random draws)")
-    ax.scatter([], [], s=70, color=F.BLUE, label=f"enriched arm ({e['arms']['enriched']['n']} draws chosen by weights)")
+    ax.scatter([], [], s=70, color=F.ORANGE, label=f"control arm ({e['arms']['control']['n']} random draws from the unselected 90.6%)")
+    ax.scatter([], [], s=70, color=F.BLUE, label=f"enriched arm ({e['arms']['enriched']['n']} draws, the best 9.4% by weights)")
     ax.scatter([], [], s=70, marker="D", facecolor="none", edgecolor=F.AQUA, lw=1.8, label="predicted from job 1 before the run")
     ax.set_xscale("log")
     ax.set_xlim(0.004, 1.6)
@@ -49,11 +49,11 @@ def enrichment(a2, out):
     ax.set_ylim(-0.6, len(names) - 0.3)
     ax.grid(axis="y", visible=False)
     ax.set_xlabel("share of draws (log scale)")
-    ax.set_title("Choosing draws by their weights alone: yield against a random control", loc="left")
-    ax.legend(frameon=False, fontsize=8.5, loc="lower right")
+    ax.set_title("Draws chosen by their weights alone against the rest", loc="left")
+    ax.legend(frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.45, -0.2), ncol=1)
     fig.tight_layout()
     p = os.path.join(out, "enrichment.png")
-    fig.savefig(p, dpi=140)
+    fig.savefig(p, dpi=140, bbox_inches="tight")
     plt.close(fig)
     return p
 
@@ -77,15 +77,15 @@ def late_types(a2, out):
                     ax.text(left + v / 2, yi, f"{100 * v:.0f}%", ha="center", va="center", color=F.INK, fontsize=9)
             left += v
         ax.text(1.01, yi, f"n = {tot}", va="center", color=F.INK2, fontsize=8.5)
-    for gname, members, col in groups:
-        ax.barh([], [], color=col, label=f"{gname} at ticks 2000-2240")
+    from matplotlib.patches import Patch
+    handles = [Patch(facecolor=col, edgecolor=F.SURF, label=f"{gname} at ticks 2000-2240") for gname, members, col in groups]
     ax.set_yticks(y, [f"{r} early" for r in rows])
     ax.set_xlim(0, 1.12)
     ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0], ["0", "25%", "50%", "75%", "100%"])
     ax.grid(axis="y", visible=False)
     ax.set_xlabel("share of the worlds of that early type (ticks 50-290)")
     ax.set_title("Is the type a transient? The same worlds 2000 ticks later", loc="left")
-    ax.legend(frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.45, -0.32), ncol=3)
+    ax.legend(handles=handles, frameon=False, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.45, -0.32), ncol=3)
     fig.tight_layout()
     p = os.path.join(out, "late_types.png")
     fig.savefig(p, dpi=140, bbox_inches="tight")

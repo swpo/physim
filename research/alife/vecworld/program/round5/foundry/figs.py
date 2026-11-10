@@ -192,7 +192,7 @@ def closure_profiles(ana, out):
     if g:
         gc = [c["mean"] for c in g["ceil"]]
         ax.plot(x, gc, color=BLUE, lw=2, marker="o", ms=5, zorder=4, label="gliders, same estimator")
-        ax.text(x[-1] + 0.08, gc[-1] - 0.04, "gliders", color=INK, va="center", fontsize=9)
+        ax.text(x[-1] + 0.08, max(gc[-1], 0.0), "gliders", color=INK, va="center", fontsize=9)
         ax.plot(x, g["published"]["ceiling_linear_set"], color=BLUE, lw=1.2, ls=(0, (4, 2)), zorder=2,
                 label="gliders, published (linear predictors)")
     ax.plot([], [], color="#b9b8b2", lw=1.0, label=f"other certified worlds ({len(rows)} in all)")

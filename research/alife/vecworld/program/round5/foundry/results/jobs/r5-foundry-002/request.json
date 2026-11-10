@@ -1,0 +1,47 @@
+{
+  "request": {
+    "cap_usd": 10.2,
+    "disk_gb": null,
+    "env": {
+      "FOUNDRY_ARMS": "enrich,late,cert,sigma010,sigma100",
+      "FOUNDRY_CHUNK": "128",
+      "FOUNDRY_CHUNK_CERT": "24",
+      "FOUNDRY_REQUIRE_GPU": "1",
+      "FOUNDRY_SIZE": "full",
+      "FOUNDRY_T_LATE_S": "3600",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_40GB",
+        "A100_80GB",
+        "H100_80GB",
+        "H200_141GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r5-foundry-002",
+    "max_hours": 1.25,
+    "notes": "Second and last job of the study (budget $25: r5-foundry-001 billed $0.92; this cap $10.20 covers the H200 that bills $6.69/h for 1.25 + 0.25 h = $10.04). Same world and certificate code as r5-foundry-001 (tnca.py, screen.py, criteria.py unchanged); new driver job2.py runs five arms through screen.make_chunk_fn: enrich (4096 draws of prior seed 2027 at the screen's size: 3072 chosen by weight statistics alone plus 1024 control, interleaved), late (2000 draws of prior seed 2026 with a 2000-tick burn-in, then the screen's 240 ticks and branches: 14,976 member-ticks per draw), cert (the 88 candidates of job 1 at the certification size, chunks of 24, no frames), sigma010 and sigma100 (draws 0-2047 with the logit noise at 0.1 and 1.0). Measured on the H100 of job 1: 74,700 member-ticks/s in steady state, 5.6 s per screen chunk of 128 draws, 20 s compile per size; at that rate this job needs about 60 M member-ticks = 13-15 minutes. Memory per chunk as in job 1 (review of 001: 9.1 GiB screen chunk, 8.9 GiB certification of 24); the late arm only lengthens the burn-in scan, no array grows. Deadline: no new chunk after 3600 s from the start of job2.sh (arms run in priority order, so a slower GPU drops the noise arms first); max_hours 1.25 = 4500 s. job2_state.json is rewritten (temp file + rename) after every chunk and each chunk is one npz, so a killed job leaves analysable outputs. On an out-of-memory error the chunk is halved (down to 8), then the arm is given up and the next one runs. $OUT about 15 MB. No gliders stage, so only vw1 and the study folder are bundled. No network or subprocess use outside setup. Code pinned by ref ee9648d4e (on the branch). CPU test passed on exactly this code: job2.sh end to end at tiny size (FOUNDRY_SIZE=tiny) from a git archive of these two paths at that ref, all five arms, exit 0.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/program/round5/foundry"
+    ],
+    "purpose": "Round-5 study foundry (track 1), follow-up: late-time types of 2000 screened worlds, a prospective test of the weights-only predictor (3072 selected + 1024 control draws), all 88 candidates at certification size, the type under two other noise levels",
+    "ref": "ee9648d4e13632b63cdc864523b30757a86f7e70",
+    "requester": "cloud study foundry (track 1), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round5/foundry && bash job2.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "b46fbf55b58d9d6ff013467f4603bf975349c2db",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r5-foundry-002.json",
+    "received_at": "2026-11-10T05:35:02Z",
+    "tip": "4ba04e18cdfd6e943712e8965a998bf9db6dcf94"
+  }
+}

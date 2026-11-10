@@ -1,0 +1,304 @@
+{
+ "verdicts": [
+  {
+   "id": "family_valid",
+   "verdict": "All 8192 screened worlds are valid: none non-finite, none collapsed to point masses (largest cell density 48, smallest participation ratio 0.015), total mass conserved to 3.0e-14 over 290 ticks and to 1.7e-13 over 2240 ticks; the 32 no-affinity control worlds are all uniform (32). The crowding term does what the critique asked for.",
+   "numbers": {
+    "n": 8192,
+    "drift": 3.013525030643588e-14,
+    "smax": 48.032901763916016,
+    "pr": 0.015473331324756145,
+    "invalid": 0,
+    "point": 0,
+    "ctrl": 32,
+    "ctrl_n": 32,
+    "rerun": true,
+    "late_drift": 1.7289872333327294e-13
+   },
+   "sources": [
+    "analysis.json:validity",
+    "analysis.json:types.table",
+    "analysis.json:controls_diffusion",
+    "analysis_r2.json:late.validity"
+   ]
+  },
+  {
+   "id": "cost",
+   "verdict": "The family is cheap: 74676 member-ticks/s on an H100 (85396 on an H200) in float64, so 8192 draws with full certificates took 376 s; the gliders world ran at 2035 member-ticks/s by the same code on the same pod (compile included), about 37 times slower.",
+   "numbers": {
+    "rate": 74676.31462683181,
+    "secs": 376.08741211891174,
+    "draws": 8192,
+    "glid": 2035.3084239505401,
+    "glid_screen": 1411.7292772574938,
+    "ratio": 36.69041691572467,
+    "h200": 85396.3395833567
+   },
+   "sources": [
+    "analysis.json:screen_run",
+    "analysis.json:stages.gliders",
+    "analysis_r2.json:arms_run"
+   ]
+  },
+  {
+   "id": "types",
+   "verdict": "World types over the prior at ticks 50-290: uniform 65.2%, frozen 19.7%, active 15.1% (field 8.0%, bodies 3.9%, movers 3.2%); no noisy and no collapsed world. Gates: closure 3.1%, structures 2.5%, sensitive 8.9%, all four 1.07% +- 0.11% (88 worlds; 1.55% without conversion, 0.57% with).",
+   "numbers": {
+    "uni": 0.652099609375,
+    "fro": 0.19677734375,
+    "fld": 0.0797119140625,
+    "bod": 0.0390625,
+    "mov": 0.0323486328125,
+    "act": 0.151123046875,
+    "se": 0.005262467859489937,
+    "cand": 0.0107421875,
+    "cand_n": 88,
+    "cand_se": 0.0011389538757638673,
+    "clo": 0.0308837890625,
+    "stru": 0.0245361328125,
+    "sen": 0.0887451171875,
+    "k0": 0.015520534861509073,
+    "k1": 0.005744255744255744
+   },
+   "sources": [
+    "analysis.json:types.table",
+    "analysis.json:gates"
+   ]
+  },
+  {
+   "id": "transient",
+   "verdict": "Most early activity is a transient: of the 1238 worlds active at ticks 50-290 only 37.1% are still active at ticks 2000-2240 and 61.7% have frozen; 30.2% of the movers are still movers and 32 of the 88 candidates (36.4%) still pass every gate (10 other active worlds became candidates). Frozen and uniform worlds stay as they are (4.7% and 3.7% of 381 each changed type; 1.6% of the frozen sample became active). Long-lived activity is therefore about 5.6% of the prior from early-active worlds (plus about 0.3% from early-frozen ones) and long-lived candidates about 0.51%: the screen needs a late-time gate.",
+   "numbers": {
+    "act": 0.37075928917609047,
+    "fro": 0.617124394184168,
+    "n_act": 1238,
+    "mov": 0.3018867924528302,
+    "cand": 0.36363636363636365,
+    "cand_n": 32,
+    "cand_of": 88,
+    "fz": 0.047244094488188976,
+    "un": 0.03674540682414698,
+    "new": 10,
+    "stat": 0.005126953125,
+    "late_act": 0.0560302734375,
+    "fa": 0.015748031496062992,
+    "late_fro": 0.0030988558070866143
+   },
+   "sources": [
+    "analysis_r2.json:late",
+    "analysis.json:gates"
+   ]
+  },
+  {
+   "id": "weights_predict",
+   "verdict": "Statistics of the weights alone predict the type. The growth rate of the fastest linear mode of the uniform state (two Jacobian-vector products and an FFT per world, no simulation of the field) has AUC 0.967 for structure; the rule growth > 1e-4 (36.4% of draws) has precision 0.875 and recall 0.916. Cross-validated logistic regressions on all weight statistics reach AUC 0.983 (structure), 0.920 (movers) and 0.942 (candidates); for candidates the prior's scalars alone give 0.878, linear stability 0.899, the affinity Jacobian 0.922, and the weight norms 0.511 (no information).",
+   "numbers": {
+    "auc": 0.9665589469743247,
+    "prec": 0.8750418760469012,
+    "rec": 0.9164912280701755,
+    "acc": 0.9254150390625,
+    "share": 0.3643798828125,
+    "all_s": 0.9834763903393827,
+    "all_m": 0.9197007600010473,
+    "all_c": 0.9417922125998385,
+    "pri_c": 0.8775464417122857,
+    "lin_c": 0.8986401216010051,
+    "jac_c": 0.9220376581710491,
+    "nrm_c": 0.5109822309970385,
+    "nrm_s": 0.5333502137973162
+   },
+   "sources": [
+    "analysis.json:weights.single",
+    "analysis.json:weights.rules",
+    "analysis.json:weights.groups"
+   ]
+  },
+  {
+   "id": "weights_prospective",
+   "verdict": "The predictor holds prospectively. Fitted on job 1 and applied to the weight statistics of a fresh pool of 32768 draws (another prior seed), its best 9.4% (3072 draws) contain 10.5% +- 0.6% candidates (323); predicted before the run: 9.1%. Movers 21.4% (predicted 19.3%), active 62.8% (60.0%), structured 94.0% (95.6%). The 1024 control draws, a random sample of the unselected draws, contain 0.49% (5 worlds). Weighting the two arms, the pool's candidate rate is 1.43% +- 0.20% (job 1: 1.07%); the selected draws are enriched 7.4 times and hold 69% of all candidates.",
+   "numbers": {
+    "pool": 32768,
+    "share": 0.09375,
+    "n_en": 3072,
+    "n_co": 1024,
+    "cand": 0.10514322916666667,
+    "cand_se": 0.005534225027584989,
+    "cand_n": 323,
+    "pred": 0.09114583333333333,
+    "ctl": 0.0048828125,
+    "ctl_n": 5,
+    "mov": 0.2138671875,
+    "mov_p": 0.19270833333333334,
+    "act": 0.6276041666666666,
+    "act_p": 0.6002604166666666,
+    "stru": 0.9404296875,
+    "stru_p": 0.9557291666666666,
+    "rate": 0.0142822265625,
+    "rate_se": 0.002041146148819421,
+    "enr": 7.361823361823362,
+    "found": 0.6901709401709402,
+    "base1": 0.0107421875
+   },
+   "sources": [
+    "analysis_r2.json:enrich",
+    "sel_r2.json:prediction_from_job1"
+   ]
+  },
+  {
+   "id": "candidates",
+   "verdict": "The screen's selection replicates: all 24 of the 24 top worlds pass every gate again at certification size (16 members, 32 test states, fresh keys), and 71 of all 88 candidates do (80.7%). 29 candidates pass at the screen, at certification size and at ticks 2000-2240; 7 of them have a closure profile like the gliders world's (c(1) >= 0.95, 0.25 <= c(8) <= 0.75, c(32) <= 0.5) with unchanged statistics at late time: draws 4470, 4186, 262, 7567, 6845, 1672, 3078 of prior seed 2026.",
+   "numbers": {
+    "n": 24,
+    "both": 24,
+    "n88": 88,
+    "pass88": 71,
+    "frac88": 0.8068181818181818,
+    "like": 8,
+    "short": 29,
+    "short_like": 7,
+    "short_list": "4470, 4186, 262, 7567, 6845, 1672, 3078"
+   },
+   "sources": [
+    "analysis.json:certification",
+    "analysis_r2.json:cert",
+    "analysis_r2.json:shortlist"
+   ]
+  },
+  {
+   "id": "gliders",
+   "verdict": "The gliders world, measured by the same code, is typed a mover world in 16 of 16 runs and passes the closure and structures gates. Its ceilings with the cheap ridge at 1/2/4/8/16/32 ticks are 0.989 / 0.959 / 0.829 / 0.480 / 0.213 / 0.031 (8 runs at certification size) against the published 0.988 / 0.955 / 0.800 / 0.371 / 0.126 / 0.007 (linear predictors) and 0.991 / 0.967 / 0.849 / 0.495 / 0.136 / 0.078 (best of all predictors); oracle variance at 8 ticks 0.0100 (published 0.0091); 7.6 bodies (published 7.4), radius 6.5 px, 1.73 px/tick, 45 fusions + fissions per 100 ticks (published 45); its plug-in loss with theta' = theta is -0.0008 +- 0.0004 (the null of that estimator). So the estimator reproduces the reference, and foundry draw 4470 sits next to it: ceilings at 1/4/8/16/32 ticks 0.991 / 0.796 / 0.480 / 0.272 / 0.193, oracle variance 0.0013, 17 bodies of radius 2.3 px at 0.45 px/tick, 62 events per 100 ticks, noise-twin doubling 2.4 ticks (gliders 1.8).",
+   "numbers": {
+    "c": "0.989 / 0.959 / 0.829 / 0.480 / 0.213 / 0.031",
+    "pub": "0.988 / 0.955 / 0.800 / 0.371 / 0.126 / 0.007",
+    "best": "0.991 / 0.967 / 0.849 / 0.495 / 0.136 / 0.078",
+    "vo": 0.010032893973402679,
+    "vo_pub": 0.00911,
+    "nb": 7.5531638860702515,
+    "nb_pub": 7.4,
+    "rg": 6.5202087461948395,
+    "v": 1.7329222112894058,
+    "ev": 45.442708333333336,
+    "ev_pub": 44.8,
+    "dbl": 1.8103060319778659,
+    "runs": 16,
+    "runs_c": 8,
+    "movers": 16,
+    "f_c": "0.991 / 0.796 / 0.480 / 0.272 / 0.193",
+    "f_nb": 17.208852767944336,
+    "f_v": 0.44839778542518616,
+    "f_ev": 61.6875,
+    "f_rg": 2.282522678375244,
+    "f_vo": 0.001293811365030706,
+    "f_dbl": 2.435439745076072,
+    "pl0": -0.0008032015575736295,
+    "pl0_se": 0.00036314530552614274
+   },
+   "sources": [
+    "analysis.json:gliders_same_estimator",
+    "analysis.json:gliders_cert_size",
+    "analysis_r2.json:shortlist.worlds"
+   ]
+  },
+  {
+   "id": "sensitivity",
+   "verdict": "The hidden weights matter for prediction. On the 24 certified worlds, predicting 8 ticks ahead with a neighbour's weights costs (median) 0.0074, 0.078 and 0.39 of the climatological variance for weight neighbours at 3%, 10% and 30%, and 0.160 when the scalars move by 10% of their prior range as well, against an oracle variance of 0.0020: 5 and 45 times the oracle's own error at 3% and 10% (all 88 candidates at 10%: 29 times).",
+   "numbers": {
+    "n": 24,
+    "vo": 0.0019996280316263437,
+    "p03": 0.0074204811826348305,
+    "p10": 0.07753175497055054,
+    "p30": 0.39317740499973297,
+    "hyp": 0.16042038053274155,
+    "r03": 5.358635628787672,
+    "r10": 45.08786628409608,
+    "r88": 29.178380247262538,
+    "n88": 88
+   },
+   "sources": [
+    "analysis.json:certification.worlds[*].pl8_by_neighbour",
+    "analysis_r2.json:cert.pl8_over_v_orc8_q"
+   ]
+  },
+  {
+   "id": "noise_level",
+   "verdict": "The type belongs to the weights, not to the public noise level: of 2048 draws, 99.4% keep their type (uniform / frozen / active) when the logit noise goes from 0.3 to 0.1 and 93.4% when it goes to 1.0 (there 73 of 414 frozen worlds become active fields); 70 and 64 of 73 movers stay movers; candidates 24 -> 25 and 29.",
+   "numbers": {
+    "n": 2048,
+    "a": 0.994140625,
+    "b": 0.93408203125,
+    "ma": 70,
+    "mb": 64,
+    "m": 73,
+    "ca": 25,
+    "cb": 29,
+    "c0": 24,
+    "fa": 73,
+    "fn": 414
+   },
+   "sources": [
+    "analysis_r2.json:sigma010",
+    "analysis_r2.json:sigma100"
+   ]
+  },
+  {
+   "id": "wind",
+   "verdict": "The wind channel is exact but weak. Its charge is exact by construction and checks numerically (12.48 +- 0.08 nats by Monte Carlo against 12.37 charged); a unit command on every block (512 nats per tick) moves passive matter by 0.25 and 0.36 px per tick. But on four top worlds (draws 1672, 4470, 262, 60) a 4-tick command of 200 nats aimed at the densest block changes the block view by only 0.0002 to 0.023 of its variance 4 ticks later (1.6 to 7.9 times the noise floor), and a blind command of 200 nats stays below the floor (0.09 to 0.28 times). 'Actions matter' is not established for these worlds; the channel needs a redesign and its own certificate.",
+   "numbers": {
+    "charge": 12.373414385647978,
+    "mc": 12.476607444172537,
+    "se": 0.07888445388426582,
+    "lo": 0.0001670585182026788,
+    "hi": 0.02284157644004331,
+    "rlo": 1.6268813436216372,
+    "rhi": 7.901197997926124,
+    "blo": 0.09388844781707696,
+    "bhi": 0.275831982069305,
+    "d0": 0.24770542589565692,
+    "d1": 0.35992333297726536,
+    "draws": "1672, 4470, 262, 60"
+   },
+   "sources": [
+    "checks.json:wind",
+    "wind_probe.json:worlds"
+   ]
+  },
+  {
+   "id": "platform",
+   "verdict": "Platform: float64. On the H100 a rerun of the same compiled batch is bit-identical (True) and vmap equals single-world runs exactly; the four certification runs of job 1 returned identical main-run numbers. The screen of 12 draws repeated on this container's CPU with the same keys gives the same type 12 of 12 times; for 8 non-chaotic draws all 608 of 608 stored values are identical, for 4 movers they differ by at most 0.8%. Unlike the gliders world (FFT, scatter), this law is built from elementwise operations and shifts only.",
+   "numbers": {
+    "same": 12,
+    "tot": 12,
+    "ident": 608,
+    "cmp": 608,
+    "worst": 0.008090307994020827,
+    "rerun": true
+   },
+   "sources": [
+    "analysis.json:stages.checks",
+    "cpu_vs_gpu.json"
+   ]
+  },
+  {
+   "id": "longrun_cpu",
+   "verdict": "CPU runs of 2000 ticks of draws 1672, 4470, 262, 60: net body speed 0.61, 0.56, 0.83, 0.33 px/tick in the first 250 ticks and 0.61, 0.53, 0.65, 0.38 in the last 250; bodies 4.1, 19.3, 12.1, 5.1 and 3.4, 19.7, 10.9, 4.4.",
+   "numbers": {
+    "draws": "1672, 4470, 262, 60",
+    "v0": "0.61, 0.56, 0.83, 0.33",
+    "v1": "0.61, 0.53, 0.65, 0.38",
+    "b0": "4.1, 19.3, 12.1, 5.1",
+    "b1": "3.4, 19.7, 10.9, 4.4"
+   },
+   "sources": [
+    "longrun.json"
+   ]
+  }
+ ],
+ "decides": [
+  "A random weights-as-law family is viable and cheap: a 10^5-draw screen with certificates is about 77 minutes of one H100 (about $6.4 at $5.02/h), not the 20-80 GPU-hours DESIGN.md E2 budgeted.",
+  "DESIGN.md E2's rule (gate pass rate >= 10%: random families suffice; <= 1%: invest in search): the pass rate is about 1% early and about 0.5% once transients are excluded, so plain random draws do not suffice, but no search is needed either: the weights-only predictor concentrates 69% of the candidates in 9.4% of the draws at no simulation cost, and screening is cheap enough to brute-force the rest.",
+  "Every screen must carry a late-time gate (a 2000-tick burn-in costs 4.6 times the short screen per draw; applied to the 15% early-active draws only it adds about 69%).",
+  "Seven foundry worlds are ready to be certified as exam candidates next to the gliders world (same closure band at level 1, moving and interacting bodies, stationary, strongly weight-sensitive); what they lack is an input channel that matters.",
+  "Publishing the weights-only predictor is safe only with the published criteria: selection narrows the posterior on theta (DESIGN.md section 5); here it is a public function of theta by construction."
+ ],
+ "never_reuse_as_exam": "Prior seeds 1, 2026 and 2027 with run seed 5150 are pilots: their weights are a public function of (seed, index) and hidden parameters of several draws are printed in these results. They must never be reused as exam instances; an exam draws theta from a secret seed."
+}

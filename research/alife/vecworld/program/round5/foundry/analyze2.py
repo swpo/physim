@@ -4,8 +4,12 @@
 
 Needs results/per_draw.json.gz (the types of job 1) and sel_r2.json (the arms of the enrichment test).
 Parts, one per arm:
-  enrich   yields of every target in the enriched and the control arm, against the yields predicted from
-           job 1 before the run (sel_r2.json: prediction_from_job1)
+  enrich   yields of every target in the enriched arm (the best 9.4% of a fresh pool by the weights-only
+           score) and in the control arm, against the yields predicted from job 1 before the run
+           (sel_r2.json: prediction_from_job1). The control arm is a random sample of the UNSELECTED part
+           of the pool (select_enriched.py takes the first unselected pool indices), not of the whole
+           prior; the rate over the whole pool is therefore the share-weighted mix of the two arms
+           (`pool_rate`), and the enrichment is quoted against that (`enrichment_over_pool`)
   late     type at ticks 2000-2240 against the type at ticks 50-290 (job 1) for the same draws: transition
            counts; what remains of the candidates; descriptors early and late
   sigma    type under logit noise 0.1 and 1.0 against the type at 0.3 (job 1) for draws 0..2047
@@ -109,11 +113,17 @@ def main():
                              n_score_above_0p9=int((s[mk] > 0.9).sum()))
         en, co = arms["enriched"]["yields"], arms["control"]["yields"]
         base1 = sel["prediction_from_job1"]["base_rate"]
+        sh = sel["prediction_from_job1"]["share_selected"]
+        pool_rate = {k: dict(frac=sh * en[k]["frac"] + (1 - sh) * co[k]["frac"],
+                             se=float(np.sqrt((sh * en[k]["se"]) ** 2 + ((1 - sh) * co[k]["se"]) ** 2))) for k in en}
         res["enrich"] = dict(
             src="enrich/chunk_*.npz + sel_r2.json", target=sel["target"], pool=sel["pool"], prior_seed=sel["prior_seed"],
             share_selected=sel["prediction_from_job1"]["share_selected"], prediction_from_job1=sel["prediction_from_job1"],
-            arms=arms,
-            enrichment_over_control={k: (en[k]["frac"] / co[k]["frac"] if co[k]["frac"] and co[k]["frac"] > 0 else None)
+            arms=arms, control_is="a random sample of the unselected 90.6% of the pool, not of the whole prior",
+            pool_rate=pool_rate,
+            enrichment_over_pool={k: en[k]["frac"] / pool_rate[k]["frac"] for k in en},
+            share_of_all_found_in_selected={k: sh * en[k]["frac"] / pool_rate[k]["frac"] for k in en},
+            enrichment_over_unselected={k: (en[k]["frac"] / co[k]["frac"] if co[k]["frac"] and co[k]["frac"] > 0 else None)
                                      for k in en},
             enrichment_over_job1_base={k: en[k]["frac"] / base1[k] for k in en},
             observed_minus_predicted_in_se={k: (en[k]["frac"] - sel["prediction_from_job1"]["predicted_yield"][k])
@@ -189,10 +199,40 @@ def main():
                                             "body_frac")},
             pl8_over_v_orc8_q=q(d["pl8"] / np.maximum(d["v_orc8"], 1e-12)),
             worlds=rows)
+    # ---------------- shortlist: candidates of job 1 that pass every gate at certification size and at late time
+    if "cert" in res and "late" in res:
+        mc, ml = load_arm(D, "cert", st), load_arm(D, "late", st)
+        dc, tc, gc, sc_ = typed(mc, st["arms"]["cert"]["sizes"]["T"])
+        dl, tl, gl, sl = typed(ml, st["arms"]["late"]["sizes"]["T"])
+        il = {int(v): i for i, v in enumerate(ml["index"])}
+        like = set(res["cert"]["gliders_like_closure"]["draws"])
+        rows = []
+        for i, dr in enumerate(mc["index"].astype(int)):
+            if int(dr) not in il:
+                continue
+            j = il[int(dr)]
+            if gc["candidate"][i] and gl["candidate"][j]:
+                rows.append(dict(draw=int(dr), gliders_like_closure=int(dr) in like,
+                                 cert={k: float(dc[k][i]) for k in ("ceil1", "ceil4", "ceil8", "ceil16", "ceil32", "v_orc8",
+                                                                    "nb_mean", "rg", "v_net", "events100", "pl8", "gap_max",
+                                                                    "twin_doubling", "body_speed_len")},
+                                 late={k: float(dl[k][j]) for k in ("ceil1", "ceil4", "ceil8", "ceil16", "ceil32", "v_orc8",
+                                                                    "nb_mean", "rg", "v_net", "events100", "pl8", "gap_max",
+                                                                    "twin_doubling", "body_speed_len")}))
+        rows.sort(key=lambda r: r["late"]["ceil8"])
+        c1, c8, c32 = dl["ceil1"], dl["ceil8"], dl["ceil32"]
+        lk = (c1 >= 0.95) & (c8 >= 0.25) & (c8 <= 0.75) & (c32 <= 0.5) & gl["candidate"]
+        res["shortlist"] = dict(
+            src="cert/chunk_*.npz and late/chunk_*.npz", rule="candidate at the screen (job 1), at certification size and at ticks 2000-2240",
+            n=len(rows), of=int(len(mc["index"])), n_gliders_like=int(sum(r["gliders_like_closure"] for r in rows)),
+            gliders_like=[r["draw"] for r in rows if r["gliders_like_closure"]], worlds=rows,
+            late_arm=dict(n=int(len(tl)), candidates=int(gl["candidate"].sum()), movers=int((tl == 7).sum()),
+                          active=int((tl >= 5).sum()),
+                          candidates_with_gliders_like_closure=[int(v) for v in ml["index"].astype(int)[lk]]))
     with open(os.path.join(a.out, "analysis_r2.json"), "w") as f:
         json.dump(res, f, indent=1, default=float)
     print("arms", {k: (v.get("n_done"), v.get("n_planned")) for k, v in res["arms_run"].items()})
-    for k in ("enrich", "late", "sigma010", "sigma100", "cert"):
+    for k in ("enrich", "late", "sigma010", "sigma100", "cert", "shortlist"):
         if k in res:
             print(k, json.dumps({kk: vv for kk, vv in res[k].items() if kk not in ("worlds", "top_enriched", "transitions",
                                                                                    "prediction_from_job1", "arms")},
