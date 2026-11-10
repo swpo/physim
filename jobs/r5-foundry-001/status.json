@@ -53,5 +53,5 @@
     "summary": "Fine to run: no blocker or major findings; peak about 19 GiB, largest array 0.84 x 2^31. 3 minor: cert-size gliders time guard, job_state written per stage, no OOM fallback in certification."
   },
   "state": "queued",
-  "updated_at": "2026-11-10T05:03:28Z"
+  "updated_at": "2026-11-10T05:05:35Z"
 }
