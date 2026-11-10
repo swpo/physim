@@ -308,7 +308,8 @@ def main():
         res["hidden_value_in_this_result_file"] = any(v in blob for v in nd.values())
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
     out = os.path.join(HERE, "results", f"{a.attack}{a.tag}.json")
-    json.dump(res, open(out, "w"), indent=1, default=str)
+    text = json.dumps(res, indent=1, default=str)            # the per-rollout callback route of a finished box: not kept
+    open(out, "w").write(__import__("re").sub(r"/\.vf-host/[A-Za-z0-9_\-]{20,}", "/.vf-host/<per-rollout-route-redacted>", text))
     ro = res.get("rollout", {})
     print(json.dumps({"attack": a.attack, "wall_s": round(r["wall_s"]), "rc": r["returncode"], "episodes": len(r["episodes"]), "graded": ro.get("graded"),
                       "ok": ro.get("ok"), "reward": ro.get("reward_raw_in_trace"), "errors": ro.get("errors"), "out": out}))

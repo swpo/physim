@@ -418,7 +418,7 @@
      "lock"
     ]
    },
-   "lab_json": "{\"url\": \"http://127.0.0.1:40767/.vf-host/tVFtvStYwqQq1zcwIjqeBtdAdJxMVqDmU0RiVrjHa1c/mcp\", \"tool\": \"call\"}",
+   "lab_json": "{\"url\": \"http://127.0.0.1:40767/.vf-host/<per-rollout-route-redacted>/mcp\", \"tool\": \"call\"}",
    "hidden_like_file_names": [],
    "files_walked": 8909,
    "disk_free_gib_seen_from_box": 1.9950904846191406,

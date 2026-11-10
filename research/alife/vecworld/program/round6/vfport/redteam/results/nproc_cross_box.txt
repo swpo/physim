@@ -1,0 +1,4 @@
+alone:        {'ok': True, 'why': None, 'returncode': 0} 
+other box holds 255 sleeping processes of uid 1000
+meanwhile:    {'ok': False, 'why': 'exit code 2', 'returncode': 2, 'driver_error': None} RuntimeError: can't start new thread
+afterwards:   {'ok': True, 'why': None, 'returncode': 0} 
