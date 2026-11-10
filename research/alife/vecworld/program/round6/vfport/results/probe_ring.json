@@ -1,0 +1,856 @@
+{
+ "checks_round5": {
+  "agent_runs_unprivileged": null,
+  "agent_cannot_read_hidden": true,
+  "agent_cannot_read_evaluator_code": true,
+  "agent_sees_only_its_own_processes": true,
+  "agent_has_no_network": true,
+  "agent_cannot_write_outside_workspace": null,
+  "advance_before_reset_rejected": true,
+  "tick_cap_rejected": true,
+  "bounds_rejected": true,
+  "episode_cap_rejected_as_a_block": true,
+  "nan_rejected": true,
+  "bad_shape_rejected": true,
+  "oversized_block_rejected": true,
+  "rejections_charged_nothing": true,
+  "accepted_block_charged": true,
+  "tick_budget_rejected": true,
+  "unknown_operation_rejected": true,
+  "extra_argument_rejected": true,
+  "submission_path_confined": true,
+  "missing_submission_reported": true,
+  "symlink_not_followed": true,
+  "bad_shape_fails_validation": true,
+  "nondeterminism_fails_validation": true,
+  "cpu_limit_enforced": true,
+  "memory_limit_enforced": true,
+  "size_limit_enforced": true,
+  "predictor_runs_unprivileged": true,
+  "predictor_cannot_read_hidden": true,
+  "predictor_has_no_network": true,
+  "predictor_cannot_write_submission": true,
+  "good_submission_validates": true,
+  "submit_freezes": true,
+  "lab_closed_after_submit": true,
+  "graded_without_failures": true
+ },
+ "n_checks_round5": 34,
+ "n_reproduced": 32,
+ "failed_round5": [],
+ "changed_by_design": {
+  "agent_runs_unprivileged": "not reproduced by design: the agent is root (uid 0) INSIDE its own disposable container, started by verifiers without NET_ADMIN/NET_RAW and with no-new-privileges; round 5 ran it as uid 65534 on the evaluator's machine. Nothing of the host is mounted in the box.",
+  "agent_cannot_write_outside_workspace": "not reproduced by design: the whole box is the agent's (probe result: True); what it cannot reach is anything outside the container, which the read and network checks cover."
+ },
+ "checks_new": {
+  "a_every_item_ran_the_probe": true,
+  "a_no_item_found_a_file_left_earlier": true,
+  "a_no_item_found_the_background_process": true,
+  "a_no_item_found_the_shared_memory_mark": true,
+  "a_cleanup_removed_something_after_every_item": true,
+  "a_box_clean_after_every_item": true,
+  "a_control_without_cleanup_finds_them": true,
+  "b_canary_was_in_the_worker_environment": true,
+  "b_lab_process_dropped_it_after_loading": true,
+  "b_no_canary_in_agent_box": true,
+  "b_no_token_like_variable_in_agent_box": true,
+  "b_no_canary_in_verifier_box": true,
+  "b_no_token_like_variable_in_verifier_box": true,
+  "b_canary_absent_from_saved_traces": true,
+  "b_hidden_values_absent_from_saved_traces": true,
+  "c_control_uncut_container_reaches_host_listener": true,
+  "c_agent_box_no_public_route": true,
+  "c_agent_box_cannot_reach_host_listener": true,
+  "c_agent_box_proxy_refuses_other_destinations": true,
+  "c_agent_box_reaches_the_lab": true,
+  "c_verifier_box_no_public_route": true,
+  "c_verifier_box_cannot_reach_host_listener": true,
+  "c_verifier_box_cannot_reach_the_lab": true,
+  "c_host_listener_saw_no_box": true,
+  "d_every_hostile_rollout_is_graded": true,
+  "d_deleted_submission_scores_K": true,
+  "d_empty_oversize_huge_and_broken_tar_score_K": true,
+  "d_control_default_collection_grades_a_deleted_submission": true,
+  "d_control_default_collection_leaves_the_others_ungraded": true,
+  "d_links_are_left_out_and_the_rest_is_graded": true,
+  "d_junk_in_logs_artifacts_does_not_matter": true,
+  "predictor_cannot_write_request_or_runtime": true,
+  "one_request_in_the_box_at_a_time": true
+ },
+ "n_checks_new": 33,
+ "n_passed_new": 33,
+ "failed_new": [],
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "instance_id": "probe-ring-w0",
+ "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, --no-push",
+ "evidence": {
+  "predictor_checks": {
+   "uid": {
+    "validation": 1000,
+    "grading": [
+     1000
+    ]
+   },
+   "hidden": {
+    "validation": {
+     "hidden": "FileNotFoundError",
+     "hidden/instance.json": "FileNotFoundError",
+     "hidden/exam.npz": "FileNotFoundError",
+     "agentenv": "FileNotFoundError",
+     "vfport": "FileNotFoundError",
+     "store": "FileNotFoundError"
+    }
+   },
+   "net": {
+    "validation": "ConnectionRefusedError",
+    "grading": [
+     "ConnectionRefusedError"
+    ]
+   },
+   "write_submission": {
+    "validation": "PermissionError",
+    "grading": [
+     "PermissionError"
+    ]
+   }
+  },
+  "agent_reads": {
+   "hidden": "FileNotFoundError",
+   "hidden/instance.json": "FileNotFoundError",
+   "hidden/exam.npz": "FileNotFoundError",
+   "agentenv": "FileNotFoundError",
+   "vfport": "FileNotFoundError",
+   "store": "FileNotFoundError"
+  },
+  "agent_uid": 0,
+  "agent_visible_pids": 3,
+  "messages": {
+   "tick_cap": "program entry t=0: input rejected, nothing charged: nats: command costs 46.7222 > per-tick cap 2; nats: episode total would be 46.7222 > episode cap 8",
+   "bounds": "program entry t=0: input rejected, nothing charged: bound: non-zero values must lie in [-3, 3] (got min 5, max 5)",
+   "episode_cap_whole_block": "program entry t=4: input rejected, nothing charged: nats: episode total would be 9.5 > episode cap 8",
+   "tick_budget": "budget: 5 + 96 ticks > max_ticks=100; nothing ran",
+   "reset_after_submit": "the predictor is submitted; the laboratory is closed",
+   "submit_outside_workspace": "format: the submission path must lie inside the workspace",
+   "network": "[Errno 111] Connection refused"
+  },
+  "validation_messages": {
+   "submit_missing": "submission directory not found",
+   "submit_symlink": "submission has no predict.py",
+   "validate_bad_shape": "predictor failed (exit code 2): ValueError: predict: level 1 has shape (3, 1, 6), expected (8, 5, d)\n",
+   "validate_nondeterministic": "the same request and seed gave different samples",
+   "validate_oversize": "submission larger than 2 MiB"
+  },
+  "slow": {
+   "cpu_s": 4.001577,
+   "wall_s": 4.041100025177002
+  },
+  "slow_error": "predictor failed (CPU-time limit): ",
+  "memory": "ed (exit code 2): MemoryError: Unable to allocate 128. GiB for an array with shape (17179869184,) and data type float64\n",
+  "usage_end": {
+   "ticks_used": 5,
+   "max_ticks": 100,
+   "resets": 1,
+   "episode_nats": 7.6,
+   "total_nats": 7.6,
+   "episode_left": 0.40000000000000036,
+   "total_left": null,
+   "episodes": 1,
+   "commands": 4,
+   "submitted": true,
+   "validations": 9,
+   "submissions": 1
+  },
+  "probe_agent_grade": {
+   "n_items": 8,
+   "n_failed": 0,
+   "layers": {
+    "rlimits": true,
+    "uid": 1000,
+    "cleanup": true
+   }
+  },
+  "a_first_item": {
+   "found_files": [],
+   "daemon_alive": false,
+   "found_shm": false,
+   "other_processes_of_my_user": 0
+  },
+  "a_cleanup_per_item": [
+   {
+    "item": 0,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 1,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 2,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 3,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 4,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 5,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 6,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   },
+   {
+    "item": 7,
+    "killed": 1,
+    "removed": 4,
+    "ipc_removed": 1
+   }
+  ],
+  "a_control_item_2": {
+   "found_files": [
+    "/tmp/physim2_probe_marker",
+    "/dev/shm/physim2_probe_marker",
+    "/var/tmp/physim2_probe_marker"
+   ],
+   "daemon_alive": true,
+   "found_shm": true,
+   "other_processes_of_my_user": 1
+  },
+  "a_control_marked_not_an_exam": "cleanup between items was disabled by the operator (test hook)",
+  "b_lab_process": {
+   "pid": 21808,
+   "scrubbed_variables": [
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "CLAUDE_CODE_MESSAGING_TOKEN",
+    "CLAUDE_SESSION_INGRESS_TOKEN_FILE",
+    "CLOUDSDK_AUTH_ACCESS_TOKEN",
+    "GH_TOKEN",
+    "GITHUB_TOKEN",
+    "HF_TOKEN",
+    "MAX_THINKING_TOKENS"
+   ],
+   "announced": true,
+   "token_values_left_in_environ": false,
+   "token_like_names_left_in_os_environ": []
+  },
+  "b_agent_box": {
+   "uid": 0,
+   "env_names": [
+    "GPG_KEY",
+    "HOME",
+    "HOSTNAME",
+    "HTTPS_PROXY",
+    "HTTP_PROXY",
+    "JAX_PLATFORMS",
+    "LANG",
+    "MKL_NUM_THREADS",
+    "NO_PROXY",
+    "OMP_NUM_THREADS",
+    "OPENBLAS_NUM_THREADS",
+    "PATH",
+    "PHYSIM2_AGENT_HOME",
+    "PWD",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHON_SHA256",
+    "PYTHON_VERSION",
+    "XLA_FLAGS",
+    "http_proxy",
+    "https_proxy",
+    "no_proxy"
+   ],
+   "env_token_like": [],
+   "env_needle": [],
+   "needle_hits": [],
+   "files_read": 8412,
+   "environ_read": 3
+  },
+  "b_verifier_box_item_1": {
+   "uid": 1000,
+   "env_token_like": [],
+   "env_needle": [],
+   "needle_hits": [],
+   "files_read": 5008,
+   "environ_read": 1
+  },
+  "b_trace_scan": {
+   "files_scanned": 79,
+   "needles": [
+    "canary",
+    "canary_prefix",
+    "secret_hex",
+    "theta_D",
+    "theta_c",
+    "theta_gamma"
+   ],
+   "found": {
+    "canary": [],
+    "canary_prefix": [],
+    "secret_hex": [],
+    "theta_D": [],
+    "theta_gamma": [],
+    "theta_c": []
+   }
+  },
+  "c_control": "REACHED",
+  "c_agent_box_net": {
+   "public_tcp": "ConnectionRefusedError",
+   "public_tcp_443": "ConnectionRefusedError",
+   "dns": "gaierror",
+   "host_listener": "ConnectionRefusedError",
+   "lab": "HTTP 400",
+   "proxy_public": "HTTP 403",
+   "proxy_host_listener": "HTTP 403"
+  },
+  "c_verifier_box_net_all_items": {
+   "public_tcp": [
+    "ConnectionRefusedError"
+   ],
+   "public_tcp_443": [
+    "ConnectionRefusedError"
+   ],
+   "dns": [
+    "gaierror"
+   ],
+   "host_listener": [
+    "ConnectionRefusedError"
+   ],
+   "lab": [
+    "URLError"
+   ],
+   "proxy_public": [
+    "no proxy"
+   ],
+   "proxy_host_listener": [
+    "no proxy"
+   ]
+  },
+  "c_listener_hits": {
+   "control": 1,
+   "during_box_runs": 0
+  },
+  "d_hostile": {
+   "delete": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission directory not found",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission directory not found",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "empty": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission has no predict.py",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission has no predict.py",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "oversize": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "submission larger than 2 MiB",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "submission larger than 2 MiB",
+     "files": 0,
+     "bytes": 3145728,
+     "sha256": null
+    }
+   },
+   "huge": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "collection failed (SandboxError)",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "collection failed (SandboxError)",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "no_tar": {
+    "graded": true,
+    "ok": true,
+    "reward": 0.0,
+    "errors": [],
+    "n_failed": 8,
+    "n_items": 8,
+    "reason": "collection failed (RuntimeError)",
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "error": "collection failed (RuntimeError)",
+     "files": 0,
+     "bytes": 0,
+     "sha256": null
+    }
+   },
+   "symlinks": {
+    "graded": true,
+    "ok": true,
+    "reward": -0.04250841771561189,
+    "errors": [],
+    "n_failed": 0,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 239,
+     "sha256": "f8edf715a0fbf1673d2c5d807012859a9ec15054c548faa5637e7ba6011d7612"
+    }
+   },
+   "junk": {
+    "graded": true,
+    "ok": true,
+    "reward": -0.04250841771561189,
+    "errors": [],
+    "n_failed": 0,
+    "n_items": 8,
+    "reason": null,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "error": null,
+     "files": 1,
+     "bytes": 239,
+     "sha256": "f8edf715a0fbf1673d2c5d807012859a9ec15054c548faa5637e7ba6011d7612"
+    }
+   }
+  },
+  "d_control_default_collection": {
+   "delete": {
+    "graded": true,
+    "trace_ok": true,
+    "episode_ok": true,
+    "trace_errors": [],
+    "episode_errors": [],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "huge": {
+    "graded": false,
+    "trace_ok": false,
+    "episode_ok": false,
+    "trace_errors": [
+     "SandboxError"
+    ],
+    "episode_errors": [],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "no_tar": {
+    "graded": false,
+    "trace_ok": false,
+    "episode_ok": false,
+    "trace_errors": [
+     "TaskError"
+    ],
+    "episode_errors": [],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "symlinks": {
+    "graded": false,
+    "trace_ok": true,
+    "episode_ok": false,
+    "trace_errors": [],
+    "episode_errors": [
+     "EnvError"
+    ],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   },
+   "junk": {
+    "graded": false,
+    "trace_ok": false,
+    "episode_ok": false,
+    "trace_errors": [
+     "SandboxError"
+    ],
+    "episode_errors": [],
+    "reward_recorded_as": 0.0,
+    "marked": "the defensive collection was disabled by the operator (test hook)"
+   }
+  },
+  "verifier_box_identity_item_1": {
+   "write_submission": "PermissionError",
+   "write_request": "PermissionError",
+   "write_runtime": "PermissionError",
+   "write_workspace": "PermissionError",
+   "requests_visible": [
+    "item.py",
+    "request.npz"
+   ]
+  },
+  "verifier_box_staging": {
+   "has_predict": true,
+   "network_restricted": true,
+   "writable_dirs": [
+    "/dev/mqueue",
+    "/dev/shm",
+    "/proc/acpi",
+    "/run/lock",
+    "/sys/firmware",
+    "/tmp",
+    "/var/tmp"
+   ],
+   "world_writable_paths_fixed": 0,
+   "owned_by_predictor_user_before": 0
+  }
+ },
+ "rollouts": {
+  "probe-agent": {
+   "graded": true,
+   "ok": true,
+   "reward": -0.04250841771561189,
+   "wall_s": {
+    "boot": 0.7233195304870605,
+    "setup": 6.651846408843994,
+    "agent": 12.089905023574829,
+    "finalize": 0.08078932762145996,
+    "verifier": 5.792295932769775,
+    "total": 25.33815622329712
+   },
+   "cpu_s": {
+    "agent_box": 9.95075,
+    "verifier_box": 3.80988,
+    "worker_in_reward": 0.03977596100000014
+   },
+   "invocation_wall_s": 35.29928994178772,
+   "address_file_matches_tool_url": true
+  },
+  "probe-grading": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.7928557395935059,
+    "setup": 6.915066957473755,
+    "agent": 1.7445416450500488,
+    "finalize": 0.4358503818511963,
+    "verifier": 10.152066230773926,
+    "total": 20.04038095474243
+   },
+   "cpu_s": {
+    "agent_box": 1.51638,
+    "verifier_box": 6.53572,
+    "worker_in_reward": 0.034043545000001174
+   },
+   "invocation_wall_s": 30.3475079536438,
+   "address_file_matches_tool_url": true
+  },
+  "probe-grading-nocleanup": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6387424468994141,
+    "setup": 6.575656890869141,
+    "agent": 1.4193298816680908,
+    "finalize": 0.4545934200286865,
+    "verifier": 9.304743766784668,
+    "total": 18.39306640625
+   },
+   "cpu_s": {
+    "agent_box": 1.42493,
+    "verifier_box": 5.75247,
+    "worker_in_reward": 0.03711479900000114
+   },
+   "invocation_wall_s": 28.722196340560913,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-delete": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6260418891906738,
+    "setup": 6.551738262176514,
+    "agent": 0.8683338165283203,
+    "finalize": 0.1701819896697998,
+    "verifier": 0.9671173095703125,
+    "total": 9.18341326713562
+   },
+   "cpu_s": {
+    "agent_box": 0.651467,
+    "verifier_box": 0.503181,
+    "worker_in_reward": 0.009174963999999619
+   },
+   "invocation_wall_s": 19.045000791549683,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-empty": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6077218055725098,
+    "setup": 6.55446457862854,
+    "agent": 0.7252142429351807,
+    "finalize": 0.3454091548919678,
+    "verifier": 0.8548305034637451,
+    "total": 9.087640285491943
+   },
+   "cpu_s": {
+    "agent_box": 0.743616,
+    "verifier_box": 0.554687,
+    "worker_in_reward": 0.009559857999999366
+   },
+   "invocation_wall_s": 18.636464834213257,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-oversize": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.5877358913421631,
+    "setup": 6.526666879653931,
+    "agent": 0.7593097686767578,
+    "finalize": 0.5043737888336182,
+    "verifier": 0.7438240051269531,
+    "total": 9.121910333633423
+   },
+   "cpu_s": {
+    "agent_box": 0.800745,
+    "verifier_box": 0.477756,
+    "worker_in_reward": 0.009470046000000565
+   },
+   "invocation_wall_s": 17.90860867500305,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-huge": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.5762171745300293,
+    "setup": 6.563749074935913,
+    "agent": 0.8109109401702881,
+    "finalize": 0.4334092140197754,
+    "verifier": 0.7467906475067139,
+    "total": 9.13107705116272
+   },
+   "cpu_s": {
+    "agent_box": 0.764827,
+    "verifier_box": 0.495059,
+    "worker_in_reward": 0.00945777599999964
+   },
+   "invocation_wall_s": 18.23854660987854,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-no_tar": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6050527095794678,
+    "setup": 6.52928352355957,
+    "agent": 0.8325867652893066,
+    "finalize": 0.31987977027893066,
+    "verifier": 0.8468153476715088,
+    "total": 9.133618116378784
+   },
+   "cpu_s": {
+    "agent_box": 0.749796,
+    "verifier_box": 0.527723,
+    "worker_in_reward": 0.009818872000000312
+   },
+   "invocation_wall_s": 18.27962565422058,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-symlinks": {
+   "graded": true,
+   "ok": true,
+   "reward": -0.04250841771561189,
+   "wall_s": {
+    "boot": 0.6318199634552002,
+    "setup": 6.5892016887664795,
+    "agent": 0.7814505100250244,
+    "finalize": 0.3853280544281006,
+    "verifier": 5.1960601806640625,
+    "total": 13.583860397338867
+   },
+   "cpu_s": {
+    "agent_box": 0.762113,
+    "verifier_box": 3.76438,
+    "worker_in_reward": 0.03670916100000099
+   },
+   "invocation_wall_s": 22.64008927345276,
+   "address_file_matches_tool_url": true
+  },
+  "hostile-junk": {
+   "graded": true,
+   "ok": true,
+   "reward": -0.04250841771561189,
+   "wall_s": {
+    "boot": 0.6462225914001465,
+    "setup": 6.574154376983643,
+    "agent": 0.7923531532287598,
+    "finalize": 0.3635861873626709,
+    "verifier": 5.281987905502319,
+    "total": 13.658304214477539
+   },
+   "cpu_s": {
+    "agent_box": 0.75951,
+    "verifier_box": 3.80788,
+    "worker_in_reward": 0.04204587599999954
+   },
+   "invocation_wall_s": 23.34359884262085,
+   "address_file_matches_tool_url": true
+  },
+  "stock-delete": {
+   "graded": true,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.5992212295532227,
+    "setup": 6.537464618682861,
+    "agent": 0.7576227188110352,
+    "finalize": 0.15144753456115723,
+    "verifier": 0.808903694152832,
+    "total": 8.854659795761108
+   },
+   "cpu_s": {
+    "agent_box": 0.693264,
+    "verifier_box": 0.50685,
+    "worker_in_reward": 0.008667749999998975
+   },
+   "invocation_wall_s": 18.348906993865967,
+   "address_file_matches_tool_url": true
+  },
+  "stock-huge": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6478817462921143,
+    "setup": 6.564934730529785,
+    "agent": 0.8473892211914062,
+    "finalize": 0.39291977882385254,
+    "verifier": null,
+    "total": 8.453125476837158
+   },
+   "cpu_s": {
+    "agent_box": 0.694525,
+    "verifier_box": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 16.730692148208618,
+   "address_file_matches_tool_url": true
+  },
+  "stock-no_tar": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6243681907653809,
+    "setup": 6.556517601013184,
+    "agent": 0.8185245990753174,
+    "finalize": 0.31139683723449707,
+    "verifier": null,
+    "total": 8.310807228088379
+   },
+   "cpu_s": {
+    "agent_box": 0.678825,
+    "verifier_box": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 16.411747455596924,
+   "address_file_matches_tool_url": true
+  },
+  "stock-symlinks": {
+   "graded": false,
+   "ok": true,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6067695617675781,
+    "setup": 6.55675196647644,
+    "agent": 0.7675235271453857,
+    "finalize": 0.3479158878326416,
+    "verifier": null,
+    "total": 8.278960943222046
+   },
+   "cpu_s": {
+    "agent_box": 0.621115,
+    "verifier_box": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 17.24705696105957,
+   "address_file_matches_tool_url": true
+  },
+  "stock-junk": {
+   "graded": false,
+   "ok": false,
+   "reward": 0.0,
+   "wall_s": {
+    "boot": 0.6354930400848389,
+    "setup": 6.543367624282837,
+    "agent": 0.7491488456726074,
+    "finalize": 0.42944908142089844,
+    "verifier": null,
+    "total": 8.357458591461182
+   },
+   "cpu_s": {
+    "agent_box": 0.66485,
+    "verifier_box": null,
+    "worker_in_reward": null
+   },
+   "invocation_wall_s": 16.599753856658936,
+   "address_file_matches_tool_url": true
+  }
+ },
+ "wall_s": 327.59729957580566
+}

@@ -26,13 +26,22 @@ Venv: `/home/user/evalwork/vfport/.venv` (python 3.12, verifiers 0.3.2.dev163 wh
 - Found: `docker exec` runs with umask 0000 in this container, so files written by verifiers' Runtime.write were
   world-writable; staging now chmods explicitly and the driver's --scan fixes any leftover.
 
+- tools/check_probe.py RUN (02:47-02:52 UTC): results/probe_ring.json. Round 5's 34 checks: 32 reproduced, 0 failed,
+  2 changed by design (agent is root in its own container). 33 of 33 new checks pass (probes a-d, with controls).
+  Fixed on the way: zombies of killed predictor processes (driver is now subreaper and reaps), System V shared
+  memory (removed as the predictor's user), umask 0 under docker exec.
+- Written: README.md (two placeholders left: line counts and the proof numbers), RUNBOOK_MAC.md, configs/, uv.lock,
+  tools/make_summary.py.
+
 ## Running
-- tools/prove.py, 4 worlds x (S, D, P0, PM, C, null), started 02:37 UTC; log $S/prove.log; state
-  $S/proof/prove_state.json (resumable per policy); writes results/proof_ring.json.
+- tools/prove.py, 4 worlds x (S, D, P0, PM, C, null), started 02:52 UTC on the final code; log $S/prove.log; state
+  $S/proof/prove_state.json (resumable per policy); writes results/proof_ring.json. About 35 minutes.
 
 ## Next step (exact)
-1. When prove.py ends: check results/proof_ring.json against agentenv's results/proof_ring.json.
-2. tools/check_probe.py (boundary checks + probes a-d), then results/summary.json, README.md, RUNBOOK_MAC.md, uv.lock.
+1. When prove.py ends: `python -B tools/make_summary.py` -> results/summary.json; fill the two placeholders of
+   README.md (LINES_PLACEHOLDER, PROOF_PLACEHOLDER) and GLIDERS_PLACEHOLDER from results/summary.json.
+2. Optional, only if cheap: one gliders smoke instance + `Physim2Taskset.load()`; do not chase it.
+3. Delete $S/store, $S/proof, $S/probe; final commit; final report.
 
 ## If the container restarted
 - `S=/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfport; mkdir -p $S;
