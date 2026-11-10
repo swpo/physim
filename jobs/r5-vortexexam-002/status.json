@@ -173,6 +173,12 @@
     }
   ],
   "pods_terminated": true,
+  "review": {
+    "at": "2026-11-10T00:09:09Z",
+    "file": "jobs/r5-vortexexam-002/review.md",
+    "sha256": "a3010c48d1e0cdab22822d6cb47076ac5818b64f1c112def868a069c57831f8c",
+    "summary": "Exam secrecy clean. 1 major (no GPU-backend check; job 2 must assert it), 4 minor (job 2 must keep each output file under 20 MB)."
+  },
   "run_deadline": "2026-11-10T00:22:16Z",
   "started_at": "2026-11-09T23:46:16Z",
   "state": "done",
