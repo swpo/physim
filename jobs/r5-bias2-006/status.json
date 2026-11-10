@@ -1,0 +1,19 @@
+{
+  "cap_usd": 12.4,
+  "cost": {
+    "billed_usd": 0.0,
+    "conservative_usd": 0.0
+  },
+  "history": [
+    {
+      "at": "2026-11-10T01:39:18Z",
+      "message": "request received",
+      "state": "received"
+    }
+  ],
+  "job_id": "r5-bias2-006",
+  "message": "request received",
+  "pods": [],
+  "state": "received",
+  "updated_at": "2026-11-10T01:39:18Z"
+}
