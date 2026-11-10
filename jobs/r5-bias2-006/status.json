@@ -23,10 +23,13 @@
     "src_bytes": 18656427
   },
   "cap_usd": 12.4,
+  "collected": null,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "exit_code": null,
+  "finished_at": "2026-11-10T01:52:27Z",
   "hard_deadline_epoch": null,
   "history": [
     {
@@ -43,11 +46,16 @@
       "at": "2026-11-10T01:46:58Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-10T01:52:28Z",
+      "message": "RuntimeError: could not provision a reachable pod: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_h100_sxm5 available right now. Please try again later.; pods terminated",
+      "state": "infra_error"
     }
   ],
   "job_id": "r5-bias2-006",
   "max_estimate_usd": 7.94,
-  "message": "renting a pod",
+  "message": "RuntimeError: could not provision a reachable pod: Failed to create pod: HTTP 503: Lambdalabs doesn't have gpu_1x_h100_sxm5 available right now. Please try again later.; pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_h100_sxm5",
@@ -91,13 +99,32 @@
     "planned_at": "2026-11-10T01:46:50Z",
     "window_hours": 1.85
   },
-  "pods": [],
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": null,
+      "data_center": "us-southeast-1",
+      "gpu": "H100_80GB",
+      "name": "gpujob-r5-bias2-006-a1",
+      "note": "no pod with this name after the create",
+      "pod_id": null,
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 4.29,
+      "ready_at": null,
+      "requested_at": "2026-11-10T01:46:59Z",
+      "spot": false,
+      "state": "create_failed",
+      "terminated_at": null
+    }
+  ],
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-10T01:42:25Z",
     "file": "jobs/r5-bias2-006/review.md",
     "sha256": "5ce689b0f9581029cbf9b9172105ca668ada10f39ba04b2b985bfb467e28f4fc",
     "summary": "Fine to run; both earlier points fixed; tiny CPU run passed for all three worlds. 2 info: gliders is skipped only in the worst case; exit 137 still counts as a failure."
   },
-  "state": "provisioning",
-  "updated_at": "2026-11-10T01:46:58Z"
+  "state": "infra_error",
+  "updated_at": "2026-11-10T01:52:28Z"
 }
