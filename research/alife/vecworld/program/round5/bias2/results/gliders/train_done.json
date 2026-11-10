@@ -1,0 +1,20 @@
+{
+ "skipped_by_deadline": [],
+ "n_configs": 19,
+ "seconds": 619.5079109668732,
+ "J": 64,
+ "n_val_traj": 8,
+ "settings": {
+  "steps": 3000,
+  "batch": 128,
+  "lr_peak": 0.001,
+  "wd": 0.0,
+  "val_n": 256
+ },
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ]
+ }
+}

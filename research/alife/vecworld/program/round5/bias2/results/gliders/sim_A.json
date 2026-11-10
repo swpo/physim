@@ -1,0 +1,93 @@
+{
+ "world": "gliders",
+ "world_desc": {
+  "module": "vw1/port/aworld (A_gliders, 'coarse' spec: no tracker)",
+  "tick_time": 1.0,
+  "config": {
+   "substeps_per_tick": 20,
+   "burn_ticks_in_init": 50,
+   "flow_noise": 0.5
+  },
+  "stride_world_ticks_per_study_tick": 1,
+  "study_tick_time": 1.0
+ },
+ "half": "A",
+ "designer_seed": 9731,
+ "branch_key": "make_key(seed + 50, j, i), R_BR members",
+ "world_seed": 0,
+ "spec": "pooled (no tracker)",
+ "J_ALL": 64,
+ "J_CERT": 32,
+ "J_requested": 64,
+ "T": 300,
+ "burn_ticks": 0,
+ "test_ticks": [
+  40,
+  100,
+  160,
+  220
+ ],
+ "units": "T, burn_ticks, test_ticks, TB and member_ticks are in STUDY ticks (stride world ticks each)",
+ "TB": 16,
+ "R_BR": 5,
+ "seconds": {
+  "init": 8.667087316513062,
+  "burn": 0.0,
+  "base": 15.840348720550537,
+  "branch": 9.5031578540802
+ },
+ "member_ticks": {
+  "burn": 0,
+  "base": 19200,
+  "branch": 10240
+ },
+ "member_ticks_per_s": {
+  "burn_chunk2": null,
+  "base": 1212.0945276344078,
+  "branch": 1077.5365575563321
+ },
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "x64": true,
+  "batching": "vmap (vw.World)"
+ },
+ "tiny": false,
+ "fields": [
+  "c0",
+  "c1"
+ ],
+ "field_stats": {
+  "c0": {
+   "mean": 0.043957908627084014,
+   "sd": 0.16112417806731527,
+   "min": 0.0,
+   "max": 1.708261251449585
+  },
+  "c1": {
+   "mean": 0.044135483172066316,
+   "sd": 0.19168681505011442,
+   "min": 0.0,
+   "max": 4.723968505859375
+  }
+ },
+ "global_field_means": {
+  "c0": {
+   "mean_first": 0.04395790862901219,
+   "mean_last": 0.04395790862861297,
+   "rel_change_first_to_last": 7.763375129493469e-10,
+   "rel_rms_step": 1.0494120981133564e-09
+  },
+  "c1": {
+   "mean_first": 0.044135483163157796,
+   "mean_last": 0.04413548316890675,
+   "rel_change_first_to_last": 9.968985369537528e-10,
+   "rel_rms_step": 1.253482335801349e-09
+  }
+ },
+ "note": "base/branch rates include the host transfer of the float64 records"
+}
