@@ -275,7 +275,8 @@ def main():
     ap.add_argument("--n-gif", type=int, default=6)
     a = ap.parse_args()
     ana = json.load(open(os.path.join(a.out, "analysis.json")))
-    per = json.load(open(os.path.join(a.out, "per_draw.json")))
+    import gzip
+    per = json.load(gzip.open(os.path.join(a.out, "per_draw.json.gz"), "rt"))
     fd = os.path.join(a.out, "fig")
     os.makedirs(fd, exist_ok=True)
     made = {}

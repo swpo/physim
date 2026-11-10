@@ -358,7 +358,9 @@ def main():
     tab = dict(draw=idx.tolist(), type=[int(x) for x in t], score=[round(float(x), 4) for x in s],
                candidate=[bool(x) for x in g["candidate"]], types=list(CR.TYPES),
                **{k: [None if not np.isfinite(x) else round(float(x), 4) for x in d[k]] for k in keep})
-    with open(os.path.join(a.out, "per_draw.json" if a.name == "analysis.json" else "per_draw_" + a.name), "w") as f:
+    import gzip
+    pd_name = ("per_draw.json" if a.name == "analysis.json" else "per_draw_" + a.name) + ".gz"
+    with gzip.open(os.path.join(a.out, pd_name), "wt") as f:
         json.dump(tab, f, separators=(",", ":"))
     print("types", {k: v["n"] for k, v in types.items()})
     print("gates", {k: v["n"] for k, v in res["gates"].items() if isinstance(v, dict)})

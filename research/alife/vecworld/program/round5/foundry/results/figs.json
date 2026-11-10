@@ -1,0 +1,46 @@
+{
+ "types_sheet": "fig/types_sheet.png",
+ "types_bar": "fig/types_bar.png",
+ "weights_auc": "fig/weights_auc.png",
+ "speed_closure": "fig/speed_closure.png",
+ "top_candidates": "fig/top_candidates.png",
+ "closure_profiles": "fig/closure_profiles.png",
+ "gifs": [
+  {
+   "draw": 60,
+   "file": "fig/top_00060.gif",
+   "bytes": 628288,
+   "ticks_per_frame": 4
+  },
+  {
+   "draw": 1476,
+   "file": "fig/top_01476.gif",
+   "bytes": 405266,
+   "ticks_per_frame": 4
+  },
+  {
+   "draw": 1672,
+   "file": "fig/top_01672.gif",
+   "bytes": 679361,
+   "ticks_per_frame": 4
+  },
+  {
+   "draw": 1860,
+   "file": "fig/top_01860.gif",
+   "bytes": 544636,
+   "ticks_per_frame": 4
+  },
+  {
+   "draw": 3348,
+   "file": "fig/top_03348.gif",
+   "bytes": 691770,
+   "ticks_per_frame": 4
+  },
+  {
+   "draw": 4186,
+   "file": "fig/top_04186.gif",
+   "bytes": 348286,
+   "ticks_per_frame": 4
+  }
+ ]
+}
