@@ -1,18 +1,49 @@
 # vfport: PROGRESS
 
-## RE-AUDIT of the code, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, IN PROGRESS
-- Role: re-audit of the CODE only (M1, M3, m1, m5, D1; the whole diff since 40c697e54; the tests; the pin). Report
-  goes back to the coordinator as text; this note is for a restart. Nothing of the port runs on the host outside
-  tripwires; real signals only in a named throwaway container without a mount.
-- Done so far (read): `HOST_SAFETY_AUDIT.md` and `RUNBOOK_MAC.md` in full; the diff of the 18 pinned files;
-  `tools/check_round3.py`; `rehearsal/issue3.py`, `watch_open.py`; verifiers `utils/prime.py`, `configs/client.py`,
-  `mcp/launch.py`, `mcp/server.py`, `runtimes/subprocess.py`, `cli/eval/main.py`. Pin recomputed from a clean
-  `git archive` of the head: 109 of 109 files, sha256 of `PIN.sha256` cd67eb4b...03e4 = the runbook's pin block.
-- Next (exact): my own credential trace under tripwires with a made-up file in a scratch home; my own container
-  run (theta in the process list, exit status after SIGKILL, the watchdog); rerun `tools/check_round3.py`,
-  `tools/check_runbook.py`, `tools/check_interrupt.py`; then the verdict in this note.
-- Scratch: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3code1` (deleted at the
-  end); worktree `/home/user/wt/vfr3code1`, branch `wt-vfr3code1` (removed at the end).
+## RE-AUDIT of the code, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, finished
+- Role: re-audit of the CODE only (M1, M3, m1, m5, D1; the whole diff since 40c697e54; the tests; the pin). The
+  report went back to the coordinator as text. **My verdict on the code: GO** (for the scripted steps 0 to 2; the
+  runbook text has its own re-audit; the hold notice was not touched by me). No file but this note was changed.
+- Evidence labels: read / tripwire (run by me on the cloud host in a child process under `tools/tripwires.py`, a
+  made-up credential file in a scratch home) / container (mine: one `docker run --rm -i --network none
+  python:3.12-slim`, named, no mount, gone afterwards) / inferred (everything about macOS). No rollout was made
+  by me; nothing ran on macOS.
+- Pin: clean `git archive` of the head, `sha256sum -c PIN.sha256` 109 of 109; sha256 of `PIN.sha256`
+  cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4 = the runbook's pin block. 14 changed, 4 added,
+  91 identical to the round-2 pin (the driver, grading, taskset, access, the box scripts among them).
+- M1 closed (container): of 56 made-up session names only HOME, LANG, TMPDIR, TZ, VF_RUN_ID (and PATH) reach a
+  child; the refuse-list names 17 of them (every DOCKER_*, BUILDX_*, MCP_HOST/PORT, PHYSIM2_*, UV_*, VF_*,
+  PYTHONPATH/HOME), and a real tool process started with DOCKER_CONTEXT ends before anything starts. Residual, minor: the refuse-list is a deny-list for the tool's own process;
+  PYTHONEXECUTABLE (macOS: it sets sys.executable, hence the interpreter of vf-eval; inferred), other PYTHON*,
+  DYLD_*, proxies are not on it (they do not reach a child).
+- M3 closed (tripwire): stock import opens the made-up file and loads its key (control); through the package 0
+  opens, 0 stats, nothing under the home folder touched in 26 module imports, the default and the stand-in
+  client, `EvalClient`, `prime_runs.init(mode="disabled")`; a laboratory-like process stays closed even with
+  PHYSIM2_MODEL_CREDENTIALS=prime. The two unpatched readers (prime_sandboxes, prime_tunnel) open the file only
+  if instantiated; verifiers reaches them behind `ensure_prime_auth` only (`runtimes/prime.py:150`,
+  `interception/tunnel/prime.py:36`), which the stand-in turns into an exit.
+- m1 closed (container): the builder's `/proc/<pid>/cmdline` and environ hold the path of the 0600 file, not the
+  value; the script gets it in memory; `--theta` on the command line, mode 0644 and a link are refused.
+- m5 closed (container, real exit statuses): SIGKILL of vf-eval by itself, from outside, and in the command
+  form: status 98 and the "may be left" line. Minor gap: a vf-eval that ends with 130 after a SIGTERM that did
+  not come from the tool counts as a normal exit (`tools/vfrun.py:304`); prove.py then stops for lack of an
+  episode, check_probe's `may_fail` rollouts would go on. Off the runbook's path (it signals the TOOL first).
+- D1 closed (container): refusal before a start (97, nothing created); a trip sends one SIGTERM, status 97, a
+  record, no file removed (tree compared before and after); SIGKILL only after the grace period. Minor: a stop
+  of the tool during that grace sends vf-eval a second SIGTERM and loses the record (`vfrun.py:255-257`); the
+  disk message lacks the "may be left" line after a SIGKILL (`vfrun.py:307-310`); a failing statvfs stops the
+  run with status 1 and no record. Step 1 (uv, docker build) has the check before, not during.
+- Whole diff: no new path that kills, deletes, moves or re-owns beyond `run_helper` (SIGTERM, then SIGKILL after
+  20 s, to the tool's own helper). `rehearsal/issue3.py` (outside the pin, cloud only, refuses off Linux and
+  without the marker file): `--env HOME=...` or `--inherit HOME` would aim the runbook's rm -rf of the two pilot
+  folders at another home (lines 238-245); refuse those two names.
+- Tests rerun by me from this worktree: `tools/check_round3.py` 48 of 48, `tools/check_interrupt.py` 8 of 8,
+  `tools/check_runbook.py` 46 of 46 (its temp folder in my scratch), `pin.py --check` 0 differences. Not rerun:
+  `tools/check_safety.py` (its diff read only), any rollout.
+- Left on the machine by this role: nothing (no container, no process). Scratch `vfr3code1` deleted; worktree
+  `wt-vfr3code1` removed after the push. The Docker daemon was running before and was not touched.
+- Next step (exact), for the coordinator: the verdict of round 3 from the two re-audits. The minor items above
+  change pinned files; none is needed for steps 0 to 2.
 
 ## HOST-SAFETY FIXER, round 3 pass 1 (after the Mac session's read-only review of af767adb) -- 10 Nov 2026, finished
 - Role: the Mac review's findings M1 to M3 and m1 to m11 and the coordinator's disk requirement D1.
