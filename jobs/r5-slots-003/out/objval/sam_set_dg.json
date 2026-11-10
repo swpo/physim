@@ -1,0 +1,15 @@
+{
+ "name": "sam_set_dg",
+ "reps": [
+  "A0",
+  "A1",
+  "B0",
+  "B1"
+ ],
+ "steps": 300,
+ "batch": 32,
+ "set": null,
+ "self": null,
+ "rec": null,
+ "seconds": 0.12047076225280762
+}

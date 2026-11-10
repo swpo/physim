@@ -1,0 +1,5 @@
+23:46:50 [scert 6   560.3s] km_s3__certB q=144 certified in 464.3s
+23:55:00 [scert 6  1049.6s] sam_set_s1@mp6__certB q=72 certified in 150.2s
+00:02:09 [scert 6  1479.2s] sam_set_dg_s1__certB q=144 certified in 354.5s
+00:02:09 [scert 6  1479.2s] certification deadline reached; stopping
+00:02:09 [scert 6  1479.2s] worker exits after 3 items

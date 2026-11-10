@@ -1,0 +1,4 @@
+23:35:47 [job] nproc 16, cert workers 13, train deadline +1140s, cert deadline +1560s, size pilot
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+00:02:51 [job] certification finished; 44 halves certified, 0 left unclaimed
+00:02:56 [job] OUT size 3.7M; elapsed 1629s; done, FAIL=0

@@ -1,0 +1,143 @@
+23:35:47 [job] nproc 16, cert workers 13, train deadline +1140s, cert deadline +1560s, size pilot
+versions 3.12.16 0.12.0.1 2.5.4 1.18.0 [CudaDevice(id=0)]
+name, memory.total [MiB], driver_version
+NVIDIA H200, 143771 MiB, 550.163.01
+               total        used        free      shared  buff/cache   available
+Mem:             196           0         189           0           6         194
+/dev/vda1       1.5T   23G  1.4T   2% /
+23:35:56 [ssim     0.4s] platform {'backend': 'gpu', 'devices': ['cuda:0'], 'jax': '0.12.0.1', 'numpy': '2.5.4', 'x64': True, 'batching': 'vmap (vw.World)'} size pilot
+23:36:10 [ssim    13.9s] A init + burn-in 48 members 12.5 s
+23:36:25 [ssim    29.0s] A branches at tick 40 {'init_burn': 12.5, 'base': 7.4, 'branch': 7.5, 'tracker': 4.4}
+23:36:28 [ssim    32.3s] A branches at tick 100 {'init_burn': 12.5, 'base': 9.7, 'branch': 8.5, 'tracker': 4.7}
+23:36:32 [ssim    35.6s] A branches at tick 160 {'init_burn': 12.5, 'base': 11.9, 'branch': 9.5, 'tracker': 5.0}
+23:36:35 [ssim    38.9s] A branches at tick 220 {'init_burn': 12.5, 'base': 14.2, 'branch': 10.6, 'tracker': 5.3}
+23:36:43 [ssim    46.9s] A saved {'init_burn': 12.5, 'base': 17.3, 'branch': 10.6, 'tracker': 5.6} member-ticks/s {'base': 834.4, 'branch': 484.7} tracker check {'mem_maxabs_vs_world': 2.3874235921539366e-12, 'readout_maxabs_vs_L1': 0.0} objects {'count_mean': 7.3883582502768546, 'count_min': 3, 'count_max': 12, 'mass_in_objects_mean': 1438.5877685546875, 'events_per_traj': {'birth': 0.041666666666666664, 'fission': 134.04166666666666, 'fusion': 67.41666666666667, 'fused': 69.25, 'death': 0.0}}
+23:36:55 [ssim    58.8s] B init + burn-in 48 members 11.7 s
+23:37:08 [ssim    71.8s] B branches at tick 40 {'init_burn': 11.7, 'base': 6.8, 'branch': 6.1, 'tracker': 4.5}
+23:37:11 [ssim    75.1s] B branches at tick 100 {'init_burn': 11.7, 'base': 9.1, 'branch': 7.1, 'tracker': 4.8}
+23:37:14 [ssim    78.4s] B branches at tick 160 {'init_burn': 11.7, 'base': 11.4, 'branch': 8.2, 'tracker': 5.1}
+23:37:18 [ssim    81.7s] B branches at tick 220 {'init_burn': 11.7, 'base': 13.7, 'branch': 9.2, 'tracker': 5.4}
+23:37:26 [ssim    89.7s] B saved {'init_burn': 11.7, 'base': 16.7, 'branch': 9.2, 'tracker': 5.7} member-ticks/s {'base': 861.1, 'branch': 558.7} tracker check {'mem_maxabs_vs_world': 3.524291969370097e-12, 'readout_maxabs_vs_L1': 0.0} objects {'count_mean': 7.5703211517165006, 'count_min': 3, 'count_max': 12, 'mass_in_objects_mean': 1441.3189697265625, 'events_per_traj': {'birth': 0.020833333333333332, 'fission': 139.375, 'fusion': 70.39583333333333, 'fused': 72.16666666666667, 'death': 0.020833333333333332}}
+23:37:26 [ssim    89.8s] done
+23:37:31 [strain     2.9s] data on device (2, 48, 301, 2, 128, 128) (2, 320, 16, 2, 128, 128) (2, 48, 301, 128, 128) train trajectories per half 44 5.2 GB peak, 5.2 GB in use
+23:37:31 [strain     2.9s] references queued: trk, trk@mp6, hand_mass, hand_chan
+23:37:44 [scert 3    14.7s] hand_mass__certA q=64 certified in 11.7s
+23:37:44 [scert 4    14.4s] hand_mass__certB q=64 certified in 11.4s
+23:38:15 [scert 1    45.3s] hand_chan__certB q=128 certified in 42.3s
+23:38:18 [scert 5    48.5s] hand_chan__certA q=128 certified in 45.5s
+23:38:20 [strain    52.3s] km_s6: encoded both halves in 49.3s, 5.7 GB peak, 5.2 GB in use
+23:38:48 [scert 10    79.0s] trk@mp6__certA q=72 certified in 76.0s
+23:38:58 [scert 2    88.3s] trk@mp6__certB q=72 certified in 85.3s
+23:39:29 [strain   121.2s] km_s3: encoded both halves in 69.0s, 5.7 GB peak, 5.2 GB in use
+23:40:32 [scert 4   181.6s] km_s6@mp6__certA q=72 certified in 149.1s
+23:40:35 [scert 9   184.9s] km_s6@mp6__certB q=72 certified in 151.9s
+23:41:13 [strain   225.6s] km_s6w: encoded both halves in 104.3s, 5.7 GB peak, 5.2 GB in use
+23:41:32 [strain   244.2s] grid: encoded both halves in 18.6s, 5.7 GB peak, 5.2 GB in use
+23:41:45 [scert 12   255.4s] km_s3@mp6__certA q=72 certified in 159.4s
+23:41:47 [scert 5   257.4s] km_s3@mp6__certB q=72 certified in 160.9s
+23:43:03 [scert 13   334.5s] trk__certA q=144 certified in 331.5s
+23:43:04 [scert 11   333.7s] trk__certB q=144 certified in 330.7s
+23:43:57 [scert 4   386.7s] km_s6w@mp6__certA q=72 certified in 196.1s
+23:44:21 [strain   412.7s] km_s6_p1: encoded both halves in 168.5s, 6.3 GB peak, 5.2 GB in use
+23:44:28 [scert 1   418.3s] km_s6w@mp6__certB q=72 certified in 226.0s
+23:46:33 [strain   544.7s] objective values trk: set [0.6827, 0.5758, 0.527, 0.5241], self [0.5995, 0.5609, 0.5252, 0.5227], rec [0.6473, 0.648, 0.6531, 0.6511] (132.0s)
+23:46:39 [strain   550.7s] objective values km_s6: set [0.3155, 0.3189, 0.3364, 0.3291], self [0.3193, 0.3182, 0.3382, 0.338], rec [0.6031, 0.6027, 0.6229, 0.6224] (5.9s)
+23:46:44 [strain   556.5s] objective values km_s3: set [0.3049, 0.307, 0.3527, 0.365], self [0.3088, 0.3133, 0.3681, 0.3569], rec [0.5578, 0.5581, 0.5731, 0.5698] (5.8s)
+23:46:48 [scert 8   557.8s] km_s3__certA q=144 certified in 461.8s
+23:46:50 [strain   561.9s] objective values km_s6w: set [0.3258, 0.33, 0.3426, 0.3431], self [0.3351, 0.3303, 0.3454, 0.3463], rec [0.588, 0.5888, 0.6041, 0.6034] (5.4s)
+23:46:50 [scert 6   560.3s] km_s3__certB q=144 certified in 464.3s
+23:46:55 [strain   567.5s] objective values grid: set [0.7474, 0.7557, 0.75, 0.7574], self [0.7507, 0.7495, 0.7509, 0.7512], rec [0.7266, 0.7281, 0.7397, 0.7341] (5.6s)
+23:47:53 [scert 4   622.9s] km_s6_p1@mp6__certA q=72 certified in 212.1s
+23:49:00 [scert 7   690.3s] km_s6__certB q=144 certified in 657.3s
+23:49:47 [scert 3   737.8s] km_s6__certA q=144 certified in 705.1s
+23:49:57 [scert 8   747.1s] km_s6_p1@mp6__certB q=72 certified in 189.3s
+23:50:05 [scert 2   755.0s] km_s6w__certA q=144 certified in 564.6s
+23:50:40 [scert 10   790.6s] grid__certA q=144 certified in 552.6s
+23:50:43 [scert 9   793.2s] km_s6w__certB q=144 certified in 602.3s
+23:51:00 [scert 5   810.1s] grid__certB q=144 certified in 552.7s
+23:51:11 [strain   823.4s] sam_set: step 100, chunk 164.7s, train [0.3827, 0.3704, 0.3493, 0.3552], val [0.2671000063419342, 0.28540000319480896, 0.31929999589920044, 0.33550000190734863], skipped 20
+23:51:23 [strain   834.8s] sam_set: step 200, chunk 9.6s, train [0.2861, 0.295, 0.2884, 0.2895], val [0.2687999904155731, 0.2736000120639801, 0.3393000066280365, 0.35269999504089355], skipped 3
+23:51:26 [scert 12   836.3s] grid@mp6__certA q=72 certified in 580.9s
+23:52:09 [scert 13   880.3s] grid@mp6__certB q=72 certified in 545.8s
+23:52:25 [scert 1   894.9s] km_s6_p1__certB q=144 certified in 476.6s
+23:52:34 [strain   906.2s] sam_set: steps 600, val [0.7578999996185303, 0.7578999996185303, 0.7580000162124634, 0.7580000162124634] -> [0.2563, 0.2599, 0.3364, 0.3527] (best at [400, 300, 400, 200]), skipped 38, train 305.1s (chunk 9.6s), total 338.3s, 23.8 GB peak, 5.3 GB in use
+23:53:24 [scert 11   954.2s] km_s6_p1__certA q=144 certified in 545.5s
+23:53:25 [strain   957.2s] objective values sam_set: set [0.3008, 0.2878, 0.3769, 0.3711], self [0.3062, 0.2908, 0.373, 0.3673], rec [0.5569, 0.5541, 0.5703, 0.5714] (50.0s)
+23:54:45 [scert 4  1035.0s] sam_set_s0@mp6__certB q=72 certified in 136.1s
+23:54:46 [scert 10  1036.9s] sam_set_s0@mp6__certA q=72 certified in 135.3s
+23:55:00 [scert 6  1049.6s] sam_set_s1@mp6__certB q=72 certified in 150.2s
+23:55:17 [scert 12  1066.6s] sam_set_s1@mp6__certA q=72 certified in 164.3s
+23:55:45 [strain  1096.7s] sam_set_dg: step 100, chunk 85.9s, train [0.387, 0.3553, 0.3652, 0.3731], val [0.30219998955726624, 0.28060001134872437, 0.3562000095844269, 0.3449999988079071], skipped 18
+23:55:47 [strain  1098.6s] sam_set_dg: training deadline reached at step 100
+23:56:20 [strain  1131.9s] sam_set_dg: steps 100, val [0.7900999784469604, 0.7900999784469604, 0.785099983215332, 0.785099983215332] -> [inf, inf, inf, inf] (best at [0, 0, 0, 0]), skipped 18, train 141.1s (chunk 85.9s), total 174.4s, 23.8 GB peak, 5.3 GB in use
+23:56:21 [strain  1133.2s] objective values sam_set_dg:  (0.1s)
+23:56:21 [strain  1133.4s] done; skipped ['sam_sup', 'sam_rec', 'sam_set_ws', 'sac_set']
+23:56:24 [scert 8  1134.1s] worker exits after 2 items
+23:57:03 [scert 9  1172.7s] sam_set_s0__certB q=144 certified in 274.4s
+23:57:03 [scert 9  1172.7s] worker exits after 3 items
+23:57:31 [scert 1  1201.4s] sam_set_s0__certA q=144 certified in 300.4s
+23:57:31 [scert 1  1201.4s] worker exits after 4 items
+23:58:04 [scert 2  1234.5s] sam_set_s1__certA q=144 certified in 332.5s
+23:58:04 [scert 2  1234.5s] worker exits after 3 items
+23:58:11 [scert 3  1241.5s] sam_set_s1__certB q=144 certified in 341.7s
+23:58:11 [scert 3  1241.5s] worker exits after 3 items
+23:58:52 [scert 12  1281.9s] sam_set_dg_s0@mp6__certB q=72 certified in 158.4s
+23:58:52 [scert 12  1281.9s] worker exits after 4 items
+23:58:53 [scert 5  1282.9s] sam_set_dg_s1@mp6__certB q=72 certified in 157.7s
+23:58:53 [scert 5  1282.9s] worker exits after 4 items
+23:59:07 [scert 11  1296.9s] sam_set_dg_s1@mp6__certA q=72 certified in 168.6s
+23:59:07 [scert 11  1296.9s] worker exits after 3 items
+23:59:07 [scert 4  1296.9s] sam_set_dg_s0@mp6__certA q=72 certified in 168.9s
+23:59:07 [scert 4  1296.9s] worker exits after 6 items
+00:02:09 [scert 6  1479.2s] sam_set_dg_s1__certB q=144 certified in 354.5s
+00:02:09 [scert 6  1479.2s] certification deadline reached; stopping
+00:02:09 [scert 6  1479.2s] worker exits after 3 items
+00:02:10 [scert 10  1480.8s] sam_set_dg_s0__certB q=144 certified in 356.8s
+00:02:10 [scert 10  1480.8s] certification deadline reached; stopping
+00:02:10 [scert 10  1480.8s] worker exits after 4 items
+00:02:47 [scert 7  1517.3s] sam_set_dg_s0__certA q=144 certified in 391.9s
+00:02:47 [scert 7  1517.3s] certification deadline reached; stopping
+00:02:47 [scert 7  1517.3s] worker exits after 2 items
+00:02:51 [scert 13  1521.9s] sam_set_dg_s1__certA q=144 certified in 392.6s
+00:02:51 [scert 13  1521.9s] certification deadline reached; stopping
+00:02:51 [scert 13  1521.9s] worker exits after 3 items
+00:02:51 [job] certification finished; 44 halves certified, 0 left unclaimed
+00:02:56 [scombine     2.8s] pooled 22 phis; problems []
+00:02:56 [scombine     3.1s] written combined.json and table.txt; 22 phis, 2 learned configs
+phi                     q  fam  ceiling h=1,2,4,8,16             | ARI   rec   prec  spo  massR2 posR2 velR2 | probe(rff) mass pos vel | territ
+grid                   144   O  0.898  0.766  0.496  0.248  0.051 | 0.644 0.745 0.827 1.668 0.383 0.950-0.940 | 0.586 0.875 0.498 | 0.901
+grid@mp6                72   S  0.962  0.865  0.629  0.340  0.059 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+hand_chan              128  GL  0.988  0.953  0.824  0.472  0.219 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+hand_mass               64  GL  0.991  0.953  0.785  0.425  0.195 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+km_s3                  144   O  0.923  0.816  0.705  0.571  0.384 | 0.638 0.780 0.989 2.097-0.194 0.983 0.427 | 0.546 0.956 0.753 | 0.098
+km_s3@mp6               72   S  0.983  0.938  0.880  0.768  0.556 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+km_s6                  144   O  0.918  0.741  0.647  0.437  0.340 | 0.723 0.720 0.928 2.079-0.111 0.966-0.503 | 0.447 0.916 0.654 | 0.087
+km_s6@mp6               72   S  0.977  0.906  0.818  0.674  0.468 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+km_s6_p1               144   O  0.897  0.761  0.626  0.463  0.330 | 0.726 0.718 0.926 2.079-0.112 0.964-0.572 | 0.440 0.913 0.646 | 0.077
+km_s6_p1@mp6            72   S  0.965  0.902  0.810  0.666  0.467 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+km_s6w                 144   O  0.935  0.809  0.690  0.554  0.395 | 0.726 0.778 0.964 1.949 0.062 0.978 0.101 | 0.625 0.945 0.731 | 0.085
+km_s6w@mp6              72   S  0.980  0.938  0.850  0.732  0.525 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+sam_set_dg_s0          144   O  0.918  0.760  0.630  0.447  0.338 | 0.716 0.723 0.930 2.087-0.119 0.967-0.334 | 0.429 0.918 0.654 | 0.082
+sam_set_dg_s0@mp6       72   S  0.964  0.906  0.829  0.681  0.484 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+sam_set_dg_s1          144   O  0.918  0.760  0.630  0.447  0.338 | 0.716 0.723 0.930 2.087-0.119 0.967-0.334 | 0.429 0.918 0.654 | 0.082
+sam_set_dg_s1@mp6       72   S  0.964  0.906  0.829  0.681  0.484 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+sam_set_s0             144   O  0.923  0.807  0.708  0.564  0.384 | 0.636 0.777 0.988 2.107-0.208 0.984 0.497 | 0.542 0.956 0.755 | 0.095
+sam_set_s0@mp6          72   S  0.971  0.927  0.865  0.763  0.560 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+sam_set_s1             144   O  0.914  0.827  0.707  0.551  0.381 | 0.635 0.776 0.988 2.111-0.213 0.984 0.496 | 0.552 0.956 0.753 | 0.096
+sam_set_s1@mp6          72   S  0.979  0.930  0.857  0.751  0.550 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+trk                    144   O  0.874  0.789  0.609  0.380  0.167 |   -     -     -     -     -     -     -   |   -     -     -   | 0.105
+trk@mp6                 72   S  0.941  0.873  0.731  0.469  0.193 |   -     -     -     -     -     -     -   |   -     -     -   |   -  
+
+objective values (frozen readout, heads trained from scratch; mean over replicas): set, self, rec
+grid                   set  0.7526 self  0.7506 rec  0.7321
+km_s3                  set  0.3324 self  0.3368 rec  0.5647
+km_s6                  set  0.3250 self  0.3284 rec  0.6128
+km_s6w                 set  0.3354 self  0.3393 rec  0.5961
+sam_set                set  0.3342 self  0.3343 rec  0.5632
+sam_set_dg             
+trk                    set  0.5774 self  0.5521 rec  0.6499
+
+seed pairs: config, ARI(s0, s1), R2(s1|s0), R2(s0|s1), ARI vs km_s6
+sam_set_dg              1.000  1.000  1.000  0.954
+sam_set                 0.943  0.852  0.858  0.804
+00:02:56 [job] OUT size 3.7M; elapsed 1629s; done, FAIL=0

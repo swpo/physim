@@ -1,0 +1,4 @@
+23:43:04 [scert 11   333.7s] trk__certB q=144 certified in 330.7s
+23:53:24 [scert 11   954.2s] km_s6_p1__certA q=144 certified in 545.5s
+23:59:07 [scert 11  1296.9s] sam_set_dg_s1@mp6__certA q=72 certified in 168.6s
+23:59:07 [scert 11  1296.9s] worker exits after 3 items

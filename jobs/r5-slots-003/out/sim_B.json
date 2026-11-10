@@ -1,0 +1,79 @@
+{
+ "half": "B",
+ "designer_seed": 9802,
+ "branch_key": "make_key(seed + 50, j, i), R_BR members",
+ "world_seed": 0,
+ "J_ALL": 48,
+ "J_CERT": 16,
+ "T": 300,
+ "test_ticks": [
+  40,
+  100,
+  160,
+  220
+ ],
+ "TB": 16,
+ "R_BR": 5,
+ "seconds": {
+  "init_burn": 11.712267398834229,
+  "base": 16.72371745109558,
+  "branch": 9.163362979888916,
+  "tracker": 5.699110269546509
+ },
+ "member_ticks": {
+  "burn": 2400,
+  "base": 14400,
+  "branch": 5120
+ },
+ "member_ticks_per_s": {
+  "base": 861.0525765045527,
+  "branch": 558.746828128167
+ },
+ "platform": {
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "x64": true,
+  "batching": "vmap (vw.World)"
+ },
+ "size": "pilot",
+ "tracker": "jax",
+ "tracker_pass_check": {
+  "mem_maxabs_vs_world": 3.524291969370097e-12,
+  "readout_maxabs_vs_L1": 0.0
+ },
+ "tracker_overflow_max": [
+  0.0,
+  0.0,
+  12.0,
+  12.0
+ ],
+ "objects": {
+  "count_mean": 7.5703211517165006,
+  "count_min": 3,
+  "count_max": 12,
+  "mass_in_objects_mean": 1441.3189697265625,
+  "events_per_traj": {
+   "birth": 0.020833333333333332,
+   "fission": 139.375,
+   "fusion": 70.39583333333333,
+   "fused": 72.16666666666667,
+   "death": 0.020833333333333332
+  }
+ },
+ "mass_drift_max_rel": {
+  "mass_c0": 5.266626378596866e-15,
+  "mass_c1": 1.9417725423007387e-14
+ },
+ "mass_mean": {
+  "mass_c0": 721.9720805701378,
+  "mass_c1": 720.3272836299757
+ },
+ "mass_sd_across_members": {
+  "mass_c0": 11.716279604463118,
+  "mass_c1": 10.737456238397323
+ }
+}

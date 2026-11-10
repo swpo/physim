@@ -1,0 +1,5 @@
+23:41:45 [scert 12   255.4s] km_s3@mp6__certA q=72 certified in 159.4s
+23:51:26 [scert 12   836.3s] grid@mp6__certA q=72 certified in 580.9s
+23:55:17 [scert 12  1066.6s] sam_set_s1@mp6__certA q=72 certified in 164.3s
+23:58:52 [scert 12  1281.9s] sam_set_dg_s0@mp6__certB q=72 certified in 158.4s
+23:58:52 [scert 12  1281.9s] worker exits after 4 items

@@ -1,0 +1,5 @@
+23:38:18 [scert 5    48.5s] hand_chan__certA q=128 certified in 45.5s
+23:41:47 [scert 5   257.4s] km_s3@mp6__certB q=72 certified in 160.9s
+23:51:00 [scert 5   810.1s] grid__certB q=144 certified in 552.7s
+23:58:53 [scert 5  1282.9s] sam_set_dg_s1@mp6__certB q=72 certified in 157.7s
+23:58:53 [scert 5  1282.9s] worker exits after 4 items

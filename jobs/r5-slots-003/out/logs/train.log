@@ -1,0 +1,21 @@
+23:37:31 [strain     2.9s] data on device (2, 48, 301, 2, 128, 128) (2, 320, 16, 2, 128, 128) (2, 48, 301, 128, 128) train trajectories per half 44 5.2 GB peak, 5.2 GB in use
+23:37:31 [strain     2.9s] references queued: trk, trk@mp6, hand_mass, hand_chan
+23:38:20 [strain    52.3s] km_s6: encoded both halves in 49.3s, 5.7 GB peak, 5.2 GB in use
+23:39:29 [strain   121.2s] km_s3: encoded both halves in 69.0s, 5.7 GB peak, 5.2 GB in use
+23:41:13 [strain   225.6s] km_s6w: encoded both halves in 104.3s, 5.7 GB peak, 5.2 GB in use
+23:41:32 [strain   244.2s] grid: encoded both halves in 18.6s, 5.7 GB peak, 5.2 GB in use
+23:44:21 [strain   412.7s] km_s6_p1: encoded both halves in 168.5s, 6.3 GB peak, 5.2 GB in use
+23:46:33 [strain   544.7s] objective values trk: set [0.6827, 0.5758, 0.527, 0.5241], self [0.5995, 0.5609, 0.5252, 0.5227], rec [0.6473, 0.648, 0.6531, 0.6511] (132.0s)
+23:46:39 [strain   550.7s] objective values km_s6: set [0.3155, 0.3189, 0.3364, 0.3291], self [0.3193, 0.3182, 0.3382, 0.338], rec [0.6031, 0.6027, 0.6229, 0.6224] (5.9s)
+23:46:44 [strain   556.5s] objective values km_s3: set [0.3049, 0.307, 0.3527, 0.365], self [0.3088, 0.3133, 0.3681, 0.3569], rec [0.5578, 0.5581, 0.5731, 0.5698] (5.8s)
+23:46:50 [strain   561.9s] objective values km_s6w: set [0.3258, 0.33, 0.3426, 0.3431], self [0.3351, 0.3303, 0.3454, 0.3463], rec [0.588, 0.5888, 0.6041, 0.6034] (5.4s)
+23:46:55 [strain   567.5s] objective values grid: set [0.7474, 0.7557, 0.75, 0.7574], self [0.7507, 0.7495, 0.7509, 0.7512], rec [0.7266, 0.7281, 0.7397, 0.7341] (5.6s)
+23:51:11 [strain   823.4s] sam_set: step 100, chunk 164.7s, train [0.3827, 0.3704, 0.3493, 0.3552], val [0.2671000063419342, 0.28540000319480896, 0.31929999589920044, 0.33550000190734863], skipped 20
+23:51:23 [strain   834.8s] sam_set: step 200, chunk 9.6s, train [0.2861, 0.295, 0.2884, 0.2895], val [0.2687999904155731, 0.2736000120639801, 0.3393000066280365, 0.35269999504089355], skipped 3
+23:52:34 [strain   906.2s] sam_set: steps 600, val [0.7578999996185303, 0.7578999996185303, 0.7580000162124634, 0.7580000162124634] -> [0.2563, 0.2599, 0.3364, 0.3527] (best at [400, 300, 400, 200]), skipped 38, train 305.1s (chunk 9.6s), total 338.3s, 23.8 GB peak, 5.3 GB in use
+23:53:25 [strain   957.2s] objective values sam_set: set [0.3008, 0.2878, 0.3769, 0.3711], self [0.3062, 0.2908, 0.373, 0.3673], rec [0.5569, 0.5541, 0.5703, 0.5714] (50.0s)
+23:55:45 [strain  1096.7s] sam_set_dg: step 100, chunk 85.9s, train [0.387, 0.3553, 0.3652, 0.3731], val [0.30219998955726624, 0.28060001134872437, 0.3562000095844269, 0.3449999988079071], skipped 18
+23:55:47 [strain  1098.6s] sam_set_dg: training deadline reached at step 100
+23:56:20 [strain  1131.9s] sam_set_dg: steps 100, val [0.7900999784469604, 0.7900999784469604, 0.785099983215332, 0.785099983215332] -> [inf, inf, inf, inf] (best at [0, 0, 0, 0]), skipped 18, train 141.1s (chunk 85.9s), total 174.4s, 23.8 GB peak, 5.3 GB in use
+23:56:21 [strain  1133.2s] objective values sam_set_dg:  (0.1s)
+23:56:21 [strain  1133.4s] done; skipped ['sam_sup', 'sam_rec', 'sam_set_ws', 'sac_set']

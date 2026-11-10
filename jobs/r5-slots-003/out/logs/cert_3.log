@@ -1,0 +1,4 @@
+23:37:44 [scert 3    14.7s] hand_mass__certA q=64 certified in 11.7s
+23:49:47 [scert 3   737.8s] km_s6__certA q=144 certified in 705.1s
+23:58:11 [scert 3  1241.5s] sam_set_s1__certB q=144 certified in 341.7s
+23:58:11 [scert 3  1241.5s] worker exits after 3 items

@@ -1,0 +1,7 @@
+23:37:44 [scert 4    14.4s] hand_mass__certB q=64 certified in 11.4s
+23:40:32 [scert 4   181.6s] km_s6@mp6__certA q=72 certified in 149.1s
+23:43:57 [scert 4   386.7s] km_s6w@mp6__certA q=72 certified in 196.1s
+23:47:53 [scert 4   622.9s] km_s6_p1@mp6__certA q=72 certified in 212.1s
+23:54:45 [scert 4  1035.0s] sam_set_s0@mp6__certB q=72 certified in 136.1s
+23:59:07 [scert 4  1296.9s] sam_set_dg_s0@mp6__certA q=72 certified in 168.9s
+23:59:07 [scert 4  1296.9s] worker exits after 6 items

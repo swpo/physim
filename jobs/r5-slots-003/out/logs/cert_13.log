@@ -1,0 +1,5 @@
+23:43:03 [scert 13   334.5s] trk__certA q=144 certified in 331.5s
+23:52:09 [scert 13   880.3s] grid@mp6__certB q=72 certified in 545.8s
+00:02:51 [scert 13  1521.9s] sam_set_dg_s1__certA q=144 certified in 392.6s
+00:02:51 [scert 13  1521.9s] certification deadline reached; stopping
+00:02:51 [scert 13  1521.9s] worker exits after 3 items
