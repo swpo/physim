@@ -14,7 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.environ.get("VX_RES", os.path.join(HERE, "results"))
 J1, J2 = "r5-vortexexam-002", os.environ.get("VX_JOB2", "r5-vortexexam-003")
 JD2 = os.environ.get("VX_JOB2_DIR", "job2")          # folder under results/ with job 2's small files
-J3 = os.environ.get("VX_JOB3", "r5-vortexexam-004")       # the scan-only job, when it was run (results/job3)
+J3 = os.environ.get("VX_JOB3", "r5-vortexexam-005")       # the follow-up exam job, pilot B (results/job3)
 
 
 def load(*p):

@@ -35,19 +35,19 @@ PILOT: never to be reused as an exam. Budget $25: job 1 billed $2.29; job 2 hold
   policies Cft / Sft@4 and the short-history families net~3 / ridge~3; sizing fixed). Cap $19.40, max 2.65 h.
 
 ## Running
-- `r5-vortexexam-004`: requested 02:10 UTC 10 Nov. DO NOT RESUBMIT while it runs. Watcher: a background loop
-  that fetches `origin gpu-jobs` every 60 s until `jobs/r5-vortexexam-004/status.json` is terminal. Read
-  `jobs/r5-vortexexam-004/review.md` when it appears.
-- Budget: $25 - 2.29 - 1.31 = $21.40 before job 004; its cap reserves $19.40.
+- `r5-vortexexam-005`: requested 02:25 UTC 10 Nov (004 was rejected at 02:15 without cost: purpose line over 300 characters). DO NOT RESUBMIT while it runs. Watcher: a background loop
+  that fetches `origin gpu-jobs` every 60 s until `jobs/r5-vortexexam-005/status.json` is terminal. Read
+  `jobs/r5-vortexexam-005/review.md` when it appears.
+- Budget: $25 - 2.29 - 1.31 = $21.40 before job 005; its cap reserves $19.40.
 
 ## Next steps (in order)
-1. While job 004 runs: README.md and the report from job 1 and job 2 (results/summary.json).
-2. When job 004 is terminal (SP = the scratch folder below):
-   `python -B fetch_job.py r5-vortexexam-004 job3 $SP`; check `results/job3/info.json` (no `fatal`, `failed`)
+1. While job 005 runs: README.md and the report from job 1 and job 2 (results/summary.json).
+2. When job 005 is terminal (SP = the scratch folder below):
+   `python -B fetch_job.py r5-vortexexam-005 job3 $SP`; check `results/job3/info.json` (no `fatal`, `failed`)
    and `prediction.json` (`final: true`); then `VX_TAG=B python -B analyse2.py $SP/job3` (-> results/analysis2_B.json)
    and `python -B make_summary.py` (reads results/job3 and analysis2_B.json; sections end in `_B`). Commit.
-   If it failed: read `jobs/r5-vortexexam-004/logs`, fix, test on CPU from a git archive, resubmit as
-   `r5-vortexexam-005` within the cap that is left.
+   If it failed: read `jobs/r5-vortexexam-005/logs`, fix, test on CPU from a git archive, resubmit as
+   `r5-vortexexam-006` within the cap that is left.
 3. README.md, results/summary.json, report (under 1,200 words); delete scratch `vx`; remove the worktree.
 
 Scratch: `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vx` (job1/, job2/ = job outputs;
