@@ -6,11 +6,22 @@
   section "Re-audit, round 3"), the hold notice of `RUNBOOK_MAC.md` (only if GO) and this note.
 - Worktree `/home/user/wt/vfr3verdict1` (branch `wt-vfr3verdict1`), scratch
   `/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/vfr3verdict1/`.
-- Done so far: `HOST_SAFETY_AUDIT.md` and `RUNBOOK_MAC.md` read in full at the head.
-- Next step (exact): read `tools/vfrun.py`, `physim2_env/_nokey.py`, `tools/vfeval.py`, `tools/prove.py`,
-  `tools/build_reference.py` and the diff of the other pinned files since 40c697e54; recompute the pin from a
-  clean archive; check the open items of the runbook re-audit (2, 5, 6, 7, 10, 11, 12) one by one against the
-  text; then write the section and the verdict.
+- Done so far (21:15 UTC): both files read in full; `tools/vfrun.py`, `physim2_env/_nokey.py`, `tools/vfeval.py`,
+  `tools/build_reference.py` and the diff of the other pinned files read. Pin from a clean archive of the head:
+  109 of 109, sha256 of `PIN.sha256` cd67eb4b...03e4; against the round-2 pin 91 identical (driver, grading,
+  taskset, access, box scripts among them), 14 changed, 4 added. Runbook: 33 fenced commands, equal block for
+  block at the rehearsed commit 00947b226 and at the head; all 65 recorded commands match one of them; never
+  issued: 350, 357, 654, 674, 682, 690, 720. My container run (python:3.12-slim, no mount, no network): of 28
+  made-up session names none reaches a child; the watchdog refuses at the floor (97), a trip sends ONE SIGTERM,
+  removes nothing, writes the record; SIGKILL only after the grace.
+- Found so far: (1) M2's table lacks one row, confirmed in the source: Python kills verifiers' `docker rm
+  --force <box>` client after 30 s (verifiers `runtimes/docker/__init__.py:553-567`, the normal teardown of every
+  box). (2) PYTHONEXECUTABLE / __PYVENV_LAUNCHER__ are NOT macOS-only: CPython 3.12 reads both on Linux too
+  (`Modules/getpath.c:901-902`, read; run here with a bare one-liner: `sys.executable` becomes the variable's
+  value and the venv is no longer found, `sys.prefix` /usr). So a session that holds one of them fails step 1's
+  import check (a stop), unless the value points into an environment with the same four package versions.
+- Next step (exact): read verifiers' credential readers (`configs/client.py`, `utils/prime.py`) for M3; scan the
+  changed runbook commands for macOS; then write "Re-audit, round 3" and the verdict.
 - If the container restarted: reuse the worktree if it exists (see the task), start from "Next step".
 
 ## RE-AUDIT of the runbook, round 3 pass 1 (independent; of branch head 33173af09) -- 10 Nov 2026, finished
