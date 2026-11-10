@@ -263,6 +263,21 @@
    ]
   },
   {
+   "id": "wind_exploration",
+   "verdict": "Exploration only (CPU, the same four worlds, draws 1672, 4470, 262, 60): with the wind noise at 1.0 instead of 0.25 (a given force is 16 times cheaper in nats) the aimed 200-nat command changes the block view by 0.233, 0.095, 0.002, 0.088 of its variance at 4 ticks (before: 0.0228, 0.0027, 0.0002, 0.0058), but the wind's own noise then raises the noise floor at 4 ticks about 11 times (median); the types under that background wind were not re-measured.",
+   "numbers": {
+    "sw": 1.0,
+    "e": "0.233, 0.095, 0.002, 0.088",
+    "e0": "0.0228, 0.0027, 0.0002, 0.0058",
+    "fl": 11.289183792085877,
+    "draws": "1672, 4470, 262, 60"
+   },
+   "sources": [
+    "wind_probe_sigma_w1.json",
+    "wind_probe.json"
+   ]
+  },
+  {
    "id": "platform",
    "verdict": "Platform: float64. On the H100 a rerun of the same compiled batch is bit-identical (True) and vmap equals single-world runs exactly; the four certification runs of job 1 returned identical main-run numbers. The screen of 12 draws repeated on this container's CPU with the same keys gives the same type 12 of 12 times; for 8 non-chaotic draws all 608 of 608 stored values are identical, for 4 movers they differ by at most 0.8%. Unlike the gliders world (FFT, scatter), this law is built from elementwise operations and shifts only.",
    "numbers": {

@@ -172,6 +172,16 @@ def main():
         "to {rhi:.1f} times the noise floor), and a blind command of 200 nats stays below the floor ({blo:.2f} to {bhi:.2f} "
         "times). 'Actions matter' is not established for these worlds; the channel needs a redesign and its own certificate.", n,
         ["checks.json:wind", "wind_probe.json:worlds"])
+    w1 = L("wind_probe_sigma_w1.json")
+    a1 = [w["programs"]["aimed_200"]["effect"][2] for w in w1["worlds"]]
+    f0 = [w["noise_floor_D0"][2] for w in wp["worlds"]]
+    f1 = [w["noise_floor_D0"][2] for w in w1["worlds"]]
+    n = dict(sw=w1["sigma_w"], e=", ".join(f"{v:.3f}" for v in a1), e0=", ".join(f"{v:.4f}" for v in aim),
+             fl=float(np.median(np.array(f1) / np.array(f0))), draws=", ".join(str(w["draw"]) for w in w1["worlds"]))
+    add("wind_exploration", "Exploration only (CPU, the same four worlds, draws {draws}): with the wind noise at {sw} instead of 0.25 "
+        "(a given force is 16 times cheaper in nats) the aimed 200-nat command changes the block view by {e} of its variance at 4 "
+        "ticks (before: {e0}), but the wind's own noise then raises the noise floor at 4 ticks about {fl:.0f} times (median); the "
+        "types under that background wind were not re-measured.", n, ["wind_probe_sigma_w1.json", "wind_probe.json"])
     r1, r8 = cg["recheck_cpu.json"], cg["recheck_cpu_first8.json"]
     n = dict(same=sum(w["cpu_type"] == w["gpu_type"] for w in r1["worlds"] + r8["worlds"]), tot=len(r1["worlds"]) + len(r8["worlds"]),
              ident=r8["values_identical"], cmp=r8["values_compared"], worst=r1["max_rel_diff"],

@@ -1,46 +1,20 @@
 # PROGRESS (study foundry, round 5) -- kept for restarts
 
-Updated 2026-11-10 06:09 UTC (instance 1; the study started at 03:40 UTC).
+Updated 2026-11-10 06:35 UTC (instance 1; started 03:40 UTC).
 
-## Done
-- Worktree /home/user/wt/foundry (branch wt-foundry, sparse research/alife/vecworld).
-- Family code `tnca.py` (affinity transport NCA, vw.Level, wind channel, prior, weight statistics),
-  `screen.py` (cheap certificates, generic in the world), `criteria.py` (types, gates, score),
-  `check_tnca.py` (CPU checks, all pass on CPU; results/checks.json to be written by a final run),
-  `job.py` + `job.sh` (the GPU job), `analyze.py` (job outputs -> results/analysis.json),
-  `fetch.sh` (unpack a job from origin/gpu-jobs into work/<job_id>), `watch.sh` (poll a job).
-- CPU pilots on prior seed 1 (scratch only, 24 draws x 4 members x 170 ticks): 14 uniform, 5 frozen,
-  5 active (1 mover). First law (raw cell as a feature) had a checkerboard instability in 7 of 16 draws;
-  second law (s1 as a feature) gave 2 px spots; current law: features s2, s3, s4, crowding on s1.
-- Thresholds in criteria.py fixed from that pilot before any GPU run (GPU screen uses prior seed 2026).
-- job.sh passed end to end on CPU at tiny size from a git archive of the request paths (twice, exit 0).
+## State: FINISHED
+- Both GPU jobs are done and analysed; nothing is running or queued; no watcher is needed.
+  - r5-foundry-001: done, exit 0, H100 80GB (datacrunch), 0.225 pod hours, billed $0.9246.
+  - r5-foundry-002: done, exit 0, H200 141GB (nebius), 0.280 pod hours, billed $1.5503.
+  - Total billed $2.4749 of $25.
+- Deliverables committed and pushed: results/summary.json (35 claims with sources, 14 verdicts), README.md,
+  results/interpretation.json, results/analysis.json, results/analysis_r2.json, results/per_draw.json.gz,
+  results/fig/ (posters, 6 GIFs, charts), results/jobs/ (status, reviews, progress, ledger rows), CPU results
+  (checks.json, wind_probe*.json, longrun.json, recheck_cpu*.json, cpu_vs_gpu.json).
+- The Mac's reviews were read (results/jobs/<job>/review.md); the minor points of the first are fixed in job.py /
+  analyze.py, the info point of the second (read only recorded chunks) in analyze2.py.
 
-## Job 1 DONE
-- r5-foundry-001: done, exit 0, H100 80GB (datacrunch), 05:10:56-05:21:36 UTC, billed $0.9246 (status.json:cost).
-  8192 draws screened in 376 s (74,700 member-ticks/s). Outputs fetched to work/r5-foundry-001 (scratch, not in git);
-  results/analysis.json, results/per_draw.json.gz, results/fig/ (posters, 6 GIFs, charts), results/jobs/r5-foundry-001/
-  committed. Types: uniform 65.2%, frozen 19.7%, active 15.1% (movers 3.2%); candidates (all four gates) 88 = 1.07%.
-  All 24 certified worlds pass every gate again. Gliders by the same estimator: mover, ceilings 0.99/0.96/0.83/0.47/0.20/0.02.
-
-## Running
-- GPU request r5-foundry-002 (cap $10.20, max 1.25 h, ref ee9648d4e): PUSHED 05:34 UTC. Arms: enrich (prospective
-  test of the weights-only predictor: 3072 selected + 1024 control draws of prior seed 2027; predictions in sel_r2.json),
-  late (2000 draws with a 2000-tick burn-in), cert (the 88 candidates at certification size), sigma010, sigma100.
-  Watcher: `bash watch.sh r5-foundry-002`.
-
-- 06:00:17 UTC: r5-foundry-002 RUNNING on an H200 (nebius, $6.69/h); review: fine to run (analyze2.py now reads only
-  the chunks recorded in job2_state.json, as the review asked). Expected end about 06:16 UTC.
-- CPU follow-ups DONE and committed: results/wind_probe.json (aimed 200-nat commands move the block view by only
-  0.0002-0.023 V0 at 4 ticks on draws 1672, 4470, 262, 60: the wind is weak on the candidates), results/longrun.json
-  (those four stay active over 2000 ticks), results/recheck_cpu.json + cpu_vs_gpu.json (12 of 12 draws same type on
-  CPU and H100; 8 identical in every stored value).
-
-## Next step
-1. (done) CPU follow-ups.
-2. When job 2 is done: `bash fetch.sh r5-foundry-002`; `python -B analyze2.py work/r5-foundry-002/out`; `python -B figs2.py`.
-   If it failed: logs under work/r5-foundry-002/logs; fix, CPU test (FOUNDRY_SIZE=tiny bash job2.sh from a git archive),
-   resubmit as r5-foundry-003 (caps in total <= $25; billed so far $0.92).
-3. `python -B make_summary.py` (needs results/interpretation.json, to write by hand from the analyses), README.md
-   (replace the DRAFT status with the results), report; remove the worktree and scratch.
-
-Budget: $25 total; billed $0.92 (job 1); job 2 cap $10.20.
+## If a restarted instance finds this
+Nothing is left but the report (from results/interpretation.json and README.md) and removing the worktree
+(/home/user/wt/foundry, branch wt-foundry) and the scratch folder (scratchpad/foundry). To rebuild the results:
+`bash fetch.sh r5-foundry-001 && bash fetch.sh r5-foundry-002`, then the commands at the end of README.md.

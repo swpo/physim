@@ -44,8 +44,8 @@ def make_probe(fam=TN.FAM):
 
     def probe(th, key, dirs):
         ks = jax.vmap(lambda i: jax.random.fold_in(key, i))(jnp.arange(NS))
-        x = jax.vmap(lambda k: TN.init(th, jax.random.fold_in(k, 1)))(ks)
-        free = lambda x, k, t: jax.vmap(lambda xx, kk: TN.tick_free(th, xx, Noise(kk, t)))(x, k)
+        x = jax.vmap(lambda k: TN.init(th, jax.random.fold_in(k, 1), fam))(ks)
+        free = lambda x, k, t: jax.vmap(lambda xx, kk: TN.tick_free(th, xx, Noise(kk, t), fam))(x, k)
         kb = jax.vmap(lambda k: jax.random.fold_in(k, 2))(ks)
         x, _ = jax.lax.scan(lambda x, t: (free(x, kb, t), None), x, jnp.arange(50))
         kd = jax.vmap(lambda k: jax.random.fold_in(k, 3))(ks)
@@ -75,7 +75,7 @@ def make_probe(fam=TN.FAM):
         def one(x0, k, u):
             def body(x, tu):
                 t, ut = tu
-                xn = TN.tick(th, x, Noise(k, t), ut)
+                xn = TN.tick(th, x, Noise(k, t), ut, fam)
                 return xn, TN.block_view(xn)
             return jax.lax.scan(body, x0, (jnp.arange(T_RUN), u))[1]
         Y = jax.vmap(lambda x0, kk, uu: jax.vmap(lambda k, u: one(x0, k, u))(kk, uu))(x, keys, U)   # (NS, n_prog, T, Q, G, G)
@@ -90,8 +90,10 @@ def main():
     ap.add_argument("--draws", required=True)
     ap.add_argument("--prior-seed", type=int, default=2026)
     ap.add_argument("--out", default=os.path.join(HERE, "results", "wind_probe.json"))
+    ap.add_argument("--sigma-w", type=float, default=None, help="another wind noise level (exploration of the channel)")
     a = ap.parse_args()
-    fam = TN.FAM
+    import dataclasses
+    fam = TN.FAM if a.sigma_w is None else dataclasses.replace(TN.FAM, sigma_w=a.sigma_w)
     probe = make_probe(fam)
     rng = np.random.default_rng(77)
     names = ["base", "twin"] + [f"{k}_{int(B)}" for B in BUDGETS for k in ("blind", "aimed")]

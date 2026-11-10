@@ -31,6 +31,18 @@ def get(d, path):
     return d
 
 
+def ledger_hours(job):
+    """Pod hours of the job from the runner's ledger (results/jobs/ledger_rows.md, copied from origin/gpu-jobs:LEDGER.md)."""
+    p = os.path.join(RES, "jobs", "ledger_rows.md")
+    if not os.path.exists(p):
+        return None
+    for line in open(p):
+        c = [x.strip() for x in line.split("|")]
+        if len(c) > 5 and c[1] == job:
+            return float(c[5])
+    return None
+
+
 def job_info(job):
     st = load(os.path.join("jobs", job, "status.json"))
     if st is None:
@@ -48,6 +60,7 @@ def job_info(job):
                 finished_at=st.get("finished_at"),
                 run_hours=round((b - a).total_seconds() / 3600, 3) if a and b else None,
                 ref=(st.get("bundle") or {}).get("ref"), review=(st.get("review") or {}).get("summary"),
+                pod_hours_ledger=ledger_hours(job),
                 source=f"origin/gpu-jobs:jobs/{job}/status.json (copy: results/jobs/{job}/status.json)")
 
 
@@ -159,6 +172,11 @@ def main():
               "1, 2, 4, 8, 16 ticks, and E / (2 D0) against the noise floor",
               [dict(draw=w["draw"], noise_floor_D0=w["noise_floor_D0"], **{k: w["programs"][k] for k in ("blind_200", "aimed_200", "aimed_800")})
                for w in d["worlds"]], "local CPU", "results/wind_probe.json", "worlds")
+    d = load("wind_probe_sigma_w1.json")
+    if d:
+        claim("X4", "exploration (CPU): the same probe with the wind noise at 1.0 instead of 0.25",
+              [dict(draw=w["draw"], noise_floor_D0=w["noise_floor_D0"], **{k: w["programs"][k] for k in ("blind_200", "aimed_200", "aimed_800")})
+               for w in d["worlds"]], "local CPU", "results/wind_probe_sigma_w1.json", "worlds")
     d = load("cpu_vs_gpu.json")
     if d:
         claim("X2", "CPU (this container) against the H100 of job 1: the screen's descriptors of 12 draws with the same keys",
@@ -175,6 +193,10 @@ def main():
     interp = load("interpretation.json")
     if interp:
         out["interpretation"] = interp
+    js = out["jobs"]
+    out["gpu_total"] = dict(pod_hours=round(sum(j["pod_hours_ledger"] or 0 for j in js), 3),
+                            billed_usd=round(sum(j["billed_usd"] or 0 for j in js), 4), budget_usd=25.0,
+                            source="results/jobs/ledger_rows.md (pod hours) and results/jobs/<job>/status.json:cost.billed_usd")
     with open(os.path.join(RES, "summary.json"), "w") as f:
         json.dump(out, f, indent=1, default=float)
     print("claims", len(C), "->", os.path.join(RES, "summary.json"), os.path.getsize(os.path.join(RES, "summary.json")), "bytes")
