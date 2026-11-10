@@ -14,6 +14,12 @@
   "job_id": "r5-slots-004",
   "message": "request received",
   "pods": [],
+  "review": {
+    "at": "2026-11-10T02:05:32Z",
+    "file": "jobs/r5-slots-004/review.md",
+    "sha256": "b6eb25065fbaec41a82876e1aa24222969bab6b8b808256d5749f3de096dfac6",
+    "summary": "Fine to run: the 2^31 blocker is fixed (largest tensor 6.0e8, checked at compile level) and all pilot points are addressed. 1 minor: the last trained config loses its objective values. 6 info."
+  },
   "state": "received",
   "updated_at": "2026-11-10T01:40:36Z"
 }
