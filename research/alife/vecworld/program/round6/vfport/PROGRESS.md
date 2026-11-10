@@ -32,7 +32,8 @@
 - Left on the machine by this role: nothing of the pilot (no container, no process); the Docker daemon, which I
   started after a restart of the container and did not stop; the three images untouched; files `/tmp/vf-port-*`
   that verifiers never removes (one per rollout, as the runbook says: not deleted by pattern). Scratch `vfr3fix1`
-  deleted and worktree `wt-vfr3fix1` removed after the last push.
+  deleted except `dockerd.log`, the log of the running daemon (1.2 MB); worktree `wt-vfr3fix1` removed after the
+  last push. Final commit of the role's work: 63abe1fd0 (this note is one commit later).
 - Next step (exact), for the coordinator: a re-audit of round 3. To read: `git diff af767adbd..HEAD --
   research/alife/vecworld/program/round6/vfport` (the pinned diff is in the 18 files named above),
   `RUNBOOK_MAC.md`, `results/host_safety_round3.json`. To repeat the checks in the cloud container, from this
