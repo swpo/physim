@@ -5060,7 +5060,7 @@
    },
    {
     "id": "cost",
-    "verdict": "The family is cheap: 74676 member-ticks/s on an H100 (85396 on an H200) in float64, so 8192 draws with full certificates took 376 s; the gliders world ran at 2035 member-ticks/s by the same code on the same pod (compile included), about 37 times slower.",
+    "verdict": "The family is cheap: 74676 member-ticks/s on an H100 (85396 on an H200) in float64, so 8192 draws with full certificates took 376 s; the gliders world ran at 2035 member-ticks/s by the same code on the same pod with its compile time included (60.5 s in all for 8 runs at certification size; 1412 at the screen's size), so it is at most about 37 times slower per member-tick: the foundry rate is the median of chunks 1-63 without compile (71358 with it), the gliders steady rate was not measured here, and a gliders member-tick is 20 substeps on 128 x 128 against 4 substeps on 64 x 64.",
     "numbers": {
      "rate": 74676.31462683181,
      "secs": 376.08741211891174,
@@ -5103,7 +5103,7 @@
    },
    {
     "id": "transient",
-    "verdict": "Most early activity is a transient: of the 1238 worlds active at ticks 50-290 only 37.1% are still active at ticks 2000-2240 and 61.7% have frozen; 30.2% of the movers are still movers and 32 of the 88 candidates (36.4%) still pass every gate (10 other active worlds became candidates). Frozen and uniform worlds stay as they are (4.7% and 3.7% of 381 each changed type; 1.6% of the frozen sample became active). Long-lived activity is therefore about 5.6% of the prior from early-active worlds (plus about 0.3% from early-frozen ones) and long-lived candidates about 0.51%: the screen needs a late-time gate.",
+    "verdict": "Most early activity is a transient: of the 1238 worlds active at ticks 50-290 only 37.1% are still active at ticks 2000-2240 and 61.7% have frozen; 30.2% of the movers are still movers and 32 of the 88 candidates (36.4%) still pass every gate (10 other early-active worlds and 1 of the 381 sampled early-frozen worlds became candidates; of the 88, 65 are still active, 45 of them movers, and 23 have frozen). Frozen and uniform worlds stay as they are (4.7% and 3.7% of 381 each changed type; 1.6% of the frozen sample became active). Long-lived activity is therefore about 5.6% of the prior from early-active worlds (plus about 0.3% from early-frozen ones) and long-lived candidates about 0.5-0.6% (42 of 8192 = 0.51% from early-active worlds; 0.56% when the one early-frozen world is weighted by 1612/381; this is one late measurement at the screen's size, and 29 worlds = 0.35% pass at the screen, at certification size and late): the screen needs a late-time gate.",
     "numbers": {
      "act": 0.37075928917609047,
      "fro": 0.617124394184168,
@@ -5151,7 +5151,7 @@
    },
    {
     "id": "weights_prospective",
-    "verdict": "The predictor holds prospectively. Fitted on job 1 and applied to the weight statistics of a fresh pool of 32768 draws (another prior seed), its best 9.4% (3072 draws) contain 10.5% +- 0.6% candidates (323); predicted before the run: 9.1%. Movers 21.4% (predicted 19.3%), active 62.8% (60.0%), structured 94.0% (95.6%). The 1024 control draws, a random sample of the unselected draws, contain 0.49% (5 worlds). Weighting the two arms, the pool's candidate rate is 1.43% +- 0.20% (job 1: 1.07%); the selected draws are enriched 7.4 times and hold 69% of all candidates.",
+    "verdict": "The predictor holds prospectively. Fitted on job 1 and applied to the weight statistics of a fresh pool of 32768 draws (another prior seed), its best 9.4% (3072 draws) contain 10.5% +- 0.6% candidates (323); predicted before the run: 9.1%. Movers 21.4% (predicted 19.3%), active 62.8% (60.0%), structured 94.0% (95.6%). The 1024 control draws, a random sample of the unselected draws, contain 0.49% (5 worlds). Weighting the two arms, the pool's candidate rate is 1.43% +- 0.20% (job 1: 1.07%); the selected draws are enriched 7.4 times and hold 69% of all candidates. Checker: 95% intervals from a binomial bootstrap of the two arms are 5.6 to 9.8 for the enrichment and 53% to 92% for the share of candidates held by the selected draws (the control arm holds only 5 candidates). The observed 10.5% is 1.2 standard errors above the prediction once the prediction's own error is counted (70 of 768 out-of-fold draws).",
     "numbers": {
      "pool": 32768,
      "share": 0.09375,
@@ -5182,7 +5182,7 @@
    },
    {
     "id": "candidates",
-    "verdict": "The screen's selection replicates: all 24 of the 24 top worlds pass every gate again at certification size (16 members, 32 test states, fresh keys), and 71 of all 88 candidates do (80.7%). 29 candidates pass at the screen, at certification size and at ticks 2000-2240; 7 of them have a closure profile like the gliders world's (c(1) >= 0.95, 0.25 <= c(8) <= 0.75, c(32) <= 0.5) with unchanged statistics at late time: draws 4470, 4186, 262, 7567, 6845, 1672, 3078 of prior seed 2026.",
+    "verdict": "The screen's selection replicates: all 24 of the 24 top worlds pass every gate again at certification size (16 members, 32 test states, fresh keys), and 71 of all 88 candidates do (80.7%). 29 candidates pass at the screen, at certification size and at ticks 2000-2240; 7 of them have ceilings of the cheap ridge in a band around the gliders world's (c(1) >= 0.95, 0.25 <= c(8) <= 0.75, c(32) <= 0.5; the rule was written after job 1, when the certification profiles of these 7, all among the top 24, were already known) with similar statistics at late time: draws 4470, 4186, 262, 7567, 6845, 1672, 3078 of prior seed 2026. 'Similar' was not tested: by the same rule 6 of the 7 are in the band at late time (draw 3078 has c(8) = 0.78), and late against certification c(8) differs by up to 0.11, c(32) by up to 0.21, the body count by up to 13% and the events by up to 28%. Of the 71, 23 are job 1's top-24 runs again (same keys; all 6923 stored values identical on the H200), so the new measurements are 48 of the other 65 candidates (74%).",
     "numbers": {
      "n": 24,
      "both": 24,
@@ -5202,7 +5202,7 @@
    },
    {
     "id": "gliders",
-    "verdict": "The gliders world, measured by the same code, is typed a mover world in 16 of 16 runs and passes the closure and structures gates. Its ceilings with the cheap ridge at 1/2/4/8/16/32 ticks are 0.989 / 0.959 / 0.829 / 0.480 / 0.213 / 0.031 (8 runs at certification size) against the published 0.988 / 0.955 / 0.800 / 0.371 / 0.126 / 0.007 (linear predictors) and 0.991 / 0.967 / 0.849 / 0.495 / 0.136 / 0.078 (best of all predictors); oracle variance at 8 ticks 0.0100 (published 0.0091); 7.6 bodies (published 7.4), radius 6.5 px, 1.73 px/tick, 45 fusions + fissions per 100 ticks (published 45); its plug-in loss with theta' = theta is -0.0008 +- 0.0004 (the null of that estimator). So the estimator reproduces the reference, and foundry draw 4470 sits next to it: ceilings at 1/4/8/16/32 ticks 0.991 / 0.796 / 0.480 / 0.272 / 0.193, oracle variance 0.0013, 17 bodies of radius 2.3 px at 0.45 px/tick, 62 events per 100 ticks, noise-twin doubling 2.4 ticks (gliders 1.8).",
+    "verdict": "The gliders world, measured by the same code, is typed a mover world in 16 of 16 runs and passes the closure and structures gates. Its ceilings with the cheap ridge at 1/2/4/8/16/32 ticks are 0.989 / 0.959 / 0.829 / 0.480 / 0.213 / 0.031 (8 runs at certification size) against the published 0.988 / 0.955 / 0.800 / 0.371 / 0.126 / 0.007 (linear predictors) and 0.991 / 0.967 / 0.849 / 0.495 / 0.136 / 0.078 (best of all predictors); oracle variance at 8 ticks 0.0100 (published 0.0091); 7.6 bodies (published 7.4), radius 6.5 px, 1.73 px/tick, 45 fusions + fissions per 100 ticks (published 45); its plug-in loss with theta' = theta is -0.0008 +- 0.0004 (the null of that estimator). So the estimator reproduces the reference's oracle variance (within 10% at 8 ticks) and its ceilings at 1-4 ticks (within 0.03); at 8-32 ticks the cheap ridge sits 0.02 to 0.11 above the published linear set, which the published caveat allows (lower bounds, loosest at 8-16 ticks). The bodies, speed and events quoted here are from the 16 runs at the screen's size (at certification size: 7.4 bodies, 1.76 px/tick, 46 events). Foundry draw 4470 sits next to it in the ceilings only: ceilings at 1/4/8/16/32 ticks 0.991 / 0.796 / 0.480 / 0.272 / 0.193, oracle variance 0.0013, 17 bodies of radius 2.3 px at 0.45 px/tick, 62 events per 100 ticks, noise-twin doubling 2.4 ticks (gliders 1.8). Checker: draw 4470's oracle variance is 8 times lower than the gliders world's at 8 ticks and 11 times lower at 32 ticks (0.028 against 0.315), so its ceiling falls because the linear ridge fails, not because the world becomes unpredictable; at 32 ticks the oracle variance of the 7 shortlisted worlds is 0.008 to 0.35 (5 of 7 below 0.08).",
     "numbers": {
      "c": "0.989 / 0.959 / 0.829 / 0.480 / 0.213 / 0.031",
      "pub": "0.988 / 0.955 / 0.800 / 0.371 / 0.126 / 0.007",
@@ -5237,7 +5237,7 @@
    },
    {
     "id": "sensitivity",
-    "verdict": "The hidden weights matter for prediction. On the 24 certified worlds, predicting 8 ticks ahead with a neighbour's weights costs (median) 0.0074, 0.078 and 0.39 of the climatological variance for weight neighbours at 3%, 10% and 30%, and 0.160 when the scalars move by 10% of their prior range as well, against an oracle variance of 0.0020: 5 and 45 times the oracle's own error at 3% and 10% (all 88 candidates at 10%: 29 times).",
+    "verdict": "The hidden weights matter for prediction. On the 24 certified worlds, predicting 8 ticks ahead with a neighbour's weights costs (median) 0.0074, 0.078 and 0.39 of the climatological variance for weight neighbours at 3%, 10% and 30%, and 0.160 when the scalars move by 10% of their prior range as well, against an oracle variance of 0.0020: 5 and 45 times the oracle's own error at 3% and 10% (all 88 candidates at 10%: 29 times). Checker: these 24 worlds were chosen by a score that rewards the plug-in loss, and every candidate passed the sensitivity gate. Without that selection, at the screen (10% neighbour), the median ratio is 5.0 over all 1238 active worlds (10% and 90% quantiles 0.23 and 66) and 13.5 over the 265 movers; 59% of the active worlds pass the sensitivity gate.",
     "numbers": {
      "n": 24,
      "vo": 0.0019996280316263437,
@@ -5257,7 +5257,7 @@
    },
    {
     "id": "noise_level",
-    "verdict": "The type belongs to the weights, not to the public noise level: of 2048 draws, 99.4% keep their type (uniform / frozen / active) when the logit noise goes from 0.3 to 0.1 and 93.4% when it goes to 1.0 (there 73 of 414 frozen worlds become active fields); 70 and 64 of 73 movers stay movers; candidates 24 -> 25 and 29.",
+    "verdict": "The coarse type mostly belongs to the weights, not to the public noise level: of 2048 draws, 99.4% keep their coarse type (uniform / frozen / active) when the logit noise goes from 0.3 to 0.1 and 93.4% when it goes to 1.0 (exact type, with the three active sub-types: 99.2% and 91.9%). At 1.0, 88 of 414 frozen worlds (21%) become active (73 fields, 12 bodies, 3 movers) and the active share rises from 15.4% to 19.5%, so the boundary between frozen and active does depend on the noise level; 70 and 64 of 73 movers stay movers; candidates 24 -> 25 and 29.",
     "numbers": {
      "n": 2048,
      "a": 0.994140625,
@@ -5278,7 +5278,7 @@
    },
    {
     "id": "wind",
-    "verdict": "The wind channel is exact but weak. Its charge is exact by construction and checks numerically (12.48 +- 0.08 nats by Monte Carlo against 12.37 charged); a unit command on every block (512 nats per tick) moves passive matter by 0.25 and 0.36 px per tick. But on four top worlds (draws 1672, 4470, 262, 60) a 4-tick command of 200 nats aimed at the densest block changes the block view by only 0.0002 to 0.023 of its variance 4 ticks later (1.6 to 7.9 times the noise floor), and a blind command of 200 nats stays below the floor (0.09 to 0.28 times). 'Actions matter' is not established for these worlds; the channel needs a redesign and its own certificate.",
+    "verdict": "The wind channel's charge is exact for the wind coefficients and an upper bound for the level-0 path; its effect is small against the total variance, but not always against the prediction error. The Monte Carlo check (12.48 +- 0.08 nats against 12.37 charged) is of the Gaussian shift of the coefficients a = u + noise, not of the level-0 path, whose KL is at most the charge (data processing); a unit command on every block (512 nats per tick) moves passive matter by 0.25 and 0.36 px per tick. But on four top worlds (draws 1672, 4470, 262, 60) a 4-tick command of 200 nats aimed at the densest block changes the block view by only 0.0002 to 0.023 of its variance 4 ticks later (1.6 to 7.9 times the noise floor), and a blind command of 200 nats stays below the floor (0.09 to 0.28 times). Checker: against the cheap predictor's own error at 4 ticks (certification size, job 2) the aimed 200-nat command is about 0.33 (draw 1672), 0.25 (60), 0.016 (4470) and 0.001 (262), and 3 to 18 times the oracle variance; the blind command is 0.0001 to 0.016 of the cheap predictor's error and 0.2 to 0.8 of the oracle variance. These are upper bounds on what an input-blind predictor loses (the paired difference includes chaotic growth); round 4 found about 0.2 V_best for the gliders wind under the exam's program mix. So blind programs are weak on all four worlds and aimed programs depend on the world. 'Actions matter' is not established for these worlds (4 worlds, 8 states each, CPU); whether the channel needs a redesign is open until the program's own certificate is run (the loss of an input-blind predictor under the exam's program mix).",
     "numbers": {
      "charge": 12.373414385647978,
      "mc": 12.476607444172537,
@@ -5315,7 +5315,7 @@
    },
    {
     "id": "platform",
-    "verdict": "Platform: float64. On the H100 a rerun of the same compiled batch is bit-identical (True) and vmap equals single-world runs exactly; the four certification runs of job 1 returned identical main-run numbers. The screen of 12 draws repeated on this container's CPU with the same keys gives the same type 12 of 12 times; for 8 non-chaotic draws all 608 of 608 stored values are identical, for 4 movers they differ by at most 0.8%. Unlike the gliders world (FFT, scatter), this law is built from elementwise operations and shifts only.",
+    "verdict": "Platform: float64. On the H100 a rerun of the same compiled batch is bit-identical (True) and vmap equals single-world runs exactly; the four certification runs of job 1 returned identical main-run numbers. The screen of 12 draws repeated on this container's CPU with the same keys gives the same type 12 of 12 times; for 8 non-chaotic draws all 608 of 608 stored values are identical, for 4 movers they differ by at most 0.8%. Unlike the gliders world (FFT, scatter), this law is built from elementwise operations and shifts only. Checker: the certification runs of 23 worlds on the H100 (job 1) and on the H200 (job 2) with the same keys agree in all 6923 stored values, and a CPU rerun of draws 6845 and 3078 at the screen's size matches the H100 in 592 of 602 stored values (descriptors and closure profiles within 3e-4, the worst being kind_drift). The 8 draws called non-chaotic are 7 uniform worlds and 1 frozen world.",
     "numbers": {
      "same": 12,
      "tot": 12,
@@ -5346,9 +5346,9 @@
   ],
   "decides": [
    "A random weights-as-law family is viable and cheap: a 10^5-draw screen with certificates is about 77 minutes of one H100 (about $6.4 at $5.02/h), not the 20-80 GPU-hours DESIGN.md E2 budgeted.",
-   "DESIGN.md E2's rule (gate pass rate >= 10%: random families suffice; <= 1%: invest in search): the pass rate is about 1% early and about 0.5% once transients are excluded, so plain random draws do not suffice, but no search is needed either: the weights-only predictor concentrates 69% of the candidates in 9.4% of the draws at no simulation cost, and screening is cheap enough to brute-force the rest.",
+   "DESIGN.md E2's rule (gate pass rate >= 10%: random families suffice; <= 1%: invest in search): the pass rate is about 1% early and about 0.5% once transients are excluded, which is E2's '<= 1%' branch. That no search is needed is this study's argument from cost, not E2's rule: the weights-only predictor concentrates 69% (95% interval 53% to 92%) of the candidates in 9.4% of the draws at no simulation cost, and screening is cheap enough to brute-force the rest. E2's consequence still holds: an exam world is then a draw conditioned on passing a public screen, not a fresh draw from the prior, so the selection leak of DESIGN.md section 5 applies. The gates are this study's (criteria.py), not E2's descriptors.",
    "Every screen must carry a late-time gate (a 2000-tick burn-in costs 4.6 times the short screen per draw; applied to the 15% early-active draws only it adds about 69%).",
-   "Seven foundry worlds are ready to be certified as exam candidates next to the gliders world (same closure band at level 1, moving and interacting bodies, stationary, strongly weight-sensitive); what they lack is an input channel that matters.",
+   "Seven foundry worlds are ready to be certified as exam candidates next to the gliders world (cheap-ridge ceilings in a band around the gliders world's, moving and interacting bodies, still active with similar statistics at ticks 2000-2240, strongly weight-sensitive). Stationarity beyond that window is not tested (in the CPU runs of 2000 ticks draw 262's net speed fell from 0.83 to 0.65 px/tick and draw 1672's bodies from 4.1 to 3.4), the oracle variance is far below the gliders world's in 5 of the 7, and 'actions matter' is not established for them.",
    "Publishing the weights-only predictor is safe only with the published criteria: selection narrows the posterior on theta (DESIGN.md section 5); here it is a public function of theta by construction."
   ],
   "never_reuse_as_exam": "Prior seeds 1, 2026 and 2027 with run seed 5150 are pilots: their weights are a public function of (seed, index) and hidden parameters of several draws are printed in these results. They must never be reused as exam instances; an exam draws theta from a secret seed."
@@ -5358,5 +5358,132 @@
   "billed_usd": 2.4749,
   "budget_usd": 25.0,
   "source": "results/jobs/ledger_rows.md (pod hours) and results/jobs/<job>/status.json:cost.billed_usd"
+ },
+ "checker": {
+  "who": "independent checker of round-5 study foundry (worktree wt-foundrychk), 10 Nov 2026; CPU only, about 5 CPU-minutes, no GPU job",
+  "inputs": "origin/gpu-jobs:jobs/r5-foundry-001 and -002 (status.json, request.json, logs, out/screen, out/cert, out/late, out/enrich, out/sigma010, out/sigma100, out/wstats.npz, out/thetas_scalars.npz, out/ref_gliders*.npz, out/controls_diffusion.npz, job_state.json, job2_state.json); code read: tnca.py, screen.py, criteria.py, job.py, analyze.py, analyze2.py, select_enriched.py, make_job2_inputs.py, wind_probe.py, check_tnca.py; git history of the study folder; results/wind_probe*.json, longrun.json, cpu_vs_gpu.json, checks.json; vw1/fresh/closure/results/summary.json; track1/DESIGN.md E2",
+  "verdict": "No value in the 35 claims is wrong: every headline number was reproduced from the saved GPU outputs with the checker's own code. One estimate in the verdicts left a stratum out (long-lived candidates: 0.51% becomes 0.5-0.6%). Ten wordings in the verdicts and decisions said more than was measured and are replaced, and four sentences are added (edits). What stands: the family is valid and cheap; 1.07% of the prior passes the four gates early and about half of that at ticks 2000-2240; a weights-only score fitted on job 1 finds candidates prospectively; the two GPUs and the CPU agree. What does not stand as worded: 'unchanged statistics', 'stationary', 'the gliders closure band' as a likeness of the worlds, 'the wind needs a redesign', and 'no search is needed' as a reading of E2's rule.",
+  "verified": {
+   "job_records": "r5-foundry-001: datacrunch NVIDIA H100 80GB HBM3 (sysinfo), exit 0, billed 0.9246 USD at 5.0199 USD/h, pod requested 05:07:44 and terminated 05:21:16 UTC (0.225 h). r5-foundry-002: nebius NVIDIA H200, exit 0, billed 1.5503 USD at 6.69 USD/h, 05:57:45 to 06:14:32 UTC (0.280 h). Total 0.505 pod hours, 2.4749 USD billed. The billed amounts are 18% and 17% below the runner's own rate x time figures (1.13 and 1.87 USD, status.json:cost.conservative_usd); they are the provider's figures as recorded. Both reviews: fine to run. Float64, JAX 0.12.0.1, numpy 2.5.4 on both pods.",
+   "choices_before_results": "criteria.py last changed in commit 6ab079d55 (04:08 UTC), 25 minutes before the request of job 1; tnca.py, screen.py and criteria.py are unchanged between the two job refs and HEAD. sel_r2.json (the selected and control draws and the predicted yields) is unchanged since commit ee9648d4e, made before job 2 ran. The gliders-like band rule first appears in analyze2.py after job 1's results.",
+   "recomputed_from_gpu_outputs": "With the checker's own reading of the declared rules (not criteria.py): types 5342 / 1612 / 653 / 320 / 265 and no other type; gates viable 1238, closure 253, structures 201, sensitive 727, all four 88 (1.55% without conversion, 0.57% with); validity (finite, mass drift 3.0e-14 and 1.7e-13 late, largest density 48, participation ratio at least 0.015); 74676 member-ticks/s (median of chunks 1-63), 376 s; 32 of 32 controls uniform; AUC of lin_growth for structure 0.9666, rule precision 0.875 and recall 0.916; cross-validated AUC with all weight statistics 0.984 / 0.918 / 0.943 for structure / movers / candidates and 0.47-0.53 for the weight norms (the checker's 10 folds, another seed); certification of the top 24: 24 candidates, 23 of them candidates at the screen; plug-in loss over oracle variance at 8 ticks, medians 5.4 / 45 / 225 / 76 for the 3%, 10% and 30% weight neighbours and the 10% neighbour with scalars; gliders ceilings 0.989 / 0.959 / 0.829 / 0.480 / 0.213 / 0.031, oracle variance at 8 ticks 0.0100 +- 0.0004, 16 of 16 movers, null plug-in loss -0.0008; late transition table (all 20 non-zero cells), 459 of 1238 still active, 764 frozen, 32 of 88 candidates, 80 of 265 movers; certification of the 88: 71 candidates (gates 88 / 78 / 77 / 84); shortlist 29, of which 7 in the band; enrichment arms 323 of 3072 and 5 of 1024, pool rate 1.43% +- 0.20%, 7.4 times, 69%; noise arms 99.4% and 93.4% (coarse type), candidates 24 -> 25 and 29; wind numbers as in wind_probe*.json.",
+   "reruns_on_this_cpu": "check_tnca.py rerun: every value of results/checks.json reproduced exactly (K1-K7). The screen of draws 6845 and 3078 with the job's thetas and keys: 592 of 602 stored values identical to the H100's.",
+   "published_gliders_numbers": "quoted correctly from vw1/fresh/closure/results/summary.json (coarse.ceiling, ceiling_vw0_predictor_set_only, V_oracle)",
+   "secrets": "none committed: every theta is a public function of (prior seed, index) for seeds 1, 2026 and 2027, which summary.json and README.md mark as pilots never to be reused as exams"
+  },
+  "findings": {
+   "F1_what_one_measurement_is": "Per world the screen has 8 test states, 4 oracle replicas and 2 neighbour replicas, and 2 tracked members. The candidate gate repeats in 48 of the 65 candidates outside the top 24 when measured again at certification size with fresh keys (74%); the band rule holds for 13 of the 88 at the screen and 8 at certification size.",
+   "F2_late_time": "The late arm holds 43 candidates: 32 of the 88, 10 early-active non-candidates (7 fields, 2 bodies, 1 mover) and 1 of the 381 sampled early-frozen worlds (weight 1612/381 = 4.2). Weighted over the prior: 46 worlds, 0.56%; 0 of 381 sampled uniform worlds became active, which bounds that stratum only loosely by sampling alone. The late runs start from the screen's own initial states and first 50 ticks (same keys) and follow other noise after that.",
+   "F3_shortlist": "All 7 shortlisted worlds were among job 1's top 24, so their certification profiles were known when the band rule was written, and their certification values in job 2 are the same runs. The only new measurement of them in job 2 is the late one, at the screen's size. Late against certification for the 7: c(8) differs by 0.007 to 0.107, the body count by -13% to +12%, the events by -17% to +28%.",
+   "F4_likeness_to_gliders": "The 7 worlds match the gliders world in the ceilings of a linear ridge at 1-8 ticks. In oracle variance they do not: at 8 ticks 0.0001 to 0.003 for 5 of them against 0.0100, at 32 ticks 0.008 to 0.08 against 0.315 (draws 4186 and 7567 are at the gliders level or above at 8 ticks). In these 5 worlds the true simulator still predicts 92% to 99% of the block-view variance at 32 ticks, so the gap is the linear predictor's, and a learned level-1 predictor may close much of it; the ceilings are lower bounds, as the study says.",
+   "F5_wind": "wind_probe.py measures the paired displacement of the block view under a command against the same noise, in units of the total variance. Divided by the cheap predictor's error at 4 ticks (job 2, certification size; the two standardisations differ slightly) the aimed 200-nat command gives about 0.33, 0.25, 0.016 and 0.001 for draws 1672, 60, 4470 and 262. The program's criterion is the loss of an input-blind predictor in units of V_best under the exam's program mix; that was not measured.",
+   "F6_e2_rule": "DESIGN.md E2: pass rate >= 10%, random families suffice and each exam instance can draw a fresh theta; <= 1%, invest in search and the selection leak grows. The measured rate (1.07% +- 0.11% early, about 0.5% late) is in the second branch. The study's cost argument for brute force is sound (about 500 late-time candidates per 10^5 draws for about 11 USD with the late gate), but it is a different rule.",
+   "F7_hidden_numbers": "Of the 240 weights, the 32 that feed the two diagonal conversion logits never enter the law, and with kappa = 0 (half the prior) all 64 conversion weights and gr are inert. 'About 250 hidden numbers' is an upper count.",
+   "F8_sample_sizes_not_changed_here": "The wind verdicts rest on 4 worlds x 8 states on the CPU; the long CPU runs on 4 worlds; the CPU-GPU comparison on 12 draws, 8 of them uniform or frozen."
+  },
+  "consequences_for_the_conclusions": [
+   "Viable and cheap family: stands. The cost figure is for the short screen; with the late gate on the early-active draws it is about 1.7 times that.",
+   "E2: the pass rate is in the '<= 1%' branch. Brute-force screening is affordable, but exam worlds are then selected by a public screen, and the weights-only score shows how much that selection says about theta.",
+   "Late-time gate: stands (62% of early-active worlds are frozen at ticks 2000-2240). Nothing was measured after tick 2240.",
+   "Seven worlds for certification: they are long-lived movers with interacting bodies and strong weight sensitivity; their likeness to the gliders world is in the linear ceilings only, their stationarity is untested, and the wind's effect on them is unmeasured in the program's unit.",
+   "Wind: 'not established' stands. 'Too weak, redesign' is premature: run the input-visibility certificate first, with aimed and blind programs."
+  ],
+  "edits": [
+   {
+    "key": "interpretation.verdicts[cost].verdict",
+    "kind": "wording replaced",
+    "was": "the gliders world ran at 2035 member-ticks/s by the same code on the same pod (compile included), about 37 times slower.",
+    "now": "the gliders world ran at 2035 member-ticks/s by the same code on the same pod with its compile time included (60.5 s in all for 8 runs at certification size; 1412 at the screen's size), so it is at most about 37 times slower per member-tick: the foundry rate is the median of chunks 1-63 without compile (71358 with it), the gliders steady rate was not measured here, and a gliders member-tick is 20 substeps on 128 x 128 against 4 substeps on 64 x 64.",
+    "why": "the two rates are not like for like (compile excluded for the foundry, included for gliders)"
+   },
+   {
+    "key": "interpretation.verdicts[transient].verdict",
+    "kind": "wording replaced",
+    "was": "(10 other active worlds became candidates)",
+    "now": "(10 other early-active worlds and 1 of the 381 sampled early-frozen worlds became candidates; of the 88, 65 are still active, 45 of them movers, and 23 have frozen)",
+    "why": "the late arm holds 43 candidates, not 42: one comes from the frozen sample (checker.findings.F2)"
+   },
+   {
+    "key": "interpretation.verdicts[transient].verdict",
+    "kind": "wording replaced",
+    "was": "and long-lived candidates about 0.51%: the screen needs a late-time gate.",
+    "now": "and long-lived candidates about 0.5-0.6% (42 of 8192 = 0.51% from early-active worlds; 0.56% when the one early-frozen world is weighted by 1612/381; this is one late measurement at the screen's size, and 29 worlds = 0.35% pass at the screen, at certification size and late): the screen needs a late-time gate.",
+    "why": "the estimate left out the frozen stratum and rests on one noisy measurement per world (checker.findings.F2)"
+   },
+   {
+    "key": "interpretation.verdicts[weights_prospective].verdict",
+    "kind": "sentence added",
+    "added": "Checker: 95% intervals from a binomial bootstrap of the two arms are 5.6 to 9.8 for the enrichment and 53% to 92% for the share of candidates held by the selected draws (the control arm holds only 5 candidates). The observed 10.5% is 1.2 standard errors above the prediction once the prediction's own error is counted (70 of 768 out-of-fold draws).",
+    "why": "the two headline ratios were given without uncertainty; both rest on 5 control candidates"
+   },
+   {
+    "key": "interpretation.verdicts[candidates].verdict",
+    "kind": "wording replaced",
+    "was": "7 of them have a closure profile like the gliders world's (c(1) >= 0.95, 0.25 <= c(8) <= 0.75, c(32) <= 0.5) with unchanged statistics at late time: draws 4470, 4186, 262, 7567, 6845, 1672, 3078 of prior seed 2026.",
+    "now": "7 of them have ceilings of the cheap ridge in a band around the gliders world's (c(1) >= 0.95, 0.25 <= c(8) <= 0.75, c(32) <= 0.5; the rule was written after job 1, when the certification profiles of these 7, all among the top 24, were already known) with similar statistics at late time: draws 4470, 4186, 262, 7567, 6845, 1672, 3078 of prior seed 2026. 'Similar' was not tested: by the same rule 6 of the 7 are in the band at late time (draw 3078 has c(8) = 0.78), and late against certification c(8) differs by up to 0.11, c(32) by up to 0.21, the body count by up to 13% and the events by up to 28%. Of the 71, 23 are job 1's top-24 runs again (same keys; all 6923 stored values identical on the H200), so the new measurements are 48 of the other 65 candidates (74%).",
+    "why": "'unchanged' was not measured; the band rule is after the fact; 23 of the 71 are not new measurements (checker.findings.F3)"
+   },
+   {
+    "key": "interpretation.verdicts[gliders].verdict",
+    "kind": "wording replaced",
+    "was": "So the estimator reproduces the reference, and foundry draw 4470 sits next to it:",
+    "now": "So the estimator reproduces the reference's oracle variance (within 10% at 8 ticks) and its ceilings at 1-4 ticks (within 0.03); at 8-32 ticks the cheap ridge sits 0.02 to 0.11 above the published linear set, which the published caveat allows (lower bounds, loosest at 8-16 ticks). The bodies, speed and events quoted here are from the 16 runs at the screen's size (at certification size: 7.4 bodies, 1.76 px/tick, 46 events). Foundry draw 4470 sits next to it in the ceilings only:",
+    "why": "the agreement is partial, and one sentence mixed two run sizes (checker.findings.F4)"
+   },
+   {
+    "key": "interpretation.verdicts[gliders].verdict",
+    "kind": "sentence added",
+    "added": "Checker: draw 4470's oracle variance is 8 times lower than the gliders world's at 8 ticks and 11 times lower at 32 ticks (0.028 against 0.315), so its ceiling falls because the linear ridge fails, not because the world becomes unpredictable; at 32 ticks the oracle variance of the 7 shortlisted worlds is 0.008 to 0.35 (5 of 7 below 0.08).",
+    "why": "'sits next to it' holds for the ceilings, not for predictability by the oracle (checker.findings.F4)"
+   },
+   {
+    "key": "interpretation.verdicts[sensitivity].verdict",
+    "kind": "sentence added",
+    "added": "Checker: these 24 worlds were chosen by a score that rewards the plug-in loss, and every candidate passed the sensitivity gate. Without that selection, at the screen (10% neighbour), the median ratio is 5.0 over all 1238 active worlds (10% and 90% quantiles 0.23 and 66) and 13.5 over the 265 movers; 59% of the active worlds pass the sensitivity gate.",
+    "why": "the 5x and 45x are for worlds selected on the quantity measured"
+   },
+   {
+    "key": "interpretation.verdicts[noise_level].verdict",
+    "kind": "wording replaced",
+    "was": "The type belongs to the weights, not to the public noise level: of 2048 draws, 99.4% keep their type (uniform / frozen / active) when the logit noise goes from 0.3 to 0.1 and 93.4% when it goes to 1.0 (there 73 of 414 frozen worlds become active fields);",
+    "now": "The coarse type mostly belongs to the weights, not to the public noise level: of 2048 draws, 99.4% keep their coarse type (uniform / frozen / active) when the logit noise goes from 0.3 to 0.1 and 93.4% when it goes to 1.0 (exact type, with the three active sub-types: 99.2% and 91.9%). At 1.0, 88 of 414 frozen worlds (21%) become active (73 fields, 12 bodies, 3 movers) and the active share rises from 15.4% to 19.5%, so the boundary between frozen and active does depend on the noise level;",
+    "why": "'keep their type' is the coarse type; at noise 1.0 a fifth of the frozen worlds change class"
+   },
+   {
+    "key": "interpretation.verdicts[wind].verdict",
+    "kind": "wording replaced",
+    "was": "The wind channel is exact but weak. Its charge is exact by construction and checks numerically (12.48 +- 0.08 nats by Monte Carlo against 12.37 charged);",
+    "now": "The wind channel's charge is exact for the wind coefficients and an upper bound for the level-0 path; its effect is small against the total variance, but not always against the prediction error. The Monte Carlo check (12.48 +- 0.08 nats against 12.37 charged) is of the Gaussian shift of the coefficients a = u + noise, not of the level-0 path, whose KL is at most the charge (data processing);",
+    "why": "what the Monte Carlo check covers; 'weak' depends on the unit (checker.findings.F5)"
+   },
+   {
+    "key": "interpretation.verdicts[wind].verdict",
+    "kind": "wording replaced",
+    "was": "'Actions matter' is not established for these worlds; the channel needs a redesign and its own certificate.",
+    "now": "Checker: against the cheap predictor's own error at 4 ticks (certification size, job 2) the aimed 200-nat command is about 0.33 (draw 1672), 0.25 (60), 0.016 (4470) and 0.001 (262), and 3 to 18 times the oracle variance; the blind command is 0.0001 to 0.016 of the cheap predictor's error and 0.2 to 0.8 of the oracle variance. These are upper bounds on what an input-blind predictor loses (the paired difference includes chaotic growth); round 4 found about 0.2 V_best for the gliders wind under the exam's program mix. So blind programs are weak on all four worlds and aimed programs depend on the world. 'Actions matter' is not established for these worlds (4 worlds, 8 states each, CPU); whether the channel needs a redesign is open until the program's own certificate is run (the loss of an input-blind predictor under the exam's program mix).",
+    "why": "'needs a redesign' does not follow from the probe (checker.findings.F5)"
+   },
+   {
+    "key": "interpretation.verdicts[platform].verdict",
+    "kind": "sentence added",
+    "added": "Checker: the certification runs of 23 worlds on the H100 (job 1) and on the H200 (job 2) with the same keys agree in all 6923 stored values, and a CPU rerun of draws 6845 and 3078 at the screen's size matches the H100 in 592 of 602 stored values (descriptors and closure profiles within 3e-4, the worst being kind_drift). The 8 draws called non-chaotic are 7 uniform worlds and 1 frozen world.",
+    "why": "cross-GPU agreement was in the outputs but not reported; the 8 identical draws are trivial worlds"
+   },
+   {
+    "key": "interpretation.decides[1]",
+    "kind": "wording replaced",
+    "was": "so plain random draws do not suffice, but no search is needed either: the weights-only predictor concentrates 69% of the candidates in 9.4% of the draws at no simulation cost, and screening is cheap enough to brute-force the rest.",
+    "now": "which is E2's '<= 1%' branch. That no search is needed is this study's argument from cost, not E2's rule: the weights-only predictor concentrates 69% (95% interval 53% to 92%) of the candidates in 9.4% of the draws at no simulation cost, and screening is cheap enough to brute-force the rest. E2's consequence still holds: an exam world is then a draw conditioned on passing a public screen, not a fresh draw from the prior, so the selection leak of DESIGN.md section 5 applies. The gates are this study's (criteria.py), not E2's descriptors.",
+    "why": "the declared rule lands in its 'invest in search' branch; the reading given was a new argument (checker.findings.F6)"
+   },
+   {
+    "key": "interpretation.decides[3]",
+    "kind": "wording replaced",
+    "was": "(same closure band at level 1, moving and interacting bodies, stationary, strongly weight-sensitive); what they lack is an input channel that matters.",
+    "now": "(cheap-ridge ceilings in a band around the gliders world's, moving and interacting bodies, still active with similar statistics at ticks 2000-2240, strongly weight-sensitive). Stationarity beyond that window is not tested (in the CPU runs of 2000 ticks draw 262's net speed fell from 0.83 to 0.65 px/tick and draw 1672's bodies from 4.1 to 3.4), the oracle variance is far below the gliders world's in 5 of the 7, and 'actions matter' is not established for them.",
+    "why": "'stationary' and 'same closure band' say more than was measured (checker.findings.F3, F4)"
+   }
+  ],
+  "note": "Only verdict and decision wordings under interpretation were changed, and this block was added; no claim value, source or table was changed. README.md and results/interpretation.json still carry the earlier wordings; make_summary.py would overwrite these edits if run again."
  }
 }
