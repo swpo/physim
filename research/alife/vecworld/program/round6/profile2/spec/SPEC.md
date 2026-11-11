@@ -1,10 +1,12 @@
 # Exam profile 2: specification of F (foundry hidden weights) and G (gliders, triggered items)
 
 Design only (11 Nov 2026); both deciding jobs run (r6-foundrylong-003, r6-dialsa2-001). `{{NAME}}`: a measurement
-for `../feasibility`. "x86" = 2 pinned cores of the cloud container (lower bounds); Mac = x86 ×
-`{{MAC_RATIO}}` is inferred. FL = `../../foundrylong`, A2 = `../../dials/dialsA2`, VF = `../../vfport`, AE = `../../../round5/agentenv`.
+for `../feasibility`. "x86" = 2 pinned cores of the cloud container (lower bounds). Mac time = x86 time / r, with
+r = Mac box speed / x86 speed (`{{MAC_RATIO}}`, in a box under the `--cpus 2` quota) and r_host the same for the
+runner's native macOS work (draw, build, null pool, Lab); both inferred until `../DESIGN.md` pin item 8 measures them. FL = `../../foundrylong`, A2 = `../../dials/dialsA2`, VF = `../../vfport`, AE = `../../../round5/agentenv`.
 Corrected after the measurements (listed in `../DESIGN.md` section 7): G's cost per member-tick (0.23 CPU-s, not 0.15) and
-what follows from it in sections 2, 4, 6, 7; the shape of the W fit behind "39-49 min" in sections 4 and 10.
+what follows from it in sections 2, 4, 6, 7; the shape of the W fit behind "39-49 min" in sections 4 and 10. Second
+pass, from the critics (`../DESIGN.md` section 8): sections 1, 4, 5, 6, 9, 10, 11, 12.
 
 ## 0. The port's objects
 
@@ -30,8 +32,8 @@ unpayable in a box and not science. Hidden: the 250 numbers, the noise secret, t
 drawn by the public procedure; section 4.
 
 **G.** Public: round 5's gliders law and viability prior. Hidden: theta (4 numbers); presence, form and rate of the
-missing term (XW of `defect_gliders/dlaw.py`, threshold 0.12, ramp 0.05, eta = 4 as in A2's criteria). Told (A2): "the simulator may lack mechanisms of the world; which, where and how strong is not said; there
-may be none."
+missing term (XW of `defect_gliders/dlaw.py`, threshold 0.12, ramp 0.05, eta = 4 as in A2's criteria). Told: "the simulator lacks a mechanism of the world; which, where and how strong is not said" (A2's "there may
+be none" is untrue when eta is always 4; no scripted policy reads the sentence).
 
 **The draw**, at the runner's `instance` stage on the Mac (VF `tools/vfrun.py` l. 665-680), after pin and image are
 fixed, so the image cannot hold it. Entropy: `Secret()` (`os.urandom(32)`, AE `instance.py` l. 69); draws use its
@@ -41,7 +43,11 @@ world (hash of 16 weights) or correlated with one above 0.9 (a 30% neighbour is 
 refuses theta within 0.05 box widths of a published truth in every coordinate. A refusal replaces the secret itself
 (new `os.urandom`) and is counted. F's `max_tries` rises from 64 (AE l. 63) to 400: about 1 screened draw in 18 is accepted (818 of 15,040; FL
 `README.md`), so 64 fail with probability 0.03. One F draw: about 65,000 member-ticks, 8.7 min at
-124 member-ticks/s (x86 float64); `{{F_T_DRAW_MAC}}`.
+124 member-ticks/s (x86 float64); `{{F_T_DRAW_MAC}}`. F's gate, part of the told draw: g = (L(Dr) − L(W(true))) /
+(L(K) − L(W(true))) on the 32 `sel` items (reference Lab of 32 episodes, 64 members, about 17 min x86) at least a
+threshold declared from FL stage 2's per-world values; a draw below it is redrawn, the count published. The
+instance's sha256 is committed in git before the first rollout; all models run on the same instances; it is
+published after the last and then joins the collision list.
 
 ## 2. Items
 
@@ -88,7 +94,10 @@ With b_pred = 0.25 (F) and 0.05 (G): `wall_seconds = b_pred × U_item / R_box + 
 2 × (b_pred × U_item / R_box + {{T_JIT}})`; `{{F_T_JIT}}`, `{{G_T_JIT}}` = import and compile in a fresh item box.
 x86: 25 s (F) and 47 s (G; round 5 gave 60 CPU-s, AE `configs/exam_gliders.json`). RLIMIT_CPU is per process (VF
 `public/_item.py` l. 563): the 2-CPU box times `wall_seconds` bounds the total. Told: "{cpu} CPU-seconds and {wall} s
-per item, {b_pred} of simulating 256 members over the item".
+per item, {b_pred} of simulating 256 members over the item in float64" (in float32 the same seconds buy about 0.5 of
+it, `../DESIGN.md` section 2); the memory cap includes `/workspace` and `/tmp`, with the measured peaks of the
+simulator's run, its gradient and a net step. DESIGN fills these at the plug-in rate (F brute force 117.9 s) and
+with G's T_JIT including the start compile (29.1 s).
 
 ## 5. References in two tiers
 
@@ -97,25 +106,28 @@ per item, {b_pred} of simulating 256 members over the item".
 | K, O, null | Mac, before the rollout | Mac, before |
 | PM | none (zero weights: a dead world); W(prior), another library world's weights, instead (FL: -0.75 at 16 ticks) | Mac, before |
 | P0 | Mac, before: FL stage 1's public, instance-free P0(1,000) seed 0, a prebuilt submission | Mac, before: A2's public-form net |
-| C | GPU, after: C(16,384) at the hidden weights | Mac, before: A2's true-form net at (theta, eta/4), if public (`{{A2_NETS_PUBLIC}}`); CFT: GPU, after |
+| C | GPU, after: C(16,384) at the hidden weights (the scale's top by definition; FL S4: not converged) | Mac, before: A2's true-form net at (theta, eta/4), if public (`{{A2_NETS_PUBLIC}}`); CFT: GPU, after |
 | FT, D, Dr / RES, S (ceiling) | GPU, after (N = 32 and 8) | GPU, after (N = 8) |
-| S*, the scripted hypothesis | W(32), W+(32), W(true): GPU, after | H(8), H_mix(8): GPU, after |
+| S*, the scripted hypothesis | W(32), W+(32), W(true): GPU, after; W_lib(32), W at 0 steps from the library world with the lowest Lab loss: both tiers | H(8), H_mix(8): GPU, after |
 | box tier: P0, FT, D, S* | Mac, after: scripted rollouts (`physim2-script`, $0) in the real box with the agent's limits | same |
 
 One GPU job per instance (outside the pin) reads the instance published after the rollout, reusing FL's and A2's
-code (`{{F_GPU_REF_USD}}`, `{{G_GPU_REF_USD}}`; C(16,384) is 0.038 A100-hours, FL). Box-tier scripts declare their
-split of B_res (P0_box: half simulation, half training). Mac: at most 4 × (180 min + grading), 16 h (`{{BOX_TIER_HOURS}}`).
+code (`{{F_GPU_REF_USD}}`, `{{G_GPU_REF_USD}}`; C(16,384) is 0.038 A100-hours, FL). Every Lab-using row runs its
+own reference Lab on the instance, never the agent's log. P0_box's allocation (library worlds, episodes per world,
+steps within B_res) is picked once per profile by a declared sweep on held-out library worlds; FT_box starts from it. Mac: at most 4 × (180 min + grading), 16 h (`{{BOX_TIER_HOURS}}`).
 
 Reading, per tier t, with C always the GPU C: sigma_t = (L(G*_t) − L(C)) / (L(K) − L(C)), G*_t the best generic
 recipe picked on `sel` (F: P0, FT, D, Dr; G: P0, D, S, FT, RES); rho_t = (L(P0_t) − L(S*_t)) / (L(P0_t) − L(C))
 (roadmap §1) and the studies' generic share beside it; the agent's place a_t = (L(G*_t) − L(agent)) / (L(G*_t) −
-L(C)). Bars are verdicts only in the 16-world studies; one instance's ceiling tier checks it is typical (FL per-world
-sigma at 16 ticks: 0.126 to 0.478).
+L(C)), also against W* and W(true). Bars are verdicts only in the 16-world studies; F's gate (section 1) screens the
+instance (FL per-world sigma at 16 ticks: 0.126 to 0.478); an ordering of models needs two or more instances.
 
 ## 6. Grading on the Mac
 
-n_items × (wall_seconds + `{{T_BOX}}`) + `{{T_SETUP}}` <= 9,600 s (`GRADING_ALLOWANCE_S`, VF `tools/vfrun.py`
-l. 469). `T_BOX` is 2.7 s on x86 (VF `RUNBOOK_MAC.md` l. 622). With 64 items and `T_SETUP` = 600 s, T_JIT may reach
+(n_items + 3) × (wall_seconds + `{{T_BOX}}`) + `{{T_SETUP}}` <= 9,600 s (`GRADING_ALLOWANCE_S`, VF `tools/vfrun.py`
+l. 469; three example calls precede the items, VF `TASK.md.tmpl` l. 135). Verifiers' own limits, 900 + 900 +
+(n_items + 3) × (wall_seconds + 40) + 600 (VF `taskset.py` l. 740-741), must also fit: G's do not at b_pred 0.05
+(11,196 s), F's only while r >= 0.72; hence an allowance per profile (section 11, row 11). `T_BOX` is 2.7 s on x86 (VF `RUNBOOK_MAC.md` l. 622). With 64 items and `T_SETUP` = 600 s (first pass, 64 calls), T_JIT may reach
 about 98 s (F) or 76 s (G); a rollout's 64 items take 0.8 to 1.7 h. The bound holds for every row graded in boxes
 (`{{GATE_REF_HOURS}}`).
 
@@ -145,28 +157,31 @@ once; `bundle.null_pool` checks its sha256. The baseline is the ring's ridge on 
 ## 9. The pilot before any model rollout
 
 Scripted, like round 5's `proof_ring`: cloud container (x86 Docker) first, then the Mac as runbook step 2. One pilot instance per profile; every policy runs through the real boxes. It must show: every item graded, none
-failed, the layers of VF `RUNBOOK_MAC.md` step 2a; told numbers within 10% of measured (R_box, T_JIT, B_res, item
-seconds); W_box (F) or H_box (G) finishing inside B_res with its predictor inside the item limits; a brute-force
-predictor killed at the limit and scored as null; null < D_box <= P0_box, O above C, sigma_box >= 0.15 at the point
-estimate; grading inside section 6 with margin; the scans of 8.4 and the collision check refusing a planted public
+failed, the layers of VF `RUNBOOK_MAC.md` step 2a; r and r_host measured in the box (section 11, row 14) and the
+told numbers computed from it, then within 20% of a second measurement; W_box (F) or H_box (G) finishing inside B_res
+with its predictor inside the item limits, again with 64 min idle, and the longest blocking command measured; a
+float32 brute-force predictor killed at the limit and scored as null; null < D_box (D_box <= P0_box reported, not
+gated, for F), O above C, sigma_box >= 0.15 at the point estimate on the exam's scales; grading inside section 6 with margin; the scans of 8.4 and the collision check refusing a planted public
 world; `lab_log.jsonl` equal to the Lab's record; F's sigma under both scales. One GPU job adds its ceiling rows.
 
 ## 10. Decision rule: which profile first
 
-F's stage 2 (FL `DECLARED.md` §2): PASS (T1-T6); INFER (T1, T2, T3, T6 hold, T4 or T5 fails; "undecided" by its rule,
-never quoted as a pass); STATE (T1 holds, T3 fails); FAIL (T1 fails, T2's lower bound above 0.7, or the stages
-disagree). G (A2): PASS, UNDECIDED, FAIL.
+F's stage 2 (FL `DECLARED.md` §2): PASS (T1-T6); INFER (T1, T3, T5, T6 hold, T2 does not fail, T4 does not hold;
+"undecided" by its rule, never quoted as a pass); STATE (T1 holds, T3 fails); FAIL (T1 fails, T2's lower bound above
+0.7, or the stages disagree). T2 "not read" (P0 within 2 SE of C) counts as not failing. G (A2): PASS with base nets
+converged by R9 (else "at this compute"), UNDECIDED, FAIL. A missing or incomplete verdict (FL addendum 5) chooses
+nothing; the lead decides. Any choice also needs Q2's answer (roadmap rho fails by construction when T3 holds).
 
 | F \ G | PASS | UNDECIDED or FAIL |
 |---|---|---|
 | PASS or INFER | F first, G second | F |
-| STATE or FAIL | G | neither as a test of science |
+| STATE, FAIL or incomplete | G | neither as a test of science |
 
 F first when both qualify: its hidden part has no public trace (G's form is public, 8.8); its hypothesis fits the box
 (one W start of 143 steps at job 003's shape: 101 min on 2 x86 cores; 200 steps at FL's CPU shape: 39-49 min) while G's told-form recipe needs 6,144-episode families; it is decision 1's default design (a).
 Both fail: F as a compute-limited exam (decision 1(c); FL S3: P0 still falling at 1,000 worlds) only if its pilot
 gives sigma_box >= 0.15 and the lead wants that test (Q5); otherwise the next world comes from the cards. Items 1-5
-and 11-13 below do not depend on the verdicts and can start now.
+and 11-15 below do not depend on the verdicts and can start now.
 
 ## 11. Pin changes for the next port round
 
@@ -177,23 +192,26 @@ and 11-13 below do not depend on the verdicts and can start now.
 | 3 | `bundle.py` `null_pool`, `public_bundle`, `statement` | kept pool; F's library; `VENDOR_DROPPED` (G); budgets | 80 |
 | 4 | `TASK.md.tmpl` | hidden sentence by kind; a compute-budget section | 90 |
 | 5 | `tools/make_pool.py` (new) | build and record the null pool | 90 |
-| 6 | `physim2_env/hidden/` (new, host only), `tools/make_instances.py` | section 1's draw; G's hidden law | 250 |
+| 6 | `physim2_env/hidden/` (new, host only), `tools/make_instances.py` | section 1's draw and F's gate; G's hidden law | 300 |
 | 7 | `lab_tools.py` `VfLabService` | Lab and O from the hidden hook (type b) | 30 |
 | 8 | world modules, a lookup ahead of AE's `world_module` | two public modules | 340 |
 | 9 | `tools/prove.py` | tiers; prebuilt P0, G's C | 80 |
-| 10 | `agents/ref_foundry.py`, `ref_gliders_trig.py` | box-tier scripts | 650 |
-| 11 | `tools/check_request.py` | the section-6 bound | 30 |
-| 12 | `tools/pack_rollout.py` | publish a pilot's hidden instance after the key scan | 40 |
+| 10 | `agents/ref_foundry.py`, `ref_gliders_trig.py` | box-tier scripts, W_lib | 700 |
+| 11 | `tools/check_request.py`, `tools/vfrun.py` | the section-6 bound; allowance per profile = 1,800 + scoring limit | 50 |
+| 12 | `tools/pack_rollout.py` | publish a pilot's hidden instance after the key scan; check its committed sha256 | 40 |
 | 13 | `tests/exam_pure.py` | told = computed; allowance; pool sha; bundle scans; no integer-seed draw; collision refusal; type-(b) Lab equals the public law at eta 0 only | 250 |
+| 14 | `agents/time_box.py` (new), `tools/make_instances.py` | a scripted policy (physim2-script) timing the feasibility modes in the agent's box and an item box, relative paths; the instance stage logs its own clock (r_host) | 150 |
+| 15 | `tools/run_report.py` | each score with the model-wait seconds and the agent box's CPU-seconds read from the engine | 40 |
 
-About 2,000 lines, plus a GPU reference job outside the pin (400); the port's first estimate was a tenth of the
-outcome (750 against 7,310, VF `README.md` §2). Items 5-7 add host-side compute: a host-safety re-audit. Out: the
+About 2,300 lines, plus a GPU reference job outside the pin (400); the port's first estimate was a tenth of the
+outcome (750 against 7,310, VF `README.md` §2). Items 5-7 and 14 add host-side or in-box compute: a host-safety re-audit. Out: the
 sealed store (task #34), multi-instance exams, cgroup CPU caps (unless Q1), per-instance scales, a hidden defect family
 for G, a GPU in a box, a new image.
 
 ## 12. Questions only the lead can answer
 
-- Q1. Research budget: wall clock including thinking (as now), or computation only (a CPU-time cap, new box code)?
+- Q1. Research budget: wall clock including the model's turns (as now; about 12 s per turn for Qwen, at most 26 s for
+  Astra), or the agent box's CPU-seconds read from the engine (new code)?
 - Q2. May the package carry costly, science-free material: F's screened-world library (recommended)?
 - Q3. Null: the weak ridge (recommended), or the public P0(1,000) net (the generic recipe at 17 × the agent's compute)?
 - Q4. A G pilot rollout while the defect's form is public here?

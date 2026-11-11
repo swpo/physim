@@ -104,6 +104,10 @@ sha256 40812201...6774), 134 MB in total; every sha256 is already in `vfport/doc
 ## Not measured
 
 The Mac: no Apple Silicon timing exists. Inferred only: an M-series core does 1-2 Xeon cores' scalar work, but
-NEON has 2 float64 lanes against AVX-512's 8, so the factor may be below 1; the three scripts in a Mac box (about
-45 min) measure it. Not timed either: the vw Lab path (episodes ran through fx_lib.Runner's compiled tick), W's
+NEON has 2 float64 lanes against AVX-512's 8, so the factor may be below 1. The three scripts cannot measure it on
+the Mac as written (correction after review, `../DESIGN.md` section 8 C4): they hard-code this container's paths
+(`PY=/home/user/...`), and the Mac runbook forbids any `docker run` by hand (vfport `RUNBOOK_MAC.md` l. 114). Their
+modes must run as a scripted policy through the port's own boxes (`../DESIGN.md` pin item 8), where `--cpus 2` is a
+CPU quota rather than the pinned cores used here; host-native work (draw, build, null pool, Lab) needs its own ratio
+from the instance stage's clock. Not timed either: the vw Lab path (episodes ran through fx_lib.Runner's compiled tick), W's
 prescreen, G's H recipe. Load from other work: 1.2-2.1 (`raw/*_log.txt`).
