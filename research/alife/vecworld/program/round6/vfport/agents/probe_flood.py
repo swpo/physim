@@ -15,6 +15,17 @@ is measured by the tool that started the rollout, from outside the box.
               check reports a failure. The original validate.py is put back afterwards.
   as graded   lab.validate on three predictors that read a file left in /tmp, one left in /dev/shm, and a module
               added to physim2/: each must fail (exam audit X6)
+  interception with --interception (round 5, code audit K9), run by the stock bash harness's own `bash` tool (a
+              stand-in model asks for it: tools/check_step3.py, part `flood5`): the rollout's secret and the
+              interception server's address are read from the chat program's command line, as a model could
+              (/proc/<pid>/cmdline, --api-key= and --base-url=); then one request declaring 1 GiB and one chunked
+              1 GiB request, each with the secret, are sent as fast as the box can (answered 413 after the
+              server's body limit, the rest never read); PARALLEL requests of 15 MiB of JSON at once, each with the
+              secret (the box's proxy lets one at a time through to the server, the others wait); UNAUTHORIZED
+              small requests without the secret (vf-eval's log keeps a bounded number of their lines); to the
+              laboratory, LAB_BIG requests with an operation name of 3 MiB and LAB_SMALL refused ones (the
+              laboratory's log on the host keeps each line short and at most its number of lines). Writes
+              /workspace/flood5_report.json.
   harness     with --harness-flood: 256 MiB into the output of the harness's own command, last of all. vf-eval
               keeps at most its bound, the harness command is reported as failed, and the run is graded on its
               last checkpoint (ruling E1). The report is written BEFORE that, in a second file the harness never
@@ -81,8 +92,122 @@ def parent_stdout() -> str:
     return f"{base}/1"
 
 
+PARALLEL, UNAUTHORIZED, LAB_BIG, LAB_SMALL = 8, 3000, 4, 2000
+
+
+def chat_program() -> dict:
+    """The --base-url and --api-key of the chat program of the stock bash harness, read from its command line in
+    /proc as any process of the box can (the agent is root here). {} when there is none."""
+    for d in os.listdir("/proc"):
+        if not d.isdigit():
+            continue
+        try:
+            argv = open(f"/proc/{d}/cmdline", "rb").read().split(b"\0")
+        except OSError:
+            continue
+        got = {a.split(b"=", 1)[0].decode(): a.split(b"=", 1)[1].decode() for a in argv if a.startswith((b"--api-key=", b"--base-url="))}
+        if len(got) == 2:
+            return {"pid": int(d), "base_url": got["--base-url"], "secret": got["--api-key"]}
+    return {}
+
+
+def raw_post(url: str, headers: dict, declared, n: int, piece: bytes, wait_s: float = 120.0) -> dict:
+    """One POST of n body bytes (declared length, or chunked when declared is None) to an http:// URL, sent as
+    fast as the peer takes it; stops at the first byte of an answer. Returns the status line, the body bytes sent
+    and the seconds."""
+    u = urllib.parse.urlsplit(url)
+    s = socket.create_connection((u.hostname, u.port or 80), timeout=60)
+    head = [f"POST {u.path} HTTP/1.1", f"Host: {u.netloc}", "Content-Type: application/json", "Connection: close"]
+    head += [f"{k}: {v}" for k, v in headers.items()]
+    head += [f"Content-Length: {declared}"] if declared is not None else ["Transfer-Encoding: chunked"]
+    s.sendall(("\r\n".join(head) + "\r\n\r\n").encode())
+    sent, status, t0 = 0, None, time.time()
+    try:
+        while sent < n:
+            s.settimeout(0.0)
+            try:
+                got = s.recv(4096)
+                status = got.split(b"\r\n", 1)[0].decode("latin-1")[:60] if got else "closed"
+                break
+            except BlockingIOError:
+                pass
+            s.settimeout(wait_s)
+            part = piece[:n - sent]
+            try:
+                s.sendall(part if declared is not None else b"%x\r\n" % len(part) + part + b"\r\n")
+            except OSError as e:
+                status = f"send failed ({type(e).__name__})"
+                break
+            sent += len(part)
+        if status is None:
+            if declared is None:
+                s.sendall(b"0\r\n\r\n")
+            s.settimeout(wait_s)
+            got = s.recv(4096)
+            status = got.split(b"\r\n", 1)[0].decode("latin-1")[:60] if got else "closed"
+    except OSError as e:
+        status = status or f"error {type(e).__name__}"
+    finally:
+        s.close()
+    return {"status": status, "body_bytes_sent": sent, "seconds": round(time.time() - t0, 2), "t": [round(t0, 2), round(time.time(), 2)]}
+
+
+def interception_flood(rep: dict) -> None:
+    import threading
+    cp = chat_program()
+    rep["chat_program"] = {"found": bool(cp), "pid": cp.get("pid"), "secret_chars": len(cp.get("secret", "")),
+                           "base_url_path_parts": len(urllib.parse.urlsplit(cp.get("base_url", "")).path.split("/"))}
+    if not cp:
+        return
+    url, auth = cp["base_url"].rstrip("/") + "/chat/completions", {"Authorization": "Bearer " + cp["secret"]}
+    big = b"{" * MIB
+    rep["one_gib"] = {"t": round(time.time(), 2), "declared": raw_post(url, auth, 1 << 30, 1 << 30, big),
+                      "chunked": raw_post(url, auth, None, 1 << 30, big)}
+    one = b"{},"                                             # 15 MiB of a JSON list of empty objects: parsed, then refused
+    body = b"[" + one * ((15 * MIB) // len(one)) + b"{}]"
+    res = [None] * PARALLEL
+
+    def worker(i):
+        res[i] = raw_post(url, auth, len(body), len(body), body)
+    ths = [threading.Thread(target=worker, args=(i,)) for i in range(PARALLEL)]
+    t0 = time.time()
+    for t in ths:
+        t.start()
+    for t in ths:
+        t.join(600)
+    rep["parallel"] = {"n": PARALLEL, "body_bytes": len(body), "t": [round(t0, 2), round(time.time(), 2)], "answers": res}
+    t0, statuses = time.time(), {}
+    for i in range(UNAUTHORIZED):
+        r = raw_post(url, {"Authorization": "Bearer not-the-secret"}, 2, 2, b"{}", wait_s=30)
+        statuses[r["status"]] = statuses.get(r["status"], 0) + 1
+    rep["unauthorized"] = {"n": UNAUTHORIZED, "statuses": statuses, "t": [round(t0, 2), round(time.time(), 2)]}
+    lab, t0, out = physim2.Lab(), time.time(), {}
+    for i in range(LAB_BIG):                                 # an operation's name, or an argument's name, of 3 MiB
+        try:
+            lab._send("X" * (3 * MIB) + str(i)) if i % 2 else lab._send("card", **{"k" * (3 * MIB) + str(i): 1})
+            out["big_accepted"] = out.get("big_accepted", 0) + 1
+        except Exception as e:
+            out.setdefault("big_errors", []).append(str(e)[:120])
+    for i in range(LAB_SMALL):
+        try:
+            lab._send("usage", **{"y" * 200: i}) if i % 2 else lab._send("no-such-op")
+        except Exception as e:
+            k = type(e).__name__ + ": " + str(e)[:60]
+            out[k] = out.get(k, 0) + 1
+    out["t"] = [round(t0, 2), round(time.time(), 2)]
+    rep["lab"] = out
+
+
 def main():
     harness_flood = "--harness-flood" in sys.argv
+    if "--interception" in sys.argv:                        # round 5, K9: alone, from the stock bash harness's tool
+        rep = {"time": time.time()}
+        interception_flood(rep)
+        rep["t_end"] = round(time.time(), 2)
+        with open("/workspace/flood5_report.json", "w") as f:
+            json.dump(rep, f, indent=1)
+        print("interception flood done")
+        return
     rep = {"time": time.time()}
     lab = physim2.Lab()
     if harness_flood:                                        # alone, last: see the module text

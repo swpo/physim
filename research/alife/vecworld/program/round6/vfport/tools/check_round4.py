@@ -22,6 +22,14 @@ functions, and servers on 127.0.0.1 inside THIS process (threads), reached by cl
                     request keys are an allow-list; the chain's hash holds every non-message key; a spend log that
                     cannot be written stops the run) and X9 (the reply cap of an item)
 
+  F  round 5      code audit K9 and the channel sweep: verifiers' interception server started in this process
+                    after runtime.install() answers a request declaring 1 GiB with 413 after the new body limit
+                    (secret found, body read: the path a model takes with the chat program's secret), and this
+                    process grows by less than 64 MiB; the box's proxy lets one request at a time through to a
+                    callback without a bearer (the others wait) and cuts a body after CALLBACK_UPLOAD_MAX; the
+                    laboratory's callback (with a bearer) is not gated; the log filter; the laboratory's bounded log;
+                    the statement's rendering of the harness's per-command limit (X13)
+
 No model is called and no credential is read: the endpoint is the stand-in and its key is a made-up word.
 Nothing is removed afterwards: --scratch is the caller's to remove.
 """
@@ -917,6 +925,199 @@ def test_second_pass(scratch: str):
           _rules.reply_mib(ring_values) == 1 and cmd[cmd.index("--max-reply-mib") + 1] == "1", cmd)
 
 
+def _rss_mib() -> float:
+    for line in open("/proc/self/status"):
+        if line.startswith("VmRSS:"):
+            return int(line.split()[1]) / 1024.0
+    return 0.0
+
+
+def test_round5(scratch: str):
+    """F: round 5 (code audit K9; the channel sweep; X13's rendering)."""
+    import logging
+    RUNTIME.install()
+    import verifiers.v1.interception.server as IS
+    import verifiers.v1.runtimes.docker as D
+    from verifiers.v1.configs.runtime import NetworkPolicyConfig
+    from verifiers.v1.runtimes.docker.egress import NetworkPolicy
+    check("F1 K9 after runtime.install() verifiers' interception server takes at most INTERCEPTION_BODY_MAX (16 MiB) of one body",
+          IS.MAX_REQUEST_BODY == RUNTIME.INTERCEPTION_BODY_MAX == 16 << 20, IS.MAX_REQUEST_BODY)
+
+    class FakeSession:                                       # enough of a rollout's session for the server to read a body
+        def adopt(self, task):
+            pass
+
+    async def interception_flood():
+        srv = IS.InterceptionServer()
+        await srv.start()
+        try:
+            srv.sessions["round5-test-secret-0123456789"] = FakeSession()
+            port = srv.port
+            app_max = srv.runner.app._client_max_size
+
+            def post(auth: bool, declared: int, n: int):
+                sk = socket.create_connection(("127.0.0.1", port), timeout=30)
+                head = f"POST /v1/chat/completions HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/json\r\nContent-Length: {declared}\r\n"
+                if auth:
+                    head += "Authorization: Bearer round5-test-secret-0123456789\r\n"
+                sk.sendall((head + "\r\n").encode())
+                sent, status, piece = 0, None, b"{" * (1 << 20)
+                sk.settimeout(0.0)
+                try:
+                    while sent < n:
+                        try:
+                            got = sk.recv(4096)
+                            status = got.split(b"\r\n", 1)[0].decode("latin-1") if got else "closed"
+                            break
+                        except BlockingIOError:
+                            pass
+                        sk.settimeout(30)
+                        try:
+                            sk.sendall(piece)
+                        except OSError as e:
+                            status = f"send failed ({type(e).__name__})"
+                            break
+                        sent += len(piece)
+                        sk.settimeout(0.0)
+                    if status is None:
+                        sk.settimeout(30)
+                        got = sk.recv(4096)
+                        status = got.split(b"\r\n", 1)[0].decode("latin-1") if got else "closed"
+                except OSError as e:
+                    status = status or f"error {type(e).__name__}"
+                finally:
+                    sk.close()
+                return {"status": status, "sent": sent}
+            r0 = _rss_mib()
+            big = await asyncio.to_thread(post, True, 1 << 30, 1 << 30)
+            r1 = _rss_mib()
+            bare = await asyncio.to_thread(post, False, 1 << 30, 8 << 20)
+            return {"app_client_max_size": app_max, "with_secret": big, "without_secret": bare, "rss_growth_mib": round(r1 - r0, 1)}
+        finally:
+            await srv.stop()
+    r = asyncio.run(interception_flood())
+    w = r["with_secret"]
+    check("F2 K9 a request WITH the rollout's secret declaring 1 GiB: answered 413 after at most the limit plus socket buffers (not 1 GiB), "
+          "and this process grew by less than 64 MiB",
+          r["app_client_max_size"] == 16 << 20 and str(w["status"]).startswith("HTTP/1.1 413") and w["sent"] <= (16 << 20) + (8 << 20)
+          and r["rss_growth_mib"] < 64, r)
+    check("F3 ... and one WITHOUT the secret is answered 401 before its body is read", str(r["without_secret"]["status"]).startswith("HTTP/1.1 401"), r)
+
+    # ---- the box's proxy: one request at a time to a callback without a bearer; a body cut after CALLBACK_UPLOAD_MAX ----
+    state = {"now": 0, "most": 0, "bytes": []}
+
+    async def slow(scope, receive, send):                    # an upstream that reads the whole body, counts, and answers late
+        if scope["type"] != "http":
+            return
+        state["now"] += 1
+        state["most"] = max(state["most"], state["now"])
+        n = 0
+        try:
+            while True:
+                msg = await receive()
+                n += len(msg.get("body", b""))
+                if not msg.get("more_body"):
+                    break
+            await asyncio.sleep(0.4)
+            await send({"type": "http.response.start", "status": 200, "headers": [(b"content-length", b"2")]})
+            await send({"type": "http.response.body", "body": b"{}"})
+        finally:
+            state["bytes"].append(n)
+            state["now"] -= 1
+    slow_port, slow2_port = serve_asgi(slow), serve_asgi(slow)
+    time.sleep(0.3)
+
+    async def gate():
+        proxy = D.EgressProxy(NetworkPolicy(NetworkPolicyConfig(allow=[]), [], allow_non_global=False))
+        await proxy.start("127.0.0.1")
+        try:
+            url = proxy.callback_url(f"http://127.0.0.1:{slow_port}/v1/chat/completions", "127.0.0.1")
+            path = "/" + url.split("/", 3)[3]
+            call = lambda *a, **k: asyncio.to_thread(http, proxy.port, *a, **k)      # noqa: E731
+            res = await asyncio.gather(*(call("POST", path, body=b"{}", timeout=30) for _ in range(5)))
+            gated = {"statuses": [x[0] for x in res], "most_at_upstream": state["most"], "stats": dict(proxy.callback_stats)}
+            state["most"] = 0
+            lab_url = proxy.callback_url(f"http://127.0.0.1:{slow2_port}/mcp", "127.0.0.1")
+            proxy.set_bearer(slow2_port, BEARER.new_secret())
+            lpath = "/" + lab_url.split("/", 3)[3]
+            res2 = await asyncio.gather(*(call("POST", lpath, body=b"{}", timeout=30) for _ in range(3)))
+            lab = {"statuses": [x[0] for x in res2], "most_at_upstream": state["most"]}
+            state["bytes"].clear()
+            rd, wr = await asyncio.open_connection("127.0.0.1", proxy.port)
+            total = 40 << 20
+            wr.write(f"POST {path} HTTP/1.1\r\nHost: x\r\nContent-Length: {total}\r\n\r\n".encode())
+            sent, piece = 0, b"a" * (1 << 20)
+            try:
+                async with asyncio.timeout(20):
+                    while sent < total:
+                        wr.write(piece)
+                        await wr.drain()
+                        sent += len(piece)
+            except (TimeoutError, OSError):
+                pass
+            wr.close()
+            await asyncio.sleep(1.0)
+            return {"gated": gated, "lab": lab, "upload": {"box_sent": sent, "upstream_got": list(state["bytes"]), "stats": dict(proxy.callback_stats)}}
+        finally:
+            await proxy.stop()
+    g = asyncio.run(gate())
+    check(f"F4 K9 the box's proxy: 5 requests at once to a callback without a bearer reach it one at a time (CALLBACK_ACTIVE_MAX = "
+          f"{RUNTIME.CALLBACK_ACTIVE_MAX}); all are answered, the others waited",
+          g["gated"]["statuses"] == [200] * 5 and g["gated"]["most_at_upstream"] == 1 == RUNTIME.CALLBACK_ACTIVE_MAX
+          and g["gated"]["stats"]["waited"] >= 1 and g["gated"]["stats"]["most_at_once"] == 1, g["gated"])
+    check("F5 ... the laboratory's callback (with its bearer) is not gated here: it bounds its own requests (bearer.py)",
+          g["lab"]["statuses"] == [200] * 3 and g["lab"]["most_at_upstream"] == 3, g["lab"])
+    up = g["upload"]
+    check("F6 ... a body of 40 MiB to a callback is cut after CALLBACK_UPLOAD_MAX: the upstream got at most that, the connection was closed",
+          up["stats"]["cut_uploads"] == 1 and all(b <= RUNTIME.CALLBACK_UPLOAD_MAX for b in up["upstream_got"]) and up["box_sent"] > RUNTIME.CALLBACK_UPLOAD_MAX,
+          up)
+
+    # ---- the log filter ----
+    clock = [0.0]
+    flt = RUNTIME.RepeatLimit(clock=lambda: clock[0])
+    lg = logging.getLogger("physim2.round5.test")
+    lg.propagate = False
+    seen = []
+
+    class Keep(logging.Handler):
+        def emit(self, record):
+            seen.append(record.getMessage())
+    h = Keep()
+    lg.addHandler(h)
+    lg.addFilter(flt)
+    for i in range(500):
+        lg.warning("interception: unauthorized request")
+    n_first = len(seen)
+    clock[0] = RUNTIME.LOG_REPEAT_EVERY_S + 1
+    lg.warning("interception: unauthorized request")
+    lg.warning("x" * 10000)
+    lg.removeFilter(flt)
+    lg.removeHandler(h)
+    srv_logger = logging.getLogger("verifiers.v1.interception.server")
+    check("F7 the log filter: 500 equal records give LOG_REPEAT_MAX lines, then one a minute saying how many were dropped; a record is cut "
+          "at LOG_RECORD_MAX characters; it sits on the interception server's logger and on Python's last-resort handler",
+          n_first == RUNTIME.LOG_REPEAT_MAX and seen[n_first].startswith(f"[{500 - RUNTIME.LOG_REPEAT_MAX} more records")
+          and len(seen[-1]) <= RUNTIME.LOG_RECORD_MAX + 40 and RUNTIME.LOG_FILTER in srv_logger.filters
+          and (logging.lastResort is None or RUNTIME.LOG_FILTER in logging.lastResort.filters),
+          {"first": n_first, "after_a_minute": seen[n_first][:80] if len(seen) > n_first else None, "cut_len": len(seen[-1])})
+
+    # ---- the laboratory's request log ----
+    import inspect
+    from physim2_env import lab_tools as LT
+    path = os.path.join(scratch, "round5_lab_log.jsonl")
+    with open(path, "w") as raw:
+        bl = LT.BoundedLog(raw, max_lines=100)
+        for i in range(150):
+            bl.write(json.dumps({"t": i, "op": "x", "ok": False, "error": "unknown operation " + "X" * (3 << 20), "detail": "k" * 5000}) + "\n")
+            bl.flush()
+    rows = open(path, "rb").read().splitlines()
+    ok_rows = all(len(x) < 1500 for x in rows) and json.loads(rows[0])["error"].endswith("[... cut at 500 characters]")
+    check("F8 the laboratory's log on the host: a 3 MiB operation name is cut at 500 characters; after max_lines one line `log_full` and "
+          "nothing more; the service writes through it",
+          len(rows) == 101 and ok_rows and json.loads(rows[-1])["event"] == "log_full" and "BoundedLog(self._log)" in inspect.getsource(LT.make_service)
+          and LT.LAB_LOG_MAX_LINES == 20000, {"lines": len(rows), "longest": max(len(x) for x in rows)})
+
+
 def GRADING_driver_cmd(*a):
     from physim2_env import grading as GRADING
     return GRADING.driver_cmd(*a)
@@ -926,7 +1127,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--scratch", required=True, help="a folder of the caller's for the files this test writes (it removes nothing)")
     ap.add_argument("--out", default=None)
-    ap.add_argument("--only", default="ABCDE", help="sections to run, e.g. AC")
+    ap.add_argument("--only", default="ABCDEF", help="sections to run, e.g. AC")
     a = ap.parse_args()
     os.makedirs(a.scratch, exist_ok=True)
     t0 = time.time()
@@ -946,6 +1147,8 @@ def main() -> int:
             check_round4_step3.run(check, raises, a.scratch)
     if "E" in a.only:
         test_second_pass(a.scratch)
+    if "F" in a.only:
+        test_round5(a.scratch)
     hits = TW.take()
     check("Z the tripwires recorded no attempt to kill, delete, move, re-own or start anything", not hits, hits[:5])
     failed = [c["name"] for c in CHECKS if not c["ok"]]

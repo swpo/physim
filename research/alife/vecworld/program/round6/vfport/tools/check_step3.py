@@ -23,6 +23,15 @@ process (stopped by its exact pid), and the tools of this folder. It calls no mo
           peak memory of vf-eval and of the laboratory is sampled from /proc on the host while the floods run;
           the card of the run (exam audit X5) and three predictors that must fail `validate` (X6) ride along.
 
+  flood5  (round 5, code audit K9 and the channel sweep) a rollout of the request route with the stock bash harness
+          and the stand-in endpoint, whose "model" asks the harness's `bash` tool to run agents/probe_flood.py
+          --interception in the agent's box: the secret and address of verifiers' interception server are read
+          from the chat program's command line, then a request declaring 1 GiB and a chunked one of 1 GiB, 8
+          parallel requests of 15 MiB of JSON, 3,000 requests without the secret, and floods of the laboratory
+          (names of 3 MiB, 2,000 refused requests). Checked from the host: the answers, vf-eval's and the
+          laboratory's peak memory, the lines of the run's log, the laboratory's log file, the box proxy's
+          counters in the trace, and that the run is still graded.
+
 Everything is written under --scratch and left there. Every check is one line in the output JSON with the
 numbers it rests on.
 """
@@ -581,6 +590,144 @@ def run_route(scratch, tag, floor, log, skip_reference):
     return out
 
 
+# ----------------------------------------------------------------------------- flood5 (round 5, K9)
+def flood5_steps() -> list:
+    import base64
+    code = base64.b64encode(open(os.path.join(ROOT, "agents", "probe_flood.py"), "rb").read()).decode()
+    run = (f"echo {code} | base64 -d > /tmp/probe_flood.py && cd /workspace && timeout 1200 python3 -B /tmp/probe_flood.py --interception "
+           "> /tmp/flood5.log 2>&1; echo EXIT=$?; tail -c 1500 /tmp/flood5.log")
+    u = {"prompt_tokens": 3000, "completion_tokens": 50}
+    return [{"bash": run, "usage": u}, {"bash": "echo FLOOD5_REPORT_BEGIN; python3 -c \"import json; print(json.dumps(json.load(open('/workspace/flood5_report.json'))))\"; "
+                                     "echo FLOOD5_REPORT_END", "usage": u}, {"say": "done", "usage": u}]
+
+
+FLAT5 = FLAT.replace("cap_usd = 0.13", "cap_usd = 1.0").replace("wall_minutes = 10", "wall_minutes = 20")
+
+
+def run_flood5(scratch, tag, floor, log):
+    import check_config as CC
+    import check_request as CR
+    from physim2_env import lab_tools as LT
+    from physim2_env import runtime as RT
+    pilot = os.path.join(scratch, f"pilot5-{tag}")
+    os.makedirs(os.path.join(pilot, "configs"), 0o700)
+    instance, job = f"pilot-f5-{tag}-w0", f"f5-{tag}"
+    cfg = CC.REPO_PREFIX + "standin.toml"
+    script = os.path.join(pilot, "steps.json")
+    with open(script, "w") as f:
+        json.dump(flood5_steps(), f)
+    req = {"schema": "rollout-job/v1", "job_id": job, "purpose": "round-5 flood of the interception route (K9) against a stand-in endpoint",
+           "requester": "tools/check_step3.py", "pin": CR.git_head(), "pin_sha256": CR.pin_sha256(), "config": cfg, "exam_profile": "ring",
+           "instance": instance, "model": "standin/echo-1", "caps": {"max_turns": 12, "max_output_tokens": 512, "wall_minutes": 20, "box_memory_gb": 2},
+           "cap_usd": 1.0}
+    rp = os.path.join(pilot, "requests", job + ".json")
+    repo = os.path.join(scratch, f"repo5-{tag}")
+    shared = {"schema": "rollout-ledger/v1", "updated_utc": "2026-11-11T12:20:03Z", "billed_usd_total": 0.0, "reserved_usd_open": 0.0, "rows": []}
+    for rel, textf in ((CR.REQUESTS_PREFIX + job + ".json", json.dumps(req, indent=1)), (cfg, FLAT5.format(instance=instance)),
+                       (CR.SHARED_LEDGER_PATH, json.dumps(shared, indent=1))):
+        os.makedirs(os.path.dirname(os.path.join(repo, rel)), exist_ok=True)
+        with open(os.path.join(repo, rel), "w") as f:
+            f.write(textf)
+    genv = dict(vfrun.child_env(), GIT_CONFIG_GLOBAL="/dev/null", GIT_CONFIG_SYSTEM="/dev/null")
+    for argv in (["init", "-q"], ["add", "-A"], ["-c", "user.name=check_step3", "-c", "user.email=check_step3@example.invalid", "commit", "-q", "-m", "flood5"]):
+        subprocess.run(["git", "-C", repo, *argv], check=True, capture_output=True, env=genv, timeout=60)
+    commit = subprocess.run(["git", "-C", repo, "rev-parse", "HEAD"], check=True, capture_output=True, text=True, env=genv, timeout=60).stdout.strip()
+    CR.fetch(pilot, commit, job, show=lambda c, path, limit: CR.git_show(c, path, limit, repo=repo))
+    with open(os.path.join(pilot, CR.GO_FILE), "w") as f:
+        json.dump({"schema": CR.GO_SCHEMA, "ceiling_usd": 5.0, "date": datetime.datetime.now(datetime.timezone.utc).date().isoformat(),
+                   "note": "a test's own go for a stand-in endpoint: nothing is billed"}, f)
+    ledger_opt = ["--shared-ledger", os.path.join(pilot, "shared-ledger.json")]
+    standin = subprocess.Popen([PY, "-B", os.path.join(HERE, "standin_model.py"), "--script", script, "--log", os.path.join(pilot, "standin_requests.jsonl")],
+                               stdout=subprocess.PIPE, text=True, env=vfrun.child_env(), stdin=subprocess.DEVNULL)
+    out = {"job_id": job, "instance": instance}
+    try:
+        endpoint = json.loads(standin.stdout.readline())["base_url"]
+        base = [os.path.join("tools", "vfrun.py"), "--request", rp, "--pilot", pilot, "--disk-floor-gib", str(floor), "--stand-in-endpoint", endpoint]
+        rc, o = tool([*base, "--stage", "instance"], log=log)
+        p = CR.pilot_paths(pilot, job)
+        with open(p["reference"], "w") as f:
+            json.dump({"all_graded": True, "STUB": "written by tools/check_step3.py flood5: the reference stage was not run in this test"}, f)
+        rc2, o2 = tool([*base, "--stage", "dry-run", *ledger_opt], log=log)
+        if not check("G0 flood5: the instance and the dry run of the stand-in job passed", rc == 0 and rc2 == 0, (o[-300:], o2[-300:])):
+            return out
+        sam = Sampler(job)
+        sam.start()
+        t0 = time.time()
+        rc, o = tool([*base, "--stage", "rollout", *ledger_opt], log=log, timeout=5400)
+        sam.stop.set()
+        sam.join(5)
+        out["rollout_wall_s"] = round(time.time() - t0, 1)
+        end = next((json.loads(x) for x in reversed(o.splitlines()) if x.startswith('{"job_id"') and '"ended"' in x), {})
+        check("G1 flood5: the rollout ran to its end (vf-eval exited by itself with status 0)", rc == 0 and end.get("ended") == "exited", (rc, end, o[-1200:]))
+        eps = [json.loads(x) for x in open(os.path.join(p["run_dir"], "traces.jsonl"))] if os.path.exists(os.path.join(p["run_dir"], "traces.jsonl")) else []
+        tr = eps[0]["traces"][0] if eps else {}
+        ph = (tr.get("info") or {}).get("physim2") or {}
+        text = json.dumps(tr)
+        rep = {}
+        for m in re.finditer(r"FLOOD5_REPORT_BEGIN\\n(.*?)\\nFLOOD5_REPORT_END", text):
+            try:
+                rep = json.loads(json.loads('"' + m.group(1) + '"'))
+            except ValueError:
+                continue
+        out["report"] = rep
+        cp = rep.get("chat_program") or {}
+        check("G2 K9: inside the box the chat program's secret and the server's address were read from its command line, as a model could",
+              cp.get("found") is True and cp.get("secret_chars", 0) >= 16, cp)
+        og = rep.get("one_gib") or {}
+        dec, chk = og.get("declared") or {}, og.get("chunked") or {}
+        lim = RT.INTERCEPTION_BODY_MAX + (16 << 20)            # the server's limit plus what socket buffers and the relay hold
+        check(f"G3 K9: one request declaring 1 GiB and one chunked 1 GiB, with the secret: each answered 413 after at most "
+              f"{RT.INTERCEPTION_BODY_MAX >> 20} MiB (+ buffers) of its body",
+              all(str(x.get("status", "")).startswith("HTTP/1.1 413") and x.get("body_bytes_sent", 1 << 40) <= lim for x in (dec, chk)), og)
+        par = rep.get("parallel") or {}
+        answers = [a or {} for a in par.get("answers") or []]
+        bp = ph.get("box_proxy") or {}
+        cb = bp.get("callback") or {}
+        check(f"G4 K9: {len(answers)} requests of 15 MiB at once, with the secret: every one answered, and the box's proxy let at most "
+              f"{RT.CALLBACK_ACTIVE_MAX} through to the server at a time (the others waited)",
+              len(answers) == 8 and all(str(a.get("status", "")).startswith("HTTP/1.1 ") for a in answers)
+              and cb.get("most_at_once") == RT.CALLBACK_ACTIVE_MAX and cb.get("waited", 0) >= 1,
+              {"statuses": [a.get("status") for a in answers], "box_proxy": bp})
+        t_first = min([og.get("t")] + [x for x in [(par.get("t") or [None])[0]] if x]) if og.get("t") else None
+        t_last = (rep.get("unauthorized") or {}).get("t", [None, None])[1] or rep.get("t_end")
+        base_vf = sam.peak(None, (t_first or time.time()) - 0.5, 1)
+        peak_vf = sam.peak(t_first, (t_last or time.time()) + 2, 1)
+        bound = 25 * RT.INTERCEPTION_BODY_MAX * RT.CALLBACK_ACTIVE_MAX / (1 << 20) + 128
+        check(f"G5 K9: vf-eval's resident memory during these floods stayed within {bound:.0f} MiB of its level before them "
+              "(25 x the body limit x requests at once, + 128 MiB)",
+              None not in (base_vf, peak_vf) and peak_vf - base_vf < bound,
+              {"vf_eval_mib": [base_vf, peak_vf], "samples": len(sam.samples), "laboratory_mib": [sam.peak(None, None, 2)]})
+        ua = rep.get("unauthorized") or {}
+        lines = [x for x in o.splitlines() if "unauthorized request" in x]
+        minutes = max(1.0, ((ua.get("t") or [0, 60])[1] - (ua.get("t") or [0, 0])[0]) / 60.0)
+        check(f"G6 {ua.get('n')} requests without the secret: answered 401; the run's log holds at most {RT.LOG_REPEAT_MAX} of their lines "
+              "+ one a minute, and the trace counts the records dropped",
+              (ua.get("statuses") or {}).get("HTTP/1.1 401 Unauthorized", 0) == ua.get("n") and 0 < len(lines) <= RT.LOG_REPEAT_MAX + minutes + 2
+              and bp.get("log_records_dropped", 0) >= (ua.get("n") or 0) - RT.LOG_REPEAT_MAX - minutes - 2,
+              {"lines": len(lines), "statuses": ua.get("statuses"), "dropped": bp.get("log_records_dropped")})
+        labs = [os.path.join(dp, "log.jsonl") for dp, _, ns in os.walk(os.path.join(pilot, "store")) if "log.jsonl" in ns and os.sep + "labs" + os.sep in dp + os.sep]
+        rows = []
+        for lf in labs:
+            with open(lf, "rb") as f:
+                rows += f.read().splitlines()
+        big = max((len(x) for x in rows), default=0)
+        check(f"G7 the laboratory's log on the host: every line at most 2 KiB although four requests named 3 MiB operations or arguments, "
+              f"at most {LT.LAB_LOG_MAX_LINES} lines + one",
+              rows and big <= 2048 and len(rows) <= LT.LAB_LOG_MAX_LINES + 1 and len(rows) >= 2000 and b"cut at" in b"".join(rows),
+              {"files": len(labs), "lines": len(rows), "longest_bytes": big, "box_view": rep.get("lab")})
+        g = ph.get("grade") or {}
+        check("G8 the run was still graded (64 items) after all of this", g.get("n_items") == 64, {k: g.get(k) for k in ("n_items", "n_failed", "reason")})
+        check("G9 no container of this run is left", containers_left() == [], containers_left())
+        out.update(memory_mib={"vf_eval": [base_vf, peak_vf]}, box_proxy=bp, log_lines_unauthorized=len(lines), lab_log={"lines": len(rows), "longest": big})
+    finally:
+        standin.terminate()                                  # this test's own child, by its exact pid
+        try:
+            standin.wait(10)
+        except subprocess.TimeoutExpired:
+            standin.kill()
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--scratch", required=True)
@@ -603,8 +750,10 @@ def main() -> int:
         out["caps"] = run_caps(a.scratch, tag, a.disk_floor_gib, log)
     if "route" in a.only:
         out["route"] = run_route(a.scratch, tag, a.disk_floor_gib, log, a.skip_reference)
-    if "flood" in a.only:
+    if "flood" in a.only.split(","):
         out["flood"] = run_flood(a.scratch, tag, a.disk_floor_gib, log)
+    if "flood5" in a.only.split(","):
+        out["flood5"] = run_flood5(a.scratch, tag, a.disk_floor_gib, log)
     failed = [c["name"] for c in CHECKS if not c["ok"]]
     out.update(n_checks=len(CHECKS), n_failed=len(failed), failed=failed, checks=CHECKS, wall_s=round(time.time() - out["started_unix"], 1))
     text = json.dumps(out, indent=1, default=str).replace(os.path.abspath(a.scratch), "<scratch>")

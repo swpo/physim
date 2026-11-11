@@ -436,6 +436,13 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         submit froze, else submission/ as it is NOW, with no cap on attempts."""
         state = trace.state
         info = trace.info.setdefault("physim2", {})
+        try:                                                 # round 5 (K9): what the box's proxy held back, what the log filter dropped
+            proxy = getattr(runtime, "_proxy", None)
+            info["box_proxy"] = {"callback": dict(getattr(proxy, "callback_stats", None) or {}),
+                                 "refused_connections": getattr(proxy, "refused_connections", None),
+                                 "log_records_dropped": RUNTIME.LOG_FILTER.dropped_total}
+        except Exception:
+            pass
         box = self._access.pop(trace.id, None)
         frozen = None
         try:

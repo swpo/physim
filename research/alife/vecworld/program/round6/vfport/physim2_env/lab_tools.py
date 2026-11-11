@@ -34,6 +34,47 @@ from . import store as STORE
 from ._paths import use_agentenv
 
 MAX_REQUEST_VALUES = 4096 * 512                              # one block of inputs: at most MAX_BLOCK ticks
+# Round 5 (the channel sweep): the laboratory writes one line per request into <store>/<instance>/labs/<name>/log.jsonl
+# on the host, a request the agent can repeat without cost (card, usage, a refused one) included, and the line held
+# the refusal's text, which can repeat what the box sent (an operation's name, an argument's name). BoundedLog keeps
+# at most LAB_LOG_MAX_LINES lines (then one line `log_full`; requests are still served and counted in the state)
+# and cuts `error` and `detail` at LAB_LOG_TEXT_MAX characters: the file stays under about 20 MB.
+LAB_LOG_MAX_LINES = 20_000
+LAB_LOG_TEXT_MAX = 500
+
+
+class BoundedLog:
+    """The laboratory's request log, bounded (see LAB_LOG_MAX_LINES). Takes the lines LabService.handle writes
+    (one JSON object each) and passes flush and close through."""
+
+    def __init__(self, f, max_lines: int = LAB_LOG_MAX_LINES, text_max: int = LAB_LOG_TEXT_MAX):
+        self.f, self.max_lines, self.text_max = f, max_lines, text_max
+        self.lines = self.dropped = 0
+
+    def write(self, line: str) -> int:
+        if self.lines >= self.max_lines:
+            self.dropped += 1
+            if self.dropped == 1:
+                return self.f.write(json.dumps({"event": "log_full", "t": time.time(), "max_lines": self.max_lines,
+                                                "note": "further requests are served but not written here"}) + "\n")
+            return 0
+        try:
+            rec = json.loads(line)
+            for k in ("error", "detail"):
+                v = rec.get(k)
+                if isinstance(v, str) and len(v) > self.text_max:
+                    rec[k] = v[:self.text_max] + f" [... cut at {self.text_max} characters]"
+            line = json.dumps(rec) + "\n"
+        except (ValueError, AttributeError):
+            line = json.dumps({"unreadable_line_bytes": len(line)}) + "\n"
+        self.lines += 1
+        return self.f.write(line)
+
+    def flush(self):
+        return self.f.flush()
+
+    def close(self):
+        return self.f.close()
 
 
 class LabToolsConfig(vf.ToolsetConfig):
@@ -56,6 +97,10 @@ def make_service(hidden: str, name: str, check=None, status=None):
     from evaluator.lab_service import MAX_BLOCK, LabService, Rejected
 
     class VfLabService(LabService):
+        def __init__(self, *a, **kw):
+            super().__init__(*a, **kw)
+            self._log = BoundedLog(self._log)                # round 5: the request log on the host, bounded
+
         def _usage_line(self, op):
             return USAGE[op].format(n_in=self.lab.world.n_in, max_block=MAX_BLOCK)
 
@@ -252,6 +297,8 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         from verifiers.v1.mcp.server import STATE_TIMEOUT, _die_with_parent
 
         _die_with_parent()
+        from . import runtime as RUNTIME
+        RUNTIME.install_log_limits()                         # round 5: a box's malformed requests cannot grow this process's log
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.bind(("127.0.0.1", 0))                          # loopback, a port the system chooses: never MCP_HOST or MCP_PORT

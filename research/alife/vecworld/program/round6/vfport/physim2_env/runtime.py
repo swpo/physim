@@ -36,6 +36,27 @@ reader, RelayBuffer, which now pauses the copying in the same way (at most 2 x R
 connection), and it serves at most MAX_CONNECTIONS connections of its box at once (a further one is closed
 unread). So what one box can make vf-eval hold in its proxy is bounded.
 
+Round 5 (code audit K9, and the channel sweep of README section "What a box can make the host hold"): verifiers'
+interception server (the model's route out of the agent's box) accepts a request body of 1 GiB and reads it whole
+once the rollout's secret is found, and that secret is on the command line of the chat program in the box. install()
+now also sets, before any server starts, three things of verifiers by name and edits no file of it:
+
+  interception.server.MAX_REQUEST_BODY   INTERCEPTION_BODY_MAX (16 MiB); the server reads it at start()
+                        (server.py:424) for aiohttp's client_max_size: a larger body is answered 413 after that many
+                        bytes. A body is parsed whole into Python objects (measured: up to 25 times its size), so
+                        the bound on one request is about 25 x 16 MiB.
+  logging               a filter (RepeatLimit) on the interception server's logger and on Python's last-resort
+                        handler: each kind of record (logger and message) passes LOG_REPEAT_MAX times in full, then
+                        once a minute with the count dropped; every record is cut at LOG_RECORD_MAX characters. A box
+                        can make the server log one line per request (an unauthorized one, server.py:588) and aiohttp
+                        one traceback per failed request: without the filter the run's log grows with the box's rate.
+  the box's proxy       (below) a request to a callback of the host that carries no bearer (the interception server)
+                        waits until fewer than CALLBACK_ACTIVE_MAX requests of the same box go there; nothing of it,
+                        head or body, is forwarded before. And the body a box sends to a callback is cut after
+                        CALLBACK_UPLOAD_MAX bytes (the connection is closed).
+So what one box can make vf-eval hold through that route is about CALLBACK_ACTIVE_MAX x 25 x INTERCEPTION_BODY_MAX
+(measured through vf-eval: README).
+
 Why in place and not a subclass of DockerRuntime: the worker gate of the host-safety audit (round 1, change 5;
 grading.container_gate) accepts a box only if its class is EXACTLY verifiers' DockerRuntime, and that gate
 stays as it is. Why the caps are a wrapper at all: verifiers passes --cpus and --memory natively and has no
@@ -52,6 +73,7 @@ import asyncio
 import contextlib
 import contextvars
 import json
+import logging
 import os
 import re
 import signal
@@ -82,6 +104,14 @@ def docker_client_env(environ=None) -> dict:
 OUTPUT_MAX = {"stdout": 96 << 20, "stderr": 4 << 20}
 RELAY_LIMIT = 1 << 17                                        # the relay's reader pauses its copy beyond 2 x this
 MAX_CONNECTIONS = 64                                         # per box proxy, connections served at once
+# ---- round 5, code audit K9 and the channel sweep ----
+INTERCEPTION_BODY_MAX = 16 << 20                             # verifiers' interception server: a larger request body is answered 413
+CALLBACK_ACTIVE_MAX = 1                                      # per box: requests at once to a host callback without a bearer (they wait)
+CALLBACK_UPLOAD_MAX = INTERCEPTION_BODY_MAX + (1 << 20)      # per request to a host callback: body bytes a box can send through
+LOG_REPEAT_MAX = 20                                          # records of one kind that pass in full; then one a minute
+LOG_REPEAT_EVERY_S = 60.0
+LOG_RECORD_MAX = 2000                                        # characters of one record's message
+LOG_KINDS_MAX = 256                                          # kinds remembered; beyond, they share one count
 
 
 async def read_bounded(stream, cap: int) -> tuple[bytes, int]:
@@ -122,19 +152,85 @@ def relay_buffer() -> tuple[asyncio.StreamReader, _Gate]:
     return relay, gate
 
 
-async def pump(reader, relay, gate) -> None:
-    """Copy `reader` into `relay` in pieces of 64 KiB, waiting while the relay is full; feed_eof at the end."""
+async def pump(reader, relay, gate, cap: int | None = None, cut=None) -> None:
+    """Copy `reader` into `relay` in pieces of 64 KiB, waiting while the relay is full; feed_eof at the end.
+    With `cap` (round 5): after `cap` bytes the copy stops, `cut()` is called (it closes the box's connection) and
+    the relay ends there: the request reaches its server incomplete and fails."""
+    copied = 0
     try:
         while True:
             await gate.open.wait()
             chunk = await reader.read(1 << 16)
             if not chunk:
                 break
+            if cap is not None and copied + len(chunk) > cap:
+                if cut is not None:
+                    cut()
+                break
+            copied += len(chunk)
             relay.feed_data(chunk)
     except Exception:
         pass
     finally:
         relay.feed_eof()
+
+
+class RepeatLimit(logging.Filter):
+    """Round 5: a log record a box can cause once per request passes LOG_REPEAT_MAX times in full; afterwards one
+    record of its kind passes every LOG_REPEAT_EVERY_S seconds, saying how many were dropped. Every record that
+    passes is cut at LOG_RECORD_MAX characters. A kind is (logger, message template); at most LOG_KINDS_MAX kinds
+    are remembered and the rest share one count. Never raises."""
+
+    def __init__(self, clock=None):
+        super().__init__()
+        import time as _time
+        self.clock = clock or _time.monotonic
+        self.kinds: dict = {}
+        self.dropped_total = 0
+
+    def filter(self, record) -> bool:
+        try:
+            if getattr(record, "_physim2_limited", False):    # already judged (a logger's filter, then the last resort's)
+                return True
+            record._physim2_limited = True
+            key = (record.name, str(record.msg)[:120])
+            if key not in self.kinds and len(self.kinds) >= LOG_KINDS_MAX:
+                key = ("*", "*")
+            k = self.kinds.setdefault(key, [0, 0, 0.0])       # passed, dropped since the last that passed, time of that one
+            now = self.clock()
+            if k[0] >= LOG_REPEAT_MAX and now - k[2] < LOG_REPEAT_EVERY_S:
+                k[1] += 1
+                self.dropped_total += 1
+                return False
+            text = record.getMessage()
+            if k[1]:
+                text = f"[{k[1]} more records like this one were dropped] " + text
+            if len(text) > LOG_RECORD_MAX:
+                text = text[:LOG_RECORD_MAX] + f" [... cut at {LOG_RECORD_MAX} characters]"
+            record.msg, record.args = text, ()
+            if record.exc_info and k[0] >= LOG_REPEAT_MAX:   # a traceback is printed in full only the first times
+                record.exc_info, record.exc_text = None, None
+            k[0], k[1], k[2] = k[0] + 1, 0, now
+            return True
+        except Exception:
+            return True
+
+
+LOG_FILTER = RepeatLimit()
+BOX_TRIGGERED_LOGGERS = ("verifiers.v1.interception.server", "aiohttp.server", "aiohttp.web", "aiohttp.access", "aiohttp.internal",
+                         "asyncio")
+
+
+def install_log_limits() -> None:
+    """Idempotent: LOG_FILTER on the loggers a box can make write once per request, and on Python's last-resort
+    handler (what prints a record of a logger without a handler of its own: aiohttp's, the MCP library's)."""
+    for name in BOX_TRIGGERED_LOGGERS:
+        lg = logging.getLogger(name)
+        if LOG_FILTER not in lg.filters:
+            lg.addFilter(LOG_FILTER)
+    last = logging.lastResort
+    if last is not None and LOG_FILTER not in last.filters:
+        last.addFilter(LOG_FILTER)
 
 
 def resolved_caps(config) -> dict:
@@ -172,6 +268,10 @@ def install() -> bool:
 
     import verifiers.v1.runtimes.container as C
     from verifiers.v1.utils.aio import run_shielded
+
+    import verifiers.v1.interception.server as IS
+    IS.MAX_REQUEST_BODY = INTERCEPTION_BODY_MAX                 # round 5, K9: read by InterceptionServer.start() (server.py:424)
+    install_log_limits()
 
     orig_cli, orig_start = D.cli, D.DockerRuntime.start
 
@@ -249,17 +349,24 @@ def install() -> bool:
             self._bearers: dict[tuple[str, int], bytes] = {}
             self._active = 0                                 # connections being served now (MAX_CONNECTIONS)
             self.refused_connections = 0
+            self._gates: dict[tuple[str, int], asyncio.Semaphore] = {}   # round 5: per callback without a bearer
+            self.callback_stats = {"waited": 0, "most_at_once": 0, "cut_uploads": 0}
+            self._callback_active = 0
 
         def set_bearer(self, port: int, secret: str) -> None:
             if not BEARER.well_formed(secret) or isinstance(port, bool) or not isinstance(port, int) or not 0 < port < 65536:
                 raise ValueError("not a bearer or not a port")
             self._bearers[("127.0.0.1", port)] = BEARER.header_value(secret)
 
-        def _bearer_for(self, head: bytes) -> bytes | None:
+        def _callback_of(self, head: bytes):
+            """The host callback a request head is addressed to (verifiers' _Callback), or None."""
             path = BEARER.target_path(head)
             if not path.startswith(E._CALLBACK_PREFIX):
                 return None
-            callback = self._callbacks.get(path[len(E._CALLBACK_PREFIX):].partition("/")[0].partition("?")[0])
+            return self._callbacks.get(path[len(E._CALLBACK_PREFIX):].partition("/")[0].partition("?")[0])
+
+        def _bearer_for(self, head: bytes) -> bytes | None:
+            callback = self._callback_of(head)
             return None if callback is None else self._bearers.get((callback.host, callback.port))
 
         async def _handle(self, reader, writer):
@@ -274,11 +381,12 @@ def install() -> bool:
                 self._active -= 1
 
         async def _handle_one(self, reader, writer):
-            if not self._bearers or self.server is None:
+            if self.server is None:
                 return await super()._handle(reader, writer)
-            try:
+            try:                                             # round 5: every request's head is read here, bearer or not
                 head = await asyncio.wait_for(reader.readuntil(b"\r\n\r\n"), E._HEADER_TIMEOUT)
-                value = self._bearer_for(head)
+                callback = self._callback_of(head)
+                value = None if callback is None else self._bearers.get((callback.host, callback.port))
                 if value is not None:
                     head = BEARER.inject(head, value)
             except Exception:                                # no head, or one we will not rewrite: forward nothing
@@ -289,13 +397,37 @@ def install() -> bool:
                     pass
                 writer.close()
                 return None
-            relay, gate = relay_buffer()                     # K4: the copy waits while this holds 2 x RELAY_LIMIT
-            relay.feed_data(head)
-            task = asyncio.create_task(pump(reader, relay, gate))
+            # round 5 (K9): a request to a callback that has no bearer (verifiers' interception server) waits here,
+            # before anything of it is forwarded, until fewer than CALLBACK_ACTIVE_MAX of this box's go there; and
+            # what it sends there is cut after CALLBACK_UPLOAD_MAX bytes. (The laboratory, the callback with a
+            # bearer, bounds its own requests: bearer.py.)
+            sem = None
+            if callback is not None and value is None:
+                key = (callback.host, callback.port)
+                sem = self._gates.get(key)
+                if sem is None:
+                    sem = self._gates[key] = asyncio.Semaphore(CALLBACK_ACTIVE_MAX)
+                if sem.locked():
+                    self.callback_stats["waited"] += 1
+                await sem.acquire()
+                self._callback_active += 1
+                self.callback_stats["most_at_once"] = max(self.callback_stats["most_at_once"], self._callback_active)
             try:
-                return await super()._handle(relay, writer)
+                relay, gate = relay_buffer()                 # K4: the copy waits while this holds 2 x RELAY_LIMIT
+                relay.feed_data(head)
+
+                def cut():
+                    self.callback_stats["cut_uploads"] += 1
+                    writer.close()
+                task = asyncio.create_task(pump(reader, relay, gate, CALLBACK_UPLOAD_MAX if callback is not None else None, cut))
+                try:
+                    return await super()._handle(relay, writer)
+                finally:
+                    task.cancel()
             finally:
-                task.cancel()
+                if sem is not None:
+                    self._callback_active -= 1
+                    sem.release()
 
     C._communicate = _communicate
     D.cli = cli
