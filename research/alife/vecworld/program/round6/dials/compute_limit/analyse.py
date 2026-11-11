@@ -122,6 +122,26 @@ def ridge_fit(l2, area_ratio, lam=1e-3):
     return out
 
 
+def ridge_fss_fit(l32, l48, lam=1e-3):
+    """The generic counterpart of the finite-size extrapolation: the per-horizon regression fitted on both small
+    boxes with every coefficient linear in 1 / area, read off at the exam box (z = 0); residuals of the 48 px pool."""
+    z48 = (1 / 48 ** 2 - 1 / 64 ** 2) / (1 / 32 ** 2 - 1 / 64 ** 2)
+    src = ((l32, 4.0, 1.0), (l48, (64 / 48) ** 2, z48))
+    nbar = float(np.mean([l2[:, LAB:, 0].mean() * ar for l2, ar, _ in src]))
+    out = {"nbar": nbar}
+    for h in HS:
+        FF, DD = [], []
+        for l2, ar, z in src:
+            x, d = pairs(l2, h)
+            F = feats(np.stack([x[:, 0] * ar, x[:, 1]], -1), nbar)
+            FF.append(np.concatenate([F, F * z], 1))
+            DD.append(np.stack([d[:, 0] * ar, d[:, 1]], -1))
+        F, D = np.concatenate(FF), np.concatenate(DD)
+        beta = np.linalg.solve(F.T @ F + lam * len(F) * np.eye(F.shape[1]), F.T @ D)
+        out[h] = (beta[:4], DD[1] - FF[1] @ beta)
+    return out
+
+
 def ridge_predict(model, x0, h, rng):
     beta, res = model[h]
     return finish(x0 + feats(x0, model["nbar"]) @ beta + res[rng.integers(0, len(res), M_FC)])
@@ -271,10 +291,14 @@ def main():
 
     # ---------------- 1. finite-size table
     fs = {}
-    for H in P:
-        if P[H] is None:
+    P128, meta128 = load_pool(S, 128)
+    if P128 is not None:
+        out["pools"]["128"] = dict(members=int(P128.shape[0]), ticks=int(P128.shape[1]), cpu_s=sum(m["cpu_s"] for m in meta128),
+                                   tracker_overflow=sum(m["overflow"] for m in meta128), note="finite-size table only")
+    for H in (32, 48, 64, 128):
+        l2 = P.get(H) if H != 128 else P128
+        if l2 is None:
             continue
-        l2 = P[H]
         B = l2.shape[0]
         n_late = l2[:, LAB:, 0].mean(1)
         sb = l2[..., 1]
@@ -335,7 +359,8 @@ def main():
     items = [(a_, h) for a_ in ANCH for h in HS if a_ + h <= T_EXAM]
     fss_c = None
     if P[48] is not None:
-        fss_c = {f: fss(law_fit(P[32], f), law_fit(P[48], f)) for f in ("law", "lin")}
+        fss_c = {f: fss(law_fit(P[32], f), law_fit(P[48], f)) for f in ("law", "lin", "const")}
+        fss_r = ridge_fss_fit(P[32], P[48])
         out["fss_constants"] = dict(law=fss_c["law"], cost_units=round(P[32].shape[0] * unit[32] + P[48].shape[0] * unit[48], 2))
     for i in range(B64):
         others = np.array([j for j in range(B64) if j != i])
@@ -349,6 +374,7 @@ def main():
             if fss_c:
                 for f in fss_c:
                     put(f"{f}_fss32+48", i, a_, h, law_predict(fss_c[f], x0, h, r0, 1.0), y)
+                put("ridge_fss32+48", i, a_, h, ridge_predict(fss_r, x0, h, r0), y)
         for R in budgets:
             for dr in range(n_draw):
                 r_ = np.random.default_rng([i, R, dr])
@@ -416,7 +442,8 @@ def main():
              "8-tick steps, the round-5 control without the selection term, constant drift; _noscale = law without "
              "the box-size scaling of its noise; A32tile = analog on synthetic episodes pooled from four 32 px "
              "members; +res2 = the same plus a linear correction of the mean fitted on 2 exam-size Lab episodes; "
-             "_fss32+48 = law constants extrapolated linearly in 1 / area from the whole 32 and 48 px pools. "
+             "_fss32+48 = law (or control) constants extrapolated linearly in 1 / area from the whole 32 and 48 px "
+             "pools; ridge_fss32+48 = the regression with every coefficient linear in 1 / area, read at 64 px. "
              "Cells: all, |h64 (64 ticks ahead), |s_b (kind share only).",
         scale_sd=[round(float(v), 4) for v in scale], truth_members=B64, items_per_member=len(items),
         L_K={c or "all": round(float(L("K", c)), 4) for c in CELLS},
@@ -435,7 +462,10 @@ def main():
     for cell in CELLS:
         for a_, b_ in (("law64@R2", f"A32tile+res{N_LAB}@R8"), ("law64@R2", "A64@R15"), ("law64@R1", "A64@R4"),
                        ("law64@R2", "A32tile@R15"), ("law_fss32+48", "law64@R15"), ("law_fss32+48", "law32@R15"),
-                       ("law_fss32+48", "lin_fss32+48"), ("law_fss32+48", "A32tile@R15"), ("law_fss32+48", "A64@R15")):
+                       ("law_fss32+48", "lin_fss32+48"), ("law_fss32+48", "A32tile@R15"), ("law_fss32+48", "A64@R15"),
+                       ("law_fss32+48", "const_fss32+48"), ("law_fss32+48", "ridge_fss32+48"), ("law_fss32+48", "ridge32@R15"),
+                       ("ridge_fss32+48", "ridge32@R15"), ("law_fss32+48", "ridge48@R8"), ("law_fss32+48", "law48@R8"),
+                       ("ridge64@R15", "ridge32@R15"), ("ridge64@R15", "ridge48@R8"), ("law64@R15", "law48@R8")):
             if a_ in pol and b_ in pol:
                 cmp_[f"{a_} - {b_} {cell}".strip()] = diff(a_, b_, cell)
     out["budget_curve"]["paired_differences"] = dict(note="skill difference (first minus second), bootstrap se, z; paired over the truth members", **cmp_)
