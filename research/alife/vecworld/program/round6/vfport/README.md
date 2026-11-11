@@ -83,8 +83,10 @@ rehearsal/              cloud container only, not for the Mac: issue.py (round 2
 redteam/                the red team's attack scripts and results, kept; three attacks run again after the first fixes
                         (*-after-fix.json); not run again after the host-safety changes
 docker/                 Dockerfile.ring (the one image of every box), Dockerfile.network (proxy-bound hosts only)
-configs/                scripted_ring.toml (step 2c); a model rollout's config is NOT here: it is a flat file under
-                        ../rollouts/configs/, named by a request (section 8.12)
+configs/                scripted_ring.toml (step 2c); ring_rollout.example.toml (an EXAMPLE of the flat schema, started by
+                        nothing); qwen_ring_bash.toml (round 3's, superseded, kept because round 3's check tools read
+                        it). A model rollout's config is not here: it is a flat file under ../rollouts/configs/,
+                        named by a request (section 8.12)
 round 4 (section 8.12)  physim2_env/boxcaps.py and runtime.py (the box caps on verifiers' one `docker run` of a box, read
                         back from the engine; the bearer on a box's proxy; credential-free docker clients),
                         bearer.py (the laboratory's per-rollout secret), spend.py (the spend stop and the context cap
@@ -837,7 +839,23 @@ logs every reply to `/workspace/lab_log.jsonl`; `lab.usage()` reports time and t
 `ring_r4` (256 samples per item, a reset costs 17 ticks); the image `physim2-ring:2` holds the `bash` harness
 preinstalled from hashed pins behind a stand-in for `uv`, so a box fetches nothing at set-up; a rollout config
 is a flat file (`physim2_env/rollout_config.py`), a profile fixes world, exam config, image, box and reference
-policies (`physim2_env/profiles.py`). Proof: `results/round4_exam.json` and `tests/` of that agent.
+policies (`physim2_env/profiles.py`). Proof: `results/round4_exam.json` and `tests/` of that agent (48 checks
+through vf-eval, 91 unit checks in a throwaway container, 19 under tripwires; the reference table equals round
+5's own grader item by item).
+
+What a reader of a run should know (from the same handoff): the statement an agent got is the saved task row's
+`prompt`, and `info.physim2.limits` holds its numbers and its sha256; `lab.usage()` also reports seconds and turns
+used and left, and context tokens when there is a context cap; `info.physim2.reasoning` records what reasoning
+was asked for and what came back (readable, encrypted only, none); vf-eval's log line `rollout done: ...
+reward=0.000` is printed by verifiers before the isolated grader runs, and the reward is in the saved trace; the
+reply to an accepted submit is not in the trace (the run stops before another model call could carry it): it is
+in the laboratory's `frozen.json` and in the box's `lab_log.jsonl`. `tools/prove.py` takes the policy `null`, and
+its cross-check with round 5's grader (which runs that grader's sandbox on the machine) is off unless asked for.
+
+**What this pin serves: the ring profile, and no other.** The gliders configs of round 5 still parse, but this pin
+refuses to build a bundle for them: the baseline predictor needs a pool of 512 simulated episodes, about a second
+for the ring and about 1.7 core-hours for gliders in every vf-eval process. A gliders profile needs a pool that is
+built once and kept, an exam sized for its budget and its own reference sizes; none of that is in this pin.
 
 ## 9. Where the code contradicted the memo, and what else turned up
 

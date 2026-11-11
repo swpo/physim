@@ -831,7 +831,8 @@ a harness, a tool, a network rule, a mount, an environment variable or a command
 unknown keys are refused, and what a config expands to is compared with what the pin fixes
 (`tools/check_config.py`; `python -B tools/check_config.py --schema` prints the schema). That is why a new config
 or a new instance under this pin needs no new review, and why you never edit either file. All code comes from
-the pin. An example of the two files, for the default model:
+the pin. An example of the two files, for the default model (`configs/ring_rollout.example.toml` in this folder
+is the same example with a comment on every key; nothing starts from it):
 
 ```toml
 schema = "physim2-rollout/v1"
