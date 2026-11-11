@@ -1,0 +1,316 @@
+{
+  "archive_sha256": "bbd051e50f0d83f3754e33ba84b432f09ff59b30119e60713e0fa81703849165",
+  "files": [
+    {
+      "bytes": 2688,
+      "in_git": true,
+      "path": "sysinfo.txt",
+      "sha256": "2fb5c11f828b08b833c5956fd876f8317ef89eef4c7c3807a4707d55de7e09e5"
+    },
+    {
+      "bytes": 0,
+      "in_git": true,
+      "path": "job.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 286,
+      "in_git": true,
+      "path": "setup.log",
+      "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
+    },
+    {
+      "bytes": 59850,
+      "in_git": true,
+      "path": "run.log",
+      "sha256": "fc3ed9f32f8706c2f6e7aed027a04f14dec06594cdd9aa02a5712b1a0556e157"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "setup.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "exit.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "setup.start",
+      "sha256": "a667a562f83aaf2120d6259938c77fc68bbf8dd12bd2395062da6def3f8c8dc7"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.start",
+      "sha256": "dcaee18c9e1f01129d79c42ae0e93050f30b475768333481d8c95202ccfdbf36"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.end",
+      "sha256": "f32241fe71310ccff34e0b686059a5ba3711ca85d5eb2d5c1639dcf1f893129e"
+    },
+    {
+      "bytes": 1268,
+      "in_git": true,
+      "path": "out-listing.tsv",
+      "sha256": "fde7505e1431abeae5600a4b1a6d0fa6ff0c6ca5ff903827766d063a169bd09b"
+    },
+    {
+      "bytes": 427,
+      "in_git": true,
+      "path": "out/progress.txt",
+      "sha256": "ef0fc678949afa2a6b879df5c62c4aa56bf5a947de62f4239334274ca67cc86b"
+    },
+    {
+      "bytes": 17250,
+      "in_git": true,
+      "path": "out/presmoke/P/train_info.json",
+      "sha256": "c419eec46642297f285aa0eccd7fa150c55701a298809a3e43be026554b054ea"
+    },
+    {
+      "bytes": 16758,
+      "in_git": true,
+      "path": "out/presmoke/P/worlds.json",
+      "sha256": "a90577efe0de6e949db509ff69f07274bedd14b03eb020c842603c7ce66dfd38"
+    },
+    {
+      "bytes": 126447,
+      "in_git": true,
+      "path": "out/presmoke/P/scores.npz",
+      "sha256": "6c2e34d8d4d8e7924a9e6b0344ecc7baf4ab9c6ecf005c1d9ceecb8d2a226196"
+    },
+    {
+      "bytes": 35801,
+      "in_git": true,
+      "path": "out/presmoke/P/scores_refs.npz",
+      "sha256": "e8152ab21cbe5035e51c30efc30ecc3564dfcf95771bb5277929647d8fe921ac"
+    },
+    {
+      "bytes": 9336,
+      "in_git": true,
+      "path": "out/presmoke/P/meta.json",
+      "sha256": "197a9d6d25c02254412fabac57302bfd8101b0a6a526c567a0a20605a46e97b6"
+    },
+    {
+      "bytes": 810077,
+      "in_git": true,
+      "path": "out/presmoke/P/items.npz",
+      "sha256": "8c625b8be9a5987c117813b93450819b0fe1cb1553bdd4aa4cdcfcdf44c79c8d"
+    },
+    {
+      "bytes": 12147,
+      "in_git": true,
+      "path": "out/presmoke/gate.json",
+      "sha256": "a0d854291a92e04590f6f2ba4ba10bce7768ea4ad4fac39b0d78f216c62d29a9"
+    },
+    {
+      "bytes": 1589,
+      "in_git": true,
+      "path": "out/presmoke/code_norm.json",
+      "sha256": "8fa54cf9d47f00bbea72f4e055281fa3bfb7159eaf9ce16571d9f21843944c0a"
+    },
+    {
+      "bytes": 7300,
+      "in_git": true,
+      "path": "out/presmoke/progress.txt",
+      "sha256": "231798ce97bda931fc0c4c11dec24fc952efac2edb2a644427feee350851b19f"
+    },
+    {
+      "bytes": 18663,
+      "in_git": true,
+      "path": "out/presmoke/info.json",
+      "sha256": "38bbbb9aa060645b15be6fdec2ea7dc7cb4f186655bc6577c3a0877be1b6d9df"
+    },
+    {
+      "bytes": 603,
+      "in_git": true,
+      "path": "out/presmoke/shape_test.json",
+      "sha256": "d540d4836df78584ab30652ae2ba090dabda6ae6000d60ac597270d3e6d4c6e7"
+    },
+    {
+      "bytes": 14594,
+      "in_git": true,
+      "path": "out/presmoke/N30/train_info.json",
+      "sha256": "9ca57ba01b5cec6d81a35fad00f62ad7f9a41e1125b075103f2f2a49ec3f11a7"
+    },
+    {
+      "bytes": 8316,
+      "in_git": true,
+      "path": "out/presmoke/N30/worlds.json",
+      "sha256": "94b396dde260420d54dc8af2ac076280b4e144e762db6cf9492b61eb968acbaa"
+    },
+    {
+      "bytes": 68463,
+      "in_git": true,
+      "path": "out/presmoke/N30/scores.npz",
+      "sha256": "392d03c75a79c4e2213f4eaf8d7d5a329d35fbc88c1a8fc14264a5104971d9e2"
+    },
+    {
+      "bytes": 20183,
+      "in_git": true,
+      "path": "out/presmoke/N30/scores_refs.npz",
+      "sha256": "4b33f8d4c1a1a744800c69bf6aaaad28e373e88c886c4ea7e9aa20c9d9055738"
+    },
+    {
+      "bytes": 9084,
+      "in_git": true,
+      "path": "out/presmoke/N30/meta.json",
+      "sha256": "3115c7024afc293a560435f6c5fdff0b5c6d9484c840d4ddef7bcf5777802bde"
+    },
+    {
+      "bytes": 403773,
+      "in_git": true,
+      "path": "out/presmoke/N30/items.npz",
+      "sha256": "4883fa46538dde73c14dd5c5c007823cc342a2ac842ec1b07c1ebee5eb8c6383"
+    },
+    {
+      "bytes": 206016,
+      "in_git": true,
+      "path": "out/full/P/train_info.json",
+      "sha256": "a7c2237e4a72d039bb3ab2768cc56116a96a681ba3356123931cac7519a4a306"
+    },
+    {
+      "bytes": 134253,
+      "in_git": true,
+      "path": "out/full/P/worlds.json",
+      "sha256": "7115b249282e330061b1fea9ed9645347c2194930404d9d429e94635ca6b8366"
+    },
+    {
+      "bytes": 941979,
+      "in_git": true,
+      "path": "out/full/P/scores.npz",
+      "sha256": "1f306b28118d746ead75b22dda61d735061f020ba2615c0288a7c9f653fb0911"
+    },
+    {
+      "bytes": 255969,
+      "in_git": true,
+      "path": "out/full/P/scores_refs.npz",
+      "sha256": "45af5d1f04156f37124051b14609be64bc882eecc0adbbcef44bd7e34a845c86"
+    },
+    {
+      "bytes": 9838,
+      "in_git": true,
+      "path": "out/full/P/meta.json",
+      "sha256": "154d72d4a476342e97e1aba8f00d72b36a5767c2d6d842b2b58c63f59d0ef750"
+    },
+    {
+      "bytes": 6498186,
+      "in_git": true,
+      "path": "out/full/P/items.npz",
+      "sha256": "4063dd71b49e97236eb12f9ef5d770e9bd08c7f2bf6612e56e7410db34067a99"
+    },
+    {
+      "bytes": 182710,
+      "in_git": true,
+      "path": "out/full/N10/train_info.json",
+      "sha256": "c04dd9e3c912c5750f6d0b6472b9b51d2e60fb389a8b9309d0c864e599aec4ab"
+    },
+    {
+      "bytes": 104181,
+      "in_git": true,
+      "path": "out/full/N10/worlds.json",
+      "sha256": "01a98ac8ed3a7adca312d4cec5ba7800b132c7e62da622068549b7cd8200d5aa"
+    },
+    {
+      "bytes": 678482,
+      "in_git": true,
+      "path": "out/full/N10/scores.npz",
+      "sha256": "78fa71a6813102477716fc99d69137f1e119dff23f73f8ed5029b5609a316beb"
+    },
+    {
+      "bytes": 192505,
+      "in_git": true,
+      "path": "out/full/N10/scores_refs.npz",
+      "sha256": "68aee2c27479fd64bdffa14fb1700cfe6eec35f248f8b1ef119e64cff7d7c9a3"
+    },
+    {
+      "bytes": 9410,
+      "in_git": true,
+      "path": "out/full/N10/meta.json",
+      "sha256": "4569cd8dbcda66a1e3af8830859c486842fe24616e02218edd7a56644e4158fb"
+    },
+    {
+      "bytes": 4836517,
+      "in_git": true,
+      "path": "out/full/N10/items.npz",
+      "sha256": "d1de3d71d8af42c2106ddaecbdc25bff980470d553bcd5c9f18dcef760bd4dc7"
+    },
+    {
+      "bytes": 440143,
+      "in_git": true,
+      "path": "out/full/gate.json",
+      "sha256": "b27a4eac93c2f0daed6a3d54dbddd350f67367877da8abc1af3763543ca0fb29"
+    },
+    {
+      "bytes": 1586,
+      "in_git": true,
+      "path": "out/full/code_norm.json",
+      "sha256": "37f1ba7f0f1f28fb8ec567ba25200fcf903e0dfe3465dcb45d0f07c0c53eb6cc"
+    },
+    {
+      "bytes": 52458,
+      "in_git": true,
+      "path": "out/full/progress.txt",
+      "sha256": "ee6cac652c1ef36a6f1d8191e025462168f2f2a4c5aabab5cf43cbb4e146c19d"
+    },
+    {
+      "bytes": 27121,
+      "in_git": true,
+      "path": "out/full/info.json",
+      "sha256": "f069e7a957373f2d9d1bedea52a123aa40d729dec31648b9db1c9c8a2e8bb993"
+    },
+    {
+      "bytes": 183204,
+      "in_git": true,
+      "path": "out/full/N30/train_info.json",
+      "sha256": "c80aab3d95361cd0096bed4c1fc838f70873afa98a3b327c2fb33281355dc463"
+    },
+    {
+      "bytes": 103429,
+      "in_git": true,
+      "path": "out/full/N30/worlds.json",
+      "sha256": "25abf1408fb043936f7f9ea13d023c7af279d88ab3645724b5f271425c82822d"
+    },
+    {
+      "bytes": 678636,
+      "in_git": true,
+      "path": "out/full/N30/scores.npz",
+      "sha256": "9649bd85b39402d3ba8d65ffcb155344a186afac5ed913b3dbb4564f6224e0e0"
+    },
+    {
+      "bytes": 192608,
+      "in_git": true,
+      "path": "out/full/N30/scores_refs.npz",
+      "sha256": "5df6c7b2994f5534f435189bfe503a2f0a7894bdda2e3e94f9c603c55e823310"
+    },
+    {
+      "bytes": 9335,
+      "in_git": true,
+      "path": "out/full/N30/meta.json",
+      "sha256": "354b1646eeb113b0726f326c720916362990852d47b727fa2867b5e48f0a9308"
+    },
+    {
+      "bytes": 4793635,
+      "in_git": true,
+      "path": "out/full/N30/items.npz",
+      "sha256": "38940f1e477f11f835f5f89f14e7df995dfe8a8da6afc111a6f6a3146b4575ea"
+    }
+  ],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r6-foundryexam-004/collected/; ask for them by path.",
+  "skipped": [],
+  "skipped_count": 0,
+  "transfer_bytes": 20965430,
+  "transfer_stopped": null,
+  "truncated": false
+}

@@ -313,24 +313,24 @@
       "state": "done"
     },
     {
-      "billed_usd": null,
+      "billed_usd": 4.3263,
       "cap_usd": 8.4,
       "conservative_usd": 4.4912,
-      "finished_at": null,
+      "finished_at": "2026-11-11T16:21:00Z",
       "gpu": "A100_40GB (lambdalabs)",
       "hours": 2.257,
       "job_id": "r6-foundryexam-004",
       "purpose": "Round-6 study foundryexam, follow-up of 003 (done): the true-weight reference net trained to convergence (4,096 episodes, 8,000 steps), 128 instead of 32 prior worlds in the neighbourhood arms, new seeds, new items and Labs on the same hidden worlds",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "collecting"
+      "state": "done"
     },
     {
       "billed_usd": null,
       "cap_usd": 7.2,
-      "conservative_usd": 1.5471,
+      "conservative_usd": 1.5536,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.777,
+      "hours": 0.781,
       "job_id": "r6-foundryexam-005",
       "purpose": "Round-6 study foundryexam, last job: the learning curve of the true-weight reference net in the screened-prior arm (1,024 / 4,096 / 16,384 simulated episodes per hidden world), a third independent repeat of that arm (new items, Labs and seeds on the same 16 hidden worlds)",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -375,10 +375,10 @@
   ],
   "summary": {
     "auto_job_cap_usd": 25.0,
-    "committed_usd": 71.1008,
+    "committed_usd": 67.0271,
     "prior_spend_usd": 0.0,
-    "spent_usd": 59.0391,
+    "spent_usd": 58.8807,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T16:20:49Z"
+    "updated_at": "2026-11-11T16:21:00Z"
   }
 }
