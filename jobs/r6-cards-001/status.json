@@ -27,14 +27,14 @@
   },
   "cap_usd": 11.4,
   "cost": {
-    "billed_usd": 0.0,
-    "conservative_usd": 0.0
+    "billed_usd": null,
+    "conservative_usd": 0.1253
   },
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
-  "hard_deadline": null,
-  "hard_deadline_epoch": null,
+  "hard_deadline": "2026-11-11T14:43:41Z",
+  "hard_deadline_epoch": 1794408221.256524,
   "history": [
     {
       "at": "2026-11-11T11:41:21Z",
@@ -50,11 +50,16 @@
       "at": "2026-11-11T11:43:39Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-11T11:47:27Z",
+      "message": "job started on the pod",
+      "state": "running"
     }
   ],
   "job_id": "r6-cards-001",
   "max_estimate_usd": 7.4,
-  "message": "renting a pod",
+  "message": "job started on the pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -132,27 +137,36 @@
     "planned_at": "2026-11-11T11:41:47Z",
     "window_hours": 2.25
   },
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r6-cards-001-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
   "pods": [
     {
       "billed_usd": null,
-      "created_at": null,
+      "created_at": "2026-11-11T11:43:57Z",
       "data_center": "us-east-1",
       "gpu": "A100_40GB",
       "name": "gpujob-r6-cards-001-a1",
       "note": null,
-      "pod_id": null,
+      "pod_id": "ef2d8eb010494f6d8fa2d22dff34952f",
       "provider": "lambdalabs",
       "provision_error": null,
       "rate_usd_hr": 1.99,
-      "ready_at": null,
+      "ready_at": "2026-11-11T11:47:18Z",
       "requested_at": "2026-11-11T11:43:41Z",
       "spot": false,
-      "state": "create_intent",
+      "state": "ready",
       "terminated_at": null
     }
   ],
   "pods_terminated": null,
+  "run_deadline": "2026-11-11T13:47:27Z",
   "run_started_epoch": 1794397419.601971,
-  "state": "provisioning",
-  "updated_at": "2026-11-11T11:43:39Z"
+  "started_at": "2026-11-11T11:47:27Z",
+  "state": "running",
+  "updated_at": "2026-11-11T11:47:27Z"
 }
