@@ -1,0 +1,18 @@
+# qwen-ring-002-cutb: rehearsal of the round-4 pin in the cloud container (integrator). THIS ROLLOUT IS INTERRUPTED ON
+# PURPOSE after a few turns (the tool and vf-eval killed between two model calls) to rehearse the runbook's
+# clean-up; it is not a measurement. Default settings (job qwen-ring-002-cut, which was meant for this, ended by
+# itself at its first call: the route refused its reasoning object).
+# PILOT_NEVER_REUSE_AS_EXAM: the instance is public pilot material.
+schema = "physim2-rollout/v1"
+model = "qwen/qwen3.6-35b-a3b"
+exam_profile = "ring"
+instance = "pilot-qwen-ring-002-cutb"
+max_turns = 150
+max_output_tokens_per_turn = 8192
+max_context_tokens = 200000
+wall_minutes = 60
+box_memory_gb = 4
+cap_usd = 2.0
+reasoning_effort = "default"
+reasoning_summary = "default"
+push = false
