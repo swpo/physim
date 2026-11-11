@@ -49,7 +49,7 @@ WRITE_CMD = re.compile(r"(?:^|[;&|(]|\n)\s*(cp|mv|mkdir|touch|rm|tee|sed\s+-i)\b
 LAB_OP = re.compile(r"\.\s*(card|usage|reset|advance|experiment|validate|submit)\s*\(")
 USES_LAB = re.compile(r"\bLab\s*\(|\blab\w*\s*\.")
 SIM = re.compile(r"\bSimulator\s*\(|\.\s*(?:episodes|free_run)\s*\(|\bbuild_world\s*\(")
-LOCAL_CHECK = re.compile(r"physim2[./]validate|predict_runner\.py")
+LOCAL_CHECK = re.compile(r"\bpython[\d.]*\s+(?:-[A-Za-z]+\s+)*(?:-m\s+physim2\.validate|[\w./]*(?:validate|predict_runner)\.py)")
 PY_WORK = re.compile(r"^\s*(def|for|while|class)\s|scipy|linalg|optimize|\bfft\b", re.M)
 RANDOM = re.compile(r"\brandom\b|\brng\b|\.normal\(|\.uniform\(|randn|standard_normal|\.choice\(|\.integers\(")
 ZEROS = re.compile(r"^(?:np\.|numpy\.)?zeros(?:_like)?\(")
@@ -225,9 +225,16 @@ def usage(tr, prices, cfg):
         out["cost_usd_with_cache_read_price"] = None if p_c is None else round(
             (tot["prompt_tokens_uncached"] * p_in + tot["cached_input_tokens"] * p_c + tot["completion_tokens"] * p_out) / 1e6, 6)
         out["cost_usd_for_the_ledger"] = round(max(full, prov if n_prov else 0.0), 6)       # the ledger's rule (extract.py)
-        ctx, turns = prices.get("context_window"), cfg.get("max_turns")
-        if ctx and turns and cfg.get("max_output_tokens") is not None:                       # LEDGER.md: what the caps allow
-            out["bound_by_caps_usd"] = round((turns * ctx * p_in + (cfg["max_output_tokens"] + ((cfg.get("sampling") or {}).get("max_tokens") or 0)) * p_out) / 1e6, 4)
+        ctx, T, M, reply = prices.get("context_window"), cfg.get("max_turns"), cfg.get("max_total_tokens"), (cfg.get("sampling") or {}).get("max_tokens") or 0
+        bounds = {}                                          # LEDGER.md: what the caps allow the bill to be (rows 1 and 3); the smaller one holds
+        if ctx and T and cfg.get("max_output_tokens") is not None:
+            bounds["max_turns x context window x input price + (max_output_tokens + max_tokens) x output price"] = (T * ctx * p_in + (cfg["max_output_tokens"] + reply) * p_out) / 1e6
+        if T and M:
+            bounds["max_turns x max_total_tokens x input price + max_total_tokens x (output - input price) + max_tokens x output price, "
+                   "not counting the tool output of the last reply"] = (T * M * p_in + M * max(0.0, p_out - p_in) + reply * p_out) / 1e6
+        if bounds:
+            rule = min(bounds, key=bounds.get)
+            out.update(bound_by_caps_usd=round(bounds[rule], 4), bound_by_caps_rule=rule, bounds_usd={k: round(v, 4) for k, v in bounds.items()})
     return out
 
 
@@ -580,7 +587,8 @@ def flags(tr, turns, rows, lab, files, sub_dir, long_s, reset_cost=1):
         add("ended_by_a_cap_or_error", f"the rollout did not end by the agent's own choice: stop condition `{stop}`"
             + (", timed out" if tr.get("is_timeout") else "") + ("".join(f", error {e.get('type')}" for e in tr.get("errors") or [])))
     last = rows[-1] if rows else None
-    if last and last["tool"] and last["result"].get("seen") is False:
+    froze = bool(last) and "submit" in last["kinds"] and bool(labc.get("submitted"))     # an accepted submit ends the rollout by design
+    if last and last["tool"] and last["result"].get("seen") is False and not froze:
         add("last_tool_result_never_seen", f"the last reply (turn {last['turn']}) called a tool whose result never reached the model: "
             f"{' + '.join(last['kinds'])}; whatever it did (a validation attempt, a laboratory request) still counted", [last["turn"]])
     # -- outside the workspace, and looks at the box's wiring
@@ -617,7 +625,9 @@ def flags(tr, turns, rows, lab, files, sub_dir, long_s, reset_cost=1):
     n_res, used = labc.get("resets") or 0, labc.get("ticks_used") or 0
     if n_res and n_res * reset_cost >= 0.25 * used:          # fresh starts instead of long episodes: each shows o(0), a draw from the long-run law
         add("resets_take_much_of_the_budget", f"{n_res} resets took {n_res * reset_cost} of the {used} laboratory ticks used: {(used - n_res * reset_cost) / n_res:.1f} ticks "
-            "of advance per episode on average. The agent bought fresh starts rather than long episodes; each reset shows o(0) of a new start")
+            "of advance per episode on average. The agent bought fresh starts rather than long episodes; each reset shows o(0) of a new start"
+            + ("" if lab is None else f"; {n_res - len({x['episode'] for x in lab if x['ok'] and (x['op'] == 'advance' or (x['op'] == 'experiment' and x['ticks'] > reset_cost))})} "
+               "episodes are a reset alone (the laboratory's log)"))
     py_err = [(r["turn"], r["result"]["python_error"]) for r in rows if r["result"].get("python_error")]
     if py_err:
         add("python_errors", f"{len(py_err)} tool call(s) ended in a Python traceback", [t for t, _ in py_err], [f"turn {t}: {e}" for t, e in py_err[:25]])
@@ -721,7 +731,7 @@ def budgets(tr, cfg, use, exam_cfg, caps_text, lab_eps, prices):
     row("agent box CPU seconds (read inside the box: unverified)", ph.get("agent_box_cpu_s_unverified"),
         None if not env.get("cpus") or not wall_cap else env["cpus"] * wall_cap, "the envelope's cores x the wall-clock cap")
     if use.get("cost_usd_for_the_ledger") is not None:
-        row("model spend, USD", use["cost_usd_for_the_ledger"], use.get("bound_by_caps_usd"), "max_turns x context window x input price + output caps x output price")
+        row("model spend, USD", use["cost_usd_for_the_ledger"], use.get("bound_by_caps_usd"), "the smaller bound of section 3")
     return rows
 
 
@@ -801,9 +811,11 @@ def markdown(R):
         if pr:
             rows += [["prices (USD per million tokens)", f"{pr['input']} in, {pr['output']} out, {fmt(pr.get('cache_read'))} cache read; source: {pr.get('source') or 'the command line'}"],
                      ["cost", f"**${us['cost_usd_for_the_ledger']:.4f}** for the ledger (the larger of: all input at the full price ${us['cost_usd_all_input_at_full_price']:.4f}, "
-                      f"the provider's own cost fields ${fmt(us['provider_reported_cost_usd'], 4)}); with the cache-read price ${fmt(us.get('cost_usd_with_cache_read_price'), 4)}"]]
+                      f"the provider's own cost fields ${fmt(us['provider_reported_cost_usd'], 4)})"
+                      + (f"; with the cache-read price ${us['cost_usd_with_cache_read_price']:.4f}" if us.get("cost_usd_with_cache_read_price") is not None else "; no cache-read price given")]]
             if us.get("bound_by_caps_usd") is not None:
-                rows.append(["what the caps allowed", f"${us['bound_by_caps_usd']:.2f} (max_turns x context window x input price + output caps x output price)"])
+                other = [f"${v:.2f}" for k, v in us["bounds_usd"].items() if k != us["bound_by_caps_rule"]]
+                rows.append(["what the caps allowed", f"${us['bound_by_caps_usd']:.2f} ({us['bound_by_caps_rule']}" + (f"; the other bound gives {other[0]}" if other else "") + ")"])
         else:
             rows.append(["cost", f"no prices given (--prices or --model-entry); the provider's own cost fields sum to ${fmt(us['provider_reported_cost_usd'], 4)}"])
         out.append(table(["", ""], rows) + "\n")
@@ -858,7 +870,8 @@ def markdown(R):
                 notes.append("kind " + ", ".join(d["kinds_from_the_laboratory_log"]) + " by the laboratory's log (not visible in the text)")
             lr = t.get("lab_record") if first else None
             res = r["result"]
-            status = "no result: the rollout ended" if res.get("seen") is False else "" if res.get("seen") is None else (
+            status = ("accepted: the submit ended the rollout" if "submit" in r["kinds"] and o["lab"].get("submitted") else "no result: the rollout ended") if res.get("seen") is False \
+                else "" if res.get("seen") is None else (
                 "Lab rejected: " + res["lab_error"] if res.get("lab_error") else "error: " + res["python_error"] if res.get("python_error") else
                 ("rejected: " + str(d.get("error")) if d.get("ok") is False else f"ok ({res.get('chars', 0):,} chars)"))
             rows.append([r["turn"] if first else "", fmt(t["t_s"], 0) if first else "", fmt(t["model_s"], 1) if first else "", fmt(t["tools_s"], 1) if first else "",

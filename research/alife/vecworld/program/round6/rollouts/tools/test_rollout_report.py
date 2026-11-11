@@ -96,7 +96,7 @@ def synthetic(base):
     turn([], [])                                                                                                                 # 10
     turn([lab("validate", path="submission")], [ok({"ok": True, "accepted": False})], error=None)                                # 11
     turn([], [], error={"type": "RateLimitError"})                                                                               # 12
-    turn([lab("submit", path="submission")], [ok({"ok": True, "accepted": True})])                                               # 13
+    turn([lab("submit", path="submission")], [])                                                 # 13: an accepted submit ends the rollout; no result node
     tr["timing"]["agent"]["end"] = t[0]
     ph = tr["info"]["physim2"]
     ph["lab"].update(ticks_used=35, resets=3, episodes=3, requests=7, rejected=1, validations=1, submissions=1, submitted=True, total_nats=2.0)
@@ -128,7 +128,9 @@ def main():
         keys = ["n_calls", "billed_input_tokens", "prompt_tokens_uncached", "cached_input_tokens", "completion_tokens", "cost_usd_all_input_at_full_price",
                 "cost_usd_with_cache_read_price", "provider_reported_cost_usd", "cost_usd_for_the_ledger"]
         check("qwen: usage and cost equal extract.py's", all(u[k] == ru[k] for k in keys), ", ".join(f"{k}={u[k]}" for k in keys[-4:]))
-        check("qwen: what the caps allowed is the ledger's $1.22", round(u["bound_by_caps_usd"], 2) == 1.22, str(u["bound_by_caps_usd"]))
+        check("qwen: what the caps allowed is the ledger's $1.22 (row 1); with the Astra caps and prices the ledger's $19.02 (row 3)", round(u["bound_by_caps_usd"], 2) == 1.22 and round(
+            RR.usage({"calls": []}, {"input": 10, "output": 50, "context_window": 1050000}, {"max_turns": 22, "max_total_tokens": 70000, "max_output_tokens": 70000, "sampling": {"max_tokens": 16384}})
+            ["bound_by_caps_usd"], 2) == 19.02, str(u["bound_by_caps_usd"]))
         w, rw = rep["wall_s"], res["wall_s"]
         check("qwen: wall clock", all(close(round(w[k], 1), rw[k]) for k in ("boot", "setup", "agent", "finalize")) and close(w["agent_model"], rw["agent_split"]["model"]["duration"]))
         tl = rep["timeline"]
@@ -218,6 +220,9 @@ def main():
     check("static inputs: two statements on one line; a helper that draws at random",
           (cls("U = np.zeros((32, 24)); U[:, 0:4] = 0.5\n", "U"), cls("def probe(k):\n    return 0.1 * rng.normal(size=(k, 24))\nU = probe(8)\n", "U"),
            cls("def probe(k):\n    u = np.zeros((k, 24))\n    u[0, 3] = 1\n    return u\nU = probe(8)\n", "U")) == ("structured", "blind", "structured"))
+    kinds = lambda c: RR.read_bash(c, {}, "/workspace")[0]  # noqa: E731
+    check("a local check is a run of it, not a look at its file", kinds("cat physim2/predict_runner.py; ls submission") == {"read"} and
+          kinds("python -m physim2.validate submission") == {"validate"} and kinds("python physim2/predict_runner.py submission a.npz b.npz") == {"validate"})
     pc = RR.predictor_check("import m\ndef predict(history, program, queries, n_samples, seed):\n    return m.go(history, program['test'], queries, n_samples, seed)\n")
     check("static predictor: passing history to a helper counts as a read", pc["history"]["reads"] == 1 and pc["program"]["reads"] == 1)
     pc = RR.predictor_check("def predict(history, program, queries, n_samples, seed):\n    T = history.shape[0]\n    return {}\n")

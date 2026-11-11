@@ -48,7 +48,7 @@ Consistency: reference table recomputed from its per item file: yes; trace L K a
 | largest context / largest reply | 37,567 / 2,340 tokens |
 | prices (USD per million tokens) | 0.11 in, 1.01 out, 0.099 cache read; source: GET https://api.pinference.ai/api/v1/models (no credential sent) |
 | cost | **$0.1025** for the ledger (the larger of: all input at the full price $0.1025, the provider's own cost fields $0.0951); with the cache-read price $0.0952 |
-| what the caps allowed | $1.22 (max_turns x context window x input price + output caps x output price) |
+| what the caps allowed | $1.22 (max_turns x context window x input price + (max_output_tokens + max_tokens) x output price; the other bound gives $7.96) |
 
 Wall clock: boot 1.6 s, setup 19.7 s, agent 643.3 s (model 451.4 s, harness and tools 191.9 s), finalize 1.5 s, verifier 2.5 s.
 
@@ -70,7 +70,7 @@ Wall clock: boot 1.6 s, setup 19.7 s, agent 643.3 s (model 451.4 s, harness and 
 | submission size, bytes | 0 | 67,108,864 | 0.0 % | exam config (reference table) |  |
 | predictor CPU seconds, worst item | – | 30 | – | exam config (reference table) | not in this trace (no predictor ran, or one box per item) |
 | agent box CPU seconds (read inside the box: unverified) | 163.7 | 14,400.00 | 1.1 % | the envelope's cores x the wall-clock cap |  |
-| model spend, USD | 0.102 | 1.22 | 8.4 % | max_turns x context window x input price + output caps x output price |  |
+| model spend, USD | 0.102 | 1.22 | 8.4 % | the smaller bound of section 3 |  |
 
 ## 5. What the agent did
 

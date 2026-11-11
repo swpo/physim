@@ -360,7 +360,12 @@
   "cost_usd_all_input_at_full_price": 0.102471,
   "cost_usd_with_cache_read_price": 0.095249,
   "cost_usd_for_the_ledger": 0.102471,
-  "bound_by_caps_usd": 1.2223
+  "bound_by_caps_usd": 1.2223,
+  "bound_by_caps_rule": "max_turns x context window x input price + (max_output_tokens + max_tokens) x output price",
+  "bounds_usd": {
+   "max_turns x context window x input price + (max_output_tokens + max_tokens) x output price": 1.2223,
+   "max_turns x max_total_tokens x input price + max_total_tokens x (output - input price) + max_tokens x output price, not counting the tool output of the last reply": 7.9583
+  }
  },
  "wall_s": {
   "boot": 1.5935754776000977,
@@ -489,7 +494,7 @@
    "used": 0.102471,
    "cap": 1.2223,
    "share": 0.08383457416346234,
-   "cap_from": "max_turns x context window x input price + output caps x output price",
+   "cap_from": "the smaller bound of section 3",
    "note": ""
   }
  ],

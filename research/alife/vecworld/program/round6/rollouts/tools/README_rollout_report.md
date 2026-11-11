@@ -29,8 +29,8 @@ expressions, parsed with `ast`, never run or imported.
    skill (p10, p50, p90), items worse than K, and the agent's loss minus each policy's on the same items. Five
    consistency checks say whether the reference table really belongs to this trace.
 3. **Usage and cost**: billed tokens per the provider's per-call usage, what verifiers' caps counted, cost at the
-   full input price, with the cache-read price, the provider's own cost fields, the ledger's figure, and the
-   bound the caps allowed (`LEDGER.md`'s formula).
+   full input price, with the cache-read price, the provider's own cost fields, the ledger's figure, and what
+   the caps allowed (the smaller of `LEDGER.md`'s two bounds: turns x context window, turns x total-token cap).
 4. **Budgets**: turns, tokens, wall clock, laboratory ticks and nats, attempts, submission size, predictor CPU,
    box CPU and spend, each against its cap, with where the cap comes from.
 5. **Timeline**: every tool call with its turn, the second at which the reply arrived, the reply's latency, the
@@ -50,8 +50,8 @@ used: verifiers stamps a tool result when the next request arrives.
 Kinds of a bash call (several can apply; tables count the first of network, submit, validate, lab, lab-info,
 sim, compute, write, read): `lab` = Python that ran in the call (a `-c` body, a here-document piped to python, or
 a script the agent wrote earlier in the trace) calls `.reset(`, `.advance(` or `.experiment(` on a `Lab`;
-`lab-info` = only `.card(` or `.usage(`; `validate` and `submit` = those methods, or the local check
-(`physim2.validate`, `predict_runner.py`, marked as local); `sim` = `Simulator(`, `.episodes(`, `.free_run(`,
+`lab-info` = only `.card(` or `.usage(`; `validate` and `submit` = those methods, or a run of the local check
+(`python -m physim2.validate`, `python .../predict_runner.py`; marked as local); `sim` = `Simulator(`, `.episodes(`, `.free_run(`,
 `build_world(`; `write` = a here-document into a file, a redirect, cp, mv, mkdir, tee, sed -i, or the edit tool;
 `read` = cat, head, tail, ls, find, grep, wc and the like, or Python of at most 20 lines without def, loop, scipy
 or linalg (it only inspects); `compute` = other Python; `network` = see the flag. A call of the laboratory tool
@@ -67,7 +67,8 @@ Class of the inputs of a laboratory request:
 | the code of the call (static reading, marked so) | an integer, `np.zeros(...)` never written to | the argument is built from a random generator | built without a random generator in sight |
 
 Flags: `ended_by_a_cap_or_error` (stop condition other than `agent_completed` or `frozen`),
-`last_tool_result_never_seen`, `outside_the_workspace` (an absolute path outside the workdir other than /tmp,
+`last_tool_result_never_seen` (not raised for an accepted submit, which ends a rollout by design),
+`outside_the_workspace` (an absolute path outside the workdir other than /tmp,
 /dev/null and interpreters; `..`, `~`, the root of the box; reads of the environment; mount, ps, `ln -s`,
 docker.sock), `writes_into_the_public_package`, `network_attempt` (curl, wget, pip install, git clone, urllib,
 requests, sockets, any URL; `physim2.Lab()` itself is not counted), `lab_errors` (the laboratory's counters,
@@ -103,7 +104,7 @@ agent's last write to `predict.py` in the trace, or `--submission`).
 
 ## Checked
 
-`python -B rollouts/tools/test_rollout_report.py` (41 checks, about a second, no model):
+`python -B rollouts/tools/test_rollout_report.py` (42 checks, about a second, no model):
 
 - **Qwen rollout** (`../qwen_ring_001/`): every row's L, skill vs O and vs C, the bootstrap se and ranges, the
   agent's paired differences, tokens (758,132 billed in, 18,888 out), cost ($0.102471; $0.095249 with the
@@ -120,6 +121,13 @@ agent's last write to `predict.py` in the trace, or `--submission`).
   workspace; network attempts; a long stretch; a failed model call; a reply without a tool call; two calls in
   one reply; a predictor that ignores history and program; a graded submission without laboratory use;
   laboratory use hidden in a script the trace never shows.
+
+- **The second model rollout** (`astra_ring_001`, read from its runner's scratch folder minutes after it ended;
+  nothing of it is committed by this tool's author, its report is its runner's to make): no crash, all five
+  consistency checks true, and its bound equals the ledger's $19.02. That trace was the first with an accepted
+  submit, the laboratory tool and reset-only episodes; it corrected three rules (an accepted submit is not a
+  lost tool result; reading the file of the local check is not a validation; the bound on the bill when the
+  total-token cap is smaller than the context window) and prompted `resets_take_much_of_the_budget`.
 
 ## The two example reports
 

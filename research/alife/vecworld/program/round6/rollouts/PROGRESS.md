@@ -112,13 +112,17 @@ report a person can read, with no model in the loop.
 - 11:47 `tools/rollout_report.py` (work in progress, committed): scores beside the reference policies, usage and
   cost, budgets, timeline, flags.
 - 11:56 DONE. `tools/rollout_report.py`, `tools/README_rollout_report.md` (inputs, the rules behind the
-  heuristics, what a trace alone cannot tell), `tools/test_rollout_report.py` (41 checks, all passing: the
+  heuristics, what a trace alone cannot tell), `tools/test_rollout_report.py` (42 checks, all passing: the
   tool's numbers against the runner's `result.json`, `reference_noise.json`, `LEDGER.md` and `prove.py`'s table;
   synthetic traces for the paths no model has used yet). Example reports: `qwen_ring_001/rollout_report.md`
   and `scripted_ring_S/rollout_report.md` (each with its `.json`). New folder `scripted_ring_S/`: the scripted
   trace and the laboratory's log of that rollout, as test inputs.
   Before the commit: 0 credentials and 0 account identifiers (`tools/scan_key.py`), 0 hidden values of the pilot
   instance in the new files.
+- 12:10 Tried on the trace of astra_ring_001 as soon as that rollout had exited (read only, from its runner's
+  scratch folder; output to the toolsmith's scratch folder, nothing of it committed here): it ran, its five
+  consistency checks hold, its bound equals the ledger's $19.02. Three rules corrected by that trace and one
+  flag added (`tools/README_rollout_report.md`, "Checked"). The report of that rollout is its runner's to make.
 
 For the next runner: after `tools/extract.py`, add one step,
 
