@@ -49,6 +49,12 @@
     "window_hours": 2.45
   },
   "pods": [],
+  "review": {
+    "at": "2026-11-11T17:03:25Z",
+    "file": "jobs/r6-dialsa-002/review.md",
+    "sha256": "4478acf1605669c4c401e48d1dd6702804569b787c23bf30f2f9deba95b5fbff",
+    "summary": "held, 1 major: one jitted step per iteration under the platform allocator; replaced by r6-dialsa-003"
+  },
   "state": "cancelled",
   "updated_at": "2026-11-11T17:01:24Z"
 }
