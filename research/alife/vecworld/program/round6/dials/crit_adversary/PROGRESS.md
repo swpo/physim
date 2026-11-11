@@ -57,3 +57,6 @@ Commands (CPU, `OMP_NUM_THREADS=1 nice -n 10`, the vw1 venv's python -B; ARGS = 
 Raw arrays (S.npz, A.npz) were scratch only; the scripts regenerate them. Seed 5 was the development seed of the
 recipes; seed 6 ran after they were frozen; seeds 7 and 8 are the designer's runs only. All hidden values are the
 designer's pilot values: never to be reused as an exam.
+Note on reproduction: the seed-5 and seed-6 arrays were made by `adv_sim.py` before the `bank=0` switch was added
+(two guards around the filter-bank runs; the default path is unchanged but was not re-run after the edit). Seeds 7
+and 8 were made with the committed file. `adv_fit.py` and `make_summary.py` were re-run on all four seeds as committed.
