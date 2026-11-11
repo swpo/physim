@@ -9,11 +9,41 @@
       "at": "2026-11-11T16:30:17Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-11T16:35:52Z",
+      "message": "accepted: CPU_NODE via nebius at $0.54/h, at most $2.03",
+      "state": "queued"
     }
   ],
   "job_id": "r6-dialsb-002",
-  "message": "request received",
+  "max_estimate_usd": 2.03,
+  "message": "accepted: CPU_NODE via nebius at $0.54/h, at most $2.03",
+  "plan": {
+    "max_estimate_usd": 2.03,
+    "offers": [
+      {
+        "cloud_id": "cpu-d3_16vcpu-64gb",
+        "country": "FI",
+        "data_center": "eu-north1",
+        "disk_gb": 120,
+        "gpu_memory_gb": 0,
+        "gpu_type": "CPU_NODE",
+        "is_spot": false,
+        "memory_gb": 64,
+        "provider": "nebius",
+        "rank": 0,
+        "rate_usd_hr": 0.54,
+        "security": "secure_cloud",
+        "socket": "PCIe",
+        "stock": "Available",
+        "vcpus": 16
+      }
+    ],
+    "planned_at": "2026-11-11T16:35:52Z",
+    "window_hours": 3.75
+  },
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-11T16:30:17Z"
+  "state": "queued",
+  "updated_at": "2026-11-11T16:35:52Z"
 }
