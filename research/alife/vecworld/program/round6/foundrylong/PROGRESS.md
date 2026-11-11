@@ -87,4 +87,4 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 |---|---|---|---|
 | r6-foundrylong-001 | done 21:01 UTC (exit 0, 2.35 h of run) | $8.10 | $4.92 |
 | r6-foundrylong-002 | failed 21:26 UTC at its presmoke speed guard (compilation counted) | $8.10 | $0.10 |
-| r6-foundrylong-003 | requested 21:38 UTC | $8.10 | - |
+| r6-foundrylong-003 | running since 21:47 UTC; presmoke passed; speed guard chose 143 W steps (1.55 s per step of 8 fits) | $8.10 | - |
