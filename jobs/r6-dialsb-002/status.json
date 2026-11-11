@@ -1,9 +1,34 @@
 {
+  "billing_window_hours": 4.5,
+  "bundle": {
+    "bundle_sha256": "2b50089bb67ea13816a856f153584ad0c8d89a767edb2dcb8e759dbcde67d12c",
+    "files": {
+      "job.sh": "e1c73ed302f19de90c94999770ccb08d2a00a0cb75792a6ac43792a6c4c92770",
+      "request.json": "d42e345dadbd684e45328d6168a79ed59715bab1b83a16e4ebe17ed2ec24c2ae",
+      "run.sh": "fa21ccad3aa8c13ba0f04eb6707bc21b9e16c032ebbac641bd0e7b3ac9b60f61",
+      "setup.sh": "973c45e2ebd958a560af131db6f1d08a16bb1c6de2cc2af3629c6369d5b74412",
+      "src.tar.gz": "2e7987d01d2acbf3fa11507a24ef9dc53a2406fcaedda987ad6af0e4057bb1a6"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round6/dials/sublevel_second",
+      "research/alife/vecworld/program/round6/dials/crit_adversary",
+      "research/alife/vecworld/program/round6/dials/dialsB"
+    ],
+    "ref": "52ae6e403631dbde76864bb2843cd8c9487cd1ba",
+    "src_bytes": 9430700
+  },
   "cap_usd": 2.5,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-11T16:30:17Z",
@@ -14,11 +39,35 @@
       "at": "2026-11-11T16:35:52Z",
       "message": "accepted: CPU_NODE via nebius at $0.54/h, at most $2.03",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-11T16:36:13Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r6-dialsb-002",
   "max_estimate_usd": 2.03,
-  "message": "accepted: CPU_NODE via nebius at $0.54/h, at most $2.03",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "cpu-d3_16vcpu-64gb",
+      "country": "FI",
+      "data_center": "eu-north1",
+      "disk_gb": 120,
+      "gpu_memory_gb": 0,
+      "gpu_type": "CPU_NODE",
+      "is_spot": false,
+      "memory_gb": 64,
+      "provider": "nebius",
+      "rank": 0,
+      "rate_usd_hr": 0.54,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 16
+    }
+  ],
   "plan": {
     "max_estimate_usd": 2.03,
     "offers": [
@@ -44,6 +93,8 @@
     "window_hours": 3.75
   },
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-11T16:35:52Z"
+  "pods_terminated": null,
+  "run_started_epoch": 1794414973.227658,
+  "state": "provisioning",
+  "updated_at": "2026-11-11T16:36:13Z"
 }
