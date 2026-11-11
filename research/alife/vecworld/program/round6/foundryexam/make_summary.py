@@ -309,6 +309,24 @@ def analyse_arm(d, arm):
     out["lab_nats"] = dict(mean=float(np.mean([h["lab"]["mean"] for h in worlds["hidden"]])),
                            max=float(np.max([h["lab"]["max"] for h in worlds["hidden"]])))
     out["train_worlds"] = [g["n_train"] for g in worlds["groups"]]
+    # ---- by query horizon, with the same bootstrap (added after job 003's results were seen: descriptive)
+    byh = {}
+    for j, cell in enumerate(meta["cells"]):
+        if not A.valid[j]:
+            continue
+        Aj = Arm({k: v[:, [j]] for k, v in S.items()}, world, klass)
+        e = dict(oes_C=Aj.quantity(oes_fn("C"), ["K", "O", "C"]), oes_P0=Aj.quantity(oes_fn("P0"), ["K", "O", "P0"]),
+                 share_noexp=Aj.quantity(share_noexp, ["K", "C"] + noexp))
+        for N in BUDGETS:
+            cc, f = sigma_at(N)
+            if len(cc) > 2:
+                e[f"sigma@{N}"] = Aj.quantity(f, ["K", "C"] + cc)
+        e["sigma_no_lab"] = Aj.quantity(lambda L: (min(L[b] for b in noexp) - L["C"]) / (L["K"] - L["C"]), ["K", "C"] + noexp)
+        for q in e.values():
+            q.pop("per_world", None)
+            q.pop("by_seed_of", None)
+        byh[str(cell[1])] = e
+    out["by_horizon"] = byh
     # ---- per hidden world and per group (centre): point values (seed-mean)
     def pw(fn, bases):
         sm = {b: np.mean([A.Lw[k] for k in A.bases[b]], 0) for b in bases}

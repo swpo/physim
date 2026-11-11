@@ -47,6 +47,186 @@
    }
   }
  },
+ "by_horizon": {
+  "what": "per query horizon: oracle-normalised skill of C and P0, the share of C's skill taken with no hypothesis and no experiment, and sigma against the Lab budget (1 - best null share); point values, written after the results",
+  "source": "results/analysis.json: arms.<arm>.oes_by_cell",
+  "arms": {
+   "P": {
+    "horizons": [
+     1,
+     2,
+     4,
+     8,
+     16
+    ],
+    "oes_C": [
+     0.932,
+     0.868,
+     0.759,
+     0.637,
+     0.485
+    ],
+    "oes_P0": [
+     0.911,
+     0.822,
+     0.671,
+     0.515,
+     0.349
+    ],
+    "share_noexp": [
+     0.978,
+     0.947,
+     0.884,
+     0.81,
+     0.72
+    ],
+    "sigma@8": [
+     0.017,
+     0.042,
+     0.102,
+     0.177,
+     0.28
+    ],
+    "sigma@32": [
+     0.01,
+     0.027,
+     0.062,
+     0.106,
+     0.177
+    ],
+    "sigma@128": [
+     0.006,
+     0.016,
+     0.037,
+     0.065,
+     0.111
+    ],
+    "sigma@512": [
+     0.002,
+     0.007,
+     0.017,
+     0.026,
+     0.045
+    ]
+   },
+   "N30": {
+    "horizons": [
+     1,
+     2,
+     4,
+     8,
+     16
+    ],
+    "oes_C": [
+     0.954,
+     0.909,
+     0.835,
+     0.756,
+     0.609
+    ],
+    "oes_P0": [
+     0.918,
+     0.831,
+     0.67,
+     0.486,
+     0.27
+    ],
+    "share_noexp": [
+     0.963,
+     0.914,
+     0.802,
+     0.643,
+     0.443
+    ],
+    "sigma@8": [
+     0.024,
+     0.051,
+     0.114,
+     0.18,
+     0.412
+    ],
+    "sigma@32": [
+     0.017,
+     0.035,
+     0.084,
+     0.122,
+     0.326
+    ],
+    "sigma@128": [
+     0.012,
+     0.023,
+     0.055,
+     0.066,
+     0.239
+    ],
+    "sigma@512": [
+     0.007,
+     0.014,
+     0.033,
+     0.04,
+     0.105
+    ]
+   },
+   "N10": {
+    "horizons": [
+     1,
+     2,
+     4,
+     8,
+     16
+    ],
+    "oes_C": [
+     0.951,
+     0.905,
+     0.823,
+     0.724,
+     0.505
+    ],
+    "oes_P0": [
+     0.941,
+     0.884,
+     0.784,
+     0.671,
+     0.444
+    ],
+    "share_noexp": [
+     0.989,
+     0.976,
+     0.953,
+     0.927,
+     0.88
+    ],
+    "sigma@8": [
+     0.011,
+     0.024,
+     0.047,
+     0.073,
+     0.12
+    ],
+    "sigma@32": [
+     0.009,
+     0.019,
+     0.046,
+     0.073,
+     0.12
+    ],
+    "sigma@128": [
+     0.006,
+     0.013,
+     0.03,
+     0.048,
+     0.068
+    ],
+    "sigma@512": [
+     0.003,
+     0.006,
+     0.014,
+     0.017,
+     0.02
+    ]
+   }
+  }
+ },
  "compute": {
   "what": "member-ticks an agent needs for the no-experiment policy of arm P: finding screened worlds (round-5 screen with the weights-only pre-screen: member-ticks of job r5-foundry-002's enrichment arm per candidate found; without it: job r5-foundry-001's screen per candidate), the exam-time gate (8 members x 332 ticks per candidate), 64 training episodes per world; one episode with burn-in = 332 ticks. Written after the results; weight statistics of the pre-screen not counted.",
   "member_ticks_per_candidate": {

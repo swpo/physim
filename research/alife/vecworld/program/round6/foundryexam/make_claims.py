@@ -90,6 +90,10 @@ def main():
         for k in ("N90_data_only", "N_P0_data_only", "N90_finetune", "P0_share_of_C"):
             if k in R["budgets"]:
                 add(f"{arm}.{k}", f"arm {arm}: {k}", f"{p}.budgets.{k}")
+        for hh, e in R.get("by_horizon", {}).items():
+            for nm in ("share_noexp", "sigma@8", "sigma@32", "sigma@512"):
+                if nm in e:
+                    add(f"{arm}.h{hh}.{nm}", f"arm {arm}, horizon {hh} ticks only: {nm} (after-the-fact breakdown)", f"{p}.by_horizon.{hh}.{nm}")
         add(f"{arm}.convergence", f"arm {arm}: convergence by criterion 6 per kind of net", f"{p}.convergence")
         add(f"{arm}.stationarity", f"arm {arm}: share of the variance carried by the tick alone", f"{p}.stationarity")
         add(f"{arm}.oes_by_class", f"arm {arm}: per-cell-mean OES by program class", f"{p}.oes_by_class",

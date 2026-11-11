@@ -99,6 +99,13 @@ def main():
             e = cv.get(k) or cv.get(f"{x} {k}")
             cells.append("-" if e is None else f"{e['ok']} / {e['nets']} ({e['late_share_max']:.3f}), {e['best_step_median']:.0f} / {e['steps']}")
         print(f"| {k.replace(' s0', '')} | " + " | ".join(cells) + " |")
+    if all("by_horizon" in A[x] for x in arms):
+        print("\nby query horizon (ticks): share of C's skill with no hypothesis and no experiment; sigma at 8, 32 and 512 Lab episodes\n")
+        print("| arm | quantity | " + " | ".join(str(h) for h in A[arms[0]]["by_horizon"]) + " |")
+        print("|---|---|" + "---|" * len(A[arms[0]]["by_horizon"]))
+        for x in arms:
+            for nm in ("oes_C", "share_noexp", "sigma@8", "sigma@32", "sigma@512"):
+                print(f"| {x} | {nm} | " + " | ".join(iv(e[nm], 2) for e in A[x]["by_horizon"].values()) + " |")
     if a.other:
         B = json.load(open(a.other))["arms"]
         print(f"\nbetween jobs, arm P (this job, other job {json.load(open(a.other))['job']}):\n")

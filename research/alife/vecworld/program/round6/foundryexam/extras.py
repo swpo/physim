@@ -55,6 +55,21 @@ def main():
         what="eps of a weight neighbour (W = sqrt(1 - eps^2) W_true + eps W_fresh) whose simulator, run from the hidden state, "
              "has the same pooled skill as the policy; log-linear interpolation between eps 0.03, 0.1, 0.3; written after the results",
         source="results/analysis.json: arms.<arm>.state_given_loss and arms.<arm>.table", arms=we)
+    # ---- by horizon (per cell): share of C's skill and sigma against the Lab budget, point values on seed-mean scores
+    bh = {}
+    for arm, R in A["arms"].items():
+        oc = R["oes_by_cell"]
+        hs = [c[1] for c in R["cells"]]
+        sh = lambda b: [oc[b][j] / oc["C"][j] for j in range(len(hs))]
+        e = dict(horizons=hs, oes_C=[round(x, 3) for x in oc["C"]], oes_P0=[round(x, 3) for x in oc["P0"]],
+                 share_noexp=[round(max(sh(b)[j] for b in ("P0", "S@0", "P0s") if b in oc), 3) for j in range(len(hs))])
+        for N in (8, 32, 128, 512):
+            cand = [b for b in (f"D@{N}", f"FT@{N}", f"Dr@{N}", "P0", "S@0") if b in oc]
+            e[f"sigma@{N}"] = [round(1.0 - max(sh(b)[j] for b in cand), 3) for j in range(len(hs))]
+        bh[arm] = e
+    out["by_horizon"] = dict(what="per query horizon: oracle-normalised skill of C and P0, the share of C's skill taken with no hypothesis "
+                                  "and no experiment, and sigma against the Lab budget (1 - best null share); point values, written after the results",
+                             source="results/analysis.json: arms.<arm>.oes_by_cell", arms=bh)
     # ---- compute of the no-experiment policy (arm P)
     pool = json.load(open(os.path.join(RES, "pool.json")))
     gate = A["gate"]["passed"]
@@ -122,6 +137,7 @@ def main():
                              source="results/wind_probe7.json", ranking=pool["centres"]["ranking"], chosen=pool["centres"]["chosen"])
     with open(os.path.join(RES, "summary_extra.json"), "w") as f:
         json.dump(out, f, indent=1)
+    print(json.dumps(out["by_horizon"]["arms"]))
     print(json.dumps(out["weight_error_equivalent"]["arms"]))
     print(json.dumps(out["compute"]["with_prescreen"]), out["compute"]["share_of_C"])
     if "between_jobs" in out:
