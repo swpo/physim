@@ -63,6 +63,13 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
   C), third independent repeat of arm P. job.sh smoke from the git archive with FX_ARMS=P FX_N_CBIG=1: exit 0 (2.8 min).
   A100, max 2.75 h, cap $7.20. 004 is still running (N arms).
 
+- 16:21 job 004 DONE, exit 0: 2.17 pod-hours billed, $4.33; failed [], skipped []; 80.9 M member-ticks.
+  results/analysis_job004.json (= results/analysis.json for now), summary.json, figures. Pooled skill: arm P C 0.768 (Csm
+  0.734: C still gains 0.034 from 4x data), P0 0.663, share 0.863 [0.835, 0.889]; N30 with 83-128 neighbours 0.868; N10 0.958.
+  Between jobs 003 and 004 every policy except C repeats within 0.004 (P0[16]: 0.017). By horizon: arm P at 16 ticks sigma
+  0.33 [0.26, 0.42] at 8 Lab episodes, 0.25 at 32, 0.11 at 512. N30 has one hidden world different from 003 (c1672-j1006
+  for j1003), as the review of 004 foresaw.
+
 ## Done
 - design and criteria declared and committed; pool and centres; code; CPU smokes from the git archive; requests 001 (rejected,
   $0), 002 (to be cancelled after arm P), 003 (pushed).

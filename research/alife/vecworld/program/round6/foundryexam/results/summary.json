@@ -1,0 +1,6392 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "study": "foundryexam (round 6): an exam pilot where the hidden law is a network's weights",
+ "date": "2026-11-11",
+ "jobs": [
+  {
+   "job_id": "r6-foundryexam-001",
+   "state": "rejected",
+   "exit_code": null,
+   "message": "invalid request",
+   "cost": {
+    "billed_usd": 0.0,
+    "conservative_usd": 0.0
+   },
+   "gpu": null,
+   "provider": null,
+   "rate_usd_hr": null,
+   "started_at": null,
+   "finished_at": null,
+   "run_hours": null,
+   "review": null,
+   "errors": [
+    "notes: printable text up to 4000 characters"
+   ],
+   "source": "origin/gpu-jobs:jobs/r6-foundryexam-001/status.json (copy: results/job/status_r6-foundryexam-001.json)"
+  },
+  {
+   "job_id": "r6-foundryexam-002",
+   "state": "cancelled",
+   "exit_code": null,
+   "message": "job cancelled; pods terminated",
+   "cost": {
+    "billed_usd": 1.9196,
+    "conservative_usd": 2.0553
+   },
+   "gpu": [
+    "A100_40GB"
+   ],
+   "provider": [
+    "lambdalabs"
+   ],
+   "rate_usd_hr": [
+    1.99
+   ],
+   "started_at": "2026-11-11T11:43:38Z",
+   "finished_at": "2026-11-11T12:41:29Z",
+   "run_hours": null,
+   "review": "0 blocker, 0 major, 4 minor; fine to run",
+   "errors": null,
+   "source": "origin/gpu-jobs:jobs/r6-foundryexam-002/status.json (copy: results/job/status_r6-foundryexam-002.json)"
+  },
+  {
+   "job_id": "r6-foundryexam-003",
+   "state": "done",
+   "exit_code": 0,
+   "message": "job finished (exit 0); pods terminated",
+   "cost": {
+    "billed_usd": 2.1274,
+    "conservative_usd": 2.2654
+   },
+   "gpu": [
+    "A100_40GB"
+   ],
+   "provider": [
+    "lambdalabs"
+   ],
+   "rate_usd_hr": [
+    1.99
+   ],
+   "started_at": "2026-11-11T12:46:20Z",
+   "finished_at": "2026-11-11T13:50:40Z",
+   "run_hours": null,
+   "review": "0 blocker, 0 major, 2 minor; the changes are correct; the speed guard is lenient (1.25x, no validation); fine to run",
+   "errors": null,
+   "source": "origin/gpu-jobs:jobs/r6-foundryexam-003/status.json (copy: results/job/status_r6-foundryexam-003.json)"
+  },
+  {
+   "job_id": "r6-foundryexam-004",
+   "state": "done",
+   "exit_code": 0,
+   "message": "job finished (exit 0); pods terminated",
+   "cost": {
+    "billed_usd": 4.3263,
+    "conservative_usd": 4.4912
+   },
+   "gpu": [
+    "A100_40GB"
+   ],
+   "provider": [
+    "lambdalabs"
+   ],
+   "rate_usd_hr": [
+    1.99
+   ],
+   "started_at": "2026-11-11T14:10:30Z",
+   "finished_at": "2026-11-11T16:21:00Z",
+   "run_hours": null,
+   "review": "0 blocker, 0 major, 2 minor; N-arm hidden picks may differ from 003 (gate noise keyed by row); speed guard still lenient; fine to run",
+   "errors": null,
+   "source": "origin/gpu-jobs:jobs/r6-foundryexam-004/status.json (copy: results/job/status_r6-foundryexam-004.json)"
+  }
+ ],
+ "design": "DESIGN.md (criteria and thresholds declared before any GPU request)",
+ "claims": [
+  {
+   "id": "P.worlds",
+   "text": "arm P: hidden worlds, items",
+   "value": {
+    "n_hidden": 16,
+    "n_items": 512,
+    "train_worlds": [
+     210
+    ],
+    "valid_cells": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.n_hidden"
+   }
+  },
+  {
+   "id": "P.ceiling",
+   "text": "arm P: which candidate is the ceiling C",
+   "value": "scratch",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.ceiling_is"
+   }
+  },
+  {
+   "id": "P.oes.C",
+   "text": "arm P: pooled oracle-normalised skill of C",
+   "value": {
+    "value": 0.7677,
+    "se": 0.0278,
+    "p05": 0.7206,
+    "p95": 0.8132,
+    "median_world": 0.8037,
+    "se_worlds_only": 0.0279
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.C.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.Cft",
+   "text": "arm P: pooled oracle-normalised skill of Cft",
+   "value": {
+    "value": 0.7543,
+    "se": 0.0293,
+    "p05": 0.705,
+    "p95": 0.8022,
+    "median_world": 0.8025,
+    "se_worlds_only": 0.0294
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.Cft.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.Csm",
+   "text": "arm P: pooled oracle-normalised skill of Csm",
+   "value": {
+    "value": 0.7338,
+    "se": 0.0287,
+    "p05": 0.6858,
+    "p95": 0.7812,
+    "median_world": 0.7582,
+    "se_worlds_only": 0.0288
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.Csm.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.P0",
+   "text": "arm P: pooled oracle-normalised skill of P0",
+   "value": {
+    "value": 0.6627,
+    "se": 0.0343,
+    "p05": 0.6052,
+    "p95": 0.7192,
+    "median_world": 0.7063,
+    "se_worlds_only": 0.0345
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.P0.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.P0s",
+   "text": "arm P: pooled oracle-normalised skill of P0s",
+   "value": {
+    "value": 0.6461,
+    "se": 0.0357,
+    "p05": 0.5862,
+    "p95": 0.7046,
+    "median_world": 0.6863,
+    "se_worlds_only": 0.0359
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.P0s.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.S@0",
+   "text": "arm P: pooled oracle-normalised skill of S@0",
+   "value": {
+    "value": 0.6581,
+    "se": 0.0351,
+    "p05": 0.5993,
+    "p95": 0.7154,
+    "median_world": 0.7039,
+    "se_worlds_only": 0.0353
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.S@0.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.P0w16",
+   "text": "arm P: pooled oracle-normalised skill of P0w16",
+   "value": {
+    "value": 0.5222,
+    "se": 0.0416,
+    "p05": 0.4509,
+    "p95": 0.5893,
+    "median_world": 0.5671,
+    "se_worlds_only": 0.0422
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.P0w16.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.P0w64",
+   "text": "arm P: pooled oracle-normalised skill of P0w64",
+   "value": {
+    "value": 0.6284,
+    "se": 0.0352,
+    "p05": 0.5686,
+    "p95": 0.6861,
+    "median_world": 0.6612,
+    "se_worlds_only": 0.0355
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.P0w64.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.Kp",
+   "text": "arm P: pooled oracle-normalised skill of Kp",
+   "value": {
+    "value": 0.2157,
+    "se": 0.0903,
+    "p05": 0.0649,
+    "p95": 0.361,
+    "median_world": 0.3353,
+    "se_worlds_only": 0.0908
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.Kp.oes_pooled"
+   }
+  },
+  {
+   "id": "P.oes.plugTrue",
+   "text": "arm P: pooled oracle-normalised skill of plugTrue",
+   "value": {
+    "value": 1.0002,
+    "se": 0.0002,
+    "p05": 0.9999,
+    "p95": 1.0004,
+    "median_world": 1.0001,
+    "se_worlds_only": 0.0002
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.table.plugTrue.oes_pooled"
+   }
+  },
+  {
+   "id": "P.curve.S",
+   "text": "arm P: S(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     0,
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.8572452947224978,
+     0.865449138660664,
+     0.8650674240381265,
+     0.8657782221129531,
+     0.8653968040186948,
+     0.8657999253647197
+    ],
+    "oes_pooled": [
+     0.6580772107239337,
+     0.6643750145955671,
+     0.6640819856391663,
+     0.664627640444564,
+     0.6643348391225452,
+     0.6646443012713706
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.budgets.curves.S"
+   }
+  },
+  {
+   "id": "P.curve.FT",
+   "text": "arm P: FT(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.876571938523368,
+     0.9082466785214589,
+     0.9334358525775964,
+     0.9597706485990403
+    ],
+    "oes_pooled": [
+     0.6729135987722913,
+     0.6972291881102266,
+     0.7165660354575994,
+     0.7367823366930417
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.budgets.curves.FT"
+   }
+  },
+  {
+   "id": "P.curve.D",
+   "text": "arm P: D(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.6245063729144732,
+     0.7486316966864791,
+     0.8500395757792478,
+     0.9254360032427088
+    ],
+    "oes_pooled": [
+     0.4794116858931434,
+     0.5746983527911276,
+     0.6525456324783283,
+     0.710424831103461
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.budgets.curves.D"
+   }
+  },
+  {
+   "id": "P.curve.Dr",
+   "text": "arm P: Dr(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.8302689504610545,
+     0.8591472886366063,
+     0.8650149240491011,
+     0.8667294165501176
+    ],
+    "oes_pooled": [
+     0.6373684153576717,
+     0.6595373048854486,
+     0.6640416832349961,
+     0.6653578391238906
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.budgets.curves.Dr"
+   }
+  },
+  {
+   "id": "P.sigma",
+   "text": "arm P: science share sigma at the largest budget (null = FT@512)",
+   "value": {
+    "value": 0.0402,
+    "se": 0.0056,
+    "p05": 0.0314,
+    "p95": 0.05,
+    "median_world": 0.0348,
+    "se_worlds_only": 0.0056
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.sigma"
+   }
+  },
+  {
+   "id": "P.sigma_verdict",
+   "text": "arm P: verdict on sigma >= 0.15 from the 90% interval",
+   "value": "fail",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.sigma_verdict"
+   }
+  },
+  {
+   "id": "P.sigma_no_lab",
+   "text": "arm P: sigma with no Lab at all (null = best no-experiment policy)",
+   "value": {
+    "value": 0.1367,
+    "se": 0.0164,
+    "p05": 0.1108,
+    "p95": 0.1651,
+    "median_world": 0.1423,
+    "se_worlds_only": 0.0164
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.sigma_no_lab"
+   }
+  },
+  {
+   "id": "P.sigma@8",
+   "text": "arm P: sigma at Lab budget 8",
+   "value": {
+    "value": 0.1234,
+    "se": 0.0146,
+    "p05": 0.1009,
+    "p95": 0.149,
+    "median_world": 0.1177,
+    "se_worlds_only": 0.015
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.sigma_by_budget.8"
+   }
+  },
+  {
+   "id": "P.sigma@32",
+   "text": "arm P: sigma at Lab budget 32",
+   "value": {
+    "value": 0.0918,
+    "se": 0.011,
+    "p05": 0.0744,
+    "p95": 0.1109,
+    "median_world": 0.0801,
+    "se_worlds_only": 0.011
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.sigma_by_budget.32"
+   }
+  },
+  {
+   "id": "P.sigma@128",
+   "text": "arm P: sigma at Lab budget 128",
+   "value": {
+    "value": 0.0666,
+    "se": 0.0081,
+    "p05": 0.0539,
+    "p95": 0.0807,
+    "median_world": 0.0616,
+    "se_worlds_only": 0.0082
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.sigma_by_budget.128"
+   }
+  },
+  {
+   "id": "P.sigma@512",
+   "text": "arm P: sigma at Lab budget 512",
+   "value": {
+    "value": 0.0402,
+    "se": 0.0056,
+    "p05": 0.0314,
+    "p95": 0.05,
+    "median_world": 0.0348,
+    "se_worlds_only": 0.0056
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.sigma_by_budget.512"
+   }
+  },
+  {
+   "id": "P.share_noexp",
+   "text": "arm P: share of C's skill with no hypothesis and no experiment",
+   "value": {
+    "value": 0.8633,
+    "se": 0.0164,
+    "p05": 0.8349,
+    "p95": 0.8892,
+    "median_world": 0.8577,
+    "se_worlds_only": 0.0164
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.share_noexp"
+   }
+  },
+  {
+   "id": "P.trivial",
+   "text": "arm P: verdict of criterion 2",
+   "value": "undecided",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.trivial_verdict"
+   }
+  },
+  {
+   "id": "P.rho@0",
+   "text": "arm P: scripted share rho of amortised inference at 0 Lab episodes",
+   "value": {
+    "value": -0.044,
+    "se": 0.0325,
+    "p05": -0.0997,
+    "p95": 0.0073,
+    "median_world": -0.0148,
+    "se_worlds_only": 0.0174
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho.0"
+   }
+  },
+  {
+   "id": "P.rho@2",
+   "text": "arm P: scripted share rho of amortised inference at 2 Lab episodes",
+   "value": {
+    "value": 0.016,
+    "se": 0.0396,
+    "p05": -0.0535,
+    "p95": 0.0739,
+    "median_world": 0.0342,
+    "se_worlds_only": 0.0225
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho.2"
+   }
+  },
+  {
+   "id": "P.rho@8",
+   "text": "arm P: scripted share rho of amortised inference at 8 Lab episodes",
+   "value": {
+    "value": 0.0132,
+    "se": 0.0376,
+    "p05": -0.0522,
+    "p95": 0.0699,
+    "median_world": 0.0081,
+    "se_worlds_only": 0.0234
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho.8"
+   }
+  },
+  {
+   "id": "P.rho@32",
+   "text": "arm P: scripted share rho of amortised inference at 32 Lab episodes",
+   "value": {
+    "value": 0.0184,
+    "se": 0.0368,
+    "p05": -0.0454,
+    "p95": 0.0743,
+    "median_world": 0.0289,
+    "se_worlds_only": 0.0228
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho.32"
+   }
+  },
+  {
+   "id": "P.rho@128",
+   "text": "arm P: scripted share rho of amortised inference at 128 Lab episodes",
+   "value": {
+    "value": 0.0156,
+    "se": 0.0363,
+    "p05": -0.048,
+    "p95": 0.071,
+    "median_world": 0.025,
+    "se_worlds_only": 0.0229
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho.128"
+   }
+  },
+  {
+   "id": "P.rho@512",
+   "text": "arm P: scripted share rho of amortised inference at 512 Lab episodes",
+   "value": {
+    "value": 0.0186,
+    "se": 0.038,
+    "p05": -0.048,
+    "p95": 0.0773,
+    "median_world": 0.0174,
+    "se_worlds_only": 0.0236
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho.512"
+   }
+  },
+  {
+   "id": "P.rhoFT@8",
+   "text": "arm P: share of the P0-to-C gap closed by fine-tuning P0 on 8 Lab episodes",
+   "value": {
+    "value": 0.0973,
+    "se": 0.0313,
+    "p05": 0.0448,
+    "p95": 0.1477,
+    "median_world": 0.0936,
+    "se_worlds_only": 0.0247
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho_finetune.8"
+   }
+  },
+  {
+   "id": "P.rhoFT@32",
+   "text": "arm P: share of the P0-to-C gap closed by fine-tuning P0 on 32 Lab episodes",
+   "value": {
+    "value": 0.329,
+    "se": 0.0331,
+    "p05": 0.2735,
+    "p95": 0.3807,
+    "median_world": 0.3358,
+    "se_worlds_only": 0.0283
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho_finetune.32"
+   }
+  },
+  {
+   "id": "P.rhoFT@128",
+   "text": "arm P: share of the P0-to-C gap closed by fine-tuning P0 on 128 Lab episodes",
+   "value": {
+    "value": 0.5132,
+    "se": 0.0258,
+    "p05": 0.4697,
+    "p95": 0.5552,
+    "median_world": 0.4975,
+    "se_worlds_only": 0.0235
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho_finetune.128"
+   }
+  },
+  {
+   "id": "P.rhoFT@512",
+   "text": "arm P: share of the P0-to-C gap closed by fine-tuning P0 on 512 Lab episodes",
+   "value": {
+    "value": 0.7058,
+    "se": 0.022,
+    "p05": 0.6705,
+    "p95": 0.7417,
+    "median_world": 0.687,
+    "se_worlds_only": 0.0198
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.acceptance.rho_finetune.512"
+   }
+  },
+  {
+   "id": "P.gap.C - P0",
+   "text": "arm P: gap C - P0 in pooled OES",
+   "value": {
+    "value": 0.105,
+    "se": 0.0101,
+    "p05": 0.0883,
+    "p95": 0.1214,
+    "median_world": 0.1078,
+    "se_worlds_only": 0.01
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - P0"
+   }
+  },
+  {
+   "id": "P.gap.C - P0s",
+   "text": "arm P: gap C - P0s in pooled OES",
+   "value": {
+    "value": 0.1215,
+    "se": 0.0111,
+    "p05": 0.1033,
+    "p95": 0.1397,
+    "median_world": 0.1238,
+    "se_worlds_only": 0.0112
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - P0s"
+   }
+  },
+  {
+   "id": "P.gap.P0 - P0s",
+   "text": "arm P: gap P0 - P0s in pooled OES",
+   "value": {
+    "value": 0.0166,
+    "se": 0.005,
+    "p05": 0.0084,
+    "p95": 0.0249,
+    "median_world": 0.0142,
+    "se_worlds_only": 0.0044
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.P0 - P0s"
+   }
+  },
+  {
+   "id": "P.gap.O - C",
+   "text": "arm P: gap O - C in pooled OES",
+   "value": {
+    "value": 0.2323,
+    "se": 0.0278,
+    "p05": 0.1868,
+    "p95": 0.2794,
+    "median_world": 0.1963,
+    "se_worlds_only": 0.0279
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.O - C"
+   }
+  },
+  {
+   "id": "P.gap.C - S@0",
+   "text": "arm P: gap C - S@0 in pooled OES",
+   "value": {
+    "value": 0.1096,
+    "se": 0.0107,
+    "p05": 0.0921,
+    "p95": 0.1276,
+    "median_world": 0.1124,
+    "se_worlds_only": 0.0108
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - S@0"
+   }
+  },
+  {
+   "id": "P.gap.C - Cft",
+   "text": "arm P: gap C - Cft in pooled OES",
+   "value": {
+    "value": 0.0134,
+    "se": 0.0027,
+    "p05": 0.0091,
+    "p95": 0.018,
+    "median_world": 0.0145,
+    "se_worlds_only": 0.0027
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - Cft"
+   }
+  },
+  {
+   "id": "P.gap.C - Csm",
+   "text": "arm P: gap C - Csm in pooled OES",
+   "value": {
+    "value": 0.0338,
+    "se": 0.0035,
+    "p05": 0.0282,
+    "p95": 0.0396,
+    "median_world": 0.0295,
+    "se_worlds_only": 0.0034
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - Csm"
+   }
+  },
+  {
+   "id": "P.gap.C - S@2",
+   "text": "arm P: gap C - S@2 in pooled OES",
+   "value": {
+    "value": 0.1033,
+    "se": 0.0099,
+    "p05": 0.087,
+    "p95": 0.1203,
+    "median_world": 0.1078,
+    "se_worlds_only": 0.0099
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - S@2"
+   }
+  },
+  {
+   "id": "P.gap.C - S@8",
+   "text": "arm P: gap C - S@8 in pooled OES",
+   "value": {
+    "value": 0.1036,
+    "se": 0.0103,
+    "p05": 0.0866,
+    "p95": 0.1211,
+    "median_world": 0.1125,
+    "se_worlds_only": 0.0103
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - S@8"
+   }
+  },
+  {
+   "id": "P.gap.C - S@32",
+   "text": "arm P: gap C - S@32 in pooled OES",
+   "value": {
+    "value": 0.103,
+    "se": 0.01,
+    "p05": 0.0864,
+    "p95": 0.12,
+    "median_world": 0.1117,
+    "se_worlds_only": 0.0101
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - S@32"
+   }
+  },
+  {
+   "id": "P.gap.C - S@128",
+   "text": "arm P: gap C - S@128 in pooled OES",
+   "value": {
+    "value": 0.1033,
+    "se": 0.01,
+    "p05": 0.0868,
+    "p95": 0.1203,
+    "median_world": 0.1108,
+    "se_worlds_only": 0.0101
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - S@128"
+   }
+  },
+  {
+   "id": "P.gap.C - S@512",
+   "text": "arm P: gap C - S@512 in pooled OES",
+   "value": {
+    "value": 0.103,
+    "se": 0.0102,
+    "p05": 0.0863,
+    "p95": 0.1205,
+    "median_world": 0.1112,
+    "se_worlds_only": 0.0102
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - S@512"
+   }
+  },
+  {
+   "id": "P.gap.S@2 - P0",
+   "text": "arm P: gap S@2 - P0 in pooled OES",
+   "value": {
+    "value": 0.0017,
+    "se": 0.0041,
+    "p05": -0.0054,
+    "p95": 0.008,
+    "median_world": 0.0029,
+    "se_worlds_only": 0.0023
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.S@2 - P0"
+   }
+  },
+  {
+   "id": "P.gap.S@8 - P0",
+   "text": "arm P: gap S@8 - P0 in pooled OES",
+   "value": {
+    "value": 0.0014,
+    "se": 0.0039,
+    "p05": -0.0053,
+    "p95": 0.0074,
+    "median_world": 0.0009,
+    "se_worlds_only": 0.0024
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.S@8 - P0"
+   }
+  },
+  {
+   "id": "P.gap.S@32 - P0",
+   "text": "arm P: gap S@32 - P0 in pooled OES",
+   "value": {
+    "value": 0.0019,
+    "se": 0.0038,
+    "p05": -0.0046,
+    "p95": 0.008,
+    "median_world": 0.0032,
+    "se_worlds_only": 0.0024
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.S@32 - P0"
+   }
+  },
+  {
+   "id": "P.gap.S@128 - P0",
+   "text": "arm P: gap S@128 - P0 in pooled OES",
+   "value": {
+    "value": 0.0016,
+    "se": 0.0038,
+    "p05": -0.0049,
+    "p95": 0.0075,
+    "median_world": 0.003,
+    "se_worlds_only": 0.0024
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.S@128 - P0"
+   }
+  },
+  {
+   "id": "P.gap.S@512 - P0",
+   "text": "arm P: gap S@512 - P0 in pooled OES",
+   "value": {
+    "value": 0.0019,
+    "se": 0.0039,
+    "p05": -0.0048,
+    "p95": 0.0082,
+    "median_world": 0.0023,
+    "se_worlds_only": 0.0024
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.S@512 - P0"
+   }
+  },
+  {
+   "id": "P.gap.FT@8 - P0",
+   "text": "arm P: gap FT@8 - P0 in pooled OES",
+   "value": {
+    "value": 0.0102,
+    "se": 0.0036,
+    "p05": 0.0043,
+    "p95": 0.0161,
+    "median_world": 0.01,
+    "se_worlds_only": 0.0029
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.FT@8 - P0"
+   }
+  },
+  {
+   "id": "P.gap.FT@32 - P0",
+   "text": "arm P: gap FT@32 - P0 in pooled OES",
+   "value": {
+    "value": 0.0345,
+    "se": 0.0053,
+    "p05": 0.0256,
+    "p95": 0.0429,
+    "median_world": 0.042,
+    "se_worlds_only": 0.0048
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.FT@32 - P0"
+   }
+  },
+  {
+   "id": "P.gap.FT@128 - P0",
+   "text": "arm P: gap FT@128 - P0 in pooled OES",
+   "value": {
+    "value": 0.0539,
+    "se": 0.0063,
+    "p05": 0.0432,
+    "p95": 0.0641,
+    "median_world": 0.0633,
+    "se_worlds_only": 0.0061
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.FT@128 - P0"
+   }
+  },
+  {
+   "id": "P.gap.FT@512 - P0",
+   "text": "arm P: gap FT@512 - P0 in pooled OES",
+   "value": {
+    "value": 0.0741,
+    "se": 0.0076,
+    "p05": 0.0613,
+    "p95": 0.0865,
+    "median_world": 0.0822,
+    "se_worlds_only": 0.0074
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.FT@512 - P0"
+   }
+  },
+  {
+   "id": "P.gap.C - D@8",
+   "text": "arm P: gap C - D@8 in pooled OES",
+   "value": {
+    "value": 0.2883,
+    "se": 0.0233,
+    "p05": 0.2502,
+    "p95": 0.3275,
+    "median_world": 0.2587,
+    "se_worlds_only": 0.0235
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - D@8"
+   }
+  },
+  {
+   "id": "P.gap.C - D@32",
+   "text": "arm P: gap C - D@32 in pooled OES",
+   "value": {
+    "value": 0.193,
+    "se": 0.0138,
+    "p05": 0.1706,
+    "p95": 0.2169,
+    "median_world": 0.1771,
+    "se_worlds_only": 0.0138
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - D@32"
+   }
+  },
+  {
+   "id": "P.gap.C - D@128",
+   "text": "arm P: gap C - D@128 in pooled OES",
+   "value": {
+    "value": 0.1151,
+    "se": 0.0071,
+    "p05": 0.1036,
+    "p95": 0.1271,
+    "median_world": 0.1122,
+    "se_worlds_only": 0.0071
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - D@128"
+   }
+  },
+  {
+   "id": "P.gap.C - D@512",
+   "text": "arm P: gap C - D@512 in pooled OES",
+   "value": {
+    "value": 0.0572,
+    "se": 0.0043,
+    "p05": 0.0504,
+    "p95": 0.0645,
+    "median_world": 0.0545,
+    "se_worlds_only": 0.0041
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.C - D@512"
+   }
+  },
+  {
+   "id": "P.gap.P0 - P0w16",
+   "text": "arm P: gap P0 - P0w16 in pooled OES",
+   "value": {
+    "value": 0.1405,
+    "se": 0.0209,
+    "p05": 0.1099,
+    "p95": 0.1781,
+    "median_world": 0.1209,
+    "se_worlds_only": 0.0208
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.P0 - P0w16"
+   }
+  },
+  {
+   "id": "P.gap.P0 - P0w64",
+   "text": "arm P: gap P0 - P0w64 in pooled OES",
+   "value": {
+    "value": 0.0343,
+    "se": 0.0058,
+    "p05": 0.0247,
+    "p95": 0.0435,
+    "median_world": 0.0315,
+    "se_worlds_only": 0.0054
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.P0 - P0w64"
+   }
+  },
+  {
+   "id": "P.gap.S@0 - P0",
+   "text": "arm P: gap S@0 - P0 in pooled OES",
+   "value": {
+    "value": -0.0046,
+    "se": 0.0033,
+    "p05": -0.0101,
+    "p95": 0.0007,
+    "median_world": -0.0021,
+    "se_worlds_only": 0.0019
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.gaps_oes.S@0 - P0"
+   }
+  },
+  {
+   "id": "P.state_given.plugPrior",
+   "text": "arm P: state-given loss 1 - OES of the simulator from the hidden state, plugPrior",
+   "value": {
+    "value": 1.5293,
+    "se": 0.3253,
+    "p05": 1.1257,
+    "p95": 2.1617,
+    "median_world": 1.2343,
+    "se_worlds_only": 0.3391
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.state_given_loss.plugPrior"
+   }
+  },
+  {
+   "id": "P.state_given.plug03",
+   "text": "arm P: state-given loss 1 - OES of the simulator from the hidden state, plug03",
+   "value": {
+    "value": 0.0864,
+    "se": 0.0164,
+    "p05": 0.0601,
+    "p95": 0.1138,
+    "median_world": 0.0711,
+    "se_worlds_only": 0.0169
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.state_given_loss.plug03"
+   }
+  },
+  {
+   "id": "P.state_given.plug10",
+   "text": "arm P: state-given loss 1 - OES of the simulator from the hidden state, plug10",
+   "value": {
+    "value": 0.3182,
+    "se": 0.0431,
+    "p05": 0.2482,
+    "p95": 0.3893,
+    "median_world": 0.3395,
+    "se_worlds_only": 0.0445
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.state_given_loss.plug10"
+   }
+  },
+  {
+   "id": "P.state_given.plug30",
+   "text": "arm P: state-given loss 1 - OES of the simulator from the hidden state, plug30",
+   "value": {
+    "value": 0.8,
+    "se": 0.0876,
+    "p05": 0.6599,
+    "p95": 0.9486,
+    "median_world": 0.7393,
+    "se_worlds_only": 0.0859
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.state_given_loss.plug30"
+   }
+  },
+  {
+   "id": "P.state_given.plugTrue",
+   "text": "arm P: state-given loss 1 - OES of the simulator from the hidden state, plugTrue",
+   "value": {
+    "value": -0.0002,
+    "se": 0.0002,
+    "p05": -0.0004,
+    "p95": 0.0001,
+    "median_world": -0.0001,
+    "se_worlds_only": 0.0002
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.state_given_loss.plugTrue"
+   }
+  },
+  {
+   "id": "P.state_given.plugU0",
+   "text": "arm P: state-given loss 1 - OES of the simulator from the hidden state, plugU0",
+   "value": {
+    "value": 0.0639,
+    "se": 0.0136,
+    "p05": 0.042,
+    "p95": 0.0872,
+    "median_world": 0.0513,
+    "se_worlds_only": 0.0138
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.state_given_loss.plugU0"
+   }
+  },
+  {
+   "id": "P.actions",
+   "text": "arm P: loss of the input-blind oracle on items with a program, share of the K-to-O range",
+   "value": {
+    "value": 0.0846,
+    "se": 0.0183,
+    "p05": 0.0553,
+    "p95": 0.1161,
+    "median_world": 0.0655,
+    "se_worlds_only": 0.0184
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.actions.classes_bcd"
+   }
+  },
+  {
+   "id": "P.actions_verdict",
+   "text": "arm P: verdict of criterion 4",
+   "value": "undecided",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.actions.verdict"
+   }
+  },
+  {
+   "id": "P.actions_worlds",
+   "text": "arm P: hidden worlds with input-blind loss >= 0.10",
+   "value": 6,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.actions.worlds_at_least_0p10"
+   }
+  },
+  {
+   "id": "P.actions.b",
+   "text": "arm P: the same for program class b",
+   "value": {
+    "value": 0.013,
+    "se": 0.0031,
+    "p05": 0.008,
+    "p95": 0.0183,
+    "median_world": 0.0093,
+    "se_worlds_only": 0.0032
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.actions.class_b"
+   }
+  },
+  {
+   "id": "P.actions.c",
+   "text": "arm P: the same for program class c",
+   "value": {
+    "value": 0.0857,
+    "se": 0.0202,
+    "p05": 0.0543,
+    "p95": 0.121,
+    "median_world": 0.0568,
+    "se_worlds_only": 0.0205
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.actions.class_c"
+   }
+  },
+  {
+   "id": "P.actions.d",
+   "text": "arm P: the same for program class d",
+   "value": {
+    "value": 0.1539,
+    "se": 0.0328,
+    "p05": 0.1015,
+    "p95": 0.2091,
+    "median_world": 0.1196,
+    "se_worlds_only": 0.0331
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.actions.class_d"
+   }
+  },
+  {
+   "id": "P.actions_vs_C",
+   "text": "arm P: input-blind loss over C's own excess above the oracle",
+   "value": {
+    "value": 0.3577,
+    "se": 0.0776,
+    "p05": 0.2435,
+    "p95": 0.4997,
+    "median_world": 0.2063,
+    "se_worlds_only": 0.0764
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.actions.blind_loss_over_C_excess"
+   }
+  },
+  {
+   "id": "P.N90_data_only",
+   "text": "arm P: N90_data_only",
+   "value": 285.63759670665013,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.budgets.N90_data_only"
+   }
+  },
+  {
+   "id": "P.N_P0_data_only",
+   "text": "arm P: N_P0_data_only",
+   "value": 84.59872402691131,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.budgets.N_P0_data_only"
+   }
+  },
+  {
+   "id": "P.N90_finetune",
+   "text": "arm P: N90_finetune",
+   "value": 22.304917388541575,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.budgets.N90_finetune"
+   }
+  },
+  {
+   "id": "P.P0_share_of_C",
+   "text": "arm P: P0_share_of_C",
+   "value": 0.8632621557302251,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.budgets.P0_share_of_C"
+   }
+  },
+  {
+   "id": "P.h1.share_noexp",
+   "text": "arm P, horizon 1 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.9688,
+    "se": 0.0053,
+    "p05": 0.96,
+    "p95": 0.9776,
+    "median_world": 0.9735,
+    "se_worlds_only": 0.0054
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.1.share_noexp"
+   }
+  },
+  {
+   "id": "P.h1.sigma@8",
+   "text": "arm P, horizon 1 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0253,
+    "se": 0.0037,
+    "p05": 0.0193,
+    "p95": 0.0315,
+    "median_world": 0.0265,
+    "se_worlds_only": 0.0037
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.1.sigma@8"
+   }
+  },
+  {
+   "id": "P.h1.sigma@32",
+   "text": "arm P, horizon 1 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0188,
+    "se": 0.0029,
+    "p05": 0.014,
+    "p95": 0.0237,
+    "median_world": 0.019,
+    "se_worlds_only": 0.0029
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.1.sigma@32"
+   }
+  },
+  {
+   "id": "P.h1.sigma@512",
+   "text": "arm P, horizon 1 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0091,
+    "se": 0.0016,
+    "p05": 0.0065,
+    "p95": 0.0118,
+    "median_world": 0.0109,
+    "se_worlds_only": 0.0016
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.1.sigma@512"
+   }
+  },
+  {
+   "id": "P.h2.share_noexp",
+   "text": "arm P, horizon 2 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.9302,
+    "se": 0.012,
+    "p05": 0.9095,
+    "p95": 0.9487,
+    "median_world": 0.9413,
+    "se_worlds_only": 0.012
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.2.share_noexp"
+   }
+  },
+  {
+   "id": "P.h2.sigma@8",
+   "text": "arm P, horizon 2 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0544,
+    "se": 0.0077,
+    "p05": 0.0421,
+    "p95": 0.0676,
+    "median_world": 0.0586,
+    "se_worlds_only": 0.0078
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.2.sigma@8"
+   }
+  },
+  {
+   "id": "P.h2.sigma@32",
+   "text": "arm P, horizon 2 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0403,
+    "se": 0.0059,
+    "p05": 0.0309,
+    "p95": 0.0503,
+    "median_world": 0.0393,
+    "se_worlds_only": 0.0059
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.2.sigma@32"
+   }
+  },
+  {
+   "id": "P.h2.sigma@512",
+   "text": "arm P, horizon 2 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0184,
+    "se": 0.0033,
+    "p05": 0.013,
+    "p95": 0.0239,
+    "median_world": 0.015,
+    "se_worlds_only": 0.0032
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.2.sigma@512"
+   }
+  },
+  {
+   "id": "P.h4.share_noexp",
+   "text": "arm P, horizon 4 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.857,
+    "se": 0.0221,
+    "p05": 0.818,
+    "p95": 0.8905,
+    "median_world": 0.8475,
+    "se_worlds_only": 0.0224
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.4.share_noexp"
+   }
+  },
+  {
+   "id": "P.h4.sigma@8",
+   "text": "arm P, horizon 4 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1226,
+    "se": 0.0178,
+    "p05": 0.0949,
+    "p95": 0.1538,
+    "median_world": 0.129,
+    "se_worlds_only": 0.0182
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.4.sigma@8"
+   }
+  },
+  {
+   "id": "P.h4.sigma@32",
+   "text": "arm P, horizon 4 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0915,
+    "se": 0.0134,
+    "p05": 0.071,
+    "p95": 0.1148,
+    "median_world": 0.0837,
+    "se_worlds_only": 0.0134
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.4.sigma@32"
+   }
+  },
+  {
+   "id": "P.h4.sigma@512",
+   "text": "arm P, horizon 4 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.043,
+    "se": 0.0078,
+    "p05": 0.0312,
+    "p95": 0.057,
+    "median_world": 0.0362,
+    "se_worlds_only": 0.0077
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.4.sigma@512"
+   }
+  },
+  {
+   "id": "P.h8.share_noexp",
+   "text": "arm P, horizon 8 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.763,
+    "se": 0.0345,
+    "p05": 0.7018,
+    "p95": 0.8147,
+    "median_world": 0.75,
+    "se_worlds_only": 0.0342
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.8.share_noexp"
+   }
+  },
+  {
+   "id": "P.h8.sigma@8",
+   "text": "arm P, horizon 8 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.2172,
+    "se": 0.0319,
+    "p05": 0.1697,
+    "p95": 0.2753,
+    "median_world": 0.1926,
+    "se_worlds_only": 0.0326
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.8.sigma@8"
+   }
+  },
+  {
+   "id": "P.h8.sigma@32",
+   "text": "arm P, horizon 8 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1582,
+    "se": 0.0238,
+    "p05": 0.123,
+    "p95": 0.2016,
+    "median_world": 0.1447,
+    "se_worlds_only": 0.0241
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.8.sigma@32"
+   }
+  },
+  {
+   "id": "P.h8.sigma@512",
+   "text": "arm P, horizon 8 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0655,
+    "se": 0.011,
+    "p05": 0.0492,
+    "p95": 0.0854,
+    "median_world": 0.0564,
+    "se_worlds_only": 0.0108
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.8.sigma@512"
+   }
+  },
+  {
+   "id": "P.h16.share_noexp",
+   "text": "arm P, horizon 16 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.665,
+    "se": 0.0469,
+    "p05": 0.5809,
+    "p95": 0.7362,
+    "median_world": 0.6484,
+    "se_worlds_only": 0.048
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.16.share_noexp"
+   }
+  },
+  {
+   "id": "P.h16.sigma@8",
+   "text": "arm P, horizon 16 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.3315,
+    "se": 0.048,
+    "p05": 0.2567,
+    "p95": 0.4155,
+    "median_world": 0.3021,
+    "se_worlds_only": 0.0496
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.16.sigma@8"
+   }
+  },
+  {
+   "id": "P.h16.sigma@32",
+   "text": "arm P, horizon 16 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.2507,
+    "se": 0.0394,
+    "p05": 0.196,
+    "p95": 0.3233,
+    "median_world": 0.2065,
+    "se_worlds_only": 0.0392
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.16.sigma@32"
+   }
+  },
+  {
+   "id": "P.h16.sigma@512",
+   "text": "arm P, horizon 16 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1071,
+    "se": 0.0192,
+    "p05": 0.0794,
+    "p95": 0.1415,
+    "median_world": 0.0952,
+    "se_worlds_only": 0.0192
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.by_horizon.16.sigma@512"
+   }
+  },
+  {
+   "id": "P.convergence",
+   "text": "arm P: convergence by criterion 6 per kind of net",
+   "value": {
+    "P0": {
+     "nets": 2,
+     "ok": 0,
+     "late_share_max": 0.03082154105237028,
+     "steps": 12000,
+     "stopped_early": 0,
+     "best_step_median": 9750.0
+    },
+    "A": {
+     "nets": 2,
+     "ok": 2,
+     "late_share_max": 0.01956311808413527,
+     "steps": 12000,
+     "stopped_early": 0,
+     "best_step_median": 11250.0
+    },
+    "P0s": {
+     "nets": 2,
+     "ok": 2,
+     "late_share_max": 0.012037867601396576,
+     "steps": 6000,
+     "stopped_early": 0,
+     "best_step_median": 6000.0
+    },
+    "P C": {
+     "nets": 32,
+     "ok": 12,
+     "late_share_max": 0.04433372608427313,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 7750.0
+    },
+    "P D@512 s0": {
+     "nets": 16,
+     "ok": 15,
+     "late_share_max": 0.03044836744951779,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 2300.0
+    },
+    "P FT@512 s0": {
+     "nets": 16,
+     "ok": 15,
+     "late_share_max": 0.02526103499225359,
+     "steps": 2400,
+     "stopped_early": 0,
+     "best_step_median": 2300.0
+    },
+    "P Cft": {
+     "nets": 32,
+     "ok": 31,
+     "late_share_max": 0.023340880371324018,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 3000.0
+    },
+    "P Csm": {
+     "nets": 16,
+     "ok": 13,
+     "late_share_max": 0.03227193069470621,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 3375.0
+    },
+    "P D@128 s0": {
+     "nets": 16,
+     "ok": 14,
+     "late_share_max": 0.060890585560053855,
+     "steps": 1500,
+     "stopped_early": 0,
+     "best_step_median": 400.0
+    },
+    "P FT@128 s0": {
+     "nets": 16,
+     "ok": 16,
+     "late_share_max": 0.01867453527556513,
+     "steps": 1200,
+     "stopped_early": 0,
+     "best_step_median": 900.0
+    },
+    "P D@32 s0": {
+     "nets": 16,
+     "ok": 16,
+     "late_share_max": 0.0,
+     "steps": 800,
+     "stopped_early": 0,
+     "best_step_median": 200.0
+    },
+    "P FT@32 s0": {
+     "nets": 16,
+     "ok": 13,
+     "late_share_max": 0.09392675910662918,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 150.0
+    },
+    "P D@8 s0": {
+     "nets": 16,
+     "ok": 16,
+     "late_share_max": 0.0,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 100.0
+    },
+    "P FT@8 s0": {
+     "nets": 16,
+     "ok": 15,
+     "late_share_max": 0.35598427037779456,
+     "steps": 200,
+     "stopped_early": 0,
+     "best_step_median": 100.0
+    },
+    "P D@32 s1": {
+     "nets": 16,
+     "ok": 14,
+     "late_share_max": 0.552626954840977,
+     "steps": 800,
+     "stopped_early": 0,
+     "best_step_median": 200.0
+    },
+    "P FT@32 s1": {
+     "nets": 16,
+     "ok": 13,
+     "late_share_max": 0.512498645200067,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 200.0
+    },
+    "P D@512 s1": {
+     "nets": 16,
+     "ok": 16,
+     "late_share_max": 0.018866567981933032,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 2500.0
+    },
+    "P FT@512 s1": {
+     "nets": 16,
+     "ok": 16,
+     "late_share_max": 0.018720232149803912,
+     "steps": 2400,
+     "stopped_early": 0,
+     "best_step_median": 2350.0
+    },
+    "P0w16": {
+     "nets": 1,
+     "ok": 0,
+     "late_share_max": 0.5499400948720896,
+     "steps": 6000,
+     "stopped_early": 0,
+     "best_step_median": 500.0
+    },
+    "P0w64": {
+     "nets": 1,
+     "ok": 1,
+     "late_share_max": 0.0,
+     "steps": 6000,
+     "stopped_early": 0,
+     "best_step_median": 4750.0
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.convergence"
+   }
+  },
+  {
+   "id": "P.stationarity",
+   "text": "arm P: share of the variance carried by the tick alone",
+   "value": {
+    "first17_max": 5.380398640242776e-06,
+    "all33_max": 1.7267183369980654e-05,
+    "first17_median": 8.934691701598388e-08,
+    "all33_median": 2.3045148690598495e-07,
+    "sampling_floor": 3.0517578125e-05,
+    "verdict": "stationary"
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.stationarity"
+   }
+  },
+  {
+   "id": "P.oes_by_class",
+   "text": "arm P: per-cell-mean OES by program class",
+   "value": {
+    "a": {
+     "C": 0.773,
+     "P0": 0.667,
+     "plugU0": 1.0,
+     "plugTrue": 1.001
+    },
+    "b": {
+     "C": 0.765,
+     "P0": 0.66,
+     "plugU0": 0.987,
+     "plugTrue": 1.0
+    },
+    "c": {
+     "C": 0.754,
+     "P0": 0.651,
+     "plugU0": 0.913,
+     "plugTrue": 1.0
+    },
+    "d": {
+     "C": 0.75,
+     "P0": 0.634,
+     "plugU0": 0.844,
+     "plugTrue": 1.001
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.oes_by_class"
+   }
+  },
+  {
+   "id": "N30.worlds",
+   "text": "arm N30: hidden worlds, items",
+   "value": {
+    "n_hidden": 12,
+    "n_items": 384,
+    "train_worlds": [
+     128,
+     83,
+     128
+    ],
+    "valid_cells": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.n_hidden"
+   }
+  },
+  {
+   "id": "N30.ceiling",
+   "text": "arm N30: which candidate is the ceiling C",
+   "value": "scratch",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.ceiling_is"
+   }
+  },
+  {
+   "id": "N30.oes.C",
+   "text": "arm N30: pooled oracle-normalised skill of C",
+   "value": {
+    "value": 0.8509,
+    "se": 0.0241,
+    "p05": 0.8099,
+    "p95": 0.8902,
+    "median_world": 0.8926,
+    "se_worlds_only": 0.0238
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.table.C.oes_pooled"
+   }
+  },
+  {
+   "id": "N30.oes.Cft",
+   "text": "arm N30: pooled oracle-normalised skill of Cft",
+   "value": {
+    "value": 0.8361,
+    "se": 0.025,
+    "p05": 0.7933,
+    "p95": 0.8769,
+    "median_world": 0.8826,
+    "se_worlds_only": 0.0247
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.table.Cft.oes_pooled"
+   }
+  },
+  {
+   "id": "N30.oes.Csm",
+   "text": "arm N30: pooled oracle-normalised skill of Csm",
+   "value": {
+    "value": 0.8277,
+    "se": 0.0269,
+    "p05": 0.7828,
+    "p95": 0.8716,
+    "median_world": 0.8646,
+    "se_worlds_only": 0.0265
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.table.Csm.oes_pooled"
+   }
+  },
+  {
+   "id": "N30.oes.P0",
+   "text": "arm N30: pooled oracle-normalised skill of P0",
+   "value": {
+    "value": 0.7387,
+    "se": 0.0267,
+    "p05": 0.695,
+    "p95": 0.7824,
+    "median_world": 0.7328,
+    "se_worlds_only": 0.0264
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.table.P0.oes_pooled"
+   }
+  },
+  {
+   "id": "N30.oes.P0s",
+   "text": "arm N30: pooled oracle-normalised skill of P0s",
+   "value": {
+    "value": 0.676,
+    "se": 0.0338,
+    "p05": 0.6213,
+    "p95": 0.7313,
+    "median_world": 0.6632,
+    "se_worlds_only": 0.0338
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.table.P0s.oes_pooled"
+   }
+  },
+  {
+   "id": "N30.oes.S@0",
+   "text": "arm N30: pooled oracle-normalised skill of S@0",
+   "value": {
+    "value": 0.7388,
+    "se": 0.0272,
+    "p05": 0.6936,
+    "p95": 0.7832,
+    "median_world": 0.7445,
+    "se_worlds_only": 0.0268
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.table.S@0.oes_pooled"
+   }
+  },
+  {
+   "id": "N30.oes.Kp",
+   "text": "arm N30: pooled oracle-normalised skill of Kp",
+   "value": {
+    "value": 0.1429,
+    "se": 0.1266,
+    "p05": -0.0644,
+    "p95": 0.3472,
+    "median_world": 0.2144,
+    "se_worlds_only": 0.1252
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.table.Kp.oes_pooled"
+   }
+  },
+  {
+   "id": "N30.oes.plugTrue",
+   "text": "arm N30: pooled oracle-normalised skill of plugTrue",
+   "value": {
+    "value": 1.0001,
+    "se": 0.0001,
+    "p05": 0.9999,
+    "p95": 1.0002,
+    "median_world": 1.0001,
+    "se_worlds_only": 0.0001
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.table.plugTrue.oes_pooled"
+   }
+  },
+  {
+   "id": "N30.curve.S",
+   "text": "arm N30: S(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     0,
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.8682700717221057,
+     0.8702074880181291,
+     0.8719700510759698,
+     0.8716779850109625,
+     0.87172043998349,
+     0.8724969489156779
+    ],
+    "oes_pooled": [
+     0.7388258248172848,
+     0.7404744054139704,
+     0.7419742004056586,
+     0.7417256764055717,
+     0.7417618020663734,
+     0.7424225467712597
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.budgets.curves.S"
+   }
+  },
+  {
+   "id": "N30.curve.FT",
+   "text": "arm N30: FT(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.877560134872503,
+     0.91432556733451,
+     0.937765655188275,
+     0.9612777695890142
+    ],
+    "oes_pooled": [
+     0.7467308981271173,
+     0.7780152321703624,
+     0.7979608030317409,
+     0.8179676625113849
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.budgets.curves.FT"
+   }
+  },
+  {
+   "id": "N30.curve.D",
+   "text": "arm N30: D(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.5893112560368211,
+     0.7265961532249939,
+     0.8463496428987941,
+     0.9361049302423918
+    ],
+    "oes_pooled": [
+     0.5014550069104143,
+     0.6182730692891335,
+     0.7201733577644814,
+     0.7965476638278257
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.budgets.curves.D"
+   }
+  },
+  {
+   "id": "N30.curve.Dr",
+   "text": "arm N30: Dr(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.7386533645527957,
+     0.7631865518332975,
+     0.769362454803365,
+     0.7714929684865581
+    ],
+    "oes_pooled": [
+     0.6285327562164869,
+     0.6494084640385513,
+     0.6546636452943115,
+     0.6564765357537832
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.budgets.curves.Dr"
+   }
+  },
+  {
+   "id": "N30.sigma",
+   "text": "arm N30: science share sigma at the largest budget (null = FT@512)",
+   "value": {
+    "value": 0.0387,
+    "se": 0.0066,
+    "p05": 0.0284,
+    "p95": 0.0498,
+    "median_world": 0.0348,
+    "se_worlds_only": 0.0064
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.sigma"
+   }
+  },
+  {
+   "id": "N30.sigma_verdict",
+   "text": "arm N30: verdict on sigma >= 0.15 from the 90% interval",
+   "value": "fail",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.sigma_verdict"
+   }
+  },
+  {
+   "id": "N30.sigma_no_lab",
+   "text": "arm N30: sigma with no Lab at all (null = best no-experiment policy)",
+   "value": {
+    "value": 0.1317,
+    "se": 0.018,
+    "p05": 0.1005,
+    "p95": 0.1602,
+    "median_world": 0.1304,
+    "se_worlds_only": 0.0182
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.sigma_no_lab"
+   }
+  },
+  {
+   "id": "N30.sigma@8",
+   "text": "arm N30: sigma at Lab budget 8",
+   "value": {
+    "value": 0.1224,
+    "se": 0.0168,
+    "p05": 0.0939,
+    "p95": 0.1497,
+    "median_world": 0.1198,
+    "se_worlds_only": 0.0169
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.sigma_by_budget.8"
+   }
+  },
+  {
+   "id": "N30.sigma@32",
+   "text": "arm N30: sigma at Lab budget 32",
+   "value": {
+    "value": 0.0857,
+    "se": 0.0127,
+    "p05": 0.0651,
+    "p95": 0.1072,
+    "median_world": 0.0824,
+    "se_worlds_only": 0.0124
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.sigma_by_budget.32"
+   }
+  },
+  {
+   "id": "N30.sigma@128",
+   "text": "arm N30: sigma at Lab budget 128",
+   "value": {
+    "value": 0.0622,
+    "se": 0.0097,
+    "p05": 0.0466,
+    "p95": 0.0785,
+    "median_world": 0.0593,
+    "se_worlds_only": 0.0095
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.sigma_by_budget.128"
+   }
+  },
+  {
+   "id": "N30.sigma@512",
+   "text": "arm N30: sigma at Lab budget 512",
+   "value": {
+    "value": 0.0387,
+    "se": 0.0066,
+    "p05": 0.0284,
+    "p95": 0.0498,
+    "median_world": 0.0348,
+    "se_worlds_only": 0.0064
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.sigma_by_budget.512"
+   }
+  },
+  {
+   "id": "N30.share_noexp",
+   "text": "arm N30: share of C's skill with no hypothesis and no experiment",
+   "value": {
+    "value": 0.8683,
+    "se": 0.018,
+    "p05": 0.8398,
+    "p95": 0.8995,
+    "median_world": 0.8696,
+    "se_worlds_only": 0.0182
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.share_noexp"
+   }
+  },
+  {
+   "id": "N30.trivial",
+   "text": "arm N30: verdict of criterion 2",
+   "value": "undecided",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.trivial_verdict"
+   }
+  },
+  {
+   "id": "N30.rho@0",
+   "text": "arm N30: scripted share rho of amortised inference at 0 Lab episodes",
+   "value": {
+    "value": 0.0008,
+    "se": 0.0295,
+    "p05": -0.0476,
+    "p95": 0.0493,
+    "median_world": -0.0248,
+    "se_worlds_only": 0.0197
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho.0"
+   }
+  },
+  {
+   "id": "N30.rho@2",
+   "text": "arm N30: scripted share rho of amortised inference at 2 Lab episodes",
+   "value": {
+    "value": 0.0155,
+    "se": 0.031,
+    "p05": -0.0363,
+    "p95": 0.0644,
+    "median_world": 0.0238,
+    "se_worlds_only": 0.0213
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho.2"
+   }
+  },
+  {
+   "id": "N30.rho@8",
+   "text": "arm N30: scripted share rho of amortised inference at 8 Lab episodes",
+   "value": {
+    "value": 0.0289,
+    "se": 0.0329,
+    "p05": -0.0257,
+    "p95": 0.0818,
+    "median_world": 0.0219,
+    "se_worlds_only": 0.0205
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho.8"
+   }
+  },
+  {
+   "id": "N30.rho@32",
+   "text": "arm N30: scripted share rho of amortised inference at 32 Lab episodes",
+   "value": {
+    "value": 0.0266,
+    "se": 0.0318,
+    "p05": -0.0263,
+    "p95": 0.0783,
+    "median_world": 0.0227,
+    "se_worlds_only": 0.0192
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho.32"
+   }
+  },
+  {
+   "id": "N30.rho@128",
+   "text": "arm N30: scripted share rho of amortised inference at 128 Lab episodes",
+   "value": {
+    "value": 0.027,
+    "se": 0.0337,
+    "p05": -0.0318,
+    "p95": 0.0787,
+    "median_world": 0.027,
+    "se_worlds_only": 0.0195
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho.128"
+   }
+  },
+  {
+   "id": "N30.rho@512",
+   "text": "arm N30: scripted share rho of amortised inference at 512 Lab episodes",
+   "value": {
+    "value": 0.0329,
+    "se": 0.0328,
+    "p05": -0.0212,
+    "p95": 0.0854,
+    "median_world": 0.0266,
+    "se_worlds_only": 0.0196
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho.512"
+   }
+  },
+  {
+   "id": "N30.rhoFT@8",
+   "text": "arm N30: share of the P0-to-C gap closed by fine-tuning P0 on 8 Lab episodes",
+   "value": {
+    "value": 0.0713,
+    "se": 0.0517,
+    "p05": -0.0219,
+    "p95": 0.1467,
+    "median_world": 0.0544,
+    "se_worlds_only": 0.0505
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho_finetune.8"
+   }
+  },
+  {
+   "id": "N30.rhoFT@32",
+   "text": "arm N30: share of the P0-to-C gap closed by fine-tuning P0 on 32 Lab episodes",
+   "value": {
+    "value": 0.3501,
+    "se": 0.0571,
+    "p05": 0.255,
+    "p95": 0.4425,
+    "median_world": 0.3162,
+    "se_worlds_only": 0.0558
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho_finetune.32"
+   }
+  },
+  {
+   "id": "N30.rhoFT@128",
+   "text": "arm N30: share of the P0-to-C gap closed by fine-tuning P0 on 128 Lab episodes",
+   "value": {
+    "value": 0.5279,
+    "se": 0.0474,
+    "p05": 0.4463,
+    "p95": 0.6007,
+    "median_world": 0.5234,
+    "se_worlds_only": 0.0467
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho_finetune.128"
+   }
+  },
+  {
+   "id": "N30.rhoFT@512",
+   "text": "arm N30: share of the P0-to-C gap closed by fine-tuning P0 on 512 Lab episodes",
+   "value": {
+    "value": 0.7063,
+    "se": 0.0327,
+    "p05": 0.6496,
+    "p95": 0.7578,
+    "median_world": 0.7081,
+    "se_worlds_only": 0.0319
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.acceptance.rho_finetune.512"
+   }
+  },
+  {
+   "id": "N30.gap.C - P0",
+   "text": "arm N30: gap C - P0 in pooled OES",
+   "value": {
+    "value": 0.1122,
+    "se": 0.0157,
+    "p05": 0.0869,
+    "p95": 0.1387,
+    "median_world": 0.0933,
+    "se_worlds_only": 0.016
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - P0"
+   }
+  },
+  {
+   "id": "N30.gap.C - P0s",
+   "text": "arm N30: gap C - P0s in pooled OES",
+   "value": {
+    "value": 0.1749,
+    "se": 0.0288,
+    "p05": 0.1295,
+    "p95": 0.2242,
+    "median_world": 0.1505,
+    "se_worlds_only": 0.0289
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - P0s"
+   }
+  },
+  {
+   "id": "N30.gap.P0 - P0s",
+   "text": "arm N30: gap P0 - P0s in pooled OES",
+   "value": {
+    "value": 0.0628,
+    "se": 0.0149,
+    "p05": 0.0394,
+    "p95": 0.0884,
+    "median_world": 0.0461,
+    "se_worlds_only": 0.0148
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.P0 - P0s"
+   }
+  },
+  {
+   "id": "N30.gap.O - C",
+   "text": "arm N30: gap O - C in pooled OES",
+   "value": {
+    "value": 0.1491,
+    "se": 0.0241,
+    "p05": 0.1098,
+    "p95": 0.1901,
+    "median_world": 0.1074,
+    "se_worlds_only": 0.0238
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.O - C"
+   }
+  },
+  {
+   "id": "N30.gap.C - S@0",
+   "text": "arm N30: gap C - S@0 in pooled OES",
+   "value": {
+    "value": 0.1121,
+    "se": 0.0156,
+    "p05": 0.0869,
+    "p95": 0.138,
+    "median_world": 0.0988,
+    "se_worlds_only": 0.0156
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - S@0"
+   }
+  },
+  {
+   "id": "N30.gap.C - Cft",
+   "text": "arm N30: gap C - Cft in pooled OES",
+   "value": {
+    "value": 0.0148,
+    "se": 0.0032,
+    "p05": 0.0097,
+    "p95": 0.0203,
+    "median_world": 0.012,
+    "se_worlds_only": 0.0031
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - Cft"
+   }
+  },
+  {
+   "id": "N30.gap.C - Csm",
+   "text": "arm N30: gap C - Csm in pooled OES",
+   "value": {
+    "value": 0.0232,
+    "se": 0.0037,
+    "p05": 0.017,
+    "p95": 0.029,
+    "median_world": 0.027,
+    "se_worlds_only": 0.0036
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - Csm"
+   }
+  },
+  {
+   "id": "N30.gap.C - S@2",
+   "text": "arm N30: gap C - S@2 in pooled OES",
+   "value": {
+    "value": 0.1104,
+    "se": 0.0155,
+    "p05": 0.0854,
+    "p95": 0.1363,
+    "median_world": 0.1034,
+    "se_worlds_only": 0.0155
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - S@2"
+   }
+  },
+  {
+   "id": "N30.gap.C - S@8",
+   "text": "arm N30: gap C - S@8 in pooled OES",
+   "value": {
+    "value": 0.1089,
+    "se": 0.0152,
+    "p05": 0.0842,
+    "p95": 0.1342,
+    "median_world": 0.1003,
+    "se_worlds_only": 0.0152
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - S@8"
+   }
+  },
+  {
+   "id": "N30.gap.C - S@32",
+   "text": "arm N30: gap C - S@32 in pooled OES",
+   "value": {
+    "value": 0.1092,
+    "se": 0.0153,
+    "p05": 0.0846,
+    "p95": 0.1347,
+    "median_world": 0.0993,
+    "se_worlds_only": 0.0152
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - S@32"
+   }
+  },
+  {
+   "id": "N30.gap.C - S@128",
+   "text": "arm N30: gap C - S@128 in pooled OES",
+   "value": {
+    "value": 0.1092,
+    "se": 0.0155,
+    "p05": 0.0841,
+    "p95": 0.1352,
+    "median_world": 0.0988,
+    "se_worlds_only": 0.0153
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - S@128"
+   }
+  },
+  {
+   "id": "N30.gap.C - S@512",
+   "text": "arm N30: gap C - S@512 in pooled OES",
+   "value": {
+    "value": 0.1085,
+    "se": 0.0153,
+    "p05": 0.0837,
+    "p95": 0.1339,
+    "median_world": 0.0986,
+    "se_worlds_only": 0.0151
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - S@512"
+   }
+  },
+  {
+   "id": "N30.gap.S@2 - P0",
+   "text": "arm N30: gap S@2 - P0 in pooled OES",
+   "value": {
+    "value": 0.0017,
+    "se": 0.0035,
+    "p05": -0.0038,
+    "p95": 0.0075,
+    "median_world": 0.0012,
+    "se_worlds_only": 0.0024
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.S@2 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.S@8 - P0",
+   "text": "arm N30: gap S@8 - P0 in pooled OES",
+   "value": {
+    "value": 0.0032,
+    "se": 0.0038,
+    "p05": -0.0027,
+    "p95": 0.0098,
+    "median_world": 0.0016,
+    "se_worlds_only": 0.0024
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.S@8 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.S@32 - P0",
+   "text": "arm N30: gap S@32 - P0 in pooled OES",
+   "value": {
+    "value": 0.003,
+    "se": 0.0037,
+    "p05": -0.0029,
+    "p95": 0.0092,
+    "median_world": 0.0017,
+    "se_worlds_only": 0.0023
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.S@32 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.S@128 - P0",
+   "text": "arm N30: gap S@128 - P0 in pooled OES",
+   "value": {
+    "value": 0.003,
+    "se": 0.0038,
+    "p05": -0.0035,
+    "p95": 0.0091,
+    "median_world": 0.0019,
+    "se_worlds_only": 0.0023
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.S@128 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.S@512 - P0",
+   "text": "arm N30: gap S@512 - P0 in pooled OES",
+   "value": {
+    "value": 0.0037,
+    "se": 0.0038,
+    "p05": -0.0023,
+    "p95": 0.0099,
+    "median_world": 0.0024,
+    "se_worlds_only": 0.0024
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.S@512 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.FT@8 - P0",
+   "text": "arm N30: gap FT@8 - P0 in pooled OES",
+   "value": {
+    "value": 0.008,
+    "se": 0.0062,
+    "p05": -0.0022,
+    "p95": 0.018,
+    "median_world": 0.0064,
+    "se_worlds_only": 0.0061
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.FT@8 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.FT@32 - P0",
+   "text": "arm N30: gap FT@32 - P0 in pooled OES",
+   "value": {
+    "value": 0.0393,
+    "se": 0.0097,
+    "p05": 0.0243,
+    "p95": 0.056,
+    "median_world": 0.0335,
+    "se_worlds_only": 0.0098
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.FT@32 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.FT@128 - P0",
+   "text": "arm N30: gap FT@128 - P0 in pooled OES",
+   "value": {
+    "value": 0.0592,
+    "se": 0.0111,
+    "p05": 0.0419,
+    "p95": 0.0784,
+    "median_world": 0.0466,
+    "se_worlds_only": 0.0114
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.FT@128 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.FT@512 - P0",
+   "text": "arm N30: gap FT@512 - P0 in pooled OES",
+   "value": {
+    "value": 0.0792,
+    "se": 0.0124,
+    "p05": 0.0594,
+    "p95": 0.1002,
+    "median_world": 0.0596,
+    "se_worlds_only": 0.0127
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.FT@512 - P0"
+   }
+  },
+  {
+   "id": "N30.gap.C - D@8",
+   "text": "arm N30: gap C - D@8 in pooled OES",
+   "value": {
+    "value": 0.3495,
+    "se": 0.0443,
+    "p05": 0.278,
+    "p95": 0.424,
+    "median_world": 0.3177,
+    "se_worlds_only": 0.0439
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - D@8"
+   }
+  },
+  {
+   "id": "N30.gap.C - D@32",
+   "text": "arm N30: gap C - D@32 in pooled OES",
+   "value": {
+    "value": 0.2326,
+    "se": 0.0338,
+    "p05": 0.1785,
+    "p95": 0.2895,
+    "median_world": 0.2177,
+    "se_worlds_only": 0.0338
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - D@32"
+   }
+  },
+  {
+   "id": "N30.gap.C - D@128",
+   "text": "arm N30: gap C - D@128 in pooled OES",
+   "value": {
+    "value": 0.1307,
+    "se": 0.0197,
+    "p05": 0.1006,
+    "p95": 0.1645,
+    "median_world": 0.127,
+    "se_worlds_only": 0.0197
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - D@128"
+   }
+  },
+  {
+   "id": "N30.gap.C - D@512",
+   "text": "arm N30: gap C - D@512 in pooled OES",
+   "value": {
+    "value": 0.0544,
+    "se": 0.0068,
+    "p05": 0.0434,
+    "p95": 0.0661,
+    "median_world": 0.055,
+    "se_worlds_only": 0.0065
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.C - D@512"
+   }
+  },
+  {
+   "id": "N30.gap.S@0 - P0",
+   "text": "arm N30: gap S@0 - P0 in pooled OES",
+   "value": {
+    "value": 0.0001,
+    "se": 0.0033,
+    "p05": -0.0049,
+    "p95": 0.0058,
+    "median_world": -0.0026,
+    "se_worlds_only": 0.0022
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.gaps_oes.S@0 - P0"
+   }
+  },
+  {
+   "id": "N30.state_given.plugPrior",
+   "text": "arm N30: state-given loss 1 - OES of the simulator from the hidden state, plugPrior",
+   "value": {
+    "value": 0.7885,
+    "se": 0.0916,
+    "p05": 0.6425,
+    "p95": 0.9472,
+    "median_world": 0.6665,
+    "se_worlds_only": 0.0878
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.state_given_loss.plugPrior"
+   }
+  },
+  {
+   "id": "N30.state_given.plug03",
+   "text": "arm N30: state-given loss 1 - OES of the simulator from the hidden state, plug03",
+   "value": {
+    "value": 0.0874,
+    "se": 0.0233,
+    "p05": 0.0522,
+    "p95": 0.1282,
+    "median_world": 0.0735,
+    "se_worlds_only": 0.024
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.state_given_loss.plug03"
+   }
+  },
+  {
+   "id": "N30.state_given.plug10",
+   "text": "arm N30: state-given loss 1 - OES of the simulator from the hidden state, plug10",
+   "value": {
+    "value": 0.3312,
+    "se": 0.0607,
+    "p05": 0.2363,
+    "p95": 0.4355,
+    "median_world": 0.3341,
+    "se_worlds_only": 0.0624
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.state_given_loss.plug10"
+   }
+  },
+  {
+   "id": "N30.state_given.plug30",
+   "text": "arm N30: state-given loss 1 - OES of the simulator from the hidden state, plug30",
+   "value": {
+    "value": 0.7082,
+    "se": 0.0847,
+    "p05": 0.5731,
+    "p95": 0.8537,
+    "median_world": 0.698,
+    "se_worlds_only": 0.0866
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.state_given_loss.plug30"
+   }
+  },
+  {
+   "id": "N30.state_given.plugTrue",
+   "text": "arm N30: state-given loss 1 - OES of the simulator from the hidden state, plugTrue",
+   "value": {
+    "value": -0.0001,
+    "se": 0.0001,
+    "p05": -0.0002,
+    "p95": 0.0001,
+    "median_world": -0.0001,
+    "se_worlds_only": 0.0001
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.state_given_loss.plugTrue"
+   }
+  },
+  {
+   "id": "N30.state_given.plugU0",
+   "text": "arm N30: state-given loss 1 - OES of the simulator from the hidden state, plugU0",
+   "value": {
+    "value": 0.0944,
+    "se": 0.0119,
+    "p05": 0.075,
+    "p95": 0.1144,
+    "median_world": 0.0897,
+    "se_worlds_only": 0.0117
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.state_given_loss.plugU0"
+   }
+  },
+  {
+   "id": "N30.actions",
+   "text": "arm N30: loss of the input-blind oracle on items with a program, share of the K-to-O range",
+   "value": {
+    "value": 0.1259,
+    "se": 0.0159,
+    "p05": 0.1002,
+    "p95": 0.1526,
+    "median_world": 0.1194,
+    "se_worlds_only": 0.0156
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.actions.classes_bcd"
+   }
+  },
+  {
+   "id": "N30.actions_verdict",
+   "text": "arm N30: verdict of criterion 4",
+   "value": "actions matter",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.actions.verdict"
+   }
+  },
+  {
+   "id": "N30.actions_worlds",
+   "text": "arm N30: hidden worlds with input-blind loss >= 0.10",
+   "value": 8,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.actions.worlds_at_least_0p10"
+   }
+  },
+  {
+   "id": "N30.actions.b",
+   "text": "arm N30: the same for program class b",
+   "value": {
+    "value": 0.011,
+    "se": 0.002,
+    "p05": 0.0078,
+    "p95": 0.0145,
+    "median_world": 0.0087,
+    "se_worlds_only": 0.002
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.actions.class_b"
+   }
+  },
+  {
+   "id": "N30.actions.c",
+   "text": "arm N30: the same for program class c",
+   "value": {
+    "value": 0.1266,
+    "se": 0.0171,
+    "p05": 0.1,
+    "p95": 0.1563,
+    "median_world": 0.1219,
+    "se_worlds_only": 0.0172
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.actions.class_c"
+   }
+  },
+  {
+   "id": "N30.actions.d",
+   "text": "arm N30: the same for program class d",
+   "value": {
+    "value": 0.2396,
+    "se": 0.0306,
+    "p05": 0.1909,
+    "p95": 0.2915,
+    "median_world": 0.2224,
+    "se_worlds_only": 0.0299
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.actions.class_d"
+   }
+  },
+  {
+   "id": "N30.actions_vs_C",
+   "text": "arm N30: input-blind loss over C's own excess above the oracle",
+   "value": {
+    "value": 0.8226,
+    "se": 0.1368,
+    "p05": 0.6366,
+    "p95": 1.0823,
+    "median_world": 0.8162,
+    "se_worlds_only": 0.1399
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.actions.blind_loss_over_C_excess"
+   }
+  },
+  {
+   "id": "N30.N90_data_only",
+   "text": "arm N30: N90_data_only",
+   "value": 293.1470452628411,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.budgets.N90_data_only"
+   }
+  },
+  {
+   "id": "N30.N_P0_data_only",
+   "text": "arm N30: N_P0_data_only",
+   "value": 179.28520818748657,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.budgets.N_P0_data_only"
+   }
+  },
+  {
+   "id": "N30.N90_finetune",
+   "text": "arm N30: N90_finetune",
+   "value": 18.64484034343941,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.budgets.N90_finetune"
+   }
+  },
+  {
+   "id": "N30.P0_share_of_C",
+   "text": "arm N30: P0_share_of_C",
+   "value": 0.8681652333806058,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.budgets.P0_share_of_C"
+   }
+  },
+  {
+   "id": "N30.h1.share_noexp",
+   "text": "arm N30, horizon 1 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.9708,
+    "se": 0.0045,
+    "p05": 0.9633,
+    "p95": 0.978,
+    "median_world": 0.972,
+    "se_worlds_only": 0.0045
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.1.share_noexp"
+   }
+  },
+  {
+   "id": "N30.h1.sigma@8",
+   "text": "arm N30, horizon 1 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0266,
+    "se": 0.0038,
+    "p05": 0.0204,
+    "p95": 0.033,
+    "median_world": 0.0261,
+    "se_worlds_only": 0.0039
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.1.sigma@8"
+   }
+  },
+  {
+   "id": "N30.h1.sigma@32",
+   "text": "arm N30, horizon 1 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0199,
+    "se": 0.0027,
+    "p05": 0.0154,
+    "p95": 0.0244,
+    "median_world": 0.0184,
+    "se_worlds_only": 0.0027
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.1.sigma@32"
+   }
+  },
+  {
+   "id": "N30.h1.sigma@512",
+   "text": "arm N30, horizon 1 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0091,
+    "se": 0.0014,
+    "p05": 0.0068,
+    "p95": 0.0115,
+    "median_world": 0.0082,
+    "se_worlds_only": 0.0014
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.1.sigma@512"
+   }
+  },
+  {
+   "id": "N30.h2.share_noexp",
+   "text": "arm N30, horizon 2 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.9383,
+    "se": 0.008,
+    "p05": 0.9253,
+    "p95": 0.9515,
+    "median_world": 0.9381,
+    "se_worlds_only": 0.0083
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.2.share_noexp"
+   }
+  },
+  {
+   "id": "N30.h2.sigma@8",
+   "text": "arm N30, horizon 2 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0557,
+    "se": 0.0071,
+    "p05": 0.044,
+    "p95": 0.067,
+    "median_world": 0.0537,
+    "se_worlds_only": 0.0073
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.2.sigma@8"
+   }
+  },
+  {
+   "id": "N30.h2.sigma@32",
+   "text": "arm N30, horizon 2 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0397,
+    "se": 0.0042,
+    "p05": 0.0326,
+    "p95": 0.0462,
+    "median_world": 0.0435,
+    "se_worlds_only": 0.0042
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.2.sigma@32"
+   }
+  },
+  {
+   "id": "N30.h2.sigma@512",
+   "text": "arm N30, horizon 2 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0175,
+    "se": 0.002,
+    "p05": 0.0142,
+    "p95": 0.0207,
+    "median_world": 0.0193,
+    "se_worlds_only": 0.0019
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.2.sigma@512"
+   }
+  },
+  {
+   "id": "N30.h4.share_noexp",
+   "text": "arm N30, horizon 4 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.8838,
+    "se": 0.0144,
+    "p05": 0.8607,
+    "p95": 0.9081,
+    "median_world": 0.8762,
+    "se_worlds_only": 0.0148
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.4.share_noexp"
+   }
+  },
+  {
+   "id": "N30.h4.sigma@8",
+   "text": "arm N30, horizon 4 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1111,
+    "se": 0.0137,
+    "p05": 0.0872,
+    "p95": 0.1324,
+    "median_world": 0.105,
+    "se_worlds_only": 0.0141
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.4.sigma@8"
+   }
+  },
+  {
+   "id": "N30.h4.sigma@32",
+   "text": "arm N30, horizon 4 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0805,
+    "se": 0.0099,
+    "p05": 0.0645,
+    "p95": 0.0969,
+    "median_world": 0.0838,
+    "se_worlds_only": 0.0095
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.4.sigma@32"
+   }
+  },
+  {
+   "id": "N30.h4.sigma@512",
+   "text": "arm N30, horizon 4 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0352,
+    "se": 0.0044,
+    "p05": 0.0281,
+    "p95": 0.0427,
+    "median_world": 0.037,
+    "se_worlds_only": 0.0043
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.4.sigma@512"
+   }
+  },
+  {
+   "id": "N30.h8.share_noexp",
+   "text": "arm N30, horizon 8 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.8187,
+    "se": 0.0228,
+    "p05": 0.7847,
+    "p95": 0.8601,
+    "median_world": 0.8139,
+    "se_worlds_only": 0.0228
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.8.share_noexp"
+   }
+  },
+  {
+   "id": "N30.h8.sigma@8",
+   "text": "arm N30, horizon 8 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1668,
+    "se": 0.0243,
+    "p05": 0.1266,
+    "p95": 0.2062,
+    "median_world": 0.1418,
+    "se_worlds_only": 0.0245
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.8.sigma@8"
+   }
+  },
+  {
+   "id": "N30.h8.sigma@32",
+   "text": "arm N30, horizon 8 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1124,
+    "se": 0.0191,
+    "p05": 0.0839,
+    "p95": 0.1466,
+    "median_world": 0.0998,
+    "se_worlds_only": 0.0183
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.8.sigma@32"
+   }
+  },
+  {
+   "id": "N30.h8.sigma@512",
+   "text": "arm N30, horizon 8 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0527,
+    "se": 0.0096,
+    "p05": 0.0385,
+    "p95": 0.0702,
+    "median_world": 0.0482,
+    "se_worlds_only": 0.0091
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.8.sigma@512"
+   }
+  },
+  {
+   "id": "N30.h16.share_noexp",
+   "text": "arm N30, horizon 16 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.6719,
+    "se": 0.0701,
+    "p05": 0.5486,
+    "p95": 0.7809,
+    "median_world": 0.7498,
+    "se_worlds_only": 0.0686
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.16.share_noexp"
+   }
+  },
+  {
+   "id": "N30.h16.sigma@8",
+   "text": "arm N30, horizon 16 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.3267,
+    "se": 0.0696,
+    "p05": 0.2119,
+    "p95": 0.4398,
+    "median_world": 0.2102,
+    "se_worlds_only": 0.0685
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.16.sigma@8"
+   }
+  },
+  {
+   "id": "N30.h16.sigma@32",
+   "text": "arm N30, horizon 16 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.2273,
+    "se": 0.0582,
+    "p05": 0.1393,
+    "p95": 0.3305,
+    "median_world": 0.1686,
+    "se_worlds_only": 0.0566
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.16.sigma@32"
+   }
+  },
+  {
+   "id": "N30.h16.sigma@512",
+   "text": "arm N30, horizon 16 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1024,
+    "se": 0.0318,
+    "p05": 0.0555,
+    "p95": 0.1587,
+    "median_world": 0.0552,
+    "se_worlds_only": 0.0308
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_horizon.16.sigma@512"
+   }
+  },
+  {
+   "id": "N30.convergence",
+   "text": "arm N30: convergence by criterion 6 per kind of net",
+   "value": {
+    "P0": {
+     "nets": 6,
+     "ok": 0,
+     "late_share_max": 0.034529316757301406,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 7625.0
+    },
+    "A": {
+     "nets": 6,
+     "ok": 1,
+     "late_share_max": 0.040547640554331535,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 7750.0
+    },
+    "P0s": {
+     "nets": 6,
+     "ok": 2,
+     "late_share_max": 0.030325807475700507,
+     "steps": 4000,
+     "stopped_early": 0,
+     "best_step_median": 4000.0
+    },
+    "N30 C": {
+     "nets": 24,
+     "ok": 12,
+     "late_share_max": 0.033074533483049846,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 8000.0
+    },
+    "N30 D@512 s0": {
+     "nets": 12,
+     "ok": 11,
+     "late_share_max": 0.02097660253143643,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 2900.0
+    },
+    "N30 FT@512 s0": {
+     "nets": 12,
+     "ok": 10,
+     "late_share_max": 0.02410116661217888,
+     "steps": 2400,
+     "stopped_early": 0,
+     "best_step_median": 2300.0
+    },
+    "N30 Cft": {
+     "nets": 24,
+     "ok": 21,
+     "late_share_max": 0.033237817426632885,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 3000.0
+    },
+    "N30 Csm": {
+     "nets": 12,
+     "ok": 12,
+     "late_share_max": 0.01781653347550153,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 7125.0
+    },
+    "N30 D@128 s0": {
+     "nets": 12,
+     "ok": 11,
+     "late_share_max": 0.026527408791819838,
+     "steps": 1500,
+     "stopped_early": 0,
+     "best_step_median": 850.0
+    },
+    "N30 FT@128 s0": {
+     "nets": 12,
+     "ok": 11,
+     "late_share_max": 0.02264956895326754,
+     "steps": 1200,
+     "stopped_early": 0,
+     "best_step_median": 1100.0
+    },
+    "N30 D@32 s0": {
+     "nets": 12,
+     "ok": 10,
+     "late_share_max": 0.048536454746248715,
+     "steps": 800,
+     "stopped_early": 0,
+     "best_step_median": 400.0
+    },
+    "N30 FT@32 s0": {
+     "nets": 12,
+     "ok": 7,
+     "late_share_max": 0.29472573403132696,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 250.0
+    },
+    "N30 D@8 s0": {
+     "nets": 12,
+     "ok": 10,
+     "late_share_max": 0.054285950562380066,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 100.0
+    },
+    "N30 FT@8 s0": {
+     "nets": 12,
+     "ok": 8,
+     "late_share_max": 0.20340837648594562,
+     "steps": 200,
+     "stopped_early": 0,
+     "best_step_median": 100.0
+    },
+    "N30 D@32 s1": {
+     "nets": 12,
+     "ok": 10,
+     "late_share_max": 0.13066071238123764,
+     "steps": 800,
+     "stopped_early": 0,
+     "best_step_median": 300.0
+    },
+    "N30 FT@32 s1": {
+     "nets": 12,
+     "ok": 10,
+     "late_share_max": 0.07831186200432094,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 300.0
+    },
+    "N30 D@512 s1": {
+     "nets": 12,
+     "ok": 12,
+     "late_share_max": 0.018355103916313502,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 2850.0
+    },
+    "N30 FT@512 s1": {
+     "nets": 12,
+     "ok": 10,
+     "late_share_max": 0.022603751543325615,
+     "steps": 2400,
+     "stopped_early": 0,
+     "best_step_median": 2350.0
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.convergence"
+   }
+  },
+  {
+   "id": "N30.stationarity",
+   "text": "arm N30: share of the variance carried by the tick alone",
+   "value": {
+    "first17_max": 1.1124818787518606e-05,
+    "all33_max": 6.217464754684277e-05,
+    "first17_median": 1.8627314405668327e-07,
+    "all33_median": 1.074453575606199e-06,
+    "sampling_floor": 3.0517578125e-05,
+    "verdict": "stationary"
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.stationarity"
+   }
+  },
+  {
+   "id": "N30.oes_by_class",
+   "text": "arm N30: per-cell-mean OES by program class",
+   "value": {
+    "a": {
+     "C": 0.86,
+     "P0": 0.753,
+     "plugU0": 1.0,
+     "plugTrue": 1.0
+    },
+    "b": {
+     "C": 0.854,
+     "P0": 0.752,
+     "plugU0": 0.989,
+     "plugTrue": 1.0
+    },
+    "c": {
+     "C": 0.851,
+     "P0": 0.73,
+     "plugU0": 0.873,
+     "plugTrue": 1.0
+    },
+    "d": {
+     "C": 0.828,
+     "P0": 0.702,
+     "plugU0": 0.759,
+     "plugTrue": 1.0
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.oes_by_class"
+   }
+  },
+  {
+   "id": "N10.worlds",
+   "text": "arm N10: hidden worlds, items",
+   "value": {
+    "n_hidden": 12,
+    "n_items": 384,
+    "train_worlds": [
+     128,
+     128,
+     128
+    ],
+    "valid_cells": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.n_hidden"
+   }
+  },
+  {
+   "id": "N10.ceiling",
+   "text": "arm N10: which candidate is the ceiling C",
+   "value": "scratch",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.ceiling_is"
+   }
+  },
+  {
+   "id": "N10.oes.C",
+   "text": "arm N10: pooled oracle-normalised skill of C",
+   "value": {
+    "value": 0.817,
+    "se": 0.0172,
+    "p05": 0.7885,
+    "p95": 0.8453,
+    "median_world": 0.8237,
+    "se_worlds_only": 0.0175
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.table.C.oes_pooled"
+   }
+  },
+  {
+   "id": "N10.oes.Cft",
+   "text": "arm N10: pooled oracle-normalised skill of Cft",
+   "value": {
+    "value": 0.8144,
+    "se": 0.0175,
+    "p05": 0.7858,
+    "p95": 0.8434,
+    "median_world": 0.8202,
+    "se_worlds_only": 0.0177
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.table.Cft.oes_pooled"
+   }
+  },
+  {
+   "id": "N10.oes.Csm",
+   "text": "arm N10: pooled oracle-normalised skill of Csm",
+   "value": {
+    "value": 0.7863,
+    "se": 0.0193,
+    "p05": 0.7545,
+    "p95": 0.8185,
+    "median_world": 0.7834,
+    "se_worlds_only": 0.0199
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.table.Csm.oes_pooled"
+   }
+  },
+  {
+   "id": "N10.oes.P0",
+   "text": "arm N10: pooled oracle-normalised skill of P0",
+   "value": {
+    "value": 0.7826,
+    "se": 0.0175,
+    "p05": 0.7536,
+    "p95": 0.8115,
+    "median_world": 0.7896,
+    "se_worlds_only": 0.0176
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.table.P0.oes_pooled"
+   }
+  },
+  {
+   "id": "N10.oes.P0s",
+   "text": "arm N10: pooled oracle-normalised skill of P0s",
+   "value": {
+    "value": 0.7285,
+    "se": 0.0205,
+    "p05": 0.6939,
+    "p95": 0.7621,
+    "median_world": 0.7244,
+    "se_worlds_only": 0.0202
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.table.P0s.oes_pooled"
+   }
+  },
+  {
+   "id": "N10.oes.S@0",
+   "text": "arm N10: pooled oracle-normalised skill of S@0",
+   "value": {
+    "value": 0.7796,
+    "se": 0.0176,
+    "p05": 0.7505,
+    "p95": 0.8085,
+    "median_world": 0.7863,
+    "se_worlds_only": 0.0177
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.table.S@0.oes_pooled"
+   }
+  },
+  {
+   "id": "N10.oes.Kp",
+   "text": "arm N10: pooled oracle-normalised skill of Kp",
+   "value": {
+    "value": 0.0833,
+    "se": 0.0668,
+    "p05": -0.0256,
+    "p95": 0.1954,
+    "median_world": 0.0865,
+    "se_worlds_only": 0.0656
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.table.Kp.oes_pooled"
+   }
+  },
+  {
+   "id": "N10.oes.plugTrue",
+   "text": "arm N10: pooled oracle-normalised skill of plugTrue",
+   "value": {
+    "value": 1.0001,
+    "se": 0.0001,
+    "p05": 0.9999,
+    "p95": 1.0002,
+    "median_world": 1.0,
+    "se_worlds_only": 0.0001
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.table.plugTrue.oes_pooled"
+   }
+  },
+  {
+   "id": "N10.curve.S",
+   "text": "arm N10: S(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     0,
+     2,
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.9542392966432578,
+     0.9573343610767884,
+     0.9587475378533676,
+     0.9599519707269835,
+     0.9594662072905865,
+     0.9600624124414667
+    ],
+    "oes_pooled": [
+     0.7795754942998007,
+     0.7821040386535566,
+     0.7832585477877017,
+     0.784242521468206,
+     0.7838456720905143,
+     0.7843327479496164
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.budgets.curves.S"
+   }
+  },
+  {
+   "id": "N10.curve.FT",
+   "text": "arm N10: FT(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.9572685292190954,
+     0.958854376979188,
+     0.9638713335848608,
+     0.9794875007264155
+    ],
+    "oes_pooled": [
+     0.7820502566481601,
+     0.7833458310976795,
+     0.7874444847996451,
+     0.8002022713017002
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.budgets.curves.FT"
+   }
+  },
+  {
+   "id": "N10.curve.D",
+   "text": "arm N10: D(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.5365881315503231,
+     0.7049008636684582,
+     0.8364670135192225,
+     0.9221155530316612
+    ],
+    "oes_pooled": [
+     0.4383711290870629,
+     0.5758759266776811,
+     0.683360230314964,
+     0.7533316753826127
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.budgets.curves.D"
+   }
+  },
+  {
+   "id": "N10.curve.Dr",
+   "text": "arm N10: Dr(N), share of C's skill and pooled OES by Lab budget",
+   "value": {
+    "N": [
+     8,
+     32,
+     128,
+     512
+    ],
+    "share_of_C": [
+     0.771396914465875,
+     0.7983893740417267,
+     0.8029867251074387,
+     0.803972461910802
+    ],
+    "oes_pooled": [
+     0.6302005513831764,
+     0.6522523156421355,
+     0.6560081683324718,
+     0.6568134760350938
+    ]
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.budgets.curves.Dr"
+   }
+  },
+  {
+   "id": "N10.sigma",
+   "text": "arm N10: science share sigma at the largest budget (null = FT@512)",
+   "value": {
+    "value": 0.0205,
+    "se": 0.0027,
+    "p05": 0.0164,
+    "p95": 0.025,
+    "median_world": 0.0218,
+    "se_worlds_only": 0.0023
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.sigma"
+   }
+  },
+  {
+   "id": "N10.sigma_verdict",
+   "text": "arm N10: verdict on sigma >= 0.15 from the 90% interval",
+   "value": "fail",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.sigma_verdict"
+   }
+  },
+  {
+   "id": "N10.sigma_no_lab",
+   "text": "arm N10: sigma with no Lab at all (null = best no-experiment policy)",
+   "value": {
+    "value": 0.042,
+    "se": 0.0052,
+    "p05": 0.0337,
+    "p95": 0.051,
+    "median_world": 0.0414,
+    "se_worlds_only": 0.005
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.sigma_no_lab"
+   }
+  },
+  {
+   "id": "N10.sigma@8",
+   "text": "arm N10: sigma at Lab budget 8",
+   "value": {
+    "value": 0.042,
+    "se": 0.0052,
+    "p05": 0.0336,
+    "p95": 0.051,
+    "median_world": 0.0414,
+    "se_worlds_only": 0.005
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.sigma_by_budget.8"
+   }
+  },
+  {
+   "id": "N10.sigma@32",
+   "text": "arm N10: sigma at Lab budget 32",
+   "value": {
+    "value": 0.0411,
+    "se": 0.0046,
+    "p05": 0.0332,
+    "p95": 0.0484,
+    "median_world": 0.0359,
+    "se_worlds_only": 0.0043
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.sigma_by_budget.32"
+   }
+  },
+  {
+   "id": "N10.sigma@128",
+   "text": "arm N10: sigma at Lab budget 128",
+   "value": {
+    "value": 0.0361,
+    "se": 0.0041,
+    "p05": 0.0296,
+    "p95": 0.0431,
+    "median_world": 0.031,
+    "se_worlds_only": 0.0039
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.sigma_by_budget.128"
+   }
+  },
+  {
+   "id": "N10.sigma@512",
+   "text": "arm N10: sigma at Lab budget 512",
+   "value": {
+    "value": 0.0205,
+    "se": 0.0027,
+    "p05": 0.0164,
+    "p95": 0.025,
+    "median_world": 0.0218,
+    "se_worlds_only": 0.0023
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.sigma_by_budget.512"
+   }
+  },
+  {
+   "id": "N10.share_noexp",
+   "text": "arm N10: share of C's skill with no hypothesis and no experiment",
+   "value": {
+    "value": 0.958,
+    "se": 0.0052,
+    "p05": 0.949,
+    "p95": 0.9663,
+    "median_world": 0.9586,
+    "se_worlds_only": 0.005
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.share_noexp"
+   }
+  },
+  {
+   "id": "N10.trivial",
+   "text": "arm N10: verdict of criterion 2",
+   "value": "undecided",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.trivial_verdict"
+   }
+  },
+  {
+   "id": "N10.rho@0",
+   "text": "arm N10: scripted share rho of amortised inference at 0 Lab episodes",
+   "value": {
+    "value": -0.0888,
+    "se": 0.0415,
+    "p05": -0.1622,
+    "p95": -0.0271,
+    "median_world": -0.0729,
+    "se_worlds_only": 0.0319
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho.0"
+   }
+  },
+  {
+   "id": "N10.rho@2",
+   "text": "arm N10: scripted share rho of amortised inference at 2 Lab episodes",
+   "value": {
+    "value": -0.0152,
+    "se": 0.0496,
+    "p05": -0.1001,
+    "p95": 0.0625,
+    "median_world": -0.031,
+    "se_worlds_only": 0.0431
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho.2"
+   }
+  },
+  {
+   "id": "N10.rho@8",
+   "text": "arm N10: scripted share rho of amortised inference at 8 Lab episodes",
+   "value": {
+    "value": 0.0185,
+    "se": 0.0476,
+    "p05": -0.0617,
+    "p95": 0.0956,
+    "median_world": 0.0042,
+    "se_worlds_only": 0.0391
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho.8"
+   }
+  },
+  {
+   "id": "N10.rho@32",
+   "text": "arm N10: scripted share rho of amortised inference at 32 Lab episodes",
+   "value": {
+    "value": 0.0471,
+    "se": 0.0503,
+    "p05": -0.0383,
+    "p95": 0.1295,
+    "median_world": 0.0206,
+    "se_worlds_only": 0.0402
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho.32"
+   }
+  },
+  {
+   "id": "N10.rho@128",
+   "text": "arm N10: scripted share rho of amortised inference at 128 Lab episodes",
+   "value": {
+    "value": 0.0356,
+    "se": 0.0472,
+    "p05": -0.043,
+    "p95": 0.1114,
+    "median_world": 0.0014,
+    "se_worlds_only": 0.0389
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho.128"
+   }
+  },
+  {
+   "id": "N10.rho@512",
+   "text": "arm N10: scripted share rho of amortised inference at 512 Lab episodes",
+   "value": {
+    "value": 0.0498,
+    "se": 0.0438,
+    "p05": -0.0228,
+    "p95": 0.12,
+    "median_world": 0.0006,
+    "se_worlds_only": 0.0369
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho.512"
+   }
+  },
+  {
+   "id": "N10.rhoFT@8",
+   "text": "arm N10: share of the P0-to-C gap closed by fine-tuning P0 on 8 Lab episodes",
+   "value": {
+    "value": -0.0167,
+    "se": 0.0225,
+    "p05": -0.0602,
+    "p95": 0.0,
+    "median_world": -0.0204,
+    "se_worlds_only": 0.0105
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho_finetune.8"
+   }
+  },
+  {
+   "id": "N10.rhoFT@32",
+   "text": "arm N10: share of the P0-to-C gap closed by fine-tuning P0 on 32 Lab episodes",
+   "value": {
+    "value": 0.021,
+    "se": 0.0516,
+    "p05": -0.0765,
+    "p95": 0.09,
+    "median_world": 0.0,
+    "se_worlds_only": 0.0403
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho_finetune.32"
+   }
+  },
+  {
+   "id": "N10.rhoFT@128",
+   "text": "arm N10: share of the P0-to-C gap closed by fine-tuning P0 on 128 Lab episodes",
+   "value": {
+    "value": 0.1404,
+    "se": 0.0647,
+    "p05": 0.0259,
+    "p95": 0.2409,
+    "median_world": 0.0888,
+    "se_worlds_only": 0.0634
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho_finetune.128"
+   }
+  },
+  {
+   "id": "N10.rhoFT@512",
+   "text": "arm N10: share of the P0-to-C gap closed by fine-tuning P0 on 512 Lab episodes",
+   "value": {
+    "value": 0.5119,
+    "se": 0.0523,
+    "p05": 0.4175,
+    "p95": 0.5897,
+    "median_world": 0.5448,
+    "se_worlds_only": 0.0467
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.acceptance.rho_finetune.512"
+   }
+  },
+  {
+   "id": "N10.gap.C - P0",
+   "text": "arm N10: gap C - P0 in pooled OES",
+   "value": {
+    "value": 0.0343,
+    "se": 0.0042,
+    "p05": 0.0276,
+    "p95": 0.0416,
+    "median_world": 0.0329,
+    "se_worlds_only": 0.0041
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - P0"
+   }
+  },
+  {
+   "id": "N10.gap.C - P0s",
+   "text": "arm N10: gap C - P0s in pooled OES",
+   "value": {
+    "value": 0.0885,
+    "se": 0.01,
+    "p05": 0.0731,
+    "p95": 0.1063,
+    "median_world": 0.0781,
+    "se_worlds_only": 0.0094
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - P0s"
+   }
+  },
+  {
+   "id": "N10.gap.P0 - P0s",
+   "text": "arm N10: gap P0 - P0s in pooled OES",
+   "value": {
+    "value": 0.0542,
+    "se": 0.0069,
+    "p05": 0.0438,
+    "p95": 0.0665,
+    "median_world": 0.0496,
+    "se_worlds_only": 0.006
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.P0 - P0s"
+   }
+  },
+  {
+   "id": "N10.gap.O - C",
+   "text": "arm N10: gap O - C in pooled OES",
+   "value": {
+    "value": 0.183,
+    "se": 0.0172,
+    "p05": 0.1547,
+    "p95": 0.2115,
+    "median_world": 0.1763,
+    "se_worlds_only": 0.0175
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.O - C"
+   }
+  },
+  {
+   "id": "N10.gap.C - S@0",
+   "text": "arm N10: gap C - S@0 in pooled OES",
+   "value": {
+    "value": 0.0374,
+    "se": 0.0043,
+    "p05": 0.0303,
+    "p95": 0.0446,
+    "median_world": 0.0355,
+    "se_worlds_only": 0.0042
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - S@0"
+   }
+  },
+  {
+   "id": "N10.gap.C - Cft",
+   "text": "arm N10: gap C - Cft in pooled OES",
+   "value": {
+    "value": 0.0025,
+    "se": 0.0015,
+    "p05": 0.0001,
+    "p95": 0.005,
+    "median_world": 0.0025,
+    "se_worlds_only": 0.0012
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - Cft"
+   }
+  },
+  {
+   "id": "N10.gap.C - Csm",
+   "text": "arm N10: gap C - Csm in pooled OES",
+   "value": {
+    "value": 0.0307,
+    "se": 0.0045,
+    "p05": 0.0236,
+    "p95": 0.0381,
+    "median_world": 0.028,
+    "se_worlds_only": 0.0045
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - Csm"
+   }
+  },
+  {
+   "id": "N10.gap.C - S@2",
+   "text": "arm N10: gap C - S@2 in pooled OES",
+   "value": {
+    "value": 0.0349,
+    "se": 0.0044,
+    "p05": 0.0276,
+    "p95": 0.0421,
+    "median_world": 0.0368,
+    "se_worlds_only": 0.0043
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - S@2"
+   }
+  },
+  {
+   "id": "N10.gap.C - S@8",
+   "text": "arm N10: gap C - S@8 in pooled OES",
+   "value": {
+    "value": 0.0337,
+    "se": 0.0044,
+    "p05": 0.0266,
+    "p95": 0.041,
+    "median_world": 0.0327,
+    "se_worlds_only": 0.0043
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - S@8"
+   }
+  },
+  {
+   "id": "N10.gap.C - S@32",
+   "text": "arm N10: gap C - S@32 in pooled OES",
+   "value": {
+    "value": 0.0327,
+    "se": 0.0044,
+    "p05": 0.0256,
+    "p95": 0.0402,
+    "median_world": 0.0323,
+    "se_worlds_only": 0.0043
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - S@32"
+   }
+  },
+  {
+   "id": "N10.gap.C - S@128",
+   "text": "arm N10: gap C - S@128 in pooled OES",
+   "value": {
+    "value": 0.0331,
+    "se": 0.0044,
+    "p05": 0.026,
+    "p95": 0.0403,
+    "median_world": 0.033,
+    "se_worlds_only": 0.0043
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - S@128"
+   }
+  },
+  {
+   "id": "N10.gap.C - S@512",
+   "text": "arm N10: gap C - S@512 in pooled OES",
+   "value": {
+    "value": 0.0326,
+    "se": 0.0042,
+    "p05": 0.0257,
+    "p95": 0.0397,
+    "median_world": 0.0332,
+    "se_worlds_only": 0.0041
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - S@512"
+   }
+  },
+  {
+   "id": "N10.gap.S@2 - P0",
+   "text": "arm N10: gap S@2 - P0 in pooled OES",
+   "value": {
+    "value": -0.0005,
+    "se": 0.0017,
+    "p05": -0.0034,
+    "p95": 0.0022,
+    "median_world": -0.0009,
+    "se_worlds_only": 0.0015
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.S@2 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.S@8 - P0",
+   "text": "arm N10: gap S@8 - P0 in pooled OES",
+   "value": {
+    "value": 0.0006,
+    "se": 0.0017,
+    "p05": -0.0021,
+    "p95": 0.0033,
+    "median_world": 0.0002,
+    "se_worlds_only": 0.0014
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.S@8 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.S@32 - P0",
+   "text": "arm N10: gap S@32 - P0 in pooled OES",
+   "value": {
+    "value": 0.0016,
+    "se": 0.0018,
+    "p05": -0.0013,
+    "p95": 0.0046,
+    "median_world": 0.0007,
+    "se_worlds_only": 0.0014
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.S@32 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.S@128 - P0",
+   "text": "arm N10: gap S@128 - P0 in pooled OES",
+   "value": {
+    "value": 0.0012,
+    "se": 0.0016,
+    "p05": -0.0015,
+    "p95": 0.004,
+    "median_world": 0.0001,
+    "se_worlds_only": 0.0013
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.S@128 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.S@512 - P0",
+   "text": "arm N10: gap S@512 - P0 in pooled OES",
+   "value": {
+    "value": 0.0017,
+    "se": 0.0015,
+    "p05": -0.0008,
+    "p95": 0.0042,
+    "median_world": 0.0001,
+    "se_worlds_only": 0.0013
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.S@512 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.FT@8 - P0",
+   "text": "arm N10: gap FT@8 - P0 in pooled OES",
+   "value": {
+    "value": -0.0006,
+    "se": 0.0008,
+    "p05": -0.0021,
+    "p95": 0.0,
+    "median_world": -0.0007,
+    "se_worlds_only": 0.0004
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.FT@8 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.FT@32 - P0",
+   "text": "arm N10: gap FT@32 - P0 in pooled OES",
+   "value": {
+    "value": 0.0007,
+    "se": 0.0018,
+    "p05": -0.0023,
+    "p95": 0.0035,
+    "median_world": 0.0,
+    "se_worlds_only": 0.0014
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.FT@32 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.FT@128 - P0",
+   "text": "arm N10: gap FT@128 - P0 in pooled OES",
+   "value": {
+    "value": 0.0048,
+    "se": 0.0026,
+    "p05": 0.0008,
+    "p95": 0.0094,
+    "median_world": 0.0023,
+    "se_worlds_only": 0.0026
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.FT@128 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.FT@512 - P0",
+   "text": "arm N10: gap FT@512 - P0 in pooled OES",
+   "value": {
+    "value": 0.0176,
+    "se": 0.0034,
+    "p05": 0.0121,
+    "p95": 0.0233,
+    "median_world": 0.0173,
+    "se_worlds_only": 0.0033
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.FT@512 - P0"
+   }
+  },
+  {
+   "id": "N10.gap.C - D@8",
+   "text": "arm N10: gap C - D@8 in pooled OES",
+   "value": {
+    "value": 0.3786,
+    "se": 0.0252,
+    "p05": 0.339,
+    "p95": 0.4218,
+    "median_world": 0.3594,
+    "se_worlds_only": 0.0251
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - D@8"
+   }
+  },
+  {
+   "id": "N10.gap.C - D@32",
+   "text": "arm N10: gap C - D@32 in pooled OES",
+   "value": {
+    "value": 0.2411,
+    "se": 0.0146,
+    "p05": 0.218,
+    "p95": 0.266,
+    "median_world": 0.2306,
+    "se_worlds_only": 0.014
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - D@32"
+   }
+  },
+  {
+   "id": "N10.gap.C - D@128",
+   "text": "arm N10: gap C - D@128 in pooled OES",
+   "value": {
+    "value": 0.1336,
+    "se": 0.0082,
+    "p05": 0.1198,
+    "p95": 0.147,
+    "median_world": 0.1388,
+    "se_worlds_only": 0.0082
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - D@128"
+   }
+  },
+  {
+   "id": "N10.gap.C - D@512",
+   "text": "arm N10: gap C - D@512 in pooled OES",
+   "value": {
+    "value": 0.0636,
+    "se": 0.0052,
+    "p05": 0.0548,
+    "p95": 0.0719,
+    "median_world": 0.0655,
+    "se_worlds_only": 0.0051
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.C - D@512"
+   }
+  },
+  {
+   "id": "N10.gap.S@0 - P0",
+   "text": "arm N10: gap S@0 - P0 in pooled OES",
+   "value": {
+    "value": -0.003,
+    "se": 0.0013,
+    "p05": -0.0053,
+    "p95": -0.001,
+    "median_world": -0.0026,
+    "se_worlds_only": 0.0011
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.gaps_oes.S@0 - P0"
+   }
+  },
+  {
+   "id": "N10.state_given.plugPrior",
+   "text": "arm N10: state-given loss 1 - OES of the simulator from the hidden state, plugPrior",
+   "value": {
+    "value": 0.3676,
+    "se": 0.0644,
+    "p05": 0.2675,
+    "p95": 0.479,
+    "median_world": 0.3323,
+    "se_worlds_only": 0.0633
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.state_given_loss.plugPrior"
+   }
+  },
+  {
+   "id": "N10.state_given.plug03",
+   "text": "arm N10: state-given loss 1 - OES of the simulator from the hidden state, plug03",
+   "value": {
+    "value": 0.079,
+    "se": 0.0156,
+    "p05": 0.0558,
+    "p95": 0.1071,
+    "median_world": 0.0709,
+    "se_worlds_only": 0.0158
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.state_given_loss.plug03"
+   }
+  },
+  {
+   "id": "N10.state_given.plug10",
+   "text": "arm N10: state-given loss 1 - OES of the simulator from the hidden state, plug10",
+   "value": {
+    "value": 0.353,
+    "se": 0.052,
+    "p05": 0.2742,
+    "p95": 0.4428,
+    "median_world": 0.2944,
+    "se_worlds_only": 0.0534
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.state_given_loss.plug10"
+   }
+  },
+  {
+   "id": "N10.state_given.plug30",
+   "text": "arm N10: state-given loss 1 - OES of the simulator from the hidden state, plug30",
+   "value": {
+    "value": 0.8106,
+    "se": 0.1153,
+    "p05": 0.6523,
+    "p95": 1.0231,
+    "median_world": 0.6967,
+    "se_worlds_only": 0.118
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.state_given_loss.plug30"
+   }
+  },
+  {
+   "id": "N10.state_given.plugTrue",
+   "text": "arm N10: state-given loss 1 - OES of the simulator from the hidden state, plugTrue",
+   "value": {
+    "value": -0.0001,
+    "se": 0.0001,
+    "p05": -0.0002,
+    "p95": 0.0001,
+    "median_world": 0.0,
+    "se_worlds_only": 0.0001
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.state_given_loss.plugTrue"
+   }
+  },
+  {
+   "id": "N10.state_given.plugU0",
+   "text": "arm N10: state-given loss 1 - OES of the simulator from the hidden state, plugU0",
+   "value": {
+    "value": 0.0954,
+    "se": 0.0102,
+    "p05": 0.0793,
+    "p95": 0.1128,
+    "median_world": 0.0837,
+    "se_worlds_only": 0.0101
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.state_given_loss.plugU0"
+   }
+  },
+  {
+   "id": "N10.actions",
+   "text": "arm N10: loss of the input-blind oracle on items with a program, share of the K-to-O range",
+   "value": {
+    "value": 0.1274,
+    "se": 0.0134,
+    "p05": 0.1062,
+    "p95": 0.1502,
+    "median_world": 0.1113,
+    "se_worlds_only": 0.0133
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.actions.classes_bcd"
+   }
+  },
+  {
+   "id": "N10.actions_verdict",
+   "text": "arm N10: verdict of criterion 4",
+   "value": "actions matter",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.actions.verdict"
+   }
+  },
+  {
+   "id": "N10.actions_worlds",
+   "text": "arm N10: hidden worlds with input-blind loss >= 0.10",
+   "value": 8,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.actions.worlds_at_least_0p10"
+   }
+  },
+  {
+   "id": "N10.actions.b",
+   "text": "arm N10: the same for program class b",
+   "value": {
+    "value": 0.0116,
+    "se": 0.0015,
+    "p05": 0.0093,
+    "p95": 0.0141,
+    "median_world": 0.0103,
+    "se_worlds_only": 0.0015
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.actions.class_b"
+   }
+  },
+  {
+   "id": "N10.actions.c",
+   "text": "arm N10: the same for program class c",
+   "value": {
+    "value": 0.1309,
+    "se": 0.014,
+    "p05": 0.1084,
+    "p95": 0.1547,
+    "median_world": 0.1188,
+    "se_worlds_only": 0.0138
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.actions.class_c"
+   }
+  },
+  {
+   "id": "N10.actions.d",
+   "text": "arm N10: the same for program class d",
+   "value": {
+    "value": 0.2377,
+    "se": 0.0259,
+    "p05": 0.1962,
+    "p95": 0.2812,
+    "median_world": 0.2082,
+    "se_worlds_only": 0.0256
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.actions.class_d"
+   }
+  },
+  {
+   "id": "N10.actions_vs_C",
+   "text": "arm N10: input-blind loss over C's own excess above the oracle",
+   "value": {
+    "value": 0.6873,
+    "se": 0.0908,
+    "p05": 0.5511,
+    "p95": 0.8434,
+    "median_world": 0.742,
+    "se_worlds_only": 0.0914
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.actions.blind_loss_over_C_excess"
+   }
+  },
+  {
+   "id": "N10.N90_data_only",
+   "text": "arm N10: N90_data_only",
+   "value": 357.94008586190273,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.budgets.N90_data_only"
+   }
+  },
+  {
+   "id": "N10.N_P0_data_only",
+   "text": "arm N10: N_P0_data_only",
+   "value": "more than 512",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.budgets.N_P0_data_only"
+   }
+  },
+  {
+   "id": "N10.N90_finetune",
+   "text": "arm N10: N90_finetune",
+   "value": "at most 8",
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.budgets.N90_finetune"
+   }
+  },
+  {
+   "id": "N10.P0_share_of_C",
+   "text": "arm N10: P0_share_of_C",
+   "value": 0.9579714520636182,
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.budgets.P0_share_of_C"
+   }
+  },
+  {
+   "id": "N10.h1.share_noexp",
+   "text": "arm N10, horizon 1 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.9903,
+    "se": 0.0015,
+    "p05": 0.9879,
+    "p95": 0.9928,
+    "median_world": 0.991,
+    "se_worlds_only": 0.0014
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.1.share_noexp"
+   }
+  },
+  {
+   "id": "N10.h1.sigma@8",
+   "text": "arm N10, horizon 1 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0097,
+    "se": 0.0015,
+    "p05": 0.0072,
+    "p95": 0.0121,
+    "median_world": 0.009,
+    "se_worlds_only": 0.0014
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.1.sigma@8"
+   }
+  },
+  {
+   "id": "N10.h1.sigma@32",
+   "text": "arm N10, horizon 1 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0087,
+    "se": 0.0012,
+    "p05": 0.0068,
+    "p95": 0.0106,
+    "median_world": 0.0088,
+    "se_worlds_only": 0.0011
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.1.sigma@32"
+   }
+  },
+  {
+   "id": "N10.h1.sigma@512",
+   "text": "arm N10, horizon 1 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0042,
+    "se": 0.0006,
+    "p05": 0.0033,
+    "p95": 0.0053,
+    "median_world": 0.0036,
+    "se_worlds_only": 0.0006
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.1.sigma@512"
+   }
+  },
+  {
+   "id": "N10.h2.share_noexp",
+   "text": "arm N10, horizon 2 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.9813,
+    "se": 0.0027,
+    "p05": 0.9769,
+    "p95": 0.9859,
+    "median_world": 0.982,
+    "se_worlds_only": 0.0025
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.2.share_noexp"
+   }
+  },
+  {
+   "id": "N10.h2.sigma@8",
+   "text": "arm N10, horizon 2 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0187,
+    "se": 0.0027,
+    "p05": 0.0141,
+    "p95": 0.0231,
+    "median_world": 0.0177,
+    "se_worlds_only": 0.0025
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.2.sigma@8"
+   }
+  },
+  {
+   "id": "N10.h2.sigma@32",
+   "text": "arm N10, horizon 2 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0179,
+    "se": 0.0023,
+    "p05": 0.0137,
+    "p95": 0.0214,
+    "median_world": 0.018,
+    "se_worlds_only": 0.0021
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.2.sigma@32"
+   }
+  },
+  {
+   "id": "N10.h2.sigma@512",
+   "text": "arm N10, horizon 2 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0078,
+    "se": 0.001,
+    "p05": 0.0061,
+    "p95": 0.0095,
+    "median_world": 0.0076,
+    "se_worlds_only": 0.0007
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.2.sigma@512"
+   }
+  },
+  {
+   "id": "N10.h4.share_noexp",
+   "text": "arm N10, horizon 4 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.9614,
+    "se": 0.0055,
+    "p05": 0.9523,
+    "p95": 0.9704,
+    "median_world": 0.9622,
+    "se_worlds_only": 0.0053
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.4.share_noexp"
+   }
+  },
+  {
+   "id": "N10.h4.sigma@8",
+   "text": "arm N10, horizon 4 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0383,
+    "se": 0.0056,
+    "p05": 0.0292,
+    "p95": 0.0475,
+    "median_world": 0.0355,
+    "se_worlds_only": 0.0055
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.4.sigma@8"
+   }
+  },
+  {
+   "id": "N10.h4.sigma@32",
+   "text": "arm N10, horizon 4 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0376,
+    "se": 0.0047,
+    "p05": 0.0292,
+    "p95": 0.0448,
+    "median_world": 0.0378,
+    "se_worlds_only": 0.0044
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.4.sigma@32"
+   }
+  },
+  {
+   "id": "N10.h4.sigma@512",
+   "text": "arm N10, horizon 4 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0184,
+    "se": 0.0023,
+    "p05": 0.0145,
+    "p95": 0.0222,
+    "median_world": 0.0171,
+    "se_worlds_only": 0.0018
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.4.sigma@512"
+   }
+  },
+  {
+   "id": "N10.h8.share_noexp",
+   "text": "arm N10, horizon 8 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.9339,
+    "se": 0.0082,
+    "p05": 0.9196,
+    "p95": 0.9466,
+    "median_world": 0.9388,
+    "se_worlds_only": 0.0079
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.8.share_noexp"
+   }
+  },
+  {
+   "id": "N10.h8.sigma@8",
+   "text": "arm N10, horizon 8 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0661,
+    "se": 0.0082,
+    "p05": 0.0534,
+    "p95": 0.0804,
+    "median_world": 0.0612,
+    "se_worlds_only": 0.0079
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.8.sigma@8"
+   }
+  },
+  {
+   "id": "N10.h8.sigma@32",
+   "text": "arm N10, horizon 8 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0647,
+    "se": 0.0065,
+    "p05": 0.0528,
+    "p95": 0.0744,
+    "median_world": 0.0557,
+    "se_worlds_only": 0.0062
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.8.sigma@32"
+   }
+  },
+  {
+   "id": "N10.h8.sigma@512",
+   "text": "arm N10, horizon 8 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0322,
+    "se": 0.0051,
+    "p05": 0.024,
+    "p95": 0.0408,
+    "median_world": 0.0309,
+    "se_worlds_only": 0.0044
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.8.sigma@512"
+   }
+  },
+  {
+   "id": "N10.h16.share_noexp",
+   "text": "arm N10, horizon 16 ticks only: share_noexp (after-the-fact breakdown)",
+   "value": {
+    "value": 0.8861,
+    "se": 0.0205,
+    "p05": 0.8495,
+    "p95": 0.9165,
+    "median_world": 0.9005,
+    "se_worlds_only": 0.019
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.16.share_noexp"
+   }
+  },
+  {
+   "id": "N10.h16.sigma@8",
+   "text": "arm N10, horizon 16 ticks only: sigma@8 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1139,
+    "se": 0.0206,
+    "p05": 0.0829,
+    "p95": 0.1504,
+    "median_world": 0.0888,
+    "se_worlds_only": 0.0192
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.16.sigma@8"
+   }
+  },
+  {
+   "id": "N10.h16.sigma@32",
+   "text": "arm N10, horizon 16 ticks only: sigma@32 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.1139,
+    "se": 0.0202,
+    "p05": 0.0815,
+    "p95": 0.1481,
+    "median_world": 0.0936,
+    "se_worlds_only": 0.0188
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.16.sigma@32"
+   }
+  },
+  {
+   "id": "N10.h16.sigma@512",
+   "text": "arm N10, horizon 16 ticks only: sigma@512 (after-the-fact breakdown)",
+   "value": {
+    "value": 0.0597,
+    "se": 0.0137,
+    "p05": 0.0403,
+    "p95": 0.0846,
+    "median_world": 0.057,
+    "se_worlds_only": 0.0121
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_horizon.16.sigma@512"
+   }
+  },
+  {
+   "id": "N10.convergence",
+   "text": "arm N10: convergence by criterion 6 per kind of net",
+   "value": {
+    "P0": {
+     "nets": 6,
+     "ok": 1,
+     "late_share_max": 0.028985082933961303,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 8000.0
+    },
+    "A": {
+     "nets": 6,
+     "ok": 2,
+     "late_share_max": 0.031265815486524406,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 8000.0
+    },
+    "P0s": {
+     "nets": 6,
+     "ok": 2,
+     "late_share_max": 0.04231525786686031,
+     "steps": 4000,
+     "stopped_early": 0,
+     "best_step_median": 3875.0
+    },
+    "N10 C": {
+     "nets": 24,
+     "ok": 15,
+     "late_share_max": 0.03620582302669161,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 8000.0
+    },
+    "N10 D@512 s0": {
+     "nets": 12,
+     "ok": 12,
+     "late_share_max": 0.018021348268357745,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 3000.0
+    },
+    "N10 FT@512 s0": {
+     "nets": 12,
+     "ok": 3,
+     "late_share_max": 0.10514179925559894,
+     "steps": 2400,
+     "stopped_early": 0,
+     "best_step_median": 2350.0
+    },
+    "N10 Cft": {
+     "nets": 24,
+     "ok": 10,
+     "late_share_max": 0.051708304543337316,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 3000.0
+    },
+    "N10 Csm": {
+     "nets": 12,
+     "ok": 11,
+     "late_share_max": 0.025974724102050973,
+     "steps": 8000,
+     "stopped_early": 0,
+     "best_step_median": 7000.0
+    },
+    "N10 D@128 s0": {
+     "nets": 12,
+     "ok": 11,
+     "late_share_max": 0.02676936849892691,
+     "steps": 1500,
+     "stopped_early": 0,
+     "best_step_median": 950.0
+    },
+    "N10 FT@128 s0": {
+     "nets": 12,
+     "ok": 9,
+     "late_share_max": 0.06717290811045132,
+     "steps": 1200,
+     "stopped_early": 0,
+     "best_step_median": 350.0
+    },
+    "N10 D@32 s0": {
+     "nets": 12,
+     "ok": 11,
+     "late_share_max": 0.1599391090217148,
+     "steps": 800,
+     "stopped_early": 0,
+     "best_step_median": 300.0
+    },
+    "N10 FT@32 s0": {
+     "nets": 12,
+     "ok": 11,
+     "late_share_max": 0.05066216997103957,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 0.0
+    },
+    "N10 D@8 s0": {
+     "nets": 12,
+     "ok": 12,
+     "late_share_max": 0.0,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 200.0
+    },
+    "N10 FT@8 s0": {
+     "nets": 12,
+     "ok": 12,
+     "late_share_max": 0.0,
+     "steps": 200,
+     "stopped_early": 0,
+     "best_step_median": 0.0
+    },
+    "N10 D@32 s1": {
+     "nets": 12,
+     "ok": 10,
+     "late_share_max": 0.024112230218258274,
+     "steps": 800,
+     "stopped_early": 0,
+     "best_step_median": 300.0
+    },
+    "N10 FT@32 s1": {
+     "nets": 12,
+     "ok": 8,
+     "late_share_max": 0.10190410497441409,
+     "steps": 400,
+     "stopped_early": 0,
+     "best_step_median": 50.0
+    },
+    "N10 D@512 s1": {
+     "nets": 12,
+     "ok": 12,
+     "late_share_max": 0.011891664715359742,
+     "steps": 3000,
+     "stopped_early": 0,
+     "best_step_median": 2750.0
+    },
+    "N10 FT@512 s1": {
+     "nets": 12,
+     "ok": 3,
+     "late_share_max": 0.1376714376924507,
+     "steps": 2400,
+     "stopped_early": 0,
+     "best_step_median": 2300.0
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.convergence"
+   }
+  },
+  {
+   "id": "N10.stationarity",
+   "text": "arm N10: share of the variance carried by the tick alone",
+   "value": {
+    "first17_max": 9.522199079875813e-07,
+    "all33_max": 3.2728724907612327e-06,
+    "first17_median": 2.3222232432415078e-07,
+    "all33_median": 4.1115884113811885e-07,
+    "sampling_floor": 3.0517578125e-05,
+    "verdict": "stationary"
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.stationarity"
+   }
+  },
+  {
+   "id": "N10.oes_by_class",
+   "text": "arm N10: per-cell-mean OES by program class",
+   "value": {
+    "a": {
+     "C": 0.82,
+     "P0": 0.789,
+     "plugU0": 1.0,
+     "plugTrue": 1.0
+    },
+    "b": {
+     "C": 0.821,
+     "P0": 0.789,
+     "plugU0": 0.989,
+     "plugTrue": 1.0
+    },
+    "c": {
+     "C": 0.812,
+     "P0": 0.772,
+     "plugU0": 0.868,
+     "plugTrue": 1.0
+    },
+    "d": {
+     "C": 0.798,
+     "P0": 0.76,
+     "plugU0": 0.76,
+     "plugTrue": 1.0
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.oes_by_class"
+   }
+  },
+  {
+   "id": "gate",
+   "text": "exam-time gate: worlds passing by kind",
+   "value": {
+    "pool:screen2026": {
+     "ok": 52,
+     "of": 88
+    },
+    "pool:enriched2027": {
+     "ok": 171,
+     "of": 323
+    },
+    "pool:control2027": {
+     "ok": 3,
+     "of": 5
+    },
+    "N30": {
+     "ok": 457,
+     "of": 816
+    },
+    "N10": {
+     "ok": 709,
+     "of": 816
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "gate.passed"
+   }
+  },
+  {
+   "id": "job.info",
+   "text": "job: sizes, platform, member-ticks, hours, failed, skipped",
+   "value": {
+    "size": "full",
+    "arms": [
+     "P",
+     "N30",
+     "N10"
+    ],
+    "platform": {
+     "jax": "0.12.0.1",
+     "numpy": "2.5.4",
+     "python": "3.12.16",
+     "backend": "gpu",
+     "devices": [
+      "cuda:0"
+     ],
+     "world_dtype": "float64",
+     "net_dtype": "float32"
+    },
+    "member_ticks_public_simulator": 80912384,
+    "hours": 2.047781122657988,
+    "failed": [],
+    "skipped": []
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "job_info"
+   }
+  },
+  {
+   "id": "pool",
+   "text": "public pool of screened worlds by source",
+   "value": {
+    "screen2026": 88,
+    "enriched2027": 323,
+    "control2027": 5
+   },
+   "source": {
+    "job": "r5-foundry-001, r5-foundry-002",
+    "file": "results/pool.json",
+    "key": "counts"
+   }
+  },
+  {
+   "id": "centres",
+   "text": "centres of the neighbourhood arms and the wind probe's ranking (aimed 200 nats, effect over noise at 4 ticks)",
+   "value": [
+    {
+     "draw": 3078,
+     "effect_over_noise_h4": 9.881695696111253,
+     "effect_h4_variance_units": 0.026257499932842158
+    },
+    {
+     "draw": 1672,
+     "effect_over_noise_h4": 7.901197997926124,
+     "effect_h4_variance_units": 0.02284157644004331
+    },
+    {
+     "draw": 7567,
+     "effect_over_noise_h4": 6.835617712563137,
+     "effect_h4_variance_units": 0.07107478888174595
+    },
+    {
+     "draw": 6845,
+     "effect_over_noise_h4": 5.094599030289826,
+     "effect_h4_variance_units": 0.008845621583476768
+    },
+    {
+     "draw": 4186,
+     "effect_over_noise_h4": 3.6408331489723142,
+     "effect_h4_variance_units": 0.037792505112613825
+    },
+    {
+     "draw": 262,
+     "effect_over_noise_h4": 1.6743014641695224,
+     "effect_h4_variance_units": 0.0001670585182026788
+    },
+    {
+     "draw": 4470,
+     "effect_over_noise_h4": 1.6268813436216372,
+     "effect_h4_variance_units": 0.00268415986035064
+    }
+   ],
+   "source": {
+    "job": "local CPU",
+    "file": "results/pool.json",
+    "key": "centres.ranking"
+   }
+  }
+ ],
+ "pilots_never_exam": "Every hidden world of this study is a public function of public seeds (prior seeds 2026 and 2027, neighbour seeds 606000 + draw) and its weights are in origin/gpu-jobs:jobs/<job>/out/full/<arm>/worlds.json. They, their Lab data and their items must never be reused as an exam.",
+ "weight_error_equivalent": {
+  "what": "eps of a weight neighbour (W = sqrt(1 - eps^2) W_true + eps W_fresh) whose simulator, run from the hidden state, has the same pooled skill as the policy; log-linear interpolation between eps 0.03, 0.1, 0.3; written after the results",
+  "source": "results/analysis.json: arms.<arm>.state_given_loss and arms.<arm>.table",
+  "arms": {
+   "P": {
+    "state_given_skill": {
+     "plug03": 0.914,
+     "plug10": 0.682,
+     "plug30": 0.2
+    },
+    "eps_equivalent": {
+     "C": 0.064,
+     "FT@512": 0.075,
+     "D@512": 0.086,
+     "P0": 0.104,
+     "Dr@8": 0.111
+    }
+   },
+   "N30": {
+    "state_given_skill": {
+     "plug03": 0.913,
+     "plug10": 0.669,
+     "plug30": 0.292
+    },
+    "eps_equivalent": {
+     "C": 0.041,
+     "FT@512": 0.048,
+     "D@512": 0.053,
+     "P0": 0.071,
+     "Dr@8": 0.112
+    }
+   },
+   "N10": {
+    "state_given_skill": {
+     "plug03": 0.921,
+     "plug10": 0.647,
+     "plug30": 0.189
+    },
+    "eps_equivalent": {
+     "C": 0.047,
+     "FT@512": 0.051,
+     "D@512": 0.063,
+     "P0": 0.055,
+     "Dr@8": 0.104
+    }
+   }
+  }
+ },
+ "by_horizon": {
+  "what": "per query horizon: oracle-normalised skill of C and P0, the share of C's skill taken with no hypothesis and no experiment, and sigma against the Lab budget (1 - best null share); point values, written after the results",
+  "source": "results/analysis.json: arms.<arm>.oes_by_cell",
+  "arms": {
+   "P": {
+    "horizons": [
+     1,
+     2,
+     4,
+     8,
+     16
+    ],
+    "oes_C": [
+     0.939,
+     0.883,
+     0.786,
+     0.669,
+     0.524
+    ],
+    "oes_P0": [
+     0.91,
+     0.821,
+     0.673,
+     0.51,
+     0.349
+    ],
+    "share_noexp": [
+     0.969,
+     0.93,
+     0.857,
+     0.763,
+     0.665
+    ],
+    "sigma@8": [
+     0.025,
+     0.054,
+     0.123,
+     0.217,
+     0.332
+    ],
+    "sigma@32": [
+     0.019,
+     0.04,
+     0.091,
+     0.158,
+     0.251
+    ],
+    "sigma@128": [
+     0.014,
+     0.03,
+     0.067,
+     0.115,
+     0.178
+    ],
+    "sigma@512": [
+     0.009,
+     0.018,
+     0.043,
+     0.066,
+     0.107
+    ]
+   },
+   "N30": {
+    "horizons": [
+     1,
+     2,
+     4,
+     8,
+     16
+    ],
+    "oes_C": [
+     0.961,
+     0.926,
+     0.864,
+     0.808,
+     0.682
+    ],
+    "oes_P0": [
+     0.933,
+     0.869,
+     0.764,
+     0.661,
+     0.443
+    ],
+    "share_noexp": [
+     0.971,
+     0.938,
+     0.884,
+     0.819,
+     0.672
+    ],
+    "sigma@8": [
+     0.027,
+     0.056,
+     0.111,
+     0.167,
+     0.327
+    ],
+    "sigma@32": [
+     0.02,
+     0.04,
+     0.08,
+     0.112,
+     0.227
+    ],
+    "sigma@128": [
+     0.014,
+     0.028,
+     0.056,
+     0.084,
+     0.168
+    ],
+    "sigma@512": [
+     0.009,
+     0.017,
+     0.035,
+     0.053,
+     0.102
+    ]
+   },
+   "N10": {
+    "horizons": [
+     1,
+     2,
+     4,
+     8,
+     16
+    ],
+    "oes_C": [
+     0.958,
+     0.918,
+     0.852,
+     0.767,
+     0.568
+    ],
+    "oes_P0": [
+     0.949,
+     0.901,
+     0.819,
+     0.716,
+     0.504
+    ],
+    "share_noexp": [
+     0.99,
+     0.981,
+     0.961,
+     0.934,
+     0.886
+    ],
+    "sigma@8": [
+     0.01,
+     0.019,
+     0.038,
+     0.066,
+     0.114
+    ],
+    "sigma@32": [
+     0.009,
+     0.018,
+     0.038,
+     0.065,
+     0.114
+    ],
+    "sigma@128": [
+     0.007,
+     0.015,
+     0.034,
+     0.061,
+     0.096
+    ],
+    "sigma@512": [
+     0.004,
+     0.008,
+     0.018,
+     0.032,
+     0.06
+    ]
+   }
+  }
+ },
+ "compute": {
+  "what": "member-ticks an agent needs for the no-experiment policy of arm P: finding screened worlds (round-5 screen with the weights-only pre-screen: member-ticks of job r5-foundry-002's enrichment arm per candidate found; without it: job r5-foundry-001's screen per candidate), the exam-time gate (8 members x 332 ticks per candidate), 64 training episodes per world; one episode with burn-in = 332 ticks. Written after the results; weight statistics of the pre-screen not counted.",
+  "member_ticks_per_candidate": {
+   "with_prescreen": 40910,
+   "without": 304966
+  },
+  "gate_pass_rate_enriched": 0.529,
+  "with_prescreen": {
+   "P0[16]": {
+    "worlds": 16,
+    "find_member_ticks": 1316663,
+    "train_member_ticks": 339968,
+    "total_member_ticks": 1656631,
+    "total_episodes_with_burn_in": 4990
+   },
+   "P0[64]": {
+    "worlds": 64,
+    "find_member_ticks": 5266651,
+    "train_member_ticks": 1359872,
+    "total_member_ticks": 6626523,
+    "total_episodes_with_burn_in": 19959
+   },
+   "P0[210]": {
+    "worlds": 210,
+    "find_member_ticks": 17281199,
+    "train_member_ticks": 4462080,
+    "total_member_ticks": 21743279,
+    "total_episodes_with_burn_in": 65492
+   }
+  },
+  "without_prescreen": {
+   "P0[16]": {
+    "worlds": 16,
+    "find_member_ticks": 9297015,
+    "train_member_ticks": 339968,
+    "total_member_ticks": 9636983,
+    "total_episodes_with_burn_in": 29027
+   },
+   "P0[64]": {
+    "worlds": 64,
+    "find_member_ticks": 37188060,
+    "train_member_ticks": 1359872,
+    "total_member_ticks": 38547932,
+    "total_episodes_with_burn_in": 116108
+   },
+   "P0[210]": {
+    "worlds": 210,
+    "find_member_ticks": 122023321,
+    "train_member_ticks": 4462080,
+    "total_member_ticks": 126485401,
+    "total_episodes_with_burn_in": 380980
+   }
+  },
+  "skill": {
+   "P0[16]": 0.5221780959993906,
+   "P0[64]": 0.6284450776131775,
+   "P0[210]": 0.6626961443403154
+  },
+  "share_of_C": {
+   "P0[16]": 0.6802161030773258,
+   "P0[64]": 0.8186449507691759,
+   "P0[210]": 0.8632621557302251
+  },
+  "lab_512_episodes_member_ticks": 170496,
+  "gliders_P0_episodes": "about 2,300 (roadmap/DECISIONS.md, decision 2)",
+  "sources": {
+   "enrich": "round5/foundry/results/analysis_r2.json: arms_run.enrich.member_ticks",
+   "screen": "round5/foundry/README.md",
+   "gate": "results/analysis.json: gate.passed",
+   "pool": {
+    "screen2026": 88,
+    "enriched2027": 323,
+    "control2027": 5
+   }
+  }
+ },
+ "between_jobs": {
+  "this_job": "r6-foundryexam-004",
+  "first_job": "r6-foundryexam-003",
+  "arm_P": {
+   "C": {
+    "this": 0.7677,
+    "first": 0.744,
+    "diff": 0.0237
+   },
+   "Cft": {
+    "this": 0.7543,
+    "first": 0.7403,
+    "diff": 0.014
+   },
+   "P0": {
+    "this": 0.6627,
+    "first": 0.6635,
+    "diff": -0.0008
+   },
+   "P0s": {
+    "this": 0.6461,
+    "first": 0.6479,
+    "diff": -0.0017
+   },
+   "S@0": {
+    "this": 0.6581,
+    "first": 0.6602,
+    "diff": -0.0021
+   },
+   "S@512": {
+    "this": 0.6646,
+    "first": 0.6639,
+    "diff": 0.0007
+   },
+   "FT@8": {
+    "this": 0.6729,
+    "first": 0.6694,
+    "diff": 0.0035
+   },
+   "FT@32": {
+    "this": 0.6972,
+    "first": 0.6987,
+    "diff": -0.0014
+   },
+   "FT@128": {
+    "this": 0.7166,
+    "first": 0.7163,
+    "diff": 0.0003
+   },
+   "FT@512": {
+    "this": 0.7368,
+    "first": 0.7325,
+    "diff": 0.0043
+   },
+   "D@8": {
+    "this": 0.4794,
+    "first": 0.4749,
+    "diff": 0.0045
+   },
+   "D@32": {
+    "this": 0.5747,
+    "first": 0.5769,
+    "diff": -0.0022
+   },
+   "D@128": {
+    "this": 0.6525,
+    "first": 0.65,
+    "diff": 0.0025
+   },
+   "D@512": {
+    "this": 0.7104,
+    "first": 0.71,
+    "diff": 0.0005
+   },
+   "Dr@8": {
+    "this": 0.6374,
+    "first": 0.6402,
+    "diff": -0.0029
+   },
+   "Dr@512": {
+    "this": 0.6654,
+    "first": 0.6672,
+    "diff": -0.0018
+   },
+   "P0w16": {
+    "this": 0.5222,
+    "first": 0.5051,
+    "diff": 0.017
+   },
+   "P0w64": {
+    "this": 0.6284,
+    "first": 0.6214,
+    "diff": 0.007
+   },
+   "Kp": {
+    "this": 0.2157,
+    "first": 0.2188,
+    "diff": -0.0031
+   },
+   "plugPrior": {
+    "this": -0.5293,
+    "first": -0.5489,
+    "diff": 0.0196
+   },
+   "plug03": {
+    "this": 0.9136,
+    "first": 0.9159,
+    "diff": -0.0023
+   },
+   "plug10": {
+    "this": 0.6818,
+    "first": 0.6873,
+    "diff": -0.0055
+   },
+   "plug30": {
+    "this": 0.2,
+    "first": 0.2048,
+    "diff": -0.0048
+   },
+   "plugU0": {
+    "this": 0.9361,
+    "first": 0.9388,
+    "diff": -0.0027
+   },
+   "share_noexp": {
+    "this": 0.8633,
+    "first": 0.8918,
+    "diff": -0.0286,
+    "se_this": 0.0164
+   },
+   "sigma": {
+    "this": 0.0402,
+    "first": 0.0155,
+    "diff": 0.0248,
+    "se_this": 0.0056
+   },
+   "sigma_no_lab": {
+    "this": 0.1367,
+    "first": 0.1082,
+    "diff": 0.0286,
+    "se_this": 0.0164
+   }
+  },
+  "hidden_labels": {
+   "P": {
+    "same": true,
+    "only_this": [],
+    "only_first": [],
+    "train_worlds_this": [
+     210
+    ],
+    "train_worlds_first": [
+     210
+    ]
+   },
+   "N30": {
+    "same": false,
+    "only_this": [
+     "c1672-j1006"
+    ],
+    "only_first": [
+     "c1672-j1003"
+    ],
+    "train_worlds_this": [
+     128,
+     83,
+     128
+    ],
+    "train_worlds_first": [
+     32,
+     24,
+     32
+    ]
+   },
+   "N10": {
+    "same": true,
+    "only_this": [],
+    "only_first": [],
+    "train_worlds_this": [
+     128,
+     128,
+     128
+    ],
+    "train_worlds_first": [
+     32,
+     32,
+     32
+    ]
+   }
+  },
+  "what": "arm P: the same hidden worlds and training worlds in both jobs; items, Labs, noise secret and every training seed differ, and C has more data and steps in the final job. Pooled skill."
+ },
+ "tracker_centres": {
+  "what": "round-5 screen (job r5-foundry-001, ticks 50-290) of the three centres: mean number of tracked bodies, share of the mass in bodies, fusions + fissions per 100 ticks and member. The object view is not examined in this pilot.",
+  "source": "round5/foundry/results/per_draw.json.gz",
+  "centres": {
+   "3078": {
+    "nb_mean": 14.2075,
+    "body_frac": 0.9833,
+    "events100": 55.625,
+    "v_net": 0.2362
+   },
+   "1672": {
+    "nb_mean": 4.6515,
+    "body_frac": 0.6677,
+    "events100": 24.7917,
+    "v_net": 0.6172
+   },
+   "7567": {
+    "nb_mean": 10.9606,
+    "body_frac": 0.3349,
+    "events100": 125.0,
+    "v_net": 1.1039
+   }
+  }
+ },
+ "wind_probe": {
+  "what": "CPU probe before the exam (round5/foundry/wind_probe.py, 8 states per world): aimed 200-nat command, displacement of the block view at 4 ticks over twice the noise floor, and in units of the variance",
+  "source": "results/wind_probe7.json",
+  "ranking": [
+   {
+    "draw": 3078,
+    "effect_over_noise_h4": 9.881695696111253,
+    "effect_h4_variance_units": 0.026257499932842158
+   },
+   {
+    "draw": 1672,
+    "effect_over_noise_h4": 7.901197997926124,
+    "effect_h4_variance_units": 0.02284157644004331
+   },
+   {
+    "draw": 7567,
+    "effect_over_noise_h4": 6.835617712563137,
+    "effect_h4_variance_units": 0.07107478888174595
+   },
+   {
+    "draw": 6845,
+    "effect_over_noise_h4": 5.094599030289826,
+    "effect_h4_variance_units": 0.008845621583476768
+   },
+   {
+    "draw": 4186,
+    "effect_over_noise_h4": 3.6408331489723142,
+    "effect_h4_variance_units": 0.037792505112613825
+   },
+   {
+    "draw": 262,
+    "effect_over_noise_h4": 1.6743014641695224,
+    "effect_h4_variance_units": 0.0001670585182026788
+   },
+   {
+    "draw": 4470,
+    "effect_over_noise_h4": 1.6268813436216372,
+    "effect_h4_variance_units": 0.00268415986035064
+   }
+  ],
+  "chosen": [
+   3078,
+   1672,
+   7567
+  ]
+ }
+}

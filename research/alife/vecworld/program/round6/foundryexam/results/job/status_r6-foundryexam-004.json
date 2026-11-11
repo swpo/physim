@@ -1,0 +1,158 @@
+{
+  "billing_window_hours": 4.2211,
+  "bundle": {
+    "bundle_sha256": "f10341ac2a6c8fbc3a08ae725ebb6bf9f92e797843366c9f8bf52ce292175efa",
+    "files": {
+      "job.sh": "580069aff0b2bf5677aa0d063a555a5387f493194f2eb30ad03046765dad905a",
+      "request.json": "e30eece947c405f650cf585c1ea156ae06e1e78d83ea0bc6a719c1095f02cd45",
+      "run.sh": "b5047342e4727fe92184d84f879bc874abd9ba5bd499141045988e2ab9b6a9e2",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "5aab16c862403f44cff97ed2605c869aad5f5c5fd299321954eaf7a2d73a91a5"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/program/round5/foundry",
+      "research/alife/vecworld/program/round5/agentenv/evaluator",
+      "research/alife/vecworld/program/round6/foundryexam"
+    ],
+    "ref": "1e9acab5eba2b4c652a43a38c743892940181bb5",
+    "src_bytes": 15391597
+  },
+  "cap_usd": 8.4,
+  "collected": {
+    "error": null,
+    "files": 50,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 20965430,
+    "truncated": false
+  },
+  "cost": {
+    "billed_usd": 4.3263,
+    "conservative_usd": 4.4912
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-11T16:21:00Z",
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": "2026-11-11T18:18:30Z",
+  "hard_deadline_epoch": 1794421110.9912364,
+  "history": [
+    {
+      "at": "2026-11-11T14:04:39Z",
+      "message": "request received",
+      "state": "received"
+    },
+    {
+      "at": "2026-11-11T14:04:55Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $6.96",
+      "state": "queued"
+    },
+    {
+      "at": "2026-11-11T14:05:13Z",
+      "message": "renting a pod",
+      "state": "provisioning"
+    },
+    {
+      "at": "2026-11-11T14:10:30Z",
+      "message": "job started on the pod",
+      "state": "running"
+    },
+    {
+      "at": "2026-11-11T16:20:34Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-11T16:21:00Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
+    }
+  ],
+  "job_id": "r6-foundryexam-004",
+  "max_estimate_usd": 6.96,
+  "message": "job finished (exit 0); pods terminated",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
+  "plan": {
+    "max_estimate_usd": 6.96,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-11T14:04:55Z",
+    "window_hours": 3.5
+  },
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r6-foundryexam-004-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": 4.3263,
+      "created_at": "2026-11-11T14:05:41Z",
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r6-foundryexam-004-a1",
+      "note": null,
+      "pod_id": "23d552d9a5514c7c8c7f3423ba8edd95",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-11T14:10:20Z",
+      "requested_at": "2026-11-11T14:05:15Z",
+      "spot": false,
+      "state": "terminated",
+      "terminated_at": "2026-11-11T16:20:39Z"
+    }
+  ],
+  "pods_terminated": true,
+  "review": {
+    "at": "2026-11-11T14:21:48Z",
+    "file": "jobs/r6-foundryexam-004/review.md",
+    "sha256": "7db4b6c766f1b0fe09e5815904bdabb636dd75c25d71130aac61502b4171041c",
+    "summary": "0 blocker, 0 major, 2 minor; N-arm hidden picks may differ from 003 (gate noise keyed by row); speed guard still lenient; fine to run"
+  },
+  "run_deadline": "2026-11-11T17:25:30Z",
+  "run_started_epoch": 1794405913.727472,
+  "started_at": "2026-11-11T14:10:30Z",
+  "state": "done",
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n1] step 8000/8000 train 0.0958 val [0.1342, 0.0682, 0.1343, 0.0836, 0.0997, 0.0801] (222s)\n16:08:42 [ 111.1 min]   N10 C[1]: 26.7 ms per step of 12 nets\n16:08:49 [ 111.2 min]   net N10 <ssh-target> s0[0] step 400/3000 train 0.1655 val [0.193, 0.1007, 0.2045, 0.1296, 0.1686, 0.1609] (6s)\n16:08:55 [ 111.3 min]   net N10 <ssh-target> s0[0] step 800/3000 train 0.1341 val [0.1736, 0.0952, 0.1894, 0.1197, 0.1573, 0.1267] (13s)\n16:09:02 [ 111.4 min]   net N10 <ssh-target> s0[0] step 1200/3000 train 0.1237 val [0.1688, 0.0926, 0.1848, 0.1152, 0.1418, 0.1123] (19s)\n16:09:08 [ 111.6 min]   net N10 <ssh-target> s0[0] step 1600/3000 train 0.1144 val [0.1646, 0.0931, 0.1796, 0.1165, 0.136, 0.1078] (26s)\n16:09:15 [ 111.7 min]   net N10 <ssh-target> s0[0] step 2000/3000 train 0.1070 val [0.1625, 0.093, 0.1771, 0.116, 0.1309, 0.1046] (32s)\n16:09:21 [ 111.8 min]   net N10 <ssh-target> s0[0] step 2400/3000 train 0.1057 val [0.1625, 0.0936, 0.1761, 0.1152, 0.1302, 0.1017] (39s)\n16:09:28 [ 111.9 min]   net N10 <ssh-target> s0[0] step 2800/3000 train 0.1020 val [0.1624, 0.0935, 0.1752, 0.1149, 0.1301, 0.0999] (45s)\n16:09:31 [ 111.9 min]   net N10 <ssh-target> s0[0] step 3000/3000 train 0.1052 val [0.1622, 0.0934, 0.1747, 0.1153, 0.1285, 0.0996] (48s)\n16:09:31 [ 111.9 min]   N10 <ssh-target> s0[0]: 13.7 ms per step of 12 nets\n16:09:38 [ 112.0 min]   net N10 <ssh-target> s0[0] step 400/2400 train 0.1057 val [0.1406, 0.0698, 0.1532, 0.0926, 0.1147, 0.0883] (7s)\n16:09:45 [ 112.2 min]   net N10 <ssh-target> s0[0] step 800/2400 train 0.1031 val [0.1403, 0.069, 0.1508, 0.0939, 0.1125, 0.0871] (13s)\n16:09:51 [ 112.3 min]   net N10 <ssh-target> s0[0] step 1200/2400 train 0.0975 val [0.1383, 0.0694, 0.1509, 0.0931, 0.1113, 0.0849] (20s)\n16:09:57 [ 112.4 min]   net N10 <ssh-target> s0[0] step 1600/2400 train 0.1031 val [0.1384, 0.0691, 0.1496, 0.0929, 0.1107, 0.0832] (26s)\n16:10:04 [ 112.5 min]   net N10 <ssh-target> s0[0] step 2000/2400 train 0.0986 val [0.1382, 0.0691, 0.1494, 0.0927, 0.1103, 0.0824] (32s)\n16:10:10 [ 112.6 min]   net N10 <ssh-target> s0[0] step 2400/2400 train 0.0955 val [0.1382, 0.0689, 0.1494, 0.0928, 0.1099, 0.0821] (39s)\n16:10:11 [ 112.6 min]   N10 <ssh-target> s0[0]: 13.7 ms per step of 12 nets\n16:10:40 [ 113.1 min]   net N10 Cft[0] step 1000/3000 train 0.1087 val [0.1404, 0.0685, 0.1424, 0.0845, 0.1081, 0.0885] (28s)\n16:11:07 [ 113.5 min]   net N10 Cft[0] step 2000/3000 train 0.0971 val [0.1379, 0.0672, 0.1387, 0.0833, 0.105, 0.0847] (56s)\n16:11:35 [ 114.0 min]   net N10 Cft[0] step 3000/3000 train 0.1015 val [0.1369, 0.0664, 0.1374, 0.0824, 0.1038, 0.083] (84s)\n16:11:36 [ 114.0 min]   N10 Cft[0]: 26.7 ms per step of 12 nets\n16:12:04 [ 114.5 min]   net N10 Cft[1] step 1000/3000 train 0.1034 val [0.1396, 0.0688, 0.1424, 0.0852, 0.1069, 0.0873] (28s)\n16:12:32 [ 115.0 min]   net N10 Cft[1] step 2000/3000 train 0.1000 val [0.137, 0.0673, 0.1396, 0.0835, 0.1037, 0.0837] (56s)\n16:13:00 [ 115.4 min]   net N10 Cft[1] step 3000/3000 train 0.1017 val [0.1362, 0.067, 0.138, 0.0828, 0.1022, 0.0819] (84s)\n16:13:00 [ 115.4 min]   N10 Cft[1]: 26.7 ms per step of 12 nets\n== out/progress.txt\nPILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material\n14:10:55 [job.sh] start, size full, arms P,N30,N10, max hours 3.0, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\nname, memory.total [MiB], driver_version\nNVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08\n14:17:33 [job.sh] presmoke exit 0\n14:17:33 [job.sh] full pass: 2.889 h left of 3.0\n",
+  "updated_at": "2026-11-11T16:21:00Z"
+}
