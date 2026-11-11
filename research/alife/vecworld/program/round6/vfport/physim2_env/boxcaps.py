@@ -146,7 +146,8 @@ def check_host_config(host_config: dict, caps: dict) -> list[str]:
     for key in ("Binds", "Mounts", "VolumesFrom", "Devices", "CapAdd"):
         if h.get(key):
             why.append(f"{key} is not empty")
-    for key in ("PidMode", "UTSMode", "UsernsMode", "CgroupnsMode"):
+    # (CgroupnsMode is not looked at: "host" is the engine's own default on a cgroup-v1 machine, "private" on v2)
+    for key in ("PidMode", "UTSMode", "UsernsMode"):
         if h.get(key) == "host":
             why.append(f"{key} is host")
     if h.get("IpcMode") in ("host", "shareable") or str(h.get("IpcMode") or "").startswith("container:"):
