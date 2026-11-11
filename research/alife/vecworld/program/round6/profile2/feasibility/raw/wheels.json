@@ -1,0 +1,45 @@
+{
+ "command": "python3 -m pip download --no-deps --only-binary=:all: --platform manylinux_2_27_aarch64 --platform manylinux_2_28_aarch64 --platform manylinux_2_17_aarch64 --platform manylinux2014_aarch64 --platform linux_aarch64 --python-version 3.12 --implementation cp -d wheels jax==0.12.0.1 jaxlib==0.12.0.1 numpy==2.5.4 scipy==1.18.1 ml-dtypes==0.6.0 opt-einsum==3.4.0 (pip 24.0, 11 Nov 2026 21:48 UTC)",
+ "first_try": "the same with --platform manylinux2014_aarch64 only: jaxlib==0.12.0.1 not found (that tag stops at jaxlib 0.7.1); with manylinux_2_28_aarch64 only: not found (jaxlib 0.12.0.1 aarch64 is tagged manylinux_2_27 and pip does not widen an explicit --platform)",
+ "wheels": [
+  {
+   "file": "jax-0.12.0.1-py3-none-any.whl",
+   "bytes": 3466959,
+   "sha256": "e9dfd256ba090259b10f97f0755d4fc92535b8cb38c0a40df6488a8c8a7dd8ae",
+   "in_port_ring_requirements": true
+  },
+  {
+   "file": "jaxlib-0.12.0.1-cp312-cp312-manylinux_2_27_aarch64.whl",
+   "bytes": 80858298,
+   "sha256": "40812201c3bcd4cb104b88f71f58fec4cbd0c32ba90e5c92b3fa8f40819f6774",
+   "in_port_ring_requirements": true
+  },
+  {
+   "file": "ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+   "bytes": 360227,
+   "sha256": "37da32aa97749251025666d62372775019594577b9c9e9cfda83bed48d778fdb",
+   "in_port_ring_requirements": true
+  },
+  {
+   "file": "numpy-2.5.4-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+   "bytes": 15695312,
+   "sha256": "fe4d21ab149f15e4e6043dfb0de87e6e5f34ac176cde83060e9802981fca2ac2",
+   "in_port_ring_requirements": true
+  },
+  {
+   "file": "opt_einsum-3.4.0-py3-none-any.whl",
+   "bytes": 71932,
+   "sha256": "69bb92469f86a1565195ece4ac0323943e83477171b91d24c35afe028a90d7cd",
+   "in_port_ring_requirements": true
+  },
+  {
+   "file": "scipy-1.18.1-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+   "bytes": 34025113,
+   "sha256": "3c085faa2cfa879c5141df483f836f4d691045a078224a670fa570fa01612d89",
+   "in_port_ring_requirements": true
+  }
+ ],
+ "total_bytes": 134477841,
+ "check": "every sha256 above is listed in round6/vfport/docker/ring-requirements.txt (grep), so the port's pinned set already covers linux aarch64",
+ "needs_glibc": ">= 2.27 (python:3.12-slim is Debian with glibc >= 2.36)"
+}

@@ -1,0 +1,44 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "mode": "sim",
+ "args": {
+  "mode": "sim",
+  "B": 1,
+  "m": 256,
+  "C": 48,
+  "batch": 256,
+  "T": 32,
+  "reps": 3,
+  "start_reps": 0,
+  "steps": 5,
+  "f32": true,
+  "out": "raw/f_sim_B1_f32.json"
+ },
+ "affinity": [
+  0,
+  1
+ ],
+ "jax": "0.12.0.1",
+ "xla_flags": "--xla_cpu_multi_thread_eigen=true intra_op_parallelism_threads=2",
+ "cpu": "x86 cloud cores (Intel Xeon @ 2.10GHz)",
+ "seconds_python_start_to_imports_done": 0.7044596672058105,
+ "seconds_imports": 0.6994612216949463,
+ "rss_mb_after_setup": 241.24609375,
+ "compile_s_start_300": 3.7486300468444824,
+ "state_dtype": "float32",
+ "compile_s_run_16": 3.3354721069335938,
+ "run16_s": {
+  "median": 0.12175965309143066,
+  "min": 0.11060547828674316,
+  "max": 0.13060927391052246,
+  "n": 3,
+  "all": [
+   0.11060547828674316,
+   0.12175965309143066,
+   0.13060927391052246
+  ]
+ },
+ "member_ticks_per_s_run16": 131.4064190704077,
+ "rss_mb_peak": 478.9296875,
+ "seconds_process": 9.697112798690796
+}

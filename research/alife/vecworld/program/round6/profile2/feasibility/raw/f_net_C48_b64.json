@@ -1,0 +1,55 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "mode": "net",
+ "args": {
+  "mode": "net",
+  "B": 1,
+  "m": 256,
+  "C": 48,
+  "batch": 64,
+  "T": 32,
+  "reps": 3,
+  "start_reps": null,
+  "steps": 5,
+  "out": "raw/f_net_C48_b64.json"
+ },
+ "affinity": [
+  0,
+  1
+ ],
+ "jax": "0.12.0.1",
+ "xla_flags": "--xla_cpu_multi_thread_eigen=true intra_op_parallelism_threads=2",
+ "cpu": "x86 cloud cores (Intel Xeon @ 2.10GHz)",
+ "seconds_python_start_to_imports_done": 0.6808903217315674,
+ "seconds_imports": 0.6749975681304932,
+ "n_params": 150387,
+ "rss_mb_after_setup": 462.234375,
+ "compile_s_step_dispatch": 4.609549522399902,
+ "dispatch_s": {
+  "median": 1.129499912261963,
+  "min": 1.0872411727905273,
+  "max": 1.1530678272247314,
+  "n": 3,
+  "all": [
+   1.0872411727905273,
+   1.129499912261963,
+   1.1530678272247314
+  ]
+ },
+ "ms_per_step": {
+  "median": 225.89998245239258,
+  "min": 217.44823455810547,
+  "max": 230.6135654449463,
+  "n": 3,
+  "all": [
+   217.44823455810547,
+   225.89998245239258,
+   230.6135654449463
+  ]
+ },
+ "examples_per_step": 64,
+ "net_samples_per_step": 256,
+ "note": "fx_net P0 configuration, C = 48, 3 blocks, one net, 5 steps per dispatch (lax.scan)",
+ "rss_mb_peak": 923.28125,
+ "seconds_process": 12.566876411437988
+}

@@ -1,0 +1,49 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "mode": "plug",
+ "args": {
+  "mode": "plug",
+  "B": 1,
+  "m": 256,
+  "C": 48,
+  "batch": 256,
+  "T": 32,
+  "reps": 3,
+  "start_reps": null,
+  "steps": 5,
+  "out": "raw/f_plug_m256.json"
+ },
+ "affinity": [
+  0,
+  1
+ ],
+ "jax": "0.12.0.1",
+ "xla_flags": "--xla_cpu_multi_thread_eigen=true intra_op_parallelism_threads=2",
+ "cpu": "x86 cloud cores (Intel Xeon @ 2.10GHz)",
+ "seconds_python_start_to_imports_done": 0.7658162117004395,
+ "seconds_imports": 0.7609219551086426,
+ "rss_mb_after_setup": 942.4375,
+ "compile_s_predict": 7.4268481731414795,
+ "predict_s": {
+  "median": 78.5928840637207,
+  "min": 76.53494954109192,
+  "max": 80.50818943977356,
+  "n": 3,
+  "all": [
+   76.53494954109192,
+   78.5928840637207,
+   80.50818943977356
+  ]
+ },
+ "samples_shape": [
+  256,
+  5,
+  192
+ ],
+ "member_ticks": 8192,
+ "member_ticks_per_s": 104.23335518974183,
+ "pool_bytes_float32": 8388608,
+ "note": "one item: nudge-assimilate the 17 observed frames (16 ticks) and simulate 16 ticks under the item's program, m members; the pool (m states after the burn-in) is shipped in the artifact; its spin-up here is 4 ticks (cost-equivalent)",
+ "rss_mb_peak": 1063.30859375,
+ "seconds_process": 260.185977935791
+}

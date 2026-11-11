@@ -1,0 +1,52 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "mode": "fit",
+ "args": {
+  "mode": "fit",
+  "B": 1,
+  "m": 256,
+  "C": 48,
+  "batch": 256,
+  "T": 48,
+  "reps": 1,
+  "start_reps": null,
+  "steps": 5,
+  "out": "raw/f_fit_T48.json"
+ },
+ "affinity": [
+  0,
+  1
+ ],
+ "jax": "0.12.0.1",
+ "xla_flags": "--xla_cpu_multi_thread_eigen=true intra_op_parallelism_threads=2",
+ "cpu": "x86 cloud cores (Intel Xeon @ 2.10GHz)",
+ "seconds_python_start_to_imports_done": 0.7700011730194092,
+ "seconds_imports": 0.7628498077392578,
+ "rss_mb_after_setup": 520.21484375,
+ "compile_s_value_and_grad": 28.995424270629883,
+ "grad_step_s": {
+  "median": 46.202789068222046,
+  "min": 46.202789068222046,
+  "max": 46.202789068222046,
+  "n": 1,
+  "all": [
+   46.202789068222046
+  ]
+ },
+ "loss": 0.2957345171552942,
+ "grad_finite": true,
+ "n_fit_coordinates": 248,
+ "shape": {
+  "T": 48,
+  "k": 16,
+  "episodes": 8,
+  "members": 4,
+  "anchors": 2,
+  "assimilated_ticks_per_member_episode": 32,
+  "forward_member_ticks": 2048,
+  "forecast_member_ticks_with_gradient": 1024
+ },
+ "note": "fl_w._fns(16, 300) value_and_grad as fit_batch calls it, one fit (B = 1); the pool respin every 50 steps (16 members x 300 ticks) is timed in sim mode (start at B = 16); Adam itself is negligible",
+ "rss_mb_peak": 2170.19140625,
+ "seconds_process": 93.9500150680542
+}

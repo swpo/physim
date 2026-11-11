@@ -1,0 +1,639 @@
+{
+ "what": "profile2 feasibility: cost of candidate worlds F (foundry hidden weights) and G (gliders, hidden stress conversion) in the agent's box and the grading boxes; 2 x86 cloud cores of the cloud container",
+ "protocol": "one mode per process (f_time.py, g_time.py; run_f.sh, run_g.sh), taskset -c 0,1, XLA_FLAGS='--xla_cpu_multi_thread_eigen=true intra_op_parallelism_threads=2', /home/user/evalwork/vecworld/vw1/.venv/bin/python (jax 0.12.0.1); compile timed apart (lower().compile()); timed calls repeated 3 times (median, [min, max]) unless n says otherwise; peak memory = ru_maxrss of the process (includes about 0.25 GB of imports)",
+ "mac": "NOT MEASURED. The Mac's boxes are Linux aarch64 under Docker Desktop on Apple Silicon. No timing of this code on the Mac exists in the repository (rollouts so far ran in the cloud container). Inferred only: one Apple M-series performance core is usually 1.0 to 2.0 times one 2.1 GHz Xeon core on scalar code, and float64 SIMD is narrower on NEON (2 lanes) than AVX-512 (8 lanes, used by XLA here), so the ratio for these float64 kernels may be below 1. Running run_f.sh, run_g.sh and run_f32.sh once in a Mac box (about 45 min) replaces this guess with a factor.",
+ "F": {
+  "world": "round5/foundry/tnca.py: 64 x 64, 2 kinds, 4 substeps per tick, float64; exam shapes of round6/foundryexam (DESIGN.md section 3): burn-in 300, 17 observed frames, 16-tick test program, queries 1, 2, 4, 8, 16; a full episode = 300 + 16 + 16 = 332 member-ticks",
+  "sim_measured": {
+   "1": {
+    "compile_s_start300": 4.1,
+    "compile_s_run16": 3.2,
+    "run16_s": 0.142,
+    "run16_s_range": [
+     0.131,
+     0.144
+    ],
+    "member_ticks_per_s_run16": 112.5,
+    "start300_s": 2.735,
+    "start300_s_range": [
+     2.694,
+     2.763
+    ],
+    "start300_n": 3,
+    "episode_s": 2.991,
+    "episode_s_range": [
+     2.987,
+     3.147
+    ],
+    "peak_rss_mb": 493.0,
+    "source": "raw/f_sim_B1.json"
+   },
+   "16": {
+    "compile_s_start300": 6.4,
+    "compile_s_run16": 5.1,
+    "run16_s": 2.159,
+    "run16_s_range": [
+     2.042,
+     2.194
+    ],
+    "member_ticks_per_s_run16": 118.6,
+    "start300_s": 38.818,
+    "start300_s_range": [
+     38.756,
+     39.764
+    ],
+    "start300_n": 3,
+    "episode_s": 43.559,
+    "episode_s_range": [
+     43.45,
+     44.692
+    ],
+    "peak_rss_mb": 564.0,
+    "source": "raw/f_sim_B16.json"
+   },
+   "64": {
+    "compile_s_start300": 6.4,
+    "compile_s_run16": 5.1,
+    "run16_s": 8.787,
+    "run16_s_range": [
+     8.635,
+     9.475
+    ],
+    "member_ticks_per_s_run16": 116.5,
+    "start300_s": 178.566,
+    "start300_s_range": [
+     178.566,
+     178.566
+    ],
+    "start300_n": 1,
+    "episode_s": 192.721,
+    "episode_s_range": [
+     192.721,
+     192.721
+    ],
+    "peak_rss_mb": 650.0,
+    "source": "raw/f_sim_B64.json"
+   },
+   "256": {
+    "compile_s_start300": 6.0,
+    "compile_s_run16": 4.8,
+    "run16_s": 37.605,
+    "run16_s_range": [
+     36.547,
+     37.982
+    ],
+    "member_ticks_per_s_run16": 108.9,
+    "start300_s": null,
+    "start300_s_range": null,
+    "start300_n": null,
+    "episode_s": null,
+    "episode_s_range": null,
+    "peak_rss_mb": 1078.0,
+    "source": "raw/f_sim_B256.json"
+   }
+  },
+  "sim_float32_measured": {
+   "1": {
+    "member_ticks_per_s_run16": 131.4,
+    "run16_s": 0.122,
+    "run16_s_range": [
+     0.111,
+     0.131
+    ],
+    "state_dtype": "float32",
+    "compile_s_run16": 3.3,
+    "peak_rss_mb": 479.0,
+    "source": "raw/f_sim_B1_f32.json"
+   },
+   "16": {
+    "member_ticks_per_s_run16": 217.1,
+    "run16_s": 1.179,
+    "run16_s_range": [
+     1.142,
+     1.27
+    ],
+    "state_dtype": "float32",
+    "compile_s_run16": 4.8,
+    "peak_rss_mb": 503.0,
+    "source": "raw/f_sim_B16_f32.json"
+   },
+   "64": {
+    "member_ticks_per_s_run16": 215.8,
+    "run16_s": 4.744,
+    "run16_s_range": [
+     4.706,
+     4.757
+    ],
+    "state_dtype": "float32",
+    "compile_s_run16": 4.4,
+    "peak_rss_mb": 564.0,
+    "source": "raw/f_sim_B64_f32.json"
+   }
+  },
+  "derived": {
+   "member_ticks_per_s_best": 118.6,
+   "member_ticks_per_s_best_from": "max over B of sim_measured.*.member_ticks_per_s_run16",
+   "episode_s_one": 2.991,
+   "episode_s_one_from": "sim_measured.1.episode_s (one Lab episode alone)",
+   "episode_s_batched": 2.722,
+   "episode_s_batched_from": "sim_measured.16.episode_s / 16",
+   "lab_8_episodes_s": 21.779,
+   "lab_8_from": "8 x episode_s_batched",
+   "item_future_one_member_s": 0.142,
+   "item_future_256_members_s": 37.605,
+   "null_pool_512_s": 1433.0,
+   "null_pool_512_from": "512 episodes x 332 member-ticks / member_ticks_per_s_best (input-free episodes of 512 public screened worlds; no screen needed: the screened worlds are public lists, round6/foundryexam/results/pool.json and round6/foundrylong/inputs/sel_2028.json)",
+   "member_ticks_per_s_full_episode_batched": 121.9,
+   "R_box_note": "the spec's R_box (member-ticks per second of the 2-CPU box, float64): run16 at B = 16 and the full episode at B = 16 agree within 3%; batching beyond 16 does not help on CPU (B = 64, 256 are slower)",
+   "full_episode_348_ticks_s": 2.85,
+   "full_episode_348_from": "foundrylong's episode (300 + 16 + 32 ticks) at the batched full-episode speed",
+   "instance_build_ring_shape_s": 1006.0,
+   "instance_build_ring_shape_from": "exam_configs/ring_r4.json shape (64 items, R 16, n_clim 256): 64 item histories x 332 + 64 x 16 replicate futures x 16 ticks + 256 climatology episodes x 332 member-ticks, at the batched full-episode speed",
+   "instance_build_pilot_shape_s": 399.0,
+   "instance_build_pilot_shape_from": "foundryexam per hidden world: 32 items, R 12, n_clim 96 (run_fx.py FULL)"
+  },
+  "plug_in_item_m256": {
+   "what": "one item: nudge-assimilate the 17 observed frames (16 ticks) and simulate 16 ticks under the item's program, m members; the pool (m states after the burn-in) is shipped in the artifact; its spin-up here is 4 ticks (cost-equivalent)",
+   "source": "raw/f_plug_m256.json",
+   "imports_s": 0.77,
+   "compile_s": 7.4,
+   "predict_s": 78.6,
+   "predict_s_range": [
+    76.5,
+    80.5
+   ],
+   "member_ticks": 8192,
+   "member_ticks_per_s": 104.2,
+   "peak_rss_mb": 1063.0,
+   "T_JIT_item_s": 8.2,
+   "T_JIT_from": "imports + compile of the plug-in predictor in a fresh process (the spec's F_T_JIT, x86)",
+   "item_wall_s": 87.0,
+   "item_cpu_s_upper": 174.0,
+   "item_from": "imports + compile + predict (a fresh process per item, as public/_item.py starts one); CPU seconds at most 2 x wall on 2 cores",
+   "pool_artifact_mb_float32": 8.0,
+   "ring_limits_for_comparison": "physim2_env/exam_configs/ring_r4.json predictor: cpu_seconds 30, wall_seconds 60, memory_gib 4, artifact_mib 64",
+   "oracle_style_plug_from_hidden_state_s": 37.605,
+   "oracle_style_from": "sim_measured.256.run16_s (256 members x 16 ticks from a given state; the grader's O and plug-in references)"
+  },
+  "nets": {
+   "C48_b256": {
+    "ms_per_step": 899.0,
+    "ms_per_step_range": [
+     889.0,
+     905.0
+    ],
+    "compile_s": 4.8,
+    "n_params": 150387,
+    "peak_rss_mb": 1634.0,
+    "batch": 256,
+    "what": "fx_net P0 configuration, C = 48, 3 blocks, one net, 5 steps per dispatch (lax.scan)",
+    "source": "raw/f_net_C48_b256.json"
+   },
+   "C24_b256": {
+    "ms_per_step": 390.0,
+    "ms_per_step_range": [
+     382.0,
+     410.0
+    ],
+    "compile_s": 4.4,
+    "n_params": 44091,
+    "peak_rss_mb": 1168.0,
+    "batch": 256,
+    "what": "fx_net P0 configuration, C = 24, 3 blocks, one net, 5 steps per dispatch (lax.scan)",
+    "source": "raw/f_net_C24_b256.json"
+   },
+   "C48_b64": {
+    "ms_per_step": 226.0,
+    "ms_per_step_range": [
+     217.0,
+     231.0
+    ],
+    "compile_s": 4.6,
+    "n_params": 150387,
+    "peak_rss_mb": 923.0,
+    "batch": 64,
+    "what": "fx_net P0 configuration, C = 48, 3 blocks, one net, 5 steps per dispatch (lax.scan)",
+    "source": "raw/f_net_C48_b64.json"
+   }
+  },
+  "fit_step_T32": {
+   "grad_step_s": 41.7,
+   "grad_step_s_range": [
+    39.9,
+    42.0
+   ],
+   "n": 3,
+   "compile_s": 27.7,
+   "peak_rss_mb": 2204.0,
+   "shape": {
+    "T": 32,
+    "k": 16,
+    "episodes": 8,
+    "members": 4,
+    "anchors": 2,
+    "assimilated_ticks_per_member_episode": 16,
+    "forward_member_ticks": 1536,
+    "forecast_member_ticks_with_gradient": 1024
+   },
+   "n_fit_coordinates": 248,
+   "grad_finite": true,
+   "what": "fl_w._fns(16, 300) value_and_grad as fit_batch calls it, one fit (B = 1); the pool respin every 50 steps (16 members x 300 ticks) is timed in sim mode (start at B = 16); Adam itself is negligible",
+   "source": "raw/f_fit_T32.json"
+  },
+  "fit_step_T48": {
+   "grad_step_s": 46.2,
+   "grad_step_s_range": [
+    46.2,
+    46.2
+   ],
+   "n": 1,
+   "compile_s": 29.0,
+   "peak_rss_mb": 2170.0,
+   "shape": {
+    "T": 48,
+    "k": 16,
+    "episodes": 8,
+    "members": 4,
+    "anchors": 2,
+    "assimilated_ticks_per_member_episode": 32,
+    "forward_member_ticks": 2048,
+    "forecast_member_ticks_with_gradient": 1024
+   },
+   "n_fit_coordinates": 248,
+   "grad_finite": true,
+   "what": "fl_w._fns(16, 300) value_and_grad as fit_batch calls it, one fit (B = 1); the pool respin every 50 steps (16 members x 300 ticks) is timed in sim mode (start at B = 16); Adam itself is negligible",
+   "source": "raw/f_fit_T48.json"
+  },
+  "recipes": {
+   "prior_world_s": 196.0,
+   "prior_world_from": "72 episodes (the pilot's 64 training episodes per world + 8 gate episodes, run_fx.py FULL epw, gate_M) x episode_s_batched",
+   "screen_per_world_found_s": 345.0,
+   "screen_from": "40,910 member-ticks per screened world found with the weights-only pre-screen (foundryexam/results/summary.json compute.member_ticks_per_candidate.with_prescreen) / member_ticks_per_s_best; not needed when the screened prior is handed over as a public list",
+   "p0_step_s": 0.899,
+   "p0_step_small_net_s": 0.39,
+   "fit_step_s_with_respin": 42.5,
+   "fit_from": "fit_step_T32.grad_step_s + sim_measured.16.start300_s / 50 (pool respin every 50 steps, fl_w.fit_batch)",
+   "pilot_recipes_cpu_hours": {
+    "P0_foundryexam_armP": {
+     "worlds": 210,
+     "episodes": 13440,
+     "steps": 12000,
+     "batch": 256,
+     "nets": 2,
+     "sim_h": 11.4,
+     "train_h_one_net": 3.0,
+     "gpu_note": "A100: 9.6 ms per step for 2 nets in lockstep",
+     "source": "round6/foundryexam/run_fx.py FULL and SB_FULL (job 004/005 sizes); GPU speed: results/job/r6-foundryexam-004_full_progress.txt ('P P0 g0: 9.6 ms per step (2 nets, batch 256)')"
+    },
+    "P0_16_worlds_foundryexam": {
+     "worlds": 16,
+     "steps": 6000,
+     "batch": 256,
+     "sim_h": 0.87,
+     "train_h_one_net": 1.5,
+     "source": "round6/foundryexam/run_fx.py FULL and SB_FULL (job 004/005 sizes); GPU speed: results/job/r6-foundryexam-004_full_progress.txt ('P P0 g0: 9.6 ms per step (2 nets, batch 256)') (P0w: 6,000 steps; nw_curve 16, 64)"
+    },
+    "P0_1000_worlds_foundrylong": {
+     "worlds": 1000,
+     "episodes": 64000,
+     "steps": 40000,
+     "batch": 256,
+     "sim_h": 54.0,
+     "train_h_one_net": 10.0,
+     "source": "round6/foundrylong/run_fl.py FULL (p0_steps, batch_p0) and run_fl2.py FULL (w_cands, w_starts, w_steps, w_eb, w_M, w_A, w_k, w_pool, w_respin)"
+    },
+    "FT_32_foundryexam": {
+     "steps": 400,
+     "batch": 64,
+     "train_h": 0.03,
+     "source": "round6/foundryexam/run_fx.py FULL steps_FT[32], batch_world"
+    },
+    "FT_512_foundryexam": {
+     "steps": 2400,
+     "batch": 64,
+     "train_h": 0.15,
+     "source": "round6/foundryexam/run_fx.py FULL steps_FT[512], batch_world"
+    },
+    "W_fit_foundrylong_stage2": {
+     "starts": 4,
+     "steps": 200,
+     "fit_h": 9.4,
+     "plus_prescreen": "32 candidate weight vectors scored on 8 Lab episodes (eval_batch), not timed",
+     "source": "round6/foundrylong/run_fl.py FULL (p0_steps, batch_p0) and run_fl2.py FULL (w_cands, w_starts, w_steps, w_eb, w_M, w_A, w_k, w_pool, w_respin)"
+    }
+   },
+   "box": {
+    "60": {
+     "full_episodes_if_only_simulating": 1322,
+     "prior_worlds_listed_if_only_simulating": 18,
+     "prior_worlds_screened_by_agent_if_only_simulating": 6,
+     "p0_steps_batch256_if_only_training": 4004,
+     "p0_steps_small_net_if_only_training": 9230,
+     "fit_steps_if_only_fitting": 84,
+     "from": "box seconds / (episode_s_batched, prior_world_s, prior_world_s + screen_per_world_found_s, p0_step_s, p0_step_small_net_s, fit_step_s_with_respin); each column assumes the whole box does that one thing"
+    },
+    "120": {
+     "full_episodes_if_only_simulating": 2644,
+     "prior_worlds_listed_if_only_simulating": 36,
+     "prior_worlds_screened_by_agent_if_only_simulating": 13,
+     "p0_steps_batch256_if_only_training": 8008,
+     "p0_steps_small_net_if_only_training": 18461,
+     "fit_steps_if_only_fitting": 169,
+     "from": "box seconds / (episode_s_batched, prior_world_s, prior_world_s + screen_per_world_found_s, p0_step_s, p0_step_small_net_s, fit_step_s_with_respin); each column assumes the whole box does that one thing"
+    },
+    "180": {
+     "full_episodes_if_only_simulating": 3967,
+     "prior_worlds_listed_if_only_simulating": 55,
+     "prior_worlds_screened_by_agent_if_only_simulating": 19,
+     "p0_steps_batch256_if_only_training": 12013,
+     "p0_steps_small_net_if_only_training": 27692,
+     "fit_steps_if_only_fitting": 254,
+     "from": "box seconds / (episode_s_batched, prior_world_s, prior_world_s + screen_per_world_found_s, p0_step_s, p0_step_small_net_s, fit_step_s_with_respin); each column assumes the whole box does that one thing"
+    }
+   }
+  },
+  "research_budget": {
+   "one_full_episode_s": 2.722,
+   "unit": "a full level-0 episode = 332 member-ticks at the batched speed",
+   "box_in_full_episodes": {
+    "60": 1322,
+    "120": 2644,
+    "180": 3967
+   },
+   "pilot_P0_210_worlds_in_full_episodes": 65492,
+   "pilot_P0_from": "foundryexam/results/summary.json compute.with_prescreen.P0[210].total_episodes_with_burn_in (screen + gate + training)",
+   "pilot_P0_16_worlds_in_full_episodes": 4990,
+   "lab_512_in_full_episodes": 512
+  },
+  "prediction_budget": {
+   "U_item": "256 samples x (P + H) member-ticks: 256 x 32 = 8,192 (foundryexam shape, H = 16); 256 x 48 = 12,288 (foundrylong, H = 32)",
+   "brute_force_s_H16_measured": 78.6,
+   "brute_force_s_H32_from_measured_rate": 118.0,
+   "brute_force_from": "f_plug_m256 predict_s (assimilate 16 ticks + forecast 16, 256 members); H = 32 at the same member-tick rate",
+   "from_hidden_state_256x16_s": 37.605,
+   "ring_item_limit": "30 CPU-s and 60 s wall (exam_configs/ring_r4.json); 30 CPU-s is at most 15 s of a 2-core box",
+   "ring_cpu_limit_as_fraction_of_brute_force_H16": 0.19
+  }
+ },
+ "G": {
+  "world": "round6/dials/dialsA/xlaw.XRunner: 128 x 128 Flow-Lenia gliders with wind (gworld), 20 substeps per tick, hidden stress conversion at eta 4, object tracker every tick, float64; exam shapes of round6/dials/dialsA2 (DECLARED.md R2, R5): burn-in 50, 17 observed frames, 16-tick held-out program, answers at 8, 12, 16; a full episode = 50 + 16 + 16 = 82 member-ticks",
+  "sim_measured": {
+   "1": {
+    "T": 16,
+    "compile_s_start50": 17.6,
+    "compile_s_run": 5.5,
+    "run_s": 1.84,
+    "run_s_range": [
+     1.72,
+     1.9
+    ],
+    "member_ticks_per_s": 8.68,
+    "core_s_per_member_tick": 0.2303,
+    "start50_s": 6.3,
+    "start50_n": 3,
+    "episode_s": 9.38,
+    "episode_s_range": [
+     9.07,
+     9.51
+    ],
+    "peak_rss_mb": 907.0,
+    "source": "raw/g_sim_B1.json"
+   },
+   "16": {
+    "T": 16,
+    "compile_s_start50": 20.1,
+    "compile_s_run": 7.0,
+    "run_s": 37.0,
+    "run_s_range": [
+     35.71,
+     37.05
+    ],
+    "member_ticks_per_s": 6.92,
+    "core_s_per_member_tick": 0.289,
+    "start50_s": 111.6,
+    "start50_n": 1,
+    "episode_s": 193.5,
+    "episode_s_range": [
+     193.5,
+     193.5
+    ],
+    "peak_rss_mb": 1220.0,
+    "source": "raw/g_sim_B16.json"
+   },
+   "64": {
+    "T": 4,
+    "compile_s_start50": 20.2,
+    "compile_s_run": 10.7,
+    "run_s": 50.16,
+    "run_s_range": [
+     47.66,
+     57.24
+    ],
+    "member_ticks_per_s": 5.1,
+    "core_s_per_member_tick": 0.3918,
+    "start50_s": null,
+    "start50_n": null,
+    "episode_s": null,
+    "episode_s_range": null,
+    "peak_rss_mb": 1885.0,
+    "source": "raw/g_sim_B64.json"
+   },
+   "256": {
+    "T": 2,
+    "compile_s_start50": 21.9,
+    "compile_s_run": 10.5,
+    "run_s": 107.56,
+    "run_s_range": [
+     106.6,
+     149.06
+    ],
+    "member_ticks_per_s": 4.76,
+    "core_s_per_member_tick": 0.4202,
+    "start50_s": null,
+    "start50_n": null,
+    "episode_s": null,
+    "episode_s_range": null,
+    "peak_rss_mb": 4606.0,
+    "source": "raw/g_sim_B256.json"
+   }
+  },
+  "derived": {
+   "member_ticks_per_s_best": 8.68,
+   "core_s_per_member_tick_best": 0.2304,
+   "earlier_figure": "0.15 CPU-s per member-tick (round5/agentenv/results/cost.json cpu_s_per_member_tick.gliders.value)",
+   "episode_s_one": 9.38,
+   "episode_s_best": 9.45,
+   "episode_from": "82 / member_ticks_per_s_best (B = 1; batching is slower on CPU, and B = 256 peaks at 4.6 GB)",
+   "lab_8_episodes_s": 76.0,
+   "lab_96_episodes_s": 907.0,
+   "lab_96_from": "dialsA2 DECLARED R5: 32 mix + 32 free + 32 designed per truth",
+   "item_future_16_ticks_one_member_s": 1.84,
+   "item_future_16_ticks_256_members_s": 472.0,
+   "null_pool_512_s": 4837.0,
+   "null_pool_from": "512 x 82 / member_ticks_per_s_best",
+   "plug_in_item_m256_s": 944.0,
+   "plug_in_from": "256 members x (16 assimilated + 16 forecast ticks) / member_ticks_per_s_best; no state-assimilation code exists for gliders, so this is the simulation alone (a lower bound)",
+   "family_point_s": 76.0,
+   "family_point_from": "8 episodes per theta point (dialsA2 R7) x episode_s_best (B = 1 is the fastest on CPU)",
+   "P0_family_768_points_h": 16.1,
+   "P0_family_from": "768 x 8 episodes (dialsA2 R7, public family)",
+   "gpu_note": "A100: about 1,300 member-ticks per second (round6/dials/dialsA/results/job/progress.txt: 'family pub: 768 points x 8 episodes, 385s')",
+   "instance_build_dialsA2_shape_s": 3937.0,
+   "instance_build_dialsA2_from": "per truth and eta two exams of 48 items, R 12, n_clim 48 (DECLARED R2): histories x 82 + replicate futures x 16 + climatology x 82 member-ticks / member_ticks_per_s_best",
+   "instance_build_ring_shape_s": 4911.0,
+   "T_JIT_sim_item_s": 11.5,
+   "T_JIT_from": "imports + compile of the run (largest over the batch sizes measured; a fresh item process pays it); the 50-tick start compiles separately (sim_measured.*.compile_s_start50)"
+  },
+  "nets": {
+   "C48_b128": {
+    "ms_per_step": 610.0,
+    "ms_per_step_range": [
+     576.0,
+     693.0
+    ],
+    "n": 5,
+    "compile_s": 3.9,
+    "n_params": 143475,
+    "peak_rss_mb": 1117.0,
+    "what": "ladder_net block view, cond, C = 48, 3 blocks, batch 128 x 4 draws, one net",
+    "source": "raw/g_net_C48_b128.json"
+   },
+   "C24_b128": {
+    "ms_per_step": 305.0,
+    "ms_per_step_range": [
+     286.0,
+     310.0
+    ],
+    "n": 5,
+    "compile_s": 3.6,
+    "n_params": 40635,
+    "peak_rss_mb": 891.0,
+    "what": "ladder_net block view, cond, C = 24, 3 blocks, batch 128 x 4 draws, one net",
+    "source": "raw/g_net_C24_b128.json"
+   }
+  },
+  "recipes": {
+   "base_net_24000_steps_h_one_net": 4.1,
+   "base_net_from": "dialsA2 run_a2.py FULL rungs[0] = 24,000 steps (up to 192,000), batch 128 x 4 draws; 3 seeds, 6 base nets",
+   "box": {
+    "60": {
+     "full_episodes_if_only_simulating": 381,
+     "theta_points_x8_if_only_simulating": 47,
+     "net_steps_batch128_if_only_training": 5901,
+     "net_steps_small_net_if_only_training": 11803
+    },
+    "120": {
+     "full_episodes_if_only_simulating": 762,
+     "theta_points_x8_if_only_simulating": 95,
+     "net_steps_batch128_if_only_training": 11803,
+     "net_steps_small_net_if_only_training": 23606
+    },
+    "180": {
+     "full_episodes_if_only_simulating": 1143,
+     "theta_points_x8_if_only_simulating": 142,
+     "net_steps_batch128_if_only_training": 17704,
+     "net_steps_small_net_if_only_training": 35409
+    }
+   }
+  },
+  "research_budget": {
+   "one_full_episode_s": 9.45,
+   "box_in_full_episodes": {
+    "60": 381,
+    "120": 762,
+    "180": 1143
+   },
+   "pilot_P0_in_full_episodes": "about 2,300 (roadmap/DECISIONS.md decision 2); dialsA2's public family is 6,144 (R7)",
+   "S_in_full_episodes": "about 20,000 (roadmap/DECISIONS.md decision 2)"
+  }
+ },
+ "memory": {
+  "box_caps": "4 GB memory (docker --memory; physim2_env/profiles.py box_memory_gb), /workspace 1 GiB in memory (tmpfs: its pages count against the same memory cap)",
+  "peak_rss_mb": {
+   "F_sim_B1_B16_B64_B256": [
+    493.0,
+    564.0,
+    650.0,
+    1078.0
+   ],
+   "F_plug_m256": 1063.0,
+   "F_net_C48_b256_1024_episodes": 1634.0,
+   "F_fit_T32": 2204.0,
+   "F_fit_T48": 2170.0,
+   "G_sim_B1_B16_B64_B256": [
+    907.0,
+    1220.0,
+    1885.0,
+    4606.0
+   ],
+   "G_net_C48_b128_1024_episodes": 1117.0
+  },
+  "F_net_dataset_bytes_per_episode": 59784,
+  "F_net_dataset_from": "fx_net.make_dataset/device_dataset arrays: X (33, 8, 8, 3) + CU, CtU (33, 8, 8, 2) float32 + 54 index rows x 3 int32",
+  "F_net_dataset_gb": {
+   "P0[16] (1,024 episodes)": 0.061,
+   "P0[210] (13,440 episodes)": 0.8,
+   "box_180_min_of_episodes (3,967)": 0.24,
+   "note": "the host numpy copy made by make_dataset can double this until it is freed"
+  },
+  "saved_episode_bytes": {
+   "F_obs_float32": 25344,
+   "F_program_dense_float32": 16384,
+   "F_program_4_ticks": 2048,
+   "G_obs_float32": 44352,
+   "G_program_dense_float32": 16384
+  },
+  "states": {
+   "F_member_float64_bytes": 65536,
+   "F_pool_256_float32_mb": 8.0,
+   "G_member_field_float64_bytes": 262144,
+   "G_pool_256_float32_mb_field_only": 32.0
+  },
+  "checkpoints": "nets of 40k to 150k float32 parameters (n_params in nets.*): under 2 MB with Adam's moments"
+ },
+ "image": {
+  "command": "python3 -m pip download --no-deps --only-binary=:all: --platform manylinux_2_27_aarch64 --platform manylinux_2_28_aarch64 --platform manylinux_2_17_aarch64 --platform manylinux2014_aarch64 --platform linux_aarch64 --python-version 3.12 --implementation cp -d wheels jax==0.12.0.1 jaxlib==0.12.0.1 numpy==2.5.4 scipy==1.18.1 ml-dtypes==0.6.0 opt-einsum==3.4.0 (pip 24.0, 11 Nov 2026 21:48 UTC)",
+  "first_try": "the same with --platform manylinux2014_aarch64 only: jaxlib==0.12.0.1 not found (that tag stops at jaxlib 0.7.1); with manylinux_2_28_aarch64 only: not found (jaxlib 0.12.0.1 aarch64 is tagged manylinux_2_27 and pip does not widen an explicit --platform)",
+  "wheels": [
+   {
+    "file": "jax-0.12.0.1-py3-none-any.whl",
+    "bytes": 3466959,
+    "sha256": "e9dfd256ba090259b10f97f0755d4fc92535b8cb38c0a40df6488a8c8a7dd8ae",
+    "in_port_ring_requirements": true
+   },
+   {
+    "file": "jaxlib-0.12.0.1-cp312-cp312-manylinux_2_27_aarch64.whl",
+    "bytes": 80858298,
+    "sha256": "40812201c3bcd4cb104b88f71f58fec4cbd0c32ba90e5c92b3fa8f40819f6774",
+    "in_port_ring_requirements": true
+   },
+   {
+    "file": "ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+    "bytes": 360227,
+    "sha256": "37da32aa97749251025666d62372775019594577b9c9e9cfda83bed48d778fdb",
+    "in_port_ring_requirements": true
+   },
+   {
+    "file": "numpy-2.5.4-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+    "bytes": 15695312,
+    "sha256": "fe4d21ab149f15e4e6043dfb0de87e6e5f34ac176cde83060e9802981fca2ac2",
+    "in_port_ring_requirements": true
+   },
+   {
+    "file": "opt_einsum-3.4.0-py3-none-any.whl",
+    "bytes": 71932,
+    "sha256": "69bb92469f86a1565195ece4ac0323943e83477171b91d24c35afe028a90d7cd",
+    "in_port_ring_requirements": true
+   },
+   {
+    "file": "scipy-1.18.1-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+    "bytes": 34025113,
+    "sha256": "3c085faa2cfa879c5141df483f836f4d691045a078224a670fa570fa01612d89",
+    "in_port_ring_requirements": true
+   }
+  ],
+  "total_bytes": 134477841,
+  "check": "every sha256 above is listed in round6/vfport/docker/ring-requirements.txt (grep), so the port's pinned set already covers linux aarch64",
+  "needs_glibc": ">= 2.27 (python:3.12-slim is Debian with glibc >= 2.36)"
+ }
+}

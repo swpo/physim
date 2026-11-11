@@ -1,0 +1,76 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "mode": "sim",
+ "args": {
+  "mode": "sim",
+  "B": 1,
+  "T": 16,
+  "C": 48,
+  "batch": 128,
+  "reps": 3,
+  "start_reps": null,
+  "out": "raw/g_sim_B1.json"
+ },
+ "affinity": [
+  0,
+  1
+ ],
+ "jax": "0.12.0.1",
+ "xla_flags": "--xla_cpu_multi_thread_eigen=true intra_op_parallelism_threads=2",
+ "cpu": "x86 cloud cores (Intel Xeon @ 2.10GHz)",
+ "seconds_python_start_to_imports_done": 0.8301937580108643,
+ "seconds_imports": 0.8255927562713623,
+ "grid": [
+  128,
+  128
+ ],
+ "burn": 50,
+ "names": [
+  "lR",
+  "dm_00",
+  "ls_00",
+  "lh"
+ ],
+ "rss_mb_after_setup": 242.62109375,
+ "compile_s_start_50": 17.593732595443726,
+ "compile_s_run_T": 5.495649099349976,
+ "run_T_s": {
+  "median": 1.8422751426696777,
+  "min": 1.721907377243042,
+  "max": 1.900648593902588,
+  "n": 3,
+  "all": [
+   1.721907377243042,
+   1.8422751426696777,
+   1.900648593902588
+  ]
+ },
+ "member_ticks_per_s_run": 8.684913360343169,
+ "core_s_per_member_tick_run": 0.2302843928337097,
+ "start50_s": {
+  "median": 6.296241283416748,
+  "min": 5.828852891921997,
+  "max": 6.537173509597778,
+  "n": 3,
+  "all": [
+   5.828852891921997,
+   6.296241283416748,
+   6.537173509597778
+  ]
+ },
+ "member_ticks_per_s_start50": 7.941245855950864,
+ "episode_82_s": {
+  "median": 9.384051322937012,
+  "min": 9.071656703948975,
+  "max": 9.50508999824524,
+  "n": 3,
+  "all": [
+   9.071656703948975,
+   9.384051322937012,
+   9.50508999824524
+  ]
+ },
+ "episode_note": "init + 50 burn-in + 16 free + 16 under an aimed or regional program (classes c, d), as sim_episodes_x",
+ "rss_mb_peak": 906.60546875,
+ "seconds_process": 94.29514050483704
+}

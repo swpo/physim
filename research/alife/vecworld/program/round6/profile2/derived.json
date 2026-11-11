@@ -1,0 +1,87 @@
+{
+ "what": "Derived numbers of DESIGN.md: budgets, item limits, grading time, Mac hours, GPU and model dollars.",
+ "inputs": "feasibility/timing.json and the constants named in this file",
+ "F": {
+  "R_box_x86": 121.9,
+  "B_res_full_episodes_x86": {
+   "60": 1261,
+   "120": 2522,
+   "180": 3783
+  },
+  "U_item": 12288,
+  "brute_force_item_s_x86": 117.9,
+  "item_b0.25_x86": {
+   "predict_s": 29.5,
+   "wall_seconds": 52.7,
+   "cpu_seconds": 75.4,
+   "grading_s_worst": 4144,
+   "grading_h_worst": 1.15,
+   "allowance_s": 9600.0,
+   "mac_ratio_min_for_allowance": 0.31,
+   "b_pred_max_at_r1": 0.973
+  },
+  "instance_build_s_x86": 1248,
+  "null_pool_s_x86": 1462,
+  "draw_s_x86": 533,
+  "W_box_one_start_143_steps_min": 101,
+  "W_box_one_start_200_steps_min": 142,
+  "P0_box_16_worlds_min": 142,
+  "sigma16_ceiling_from_skills": 0.217,
+  "sigma16_box_if_ridge_is_best": 0.394
+ },
+ "G": {
+  "R_box_x86": 8.68,
+  "B_res_full_episodes_x86": {
+   "60": 381,
+   "120": 762,
+   "180": 1143
+  },
+  "U_item": 8192,
+  "brute_force_item_s_x86": 943.8,
+  "item_b0.05_x86": {
+   "predict_s": 47.2,
+   "wall_seconds": 73.7,
+   "cpu_seconds": 117.4,
+   "grading_s_worst": 5489,
+   "grading_h_worst": 1.52,
+   "allowance_s": 9600.0,
+   "mac_ratio_min_for_allowance": 0.48,
+   "b_pred_max_at_r1": 0.118
+  },
+  "instance_build_s_x86": 4800,
+  "null_pool_s_x86": 4837.0,
+  "family_768x8_h_x86": 16.1,
+  "three_families_h_x86": 48.3
+ },
+ "mac_x86_equivalent": {
+  "F": {
+   "per_rollout_h_worst": 4.16,
+   "box_tier_4_scripts_h_serial": 16.6,
+   "per_instance_before_h": 0.49,
+   "per_profile_once_h": 0.41
+  },
+  "G": {
+   "per_rollout_h_worst": 4.53,
+   "box_tier_4_scripts_h_serial": 18.1,
+   "per_instance_before_h": 1.33,
+   "per_profile_once_h": 1.34
+  }
+ },
+ "gpu": {
+  "F_per_instance": {
+   "work_h": 0.92,
+   "overhead_h": 0.12,
+   "usd": 2.07,
+   "cap_usd": 3.66
+  }
+ },
+ "model": {
+  "qwen_150_turns_usd": 0.89,
+  "qwen_150_turns_crude_bound_usd": 4.54,
+  "astra_ring_caps_22_turns_listed_usd": 5.63,
+  "astra_provider_over_listed": 0.411,
+  "astra_150_turns_qwen_context_listed_usd": 82.1,
+  "astra_150_turns_provider_usd": 33.8,
+  "qwen_share_of_agent_phase_waiting_for_model": 0.74
+ }
+}

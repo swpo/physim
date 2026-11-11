@@ -1,0 +1,26 @@
+21:47:01 start f_sim_B1 (cores 0,1, load 1.19 0.86 1.35)
+21:47:28 done  f_sim_B1 exit 0
+21:47:28 start f_sim_B16 (cores 0,1, load 1.40 0.93 1.36)
+21:51:59 done  f_sim_B16 exit 0
+21:51:59 start f_sim_B256 (cores 0,1, load 1.79 1.45 1.48)
+21:54:04 done  f_sim_B256 exit 0
+21:54:04 start f_net_C48_b256 (cores 0,1, load 1.81 1.56 1.51)
+21:54:28 done  f_net_C48_b256 exit 0
+21:54:28 start f_net_C24_b256 (cores 0,1, load 1.95 1.62 1.53)
+21:54:43 done  f_net_C24_b256 exit 0
+21:54:43 start f_net_C48_b64 (cores 0,1, load 1.89 1.62 1.54)
+21:54:56 done  f_net_C48_b64 exit 0
+21:54:56 start f_plug_m256 (cores 0,1, load 1.75 1.60 1.53)
+21:59:16 done  f_plug_m256 exit 0
+21:59:16 start f_fit_T32 (cores 0,1, load 2.06 1.82 1.64)
+22:02:02 done  f_fit_T32 exit 0
+22:02:02 start f_sim_B64 (cores 0,1, load 1.93 1.85 1.68)
+22:08:55 done  f_sim_B64 exit 0
+22:08:55 start f_fit_T48 (cores 0,1, load 1.77 1.83 1.74)
+22:10:30 done  f_fit_T48 exit 0
+22:30:42 start f_sim_B1_f32 (cores 0,1, load 1.68 1.70 1.73)
+22:30:52 done  f_sim_B1_f32 exit 0
+22:30:52 start f_sim_B16_f32 (cores 0,1, load 1.73 1.71 1.73)
+22:31:08 done  f_sim_B16_f32 exit 0
+22:31:08 start f_sim_B64_f32 (cores 0,1, load 1.63 1.69 1.73)
+22:31:35 done  f_sim_B64_f32 exit 0
