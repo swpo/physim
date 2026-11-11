@@ -190,10 +190,12 @@ def analyse_arm(d, arm):
         return (L["K"] - min(L[b] for b in noexp)) / (L["K"] - L["C"])
     acc = dict(null_candidates=cand, no_experiment_policies=noexp, null_budget=Nmax,
                null_incomplete=[b for b in declared if b not in B])
+    acc["sigma_measured_at_declared_null"] = not acc["null_incomplete"]
     acc["sigma"] = A.quantity(sigma, ["K", "C"] + cand)
     Lp = {b: A.Lmean(b) for b in cand}
     acc["null_is"] = min(Lp, key=Lp.get)
-    acc["sigma_verdict"] = verdict_interval(acc["sigma"], 0.15, True)
+    acc["sigma_verdict"] = (verdict_interval(acc["sigma"], 0.15, True) if acc["sigma_measured_at_declared_null"]
+                            else "not measured at the declared null (an upper bound: missing " + ", ".join(acc["null_incomplete"]) + ")")
     acc["sigma_by_budget"] = {}
     for N in BUDGETS:
         cc, f = sigma_at(N)
@@ -357,11 +359,16 @@ def main():
     ap.add_argument("--name", default="analysis.json")
     a = ap.parse_args()
     d = a.job_out
-    info = json.load(open(os.path.join(d, "info.json")))
+    ip = os.path.join(d, "info.json")              # written after the gate and after every arm; tolerated if absent
+    if os.path.exists(ip):
+        info = json.load(open(ip))
+    else:
+        info = {"arms": [x for x in ("P", "N30", "N10") if os.path.exists(os.path.join(d, x, "scores.npz"))],
+                "info_json_missing": True}
     gate = json.load(open(os.path.join(d, "gate.json")))
     res = dict(PILOT_NEVER_REUSE_AS_EXAM=True, job=a.job, source=f"origin/gpu-jobs:jobs/{a.job}/out/full",
-               job_info={k: info[k] for k in ("size", "arms", "platform", "member_ticks_public_simulator", "hours", "failed",
-                                              "skipped", "clock", "config") if k in info},
+               job_info={k: info[k] for k in ("size", "arms", "arms_done", "finished", "platform", "member_ticks_public_simulator",
+                                              "hours", "failed", "skipped", "clock", "config", "info_json_missing") if k in info},
                gate=dict(passed=gate["passed"], thresholds=gate["thresholds"], burn=gate["burn"], M=gate["M"],
                          tick_r2_median=float(np.median([r["tick_r2"] for r in gate["rows"] if r["ok"]]))),
                bootstrap=dict(n=NB, what="hidden worlds resampled as clusters; one training seed drawn per policy per resample"),
