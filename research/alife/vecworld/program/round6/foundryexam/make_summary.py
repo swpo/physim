@@ -172,8 +172,11 @@ def analyse_arm(d, arm):
     out["oes_by_cell"] = {b: R["oes"][b] for b in R["oes"]}
     out["oes_by_class"] = R.get("by_group")
     # ---- acceptance
-    Nmax = max(n for n in BUDGETS if f"D@{n}" in B)
-    cand = [b for b in (f"D@{Nmax}", f"FT@{Nmax}", f"Dr@{Nmax}", "P0", "S@0") if b in B]
+    # the declared null uses the largest declared budget (DESIGN.md section 4); if a deadline cut D or FT at that budget
+    # the null is flagged as incomplete instead of being silently replaced by a smaller budget (review of 002, minor 1)
+    Nmax = max(BUDGETS) if any(f"{f}@{max(BUDGETS)}" in B for f in ("D", "FT", "Dr")) else max(n for n in BUDGETS if f"Dr@{n}" in B)
+    declared = [f"D@{Nmax}", f"FT@{Nmax}", f"Dr@{Nmax}", "P0", "S@0"]
+    cand = [b for b in declared if b in B]
     noexp = [b for b in ("P0", "S@0", "P0s") if b in B]
 
     def sigma(L):
@@ -185,7 +188,8 @@ def analyse_arm(d, arm):
 
     def share_noexp(L):
         return (L["K"] - min(L[b] for b in noexp)) / (L["K"] - L["C"])
-    acc = dict(null_candidates=cand, no_experiment_policies=noexp)
+    acc = dict(null_candidates=cand, no_experiment_policies=noexp, null_budget=Nmax,
+               null_incomplete=[b for b in declared if b not in B])
     acc["sigma"] = A.quantity(sigma, ["K", "C"] + cand)
     Lp = {b: A.Lmean(b) for b in cand}
     acc["null_is"] = min(Lp, key=Lp.get)
@@ -278,6 +282,8 @@ def analyse_arm(d, arm):
             e["ok"] += int(sum(c["ok"]))
             e["late_share_max"] = max(e["late_share_max"], float(max(c["late_share"])))
         e["stopped_early"] += int(bool(v.get("stopped_early")))
+        if v.get("stopped_early") and c is not None:      # a net cut by a deadline is not converged, whatever its curve says
+            e["ok"] -= int(sum(c["ok"]))
         e["best_step_median"] += list(v["best_step"])
     for e in conv.values():
         e["best_step_median"] = float(np.median(e["best_step_median"])) if e["best_step_median"] else None
@@ -298,6 +304,47 @@ def analyse_arm(d, arm):
     out["lab_nats"] = dict(mean=float(np.mean([h["lab"]["mean"] for h in worlds["hidden"]])),
                            max=float(np.max([h["lab"]["max"] for h in worlds["hidden"]])))
     out["train_worlds"] = [g["n_train"] for g in worlds["groups"]]
+    # ---- per hidden world and per group (centre): point values (seed-mean)
+    def pw(fn, bases):
+        sm = {b: np.mean([A.Lw[k] for k in A.bases[b]], 0) for b in bases}
+        return [float(fn({b: float(sm[b][j]) for b in bases})) for j in range(len(A.ids))]
+    rows = dict(label=meta["hidden_labels"], group=[meta["groups"][g] for g in meta["group_of_world"]],
+                vp16=[h.get("gate", {}).get("vp16") for h in worlds["hidden"]],
+                cv_cell=[h.get("gate", {}).get("cv_cell") for h in worlds["hidden"]],
+                tick_share_all33=[h["tick_share"]["all33"] for h in worlds["hidden"]])
+    for b in ("C", "P0", "P0s", "Kp", "plugPrior", "plug10", "plugU0", f"D@{Nmax}", f"Dr@{Nmax}", f"FT@{Nmax}", f"S@{Nmax}"):
+        if b in B:
+            rows[f"oes_{b}"] = pw(oes_fn(b), ["K", "O", b])
+    rows["sigma"] = acc["sigma"]["per_world"]
+    rows["share_noexp"] = acc["share_noexp"]["per_world"]
+    rows["range_K_minus_O"] = pw(lambda L: L["K"] - L["O"], ["K", "O"])
+    rows["range_K_minus_C"] = pw(lambda L: L["K"] - L["C"], ["K", "C"])
+    out["per_world"] = rows
+
+    def rank_corr(x, y):
+        x, y = np.asarray(x, float), np.asarray(y, float)
+        ok = np.isfinite(x) & np.isfinite(y)
+        if ok.sum() < 4:
+            return None
+        rx, ry = np.argsort(np.argsort(x[ok])), np.argsort(np.argsort(y[ok]))
+        return float(np.corrcoef(rx, ry)[0, 1])
+    if "oes_plugPrior" in rows:
+        out["rank_corr_over_worlds"] = dict(
+            sigma_vs_state_given_loss=rank_corr(rows["sigma"], 1.0 - np.array(rows["oes_plugPrior"])),
+            sigma_vs_vp16=rank_corr(rows["sigma"], [np.nan if v is None else v for v in rows["vp16"]]),
+            C_minus_P0_vs_state_given_loss=rank_corr(np.array(rows["oes_C"]) - np.array(rows["oes_P0"]), 1.0 - np.array(rows["oes_plugPrior"])),
+            n=len(rows["sigma"]))
+    gw = np.array(meta["group_of_world"])
+    if len(set(gw.tolist())) > 1:
+        bg = {}
+        for g in sorted(set(gw.tolist())):
+            sel = np.flatnonzero(gw == g)
+            sm = {b: float(np.mean([A.Lw[k][sel] for k in A.bases[b]])) for b in A.bases}
+            e = dict(n_worlds=int(len(sel)), oes_C=oes_fn("C")(sm), oes_P0=oes_fn("P0")(sm), sigma=sigma(sm), share_noexp=share_noexp(sm))
+            if "plugPrior" in sm:
+                e["state_given_loss_prior"] = 1.0 - oes_fn("plugPrior")(sm)
+            bg[meta["groups"][g]] = e
+        out["by_group"] = bg
     return out
 
 

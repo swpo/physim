@@ -21,6 +21,14 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
 - 11:29 r6-foundryexam-001 REJECTED by the runner's validation (notes above 4000 characters), $0, no pod. Resubmitted as
   r6-foundryexam-002 with shorter notes, same code (job.sh's two branches also checked with a stub interpreter).
 
+- 11:44 r6-foundryexam-002 running on an A100-SXM4-40GB (lambdalabs, $1.99/h). Presmoke passed in 6 min (exit 0). Full pass
+  started 11:49:45 (pod clock): gate passed pool 52/88 (seed 2026), 171/323 (enriched 2027), 3/5 (control); N30 132/240,
+  N10 207/240; arm P has 210 training worlds x 64 episodes and 16 hidden worlds.
+- 12:01 Mac review of 002: fine to run, 0 blocker, 0 major, 4 minor (results/job/review once fetched). Acted on in
+  make_summary.py: the null's budget stays 512 and is flagged if D/FT(512) were cut; a net cut by a deadline is not
+  counted as converged. Left for a next request: D(512)/FT(512) before the small budgets, info.json after every arm,
+  try/except per hidden world, code norm without hidden worlds, own window masked out of the amortised context.
+
 ## Done
 - design and criteria declared and committed; pool and centres; code; CPU smoke from the git archive; request 001 pushed.
 
