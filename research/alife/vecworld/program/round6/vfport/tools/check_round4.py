@@ -1117,6 +1117,38 @@ def test_round5(scratch: str):
           len(rows) == 101 and ok_rows and json.loads(rows[-1])["event"] == "log_full" and "BoundedLog(self._log)" in inspect.getsource(LT.make_service)
           and LT.LAB_LOG_MAX_LINES == 20000, {"lines": len(rows), "longest": max(len(x) for x in rows)})
 
+    # ---- K7: the key scan's needles at the three alignments of base64 and URL-safe base64 ----
+    import base64
+    import random
+    import pack_rollout as PACK
+    key = "pk-" + "".join(random.Random(5).choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_") for _ in range(40))
+    needles = PACK.credential_needles({"PRIME_API_KEY": key})
+    found = []
+    for pre in range(6):
+        for enc in (base64.b64encode, base64.urlsafe_b64encode):
+            blob = enc(b"x" * pre + b"Authorization: Bearer " + key.encode() + b"\n tail")
+            found.append(any(n in blob for n in needles.values()))
+    check("F9 K7 the key scan finds a key inside base64 and URL-safe base64 text at every alignment (6 offsets x 2 alphabets)",
+          all(found) and len(needles) == 7, {"found": found, "needles": sorted(needles)})
+
+    # ---- K10: the effort must be the config's; n must be the integer 1 ----
+    base_body = chat_body(tools=[{"type": "function", "function": {"name": "bash"}}])
+    m = standin_model.MODEL
+    shape = lambda b, eff: SPEND.check_shape(b, model=m, max_output_tokens=100, reasoning_effort=eff)   # noqa: E731
+    cases = {"none asked, none sent": shape(base_body, None), "none asked, high sent": shape(dict(base_body, reasoning_effort="high"), None),
+             "low asked, low sent": shape(dict(base_body, reasoning_effort="low"), "low"),
+             "low asked, high sent": shape(dict(base_body, reasoning_effort="high"), "low"),
+             "low asked, none sent": shape(base_body, "low"), "n=True": shape(dict(base_body, n=True), None), "n=1": shape(dict(base_body, n=1), None),
+             "n=1.0": shape(dict(base_body, n=1.0), None)}
+    sp = SPEND.SpendConfig(cap_usd=1.0, max_context_tokens=60000, max_output_tokens=100, model=m, input_usd_per_mtok=2.0,
+                           output_usd_per_mtok=10.0, reasoning_effort="low")
+    mt = SPEND.meter_for(sp, log_path="")
+    check("F10 K10 the spend stop admits only the config's reasoning effort (none for `default`) and only the integer 1 for n; the meter "
+          "takes the effort from the spend table vfrun writes",
+          [k for k, v in cases.items() if v is None] == ["none asked, none sent", "low asked, low sent", "n=1"] and mt.reasoning_effort == "low"
+          and '"reasoning_effort": None if flat["reasoning_effort"] == "default" else flat["reasoning_effort"]' in open(os.path.join(HERE, "vfrun.py")).read(),
+          cases)
+
 
 def GRADING_driver_cmd(*a):
     from physim2_env import grading as GRADING

@@ -76,7 +76,15 @@ def credential_needles(environ=None) -> dict:
         v = environ.get(name, "")
         if len(v) >= 8:
             out[name] = v.encode()
-            out[name + " (base64)"] = base64.b64encode(v.encode()).rstrip(b"=")
+            # round 5 (K7): base64 and URL-safe base64 of the value at each of the three alignments it can take inside a
+            # longer encoded text (0, 1 or 2 bytes before it); only the characters that do not depend on the neighbours
+            raw = v.encode()
+            for shift in range(3):
+                for label, enc in (("base64", base64.b64encode), ("urlsafe base64", base64.urlsafe_b64encode)):
+                    e = enc(b"\0" * shift + raw + b"\0" * 3)
+                    start = (4 * shift + 2) // 3                     # first character free of the leading padding bytes
+                    stop = (4 * (shift + len(raw))) // 3             # last character free of the trailing ones
+                    out[f"{name} ({label}, alignment {shift})"] = e[start:stop]
     return out
 
 

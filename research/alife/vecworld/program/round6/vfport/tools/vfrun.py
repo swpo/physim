@@ -717,7 +717,8 @@ def request_route(a) -> int:
                  "input_usd_per_mtok": prices["input_counted"], "output_usd_per_mtok": prices["output"], "context_window": prices["context_window"],
                  "prices_from": entry["source"] + f" at unix time {entry['fetched_unix']}"
                                 + ("" if prices["input_counted"] == prices["input"] else "; input counted at the listed cache-write price, which is higher"),
-                 "billed": not stand_in}
+                 "billed": not stand_in,
+                 "reasoning_effort": None if flat["reasoning_effort"] == "default" else flat["reasoning_effort"]}   # K10
         if prices["cache_read"] is not None:
             spend["cache_read_usd_per_mtok"] = prices["cache_read"]
         resolved = json.loads(json.dumps(cfg["expanded"]))

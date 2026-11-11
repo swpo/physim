@@ -73,6 +73,7 @@ class SpendConfig(BaseModel):
     context_window: int | None = None
     prices_from: str = ""                                    # where and when the prices were read (words)
     billed: bool = True                                      # False for a run against a local stand-in endpoint
+    reasoning_effort: str | None = None                      # round 5 (K10): the config's effort; None = "default" (nothing sent)
 
 
 class Refused(Exception):
@@ -127,10 +128,15 @@ REQUEST_KEYS = frozenset({"model", "messages", "tools", "tool_choice", "parallel
 STREAM_OPTION_KEYS = frozenset({"include_usage"})
 
 
-def check_shape(body, *, model: str, max_output_tokens: int) -> str | None:
+ANY_EFFORT = object()                                        # check_shape's default: the effort is not compared
+
+
+def check_shape(body, *, model: str, max_output_tokens: int, reasoning_effort=ANY_EFFORT) -> str | None:
     """Why this request cannot be bounded by the meter, or None. Text chat with function tools, one choice, the
     configured model and reply cap, the keys of REQUEST_KEYS only: everything the stock bash harness sends, and
-    nothing a provider could bill beyond prompt and completion tokens."""
+    nothing a provider could bill beyond prompt and completion tokens. With `reasoning_effort` (round 5, K10: the
+    meter passes the config's, None for "default") the request's effort must be exactly that: a box that holds the
+    rollout's secret cannot ask for an effort the config never set."""
     if not isinstance(body, dict) or not isinstance(body.get("messages"), list) or not body["messages"]:
         return "no messages"
     unknown = sorted(str(k)[:40] for k in body if k not in REQUEST_KEYS)
@@ -141,13 +147,15 @@ def check_shape(body, *, model: str, max_output_tokens: int) -> str | None:
         return "stream_options other than include_usage"
     if body.get("reasoning_effort") is not None and not isinstance(body.get("reasoning_effort"), str):
         return "a reasoning_effort that is not a word"
+    if reasoning_effort is not ANY_EFFORT and body.get("reasoning_effort") != reasoning_effort:
+        return "a reasoning_effort other than the config's"
     if body.get("model") != model:
         return "another model"
     caps = [body.get(k) for k in ("max_tokens", "max_completion_tokens") if k in body]
     if not caps or any(_count(c) is None or c < 1 or c > max_output_tokens for c in caps):
         return "no reply cap, or one above the run's"
-    if body.get("n") not in (None, 1):
-        return "more than one choice"
+    if "n" in body and not (body["n"] is None or (type(body["n"]) is int and body["n"] == 1)):   # K10: True is not 1 here
+        return "more than one choice, or a choice count that is not the integer 1"
     for key in ("plugins", "web_search_options", "audio", "prediction"):
         if body.get(key):
             return f"field {key}"
@@ -195,7 +203,7 @@ def _rest_hash(body: dict) -> str:
 
 class Meter:
     def __init__(self, *, model: str, cap_usd: float, max_context_tokens: int, max_output_tokens: int, prices: dict,
-                 log_path: str | None = None, billed: bool = True, trace=None, clock=time.time):
+                 log_path: str | None = None, billed: bool = True, trace=None, clock=time.time, reasoning_effort: str | None = None):
         for name, v in (("cap_usd", cap_usd), ("input price", prices.get("input")), ("output price", prices.get("output"))):
             if isinstance(v, bool) or not isinstance(v, (int, float)) or not v == v or v < 0 or (name == "cap_usd" and v <= 0):
                 raise ValueError(f"spend meter: {name} is not a usable number")
@@ -205,6 +213,7 @@ class Meter:
         self.max_context_tokens, self.max_output_tokens = max_context_tokens, max_output_tokens
         self.worst = worst_call_usd(max_context_tokens, max_output_tokens, prices["input"], prices["output"])
         self.log_path, self.billed, self.trace, self.clock = log_path, billed, trace, clock
+        self.reasoning_effort = reasoning_effort             # K10: the only effort a request may carry (None: none)
         self.counted, self.inflight, self.attempts, self.settled, self.refused = 0.0, 0, 0, 0, 0
         self.log_failures = 0                                # second pass, K5: writes to the spend log that failed
         self.stopped: str | None = None
@@ -228,7 +237,7 @@ class Meter:
             self._refuse("model_request_refused", "not the chat-completions route")
         if self.reserved() >= self.cap_usd:
             self._refuse("spend_cap", f"counted {self.counted:.6f} + {self.inflight} in flight x {self.worst:.6f} >= cap {self.cap_usd:.6f}")
-        why = check_shape(body, model=self.model, max_output_tokens=self.max_output_tokens)
+        why = check_shape(body, model=self.model, max_output_tokens=self.max_output_tokens, reasoning_effort=self.reasoning_effort)
         if why:
             self._refuse("model_request_refused", why)
         bound, how = prompt_bound(body, self.prev)
@@ -315,7 +324,8 @@ def meter_for(spend: SpendConfig, limits=None, *, trace=None, log_path: str | No
                          "and its listed input and output prices")
     return Meter(model=spend.model, cap_usd=cap, max_context_tokens=int(ctx), max_output_tokens=int(spend.max_output_tokens),
                  prices={"input": spend.input_usd_per_mtok, "output": spend.output_usd_per_mtok, "cache_read": spend.cache_read_usd_per_mtok},
-                 log_path=log_path if log_path is not None else os.environ.get(LOG_ENV) or None, billed=spend.billed, trace=trace)
+                 log_path=log_path if log_path is not None else os.environ.get(LOG_ENV) or None, billed=spend.billed, trace=trace,
+                 reasoning_effort=spend.reasoning_effort)
 
 
 class UsageScanner:
