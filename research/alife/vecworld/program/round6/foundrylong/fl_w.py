@@ -65,15 +65,24 @@ def spin(th, keys, burn: int):
     return jax.vmap(one)(keys)
 
 
-def assimilate(th, x, Y, U, keys, t0=0, stop=True):
+def _tick(th, x, k, t, u):
+    return TN.tick(th, x, Noise(k, t), u, FAM)
+
+
+_tick_remat = jax.checkpoint(_tick)
+
+
+def assimilate(th, x, Y, U, keys, t0=0, stop=True, remat=False):
     """x (M, C, H, W) members; Y (T + 1, NOBS) observed frames; U (T, NW) commands of the T ticks; keys (M,).
-    Returns (members held to Y[T], YF (T, M, NOBS) one-tick forecasts made before each nudge)."""
+    Returns (members held to Y[T], YF (T, M, NOBS) one-tick forecasts made before each nudge).
+    remat: recompute each tick in the backward pass (memory of one state per member and tick)."""
     x = jax.vmap(nudge, (0, None))(x, Y[0])
+    tk = _tick_remat if remat else _tick
 
     def body(x, inp):
         t, y, u = inp
         xs = lax.stop_gradient(x) if stop else x
-        xf = jax.vmap(lambda xx, k: TN.tick(th, xx, Noise(k, t), u, FAM))(xs, keys)
+        xf = jax.vmap(lambda xx, k: tk(th, xx, k, t, u))(xs, keys)
         return jax.vmap(nudge, (0, None))(xf, y), jax.vmap(view)(xf)
     T = U.shape[0]
     return lax.scan(body, x, (t0 + jnp.arange(T), Y[1:], U))
@@ -96,15 +105,79 @@ def fair_es(X, y):
     return rms(X - y[None]).mean() - rms(X[:, None] - X[None]).sum() / (M * (M - 1))
 
 
-def episode_loss(th, x, Y, U, keys, scale):
+def episode_loss(th, x, Y, U, keys, scale, remat=False):
     """Mean over the ticks of an observed episode of the fair energy score of the one-tick forecasts (scaled)."""
-    _, YF = assimilate(th, x, Y, U, keys)
+    _, YF = assimilate(th, x, Y, U, keys, remat=remat)
     return jax.vmap(lambda yf, y: fair_es(yf / scale, y / scale))(YF, Y[1:]).mean()
 
 
-def lab_loss(th, X0, Ys, Us, keys, scale):
+def lab_loss(th, X0, Ys, Us, keys, scale, remat=False):
     """X0 (E, M, C, H, W) members per episode, Ys (E, T + 1, NOBS), Us (E, T, NW), keys (E, M)."""
-    return jax.vmap(lambda x, Y, U, k: episode_loss(th, x, Y, U, k, scale))(X0, Ys, Us, keys).mean()
+    return jax.vmap(lambda x, Y, U, k: episode_loss(th, x, Y, U, k, scale, remat))(X0, Ys, Us, keys).mean()
+
+
+# ----------------------------------------------------------------------------- the hypothesis: coordinates and fit
+# z: 248 unconstrained-ish numbers, all of order 1 under the prior. The net weights in units of their prior SD; the
+# log-uniform scalars and kappa as the position of log(value) in their range (kappa's range starts at 1e-6, which
+# stands for kappa = 0); the uniform scalars as the position in their range. dens is not fitted: the nudge holds every
+# member to the observed block means, so the fit loss does not depend on it; it is set from the observed mean mass.
+NETS = (("W1", (FAM.F, FAM.HID), FAM.G1 / FAM.F ** 0.5), ("b1", (FAM.HID,), 1.0), ("W2", (FAM.HID, FAM.O), FAM.HID ** -0.5))
+BOX = (("beta", "log", 2.0, 60.0, ()), ("alpha", "log", 0.3, 30.0, ()), ("kappa", "log", 1e-6, 0.1, ()),
+       ("gam", "lin", 0.0, 2.0, ()), ("mu", "lin", 0.05, 0.25, ()), ("gr", "lin", 0.0, 3.0, ()), ("wq", "lin", 0.0, 2.0, (FAM.C,)))
+NZ_NET = sum(int(jnp.prod(jnp.asarray(s))) for _, s, _ in NETS)
+NZ = NZ_NET + sum(int(jnp.prod(jnp.asarray(s))) if s else 1 for *_, s in BOX)
+
+
+def to_z(th):
+    parts = [jnp.ravel(jnp.asarray(th[k]) / sd) for k, _, sd in NETS]
+    for k, kind, lo, hi, _ in BOX:
+        v = jnp.ravel(jnp.asarray(th[k], jnp.float64))
+        if kind == "log":
+            parts.append((jnp.log(jnp.maximum(v, lo)) - jnp.log(lo)) / (jnp.log(hi) - jnp.log(lo)))
+        else:
+            parts.append((v - lo) / (hi - lo))
+    return jnp.concatenate(parts)
+
+
+def from_z(z, dens):
+    th, i = {}, 0
+    for k, shp, sd in NETS:
+        n = int(jnp.prod(jnp.asarray(shp)))
+        th[k] = z[i:i + n].reshape(shp) * sd
+        i += n
+    for k, kind, lo, hi, shp in BOX:
+        n = int(jnp.prod(jnp.asarray(shp))) if shp else 1
+        v = jnp.clip(z[i:i + n], 0.0, 1.0)
+        v = jnp.exp(jnp.log(lo) + v * (jnp.log(hi) - jnp.log(lo))) if kind == "log" else lo + v * (hi - lo)
+        th[k] = v.reshape(shp) if shp else v[0]
+        i += n
+    th["dens"] = jnp.asarray(dens)
+    return th
+
+
+def clip_z(z):
+    return z.at[NZ_NET:].set(jnp.clip(z[NZ_NET:], 0.0, 1.0))
+
+
+def dens_of(Ys):
+    """The observed mean mass per kind (block means of the two kinds, averaged): (C,)."""
+    return jnp.asarray(Ys).reshape(-1, C + 1, G * G)[:, :C].mean((0, 2))
+
+
+def fit_step_fn(remat=True):
+    """value_and_grad of the Lab fit loss with respect to z, jitted."""
+    def f(z, dens, X0, Ys, Us, keys, scale):
+        return lab_loss(from_z(z, dens), X0, Ys, Us, keys, scale, remat)
+    return jax.jit(jax.value_and_grad(f))
+
+
+def adam(z, g, st, lr, b1=0.9, b2=0.999, eps=1e-8):
+    m, v, n = st
+    n = n + 1
+    m = b1 * m + (1 - b1) * g
+    v = b2 * v + (1 - b2) * g * g
+    z = z - lr * (m / (1 - b1 ** n)) / (jnp.sqrt(v / (1 - b2 ** n)) + eps)
+    return clip_z(z), (m, v, n)
 
 
 def predict(th, x, hist, Ptest, keys, queries):

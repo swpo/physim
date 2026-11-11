@@ -13,6 +13,13 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 - 18:30: CPU part measured (cpu_part.py -> results/cpu_float64.json, cpu_float32.json; 2 pinned cores of a SHARED 4-core
   box, so speeds are lower bounds). fl_w.py (W prototype: nudged-ensemble assimilation, fit loss) and w_cpu.py (CPU
   tests 1 and 2 on a public world) written, not yet run. 18:28 stopped by the usage limit; 18:35 restart, WIP committed.
+- 18:45 (before any stage-1 result was seen): w_cpu.py tests 1-2 on seed2027-46 -> results/w_cpu_seed2027-46.json.
+  W at the TRUE weights: skill 0.85 / 0.78 / 0.70 at 8 / 16 / 32 ticks (8 items, 8 members; K = 0, O = 1); at another
+  screened world's weights -0.49 / -0.75 / -1.13; net weights moved 10%: 0.73 / 0.63 / 0.53; 30%: 0.51 / 0.37 / 0.24.
+  Fit loss (8 Lab episodes, 4 members): truth -0.004 and -0.012 (two ensembles), 3% -0.012, 10% +0.029, 30% +0.109,
+  other screened worlds +0.29 to +0.66: ranks 10% from the truth, not 3%. W is viable if a fit gets within ~10%.
+- 18:50: fl_w.py fit coordinates z (248 numbers; dens set from the observed mean mass), Adam, value_and_grad with
+  remat; w_cpu.py test 3 (fit from a 30% neighbour with scalars and from another screened world) running on CPU.
 
 ## Running
 - GPU job r6-foundrylong-001 (stage 1). Follow: cd /home/user/physim && git fetch -q origin gpu-jobs &&

@@ -9,6 +9,10 @@ Test 1 (state inference): the W predictor at the TRUE weights (members spun up u
 Test 2 (identifiability): the fit loss (one-tick forecasts of a nudged ensemble on Lab episodes) at the true weights,
   at neighbours of the truth (3%, 10%, 30%) and at other screened worlds. If the loss does not rank them, a
   gradient fit on it cannot find the weights.
+Test 3 (fit, --skip t1,t2 to run it alone): Adam on the fit coordinates z (fl_w.to_z) from a 30% neighbour of the
+  truth (scalars moved too) and from another screened world, on random windows of the Lab episodes with common
+  random numbers per episode; the fit loss on all Lab episodes before and after (fixed keys), the distance to the
+  truth in z, and the W predictor's skill at the fitted weights.
 Everything is simulated here from public seeds: PILOT ONLY, never an exam.
 """
 from __future__ import annotations
@@ -34,6 +38,12 @@ ap.add_argument("--lab-members", type=int, default=4)
 ap.add_argument("--burn", type=int, default=300)
 ap.add_argument("--others", default="seed2027-581,seed2027-2928,seed2026-198")
 ap.add_argument("--skip", default="")
+ap.add_argument("--fit-steps", type=int, default=40)
+ap.add_argument("--fit-eb", type=int, default=4)
+ap.add_argument("--fit-m", type=int, default=2)
+ap.add_argument("--fit-T", type=int, default=24)
+ap.add_argument("--fit-lr", type=float, default=0.03)
+ap.add_argument("--fit-respin", type=int, default=20)
 a = ap.parse_args()
 
 import fl_w as W  # noqa: E402
@@ -169,6 +179,61 @@ if "t2" not in a.skip:
         rows[o] = fit_loss(th_of(o), 900 + len(rows))
         log(f"fit loss at {o}: {rows[o]:.5f}")
     out["fit_loss"] = rows
+# ---- Test 3: the fit
+if "t3" not in a.skip:
+    lsd = labY.reshape(-1, 3, W.G * W.G).std((0, 2))
+    lscale = jnp.asarray(np.repeat(np.maximum(lsd, 1e-12), W.G * W.G))
+    vg = W.fit_step_fn(remat=True)
+    lossf = jax.jit(W.lab_loss)
+    dens = W.dens_of(labY)
+    zt = W.to_z(TH)
+    Mm, fm, eb, T = a.lab_members, a.fit_m, a.fit_eb, a.fit_T
+    TT = labY.shape[1] - 1
+
+    def pool_at(z, tag):
+        return spin(W.from_z(z, dens), kk(tag, a.members), a.burn)
+
+    def eval_loss(z):                                    # common random numbers: the same pool and noise keys for every z
+        p_ = pool_at(z, 5000)
+        x = p_[(jnp.arange(a.lab * Mm) % a.members)].reshape((a.lab, Mm) + p_.shape[1:])
+        keys = jax.vmap(lambda i: kk(5100 + i, Mm))(jnp.arange(a.lab))
+        return float(lossf(W.from_z(z, dens), x, jnp.asarray(labY), jnp.asarray(labUU), keys, lscale))
+
+    def dist(z):
+        d = np.asarray(z - zt)
+        return dict(net_rms=float(np.sqrt(np.mean(d[:W.NZ_NET] ** 2))), box=[round(float(v), 3) for v in d[W.NZ_NET:]])
+    starts = {"eps0.3_hyper": W.to_z({k: jnp.asarray(v) for k, v in TN.perturb_theta(
+        {k: np.asarray(v) for k, v in TH.items()}, 909, 1, 0.3, hyper=True).items()}), others[0]: W.to_z(th_of(others[0]))}
+    fits = {}
+    for name, z0 in starts.items():
+        z, st = z0, (jnp.zeros_like(z0), jnp.zeros_like(z0), 0)
+        rng = np.random.default_rng(11)
+        rec = dict(loss_before=eval_loss(z0), dist_before=dist(z0), trace=[])
+        log(f"fit {name}: loss {rec['loss_before']:.4f}, dist {rec['dist_before']['net_rms']:.3f}")
+        p_ = pool_at(z, 6000)
+        for it in range(a.fit_steps):
+            if it and it % a.fit_respin == 0:
+                p_ = pool_at(z, 6000 + it)
+            ei = rng.choice(a.lab, eb, replace=False)
+            t0 = rng.integers(0, TT - T + 1, eb)
+            Ys = jnp.asarray(np.stack([labY[e, t:t + T + 1] for e, t in zip(ei, t0)]))
+            Us = jnp.asarray(np.stack([labUU[e, t:t + T] for e, t in zip(ei, t0)]))
+            X0 = p_[jnp.asarray(rng.choice(a.members, eb * fm))].reshape((eb, fm) + p_.shape[1:])
+            keys = jax.vmap(lambda e: kk(7000 + e, fm))(jnp.asarray(ei))
+            l, g = vg(z, dens, X0, Ys, Us, keys, lscale)
+            z, st = W.adam(z, g, st, a.fit_lr)
+            rec["trace"].append(round(float(l), 5))
+            if it % 10 == 9:
+                log(f"  step {it + 1}: window loss {float(l):.4f}, net dist {dist(z)['net_rms']:.3f}")
+        rec.update(loss_after=eval_loss(z), dist_after=dist(z))
+        L[f"W_fit_{name}"] = score(w_predict(W.from_z(z, dens), 1400))
+        rec["skill_after"] = skill(f"W_fit_{name}")
+        log(f"fit {name}: loss {rec['loss_before']:.4f} -> {rec['loss_after']:.4f}; net dist {rec['dist_before']['net_rms']:.3f} -> "
+            f"{rec['dist_after']['net_rms']:.3f}; skill {rec['skill_after']}")
+        fits[name] = rec
+    out["fit"] = fits
+    out["fit_loss_truth"] = eval_loss(zt)
+    log(f"fit loss at the truth, same keys: {out['fit_loss_truth']:.4f}")
 out["seconds"] = time.time() - T0
 os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
 with open(a.out, "w") as f:
