@@ -85,7 +85,7 @@
  "claims": [
   {
    "id": "controls",
-   "claim": "The card's own test: 31 of 31 runs of the 12 negative controls come out dull (pure-noise field, uniform and frozen foundry draws, true diffusion, non-interacting bodies; the two no-affinity worlds that keep the mobility gain are listed but not counted).",
+   "claim": "The card's own test: 31 of 31 runs of the 12 negative controls come out dull (pure-noise field, uniform and frozen foundry draws, true diffusion, non-interacting bodies; the two no-affinity worlds that keep the mobility gain are listed but not counted). Checker: seven of the twelve can hardly fail at the block level. The noise field has nothing predictable; the two true diffusion worlds have a plug-in loss of exactly 0; round 5 typed the four frozen draws by a persistence error below 0.02 at 16 ticks, the cheap family includes persistence and the closure-gap bar is 0.05 (their gap at 8 ticks is 0.0007 at most over the 12 runs). The four uniform draws have a gap of 0.010 at most. The frozen draws can fail only at the population level, where one late run stays under both bars by little (ctl_frozen_00011: sigma_hat 0.141 against 0.15, closure gap 0.045 against 0.05). The free bodies are dull only through the +-20% box declared for their hidden part (weight 0.003 at 8 ticks): by the ridge alone their block view is as open as three shortlisted worlds (mean of 1 - c over 4, 8, 16 ticks 0.28, against 0.28 to 0.31 for foundry 1672, 3078 and 6845).",
    "values": {
     "verdicts": {
      "ctl_noise": {
@@ -292,6 +292,36 @@
     "ctl_puredif_1": [
      "r6-cards-002:cards/ctl_puredif_1__A.json:gates.verdict"
     ]
+   },
+   "checker_values": {
+    "ctl_frozen_00011_late_pop": {
+     "sigma_hat": 0.141,
+     "gap8": 0.0451,
+     "pf8": 0.917,
+     "ceil8": 0.872
+    },
+    "frozen_block_gap8_all_runs_max": 0.0007,
+    "uniform_block_gap8_all_runs_max": 0.0102,
+    "frozen_block_v_pers8_run_A": [
+     0.0009,
+     0.0064,
+     0.0002,
+     0.0019
+    ],
+    "uniform_block_gap8_run_A": [
+     0.0042,
+     0.0102,
+     0.0,
+     0.0001
+    ],
+    "mean_one_minus_c_4_8_16_run_A": {
+     "ctl_freebodies": 0.276,
+     "foundry_01672": 0.283,
+     "foundry_03078": 0.292,
+     "foundry_06845": 0.309
+    },
+    "ctl_freebodies_w_theta8": 0.003,
+    "source": "r6-cards-001:cards/<world>__<run>.json: grid and pop.lin v_*_med, pl['1.0'].pl_med (checker's code)"
    }
   },
   {
@@ -3001,7 +3031,7 @@
   },
   {
    "id": "block_level",
-   "claim": "sigma_hat at the block level alone (robust between seeds and sizes), worlds at or above the 0.15 bar in run A: designed 2 of 7; shortlist 7 of 7; candidates 2 of 16; prior 0 of 24; controls 0 of 14.",
+   "claim": "sigma_hat at the block level alone, worlds with PF(8) >= 0.3 at or above the 0.15 bar in run A: designed 2 of 7; shortlist 7 of 7; candidates 2 of 16; prior 0 of 24; controls 0 of 14. Checker: (a) robust between seeds; between sizes in 7 of 8 worlds: the fed vortices give 0.07 to 0.09 at 64 px and 0.16 at 128 px with the same 8-px blocks (0.15 with 16-px blocks), across the bar. (b) The PF(8) condition decides for the noise field (block sigma_hat 1.0 in per_world below) and for prior draw 27 (0.23 with PF(8) 0.12). (c) In all 62 foundry-family worlds the hidden-part term never binds at 4, 8 or 16 ticks (in the seven shortlisted worlds an independent weight draw costs 0.47 to 1.7 of the predictable variance), so there sigma_hat is the mean of 1 - c of the linear ridge. Round 5 chose the shortlist by that ridge's ceilings at 1 to 8 ticks and by a late-time gate (round5/foundry summary, checker F1, F3, F4), so 7 of 7 against 2 of 16 re-measures that selection on new seeds; it is not independent evidence that the card singles these worlds out. (d) The value depends on the horizons averaged: min(w_theta, 1 - c) for gliders is 0.06 at 8 ticks, 0.27 at 16 and 0.55 at 32 (vortices 0.06, 0.18, 0.32; membrane 0.005, 0.03, 0.17).",
    "values": {
     "per_world": {
      "gliders": {
@@ -3240,11 +3270,73 @@
      "gliders_n8"
     ]
    },
-   "sources": "<job>:cards/<world>__<run>.json:derived.grid.sigma_hat and derived.pop.sigma_hat (jobs per world in results/derived.json:_jobs)"
+   "sources": "<job>:cards/<world>__<run>.json:derived.grid.sigma_hat and derived.pop.sigma_hat (jobs per world in results/derived.json:_jobs)",
+   "checker_values": {
+    "vortex_block_sigma_hat": {
+     "vortex64": {
+      "A": 0.082,
+      "B": 0.09,
+      "late": 0.073
+     },
+     "vortex128g16": {
+      "A": 0.16
+     },
+     "vortex128": {
+      "A": 0.148
+     }
+    },
+    "foundry_family_worlds_where_hidden_term_binds_run_A": [
+     0,
+     62
+    ],
+    "shortlist_w_theta_4_8_16_range_run_A": [
+     0.47,
+     1.72
+    ],
+    "min_w_theta_one_minus_c_by_horizon_run_A": {
+     "hz": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+     ],
+     "gliders": [
+      0.002,
+      0.005,
+      0.015,
+      0.058,
+      0.267,
+      0.554
+     ],
+     "vortex64": [
+      0.001,
+      0.003,
+      0.016,
+      0.055,
+      0.177,
+      0.315
+     ],
+     "membrane": [
+      0.0,
+      0.0,
+      0.001,
+      0.005,
+      0.032,
+      0.173
+     ]
+    },
+    "foundry_00027": {
+     "grid.sigma_hat": 0.232,
+     "grid.pf8": 0.119
+    },
+    "source": "r6-cards-001 and r6-cards-002: cards/<world>__A.json (checker's code); round5/foundry/results/summary.json:checker.findings"
+   }
   },
   {
    "id": "H6:vortex_clock",
-   "claim": "H6 (a clock takes the population level of the fed vortices): tick share of the population level, mean over components and its largest component (the kind share), by world and run.",
+   "claim": "H6 (a clock takes the population level of the fed vortices): tick share of the population level, mean over components and its largest component (the kind share), by world and run. Checker: the share belongs to the early window in every case (late window 0.04; 0.10 on the slow clock), and foundry 4186 and 3078 show the same at the population level (mean over components 0.18 and 0.19, 0.09 and 0.24 in runs A and B; about 0 late). The declared stationarity gate reads the block view only: the vortices fail it through the member share (0.34, 0.41, 0.84 late), not through this clock, and 4186 passes it with the same early clock at its population level.",
    "values": {
     "vortex64": {
      "A": {
@@ -3306,11 +3398,35 @@
      "r6-cards-002:cards/vortex64_s4__A.json:derived.pop.tick_share",
      "r6-cards-002:cards/vortex64_s4__late.json:derived.pop.tick_share"
     ]
+   },
+   "checker_values": {
+    "pop_tick_share_mean": {
+     "foundry_04186": {
+      "A": 0.175,
+      "B": 0.191,
+      "late": -0.017
+     },
+     "foundry_03078": {
+      "A": 0.086,
+      "B": 0.243,
+      "late": -0.024
+     }
+    },
+    "vortex64_grid_member_share": {
+     "A": 0.337,
+     "B": 0.409,
+     "late": 0.842
+    },
+    "vortex64_grid_tick_share": {
+     "A": 0.028,
+     "B": 0.027
+    },
+    "source": "cards/<world>__<run>.json: pop.tick_share_q, grid.tick_share_q, grid.member_share"
    }
   },
   {
    "id": "H7:actions_gate",
-   "claim": "H7: the declared actions gate passes in 76 of 77 worlds (run A), including 13 of 14 controls: it does not discriminate. The shift of an aimed 200-nat input in units of the cheap family's error at 4 ticks (added after the first card) does.",
+   "claim": "H7: the declared actions gate passes in 76 of 77 worlds (run A), including 13 of 14 controls: it does not discriminate. The shift of an aimed 200-nat input in units of the cheap family's error at 4 ticks (added after the first card) does not either (corrected by the checker; the sentence said it does): every control but the noise field scores 0.55 to 13, above the seven shortlisted worlds (0.001 to 0.47) and the gliders world (0.13 to 0.16).",
    "values": {
     "act_ms": {
      "gliders": 5.57,
@@ -3537,7 +3653,7 @@
   },
   {
    "id": "H8:learned_variable",
-   "claim": "H8: the learned_differs gate (slow features at least 0.05 more closed than the hand block view at 8 ticks in both orders) passes in 0 of 77 worlds in run A.",
+   "claim": "H8: the learned_differs gate (slow features at least 0.05 more closed than the hand block view at 8 ticks in both orders) passes in 0 of 77 worlds in run A. Checker: over all 140 runs it passes once, in the late window of vortex64 (+0.16 and +0.17 at 8 ticks, the hand view's ceiling having dropped to 0.27 to 0.33). At 16 ticks, a horizon chosen after the results, the gain of foundry 4470 repeats in runs A, B and late (+0.07 to +0.18); that of foundry 7567 does not (A +0.05 / +0.06, B +0.02 / -0.03, late +0.16 / +0.17, 128 px 0.00), and candidate 4833 gains as much as 7567 (+0.08 / +0.07 in A, +0.06 / +0.05 late).",
    "values": {
     "gliders": {
      "dceil8": [
@@ -3708,11 +3824,89 @@
      "r2_min": 0.00517
     }
    },
-   "sources": "<job>:cards/<world>__A.json:derived.l.*"
+   "sources": "<job>:cards/<world>__A.json:derived.l.*",
+   "checker_values": {
+    "learned_differs_passes_by_run": {
+     "A": [
+      0,
+      80
+     ],
+     "B": [
+      0,
+      23
+     ],
+     "late": [
+      1,
+      37
+     ]
+    },
+    "vortex64_late": {
+     "dceil8": [
+      0.164,
+      0.173
+     ],
+     "r2_min": 0.009,
+     "hand_ceil8": [
+      0.328,
+      0.267
+     ],
+     "learned_ceil8": [
+      0.492,
+      0.44
+     ]
+    },
+    "dceil16": {
+     "foundry_04470": {
+      "A": [
+       0.093,
+       0.097
+      ],
+      "B": [
+       0.072,
+       0.181
+      ],
+      "late": [
+       0.094,
+       0.068
+      ]
+     },
+     "foundry_07567": {
+      "A": [
+       0.049,
+       0.063
+      ],
+      "B": [
+       0.017,
+       -0.032
+      ],
+      "late": [
+       0.157,
+       0.174
+      ]
+     },
+     "foundry128_07567": {
+      "A": [
+       -0.001,
+       0.001
+      ]
+     },
+     "foundry_04833": {
+      "A": [
+       0.084,
+       0.069
+      ],
+      "late": [
+       0.06,
+       0.05
+      ]
+     }
+    },
+    "source": "cards/<world>__<run>.json: learned.AB / BA .learned.ceil_med - .hand.ceil_med, r2_on_hand"
+   }
   },
   {
    "id": "H2:watching_and_experiments",
-   "claim": "H2 inputs: evidence index (nats per tick about a 10%-of-prior move of the hidden part, block view), ticks to 3 nats, and the response difference of an aimed 200-nat input under a prior-sized move (in oracle variances; corrected estimator only where the run is from r6-cards-002 or the world is a foundry world).",
+   "claim": "H2 inputs: evidence index (nats per tick about a 10%-of-prior move of the hidden part, block view), ticks to 3 nats, and the response difference of an aimed 200-nat input under a prior-sized move (in oracle variances; corrected estimator only where the run is from r6-cards-002 or the world is a foundry world). Checker: for the gliders world the index is not resolved: the plug-in loss of a 10% move at 1 tick is 0.6 to 2.0 standard errors from zero in each of the seven gliders runs, and the index ranges from 0.45 to 3.6 nats per tick (ticks to 3 nats 0.8 to 6.7). For foundry worlds the index compares two given weight sets; it does not say how long it takes to find the law among 240 weights, so H2 has no usable prediction there. H2's two conditions (more than 4 ticks to 3 nats, response difference of at least one oracle variance) hold together in no designed, shortlisted or candidate world; they hold in three unselected prior draws the card calls dull (8, 16, 27).",
    "values": {
     "gliders": {
      "evidence": 3.6,
@@ -3799,7 +3993,28 @@
      "job": "r6-cards-002"
     }
    },
-   "sources": "<job>:cards/<world>__A.json:derived.grid.evidence0.1, .grid.ticks_to_3nats0.1, .grid.xresp"
+   "sources": "<job>:cards/<world>__A.json:derived.grid.evidence0.1, .grid.ticks_to_3nats0.1, .grid.xresp",
+   "checker_values": {
+    "gliders_PL0.1_h1_mean_over_se": {
+     "gliders_A": 2.0,
+     "gliders_B": 0.6,
+     "gliders_late": 0.8,
+     "gliders_n1_A": 1.0,
+     "gliders_n1_B": 1.7,
+     "gliders_n8_A": 1.2,
+     "gliders_n8_B": 0.9
+    },
+    "gliders_evidence_nats_per_tick_range": [
+     0.45,
+     3.6
+    ],
+    "worlds_meeting_both_H2_conditions_run_A": [
+     "foundry_00008",
+     "foundry_00016",
+     "foundry_00027"
+    ],
+    "source": "cards/gliders*__<run>.json: grid.pl['0.1'].pl[0], .pl_se[0], .pl_med[0], grid.v_orc_med[0]"
+   }
   },
   {
    "id": "structure",
@@ -4532,7 +4747,7 @@
   },
   {
    "id": "robust:seed",
-   "claim": "Seed robustness over 23 worlds with runs A and B (agreement within 0.05 or 25%): entries that agree in at least 90% of worlds: ['b.ceil_field_disp8', 'b.pf_disp8', 'b.quiet8', 'grid.act_ms', 'grid.ceil8', 'grid.gap8', 'grid.pf8', 'grid.pl_ratio0.03_8', 'grid.pl_ratio0.1_8', 'grid.sigma_hat', 'grid.tick_share', 'grid.w_theta8', 'l.dceil8_AB', 'pop.pf8', 's.events100', 's.half_life_ticks', 's.nb_mean', 's.v_net', 't.l1_8', 'x.bodies_to_grid8']; below 70%: ['grid.aim_ratio', 'pop.act_ms', 'pop.ceil8'].",
+   "claim": "Seed robustness over 23 worlds with runs A and B (agreement within 0.05 or 25%): entries that agree in at least 90% of worlds: ['b.ceil_field_disp8', 'b.pf_disp8', 'b.quiet8', 'grid.act_ms', 'grid.ceil8', 'grid.gap8', 'grid.pf8', 'grid.pl_ratio0.03_8', 'grid.pl_ratio0.1_8', 'grid.sigma_hat', 'grid.tick_share', 'grid.w_theta8', 'l.dceil8_AB', 'pop.pf8', 's.events100', 's.half_life_ticks', 's.nb_mean', 's.v_net', 't.l1_8', 'x.bodies_to_grid8']; below 70%: ['grid.aim_ratio', 'pop.act_ms', 'pop.ceil8']. Checker: the two neighbour directions of the hidden part come from a fixed seed (adapters._box_neighbour, foundry nb_seed) and are the same in runs A, B and late, so the agreement of w_theta, the plug-in losses and sigma_hat between seeds does not include the choice of directions: in the box worlds the hidden part's weight rests on two prior draws. Ten of the 23 worlds are controls whose block entries sit near 0 or 1; over the 13 others the block ceiling and block sigma_hat agree in 13, the population ceiling in 5 and the population sigma_hat in 9.",
    "values": {
     "worlds": [
      "gliders",
@@ -4626,7 +4841,17 @@
      ]
     }
    },
-   "sources": "results/robustness.json:<world>.seed, .seed_gates (from runs A and B of each world)"
+   "sources": "results/robustness.json:<world>.seed, .seed_gates (from runs A and B of each world)",
+   "checker_values": {
+    "non_control_worlds": 13,
+    "agree": {
+     "grid.ceil8": 13,
+     "grid.sigma_hat": 13,
+     "pop.ceil8": 5,
+     "pop.sigma_hat": 9
+    },
+    "source": "cards of runs A and B (checker's code, the declared tolerance)"
+   }
   },
   {
    "id": "robust:size",
@@ -5554,7 +5779,7 @@
   },
   {
    "id": "H1:gliders_cells",
-   "claim": "H1 on the six gliders cells whose science share round 5 measured: Spearman rank correlation of sigma_hat with the measured share 0.83; sigma_hat >= the measured share in 6 of 6 cells (it is an upper screen).",
+   "claim": "H1 on the six gliders cells whose science share round 5 measured: Spearman rank correlation of sigma_hat (mean of runs A and B) with the share at the ladder's middle budget 0.83; sigma_hat >= the measured share in 6 of 6 cells (it is an upper screen), by a factor of 1.0 to 12.4. Checker: not robust to the choices made. With one run per world the correlation is 0.26 to 0.94 over the eight combinations (run A alone 0.71, run B alone 0.43); against the shares at the ladder's last budget it is 0.66 (A 0.60, B 0.14). In run B alone sigma_hat is below the measured share in one cell (n1|pop: 0.067 against 0.081). Three of the six cells are population cells, the level whose entries do not repeat between seeds. All six measured shares are below the 0.15 bar, so the screen has not been tested on a cell that passes it.",
    "values": {
     "cells": [
      "n1|block",
@@ -5611,11 +5836,76 @@
      ]
     },
     "sigma_round5": "round5/ladder/results/summary.json:headline.acceptance.sigma_at_mid_budget"
+   },
+   "checker_values": {
+    "cells": [
+     "n1|block",
+     "n1|pop",
+     "n4|block",
+     "n4|pop",
+     "n8|block",
+     "n8|pop"
+    ],
+    "sigma_hat_run_A": [
+     0.0611,
+     0.0981,
+     0.1134,
+     0.1586,
+     0.0673,
+     0.171
+    ],
+    "sigma_hat_run_B": [
+     0.07,
+     0.0666,
+     0.0943,
+     0.2647,
+     0.0851,
+     0.1117
+    ],
+    "sigma_round5_last_budget": [
+     0.0053,
+     0.0759,
+     0.0175,
+     0.0497,
+     0.0126,
+     0.0408
+    ],
+    "spearman": {
+     "mid_budget": {
+      "mean_AB": 0.829,
+      "A": 0.714,
+      "B": 0.429,
+      "one_run_per_world_min_max": [
+       0.257,
+       0.943
+      ]
+     },
+     "last_budget": {
+      "mean_AB": 0.657,
+      "A": 0.6,
+      "B": 0.143
+     }
+    },
+    "ratio_sigma_hat_over_measured_mean_AB": [
+     12.4,
+     1.0,
+     5.9,
+     1.9,
+     6.0,
+     3.5
+    ],
+    "cells_with_sigma_hat_ge_measured": {
+     "mean_AB": 6,
+     "A": 6,
+     "B": 5
+    },
+    "round5_se_over_worlds_of_largest_share": 0.0345,
+    "source": "cards as in sources; round5/ladder/results/summary.json:headline.acceptance.sigma_at_mid_budget, sigma_at_last_budget, largest_sigma"
    }
   },
   {
    "id": "clock:membrane",
-   "claim": "membrane on a clock of 1 world tick against 4: verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'.",
+   "claim": "membrane on a clock of 1 world tick against 4: verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'. Checker: the change is the horizon in world time, not the clock. At the same horizon (32 native ticks = 8 slow ticks) the two cards agree: c 0.83 against 0.84, hidden-part weight 0.52 against 0.58, min(w_theta, 1 - c) 0.17 against 0.16 (run A; the same in B and late). The values below compare 8 card ticks on each clock, that is 8 against 32 world ticks; sigma_hat averages 4, 8 and 16 card ticks, so a slower clock only moves that window to longer horizons.",
    "values": {
     "grid.pf8": [
      0.999,
@@ -5747,11 +6037,68 @@
      "r6-cards-002:cards/membrane__A.json:derived.k.const32",
      "r6-cards-002:cards/membrane_s4__A.json:derived.k.const32"
     ]
+   },
+   "checker_values": {
+    "matched_horizon_native_32_vs_slow_8": {
+     "A": {
+      "ceil": [
+       0.827,
+       0.837
+      ],
+      "w_theta": [
+       0.521,
+       0.582
+      ],
+      "min_term": [
+       0.173,
+       0.163
+      ]
+     },
+     "B": {
+      "ceil": [
+       0.817,
+       0.833
+      ],
+      "w_theta": [
+       0.533,
+       0.54
+      ],
+      "min_term": [
+       0.183,
+       0.167
+      ]
+     },
+     "late": {
+      "ceil": [
+       0.805,
+       0.819
+      ],
+      "w_theta": [
+       0.653,
+       0.675
+      ],
+      "min_term": [
+       0.195,
+       0.181
+      ]
+     }
+    },
+    "matched_horizon_native_16_vs_slow_4_run_A": {
+     "ceil": [
+      0.968,
+      0.973
+     ],
+     "w_theta": [
+      0.086,
+      0.09
+     ]
+    },
+    "source": "cards/membrane__<run>.json and cards/membrane_s4__<run>.json: grid v_*_med and pl['1.0'].pl_med at the horizons named"
    }
   },
   {
    "id": "clock:vortex64",
-   "claim": "vortex64 on a clock of 1 world tick against 4: verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'.",
+   "claim": "vortex64 on a clock of 1 world tick against 4: verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'. Checker: at equal horizons in world time the native clock is the more open one: min(w_theta, 1 - c) 0.18 and 0.32 at 16 and 32 native ticks against 0.09 and 0.24 at 4 and 8 slow ticks (run A). The slow card's larger sigma_hat comes from its longer horizons (up to 64 world ticks), where PF(8) is 0.42.",
    "values": {
     "grid.pf8": [
      0.93,
@@ -5883,6 +6230,21 @@
      "r6-cards-002:cards/vortex64__A.json:derived.k.const32",
      "r6-cards-002:cards/vortex64_s4__A.json:derived.k.const32"
     ]
+   },
+   "checker_values": {
+    "min_term_native_16_32": [
+     0.177,
+     0.315
+    ],
+    "min_term_slow_4_8": [
+     0.085,
+     0.237
+    ],
+    "ceil_native_32_vs_slow_8": [
+     0.247,
+     0.238
+    ],
+    "source": "cards/vortex64__A.json (r6-cards-002) and cards/vortex64_s4__A.json"
    }
   },
   {
@@ -6472,5 +6834,98 @@
  "check_cardlib": {
   "passed": true,
   "source": "results/check_cardlib.json"
+ },
+ "checker": {
+  "who": "independent checker of round-6 study cards (worktree wt-cardschk), 11 Nov 2026; CPU only, about 2 CPU-minutes, no GPU job",
+  "inputs": "origin/gpu-jobs:jobs/r6-cards-001 and -002 (status.json, request.json, review.md, logs, out/job_state.json, out/progress.txt, the 140 files out/cards/*.json, out/series/*.npz); code read: cardlib.py, gates.py, adapters.py, make_worlds.py, check_cardlib.py (run: passes), HYPOTHESES.md, DEVIATIONS.md, README.md; git history of the study folder; round5/foundry/criteria.py and results/summary.json (checker block), round5/ladder/results/summary.json",
+  "verdict": "The numbers are right: every headline value was reproduced from the raw per-horizon variances in the saved cards with the checker's own code (not gates.py), and the job records, the declaration order and the pilot markers are in order. Several conclusions say more than the numbers do. (1) For foundry worlds the block-level sigma_hat is the closure gap of the linear ridge and nothing else, the quantity round 5 used to choose the shortlist; the card re-measures that choice, it does not single the seven out independently. (2) The clock is not a design dial: at equal horizons in world time the two membrane cards agree; the dial is the horizon. (3) The rank correlation of 0.83 is one of several defensible values (0.14 to 0.94). (4) The negative controls test little: seven of twelve can hardly fail at the block level, and the free bodies are dull only through the box declared for them. Ten claims are reworded (edits); no number of the study was changed.",
+  "verified": {
+   "job_records": "r6-cards-001: lambdalabs A100 40GB (sysinfo: NVIDIA A100-SXM4-40GB), exit 0, 125 of 125 runs, billed 1.2495 USD at 1.99 USD/h (0.628 h; pod 11:43:57 to 12:24:51 UTC), cap 11.40. r6-cards-002: the same card, exit 0, 15 of 15 runs, billed 1.4331 USD (0.720 h; 12:28:06 to 13:15:24 UTC), cap 4.30. Total 2.6826 USD, 1.348 pod-hours. Both reviews: fine to run, no blocker, no major.",
+   "declared_before_results": "HYPOTHESES.md is byte-identical at the first request (d27c3c6ba, 11:40 UTC), at the job's ref (c6ea69424) and now. The thresholds TH in gates.py are unchanged; gates.py changed only as DEVIATIONS.md says (per-channel tick share, the non-finite verdict, one descriptor without a gate). The slow-clock worlds were committed at 12:00:50 UTC, before the first public heartbeat that showed the membrane card (12:02:47).",
+   "recomputed_from_gpu_outputs": "140 card files, 77 worlds. Block sigma_hat: gliders 0.094 to 0.113, vortices 0.073 to 0.090, membrane 0.012 to 0.014, shortlist 0.283 to 0.505 over 21 runs, membrane slow clock 0.244 to 0.249, vortices slow clock 0.276 and 0.203. Verdicts by the declared rule: 31 of 31 runs of the 12 negative controls dull. At or above the bar at the block level with PF(8) >= 0.3: 2 of 7 designed, 7 of 7 shortlist, 2 of 16 candidates, 0 of 24 prior, 0 of 14 controls. Single-body ceilings: gliders 0.96 to 0.98, free bodies 0.96 to 0.98, 1672 0.94 to 0.95, 4470 0.28 to 0.43, membrane 0.66 to 0.74. Vortices' population tick share 0.219 and 0.258 (kind share 0.582 and 0.550; late 0.042). Runaway members: 4470 run B 3 of 16, 262 late 4 of 16 (all four among the fit members). Late equal to early: 6 of 7, 7 of 16, 3 of 3, 3 of 9 (19 of 35). 3% and 10% weight neighbours: 6.4 and 81.9 oracle variances at 8 ticks (median of seven). Actions gate: 76 of 77. Seed agreement over 23 worlds: population ceiling 13 (57%); size agreement of the population ceiling 2 of 8. Cost per million member-ticks: foundry 0.026, membrane 0.078, gliders 0.80, vortices 2.64 USD. CPU against GPU for draw 4470: all entries within tolerance.",
+   "secrets": "none committed: every hidden part is a public function of public seeds and every card carries PILOT_NEVER_REUSE_AS_EXAM"
+  },
+  "findings": {
+   "F1_what_sigma_hat_is": "sigma_hat = min(w_theta, 1 - c) is two different quantities under one name. In all 62 foundry-family worlds the ridge term binds, so sigma_hat is the linear predictor's closure gap; round 5's checker (F4) already showed that in five of the seven worlds the true simulator predicts 92% to 99% of the variance at 32 ticks, so a learned predictor may close much of that gap. In gliders and vortices the hidden-part term binds, and it is set by the width of the declared prior (the plug-in loss grows about as the square of the move: 0.055 at 10%, 4.6 at 100% of the gliders prior). The prior's width is a design dial the report does not name.",
+   "F2_selection": "The shortlist was chosen in round 5 by the same ridge's ceilings and by being a candidate again at ticks 2000 to 2240 (round5/foundry/analyze2.py, shortlist rule); the card's late run covers ticks 2000 to 2400. '0.28 to 0.51 in all 21 runs' and 'late equals early in 6 of 7' are therefore replications on new seeds of what the worlds were selected for. What is new: the values hold across two seeds, a late window and 128 px.",
+   "F3_controls": "See the controls claim. A control that would test the foundry verdict is missing: a world the linear ridge cannot close but a small learned predictor can. The free bodies come closest and pass the ridge term like a shortlisted world.",
+   "F4_horizon_not_clock": "See the two clock claims. Every block-level verdict of a designed world depends on the fixed window of 4, 8, 16 card ticks; '2% to 6% of the predictable variance' is the 8-tick value (w_theta at 16 ticks: 9% to 27%; at 32 ticks: 32% to 55%).",
+   "F5_H1": "See the H1 claim. H1 can be refuted only where sigma_hat is low; a world it recommends that turns out easy does not refute it.",
+   "F6_like_with_like": "The README sets the vortices aside for 'a clock at level 2' and calls foundry 4186 stationary. The gate behind both words reads the block view; at the population level 4186 has the same early-window clock (0.18 to 0.19 against 0.22 to 0.26).",
+   "F7_redundant_or_unstable_entries": "Redundant: within the foundry family the hidden-part term never decides (w_theta at 8 ticks is 0.25 or more in all 23 shortlisted and candidate worlds), so sigma_hat duplicates the block ceiling; the actions gate (76 of 77) and the learned gate (0 of 77 in run A); the three body-law ceilings (in 21 of 52 worlds with bodies the ridge is no better than constant velocity, so the 'single-body law' is inertia); the kind-share law. Unstable: every population entry (sigma_hat of 4470: 0.89, 0.21, 0.97 in A, B, late), the declared verdict where it rests on them, the body-law ceiling of 6845 (0.09 to 0.46) and 7567 (0.49 to 0.78), the interaction gate of the frozen controls (it flips between runs in all four), the gliders evidence index. Stable and informative: the block ceiling by horizon, PF, body counts and half-lives, the member share, the per-channel tick share.",
+   "F8_objects": "The card's object entries do not tell the gliders world from the non-interacting control: quiet-step ceilings 0.96 to 0.98 in both, and the tracker reports 19 fusions and fissions per 100 ticks for bodies that never interact (47 for gliders). The quiet-step rule was written after that control looked interacting on the CPU (HYPOTHESES.md says so).",
+   "F9_sample_sizes": "Per run 32 test states from 8 members at 4 snapshot ticks; the hidden part's weight from 2 directions x 2 replicas, the directions fixed across runs; rare regimes from 16 members (4470: 3 of 32 early members, 95% interval about 2% to 25%)."
+  },
+  "consequences_for_the_conclusions": [
+   "'The card singles out foundry 4186 and 4470': it confirms that round 5's shortlist keeps its linear closure gap on new seeds. Whether that gap survives a learned predictor is the open question, and the exams proposed as next step 2 (data-only against true law) are the right test of it.",
+   "'Why round 5's exams were easy' stands at the horizons round 5 used (1 to 16 ticks) and for the priors it used; it is a statement about prior width and horizon, not about the worlds' dynamics.",
+   "'The clock is a design dial' should read 'the horizon in world time is a design dial'. Membrane on the slow clock is a membrane exam at 160 to 640 time units, where round 5 (bias2) found learned nonlinear closure 0.14 (320 time units) to 0.25 (640) above a hand block mean, and its 0.24 is the ridge term alone (0.03, 0.16, 0.54 at 4, 8, 16 ticks): the block-level value most likely to shrink.",
+   "The card's own test passed, but it could hardly have failed at the block level; treat the card as untested against a hard negative.",
+   "H2, as the card reads it, predicts that experiments pay in none of the designed, shortlisted or candidate worlds. If the Lab is to matter, that needs a different world or item design, not a different pick from this list."
+  ],
+  "edits": [
+   {
+    "claim": "controls",
+    "before": "The card's own test: 31 of 31 runs of the 12 negative controls come out dull (pure-noise field, uniform and frozen foundry draws, true diffusion, non-interacting bodies; the two no-affinity worlds that keep the mobility gain are listed but not counted).",
+    "after": "The card's own test: 31 of 31 runs of the 12 negative controls come out dull (pure-noise field, uniform and frozen foundry draws, true diffusion, non-interacting bodies; the two no-affinity worlds that keep the mobility gain are listed but not counted). Checker: seven of the twelve can hardly fail at the block level. The noise field has nothing predictable; the two true diffusion worlds have a plug-in loss of exactly 0; round 5 typed the four frozen draws by a persistence error below 0.02 at 16 ticks, the cheap family includes persistence and the closure-gap bar is 0.05 (their gap at 8 ticks is 0.0007 at most over the 12 runs). The four uniform draws have a gap of 0.010 at most. The frozen draws can fail only at the population level, where one late run stays under both bars by little (ctl_frozen_00011: sigma_hat 0.141 against 0.15, closure gap 0.045 against 0.05). The free bodies are dull only through the +-20% box declared for their hidden part (weight 0.003 at 8 ticks): by the ridge alone their block view is as open as three shortlisted worlds (mean of 1 - c over 4, 8, 16 ticks 0.28, against 0.28 to 0.31 for foundry 1672, 3078 and 6845).",
+    "why": "The test is weaker than '31 of 31' reads; the margin and what makes each control dull were recomputed from the cards."
+   },
+   {
+    "claim": "block_level",
+    "before": "sigma_hat at the block level alone (robust between seeds and sizes), worlds at or above the 0.15 bar in run A: designed 2 of 7; shortlist 7 of 7; candidates 2 of 16; prior 0 of 24; controls 0 of 14.",
+    "after": "sigma_hat at the block level alone, worlds with PF(8) >= 0.3 at or above the 0.15 bar in run A: designed 2 of 7; shortlist 7 of 7; candidates 2 of 16; prior 0 of 24; controls 0 of 14. Checker: (a) robust between seeds; between sizes in 7 of 8 worlds: the fed vortices give 0.07 to 0.09 at 64 px and 0.16 at 128 px with the same 8-px blocks (0.15 with 16-px blocks), across the bar. (b) The PF(8) condition decides for the noise field (block sigma_hat 1.0 in per_world below) and for prior draw 27 (0.23 with PF(8) 0.12). (c) In all 62 foundry-family worlds the hidden-part term never binds at 4, 8 or 16 ticks (in the seven shortlisted worlds an independent weight draw costs 0.47 to 1.7 of the predictable variance), so there sigma_hat is the mean of 1 - c of the linear ridge. Round 5 chose the shortlist by that ridge's ceilings at 1 to 8 ticks and by a late-time gate (round5/foundry summary, checker F1, F3, F4), so 7 of 7 against 2 of 16 re-measures that selection on new seeds; it is not independent evidence that the card singles these worlds out. (d) The value depends on the horizons averaged: min(w_theta, 1 - c) for gliders is 0.06 at 8 ticks, 0.27 at 16 and 0.55 at 32 (vortices 0.06, 0.18, 0.32; membrane 0.005, 0.03, 0.17).",
+    "why": "'Robust between sizes' is wrong for the vortices; the counts need the PF(8) condition; for foundry worlds the screen is the linear ridge's closure gap, on which round 5 selected the shortlist."
+   },
+   {
+    "claim": "H1:gliders_cells",
+    "before": "H1 on the six gliders cells whose science share round 5 measured: Spearman rank correlation of sigma_hat with the measured share 0.83; sigma_hat >= the measured share in 6 of 6 cells (it is an upper screen).",
+    "after": "H1 on the six gliders cells whose science share round 5 measured: Spearman rank correlation of sigma_hat (mean of runs A and B) with the share at the ladder's middle budget 0.83; sigma_hat >= the measured share in 6 of 6 cells (it is an upper screen), by a factor of 1.0 to 12.4. Checker: not robust to the choices made. With one run per world the correlation is 0.26 to 0.94 over the eight combinations (run A alone 0.71, run B alone 0.43); against the shares at the ladder's last budget it is 0.66 (A 0.60, B 0.14). In run B alone sigma_hat is below the measured share in one cell (n1|pop: 0.067 against 0.081). Three of the six cells are population cells, the level whose entries do not repeat between seeds. All six measured shares are below the 0.15 bar, so the screen has not been tested on a cell that passes it.",
+    "why": "0.83 holds for one of several defensible choices and sits exactly on the one-sided 5% value for six points; no error bar was given."
+   },
+   {
+    "claim": "H7:actions_gate",
+    "before": "H7: the declared actions gate passes in 76 of 77 worlds (run A), including 13 of 14 controls: it does not discriminate. The shift of an aimed 200-nat input in units of the cheap family's error at 4 ticks (added after the first card) does.",
+    "after": "H7: the declared actions gate passes in 76 of 77 worlds (run A), including 13 of 14 controls: it does not discriminate. The shift of an aimed 200-nat input in units of the cheap family's error at 4 ticks (added after the first card) does not either (corrected by the checker; the sentence said it does): every control but the noise field scores 0.55 to 13, above the seven shortlisted worlds (0.001 to 0.47) and the gliders world (0.13 to 0.16).",
+    "why": "The values in this claim contradict 'does'; the README already says neither unit separates controls from the other worlds."
+   },
+   {
+    "claim": "clock:membrane",
+    "before": "membrane on a clock of 1 world tick against 4: verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'.",
+    "after": "membrane on a clock of 1 world tick against 4: verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'. Checker: the change is the horizon in world time, not the clock. At the same horizon (32 native ticks = 8 slow ticks) the two cards agree: c 0.83 against 0.84, hidden-part weight 0.52 against 0.58, min(w_theta, 1 - c) 0.17 against 0.16 (run A; the same in B and late). The values below compare 8 card ticks on each clock, that is 8 against 32 world ticks; sigma_hat averages 4, 8 and 16 card ticks, so a slower clock only moves that window to longer horizons.",
+    "why": "The comparison was not like with like (different horizons in world time)."
+   },
+   {
+    "claim": "clock:vortex64",
+    "before": "vortex64 on a clock of 1 world tick against 4: verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'.",
+    "after": "vortex64 on a clock of 1 world tick against 4: verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'. Checker: at equal horizons in world time the native clock is the more open one: min(w_theta, 1 - c) 0.18 and 0.32 at 16 and 32 native ticks against 0.09 and 0.24 at 4 and 8 slow ticks (run A). The slow card's larger sigma_hat comes from its longer horizons (up to 64 world ticks), where PF(8) is 0.42.",
+    "why": "The comparison was not like with like (different horizons in world time)."
+   },
+   {
+    "claim": "H8:learned_variable",
+    "before": "H8: the learned_differs gate (slow features at least 0.05 more closed than the hand block view at 8 ticks in both orders) passes in 0 of 77 worlds in run A.",
+    "after": "H8: the learned_differs gate (slow features at least 0.05 more closed than the hand block view at 8 ticks in both orders) passes in 0 of 77 worlds in run A. Checker: over all 140 runs it passes once, in the late window of vortex64 (+0.16 and +0.17 at 8 ticks, the hand view's ceiling having dropped to 0.27 to 0.33). At 16 ticks, a horizon chosen after the results, the gain of foundry 4470 repeats in runs A, B and late (+0.07 to +0.18); that of foundry 7567 does not (A +0.05 / +0.06, B +0.02 / -0.03, late +0.16 / +0.17, 128 px 0.00), and candidate 4833 gains as much as 7567 (+0.08 / +0.07 in A, +0.06 / +0.05 late).",
+    "why": "The gate was reported for run A only; the 16-tick gains quoted in the README are stable for one of the two worlds named."
+   },
+   {
+    "claim": "H2:watching_and_experiments",
+    "before": "H2 inputs: evidence index (nats per tick about a 10%-of-prior move of the hidden part, block view), ticks to 3 nats, and the response difference of an aimed 200-nat input under a prior-sized move (in oracle variances; corrected estimator only where the run is from r6-cards-002 or the world is a foundry world).",
+    "after": "H2 inputs: evidence index (nats per tick about a 10%-of-prior move of the hidden part, block view), ticks to 3 nats, and the response difference of an aimed 200-nat input under a prior-sized move (in oracle variances; corrected estimator only where the run is from r6-cards-002 or the world is a foundry world). Checker: for the gliders world the index is not resolved: the plug-in loss of a 10% move at 1 tick is 0.6 to 2.0 standard errors from zero in each of the seven gliders runs, and the index ranges from 0.45 to 3.6 nats per tick (ticks to 3 nats 0.8 to 6.7). For foundry worlds the index compares two given weight sets; it does not say how long it takes to find the law among 240 weights, so H2 has no usable prediction there. H2's two conditions (more than 4 ticks to 3 nats, response difference of at least one oracle variance) hold together in no designed, shortlisted or candidate world; they hold in three unselected prior draws the card calls dull (8, 16, 27).",
+    "why": "The evidence index was quoted without its resolution; the consequence of H2 for the whole set was not stated."
+   },
+   {
+    "claim": "robust:seed",
+    "before": "Seed robustness over 23 worlds with runs A and B (agreement within 0.05 or 25%): entries that agree in at least 90% of worlds: ['b.ceil_field_disp8', 'b.pf_disp8', 'b.quiet8', 'grid.act_ms', 'grid.ceil8', 'grid.gap8', 'grid.pf8', 'grid.pl_ratio0.03_8', 'grid.pl_ratio0.1_8', 'grid.sigma_hat', 'grid.tick_share', 'grid.w_theta8', 'l.dceil8_AB', 'pop.pf8', 's.events100', 's.half_life_ticks', 's.nb_mean', 's.v_net', 't.l1_8', 'x.bodies_to_grid8']; below 70%: ['grid.aim_ratio', 'pop.act_ms', 'pop.ceil8'].",
+    "after": "Seed robustness over 23 worlds with runs A and B (agreement within 0.05 or 25%): entries that agree in at least 90% of worlds: ['b.ceil_field_disp8', 'b.pf_disp8', 'b.quiet8', 'grid.act_ms', 'grid.ceil8', 'grid.gap8', 'grid.pf8', 'grid.pl_ratio0.03_8', 'grid.pl_ratio0.1_8', 'grid.sigma_hat', 'grid.tick_share', 'grid.w_theta8', 'l.dceil8_AB', 'pop.pf8', 's.events100', 's.half_life_ticks', 's.nb_mean', 's.v_net', 't.l1_8', 'x.bodies_to_grid8']; below 70%: ['grid.aim_ratio', 'pop.act_ms', 'pop.ceil8']. Checker: the two neighbour directions of the hidden part come from a fixed seed (adapters._box_neighbour, foundry nb_seed) and are the same in runs A, B and late, so the agreement of w_theta, the plug-in losses and sigma_hat between seeds does not include the choice of directions: in the box worlds the hidden part's weight rests on two prior draws. Ten of the 23 worlds are controls whose block entries sit near 0 or 1; over the 13 others the block ceiling and block sigma_hat agree in 13, the population ceiling in 5 and the population sigma_hat in 9.",
+    "why": "Scope of the seed check."
+   },
+   {
+    "claim": "H6:vortex_clock",
+    "before": "H6 (a clock takes the population level of the fed vortices): tick share of the population level, mean over components and its largest component (the kind share), by world and run.",
+    "after": "H6 (a clock takes the population level of the fed vortices): tick share of the population level, mean over components and its largest component (the kind share), by world and run. Checker: the share belongs to the early window in every case (late window 0.04; 0.10 on the slow clock), and foundry 4186 and 3078 show the same at the population level (mean over components 0.18 and 0.19, 0.09 and 0.24 in runs A and B; about 0 late). The declared stationarity gate reads the block view only: the vortices fail it through the member share (0.34, 0.41, 0.84 late), not through this clock, and 4186 passes it with the same early clock at its population level.",
+    "why": "The README's reason for setting the vortices aside (a clock at level 2) applies equally to foundry 4186 in the early window."
+   }
+  ],
+  "not_edited": "README.md, the cards and the final report are the study's own and are left as written. Wordings there that these edits contradict: 'loose by a factor of 2 to 6' (six cells: 1.0 to 12.4); 'the learned-variable gate passes nowhere' (vortex64 late); 'slow features beat the hand view only in 4470 and 7567' (7567 not in run B or at 128 px; candidate 4833 as well); 'the vortices fail the rule on stationarity (a clock at level 2)' (they fail through the block member share); 'the clock is a design dial'.",
+  "note": "Recomputation: sigma_hat, the verdicts, the body-law ceilings, the late rule and the seed and size agreement were rebuilt from grid / pop.lin v_clim_med, v_orc_med, v_pred_med, v_pers_med, pl['1.0'].pl_med and the structure entries of each card, without the cards' 'derived' block. Estimator size (even against odd states) and the gliders member shares were not rechecked."
  }
 }
