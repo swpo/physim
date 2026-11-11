@@ -1,0 +1,46 @@
+{
+  "request": {
+    "cap_usd": 8.4,
+    "disk_gb": null,
+    "env": {
+      "FX_ARMS": "P,N30,N10",
+      "FX_MAX_HOURS": "3.0",
+      "FX_SIZE": "full",
+      "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_40GB",
+        "A100_80GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r6-foundryexam-002",
+    "max_hours": 3.25,
+    "notes": "Resubmission of r6-foundryexam-001 (rejected: notes above 4000 characters, $0); same code. PILOT ONLY: every hidden world is a public function of public seeds and its weights are written to $OUT; never an exam. Design, criteria and thresholds were committed before any request (round6/foundryexam/DESIGN.md; commits 82b655c98, f6cc4efb7, 787de8679). job.sh: (1) presmoke (run_fx.py --size presmoke --arms P,N30): every stage once at the full job's shapes (simulation chunk 2048 members, Lab chunk 128, 32 items x 12 futures, plug-ins 256 members, net batches 128 x 4 and 256 x 4) with 2 + 1 hidden worlds and 20-60 steps, plus shape_test(): 16 nets in lockstep on 1,536-episode data sets and 2 shared nets on a 25,600-episode data set; exit 2 on any failure, about 10-15 minutes; (2) the full pass, limited to 3.0 h minus the presmoke's time (counted from job.sh's start; 0.25 h is left for setup and collection). Full pass: gate of 416 pool worlds and 480 neighbour candidates (8 members x 332 ticks); arm P (16 hidden worlds of the screened prior, about 150-250 training worlds x 64 episodes), arms N30 and N10 (3 centres x 4 hidden neighbours, up to 32 training neighbours x 64 episodes). Per hidden world: a Lab of 512 episodes and a vw.harness.HistoryExam (32 items, 12 futures, 96 climatology runs) on the hidden vw.World, 6 plug-in simulators, a ridge, 1,536 simulated episodes at the true weights. Nets (float32, 48 channels, 3 x 3 convolutions as matmuls): per arm 6 + 2 shared nets and per hidden world 4 C + 6 D + 6 fine-tuned P0 in lockstep groups of 16 or 12, one compiled shape per kind. About 42 million member-ticks (r5-foundry-001: 74,700/s on an H100; A100 taken as 2.5 times slower: 25 minutes) and 1.5 million net-steps (r5-ladder-002: 2.3-2.8 ms each on the A100: 65 minutes); expected 1.8-2.2 h. Size guards: fx_lib.Runner refuses a chunk whose largest substep array passes 2^30 elements (1.3e8 at 2048 members); fx_net.check_elems refuses any training step, validation chunk (lax.map: one net, 128 rows x 8 draws) or sampling call above 2^30 (largest 4.9e8); every device data array is asserted below 2^31 (largest 1.6e8). Data sets are arguments of the jitted functions. Memory: about 6 GiB per simulation chunk (3 MiB per member by the review of r5-foundry-001), nets 4-6 GiB; platform allocator because simulation and training temporaries alternate on a 40 GB card. Deadlines: arms run in the order P, N30, N10 with 45 / 27 / 27% of the time left; a training group stops at its next validation after the arm's deadline, later groups are skipped and recorded; N10 goes first. One failed group or policy does not stop the rest; exit 1 if anything failed. $OUT about 15 MB, every file below 20 MB (scores per item, cell and policy; validation curves; hidden weights marked PILOT). The noise secret (os.urandom) is never written. No network or subprocess use outside setup. Cap: $2.35/h x (3.25 + 0.25) h = $8.23, rounded up plus $0.10. CPU test: job.sh with FX_SIZE=smoke from a git archive of exactly these four paths, all three arms, exit 0, failed [], skipped [] at 787de8679 (8.4 minutes); arm P again at this request's code (run_fx.py: failed [], skipped []).",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/program/round5/foundry",
+      "research/alife/vecworld/program/round5/agentenv/evaluator",
+      "research/alife/vecworld/program/round6/foundryexam"
+    ],
+    "purpose": "Round-6 study foundryexam: exam pilot where the hidden law is a network's weights (foundry transport automaton); reference policies K, O, C, P0, amortised S(N), fine-tuned P0, D(N), ridge on 16 screened-prior worlds and 2 x 12 neighbourhood worlds (eps 0.3, 0.1)",
+    "ref": "0b7e392cd5e926a1372fb67778455efc2e4bb747",
+    "ref_source": "commit holding the request",
+    "requester": "cloud study foundryexam (round 6), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round6/foundryexam && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "91b15ac163f2bf88e89487a08069e820687b9f3d",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r6-foundryexam-002.json",
+    "received_at": "2026-11-11T11:34:00Z",
+    "tip": "0b7e392cd5e926a1372fb67778455efc2e4bb747"
+  }
+}
