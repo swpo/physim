@@ -716,6 +716,28 @@
  "item_isolation": "box",
  "agent_key": "qwen/qwen3.6-35b-a3b|bash",
  "agent_box_cpu_s_unverified": 163.692,
+ "envelope_told_to_the_agent_vs_box": {
+  "task_row_resources": {
+   "cpu": 4.0,
+   "memory": 8.0
+  },
+  "task_row_timeout": {
+   "setup": 900.0,
+   "agent": 3600.0,
+   "finalize": 900.0,
+   "scoring": 7300.0
+  },
+  "note": "TASK.md states the compute envelope of the exam config (the task row's resources and the agent timeout); the box itself had the cpu and memory of `box` above when the config set them, and the agent is told nothing about max_turns or the token caps"
+ },
+ "lab_process": {
+  "pid": 20755,
+  "scrubbed_variables": [
+   "PHYSIM2_MODEL_CREDENTIALS"
+  ],
+  "announced": true,
+  "token_values_left_in_environ": false,
+  "token_like_names_left_in_os_environ": []
+ },
  "table_one_instance": {
   "what": "evaluator.grader.table on this one instance: L = mean energy score over the 64 items (sum over valid cells); vs_O = (L_K - L) / (L_K - L_O), vs_C = (L_K - L) / (L_K - L_C). AGENT = the model. Reference policies were graded with all items in one verifier box (prove.py), the model with one fresh box per item; prove.py's box check shows the two modes give identical per-item scores for the same files.",
   "policies": {
@@ -1080,10 +1102,8 @@
   "what": "the secret and the first ten characters of each hidden parameter, counted in every file of vf-eval's run folder"
  },
  "credential_like_fields_removed_from_the_raw_trace": [
-  "/traces[]/agent/config/client/api_key_var",
   "/traces[]/agent/config/client/headers/X-Prime-Team-ID",
-  "resolved_config/client/api_key_var",
   "resolved_config/client/headers/X-Prime-Team-ID"
  ],
- "extracted_unix": 1794395619.2851381
+ "extracted_unix": 1794395792.7651575
 }

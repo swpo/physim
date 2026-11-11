@@ -1,0 +1,69 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "what": "bootstrap over the 64 items of this one instance (4000 resamples, seed 0): skill on the K-to-O scale per policy, with its standard error and 5 to 95 percent range. Says nothing about other hidden worlds.",
+ "policies": {
+  "K": {
+   "skill_vs_O": 0.0,
+   "se": 0.0,
+   "p05": 0.0,
+   "p95": 0.0,
+   "L": 6.01
+  },
+  "O": {
+   "skill_vs_O": 1.0,
+   "se": 0.0,
+   "p05": 1.0,
+   "p95": 1.0,
+   "L": 3.971
+  },
+  "S": {
+   "skill_vs_O": 0.927,
+   "se": 0.008,
+   "p05": 0.912,
+   "p95": 0.939,
+   "L": 4.12
+  },
+  "D": {
+   "skill_vs_O": 0.466,
+   "se": 0.047,
+   "p05": 0.38,
+   "p95": 0.537,
+   "L": 5.06
+  },
+  "P0": {
+   "skill_vs_O": 0.817,
+   "se": 0.013,
+   "p05": 0.795,
+   "p95": 0.836,
+   "L": 4.345
+  },
+  "PM": {
+   "skill_vs_O": 0.796,
+   "se": 0.012,
+   "p05": 0.776,
+   "p95": 0.815,
+   "L": 4.387
+  },
+  "C": {
+   "skill_vs_O": 0.932,
+   "se": 0.008,
+   "p05": 0.917,
+   "p95": 0.945,
+   "L": 4.109
+  },
+  "null": {
+   "skill_vs_O": -0.04,
+   "se": 0.023,
+   "p05": -0.077,
+   "p95": -0.001,
+   "L": 6.091
+  },
+  "AGENT": {
+   "skill_vs_O": 0.0,
+   "se": 0.0,
+   "p05": 0.0,
+   "p95": 0.0,
+   "L": 6.01
+  }
+ }
+}

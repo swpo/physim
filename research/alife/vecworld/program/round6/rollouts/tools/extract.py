@@ -43,7 +43,8 @@ VFPORT = os.path.normpath(os.path.join(HERE, "..", "..", "vfport"))
 MARK = "PILOT_NEVER_REUSE_AS_EXAM"
 CRED_KEY = re.compile(r"(?i)(api[-_]?key|authorization|bearer|passw(or)?d|cookie|credential|private[-_]?key|"
                       r"(access|refresh|auth|id|session)[-_]?token|secret|x-prime-team-id|team[-_]?id|user[-_]?id|user[-_]?name)")
-CRED_KEY_KEEP = {"secret_commitment"}                         # a public hash of the instance's secret, saved in every task row
+CRED_KEY_KEEP = {"secret_commitment",                        # a public hash of the instance's secret, saved in every task row
+                 "api_key_var"}                              # the NAME of the variable that holds the key, never its value
 REMOVED = "[removed: credential-like field]"
 
 
@@ -432,6 +433,13 @@ def main():
                                         "verifier_wall_s", "L", "L_K", "L_O")},
         "network_restricted": info.get("network_restricted"), "single_use": info.get("single_use"), "item_isolation": info.get("item_isolation"),
         "agent_key": info.get("agent_key"), "agent_box_cpu_s_unverified": info.get("agent_box_cpu_s_unverified"),
+        "envelope_told_to_the_agent_vs_box": {
+            "task_row_resources": ((tr.get("task") or {}).get("data") or {}).get("resources"),
+            "task_row_timeout": ((tr.get("task") or {}).get("data") or {}).get("timeout"),
+            "note": "TASK.md states the compute envelope of the exam config (the task row's resources and the agent timeout); the box "
+                    "itself had the cpu and memory of `box` above when the config set them, and the agent is told nothing about "
+                    "max_turns or the token caps"},
+        "lab_process": (lab.get("process") or None) if lab.get("found") else None,
         "table_one_instance": None if table is None else {
             "what": "evaluator.grader.table on this one instance: L = mean energy score over the 64 items (sum over valid cells); "
                     "vs_O = (L_K - L) / (L_K - L_O), vs_C = (L_K - L) / (L_K - L_C). AGENT = the model. Reference policies were graded "

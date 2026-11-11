@@ -70,10 +70,32 @@ State (newest last; times UTC as this container's clock shows them):
   Watched by `tools/watch.py` (docker ps by the run label, the laboratory's counters, a copy of submission/
   from the agent's box and the verifier's box; no exec in a box, no signal, no reading of the model's text).
 
-Next: when the log ends with `EXIT`: `tools/run_report.py`, `tools/extract.py` into `qwen_ring_001/`, the ledger,
-the key scan, the commit.
+- 11:12 ROLLOUT qwen_ring_001 ENDED: `EXIT 0` after 11 min 32 s. Complete, graded, not cut. 40 model calls, stop
+  condition `max_turns`; `submission/` empty (the model wrote its predictor to /workspace/predict.py at turn 39
+  and was cut at turn 40 while asking for a validation); final collection: no predict.py; all 64 items scored
+  as K; reward 0.000. Laboratory: 18 episodes, 306 of 400 ticks, 0 nats, 39 requests, 1 rejected, 1 validation,
+  0 submissions, 0 infrastructure errors. Billed: 758,132 input tokens (656,608 of them cache reads) and 18,888
+  output tokens: $0.1025 (`LEDGER.md`). No credential and no hidden value in the run folder.
+- 11:25 Extracted into `qwen_ring_001/` (start with `RESULT.md`): result, per-item scores next to the reference
+  policies, the laboratory's log, the transcript (Markdown and raw record with the team header removed), the
+  watcher's timeline, the port's own report. `tools/scan_key.py` on the whole folder: 0 credentials, 0 account
+  identifiers.
+- DECISION: no second rollout. Nothing that was reached failed; the model did badly inside the caps, which is a
+  result. What a model has NOT yet exercised: an accepted submit and its freeze, the stop hook `frozen`, a
+  model-written predictor in the verifier box and in the 64 item boxes. Whoever runs the next rollout should
+  read `qwen_ring_001/RESULT.md`, "Mechanics problems found": the 40-turn cap is not told to the agent (it was
+  cut at 18 % of its hour), and the token caps do not bound the bill (only turns x context does).
 
-IF YOU ARE A RESTARTED RUNNER AND THIS IS THE LAST ENTRY: the rollout was cut by the restart. Record it as cut in
-`LEDGER.md` (spend unknown, at most the bound of $1.22; the trace was in the scratch folder and is lost), do not
-reuse instance pilot-qwen-ring-001-r2-w0, and say so in the report. Whether a second rollout on a new instance
-is run is the coordinator's call (a cut by a restart is not a mechanics failure of the exam).
+DONE for this role. Left on the machine: the Docker daemon (running, not to be stopped), the images
+physim2-ring:1, localhost/verifiers-network:1, python:3.12-slim and the new physim2-ring-ca:1 (needed by any
+model rollout on this machine; rebuild with `docker/Dockerfile.ring-ca` after a restart that loses it), no
+container, no process. The runner's scratch folder `rollq/` (store with the hidden side of the pilot instance,
+the unredacted run folder, the watcher's copies) stays until the container restarts; nothing in it is needed.
+
+For the next runner on this machine (the same wrappers work for any model):
+1. `tools/here.py --run-id LABEL prove.py ...` for the reference table of a NEW instance (15 minutes for six
+   policies and the box check), then `... vfrun.py --config CONFIG --dry-run`, then `tools/ping_model.py MODEL OUT`.
+2. The rollout: `tools/here.py --run-id LABEL vfrun.py --config CONFIG --run-name NAME --out-dir DIR --store STORE
+   --disk-floor-gib 1.5 --model-credentials prime`, detached, with `tools/watch.py` beside it.
+3. Afterwards `tools/here.py ... run_report.py`, `tools/extract.py`, `tools/scan_key.py` (and
+   `tools/redact_values.py` if it reports account identifiers), then the ledger and the commit.
