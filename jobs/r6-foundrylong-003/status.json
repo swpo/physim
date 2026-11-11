@@ -20,14 +20,14 @@
   },
   "cap_usd": 8.1,
   "cost": {
-    "billed_usd": 0.0,
-    "conservative_usd": 0.0
+    "billed_usd": null,
+    "conservative_usd": 0.1833
   },
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
-  "hard_deadline": null,
-  "hard_deadline_epoch": null,
+  "hard_deadline": "2026-11-12T01:45:53Z",
+  "hard_deadline_epoch": 1794447953.9942956,
   "history": [
     {
       "at": "2026-11-11T21:37:23Z",
@@ -43,11 +43,16 @@
       "at": "2026-11-11T21:41:39Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-11T21:47:11Z",
+      "message": "job started on the pod",
+      "state": "running"
     }
   ],
   "job_id": "r6-foundrylong-003",
   "max_estimate_usd": 6.77,
-  "message": "renting a pod",
+  "message": "job started on the pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -125,7 +130,32 @@
     "planned_at": "2026-11-11T21:37:43Z",
     "window_hours": 3.4
   },
-  "pods": [],
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r6-foundrylong-003-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": "2026-11-11T21:41:57Z",
+      "data_center": "asia-south-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r6-foundrylong-003-a1",
+      "note": null,
+      "pod_id": "ac65b12b8d1040dc91d88d259f8edc00",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-11T21:46:25Z",
+      "requested_at": "2026-11-11T21:41:40Z",
+      "spot": false,
+      "state": "ready",
+      "terminated_at": null
+    }
+  ],
   "pods_terminated": null,
   "review": {
     "at": "2026-11-11T21:38:19Z",
@@ -133,7 +163,9 @@
     "sha256": "3231d8e71ea082bb6a1edcd51f27b92a1160b591006c991daf1947cf45d649ce",
     "summary": "delta against 002: the guard blocker is fixed (steady-state timing, steps set from speed); 2 of 002's minors may still apply; fine to run"
   },
+  "run_deadline": "2026-11-12T00:56:11Z",
   "run_started_epoch": 1794433299.031221,
-  "state": "provisioning",
-  "updated_at": "2026-11-11T21:41:39Z"
+  "started_at": "2026-11-11T21:47:11Z",
+  "state": "running",
+  "updated_at": "2026-11-11T21:47:11Z"
 }
