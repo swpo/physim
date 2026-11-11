@@ -6,6 +6,7 @@
     python -B s0.py ranges              apply DECLARED.md 2.6 to the scans: ranges.json + ranges.sha256
     python -B s0.py gate SEED ARM       one seed and arm (main | control) of the gate
     python -B s0.py analyse             pooled tables and the verdict: analysis.json
+    python -B s0.py align               the gate's code path on the designer's pilot seed 5 against his file (not fatal)
 
 Sizes come from S0_SIZE (full | tiny); outputs go to $OUT (default ./out). DECLARED.md in this folder is the
 specification; nothing here may change a declared size or rule. State given, 64 px, CPU. Every hidden value is a
@@ -363,13 +364,19 @@ def h_points(u, box):
     return out
 
 
-def gate(seed, arm, smoke=False):
+def gate(seed, arm, smoke=False, truth=None):
+    """One seed and arm. With `truth` given (the alignment check on a pilot seed) the hidden values are taken as
+    given, no ranges file is read, and the run stops after the generic recipes."""
     from scipy.stats import qmc
     sz = dict(SZ)
     if smoke:                                               # full array shapes, short counts
         sz.update(act_grid=(2, 20), h_n1=2, h_n2=1, h_best=1)
-    rg, sha = load_ranges()
-    truth = draw_truth(seed, rg)
+    align = truth is not None
+    if align:
+        rg, sha = None, "none (alignment check)"
+    else:
+        rg, sha = load_ranges()
+        truth = draw_truth(seed, rg)
     hidden = dict(lam=1.0, cat=1.0 if arm == "main" else 0.0, **truth)
     tag = f"s{seed}_{arm}"
     t_start = time.time()
@@ -442,15 +449,12 @@ def gate(seed, arm, smoke=False):
     Wb = blur_matrix(cfg)
     grid = AA.GRID if sz["act_grid"] is None else [AA.GRID[g] for g in sz["act_grid"]]
     RB = sz["act_rb"]
-    kl = pub.keys(len(lab) * RB)
-    sim_lab = {v: [] for v in VIEWS}
-    for g in grid:
-        r = run(pub, lm, [AA.filtered(P_, *g, Wb) for P_ in lp], RB, False, keys=kl)
-        for v in VIEWS:
-            sim_lab[v].append(r[v])
+    kl = pub.keys(len(lab) * RB)                                              # the same noise for every grid point
+    kg = jnp.concatenate([kl] * len(grid))
+    r = run(pub, lm * len(grid), [AA.filtered(P_, *g, Wb) for g in grid for P_ in lp], RB, False, keys=kg)
     act_test = {}
     for v in VIEWS:
-        S = np.stack(sim_lab[v])                                              # (G, n_lab, RB, H + 1, dv)
+        S = r[v].reshape((len(grid), len(lab)) + r[v].shape[1:])              # (G, n_lab, RB, H + 1, dv)
         sse = ((((S.mean(2) - y_lab[v][None]) / s_t[v])[:, :, 1:]) ** 2).sum((2, 3))    # (G, n_lab)
         gbest = int(np.argmin(sse.sum(1)))
         loo = np.stack([S[int(np.argmin(sse[:, np.arange(len(lab)) != i].sum(1))), i] for i in range(len(lab))])
@@ -470,6 +474,9 @@ def gate(seed, arm, smoke=False):
         L[v]["Gstar"] = L[v][pick].copy()
         info[v]["Gstar_pick"] = pick
         info[v]["lab_loo_score"] = lab_loo[v]
+
+    if align:
+        return {"L": L, "info": info, "test_state": tm, "lab_states": lab_m, "test_states": test_m}
 
     # --- H: told the form, fits (lam, rho, DX, a0) on a quasi-random design that does not contain the truth
     box = h_box(rg)
@@ -776,6 +783,34 @@ def ranges():
              + json.dumps({k: v["range"] for k, v in cr.items()}) + " failed " + json.dumps({k: v["scan_failed"] for k, v in cr.items()}))
 
 
+# ----------------------------------------------------------------------------- alignment with the pilots
+def align():
+    """The gate's code path on the designer's seed 5 at the pilot centre (a pilot seed, not a gate seed): the
+    same start states, programs and noise keys as gvh.py, so L(pub), L(pub0), L(O) should equal the designer's
+    file (exactly on the machine that made it; closely elsewhere, the dynamics being chaotic). G2 is fitted here
+    with the Lab's scale (gvh.py: the test truths'), A_act with other noise keys than adv_act.py. Not fatal."""
+    r = gate(5, "main", truth=dict(CENTRE))
+    L = r["L"]["focus"]
+    ref = json.load(open(os.path.join(DIALS, "sublevel_second", "results", "gvh_lam1_n16_s5_cat1_rho0.02_DX0.5_a00.03.json")))
+    adv = json.load(open(os.path.join(DIALS, "crit_adversary", "results", "adv_s5.json")))
+    gap = L["pub"] - L["O"]
+    out = {PILOT: True, "what": "alignment of s0.py with sublevel_second/gvh.py and crit_adversary on the designer's seed 5 (pilot)",
+           "size": SIZE, "L_mean_over_items_sum_of_4_horizons": {k: float(L[k].sum(1).mean()) for k in ("pub", "pub0", "O", "G2", "A_act")},
+           "designer_file_L": {k: ref["L"][k] for k in ("pub", "pub0", "O", "G2")},
+           "closed_by_horizon_4_8_16_32": {k: ((L["pub"] - L[k]).sum(0) / gap.sum(0)).tolist() for k in ("G2", "G3", "A_act", "Gstar")},
+           "adversary_file_closed_by_horizon": {k: adv["closed_by_horizon"][k2] for k, k2 in (("G2", "G2"), ("A_act", "A_act_n16"))},
+           "closed_h_8_16_32": {k: float((L["pub"] - L[k])[:, list(EX)].sum() / gap[:, list(EX)].sum()) for k in ("G2", "G3", "A_act", "Gstar")},
+           "adversary_file_closed_h_8_16_32": {k: adv["closed_h_8_16_32"][k2] for k, k2 in (("G2", "G2"), ("A_act", "A_act_n16"))},
+           "A_act_fit": r["info"]["focus"]["A_act_fit_g0_g1_tau_blur"], "adversary_A_act_fit": adv["recipes"]["A_act_n16"]["fit_g0_g1_tau_blur"],
+           "Gstar_pick": r["info"]["focus"]["Gstar_pick"], "lab_loo_score": r["info"]["focus"]["lab_loo_score"],
+           "lab_states": r["lab_states"], "test_states": r["test_states"], "designer_lab_test_states": [ref["lab_members"], ref["test_members"]]}
+    out["max_abs_diff_L_pub_pub0_O"] = float(max(abs(out["L_mean_over_items_sum_of_4_horizons"][k] - ref["L"][k]) for k in ("pub", "pub0", "O")))
+    jdump(out, os.path.join(OUT, "align.json"))
+    progress(f"align: max |dL| over pub, pub0, O against the designer's file {out['max_abs_diff_L_pub_pub0_O']:.3g}; "
+             f"G2 by horizon {np.round(out['closed_by_horizon_4_8_16_32']['G2'], 3).tolist()} (adversary {np.round(out['adversary_file_closed_by_horizon']['G2'], 3).tolist()}); "
+             f"A_act {np.round(out['closed_by_horizon_4_8_16_32']['A_act'], 3).tolist()} (adversary {np.round(out['adversary_file_closed_by_horizon']['A_act'], 3).tolist()})")
+
+
 # ----------------------------------------------------------------------------- presmoke
 def presmoke():
     """Every stage once at full array shapes with short counts; the rate for job.sh's speed guard."""
@@ -984,5 +1019,7 @@ if __name__ == "__main__":
         gate(int(sys.argv[2]), sys.argv[3])
     elif cmd == "analyse":
         analyse()
+    elif cmd == "align":
+        align()
     else:
         raise SystemExit(f"unknown command {cmd}")
