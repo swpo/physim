@@ -220,7 +220,8 @@ def analyse_arm(d, arm):
     out["acceptance"] = acc
     # ---- gaps in OES units (pooled), with intervals
     gaps = {}
-    pairs = [("C", "P0"), ("C", "P0s"), ("P0", "P0s"), ("O", "C"), ("C", "S@0"), ("C", "Cscratch"), ("C", "Cft")] + [("C", f"S@{N}") for N in S_BUDGETS[1:]] \
+    pairs = [("C", "P0"), ("C", "P0s"), ("P0", "P0s"), ("O", "C"), ("C", "S@0"), ("C", "Cscratch"), ("C", "Cft"), ("C", "Csm"),
+             ("Cscratch", "Csm")] + [("C", f"S@{N}") for N in S_BUDGETS[1:]] \
         + [(f"S@{N}", "P0") for N in S_BUDGETS[1:]] + [(f"FT@{N}", "P0") for N in BUDGETS] + [("C", f"D@{N}") for N in BUDGETS] \
         + [("P0", f"P0w{n}") for n in (16, 64)] + [("S@0", "P0")]
     for a, b in pairs:
@@ -314,7 +315,7 @@ def analyse_arm(d, arm):
                 vp16=[h.get("gate", {}).get("vp16") for h in worlds["hidden"]],
                 cv_cell=[h.get("gate", {}).get("cv_cell") for h in worlds["hidden"]],
                 tick_share_all33=[h["tick_share"]["all33"] for h in worlds["hidden"]])
-    for b in ("C", "P0", "P0s", "Kp", "plugPrior", "plug10", "plugU0", f"D@{Nmax}", f"Dr@{Nmax}", f"FT@{Nmax}", f"S@{Nmax}"):
+    for b in ("C", "Csm", "P0", "P0s", "Kp", "plugPrior", "plug10", "plugU0", f"D@{Nmax}", f"Dr@{Nmax}", f"FT@{Nmax}", f"S@{Nmax}"):
         if b in B:
             rows[f"oes_{b}"] = pw(oes_fn(b), ["K", "O", b])
     rows["sigma"] = acc["sigma"]["per_world"]

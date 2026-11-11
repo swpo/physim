@@ -135,8 +135,29 @@ printout on 3 worlds with 60-step nets. No score of the full pass existed when t
 - The public code standardisation is computed from pool worlds that are not hidden worlds of arm P; the amortised
   net's random context never contains the example's own episode.
 
+## 5c. Follow-up job r6-foundryexam-004, declared AFTER the results of job 003 were seen
+
+Job 003 ran everything of sections 1-5 (results/analysis_job003.json). Two things in it fall short of the standards,
+and job 004 exists to fix them. It was designed with every number of 003 in view; criteria, thresholds, worlds, hidden
+picks and the null are unchanged, and 003's numbers are reported next to 004's.
+
+1. C was not trained to convergence by criterion 6: 4 of 32 nets (arm P), 9 of 24 (N30), 7 of 24 (N10); the best step
+   was the last one. In 004, C is trained on 4,096 simulated episodes at the true weights (003: 1,536) for 8,000 steps
+   at batch 128 (003: 4,000 at batch 64), the fine-tuned candidate for 3,000 steps at batch 128, and a third net "Csm"
+   on the first 1,024 of those episodes shows whether C is converged in data. FT(128) and FT(512) get 1.5 and 2 times
+   the steps.
+2. The neighbourhood arms were not like for like with arm P: their no-experiment nets saw 24 to 32 prior worlds, arm
+   P's 210, and arm P's own curve (P0[16], P0[64], P0) shows that this number matters. In 004 a neighbourhood has 256
+   public training candidates and uses up to the first 128 that pass the gate; its shared nets train 8,000 steps
+   (P0s 4,000).
+
+Also: all net seeds are offset by 1000, and the job draws a new noise secret, so 004 is an independent repeat of
+003 on the same hidden worlds with new Labs, new items and new training seeds. Where the two jobs measure the same
+thing (arm P: P0, S, D, FT, the ridge, the plug-ins), their difference is reported as a between-job check.
+The final table is 004's if it completes; otherwise 003's, with C marked as a lower bound.
+
 ## 6. Sizes and budget
 
 Hidden worlds: 16 (arm P) + 12 (N30) + 12 (N10). One GPU job (A100, $1.99-2.35/h), expected about 2 h, cap $8.40
-(job 002; request 003 after the changes of section 5b: cap $7.80);
+(job 002; request 003 after the changes of section 5b: cap $7.80; request 004, section 5c: cap $8.40);
 a second job only for a declared follow-up. Study cap $25.
