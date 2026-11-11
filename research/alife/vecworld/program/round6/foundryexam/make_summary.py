@@ -136,15 +136,21 @@ def verdict_interval(q, bar, above=True):
 
 def analyse_arm(d, arm):
     S, world, klass, group, meta, worlds, info = load_arm(d, arm)
-    # the ceiling C is the better (lower pooled score over the arm) of the net trained from scratch and P0 fine-tuned
-    # on the same true-weight simulations (DESIGN.md section 4); the other is kept as Cscratch or Cft
+    # the ceiling C is the candidate with the lowest pooled score over the arm (DESIGN.md sections 4, 5d): the net trained
+    # from scratch on n_csim true-weight episodes ("C" in the job), P0 fine-tuned on them ("Cft"), and, in job 005, the
+    # net trained on n_cbig episodes ("Cbig"). The others keep a name: Cscratch / Cmid (the scratch net on n_csim), Cft.
     ceiling = "scratch"
-    if any(k.startswith("Cft|") for k in S):
+    cands = [b for b in ("Cbig", "C", "Cft") if any(k.startswith(b + "|") for k in S)]
+    if len(cands) > 1:
         A0 = Arm(S, world, klass)
-        if A0.Lmean("Cft") < A0.Lmean("C"):
+        best = min(cands, key=A0.Lmean)
+        ren = lambda S, old, new: {(new + k[len(old):] if k.startswith(old + "|") else k): v for k, v in S.items()}
+        if best == "Cft":
             ceiling = "fine-tuned P0"
-            S = {(k.replace("C|", "Cscratch|", 1) if k.startswith("C|") else k): v for k, v in S.items()}
-            S = {(k.replace("Cft|", "C|", 1) if k.startswith("Cft|") else k): v for k, v in S.items()}
+            S = ren(ren(S, "C", "Cscratch"), "Cft", "C")
+        elif best == "Cbig":
+            ceiling = "scratch on the larger set (Cbig)"
+            S = ren(ren(S, "C", "Cmid"), "Cbig", "C")
     A = Arm(S, world, klass)
     B = A.bases
     out = dict(arm=arm, eps=meta.get("eps"), n_hidden=meta["n_hidden"], n_items=int(len(world)), cells=meta["cells"],
@@ -221,7 +227,7 @@ def analyse_arm(d, arm):
     # ---- gaps in OES units (pooled), with intervals
     gaps = {}
     pairs = [("C", "P0"), ("C", "P0s"), ("P0", "P0s"), ("O", "C"), ("C", "S@0"), ("C", "Cscratch"), ("C", "Cft"), ("C", "Csm"),
-             ("Cscratch", "Csm")] + [("C", f"S@{N}") for N in S_BUDGETS[1:]] \
+             ("Cscratch", "Csm"), ("C", "Cmid"), ("Cmid", "Csm"), ("C", "Cbig"), ("Cmid", "P0")] + [("C", f"S@{N}") for N in S_BUDGETS[1:]] \
         + [(f"S@{N}", "P0") for N in S_BUDGETS[1:]] + [(f"FT@{N}", "P0") for N in BUDGETS] + [("C", f"D@{N}") for N in BUDGETS] \
         + [("P0", f"P0w{n}") for n in (16, 64)] + [("S@0", "P0")]
     for a, b in pairs:

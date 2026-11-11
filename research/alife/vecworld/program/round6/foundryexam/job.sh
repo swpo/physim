@@ -24,7 +24,7 @@ if [ "$SIZE" = "smoke" ]; then
   P "smoke exit $RC"
   exit $RC
 fi
-$PY -B run_fx.py --size presmoke --arms P,N30 --out "$OUT/presmoke" --max-hours 0.75 --full-hours "$HOURS"
+$PY -B run_fx.py --size presmoke --arms "${FX_PRESMOKE_ARMS:-P,N30}" --out "$OUT/presmoke" --max-hours 0.75 --full-hours "$HOURS" --full-arms "$ARMS"
 RC=$?
 P "presmoke exit $RC"
 if [ $RC -ne 0 ]; then tail -40 "$OUT/presmoke/progress.txt"; exit 2; fi   # 4 from run_fx: nets too slow (shape_test.json)

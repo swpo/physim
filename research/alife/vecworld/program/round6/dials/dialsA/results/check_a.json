@@ -1,0 +1,103 @@
+{
+ "what": "CPU checks of study A's law switch and recipes",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "backend": "cpu",
+ "x64": true,
+ "one_tick": {
+  "B": 3,
+  "backend": "cpu",
+  "max_abs_xw0_minus_gworld": 0.0,
+  "max_abs_gworld_rerun": 0.0,
+  "max_abs_xw4_minus_gworld": 1.8742321222863048,
+  "bitwise_xw0_equals_gworld": true,
+  "bitwise_gworld_rerun": true,
+  "level0_max": 2.8570181076873227,
+  "channel0_mass_lost_xw4_fraction": 0.021878215078608654,
+  "total_mass_rel_change_xw4": 1.1102230246251565e-16
+ },
+ "family": {
+  "members": 8,
+  "ticks": 10,
+  "obs_bitwise_equal_eta0": true,
+  "programs_bitwise_equal_eta0": true,
+  "max_abs_obs_diff_eta0": 0.0,
+  "max_abs_block_diff_eta4_by_class": {
+   "a": 0.0,
+   "b": 0.0,
+   "c": 0.3880000114440918,
+   "d": 0.36400002241134644
+  },
+  "nats_by_class": {
+   "a": 0.0,
+   "b": 66.83226508304807,
+   "c": 199.99999999999994,
+   "d": 300.0
+  }
+ },
+ "classes": {
+  "mix": [
+   "a",
+   "b",
+   "c",
+   "d",
+   "a",
+   "b",
+   "c",
+   "d"
+  ],
+  "structural": [
+   "a",
+   "b",
+   "c",
+   "d",
+   "a",
+   "b",
+   "c",
+   "d"
+  ],
+  "empty_program": [
+   true,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false
+  ],
+  "agree_or_empty": true
+ },
+ "world": {
+  "episodes": 4,
+  "obs_bitwise_equal_xw0": true,
+  "programs_equal_xw0": true,
+  "max_abs_block_diff_xw4_by_class": {
+   "a": 0.0,
+   "b": 0.0,
+   "c": 0.14000000059604645,
+   "d": 0.24800000339746475
+  }
+ },
+ "residual_cv": {
+  "chosen_ridge_planted_signal": {
+   "a": "0.05",
+   "b": "0.05",
+   "c": "0.05",
+   "d": "0.05"
+  },
+  "chosen_ridge_pure_noise": {
+   "a": "5.0",
+   "b": "inf",
+   "c": "inf",
+   "d": "inf"
+  }
+ },
+ "residual": {
+  "max_abs_error_apply_no_ridge": 1.0523880433765953e-08,
+  "n_maps": 36,
+  "ridge_0.05_slope_shrink_median": 0.9528499196053599,
+  "unseen_class_gets_zero": true
+ },
+ "ok": true,
+ "seconds": 164.57224345207214
+}
