@@ -1,0 +1,14 @@
+16:22:57 job: start size=full nproc=1 limit=10800s
+versions: python 3.12.16 jax 0.12.0.1 numpy 2.5.4 scipy 1.18.1
+16:25:26 gate s30_main H done (2 + 1 points per view)
+16:27:08 gate s30_main stand-in done (42 items)
+16:27:08 presmoke ok wall 248s rate 570 member-ticks/s with compiles, 672 compiled; planned 5822544
+speed guard: steady rate 672 member-ticks/s per process, planned 5822544 member-ticks, 1 processes: projected 20762 s (limit 9000 s; full size only)
+16:27:08 job: FAILED: speed guard: the job cannot finish in time (exit 3)
+--- /home/ubuntu/gpujob/r6-dialsb-001/out/log_presmoke.txt
+16:24:05 gate s30_main start truth {"rho": 0.01745, "DX": 0.45135, "a0": 0.03606} ranges 6a2874758eb4
+16:24:54 gate s30_main base runs done: lab states [0, 1, 2, 3, 4, 6, 7] test states [9, 10, 11, 12, 13, 14, 15] items 28 rate 497 member-ticks/s
+16:25:07 gate s30_main A_act done (2 grid points)
+16:25:26 gate s30_main H done (2 + 1 points per view)
+16:27:08 gate s30_main stand-in done (42 items)
+16:27:08 presmoke ok wall 248s rate 570 member-ticks/s with compiles, 672 compiled; planned 5822544

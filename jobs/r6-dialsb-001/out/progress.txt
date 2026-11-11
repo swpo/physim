@@ -1,0 +1,3 @@
+16:22:57 job: start size=full nproc=1 limit=10800s
+16:27:08 presmoke ok wall 248s rate 570 member-ticks/s with compiles, 672 compiled; planned 5822544
+16:27:08 job: FAILED: speed guard: the job cannot finish in time (exit 3)
