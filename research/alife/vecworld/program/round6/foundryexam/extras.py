@@ -135,6 +135,28 @@ def main():
     out["wind_probe"] = dict(what="CPU probe before the exam (round5/foundry/wind_probe.py, 8 states per world): aimed 200-nat command, "
                                   "displacement of the block view at 4 ticks over twice the noise floor, and in units of the variance",
                              source="results/wind_probe7.json", ranking=pool["centres"]["ranking"], chosen=pool["centres"]["chosen"])
+    # ---- gate at both thresholds, nets trained, largest seed-to-seed difference
+    job = A["job"]
+    gp = os.path.join(RES, "job", f"{job}_full_gate.json")
+    if os.path.exists(gp):
+        rows = [r for r in json.load(open(gp))["rows"] if r["kind"] == "pool"]
+        base = lambda r: r["cv_cell"] >= 0.25 and r["vp1"] <= 1.0
+        out["gate_thresholds"] = dict(
+            what="pool worlds passing the exam-time gate with the activity threshold at 0.02 (first version of DESIGN.md) and at 0.2 (used)",
+            source=f"results/job/{job}_full_gate.json: rows", pool=len(rows),
+            pass_at_0p02=sum(1 for r in rows if base(r) and r["vp16"] >= 0.02), pass_at_0p2=sum(1 for r in rows if base(r) and r["vp16"] >= 0.2),
+            median_vp16_of_passing=sorted(r["vp16"] for r in rows if r["ok"])[sum(1 for r in rows if r["ok"]) // 2])
+    pp = os.path.join(RES, "job", f"{job}_full_progress.txt")
+    if os.path.exists(pp):
+        import re
+        nets = {m.group(1): int(m.group(2)) for m in re.finditer(r"\] (\w+) all nets done \(\d+s\), (\d+) nets", open(pp).read())}
+        out["nets_trained"] = dict(per_arm=nets, total=sum(nets.values()), source=f"results/job/{job}_full_progress.txt")
+    sd = {}
+    for arm, R in A["arms"].items():
+        d = [abs(v[0] - v[1]) for q in R["gaps_oes"].values() for v in q["by_seed_of"].values() if len(v) == 2]
+        sd[arm] = round(max(d), 4) if d else None
+    out["seed_to_seed"] = dict(what="largest difference of any pooled-skill gap between the two training seeds of one of its policies",
+                               source="results/analysis.json: arms.<arm>.gaps_oes.*.by_seed_of", arms=sd)
     with open(os.path.join(RES, "summary_extra.json"), "w") as f:
         json.dump(out, f, indent=1)
     print(json.dumps(out["by_horizon"]["arms"]))

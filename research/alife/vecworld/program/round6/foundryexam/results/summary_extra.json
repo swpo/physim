@@ -564,5 +564,31 @@
    1672,
    7567
   ]
+ },
+ "gate_thresholds": {
+  "what": "pool worlds passing the exam-time gate with the activity threshold at 0.02 (first version of DESIGN.md) and at 0.2 (used)",
+  "source": "results/job/r6-foundryexam-004_full_gate.json: rows",
+  "pool": 416,
+  "pass_at_0p02": 401,
+  "pass_at_0p2": 226,
+  "median_vp16_of_passing": 0.6399137914542792
+ },
+ "nets_trained": {
+  "per_arm": {
+   "P": 280,
+   "N30": 222,
+   "N10": 222
+  },
+  "total": 724,
+  "source": "results/job/r6-foundryexam-004_full_progress.txt"
+ },
+ "seed_to_seed": {
+  "what": "largest difference of any pooled-skill gap between the two training seeds of one of its policies",
+  "source": "results/analysis.json: arms.<arm>.gaps_oes.*.by_seed_of",
+  "arms": {
+   "P": 0.0042,
+   "N30": 0.0037,
+   "N10": 0.0061
+  }
  }
 }

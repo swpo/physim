@@ -1800,6 +1800,34 @@
    }
   },
   {
+   "id": "P.rank_corr",
+   "text": "arm P: rank correlations over hidden worlds (after-the-fact)",
+   "value": {
+    "sigma_vs_state_given_loss": 0.31176470588235294,
+    "sigma_vs_vp16": 0.8323529411764706,
+    "C_minus_P0_vs_state_given_loss": 0.42352941176470593,
+    "n": 16
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.rank_corr_over_worlds"
+   }
+  },
+  {
+   "id": "P.lab_nats",
+   "text": "arm P: nats charged per Lab episode (mean, max)",
+   "value": {
+    "mean": 199.99999960000002,
+    "max": 399.9999992000002
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.P.lab_nats"
+   }
+  },
+  {
    "id": "P.convergence",
    "text": "arm P: convergence by criterion 6 per kind of net",
    "value": {
@@ -3654,6 +3682,69 @@
    }
   },
   {
+   "id": "N30.rank_corr",
+   "text": "arm N30: rank correlations over hidden worlds (after-the-fact)",
+   "value": {
+    "sigma_vs_state_given_loss": 0.3846153846153847,
+    "sigma_vs_vp16": 0.8461538461538463,
+    "C_minus_P0_vs_state_given_loss": 0.5874125874125874,
+    "n": 12
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.rank_corr_over_worlds"
+   }
+  },
+  {
+   "id": "N30.by_centre",
+   "text": "arm N30: point values per centre (4 hidden worlds each)",
+   "value": {
+    "centre3078": {
+     "n_worlds": 4,
+     "oes_C": 0.8384848402653151,
+     "oes_P0": 0.7473966315335061,
+     "sigma": 0.044199873913739245,
+     "share_noexp": 0.8913657059047285,
+     "state_given_loss_prior": 0.9416176553978531
+    },
+    "centre1672": {
+     "n_worlds": 4,
+     "oes_C": 0.9176341242320193,
+     "oes_P0": 0.7625941286441253,
+     "sigma": 0.03982480495767486,
+     "share_noexp": 0.8384720374782861,
+     "state_given_loss_prior": 0.9139324039193482
+    },
+    "centre7567": {
+     "n_worlds": 4,
+     "oes_C": 0.7927647524115219,
+     "oes_P0": 0.7042427234296605,
+     "sigma": 0.031305378556894234,
+     "share_noexp": 0.8883375822240015,
+     "state_given_loss_prior": 0.49471849658715017
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.by_group"
+   }
+  },
+  {
+   "id": "N30.lab_nats",
+   "text": "arm N30: nats charged per Lab episode (mean, max)",
+   "value": {
+    "mean": 199.99999960000005,
+    "max": 399.9999992000002
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N30.lab_nats"
+   }
+  },
+  {
    "id": "N30.convergence",
    "text": "arm N30: convergence by criterion 6 per kind of net",
    "value": {
@@ -5492,6 +5583,69 @@
    }
   },
   {
+   "id": "N10.rank_corr",
+   "text": "arm N10: rank correlations over hidden worlds (after-the-fact)",
+   "value": {
+    "sigma_vs_state_given_loss": 0.5244755244755246,
+    "sigma_vs_vp16": 0.6713286713286714,
+    "C_minus_P0_vs_state_given_loss": 0.37762237762237766,
+    "n": 12
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.rank_corr_over_worlds"
+   }
+  },
+  {
+   "id": "N10.by_centre",
+   "text": "arm N10: point values per centre (4 hidden worlds each)",
+   "value": {
+    "centre3078": {
+     "n_worlds": 4,
+     "oes_C": 0.7810737578307404,
+     "oes_P0": 0.7533609731064739,
+     "sigma": 0.024387138409160996,
+     "share_noexp": 0.9645196315374458,
+     "state_given_loss_prior": 0.4195725295660945
+    },
+    "centre1672": {
+     "n_worlds": 4,
+     "oes_C": 0.8364211197790904,
+     "oes_P0": 0.7974305728135612,
+     "sigma": 0.021939603705863814,
+     "share_noexp": 0.9533840716793149,
+     "state_given_loss_prior": 0.49384553200139614
+    },
+    "centre7567": {
+     "n_worlds": 4,
+     "oes_C": 0.8332878683317668,
+     "oes_P0": 0.7970533377421725,
+     "sigma": 0.015294758419065862,
+     "share_noexp": 0.9565161909027482,
+     "state_given_loss_prior": 0.1822499941263569
+    }
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.by_group"
+   }
+  },
+  {
+   "id": "N10.lab_nats",
+   "text": "arm N10: nats charged per Lab episode (mean, max)",
+   "value": {
+    "mean": 199.99999960000005,
+    "max": 399.9999992000002
+   },
+   "source": {
+    "job": "r6-foundryexam-004",
+    "file": "results/analysis.json",
+    "key": "arms.N10.lab_nats"
+   }
+  },
+  {
    "id": "N10.convergence",
    "text": "arm N10: convergence by criterion 6 per kind of net",
    "value": {
@@ -6388,5 +6542,31 @@
    1672,
    7567
   ]
+ },
+ "gate_thresholds": {
+  "what": "pool worlds passing the exam-time gate with the activity threshold at 0.02 (first version of DESIGN.md) and at 0.2 (used)",
+  "source": "results/job/r6-foundryexam-004_full_gate.json: rows",
+  "pool": 416,
+  "pass_at_0p02": 401,
+  "pass_at_0p2": 226,
+  "median_vp16_of_passing": 0.6399137914542792
+ },
+ "nets_trained": {
+  "per_arm": {
+   "P": 280,
+   "N30": 222,
+   "N10": 222
+  },
+  "total": 724,
+  "source": "results/job/r6-foundryexam-004_full_progress.txt"
+ },
+ "seed_to_seed": {
+  "what": "largest difference of any pooled-skill gap between the two training seeds of one of its policies",
+  "source": "results/analysis.json: arms.<arm>.gaps_oes.*.by_seed_of",
+  "arms": {
+   "P": 0.0042,
+   "N30": 0.0037,
+   "N10": 0.0061
+  }
  }
 }

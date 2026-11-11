@@ -94,6 +94,11 @@ def main():
             for nm in ("share_noexp", "sigma@8", "sigma@32", "sigma@512"):
                 if nm in e:
                     add(f"{arm}.h{hh}.{nm}", f"arm {arm}, horizon {hh} ticks only: {nm} (after-the-fact breakdown)", f"{p}.by_horizon.{hh}.{nm}")
+        if R.get("rank_corr_over_worlds"):
+            add(f"{arm}.rank_corr", f"arm {arm}: rank correlations over hidden worlds (after-the-fact)", f"{p}.rank_corr_over_worlds")
+        if R.get("by_group"):
+            add(f"{arm}.by_centre", f"arm {arm}: point values per centre (4 hidden worlds each)", f"{p}.by_group")
+        add(f"{arm}.lab_nats", f"arm {arm}: nats charged per Lab episode (mean, max)", f"{p}.lab_nats")
         add(f"{arm}.convergence", f"arm {arm}: convergence by criterion 6 per kind of net", f"{p}.convergence")
         add(f"{arm}.stationarity", f"arm {arm}: share of the variance carried by the tick alone", f"{p}.stationarity")
         add(f"{arm}.oes_by_class", f"arm {arm}: per-cell-mean OES by program class", f"{p}.oes_by_class",
