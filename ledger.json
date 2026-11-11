@@ -303,10 +303,10 @@
     {
       "billed_usd": null,
       "cap_usd": 2.5,
-      "conservative_usd": 0.0393,
+      "conservative_usd": 0.0528,
       "finished_at": null,
       "gpu": "CPU_NODE (nebius)",
-      "hours": 0.073,
+      "hours": 0.098,
       "job_id": "r6-dialsb-002",
       "purpose": "Round-6 dials, study B stage 0 (CPU gate of the membrane carrier, no GPU): state-given check at 64 px on 8 fresh seeds, main and control arm; generic recipes (gains, command filter) against a told-form fit; history-only stand-in; scans for the hidden set and ranges",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -351,10 +351,10 @@
     {
       "billed_usd": null,
       "cap_usd": 7.2,
-      "conservative_usd": 2.2034,
+      "conservative_usd": 2.2533,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 1.107,
+      "hours": 1.132,
       "job_id": "r6-foundryexam-005",
       "purpose": "Round-6 study foundryexam, last job: the learning curve of the true-weight reference net in the screened-prior arm (1,024 / 4,096 / 16,384 simulated episodes per hidden world), a third independent repeat of that arm (new items, Labs and seeds on the same 16 hidden worlds)",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -401,8 +401,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 72.0703,
     "prior_spend_usd": 0.0,
-    "spent_usd": 59.613,
+    "spent_usd": 59.6764,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T16:40:36Z"
+    "updated_at": "2026-11-11T16:42:06Z"
   }
 }
