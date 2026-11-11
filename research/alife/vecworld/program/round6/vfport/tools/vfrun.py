@@ -557,6 +557,8 @@ def request_route(a) -> int:
         if stand_in:                                         # a test: its configs live in the test's own pilot folder
             CC.CONFIG_DIR = os.path.join(os.path.abspath(os.path.expanduser(a.pilot)), "configs")
         req = CR.read_request(a.request)
+        if os.path.basename(a.request) != req["job_id"] + ".json":
+            raise CR.Refused("the request file is not named <job_id>.json")
         CR.check_pin(req)
         cfg = CR.check_config(req)
         flat = cfg["flat"]

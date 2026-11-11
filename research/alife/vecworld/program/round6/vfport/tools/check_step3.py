@@ -270,7 +270,8 @@ def run_route(scratch, tag, floor, log, skip_reference):
     req = {"schema": "rollout-job/v1", "job_id": job, "purpose": "round-4 rehearsal of the request route against a stand-in endpoint", "requester": "tools/check_step3.py",
            "pin": CR.git_head(), "pin_sha256": CR.pin_sha256(), "config": cfg, "exam_profile": "ring", "instance": instance, "model": "standin/echo-1",
            "caps": {"max_turns": 12, "max_output_tokens": 512, "wall_minutes": 10, "box_memory_gb": 2}, "cap_usd": 0.13}
-    rp = os.path.join(pilot, "request.json")
+    os.mkdir(os.path.join(pilot, "requests"), 0o700)
+    rp = os.path.join(pilot, "requests", job + ".json")
     with open(rp, "w") as f:
         json.dump(req, f, indent=1)
     standin = subprocess.Popen([PY, "-B", os.path.join(HERE, "standin_model.py"), "--script", script, "--log", os.path.join(pilot, "standin_requests.jsonl")],
