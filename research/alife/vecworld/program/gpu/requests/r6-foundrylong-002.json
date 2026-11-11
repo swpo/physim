@@ -1,0 +1,36 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r6-foundrylong-002",
+  "purpose": "Round-6 study foundrylong, stage 2: can weight inference (250 hidden numbers fitted through the simulator to 32 Lab episodes) close the long-horizon gap left by the best generic recipe, and do designed Lab programs pay? Same 16 hidden worlds, new items",
+  "requester": "cloud study foundrylong (round 6), session_01BZceC7G6m7DgM6KpXjnWXj",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/program/round5/foundry",
+    "research/alife/vecworld/program/round6/foundryexam",
+    "research/alife/vecworld/program/round6/foundrylong"
+  ],
+  "gpu": {
+    "types": [
+      "A100_40GB",
+      "A100_80GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 3.15,
+  "cap_usd": 8.1,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round6/foundrylong && bash job_s2.sh",
+  "env": {
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+    "FL_SIZE": "full",
+    "FL_MAX_HOURS": "2.9"
+  },
+  "git_outputs_max_mb": 50,
+  "notes": "Stage 2 of study foundrylong, declared in round6/foundrylong/DECLARED.md (commit 2ab6e7bb) with addendum 3 in DEVIATIONS.md, written after stage 1 (r6-foundrylong-001: S1 SURVIVES, sigma 0.218 at 16 ticks and 32 Lab episodes) and before this request. Question: can a hypothesis (the 250 hidden weights, fitted through the simulator) close the gap left by the best generic recipe, and do designed Lab programs pay? Same 16 hidden worlds, new items, Labs and secret. Per world: a Lab of 32 mix episodes and a paired Lab of 32 designed episodes (12.5 nats in every test tick), 96 items x 12 futures, 96 climatology runs, plug-ins, ridges. Stage 1's public parameters (inputs/stage1: P0 on 1,000 worlds, 3 seeds; C on 16,384 episodes, seed 0) are scored again. W: per world and Lab, 32 prior worlds' weights scored by a 16-tick forecast loss on 8 episodes, the best 4 refined by Adam (200 steps; 8 episodes x 4 members x 2 anchors per step; gradient through 16 ticks with jax.checkpoint; one jitted call per step, so no platform allocator); 8 fits at once (2 worlds x 4 starts). Then FT (4-fold CV, 3 rates x 400 steps, 3 seeds), D, on each Lab, and W+: 4,096 mix episodes at the fitted weights per world and Lab and the C recipe at that size (8 nets in lockstep, as stage 1's C(4,096)). job_s2.sh: (1) presmoke, about 12 min: 2 worlds through every stage at the full fit shapes (B = 8 fits, the full evaluation shapes), then a speed guard projects the job from the measured fit speed and exits 4 if it exceeds 1.25 x the time left; (2) the full pass, about 2 h: W 60-65 min (estimated 1.1 s per step for 8 fits), W+ 30 min (stage 1: 41,700 member-ticks/s, C(4,096) 336 s), FT 12 min, the rest 15 min; expected 2.2 h, about $4.5 at $1.99/h. Stops new work at 2.9 h on its own clock; trainings and fits stop at the deadline; scores.npz is rewritten after every part. Memory: no device array near 2^31 (largest: W+ data of 8 nets x 4,096 episodes x 49 x 192 = 3.1e8 float32; fit and evaluation batches at most 1,280 members of 2 x 64 x 64 float64 in flight); host about 10 GB. Outputs under 6 MB: scores, training records, fitted weight vectors (w_fits.npz), fit records (w_info.json). PILOT ONLY: public pilot worlds, never an exam; the noise secret is never written. Exit codes: 2 presmoke failed (4 inside: too slow), 1 a part failed, 0 complete. Cap: $2.35/h (the 80 GB card) x (3.15 + 0.25) h = $7.99, rounded up plus $0.10. CPU test: job_s2.sh with FL_SIZE=smoke from a git archive of exactly these four paths at this commit's code, exit 0, and make_summary2.py on its outputs. Study spend so far $4.92 of $25."
+}

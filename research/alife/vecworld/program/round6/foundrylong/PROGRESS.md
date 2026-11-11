@@ -47,14 +47,23 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   S3 still falling at every horizon (s0(16) 0.53 / 0.39 / 0.28 at 64 / 210 / 1,000 worlds); S4 C not converged in data
   (+0.048 of skill at 16 ticks for 4,096 -> 16,384); S5 undecided (0.115, p05 0.077); S2: P0 and C mostly NOT trained
   by the 80% rule (late gains 1-5%), FT's CV chose the lowest rate in 122 of 144 cases. Stage 2 runs.
-- 21:25: addendum 3 (stage-2 details, W's loss deviation, FT grid); inputs/stage1/ (31 MB of stage-1 parameters).
+- 21:10: addendum 3 (stage-2 details, W's loss deviation, FT grid); inputs/stage1/ (31 MB of stage-1 parameters).
+- 21:15: job_s2.sh at FL_SIZE=smoke from a git archive of the four request paths: exit 0 (9.6 min); make_summary2.py
+  runs on its outputs. Request r6-foundrylong-002 validated (purpose 252 chars, notes 2,610, cap $8.10 >= $7.99).
 
 ## Running
 - Review of r6-foundrylong-001 read 18:50: fine to run, 2 minor (outputs ~53 MB: check manifest in_git before the analysis;
   completeness marks added to make_summary.py; DEVIATIONS addendum 2).
-- (none yet; stage-2 request being prepared)
+- GPU job r6-foundrylong-002 (stage 2), requested ~21:20 UTC, cap $8.10. Follow: cd /home/user/physim && git fetch -q origin
+  gpu-jobs && git show origin/gpu-jobs:jobs/r6-foundrylong-002/status.json. READ jobs/r6-foundrylong-002/review.md BEFORE
+  the results. To cancel: push an empty gpu/requests/r6-foundrylong-002.cancel, verify with git ls-tree on origin.
 
-## Next step, exactly
+## Next step, exactly (stage 2)
+1. When 002 is done: read its review.md; check manifest in_git; git archive origin/gpu-jobs jobs/r6-foundrylong-002/out/full
+   to scratch; python -B make_summary2.py <dir> --job r6-foundrylong-002 -> results/analysis_stage2.json; read T1-T6.
+2. results/summary.json (every number with its source; make_final.py), README.md, final report; remove the worktree.
+
+## Next step as it was before stage 1 (done)
 1. When the job is done: copy jobs/r6-foundrylong-001/out/full to scratch (git archive origin/gpu-jobs jobs/r6-foundrylong-001/out/full | tar -x),
    run `python -B make_summary.py <dir> --job r6-foundrylong-001` -> results/analysis_stage1.json; read S1 (verdict), S1a, S2-S5.
 2. If S1.stage2_runs: write the stage-2 addendum in DEVIATIONS.md (sizes, assimilation details, designed-program rule), the
@@ -65,4 +74,5 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 ## Jobs
 | job | state | cap | billed |
 |---|---|---|---|
-| r6-foundrylong-001 | running since 18:32 UTC (A100 40GB, $1.99/h) | $8.10 | - |
+| r6-foundrylong-001 | done 21:01 UTC (exit 0, 2.35 h of run) | $8.10 | $4.92 |
+| r6-foundrylong-002 | requested ~21:20 UTC | $8.10 | - |

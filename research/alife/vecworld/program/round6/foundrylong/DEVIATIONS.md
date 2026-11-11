@@ -33,7 +33,7 @@ The review (`origin/gpu-jobs:jobs/r6-foundrylong-001/review.md`: fine to run, 0 
    the deadline, P0 below 1,000 worlds) and reads S1a as "incomplete" unless P0x2, the second P0 size and the second
    C size are present and not cut. The declared rule is unchanged; the marks say when its inputs were not all there.
 
-## Addendum 3, 11 Nov 2026 21:25 UTC, before request r6-foundrylong-002 (seen: ALL of stage 1, results/analysis_stage1.json; the CPU tests of W in PROGRESS.md)
+## Addendum 3, 11 Nov 2026 21:10 UTC, before request r6-foundrylong-002 (seen: ALL of stage 1, results/analysis_stage1.json; the CPU tests of W in PROGRESS.md)
 
 Stage 1 says S1 SURVIVES (sigma(16, 32) = 0.218, lower bound 0.187, min over leave-one-out 0.178), so stage 2 runs.
 The declared criteria T1-T6 and their thresholds are unchanged. Fixed now:
