@@ -24,7 +24,8 @@ What is checked, in this order, each failure a `refused:` line and exit status 2
   3. the config (strict schema);         4. request and config agree;
   5. the pilot folder: the job id is new, the instance name is new or was made for this job;
   6. (unless --no-go) the lead's standing go: `<pilot>/LEAD-GO-MODEL-SPEND.json`, see read_go;
-  7. (with --prices) the model's listed prices and the bounds on the bill, and the ceiling of the go.
+  7. (with --prices) the model's listed prices and the bounds on the bill, and the ceiling of the go (with
+     --shared-ledger FILE: counting what other machines spent as well).
 Steps 1 to 6 read local files only. Step 7 makes ONE request without a credential: GET <inference url>/models.
 
 The functions below are also what tools/vfrun.py uses for the request route; they start nothing and write
@@ -358,13 +359,19 @@ def prices_of(entry: dict) -> dict:
     window = e.get("context_window") or e.get("context_length")
     if not _num(p_in) or not _num(p_out) or p_in < 0 or p_out < 0 or isinstance(window, bool) or not isinstance(window, int) or window < 1:
         raise Refused("the model's listing lacks an input price, an output price or a context window")
+    p_write = pr.get("cache_write_usd_per_mtok")
+    p_write = float(p_write) if _num(p_write) and p_write >= 0 else None
+    # `input_counted` is the price every prompt token that is not a cache read is COUNTED at: the listed input price,
+    # or the listed cache-write price where that is higher (a provider may bill a prompt it stores at that price)
     return {"input": float(p_in), "output": float(p_out), "cache_read": float(p_cache) if _num(p_cache) and p_cache >= 0 else None,
+            "cache_write": p_write, "input_counted": max(float(p_in), p_write or 0.0),
             "context_window": window, "max_output_tokens": e.get("max_output_tokens") if isinstance(e.get("max_output_tokens"), int) else None}
 
 
 def bounds(flat: dict, prices: dict) -> dict:
     """The three numbers of a run's bill, from its caps and the listed prices:
         worst_call_usd   one call: max_context_tokens x input price + max output tokens x output price
+                         (input price = the listed one, or the listed cache-write price where that is higher)
         bound_usd        cap_usd + worst_call_usd: what the spend stop guarantees (tools and runbook use this one)
         crude_bound_usd  max_turns x (context window x input price + max output tokens x output price): what the
                          caps alone would allow without the spend stop and the context cap
@@ -375,8 +382,9 @@ def bounds(flat: dict, prices: dict) -> dict:
         raise Refused(f"max_context_tokens ({ctx}) is above the model's listed context window ({prices['context_window']})")
     if prices.get("max_output_tokens") and out > prices["max_output_tokens"]:
         raise Refused(f"max_output_tokens_per_turn ({out}) is above the model's listed output limit ({prices['max_output_tokens']})")
-    worst = (ctx * prices["input"] + out * prices["output"]) / MTOK
-    crude = int(flat["max_turns"]) * (prices["context_window"] * prices["input"] + out * prices["output"]) / MTOK
+    p_in = prices.get("input_counted", prices["input"])
+    worst = (ctx * p_in + out * prices["output"]) / MTOK
+    crude = int(flat["max_turns"]) * (prices["context_window"] * p_in + out * prices["output"]) / MTOK
     b = {"worst_call_usd": worst, "bound_usd": float(flat["cap_usd"]) + worst, "crude_bound_usd": crude, "cap_usd": float(flat["cap_usd"]),
          "max_context_tokens": ctx, "max_output_tokens": out, "max_turns": int(flat["max_turns"]), "prices_usd_per_mtok": prices}
     if flat["cap_usd"] < worst:
@@ -384,12 +392,54 @@ def bounds(flat: dict, prices: dict) -> dict:
     return b
 
 
-def check_ceiling(p: dict, go: dict, b: dict) -> dict:
+SHARED_SCHEMA = "rollout-ledger/v1"
+SHARED_STATUS = ("done", "running", "cut")
+
+
+def shared_ledger(path: str) -> dict:
+    """What OTHER machines spent on model rollouts, from a copy of the program's shared ledger (schema
+    `rollout-ledger/v1`: research/alife/vecworld/program/round6/rollouts/ledger.json on the lab branch; it lists
+    the rollouts that did NOT run from this pilot folder). The lead's ceiling is one total, so this sum is added
+    to the pilot folder's own ledger before a model run is admitted. Per row: a finished or cut run counts its
+    billed cost (its bound, if no billed cost is given), a running one its bound; the file's own totals count
+    when they are higher. Numbers only are read; the file is data and names no code. Refused: anything that is
+    not a small regular file of exactly this shape."""
+    try:
+        st = os.lstat(path)
+        if not stat.S_ISREG(st.st_mode) or st.st_size > 256 << 10:
+            raise Refused("the shared ledger is not a regular file of at most 256 KiB")
+        with open(path, "rb") as f:
+            raw = f.read()
+        led = json.loads(raw.decode("utf-8"))
+    except OSError:
+        raise Refused("the shared ledger cannot be read") from None
+    except (UnicodeDecodeError, ValueError):
+        raise Refused("the shared ledger is not UTF-8 JSON") from None
+    if not isinstance(led, dict) or led.get("schema") != SHARED_SCHEMA or not isinstance(led.get("rows"), list):
+        raise Refused(f"the shared ledger is not of schema {SHARED_SCHEMA} with rows")
+    spent = 0.0
+    for r in led["rows"]:
+        ok = isinstance(r, dict) and r.get("status") in SHARED_STATUS and _num(r.get("bound_usd")) and r["bound_usd"] >= 0 \
+            and (r.get("billed_usd") is None or (_num(r["billed_usd"]) and r["billed_usd"] >= 0))
+        if not ok:
+            raise Refused("the shared ledger holds a row without a status of done, running or cut and a bound (and billed cost) in dollars")
+        spent += float(r["bound_usd"]) if r["status"] == "running" or r.get("billed_usd") is None else float(r["billed_usd"])
+    stated = [led.get(k) for k in ("billed_usd_total", "reserved_usd_open")]
+    if not all(_num(x) and x >= 0 for x in stated):
+        raise Refused("the shared ledger lacks billed_usd_total or reserved_usd_open")
+    return {"spent_elsewhere_usd": max(spent, float(stated[0]) + float(stated[1])), "rows": len(led["rows"]),
+            "updated_utc": str(led.get("updated_utc"))[:40], "sha256": hashlib.sha256(raw).hexdigest()}
+
+
+def check_ceiling(p: dict, go: dict, b: dict, elsewhere: dict | None = None) -> dict:
+    """The lead's ceiling is ONE total: this pilot folder's ledger, plus what the shared ledger says other
+    machines spent (when the caller gives one; a billed model run must), plus this run's bound."""
     s = ledger_sum(ledger_rows(p))
-    if s["sum_usd"] + b["bound_usd"] > go["ceiling_usd"] + 1e-9:
-        raise Refused(f"the ledger's sum ({s['sum_usd']:.4f}) plus this run's bound ({b['bound_usd']:.4f}) would exceed the lead's "
-                      f"ceiling ({go['ceiling_usd']:.2f})")
-    return dict(s, ceiling_usd=go["ceiling_usd"], after_this_run_at_most_usd=s["sum_usd"] + b["bound_usd"])
+    other = float(elsewhere["spent_elsewhere_usd"]) if elsewhere else 0.0
+    if s["sum_usd"] + other + b["bound_usd"] > go["ceiling_usd"] + 1e-9:
+        raise Refused(f"the ledger's sum ({s['sum_usd']:.4f}) plus what other machines spent ({other:.4f}) plus this run's bound "
+                      f"({b['bound_usd']:.4f}) would exceed the lead's ceiling ({go['ceiling_usd']:.2f})")
+    return dict(s, ceiling_usd=go["ceiling_usd"], spent_elsewhere_usd=other, after_this_run_at_most_usd=s["sum_usd"] + other + b["bound_usd"])
 
 
 def spend_log_total(path: str) -> dict:
@@ -418,6 +468,7 @@ def main(argv=None) -> int:
     ap.add_argument("--pilot", required=True)
     ap.add_argument("--prices", action="store_true", help="also fetch the model's listed prices (one GET, no credential) and print the bounds")
     ap.add_argument("--no-go", action="store_true", help="do not look for the lead's go (for the free stages)")
+    ap.add_argument("--shared-ledger", default=None, help="a copy of the program's shared ledger (rollout-ledger/v1): what other machines spent")
     a = ap.parse_args(argv)
     try:
         req = read_request(a.request)
@@ -436,7 +487,7 @@ def main(argv=None) -> int:
             b = bounds(cfg["flat"], prices_of(fetch_model_entry(req["model"])))
             out["bounds"] = b
             if go:
-                out["ceiling"] = check_ceiling(p, go, b)
+                out["ceiling"] = check_ceiling(p, go, b, shared_ledger(a.shared_ledger) if a.shared_ledger else None)
     except (Refused, CC.Refused) as e:
         print("refused: " + str(e))
         return 2

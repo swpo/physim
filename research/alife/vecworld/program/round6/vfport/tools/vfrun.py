@@ -42,7 +42,8 @@ rollout-job/v1; tools/check_request.py). Every stage checks the request, the pin
 rollout config (tools/check_config.py), the pilot folder and the lead's standing go. Stage `rollout` is the only
 one that can spend money: it needs `--model-credentials prime` (PRIME_API_KEY and PRIME_TEAM_ID of the caller
 are passed on to vf-eval, and verifiers may read ~/.prime/config.json), reads the model's listed prices, refuses
-a cap below one worst-case call or a bound above the lead's ceiling, reserves the bound in <pilot>/LEDGER.jsonl,
+a cap below one worst-case call or a bound above the lead's ceiling (one total: the pilot folder's ledger plus
+what --shared-ledger says other machines spent), reserves the bound in <pilot>/LEDGER.jsonl,
 gives vf-eval the spend table of physim2_env/spend.py, and closes the ledger row when the run has ended, however
 it ended.
 """
@@ -607,15 +608,23 @@ def request_route(a) -> int:
         entry = CR.fetch_model_entry(flat["model"], stand_in)
         prices = CR.prices_of(entry)
         b = CR.bounds(flat, prices)
-        ceiling = CR.check_ceiling(p, go, b)
+        if a.shared_ledger is None and not stand_in and a.stage == "rollout":
+            raise CR.Refused("a model rollout needs --shared-ledger FILE: a fresh copy of the program's shared ledger (the lead's ceiling "
+                             "is one total across machines; RUNBOOK_MAC.md, step 3)")
+        elsewhere = CR.shared_ledger(a.shared_ledger) if a.shared_ledger else None
+        ceiling = CR.check_ceiling(p, go, b, elsewhere)
         print(json.dumps({"job_id": req["job_id"], "model": flat["model"], "prices_usd_per_mtok": prices,
                           "one_worst_case_call_usd": round(b["worst_call_usd"], 6), "cap_usd": b["cap_usd"],
                           "bound_on_the_bill_usd": round(b["bound_usd"], 6), "crude_bound_without_the_spend_stop_usd": round(b["crude_bound_usd"], 2),
-                          "ledger_sum_usd": round(ceiling["sum_usd"], 6), "ceiling_usd": ceiling["ceiling_usd"], "billed": not stand_in}), flush=True)
+                          "ledger_sum_usd": round(ceiling["sum_usd"], 6), "spent_elsewhere_usd": round(ceiling["spent_elsewhere_usd"], 6),
+                          "shared_ledger": None if elsewhere is None else {k: elsewhere[k] for k in ("updated_utc", "rows", "sha256")},
+                          "ceiling_usd": ceiling["ceiling_usd"], "billed": not stand_in}), flush=True)
         spend = {"cap_usd": float(flat["cap_usd"]), "max_context_tokens": int(flat["max_context_tokens"]),
                  "max_output_tokens": int(flat["max_output_tokens_per_turn"]), "model": flat["model"],
-                 "input_usd_per_mtok": prices["input"], "output_usd_per_mtok": prices["output"], "context_window": prices["context_window"],
-                 "prices_from": entry["source"] + f" at unix time {entry['fetched_unix']}", "billed": not stand_in}
+                 "input_usd_per_mtok": prices["input_counted"], "output_usd_per_mtok": prices["output"], "context_window": prices["context_window"],
+                 "prices_from": entry["source"] + f" at unix time {entry['fetched_unix']}"
+                                + ("" if prices["input_counted"] == prices["input"] else "; input counted at the listed cache-write price, which is higher"),
+                 "billed": not stand_in}
         if prices["cache_read"] is not None:
             spend["cache_read_usd_per_mtok"] = prices["cache_read"]
         resolved = json.loads(json.dumps(cfg["expanded"]))
@@ -658,7 +667,7 @@ def request_route(a) -> int:
         CR.ledger_append(p, {"event": "reserved", "job_id": req["job_id"], "model": flat["model"], "instance": req["instance"],
                              "cap_usd": b["cap_usd"], "worst_call_usd": b["worst_call_usd"], "bound_usd": b["bound_usd"],
                              "crude_bound_usd": b["crude_bound_usd"], "prices_usd_per_mtok": prices, "billed": not stand_in,
-                             "ceiling_usd": go["ceiling_usd"], "go_date": go["date"]})
+                             "ceiling_usd": go["ceiling_usd"], "go_date": go["date"], "spent_elsewhere_usd": ceiling["spent_elsewhere_usd"]})
     except (CR.Refused, CC.Refused) as e:
         print("refused: " + str(e), flush=True)
         return 2
@@ -714,6 +723,9 @@ def main(argv=None) -> int:
     ap.add_argument("--model-credentials", choices=["prime"], default=None,
                     help="REQUEST ROUTE, stage rollout ONLY: pass PRIME_API_KEY and PRIME_TEAM_ID on to vf-eval and let verifiers read "
                          "~/.prime/config.json")
+    ap.add_argument("--shared-ledger", default=None,
+                    help="REQUEST ROUTE, stages dry-run and rollout: a copy of the program's shared ledger (rollout-ledger/v1); what it "
+                         "says other machines spent counts against the lead's ceiling. Required for a billed rollout")
     ap.add_argument("--stand-in-endpoint", default=None,
                     help="REQUEST ROUTE, TESTS ONLY: http://127.0.0.1:<port>/v1 of tools/standin_model.py instead of the provider; no "
                          "credential is passed or loaded and nothing is billed")
@@ -724,7 +736,7 @@ def main(argv=None) -> int:
         if not (a.request and a.pilot and a.stage) or a.config or a.run_name or a.out_dir or a.store or a.dry_run:
             raise SystemExit("refused: the request route takes --request, --pilot and --stage (and nothing of the command form)")
         return request_route(a)
-    if a.model_credentials or a.stand_in_endpoint:
+    if a.model_credentials or a.stand_in_endpoint or a.shared_ledger:
         raise SystemExit("refused: a model rollout is started by a request: --request FILE --pilot DIR --stage rollout (RUNBOOK_MAC.md, step 3)")
     if not (a.config and a.run_name and a.out_dir and a.store):
         raise SystemExit("refused: the command form needs --config, --run-name, --out-dir and --store")

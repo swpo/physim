@@ -102,6 +102,17 @@ def run(check, raises, scratch):
         res[k] = bool(CC.fixed_violations(e, got["flat"], RC, CC.light("profiles")))
     check(f"D4 an expansion that differs from the pin's model rollout in any of {len(tampered)} ways is caught, independently of expand()",
           all(res.values()) and CC.fixed_violations(exp, got["flat"], RC, CC.light("profiles")) == [], res)
+    rs = {"effort alone": ('reasoning_effort = "default"', 'reasoning_effort = "high"', {"max_tokens": 512, "reasoning_effort": "high"}),
+          "summary alone": ('reasoning_effort = "default"', 'reasoning_summary = "auto"', {"max_tokens": 512, "reasoning": {"summary": "auto"}}),
+          "summary and effort": ('reasoning_effort = "default"', 'reasoning_effort = "low"\nreasoning_summary = "detailed"',
+                                 {"max_tokens": 512, "reasoning": {"summary": "detailed", "effort": "low"}})}
+    res = {k: CC.check(write_cfg(f"reason{i}.toml", FLAT.replace(a, b)))["expanded"]["sampling"] == want for i, (k, (a, b, want)) in enumerate(rs.items())}
+    e = json.loads(json.dumps(exp))
+    e["sampling"]["reasoning"] = {"summary": "auto", "exclude": False}
+    check("D4b the reasoning keys (rulings E10, E14): an effort alone, a summary alone, both: each expands to exactly one form; anything else in "
+          "[sampling] is caught; an unknown summary word is refused",
+          all(res.values()) and bool(CC.fixed_violations(e, got["flat"], RC, CC.light("profiles")))
+          and bool(refused(lambda: CC.check(write_cfg("reason9.toml", FLAT + 'reasoning_summary = "everything"\n')))), res)
     sch = CC.schema()
     check("D5 the schema as data: the keys, the fixed part, the forbidden fields and the exam profiles with their item counts",
           set(sch["keys"]) == set(RC.FLAT_KEYS) and sch["fixed_by_the_pin"]["push"] is False and "forward_env" in sch["forbidden_fields"]
@@ -175,6 +186,12 @@ def run(check, raises, scratch):
           refused(lambda: CR.bounds(dict(got["flat"], cap_usd=0.04), prices)) and refused(lambda: CR.bounds(dict(got["flat"], max_context_tokens=200000), prices))
           and refused(lambda: CR.fetch_model_entry("not/listed", s.base_url)) and refused(lambda: CR.fetch_model_entry("m", "http://example.org/v1"))
           and refused(lambda: CR.prices_of({"entry": {"pricing": {"input_usd_per_mtok": 1.0}, "context_window": 5}})))
+    pw = CR.prices_of({"entry": {"pricing": {"input_usd_per_mtok": 2.0, "output_usd_per_mtok": 10.0, "cache_read_usd_per_mtok": None, "cache_write_usd_per_mtok": 3.0},
+                                 "context_window": 100000}})
+    check("D15b a listing WITHOUT a cache-read price gives none (cache reads then count at the input price); a listed cache-WRITE price above the "
+          "input price is what prompt tokens are counted at: one worst-case call = 20,000 x $3/M + 512 x $10/M",
+          pw["cache_read"] is None and pw["input_counted"] == 3.0 and abs(CR.bounds(got["flat"], pw)["worst_call_usd"] - (20000 * 3.0 + 512 * 10.0) / 1e6) < 1e-12
+          and prices["input_counted"] == prices["input"] == 2.0, pw)
     s.stop()
     check("D16 an empty ledger sums to zero, and this run's bound fits under a ceiling of $1", CR.check_ceiling(p, g, b)["sum_usd"] == 0.0)
     CR.ledger_append(p, {"event": "reserved", "job_id": "earlier-1", "bound_usd": 0.4, "billed": True})
@@ -190,6 +207,31 @@ def run(check, raises, scratch):
           abs(sm["sum_usd"] - 0.4) < 1e-12 and sm["counted_at_their_bound"] == ["earlier-2"], sm)
     CR.ledger_append(p, {"event": "reserved", "job_id": "earlier-3", "bound_usd": 0.2, "billed": True})
     check("D19 the ceiling: 0.6 in the ledger plus this run's bound of 0.545 would exceed $1 -> refused", bool(refused(lambda: CR.check_ceiling(p, g, b))))
+    def shared(obj, name="shared.json"):
+        f = os.path.join(scratch, f"{name}-{tag}")
+        with open(f, "w") as fh:
+            json.dump(obj, fh)
+        return f
+    led = {"schema": "rollout-ledger/v1", "updated_utc": "2026-11-11T12:20:03Z", "billed_usd_total": 0.25, "reserved_usd_open": 0.1,
+           "rows": [{"id": "a", "model": "m/x", "where": "cloud-container", "status": "done", "bound_usd": 1.0, "billed_usd": 0.2},
+                    {"id": "b", "model": "m/x", "where": "cloud-container", "status": "cut", "bound_usd": 0.5, "billed_usd": 0.05},
+                    {"id": "c", "model": "m/x", "where": "cloud-container", "status": "running", "bound_usd": 0.1}]}
+    sl = CR.shared_ledger(shared(led))
+    g5 = dict(g, ceiling_usd=1.5)
+    bad_led = {"another schema": dict(led, schema="x"), "no rows": {k: v for k, v in led.items() if k != "rows"}, "a list": [led],
+               "a row without a bound": dict(led, rows=[{"id": "a", "status": "done", "billed_usd": 0.1}]),
+               "a status we do not know": dict(led, rows=[dict(led["rows"][0], status="refunded")]),
+               "a negative cost": dict(led, rows=[dict(led["rows"][0], billed_usd=-5)]), "no totals": {k: v for k, v in led.items() if k != "billed_usd_total"}}
+    res = {k: bool(refused(lambda v=v: CR.shared_ledger(shared(v, "badled")))) for k, v in bad_led.items()}
+    check("D19b THE CEILING IS ONE TOTAL: a shared ledger (rollout-ledger/v1) adds what other machines spent: done and cut rows at their billed "
+          "cost, a running row at its bound (0.2 + 0.05 + 0.1 = 0.35); the file's own totals count when they are higher",
+          abs(sl["spent_elsewhere_usd"] - 0.35) < 1e-12 and sl["rows"] == 3
+          and abs(CR.shared_ledger(shared(dict(led, billed_usd_total=2.0)))["spent_elsewhere_usd"] - 2.1) < 1e-12, sl)
+    check(f"D19c ... 0.6 here + 0.35 elsewhere + this run's 0.545 fits under $1.50 and not under $1.49; {len(bad_led)} malformed shared ledgers and a "
+          "missing one are refused",
+          abs(CR.check_ceiling(p, g5, b, sl)["after_this_run_at_most_usd"] - (0.6 + 0.35 + 0.5 + worst)) < 1e-9
+          and bool(refused(lambda: CR.check_ceiling(p, dict(g, ceiling_usd=1.49), b, sl))) and all(res.values())
+          and bool(refused(lambda: CR.shared_ledger(os.path.join(scratch, "no-such-ledger.json")))), res)
     check("D20 a job id that the ledger holds is never run again", refused(lambda: CR.check_job_is_new(p, dict(r, job_id="earlier-2"))) and CR.check_job_is_new(p, r) is None)
     st = CR.check_instance(p, r, must_exist=False)
     CR.register_instance(p, r)
