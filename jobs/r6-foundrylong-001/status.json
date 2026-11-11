@@ -19,10 +19,20 @@
     "src_bytes": 16447559
   },
   "cap_usd": 8.1,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 4.7551
+  "collected": {
+    "error": null,
+    "files": 46,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 52962090,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 4.9154,
+    "conservative_usd": 5.0658
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-11T21:00:46Z",
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
@@ -48,11 +58,21 @@
       "at": "2026-11-11T18:32:36Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-11T21:00:16Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-11T21:00:47Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "r6-foundrylong-001",
   "max_estimate_usd": 6.77,
-  "message": "heartbeat",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -105,7 +125,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 4.9154,
       "created_at": "2026-11-11T18:28:01Z",
       "data_center": "us-east-1",
       "gpu": "A100_40GB",
@@ -118,11 +138,11 @@
       "ready_at": "2026-11-11T18:32:25Z",
       "requested_at": "2026-11-11T18:27:42Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-11T21:00:26Z"
     }
   ],
-  "pods_terminated": null,
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-11T18:45:10Z",
     "file": "jobs/r6-foundrylong-001/review.md",
@@ -132,7 +152,7 @@
   "run_deadline": "2026-11-11T21:41:36Z",
   "run_started_epoch": 1794421660.6429949,
   "started_at": "2026-11-11T18:32:36Z",
-  "state": "running",
+  "state": "done",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n.684, 0.591, 0.51], 'C4096': [0.646, 0.546, 0.448], '<ssh-target>': [0.359, 0.205, 0.04], '<ssh-target>': [0.173, 0.023, -0.209], '<ssh-target>': [0.497, 0.361, 0.261], '<ssh-target>': [0.471, 0.328, 0.195], '<ssh-target>': [0.581, 0.467, 0.363], '<ssh-target>': [0.565, 0.443, 0.333], 'Kp': [-0.15, -0.465, -0.871], 'P0w1000': [0.549, 0.431, 0.326], 'plugPrior': [-1.208, -2.034, -2.726], 'plugTrue': [1.0, 1.0, 1.0], 'plugU0': [0.913, 0.914, 0.918]}\n20:44:26 [ 125.9 min]   net P0w210 step 4000/16000 train 0.3808 val(h) [[0.2552, 0.3928, 0.5512], [0.2567, 0.394, 0.5544], [0.2525, 0.3909, 0.548]] (62s)\n20:45:24 [ 126.9 min]   net P0w210 step 8000/16000 train 0.3600 val(h) [[0.2519, 0.3913, 0.5553], [0.2532, 0.3925, 0.5563], [0.2515, 0.3906, 0.5515]] (121s)\n20:46:22 [ 127.9 min]   net P0w210 step 12000/16000 train 0.3386 val(h) [[0.2514, 0.3924, 0.5585], [0.2525, 0.3927, 0.5566], [0.2509, 0.3917, 0.5533]] (179s)\n20:47:20 [ 128.8 min]   net P0w210 step 16000/16000 train 0.3381 val(h) [[0.2519, 0.3929, 0.5605], [0.2517, 0.3922, 0.5578], [0.2508, 0.3922, 0.5556]] (237s)\n20:47:20 [ 128.8 min] P0w210: 14.04860441213865 ms per step of 3 nets; best steps [[11000, 9000, 5000], [15000, 9500, 5500], [10500, 8500, 3000]]; trained [[True, True, True], [False, True, True], [True, True, True]]\n20:47:31 [ 129.0 min] P0w210 done (250s); skill by horizon (8, 16, 32): {'C16384': [0.684, 0.591, 0.51], 'C4096': [0.646, 0.546, 0.448], '<ssh-target>': [0.359, 0.205, 0.04], '<ssh-target>': [0.173, 0.023, -0.209], '<ssh-target>': [0.497, 0.361, 0.261], '<ssh-target>': [0.471, 0.328, 0.195], '<ssh-target>': [0.581, 0.467, 0.363], '<ssh-target>': [0.565, 0.443, 0.333], 'Kp': [-0.15, -0.465, -0.871], 'P0w1000': [0.549, 0.431, 0.326], 'P0w210': [0.492, 0.361, 0.231], 'plugPrior': [-1.208, -2.034, -2.726], 'plugTrue': [1.0, 1.0, 1.0], 'plugU0': [0.913, 0.914, 0.918]}\n20:48:34 [ 130.0 min]   net P0w64 step 4000/6000 train 0.3662 val(h) [[0.3329, 0.4734, 0.6315], [0.3278, 0.4651, 0.6233], [0.3348, 0.4677, 0.6253]] (62s)\n20:49:03 [ 130.5 min]   net P0w64 step 6000/6000 train 0.3574 val(h) [[0.3343, 0.4815, 0.6493], [0.3276, 0.4674, 0.6314], [0.3341, 0.4711, 0.6352]] (91s)\n20:49:03 [ 130.5 min] P0w64: 14.050837564869088 ms per step of 3 nets; best steps [[500, 500, 500], [1000, 500, 1000], [500, 500, 500]]; trained [[True, True, True], [True, True, True], [True, True, True]]\n20:49:13 [ 130.7 min] P0w64 done (103s); skill by horizon (8, 16, 32): {'C16384': [0.684, 0.591, 0.51], 'C4096': [0.646, 0.546, 0.448], '<ssh-target>': [0.359, 0.205, 0.04], '<ssh-target>': [0.173, 0.023, -0.209], '<ssh-target>': [0.497, 0.361, 0.261], '<ssh-target>': [0.471, 0.328, 0.195], '<ssh-target>': [0.581, 0.467, 0.363], '<ssh-target>': [0.565, 0.443, 0.333], 'Kp': [-0.15, -0.465, -0.871], 'P0w1000': [0.549, 0.431, 0.326], 'P0w210': [0.492, 0.361, 0.231], 'P0w64': [0.42, 0.28, 0.164], 'plugPrior': [-1.208, -2.034, -2.726], 'plugTrue': [1.0, 1.0, 1.0], 'plugU0': [0.913, 0.914, 0.918]}\n20:50:35 [ 132.1 min]   net C1024 s0 w0-7 step 4000/4000 train 0.2915 val(h) [[0.1447, 0.2477, 0.4501], [0.2323, 0.3323, 0.5711], [0.5122, 0.6102, 0.9631]] (79s)\n== out/progress.txt\nPILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material\n18:32:56 [job.sh] start, size full, max hours 2.9, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\nname, memory.total [MiB], driver_version\nNVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08\n18:38:28 [job.sh] presmoke exit 0\n18:38:28 [job.sh] screen chunk for the full pass: 128 draws\n18:38:28 [job.sh] full pass: 2.808 h left of 2.9\n",
-  "updated_at": "2026-11-11T20:51:03Z"
+  "updated_at": "2026-11-11T21:00:47Z"
 }

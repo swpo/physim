@@ -1,0 +1,142 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "size": "presmoke",
+ "finished": true,
+ "config": {
+  "burn": 300,
+  "chunk": 2048,
+  "n_screen": 256,
+  "gate_M": 8,
+  "gate_on": true,
+  "n_pilot_train": 8,
+  "n_new": 8,
+  "epw": 64,
+  "n_hidden": 2,
+  "n_lab": 32,
+  "lab_chunk": 32,
+  "n_items": 96,
+  "R": 12,
+  "n_clim": 96,
+  "m": 24,
+  "m_plug": 8,
+  "budgets": [
+   8,
+   32
+  ],
+  "p0_worlds": [
+   8,
+   16
+  ],
+  "p0_steps": {
+   "8": 100,
+   "16": 100
+  },
+  "p0x2_steps": 100,
+  "batch_p0": 256,
+  "n_c": [
+   1024,
+   2048
+  ],
+  "c_steps": {
+   "1024": 100,
+   "2048": 100
+  },
+  "c_lock": {
+   "1024": 16,
+   "2048": 8
+  },
+  "c_seeds": {
+   "1024": 1,
+   "2048": 2
+  },
+  "batch_c": 128,
+  "c_group": 2,
+  "ft_lrs": [
+   0.0002,
+   0.0008
+  ],
+  "ft_smax": 100,
+  "ft_folds": 4,
+  "d_steps": {
+   "8": 50,
+   "32": 50
+  },
+  "batch_lab": 64,
+  "n_seeds": 2,
+  "eval_big": 50,
+  "eval_small": 50,
+  "chunk_steps": 50,
+  "shape_test": true,
+  "save_params": true
+ },
+ "platform": {
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "python": "3.12.16",
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "world_dtype": "float64",
+  "net_dtype": "float32",
+  "ram_gib": 216.2584342956543
+ },
+ "episode": {
+  "frames": 49,
+  "horizons": [
+   8,
+   16,
+   32
+  ],
+  "anchors": [
+   25,
+   17,
+   1
+  ]
+ },
+ "member_ticks_runner": 2818048,
+ "speed": {
+  "screen": {
+   "member_ticks": 838656,
+   "seconds": 45.718318700790405,
+   "member_ticks_per_s_steady": 38233.043095001834,
+   "chunks": 2,
+   "chunk": 128,
+   "chunk_used": 128,
+   "errors": []
+  },
+  "sim P0": {
+   "member_ticks": 712704,
+   "seconds": 18.886441230773926
+  },
+  "sim C g0": {
+   "member_ticks": 1425408,
+   "seconds": 34.47074055671692
+  }
+ },
+ "hours": 0.08907656086815728,
+ "failed": [],
+ "skipped": [],
+ "clock": {
+  "hidden_s": 28.111727952957153,
+  "scores_s": 10.113393306732178,
+  "P0 main_s": 13.560185432434082,
+  "C2048 s0_s": 8.672895193099976,
+  "FT@32_s": 18.166526317596436,
+  "FT@8_s": 10.707271575927734,
+  "D@32_s": 1.601287841796875,
+  "D@8_s": 1.5796287059783936,
+  "C2048 s1_s": 2.2584786415100098,
+  "C1024_s": 6.0820252895355225,
+  "P0w8_s": 6.660276174545288,
+  "P0x2_s": 6.0641021728515625
+ },
+ "secret_commitment": "1a83138bbdb35ab8621714cef7316587d845a5785533c5f315354b554c8a4740",
+ "n_train_worlds": 16,
+ "p0_worlds": [
+  8,
+  16
+ ],
+ "n_new_ok": 19,
+ "n_candidates": 28
+}

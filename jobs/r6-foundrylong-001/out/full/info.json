@@ -1,0 +1,156 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "size": "full",
+ "finished": true,
+ "config": {
+  "burn": 300,
+  "chunk": 2048,
+  "n_screen": null,
+  "gate_M": 8,
+  "gate_on": true,
+  "n_pilot_train": 210,
+  "n_new": 790,
+  "epw": 64,
+  "n_hidden": 16,
+  "n_lab": 32,
+  "lab_chunk": 32,
+  "n_items": 96,
+  "R": 12,
+  "n_clim": 96,
+  "m": 24,
+  "m_plug": 8,
+  "budgets": [
+   8,
+   32
+  ],
+  "p0_worlds": [
+   64,
+   210,
+   1000
+  ],
+  "p0_steps": {
+   "64": 6000,
+   "210": 16000,
+   "1000": 40000
+  },
+  "p0x2_steps": 80000,
+  "batch_p0": 256,
+  "n_c": [
+   1024,
+   4096,
+   16384
+  ],
+  "c_steps": {
+   "1024": 4000,
+   "4096": 8000,
+   "16384": 16000
+  },
+  "c_lock": {
+   "1024": 16,
+   "4096": 16,
+   "16384": 8
+  },
+  "c_seeds": {
+   "1024": 1,
+   "4096": 1,
+   "16384": 2
+  },
+  "batch_c": 128,
+  "c_group": 8,
+  "ft_lrs": [
+   5e-05,
+   0.0002,
+   0.0008
+  ],
+  "ft_smax": 400,
+  "ft_folds": 4,
+  "d_steps": {
+   "8": 400,
+   "32": 800
+  },
+  "batch_lab": 64,
+  "n_seeds": 3,
+  "eval_big": 500,
+  "eval_small": 50,
+  "chunk_steps": 50,
+  "shape_test": false,
+  "save_params": true
+ },
+ "platform": {
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "python": "3.12.16",
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ],
+  "world_dtype": "float64",
+  "net_dtype": "float32",
+  "ram_gib": 216.2584342956543
+ },
+ "episode": {
+  "frames": 49,
+  "horizons": [
+   8,
+   16,
+   32
+  ],
+  "anchors": [
+   25,
+   17,
+   1
+  ]
+ },
+ "member_ticks_runner": 118112256,
+ "speed": {
+  "screen": {
+   "member_ticks": 49271040,
+   "seconds": 1319.3811433315277,
+   "member_ticks_per_s_steady": 38200.22955708723,
+   "chunks": 118,
+   "chunk": 128,
+   "chunk_used": 128,
+   "errors": []
+  },
+  "sim P0": {
+   "member_ticks": 22806528,
+   "seconds": 550.0884079933167
+  },
+  "sim C g0": {
+   "member_ticks": 45613056,
+   "seconds": 1094.6499314308167
+  },
+  "sim C g1": {
+   "member_ticks": 45613056,
+   "seconds": 1097.8866357803345
+  }
+ },
+ "hours": 2.3548740524053575,
+ "failed": [],
+ "skipped": [],
+ "clock": {
+  "hidden_s": 117.4653582572937,
+  "scores_s": 101.70471429824829,
+  "P0 main_s": 622.2682263851166,
+  "C16384 s0_s": 704.9644734859467,
+  "FT@32_s": 375.3931293487549,
+  "FT@8_s": 370.6762557029724,
+  "D@32_s": 62.21731662750244,
+  "D@8_s": 36.40890836715698,
+  "C16384 s1_s": 688.0427947044373,
+  "C4096_s": 336.24633860588074,
+  "P0w210_s": 250.10740280151367,
+  "P0w64_s": 102.49551105499268,
+  "C1024_s": 167.3450427055359,
+  "P0x2_s": 467.74689769744873
+ },
+ "secret_commitment": "6ebb51b589dcbb27e6dcafd8af1039ebcaafbfa02a72d834f082e8e4c88e575e",
+ "n_train_worlds": 1000,
+ "p0_worlds": [
+  64,
+  210,
+  1000
+ ],
+ "n_new_ok": 818,
+ "n_candidates": 1490
+}

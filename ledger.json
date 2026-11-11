@@ -291,10 +291,10 @@
     {
       "billed_usd": null,
       "cap_usd": 8.4,
-      "conservative_usd": 0.7684,
+      "conservative_usd": 1.0911,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.386,
+      "hours": 0.548,
       "job_id": "r6-dialsa2-001",
       "purpose": "Round-6 dials, study dialsA2: gliders stress-conversion exam reopened on triggered items (aimed, regional) at 8-16 ticks; science share after the best generic repair, told-form recipe H; 16 truths x eta 0/4, 3 seeds per net",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -373,16 +373,16 @@
       "state": "done"
     },
     {
-      "billed_usd": null,
+      "billed_usd": 4.9154,
       "cap_usd": 8.1,
-      "conservative_usd": 4.7551,
-      "finished_at": null,
+      "conservative_usd": 5.0658,
+      "finished_at": "2026-11-11T21:00:46Z",
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 2.389,
+      "hours": 2.546,
       "job_id": "r6-foundrylong-001",
       "purpose": "Round-6 study foundrylong, stage 1: is the pilot's long-horizon gap (16 ticks, 32 Lab episodes) only the recipe's compute? P0 on 1,000 screened prior worlds (3 seeds), a cross-validated fine-tune, a 16,384-episode reference; queries at 8, 16, 32 ticks on the pilot's 16 hidden worlds",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "running"
+      "state": "done"
     },
     {
       "billed_usd": 0.0501,
@@ -423,10 +423,10 @@
   ],
   "summary": {
     "auto_job_cap_usd": 25.0,
-    "committed_usd": 79.4969,
+    "committed_usd": 76.3123,
     "prior_spend_usd": 0.0,
-    "spent_usd": 68.5204,
+    "spent_usd": 69.0034,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T20:51:04Z"
+    "updated_at": "2026-11-11T21:00:48Z"
   }
 }

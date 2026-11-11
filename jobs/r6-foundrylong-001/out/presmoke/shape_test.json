@@ -1,0 +1,21 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "ms_per_step": {
+  "p0_3": 14.161806106567383,
+  "p0_1": 5.304287274678548,
+  "c_big": 18.699337641398113,
+  "c_mid": 18.699547449747723,
+  "lab": 18.627119064331055
+ },
+ "screen_member_ticks_per_s": 38233.043095001834,
+ "runner_member_ticks_per_s": 41351.243894939966,
+ "projected_sim_hours": 1.2608595884996148,
+ "projected_net_hours": 1.0237654509367766,
+ "projected_hours_total": 2.4512917061030577,
+ "full_hours": 2.9,
+ "n_selected": 15040,
+ "n_candidates_estimate": 1645,
+ "seconds": 96.1981873512268,
+ "hours_available": 2.8397820542256036,
+ "speed_ok": true
+}
