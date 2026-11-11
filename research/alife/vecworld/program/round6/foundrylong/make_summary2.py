@@ -168,6 +168,24 @@ def main():
     for f in ("info",):
         if js.get(f):
             out["job_info"] = {k: js[f].get(k) for k in ("hours", "failed", "skipped", "clock", "speed", "finished")}
+    # completeness (review of r6-foundrylong-002/003, minor 3): exit 0 does not mean complete
+    inc = []
+    info = js.get("info") or {}
+    inc += [f"failed: {x}" for x in info.get("failed") or []] + [f"skipped: {x}" for x in info.get("skipped") or []]
+    if not info.get("finished"):
+        inc.append("info.json: not finished")
+    w_steps = (info.get("config") or {}).get("w_steps")
+    for c, recs in ((k[1], v) for k, v in (info.get("speed") or {}).items() if k.startswith("w") and k.endswith("_fit")):
+        cut = [r["steps"] for r in recs if r["steps"] != w_steps]
+        if cut:
+            inc.append(f"W{c}: fits cut at steps {cut} (planned {w_steps})")
+    for b, n in {"P0w1000": 3, "C16384": 1, "FTm@32": 3, "Dm@32": 3, "Drm@32": 1, "Wm": 2, "Wpm": 1, "FTd@32": 3, "Dd@32": 3, "Drd@32": 1,
+                 "Wd": 2, "Wpd": 1, "Wtrue": 1, "plugU0": 1}.items():
+        if len(an.bases.get(b, [])) < n:
+            inc.append(f"{b}: {len(an.bases.get(b, []))} of {n}")
+    out["completeness"] = dict(w_steps=w_steps, incomplete=inc)
+    if inc:
+        out["verdict"]["stage2"] += " (incomplete: " + "; ".join(inc) + ")"
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     with open(a.out, "w") as f:
         json.dump(out, f, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o))

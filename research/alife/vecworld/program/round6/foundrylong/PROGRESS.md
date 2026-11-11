@@ -62,6 +62,11 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 - 21:26: job 002 FAILED by design at its presmoke speed guard (exit 4 -> 2; $0.10 billed): the guard counted JIT
   compilation (0.416 s per fit step per fit, projected 4.9 h). Addendum 4: steady timing; W's steps set by the measured
   speed (<= 200, exit below 80). job_s2.sh smoke from a git archive again: exit 0 (7.2 min). Request 003 (last job).
+- 21:45: review of 003 (delta against 002): fine to run; 002's minors that may still apply: (1) a W fit cut by its time
+  limit would crash w_condition at the trace concatenate (that Lab's W and W+ lost; unlikely now that steps are sized
+  to the speed; not fixable without a 4th job); (2) W+ at 4,096 episodes is capped near C(4,096)'s level (~0.62 of
+  the G*-to-C gap): read W+ as a reading; (3) exit 0 != complete: make_summary2.py now marks incompleteness (tested on
+  002's presmoke outputs, which are test material only). Job 003 queued: no offer within the cap at 21:38; retrying.
 - 21:35: make_final.py (results/summary.json from the analyses; the exam-profile numbers) drafted and run on stage 1.
 
 ## Next step, exactly (stage 2)
