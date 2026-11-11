@@ -4,7 +4,7 @@ Reads results/<job>/scores.npz, info.json, train_info.json, presmoke/*.json and,
 status.json. Every declared criterion is computed by a_stats.criteria (DECLARED.md); everything else is under
 "reported" and is never a criterion. Each block names its source (job id, file, key).
 
-usage: python -B make_summary.py [--job r6-dialsA-001] [--dir results/job] [--budget 8] [--out results/summary.json]
+usage: python -B make_summary.py [--job r6-dialsa-001] [--dir results/job] [--budget 8] [--out results/summary.json]
 """
 import argparse
 import json
@@ -19,9 +19,11 @@ sys.path.insert(0, HERE)
 import a_stats as ST  # noqa: E402
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--job", default="r6-dialsA-001")
+ap.add_argument("--job", default="r6-dialsa-001")
 ap.add_argument("--dir", default=os.path.join(HERE, "results", "job"))
 ap.add_argument("--budget", type=int, default=None)
+ap.add_argument("--job2", default=None, help="the extension job (DECLARED R19), if one ran")
+ap.add_argument("--dir2", default=os.path.join(HERE, "results", "job2"))
 ap.add_argument("--out", default=os.path.join(HERE, "results", "summary.json"))
 args = ap.parse_args()
 D = args.dir
@@ -35,7 +37,18 @@ def jload(name, default=None):
 z = np.load(os.path.join(D, "scores.npz"), allow_pickle=False)
 meta = ("classes", "etas", "truths", "hs", "axes", "PILOT_NEVER_REUSE_AS_EXAM")
 scores = {k: z[k] for k in z.files if k not in meta}
-S = ST.Scores(scores, z["classes"], z["etas"])
+classes = z["classes"]
+S1 = ST.Scores(scores, classes, z["etas"])                        # the first job alone (the base-schedule rungs)
+EXT = None
+if args.job2:                                                     # 16 truths: the two jobs' truths side by side
+    z2 = np.load(os.path.join(args.dir2, "scores.npz"), allow_pickle=False)
+    assert list(z2["etas"]) == list(z["etas"]) and list(z2["hs"]) == list(z["hs"])
+    both = [k for k in scores if k in z2.files and k not in meta]
+    scores = {k: np.concatenate([scores[k], z2[k]], 1) for k in both}
+    classes = np.concatenate([classes, z2["classes"]], 1)
+    EXT = {"job": args.job2, "truth_indices": [int(t) for t in z2["truths"]], "policies_in_both_jobs": sorted(both),
+           "info": json.load(open(os.path.join(args.dir2, "info.json"))) if os.path.exists(os.path.join(args.dir2, "info.json")) else None}
+S = ST.Scores(scores, classes, z["etas"])
 info = jload("info.json", {})
 TR = jload("train_info.json", {})
 cfg = info.get("config", {})
@@ -44,7 +57,7 @@ NB = args.budget or budgets[0]
 DCOL = int(cfg.get("d_first", 32))
 HS = [int(h) for h in z["hs"]]
 e0, e4 = 0, len(S.etas) - 1
-SRC = f"{args.job}: scores.npz"
+SRC = f"{args.job}: scores.npz" + (f" + {args.job2}: scores.npz (truths concatenated)" if args.job2 else "")
 ALL, TRIG = ST.ALL, ST.TRIG
 
 
@@ -209,18 +222,18 @@ try:
 except Exception as exc:
     rep["sigma_0_by_acceptance_py"] = {"error": repr(exc)}
 # the base schedule: every rung scored
-rungs = sorted({int(k.split("@r")[1]) for k in scores if "@r" in k})
+rungs = sorted({int(k.split("@r")[1]) for k in S1.d if "@r" in k})
 rr = {}
 for st_ in rungs:
     a, b, c_ = f"P0@r{st_}", f"Cpub@r{st_}", f"Ctrue@r{st_}"
-    if not S.has(a, b, c_):
+    if not S1.has(a, b, c_):
         continue
     rr[str(st_)] = {
-        "sigma_0_null_P0": short(ST.ratio(S.L(a, e0) - S.L(b, e0), S.L("K", e0) - S.L(b, e0)), ("value", "se")),
-        "s_trueform_net_alone_aimed_regional": short(ST.ratio(S.L(a, e4, cls=TRIG) - S.L(c_, e4, cls=TRIG),
-                                                              S.L("K", e4, cls=TRIG) - S.L(c_, e4, cls=TRIG)), ("value", "se")),
-        "zero_trueformC_vs_publicC": short(ST.ratio(S.L(c_, e0) - S.L(b, e0), S.L("K", e0) - S.L(b, e0)), ("value", "se")),
-        "skill_vs_O": {f"eta{S.etas[ei]:g}|{n_}": round(float((S.L("K", ei).mean() - S.L(x, ei).mean()) / (S.L("K", ei).mean() - S.L("O", ei).mean())), 4)
+        "sigma_0_null_P0": short(ST.ratio(S1.L(a, e0) - S1.L(b, e0), S1.L("K", e0) - S1.L(b, e0)), ("value", "se")),
+        "s_trueform_net_alone_aimed_regional": short(ST.ratio(S1.L(a, e4, cls=TRIG) - S1.L(c_, e4, cls=TRIG),
+                                                              S1.L("K", e4, cls=TRIG) - S1.L(c_, e4, cls=TRIG)), ("value", "se")),
+        "zero_trueformC_vs_publicC": short(ST.ratio(S1.L(c_, e0) - S1.L(b, e0), S1.L("K", e0) - S1.L(b, e0)), ("value", "se")),
+        "skill_vs_O": {f"eta{S.etas[ei]:g}|{n_}": round(float((S1.L("K", ei).mean() - S1.L(x, ei).mean()) / (S1.L("K", ei).mean() - S1.L("O", ei).mean())), 4)
                        for ei in range(len(S.etas)) for n_, x in (("P0", a), ("Cpub", b), ("Ctrue", c_))}}
 rep["base_schedule_rungs"] = rr
 out["reported"] = rep
@@ -235,6 +248,14 @@ tr["fine_tunes"] = {nb: [{"steps": f["steps"], "rule_met": f["rule_met"], "rule"
 tr["D"] = {nb: [{"steps": d["steps"], "rule_met": d["rule_met"], "best_steps": [b for g_ in d["groups"] for b in g_["best_step"]]}
                 for d in ds] for nb, ds in TR.get("D", {}).items()}
 out["training"] = tr
+if EXT:
+    i2 = EXT.pop("info") or {}
+    st2 = json.load(open(os.path.join(args.dir2, "status.json"))) if os.path.exists(os.path.join(args.dir2, "status.json")) else {}
+    out["extension"] = {**EXT, "source": f"{args.job2}: info.json, status.json", "truths": i2.get("extension_truths"),
+                        "hours_on_the_jobs_clock": i2.get("hours"), "failed": i2.get("failed"), "skipped": i2.get("skipped"),
+                        "notes": i2.get("notes"), "member_ticks_planned": i2.get("member_ticks_planned"),
+                        "status": {"state": st2.get("state"), "cost": st2.get("cost"), "ref": (st2.get("bundle") or {}).get("ref"),
+                                   "billing_window_hours": st2.get("billing_window_hours"), "review": st2.get("review")}}
 # cost of the reference policies in episode equivalents (crit_cost: 476 per 6,000 steps of one net on one CPU thread)
 fs = info.get("base_final_steps") or 0
 out["cost_in_episode_equivalents"] = {
