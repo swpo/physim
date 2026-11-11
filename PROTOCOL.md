@@ -38,7 +38,7 @@ branch, are ignored. The Mac checks for new requests about once a minute.
 | field | meaning |
 |---|---|
 | `schema` | always `"gpu-job/v1"` |
-| `job_id` | `[a-z0-9][a-z0-9-]{2,47}`, equal to the file name, never reused |
+| `job_id` | `[a-z0-9][a-z0-9-]{2,47}`, equal to the file name, never reused. GPU jobs and model rollouts (ROLLOUTS.md) share one id namespace: a request whose id is already used by a rollout (`rollouts/<job_id>/` on `gpu-jobs`) is refused and gets no `jobs/<job_id>/` record. If nothing appears for your id within a few minutes, check that, and that the file name is a valid `job_id`; then push the request again under a new id. |
 | `purpose` | one printable line (at most 300 characters) for the ledger |
 | `ref` | optional full commit SHA to run. Omit it to use the commit that holds the request (usually what you want). A given `ref` must be reachable from a `claude/*` branch on origin, and every entry of `paths` must exist in it; otherwise the request is rejected. |
 | `paths` | repository paths to upload (`git archive` of those paths at `ref`; at most 300 MB). They are unpacked under `src/` on the pod, keeping their repository paths. |

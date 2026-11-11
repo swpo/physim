@@ -39,3 +39,10 @@ Campaign cap $1000.00 · spent $63.00 (billed where Prime has reported it, other
 | smoke-001 | done | claude/gpu-smoke-20261107 | A10_24GB (lambdalabs) | 0.123 | 0.16 | 0.05 | 1.5 | 2026-11-07T21:11:49Z |
 | vw1-agree-001 | done | claude/fisim-agent-world-research-hepmlz | A100_80GB (datacrunch) | 0.075 | 0.18 | 0.08 | 4.0 | 2026-11-07T22:00:40Z |
 | vw1-bench-001 | done | claude/fisim-agent-world-research-hepmlz | A100_80GB (datacrunch), H100_80GB (lambdalabs) | 0.536 | 2.08 | 0.19 | 10.0 | 2026-11-07T21:51:43Z |
+
+## Model rollouts
+
+Run on the user's Mac (see ROLLOUTS.md), budgeted apart from GPU jobs: the user's $500 total covers this Mac's rollouts and the coordinator's cloud ledger. This Mac: billed $0.00 (reconciled) · reserved $0.00 (bound until reconciled) · bounds above $50 need the user's approval. Machine-readable: rollouts/ledger.json.
+
+| id | state | model | bound USD | billed USD | reconciled | finished |
+|---|---|---|---|---|---|---|
