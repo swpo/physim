@@ -27,7 +27,6 @@
    "role": "designed",
    "runs": [
     "A",
-    "B",
     "late"
    ],
    "priority": 1

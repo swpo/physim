@@ -21,7 +21,7 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 ALL = ["A", "B", "late"]
 W = [dict(name="membrane_s4", kind="membrane", stride=4, role="designed", runs=ALL, priority=1),
-     dict(name="vortex64_s4", kind="vortex", H=64, stride=4, role="designed", runs=ALL, priority=1),
+     dict(name="vortex64_s4", kind="vortex", H=64, stride=4, role="designed", runs=["A", "late"], priority=1),
      dict(name="gliders_n1", kind="gliders", n_hidden=1, role="designed", runs=["A", "B"], priority=1),
      dict(name="gliders_n8", kind="gliders", n_hidden=8, role="designed", runs=["A", "B"], priority=1),
      # after the Mac's review of the first job (written before any card of either job was read):

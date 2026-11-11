@@ -1,8 +1,9 @@
 """make_cards -- job outputs -> results/: one card per world (card.md + card.png + card.json), the comparison
 table (table.md, table.csv), robustness.json (seed, size, late window), derived.json (every run).
 
-usage: python -B make_cards.py <job out dir> [<job out dir> ...] --job <job_id> [--rate USD_PER_HOUR] [--no-fig]
-A later directory overrides an earlier one for the same (world, run). numpy + matplotlib; no JAX.
+usage: python -B make_cards.py <job_id>=<job out dir> [<job_id>=<job out dir> ...] [--rate USD_PER_HOUR] [--no-fig]
+A later directory overrides an earlier one for the same (world, run); the earlier card is kept as run "<run>_first"
+(the same seeds run twice: a rerun check). numpy + matplotlib; no JAX.
 """
 from __future__ import annotations
 
@@ -65,17 +66,23 @@ def row(vals, nd=2):
 
 def load(dirs):
     cards, series = {}, {}
-    for d in dirs:
+    for spec in dirs:
+        job, d = spec.split("=", 1) if "=" in spec else ("?", spec)
         for f in sorted(glob.glob(os.path.join(d, "cards", "*.json"))):
             c = json.load(open(f))
             if not c.get("finite", True):
                 print("NON-FINITE run left out:", f)
                 continue
-            c["_dir"] = d
-            cards[(c["world"], c["run"])] = c
+            c["_job"] = job
+            key = (c["world"], c["run"])
+            if key in cards:
+                cards[(c["world"], c["run"] + "_first")] = cards[key]
+                if key in series:
+                    series[(c["world"], c["run"] + "_first")] = series[key]
+            cards[key] = c
             s = os.path.join(d, "series", os.path.basename(f)[:-5] + ".npz")
             if os.path.exists(s):
-                series[(c["world"], c["run"])] = s
+                series[key] = s
     return cards, series
 
 
@@ -171,7 +178,7 @@ def figure(world, runs, series, path):
 
 
 # ----------------------------------------------------------------------------- card.md
-def card_md(world, runs, D, G, late, rob, rate, job):
+def card_md(world, runs, D, G, late, rob, rate):
     c = runs.get("A") or next(iter(runs.values()))
     r0 = c["run"]
     d, g = D[r0], G[r0]
@@ -313,7 +320,8 @@ def card_md(world, runs, D, G, late, rob, rate, job):
         A(f"Estimator size (even against odd test states, block view at 8 ticks): predictable fraction {row(sh['pf8'])}, "
           f"ceiling {row(sh['ceil8'])}.")
     A("")
-    A(f"Source: job {job}, `out/cards/{world}__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards "
+    A("Source: " + "; ".join(f"run {r}: job {c_['_job']}" for r, c_ in runs.items())
+      + f"; files `out/cards/{world}__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards "
       "(`card.json` here holds the derived numbers and gates of every run). Pilot: never an exam instance.")
     return "\n".join(L) + "\n"
 
@@ -333,7 +341,6 @@ def cost_of(runs, flag=False):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("dirs", nargs="+")
-    ap.add_argument("--job", default="?")
     ap.add_argument("--rate", type=float, default=0.0)
     ap.add_argument("--no-fig", action="store_true")
     ap.add_argument("--res", default=RES)
@@ -350,11 +357,15 @@ def main():
     derived, robust, rows = {}, {}, []
     for w in names:
         runs = {r: worlds[w][r] for r in ("A", "B", "late") if r in worlds[w]}
+        if "A_first" in worlds[w]:
+            df, gf = rederive(worlds[w]["A_first"])
         D, G = {}, {}
         for r, c in runs.items():
             D[r], G[r] = rederive(c)
             c["_gates"] = G[r]
         derived[w] = {r: dict(derived=D[r], gates=G[r]) for r in runs}
+        if "A_first" in worlds[w]:
+            derived[w]["A_first"] = dict(derived=df, gates=gf)
         late = GT.late_vs_early(runs["A"], runs["late"]) if "A" in runs and "late" in runs else None
         rob = {}
         if "A" in runs and "B" in runs:
@@ -374,6 +385,11 @@ def main():
             rob["size_gates"] = {k: bool(G["A"][k] == gb[k]) for k in GATE_KEYS + ["dull"]}
         if late:
             rob["late"] = late
+        if "A_first" in worlds[w]:                # the same seeds simulated in two jobs
+            rob["rerun"] = {k: GT.robust(D["A"].get(k), df.get(k)) for k in ROBUST_KEYS if k not in ("grid.xresp",)}
+            rob["rerun_values"] = {k: [df.get(k), D["A"].get(k)] for k in ("grid.pf8", "grid.ceil8", "grid.sigma_hat", "s.nb_mean", "b.ceil_disp8")}
+            rob["rerun_jobs"] = [worlds[w]["A_first"]["_job"], runs["A"]["_job"]]
+            rob["xresp_first_biased"] = df.get("grid.xresp")
         if ("A" in runs) and (w, "A") in series:                  # estimator size: even against odd test states
             z = np.load(series[(w, "A")])
             hz = runs["A"]["grid"]["hz"]
@@ -393,7 +409,7 @@ def main():
         fig_bytes = None
         if not a.no_fig:
             fig_bytes = figure(w, runs, series, os.path.join(wd, "card.png"))
-        open(os.path.join(wd, "card.md"), "w").write(card_md(w, runs, D, G, late, rob, a.rate, a.job))
+        open(os.path.join(wd, "card.md"), "w").write(card_md(w, runs, D, G, late, rob, a.rate))
         c0 = runs.get("A") or next(iter(runs.values()))
         curves = {r: dict(hz=c["grid"]["hz"], grid_pf=c["grid"]["pf_med"], grid_ceil=c["grid"]["ceil_med"],
                           grid_ceil_se=c["grid"].get("ceil_med_se"), grid_ceil_mean=c["grid"]["ceil"],
@@ -403,12 +419,13 @@ def main():
                           pl_over_vorc={e: v["pl_over_vorc_med"] for e, v in c["grid"]["pl"].items()},
                           act_D_over_floor={k: v["D_over_floor"] for k, v in c["grid"]["act"].items()},
                           timing=c["timing"], burn=c["burn"], seed=c["seed"]) for r, c in runs.items()}
-        json.dump(dict(world=w, role=c0["role"], family=c0["family"], meta=c0["meta"], sizes=c0["sizes"], job=a.job,
+        json.dump(dict(world=w, role=c0["role"], family=c0["family"], meta=c0["meta"], sizes=c0["sizes"],
+                       jobs={r: c["_job"] for r, c in runs.items()},
                        runs={r: dict(derived=D[r], gates=G[r]) for r in runs}, curves=curves, robustness=rob,
                        figure_bytes=fig_bytes, PILOT_NEVER_REUSE_AS_EXAM=True),
                   open(os.path.join(wd, "card.json"), "w"), indent=1, default=float)
         d, g = D[c0["run"]], G[c0["run"]]
-        rows.append(dict(world=w, role=c0["role"], family=c0["family"], verdict=g["verdict"],
+        rows.append(dict(world=w, role=c0["role"], family=c0["family"], job=c0["_job"], run=c0["run"], verdict=g["verdict"],
                          sigma_hat=g["sigma_hat_best"], level=g["sigma_hat_level"], pf8=d.get("grid.pf8"), ceil8=d.get("grid.ceil8"),
                          ceil8_mean=d.get("grid.ceil8_mean"), w_theta8=d.get("grid.w_theta8"), pl01=d.get("grid.pl_ratio0.1_8"),
                          pl003=d.get("grid.pl_ratio0.03_8"), bodies=d.get("s.nb_mean"), half_life=d.get("s.half_life_ticks"),
@@ -424,6 +441,7 @@ def main():
                          late_same=None if not late else late["same"],
                          seed_gates_same=None if "seed_gates" not in rob else all(rob["seed_gates"].values()),
                          **{k: g[k] for k in GATE_KEYS}))
+    derived["_jobs"] = {w: {r: c["_job"] for r, c in worlds[w].items()} for w in names}
     json.dump(derived, open(os.path.join(a.res, "derived.json"), "w"), default=float)
     json.dump(robust, open(os.path.join(a.res, "robustness.json"), "w"), indent=1, default=float)
     json.dump(rows, open(os.path.join(a.res, "table.json"), "w"), indent=1, default=float)

@@ -1,0 +1,45 @@
+{
+ "schema": "gpu-job/v1",
+ "job_id": "r6-cards-002",
+ "purpose": "Round-6 study cards, job 2: world cards on slower clocks (membrane, fed vortices: 4 world ticks per card tick), gliders with round 5's 1- and 8-parameter hidden sets, three reruns with the corrected response-difference estimator, true diffusion controls, 128-px vortices with 8-px blocks; 15 runs",
+ "requester": "cloud study cards (round 6), session_01BZceC7G6m7DgM6KpXjnWXj",
+ "paths": [
+  "research/alife/vecworld/vw1",
+  "research/alife/vecworld/integrate",
+  "research/alife/vecworld/spec",
+  "research/alife/vecworld/level0",
+  "research/alife/vecworld/program/track2/gliders_exam",
+  "research/alife/vecworld/program/track2/actuation",
+  "research/alife/vecworld/program/track1/vortex_world",
+  "research/alife/vecworld/program/track1/membrane_world",
+  "research/alife/vecworld/program/round5/vortexexam/prior.json",
+  "research/alife/vecworld/program/round5/foundry/tnca.py",
+  "research/alife/vecworld/program/round6/cards"
+ ],
+ "gpu": {
+  "types": [
+   "A100_40GB",
+   "A100_80GB"
+  ],
+  "count": 1,
+  "spot": false
+ },
+ "max_hours": 1.5,
+ "cap_usd": 4.3,
+ "setup": [
+  "curl -LsSf https://astral.sh/uv/install.sh | sh",
+  "export PATH=$HOME/.local/bin:$PATH",
+  "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+  "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+ ],
+ "run": "cd research/alife/vecworld/program/round6/cards && bash job.sh",
+ "env": {
+  "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+  "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+  "CARDS_SIZE": "full",
+  "CARDS_REQUIRE_GPU": "1",
+  "CARDS_WORLDS": "worlds2.json",
+  "CARDS_T_LIMIT_S": "4200"
+ },
+ "notes": "Second and last planned job of study cards (budget $25; r6-cards-001 holds a cap of $11.40 and is expected to bill about $2). Cap $4.30 covers the dearer listed type, an A100 80GB at $2.35/h for 1.5 + 0.25 h = $4.11, + $0.10; on the A100 40GB at $1.99/h the same hours cost $3.48. PILOT_NEVER_REUSE_AS_EXAM: public seeds and public default parameters only. Same code path as r6-cards-001 (job.sh, job.py, cardlib.py) with the corrections asked for by the review of that job: tick share as the mean of per-channel shares (item 1), response difference from the variance of the per-replica difference (item 2), a non-finite run gets the verdict invalid and counts as failed (item 4), true diffusion controls with gam = 0 (item 5), the 128-px vortex world with 8-px blocks (item 6), scipy pinned. Not changed: the series files (15 runs: about 5 MB in all), check_elems. Work (worlds2.json, 15 runs, 10 worlds, 7 program groups): membrane on a clock of 4 world ticks (3 runs; 16 members x up to 1,800 world ticks, branch 960 members x 128 world ticks; batch on the device 480), fed vortices at 64 px on a clock of 4 world ticks (2 runs; main 16 members x 1,700 and 2,100 world ticks at about 0.18 s per tick from r6-cards-001, branch 960 members x 128 world ticks at about 3 s per tick: about 12 minutes per run), gliders with 1, 4 and 8 hidden parameters (5 runs of about 1 minute, one program), vortex64 and membrane run A again, two diffusion controls, vortex at 128 px with a 16 x 16 block view (1 run, about 5 minutes; device batch 480, as vortex128 in r6-cards-001). Expected 45-60 minutes including seven compiles. Memory: every group is one that the review of r6-cards-001 put at 5 GB or less on the A100 40GB; the strided programs hold the same batches (a scan over 4 world ticks). PRESMOKE as before: the first full-size run of every program group, exit 2 at once if a group of priority 1 fails (the 128-px size check, priority 3, is recorded and dropped). No new run starts after 4,200 s; exit 1 if any run failed or a priority-1 run was skipped. $OUT about 5 MB. No network or subprocess use outside setup. CPU test passed: job.sh end to end at tiny size with CARDS_WORLDS=worlds2.json from a git archive of these eleven paths at commit 320ce1a229 (tree of round6/cards da7de3b413): presmoke of 7 groups passed, 11 runs, failed 0, exit 0, 657 s; check_cardlib.py passes with the two cases the review asked for. The commit that holds this request differs from the tested one in worlds2.json (run B of vortex64_s4 dropped to save 12 minutes), make_worlds2.py, make_cards.py, make_summary.py and PROGRESS.md, none of which the job's code path reads except the shorter run list."
+}
