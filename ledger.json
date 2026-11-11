@@ -291,10 +291,10 @@
     {
       "billed_usd": null,
       "cap_usd": 8.4,
-      "conservative_usd": 2.3741,
+      "conservative_usd": 2.4101,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 1.193,
+      "hours": 1.211,
       "job_id": "r6-dialsa2-001",
       "purpose": "Round-6 dials, study dialsA2: gliders stress-conversion exam reopened on triggered items (aimed, regional) at 8-16 ticks; science share after the best generic repair, told-form recipe H; 16 truths x eta 0/4, 3 seeds per net",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -449,8 +449,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 84.5151,
     "prior_spend_usd": 0.0,
-    "spent_usd": 70.3892,
+    "spent_usd": 70.4252,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T21:39:29Z"
+    "updated_at": "2026-11-11T21:40:34Z"
   }
 }
