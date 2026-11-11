@@ -22,15 +22,17 @@ README.md, DECLARED.md, DEVIATIONS.md.
   decimals (the 32-tick gain differs: fitted here with the Lab's scale, as declared), and picks the adversary's
   filter (0.25, 1, 3, 2).
 - 16:08: job **r6-dialsB-001** requested (CPU_NODE 16 vCPU / 64 GB, max_hours 3.5, cap $2.50).
+- 16:21: the runner did not acknowledge r6-dialsB-001 in 13 minutes (upper-case id; DEVIATIONS.md 1): cancel file
+  pushed and verified, the same request pushed as **r6-dialsb-001**.
 
 ## Next step (exact)
 
-1. Wait: one background loop fetching `origin/gpu-jobs` every 60 s until `jobs/r6-dialsB-001/status.json` has a
+1. Wait: one background loop fetching `origin/gpu-jobs` every 60 s until `jobs/r6-dialsb-001/status.json` has a
    final state (done | failed | timeout | cancelled | rejected | infra_error). "queued, waiting for an offer" is
    not stuck; a stock-out is requeued by the runner.
-2. Read `git show origin/gpu-jobs:jobs/r6-dialsB-001/review.md` BEFORE any result and act on it.
-3. `git archive origin/gpu-jobs jobs/r6-dialsB-001 | tar -x -C <scratch>`; `python -B make_summary.py
-   <scratch>/jobs/r6-dialsB-001`; commit `results/` (summary.json and results/job/*.json, ranges.sha256).
+2. Read `git show origin/gpu-jobs:jobs/r6-dialsb-001/review.md` BEFORE any result and act on it.
+3. `git archive origin/gpu-jobs jobs/r6-dialsb-001 | tar -x -C <scratch>`; `python -B make_summary.py
+   <scratch>/jobs/r6-dialsb-001`; commit `results/` (summary.json and results/job/*.json, ranges.sha256).
 4. README.md (per-seed and per-horizon table, each condition with its number and verdict, what a build needs),
    DEVIATIONS.md, final report; remove the worktree and the scratch folder.
 
@@ -38,4 +40,5 @@ README.md, DECLARED.md, DEVIATIONS.md.
 
 | job | state | note |
 |---|---|---|
-| r6-dialsB-001 | requested 16:08 UTC | the one planned job; cap $2.50 of the study's $5 |
+| r6-dialsB-001 | cancelled 16:21 UTC (cancel file pushed), never acknowledged by the runner | its id has an upper-case letter, which PROTOCOL.md's pattern does not allow; $0 |
+| r6-dialsb-001 | requested 16:21 UTC | the same request, lower-case id, pinned to 52ae6e403631; cap $2.50 of the study's $5 |
