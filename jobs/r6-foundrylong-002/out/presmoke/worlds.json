@@ -1,0 +1,35 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "hidden": [
+  {
+   "label": "seed2027-46",
+   "lab_nats": {
+    "m": {
+     "mean": 199.99999960000002,
+     "max": 399.99999920000016
+    },
+    "d": {
+     "mean": 399.99999960000014,
+     "max": 399.99999960000014
+    }
+   },
+   "plug_prior": "seed2026-198",
+   "lab_cls_mix": "badccdacbdacdcdbbcdbaabbbaccadda"
+  },
+  {
+   "label": "seed2027-581",
+   "lab_nats": {
+    "m": {
+     "mean": 199.99999960000002,
+     "max": 399.99999920000005
+    },
+    "d": {
+     "mean": 399.99999960000014,
+     "max": 399.99999960000014
+    }
+   },
+   "plug_prior": "seed2027-4327",
+   "lab_cls_mix": "dcadabdbbddbcbacdabbaccbaddaccca"
+  }
+ ]
+}

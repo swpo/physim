@@ -1,0 +1,82 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "size": "presmoke",
+ "finished": false,
+ "config": {
+  "burn": 300,
+  "n_hidden": 2,
+  "n_lab": 32,
+  "lab_chunk": 32,
+  "n_items": 96,
+  "R": 12,
+  "n_clim": 96,
+  "m": 24,
+  "m_plug": 8,
+  "N": 32,
+  "ft_lrs": [
+   5e-05,
+   0.0002
+  ],
+  "ft_smax": 100,
+  "ft_folds": 4,
+  "d_steps": 100,
+  "batch_lab": 64,
+  "n_seeds": 2,
+  "eval_small": 50,
+  "chunk_steps": 50,
+  "w_cands": 8,
+  "w_pre_E": 8,
+  "w_starts": 4,
+  "w_steps": 10,
+  "w_lr": [
+   0.03,
+   0.01
+  ],
+  "w_eb": 8,
+  "w_M": 4,
+  "w_A": 2,
+  "w_k": 16,
+  "w_pool": 16,
+  "w_respin": 50,
+  "w_pair": 2,
+  "w_eval_M": 4,
+  "w_eval_pool": 8,
+  "wp_n": 512,
+  "wp_steps": 100,
+  "wp_batch": 128,
+  "wp_lock": 8,
+  "eval_big": 50,
+  "shape_test": true
+ },
+ "platform": {
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "python": "3.12.16",
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ]
+ },
+ "member_ticks_runner": 0,
+ "speed": {
+  "wm_fit": [
+   {
+    "steps": 10,
+    "B": 8,
+    "seconds": 33.25790476799011
+   }
+  ]
+ },
+ "hours": 0.026625126798947654,
+ "failed": [],
+ "skipped": [],
+ "clock": {
+  "hidden_s": 28.224887132644653,
+  "stage-1 nets_s": 3.3318684101104736,
+  "wm_prescreen_s": 9.821080923080444,
+  "wm_fit_s": 43.258383989334106,
+  "w_predict_s": 19.005431175231934,
+  "W mix_s": 63.37921714782715
+ },
+ "secret_commitment": "5e820964006c131c22da732f38874df516ad6c836bdb14ad6ba0626f8e8f0ebc"
+}

@@ -1,0 +1,9 @@
+PILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material
+21:24:05 [   0.0 min] run_fl2 size presmoke max_hours 0.5; jax 0.12.0.1 numpy 2.5.4 backend gpu devices [CudaDevice(id=0)]; horizons (8, 16, 32)
+21:24:34 [   0.5 min] hidden worlds: 2 x (2 Labs + exam + plug-ins + ridges) (28s); designed Lab nats [399.99999960000014, 399.99999960000014]
+21:24:34 [   0.5 min] references: {'Drd@32': [0.626, 0.431, 0.272], 'Drm@32': [0.625, 0.429, 0.269], 'Kp': [0.121, -0.249, -0.512], 'plugPrior': [-0.512, -0.748, -0.997], 'plugTrue': [1.0, 1.0, 1.0], 'plugU0': [0.99, 0.989, 0.986]}
+21:24:38 [   0.5 min] stage-1 nets done (3s); skill by horizon (8, 16, 32): {'C16384': [0.83, 0.745, 0.58], 'Drd@32': [0.626, 0.431, 0.272], 'Drm@32': [0.625, 0.429, 0.269], 'Kp': [0.121, -0.249, -0.512], 'P0w1000': [0.703, 0.533, 0.334], 'plugPrior': [-0.512, -0.748, -0.997], 'plugTrue': [1.0, 1.0, 1.0], 'plugU0': [0.99, 0.989, 0.986]}
+21:24:48 [   0.7 min] Wm: prescreen of 8 prior worlds' weights (10s); best loss median 0.7010
+21:25:41 [   1.6 min] W mix done (63s); skill by horizon (8, 16, 32): {'C16384': [0.83, 0.745, 0.58], 'Drd@32': [0.626, 0.431, 0.272], 'Drm@32': [0.625, 0.429, 0.269], 'Kp': [0.121, -0.249, -0.512], 'P0w1000': [0.703, 0.533, 0.334], 'Wm': [0.373, 0.251, 0.115], 'plugPrior': [-0.512, -0.748, -0.997], 'plugTrue': [1.0, 1.0, 1.0], 'plugU0': [0.99, 0.989, 0.986]}
+21:25:41 [   1.6 min] speed guard: 0.416 s per fit step per fit; projected 4.93 h (W 3.57); available 2.8733746398157543; ok False
+21:25:41 [   1.6 min] TOO SLOW: stopping before the full pass
