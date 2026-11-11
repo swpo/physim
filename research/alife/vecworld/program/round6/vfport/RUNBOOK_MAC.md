@@ -14,7 +14,7 @@ file stops here (rule A.1) and reports.
 40-character hash in the coordinator's GO message. The lead checks it out (section C) and gives it to the
 session, and the first line that step 0 prints must equal it. The code is identified by the sha256 of
 `PIN.sha256`, the list of the sha256 of every file the pilot executes or imports; step 0 recomputes both.
-sha256 of `PIN.sha256`: `9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4`
+sha256 of `PIN.sha256`: `776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc`
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, the session and the disk, (1) install, (2) run the scripted,
@@ -28,10 +28,14 @@ Evidence. Round 3 rehearsed every command of steps 0 to 2 and of step 4 except t
 command, and every point of "If a run was interrupted" except point 4, in the cloud container (Linux x86_64,
 Docker 29.9.2), each as ONE `sh -c '<text>'` (`results/rehearsal_round3.json`). Round 4: the tools of step 3 ran
 there end to end through vf-eval against a stand-in for the model endpoint, in capped boxes of image
-`physim2-ring:2`, and under tripwires on the host (`results/round4_step3.json`); which commands of this text were
-issued as written, and which were not, is listed at the end of this file.
-**Nothing here has run on a Mac: every statement about macOS and Docker Desktop is inferred.** No command of
-step 3 has called a model from this code.
+`physim2-ring:2`, and under tripwires on the host (`results/round4_step3.json`); then the text of
+the round-4 pin before this one (the same commands; `d9694f3e5`) was rehearsed from a fresh clone of that pin,
+again each command as ONE `sh -c '<text>'`: steps 0 to 2 with one
+interruption and one trip of the disk watchdog, and step 3 with a real model for three jobs (one ended by itself
+at its first call, one was killed between two model calls and cleaned up by "If a run was interrupted", one ran
+to its natural end and was graded and packed): `results/rehearsal_round4.json`. Which commands were issued as
+written, and which were not, is listed at the end of this file.
+**Nothing here has run on a Mac: every statement about macOS and Docker Desktop is inferred.**
 
 ## A. Rules for the session that follows this file
 
@@ -304,8 +308,12 @@ else; `tools/vfrun.py` and `tools/check_request.py --prices` each make one `GET
 https://api.pinference.ai/api/v1/models` without any credential; `git fetch` talks to the repository's host. A
 box talks to verifiers' proxy on the Mac only, and at set-up it downloads nothing (the harness is in the image;
 replayed with the network off, fixer A's `tests/harness_setup.sh`). That vf-eval opens no other connection in a
-model run is read from the code (the run's config names the inference address; uploads are off) and was NOT
-measured at the socket: no model run has been made from this code yet.
+model run is read from the code (the run's config names the inference address; uploads are off) and was looked
+at once at the socket, in the cloud container, during the full rollout of the round-4 rehearsal: sampled every
+two seconds from about one minute after vf-eval started until it ended (2,563 s, 1,275 samples, grading
+included), vf-eval and its laboratory held loopback connections and listeners on 127.0.0.1, and vf-eval held
+connections to port 443 of two addresses, the two that `api.pinference.ai` resolved to there, and to nothing else
+(`results/rehearsal_round4.json`, `sockets_of_the_full_rollout`). Its first minute, and a Mac, were not sampled.
 
 ## C. By hand, before the session's first command (the lead)
 
@@ -846,7 +854,6 @@ wall_minutes = 60
 box_memory_gb = 4
 cap_usd = 1.0
 reasoning_effort = "default"
-reasoning_summary = "default"
 push = false
 ```
 
@@ -857,6 +864,14 @@ push = false
  "exam_profile": "ring", "instance": "pilot-ring-qwen-002", "model": "qwen/qwen3.6-35b-a3b",
  "caps": {"max_turns": 150, "max_output_tokens": 8192, "wall_minutes": 60, "box_memory_gb": 4}, "cap_usd": 1.0}
 ```
+
+(There is no key for reasoning summaries. The round-4 pin before this one had `reasoning_summary`, which sent the
+route a `reasoning` object; for `qwen/qwen3.6-35b-a3b` the route refused it at the first call on 11 Nov 2026
+(HTTP 400, `Unsupported request for this model (reasoning).`), so the key was removed and a config that holds it
+is refused as an unknown key. `reasoning_effort` other than `"default"` was not tried against the route; what
+the replies carried is recorded per run either way (in the trace, `info.physim2.reasoning`; `tools/run_report.py`
+prints it as `8_reasoning`). In the rehearsal's full rollout of the default model with nothing sent, none of 143
+replies carried reasoning and the provider reported no reasoning tokens.)
 
 The request repeats what the config says, and the tools refuse when the two differ. What a program can check,
 as data (`python -B tools/check_request.py --facts` prints exactly this object, and `tools/check_runbook.py`
@@ -886,7 +901,6 @@ with their item counts; the scripted policies of the reference table; the stages
    "box_memory_gb": {"type": "int or float", "required": false, "default": 4, "range": [1, 4]},
    "cap_usd": {"type": "int or float", "required": true, "default": null, "range": [0.01, 500]},
    "reasoning_effort": {"type": "str", "required": false, "default": "default", "one_of": ["default", "none", "minimal", "low", "medium", "high", "xhigh", "max"]},
-   "reasoning_summary": {"type": "str", "required": false, "default": "default", "one_of": ["default", "auto", "detailed"]},
    "push": {"type": "bool", "required": false, "default": false, "one_of": [false]}
   },
   "fixed_by_the_pin": {"env": "physim2-verifier", "taskset": "physim2-env", "harness": {"id": "bash", "edit": true, "search": false}, "runtime": "docker", "num_rollouts": 1, "max_concurrent": 1, "retries": 0, "push": false},
@@ -1084,8 +1098,12 @@ In every case: do not run the job again.
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/run_report.py --store "$HOME/physim2-rollouts/store" --run-dir "$HOME/physim2-rollouts/rollouts/JOB_ID/out/JOB_ID"
 ```
 
-Report its output as it is. A run without a reward (vf-eval was cut before it could grade) is settled as the
-null policy, never as K and never by a second run:
+Report its output as it is. For a job whose vf-eval was killed outright it prints `"episodes": 0` and an empty
+list: no trace was saved; that job is recorded as cut (point 8 of "If a run was interrupted") and there is
+nothing to settle. A saved run without a reward (vf-eval was cut before it could grade) is settled as the
+null policy, never as K and never by a second run; the command below prints one JSON line per rollout it
+looked at (`"settled_as_null": true` with the reward, or a note that a grade exists already), and NOTHING when
+the run folder holds no saved episode:
 `cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/settle.py --store "$HOME/physim2-rollouts/store" --run-dir "$HOME/physim2-rollouts/rollouts/JOB_ID/out/JOB_ID"`.
 
 **3h. The key scan and the publication folder** (also for a cut run):
@@ -1119,7 +1137,12 @@ LEFT OUT, stays in the pilot folder, and is listed in `MANIFEST.json` and `key_s
 by value. Machine details (the home folder, the pilot folder, the study folder, the host name, the team id) are
 replaced by value in every text file. At most 20 MB per file and 50 MB in all; what does not fit is left out and
 listed. `"key_scan"` other than `"clean"` (the command then ends with status 3), a non-empty `left_out` or
-`missing`, or `"complete": false`: report the line as it is; publish only what the folder holds.
+`missing`, or `"complete": false`: report the line as it is; publish only what the folder holds. Two cases in
+which `missing` is not empty and nothing is wrong with the packing (both seen in the cloud rehearsal): a run
+whose agent never called the laboratory has no laboratory log (`"missing": ["lab_log.jsonl"]`); and a job that
+was cut by a kill of vf-eval has no saved trace, so `missing` names `grades.json`, `lab_log.jsonl`,
+`submission/`, `trace.redacted.jsonl` and `transcript.md`, and the folder holds the status, the usage per call,
+the reference table and what was asked for (10 files).
 
 **What leaves the Mac is this folder and nothing else of step 3**: the runner publishes it under
 `rollouts/<job_id>/` on its results branch, by its own protocol, together with its own record of the bound it
@@ -1179,33 +1202,49 @@ folder.
   killed vf-eval there; what the app does at a session's end, and what a session's own start-up hook writes or
   fetches; uv's behaviour beyond the two commands of step 1; Docker Desktop's own helper containers, telemetry and
   disk-image limit.
-- **A model.** No command of this pin has called one. The spend stop, the context cap, the request route and the
-  publication folder ran against a stand-in endpoint on the loopback of the cloud container, which answers with
-  made-up usage (`tools/standin_model.py`; `results/round4_step3.json`). Not seen with a real provider: the
-  usage fields of Prime's replies as this code reads them (their shape was read from the two saved traces of the
-  first rollouts and from the model list); that the explicit `[client]` table of a billed run (the inference
-  address, the key's variable) behaves like verifiers' default, which the first two rollouts used; that vf-eval
-  opens no connection other than to the inference host; the `reasoning` object of the config key
-  `reasoning_summary` (nobody has sent it). The one command with `--model-credentials prime` was never issued.
+- **A model, from this code.** Rehearsed in the cloud container only, from a fresh clone of the round-4 pin
+  before this one (`d9694f3e5`; this pin differs from it in the removed config key `reasoning_summary`, the
+  checks that go with it, and prose), with `qwen/qwen3.6-35b-a3b` and the standing go made by the rehearsal's
+  operator with a ceiling of $5 (`results/rehearsal_round4.json`): three jobs, each through 3a to 3h as `sh -c`
+  lines. Job 1 sent the `reasoning` object and ended by itself at its first call (HTTP 400, a failed run;
+  graded on the checkpoint of `submission/` taken before that call, i.e. the baseline: -0.062, the null policy's
+  score on that instance; counted as one worst-case call, $0.0303). Job 2 was killed (tool and
+  vf-eval, SIGKILL) between two model calls after 4 calls and cleaned up by "If a run was interrupted" (points 1,
+  3, 5 and 8; $0.0028 counted). Job 3 ran to its natural end: 143 turns, 38.5 of 60 minutes, the agent stopped by
+  itself, graded from the final collection at 0.786 of the oracle, $0.805 counted against a bound of $2.0303,
+  packed with a clean key scan (`../rollouts/qwen_ring_002/`). Seen there with the real provider: the usage
+  fields as this code reads them (every one of 143 streamed replies carried usage; 65 of them a cost field
+  above the listed prices, which then counts); the explicit `[client]` table of a billed run; vf-eval's
+  connections (section B, Network). Not seen: Prime's bill for these jobs (the count is the tool's; the
+  runner reconciles), a run ended by the spend stop or the context cap, a run ended by the turn cap or the wall
+  time with a real model, and anything on a Mac.
 - The image build of step 1: built in the cloud container behind its TLS-intercepting proxy with two build
-  arguments that the Mac does not use; the command of step 1 as written was not run.
-- Steps 0 to 2 as text of this round: the commands that changed since round 3 (the tree check with `--ignored`,
-  the environment check with three more names, the pilot-folder command without the certificate file, the image
-  tag, `make_instances` and `prove.py` with `ring_r4` and the null policy, the reset command with its disk gate)
-  were not issued as `sh -c` lines in this round. Step 2b's tool was run at this code with the box caps and
-  image 2 (`results/round4_step3.json`: 34 and 66 checks, both lists of failures empty on Linux, 27 minutes on a
-  loaded machine), not as its `sh -c` line; step 2c was not rerun (it needs `configs/scripted_ring.toml` to name
-  image 2); the numbers quoted for 2a are from the same tool run by profile on another hidden world.
-- Step 3 as text: the stages `instance`, `reference`, `dry-run`, `rollout` (against the stand-in), `close` (its
-  refusal) and `tools/pack_rollout.py` ran as tools in the cloud container with a scratch folder as the pilot
-  folder; `tools/check_request.py --fetch` ran on a scratch repository (no file was ever committed under
-  `rollouts/requests/`); the shell lines of 3.0 and 3a to 3h were not issued as written, the paid one least of
-  all. A crash in the middle of a model rollout was not produced: stage `close` and the rule "one rollout at a
-  time" were tested under tripwires with made-up process and container listings.
+  arguments that the Mac does not use; the command of step 1 as written was not run (in the rehearsal the
+  shared image of that build was used: a rebuild behind this proxy is not a cache hit and the machine had
+  2.3 GiB free for everyone).
+- Steps 0 to 2 as text: rehearsed from the same clone, every command as ONE `sh -c` line copied from this file,
+  with the run label `physim2-port4i` in place of the pilot's label wherever it is a label (other jobs shared the
+  machine) and a disk floor of 1.2 GiB in place of 8 wherever a command had to run (the disk command of step 0
+  and the dry run of step 1 were first issued as written and refused). Step 0 as written, with one deviation:
+  an image id stood before `IMAGES-LISTED` (the shared image). Step 1: the two `uv` commands with this
+  machine's cache, proxy and certificate variables added to the session; no image build (above). Step 2: 2a was stopped once on purpose by
+  the stop command (`EXIT 130`) and the pilot folders reset by point 6; then 2a was started with a floor just
+  under the free space and 48 MiB written beside it, and the disk watchdog stopped it (`EXIT 97`); after a second
+  reset the clean pass: 2a (table O 1.082, C 1.000, P0 0.936, D 0.217, null -0.015, K 0), 2b (32 of 34 and 66 of
+  66, both failure lists empty) and 2c, each ending `EXIT 0`.
+- Step 3 as text: 3.0 and 3a to 3h were issued as `sh -c` lines with the substitutions of the rehearsal (the
+  folder of step 3 under a scratch HOME; the label and the floor as above; the key and the team id inherited by
+  name from the machine's environment, never in a text). One deviation in 3a: requests of a rehearsal are never
+  committed under `rollouts/requests/`, so the second command of 3a was issued as written once (it refused: the
+  commit holds no such file) and then through `rehearsal/fetch4.py`, which runs the pinned
+  `tools/check_request.py --fetch` with only the folder of requests changed. One addition on this machine only:
+  a `.pth` file in the clone's environment set `SSL_CERT_FILE` to the proxy's CA bundle (verifiers' client does
+  not trust the proxy; the allow-list of the tools was not changed). 3e, the dry run, ran before each paid start.
+- "If a run was interrupted": points 1, 2, 5 and 6 were rehearsed on step 2 (round 4 as in round 3); points 1,
+  3, 5 and 8 on a killed model rollout, where stage `close` refused while the box was still there, a stage of
+  the next job refused while the cut job's row was open, and a second `close` refused (nothing to close). Point 4
+  did not arise on Linux (the laboratory ended with its vf-eval). The rule for a second interruption, the stop of
+  a vf-eval by its own pid and the 60-minute bound of the "must show" rule were not exercised.
 - The by-hand checks and three expectations of step 0: the cloud session is root, on x86_64, behind a proxy;
   its Docker context is `default` on `unix:///var/run/docker.sock`; the machine has 2.5 GiB free for everyone, so
   `8` was replaced by a lower floor wherever a tool carried it.
-- "If a run was interrupted": points 1, 2, 3, 5 and 6 were rehearsed in round 3, each as part of a first
-  interruption. Point 4 did not arise on Linux. Point 8 is new and was not rehearsed (above). The rule for a
-  second interruption, the stop of a vf-eval by its own pid and the 60-minute bound of the "must show" rule were
-  not exercised.

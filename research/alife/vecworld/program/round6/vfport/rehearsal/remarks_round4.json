@@ -1,0 +1,268 @@
+{
+ "what": "round 4 of the port: the merged code of fixers A and B, pinned (PIN.sha256, 135 files), and its RUNBOOK_MAC.md rehearsed in SESSION MODE in the cloud container from a fresh clone of the pushed pin. Every runbook command in `steps` was issued as ONE `sh -c '<text of the fenced command>'` by rehearsal/issue4.py of the clone (it takes the text from the clone's RUNBOOK_MAC.md, never from a file of its own), one at a time, started in /, with an environment built from PATH, HOME, USER and LANG plus the names listed per entry. Steps 0, 1 and 2 with one deliberate interruption and its recovery and one deliberate trip of the disk watchdog; then step 3 with a real model (qwen/qwen3.6-35b-a3b) for three jobs from rehearsal request files: job 1 ended by itself at its first call (the route refused the config's reasoning object), job 2 was killed between two model calls and cleaned up by the runbook, job 3 ran to its natural end and was graded and packed.",
+ "where": "cloud container: Linux x86_64, 4 shared cores, Docker 29.9.2, uv 0.11.32, sh = dash, mawk, procps-ng, root session, behind a TLS-intercepting proxy, 2.3 to 2.4 GiB free for everyone; 11 Nov 2026, 16:27 to 18:41 UTC (with a stop of the operator by the account's usage limit from 18:28 to 18:37 while job 3 ran detached; it was not touched)",
+ "evidence_labels": "run (steps 0 and 1, the status, stop, reset, close, report, settle and pack commands); vf-eval (steps 2a, 2b, 2c, the reference stage and dry run of three jobs, and the three paid rollouts with a real model through Prime inference, push = false); inferred (everything about macOS)",
+ "commit_rehearsed": "d9694f3e5b6c92a98c13fb36f02645f01f18728c",
+ "sha256_of_PIN_at_that_commit": "9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4",
+ "relation_to_the_commit_a_re_audit_reads": "the rehearsal ran the FIRST round-4 pin (d9694f3e5). After it, and listed under `changes_after_the_first_push`, the pin changed in three pinned files (tools/run_report.py: the turn count of a saved trace; physim2_env/rollout_config.py, tools/check_config.py, tools/check_round4_step3.py and configs/ring_rollout.example.toml: the config key reasoning_summary removed) and in prose; the 41 fenced shell commands and the 2 inline commands of RUNBOOK_MAC.md are byte for byte the rehearsed ones (compared by script); the toml example and the block of facts changed with the schema. The commands affected by the change (step 0 at the new pin, and the schema printed by the facts command) were issued again from a fresh clone of the new head: `rerun_at_the_new_pin`.",
+ "how": {
+  "clone": "git init; sparse checkout of round6/vfport, round5/agentenv and vw1; git fetch --depth 1 --filter=blob:none origin d9694f3e5b6c92a98c13fb36f02645f01f18728c; git checkout --detach (the history is several GB; the machine had 2.3 GiB free)",
+  "issuing": "rehearsal/issue4.py of the clone, called by a two-line shell helper of the operator (`r4`) that only fixes the issuer's own arguments; the issuer records the literal text, its substitutions, the names (never the values) of the variables it added, the exit status and the complete output",
+  "home": "HOME was a folder of the rehearsal's scratch for every command (never /root, never /home/ubuntu): the pilot folders of steps 1 and 2 and the folder of step 3 ($HOME/physim2-rollouts) were made there",
+  "run_label": "physim2-port4i in place of physim2-pilot-20261110 wherever it is a label (other jobs shared the machine's Docker); never as a folder name",
+  "disk_floor": "8 GiB replaced by 1.2 GiB (1258291 KiB) wherever a command had to run; the step-0 disk command and the dry run of step 1 were first issued as written and refused; for the watchdog trip, 2.1428 GiB",
+  "credentials": "PRIME_API_KEY and PRIME_TEAM_ID reached the paid commands (3f) by inheritance of the name from this machine's environment, never in a text, a file or the record; the pack command (3h) inherited those two and HF_TOKEN and WANDB_API_KEY so that its key scan could look for their values",
+  "standing_go": "made by the operator for the rehearsal (the notice of the file says ON HOLD; the lead gave no go to this machine): LEAD-GO-MODEL-SPEND.json with a ceiling of 5 dollars, date 2026-11-11; the tool counted 2.5851 dollars of earlier rollouts (the shared ledger) as spent elsewhere"
+ },
+ "outcome": "every command did what the runbook says, with the deviations below; five places where the prose did not match what happened were corrected afterwards (`mismatches`), one fault of a tool was fixed (`changes_after_the_first_push`), and no command text changed. Step 0 printed its sentinels and the session check (`6 names, 0 refused`; with three of the new names set on purpose, `9 names, 3 refused` and three FOUND lines). Step 1 installed the clone's environment (103 packages) and its checks passed; the image build was not issued (deviation 3). Step 2: interruption, watchdog trip, then the clean pass 2a, 2b, 2c, each EXIT 0. Step 3: three jobs from requests, each through 3a to 3h; job 3 scored 0.786 of the oracle and its publication folder is round6/rollouts/qwen_ring_002/.",
+ "interruptions": [
+  {
+   "n": 1,
+   "entries": "19 to 27",
+   "what": "2a started; while its first rollout ran (TOOL, VF-EVAL, LAB and a box listed) the stop command of point 2 was aimed at the TOOL's pid",
+   "seen": "8 s later no process and no container; prove.log: a traceback ending KeyboardInterrupt, then EXIT 130, as the table of point 2 says",
+   "recovery": "point 5 (status: nothing), point 6 (pilot folders reset), make_instances again, 2a again"
+  },
+  {
+   "n": 2,
+   "entries": "86 to 101",
+   "what": "job qwen-ring-002-cutb (a paid rollout, default settings): 24 s after its fourth model call had settled and with none under way, the TOOL of the paid command and its VF-EVAL were killed with SIGKILL in the same instant (what a crash of the machine or of the session leaves)",
+   "seen": "one container of the run label (the model's box, Up; its harness had ended with the docker client that carried it); no process of the pilot (the laboratory ended with its vf-eval, as on Linux); rollout.log ending EXIT 137; the ledger's reserved row and no ended row; status.json 'started'; spend.jsonl 4 sent and 4 settled; an EMPTY traces.jsonl; in the store the last checkpoint of submission/ (checkpoint.tar, checkpoint.json), hidden/labs/<rollout>/, hidden/opened/<hash>.json, no final/ and no grade; the laboratory's working folder under HOME/.cache/verifiers/runtimes/subprocess/; /tmp/physim2-io-<random> and one /tmp/vf-port-<hex>",
+   "recovery": "stage close issued first on purpose: refused (still on this machine: container ...); stage instance of the next job: refused (one rollout at a time); point 3: docker rm -f of the box by its exact name after its label was read back (two lines printed); point 5: status clean; point 8: stage close: cut, counted 0.00282564, count_complete true; a second close: refused, nothing to close; 3g report: 0 episodes; 3g settle: printed nothing; 3h pack: 10 files, key scan clean, missing the five files a killed vf-eval cannot leave",
+   "matches_point_8": "every row of the table of point 8 that applies on Linux matched; no rollout.stopped.json (the tool was killed, not stopped), which the table allows"
+  }
+ ],
+ "disk_watchdog": [
+  {
+   "n": 1,
+   "entries": "6, 8 (the floor of 8 GiB refused, as written)",
+   "seen": "`refused: 2 GiB free on the file system of the home folder, the floor is 8 GiB` and `refused: under 8 GiB free ...`"
+  },
+  {
+   "n": 2,
+   "entries": "29 to 34",
+   "what": "2a started with a floor of 2.1428 GiB, 24 MiB under the free space of that moment; when its first rollout ran, 48 MiB of zeros were written to one file in the rehearsal's scratch",
+   "seen": "the tool's log: `refused: stopped by the disk watchdog (2.12 GiB free ..., floor 2.14 GiB): SIGTERM. The run was stopped through the tool's one stop path; nothing was deleted.` then EXIT 97; status: no process, no container",
+   "after": "the runbook says points 1 to 5, then stop and report; the rehearsal went on (the ballast file removed by the operator, a second reset) to make the clean pass"
+  }
+ ],
+ "clean_pass": {
+  "2a": "EXIT 0; 2a-check: all_graded True, all_ok True, 0 failed items; ticks null 0, D 390, P0 0, C 0; one box per item: identical scores, 64 boxes, 0 infrastructure failures, 2.93 s per item box; table on the K-to-C scale: O 1.082, C 1.000, P0 0.936, D 0.217, K 0, null -0.015",
+  "2b": "EXIT 0; round 5's checks 32 of 34 reproduced, failed list empty; the new checks 66 of 66; the boxes: no way out but the laboratory (every other path refused, unresolved or HTTP 403), the laboratory's token in no environment, a kill inside a box graded nothing",
+  "2c": "EXIT 0; one scripted rollout from configs/scripted_ring.toml: graded 0.308 after a submit; the report's hidden-value scan 0 hits"
+ },
+ "step3_jobs": [
+  {
+   "job": "qwen-ring-002-cut",
+   "request": "rehearsal/round4_jobs/qwen-ring-002-cut.json",
+   "config": "round6/rollouts/configs/qwen_ring_002_cut.toml (reasoning_summary = auto)",
+   "instance": "pilot-qwen-ring-002-cut",
+   "source_commit": "0ebb00e743241e09ef0d92a3fd66cabe1c16ba8e",
+   "bound_usd": 2.03027392,
+   "ended": "by itself at its first model call: HTTP 400 `Unsupported request for this model (reasoning).`; stop condition provider_error, a failed run, graded by the physim2-verifier env on the checkpoint of submission/ taken before that call (the baseline): -0.062 = the null policy's score on that instance",
+   "counted_usd": 0.03027392,
+   "counted_as": "one worst-case call (an error reply)",
+   "pack": "16 files, key scan clean, missing lab_log.jsonl (the agent never reached the laboratory)",
+   "note": "meant to be interrupted; it ended before the watcher could act, so the interruption was rehearsed on job 2"
+  },
+  {
+   "job": "qwen-ring-002-cutb",
+   "request": "rehearsal/round4_jobs/qwen-ring-002-cutb.json",
+   "config": "round6/rollouts/configs/qwen_ring_002_cutb.toml (defaults)",
+   "instance": "pilot-qwen-ring-002-cutb",
+   "source_commit": "538e4417d0e5059e2c86cd6b812d3469222dc552",
+   "bound_usd": 2.03027392,
+   "ended": "killed on purpose after 4 model calls (interruption 2)",
+   "counted_usd": 0.00282564,
+   "status": "cut, count complete",
+   "pack": "10 files, key scan clean"
+  },
+  {
+   "job": "qwen-ring-002",
+   "request": "rehearsal/round4_jobs/qwen-ring-002.json",
+   "config": "round6/rollouts/configs/qwen_ring_002.toml (defaults)",
+   "instance": "pilot-qwen-ring-002",
+   "source_commit": "ff985b70eb8054275e1861ed4e5faaf6c6a72ea0",
+   "bound_usd": 2.03027392,
+   "ended": "the agent stopped by itself (agent_completed) after 143 of 150 turns, 2313 s of 3600; graded from the final collection (no submit), 64 item boxes, 0 failed items, no fallback",
+   "reward_skill_vs_O": 0.7855647154893967,
+   "reference_table_vs_O": {
+    "O": 1.0,
+    "C": 0.896,
+    "S": 0.868,
+    "PM": 0.755,
+    "P0": 0.737,
+    "D": 0.056,
+    "K": 0.0,
+    "null": -0.026
+   },
+   "counted_usd": 0.80500622,
+   "tokens": {
+    "prompt": 7280288,
+    "cached": 6599049,
+    "completion": 74233,
+    "reasoning": 0
+   },
+   "model_calls": 143,
+   "reasoning_record": "nothing requested or sent; 0 of 143 replies with reasoning; no reasoning tokens reported",
+   "pack": "17 files, 1,045,263 bytes, key scan clean, complete; published as round6/rollouts/qwen_ring_002/ with RESULT.md"
+  }
+ ],
+ "spend_by_the_tools_ledger": {
+  "ceiling_usd": 5.0,
+  "spent_elsewhere_usd_before_job_1": 2.58513,
+  "jobs_usd": [
+   0.03027392,
+   0.00282564,
+   0.80500622
+  ],
+  "after_job_3_usd": 3.4232,
+  "note": "the count of the spend stop; Prime's bill for these jobs was not read here"
+ },
+ "sockets_of_the_full_rollout": {
+  "how": "a read-only sampler of the operator (not a runbook command): every 2 s, the TCP sockets of vf-eval and of its descendants from /proc",
+  "from_to": "from about one minute after vf-eval started until it ended: 2,563 s, 1,275 samples, grading included",
+  "seen": [
+   [
+    "vf-eval",
+    "104.18.8.113:443",
+    480
+   ],
+   [
+    "vf-eval",
+    "104.18.9.113:443",
+    795
+   ],
+   [
+    "vf-eval",
+    "LISTEN 127.0.0.1",
+    1275
+   ],
+   [
+    "vf-eval",
+    "loopback",
+    2846
+   ],
+   [
+    "the laboratory (physim2_env.lab_tools)",
+    "LISTEN 127.0.0.1",
+    1137
+   ],
+   [
+    "the laboratory",
+    "loopback",
+    1138
+   ]
+  ],
+  "addresses": "104.18.8.113 and 104.18.9.113 are the two addresses api.pinference.ai resolved to on this machine (getent hosts); no other remote endpoint was seen",
+  "not_sampled": "the first minute; the docker client's unix socket (not TCP); anything on a Mac"
+ },
+ "deviations": [
+  {
+   "n": 1,
+   "what": "the clone is sparse and shallow, fetched by commit",
+   "why": "disk; the Mac has a full checkout"
+  },
+  {
+   "n": 2,
+   "what": "HOME is a folder of the rehearsal's scratch; uv's cache and uv's Python were this machine's (UV_CACHE_DIR, UV_PYTHON_INSTALL_DIR), with its proxy and certificate variables (HTTPS_PROXY, SSL_CERT_FILE, UV_NATIVE_TLS: names recorded, values not), for the two uv commands only",
+   "why": "no second gigabyte of downloads on a machine with 2.3 GiB free; the proxy"
+  },
+  {
+   "n": 3,
+   "what": "the image build of step 1 and its status command were not issued; the shared image physim2-ring:2 (fixer A's build from the same docker/ files) was used, so step 0's image list showed its id before IMAGES-LISTED (the runbook says stop there)",
+   "why": "behind this proxy a rebuild is not a cache hit (a probe build ran the build stage again and failed at its first download) and would write about 1 GB on a machine with 2.3 GiB free for everyone, and move a tag other roles use; that the image matches the pinned files was checked in a throwaway container before the rehearsal (results/round4_integration.json)"
+  },
+  {
+   "n": 4,
+   "what": "the run label physim2-port4i in place of physim2-pilot-20261110 wherever it is a label",
+   "why": "other jobs' containers on the same Docker"
+  },
+  {
+   "n": 5,
+   "what": "the disk floor 1.2 GiB in place of 8 wherever a command had to run (2.1428 for the watchdog trip)",
+   "why": "2.3 GiB free for everyone"
+  },
+  {
+   "n": 6,
+   "what": "the standing go of 3.0 was made by the operator, ceiling 5 dollars, and the notice ON HOLD was not obeyed",
+   "why": "a rehearsal of step 3 by its task; nothing ran on the Mac"
+  },
+  {
+   "n": 7,
+   "what": "3a, second command: issued as written once (refused: the commit holds no file under rollouts/requests/), then through rehearsal/fetch4.py, which runs the pinned tools/check_request.py --fetch with only the folder of requests changed in memory to round6/vfport/rehearsal/round4_jobs/",
+   "why": "the Mac's runner executes whatever appears under rollouts/requests/: a rehearsal never commits there"
+  },
+  {
+   "n": 8,
+   "what": "one file added to the clone's environment only: .venv/lib/python3.12/site-packages/zz_cloud_container_ca.pth, setting SSL_CERT_FILE to this machine's public CA bundle when no such variable is set",
+   "why": "verifiers' model client (httpx with certifi) does not trust this container's TLS-intercepting proxy, and the tools' allow-list keeps SSL_CERT_FILE out (the Mac's protocol asks that); the first rollouts used a wrapper that added the name in memory; the .pth has the same effect without changing a command, a pinned file or the allow-list"
+  },
+  {
+   "n": 9,
+   "what": "3g settle was issued for job 2 only; for job 3 the report showed a reward, and the runbook settles only a run without one",
+   "why": "as written"
+  }
+ ],
+ "mismatches": [
+  {
+   "n": 1,
+   "where": "3.1, the key reasoning_summary",
+   "text_said": "a value other than default sends the route a reasoning object (not yet tried)",
+   "happened": "the route refused it for the default model at the first call (HTTP 400): the run ended as a failed run",
+   "fixed_in": "the key was removed from the schema (code, checks, example, block of facts) and the runbook says why (coordinator 18:24 UTC)"
+  },
+  {
+   "n": 2,
+   "where": "B, Network",
+   "text_said": "not measured at the socket: no model run has been made from this code",
+   "happened": "measured once (sockets_of_the_full_rollout)",
+   "fixed_in": "the paragraph now reports the measurement and what it did not cover"
+  },
+  {
+   "n": 3,
+   "where": "3g",
+   "text_said": "a run without a reward is settled as the null policy",
+   "happened": "for a killed vf-eval the report prints episodes 0 and settle prints nothing: there is no saved episode to settle",
+   "fixed_in": "3g names both outputs"
+  },
+  {
+   "n": 4,
+   "where": "3h",
+   "text_said": "a non-empty missing: report",
+   "happened": "two benign cases: no laboratory log when the agent never reached the laboratory (job 1); five files missing after a kill of vf-eval (job 2)",
+   "fixed_in": "3h names both cases"
+  },
+  {
+   "n": 5,
+   "where": "the closing section 'What the cloud container could not cover'",
+   "text_said": "no command of this pin has called a model; steps 0 to 2 and 3 not issued as sh -c lines",
+   "happened": "this rehearsal",
+   "fixed_in": "rewritten from this record"
+  }
+ ],
+ "also_seen": [
+  "job 3's agent read turns_left and seconds_left from lab.usage() three times (the laboratory counts turns: lab_counts_turns true)",
+  "job 3's agent ran `python -m physim2.validate submission` twelve times and lab.validate never; the laboratory counts only the latter (validations 0)",
+  "job 3: 65 of 143 replies carried a provider cost above what the listed prices give for their usage; the spend stop then counts the provider's figure",
+  "job 3: the box's caps read back from the engine (2 CPUs, 4 GiB, no swap, 512 pids, read-only root, the four tmpfs mounts) equal the statement's envelope; the statement's sha256 is recorded with the run",
+  "the report tool printed `7_num_turns: null` for every saved trace (fixed after the first push)"
+ ],
+ "left_behind": {
+  "removed_at_the_end": "the rehearsal clone with its .venv, HOME folder, stores and job folders (one rm -rf of that one folder in the operator's scratch, path written out); no container of the run label remained (docker ps -a by label: none); no image was built or removed",
+  "left_on_this_machine": [
+   "/tmp/physim2-io-<random> folders and /tmp/vf-port-<hex> files of the rollouts (outside the operator's scratch; not removed by pattern)",
+   "uv's shared cache gained the clone's packages"
+  ]
+ },
+ "not_rehearsed": [
+  "the image build of step 1 and its status command (deviation 3)",
+  "step 4",
+  "point 4 of 'If a run was interrupted' (did not arise on Linux), the rule for a second interruption, the stop of a vf-eval by its own pid",
+  "a run ended by the spend stop, the context cap, the turn cap or the wall time with a real model; a model with reasoning on",
+  "Prime's bill for the three jobs (the runner reconciles)",
+  "anything on macOS or Docker Desktop"
+ ],
+ "hidden_values_note": "scanned before the clone was removed, against the two stores of the rehearsal (step 2's pilot store and step 3's store: each instance's secret and the first ten characters of each hidden parameter): counts in `hidden_values_in_this_record`. Instances made here are public pilot material, never to be reused as an exam.",
+ "PILOT_NEVER_REUSE_AS_EXAM": true
+}

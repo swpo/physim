@@ -1,25 +1,29 @@
 # vfport: PROGRESS
 
-## INTEGRATION, round 4 (integrator; worktree wt-port4i, run label physim2-port4i) -- 11 Nov 2026, IN PROGRESS
+## INTEGRATION, round 4 (integrator; worktree wt-port4i, run label physim2-port4i) -- 11 Nov 2026, finished
 - Merged `wt-port4a` (9dafd57df) and `wt-port4b` (150b38d38) into a branch from origin f96477e6c: no conflict
   (B's branch held A's final commit; the merged tree under round6/vfport equals B's). Nothing outside
   round6/vfport changed.
-- Changed before the pin: `tools/pin.py` (lists `physim2_verifier/` and the whole `docker/` folder),
+- Changed before the first pin: `tools/pin.py` (lists `physim2_verifier/` and the whole `docker/` folder),
   `tools/check_round3.py` (crashed at the merged code; its command-form part follows round 4; 48 of 48),
   `tests/prove_round4.py` (container named after the caller's run label), `RUNBOOK_MAC.md` step 3f (EXIT 137, 143),
   new `rehearsal/issue4.py` and `rehearsal/fetch4.py` (outside the pin).
-- **Pin: `PIN.sha256` 135 files, sha256 9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4**
-  (round 3: 109; 83 unchanged, 26 changed, 26 new). `tools/check_runbook.py` 51 of 51.
-- Every check at the pinned code (`results/round4_integration.json`): safety 36/36, units 59/59, round3 48/48,
-  round4 125/125, runbook 51/51 (host, tripwires or text); driver 31/31, interrupt 8/8, exam_units 91/91, harness
-  set-up replay without network (throwaway containers); check_step3 44/44 and prove_round4 48/48 with the round-5
-  cross-check (vf-eval, stand-in endpoint or scripted; no model).
-- Image `physim2-ring:2` (fixer A's build) not rebuilt: not a cache hit behind this proxy, 2.3 GB free for
-  everyone. Its `uv` stand-in and its 41 packages match the pinned files (checked in a throwaway container).
-- NEXT (this role): push; rehearse `RUNBOOK_MAC.md` from a fresh clone of the pushed head (steps 0 to 2 with one
-  interruption and one watchdog trip; step 3 with a real model: one rollout killed between two model calls and
-  cleaned up by the runbook, one to its natural end); publication folder to `../rollouts/qwen_ring_002/`; record in
-  `results/rehearsal_round4.json`. This note is completed when that is done.
+- **First pin (pushed as d9694f3e5): `PIN.sha256` 135 files, sha256 9f1511ad...96e4.** Every check at that code
+  (`results/round4_integration.json`): safety 36/36, units 59/59, round3 48/48, round4 125/125, runbook 51/51,
+  driver 31/31, interrupt 8/8, exam_units 91/91, harness set-up replay; check_step3 44/44 and prove_round4 48/48.
+- **Rehearsal** of `RUNBOOK_MAC.md` from a fresh clone of d9694f3e5, every command as one `sh -c` line
+  (`results/rehearsal_round4.json`, README 8.15): steps 0 to 2 with one interruption and one watchdog trip, then
+  step 3 with `qwen/qwen3.6-35b-a3b` for three jobs from rehearsal requests (`rehearsal/round4_jobs/`): one ended
+  by the route's HTTP 400 on the reasoning object, one killed and cleaned up by the runbook, one to its natural
+  end (0.786 of the oracle, $0.805 counted; `../rollouts/qwen_ring_002/`). Total counted $0.838 of a $5 ceiling.
+- **Second pin: `PIN.sha256` 135 files, sha256 776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc.**
+  After the rehearsal: the config key `reasoning_summary` removed (coordinator, 18:24 UTC); `tools/run_report.py`
+  counts turns of a saved trace; runbook prose in five places. exam_pure 19/19, round4 125/125, runbook 51/51.
+  The commands affected (step 0) were issued again from a fresh clone of the pushed head
+  (`results/rehearsal_round4.json`, `rerun_at_the_new_pin`).
+- Left for the auditors: the three worktrees (wt-port4a, wt-port4b, wt-port4i). The rehearsal's clones, HOME
+  folders and containers were removed; no image was built or removed. `RUNBOOK_MAC.md` stays ON HOLD: a verdict
+  is not this role's.
 
 ## VERDICT, round 3 pass 1 (of branch head db3ff5a6e) -- 10 Nov 2026, finished: GO for steps 0 to 2
 - This note was written just before the verdict commit. The verdict is the commit right after it: the last

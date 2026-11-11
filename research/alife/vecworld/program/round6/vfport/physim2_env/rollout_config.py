@@ -11,7 +11,6 @@
     box_memory_gb = 4
     cap_usd = 5.0
     reasoning_effort = "default"
-    reasoning_summary = "default"
     push = false
 
 Top-level keys only: no table, no array, no path, nothing executable. `validate` refuses every unknown key,
@@ -34,7 +33,6 @@ from . import profiles
 
 SCHEMA = "physim2-rollout/v1"
 EFFORTS = ("default", "none", "minimal", "low", "medium", "high", "xhigh", "max")
-SUMMARIES = ("default", "auto", "detailed")
 MODEL = re.compile(r"^[a-z0-9][a-z0-9._-]{0,63}/[A-Za-z0-9][A-Za-z0-9._:-]{0,95}$")
 INSTANCE = re.compile(r"^pilot-[a-z0-9-]{3,40}$")
 
@@ -51,7 +49,6 @@ FLAT_KEYS = {
     "box_memory_gb": ((int, float), (1, 4), False),
     "cap_usd": ((int, float), (0.01, 500), True),
     "reasoning_effort": ((str,), EFFORTS, False),
-    "reasoning_summary": ((str,), SUMMARIES, False),
     "push": ((bool,), (False,), False),
 }
 RANGES = {k: v[1] for k, v in FLAT_KEYS.items() if isinstance(v[1], tuple) and len(v[1]) == 2 and not isinstance(v[1][0], (str, bool))}
@@ -67,7 +64,7 @@ def defaults(profile: str = DEFAULT_PROFILE) -> dict:
     p = profiles.get(profile)
     return {"model": DEFAULT_MODEL, "exam_profile": profile, "max_turns": p["max_turns"],
             "max_output_tokens_per_turn": p["max_output_tokens_per_turn"], "wall_minutes": p["wall_minutes"],
-            "box_memory_gb": p["box_memory_gb"], "reasoning_effort": "default", "reasoning_summary": "default", "push": False}
+            "box_memory_gb": p["box_memory_gb"], "reasoning_effort": "default", "push": False}
 
 
 DEFAULTS = defaults()
@@ -131,17 +128,11 @@ def expand(flat: dict) -> dict:
     c = dict(defaults(flat.get("exam_profile", DEFAULT_PROFILE)), **flat)
     p = profiles.get(c["exam_profile"])
     sampling = {"max_tokens": int(c["max_output_tokens_per_turn"])}
-    # Reasoning (rulings E10, E14). "default" sends nothing: the provider's default applies. An effort alone goes
-    # out as `reasoning_effort`, the field verifiers' sampling config has. A summary request goes out as the
-    # route's `reasoning` object ({"summary": ..., "effort": ...}; Prime's model listing names `reasoning` among a
-    # model's supported parameters), and then the effort travels inside it, never twice. NOT YET SENT TO THE
-    # ROUTE BY ANYONE: before a rollout sets reasoning_summary, one paid ping with this object must show that
-    # the route accepts it (only the integrator makes model calls).
-    if c["reasoning_summary"] != "default":
-        sampling["reasoning"] = {"summary": c["reasoning_summary"]}
-        if c["reasoning_effort"] != "default":
-            sampling["reasoning"]["effort"] = c["reasoning_effort"]
-    elif c["reasoning_effort"] != "default":
+    # Reasoning (rulings E10, E14). "default" sends nothing: the provider's default applies. An effort goes out as
+    # `reasoning_effort`, the field verifiers' sampling config has. There is no key for reasoning summaries: the
+    # route's `reasoning` object ({"summary": ...}) was refused by the route for the default model at the first
+    # call of the round-4 rehearsal (HTTP 400, 11 Nov 2026), so the key was removed (results/rehearsal_round4.json).
+    if c["reasoning_effort"] != "default":
         sampling["reasoning_effort"] = c["reasoning_effort"]
     return {
         "model": c["model"], "num_rollouts": 1, "max_concurrent": 1, "push": False,

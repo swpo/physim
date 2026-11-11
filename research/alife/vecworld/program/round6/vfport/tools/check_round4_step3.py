@@ -103,16 +103,15 @@ def run(check, raises, scratch):
     check(f"D4 an expansion that differs from the pin's model rollout in any of {len(tampered)} ways is caught, independently of expand()",
           all(res.values()) and CC.fixed_violations(exp, got["flat"], RC, CC.light("profiles")) == [], res)
     rs = {"effort alone": ('reasoning_effort = "default"', 'reasoning_effort = "high"', {"max_tokens": 512, "reasoning_effort": "high"}),
-          "summary alone": ('reasoning_effort = "default"', 'reasoning_summary = "auto"', {"max_tokens": 512, "reasoning": {"summary": "auto"}}),
-          "summary and effort": ('reasoning_effort = "default"', 'reasoning_effort = "low"\nreasoning_summary = "detailed"',
-                                 {"max_tokens": 512, "reasoning": {"summary": "detailed", "effort": "low"}})}
+          "effort default": ('reasoning_effort = "default"', 'reasoning_effort = "default"', {"max_tokens": 512})}
     res = {k: CC.check(write_cfg(f"reason{i}.toml", FLAT.replace(a, b)))["expanded"]["sampling"] == want for i, (k, (a, b, want)) in enumerate(rs.items())}
     e = json.loads(json.dumps(exp))
-    e["sampling"]["reasoning"] = {"summary": "auto", "exclude": False}
-    check("D4b the reasoning keys (rulings E10, E14): an effort alone, a summary alone, both: each expands to exactly one form; anything else in "
-          "[sampling] is caught; an unknown summary word is refused",
+    e["sampling"]["reasoning"] = {"summary": "auto"}
+    check("D4b the reasoning key (rulings E10, E14): an effort expands to `reasoning_effort` alone; a `reasoning` object in [sampling] is caught; "
+          "the removed key reasoning_summary is refused as unknown (the route refused the object with HTTP 400 in the round-4 rehearsal)",
           all(res.values()) and bool(CC.fixed_violations(e, got["flat"], RC, CC.light("profiles")))
-          and bool(refused(lambda: CC.check(write_cfg("reason9.toml", FLAT + 'reasoning_summary = "everything"\n')))), res)
+          and bool(refused(lambda: CC.check(write_cfg("reason9.toml", FLAT + 'reasoning_summary = "auto"\n'))))
+          and bool(refused(lambda: CC.check(write_cfg("reason8.toml", FLAT + 'reasoning_summary = "default"\n')))), res)
     sch = CC.schema()
     check("D5 the schema as data: the keys, the fixed part, the forbidden fields and the exam profiles with their item counts",
           set(sch["keys"]) == set(RC.FLAT_KEYS) and sch["fixed_by_the_pin"]["push"] is False and "forward_env" in sch["forbidden_fields"]

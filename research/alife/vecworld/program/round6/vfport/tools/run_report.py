@@ -95,6 +95,15 @@ def counts(v, keys):
     return {k: (v.get(k) if isinstance(v.get(k), bool) else num(v.get(k))) for k in keys}
 
 
+def num_turns(tr):
+    """Model replies of one saved trace. verifiers' `Trace.num_turns` is a property (v1/trace.py:640: the nodes
+    with `sampled` set) and is not written into a saved trace, so it is counted here the same way."""
+    if num(tr.get("num_turns")) is not None:
+        return num(tr.get("num_turns"))
+    nodes = tr.get("nodes")
+    return sum(1 for n in nodes if isinstance(n, dict) and n.get("sampled") is True) if isinstance(nodes, list) else None
+
+
 def count_tool_calls(node, counts):
     """Tool calls by name, wherever the trace keeps them: objects under a key `tool_calls`. A name outside the
     fixed list is counted as (other); it is never printed."""
@@ -189,7 +198,7 @@ def report(store, run_dir):
                              if isinstance(timing.get(k), dict) and num((timing.get(k) or {}).get("end")) is not None
                              and num((timing.get(k) or {}).get("start")) is not None else None
                              for k in ("boot", "setup", "agent", "finalize")},
-                "7_verifier_wall_s": num(g.get("verifier_wall_s")), "7_num_turns": num(tr.get("num_turns")),
+                "7_verifier_wall_s": num(g.get("verifier_wall_s")), "7_num_turns": num_turns(tr),
                 "8_limits": counts(ph.get("limits"), ("max_turns", "wall_minutes", "max_output_tokens_per_turn", "max_context_tokens", "cap_usd",
                                                       "cpus", "memory_gib", "pids", "workspace_mib", "tmp_mib", "read_only_root", "measured")),
                 "8_statement_sha256": (ph.get("limits") or {}).get("statement_sha256") if HEX64.match(str((ph.get("limits") or {}).get("statement_sha256"))) else None,

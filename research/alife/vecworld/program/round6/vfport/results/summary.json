@@ -2,7 +2,7 @@
  "study": "program/round6/vfport: the PhySim v2 exam as a verifiers environment (after the fixes to the two reviews and round 1 of the fixes to the host-safety audit)",
  "written_unix": 1794325986.2527254,
  "PILOT_NEVER_REUSE_AS_EXAM": true,
- "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). Nothing was run on a Mac. Which result file ran on which code: code_versions.",
+ "what_was_run": "everything below was RUN in the cloud container (Linux x86_64, 4 cores, Docker) with scripted agents: no model call, no GPU, no upload (--no-push equivalent: push = false, PRIME_RUNS_MODE=disabled, PRIME_API_KEY removed). Nothing was run on a Mac. Which result file ran on which code: code_versions. EXCEPT round 4's rehearsal (results/rehearsal_round4.json), which made three model rollouts of qwen/qwen3.6-35b-a3b through Prime inference from request files (push = false, nothing uploaded).",
  "code_versions": {
   "package (physim2_env, physim2_script) now": "commit ffb17ce97 (after round 1 of the host-safety fixes; pinned by PIN.sha256)",
   "run on the package as it is now": "results/probe_ring.json (37 rollouts), units.json, driver_container.json, safety_host.json, safety_interrupt.json, safety_runbook.json, rehearsal_round1.json (one world of the proof with the Mac's arguments, the probes, one direct vf-eval rollout)",
@@ -10,7 +10,7 @@
   "builder's results": "replaced; the builder's numbers are in the history of this file (commit e4a30854d)",
   "round 2 of the host-safety fixes": "changed no file of the package, the tools, the agents or the configs (PIN.sha256 unchanged); it changed RUNBOOK_MAC.md and added rehearsal/ (cloud-only test tooling, not on the pilot's route) and results/*round2*",
   "run again in round 2 on the same code": "results/rehearsal_round2_proof.json (one world of the proof with the Mac's arguments), rehearsal_round2_probe.json (the probes, 37 rollouts), one direct vf-eval rollout, and reruns of check_safety.py, check_driver.py, check_interrupt.py that equal the recorded files",
-  "round 4": "the package, the tools, the image and the runbook changed (PIN.sha256 9f1511ad...96e4, 135 files); see host_safety.round_4"
+  "round 4": "the package, the tools, the image and the runbook changed. First pin d9694f3e5 (PIN.sha256 9f1511ad...96e4, 135 files): integrated, checked and rehearsed with a real model. Second pin (PIN.sha256 776d9a33...fadc, 135 files): the config key reasoning_summary removed and the report's turn count fixed after the rehearsal; see host_safety.round_4"
  },
  "sources": {
   "ours_table": "results/proof_ring.json",
@@ -2184,7 +2184,7 @@
    "source": "HOST_SAFETY_AUDIT.md, 'Re-audit, round 3'"
   },
   "round_4": {
-   "status": "RUNBOOK_MAC.md is ON HOLD: round 4 (exam rulings E1 to E15, step 3 by request, box caps, the laboratory's bearer, the spend stop) has no verdict yet",
+   "status": "RUNBOOK_MAC.md is ON HOLD: round 4 (exam rulings E1 to E15, step 3 by request, box caps, the laboratory's bearer, the spend stop) has no verdict yet. Its runbook was rehearsed from the first pin with a real model (results/rehearsal_round4.json); the second pin is what a verdict reads",
    "why": "two model rollouts from the round-3 pin (../rollouts/qwen_ring_001, astra_ring_001) worked mechanically and exposed faults of the exam and of step 3; the Mac's runner set a protocol of request files",
    "sources": [
     "results/round4_exam.json (fixer A: the scripted proof of the exam rulings)",
@@ -2193,10 +2193,59 @@
     "results/rehearsal_round4.json (integrator: the runbook rehearsed in session mode, step 3 with a real model)"
    ],
    "pin": {
-    "sha256_of_PIN.sha256": "9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4",
-    "files": 135
+    "sha256_of_PIN.sha256": "776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc",
+    "files": 135,
+    "first_pin": {
+     "commit": "d9694f3e5b6c92a98c13fb36f02645f01f18728c",
+     "sha256_of_PIN.sha256": "9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4",
+     "files": 135
+    },
+    "changed_between_the_two": [
+     "physim2_env/rollout_config.py, tools/check_config.py, tools/check_round4_step3.py, configs/ring_rollout.example.toml: the config key reasoning_summary removed (the route refused the reasoning object with HTTP 400)",
+     "tools/run_report.py: the turn count of a saved trace (it printed null)"
+    ]
    },
-   "note": "the rest of this file (tables, costs, code counts) was written before round 4 by tools/make_summary.py and the round-2 and round-3 index tools and describes the code of those rounds; round 4's numbers are in the four files above"
+   "note": "the rest of this file (tables, costs, code counts) was written before round 4 by tools/make_summary.py and the round-2 and round-3 index tools and describes the code of those rounds; round 4's numbers are in the four files above",
+   "rehearsal": {
+    "file": "results/rehearsal_round4.json",
+    "commit_rehearsed": "d9694f3e5b6c92a98c13fb36f02645f01f18728c",
+    "steps_0_to_2": "every command as one sh -c line; one interruption (EXIT 130, reset), one watchdog trip (EXIT 97), then 2a, 2b (32 of 34, 66 of 66), 2c, each EXIT 0; the image build not issued",
+    "step_3": {
+     "model": "qwen/qwen3.6-35b-a3b",
+     "ceiling_usd": 5.0,
+     "jobs": [
+      {
+       "job": "qwen-ring-002-cut",
+       "ended": "route refused the reasoning object at the first call (HTTP 400); failed run graded on its checkpoint",
+       "reward_skill_vs_O": -0.0623,
+       "counted_usd": 0.0303
+      },
+      {
+       "job": "qwen-ring-002-cutb",
+       "ended": "killed on purpose (tool and vf-eval, SIGKILL) after 4 calls; cleaned up by 'If a run was interrupted' points 1, 3, 5, 8",
+       "status": "cut",
+       "counted_usd": 0.0028
+      },
+      {
+       "job": "qwen-ring-002",
+       "ended": "the agent stopped by itself after 143 of 150 turns and 2313 s of 3600; graded from the final collection",
+       "reward_skill_vs_O": 0.7856,
+       "reference_vs_O": {
+        "C": 0.896,
+        "S": 0.868,
+        "PM": 0.755,
+        "P0": 0.737,
+        "D": 0.056,
+        "null": -0.026
+       },
+       "counted_usd": 0.805,
+       "bound_usd": 2.0303,
+       "folder": "../rollouts/qwen_ring_002/"
+      }
+     ],
+     "total_counted_usd": 0.838
+    }
+   }
   }
  },
  "red_team_attacks_after_the_fix": {

@@ -16,5 +16,4 @@ wall_minutes = 60                       # 5..180    (default 60)
 box_memory_gb = 4                       # 1..4      every box of the rollout; may only lower the profile's 4 (default 4)
 cap_usd = 5.0                           # REQUIRED: 0.01..500 ; the spend stop of this rollout, at the model's listed prices
 reasoning_effort = "default"            # default (nothing sent) | none | minimal | low | medium | high | xhigh | max
-reasoning_summary = "default"           # default (nothing sent) | auto | detailed   (not yet tried against the route)
 push = false                            # false is the only value

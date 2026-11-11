@@ -45,13 +45,14 @@ def main():
     good = {"schema": RC.SCHEMA, "instance": "pilot-abc-001", "max_context_tokens": 200000, "cap_usd": 5}
     check("config: the smallest valid file passes, and gets the ring defaults (qwen/qwen3.6-35b-a3b, 150 turns, 60 minutes, 8192 tokens, 4 GB)",
           RC.validate(good) == [] and RC.DEFAULTS == {"model": "qwen/qwen3.6-35b-a3b", "exam_profile": "ring", "max_turns": 150, "max_output_tokens_per_turn": 8192,
-                                                      "wall_minutes": 60, "box_memory_gb": 4, "reasoning_effort": "default", "reasoning_summary": "default", "push": False})
+                                                      "wall_minutes": 60, "box_memory_gb": 4, "reasoning_effort": "default", "push": False})
     bad = {"unknown key": dict(good, system_prompt="x"), "a table": dict(good, env={"id": "x"}), "an array": dict(good, instance=["pilot-abc-001"]),
            "push true": dict(good, push=True), "turns as bool": dict(good, max_turns=True), "turns 0": dict(good, max_turns=0), "turns 401": dict(good, max_turns=401),
            "wall 181": dict(good, wall_minutes=181), "wall as float": dict(good, wall_minutes=60.5), "memory 4.5": dict(good, box_memory_gb=4.5),
            "memory 0.5": dict(good, box_memory_gb=0.5), "cap 0": dict(good, cap_usd=0), "cap 501": dict(good, cap_usd=501), "cap nan": dict(good, cap_usd=float("nan")),
            "instance not a pilot": dict(good, instance="exam-ring-1"), "instance with a path": dict(good, instance="pilot-../x"), "model with a space": dict(good, model="a/b c"),
            "model with a path": dict(good, model="../etc/passwd"), "profile unknown": dict(good, exam_profile="gliders"), "effort unknown": dict(good, reasoning_effort="ultra"),
+           "summary key (removed: the route refused it)": dict(good, reasoning_summary="auto"), "summary key default": dict(good, reasoning_summary="default"),
            "schema other": dict(good, schema="physim2-rollout/v2"), "no schema": {k: v for k, v in good.items() if k != "schema"},
            "no instance": {k: v for k, v in good.items() if k != "instance"}, "no context cap": {k: v for k, v in good.items() if k != "max_context_tokens"},
            "no cap_usd": {k: v for k, v in good.items() if k != "cap_usd"}, "image key": dict(good, image="x:1"), "harness key": dict(good, harness="codex"),
@@ -69,9 +70,9 @@ def main():
           and c["env"]["retries"] == {"max_retries": 0} and c["env"]["verifier"] == {"retries": 0}, cfg=c)
     check("config: no token cap of verifiers is set on the whole run (none is disclosed)", not any(k in c["env"]["agent"] for k in ("max_total_tokens", "max_input_tokens",
                                                                                                                               "max_output_tokens")))
-    c2 = RC.expand(dict(good, reasoning_summary="auto", reasoning_effort="high"))
-    check("config: a summary request travels as one `reasoning` object with the effort inside, never twice", c2["sampling"] == {"max_tokens": 8192,
-                                                                                                                             "reasoning": {"summary": "auto", "effort": "high"}})
+    c2 = RC.expand(dict(good, reasoning_effort="high"))
+    check("config: an effort travels as `reasoning_effort` alone; no `reasoning` object is ever sent (the summary key was removed)",
+          c2["sampling"] == {"max_tokens": 8192, "reasoning_effort": "high"} and "reasoning_summary" not in RC.FLAT_KEYS)
     try:
         RC.expand(dict(good, max_turns=0))
         refused = False
@@ -139,6 +140,9 @@ def main():
           and RR.head("Traceback: secret text of a predictor").startswith("(other,") and {"submit", "turn limit", "time limit", "failed run"} <= RR.ENDED_WORDS)
     fbk = RR.fallback({"policy": "null", "n_items": 3, "by_reason": {"raised": 2, "text chosen by an agent": 1}, "baseline_pool_sha256": "0" * 64})
     check("run report: fallback counts are printed by the grader's words only; any other key is counted as (other)", fbk["by_reason"] == {"raised": 2, "(other)": 1})
+    check("run report: the turns of a saved trace are its sampled nodes (verifiers does not save num_turns; the round-4 rehearsal's report printed null)",
+          RR.num_turns({"nodes": [{"sampled": True}, {"sampled": False}, {"sampled": True}, {}, "x"]}) == 2 and RR.num_turns({"num_turns": 7, "nodes": []}) == 7
+          and RR.num_turns({}) is None)
     check("tripwires: nothing in this run tried to start, remove, move or change anything", TW.hits == [], hits=TW.hits[:5])
     out = {"tool": "tests/exam_pure.py", "where": "the worker, under tools/tripwires.py", "n_checks": len(CHECKS), "n_passed": sum(c["ok"] for c in CHECKS),
            "failed": [c["check"] for c in CHECKS if not c["ok"]], "tripwire_names": len(TW.names), "tripwire_hits": TW.hits, "checks": CHECKS}

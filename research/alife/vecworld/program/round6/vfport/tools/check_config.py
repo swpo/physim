@@ -126,17 +126,13 @@ def fixed_violations(expanded: dict, flat: dict, RC, PROFILES) -> list[str]:
     sampling = dict(expanded.get("sampling") or {})
     if sampling.pop("max_tokens", None) != flat["max_output_tokens_per_turn"]:
         bad.append("sampling.max_tokens is not the config's max_output_tokens_per_turn")
-    # reasoning (rulings E10, E14): nothing for "default"; an effort alone as `reasoning_effort`; a summary request as
-    # the route's `reasoning` object, with the effort inside it and never twice
+    # reasoning (rulings E10, E14): nothing for "default"; an effort as `reasoning_effort`; nothing else (the
+    # route's `reasoning` object is not sent by any config of this pin)
     want = {}
-    if flat["reasoning_summary"] != "default":
-        want["reasoning"] = {"summary": flat["reasoning_summary"]}
-        if flat["reasoning_effort"] != "default":
-            want["reasoning"]["effort"] = flat["reasoning_effort"]
-    elif flat["reasoning_effort"] != "default":
+    if flat["reasoning_effort"] != "default":
         want["reasoning_effort"] = flat["reasoning_effort"]
     if sampling != want:
-        bad.append("sampling holds more than max_tokens and the config's reasoning settings")
+        bad.append("sampling holds more than max_tokens and the config's reasoning effort")
     if env.get("id") != RC.ENV_ID or set(env) - {"id", "taskset", "agent", "retries", "verifier"}:
         bad.append("the env is not the pin's")
     if agent.get("harness") != RC.HARNESS:

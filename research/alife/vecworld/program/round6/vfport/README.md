@@ -17,11 +17,13 @@ coordinator, and rehearsed the result (sections 8.9 and 8.10). This file describ
 they were after round 3, and section 8.12 describes round 4 (11 Nov 2026: after two model rollouts in the cloud
 container exposed faults of the exam, and with the lead's Mac available again, the code and the runbook were
 changed for model rollouts driven by request files; `RUNBOOK_MAC.md` is ON HOLD until that round's verdict).
-The two branches of round 4 were merged, pinned and rehearsed by an integrator (section 8.14: the pin, every
-check at the pinned code, the rehearsal of steps 0 to 3 with a real model, the faults it found).
-Where sections 8.12 to 8.14 and an earlier section differ, the later one holds. Everything of rounds 1 to 3 was
+The two branches of round 4 were merged, pinned and rehearsed by an integrator (section 8.14: the pin and every
+check at the pinned code; section 8.15: the rehearsal of steps 0 to 3 with a real model, the faults it found and
+the second pin).
+Where sections 8.12 to 8.15 and an earlier section differ, the later one holds. Everything of rounds 1 to 3 was
 RUN on Docker in the cloud container (Linux x86_64, 4 cores, Docker 29.9.2) with scripted agents only. No model
-call, no GPU job, no upload.
+call, no GPU job, no upload. Round 4's rehearsal made three model rollouts from request files there (section 8.15);
+nothing was uploaded.
 **Nothing was run on a Mac.** Numbers and their sources: `results/summary.json`, which also says which result file
 ran on which code (`code_versions`): the 4-world table of section 4.1 and the costs of 4.5 were NOT run again
 after the host-safety changes. Every pilot instance used here is deleted and must never be reused as an exam.
@@ -904,6 +906,43 @@ machine's proxy is not a cache hit and would take about 1 GB of the 2.3 GB free 
 container its `uv` stand-in has the sha256 of `docker/harness-uv` and its 41 packages are, name and version, those
 of the two hashed requirement files.
 
+### 8.15 Round 4, the rehearsal with a real model, and the changes after it (11 Nov 2026; not audited yet)
+
+The integrator rehearsed `RUNBOOK_MAC.md` from a fresh clone of the first round-4 pin (`d9694f3e5`, sha256 of
+`PIN.sha256` `9f1511ad...96e4`), every command as ONE `sh -c` line copied from the runbook (106 commands, 118
+entries with their complete output: `results/rehearsal_round4.json`, made by `rehearsal/make_record.py` from the
+issuer's lines and `rehearsal/remarks_round4.json`). HOME was a scratch folder; the run label, the disk floor and
+nine other deviations are listed there with their reasons.
+
+| part | outcome |
+|---|---|
+| step 0 | as written; the shared image's id stood before `IMAGES-LISTED` (deviation: the image build was not issued) |
+| step 1 | the clone's environment installed (103 packages); import, interpreter and image checks passed; `make_instances` |
+| step 2 | 2a stopped on purpose by the stop command (`EXIT 130`), reset by point 6; 2a stopped by the disk watchdog (`EXIT 97`); then the clean pass 2a, 2b (32 of 34 and 66 of 66, both failure lists empty), 2c, each `EXIT 0` |
+| step 3, job 1 | the config asked for reasoning summaries; the route refused the `reasoning` object at the first call (HTTP 400); a failed run, graded on its checkpoint (the baseline, -0.062); counted $0.0303 |
+| step 3, job 2 | killed (tool and vf-eval, SIGKILL) between two model calls after 4 calls; "If a run was interrupted" points 1, 3, 5 and 8; `close` refused while the box was there and once more after it had closed the books; the next job's stage refused while the row was open; $0.0028 counted; packed (10 files) |
+| step 3, job 3 | to its natural end: the agent stopped by itself after 143 of 150 turns and 38.6 of 60 minutes, left a predictor (no submit), graded from the final collection: **0.786** of the oracle (C 0.896, S 0.868, PM 0.755, P0 0.737, D 0.056, null -0.026); $0.8050 counted against a bound of $2.0303; packed (17 files, key scan clean): `../rollouts/qwen_ring_002/` |
+
+Seen for the first time with a real provider: usage on every one of 143 streamed replies (the spend stop's count
+needed no worst-case call), a provider cost above the listed prices on 65 of them (counted), the explicit
+`[client]` table of a billed run, a failed run graded by the `physim2-verifier` env, ruling E1 without a submit,
+and vf-eval's connections: port 443 of the inference host's two addresses and loopback, nothing else (sampled
+from the second minute to the end). Total counted for the three jobs: $0.838; the rehearsal's ceiling was $5
+including $2.5851 of the earlier rollouts.
+
+Changed after the first push (**the second pin: `PIN.sha256`, 135 files, sha256
+`776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc`**; five files changed; each change with a
+test; the runbook's 41 shell commands and 2 inline commands unchanged, byte for byte):
+
+| change | why | test |
+|---|---|---|
+| the config key `reasoning_summary` removed (`physim2_env/rollout_config.py`, `tools/check_config.py`, `configs/ring_rollout.example.toml`, the runbook's example and block of facts) | the route refused the object it sent (job 1); the coordinator's ruling of 18:24 UTC | `tests/exam_pure.py` (a config with the key is refused; an effort travels alone), `tools/check_round4_step3.py` D4b |
+| `tools/run_report.py` counts the turns of a saved trace from its sampled nodes | it printed `"7_num_turns": null` for every saved trace (verifiers does not save that property) | `tests/exam_pure.py`; the report on job 3 prints 143 |
+| `RUNBOOK_MAC.md`, prose only | five places where the text did not match the rehearsal (section B Network, 3.1, 3g, 3h, the closing section) | `tools/check_runbook.py` |
+
+Not rehearsed: the image build, step 4, point 4 of "If a run was interrupted", a run ended by the spend stop, the
+context cap, the turn cap or the wall time with a real model, Prime's bill for these jobs, anything on macOS.
+
 ## 9. Where the code contradicted the memo, and what else turned up
 
 1. **"This cloud container has no Docker daemon" (memo section 3).** The binaries are installed and the daemon
@@ -932,8 +971,10 @@ of the two hashed requirement files.
 
 ## 10. Not done
 
-- No model rollout, nothing on macOS, no Prime sandbox, no sealer, no compute metering (section 6).
-- No re-audit of the host-safety changes, and no rerun of the 4-world table, the gliders rollout or the red team's
+- Nothing on macOS, no Prime sandbox, no sealer, no compute metering (section 6). Model rollouts: two in the cloud
+  container before round 4 (`../rollouts/qwen_ring_001/`, `../rollouts/astra_ring_001/`) and three in round 4's
+  rehearsal (section 8.15).
+- No audit of round 4 yet; no re-audit of the earlier host-safety changes, and no rerun of the 4-world table, the gliders rollout or the red team's
   attacks after them (section 8).
 - Gliders: one scripted rollout (policy D) on one fresh gliders world with the smoke config, on the fixed code and
   with one box per item: graded, 0 failed of 8 items (`results/gliders_smoke_D.json`). Nothing else was run on
