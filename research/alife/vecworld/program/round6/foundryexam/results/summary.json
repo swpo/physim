@@ -125,7 +125,7 @@
    "source": "origin/gpu-jobs:jobs/r6-foundryexam-005/status.json (copy: results/job/status_r6-foundryexam-005.json)"
   }
  ],
- "design": "DESIGN.md (criteria and thresholds declared before any GPU request)",
+ "design": "DESIGN.md. Sections 1-5 (criteria and thresholds) were committed before the first GPU request (82b655c98, 10:45 UTC; request 001 at 11:22). Sections 5b, 5c and 5d are dated later and say what had been seen; the rule that picked the three centres was written with 6 of the 7 probe values in view (DESIGN.md section 2).",
  "claims": [
   {
    "id": "P.worlds",
@@ -3399,7 +3399,8 @@
     "job": "r6-foundryexam-004",
     "file": "results/analysis.json",
     "key": "arms.N30.actions.verdict"
-   }
+   },
+   "checker_note": "At the bar, not above it. The interval's lower end is 0.1002 here and 0.0998 to 0.1013 over six other bootstrap seeds of the checker, so the declared rule (lower end >= 0.10) flips with the resampling seed. By centre the loss is 0.096, 0.101 and 0.183 (arm N10: 0.088, 0.116, 0.179): one of three centres is clearly above 0.10 in each neighbourhood arm, the centres were picked as the three most wind-responsive of seven, and the interval treats the 12 worlds of 3 centres as independent. Read both N arms as 'about 0.13 on selected centres', not as a passed criterion 4. See checker.findings 4."
   },
   {
    "id": "N30.actions_worlds",
@@ -6815,7 +6816,8 @@
     "job": "r6-foundryexam-005",
     "file": "results/analysis_job005.json",
     "key": "arms.P.acceptance.trivial_verdict"
-   }
+   },
+   "checker_note": "Criterion 2 is undecided in every arm and job, also against the 16,384-episode reference: the share is 0.833 with upper end 0.863, above the declared 0.85. What the data establish is 'below the 0.95 bar of trivially easy' on the screened prior and the 30% neighbourhood (upper ends 0.889 and 0.899 in job 004), not 'at most 0.83'. See checker.findings 1 and 2."
   },
   {
    "id": "j005.P.rho@0",
@@ -8199,7 +8201,8 @@
     "job": "r6-foundryexam-005",
     "file": "results/analysis_job005.json",
     "key": "arms.P.c_curve.verdict"
-   }
+   },
+   "checker_note": "C is a lower bound of the true-weight ceiling. It does not follow that every share is an upper bound and every sigma a lower bound (README, final report): the no-experiment policy is at least as far from saturation in its own resource. See checker.findings 1."
   },
   {
    "id": "j005.P.c_curve_share",
@@ -8967,7 +8970,8 @@
      0.06
     ]
    }
-  }
+  },
+  "checker_note": "The trend with the horizon is monotone in every arm and job, so it is not a cell picked after the fact. Two cautions on its size at 16 ticks: (i) the null there is P0 itself, because FT on 8 Lab episodes gains +0.002 +- 0.008 over P0 at 16 ticks (job 004; -0.000 +- 0.012 in 005), so sigma at 8 episodes is 1 - P0's share; (ii) P0 is not saturated in prior worlds at 16 ticks (+0.061 to +0.065 of skill from 64 to 210 prior worlds, against +0.040 for the reference from 4,096 to 16,384 episodes). See checker.findings 1 and 3."
  },
  "compute": {
   "what": "member-ticks an agent needs for the no-experiment policy of arm P: finding screened worlds (round-5 screen with the weights-only pre-screen: member-ticks of job r5-foundry-002's enrichment arm per candidate found; without it: job r5-foundry-001's screen per candidate), the exam-time gate (8 members x 332 ticks per candidate), 64 training episodes per world; one episode with burn-in = 332 ticks. Written after the results; weight statistics of the pre-screen not counted.",
@@ -9569,6 +9573,227 @@
    "P": 0.0042,
    "N30": 0.0037,
    "N10": 0.0061
-  }
+  },
+  "checker_note": "Recomputed: 0.0042, 0.0037, 0.0061 (job 004); job 005: 0.0064 (D@32). Per hidden world the two seeds differ by up to 0.044 of skill. Nets with ONE seed: Csm, Cbig, D@8, D@128, FT@8, FT@128, P0[16], P0[64]. The intervals of sigma at 8 and at 128 Lab episodes, of every quantity against Cbig and of the P0[n] curve therefore carry no training-seed variance for those nets (declared in DESIGN.md criterion 8 and 5d; small where it could be measured)."
+ },
+ "checker": {
+  "who": "independent checker of foundryexam (foundryexamchk), 11 Nov 2026. CPU only in the container, about 3 CPU-minutes; no job requested, no model call. Files of the study other than this one are untouched.",
+  "edits_to_this_file": [
+   "design: was 'DESIGN.md (criteria and thresholds declared before any GPU request)'; now says which sections predate the first GPU request and that the centre rule was written with 6 of 7 probe values in view",
+   "claims N30.actions_verdict: checker_note added (the verdict sits on the bar and is carried by one of three selected centres)",
+   "claims j005.P.trivial: checker_note added (criterion 2 is undecided against every reference; 'at most 0.83' is not established)",
+   "claims j005.P.c_curve_verdict: checker_note added ('C is a lower bound' does not make shares upper bounds and sigmas lower bounds)",
+   "seed_to_seed.checker_note added (which nets have one seed)",
+   "by_horizon.checker_note added (what the 16-tick sigma rests on)",
+   "this checker block added; no number of the study was changed (none was found wrong)"
+  ],
+  "job_records": {
+   "source": "origin/gpu-jobs:jobs/r6-foundryexam-00{1..5}/status.json, logs/exit.rc, logs/setup.rc, logs/sysinfo.txt, out/full/info.json, LEDGER.md",
+   "states": {
+    "001": "rejected (no pod)",
+    "002": "cancelled",
+    "003": "done, exit 0",
+    "004": "done, exit 0",
+    "005": "done, exit 0"
+   },
+   "platform": "NVIDIA A100-SXM4-40GB (lambdalabs, 1.99 USD/h) in 003, 004 and 005 by sysinfo.txt; jax 0.12.0.1",
+   "billed_usd": {
+    "001": 0.0,
+    "002": 1.9196,
+    "003": 2.1274,
+    "004": 4.3263,
+    "005": 3.3248,
+    "total": 11.6981
+   },
+   "pod_hours": "5.88 is billed dollars over the 1.99 rate, as the README says; the runner's own LEDGER.md hours column reads 1.033 + 1.138 + 2.257 + 1.755 = 6.18",
+   "failed_or_skipped": "info.json of 003, 004, 005: failed [], skipped []; no group of nets has stopped_early in train_info.json",
+   "reviews": "the Mac's reviews of 002-005 have 0 blocker and 0 major; the three reporting points of 005's review were acted on"
+  },
+  "recomputed_with_own_code": {
+   "inputs": "origin/gpu-jobs:jobs/r6-foundryexam-00{3,4,5}/out/full/<arm>/scores.npz (per-item fair energy scores), meta.json, worlds.json, train_info.json, out/full/gate.json",
+   "method": "own loader and statistics, not make_summary.py: pooled score = sum over the valid cells, seed-mean per policy, world-cluster bootstrap with one seed drawn per policy and resample (3,000 resamples, other random seeds)",
+   "claims_against_their_cited_keys": "438 of the 446 claims equal the cited key to 4 decimals; the other 8 (worlds, oes_by_class of four arms) are composites or rounded subsets of the cited object and agree",
+   "headline_against_own_recomputation": "40 quantities (share with no experiment, sigma with no Lab and at 8, 32, 128, 512 Lab episodes, and the 16-tick share and sigmas, in the three arms of 004 and arm P of 005): largest difference of a point value 5e-05, of an interval end 0.004",
+   "values": {
+    "share_noexp": {
+     "P": [
+      0.8633,
+      0.835,
+      0.889
+     ],
+     "N30": [
+      0.8683,
+      0.84,
+      0.899
+     ],
+     "N10": [
+      0.958,
+      0.949,
+      0.966
+     ],
+     "P_job005_against_Cbig": [
+      0.8329,
+      0.8,
+      0.863
+     ]
+    },
+    "share_noexp_median_world": {
+     "P": 0.858,
+     "N30": 0.87,
+     "N10": 0.959,
+     "P_job005_against_Cbig": 0.83
+    },
+    "share_noexp_leave_one_world_out": {
+     "P": [
+      0.855,
+      0.87
+     ],
+     "N30": [
+      0.857,
+      0.878
+     ],
+     "N10": [
+      0.955,
+      0.961
+     ],
+     "P_job005_against_Cbig": [
+      0.824,
+      0.84
+     ]
+    },
+    "sigma_at_declared_null_512": {
+     "P": [
+      0.0402,
+      0.032,
+      0.05
+     ],
+     "N30": [
+      0.0387,
+      0.029,
+      0.05
+     ],
+     "N10": [
+      0.0205,
+      0.016,
+      0.025
+     ],
+     "P_job005_against_Cbig": [
+      0.0741,
+      0.059,
+      0.091
+     ]
+    },
+    "sigma_at_8_lab_episodes_job005_against_Cbig": [
+     0.155,
+     0.128,
+     0.184
+    ],
+    "job005_16_ticks_against_Cbig": {
+     "share_noexp": [
+      0.6145,
+      0.517,
+      0.689
+     ],
+     "sigma@8": [
+      0.3855,
+      0.303,
+      0.471
+     ],
+     "sigma@32": [
+      0.3053,
+      0.248,
+      0.385
+     ],
+     "sigma@512": [
+      0.1792,
+      0.138,
+      0.234
+     ]
+    },
+    "reference_curve_job005": {
+     "skill": {
+      "1024": 0.724,
+      "4096": 0.761,
+      "16384": 0.787
+     },
+     "steps": [
+      0.037,
+      0.025
+     ],
+     "se": 0.003
+    },
+    "job003": {
+     "P_share": 0.892,
+     "N30_share": 0.787,
+     "N30_prior_worlds": [
+      32,
+      24,
+      32
+     ],
+     "N10_share": 0.953
+    },
+    "format": "[value, 5%, 95%]"
+   }
+  },
+  "what_stands": [
+   "Every number checked reproduces. Job records, platform, exit codes and billed cost are as reported.",
+   "At the declared null (512 Lab episodes) sigma fails its 0.15 bar in every arm and against every reference (0.02 to 0.07).",
+   "On the screened prior and the 30% neighbourhood the no-experiment share is below 0.95 (0.83 to 0.87); at 10% it is 0.958 with the same reference size. This within-study contrast is the like-for-like one.",
+   "The share falls and sigma rises monotonically with the query horizon in every arm and job. At 16 ticks with 8 Lab episodes sigma is 0.15 or more in 16 of 16 hidden worlds of arm P against Cbig (12 of 16 against the 4,096-episode C in job 004).",
+   "The scripted amortised S adds nothing (rho -0.01 to 0.05).",
+   "No leak: no hidden world is in a training set or is another world's plug-in prior draw; the noise secret is drawn from os.urandom and only its commitment is written; hidden weights are public by design and every file carries the pilot marker."
+  ],
+  "findings": [
+   {
+    "n": 1,
+    "title": "The shares and sigmas are bounded in neither direction",
+    "text": "README and report: 'every share is an upper bound and every sigma a lower bound' because C is not converged. The no-experiment policy is not converged in its own resource either, and its last step is the larger one. From 64 to 210 prior worlds P0 gains +0.034 [0.025, 0.044] of pooled skill in job 004 and +0.042 [0.034, 0.051] in 005; the reference gains +0.025 [0.021, 0.030] from 4,096 to 16,384 episodes. At 16 ticks: +0.061 [0.040, 0.082] and +0.065 [0.042, 0.088] for P0, +0.040 [0.033, 0.048] for the reference. In units of sigma against Cbig the P0 step is 0.054 pooled and 0.116 at 16 ticks. 0 of 2 P0 nets meet criterion 6 in either job (late share 0.030 to 0.042). In arm N30 P0 went from 0.642 with 24-32 prior worlds (job 003) to 0.739 with 83-128 (job 004). Caveat: P0[16] and P0[64] have one seed and 6,000 steps against P0's 12,000, so the step mixes worlds and steps. Reading: 0.83 to 0.86 and the sigmas are values at this compute on both sides. Whether the gap is a hypothesis gap or a compute gap is open, as the report's own next step 3 implies."
+   },
+   {
+    "n": 2,
+    "title": "Criterion 2 is undecided, so 'incomplete for the first time ... at most 0.83' overstates",
+    "text": "By the declared rule the recipe is 'not trivially easy' only if the interval lies at or below 0.85. Upper ends: 0.889 (P), 0.899 (N30), 0.863 (P against Cbig). The supported statement is: below 0.95 on the screened prior and the 30% neighbourhood, undecided against 0.85, at this compute (finding 1)."
+   },
+   {
+    "n": 3,
+    "title": "Sigma at small Lab budgets is not the declared acceptance quantity and rests on an untuned null",
+    "text": "The declared null is the best of D, FT, Dr at 512, P0 and S(0). Sigma at 8 or 32 episodes swaps in FT(8) or FT(32). FT(8) has one seed, 200 steps, no tuning; in arm N10 it is worse than P0, and at 16 ticks it gains +0.002 +- 0.008 over P0 (job 004). So the 16-tick sigma at 8 episodes (0.33 to 0.39) is 1 - P0's share and inherits finding 1. Any better use of 8 to 32 Lab episodes without a hypothesis lowers it; a ridge on 8 episodes alone already has 0.83 of C pooled. In arm N30 the 16-tick sigma at 8 episodes is 0.327 pooled but 0.210 in the median world (7 of 12 worlds at 0.15 or more): the pooled value is carried by a few worlds."
+   },
+   {
+    "n": 4,
+    "title": "Actions: the N30 verdict sits on the bar, and the Lab is passive in every scripted policy",
+    "text": "See the note on claims N30.actions_verdict. Criterion 4 is a state-given quantity (the oracle with and without the program). For a history-only predictor the program costs little: the reference net's skill is 0.764 on items with a program and 0.781 on items without (arm P), 0.847 and 0.863 (N30). All Lab episodes use the random exam mix; no scripted policy chooses its Lab programs. The study therefore says nothing on whether experimenting pays, and 'science share' here means 'what a net at the true weights has over the best passive recipe'."
+   },
+   {
+    "n": 5,
+    "title": "The two rank correlations, with intervals (after the fact; n = 16, 12, 12)",
+    "text": "World bootstrap, 90%. Arm P: sigma against the state-given loss +0.31 [-0.19, +0.70], against the gate's vp(16) +0.83 [+0.61, +0.94], difference [+0.08, +0.97]. N30: +0.38 [-0.16, +0.72], +0.85 [+0.52, +0.96], difference [+0.11, +0.89]. N10: +0.52 [-0.04, +0.76], +0.67 [+0.20, +0.97], difference [-0.15, +0.53], not separable. The N arms have 12 worlds in 3 centres. Sigma against persistence skill: -0.90 (P), -0.83 (N30). Reading: one candidate card entry (decorrelation of the observed level at the query horizon) predicted where the recipe falls short, another (the state-given loss) did not. That is a result about which card entry to keep, not 'looks interesting did not predict'."
+   },
+   {
+    "n": 6,
+    "title": "Means carried by a few worlds",
+    "text": "State-given loss with a prior draw, arm P: 1.53 pooled; one hidden world (seed2027-5685) has 6.5; without it 1.20; median 1.23; 13 of 16 worlds are above 1 (worse than climatology), so the message holds. Persistence: 0.216 pooled, median world 0.335, range -0.53 to 0.64. The shares are not carried (leave-one-world-out ranges above)."
+   },
+   {
+    "n": 7,
+    "title": "The pooled score is three easy cells and two hard ones",
+    "text": "The five horizons weigh about equally (0.18 to 0.21 of the K-to-O range each). At 1 and 2 ticks every policy is near the reference (arm P, job 004: ridge on 8 Lab episodes 0.91 and 0.80, P0 0.91 and 0.82, C 0.94 and 0.88). The pooled share of 0.86 averages 0.97 and 0.93 at 1 and 2 ticks with 0.76 and 0.67 at 8 and 16. A follow-up exam should drop or down-weight the 1- and 2-tick queries instead of only adding longer ones."
+   },
+   {
+    "n": 8,
+    "title": "Stationarity and what 'active' means",
+    "text": "The tick-share values (at most 6.2e-05) are the job's own; the Lab frames are not in the outputs, so they were not recomputed. Added check: for the 16 hidden worlds of arm P the gate's vp(16) at ticks 300-332 over round 5's value at ticks 50-290 has median 1.01 (0.68 to 1.54), so activity is not visibly decaying at the exam's ticks. Not tested: late time. Round 5 found 32 of 88 candidates still passing at ticks 2000-2240, so these are worlds active at tick 300, not long-lived worlds."
+   },
+   {
+    "n": 9,
+    "title": "Smaller points of wording",
+    "text": "(a) Report: 'every policy except C repeats within 0.014' leaves out P0[16] (0.017), P0[64] (0.015) and persistence (0.021); arm_P_three_jobs and the README have them. (b) Report: the centre rule was 'stated first'; it was written with 6 of 7 probe values in view. (c) 'A 30% neighbourhood is as hard as the screened prior' compares 83-128 prior worlds per centre with 210 and has no 16,384-episode reference in the N arms. (d) N10's 0.958 is against a 4,096-episode C that gained 0.031 from its last step; against the 1,024-episode net it is 0.995."
+   },
+   {
+    "n": 10,
+    "title": "Next step 1 is under-costed and breaks the size rule as written",
+    "text": "A 65,536-episode reference for 16 worlds at 64-tick queries is about 400 million member-ticks (65,536 x 16 x 381), 2.6 A100-hours of simulation alone at job 005's 42,000 member-ticks per second, before any net. At job 005's lock size the device stack would be 8 x 65,536 x 81 x 192 = 8.2e9 elements, above the 2^31 rule; it needs groups of one or two nets or streaming. Likelier 5 to 6 A100-hours, 10 to 12 USD."
+   }
+  ]
  }
 }
