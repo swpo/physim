@@ -29,3 +29,8 @@
   tick 140 loses to a constant drift. Forecast: the design fails acceptance; a $6 stop-rule job is proposed.
 - The `overflow` number in the pools' meta summed peaks with overflow ticks (meaningless); run_boxes.py now saves
   them apart; a short re-check is still to do.
+- 13:10 (session resumed after a usage reset; the container had not restarted, the queued runs had gone on): the screen
+  files are all in scratch except aimed x2 (running). run_after3.sh queued: one more 64 px pool (seed 5; also the
+  re-check of the overflow counters) and a second 128 px pool (seed 2). Next: add to analyse.py (a) the level-2
+  models as rows of the state-given screen, (b) a transfer table scored on the 128 px members; then `analyse.py
+  <scratch>` in full, then DESIGN.md, commit, push, remove the worktree and the scratch folder.

@@ -26,14 +26,38 @@ M_FC = 32
 C0 = 0.02                      # floor of the kind-share noise shape s (1 - s) + C0
 
 
-def load_pool(S, H):
+def load_pool(S, H, key="l2"):
     L = []
     metas = []
     for f in sorted(glob.glob(os.path.join(S, f"b{H}_s*.npz"))):
         d = np.load(f)
-        L.append(d["l2"].astype(float))
+        L.append(d[key].astype(float))
         metas.append(json.loads(str(d["meta"])))
     return (np.concatenate(L, 0), metas) if L else (None, [])
+
+
+def l1_fit(l2, s1, lam=0.05):
+    """Generic level-1 learner: increments of (N, s_b) per horizon regressed on the 12 level-1 summaries of the
+    anchor tick (standardised on the training set), residuals resampled. The nearest stand-in at this size for
+    round 5's ridge on level-1 summaries."""
+    T = l2.shape[1]
+    out = {}
+    F0 = s1[:, LAB:].reshape(-1, s1.shape[-1])
+    mu, sd = F0.mean(0), F0.std(0) + 1e-6
+    for h in HS:
+        F = ((s1[:, LAB:T - h] - mu) / sd).reshape(-1, s1.shape[-1])
+        F = np.concatenate([np.ones((len(F), 1)), F], 1)
+        D = (l2[:, LAB + h:] - l2[:, LAB:T - h]).reshape(-1, 2)
+        beta = np.linalg.solve(F.T @ F + lam * len(F) * np.eye(F.shape[1]), F.T @ D)
+        out[h] = (beta, D - F @ beta)
+    out["mu"], out["sd"] = mu, sd
+    return out
+
+
+def l1_predict(m, x0, f0, h, rng):
+    beta, res = m[h]
+    F = np.concatenate([[1.0], (f0 - m["mu"]) / m["sd"]])
+    return finish(x0 + F @ beta + res[rng.integers(0, len(res), M_FC)])
 
 
 def fair_es(X, y, scale):
@@ -333,6 +357,7 @@ def main():
 
     # ---------------- 2. budget curve on the 64 px truth pool
     T64 = P[64]
+    S64, _ = load_pool(S, 64, "s1")
     B64 = T64.shape[0]
     late = T64[:, ANCH[0] - 1:]
     scale = np.array([late[..., 0].std(), late[..., 1].std()])
@@ -386,7 +411,8 @@ def main():
             for R in budgets:
                 for dr in range(n_draw):
                     r_ = np.random.default_rng([i, R, dr])
-                    sets = {"64": (T64[r_.choice(others, min(R, len(others)), replace=False)], 1.0)}
+                    pick64 = r_.choice(others, min(R, len(others)), replace=False)
+                    sets = {"64": (T64[pick64], 1.0)}
                     for H in (32, 48):
                         if P[H] is None:
                             continue
@@ -402,6 +428,7 @@ def main():
                         if key != "64":
                             mods[f"law{key}_noscale"] = ("law_ns", law_fit(tr, "law"), ar)
                     mods["At64"] = ("analog_t", mods["A64"][1])
+                    mods["ridgeL1_64"] = ("l1", l1_fit(T64[pick64], S64[pick64]))
                     if "32" in sets and len(sets["32"][0]) >= 4:
                         tl = analog_fit(pool_tiles(sets["32"][0], r_, 2 * len(sets["32"][0])), 1.0)
                         mods["A32tile"] = ("analog", tl)
@@ -418,6 +445,8 @@ def main():
                                 Xf = finish(analog_predict(m[1], x0, a_, h, r_, fscale) + feats(x0, m[2]["nbar"]) @ m[2][h])
                             elif m[0] == "ridge":
                                 Xf = ridge_predict(m[1], x0, h, r_)
+                            elif m[0] == "l1":
+                                Xf = l1_predict(m[1], x0, S64[i, a_ - 1], h, r_)
                             else:
                                 Xf = law_predict(m[1], x0, h, r_, m[2], scale_noise=(m[0] == "law"))
                             put(f"{name}@R{R}", i, a_, h, Xf, y)
@@ -446,7 +475,8 @@ def main():
                  "(px-ticks): a policy named X32 at R uses round(R / 0.365) episodes at 32 px, X48 round(R / 0.692) at "
                  "48 px, X64 R exam-size episodes (with the parameters fixed and public this is also D(R) on R Lab "
                  "episodes). A = analog ensemble on (N, s_b) (At: also the tick); ridge = increments regressed on "
-                 "(1, s, s^2, N) per horizon, residuals resampled; law / lin / const = the level-2 law iterated in "
+                 "(1, s, s^2, N) per horizon, residuals resampled; ridgeL1 = the same on the 12 level-1 summaries of the anchor "
+                 "tick; law / lin / const = the level-2 law iterated in "
                  "8-tick steps, the round-5 control without the selection term, constant drift; _noscale = law without "
                  "the box-size scaling of its noise; A32tile = analog on synthetic episodes pooled from four 32 px "
                  "members; +res2 = the same plus a linear correction of the mean fitted on 2 exam-size Lab episodes; "
@@ -458,7 +488,7 @@ def main():
             skill={c or "all": {k: skill(k, c) for k in sorted(pol) if k != "K"} for c in CELLS})
         cmp_ = {}
         pairs_ = [("law64", "A64"), ("law64", "ridge64"), ("law64", "lin64"), ("law64", "const64"), ("ridge64", "A64"),
-                  ("At64", "A64"), ("law32", "A32"), ("law32", "lin32"), ("law32", "law32_noscale"), ("A32tile", "A32"),
+                  ("ridgeL1_64", "ridge64"), ("law64", "ridgeL1_64"), ("At64", "A64"), ("law32", "A32"), ("law32", "lin32"), ("law32", "law32_noscale"), ("A32tile", "A32"),
                   ("A64", "A32"), ("A64", "A32tile"), ("law64", "law32"), ("ridge64", "ridge32"), ("A64", "A48"),
                   ("law64", "law48"), (f"A32tile+res{N_LAB}", "A32tile"), ("law64", f"A32tile+res{N_LAB}")]
         for R in budgets:
@@ -626,6 +656,7 @@ def main():
             tr = tr_["l2"]
             fcs = {"O": lambda j, r, h: np.delete(tr[j], r, 0)[:, h - 1],
                    "K": lambda j, r, h: climK,
+                   "tick climatology (the 64 px pool at the target tick)": lambda j, r, h: T64[:, A0 + h - 1],
                    "persistence f=0": lambda j, r, h: np.tile(x0[j], (2, 1)),
                    "truncated horizon f=1/4": lambda j, r, h: np.delete(tr[j], r, 0)[:, h // 4 - 1],
                    "truncated horizon f=1/2": lambda j, r, h: np.delete(tr[j], r, 0)[:, h // 2 - 1],
