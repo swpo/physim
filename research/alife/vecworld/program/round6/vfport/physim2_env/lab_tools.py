@@ -90,6 +90,22 @@ def make_service(hidden: str, name: str, check=None, status=None):
             inputs, n = self._block("experiment", inputs, n)
             return super().experiment(label, inputs=inputs, n=n)
 
+        def card(self):
+            """The round-5 card, with the compute envelope and the per-item limits of THIS run (second pass, exam
+            audit X5): the box as measured at its start, the wall time, the turn limit, the item's memory never
+            above the box's, the item's process limit and scratch places."""
+            c = super().card()
+            if status is not None:
+                try:
+                    got = status()
+                    if isinstance(got.get("envelope"), dict):
+                        c["compute_envelope"] = got["envelope"]
+                    if isinstance(got.get("item_limits"), dict):
+                        c["predictor_limits"] = dict(c["predictor_limits"], **got["item_limits"])
+                except Exception:
+                    pass
+            return c
+
         def usage(self):
             u = super().usage()
             if status is not None:                           # the run's own clocks, from the task controller
@@ -206,8 +222,9 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         op "experiment": {"label": ..., "inputs": [[n_in numbers] x T]} or {"label": ..., "n": T} -> T + 1
         observations, row 0 is o(0).
         op "validate": {"path": "submission"} -> runs your predictor in your box the way the grader will (a clean
-        copy of submission/ alone, an unprivileged user that cannot read /workspace; format, limits, same seed ->
-        same samples; no accuracy feedback) and returns the report.
+        copy of submission/ alone, next to the original physim2 package, an unprivileged user that cannot read
+        /workspace nor what the box already holds in /tmp and /dev/shm; format, limits, same seed -> same
+        samples; no accuracy feedback) and returns the report.
         op "submit": {"path": "submission"} -> the same check; if it passes, submission/ is frozen as it is now,
         the laboratory closes and YOUR RUN ENDS ("accepted": true). If it fails nothing is frozen and the
         laboratory stays open. Without a submit, submission/ is graded as it is when the run ends.

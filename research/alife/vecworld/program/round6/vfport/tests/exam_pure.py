@@ -143,6 +143,32 @@ def main():
     check("run report: the turns of a saved trace are its sampled nodes (verifiers does not save num_turns; the round-4 rehearsal's report printed null)",
           RR.num_turns({"nodes": [{"sampled": True}, {"sampled": False}, {"sampled": True}, {}, "x"]}) == 2 and RR.num_turns({"num_turns": 7, "nodes": []}) == 7
           and RR.num_turns({}) is None)
+    # ---- second pass of round 4: X1, X5 (the statement and the card rendered from the run) ----
+    from physim2_env import bundle as BUNDLE
+    shm = TASKSET.parse_box("workspace=tmpfs 1048576\ntmp=tmpfs 524288\nshm=tmpfs 65536\nrootfs=ro")
+    check("box (X5): /dev/shm is measured too: 64 MiB", shm["shm_mib"] == 64.0 and capped["shm_mib"] is None, shm=shm)
+    run = dict(BUNDLE.default_run("ring", "ring_r4"), memory_gib=2.0, cpus=2.0, shm_mib=64.0, wall_minutes=45.0, max_turns=40, measured=True,
+               checkpoint_seconds=30.0)
+    cfg = BUNDLE.load_config("ring_r4")
+    il, env = BUNDLE.item_limits(run, cfg), BUNDLE.card_envelope(run)
+    check("card (X5): a run whose box has 2 GiB gives every item at most 2 GiB (the exam config says 4), 256 processes, /tmp 512 MiB and "
+          "/dev/shm 64 MiB; the envelope is the run's own (2 CPUs, 2 GiB, 45 minutes, 40 turns), not the config's fixed one",
+          il["memory_gib"] == 2.0 and il["processes"] == 256 == BUNDLE.ITEM_PROCESSES and il["tmp_mib"] == 512 and il["shm_mib"] == 64.0
+          and env["memory_gib"] == 2.0 and env["wall_minutes"] == 45.0 and env["max_turns"] == 40 and env["shm_mib"] == 64.0
+          and BUNDLE.item_limits(dict(run, memory_gib=None), cfg)["memory_gib"] == 4, item=il, envelope=env)
+    item_src = open(os.path.join(ROOT, "physim2_env", "public", "_item.py")).read()
+    check("card (X5): the process limit stated is the driver's own RLIMIT_NPROC (read in public/_item.py)",
+          "resource.setrlimit(resource.RLIMIT_NPROC, (%d, %d))" % (BUNDLE.ITEM_PROCESSES, BUNDLE.ITEM_PROCESSES) in item_src)
+    md = BUNDLE.statement("ring", "ring_r4", run)
+    check("statement (X5): section 5 states the item's memory from the run (2 GiB), its 256 processes, and its two scratch places; section 4 "
+          "names /dev/shm among the places the agent can write to",
+          "2 GiB of memory and 256 processes and threads" in md and "It can write only to `/tmp` (512 MiB) and `/dev/shm` (64 MiB), which are empty "
+          "at the start of every item." in md and "`/dev/shm` (64 MiB)" in md.split("## 5.")[0], snippet=md[md.find("Per item"):md.find("Per item") + 400])
+    check("statement (X1): section 4 says that after an error the last copy taken while the run was alive is graded, with the period of the run",
+          "the last copy the operator\ntook while the run was alive" in md.replace("operator took", "operator\ntook")
+          and "every 30 seconds" in md.replace("\n", " "), snippet=md[md.find("How the run ends"):md.find("How the run ends") + 700])
+    check("statement (X6/E9): section 6 says the check uses the original package and closes /tmp and /dev/shm as well as /workspace",
+          "next to the original `physim2` package" in md and "`/tmp` or `/dev/shm`" in md)
     check("tripwires: nothing in this run tried to start, remove, move or change anything", TW.hits == [], hits=TW.hits[:5])
     out = {"tool": "tests/exam_pure.py", "where": "the worker, under tools/tripwires.py", "n_checks": len(CHECKS), "n_passed": sum(c["ok"] for c in CHECKS),
            "failed": [c["check"] for c in CHECKS if not c["ok"]], "tripwire_names": len(TW.names), "tripwire_hits": TW.hits, "checks": CHECKS}

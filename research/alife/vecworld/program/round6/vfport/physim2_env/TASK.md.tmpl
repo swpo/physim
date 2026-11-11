@@ -97,7 +97,9 @@ One real tick of this world costs about {cpu_s_tick} CPU-seconds to simulate on 
 
 **How the run ends, and what is graded.** Whatever is in `submission/` at the moment your run ends is graded,
 however it ends: your own `lab.submit("submission")`, the turn limit, the time limit, the context or spend
-limit, or an error. `lab.submit` only ends the run early; it is not needed for a grade. Nothing announces the
+limit, or an error. (After an error that ends the run abruptly, what is graded is the last copy the operator
+took while the run was alive: one is taken before every turn and every {checkpoint_s} seconds, whenever
+`submission/` changed.) `lab.submit` only ends the run early; it is not needed for a grade. Nothing announces the
 end. So keep a predictor that works in `submission/` at all times: start from the baseline, replace it as soon
 as you have something better, and check it with `lab.validate("submission")`.
 
@@ -125,9 +127,9 @@ as you have something better, and check it with `lab.validate("submission")`.
 - **Where your predictor runs.** Once per item, each time in a fresh container without network and without the
   laboratory. That container holds your `submission/` directory (read-only, at `/workspace/submission`, which is
   also the working directory), this file and the original `physim2` package. Nothing else you wrote in
-  `/workspace` or anywhere else exists there. Per item: at most {pred_cpu} CPU-seconds, {pred_wall} s of wall clock
-  and {pred_mem} GiB of memory; the submission may be at most {artifact_mib} MiB. It may import numpy, scipy, jax
-  and `physim2`. Nothing is carried from one item to the next.
+  `/workspace` or anywhere else exists there. Per item: at most {pred_cpu} CPU-seconds, {pred_wall} s of wall clock,
+  {pred_mem} GiB of memory and {pred_procs} processes and threads; the submission may be at most {artifact_mib} MiB.
+  {item_scratch} It may import numpy, scipy, jax and `physim2`. Nothing is carried from one item to the next.
 - **A failed item is scored with the baseline's forecast.** On an item where your predictor is missing, raises
   an error, runs out of time or memory, or returns a wrong shape or non-finite values, the null policy's
   forecast for that item is scored in its place. Before the items, the grader makes three calls on the two
@@ -145,8 +147,10 @@ lab.submit("submission")     # validates; if that passes, takes the copy that is
 ```
 
 `lab.validate` tests the predictor as it will be graded: from a clean copy of `submission/` alone (regular files
-only, read-only, at another path), as an unprivileged user that cannot read `/workspace`. A predictor that
-loads a file from outside its own directory fails here, as it would fail in grading. Its reply says so again.
+only, read-only, at another path), next to the original `physim2` package (a file you changed in `physim2/` makes
+the check fail; one you added there is left out), as an unprivileged user that cannot read `/workspace` nor
+anything this box already holds in `/tmp` or `/dev/shm`. A predictor that loads a file from outside its own
+directory fails here, as it would fail in grading. Its reply says so again.
 You can also run `python -m physim2.validate submission` yourself, as often as you like; started by you the
 predictor runs with your rights and can still read `/workspace`, so only `lab.validate` proves that it will run
 where it is graded.

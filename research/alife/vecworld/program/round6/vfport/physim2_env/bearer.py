@@ -14,6 +14,8 @@ that port (any process of the machine; on Docker Desktop any container that reac
               that box inside vf-eval (`http://<proxy>/.vf-host/<token>/mcp`); that proxy puts the header on
               the requests it forwards to the laboratory's port, and on no others (inject; runtime.py). The
               address file in the box and the harness's MCP url are what they were.
+  bounds      (second pass, code audit K4) a request body is read here, counted, and refused with `413` above
+              MAX_BODY; at most MAX_ACTIVE requests are served at once (`503` beyond).
 
 Nothing here kills, deletes or starts a process.
 """
@@ -47,10 +49,64 @@ def authorized(headers, secret: str | None) -> bool:
     return len(got) == 1 and hmac.compare_digest(bytes(got[0]), header_value(secret))
 
 
-def guard(app, secret: str | None):
+# Round 4, second pass (code audit K4): what one request may make the laboratory hold. The MCP library reads a
+# request body whole (mcp/server/streamable_http.py:537, `await request.body()`) and uvicorn sets no limit, so the
+# guard reads the body itself, counting, and hands the application at most MAX_BODY bytes. The largest legitimate
+# body is an `advance` or `experiment` block of 4096 ticks x 24 inputs written as JSON (about 2 MB); everything
+# else is a few hundred bytes. At most MAX_ACTIVE requests are held at once (a box reaches the laboratory only
+# through its proxy, which itself takes at most runtime.MAX_CONNECTIONS connections): the laboratory holds at
+# most MAX_ACTIVE x MAX_BODY bytes of request bodies, whatever a box sends.
+MAX_BODY = 4 << 20
+MAX_ACTIVE = 8
+
+
+def _plain_reply(status: int, extra=()) -> tuple[dict, dict]:
+    return ({"type": "http.response.start", "status": status,
+             "headers": [(b"content-length", b"0"), *extra, (b"connection", b"close")]},
+            {"type": "http.response.body", "body": b""})
+
+
+def declared_length(headers):
+    """The request's Content-Length as an int, None when there is none, -1 when it is not one plain number (or
+    there are several)."""
+    got = [bytes(v) for k, v in headers if k.lower() == b"content-length"]
+    if not got:
+        return None
+    if len(got) != 1 or not got[0].strip().isdigit() or len(got[0].strip()) > 18:
+        return -1
+    return int(got[0].strip())
+
+
+async def read_body(receive, limit: int):
+    """(body, None) with the whole request body if it holds at most `limit` bytes, counted as it arrives;
+    (None, "too large") as soon as it holds more (the rest is never read); (None, "disconnect") when the client
+    went away. Pure ASGI: nothing but `receive` is called."""
+    parts, total = [], 0
+    while True:
+        msg = await receive()
+        kind = msg.get("type")
+        if kind == "http.disconnect":
+            return None, "disconnect"
+        if kind != "http.request":
+            continue
+        chunk = msg.get("body", b"") or b""
+        total += len(chunk)
+        if total > limit:
+            return None, "too large"
+        parts.append(chunk)
+        if not msg.get("more_body", False):
+            return b"".join(parts), None
+
+
+def guard(app, secret: str | None, *, max_body: int = MAX_BODY, max_active: int = MAX_ACTIVE):
     """Wrap an ASGI application: an HTTP request without the bearer is answered `401` here; a WebSocket is
-    closed; only `lifespan` passes unconditionally (it carries no request)."""
+    closed; only `lifespan` passes unconditionally (it carries no request). An authorized request whose
+    Content-Length, or whose body as counted while it is read, passes `max_body` gets `413` before the
+    application sees it; while `max_active` requests are being served, a further one gets `503` unread."""
+    active = 0
+
     async def guarded(scope, receive, send):
+        nonlocal active
         kind = scope.get("type")
         if kind == "lifespan":
             return await app(scope, receive, send)
@@ -58,12 +114,40 @@ def guard(app, secret: str | None):
             if kind == "websocket":
                 await send({"type": "websocket.close", "code": 1008})
             return None
-        if not authorized(scope.get("headers") or [], secret):
-            await send({"type": "http.response.start", "status": 401,
-                        "headers": [(b"content-length", b"0"), (b"www-authenticate", REALM), (b"connection", b"close")]})
-            await send({"type": "http.response.body", "body": b""})
+        headers = scope.get("headers") or []
+        if not authorized(headers, secret):
+            for m in _plain_reply(401, [(b"www-authenticate", REALM)]):
+                await send(m)
             return None
-        return await app(scope, receive, send)
+        declared = declared_length(headers)
+        if declared == -1 or (declared is not None and declared > max_body):
+            for m in _plain_reply(413):
+                await send(m)
+            return None
+        if active >= max_active:
+            for m in _plain_reply(503, [(b"retry-after", b"1")]):
+                await send(m)
+            return None
+        active += 1
+        try:
+            body, why = await read_body(receive, max_body)
+            if why == "disconnect":
+                return None
+            if body is None:
+                for m in _plain_reply(413):
+                    await send(m)
+                return None
+            delivered = False
+
+            async def replay():
+                nonlocal delivered
+                if not delivered:
+                    delivered = True
+                    return {"type": "http.request", "body": body, "more_body": False}
+                return await receive()                       # after the body: the disconnect, as the server reports it
+            return await app(scope, replay, send)
+        finally:
+            active -= 1
     return guarded
 
 

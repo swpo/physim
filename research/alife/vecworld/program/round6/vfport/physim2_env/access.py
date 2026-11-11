@@ -87,6 +87,12 @@ VALIDATE = ("import json, sys\n"
             "sys.path.insert(0, sys.argv[1])\n"
             "import physim2.validate as V\n"
             "print(json.dumps(V.check(sys.argv[2]), default=str))\n")
+# Second pass (code audit K4): the validator is the agent's file (/workspace/physim2/validate.py), and its output
+# comes back into vf-eval. It runs behind `head -c`, so an ordinary validator's report is cut at 1 MiB in the box;
+# its standard error is dropped there. (A root agent can still write to the exec's own output by another way;
+# runtime._communicate bounds what vf-eval keeps of ANY client, and that is the wall.)
+REPORT_MAX = 1 << 20
+VALIDATE_SH = f'python3 -B -c "$0" "$1" "$2" 2>/dev/null | head -c {REPORT_MAX}'
 
 
 def clean_report(text: str) -> dict:
@@ -184,6 +190,8 @@ class BoxAccess:
         self._trace = weakref.ref(trace) if trace is not None else (lambda: None)
         self.max_turns, self.wall_s, self.t0, self.max_context_tokens = max_turns, wall_s, time.time(), max_context_tokens
         self.capture_dir, self.checkpoint_s = capture_dir, float(checkpoint_s)
+        self.envelope: dict | None = None                    # set by the taskset: the run's box and limits, for lab.card() (X5)
+        self.item_limits: dict | None = None
         self.checkpointed: dict | None = None                # the newest frozen copy taken while the run was alive
         self.checkpoints = {"taken": 0, "unchanged": 0, "failed": 0, "last_source": None}
         self._fingerprint: str | None = None
@@ -225,6 +233,10 @@ class BoxAccess:
                 used = None
             out["context_tokens_used"] = used
             out["context_tokens_left"] = None if used is None else max(0, int(self.max_context_tokens) - used)
+        if self.envelope is not None:
+            out["envelope"] = self.envelope
+        if self.item_limits is not None:
+            out["item_limits"] = self.item_limits
         return out
 
     # ---- checkpoints ----
@@ -352,7 +364,7 @@ class BoxAccess:
             async with asyncio.timeout(self.check_timeout):
                 # ROUTE_ENV: in the agent's box too the predictor then runs as the box's unprivileged user (the
                 # uid setup wrote into /etc/physim2/predictor_uid, from the reserved range)
-                r = await self.runtime.run(["python3", "-B", "-c", VALIDATE, self.workdir, path], dict(ROUTE_ENV))
+                r = await self.runtime.run(["sh", "-c", VALIDATE_SH, VALIDATE, self.workdir, path], dict(ROUTE_ENV))
             report = clean_report(r.stdout)
         except TimeoutError:
             report = {"ok": False, "stage": "validator", "error": "the validator in the box did not finish in time"}

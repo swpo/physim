@@ -21,6 +21,20 @@ module `verifiers.v1.runtimes.docker` and one of `verifiers.v1.runtimes.containe
                         synchronous `docker rm --force <its box>` at teardown, runtimes/docker/__init__.py:553-567,
                         which inherits the environment; a `docker` client puts no variable into a container
                         unless it is told to with --env.)
+                        Second pass (code audit K4): verifiers reads a client's whole output into memory
+                        (`proc.communicate()`), and every `docker exec` into the agent's box carries output the
+                        agent can write to (it is root there and can open /proc/<pid>/fd/1 of any process of
+                        an exec, the harness's own main program included: runtimes/base.py:228-235). The
+                        replacement is verifiers' function with that one call changed: it keeps at most
+                        OUTPUT_MAX bytes of each stream, reads and drops the rest, and then raises SandboxError
+                        (the caller sees a failed command). Nothing else differs: the same arguments, the same
+                        new session, the same SIGKILL of the client's group when the call is cut.
+
+The box's proxy (second pass, K4): verifiers' proxy holds one connection's bytes in a reader that pauses its
+socket when it is full. The subclass below reads the request head itself and hands the rest on through a second
+reader, RelayBuffer, which now pauses the copying in the same way (at most 2 x RELAY_LIMIT + 64 KiB waiting per
+connection), and it serves at most MAX_CONNECTIONS connections of its box at once (a further one is closed
+unread). So what one box can make vf-eval hold in its proxy is bounded.
 
 Why in place and not a subclass of DockerRuntime: the worker gate of the host-safety audit (round 1, change 5;
 grading.container_gate) accepts a box only if its class is EXACTLY verifiers' DockerRuntime, and that gate
@@ -35,10 +49,12 @@ runs and in the scripted reference runs alike: they all go through DockerRuntime
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import contextvars
 import json
 import os
 import re
+import signal
 
 from . import bearer as BEARER
 from . import boxcaps as BOXCAPS
@@ -56,6 +72,69 @@ def docker_client_env(environ=None) -> dict:
     """The environment of a `docker` client that vf-eval starts: vf-eval's own, minus NOT_FOR_DOCKER."""
     environ = os.environ if environ is None else environ
     return {k: v for k, v in environ.items() if not NOT_FOR_DOCKER.search(k)}
+
+
+# ---- second pass, code audit K4: what a box can make vf-eval hold ----
+# The largest output vf-eval reads legitimately from a `docker` client is the collection of submission/: a tar
+# archive of at most artifact_mib + 8 MiB (64 + 8 for the ring), read through `head -c` (verifiers
+# utils/artifacts.py:180-193). Everything else is small: an item's reply (grading.driver_cmd caps it at
+# --max-reply-mib), the validator's report (cut at 1 MiB in the box), inspect, port, the harness's log lines.
+OUTPUT_MAX = {"stdout": 96 << 20, "stderr": 4 << 20}
+RELAY_LIMIT = 1 << 17                                        # the relay's reader pauses its copy beyond 2 x this
+MAX_CONNECTIONS = 64                                         # per box proxy, connections served at once
+
+
+async def read_bounded(stream, cap: int) -> tuple[bytes, int]:
+    """Read `stream` (an asyncio.StreamReader) to its end. Returns (the first `cap` bytes, the number of bytes
+    read and dropped after them). Holds at most `cap` + 64 KiB at any moment."""
+    kept, dropped = bytearray(), 0
+    while chunk := await stream.read(1 << 16):
+        room = cap - len(kept)
+        if room > 0:
+            kept += chunk[:room]
+        dropped += max(0, len(chunk) - max(room, 0))
+    return bytes(kept), dropped
+
+
+class _Gate:
+    """The transport the relay reader is given, so that it can say "full": asyncio's StreamReader calls
+    pause_reading() when its buffer passes twice its limit and resume_reading() when a read brings it back
+    under the limit (asyncio/streams.py, feed_data and _maybe_resume_transport). The pump waits on `open`."""
+
+    def __init__(self):
+        self.open = asyncio.Event()
+        self.open.set()
+
+    def pause_reading(self):
+        self.open.clear()
+
+    def resume_reading(self):
+        self.open.set()
+
+    def get_extra_info(self, name, default=None):
+        return default
+
+
+def relay_buffer() -> tuple[asyncio.StreamReader, _Gate]:
+    """A StreamReader and the gate through which its feeder sees that it is full (gate.open cleared)."""
+    relay, gate = asyncio.StreamReader(limit=RELAY_LIMIT), _Gate()
+    relay.set_transport(gate)
+    return relay, gate
+
+
+async def pump(reader, relay, gate) -> None:
+    """Copy `reader` into `relay` in pieces of 64 KiB, waiting while the relay is full; feed_eof at the end."""
+    try:
+        while True:
+            await gate.open.wait()
+            chunk = await reader.read(1 << 16)
+            if not chunk:
+                break
+            relay.feed_data(chunk)
+    except Exception:
+        pass
+    finally:
+        relay.feed_eof()
 
 
 def resolved_caps(config) -> dict:
@@ -92,11 +171,43 @@ def install() -> bool:
     from verifiers.v1.runtimes.docker import egress as E
 
     import verifiers.v1.runtimes.container as C
+    from verifiers.v1.utils.aio import run_shielded
 
-    orig_cli, orig_start, orig_communicate = D.cli, D.DockerRuntime.start, C._communicate
+    orig_cli, orig_start = D.cli, D.DockerRuntime.start
 
     async def _communicate(*argv, input=None, env=None):
-        return await orig_communicate(*argv, input=input, env=docker_client_env() if env is None else env)
+        """verifiers' container._communicate (runtimes/container.py:44-63) with two changes: the client's
+        environment (docker_client_env), and bounded reading of its output instead of proc.communicate()."""
+        proc = await asyncio.create_subprocess_exec(
+            *argv, env=docker_client_env() if env is None else env,
+            stdin=asyncio.subprocess.PIPE if input is not None else asyncio.subprocess.DEVNULL,
+            stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE, start_new_session=True)
+
+        async def feed():
+            if input is None:
+                return
+            try:
+                proc.stdin.write(input)
+                await proc.stdin.drain()
+            except (BrokenPipeError, ConnectionResetError):
+                pass
+            finally:
+                proc.stdin.close()
+        try:
+            _, (stdout, lost_out), (stderr, lost_err) = await asyncio.gather(
+                feed(), read_bounded(proc.stdout, OUTPUT_MAX["stdout"]), read_bounded(proc.stderr, OUTPUT_MAX["stderr"]))
+            await proc.wait()
+        except BaseException:
+            with contextlib.suppress(ProcessLookupError):
+                os.killpg(proc.pid, signal.SIGKILL)
+            await run_shielded(asyncio.gather(read_bounded(proc.stdout, 0), read_bounded(proc.stderr, 0), proc.wait(),
+                                              return_exceptions=True))
+            raise
+        if lost_out or lost_err:
+            raise SandboxError(f"refused: a `{' '.join(str(a) for a in argv[:2])}` client wrote more than the pilot reads "
+                               f"({lost_out} bytes of standard output and {lost_err} of standard error past "
+                               f"{OUTPUT_MAX['stdout']} and {OUTPUT_MAX['stderr']}); its output was dropped")
+        return proc.returncode or 0, stdout, stderr
 
     async def cli(*argv, input=None, env=None):
         caps = _CAPS.get()
@@ -136,6 +247,8 @@ def install() -> bool:
         def __init__(self, policy):
             super().__init__(policy)
             self._bearers: dict[tuple[str, int], bytes] = {}
+            self._active = 0                                 # connections being served now (MAX_CONNECTIONS)
+            self.refused_connections = 0
 
         def set_bearer(self, port: int, secret: str) -> None:
             if not BEARER.well_formed(secret) or isinstance(port, bool) or not isinstance(port, int) or not 0 < port < 65536:
@@ -150,6 +263,17 @@ def install() -> bool:
             return None if callback is None else self._bearers.get((callback.host, callback.port))
 
         async def _handle(self, reader, writer):
+            if self._active >= MAX_CONNECTIONS:              # K4: a box gets at most this many connections served at once
+                self.refused_connections += 1
+                writer.close()
+                return None
+            self._active += 1
+            try:
+                return await self._handle_one(reader, writer)
+            finally:
+                self._active -= 1
+
+        async def _handle_one(self, reader, writer):
             if not self._bearers or self.server is None:
                 return await super()._handle(reader, writer)
             try:
@@ -165,18 +289,9 @@ def install() -> bool:
                     pass
                 writer.close()
                 return None
-            relay = asyncio.StreamReader(limit=1 << 20)
+            relay, gate = relay_buffer()                     # K4: the copy waits while this holds 2 x RELAY_LIMIT
             relay.feed_data(head)
-
-            async def pump():
-                try:
-                    while chunk := await reader.read(1 << 16):
-                        relay.feed_data(chunk)
-                except Exception:
-                    pass
-                finally:
-                    relay.feed_eof()
-            task = asyncio.create_task(pump())
+            task = asyncio.create_task(pump(reader, relay, gate))
             try:
                 return await super()._handle(relay, writer)
             finally:

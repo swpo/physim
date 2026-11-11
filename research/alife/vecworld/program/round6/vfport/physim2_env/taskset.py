@@ -71,6 +71,7 @@ MEASURE = ("for f in /sys/fs/cgroup/cpu.max /sys/fs/cgroup/memory.max /sys/fs/cg
            "printf 'nproc='; (nproc 2>/dev/null || echo absent); "
            "printf 'workspace='; (df -Pk /workspace 2>/dev/null | awk 'NR==2{print $1, $2}'); echo; "
            "printf 'tmp='; (df -Pk /tmp 2>/dev/null | awk 'NR==2{print $1, $2}'); echo; "
+           "printf 'shm='; (df -Pk /dev/shm 2>/dev/null | awk 'NR==2{print $1, $2}'); echo; "
            "printf 'rootfs='; (awk '$2==\"/\"{print $4}' /proc/mounts 2>/dev/null | tail -n 1 | cut -c1-60)")
 
 
@@ -90,8 +91,8 @@ def parse_box(text: str) -> dict:
         except (TypeError, ValueError):
             return None
     out = {"cpus": None, "memory_gib": None, "pids": None, "nproc": num(kv.get("nproc")), "workspace_mib": None, "tmp_mib": None,
-           "read_only_root": None}
-    for key, name in (("workspace", "workspace_mib"), ("tmp", "tmp_mib")):
+           "shm_mib": None, "read_only_root": None}
+    for key, name in (("workspace", "workspace_mib"), ("tmp", "tmp_mib"), ("shm", "shm_mib")):
         f = (kv.get(key) or "").split()
         if len(f) == 2 and f[0] == "tmpfs" and num(f[1]):
             out[name] = round(int(f[1]) / 1024.0, 1)
@@ -347,6 +348,7 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                                WORKDIR, cfg["predictor"], trace=trace, max_turns=run["max_turns"], wall_s=60.0 * run["wall_minutes"],
                                max_context_tokens=run["max_context_tokens"], capture_dir=self._captures(trace.id),
                                checkpoint_s=self.config.checkpoint_seconds)
+        box.envelope, box.item_limits = BUNDLE.card_envelope(run), BUNDLE.item_limits(run, cfg)     # lab.card() of THIS run (X5)
         self._access[trace.id] = box
         # the first checkpoint is the baseline itself, known without asking the box: a run that fails before
         # anything else could be copied is graded on what its box started with
@@ -390,8 +392,9 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                "max_output_tokens_per_turn": None if scripted else getattr(sampling, "max_tokens", None),
                "max_context_tokens": self.config.limits.max_context_tokens, "cap_usd": self.config.limits.cap_usd,
                "cpus": getattr(runtime.config, "cpu", None), "memory_gib": getattr(runtime.config, "memory", None),
-               "pids": None, "workspace_mib": None, "tmp_mib": None, "read_only_root": None, "lab_counts_turns": True,
-               "measured": False, "harness": str(getattr(harness, "id", None) or "?")[:40]}
+               "pids": None, "workspace_mib": None, "tmp_mib": None, "shm_mib": None, "read_only_root": None, "lab_counts_turns": True,
+               "measured": False, "harness": str(getattr(harness, "id", None) or "?")[:40],
+               "checkpoint_seconds": self.config.checkpoint_seconds}
         try:
             r = await runtime.run(["sh", "-c", MEASURE], {})
             box = parse_box(r.stdout) if r.exit_code == 0 else None
@@ -400,8 +403,8 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         if box is not None:
             configured = {"cpus": run["cpus"], "memory_gb": run["memory_gib"]}
             run.update(cpus=box["cpus"], memory_gib=box["memory_gib"], pids=box["pids"], measured=True,
-                       workspace_mib=box["workspace_mib"], tmp_mib=box["tmp_mib"], read_only_root=box["read_only_root"],
-                       configured=configured)
+                       workspace_mib=box["workspace_mib"], tmp_mib=box["tmp_mib"], shm_mib=box.get("shm_mib"),
+                       read_only_root=box["read_only_root"], configured=configured)
         return run
 
     async def _public_files(self, runtime, uid: int | None = None, task_md: str | None = None) -> dict:

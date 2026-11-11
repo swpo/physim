@@ -129,6 +129,12 @@ def freeze(raw: bytes | None, root: str, max_mib: float):
     return out.getvalue(), {"files": man, "bytes": total, "skipped": skipped, "sha256": digest}, None
 
 
+def reply_mib(max_values: int) -> int:
+    """The driver's --max-reply-mib for a request that can legitimately return `max_values` numbers: float32 and
+    the npz framing, rounded up to whole MiB (1 for the ring: 256 samples x 36 values = 36 KiB)."""
+    return max(1, -(-(4 * int(max_values) + (64 << 10)) // MIB))
+
+
 def read_reply(raw: bytes, max_values: int) -> dict:
     """reply.npz bytes -> {level: array (float64)}. Raises ValueError (public wording) on anything else than
     what predict_runner.py writes. `max_values` bounds the numbers the request can legitimately return."""

@@ -12,8 +12,11 @@ system. Its rules:
                   Every component of a kept path is rewritten to letters, digits and `. _ + = @ , -` (anything
                   else becomes `_`); a component of dots only becomes `_`. Two entries that map to the same
                   name: the second is skipped
-  caps            at most `max_files` files and `max_bytes` bytes in all (default 2000 and 20 MiB), counted
-                  while writing; depth and name length are bounded. What does not fit is skipped and listed
+  caps            at most `max_files` entries (files AND the directories made for them) and `max_bytes` bytes in
+                  all (default 2000 and 20 MiB), counted while writing; depth and name length are bounded. What
+                  does not fit is skipped and listed
+  a cut archive   a file whose bytes end early, or whose read fails inside the archive, stays as far as it was
+                  written: it is listed under "skipped" with `partial` (its safe path and the bytes on disk)
   where           only below `dest`, a directory this module creates itself (it refuses one that exists). Every
                   directory and file is created relative to an open directory handle with O_NOFOLLOW and O_EXCL,
                   mode 0700 / 0600: a link cannot be followed and an existing file cannot be overwritten
@@ -99,8 +102,8 @@ def extract(raw: bytes | None, root: str, dest: str, *, max_files: int = MAX_FIL
     "workspace/submission") into the NEW directory `dest`; with write=False only the manifest is made.
     Never raises on the archive's content: an unreadable or truncated archive ends the pass and is recorded."""
     man = {"root": root, "files": [], "skipped": [], "n_files": 0, "bytes": 0, "n_skipped": 0, "skipped_bytes_declared": 0,
-           "directories_seen": 0, "caps": {"max_files": int(max_files), "max_bytes": int(max_bytes)}, "complete": True,
-           "archive": "none" if raw is None else "read to its end", "written": bool(write)}
+           "directories_seen": 0, "directories_made": 0, "caps": {"max_files": int(max_files), "max_bytes": int(max_bytes)},
+           "complete": True, "archive": "none" if raw is None else "read to its end", "written": bool(write)}
     if raw is None:
         return man
     top = -1
@@ -108,13 +111,17 @@ def extract(raw: bytes | None, root: str, dest: str, *, max_files: int = MAX_FIL
         os.mkdir(dest, 0o700)                                # FileExistsError: never write into something that is already there
         top = os.open(dest, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
     seen: set[str] = set()
+    made: set[str] = set()                                   # directories made below dest (they count against max_files)
 
-    def skip(m, why):
+    def skip(m, why, partial=None):
         man["n_skipped"] += 1
         man["complete"] = False
         man["skipped_bytes_declared"] += max(0, int(getattr(m, "size", 0) or 0)) if m is not None and m.isreg() else 0
         if len(man["skipped"]) < MAX_LISTED:
-            man["skipped"].append({"name": _shown(getattr(m, "name", "?")), "why": why, "bytes_declared": int(getattr(m, "size", 0) or 0)})
+            row = {"name": _shown(getattr(m, "name", "?")), "why": why, "bytes_declared": int(getattr(m, "size", 0) or 0)}
+            if partial is not None:
+                row["partial"] = partial
+            man["skipped"].append(row)
 
     try:
         tar = tarfile.open(fileobj=io.BytesIO(raw), mode="r|")           # a stream: one pass, no seeking back
@@ -128,7 +135,8 @@ def extract(raw: bytes | None, root: str, dest: str, *, max_files: int = MAX_FIL
                 parts, why = safe_parts(m.name, root)
             if why is None and "/".join(parts) in seen:
                 why = "name collision"
-            if why is None and man["n_files"] >= max_files:
+            new_dirs = [] if why is not None else ["/".join(parts[:i]) for i in range(1, len(parts)) if "/".join(parts[:i]) not in made]
+            if why is None and man["n_files"] + len(made) + len(new_dirs) + 1 > max_files:
                 why = "file count cap"
             if why is None and (m.size < 0 or man["bytes"] + m.size > max_bytes):
                 why = "size cap"
@@ -136,9 +144,10 @@ def extract(raw: bytes | None, root: str, dest: str, *, max_files: int = MAX_FIL
                 skip(m, why)
                 continue
             rel = "/".join(parts)
-            src = tar.extractfile(m)                         # bounded by the header's size; read in pieces below
-            h, n, fd, dirs, ok = hashlib.sha256(), 0, -1, [], True
+            made.update(new_dirs)                            # counted whether or not they are written (write=False)
+            h, n, fd, dirs, ok, opened, broken = hashlib.sha256(), 0, -1, [], True, False, None
             try:
+                src = tar.extractfile(m)                     # bounded by the header's size; read in pieces below
                 if write:
                     cur = top
                     for p in parts[:-1]:                     # one level at a time, relative to a handle, never through a link
@@ -150,6 +159,7 @@ def extract(raw: bytes | None, root: str, dest: str, *, max_files: int = MAX_FIL
                         dirs.append(nxt)
                         cur = nxt
                     fd = os.open(parts[-1], os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600, dir_fd=cur)
+                    opened = True
                 while n < m.size:
                     b = src.read(min(CHUNK, m.size - n))
                     if not b:
@@ -163,15 +173,22 @@ def extract(raw: bytes | None, root: str, dest: str, *, max_files: int = MAX_FIL
                     n += len(b)
             except OSError:
                 ok = False
+            except (tarfile.TarError, EOFError, ValueError) as e:     # the archive broke inside this file's bytes
+                ok, broken = False, e
             finally:
                 if fd >= 0:
                     os.close(fd)
                 for d in dirs:
                     os.close(d)
             seen.add(rel)
+            man["directories_made"] = len(made)
             if not ok or n != m.size:
-                skip(m, "size cap" if man["bytes"] + n >= max_bytes else "short read" if ok else "write failed")
+                partial = {"path": rel, "bytes_on_disk": n} if opened else None
+                skip(m, "short read" if broken is not None else "size cap" if man["bytes"] + n >= max_bytes else "short read" if ok
+                     else "write failed", partial)
                 man["bytes"] += n                            # what reached the disk counts against the cap
+                if broken is not None:
+                    raise broken                             # the stream is broken: end the pass (recorded below)
                 continue
             man["files"].append({"path": rel, "bytes": n, "sha256": h.hexdigest()})
             man["n_files"] += 1
@@ -182,6 +199,7 @@ def extract(raw: bytes | None, root: str, dest: str, *, max_files: int = MAX_FIL
     finally:
         if top >= 0:
             os.close(top)
+    man["directories_made"] = len(made)
     return man
 
 

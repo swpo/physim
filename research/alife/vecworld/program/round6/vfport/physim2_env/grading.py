@@ -280,11 +280,15 @@ async def stage(runtime, workdir: str, uid: int) -> dict:
     return {"has_predict": "HAS_PREDICT" in r.stdout, "scan": rep}
 
 
-def driver_cmd(limits: dict, workdir: str, uid: int, cleanup: bool = True) -> list[str]:
+def driver_cmd(limits: dict, workdir: str, uid: int, cleanup: bool = True, max_values: int | None = None) -> list[str]:
+    """The driver's command line for one request. `max_values` (the numbers the exam asks for) sets the reply cap
+    --max-reply-mib (second pass, exam audit X9: the driver's default of 64 MiB would come back base64-encoded
+    through a box's output; the ring's largest valid reply is 36 KiB, so its cap is 1 MiB)."""
     return ["python3", "-I", "-B", f"{RUNTIME_DIR}/item.py", "--submission", f"{workdir}/submission",
             "--runner", f"{workdir}/physim2/predict_runner.py", "--request", f"{RUNTIME_DIR}/request.npz",
             "--cpu", str(limits.get("cpu_seconds") or 0), "--wall", str(limits.get("wall_seconds") or 0),
-            "--mem-gib", str(limits.get("memory_gib") or 0), "--uid", str(int(uid))] + ([] if cleanup else ["--no-cleanup"])
+            "--mem-gib", str(limits.get("memory_gib") or 0), "--uid", str(int(uid)),
+            "--max-reply-mib", str(_rules.reply_mib(max_values if max_values is not None else 1 << 24))] + ([] if cleanup else ["--no-cleanup"])
 
 
 async def run_request(runtime, cmd: list[str], request: bytes, wall: float) -> dict:
@@ -368,7 +372,7 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
     failed, cpu, wall_s, errors = np.zeros(ex.n, bool), np.zeros(ex.n), np.zeros(ex.n), []
     cleanups, layers, dirty, infra, box_cpu, box_s, fatal = [], None, None, [], 0.0, [], None
     isolation = "box" if prepare is not None else "shared"
-    cmd = driver_cmd(limits, workdir, uid, cleanup)
+    cmd = driver_cmd(limits, workdir, uid, cleanup, max_values)
     t0 = time.time()
 
     # ---- 1. validation, in the verifier box ----

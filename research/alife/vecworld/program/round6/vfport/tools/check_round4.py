@@ -15,6 +15,12 @@ functions, and servers on 127.0.0.1 inside THIS process (threads), reached by cl
   D  step 3         the request, the standing go, the ledger, the instance register, the strict config schema
                     (tools/vfrun.py, tools/check_config.py) and the publication folder (tools/pack_rollout.py),
                     on files in --scratch that this test writes and leaves there
+  E  second pass    the remaining items of the round-4 verdict: K4 (the laboratory's guard bounds request bodies
+                    and requests at once; the box's proxy bounds its relay buffer and its connections; vf-eval keeps
+                    a bounded part of a docker client's output), K1 (the driver guard wants the box's own tmpfs
+                    sizes), K2 (the capture counts directories and records a file the archive broke in), K5 (the
+                    request keys are an allow-list; the chain's hash holds every non-message key; a spend log that
+                    cannot be written stops the run) and X9 (the reply cap of an item)
 
 No model is called and no credential is read: the endpoint is the stand-in and its key is a made-up word.
 Nothing is removed afterwards: --scratch is the caller's to remove.
@@ -23,6 +29,7 @@ import argparse
 import asyncio
 import json
 import os
+import re
 import socket
 import sys
 import threading
@@ -393,9 +400,10 @@ def test_spend_pure():
                                                      {"role": "assistant", "content": None, "tool_calls": []}]), model=standin_model.MODEL, max_output_tokens=100)
     check("C7 a request the meter cannot bound is refused (10 forms); the bash harness's own shape passes", all(got.values()) and ok_shape is None, (got, ok_shape))
     reason = [SPEND.check_shape(chat_body(**kw), model=standin_model.MODEL, max_output_tokens=100)
-              for kw in ({"reasoning_effort": "high"}, {"reasoning": {"summary": "auto", "effort": "low"}}, {"stream": True, "stream_options": {"include_usage": True}})]
-    check("C7b the reasoning settings a rollout config can ask for (an effort; the route's `reasoning` object) and a streamed request pass the shape check",
-          reason == [None, None, None], reason)
+              for kw in ({"reasoning_effort": "high"}, {"stream": True, "stream_options": {"include_usage": True}}, {"reasoning": {"summary": "auto", "effort": "low"}})]
+    check("C7b the reasoning setting a rollout config can ask for (an effort) and a streamed request pass the shape check; the route's `reasoning` "
+          "object, which no config key sends any more, does not (second pass, K5: request keys are an allow-list)",
+          reason[:2] == [None, None] and reason[2] is not None and "reasoning" in reason[2], reason)
     body = chat_body(1000)
     b1, how1 = SPEND.prompt_bound(body, None)
     check("C8 the first prompt is bounded by the bytes of the whole request", b1 >= len(json.dumps(body["messages"][0])) and "whole request" in how1, (b1, how1))
@@ -615,11 +623,310 @@ async def spend_through_client(scratch: str):
     SPEND.METERS.clear()
 
 
+# ----------------------------------------------------------------------------- E. second pass (verdict of round 4)
+def raw_request(port: int, head_lines: list, chunks=(), *, timeout=20):
+    """A raw HTTP/1.1 request whose body is sent in `chunks` (bytes each), stopping early when the server answers
+    or closes; returns (status or None, bytes of body sent)."""
+    sent = 0
+    with socket.create_connection(("127.0.0.1", port), timeout=timeout) as c:
+        c.sendall(("\r\n".join(head_lines) + "\r\n\r\n").encode())
+        c.setblocking(False)
+        got = b""
+        for ch in chunks:
+            try:
+                got += c.recv(65536)
+            except (BlockingIOError, ConnectionError):
+                pass
+            if got:
+                break
+            try:
+                c.setblocking(True)
+                c.settimeout(5)
+                c.sendall(ch)
+                sent += len(ch)
+                c.setblocking(False)
+            except (ConnectionError, OSError):
+                break
+        c.setblocking(True)
+        c.settimeout(timeout)
+        try:
+            while b"\r\n" not in got:
+                more = c.recv(65536)
+                if not more:
+                    break
+                got += more
+        except OSError:
+            pass
+    try:
+        return int(got.split(b" ")[1]), sent
+    except (IndexError, ValueError):
+        return None, sent
+
+
+def test_second_pass(scratch: str):
+    # ---- K4 (b): the laboratory's guard bounds what one request, and all requests together, make it hold ----
+    secret = BEARER.new_secret()
+    seen = []
+
+    async def echo(scope, receive, send):                    # reads the body as the MCP library does, says how long it was
+        if scope["type"] != "http":
+            return
+        body = b""
+        while True:
+            m = await receive()
+            body += m.get("body", b"")
+            if not m.get("more_body"):
+                break
+        seen.append(len(body))
+        out = json.dumps({"n": len(body)}).encode()
+        await send({"type": "http.response.start", "status": 200, "headers": [(b"content-length", str(len(out)).encode())]})
+        await send({"type": "http.response.body", "body": out})
+
+    lim = 1 << 20
+    port = serve_asgi(BEARER.guard(echo, secret, max_body=lim))
+    time.sleep(0.5)
+    auth = "Authorization: Bearer " + secret
+    big, big_sent = raw_request(port, ["POST /mcp HTTP/1.1", f"Host: 127.0.0.1:{port}", auth, f"Content-Length: {64 << 20}", "Connection: close"],
+                                [b"x" * (1 << 16)] * 1024)
+    bad, _ = raw_request(port, ["POST /mcp HTTP/1.1", f"Host: 127.0.0.1:{port}", auth, "Content-Length: 12abc", "Connection: close"], [b"x" * 12])
+    check("E1 K4 the laboratory's guard: a declared Content-Length above the cap gets 413 before a byte of the body reaches the application "
+          "(one that is not a plain number is refused already by the HTTP server, 400)", big == 413 and bad in (400, 413) and seen == []
+          and BEARER.MAX_BODY == 4 << 20 and BEARER.declared_length([(b"content-length", b"12abc")]) == -1,
+          {"status": (big, bad), "body_bytes_sent_before_the_answer": big_sent, "app_saw": seen})
+    chunk = b"x" * (1 << 16)
+    framed = [b"%x\r\n" % len(chunk) + chunk + b"\r\n"] * 1024
+    ch, ch_sent = raw_request(port, ["POST /mcp HTTP/1.1", f"Host: 127.0.0.1:{port}", auth, "Transfer-Encoding: chunked", "Connection: close"], framed)
+    check("E2 K4 ... a chunked body (no length declared) is counted as it arrives and refused with 413 once it passes the cap; the "
+          "application never sees it", ch == 413 and seen == [] and ch_sent < (64 << 20), {"status": ch, "sent_before_the_answer": ch_sent})
+    ok_status, okb = http(port, "POST", "/mcp", headers={"Authorization": "Bearer " + secret}, body=b"y" * lim)
+    check("E3 K4 ... a body of exactly the cap passes whole", ok_status == 200 and json.loads(okb)["n"] == lim and seen == [lim], (ok_status, okb[:80], seen))
+    gate = threading.Event()
+
+    async def slow(scope, receive, send):
+        if scope["type"] != "http":
+            return
+        await asyncio.to_thread(gate.wait, 20)
+        await send({"type": "http.response.start", "status": 200, "headers": [(b"content-length", b"0")]})
+        await send({"type": "http.response.body", "body": b""})
+    sport = serve_asgi(BEARER.guard(slow, secret, max_active=2))
+    time.sleep(0.5)
+    results = []
+    workers = [threading.Thread(target=lambda: results.append(http(sport, "POST", "/mcp", headers={"Authorization": "Bearer " + secret}, body=b"{}")[0]))
+               for _ in range(2)]
+    for t in workers:
+        t.start()
+    time.sleep(1.0)
+    third = http(sport, "POST", "/mcp", headers={"Authorization": "Bearer " + secret}, body=b"{}")[0]
+    gate.set()
+    for t in workers:
+        t.join(20)
+    after = http(sport, "POST", "/mcp", headers={"Authorization": "Bearer " + secret}, body=b"{}")[0]
+    check("E4 K4 ... while MAX_ACTIVE requests are being served a further one gets 503 unread, and is served once one ended "
+          "(here MAX_ACTIVE = 2; the pin's value is 8)", third == 503 and sorted(results) == [200, 200] and after == 200 and BEARER.MAX_ACTIVE == 8,
+          {"third": third, "first_two": results, "after": after})
+    no_auth, _ = raw_request(port, ["POST /mcp HTTP/1.1", f"Host: 127.0.0.1:{port}", f"Content-Length: {64 << 20}", "Connection: close"], [b"x" * 1024])
+    check("E5 K4 ... and a request without the bearer is still 401, whatever its length", no_auth == 401, no_auth)
+
+    # ---- K4 (c): the box's proxy ----
+    RUNTIME.install()
+    import verifiers.v1.runtimes.docker as D
+    from verifiers.v1.configs.runtime import NetworkPolicyConfig
+    from verifiers.v1.runtimes.docker.egress import NetworkPolicy
+    real_relay = RUNTIME.relay_buffer
+    peaks = []
+
+    def recording_relay():
+        relay, g = real_relay()
+        rec = {"peak": 0, "fed": 0}
+        feed = relay.feed_data
+
+        def fed(data):
+            feed(data)
+            rec["fed"] += len(data)
+            rec["peak"] = max(rec["peak"], len(relay._buffer))    # the test's own measurement of the relay's buffer
+        relay.feed_data = fed
+        peaks.append(rec)
+        return relay, g
+
+    async def flood_through_proxy():
+        held = []
+
+        async def deaf(reader, writer):                      # an upstream that accepts and reads nothing
+            held.append(writer)
+            await asyncio.sleep(60)
+        up = await asyncio.start_server(deaf, "127.0.0.1", 0)
+        up_port = up.sockets[0].getsockname()[1]
+        proxy = D.EgressProxy(NetworkPolicy(NetworkPolicyConfig(allow=[]), [], allow_non_global=False))
+        await proxy.start("127.0.0.1")
+        try:
+            url = proxy.callback_url(f"http://127.0.0.1:{up_port}/mcp", "127.0.0.1")
+            proxy.set_bearer(up_port, BEARER.new_secret())
+            path = "/" + url.split("/", 3)[3]
+            r, w = await asyncio.open_connection("127.0.0.1", proxy.port)
+            w.write(f"POST {path} HTTP/1.1\r\nHost: x\r\nContent-Length: {256 << 20}\r\n\r\n".encode())
+            sent, piece = 0, b"z" * (1 << 20)
+            try:
+                async with asyncio.timeout(6):
+                    while sent < (256 << 20):
+                        w.write(piece)
+                        await w.drain()
+                        sent += len(piece)
+            except TimeoutError:
+                pass
+            w.close()
+        finally:
+            await proxy.stop()
+        # many connections at once, to a fresh proxy: it serves MAX_CONNECTIONS and closes the others unread
+        proxy = D.EgressProxy(NetworkPolicy(NetworkPolicyConfig(allow=[]), [], allow_non_global=False))
+        await proxy.start("127.0.0.1")
+        try:
+            conns = []
+            for _ in range(RUNTIME.MAX_CONNECTIONS + 6):
+                conns.append(await asyncio.open_connection("127.0.0.1", proxy.port))
+            await asyncio.sleep(0.5)
+
+            async def is_closed(cr):
+                try:
+                    return await asyncio.wait_for(cr.read(1), 1.5) == b""
+                except TimeoutError:
+                    return False
+            closed = sum(await asyncio.gather(*(is_closed(cr) for cr, _ in conns)))
+            for cr, cw in conns:
+                cw.close()
+            return {"sent": sent, "refused_connections": proxy.refused_connections, "closed_unread": closed}
+        finally:
+            await proxy.stop()
+            up.close()
+    RUNTIME.relay_buffer = recording_relay
+    try:
+        fl = asyncio.run(flood_through_proxy())
+    finally:
+        RUNTIME.relay_buffer = real_relay
+    bound = 2 * RUNTIME.RELAY_LIMIT + (1 << 16)
+    peak = max((p["peak"] for p in peaks), default=None)
+    check("E6 K4 the box's proxy: a box that sends a body as fast as it can to an upstream that reads nothing makes the relay hold at most "
+          "2 x RELAY_LIMIT + 64 KiB (the copy waits), not what the box sent",
+          peak is not None and peak <= bound and fl["sent"] > 4 * bound, {"relay_peak_bytes": peak, "bound": bound, "box_sent_bytes": fl["sent"]})
+    check("E7 K4 ... and it serves at most MAX_CONNECTIONS connections of its box at once: the others are closed unread",
+          fl["refused_connections"] == 6 and fl["closed_unread"] == 6 and RUNTIME.MAX_CONNECTIONS == 64, fl)
+
+    # ---- K4 (a): what vf-eval keeps of a docker client's output ----
+    async def bounded(n, cap):
+        rd = asyncio.StreamReader()
+        for i in range(0, n, 1 << 20):
+            rd.feed_data(b"q" * min(1 << 20, n - i))
+        rd.feed_eof()
+        return await RUNTIME.read_bounded(rd, cap)
+    kept, lost = asyncio.run(bounded(300 << 20, 1 << 20))
+    kept2, lost2 = asyncio.run(bounded(1000, 1 << 20))
+    check("E8 K4 bounded reading of a client's output: of 300 MiB the first 1 MiB is kept and the rest counted and dropped; a short "
+          "output is kept whole", (len(kept), lost, len(kept2), lost2) == (1 << 20, (300 << 20) - (1 << 20), 1000, 0),
+          (len(kept), lost, len(kept2), lost2))
+    import verifiers.v1.runtimes.container as C
+    from physim2_env import access as ACCESS
+    check("E9 K4 ... verifiers' one function that starts docker clients is the bounded one (stdout 96 MiB, stderr 4 MiB), and the in-box "
+          "validator runs behind `head -c 1048576` with its standard error dropped",
+          C._communicate.__module__ == "physim2_env.runtime" and RUNTIME.OUTPUT_MAX == {"stdout": 96 << 20, "stderr": 4 << 20}
+          and ACCESS.VALIDATE_SH.endswith("2>/dev/null | head -c 1048576") and '"$0" "$1" "$2"' in ACCESS.VALIDATE_SH,
+          {"module": C._communicate.__module__, "sh": ACCESS.VALIDATE_SH})
+
+    # ---- K1: the driver guard wants the box's own sizes ----
+    from physim2_env.public import _item as ITEM
+    base = ["21 1 0:50 / / ro,relatime master:1 - overlay overlay rw,lowerdir=/l",
+            "22 21 0:51 / /proc rw,nosuid - proc proc rw", "23 21 0:52 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755",
+            "24 23 0:53 / /dev/shm rw,nosuid,nodev,noexec - tmpfs shm rw,size=65536k",
+            "25 21 254:1 /x/hosts /etc/hosts rw - ext4 /dev/vda rw"]
+    sized = {"/workspace": "rw,size=1048576k,mode=755", "/tmp": "rw,size=524288k", "/etc/physim2": "rw,size=1024k,mode=755", "/runtime": "rw,size=16384k,mode=755"}
+
+    def table(over=None):
+        lines = list(base)
+        for i, (mp, opts) in enumerate({**sized, **(over or {})}.items()):
+            lines.append(f"{30 + i} 21 0:{60 + i} / {mp} rw,nosuid,nodev,relatime - tmpfs tmpfs {opts}")
+        return "\n".join(lines) + "\n"
+    good = ITEM.foreign_mounts(ITEM.parse_mounts(table()))
+    other = {mp: ITEM.foreign_mounts(ITEM.parse_mounts(table({mp: "rw,size=1611464k,mode=755"}))) for mp in sized}
+    nosize = ITEM.foreign_mounts(ITEM.parse_mounts(table({"/tmp": "rw,mode=1777"})))
+    caps_k = {p: "size=%dk" % (int(re.search(r"size=(\d+)m", o).group(1)) * 1024) for p, o in BOXCAPS.TMPFS}
+    check("E10 K1 the driver guard accepts the four tmpfs mounts of a capped box with the box's own sizes, and refuses each one with another "
+          "size or none; its table of sizes is the one boxcaps.TMPFS gives the runtime",
+          good == [] and all(v == [f"{mp} (tmpfs, not the box's size)"] for mp, v in other.items()) and nosize == ["/tmp (tmpfs, not the box's size)"]
+          and caps_k == ITEM.BOX_TMPFS_SIZE, {"good": good, "other": other, "nosize": nosize, "caps": caps_k})
+
+    # ---- K2: the capture counts directories and records a file the archive broke in ----
+    import io
+    import tarfile as TF
+    from physim2_env import capture as CAPTURE
+
+    def arc(members, cut=None):
+        buf = io.BytesIO()
+        with TF.open(fileobj=buf, mode="w", format=TF.GNU_FORMAT) as t:
+            for name, data in members:
+                ti = TF.TarInfo(name)
+                ti.size = len(data)
+                t.addfile(ti, io.BytesIO(data))
+        raw = buf.getvalue()
+        return raw if cut is None else raw[:cut]
+    deep = arc([(f"w/s/d{i}/e/f/g/h.txt", b"x") for i in range(10)])
+    dest = os.path.join(scratch, f"cap-dirs-{os.getpid()}-{int(time.time())}")
+    man = CAPTURE.extract(deep, "w/s", dest, max_files=20)
+    on_disk = sum(len(ds) + len(fs) for _, ds, fs in os.walk(dest))
+    check("E11 K2 the capture counts the directories it makes against max_files: 10 files four levels deep with a cap of 20 entries "
+          "write 4 files and their 16 directories, and skip the rest as 'file count cap'",
+          man["n_files"] == 4 and man["directories_made"] == 16 and on_disk == 20
+          and sum(1 for k in man["skipped"] if k["why"] == "file count cap") == 6, {k: man[k] for k in ("n_files", "directories_made", "n_skipped")})
+    whole = arc([("w/s/a.txt", b"a" * 100), ("w/s/big.bin", b"b" * 50_000), ("w/s/c.txt", b"c")])
+    cut_at = whole.find(b"b" * 100) + 20_000
+    dest2 = dest + "-cut"
+    man2 = CAPTURE.extract(whole[:cut_at], "w/s", dest2)
+    part = [k for k in man2["skipped"] if k.get("partial")]
+    check("E12 K2 an archive cut in the middle of a file: the pass ends, the file written so far is listed with its path and the bytes on disk, "
+          "and the manifest says the archive was cut",
+          man2["n_files"] == 1 and len(part) == 1 and part[0]["partial"]["path"] == "big.bin"
+          and part[0]["partial"]["bytes_on_disk"] == os.path.getsize(os.path.join(dest2, "big.bin")) and man2["complete"] is False
+          and "cut" in man2["archive"], {k: man2[k] for k in ("n_files", "skipped", "archive", "complete")})
+
+    # ---- K5: the request keys are an allow-list; every non-message key is in the chain's hash; a log that fails stops the run ----
+    harness = chat_body(stream=True, stream_options={"include_usage": True}, tools=[{"type": "function", "function": {"name": "bash"}}],
+                        tool_choice="auto", parallel_tool_calls=True, reasoning_effort="low", temperature=0.7)
+    extra = {"provider": {"order": ["x"]}, "models": ["a", "b"], "transforms": ["middle-out"], "reasoning": {"max_tokens": 100000},
+             "service_tier": "priority", "extra_body": {"x": 1}, "plugins": [{"id": "web"}], "user": "u", "metadata": {"k": "v"},
+             "prediction": {"type": "content"}, "stream_options": {"include_usage": True, "x": 1}}
+    refused = {k: SPEND.check_shape(dict(harness, **{k: v}), model=standin_model.MODEL, max_output_tokens=100) for k, v in extra.items()}
+    check("E13 K5 the stock harness's request (stream, stream_options, tools, tool_choice, parallel_tool_calls, reasoning_effort, a sampling "
+          "knob) passes; 11 fields a provider could bill or route by are refused unsent",
+          SPEND.check_shape(harness, model=standin_model.MODEL, max_output_tokens=100) is None and all(refused.values()), refused)
+    body = chat_body(1000)
+    prev = {"hashes": [SPEND._hash(body["messages"][0])], "rest": SPEND._rest_hash(body), "prompt_tokens": 260}
+    longer = chat_body(messages=body["messages"] + [{"role": "user", "content": "more"}])
+    changed = dict(longer, temperature=0.3)
+    check("E14 K5 the chained prompt bound holds only while every non-message key is what it was: a changed sampling knob falls back to "
+          "the bytes of the whole request", "last reply" in SPEND.prompt_bound(longer, prev)[1] and "whole request" in SPEND.prompt_bound(changed, prev)[1])
+    bad_log = os.path.join(scratch, f"no-such-dir-{os.getpid()}", "spend.jsonl")
+    mlog = SPEND.Meter(model=standin_model.MODEL, cap_usd=1.0, max_context_tokens=10_000, max_output_tokens=100, prices=PRICES, log_path=bad_log)
+    refused_log = raises(lambda: mlog.admit(chat_body()), SPEND.Refused)
+    check("E15 K5 a spend log that cannot be written is reported (counted, in the summary) and no call is sent that the log does not hold: "
+          "the run stops as `spend_log_failed`",
+          refused_log and mlog.stopped == "spend_log_failed" and mlog.attempts == 0 and mlog.inflight == 0 and mlog.summary()["log_failures"] >= 2,
+          mlog.summary())
+
+    # ---- X9: the reply cap of an item ----
+    from physim2_env.public import _rules
+    ring_values = 256 * (5 * 6 + 2 * 3)
+    cmd = GRADING_driver_cmd({"cpu_seconds": 30, "wall_seconds": 60, "memory_gib": 4}, "/workspace", 23456, True, ring_values)
+    check("E16 X9 the driver of every graded item is started with --max-reply-mib 1 for the ring (its largest valid reply is 36 KiB)",
+          _rules.reply_mib(ring_values) == 1 and cmd[cmd.index("--max-reply-mib") + 1] == "1", cmd)
+
+
+def GRADING_driver_cmd(*a):
+    from physim2_env import grading as GRADING
+    return GRADING.driver_cmd(*a)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--scratch", required=True, help="a folder of the caller's for the files this test writes (it removes nothing)")
     ap.add_argument("--out", default=None)
-    ap.add_argument("--only", default="ABCD", help="sections to run, e.g. AC")
+    ap.add_argument("--only", default="ABCDE", help="sections to run, e.g. AC")
     a = ap.parse_args()
     os.makedirs(a.scratch, exist_ok=True)
     t0 = time.time()
@@ -637,6 +944,8 @@ def main() -> int:
             check_round4_step3 = None
         if check_round4_step3 is not None:
             check_round4_step3.run(check, raises, a.scratch)
+    if "E" in a.only:
+        test_second_pass(a.scratch)
     hits = TW.take()
     check("Z the tripwires recorded no attempt to kill, delete, move, re-own or start anything", not hits, hits[:5])
     failed = [c["name"] for c in CHECKS if not c["ok"]]

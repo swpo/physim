@@ -93,6 +93,10 @@ ETC_FILES = ("/etc/hostname", "/etc/hosts", "/etc/resolv.conf")   # the three fi
 # round 4: a box of the pilot has a read-only root, and the four places the exam writes to are memory file
 # systems that the runtime mounts with fixed sizes (physim2_env/boxcaps.py: TMPFS). They belong to the box.
 BOX_TMPFS = ("/workspace", "/tmp", "/etc/physim2", "/runtime")
+# Second pass (code audit K1): and each with the size the runtime gives it (boxcaps.TMPFS: 1024m, 512m, 1m, 16m),
+# as the kernel shows it among the mount's own options. A tmpfs of somebody else's bound there (a hand-started
+# container on a Linux host) has its own size, or none.
+BOX_TMPFS_SIZE = {"/workspace": "size=1048576k", "/tmp": "size=524288k", "/etc/physim2": "size=1024k", "/runtime": "size=16384k"}
 
 
 def container_evidence():
@@ -122,9 +126,9 @@ def dedicated_uid():
 
 
 def parse_mounts(text):
-    """[(mount point, file-system type, root of the mount inside its file system)] from the text of
-    /proc/<pid>/mountinfo. Pure. Raises ValueError for a line it cannot read and for an empty table: a table
-    that cannot be read is never treated as a table without mounts."""
+    """[(mount point, file-system type, root of the mount inside its file system, the file system's own options)]
+    from the text of /proc/<pid>/mountinfo. Pure. Raises ValueError for a line it cannot read and for an empty
+    table: a table that cannot be read is never treated as a table without mounts."""
     def plain(s):                                            # the kernel writes space, tab, newline, backslash as \ooo
         return re.sub(r"\\([0-7]{3})", lambda m: chr(int(m.group(1), 8)), s)
     out = []
@@ -134,7 +138,7 @@ def parse_mounts(text):
         p = line.split(" ")
         try:
             sep = p.index("-", 6)                            # after the optional fields
-            out.append((plain(p[4]), p[sep + 1], plain(p[3])))
+            out.append((plain(p[4]), p[sep + 1], plain(p[3]), p[sep + 3] if len(p) > sep + 3 else ""))
         except (ValueError, IndexError):
             raise ValueError("a line of the mount table cannot be read") from None
     if not out:
@@ -151,12 +155,14 @@ def foreign_mounts(mounts, isfile=None):
       /etc/hostname, /etc/hosts, /etc/resolv.conf     the three FILES Docker mounts into every container
       /workspace, /tmp, /etc/physim2, /runtime        each at most once, as a tmpfs of its own (the capped box of
                                                       round 4: read-only root, these four memory file systems)
+                                                      with the size the runtime gives it (BOX_TMPFS_SIZE)
     A host folder or a volume anywhere, a tmpfs anywhere else outside /dev, a bind mount below /dev: foreign."""
     bad = []
     roots = [m for m in mounts if m[0] == "/"]
     if len(roots) != 1:
         bad.append(f"/ ({len(roots)} entries)")
-    for mp, fs, root in mounts:
+    for mp, fs, root, *rest in mounts:
+        opts = rest[0].split(",") if rest and isinstance(rest[0], str) else []
         if mp == "/":
             if fs not in ROOT_FS or root != "/":
                 bad.append(f"/ ({fs})")
@@ -166,9 +172,11 @@ def foreign_mounts(mounts, isfile=None):
         elif mp in ETC_FILES:
             if isfile is not None and not isfile(mp):
                 bad.append(f"{mp} (not a regular file)")
-        elif mp in BOX_TMPFS:                                # exactly once, a tmpfs of its own (root "/"), nothing else
+        elif mp in BOX_TMPFS:                                # exactly once, a tmpfs of its own (root "/") of the box's size
             if fs != "tmpfs" or root != "/" or sum(1 for m in mounts if m[0] == mp) != 1:
                 bad.append(f"{mp} ({fs})")
+            elif BOX_TMPFS_SIZE[mp] not in opts:
+                bad.append(f"{mp} ({fs}, not the box's size)")
         else:
             bad.append(f"{mp} ({fs})")
     return bad
@@ -336,7 +344,7 @@ def mount_points(mounts=None):
     """The mount points the cleanup looks at: every mount of the table except kernel file systems. Raises
     (box_mounts) when the table cannot be read; there is no fallback to "/"."""
     mounts = box_mounts() if mounts is None else mounts
-    return sorted({mp for mp, fs, _ in mounts if fs not in SKIP_FS})
+    return sorted({m[0] for m in mounts if m[1] not in SKIP_FS})
 
 
 def owned_by(uid, mounts=None):
@@ -379,7 +387,7 @@ def wipe_user(uid):
     A mount point is never removed. Returns (number removed, paths of uid that survived)."""
     require_box(uid)
     mounts = box_mounts()
-    points = {mp for mp, _, _ in mounts}
+    points = {m[0] for m in mounts}
     paths = sorted(owned_by(uid, mount_points(mounts)), key=len, reverse=True)
     n = 0
     for p in paths:

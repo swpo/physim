@@ -13,7 +13,9 @@ the tests remove their own temporary folders. Nothing of this may run on a host.
 Parts: 1 capture (hostile archives), 2 bundle and baseline, 3 the null policy through round 5's own grader
 against grading.null_scores, 4 fallback reasons and records, 5 the laboratory client (log, argument check),
 6 validation as graded (a predictor that reads /workspace passes by hand and fails through the laboratory's
-route). Prints one JSON object; exit status 0 only if every check passed.
+route; second pass, X6: so do predictors that read what the agent left in /tmp or /dev/shm or import a file it
+added to physim2/, and a changed physim2/ file fails the check). Prints one JSON object; exit status 0 only if
+every check passed.
 """
 import hashlib
 import io
@@ -228,7 +230,8 @@ def part_bundle():
           other.stdout.split() == [info["baseline"]["pool_sha256"], info["baseline"]["files"]["pool.npz"]], out=other.stdout[-200:], err=other.stderr[-300:])
     md = info["task_md"]
     for needle in ("**Turns: at most 150.**", "**Wall-clock time: 60 minutes**", "2 CPU cores, 4 GiB of memory",
-                   "at most 512 processes and threads", "`/workspace` (1024 MiB) and `/tmp` (512 MiB) and nowhere else",
+                   "at most 512 processes and threads", "`/workspace` (1024 MiB), `/tmp` (512 MiB) and `/dev/shm` (64 MiB) and nowhere else",
+                   "4 GiB of memory and 256 processes and threads", "`/dev/shm` (64 MiB), which are empty at the start of every item",
                    "Whatever is in `submission/` at the moment your run ends is graded", "the same 3 hidden numbers",
                    "/workspace/lab_log.jsonl", "A failed item is scored with the baseline's forecast", "an integer T for T ticks without input",
                    "from a clean copy of `submission/` alone", "`turns_used` and `turns_left`", "you never see their results",
@@ -504,11 +507,44 @@ def part_validate(raw):
     rep = lab_route("abs")
     check("6 validate: a predictor that loads its own file relative to predict.py passes as graded", rep.get("ok") is True and rep.get("as_graded") is True,
           rep={k: str(rep.get(k))[:300] for k in ("ok", "stage", "error")})
-    # a changed public package is reported
+    # ---- second pass (exam audit X6): what the agent left in /tmp, /dev/shm or added to physim2/ is absent in grading ----
+    np.save("/tmp/agent_model.npy", np.zeros(3))
+    os.chmod("/tmp/agent_model.npy", 0o644)
+    os.makedirs("/dev/shm", exist_ok=True)
+    np.save("/dev/shm/agent_cache.npy", np.zeros(3))
+    os.chmod("/dev/shm/agent_cache.npy", 0o644)
+    modes_before = {p: S.S_IMODE(os.lstat(p).st_mode) for p in ("/tmp/agent_model.npy", "/dev/shm/agent_cache.npy", "/tmp", "/dev/shm")}
+    for name, line in (("x6tmp", "np.load('/tmp/agent_model.npy')"), ("x6shm", "np.load('/dev/shm/agent_cache.npy')"),
+                       ("x6pkg", "import physim2.agent_helper")):
+        os.makedirs(os.path.join(ws, name))
+        open(os.path.join(ws, name, "predict.py"), "w").write(
+            "import numpy as np\n\ndef predict(history, program, queries, n_samples, seed):\n"
+            f"    {line}\n"
+            "    return {1: np.zeros((n_samples, 5, 6)), 2: np.zeros((n_samples, 2, 3))}\n")
+    open(os.path.join(ws, "physim2", "agent_helper.py"), "w").write("X = 1\n")
+    reps = {n: lab_route(n) for n in ("x6tmp", "x6shm", "x6pkg")}
+    hands = {n: by_hand(n) for n in ("x6tmp", "x6shm", "x6pkg")}
+    check("6 validate (X6): predictors that read a file the agent left in /tmp or /dev/shm, or import a module the agent ADDED to physim2/, "
+          "FAIL through the laboratory's route (as they fail in grading); started by hand the first two still pass, with the reply saying that "
+          "proves nothing, and the third fails there too (the copied package is the grader's in both cases)",
+          all(r.get("ok") is False and r.get("stage") == "example 0" for r in reps.values())
+          and all(hands[n].get("ok") is True and hands[n].get("as_graded") is False for n in ("x6tmp", "x6shm"))
+          and hands["x6pkg"].get("ok") is False,
+          reps={n: {k: str(r.get(k))[:160] for k in ("ok", "stage", "error")} for n, r in reps.items()},
+          hands={n: {k: h.get(k) for k in ("ok", "as_graded")} for n, h in hands.items()})
+    modes_after = {p: S.S_IMODE(os.lstat(p).st_mode) for p in modes_before}
+    check("6 validate (X6): the entries of /tmp and /dev/shm, and the two places, have their modes back afterwards", modes_after == modes_before,
+          before={k: oct(v) for k, v in modes_before.items()}, after={k: oct(v) for k, v in modes_after.items()})
+    rep = lab_route("abs")
+    check("6 validate (X6): an added physim2/ file alone does not fail an honest predictor (it is left out of the copy)",
+          rep.get("ok") is True and rep.get("as_graded") is True, rep={k: str(rep.get(k))[:200] for k in ("ok", "stage", "error")})
+    os.unlink(os.path.join(ws, "physim2", "agent_helper.py"))
+    # a changed public package: the check cannot run the predictor as graded, so it fails and names the file
     open(os.path.join(ws, "physim2", "world_ring.py"), "a").write("\n# edited by the agent\n")
     rep = lab_route()
-    check("6 validate: an edited physim2/ is counted and the reply says the grader uses the original",
-          rep.get("package_changed_files") == 1 and "the grader uses the original" in rep.get("grading", ""), n=rep.get("package_changed_files"))
+    check("6 validate (X6): an edited physim2/ file makes the check fail (stage package) and names the file; the grader uses the original",
+          rep.get("ok") is False and rep.get("stage") == "package" and rep.get("package_changed_files") == 1 and "world_ring.py" in rep.get("error", "")
+          and "ORIGINAL package" in rep.get("error", ""), rep={k: str(rep.get(k))[:300] for k in ("ok", "stage", "error", "package_changed_files")})
     left = [p for p in os.listdir("/tmp") if p.startswith(("physim2-validate-", "physim2-req-", "physim2-io-"))]
     check("6 validate: no temporary folder of the check is left", not left, left=left)
 

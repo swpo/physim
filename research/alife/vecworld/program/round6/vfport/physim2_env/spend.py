@@ -116,12 +116,31 @@ def _dump(obj) -> bytes:
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":"), sort_keys=True).encode("utf-8", "surrogatepass")
 
 
+# Second pass (code audit K5): the request keys a model call may carry, and nothing else. What the stock bash
+# harness sends (verifiers harnesses/utils/core.py:240-286: model, messages, tools, tool_choice, stream,
+# stream_options) and what verifiers' chat dialect lays over it from the run's sampling config (dialects/chat.py:
+# 399-423, 583-596). A field a provider could bill or route by (plugins, provider, models, transforms, reasoning,
+# service_tier, extra_body, audio, prediction, web search, ...) is not among them and refuses the request unsent.
+REQUEST_KEYS = frozenset({"model", "messages", "tools", "tool_choice", "parallel_tool_calls", "stream", "stream_options",
+                          "max_tokens", "max_completion_tokens", "n", "temperature", "top_p", "top_k", "min_p", "seed", "stop",
+                          "frequency_penalty", "presence_penalty", "repetition_penalty", "reasoning_effort"})
+STREAM_OPTION_KEYS = frozenset({"include_usage"})
+
+
 def check_shape(body, *, model: str, max_output_tokens: int) -> str | None:
     """Why this request cannot be bounded by the meter, or None. Text chat with function tools, one choice, the
-    configured model and reply cap: everything the stock bash harness sends, and nothing a provider could bill
-    beyond prompt and completion tokens."""
+    configured model and reply cap, the keys of REQUEST_KEYS only: everything the stock bash harness sends, and
+    nothing a provider could bill beyond prompt and completion tokens."""
     if not isinstance(body, dict) or not isinstance(body.get("messages"), list) or not body["messages"]:
         return "no messages"
+    unknown = sorted(str(k)[:40] for k in body if k not in REQUEST_KEYS)
+    if unknown:
+        return "a request key the meter does not know: " + ", ".join(unknown[:4])
+    so = body.get("stream_options")
+    if so is not None and (not isinstance(so, dict) or any(k not in STREAM_OPTION_KEYS for k in so)):
+        return "stream_options other than include_usage"
+    if body.get("reasoning_effort") is not None and not isinstance(body.get("reasoning_effort"), str):
+        return "a reasoning_effort that is not a word"
     if body.get("model") != model:
         return "another model"
     caps = [body.get(k) for k in ("max_tokens", "max_completion_tokens") if k in body]
@@ -169,7 +188,9 @@ def _hash(obj) -> str:
 
 
 def _rest_hash(body: dict) -> str:
-    return _hash({k: body.get(k) for k in ("tools", "functions", "response_format", "tool_choice", "model")})
+    """Every key of the request but the messages (second pass, K5: the chained prompt bound holds only while all
+    of them are what they were for the prompt the provider counted)."""
+    return _hash({k: v for k, v in body.items() if k != "messages"})
 
 
 class Meter:
@@ -185,6 +206,7 @@ class Meter:
         self.worst = worst_call_usd(max_context_tokens, max_output_tokens, prices["input"], prices["output"])
         self.log_path, self.billed, self.trace, self.clock = log_path, billed, trace, clock
         self.counted, self.inflight, self.attempts, self.settled, self.refused = 0.0, 0, 0, 0, 0
+        self.log_failures = 0                                # second pass, K5: writes to the spend log that failed
         self.stopped: str | None = None
         self.prev: dict | None = None
         self._log({"event": "meter", "model": model, "cap_usd": self.cap_usd, "max_context_tokens": max_context_tokens,
@@ -212,12 +234,16 @@ class Meter:
         bound, how = prompt_bound(body, self.prev)
         if bound > self.max_context_tokens:
             self._refuse("max_context_tokens", f"the prompt could hold {bound} tokens ({how}); the cap is {self.max_context_tokens}")
+        # the attempt is written to the spend log BEFORE it is sent: the tools close a run's books from that log
+        # (an attempt that is "sent" and never "settled" counts one worst case), so a call the log could not hold
+        # is not made (second pass, K5)
+        if not self._log({"event": "sent", "n": self.attempts + 1, "prompt_bound": bound, "bound_from": how,
+                          "in_flight": self.inflight + 1, "counted_usd": self.counted}) and self.log_path:
+            self._refuse("spend_log_failed", "the spend log could not be written: no call is sent that the log does not hold")
         self.attempts += 1
         self.inflight += 1
         attempt = {"n": self.attempts, "start": self.clock(), "prompt_bound": bound, "bound_from": how, "open": True,
                    "hashes": [_hash(m) for m in body["messages"]], "rest": _rest_hash(body)}
-        self._log({"event": "sent", "n": attempt["n"], "prompt_bound": bound, "bound_from": how, "in_flight": self.inflight,
-                   "counted_usd": self.counted})
         return attempt
 
     def _refuse(self, condition: str, detail: str):
@@ -248,18 +274,26 @@ class Meter:
     def summary(self) -> dict:
         return {"model": self.model, "cap_usd": self.cap_usd, "worst_call_usd": self.worst, "bound_on_the_bill_usd": self.cap_usd + self.worst,
                 "counted_usd": self.counted, "attempts": self.attempts, "settled": self.settled, "in_flight": self.inflight,
-                "refused": self.refused, "stopped": self.stopped, "billed": self.billed,
+                "refused": self.refused, "stopped": self.stopped, "billed": self.billed, "log_failures": self.log_failures,
                 "max_context_tokens": self.max_context_tokens, "max_output_tokens": self.max_output_tokens,
                 "prices_usd_per_mtok": self.prices}
 
-    def _log(self, record: dict) -> None:
+    def _log(self, record: dict) -> bool:
+        """Append one record to the spend log. False when it could not be written: counted in log_failures,
+        said on standard error (vf-eval's log), and carried by the next record that is written."""
         if not self.log_path:
-            return
+            return False
         try:
             with open(self.log_path, "a") as f:
-                f.write(json.dumps(dict(record, time_unix=round(self.clock(), 3))) + "\n")
-        except OSError:
-            pass
+                f.write(json.dumps(dict(record, time_unix=round(self.clock(), 3),
+                                        **({"log_failures_before": self.log_failures} if self.log_failures else {}))) + "\n")
+            return True
+        except (OSError, ValueError) as e:
+            self.log_failures += 1
+            import sys
+            print(f"physim2 spend meter: the spend log could not be written ({type(e).__name__}); failures so far: "
+                  f"{self.log_failures}", file=sys.stderr, flush=True)
+            return False
 
 
 def meter_for(spend: SpendConfig, limits=None, *, trace=None, log_path: str | None = None) -> Meter | None:

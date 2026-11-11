@@ -76,6 +76,7 @@ def file_groups(names) -> list[dict]:
     return [r for r in out if r["files"]]
 BASELINE = "baseline_predict.py"                             # shipped as submission/predict.py
 TOOL_OUTPUT_MAX_BYTES = 20_000                               # verifiers harnesses/utils/compaction.py:18 (the stock bash harness)
+ITEM_PROCESSES = 256                                         # the driver's RLIMIT_NPROC per item (public/_item.py, run.pre)
 _CACHE: dict = {}
 _POOLS: dict = {}
 
@@ -174,15 +175,40 @@ def default_run(world: str, config_name: str, limits: dict | None = None) -> dic
            "max_context_tokens": lim.get("max_context_tokens"), "cap_usd": lim.get("cap_usd"),
            "cpus": lim.get("box_cpus") or p.get("box_cpus") or PROFILES.FALLBACK_BOX["box_cpus"],
            "memory_gib": lim.get("box_memory_gb") or p.get("box_memory_gb") or PROFILES.FALLBACK_BOX["box_memory_gb"],
-           "pids": None, "workspace_mib": None, "tmp_mib": None, "read_only_root": None, "lab_counts_turns": True, "measured": False}
+           "pids": None, "workspace_mib": None, "tmp_mib": None, "shm_mib": None, "read_only_root": None, "lab_counts_turns": True,
+           "measured": False, "checkpoint_seconds": 30.0}
     try:                                                     # the caps the runtime of this package sets on every box (boxcaps.py)
         from . import boxcaps as BOXCAPS
         caps = BOXCAPS.box_caps(memory_gb=lim.get("box_memory_gb"))
         run.update(cpus=caps.get("cpus", run["cpus"]), memory_gib=caps.get("memory_gb", run["memory_gib"]), pids=caps.get("pids"),
-                   workspace_mib=caps.get("workspace_mib"), tmp_mib=caps.get("scratch_mib"), read_only_root=caps.get("read_only_root"))
+                   workspace_mib=caps.get("workspace_mib"), tmp_mib=caps.get("scratch_mib"), shm_mib=caps.get("shm_mib"),
+                   read_only_root=caps.get("read_only_root"))
     except Exception:
         pass
     return run
+
+
+def item_limits(run: dict, cfg: dict) -> dict:
+    """What ONE exam item's predictor gets in grading, rendered from the run (second pass, exam audit X5): the
+    exam config's CPU, wall-clock and memory limits, the memory never above the box's own (a grading box has the
+    caps of the agent's box, and a request may lower its memory), the driver's process limit, and the two
+    scratch places a grading box gives it (empty at the start of every item)."""
+    p = cfg["predictor"]
+    mem = p["memory_gib"]
+    if run.get("memory_gib"):
+        mem = min(float(mem), float(run["memory_gib"]))
+    return {"cpu_seconds": p["cpu_seconds"], "wall_seconds": p["wall_seconds"], "memory_gib": mem, "processes": ITEM_PROCESSES,
+            "tmp_mib": run.get("tmp_mib"), "shm_mib": run.get("shm_mib"), "artifact_mib": p["artifact_mib"], "n_samples": p["n_samples"]}
+
+
+def card_envelope(run: dict) -> dict:
+    """The compute envelope of THIS run for `lab.card()` (second pass, exam audit X5: the round-5 card showed the
+    exam config's fixed envelope): the box as measured at its start, the wall time and the turn limit."""
+    return {"cpus": run.get("cpus"), "memory_gib": run.get("memory_gib"), "processes": run.get("pids"),
+            "workspace_mib": run.get("workspace_mib"), "tmp_mib": run.get("tmp_mib"), "shm_mib": run.get("shm_mib"),
+            "read_only_root": run.get("read_only_root"), "gpu": False, "wall_minutes": run.get("wall_minutes"),
+            "max_turns": run.get("max_turns"), "measured": bool(run.get("measured")),
+            "source": "this run: TASK.md section 4 (exam.json holds the profile's defaults)"}
 
 
 def _g(v) -> str:
@@ -231,17 +257,28 @@ def limits_block(run: dict) -> str:
     cpus = "no cap on CPU cores" if not run.get("cpus") else f"{_g(run['cpus'])} CPU cores"
     mem = "no cap on memory" if not run.get("memory_gib") else f"{_g(run['memory_gib'])} GiB of memory (a process that takes more is killed)"
     pids = "no limit of its own on the number of processes" if not run.get("pids") else f"at most {int(run['pids'])} processes and threads"
-    ws, tmp = run.get("workspace_mib"), run.get("tmp_mib")
+    ws, tmp, shm = run.get("workspace_mib"), run.get("tmp_mib"), run.get("shm_mib")
     if ws or tmp:
-        disk = "you can write to " + " and ".join(x for x in ((f"`/workspace` ({_g(ws)} MiB)" if ws else ""), (f"`/tmp` ({_g(tmp)} MiB)" if tmp else "")) if x)
+        places = [x for x in ((f"`/workspace` ({_g(ws)} MiB)" if ws else ""), (f"`/tmp` ({_g(tmp)} MiB)" if tmp else ""),
+                              (f"`/dev/shm` ({_g(shm)} MiB)" if shm else "")) if x]
+        disk = "you can write to " + (", ".join(places[:-1]) + " and " + places[-1] if len(places) > 1 else places[0])
         disk += (" and nowhere else (the rest of the file system is read-only, your home directory included)" if run.get("read_only_root")
                  else "")
-        disk += "; both are kept in memory, so what you write there also counts against the box's memory, and a full one answers `No space left on device`"
+        disk += "; they are kept in memory, so what you write there also counts against the box's memory, and a full one answers `No space left on device`"
     else:
         disk = "no disk quota of its own (it shares the operator's disk: keep what you write under about 2 GiB)"
     L.append(f"- **This box:** {cpus}, {mem}, no GPU, {pids}; {disk}. No network except the laboratory."
              + (" (Measured in this box when it started.)" if run.get("measured") else ""))
     return "\n".join(L)
+
+
+def item_scratch(lim: dict) -> str:
+    """The places a predictor can write to in grading, for section 5 of the statement."""
+    places = [x for x in ((f"`/tmp` ({_g(lim['tmp_mib'])} MiB)" if lim.get("tmp_mib") else ""),
+                          (f"`/dev/shm` ({_g(lim['shm_mib'])} MiB)" if lim.get("shm_mib") else "")) if x]
+    if not places:
+        return "It can write only to `/tmp`, which is empty at the start of every item."
+    return "It can write only to " + " and ".join(places) + ", which are empty at the start of every item."
 
 
 def statement(world: str, config_name: str, run: dict | None = None) -> str:
@@ -268,7 +305,8 @@ def statement(world: str, config_name: str, run: dict | None = None) -> str:
         total_nats_note="" if tn is None else f", {tn:g} over the whole investigation",
         cpu_s_tick=f"{W.CPU_S_PER_MEMBER_TICK:g}", n_items=cfg["exam"]["n_items"], R=cfg["exam"]["R"],
         program_classes=", ".join(W.program_mix().names), pred_cpu=cfg["predictor"]["cpu_seconds"],
-        pred_wall=cfg["predictor"]["wall_seconds"], pred_mem=cfg["predictor"]["memory_gib"],
+        pred_wall=cfg["predictor"]["wall_seconds"], pred_mem=_g(item_limits(run, cfg)["memory_gib"]), pred_procs=ITEM_PROCESSES,
+        item_scratch=item_scratch(item_limits(run, cfg)), checkpoint_s=_g(run.get("checkpoint_seconds") or 30),
         artifact_mib=cfg["predictor"]["artifact_mib"], max_attempts=cfg["validation"]["max_attempts"],
         baseline_episodes=PROFILES.BASELINE_EPISODES, limits_block=limits_block(run))
     with open(os.path.join(HERE, "TASK.md.tmpl")) as f:

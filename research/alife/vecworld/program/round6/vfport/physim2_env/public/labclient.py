@@ -147,6 +147,11 @@ class Lab:
             with self._http.open(req, timeout=self.timeout) as r:
                 raw = r.read().decode("utf-8")
         except urllib.error.HTTPError as e:
+            if e.code == 413:                                # the laboratory reads at most 4 MiB of one request
+                raise LabError("the request is too large for the laboratory (HTTP 413: at most 4 MiB per call); send fewer ticks "
+                               "per call", "request") from None
+            if e.code == 503:                                # it serves a few requests at once
+                raise LabError("the laboratory is busy with other requests of yours (HTTP 503); try again", "busy") from None
             raise LabError(f"the lab refused the connection (HTTP {e.code})", "closed") from None
         except (urllib.error.URLError, OSError) as e:
             raise LabError(f"the lab cannot be reached ({type(e).__name__})", "closed") from None
@@ -192,9 +197,10 @@ class Lab:
 
     def validate(self, path: str = "submission") -> dict:
         """Format, limits and reproducibility on two public example requests, run in this box the way the grader
-        will run your predictor: from a clean copy of the directory alone, as an unprivileged user that cannot
-        read /workspace (physim2/validate.py). The laboratory starts the check and returns its report; you can
-        also run `python -m physim2.validate <path>` yourself, without the laboratory (then with your rights)."""
+        will run your predictor: from a clean copy of the directory alone, next to the original physim2 package,
+        as an unprivileged user that cannot read /workspace nor what this box already holds in /tmp and /dev/shm
+        (physim2/validate.py). The laboratory starts the check and returns its report; you can also run
+        `python -m physim2.validate <path>` yourself, without the laboratory (then with your rights)."""
         from . import validate as V
         try:
             V.resolve(path)
