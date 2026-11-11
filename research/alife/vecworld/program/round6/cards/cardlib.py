@@ -13,7 +13,7 @@ SIMULATION (JAX; one compiled program per adapter, hidden parts and data are arg
   branch   from each test state, HB ticks of `Bb` arms that differ in (hidden part, noise key, input):
              rep   R replicas, fresh independent noise                     -> oracle, noise twins
              nb    for each eps in sz.eps and direction d < n_dir: R2 replicas under a neighbour of the hidden
-                   part at distance eps of the prior, independent noise     -> the hidden part's weight
+                   part at distance eps of the prior, on the noise of rep 0 .. R2 - 1 -> the hidden part's weight
              act   for each (kind, nats) in sz.arms: R_u replicas with the noise keys of rep 0..R_u-1 and an
                    input of `nats` nats spread over the first T_in ticks; kind 'aimed' puts it where the
                    matter is (adapter.aim), 'blind' on as many random coordinates -> paired displacement
@@ -34,8 +34,10 @@ ANALYSIS (numpy, from the small records; runs on the pod and again here)
     (V_clim - V_orc); closure gap = min(V_pred, V_clim) - V_orc.
   Stationarity: the share of a level's variance that is a function of the tick alone, estimated without bias
   as the covariance over ticks of the member-means of two disjoint halves of the fit members.
-  Hidden part: plug-in loss PL(eps, h) = |mean_theta - mean_theta'|^2 - V_orc / R - V_orc' / R2 (bias-
-  corrected), and its ratio to V_orc. Actions: paired displacement D = |y_u - y_0|^2 with common noise, its
+  Hidden part: plug-in loss PL(eps, h) = |mean_theta' - mean_theta|^2, estimated without bias from paired
+  differences under common noise, |mean d|^2 - var(d) / R2 (round 5's unpaired form is kept as pl_unpaired; the
+  check on a closed-form world shows it cannot resolve a loss below about 0.01 of the variance), and its ratio
+  to V_orc. Actions: paired displacement D = |y_u - y_0|^2 with common noise, its
   predictable part MS = |mean d|^2 - var(d) / R_u, both against the twin floor 2 V_orc.
   Learned variable: time-lagged slow features of the 2 x 2 fine sub-blocks (a linear family that contains the
   hand block view), learned on one half of the fit members and compared with the hand view on the other half
@@ -295,11 +297,8 @@ def run_world(ad: Adapter, sz: Sizes, fns, theta, seed: int, burn: int, log=None
     kb = jax.random.fold_in(jax.random.key(int(seed)), 1)
     kid = np.zeros((sz.Bb,), np.int64)
     kid[lay["rep"]] = _K_REP + np.arange(sz.R)
-    j = 0
     for idx in lay["nb"].values():
-        for i in idx:
-            kid[i] = _K_NB + j
-            j += 1
+        kid[idx] = _K_REP + np.arange(sz.R2)                      # common noise: the noise of replicas 0 .. R2 - 1
     for idx in list(lay["act"].values()) + [lay["xb"], lay["xa"]]:
         kid[idx] = _K_REP + np.arange(sz.R_u)                     # the noise of replicas 0 .. R_u - 1
     kidj = jnp.asarray(kid, jnp.uint32)
@@ -397,11 +396,18 @@ def _member_share(zm):
     return float(zm.mean(0).var(0).sum() / max(tot.sum(), 1e-12))
 
 
-def _pl(ma, zb, v_orc, R, R2, ax):
-    """Bias-corrected plug-in loss per state. ma (NS, ...) oracle mean; zb (NS, R2, ...) neighbour replicas."""
-    mb = zb.mean(1)
-    v2 = (zb.var(1, ddof=1) if R2 > 1 else np.zeros_like(mb)).mean(ax)
-    return ((ma - mb) ** 2).mean(ax) - v_orc / R - (v2 / R2 if R2 > 1 else v_orc / R2)
+def _pl(zh, idx, R, R2, ax):
+    """Plug-in loss per state, two unbiased estimators of |mean_theta' - mean_theta|^2 averaged over the level.
+    zh (NS, Bb, ...): arms idx hold R2 replicas under theta' driven by the noise of replicas 0 .. R2 - 1.
+    paired    d_r = y'_r - y_r (common noise): |mean_r d|^2 - var_r(d) / R2
+    unpaired  round 5's form on independent noise: theta' arms against replicas R2 .. R - 1:
+              |m' - m|^2 - V' / R2 - V / (R - R2)"""
+    zb = zh[:, idx]
+    d = zb - zh[:, :R2]
+    paired = (d.mean(1) ** 2).mean(ax) - d.var(1, ddof=1).mean(ax) / R2
+    zi = zh[:, R2:R]
+    unp = ((zi.mean(1) - zb.mean(1)) ** 2).mean(ax) - zb.var(1, ddof=1).mean(ax) / R2 - zi.var(1, ddof=1).mean(ax) / (R - R2)
+    return paired, unp
 
 
 def _act(zu, z0, ax):
@@ -418,16 +424,19 @@ def _hidden_and_actions(za_h, v_orc_s, sz: Sizes, lay, ax, rng):
     out = {"pl": {}, "act": {}}
     R = sz.R
     for e in sz.eps:
-        rows = []
+        rows, rows_u = [], []
         for i, zh in enumerate(za_h):
-            ma = zh[:, :R].mean(1)
-            pls = np.mean([_pl(ma, zh[:, lay["nb"][(e, d)]], v_orc_s[i], R, sz.R2, ax) for d in range(sz.n_dir)], 0)
-            rows.append(pls)
-        rows = np.asarray(rows)                                               # (nh, NS)
+            both = [_pl(zh, lay["nb"][(e, d)], R, sz.R2, ax) for d in range(sz.n_dir)]
+            rows.append(np.mean([b[0] for b in both], 0))
+            rows_u.append(np.mean([b[1] for b in both], 0))
+        rows, rows_u = np.asarray(rows), np.asarray(rows_u)                   # (nh, NS)
         vo = np.asarray(v_orc_s).mean(1)
         vom = np.median(np.asarray(v_orc_s), 1)
         out["pl"][str(e)] = dict(pl=rows.mean(1).tolist(), pl_se=(rows.std(1) / np.sqrt(rows.shape[1])).tolist(),
                                  pl_over_vorc=(rows.mean(1) / np.maximum(vo, 1e-12)).tolist(),
+                                 pl_unpaired=rows_u.mean(1).tolist(),
+                                 pl_unpaired_se=(rows_u.std(1) / np.sqrt(rows_u.shape[1])).tolist(),
+                                 pl_unpaired_over_vorc=(rows_u.mean(1) / np.maximum(vo, 1e-12)).tolist(),
                                  pl_med=np.median(rows, 1).tolist(),
                                  pl_over_vorc_med=(np.median(rows, 1) / np.maximum(vom, 1e-12)).tolist())
     for (kind, nats), idx in lay["act"].items():
@@ -966,7 +975,8 @@ def analyse(rec, sz: Sizes, meta: dict, seed: int = 0, with_learned: bool = True
     with np.errstate(divide="ignore", invalid="ignore"):
         r = np.log2(max(tw[min(7, sz.HB - 1)], 1e-300) / max(tw[1], 1e-300)) / 6.0
     card["twins"]["doubling_ticks_2_8"] = float(1.0 / r) if r > 1e-6 else float("inf")
-    card["twins"]["theta_l1"] = {str(e): [float(np.mean([l1[:, h - 1, lay["nb"][(e, d)]].mean() for d in range(sz.n_dir)]))
+    # the same under a neighbour of the hidden part driven by the noise of replica 0 (the hidden part alone)
+    card["twins"]["theta_l1"] = {str(e): [float(np.mean([l1[:, h - 1, lay["nb"][(e, d)][0]].mean() for d in range(sz.n_dir)]))
                                          for h in sz.hz] for e in sz.eps}
     card["nats_check"] = {f"{k}_{int(n)}": float(rec["U_norm2"][:, idx].mean() / (2.0 * meta["sigma_u"] ** 2))
                           for (k, n), idx in lay["act"].items()}

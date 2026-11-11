@@ -2,7 +2,7 @@
 
 Committed before any full-size card existed. What I had seen when writing this: CPU runs at small size (4 to 8
 members, 48 to 200 ticks) of foundry draw 4470, of the pure-noise control and of the non-interacting-bodies
-control, used to debug the tool. Three rules below were written after those runs and are marked "after CPU".
+control, used to debug the tool. Four rules below were written after those runs or after the closed-form check and are marked so.
 The thresholds live in `gates.py` (`TH`); the list of worlds and runs in `worlds.json`.
 
 The card is the program's working statement of "what interesting might look like from a more abstract
@@ -26,7 +26,7 @@ the slot list (pop: count, tracked mass, mean speed, sd and largest body mass, k
 | 5 levels | gain of the block view's predictor from the slot list; of the body law from the block view; of the population law from block moments | the same ridges with added features |
 | 6 learned variable | slow features (time-lagged, lag 8) of the 2 x 2 sub-blocks, learned on one half of the fit members, against the hand block view on the other half, both orders | closed form; the family contains the hand view |
 | 7 actions | paired displacement of an aimed 50 / 200 / 800-nat input and of a blind 200-nat one against the twin floor; its predictable part MS | common noise, 2 replicas |
-| 8 hidden part | plug-in loss of a neighbour at 3%, 10%, 100% of the declared prior, per level; response difference (does the response to an input depend on the hidden part); noise-twin divergence | 2 directions x 2 replicas |
+| 8 hidden part | plug-in loss of a neighbour at 3%, 10%, 100% of the declared prior, per level; response difference (does the response to an input depend on the hidden part); noise-twin divergence | 2 directions x 2 replicas on the noise of the oracle's first two replicas (paired estimator) |
 | 9 cost | seconds per member-tick on the job's GPU, compile excluded | timed runs |
 
 Part 6 also quotes round 5 (`bias2`, `slots`) where those studies already answer the question; nothing of
@@ -43,6 +43,10 @@ theirs is retrained.
   higher than round 5's.
 - **Quiet steps (after CPU).** The body law is scored on steps without a tracker event. Without that rule the
   non-interacting control looked interacting, because overlapping bodies merge in the tracker.
+- **Paired plug-in loss (after the closed-form check).** `check_cardlib.py` runs the estimators on a world with
+  known answers. Round 5's unpaired estimator could not resolve a plug-in loss below about 0.01 of the variance
+  there; with common noise and paired differences it is exact to the fourth decimal. The card uses the paired
+  one and keeps the unpaired one beside it (`pl_unpaired`).
 - **A move of the hidden part is measured in units of its declared prior**, not of its value: foundry =
   round 5's weight neighbour; gliders and vortices = their exam priors; membrane and the two made controls =
   boxes declared in `adapters.py` (no exam prior exists for them, so their hidden-part entries depend on my box).
