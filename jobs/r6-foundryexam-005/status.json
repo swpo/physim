@@ -21,7 +21,7 @@
   "cap_usd": 7.2,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.3987
+    "conservative_usd": 0.7135
   },
   "guard_at": null,
   "guard_reason": null,
@@ -52,7 +52,7 @@
   ],
   "job_id": "r6-foundryexam-005",
   "max_estimate_usd": null,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -126,5 +126,6 @@
   "run_started_epoch": 1794411248.728361,
   "started_at": "2026-11-11T15:40:08Z",
   "state": "running",
-  "updated_at": "2026-11-11T15:40:08Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n]   net P Cft[0] step 50/50 train 0.3490 val [0.5238, 0.1519] (0s)\n15:48:25 [   8.1 min]   net P Cft[1] step 50/50 train 0.3301 val [0.5027, 0.1481] (0s)\n15:48:30 [   8.2 min]   net P Csm[0] step 100/100 train 0.3437 val [0.546, 0.1628] (5s)\n15:48:30 [   8.2 min]   P Csm[0]: 4.9 ms per step of 2 nets\n15:48:31 [   8.2 min]   net P <ssh-target> s0[0] step 50/50 train 0.3708 val [0.6262, 0.1585] (0s)\n15:48:31 [   8.2 min]   net P <ssh-target> s0[0] step 50/50 train 0.3147 val [0.5344, 0.1471] (0s)\n15:48:32 [   8.2 min]   net P <ssh-target> s0[0] step 50/50 train 0.3653 val [0.6323, 0.1701] (0s)\n15:48:32 [   8.2 min]   net P <ssh-target> s0[0] step 50/50 train 0.3090 val [0.5365, 0.1552] (0s)\n15:48:33 [   8.2 min]   net P <ssh-target> s0[0] step 50/50 train 0.3492 val [0.5958, 0.1257] (0s)\n15:48:33 [   8.2 min]   net P <ssh-target> s0[0] step 50/50 train 0.3027 val [0.5009, 0.1179] (0s)\n15:48:34 [   8.3 min]   net P <ssh-target> s1[0] step 50/50 train 0.4374 val [0.6562, 0.1768] (0s)\n15:48:34 [   8.3 min]   net P <ssh-target> s1[0] step 50/50 train 0.3092 val [0.522, 0.1564] (0s)\n15:48:34 [   8.3 min]   net P <ssh-target> s1[0] step 50/50 train 0.4492 val [0.6432, 0.1736] (0s)\n15:48:35 [   8.3 min]   net P <ssh-target> s1[0] step 50/50 train 0.3150 val [0.5152, 0.1498] (0s)\n15:48:44 [   8.4 min]   net P P0[16] step 100/100 train 0.2346 val [0.2964] (7s)\n15:48:44 [   8.4 min] P all nets done (61s), 43 nets\n15:48:55 [   8.6 min] P done in 6.6 min; OES oracle 1.000, C 0.316, Cbig 0.310, Cft 0.333, Csm 0.305, <ssh-target> 0.197, <ssh-target> 0.177, <ssh-target> 0.179, <ssh-target> 0.185, <ssh-target> 0.606, <ssh-target> 0.602, <ssh-target> 0.606, <ssh-target> 0.593, <ssh-target> 0.316, <ssh-target> 0.320, <ssh-target> 0.322, <ssh-target> 0.302, Kp -0.017, P0 0.262, P0s 0.178, P0w16 0.264, <ssh-target> 0.262, <ssh-target> 0.264, <ssh-target> 0.263, <ssh-target> 0.264, <ssh-target> 0.263, <ssh-target> 0.264, plug03 0.976, plug10 0.787, plug30 0.077, plugPrior -0.372, plugTrue 1.000, plugU0 0.936\n15:48:55 [   8.6 min] P sigma -0.754 (null <ssh-target>), no-experiment share of C 0.805, <ssh-target> 0.022199110853684218, <ssh-target> 0.020047633426574143\n15:48:55 [   8.6 min] done: arms ['P'], 0.14 h, failed [], skipped []\n15:48:59 [job.sh] presmoke exit 0\n15:48:59 [job.sh] full pass: 2.354 h left of 2.5\n15:49:02 [   0.0 min] run_fx size full arms ['P'] max_hours 2.354; jax <ip> numpy 2.5.4 python 3.12.16 backend gpu devices [CudaDevice(id=0)]\n15:49:23 [   0.4 min]   sim gate 2048/3328\n15:49:39 [   0.6 min] gate: 416 worlds, passed pool:screen2026 52/88, pool:enriched2027 171/323, pool:control2027 3/5 (38s)\n15:49:56 [   0.9 min]   sim code-norm 256/256\n15:50:12 [   1.2 min]   sim P train g0 2048/13440\n15:51:52 [   2.8 min] P group prior: 210 training worlds x 64 episodes, 16 hidden\n15:52:52 [   3.8 min] P hidden world 4: lab + exam + plug-ins + ridge done (59s so far)\n15:53:35 [   4.6 min] P hidden world 8: lab + exam + plug-ins + ridge done (102s so far)\n15:54:18 [   5.3 min] P hidden world 12: lab + exam + plug-ins + ridge done (145s so far)\n15:55:01 [   6.0 min] P hidden world 16: lab + exam + plug-ins + ridge done (188s so far)\n15:55:20 [   6.3 min]   sim P C 2048/262144\n== out/progress.txt\nPILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material\n15:40:12 [job.sh] start, size full, arms P, max hours 2.5, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\nname, memory.total [MiB], driver_version\nNVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08\n15:48:59 [job.sh] presmoke exit 0\n15:48:59 [job.sh] full pass: 2.354 h left of 2.5\n",
+  "updated_at": "2026-11-11T15:55:40Z"
 }
