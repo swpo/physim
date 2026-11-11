@@ -1,6 +1,6 @@
 {
  "PILOT_NEVER_REUSE_AS_EXAM": true,
- "what": "dialsB: stage 0 of the membrane carrier (study B of ../PLAN.md), the CPU gate; state given, 64 px, 8 fresh seeds, main and control arm; every number with its source. DECLARED.md holds the rule, written before any run.",
+ "what": "dialsB: stage 0 of the membrane carrier (study B of ../PLAN.md), the CPU gate; state given, 64 px, 8 fresh seeds (fresh start states and programs; ONE hidden value, the pilot centre, in every seed, because scan C failed: see truths_pilot), main and control arm; every number with its source. DECLARED.md holds the rule, written before any run.",
  "job": {
   "id": "r6-dialsb-002",
   "state": "done",
@@ -161,7 +161,8 @@
    "job": "r6-dialsb-002",
    "file": "jobs/r6-dialsb-002/out/analysis.json",
    "key": "verdict"
-  }
+  },
+  "checker_note": "Recomputed: the declared rule gives CLOSE CALL and the plan's point rule NO-GO, as stated. What the verdict does not carry: the plan's reading of a failed stage 0 ('a filter on the command repairs the carrier except in rare start states', hence 'closed on two worlds'). The failing condition is C4 (the told-form recipe), not C1 or C2; C1 holds clearly. See checker.findings 1 to 3."
  },
  "conditions": {
   "C1_main_Gstar_all_states_le_0.7": {
@@ -5576,11 +5577,172 @@
     "file": "results/diag_grid.json",
     "key": "gate_start_states"
    }
-  ]
+  ],
+  "checker_note": "The key 'checkerboard_factor_per_native_step_inside_cells' is, for the cat = 0 row (the control arm), the factor EVERYWHERE: 1 - 8 dt D_X - dt rho = -1.01 at D_X = 0.5, of modulus above 1. The control arm is therefore unstable too. It reads as smooth at ticks 150 and 182 only because its checkerboard starts from rounding error (about 1e-17) and has not yet grown: see checker.stability_run. The same holds for the rho = 0.01 row (factor 1.0054)."
  },
  "per_horizon_full_statistics": {
   "file": "results/per_horizon.json",
   "made_by": "horizons.py from jobs/r6-dialsb-002/out/gate/*.npz",
   "max_abs_difference_from_analysis_json": 0.0
+ },
+ "checker": {
+  "who": "independent checker of dialsB (dialsBchk), 11 Nov 2026. CPU only in the container, about 1 CPU-minute; no job requested, no model call. Files of the study other than this one are untouched.",
+  "edits_to_this_file": [
+   "what: '8 fresh seeds' now says that all eight seeds carry one hidden value (the pilot centre); the seeds are not eight hidden worlds, and the leave-one-seed-out ranges are not leave-one-truth-out ranges",
+   "verdict.checker_note added: the verdict stands; the plan-table reading of a failed stage 0 does not follow from it",
+   "after_the_fact_grid_scale_diagnostic.checker_note added: the control arm (and rho = 0.01) is linearly unstable as well; 'smooth' there means 'not yet grown by tick 182'",
+   "this checker block added; no number of the study was changed (none was found wrong)"
+  ],
+  "recomputed_with_own_code": {
+   "inputs": "origin/gpu-jobs:jobs/r6-dialsb-002/out/gate/*.npz (per-item scores), out/gate/*.json, out/scan/*.json, jobs/r6-dialsb-00{1,2}/status.json, logs/exit.rc",
+   "note_on_bounds": "lower90 and upper90 are the one-sided 90% bounds of the declared per-seed contrast (DECLARED 2.4): the condition holds clearly if lower90 >= 0 and fails clearly if upper90 < 0; they are not bounds of the share",
+   "conditions_focus_8_16_32": {
+    "C1": {
+     "closed": 0.482,
+     "lower90": 0.896,
+     "upper90": 3.442,
+     "reading": "holds clearly",
+     "median_seed": 0.506
+    },
+    "C2": {
+     "closed": 0.6643,
+     "lower90": -0.633,
+     "upper90": 1.032,
+     "reading": "close",
+     "median_seed": 0.802
+    },
+    "C3": {
+     "closed": 0.7839,
+     "lower90": -0.17,
+     "upper90": 1.03,
+     "reading": "close",
+     "median_seed": 0.871
+    },
+    "C4": {
+     "closed": 0.599,
+     "lower90": -2.095,
+     "upper90": 0.085,
+     "reading": "close",
+     "median_seed": 0.566
+    }
+   },
+   "agreement": "C1 to C4 (share, contrast, bounds, reading), C5 and the stand-in table, 64 pooled shares with per-seed values, medians and leave-one-seed-out ranges (both views, both arms, with and without the heaviest start state) and 256 per-horizon shares: largest difference from this file below 1e-9. Heaviest start states and the picks of G* recomputed from the scores and the Lab scores: the same. Scan C's ranges and scan V's hidden set recomputed from the scan files by the rule of DECLARED 2.6: the same. results/job/* equals the job's published files byte for byte (scan V files renamed with an index); ranges.json has the SHA-256 printed by the job before the gate.",
+   "job_records": "r6-dialsb-002: nebius CPU_NODE 16 vCPU / 62 GB at $0.54/h, exit 0, $0.2204 billed; r6-dialsb-001: exit 3 (its speed guard), $0.0432; total $0.2636; both ran commit 52ae6e403631; no jobs/r6-dialsB-001 exists and its .cancel file is on the branch. DECLARED.md has one commit (9c00a2d29, 15:27:12 UTC), before the code (15:36), the first request (16:07) and the review (published 16:40:36 UTC, read 16:42 by PROGRESS.md, results 17:03). The review's three minors are fixed in the head; its notes on the noise keys and the per-horizon tables are in the README; its note that the control arm also tests A_act's grid is not (finding 4)."
+  },
+  "findings": [
+   "1. The verdict is the one the declared rule gives: CLOSE CALL (C1 holds clearly, C2, C3, C4 close), and NO-GO by the plan's point rule (C4 = 0.599 < 0.7). The three-way reading is the study's addition to the plan, declared before any run.",
+   "2. The pooled close call hides two clear failures (computed by the checker AFTER the results, same contrasts and bounds as DECLARED 2.4, read per horizon; in no declared verdict): at 8 and 16 ticks the generic recipe closes 0.82 of the main-arm gap and C1 fails clearly (C2 also: 0.82); at 32 ticks alone the told-form recipe closes 0.36 and C4 fails clearly. C1's pooled 'holds clearly' comes from the 32-tick horizon alone (0.59 of the gap, G* closes 0.25 there). There is no horizon at which the main arm both resists generic repair and is solved by the recipe told the form.",
+   "3. The plan's row for a failed stage 0 ('A filter on the command repairs the carrier except in rare start states ... defects that act on the response to an input are closed on two worlds') must not be recorded as this study's result. On the declared numbers the filter does NOT repair the main arm (0.48; 0.66 without the heaviest states), and the README reaches the row only through the after-the-fact diagnostic. What the evidence supports: B is not built; the gate was not a valid test of the carrier at 32 ticks (unstable hidden law, one hidden value in all seeds); at 8 and 16 ticks, where the blow-up is still small, generic repair wins (finding 2). The carrier design is neither confirmed nor closed.",
+   "4. A_act's fitted filter lies on the lower edge of its grid in the direct gain (0.25, the smallest of 0.25, 0.5, 1) and in the lagged gain (1, the smallest of 1, 2, 4) in 16 of 16 seed-arms (by_horizon.*.fits) and on the designer's seed 5. The generic recipe is therefore probably under-fitted: its shares are lower bounds of what a command filter can do, which makes C1 and C2 easier to hold and C3 harder. Not stated in the README.",
+   "5. C2's point reading rests on two seeds, 31 and 35: per-seed shares 0.38, 0.87, 0.98, 0.69, 0.36, 0.80, 0.81, 0.89 (median 0.80, five of eight above 0.7); with seed 35 left out the pooled share is 0.767 and the point reading flips (0.695 with seed 31 left out). C3 is close only through the Lab pick on seed 37 (G3, 0.38); A_act alone closes 0.852 and its bound holds clearly. C4's point failure does not depend on one seed (leave-one-seed-out 0.55 to 0.64).",
+   "6. Concentration: the 8 heaviest of 57 test states hold 0.44 of the main arm's pooled gap (0.28 in the control arm; 0.14 if all states weighed alike).",
+   "7. No net is trained, so there is no training-seed term and no training rule to check. The bounds treat the 8 seeds as independent although all share one hidden value and the same channel-noise keys (README section 6): they describe variation over start states and programs only.",
+   "8. The control arm is numerically unstable too (stability_run): the README's 'smooth in the control arm' holds only inside the gate's window. Both arms of the pilot world at D_X = 0.5 are invalid simulations; the adversary's four seeds and the designer's gvh checks at D_X = 0.5 (all their runs of conversion at cells against recipes) inherit that.",
+   "9. No secret is committed: the hidden values are the designer's public pilot centre; every result JSON of the study carries PILOT_NEVER_REUSE_AS_EXAM (status.json is the runner's file)."
+  ],
+  "per_horizon_reading_by_checker_AFTER_THE_FACT": {
+   "note": "same per-seed contrasts and one-sided 90% bounds as DECLARED 2.4, on horizon subsets; focus view; written after the results were read, in no declared verdict",
+   "8_and_16_ticks": {
+    "C1": {
+     "closed": 0.8219,
+     "lower90": -0.683,
+     "upper90": -0.301,
+     "reading": "fails clearly",
+     "median_seed": 0.85
+    },
+    "C2": {
+     "closed": 0.8159,
+     "lower90": -0.576,
+     "upper90": -0.213,
+     "reading": "fails clearly",
+     "median_seed": 0.837
+    },
+    "C3": {
+     "closed": 0.8758,
+     "lower90": 0.495,
+     "upper90": 0.806,
+     "reading": "holds clearly",
+     "median_seed": 0.883
+    },
+    "C4": {
+     "closed": 0.9514,
+     "lower90": 0.761,
+     "upper90": 1.27,
+     "reading": "holds clearly",
+     "median_seed": 0.973
+    }
+   },
+   "32_ticks": {
+    "C1": {
+     "closed": 0.25,
+     "lower90": 1.317,
+     "upper90": 4.006,
+     "reading": "holds clearly",
+     "median_seed": 0.242
+    },
+    "C2": {
+     "closed": 0.4279,
+     "lower90": -0.259,
+     "upper90": 1.447,
+     "reading": "close",
+     "median_seed": 0.86
+    },
+    "C3": {
+     "closed": 0.545,
+     "lower90": -0.874,
+     "upper90": 0.433,
+     "reading": "close",
+     "median_seed": 0.841
+    },
+    "C4": {
+     "closed": 0.3584,
+     "lower90": -2.991,
+     "upper90": -1.049,
+     "reading": "fails clearly",
+     "median_seed": 0.268
+    }
+   },
+   "control_arm_A_act_alone_8_16_32": {
+    "closed": 0.8523,
+    "lower90": 0.612,
+    "upper90": 0.948,
+    "reading": "holds clearly",
+    "median_seed": 0.871
+   }
+  },
+  "stability_run": {
+   "what": "checker's own run in the container (about 10 CPU-seconds): s0.make_worlds, lam 1, rho 0.02, a0 0.03, no input, 2 members, ensemble seed (77, 2), chained 32-tick rollouts from tick 0; amplitude of the pure checkerboard component of the carrier, |mean((-1)^(i+j) X)|, member 0. PILOT values. Not committed as a file; the method is given here in full.",
+   "main_arm_cat1_DX0.5_by_tick": {
+    "32": 2.57e-07,
+    "64": 1.6e-05,
+    "96": 0.00035,
+    "128": 0.00812,
+    "160": 0.669,
+    "192": "not finite"
+   },
+   "control_arm_cat0_DX0.5_by_tick": {
+    "32": 5.93e-18,
+    "64": 3.48e-15,
+    "96": 2.03e-12,
+    "128": 1.18e-09,
+    "160": 6.9e-07,
+    "192": 0.000402,
+    "224": 0.235,
+    "256": 137.0,
+    "288": "not finite",
+    "320": "not finite"
+   },
+   "main_arm_cat1_DX0.35_by_tick": {
+    "32": 3.26e-09,
+    "64": 4.47e-09,
+    "96": 3.03e-09,
+    "128": 3.87e-10,
+    "160": 3.67e-09,
+    "192": 2.06e-09
+   },
+   "reading": "Main arm: the diagnostic of the study is confirmed (0.67 at tick 160; one of two members not finite by tick 192). Control arm: the component grows by 583 per 32 ticks, which is 1.01^640 (640 native steps), from 6e-18 at tick 32 to 4e-4 at tick 192, 0.23 at tick 224, 137 at tick 256, not finite at tick 288. Inside the gate's window (ticks 150 to 182) it stays below about 1e-4, under 1% of the carrier, so the control arm's scores stand. D_X = 0.35 is stable."
+  },
+  "deviations": "From DECLARED.md: none found beyond DEVIATIONS 1 to 6. Choices of DECLARED.md where the plan's exam differs or is silent, declared before the run and not in DEVIATIONS.md: Lab episodes of 32 ticks (the plan's exam: 48); Lab and test programs are aimed pulses only (the plan's mix has 1/8 none and 1/8 blind), so C1 to C4 are shares on aimed items; public parameters at their defaults and known to every policy (scan V's hidden set is not used by the gate); H's box puts the truth on its edge in D_X (0.5, capped) and lam (1) once the ranges collapsed, so H cannot reproduce a blow-up that exists at D_X = 0.5 exactly (DEVIATIONS 4 says only that the design does not contain the centre).",
+  "verdict_signed": "The numbers and the declared verdict are right: CLOSE CALL by the three-way rule, NO-GO by the plan's point rule; B is not built. I do not sign the reading 'a filter repairs the carrier, closed on two worlds': the gate is invalid as a test of the carrier (hidden law unstable in both arms at D_X = 0.5, one hidden value in all seeds, a generic recipe on the edge of its grid). Signed as: stage 0 NOT PASSED, carrier question UNDECIDED (not closed); the pilot centre is withdrawn, including the designer's and the adversary's results at it. A valid answer needs the gate again at a stable carrier (D_X <= 0.35 or a sub-stepped X) with a stability check, a wider filter grid, and every bar read per horizon."
  }
 }
