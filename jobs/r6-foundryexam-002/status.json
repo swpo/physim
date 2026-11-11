@@ -21,7 +21,7 @@
   "cap_usd": 8.4,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.6576
+    "conservative_usd": 0.7253
   },
   "guard_at": null,
   "guard_reason": null,
@@ -123,6 +123,12 @@
     }
   ],
   "pods_terminated": null,
+  "review": {
+    "at": "2026-11-11T12:01:02Z",
+    "file": "jobs/r6-foundryexam-002/review.md",
+    "sha256": "705c2487b78e32ff2af44f8a63464e05baa8d946dd33e1c0f66bab8e16595654",
+    "summary": "0 blocker, 0 major, 4 minor; fine to run"
+  },
   "run_deadline": "2026-11-11T14:58:38Z",
   "run_started_epoch": 1794397149.3358269,
   "started_at": "2026-11-11T11:43:38Z",
