@@ -76,14 +76,20 @@ fitted weights. (r6-foundrylong-002 stopped itself at its presmoke speed guard, 
 
 Reading (DECLARED.md section 3, row "T1 passes, T3 fails"). The gap is real against the best generic recipe on new
 items and Labs: the tuned fine-tune leaves 0.21 of the range at 16 ticks and 0.29 at 32, with every world left out.
-No scripted policy closes it. The weight inference is not the first limit: the same predictor at the TRUE weights
-reaches only 0.527 at 16 ticks, below the reference net C (0.593; C better in 12 of 16 worlds, t = 3.2). The fitted
+No scripted policy closes it. Which limit comes first depends on the horizon (corrected by the checker): the same
+predictor at the TRUE weights reaches only 0.527 at 16 ticks, below the reference net C (0.593; C better in 12 of 16
+worlds, t = 3.2), and recovers 0.24 / 0.46 / 0.78 of the gap from the best generic recipe to C at 8 / 16 / 32 ticks
+(t against that recipe 1.25 / 2.28 / 3.17). So at 8 and 16 ticks the state filter alone is enough to fail T3, though
+at 16 ticks the fit still costs more skill (0.123) than the filter (0.066); at 32 ticks the predictor at the true
+weights would pass T3 and ties C (C better in 9 of 16, t = 1.17), and there it is the weight inference that fails. The fitted
 weights get W 90% of the way from a wrong world's weights to the true ones in skill (0.404 against 0.527), but they
 are as far from the truth in parameter space as a prior draw (the law is sloppy): simulate-to-train at the fit (W+,
 0.326) is far below the same recipe at the truth (C(4,096), 0.533 in stage 1). So the test is hard for two reasons
 at once: a history of 192 block averages does not pin the fine state well enough for a nudged ensemble, and Lab data
 pin the predictive part of the law only roughly. Designed experiments (full-budget, every-tick pushes) did not help
-W or FT; they helped D (+0.026 +- 0.004 of loss at 16 ticks), the only policy that learns from the Lab alone.
+W or FT; they helped D (+0.026 +- 0.004 of loss at 16 ticks, in loss units), the only policy that learns from the
+Lab alone. The designed Lab spends about twice the mix Lab's nats (400 against about 200 per episode), so this gain
+confounds the design of the experiments with their information budget.
 
 Added after seeing the results (readings, not criteria): the "90% of the way" share and the parameter distance of
 the fits (`w_info.json`: median RMS distance 1.48 prior SDs from the truth, as far as a random prior draw).
@@ -102,12 +108,14 @@ the fits (`w_info.json`: median RMS distance 1.48 prior SDs from the truth, as f
 ## What it means for the lead's direction, and the next step
 
 This is the first setting in the program where the generic recipes leave a gap that survives a tuned null, five times
-the pilot's prior compute, new items and every world left out (0.21 of the range at 16 ticks, 0.29 at 32), AND where
+the pilot's prior compute, new items and every world left out (0.21 of the range at 16 ticks, 0.29 at 32; a value at
+this compute, not a robust gap: S1a, and P0 is still improving), AND where
 the obvious scientific move (infer the law, then simulate) does not trivially win. It is not trivially easy. But it
 is hard partly for a reason that is not science of the law: even with the true law in hand, a filter on the block
 view loses to a net trained on 16,384 true-law episodes. An agent would have to (1) infer the predictive part of the
-weights from Lab data (fit through the simulator against its own long-horizon score: box-feasible, about 40-50 min of
-2 cores per 200 steps), and (2) build a state filter as good as C's, which in this study took simulate-to-train at
+weights from Lab data (fit through the simulator against its own long-horizon score; the CPU test's lighter fit took
+about 40-50 min of 2 cores per 200 steps, but the job's W, with its refined starts, would take roughly 7.5-9.4 h of 2
+cores per world and Lab by the checker's linear extrapolation), and (2) build a state filter as good as C's, which in this study took simulate-to-train at
 16,384 episodes per world (12.7 h of simulation on 2 cores): GPU-scale. And because P0 keeps improving with prior
 worlds (0.11 of sigma per fivefold step, no flattening), the bar moves with the research compute an exam grants.
 
@@ -116,7 +124,8 @@ Next step (CPU, about a day of agent time, no GPU): replace the nudged ensemble 
 16,384 episodes) and measure W(true) against C on stage 2's public items; if W(true) reaches C, the setting is a test
 of law inference and the exam profile can be priced (research budget in full episodes from `cpu_part.py`); if not,
 the block view should be made less lossy (finer blocks) before this world family is used for rollouts. A GPU rerun
-(about $5) is worth it only after that.
+(about $5) is worth it only after that. A better filter addresses 8 and 16 ticks only: at 32 ticks the predictor at
+the true weights already ties C, and the limit there is the weight inference (checker).
 
 ## Weight inference on CPU (before the stage-2 job; one public world)
 
@@ -144,8 +153,9 @@ the observed frame (gradient through the forecast ticks).
   simulation on 2 cores, about 11 h of training per seed) and C (5.7 million member-ticks per world: 12.7 h, plus about
   2.7 h of training). They are precomputed on a GPU (0.15 h, 0.33 h, 0.04 h per world). FT's cross-validation (about
   22 min per world and seed), D, the ridge, O and K fit on a box. A W-type fit costs 12-15 s per Adam step on 2 cores
-  (40-50 min for 200 steps): an agent with the simulator can afford weight inference on a box; it cannot afford the
-  generic recipe's prior simulations.
+  (40-50 min for 200 steps of the CPU test's lighter fit; the job's W with its refined starts is about 7.5-9.4 h per
+  world and Lab, checker's extrapolation): an agent with the simulator can afford a light weight inference on a box;
+  it cannot afford the generic recipe's prior simulations.
 
 ## Files
 

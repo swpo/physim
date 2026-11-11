@@ -141,9 +141,14 @@ and none produces objects. Random weights-as-law worlds are cheap to generate an
 
 Round 6 (10-11 Nov 2026, in progress; the lead's direction for it is in `roadmap/DECISIONS.md`, section "Direction"):
 - `roadmap/GRADER_VS_VERIFIERS.md` and `round6/vfport`: the exam as a verifiers environment on the library's isolated
-  grader, proven with scripted agents on Docker, reviewed, red-teamed and audited for host safety in three rounds. A
-  fourth round (in progress) carries the exam faults found by the first rollouts, a dollar cap enforced while a run is
-  under way, and rollouts driven by request files for the lead's Mac.
+  grader, proven with scripted agents on Docker, reviewed, red-teamed and audited for host safety in three rounds. The
+  fourth round (two passes) carried the exam faults found by the first rollouts, a dollar cap enforced while a run is
+  under way (with an allow-list of request keys), box caps, a bearer on the laboratory and rollouts driven by request
+  files for the lead's Mac; its verdict at 0697487eb is GO for the scripted steps 0 to 2 on the Mac and NO-GO for model
+  rollouts, on two findings: a box could make vf-eval on the Mac hold about 64 GiB through verifiers' own interception
+  server, and one shell command can hold the agent longer than its run without the statement saying so (a rehearsal
+  rollout lost 735 of its 900 s that way). A fifth round (in progress) closes both classes: every channel from a box
+  into a host process bounded and tested, everything the agent is told checked against what happens.
 - `round6/rollouts`: the first two model rollouts, on the ring smoke-test exam, $2.59. A strong model scored 0.964 of
   the oracle in six minutes with a closed-form filter (an estimated 0.05-0.08 of it from choosing its 32 samples
   jointly, which the fair energy score rewards); a cheap model was cut by a reply limit it had not been told and
@@ -180,7 +185,26 @@ Round 6 (10-11 Nov 2026, in progress; the lead's direction for it is in `roadmap
   declared rule and a no-go at the point; B is not built. Checker: the gate did not test the carrier, because the
   hidden law is numerically unstable at the pilot centre (an explicit diffusion step at D_X = 0.5 grows a checkerboard
   mode in both arms) and every seed shared one hidden value; the question is undecided, not closed.
+- `round6/foundrylong` ($8.93, checked): the foundry exam at 16 and 32 ticks with 32 Lab episodes. Stage 1: with five
+  times the pilot's prior worlds (1,000), the no-experiment recipe still leaves a gap: sigma 0.218 at 16 ticks
+  (one-sided lower bound 0.187; 0.178 with any one world left out), but only at this compute: the step from 210 to
+  1,000 prior worlds took 0.114 of sigma and the recipe is still improving (S1a). Stage 2: the best generic recipe
+  (fine-tune on Lab data) keeps a gap (T1 0.208, lower bound 0.178), and the obvious scientific move does not close it:
+  fitting the 250 weights through the differentiable simulator and simulating scores 0.404 against the fine-tune's
+  0.470 and the reference's 0.593 (T3 fails); designed Lab programs do not pay (T4 fails); verdict UNDECIDED by the
+  declared rule. Even at the true weights that predictor reaches only 0.527 at 16 ticks: at 8 and 16 ticks the state
+  filter on the block view is a limit by itself, at 32 ticks the predictor at the true weights ties the reference and
+  the weight inference is the limit (checker's correction). Checker: every number reproduces; the fits ran 143 of 200
+  declared steps and many had not converged; the designed Lab spent about twice the nats of the mix Lab.
+- `round6/profile2`: the design of the first exam profile beyond the ring, for the foundry world (F) and gliders with
+  triggered items (G), with measured costs on 2 CPU cores, a two-tier reference table (GPU ceiling after the rollout,
+  box-compute scripts), a decision rule over the two studies' verdicts, the pin changes, and four questions for the lead
+  (how the research budget is counted; which scripted share is the bar; whether the package may carry costly
+  science-free material; a gliders pilot with an 8-CPU box). By its rule F does not qualify after foundrylong's
+  undecided verdict.
 What round 6 says so far: the toy exam is trivially easy for a strong agent. On every other world tried, generic
 recipes (simulate the prior, then fine-tune or fit a residual on Lab data) take most of the skill at short horizons and
 generous Lab budgets. Where they fall short is at long horizons with few Lab episodes, and there the compute given to
-the recipe is a dial of its own. Rollouts in such a setting need exam profiles beyond the ring in the environment.
+the recipe is a dial of its own. In the foundry world at 16 to 32 ticks, neither the generic recipe nor the obvious
+scientific move takes the skill at this compute: the first setting that is not trivially easy for a script either way.
+Rollouts in such a setting need exam profiles beyond the ring in the environment.
