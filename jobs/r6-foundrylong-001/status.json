@@ -1,9 +1,33 @@
 {
+  "billing_window_hours": 4.0704,
+  "bundle": {
+    "bundle_sha256": "f050aaaff930a31de7b08ac481717cb9ab98e149f0b8d5757bb4d55c55ba80c1",
+    "files": {
+      "job.sh": "afe58155d08d78d6c2afd2c21d7110bc679d76ebafaba58a2fa85d2ede565843",
+      "request.json": "ca744b585ea4652e6757d9697f0e216476a843f55e02106d47f6d8cbe1915f2d",
+      "run.sh": "7b713cc1068585c5bdf78551b6a18913ec89b7f69b3fc37abbb0ff2960c594a3",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "f33fd437dde92090c92bf9c20017afd1686ad1695dc9f97db472cd96e26e0ecd"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/program/round5/foundry",
+      "research/alife/vecworld/program/round6/foundryexam",
+      "research/alife/vecworld/program/round6/foundrylong"
+    ],
+    "ref": "065c7bc6094c0ac1af4b2d6f62109bcaeff2d3b8",
+    "src_bytes": 16447559
+  },
   "cap_usd": 8.1,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-11T18:22:43Z",
@@ -14,11 +38,35 @@
       "at": "2026-11-11T18:23:00Z",
       "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $6.77",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-11T18:27:40Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r6-foundrylong-001",
   "max_estimate_usd": 6.77,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
   "plan": {
     "max_estimate_usd": 6.77,
     "offers": [
@@ -44,6 +92,8 @@
     "window_hours": 3.4
   },
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-11T18:26:35Z"
+  "pods_terminated": null,
+  "run_started_epoch": 1794421660.6429949,
+  "state": "provisioning",
+  "updated_at": "2026-11-11T18:27:40Z"
 }
