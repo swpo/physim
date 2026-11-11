@@ -33,8 +33,8 @@ nats charge stays exact (`sublevel.py`, candidate `pro`).
 at all is not stated." The same words at every dial setting.
 
 **Dial:** lam in {0, 0.5, 0.75, 1}, measured by the screen of section 3. **Zero point:** at lam = 0 nothing is
-carried. Three checks. (1) `check_zero.py`: fields, level 1 and level 2 equal the public
-world's bit for bit (`R/check_zero.json`, `candidates.pro`). (2) In the job, two lam = 0 truths also run through
+carried. Three checks. (1) `check_zero.py`: fields, level 1 and level 2 equal the public world's bit for bit
+(`R/check_zero.json`, `candidates.pro`). (2) In the job, two lam = 0 truths also run through
 `membrane_world.build` unchanged and must score alike on every item. (3) The lam = 0 arm is round 5's design
 (correct law, hidden parameters, same harness, policies, `acceptance.py`). No round-5 exam exists on this world,
 so the baseline is a prediction: sigma(0) < 0.15, public-law inference within 0.02 of C.
@@ -178,7 +178,7 @@ the metabolism, defects passive data show, or other worlds.
 
 | risk | cheapest test |
 |---|---|
-| a history-only predictor keeps little of a state-given gap (round 5: 0.5-14% of the parameters' worth). Here the state-given gap on aimed items is 0.21-0.45 at 128 px, about 0.25 over the mix, so gate 1 needs C to keep some 0.6 of it | stage 1 of the job: lam = 1 only, 4 truths, about $1; go on only if (L(P0) - L(C)) / (L(K) - L(C)) >= 0.10 |
+| a history-only predictor keeps little of a state-given gap (round 5: 0.5-14% of the parameters' worth). Here the state-given gap on aimed items is 0.21-0.45 at 128 px and 0.28 over the declared mix (classes weighted 1 : 1 : 3 : 3 in `R/screen_pro_cat_sat_lam1_128.json`, keys `L_public`, `L_O`, `L_K`), so gate 1 needs C to keep more than half of it | stage 1 of the job: lam = 1 only, 4 truths, about $1; go on only if (L(P0) - L(C)) / (L(K) - L(C)) >= 0.10 |
 | a fine-tuned net repairs what my four recipes could not | the same stage: F(16) and R(16) against H(16) |
 | H fails without the state (chaotic futures, summary statistics, lam against a0) | CPU, 64 px: synthetic likelihood on focus-response curves of the 12 designed episodes, truth off the grid |
 | the defect is steep in the dial (aimed gap 0.06, 0.15, 0.23 at 0.5, 0.75, 1) and capped by the saturation scale: a0 = 0.02 gives 0.31 but the passive gap leaves the floor (0.08 ± 0.07) | CPU: a0 between 0.02 and 0.03 with more members, before the ranges of rho, D_X, a0 are fixed |
