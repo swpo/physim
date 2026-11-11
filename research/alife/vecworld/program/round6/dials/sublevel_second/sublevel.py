@@ -7,7 +7,7 @@ Public law (membrane_jax): S substrate, K catalyst, L lipid, phi phase;  A = c S
 substrate), P = b K S (lipid made from substrate), both capped at half the substrate.
 
 Candidates for the hidden finer level (each adds one hidden field; `lam` is the dial; lam = 0 with the hidden
-field at 0 is the public law, checked bit for bit in check_zero.py):
+field at its equilibrium, which is 0 at lam = 0, is the public law, checked bit for bit in check_zero.py):
 
   'kpool'  intracellular catalyst precursor Q (moves like K): a fraction lam of A enters Q and matures at rate rho
                Q' = div(DK g grad Q) + lam A - rho Q            K' = ... + (1 - lam) A + rho Q - dK K
@@ -111,9 +111,24 @@ def make_level(cfg: MJ.Config, cand: str, hidden: dict | None = None, theta: dic
     init_pub = MJ.make_init(cfg)
     ek = EXTRA[cand]
 
+    hh = float(cfg.dt)
+
     def init(q, key):
+        # the hidden field starts at its adiabatic equilibrium with the public initial fields (pools: the content
+        # that delivers the public flux, rho E = lam * flux; bound: no net exchange; dorm: nothing dormant), so a
+        # world does not begin with an empty hidden level. lam = 0 gives E = 0 exactly.
         x = init_pub(q, key)
-        return dict(x, **{ek: jnp.zeros((cfg.H, cfg.W))})
+        S, K, phi = x["S"], x["K"], x["phi"]
+        if cand in ("kpool", "lpool"):
+            auto = q["c"] * S * K * (1 - K) * phi
+            prodL = q["b"] * K * S
+            lim = jnp.minimum(1.0, 0.5 * S / jnp.maximum(hh * (auto + prodL), 1e-12))
+            E = q["lam"] * (auto if cand == "kpool" else prodL) * lim / q["rho"]
+        elif cand == "bound":
+            E = q["lam"] * q["k_a"] / q["k_d"] * S
+        else:
+            E = jnp.zeros((cfg.H, cfg.W))
+        return dict(x, **{ek: E})
 
     def step(q, x, noise, u):
         f = (MJ.channel(cfg, noise, u) @ B).reshape(cfg.H, cfg.W) / cfg.tick_time
