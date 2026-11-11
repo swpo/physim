@@ -136,11 +136,20 @@ def verdict_interval(q, bar, above=True):
 
 def analyse_arm(d, arm):
     S, world, klass, group, meta, worlds, info = load_arm(d, arm)
+    # the ceiling C is the better (lower pooled score over the arm) of the net trained from scratch and P0 fine-tuned
+    # on the same true-weight simulations (DESIGN.md section 4); the other is kept as Cscratch or Cft
+    ceiling = "scratch"
+    if any(k.startswith("Cft|") for k in S):
+        A0 = Arm(S, world, klass)
+        if A0.Lmean("Cft") < A0.Lmean("C"):
+            ceiling = "fine-tuned P0"
+            S = {(k.replace("C|", "Cscratch|", 1) if k.startswith("C|") else k): v for k, v in S.items()}
+            S = {(k.replace("Cft|", "C|", 1) if k.startswith("Cft|") else k): v for k, v in S.items()}
     A = Arm(S, world, klass)
     B = A.bases
     out = dict(arm=arm, eps=meta.get("eps"), n_hidden=meta["n_hidden"], n_items=int(len(world)), cells=meta["cells"],
                valid_cells=A.valid.tolist(), hidden_labels=meta["hidden_labels"], groups=meta["groups"],
-               group_of_world=meta["group_of_world"], policies={b: len(k) for b, k in B.items()})
+               group_of_world=meta["group_of_world"], policies={b: len(k) for b, k in B.items()}, ceiling_is=ceiling)
     # ---- skill table
     tab = {}
     for b in B:
@@ -205,7 +214,7 @@ def analyse_arm(d, arm):
     out["acceptance"] = acc
     # ---- gaps in OES units (pooled), with intervals
     gaps = {}
-    pairs = [("C", "P0"), ("C", "P0s"), ("P0", "P0s"), ("O", "C"), ("C", "S@0")] + [("C", f"S@{N}") for N in S_BUDGETS[1:]] \
+    pairs = [("C", "P0"), ("C", "P0s"), ("P0", "P0s"), ("O", "C"), ("C", "S@0"), ("C", "Cscratch"), ("C", "Cft")] + [("C", f"S@{N}") for N in S_BUDGETS[1:]] \
         + [(f"S@{N}", "P0") for N in S_BUDGETS[1:]] + [(f"FT@{N}", "P0") for N in BUDGETS] + [("C", f"D@{N}") for N in BUDGETS] \
         + [("P0", f"P0w{n}") for n in (16, 64)] + [("S@0", "P0")]
     for a, b in pairs:

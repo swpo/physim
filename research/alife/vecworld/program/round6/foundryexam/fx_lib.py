@@ -80,6 +80,10 @@ class Runner:
 
     def __init__(self, chunk: int, burn: int):
         self.chunk, self.burn = int(chunk), int(burn)
+        # size guard: the largest array of a substep is (chunk, C, 4, H, W) logits or (chunk, HID, H, W) hidden units
+        big = self.chunk * max(FAM.C * 4, FAM.HID) * FAM.H * FAM.W
+        if big >= 2 ** 30:
+            raise ValueError(f"Runner: chunk {chunk} would build an array of {big:.3g} elements (limit 2^30)")
         fam = FAM
         fold = jax.random.fold_in
         view = lambda x: TN.block_view(x).reshape(-1)

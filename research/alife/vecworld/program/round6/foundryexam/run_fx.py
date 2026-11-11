@@ -56,21 +56,22 @@ os.makedirs(OUT, exist_ok=True)
 T0 = time.time()
 T_END = T0 + args.max_hours * 3600
 
-FULL = dict(burn=300, chunk=1024, gate_M=8, gate_on=True, pool_limit=None, n_hidden_P=16, n_centres=3, n_hidden_N=4,
-            nb_train_cand=64, nb_train=32, nb_hidden_cand=16, epw=64, n_lab=512, lab_chunk=128, n_csim=768,
+FULL = dict(burn=300, chunk=2048, gate_M=8, gate_on=True, pool_limit=None, n_hidden_P=16, n_centres=3, n_hidden_N=4,
+            nb_train_cand=64, nb_train=32, nb_hidden_cand=16, epw=64, n_lab=512, lab_chunk=128, n_csim=1536,
             n_items=32, R=12, n_clim=96, m=24, m_plug=8, budgets=[8, 32, 128, 512], s_budgets=[0, 2, 8, 32, 128, 512],
-            seeds2=[32, 512], steps_big={"P": 8000, "N30": 4000, "N10": 4000}, batch_big=256, steps_C=4000,
+            seeds2=[32, 512], steps_big={"P": 12000, "N30": 4000, "N10": 4000}, batch_big=256, steps_C=5000, steps_Cft=2000,
+            lr_Cft=3e-4,
             steps_D={8: 400, 32: 800, 128: 1500, 512: 3000}, steps_FT={8: 200, 32: 400, 128: 800, 512: 1200},
             lr_FT=2e-4, nw_curve=[16, 64], eval_every=250, eval_every_small=100, shape_test=False)
 PRESMOKE = dict(FULL, pool_limit=40, n_hidden_P=2, n_centres=1, n_hidden_N=1, nb_train_cand=6, nb_train=4,
-                nb_hidden_cand=4, n_csim=768, steps_big={"P": 60, "N30": 60, "N10": 60}, steps_C=60,
+                nb_hidden_cand=4, steps_big={"P": 60, "N30": 60, "N10": 60}, steps_C=60, steps_Cft=20,
                 steps_D={8: 40, 32: 40, 128: 40, 512: 40}, steps_FT={8: 20, 32: 20, 128: 20, 512: 20}, nw_curve=[16],
                 eval_every=20, eval_every_small=20, shape_test=True)
 SMOKE = dict(burn=3, chunk=8, gate_M=2, gate_on=False, pool_limit=10, n_hidden_P=2, n_centres=1, n_hidden_N=1,
              nb_train_cand=3, nb_train=3, nb_hidden_cand=2, epw=4, n_lab=8, lab_chunk=4, n_csim=8, n_items=4, R=3,
              n_clim=4, m=4, m_plug=3, budgets=[8], s_budgets=[0, 2, 8], seeds2=[8],
-             steps_big={"P": 30, "N30": 20, "N10": 20}, batch_big=16, steps_C=20, steps_D={8: 20}, steps_FT={8: 10},
-             lr_FT=2e-4, nw_curve=[4], eval_every=10, eval_every_small=10, shape_test=False)
+             steps_big={"P": 30, "N30": 20, "N10": 20}, batch_big=16, steps_C=20, steps_Cft=10, lr_Cft=3e-4,
+             steps_D={8: 20}, steps_FT={8: 10}, lr_FT=2e-4, nw_curve=[4], eval_every=10, eval_every_small=10, shape_test=False)
 CFG = {"full": FULL, "presmoke": PRESMOKE, "smoke": SMOKE}[args.size]
 if args.size == "smoke":
     NN.Cfg.BATCH, NN.Cfg.N_VAL, NN.Cfg.EVAL_ROWS, NN.Cfg.EVAL_DRAWS, NN.Cfg.KMAX = 16, 32, 16, 4, 8
@@ -377,6 +378,13 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
         got = train_groups(C_FULL, jobs, CFG["steps_C"], nH, tag=f"{arm} C", info=info, deadline=t_arm_end,
                            eval_every=CFG["eval_every"])
         nets.update({k: (C_FULL, v) for k, v in got.items()})
+        # Cft: P0 fine-tuned on the same true-weight simulations (the other candidate for the family's ceiling)
+        jobs = [(f"Cft|w{i}|s{s}", h["dsC"], 150 + 2 * i + s) for s in (0, 1) for i, h in enumerate(HW)
+                if f"P0|g{h['gi']}|s{s}" in nets]
+        init_of = {j[0]: nets[f"P0|g{HW[int(j[0].split('|')[1][1:])]['gi']}|s{j[0].split('|')[2][1:]}"][1] for j in jobs}
+        got = train_groups(C_FULL, jobs, CFG["steps_Cft"], nH, lr=CFG["lr_Cft"], init_of=init_of, tag=f"{arm} Cft", info=info,
+                           deadline=t_arm_end, eval_every=CFG["eval_every"])
+        nets.update({k: (C_FULL, v) for k, v in got.items()})
     except Exception:
         FAILED.append(f"{arm} nets C")
         log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
@@ -465,6 +473,9 @@ def quick_report(S, world_of, klass):
     except ValueError:                               # tiny test sizes: no cell with a significant denominator
         R = skill_report(SS, n_boot=200, groups=klass, valid=np.ones(M["K"].shape[1], bool))
     L = {b: float(M[b].sum(1).mean()) for b in base}
+    if "Cft" in L and "C" in L and L["Cft"] < L["C"]:        # the ceiling is the better of the two (DESIGN.md section 4)
+        L["Cscratch"], M["Cscratch"] = L["C"], M["C"]
+        L["C"], M["C"] = L["Cft"], M["Cft"]
     Nmax = max(CFG["budgets"])
     nulls = {b: L[b] for b in (f"D@{Nmax}", f"FT@{Nmax}", f"Dr@{Nmax}", "P0", "S@0") if b in L}
     null_is = min(nulls, key=nulls.get) if nulls else None

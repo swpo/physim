@@ -79,7 +79,7 @@ of a set of 17-frame windows).
 | K | climatology pool of the hidden world | - |
 | Kp | persistence (the last frame, no spread) | - |
 | O | the simulator from the hidden state (leave one out over the 12 futures) | the hidden state and weights |
-| C | the net trained on 768 simulated episodes at the true weights; 2 training seeds | the hidden weights |
+| C | trained on 1,536 simulated episodes at the true weights; 2 training seeds. Two candidates, both reported: the net trained from scratch, and P0 fine-tuned on the same simulations; C is the one with the lower pooled score over the arm (so that the ceiling of the family is not set by a data-starved net) | the hidden weights |
 | P0s | net with lags (0, 1) and no code, trained on simulations of the public prior | no hypothesis, no experiment |
 | P0 | net with lags (0, 1, 2, 4, 8) and the code of the item's own history, trained on simulations of the public prior (arm P: 64 episodes of every training world; arms N: of up to 32 training neighbours); 2 seeds. Reads the world off each item's history | no hypothesis, no experiment |
 | P0[16], P0[64] | P0 trained on 16 or 64 training worlds (arm P): the cost of the prior in worlds | as P0 |
@@ -118,5 +118,5 @@ rho = (L(P0) - L(S(N))) / (L(P0) - L(C)).
 
 ## 6. Sizes and budget
 
-Hidden worlds: 16 (arm P) + 12 (N30) + 12 (N10). One GPU job (A100, $1.99-2.35/h), expected 1.3-1.8 h, cap about $7;
+Hidden worlds: 16 (arm P) + 12 (N30) + 12 (N10). One GPU job (A100, $1.99-2.35/h), expected about 2 h, cap $8.40;
 a second job only for a declared follow-up. Study cap $25.
