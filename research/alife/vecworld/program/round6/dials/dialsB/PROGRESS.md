@@ -26,6 +26,16 @@ README.md, DECLARED.md, DEVIATIONS.md.
   pushed and verified, the same request pushed as **r6-dialsb-001**.
 - 16:31: r6-dialsb-001 ran on a nebius CPU node (16 vCPU, $0.54/h) and stopped at its speed guard (exit 3): the
   script took `nproc` = 1 (DEVIATIONS.md 3). r6-dialsb-002 requested: same commit, S0_NPROC=16.
+- 16:42: the Mac's review of 001/002 read (`jobs/r6-dialsb-002/review.md`: 0 blocker, 0 major, 3 minor; fine to
+  run). Acted on in the repository head (the job runs the pinned commit): scan V files get an index prefix
+  (DK / dK and DL / dL differed by case only), the gate's npz is written whole and renamed, the dead XLA token
+  is gone, `job.sh` takes the processor count before OMP_NUM_THREADS; `make_summary.py` copies the scan files
+  under case-distinct names; `horizons.py` adds the per-horizon medians, leave-one-seed-out ranges and
+  bootstraps that DECLARED.md 2.4 lists and the job's analysis.json lacks. `r6-dialsB-001.json` (upper case,
+  never acknowledged, cancelled) is removed from the requests folder because it differs from
+  `r6-dialsb-001.json` by case only; its `.cancel` stays. A tiny-size regression test of the head code is
+  running here (scratch `dialsB/out_tiny`). To write up from the review: the noise keys are the same in every
+  seed and arm; C3 also tests whether A_act's grid covers the truth.
 
 ## Next step (exact)
 
@@ -44,4 +54,4 @@ README.md, DECLARED.md, DEVIATIONS.md.
 |---|---|---|
 | r6-dialsB-001 | cancelled 16:21 UTC (cancel file pushed), never acknowledged by the runner | its id has an upper-case letter, which PROTOCOL.md's pattern does not allow; $0 |
 | r6-dialsb-001 | failed 16:28 UTC, exit 3 (its own speed guard), $0.0432 billed | `nproc` answered 1 because OMP_NUM_THREADS=1 was exported first; presmoke passed (672 member-ticks/s per process); DEVIATIONS.md 3 |
-| r6-dialsb-002 | requested 16:32 UTC | the same tested commit by `ref`, env S0_NPROC=16; cap $2.50 |
+| r6-dialsb-002 | running since 16:38 UTC (nebius CPU node, 16 vCPU, $0.54/h) | the same tested commit by `ref`, env S0_NPROC=16; cap $2.50; expected about 50 minutes |
