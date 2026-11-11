@@ -286,7 +286,7 @@
       "job_id": "r6-dialsa-003",
       "purpose": "Round-6 dials, study A (gliders calibration): does a generic repair (fine-tuning, per-block residual) of the public-prior net close its gap to the true-form net when the public law lacks stress conversion; 8 truths x eta 0 and 4, 3 seeds per net",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "queued"
+      "state": "provisioning"
     },
     {
       "billed_usd": 0.0432,
@@ -351,10 +351,10 @@
     {
       "billed_usd": null,
       "cap_usd": 7.2,
-      "conservative_usd": 3.0693,
+      "conservative_usd": 3.1052,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 1.542,
+      "hours": 1.56,
       "job_id": "r6-foundryexam-005",
       "purpose": "Round-6 study foundryexam, last job: the learning curve of the true-weight reference net in the screened-prior arm (1,024 / 4,096 / 16,384 simulated episodes per hidden world), a third independent repeat of that arm (new items, Labs and seeds on the same 16 hidden worlds)",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -401,8 +401,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 69.7907,
     "prior_spend_usd": 0.0,
-    "spent_usd": 60.66,
+    "spent_usd": 60.6959,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T17:06:42Z"
+    "updated_at": "2026-11-11T17:07:47Z"
   }
 }
