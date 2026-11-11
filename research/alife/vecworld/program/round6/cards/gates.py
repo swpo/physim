@@ -4,6 +4,13 @@ Committed BEFORE the GPU run (HYPOTHESES.md gives the reasons). The thresholds w
 size of three worlds (foundry draw 4470, the pure-noise field, the non-interacting bodies) and before any full-size
 card existed. numpy only; input = the JSON card of cardlib.analyse (after cardlib.strip).
 
+TYPICAL STATE. Every ratio below is built from the MEDIANS over the test states of the per-state variances
+(cardlib's *_med entries): in the CPU run of foundry draw 4470 one member of eight held a runaway body, sat seven
+standard deviations from the climatology and carried the means. The mean-based values are kept with the suffix
+_mean for h = 8; a world where the two differ is flagged in the tables.
+THE CHEAP FAMILY is {climatology, persistence, the ridge}: ceilings use the best of the three (round 5 used the
+ridge or climatology; the ridge extrapolates badly for a member far from the fit members).
+
 Derived numbers per full level L in (grid, pop), horizons h in ticks:
   pf(h), ceil(h), gap(h)      predictable fraction, closure ceiling of the cheap family, closure gap
   w_theta(h)                  PL(eps = 1, h) / (V_clim - V_orc)(h): the share of the predictable variance that a
@@ -80,15 +87,19 @@ def derive(card: dict) -> dict:
         if lv is None:
             continue
         hz = lv["hz"]
-        vc, vo = np.array(lv["v_clim"], float), np.array(lv["v_orc"], float)
-        ceil = np.array([_f(v) for v in lv["ceil"]])
+        vc, vo = np.array(lv["v_clim_med"], float), np.array(lv["v_orc_med"], float)
+        ceil = np.array([_f(v) for v in lv["ceil_med"]])
         pred = vc - vo
         for h in hz:
             i = hz.index(h)
-            d[f"{L}.pf{h}"] = _f(lv["pf"][i])
+            d[f"{L}.pf{h}"] = _f(lv["pf_med"][i])
             d[f"{L}.ceil{h}"] = ceil[i]
-            d[f"{L}.gap{h}"] = _f(lv["gap"][i])
-        pl1 = np.array(lv["pl"]["1.0"]["pl"], float) if "1.0" in lv["pl"] else np.full(len(hz), np.nan)
+            d[f"{L}.gap{h}"] = _f(lv["gap_med"][i])
+        for k in ("pf", "ceil", "gap", "ceil_raw"):
+            d[f"{L}.{k}8_mean"] = _at(lv[k], hz, 8)
+        d[f"{L}.ceil8_se"] = _at(lv.get("ceil_med_se"), hz, 8)
+        d[f"{L}.pf8_se"] = _at(lv.get("pf_med_se"), hz, 8)
+        pl1 = np.array(lv["pl"]["1.0"]["pl_med"], float) if "1.0" in lv["pl"] else np.full(len(hz), np.nan)
         with np.errstate(divide="ignore", invalid="ignore"):
             w = np.where(pred > 1e-9, pl1 / pred, np.nan)
         sh = []
@@ -101,20 +112,22 @@ def derive(card: dict) -> dict:
         nd = int(lv.get("d") or (len(card["grid"]["mean"]) * card["grid_shape"][0] * card["grid_shape"][1] if L == "grid" else 1))
         for e in ("0.03", "0.1", "1.0"):
             if e in lv["pl"]:
-                d[f"{L}.pl_ratio{e}_8"] = _at(lv["pl"][e]["pl_over_vorc"], hz, 8)
-                ev = nd * _at(lv["pl"][e]["pl"], hz, 1) / max(2.0 * _at(lv["v_orc"], hz, 1), 1e-12)
+                d[f"{L}.pl_ratio{e}_8"] = _at(lv["pl"][e]["pl_over_vorc_med"], hz, 8)
+                d[f"{L}.pl_ratio{e}_8_mean"] = _at(lv["pl"][e]["pl_over_vorc"], hz, 8)
+                ev = nd * _at(lv["pl"][e]["pl_med"], hz, 1) / max(2.0 * _at(lv["v_orc_med"], hz, 1), 1e-12)
                 d[f"{L}.evidence{e}"] = float(ev)
                 d[f"{L}.ticks_to_3nats{e}"] = float(3.0 / ev) if ev > 0 else float("inf")
         a = lv["act"]
         if "aimed_200" in a:
-            d[f"{L}.act_ms"] = _at(a["aimed_200"]["MS_over_vorc"], hz, 4)
+            d[f"{L}.act_ms"] = _at(a["aimed_200"]["MS_over_vorc_med"], hz, 4)
+            d[f"{L}.act_ms_mean"] = _at(a["aimed_200"]["MS_over_vorc"], hz, 4)
             d[f"{L}.act_D_floor"] = _at(a["aimed_200"]["D_over_floor"], hz, 4)
             if "blind_200" in a:
-                d[f"{L}.aim_ratio"] = _at(a["aimed_200"]["D"], hz, 4) / max(_at(a["blind_200"]["D"], hz, 4), 1e-12)
+                d[f"{L}.aim_ratio"] = _at(a["aimed_200"]["D_med"], hz, 4) / max(_at(a["blind_200"]["D_med"], hz, 4), 1e-12)
             for n in ("aimed_50", "aimed_800"):
                 if n in a:
-                    d[f"{L}.act_ms_{n[6:]}"] = _at(a[n]["MS_over_vorc"], hz, 4)
-        d[f"{L}.xresp"] = _at(lv["xresp"]["RD_over_vorc"], hz, 4)
+                    d[f"{L}.act_ms_{n[6:]}"] = _at(a[n]["MS_over_vorc_med"], hz, 4)
+        d[f"{L}.xresp"] = _at(lv["xresp"]["RD_over_vorc_med"], hz, 4)
         d[f"{L}.tick_share"] = _f(lv.get("tick_share"))
         d[f"{L}.member_share"] = _f(lv.get("member_share"))
     s = card["structure"]
@@ -124,11 +137,14 @@ def derive(card: dict) -> dict:
     b = card["bodies"]
     hz = b["hz"]
     for part in ("disp", "mass"):
-        d[f"b.pf_{part}8"] = _at(b["single"][part]["pf"], hz, 8)
-        d[f"b.ceil_{part}8"] = _at(b["single"][part]["ceil"], hz, 8)
-        d[f"b.ceil_pers_{part}8"] = _at(b["single"][part]["ceil_pers"], hz, 8)
+        d[f"b.pf_{part}8"] = _at(b["single"][part]["pf_med"], hz, 8)
+        d[f"b.ceil_{part}8"] = _at(b["single"][part]["ceil_med"], hz, 8)
+        d[f"b.ceil_{part}8_mean"] = _at(b["single"][part]["ceil"], hz, 8)
+        d[f"b.ceil_pers_{part}8"] = _at(b["single"][part]["ceil_pers_med"], hz, 8)
         if "field" in b:
-            d[f"b.ceil_field_{part}8"] = _at(b["field"][part]["ceil"], hz, 8)
+            d[f"b.ceil_field_{part}8"] = _at(b["field"][part]["ceil_med"], hz, 8)
+        for h in (1, 4, 16):
+            d[f"b.ceil_{part}{h}"] = _at(b["single"][part]["ceil_med"], hz, h)
     d["b.quiet8"] = _at(b["quiet_share"], hz, 8)
     d["b.n_test8"] = _f(b["n_rows_fit_test"][hz.index(8)][1]) if 8 in hz else float("nan")
     c = card["cross"]
@@ -139,15 +155,16 @@ def derive(card: dict) -> dict:
         d["x.pop_over_pers8"] = _at(c["pop_over_persistence"]["gain"], hz, 8)
     if "learned" in card:
         le = card["learned"]
-        dc = [_at(le[t]["learned"]["ceil"], hz, 8) - _at(le[t]["hand"]["ceil"], hz, 8) for t in ("AB", "BA")]
-        dp = [_at(le[t]["learned"]["pf"], hz, 8) - _at(le[t]["hand"]["pf"], hz, 8) for t in ("AB", "BA")]
-        dg = [_at(le[t]["learned"]["gap"], hz, 8) - _at(le[t]["hand"]["gap"], hz, 8) for t in ("AB", "BA")]
+        dc = [_at(le[t]["learned"]["ceil_med"], hz, 8) - _at(le[t]["hand"]["ceil_med"], hz, 8) for t in ("AB", "BA")]
+        dp = [_at(le[t]["learned"]["pf_med"], hz, 8) - _at(le[t]["hand"]["pf_med"], hz, 8) for t in ("AB", "BA")]
+        dg = [_at(le[t]["learned"]["gap_med"], hz, 8) - _at(le[t]["hand"]["gap_med"], hz, 8) for t in ("AB", "BA")]
         d["l.dceil8_AB"], d["l.dceil8_BA"] = dc
         d["l.dpf8_AB"], d["l.dpf8_BA"] = dp
         d["l.dgap8_AB"], d["l.dgap8_BA"] = dg
         d["l.r2_min"] = float(min(min(le[t]["r2_on_hand"]) for t in ("AB", "BA")))
         for h in (16, 32):
-            d[f"l.dceil{h}_AB"] = _at(le["AB"]["learned"]["ceil"], hz, h) - _at(le["AB"]["hand"]["ceil"], hz, h)
+            d[f"l.dceil{h}_AB"] = _at(le["AB"]["learned"]["ceil_med"], hz, h) - _at(le["AB"]["hand"]["ceil_med"], hz, h)
+            d[f"l.dceil{h}_BA"] = _at(le["BA"]["learned"]["ceil_med"], hz, h) - _at(le["BA"]["hand"]["ceil_med"], hz, h)
     k = card["pop"].get("kind_share_law", {})
     if k.get("law"):
         for h in (8, 32):

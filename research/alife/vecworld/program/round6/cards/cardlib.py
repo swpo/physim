@@ -340,29 +340,39 @@ def _boot(rng, n, nb):
     return rng.integers(0, n, size=(nb, n))
 
 
-def _summ(per_state: dict, rng, nb):
-    """Means, ratios and bootstrap intervals over test states. per_state: name -> (nh, NS)."""
-    vc, vo, vp, vs = (per_state[k] for k in ("v_clim", "v_orc", "v_pred", "v_pers"))
-    nh, NS = vc.shape
+def _ratios(vc, vo, vp, vs):
+    """Card ratios from the four variances. The cheap family is {climatology, persistence, the ridge}: its error
+    is the smallest of the three (ceil_raw: the ridge or climatology only, round 5's definition)."""
+    vch = np.minimum(np.minimum(vp, vs), vc)
+    den = vc - vo
+    den = np.where(np.abs(den) > 1e-12, den, np.nan)
+    return dict(pf=1.0 - vo / np.maximum(vc, 1e-300), ceil=(vc - vch) / den, ceil_raw=(vc - np.minimum(vp, vc)) / den,
+                ceil_pers=(vc - np.minimum(vs, vc)) / den, gap=vch - vo)
 
-    def stats(vc, vo, vp, vs):
-        vch = np.minimum(vp, vc)
-        den = vc - vo
-        den = np.where(np.abs(den) > 1e-12, den, np.nan)
-        return dict(pf=1.0 - vo / np.maximum(vc, 1e-300), ceil=(vc - vch) / den, ceil_raw=(vc - vp) / den,
-                    ceil_pers=(vc - np.minimum(vs, vc)) / den, gap=vch - vo)
-    m = {k: v.mean(1) for k, v in per_state.items()}
+
+def _summ(per_state: dict, rng, nb):
+    """Means over test states, the ratios of the means, the same from the MEDIANS over test states (suffix
+    _med: the typical state; the means can be carried by a few states far from the climatology), and bootstrap
+    standard errors over test states. per_state: name -> (nh, n_states)."""
+    KS = ("v_clim", "v_orc", "v_pred", "v_pers")
+    m = {k: np.nanmean(per_state[k], 1) for k in KS}
+    md = {k: np.nanmedian(per_state[k], 1) for k in KS}
     out = {k: v.tolist() for k, v in m.items()}
-    st = stats(m["v_clim"], m["v_orc"], m["v_pred"], m["v_pers"])
-    out.update({k: v.tolist() for k, v in st.items()})
-    if NS > 1 and nb > 0:
+    out.update({k + "_med": v.tolist() for k, v in md.items()})
+    out.update({k: v.tolist() for k, v in _ratios(*(m[k] for k in KS)).items()})
+    out.update({k + "_med": v.tolist() for k, v in _ratios(*(md[k] for k in KS)).items()})
+    NS = per_state["v_clim"].shape[1]
+    if NS > 2 and nb > 0:
         idx = _boot(rng, NS, nb)
-        bs = {k: v[:, idx].mean(2) for k, v in per_state.items()}             # (nh, nb)
-        sb = stats(bs["v_clim"], bs["v_orc"], bs["v_pred"], bs["v_pers"])
+        res = {k: per_state[k][:, idx] for k in KS}                           # (nh, nb, NS)
+        sb = _ratios(*(np.nanmean(res[k], 2) for k in KS))
+        sm = _ratios(*(np.nanmedian(res[k], 2) for k in KS))
         for k, v in sb.items():
             out[k + "_se"] = np.nanstd(v, 1).tolist()
+        for k, v in sm.items():
+            out[k + "_med_se"] = np.nanstd(v, 1).tolist()
         for k in ("v_orc", "v_pred", "v_clim"):
-            out[k + "_se"] = bs[k].std(1).tolist()
+            out[k + "_se"] = np.nanmean(res[k], 2).std(1).tolist()
     return out
 
 
@@ -415,8 +425,11 @@ def _hidden_and_actions(za_h, v_orc_s, sz: Sizes, lay, ax, rng):
             rows.append(pls)
         rows = np.asarray(rows)                                               # (nh, NS)
         vo = np.asarray(v_orc_s).mean(1)
+        vom = np.median(np.asarray(v_orc_s), 1)
         out["pl"][str(e)] = dict(pl=rows.mean(1).tolist(), pl_se=(rows.std(1) / np.sqrt(rows.shape[1])).tolist(),
-                                 pl_over_vorc=(rows.mean(1) / np.maximum(vo, 1e-12)).tolist())
+                                 pl_over_vorc=(rows.mean(1) / np.maximum(vo, 1e-12)).tolist(),
+                                 pl_med=np.median(rows, 1).tolist(),
+                                 pl_over_vorc_med=(np.median(rows, 1) / np.maximum(vom, 1e-12)).tolist())
     for (kind, nats), idx in lay["act"].items():
         Ds, Ms = [], []
         for zh in za_h:
@@ -429,7 +442,9 @@ def _hidden_and_actions(za_h, v_orc_s, sz: Sizes, lay, ax, rng):
             D=Ds.mean(1).tolist(), D_se=(Ds.std(1) / np.sqrt(Ds.shape[1])).tolist(),
             MS=Ms.mean(1).tolist(), MS_se=(Ms.std(1) / np.sqrt(Ms.shape[1])).tolist(),
             D_over_floor=(Ds.mean(1) / np.maximum(2.0 * vo, 1e-12)).tolist(),
-            MS_over_vorc=(Ms.mean(1) / np.maximum(vo, 1e-12)).tolist())
+            MS_over_vorc=(Ms.mean(1) / np.maximum(vo, 1e-12)).tolist(),
+            D_med=np.median(Ds, 1).tolist(), MS_med=np.median(Ms, 1).tolist(),
+            MS_over_vorc_med=(np.median(Ms, 1) / np.maximum(np.median(np.asarray(v_orc_s), 1), 1e-12)).tolist())
     # does the response to the input depend on the hidden part? d = response under theta, d' under theta' (same
     # noise, same input); RD = |mean d' - mean d|^2 - (var d + var d') / R_u; and the paired displacement of the
     # hidden-part move itself with common noise
@@ -448,6 +463,7 @@ def _hidden_and_actions(za_h, v_orc_s, sz: Sizes, lay, ax, rng):
     out["xresp"] = dict(eps=sz.x_eps, arm=list(sz.x_arm), RD=RDs.mean(1).tolist(),
                         RD_se=(RDs.std(1) / np.sqrt(RDs.shape[1])).tolist(),
                         RD_over_vorc=(RDs.mean(1) / np.maximum(vo, 1e-12)).tolist(),
+                        RD_over_vorc_med=(np.median(RDs, 1) / np.maximum(np.median(np.asarray(v_orc_s), 1), 1e-12)).tolist(),
                         RD_over_MS=(RDs.mean(1) / np.where(np.abs(MSs.mean(1)) > 1e-12, MSs.mean(1), np.nan)).tolist(),
                         paired_theta_D=PPs.mean(1).tolist(),
                         paired_theta_D_over_floor=(PPs.mean(1) / np.maximum(2.0 * vo, 1e-12)).tolist())
@@ -758,12 +774,11 @@ def bodies_card(rec, sz: Sizes, ts, Hpx, G, zgrid=None, seed=0):
         for p, _ in PARTS:
             r = res[name][p]
             ent = {k: [float(np.nanmean(v)) if np.isfinite(v).any() else float("nan") for v in r[k]] for k in KS}
-            vc, vo, vp, vs = (np.asarray(ent[k]) for k in ("v_clim", "v_orc", "v_pred", "v_pers"))
-            den = np.where(np.abs(vc - vo) > 1e-12, vc - vo, np.nan)
-            ent["pf"] = (1.0 - vo / np.maximum(vc, 1e-300)).tolist()
-            ent["ceil"] = ((vc - np.minimum(vp, vc)) / den).tolist()
-            ent["ceil_pers"] = ((vc - np.minimum(vs, vc)) / den).tolist()
-            ent["gap"] = (np.minimum(vp, vc) - vo).tolist()
+            emd = {k: [float(np.nanmedian(v)) if np.isfinite(v).any() else float("nan") for v in r[k]] for k in KS}
+            ent.update({k + "_med": v for k, v in emd.items()})
+            ent.update({k: v.tolist() for k, v in _ratios(*(np.asarray(ent[k]) for k in ("v_clim", "v_orc", "v_pred", "v_pers"))).items()})
+            ent.update({k + "_med": v.tolist() for k, v in
+                        _ratios(*(np.asarray(emd[k]) for k in ("v_clim", "v_orc", "v_pred", "v_pers"))).items()})
             se = []
             for i in range(len(hz)):
                 c, o, pz = r["v_clim"][i], r["v_orc"][i], r["v_pred"][i]
@@ -856,7 +871,7 @@ def pop_card(rec, sz: Sizes, ts, grid_moments=None, grid_moments_test=None, seed
     den = np.where(np.abs(cc["v_clim"] - cc["v_orc"]) > 1e-12, cc["v_clim"] - cc["v_orc"], np.nan)
     out["components"] = dict(names=[POP_NAMES[i] for i in li],
                              pf=(1 - cc["v_orc"] / np.maximum(cc["v_clim"], 1e-300)).tolist(),
-                             ceil=((cc["v_clim"] - np.minimum(cc["v_pred"], cc["v_clim"])) / den).tolist(),
+                             ceil=((cc["v_clim"] - np.minimum(np.minimum(cc["v_pred"], cc["v_pers"]), cc["v_clim"])) / den).tolist(),
                              v_orc=cc["v_orc"].tolist())
     zf = z[:, fit]
     out["tick_share"] = _tick_share(zf)
@@ -954,6 +969,7 @@ def analyse(rec, sz: Sizes, meta: dict, seed: int = 0, with_learned: bool = True
     card["nats_check"] = {f"{k}_{int(n)}": float(rec["U_norm2"][:, idx].mean() / (2.0 * meta["sigma_u"] ** 2))
                           for (k, n), idx in lay["act"].items()}
     # learned variable: slow features on half A of the fit members, both variables judged on half B
+    LK = ("pf", "ceil", "gap", "v_orc", "v_pred", "v_clim", "ceil_se", "pf_med", "ceil_med", "gap_med", "ceil_med_se")
     if with_learned and sz.M_fit >= 4:
         hA, hB = fit[: sz.M_fit // 2], fit[sz.M_fit // 2:]
         ent = {}
@@ -970,8 +986,7 @@ def analyse(rec, sz: Sizes, meta: dict, seed: int = 0, with_learned: bool = True
             coef = np.linalg.lstsq(Hz1, Lz, rcond=None)[0]
             r2 = 1.0 - ((Lz - Hz1 @ coef) ** 2).mean(0) / np.maximum(Lz.var(0), 1e-300)
             ent[tag] = dict(lam=lam.tolist(), r2_on_hand=r2.tolist(),
-                            learned={k: cl[k] for k in ("pf", "ceil", "gap", "v_orc", "v_pred", "v_clim", "ceil_se")},
-                            hand={k: ch[k] for k in ("pf", "ceil", "gap", "v_orc", "v_pred", "v_clim", "ceil_se")})
+                            learned={k: cl[k] for k in LK}, hand={k: ch[k] for k in LK})
         card["learned"] = ent
     card["_per_state_grid"] = per_state_grid
     card["grid_shape"] = [G, G]
