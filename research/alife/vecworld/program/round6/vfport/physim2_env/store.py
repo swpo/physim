@@ -4,6 +4,11 @@
     <store>/<instance_id>/hidden/            instance.json (theta, secret), exam.npz (items, truths), examples.npz
     <store>/<instance_id>/hidden/labs/<rollout>/    the laboratory's records of one rollout (state, request log)
     <store>/<instance_id>/hidden/grades/<rollout>.npz|.json   per-item scores of one rollout
+    <store>/<instance_id>/captures/<rollout>/     what came out of the rollout's box, for the record (capture.py):
+                                             checkpoint.tar + checkpoint.json (the newest frozen copy of
+                                             submission/ taken while the run was alive), final/submission/ (the
+                                             graded files), final/workspace/ (a size-capped copy of the working
+                                             directory) with their manifests. Agent-made content: data, never code.
 
 The store is a local directory here (PHYSIM2_STORE or --env.taskset.store). The sealer and the private Hugging
 Face store are a separate study; they replace `hidden_dir` below and nothing else. A task row never carries a
@@ -42,6 +47,12 @@ def read_index(root: str, index: str = "") -> list[dict]:
         if not ID.match(r["instance_id"]):
             raise ValueError("bad instance id in the index")
     return rows
+
+
+def safe_name(s) -> str:
+    """A rollout or trace id as ONE plain path component (letters, digits, `_ . -`; never empty, never dots only)."""
+    s = re.sub(r"[^A-Za-z0-9_.-]", "_", str(s))[:80]
+    return s if s.strip(".") else "_"
 
 
 def token_like(names) -> list[str]:
