@@ -103,7 +103,7 @@ def fair_es(X, y):
     """X (M, d) ensemble, y (d,): fair energy score with the RMS norm."""
     M = X.shape[0]
     rms = lambda v: jnp.sqrt(jnp.mean(v * v, -1) + 1e-12)
-    return rms(X - y[None]).mean() - rms(X[:, None] - X[None]).sum() / (M * (M - 1))
+    return rms(X - y[None]).mean() - rms(X[:, None] - X[None]).sum() / (2.0 * M * (M - 1))   # as vw.scoring.energy_fair
 
 
 def episode_loss(th, x, Y, U, keys, scale, remat=False):

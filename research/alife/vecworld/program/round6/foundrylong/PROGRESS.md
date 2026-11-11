@@ -28,6 +28,14 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   ticks, score; gradient through the k ticks), k = 16, running on CPU (w_cpu.py --fit-k 16).
 - 19:02: job 001 screen done (22 min, 38k member-ticks/s on the A100); gate: 818 of 1,490 new candidates pass, so P0
   reaches 1,000 worlds.
+- 19:15: k = 16 fit (old score): loss 0.607 -> -0.031 (truth -0.041), skill at the fit 0.34 / 0.14 / -0.03. Then found
+  a BUG in fl_w.fair_es: the spread term was divided by M(M-1), not 2M(M-1) (vw.scoring.energy_fair), so the fit loss
+  was improper (it rewarded spread). Every fit-loss number above (test 2 ranking, both fit tests) used it; W's skills
+  (scored by vw.scoring) are right. Fixed (checked against energy_fair to 1e-7).
+- 19:29: k = 16 fit, fixed score (results/w_fitk16_seed2027-46.json; 40 steps, 8 Lab episodes, 4 x 2 members, 2 random
+  anchors per episode): loss 0.769 -> 0.249 (truth 0.196, same keys), still falling; W's skill at the fit 0.79 / 0.68 /
+  0.53 (truth 0.85 / 0.78 / 0.70). The forecast loss works from a 30% start. Running: the same from another screened
+  world's weights (60 steps).
 
 ## Running
 - Review of r6-foundrylong-001 read 18:50: fine to run, 2 minor (outputs ~53 MB: check manifest in_git before the analysis;
