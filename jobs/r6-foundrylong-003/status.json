@@ -18,7 +18,7 @@
   ],
   "job_id": "r6-foundrylong-003",
   "max_estimate_usd": 6.77,
-  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $6.77",
+  "message": "no offer that fits the cap is available right now; will retry",
   "plan": {
     "max_estimate_usd": 6.77,
     "offers": [
@@ -68,5 +68,5 @@
     "summary": "delta against 002: the guard blocker is fixed (steady-state timing, steps set from speed); 2 of 002's minors may still apply; fine to run"
   },
   "state": "queued",
-  "updated_at": "2026-11-11T21:37:43Z"
+  "updated_at": "2026-11-11T21:38:22Z"
 }
