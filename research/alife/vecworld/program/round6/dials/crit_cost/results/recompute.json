@@ -1,0 +1,407 @@
+{
+ "what": "cost and feasibility recomputation of the round-6 dial designs",
+ "cap_rule": "rate x (max_hours + 0.25) + 0.10",
+ "rates_member_ticks_per_s": {
+  "gliders_A100_40GB": {
+   "ladder_harness_design": 1312,
+   "ladder_harness_lab": 1316,
+   "ladder_harness_exam_stage": 760,
+   "ladder_whole_script_incl_nets": 835,
+   "bias2_and_cards": [
+    617,
+    734
+   ],
+   "usd_per_million": {
+    "ladder_design": 0.421,
+    "bias2_and_cards": [
+     0.753,
+     0.896
+    ],
+    "ladder_billed_all_in": 0.7
+   },
+   "source": "round5/ladder/results/job/progress.txt (n=4: 'D design done in 480s', 'E Lab done in 323s', 'G exams done in 197s') with round5/ladder/results/summary.json [job.member_ticks: design 1,574,400 = (384 + 768 + 768) points x 10 episodes x 82 ticks; exam 449,280 over 3 sets; member_ticks_total; hours_in_script; status.cost.billed_usd; status.pod.gpu = A100_40GB]; round5/bias2/results/gliders_w/sim_{A,B}.json [member_ticks_per_s] (batch 64, fields copied to the host); round6/cards/results/jobs/r6-cards-001/review.md ('measured 617-734'), round6/cards/results/cards/gliders/card.md section 9 (687)"
+  },
+  "gliders_80GB_cards": {
+   "value": [
+    1400,
+    1700
+   ],
+   "usd_per_million_H200": [
+    1.093,
+    1.327
+   ],
+   "source": "gpu/bench/README.md (A100 80GB, B >= 64: 1,486-1,707); round5/bias2/results/gliders/sim_{A,B}.json (1,212-1,399)"
+  },
+  "membrane_128px_A100_40GB": {
+   "with_tracker_cards": 7091,
+   "usd_per_million": 0.078,
+   "bias2_batch64": [
+    598,
+    2717
+   ],
+   "usd_per_million_bias2": [
+    0.203,
+    0.924
+   ],
+   "source": "round6/cards/results/cards/membrane/card.md section 9 (lattice [4,128,128], 20 substeps per tick, tracker on every member, compile excluded; two runs of about 6 s each: r6-cards-002 progress.txt 'membrane__A: sim 17.4+9.4s' is the first call); round5/bias2/results/membrane_w/sim_A.json [member_ticks_per_s] (batch 64; 'base/branch rates include the host transfer of the float64 records')"
+  },
+  "vortex_128px": {
+   "A100_40GB": 169.4,
+   "H200": 444.1,
+   "usd_per_million": {
+    "A100_40GB": 3.263,
+    "H200": 4.184
+   },
+   "source": "round5/vortexexam/results/summary.json [status_job_B.value.rate], [platform_job1.value.rate]"
+  },
+  "vortex_64px": {
+   "H200": [
+    1388,
+    1577
+   ],
+   "A100_40GB_cards": 209,
+   "A100_40GB_if_the_128px_card_ratio_holds_estimate": [
+    529,
+    602
+   ],
+   "exam_equivalents_per_s_A100": [
+    52.2,
+    150.4
+   ],
+   "usd_per_million_exam_equivalents_A100": [
+    3.676,
+    10.579
+   ],
+   "source": "round5/vortexexam/results/summary.json [headline.member_ticks_per_s_H200]; round6/cards/results/cards/vortex64/card.md section 9"
+  },
+  "vortex_32px": {
+   "value": null,
+   "source": "not measured on any card (compute_limit DESIGN.md section 6 says so)"
+  }
+ },
+ "defect_gliders": {
+  "stage1_member_ticks": {
+   "training_2_families_768x8": 1007616,
+   "the_same_at_10_episodes_per_point_as_the_ladder": 1259520,
+   "lab": 42496,
+   "exam_with_climatology": 248832,
+   "plugins": 98304,
+   "scales_and_truths": 17696,
+   "total": 1414944,
+   "total_at_10_episodes": 1666848,
+   "designer": 1400000.0
+  },
+  "stage2_member_ticks": {
+   "recomputed_without_overheads": 1889792,
+   "designer": 2200000.0
+  },
+  "stage1_hours_A100_40GB": [
+   0.65,
+   1.21
+  ],
+  "stage1_usd": [
+   1.29,
+   2.41
+  ],
+  "designer_stage1_usd": 1.5,
+  "stage1_cap_by_rule": [
+   2.21,
+   3.62
+  ],
+  "declared_stage1_cap": 5,
+  "stage1_max_hours_under_declared_cap": {
+   "A100_40GB": 2.21,
+   "H200": 0.48
+  },
+  "stage1_hours_needed_on_H200_estimate": [
+   0.53,
+   0.73
+  ],
+  "stage1_cap_if_H200": 6.79,
+  "stage2_hours_A100_40GB": [
+   1.07,
+   1.84
+  ],
+  "stage2_usd": [
+   2.12,
+   3.66
+  ],
+  "designer_stage2_usd": 3.5,
+  "stage2_max_hours_under_declared_cap_15": {
+   "A100_40GB": 7.24,
+   "H200": 1.98
+  },
+  "study_caps_sum": 20,
+  "stats_critic_minimum_stage1": {
+   "what": "8 truths x eta 0 and 4, three seeds (crit_stats/CRITIQUE.md)",
+   "member_ticks": 1804576,
+   "hours_A100_40GB_estimate": [
+    0.88,
+    1.46
+   ]
+  },
+  "research_budget": {
+   "declared_episodes": 8192,
+   "member_ticks": 671744,
+   "core_hours_at_0.15_to_0.164": [
+    28.0,
+    30.6
+   ],
+   "P0_set_of_this_design_episodes": 6144,
+   "budget_over_P0_set": 1.33,
+   "round4_P0_set_episodes": 1024,
+   "budget_over_round4_P0_set": 8.0,
+   "H_needs_episodes": {
+    "true_form_family": 6144,
+    "emulator_designed": 6144,
+    "sum": 12288
+   },
+   "H_fits": false,
+   "source": "DESIGN.md section 6; round5/agentenv/results/summary.json [cost.value.recipes_gliders.P0_set_round4.episodes] = 1024, [cost.value.cpu_s_per_member_tick.gliders]"
+  },
+  "prediction_budget": {
+   "declared_fraction": 0.05,
+   "question_cpu_s_if_32_members_x_16_ticks": 76.8,
+   "allowed_cpu_s_per_item": 3.84,
+   "allowed_if_question_is_one_member": 0.12,
+   "note": "the design does not say how many members a 'question' is"
+  },
+  "largest_array": {
+   "declared": 70000000.0,
+   "ladder_reviewed": 110000000.0,
+   "ladder_peak_gb_compile_level": 4.3,
+   "source": "round5/ladder/results/summary.json [job.status.review.summary]; the ladder ran on the 40 GB card without a memory failure"
+  }
+ },
+ "sublevel_second": {
+  "member_ticks": {
+   "per_world": {
+    "lab": 19008,
+    "exam": 35200,
+    "climatology": 12672,
+    "screen": 24576
+   },
+   "per_world_total": 91456,
+   "worlds": 60,
+   "shared": 2230272,
+   "total": 7717632,
+   "designer": 7700000.0
+  },
+  "simulation_hours_A100_40GB": {
+   "at_the_cards_rate": [
+    0.3,
+    0.67
+   ],
+   "at_the_designers_bracket": [
+    0.79,
+    3.58
+   ]
+  },
+  "simulation_usd": {
+   "at_the_cards_rate": [
+    0.6,
+    1.34
+   ],
+   "designer": [
+    1.6,
+    7.1
+   ]
+  },
+  "job_hours_A100_40GB": [
+   1.9,
+   2.77
+  ],
+  "job_usd": [
+   3.79,
+   5.52
+  ],
+  "designer_usd": [
+   5,
+   11
+  ],
+  "cap_by_rule_A100": 7.56,
+  "declared_cap": 20,
+  "max_hours_under_declared_cap": {
+   "A100_40GB": 9.75,
+   "H200": 2.72
+  },
+  "two_jobs_proposed": {
+   "stage1_cap": 4.58,
+   "main_cap": 7.56,
+   "sum": 12.14
+  },
+  "stage1": {
+   "member_ticks_without_H_designs": 1582336,
+   "share_of_all_simulation": 0.21,
+   "usd_estimate": [
+    1.5,
+    2.5
+   ],
+   "designer_usd": 1.0,
+   "note": "stage 1 needs both shared training families (public 2,048 and extended 4,096 episodes) and their nets, whatever the number of truths"
+  },
+  "fine_tuning_F": {
+   "fine_tunes_per_world_and_seed_leave_one_episode_out": 87,
+   "total_60_worlds_2_seeds": 10440
+  },
+  "state_given_screen_share": 0.19,
+  "D64_extra_lab_share": 0.07,
+  "arms_lam_0.5_and_0.75_share": 0.28,
+  "research_budget": {
+   "declared_episodes": 8192,
+   "cpu_s_per_episode": 2.44,
+   "core_hours": 5.54,
+   "core_hours_at_vmap16": 9.06,
+   "P0": 2048,
+   "S": 3584,
+   "H": 6144,
+   "H_fits_in_simulation": true,
+   "source": "track1/membrane_world/results/summary.json [timing.world_tick_L0_L1_L2_B1_per_member_s] = 0.01227 (128 px, one core), [timing.world_tick_L0_L1_L2_B16_per_member_s] = 0.0201"
+  },
+  "prediction_budget": {
+   "declared_fraction": 0.1,
+   "question_cpu_s_if_32_members_x_32_ticks": 12.6,
+   "allowed_cpu_s_per_item": 1.26
+  },
+  "largest_array": {
+   "declared": 60000000.0,
+   "check": "768 members (64 items x 12) x 5 fields x 128 x 128 = 62914560",
+   "gpu_memory": "r6-cards-001 review.md: membrane at device batch 480 peaks at about 5 GB or less on the A100 40GB"
+  }
+ },
+ "compute_limit": {
+  "stop_rule_job": {
+   "exam_equivalent_member_ticks": 368448,
+   "designer": 370000.0,
+   "member_ticks_64px": 736896,
+   "member_ticks_32px": 2947584,
+   "items_redone_128px": 190000,
+   "hours_A100_40GB": [
+    0.83,
+    2.42
+   ],
+   "usd": [
+    1.65,
+    4.82
+   ],
+   "designer_usd": 2.5,
+   "cap_by_rule_at_the_upper_hours": 5.41,
+   "declared_cap": 5,
+   "max_hours_under_declared_cap": {
+    "A100_40GB": 2.21,
+    "H200": 0.48
+   },
+   "hours_on_H200_estimate": 0.53,
+   "cap_by_rule_H200": 5.32,
+   "cut_32px_design_to_128_points_saves_member_ticks": 827392,
+   "cards_job_64px_detail": "r6-cards-001 progress.txt vortex64__B: main 16 members x 500 ticks in 78.5 s (102/s, batch 16), branch 32 x 30 x 32 member-ticks in 92.4 s (332/s, device batch 960)",
+   "share_of_member_ticks_at_32px": 0.8,
+   "note": "the 32 px rate is not measured on any card; the 64 px rate on the A100 40GB is measured only in the cards job (209)"
+  },
+  "full_study": {
+   "exam_equivalent_member_ticks": 1600000.0,
+   "zero_arm": 1045664,
+   "zero_arm_hours_A100": 1.71,
+   "zero_arm_usd_A100": 3.41,
+   "zero_arm_billed_in_round5": 3.7164,
+   "hours_A100_40GB": [
+    2.92,
+    4.96
+   ],
+   "usd": [
+    5.82,
+    9.87
+   ],
+   "designer_usd": [
+    5,
+    7
+   ],
+   "cap_by_rule": 10.47,
+   "declared_cap": 12,
+   "max_hours_H200_under_12": 1.53,
+   "source": "round5/vortexexam/results/summary.json [status_job_B.value.member_ticks_total], [headline.exam_job_B.value.billed_usd]"
+  },
+  "stored_pilot_B": {
+   "design_series": "origin/gpu-jobs:jobs/r5-vortexexam-006/out/design_S_00.npz and design_S_01.npz, S (512, 405, 14) float16 each",
+   "design_npz": "holds parameters, classes, nats and the input programs, no series",
+   "exam": "exam.npz S (10, 12, 405, 14) float16, Y (10, 12, 4, 8, 3, 2)",
+   "checked_by": "git show origin/gpu-jobs:...; numpy.load of each file"
+  },
+  "budgets": {
+   "R_declared": 64,
+   "R_core_hours": 3.8,
+   "R_zero_point": 1350,
+   "R_zero_point_core_hours": 80.2,
+   "envelope_core_hours_4_cores_24_h": 96,
+   "pooled_design_exam_equivalents_per_side": 256,
+   "over_R_at_r_quarter": 4.0,
+   "over_R_at_r_sixteenth": 16.0,
+   "f_declared": 0.05,
+   "question_cpu_s_32_members_8_to_32_ticks": [
+    136,
+    542
+   ],
+   "allowed_cpu_s_per_item": [
+    6.8,
+    27.1
+   ],
+   "exam_size_episodes_R_64_buys": 64,
+   "source": "round5/vortexexam/results/summary.json [headline.P0_cost_envelope.value.cpu_s_per_member_tick_128px] = 0.5294"
+  },
+  "largest_array": {
+   "declared": 20971520,
+   "at_64px": 20971520,
+   "gpu_memory": "round5/vortexexam summary.json [review_of_job2]: peak about 10 GB at batch 1024, 128 px"
+  }
+ },
+ "net_training_inside_the_research_budget": {
+  "block_net_cpu_s_per_step": 0.9758,
+  "first_step_cpu_s_with_compilation": 7.94,
+  "conditioned_net_6000_steps_cpu_hours": 1.63,
+  "gliders_episode_equivalents": 476,
+  "share_of_8192_gliders": 0.058,
+  "membrane_episode_equivalents_if_the_same_net_estimate": 2404,
+  "share_of_8192_membrane_estimate": 0.29,
+  "source": "results/net_cpu_cost.json (net_cpu_cost.py, this folder: the ladder's block-view step, batch 128 x 4, one thread, shared machine)"
+ },
+ "enforcement_in_the_port": {
+  "prediction": "per-item grading box takes --cpu (CPU seconds), --wall and --mem-gib: round6/vfport/physim2_env/grading.py:185",
+  "research": "the agent box gets cpus and memory (round6/vfport/physim2_env/taskset.py:379) and a time limit; 'CPU metering: not studied', the agent box's counter is 'agent_box_cpu_s_unverified' (round6/vfport/README.md section 4, item 5)",
+  "item_box_overhead_cpu_s": 1.03,
+  "item_box_overhead_source": "round6/vfport/README.md line 268: 'the item boxes use 66 CPU-seconds' for 64 items (ring, policy C)"
+ },
+ "build_time": {
+  "calibration_hours_first_to_last_commit": {
+   "round5/vortexexam (a new exam on a world with none; 31 commits; three GPU jobs)": 6.3,
+   "round5/ladder (a variation of the gliders exam; 16 commits; one GPU job of 1.3 h)": 4.1
+  },
+  "calibration_source": "git log --format=%ci origin/claude/fisim-agent-world-research-hepmlz -- <folder>",
+  "estimate_agent_hours": {
+   "defect_gliders_stage1": [
+    4,
+    5
+   ],
+   "defect_gliders_stage2": [
+    3,
+    4
+   ],
+   "sublevel_second": [
+    10,
+    14
+   ],
+   "compute_limit_stop_rule_job": [
+    3,
+    4
+   ]
+  },
+  "lines_of_existing_code_for_scale": {
+   "ladder_lib": 649,
+   "ladder_net": 493,
+   "run_ladder": 666,
+   "vxlib": 487,
+   "vxnet": 452,
+   "vxsbi": 286,
+   "vortexexam_job2": 972
+  }
+ }
+}

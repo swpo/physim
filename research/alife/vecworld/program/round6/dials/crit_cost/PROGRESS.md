@@ -11,3 +11,9 @@
     r6-cards vortex64: 209. 32 px: not measured anywhere.
   - pilot B stored: design.npz holds no series; the design series are design_S_00/01.npz (512 x 405 x 14 float16 each).
 - Next: recompute the three designs' member-ticks, caps, budgets; what must be built; write CRITIQUE.md (< 900 words).
+- net_cpu_cost.py run (one thread, about 1 CPU-minute): the ladder's block-view training step costs 0.98 CPU-s; a 6,000-step conditioned net
+  = 1.63 CPU-hours = 476 gliders episode equivalents (results/net_cpu_cost.json).
+- recompute.py run: member-ticks, hours, dollars, caps, budgets of the three designs (results/recompute.json). Designers' member-tick
+  arithmetic holds in all three; differences are in rates (membrane much cheaper than the designer's bracket; vortex 64/32 px unmeasured on the A100),
+  in budgets that the reference policies do not fit (defect_gliders H; compute_limit pooled designs) and in what the port can meter.
+- Next: CRITIQUE.md (< 900 words), commit, push, remove worktree and scratch.

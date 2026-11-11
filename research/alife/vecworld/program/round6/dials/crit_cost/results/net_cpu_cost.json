@@ -1,0 +1,54 @@
+{
+ "what": "CPU cost of one training step of the round-5 ladder nets, one thread, zeros-shaped data",
+ "jax": "0.12.0.1",
+ "backend": "cpu",
+ "threads": "1",
+ "load_average": [
+  2.89404296875,
+  2.72607421875,
+  2.90869140625
+ ],
+ "cases": [
+  {
+   "view": "block",
+   "cond": true,
+   "nets_in_lockstep": 1,
+   "batch": 128,
+   "m_train": 4,
+   "first_step_wall_s": 4.77,
+   "first_step_cpu_s": 7.94,
+   "wall_s_per_step": 0.707,
+   "cpu_s_per_step": 0.9758,
+   "timed_steps": 12,
+   "finite": true
+  },
+  {
+   "view": "pop",
+   "cond": true,
+   "nets_in_lockstep": 1,
+   "batch": 128,
+   "m_train": 4,
+   "first_step_wall_s": 2.32,
+   "first_step_cpu_s": 3.18,
+   "wall_s_per_step": 0.0034,
+   "cpu_s_per_step": 0.0041,
+   "timed_steps": 12,
+   "finite": true
+  }
+ ],
+ "cpu_s_per_member_tick_gliders": 0.15,
+ "episode_ticks": 82,
+ "block_view_schedules": {
+  "conditioned net (C, P0, S), 6000 steps": {
+   "steps": 6000,
+   "cpu_hours": 1.63,
+   "gliders_episode_equivalents": 476
+  },
+  "unconditioned P0u, 3000 steps": {
+   "steps": 3000,
+   "cpu_hours": 0.81,
+   "gliders_episode_equivalents": 238
+  }
+ },
+ "note": "episode equivalents = steps x cpu_s_per_step / (0.15 CPU-s x 82 ticks); a shared 4-core machine, so read the per-step time to a factor of about 1.5; validation passes are not timed"
+}
