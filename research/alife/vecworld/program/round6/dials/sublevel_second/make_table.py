@@ -25,6 +25,7 @@ def main():
              "members_without_cells_at_T0": int(sum(1 for c in st["cells_at_T0"] if c == 0)),
              "cells_at_T0_mean": sum(st["cells_at_T0"]) / len(st["cells_at_T0"]),
              "phi_area_at_T0_mean": (sum(st["phi_area_at_T0"]) / len(st["phi_area_at_T0"])) if "phi_area_at_T0" in st else None,
+             "inside_phase_share_of_box_at_T0": (sum(st["phi_area_at_T0"]) / len(st["phi_area_at_T0"]) / d["size"] ** 2) if "phi_area_at_T0" in st else None,
              "cpu_s": d.get("cpu_s_total"), "member_ticks": d.get("member_ticks")}
         for v, vv in d["screen"].items():
             r[v] = {c: [vv[c]["screen_gap"], vv[c]["se_members"]] for c in vv}
@@ -32,7 +33,6 @@ def main():
         tm = d["shift_truth_minus_public"]["target_mass"]
         r["target_mass_shift_h8_in_oracle_sd"] = {c: [tm[c]["shift_over_oracle_sd"][1], tm[c]["z_members"][1]] for c in tm}
         rows[tag] = r
-    json.dump(rows, open(os.path.join(HERE, "results", "table.json"), "w"), indent=1)
 
     def g(x):
         return "n/a" if x is None or x[0] != x[0] else f"{x[0]:+.3f} ± {x[1]:.3f}"
@@ -40,16 +40,36 @@ def main():
         print(f"\n### {view}\n| run | no cells | none | blind | feed | starve | inputs | ignore-program feed / starve |")
         print("|---|---|---|---|---|---|---|---|")
         for tag, r in rows.items():
-            if view not in r:
-                continue
+            if view not in r or r["members_without_cells_at_T0"] == r["members"] or (r["inside_phase_share_of_box_at_T0"] or 0) > 0.9:
+                continue                                      # no cells, or the box is one cell: no screen to report
             ip = r[view + "_ignore_program"]
             print(f"| {tag} | {r['members_without_cells_at_T0']}/{r['members']} | " +
                   " | ".join(g(r[view][c]) for c in ("none", "blind", "feed", "starve", "inputs")) +
                   f" | {ip['feed']:.3f} / {ip['starve']:.3f} |")
+    print("\n### state at T0 (formation): members without cells, mean cells, inside-phase share of the box")
+    for tag, r in rows.items():
+        sh = r["inside_phase_share_of_box_at_T0"]
+        print(f"| {tag} | {r['members_without_cells_at_T0']}/{r['members']} | {r['cells_at_T0_mean']:.2f} | {'n/a' if sh is None else round(sh, 3)} |")
     print("\n### target-cell mass, truth - comparison law at h = 8, in oracle SDs (z over members)")
     for tag, r in rows.items():
+        if r["members_without_cells_at_T0"] == r["members"] or (r["inside_phase_share_of_box_at_T0"] or 0) > 0.9:
+            continue
         t = r["target_mass_shift_h8_in_oracle_sd"]
         print(f"| {tag} | " + " | ".join(f"{t[c][0]:+.1f} ({t[c][1]:+.1f})" for c in ("none", "blind", "feed", "starve")) + " |")
+    print("\n### gvh: share of the public-to-oracle gap closed (focus view, state given)")
+    print("| run | truth (pilot) | ignore program | G1 | G2 | G3 | G4 | H | H fit (lam, rho, DX) |")
+    gv = {}
+    for f in sorted(glob.glob(os.path.join(HERE, "results", "gvh_*.json"))):
+        d = json.load(open(f))
+        sh = d["share_of_pub_to_O_gap"]
+        gv[os.path.basename(f)] = {"truth_pilot": d["truth_pilot"], "n_lab": d["n_lab"], "seed": d["seed"],
+                                   "n_test_items": d["n_test_items"], "share": sh, "L": d["L"], "H_fit": d["H_fit"]}
+        cell = lambda k: f"{sh[k]['value']:+.2f} ± {sh[k]['se_members']:.2f}" if k in sh else "n/a"   # noqa: E731
+        hf = d["H_fit"]
+        print(f"| {os.path.basename(f)} | {d['truth_pilot']} | " + " | ".join(cell(k) for k in ("pub0", "G1", "G2", "G3", "G4", "H")) +
+              f" | {hf['lam']}, {hf['rho']}, {hf['DX']} |")
+    rows["_gvh"] = gv
+    json.dump(rows, open(os.path.join(HERE, "results", "table.json"), "w"), indent=1)
 
 
 if __name__ == "__main__":
