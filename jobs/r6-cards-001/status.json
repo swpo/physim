@@ -28,7 +28,7 @@
   "cap_usd": 11.4,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.6341
+    "conservative_usd": 0.7549
   },
   "guard_at": null,
   "guard_reason": null,
@@ -164,6 +164,12 @@
     }
   ],
   "pods_terminated": null,
+  "review": {
+    "at": "2026-11-11T12:06:26Z",
+    "file": "jobs/r6-cards-001/review.md",
+    "sha256": "7b1a2f9eea2bfeb5b0d2ecff77d02ed70cba1054d3ef665b20aa0dcda567e95d",
+    "summary": "0 blocker, 0 major, 6 minor (2 affect pre-registered gates: tick share fixable offline, response difference biased low); fine to run"
+  },
   "run_deadline": "2026-11-11T13:47:27Z",
   "run_started_epoch": 1794397419.601971,
   "started_at": "2026-11-11T11:47:27Z",
