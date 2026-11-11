@@ -73,12 +73,16 @@ Budgets, all enforced before anything runs (a rejected command costs nothing):
   present, so this cost is exactly how distinguishable your action is from no action.) The exam's own test
   programs obey the same per-tick and per-episode caps.
 - The same label gives the same hidden start again, with fresh noise afterwards. You cannot replay noise.
+- One call carries at most {lab_body_mib} MiB (a larger one is refused with HTTP 413 and nothing runs), and the laboratory
+  serves at most {lab_active} calls of yours at once (beyond that: HTTP 503, nothing runs; try again).
 
 **Every reply of `physim2.Lab` is saved for you.** The client appends each reply, with its full arrays, to
 `/workspace/lab_log.jsonl`: one JSON object per line with the time, the operation, its arguments and the result
 (or the error). Real observations cost budget and cannot be asked for twice: read them back from that file
 (`physim2.Lab.read_log()` returns the list) instead of printing them. Calls you make through the tool `lab_call`
-directly are not written there; they exist in your conversation only.
+directly are not written there; they exist in your conversation only. If the client cannot write a reply to the file
+(for example when `/workspace` is full), it says so on standard error and the reply is not saved; `lab.usage()`
+then reports `lab_log_failures` above zero.
 
 **Simulate the public law yourself**, with any parameters and your own noise, as much as your compute allows:
 
@@ -149,7 +153,7 @@ lab.submit("submission")     # validates; if that passes, takes the copy that is
 `lab.validate` tests the predictor as it will be graded: from a clean copy of `submission/` alone (regular files
 only, read-only, at another path), next to the original `physim2` package (a file you changed in `physim2/` makes
 the check fail; one you added there is left out), as an unprivileged user that cannot read `/workspace` nor
-anything this box already holds in `/tmp` or `/dev/shm`. A predictor that loads a file from outside its own
+anything this box already holds in `/tmp`, `/dev/shm`, `/etc/physim2` or `/runtime`. A predictor that loads a file from outside its own
 directory fails here, as it would fail in grading. Its reply says so again.
 You can also run `python -m physim2.validate submission` yourself, as often as you like; started by you the
 predictor runs with your rights and can still read `/workspace`, so only `lab.validate` proves that it will run

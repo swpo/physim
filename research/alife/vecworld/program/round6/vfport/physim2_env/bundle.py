@@ -32,7 +32,9 @@ import zipfile
 
 import numpy as np
 
+from . import bearer as BEARER
 from . import profiles as PROFILES
+from .spend import PER_MESSAGE as SPEND_PER_MESSAGE, SLACK as SPEND_SLACK   # X17: the context bound's own constants
 from ._paths import HERE, PUBLIC, config_path, use_agentenv
 
 DROPPED = ["wire.py"]
@@ -75,7 +77,32 @@ def file_groups(names) -> list[dict]:
             raise ValueError(f"a file of the bundle belongs to no group: {nm}")
     return [r for r in out if r["files"]]
 BASELINE = "baseline_predict.py"                             # shipped as submission/predict.py
-TOOL_OUTPUT_MAX_BYTES = 20_000                               # verifiers harnesses/utils/compaction.py:18 (the stock bash harness)
+
+
+def harness_constants() -> dict:
+    """Round 5 (X13, and the disclosure sweep): what the stock `bash` harness of verifiers does to the agent, read from
+    ITS OWN SOURCE, never typed here: the per-command limit (harnesses/utils/core.py, run_bash: subprocess.run(...,
+    timeout=N); the harness has no parameter for it) and the cut of a tool result (harnesses/utils/compaction.py,
+    TOOL_OUTPUT_MAX_BYTES). The files are parsed, not imported (they import the model SDK). Raises if either is not
+    found exactly once: a statement is not rendered with a guessed number."""
+    import ast
+    import importlib.util
+    spec = importlib.util.find_spec("verifiers")
+    if spec is None or not spec.submodule_search_locations:
+        raise RuntimeError("verifiers is not installed: the harness's limits cannot be read")
+    base = os.path.join(list(spec.submodule_search_locations)[0], "v1", "harnesses", "utils")
+    core = ast.parse(open(os.path.join(base, "core.py")).read())
+    fn = [n for n in core.body if isinstance(n, ast.FunctionDef) and n.name == "run_bash"]
+    tos = [kw.value.value for f in fn for c in ast.walk(f) if isinstance(c, ast.Call) for kw in c.keywords
+           if kw.arg == "timeout" and isinstance(kw.value, ast.Constant)]
+    comp = ast.parse(open(os.path.join(base, "compaction.py")).read())
+    cut = [n.value.value for n in comp.body if isinstance(n, ast.Assign) and isinstance(n.value, ast.Constant)
+           and any(getattr(t, "id", None) == "TOOL_OUTPUT_MAX_BYTES" for t in n.targets)]
+    if len(tos) != 1 or len(cut) != 1 or not all(isinstance(v, int) and v > 0 for v in (tos[0], cut[0])):
+        raise RuntimeError(f"the stock bash harness's limits were not found once each in its source ({tos}, {cut})")
+    return {"command_limit_s": int(tos[0]), "tool_output_max_bytes": int(cut[0]), "source": "verifiers v1 harnesses/utils (core.py run_bash, compaction.py)"}
+
+
 ITEM_PROCESSES = 256                                         # the driver's RLIMIT_NPROC per item (public/_item.py, run.pre)
 _CACHE: dict = {}
 _POOLS: dict = {}
@@ -182,10 +209,27 @@ def default_run(world: str, config_name: str, limits: dict | None = None) -> dic
         caps = BOXCAPS.box_caps(memory_gb=lim.get("box_memory_gb"))
         run.update(cpus=caps.get("cpus", run["cpus"]), memory_gib=caps.get("memory_gb", run["memory_gib"]), pids=caps.get("pids"),
                    workspace_mib=caps.get("workspace_mib"), tmp_mib=caps.get("scratch_mib"), shm_mib=caps.get("shm_mib"),
-                   read_only_root=caps.get("read_only_root"))
+                   read_only_root=caps.get("read_only_root"), exam_places=exam_places(caps))
     except Exception:
         pass
+    run.update(harness_constants())                          # X13: the stock bash harness's own numbers
     return run
+
+
+def exam_places(caps: dict) -> list:
+    """[(path, MiB)] of the writable places of a box that hold the exam's own files (X15): every tmpfs of the caps
+    but /workspace and /tmp, with the size its mount options give."""
+    out = []
+    for path, opts in (caps.get("tmpfs") or {}).items():
+        if path in ("/workspace", "/tmp"):
+            continue
+        size = [o.split("=", 1)[1] for o in opts.split(",") if o.startswith("size=")]
+        mib = None
+        if size and size[0][:-1].isdigit():
+            n, unit = int(size[0][:-1]), size[0][-1].lower()
+            mib = n * 1024 if unit == "g" else n if unit == "m" else n / 1024 if unit == "k" else None
+        out.append((path, mib))
+    return out
 
 
 def item_limits(run: dict, cfg: dict) -> dict:
@@ -208,6 +252,7 @@ def card_envelope(run: dict) -> dict:
             "workspace_mib": run.get("workspace_mib"), "tmp_mib": run.get("tmp_mib"), "shm_mib": run.get("shm_mib"),
             "read_only_root": run.get("read_only_root"), "gpu": False, "wall_minutes": run.get("wall_minutes"),
             "max_turns": run.get("max_turns"), "measured": bool(run.get("measured")),
+            "bash_command_max_seconds": run.get("command_limit_s"), "tool_result_max_bytes": run.get("tool_output_max_bytes"),
             "source": "this run: TASK.md section 4 (exam.json holds the profile's defaults)"}
 
 
@@ -232,12 +277,32 @@ def limits_block(run: dict) -> str:
     if run.get("max_output_tokens_per_turn"):
         L.append(f"- **One reply: at most {int(run['max_output_tokens_per_turn'])} tokens**, your reasoning included. A reply that is "
                  "cut at this length loses the tool call it was writing.")
+    cmd_s, cut = run.get("command_limit_s"), run.get("tool_output_max_bytes")
+    if cmd_s:                                                # X13 (round 5): rendered from the harness's own source
+        wall_s = 60.0 * float(run["wall_minutes"])
+        than = ("as long as this whole run or longer" if cmd_s >= wall_s else f"{_g(cmd_s / 60.0)} minutes")
+        L.append(f"- **One command holds you until it returns.** The `bash` tool runs each command to its end before you get your "
+                 f"next turn, for up to {int(cmd_s):,} seconds ({than}). While it runs you cannot act, and the wall clock keeps "
+                 "running: a command still running when the run's time is up is never answered. A command that passes "
+                 f"{int(cmd_s):,} seconds is killed and its result is an error message; its output is lost. For anything long, "
+                 "give it a limit of its own (`timeout 300 python fit.py`), or start it in the background with ALL its output "
+                 "sent to a file and look at that file in later turns (`nohup python fit.py > fit.log 2>&1 &`; a background "
+                 "job that still writes to the command's own output keeps the command waiting until the job ends).")
+    if cut:
+        L.append(f"- **What a command returns:** its standard output, then its standard error, not its exit status (add "
+                 f"`; echo EXIT=$?` if you need it). A result longer than {int(cut):,} bytes keeps only its first {int(cut) // 2:,} "
+                 f"and its last {int(cut) // 2:,} bytes, with a note of how many were cut in between. Output that is not valid "
+                 "UTF-8 turns the whole result into an error message.")
     c = run.get("max_context_tokens")
-    tail = f"a tool result longer than {TOOL_OUTPUT_MAX_BYTES:,} bytes is cut"
+    tail = (f"a tool result longer than {int(cut):,} bytes is cut" if cut else "a long tool result is cut")
     if c:
         L.append(f"- **Context: {int(c):,} tokens.** Every turn sends the whole conversation again; nothing shortens or summarises "
-                 f"it for you, and {tail}. If your next turn could exceed {int(c):,} tokens, the run ends before that turn. "
-                 "Keep tool output short: write data to files and print summaries.")
+                 f"it for you, and {tail}. Before each turn the operator bounds its size from above: the tokens the provider "
+                 "counted for your previous turn, plus ONE TOKEN FOR EVERY BYTE added since (your last reply and the tool "
+                 f"results), plus {SPEND_PER_MESSAGE} per message and {SPEND_SLACK}. If that bound exceeds {int(c):,}, the run ends "
+                 "before the turn. So the run can end while `lab.usage()` still reports `context_tokens_left` above zero (that "
+                 "number is the provider's count of your last turn, not this bound). Keep tool output short: write data to files "
+                 "and print summaries.")
     else:
         L.append(f"- **Context:** every turn sends the whole conversation again and nothing shortens or summarises it; it must fit "
                  f"your model's context window, and {tail}.")
@@ -262,9 +327,13 @@ def limits_block(run: dict) -> str:
         places = [x for x in ((f"`/workspace` ({_g(ws)} MiB)" if ws else ""), (f"`/tmp` ({_g(tmp)} MiB)" if tmp else ""),
                               (f"`/dev/shm` ({_g(shm)} MiB)" if shm else "")) if x]
         disk = "you can write to " + (", ".join(places[:-1]) + " and " + places[-1] if len(places) > 1 else places[0])
-        disk += (" and nowhere else (the rest of the file system is read-only, your home directory included)" if run.get("read_only_root")
-                 else "")
         disk += "; they are kept in memory, so what you write there also counts against the box's memory, and a full one answers `No space left on device`"
+        ex = [f"`{pth}` ({_g(mib)} MiB)" if mib else f"`{pth}`" for pth, mib in (run.get("exam_places") or [])]
+        if ex:                                               # X15 (round 5): root can write there too; say so and what they are
+            disk += ("; " + " and ".join(ex) + " are writable too, but they hold the operator's files for this run (the "
+                     "laboratory's address and the exam's own files): leave them alone, they are not graded, and in grading your "
+                     "predictor finds nothing of yours there")
+        disk += ("; the rest of the file system is read-only, your home directory included" if run.get("read_only_root") else "")
     else:
         disk = "no disk quota of its own (it shares the operator's disk: keep what you write under about 2 GiB)"
     L.append(f"- **This box:** {cpus}, {mem}, no GPU, {pids}; {disk}. No network except the laboratory."
@@ -308,7 +377,8 @@ def statement(world: str, config_name: str, run: dict | None = None) -> str:
         pred_wall=cfg["predictor"]["wall_seconds"], pred_mem=_g(item_limits(run, cfg)["memory_gib"]), pred_procs=ITEM_PROCESSES,
         item_scratch=item_scratch(item_limits(run, cfg)), checkpoint_s=_g(run.get("checkpoint_seconds") or 30),
         artifact_mib=cfg["predictor"]["artifact_mib"], max_attempts=cfg["validation"]["max_attempts"],
-        baseline_episodes=PROFILES.BASELINE_EPISODES, limits_block=limits_block(run))
+        baseline_episodes=PROFILES.BASELINE_EPISODES, limits_block=limits_block(run),
+        lab_body_mib=_g(BEARER.MAX_BODY / (1 << 20)), lab_active=BEARER.MAX_ACTIVE)
     with open(os.path.join(HERE, "TASK.md.tmpl")) as f:
         return f.read().format(**vals)
 

@@ -168,8 +168,45 @@ def main():
     check("statement (X1): section 4 says that after an error the last copy taken while the run was alive is graded, with the period of the run",
           "the last copy the operator\ntook while the run was alive" in md.replace("operator took", "operator\ntook")
           and "every 30 seconds" in md.replace("\n", " "), snippet=md[md.find("How the run ends"):md.find("How the run ends") + 700])
-    check("statement (X6/E9): section 6 says the check uses the original package and closes /tmp and /dev/shm as well as /workspace",
-          "next to the original `physim2` package" in md and "`/tmp` or `/dev/shm`" in md)
+    check("statement (X6/E9, X16): section 6 says the check uses the original package and closes /tmp, /dev/shm, /etc/physim2 and /runtime "
+          "as well as /workspace", "next to the original `physim2` package" in md and "`/tmp`, `/dev/shm`, `/etc/physim2` or `/runtime`" in md)
+    # ---- round 5: X13, X15, X17 and the disclosure sweep: numbers rendered from the code that enforces them ----
+    import ast
+    hc = BUNDLE.harness_constants()
+    import importlib.util
+    core_src = open(os.path.join(list(importlib.util.find_spec("verifiers").submodule_search_locations)[0], "v1", "harnesses", "utils", "core.py")).read()
+    check("statement (X13): the per-command limit is read from the stock harness's run_bash (3600 s today) and the tool-result cut from "
+          "compaction.py (20,000 bytes); the harness has no parameter for the first",
+          hc["command_limit_s"] == 3600 and hc["tool_output_max_bytes"] == 20000 and "timeout=3600" in core_src
+          and "def run_bash(command: str) -> str:" in core_src, constants=hc)
+    sec4 = md.split("## 4.")[1].split("## 5.")[0]
+    check("statement (X13): section 4 says one command holds the agent until it returns, for up to 3,600 s (here longer than the 45-minute "
+          "run), that the clock runs meanwhile, and how to avoid it (timeout; a background job with its output in a file)",
+          "One command holds you until it returns" in sec4 and "3,600 seconds (as long as this whole run or longer)" in sec4
+          and "`timeout 300 python fit.py`" in sec4 and "`nohup python fit.py > fit.log 2>&1 &`" in sec4, snippet=sec4[:1600])
+    md60 = BUNDLE.statement("ring", "ring_r4", dict(run, wall_minutes=180.0))
+    mds = BUNDLE.statement("ring", "ring_r4", dict(run, command_limit_s=None, tool_output_max_bytes=None))
+    check("statement (X13): a 180-minute run is told the limit in minutes (60); a run of another harness (a script) gets no such line",
+          "for up to 3,600 seconds (60 minutes)" in md60 and "One command holds you" not in mds)
+    check("statement (sweep): what a command returns: stdout then stderr, no exit status, the cut keeps the first and last 10,000 bytes, "
+          "non-UTF-8 output becomes an error", "its standard output, then its standard error, not its exit status" in sec4
+          and "keeps only its first 10,000 and its last 10,000 bytes" in sec4 and "not valid UTF-8" in sec4)
+    mdc = BUNDLE.statement("ring", "ring_r4", dict(run, max_context_tokens=200000))
+    from physim2_env import spend as SPEND
+    check("statement (X17): the context stop counts one token per byte added since the last turn, plus the meter's own per-message and slack "
+          "constants, and says context_tokens_left can be above zero when it ends the run",
+          f"plus {SPEND.PER_MESSAGE} per message and {SPEND.SLACK}" in mdc and "ONE TOKEN FOR EVERY BYTE added since" in mdc
+          and "`context_tokens_left` above zero" in mdc)
+    check("statement (X15): section 4 names /etc/physim2 and /runtime as writable, with their sizes from the box caps, and no longer says "
+          "`nowhere else`", "`/etc/physim2` (1 MiB) and `/runtime` (16 MiB) are writable too" in sec4 and "nowhere else" not in sec4)
+    from physim2_env import bearer as BEARER_
+    check("statement (sweep): section 3 states the laboratory's own limits of one call (4 MiB) and of calls at once (8), from bearer.py, "
+          "and the client's notice when its log cannot be written (X14)",
+          f"One call carries at most {BEARER_.MAX_BODY >> 20} MiB" in md and f"at most {BEARER_.MAX_ACTIVE} calls of yours at once" in md.replace("\n  ", " ")
+          and "`lab_log_failures`" in md)
+    env5 = BUNDLE.card_envelope(dict(run, **hc))
+    check("card (X13): lab.card()'s envelope carries the per-command limit and the tool-result cut",
+          env5["bash_command_max_seconds"] == 3600 and env5["tool_result_max_bytes"] == 20000, envelope=env5)
     check("tripwires: nothing in this run tried to start, remove, move or change anything", TW.hits == [], hits=TW.hits[:5])
     out = {"tool": "tests/exam_pure.py", "where": "the worker, under tools/tripwires.py", "n_checks": len(CHECKS), "n_passed": sum(c["ok"] for c in CHECKS),
            "failed": [c["check"] for c in CHECKS if not c["ok"]], "tripwire_names": len(TW.names), "tripwire_hits": TW.hits, "checks": CHECKS}

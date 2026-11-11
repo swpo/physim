@@ -30,6 +30,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import sys
 import time
 import urllib.error
 import urllib.request
@@ -71,6 +72,7 @@ class Lab:
             raise LabError(f"no laboratory address: PHYSIM2_LAB is not set and {ADDRESS_FILE} does not exist")
         self.timeout = timeout
         self._n = 0
+        self.log_failures = 0                                # round 5 (X14): replies this client could not write to the log
         self._http = urllib.request.build_opener(urllib.request.ProxyHandler({}))   # the address is a direct route
         self.log_path = LOG
         try:                                                 # n_in of this exam, for the argument check of advance/experiment
@@ -85,8 +87,15 @@ class Lab:
             line = json.dumps(dict({"t": round(time.time(), 3), "n": self._n, "op": op, "args": _plain(args), "ok": ok}, **rest))
             with open(self.log_path, "a") as f:
                 f.write(line + "\n")
-        except Exception:                                    # a full disk or a read-only directory never breaks a call
-            pass
+        except Exception as e:                               # a full disk never breaks a call, but it is said (round 5, X14)
+            self.log_failures += 1
+            if self.log_failures == 1 or self.log_failures % 50 == 0:
+                try:
+                    sys.stderr.write(f"physim2.Lab: this reply ({op}) could NOT be saved to {self.log_path} ({type(e).__name__}: "
+                                     f"{str(e)[:80]}); {self.log_failures} replies of this client are missing from the log\n")
+                    sys.stderr.flush()
+                except Exception:
+                    pass
 
     @staticmethod
     def read_log(path: str | None = None) -> list:
@@ -177,7 +186,10 @@ class Lab:
         return self._call("card")
 
     def usage(self) -> dict:
-        return self._call("usage")
+        rep = self._call("usage")
+        if isinstance(rep, dict):
+            rep["lab_log_failures"] = self.log_failures      # X14: replies of THIS client that could not be saved
+        return rep
 
     def reset(self, label) -> np.ndarray:
         """Start a new episode at the hidden start named `label` (a name, not a seed: the same label
@@ -198,7 +210,7 @@ class Lab:
     def validate(self, path: str = "submission") -> dict:
         """Format, limits and reproducibility on two public example requests, run in this box the way the grader
         will run your predictor: from a clean copy of the directory alone, next to the original physim2 package,
-        as an unprivileged user that cannot read /workspace nor what this box already holds in /tmp and /dev/shm
+        as an unprivileged user that cannot read /workspace nor what this box already holds in /tmp, /dev/shm, /etc/physim2, /runtime
         (physim2/validate.py). The laboratory starts the check and returns its report; you can also run
         `python -m physim2.validate <path>` yourself, without the laboratory (then with your rights)."""
         from . import validate as V

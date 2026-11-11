@@ -14,7 +14,7 @@ a clean copy of the submission ALONE, in a temporary directory next to a copy of
 MANIFEST.json lists it (a file you changed or removed in physim2/ makes the check fail and is named; a file you
 added there is not copied), and, when the laboratory started it (lab.validate, lab.submit), as the box's
 unprivileged user while /workspace is closed to that user (its mode is 0700 for the seconds the check runs, and
-is put back afterwards) and so is every entry already in /tmp and /dev/shm (their "other" rights are taken away
+is put back afterwards) and so is every entry already in /tmp, /dev/shm, /etc/physim2 and /runtime (their "other" rights are taken away
 and given back afterwards; both places stay writable, as they are in grading). A predictor that reads a file
 outside its own directory, or that names its own files by an absolute path below /workspace, fails here as it
 would fail in grading: load your files relative to predict.py.
@@ -53,7 +53,8 @@ ROUTE_VAR, ROUTE_VALUE = "PHYSIM2_BOX_CLEANUP", "disposable-box"      # set by t
 GRADED_WHERE = ("Grading happens in a fresh container that holds only submission/ (read-only, at /workspace/submission), TASK.md and "
                 "the original physim2 package: nothing else you wrote exists there, and there is no laboratory and no network. ")
 AS_GRADED = ("This check ran your predictor the same way: from a clean copy of the directory alone, next to the original physim2 "
-             "package, as an unprivileged user that could not read /workspace, nor anything this box already held in /tmp or /dev/shm.")
+             "package, as an unprivileged user that could not read /workspace, nor anything this box already held in /tmp, /dev/shm, "
+             "/etc/physim2 or /runtime.")
 NOT_AS_GRADED = ("This check ran your predictor from a clean copy of the directory alone but with YOUR rights: it could still read "
                  "/workspace. Only lab.validate(...) proves that it runs where it is graded.")
 
@@ -119,7 +120,9 @@ def copy_package(workspace: str, dst: str) -> None:
 # what the agent left. For the seconds of the check every entry already in them is closed to other users
 # (its mode loses r, w and x for "others"), and is given its mode back afterwards. The places stay writable, as
 # they are in grading. (/workspace itself is closed as a whole, below.)
-SCRATCH_PLACES = ("/tmp", "/dev/shm")
+# Round 5 (exam audit X16): also the exam's own places of the box, /etc/physim2 and /runtime, which root can write
+# to: a grading box has its own files there, never the agent's (the check itself runs as root and is not affected).
+SCRATCH_PLACES = ("/tmp", "/dev/shm", "/etc/physim2", "/runtime")
 
 
 def close_entries(places, keep=()) -> list:
@@ -285,7 +288,7 @@ def check(path="submission", decl: dict | None = None, workspace: str = WORKSPAC
     tmp = tempfile.mkdtemp(prefix="physim2-validate-")
     # Started by the laboratory (root, route variable): the predictor will run as the box's unprivileged user, and
     # for that user /workspace is closed while the check runs, as it does not exist where the predictor is graded;
-    # so is every entry the box already holds in /tmp and /dev/shm (SCRATCH_PLACES), which are empty in grading.
+    # so is every entry the box already holds in SCRATCH_PLACES, which in grading are empty or hold the exam's own files.
     hide = os.geteuid() == 0 and os.environ.get(ROUTE_VAR) == ROUTE_VALUE
     mode, closed, scratch_closed = None, [], False
     try:
@@ -334,4 +337,8 @@ def check(path="submission", decl: dict | None = None, workspace: str = WORKSPAC
 
 
 if __name__ == "__main__":
-    print(json.dumps(check(sys.argv[1] if len(sys.argv) > 1 else "submission"), indent=1, default=str))
+    _rep = check(sys.argv[1] if len(sys.argv) > 1 else "submission")
+    if not _rep.get("as_graded"):                            # round 5 (X16): say it first, where it cannot be missed
+        print("NOTE: run by you, this check is NOT the check as graded (your predictor ran with your rights and could read "
+              "/workspace). Run lab.validate(\"submission\") (or the tool op validate) for the check as graded.")
+    print(json.dumps(_rep, indent=1, default=str))

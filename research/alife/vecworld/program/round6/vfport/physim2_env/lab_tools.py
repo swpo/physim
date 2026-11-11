@@ -268,7 +268,7 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         observations, row 0 is o(0).
         op "validate": {"path": "submission"} -> runs your predictor in your box the way the grader will (a clean
         copy of submission/ alone, next to the original physim2 package, an unprivileged user that cannot read
-        /workspace nor what the box already holds in /tmp and /dev/shm; format, limits, same seed -> same
+        /workspace nor what the box already holds in /tmp, /dev/shm, /etc/physim2 and /runtime; format, limits, same seed -> same
         samples; no accuracy feedback) and returns the report.
         op "submit": {"path": "submission"} -> the same check; if it passes, submission/ is frozen as it is now,
         the laboratory closes and YOUR RUN ENDS ("accepted": true). If it fails nothing is frozen and the

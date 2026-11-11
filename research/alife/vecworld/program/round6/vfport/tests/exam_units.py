@@ -230,7 +230,10 @@ def part_bundle():
           other.stdout.split() == [info["baseline"]["pool_sha256"], info["baseline"]["files"]["pool.npz"]], out=other.stdout[-200:], err=other.stderr[-300:])
     md = info["task_md"]
     for needle in ("**Turns: at most 150.**", "**Wall-clock time: 60 minutes**", "2 CPU cores, 4 GiB of memory",
-                   "at most 512 processes and threads", "`/workspace` (1024 MiB), `/tmp` (512 MiB) and `/dev/shm` (64 MiB) and nowhere else",
+                   "at most 512 processes and threads", "`/workspace` (1024 MiB), `/tmp` (512 MiB) and `/dev/shm` (64 MiB); they are kept in memory",
+                   "`/etc/physim2` (1 MiB) and `/runtime` (16 MiB) are writable too", "One command holds you until it returns",
+                   "for up to 3,600 seconds (as long as this whole run or longer)", "its first 10,000 and its last 10,000 bytes",
+                   "One call carries at most 4 MiB", "`lab_log_failures`",
                    "4 GiB of memory and 256 processes and threads", "`/dev/shm` (64 MiB), which are empty at the start of every item",
                    "Whatever is in `submission/` at the moment your run ends is graded", "the same 3 hidden numbers",
                    "/workspace/lab_log.jsonl", "A failed item is scored with the baseline's forecast", "an integer T for T ticks without input",
@@ -535,6 +538,30 @@ def part_validate(raw):
     modes_after = {p: S.S_IMODE(os.lstat(p).st_mode) for p in modes_before}
     check("6 validate (X6): the entries of /tmp and /dev/shm, and the two places, have their modes back afterwards", modes_after == modes_before,
           before={k: oct(v) for k, v in modes_before.items()}, after={k: oct(v) for k, v in modes_after.items()})
+    # ---- round 5 (exam audit X16): what root left in the exam's own places, /runtime and /etc/physim2, is absent in grading ----
+    os.makedirs("/runtime", exist_ok=True)
+    np.save("/runtime/agent_model.npy", np.zeros(3))
+    np.save("/etc/physim2/agent_model.npy", np.zeros(3))
+    for f in ("/runtime/agent_model.npy", "/etc/physim2/agent_model.npy"):
+        os.chmod(f, 0o644)
+    m16 = {p: S.S_IMODE(os.lstat(p).st_mode) for p in ("/runtime/agent_model.npy", "/etc/physim2/agent_model.npy", "/etc/physim2/predictor_uid")}
+    for name, line in (("x16rt", "np.load('/runtime/agent_model.npy')"), ("x16etc", "np.load('/etc/physim2/agent_model.npy')")):
+        os.makedirs(os.path.join(ws, name))
+        open(os.path.join(ws, name, "predict.py"), "w").write(
+            "import numpy as np\n\ndef predict(history, program, queries, n_samples, seed):\n"
+            f"    {line}\n"
+            "    return {1: np.zeros((n_samples, 5, 6)), 2: np.zeros((n_samples, 2, 3))}\n")
+    reps16 = {n: lab_route(n) for n in ("x16rt", "x16etc")}
+    hands16 = {n: by_hand(n) for n in ("x16rt", "x16etc")}
+    m16_after = {p: S.S_IMODE(os.lstat(p).st_mode) for p in m16}
+    check("6 validate (X16): predictors that read a file root left in /runtime or /etc/physim2 FAIL through the laboratory's route (as in "
+          "grading); by hand they pass with the reply saying that proves nothing; the modes are back afterwards",
+          all(r.get("ok") is False and r.get("stage") == "example 0" for r in reps16.values())
+          and all(h.get("ok") is True and h.get("as_graded") is False for h in hands16.values()) and m16_after == m16,
+          reps={n: {k: str(r.get(k))[:160] for k in ("ok", "stage", "error")} for n, r in reps16.items()},
+          hands={n: {k: h.get(k) for k in ("ok", "as_graded")} for n, h in hands16.items()}, modes=[m16, m16_after])
+    for f in ("/runtime/agent_model.npy", "/etc/physim2/agent_model.npy"):
+        os.unlink(f)
     rep = lab_route("abs")
     check("6 validate (X6): an added physim2/ file alone does not fail an honest predictor (it is left out of the copy)",
           rep.get("ok") is True and rep.get("as_graded") is True, rep={k: str(rep.get(k))[:200] for k in ("ok", "stage", "error")})

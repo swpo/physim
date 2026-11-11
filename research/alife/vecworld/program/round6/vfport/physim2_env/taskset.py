@@ -395,7 +395,11 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                "cpus": getattr(runtime.config, "cpu", None), "memory_gib": getattr(runtime.config, "memory", None),
                "pids": None, "workspace_mib": None, "tmp_mib": None, "shm_mib": None, "read_only_root": None, "lab_counts_turns": True,
                "measured": False, "harness": str(getattr(harness, "id", None) or "?")[:40],
-               "checkpoint_seconds": self.config.checkpoint_seconds}
+               "checkpoint_seconds": self.config.checkpoint_seconds, "exam_places": declared.get("exam_places")}
+        # round 5 (X13): the stock bash harness's own per-command limit and cut of a tool result, read from its source;
+        # another harness (a script) gets neither line
+        bash = getattr(harness, "id", None) == "bash"
+        run.update({k: (v if bash else None) for k, v in BUNDLE.harness_constants().items() if k != "source"})
         try:
             r = await runtime.run(["sh", "-c", MEASURE], {})
             box = parse_box(r.stdout) if r.exit_code == 0 else None

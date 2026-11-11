@@ -63,7 +63,8 @@ ADDRESS_FILE = "/etc/physim2/lab.json"
 
 async def collect_frozen(runtime, artifacts, transport_bytes: int, max_mib: float) -> dict:
     """Stock collection, then the freeze rules on the worker. Never raises: a submission that cannot be
-    collected or frozen is recorded as absent, and the grader scores it as K."""
+    collected or frozen is recorded as absent, and the grader scores every item with the null policy's forecast
+    (round 5, X12: not climatology K)."""
     workdir = str(getattr(runtime.config, "workdir", None) or "/").rstrip("/")
     root = f"{workdir}/{artifacts[0].source}" if not artifacts[0].source.startswith("/") else artifacts[0].source
     try:
