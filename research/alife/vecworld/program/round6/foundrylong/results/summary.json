@@ -1,0 +1,790 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "study": "foundrylong",
+ "round": 6,
+ "declared": "DECLARED.md (commit 2ab6e7bb, before any request); deviations and addenda 1-3 in DEVIATIONS.md",
+ "jobs": {
+  "r6-foundrylong-001": {
+   "stage": 1,
+   "billed_usd": 4.92,
+   "run_hours": 2.355,
+   "source": "origin/gpu-jobs:jobs/r6-foundrylong-001/status.json (billed), out/full/info.json"
+  },
+  "r6-foundrylong-002": {
+   "stage": 2,
+   "billed_usd": null,
+   "source": "origin/gpu-jobs:jobs/r6-foundrylong-002/status.json"
+  }
+ },
+ "stage1": {
+  "source": "results/analysis_stage1.json (make_summary.py on origin/gpu-jobs:jobs/r6-foundrylong-001/out/full/scores.npz)",
+  "n_worlds": 16,
+  "p0_worlds": [
+   64,
+   210,
+   1000
+  ],
+  "c_episodes": [
+   1024,
+   4096,
+   16384
+  ],
+  "S1": {
+   "criterion": "sigma(16 ticks, 32 Lab episodes): SURVIVES if p10 >= 0.15 with all worlds and each left out; CLOSED if p90 < 0.15 likewise",
+   "verdict": "SURVIVES",
+   "point": 0.218,
+   "p10_all": 0.187,
+   "p90_all": 0.253,
+   "p10_min_leave_one_out": 0.178,
+   "p90_max_leave_one_out": 0.266,
+   "point_range_leave_one_out": [
+    0.205,
+    0.228
+   ],
+   "median_world": 0.199,
+   "null": "FT@32",
+   "C": "C16384",
+   "incomplete": [],
+   "stage2_runs": true
+  },
+  "S1a": {
+   "reading": "at this compute",
+   "gain_last_step_prior_worlds": {
+    "value": 0.114,
+    "se": 0.02,
+    "p10": 0.092,
+    "p90": 0.141
+   },
+   "gain_double_schedule_seed0": 0.003,
+   "gain_reference_last_data_step": {
+    "value": 0.082,
+    "se": 0.012,
+    "p10": 0.068,
+    "p90": 0.098
+   },
+   "lower_bound_after_one_more_step_of_the_null": 0.062,
+   "upper_bound_after_one_more_step_of_C": 0.348
+  },
+  "sigma_by_cell": {
+   "h8_N0": {
+    "point": 0.203,
+    "p10": 0.169,
+    "p90": 0.24,
+    "p10_min_loo": 0.158,
+    "verdict_by_S1_rule": "SURVIVES",
+    "null": "P0w1000"
+   },
+   "h8_N8": {
+    "point": 0.179,
+    "p10": 0.15,
+    "p90": 0.213,
+    "p10_min_loo": 0.139,
+    "verdict_by_S1_rule": "UNDECIDED",
+    "null": "FT@8"
+   },
+   "h8_N32": {
+    "point": 0.157,
+    "p10": 0.132,
+    "p90": 0.185,
+    "p10_min_loo": 0.123,
+    "verdict_by_S1_rule": "UNDECIDED",
+    "null": "FT@32"
+   },
+   "h16_N0": {
+    "point": 0.276,
+    "p10": 0.236,
+    "p90": 0.323,
+    "p10_min_loo": 0.224,
+    "verdict_by_S1_rule": "SURVIVES",
+    "null": "P0w1000"
+   },
+   "h16_N8": {
+    "point": 0.257,
+    "p10": 0.22,
+    "p90": 0.302,
+    "p10_min_loo": 0.208,
+    "verdict_by_S1_rule": "SURVIVES",
+    "null": "FT@8"
+   },
+   "h16_N32": {
+    "point": 0.218,
+    "p10": 0.187,
+    "p90": 0.253,
+    "p10_min_loo": 0.178,
+    "verdict_by_S1_rule": "SURVIVES",
+    "null": "FT@32"
+   },
+   "h32_N0": {
+    "point": 0.369,
+    "p10": 0.321,
+    "p90": 0.424,
+    "p10_min_loo": 0.307,
+    "verdict_by_S1_rule": "SURVIVES",
+    "null": "P0w1000"
+   },
+   "h32_N8": {
+    "point": 0.354,
+    "p10": 0.308,
+    "p90": 0.407,
+    "p10_min_loo": 0.294,
+    "verdict_by_S1_rule": "SURVIVES",
+    "null": "FT@8"
+   },
+   "h32_N32": {
+    "point": 0.297,
+    "p10": 0.26,
+    "p90": 0.338,
+    "p10_min_loo": 0.249,
+    "verdict_by_S1_rule": "SURVIVES",
+    "null": "FT@32"
+   }
+  },
+  "skill": {
+   "C1024": {
+    "8": 0.577,
+    "16": 0.465,
+    "32": 0.356
+   },
+   "C16384": {
+    "8": 0.677,
+    "16": 0.581,
+    "32": 0.508
+   },
+   "C4096": {
+    "8": 0.639,
+    "16": 0.533,
+    "32": 0.439
+   },
+   "D@32": {
+    "8": 0.341,
+    "16": 0.19,
+    "32": 0.022
+   },
+   "D@8": {
+    "8": 0.154,
+    "16": 0.004,
+    "32": -0.23
+   },
+   "Dr@32": {
+    "8": 0.487,
+    "16": 0.352,
+    "32": 0.254
+   },
+   "Dr@8": {
+    "8": 0.462,
+    "16": 0.32,
+    "32": 0.191
+   },
+   "FT@32": {
+    "8": 0.571,
+    "16": 0.455,
+    "32": 0.357
+   },
+   "FT@8": {
+    "8": 0.556,
+    "16": 0.432,
+    "32": 0.328
+   },
+   "Kp": {
+    "8": -0.17,
+    "16": -0.481,
+    "32": -0.886
+   },
+   "P0w1000": {
+    "8": 0.54,
+    "16": 0.421,
+    "32": 0.321
+   },
+   "P0w210": {
+    "8": 0.481,
+    "16": 0.354,
+    "32": 0.226
+   },
+   "P0w64": {
+    "8": 0.41,
+    "16": 0.273,
+    "32": 0.16
+   },
+   "P0x2": {
+    "8": 0.544,
+    "16": 0.424,
+    "32": 0.321
+   },
+   "plugPrior": {
+    "8": -1.194,
+    "16": -2.042,
+    "32": -2.746
+   },
+   "plugTrue": {
+    "8": 1.0,
+    "16": 1.0,
+    "32": 1.001
+   },
+   "plugU0": {
+    "8": 0.907,
+    "16": 0.907,
+    "32": 0.918
+   }
+  },
+  "S3_prior_worlds": {
+   "8": {
+    "s0": {
+     "64": 0.394,
+     "210": 0.29,
+     "1000": 0.203
+    },
+    "steps": [
+     {
+      "frm": 64,
+      "to": 210,
+      "fall": 0.104,
+      "se": 0.025,
+      "reading": "still falling"
+     },
+     {
+      "frm": 210,
+      "to": 1000,
+      "fall": 0.087,
+      "se": 0.017,
+      "reading": "still falling"
+     }
+    ],
+    "doubled_schedule_fall": 0.003
+   },
+   "16": {
+    "s0": {
+     "64": 0.531,
+     "210": 0.39,
+     "1000": 0.276
+    },
+    "steps": [
+     {
+      "frm": 64,
+      "to": 210,
+      "fall": 0.14,
+      "se": 0.029,
+      "reading": "still falling"
+     },
+     {
+      "frm": 210,
+      "to": 1000,
+      "fall": 0.114,
+      "se": 0.02,
+      "reading": "still falling"
+     }
+    ],
+    "doubled_schedule_fall": 0.003
+   },
+   "32": {
+    "s0": {
+     "64": 0.685,
+     "210": 0.555,
+     "1000": 0.369
+    },
+    "steps": [
+     {
+      "frm": 64,
+      "to": 210,
+      "fall": 0.13,
+      "se": 0.049,
+      "reading": "still falling"
+     },
+     {
+      "frm": 210,
+      "to": 1000,
+      "fall": 0.186,
+      "se": 0.039,
+      "reading": "still falling"
+     }
+    ],
+    "doubled_schedule_fall": -0.006
+   }
+  },
+  "S4_reference_data": {
+   "8": {
+    "skill": {
+     "1024": 0.577,
+     "4096": 0.639,
+     "16384": 0.677
+    },
+    "steps": [
+     {
+      "frm": 1024,
+      "to": 4096,
+      "gain": 0.062,
+      "se": 0.006
+     },
+     {
+      "frm": 4096,
+      "to": 16384,
+      "gain": 0.038,
+      "se": 0.004
+     }
+    ],
+    "verdict": "not converged in data (the last step gains more than 0.01 of skill): C is a lower bound"
+   },
+   "16": {
+    "skill": {
+     "1024": 0.465,
+     "4096": 0.533,
+     "16384": 0.581
+    },
+    "steps": [
+     {
+      "frm": 1024,
+      "to": 4096,
+      "gain": 0.069,
+      "se": 0.006
+     },
+     {
+      "frm": 4096,
+      "to": 16384,
+      "gain": 0.048,
+      "se": 0.005
+     }
+    ],
+    "verdict": "not converged in data (the last step gains more than 0.01 of skill): C is a lower bound"
+   },
+   "32": {
+    "skill": {
+     "1024": 0.356,
+     "4096": 0.439,
+     "16384": 0.508
+    },
+    "steps": [
+     {
+      "frm": 1024,
+      "to": 4096,
+      "gain": 0.083,
+      "se": 0.009
+     },
+     {
+      "frm": 4096,
+      "to": 16384,
+      "gain": 0.069,
+      "se": 0.008
+     }
+    ],
+    "verdict": "not converged in data (the last step gains more than 0.01 of skill): C is a lower bound"
+   }
+  },
+  "S5_actions": {
+   "8": {
+    "program": {
+     "value": 0.117,
+     "p05": 0.074,
+     "p95": 0.168
+    },
+    "regional": 0.209,
+    "aimed": 0.129,
+    "blind": 0.013,
+    "verdict": "undecided"
+   },
+   "16": {
+    "program": {
+     "value": 0.115,
+     "p05": 0.077,
+     "p95": 0.16
+    },
+    "regional": 0.206,
+    "aimed": 0.127,
+    "blind": 0.016,
+    "verdict": "undecided"
+   },
+   "32": {
+    "program": {
+     "value": 0.11,
+     "p05": 0.074,
+     "p95": 0.153
+    },
+    "regional": 0.186,
+    "aimed": 0.124,
+    "blind": 0.019,
+    "verdict": "undecided"
+   }
+  },
+  "S2_training_rule": {
+   "P0w1000": {
+    "nets": 3,
+    "steps": 40000,
+    "trained_by_horizon": {
+     "8": 0,
+     "16": 0,
+     "32": 1
+    },
+    "late_gain_max": {
+     "8": 0.011167354871510273,
+     "16": 0.010254108957307327,
+     "32": 0.017986421342916854
+    },
+    "chosen_rates": null
+   },
+   "C16384": {
+    "nets": 32,
+    "steps": 16000,
+    "trained_by_horizon": {
+     "8": 0,
+     "16": 2,
+     "32": 13
+    },
+    "late_gain_max": {
+     "8": 0.03809165489945493,
+     "16": 0.0467191348508141,
+     "32": 0.04610349481636023
+    },
+    "chosen_rates": null
+   },
+   "FT@32": {
+    "nets": 48,
+    "steps": 400,
+    "trained_by_horizon": {
+     "8": 39,
+     "16": 46,
+     "32": 47
+    },
+    "late_gain_max": null,
+    "chosen_rates": {
+     "8": {
+      "5e-05": 39,
+      "0.0002": 8,
+      "0.0008": 1
+     },
+     "16": {
+      "5e-05": 37,
+      "0.0002": 11,
+      "0.0008": 0
+     },
+     "32": {
+      "5e-05": 46,
+      "0.0002": 2,
+      "0.0008": 0
+     }
+    }
+   },
+   "FT@8": {
+    "nets": 48,
+    "steps": 400,
+    "trained_by_horizon": {
+     "8": 48,
+     "16": 48,
+     "32": 48
+    },
+    "late_gain_max": null,
+    "chosen_rates": {
+     "8": {
+      "5e-05": 45,
+      "0.0002": 3,
+      "0.0008": 0
+     },
+     "16": {
+      "5e-05": 46,
+      "0.0002": 0,
+      "0.0008": 2
+     },
+     "32": {
+      "5e-05": 47,
+      "0.0002": 1,
+      "0.0008": 0
+     }
+    }
+   },
+   "D@32": {
+    "nets": 48,
+    "steps": 800,
+    "trained_by_horizon": {
+     "8": 41,
+     "16": 45,
+     "32": 46
+    },
+    "late_gain_max": {
+     "8": 0.055154879535153106,
+     "16": 0.11558268440462027,
+     "32": 0.1401728799975755
+    },
+    "chosen_rates": null
+   },
+   "D@8": {
+    "nets": 48,
+    "steps": 400,
+    "trained_by_horizon": {
+     "8": 40,
+     "16": 45,
+     "32": 46
+    },
+    "late_gain_max": {
+     "8": 0.03791932469941905,
+     "16": 0.8388247231921688,
+     "32": 0.21435109184021514
+    },
+    "chosen_rates": null
+   },
+   "C4096": {
+    "nets": 16,
+    "steps": 8000,
+    "trained_by_horizon": {
+     "8": 4,
+     "16": 7,
+     "32": 14
+    },
+    "late_gain_max": {
+     "8": 0.05317533884147182,
+     "16": 0.03742517617569347,
+     "32": 0.03724527899285181
+    },
+    "chosen_rates": null
+   },
+   "P0w210": {
+    "nets": 3,
+    "steps": 16000,
+    "trained_by_horizon": {
+     "8": 2,
+     "16": 3,
+     "32": 3
+    },
+    "late_gain_max": {
+     "8": 0.028551713624346584,
+     "16": 0.030658408272476713,
+     "32": 0.0
+    },
+    "chosen_rates": null
+   },
+   "P0w64": {
+    "nets": 3,
+    "steps": 6000,
+    "trained_by_horizon": {
+     "8": 3,
+     "16": 3,
+     "32": 3
+    },
+    "late_gain_max": {
+     "8": 0.0,
+     "16": 0.0,
+     "32": 0.9468332615252046
+    },
+    "chosen_rates": null
+   },
+   "C1024": {
+    "nets": 16,
+    "steps": 4000,
+    "trained_by_horizon": {
+     "8": 9,
+     "16": 13,
+     "32": 15
+    },
+    "late_gain_max": {
+     "8": 0.21087056239913868,
+     "16": 0.08865609389398128,
+     "32": 0.0
+    },
+    "chosen_rates": null
+   },
+   "P0x2": {
+    "nets": 1,
+    "steps": 80000,
+    "trained_by_horizon": {
+     "8": 0,
+     "16": 0,
+     "32": 1
+    },
+    "late_gain_max": {
+     "8": 0.009628004216808313,
+     "16": 0.007962959538717727,
+     "32": 0.011450911810326484
+    },
+    "chosen_rates": null
+   }
+  }
+ },
+ "W_cpu_tests": {
+  "w_cpu_seed2027-46.json": {
+   "what": "W predictor at the true / perturbed / another world's weights (test 1)",
+   "skill": {
+    "Kp": [
+     0.266,
+     -0.223,
+     -0.657
+    ],
+    "W_true": [
+     0.85,
+     0.779,
+     0.704
+    ],
+    "W_prior": [
+     -0.489,
+     -0.75,
+     -1.13
+    ],
+    "W_eps0.1": [
+     0.73,
+     0.631,
+     0.531
+    ],
+    "W_eps0.3": [
+     0.505,
+     0.368,
+     0.236
+    ]
+   },
+   "fits": {},
+   "fit_loss_truth": null,
+   "source": "results/w_cpu_seed2027-46.json"
+  },
+  "w_fit1tick_seed2027-46.json": {
+   "what": "fit with the one-tick loss (superseded)",
+   "skill": null,
+   "fits": {
+    "eps0.3_hyper": {
+     "skill_after": [
+      0.523,
+      0.238,
+      -0.02
+     ],
+     "loss_before": 0.236,
+     "loss_after": -0.009
+    },
+    "seed2027-581": {
+     "skill_after": [
+      0.445,
+      0.064,
+      -0.267
+     ],
+     "loss_before": 0.285,
+     "loss_after": 0.014
+    }
+   },
+   "fit_loss_truth": -0.007,
+   "source": "results/w_fit1tick_seed2027-46.json"
+  },
+  "w_fitk16_seed2027-46.json": {
+   "what": "fit with the 16-tick loss from a 30% neighbour (scalars moved too)",
+   "skill": null,
+   "fits": {
+    "eps0.3_hyper": {
+     "skill_after": [
+      0.791,
+      0.676,
+      0.531
+     ],
+     "loss_before": 0.769,
+     "loss_after": 0.249
+    }
+   },
+   "fit_loss_truth": 0.196,
+   "source": "results/w_fitk16_seed2027-46.json"
+  },
+  "w_fitk16_other_seed2027-46.json": {
+   "what": "fit with the 16-tick loss from another screened world",
+   "skill": null,
+   "fits": {
+    "other": {
+     "skill_after": [
+      0.541,
+      0.369,
+      0.138
+     ],
+     "loss_before": 1.246,
+     "loss_after": 0.42
+    }
+   },
+   "fit_loss_truth": 0.196,
+   "source": "results/w_fitk16_other_seed2027-46.json"
+  }
+ },
+ "exam_profile": {
+  "source": "results/cpu_float64.json, results/cpu_float32.json (cpu_part.py, 2 pinned cores of a SHARED 4-core box: lower bounds); GPU rate from origin/gpu-jobs:jobs/r6-foundrylong-001/out/full/info.json",
+  "member_ticks_per_s": {
+   "float64": 124.358,
+   "float32": 235.044,
+   "float64_by_batch": {
+    "1": 124.358,
+    "8": 118.199,
+    "32": 119.881,
+    "128": 107.881
+   },
+   "float32_by_batch": {
+    "1": 140.57,
+    "8": 204.085,
+    "32": 235.044,
+    "128": 201.635
+   },
+   "gpu_A100_float64": 41669
+  },
+  "seconds_per_full_episode_348_ticks": {
+   "float64": 2.798,
+   "float32": 1.481
+  },
+  "full_episodes_per_hour_2_cores": {
+   "float64": 1286,
+   "float32": 2431
+  },
+  "net_ms_per_step_2_cores": {
+   "batch64": 220.51,
+   "batch256": 977.244
+  },
+  "bundle": {
+   "parts_bytes_float32": {
+    "lab_obs_32_episodes": 1204224,
+    "lab_programs_32_episodes": 786432,
+    "item_histories_96": 1253376,
+    "item_programs_96": 1572864,
+    "replicate_futures_96x12x3": 2654208,
+    "climatology_96x3": 221184,
+    "replicate_futures_all_32_ticks_96x12": 28311552
+   },
+   "block_view_npz_ratio": 0.9295997619628906,
+   "public_bytes": 4816896,
+   "sealed_bytes": 2875392,
+   "total_bytes": 7692288,
+   "total_bytes_compressed_estimate": 5075512,
+   "note": "programs are sparse (zero outside 4 ticks) and compress to a few percent; block views are dense floats",
+   "build_member_ticks": {
+    "lab": 11136,
+    "items_history": 30336,
+    "futures": 36864,
+    "climatology": 33408,
+    "total": 111744
+   },
+   "build_seconds_on_2_cores": 898.5636835098267
+  },
+  "reference_rows_member_ticks": {
+   "P0_prior_simulation": 22272000,
+   "screen_15040_draws": 49271040,
+   "C16384_one_world": 5701632,
+   "C4096_one_world": 1425408,
+   "lab_32_episodes": 11136,
+   "oracle_futures_96x12x32": 36864
+  },
+  "reference_rows_hours_on_2_cores_float64": {
+   "P0_prior_simulation": 49.749,
+   "screen_15040_draws": 110.056,
+   "C16384_one_world": 12.736,
+   "C4096_one_world": 3.184,
+   "lab_32_episodes": 0.025,
+   "oracle_futures_96x12x32": 0.082
+  },
+  "reference_rows_hours_on_A100": {
+   "P0_prior_simulation": 0.148,
+   "screen_15040_draws": 0.328,
+   "C16384_one_world": 0.038,
+   "C4096_one_world": 0.01,
+   "lab_32_episodes": 0.0,
+   "oracle_futures_96x12x32": 0.0
+  },
+  "training_hours_on_2_cores": {
+   "P0_40000_steps_batch256_one_seed": 10.858,
+   "C16384_16000_steps_batch128_one_world": 2.662,
+   "FT_cv_one_world_seed_6000_steps_batch64": 0.368
+  },
+  "W_fit_on_2_cores": {
+   "seconds_per_step_16tick_loss_4ep_2members_2anchors": [
+    11.8,
+    14.8
+   ],
+   "source": "w_cpu.py logs of the two 16-tick fits (steps 10 to 40: 355 s / 30 steps; steps 10 to 60: 740 s / 50 steps), quoted in PROGRESS.md",
+   "minutes_200_steps": [
+    39,
+    49
+   ]
+  }
+ }
+}

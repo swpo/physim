@@ -58,6 +58,8 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   gpu-jobs && git show origin/gpu-jobs:jobs/r6-foundrylong-002/status.json. READ jobs/r6-foundrylong-002/review.md BEFORE
   the results. To cancel: push an empty gpu/requests/r6-foundrylong-002.cancel, verify with git ls-tree on origin.
 
+- 21:35: make_final.py (results/summary.json from the analyses; the exam-profile numbers) drafted and run on stage 1.
+
 ## Next step, exactly (stage 2)
 1. When 002 is done: read its review.md; check manifest in_git; git archive origin/gpu-jobs jobs/r6-foundrylong-002/out/full
    to scratch; python -B make_summary2.py <dir> --job r6-foundrylong-002 -> results/analysis_stage2.json; read T1-T6.
