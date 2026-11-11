@@ -55,7 +55,8 @@ a script the agent wrote earlier in the trace) calls `.reset(`, `.advance(` or `
 `build_world(`; `write` = a here-document into a file, a redirect, cp, mv, mkdir, tee, sed -i, or the edit tool;
 `read` = cat, head, tail, ls, find, grep, wc and the like, or Python of at most 20 lines without def, loop, scipy
 or linalg (it only inspects); `compute` = other Python; `network` = see the flag. A call of the laboratory tool
-(`lab_call`) is classed by its `op`.
+(`lab_call`) is classed by its `op`. With `--lab-record`, a turn in which the laboratory logged a request gets
+that kind even when the call is not visible in the agent's text (a script written by a program), and says so.
 
 Class of the inputs of a laboratory request:
 
@@ -100,7 +101,7 @@ agent's last write to `predict.py` in the trace, or `--submission`).
 
 ## Checked
 
-`python -B rollouts/tools/test_rollout_report.py` (38 checks, under a second, no model):
+`python -B rollouts/tools/test_rollout_report.py` (40 checks, about a second, no model):
 
 - **Qwen rollout** (`../qwen_ring_001/`): every row's L, skill vs O and vs C, the bootstrap se and ranges, the
   agent's paired differences, tokens (758,132 billed in, 18,888 out), cost ($0.102471; $0.095249 with the
@@ -115,7 +116,8 @@ agent's last write to `predict.py` in the trace, or `--submission`).
 - **Synthetic traces** (made in the test from the Qwen trace; no model has yet used these paths): requests
   through the laboratory tool with zero, structured and blind inputs and a rejection; reads outside the
   workspace; network attempts; a long stretch; a failed model call; a reply without a tool call; two calls in
-  one reply; a predictor that ignores history and program; a graded submission without laboratory use.
+  one reply; a predictor that ignores history and program; a graded submission without laboratory use;
+  laboratory use hidden in a script the trace never shows.
 
 ## The two example reports
 

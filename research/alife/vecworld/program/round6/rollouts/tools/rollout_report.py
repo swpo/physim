@@ -266,13 +266,16 @@ def input_class_static(expr, code):
     if expr in ("None", "[]", "()"):
         return "invalid", "no inputs (" + expr + ")"
     if re.fullmatch(r"[A-Za-z_]\w*", expr):
-        asg = re.findall(rf"(?m)^[ \t]*{expr}[ \t]*(\[[^\n=]*\])?[ \t]*([+\-*/@]?=)(?!=)[ \t]*([^\n]+)", code)
+        asg = re.findall(rf"(?m)(?:^|;)[ \t]*{expr}[ \t]*(\[[^\n=]*\])?[ \t]*([+\-*/@]?=)(?!=)[ \t]*([^\n;]+)", code)
         if not asg:
             return "unknown", f"`{expr}` is not assigned in this code"
         rhs, touched = [a[2].strip() for a in asg], any(a[0] or a[1] != "=" for a in asg)
+        for fn in {m for r in rhs for m in re.findall(r"\b([A-Za-z_]\w*)\s*\(", r)}:      # a helper of the agent's own: read its body too
+            body = re.search(rf"(?ms)^[ \t]*def {fn}\s*\(.*?(?=^[ \t]*def |\Z)", code)
+            rhs += [body.group(0)] if body else []
         if all(re.fullmatch(r"\d+", r) for r in rhs):
             return "zero", f"`{expr}` is an integer: ticks without input"
-        if not touched and all(ZEROS.match(r) for r in rhs):
+        if not touched and all(ZEROS.match(r) and "\n" not in r for r in rhs):
             return "zero", f"`{expr}` = np.zeros(...), never written to"
         if any(RANDOM.search(r) for r in rhs):
             return "blind", f"`{expr}` is built from a random generator"
@@ -497,6 +500,12 @@ def timeline(tr, lab_log, sigma, reset_cost):
             if mine:
                 t["lab_record"] = {"requests": len(mine), "ticks": sum(x["ticks"] for x in mine), "nats": round(sum(x["nats"] for x in mine), 4),
                                    "rejected": sum(not x["ok"] for x in mine), "ops": {o: sum(x["op"] == o for x in mine) for o in dict.fromkeys(x["op"] for x in mine)}}
+                logged = {{"validate": "validate", "submit": "submit", "card": "lab-info", "usage": "lab-info"}.get(x["op"], "lab") for x in mine}
+                mine_rows = [r for r in rows if r["turn"] == t["turn"] and r["tool"]]
+                missing = logged - {k for r in mine_rows for k in r["kinds"]} - ({"lab-info"} if "lab" in logged else set())
+                if missing and mine_rows:                    # e.g. a script written by a program: the text never showed the call
+                    mine_rows[-1]["kinds"] = sorted((set(mine_rows[-1]["kinds"]) - {"other"}) | missing, key=KIND_ORDER.index)
+                    mine_rows[-1]["detail"]["kinds_from_the_laboratory_log"] = sorted(missing)
     for t in turns:
         del t["window"]
     return turns, rows, lab, files
@@ -841,6 +850,8 @@ def markdown(R):
                 notes.append((f"{d['ticks']} ticks, {fmt(d.get('nats'), 2)} nats" if d.get("ok") else "nothing ran") + ("; " + d["inputs"]["evidence"] if "inputs" in d else ""))
             if d.get("local_check"):
                 notes.append("local check, not the laboratory's")
+            if d.get("kinds_from_the_laboratory_log"):
+                notes.append("kind " + ", ".join(d["kinds_from_the_laboratory_log"]) + " by the laboratory's log (not visible in the text)")
             lr = t.get("lab_record") if first else None
             res = r["result"]
             status = "no result: the rollout ended" if res.get("seen") is False else "" if res.get("seen") is None else (
@@ -977,6 +988,7 @@ def main(argv=None):
     limits += ["What the agent read is taken from the commands it wrote: files opened inside a Python script, by a module it imported, or by a helper file the trace "
                "never shows are not seen; a path that is mentioned may not have been read. Network attempts likewise: names of tools and libraries, not packets.",
                "Kinds, input classes and flags are heuristics over text (the README lists the rules); the numbers of sections 1 to 4 are not.",
+               "Whether a hidden value of the instance appears anywhere in the run needs the hidden side: this tool does not look (run_report.py and extract.py count that).",
                "Why the agent did something, whether its modelling was sound, and whether real data ever entered its fit are for a reader of transcript.md.",
                "The noise shown is over the items of one instance; nothing here says how the agent would do on another hidden world."]
     R = {MARK: bool(sc["reference"]["pilot_marker"]), "name": a.name or (ep.get("run") or {}).get("name") or tr.get("id"),

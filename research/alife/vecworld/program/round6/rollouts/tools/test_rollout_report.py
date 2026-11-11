@@ -197,11 +197,23 @@ def main():
         json.dump(ep, open(f, "w"))
         rep, _ = run(tmp, "syn2", "--trace", f)
         check("synthetic: a graded submission with 0 laboratory ticks is flagged", {"submission_without_lab_use", "collected_without_submit"} <= {x["id"] for x in rep["flags"]})
+        ep = json.loads(open(os.path.join(q, "trace.redacted.jsonl")).readline())      # turn 17 now runs a script the trace never shows
+        tr = ep["traces"][0]
+        tr["nodes"][tr["calls"][16]["node"]]["message"]["tool_calls"][0]["arguments"] = json.dumps({"command": "cd /workspace && python collect.py"})
+        json.dump(ep, open(f, "w"))
+        rep, _ = run(tmp, "syn3", "--trace", f, "--lab-record", os.path.join(q, "lab_record.json"))
+        r17 = next(r for r in rep["timeline"]["rows"] if r["turn"] == 17)
+        rep0, _ = run(tmp, "syn4", "--trace", f)
+        check("synthetic: laboratory use hidden in an unseen script is a `lab` turn with the laboratory's log, and unseen without it",
+              r17["kinds"] == ["lab"] and r17["detail"]["kinds_from_the_laboratory_log"] == ["lab"] and next(r for r in rep0["timeline"]["rows"] if r["turn"] == 17)["kinds"] == ["other"])
     # ---- 3. the two static readers ----
     cls = lambda code, expr: RR.input_class_static(expr, code)[0]  # noqa: E731
     check("static inputs: integer, zeros, written zeros, random", (cls("", "16"), cls("U = np.zeros((16, 24))\n", "U"), cls("U = np.zeros((16, 24))\nU[0, 3] = 1.0\n", "U"),
                                                                     cls("U = 0.1 * rng.normal(size=(16, 24))\n", "U"), cls("", "n=16"), cls("", "make()")) ==
           ("zero", "zero", "structured", "blind", "zero", "unknown"))
+    check("static inputs: two statements on one line; a helper that draws at random",
+          (cls("U = np.zeros((32, 24)); U[:, 0:4] = 0.5\n", "U"), cls("def probe(k):\n    return 0.1 * rng.normal(size=(k, 24))\nU = probe(8)\n", "U"),
+           cls("def probe(k):\n    u = np.zeros((k, 24))\n    u[0, 3] = 1\n    return u\nU = probe(8)\n", "U")) == ("structured", "blind", "structured"))
     pc = RR.predictor_check("import m\ndef predict(history, program, queries, n_samples, seed):\n    return m.go(history, program['test'], queries, n_samples, seed)\n")
     check("static predictor: passing history to a helper counts as a read", pc["history"]["reads"] == 1 and pc["program"]["reads"] == 1)
     pc = RR.predictor_check("def predict(history, program, queries, n_samples, seed):\n    T = history.shape[0]\n    return {}\n")

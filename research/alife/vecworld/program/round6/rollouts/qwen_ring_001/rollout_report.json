@@ -2856,6 +2856,7 @@
   "The predictor check is a static reading: an argument passed on to a helper counts as read, and what the code does with it is not judged.",
   "What the agent read is taken from the commands it wrote: files opened inside a Python script, by a module it imported, or by a helper file the trace never shows are not seen; a path that is mentioned may not have been read. Network attempts likewise: names of tools and libraries, not packets.",
   "Kinds, input classes and flags are heuristics over text (the README lists the rules); the numbers of sections 1 to 4 are not.",
+  "Whether a hidden value of the instance appears anywhere in the run needs the hidden side: this tool does not look (run_report.py and extract.py count that).",
   "Why the agent did something, whether its modelling was sound, and whether real data ever entered its fit are for a reader of transcript.md.",
   "The noise shown is over the items of one instance; nothing here says how the agent would do on another hidden world."
  ]
