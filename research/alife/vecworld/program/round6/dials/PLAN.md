@@ -8,16 +8,16 @@ folders is a pilot value, never to be reused as an exam.
 Terms: K is climatology, O the true law run from the hidden state, C a net trained at the truth, P0 a net trained
 on simulations of the public prior, D(N) a net trained on N Lab episodes alone (the no-simulator arm, design (d)).
 A *generic recipe* repairs P0 from Lab data with no idea of what is wrong. L is a policy's pooled energy score;
-lower is better.
+lower is better. sigma and rho are the roadmap's science share and scripted share.
 
 ## 1. Recommendation
 
 | order | study | verdict | reason |
 |---|---|---|---|
-| 1 | **A. Gliders calibration**: stage 1 of `defect_gliders`, with a changed question | run now | It is cheap, uses round 5's harness, and measures with real nets what so far rests on a linear stand-in at 6 states: that a residual fitted to a few Lab episodes repairs an incomplete law. |
-| 2 | **B. Membrane carrier**: `sublevel_second`, changed | CPU gate now; GPU only if the gate passes | It is the only design the adversary could not break at every horizon, but it holds at 32 ticks only and largely through one start state per seed, so a CPU gate comes before a 10-14 agent-hour build. |
-| - | Stress conversion on gliders as an exam (stage 2 of `defect_gliders`) | drop | One Lab episode per program class closes 0.70-0.94 of its gap, so its bars 2 and 3 fail on the designer's own forecast. |
-| - | Compute limit on fed vortices (`compute_limit`, both jobs) | defer | Summed small-box runs score as exam-size runs do (0.448 against 0.454), designer and adversary both expect failure, and the one risk the $5 job tests has an untried cheap answer (joining the vortex lists of small boxes). |
+| 1 | **A. Gliders calibration**: stage 1 of `defect_gliders`, with a changed question | run now | It is cheap, uses round 5's harness, and measures with real nets what so far rests on a small linear stand-in for them, tried at 6 states: that a residual fitted to a few Lab episodes repairs an incomplete law. |
+| 2 | **B. Membrane carrier**: `sublevel_second`, changed | CPU gate now; GPU only if the gate passes | It is the only design that withstood the adversary anywhere, but only at 32 ticks, and with a third to a half of its gap in one start state per seed (`crit_adversary/results/summary.json` [seed*.largest_member_share_of_gap]), so a CPU gate comes before a 10-14 agent-hour build. |
+| - | Stress conversion on gliders as an exam (stage 2 of `defect_gliders`) | drop | One Lab episode per program class closes 0.70-0.94 of its gap, so its bars 2 and 3 fail on the designer's own forecast (`defect_gliders/results/surrogate.json` [rows.generic_residual.n1]). |
+| - | Compute limit on fed vortices (`compute_limit`, both jobs) | defer | Summed small-box runs score as exam-size runs do (0.448 against 0.454; `compute_limit/results/summary.json` [transfer_128.skill.all]), designer and adversary both expect failure, and the one risk the $5 job tests has an untried cheap answer (joining the vortex lists of small boxes). |
 
 What I changed so that no recommended threshold is one the adversary's policy defeats:
 
@@ -34,11 +34,11 @@ What I changed so that no recommended threshold is one the adversary's policy de
 
 ### A. Gliders calibration
 
-**Exam.** Round 5's ladder exam, the cell with four hidden parameters (`round5/ladder`): an item is 16 input-free
+**Exam.** Round 5's ladder exam, the cell with four hidden parameters (`../../round5/ladder`): an item is 16 input-free
 ticks of the level-1 block view plus a held-out program from the public mix (none, blind, aimed 200 nats, regional
 300 nats), and the answer is the block view 1 to 16 ticks ahead. The hidden world also turns channel 0 into
-channel 1 wherever the wind exceeds a threshold, at eta x 0.09 per unit time (`defect_gliders/dlaw.py`, term XW;
-threshold 0.12 and ramp 0.05, the pilot's values, in every truth). The agent is told: "the simulator may lack
+channel 1 wherever the wind exceeds a threshold, at up to eta x 0.09 per unit time (`defect_gliders/dlaw.py`,
+term XW; threshold 0.12 and ramp 0.05, the pilot's values, in every truth). The agent is told: "the simulator may lack
 mechanisms of the world; which, where and how strong is not said; there may be none."
 
 **Dial and zero point.** eta = 0 and 4. At eta = 0 the hidden tick equals `gworld.tick` bit for bit
@@ -49,35 +49,34 @@ mechanisms of the world; which, where and how strong is not said; there may be n
 | K, O, P0, D(N) | as above |
 | C | the true-form net at the truth, or that net fine-tuned on the Lab episodes: the better, picked on the half of the items that is not scored |
 | S(N) | round 5's scripted inference of the four parameters with the public law |
-| FT(N) | P0's net fine-tuned on N Lab mix episodes |
+| FT(N) | P0's net fine-tuned on N Lab mix episodes; N = 8 is primary for every policy, 2 and 32 are reported |
 | RES(N) | **the adversary's policy**: P0 plus a per-block residual fitted on N Lab mix episodes |
-
-N = 8 is primary; 2 and 32 are reported.
 
 | criterion, declared now | number |
 |---|---|
-| zero point, at eta = 0 | round 5's sigma (0.018 +- 0.004) reproduced within 2 SE; and, paired per truth, the true-form C against the public-form C, and FT(8), RES(8) against P0, each within 0.02 of L(K) - L(C) |
+| zero point, at eta = 0 | round 5's sigma (0.018 +- 0.004) reproduced within 2 SE; and, paired per truth, the true-form C against the public-form C, and FT(8), RES(8) against P0, each within 0.02 of L(K) - L(C). The statistician asks for 0.01; that is below the training-seed noise, 0.034 / sqrt(3) = 0.02 (`crit_stats/results/se_check.json` [sd_seed_estimate_one_pair]) |
 | the defect reaches a net: s = (L(P0) - L(C)) / (L(K) - L(C)) on the aimed and regional classes, eta = 4 | the stand-in forecasts 0.20 (`defect_gliders/results/summary.json` [forecast_block_view_eta4]); it "holds" if 0.10 <= s <= 0.30 |
-| generic repair: g = (L(P0) - L(G)) / (L(P0) - L(C)), G the better of FT(8) and RES(8), picked on the unscored half | **confirmed** if the one-sided 90% lower bound of g is >= 0.7; **refuted** if the upper bound is < 0.7; otherwise one extension to 16 truths |
+| generic repair: g = (L(P0) - L(G)) / (L(P0) - L(C)), G the better of FT(8) and RES(8), picked on the unscored half | **confirmed** if the one-sided 90% lower bound of g is >= 0.7; **refuted** if the upper bound is < 0.7; otherwise one extension to 16 truths. Tested as a per-truth contrast, and read only if L(P0) - L(C) exceeds 2 SE |
 | the study itself fails | the zero point misses, or s < 0.05 (nothing to repair); nothing else is then read |
 
 | size | value |
 |---|---|
-| truths | the ladder's 8 pilot truths, each at eta 0 and 4 (the statistician's minimum) |
+| truths | the ladder's 8 pilot truths, each at eta 0 and 4 (the statistician's minimum). Threshold and ramp are fixed, not drawn per world as the designer proposed: a threshold above 0.153 would silence the regional push and make two kinds of truth (statistician) |
 | per truth and eta | Lab of 32 mix and 32 input-free episodes; 96 items (24 per class) x 12 replicates |
 | training | public and true-form families, 768 parameter points x 8 episodes each; 3 seeds per scored net |
 | compute budgets told | research: 8,192 full episodes of 82 ticks (28-31 core-hours; P0 uses 6,144 to simulate and 476 to train). Prediction: 0.05 of simulating a question of 32 members x 16 ticks, which is 3.8 CPU-seconds per item |
 | GPU job | one: 1.80 million member-ticks, A100 40 GB, 0.9-1.5 h, about $2-3 (estimate), cap $5 |
 | build first | the law switch around `ladder_lib`; the true-form family; FT and RES on nets; a full-shape validation pass as the job's first step. 4-5 agent-hours (estimate) |
-| sources | `crit_cost/results/recompute.json` [defect_gliders], [net_training_inside_the_research_budget]; round 5's sigma from the table of `round5/ladder/README.md`, row 4 hidden, block view |
+| sources | `crit_cost/results/recompute.json` [defect_gliders], [net_training_inside_the_research_budget]; round 5's sigma from the table of `../../round5/ladder/README.md`, row 4 hidden, block view |
 
 ### B. Membrane carrier
 
-**Exam.** Phase-membrane cells at 128 px (`track1/membrane_world`): the agent observes the level-1 cell list; an
+**Exam.** Phase-membrane cells at 128 px (`../../track1/membrane_world`): the agent observes the level-1 cell list; an
 item is a 16-tick history plus a held-out program (none 1/8, blind 1/8, an aimed substrate pulse of 100-300 nats
 3/4); the answer is the *focus view*, cell mass and catalyst mass within 16 px of the item's focus cell, at 8, 16
-and 32 ticks. Hidden are parameters of the public law and a level under the substrate: a share lam of each strong
-injection arrives as an inert carrier that diffuses and becomes substrate only where cell catalyst is
+and 32 ticks. Hidden are parameters of the public law and a level under the substrate: of each injection a
+share, up to lam for strong ones, arrives as an inert carrier that diffuses and becomes substrate only where cell
+catalyst is
 (`sublevel_second/sublevel.py`, candidate `pro`). The agent is told, at every dial setting: "Your simulator is
 approximate: the real world holds state the public law lacks. Where, how, or whether at all is not stated."
 
@@ -91,14 +90,15 @@ nothing of the carrier. It closes 0.82-0.90 of the public-to-oracle gap at 8 tic
 32, where the recipe told the form closes 0.91. Over the exam's three horizons it closes 0.33 and 0.36: the
 pooled bar of 0.7 survives, through the 32-tick horizon alone. His files hold a fact his text does not state:
 with the heaviest of the 6 to 8 start states left out, A_act closes 0.72 and 0.58 on its two seeds, and the
-designer's gain 0.44-0.72 on three seeds of four (`crit_adversary/results/adv_s*.json`
-[closed_without_heaviest_member], pooled over 4-32 ticks). On this evidence stage 0's rule is a close call.
+designer's gain 0.44-0.72 on three seeds of four; the told-form recipe closes 0.68 on its one seed
+(`crit_adversary/results/adv_s*.json` [closed_without_heaviest_member], pooled over 4-32 ticks). On this evidence
+stage 0's rule is a close call.
 
 **Forecast (estimate).** Given the state, the public law loses 0.27 of the climatology-to-oracle range over the
 declared mix (`sublevel_second/results/screen_pro_cat_sat_lam1_128.json`, keys L_public, L_O, L_K, classes
 weighted 1 : 1 : 3 : 3; the designer writes 0.28). If a history-only net keeps the 19-38% that the gliders
-stand-in kept (`defect_gliders/results/surrogate.json` [kept_fraction]), P0 trails C by 0.05-0.10, below the 0.15
-bar. That carry-over between worlds is weak evidence; stages 0 and 1 test it cheaply.
+stand-in kept (`defect_gliders/results/surrogate.json` [rows fut16_XW_4_*, kept_fraction]), P0 trails C by a share of 0.05-0.10,
+below the 0.15 bar. That carry-over between worlds is weak evidence; stages 0 and 1 test it cheaply.
 
 | stage | what runs | go rule |
 |---|---|---|
@@ -110,11 +110,11 @@ bar. That carry-over between worlds is weak evidence; stages 0 and 1 test it che
 |---|---|
 | K, O, P0, D(16), D(64) | as above |
 | C | the extended-law net at the true values, or that net fine-tuned on the Lab episodes: the better, picked on the unscored half |
-| S_pub, S_wide | round 5's scripted inference with the public law: the hidden parameters; all 17 in a doubled box |
+| S_pub, S_wide | round 5's scripted inference with the public law: S_pub infers the hidden parameters, S_wide all 17 parameters in a doubled box |
 | R | P0 plus a residual on the Lab episodes: gains on the public response, or a ridge on program features |
 | A_act | **the adversary's policy** without the state: P0's net fed the filtered command, the four numbers fitted on the Lab episodes |
 | F | P0's net fine-tuned on the Lab episodes |
-| G* | the best of all the above except C, picked on half of the items and scored on the other half |
+| G* | the best of P0, D, S_pub, S_wide, R, A_act and F, picked on half of the items and scored on the other half |
 | H, H_mix | told the form, not the values: 12 designed episodes and 4 controls, then C's net at posterior draws; H_mix does the same from exam-mix episodes |
 
 Criteria, declared now, at lam = 1 with a Lab of 16 episodes (48 ticks and 300 nats each), focus view, pooled over
@@ -124,15 +124,15 @@ Criteria, declared now, at lam = 1 with a Lab of 16 episodes (48 ticks and 300 n
 |---|---|
 | B1, science share | sigma_G = (L(G*) - L(C)) / (L(K) - L(C)) >= 0.15: the mean over truths of L(G*) - 0.85 L(C) - 0.15 L(K) has a one-sided 90% lower bound >= 0 |
 | B2, generic share | rho_G = (L(P0) - L(G*)) / (L(P0) - L(C)) <= 0.7, tested the same way; read only if L(P0) - L(C) exceeds 2 SE |
-| B3, solvable | H recovers >= 0.7 of P0-to-C and beats G* at t >= 3 over truths |
+| B3, solvable | H recovers >= 0.7 of P0-to-C and beats G* at t >= 3 over truths, with hidden values drawn from the committed ranges, not from H's grid |
 | B4, actions matter | C made blind to the program loses >= 0.10 of L(K) - L(C) |
 | B5, not one horizon, not one world | B1 and B2 hold at the point estimate at 32 ticks alone, and with the heaviest truth left out; 8 and 16 ticks are reported (forecast: generic repair wins at 8) |
 | B6, the recipes are competent | in the control arm, where the carrier converts everywhere, rho_G >= 0.7 at the point estimate |
 | zero point, at lam = 0 | two truths run through the unchanged `membrane_world.build` score alike on every item; paired per truth, the extended-family C against the public-family C, and G*, H against P0 and S_pub, each within 0.02 of L(K) - L(C) |
 | **pass** | B1 to B6 and the zero point |
-| **fail** | the 90% upper bound of B1 or B2 lies on the wrong side of its bar, after at most one doubling of the truths |
+| **fail** | sigma_G's one-sided 90% upper bound is below 0.15, or rho_G's lower bound is above 0.7, after at most one doubling of the truths at lam = 1 |
 | **undecided** | anything else; reported as undecided, never as a pass |
-| standard errors, A and B | truths as clusters, plus the training-seed term (seed SD squared over 3) |
+| standard errors, A and B | truths as clusters, plus the training-seed term (seed SD squared over 3); the median and the leave-one-truth-out range beside every mean |
 | training rule, A and B | a net counts as trained only if its best validation step falls in the first 80% of its schedule; otherwise the schedule doubles; all nets get equal steps |
 
 | size | value |
@@ -151,11 +151,11 @@ Criteria, declared now, at lam = 1 with a Lab of 16 episodes (48 ticks and 300 n
 |---|---|
 | A: generic repair confirmed, stand-in holds | Every later null includes fine-tuning and a residual. Three CPU screens go on the world card as the gate for any incomplete-law candidate: the state-given gap, the share a history-only family keeps, and the share a generic residual leaves. A defect that is a function of a public field under the exam's own programs is closed as an exam design. |
 | A: confirmed, stand-in misses | The null changes as above, but CPU stand-ins are not a gate: B's stage 0 uses its state-given rules only. |
-| A: refuted, with s >= 0.15 | Stress conversion is reopened: 16 truths and a recipe told the form (the designer's stage 2, about $4) before any pass is claimed. |
+| A: refuted | With s >= 0.15, stress conversion is reopened: 16 truths and a recipe told the form (the designer's stage 2, about $4) before any pass is claimed. With s below 0.15 it stays closed, for lack of effect. |
 | A: zero point misses | A fault in the harness; nothing is read until it is found. |
-| B: stage 0 fails | A filter on the command repairs the carrier except in rare start states. B is not built, at no GPU cost. With A confirmed, "extra term" defects are closed on two worlds; what stays open is a defect whose correction needs hidden state that only the history reveals. |
+| B: stage 0 fails | A filter on the command repairs the carrier except in rare start states. B is not built, at no GPU cost. With A confirmed, defects that act on the response to an input are closed on two worlds (on the second by a state-given CPU check only); what stays open is a defect whose correction needs hidden state that only the history reveals. |
 | B: stage 1 stops, or B1 fails with P0 close to C | The hidden level does not reach a history-only predictor; the state-given screen overstates again, as in round 5. |
-| B: B2 fails in both arms | Measured defects do not make the exam test science at a 16-episode Lab; the question of section 5 goes to the lead. |
+| B: generic repair wins in the main arm as in the control (B2 fails) | Measured defects do not make the exam test science at a 16-episode Lab; the question of section 5 goes to the lead. |
 | B: passes | The first design to pass both bars against scripts, with a rule: the correction must depend on the configuration of cells. A pilot instance goes to rollouts, which alone say whether an agent can find the form. The claim is about 32 ticks. |
 | B: main arm and control arm both resist generic repair | The recipes are too weak to serve as a null; no pass is recorded until they are strengthened. |
 | B: sigma at lam = 0 is >= 0.15 | This world's plain type-(a) exam already passes, which round 5 saw on neither world; it goes to rollouts as it is. |
@@ -170,7 +170,7 @@ Criteria, declared now, at lam = 1 with a Lab of 16 episodes (48 ticks and 300 n
 - Anything beyond 32 ticks, the focus view, a 16-episode Lab, or these two worlds; nothing about defects that
   passive data reveal.
 - Whether the research budget binds on an agent: the port limits a predictor's CPU per item but does not meter
-  the agent's research compute (`round6/vfport/README.md` section 4, item 5, through the cost critic).
+  the agent's research compute (`../vfport/README.md` section 4.6, item 5).
 - Anything about design (c) beyond level 2 of fed vortices, where the evidence has no hidden worlds.
 - A sealed exam. The form of each defect is public in this repo; under design (b) the secret is code, which needs
   the private store of decision 5.
@@ -184,6 +184,7 @@ Criteria, declared now, at lam = 1 with a Lab of 16 episodes (48 ticks and 300 n
 | B, stage 1 | $2-3 | $4 | 10-14 for the whole build |
 | B, stage 2 | $4-6 | $10 | |
 | total | $8-12 | $19 | 17-23 |
+| one extension each, only if a result is undecided | A about $1, B about $3 | $3 and $6 | 1-2 |
 
 Billed so far: $46.27 of the approved $1,000 (`../../README.md`, round 5). No model call. If B stops at stage 0,
 the round costs about $3 and 8 agent-hours.
