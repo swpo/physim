@@ -44,6 +44,9 @@ ap.add_argument("--fit-m", type=int, default=2)
 ap.add_argument("--fit-T", type=int, default=24)
 ap.add_argument("--fit-lr", type=float, default=0.03)
 ap.add_argument("--fit-respin", type=int, default=20)
+ap.add_argument("--fit-k", type=int, default=1, help="1: the one-tick loss; k > 1: the k-tick forecast loss")
+ap.add_argument("--fit-anchors", type=int, default=2)
+ap.add_argument("--fit-starts", default="eps0.3_hyper,other")
 a = ap.parse_args()
 
 import fl_w as W  # noqa: E402
@@ -183,8 +186,11 @@ if "t2" not in a.skip:
 if "t3" not in a.skip:
     lsd = labY.reshape(-1, 3, W.G * W.G).std((0, 2))
     lscale = jnp.asarray(np.repeat(np.maximum(lsd, 1e-12), W.G * W.G))
-    vg = W.fit_step_fn(remat=True)
+    K = a.fit_k
+    vg = W.fit_step_fn(remat=True) if K == 1 else W.fit_step_fn_k(K)
     lossf = jax.jit(W.lab_loss)
+    lossk = jax.jit(W.lab_loss_k, static_argnums=7)
+    an_eval = jnp.asarray(np.tile(np.arange(0, labY.shape[1] - 1 - K + 1, 8), (a.lab, 1))) if K > 1 else None
     dens = W.dens_of(labY)
     zt = W.to_z(TH)
     Mm, fm, eb, T = a.lab_members, a.fit_m, a.fit_eb, a.fit_T
@@ -197,13 +203,16 @@ if "t3" not in a.skip:
         p_ = pool_at(z, 5000)
         x = p_[(jnp.arange(a.lab * Mm) % a.members)].reshape((a.lab, Mm) + p_.shape[1:])
         keys = jax.vmap(lambda i: kk(5100 + i, Mm))(jnp.arange(a.lab))
-        return float(lossf(W.from_z(z, dens), x, jnp.asarray(labY), jnp.asarray(labUU), keys, lscale))
+        if K == 1:
+            return float(lossf(W.from_z(z, dens), x, jnp.asarray(labY), jnp.asarray(labUU), keys, lscale))
+        return float(lossk(W.from_z(z, dens), x, jnp.asarray(labY), jnp.asarray(labUU), keys, lscale, an_eval, K))
 
     def dist(z):
         d = np.asarray(z - zt)
         return dict(net_rms=float(np.sqrt(np.mean(d[:W.NZ_NET] ** 2))), box=[round(float(v), 3) for v in d[W.NZ_NET:]])
     starts = {"eps0.3_hyper": W.to_z({k: jnp.asarray(v) for k, v in TN.perturb_theta(
-        {k: np.asarray(v) for k, v in TH.items()}, 909, 1, 0.3, hyper=True).items()}), others[0]: W.to_z(th_of(others[0]))}
+        {k: np.asarray(v) for k, v in TH.items()}, 909, 1, 0.3, hyper=True).items()}), "other": W.to_z(th_of(others[0]))}
+    starts = {n: starts[n] for n in a.fit_starts.split(",")}
     fits = {}
     for name, z0 in starts.items():
         z, st = z0, (jnp.zeros_like(z0), jnp.zeros_like(z0), 0)
@@ -215,12 +224,16 @@ if "t3" not in a.skip:
             if it and it % a.fit_respin == 0:
                 p_ = pool_at(z, 6000 + it)
             ei = rng.choice(a.lab, eb, replace=False)
-            t0 = rng.integers(0, TT - T + 1, eb)
-            Ys = jnp.asarray(np.stack([labY[e, t:t + T + 1] for e, t in zip(ei, t0)]))
-            Us = jnp.asarray(np.stack([labUU[e, t:t + T] for e, t in zip(ei, t0)]))
             X0 = p_[jnp.asarray(rng.choice(a.members, eb * fm))].reshape((eb, fm) + p_.shape[1:])
             keys = jax.vmap(lambda e: kk(7000 + e, fm))(jnp.asarray(ei))
-            l, g = vg(z, dens, X0, Ys, Us, keys, lscale)
+            if K == 1:
+                t0 = rng.integers(0, TT - T + 1, eb)
+                Ys = jnp.asarray(np.stack([labY[e, t:t + T + 1] for e, t in zip(ei, t0)]))
+                Us = jnp.asarray(np.stack([labUU[e, t:t + T] for e, t in zip(ei, t0)]))
+                l, g = vg(z, dens, X0, Ys, Us, keys, lscale)
+            else:                                        # whole episodes, random anchors
+                an = jnp.asarray(rng.integers(0, TT - K + 1, (eb, a.fit_anchors)))
+                l, g = vg(z, dens, X0, jnp.asarray(labY[ei]), jnp.asarray(labUU[ei]), keys, lscale, an)
             z, st = W.adam(z, g, st, a.fit_lr)
             rec["trace"].append(round(float(l), 5))
             if it % 10 == 9:

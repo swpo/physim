@@ -20,6 +20,14 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   other screened worlds +0.29 to +0.66: ranks 10% from the truth, not 3%. W is viable if a fit gets within ~10%.
 - 18:50: fl_w.py fit coordinates z (248 numbers; dens set from the observed mean mass), Adam, value_and_grad with
   remat; w_cpu.py test 3 (fit from a 30% neighbour with scalars and from another screened world) running on CPU.
+- 19:00: test 3 with the ONE-TICK loss (results/w_fit1tick_seed2027-46.json; 40 Adam steps, 4 episodes x 2 members x
+  24-tick windows): the loss falls to the truth's level (0.236 -> -0.009 from the 30% start; truth -0.007 with the same
+  keys) but the weights do not approach the truth (net distance 0.31 -> 0.37) and W's skill at the fit is poor
+  (0.52 / 0.24 / -0.02 at 8 / 16 / 32 ticks; from another world 0.45 / 0.06 / -0.27). The one-tick loss is too weak a
+  signal for long horizons. Next: the k-tick forecast loss (fl_w.episode_loss_k: assimilate to an anchor, forecast k
+  ticks, score; gradient through the k ticks), k = 16, running on CPU (w_cpu.py --fit-k 16).
+- 19:02: job 001 screen done (22 min, 38k member-ticks/s on the A100); gate: 818 of 1,490 new candidates pass, so P0
+  reaches 1,000 worlds.
 
 ## Running
 - Review of r6-foundrylong-001 read 18:50: fine to run, 2 minor (outputs ~53 MB: check manifest in_git before the analysis;

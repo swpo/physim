@@ -165,6 +165,51 @@ def dens_of(Ys):
     return jnp.asarray(Ys).reshape(-1, C + 1, G * G)[:, :C].mean((0, 2))
 
 
+def nudged_states(th, x, Y, U, keys):
+    """The assimilation's members after the nudge at every observed tick: (T + 1, M, C, H, W); no gradient."""
+    th = jax.tree_util.tree_map(lax.stop_gradient, th)
+    x0 = jax.vmap(nudge, (0, None))(x, Y[0])
+
+    def body(x, inp):
+        t, y, u = inp
+        xn = jax.vmap(nudge, (0, None))(jax.vmap(lambda xx, k: _tick(th, xx, k, t, u))(x, keys), y)
+        return xn, xn
+    _, XS = lax.scan(body, x0, (jnp.arange(U.shape[0]), Y[1:], U))
+    return jnp.concatenate([x0[None], XS], 0)
+
+
+def episode_loss_k(th, x, Y, U, keys, scale, anchors, k: int):
+    """The exam's own score on a Lab episode: from the assimilated members at each anchor tick a (array, a + k <= T),
+    a free forecast of k ticks under the episode's commands, scored by the fair energy score against Y[a + k].
+    Gradient through the k forecast ticks (recomputed in the backward pass), not through the assimilation."""
+    XS = nudged_states(th, x, Y, U, keys)
+
+    def one(a):
+        xa = lax.dynamic_index_in_dim(XS, a, 0, keepdims=False)
+        Ua = lax.dynamic_slice_in_dim(U, a, k, 0)
+        kf = jax.vmap(lambda kk: jax.random.fold_in(kk, 1000 + a))(keys)
+
+        def body(x, inp):
+            t, u = inp
+            return jax.vmap(lambda xx, kk: _tick_remat(th, xx, kk, t, u))(x, kf), None
+        xk, _ = lax.scan(body, xa, (a + jnp.arange(k), Ua))
+        y = lax.dynamic_index_in_dim(Y, a + k, 0, keepdims=False)
+        return fair_es(jax.vmap(view)(xk) / scale, y / scale)
+    return jax.vmap(one)(anchors).mean()
+
+
+def fit_step_fn_k(k: int):
+    """value_and_grad of the k-tick Lab loss with respect to z; anchors (E, A) per episode."""
+    def f(z, dens, X0, Ys, Us, keys, scale, anchors):
+        th = from_z(z, dens)
+        return jax.vmap(lambda x, Y, U, kk, an: episode_loss_k(th, x, Y, U, kk, scale, an, k))(X0, Ys, Us, keys, anchors).mean()
+    return jax.jit(jax.value_and_grad(f))
+
+
+def lab_loss_k(th, X0, Ys, Us, keys, scale, anchors, k: int):
+    return jax.vmap(lambda x, Y, U, kk, an: episode_loss_k(th, x, Y, U, kk, scale, an, k))(X0, Ys, Us, keys, anchors).mean()
+
+
 def fit_step_fn(remat=True):
     """value_and_grad of the Lab fit loss with respect to z, jitted."""
     def f(z, dens, X0, Ys, Us, keys, scale):
