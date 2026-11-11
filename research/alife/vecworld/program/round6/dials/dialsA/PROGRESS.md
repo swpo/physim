@@ -20,3 +20,13 @@ Worktree `/home/user/wt/dialsA`, branch `wt-dialsA`; scratch
 - Running: local CPU smoke only. Jobs: none requested.
 - Next: fix what the smoke finds; run check_a.py; run the whole job at tiny size from a git archive of the
   request's paths; write `gpu/requests/r6-dialsA-001.json` (A100 40 GB only, max_hours 2.2, cap $5); push; wait.
+- 11 Nov 16:12 UTC. CPU tests done. `check_a.py` from a git archive: ok (one tick, a family of 8 members x 10
+  ticks and a Lab batch bitwise equal to round 5's code at eta = 0; `results/check_a.json`). The whole of
+  `job.sh` at tiny shapes from a git archive of the request's paths at 12082fa09: exit 0 in 8.7 min (presmoke,
+  speed guard, full pass); `make_summary.py` runs on its outputs. Request `gpu/requests/r6-dialsA-001.json`
+  written (A100 40 GB only, max_hours 2.2, cap $5.0, script limit 1.9 h).
+- Running: job `r6-dialsA-001` requested (see the line below for its state). Nothing local.
+- Next: wait for the job on origin/gpu-jobs (one loop, 60 s); read `jobs/r6-dialsA-001/review.md` BEFORE the
+  results; copy `out/` to `results/job/`, `status.json` beside it; `python -B make_summary.py`; if the rule for
+  g is undecided, request the extension to 16 truths as `r6-dialsA-002` (cap $3) and say so; write README.md;
+  delete the scratch folder; remove the worktree.

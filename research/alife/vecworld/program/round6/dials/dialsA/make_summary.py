@@ -65,9 +65,14 @@ out = {"study": "round 6, dials, study A: the gliders calibration (plan section 
        "job": {"id": args.job, "outputs": os.path.relpath(D, HERE)}}
 st = jload("status.json")
 if st:
-    out["job"]["status"] = {k: st.get(k) for k in ("state", "message", "pod", "cost_usd", "billed_usd", "hours", "exit_code",
-                                                    "started_at", "finished_at", "review", "rate_usd_per_hour", "gpu_type")
-                            if k in st}
+    pod = st.get("pod") or {}
+    out["job"]["status"] = {"state": st.get("state"), "message": st.get("message"), "cap_usd": st.get("cap_usd"),
+                            "cost": st.get("cost"), "billing_window_hours": st.get("billing_window_hours"),
+                            "started_at": st.get("started_at"), "updated_at": st.get("updated_at"),
+                            "ref": (st.get("bundle") or {}).get("ref"), "review": st.get("review"),
+                            "pod": {k: pod.get(k) for k in ("gpu_type", "provider", "rate_usd_hr", "billed_usd", "hours",
+                                                             "created_at", "terminated_at", "memory_gb", "vcpus") if k in pod},
+                            "history": st.get("history")}
     out["job"]["status_source"] = f"origin/gpu-jobs:jobs/{args.job}/status.json"
 out["what_ran"] = {"source": f"{args.job}: info.json", "backend": info.get("backend"), "devices": info.get("devices"),
                    "versions": info.get("versions"), "config": cfg, "member_ticks_planned": info.get("member_ticks_planned"),
