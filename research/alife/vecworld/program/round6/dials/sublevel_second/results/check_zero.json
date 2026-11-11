@@ -2,7 +2,7 @@
  "size": 64,
  "members": 3,
  "ticks": 60,
- "cpu_s_public_incl_compile": 10.54442099,
+ "cpu_s_public_incl_compile": 10.560543712000001,
  "candidates": {
   "kpool": {
    "max_abs_diff_fields": {
@@ -14,7 +14,7 @@
    "max_abs_diff_L1": 0.0,
    "max_abs_diff_L2": 0.0,
    "hidden_field_max": 0.0,
-   "cpu_s_incl_compile": 9.939196162,
+   "cpu_s_incl_compile": 10.172787854,
    "bit_for_bit": true
   },
   "lpool": {
@@ -27,7 +27,7 @@
    "max_abs_diff_L1": 0.0,
    "max_abs_diff_L2": 0.0,
    "hidden_field_max": 0.0,
-   "cpu_s_incl_compile": 10.443384430999998,
+   "cpu_s_incl_compile": 10.657106646999999,
    "bit_for_bit": true
   },
   "dorm": {
@@ -40,7 +40,7 @@
    "max_abs_diff_L1": 2.2737367544323206e-13,
    "max_abs_diff_L2": 1.1368683772161603e-13,
    "hidden_field_max": 0.0,
-   "cpu_s_incl_compile": 10.338617875000004,
+   "cpu_s_incl_compile": 10.820866158999998,
    "bit_for_bit": false
   },
   "bound": {
@@ -53,7 +53,7 @@
    "max_abs_diff_L1": 0.0,
    "max_abs_diff_L2": 0.0,
    "hidden_field_max": 0.0,
-   "cpu_s_incl_compile": 10.070616889,
+   "cpu_s_incl_compile": 10.172461626,
    "bit_for_bit": true
   },
   "pro": {
@@ -66,7 +66,7 @@
    "max_abs_diff_L1": 0.0,
    "max_abs_diff_L2": 0.0,
    "hidden_field_max": 0.0,
-   "cpu_s_incl_compile": 10.412762331000003,
+   "cpu_s_incl_compile": 10.309156834999996,
    "bit_for_bit": true
   }
  },

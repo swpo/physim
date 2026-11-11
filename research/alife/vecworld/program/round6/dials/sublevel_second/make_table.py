@@ -80,9 +80,11 @@ def main():
            ("pro_lam0.5_m12", "carrier, converts everywhere", "0.5"),
            ("pro_lam1_m12", "carrier, converts everywhere", "1"),
            ("pro_cat_lam1_m12", "carrier, converted at cells, no saturation", "1"),
-           ("pro_cat_sat_lam0.25_m12", "**carrier, converted at cells, saturating route**", "0.25"),
+           ("pro_cat_sat_lam0.25_m12", "**carrier, converted at cells, saturating route (a0 = 0.03)**", "0.25"),
            ("pro_cat_sat_lam0.5_m12", "**the same**", "0.5"),
+           ("pro_cat_sat_lam0.75_m12", "**the same**", "0.75"),
            ("pro_cat_sat_lam1_m12", "**the same**", "1"),
+           ("pro_cat_sat0.02_lam1_m12", "the same with a0 = 0.02", "1"),
            ("public_128", "floor at 128 px, 6 members", "0"),
            ("pro_cat_sat_lam1_128", "**the same carrier** at 128 px, 6 members", "1")]
     print("\n### DESIGN table 3a\n| candidate (run) | dial | boxes without cells | none | blind | aimed feed | aimed starve | population view, input items |")
