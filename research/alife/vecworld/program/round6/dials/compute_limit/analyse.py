@@ -1,12 +1,16 @@
-"""analyse -- finite-size table, budget curve and state-given screen for study (c) at tiny size (numpy only).
+"""analyse -- finite-size table, budget curve, transfer tables and state-given screen for study (c) (numpy only).
 
-  python -B analyse.py <scratch dir>          -> results/summary.json (everything; about 3 CPU-minutes)
-  python -B analyse.py <scratch dir> screen   -> only the finite-size table and the screen are recomputed
+  python -B analyse.py <scratch dir>          -> results/summary.json (everything; about 4 CPU-minutes)
+  python -B analyse.py <scratch dir> screen   -> all but the budget curve and the horizon transfer, which are kept
+                                                 from the last full run
 
-Inputs (made by run_pools.sh and screen_state.py; raw arrays are scratch, not committed):
-  b{32,48,64}_s*.npz   level-2 trajectories (N, s_b) per box side at declared parameters (eps 0.4, mut128 25)
-  scr_{base,oracle,tiles,inputs}.npz   branches from four 64 px states at tick 140
-Exam-scale stand-in: the 64 px box. Cost unit: one 64 px episode of 260 ticks (px-ticks).
+Inputs (raw arrays are scratch, not committed; run_pools.sh and run_after*.sh make them):
+  b{32,48,64,128}_s*.npz                 level-2 trajectories (N, s_b) per box side at declared parameters
+                                         (eps 0.4, mut128 25), from run_boxes.py
+  scr_base.npz, scr_b_<arm>_dt<F>.npz,   branches from four 64 px states at tick 140, from screen_state.py
+  scr_t_<arm>.npz
+Exam-scale stand-ins: the 64 px box (budget_curve, horizon_transfer, screen; cost unit = one 64 px episode of 260
+ticks in px-ticks) and the 128 px box (transfer_128).
 Score: fair energy score on (N / sd_N, s_b / sd_s) / sqrt(2), 32 forecast members; skill = 1 - L / L(K).
 """
 import glob
