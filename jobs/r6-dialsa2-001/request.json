@@ -1,0 +1,48 @@
+{
+  "request": {
+    "cap_usd": 8.4,
+    "disk_gb": null,
+    "env": {
+      "A2_MAX_HOURS": "3.6",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_40GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r6-dialsa2-001",
+    "max_hours": 3.9,
+    "notes": "Study dialsA2 of round 6 (round6/dials/dialsA2), declared in DECLARED.md at 3fd4076c5 (19:26 UTC) before any code. PILOT_NEVER_REUSE_AS_EXAM: truths are public pilot values (round 5's 8 and 8 drawn in the job by a public seed); the world secret is os.urandom and never written. One process (job.sh -> run_a2.py); dialsA's xlaw, a_nets, a_stats imported unchanged. (0) Presmoke at FULL SHAPES and small counts, same process: the law switch's zero point (64 members, one tick), 3 families of 512 episodes in chunks of 256, one truth at eta 0 and 4 plus one eta-1 world (Lab of 96 episodes, two exams of 48 items x 12 replicates), 6 conditioned block nets in lockstep on 6,144-episode sets (250 + 500 steps), fine-tunes 16 in lockstep at batch 64, D nets, every sampler and posterior; then a speed guard (exit 4 if the required stages do not fit the script's 3.6 h). (1) Truths 8-15: viability of 48 candidates. (2) Families public, true-form, designed: 768 points x 8 episodes each, 0.51 million member-ticks each. (3) 16 truths x eta 0/4: Lab of 96 episodes and two exams each, about 1.25 million member-ticks. (4) Inference S, H, H_mix (numpy). (5) Base nets: 6 in lockstep, 50 steps per dispatch (lax.scan), 24,000 steps, doubled while the training rule is unmet, at most 192,000; each doubling only if the presmoke's estimates leave time for the N = 8 stages. (6) N = 8: cross-validated fine-tunes (2 rates, held-out score every 10 steps to 400, 40 steps per dispatch, 16 in lockstep; grid widened at most twice), residual, S, H, H_mix, D(8); then N = 32 and an eta 1/2 arm on 4 truths if the clock allows. Expected 1.8-3.2 h on the script's clock from study A's rates on this card (r6-dialsa-003: about 1,300 member-ticks/s, 13.4 ms per step of the six base nets, 21.2 ms per lockstep fine-tune step); the base-net ladder is the main unknown. Memory: base-net data as A's (2.2 GB, largest array 2.3e8 elements); fine-tune step arrays 1.13e8 elements; check_elems refuses past 2^30, device arrays asserted below 2^31, data passed to the jitted functions as arguments; default allocator (the trainers now run 50 and 40 steps per dispatch, as the review of r6-dialsa-002 asked). Outputs 10-15 MB, all public, largest nets.npz about 3.5 MB. Exit codes: presmoke failure 1, speed guard 4, a failed part 2. Cap: $1.99/h x (3.9 + 0.25) h = $8.26, + $0.10 -> $8.40; the study's GPU cap is $12 in at most two jobs. CPU test: the whole job.sh at tiny shapes (presmoke, guard, full pass, exit 0) from a git archive of exactly these paths at the pinned ref (e0df0c079): presmoke, guard, full pass with a widened fine-tune grid, exit 0.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/gliders_exam",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/round4/sbi",
+      "research/alife/vecworld/program/round5/ladder",
+      "research/alife/vecworld/program/round6/dials/defect_gliders",
+      "research/alife/vecworld/program/round6/dials/dialsA",
+      "research/alife/vecworld/program/round6/dials/dialsA2"
+    ],
+    "purpose": "Round-6 dials, study dialsA2: gliders stress-conversion exam reopened on triggered items (aimed, regional) at 8-16 ticks; science share after the best generic repair, told-form recipe H; 16 truths x eta 0/4, 3 seeds per net",
+    "ref": "e0df0c079649c253b4c7437a249b1f88f0a3ca6f",
+    "requester": "cloud study dialsA2 (round 6 dials), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round6/dials/dialsA2 && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "af10f6b1f8054955954010a3e07cb84f8bcad82e",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r6-dialsa2-001.json",
+    "received_at": "2026-11-11T20:27:15Z",
+    "tip": "1012caaafbbbf07bbaa9b91c569e4417ad8c07ab"
+  }
+}
