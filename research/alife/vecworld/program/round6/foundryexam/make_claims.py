@@ -94,6 +94,19 @@ def main():
             for nm in ("share_noexp", "sigma@8", "sigma@32", "sigma@512"):
                 if nm in e:
                     add(f"{arm}.h{hh}.{nm}", f"arm {arm}, horizon {hh} ticks only: {nm} (after-the-fact breakdown)", f"{p}.by_horizon.{hh}.{nm}")
+        if R.get("c_curve"):
+            cc = R["c_curve"]
+            add(f"{arm}.c_curve", f"arm {arm}: learning curve of the true-weight net (pooled skill by episodes; names as in the job)",
+                f"{p}.c_curve.nets", value=[dict(name=e["name"], episodes=e["episodes"], oes_pooled=q3(e["oes_pooled"])) for e in cc["nets"]])
+            add(f"{arm}.c_curve_steps", f"arm {arm}: gain of each step of that curve", f"{p}.c_curve.steps",
+                value=[dict(frm=st["frm"], to=st["to"], episodes=st["episodes"], gain=q3(st["gain"])) for st in cc["steps"]])
+            add(f"{arm}.c_curve_verdict", f"arm {arm}: verdict of DESIGN.md 5d on convergence in data", f"{p}.c_curve.verdict")
+            add(f"{arm}.c_curve_share", f"arm {arm}: P0's share of the ceiling, by which net is the ceiling", f"{p}.c_curve.share_noexp",
+                value={b: q3(q) for b, q in cc["share_noexp"].items()})
+            add(f"{arm}.c_curve_sigma8", f"arm {arm}: sigma at 8 Lab episodes, by which net is the ceiling", f"{p}.c_curve.sigma@8",
+                value={b: q3(q) for b, q in cc["sigma@8"].items()})
+            add(f"{arm}.c_curve_sigma512", f"arm {arm}: sigma at 512 Lab episodes, by which net is the ceiling", f"{p}.c_curve.sigma@512",
+                value={b: q3(q) for b, q in cc["sigma@512"].items()})
         if R.get("rank_corr_over_worlds"):
             add(f"{arm}.rank_corr", f"arm {arm}: rank correlations over hidden worlds (after-the-fact)", f"{p}.rank_corr_over_worlds")
         if R.get("by_group"):

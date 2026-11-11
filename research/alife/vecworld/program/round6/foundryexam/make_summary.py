@@ -134,8 +134,40 @@ def verdict_interval(q, bar, above=True):
     return "pass" if hi <= bar else ("fail" if lo > bar else "undecided")
 
 
-def analyse_arm(d, arm):
+def c_curve(S, world, klass, cfg):
+    """The learning curve of the true-weight reference net, keyed by the job's own net names (before any renaming):
+    Csm (n_csmall episodes), C (n_csim), Cbig (n_cbig), each trained from scratch; pooled skill, the step gaps from one
+    world bootstrap, P0's share against each as the ceiling, and the verdict of DESIGN.md 5d (a last step above 0.01
+    of pooled skill: not converged in data, C stays a lower bound). Added on the review of job 005."""
+    nets = [(b, n) for b, n in (("Csm", cfg.get("n_csmall")), ("C", cfg.get("n_csim")), ("Cbig", cfg.get("n_cbig")))
+            if any(k.startswith(b + "|") for k in S) and n]
+    if len(nets) < 2:
+        return None
+    A0 = Arm(S, world, klass)
+    noexp = [b for b in ("P0", "S@0", "P0s") if b in A0.bases]
+    out = dict(nets=[dict(name=b, episodes=int(n), oes_pooled=A0.quantity(oes_fn(b), ["K", "O", b])) for b, n in nets], steps=[], share_noexp={})
+    for (a, na), (b, nb) in zip(nets[:-1], nets[1:]):
+        q = A0.quantity(lambda L, a=a, b=b: (L[a] - L[b]) / (L["K"] - L["O"]), ["K", "O", a, b])
+        q["z"] = q["value"] / q["se"] if q["se"] > 0 else None
+        out["steps"].append(dict(frm=a, to=b, episodes=[int(na), int(nb)], gain=q))
+    for b, n in nets:
+        out["share_noexp"][b] = A0.quantity(lambda L, b=b: (L["K"] - min(L[x] for x in noexp)) / (L["K"] - L[b]), ["K", b] + noexp)
+        for nm, cand in (("sigma@8", ["D@8", "FT@8", "Dr@8", "P0", "S@0"]), ("sigma@512", ["D@512", "FT@512", "Dr@512", "P0", "S@0"])):
+            cc = [x for x in cand if x in A0.bases]
+            out.setdefault(nm, {})[b] = A0.quantity(lambda L, b=b, cc=cc: (min(L[x] for x in cc) - L[b]) / (L["K"] - L[b]), ["K", b] + cc)
+    for grp in ("nets", ):
+        for e in out[grp]:
+            e["oes_pooled"].pop("per_world", None)
+    last = out["steps"][-1]["gain"]
+    out["last_step_gain"] = last["value"]
+    out["verdict"] = ("not converged in data: the last step still gains more than 0.01 of pooled skill; C is a lower bound"
+                      if last["value"] > 0.01 else "the last step gains at most 0.01 of pooled skill")
+    return out
+
+
+def analyse_arm(d, arm, cfg=None):
     S, world, klass, group, meta, worlds, info = load_arm(d, arm)
+    curve = c_curve(S, world, klass, cfg or {})
     # the ceiling C is the candidate with the lowest pooled score over the arm (DESIGN.md sections 4, 5d): the net trained
     # from scratch on n_csim true-weight episodes ("C" in the job), P0 fine-tuned on them ("Cft"), and, in job 005, the
     # net trained on n_cbig episodes ("Cbig"). The others keep a name: Cscratch / Cmid (the scratch net on n_csim), Cft.
@@ -155,7 +187,8 @@ def analyse_arm(d, arm):
     B = A.bases
     out = dict(arm=arm, eps=meta.get("eps"), n_hidden=meta["n_hidden"], n_items=int(len(world)), cells=meta["cells"],
                valid_cells=A.valid.tolist(), hidden_labels=meta["hidden_labels"], groups=meta["groups"],
-               group_of_world=meta["group_of_world"], policies={b: len(k) for b, k in B.items()}, ceiling_is=ceiling)
+               group_of_world=meta["group_of_world"], policies={b: len(k) for b, k in B.items()}, ceiling_is=ceiling,
+               c_curve=curve)
     # ---- skill table
     tab = {}
     for b in B:
@@ -406,7 +439,7 @@ def main():
                                                  "started_at", "finished_at", "review", "pod", "message") if k in st}
     for arm in info["arms"]:
         if os.path.exists(os.path.join(d, arm, "scores.npz")):
-            res["arms"][arm] = analyse_arm(d, arm)
+            res["arms"][arm] = analyse_arm(d, arm, info.get("config"))
             r = res["arms"][arm]
             print(arm, "worlds", r["n_hidden"], "sigma", round(r["acceptance"]["sigma"]["value"], 3), "+-",
                   round(r["acceptance"]["sigma"]["se"], 3), r["acceptance"]["sigma_verdict"], "| no-exp share",

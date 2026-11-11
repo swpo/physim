@@ -91,7 +91,7 @@ def main():
     print()
     print("| kind of net | " + " | ".join(f"arm {x}: converged / nets (largest late share), median best step / steps" for x in arms) + " |")
     print("|---|" + "---|" * len(arms))
-    kinds = ["P0", "A", "P0s", "C", "Cft", "Csm", "D@512 s0", "FT@512 s0", "D@128 s0", "FT@128 s0", "D@32 s0", "FT@32 s0", "D@8 s0", "FT@8 s0"]
+    kinds = ["P0", "A", "P0s", "C", "Cbig", "Cft", "Csm", "D@512 s0", "FT@512 s0", "D@128 s0", "FT@128 s0", "D@32 s0", "FT@32 s0", "D@8 s0", "FT@8 s0"]
     for k in kinds:
         cells = []
         for x in arms:
@@ -99,6 +99,18 @@ def main():
             e = cv.get(k) or cv.get(f"{x} {k}")
             cells.append("-" if e is None else f"{e['ok']} / {e['nets']} ({e['late_share_max']:.3f}), {e['best_step_median']:.0f} / {e['steps']}")
         print(f"| {k.replace(' s0', '')} | " + " | ".join(cells) + " |")
+    for x in arms:
+        cc = A[x].get("c_curve")
+        if cc:
+            print(f"\nlearning curve of the true-weight net, arm {x} (names as in the job: C is the scratch net on n_csim episodes):\n")
+            print("| net | episodes | pooled skill | P0's share with this net as the ceiling | sigma at 8 | sigma at 512 |")
+            print("|---|---|---|---|---|---|")
+            for e in cc["nets"]:
+                b = e["name"]
+                print(f"| {b} | {e['episodes']} | {v(e['oes_pooled'])} | {iv(cc['share_noexp'][b])} | {iv(cc['sigma@8'][b])} | {iv(cc['sigma@512'][b])} |")
+            for st in cc["steps"]:
+                print(f"\nstep {st['frm']} -> {st['to']} ({st['episodes'][0]} -> {st['episodes'][1]} episodes): gain {v(st['gain'])}")
+            print(f"\nverdict: {cc['verdict']}")
     if all("by_horizon" in A[x] for x in arms):
         print("\nby query horizon (ticks): share of C's skill with no hypothesis and no experiment; sigma at 8, 32 and 512 Lab episodes\n")
         print("| arm | quantity | " + " | ".join(str(h) for h in A[arms[0]]["by_horizon"]) + " |")
