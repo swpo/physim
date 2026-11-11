@@ -291,10 +291,10 @@
     {
       "billed_usd": null,
       "cap_usd": 8.4,
-      "conservative_usd": 1.7691,
+      "conservative_usd": 1.8483,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.889,
+      "hours": 0.929,
       "job_id": "r6-dialsa2-001",
       "purpose": "Round-6 dials, study dialsA2: gliders stress-conversion exam reopened on triggered items (aimed, regional) at 8-16 ticks; science share after the best generic repair, told-form recipe H; 16 truths x eta 0/4, 3 seeds per net",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -387,14 +387,14 @@
     {
       "billed_usd": null,
       "cap_usd": 8.1,
-      "conservative_usd": 0.081,
+      "conservative_usd": 0.1602,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.041,
+      "hours": 0.081,
       "job_id": "r6-foundrylong-002",
       "purpose": "Round-6 study foundrylong, stage 2: can weight inference (250 hidden numbers fitted through the simulator to 32 Lab episodes) close the long-horizon gap left by the best generic recipe, and do designed Lab programs pay? Same 16 hidden worlds, new items",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "provisioning"
+      "state": "running"
     },
     {
       "billed_usd": 0.0501,
@@ -437,8 +437,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 84.4123,
     "prior_spend_usd": 0.0,
-    "spent_usd": 69.7624,
+    "spent_usd": 69.9208,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T21:21:14Z"
+    "updated_at": "2026-11-11T21:23:37Z"
   }
 }

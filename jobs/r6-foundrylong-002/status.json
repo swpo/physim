@@ -20,14 +20,14 @@
   },
   "cap_usd": 8.1,
   "cost": {
-    "billed_usd": 0.0,
-    "conservative_usd": 0.0
+    "billed_usd": null,
+    "conservative_usd": 0.1603
   },
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
-  "hard_deadline": null,
-  "hard_deadline_epoch": null,
+  "hard_deadline": "2026-11-12T01:23:01Z",
+  "hard_deadline_epoch": 1794446581.3246796,
   "history": [
     {
       "at": "2026-11-11T21:15:36Z",
@@ -43,11 +43,16 @@
       "at": "2026-11-11T21:18:46Z",
       "message": "renting a pod",
       "state": "provisioning"
+    },
+    {
+      "at": "2026-11-11T21:23:37Z",
+      "message": "job started on the pod",
+      "state": "running"
     }
   ],
   "job_id": "r6-foundrylong-002",
   "max_estimate_usd": 6.77,
-  "message": "renting a pod",
+  "message": "job started on the pod",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -91,9 +96,36 @@
     "planned_at": "2026-11-11T21:15:56Z",
     "window_hours": 3.4
   },
-  "pods": [],
+  "pod": {
+    "gpu": "A100_40GB",
+    "name": "gpujob-r6-foundrylong-002-a1",
+    "provider": "lambdalabs",
+    "rate_usd_hr": 1.99,
+    "spot": false
+  },
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": "2026-11-11T21:19:06Z",
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r6-foundrylong-002-a1",
+      "note": null,
+      "pod_id": "c82d9bfbe9c243cbad06f7ab04c49939",
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": "2026-11-11T21:23:14Z",
+      "requested_at": "2026-11-11T21:18:48Z",
+      "spot": false,
+      "state": "ready",
+      "terminated_at": null
+    }
+  ],
   "pods_terminated": null,
+  "run_deadline": "2026-11-12T00:32:37Z",
   "run_started_epoch": 1794431926.700292,
-  "state": "provisioning",
-  "updated_at": "2026-11-11T21:18:46Z"
+  "started_at": "2026-11-11T21:23:37Z",
+  "state": "running",
+  "updated_at": "2026-11-11T21:23:37Z"
 }
