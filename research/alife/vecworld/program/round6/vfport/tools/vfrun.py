@@ -371,7 +371,7 @@ def end_of_child(rc, how: str, record: str, floor: int | None) -> None:
 
 def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=None, task: dict | None = None,
              cpu: float | None = 2, env: dict | None = None, timeout: float = 3600, image: str | None = None,
-             timeouts: dict | None = None, disk_floor_gib: float | None = None) -> dict:
+             timeouts: dict | None = None, disk_floor_gib: float | None = None, memory: float | None = None) -> dict:
     """Returns {"episodes": [...], "wall_s", "host_cpu_s", "returncode", "run_dir", "log_tail"}.
     The task option `agent_key` defaults to the run name: `single_use` stays ON, and each scripted policy or
     probe is its own agent (the same run name on the same instance is refused, as a re-roll would be)."""
@@ -387,6 +387,8 @@ def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=No
     cfg["env"]["agent"]["retries"] = {"max_retries": 0}
     if cpu:
         cfg["env"]["agent"]["runtime"]["cpu"] = cpu
+    if memory:                                               # GiB; the runtime clamps it to the pin's cap (physim2_env/boxcaps.py)
+        cfg["env"]["agent"]["runtime"]["memory"] = memory
     if instances is not None:
         cfg["env"]["taskset"]["instances"] = list(instances)
     if image:
@@ -552,6 +554,8 @@ def request_route(a) -> int:
             raise CR.Refused("--stand-in-endpoint is for tests against a stand-in on this machine: http://127.0.0.1:<port>/v1 and nothing else")
         if stand_in and a.model_credentials:
             raise CR.Refused("a stand-in endpoint and model credentials do not go together")
+        if stand_in:                                         # a test: its configs live in the test's own pilot folder
+            CC.CONFIG_DIR = os.path.join(os.path.abspath(os.path.expanduser(a.pilot)), "configs")
         req = CR.read_request(a.request)
         CR.check_pin(req)
         cfg = CR.check_config(req)
