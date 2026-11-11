@@ -22,8 +22,10 @@ Both start the tracker memory from the state (Designer.from_states), so slot ide
 views are permutation-invariant:
     pop      (N, mean size) of the cell list                      (level 2 without its 50-tick rate window)
     raster   cell mass and catalyst mass per 16-px block          (the level-1 view scored in round5/vortexexam)
-Scores: fair energy score (vw.scoring) at h = 4, 8, 16, 32 ticks, coordinates divided by the pool SD; K = the
-pool of the other members' `none` truths at the same horizon.
+Scores: fair energy score (vw.scoring) at h = 4, 8, 16, 32 ticks, coordinates divided by their SD over all truths
+of the run (floored at a tenth of the median SD); K = the pool of the other members' `none` truths at the same
+horizon. With plug_<name>=value the comparison simulator is instead the hidden law with those wrong values, run
+from the full hidden state (how much the hidden VALUES matter once the form is known).
     screen gap = (L(public law | state) - L(O)) / (L(K) - L(O)), L summed over the four horizons,
 per view and program class; bootstrap SE over members. Also: the same gap for an oracle that ignores the program
 (does the input matter), and the mean shift truth - public of the target cell's mass and of the mean size in units
@@ -56,7 +58,8 @@ def parse(argv):
     nats = float(pos[3]) if len(pos) > 3 else 300.0
     seed = int(pos[4]) if len(pos) > 4 else 1
     tag = kv.pop("tag", f"{cand}_lam{lam:g}")
-    return cand, lam, size, M, R, nats, seed, {k: float(v) for k, v in kv.items()}, tag
+    plug = {k[5:]: float(kv.pop(k)) for k in list(kv) if k.startswith("plug_")}
+    return cand, lam, size, M, R, nats, seed, {k: float(v) for k, v in kv.items()}, tag, plug
 
 
 def programs(cfg, L1_t0, K, nats, rng):
@@ -109,7 +112,7 @@ def target_mass(L1, K, tgt, size):
 
 
 def main():
-    cand, lam, size, M, R, nats, seed, hid, tag = parse(sys.argv)
+    cand, lam, size, M, R, nats, seed, hid, tag, plug = parse(sys.argv)
     cfg = SL.small_cfg(size)
     t_cpu = time.process_time()
     spec_p, parts = SL.build(cfg)
@@ -135,8 +138,13 @@ def main():
     Pd = np.repeat(P.reshape(M * C, H, cfg.m), R, axis=0)                  # (B, H, m)
     xh = {k: rep(v) for k, v in x.items()}
     _, rt = dh.rollout(dh.from_states(xh), Pd, T=H, rec=("L1",))
-    xp = {k: rep(x[k]) for k in MJ.FIELDS}
-    _, rq = dp.rollout(dp.from_states(xp), Pd, T=H, rec=("L1",))
+    if plug:                                    # plug_<name>=value: the comparison simulator is the HIDDEN law with
+        spec_q, _ = SL.build(cfg, cand, hidden=dict(hid, lam=lam, **plug))   # these wrong values, run from the full state
+        dq = MW.MapWorld(spec_q, world_seed=1).designer
+        _, rq = dq.rollout(dq.from_states(xh), Pd, T=H, rec=("L1",))
+    else:
+        xp = {k: rep(x[k]) for k in MJ.FIELDS}
+        _, rq = dp.rollout(dp.from_states(xp), Pd, T=H, rec=("L1",))
     cpu_sim = time.process_time() - t_cpu
 
     def views(r):
@@ -148,6 +156,8 @@ def main():
     ras_q, pop_q, L1_q = views(rq)
 
     out = {"PILOT_NEVER_REUSE_AS_EXAM": True, "cand": cand, "lam": lam, "hidden_overrides": hid,
+           "comparison_simulator": ("public law from the projected state" if not plug else
+                                    {"hidden law from the full state with wrong values": plug}),
            "hidden_values_pilot": None if cand == "public" else {k: float(v) for k, v in {**SL.HID0, **hid, "lam": lam}.items()},
            "size": size, "members": M, "R": R, "nats_per_item": nats, "seed": seed, "T0": T0, "H": H, "horizons": list(HS),
            "classes": list(CLASSES), "targets": tgt, "cpu_s_sim_incl_compile": cpu_sim,
@@ -168,8 +178,9 @@ def main():
     for vname, Yt, Yq in (("pop", pop_t, pop_q), ("raster", ras_t, ras_q)):
         d = Yt.shape[-1]
         pool = Yt[:, 0]                                                    # none truths (M, R, nh, d)
-        sc = pool.reshape(M * R, len(HS), d).std(0)
-        sc = np.where(sc > 1e-9, sc, 1.0)                                  # (nh, d)
+        sc = Yt.reshape(M * C * R, len(HS), d).std(0)                      # (nh, d): SD over all truths of the run
+        pos = sc[sc > 1e-9]
+        sc = np.maximum(sc, 0.1 * np.median(pos)) if pos.size else np.ones_like(sc)   # floor: blocks that are rarely occupied
         esO = np.zeros((M, C, len(HS)))
         esQ, esK, esI = np.zeros_like(esO), np.zeros_like(esO), np.zeros_like(esO)
         for j in range(len(HS)):

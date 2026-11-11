@@ -19,3 +19,10 @@ Deliverable: `DESIGN.md` in this folder.
   the hidden field at its adiabatic equilibrium (0 at dial 0). `results/probe_S.json`: an aimed 300-nat starve takes
   the target cell's minimum S from 0.11 to 0.02-0.04 (median 0.14 to 0.10-0.11); an aimed feed lifts the median by
   0.04 only, so a gate above the passive range is out of reach. Second pass running.
+- 12:05: second and third pass. With the hidden field at equilibrium and dial 1: kpool forms no cells; lpool and
+  bound fill the whole box with inside phase (their initial stock is released into formation); dorm (threshold
+  0.09) stays silent under every class. With dial 0.2-0.3: kpool (empty start) is viable but the public law is
+  already wrong without input (pop gap 0.08 +- 0.04); lpool leaves 4 of 8 boxes empty; bound 5 of 8. New candidate
+  `pro` (a hidden carrier of the injected substrate): viable, passive gap at the floor (0.011 +- 0.007), starve
+  0.147 +- 0.067, target-cell mass off by tens of oracle SDs under aimed inputs. Fourth pass running (dial sweep
+  of `pro` at 12 members; screen now scales by the SD over all truths with a floor, and takes plug_<name>=value).

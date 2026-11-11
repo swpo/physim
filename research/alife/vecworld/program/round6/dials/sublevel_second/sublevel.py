@@ -20,6 +20,10 @@ field at its equilibrium, which is 0 at lam = 0, is the public law, checked bit 
   'bound'  substrate bound to the medium, B (immobile, not eaten, not washed out): S <-> B
                B' = lam k_a S - k_d B                           S' = ... - lam k_a S + k_d B
            (retardation factor 1 + lam k_a / k_d at equilibrium)
+  'pro'    a carrier of the INPUT: a fraction lam of what the channel injects (command and channel noise) arrives
+           as a carrier X (signed, moves with DX, not eaten, not washed out) that turns into substrate at rate rho
+               X' = DX lap X - rho X + lam f                    S' = ... + (1 - lam) f + rho X
+           (without input and channel noise X = 0: the passive law is the public law exactly)
 
 In balanced (slow) conditions 'kpool' and 'lpool' deliver exactly the public fluxes (rho Q = lam A), 'bound' sits
 at B = (lam k_a / k_d) S with no net exchange, and 'dorm' is silent while S stays above s_c: the public law is
@@ -46,10 +50,10 @@ import vw  # noqa: E402
 import membrane_jax as MJ  # noqa: E402
 import membrane_world as MW  # noqa: E402
 
-CANDS = ("kpool", "lpool", "dorm", "bound")
-EXTRA = {"kpool": "Q", "lpool": "R", "dorm": "Ki", "bound": "B"}
+CANDS = ("kpool", "lpool", "dorm", "bound", "pro")
+EXTRA = {"kpool": "Q", "lpool": "R", "dorm": "Ki", "bound": "B", "pro": "X"}
 # illustrative hidden values (time units; one tick = 10): PILOT ONLY, never to be reused as an exam
-HID0 = dict(lam=0.0, rho=0.005, k_off=0.05, k_on=0.004, s_c=0.25, w_c=0.03, k_a=0.02, k_d=0.01)
+HID0 = dict(lam=0.0, rho=0.005, k_off=0.05, k_on=0.004, s_c=0.25, w_c=0.03, k_a=0.02, k_d=0.01, DX=0.2, eq0=1.0)
 
 
 def make_native_step(cfg: MJ.Config, cand: str):
@@ -80,10 +84,14 @@ def make_native_step(cfg: MJ.Config, cand: str):
         elif cand == "dorm":
             off = lam * q["k_off"] * jax.nn.sigmoid((q["s_c"] - S) / q["w_c"]) * Ka
             E2 = jnp.maximum(E + h * (mob_div(E, g, q["DK"]) + off - q["k_on"] * E - kdec * E), 0)
-        else:  # bound
+        elif cand == "bound":
             ex = q["k_d"] * E - lam * q["k_a"] * S
             E2 = jnp.maximum(E - h * ex, 0)
             dS = ex
+        else:  # pro: the channel's substrate arrives as a carrier X (signed), which diffuses and converts to S
+            E2 = E + h * (q["DX"] * lap(E) - q["rho"] * E + lam * f)
+            dS = q["rho"] * E
+            f = f * (1 - lam)
         S2 = jnp.maximum(S + h * (q["DS"] * lap(S) - auto - prodL + q["F"] * (1 - S) + f + dS), 0)
         K2 = jnp.maximum(K + h * (mob_div(K, g, q["DK"]) + auto - kdec * K + dK), 0)
         w = 4 * phi * (1 - phi)
@@ -114,18 +122,18 @@ def make_level(cfg: MJ.Config, cand: str, hidden: dict | None = None, theta: dic
     hh = float(cfg.dt)
 
     def init(q, key):
-        # the hidden field starts at its adiabatic equilibrium with the public initial fields (pools: the content
-        # that delivers the public flux, rho E = lam * flux; bound: no net exchange; dorm: nothing dormant), so a
-        # world does not begin with an empty hidden level. lam = 0 gives E = 0 exactly.
+        # the hidden field starts at eq0 times its adiabatic equilibrium with the public initial fields (pools: the
+        # content that delivers the public flux, rho E = lam * flux; bound: no net exchange; dorm, pro: 0).
+        # eq0 = 0 is an empty hidden level. lam = 0 gives E = 0 exactly.
         x = init_pub(q, key)
         S, K, phi = x["S"], x["K"], x["phi"]
         if cand in ("kpool", "lpool"):
             auto = q["c"] * S * K * (1 - K) * phi
             prodL = q["b"] * K * S
             lim = jnp.minimum(1.0, 0.5 * S / jnp.maximum(hh * (auto + prodL), 1e-12))
-            E = q["lam"] * (auto if cand == "kpool" else prodL) * lim / q["rho"]
+            E = q["eq0"] * q["lam"] * (auto if cand == "kpool" else prodL) * lim / q["rho"]
         elif cand == "bound":
-            E = q["lam"] * q["k_a"] / q["k_d"] * S
+            E = q["eq0"] * q["lam"] * q["k_a"] / q["k_d"] * S
         else:
             E = jnp.zeros((cfg.H, cfg.W))
         return dict(x, **{ek: E})
