@@ -9,6 +9,21 @@ Prices: Prime's Models API, `GET https://api.pinference.ai/api/v1/models`, field
 
 | # | rollout | model | price in / out / cache read ($ per M tokens) | bound by caps | status | tokens in | tokens out | cost | running sum |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | qwen_ring_001 | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | $0.23 + one request (1.5 M total, 60 k out) | not started | | | | $0.00 |
+| 0 | preflight ping for qwen_ring_001 (one request, `tools/ping_model.py`) | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | 16 output tokens | done 10:59 UTC, HTTP 200 | 258 | 2 | $0.00003 (the provider's own `cost` field said 0) | $0.00003 |
+| 1 | qwen_ring_001 | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | $1.22 (see below) | STARTED 11:01 UTC (if this row is not completed, the rollout was cut: count the bound) | | | | |
 
 Scripted, model-free runs (the reference table, the dry run) cost $0 and are not listed.
+
+## How a rollout's caps bound its bill (read this before sizing the next rollout)
+
+The pinned config and RUNBOOK_MAC.md step 3 give the bound `max_total_tokens x p_in + max_output_tokens x p_out`
+($0.23 for row 1). That is not a bound on the bill. verifiers checks `max_total_tokens` against the trace's
+`num_total_tokens`, which counts each fed-in token once over the whole rollout (v1/session.py:83-113,
+v1/trace.py:482-509); the provider bills the whole context again at every turn. The bill is bounded by
+
+    max_turns x min(context window, tokens fed so far) x p_in  +  (max_output_tokens + sampling.max_tokens) x p_out
+
+Row 1: 40 x 262,144 x $0.11/M + 68,192 x $1.01/M = $1.15 + $0.07 = $1.22. The same arithmetic for a model at
+$5 in / $20 out per million with a 400 k context and 40 turns gives $80 + $1.4: the turn cap, not the token cap,
+is what sizes an expensive rollout. Cost after a rollout is computed from the per-call usage in the trace
+(sum of prompt tokens, cached tokens and completion tokens over the calls), never from `num_input_tokens`.

@@ -42,8 +42,38 @@ State (newest last; times UTC as this container's clock shows them):
   committed): the runner's scratch folder `rollq/store`. Reference table started: `tools/prove.py`, policies
   S, D, P0, PM, C, null, C once more with one box per item; disk floor 1.5 GiB (3.0 GiB free on this machine).
 
-Next: the reference table's result; the free dry run; commit; the rollout (run label physim2-rollq-20261111,
-run name qwen-ring-001); extraction into `qwen_ring_001/`.
+- 10:58 Reference table done (`tools/prove.py`, EXIT 0, 896 s for 7 scripted rollouts with 4 shared cores under
+  load 6): all graded, 0 failed items; laboratory ticks S 392, D 392, others 0. On this instance, skill on the
+  K-to-O scale (and K-to-C): O 1.000 (1.073), C 0.932 (1.000), S 0.927 (0.994), P0 0.817 (0.876), PM 0.796
+  (0.854), D 0.466 (0.500), K 0, null -0.040 (-0.042). C graded once more with one fresh box per item: identical
+  per-item scores, 64 item boxes, 4.76 s per item box (so the model's grading takes about 5 minutes). Saved:
+  `qwen_ring_001/reference/`. The scripted boxes ran with the tools' own settings (2 CPUs; memory: the task
+  row's 8 GiB, `tools/prove.py` has no option for it); the model's boxes are capped at 2 CPUs and 4 GB by config.
+- 10:59 Dry run of step 3 in its Linux form (free, no model, no credential): `DRY-RUN-OK`; vf-eval resolved the
+  config (`qwen_ring_001/dry_run_resolved_eval.json`: bash harness, tool timeout 600 s, docker, cpu 2,
+  memory 4, 40 turns, 1.5 M / 60 k tokens, rollout 3600 s, no retries, push false).
+- 10:59 One paid ping of the model from vf-eval's environment (`tools/ping_model.py`; the model list answers 200
+  without a credential, so it proves nothing about the key): HTTP 200 in 2.5 s, usage 258 tokens in, 2 out
+  (`qwen_ring_001/preflight_ping.json`). The key, the team header and the CA route work.
+- SPEND BOUND corrected before the start: the runbook's bound (1.5 M x p_in + 60 k x p_out = $0.23) is not a
+  bound on the bill, because verifiers' token caps count each fed-in token once while the provider bills the
+  context at every turn. The bound that holds is 40 turns x 262,144 tokens of context: $1.22 (`LEDGER.md`).
+- 11:01 ROLLOUT qwen_ring_001 STARTED (committed before the start). Run label physim2-rollq-20261111, run name
+  qwen-ring-001, instance pilot-qwen-ring-001-r2-w0, model qwen/qwen3.6-35b-a3b, image physim2-ring-ca:1.
+  The command, from the runner's scratch folder S, with R = this folder (the key is inherited through the
+  environment; its value is on no command line):
 
-If this session is cut during the rollout: the rollout is recorded as cut with what was spent (the provider's
-usage as far as the trace has it), and the instance is not reused.
+      nice -n 10 /home/user/evalwork/vfport/.venv/bin/python -B R/tools/here.py --run-id physim2-rollq-20261111 \
+        vfrun.py --config R/configs/qwen_ring_001.toml --run-name qwen-ring-001 --out-dir S/run --store S/store \
+        --disk-floor-gib 1.5 --model-credentials prime > S/run.log 2>&1 < /dev/null ; echo "EXIT $?" >> S/run.log
+
+  Watched by `tools/watch.py` (docker ps by the run label, the laboratory's counters, a copy of submission/
+  from the agent's box and the verifier's box; no exec in a box, no signal, no reading of the model's text).
+
+Next: when the log ends with `EXIT`: `tools/run_report.py`, `tools/extract.py` into `qwen_ring_001/`, the ledger,
+the key scan, the commit.
+
+IF YOU ARE A RESTARTED RUNNER AND THIS IS THE LAST ENTRY: the rollout was cut by the restart. Record it as cut in
+`LEDGER.md` (spend unknown, at most the bound of $1.22; the trace was in the scratch folder and is lost), do not
+reuse instance pilot-qwen-ring-001-r2-w0, and say so in the report. Whether a second rollout on a new instance
+is run is the coordinator's call (a cut by a restart is not a mechanics failure of the exam).

@@ -11,8 +11,12 @@
 #              4 CPUs and 8 GB (smoke_ring envelope), and a value set here wins over the task's
 # Unchanged: push = false, 40 turns, 1.5 M tokens in total, 60 k output tokens, one hour, no retries anywhere,
 # single_use = true, item_isolation = "box".
-# Spend bound by the caps (checked before each model call: the cap plus one request):
-#   1.5 x 0.11 + 0.06 x 1.01 = $0.23, plus at most one request.
+# Spend bound. The pinned config and the runbook give 1.5 x p_in + 0.06 x p_out (here $0.23). That is NOT a bound
+# on what is billed: verifiers compares max_total_tokens with the trace's num_total_tokens, which counts every
+# fed-in token ONCE (verifiers v1/session.py:83-113, trace.py:482-509), while the provider bills the whole
+# context again at every turn. What does bound the bill: 40 turns x at most the model's context window (262,144
+# tokens) of input, and 60,000 + 8,192 output tokens (the output cap is soft by one turn):
+#   40 x 0.262144 x 0.11 + 0.068192 x 1.01 = $1.15 + $0.07 = $1.22.
 # Started only by the command recorded in ../PROGRESS.md (through ../tools/here.py and the pinned tools/vfrun.py).
 model = "qwen/qwen3.6-35b-a3b"
 num_rollouts = 1

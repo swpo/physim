@@ -1,0 +1,11 @@
+{"instance_id": "pilot-qwen-ring-001-r2-w0", "secret_commitment": "a125f5016080ec142c86391721dd52bfccad569b6332e88e3c53a9db1b685852", "n_items": 64, "R": 16, "seconds": 10.2}
+S: [0.927] (124s)
+D: [0.466] (203s)
+P0: [0.817] (288s)
+PM: [0.796] (367s)
+C: [0.932] (457s)
+null: [-0.04] (547s)
+C (one box per item, world 0): 0.932 (888s)
+{"O": 1.0725, "K": 0.0, "S": 0.9938, "D": 0.5, "P0": 0.8759, "PM": 0.8538, "C": 1.0, "null": -0.0425}
+{"sigma": 0.12409814308462003, "null_is": "P0", "rho": 0.9498511258126898, "sigma_worlds": null, "rho_worlds": null}
+EXIT 0
