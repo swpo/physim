@@ -1,0 +1,18 @@
+# qwen-ring-002-cut: rehearsal of the round-4 pin in the cloud container (integrator). THIS ROLLOUT IS INTERRUPTED ON
+# PURPOSE after a few turns (a crash between two model calls) to rehearse the runbook's clean-up; it is not a
+# measurement. It also carries the one non-default setting of the rehearsal: reasoning_summary = "auto" (ruling
+# E14: does the route accept the reasoning object, and what comes back).
+# PILOT_NEVER_REUSE_AS_EXAM: the instance is public pilot material.
+schema = "physim2-rollout/v1"
+model = "qwen/qwen3.6-35b-a3b"
+exam_profile = "ring"
+instance = "pilot-qwen-ring-002-cut"
+max_turns = 150
+max_output_tokens_per_turn = 8192
+max_context_tokens = 200000
+wall_minutes = 60
+box_memory_gb = 4
+cap_usd = 2.0
+reasoning_effort = "default"
+reasoning_summary = "auto"
+push = false
