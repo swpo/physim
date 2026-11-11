@@ -29,17 +29,26 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
   counted as converged. Left for a next request: D(512)/FT(512) before the small budgets, info.json after every arm,
   try/except per hidden world, code norm without hidden worlds, own window masked out of the amortised context.
 
+- 12:14 job 002 heartbeat: the two shared P0 nets took 838 s for 12,000 steps (70 ms per step; about 20 expected): one
+  dispatch per step under the platform allocator. At that speed arm P's deadline falls before C starts. Decision: let 002
+  finish arm P for an early look at P0, S, the ridge and the plug-ins (no C), then CANCEL it; rerun as 003.
+- 12:35 changes for 003 (DESIGN.md section 5b, committed before the request): 50 steps per dispatch, global inputs as
+  shifts, smaller batches, priority order of nets, presmoke speed guard (exit 4 if the projected net time does not fit),
+  failure containment per hidden world, info.json after every arm. job.sh smoke from the git archive of the request's
+  code: exit 0, all three arms (7.8 min).
+- 12:40 request r6-foundryexam-003 pushed (A100, max 3.0 h, cap $7.80).
+
 ## Done
-- design and criteria declared and committed; pool and centres; code; CPU smoke from the git archive; request 001 pushed.
+- design and criteria declared and committed; pool and centres; code; CPU smokes from the git archive; requests 001 (rejected,
+  $0), 002 (to be cancelled after arm P), 003 (pushed).
 
 ## Running
-- r6-foundryexam-002 (GPU job). Watch: scratchpad/foundryexam/watch.sh r6-foundryexam-002 (log watch_r6-foundryexam-002.log);
-  status at origin/gpu-jobs:jobs/r6-foundryexam-002/status.json; read review.md when it appears.
+- r6-foundryexam-002: cancel when its log shows "P done" (push an empty gpu/requests/r6-foundryexam-002.cancel).
+- r6-foundryexam-003: watch with scratchpad/foundryexam/watch.sh r6-foundryexam-003. First thing to read: presmoke/shape_test.json
+  (ms per step) in the heartbeat or the outputs.
 
 ## Exact next step
-1. when the job is final: copy origin/gpu-jobs:jobs/r6-foundryexam-002/out/full to scratch, run
-   `python -B make_summary.py <out>/full --job r6-foundryexam-002 --status <status.json>` -> results/analysis.json.
-2. write results/summary.json (claims with job id, file, key), README.md, final report; copy status.json, review.md and the small
-   job outputs (meta.json, info.json, gate.json, worlds.json without thetas if large) into results/job/.
-3. if the job failed in the presmoke: fix, bump to r6-foundryexam-003 (never reuse an id), rerun the archive smoke first.
-4. when finished: remove the worktree and the scratch folder.
+1. when 003 is final: `bash fetch.sh r6-foundryexam-003 <scratch>`; `python -B make_summary.py <scratch>/jobs/r6-foundryexam-003/out/full
+   --job r6-foundryexam-003`; `python -B make_claims.py --job r6-foundryexam-003`; README.md; final report.
+2. also fetch 002 (cancelled) for its record: status, review, partial arm P.
+3. when finished: remove the worktree and the scratch folder.
