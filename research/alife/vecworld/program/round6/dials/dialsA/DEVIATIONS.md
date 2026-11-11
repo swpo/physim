@@ -23,3 +23,13 @@ Each entry: when, what the plan says, what was done instead, why. `DECLARED.md` 
    every class. Unstratified folds would, one time in four, hold out both episodes of a class. (b) "Only if
    the job's clock allows": a doubling of the fine-tune schedule is made only if, by the presmoke's estimates,
    the stages the plan declares (D at round 5's column, the budgets not yet run) still fit afterwards.
+5. **11 Nov 2026, 17:05 UTC. Job ids and one setting, before any run.** The plan allows one GPU job for A; one job
+   runs, under its fourth name. `r6-dialsA-001` (16:11 UTC) has a capital letter, which the protocol's id
+   pattern forbids: the runner dropped it without a status. `r6-dialsa-001` was rejected at 16:26 before any pod
+   ($0): its notes passed 4,000 characters. `r6-dialsa-002` (16:35, notes shortened) was held by the runner's
+   review and cancelled by the coordinator before any pod ($0): both trainers dispatch one compiled step per
+   Python iteration, and the platform allocator I had set makes such loops about 3.5 times slower on this card
+   (r6-foundryexam-002), which by the reviewer's model would have cut N = 32, N = 2, the control and probably
+   the 24,000-step rung. `r6-dialsa-003`, pushed by the coordinator at 17:01, is the job that runs: the same
+   pinned commit (f38f88ac0), paths, run line, hours and cap, without that allocator setting. No code, size,
+   seed or criterion differs between the four requests.

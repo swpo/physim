@@ -4,7 +4,7 @@ Reads results/<job>/scores.npz, info.json, train_info.json, presmoke/*.json and,
 status.json. Every declared criterion is computed by a_stats.criteria (DECLARED.md); everything else is under
 "reported" and is never a criterion. Each block names its source (job id, file, key).
 
-usage: python -B make_summary.py [--job r6-dialsa-001] [--dir results/job] [--budget 8] [--out results/summary.json]
+usage: python -B make_summary.py [--job r6-dialsa-003] [--dir results/job] [--budget 8] [--out results/summary.json]
 """
 import argparse
 import json
@@ -19,7 +19,7 @@ sys.path.insert(0, HERE)
 import a_stats as ST  # noqa: E402
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--job", default="r6-dialsa-001")
+ap.add_argument("--job", default="r6-dialsa-003")
 ap.add_argument("--dir", default=os.path.join(HERE, "results", "job"))
 ap.add_argument("--budget", type=int, default=None)
 ap.add_argument("--job2", default=None, help="the extension job (DECLARED R19), if one ran")
@@ -245,7 +245,11 @@ tr["base"] = [{k: b.get(k) for k in ("steps", "best_step", "best_val", "rule_met
 tr["fine_tunes"] = {nb: [{"steps": f["steps"], "rule_met": f["rule_met"], "rule": f["rule"], "timing": {k: v for k, v in f["timing"].items()
                                                                                                     if not k.startswith("group_")}}
                          for f in fs] for nb, fs in TR.get("ft", {}).items()}
-tr["D"] = {nb: [{"steps": d["steps"], "rule_met": d["rule_met"], "best_steps": [b for g_ in d["groups"] for b in g_["best_step"]]}
+# a group stopped on the job's clock is NOT trained by the plan's rule, whatever its best step (review of the job)
+tr["D"] = {nb: [{"steps": d["steps"], "best_steps": [b for g_ in d["groups"] for b in g_["best_step"]],
+                 "stopped_on_the_clock": [g_.get("stopped_early") for g_ in d["groups"] if g_.get("stopped_early") is not None],
+                 "rule_met": bool(d["rule_met"] and all(g_.get("stopped_early") is None for g_ in d["groups"])),
+                 "rule_met_as_the_job_recorded": d["rule_met"]}
                 for d in ds] for nb, ds in TR.get("D", {}).items()}
 out["training"] = tr
 if EXT:

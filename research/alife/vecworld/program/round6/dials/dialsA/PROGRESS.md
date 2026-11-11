@@ -49,3 +49,12 @@ Worktree `/home/user/wt/dialsA`, branch `wt-dialsA`; scratch
 - Running: job `r6-dialsa-002` (queued). Nothing local.
 - If restarted: run the wait loop again (scratch `wait_job.sh r6-dialsa-002`, or fetch origin/gpu-jobs every 60 s
   and read jobs/r6-dialsa-002/status.json); when it ends, read review.md first.
+- 11 Nov 17:06 UTC. `r6-dialsa-002` never started: the runner's review held it (per-step dispatch with the
+  platform allocator: about 3.5 times slower) and the COORDINATOR cancelled it and pushed `r6-dialsa-003` (same
+  ref f38f88ac0, paths, run line, cap $5; env without XLA_PYTHON_CLIENT_ALLOCATOR). I submit nothing more.
+  Acted on the review's offline points: make_summary's default job id is r6-dialsa-003; a D group stopped on
+  the clock is flagged as not trained by the rule; DEVIATIONS entry 5 records the id history. Note only:
+  job.sh's du lines do not run after a non-zero exit (set -e).
+- Running: job `r6-dialsa-003` (received 17:01; waits for a GPU slot, expected 17:30-17:40; modelled run 1.55 h).
+- If restarted: wait on r6-dialsa-003 (fetch origin/gpu-jobs every 60 s); read jobs/r6-dialsa-003/review.md
+  BEFORE the results; then results to `results/job/`, `python -B make_summary.py`, README.
