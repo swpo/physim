@@ -156,8 +156,22 @@ Also: all net seeds are offset by 1000, and the job draws a new noise secret, so
 thing (arm P: P0, S, D, FT, the ridge, the plug-ins), their difference is reported as a between-job check.
 The final table is 004's if it completes; otherwise 003's, with C marked as a lower bound.
 
+## 5d. Job r6-foundryexam-005, declared after job 004's arm P was seen
+
+Seen when this was written: 003 in full, and of 004 the log line of arm P (per-cell-mean skill C 0.760 on 4,096
+true-weight episodes, Csm 0.725 on 1,024, fine-tuned C 0.746, P0 0.654). C still gains 0.035 from four times the data,
+so it is not converged in data and every share normalised by C is a bound: P0's share an upper bound, sigma a lower
+bound. Job 005 adds one more point to C's learning curve, in arm P only: 16,384 true-weight episodes per hidden world
+and a net "Cbig" trained on them (24,000 steps at batch 128, one seed; seed-to-seed differences of C were 0.0003 in
+003). Rule, fixed now: the ceiling C of a job is the candidate with the lowest pooled score over the arm among the
+scratch nets and the fine-tuned net (sections 4 and 5c); in 005 Cbig is a candidate. The summary reports the curve
+C(1,024), C(4,096), C(16,384) from 005 and says whether the last step is still above 0.01 of pooled skill; if it
+is, C stays a lower bound in every table and the text says so. Everything else in 005 is 004's arm P unchanged
+(same hidden and training worlds, seeds + 2000, a new noise secret), so arm P has three independent repeats (003,
+004, 005) of every policy other than C; their spread is reported.
+
 ## 6. Sizes and budget
 
 Hidden worlds: 16 (arm P) + 12 (N30) + 12 (N10). One GPU job (A100, $1.99-2.35/h), expected about 2 h, cap $8.40
-(job 002; request 003 after the changes of section 5b: cap $7.80; request 004, section 5c: cap $8.40);
+(job 002; request 003 after the changes of section 5b: cap $7.80; request 004, section 5c: cap $8.40; request 005, section 5d: cap $7.20);
 a second job only for a declared follow-up. Study cap $25.
