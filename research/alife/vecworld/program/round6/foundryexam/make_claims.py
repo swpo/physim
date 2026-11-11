@@ -51,7 +51,7 @@ def main():
         add(f"{arm}.worlds", f"arm {arm}: hidden worlds, items", f"{p}.n_hidden",
             value=dict(n_hidden=R["n_hidden"], n_items=R["n_items"], train_worlds=R["train_worlds"], valid_cells=R["valid_cells"]))
         add(f"{arm}.ceiling", f"arm {arm}: which candidate is the ceiling C", f"{p}.ceiling_is")
-        for b in ("C", "Cscratch", "Cft", "Csm", "P0", "P0s", "S@0", "P0w16", "P0w64", "Kp", "plugTrue"):
+        for b in ("C", "Cscratch", "Cmid", "Cbig", "Cft", "Csm", "P0", "P0s", "S@0", "P0w16", "P0w64", "Kp", "plugTrue"):
             if b in R["table"]:
                 add(f"{arm}.oes.{b}", f"arm {arm}: pooled oracle-normalised skill of {b}", f"{p}.table.{b}.oes_pooled")
         for fam in ("S", "FT", "D", "Dr"):

@@ -51,6 +51,7 @@ ap.add_argument("--arms", default="P,N30,N10")
 ap.add_argument("--max-hours", type=float, default=2.5)
 ap.add_argument("--cpu-ok", action="store_true")
 ap.add_argument("--full-hours", type=float, default=None, help="presmoke: the time the full pass will have (speed guard)")
+ap.add_argument("--full-arms", default="P,N30,N10", help="presmoke: the arms of the full pass (speed guard)")
 args = ap.parse_args()
 OUT = args.out
 os.makedirs(OUT, exist_ok=True)
@@ -67,17 +68,19 @@ FULL = dict(burn=300, chunk=2048, gate_M=8, gate_on=True, pool_limit=None, n_hid
             seeds2=[32, 512], steps_big=SB_FULL, batch_big={"P": 256, "N30": 128, "N10": 128}, batch_world=64, batch_C=128,
             steps_C=8000, steps_Cft=3000, lr_Cft=3e-4, steps_D={8: 400, 32: 800, 128: 1500, 512: 3000},
             steps_FT={8: 200, 32: 400, 128: 1200, 512: 2400}, lr_FT=2e-4, nw_curve=[16, 64], eval_every=250,
-            eval_every_small=100, chunk_steps=50, seed_offset=1000, shape_test=False)
+            eval_every_small=100, chunk_steps=50, seed_offset=int(os.environ.get("FX_SEED_OFFSET", "1000")),
+            n_cbig=int(os.environ.get("FX_N_CBIG", "0")), steps_Cbig=24000, lock_Cbig=8, shape_test=False)
+# n_cbig > 0 (job 005, DESIGN.md section 5d): a third reference net "Cbig" on n_cbig true-weight episodes per hidden world
 _SBT = {a: {k: 100 for k in v} for a, v in SB_FULL.items()}
 PRESMOKE = dict(FULL, pool_limit=40, n_hidden_P=2, n_centres=1, n_hidden_N=1, nb_train_cand=6, nb_train=4,
-                nb_hidden_cand=4, steps_big=_SBT, steps_C=100, steps_Cft=50, steps_D={8: 50, 32: 50, 128: 50, 512: 50},
+                nb_hidden_cand=4, steps_big=_SBT, steps_C=100, steps_Cft=50, steps_Cbig=100, steps_D={8: 50, 32: 50, 128: 50, 512: 50},
                 steps_FT={8: 50, 32: 50, 128: 50, 512: 50}, nw_curve=[16], eval_every=50, eval_every_small=50, shape_test=True)
 _SBS = {a: {k: 20 for k in v} for a, v in SB_FULL.items()}
 SMOKE = dict(burn=3, chunk=8, gate_M=2, gate_on=False, pool_limit=10, n_hidden_P=2, n_centres=1, n_hidden_N=1,
              nb_train_cand=3, nb_train=3, nb_hidden_cand=2, epw=4, n_lab=8, lab_chunk=4, n_csim=8, n_items=4, R=3,
              n_clim=4, m=4, m_plug=3, budgets=[8], s_budgets=[0, 2, 8], seeds2=[8], steps_big=_SBS,
              batch_big={"P": 16, "N30": 16, "N10": 16}, batch_world=16, batch_C=16, n_csmall=4, steps_C=20, steps_Cft=10,
-             lr_Cft=3e-4, seed_offset=0,
+             lr_Cft=3e-4, seed_offset=0, n_cbig=(12 if int(os.environ.get("FX_N_CBIG", "0")) > 0 else 0), steps_Cbig=20, lock_Cbig=1,
              steps_D={8: 20}, steps_FT={8: 10}, lr_FT=2e-4, nw_curve=[4], eval_every=10, eval_every_small=10,
              chunk_steps=10, shape_test=False)
 CFG = {"full": FULL, "presmoke": PRESMOKE, "smoke": SMOKE}[args.size]
@@ -87,7 +90,7 @@ if args.size == "smoke":
     NN.KS = (0, 1, 2, 4, 8)
 STRICT = args.size != "full"                      # in a test pass a skipped or failed part fails the pass
 ARMS = [a for a in args.arms.split(",") if a]
-ARMS_FULL = ["P", "N30", "N10"]                   # the arms of the full pass (the presmoke's speed guard projects these)
+ARMS_FULL = [a for a in args.full_arms.split(",") if a]   # the arms of the full pass (the presmoke's speed guard projects these)
 EPS = {"N30": 0.3, "N10": 0.1}
 FAILED, SKIPPED = [], []
 CLOCK = {}
@@ -373,12 +376,16 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
                                     theta=theta_json(h["theta"])) for h in HW])
     jdump(f"{arm}/worlds.json", worlds_json)
     # ---- simulations at the true weights (designer side, for C)
-    obsC, UC, _ = sim_mix([h["theta"] for h in HW], CFG["n_csim"], 5000 + 100 * ai, f" {arm} C")
+    n_ctot = max(CFG["n_csim"], CFG["n_cbig"])
+    obsC, UC, _ = sim_mix([h["theta"] for h in HW], n_ctot, 5000 + 100 * ai, f" {arm} C")
     for i, h in enumerate(HW):
-        sl = slice(i * CFG["n_csim"], (i + 1) * CFG["n_csim"])
+        sl = slice(i * n_ctot, i * n_ctot + CFG["n_csim"])
         h["dsC"] = NN.make_dataset(obsC[sl], UC[sl], smu, ssd, seed=i)
         ns = min(CFG["n_csmall"], CFG["n_csim"])
         h["dsCsm"] = NN.make_dataset(obsC[sl][:ns], UC[sl][:ns], smu, ssd, seed=i)
+        if CFG["n_cbig"] > 0:
+            sb_ = slice(i * n_ctot, i * n_ctot + CFG["n_cbig"])
+            h["dsCbig"] = NN.make_dataset(obsC[sb_], UC[sb_], smu, ssd, seed=i)
     del obsC, UC
     # ---- nets, in priority order (a deadline cuts from the end; review of 002, minor 1): the prior nets, C, the
     #      largest Lab budget, the fine-tuned ceiling, the smaller budgets, the second seeds, P0's world-count curve
@@ -420,6 +427,10 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
             jobs = [(f"Csm|w{i}|s0", h["dsCsm"], 170 + 2 * i) for i, h in enumerate(HW)]
             got = train_groups(C_FULL, jobs, CFG["steps_C"], nH, tag=f"{arm} Csm", info=info, deadline=t_arm_end,
                                eval_every=CFG["eval_every"], batch=CFG["batch_C"], pad=(CFG["n_csim"], NEX * CFG["n_csim"]))
+        elif kind == "Cbig":     # C on n_cbig true-weight episodes (the first n_csim of them are C's): the learning curve of C
+            jobs = [(f"Cbig|w{i}|s0", h["dsCbig"], 190 + 2 * i) for i, h in enumerate(HW)]
+            got = train_groups(C_FULL, jobs, CFG["steps_Cbig"], CFG["lock_Cbig"], tag=f"{arm} Cbig", info=info, deadline=t_arm_end,
+                               eval_every=CFG["eval_every"], batch=CFG["batch_C"])
         elif kind == "Cft":      # P0 fine-tuned on the true-weight simulations (the other candidate for the ceiling)
             jobs = [(f"Cft|w{i}|s{sd}", h["dsC"], 150 + 2 * i + sd) for sd in (0, 1) for i, h in enumerate(HW)
                     if f"P0|g{h['gi']}|s{sd}" in nets]
@@ -435,7 +446,8 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
                                tag=f"{arm} FT@{N} s{s}", info=info, deadline=t_arm_end, eval_every=CFG["eval_every_small"], pad=pad_lab)
         nets.update({k: (C_FULL, v) for k, v in got.items()})
     Nmax = max(CFG["budgets"])
-    plan = [("C", None, None), ("D", Nmax, 0), ("FT", Nmax, 0), ("Cft", None, None), ("Csm", None, None)]
+    plan = [("C", None, None)] + ([("Cbig", None, None)] if CFG["n_cbig"] > 0 else []) \
+        + [("D", Nmax, 0), ("FT", Nmax, 0), ("Cft", None, None), ("Csm", None, None)]
     for N in sorted(CFG["budgets"], reverse=True):
         if N != Nmax:
             plan += [("D", N, 0), ("FT", N, 0)]
@@ -450,6 +462,7 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
     for h in HW:
         h.pop("dsC")
         h.pop("dsCsm")
+        h.pop("dsCbig", None)
     if arm == "P":
         obs, U, wo = groups[0]["obs_U_wo"]
         for nw in CFG["nw_curve"]:
@@ -586,6 +599,15 @@ def shape_test(st_norm):
     _, inf = NN.train(C_FULL, [dl] * L16, 200, list(range(L16)), log=log, tag=" shape lock16 lab", eval_every=200,
                       pad=(F["n_lab"], NEX * F["n_lab"]))
     ms16 = inf["ms_per_step"]
+    msB = None
+    if F["n_cbig"] > 0:
+        Eb_ = F["n_cbig"]
+        obsb = np.abs(rng.standard_normal((Eb_, FL.T1, FL.NOBS)).astype(np.float32)) + 0.1
+        dsb = NN.make_dataset(obsb, np.zeros((Eb_, FL.P + FL.H, FL.NW), np.float32), smu, ssd, seed=0)
+        _, inf = NN.train(C_FULL, [dsb] * F["lock_Cbig"], 200, list(range(F["lock_Cbig"])), log=log, tag=" shape Cbig", eval_every=200,
+                          batch=F["batch_C"])
+        msB = inf["ms_per_step"]
+        del dsb, obsb
     del ds, dl
     nW = 400
     Eb = nW * F["epw"]
@@ -601,6 +623,8 @@ def shape_test(st_norm):
     lock = sum((F["steps_D"][N] + F["steps_FT"][N]) * (2 if N in F["seeds2"] else 1) for N in F["budgets"])
     sbP = F["steps_big"]["P"]
     proj = {"P": msC * lockC + ms16 * lock + ms2["own"] * (sbP["P0"] + sbP["P0s"] + sbP["P0w"]) + ms2["random"] * sbP["A"]}
+    if msB is not None:
+        proj["P"] += msB * F["steps_Cbig"] * (F["n_hidden_P"] / F["lock_Cbig"])
     for a in ("N30", "N10"):
         sbn = F["steps_big"][a]
         frac = F["batch_big"][a] / F["batch_big"]["P"]
@@ -608,7 +632,7 @@ def shape_test(st_norm):
                    + F["n_centres"] * frac * (ms2["own"] * (sbn["P0"] + sbn["P0s"]) + ms2["random"] * sbn["A"]))
     arms = [a for a in ARMS_FULL if a in proj]
     total_h = sum(proj[a] for a in arms) / 3.6e6
-    res = dict(ms_per_step_lock16_C=msC, ms_per_step_lock16_lab=ms16, ms_per_net_step_lock16_lab=ms16 / L16, ms_per_step_big2=ms2,
+    res = dict(ms_per_step_Cbig=msB, ms_per_step_lock16_C=msC, ms_per_step_lock16_lab=ms16, ms_per_net_step_lock16_lab=ms16 / L16, ms_per_step_big2=ms2,
                lock_steps_per_arm=dict(C=lockC, lab=lock), projected_net_hours={a: proj[a] / 3.6e6 for a in arms}, projected_net_hours_total=total_h,
                full_hours=args.full_hours, seconds=time.time() - t)
     ok = True

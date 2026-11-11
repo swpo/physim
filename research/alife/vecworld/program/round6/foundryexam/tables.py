@@ -14,7 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ARMS = ("P", "N30", "N10")
 POL = [("O", "O: simulator from the hidden state"), ("C", "C: net at the true weights (the ceiling)"),
        ("Cscratch", "the other ceiling candidate"), ("Cft", "the other ceiling candidate (fine-tuned P0)"),
-       ("Csm", "C on 1,024 episodes only"), ("FT@512", "FT(512): P0 fine-tuned on 512 Lab episodes"),
+       ("Cmid", "C on 4,096 episodes"), ("Cbig", "C on the larger set (not the ceiling)"), ("Csm", "C on 1,024 episodes only"), ("FT@512", "FT(512): P0 fine-tuned on 512 Lab episodes"),
        ("FT@128", "FT(128)"), ("FT@32", "FT(32)"), ("FT@8", "FT(8)"), ("D@512", "D(512): net on 512 Lab episodes alone"),
        ("D@128", "D(128)"), ("D@32", "D(32)"), ("D@8", "D(8)"), ("Dr@512", "Dr(512): local ridge on 512 Lab episodes"),
        ("Dr@8", "Dr(8): local ridge on 8 Lab episodes"), ("S@512", "S(512): amortised inference from 512 Lab episodes"),
