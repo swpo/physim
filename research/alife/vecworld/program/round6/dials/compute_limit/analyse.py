@@ -368,7 +368,7 @@ def main():
     P128, meta128 = load_pool(S, 128)
     if P128 is not None:
         out["pools"]["128"] = dict(members=int(P128.shape[0]), ticks=int(P128.shape[1]), cpu_s=sum(m["cpu_s"] for m in meta128),
-                                   note="finite-size table only")
+                                   note="truth of the transfer table (transfer_128) and a row of the finite-size table")
     for H in (32, 48, 64, 128):
         l2 = P.get(H) if H != 128 else P128
         if l2 is None:
@@ -920,6 +920,14 @@ def main():
                  "over states, and the rms change in units of the no-input branches' sd at that horizon", **inp)
         out["screen"] = scr
 
+    cpu = {}
+    for f in sorted(glob.glob(os.path.join(S, "*.npz"))):
+        z = np.load(f)
+        if "meta" in z.files:
+            cpu[os.path.basename(f)] = json.loads(str(z["meta"])).get("cpu_s")
+    out["cpu"] = dict(note="CPU seconds of every simulation file in scratch, by its own counter (process time; the analysis "
+                           "adds about 5 CPU-minutes; m100_* are the pools of check_mut100.py)",
+                      total_cpu_s=round(float(sum(v for v in cpu.values() if v)), 1), files=cpu)
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
     with open(os.path.join(HERE, "results", "summary.json"), "w") as f:
         json.dump(out, f, indent=1)

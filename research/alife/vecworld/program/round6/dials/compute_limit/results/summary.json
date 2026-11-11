@@ -25,7 +25,7 @@
    "members": 8,
    "ticks": 260,
    "cpu_s": 1715.8000000000002,
-   "note": "finite-size table only"
+   "note": "truth of the transfer table (transfer_128) and a row of the finite-size table"
   }
  },
  "finite_size": {
@@ -6475,6 +6475,36 @@
      ]
     }
    }
+  }
+ },
+ "cpu": {
+  "note": "CPU seconds of every simulation file in scratch, by its own counter (process time; the analysis adds about 5 CPU-minutes; m100_* are the pools of check_mut100.py)",
+  "total_cpu_s": 7223.7,
+  "files": {
+   "b128_s1.npz": 894.1,
+   "b128_s2.npz": 821.7,
+   "b32_s1.npz": 238.1,
+   "b32_s2.npz": 235.5,
+   "b32_s3.npz": 237.9,
+   "b48_s1.npz": 205.7,
+   "b48_s2.npz": 199.8,
+   "b64_s1.npz": 137.1,
+   "b64_s2.npz": 144.0,
+   "b64_s3.npz": 167.2,
+   "b64_s4.npz": 134.2,
+   "b64_s5.npz": 153.4,
+   "m100_b128_s11.npz": 1095.9,
+   "m100_b64_s11.npz": 535.2,
+   "scr_b_aimed_dt1.npz": 336.7,
+   "scr_b_aimed_dt2.npz": 164.3,
+   "scr_b_aimed_dt5.npz": 78.7,
+   "scr_b_blind_dt1.npz": 316.6,
+   "scr_b_none_dt1.npz": 258.2,
+   "scr_b_none_dt2.npz": 169.8,
+   "scr_b_none_dt5.npz": 84.2,
+   "scr_base.npz": 80.9,
+   "scr_t_aimed.npz": 271.6,
+   "scr_t_none.npz": 262.9
   }
  }
 }

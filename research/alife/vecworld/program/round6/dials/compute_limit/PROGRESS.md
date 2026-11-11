@@ -1,42 +1,29 @@
 # PROGRESS (designer compute_limit, round 6 dials, study c)
 
-- 11 Nov: worktree made, reading done (README, DECISIONS, ROADMAP 1+3, round5 vortexexam/ladder/agentenv checkers).
-- Plan: (1) read vxlib / gliders / membrane sizes and CPU rates; (2) tiny CPU screens of where a scale-up binds
-  (box area, horizon, rare events); (3) budget curve for P0 / small-box transfer / effective law / control; (4) DESIGN.md.
-- Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/dials_compute_limit/ (delete when done).
-- CPU rate of vxlib.Runner (bench, 4 members): 0.0325 / 0.062 / 0.124 s per member-tick at 32 / 48 / 64 px.
-- run_boxes.py written; pilot 64 px x 4 members x 260 ticks (eps 0.4, mut128 25): s_b 0 -> 0.92, N about 7-8 (137 CPU-s).
-- Next: 32 px pool (same parameters), then transfer analysis (analog, tile-pooled, law, controls) and the budget curve.
-- 12:15: run_pools.sh running in the background (64 px 3 x 4 members, 32 px 2 x 20, 48 px 2 x 10); first sign: the
-  32 px box sweeps several times slower than the 64 px box (20 against 4 members; to be confirmed on the pools).
-- screen_state.py + run_screen.sh (state-given screen: tiles, coarse step, truncated horizon, input arms) and
-  analyse.py written, NOT yet run. Order after the pools: run_screen.sh, then analyse.py <scratch>, then DESIGN.md.
-- 12:26: pools nearly done (64 px 16 members, 32 px 60, 48 px 10 of 20); run_after.sh queued (screen stages, one
-  128 px run of 4 members, input arms). analyse.py now has: finite-size table, budget curve (analog, ridge, law,
-  controls, tiles, residual recipe, finite-size extrapolation), horizon transfer (sources cut at tick 140), screen.
-- Partial results (8 truth members, 40 small boxes; results/summary.json is a PARTIAL file until the final run):
-  small boxes are biased (b1 0.13 at 32 px against 0.23 at 64 px; density +22%); few-constant models saturate at
-  2-4 exam-size episodes and the law ties with its controls (lin, const, ridge); the law fitted on data cut at
-  tick 140 extrapolates worse than a constant drift; small-box simulations do nearly as well as the reference there.
-  Forecast for the design: a pure compute dial is filled by generic few-constant fits; say so and declare a stop rule.
-- 12:50: full pools analysed (results/summary.json: finite_size, budget_curve, horizon_transfer complete; screen has
-  the no-input arm so far). Still queued in scratch: aimed and blind input arms, tiles under the aimed program,
-  coarse step x2 and x5 (run_after.sh, run_after2.sh). Then `analyse.py <scratch> screen`, then DESIGN.md.
-- Findings so far: (1) budget binds for the analog learner only (0.03 at 1 exam-size episode, 0.23 at 15); a
-  4-constant regression has 0.21 at 2 and 0.26 at 4; (2) the level-2 law ties with the control without the selection
-  term at every budget; (3) 32 px boxes are biased (regression 0.21 against 0.28), 48 px boxes are not;
-  (4) given the state, tiles and a truncated horizon are worse than climatology; (5) a law fitted on data cut at
-  tick 140 loses to a constant drift. Forecast: the design fails acceptance; a $6 stop-rule job is proposed.
-- The `overflow` number in the pools' meta summed peaks with overflow ticks (meaningless); run_boxes.py now saves
-  them apart; a short re-check is still to do.
-- 13:10 (session resumed after a usage reset; the container had not restarted, the queued runs had gone on): the screen
-  files are all in scratch except aimed x2 (running). run_after3.sh queued: one more 64 px pool (seed 5; also the
-  re-check of the overflow counters) and a second 128 px pool (seed 2). Next: add to analyse.py (a) the level-2
-  models as rows of the state-given screen, (b) a transfer table scored on the 128 px members; then `analyse.py
-  <scratch>` in full, then DESIGN.md, commit, push, remove the worktree and the scratch folder.
-- 13:25: full analysis rerun with 20 members at 64 px and 8 at 128 px (results/summary.json is now COMPLETE: finite_size,
-  budget_curve, horizon_transfer, transfer_128 (new), screen with the coarse-step and level-2 rows and the constants by
-  input arm). Overflow counters re-checked on the new pools: 0 ticks, peaks 14 of 24 slots (64 px) and 48 of 56 (128 px).
-  Main new finding: a generic regression fitted on POOLED small boxes (4 x 64 px or 7 x 48 px summed) equals the
-  exam-size reference at 128 px (0.448 and 0.459 against 0.454); from 32 px boxes nothing does (0.287).
-- Running: run_mut100.sh (pools at mut128 = 100, then `check_mut100.py <scratch>` -> results/mut100.json). Then DESIGN.md.
+STATE: FINISHED (11 Nov, 13:50 UTC). DESIGN.md is the deliverable; results/summary.json and results/mut100.json hold
+every number; the scratch folder and the worktree are removed after the last push.
+
+What was run (CPU, one process at a time, nice 10; 2.0 CPU-hours of simulation, summary.json [cpu]):
+1. run_pools.sh: level-2 pools at 32 px (60 members x 380 ticks), 48 px (20 x 320), 64 px (16 x 260); later one more
+   64 px pool (4 members) and two 128 px pools (8 members x 260 ticks) by run_after.sh and run_after3.sh.
+2. screen_state.py (run_after.sh, run_after2.sh): four 64 px states at tick 140, eight fresh-noise branches each,
+   arms none / blind / aimed (200 nats), native step x 1, x 2, x 5, four 32 px tiles per state. The two "x 4" lines
+   stop at an assertion (250 / 4 is not an integer); nothing was lost.
+3. analyse.py <scratch>: finite-size table, budget curve, horizon transfer, transfer to 128 px, screen. A second
+   full run reproduced every number (only a note and the new cpu block differ).
+4. run_mut100.sh + check_mut100.py: the transfer from 64 to 128 px at mut128 = 100.
+
+Findings (all at tiny size, public parameters, level 2 from its own state):
+- Rescaled small-box predictors lose 0.10 (64 px) to 0.31 (32 px) at 128 px; a regression on POOLED small boxes
+  (4 x 64 px or 7 x 48 px) equals the exam-size reference; from 32 px (2.3 vortices per box) nothing does.
+- The level-2 law beats brute-force learners only at a budget of one exam-size episode, where a constant-drift
+  control is level with it; from 8 episodes a generic regression is better.
+- A native step five times longer and 3 members instead of 7 lose nothing at level 2 given the state; a truncated
+  horizon and tiles cut from the state are worse than a level-2 model that costs nothing.
+- Designed stirring neither exposes a surrogate's defect nor helps to fit the law's constants.
+- Overflow counters of the tracker (saved apart since 12:50): 0 overflow ticks on every pool made after the fix
+  (64 px peak 13-15 of 24 slots, 128 px peak 46-48 of 56). The older pools carry only the meaningless sum.
+- Forecast: design (c) fails on fed vortices; a $5 stop-rule job is proposed; the pooling defect is proposed as a
+  world-card quantity.
+
+Three runs exceeded "a few CPU-minutes": the 128 px pools (14, 15 and 18 CPU-minutes).
