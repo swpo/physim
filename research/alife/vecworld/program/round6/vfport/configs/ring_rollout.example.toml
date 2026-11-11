@@ -1,0 +1,20 @@
+# A rollout config of the ring profile: the EXAMPLE, with every key and the profile's defaults.
+# Schema physim2-rollout/v1 (physim2_env/rollout_config.py): top-level keys only; no table, no array, no path,
+# nothing executable. Everything else of a rollout (env, taskset, image, the stock bash harness, runtime, retries) is
+# fixed by the pin and added by rollout_config.expand. A config that the runner executes lives under
+# round6/rollouts/configs/, names its own fresh pilot instance, and is started by a request (tools/vfrun.py); this
+# file is not started by anything.
+# Every limit below is told to the agent in its task statement (TASK.md, section 4).
+schema = "physim2-rollout/v1"
+model = "qwen/qwen3.6-35b-a3b"          # a Prime inference model id (default)
+exam_profile = "ring"                   # physim2_env/profiles.py: ring world, exam config ring_r4, 64 items, image physim2-ring:2
+instance = "pilot-example-ring-001"     # REQUIRED: ^pilot-[a-z0-9-]{3,40}$ ; made with tools/make_instances.py --profile ring --id <this>
+max_turns = 150                         # 1..400    model replies (default 150)
+max_output_tokens_per_turn = 8192       # 256..32768 (default 8192)
+max_context_tokens = 200000             # REQUIRED: 8192..2000000 ; no call is sent whose prompt could exceed it
+wall_minutes = 60                       # 5..180    (default 60)
+box_memory_gb = 4                       # 1..4      every box of the rollout; may only lower the profile's 4 (default 4)
+cap_usd = 5.0                           # REQUIRED: 0.01..500 ; the spend stop of this rollout, at the model's listed prices
+reasoning_effort = "default"            # default (nothing sent) | none | minimal | low | medium | high | xhigh | max
+reasoning_summary = "default"           # default (nothing sent) | auto | detailed   (not yet tried against the route)
+push = false                            # false is the only value

@@ -1,0 +1,3599 @@
+{
+ "what": "round 4, fixer A (the exam side): unit checks, the image's harness set-up without network, and the scripted proof through vf-eval. No model was called; nothing was uploaded.",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "hidden_values_in_this_file": "none (theta, the secret and the items of the pilot instance stay in the worker's store)",
+ "where": "the cloud container (Linux x86_64, 4 shared cores under load 4 to 7, Docker 29.9.2, verifiers 0.3.2.dev163), 11 Nov 2026; nothing here ran on macOS",
+ "evidence": {
+  "unit_checks_container": "run in a throwaway container (no mount, no network)",
+  "pure_checks_host": "run under tripwires on the worker",
+  "harness_setup": "the command read from the pinned verifiers under tripwires; replayed in a throwaway container (no network, read-only root)",
+  "proof": "run through vf-eval in containers that verifiers started (run label physim2-port4a), boxes capped by fixer B's runtime; the cross-check with round 5's grader in a throwaway container"
+ },
+ "summary": {
+  "unit_checks_container": [
+   91,
+   91
+  ],
+  "pure_checks_host": [
+   19,
+   19
+  ],
+  "proof_checks": [
+   48,
+   48
+  ],
+  "failed": []
+ },
+ "commands": {
+  "unit_checks_container": [
+   "docker run -d --name physim2-port4a-units --network none --label verifiers.run=physim2-port4a --entrypoint sleep physim2-ring:2 infinity",
+   "tar --exclude=.venv --exclude=__pycache__ --exclude=results --exclude=redteam --exclude=rehearsal -cf - research/alife/vecworld/program/round6/vfport research/alife/vecworld/program/round5/agentenv research/alife/vecworld/vw1/vw | docker cp - physim2-port4a-units:/",
+   "docker exec -w /research/alife/vecworld/program/round6/vfport physim2-port4a-units nice -n 10 python -B tests/exam_units.py",
+   "docker cp physim2-port4a-units:/tmp/exam_units.json <scratch>/ ; docker rm -f physim2-port4a-units"
+  ],
+  "pure_checks_host": [
+   ".venv/bin/python -B tests/exam_pure.py --trace ../rollouts/astra_ring_001/trace.redacted.jsonl --out <scratch>/exam_pure.json"
+  ],
+  "harness_setup": [
+   ".venv/bin/python -B tests/harness_setup_command.py <scratch>/hs",
+   "sh tests/harness_setup.sh physim2-ring:2 <scratch>/hs",
+   "sh tests/harness_setup.sh physim2-ring:1 <scratch>/hs    (control: fails, image 1 has no uv and the box no route)"
+  ],
+  "image_build_here": [
+   "docker build --network host --build-arg HTTPS_PROXY=$HTTPS_PROXY --build-arg EXTRA_CA_B64=\"$(base64 -w0 /root/.ccr/agent-proxy-ca.crt)\" --label physim2.built-by=port4a -f docker/Dockerfile.ring -t physim2-ring:2 docker/",
+   "(on a machine without a TLS-intercepting proxy: docker build -f docker/Dockerfile.ring -t physim2-ring:2 docker/)"
+  ],
+  "proof": [
+   "env -i PATH=$PATH HOME=$HOME USER=root LANG=C.UTF-8 VF_RUN_ID=physim2-port4a nice -n 10 .venv/bin/python -B tests/prove_round4.py --store $STORE --scratch $SCRATCH --instance pilot-port4a-proof-001 --disk-floor-gib 1.2 --out $SCRATCH/round4_exam.json",
+   "(three invocations: stages instance,reference; then all stages; then all stages again after two corrections, with every finished run kept: see `superseded_runs` and `notes`)"
+  ],
+  "proof_inner": [
+   ".venv/bin/python -B tools/make_instances.py --store $STORE --profile ring --id pilot-port4a-proof-001",
+   "VF_RUN_ID=<label> .venv/bin/python -B tools/prove.py --store $STORE --scratch $SCRATCH/reference --profile ring --instance pilot-port4a-proof-001 --policies null,D,P0,C --disk-floor-gib 1.2 --out $SCRATCH/reference.json",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/null-box.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/fail-none.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/fail-raises.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/fail-shape.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/fail-nan.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/fail-timeout.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/mixed-submit.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/end-submit.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/end-exit.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/end-wall.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/end-fail.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/end-fail-stock.toml --no-rich",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/end-turns.toml --no-rich",
+   "docker 'run -d --name' physim2-port4a-xcheck '--network none --entrypoint sleep' physim2-ring:2 'infinity ; docker cp <code, instance, submissions> ;' docker exec -w /src/program/round6/vfport physim2-port4a-xcheck nice -n 10 python -B tests/cross_check_round5.py --hidden /x/store/pilot-port4a-proof-001/hidden --config ring_r4 --out /tmp/round5.npz null=/x/subs/null D=/x/subs/D P0=/x/subs/P0 C=/x/subs/C valid=/x/subs/valid mixed=/x/subs/mixed '; docker cp' physim2-port4a-xcheck:/tmp/round5.npz '; docker rm -f' physim2-port4a-xcheck",
+   "(through tools/vfrun.py's child environment) VF_RUN_ID=<label> .venv/bin/python -B tools/vfeval.py @ $SCRATCH/runs/fail-nopredict.toml --no-rich"
+  ]
+ },
+ "notes": [
+  "The disk floor of the tools was 1.2 GiB instead of 8: this machine had 1.6 to 2.5 GiB free for everyone.",
+  "The proof ran in three invocations of the same resumable tool. After the second, two checks failed: (1) the grade of a submission/ without predict.py said `no submission`, not `no predict.py` (the scores were right: all 64 items the null policy's); physim2_env/taskset.py now takes the word from the freeze rules' message and the case was run again (fail-nopredict; the first run is under superseded_runs). (2) a check of this tool read a field the saved trace does not have (num_turns); the check now counts replies. No other run was repeated.",
+  "In the `mixed` case no item of this instance met the predictor's time-out branch (a hash of the history); the per-item time-out word is covered by the whole-predictor case `fail-timeout` and by tests/exam_units.py part 4.",
+  "The turn-limit ending used verifiers' stock bash harness in image physim2-ring:2 with tools/standin_model.py (fixer B's local stand-in) in place of a model: 3 scripted replies, no model call, nothing billed. The harness's set-up in that run found everything preinstalled.",
+  "Reference-table cost on this machine (4 shared cores, load 4 to 7): about 90 s per scripted policy with all items in one grading box; 372 s for null, D, P0, C. With one fresh box per item (the default for a model's rollout) grading 64 items at 256 samples took about 200 s (3.0 s per item box)."
+ ],
+ "image": {
+  "name": "physim2-ring:2",
+  "id": "sha256:8080830e34922aa697db89df9955b72348e18415c50209a95ee72b38ea1788c4",
+  "bytes": 621231867,
+  "architecture": "amd64",
+  "base": "python:3.12-slim (Python 3.12.16 at build time)",
+  "built_here_with": "the proxy's CA as build argument EXTRA_CA_B64 (build stage only)",
+  "final_image_checked": "no proxy configuration, no extra certificate, no build argument in its history; /usr/local/bin/uv is docker/harness-uv"
+ },
+ "harness_setup": {
+  "verifiers": "0.3.2.dev163",
+  "program_sha256": "4943eb86cb750889dcc155b7efa96b3ac9c373138d4e1e57207205a6f66df79b",
+  "program_bytes": 38382,
+  "program_metadata": "# /// script\n# requires-python = \">=3.10\"\n# dependencies = [\"openai\", \"mcp==2.0.0\", \"httpx\", \"httpx2\", \"tenacity\", \"certifi\"]\n# ///\n",
+  "command_run_in_the_box": "mv -f /tmp/vf-scripts/4943eb86cb750889dcc155b7efa96b3ac9c373138d4e1e57207205a6f66df79b.py.replay.tmp /tmp/vf-scripts/4943eb86cb750889dcc155b7efa96b3ac9c373138d4e1e57207205a6f66df79b.py && { export PATH=\"$HOME/.local/bin:$PATH\" UV_INSTALL_DIR=\"$HOME/.local/bin\"; command -v uv >/dev/null 2>&1 || pip install -q -U --user uv 2>/dev/null || { { command -v curl >/dev/null 2>&1 || command -v wget >/dev/null 2>&1; } || { apt-get update -qq && apt-get install -y -qq curl ca-certificates; } || apk add --no-cache curl ca-certificates; { command -v curl >/dev/null 2>&1 && curl -LsSf https://astral.sh/uv/install.sh | sh; } || { command -v wget >/dev/null 2>&1 && wget -qO- https://astral.sh/uv/install.sh | sh; }; }; } && uv sync --script /tmp/vf-scripts/4943eb86cb750889dcc155b7efa96b3ac9c373138d4e1e57207205a6f66df79b.py -q --no-config && uv python find --script /tmp/vf-scripts/4943eb86cb750889dcc155b7efa96b3ac9c373138d4e1e57207205a6f66df79b.py --no-config",
+  "env_added_by_verifiers": {
+   "UV_OFFLINE": "false"
+  },
+  "replay_in_image_2_without_network_and_with_a_read_only_root": {
+   "setup_exit": 0,
+   "interpreter": "/opt/physim2-harness/venv/bin/python",
+   "setup_ms": 15,
+   "program_help_exit": 0,
+   "program_help_lines": 25,
+   "routes_in_the_box": 0,
+   "tmp_kib_used": 44,
+   "root_writable": false
+  },
+  "replay_in_image_1": "fails: no uv on PATH, pip and apt cannot reach an index (seen: `E: Unable to locate package curl`)"
+ },
+ "unit_checks_container": {
+  "tool": "tests/exam_units.py",
+  "where": "a throwaway container (no mount, no network), as root",
+  "n_checks": 91,
+  "n_passed": 91,
+  "failed": [],
+  "seconds": 67.4,
+  "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+  "checks": [
+   {
+    "check": "1 capture: the two plain files are written with the right content",
+    "ok": true,
+    "files": [
+     "___",
+     "caf_.txt",
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+     "predict.py",
+     "sub/model.npz",
+     "we_ird_na_me___x_.py"
+    ]
+   },
+   {
+    "check": "1 capture: sha256 and byte counts of the manifest are those of the files on disk",
+    "ok": true
+   },
+   {
+    "check": "1 capture: everything written is a regular file (0600) or a directory (0700); no link, device or fifo exists",
+    "ok": true,
+    "kinds": {
+     "sub": "0o40700",
+     "we_ird_na_me___x_.py": "0o100600",
+     "___": "0o100600",
+     "predict.py": "0o100600",
+     "caf_.txt": "0o100600",
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn": "0o100600",
+     "sub/model.npz": "0o100600"
+    }
+   },
+   {
+    "check": "1 capture: skipped and listed: not a regular file: symbolic link",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: skipped and listed: not a regular file: hard link",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: skipped and listed: not a regular file: device",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: skipped and listed: not a regular file: fifo",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: skipped and listed: absolute path",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: skipped and listed: parent path",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: skipped and listed: outside the root",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: skipped and listed: too deep",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: skipped and listed: name collision",
+    "ok": true,
+    "why": [
+     "absolute path",
+     "name collision",
+     "not a regular file: device",
+     "not a regular file: fifo",
+     "not a regular file: hard link",
+     "not a regular file: symbolic link",
+     "outside the root",
+     "parent path",
+     "too deep"
+    ]
+   },
+   {
+    "check": "1 capture: two symbolic links, two devices, two parent paths are each listed",
+    "ok": true
+   },
+   {
+    "check": "1 capture: every kept name is letters, digits and . _ + = @ , - only",
+    "ok": true,
+    "files": [
+     "___",
+     "caf_.txt",
+     "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+     "predict.py",
+     "sub/model.npz",
+     "we_ird_na_me___x_.py"
+    ]
+   },
+   {
+    "check": "1 capture: a name of 300 characters is cut to 120",
+    "ok": true,
+    "lens": [
+     10,
+     13,
+     20,
+     3,
+     120,
+     8
+    ]
+   },
+   {
+    "check": "1 capture: nothing outside the destination changed",
+    "ok": true
+   },
+   {
+    "check": "1 capture: the listing escapes names to ASCII",
+    "ok": true
+   },
+   {
+    "check": "1 capture: a destination that exists is refused (never written into)",
+    "ok": true
+   },
+   {
+    "check": "1 capture: the file-count cap holds and the rest is listed",
+    "ok": true
+   },
+   {
+    "check": "1 capture: the byte cap holds; a later file that fits is still taken",
+    "ok": true
+   },
+   {
+    "check": "1 capture: an archive cut in the middle of a file ends the pass; that file is not counted as captured",
+    "ok": true,
+    "man": {
+     "n_files": 1,
+     "bytes": 100,
+     "archive": "unreadable or cut after 1 entries (ReadError)",
+     "n_skipped": 0
+    }
+   },
+   {
+    "check": "1 capture: bytes that are no archive give an empty capture, not an exception",
+    "ok": true
+   },
+   {
+    "check": "1 capture: no archive: nothing is created",
+    "ok": true
+   },
+   {
+    "check": "1 capture: a sparse entry is not written",
+    "ok": true,
+    "man": [
+     {
+      "name": "r/sparse",
+      "why": "sparse file",
+      "bytes_declared": 0
+     }
+    ]
+   },
+   {
+    "check": "1 capture: a frozen submission is captured complete, file for file",
+    "ok": true
+   },
+   {
+    "check": "1 capture: the workspace listing is parsed into type, size and an escaped name",
+    "ok": true
+   },
+   {
+    "check": "1 capture: the workspace command packs small regular files only (no package, no submission/, no cache, no link, no 3 MiB file)",
+    "ok": true,
+    "files": [
+     {
+      "path": "notes/plan.md",
+      "bytes": 4,
+      "sha256": "64879f7d6b960a01909762d911a32d4582c20010c5641ee90278b644a9e3b525"
+     },
+     {
+      "path": "predict.py",
+      "bytes": 9,
+      "sha256": "e81af55f30461f8fa1dedb38af441aacbf203dfd7db8fba69bd12137b41657a9"
+     }
+    ],
+    "err": ""
+   },
+   {
+    "check": "1 capture: the listing command names every entry with type and size",
+    "ok": true,
+    "n": 10
+   },
+   {
+    "check": "2 bundle: submission/ holds the baseline predict.py and pool.npz",
+    "ok": true
+   },
+   {
+    "check": "2 bundle: the pool has 512 episodes per level in the exam's shapes",
+    "ok": true,
+    "shapes": {
+     "1": [
+      512,
+      5,
+      6
+     ],
+     "2": [
+      512,
+      2,
+      3
+     ]
+    }
+   },
+   {
+    "check": "2 bundle: another process builds the same pool and the same pool.npz bytes",
+    "ok": true,
+    "out": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c 1565f63b82f38b622fb82f133da5cf056ae57d6d9582c252cc77842f01b9e16a\n",
+    "err": ""
+   },
+   {
+    "check": "2 statement (default limits) says: **Turns: at most 150.**",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: **Wall-clock time: 60 minutes**",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: 2 CPU cores, 4 GiB of memory",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: at most 512 processes and threads",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: `/workspace` (1024 MiB) and `/tmp` (512 MiB) and nowhere els",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: Whatever is in `submission/` at the moment your run ends is ",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: the same 3 hidden numbers",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: /workspace/lab_log.jsonl",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: A failed item is scored with the baseline's forecast",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: an integer T for T ticks without input",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: from a clean copy of `submission/` alone",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: `turns_used` and `turns_left`",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: you never see their results",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: costs 17 ticks",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: as much as the 17 observations of one item's history",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: The grader asks for n_samples = 256",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: over pairs of DIFFERENT samples",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: Your 256 samples are treated as independent draws",
+    "ok": true
+   },
+   {
+    "check": "2 statement (default limits) says: how you are scored is public",
+    "ok": true
+   },
+   {
+    "check": "2 statement: no sentence promises K for a failure",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: **Turns: at most 22.**",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: reply number 22",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: **Wall-clock time: 45 minutes**",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: **One reply: at most 16384 tokens**",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: **Context: 70,000 tokens.**",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: **Spend: 19.5 US dollars**",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: 1.5 CPU cores, 2 GiB of memory",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: at most 512 processes and threads",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: (Measured in this box when it started.)",
+    "ok": true
+   },
+   {
+    "check": "2 statement (a run's own limits) says: `context_tokens_used`",
+    "ok": true
+   },
+   {
+    "check": "2 statement: without a turn cap it says so, without a context cap it names the model's window, and an uncapped box is described as such",
+    "ok": true
+   },
+   {
+    "check": "2 statement: round 5's exam config still renders, with its own numbers (32 samples, a 1-tick reset)",
+    "ok": true
+   },
+   {
+    "check": "2 bundle: a world this pin builds no baseline pool for is refused at once (no hours of simulation behind a config name)",
+    "ok": true,
+    "guard": "this pin builds no baseline pool for world 'gliders': it serves ring (physim2_env/profiles.py, BASELINE_WORLDS, says wha"
+   },
+   {
+    "check": "2 box contents: every file of the bundle is in exactly one named group",
+    "ok": true,
+    "n": 27,
+    "groups": [
+     "TASK.md",
+     "submission/",
+     "physim2/_vendor/vw1/vw/scoring.py",
+     "physim2/_vendor/",
+     "physim2/world_",
+     "physim2/world.json",
+     "physim2/labclient.py",
+     "physim2/validate.py",
+     "physim2/_item.py",
+     "physim2/_rules.py",
+     "physim2/predict_runner.py",
+     "physim2/examples.npz",
+     "physim2/exam.json",
+     "physim2/"
+    ]
+   },
+   {
+    "check": "2 box contents: the designers' closed-form library and the toy worlds are not shipped; the scoring code is, in its own group",
+    "ok": true
+   },
+   {
+    "check": "2 baseline: runs through predict_runner.py and returns the exam's shapes",
+    "ok": true,
+    "out": null
+   },
+   {
+    "check": "2 card: the public card states the price of a reset (17 ticks) and 256 samples",
+    "ok": true
+   },
+   {
+    "check": "2 box contents: the public simulator (episodes, free_run, build_world, viable, draw_program, level, scales) and the reference agents' modules run in the trimmed box",
+    "ok": true,
+    "out": "SIM-OK (4, 49, 6) (4, 9, 6) (4, 49, 3) ['vw.certificates', 'vw.core', 'vw.exam', 'vw.harness', 'vw.nats', 'vw.objects', 'vw.opaque', 'vw.operators', 'vw.ports', 'vw.scoring', 'vw.secret', 'vw.world']\n",
+    "err": ""
+   },
+   {
+    "check": "2 baseline: same seed, same samples; another seed, other samples",
+    "ok": true
+   },
+   {
+    "check": "3 null: round 5's own grader (evaluator.grader.grade) runs the baseline on all 64 items without a failure",
+    "ok": true,
+    "layers": {
+     "rlimits": true,
+     "mount_ns": false,
+     "net_ns": false,
+     "pid_ns": false,
+     "uid": 65534
+    }
+   },
+   {
+    "check": "3 null: grading.null_scores equals, item by item and cell by cell, what round 5's grader gives the baseline in submission/",
+    "ok": true,
+    "max_abs_difference": 0.0
+   },
+   {
+    "check": "3 null: its skill is (L(K) - L) / (L(K) - L(O)) on the K-to-O scale, K = 0 and O = 1 unchanged",
+    "ok": true,
+    "skill_null": -0.025822151149078144
+   },
+   {
+    "check": "3 null: the null policy is not K (it differs on every item) and scores below K here or near it",
+    "ok": true,
+    "skill_null": -0.0258
+   },
+   {
+    "check": "3 fallback: a run without a predictor gets the null policy's scores on every item, and the record says which and why",
+    "ok": true
+   },
+   {
+    "check": "3 fallback: such a run no longer scores 0.000 (K)",
+    "ok": true,
+    "skill": -0.025822151149078144
+   },
+   {
+    "check": "4 reasons: 19 driver records and verdicts map to the expected word",
+    "ok": true,
+    "bad": []
+   },
+   {
+    "check": "4 reasons: every word is one of the fixed list",
+    "ok": true
+   },
+   {
+    "check": "5 client: 13 bad inputs arguments each raise LabError with ONE line of usage that names the integer form and (T, 24)",
+    "ok": true,
+    "bad": []
+   },
+   {
+    "check": "5 client: a bad argument sends nothing",
+    "ok": true
+   },
+   {
+    "check": "5 client: the integer form and the array form are sent as n and as inputs",
+    "ok": true
+   },
+   {
+    "check": "5 client: every reply is appended to the log with its full arrays, and the rejected call with its error",
+    "ok": true,
+    "ops": [
+     "experiment",
+     "experiment",
+     "advance",
+     "advance",
+     "usage"
+    ]
+   },
+   {
+    "check": "5 client: a log that cannot be written never breaks a call",
+    "ok": true
+   },
+   {
+    "check": "6 validate: the baseline passes through the laboratory's route, as an unprivileged user, as graded",
+    "ok": true,
+    "rep": {
+     "ok": true,
+     "stage": null,
+     "error": null,
+     "as_graded": true,
+     "stderr": null
+    }
+   },
+   {
+    "check": "6 validate: /workspace has its mode back afterwards (0755)",
+    "ok": true
+   },
+   {
+    "check": "6 validate: a predictor that reads /workspace/episodes.npy PASSES when the agent runs the check itself, and the reply says that this proves nothing",
+    "ok": true,
+    "rep": {
+     "ok": true,
+     "error": null,
+     "as_graded": false,
+     "stderr": null
+    }
+   },
+   {
+    "check": "6 validate: the same predictor FAILS through the laboratory's route, as it would in grading (round 4; before, it passed)",
+    "ok": true,
+    "rep": {
+     "ok": "False",
+     "stage": "example 0",
+     "error": "predictor failed (exit code 2): PermissionError: [Errno 13] Permission denied: '/workspace/episodes.npy'\n",
+     "stderr": "None"
+    }
+   },
+   {
+    "check": "6 validate: /workspace has its mode back after a failed check too",
+    "ok": true
+   },
+   {
+    "check": "6 validate: a predictor that loads its own file relative to predict.py passes as graded",
+    "ok": true,
+    "rep": {
+     "ok": "True",
+     "stage": "None",
+     "error": "None"
+    }
+   },
+   {
+    "check": "6 validate: an edited physim2/ is counted and the reply says the grader uses the original",
+    "ok": true,
+    "n": 1
+   },
+   {
+    "check": "6 validate: no temporary folder of the check is left",
+    "ok": true,
+    "left": []
+   }
+  ]
+ },
+ "pure_checks_host": {
+  "tool": "tests/exam_pure.py",
+  "where": "the worker, under tools/tripwires.py",
+  "n_checks": 19,
+  "n_passed": 19,
+  "failed": [],
+  "tripwire_names": 65,
+  "tripwire_hits": [],
+  "checks": [
+   {
+    "check": "config: the smallest valid file passes, and gets the ring defaults (qwen/qwen3.6-35b-a3b, 150 turns, 60 minutes, 8192 tokens, 4 GB)",
+    "ok": true
+   },
+   {
+    "check": "config: 28 bad files are each refused (unknown keys, tables, arrays, ranges, types, missing required keys)",
+    "ok": true,
+    "passed": []
+   },
+   {
+    "check": "config: expansion puts every limit where verifiers or the task enforces it, and fixes the rest",
+    "ok": true,
+    "cfg": {
+     "model": "openai/gpt-6-astra",
+     "num_rollouts": 1,
+     "max_concurrent": 1,
+     "push": false,
+     "sampling": {
+      "max_tokens": 16384,
+      "reasoning_effort": "low"
+     },
+     "env": {
+      "id": "physim2-verifier",
+      "taskset": {
+       "id": "physim2-env",
+       "image": "physim2-ring:2",
+       "instances": [
+        "pilot-abc-001"
+       ],
+       "task": {
+        "limits": {
+         "max_context_tokens": 200000,
+         "cap_usd": 5.0,
+         "box_cpus": 2.0,
+         "box_memory_gb": 2.0
+        }
+       }
+      },
+      "agent": {
+       "max_turns": 22,
+       "timeout": {
+        "rollout": 2700.0
+       },
+       "runtime": {
+        "type": "docker",
+        "cpu": 2.0,
+        "memory": 2.0
+       },
+       "harness": {
+        "id": "bash",
+        "edit": true,
+        "search": false
+       },
+       "retries": {
+        "max_retries": 0
+       }
+      },
+      "retries": {
+       "max_retries": 0
+      },
+      "verifier": {
+       "retries": 0
+      }
+     }
+    }
+   },
+   {
+    "check": "config: no token cap of verifiers is set on the whole run (none is disclosed)",
+    "ok": true
+   },
+   {
+    "check": "config: a summary request travels as one `reasoning` object with the effort inside, never twice",
+    "ok": true
+   },
+   {
+    "check": "config: expand refuses what validate refuses",
+    "ok": true
+   },
+   {
+    "check": "profiles: the ring profile: 64 items, 256 samples per item, 400 ticks, a reset costs 17, image 2, six reference policies",
+    "ok": true,
+    "table": [
+     {
+      "profile": "ring",
+      "world": "ring",
+      "exam_config": "ring_r4",
+      "items": 64,
+      "samples_per_item": 256,
+      "lab_ticks": 400,
+      "reset_cost_ticks": 17,
+      "image": "physim2-ring:2",
+      "box_cpus": 2,
+      "box_memory_gb": 4,
+      "max_turns": 150,
+      "wall_minutes": 60,
+      "reference_policies": [
+       "null",
+       "D",
+       "P0",
+       "PM",
+       "S",
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "check": "box: a capped box is read as 2 CPUs, 4 GiB, 512 processes, 1024 and 512 MiB of memory-backed space, read-only root",
+    "ok": true,
+    "capped": {
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "nproc": 2,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true
+    }
+   },
+   {
+    "check": "box: an uncapped box is read as no limits (the size of a shared disk is nobody's quota)",
+    "ok": true,
+    "free": {
+     "cpus": null,
+     "memory_gib": null,
+     "pids": null,
+     "nproc": 4,
+     "workspace_mib": null,
+     "tmp_mib": null,
+     "read_only_root": false
+    }
+   },
+   {
+    "check": "box: cgroup v1 files are read too, and garbage gives no limits rather than an error",
+    "ok": true
+   },
+   {
+    "check": "reasoning: requested effort, what each call was sent, and replies by kind (readable, encrypted only, none)",
+    "ok": true,
+    "record": {
+     "requested_effort": "high",
+     "requested_summary": null,
+     "sent_effort": [
+      "high",
+      "low"
+     ],
+     "sent_summary": [
+      "auto"
+     ],
+     "model_calls": 3,
+     "replies": 4,
+     "replies_with_readable_reasoning": 2,
+     "replies_with_encrypted_reasoning_only": 1,
+     "replies_without_reasoning": 1,
+     "calls_with_reasoning_tokens": 1,
+     "reasoning_tokens": 40,
+     "reasoning_tokens_reported": true,
+     "reasoning_on": true
+    }
+   },
+   {
+    "check": "reasoning: a run without a model call records nothing asked and nothing seen",
+    "ok": true
+   },
+   {
+    "check": "reasoning: a value that is not a plain word is never copied into the record",
+    "ok": true
+   },
+   {
+    "check": "reasoning: the saved trace of rollout astra_ring_001: 14 replies, 8 with readable reasoning, 4 with encrypted reasoning only, 2 without; 5,242 reasoning tokens",
+    "ok": true,
+    "record": {
+     "requested_effort": null,
+     "requested_summary": null,
+     "sent_effort": null,
+     "sent_summary": null,
+     "model_calls": 14,
+     "replies": 14,
+     "replies_with_readable_reasoning": 8,
+     "replies_with_encrypted_reasoning_only": 4,
+     "replies_without_reasoning": 2,
+     "calls_with_reasoning_tokens": 12,
+     "reasoning_tokens": 5242,
+     "reasoning_tokens_reported": true,
+     "reasoning_on": true
+    }
+   },
+   {
+    "check": "capture: the name rules (pure): kept names are rewritten to safe characters; absolute, parent, foreign, empty and too deep names are refused",
+    "ok": true,
+    "kept": [
+     [
+      [
+       "a.py"
+      ],
+      null
+     ],
+     [
+      [
+       "notes",
+       "x_y.txt"
+      ],
+      null
+     ],
+     [
+      [
+       "____",
+       "x"
+      ],
+      null
+     ]
+    ],
+    "no": [
+     "absolute path",
+     "parent path",
+     "outside the root",
+     "empty name",
+     "too deep"
+    ]
+   },
+   {
+    "check": "endings: the fixed words",
+    "ok": true
+   },
+   {
+    "check": "run report: its copy of the grader's fallback reasons equals grading.FALLBACK_REASONS, and it knows every ending word",
+    "ok": true
+   },
+   {
+    "check": "run report: fallback counts are printed by the grader's words only; any other key is counted as (other)",
+    "ok": true
+   },
+   {
+    "check": "tripwires: nothing in this run tried to start, remove, move or change anything",
+    "ok": true,
+    "hits": []
+   }
+  ]
+ },
+ "proof": {
+  "instance_id": "pilot-port4a-proof-001",
+  "run_label": "physim2-port4a",
+  "image": "physim2-ring:2",
+  "profile": {
+   "profile": "ring",
+   "world": "ring",
+   "exam_config": "ring_r4",
+   "items": 64,
+   "samples_per_item": 256,
+   "lab_ticks": 400,
+   "reset_cost_ticks": 17,
+   "image": "physim2-ring:2",
+   "box_cpus": 2,
+   "box_memory_gb": 4,
+   "max_turns": 150,
+   "wall_minutes": 60,
+   "reference_policies": [
+    "null",
+    "D",
+    "P0",
+    "PM",
+    "S",
+    "C"
+   ]
+  },
+  "verifiers": "0.3.2.dev163",
+  "n_checks": 48,
+  "n_passed": 48,
+  "failed": [],
+  "reference_table": {
+   "O": {
+    "L": 4.270171368618338,
+    "skill_vs_O": 1.0,
+    "skill_vs_C": 1.1599634206334624
+   },
+   "K": {
+    "L": 6.529242626076316,
+    "skill_vs_O": 0.0,
+    "skill_vs_C": 0.0
+   },
+   "null": {
+    "L": 6.675833807675507,
+    "skill_vs_O": -0.0648900211160858,
+    "skill_vs_C": -0.07527005085879249
+   },
+   "D": {
+    "L": 5.663409775245022,
+    "skill_vs_O": 0.38326938469642324,
+    "skill_vs_C": 0.44457846649654553
+   },
+   "P0": {
+    "L": 5.050968514549206,
+    "skill_vs_O": 0.6543725022603046,
+    "skill_vs_C": 0.7590481660903411
+   },
+   "C": {
+    "L": 4.581705990632858,
+    "skill_vs_O": 0.8620961508026646,
+    "skill_vs_C": 1.0
+   }
+  },
+  "reference_cost": {
+   "wall_s_per_policy": {
+    "null": 85.29315495491028,
+    "D": 90.62466216087341,
+    "P0": 93.8063223361969,
+    "C": 88.22729587554932
+   },
+   "wall_s_total": 372.4859883785248,
+   "grade_seconds": {
+    "null": 46.515573263168335,
+    "D": 47.52222490310669,
+    "P0": 47.27768564224243,
+    "C": 47.851526975631714
+   },
+   "cpu_s_per_item": {
+    "null": 0.25258126562499994,
+    "D": 0.262342140625,
+    "P0": 0.26425679687500003,
+    "C": 0.263245078125
+   }
+  },
+  "null_policy": {
+   "skill_vs_O": -0.0648900211160858,
+   "pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c"
+  },
+  "endings_and_failures": [
+   {
+    "run": "null-box",
+    "ended": "the agent stopped",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 0,
+    "by_reason": {},
+    "reward_skill_vs_O": -0.0648900211160858,
+    "wall_s": 233.4
+   },
+   {
+    "run": "fail-raises",
+    "ended": "the agent stopped",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 64,
+    "by_reason": {
+     "validation failed: raised": 64
+    },
+    "reward_skill_vs_O": -0.0648900211160858,
+    "wall_s": 42.1
+   },
+   {
+    "run": "fail-shape",
+    "ended": "the agent stopped",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 64,
+    "by_reason": {
+     "validation failed: wrong shape": 64
+    },
+    "reward_skill_vs_O": -0.0648900211160858,
+    "wall_s": 45.1
+   },
+   {
+    "run": "fail-nan",
+    "ended": "the agent stopped",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 64,
+    "by_reason": {
+     "validation failed: non-finite values": 64
+    },
+    "reward_skill_vs_O": -0.0648900211160858,
+    "wall_s": 42.8
+   },
+   {
+    "run": "fail-timeout",
+    "ended": "the agent stopped",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 64,
+    "by_reason": {
+     "validation failed: timed out": 64
+    },
+    "reward_skill_vs_O": -0.0648900211160858,
+    "wall_s": 102.6
+   },
+   {
+    "run": "mixed-submit",
+    "ended": "submit",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "agent_submission",
+    "items_fallen_back": 23,
+    "by_reason": {
+     "non-finite values": 4,
+     "wrong shape": 12,
+     "raised": 7
+    },
+    "reward_skill_vs_O": 0.1562119449780869,
+    "wall_s": 92.0
+   },
+   {
+    "run": "end-submit",
+    "ended": "submit",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "agent_submission",
+    "items_fallen_back": 0,
+    "by_reason": {},
+    "reward_skill_vs_O": 0.28754043500761683,
+    "wall_s": 96.0
+   },
+   {
+    "run": "end-exit",
+    "ended": "the agent stopped",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 0,
+    "by_reason": {},
+    "reward_skill_vs_O": 0.28754043500761683,
+    "wall_s": 90.7
+   },
+   {
+    "run": "end-wall",
+    "ended": "time limit",
+    "stop_condition": "agent_timeout",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 0,
+    "by_reason": {},
+    "reward_skill_vs_O": 0.28754043500761683,
+    "wall_s": 125.9
+   },
+   {
+    "run": "end-fail",
+    "ended": "failed run",
+    "stop_condition": "harness_error",
+    "ok": false,
+    "graded": true,
+    "submission_source": "checkpoint",
+    "items_fallen_back": 0,
+    "by_reason": {},
+    "reward_skill_vs_O": 0.28754043500761683,
+    "wall_s": 106.2
+   },
+   {
+    "run": "end-fail-stock",
+    "ended": null,
+    "stop_condition": "harness_error",
+    "ok": false,
+    "graded": false,
+    "submission_source": null,
+    "items_fallen_back": null,
+    "by_reason": null,
+    "reward_skill_vs_O": null,
+    "wall_s": 48.7
+   },
+   {
+    "run": "end-turns",
+    "ended": "turn limit",
+    "stop_condition": "max_turns",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 0,
+    "by_reason": {},
+    "reward_skill_vs_O": 0.28754043500761683,
+    "wall_s": 97.1
+   },
+   {
+    "run": "fail-nopredict",
+    "ended": "the agent stopped",
+    "stop_condition": "agent_completed",
+    "ok": true,
+    "graded": true,
+    "submission_source": "final_collection",
+    "items_fallen_back": 64,
+    "by_reason": {
+     "no predict.py": 64
+    },
+    "reward_skill_vs_O": -0.0648900211160858,
+    "wall_s": 40.5
+   }
+  ],
+  "stages": {
+   "instance": {
+    "instance_id": "pilot-port4a-proof-001",
+    "secret_commitment": "eff0522f0885c52abe17d702d81461f5bc0016208883f4e412f31848da6a2da7",
+    "n_items": 64,
+    "R": 16,
+    "seconds": 5.8
+   },
+   "reference": {
+    "wall_s": 380.0,
+    "log": [
+     "null: [-0.065] (85s)",
+     "D: [0.383] (176s)",
+     "P0: [0.654] (270s)",
+     "C: [0.862] (365s)",
+     "{\"O\": 1.16, \"K\": 0.0, \"null\": -0.0753, \"D\": 0.4446, \"P0\": 0.759, \"C\": 1.0}",
+     "{\"sigma\": 0.24095183390965894, \"null_is\": \"P0\", \"rho\": null, \"sigma_worlds\": null, \"rho_worlds\": null}"
+    ],
+    "table": {
+     "O": {
+      "L": 4.270171368618338,
+      "skill_vs_O": 1.0,
+      "skill_vs_C": 1.1599634206334624
+     },
+     "K": {
+      "L": 6.529242626076316,
+      "skill_vs_O": 0.0,
+      "skill_vs_C": 0.0
+     },
+     "null": {
+      "L": 6.675833807675507,
+      "skill_vs_O": -0.0648900211160858,
+      "skill_vs_C": -0.07527005085879249
+     },
+     "D": {
+      "L": 5.663409775245022,
+      "skill_vs_O": 0.38326938469642324,
+      "skill_vs_C": 0.44457846649654553
+     },
+     "P0": {
+      "L": 5.050968514549206,
+      "skill_vs_O": 0.6543725022603046,
+      "skill_vs_C": 0.7590481660903411
+     },
+     "C": {
+      "L": 4.581705990632858,
+      "skill_vs_O": 0.8620961508026646,
+      "skill_vs_C": 1.0
+     }
+    },
+    "cost": {
+     "wall_s_per_policy": {
+      "null": 85.29315495491028,
+      "D": 90.62466216087341,
+      "P0": 93.8063223361969,
+      "C": 88.22729587554932
+     },
+     "wall_s_total": 372.4859883785248,
+     "grade_seconds": {
+      "null": 46.515573263168335,
+      "D": 47.52222490310669,
+      "P0": 47.27768564224243,
+      "C": 47.851526975631714
+     },
+     "cpu_s_per_item": {
+      "null": 0.25258126562499994,
+      "D": 0.262342140625,
+      "P0": 0.26425679687500003,
+      "C": 0.263245078125
+     }
+    },
+    "rollouts": {
+     "null": {
+      "trace_id": "d7c286327b184ba6a013da78d3739201",
+      "ended": "the agent stopped",
+      "submission": {
+       "source": "final_collection",
+       "ok": true,
+       "error": null,
+       "files": 2,
+       "bytes": 71453,
+       "sha256": "ebb4cdc776f13acfa7ac403534fb5061f09d9d47c9653b0f15edcbfdf42f89a8"
+      },
+      "reward": -0.0648900211160858,
+      "lab_ticks_used": 0,
+      "lab_episodes": null,
+      "n_failed": 0,
+      "box_caps": {
+       "cpus": 2,
+       "memory_gb": 4,
+       "swap": false,
+       "pids": 512,
+       "read_only_root": true,
+       "workspace_mib": 1024,
+       "scratch_mib": 512,
+       "scratch_path": "/tmp",
+       "shm_mib": 64,
+       "tmpfs": {
+        "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+        "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+        "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+        "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+       }
+      },
+      "limits": {
+       "max_turns": null,
+       "wall_minutes": 60.0,
+       "max_output_tokens_per_turn": null,
+       "max_context_tokens": null,
+       "cap_usd": null,
+       "cpus": 2.0,
+       "memory_gib": 4.0,
+       "pids": 512,
+       "workspace_mib": 1024.0,
+       "tmp_mib": 512.0,
+       "read_only_root": true,
+       "lab_counts_turns": true,
+       "measured": true,
+       "harness": "physim2-script",
+       "configured": {
+        "cpus": 2.0,
+        "memory_gb": 4.0
+       },
+       "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+      }
+     },
+     "D": {
+      "trace_id": "6e32b07644cc4614bc7e938ac781bc25",
+      "ended": "submit",
+      "submission": {
+       "source": "agent_submission",
+       "ok": true,
+       "error": null,
+       "files": 4,
+       "bytes": 122623,
+       "sha256": "55182ac31680642f9eb2d6fe190fb7c478876850299ef5f715dc315ce66c518f"
+      },
+      "reward": 0.38326938469642324,
+      "lab_ticks_used": 390,
+      "lab_episodes": 6,
+      "n_failed": 0,
+      "box_caps": {
+       "cpus": 2,
+       "memory_gb": 4,
+       "swap": false,
+       "pids": 512,
+       "read_only_root": true,
+       "workspace_mib": 1024,
+       "scratch_mib": 512,
+       "scratch_path": "/tmp",
+       "shm_mib": 64,
+       "tmpfs": {
+        "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+        "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+        "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+        "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+       }
+      },
+      "limits": {
+       "max_turns": null,
+       "wall_minutes": 60.0,
+       "max_output_tokens_per_turn": null,
+       "max_context_tokens": null,
+       "cap_usd": null,
+       "cpus": 2.0,
+       "memory_gib": 4.0,
+       "pids": 512,
+       "workspace_mib": 1024.0,
+       "tmp_mib": 512.0,
+       "read_only_root": true,
+       "lab_counts_turns": true,
+       "measured": true,
+       "harness": "physim2-script",
+       "configured": {
+        "cpus": 2.0,
+        "memory_gb": 4.0
+       },
+       "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+      }
+     },
+     "P0": {
+      "trace_id": "f7971cee596e4f2ead14683b69f56537",
+      "ended": "submit",
+      "submission": {
+       "source": "agent_submission",
+       "ok": true,
+       "error": null,
+       "files": 4,
+       "bytes": 627771,
+       "sha256": "d8d87127f5bf25dfbbeff4b113f3fb80a55787a884ca1ec2e3233005ad1709d8"
+      },
+      "reward": 0.6543725022603046,
+      "lab_ticks_used": 0,
+      "lab_episodes": null,
+      "n_failed": 0,
+      "box_caps": {
+       "cpus": 2,
+       "memory_gb": 4,
+       "swap": false,
+       "pids": 512,
+       "read_only_root": true,
+       "workspace_mib": 1024,
+       "scratch_mib": 512,
+       "scratch_path": "/tmp",
+       "shm_mib": 64,
+       "tmpfs": {
+        "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+        "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+        "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+        "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+       }
+      },
+      "limits": {
+       "max_turns": null,
+       "wall_minutes": 60.0,
+       "max_output_tokens_per_turn": null,
+       "max_context_tokens": null,
+       "cap_usd": null,
+       "cpus": 2.0,
+       "memory_gib": 4.0,
+       "pids": 512,
+       "workspace_mib": 1024.0,
+       "tmp_mib": 512.0,
+       "read_only_root": true,
+       "lab_counts_turns": true,
+       "measured": true,
+       "harness": "physim2-script",
+       "configured": {
+        "cpus": 2.0,
+        "memory_gb": 4.0
+       },
+       "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+      }
+     },
+     "C": {
+      "trace_id": "2a06e07e26e54b1ea044062a5878bf8b",
+      "ended": "submit",
+      "submission": {
+       "source": "agent_submission",
+       "ok": true,
+       "error": null,
+       "files": 4,
+       "bytes": 627989,
+       "sha256": "3b309304f47613117a32fd92223f3d96387213ada45db3c9f910b7ba7c1ca091"
+      },
+      "reward": 0.8620961508026646,
+      "lab_ticks_used": 0,
+      "lab_episodes": null,
+      "n_failed": 0,
+      "box_caps": {
+       "cpus": 2,
+       "memory_gb": 4,
+       "swap": false,
+       "pids": 512,
+       "read_only_root": true,
+       "workspace_mib": 1024,
+       "scratch_mib": 512,
+       "scratch_path": "/tmp",
+       "shm_mib": 64,
+       "tmpfs": {
+        "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+        "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+        "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+        "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+       }
+      },
+      "limits": {
+       "max_turns": null,
+       "wall_minutes": 60.0,
+       "max_output_tokens_per_turn": null,
+       "max_context_tokens": null,
+       "cap_usd": null,
+       "cpus": 2.0,
+       "memory_gib": 4.0,
+       "pids": 512,
+       "workspace_mib": 1024.0,
+       "tmp_mib": 512.0,
+       "read_only_root": true,
+       "lab_counts_turns": true,
+       "measured": true,
+       "harness": "physim2-script",
+       "configured": {
+        "cpus": 2.0,
+        "memory_gb": 4.0
+       },
+       "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+      }
+     }
+    }
+   },
+   "box": {
+    "grade_seconds": 194.15520811080933,
+    "item_box_wall_s_mean": 2.980553265661001,
+    "cpu_s_per_item": 0.256118421875,
+    "n_samples": 256,
+    "note": "grading time of 64 items at 256 samples per item, one fresh box each, on 4 shared cores"
+   },
+   "mixed": {
+    "n_failed": 23,
+    "by_reason": {
+     "non-finite values": 4,
+     "wrong shape": 12,
+     "raised": 7
+    },
+    "reward": 0.1562119449780869
+   },
+   "turn-cap": {
+    "flat_config": {
+     "schema": "physim2-rollout/v1",
+     "model": "standin/echo-1",
+     "exam_profile": "ring",
+     "instance": "pilot-port4a-proof-001",
+     "max_turns": 3,
+     "max_output_tokens_per_turn": 1024,
+     "max_context_tokens": 50000,
+     "wall_minutes": 5,
+     "box_memory_gb": 4,
+     "cap_usd": 1.0
+    },
+    "expanded_env_id": "physim2-verifier",
+    "harness": {
+     "id": "bash",
+     "edit": true,
+     "search": false
+    },
+    "steps": [
+     "bash",
+     "tool",
+     "bash",
+     "say"
+    ]
+   },
+   "round5": {
+    "pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+    "graded": {
+     "null": {
+      "n_failed": 0,
+      "layers": {
+       "rlimits": true,
+       "mount_ns": false,
+       "net_ns": false,
+       "pid_ns": false,
+       "uid": 65534
+      },
+      "seconds": 21.9
+     },
+     "D": {
+      "n_failed": 0,
+      "layers": {
+       "rlimits": true,
+       "mount_ns": false,
+       "net_ns": false,
+       "pid_ns": false,
+       "uid": 65534
+      },
+      "seconds": 20.0
+     },
+     "P0": {
+      "n_failed": 0,
+      "layers": {
+       "rlimits": true,
+       "mount_ns": false,
+       "net_ns": false,
+       "pid_ns": false,
+       "uid": 65534
+      },
+      "seconds": 21.1
+     },
+     "C": {
+      "n_failed": 0,
+      "layers": {
+       "rlimits": true,
+       "mount_ns": false,
+       "net_ns": false,
+       "pid_ns": false,
+       "uid": 65534
+      },
+      "seconds": 20.7
+     },
+     "valid": {
+      "n_failed": 0,
+      "layers": {
+       "rlimits": true,
+       "mount_ns": false,
+       "net_ns": false,
+       "pid_ns": false,
+       "uid": 65534
+      },
+      "seconds": 19.2
+     },
+     "mixed": {
+      "n_failed": 23,
+      "layers": {
+       "rlimits": true,
+       "mount_ns": false,
+       "net_ns": false,
+       "pid_ns": false,
+       "uid": 65534
+      },
+      "seconds": 19.7
+     }
+    },
+    "comparison": {
+     "null": {
+      "identical": true,
+      "max_abs_difference": 0.0,
+      "skill_route": -0.0648900211160858,
+      "skill_round5": -0.0648900211160858
+     },
+     "D": {
+      "identical": true,
+      "max_abs_difference": 0.0,
+      "skill_route": 0.38326938469642324,
+      "skill_round5": 0.38326938469642324
+     },
+     "P0": {
+      "identical": true,
+      "max_abs_difference": 0.0,
+      "skill_route": 0.6543725022603046,
+      "skill_round5": 0.6543725022603046
+     },
+     "C": {
+      "identical": true,
+      "max_abs_difference": 0.0,
+      "skill_route": 0.8620961508026646,
+      "skill_round5": 0.8620961508026646
+     },
+     "valid": {
+      "identical": true,
+      "max_abs_difference": 0.0,
+      "skill_route": 0.28754043500761683,
+      "skill_round5": 0.28754043500761683
+     },
+     "mixed": {
+      "identical_on_valid_items": true,
+      "n_failed": 23,
+      "skill_route_null_fallback": 0.1562119449780869,
+      "skill_round5_K_fallback": 0.1855896097676636
+     }
+    }
+   }
+  },
+  "runs": {
+   "null-box": {
+    "trace_id": "fa4ab937252f44de8b23bdfaac8aac23",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "the agent stopped",
+    "graded": true,
+    "reward": -0.0648900211160858,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "files": 2,
+     "bytes": 71453,
+     "sha256": "ebb4cdc776f13acfa7ac403534fb5061f09d9d47c9653b0f15edcbfdf42f89a8"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 0,
+    "fallback_by_reason": {},
+    "fallback_policy": "null",
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.35445499999999996
+    },
+    "isolation": "box",
+    "grade_seconds": 194.15520811080933,
+    "item_boxes": 64,
+    "item_box_wall_s_mean": 2.980553265661001,
+    "cpu_s_per_item": 0.256118421875,
+    "capture": {
+     "folder": "captures/fa4ab937252f44de8b23bdfaac8aac23/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 71453,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 3,
+      "bytes": 15715,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 36
+     }
+    },
+    "checkpoints": {
+     "taken": 1,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "the baseline at setup"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 0,
+     "resets": 0,
+     "validations": 1,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 18.2,
+     "agent": 3.1,
+     "finalize": 0.8
+    },
+    "verifier_wall_s": 198.19704413414001,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "null-box",
+    "wall_s": 233.4,
+    "returncode": 0,
+    "config": "null-box.toml"
+   },
+   "fail-raises": {
+    "trace_id": "a3423e6c0be24b76a6a7e8c8028f97fc",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "the agent stopped",
+    "graded": true,
+    "reward": -0.0648900211160858,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "files": 2,
+     "bytes": 69589,
+     "sha256": "0948afcffae6a2636941c87b094ddcacd1b92272ddba2d8ea98779b35a0d54c7"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 64,
+    "fallback_by_reason": {
+     "validation failed: raised": 64
+    },
+    "fallback_policy": "null",
+    "validation": {
+     "ok": false,
+     "stage": "example 0"
+    },
+    "isolation": "shared",
+    "grade_seconds": 1.9348819255828857,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": null,
+    "capture": {
+     "folder": "captures/a3423e6c0be24b76a6a7e8c8028f97fc/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69589,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 17798,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    },
+    "checkpoints": {
+     "taken": 1,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "the baseline at setup"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 1,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 19.3,
+     "agent": 3.4,
+     "finalize": 0.8
+    },
+    "verifier_wall_s": 5.547250032424927,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "fail-raises",
+    "wall_s": 42.1,
+    "returncode": 0,
+    "config": "fail-raises.toml"
+   },
+   "fail-shape": {
+    "trace_id": "fa51072783ec48afa94c6a158a36714f",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "the agent stopped",
+    "graded": true,
+    "reward": -0.0648900211160858,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "files": 2,
+     "bytes": 69591,
+     "sha256": "e640415c25069c56cfa048e90456f7bc8dece6ab3a918b997f0e5b6e585955ce"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 64,
+    "fallback_by_reason": {
+     "validation failed: wrong shape": 64
+    },
+    "fallback_policy": "null",
+    "validation": {
+     "ok": false,
+     "stage": "example 0"
+    },
+    "isolation": "shared",
+    "grade_seconds": 2.05576229095459,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": null,
+    "capture": {
+     "folder": "captures/fa51072783ec48afa94c6a158a36714f/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69591,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 16401,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    },
+    "checkpoints": {
+     "taken": 1,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "the baseline at setup"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 0,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 21.9,
+     "agent": 2.4,
+     "finalize": 0.9
+    },
+    "verifier_wall_s": 5.809970378875732,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "fail-shape",
+    "wall_s": 45.1,
+    "returncode": 0,
+    "config": "fail-shape.toml"
+   },
+   "fail-nan": {
+    "trace_id": "286e9de0f5824496972635a9055d4cd4",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "the agent stopped",
+    "graded": true,
+    "reward": -0.0648900211160858,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "files": 2,
+     "bytes": 69630,
+     "sha256": "2637d9e85886f8cf36a6cc662b617d7f906d15c987a947cf951edf7e3af864b2"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 64,
+    "fallback_by_reason": {
+     "validation failed: non-finite values": 64
+    },
+    "fallback_policy": "null",
+    "validation": {
+     "ok": false,
+     "stage": "example 0"
+    },
+    "isolation": "shared",
+    "grade_seconds": 2.0478315353393555,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": null,
+    "capture": {
+     "folder": "captures/286e9de0f5824496972635a9055d4cd4/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69630,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 16377,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    },
+    "checkpoints": {
+     "taken": 1,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "the baseline at setup"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 0,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 20.4,
+     "agent": 2.3,
+     "finalize": 0.8
+    },
+    "verifier_wall_s": 5.850778341293335,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "fail-nan",
+    "wall_s": 42.8,
+    "returncode": 0,
+    "config": "fail-nan.toml"
+   },
+   "fail-timeout": {
+    "trace_id": "ea37433dd9fe4f9d8c032a9531330b87",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "the agent stopped",
+    "graded": true,
+    "reward": -0.0648900211160858,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "files": 2,
+     "bytes": 69558,
+     "sha256": "f85cb5e58733ea8112191327310321356d36047cb3a1c40687f01f5f466531b7"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 64,
+    "fallback_by_reason": {
+     "validation failed: timed out": 64
+    },
+    "fallback_policy": "null",
+    "validation": {
+     "ok": false,
+     "stage": "example 0"
+    },
+    "isolation": "shared",
+    "grade_seconds": 61.785834312438965,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": null,
+    "capture": {
+     "folder": "captures/ea37433dd9fe4f9d8c032a9531330b87/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69558,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 16388,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    },
+    "checkpoints": {
+     "taken": 1,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "the baseline at setup"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 0,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 19.8,
+     "agent": 2.5,
+     "finalize": 0.8
+    },
+    "verifier_wall_s": 65.52681684494019,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "fail-timeout",
+    "wall_s": 102.6,
+    "returncode": 0,
+    "config": "fail-timeout.toml"
+   },
+   "mixed-submit": {
+    "trace_id": "22f3cdb468ce4fa5bca575326c0a23a2",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "submit",
+    "graded": true,
+    "reward": 0.1562119449780869,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "files": 3,
+     "bytes": 72518,
+     "sha256": "c51ca3b8f30367c2176c3c3a7d265712b0a0a2d1100d504c13e05b33607da955"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 23,
+    "fallback_by_reason": {
+     "non-finite values": 4,
+     "wrong shape": 12,
+     "raised": 7
+    },
+    "fallback_policy": "null",
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.253903
+    },
+    "isolation": "shared",
+    "grade_seconds": 49.03271675109863,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": 0.24971464062499998,
+    "capture": {
+     "folder": "captures/22f3cdb468ce4fa5bca575326c0a23a2/final",
+     "submission": {
+      "n_files": 3,
+      "bytes": 72518,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 17156,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 38
+     }
+    },
+    "checkpoints": {
+     "taken": 2,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "accepted submit"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 0,
+     "submissions": 1,
+     "submitted": true
+    },
+    "wall": {
+     "setup": 19.4,
+     "agent": 5.8,
+     "finalize": 0.4
+    },
+    "verifier_wall_s": 52.66659069061279,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "mixed-submit",
+    "wall_s": 92.0,
+    "returncode": 0,
+    "config": "mixed-submit.toml"
+   },
+   "end-submit": {
+    "trace_id": "c388e509d14347e5bed97d04d55036a2",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "submit",
+    "graded": true,
+    "reward": 0.28754043500761683,
+    "submission": {
+     "source": "agent_submission",
+     "ok": true,
+     "files": 2,
+     "bytes": 69587,
+     "sha256": "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 0,
+    "fallback_by_reason": {},
+    "fallback_policy": "null",
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.237139
+    },
+    "isolation": "shared",
+    "grade_seconds": 51.25764560699463,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": 0.245577328125,
+    "capture": {
+     "folder": "captures/c388e509d14347e5bed97d04d55036a2/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 17167,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    },
+    "checkpoints": {
+     "taken": 2,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "accepted submit"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 0,
+     "submissions": 1,
+     "submitted": true
+    },
+    "wall": {
+     "setup": 21.7,
+     "agent": 4.9,
+     "finalize": 0.4
+    },
+    "verifier_wall_s": 55.268813371658325,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "end-submit",
+    "wall_s": 96.0,
+    "returncode": 0,
+    "config": "end-submit.toml"
+   },
+   "end-exit": {
+    "trace_id": "8b1576b7fe9a44f9b6fd88aaff69d7dd",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "the agent stopped",
+    "graded": true,
+    "reward": 0.28754043500761683,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "files": 2,
+     "bytes": 69587,
+     "sha256": "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 0,
+    "fallback_by_reason": {},
+    "fallback_policy": "null",
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.30396599999999996
+    },
+    "isolation": "shared",
+    "grade_seconds": 49.172507762908936,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": 0.25135967187499997,
+    "capture": {
+     "folder": "captures/8b1576b7fe9a44f9b6fd88aaff69d7dd/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 16390,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    },
+    "checkpoints": {
+     "taken": 1,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "the baseline at setup"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 0,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 21.3,
+     "agent": 2.4,
+     "finalize": 0.7
+    },
+    "verifier_wall_s": 52.98369908332825,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "end-exit",
+    "wall_s": 90.7,
+    "returncode": 0,
+    "config": "end-exit.toml"
+   },
+   "end-wall": {
+    "trace_id": "0773c895b29e4d1fbb1561317644ebb4",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_timeout",
+    "ended": "time limit",
+    "graded": true,
+    "reward": 0.28754043500761683,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "files": 2,
+     "bytes": 69587,
+     "sha256": "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 0,
+    "fallback_by_reason": {},
+    "fallback_policy": "null",
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.25369200000000003
+    },
+    "isolation": "shared",
+    "grade_seconds": 46.300440073013306,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": 0.25038860937499996,
+    "capture": {
+     "folder": "captures/0773c895b29e4d1fbb1561317644ebb4/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 16387,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    },
+    "checkpoints": {
+     "taken": 2,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "timer"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 0.667,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "04453a1da916b2061127affee02e841281b54f35fc0232b89882b295da9a049d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 0,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 21.6,
+     "agent": 40.2,
+     "finalize": 0.8
+    },
+    "verifier_wall_s": 50.13164782524109,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "end-wall",
+    "wall_s": 125.9,
+    "returncode": 0,
+    "config": "end-wall.toml"
+   },
+   "end-fail": {
+    "trace_id": "903c41c6e6534572be7a2d3069d06e68",
+    "ok": false,
+    "errors": [
+     "HarnessError"
+    ],
+    "stop_condition": "harness_error",
+    "ended": "failed run",
+    "graded": true,
+    "reward": 0.28754043500761683,
+    "submission": {
+     "source": "checkpoint",
+     "ok": true,
+     "files": 2,
+     "bytes": 69587,
+     "sha256": "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+    },
+    "submission_checkpoint": {
+     "source": "timer",
+     "turn": 0,
+     "time": 1794403310.9886887,
+     "n": 3
+    },
+    "n_items": 64,
+    "n_failed": 0,
+    "fallback_by_reason": {},
+    "fallback_policy": "null",
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.27929
+    },
+    "isolation": "shared",
+    "grade_seconds": 50.22326469421387,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": 0.26695425,
+    "capture": {
+     "folder": "captures/903c41c6e6534572be7a2d3069d06e68/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "none",
+      "error": "the box was gone"
+     }
+    },
+    "checkpoints": null,
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 0,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 21.5,
+     "agent": 16.7,
+     "finalize": 0
+    },
+    "verifier_wall_s": 53.99712872505188,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "end-fail",
+    "wall_s": 106.2,
+    "returncode": 0,
+    "config": "end-fail.toml"
+   },
+   "end-fail-stock": {
+    "trace_id": "33d12caa678244db8ba660d49751b845",
+    "ok": false,
+    "errors": [
+     "HarnessError"
+    ],
+    "stop_condition": "harness_error",
+    "ended": null,
+    "graded": false,
+    "reward": null,
+    "submission": {
+     "source": null,
+     "ok": null,
+     "files": null,
+     "bytes": null,
+     "sha256": null
+    },
+    "submission_checkpoint": null,
+    "n_items": null,
+    "n_failed": null,
+    "fallback_by_reason": null,
+    "fallback_policy": null,
+    "validation": null,
+    "isolation": null,
+    "grade_seconds": null,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": null,
+    "capture": {},
+    "checkpoints": null,
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": null,
+     "resets": null,
+     "validations": null,
+     "submissions": null,
+     "submitted": null
+    },
+    "wall": {
+     "setup": 19.7,
+     "agent": 16.5,
+     "finalize": 0
+    },
+    "verifier_wall_s": null,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "end-fail-stock",
+    "wall_s": 48.7,
+    "returncode": 0,
+    "config": "end-fail-stock.toml"
+   },
+   "end-turns": {
+    "trace_id": "a03feb7a39264abe93386637e439d764",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "max_turns",
+    "ended": "turn limit",
+    "graded": true,
+    "reward": 0.28754043500761683,
+    "submission": {
+     "source": "final_collection",
+     "ok": true,
+     "files": 2,
+     "bytes": 69587,
+     "sha256": "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 0,
+    "fallback_by_reason": {},
+    "fallback_policy": "null",
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.257861
+    },
+    "isolation": "shared",
+    "grade_seconds": 54.79815864562988,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": 0.28314082812499997,
+    "capture": {
+     "folder": "captures/a03feb7a39264abe93386637e439d764/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 2,
+      "bytes": 14470,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 35
+     }
+    },
+    "checkpoints": {
+     "taken": 3,
+     "unchanged": 1,
+     "failed": 0,
+     "last_source": "before a model call"
+    },
+    "limits": {
+     "max_turns": 3,
+     "wall_minutes": 5.0,
+     "max_output_tokens_per_turn": 1024,
+     "max_context_tokens": 50000,
+     "cap_usd": 1.0,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "bash",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "d67289708d60655376cca9bbff8ef46bf6f890ce5775088d9ec14d3b98439c6c"
+    },
+    "lab": {
+     "ticks_used": 0,
+     "resets": 0,
+     "validations": 0,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 19.8,
+     "agent": 3.6,
+     "finalize": 0.8
+    },
+    "verifier_wall_s": 58.64549374580383,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "end-turns",
+    "wall_s": 97.1,
+    "returncode": 0,
+    "config": "end-turns.toml"
+   },
+   "fail-nopredict": {
+    "trace_id": "c662e0464cea4209b63ed6a9ff8611dc",
+    "ok": true,
+    "errors": [],
+    "stop_condition": "agent_completed",
+    "ended": "the agent stopped",
+    "graded": true,
+    "reward": -0.0648900211160858,
+    "submission": {
+     "source": "final_collection",
+     "ok": false,
+     "files": 0,
+     "bytes": 68912,
+     "sha256": null
+    },
+    "submission_checkpoint": null,
+    "n_items": 64,
+    "n_failed": 64,
+    "fallback_by_reason": {
+     "no predict.py": 64
+    },
+    "fallback_policy": "null",
+    "validation": null,
+    "isolation": null,
+    "grade_seconds": null,
+    "item_boxes": null,
+    "item_box_wall_s_mean": null,
+    "cpu_s_per_item": null,
+    "capture": {
+     "folder": "captures/c662e0464cea4209b63ed6a9ff8611dc/final",
+     "submission": {
+      "n_files": 0,
+      "bytes": 0,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "none"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 16741,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 36
+     }
+    },
+    "checkpoints": {
+     "taken": 1,
+     "unchanged": 0,
+     "failed": 0,
+     "last_source": "the baseline at setup"
+    },
+    "limits": {
+     "max_turns": null,
+     "wall_minutes": 60.0,
+     "max_output_tokens_per_turn": null,
+     "max_context_tokens": null,
+     "cap_usd": null,
+     "cpus": 2.0,
+     "memory_gib": 4.0,
+     "pids": 512,
+     "workspace_mib": 1024.0,
+     "tmp_mib": 512.0,
+     "read_only_root": true,
+     "lab_counts_turns": true,
+     "measured": true,
+     "harness": "physim2-script",
+     "configured": {
+      "cpus": 2.0,
+      "memory_gb": 4.0
+     },
+     "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+    },
+    "lab": {
+     "ticks_used": 21,
+     "resets": 1,
+     "validations": 1,
+     "submissions": 0,
+     "submitted": false
+    },
+    "wall": {
+     "setup": 19.6,
+     "agent": 3.0,
+     "finalize": 0.7
+    },
+    "verifier_wall_s": 3.679905891418457,
+    "turns": null,
+    "recovery_error": null,
+    "grading_error": null,
+    "name": "fail-nopredict",
+    "wall_s": 40.5,
+    "returncode": 0,
+    "config": "fail-nopredict.toml"
+   }
+  },
+  "checks": [
+   {
+    "check": "instance: a fresh pilot instance of the ring profile exists under the requested id, with the profile's exam config",
+    "ok": true,
+    "row": {
+     "instance_id": "pilot-port4a-proof-001",
+     "world": "ring",
+     "config_name": "ring_r4"
+    }
+   },
+   {
+    "check": "instance: the same id a second time is refused",
+    "ok": true,
+    "out": "refused: the store already holds an instance named pilot-port4a-proof-001; an instance is made once and never again\n"
+   },
+   {
+    "check": "reference: every policy is graded, with no failed item",
+    "ok": true
+   },
+   {
+    "check": "reference: the null policy's per-item scores through the route equal grading.null_scores (what a failed item gets), bit for bit",
+    "ok": true,
+    "max_abs_difference": 0.0
+   },
+   {
+    "check": "reference: the null policy ended without a submit and was graded on the final collection of submission/",
+    "ok": true
+   },
+   {
+    "check": "reference: K = 0 and O = 1 on the skill scale; the null policy near K (it knows the prior, not the world); null and D below P0 below C below O",
+    "ok": true,
+    "table": {
+     "O": 1.0,
+     "K": 0.0,
+     "null": -0.0649,
+     "D": 0.3833,
+     "P0": 0.6544,
+     "C": 0.8621
+    }
+   },
+   {
+    "check": "reference: every reference box ran under the same caps as a model's box (2 CPUs, 4 GB, 512 processes, read-only root)",
+    "ok": true,
+    "caps": {
+     "cpus": 2,
+     "memory_gb": 4,
+     "swap": false,
+     "pids": 512,
+     "read_only_root": true,
+     "workspace_mib": 1024,
+     "scratch_mib": 512,
+     "scratch_path": "/tmp",
+     "shm_mib": 64,
+     "tmpfs": {
+      "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+      "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+      "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+      "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+     }
+    }
+   },
+   {
+    "check": "reference: with a 17-tick reset D and S get 6 real episodes of exam shape from 400 ticks",
+    "ok": true,
+    "episodes": 6,
+    "ticks": 390
+   },
+   {
+    "check": "box: the null policy graded with one fresh box per item (the default mode) gets the same per-item scores as in one box",
+    "ok": true,
+    "item_boxes": 64,
+    "isolation": "box"
+   },
+   {
+    "check": "failure `none`: graded; all 64 items carry the null policy's score, bit for bit; reason `no predict.py`; reward = the null policy's skill, not 0",
+    "ok": true,
+    "reward": -0.0648900211160858,
+    "null_skill": -0.0648900211160858,
+    "by": {
+     "no predict.py": 64
+    },
+    "graded": true,
+    "errors": []
+   },
+   {
+    "check": "failure `raises`: graded; all 64 items carry the null policy's score, bit for bit; reason `validation failed: raised`; reward = the null policy's skill, not 0",
+    "ok": true,
+    "reward": -0.0648900211160858,
+    "null_skill": -0.0648900211160858,
+    "by": {
+     "validation failed: raised": 64
+    },
+    "graded": true,
+    "errors": []
+   },
+   {
+    "check": "failure `shape`: graded; all 64 items carry the null policy's score, bit for bit; reason `validation failed: wrong shape`; reward = the null policy's skill, not 0",
+    "ok": true,
+    "reward": -0.0648900211160858,
+    "null_skill": -0.0648900211160858,
+    "by": {
+     "validation failed: wrong shape": 64
+    },
+    "graded": true,
+    "errors": []
+   },
+   {
+    "check": "failure `nan`: graded; all 64 items carry the null policy's score, bit for bit; reason `validation failed: non-finite values`; reward = the null policy's skill, not 0",
+    "ok": true,
+    "reward": -0.0648900211160858,
+    "null_skill": -0.0648900211160858,
+    "by": {
+     "validation failed: non-finite values": 64
+    },
+    "graded": true,
+    "errors": []
+   },
+   {
+    "check": "failure `timeout`: graded; all 64 items carry the null policy's score, bit for bit; reason `validation failed: timed out`; reward = the null policy's skill, not 0",
+    "ok": true,
+    "reward": -0.0648900211160858,
+    "null_skill": -0.0648900211160858,
+    "by": {
+     "validation failed: timed out": 64
+    },
+    "graded": true,
+    "errors": []
+   },
+   {
+    "check": "failure `raises`: lab.validate in the box had already said no (example 0)",
+    "ok": true,
+    "validate": {
+     "ok": "False",
+     "stage": "example 0",
+     "error": "predictor failed (exit code 2): RuntimeError: this predictor always raises\n"
+    }
+   },
+   {
+    "check": "the laboratory client: experiment(label, None) raised LabError with one line of usage, and every reply went to lab_log.jsonl",
+    "ok": true,
+    "log": {
+     "bad_experiment": "usage: lab.experiment(label, U) with U an array (T, 24) of finite numbers, 1 <= T <= 4096, or an integer T for T ticks without input",
+     "lab_log_lines": 3
+    }
+   },
+   {
+    "check": "the laboratory itself: an experiment without inputs and without n is rejected with one line of usage, and charged nothing",
+    "ok": true,
+    "reply": "format: usage: experiment(label, inputs) with inputs an array (T, 24) of finite numbers, 1 <= T <= 4096, or experiment(label, n) with an integer n for n ticks without input"
+   },
+   {
+    "check": "lab.usage() reports seconds elapsed and left, and turns; a reset cost 17 ticks",
+    "ok": true,
+    "usage": {
+     "seconds_elapsed": 3.0,
+     "seconds_left": 3597.0,
+     "turns_used": 0,
+     "turns_left": null,
+     "ticks_used": 21
+    }
+   },
+   {
+    "check": "failure `none`: lab.validate in the box had already said no (artifact)",
+    "ok": true,
+    "validate": {
+     "ok": "False",
+     "stage": "artifact",
+     "error": "submission has no predict.py"
+    }
+   },
+   {
+    "check": "mixed: the predictor passed validation, was submitted, and failed on some items only",
+    "ok": true,
+    "n_failed": 23,
+    "by": {
+     "non-finite values": 4,
+     "wrong shape": 12,
+     "raised": 7
+    }
+   },
+   {
+    "check": "mixed: each failed item has one of the fixed reasons (raised, wrong shape, non-finite values, timed out), and all three instant kinds occur",
+    "ok": true,
+    "by": {
+     "non-finite values": 4,
+     "wrong shape": 12,
+     "raised": 7
+    }
+   },
+   {
+    "check": "mixed: every failed item carries the null policy's score for THAT item, bit for bit; no valid item does",
+    "ok": true
+   },
+   {
+    "check": "mixed: no failed item carries K",
+    "ok": true
+   },
+   {
+    "check": "ending by submit: graded on the copy the submit froze; no failed item",
+    "ok": true,
+    "rec": {
+     "ended": "submit",
+     "stop_condition": "agent_completed",
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "files": 2,
+      "bytes": 69587,
+      "sha256": "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+     },
+     "n_failed": 0
+    }
+   },
+   {
+    "check": "ending by the script's own end, no submit: the final collection of submission/ is graded; same per-item scores",
+    "ok": true
+   },
+   {
+    "check": "ending by the wall-time limit (40 s): verifiers stops the run, the final collection is graded; same per-item scores",
+    "ok": true,
+    "stop": "agent_timeout",
+    "agent_s": 40.2,
+    "ended": "time limit"
+   },
+   {
+    "check": "the statement of the 40-second run said 0.667 minutes (rendered from the run's own config)",
+    "ok": true,
+    "wall_minutes": 0.667
+   },
+   {
+    "check": "capture of `end-submit`: the files written to the store hash to the manifest of what was graded; the workspace copy holds the notes and the lab log",
+    "ok": true,
+    "capture": {
+     "folder": "captures/c388e509d14347e5bed97d04d55036a2/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 17167,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    }
+   },
+   {
+    "check": "capture of `end-exit`: the files written to the store hash to the manifest of what was graded; the workspace copy holds the notes and the lab log",
+    "ok": true,
+    "capture": {
+     "folder": "captures/8b1576b7fe9a44f9b6fd88aaff69d7dd/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 16390,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    }
+   },
+   {
+    "check": "capture of `end-wall`: the files written to the store hash to the manifest of what was graded; the workspace copy holds the notes and the lab log",
+    "ok": true,
+    "capture": {
+     "folder": "captures/0773c895b29e4d1fbb1561317644ebb4/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "read to its end",
+      "n_files": 4,
+      "bytes": 16387,
+      "n_skipped": 0,
+      "complete": true,
+      "listed": 37
+     }
+    }
+   },
+   {
+    "check": "the three endings graded byte-identical submissions",
+    "ok": true,
+    "sha": [
+     "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+    ]
+   },
+   {
+    "check": "failed run, stock isolated-verifier (control): the harness exits with status 1, verifiers runs no finalize, and the run has NO grade",
+    "ok": true,
+    "rec": {
+     "ok": false,
+     "graded": false,
+     "errors": [
+      "HarnessError"
+     ]
+    }
+   },
+   {
+    "check": "failed run, env physim2-verifier: the trace keeps ok = false and its error, and is graded on the last checkpoint of submission/; same per-item scores",
+    "ok": true,
+    "rec": {
+     "ok": false,
+     "graded": true,
+     "ended": "failed run",
+     "submission": {
+      "source": "checkpoint",
+      "ok": true,
+      "files": 2,
+      "bytes": 69587,
+      "sha256": "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+     },
+     "submission_checkpoint": {
+      "source": "timer",
+      "turn": 0,
+      "time": 1794403310.9886887,
+      "n": 3
+     },
+     "errors": [
+      "HarnessError"
+     ],
+     "recovery_error": null
+    }
+   },
+   {
+    "check": "failed run: the graded copy was written to the store and matches its manifest",
+    "ok": true,
+    "capture": {
+     "folder": "captures/903c41c6e6534572be7a2d3069d06e68/final",
+     "submission": {
+      "n_files": 2,
+      "bytes": 69587,
+      "n_skipped": 0,
+      "complete": true,
+      "archive": "read to its end"
+     },
+     "workspace": {
+      "archive": "none",
+      "error": "the box was gone"
+     }
+    }
+   },
+   {
+    "check": "ending by the turn limit (3 turns; stock bash harness of image 2, a stand-in instead of a model): stop condition max_turns, graded on the final collection, same per-item scores as the other endings",
+    "ok": true,
+    "rec": {
+     "ok": true,
+     "graded": true,
+     "stop_condition": "max_turns",
+     "ended": "turn limit",
+     "submission": {
+      "source": "final_collection",
+      "ok": true,
+      "files": 2,
+      "bytes": 69587,
+      "sha256": "ee748b7bbe14642b894ac101520767660bda4c10c651c0d1d0241c8469410500"
+     },
+     "errors": []
+    }
+   },
+   {
+    "check": "turn limit: the first message carries the run's own limits (3 turns, 5 minutes, 1024 tokens a reply, context 50,000, spend 1 dollar) and the measured box",
+    "ok": true,
+    "head": "Your task is described in /workspace/TASK.md (the same text follows). Work in /workspace. A working baseline is already in /workspace/submission; whatever is in that directory when your run ends is gr"
+   },
+   {
+    "check": "turn limit: lab.usage() through the tool reported turns_used 2, turns_left 1, seconds and the context counters",
+    "ok": true,
+    "usage": "{\"ok\": true, \"result\": {\"ticks_used\": 0, \"max_ticks\": 400, \"resets\": 0, \"episode_nats\": 0.0, \"total_nats\": 0.0, \"episode_left\": 8.0, \"total_left\": null, \"episodes\": 0, \"commands\": 0, \"submitted\": false, \"validations\": 0, \"submissions\": 0, \"seconds_elapsed\": 2.9, \"seconds_left\": 297.1, \"turns_used\": 2, \"turns_left\": 1, \"context_tokens_used\": 4841, \"context_tokens_left\": 45159}}"
+   },
+   {
+    "check": "turn limit: no reply follows the last reply's tool call (the model made 3 replies and never saw that call's result)",
+    "ok": true,
+    "replies": 3,
+    "tool_results_in_the_trace": 2
+   },
+   {
+    "check": "turn limit: that last tool call did run (its file is in the workspace listing)",
+    "ok": true
+   },
+   {
+    "check": "turn limit: the trace records the limits the statement was rendered from",
+    "ok": true,
+    "limits": {
+     "max_turns": 3,
+     "wall_minutes": 5.0,
+     "max_context_tokens": 50000,
+     "harness": "bash"
+    }
+   },
+   {
+    "check": "turn limit: the reasoning record is there (3 replies of a stand-in, none with reasoning) and a checkpoint was taken before a model call",
+    "ok": true,
+    "reasoning": {
+     "requested_effort": null,
+     "requested_summary": null,
+     "sent_effort": null,
+     "sent_summary": null,
+     "model_calls": 3,
+     "replies": 3,
+     "replies_with_readable_reasoning": 0,
+     "replies_with_encrypted_reasoning_only": 0,
+     "replies_without_reasoning": 3,
+     "calls_with_reasoning_tokens": 0,
+     "reasoning_tokens": null,
+     "reasoning_tokens_reported": false,
+     "reasoning_on": false
+    },
+    "checkpoints": {
+     "taken": 3,
+     "unchanged": 1,
+     "failed": 0,
+     "last_source": "before a model call"
+    }
+   },
+   {
+    "check": "round 5: `null` gets the same score on all 64 items and 7 cells from round 5's own grader as from the route",
+    "ok": true,
+    "identical": true,
+    "max_abs_difference": 0.0,
+    "skill_route": -0.0648900211160858,
+    "skill_round5": -0.0648900211160858
+   },
+   {
+    "check": "round 5: `D` gets the same score on all 64 items and 7 cells from round 5's own grader as from the route",
+    "ok": true,
+    "identical": true,
+    "max_abs_difference": 0.0,
+    "skill_route": 0.38326938469642324,
+    "skill_round5": 0.38326938469642324
+   },
+   {
+    "check": "round 5: `P0` gets the same score on all 64 items and 7 cells from round 5's own grader as from the route",
+    "ok": true,
+    "identical": true,
+    "max_abs_difference": 0.0,
+    "skill_route": 0.6543725022603046,
+    "skill_round5": 0.6543725022603046
+   },
+   {
+    "check": "round 5: `C` gets the same score on all 64 items and 7 cells from round 5's own grader as from the route",
+    "ok": true,
+    "identical": true,
+    "max_abs_difference": 0.0,
+    "skill_route": 0.8620961508026646,
+    "skill_round5": 0.8620961508026646
+   },
+   {
+    "check": "round 5: `valid` gets the same score on all 64 items and 7 cells from round 5's own grader as from the route",
+    "ok": true,
+    "identical": true,
+    "max_abs_difference": 0.0,
+    "skill_route": 0.28754043500761683,
+    "skill_round5": 0.28754043500761683
+   },
+   {
+    "check": "round 5: `mixed`: round 5's grader fails the same items; on every other item the scores are identical",
+    "ok": true,
+    "n_failed_route": 23,
+    "n_failed_round5": 23
+   },
+   {
+    "check": "round 5: on the failed items round 5 gave K, the route gives the null policy (the one intended difference)",
+    "ok": true
+   }
+  ]
+ },
+ "superseded_runs": {
+  "fail-none": {
+   "trace_id": "f62ecf34af4d415995a3359e3faa9aba",
+   "ok": true,
+   "errors": [],
+   "stop_condition": "agent_completed",
+   "ended": "the agent stopped",
+   "graded": true,
+   "reward": -0.0648900211160858,
+   "submission": {
+    "source": "final_collection",
+    "ok": false,
+    "files": 0,
+    "bytes": 68912,
+    "sha256": null
+   },
+   "submission_checkpoint": null,
+   "n_items": 64,
+   "n_failed": 64,
+   "fallback_by_reason": {
+    "no submission": 64
+   },
+   "fallback_policy": "null",
+   "validation": null,
+   "isolation": null,
+   "grade_seconds": null,
+   "item_boxes": null,
+   "item_box_wall_s_mean": null,
+   "cpu_s_per_item": null,
+   "capture": {
+    "folder": "captures/f62ecf34af4d415995a3359e3faa9aba/final",
+    "submission": {
+     "n_files": 0,
+     "bytes": 0,
+     "n_skipped": 0,
+     "complete": true,
+     "archive": "none"
+    },
+    "workspace": {
+     "archive": "read to its end",
+     "n_files": 4,
+     "bytes": 16744,
+     "n_skipped": 0,
+     "complete": true,
+     "listed": 36
+    }
+   },
+   "checkpoints": {
+    "taken": 1,
+    "unchanged": 0,
+    "failed": 0,
+    "last_source": "the baseline at setup"
+   },
+   "limits": {
+    "max_turns": null,
+    "wall_minutes": 60.0,
+    "max_output_tokens_per_turn": null,
+    "max_context_tokens": null,
+    "cap_usd": null,
+    "cpus": 2.0,
+    "memory_gib": 4.0,
+    "pids": 512,
+    "workspace_mib": 1024.0,
+    "tmp_mib": 512.0,
+    "read_only_root": true,
+    "lab_counts_turns": true,
+    "measured": true,
+    "harness": "physim2-script",
+    "configured": {
+     "cpus": 2.0,
+     "memory_gb": 4.0
+    },
+    "statement_sha256": "aae7f749472bf23235f159f64c030cb7482959e40954e02abd8642a49e3f880d"
+   },
+   "lab": {
+    "ticks_used": 21,
+    "resets": 1,
+    "validations": 1,
+    "submissions": 0,
+    "submitted": false
+   },
+   "wall": {
+    "setup": 19.7,
+    "agent": 2.7,
+    "finalize": 0.7
+   },
+   "verifier_wall_s": 3.438600778579712,
+   "turns": null,
+   "recovery_error": null,
+   "grading_error": null,
+   "name": "fail-none",
+   "wall_s": 39.7,
+   "returncode": 0,
+   "config": "fail-none.toml",
+   "superseded_because": "the grade's reason said 'no submission' for a submission/ that held pool.npz but no predict.py; taskset.py now takes the word from the freeze rules' own message; the case was run again as fail-nopredict"
+  }
+ },
+ "box_contents_at_start": [
+  {
+   "group": "TASK.md",
+   "why": "the task statement",
+   "files": [
+    "TASK.md"
+   ]
+  },
+  {
+   "group": "submission/",
+   "why": "the baseline: the null policy (predict.py and its pool of prior-predictive episodes); replaced by the agent",
+   "files": [
+    "submission/pool.npz",
+    "submission/predict.py"
+   ]
+  },
+  {
+   "group": "physim2/_vendor/vw1/vw/scoring.py",
+   "why": "the scoring rule (fair energy score), shipped on purpose: how you are scored is public",
+   "files": [
+    "physim2/_vendor/vw1/vw/scoring.py"
+   ]
+  },
+  {
+   "group": "physim2/_vendor/",
+   "why": "the public simulator's own sources (verbatim copies): what physim2.world_<name> imports to simulate the law",
+   "files": [
+    "physim2/_vendor/vw1/vw/__init__.py",
+    "physim2/_vendor/vw1/vw/certificates.py",
+    "physim2/_vendor/vw1/vw/core.py",
+    "physim2/_vendor/vw1/vw/exam.py",
+    "physim2/_vendor/vw1/vw/harness.py",
+    "physim2/_vendor/vw1/vw/nats.py",
+    "physim2/_vendor/vw1/vw/objects.py",
+    "physim2/_vendor/vw1/vw/opaque.py",
+    "physim2/_vendor/vw1/vw/operators.py",
+    "physim2/_vendor/vw1/vw/ports.py",
+    "physim2/_vendor/vw1/vw/secret.py",
+    "physim2/_vendor/vw1/vw/world.py"
+   ]
+  },
+  {
+   "group": "physim2/world_",
+   "why": "the public world: law, coarse-grainings, prior, test-program generator, simulator",
+   "files": [
+    "physim2/world_ring.py"
+   ]
+  },
+  {
+   "group": "physim2/world.json",
+   "why": "which world this exam is",
+   "files": [
+    "physim2/world.json"
+   ]
+  },
+  {
+   "group": "physim2/labclient.py",
+   "why": "the client of the laboratory (and its log of every reply)",
+   "files": [
+    "physim2/labclient.py"
+   ]
+  },
+  {
+   "group": "physim2/validate.py",
+   "why": "the check of a submission, as the grader will run it",
+   "files": [
+    "physim2/validate.py"
+   ]
+  },
+  {
+   "group": "physim2/_item.py",
+   "why": "the grader's one-request driver (unprivileged user, limits, cleanup): public and trusted",
+   "files": [
+    "physim2/_item.py"
+   ]
+  },
+  {
+   "group": "physim2/_rules.py",
+   "why": "the grader's freeze rules and reply format",
+   "files": [
+    "physim2/_rules.py"
+   ]
+  },
+  {
+   "group": "physim2/predict_runner.py",
+   "why": "how a predictor is called",
+   "files": [
+    "physim2/predict_runner.py"
+   ]
+  },
+  {
+   "group": "physim2/examples.npz",
+   "why": "two public example requests (prior mean, public noise) for validation",
+   "files": [
+    "physim2/examples.npz"
+   ]
+  },
+  {
+   "group": "physim2/exam.json",
+   "why": "the public card of the exam (sizes, budgets, limits)",
+   "files": [
+    "physim2/exam.json"
+   ]
+  },
+  {
+   "group": "physim2/",
+   "why": "package plumbing (__init__, import path of the vendored sources)",
+   "files": [
+    "physim2/__init__.py",
+    "physim2/_vendor_path.py"
+   ]
+  }
+ ],
+ "bundle": {
+  "files": 27,
+  "bytes": 353868,
+  "baseline": {
+   "policy": "null",
+   "episodes": 512,
+   "pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+   "files": {
+    "predict.py": "40e47be35afae0a5ccdb987dc408580f3666bd202ef1a826d7cfe3751251b3df",
+    "pool.npz": "1565f63b82f38b622fb82f133da5cf056ae57d6d9582c252cc77842f01b9e16a"
+   }
+  }
+ }
+}

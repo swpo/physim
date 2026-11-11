@@ -112,6 +112,9 @@ def null_pool(world: str, config_name: str) -> dict:
     Deterministic on one machine; cached per process."""
     key = (world, config_name)
     if key not in _POOLS:
+        if world not in PROFILES.BASELINE_WORLDS:
+            raise RuntimeError(f"this pin builds no baseline pool for world {world!r}: it serves {', '.join(PROFILES.BASELINE_WORLDS)} "
+                               "(physim2_env/profiles.py, BASELINE_WORLDS, says what another world needs first)")
         use_agentenv()
         from evaluator import instance as INST
         cfg = load_config(config_name)

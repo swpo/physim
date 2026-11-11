@@ -1,3 +1,7 @@
+# SUPERSEDED IN ROUND 4. A model rollout is no longer started from a vf-eval config like this one: it is described
+# by a FLAT rollout config (configs/ring_rollout.example.toml, schema physim2-rollout/v1; physim2_env/rollout_config.py
+# expands it for the profile) and started by a request through tools/vfrun.py. The file below is round 3's, unchanged
+# (image 1, 40 undisclosed turns, an old model id): kept only because round 3's check tools read it. Do not run it.
 # ONE rollout of a cheap model on the ring smoke exam with the stock `bash` harness (a mechanics test, not a
 # measurement). THIS RUN COSTS MONEY and puts an untrusted model into a container: the only command that may
 # start it is the one in RUNBOOK_MAC.md, step 3, under its STOP line (run label, store path, output to a file,

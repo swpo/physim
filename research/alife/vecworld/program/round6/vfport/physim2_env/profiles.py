@@ -41,6 +41,11 @@ PROFILES = {
 FALLBACK_BOX = {"box_cpus": 2, "box_memory_gb": 4}
 
 BASELINE_EPISODES = 512                                      # size of the null policy's pool (bundle.null_pool)
+# Worlds whose baseline pool this pin builds. The pool is simulated when a bundle is built, in every process that
+# builds one: 512 ring episodes take about a second; 512 gliders episodes would take about 1.7 core-hours
+# (0.15 CPU-seconds per member tick, 82 ticks per episode: agentenv/results/cost.json). A gliders profile needs a
+# pool that is built once and kept (see README, "what this pin serves"), so this pin refuses to build one.
+BASELINE_WORLDS = ("ring",)
 
 
 def get(name: str) -> dict:

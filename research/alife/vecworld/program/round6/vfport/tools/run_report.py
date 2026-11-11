@@ -10,6 +10,8 @@ shell on the machine must not. This tool reads the trace and prints
 
 and nothing else: no message, no tool argument, no error text of a predictor, no file name chosen by the agent.
 A value that is not a number, a boolean or one of the expected words is printed as "(other)" or as its length.
+Round 4: the grader's reasons for scoring an item with the null policy's forecast are fixed words and are printed
+by name (`5_reason`, `5_fallback.by_reason`), as is the freeze rules' "submission has no predict.py".
 It also counts, without printing them, the places where a hidden value of the instance (the secret, the first
 ten characters of each hidden parameter) occurs in the run folder: every count must be 0.
 
@@ -26,11 +28,23 @@ import sys
 # text of the examined model. Anything that is not such an identifier is not printed.
 STOP_WORD = re.compile(r"^[a-z][a-z0-9_]{0,39}$")
 ERROR_WORD = re.compile(r"^[A-Za-z][A-Za-z0-9]{0,39}$")
-SOURCE_WORDS = {"agent_submission", "final_collection", "verifiers_default", "none"}
+SOURCE_WORDS = {"agent_submission", "final_collection", "checkpoint", "verifiers_default", "none"}
+ENDED_WORDS = {"submit", "turn limit", "time limit", "token limit", "context limit", "spend limit", "the agent stopped", "stopped", "ended",
+               "failed run"}
+# The grader's words for an item, or a whole run, that was scored with the null policy's forecast (ruling E3):
+# a copy of physim2_env/grading.py FALLBACK_REASONS (this tool imports nothing of the package; tests compare the two).
+FALLBACK_REASONS = ("no predict.py", "no submission", "validation failed", "raised", "killed", "timed out", "out of memory",
+                    "wrong shape", "non-finite values", "unreadable reply", "score not finite", "not reproducible",
+                    "infrastructure", "not run", "grading error", "ungraded run")
+REASON_WORDS = set(FALLBACK_REASONS) | {f"validation failed: {r}" for r in FALLBACK_REASONS}
 TOOL_WORDS = {"bash", "edit", "search", "call", "lab.call", "lab_call", "lab__call", "mcp__lab__call"}
 REASON_HEADS = ("validation failed (example 0)", "validation failed (example 1)", "validation failed (reproducibility)", "no predictor",
                 "grading error", "ungraded rollout settled as K", "the reward ran outside the isolated grader", "submissions attempt limit",
-                "collection failed", "freeze failed", "format:", "size:")
+                "collection failed", "freeze failed", "format:", "size:",
+                # what the freeze rules and the collection say about a submission (physim2_env/public/_rules.py, access.py, taskset.py)
+                "submission has no predict.py", "submission directory not found", "submission larger than", "submission has more than",
+                "submission has a path longer", "submission archive names", "unreadable submission archive",
+                "the frozen archive did not pass the restore check", "no copy of submission/ was taken before the run failed")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -56,7 +70,29 @@ def head(v):
     if v is None:
         return None
     s = str(v)
+    if s in REASON_WORDS:                                    # round 4: the grader's reasons are fixed words, printed by name
+        return s
     return next((h for h in REASON_HEADS if s.startswith(h)), f"(other, {len(s)} characters)")
+
+
+def fallback(v):
+    """The grade's fallback summary: how many items were scored with the null policy's forecast, by reason. Only
+    the grader's own words are printed as keys; anything else is counted under "(other)"."""
+    if not isinstance(v, dict):
+        return None
+    by = {}
+    for k, n in (v.get("by_reason") or {}).items():
+        key = k if k in REASON_WORDS else "(other)"
+        by[key] = by.get(key, 0) + (n if isinstance(n, int) and not isinstance(n, bool) else 0)
+    return {"policy": word(v.get("policy"), {"null"}), "n_items": num(v.get("n_items")), "by_reason": by,
+            "baseline_pool_sha256": v.get("baseline_pool_sha256") if isinstance(v.get("baseline_pool_sha256"), str) and HEX64.match(v["baseline_pool_sha256"]) else None}
+
+
+def counts(v, keys):
+    """Numbers and booleans of a small record; nothing else of it."""
+    if not isinstance(v, dict):
+        return None
+    return {k: (v.get(k) if isinstance(v.get(k), bool) else num(v.get(k))) for k in keys}
 
 
 def count_tool_calls(node, counts):
@@ -132,12 +168,18 @@ def report(store, run_dir):
                 "4_submission_files": num(sub.get("files")), "4_submission_bytes": num(sub.get("bytes")),
                 "4_submission_sha256": sub.get("sha256") if isinstance(sub.get("sha256"), str) and HEX64.match(sub["sha256"]) else None,
                 "4_submission_error": head(sub.get("error")), "4_stop_condition": word(ph.get("stop_condition"), STOP_WORD), "4_trace_stop_condition": word(tr.get("stop_condition"), STOP_WORD),
+                "4_ended": word(ph.get("ended"), ENDED_WORDS),
+                "4_checkpoints": counts(ph.get("checkpoints"), ("taken", "unchanged", "failed")),
+                "4_capture_submission": counts((ph.get("capture") or {}).get("submission"), ("n_files", "bytes", "n_skipped", "complete")),
+                "4_capture_workspace": counts((ph.get("capture") or {}).get("workspace"), ("n_files", "bytes", "n_skipped", "complete", "listed")),
                 "5_validation_ok": flag((g.get("validation") or {}).get("ok")), "5_n_items": num(g.get("n_items")), "5_n_failed": num(g.get("n_failed")),
                 "5_layers": {"rlimits": flag(layers.get("rlimits")), "uid": num(layers.get("uid")), "cleanup": flag(layers.get("cleanup"))},
                 "5_isolation": word(g.get("isolation"), {"box", "shared"}), "5_item_boxes": num(g.get("item_boxes")),
                 "5_item_box_wall_s_mean": num(g.get("item_box_wall_s_mean")),
                 "5_infrastructure_failed_items": num(g.get("infrastructure_failed_items")), "5_skill_vs_O": num(g.get("skill_vs_O")),
                 "5_reason": head(g.get("reason")), "5_grading_error": word(ph.get("grading_error"), ERROR_WORD),
+                "5_fallback": fallback(g.get("fallback")), "5_not_a_grade": flag(g.get("not_a_grade")),
+                "5_recovery_error": word(ph.get("recovery_error"), ERROR_WORD),
                 "5_marked_not_an_exam": "NOT_AN_EXAM" in ph, "5_between_item_state_marked": "between_item_state" in ph,
                 "5_predictor_uid": num(vb.get("predictor_uid")), "5_container_evidence_count": len(vb.get("container_evidence") or []),
                 "6_task_row_keys": sorted(k for k in data if isinstance(k, str) and re.fullmatch(r"[a-z_]{1,32}", k)),
@@ -147,7 +189,13 @@ def report(store, run_dir):
                              if isinstance(timing.get(k), dict) and num((timing.get(k) or {}).get("end")) is not None
                              and num((timing.get(k) or {}).get("start")) is not None else None
                              for k in ("boot", "setup", "agent", "finalize")},
-                "7_verifier_wall_s": num(g.get("verifier_wall_s")),
+                "7_verifier_wall_s": num(g.get("verifier_wall_s")), "7_num_turns": num(tr.get("num_turns")),
+                "8_limits": counts(ph.get("limits"), ("max_turns", "wall_minutes", "max_output_tokens_per_turn", "max_context_tokens", "cap_usd",
+                                                      "cpus", "memory_gib", "pids", "workspace_mib", "tmp_mib", "read_only_root", "measured")),
+                "8_statement_sha256": (ph.get("limits") or {}).get("statement_sha256") if HEX64.match(str((ph.get("limits") or {}).get("statement_sha256"))) else None,
+                "8_reasoning": {k: (v if isinstance(v, bool) or v is None else num(v) if not isinstance(v, (str, list)) else
+                                    word(v, STOP_WORD) if isinstance(v, str) else [word(x, STOP_WORD) for x in v][:4])
+                                for k, v in (ph.get("reasoning") or {}).items()} if isinstance(ph.get("reasoning"), dict) else None,
             }
             if iid:
                 hidden = os.path.join(store, iid, "hidden")
