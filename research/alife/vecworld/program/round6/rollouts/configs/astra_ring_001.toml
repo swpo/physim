@@ -1,0 +1,72 @@
+# Rollout astra_ring_001: ONE rollout of a strong model (openai/gpt-6-astra) on the ring smoke exam with verifiers'
+# stock `bash` harness, in the cloud container. The first rollout of a strong model on a v2 exam.
+# PILOT_NEVER_REUSE_AS_EXAM.
+# A copy of ../../vfport/configs/qwen_ring_bash.toml (pinned, unchanged there) with exactly these differences:
+#   model      qwen/qwen3.5-35b-a3b -> openai/gpt-6-astra (listed by Prime's Models API on 11 Nov 2026 at $10 in /
+#              $50 out per million tokens, no cache-read price given, context window 1,050,000 tokens, reasoning
+#              mandatory with default effort "medium"; nothing about reasoning is set here)
+#   image      physim2-ring:1 -> physim2-ring-ca:1 (the same image plus this machine's CA bundle:
+#              ../docker/Dockerfile.ring-ca; as in qwen_ring_001)
+#   instances  mac-ring-w0 -> pilot-astra-ring-001-w0 (a fresh pilot instance, made for this rollout)
+#   runtime    cpu = 2, memory = 4 (every box of the rollout: agent box, verifier box, item boxes; as in
+#              qwen_ring_001)
+#   max_total_tokens  1,500,000 -> 42,000. THE ONE CAP THAT DIFFERS from qwen_ring_001, and only because of the
+#              price (below). Rollout qwen_ring_001 ended with 37,647 on this counter after its 40 turns.
+# Unchanged: push = false, 40 turns, 60 k output tokens (cannot bind under a total of 42 k), 8,192 tokens per reply
+# (for this model: reasoning and answer together), one hour, no retries anywhere, single_use = true,
+# item_isolation = "box". The task statement and the exam are those of qwen_ring_001.
+#
+# Spend bound (the arithmetic of ../LEDGER.md, "How a rollout's caps bound its bill", made exact for these caps).
+# verifiers refuses a turn when the trace's num_total_tokens has reached max_total_tokens, and for every model
+# call  prompt tokens + completion tokens <= num_total_tokens after that call  (trace.py: each call's new input is
+# its prompt beyond the previous call's prompt + completion, clamped at zero). So every call but the last has
+# prompt + completion under M = 42,000; the last may exceed it by the tool results of one reply (each cut at
+# 20,000 bytes by the harness) and by one reply (8,192 tokens). With T = 40 turns, $10 in and $50 out per million:
+#   bill <= (10 T + 40) x M / 1e6  +  50 x 8,192 / 1e6  +  10 x D / 1e6
+#        =  $18.48                 +  $0.41             +  $0.01 per 1,000 tokens D of tool output of the last reply
+#        =  $18.89 + $0.01 per 1,000 such tokens: under $20 unless one reply returns more than 111,000 tokens of
+#           tool output (at least 11 results, each at the harness's 20,000-byte limit).
+# With max_total_tokens = 1,500,000 the same arithmetic gives 40 x 1.05 M x $10 = $420: not started with that.
+# Started only by the command recorded in ../PROGRESS.md (through ../tools/here.py and the pinned tools/vfrun.py).
+model = "openai/gpt-6-astra"
+num_rollouts = 1
+max_concurrent = 1
+push = false
+
+[sampling]
+max_tokens = 8192
+
+[env]
+id = "isolated-verifier"
+
+[env.taskset]
+id = "physim2-env"
+image = "physim2-ring-ca:1"
+instances = ["pilot-astra-ring-001-w0"]
+
+[env.agent]
+max_turns = 40
+max_total_tokens = 42000
+max_output_tokens = 60000
+
+[env.agent.timeout]
+rollout = 3600                   # the ring config's envelope: one hour
+
+[env.agent.runtime]
+type = "docker"
+cpu = 2
+memory = 4                       # GB
+
+[env.agent.harness]
+id = "bash"
+edit = true
+search = false
+
+[env.agent.retries]
+max_retries = 0                  # a rerun would hand the agent a fresh laboratory budget
+
+[env.retries]
+max_retries = 0
+
+[env.verifier]
+retries = 0

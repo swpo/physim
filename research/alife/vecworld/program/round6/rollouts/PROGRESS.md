@@ -99,3 +99,48 @@ For the next runner on this machine (the same wrappers work for any model):
    --disk-floor-gib 1.5 --model-credentials prime`, detached, with `tools/watch.py` beside it.
 3. Afterwards `tools/here.py ... run_report.py`, `tools/extract.py`, `tools/scan_key.py` (and
    `tools/redact_values.py` if it reports account identifiers), then the ledger and the commit.
+
+## astra_ring_001 (the first rollout of a strong model; runner session of 11 Nov 2026, in the cloud container)
+
+Purpose: see what a strong agent does on the same exam and where it lands among the reference policies; look for
+leaks and shortcuts. One rollout of `openai/gpt-6-astra`; at most one more, on a new instance, if the first dies
+on mechanics. The task statement, the exam and the harness are those of qwen_ring_001.
+
+State (newest last; times UTC as this container's clock shows them):
+
+- 11:33 Runner started. Own worktree; the port's tree equals the pin (109 of 109 hashes; sha256 of PIN.sha256
+  cd67eb4b...; no difference to commit 08bd5a66 under `vfport/`). Docker 29.9.2 was running, the four images of
+  qwen_ring_001 on disk (`physim2-ring-ca:1` included), no container. Free disk 2.7 to 3.0 GiB: the tools' disk
+  floor is set to 1.5 GiB on every command, as for qwen_ring_001.
+- 11:36 The Qwen rollout shows that the mechanics work (40 model calls answered, the laboratory reached from the
+  box, graded end), so the Astra rollout goes ahead. Its mechanics fixes that need no change in the pinned tree
+  are applied as they stand: `tools/here.py` (minimal environment, CA bundle for vf-eval), image
+  `physim2-ring-ca:1`, the bill sized by turns times context, one paid ping before the instance is opened,
+  `tools/watch.py` copying `/workspace` as well. NOT applied, because they need the task statement or the
+  pinned tree: telling the agent its turn and token caps, the envelope in TASK.md (it says 4 cores and 8 GiB;
+  the box has 2 and 4), the laboratory's error for `experiment(label, None)`, logging of laboratory replies.
+- 11:38 Model and price, from Prime's Models API (`GET https://api.pinference.ai/api/v1/models`, no credential
+  sent, 132 models): `openai/gpt-6-astra` is listed; `pricing` says $10 in and $50 out per million tokens and
+  gives no cache-read price (so all input is counted at $10); context window 1,050,000 tokens; reasoning is
+  mandatory, default effort medium. Saved as `astra_ring_001/model_entry.json` after the rollout.
+- 11:40 THE CAP. With the pinned caps (40 turns, 1.5 M total tokens) the bill is bounded only by 40 turns x the
+  1.05 M context window x $10 = $420, far over the $20 a rollout may cost by its caps. `max_total_tokens` is
+  therefore lowered from 1,500,000 to **42,000**; turns (40), output tokens (60,000) and tokens per reply (8,192)
+  stay as they were. Bound: every call but the last has prompt + completion under 42,000, so the bill is at most
+  (10 x 40 + 40) x 42,000 / 1e6 = $18.48, plus one last reply ($0.41) and $0.01 per 1,000 tokens of tool output
+  that reply returns: **$18.89**, under $20 unless that one reply returns over 111,000 tokens of tool output
+  (the arithmetic is in `configs/astra_ring_001.toml` and `LEDGER.md`).
+  What this does to the rollout, said before it starts: the token cap, not the turn cap, is now the limit the
+  agent will most likely meet, and like the turn cap it is not told to the agent. The Qwen rollout used 37,647
+  on that counter in 40 turns (no reasoning tokens, small replies); a model that reasons at every turn and reads
+  the public code will use it faster. With $10 per million input tokens a $20 bound allows about 1.66 million
+  token-turns whatever the split (40 turns x 42 k, 30 x 55 k, 24 x 66 k, 20 x 77 k); the runner's instruction
+  was to keep the turn cap and lower the token cap.
+- 11:43 Instance `pilot-astra-ring-001-w0` made (ring, smoke_ring: 64 items, R = 16, 400 laboratory ticks),
+  commitment 58488c5f9354675cd595e0ace9b0375c5361a6eafb5454a7f36194ee9028f4bf. Store (hidden side, never
+  committed): the runner's scratch folder `rolla/store` (the task text's `KEY/store` is a template slip, as in
+  the Qwen role). Reference table started on it: `tools/prove.py` through the new `tools/prove_here.py`, which
+  caps the scripted boxes at 4 GB as well (checked on the first box: 4,294,967,296 bytes, 2 CPUs); policies S, D,
+  P0, PM, C, null in one box per rollout; no second grading of C with one box per item (done for
+  qwen_ring_001 on the same image; the model's own grading uses one box per item); `--no-cross-check` (that
+  check runs the item driver on the host).
