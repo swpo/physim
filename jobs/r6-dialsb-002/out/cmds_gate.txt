@@ -1,0 +1,16 @@
+python -B s0.py gate 31 main > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_31_main.txt 2>&1
+python -B s0.py gate 31 control > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_31_control.txt 2>&1
+python -B s0.py gate 32 main > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_32_main.txt 2>&1
+python -B s0.py gate 32 control > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_32_control.txt 2>&1
+python -B s0.py gate 33 main > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_33_main.txt 2>&1
+python -B s0.py gate 33 control > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_33_control.txt 2>&1
+python -B s0.py gate 34 main > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_34_main.txt 2>&1
+python -B s0.py gate 34 control > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_34_control.txt 2>&1
+python -B s0.py gate 35 main > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_35_main.txt 2>&1
+python -B s0.py gate 35 control > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_35_control.txt 2>&1
+python -B s0.py gate 36 main > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_36_main.txt 2>&1
+python -B s0.py gate 36 control > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_36_control.txt 2>&1
+python -B s0.py gate 37 main > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_37_main.txt 2>&1
+python -B s0.py gate 37 control > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_37_control.txt 2>&1
+python -B s0.py gate 38 main > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_38_main.txt 2>&1
+python -B s0.py gate 38 control > /home/ubuntu/gpujob/r6-dialsb-002/out/log_gate_38_control.txt 2>&1

@@ -1,0 +1,8 @@
+16:45:31 gate s37_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:47:21 gate s37_main base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 12, 13, 14, 15] items 28 rate 231 member-ticks/s
+16:49:27 gate s37_main A_act done (39 grid points)
+/home/ubuntu/gpujob/r6-dialsb-002/src/research/alife/vecworld/program/round6/dials/dialsB/s0.py:484: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  u1 = qmc.Sobol(4, scramble=True, seed=1000 + seed).random(sz["h_n1"])
+16:57:53 gate s37_main H done (48 + 24 points per view)
+17:01:13 gate s37_main stand-in done (42 items)
+17:01:13 gate s37_main DONE wall 943s member-ticks 298720 pick A_act heaviest 9 (0.26)

@@ -1,0 +1,15 @@
+python -B s0.py scanV 0 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanV_0.txt 2>&1
+python -B s0.py scanV 1 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanV_1.txt 2>&1
+python -B s0.py scanV 2 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanV_2.txt 2>&1
+python -B s0.py scanV 3 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanV_3.txt 2>&1
+python -B s0.py scanV 4 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanV_4.txt 2>&1
+python -B s0.py scanV 5 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanV_5.txt 2>&1
+python -B s0.py scanV 6 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanV_6.txt 2>&1
+python -B s0.py scanC 0 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanC_0.txt 2>&1
+python -B s0.py scanC 1 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanC_1.txt 2>&1
+python -B s0.py scanC 2 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanC_2.txt 2>&1
+python -B s0.py scanC 3 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanC_3.txt 2>&1
+python -B s0.py scanC 4 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanC_4.txt 2>&1
+python -B s0.py scanC 5 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanC_5.txt 2>&1
+python -B s0.py scanC 6 7 > /home/ubuntu/gpujob/r6-dialsb-002/out/log_scanC_6.txt 2>&1
+python -B s0.py align > /home/ubuntu/gpujob/r6-dialsb-002/out/log_align.txt 2>&1 || echo align-failed-not-fatal >> /home/ubuntu/gpujob/r6-dialsb-002/out/progress.txt

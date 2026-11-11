@@ -1,0 +1,36 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "scan": "C",
+ "point": "a0_0.025",
+ "hidden_pilot": {
+  "lam": 1.0,
+  "cat": 1.0,
+  "rho": 0.02,
+  "DX": 0.5,
+  "a0": 0.025
+ },
+ "members": 16,
+ "R": 6,
+ "members_with_focus_cell": 15,
+ "classes": [
+  "none",
+  "blind",
+  "feed",
+  "starve"
+ ],
+ "horizons_pooled": [
+  8,
+  16,
+  32
+ ],
+ "gap_none": 0.2125904425424772,
+ "gap_none_se_members": 0.13238820831530354,
+ "gap_blind": 0.22325379879371968,
+ "gap_blind_se_members": 0.13056883243556236,
+ "gap_feed": 0.534140109728914,
+ "gap_feed_se_members": 0.12114617584358879,
+ "gap_starve": 0.2967986741655726,
+ "gap_starve_se_members": 0.060922801032322185,
+ "gap_aimed": 0.4195884174181041,
+ "gap_aimed_se_members": 0.08324251761313223
+}

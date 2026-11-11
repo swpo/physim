@@ -1,0 +1,7 @@
+16:42:49 scanV DS_x1.2: viable 8/8 headroom +0.230
+16:43:08 scanV DL_x1.1: viable 8/8 headroom +0.005
+16:43:29 scanV r_x0.9: viable 8/8 headroom +0.083
+16:43:47 scanV th_x0.8: viable 0/8 headroom +nan
+16:44:05 scanV F_x1.2: viable 0/8 headroom +nan
+16:44:22 scanV b_x1.1: viable 4/8 headroom +0.395
+16:44:38 scanV dL_x0.9: viable 7/8 headroom +0.737

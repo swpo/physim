@@ -1,0 +1,2 @@
+16:43:49 scanC a0_0.05: focus cells 15/16 gaps none +0.093 blind +0.101 aimed +0.219
+16:44:50 scanC DX_0.2: focus cells 15/16 gaps none +0.006 blind +0.008 aimed +0.171

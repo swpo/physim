@@ -1,0 +1,1 @@
+16:43:49 scanC rho_0.01: focus cells 15/16 gaps none -0.004 blind +0.017 aimed +0.305

@@ -1,0 +1,11 @@
+16:37:57 job: start size=full nproc=16 limit=10800s
+versions: python 3.12.16 jax 0.12.0.1 numpy 2.5.4 scipy 1.18.1
+16:40:25 gate s30_main H done (2 + 1 points per view)
+16:42:05 gate s30_main stand-in done (42 items)
+16:42:05 presmoke ok wall 244s rate 578 member-ticks/s with compiles, 682 compiled; planned 5822544
+speed guard: steady rate 682 member-ticks/s per process, planned 5822544 member-ticks, 16 processes: projected 2071 s (limit 9000 s; full size only)
+16:42:05 job: scans: 15 processes, 16 at a time, 10552 s left
+16:45:27 job: ranges.sha256: f6784d4ccb4d3985d619c65a3c5ca97c45731576b9e2459f4c31132e606eefe2  ranges.json
+16:45:27 job: gate: 16 processes, 16 at a time, 10350 s left
+17:01:49 analysis: verdict CLOSE CALL (plan's point rule: NO-GO) C1=0.482[holds clearly] C2=0.664[close] C3=0.784[close] C4=0.599[close] C5=-0.087[fails clearly]
+17:01:49 job: done in 1432 s; $OUT is 2 MB
