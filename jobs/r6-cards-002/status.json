@@ -28,7 +28,7 @@
   "cap_usd": 4.3,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.1524
+    "conservative_usd": 0.5966
   },
   "guard_at": null,
   "guard_reason": null,
@@ -130,6 +130,12 @@
     }
   ],
   "pods_terminated": null,
+  "review": {
+    "at": "2026-11-11T12:45:49Z",
+    "file": "jobs/r6-cards-002/review.md",
+    "sha256": "7e5c67d507698855a1f05e680d2b6481486766fbde051b040f0ec98c2a0984d4",
+    "summary": "0 blocker, 0 major, 3 minor; the five fixes are correct; slow-clock late windows overlap run A by 62-75%; fine to run"
+  },
   "run_deadline": "2026-11-11T14:02:25Z",
   "run_started_epoch": 1794400068.544506,
   "started_at": "2026-11-11T12:32:25Z",
