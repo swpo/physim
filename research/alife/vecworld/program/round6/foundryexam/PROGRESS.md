@@ -38,14 +38,19 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
   code: exit 0, all three arms (7.8 min).
 - 12:40 request r6-foundryexam-003 pushed (A100, max 3.0 h, cap $7.80).
 
+- 12:41 job 002 was cancelled by the runner when request 003 arrived (I pushed no cancel file; 003's notes announced the
+  cancellation): 0.96 pod-hours, $1.92 billed; its record is in results/job/ (status, review, logs' progress files).
+- 12:47 job 003 running (A100-SXM4-40GB). Presmoke passed in 5.2 min including the speed guard. Review of 003: fine to run,
+  0 blocker, 0 major, 2 minor (speed guard lenient; CLOCK["hidden_s"] KeyError if the first hidden world of an arm fails).
+- 13:17 the scan fix works: 18 ms per step of 16 lockstep nets (1.1 ms per net-step at batch 64), 6.5 ms per step of one
+  shared net at batch 256. Arm P's nets done at minute 25 of the full pass; N30 nets at minute 40.
+
 ## Done
 - design and criteria declared and committed; pool and centres; code; CPU smokes from the git archive; requests 001 (rejected,
   $0), 002 (to be cancelled after arm P), 003 (pushed).
 
 ## Running
-- r6-foundryexam-002: cancel when its log shows "P done" (push an empty gpu/requests/r6-foundryexam-002.cancel).
-- r6-foundryexam-003: watch with scratchpad/foundryexam/watch.sh r6-foundryexam-003. First thing to read: presmoke/shape_test.json
-  (ms per step) in the heartbeat or the outputs.
+- r6-foundryexam-003 (expected to end about 13:55 pod clock). Watchers: scratchpad/foundryexam/watch.sh and hb.sh.
 
 ## Exact next step
 1. when 003 is final: `bash fetch.sh r6-foundryexam-003 <scratch>`; `python -B make_summary.py <scratch>/jobs/r6-foundryexam-003/out/full
