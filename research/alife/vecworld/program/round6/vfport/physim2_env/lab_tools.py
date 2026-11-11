@@ -4,6 +4,11 @@ Placement: a host process of the trusted worker, one per rollout, started by ver
 the agent's box; Physim2Task.toolsets refuses any other placement). The process loads the hidden instance named
 by the task row's pointer, then removes every token-like variable from its own environment.
 
+Round 4: the listener needs a bearer. Every HTTP request must carry `Authorization: Bearer <secret>`, a 256-bit
+value of this rollout that arrives over verifiers' state channel and is kept in memory only (bearer.py); the
+MCP library's DNS-rebinding protection is on, with this server's own `127.0.0.1:<port>` as the only allowed
+Host (LabTools._serve). A box does not hold the bearer: its proxy inside vf-eval adds it (runtime.py).
+
 Budgets (ticks, nats, attempts) are enforced inside LabService under its own lock, never in verifiers' shared
 state: this Toolset declares no state fields, so no call pulls or pushes state (verifiers replaces the whole
 state on a push, last writer wins: mcp/server.py:221-247). Internal errors never reach the agent: LabService
@@ -23,6 +28,7 @@ import numpy as np
 import verifiers.v1 as vf
 
 from . import access as ACCESS
+from . import bearer as BEARER
 from . import store as STORE
 from ._paths import use_agentenv
 
@@ -116,6 +122,7 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         super().__init__(config)
         self.service = None
         self.scrubbed: list[str] = []
+        self.bearer: str | None = None                       # round 4: set by setup_task from the state channel; never written anywhere
 
     def _with_state(self, fn):
         @wraps(fn)
@@ -133,6 +140,11 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         state = (await _channel_request("GET", url, secret, client=self._state_client)).json() if url else {}
         hidden = STORE.hidden_dir(STORE.store_root(self.config.store), task.instance_id)
         chan = state.get("access") or None
+        # round 4: the bearer every request to this server must carry. It comes over the state channel only
+        # (trace.state is never saved); the copy handed to the controller's client below does not hold it.
+        self.bearer = (chan or {}).get("lab_bearer")
+        if chan:
+            chan = {k: chan[k] for k in ("path", "secret") if k in chan}
         check = (lambda path, final: ACCESS.request(chan, "check", path=path, final=final)) if chan else None
         self.service = make_service(hidden, state.get("rollout") or f"lab-{os.getpid()}", check)
         if json.load(open(os.path.join(hidden, "instance.json")))["secret_commitment"] != task.secret_commitment:
@@ -143,6 +155,7 @@ class LabTools(vf.Toolset[LabToolsConfig]):
             await asyncio.to_thread(ACCESS.request, chan, "announce", port=int(Path(port_file).read_text()))
         with open(os.path.join(self.service.dir, "process.json"), "w") as f:
             json.dump({"pid": os.getpid(), "scrubbed_variables": self.scrubbed, "announced": bool(chan and port_file),
+                       "bearer_required": BEARER.well_formed(self.bearer),      # yes or no, never the value
                        "token_values_left_in_environ": STORE.environ_still_has(self.scrubbed),
                        "token_like_names_left_in_os_environ": STORE.token_like(os.environ)}, f)
 
@@ -168,10 +181,56 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         rep = await asyncio.to_thread(self.service.handle, {"op": op, "args": args or {}})
         return json.dumps(plain(rep), allow_nan=False)
 
+    # ---- round 4: the listener. verifiers' own _serve (mcp/server.py:267-338) answers anybody who reaches the
+    #      port and switches the MCP library's DNS-rebinding protection off. This one is the same sequence
+    #      (bind, report the port, set up, serve) with three differences: the address is 127.0.0.1 whatever the
+    #      environment says, every request needs the rollout's bearer (bearer.guard), and the protection is on
+    #      with this server's own address as the only allowed Host. Without a bearer nothing is served. ----
+    def _serve(self) -> None:
+        import socket
+
+        import uvicorn
+        from mcp.server.mcpserver import MCPServer
+        from mcp.server.transport_security import TransportSecuritySettings
+        from verifiers import __version__
+        from verifiers.v1.mcp.server import STATE_TIMEOUT, _die_with_parent
+
+        _die_with_parent()
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        sock.bind(("127.0.0.1", 0))                          # loopback, a port the system chooses: never MCP_HOST or MCP_PORT
+        port = sock.getsockname()[1]
+        port_file = os.environ.get("MCP_PORT_FILE")
+        if port_file:
+            Path(port_file).write_text(str(port))
+
+        async def serve() -> None:
+            import httpx
+            try:
+                async with self._exit_stack, httpx.AsyncClient(timeout=STATE_TIMEOUT) as client:
+                    self._state_client = client
+                    await self.setup()
+                    state_url, secret, _ = self._state_channel()
+                    await self._setup_task_from_channel(state_url, secret)
+                    if not BEARER.well_formed(self.bearer):
+                        raise RuntimeError("the laboratory was given no bearer over the state channel: it serves nothing")
+                    security = TransportSecuritySettings(enable_dns_rebinding_protection=True,
+                                                         allowed_hosts=[f"127.0.0.1:{port}"], allowed_origins=[])
+                    mcp = MCPServer(self.server_name or type(self).__name__, version=__version__)
+                    self.register(mcp)
+                    app = BEARER.guard(mcp.streamable_http_app(json_response=True, stateless_http=True,
+                                                               transport_security=security), self.bearer)
+                    server = uvicorn.Server(uvicorn.Config(app, log_level="critical", access_log=False))
+                    await server.serve(sockets=[sock])
+            finally:
+                self._state_client = None
+
+        asyncio.run(serve())
+
 
 if __name__ == "__main__":
     # The laboratory answers on this machine's loopback, on a port the system chooses, whatever the environment
-    # of the worker says: verifiers' server would otherwise bind $MCP_HOST and $MCP_PORT (mcp/server.py:278-283).
+    # of the worker says (LabTools._serve binds 127.0.0.1:0 itself; the two lines stay as a second lock).
     os.environ["MCP_HOST"] = "127.0.0.1"
     os.environ.pop("MCP_PORT", None)
     LabTools.run()

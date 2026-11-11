@@ -18,6 +18,11 @@ never evidence for the grader. The grader repeats the three calls in the verifie
 
 The socket path and a 256-bit secret travel in `trace.state` (never saved in a trace) over verifiers' state
 channel; the socket is never reachable from a box. Pattern: PhySim v1, physim/runtime_access.py.
+
+Round 4: the same dictionary also carries the laboratory's bearer (`lab_bearer`, bearer.py), drawn here per
+rollout. The laboratory reads it over the state channel and answers no request without it; at `announce` the
+box's own proxy, inside this process, is told to put it on what it forwards to the laboratory's port
+(runtime.set_lab_bearer). It is never written into a box, a file, a log or a command line.
 """
 from __future__ import annotations
 
@@ -32,6 +37,8 @@ from pathlib import Path
 
 import verifiers.v1 as vf
 
+from . import bearer as BEARER
+from . import runtime as RUNTIME
 from .grading import ROUTE_ENV, require_container
 from .public import _rules
 
@@ -95,6 +102,7 @@ class BoxAccess:
         self.directory = tempfile.TemporaryDirectory(prefix="physim2-io-")
         self.path = str(Path(self.directory.name) / "io.sock")
         self.secret = secrets.token_hex(32)
+        self.lab_bearer = BEARER.new_secret()                # round 4: the laboratory's bearer of this rollout (memory only)
         self.server = None
         self.frozen: dict | None = None                      # set by `freeze`; the grader's copy from then on
         self.address: str | None = None
@@ -108,7 +116,7 @@ class BoxAccess:
 
     async def start(self) -> dict:
         self.server = await asyncio.start_unix_server(self.handle, self.path, limit=8192)
-        return {"path": self.path, "secret": self.secret}
+        return {"path": self.path, "secret": self.secret, "lab_bearer": self.lab_bearer}
 
     async def close(self) -> None:
         if self.server is not None:
@@ -148,6 +156,10 @@ class BoxAccess:
     async def announce(self, port: int) -> dict:
         # the same translation verifiers applies to the tool URL it hands to the harness (mcp/launch.py:457-460)
         require_container(self.runtime)
+        if isinstance(port, bool) or not 0 < port < 65536:
+            raise ValueError("not a port")
+        # round 4: before the address reaches the box, its proxy learns the bearer for exactly this port
+        RUNTIME.set_lab_bearer(self.runtime, port, self.lab_bearer)
         self.address = self.runtime.host_url(f"http://127.0.0.1:{port}").rstrip("/") + "/mcp"
         await self.runtime.write(ADDRESS_FILE, json.dumps({"url": self.address, "tool": "call"}).encode())
         await self.runtime.run(["chmod", "755", "/etc/physim2"], {})

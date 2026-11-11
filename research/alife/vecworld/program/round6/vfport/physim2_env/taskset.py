@@ -32,8 +32,12 @@ from pydantic import Field
 from . import access as ACCESS
 from . import bundle as BUNDLE
 from . import grading as GRADING
+from . import runtime as RUNTIME
 from . import store as STORE
 from .lab_tools import LabTools, LabToolsConfig
+
+# ---- round 4, fixer B: the box caps and the bearer-carrying proxy are put in place before any box can start ----
+RUNTIME.install()
 
 WORKDIR = "/workspace"
 PROMPT = ("Your task is described in /workspace/TASK.md (the same text follows). Work in /workspace. Finish by "
@@ -147,6 +151,10 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         gate = GRADING.container_gate(runtime)               # the real runtime object, provisioned by verifiers for this run
         if gate:
             raise vf.TaskError("PhySim v2 runs only in a box that verifiers itself provisioned: " + "; ".join(gate))
+        # ---- round 4, fixer B: a Docker box must carry the pilot's caps, read back from the engine at its start ----
+        box = RUNTIME.caps_of(runtime)
+        if runtime.config.type == "docker" and not (box and box.get("verified")):
+            raise vf.TaskError("PhySim v2 runs only in a box started with the pilot's caps (physim2_env/runtime.py)")
         # ---- guard 3: only allow-listed variable names may be configured for a box (a credential under any
         #      name, GITHUB_PAT or HF_KEY as much as HF_TOKEN, has no business in one) ----
         harness = getattr(getattr(trace.agent, "config", None), "harness", None)
@@ -167,6 +175,7 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         info = await self._public_files(runtime, state.uid if state.finalized else None)
         if state.finalized:                                  # the verifier box: public files only, no laboratory
             trace.info.setdefault("physim2", {})["verifier_started_unix"] = time.time()
+            trace.info["physim2"]["verifier_box_caps"] = (box or {}).get("caps")
             return
         # ---- single use: one laboratory budget per agent and instance (memo hole 3) ----
         key = agent_identity(trace, self.config.agent_key)
@@ -192,7 +201,8 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             "secret_commitment": self.data.secret_commitment, "bundle": {k: info[k] for k in ("files", "bytes", "manifest_sha256")},
             "verifiers_version": __import__("verifiers").__version__, "runtime": runtime.config.type,
             "network_restricted": bool(runtime.config.network_restricted), "single_use": bool(self.config.single_use),
-            "agent_key": key, "item_isolation": self.config.item_isolation}
+            "agent_key": key, "item_isolation": self.config.item_isolation,
+            "box_caps": (box or {}).get("caps"), "lab_bearer_required": True}
 
     async def _public_files(self, runtime, uid: int | None = None) -> dict:
         """TASK.md, the public physim2 package and an empty submission/ into a box (any of the three kinds), and
