@@ -11,7 +11,7 @@ PY=${PY:-python}
 mkdir -p "$OUT"
 export PYTHONDONTWRITEBYTECODE=1
 SIZE=${FL_SIZE:-full}
-HOURS=${FL_MAX_HOURS:-2.75}         # for the whole of job.sh (presmoke + full pass)
+HOURS=${FL_MAX_HOURS:-2.9}          # for the whole of job.sh (presmoke + full pass)
 T_START=$(date +%s)
 P() { echo "$(date +%T) [job.sh] $*" | tee -a "$OUT/progress.txt"; }
 echo "PILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material" > "$OUT/progress.txt"

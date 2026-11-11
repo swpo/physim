@@ -14,7 +14,8 @@ Declared in DECLARED.md (committed before the request). Stages, in the declared 
   nets      P0(1000); C(16384) seed 0; FT(32), FT(8); D; C(16384) seed 1; C(4096); P0(210); P0(64); C(1024); P0x2
             each scored on every item as soon as it is trained; scores.npz is rewritten after every family
 Outputs under OUT: scores.npz, items.npz, train_info.json, worlds.json, screen.json, screen_draws.npz, gate.json,
-info.json, progress.txt, params_p0w1000.npz, cparams/c16384_wNN.npz. The summary is made offline (make_summary.py).
+info.json, progress.txt, params_p0w1000.npz (3 seeds x 3 horizons), cparams/c16384_wNN.npz (seed 0; stage 2 scores
+these nets again on new items). The summary is made offline (make_summary.py).
 
 usage: python -B run_fl.py --out DIR [--size full|presmoke|smoke] [--max-hours 2.5] [--full-hours H] [--cpu-ok]
 """
@@ -62,8 +63,8 @@ FULL = dict(burn=300, chunk=2048, n_screen=None, gate_M=8, gate_on=True, n_pilot
             d_steps={8: 400, 32: 800}, batch_lab=64, n_seeds=3, eval_big=500, eval_small=50, chunk_steps=50, shape_test=False,
             save_params=True)
 PRESMOKE = dict(FULL, n_screen=256, n_pilot_train=8, n_new=8, n_hidden=2, p0_worlds=[8, 16], p0_steps={8: 100, 16: 100},
-                p0x2_steps=100, n_c=[512, 1024, 2048], c_steps={512: 100, 1024: 100, 2048: 100},
-                c_lock={512: 16, 1024: 16, 2048: 8}, c_seeds={512: 1, 1024: 1, 2048: 2}, c_group=2, ft_lrs=[2e-4, 8e-4],
+                p0x2_steps=100, n_c=[1024, 2048], c_steps={1024: 100, 2048: 100},
+                c_lock={1024: 16, 2048: 8}, c_seeds={1024: 1, 2048: 2}, c_group=2, ft_lrs=[2e-4, 8e-4],
                 ft_smax=100, d_steps={8: 50, 32: 50}, n_seeds=2, eval_big=50, shape_test=True)
 SMOKE = dict(burn=3, chunk=8, n_screen=16, gate_M=2, gate_on=False, n_pilot_train=3, n_new=3, epw=4, n_hidden=2, n_lab=8,
              lab_chunk=4, n_items=4, R=3, n_clim=4, m=4, m_plug=3, budgets=[4, 8], p0_worlds=[3, 6], p0_steps={3: 20, 6: 20},
@@ -429,7 +430,6 @@ def main():
                               hidden=[dict(label=h["label"], gate=h["gate"], lab=h["lab_nats"], clim_mean=h["clim"]["mean"],
                                            clim_sd=h["clim"]["sd"], plug_prior=h["plug_label"]) for h in HW]))
     npz("items.npz", hist=np.stack([h["hist"] for h in HW]).astype(np.float32), Ptest=np.stack([h["Ptest"] for h in HW]).astype(np.float32),
-        lab_obs=np.stack([h["lab"]["obs"] for h in HW]).astype(np.float32), lab_U=np.stack([h["lab"]["U"] for h in HW]).astype(np.float32),
         lab_cls=np.stack([h["lab"]["cls"] for h in HW]))
     names = save_scores(HW)
     log(f"references: {quick(HW, names)}")
