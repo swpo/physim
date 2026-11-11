@@ -17,7 +17,9 @@ coordinator, and rehearsed the result (sections 8.9 and 8.10). This file describ
 they were after round 3, and section 8.12 describes round 4 (11 Nov 2026: after two model rollouts in the cloud
 container exposed faults of the exam, and with the lead's Mac available again, the code and the runbook were
 changed for model rollouts driven by request files; `RUNBOOK_MAC.md` is ON HOLD until that round's verdict).
-Where section 8.12 and an earlier section differ, 8.12 holds. Everything of rounds 1 to 3 was
+The two branches of round 4 were merged, pinned and rehearsed by an integrator (section 8.14: the pin, every
+check at the pinned code, the rehearsal of steps 0 to 3 with a real model, the faults it found).
+Where sections 8.12 to 8.14 and an earlier section differ, the later one holds. Everything of rounds 1 to 3 was
 RUN on Docker in the cloud container (Linux x86_64, 4 cores, Docker 29.9.2) with scripted agents only. No model
 call, no GPU job, no upload.
 **Nothing was run on a Mac.** Numbers and their sources: `results/summary.json`, which also says which result file
@@ -113,12 +115,14 @@ results/                proof_ring.json + proof_ring_items.npz, recomputed_table
                         and safety_runbook_round3.json (the three older checkers on the new code and text),
                         rehearsal_round3.json (every command's literal text and complete output, the opens of the
                         made-up credential file), rehearsal_round3_proof.json and rehearsal_round3_probe.json
-HOST_SAFETY_AUDIT.md    the independent audit of 10 Nov 2026 (NO-GO, nine required changes), its re-audit, round 1
-                        (NO-GO, narrowly) and round 2 (GO for steps 0 to 2; SUSPENDED, see the note at its top)
-RUNBOOK_MAC.md          verify, install, scripted smoke test, one cheap model rollout (ON HOLD: the round-2 GO is
-                        suspended; the round-3 text has not been re-audited)
+HOST_SAFETY_AUDIT.md    the independent audit of 10 Nov 2026 (NO-GO, nine required changes) and its three re-audits:
+                        round 1 (NO-GO, narrowly), round 2 (GO for steps 0 to 2; suspended) and round 3 (GO for steps
+                        0 to 2 at commit 08bd5a66, pin cd67eb4b...03e4). Round 4 has no verdict in it yet
+RUNBOOK_MAC.md          round 4's text: verify, install, scripted smoke test, model rollouts by request, clean-up
+                        (ON HOLD until the round-4 verdict; its notice is the only text a verdict edits)
 PIN.sha256              sha256 of every file the Mac pilot executes or imports (tools/pin.py; the runbook carries its hash;
-                        round 3: 109 files; 91 of them are byte for byte those of the round-2 pin 7aa9bbfc...f64c19)
+                        round 4: 135 files, sha256 9f1511ad...96e4; 83 of them are byte for byte those of the round-3
+                        pin cd67eb4b...03e4, 26 changed, 26 are new)
 ```
 
 Round 5's code is reused BY IMPORT from `../../round5/agentenv`, so the package is installed from a checkout,
@@ -174,8 +178,10 @@ $V -B tools/make_round4_step3.py --host ... --caps ... --route ... --runbook ...
 $V -B tools/check_request.py --facts                                                                         # the block of facts of the runbook's step 3
 ```
 
-`tools/check_round3.py` is round 3's record: its part on the command form with model credentials describes a
-route that round 4 replaced (a model run now starts from a request only), so it was not run again in round 4.
+`tools/check_round3.py` is round 3's check. Its part on the command form described a route that round 4 replaced
+(a model run now starts from a request only), and at the merged code it crashed; the integrator brought that part
+in line with round 4 (a model config and `--model-credentials` are refused on the command form) and it passes
+again, 48 of 48 (section 8.14).
 
 Afterwards delete the store by its full path (it holds the hidden instances). After an interruption:
 `docker ps -a --filter label=verifiers.run=$VF_RUN_ID` lists exactly this run's containers; remove them by name.
@@ -822,13 +828,11 @@ closed = changed in code or text at this pin; accepted = stated in the runbook a
 | CMD-5, RB-2, SIG-1, R3-2, R3-5, INV-1 | deferred | the appendix names them without their text; they wait for the Mac's own re-review of this pin |
 | the list "not covered by anyone" | deferred | outside this study's reach from the cloud container; repeated in the runbook's last section |
 
-What remains after this round, for the integrator and the verdict: `PIN.sha256` and the runbook's pin block (not
-regenerated here); a rehearsal of the runbook's commands as `sh -c` lines, steps 0 to 2 and the free part of
-step 3 (the last section of the runbook lists what was not issued as written); one model call through the new
-route to see the provider's usage fields, the explicit `[client]` table and the destinations of vf-eval; a real
-interruption of a model rollout; everything about macOS.
+What remained after this round for the integrator is section 8.14: the pin, the rehearsal of the runbook's
+commands as `sh -c` lines, a real model through the new route, a real interruption of a model rollout. Everything
+about macOS remains.
 
-### 8.13 Round 4, the exam side (fixer A; summarised from that agent's handoff, not re-derived here)
+### 8.13 Round 4, the exam side (fixer A; summarised from that agent's handoff; run again in 8.14)
 
 Rulings E1 to E16 of the coordinator (`../../roadmap/DECISIONS.md`): whatever is in `submission/` when a run ends
 is graded, however it ends (`physim2_verifier`, a 49-line env that also grades the last checkpoint of a FAILED
@@ -856,6 +860,49 @@ its cross-check with round 5's grader (which runs that grader's sandbox on the m
 refuses to build a bundle for them: the baseline predictor needs a pool of 512 simulated episodes, about a second
 for the ring and about 1.7 core-hours for gliders in every vf-eval process. A gliders profile needs a pool that is
 built once and kept, an exam sized for its budget and its own reference sizes; none of that is in this pin.
+
+### 8.14 Round 4, integration: the merge, the pin, the checks at the pinned code (11 Nov 2026; not audited yet)
+
+An integrator merged the two branches of round 4 (`wt-port4a`, the exam side; `wt-port4b`, step 3 and host
+safety). There was no conflict: fixer B's branch already held fixer A's final commit, and the merged tree under
+`round6/vfport` was byte for byte fixer B's. Nothing under `round5/agentenv` or `vw1` changed. Results:
+`results/round4_integration.json`. Evidence labels as in 8.12.
+
+What the integrator changed before the pin (each is in that file under `loose_ends_reconciled`):
+
+| what | why |
+|---|---|
+| `tools/pin.py` lists `physim2_verifier/` and the whole `docker/` folder | the env of every model rollout and the three files the image build reads (`harness-uv`, the two hashed requirement files) were not in the pin |
+| `tools/check_round3.py`, its part on the command form | it crashed at the merged code (an argument of `vfrun.check_config` is gone); it now expects what round 4 does. 48 of 48 |
+| `tests/prove_round4.py` | its cross-check container carried another role's name; it is named after the caller's run label |
+| `RUNBOOK_MAC.md`, step 3f | `EXIT 137` and `EXIT 143` (a tool killed or stopped from outside) are named among the endings that lead to "If a run was interrupted" |
+| `rehearsal/issue4.py`, `rehearsal/fetch4.py` (outside the pin) | the issuer of the round-4 rehearsal; step 3a for a rehearsal request that is never committed under a `requests/` folder |
+
+**The pin: `PIN.sha256`, 135 files, sha256 `9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4`**
+(round 3: 109 files; 83 unchanged, 26 changed, 26 new).
+
+Every check tool of the tree and both fixers' tests, run again at that code (no model, no upload):
+
+| check | result | where it ran |
+|---|---|---|
+| `tools/check_safety.py` | 36 of 36 | host, TRIPWIRES |
+| `tools/check_units.py` | 59 of 59 | host, TRIPWIRES |
+| `tools/check_round3.py` | 48 of 48 | host under TRIPWIRES, and a throwaway container |
+| `tools/check_round4.py` (with `check_round4_step3.py`) | 125 of 125 | host, TRIPWIRES |
+| `tools/check_runbook.py` | 51 of 51 | the runbook as text; its guard with `echo` |
+| `tools/check_driver.py` | 31 of 31 | two throwaway containers |
+| `tools/check_interrupt.py` | 8 of 8 | a throwaway container; two containers of its own |
+| `tools/check_step3.py` | 44 of 44 (caps 13, request route 31) | VF-EVAL, stand-in endpoint; 17 minutes |
+| `tests/exam_pure.py` | 18 of 18 | host, TRIPWIRES |
+| `tests/exam_units.py` | 91 of 91 | a throwaway container without network |
+| `tests/harness_setup*.` | set-up exit 0 in 14 ms, 0 routes, 44 KiB in `/tmp`, root not writable | a container with `--network none --read-only` |
+| `tests/prove_round4.py` (with `cross_check_round5.py`) | 48 of 48 on a fresh instance: every reference row and the valid predictor identical, item by item, to round 5's own grader; every failed item scored as the null policy with its reason; the five graded endings (submit, own end, wall time, turn limit, failed run from its checkpoint) with identical per-item scores | VF-EVAL and a throwaway container; 35 minutes |
+| `tools/check_probe.py` | step 2b of the rehearsal (below) | VF-EVAL |
+
+The image `physim2-ring:2` on this machine is fixer A's build. It was not rebuilt (a rebuild behind this
+machine's proxy is not a cache hit and would take about 1 GB of the 2.3 GB free for everyone); in a throwaway
+container its `uv` stand-in has the sha256 of `docker/harness-uv` and its 41 packages are, name and version, those
+of the two hashed requirement files.
 
 ## 9. Where the code contradicted the memo, and what else turned up
 

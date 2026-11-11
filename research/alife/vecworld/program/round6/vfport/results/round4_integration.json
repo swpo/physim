@@ -1,0 +1,353 @@
+{
+ "what": "round 4, integrator: the two fixers' branches merged, every check tool and both fixers' tests run again at the merged and pinned code, in the cloud container. No model was called by anything in this file.",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "date_utc": "2026-11-11",
+ "merge": {
+  "into": "wt-port4i (from origin f96477e6c)",
+  "merged": [
+   "wt-port4a 9dafd57dfb30cac1e26e6c13ecbceefa241f9369",
+   "wt-port4b 150b38d38"
+  ],
+  "conflicts": "none: wt-port4b already contained wt-port4a's final commit (git merge-base --is-ancestor), and nothing under round6/vfport had changed on the branch since the fixers forked. After the two merges the tree under round6/vfport, round5/agentenv and vw1 was byte for byte wt-port4b's (git diff --stat: empty). Files outside round6/vfport changed by the fixers: none",
+  "disagreements_on_behaviour": "none left between the two branches: fixer B had merged fixer A's final commit and both handoffs describe the same interfaces (limits table and spend table must agree or setup refuses; the box caps come from boxcaps.py and the statement prints what was measured in the box)"
+ },
+ "loose_ends_reconciled": [
+  {
+   "what": "the config keys against tools/check_config.py",
+   "how": "read: physim2_env/rollout_config.py FLAT_KEYS (13 keys) is the schema that check_config.check validates and that check_config.schema prints; fixed_violations compares the expansion with RC.ENV_ID, RC.HARNESS, the profile's image and CPUs, and allows exactly the limits keys expand writes (cap_usd, max_context_tokens, box_cpus, box_memory_gb). run: tools/check_round4.py D1 to D5; tools/check_runbook.py compares the runbook's block of facts with tools/check_request.py --facts (equal)"
+  },
+  {
+   "what": "the caps of the runtime against the envelope in the task statement",
+   "how": "read: bundle.default_run takes CPUs, memory, processes, /workspace and /tmp from boxcaps.box_caps (the values runtime.py puts on the docker run of every box) and Physim2Task._run_facts replaces them at setup by what a command in the box measured; the exam config's envelope (4 cores, 8 GiB) is no longer printed. vf-eval: check_step3 K0 to K12 (the caps from inside a box with the memory lowered to 2 GiB) and the proof's statement checks"
+  },
+  {
+   "what": "the runbook text fixer A asked for",
+   "how": "read against HANDOFF_A.md section 6: the build command without a certificate file, ring_r4 and the null policy in steps 1 and 2, tests/ on the never-list, the publication folder's files; the reader's notes (reward=0.000 in vf-eval's log, the submit reply, lab_log.jsonl, info.physim2.reasoning) are in README 8.13. Added by the integrator: step 3f names EXIT 137 and EXIT 143 (a tool killed or stopped from outside)"
+  },
+  {
+   "what": "the pin",
+   "how": "tools/pin.py listed neither physim2_verifier/ (the env of every model rollout) nor the three new files the image build reads (docker/harness-uv, harness-requirements.txt, ring-requirements.txt): its paths now hold physim2_verifier and the whole docker/ folder. PIN.sha256: 135 files"
+  },
+  {
+   "what": "tools/check_round3.py",
+   "how": "it CRASHED at the merged code (vfrun.check_config lost its model_credentials argument; fixer B had marked it 'not run again in round 4'). Its part on the command form now expects what round 4 does (a model config and --model-credentials are refused on the command form), DYLD_* is among the refused names, and the source check counts the three docker calls of vfrun.py. 48 of 48"
+  },
+  {
+   "what": "tests/prove_round4.py",
+   "how": "the name of its cross-check container was another role's (physim2-port4a-xcheck); it is now made from the caller's run label"
+  }
+ ],
+ "pin": {
+  "sha256_of_PIN.sha256": "9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4",
+  "files": 135,
+  "against_the_round_3_pin_cd67eb4b": "109 files then; 26 of them changed, 26 new files listed (the fixers' new modules and tools, physim2_verifier, the image build's three files)"
+ },
+ "checks_at_the_pinned_code": {
+  "evidence_labels": "TRIPWIRES = on the host with tools/tripwires.py installed before the package is imported; CONTAINER = inside a throwaway container without any host mount, removed by its exact name; VF-EVAL = rollouts through vf-eval in containers verifiers started (run label physim2-port4i), scripted or against tools/standin_model.py; TEXT = the runbook read as text",
+  "tools/check_safety.py": {
+   "n_checks": 36,
+   "n_passed": 36,
+   "failed": [],
+   "evidence": "TRIPWIRES"
+  },
+  "tools/check_units.py": {
+   "n_checks": 59,
+   "n_passed": 59,
+   "failed": [],
+   "evidence": "TRIPWIRES"
+  },
+  "tools/check_round3.py": {
+   "n_checks": 48,
+   "n_passed": 48,
+   "failed": [],
+   "evidence": "TRIPWIRES and CONTAINER"
+  },
+  "tools/check_round4.py (with check_round4_step3.py)": {
+   "n_checks": 125,
+   "n_passed": 125,
+   "failed": [],
+   "evidence": "TRIPWIRES"
+  },
+  "tools/check_runbook.py": {
+   "n_checks": 51,
+   "n_passed": 51,
+   "failed": [],
+   "evidence": "TEXT"
+  },
+  "tools/check_driver.py": {
+   "n_checks": 31,
+   "n_passed": 31,
+   "failed": [],
+   "evidence": "CONTAINER"
+  },
+  "tools/check_interrupt.py": {
+   "n_checks": 8,
+   "n_passed": 8,
+   "failed": [],
+   "evidence": "CONTAINER (its two label-test containers are started and removed by the tool itself, by exact name)"
+  },
+  "tools/check_step3.py": {
+   "n_checks": 44,
+   "n_passed": 44,
+   "failed": [],
+   "wall_s": 1030.0,
+   "evidence": "VF-EVAL: caps 13 checks, the request route 31 checks against the stand-in endpoint (fetch from a scratch repository, instance, reference with the six scripted policies, dry run, rollout ended by the spend stop and graded, close, publication folder)"
+  },
+  "tools/check_probe.py": "run as step 2b of the rehearsal (results/rehearsal_round4.json)",
+  "tools/check_config.py, tools/check_request.py": "library and command of the request route: exercised by check_round4.py (section D), check_step3.py and the rehearsal's step 3",
+  "tests/exam_pure.py": {
+   "n_checks": 18,
+   "n_passed": 18,
+   "failed": [],
+   "evidence": "TRIPWIRES (19 with --trace on a saved trace, which was not given here)"
+  },
+  "tests/exam_units.py": {
+   "n_checks": 91,
+   "n_passed": 91,
+   "failed": [],
+   "evidence": "CONTAINER (physim2-ring:2, no network)"
+  },
+  "tests/harness_setup_command.py + tests/harness_setup.sh": {
+   "result": {
+    "setup_exit": 0,
+    "interpreter": "/opt/physim2-harness/venv/bin/python",
+    "setup_ms": 14,
+    "program_help_exit": 0,
+    "program_help_lines": 25,
+    "routes_in_the_box": 0,
+    "tmp_kib_used": 44,
+    "root_writable": false
+   },
+   "evidence": "CONTAINER (--network none --read-only): the stock bash harness's set-up fetches nothing and writes 44 KiB under /tmp"
+  },
+  "tests/prove_round4.py (with tests/cross_check_round5.py)": {
+   "n_checks": 48,
+   "n_passed": 48,
+   "failed": [],
+   "wall_s": 2100.0,
+   "instance_id": "pilot-port4i-proof-001",
+   "evidence": "VF-EVAL; the cross-check with round 5's own grader in a throwaway container",
+   "reference_table_skill_vs_O": {
+    "O": 1.0,
+    "K": 0.0,
+    "null": -0.0199,
+    "D": 0.1106,
+    "P0": 0.744,
+    "C": 0.8929
+   },
+   "endings_and_failures": [
+    {
+     "run": "null-box",
+     "ended": "the agent stopped",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 0,
+     "by_reason": {},
+     "reward_skill_vs_O": -0.019859784229386855
+    },
+    {
+     "run": "fail-nopredict",
+     "ended": "the agent stopped",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 64,
+     "by_reason": {
+      "no predict.py": 64
+     },
+     "reward_skill_vs_O": -0.019859784229386855
+    },
+    {
+     "run": "fail-raises",
+     "ended": "the agent stopped",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 64,
+     "by_reason": {
+      "validation failed: raised": 64
+     },
+     "reward_skill_vs_O": -0.019859784229386855
+    },
+    {
+     "run": "fail-shape",
+     "ended": "the agent stopped",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 64,
+     "by_reason": {
+      "validation failed: wrong shape": 64
+     },
+     "reward_skill_vs_O": -0.019859784229386855
+    },
+    {
+     "run": "fail-nan",
+     "ended": "the agent stopped",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 64,
+     "by_reason": {
+      "validation failed: non-finite values": 64
+     },
+     "reward_skill_vs_O": -0.019859784229386855
+    },
+    {
+     "run": "fail-timeout",
+     "ended": "the agent stopped",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 64,
+     "by_reason": {
+      "validation failed: timed out": 64
+     },
+     "reward_skill_vs_O": -0.019859784229386855
+    },
+    {
+     "run": "mixed-submit",
+     "ended": "submit",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "agent_submission",
+     "items_fallen_back": 23,
+     "by_reason": {
+      "non-finite values": 5,
+      "raised": 4,
+      "wrong shape": 11,
+      "timed out": 3
+     },
+     "reward_skill_vs_O": 0.06233616245005132
+    },
+    {
+     "run": "end-submit",
+     "ended": "submit",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "agent_submission",
+     "items_fallen_back": 0,
+     "by_reason": {},
+     "reward_skill_vs_O": 0.1931710232410743
+    },
+    {
+     "run": "end-exit",
+     "ended": "the agent stopped",
+     "stop_condition": "agent_completed",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 0,
+     "by_reason": {},
+     "reward_skill_vs_O": 0.1931710232410743
+    },
+    {
+     "run": "end-wall",
+     "ended": "time limit",
+     "stop_condition": "agent_timeout",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 0,
+     "by_reason": {},
+     "reward_skill_vs_O": 0.1931710232410743
+    },
+    {
+     "run": "end-fail",
+     "ended": "failed run",
+     "stop_condition": "harness_error",
+     "ok": false,
+     "graded": true,
+     "submission_source": "checkpoint",
+     "items_fallen_back": 0,
+     "by_reason": {},
+     "reward_skill_vs_O": 0.1931710232410743
+    },
+    {
+     "run": "end-fail-stock",
+     "ended": null,
+     "stop_condition": "harness_error",
+     "ok": false,
+     "graded": false,
+     "submission_source": null,
+     "items_fallen_back": null,
+     "by_reason": null,
+     "reward_skill_vs_O": null
+    },
+    {
+     "run": "end-turns",
+     "ended": "turn limit",
+     "stop_condition": "max_turns",
+     "ok": true,
+     "graded": true,
+     "submission_source": "final_collection",
+     "items_fallen_back": 0,
+     "by_reason": {},
+     "reward_skill_vs_O": 0.1931710232410743
+    }
+   ],
+   "round5_cross_check": {
+    "null": {
+     "identical": true,
+     "max_abs_difference": 0.0,
+     "skill_route": -0.019859784229386855,
+     "skill_round5": -0.019859784229386855
+    },
+    "D": {
+     "identical": true,
+     "max_abs_difference": 0.0,
+     "skill_route": 0.11062176693089726,
+     "skill_round5": 0.11062176693089726
+    },
+    "P0": {
+     "identical": true,
+     "max_abs_difference": 0.0,
+     "skill_route": 0.7440063730910443,
+     "skill_round5": 0.7440063730910443
+    },
+    "C": {
+     "identical": true,
+     "max_abs_difference": 0.0,
+     "skill_route": 0.8928629822548886,
+     "skill_round5": 0.8928629822548886
+    },
+    "valid": {
+     "identical": true,
+     "max_abs_difference": 0.0,
+     "skill_route": 0.1931710232410743,
+     "skill_round5": 0.1931710232410743
+    },
+    "mixed": {
+     "identical_on_valid_items": true,
+     "n_failed": 23,
+     "skill_route_null_fallback": 0.06233616245005132,
+     "skill_round5_K_fallback": 0.061808979834886674
+    }
+   },
+   "grading_time": {
+    "grade_seconds": 191.5006229877472,
+    "item_box_wall_s_mean": 2.9404405876994133,
+    "cpu_s_per_item": 0.248386765625,
+    "n_samples": 256,
+    "note": "grading time of 64 items at 256 samples per item, one fresh box each, on 4 shared cores"
+   }
+  }
+ },
+ "image_on_disk": {
+  "tag": "physim2-ring:2",
+  "id": "8080830e3492",
+  "built_by": "fixer A, behind this machine's proxy with the two build arguments of docker/Dockerfile.ring's header",
+  "checked_by_the_integrator": "in a throwaway container without network: /usr/local/bin/uv has the sha256 of docker/harness-uv (b887ac19...fce77); the 35 packages of /opt/physim2-harness/venv and the 6 scientific packages are name for name and version for version those of docker/harness-requirements.txt and docker/ring-requirements.txt",
+  "not_rebuilt": "a rebuild here is not a cache hit (probe build with --network none: the build stage ran again and failed at its first download), would need about 1 GB of the 2.3 GB this machine has free for everyone, and would move a tag other roles use"
+ },
+ "hidden_values_in_this_file": "none"
+}
