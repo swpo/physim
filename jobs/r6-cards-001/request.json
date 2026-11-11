@@ -1,0 +1,54 @@
+{
+  "request": {
+    "cap_usd": 11.4,
+    "disk_gb": null,
+    "env": {
+      "CARDS_REQUIRE_GPU": "1",
+      "CARDS_SIZE": "full",
+      "CARDS_T_LIMIT_S": "5700",
+      "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_40GB",
+        "A100_80GB",
+        "H100_80GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r6-cards-001",
+    "max_hours": 2.0,
+    "notes": "The one planned job of study cards (budget $25; cap $11.40 covers the dearest listed type, an H100 at $5.02/h for 2.0 + 0.25 h = $11.30, + $0.10; on the usual A100 40GB at $1.99/h the same hours cost $4.48). PILOT_NEVER_REUSE_AS_EXAM: every hidden part is a public function of public seeds (foundry prior seed 2026 and public defaults); progress.txt starts with that line. Work: for each of 125 runs, one compiled JAX program per world kind (8 groups: gliders 2x128x128 with 20 substeps per tick, fed vortices at 64 and 128 px with 250 native steps per tick, membrane 128 px with 20, foundry at 64 and 128 px with 4, two made controls), float64, hidden parts and data passed as arguments: 16 members x (burn-in + 400 ticks) with the vw blob tracker on every member, then from 32 held-out states 32 ticks of 30 arms (6 oracle replicas, 12 hidden-part neighbours, 8 input arms, 4 response-difference arms) = 30,720 branch member-ticks per run; the card is then built on the pod in numpy (closed-form ridges, no training). About 38,000 member-ticks per run; expected rates on an A100 from round 5: gliders about 1,200 member-ticks/s, vortices about 600 (64 px) and 170 (128 px), foundry tens of thousands; expected run time 45-70 minutes including compiles. PRESMOKE: job.py first runs one full-size run of every program group (gliders, vortex64, membrane, foundry64, noise, free bodies, foundry128, vortex128; expected 10-15 minutes) and exits non-zero at once if a group of priority 1-3 fails; the two size checks (priority 4-5) are recorded and dropped if they fail. Then the remaining runs by priority; no new run starts after 5,700 s (CARDS_T_LIMIT_S); skipped runs are listed in job_state.json; exit 1 if any run failed or a priority-1 run was skipped. Size guard: cardlib.check_elems refuses any record above 2^30 elements; the largest array at full size is the branch record of the fine view, 32 x 32 x 6 x 3 x 32 x 32 = 1.9e7 elements (foundry at 128 px); the largest batch on the device is 960 members (foundry 64 px, 2 x 64 x 64 each), 240 members for gliders (20 kernels: about 0.65 GB per FFT intermediate), 480 for membrane and vortex128; the tracker allocates O(pixels) per member. XLA_PYTHON_CLIENT_ALLOCATOR=platform because programs of different shapes alternate. $OUT: about 9 MB (125 cards of 50-80 kB as JSON, 125 small npz with population series and four uint8 frames, progress.txt, job_state.json, logs); every file far below 20 MB. No network or subprocess use outside setup. CPU test passed on exactly this code: job.sh end to end at tiny size (CARDS_SIZE=tiny) from a git archive of these eleven paths at commit f81aba84e4 (tree of round6/cards 6ae8da12ee): presmoke of 7 groups passed, 16 runs, failed 0, skipped 0, exit 0, 571 s; the commit that holds this request differs from it in PROGRESS.md only. check_cardlib.py (the estimators against a closed-form world) passes. Criteria were committed before this request: HYPOTHESES.md and gates.py.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/gliders_exam",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round5/vortexexam/prior.json",
+      "research/alife/vecworld/program/round5/foundry/tnca.py",
+      "research/alife/vecworld/program/round6/cards"
+    ],
+    "purpose": "Round-6 study cards: one world-card tool on 70 worlds (gliders wind world, fed vortices, membrane cells, 23 foundry candidates, 24 unselected foundry draws, 12 negative controls, 128-px size checks), 125 runs: predictability per level, structure, stationarity, laws, actions, hidden part",
+    "ref": "c6ea69424704dcd627ed44f72c2a5b1ca0dad31a",
+    "ref_source": "commit holding the request",
+    "requester": "cloud study cards (round 6), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round6/cards && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4"
+  },
+  "source": {
+    "blob": "b4ea78339af1efcf853f4341aeb978d4e25d0633",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r6-cards-001.json",
+    "received_at": "2026-11-11T11:41:21Z",
+    "tip": "c6ea69424704dcd627ed44f72c2a5b1ca0dad31a"
+  }
+}
