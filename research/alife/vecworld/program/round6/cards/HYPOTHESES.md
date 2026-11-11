@@ -141,28 +141,3 @@ level 2 and at least one shortlisted foundry world to fail the late window.
 An entry is seed-robust if runs A and B agree within 0.05 absolute or 25% (`gates.robust`), size-robust if the
 128 x 128 run agrees with the 64 x 64 one in the same sense (foundry shortlist, vortices). A gate is robust if
 it gives the same answer in A and B. I will list the entries that fail.
-
-## Corrections after the Mac's review of the first job (11 Nov, 12:15 UTC; before any card was read)
-
-The runner's code review (`origin/gpu-jobs:jobs/r6-cards-001/review.md`) arrived while the first job ran. None of
-its cards had been fetched or read when these changes were made.
-
-1. **Tick share.** The level's tick share is now the mean of the per-channel shares (review item 1). The first
-   version pooled the channels before the covariance, which reads about s / d^2 when one of d channels carries the
-   tick function: at the population level even a pure clock would have passed the 0.1 bar, so H6 would have been
-   refuted by construction. The per-channel shares are in every card of the first job, so its cards are
-   re-derived offline; `check_cardlib.py` now has a world with one trending channel.
-2. **Response difference.** The estimator subtracted var(d) + var(d') although the two responses share their
-   noise, which biases it low (item 2). Corrected to the variance of the per-replica difference. It cannot be
-   recomputed from the first job's cards: for gliders, vortices and membrane the first job's value is a lower
-   bound, and the second job reruns their run A. For foundry worlds the neighbour is an independent weight draw
-   and the bias is near zero.
-3. **Non-finite runs** now get the verdict "invalid" instead of passing for dull (item 4).
-4. **Diffusion controls.** `ctl_diffusion_0/1` of the first job keep the mobility gain, so they are no-affinity
-   worlds, not round 5's diffusion controls (item 5). They stay in the tables under their name; their verdict is
-   not part of the card's own test. The second job runs two true diffusion controls (`ctl_puredif_0/1`), which
-   are.
-5. **Size check.** Body counts and events are compared per area, action entries are left out, and the 128-px
-   vortex world is rerun with 8-px blocks (item 6).
-6. The reviewer also notes that the pure-noise field and the diffusion worlds are dull almost by construction:
-   they test the plumbing. The controls that could have failed are the frozen draws and the free bodies.
