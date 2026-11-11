@@ -102,7 +102,7 @@ view, 64 px, lam = 1; share of the public-to-oracle gap closed.
 
 | carrier (pilot rho, D_X; seed) | file `R/gvh_...` | ignores the program | G1: ridge on Lab residuals with program features | better of G2, G3: gains on the public response (per horizon; with duration, onset, offset) | G4 = G3 + G1 | H: told the form, least squares on a 27-point grid | H's fit (lam, rho, D_X) |
 |---|---|---|---|---|---|---|---|
-| converts everywhere (0.005, 0.2; 5) | `lam1_n16_s5.json` | 0.64 ± 0.03 | 0.37 ± 0.07 | 0.84 ± 0.02 | not run | 1.00 ± 0.00 | 1, 0.005, 0.2 |
+| converts everywhere (0.005, 0.2; 5) | `lam1_n16_s5.json` | 0.64 ± 0.03 | 0.37 ± 0.07 | 0.84 ± 0.02 | 0.84 ± 0.02 | 1.00 ± 0.00 | 1, 0.005, 0.2 |
 | converts everywhere (0.02, 0.5; 5) | `lam1_n16_s5_rho0.02_DX0.5.json` | -0.42 ± 0.22 | 0.35 ± 0.11 | 0.77 ± 0.02 | 0.71 ± 0.02 | 1.00 ± 0.01 | 1, 0.02, 0.5 |
 | converted at cells, no saturation (0.02, 0.5; 5) | `lam1_n16_s5_cat1_rho0.02_DX0.5.json` | -0.11 ± 0.08 | -0.97 ± 0.82 | 0.02 ± 0.08 | -1.13 ± 0.98 | 1.00 ± 0.01 | 1, 0.02, 0.5 |
 | **chosen** (0.02, 0.5; 5) | `lam1_n16_s5_cat1_rho0.02_DX0.5_a00.03.json` | -0.82 ± 0.54 | -0.27 ± 0.49 | 0.10 ± 0.16 | -1.01 ± 1.25 | 1.02 ± 0.02 | 1, 0.02, 0.5 |
@@ -147,10 +147,10 @@ Gates at lam = 1 and a Lab budget of 16 episodes:
 
 Gates at lam = 0: the three zero-point checks, and H within 0.02 of S_pub.
 
-Reported, not gated: the roadmap's sigma (null = better of P0 and D); lam 0.5 and 0.75; program classes; the population view; Lab budgets 4 and 64; H_mix (what
-the designed experiments add); the generic recipes on H's episodes; a control arm (the carrier that converts
-everywhere, lam = 1), where table 3b predicts rho_G > 0.7; per-world screen gap against sigma_G, a prospective
-test of round 5's screen.
+Reported, not gated: the roadmap's sigma (null = better of P0 and D); lam 0.5 and 0.75; program classes; the
+population view; Lab budgets 4 and 64; H_mix (what the designed experiments add); the generic recipes on H's
+episodes; a control arm (the carrier that converts everywhere, lam = 1), where table 3b predicts rho_G > 0.7;
+per-world screen gap against sigma_G, a prospective test of round 5's screen.
 
 **Failure:** at lam = 1 a generic recipe recovers more than 0.7 of C's gain over P0, or sigma_G < 0.15: an
 incomplete law of this kind does not then make the exam test science at this Lab budget.
@@ -178,7 +178,7 @@ the metabolism, defects passive data show, or other worlds.
 
 | risk | cheapest test |
 |---|---|
-| a history-only predictor keeps little of a state-given gap (round 5: 0.5-14%), so sigma_G < 0.15 even at lam = 1 | stage 1 of the job: lam = 1 only, 4 truths, about $1; go on only if (L(P0) - L(C)) / (L(K) - L(C)) >= 0.10 |
+| a history-only predictor keeps little of a state-given gap (round 5: 0.5-14% of the parameters' worth). Here the state-given gap on aimed items is 0.21-0.45 at 128 px, about 0.25 over the mix, so gate 1 needs C to keep some 0.6 of it | stage 1 of the job: lam = 1 only, 4 truths, about $1; go on only if (L(P0) - L(C)) / (L(K) - L(C)) >= 0.10 |
 | a fine-tuned net repairs what my four recipes could not | the same stage: F(16) and R(16) against H(16) |
 | H fails without the state (chaotic futures, summary statistics, lam against a0) | CPU, 64 px: synthetic likelihood on focus-response curves of the 12 designed episodes, truth off the grid |
 | the defect is steep in the dial (aimed gap 0.06, 0.15, 0.23 at 0.5, 0.75, 1) and capped by the saturation scale: a0 = 0.02 gives 0.31 but the passive gap leaves the floor (0.08 ± 0.07) | CPU: a0 between 0.02 and 0.03 with more members, before the ranges of rho, D_X, a0 are fixed |
