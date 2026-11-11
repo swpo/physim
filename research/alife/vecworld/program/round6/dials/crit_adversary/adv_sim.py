@@ -1,6 +1,6 @@
 """adv_sim -- simulations for the adversary's form-free repair on the designer's own check (sublevel_second/gvh.py).
 
-    python -B adv_sim.py OUT.npz [lam] [size] [n_lab] [seed] [key=value ...] [H=1]
+    python -B adv_sim.py OUT.npz [lam] [size] [n_lab] [seed] [key=value ...] [H=1] [bank=0]
 
 DESIGN-STAGE CHECK, CPU, tiny size. PILOT values: never to be reused as an exam.
 
@@ -11,7 +11,8 @@ public-law runs under TRANSFORMED programs, with common random numbers against a
 
 The transformed programs are a filter bank on the command, with no knowledge of the hidden part:
     delay 0, 4, 8, 16 ticks  x  spatial blur none / 3 x 3 bumps (total coefficient kept)
-(8 programs; `d0b0` is the program itself). With H=1 the designer's told-the-form grid fit is also run (gvh's H).
+(8 programs; `d0b0` is the program itself). With H=1 the designer's told-the-form grid fit is also run (gvh's H);
+with bank=0 the filter bank is skipped (gvh.py's own runs only, for the by-horizon reading of its G2).
 """
 import os
 import sys
@@ -56,6 +57,7 @@ def main():
     pos = [a for a in args if "=" not in a]
     kv = {k: float(v) for k, v in (a.split("=", 1) for a in args if "=" in a)}
     do_H = bool(kv.pop("H", 0))
+    do_bank = bool(kv.pop("bank", 1))                        # bank=0: gvh.py's runs only (every tick kept)
     lam = float(pos[0]) if len(pos) > 0 else 1.0
     size = int(pos[1]) if len(pos) > 1 else 64
     n_lab = int(pos[2]) if len(pos) > 2 else 16
@@ -103,9 +105,10 @@ def main():
     # --- the adversary's filter bank on the public law, common random numbers against a no-input run
     Wb = blur_matrix(cfg)
     kl, kt = dp.w._fresh_keys(len(lab) * RB), dp.w._fresh_keys(len(test) * RB)
-    z_lab, z_test = run(dp, lab, RB, False, zero=True, keys=kl), run(dp, test, RB, False, zero=True, keys=kt)
+    if do_bank:
+        z_lab, z_test = run(dp, lab, RB, False, zero=True, keys=kl), run(dp, test, RB, False, zero=True, keys=kt)
     names, B_lab, B_test = [], [], []
-    for dl in DELAYS:
+    for dl in (DELAYS if do_bank else ()):
         for bl in BLURS:
             names.append(f"d{dl}b{bl}")
             B_lab.append((run(dp, lab, RB, False, progs=[transform(it[1], dl, bl, Wb) for it in lab], keys=kl) - z_lab).mean(1))
@@ -132,7 +135,8 @@ def main():
 
     np.savez_compressed(
         out, y_lab=y_lab, pub_lab=pub_lab, pub0_lab=pub0_lab, Yt=Yt, pub=pub, pub0=pub0,
-        B_lab=np.stack(B_lab, 1), B_test=np.stack(B_test, 1), names=np.array(names),
+        B_lab=np.stack(B_lab, 1) if B_lab else np.zeros((len(lab), 0, H + 1, 2)),
+        B_test=np.stack(B_test, 1) if B_test else np.zeros((len(test), 0, H + 1, 2)), names=np.array(names),
         F_lab=np.stack([it[2] for it in lab]), F_test=np.stack([it[2] for it in test]),
         lab_member=np.array([it[0] for it in lab]), test_member=np.array([it[0] for it in test]),
         truth_keys=np.array(sorted(truth)), truth_vals=np.array([truth[k] for k in sorted(truth)]),

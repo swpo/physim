@@ -11,6 +11,7 @@ episode (the focus view at every tick 1..32, which the Lab shows; gvh.py's recip
 that there is a carrier, where it converts, or that a route saturates.
 
     G2        gvh.py's per-horizon gain, recomputed here (alignment check against the designer's file)
+    ceiling_true_mean   NOT a policy: the test truths' own mean with the public spread (is the gap a mean shift?)
     A_out     lagged gain: truth response(t) = sum_k a_k * public response(t - k), k in 0, 2, 4, 8, 16 ticks
     A_in      filter bank on the command: truth response(t) = sum_j a_j * public response to program j, the
               programs being the command delayed by 0, 4, 8, 16 ticks, as given or blurred over 3 x 3 bumps
@@ -123,10 +124,12 @@ def main():
         g = float((dl[:, j] * yl[:, j]).sum() / max((dl[:, j] ** 2).sum(), 1e-12))
         G2[:, :, h] += ((g - 1.0) * dt_[:, j])[:, None]
     L["G2"] = es(G2)
+    # NOT a policy: the truths' own mean per item with the public spread (how much of the gap is conditional mean)
+    L["ceiling_true_mean"] = es(Yt.mean(1, keepdims=True) + pub - pub.mean(1, keepdims=True))
 
     info = {}
     for n in (4, 8, 16):
-        if n > n_all:
+        if n > n_all or B_lab.shape[1] == 0:                 # no filter bank in the input (adv_sim.py bank=0)
             continue
         r_l = (y_lab[:n] - pub0_lab[:n].mean(1)) / s_lab     # the Lab's response (one future) about the public no-input mean
         dev = {"p": pub_lab[:n] - pub_lab[:n].mean(1, keepdims=True), "0": pub0_lab[:n] - pub0_lab[:n].mean(1, keepdims=True)}

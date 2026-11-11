@@ -22,3 +22,15 @@ Deliverable: CRITIQUE.md (under 900 words) in this folder.
   close 1.03, so the gap is all conditional mean. Next recipe (`adv_act.py`): the public law run under a linearly
   filtered command (4 numbers on a 39-point grid), so that the public law's own nonlinear growth carries the
   correction to 32 ticks. Running on seed 5.
+- 14:27: `adv_act.py` on seed 5 (development) and seed 6 (recipe frozen before it ran). Results in
+  `results/adv_s5.json`, `results/adv_s6.json` (`adv_fit.py`). Both seeds reproduce the designer's L(pub), L(pub0),
+  L(O), L(G2) exactly; on seed 6 the designer's H is re-run here and reproduces its share (0.773).
+  Share of the public-to-oracle gap closed at 4 / 8 / 16 / 32 ticks:
+    seed 5: G2 (designer's gain) 0.91 0.87 0.66 -0.45; A_act 0.88 0.82 0.69 0.06; pooled 0.10 and 0.38 (se 0.17, 0.20)
+    seed 6: G2 0.81 0.94 0.77 -0.05; A_act 0.92 0.90 0.84 0.06; H (told form) 0.56 0.62 0.60 0.91; pooled 0.34, 0.42, 0.77
+  The gap is 55-56% at 32 ticks in both seeds; on seed 5 one test member of eight carries 55% of it (its focus cell
+  dies without input, holds under the public law, grows explosively under the hidden law). The fitted filter is
+  the same grid point in both seeds (direct gain 0.25, lagged gain 1, 3 ticks, 5 x 5 bumps).
+  Reading: generic repair closes about 0.8 up to 16 ticks (as well as or better than the told form); the design's
+  resistance is the 32-tick horizon alone. Seeds 7 and 8 running with `bank=0` (the designer's runs only, for G2
+  by horizon on four seeds). Then CRITIQUE.md.
