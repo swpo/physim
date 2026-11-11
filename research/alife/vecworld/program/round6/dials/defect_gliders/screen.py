@@ -13,7 +13,10 @@ scored on the block view (192 numbers / public scales SC1, RMS norm), horizons h
     pair  mean RMS distance between the true and the public future with the SAME noise (0 = invisible)
 Programs: a none; c the exam mix's aimed push (200 nats); d the mix's regional push (300 nats);
 s designed strong push (200 nats); q designed squeeze (200 nats).
-Public-law futures are cached by (state, program, keys) in the scratch directory.
+Public-law futures are cached by (state, program, keys) in the scratch directory; all futures are saved there
+(fut_*.npz) for surrogate.py. Also written per program: a first, weak history-only surrogate INC (the item's
+own start + other states' increments under each law); it is worse than climatology from 8 ticks on and is
+superseded by surrogate.py's LLR family, which DESIGN.md quotes.
 PILOT, design phase: public seeds, nothing here is or may become an exam.
 
 Run: python -B screen.py --cand XW --eta 1 --progs a,c,d,s

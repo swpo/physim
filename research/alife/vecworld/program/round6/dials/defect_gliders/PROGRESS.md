@@ -39,3 +39,7 @@ Design phase only: no GPU, no model calls, small CPU checks.
   `views.py` (block + population view to 16 ticks), `baseline_by_class.py` (zero point by item class from the
   ladder's saved scores: sigma 0.013-0.020 in every class).
 - Next: DESIGN.md, scratch deleted, worktree removed.
+- 11 Nov 11:55 UTC. DONE. `DESIGN.md` written (1,408 words outside tables). Forecast: the chosen term (XW) passes
+  the state-given screen and the no-input test and beats the public-law policy where it acts, but a generic
+  per-block residual fitted on one or two Lab episodes closes the gap; a first job capped at $5 decides.
+  Scratch deleted; worktree removed. Nothing is running.
