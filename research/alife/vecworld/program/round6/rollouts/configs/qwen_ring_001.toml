@@ -1,0 +1,58 @@
+# Rollout qwen_ring_001: ONE rollout of a cheap Qwen model on the ring smoke exam with verifiers' stock `bash`
+# harness, in the cloud container. A MECHANICS test, not a measurement. PILOT_NEVER_REUSE_AS_EXAM.
+# A copy of ../../vfport/configs/qwen_ring_bash.toml (pinned, unchanged there) with exactly these differences:
+#   model      qwen/qwen3.5-35b-a3b -> qwen/qwen3.6-35b-a3b (the old id is no longer listed by Prime's Models
+#              API; this one was listed on 11 Nov 2026 at $0.11 in / $1.01 out per million tokens)
+#   image      physim2-ring:1 -> physim2-ring-ca:1 (the same image plus this machine's CA bundle:
+#              ../docker/Dockerfile.ring-ca; without it the harness cannot install itself in the box here)
+#   instances  mac-ring-w0 -> pilot-qwen-ring-001-r2-w0 (a fresh pilot instance, made for this rollout)
+#   runtime    cpu = 2, memory = 4: every box of the rollout (agent box, verifier box, item boxes: the verifier
+#              takes the agent's runtime config) is capped at 2 CPUs and 4 GB; the task row alone would ask for
+#              4 CPUs and 8 GB (smoke_ring envelope), and a value set here wins over the task's
+# Unchanged: push = false, 40 turns, 1.5 M tokens in total, 60 k output tokens, one hour, no retries anywhere,
+# single_use = true, item_isolation = "box".
+# Spend bound by the caps (checked before each model call: the cap plus one request):
+#   1.5 x 0.11 + 0.06 x 1.01 = $0.23, plus at most one request.
+# Started only by the command recorded in ../PROGRESS.md (through ../tools/here.py and the pinned tools/vfrun.py).
+model = "qwen/qwen3.6-35b-a3b"
+num_rollouts = 1
+max_concurrent = 1
+push = false
+
+[sampling]
+max_tokens = 8192
+
+[env]
+id = "isolated-verifier"
+
+[env.taskset]
+id = "physim2-env"
+image = "physim2-ring-ca:1"
+instances = ["pilot-qwen-ring-001-r2-w0"]
+
+[env.agent]
+max_turns = 40
+max_total_tokens = 1500000
+max_output_tokens = 60000
+
+[env.agent.timeout]
+rollout = 3600                   # the ring config's envelope: one hour
+
+[env.agent.runtime]
+type = "docker"
+cpu = 2
+memory = 4                       # GB
+
+[env.agent.harness]
+id = "bash"
+edit = true
+search = false
+
+[env.agent.retries]
+max_retries = 0                  # a rerun would hand the agent a fresh laboratory budget
+
+[env.retries]
+max_retries = 0
+
+[env.verifier]
+retries = 0

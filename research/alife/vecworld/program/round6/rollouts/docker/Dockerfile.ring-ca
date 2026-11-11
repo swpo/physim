@@ -1,0 +1,20 @@
+# physim2-ring-ca:1 -- the pinned ring image plus THIS MACHINE's CA bundle, for model rollouts in the cloud container.
+#
+# Why: verifiers' stock `bash` harness prepares its chat program INSIDE the agent's box before the network is cut:
+# `pip install --user uv`, then `uv sync --script` for openai, mcp, httpx, tenacity, certifi (verifiers
+# runtimes/base.py:41-46 and 274-279). The cloud container sits behind a TLS-intercepting proxy; a box reaches
+# the package index, but with certificates signed by the proxy's CA, which the image does not trust (measured:
+# CERTIFICATE_VERIFY_FAILED from python:3.12-slim). The scripted harness of the cloud rehearsals installs nothing
+# in the box, so this was never met before the first model rollout.
+#
+# What it adds to physim2-ring:1: one file (the machine's public CA bundle: system roots and the proxy's CA,
+# certificates only) and four variables that point pip, uv, curl and Python's ssl at it. Nothing of the exam
+# changes. Not needed on a machine without such a proxy (the lead's Mac): there the config keeps physim2-ring:1.
+#
+#   mkdir CTX && cp /root/.ccr/ca-bundle.crt CTX/machine-ca-bundle.crt
+#   docker build --network none -f rollouts/docker/Dockerfile.ring-ca -t physim2-ring-ca:1 CTX
+# (the build starts no process and needs no network; the bundle is not committed)
+FROM physim2-ring:1
+COPY machine-ca-bundle.crt /etc/ssl/certs/machine-ca-bundle.crt
+ENV SSL_CERT_FILE=/etc/ssl/certs/machine-ca-bundle.crt PIP_CERT=/etc/ssl/certs/machine-ca-bundle.crt \
+    REQUESTS_CA_BUNDLE=/etc/ssl/certs/machine-ca-bundle.crt CURL_CA_BUNDLE=/etc/ssl/certs/machine-ca-bundle.crt
