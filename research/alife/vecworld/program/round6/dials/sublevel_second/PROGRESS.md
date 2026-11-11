@@ -77,3 +77,9 @@ Commands (CPU, one process, `OMP_NUM_THREADS=1`, about 85 CPU-s per 64-px screen
 file encodes its arguments (`m12` = 12 members, seed 2; `128` = 128 px, 6 members, seed 3; `cat` = cat=1 rho=0.02
 DX=0.5; `sat` = a0=0.03; untagged dial-1 failures: 8 members, seed 1); each JSON repeats them (`hidden_values_pilot`).
 All hidden values are pilot values: never to be reused as an exam.
+- 12:47: DONE. All reruns finished and reproduce the earlier numbers; `make_table.py` regenerated `results/table.json`;
+  every table row of DESIGN.md checked against it (20 rows, 0 mismatches), the text's other numbers against their
+  files. CPU used in this session: about 75 CPU-minutes (39 screens, 6 gvh runs, 3 zero checks, 1 probe), one
+  process at a time. No GPU job, no model call. Scratch directory deleted; worktree removed after the last push.
+  State of the claims: everything in DESIGN.md sections 0-3 is measured at tiny size on CPU with the state given;
+  sections 5-7 are declarations and estimates; nothing here is an exam, and the hidden values are pilot values.

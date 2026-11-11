@@ -3,6 +3,7 @@
  "cand": "kpool",
  "lam": 1.0,
  "hidden_overrides": {},
+ "comparison_simulator": "public law from the projected state",
  "hidden_values_pilot": {
   "lam": 1.0,
   "rho": 0.005,
@@ -11,7 +12,11 @@
   "s_c": 0.25,
   "w_c": 0.03,
   "k_a": 0.02,
-  "k_d": 0.01
+  "k_d": 0.01,
+  "DX": 0.2,
+  "eq0": 1.0,
+  "a0": 0.0,
+  "cat": 0.0
  },
  "size": 64,
  "members": 8,
@@ -146,7 +151,7 @@
    "blind_nats": 300.0
   }
  ],
- "cpu_s_sim_incl_compile": 68.681759205,
+ "cpu_s_sim_incl_compile": 67.471337293,
  "member_ticks": 13488,
  "state_at_T0": {
   "cells_at_T0": [
@@ -269,6 +274,92 @@
    }
   },
   "raster": {
+   "none": {
+    "screen_gap": NaN,
+    "se_members": NaN,
+    "gap_if_program_ignored": NaN,
+    "L_O": 0.0,
+    "L_public": 0.0,
+    "L_K": 0.0,
+    "gap_by_horizon": [
+     NaN,
+     NaN,
+     NaN,
+     NaN
+    ]
+   },
+   "blind": {
+    "screen_gap": NaN,
+    "se_members": NaN,
+    "gap_if_program_ignored": NaN,
+    "L_O": 0.0,
+    "L_public": 0.0,
+    "L_K": 0.0,
+    "gap_by_horizon": [
+     NaN,
+     NaN,
+     NaN,
+     NaN
+    ]
+   },
+   "feed": {
+    "screen_gap": NaN,
+    "se_members": NaN,
+    "gap_if_program_ignored": NaN,
+    "L_O": 0.0,
+    "L_public": 0.0,
+    "L_K": 0.0,
+    "gap_by_horizon": [
+     NaN,
+     NaN,
+     NaN,
+     NaN
+    ]
+   },
+   "starve": {
+    "screen_gap": NaN,
+    "se_members": NaN,
+    "gap_if_program_ignored": NaN,
+    "L_O": 0.0,
+    "L_public": 0.0,
+    "L_K": 0.0,
+    "gap_by_horizon": [
+     NaN,
+     NaN,
+     NaN,
+     NaN
+    ]
+   },
+   "mix": {
+    "screen_gap": NaN,
+    "se_members": NaN,
+    "gap_if_program_ignored": NaN,
+    "L_O": 0.0,
+    "L_public": 0.0,
+    "L_K": 0.0,
+    "gap_by_horizon": [
+     NaN,
+     NaN,
+     NaN,
+     NaN
+    ]
+   },
+   "inputs": {
+    "screen_gap": NaN,
+    "se_members": NaN,
+    "gap_if_program_ignored": NaN,
+    "L_O": 0.0,
+    "L_public": 0.0,
+    "L_K": 0.0,
+    "gap_by_horizon": [
+     NaN,
+     NaN,
+     NaN,
+     NaN
+    ]
+   }
+  },
+  "focus": {
    "none": {
     "screen_gap": NaN,
     "se_members": NaN,
@@ -675,5 +766,5 @@
    }
   }
  },
- "cpu_s_total": 68.860948233
+ "cpu_s_total": 67.731120005
 }
