@@ -18,6 +18,7 @@ is replaced by a neutral reply here (the wrapper of PhySim v1, physim/taskset.py
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import os
 import time
@@ -185,6 +186,10 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         with open(os.path.join(self.service.dir, "process.json"), "w") as f:
             json.dump({"pid": os.getpid(), "scrubbed_variables": self.scrubbed, "announced": bool(chan and port_file),
                        "bearer_required": BEARER.well_formed(self.bearer),      # yes or no, never the value
+                       # a one-way fingerprint of the bearer, so that a test can show the value is in no output
+                       # (hash every 64-hex string found and compare); and the loopback port, for the host-side probe
+                       "bearer_sha256": hashlib.sha256(self.bearer.encode()).hexdigest() if BEARER.well_formed(self.bearer) else None,
+                       "port": int(Path(port_file).read_text()) if port_file else None,
                        "token_values_left_in_environ": STORE.environ_still_has(self.scrubbed),
                        "token_like_names_left_in_os_environ": STORE.token_like(os.environ)}, f)
 

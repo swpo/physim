@@ -392,6 +392,10 @@ def test_spend_pure():
                                            messages=[{"role": "system", "content": "s"}, {"role": "user", "content": [{"type": "text", "text": "t"}]},
                                                      {"role": "assistant", "content": None, "tool_calls": []}]), model=standin_model.MODEL, max_output_tokens=100)
     check("C7 a request the meter cannot bound is refused (10 forms); the bash harness's own shape passes", all(got.values()) and ok_shape is None, (got, ok_shape))
+    reason = [SPEND.check_shape(chat_body(**kw), model=standin_model.MODEL, max_output_tokens=100)
+              for kw in ({"reasoning_effort": "high"}, {"reasoning": {"summary": "auto", "effort": "low"}}, {"stream": True, "stream_options": {"include_usage": True}})]
+    check("C7b the reasoning settings a rollout config can ask for (an effort; the route's `reasoning` object) and a streamed request pass the shape check",
+          reason == [None, None, None], reason)
     body = chat_body(1000)
     b1, how1 = SPEND.prompt_bound(body, None)
     check("C8 the first prompt is bounded by the bytes of the whole request", b1 >= len(json.dumps(body["messages"][0])) and "whole request" in how1, (b1, how1))

@@ -7,7 +7,10 @@ A config passes only if ALL of this holds:
 
   where      the file is `round6/rollouts/configs/<name>.toml` (given from the repository root, from the study
              folder or absolute), directly in that folder, a regular file, not a link, at most 16 KiB of UTF-8,
-             with a name of lower-case letters, digits and `. _ -`
+             with a name of lower-case letters, digits and `. _ -`. On the runner's machine the pinned checkout
+             does not hold a config that was committed after the pin: the request route reads the runner's copy
+             of that one file in `<pilot>/configs/<name>.toml` (tools/check_request.py --fetch puts it there;
+             --config-dir here), and the request still names it by its repository path
   flat       top-level keys only, each a string, an integer, a number or a boolean: no table, no array, no date
   known      every key is one of physim2_env/rollout_config.py's FLAT_KEYS, with its type and range (that file
              is the schema; `python -B tools/check_config.py --schema` prints it as JSON for the runner)
@@ -123,9 +126,17 @@ def fixed_violations(expanded: dict, flat: dict, RC, PROFILES) -> list[str]:
     sampling = dict(expanded.get("sampling") or {})
     if sampling.pop("max_tokens", None) != flat["max_output_tokens_per_turn"]:
         bad.append("sampling.max_tokens is not the config's max_output_tokens_per_turn")
-    effort = sampling.pop("reasoning_effort", "default")
-    if effort != flat["reasoning_effort"] or sampling:
-        bad.append("sampling holds more than max_tokens and the config's reasoning_effort")
+    # reasoning (rulings E10, E14): nothing for "default"; an effort alone as `reasoning_effort`; a summary request as
+    # the route's `reasoning` object, with the effort inside it and never twice
+    want = {}
+    if flat["reasoning_summary"] != "default":
+        want["reasoning"] = {"summary": flat["reasoning_summary"]}
+        if flat["reasoning_effort"] != "default":
+            want["reasoning"]["effort"] = flat["reasoning_effort"]
+    elif flat["reasoning_effort"] != "default":
+        want["reasoning_effort"] = flat["reasoning_effort"]
+    if sampling != want:
+        bad.append("sampling holds more than max_tokens and the config's reasoning settings")
     if env.get("id") != RC.ENV_ID or set(env) - {"id", "taskset", "agent", "retries", "verifier"}:
         bad.append("the env is not the pin's")
     if agent.get("harness") != RC.HARNESS:
@@ -148,7 +159,8 @@ def fixed_violations(expanded: dict, flat: dict, RC, PROFILES) -> list[str]:
     if set(task) - {"limits"} or limits.get("cap_usd") != flat["cap_usd"] or limits.get("max_context_tokens") != flat["max_context_tokens"] \
             or set(limits) - {"cap_usd", "max_context_tokens", "box_cpus", "box_memory_gb"}:
         bad.append("the task table holds more than the limits of the config")
-    hit = sorted({path for path, key in walk_keys(expanded) if key in FORBIDDEN})
+    # (the top-level table `env` is vf-eval's environment table; an `env` anywhere below it is a passthrough)
+    hit = sorted({path for path, key in walk_keys(expanded) if key in FORBIDDEN and path != "env"})
     if hit:
         bad.append("forbidden fields: " + ", ".join(hit[:8]))
     return bad
@@ -205,6 +217,8 @@ def main(argv=None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description="the strict schema of a rollout config")
     ap.add_argument("--config", help="round6/rollouts/configs/<name>.toml")
+    ap.add_argument("--config-dir", default=None, help="the folder that holds the copy to check (default: this checkout's "
+                                                       "round6/rollouts/configs/; the request route reads <pilot>/configs/)")
     ap.add_argument("--schema", action="store_true", help="print the schema, the exam profiles and their item counts as JSON")
     a = ap.parse_args(argv)
     if a.schema:
@@ -212,6 +226,9 @@ def main(argv=None) -> int:
         return 0
     if not a.config:
         ap.error("--config or --schema")
+    if a.config_dir:
+        global CONFIG_DIR
+        CONFIG_DIR = os.path.normpath(os.path.abspath(os.path.expanduser(a.config_dir)))
     try:
         got = check(a.config)
     except Refused as e:

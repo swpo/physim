@@ -108,7 +108,7 @@ def main():
     ap.add_argument("--store", required=True)
     ap.add_argument("--scratch", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--image", default="physim2-ring:1")
+    ap.add_argument("--image", default="physim2-ring:2")
     ap.add_argument("--cpu", type=float, default=2)
     ap.add_argument("--disk-floor-gib", type=float, default=vfrun.DISK_FLOOR_GIB,
                     help="the disk watchdog: no run starts, and a run is stopped, when the file system of the home folder has less free space")
@@ -208,7 +208,7 @@ def main():
                 task={"agent_key": f"agent-{mode}"}, may_fail=True)
         gk = grade_record(a.store, iid, h1.get("trace_id") or "-")
         H[mode] = {"first": {"graded": h1["graded"], "trace_ok": h1["ok"], "errors": h1["errors"], "script_exit_code": h1.get("script_exit_code")},
-                   "settled": [{k: r.get(k) for k in ("graded", "settled_as_K", "reward", "why", "laboratory_was_opened")} for r in st],
+                   "settled": [{k: r.get(k) for k in ("graded", "settled_as_null", "reward", "why", "laboratory_was_opened")} for r in st],
                    "grade_record": {k: gk.get(k) for k in ("n_items", "n_failed", "settled")},
                    "again": {"graded": h2["graded"], "errors": h2["errors"]}}
         json.dump(state, open(state_f, "w"), default=str)
@@ -332,9 +332,25 @@ def main():
         f = os.path.join(notes, hostile[m].get("trace_id") or "-", "hostile_report.json")
         return json.load(open(f)) if os.path.exists(f) else {}
 
-    def all_k(m):
+    # Round 4 (rulings E2, E3): a failed item is scored as the NULL policy's forecast, never as K. A deleted submission
+    # fails every item, so its reward IS the null policy's skill on this instance; every other all-failed rollout must
+    # score exactly that, and so must a rollout that leaves the box's baseline predictor untouched (no item fails).
+    NULL = hostile["delete"]["reward_skill_vs_O"]
+    # Round 4 (box caps): these five attacks begin by writing outside /workspace and /tmp (they replace /usr/bin/tar,
+    # or fill /logs). The root file system of a box is read-only now: the script ends at that write.
+    BLOCKED = ("no_tar", "junk", "tar_duplicate", "tar_collision", "tar_longpath")
+
+    def script_log(m):
+        f = os.path.join(out_dir, f"hostile-{m}", "traces.jsonl")
+        try:
+            tr = json.loads(open(f).readline())["traces"][0]
+        except (OSError, ValueError, KeyError, IndexError):
+            return ""
+        return str((tr.get("info", {}).get("physim2_script") or {}).get("log_tail") or "")
+
+    def all_k(m):                                            # (the name is round 3's: "all items failed"; the score is the null policy's)
         h = hostile[m]
-        return h["graded"] and h["ok"] and h["reward_skill_vs_O"] == 0.0 and h["grade"].get("n_failed") == h["grade"].get("n_items")
+        return h["graded"] and h["ok"] and h["reward_skill_vs_O"] == NULL and h["grade"].get("n_failed") == h["grade"].get("n_items")
 
     def reason(m):
         return str(hostile[m]["grade"].get("reason"))
@@ -346,7 +362,9 @@ def main():
         "a_no_item_found_the_shared_memory_mark": bool(items) and all(i["found_shm"] is False for i in items),
         "a_cleanup_removed_something_after_every_item": len(cl) == n_items and all(c["killed"] >= 1 and c["removed"] >= 3 and c["ipc_removed"] >= 1 for c in cl),
         "a_box_clean_after_every_item": gB.get("box_not_clean_after_item") is None,
-        "a_control_without_cleanup_finds_them": len(items0) > 1 and all(len(i["found_files"]) == 3 and i["daemon_alive"] and i["found_shm"] for i in items0[1:])
+        # round 4: two marks, not three: /var/tmp is on the read-only root and cannot be written any more
+        "a_control_without_cleanup_finds_them": len(items0) > 1 and all(sorted(i["found_files"]) == ["/dev/shm/physim2_probe_marker", "/tmp/physim2_probe_marker"]
+                                                                        and i["daemon_alive"] and i["found_shm"] for i in items0[1:])
         and items0[0]["found_files"] == [],
         # (a2) one box per item: nothing of the box carries
         "a2_default_is_one_box_per_item": B["grade"].get("isolation") == "box" and B["grade"].get("item_boxes") == n_items
@@ -360,7 +378,7 @@ def main():
         "a2_shared_cleanup_still_removes_files_processes_and_segments": len(items1) == n_items and all(i["found_files"] == [] and i["daemon_alive"] is False
                                                                                                     and i["found_shm"] is False for i in items1),
         "a2_shared_box_carries_all_four_channels": len(items1) > 1 and all(v is True for v in c1["mark_was_read"][1:]) and c1["mark_was_read"][0] is False
-        and all(len(v) >= 2 for v in c1["dirs_touched_after_staging"][1:]) and all(d >= 40 for d in c1["pid_step"])
+        and all(v == ["/dev/shm"] for v in c1["dirs_touched_after_staging"][1:]) and all(d >= 40 for d in c1["pid_step"])   # round 4: /var/tmp and /run/lock are read-only
         and all(v >= 1000 for v in c1["lo_rx_packets"][1:]),
         "a2_shared_rollout_is_marked_in_its_trace": "possible" in str(B1["info"].get("between_item_state")) and "between_item_state" not in B["info"],
         # (b)
@@ -390,10 +408,14 @@ def main():
         "c_verifier_box_cannot_reach_the_lab": bool(items) and all(not i["box"]["net"]["lab"].startswith("HTTP ") for i in items),
         "c_host_listener_saw_no_box": all(r.get("listener_hits_during_this_rollout", 0) == 0 for r in runs.values()),
         # (d)
-        "d_every_hostile_rollout_is_graded": all(h["graded"] and h["ok"] for h in hostile.values()),
+        "d_every_hostile_rollout_is_graded": all(h["graded"] and h["ok"] for m, h in hostile.items() if m not in BLOCKED),
+        "d_tar_replacement_and_junk_outside_the_writable_places_are_stopped_by_the_read_only_root": all(
+            hostile[m]["script_exit_code"] == 1 and hostile[m]["errors"] == ["HarnessError"] and not hostile[m]["graded"]
+            and "Read-only file system" in script_log(m) for m in BLOCKED),
+        "d_the_untouched_baseline_scores_exactly_what_a_failed_item_scores": hostile["empty"]["grade"].get("n_failed") == 0
+        and hostile["empty"]["reward_skill_vs_O"] == NULL and hostile["empty"]["submission"]["source"] == "final_collection",
         "d_every_reward_is_a_finite_number": all(isinstance(h["reward_skill_vs_O"], (int, float)) and abs(h["reward_skill_vs_O"]) < float("inf")
                                                  and h["reward_skill_vs_O"] == h["reward_skill_vs_O"] for h in hostile.values()),
-        "d_replaced_tar_duplicate_collision_longpath_score_K": all(all_k(m) for m in ("tar_duplicate", "tar_collision", "tar_longpath")),
         "d_control_default_collection_leaves_a_duplicate_member_ungraded": not stock["tar_duplicate"]["graded"],
         # (e) the trusted side validates
         "e_raw_tool_submit_of_a_broken_predictor_is_refused": hrep("raw_submit_broken").get("raw_submit", {}).get("accepted") is False
@@ -401,36 +423,40 @@ def main():
         "e_then_the_valid_predictor_left_behind_is_graded": hostile["raw_submit_broken"]["grade"].get("n_failed") == 0
         and hostile["raw_submit_broken"]["submission"]["source"] == "final_collection",
         "e_falsified_check_in_the_agent_box_freezes_but_the_grader_validates": hrep("fake_validator").get("submit", {}).get("accepted") is True
-        and all_k("fake_validator") and "validation failed (reproducibility)" in reason("fake_validator"),
-        "e_unsubmitted_nondeterministic_predictor_scores_K": all_k("unsubmitted_nondeterministic") and "reproducibility" in reason("unsubmitted_nondeterministic"),
-        "e_unsubmitted_predictor_failing_one_example_call_scores_K": all_k("unsubmitted_partly_working") and "validation failed (example 1)" in reason("unsubmitted_partly_working"),
-        "e_final_collection_respects_the_submission_cap": hrep("submit_cap").get("beyond_cap", "").startswith("LabError")
-        and "limit" in hrep("submit_cap").get("beyond_cap", "") and all_k("submit_cap") and "attempt limit" in str(hostile["submit_cap"]["submission"].get("error")),
+        and all_k("fake_validator") and "validation failed" in reason("fake_validator") and "not reproducible" in reason("fake_validator"),
+        "e_unsubmitted_nondeterministic_predictor_scores_as_the_null_policy": all_k("unsubmitted_nondeterministic")
+        and "not reproducible" in reason("unsubmitted_nondeterministic"),
+        "e_unsubmitted_predictor_failing_one_example_call_scores_as_the_null_policy": all_k("unsubmitted_partly_working")
+        and "validation failed" in reason("unsubmitted_partly_working") and "raised" in reason("unsubmitted_partly_working"),
+        # round 4 (ruling E1): the laboratory still caps the submit ATTEMPTS, and what is in submission/ at the end is graded all the same
+        "e_submit_attempts_are_capped_and_the_final_collection_is_graded_all_the_same": hrep("submit_cap").get("beyond_cap", "").startswith("LabError")
+        and "limit" in hrep("submit_cap").get("beyond_cap", "") and hostile["submit_cap"]["graded"] and hostile["submit_cap"]["grade"].get("n_failed") == 0
+        and hostile["submit_cap"]["submission"]["source"] == "final_collection",
         # (h) the harness dies: verifiers leaves the trace ungraded; the books are closed by tools/settle.py and single use
         "h_harness_exit_or_kill_leaves_the_trace_without_a_reward": all(not H[m]["first"]["graded"] for m in H),
         # the box scripts carry a gate that refuses outside an exam box (audit A3): INSIDE the box it must let them work.
         # 137 = the harness's shell was killed by SIGKILL, i.e. `kill -9 -1` was issued in the box; 1 = the script's own exit
         "h_kill_all_was_issued_inside_the_box": H["killall"]["first"]["script_exit_code"] == 137 and H["exit1"]["first"]["script_exit_code"] == 1,
-        "box_scripts_passed_their_gate_inside_the_box": all(hrep(m).get("mode") == m for m in HOSTILE + VALIDATION + ITEMS)
+        "box_scripts_passed_their_gate_inside_the_box": all(hrep(m).get("mode") == m for m in HOSTILE + VALIDATION + ITEMS if m not in BLOCKED)
         and not any(r.get("script_refused_to_run") for r in runs.values()) and "agent_box" in json.load(
             open(os.path.join(notes, B["trace_id"], "probe_grading_report.json"))),
-        "h_settle_records_K_for_such_a_rollout": all(len(H[m]["settled"]) == 1 and H[m]["settled"][0]["settled_as_K"] is True
-                                                     and H[m]["grade_record"].get("n_failed") == H[m]["grade_record"].get("n_items") for m in H),
+        "h_settle_records_the_null_policy_for_such_a_rollout": all(
+            len(H[m]["settled"]) == 1 and H[m]["grade_record"].get("settled") is True and isinstance(H[m]["settled"][0].get("reward"), float)
+            and abs(H[m]["settled"][0]["reward"] - NULL) < 1e-12 and H[m]["grade_record"].get("n_failed") == H[m]["grade_record"].get("n_items") for m in H),
         "h_the_same_agent_cannot_open_the_instance_again": all(not H[m]["again"]["graded"] and "TaskError" in H[m]["again"]["errors"] for m in H),
         # (f) what the predictor returns on exam items
         "f_item_attacks_passed_validation_and_were_submitted": all(hrep(m).get("submit", {}).get("accepted") is True
                                                                    and hostile[m]["grade"].get("validation", {}).get("ok") is True for m in ITEMS),
-        "f_overflow_fifo_and_bomb_fail_every_item_and_score_K": all(all_k(m) for m in ("item_overflow", "item_fifo", "item_bomb")),
+        "f_overflow_fifo_and_bomb_fail_every_item_and_score_as_the_null_policy": all(all_k(m) for m in ("item_overflow", "item_fifo", "item_bomb")),
         "f_no_item_attack_hung_the_grader": all((hostile[m]["wall_s"].get("verifier") or 1e9) < 300 for m in ITEMS),
         "f_largest_float32_values_are_a_valid_finite_very_bad_reply": hostile["item_extreme"]["grade"].get("n_failed") == 0
         and hostile["item_extreme"]["reward_skill_vs_O"] < -1e30,
-        "d_deleted_submission_scores_K": hostile["delete"]["reward_skill_vs_O"] == 0.0 and hostile["delete"]["grade"].get("n_failed") == hostile["delete"]["grade"].get("n_items"),
-        "d_empty_oversize_huge_and_broken_tar_score_K": all(hostile[m]["reward_skill_vs_O"] == 0.0 and hostile[m]["grade"].get("n_failed") == hostile[m]["grade"].get("n_items")
-                                                            for m in ("empty", "oversize", "huge", "no_tar")),
-        "d_control_default_collection_grades_a_deleted_submission": stock["delete"]["graded"] and stock["delete"]["reward_skill_vs_O"] == 0.0,
+        "d_deleted_submission_scores_as_the_null_policy_never_K": hostile["delete"]["graded"] and NULL != 0.0 and "no submission" in reason("delete")
+        and hostile["delete"]["grade"].get("n_failed") == hostile["delete"]["grade"].get("n_items"),
+        "d_oversize_and_huge_score_as_the_null_policy": all(all_k(m) for m in ("oversize", "huge")),
+        "d_control_default_collection_grades_a_deleted_submission": stock["delete"]["graded"] and stock["delete"]["reward_skill_vs_O"] == NULL,
         "d_control_default_collection_leaves_the_others_ungraded": all(not stock[m]["graded"] for m in ("huge", "no_tar", "symlinks", "junk")),
-        "d_links_are_left_out_and_the_rest_is_graded": hostile["symlinks"]["grade"].get("n_failed") == 0 and hostile["symlinks"]["submission"]["files"] == 1,
-        "d_junk_in_logs_artifacts_does_not_matter": hostile["junk"]["grade"].get("n_failed") == 0,
+        "d_links_are_left_out_and_the_rest_is_graded": hostile["symlinks"]["grade"].get("n_failed") == 0 and hostile["symlinks"]["submission"]["files"] == 2,   # predict.py and pool.npz
         # (d') identity in the grader's box
         "predictor_cannot_write_request_or_runtime": bool(items) and all(i["write_request"] != "WRITABLE" and i["write_runtime"] != "WRITABLE"
                                                                          and i["write_workspace"] != "WRITABLE" for i in items),
