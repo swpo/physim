@@ -28,7 +28,7 @@
   "cap_usd": 11.4,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.1253
+    "conservative_usd": 0.6341
   },
   "guard_at": null,
   "guard_reason": null,
@@ -59,7 +59,7 @@
   ],
   "job_id": "r6-cards-001",
   "max_estimate_usd": 7.4,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -168,5 +168,6 @@
   "run_started_epoch": 1794397419.601971,
   "started_at": "2026-11-11T11:47:27Z",
   "state": "running",
-  "updated_at": "2026-11-11T11:47:27Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n11:47:35 [job.sh] PILOT_NEVER_REUSE_AS_EXAM start, size full, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\n== out/progress.txt\n11:47:35 [job.sh] PILOT_NEVER_REUSE_AS_EXAM start, size full, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\nname, memory.total [MiB], driver_version\nNVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08\n11:47:43 [      8s] PILOT_NEVER_REUSE_AS_EXAM cards job, size full, backend gpu, devices [CudaDevice(id=0)], jax <ip>, numpy 2.5.4\n11:47:43 [      8s] 70 worlds, 125 runs, presmoke of 8 program groups: ['gliders', 'vortex64', 'membrane', 'foundry64', 'noise', 'free', 'foundry128', 'vortex128']\n11:49:12 [     98s] gliders__A: sim 37.8+46.5s analyse 3.2s | exam-worthy + actions | pf8 0.99 ceil8 0.45 sigma_hat 0.198701679488426 nb 7.5\n11:52:25 [    290s] vortex64__A: sim 89.9+97.3s analyse 4.7s | exam-worthy + reading-worthy + actions | pf8 0.93 ceil8 0.46 sigma_hat 0.35237937507202527 nb 8.0\n11:52:57 [    323s] membrane__A: sim 18.2+10.2s analyse 3.4s | exam-worthy + reading-worthy + actions | pf8 1.00 ceil8 1.00 sigma_hat 0.16004964070554464 nb 14.5\n11:53:22 [    348s] foundry_04470__A: sim 15.2+6.2s analyse 3.0s | exam-worthy + reading-worthy + actions | pf8 1.00 ceil8 0.52 sigma_hat 0.8851037564344634 nb 18.9\n11:53:39 [    365s] ctl_noise__A: sim 10.8+3.9s analyse 2.5s | dull: nothing predictable | pf8 -0.00 ceil8 -0.00 sigma_hat None nb 11.6\n11:54:02 [    388s] ctl_freebodies__A: sim 15.2+5.0s analyse 2.6s | dull: the hidden part has no weight | pf8 0.95 ceil8 0.74 sigma_hat 0.06307321770154589 nb 5.4\n11:54:53 [    439s] foundry128_04470__A: sim 27.1+13.1s analyse 10.1s | exam-worthy + reading-worthy + actions | pf8 1.00 ceil8 0.60 sigma_hat 0.38754770784320547 nb 71.6\n",
+  "updated_at": "2026-11-11T12:02:47Z"
 }
