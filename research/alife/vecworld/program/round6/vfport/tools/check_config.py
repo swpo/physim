@@ -148,7 +148,8 @@ def fixed_violations(expanded: dict, flat: dict, RC, PROFILES) -> list[str]:
     if set(task) - {"limits"} or limits.get("cap_usd") != flat["cap_usd"] or limits.get("max_context_tokens") != flat["max_context_tokens"] \
             or set(limits) - {"cap_usd", "max_context_tokens", "box_cpus", "box_memory_gb"}:
         bad.append("the task table holds more than the limits of the config")
-    hit = sorted({path for path, key in walk_keys(expanded) if key in FORBIDDEN})
+    # (the top-level table `env` is vf-eval's environment table; an `env` anywhere below it is a passthrough)
+    hit = sorted({path for path, key in walk_keys(expanded) if key in FORBIDDEN and path != "env"})
     if hit:
         bad.append("forbidden fields: " + ", ".join(hit[:8]))
     return bad
