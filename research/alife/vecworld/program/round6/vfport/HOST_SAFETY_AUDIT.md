@@ -1,6 +1,4 @@
-**NOTE of the round-4 second-pass fixer (11 Nov 2026), above the verdict and not part of it:** the GO in the line below holds for commit `8bbab3324ae510990f17be400602e97d4042ef6e` only (sha256 of `PIN.sha256` `776d9a33...fadc`). From commit `841b4a1e1d12afc7cd60b8b184b451d278895b1d` on (the third round-4 pin, `PIN.sha256` `898089fc...108f`) the code carries the second pass's changes for K4, X6 and the minor items, and has no verdict: `RUNBOOK_MAC.md` there says ON HOLD, and so does this note. See `README.md`, section 8.16.
-
-# VERDICT (round 4, 11 Nov 2026): GO for the scripted smoke test on the lead's Mac (steps 0 to 2 of `RUNBOOK_MAC.md`), from the one commit that holds this line (code as judged at c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed, commands as rehearsed at d9694f3e5b6c92a98c13fb36f02645f01f18728c; sha256 of `PIN.sha256` 776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc). NO-GO for step 3, the model rollouts driven by requests: two major findings are open (K4: a model in its box can push an unbounded amount of data into processes on the Mac; X6: the in-box check `validate` reports "as graded" for predictors that fail in grading), and each needs a new pin. It replaces the round-3 GO for 08bd5a669867623a476e7446a74612be47001b3b, which is not to be run any more. See "Re-audit, round 4" at the end; sections 1 to 6 and the re-audits of rounds 1 to 3 are the earlier verdicts, kept as they were.
+# VERDICT (round 4, second pass, 11 Nov 2026): GO for the scripted smoke test on the lead's Mac (steps 0 to 2 of `RUNBOOK_MAC.md`), from the one commit that holds this line (code of the third round-4 pin 841b4a1e1d12afc7cd60b8b184b451d278895b1d, sha256 of `PIN.sha256` 898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f; commands of steps 0 to 2 as rehearsed at d9694f3e5b6c92a98c13fb36f02645f01f18728c, step 0 and the uv commands of step 1 once more at 841b4a1e1). NO-GO for step 3, the model rollouts driven by requests: two findings of major severity are open (K9: a model in its box can make vf-eval on the Mac hold about 64 GiB of request bodies through verifiers' interception server; X13: the task statement does not say that one command of the `bash` tool can hold the agent for up to an hour, longer than the run), and each needs a new pin. It replaces the GO of round 4's first pass for 8bbab3324ae510990f17be400602e97d4042ef6e and the round-3 GO for 08bd5a669867623a476e7446a74612be47001b3b: steps 0 to 2 are started from this commit only. See "Re-audit, round 4, second pass" at the end; sections 1 to 6 and the re-audits of rounds 1 to 4 are the earlier verdicts, kept as they were.
 
 Host-safety audit of `round6/vfport`, 10 Nov 2026. Audited: `round6/vfport` and `round5/agentenv` at
 branch head 216eddf37, identical in both folders to 997005f56 (archives compared by me). All three lenses
@@ -851,3 +849,233 @@ macOS; I did not rerun the check tools (`check_runbook.py` reads the notice's fi
 to 2.` or `0 to 3.`: read, lines 297-300), `tools/check_step3.py` or the exam proof, and I did not repeat the
 auditors' container runs (capture, E9). The Mac review's text was read; no detail of the lead's machine is
 written here.
+
+## Re-audit, round 4, second pass
+
+**VERDICT, 11 Nov 2026: GO for the scripted smoke test on the lead's Mac (steps 0, 1 and 2 of
+`RUNBOOK_MAC.md`). NO-GO for step 3, the model rollouts driven by request files: two findings of major severity
+are open (K9 of the code audit and X13 of the exam audit, below). Each needs a change of a pinned file, so a new
+pin, a re-audit of its diff, a flood case through vf-eval and a verdict. Scores of this pin may be quoted only on
+the conditions under "Scores from this pin".**
+
+The GO covers steps 0, 1 and 2, the section "If a run was interrupted" as it applies to step 2, and step 4 once
+the lead says the pilot is over. It holds for ONE commit: the commit that carries this section and the GO notice
+at the top of the runbook; the coordinator's message gives its 40-character hash, the lead checks it out, and
+step 0 compares it. It replaces the GO of round 4's first pass (`8bbab3324ae510990f17be400602e97d4042ef6e`) and
+the round-3 GO (`08bd5a669867623a476e7446a74612be47001b3b`): steps 0 to 2 are started from this commit only. A
+smoke test that already passed at `8bbab3324` stays a result; it does not count for a later pin, whose step 0
+stops on what another commit's steps 1 and 2 left. This verdict replaced the first line of this file together
+with the fixer's note above it, added this section, and replaced the notice between `HOLD-BEGIN` and `HOLD-END`
+of the runbook (GO for steps 0 to 2; NO-GO for step 3 in words; one paragraph for the lead); it changed nothing
+else and no command. Neither file is listed in `PIN.sha256` (run: 0 matches). The new notice is 21 lines longer
+than the hold it replaced: runbook lines cited below are those of `ebf1e993c`; in the commit that holds this
+section every line after the notice lies 21 lines lower.
+
+Why the two answers differ. Steps 0 to 2: the code audit found no new host hazard and nothing that weakens a
+guard; the commands are byte for byte the rehearsed ones; the scripted parts of the new code ran through vf-eval
+in the cloud container (the fixer's `check_step3` caps, route and flood parts, and the reference stage of the
+rehearsal job `qwen-ring-003`, which is `tools/prove.py` with six scripted policies and 64 item boxes); and
+neither open major is reachable without a model (K9 needs a box that reads the harness's secret and posts to the
+interception server; in steps 0 to 2 every box runs our own scripted agents). Step 3: the brief's rule is that no
+item of major severity may be open in any audit, and two are. The runbook audit's GO for steps 0 to 3 (on three
+text conditions) is outweighed by K9 and X13.
+
+Judged: the code of the third round-4 pin, `841b4a1e1d12afc7cd60b8b184b451d278895b1d` (sha256 of `PIN.sha256`
+`898089fc…108f`, equal to the runbook's pin block; 136 of 136 files match at the branch head: run). After
+`841b4a1e1` the three folders the pilot uses changed in `results/`, `rehearsal/`, `README.md`, the runbook's prose
+(three places, no command), the fixer's note in this file and nothing pinned; after the audited head `ebf1e993c`
+only `round6/foundrylong/` and a request of that study under `gpu/requests/` changed (run: `git diff --stat`,
+`--name-only`). Commands: 41 fenced and 2 inline; byte for byte those of the first pass's GO commit `8bbab3324`
+except the go command of 3.0 (its placeholders now in single quotes), and equal at the pin and at the head (run: my
+script). Those of steps 0 to 2 were rehearsed as `sh -c` lines at `d9694f3e5` (round 4); step 0 and the uv
+commands of step 1 again from a fresh clone of `841b4a1e1` (`results/rehearsal_round4.json`, `second_pass`).
+Inputs: the second-pass fixer's report and three audits of `841b4a1e1`/`ebf1e993c`: code (steps 0 to 2 GO, step 3
+NO-GO on K9), runbook (GO for steps 0 to 3 if three texts are added), exam integrity (one major for rollouts, one
+for reading scores). What I rely on I checked at the head myself; where a row rests on somebody else's run it
+says whose.
+
+| evidence label | meaning in this round |
+|---|---|
+| read | the cited lines were read by me (verifiers: the pinned checkout `verifiers/v1`, written `vf:`) |
+| run | run by me: scripts over texts and records, `sha256sum -c`, `git`, `grep`, and one key scan (a Python process that read the values from its environment and printed file names and counts only); no file of the port was executed |
+| tripwire, container, vf-eval (fixer, auditors) | their runs, recorded in `results/` or in their reports; none by me |
+| inferred | reasoned, not run: every statement about macOS and Docker Desktop |
+
+### What changed since 08bd5a66
+
+| area | change | pass | where (pinned unless said) | checked by me |
+|---|---|---|---|---|
+| the laboratory | a 256-bit bearer per rollout, in vf-eval's memory only; `401` before the application without it; DNS-rebinding protection on; the box's proxy adds it to laboratory requests | first | `bearer.py`, `lab_tools.py`, `runtime.py`, `access.py` | read (round 4) |
+| what a box can make the Mac hold (K4) | vf-eval keeps at most 96 MiB of standard output and 4 MiB of standard error of any `docker` client, drops the rest and fails the command; the in-box check's report is cut at 1 MiB in the box; the laboratory reads a body itself, at most 4 MiB (`413`), at most 8 requests at once (`503`); the box's proxy serves at most 64 connections and pauses its relay beyond 2 x 128 KiB. Not bounded: verifiers' interception server (K9) | second | `runtime.py` (`OUTPUT_MAX`, `read_bounded`, `_communicate`, `MAX_CONNECTIONS`), `bearer.py`, `access.py` | read (`runtime.py:75-100, 178-210`; `bearer.py:54-60, 101-133`) |
+| the boxes | 2 CPUs, at most 4 GB without swap, 512 processes, read-only root, memory-backed `/workspace` 1 GiB, `/tmp` 512 MiB, `/etc/physim2`, `/runtime`; read back from the engine before use; a config can only lower memory | first | `boxcaps.py`, `runtime.py` | read (round 4) |
+| the image | `physim2-ring:2`: verifiers' `bash` harness preinstalled from hashed pins, so a box downloads nothing at set-up | first | `docker/` | read (round 4) |
+| the driver guard | the four memory file systems of a capped box are accepted mount points (first pass), and only with the box's own `size=` (second pass, K1) | both | `public/_item.py` | read (the second pass's diff adds a refusal and removes none) |
+| the spend stop | one counted client in vf-eval; worst-case counting of missing usage, errors and streams without usage; mandatory `max_context_tokens`; the provider's cost field when higher; the lead's standing go file; one ceiling over this Mac's ledger and the shared ledger (first pass). Request keys an allow-list, every non-message key in the chained prompt bound, no call before its `sent` record is in the spend log, a failed write stops the run (second pass, K5) | both | `spend.py`, `tools/vfrun.py`, `tools/check_request.py` | read (`spend.py:119-150, 240-242`) |
+| step 3 | request route `rollout-job/v1` (stages instance, reference, dry-run, rollout, close), strict config schema, publication folder with key scan and manifest | first | `tools/check_request.py`, `tools/vfrun.py`, `tools/pack_rollout.py`, `rollout_config.py`, `tools/check_config.py`, `profiles.py` | read (round 4) |
+| the capture of `submission/` | the one writer of box content on the Mac: the archive held whole in memory, read once, a decision per entry, caps on files and bytes; directories counted and a broken-off file listed (second pass, K2) | both | `capture.py` | not repeated (code auditor's container run, 15 hostile archives) |
+| the exam | rulings E1 to E15 (E16 not done): whatever is in `submission/` when the run ends is graded; the box starts with the null baseline; a failed item is scored as the null policy, never K; the statement renders every limit of the run; the Lab log in `/workspace`; `ring_r4` (256 samples per item, an episode start costs 17 ticks). Second pass: X1 (what is graded after an error), X5 (the card and the statement carry the measured envelope and per-item limits), X6 (`lab.validate` from the manifest's files, scratch places closed), X9 (an item's reply capped at 1 MiB) | both | `taskset.py`, `grading.py`, `access.py`, `bundle.py`, `TASK.md.tmpl`, `public/`, `agents/keep_baseline.py`, `physim2_verifier/` | read in part (X13, X15, X16 below; the rest by the exam auditor) |
+| the session's environment | refused names include `PYTHONEXECUTABLE`, `__PYVENV_LAUNCHER__`, `DYLD_*`; nine names pass to a child, not `SSL_CERT_FILE` | first | `tools/vfrun.py:82-84` | read |
+| the runbook | 43 commands (round 3: 35), each with the folder guard; no `$(...)`, no backtick, no variable but `$HOME` and `$?`; destructive targets as in round 3; second pass: the go command's quotes, step-3 text T2 to T14, "step 0 again at the same commit" | both | `RUNBOOK_MAC.md` (not pinned) | run (script) |
+| the pin | 109 files, then 135, now 136 (`agents/probe_flood.py` added) | both | `PIN.sha256` | run |
+
+A search of the second pass's diff (`c7db465d5..841b4a1e1`, `physim2_env/` and `tools/vfrun.py`) for calls that
+kill, delete, move or change modes found five lines: `runtime.py:202`, `os.killpg` of the session of a `docker`
+client the same function started with `start_new_session` (verifiers' `vf:runtimes/container.py` does the same);
+two `os.chmod` and one `shutil.copyfile` in `public/validate.py`, which runs in the box only, behind its gate; and
+a docstring (run: the search; read: each line). The code auditor searched the same diff for 15 primitives and
+read the gate of `agents/probe_flood.py` (30-43).
+
+### The code audit, second pass (K1 to K10)
+
+| item | severity | status | evidence (mine unless said) |
+|---|---|---|---|
+| K1 driver guard and tmpfs sizes | minor, Linux hosts | closed | read: `_item.py:93-99, 138-141, 172-179`; the size comes from the mount's own options; a refusal added. Fixer: `check_driver` 33 of 33 (containers) |
+| K2 capture | minor | closed | code auditor's container run (15 hostile archives: links, devices, FIFOs, traversal, 30,000 entries, a 10 GiB PAX size, a cut archive): every file written regular, inside the destination, within the caps; not repeated |
+| K3 the bearer | none | closed | unchanged since `c7db465d5` apart from the body and request caps (auditor: `git diff`) |
+| K4 four ways out of a box | major (first pass) | closed for those four | read (table above); vf-eval (fixer, `check_step3` flood 14 of 14): a box pushed about 0.9 GB, vf-eval 517 to 616 MiB, the laboratory 427 MiB |
+| K5 request keys | minor | closed, with K10 | read `spend.py:119-150, 240-242`; tripwire (fixer, E13 to E15); the paid job's 24 requests passed the allow-list (record) |
+| K6 strict config schema | none | closed | unchanged (auditor: `git diff`) |
+| K7 the model key | none; one minor | key closed; the base64 needle of `tools/pack_rollout.py:79` has one alignment: open, minor | run: 0 hits for the values of `PRIME_API_KEY`, `HF_TOKEN`, `WANDB_API_KEY` (plain, base64 and URL-safe base64 at three alignments) in 296 files of `round6/rollouts` and `round6/vfport` at the head, `qwen_ring_003` included |
+| K8 the pin | none | closed | run: 136 of 136; every file of `vfport` that runs on the Mac is listed (auditor; the unlisted `round5/agentenv` files are imported by nothing in the pilot) |
+| **K9 verifiers' interception server takes 1 GiB per request** | **major, step 3** | **open: blocks step 3** | read: `vf:interception/server.py:78` (`MAX_REQUEST_BODY = 1024**3`), `424` (`client_max_size`), `586-591` (the secret is looked up, then the whole body is read); `vf:harnesses/utils/launch.py:54` (`--api-key={secret}` on the chat program's command line in the box, where root can read `/proc/<pid>/cmdline`); `runtime.py:84` (64 connections per box) and the relay, which paces but does not cap a body; no override anywhere in `physim2_env/` and no flood case aimed at this route in `agents/probe_flood.py` (run: `grep`). So a box can make vf-eval hold about 64 GiB, and runbook line 195 ("some hundreds of MiB at most, whatever it sends") is false. Code auditor, under tripwires: an aiohttp 3.14.5 app with the same limit and order grew by 1,151 MiB for two concurrent 384 MiB posts. Not reachable in steps 0 to 2 |
+| K10 `reasoning_effort` any word; `n=True` passes | minor, step 3 | open | read `spend.py:142-149`. A box holding the secret can ask for an effort the config never set; the bound then rests on the provider counting reasoning within `max_tokens` (runbook 3.2, point 8) |
+
+### The runbook audit, second pass (T19 to T25)
+
+| item | severity | status |
+|---|---|---|
+| T2 to T12, T13 (request source), T14 (`git rev-parse` row), step 0 at the same commit | minor, step 3 | closed in text (read: runbook 155, 409-418, 802-812, 857-865, 880-883, 1076-1078, 1141-1149, 1204-1207; fixer: `check_runbook` 51 of 51) |
+| runbook audit items 1, 2, 3, 11: pin, no accidental start, price bound and refusals, the rehearsal record | none | closed (auditor; the commands I compared myself: run) |
+| T19 (item 4) nothing checks the pinned files before each job: `check_pin` hashes `PIN.sha256` and compares HEAD only | minor, step 3 | open (read `tools/check_request.py:149-156`): before each job, the first two commands of step 0 |
+| T20 (item 5) 3b and the STOP line refer to "what the runner's protocol lets you start without asking" and give no number | minor, step 3 | open |
+| T21 (item 6) `EXIT 2` means a refusal OR vf-eval's own status 2 after the bound was reserved | minor, step 3 | open (read `tools/vfrun.py:770-806`: the tool returns vf-eval's status); 3f should go on with 3g and 3h in both cases |
+| T22 (item 7) the publication files, the size limits and the crash clean-up are not in the block of facts; the code allows 20 MiB and 50 MiB, the text and the runner say MB | minor, step 3 | open. This corrects the first pass's section "The Mac runner's protocol", which said they stand in that block: they stand in 3h's table and in point 8 (read) |
+| T23 (item 8) the runner's published intake (a fifth cap, `notes`, optional `requester`, memory down to 0.5) differs from the pin | minor | open; each difference is refused at 3a or 3b (auditor, read) |
+| T24 (item 9) `PRIME_API_KEY` set but empty: verifiers takes the key from `~/.prime/config.json` | minor, step 3 | open (auditor read `resolve_api_key`; not checked by me) |
+| T25 (item 10) 3d's "points 1 to 5, 7" should add "(point 8 does not apply)" | minor, wording | open |
+| item 12, macOS | | inferred by the auditor; each difference ends in a stop |
+
+### The exam-integrity audit, second pass (X12 to X19)
+
+| item | severity | status |
+|---|---|---|
+| X1, X5, X9 | minor (first pass) | closed (read in part: `bundle.py:218-262`; exam auditor and fixer: `exam_pure` 25 of 25) |
+| X6 `validate` as graded | major (first pass) | closed for `/workspace`, `/tmp`, `/dev/shm` and files added to `physim2/` (exam auditor, read; fixer: `exam_units` part 6 in a container, flood F8 through vf-eval); residue X16 |
+| E1, E2, E3, E5 to E7, E9 | none | sound (exam auditor). E3 recomputed by the auditor from `results/proof_ring_items.npz` (S 0.89834, D 0.19197, P0 0.84842) and qwen_ring_003's `grades.json` (-0.029243, the null row); failing on purpose gains nothing; grading changed only in the reply cap since the round-5 cross-check |
+| X7 jointly chosen samples | minor residual | about 0.4% at 256 samples |
+| X12 (item 1) the comment at `access.py:66` still says "scored as K" | minor, wording | open (read) |
+| **X13 (item 4) one command of the `bash` tool can hold the agent for up to an hour; the statement does not say so** | **major for rollouts** | **open: blocks step 3.** read: `vf:harnesses/utils/core.py:160-166` (`subprocess.run(..., timeout=3600)`); the limits section of the statement (`bundle.py:218-262`) says the run "ends at once, in the middle of whatever is running", not that a command holds the agent until it returns; `../rollouts/qwen_ring_003/`: turn 24 at t = 165 s ran `python learn_params.py`, no later turn, stop condition `agent_timeout` at 900 s (`transcript.md`, `status.json`). That run lost 735 of its 900 s and scored the baseline; its score measures the wait, not the model. Fix: one rendered line in section 4 (a command blocks until it returns, up to the harness's limit; use `timeout` or a background job writing a progress file) |
+| X14 (item 5) a failed write of `/workspace/lab_log.jsonl` is silent | minor | open |
+| X15 (item 7) "write to `/workspace`, `/tmp`, `/dev/shm` and nowhere else" is false for root: `/etc/physim2` and `/runtime` are writable | minor | open (read `bundle.py:265`) |
+| X16 (item 8) `SCRATCH_PLACES` leaves out `/runtime` and `/etc/physim2`; a predictor reading a file put there passes `lab.validate` as graded and fails every item | minor | open (read `public/validate.py:122`) |
+| X17 (item 10) the context stop counts one token per byte added since the last reply, so a run can end before `context_tokens_left` says | minor | open; to be disclosed |
+| **X18 (item 11) what a score means** | **major for reading scores, not for the Mac** | open: on qwen_ring_003's instance P0 scores 0.896 and C 0.927 (read: `RESULT.md`); the auditor finds that instance outside the program's own bars (sigma 0.033 against at least 0.15; rho 0.83 against at most 0.7) and qwen_ring_002's outside the rho bar (0.826); E16 is not done |
+| X19 (item 12) qwen_ring_002 read end to end | | recommendations: X13 first, then X18 with E16, then X16 and a pointer from `python -m physim2.validate` to `lab.validate` |
+
+### The Mac review's minor findings (identifiers only)
+
+Statuses as the runbook audit read the text at `ebf1e993c` (no change since the first pass); spot-checked by me in
+the runbook where marked (read).
+
+| status | findings |
+|---|---|
+| closed | CRED-5 (read), SIG-2 (read), SIG-3, G1 (read: `tools/vfrun.py:82`), NEWC-1, RB-1 (read), RB-2 (read), RB-3/R3-4, RB-7 (read), RB-8 (read), RB-9 (read), INV-2, INV-4, INV-5 (read), INV-7 (read), INV-8 (read), INV-9 (read), DOCK-3 (read), DEL-2 (read), DEL-3/INV-6 (read), the apt and apk mirrors (read), CRED-1 (read) |
+| accepted with a reason, in the text | DEL-1 (a 48-bit name collision; read), DOCK-5 (the helper image is the lead's own either way; read), R3-3 |
+| closed in part | R3-7, R3-8, INV-3/R3-9, DOCK-1/RB-4/R3-1/RB-5 |
+| open, minor | CRED-2 (git's and Docker Desktop's credential helpers are not named in section B; read: no mention) |
+| mitigated | DOCK-4 (a box carries no extra mount; the guard is unchanged) |
+| deferred | CRED-4/CMD-14 (build backend pinned by version, not hash), RB-6 (needs the Mac), CMD-5, SIG-1, R3-2, R3-5, INV-1 (the appendix gives no text); the list "not covered by anyone" |
+
+### Rounds 1 to 4: nothing reopened
+
+| earlier finding | status | evidence |
+|---|---|---|
+| A1 working directory | closed | run: 43 of 43 commands begin with the folder guard; no `$(...)`, no backtick, no variable but `$HOME` and `$?`; `uv` in two commands, both with `--project <absolute path>`, the dry run first |
+| A2, N1 to N3, interruption | closed | run: the status and stop commands are byte for byte the first pass's, rehearsed in round 4 (`EXIT 130` and a reset; `EXIT 97`; a SIGKILL of tool and vf-eval cleared by points 1, 3, 5 and 8) |
+| A3 box scripts | closed | the new box script `agents/probe_flood.py` stands behind the marker gate (code auditor, read: 30-43) and under `agents/*.py` on the never-list (read) |
+| A4, A5 driver | closed | `_item.py`: one refusal added (K1); no `rmtree`; unlink and rmdir of listed paths only, unchanged (read: the diff) |
+| S1, S2, N4 | closed | unchanged; N4 used by this verdict |
+| N5 to N8 | open, minor, Linux hosts only | unchanged; K1, their sibling, is closed |
+| M1 to M3, m1 to m11, D1, G1 | closed | `tools/vfrun.py` changed in one argument since `c7db465d5` (read: the diff); `ENV_PASS` and the watchdog unchanged |
+| K3, K6, K8; the first pass's K4 and X6 | closed | above |
+
+### The Mac runner's protocol: can the pin meet it?
+
+Yes for every point but the rollout itself (runbook audit item 7; read by me): the request keys and shapes, the
+strict config schema with its forbidden fields, the profile `ring` with 64 items, the scripted policies of the
+reference table (`null`, `D`, `P0`, `PM`, `S`, `C`) and the stages stand in the block of facts that
+`tools/check_request.py --facts` prints; the publication files are 3h's table and the crash clean-up is point 8
+with stage `close` (prose, not that block: T22); `SSL_CERT_FILE` is not on the tools' allow-list; the key reaches
+vf-eval by the environment only. Since the second pass the spend stop refuses, unsent, any request key outside its
+allow-list (`reasoning`, `provider`, `models`, `service_tier` among them). Step 3 is not released (K9, X13), so no
+request should name this commit.
+
+### What remains before GO for steps 0 to 3
+
+1. **K9** (major): bound what one rollout can make vf-eval hold through verifiers' interception server: a body
+   limit far below 1 GiB, set before the server starts (the code auditor's proposal: 32 MiB through
+   `vf:interception/server.py`'s module attribute, read at `start()`), and a limit on concurrent requests of one
+   rollout before any body is read; a flood case (1 GiB, with the secret taken from the chat program's command
+   line) in `agents/probe_flood.py` and `tools/check_step3.py`, a check in `tools/check_round4.py`, the row in
+   section B and line 195 corrected.
+2. **X13** (major for rollouts): section 4 of the statement says, rendered from the harness's limit, that a
+   command holds the agent until it returns (up to 3,600 s, longer than the run), and how to avoid it.
+3. A new pin with 1 and 2, a re-audit of its diff, the K9 flood case run through vf-eval, one model job from a
+   request, and a verdict.
+4. Runbook text of step 3: T19, T20, T21 (the runbook audit's conditions for its GO); recommended T22 to T25 and
+   CRED-2.
+5. Same pin, minor: K7 (three alignments), K10 (`reasoning_effort` equal to the config's, `type(n) is int`), X12,
+   X14 to X17.
+6. For reading scores, not gating: X18 (quote next to P0, S and C with sigma and rho; E16's two rows).
+
+### Scores from this pin
+
+Not quotable without conditions. X18 can make a score misleading on its own, and X13 can make a score a measure of
+a blocked command rather than of prediction. A score of this pin may be quoted only with its `n_failed` and
+fallback reasons; with `infrastructure_failed_items` = 0 and no `grading error`, `not_a_grade` or `not run`;
+next to P0, S and C of the same instance and the instance's sigma and rho; with the run's stop condition and the
+time its last command took; and not as a measure of how hard the ring is. qwen_ring_003 (-0.029, the baseline)
+measures the wait of X13, not the model.
+
+### Residual risks, also with this GO
+
+- **Nothing has run on macOS or Docker Desktop** (inferred only, each ending in a stop rather than a repair):
+  zsh and a detached command outliving its call; BSD `ps`, `awk`, `df -Pk`, `shasum`; uv's managed Python and its
+  command line; that Docker Desktop applies the box caps as the Linux engine does (they are read back and a box
+  without them is not used); the signs of a container and the mount table there; that a laboratory outlives a
+  killed vf-eval.
+- **Step 2 at this code.** 2b (`tools/check_probe.py`) and 2c have not run at `841b4a1e1` anywhere; 2a's tool ran
+  there as the reference stage of `qwen-ring-003`. The guard now also needs each box tmpfs's size as the kernel
+  prints it (`size=1048576k`, ...); Docker Desktop runs a Linux kernel, inferred to print the same. If it does
+  not, item boxes are refused, 2a's "must hold" line fails, and that is a stop.
+- **Never run in the runbook's form:** the image build of step 1 and its status command; step 4; point 4 of "If
+  a run was interrupted"; the rule for a second interruption; a stop of a vf-eval by its own pid.
+- **As the lead:** the tools and the laboratory run on the Mac as the lead; `uv sync` runs a build backend pinned
+  by version, not hash (CRED-4); `git` and the `docker` client may start their credential helpers (CRED-2).
+- **The disk:** the watchdog is a brake, not a wall; `uv sync` and the image build are checked before they start
+  only.
+- **Linux hosts:** N5 to N8; the cloud rehearsal's own scripts act for real on the cloud host.
+- **Step 3, when a later pin releases it:** an untrusted model is root in a capped box for up to 180 minutes;
+  Docker Desktop's virtual machine and verifiers' network cut are the walls (2b measures the cut on the Mac); a
+  box can keep a core of the Mac busy while vf-eval reads and drops what it sends; the spend stop rests on the
+  provider's usage and was seen to stop a run only against the stand-in endpoint (`results/round4_step3.json`,
+  R11, R14); the ledger ceiling was seen to refuse under tripwires (D19 to D19c) and to block the next job while a
+  cut job's row was open (rehearsal).
+
+### By hand (the lead, and the Mac session before its first command)
+
+In addition to section C of the runbook and the lists of rounds 1 to 4:
+
+| when | check | expected |
+|---|---|---|
+| before | the coordinator's GO message; `git rev-parse HEAD`; the first text line of `RUNBOOK_MAC.md` on disk | a 40-character hash; equal to it; it begins `**GO for steps 0 to 2.**` and names round 4, second pass. Not `8bbab3324…`, not `08bd5a66…` |
+| before | what another commit's steps 1 and 2 left: `ls "$HOME/physim2-pilot-20261110"`, `docker images physim2-ring`, `.venv` in the study folder | none. If steps 1 and 2 ran at `8bbab3324`: step 4 there on the lead's word, then the `.venv` (or a fresh checkout) and the image by hand |
+| before | Docker Desktop: 4 CPUs and at least 6 GB; at least 11 GiB free on the home folder's file system | as section C says; nothing changed by the pilot |
+| after 2a | the "must hold" line: every `layers` is `{'rlimits': True, 'uid': ..., 'cleanup': True}`, and `box True 64 0` | the driver guard accepted the capped boxes, tmpfs sizes included, on Docker Desktop; anything else: stop |
+| after 2b | both lists of `probe.log`; `staging` with `box_limits`; `control`; `agent box net` with `proxy_loopback_names`; `item box net` | `failed_new` holds `b_lab_process_dropped_it_after_loading` only. This is the first 2b at this code anywhere: a difference is a finding to report, not something to make pass |
+| step 3 | | not from this commit; no `LEAD-GO-MODEL-SPEND.json`. The next pin's verdict says what it needs (above) |
+
+Not covered by this round: the same as section 6 and rounds 1 to 4. By me: no rollout, no container, nothing on
+macOS; I did not rerun the check tools, `tools/check_step3.py` or the exam proof, nor the auditors' container and
+tripwire runs (capture, the aiohttp body test, JAX in an item box). The Mac review's text was read; no detail of
+the lead's machine is written here.

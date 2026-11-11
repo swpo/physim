@@ -1,13 +1,34 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
-**ON HOLD (round 4, second pass, 11 Nov 2026). Run nothing from this copy.** The GO for steps 0 to 2 of the
-round-4 verdict holds for the commit that carried it, `8bbab3324ae510990f17be400602e97d4042ef6e`, and for that
-commit only. This copy carries the second pass's changes (code audit K4: byte bounds between a box and the Mac;
-exam audit X6: `lab.validate` as graded; K1, K2, K5, X1, X5, X9; the step-3 text of the runbook audit, T2 to T12;
-see `README.md`, section 8.16), a new `PIN.sha256`, and no verdict yet, so nothing below is released: not steps 0
-to 2, not step 3, not step 4. A new notice replaces this one when the verdict of this pass is written (it will
-begin `**GO for steps 0 to 3.**`, or `**GO for steps 0 to 2.**`, or stay a hold); until then a session that reads
-this file stops here (rule A.1) and reports.
+**GO for steps 0 to 2.** Round-4 verdict of the host-safety audit, second pass, 11 Nov 2026
+(`HOST_SAFETY_AUDIT.md`, "Re-audit, round 4, second pass"). Steps 0, 1 and 2 of this file and "If a run was
+interrupted" (as it applies to step 2) may run on the lead's Mac, as written, from ONE commit: the commit that
+holds this notice. Its 40-character hash is in the coordinator's GO message (a commit cannot name itself); the
+lead checks it out and gives it to the session, and step 0 compares it. Step 4 is covered too; run it only when
+the lead says the pilot is over. Judged were the code of the third round-4 pin, commit
+`841b4a1e1d12afc7cd60b8b184b451d278895b1d` (the pin below), and the commands as rehearsed: those of steps 0 to 2
+at commit `d9694f3e5b6c92a98c13fb36f02645f01f18728c`, step 0 and the uv commands of step 1 once more at
+`841b4a1e1`. The 41 fenced commands and the 2 inline commands of this file are, byte for byte, those of the first
+pass's GO commit except the go command of 3.0, and none changed after `841b4a1e1`; in the folders the pilot uses,
+the commits after `841b4a1e1` changed `results/`, `rehearsal/`, `README.md`, prose of this file, this notice and
+`HOST_SAFETY_AUDIT.md`, and no file of the pin. This GO replaces the GO of the first pass: start steps 0 to 2 from
+this commit, not from `8bbab3324ae510990f17be400602e97d4042ef6e`, and not from
+`08bd5a669867623a476e7446a74612be47001b3b`.
+
+**Step 3 (model rollouts) is NOT released by this notice: NO-GO.** Rule A.1 stands: step 3 needs a notice that
+begins `**GO for steps 0 to 3.**`. Two findings of major severity are open, and each needs a change of a pinned
+file, so a new pin: (1) a model in its box can make vf-eval on the Mac hold about 64 GiB of request bodies through
+verifiers' interception server, the box's way to the model (1 GiB per request, 64 connections at once; the
+per-rollout secret it needs can be read inside the box): the Mac's memory, not its files; (2) the task statement
+does not say that one command of the agent's `bash` tool holds the agent for up to an hour, longer than the run's
+wall time (a rehearsal job lost 735 of its 900 seconds that way). From this commit, run no command of section 3,
+3.0 included, and create no `LEAD-GO-MODEL-SPEND.json`.
+
+For the lead, not the session: if steps 1 and 2 already ran on this Mac at `8bbab3324`, step 0 of this commit
+stops on what they left; step 4 there on the lead's word, then the `.venv` (or a fresh checkout) and the image
+`physim2-ring:2` by hand, as step 0's paragraph on "ANOTHER commit" says. Step 2b has not run at this code
+anywhere (this pass changed the code under every box: byte bounds, `validate`, the sizes the driver guard expects
+of the box's memory file systems); what decides a stop there is its two lists, as step 2b says.
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->
