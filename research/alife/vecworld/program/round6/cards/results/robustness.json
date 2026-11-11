@@ -1,0 +1,3344 @@
+{
+ "gliders": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": false,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    6.658156323853588e-11,
+    -1.3221674794103148e-10,
+    0.0012876593813943608
+   ],
+   "log_sd_ratio": [
+    -0.0066920830457059665,
+    -0.0143839473795591,
+    -0.009946830494202778
+   ],
+   "count_ratio": 0.976375654204633,
+   "events_early": 46.796875,
+   "events_late": 43.65625,
+   "pf8": [
+    0.9856327625312143,
+    0.9879119015963684
+   ],
+   "ceil8": [
+    0.45296885279838134,
+    0.49757652463150653
+   ],
+   "sigma_hat": [
+    0.09738493862428271,
+    0.0997297664171295
+   ],
+   "verdict": [
+    "exam-worthy + actions",
+    "exam-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.986189603805542,
+    0.9850233197212219
+   ],
+   "ceil8": [
+    0.45939505100250244,
+    0.443788081407547
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "vortex64": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": false,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "size": {
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": false,
+   "pop.tick_share": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": false,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "size_against": "vortex128",
+  "size_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": false,
+   "reading_worthy": false,
+   "actions": true,
+   "stationary": false,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    0.005570982566924521,
+    0.05483480614380391,
+    -0.18101193334912294,
+    0.09056809542558099
+   ],
+   "log_sd_ratio": [
+    0.029837650061715622,
+    -0.0002936206937535672,
+    -0.11277556122824497,
+    -0.09630008985983629
+   ],
+   "count_ratio": 1.0811037114927755,
+   "events_early": 27.1875,
+   "events_late": 28.234375,
+   "pf8": [
+    0.9301021861656203,
+    0.9288812479158569
+   ],
+   "ceil8": [
+    0.45683929503356807,
+    0.27647379966228086
+   ],
+   "sigma_hat": [
+    0.0824399661766508,
+    0.07269596874375722
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9242548942565918,
+    0.934834897518158
+   ],
+   "ceil8": [
+    0.4354398846626282,
+    0.4613945782184601
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "membrane": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": false,
+   "pop.tick_share": false,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": false,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": false
+  },
+  "late": {
+   "d_mean": [
+    -0.0231399742528268,
+    0.00959580420951572,
+    0.023355415885242193,
+    -0.0034214111153175746
+   ],
+   "log_sd_ratio": [
+    -0.023374896968682658,
+    -0.018016730673594997,
+    -0.011941509845309414,
+    -0.033128884005510666
+   ],
+   "count_ratio": 1.044053288711546,
+   "events_early": 5.375,
+   "events_late": 5.3125,
+   "pf8": [
+    0.9987100981733485,
+    0.9984435115207208
+   ],
+   "ceil8": [
+    0.9952631011418612,
+    0.9937914758346741
+   ],
+   "sigma_hat": [
+    0.012494727875998701,
+    0.01370284770990767
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "dull: the hidden part has no weight"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9986448884010315,
+    0.9987677335739136
+   ],
+   "ceil8": [
+    0.9948914051055908,
+    0.9957338571548462
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_04470": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": false,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": false,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": false,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": false,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": false,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "size": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.tick_share": true,
+   "grid.member_share": false,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": false,
+   "pop.tick_share": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "size_against": "foundry128_04470",
+  "size_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": false,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    -8.60701586595207e-11,
+    -9.352643193343182e-11,
+    0.014821783235052139
+   ],
+   "log_sd_ratio": [
+    0.003964638196145986,
+    0.041975957828217544,
+    0.01544871810890847
+   ],
+   "count_ratio": 1.03143819872962,
+   "events_early": 82.4375,
+   "events_late": 83.046875,
+   "pf8": [
+    0.998279313734524,
+    0.9983037040618333
+   ],
+   "ceil8": [
+    0.5225301860339959,
+    0.5168186873953693
+   ],
+   "sigma_hat": [
+    0.4389954915437913,
+    0.44484707844825716
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9982615113258362,
+    0.9983099699020386
+   ],
+   "ceil8": [
+    0.5175859332084656,
+    0.5322479605674744
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_04186": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": false,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "size": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "size_against": "foundry128_04186",
+  "size_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    3.466223785002727e-06,
+    -6.2034773111976225e-06,
+    -0.004382648822733253
+   ],
+   "log_sd_ratio": [
+    0.0023481877117574788,
+    0.005609166287689416,
+    0.008616966861043454
+   ],
+   "count_ratio": 0.9150867658864942,
+   "events_early": 83.671875,
+   "events_late": 83.203125,
+   "pf8": [
+    0.9856772137387826,
+    0.9807063291828618
+   ],
+   "ceil8": [
+    0.4983014887388229,
+    0.5233391801570786
+   ],
+   "sigma_hat": [
+    0.439147413048346,
+    0.4405263187173272
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9860068559646606,
+    0.9856590032577515
+   ],
+   "ceil8": [
+    0.5089695453643799,
+    0.5208285450935364
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00262": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": false,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": false,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": false,
+   "reading_worthy": false,
+   "actions": true,
+   "stationary": false,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "size": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.tick_share": true,
+   "grid.member_share": false,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "size_against": "foundry128_00262",
+  "size_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": false,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    5.341423196537515e-11,
+    -1.0721003739257247e-10,
+    0.17164692192238273
+   ],
+   "log_sd_ratio": [
+    0.3052919036484538,
+    0.20722694933913885,
+    0.7287205288995346
+   ],
+   "count_ratio": 0.8907225575792118,
+   "events_early": 85.9375,
+   "events_late": 61.5625,
+   "pf8": [
+    0.9999033632449625,
+    0.9999099118943433
+   ],
+   "ceil8": [
+    0.5113817773997634,
+    0.5181332146716073
+   ],
+   "sigma_hat": [
+    0.4947178152797136,
+    0.5050469735064583
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + actions"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9999074339866638,
+    0.9998924732208252
+   ],
+   "ceil8": [
+    0.5310137867927551,
+    0.48652318120002747
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_07567": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": false,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": false,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": false,
+   "b.ceil_field_disp8": false,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "size": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": false,
+   "grid.pl_ratio0.1_8": false,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": false,
+   "b.ceil_field_disp8": false,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "size_against": "foundry128_07567",
+  "size_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    -0.024414272394950157,
+    0.029681331025595194,
+    0.013839729345172684
+   ],
+   "log_sd_ratio": [
+    0.20202172583729847,
+    -0.021989003296605684,
+    -0.05314988428347332
+   ],
+   "count_ratio": 1.0538340851147283,
+   "events_early": 128.15625,
+   "events_late": 130.5625,
+   "pf8": [
+    0.9877620751568846,
+    0.9890178247793755
+   ],
+   "ceil8": [
+    0.49543167213050016,
+    0.5536873716813393
+   ],
+   "sigma_hat": [
+    0.4768528273592163,
+    0.42136619073057185
+   ],
+   "verdict": [
+    "exam-worthy + actions",
+    "exam-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9874106645584106,
+    0.9878901243209839
+   ],
+   "ceil8": [
+    0.49355992674827576,
+    0.4689328968524933
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_06845": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": false,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": false,
+   "b.ceil_field_disp8": false,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "size": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": false,
+   "b.ceil_field_disp8": false,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "size_against": "foundry128_06845",
+  "size_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    2.758528214432433e-10,
+    2.0959616903764715e-10,
+    0.005429140064683159
+   ],
+   "log_sd_ratio": [
+    -0.006418596778507515,
+    0.018176328847658345,
+    0.0029714563227278834
+   ],
+   "count_ratio": 1.0120516824501309,
+   "events_early": 78.921875,
+   "events_late": 79.09375,
+   "pf8": [
+    0.9979463816336535,
+    0.9978826738888228
+   ],
+   "ceil8": [
+    0.7364260420518757,
+    0.7194649539174696
+   ],
+   "sigma_hat": [
+    0.309272691365649,
+    0.3279803390699911
+   ],
+   "verdict": [
+    "exam-worthy + actions",
+    "exam-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9980871081352234,
+    0.9977667927742004
+   ],
+   "ceil8": [
+    0.7542564868927002,
+    0.7195097208023071
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_01672": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": false,
+   "grid.xresp": false,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "size": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.tick_share": true,
+   "grid.member_share": false,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "size_against": "foundry128_01672",
+  "size_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": false,
+   "reading_worthy": false,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    -0.0005238455539538366,
+    0.0005857887918960468,
+    -0.0012806894672890822
+   ],
+   "log_sd_ratio": [
+    0.006915706752648205,
+    0.026033355811158117,
+    0.019807438436528133
+   ],
+   "count_ratio": 0.9465596065926467,
+   "events_early": 20.921875,
+   "events_late": 20.96875,
+   "pf8": [
+    0.9972968998498266,
+    0.9971155409702517
+   ],
+   "ceil8": [
+    0.7571755652861609,
+    0.7451925217850485
+   ],
+   "sigma_hat": [
+    0.2831938807549266,
+    0.29757689686769967
+   ],
+   "verdict": [
+    "exam-worthy + actions",
+    "exam-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9974546432495117,
+    0.996900737285614
+   ],
+   "ceil8": [
+    0.7356402277946472,
+    0.7591366767883301
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_03078": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": false,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "size": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": false,
+   "pop.tick_share": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "size_against": "foundry128_03078",
+  "size_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    -9.201641831238045e-11,
+    -1.3856963079066646e-10,
+    -0.00025734141690080784
+   ],
+   "log_sd_ratio": [
+    -0.003242860194376883,
+    0.0018832140366442675,
+    -0.0351394193320902
+   ],
+   "count_ratio": 0.9347388257464224,
+   "events_early": 52.84375,
+   "events_late": 49.203125,
+   "pf8": [
+    0.9975994069636043,
+    0.9976233805913383
+   ],
+   "ceil8": [
+    0.744445885537514,
+    0.7535032351612688
+   ],
+   "sigma_hat": [
+    0.29161636628802995,
+    0.2948985232320386
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9975515007972717,
+    0.9976301789283752
+   ],
+   "ceil8": [
+    0.727239727973938,
+    0.7485877871513367
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_noise": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "split_half": {
+   "pf8": [
+    -0.003936886787414551,
+    -0.006524443626403809
+   ],
+   "ceil8": [
+    -0.0,
+    -0.0
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_freebodies": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": false,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    8.047098640198138e-11,
+    -2.6371945743068322e-11,
+    -0.007528262473921622
+   ],
+   "log_sd_ratio": [
+    -0.019821278740487638,
+    0.013690951693893547,
+    -0.05077823255051797
+   ],
+   "count_ratio": 1.0398304592695813,
+   "events_early": 19.171875,
+   "events_late": 18.046875,
+   "pf8": [
+    0.9525019805542605,
+    0.9522211233223898
+   ],
+   "ceil8": [
+    0.7388458261070103,
+    0.7679658212214683
+   ],
+   "sigma_hat": [
+    0.007077405787846607,
+    0.00810569120013009
+   ],
+   "verdict": [
+    "dull: the hidden part has no weight",
+    "dull: the hidden part has no weight"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9538800716400146,
+    0.9499856233596802
+   ],
+   "ceil8": [
+    0.7422822713851929,
+    0.7389200329780579
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_uniform_00000": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    5.083817133752255e-10,
+    -6.78872351485132e-09,
+    -0.01196451415743362
+   ],
+   "log_sd_ratio": [
+    -0.566533789276604,
+    -0.049168082329409515,
+    -0.4241714938523305
+   ],
+   "count_ratio": 1.0,
+   "events_early": 0.0,
+   "events_late": 0.0,
+   "pf8": [
+    0.5770682163419973,
+    0.6071761659215018
+   ],
+   "ceil8": [
+    0.990632648508682,
+    0.9931197745153695
+   ],
+   "sigma_hat": [
+    0.005167899678507874,
+    0.00229340849487684
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.6406450271606445,
+    0.5621408224105835
+   ],
+   "ceil8": [
+    1.0016108751296997,
+    0.9934687614440918
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_uniform_00002": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    0.004006495960473625,
+    -0.0211127548529736,
+    -0.0017977559670684159
+   ],
+   "log_sd_ratio": [
+    -0.039030386110958305,
+    -0.09456761710452083,
+    -0.04683482796958941
+   ],
+   "count_ratio": 1.0,
+   "events_early": 0.0,
+   "events_late": 0.0,
+   "pf8": [
+    0.4562553965517253,
+    0.4685550546188305
+   ],
+   "ceil8": [
+    0.9748442957452754,
+    1.0026168403097655
+   ],
+   "sigma_hat": [
+    0.027854255988477832,
+    0.0
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.45663321018218994,
+    0.4412773847579956
+   ],
+   "ceil8": [
+    1.0106209516525269,
+    1.002016305923462
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_uniform_00003": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": false,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    -0.006911685923944121,
+    0.028868825084459798,
+    -0.06475883609937046
+   ],
+   "log_sd_ratio": [
+    -0.5010151425533728,
+    -0.5473278299549271,
+    -0.5647452496827691
+   ],
+   "count_ratio": 1.0,
+   "events_early": 0.0,
+   "events_late": 0.0,
+   "pf8": [
+    0.9885265075483272,
+    0.9769217230841739
+   ],
+   "ceil8": [
+    1.000032145171173,
+    0.9992895462374782
+   ],
+   "sigma_hat": [
+    0.0002469750749142981,
+    0.00023681792084058925
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9900999665260315,
+    0.9871456027030945
+   ],
+   "ceil8": [
+    1.0000412464141846,
+    0.9999359846115112
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_uniform_00004": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": false,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": false,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": false,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    0.006616885876415691,
+    -0.00424160226565891,
+    -0.046249950192583364
+   ],
+   "log_sd_ratio": [
+    -1.4985560300816867,
+    -1.9873447548807126,
+    -1.8355140170973643
+   ],
+   "count_ratio": 1.0,
+   "events_early": 0.0,
+   "events_late": 0.0,
+   "pf8": [
+    0.9914463097229103,
+    0.8696397018802924
+   ],
+   "ceil8": [
+    0.9998371154874238,
+    0.9960340801191614
+   ],
+   "sigma_hat": [
+    0.00016454940699150988,
+    0.0013219732936128696
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9921584725379944,
+    0.9896471500396729
+   ],
+   "ceil8": [
+    0.9999922513961792,
+    0.9999069571495056
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_frozen_00001": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": false,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": false,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": false,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    2.607332949913449e-10,
+    -1.0681197969593934e-09,
+    3.816668461046396
+   ],
+   "log_sd_ratio": [
+    1.3161008597735413,
+    2.0817834360147125,
+    2.5784436134261814
+   ],
+   "count_ratio": 2.792246294184721,
+   "events_early": 0.015625,
+   "events_late": 0.34375,
+   "pf8": [
+    0.9990411606531977,
+    0.9999019006816693
+   ],
+   "ceil8": [
+    0.99981788032372,
+    0.9992920102734772
+   ],
+   "sigma_hat": [
+    0.0002905832615009614,
+    0.0011515431628871993
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: the hidden part has no weight"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9991048574447632,
+    0.9989638924598694
+   ],
+   "ceil8": [
+    0.9998200535774231,
+    0.9998184442520142
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_frozen_00011": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": false,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": false,
+   "pop.ceil8": false,
+   "pop.sigma_hat": false,
+   "pop.tick_share": false,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": false,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    2.3429033250228297e-10,
+    -4.665672862841145e-10,
+    0.9962772076235221
+   ],
+   "log_sd_ratio": [
+    0.9755080795647489,
+    0.8690963322876164,
+    1.0524867313879747
+   ],
+   "count_ratio": 2.241015402167713,
+   "events_early": 0.03125,
+   "events_late": 2.234375,
+   "pf8": [
+    0.9948495145203872,
+    0.9984922845547044
+   ],
+   "ceil8": [
+    0.9998574032554765,
+    0.99984462998876
+   ],
+   "sigma_hat": [
+    0.0003030474602259507,
+    0.00023083907406625434
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9956735968589783,
+    0.9945905804634094
+   ],
+   "ceil8": [
+    0.9997818470001221,
+    0.9996119737625122
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_frozen_00022": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    0.0008967501647684782,
+    -0.0011260490781597966,
+    0.2695758365921634
+   ],
+   "log_sd_ratio": [
+    0.2996200358415483,
+    0.3151085542668582,
+    0.27778624873225494
+   ],
+   "count_ratio": 0.9543322365645828,
+   "events_early": 0.21875,
+   "events_late": 0.0,
+   "pf8": [
+    0.9999508187257412,
+    0.9999629038486648
+   ],
+   "ceil8": [
+    0.999888275875955,
+    0.9999838541971312
+   ],
+   "sigma_hat": [
+    0.00018223992023206717,
+    1.4811195358732654e-05
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.999946117401123,
+    0.9999554753303528
+   ],
+   "ceil8": [
+    0.9998617768287659,
+    0.9998865127563477
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_frozen_00024": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": false,
+   "b.pf_disp8": false,
+   "b.ceil_disp8": false,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": false,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    -0.012111704929174336,
+    0.03720869310689593,
+    0.11565372084016236
+   ],
+   "log_sd_ratio": [
+    0.14491085598112302,
+    0.6047168303729478,
+    0.1678186800405217
+   ],
+   "count_ratio": 0.8431395121277355,
+   "events_early": 0.984375,
+   "events_late": 2.015625,
+   "pf8": [
+    0.998506549584651,
+    0.9993122445510897
+   ],
+   "ceil8": [
+    0.999638162892412,
+    0.9999264396834621
+   ],
+   "sigma_hat": [
+    0.0005146315588291372,
+    8.869118324332052e-05
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: the hidden part has no weight"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9985941052436829,
+    0.9983333349227905
+   ],
+   "ceil8": [
+    0.9997054934501648,
+    0.9995140433311462
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_diffusion_0": {
+  "split_half": {
+   "pf8": [
+    0.8944219350814819,
+    0.8817881345748901
+   ],
+   "ceil8": [
+    0.9993900060653687,
+    1.0003330707550049
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_diffusion_1": {
+  "split_half": {
+   "pf8": [
+    0.979384183883667,
+    0.9806619882583618
+   ],
+   "ceil8": [
+    0.9999357461929321,
+    0.9996917247772217
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00060": {
+  "late": {
+   "d_mean": [
+    1.363978329801566e-10,
+    6.40069062045518e-11,
+    0.08436773593975368
+   ],
+   "log_sd_ratio": [
+    0.014150887665070255,
+    0.024486832445981467,
+    0.11513490495774725
+   ],
+   "count_ratio": 0.9998507596334656,
+   "events_early": 27.359375,
+   "events_late": 23.984375,
+   "pf8": [
+    0.9989334392889114,
+    0.9988356766083842
+   ],
+   "ceil8": [
+    0.9382412848947197,
+    0.9321764451165492
+   ],
+   "sigma_hat": [
+    0.10084511184012031,
+    0.09445645864035453
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9990496039390564,
+    0.9988671541213989
+   ],
+   "ceil8": [
+    0.9434559345245361,
+    0.9320933818817139
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00124": {
+  "late": {
+   "d_mean": [
+    -1.4438951634782276e-10,
+    3.717780042548502e-10,
+    0.7582190980501634
+   ],
+   "log_sd_ratio": [
+    0.9127302185483659,
+    1.2549526123426336,
+    1.2608774155740343
+   ],
+   "count_ratio": 0.5578930554642062,
+   "events_early": 6.59375,
+   "events_late": 0.515625,
+   "pf8": [
+    0.9995431106676961,
+    0.9997496422262708
+   ],
+   "ceil8": [
+    0.9761680947532356,
+    0.9867645355676017
+   ],
+   "sigma_hat": [
+    0.035872944704526954,
+    0.030442393145284408
+   ],
+   "verdict": [
+    "dull: the hidden part has no weight",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9992842674255371,
+    0.9996392130851746
+   ],
+   "ceil8": [
+    0.9777506589889526,
+    0.9660887718200684
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00416": {
+  "late": {
+   "d_mean": [
+    5.880743849854735e-13,
+    -1.228918765711811e-10,
+    -0.0019096380105715653
+   ],
+   "log_sd_ratio": [
+    0.07253380563776178,
+    0.12426495380145845,
+    0.03503968523478574
+   ],
+   "count_ratio": 0.7222464928886947,
+   "events_early": 7.53125,
+   "events_late": 2.9375,
+   "pf8": [
+    0.9987523611158816,
+    0.9989099849752119
+   ],
+   "ceil8": [
+    0.982367742727373,
+    0.9845605091280035
+   ],
+   "sigma_hat": [
+    0.03444060180862877,
+    0.02843265165762754
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "dull: the hidden part has no weight"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9986675381660461,
+    0.9988145232200623
+   ],
+   "ceil8": [
+    0.9757908582687378,
+    0.9851831793785095
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_02755": {
+  "late": {
+   "d_mean": [
+    -1.408248363990967e-10,
+    2.1412178270499935e-10,
+    0.07363307333112382
+   ],
+   "log_sd_ratio": [
+    0.6000516622418598,
+    0.24724463020069132,
+    0.4237100443699643
+   ],
+   "count_ratio": 0.5907568461151441,
+   "events_early": 66.5625,
+   "events_late": 27.875,
+   "pf8": [
+    0.9982821299473542,
+    0.9991511147147493
+   ],
+   "ceil8": [
+    0.8868651966116342,
+    0.9855049436118086
+   ],
+   "sigma_hat": [
+    0.14215478919885263,
+    0.021462494011625366
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "dull: the hidden part has no weight"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9979764819145203,
+    0.9984002709388733
+   ],
+   "ceil8": [
+    0.8760989904403687,
+    0.8981277346611023
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_03062": {
+  "late": {
+   "d_mean": [
+    -1.171777462675888e-10,
+    8.884408857393688e-11,
+    0.07788931944355297
+   ],
+   "log_sd_ratio": [
+    0.5798590353837987,
+    0.09242102937658467,
+    0.3057062564842061
+   ],
+   "count_ratio": 0.15076250675564537,
+   "events_early": 8.65625,
+   "events_late": 0.0,
+   "pf8": [
+    0.9997822317380843,
+    0.9998610027255467
+   ],
+   "ceil8": [
+    0.9839188046063788,
+    0.969634764309865
+   ],
+   "sigma_hat": [
+    0.028459939402267247,
+    0.03314751499329945
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9997674822807312,
+    0.9997977614402771
+   ],
+   "ceil8": [
+    0.9710279107093811,
+    0.9880147576332092
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_03101": {
+  "late": {
+   "d_mean": [
+    1.1593870953264056e-10,
+    -6.978910585912536e-13,
+    0.012044867733057905
+   ],
+   "log_sd_ratio": [
+    0.05841689722495995,
+    0.023516533620700792,
+    0.09832107192191411
+   ],
+   "count_ratio": 0.7458241249935756,
+   "events_early": 36.390625,
+   "events_late": 31.125,
+   "pf8": [
+    0.9995221423827653,
+    0.9995352151295723
+   ],
+   "ceil8": [
+    0.9740408354567102,
+    0.9772753065108544
+   ],
+   "sigma_hat": [
+    0.03858406677392915,
+    0.03149035948637979
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9995540380477905,
+    0.999530553817749
+   ],
+   "ceil8": [
+    0.972407341003418,
+    0.9763925075531006
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_03854": {
+  "late": {
+   "d_mean": [
+    -8.45711460184675e-11,
+    2.1570299166391624e-10,
+    0.1081667637181793
+   ],
+   "log_sd_ratio": [
+    0.23411999477264642,
+    0.30916114860055194,
+    0.34370798781838646
+   ],
+   "count_ratio": 0.22616839980282152,
+   "events_early": 9.46875,
+   "events_late": 0.078125,
+   "pf8": [
+    0.9986354760855175,
+    0.9995510181897218
+   ],
+   "ceil8": [
+    0.9951203820874487,
+    0.9994444644327743
+   ],
+   "sigma_hat": [
+    0.007672717781785947,
+    0.0008347446873090044
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9986874461174011,
+    0.998545229434967
+   ],
+   "ceil8": [
+    0.9941883087158203,
+    0.9960620403289795
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_04289": {
+  "late": {
+   "d_mean": [
+    0.002711881179233116,
+    -0.002385161257857832,
+    -0.016404067781088008
+   ],
+   "log_sd_ratio": [
+    -0.004655499774147282,
+    -0.02757890276476831,
+    -0.034429258590936235
+   ],
+   "count_ratio": 1.046909928421433,
+   "events_early": 46.203125,
+   "events_late": 48.578125,
+   "pf8": [
+    0.999479507787776,
+    0.9994956078238972
+   ],
+   "ceil8": [
+    0.8239374576386785,
+    0.8529601753489668
+   ],
+   "sigma_hat": [
+    0.22631043313527857,
+    0.20912727529799371
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9994402527809143,
+    0.9995015859603882
+   ],
+   "ceil8": [
+    0.8237420916557312,
+    0.8204103708267212
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_04495": {
+  "late": {
+   "d_mean": [
+    -5.940316511650895e-11,
+    -3.837958629659607e-11,
+    0.05970047008140985
+   ],
+   "log_sd_ratio": [
+    0.27902440632438785,
+    0.09962614765886865,
+    0.37563675487402104
+   ],
+   "count_ratio": 0.11262463137199831,
+   "events_early": 10.25,
+   "events_late": 0.0,
+   "pf8": [
+    0.9997247256884823,
+    0.9997630823227329
+   ],
+   "ceil8": [
+    0.8582432923235352,
+    0.9110513042104672
+   ],
+   "sigma_hat": [
+    0.18945472493831741,
+    0.130530878787404
+   ],
+   "verdict": [
+    "exam-worthy + actions",
+    "exam-worthy + actions"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9996551871299744,
+    0.9997599124908447
+   ],
+   "ceil8": [
+    0.8333120346069336,
+    0.8704900145530701
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_04833": {
+  "late": {
+   "d_mean": [
+    0.010558227873643735,
+    -0.009113263305477322,
+    0.046593288203876364
+   ],
+   "log_sd_ratio": [
+    0.1523868307865042,
+    0.04539605998604134,
+    0.1996548230193929
+   ],
+   "count_ratio": 0.9432448771508748,
+   "events_early": 31.875,
+   "events_late": 33.59375,
+   "pf8": [
+    0.9916179057407226,
+    0.9925967398420755
+   ],
+   "ceil8": [
+    0.9225320724012026,
+    0.920986351218284
+   ],
+   "sigma_hat": [
+    0.11226742588872947,
+    0.10667467741606729
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9919961094856262,
+    0.9915052056312561
+   ],
+   "ceil8": [
+    0.9205971360206604,
+    0.9272193908691406
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_04919": {
+  "late": {
+   "d_mean": [
+    0.02436425283705371,
+    -0.2085357555695225,
+    0.027711498104371998
+   ],
+   "log_sd_ratio": [
+    0.053056423493944155,
+    -0.220472379618324,
+    0.053146799678898224
+   ],
+   "count_ratio": 0.9838709677419355,
+   "events_early": 12.875,
+   "events_late": 10.15625,
+   "pf8": [
+    0.9893069594047805,
+    0.991191569673209
+   ],
+   "ceil8": [
+    0.9916795895342305,
+    0.9906439041676101
+   ],
+   "sigma_hat": [
+    0.014097825875830416,
+    0.014642113917159269
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.989983081817627,
+    0.9887402057647705
+   ],
+   "ceil8": [
+    0.9937168955802917,
+    0.990679919719696
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_05671": {
+  "late": {
+   "d_mean": [
+    -0.3176304375775573,
+    0.05779598907546076,
+    0.06358443890981774
+   ],
+   "log_sd_ratio": [
+    -0.27789167702786705,
+    0.10442342501128327,
+    0.12703941188710774
+   ],
+   "count_ratio": 0.7022315510384445,
+   "events_early": 20.65625,
+   "events_late": 7.484375,
+   "pf8": [
+    0.9983264700704119,
+    0.9985131493714665
+   ],
+   "ceil8": [
+    0.9902951721974244,
+    0.9998306172917713
+   ],
+   "sigma_hat": [
+    0.02034693469995456,
+    0.0001624405285470809
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "dull: predictable by the cheap family"
+   ],
+   "same": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9984362721443176,
+    0.9980626702308655
+   ],
+   "ceil8": [
+    0.9910224676132202,
+    0.9880002737045288
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_07760": {
+  "late": {
+   "d_mean": [
+    1.4645587205500953e-11,
+    -7.425810535109915e-11,
+    0.08929418855290543
+   ],
+   "log_sd_ratio": [
+    0.5437490438770102,
+    0.24251588155847284,
+    0.517036131713136
+   ],
+   "count_ratio": 0.6248173482137185,
+   "events_early": 23.375,
+   "events_late": 9.1875,
+   "pf8": [
+    0.998198290361878,
+    0.9986629268225506
+   ],
+   "ceil8": [
+    0.9504154041509153,
+    0.9982606090290991
+   ],
+   "sigma_hat": [
+    0.09001875609108205,
+    0.002997067744066569
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9982179403305054,
+    0.9980987906455994
+   ],
+   "ceil8": [
+    0.9481746554374695,
+    0.9523488879203796
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_07820": {
+  "late": {
+   "d_mean": [
+    -3.903708815523508e-11,
+    7.696886805976128e-11,
+    0.10243766400136416
+   ],
+   "log_sd_ratio": [
+    0.21138702478230925,
+    0.47375423043249015,
+    0.36190576269812846
+   ],
+   "count_ratio": 0.4813472157821524,
+   "events_early": 10.046875,
+   "events_late": 0.75,
+   "pf8": [
+    0.9962642357181661,
+    0.9973602947937759
+   ],
+   "ceil8": [
+    0.986174075706091,
+    0.9907295487335752
+   ],
+   "sigma_hat": [
+    0.02429506907753502,
+    0.014045601085896697
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9968746304512024,
+    0.9957274794578552
+   ],
+   "ceil8": [
+    0.9893564581871033,
+    0.984032154083252
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_07913": {
+  "late": {
+   "d_mean": [
+    -1.8867398891630295e-10,
+    -3.018717793796857e-11,
+    0.028129296008536548
+   ],
+   "log_sd_ratio": [
+    0.2714801790987678,
+    0.1481305015882323,
+    0.035975599236633404
+   ],
+   "count_ratio": 0.5728006352885627,
+   "events_early": 5.90625,
+   "events_late": 0.046875,
+   "pf8": [
+    0.9984758203073049,
+    0.9989549247289737
+   ],
+   "ceil8": [
+    0.9791431398678524,
+    0.9965763326074999
+   ],
+   "sigma_hat": [
+    0.045569498314225854,
+    0.006704150002033948
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9982826113700867,
+    0.9984855055809021
+   ],
+   "ceil8": [
+    0.9754748940467834,
+    0.98113614320755
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_08010": {
+  "late": {
+   "d_mean": [
+    5.535612512632061e-11,
+    -9.120567440997838e-11,
+    0.19717309425080154
+   ],
+   "log_sd_ratio": [
+    0.793207064413438,
+    0.26900303673466,
+    0.8467598184322614
+   ],
+   "count_ratio": 0.10626563095218379,
+   "events_early": 25.265625,
+   "events_late": 0.0,
+   "pf8": [
+    0.9991067893453993,
+    0.9996551854476949
+   ],
+   "ceil8": [
+    0.9877514136385421,
+    0.9929362561677505
+   ],
+   "sigma_hat": [
+    0.0220734669763701,
+    0.014085277258629625
+   ],
+   "verdict": [
+    "dull: predictable by the cheap family",
+    "dull: predictable by the cheap family"
+   ],
+   "same": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9990609884262085,
+    0.9991596937179565
+   ],
+   "ceil8": [
+    0.9877100586891174,
+    0.9858424067497253
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00005": {
+  "split_half": {
+   "pf8": [
+    0.5902611017227173,
+    0.5202684998512268
+   ],
+   "ceil8": [
+    1.005432367324829,
+    1.0061885118484497
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00006": {
+  "split_half": {
+   "pf8": [
+    0.9851105213165283,
+    0.9822855591773987
+   ],
+   "ceil8": [
+    0.9996367692947388,
+    0.9996788501739502
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00007": {
+  "split_half": {
+   "pf8": [
+    0.867000162601471,
+    0.9131782650947571
+   ],
+   "ceil8": [
+    0.9995457530021667,
+    1.001112937927246
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00008": {
+  "split_half": {
+   "pf8": [
+    0.9810981750488281,
+    0.9762887358665466
+   ],
+   "ceil8": [
+    0.9999951124191284,
+    0.999995768070221
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00009": {
+  "split_half": {
+   "pf8": [
+    0.9994000792503357,
+    0.9995186924934387
+   ],
+   "ceil8": [
+    0.9986941814422607,
+    0.9989364147186279
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00010": {
+  "split_half": {
+   "pf8": [
+    0.9975558519363403,
+    0.9972437620162964
+   ],
+   "ceil8": [
+    0.996829092502594,
+    0.9964087009429932
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00012": {
+  "split_half": {
+   "pf8": [
+    0.9610307216644287,
+    0.9520589709281921
+   ],
+   "ceil8": [
+    1.000414490699768,
+    1.0005230903625488
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00013": {
+  "split_half": {
+   "pf8": [
+    0.9983142018318176,
+    0.998473584651947
+   ],
+   "ceil8": [
+    0.9832810759544373,
+    0.9872280359268188
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00014": {
+  "split_half": {
+   "pf8": [
+    0.8335071802139282,
+    0.8207000494003296
+   ],
+   "ceil8": [
+    1.0033904314041138,
+    0.9989316463470459
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00015": {
+  "split_half": {
+   "pf8": [
+    0.9890217781066895,
+    0.9861287474632263
+   ],
+   "ceil8": [
+    1.000124454498291,
+    0.9997859001159668
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00016": {
+  "split_half": {
+   "pf8": [
+    0.9891042113304138,
+    0.9896984100341797
+   ],
+   "ceil8": [
+    1.000073790550232,
+    0.9997127652168274
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00017": {
+  "split_half": {
+   "pf8": [
+    0.9922890663146973,
+    0.9922847747802734
+   ],
+   "ceil8": [
+    1.000075340270996,
+    0.9998178482055664
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00018": {
+  "split_half": {
+   "pf8": [
+    0.9574613571166992,
+    0.9529450535774231
+   ],
+   "ceil8": [
+    1.00084388256073,
+    1.0003504753112793
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00019": {
+  "split_half": {
+   "pf8": [
+    0.9411874413490295,
+    0.9380403161048889
+   ],
+   "ceil8": [
+    0.9970517754554749,
+    0.9987401366233826
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00020": {
+  "split_half": {
+   "pf8": [
+    0.8980521559715271,
+    0.9072755575180054
+   ],
+   "ceil8": [
+    1.0030204057693481,
+    1.0004209280014038
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00021": {
+  "split_half": {
+   "pf8": [
+    0.9927501082420349,
+    0.9905731081962585
+   ],
+   "ceil8": [
+    0.9988270401954651,
+    0.9976387619972229
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00023": {
+  "split_half": {
+   "pf8": [
+    0.39814525842666626,
+    0.48332762718200684
+   ],
+   "ceil8": [
+    1.0091427564620972,
+    0.9948536157608032
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00025": {
+  "split_half": {
+   "pf8": [
+    0.9994369745254517,
+    0.9995146989822388
+   ],
+   "ceil8": [
+    0.9992393255233765,
+    0.9992576241493225
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00026": {
+  "split_half": {
+   "pf8": [
+    0.99920254945755,
+    0.9991675019264221
+   ],
+   "ceil8": [
+    0.9895510673522949,
+    0.9847384095191956
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00027": {
+  "split_half": {
+   "pf8": [
+    0.11222970485687256,
+    0.12750285863876343
+   ],
+   "ceil8": [
+    0.9551618695259094,
+    0.7452265024185181
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00028": {
+  "split_half": {
+   "pf8": [
+    0.9996048212051392,
+    0.9995661377906799
+   ],
+   "ceil8": [
+    0.9995532631874084,
+    0.9996128678321838
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00029": {
+  "split_half": {
+   "pf8": [
+    0.972714900970459,
+    0.9682917594909668
+   ],
+   "ceil8": [
+    1.0002280473709106,
+    1.000543475151062
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00030": {
+  "split_half": {
+   "pf8": [
+    0.9757130742073059,
+    0.9750428199768066
+   ],
+   "ceil8": [
+    0.9967042207717896,
+    0.99659663438797
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry_00031": {
+  "split_half": {
+   "pf8": [
+    0.9976505041122437,
+    0.9977694749832153
+   ],
+   "ceil8": [
+    0.9992417097091675,
+    0.9992003440856934
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry128_04470": {
+  "split_half": {
+   "pf8": [
+    0.9987624287605286,
+    0.9987485408782959
+   ],
+   "ceil8": [
+    0.6051802039146423,
+    0.5968022346496582
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry128_04186": {
+  "split_half": {
+   "pf8": [
+    0.9833582639694214,
+    0.9840209484100342
+   ],
+   "ceil8": [
+    0.600176215171814,
+    0.5600306391716003
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry128_00262": {
+  "split_half": {
+   "pf8": [
+    0.9999097585678101,
+    0.9998931884765625
+   ],
+   "ceil8": [
+    0.5625740885734558,
+    0.5544421672821045
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry128_07567": {
+  "split_half": {
+   "pf8": [
+    0.9892932176589966,
+    0.9888041019439697
+   ],
+   "ceil8": [
+    0.5480301380157471,
+    0.5377522110939026
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry128_06845": {
+  "split_half": {
+   "pf8": [
+    0.9981456995010376,
+    0.9980985522270203
+   ],
+   "ceil8": [
+    0.7354918122291565,
+    0.7292867302894592
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry128_01672": {
+  "split_half": {
+   "pf8": [
+    0.9972493648529053,
+    0.9972782135009766
+   ],
+   "ceil8": [
+    0.7511298656463623,
+    0.7392167448997498
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "foundry128_03078": {
+  "split_half": {
+   "pf8": [
+    0.9976758360862732,
+    0.9976367950439453
+   ],
+   "ceil8": [
+    0.740356981754303,
+    0.7312124371528625
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "vortex128": {
+  "split_half": {
+   "pf8": [
+    0.9161393642425537,
+    0.9110140800476074
+   ],
+   "ceil8": [
+    0.30117928981781006,
+    0.3085702657699585
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ }
+}

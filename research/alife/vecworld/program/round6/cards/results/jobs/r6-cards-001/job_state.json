@@ -1,0 +1,1299 @@
+{
+ "size": "full",
+ "t_start": 1794397655.0,
+ "done": [
+  "gliders__A",
+  "vortex64__A",
+  "membrane__A",
+  "foundry_04470__A",
+  "ctl_noise__A",
+  "ctl_freebodies__A",
+  "foundry128_04470__A",
+  "vortex128__A",
+  "foundry_04470__B",
+  "foundry_04470__late",
+  "foundry_04186__A",
+  "foundry_04186__B",
+  "foundry_04186__late",
+  "foundry_00262__A",
+  "foundry_00262__B",
+  "foundry_00262__late",
+  "foundry_07567__A",
+  "foundry_07567__B",
+  "foundry_07567__late",
+  "foundry_06845__A",
+  "foundry_06845__B",
+  "foundry_06845__late",
+  "foundry_01672__A",
+  "foundry_01672__B",
+  "foundry_01672__late",
+  "foundry_03078__A",
+  "foundry_03078__B",
+  "foundry_03078__late",
+  "ctl_uniform_00000__A",
+  "ctl_uniform_00000__B",
+  "ctl_uniform_00000__late",
+  "ctl_uniform_00002__A",
+  "ctl_uniform_00002__B",
+  "ctl_uniform_00002__late",
+  "ctl_uniform_00003__A",
+  "ctl_uniform_00003__B",
+  "ctl_uniform_00003__late",
+  "ctl_uniform_00004__A",
+  "ctl_uniform_00004__B",
+  "ctl_uniform_00004__late",
+  "ctl_frozen_00001__A",
+  "ctl_frozen_00001__B",
+  "ctl_frozen_00001__late",
+  "ctl_frozen_00011__A",
+  "ctl_frozen_00011__B",
+  "ctl_frozen_00011__late",
+  "ctl_frozen_00022__A",
+  "ctl_frozen_00022__B",
+  "ctl_frozen_00022__late",
+  "ctl_frozen_00024__A",
+  "ctl_frozen_00024__B",
+  "ctl_frozen_00024__late",
+  "ctl_diffusion_0__A",
+  "ctl_diffusion_1__A",
+  "ctl_freebodies__B",
+  "ctl_freebodies__late",
+  "gliders__B",
+  "gliders__late",
+  "membrane__B",
+  "membrane__late",
+  "ctl_noise__B",
+  "vortex64__B",
+  "vortex64__late",
+  "foundry_00060__A",
+  "foundry_00060__late",
+  "foundry_00124__A",
+  "foundry_00124__late",
+  "foundry_00416__A",
+  "foundry_00416__late",
+  "foundry_02755__A",
+  "foundry_02755__late",
+  "foundry_03062__A",
+  "foundry_03062__late",
+  "foundry_03101__A",
+  "foundry_03101__late",
+  "foundry_03854__A",
+  "foundry_03854__late",
+  "foundry_04289__A",
+  "foundry_04289__late",
+  "foundry_04495__A",
+  "foundry_04495__late",
+  "foundry_04833__A",
+  "foundry_04833__late",
+  "foundry_04919__A",
+  "foundry_04919__late",
+  "foundry_05671__A",
+  "foundry_05671__late",
+  "foundry_07760__A",
+  "foundry_07760__late",
+  "foundry_07820__A",
+  "foundry_07820__late",
+  "foundry_07913__A",
+  "foundry_07913__late",
+  "foundry_08010__A",
+  "foundry_08010__late",
+  "foundry_00005__A",
+  "foundry_00006__A",
+  "foundry_00007__A",
+  "foundry_00008__A",
+  "foundry_00009__A",
+  "foundry_00010__A",
+  "foundry_00012__A",
+  "foundry_00013__A",
+  "foundry_00014__A",
+  "foundry_00015__A",
+  "foundry_00016__A",
+  "foundry_00017__A",
+  "foundry_00018__A",
+  "foundry_00019__A",
+  "foundry_00020__A",
+  "foundry_00021__A",
+  "foundry_00023__A",
+  "foundry_00025__A",
+  "foundry_00026__A",
+  "foundry_00027__A",
+  "foundry_00028__A",
+  "foundry_00029__A",
+  "foundry_00030__A",
+  "foundry_00031__A",
+  "foundry128_04186__A",
+  "foundry128_00262__A",
+  "foundry128_07567__A",
+  "foundry128_06845__A",
+  "foundry128_01672__A",
+  "foundry128_03078__A"
+ ],
+ "failed": [],
+ "skipped": [],
+ "presmoke": "passed",
+ "timing": {
+  "gliders__A": {
+   "main_s": 37.843963384628296,
+   "branch_s": 46.513368368148804,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 3.1537675857543945
+  },
+  "vortex64__A": {
+   "main_s": 89.89652895927429,
+   "branch_s": 97.33702802658081,
+   "burn": 100,
+   "main_member_ticks": 8000,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 4.7245097160339355
+  },
+  "membrane__A": {
+   "main_s": 18.21527361869812,
+   "branch_s": 10.1572744846344,
+   "burn": 200,
+   "main_member_ticks": 9600,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 3.419003486633301
+  },
+  "foundry_04470__A": {
+   "main_s": 15.15003228187561,
+   "branch_s": 6.1787168979644775,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 2.9521303176879883
+  },
+  "ctl_noise__A": {
+   "main_s": 10.796648025512695,
+   "branch_s": 3.927734136581421,
+   "burn": 10,
+   "main_member_ticks": 6560,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 2.540832281112671
+  },
+  "ctl_freebodies__A": {
+   "main_s": 15.221803188323975,
+   "branch_s": 4.967498302459717,
+   "burn": 20,
+   "main_member_ticks": 6720,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 2.5991015434265137
+  },
+  "foundry128_04470__A": {
+   "main_s": 27.091710805892944,
+   "branch_s": 13.074111700057983,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 10.141911745071411
+  },
+  "vortex128__A": {
+   "main_s": 177.46061086654663,
+   "branch_s": 373.3954403400421,
+   "burn": 100,
+   "main_member_ticks": 8000,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 4.857276201248169
+  },
+  "foundry_04470__B": {
+   "main_s": 0.7058966159820557,
+   "branch_s": 1.0769319534301758,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6274969577789307
+  },
+  "foundry_04470__late": {
+   "main_s": 1.8498985767364502,
+   "branch_s": 1.112187147140503,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6318767070770264
+  },
+  "foundry_04186__A": {
+   "main_s": 0.71856689453125,
+   "branch_s": 1.1341972351074219,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5478506088256836
+  },
+  "foundry_04186__B": {
+   "main_s": 0.7459771633148193,
+   "branch_s": 1.1403870582580566,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5480422973632812
+  },
+  "foundry_04186__late": {
+   "main_s": 1.8505125045776367,
+   "branch_s": 1.1349551677703857,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6077325344085693
+  },
+  "foundry_00262__A": {
+   "main_s": 0.7163834571838379,
+   "branch_s": 1.139162302017212,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.58589506149292
+  },
+  "foundry_00262__B": {
+   "main_s": 0.7272434234619141,
+   "branch_s": 1.1276562213897705,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5923080444335938
+  },
+  "foundry_00262__late": {
+   "main_s": 1.8752684593200684,
+   "branch_s": 1.1273975372314453,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5743980407714844
+  },
+  "foundry_07567__A": {
+   "main_s": 0.7305507659912109,
+   "branch_s": 1.1186332702636719,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6173508167266846
+  },
+  "foundry_07567__B": {
+   "main_s": 0.7401447296142578,
+   "branch_s": 1.1182188987731934,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.555440902709961
+  },
+  "foundry_07567__late": {
+   "main_s": 1.8530848026275635,
+   "branch_s": 1.118326187133789,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5206315517425537
+  },
+  "foundry_06845__A": {
+   "main_s": 0.735443115234375,
+   "branch_s": 1.1153812408447266,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.537451982498169
+  },
+  "foundry_06845__B": {
+   "main_s": 0.7207944393157959,
+   "branch_s": 1.1182777881622314,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.846370220184326
+  },
+  "foundry_06845__late": {
+   "main_s": 1.8571436405181885,
+   "branch_s": 1.1167099475860596,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.7216997146606445
+  },
+  "foundry_01672__A": {
+   "main_s": 0.7412223815917969,
+   "branch_s": 1.1261987686157227,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5697662830352783
+  },
+  "foundry_01672__B": {
+   "main_s": 0.7513413429260254,
+   "branch_s": 1.128004789352417,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5694167613983154
+  },
+  "foundry_01672__late": {
+   "main_s": 1.8611249923706055,
+   "branch_s": 1.1298878192901611,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5455715656280518
+  },
+  "foundry_03078__A": {
+   "main_s": 0.7303197383880615,
+   "branch_s": 1.1217775344848633,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6507110595703125
+  },
+  "foundry_03078__B": {
+   "main_s": 0.7341108322143555,
+   "branch_s": 1.1155686378479004,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.8378632068634033
+  },
+  "foundry_03078__late": {
+   "main_s": 1.8778607845306396,
+   "branch_s": 1.118668794631958,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.616847515106201
+  },
+  "ctl_uniform_00000__A": {
+   "main_s": 0.6839549541473389,
+   "branch_s": 1.0957098007202148,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.3784046173095703
+  },
+  "ctl_uniform_00000__B": {
+   "main_s": 0.6507730484008789,
+   "branch_s": 1.0986993312835693,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.3768885135650635
+  },
+  "ctl_uniform_00000__late": {
+   "main_s": 1.767371654510498,
+   "branch_s": 1.0968453884124756,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.0625813007354736
+  },
+  "ctl_uniform_00002__A": {
+   "main_s": 0.6542534828186035,
+   "branch_s": 1.0970263481140137,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5533227920532227
+  },
+  "ctl_uniform_00002__B": {
+   "main_s": 0.6581356525421143,
+   "branch_s": 1.0951261520385742,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.381211280822754
+  },
+  "ctl_uniform_00002__late": {
+   "main_s": 1.7727155685424805,
+   "branch_s": 1.098677635192871,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.3888773918151855
+  },
+  "ctl_uniform_00003__A": {
+   "main_s": 0.6767621040344238,
+   "branch_s": 1.089576005935669,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4252841472625732
+  },
+  "ctl_uniform_00003__B": {
+   "main_s": 0.6629769802093506,
+   "branch_s": 1.0923080444335938,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4061336517333984
+  },
+  "ctl_uniform_00003__late": {
+   "main_s": 1.7687098979949951,
+   "branch_s": 1.0906097888946533,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4158146381378174
+  },
+  "ctl_uniform_00004__A": {
+   "main_s": 0.6617615222930908,
+   "branch_s": 1.091395616531372,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4105820655822754
+  },
+  "ctl_uniform_00004__B": {
+   "main_s": 0.6574678421020508,
+   "branch_s": 1.092482566833496,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4071168899536133
+  },
+  "ctl_uniform_00004__late": {
+   "main_s": 1.747002124786377,
+   "branch_s": 1.0934338569641113,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4153409004211426
+  },
+  "ctl_frozen_00001__A": {
+   "main_s": 0.7026379108428955,
+   "branch_s": 1.1123604774475098,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4996180534362793
+  },
+  "ctl_frozen_00001__B": {
+   "main_s": 0.7082388401031494,
+   "branch_s": 1.1106841564178467,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.507315158843994
+  },
+  "ctl_frozen_00001__late": {
+   "main_s": 1.845282793045044,
+   "branch_s": 1.1155972480773926,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.529357671737671
+  },
+  "ctl_frozen_00011__A": {
+   "main_s": 0.7170326709747314,
+   "branch_s": 1.111806869506836,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4767751693725586
+  },
+  "ctl_frozen_00011__B": {
+   "main_s": 0.713047981262207,
+   "branch_s": 1.111510992050171,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.419626235961914
+  },
+  "ctl_frozen_00011__late": {
+   "main_s": 1.9413137435913086,
+   "branch_s": 1.1473171710968018,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.47771954536438
+  },
+  "ctl_frozen_00022__A": {
+   "main_s": 0.7144432067871094,
+   "branch_s": 1.1008374691009521,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.7507822513580322
+  },
+  "ctl_frozen_00022__B": {
+   "main_s": 0.7016279697418213,
+   "branch_s": 1.0954148769378662,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.7547059059143066
+  },
+  "ctl_frozen_00022__late": {
+   "main_s": 1.8044731616973877,
+   "branch_s": 1.0908150672912598,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.2897543907165527
+  },
+  "ctl_frozen_00024__A": {
+   "main_s": 0.6898355484008789,
+   "branch_s": 1.1162831783294678,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.807664394378662
+  },
+  "ctl_frozen_00024__B": {
+   "main_s": 0.7198858261108398,
+   "branch_s": 1.1176238059997559,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.663485050201416
+  },
+  "ctl_frozen_00024__late": {
+   "main_s": 1.8328526020050049,
+   "branch_s": 1.1300804615020752,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6854286193847656
+  },
+  "ctl_diffusion_0__A": {
+   "main_s": 0.6615908145904541,
+   "branch_s": 1.09507155418396,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.3958449363708496
+  },
+  "ctl_diffusion_1__A": {
+   "main_s": 0.6581456661224365,
+   "branch_s": 1.095214605331421,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.3724496364593506
+  },
+  "ctl_freebodies__B": {
+   "main_s": 0.47817111015319824,
+   "branch_s": 0.33457374572753906,
+   "burn": 20,
+   "main_member_ticks": 6720,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4942922592163086
+  },
+  "ctl_freebodies__late": {
+   "main_s": 0.4898858070373535,
+   "branch_s": 0.33536529541015625,
+   "burn": 620,
+   "main_member_ticks": 16320,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.524036407470703
+  },
+  "gliders__B": {
+   "main_s": 13.860617637634277,
+   "branch_s": 41.298330783843994,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.721815824508667
+  },
+  "gliders__late": {
+   "main_s": 31.91520619392395,
+   "branch_s": 41.23693299293518,
+   "burn": 650,
+   "main_member_ticks": 16800,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.2017266750335693
+  },
+  "membrane__B": {
+   "main_s": 1.8506786823272705,
+   "branch_s": 4.043062686920166,
+   "burn": 200,
+   "main_member_ticks": 9600,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 4.445575952529907
+  },
+  "membrane__late": {
+   "main_s": 2.7525479793548584,
+   "branch_s": 4.029885530471802,
+   "burn": 800,
+   "main_member_ticks": 19200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.5348453521728516
+  },
+  "ctl_noise__B": {
+   "main_s": 0.4847984313964844,
+   "branch_s": 0.30356478691101074,
+   "burn": 10,
+   "main_member_ticks": 6560,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6529603004455566
+  },
+  "vortex64__B": {
+   "main_s": 78.4868381023407,
+   "branch_s": 92.407790184021,
+   "burn": 100,
+   "main_member_ticks": 8000,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.700288772583008
+  },
+  "vortex64__late": {
+   "main_s": 139.7848014831543,
+   "branch_s": 92.40694069862366,
+   "burn": 500,
+   "main_member_ticks": 14400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 4.980402708053589
+  },
+  "foundry_00060__A": {
+   "main_s": 0.7660844326019287,
+   "branch_s": 1.1338753700256348,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6213254928588867
+  },
+  "foundry_00060__late": {
+   "main_s": 1.9021363258361816,
+   "branch_s": 1.1294398307800293,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.60933518409729
+  },
+  "foundry_00124__A": {
+   "main_s": 0.7107772827148438,
+   "branch_s": 1.099571704864502,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.9231650829315186
+  },
+  "foundry_00124__late": {
+   "main_s": 1.7963848114013672,
+   "branch_s": 1.1071724891662598,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.7260990142822266
+  },
+  "foundry_00416__A": {
+   "main_s": 0.7347967624664307,
+   "branch_s": 1.1081101894378662,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6334116458892822
+  },
+  "foundry_00416__late": {
+   "main_s": 1.853135108947754,
+   "branch_s": 1.1112427711486816,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.619966506958008
+  },
+  "foundry_02755__A": {
+   "main_s": 0.7713699340820312,
+   "branch_s": 1.1142632961273193,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.7122442722320557
+  },
+  "foundry_02755__late": {
+   "main_s": 1.8762598037719727,
+   "branch_s": 1.108215570449829,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.602186441421509
+  },
+  "foundry_03062__A": {
+   "main_s": 0.744117021560669,
+   "branch_s": 1.112504482269287,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6283583641052246
+  },
+  "foundry_03062__late": {
+   "main_s": 1.8708751201629639,
+   "branch_s": 1.1226332187652588,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.526625633239746
+  },
+  "foundry_03101__A": {
+   "main_s": 0.7735393047332764,
+   "branch_s": 1.1319379806518555,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.689910888671875
+  },
+  "foundry_03101__late": {
+   "main_s": 1.9362847805023193,
+   "branch_s": 1.1289546489715576,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.666579246520996
+  },
+  "foundry_03854__A": {
+   "main_s": 0.7602705955505371,
+   "branch_s": 1.1162059307098389,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6427390575408936
+  },
+  "foundry_03854__late": {
+   "main_s": 1.9068646430969238,
+   "branch_s": 1.1109037399291992,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.138857126235962
+  },
+  "foundry_04289__A": {
+   "main_s": 0.7445709705352783,
+   "branch_s": 1.107461929321289,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.090116024017334
+  },
+  "foundry_04289__late": {
+   "main_s": 1.867279052734375,
+   "branch_s": 1.1086833477020264,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.67016863822937
+  },
+  "foundry_04495__A": {
+   "main_s": 0.7418389320373535,
+   "branch_s": 1.1123075485229492,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.857882022857666
+  },
+  "foundry_04495__late": {
+   "main_s": 1.8646230697631836,
+   "branch_s": 1.1134707927703857,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.0900895595550537
+  },
+  "foundry_04833__A": {
+   "main_s": 0.7117204666137695,
+   "branch_s": 1.109032154083252,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.450932741165161
+  },
+  "foundry_04833__late": {
+   "main_s": 1.847710371017456,
+   "branch_s": 1.1120212078094482,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.5095322132110596
+  },
+  "foundry_04919__A": {
+   "main_s": 0.7010111808776855,
+   "branch_s": 1.091160535812378,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.4212214946746826
+  },
+  "foundry_04919__late": {
+   "main_s": 1.805107831954956,
+   "branch_s": 1.0906481742858887,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.1282005310058594
+  },
+  "foundry_05671__A": {
+   "main_s": 0.7408225536346436,
+   "branch_s": 1.099388599395752,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.3580400943756104
+  },
+  "foundry_05671__late": {
+   "main_s": 1.8378067016601562,
+   "branch_s": 1.09771728515625,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.3070285320281982
+  },
+  "foundry_07760__A": {
+   "main_s": 0.7280943393707275,
+   "branch_s": 1.1132745742797852,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.1460156440734863
+  },
+  "foundry_07760__late": {
+   "main_s": 1.8281528949737549,
+   "branch_s": 1.1151347160339355,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.7101762294769287
+  },
+  "foundry_07820__A": {
+   "main_s": 0.7101964950561523,
+   "branch_s": 1.0981249809265137,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.784761667251587
+  },
+  "foundry_07820__late": {
+   "main_s": 1.8385381698608398,
+   "branch_s": 1.0986409187316895,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6607422828674316
+  },
+  "foundry_07913__A": {
+   "main_s": 0.7511353492736816,
+   "branch_s": 1.1090736389160156,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.1005547046661377
+  },
+  "foundry_07913__late": {
+   "main_s": 1.876180648803711,
+   "branch_s": 1.1022064685821533,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.643003225326538
+  },
+  "foundry_08010__A": {
+   "main_s": 0.7402734756469727,
+   "branch_s": 1.1049935817718506,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.700908899307251
+  },
+  "foundry_08010__late": {
+   "main_s": 1.8679554462432861,
+   "branch_s": 1.1137056350708008,
+   "burn": 2000,
+   "main_member_ticks": 38400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.605029821395874
+  },
+  "foundry_00005__A": {
+   "main_s": 0.6819872856140137,
+   "branch_s": 1.087129831314087,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.923800230026245
+  },
+  "foundry_00006__A": {
+   "main_s": 0.6897768974304199,
+   "branch_s": 1.0813605785369873,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.0770912170410156
+  },
+  "foundry_00007__A": {
+   "main_s": 0.670156717300415,
+   "branch_s": 1.0859296321868896,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.6356003284454346
+  },
+  "foundry_00008__A": {
+   "main_s": 0.6665217876434326,
+   "branch_s": 1.0845913887023926,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4516642093658447
+  },
+  "foundry_00009__A": {
+   "main_s": 0.748821496963501,
+   "branch_s": 1.1082067489624023,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.7781081199645996
+  },
+  "foundry_00010__A": {
+   "main_s": 0.6862990856170654,
+   "branch_s": 1.093306064605713,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.8155484199523926
+  },
+  "foundry_00012__A": {
+   "main_s": 0.6886506080627441,
+   "branch_s": 1.0882761478424072,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.459987163543701
+  },
+  "foundry_00013__A": {
+   "main_s": 0.6961641311645508,
+   "branch_s": 1.0941131114959717,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.89638614654541
+  },
+  "foundry_00014__A": {
+   "main_s": 0.6695361137390137,
+   "branch_s": 1.0805621147155762,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4467272758483887
+  },
+  "foundry_00015__A": {
+   "main_s": 0.6710455417633057,
+   "branch_s": 1.0872797966003418,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4550576210021973
+  },
+  "foundry_00016__A": {
+   "main_s": 0.6821267604827881,
+   "branch_s": 1.0868825912475586,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.453774929046631
+  },
+  "foundry_00017__A": {
+   "main_s": 0.6716980934143066,
+   "branch_s": 1.092670202255249,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.480618953704834
+  },
+  "foundry_00018__A": {
+   "main_s": 0.6866834163665771,
+   "branch_s": 1.086137294769287,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4570603370666504
+  },
+  "foundry_00019__A": {
+   "main_s": 0.6887388229370117,
+   "branch_s": 1.113410472869873,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.830812454223633
+  },
+  "foundry_00020__A": {
+   "main_s": 0.6810085773468018,
+   "branch_s": 1.0890893936157227,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4435927867889404
+  },
+  "foundry_00021__A": {
+   "main_s": 0.6856420040130615,
+   "branch_s": 1.0927355289459229,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.8720340728759766
+  },
+  "foundry_00023__A": {
+   "main_s": 0.6804134845733643,
+   "branch_s": 1.094397783279419,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.0208749771118164
+  },
+  "foundry_00025__A": {
+   "main_s": 0.686856746673584,
+   "branch_s": 1.1005516052246094,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.0445733070373535
+  },
+  "foundry_00026__A": {
+   "main_s": 0.7489361763000488,
+   "branch_s": 1.115302324295044,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.5746493339538574
+  },
+  "foundry_00027__A": {
+   "main_s": 0.6566972732543945,
+   "branch_s": 1.0993149280548096,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.523865222930908
+  },
+  "foundry_00028__A": {
+   "main_s": 0.6967759132385254,
+   "branch_s": 1.107853889465332,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.441781997680664
+  },
+  "foundry_00029__A": {
+   "main_s": 0.6883463859558105,
+   "branch_s": 1.0908842086791992,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.0953333377838135
+  },
+  "foundry_00030__A": {
+   "main_s": 0.6888680458068848,
+   "branch_s": 1.0813190937042236,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.4509100914001465
+  },
+  "foundry_00031__A": {
+   "main_s": 0.7031335830688477,
+   "branch_s": 1.0969469547271729,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.224910020828247
+  },
+  "foundry128_04186__A": {
+   "main_s": 2.3065452575683594,
+   "branch_s": 5.131454706192017,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 9.897697448730469
+  },
+  "foundry128_00262__A": {
+   "main_s": 2.259347915649414,
+   "branch_s": 5.025312185287476,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 10.097028732299805
+  },
+  "foundry128_07567__A": {
+   "main_s": 2.2428877353668213,
+   "branch_s": 4.998930215835571,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 10.026447057723999
+  },
+  "foundry128_06845__A": {
+   "main_s": 2.2507541179656982,
+   "branch_s": 5.00349235534668,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 9.838850021362305
+  },
+  "foundry128_01672__A": {
+   "main_s": 2.2628326416015625,
+   "branch_s": 5.003110885620117,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 9.560590028762817
+  },
+  "foundry128_03078__A": {
+   "main_s": 2.2576730251312256,
+   "branch_s": 4.960705518722534,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 9.896748065948486
+  }
+ },
+ "errors": [],
+ "sizes": {
+  "M": 16,
+  "M_fit": 8,
+  "T": 400,
+  "NS": 32,
+  "R": 6,
+  "R2": 2,
+  "n_dir": 2,
+  "eps": [
+   0.03,
+   0.1,
+   1.0
+  ],
+  "arms": [
+   [
+    "aimed",
+    200.0
+   ],
+   [
+    "blind",
+    200.0
+   ],
+   [
+    "aimed",
+    50.0
+   ],
+   [
+    "aimed",
+    800.0
+   ]
+  ],
+  "R_u": 2,
+  "HB": 32,
+  "Bb": 30
+ },
+ "presmoke_s": 986.6844420433044,
+ "elapsed_s": 2208.020262002945
+}

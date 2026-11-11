@@ -1,0 +1,20 @@
+- **controls** The card's own test: 29 of 29 runs of the 10 negative controls come out dull (pure-noise field, uniform and frozen foundry draws, true diffusion, non-interacting bodies; the two no-affinity worlds that keep the mobility gain are listed but not counted).
+- **card:gliders** gliders: exam-worthy + actions; sigma_hat 0.199 at the pop level.
+- **card:vortex64** vortex64: exam-worthy + reading-worthy + actions; sigma_hat 0.352 at the pop level.
+- **card:membrane** membrane: exam-worthy + reading-worthy + actions; sigma_hat 0.16 at the pop level.
+- **card:foundry_04470** foundry_04470: exam-worthy + reading-worthy + actions; sigma_hat 0.885 at the pop level.
+- **card:foundry_04186** foundry_04186: exam-worthy + reading-worthy + actions; sigma_hat 0.679 at the pop level.
+- **card:foundry_00262** foundry_00262: exam-worthy + reading-worthy + actions; sigma_hat 0.71 at the pop level.
+- **card:foundry_07567** foundry_07567: exam-worthy + actions; sigma_hat 0.769 at the pop level.
+- **card:foundry_06845** foundry_06845: exam-worthy + actions; sigma_hat 0.916 at the pop level.
+- **card:foundry_01672** foundry_01672: exam-worthy + actions; sigma_hat 0.491 at the pop level.
+- **card:foundry_03078** foundry_03078: exam-worthy + reading-worthy + actions; sigma_hat 0.537 at the pop level.
+- **foundry:shortlist** Foundry shortlist (7 worlds, run A): 7 exam-worthy, 4 reading-worthy, 7 pass the actions gate, 7 stationary in the window; late window equal to early in 6 of 7 with a late run.
+- **foundry:candidates** Foundry candidates (16 worlds, run A): 10 exam-worthy, 15 reading-worthy, 16 pass the actions gate, 15 stationary in the window; late window equal to early in 7 of 16 with a late run.
+- **foundry:prior** Foundry prior (32 worlds, run A): 1 exam-worthy, 1 reading-worthy, 32 pass the actions gate, 25 stationary in the window; late window equal to early in 2 of 8 with a late run.
+- **robust:seed** Seed robustness over 20 worlds with runs A and B (agreement within 0.05 or 25%): entries that agree in at least 90% of worlds: ['b.ceil_field_disp8', 'b.pf_disp8', 'b.quiet8', 'grid.act_ms', 'grid.ceil8', 'grid.gap8', 'grid.pf8', 'grid.pl_ratio0.03_8', 'grid.pl_ratio0.1_8', 'grid.sigma_hat', 'grid.tick_share', 'grid.w_theta8', 'l.dceil8_AB', 'pop.pf8', 's.events100', 's.half_life_ticks', 's.nb_mean', 's.v_net', 't.l1_8', 'x.bodies_to_grid8']; below 70%: ['pop.act_ms', 'pop.ceil8'].
+- **robust:size** Size robustness over 8 worlds (64 px against 128 px, counts per area, action entries left out): entries that agree in at least 90%: ['b.pf_disp8', 'b.quiet8', 'grid.ceil8', 'grid.gap8', 'grid.pf8', 'grid.sigma_hat', 'grid.tick_share', 'grid.w_theta8', 'l.dceil8_AB', 'pop.pf8', 's.events100', 's.half_life_ticks', 's.nb_mean', 't.l1_8', 'x.bodies_to_grid8']; below 70%: ['grid.member_share', 'k.law32', 'pop.ceil8', 'pop.sigma_hat', 'pop.tick_share'].
+- **robust:late** Late window against early (35 worlds): the same statistics in 19; not in ['foundry_00262', 'ctl_uniform_00000', 'ctl_uniform_00003', 'ctl_uniform_00004', 'ctl_frozen_00001', 'ctl_frozen_00011', 'ctl_frozen_00024', 'foundry_00124', 'foundry_02755', 'foundry_03062', 'foundry_03854', 'foundry_04495', 'foundry_07760', 'foundry_07820', 'foundry_07913', 'foundry_08010'].
+- **robust:estimator_size** Estimator size (even against odd test states, 16 each): the block view's ceiling at 8 ticks agrees in 70 of 70 worlds, its predictable fraction in 70.
+- **robust:platform** CPU (this container) against the GPU job for foundry draw 4470, run A, same code and seeds: 11 of 11 entries agree; verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'.
+- **cost** Cost per member-tick on the job's GPU with the tracker on every member, compile excluded (median over worlds of a group).

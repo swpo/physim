@@ -157,7 +157,10 @@ def figure(world, runs, series, path):
             y = np.array(c["grid"]["pl"][e]["pl_over_vorc_med"], float)
             ax.plot(hz, np.where(y > 0, y, np.nan), color=SEQ[i], lw=2, marker="o", ms=4, label=f"{e} of the prior")
     ax.axhline(1.0, color=INK2, lw=0.8, ls=(0, (3, 3)))
-    ax.legend(frameon=False, fontsize=7, title="block view; move of", title_fontsize=7, labelcolor=INK)
+    lo, hi = ax.get_ylim()
+    ax.set_ylim(lo, hi * 20)
+    ax.legend(frameon=False, fontsize=6.5, title="block view; move of", title_fontsize=6.5, labelcolor=INK, loc="upper right",
+              handlelength=1.6, borderaxespad=0.1)
     ax = fig.add_subplot(gs[1, 6:8])
     base(ax, "Actions: displacement / twin floor", logy=True)
     for i, n in enumerate(("aimed_50", "aimed_200", "aimed_800")):
@@ -168,12 +171,16 @@ def figure(world, runs, series, path):
         y = np.array(c["grid"]["act"]["blind_200"]["D_over_floor"], float)
         ax.plot(hz, np.where(y > 0, y, np.nan), color=INK2, lw=1.5, ls=(0, (4, 2)), marker="s", ms=3.5, label="blind, 200 nats")
     ax.axhline(1.0, color=INK2, lw=0.8, ls=(0, (3, 3)))
-    ax.legend(frameon=False, fontsize=7, labelcolor=INK, loc="lower left")
+    lo, hi = ax.get_ylim()
+    ax.set_ylim(lo, hi * 6)                                 # room for the legend above the curves
+    ax.legend(frameon=False, fontsize=6.5, labelcolor=INK, loc="upper right", handlelength=1.6, borderaxespad=0.1, ncol=2)
     g = c.get("_gates", {})
     fig.suptitle(f"{world}: {g.get('verdict', '')}   (run {c['run']}, {c['meta'].get('lattice')}, "
                  f"{c['sizes']['M']} members x {c['sizes']['T']} ticks)", x=0.045, ha="left", fontsize=10, fontweight="bold")
     fig.savefig(path, dpi=100)
     plt.close(fig)
+    from PIL import Image                                   # 128-colour palette: about a third of the bytes
+    Image.open(path).convert("RGB").quantize(colors=128, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(path, optimize=True)
     return os.path.getsize(path)
 
 
@@ -426,7 +433,9 @@ def main():
                   open(os.path.join(wd, "card.json"), "w"), indent=1, default=float)
         d, g = D[c0["run"]], G[c0["run"]]
         rows.append(dict(world=w, role=c0["role"], family=c0["family"], job=c0["_job"], run=c0["run"], verdict=g["verdict"],
-                         sigma_hat=g["sigma_hat_best"], level=g["sigma_hat_level"], pf8=d.get("grid.pf8"), ceil8=d.get("grid.ceil8"),
+                         sigma_hat=g["sigma_hat_best"], level=g["sigma_hat_level"], sigma_hat_grid=d.get("grid.sigma_hat"),
+                         sigma_hat_pop=d.get("pop.sigma_hat"), pop_tick_share_max=d.get("pop.tick_share_max"),
+                         pf8=d.get("grid.pf8"), ceil8=d.get("grid.ceil8"),
                          ceil8_mean=d.get("grid.ceil8_mean"), w_theta8=d.get("grid.w_theta8"), pl01=d.get("grid.pl_ratio0.1_8"),
                          pl003=d.get("grid.pl_ratio0.03_8"), bodies=d.get("s.nb_mean"), half_life=d.get("s.half_life_ticks"),
                          v_net=d.get("s.v_net"), events=d.get("s.events100"), body_pf8=d.get("b.pf_disp8"),
@@ -446,15 +455,26 @@ def main():
     json.dump(robust, open(os.path.join(a.res, "robustness.json"), "w"), indent=1, default=float)
     json.dump(rows, open(os.path.join(a.res, "table.json"), "w"), indent=1, default=float)
     # comparison table
-    cols = [("world", "world"), ("role", "role"), ("verdict", "verdict"), ("sigma_hat", "sigma_hat"), ("pf8", "PF(8)"),
-            ("ceil8", "c(8)"), ("w_theta8", "w_theta(8)"), ("pl01", "PL10%/Vorc"), ("bodies", "bodies"), ("half_life", "half-life"),
-            ("body_ceil8", "body law c(8)"), ("act_ms", "act_ms"), ("tick_share", "tick share"), ("member_share", "member share"),
-            ("pop_ceil8", "pop c(8)"), ("l_dceil16", "learned dc(16)"), ("late_same", "late = early"), ("ms_per_mt", "ms/member-tick")]
+    cols = [("world", "world"), ("role", "role"), ("verdict", "verdict"), ("sigma_hat_grid", "sigma_hat block"),
+            ("sigma_hat_pop", "sigma_hat pop"), ("pf8", "PF(8)"), ("ceil8", "c(8)"), ("w_theta8", "w_theta(8)"),
+            ("pl01", "PL10%/Vorc"), ("bodies", "bodies"), ("half_life", "half-life"), ("body_ceil8", "body law c(8)"),
+            ("act_ms", "act_ms"), ("act_ms_over_vcheap", "act / cheap error"), ("tick_share", "tick share block"),
+            ("pop_tick_share_max", "tick share pop, max"), ("member_share", "member share"), ("pop_ceil8", "pop c(8)"),
+            ("l_dceil16", "learned dc(16)"), ("late_same", "late = early"), ("ms_per_mt", "ms/member-tick")]
     T = ["| " + " | ".join(h for _, h in cols) + " |", "|" + "---|" * len(cols)]
     for r in rows:
         T.append("| " + " | ".join(fmt(r[k]) for k, _ in cols) + " |")
     open(os.path.join(a.res, "table.md"), "w").write(
-        "# World cards: comparison table (run A; ratios from medians over test states)\n\n" + "\n".join(T) + "\n")
+        "# World cards: comparison table (run A; ratios from medians over test states)\n\n"
+        "Columns: sigma_hat at the block and the population level (the verdict uses the larger where the level is predictable); "
+        "PF(8), c(8), w_theta(8): predictable fraction, closure ceiling of the cheap family and weight of a prior-sized error in "
+        "the hidden part, block view, 8 ticks; PL10%/Vorc: plug-in loss of a 10%-of-prior neighbour over the oracle variance; "
+        "bodies, half-life (ticks); body law c(8): ceiling of the single-body law for displacement on quiet steps; act_ms: "
+        "predictable shift of an aimed 200-nat input over the oracle variance at 4 ticks, and the same over the cheap family's "
+        "error; tick share: mean over block channels, and the largest population component; member share (block view); "
+        "pop c(8); learned dc(16): ceiling of the slow features minus the hand view at 16 ticks (the smaller of the two orders); "
+        "late = early; ms per member-tick (compile included where the world's only run was a first call: the 128-px rows).\n\n"
+        + "\n".join(T) + "\n")
     keys = list(rows[0].keys())
     with open(os.path.join(a.res, "table.csv"), "w") as f:
         f.write(",".join(keys) + "\n")
