@@ -33,8 +33,14 @@ view, N of them, nats caps 100 per tick and 400 per episode) and held-out items 
 Pool (arm P): the early candidates of round 5 (all four gates at ticks 50-290): 88 of prior seed 2026
 (r5-foundry-001) and the 323 + 5 of prior seed 2027 (r5-foundry-002, the enriched and control arms), listed in
 `results/pool.json` by `make_pool.py`. Exam-time gate, applied in the job to every pool world and every neighbour
-(8 members, burn-in 300 ticks, then 32 ticks): active by the thresholds of `criteria.py`, that is cell contrast
-cv_cell >= 0.25, persistence error vp(16) >= 0.02 and vp(1) <= 1.0 in units of the window's own variance.
+(8 members, burn-in 300 ticks, then 32 ticks): cell contrast cv_cell >= 0.25 and persistence error vp(1) <= 1.0
+(the thresholds of `criteria.py`) and vp(16) >= 0.2, in units of the window's own variance.
+*Changed before any GPU run:* the first version of this file had vp(16) >= 0.02, `criteria.py`'s frozen threshold. A
+CPU check of 28 worlds at the exam's burn-in (`results/gatecheck_cpu.txt`, 2 members each) showed worlds at
+vp(16) = 0.025-0.04 passing: at tick 300 they are nearly frozen, persistence is nearly the oracle there and the exam
+would be trivially easy by construction (round 5 found that most early activity is a transient). The threshold 0.2
+(16-tick autocorrelation of the block view at most 0.9) was chosen after that check and before any score existed.
+Every hidden world's vp(16) is written to the outputs so that the shares can be read against it.
 Hidden worlds of arm P: 16 drawn without replacement from the seed-2027 enriched candidates that pass the gate, by
 numpy's default_rng(20261111) (the enriched arm is the larger sample of one well-defined screen: weights-only
 pre-screen, then the four gates). Training worlds of the no-experiment policy: every other gate-passing pool world.
@@ -44,7 +50,8 @@ seed 2026). Rule, written when the CPU probe had returned 6 of the 7 values (rou
 and 262): rank the 7 by the wind probe's "aimed 200 nats, effect over noise at 4 ticks"
 (`../../round5/foundry/wind_probe.py`, 8 states; 1 means the command displaces the block view as much as fresh noise
 does) and take the top 3. Neighbours: `tnca.perturb_theta(theta_c, 606000 + draw, j, eps, hyper=False)`; j = 0..63
-are public training neighbours, j = 1000.. are hidden candidates, the first 4 that pass the gate are the hidden worlds.
+are public training candidates (the first 32 that pass the gate are used), j = 1000..1015 are hidden candidates, the
+first 4 that pass the gate are the hidden worlds.
 
 ## 3. The exam (round-5 harness)
 
@@ -74,7 +81,7 @@ of a set of 17-frame windows).
 | O | the simulator from the hidden state (leave one out over the 12 futures) | the hidden state and weights |
 | C | the net trained on 768 simulated episodes at the true weights; 2 training seeds | the hidden weights |
 | P0s | net with lags (0, 1) and no code, trained on simulations of the public prior | no hypothesis, no experiment |
-| P0 | net with lags (0, 1, 2, 4, 8) and the code of the item's own history, trained on simulations of the public prior (arm P: 64 episodes of every training world; arms N: of 48 training neighbours); 2 seeds. Reads the world off each item's history | no hypothesis, no experiment |
+| P0 | net with lags (0, 1, 2, 4, 8) and the code of the item's own history, trained on simulations of the public prior (arm P: 64 episodes of every training world; arms N: of up to 32 training neighbours); 2 seeds. Reads the world off each item's history | no hypothesis, no experiment |
 | P0[16], P0[64] | P0 trained on 16 or 64 training worlds (arm P): the cost of the prior in worlds | as P0 |
 | S(N) | amortised inference: a net trained like P0 whose code is averaged over the item's history and 2N windows of N Lab episodes (trained with random context sizes); S(0) uses no Lab; 2 seeds | N Lab episodes |
 | FT(N) | P0 fine-tuned on N Lab episodes | N Lab episodes |

@@ -50,7 +50,8 @@ TICK_CAP, EP_CAP = 100.0, 400.0         # nats
 T_IN = 4                                # ticks of a command
 C_BLIND, C_AIM, C_REG = 200.0, 200.0, 400.0
 U_MAX = 4.0                             # admissible bound of a wind coefficient
-CV_UNIFORM, VP_FROZEN, VP_NOISY = 0.25, 0.02, 1.0      # round5/foundry/criteria.py
+CV_UNIFORM, VP_NOISY = 0.25, 1.0                       # round5/foundry/criteria.py
+VP_ACTIVE16 = 0.2                                       # exam-time activity (criteria.py's frozen threshold is 0.02; see DESIGN.md)
 TKEYS = ("W1", "b1", "W2", "beta", "gam", "alpha", "mu", "kappa", "gr", "dens", "wq")
 
 
@@ -158,7 +159,7 @@ def gate(obs, cv, M: int) -> dict:
     cvw = cv.reshape(W, M).mean(1)
     fin = np.isfinite(y).all((1, 2, 3, 4))
     tick_r2 = z.mean((1, 4)).var(1).mean(1)                 # variance over ticks of the member-and-block mean
-    ok = fin & (cvw >= CV_UNIFORM) & (vp16 >= VP_FROZEN) & (vp1 <= VP_NOISY)
+    ok = fin & (cvw >= CV_UNIFORM) & (vp16 >= VP_ACTIVE16) & (vp1 <= VP_NOISY)
     return dict(ok=ok, cv_cell=cvw, vp1=vp1, vp16=vp16, finite=fin, tick_r2=tick_r2,
                 mean=mu.reshape(W, NCH), sd=sd.reshape(W, NCH))
 

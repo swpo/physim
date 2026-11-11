@@ -57,7 +57,7 @@ T0 = time.time()
 T_END = T0 + args.max_hours * 3600
 
 FULL = dict(burn=300, chunk=1024, gate_M=8, gate_on=True, pool_limit=None, n_hidden_P=16, n_centres=3, n_hidden_N=4,
-            nb_train_cand=64, nb_train=48, nb_hidden_cand=16, epw=64, n_lab=512, lab_chunk=128, n_csim=768,
+            nb_train_cand=64, nb_train=32, nb_hidden_cand=16, epw=64, n_lab=512, lab_chunk=128, n_csim=768,
             n_items=32, R=12, n_clim=96, m=24, m_plug=8, budgets=[8, 32, 128, 512], s_budgets=[0, 2, 8, 32, 128, 512],
             seeds2=[32, 512], steps_big={"P": 8000, "N30": 4000, "N10": 4000}, batch_big=256, steps_C=4000,
             steps_D={8: 400, 32: 800, 128: 1500, 512: 3000}, steps_FT={8: 200, 32: 400, 128: 800, 512: 1200},
@@ -187,7 +187,7 @@ def stage_gate():
         by[k][0] += int(c["ok"])
         by[k][1] += 1
     jdump("gate.json", dict(what="exam-time gate (DESIGN.md section 2)", burn=CFG["burn"], M=CFG["gate_M"],
-                            gate_on=CFG["gate_on"], thresholds=dict(cv_cell_min=FL.CV_UNIFORM, vp16_min=FL.VP_FROZEN,
+                            gate_on=CFG["gate_on"], thresholds=dict(cv_cell_min=FL.CV_UNIFORM, vp16_min=FL.VP_ACTIVE16,
                                                                      vp1_max=FL.VP_NOISY),
                             passed={k: dict(ok=v[0], of=v[1]) for k, v in by.items()}, rows=rows))
     log(f"gate: {len(cands)} worlds, passed " + ", ".join(f"{k} {v[0]}/{v[1]}" for k, v in by.items())
@@ -196,6 +196,10 @@ def stage_gate():
 
 
 # ----------------------------------------------------------------------------- arms
+def gate_of(c):
+    return {k: c[k] for k in ("cv_cell", "vp1", "vp16", "tick_r2")}
+
+
 def arm_groups(arm, cands, cth):
     """[dict(gid, train (list of theta), hidden (list of dict(theta, label, plug_prior)))]"""
     if arm == "P":
@@ -208,7 +212,8 @@ def arm_groups(arm, cands, cth):
         train = [train[i] for i in np.random.default_rng(20261112).permutation(len(train))]   # P0[n] = a random subset
         if len(hid) < CFG["n_hidden_P"] or len(train) < 4:
             raise RuntimeError(f"arm P: {len(hid)} hidden and {len(train)} training worlds pass the gate")
-        hidden = [dict(theta=c["theta"], label=f"seed{c['prior_seed']}-{c['index']}", plug_prior=train[i % len(train)]["theta"],
+        hidden = [dict(theta=c["theta"], label=f"seed{c['prior_seed']}-{c['index']}", gate=gate_of(c),
+                       plug_prior=train[i % len(train)]["theta"],
                        plug_label=f"seed{train[i % len(train)]['prior_seed']}-{train[i % len(train)]['index']}")
                   for i, c in enumerate(hid)]
         return [dict(gid="prior", train=[c["theta"] for c in train],
@@ -222,7 +227,8 @@ def arm_groups(arm, cands, cth):
             log("SKIP " + SKIPPED[-1])
             continue
         out.append(dict(gid=f"centre{c0}", train=[c["theta"] for c in tr], train_labels=[f"c{c0}-j{c['j']}" for c in tr],
-                        hidden=[dict(theta=c["theta"], label=f"c{c0}-j{c['j']}", plug_prior=thc, plug_label=f"centre{c0}")
+                        hidden=[dict(theta=c["theta"], label=f"c{c0}-j{c['j']}", plug_prior=thc, plug_label=f"centre{c0}",
+                                     gate=gate_of(c))
                                 for c in hd]))
     return out
 
@@ -263,6 +269,7 @@ def hidden_world(arm, gi, wi, hw, world, st_norm):
     CLOCK["hidden_s"] = CLOCK.get("hidden_s", 0.0) + time.time() - t
     X = NN.to_grid(lab["obs"])
     return dict(ex=ex, lab=lab, hist=hist, Ptest=Ptest, klass=klass, S=S, gi=gi, label=hw["label"], theta=th,
+                gate=hw["gate"], plug_label=hw["plug_label"],
                 lab_ST=NN.episode_stats(X), tick=tick_share(lab["obs"]),
                 lab_nats=dict(mean=float(lab["nats"].mean()), max=float(lab["nats"].max()), usage=lab["usage"]),
                 clim=dict(mean=ex.clim_mean, sd=ex.clim_sd))
@@ -322,7 +329,8 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
     worlds_json = dict(arm=arm, eps=EPS.get(arm), groups=[dict(gid=g["gid"], n_train=len(g["train"]), train_labels=g["train_labels"])
                                                           for g in groups],
                        hidden=[dict(label=h["label"], group=groups[h["gi"]]["gid"], tick_share=h["tick"], lab=h["lab_nats"],
-                                    clim_mean=h["clim"]["mean"], clim_sd=h["clim"]["sd"],
+                                    clim_mean=h["clim"]["mean"], clim_sd=h["clim"]["sd"], gate=h["gate"],
+                                    plug_prior=h["plug_label"],
                                     theta=theta_json(h["theta"])) for h in HW])
     jdump(f"{arm}/worlds.json", worlds_json)
     # ---- simulations at the true weights (designer side, for C)
