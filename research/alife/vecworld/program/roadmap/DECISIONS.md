@@ -130,6 +130,37 @@ Fair that we don't want to ship the credentials to the rented machine."
   and is to be redone on that basis before the pilot is proposed again.
 - The small foundry screen of round 5 (`../round5/foundry`, cap $25) is not affected.
 
+## Direction (the lead, 11 Nov 2026)
+
+Said after the environment work had taken a day, so that it does not displace the research. In the lead's words:
+
+- "We want to understand how the supervenient worlds behave when we run rollouts on them and how the scores of those
+  rollouts look."
+- "We ultimately want to create interesting supervenient worlds. And in order to do that, we need to have a sense of
+  what interesting might look like from a more abstract perspective. For example, being able to look at the level 0,
+  level 1, even higher level dynamics, have some claims that they're complex or worth studying for some reason."
+- "But then, more concretely, we need to confirm that these things that look interesting lead to interesting
+  rollouts, interesting modeling, or however the agents try to approach the problem. Ideally, tests that are not
+  trivially easy for the agents."
+
+The coordinator's working loop that follows from it (a reading, to be corrected by the lead):
+
+1. A world card for every candidate world, computed by one tool and comparable across worlds: per level, how
+   predictable it is over horizons, what structures exist and how they interact, which effective laws hold and where,
+   whether a learned variable differs from the obvious one, whether actions matter, how much the hidden part changes
+   the level given the state (the one screen that predicted the science share in round 5), and the cost per tick.
+   The card is the claim that a world is worth studying.
+2. An exam on the same harness for a few worlds that differ on the card, with the scripted reference policies
+   (K, D, P0, S, C, O) and the two shares.
+3. Rollouts of the same models on those exams. Each rollout is read for how the agent approached the problem
+   (simulate, fit, hypothesise, experiment), where it lands among the reference policies, and how it spent its
+   budgets, not only for its score. The scripted policies say what is easy for a recipe; only rollouts say what is
+   easy for an agent.
+4. Compare cards with rollouts: which features of a world went with rollouts that were not trivial and that
+   separated agents. Generate the next worlds toward those features.
+
+Environment and safety work serves step 3 and must not queue ahead of steps 1, 2 and 4.
+
 ## Earlier standing decisions that bear on the roadmap
 
 - GPU spending up to $1,000 in total is approved (7 Nov); jobs with a cap of $25 or less start without asking
