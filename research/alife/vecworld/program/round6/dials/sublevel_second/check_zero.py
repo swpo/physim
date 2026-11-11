@@ -2,7 +2,7 @@
 
     python -B check_zero.py [size] [members] [ticks]          (defaults 64, 3, 60)
 
-For each candidate: the hidden world (lam = 0, hidden field started at 0) and the public world
+For each candidate: the hidden world (lam = 0; the hidden field starts at its equilibrium, which is 0) and the public world
 (membrane_world.build, unchanged) are run from the same designer ensemble (same keys) under the same random
 input program; compared: the four public level-0 fields at the last tick, the level-1 cell list and level 2 at
 every tick (largest absolute difference; 0.0 means bit for bit), and the hidden field (must stay 0).

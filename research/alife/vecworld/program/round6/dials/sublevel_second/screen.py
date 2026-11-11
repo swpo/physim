@@ -22,6 +22,8 @@ Both start the tracker memory from the state (Designer.from_states), so slot ide
 views are permutation-invariant:
     pop      (N, mean size) of the cell list                      (level 2 without its 50-tick rate window)
     raster   cell mass and catalyst mass per 16-px block          (the level-1 view scored in round5/vortexexam)
+    focus    cell mass and catalyst mass within 16 px of the item's focus point (the largest cell's centroid at T0,
+             where the aimed programs point; for `none` and `blind` the same point): a local level-1 view
 Scores: fair energy score (vw.scoring) at h = 4, 8, 16, 32 ticks, coordinates divided by their SD over all truths
 of the run (floored at a tenth of the median SD); K = the pool of the other members' `none` truths at the same
 horizon. With plug_<name>=value the comparison simulator is instead the hidden law with those wrong values, run
@@ -111,6 +113,18 @@ def target_mass(L1, K, tgt, size):
     return np.where(d.min(-1) <= 12.0, m, 0.0)
 
 
+def focus_view(L1, K, tgt, size, rad=16.0):
+    """(mass, catalyst mass) of the cells whose centroid lies within rad px of the item's focus point (the
+    centroid of the member's largest cell at T0: where the aimed programs point): (..., 2)."""
+    T = L1[..., :K * 12].reshape(L1.shape[:-1] + (K, 12))
+    pres = T[..., 0] > 0.5
+    cx = (np.arctan2(T[..., 4], T[..., 3]) * size / (2 * np.pi)) % size
+    cy = (np.arctan2(T[..., 6], T[..., 5]) * size / (2 * np.pi)) % size
+    d = np.hypot((cy - tgt["cy"] + size / 2) % size - size / 2, (cx - tgt["cx"] + size / 2) % size - size / 2)
+    w = pres & (d <= rad)
+    return np.stack([(w * T[..., 1]).sum(-1), (w * T[..., 1] * T[..., 2]).sum(-1)], -1)
+
+
 def main():
     cand, lam, size, M, R, nats, seed, hid, tag, plug = parse(sys.argv)
     cfg = SL.small_cfg(size)
@@ -139,7 +153,7 @@ def main():
     xh = {k: rep(v) for k, v in x.items()}
     _, rt = dh.rollout(dh.from_states(xh), Pd, T=H, rec=("L1",))
     if plug:                                    # plug_<name>=value: the comparison simulator is the HIDDEN law with
-        spec_q, _ = SL.build(cfg, cand, hidden=dict(hid, lam=lam, **plug))   # these wrong values, run from the full state
+        spec_q, _ = SL.build(cfg, cand, hidden={**hid, "lam": lam, **plug})  # these wrong values, run from the full state
         dq = MW.MapWorld(spec_q, world_seed=1).designer
         _, rq = dq.rollout(dq.from_states(xh), Pd, T=H, rec=("L1",))
     else:
@@ -174,8 +188,10 @@ def main():
         st["hidden_over_S_all"] = float(e.sum() / x["S"].sum())
     out["state_at_T0"] = st
 
+    foc_t = np.stack([focus_view(L1_t[i], K, tgt[i], size) for i in range(M)])     # (M, C, R, nh, 2)
+    foc_q = np.stack([focus_view(L1_q[i], K, tgt[i], size) for i in range(M)])
     res = {}
-    for vname, Yt, Yq in (("pop", pop_t, pop_q), ("raster", ras_t, ras_q)):
+    for vname, Yt, Yq in (("pop", pop_t, pop_q), ("raster", ras_t, ras_q), ("focus", foc_t, foc_q)):
         d = Yt.shape[-1]
         pool = Yt[:, 0]                                                    # none truths (M, R, nh, d)
         sc = Yt.reshape(M * C * R, len(HS), d).std(0)                      # (nh, d): SD over all truths of the run
