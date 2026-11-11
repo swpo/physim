@@ -37,6 +37,10 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   0.53 (truth 0.85 / 0.78 / 0.70). The forecast loss works from a 30% start. Running: the same from another screened
   world's weights (60 steps).
 
+- 20:37: stage-2 code written ahead of the stage-1 verdict (early job log: skill at 16 ticks C 0.59, FT(32) 0.467,
+  P0(1,000) 0.431, so sigma near 0.2 and stage 2 likely): fl_w.py (designed programs, paired designed Lab, batched fit,
+  prediction), run_fl2.py, job_s2.sh. The whole run_fl2.py at smoke size on CPU: exit 0 (8.7 min). NOT requested.
+
 ## Running
 - Review of r6-foundrylong-001 read 18:50: fine to run, 2 minor (outputs ~53 MB: check manifest in_git before the analysis;
   completeness marks added to make_summary.py; DEVIATIONS addendum 2).

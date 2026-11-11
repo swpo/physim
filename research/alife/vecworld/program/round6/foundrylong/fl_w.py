@@ -182,7 +182,8 @@ def episode_loss_k(th, x, Y, U, keys, scale, anchors, k: int):
     """The exam's own score on a Lab episode: from the assimilated members at each anchor tick a (array, a + k <= T),
     a free forecast of k ticks under the episode's commands, scored by the fair energy score against Y[a + k].
     Gradient through the k forecast ticks (recomputed in the backward pass), not through the assimilation."""
-    XS = nudged_states(th, x, Y, U, keys)
+    T = U.shape[0]
+    XS = nudged_states(th, x, Y[: T - k + 1], U[: T - k], keys)              # anchors are at most T - k
 
     def one(a):
         xa = lax.dynamic_index_in_dim(XS, a, 0, keepdims=False)
@@ -234,3 +235,148 @@ def predict(th, x, hist, Ptest, keys, queries):
     kf = jax.vmap(lambda k: jax.random.fold_in(k, 77))(keys)
     Y = forecast(th, xa, Ptest, kf, P)                                  # (H, M, NOBS)
     return jnp.moveaxis(Y[jnp.asarray(queries) - 1], 0, 1)
+
+
+# ----------------------------------------------------------------------------- stage 2: designed Lab programs (addendum 3)
+def designed_prog(e: int, last_frame) -> "np.ndarray":
+    """(H, NW) designed program of Lab episode e: the episode cap spread evenly over all H test ticks (EP_CAP / H =
+    12.5 nats per tick); even test ticks an aimed push on the densest block of the last revealed frame, odd ticks a
+    regional push on the 3 x 3 blocks around it; direction 2 pi (e mod 8) / 8. Uses nothing of the hidden world."""
+    import numpy as np
+    U = np.zeros((FL.H, NW))
+    b = FL._densest(last_frame)
+    r, c = divmod(b, G)
+    phi = 2.0 * math.pi * (e % 8) / 8.0
+    s2 = 2.0 * (FL.EP_CAP / FL.H) * FL.SIGW ** 2 * (1 - 1e-9)          # sum of u^2 per tick
+    reg = [((r + dy) % G) * G + (c + dx) % G for dy in (-1, 0, 1) for dx in (-1, 0, 1)]
+    for t in range(FL.H):
+        blocks = [b] if t % 2 == 0 else reg
+        a = math.sqrt(s2 / len(blocks))
+        for bb in blocks:
+            U[t, bb], U[t, G * G + bb] = a * math.cos(phi), a * math.sin(phi)
+    return np.clip(U, -FL.U_MAX * 0.999, FL.U_MAX * 0.999)
+
+
+def run_lab_designed(world, secret, n: int, chunk: int) -> dict:
+    """A Lab of n designed episodes (labels 0..n-1, so episode e starts from the same state and free-tick noise as
+    episode e of the mix Lab with the same secret: a paired comparison of programs)."""
+    import numpy as np
+    lab = FL.FBatchLab(world, secret, nats=FL.budget(), max_ticks=None, reset_cost=1)
+    out = []
+    for s in range(0, n, chunk):
+        e = min(n, s + chunk)
+        mk = lambda i, hist, s=s: FL.dense_to_prog(designed_prog(s + i, np.asarray(hist)[-1]))
+        out.append(lab.run_batch(list(range(s, e)), FL.P, FL.H, mk))
+    res = {k: np.concatenate([o[k] for o in out]) for k in out[0]}
+    res["cls"] = np.array(["z"] * n)
+    res["usage"] = lab.usage()
+    return res
+
+
+# ----------------------------------------------------------------------------- stage 2: batched fit (B fits at once)
+def lab_scale(labY):
+    """Per-channel SD of the Lab frames (public), repeated over blocks: (NOBS,)."""
+    import numpy as np
+    sd = np.asarray(labY, float).reshape(-1, C + 1, G * G).std((0, 2))
+    return np.repeat(np.maximum(sd, 1e-12), G * G)
+
+
+_FNS = {}
+
+
+def _fns(k: int, burn: int):
+    key = (k, burn)
+    if key not in _FNS:
+        def one_loss(z, dens, X0, Ys, Us, keys, scale, anchors):
+            th = from_z(z, dens)
+            return jax.vmap(lambda x, Y, U, kk, an: episode_loss_k(th, x, Y, U, kk, scale, an, k))(X0, Ys, Us, keys, anchors).mean()
+        vg = jax.jit(jax.vmap(jax.value_and_grad(one_loss)))
+        ev = jax.jit(jax.vmap(one_loss))
+        sp = jax.jit(jax.vmap(lambda z, dens, keys: spin(from_z(z, dens), keys, burn)))
+        _FNS[key] = (vg, ev, sp)
+    return _FNS[key]
+
+
+def fit_batch(Z0, dens, labY, labU, scale, key, steps=200, lr=(0.03, 0.01), lr_switch=0.75, eb=8, M=4, A=2, k=16,
+              pool=16, burn=300, respin=50, t_max=None, log=None, tag=""):
+    """Adam on B fits at once. Z0 (B, NZ) starts; dens (B, C); labY (B, E, T + 1, NOBS); labU (B, E, T, NW); scale
+    (B, NOBS). Each step: eb random episodes per fit, M members from the fit's pool (spun at its current weights,
+    renewed every `respin` steps), A random anchors in [0, T - k]; noise keys fixed per (fit, episode) (common random
+    numbers). Assimilation only up to the last anchor. Returns (Z (B, NZ), trace (steps, B))."""
+    import numpy as np
+    vg, _, sp = _fns(k, burn)
+    B, E, T1 = labY.shape[:3]
+    T = T1 - 1
+    amax = T - k
+    Z = jnp.asarray(Z0)
+    st = (jnp.zeros_like(Z), jnp.zeros_like(Z), 0)
+    rng = np.random.default_rng(int(jax.random.randint(key, (), 0, 2 ** 31 - 1)))
+    kb = lambda tag_, n: jax.vmap(lambda b: jax.vmap(lambda j: jax.random.fold_in(jax.random.fold_in(jax.random.fold_in(key, tag_), b), j))(jnp.arange(n)))(jnp.arange(B))
+    ep_keys = kb(1, E * M).reshape(B, E, M)
+    Y, U = jnp.asarray(labY), jnp.asarray(labU)
+    dens = jnp.asarray(dens)
+    scale = jnp.asarray(scale)
+    trace = []
+    t0 = __import__("time").time()
+    for it in range(steps):
+        if it % respin == 0:
+            P_ = sp(Z, dens, kb(100 + it, pool))                                   # (B, pool, C, H, W)
+        ei = np.stack([rng.choice(E, eb, replace=False) for _ in range(B)])        # (B, eb)
+        an = rng.integers(0, amax + 1, (B, eb, A))
+        mi = rng.integers(0, pool, (B, eb * M))
+        X0 = jnp.take_along_axis(P_, jnp.asarray(mi)[:, :, None, None, None], 1).reshape((B, eb, M) + P_.shape[2:])
+        bi = jnp.arange(B)[:, None]
+        Ys = Y[bi, jnp.asarray(ei), : amax + k + 1]
+        Us = U[bi, jnp.asarray(ei), : amax + k]
+        keys = ep_keys[bi, jnp.asarray(ei)]
+        l, g = vg(Z, dens, X0, Ys, Us, keys, scale, jnp.asarray(an))
+        rate = lr[0] if it < lr_switch * steps else lr[1]
+        Z, st = adam(Z, g, st, rate)
+        trace.append(np.asarray(l))
+        if log and (it + 1) % 50 == 0:
+            log(f"  fit{tag} step {it + 1}/{steps}: window loss median {float(np.median(trace[-1])):.4f} ({__import__('time').time() - t0:.0f}s)")
+        if t_max is not None and __import__("time").time() - t0 > t_max:
+            if log:
+                log(f"  fit{tag}: stopped at step {it + 1} by its time limit")
+            break
+    return Z, np.stack(trace)
+
+
+def eval_batch(Z, dens, labY, labU, scale, key, M=4, k=16, pool=8, burn=300, every=8, E_max=None):
+    """Fit loss of B weight vectors on all (or the first E_max) Lab episodes: fixed keys, M members from a pool spun
+    at each weight vector with the same keys, anchors 0, every, ..., T - k. Returns (B,)."""
+    import numpy as np
+    _, ev, sp = _fns(k, burn)
+    B, E = labY.shape[:2]
+    E = E if E_max is None else min(E, E_max)
+    T = labY.shape[2] - 1
+    kb = lambda tag_, n: jax.vmap(lambda b: jax.vmap(lambda j: jax.random.fold_in(jax.random.fold_in(key, tag_), j))(jnp.arange(n)))(jnp.arange(B))
+    P_ = sp(jnp.asarray(Z), jnp.asarray(dens), kb(7, pool))
+    mi = np.arange(E * M) % pool
+    X0 = P_[:, mi].reshape((B, E, M) + P_.shape[2:])
+    keys = kb(8, E * M).reshape(B, E, M)
+    an = jnp.asarray(np.tile(np.arange(0, T - k + 1, every), (B, E, 1)))
+    return np.asarray(ev(jnp.asarray(Z), jnp.asarray(dens), X0, jnp.asarray(labY[:, :E]), jnp.asarray(labU[:, :E]), keys,
+                         jnp.asarray(scale), an))
+
+
+_PRED = {}
+
+
+def predict_items(th, hist, Ptest, key, m=24, burn=300, chunk=16, queries=(8, 16, 32)):
+    """W's samples for every item of one world: (n_items, m, len(queries), NOBS). A pool of m members spun at th;
+    every item assimilates its history from the pool with its own noise keys, then simulates under its program."""
+    import numpy as np
+    kq = (tuple(queries), burn)
+    if kq not in _PRED:
+        _PRED[kq] = (jax.jit(spin, static_argnums=2),
+                     jax.jit(lambda th, x, h, p, kk: jax.vmap(lambda hh, pp, k_: predict(th, x, hh, pp, k_, list(queries)))(h, p, kk)))
+    sp, pr = _PRED[kq]
+    x = sp(th, jax.vmap(lambda j: jax.random.fold_in(key, j))(jnp.arange(m)), burn)
+    n = hist.shape[0]
+    out = []
+    for s in range(0, n, chunk):
+        e = min(n, s + chunk)
+        kk = jax.vmap(lambda i: jax.vmap(lambda j: jax.random.fold_in(jax.random.fold_in(key, 1000 + i), j))(jnp.arange(m)))(jnp.arange(s, e))
+        out.append(np.asarray(pr(th, x, jnp.asarray(hist[s:e]), jnp.asarray(Ptest[s:e]), kk)))
+    return np.concatenate(out)
