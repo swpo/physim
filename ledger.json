@@ -279,10 +279,10 @@
     {
       "billed_usd": null,
       "cap_usd": 8.4,
-      "conservative_usd": 1.556,
+      "conservative_usd": 1.5769,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.782,
+      "hours": 0.792,
       "job_id": "r6-foundryexam-002",
       "purpose": "Round-6 study foundryexam: exam pilot where the hidden law is a network's weights (foundry transport automaton); reference policies K, O, C, P0, amortised S(N), fine-tuned P0, D(N), ridge on 16 screened-prior worlds and 2 x 12 neighbourhood worlds (eps 0.3, 0.1)",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -329,8 +329,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 60.2207,
     "prior_spend_usd": 0.0,
-    "spent_usd": 49.0767,
+    "spent_usd": 49.0976,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T12:26:05Z"
+    "updated_at": "2026-11-11T12:26:43Z"
   }
 }

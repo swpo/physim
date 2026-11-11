@@ -18,7 +18,7 @@
   ],
   "job_id": "r6-cards-002",
   "max_estimate_usd": 3.48,
-  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $3.48",
+  "message": "no offer that fits the cap is available right now; will retry",
   "plan": {
     "max_estimate_usd": 3.48,
     "offers": [
@@ -45,5 +45,5 @@
   },
   "pods": [],
   "state": "queued",
-  "updated_at": "2026-11-11T12:26:05Z"
+  "updated_at": "2026-11-11T12:26:43Z"
 }
