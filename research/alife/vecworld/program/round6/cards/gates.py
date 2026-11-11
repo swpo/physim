@@ -190,7 +190,7 @@ def gates(d: dict) -> dict:
     g["sigma_hat_level"] = best
     g["exam_worthy"] = bool(best is not None and ok(sig[best]) and sig[best] >= TH["SIGMA_HAT_MIN"])
     g["structure"] = bool(d["s.nb_mean"] >= TH["NB_MIN"] and d["s.slots_full_share"] <= TH["SLOTS_FULL_MAX"]
-                          and d["s.half_life_ticks"] >= TH["HALF_LIFE_MIN"]
+                          and ok(d["s.half_life_ticks"]) and d["s.half_life_ticks"] >= TH["HALF_LIFE_MIN"]
                           and (d["s.v_net"] >= TH["V_NET_MIN"] or d["s.events100"] >= TH["EVENTS_MIN"]))
     g["interaction"] = bool(ok(d.get("b.pf_disp8")) and ok(d.get("b.ceil_disp8")) and d["b.pf_disp8"] >= TH["BODY_PF_MIN"]
                             and d["b.ceil_disp8"] <= TH["BODY_CEIL_MAX"])

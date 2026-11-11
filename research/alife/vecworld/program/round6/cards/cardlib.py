@@ -636,6 +636,8 @@ def structure_card(rec, sz: Sizes, Hpx: int, lag=8):
     s32 = surv.get(32, surv.get(8, float("nan")))
     L0 = 32 if 32 in surv else 8
     out["half_life_ticks"] = float(L0 * np.log(2.0) / max(-np.log(max(s32, 1e-12)), 1e-12)) if s32 < 1 else float("inf")
+    if p[:-L0].sum() < 20:                                                    # too few body-ticks to say
+        out["half_life_ticks"] = float("nan")
     out["age_mean"] = float((tab[..., AGE_] * p).sum() / npres)
     g = rec["glob"].astype(np.float64)                                        # (T + 1, M, 5)
     dg = (g[-1] - g[0]).mean(0) * 100.0 / T
