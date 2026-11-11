@@ -15,8 +15,8 @@ worlds where (c) can bind.
 
 ## 1. The exam
 
-Round-5 pilot B (`round5/vortexexam`): fed vortices at 128 px, hidden (eps, mu, e), 404 ticks, 200-nat programs
-of the public mix; item = level-1 history and program, answer = level 2 at 8, 16, 32 ticks. Public: the exact law
+Round-5 pilot B (`round5/vortexexam`): fed vortices at 128 px, hidden (eps, mu, e), 404 ticks, 200-nat programs of
+the public mix; item = level-1 history and program, answer = level 2 at 8, 16, 32 ticks. Public: the exact law
 (`vxlib`), prior, mix, scales. Hidden: parameters, noise secret, items. The agent is told "your simulator is
 exact; you cannot afford it at exam scale", and three numbers:
 
@@ -32,8 +32,8 @@ Zero point: r = 1, R >= 1,350 (P0's 1,024 design episodes and 320 dedicated ones
 [platform_job_B.value.member_ticks]), f = 1: every round-5 policy runs unchanged. Check: the zero arm re-scores
 pilot B's stored design and items (`origin/gpu-jobs:jobs/r5-vortexexam-006/out`: design.npz, items.npz, exam.npz)
 and must give P0 0.488, C 0.519, S(1) 0.517 and sigma 0.061 +- 0.048 within 2 se (V5
-[headline.skill_B.value.net]). Settings: (r, R) = (1, 1,350), (1/4, 64),
-(1/16, 16); f = 0.05; Lab = 4 exam-episode equivalents, 800 nats per episode.
+[headline.skill_B.value.net]). Settings: (r, R) = (1, 1,350), (1/4, 64), (1/16, 16); f = 0.05; Lab = 4
+exam-episode equivalents, 800 nats per episode.
 
 ## 2. Mechanism, and what an experimenter must do
 
@@ -49,9 +49,9 @@ Science should pay because pooling boxes and scaling noise with N is a theory wh
 
 What the experimenter must do: choose box sides. Run the Lab at two sides (at r = 1/4, for example 8 episodes at
 64 px and 32 at 32 px: the 4 exam-episode equivalents, no nats) and compare density, sweep time and selection
-constant per vortex; if they agree, pool; if not, the box is too small. Stirring does not help: the
-law's constants fitted on branches without input, with blind and with aimed 200-nat programs have the same errors
-(b1: 0.062, 0.095, 0.054; c1: 0.058, 0.069, 0.077; S [screen.law_constants_from_branches_by_arm]).
+constant per vortex; if they agree, pool; if not, the box is too small. Stirring does not help: the law's
+constants fitted on branches without input, with blind and with aimed 200-nat programs have the same errors (b1:
+0.062, 0.095, 0.054; c1: 0.058, 0.069, 0.077; S [screen.law_constants_from_branches_by_arm]).
 
 The weakness: that experiment is a choice of two sizes, which a script can make, and passive data at two sizes
 show the defect to any learner. Nothing here needs a designed input.
@@ -60,9 +60,9 @@ show the defect to any learner. Nothing here needs a designed input.
 
 The hidden part is what the affordable simulator leaves out. Four candidates, each run from four hidden 64 px
 states with eight fresh-noise branches, without input and under an aimed 200-nat program. Round-5 screen: 0 = the
-oracle, 1 = climatology; jackknife se over states (S [screen.none.screen], [screen.aimed.screen]). Terms: the
-law is d s_b = b1 s (1 - s) + b2 (1 - 2 s) with N relaxing to a level proportional to area; its control has a
-constant in place of s (1 - s); "rescaled" multiplies N by the area ratio; "pooled" sums k small-box runs into one
+oracle, 1 = climatology; jackknife se over states (S [screen.none.screen], [screen.aimed.screen]). Terms: the law
+is d s_b = b1 s (1 - s) + b2 (1 - 2 s) with N relaxing to a level proportional to area; its control has a constant
+in place of s (1 - s); "rescaled" multiplies N by the area ratio; "pooled" sums k small-box runs into one
 synthetic exam-size episode.
 
 | affordable simulator run from the hidden state | cost f | no input | aimed input |
@@ -79,12 +79,12 @@ synthetic exam-size episode.
 | generic level-2 regression | 0 | 0.38 +- 0.05 | 0.51 +- 0.09 |
 | oracle ignoring the program | 1 | | 0.18 +- 0.05 |
 
-C and D do not bind: a step five times longer loses nothing at level 2, and three members score as seven. B
-binds, but a level-2 model at no cost beats half a simulation. A alone leaves the affordable simulator useless.
-No row moves under designed input by more than its error. **Chosen: A**, as the cap r.
+C and D do not bind: a step five times longer loses nothing at level 2, and three members score as seven. B binds,
+but a level-2 model at no cost beats half a simulation. A alone leaves the affordable simulator useless. No row
+moves under designed input by more than its error. **Chosen: A**, as the cap r.
 
-What recipes make of the cap, scored at 128 px (8 truth members x 24 items; the 32, 48, 64 px pools cost 5.5,
-3.5, 5.0 exam episodes in px-ticks; S [transfer_128.skill.all]):
+What recipes make of the cap, scored at 128 px (8 truth members x 24 items; the 32, 48, 64 px pools cost 5.5, 3.5,
+5.0 exam episodes in px-ticks; S [transfer_128.skill.all]):
 
 | policy | from 64 px (r = 1/4) | from 48 px | from 32 px (r = 1/16) |
 |---|---|---|---|
@@ -162,12 +162,12 @@ or level 1, and will not call bar 3 without bar 4 a science test: that is an exa
 ## 6. Sizes and cost
 
 Stop-rule job, one, cap $5: pilot B's ten truths with their stored design and 480 items of 8 replicates (redone if
-the items lack what a pooled predictor needs: 0.19 million member-ticks, about $0.7); new pooled designs of 256 parameter points
-x 4 boxes at 64 px and x 16 at 32 px; 4 pooled Lab and 16 pooled true-parameter episodes per truth at both sides;
-2 training seeds; ridge family with H, H_ctl, H_ns. That is 0.37 million exam-equivalent member-ticks, $1.2 to 1.7
-at $3.3 to 4.5 per million, about $2.5 with training on a 40 GB A100 (estimate; the 32 px rate is not measured);
-largest array 4,096 members x 32^2 x 5 fields. **Stop rule:** the study ends unless bars 3 and 4 both hold at one
-setting.
+the items lack what a pooled predictor needs: 0.19 million member-ticks, about $0.7); new pooled designs of 256
+parameter points x 4 boxes at 64 px and x 16 at 32 px; 4 pooled Lab and 16 pooled true-parameter episodes per
+truth at both sides; 2 training seeds; ridge family with H, H_ctl, H_ns. That is 0.37 million exam-equivalent
+member-ticks, $1.2 to 1.7 at $3.3 to 4.5 per million, about $2.5 with training on a 40 GB A100 (estimate; the 32
+px rate is not measured); largest array 4,096 members x 32^2 x 5 fields. **Stop rule:** the study ends unless bars
+3 and 4 both hold at one setting.
 
 Full study, only then: ten new pilot truths, the zero arm (1.05 million member-ticks), both settings, nets, G1 to
 G4: about 1.6 million member-ticks, $5 to 7, cap $12 (estimate).
@@ -184,11 +184,11 @@ Declared budgets (decision 2): R = 64 exam-episode equivalents (zero point 1,350
 | The budget unit is soft: a step five times longer costs nothing at level 2, so R = 64 buys 320 | declare the reference integrator; cap total compute |
 | 8 truth members, 4 screen states, no programs in the transfer tables | the stop-rule job |
 
-What would change the program: a world whose card shows a **pooling defect** (exam-size reference minus the
-pooled small-box recipe; here 0.006 at 64 px, 0.167 at 32 px) of at least 0.15 at a box side where a level-k law
-fitted on small boxes still holds. On fed vortices that window is empty. I recommend: put the pooling defect on
-the world card (three pools; `analyse.py` [transfer_128]), keep R and f as declared numbers on every exam with r
-as a third, and do not run (c) as its own exam on this world.
+What would change the program: a world whose card shows a **pooling defect** (exam-size reference minus the pooled
+small-box recipe; here 0.006 at 64 px, 0.167 at 32 px) of at least 0.15 at a box side where a level-k law fitted
+on small boxes still holds. On fed vortices that window is empty. I recommend: put the pooling defect on the world
+card (three pools; `analyse.py` [transfer_128]), keep R and f as declared numbers on every exam with r as a third,
+and do not run (c) as its own exam on this world.
 
 | file | what |
 |---|---|
