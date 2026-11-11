@@ -49,6 +49,7 @@ ap.add_argument("--size", default="full", choices=("full", "presmoke", "smoke"))
 ap.add_argument("--max-hours", type=float, default=2.5)
 ap.add_argument("--full-hours", type=float, default=None, help="presmoke: the time the full pass will have (speed guard)")
 ap.add_argument("--cpu-ok", action="store_true")
+ap.add_argument("--w-steps", type=int, default=None, help="full pass: W's Adam steps, set by the presmoke's speed guard")
 args = ap.parse_args()
 OUT = args.out
 os.makedirs(OUT, exist_ok=True)
@@ -66,7 +67,10 @@ SMOKE = dict(burn=3, n_hidden=2, n_lab=8, lab_chunk=4, n_items=4, R=3, n_clim=4,
              ft_smax=20, ft_folds=2, d_steps=20, batch_lab=16, n_seeds=2, eval_small=10, chunk_steps=10, w_cands=3, w_pre_E=2,
              w_starts=2, w_steps=2, w_lr=(0.03, 0.01), w_eb=2, w_M=2, w_A=1, w_k=4, w_pool=2, w_respin=1, w_pair=2, w_eval_M=2,
              w_eval_pool=2, wp_n=8, wp_steps=20, wp_batch=16, wp_lock=2, eval_big=10, shape_test=True)
-CFG = {"full": FULL, "presmoke": PRESMOKE, "smoke": SMOKE}[args.size]
+CFG = dict({"full": FULL, "presmoke": PRESMOKE, "smoke": SMOKE}[args.size])
+if args.w_steps:
+    CFG["w_steps"] = int(args.w_steps)
+W_MIN_STEPS, W_MAX_STEPS = 80, 200                                  # addendum 4
 NN.Cfg.CHUNK = CFG["chunk_steps"]
 if args.size == "smoke":
     NN.Cfg.EVAL_ROWS, NN.Cfg.EVAL_DRAWS = 16, 4
@@ -234,7 +238,7 @@ def w_condition(HW, c):
         rep = lambda a: np.concatenate([np.repeat(a[i:i + 1], S_, 0) for i in g])
         Z0 = jnp.concatenate([Zc[order[i]] for i in g])
         t1 = time.time()
-        Z, tr = W.fit_batch(Z0, rep(dens), rep(Y), rep(U), rep(sc), jax.random.fold_in(KEY, 100 + g0), steps=CFG["w_steps"],
+        Z, tr, tm = W.fit_batch(Z0, rep(dens), rep(Y), rep(U), rep(sc), jax.random.fold_in(KEY, 100 + g0), steps=CFG["w_steps"],
                             lr=CFG["w_lr"], eb=CFG["w_eb"], M=CFG["w_M"], A=CFG["w_A"], k=CFG["w_k"], pool=CFG["w_pool"],
                             burn=CFG["burn"], respin=CFG["w_respin"], log=log, tag=f" W{c} w{g0}",
                             t_max=None if args.size != "full" else max(60.0, left() - 600.0))
@@ -243,7 +247,7 @@ def w_condition(HW, c):
         Zfit[g] = np.asarray(Z).reshape(len(g), S_, W.NZ)
         ev[g] = e.reshape(len(g), S_)
         traces.append(tr)
-        SPEED.setdefault(f"w{c}_fit", []).append(dict(steps=int(tr.shape[0]), B=int(Z0.shape[0]), seconds=time.time() - t1))
+        SPEED.setdefault(f"w{c}_fit", []).append(dict(steps=int(tr.shape[0]), B=int(Z0.shape[0]), seconds=time.time() - t1, **tm))
     CLOCK[f"w{c}_fit_s"] = time.time() - t
     # seeds: seed s is the better (all-episode fit loss) of starts s, s + 2, ...
     nseed = min(2, S_)
@@ -338,20 +342,28 @@ def write_info(done=False, extra=None):
 
 
 def speed_guard():
-    """Presmoke: project the full pass from the measured fit speed and stage 1's timings; exit 4 if too slow."""
+    """Presmoke (addendum 4): W's Adam steps for the full pass from the measured STEADY fit speed (compilation
+    excluded) and the time the full pass will have after the rest of this presmoke; at most 200; exit 4 below 80."""
     F = FULL
     fs = [r for k in SPEED if k.startswith("w") for r in SPEED[k]]
-    per_step_B = sum(r["seconds"] for r in fs) / max(sum(r["steps"] * r["B"] for r in fs), 1)   # s per step per fit
-    nfits = 2 * F["n_hidden"] * F["w_starts"]
-    w_s = per_step_B * F["w_steps"] * nfits * 1.15 + 2 * CLOCK.get("wm_prescreen_s", 60) * (F["n_hidden"] / CFG["n_hidden"]) * (F["w_cands"] / CFG["w_cands"])
-    pred_s = CLOCK.get("w_predict_s", 30) * (F["n_hidden"] / CFG["n_hidden"]) * 1.5
-    rest_s = 2 * 375 + 2 * 300 + 2 * (F["n_hidden"] * F["wp_n"] * 348 / 30000.0 + 450) + 900   # FT, D, W+ (sim + nets), data and scores
-    total_h = (w_s + pred_s + rest_s) / 3600
-    have = None if args.full_hours is None else args.full_hours - (time.time() - T0) / 3600
-    ok = have is None or total_h <= 1.25 * have
-    res = dict(seconds_per_fit_step=per_step_B, projected_w_hours=w_s / 3600, projected_hours_total=total_h, hours_available=have, speed_ok=ok)
+    step_B = sum(r["steady_s"] for r in fs) / max(sum(r["steady_steps"] for r in fs), 1)        # s per step of B fits
+    B = fs[0]["B"]
+    n_calls = 2 * F["n_hidden"] * F["w_starts"] / B                                             # fit_batch calls, both Labs
+    scale = F["n_hidden"] / CFG["n_hidden"]
+    pre_s = 2 * CLOCK.get("wm_prescreen_s", 60) * scale * (F["w_cands"] / CFG["w_cands"])
+    pred_s = CLOCK.get("w_predict_s", 30) * scale * 3.0                                         # W mix, W designed, W(true), W(prior)
+    respin_s = 2 * (F["w_steps"] // F["w_respin"]) * n_calls * 2.0
+    rest_s = (2 * 375 + 2 * 62 + 2 * (F["n_hidden"] * F["wp_n"] * 348 / 41700.0 + 336) + 300 + 600       # FT, D, W+, data, scoring
+              + pre_s + pred_s + respin_s + 900)                                                # margin
+    have = None if args.full_hours is None else args.full_hours - (time.time() - T0) / 3600 - 0.2    # rest of the presmoke
+    steps = W_MAX_STEPS if have is None else int(min(W_MAX_STEPS, (have * 3600 - rest_s) / (n_calls * step_B * 1.1)))
+    total_h = (rest_s + n_calls * step_B * steps) / 3600
+    ok = steps >= W_MIN_STEPS
+    res = dict(seconds_per_step_of_B_fits=step_B, B=B, fit_calls=n_calls, w_steps=steps, projected_hours_total=total_h,
+               projected_rest_hours=rest_s / 3600, hours_available=have, speed_ok=ok, records=fs)
     jdump("shape_test.json", res)
-    log(f"speed guard: {per_step_B:.3f} s per fit step per fit; projected {total_h:.2f} h (W {w_s / 3600:.2f}); available {have}; ok {ok}")
+    log(f"speed guard: {step_B:.3f} s per step of {B} fits (steady); W steps for the full pass {steps}; projected {total_h:.2f} h; "
+        f"available {have}; ok {ok}")
     if not ok:
         log("TOO SLOW: stopping before the full pass")
         sys.exit(4)

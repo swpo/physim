@@ -76,3 +76,16 @@ The declared criteria T1-T6 and their thresholds are unchanged. Fixed now:
    W(prior), FT mix, D mix, W designed, FT designed, D designed, W+ mix, W+ designed. Stage 1's public parameters are
    copied to inputs/stage1/ (P0(1,000) 3 seeds, C(16,384) seed 0, worlds.json). No platform allocator (the W fit
    dispatches one step at a time). Expected about 2.2 h, about $4.5; cap $8.10.
+
+## Addendum 4, 11 Nov 2026 21:45 UTC, before request r6-foundrylong-003 (seen: job 002's presmoke log, 2 worlds)
+
+Job r6-foundrylong-002 stopped itself at its presmoke speed guard after 1.6 min (exit 4; $0.10 billed): the guard
+divided the wall time of 10 fit steps, JIT compilation included, by the steps, and projected 4.9 h. Seen in its log
+(2 hidden worlds, presmoke sizes, not a result): skills at 16 ticks C 0.745, P0 0.533, ridge 0.43, W after 10 Adam
+steps 0.25. Changes, for job 003 (the study's last):
+
+1. `fl_w.fit_batch` times the first step (compilation) apart from the steady steps; the guard uses the steady time.
+2. **A size now set by the measured speed**: W's Adam steps in the full pass are the largest number, at most the
+   declared 200, that fits the time left after every other part (projected from stage 1's timings and the presmoke's)
+   with a 10% margin; the presmoke exits 4 if fewer than 80 fit. The number is written to the presmoke's
+   shape_test.json and passed to the full pass; it is reported with the results. Nothing else changes.

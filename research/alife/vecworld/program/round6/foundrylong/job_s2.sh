@@ -29,9 +29,11 @@ RC=$?
 P "presmoke exit $RC"
 if [ $RC -ne 0 ]; then tail -40 "$OUT/presmoke/progress.txt"; exit 2; fi   # 4 from run_fl2: too slow (shape_test.json)
 rm -f "$OUT/presmoke/scores.npz" "$OUT/presmoke/w_fits.npz"                  # test material, not results
+WSTEPS=$($PY -c "import json; print(json.load(open('$OUT/presmoke/shape_test.json'))['w_steps'])")
+P "W steps for the full pass (speed guard): $WSTEPS"
 LEFT=$(awk -v h="$HOURS" -v t0="$T_START" -v t1="$(date +%s)" 'BEGIN { printf "%.3f", h - (t1 - t0) / 3600.0 }')
 P "full pass: $LEFT h left of $HOURS"
-$PY -B run_fl2.py --size full --out "$OUT/full" --max-hours "$LEFT"
+$PY -B run_fl2.py --size full --out "$OUT/full" --max-hours "$LEFT" --w-steps "$WSTEPS"
 RC=$?
 P "full exit $RC; OUT size $(du -sh "$OUT" | cut -f1)"
 exit $RC

@@ -302,7 +302,8 @@ def fit_batch(Z0, dens, labY, labU, scale, key, steps=200, lr=(0.03, 0.01), lr_s
     """Adam on B fits at once. Z0 (B, NZ) starts; dens (B, C); labY (B, E, T + 1, NOBS); labU (B, E, T, NW); scale
     (B, NOBS). Each step: eb random episodes per fit, M members from the fit's pool (spun at its current weights,
     renewed every `respin` steps), A random anchors in [0, T - k]; noise keys fixed per (fit, episode) (common random
-    numbers). Assimilation only up to the last anchor. Returns (Z (B, NZ), trace (steps, B))."""
+    numbers). Assimilation only up to the last anchor. Returns (Z (B, NZ), trace (steps, B), timing): timing holds
+    the seconds of the first step (compilation) and of the steady steps after it, and their count."""
     import numpy as np
     vg, _, sp = _fns(k, burn)
     B, E, T1 = labY.shape[:3]
@@ -332,14 +333,18 @@ def fit_batch(Z0, dens, labY, labU, scale, key, steps=200, lr=(0.03, 0.01), lr_s
         l, g = vg(Z, dens, X0, Ys, Us, keys, scale, jnp.asarray(an))
         rate = lr[0] if it < lr_switch * steps else lr[1]
         Z, st = adam(Z, g, st, rate)
-        trace.append(np.asarray(l))
+        trace.append(np.asarray(l))                                            # synchronises the step
+        if it == 0:
+            t_first = __import__("time").time()
         if log and (it + 1) % 50 == 0:
             log(f"  fit{tag} step {it + 1}/{steps}: window loss median {float(np.median(trace[-1])):.4f} ({__import__('time').time() - t0:.0f}s)")
         if t_max is not None and __import__("time").time() - t0 > t_max:
             if log:
                 log(f"  fit{tag}: stopped at step {it + 1} by its time limit")
             break
-    return Z, np.stack(trace)
+    t_end = __import__("time").time()
+    timing = dict(first_s=t_first - t0, steady_s=t_end - t_first, steady_steps=len(trace) - 1)
+    return Z, np.stack(trace), timing
 
 
 def eval_batch(Z, dens, labY, labU, scale, key, M=4, k=16, pool=8, burn=300, every=8, E_max=None, E_chunk=8):
