@@ -54,15 +54,20 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
   8,000 steps at batch 128 (+ a 1,024-episode C to show convergence in data), up to 128 training neighbours in the N arms
   (like for like with arm P's 210 prior worlds), new net seeds; same worlds, new items and Labs.
 
+- 14:04 job.sh smoke from the git archive of the 004 code: exit 0, all three arms (5.4 min). Request r6-foundryexam-004
+  pushed (A100, max 3.25 h, cap $8.40; expected about 2.1 h).
+
 ## Done
 - design and criteria declared and committed; pool and centres; code; CPU smokes from the git archive; requests 001 (rejected,
   $0), 002 (to be cancelled after arm P), 003 (pushed).
 
 ## Running
-- r6-foundryexam-003 (expected to end about 13:55 pod clock). Watchers: scratchpad/foundryexam/watch.sh and hb.sh.
+- r6-foundryexam-004. Watchers: scratchpad/foundryexam/watch.sh and hb.sh (restart them after a container restart).
 
 ## Exact next step
-1. when 003 is final: `bash fetch.sh r6-foundryexam-003 <scratch>`; `python -B make_summary.py <scratch>/jobs/r6-foundryexam-003/out/full
-   --job r6-foundryexam-003`; `python -B make_claims.py --job r6-foundryexam-003`; README.md; final report.
-2. also fetch 002 (cancelled) for its record: status, review, partial arm P.
-3. when finished: remove the worktree and the scratch folder.
+1. when 004 is final: `bash fetch.sh r6-foundryexam-004 <scratch>`; `python -B make_summary.py
+   <scratch>/jobs/r6-foundryexam-004/out/full --job r6-foundryexam-004 --status <scratch>/jobs/r6-foundryexam-004/status.json`
+   (writes results/analysis.json; 003's is results/analysis_job003.json); `python -B make_claims.py --job r6-foundryexam-004`;
+   `python -B figs.py`; then README.md (004 = final table, 003 = first pass and between-job check) and the final report.
+2. if 004 fails or is cut: the final table is 003's with C marked as a lower bound (DESIGN.md 5c).
+3. when finished: remove the worktree (git worktree remove) and the scratch folder.
