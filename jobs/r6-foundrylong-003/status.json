@@ -61,6 +61,12 @@
     "window_hours": 3.4
   },
   "pods": [],
+  "review": {
+    "at": "2026-11-11T21:38:19Z",
+    "file": "jobs/r6-foundrylong-003/review.md",
+    "sha256": "3231d8e71ea082bb6a1edcd51f27b92a1160b591006c991daf1947cf45d649ce",
+    "summary": "delta against 002: the guard blocker is fixed (steady-state timing, steps set from speed); 2 of 002's minors may still apply; fine to run"
+  },
   "state": "queued",
   "updated_at": "2026-11-11T21:37:43Z"
 }
