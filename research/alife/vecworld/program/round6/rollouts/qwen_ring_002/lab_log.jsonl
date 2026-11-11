@@ -1,0 +1,20 @@
+{"t": 1794419930.004215, "op": "card", "ok": true, "kind": null, "ticks": 0, "ticks_used": 0, "total_nats": 0.0, "seconds": 0.0005407333374023438}
+{"t": 1794419932.6205604, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 0, "total_nats": 0.0, "seconds": 0.0005762577056884766}
+{"t": 1794419934.0624404, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 34, "total_nats": 0.0, "seconds": 0.9602324962615967}
+{"t": 1794419938.5445015, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 68, "total_nats": 0.0, "seconds": 0.007691621780395508}
+{"t": 1794419965.9947143, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 102, "total_nats": 0.0, "seconds": 0.007647514343261719}
+{"t": 1794419972.4625733, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 136, "total_nats": 0.0, "seconds": 0.009209871292114258}
+{"t": 1794419993.090206, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 170, "total_nats": 0.0, "seconds": 0.008683204650878906}
+{"t": 1794419993.10385, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 204, "total_nats": 0.0, "seconds": 0.0075418949127197266}
+{"t": 1794420001.934223, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 238, "total_nats": 0.0, "seconds": 0.008513927459716797}
+{"t": 1794420001.9485364, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 272, "total_nats": 0.0, "seconds": 0.012427330017089844}
+{"t": 1794420001.9672868, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 306, "total_nats": 0.0, "seconds": 0.008441925048828125}
+{"t": 1794420001.981626, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 340, "total_nats": 0.0, "seconds": 0.009174585342407227}
+{"t": 1794420001.996424, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 374, "total_nats": 0.0, "seconds": 0.008979082107543945}
+{"t": 1794420041.3385534, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 374, "total_nats": 0.0, "seconds": 0.0005335807800292969}
+{"t": 1794420044.4773066, "op": "experiment", "ok": false, "kind": "budget", "ticks": 0, "ticks_used": 374, "total_nats": 0.0, "seconds": 4.1961669921875e-05, "error": "budget: 374 + 34 ticks > max_ticks=400; nothing ran"}
+{"t": 1794420453.5254536, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 374, "total_nats": 0.0, "seconds": 0.0006632804870605469}
+{"t": 1794420797.2046793, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 374, "total_nats": 0.0, "seconds": 0.0005249977111816406}
+{"t": 1794420802.8289537, "op": "experiment", "ok": false, "kind": "budget", "ticks": 0, "ticks_used": 374, "total_nats": 0.0, "seconds": 3.1948089599609375e-05, "error": "budget: 374 + 34 ticks > max_ticks=400; nothing ran"}
+{"t": 1794421961.7988012, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 374, "total_nats": 0.0, "seconds": 0.0007457733154296875}
+{"t": 1794422175.7335544, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 374, "total_nats": 0.0, "seconds": 0.0006546974182128906}

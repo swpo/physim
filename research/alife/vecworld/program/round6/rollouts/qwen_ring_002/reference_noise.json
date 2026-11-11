@@ -1,0 +1,38 @@
+{
+ "note": "bootstrap over the 64 items of this one instance, 2000 resamples, seed 0, paired (the same resamples for every row); skill on the K-to-O scale over the six valid cells",
+ "se": {
+  "model": 0.0158,
+  "null": 0.0129,
+  "D": 0.0791,
+  "P0": 0.023,
+  "PM": 0.0214,
+  "S": 0.0146,
+  "C": 0.0117
+ },
+ "model_minus": {
+  "null": {
+   "mean": 0.811,
+   "se": 0.0165
+  },
+  "D": {
+   "mean": 0.7275,
+   "se": 0.076
+  },
+  "P0": {
+   "mean": 0.0487,
+   "se": 0.0135
+  },
+  "PM": {
+   "mean": 0.0308,
+   "se": 0.0114
+  },
+  "S": {
+   "mean": -0.0831,
+   "se": 0.0114
+  },
+  "C": {
+   "mean": -0.1108,
+   "se": 0.0133
+  }
+ }
+}

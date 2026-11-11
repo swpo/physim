@@ -1,0 +1,19 @@
+{
+ "cap_usd": 2.0,
+ "caps": {
+  "box_memory_gb": 4,
+  "max_output_tokens": 8192,
+  "max_turns": 150,
+  "wall_minutes": 60
+ },
+ "config": "research/alife/vecworld/program/round6/rollouts/configs/qwen_ring_002.toml",
+ "exam_profile": "ring",
+ "instance": "pilot-qwen-ring-002",
+ "job_id": "qwen-ring-002",
+ "model": "qwen/qwen3.6-35b-a3b",
+ "pin": "d9694f3e5b6c92a98c13fb36f02645f01f18728c",
+ "pin_sha256": "9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4",
+ "purpose": "rehearsal of the round-4 pin in the cloud container: one full rollout of the default model on the ring profile, default caps, to its natural end",
+ "requester": "integrator of port round 4 (cloud container)",
+ "schema": "rollout-job/v1"
+}

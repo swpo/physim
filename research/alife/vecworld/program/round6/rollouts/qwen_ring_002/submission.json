@@ -1,0 +1,29 @@
+{
+ "root": "/workspace/submission",
+ "files": [
+  {
+   "path": "pool.npz",
+   "bytes": 68912,
+   "sha256": "1565f63b82f38b622fb82f133da5cf056ae57d6d9582c252cc77842f01b9e16a"
+  },
+  {
+   "path": "predict.py",
+   "bytes": 4198,
+   "sha256": "32866544e2c9561c14fcd8baa7ddc6a10c79ed05814f6ba88128536f23247ac0"
+  }
+ ],
+ "skipped": [],
+ "n_files": 2,
+ "bytes": 73110,
+ "n_skipped": 0,
+ "skipped_bytes_declared": 0,
+ "directories_seen": 1,
+ "caps": {
+  "max_files": 2000,
+  "max_bytes": 20971520
+ },
+ "complete": true,
+ "archive": "read to its end",
+ "written": true,
+ "graded_manifest_sha256": "0b7b9b30874cc40ad156d46e964c16446d813357ef50ea0064899a4a75666e69"
+}

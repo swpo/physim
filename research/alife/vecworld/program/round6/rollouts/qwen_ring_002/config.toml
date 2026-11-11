@@ -1,0 +1,16 @@
+# qwen-ring-002: rehearsal of the round-4 pin in the cloud container (integrator): ONE full rollout of the default
+# model on the ring profile with the profile's default caps, to its natural end, without help.
+# PILOT_NEVER_REUSE_AS_EXAM: the instance is public pilot material.
+schema = "physim2-rollout/v1"
+model = "qwen/qwen3.6-35b-a3b"
+exam_profile = "ring"
+instance = "pilot-qwen-ring-002"
+max_turns = 150
+max_output_tokens_per_turn = 8192
+max_context_tokens = 200000
+wall_minutes = 60
+box_memory_gb = 4
+cap_usd = 2.0
+reasoning_effort = "default"
+reasoning_summary = "default"
+push = false
