@@ -1,0 +1,36 @@
+{
+ "schema": "gpu-job/v1",
+ "job_id": "r6-foundrylong-001",
+ "purpose": "Round-6 study foundrylong, stage 1: is the pilot's long-horizon gap (16 ticks, 32 Lab episodes) only the recipe's compute? P0 on 1,000 screened prior worlds (3 seeds), a cross-validated fine-tune, a 16,384-episode reference; queries at 8, 16, 32 ticks on the pilot's 16 hidden worlds",
+ "requester": "cloud study foundrylong (round 6), session_01BZceC7G6m7DgM6KpXjnWXj",
+ "paths": [
+  "research/alife/vecworld/vw1",
+  "research/alife/vecworld/program/round5/foundry",
+  "research/alife/vecworld/program/round6/foundryexam",
+  "research/alife/vecworld/program/round6/foundrylong"
+ ],
+ "gpu": {
+  "types": [
+   "A100_40GB",
+   "A100_80GB"
+  ],
+  "count": 1,
+  "spot": false
+ },
+ "max_hours": 3.15,
+ "cap_usd": 8.1,
+ "setup": [
+  "curl -LsSf https://astral.sh/uv/install.sh | sh",
+  "export PATH=$HOME/.local/bin:$PATH",
+  "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+  "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+ ],
+ "run": "cd research/alife/vecworld/program/round6/foundrylong && bash job.sh",
+ "env": {
+  "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+  "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+  "FL_SIZE": "full",
+  "FL_MAX_HOURS": "2.9"
+ },
+ "notes": "Stage 1 of study foundrylong, declared in round6/foundrylong/DECLARED.md (commit 2ab6e7bb, before this request) with addendum 1 in DEVIATIONS.md. Question: is the pilot's long-horizon gap (foundryexam arm P, 16 ticks, 32 Lab episodes) only the compute of the no-hypothesis recipe? Same 16 hidden worlds as the pilot; new items, Labs and secret; episodes of 49 frames (H = 32), queries at 8, 16, 32 ticks. Code: fl_lib.py sets the episode constants of the pilot's fx_lib / fx_net before fx_net is imported (no pilot file changed) and adds a training driver (equal weight per horizon, held-out loss and best parameters per horizon, 50 steps per dispatch as in the pilot, data passed as arguments); run_fl.py is the job; round5/foundry/job2.py is imported for its run_arm only (its main() is not called). job.sh: (1) presmoke, about 15 min: screen of 256 draws in 2 chunks of 128 (speed measured; if a chunk does not fit on the card job2.run_arm halves it and the full pass starts from the chunk that fitted), gate, 16 prior worlds, 2 hidden worlds with 2,048 true-weight episodes each, every net kind for 100 steps, and a shape test on noise data at the FULL array shapes (3 P0 nets on 64,000 episodes at batch 256; 8 C nets on 16,384 episodes each at batch 128; 8 on 4,096; 16 Lab nets at batch 64), 200 steps each; the whole job is projected from the measured speeds and the presmoke exits 4 if the projection exceeds 1.25 x the time left. (2) the full pass. Full sizes: screen of 15,040 pre-screened draws of prior seed 2028 (49.3 million member-ticks; 74,700 per s on round 5's H100, unknown on this card: 20-35 min); gate of about 1,580 candidates; 1,000 prior worlds x 64 episodes and 16 hidden worlds x 16,384 episodes of 348 ticks (113.5 million member-ticks; the pilot measured 42,500 per s on the A100 40GB: 45 min); hidden worlds (Lab 32, 96 items x 12 futures, 96 climatology runs). Nets: P0 on 1,000 / 210 / 64 worlds (3 seeds; 40,000 / 16,000 / 6,000 steps; 9.7 ms per step of 2 such nets in the pilot), C on 16,384 episodes (2 seeds, 16,000 steps, 8 nets in lockstep, 18.7 ms per step in the pilot), C on 4,096 and 1,024, fine-tuning with 4-fold cross-validation (3 rates x 400 steps, 3 seeds, 2 budgets; 16 nets in lockstep, 18.6 ms per step), D, and one P0 net with a doubled schedule. Expected: nets 63 min, simulation 71 min, compilation and scoring 10 min; 2.65 h with the presmoke, about $5.3 at $1.99/h. job.sh stops new work at 2.9 h on its own clock and trainings stop at that deadline; order (cut from the end): P0(1000); C(16384) seed 0; FT; D; C(16384) seed 1; C(4096); P0(210); P0(64); C(1024); P0x2. scores.npz is rewritten after every family, so a cut job leaves analysable outputs. Memory. Device: the C stack of 8 nets has X of 1.23e9 elements (4.9 GB), CU and CtU 8.2e8 each, 11.5 GB in all; P0 on 1,000 worlds 5.6 GB; training temporaries about 5 GB; every device array is asserted below 2^31 elements. The screen's largest array at 128 draws: 6,144 branch members x 16 hidden units x 4,096 cells = 4.0e8 float64 (3.2 GB). The simulator runs chunks of 2,048 members as in the pilot. Host: simulation buffers 20 GB, data sets and stacks up to about 30 GB more (the pilot's machine had 216 GB). XLA_PYTHON_CLIENT_ALLOCATOR=platform as in the pilot's jobs 003-005 (many steps per dispatch; the quoted speeds were measured under it). Outputs: about 40 MB under $OUT, largest file under 6 MB: scores, training records, screen and gate tables, item histories, the parameters of P0(1,000) and of C(16,384) seed 0 (16 files of 1.6 MB) for stage 2. PILOT ONLY: public pilot worlds, never an exam; the noise secret is never written. Exit codes: 2 presmoke failed (4 inside it: too slow), 1 a part failed, 0 complete. Cap: $2.35/h (the 80 GB card) x (3.15 + 0.25) h = $7.99, rounded up plus $0.10. CPU test: job.sh with FL_SIZE=smoke from a git archive of exactly these four paths at this commit's code, exit 0, and make_summary.py on its outputs."
+}

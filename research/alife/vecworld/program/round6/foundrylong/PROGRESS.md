@@ -4,21 +4,27 @@ Worktree /home/user/wt/foundrylong (branch wt-foundrylong, pushes to claude/fisi
 Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/foundrylong/ (delete when done).
 
 ## Done
-- 11 Nov 17:55 UTC: DECLARED.md (both stages, criteria, outcomes), DEVIATIONS.md (empty), inputs/pilot_worlds.json and
-  inputs/code_norm.json (copied from job r6-foundryexam-005), make_sel.py (pre-screen of a fresh prior pool; reproduces
-  the seed-2027 selection on its first 4,096 indices: 384 of 384).
+- 11 Nov 17:55 UTC: DECLARED.md (both stages, criteria, outcomes; commit 2ab6e7bb), DEVIATIONS.md, inputs/pilot_worlds.json and
+  inputs/code_norm.json (copied from job r6-foundryexam-005), make_sel.py (reproduces the seed-2027 selection: 384 of 384).
+- 18:02: inputs/sel_2028.json: 15,040 of 160,000 draws of prior seed 2028 pass the weights-only pre-screen (9.40%).
+- 18:21: fl_lib.py (driver), run_fl.py + job.sh (stage-1 job), make_summary.py; DEVIATIONS.md addendum 1; the whole job.sh
+  at FL_SIZE=smoke from a git archive of the four request paths: exit 0 (5.7 min on CPU); make_summary.py runs on its outputs.
+- 18:25: request gpu/requests/r6-foundrylong-001.json pushed (cap $8.10, max_hours 3.15, expected 2.65 h, about $5.3).
 
 ## Running
-- make_sel.py on prior seed 2028, pool 160,000 (CPU, background; log in scratch make_sel.log) -> inputs/sel_2028.json.
+- GPU job r6-foundrylong-001 (stage 1). Follow: cd /home/user/physim && git fetch -q origin gpu-jobs &&
+  git show origin/gpu-jobs:jobs/r6-foundrylong-001/status.json. READ jobs/r6-foundrylong-001/review.md BEFORE the results.
+  To cancel: push an empty gpu/requests/r6-foundrylong-001.cancel, verify with git ls-tree on origin.
 
 ## Next step, exactly
-1. When inputs/sel_2028.json exists: commit it.
-2. Write fl_lib.py (constants H = 32, horizons 8/16/32 patched into fx_lib before fx_net is imported; the training
-   driver with per-horizon sampling, validation and checkpoints; fine-tune cross-validation), run_fl.py (the job:
-   screen, gate, simulations, hidden worlds, nets, scores, parameters of P0(1,000) and C(16,384) seed 0), job.sh.
-3. CPU smoke from a git archive of the request's paths; request gpu/requests/r6-foundrylong-001.json; push; wait.
-4. make_summary.py -> results/summary.json; verdict S1; stage 2 or stop.
-5. CPU part: speed on 2 cores (float64, float32), bundle size, reference rows.
+1. When the job is done: copy jobs/r6-foundrylong-001/out/full to scratch (git archive origin/gpu-jobs jobs/r6-foundrylong-001/out/full | tar -x),
+   run `python -B make_summary.py <dir> --job r6-foundrylong-001` -> results/analysis_stage1.json; read S1 (verdict), S1a, S2-S5.
+2. If S1.stage2_runs: write the stage-2 addendum in DEVIATIONS.md (sizes, assimilation details, designed-program rule), the
+   W code (fl_w.py), CPU tests on public worlds, job script, request r6-foundrylong-002. Otherwise stop and report.
+3. CPU part (any time): cpu_part.py -> results/cpu_part.json: speed on 2 cores (float64, float32), bundle size, reference rows.
+4. results/summary.json (every number with its source), README.md, final report.
 
 ## Jobs
-none yet (cap of the study $25, at most three jobs).
+| job | state | cap | billed |
+|---|---|---|---|
+| r6-foundrylong-001 | requested 18:25 UTC | $8.10 | - |
