@@ -132,7 +132,7 @@ rep["screens_eta4"] = scr
 # closures of the P0-to-C gap by policy, class and budget (eta = 4), and at eta = 0
 clo = {}
 for nb in budgets:
-    for pol in (f"FT@{nb}", f"RES@{nb}", f"S@{nb}", f"CFT@{nb}"):
+    for pol in (f"FT@{nb}", f"RES@{nb}", f"REScv@{nb}", f"S@{nb}", f"CFT@{nb}"):
         if S.has(pol) and S.has(f"CFT@{nb}"):
             for name, cls in (("all", ALL), ("aimed_regional", TRIG), ("aimed", ("c",)), ("regional", ("d",)), ("blind", ("b",)), ("none", ("a",))):
                 clo[f"{pol}|{name}"] = closure(pol, e4, cls, nb)
@@ -146,7 +146,12 @@ for pol in ("Cpub", "Ctrue"):
     if S.has(pol) and S.has(f"CFT@{NB}"):
         for name, cls in (("all", ALL), ("aimed_regional", TRIG)):
             clo[f"{pol}|{name}"] = closure(pol, e4, cls, NB)
-for pol in [k for k in scores if k.startswith(("FTfree@", "RESfree@"))]:
+if S.has(f"REScv@{NB}") and S.has(f"CFT@{NB}"):                      # a stronger generic pick, reported only
+    for name, cls in (("all", ALL), ("aimed_regional", TRIG)):
+        Lg3, i3, n3 = S.pick([f"FT@{NB}", f"RES@{NB}", f"REScv@{NB}"], e4, cls)
+        clo[f"best_of_FT_RES_REScv@{NB}|{name}"] = {**closure(Lg3, e4, cls, NB),
+                                                    "picked_shares": {n_: float(np.mean(np.array(n3)[i3] == n_)) for n_ in n3}}
+for pol in [k for k in scores if k.startswith(("FTfree@", "RESfree@", "REScvfree@"))]:
     if S.has(pol) and S.has(f"CFT@{NB}"):
         for name, cls in (("all", ALL), ("aimed_regional", TRIG)):
             clo[f"{pol}|{name}"] = closure(pol, e4, cls, NB)

@@ -95,6 +95,11 @@ for i in range(n):
 W = AN.res_fit(z0, R.transpose(0, 1, 4, 2, 3), reg, cl, lam=1e-9)
 corr = AN.res_apply(W, z0, reg, cl, nh).reshape(n, nh, 3, G, G) / AN.SCB
 Ws = AN.res_fit(z0, R.transpose(0, 1, 4, 2, 3), reg, cl)
+Rn = rng.standard_normal(R.shape).transpose(0, 1, 4, 2, 3)                     # pure noise: nothing to learn
+_, ch_signal = AN.res_fit_cv(z0, R.transpose(0, 1, 4, 2, 3) + 0.1 * Rn, reg, cl)
+_, ch_noise = AN.res_fit_cv(z0, Rn, reg, cl)
+out["residual_cv"] = {"chosen_ridge_planted_signal": {k: str(v) for k, v in ch_signal.items()},
+                      "chosen_ridge_pure_noise": {k: str(v) for k, v in ch_noise.items()}}
 out["residual"] = {"max_abs_error_apply_no_ridge": float(np.abs(corr - R.transpose(0, 1, 4, 2, 3)).max()),
                    "n_maps": len(W), "ridge_0.05_slope_shrink_median": float(np.median([np.linalg.norm(Ws[k]) / np.linalg.norm(Wt[k]) for k in Ws])),
                    "unseen_class_gets_zero": bool(np.all(AN.res_apply({}, z0[:2], reg[:2], cl[:2], nh) == 0))}

@@ -306,8 +306,8 @@ def res_fit(z0, R, reg, cls, lam=0.05):
     return W
 
 
-def res_apply(W, z0, reg, cls, nh):
-    """The fitted correction for items: (n, nh, 192) in the exam's units (zero where nothing was fitted)."""
+def res_pred(W, z0, reg, cls, nh):
+    """The fitted correction in the public scales: (n, nh, 3, G, G) (zero where nothing was fitted)."""
     n = len(z0)
     f = np.concatenate([z0, np.ones_like(z0[:, :1])], 1).transpose(0, 2, 3, 1)
     out = np.zeros((n, nh, G, G, 3))
@@ -320,7 +320,41 @@ def res_apply(W, z0, reg, cls, nh):
                 Wk = W.get((cls[i], ih, k))
                 if Wk is not None:
                     out[i, ih][m] = f[i][m] @ Wk
-    return (out.transpose(0, 1, 4, 2, 3) * SCB).reshape(n, nh, NC)
+    return out.transpose(0, 1, 4, 2, 3)
+
+
+def res_apply(W, z0, reg, cls, nh):
+    """The fitted correction for items: (n, nh, 192) in the exam's units."""
+    return (res_pred(W, z0, reg, cls, nh) * SCB).reshape(len(z0), nh, NC)
+
+
+RES_LAMS = (0.05, 0.5, 5.0, float("inf"))
+
+
+def res_fit_cv(z0, R, reg, cls, lams=RES_LAMS):
+    """A no-harm variant of the residual (reported only, not the declared RES): per program class the ridge
+    strength is chosen among `lams` (infinity = no correction) by leave-one-episode-out squared error of the
+    predicted residual; a class with a single episode keeps the declared 0.05."""
+    cls = np.asarray(cls)
+    nh = R.shape[1]
+    W, chosen = {}, {}
+    for c in sorted(set(cls.tolist())):
+        ii = np.flatnonzero(cls == c)
+        best = lams[0]
+        if len(ii) >= 2:
+            err = []
+            for lam in lams:
+                e = 0.0
+                for j in ii:
+                    tr = ii[ii != j]
+                    Wj = res_fit(z0[tr], R[tr], reg[tr], cls[tr], lam) if np.isfinite(lam) else {}
+                    e += float(((R[j] - res_pred(Wj, z0[j:j + 1], reg[j:j + 1], cls[j:j + 1], nh)[0]) ** 2).sum())
+                err.append(e)
+            best = lams[int(np.argmin(err))]
+        chosen[c] = best
+        if np.isfinite(best):
+            W.update(res_fit(z0[ii], R[ii], reg[ii], cls[ii], best))
+    return W, chosen
 
 
 def lab_items(obs, U, P):

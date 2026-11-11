@@ -88,6 +88,7 @@ PER_EP = 1 + P_ + H_
 EP_T = FULL["burn"] + P_ + H_
 SCALES = {"SC1": LL.SC1}
 FAILED, SKIPPED, NOTES = [], [], []
+RES_LAM = {}
 STATE = {"out": ROOT_OUT, "phase": "start"}
 
 
@@ -240,6 +241,15 @@ def lab_classes(cfg, t):
     arng = np.random.default_rng([7700, int(t)])
     mix = np.concatenate([arng.permutation(np.array(LL.MIXC)) for _ in range(cfg["n_mix"] // 4)])
     return np.concatenate([mix, np.array(["a"] * cfg["n_free"])])
+
+
+def lab_c0_loss(cfg, w):
+    """Level-1 bookkeeping on the Lab's mix episodes: share of the channel-0 block sum lost between the
+    start and the end of the program, by class (the public law conserves it; the hidden term does not)."""
+    nm = cfg["n_mix"]
+    c0 = w["lab_obs"][:nm, :, :64].astype(float).sum(-1)
+    drop = 1.0 - c0[:, -1] / np.maximum(c0[:, P_], 1e-9)
+    return {c: float(drop[w["lab_cls"][:nm] == c].mean()) for c in LL.MIXC}
 
 
 def stage_worlds(cfg, times):
@@ -461,13 +471,17 @@ def lab_means(cfg, worlds, Pn, cache):
 
 
 def res_samples(cfg, w, mean_lab, S0, eps):
-    """RES fitted on the Lab episodes `eps` of world w: P0's samples S0 plus the fitted correction."""
+    """RES fitted on the Lab episodes `eps` of world w: P0's samples S0 plus the fitted correction (the
+    declared ridge), and the reported variant whose ridge is chosen by leave-one-episode-out."""
     ls = w["lab_struct"]
     eps = np.asarray(list(eps), int)
     R = ls["y"][eps] - AN.block_scaled(mean_lab[eps])
     W = AN.res_fit(ls["z0"][eps], R, ls["reg"][eps], ls["cls"][eps])
     corr = AN.res_apply(W, w["item_z0"], w["item_reg"], w["item_cls"], len(HS))
-    return S0.astype(np.float64) + corr[:, None], len(W)
+    Wc, chosen = AN.res_fit_cv(ls["z0"][eps], R, ls["reg"][eps], ls["cls"][eps])
+    corr_c = AN.res_apply(Wc, w["item_z0"], w["item_reg"], w["item_cls"], len(HS))
+    S0 = S0.astype(np.float64)
+    return S0 + corr[:, None], S0 + corr_c[:, None], chosen
 
 
 def score_budget(cfg, SCO, worlds, nb, ftp, draws, S0c, MLc, which="A_mix", suffix=None):
@@ -488,8 +502,10 @@ def score_budget(cfg, SCO, worlds, nb, ftp, draws, S0c, MLc, which="A_mix", suff
                     NN.net_samples(VIEW, ftp[("CFT", ei, t, s)], items, m, 480 + 7 * t + s, HS, SCALES, cond=True,
                                    theta_u=u_truth(t, w["eta"])))
             eps = range(nb) if which == "A_mix" else range(nm, nm + nb)
-            Sr, nfit = res_samples(cfg, w, MLc[(ei, t, s)], S0c[(ei, t, s)], eps)
+            Sr, Sc, chosen = res_samples(cfg, w, MLc[(ei, t, s)], S0c[(ei, t, s)], eps)
             put(SCO, "RES" + suffix, ei, ti, s, w, Sr)
+            put(SCO, "REScv" + suffix, ei, ti, s, w, Sc)
+            RES_LAM.setdefault("RES" + suffix, {})[f"eta{w['eta']:g}|t{t}|s{s}"] = {k: str(v) for k, v in chosen.items()}
             if which == "A_mix" and draws is not None and (ei, t, nb) in draws:
                 dr = draws[(ei, t, nb)]
                 put(SCO, "S" + suffix, ei, ti, s, w,
@@ -539,7 +555,7 @@ def pipeline(cfg, out_dir, est=None):
         info.update(times=times, failed=FAILED, skipped=SKIPPED, notes=NOTES, stage_done=stage,
                     hours=(time.time() - T0) / 3600)
         jdump("info.json", info)
-        jdump("train_info.json", TR)
+        jdump("train_info.json", {**TR, "res_cv_ridge": RES_LAM})
 
     def fits(stage, need_after=0.0):
         """True if the presmoke's estimate of `stage` (plus what must still follow) fits the time left."""
@@ -559,6 +575,7 @@ def pipeline(cfg, out_dir, est=None):
     info["lab"] = {f"eta{w['eta']:g}|t{w['truth']}": {"usage": w["lab_usage"], "classes_first_8": w["lab_cls"][:8].tolist(),
                                                      "nats_by_class": {c: float(w["lab_nats"][:cfg["n_mix"]][w["lab_cls"][:cfg["n_mix"]] == c].mean())
                                                                        for c in LL.MIXC},
+                                                     "c0_block_sum_lost_over_program_by_class": lab_c0_loss(cfg, w),
                                                      "structural_class_agreement_items": w["class_agree"],
                                                      "structural_class_agreement_lab": float(np.mean(
                                                          np.array([AN.program_class(u) for u in w["lab_U"][:, P_:].astype(float)]) == w["lab_cls"]))}
@@ -739,7 +756,7 @@ def presmoke():
     b_fast = TR["base"][-1]                                # the second base run: compiled before
     ms_base = b_fast["seconds"] / max(b_fast["steps"], 1)
     sc_rung = times[f"4 scoring rung {p['rungs'][-1]}"] / nwp * nw
-    est = {"families": t_fam, "worlds": t_world, "final": 120.0, "ms_base_step": ms_base}
+    est = {"families": t_fam, "worlds": t_world, "final": 120.0, "seconds_per_base_step": ms_base}
     for st in c["rungs"]:
         est[f"base_{st}"] = st * ms_base + sc_rung
     med = lambda v: float(np.median(v[1:] if len(v) > 1 else v)) if len(v) else 0.0
@@ -777,7 +794,7 @@ if __name__ == "__main__":
                 log("FATAL: the measured rates cannot finish the required stages inside --max-hours")
                 sys.exit(4)
             est = g["estimates_seconds"]
-        FAILED.clear(), SKIPPED.clear(), NOTES.clear()
+        FAILED.clear(), SKIPPED.clear(), NOTES.clear(), RES_LAM.clear()
         times, TR, info = pipeline(FULL, ROOT_OUT, est)
     except SystemExit:
         raise
