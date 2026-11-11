@@ -26,14 +26,25 @@ home folder must be at least the floor (--disk-floor-gib of the tools, default 8
 every DISK_CHECK_S seconds and, below the floor, the run is stopped through the same stop path as a time limit.
 The reason is written to <out_dir>/<name>.stopped.json and to the log. The watchdog deletes nothing, ever.
 
-Also a command of its own, for a rollout from a plain config file (RUNBOOK_MAC.md, steps 2c and 3):
+Also a command of its own, in two forms:
 
     VF_RUN_ID=<label> python -B tools/vfrun.py --config configs/scripted_ring.toml --run-name single-d \
-        --out-dir DIR --store DIR --disk-floor-gib 8 [--dry-run] [--model-credentials prime]
+        --out-dir DIR --store DIR --disk-floor-gib 8 [--dry-run]
 
-Without --model-credentials the config must name the stand-in client and the scripted harness and no credential
-is passed or loaded. `--model-credentials prime` is for step 3 only: PRIME_API_KEY and PRIME_TEAM_ID of the
-caller are passed on and verifiers may read ~/.prime/config.json.
+the COMMAND FORM (RUNBOOK_MAC.md, step 2c): a scripted rollout from a vf-eval config file. The config must name
+the stand-in client and the scripted harness; no credential is passed or loaded; a model cannot be called.
+
+    VF_RUN_ID=<label> python -B tools/vfrun.py --request JOB.json --pilot DIR --stage instance|reference|dry-run|rollout \
+        --disk-floor-gib 8 [--model-credentials prime]
+
+the REQUEST ROUTE (step 3, round 4): one stage of the rollout that a request file describes (schema
+rollout-job/v1; tools/check_request.py). Every stage checks the request, the pin, the strict schema of the
+rollout config (tools/check_config.py), the pilot folder and the lead's standing go. Stage `rollout` is the only
+one that can spend money: it needs `--model-credentials prime` (PRIME_API_KEY and PRIME_TEAM_ID of the caller
+are passed on to vf-eval, and verifiers may read ~/.prime/config.json), reads the model's listed prices, refuses
+a cap below one worst-case call or a bound above the lead's ceiling, reserves the bound in <pilot>/LEDGER.jsonl,
+gives vf-eval the spend table of physim2_env/spend.py, and closes the ledger row when the run has ended, however
+it ended.
 """
 from __future__ import annotations
 
@@ -64,7 +75,10 @@ ENV_PASS = ("PATH", "HOME", "TMPDIR", "USER", "LOGNAME", "LANG", "LC_ALL", "LC_C
 ENV_PASS_MODEL = ("PRIME_API_KEY", "PRIME_TEAM_ID")
 # Names that must not be in the environment of a tool at all: the same list as the step-0 check of RUNBOOK_MAC.md.
 # VF_RUN_ID is the one exception: the command that starts a tool sets it.
-ENV_REFUSE = re.compile(r"^(PHYSIM2_|UV_|VIRTUAL_ENV|PYTHON(PATH|HOME)|DOCKER_|BUILDX_|VF_|MCP_HOST|MCP_PORT|PRIME_RUNS_MODE)")
+# round 4 (audit round 3, G1): PYTHONEXECUTABLE and __PYVENV_LAUNCHER__ move the interpreter's idea of its own
+# environment (CPython Modules/getpath.py) and are refused like PYTHONHOME.
+ENV_REFUSE = re.compile(r"^(PHYSIM2_|UV_|VIRTUAL_ENV|PYTHON(PATH|HOME|EXECUTABLE)|__PYVENV_LAUNCHER__|DOCKER_|BUILDX_|VF_|MCP_HOST|MCP_PORT|"
+                        r"PRIME_RUNS_MODE)")
 ENV_REFUSE_EXCEPT = ("VF_RUN_ID",)
 # ...and two names are accepted with exactly the value a tool itself gives its children (child_env), so that a
 # helper started by a tool (tools/make_instances.py) can make the same check: this checkout, and no upload.
@@ -97,7 +111,8 @@ def require_clean_environment() -> None:
     if bad:
         raise SystemExit("refused: the environment of this command holds " + ", ".join(bad) + ".\n"
                          "A tool of the pilot starts only from an environment without PHYSIM2_*, UV_*, VIRTUAL_ENV, PYTHONPATH, "
-                         "PYTHONHOME, DOCKER_*, BUILDX_*, VF_* (other than the VF_RUN_ID of the command itself), MCP_HOST, MCP_PORT "
+                         "PYTHONHOME, PYTHONEXECUTABLE, __PYVENV_LAUNCHER__, DOCKER_*, BUILDX_*, VF_* (other than the VF_RUN_ID of "
+                         "the command itself), MCP_HOST, MCP_PORT "
                          "and PRIME_RUNS_MODE: one of them could send Docker commands to another engine or imports to another "
                          "checkout (RUNBOOK_MAC.md, step 0). Nothing was started. Stop and report.")
 
@@ -111,6 +126,10 @@ def run_label() -> str:
                          "verifiers labels every container it creates with it (verifiers.run=<label>): after an interruption\n"
                          "that label is the only way to find this run's containers without touching anybody else's.")
     return v
+
+
+STAND_IN_VAR = "PHYSIM2_STAND_IN_KEY"                        # the key variable of a run against a LOCAL stand-in endpoint (tests)
+STAND_IN_VALUE = "stand-in-not-a-key"                        # a made-up word: the stand-in checks nothing
 
 
 def child_env(extra: dict | None = None, *, model_credentials: bool = False) -> dict:
@@ -201,28 +220,45 @@ def stop_child(p, grace: float | None = None) -> str:
     """Stop a child of this tool so that it cleans up after itself: ONE SIGTERM (vf-eval then removes the
     containers it created and stops its laboratory process; it ignores further signals while it does), wait up
     to `grace` seconds, and SIGKILL only if it is still running then (its containers stay in that case:
-    RUNBOOK_MAC.md, "If a run was interrupted"). Returns what it took."""
+    RUNBOOK_MAC.md, "If a run was interrupted"). Returns what it took.
+    Round 4 (the Mac review's SIG-3 and R3-8): the SIGTERM is sent ONCE per child however often this function
+    is called, and a signal that reaches THIS tool while it waits changes nothing: the wait goes on to the same
+    deadline, so a tool that is told to stop twice neither signals vf-eval twice nor leaves it behind."""
     if p.poll() is not None:
         return "had exited"
     grace = STOP_GRACE_S if grace is None else grace
-    p.send_signal(signal.SIGTERM)
-    try:
-        p.wait(timeout=grace)
-        return "SIGTERM"
-    except subprocess.TimeoutExpired:
-        p.kill()
-        p.wait()
-        return "SIGTERM, then SIGKILL"
+    sent = getattr(p, "_physim2_term_sent", None)
+    if sent is None:
+        sent = p._physim2_term_sent = time.monotonic()
+        p.send_signal(signal.SIGTERM)
+    while True:
+        try:
+            p.wait(timeout=max(0.0, sent + grace - time.monotonic()))
+            return "SIGTERM"
+        except subprocess.TimeoutExpired:
+            p.kill()
+            p.wait()
+            return "SIGTERM, then SIGKILL"
+        except KeyboardInterrupt:                            # told to stop again while waiting: keep waiting
+            continue
 
 
 def run_child(cmd: list[str], *, env: dict, cwd: str, timeout: float, grace: float | None = None, capture: bool = True,
-              disk_floor: int | None = None, check_s: float | None = None):
+              disk_floor: int | None = None, check_s: float | None = None, on_stop=None):
     """(returncode, stdout, stderr, how it ended) of one child process (vf-eval). The child ends in one of four
     ways: it exits by itself ("exited"); `timeout` is over ("stopped after ..."); the disk watchdog finds less
     than `disk_floor` bytes free ("stopped by the disk watchdog ...": looked at every `check_s` seconds); or THIS
     process is told to stop (SIGTERM, Ctrl-C) or fails, and the exception goes on. In the last three the child
     is stopped with stop_child: the one stop path. With capture=False the child writes to this process's own
-    output (the log of a detached command) and the two strings are empty."""
+    output (the log of a detached command) and the two strings are empty.
+    `on_stop(reason)` is called BEFORE the stop begins (round 4, the Mac review's NEWC-1): the caller writes the
+    reason down while the child is still alive, so that a tool that dies during the stop leaves a record."""
+    def note(reason: str) -> None:
+        if on_stop is not None:
+            try:
+                on_stop(reason)
+            except Exception:
+                pass
     def on_term(signum, frame):                              # `kill <pid of the tool>` behaves like Ctrl-C
         raise KeyboardInterrupt
     main = threading.current_thread() is threading.main_thread()
@@ -242,17 +278,23 @@ def run_child(cmd: list[str], *, env: dict, cwd: str, timeout: float, grace: flo
             except subprocess.TimeoutExpired:
                 pass
             if time.monotonic() >= deadline:
+                note(f"the time limit of {timeout:.0f} s is over")
                 how = f"stopped after {timeout:.0f} s: " + stop_child(p, grace)
                 out, err = p.communicate()
                 break
             if disk_floor is not None:
-                free = free_bytes()
+                try:
+                    free = free_bytes()
+                except OSError:                              # a disk that cannot be measured is not a disk with room
+                    free = -1
                 if free < disk_floor:
-                    how = (f"stopped by the disk watchdog ({free / GIB:.2f} GiB free on the file system of the home folder, "
-                           f"floor {disk_floor / GIB:.2f} GiB): " + stop_child(p, grace))
+                    seen = "the free space could not be read" if free < 0 else f"{free / GIB:.2f} GiB free on the file system of the home folder"
+                    note(f"the disk watchdog ({seen}, floor {disk_floor / GIB:.2f} GiB)")
+                    how = f"stopped by the disk watchdog ({seen}, floor {disk_floor / GIB:.2f} GiB): " + stop_child(p, grace)
                     out, err = p.communicate()
                     break
-    except BaseException:
+    except BaseException as e:
+        note(f"this tool was told to stop or failed ({type(e).__name__})")
         stop_child(p, grace)
         raise
     finally:
@@ -286,7 +328,11 @@ def run_helper(cmd: list[str], *, cwd: str | None = None, env: dict | None = Non
 
 def stopped_record(path: str, how: str, returncode, floor: int | None) -> dict:
     """Write down why a run was stopped (counts and words only) and return the record."""
-    rec = {"ended": how, "returncode": returncode, "time_unix": time.time(), "free_bytes_now": free_bytes(),
+    try:
+        free = free_bytes()
+    except OSError:
+        free = None
+    rec = {"ended": how, "returncode": returncode, "time_unix": time.time(), "free_bytes_now": free,
            "disk_floor_bytes": floor, "deleted_by_the_watchdog": "nothing"}
     try:
         with open(path, "w") as f:
@@ -296,20 +342,29 @@ def stopped_record(path: str, how: str, returncode, floor: int | None) -> dict:
     return rec
 
 
+def ended_by_signal(rc, how: str) -> bool:
+    """Did a child that "exited" in fact end because of a signal: killed outright (negative status), or stopped
+    by a SIGINT or SIGTERM that did not come from this tool (vf-eval then ends with 130 or 143; round 3's code
+    re-audit, item 4)?"""
+    return how == "exited" and rc is not None and (rc < 0 or rc in (130, 143))
+
+
 def end_of_child(rc, how: str, record: str, floor: int | None) -> None:
     """After a child ended: return if it exited by itself; otherwise record why, say so, and end THIS tool with a
     status other than 0. A vf-eval that was killed outright (SIGKILL after the grace period, or a signal from
     elsewhere) could not remove its containers, and on macOS its laboratory process stays as well: the next
     thing to do is RUNBOOK_MAC.md, "If a run was interrupted", not another rollout (finding m5)."""
-    if how == "exited" and (rc is None or rc >= 0):
+    if how == "exited" and not ended_by_signal(rc, how):
         return
-    stopped_record(record, how, rc, floor)
+    stopped_record(record, how if how != "exited" else f"ended by a signal from outside this tool (status {rc})", rc, floor)
+    killed = "SIGKILL" in how or (rc is not None and rc < 0 and how == "exited")
+    left = " Its containers and its laboratory process may be left." if killed else ""
     if "disk watchdog" in how:
-        print(f"refused: {how}. The run was stopped through the tool's one stop path; nothing was deleted. Stop and report "
+        print(f"refused: {how}. The run was stopped through the tool's one stop path; nothing was deleted.{left} Stop and report "
               "(RUNBOOK_MAC.md, \"If a run was interrupted\", points 1 to 5).", flush=True)
         raise SystemExit(EXIT_DISK)
-    left = " Its containers and its laboratory process may be left." if "SIGKILL" in how or (rc is not None and rc < 0 and how == "exited") else ""
-    print(f"refused to go on: vf-eval {how if how != 'exited' else f'died of signal {-rc}'}.{left} Nothing further was started. "
+    what = how if how != "exited" else (f"died of signal {-rc}" if rc < 0 else f"ended with status {rc} after a signal from outside this tool")
+    print(f"refused to go on: vf-eval {what}.{left} Nothing further was started. "
           "Stop and report (RUNBOOK_MAC.md, \"If a run was interrupted\").", flush=True)
     raise SystemExit(EXIT_STOPPED)
 
@@ -351,12 +406,14 @@ def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=No
     with open(toml, "wb") as f:
         tomli_w.dump(cfg, f)
     t0, r0 = time.time(), resource.getrusage(resource.RUSAGE_CHILDREN)
+    record = os.path.join(out_dir, f"{name}.stopped.json")
     rc, out, err, how = run_child(["nice", "-n", "10", *VF_EVAL, "@", toml, "--no-rich"], env=child_env(env), cwd=out_dir,
-                                  timeout=timeout, disk_floor=floor)
+                                  timeout=timeout, disk_floor=floor,
+                                  on_stop=lambda why: stopped_record(record, "stopping: " + why, None, floor))
     r1 = resource.getrusage(resource.RUSAGE_CHILDREN)
     if how != "exited" or rc < 0:
         print((out + err)[-1500:], flush=True)
-    end_of_child(rc, how, os.path.join(out_dir, f"{name}.stopped.json"), floor)
+    end_of_child(rc, how, record, floor)
     episodes = []
     f = os.path.join(run_dir, "traces.jsonl")
     if os.path.exists(f):
@@ -366,10 +423,11 @@ def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=No
             "ended": how, "run_label": label}
 
 
-def check_config(path: str, *, model_credentials: bool, dry_run: bool) -> dict:
-    """Read a config file for the command form of this tool and refuse what it must not start. Always: no upload.
-    Without model credentials (and not a dry run): the stand-in client and the scripted harness, so that no model
-    can be called and no key is looked for."""
+def check_config(path: str, *, dry_run: bool) -> dict:
+    """Read a vf-eval config file for the COMMAND FORM of this tool (step 2c of RUNBOOK_MAC.md) and refuse what it
+    must not start. Always: no upload, the docker runtime. Unless it is a dry run: the stand-in client and the
+    scripted harness, so that no model can be called and no key is looked for. A model rollout is never started
+    from a config file alone: it needs a request (`--request`, step 3)."""
     import tomllib
     with open(path, "rb") as f:
         cfg = json.loads(json.dumps(tomllib.load(f)))
@@ -377,36 +435,297 @@ def check_config(path: str, *, model_credentials: bool, dry_run: bool) -> dict:
         raise SystemExit("refused: the config does not say `push = false`")
     if (((cfg.get("env") or {}).get("agent") or {}).get("runtime") or {}).get("type") != "docker":
         raise SystemExit("refused: the config does not use the docker runtime")
-    if not model_credentials and not dry_run:
+    if not dry_run:
         client = cfg.get("client") or {}
         harness = (((cfg.get("env") or {}).get("agent") or {}).get("harness") or {}).get("id")
         if client.get("api_key_var") != NO_MODEL_VAR or client.get("base_url") != NO_MODEL_URL or harness != "physim2-script":
-            raise SystemExit("refused: without --model-credentials this tool starts scripted rollouts only: the config must have\n"
+            raise SystemExit("refused: from a config file this tool starts scripted rollouts only: the config must have\n"
                              f"    [client]\n    base_url = \"{NO_MODEL_URL}\"\n    api_key_var = \"{NO_MODEL_VAR}\"\n"
-                             "and the harness physim2-script. A model rollout is step 3 of RUNBOOK_MAC.md and has its own command.")
+                             "and the harness physim2-script. A model rollout is step 3 of RUNBOOK_MAC.md: it is started by a "
+                             "request (--request FILE --pilot DIR --stage rollout).")
     return cfg
+
+
+# ----------------------------------------------------------------------------- the request route (step 3)
+# One rollout = one request file (schema rollout-job/v1, tools/check_request.py) = one folder
+# <pilot>/rollouts/<job_id>/ = one row pair in <pilot>/LEDGER.jsonl. The stages, in the order of RUNBOOK_MAC.md:
+#   instance    the instance name is registered to this job (for ever) and the hidden instance is made
+#   reference   the scripted policies of the profile on that instance (tools/prove.py; $0): the reference table
+#   dry-run     listed prices and the bounds on the bill; vf-eval resolves the run's config and exits ($0)
+#   rollout     the model run: needs --model-credentials prime, the reservation in the ledger, the spend meter
+# Every stage first checks the request, the pin, the strict config schema, the pilot folder and the lead's
+# standing go (<pilot>/LEAD-GO-MODEL-SPEND.json): without that file nothing of step 3 starts.
+STAGES = ("instance", "reference", "dry-run", "rollout")
+GRADING_ALLOWANCE_S = 9600.0                                 # set-up, finalize and the grading boxes, on top of the agent's wall time
+
+
+def _write_status(p: dict, stage: str, record: dict) -> None:
+    """<job>/status.json: one entry per stage, the latest record of each (numbers, names and words only)."""
+    try:
+        with open(p["status"]) as f:
+            status = json.load(f)
+    except (OSError, ValueError):
+        status = {"stages": {}}
+    status["stages"][stage] = dict(record, time_unix=round(time.time(), 3))
+    tmp = p["status"] + ".new"
+    with open(tmp, "w") as f:
+        json.dump(status, f, indent=1, sort_keys=True)
+    os.replace(tmp, p["status"])
+
+
+def _job_folder(p: dict, req: dict, cfg: dict, CR) -> None:
+    """Create <pilot>/rollouts/<job_id>/ with copies of the request and of the config, or check that the copies
+    there are of THIS request and config (a job folder is never reused for another request)."""
+    os.makedirs(p["rollouts"], mode=0o700, exist_ok=True)
+    with open(cfg["path"], "rb") as f:
+        raw_cfg = f.read()
+    if not os.path.lexists(p["job"]):
+        os.mkdir(p["job"], 0o700)
+        with open(p["request"], "w") as f:
+            json.dump({k: v for k, v in req.items() if not k.startswith("_")}, f, indent=1, sort_keys=True)
+        with open(p["config"], "wb") as f:
+            f.write(raw_cfg)
+        with open(os.path.join(p["job"], "PILOT_NEVER_REUSE_AS_EXAM.txt"), "w") as f:
+            f.write("PILOT_NEVER_REUSE_AS_EXAM: this folder belongs to one pilot rollout; its instance is never to be used as an exam.\n")
+        _write_status(p, "request", {"job_id": req["job_id"], "request_sha256": req["_sha256"], "config_sha256": cfg["sha256"],
+                                      "pin": req["pin"], "pin_sha256": req["pin_sha256"]})
+        return
+    try:
+        with open(p["status"]) as f:
+            first = json.load(f)["stages"]["request"]
+        same = first["request_sha256"] == req["_sha256"] and first["config_sha256"] == cfg["sha256"] and open(p["config"], "rb").read() == raw_cfg
+    except (OSError, ValueError, KeyError):
+        same = False
+    if os.path.islink(p["job"]) or not same:
+        raise CR.Refused("the job folder exists and was made for another request or config: a job id is used once")
+
+
+def _helper_takes(tool: str, option: str) -> bool:
+    try:
+        with open(os.path.join(HERE, tool)) as f:
+            return f'"{option}"' in f.read()
+    except OSError:
+        return False
+
+
+def _instance_argv(req: dict, flat: dict, p: dict, profile: dict) -> list[str]:
+    """The command that makes the job's hidden instance. tools/make_instances.py of round 4 takes --profile and
+    --id; the round-3 form (a prefix, the name ending in -w0) is used while that tool does not."""
+    base = [sys.executable, "-B", os.path.join(HERE, "make_instances.py"), "--store", p["store"]]
+    if _helper_takes("make_instances.py", "--profile"):
+        return base + ["--profile", flat["exam_profile"], "--id", req["instance"]]
+    if not req["instance"].endswith("-w0"):
+        raise SystemExit("refused: this pin's tools/make_instances.py names instances <prefix>-w0; the request's instance must end in -w0")
+    return base + ["--world", profile["world"], "--config", profile["config_name"], "--n", "1", "--prefix", req["instance"][:-3]]
+
+
+def _reference_argv(req: dict, flat: dict, p: dict, profile: dict, floor_gib: float) -> list[str]:
+    """The command that builds the reference table: the profile's scripted policies on the job's instance."""
+    base = [sys.executable, "-B", os.path.join("tools", "prove.py"), "--store", p["store"], "--scratch", os.path.join(p["job"], "reference"),
+            "--no-cross-check", "--disk-floor-gib", str(floor_gib), "--out", p["reference"]]
+    if _helper_takes("prove.py", "--profile"):
+        return base + ["--profile", flat["exam_profile"], "--instance", req["instance"]]
+    return base + ["--world", profile["world"], "--config", profile["config_name"], "--worlds", "1", "--prefix", req["instance"][:-3],
+                   "--policies", ",".join(profile["reference_policies"]), "--sizes", json.dumps(profile["reference_sizes"]),
+                   "--cpu", str(profile["box_cpus"]), "--box-check", ""]
+
+
+def reference_done(p: dict) -> dict | None:
+    """The finished reference table of a job (<job>/reference.json with every rollout graded), or None."""
+    try:
+        with open(p["reference"]) as f:
+            ref = json.load(f)
+    except (OSError, ValueError):
+        return None
+    return ref if ref.get("all_graded") is True else None
+
+
+def request_route(a) -> int:
+    """Stages of step 3. Returns the exit status; prints `refused: ...` and returns 2 when anything is not as the
+    request route needs it (nothing was started then, unless the line says otherwise)."""
+    import check_config as CC
+    import check_request as CR
+    floor = disk_floor_bytes(a.disk_floor_gib)
+    stand_in = a.stand_in_endpoint
+    try:
+        if stand_in and not re.fullmatch(r"http://127\.0\.0\.1:[0-9]{2,5}/v1", stand_in):
+            raise CR.Refused("--stand-in-endpoint is for tests against a stand-in on this machine: http://127.0.0.1:<port>/v1 and nothing else")
+        if stand_in and a.model_credentials:
+            raise CR.Refused("a stand-in endpoint and model credentials do not go together")
+        req = CR.read_request(a.request)
+        CR.check_pin(req)
+        cfg = CR.check_config(req)
+        flat = cfg["flat"]
+        profile = CC.light("profiles").get(flat["exam_profile"])
+        p = dict(CR.require_pilot(a.pilot), **CR.pilot_paths(a.pilot, req["job_id"]))
+        go = CR.read_go(p)                                   # the lead's standing go: nothing of step 3 starts without it
+        rows = CR.ledger_rows(p)
+        started = [r for r in rows if r.get("job_id") == req["job_id"]]
+
+        if a.stage == "instance":
+            if started:
+                raise CR.Refused("the ledger already holds this job id")
+            CR.check_instance(p, req, must_exist=False)
+            require_disk(floor, "the instance")
+            _job_folder(p, req, cfg, CR)
+            CR.register_instance(p, req)                     # FIRST: from here on the name is used, whatever happens next
+            r = run_helper(_instance_argv(req, flat, p, profile), capture=True)
+            if r.returncode or not CR.instance_state(p, req["instance"])["in_index"]:
+                print((r.stdout + r.stderr)[-800:])
+                _write_status(p, "instance", {"ok": False, "returncode": r.returncode})
+                raise CR.Refused("the instance was not made (its name stays registered and cannot be used again): stop and report")
+            with open(os.path.join(p["store"], "PILOT_NEVER_REUSE_AS_EXAM.txt"), "a") as f:
+                f.write(f"PILOT_NEVER_REUSE_AS_EXAM: {req['instance']} (job {req['job_id']}) is pilot material, never an exam.\n")
+            _write_status(p, "instance", {"ok": True, "instance": req["instance"]})
+            print(json.dumps({"stage": "instance", "job_id": req["job_id"], "instance": req["instance"], "made": True}))
+            return 0
+
+        CR.check_instance(p, req, must_exist=True)
+        _job_folder(p, req, cfg, CR)
+        if a.stage == "reference":
+            if started:
+                raise CR.Refused("the ledger already holds this job id: the reference table is built before the rollout")
+            if reference_done(p) is not None:
+                raise CR.Refused("the reference table of this job exists already")
+            require_disk(floor, "the reference table")
+            require_docker()
+            _write_status(p, "reference", {"started": True, "policies": profile["reference_policies"]})
+            argv = _reference_argv(req, flat, p, profile, a.disk_floor_gib)
+            sys.stdout.flush()
+            os.chdir(ROOT)                                   # from here on this process IS tools/prove.py (same pid, same log)
+            os.execve(sys.executable, argv, child_env({"VF_RUN_ID": run_label()}))
+
+        if reference_done(p) is None:
+            raise CR.Refused("the reference table of this job is not finished (stage `reference`; <job>/reference.json with all_graded true)")
+        # ---- prices and bounds: one GET without a credential; refused when cap_usd is below one worst-case call ----
+        entry = CR.fetch_model_entry(flat["model"], stand_in)
+        prices = CR.prices_of(entry)
+        b = CR.bounds(flat, prices)
+        ceiling = CR.check_ceiling(p, go, b)
+        print(json.dumps({"job_id": req["job_id"], "model": flat["model"], "prices_usd_per_mtok": prices,
+                          "one_worst_case_call_usd": round(b["worst_call_usd"], 6), "cap_usd": b["cap_usd"],
+                          "bound_on_the_bill_usd": round(b["bound_usd"], 6), "crude_bound_without_the_spend_stop_usd": round(b["crude_bound_usd"], 2),
+                          "ledger_sum_usd": round(ceiling["sum_usd"], 6), "ceiling_usd": ceiling["ceiling_usd"], "billed": not stand_in}), flush=True)
+        spend = {"cap_usd": float(flat["cap_usd"]), "max_context_tokens": int(flat["max_context_tokens"]),
+                 "max_output_tokens": int(flat["max_output_tokens_per_turn"]), "model": flat["model"],
+                 "input_usd_per_mtok": prices["input"], "output_usd_per_mtok": prices["output"], "context_window": prices["context_window"],
+                 "prices_from": entry["source"] + f" at unix time {entry['fetched_unix']}", "billed": not stand_in}
+        if prices["cache_read"] is not None:
+            spend["cache_read_usd_per_mtok"] = prices["cache_read"]
+        resolved = json.loads(json.dumps(cfg["expanded"]))
+        resolved["env"]["taskset"].setdefault("task", {})["spend"] = spend
+        if stand_in:
+            resolved["client"] = {"type": "eval", "base_url": stand_in, "api_key_var": STAND_IN_VAR}
+        import tomli_w
+
+        if a.stage == "dry-run":
+            toml = os.path.join(p["job"], "dry-run.toml")
+            with open(toml, "wb") as f:
+                tomli_w.dump(resolved, f)
+            cmd = ["nice", "-n", "10", *VF_EVAL, "@", toml, "--run.name", req["job_id"] + "-dry", "-o", os.path.join(p["job"], "dry-run"), "--dry-run"]
+            rc, _, _, how = run_child(cmd, env=child_env({"PHYSIM2_STORE": p["store"], STAND_IN_VAR: STAND_IN_VALUE} if stand_in else
+                                                          {"PHYSIM2_STORE": p["store"]}), cwd=ROOT, timeout=600, capture=False)
+            _write_status(p, "dry-run", {"ok": rc == 0 and how == "exited", "returncode": rc, "bounds": {k: b[k] for k in ("worst_call_usd", "bound_usd", "crude_bound_usd")}})
+            end_of_child(rc, how, os.path.join(p["job"], "dry-run.stopped.json"), floor)
+            return rc
+
+        # ---- stage rollout: the one command that can spend money ----
+        if not stand_in and a.model_credentials != "prime":
+            raise CR.Refused("a model rollout needs --model-credentials prime on its command (or, in a test, --stand-in-endpoint)")
+        if started:
+            raise CR.Refused("the ledger already holds this job id: a job runs once, and a run that was cut is not run again")
+        try:
+            with open(p["status"]) as f:
+                dry = json.load(f)["stages"].get("dry-run") or {}
+        except (OSError, ValueError, KeyError):
+            dry = {}
+        if not dry.get("ok"):
+            raise CR.Refused("the free dry run of this job has not passed (stage `dry-run`)")
+        if os.path.lexists(p["out"]) or os.path.lexists(p["spend_log"]):
+            raise CR.Refused("this job has run files already: a job runs once")
+        require_disk(floor, f"the rollout {req['job_id']}")
+        require_docker()
+        with open(p["model_entry"], "w") as f:               # the saved model entry: prices and window as read at run start
+            json.dump(entry, f, indent=1)
+        with open(p["resolved"], "wb") as f:
+            tomli_w.dump(resolved, f)
+        CR.ledger_append(p, {"event": "reserved", "job_id": req["job_id"], "model": flat["model"], "instance": req["instance"],
+                             "cap_usd": b["cap_usd"], "worst_call_usd": b["worst_call_usd"], "bound_usd": b["bound_usd"],
+                             "crude_bound_usd": b["crude_bound_usd"], "prices_usd_per_mtok": prices, "billed": not stand_in,
+                             "ceiling_usd": go["ceiling_usd"], "go_date": go["date"]})
+    except (CR.Refused, CC.Refused) as e:
+        print("refused: " + str(e), flush=True)
+        return 2
+
+    _write_status(p, "rollout", {"started": True, "bound_usd": b["bound_usd"], "billed": not stand_in})
+    extra = {"PHYSIM2_STORE": p["store"], "PHYSIM2_SPEND_LOG": p["spend_log"]}
+    if stand_in:
+        extra[STAND_IN_VAR] = STAND_IN_VALUE
+    cmd = ["nice", "-n", "10", *VF_EVAL, "@", p["resolved"], "--run.name", req["job_id"], "-o", p["out"], "--no-rich"]
+    record = os.path.join(p["job"], "rollout.stopped.json")
+    timeout = 60.0 * flat["wall_minutes"] + GRADING_ALLOWANCE_S
+    rc, how, failure = None, "not started", None
+    try:
+        rc, _, _, how = run_child(cmd, env=child_env(extra, model_credentials=not stand_in), cwd=ROOT, timeout=timeout, capture=False,
+                                  disk_floor=floor, on_stop=lambda why: stopped_record(record, "stopping: " + why, None, floor))
+    except BaseException as e:                               # this tool was told to stop: the books are still closed below
+        failure, how = e, f"this tool was stopped ({type(e).__name__})"
+    finally:
+        try:
+            total = CR.spend_log_total(p["spend_log"])
+        except CR.Refused:
+            total = {"present": True, "counted_usd": None, "attempts": None, "complete": False}
+        clean = how == "exited" and rc == 0
+        counted = 0.0 if not total["present"] else total["counted_usd"]
+        CR.ledger_append(p, {"event": "ended", "job_id": req["job_id"], "status": "done" if clean else "cut", "how": how, "returncode": rc,
+                             "counted_usd": counted, "count_complete": bool(total["complete"] or not total["present"]),
+                             "attempts": total.get("attempts"), "worst_case_calls": total.get("worst_case_calls"),
+                             "stopped": total.get("stopped"), "billed": not stand_in})
+        _write_status(p, "rollout", {"ended": True, "status": "done" if clean else "cut", "how": how, "returncode": rc, "counted_usd": counted,
+                                     "bound_usd": b["bound_usd"], "within_bound": counted is not None and counted <= b["bound_usd"] + 1e-9})
+        print(json.dumps({"job_id": req["job_id"], "ended": how, "returncode": rc, "counted_usd": counted, "bound_on_the_bill_usd": b["bound_usd"]}), flush=True)
+    if failure is not None:
+        raise failure
+    end_of_child(rc, how, record, floor)
+    return rc
 
 
 def main(argv=None) -> int:
     import argparse
-    ap = argparse.ArgumentParser(description="one rollout through vf-eval from a config file, with the environment allow-list, "
-                                             "the disk watchdog and the one stop path of this tool")
-    ap.add_argument("--config", required=True, help="a TOML file, relative to the study folder or absolute")
-    ap.add_argument("--run-name", required=True)
-    ap.add_argument("--out-dir", required=True)
-    ap.add_argument("--store", required=True)
+    ap = argparse.ArgumentParser(description="one rollout through vf-eval, with the environment allow-list, the disk watchdog and the one stop "
+                                             "path of this tool: a scripted one from a config file (step 2c), or a stage of a "
+                                             "rollout request (step 3)")
+    ap.add_argument("--config", help="COMMAND FORM: a vf-eval TOML file of a scripted run, relative to the study folder or absolute")
+    ap.add_argument("--run-name")
+    ap.add_argument("--out-dir")
+    ap.add_argument("--store")
+    ap.add_argument("--request", help="REQUEST ROUTE (step 3): a rollout-job/v1 file")
+    ap.add_argument("--pilot", help="REQUEST ROUTE: the pilot folder (store, rollouts, ledger, the lead's go)")
+    ap.add_argument("--stage", choices=STAGES, help="REQUEST ROUTE: which stage of the request to run")
     ap.add_argument("--disk-floor-gib", type=float, default=DISK_FLOOR_GIB)
-    ap.add_argument("--timeout", type=float, default=5400.0, help="seconds after which vf-eval is told to stop")
-    ap.add_argument("--dry-run", action="store_true", help="vf-eval resolves the config, writes it and exits; no rollout")
+    ap.add_argument("--timeout", type=float, default=5400.0, help="COMMAND FORM: seconds after which vf-eval is told to stop")
+    ap.add_argument("--dry-run", action="store_true", help="COMMAND FORM: vf-eval resolves the config, writes it and exits; no rollout")
     ap.add_argument("--model-credentials", choices=["prime"], default=None,
-                    help="STEP 3 ONLY: pass PRIME_API_KEY and PRIME_TEAM_ID on and let verifiers read ~/.prime/config.json")
+                    help="REQUEST ROUTE, stage rollout ONLY: pass PRIME_API_KEY and PRIME_TEAM_ID on to vf-eval and let verifiers read "
+                         "~/.prime/config.json")
+    ap.add_argument("--stand-in-endpoint", default=None,
+                    help="REQUEST ROUTE, TESTS ONLY: http://127.0.0.1:<port>/v1 of tools/standin_model.py instead of the provider; no "
+                         "credential is passed or loaded and nothing is billed")
     a = ap.parse_args(argv)
     require_clean_environment()
     run_label()
+    if a.request or a.pilot or a.stage:
+        if not (a.request and a.pilot and a.stage) or a.config or a.run_name or a.out_dir or a.store or a.dry_run:
+            raise SystemExit("refused: the request route takes --request, --pilot and --stage (and nothing of the command form)")
+        return request_route(a)
+    if a.model_credentials or a.stand_in_endpoint:
+        raise SystemExit("refused: a model rollout is started by a request: --request FILE --pilot DIR --stage rollout (RUNBOOK_MAC.md, step 3)")
+    if not (a.config and a.run_name and a.out_dir and a.store):
+        raise SystemExit("refused: the command form needs --config, --run-name, --out-dir and --store")
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,40}", a.run_name):
         raise SystemExit("refused: --run-name must be lower-case letters, digits and hyphens")
     config = a.config if os.path.isabs(a.config) else os.path.join(ROOT, a.config)
-    check_config(config, model_credentials=bool(a.model_credentials), dry_run=a.dry_run)
+    check_config(config, dry_run=a.dry_run)
     floor = disk_floor_bytes(a.disk_floor_gib)
     store, out_dir = os.path.abspath(os.path.expanduser(a.store)), os.path.abspath(os.path.expanduser(a.out_dir))
     cmd = ["nice", "-n", "10", *VF_EVAL, "@", config, "--run.name", a.run_name, "-o", out_dir]
@@ -417,10 +736,12 @@ def main(argv=None) -> int:
         require_disk(floor, f"the run {a.run_name}")
         require_docker()
     os.makedirs(out_dir, exist_ok=True)
+    record = os.path.join(out_dir, f"{a.run_name}.stopped.json")
     # cwd = the study folder: `agent_dir` of a config file is relative to it
-    rc, _, _, how = run_child(cmd, env=child_env({"PHYSIM2_STORE": store}, model_credentials=bool(a.model_credentials)), cwd=ROOT,
-                              timeout=a.timeout, capture=False, disk_floor=None if a.dry_run else floor)
-    end_of_child(rc, how, os.path.join(out_dir, f"{a.run_name}.stopped.json"), floor)
+    rc, _, _, how = run_child(cmd, env=child_env({"PHYSIM2_STORE": store}), cwd=ROOT, timeout=a.timeout, capture=False,
+                              disk_floor=None if a.dry_run else floor,
+                              on_stop=lambda why: stopped_record(record, "stopping: " + why, None, floor))
+    end_of_child(rc, how, record, floor)
     return rc
 
 

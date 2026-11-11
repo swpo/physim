@@ -49,8 +49,14 @@ from . import bundle as BUNDLE
 from . import capture as CAPTURE
 from . import grading as GRADING
 from . import profiles as PROFILES
+from . import runtime as RUNTIME
+from . import spend as SPEND
 from . import store as STORE
 from .lab_tools import LabTools, LabToolsConfig
+
+# ---- round 4, fixer B: the box caps and the bearer-carrying proxy are put in place before any box can start ----
+RUNTIME.install()
+SPEND.install()                                              # every model call passes the spend meter, or none is made
 
 WORKDIR = "/workspace"
 PROMPT = ("Your task is described in /workspace/TASK.md (the same text follows). Work in /workspace. A working baseline is "
@@ -166,6 +172,9 @@ class Physim2TaskConfig(vf.TaskConfig):
     checkpoint_seconds: float = Field(30.0, ge=0, le=600)
     """How often the task controller looks whether submission/ changed and keeps a frozen copy (it also looks
     before every model call). 0 turns the timer off. The copy is what a FAILED run is graded on (ruling E1)."""
+    spend: SPEND.SpendConfig = SPEND.SpendConfig()
+    """Round 4, fixer B. The model's listed prices and the caps of the spend stop (physim2_env/spend.py), written
+    by tools/vfrun.py for a model run. Empty in a scripted run: then no model call can leave vf-eval."""
 
 
 class Physim2Config(vf.TasksetConfig):
@@ -284,6 +293,10 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         gate = GRADING.container_gate(runtime)               # the real runtime object, provisioned by verifiers for this run
         if gate:
             raise vf.TaskError("PhySim v2 runs only in a box that verifiers itself provisioned: " + "; ".join(gate))
+        # ---- round 4, fixer B: a Docker box must carry the pilot's caps, read back from the engine at its start ----
+        capped = RUNTIME.caps_of(runtime)
+        if runtime.config.type == "docker" and not (capped and capped.get("verified")):
+            raise vf.TaskError("PhySim v2 runs only in a box started with the pilot's caps (physim2_env/runtime.py)")
         # ---- guard 3: only allow-listed variable names may be configured for a box (a credential under any
         #      name, GITHUB_PAT or HF_KEY as much as HF_TOKEN, has no business in one) ----
         harness = getattr(getattr(trace.agent, "config", None), "harness", None)
@@ -304,6 +317,7 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         info = await self._public_files(runtime, state.uid if state.finalized else None, state.task_md if state.finalized else None)
         if state.finalized:                                  # the verifier box: public files only, no laboratory
             trace.info.setdefault("physim2", {})["verifier_started_unix"] = time.time()
+            trace.info["physim2"]["verifier_box_caps"] = (capped or {}).get("caps")
             return
         # ---- the statement of THIS run (rulings E4, E8), before the instance is opened: what the run's resolved
         #      config says and what the runtime really set in this box. It replaces the bundle's TASK.md and the
@@ -342,13 +356,21 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             box.keep(base, "the baseline at setup")
         state.access = await box.start()
         state.rollout = trace.id
+        # ---- round 4, fixer B: the spend meter of a model run (None in a scripted run) ----
+        try:
+            meter = SPEND.meter_for(self.config.spend, getattr(self.config, "limits", None), trace=trace)
+        except ValueError as e:
+            raise vf.TaskError(str(e)) from None
+        if meter is not None:
+            SPEND.METERS[trace.id] = meter
         trace.info["physim2"] = {
             "instance_id": self.data.instance_id, "world": self.data.world, "config_name": self.data.config_name,
             "secret_commitment": self.data.secret_commitment, "bundle": {k: info[k] for k in ("files", "bytes", "manifest_sha256")},
             "baseline": info["baseline"], "limits": dict(run, statement_sha256=hashlib.sha256(state.task_md.encode()).hexdigest()),
             "verifiers_version": __import__("verifiers").__version__, "runtime": runtime.config.type,
             "network_restricted": bool(runtime.config.network_restricted), "single_use": bool(self.config.single_use),
-            "agent_key": key, "item_isolation": self.config.item_isolation}
+            "agent_key": key, "item_isolation": self.config.item_isolation,
+            "box_caps": (capped or {}).get("caps"), "lab_bearer_required": True}
 
     def _captures(self, rollout: str) -> str:
         """The run's own folder of the store, outside hidden/: <store>/<instance>/captures/<rollout>."""
@@ -458,6 +480,9 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                     pass
         info["submission"] = dict(state.collection)
         info["lab"] = self._lab_usage(state.rollout)
+        meter = SPEND.METERS.pop(trace.id, None)             # round 4, fixer B: what the run cost, as counted on the host
+        if meter is not None:
+            info["spend"] = meter.summary()
         info["stop_condition"] = trace.stop_condition
         info["ended"] = self._ending(trace, info["lab"])
         info["reasoning"] = reasoning_record(trace)
@@ -583,6 +608,14 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         if box is not None:
             await box.checkpoint("before a model call")      # never raises
         return False
+
+    @vf.stop
+    async def spend_cap(self, trace: vf.Trace) -> bool:
+        """Round 4, fixer B. End a model rollout when its counted cost, plus one worst-case call for every
+        request still in flight, has reached cap_usd (physim2_env/spend.py). Checked before each model call, as
+        `frozen` is; a stop, so finalize and scoring still run."""
+        meter = SPEND.METERS.get(trace.id)
+        return meter is not None and meter.exhausted()
 
     async def stage_verifier(self, trace, runtime):
         """After verifiers restored the frozen submission into the fresh box: trusted staging only."""
