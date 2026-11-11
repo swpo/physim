@@ -25,6 +25,12 @@ The made-up credential file holds the text FAKE-KEY-NOT-A-CREDENTIAL; no real cr
 environment handed to every child of this harness is built from PATH alone.
 
 usage: PHYSIM2_DEV_MACHINE=cloud-container python -B tools/check_round3.py --scratch DIR --out results/round3_checks.json
+
+ROUND 4 NOTE: this is round 3's check and was not run again in round 4. Its part on the command form of
+tools/vfrun.py with `--model-credentials` and configs/qwen_ring_bash.toml describes a route that round 4 replaced:
+a model run now starts from a request only (tools/vfrun.py --request ... --stage rollout; tools/check_round4.py
+and tools/check_step3.py test that route). The allow-list, the credential stand-in, the watchdog and the stop
+path that it tests are unchanged except where tools/check_round4.py says so (one SIGTERM per child: D40).
 """
 import argparse
 import base64

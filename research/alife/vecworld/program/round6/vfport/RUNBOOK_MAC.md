@@ -1,11 +1,12 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
 **ON HOLD (round 4, 11 Nov 2026). Run nothing from this copy.** The round-3 GO for steps 0 to 2 held for the
-commit `08bd5a669867623a476e7446a74612be47001b3b` and for that commit only. The code and this file are being
-changed in round 4 (the laboratory's bearer, box caps in code, the spend stop, a request-driven step 3, the
-exam rulings E1 to E11), so nothing below is released: not steps 0 to 2, not step 3, not step 4. A new notice
-replaces this one when the round-4 verdict is written; until then a session that reads this file stops here
-(rule A.1) and reports.
+commit `08bd5a669867623a476e7446a74612be47001b3b` and for that commit only. The code and this file were changed
+in round 4 (the laboratory's bearer, box caps in code, the spend stop, a step 3 that is driven by a request, the
+exam rulings E1 to E16), and that round has no verdict yet, so nothing below is released: not steps 0 to 2, not
+step 3, not step 4. A new notice replaces this one when the round-4 verdict is written (it will begin
+`**GO for steps 0 to 3.**`, or `**GO for steps 0 to 2.**`, or stay a hold); until then a session that reads this
+file stops here (rule A.1) and reports.
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->
@@ -84,7 +85,7 @@ step 3 has called a model from this code.
    | `docker run` with `-v`, `--mount` or the Docker socket; any other `docker run` by hand for anything in this repository, whatever its options (`--pid`, `--ipc`, `--tmpfs`, `--privileged`, `--volumes-from` included) | the exam's cleanup deletes files of one user id wherever it can see them; a mounted Mac folder would be in sight (the driver refuses when an extra file system is mounted, but do not rely on it). The only `docker run` of the pilot is the image check of step 1, copied from this file |
    | pasting the route's own commands (the `sh -c` lines of `physim2_env/grading.py` and `physim2_env/taskset.py`) into a shell or a container | they change owners and modes and delete as root |
    | `physim2_env/public/_item.py`, `physim2 validate`, or a model's `predict.py`, on the Mac itself | they run submitted code |
-   | `agents/*.py`; anything in `redteam/`, in `rehearsal/` or in `../../round5/agentenv` (its `mac/` runbook and compose file included); `tools/check_units.py`, `tools/check_driver.py`, `tools/check_safety.py`, `tools/check_interrupt.py`, `tools/check_round3.py`, `tools/check_round4.py`, `tools/check_step3.py`, `tools/check_runbook.py`, `tools/standin_model.py`, anything in `tests/`; the option `--stand-in-endpoint` of `tools/vfrun.py` | attack scripts, the cloud rehearsal's own scripts and development checks for the cloud container (some start containers, one starts a listener that plays a model); the round-5 compose file mounts host folders into a container that deletes there as root |
+   | `agents/*.py`; anything in `redteam/`, in `rehearsal/` or in `../../round5/agentenv` (its `mac/` runbook and compose file included); `tools/check_units.py`, `tools/check_driver.py`, `tools/check_safety.py`, `tools/check_interrupt.py`, `tools/check_round3.py`, `tools/check_round4.py`, `tools/check_step3.py`, `tools/check_runbook.py`, `tools/make_round4_step3.py`, `tools/standin_model.py`, anything in `tests/`; the option `--stand-in-endpoint` of `tools/vfrun.py` | attack scripts, the cloud rehearsal's own scripts and development checks for the cloud container (some start containers, one starts a listener that plays a model); the round-5 compose file mounts host folders into a container that deletes there as root |
    | `.venv/bin/vf-eval`, `tools/vfeval.py` or `tools/build_reference.py` by hand | vf-eval is started by `tools/vfrun.py` only: that is where the environment allow-list, the disk floor, the stop path, the stand-in for the model credential and, in step 3, the spend stop are |
    | `pkill`, `killall`, `kill -1`, `kill -9`, a `kill` that is not the stop command of "If a run was interrupted", `docker rm` by filter or with `$(...)`, any `prune`, `vf-eval --clean`, `rm -rf` of anything this file does not spell out, deleting anything to make room | they reach beyond the pilot: other verifiers runs on this Mac (PhySim v1) use the same container names `vf-...`, and a prune removes other projects' images and build cache |
    | opening `~/.prime/config.json`, `~/.docker/config.json` or any other credential file; printing the environment with its values (`env` alone, `printenv`); writing a key into a file or onto a command line | steps 0 to 2 need no credential; step 3 takes the key from the environment of its one paid command and nowhere else; the step-0 check prints names only |
@@ -1026,9 +1027,9 @@ moment and then `... -B tools/prove.py ...`; and use it while the rollout of 3f 
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 "$HOME/physim2-rollouts/rollouts/JOB_ID/reference.log" "$HOME/physim2-rollouts/rollouts/JOB_ID/rollout.log" 2>/dev/null | cut -c 1-12 ; echo "containers:" ; docker ps -a --filter label=verifiers.run=physim2-pilot-20261110 --format '{{.Names}} {{.Status}}' ; echo "processes:" ; ps axww -o pid= -o command= | awk -v p="/ABSOLUTE/PATH/TO/vfport" 'BEGIN { py = p "/.venv/bin/python " } { line = $0 ; sub(/^ *[0-9]+ /, "", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = "OTHER" ; if (index(r, "-B tools/prove.py ") == 1 || index(r, "-B tools/check_probe.py ") == 1 || index(r, "-B tools/vfrun.py ") == 1) k = "TOOL" ; else if (index(r, "-B " p "/tools/vfeval.py @ ") == 1) k = "VF-EVAL" ; else if (index(r, "-m physim2_env.lab_tools") == 1) k = "LAB" ; else if (index(r, "-B " p "/tools/make_instances.py ") == 1 || index(r, "-B tools/make_instances.py ") == 1 || index(r, "-B " p "/tools/build_reference.py ") == 1) k = "HELPER" ; else if (index(r, "-c") == 1) k = "PROBE" ; print k " " substr($0, 1, 160) }' ; echo "free:" ; df -Pk "$HOME" | awk 'NR == 2 { print int($4 / 1048576) " GiB" }' ; echo "status done" ; }
 ```
 
-It prints, for each of the two logs that exists, a line `==> <file> <==` and the first 12 characters of the
-log's last line; then the pilot's containers, the pilot's processes and the free space, as the status command of
-step 2 does. The stage is finished when the line under `reference.log` reads `EXIT 0` and nothing is listed under
+It prints, for each of the two logs that exists, a line that begins `==>` (the start of the file's name) and the
+first 12 characters of the log's last line (nothing, while the log is empty); then the pilot's containers, the
+pilot's processes and the free space, as the status command of step 2 does. The stage is finished when the line under `reference.log` reads `EXIT 0` and nothing is listed under
 `containers:` and `processes:`. Any other `EXIT`: "If a run was interrupted" (points 1 to 5, 7), then stop and
 report; the job is not continued.
 
@@ -1117,9 +1118,11 @@ session uploads nothing else. Then the next request may start at 3a.
 
 ## 4. After the pilot
 
-The store holds theta and the secret of a pilot that must never be reused. Run this step only when the lead says
-the pilot is over: it deletes the store that step 3 would need. First run the status command of step 2: nothing
-may be listed. Then copy the results out and remove exactly the two folders, in ONE command, so that nothing is
+The store of steps 1 and 2 holds theta and the secret of a smoke-test instance that must never be reused. Run this
+step only when the lead says so. It removes the two folders that steps 1 and 2 made and nothing of step 3:
+`$HOME/physim2-rollouts` (the ledger, the list of used instance names, the hidden side of every pilot instance,
+the run folders, the publication folders) stays, through later pins as well, until the lead removes it by hand
+when the program has no further use for it. First run the status command of step 2: nothing may be listed. Then copy the results out and remove exactly the two folders, in ONE command, so that nothing is
 deleted unless every check and every copy before it succeeded:
 
 ```sh
@@ -1127,9 +1130,9 @@ cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/t
 ```
 
 Expected: the five file names. If it prints nothing: stop and report. The copied files
-hold scores, counters and commitments only (`PILOT_NEVER_REUSE_AS_EXAM`); the run folders with their traces are
-deleted with the scratch folder (a trace names the operator's account), and after step 3 the output of
-`tools/run_report.py` is what leaves the Mac, with the trace folder only if the lead asked for it.
+hold scores, counters and commitments only (`PILOT_NEVER_REUSE_AS_EXAM`); the run folders of step 2 with their
+traces are deleted with the scratch folder. Of step 3, what leaves the Mac is each job's publication folder
+(step 3h) and nothing else.
 
 ```sh
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker ps -a --filter label=verifiers.run=physim2-pilot-20261110 --format '{{.Names}} {{.Status}}' && echo "CONTAINERS-LISTED" && docker images --format '{{.Repository}}:{{.Tag}} {{.Size}}' && docker system df
@@ -1137,42 +1140,61 @@ cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/t
 
 Expected: `CONTAINERS-LISTED` with no line before it (no container of the pilot), then the images, then Docker's
 own table of what its disk holds (images, containers, volumes, build cache). Compare with the baseline of the
-by-hand checks: the pilot added `physim2-ring:1`, `localhost/verifiers-network:1` and no container;
+by-hand checks: the pilot added `physim2-ring:2`, `localhost/verifiers-network:1` (unless it was there) and no container;
 `python:3.12-slim` and `alpine:3.22` may or may not be listed (Docker Desktop does not always list the base
 images of a build): that is not a deviation. Another new image, or a container of the pilot, is. The pilot also
 added build cache (the "Build Cache" row; several hundred megabytes). **Remove none of it yourself.** The helper
 image `localhost/verifiers-network:1` is shared with other verifiers work on this Mac and is not this pilot's to
-remove; `physim2-ring:1` may be removed by the lead, by hand, when no further run is planned (`docker rmi
-physim2-ring:1`); the build cache can only be removed together with that of every other project (`docker builder
+remove; `physim2-ring:2` is needed by every rollout of step 3 and may be removed by the lead, by hand, when no
+further run is planned at this pin (`docker rmi physim2-ring:2`); the build cache can only be removed together with that of every other project (`docker builder
 prune`), which is the lead's decision and never the session's. The `.venv` stays until the lead removes the
 checkout. Left on the Mac besides: uv's cache and Python, `~/.cache/verifiers`, `/tmp/vf-port-*`, the results
 folder.
 
-## What the cloud rehearsal could not cover
+## What the cloud container could not cover, and what was not rehearsed as written
 
 - macOS and Docker Desktop: nothing. Inferred, not seen: that containers there carry `/.dockerenv` and Docker's
   usual mount table (if not, staging stops with `the box is not recognised as a disposable box` and names the
-  mount or the missing sign; nothing is damaged; report it); how `uv` behaves and that the Python it manages
-  shows `.venv/bin/python` as its command line (step 1 checks it); that `ps`, `shasum`, `df -Pk`, `tail` and the
-  system's `awk` print and accept there what they do on Linux (the two awk programs were run with mawk only; they
-  use `index`, `substr`, `length` and `sub`, nothing newer); that `docker context show` says `desktop-linux` and
-  the context's address is a socket in the home folder; that the session's shell (zsh) leaves the same waiting
-  shell as `sh` and `bash` did; how a Claude session on the Mac ends a command at its limit; that a detached
-  command survives the end of the call that started it; that a laboratory outlives a killed vf-eval there.
-- The image build of step 1: the cloud machine sits behind a TLS-intercepting proxy and already had the shared
-  image `physim2-ring:1`, at which step 0 says stop; the rehearsals went on with that image and did not run the
-  build command or its status command. Its disk check was run in the two other commands that carry it.
+  mount or the missing sign; nothing is damaged; report it); **that Docker Desktop applies `--read-only`,
+  `--tmpfs`, `--memory`, `--pids-limit` and `--cpus` to a box as the Linux engine does** (the pilot reads the caps
+  back from the engine before a box is used and refuses a box without them; what a box then sees was measured on
+  Linux only) and that its mount table then shows the four tmpfs mounts the in-box guard allows; how `uv` behaves
+  and that the Python it manages shows `.venv/bin/python` as its command line (step 1 checks it); that `ps`,
+  `shasum`, `df -Pk`, `tail`, `printf` and the system's `awk` print and accept there what they do on Linux (the awk
+  programs were run with mawk only; they use `index`, `substr`, `length` and `sub`, nothing newer); that `docker
+  context show` says `desktop-linux` and the context's address is a socket in the home folder; that the session's
+  shell (zsh) leaves the same waiting shell as `sh` and `bash` did; how a Claude session on the Mac ends a command
+  at its limit; that a detached command survives the end of the call that started it, and the end of the session
+  (it shares the issuing shell's process group; survival was seen on Linux only); that a laboratory outlives a
+  killed vf-eval there; what the app does at a session's end, and what a session's own start-up hook writes or
+  fetches; uv's behaviour beyond the two commands of step 1; Docker Desktop's own helper containers, telemetry and
+  disk-image limit.
+- **A model.** No command of this pin has called one. The spend stop, the context cap, the request route and the
+  publication folder ran against a stand-in endpoint on the loopback of the cloud container, which answers with
+  made-up usage (`tools/standin_model.py`; `results/round4_step3.json`). Not seen with a real provider: the
+  usage fields of Prime's replies as this code reads them (their shape was read from the two saved traces of the
+  first rollouts and from the model list); that the explicit `[client]` table of a billed run (the inference
+  address, the key's variable) behaves like verifiers' default, which the first two rollouts used; that vf-eval
+  opens no connection other than to the inference host; the `reasoning` object of the config key
+  `reasoning_summary` (nobody has sent it). The one command with `--model-credentials prime` was never issued.
+- The image build of step 1: built in the cloud container behind its TLS-intercepting proxy with two build
+  arguments that the Mac does not use; the command of step 1 as written was not run.
+- Steps 0 to 2 as text of this round: the commands that changed since round 3 (the tree check with `--ignored`,
+  the environment check with three more names, the pilot-folder command without the certificate file, the image
+  tag, `make_instances` and `prove.py` with `ring_r4` and the null policy, the reset command with its disk gate)
+  were not issued as `sh -c` lines in this round, and step 2b (`tools/check_probe.py`) and step 2c were not
+  rerun with the box caps and image 2; the numbers quoted for 2a are from the same tool run by profile on
+  another hidden world.
+- Step 3 as text: the stages `instance`, `reference`, `dry-run`, `rollout` (against the stand-in), `close` (its
+  refusal) and `tools/pack_rollout.py` ran as tools in the cloud container with a scratch folder as the pilot
+  folder; `tools/check_request.py --fetch` ran on a scratch repository (no file was ever committed under
+  `rollouts/requests/`); the shell lines of 3.0 and 3a to 3h were not issued as written, the paid one least of
+  all. A crash in the middle of a model rollout was not produced: stage `close` and the rule "one rollout at a
+  time" were tested under tripwires with made-up process and container listings.
 - The by-hand checks and three expectations of step 0: the cloud session is root, on x86_64, behind a proxy;
-  its Docker context is `default` on `unix:///var/run/docker.sock`; the home folder of the rehearsal was a folder
-  of its scratch (given to every command as the variable `HOME`, so the commands ran byte for byte), with uv's
-  cache and uv's own Python pointed elsewhere for the two uv commands; the machine has 2 GiB free for everyone,
-  so `8` was replaced by a lower floor in the commands that carry it, except where the refusal itself was
-  rehearsed.
-- "If a run was interrupted": points 1, 2, 3, 5 and 6 were rehearsed, each as part of a first interruption (a stop
-  by the stop command, a vf-eval killed outright, a stop by the disk watchdog). Point 4 did not arise: on Linux
-  the laboratory dies with its vf-eval, and no helper happened to be running at a stop; its stop command is the
-  one of point 2. The rule for a second interruption (points 1 to 5, then stop), the stop of a vf-eval by its own
-  pid and the 60-minute bound of the "must show" rule were not exercised.
-- Step 3, its file gate, its dry run and the copy of its trace: never run. Its two start commands are new in
-  round 3 and were not issued; `tools/vfrun.py --model-credentials prime` was run with a stand-in for vf-eval in
-  a throwaway container only (`results/round3_checks.json`).
+  its Docker context is `default` on `unix:///var/run/docker.sock`; the machine has 2.5 GiB free for everyone, so
+  `8` was replaced by a lower floor wherever a tool carried it.
+- "If a run was interrupted": points 1, 2, 3, 5 and 6 were rehearsed in round 3, each as part of a first
+  interruption. Point 4 did not arise on Linux. Point 8 is new and was not rehearsed (above). The rule for a
+  second interruption, the stop of a vf-eval by its own pid and the 60-minute bound of the "must show" rule were
+  not exercised.

@@ -14,7 +14,10 @@ scripted smoke test on the Mac. The Mac session then reviewed the released commi
 anything and returned three major and eleven minor points; **the GO is suspended and `RUNBOOK_MAC.md` is ON HOLD
 again.** A seventh agent changed the code and the runbook to meet those points and a disk requirement of the
 coordinator, and rehearsed the result (sections 8.9 and 8.10). This file describes the code and the runbook as
-they are now; **the round-3 changes have not been re-audited.** Everything was
+they were after round 3, and section 8.12 describes round 4 (11 Nov 2026: after two model rollouts in the cloud
+container exposed faults of the exam, and with the lead's Mac available again, the code and the runbook were
+changed for model rollouts driven by request files; `RUNBOOK_MAC.md` is ON HOLD until that round's verdict).
+Where section 8.12 and an earlier section differ, 8.12 holds. Everything of rounds 1 to 3 was
 RUN on Docker in the cloud container (Linux x86_64, 4 cores, Docker 29.9.2) with scripted agents only. No model
 call, no GPU job, no upload.
 **Nothing was run on a Mac.** Numbers and their sources: `results/summary.json`, which also says which result file
@@ -80,7 +83,21 @@ rehearsal/              cloud container only, not for the Mac: issue.py (round 2
 redteam/                the red team's attack scripts and results, kept; three attacks run again after the first fixes
                         (*-after-fix.json); not run again after the host-safety changes
 docker/                 Dockerfile.ring (the one image of every box), Dockerfile.network (proxy-bound hosts only)
-configs/                scripted_ring.toml, qwen_ring_bash.toml
+configs/                scripted_ring.toml (step 2c); a model rollout's config is NOT here: it is a flat file under
+                        ../rollouts/configs/, named by a request (section 8.12)
+round 4 (section 8.12)  physim2_env/boxcaps.py and runtime.py (the box caps on verifiers' one `docker run` of a box, read
+                        back from the engine; the bearer on a box's proxy; credential-free docker clients),
+                        bearer.py (the laboratory's per-rollout secret), spend.py (the spend stop and the context cap
+                        on verifiers' one route to the provider), profiles.py, rollout_config.py, capture.py,
+                        physim2_verifier/ (fixer A: section 8.13);
+                        tools/check_config.py (the strict schema of a rollout config), check_request.py (a request,
+                        the pin, the lead's standing go, the ledgers, prices and bounds; --fetch; --facts),
+                        vfrun.py --request (the stages instance, reference, dry-run, rollout, close),
+                        pack_rollout.py (the publication folder with its key scan), settle.py (an ungraded run counts
+                        as the null policy); development checks, cloud container only: check_round4.py with
+                        check_round4_step3.py (host, under tripwires), check_step3.py (through vf-eval, with
+                        standin_model.py as the model endpoint), agents/probe_caps.py (runs in a box only);
+                        results/round4_step3.json
 results/                proof_ring.json + proof_ring_items.npz, recomputed_table.json, probe_ring.json, units.json,
                         units_before_fix.json, driver_container.json, gliders_smoke_D.json, summary.json;
                         host safety, round 1: host_safety_round1.json (one entry per required change), safety_host.json,
@@ -138,6 +155,25 @@ $V -B tools/pin.py --write && $V -B tools/check_runbook.py --out results/safety_
 a lower floor is given here). `results/summary.json` was last written as a whole by `tools/make_summary.py` before
 the host-safety rounds; rounds 2 and 3 added their parts with `rehearsal/make_round2_index.py` and
 `rehearsal/make_round3_index.py`.
+
+Round 4 (the block above is round 3's and is kept as it was run then; image 1 and its certificate file are gone):
+
+```sh
+# the image: built by fixer A behind the session's proxy with two build arguments that the Mac does not use (section 8.13)
+#   docker build --network host --build-arg HTTPS_PROXY=$HTTPS_PROXY --build-arg EXTRA_CA_B64="$(base64 -w0 /root/.ccr/agent-proxy-ca.crt)" \
+#       -f docker/Dockerfile.ring -t physim2-ring:2 docker/
+V=.venv/bin/python                     # an environment made with the runbook's step 1 inside this checkout
+env -i PATH=$PATH HOME=$HOME $V -B tools/check_round4.py --scratch $S/chk --out $S/chk/round4_host.json      # host, under tripwires: 124 checks
+P="env -i PATH=$PATH HOME=$HOME VF_RUN_ID=<a label of this run>"
+$P nice -n 10 $V -B tools/check_step3.py --scratch $S/e2e --out $S/e2e/round4_step3_e2e.json --dev-machine cloud-container --disk-floor-gib 1.2
+#   caps: agents/probe_caps.py in a capped box.  route: fetch, instance, reference, dry run, rollout (stand-in endpoint), close, pack
+$V -B tools/check_runbook.py --out $S/chk/runbook_check.json                                                 # the runbook as text
+$V -B tools/make_round4_step3.py --host ... --caps ... --route ... --runbook ... --out results/round4_step3.json
+$V -B tools/check_request.py --facts                                                                         # the block of facts of the runbook's step 3
+```
+
+`tools/check_round3.py` is round 3's record: its part on the command form with model credentials describes a
+route that round 4 replaced (a model run now starts from a request only), so it was not run again in round 4.
 
 Afterwards delete the store by its full path (it holds the hidden instances). After an interruption:
 `docker ps -a --filter label=verifiers.run=$VF_RUN_ID` lists exactly this run's containers; remove them by name.
@@ -696,6 +732,103 @@ ran byte for byte except for the study path, the pid and name placeholders, and 
 - Rules that stand: no tool or test of this folder may run the cleanup on a host; a host test installs
   `tools/tripwires.py` before it imports the package; a real cleanup or a real signal is tested in a throwaway
   container without a host mount.
+
+### 8.12 Round 4, step 3 and host safety (11 Nov 2026; not audited yet)
+
+Why: the first two model rollouts ran in the cloud container from the round-3 pin (`../rollouts/`). The mechanics
+worked; the exam and the runbook's step 3 did not hold up (a turn cap the statement never named, a failed
+submission paid better than the honest baseline, a price bound that was wrong by a factor of forty, an open
+laboratory port, a harness that installed unpinned packages in the box). The Mac then became available, and its
+session set a protocol: rollouts are requested by files (schema `rollout-job/v1`), executed one at a time by
+following `RUNBOOK_MAC.md`, step 3, and published as a folder. Two agents changed the code: the exam side is
+section 8.13; this section is step 3 and host safety. Evidence labels: READ, TRIPWIRES (run on the host with
+every destructive primitive replaced), VF-EVAL (run through vf-eval in containers that verifiers started, in the
+cloud container, run label `physim2-port4b`), INFERRED. Results: `results/round4_step3.json`.
+
+| # | what | where | evidence |
+|---|---|---|---|
+| 1 | **The laboratory's bearer.** 256 random bits per rollout, drawn in vf-eval at set-up, handed to the laboratory over verifiers' state channel and to the box's proxy in memory; in no environment, command line, file or box; the laboratory's record holds its sha256. Without it `401` and an empty body before the laboratory's code is reached; DNS-rebinding protection on again (`421` for another Host, `403` for a foreign Origin); a laboratory without a bearer serves nothing | `physim2_env/bearer.py`, `lab_tools.py` (`_serve`), `runtime.py` (`BearerEgressProxy`), `access.py` | TRIPWIRES B1 to B18; VF-EVAL R16 to R21 (asked from the host while a rollout ran; searched for in the box's processes and files, in the laboratory's command line and environment, and in every output) |
+| 2 | **Box caps in code**, no Docker Desktop setting: 2 CPUs, 4 GB without swap (a request may lower it), 512 processes, a read-only root, memory-backed `/workspace` (1 GiB) and `/tmp` (512 MiB) as the only places a box can write, read back from the engine before a box is used. One code path for the agent's box, the grading boxes and the reference policies' boxes. A box cannot write to Docker's disk | `physim2_env/boxcaps.py`, `runtime.py`; the in-box guard allows the four tmpfs mounts (`public/_item.py`, fixer A) | TRIPWIRES A1 to A16; VF-EVAL K1 to K12 (`agents/probe_caps.py` hits each cap from inside a box; the rollout is still graded) |
+| 3 | **The spend stop.** Every HTTP attempt to the provider is admitted, counted and priced in vf-eval; a call is sent only while counted + in-flight worst cases < `cap_usd`; anything without complete usage counts as one worst-case call; `max_context_tokens` bounds each prompt before it is sent; a stop ends the run through verifiers' own stop path, so the submission is graded. Bound on the bill: `cap_usd` + one worst-case call | `physim2_env/spend.py`; hooks in `taskset.py`; prices and bounds in `tools/check_request.py` (`prices_of`, `bounds`) | TRIPWIRES C1 to C40 (verifiers' own client against a stand-in endpoint in the same process); VF-EVAL R9 to R15 |
+| 4 | **Step 3 is driven by a request** and repeatable: fetch, check, instance, reference, dry run, rollout, (close), publication. The lead's go is one standing file with a ceiling and a date; the ceiling is one total across machines (`--shared-ledger`); a job, an instance name and a config name are used once; one rollout at a time | `tools/vfrun.py` (`request_route`, `close_job`), `tools/check_request.py`, `RUNBOOK_MAC.md`, step 3 | TRIPWIRES D6 to D24, D36 to D39; VF-EVAL F1, F2, R1 to R27 |
+| 5 | **The strict config schema**: flat TOML, known keys only, the expansion compared with what the pin fixes (the image's preinstalled `bash` harness, no retries, `push = false`), a list of fields that may appear nowhere. The runner reads its copy of the one file; nothing is written into the checkout | `tools/check_config.py`; the schema itself is fixer A's `physim2_env/rollout_config.py` | TRIPWIRES D1 to D5, D22d |
+| 6 | **The publication folder**: status, transcript, redacted trace, laboratory log, grades per item, reference table, usage and cost per call, the frozen submission, a manifest with sha256 and size, the pilot marker, a key scan by value (from the environment) and by shape; a file with a hit is left out and listed | `tools/pack_rollout.py` | TRIPWIRES D25 to D35; VF-EVAL R24 to R26 |
+| 7 | **A crash in the middle of a model rollout**: what it leaves, the clean-up, and stage `close`, which writes the job's closing row only when nothing of the job is left | `RUNBOOK_MAC.md`, "If a run was interrupted", point 8; `tools/vfrun.py` (`leftovers`, `close_job`) | TRIPWIRES D36 to D38 (made-up process and container listings); not produced for real |
+| 8 | **Section B of the runbook** as the inventory for steps 1 to 3: who holds the key and for how long, every listener, signal, deletion, in-place replacement, file left, network destination | `RUNBOOK_MAC.md`, section B | READ (code and verifiers 0.3.2.dev163); the destinations of a model run were not measured at the socket |
+| 9 | The Mac review's minor findings | the table below | |
+| 10 | The default model id is `qwen/qwen3.6-35b-a3b` (`physim2_env/rollout_config.py`, the runbook's example); the old `configs/qwen_ring_bash.toml` is no longer used by anything | | READ |
+
+What the Mac's runner asked of the spend stop, and the test of each line: (1) missing or partial usage, a stream
+without a usage chunk, an error reply: one worst-case call (C6, C25 to C30); (2) every HTTP attempt counts:
+verifiers' client does not retry (`clients/base.py:14-16`), the config allows no retry, a retry of the harness is
+a new counted request (C27; D4 "a retry"); (3) cache reads at the full input price unless the saved entry lists
+one (C3, C4, D15b); (4) counter and stop on the host only, one counted client, no model call without a meter
+(C36 to C39); (5) prices and window from the listing at run start, saved as `model_entry.json` (D13, R9, R24);
+(6) `max_turns` is always set and compared with the config (D1, D4); (7) `max_context_tokens` mandatory and
+enforced before each call (D2, C17, C34, C35); (8) the acceptance rule and the bound are in the runbook, the
+count per call and in total is in the publication folder (D30, R25).
+
+Bounds for the default config (150 turns, 8,192 tokens per reply, a context cap of 200,000, `cap_usd` 1.00;
+prices of 11 Nov 2026: $0.11 in, $1.01 out, window 262,144): one worst-case call $0.0303; bound on the bill
+$1.0303; crude bound without the spend stop $5.57.
+
+**The Mac session's minor findings on the round-3 pin** (identifiers only; the review itself stays private).
+closed = changed in code or text at this pin; accepted = stated in the runbook as a fact of the route; deferred
+= not done, with the reason.
+
+| finding | status | what and where |
+|---|---|---|
+| SIG-2 | closed (text) | runbook B, signal table: the pilot's own deadlines are named as occasions on which a `docker` client is killed |
+| SIG-3 | closed (code) | `tools/vfrun.py`, `stop_child`: one SIGTERM per child however often the tool is signalled; the wait goes on to the same deadline, then SIGKILL |
+| R3-8 | closed in part | same function: the tool no longer leaves vf-eval behind when it is told to stop twice. The tool's own short `docker` clients can outlive it for up to 60 s (they end by themselves); said in "If a run was interrupted", point 7 |
+| INV-7 | closed (text) | runbook B, signal table: the row for Python's asyncio and the laboratory |
+| DEL-1 | accepted | runbook B, deletion table: the laboratory's working folder has a random 48-bit name; a collision cannot be arranged from a box |
+| DEL-2 | closed (text) | runbook B: the new table "What is replaced in place" |
+| DEL-3, INV-6 | closed (text) | runbook B (written and left) and "If a run was interrupted", point 7: the bundle and network temp folders; clients outside the status listing |
+| DOCK-4 | mitigated, guard unchanged | the in-box guard is fixer A's file. A box of this pin cannot carry a file mount: `boxcaps.cap_run_argv` refuses a box command with any option the pin does not expect (A9), and the started box is read back |
+| DOCK-5 | accepted | runbook B (written and left) and C: an existing helper image is used as it is; the lead looks for it by hand |
+| network paragraph | closed (text) | runbook B, Network: Debian's mirror in the build stage, Alpine's mirror for verifiers' helper image |
+| CRED-2 | accepted, in part closed | `docker` clients of vf-eval start without credential-like names (`runtime.docker_client_env`); the client's own config file (credential helpers, a `proxies` section) is a by-hand check in C |
+| CRED-4, CMD-14 | deferred / accepted | the build backend stays pinned by version (uv.lock has no hash for build requirements; changing the build is outside this round). That the runbook's direct commands run with the session's whole environment is said in B |
+| CRED-5 | closed (code) | row 1 above |
+| R3-7 | closed in part | `DYLD_*` joins the names no tool starts with (and step 0's list); `PATH` and the direct commands are said in B |
+| G1 detail | closed (code) | `PYTHONEXECUTABLE` and `__PYVENV_LAUNCHER__` are refused by the tools and looked for in step 0. `python -E` or `-I` was not adopted (untested here) |
+| RB-6 | deferred | needs the Mac: listed in the runbook's last section (a detached command and the end of a session) |
+| RB-7 | closed (text) | step 0: a value with a line break can add a line, never hide a name |
+| RB-8 | closed (command) | step 0 lists ignored files too (a bytecode cache, an old environment) and no longer writes git's index |
+| INV-9 | closed (code, fixer A) | `tools/prove.py`: the cross-check with round 5's grader is off unless asked for; the runbook's command still carries `--no-cross-check` |
+| INV-3, R3-9 | accepted, in part closed | runbook C: 11 GiB before step 0; the watchdog measures the home volume, Docker's disk image must be on it. Nothing watches the disk DURING `uv sync`, the image build and the helpers: each start checks the floor, and what they write is bounded (about 3 GiB). A box no longer writes to Docker's disk at all |
+| INV-5 | closed (text) | runbook B, the key table: the scrub of the laboratory's environment block is Linux-only; the model key never reaches the laboratory on any system |
+| INV-8 | closed (text) | runbook B, listeners: the 104-byte limit of a socket path |
+| NEWC-1 | closed (code and command) | the reason of a stop is written before the stop begins (`run_child`, `on_stop`); a second signal during the stop changes nothing; the reset command of point 6 refuses below the disk floor |
+| RB-1 | closed (text) | rule A.2: the shapes a pid and a container name must have before they are put into a command |
+| RB-9 | closed (text) | runbook C and step 0: 11 GiB |
+| CRED-1 | closed (text) | the folder of step 3 is directly under the home folder; C keeps the row about synced folders |
+| DOCK-3, INV-4, INV-2 | closed | the rule "nothing else runs in Docker" is repeated before 2b, 2c, the reference table and the paid command; the laboratory needs its bearer; stage `close` refuses while a laboratory of the job's instance is alive |
+| DOCK-1, RB-4, R3-1, RB-5 | closed in part | every tool start checks that the Docker context names a local Unix socket (`require_docker`); the builder is not pinned beyond step 1 (deferred: the image is built once, by one command) |
+| R3-3 | accepted | runbook B and "If a run was interrupted": status 130 after a stop by signal |
+| RB-3, R3-4 | closed (code) | the tools refuse a bad environment before the package is imported (`require_clean_environment` first) |
+| CMD-5, RB-2, SIG-1, R3-2, R3-5, INV-1 | deferred | the appendix names them without their text; they wait for the Mac's own re-review of this pin |
+| the list "not covered by anyone" | deferred | outside this study's reach from the cloud container; repeated in the runbook's last section |
+
+What remains after this round, for the integrator and the verdict: `PIN.sha256` and the runbook's pin block (not
+regenerated here); a rehearsal of the runbook's commands as `sh -c` lines, steps 0 to 2 and the free part of
+step 3 (the last section of the runbook lists what was not issued as written); one model call through the new
+route to see the provider's usage fields, the explicit `[client]` table and the destinations of vf-eval; a real
+interruption of a model rollout; everything about macOS.
+
+### 8.13 Round 4, the exam side (fixer A; summarised from that agent's handoff, not re-derived here)
+
+Rulings E1 to E16 of the coordinator (`../../roadmap/DECISIONS.md`): whatever is in `submission/` when a run ends
+is graded, however it ends (`physim2_verifier`, a 49-line env that also grades the last checkpoint of a FAILED
+run; `physim2_env/capture.py` is the one writer of box content on the worker); the box starts with the null
+baseline in `submission/`; a failed item is scored as the null policy, never as K; the task statement is
+rendered per run with the turn, time, reply, context and spend limits and the box as measured; the Lab client
+logs every reply to `/workspace/lab_log.jsonl`; `lab.usage()` reports time and turns; the ring profile uses
+`ring_r4` (256 samples per item, a reset costs 17 ticks); the image `physim2-ring:2` holds the `bash` harness
+preinstalled from hashed pins behind a stand-in for `uv`, so a box fetches nothing at set-up; a rollout config
+is a flat file (`physim2_env/rollout_config.py`), a profile fixes world, exam config, image, box and reference
+policies (`physim2_env/profiles.py`). Proof: `results/round4_exam.json` and `tests/` of that agent.
 
 ## 9. Where the code contradicted the memo, and what else turned up
 

@@ -438,6 +438,44 @@ def run(check, raises, scratch):
     check("D39 the one address of a model run is the service the prices are read from, and the key's name is looked for, never its value",
           CR.PRIME_MODELS_URL == vfrun.PRIME_INFERENCE_URL + "/models" and vfrun.KEY_VAR == "PRIME_API_KEY" and "DYLD_INSERT_LIBRARIES" in vfrun.refused_names({"DYLD_INSERT_LIBRARIES": "x"})
           and vfrun.refused_names({"PRIME_API_KEY": "x", "HOME": "/h", "SSL_CERT_FILE": "/c"}) == [] and "SSL_CERT_FILE" not in vfrun.ENV_PASS + vfrun.ENV_PASS_MODEL)
+    # ---- the one stop path, with a child that is an object of this test (nothing is signalled) ----
+    import subprocess as SP
+
+    class Child:
+        def __init__(self, waits):
+            self.calls, self.waits, self.returncode = [], list(waits), None
+
+        def poll(self):
+            return self.returncode
+
+        def send_signal(self, sig):
+            self.calls.append(("signal", int(sig)))
+
+        def kill(self):
+            self.calls.append(("kill",))
+            self.returncode = -9
+
+        def wait(self, timeout=None):
+            self.calls.append(("wait",))
+            what = self.waits.pop(0) if self.waits else "exit"
+            if what == "interrupt":
+                raise KeyboardInterrupt
+            if what == "timeout":
+                raise SP.TimeoutExpired("child", timeout)
+            self.returncode = 0
+            return 0
+    c1 = Child(["interrupt", "interrupt", "exit"])           # the tool is told to stop twice more while it waits
+    how1 = vfrun.stop_child(c1, grace=30.0)
+    c2 = Child(["timeout"])                                  # the child does not end within the grace period
+    how2 = vfrun.stop_child(c2, grace=0.0)
+    c3 = Child(["interrupt"])
+    c3._physim2_term_sent = __import__("time").monotonic()   # a stop that had begun before (the first call was interrupted)
+    how3 = vfrun.stop_child(c3, grace=30.0)
+    check("D40 the stop path: ONE SIGTERM to a child however often the tool is told to stop; the wait goes on to the same deadline; SIGKILL only "
+          "after the grace period; a stop that had begun is not signalled again",
+          how1 == "SIGTERM" and [c for c in c1.calls if c[0] == "signal"] == [("signal", 15)] and ("kill",) not in c1.calls and len(c1.calls) == 4
+          and how2 == "SIGTERM, then SIGKILL" and c2.calls.count(("kill",)) == 1 and [c for c in c2.calls if c[0] == "signal"] == [("signal", 15)]
+          and how3 == "SIGTERM" and not [c for c in c3.calls if c[0] == "signal"], (how1, c1.calls, how2, c2.calls, how3, c3.calls))
     one = {"prompt_tokens": 900}
     check("D35 generic credential shapes are found by the scan: a bearer token, a private key block, an sk- key, a token in a url",
           set(PK.scan(b"Authorization: Bearer " + b"a" * 30 + b"\n-----BEGIN OPENSSH PRIVATE KEY-----\nsk-" + b"B" * 30 + b" https://user:hunter2hunter2@host/x", {}, {}))
