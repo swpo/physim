@@ -1,0 +1,14 @@
+{"t": 1794431198.8977935, "op": "card", "ok": true, "kind": null, "ticks": 0, "ticks_used": 0, "total_nats": 0.0, "seconds": 0.0014798641204833984}
+{"t": 1794431234.4390926, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 0, "total_nats": 0.0, "seconds": 0.0008602142333984375}
+{"t": 1794431240.3635318, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 34, "total_nats": 0.0, "seconds": 1.424421787261963}
+{"t": 1794431243.45951, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 34, "total_nats": 0.0, "seconds": 0.0008161067962646484}
+{"t": 1794431275.1946485, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 34, "total_nats": 0.0, "seconds": 0.0006051063537597656}
+{"t": 1794431321.1892931, "op": "usage", "ok": true, "kind": null, "ticks": 0, "ticks_used": 34, "total_nats": 0.0, "seconds": 0.0030303001403808594}
+{"t": 1794431321.2005348, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 68, "total_nats": 0.0, "seconds": 0.011238336563110352}
+{"t": 1794431321.2197776, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 102, "total_nats": 0.0, "seconds": 0.009127378463745117}
+{"t": 1794431321.237377, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 136, "total_nats": 0.0, "seconds": 0.007961034774780273}
+{"t": 1794431321.2547264, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 170, "total_nats": 0.0, "seconds": 0.007258892059326172}
+{"t": 1794431321.2677054, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 204, "total_nats": 0.0, "seconds": 0.007617950439453125}
+{"t": 1794431321.2828226, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 238, "total_nats": 0.0, "seconds": 0.007828950881958008}
+{"t": 1794431321.2964272, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 272, "total_nats": 0.0, "seconds": 0.00747990608215332}
+{"t": 1794431321.309945, "op": "experiment", "ok": true, "kind": null, "ticks": 34, "ticks_used": 306, "total_nats": 0.0, "seconds": 0.007579803466796875}

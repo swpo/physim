@@ -1,0 +1,283 @@
+{
+ "job_id": "qwen-ring-003",
+ "marker": "PILOT_NEVER_REUSE_AS_EXAM",
+ "instance": "pilot-qwen-ring-003",
+ "model": "qwen/qwen3.6-35b-a3b",
+ "exam_profile": "ring",
+ "pin": "841b4a1e1d12afc7cd60b8b184b451d278895b1d",
+ "pin_sha256": "898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f",
+ "caps": {
+  "max_turns": 30,
+  "max_output_tokens": 8192,
+  "wall_minutes": 15,
+  "box_memory_gb": 4
+ },
+ "cap_usd": 0.5,
+ "purpose": "rehearsal of the round-4 second-pass pin in the cloud container: one short rollout of the default model on the ring profile from a request (30 turns, 15 minutes, $0.50), to show that the second pass's byte bounds and request-key allow-list leave an ordinary model run as it was",
+ "requester": "fixer of port round 4, second pass (cloud container)",
+ "stages": {
+  "dry-run": {
+   "bounds": {
+    "bound_usd": 0.51927392,
+    "crude_bound_usd": 1.1132928,
+    "worst_call_usd": 0.01927392
+   },
+   "ok": true,
+   "returncode": 0,
+   "time_unix": 1794431121.176
+  },
+  "instance": {
+   "instance": "pilot-qwen-ring-003",
+   "ok": true,
+   "time_unix": 1794430503.199
+  },
+  "reference": {
+   "policies": [
+    "null",
+    "D",
+    "P0",
+    "PM",
+    "S",
+    "C"
+   ],
+   "started": true,
+   "time_unix": 1794430509.753
+  },
+  "request": {
+   "config_sha256": "fcac7e8f11053488aefe596be2e43140adb6e855dc1996f19417e370f66d299d",
+   "job_id": "qwen-ring-003",
+   "pin": "841b4a1e1d12afc7cd60b8b184b451d278895b1d",
+   "pin_sha256": "898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f",
+   "request_sha256": "386d1c5df6212ba2525f62dcd35db0740b0411c8515087dd423297dbf9edf590",
+   "time_unix": 1794430487.246
+  },
+  "rollout": {
+   "bound_usd": 0.51927392,
+   "counted_usd": 0.031801576,
+   "ended": true,
+   "how": "exited",
+   "returncode": 0,
+   "status": "done",
+   "time_unix": 1794432274.798,
+   "within_bound": true
+  }
+ },
+ "packed_unix": 1794432299,
+ "trace": {
+  "trace_id": "2b7140f6b3494fdeb0f78d7e58cad9df",
+  "ok": true,
+  "stop_condition": "agent_timeout",
+  "is_timeout": true,
+  "error_types": [],
+  "reward_skill_vs_O": -0.02924303506446356,
+  "graded": true,
+  "counts": {
+   "turns": 24,
+   "tool_calls_by_name": {
+    "bash": 24
+   },
+   "nodes": 49,
+   "model_calls": 24,
+   "model_calls_with_error": 0
+  },
+  "num_input_tokens_counted_once": 12072,
+  "num_output_tokens": 5792,
+  "timing_s": {
+   "boot": 1.0,
+   "setup": 24.2,
+   "agent": 900.2,
+   "finalize": 1.0,
+   "scoring": 0.0
+  },
+  "submission": {
+   "source": "final_collection",
+   "ok": true,
+   "error": null,
+   "files": 2,
+   "bytes": 73795,
+   "sha256": "ab257220b39b8b11659a144fe89818d4475a936f7f4030db5caba48d24a04e36"
+  },
+  "lab": {
+   "ticks_used": 306,
+   "resets": 9,
+   "total_nats": 0.0,
+   "episodes": 9,
+   "requests": 14,
+   "rejected": 0,
+   "validations": 0,
+   "submissions": 0,
+   "submitted": false,
+   "infrastructure_errors": 0
+  },
+  "box_caps": {
+   "cpus": 2,
+   "memory_gb": 4,
+   "swap": false,
+   "pids": 512,
+   "read_only_root": true,
+   "workspace_mib": 1024,
+   "scratch_mib": 512,
+   "scratch_path": "/tmp",
+   "shm_mib": 64,
+   "tmpfs": {
+    "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+    "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+    "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+    "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+   }
+  },
+  "limits": {
+   "max_turns": 30,
+   "wall_minutes": 15.0,
+   "max_output_tokens_per_turn": 8192,
+   "max_context_tokens": 100000,
+   "cap_usd": 0.5,
+   "cpus": 2.0,
+   "memory_gib": 4.0,
+   "pids": 512,
+   "workspace_mib": 1024.0,
+   "tmp_mib": 512.0,
+   "shm_mib": 64.0,
+   "read_only_root": true,
+   "lab_counts_turns": true,
+   "measured": true,
+   "harness": "bash",
+   "checkpoint_seconds": 30.0,
+   "configured": {
+    "cpus": 2.0,
+    "memory_gb": 4.0
+   },
+   "statement_sha256": "32f53b54107140b234e91515e17da6117428f68da60c00c4fcd898c874ca8758"
+  },
+  "spend": {
+   "model": "qwen/qwen3.6-35b-a3b",
+   "cap_usd": 0.5,
+   "worst_call_usd": 0.01927392,
+   "bound_on_the_bill_usd": 0.51927392,
+   "counted_usd": 0.031801576000000005,
+   "attempts": 24,
+   "settled": 24,
+   "in_flight": 0,
+   "refused": 0,
+   "stopped": null,
+   "billed": true,
+   "log_failures": 0,
+   "max_context_tokens": 100000,
+   "max_output_tokens": 8192,
+   "prices_usd_per_mtok": {
+    "input": 0.11,
+    "output": 1.01,
+    "cache_read": 0.099
+   }
+  },
+  "verifier_box": {
+   "has_predict": true,
+   "network_restricted": true,
+   "writable_dirs": [
+    "/dev/mqueue",
+    "/dev/shm",
+    "/proc/acpi",
+    "/run/lock",
+    "/sys/firmware",
+    "/tmp",
+    "/var/tmp"
+   ],
+   "world_writable_paths_fixed": 0,
+   "owned_by_predictor_user_before": 0,
+   "predictor_uid": 29686,
+   "box_limits": {
+    "pids_max": "512",
+    "memory_max": "4294967296"
+   },
+   "container_evidence": [
+    "/.dockerenv",
+    "/proc/1/cgroup"
+   ]
+  },
+  "record": null,
+  "grade": {
+   "L": 3.9497039054073886,
+   "L_K": 3.920940438099881,
+   "L_O": 2.937339821949709,
+   "skill_vs_O": -0.02924303506446356,
+   "n_items": 64,
+   "n_failed": 0,
+   "fallback": {
+    "policy": "null",
+    "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+    "n_items": 0,
+    "by_reason": {}
+   },
+   "cpu_s_mean": 0.250013140625,
+   "cpu_s_max": 0.335219,
+   "wall_s_mean": 0.2764931060373783,
+   "seconds": 187.52112555503845,
+   "layers": {
+    "rlimits": true,
+    "uid": 29686,
+    "cleanup": true
+   },
+   "items_with_leftovers": 0,
+   "box_not_clean_after_item": null,
+   "cleanup_between_items": true,
+   "isolation": "box",
+   "validation": {
+    "ok": true,
+    "cpu_s_per_request": 0.261912
+   },
+   "infrastructure_failed_items": 0,
+   "non_finite_items": 0,
+   "item_boxes": 64,
+   "item_box_wall_s_mean": 2.879469010978937,
+   "item_boxes_cpu_s": 78.48933715900002,
+   "item_boxes_parallel": 1,
+   "worker_wall_s": 189.993483543396,
+   "worker_cpu_s": 5.367818730999996,
+   "verifier_box_cpu_s": 2.31472,
+   "verifier_wall_s": 191.13706040382385
+  },
+  "credential_like_fields_removed_from_the_trace": 1
+ },
+ "ledger": [
+  {
+   "billed": true,
+   "bound_usd": 0.51927392,
+   "cap_usd": 0.5,
+   "ceiling_usd": 5.0,
+   "crude_bound_usd": 1.1132928,
+   "event": "reserved",
+   "go_date": "2026-11-11",
+   "instance": "pilot-qwen-ring-003",
+   "job_id": "qwen-ring-003",
+   "model": "qwen/qwen3.6-35b-a3b",
+   "prices_usd_per_mtok": {
+    "cache_read": 0.099,
+    "cache_write": null,
+    "context_window": 262144,
+    "input": 0.11,
+    "input_counted": 0.11,
+    "max_output_tokens": 65536,
+    "output": 1.01
+   },
+   "spent_elsewhere_usd": 3.42323,
+   "time_unix": 1794431143.522,
+   "worst_call_usd": 0.01927392
+  },
+  {
+   "attempts": 24,
+   "billed": true,
+   "count_complete": true,
+   "counted_usd": 0.031801576,
+   "event": "ended",
+   "how": "exited",
+   "job_id": "qwen-ring-003",
+   "returncode": 0,
+   "status": "done",
+   "stopped": null,
+   "time_unix": 1794432274.797,
+   "worst_case_calls": 0
+  }
+ ],
+ "missing": [],
+ "complete": true
+}

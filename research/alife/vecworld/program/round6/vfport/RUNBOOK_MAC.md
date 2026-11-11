@@ -34,8 +34,11 @@ the round-4 pin before this one (the same commands; `d9694f3e5`) was rehearsed f
 again each command as ONE `sh -c '<text>'`: steps 0 to 2 with one
 interruption and one trip of the disk watchdog, and step 3 with a real model for three jobs (one ended by itself
 at its first call, one was killed between two model calls and cleaned up by "If a run was interrupted", one ran
-to its natural end and was graded and packed): `results/rehearsal_round4.json`. Which commands were issued as
-written, and which were not, is listed at the end of this file.
+to its natural end and was graded and packed): `results/rehearsal_round4.json`. The second pass of round 4 (this
+pin) changed one command (the go file of 3.0) and the code under step 3; the commands it touched, and one paid job
+from a request, were rehearsed again from a fresh clone of this pin (`results/rehearsal_round4.json`,
+`second_pass`), and a box that floods every way out was run through vf-eval (`tools/check_step3.py`, part
+`flood`). Which commands were issued as written, and which were not, is listed at the end of this file.
 **Nothing here has run on a Mac: every statement about macOS and Docker Desktop is inferred.**
 
 ## A. Rules for the session that follows this file
@@ -405,9 +408,10 @@ stop), `IMAGES-LISTED` (no image `physim2-ring:2` yet: an image id before it is 
 
 **Step 0 again, later, at the SAME commit** (a new session that is to run step 3 after steps 1 and 2 passed on this
 Mac at this commit, as its own report of them says): then what those steps left is expected, and only that. The
-first command of step 0 lists `!! .venv/` between its second and third line (no other line); this command prints
-an image id before `IMAGES-LISTED` and no `NO-PILOT-FOLDERS` (the `.venv` and, unless step 4 ran, the pilot
-folder of steps 1 and 2). Go on with step 3 then; do not run steps 1 and 2 again. Anything else listed is a stop.
+first command of step 0 lists one line between its second and third line, `!! research/alife/vecworld/program/round6/vfport/.venv/`
+(git names the path from the repository's top; no other line); this command prints an image id before
+`IMAGES-LISTED` and no `NO-PILOT-FOLDERS` (the `.venv` and, unless step 4 ran, the pilot folder of steps 1 and 2).
+Seen so in the cloud rehearsal of this pin after steps 1 and 3 (`results/rehearsal_round4.json`, `second_pass`). Go on with step 3 then; do not run steps 1 and 2 again. Anything else listed is a stop.
 **A `.venv` or an image `physim2-ring:2` left by ANOTHER commit** (an earlier pin's steps 1 and 2, for example
 `8bbab3324...`) is a stop as written above: step 1's dry run would say `Would replace` or `Would use`, and the
 image was built from another commit's files. They are the lead's to remove, by hand, before this commit's step 1
@@ -1276,6 +1280,14 @@ folder.
   connections (section B, Network). Not seen: Prime's bill for these jobs (the count is the tool's; the
   runner reconciles), a run ended by the spend stop or the context cap, a run ended by the turn cap or the wall
   time with a real model, and anything on a Mac.
+- **The second pass of round 4 (this pin).** The commands it touched were rehearsed again from a fresh clone of
+  this pin, each as ONE `sh -c` line (`results/rehearsal_round4.json`, `second_pass`): step 0, the uv commands and
+  checks of step 1, 3.0 with the changed go command, and one paid job from a request (`qwen-ring-003`: 24 model
+  calls, none refused by the new request-key allow-list, ended by the wall time, graded, $0.0318 counted, packed
+  clean: `../rollouts/qwen_ring_003/`), then step 0 again (what it then lists is what its text now says). The
+  byte bounds of section B were exercised by a box that floods, through vf-eval (`tools/check_step3.py`, part
+  `flood`: 14 of 14). Not issued again: steps 2 and 4 and the points of "If a run was interrupted"; their commands
+  did not change.
 - The image build of step 1: built in the cloud container behind its TLS-intercepting proxy with two build
   arguments that the Mac does not use; the command of step 1 as written was not run (in the rehearsal the
   shared image of that build was used: a rebuild behind this proxy is not a cache hit and the machine had

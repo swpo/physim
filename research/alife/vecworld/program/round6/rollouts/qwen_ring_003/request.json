@@ -1,0 +1,19 @@
+{
+ "cap_usd": 0.5,
+ "caps": {
+  "box_memory_gb": 4,
+  "max_output_tokens": 8192,
+  "max_turns": 30,
+  "wall_minutes": 15
+ },
+ "config": "research/alife/vecworld/program/round6/rollouts/configs/qwen_ring_003.toml",
+ "exam_profile": "ring",
+ "instance": "pilot-qwen-ring-003",
+ "job_id": "qwen-ring-003",
+ "model": "qwen/qwen3.6-35b-a3b",
+ "pin": "841b4a1e1d12afc7cd60b8b184b451d278895b1d",
+ "pin_sha256": "898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f",
+ "purpose": "rehearsal of the round-4 second-pass pin in the cloud container: one short rollout of the default model on the ring profile from a request (30 turns, 15 minutes, $0.50), to show that the second pass's byte bounds and request-key allow-list leave an ordinary model run as it was",
+ "requester": "fixer of port round 4, second pass (cloud container)",
+ "schema": "rollout-job/v1"
+}

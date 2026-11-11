@@ -944,6 +944,59 @@ test; the runbook's 41 shell commands and 2 inline commands unchanged, byte for 
 Not rehearsed: the image build, step 4, point 4 of "If a run was interrupted", a run ended by the spend stop, the
 context cap, the turn cap or the wall time with a real model, Prime's bill for these jobs, anything on macOS.
 
+### 8.16 Round 4, second pass: the items the verdict left open (11 Nov 2026; not audited yet)
+
+The round-4 verdict (`HOST_SAFETY_AUDIT.md`, "Re-audit, round 4"; commit `8bbab3324`) released steps 0 to 2 and held
+step 3 on two major findings, K4 and X6, plus minor items and step-3 text. A second-pass fixer closed them in the
+third round-4 pin, **commit `841b4a1e1d12afc7cd60b8b184b451d278895b1d`, `PIN.sha256` 136 files, sha256
+`898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f`**. `RUNBOOK_MAC.md` is ON HOLD again until a
+verdict on this pin.
+
+| item | change | where | test |
+|---|---|---|---|
+| K4 (a), and a fourth path found while reading | verifiers reads the WHOLE output of every `docker` client into vf-eval (`proc.communicate()`), and root in the agent's box can write into the output of any `docker exec` (its `/proc/<pid>/fd`), the harness's own main command included (`runtime.run_program`). The one function that starts `docker` clients now keeps at most 96 MiB of standard output and 4 MiB of standard error, reads and drops the rest, and then fails the command; the in-box check runs behind `head -c 1048576` | `physim2_env/runtime.py` (`_communicate`, `read_bounded`), `physim2_env/access.py` (`VALIDATE_SH`) | `tools/check_round4.py` E8, E9; `tools/check_step3.py` flood (vf-eval): F5, F6, F7, F11 |
+| K4 (b) | the laboratory's guard reads a request body itself, counted, and refuses above 4 MiB (`413`, declared or counted); at most 8 requests at once (`503`); the Lab client says what 413 and 503 mean | `physim2_env/bearer.py`, `public/labclient.py` | E1 to E5; flood F3 |
+| K4 (c) | the box's proxy: the relay reader pauses its copy beyond 2 x 128 KiB (a stand-in transport tells the pump), and at most 64 connections of a box are served at once | `physim2_env/runtime.py` | E6, E7; flood F4 |
+| X6 (E9) | `validate` copies `physim2/` from the manifest's entries only and FAILS (stage `package`) when one of them differs or is missing; every entry already in `/tmp` and `/dev/shm` is closed to other users for the check (modes given back after); `as_graded` needs both; the reply cap and value bound of grading are applied in the box too | `public/validate.py`, `public/_rules.py` (`reply_mib`) | `tests/exam_units.py` part 6 (container): the three trapped predictors fail, the modes come back, an added file alone does not fail an honest predictor, a changed one fails with stage `package`; flood F8 (through the laboratory, in a capped box) |
+| K1 | the driver guard accepts the four tmpfs mounts only with the box's own sizes (`size=1048576k`, `524288k`, `1024k`, `16384k`, as `boxcaps.TMPFS` gives them) | `public/_item.py` | E10 (pure, against `boxcaps.TMPFS`); `tools/check_driver.py` (containers): capped box accepted, a `/workspace` tmpfs without the size refused; 33 of 33 |
+| K2 | the capture counts the directories it makes against `max_files`; a file the archive breaks in is listed with its path and bytes on disk (`partial`), and the pass ends | `physim2_env/capture.py` | E11, E12 |
+| K5 | the request keys of a model call are an allow-list (what the stock harness and verifiers' chat dialect send); every non-message key enters the chain's hash; a call is sent only after its `sent` record is in the spend log, and a failed write stops the run (`spend_log_failed`), counted and said on stderr | `physim2_env/spend.py` | E13 to E15; C7b (the `reasoning` object is now refused); route R-checks (stand-in) and the rehearsal's paid job (real route) |
+| X1 | section 4 of the statement: after an error the last copy taken while the run was alive is graded (before every turn and every 30 s, rendered from the run) | `TASK.md.tmpl`, `bundle.py` | `tests/exam_pure.py` |
+| X5 | `lab.card()` carries the run's envelope (measured in its box: CPUs, memory, processes, `/workspace`, `/tmp`, `/dev/shm`, wall time, turns) and per-item limits (memory never above the box's, 256 processes, the scratch places); the statement states the item's memory from the run, the 256 processes and `/tmp`/`/dev/shm`, and names `/dev/shm` among the agent's places | `lab_tools.py`, `access.py`, `bundle.py`, `taskset.py`, `TASK.md.tmpl` | `tests/exam_pure.py`; flood F2 (a 2 GiB box: item memory 2 GiB on the card) |
+| X9 | the driver of every graded item gets `--max-reply-mib` from the exam's value count (1 MiB for the ring, whose largest valid reply is 36 KiB) | `grading.py` | E16 |
+| runbook T2 to T12, T13, T14 | step 3: the tools check two of the four conditions, not three; the go file's placeholders in single quotes and the lead's confirmation that the session writes it; the bounds hold at the listed prices only; 3b checks `bound_usd = cap_usd + worst_call_usd` on its own line; point 8 never reads the log (close in every case) and closes a cut job at its own commit; `EXIT 97` has one reading in step 3; the wait is the wall time plus 165 minutes; a publication folder without `MANIFEST.json` is unfinished; requests come from one folder of one branch only; `git rev-parse` in the key table; step 0 says what this commit's own steps 1 and 2 leave (expected when step 3 follows) and what another commit's leave (a stop) | `RUNBOOK_MAC.md` (the go command is the one command that changed) | `tools/check_runbook.py` 51 of 51 |
+
+Checks at the pin, all in the cloud container: `tools/check_round4.py` 141 of 141 (TRIPWIRES; E1 to E16 new),
+`tests/exam_pure.py` 25 of 25 (TRIPWIRES), `tests/exam_units.py` 96 of 96 (a throwaway container),
+`tools/check_driver.py` 33 of 33 (throwaway containers, each named and labelled), `tools/check_safety.py` 36 of 36,
+`tools/check_round3.py --skip-container` 30 of 30, `tools/check_runbook.py` 51 of 51, `tools/pin.py --check` 136
+files, 0 differences; `tools/check_step3.py` (vf-eval): caps and route 44 of 44 (the route runs the stock bash harness against the stand-in endpoint, so its four requests also passed the new request-key allow-list), flood 14 of 14 (below). Records: `results/round4_second_pass.json`. The flood part numbers its checks F0 to F13; the route has two checks of its own named F1 and F2 (the fetch): different checks. Not changed: the worlds, the item
+construction, the scoring of valid forecasts (no grading arithmetic was touched; ruling E11).
+
+**A box that floods** (`tools/check_step3.py`, part `flood`, `agents/probe_flood.py`; vf-eval, scripted, no
+model): it pushed about 0.9 GB into every way out (a 64 MiB request to the laboratory: cut after 3.9 MB, the
+laboratory answering afterwards; 80 connections: 16 closed unread; a validator printing 256 MiB: its report cut in
+the box; one writing 256 MiB straight into its exec's output: vf-eval kept 96 MiB, dropped 160 MiB and failed the
+check). vf-eval went from 517 to 616 MiB and the laboratory stayed at 427 MiB. A second rollout wrote 256 MiB into
+the harness command's own output (dash keeps it on a saved descriptor while `cmd > log` runs): the command failed
+with `client wrote more than the pilot reads`, vf-eval peaked at 631 MiB, and the failed run was graded on its last
+checkpoint by `physim2-verifier`. Before this pass each of those floods went whole into vf-eval's memory (read).
+
+**The rehearsal** (`results/rehearsal_round4.json`, key `second_pass`: 38 entries with their literal text and
+complete output). From a fresh sparse clone of the pin, only the commands this pass touched and what they need,
+each as ONE `sh -c` line: step 0; the uv commands and checks of step 1; 3.0 (the changed go command); one paid job
+from a request, `qwen-ring-003` (30 turns, 15 minutes, `cap_usd` 0.5, bound $0.5193), through 3a to 3h: 24 model
+calls, all streamed with usage and none refused by the allow-list, ended by the wall time, graded in 64 item boxes
+(-0.029: the box's baseline), **$0.0318 counted**, packed with a clean key scan (`../rollouts/qwen_ring_003/`,
+ledger row 7); then step 0 again at the same commit, which listed exactly `!! research/alife/vecworld/program/round6/vfport/.venv/`,
+the image id and no `NO-PILOT-FOLDERS`, as its new text says. Deviations (listed in the record): sparse shallow
+clone, HOME in scratch with this machine's uv cache, no image build (the shared `physim2-ring:2`; `docker/` is
+unchanged), run label `physim2-port4fix2`, floor 1.2 GiB, 3a through `rehearsal/fetch4.py`, the standing go made by
+the operator. Not issued again: step 2, step 4, the points of "If a run was interrupted" (their texts changed, not
+their commands). A disk emergency of another job (under 200 MB free for some minutes) stopped one of the operator's
+checks through the disk watchdog (`EXIT 97`, nothing deleted); it was run again.
+
+
 ## 9. Where the code contradicted the memo, and what else turned up
 
 1. **"This cloud container has no Docker daemon" (memo section 3).** The binaries are installed and the daemon

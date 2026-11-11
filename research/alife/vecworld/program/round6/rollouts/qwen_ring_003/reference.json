@@ -1,0 +1,1332 @@
+{
+ "world": "ring",
+ "config_name": "ring_r4",
+ "config": {
+  "exam": {
+   "n_items": 64,
+   "R": 16,
+   "n_clim": 256
+  },
+  "lab": {
+   "max_ticks": 400,
+   "reset_cost": 17,
+   "total_nats": null
+  },
+  "predictor": {
+   "n_samples": 256,
+   "cpu_seconds": 30,
+   "wall_seconds": 60,
+   "memory_gib": 4,
+   "artifact_mib": 64
+  },
+  "envelope": {
+   "cpus": 2,
+   "wall_hours": 1,
+   "memory_gib": 4,
+   "gpu": false
+  },
+  "validation": {
+   "max_attempts": 16
+  }
+ },
+ "profile": "ring",
+ "instance_ids": [
+  "pilot-qwen-ring-003"
+ ],
+ "box_memory_gb_requested": 4.0,
+ "sizes": {
+  "n_lab": 8,
+  "n_design": 256,
+  "k_design": 2,
+  "n_train": 512
+ },
+ "n_worlds": 1,
+ "policy_labels": {
+  "K": "long-run average of the hidden world (climatology pool)",
+  "D": "ridge fitted to the real episodes the budget allows",
+  "P0": "ridge trained on simulations at prior draws",
+  "PM": "ridge trained on simulations at the prior mean",
+  "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+  "C": "ridge trained on simulations at the true parameters",
+  "O": "oracle: replicate futures from the hidden state (leave one out)",
+  "null": "null policy: the baseline every box starts with (prior-predictive long-run law, no history, no program); also the forecast a failed item is scored with"
+ },
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "hidden_values_in_this_file": "none (theta, secrets and items stay in the worker's store, which is deleted)",
+ "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, --no-push",
+ "platform": {
+  "machine": "x86_64",
+  "python": "3.12.13",
+  "cpu_count": 4,
+  "backend": "cpu",
+  "verifiers": "0.3.2.dev163",
+  "box_cpus": null,
+  "docker": "29.9.2"
+ },
+ "grading_mode": {
+  "table": "item_isolation = shared",
+  "taskset_default": "item_isolation = box (one fresh box per item)"
+ },
+ "one_box_per_item_check_world_0": {},
+ "per_item_scores_file": "reference_items.npz",
+ "pooled": {
+  "n_items": 64,
+  "n_worlds": 1,
+  "cells": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    1,
+    8
+   ],
+   [
+    1,
+    16
+   ],
+   [
+    2,
+    16
+   ],
+   [
+    2,
+    32
+   ]
+  ],
+  "valid_cells": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   false
+  ],
+  "policies": {
+   "O": {
+    "L": 2.937339821949709,
+    "vs_C": 1.078409101877697,
+    "vs_O": 1.0
+   },
+   "K": {
+    "L": 3.920940438099881,
+    "vs_C": 0.0,
+    "vs_O": 0.0
+   },
+   "null": {
+    "L": 3.9497039054073886,
+    "vs_C": -0.03153595518004615,
+    "vs_O": -0.02924303506446356
+   },
+   "D": {
+    "L": 3.762519651599074,
+    "vs_C": 0.17369084085954892,
+    "vs_O": 0.16106210579744096
+   },
+   "P0": {
+    "L": 3.0391510483071276,
+    "vs_C": 0.9667843719065967,
+    "vs_O": 0.8964912946517771
+   },
+   "PM": {
+    "L": 3.018695586859992,
+    "vs_C": 0.9892115191099404,
+    "vs_O": 0.9172878060724375
+   },
+   "S": {
+    "L": 3.0140205067054158,
+    "vs_C": 0.9943372265443621,
+    "vs_O": 0.9220408329390477
+   },
+   "C": {
+    "L": 3.00885557676335,
+    "vs_C": 1.0,
+    "vs_O": 0.9272918767644179
+   }
+  },
+  "oes": {
+   "climatology": {
+    "mean": 0.0,
+    "se": 0.0,
+    "pooled": 0.0,
+    "per_cell": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "oracle": {
+    "mean": 1.0,
+    "se": 0.0,
+    "pooled": 1.0,
+    "per_cell": [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "null": {
+    "mean": -0.07790932048948708,
+    "se": 0.03759607216514917,
+    "pooled": -0.02924303506446301,
+    "per_cell": [
+     -0.024641180125827056,
+     -0.021130152295326606,
+     -0.015134694109420038,
+     -0.02608030152433115,
+     -0.17455511031414397,
+     -0.20591448456787365,
+     -0.17031168356356935
+    ]
+   },
+   "D": {
+    "mean": -1.5807138394259708,
+    "se": 0.39401163686216956,
+    "pooled": 0.161062105797441,
+    "per_cell": [
+     0.8047980488652757,
+     0.5648655161006125,
+     0.17170819829036785,
+     -0.3349017245745821,
+     -6.226747520502463,
+     -4.464005554735036,
+     -45.319317974206704
+    ]
+   },
+   "P0": {
+    "mean": 0.663297369106025,
+    "se": 0.05841164219686801,
+    "pooled": 0.8964912946517776,
+    "per_cell": [
+     0.9317516944419777,
+     0.938643837932939,
+     0.9506775728894328,
+     0.8875440753079592,
+     0.08362665070467275,
+     0.1875403833591693,
+     -1.4701555139859512
+    ]
+   },
+   "PM": {
+    "mean": 0.7917663598459562,
+    "se": 0.04230145045735877,
+    "pooled": 0.9172878060724378,
+    "per_cell": [
+     0.9313472062285769,
+     0.9372895639263298,
+     0.9530725549595127,
+     0.9192760450983284,
+     0.5029959220469948,
+     0.5066168668159952,
+     -1.0122409753152692
+    ]
+   },
+   "S": {
+    "mean": 0.813488933451473,
+    "se": 0.03772800087531658,
+    "pooled": 0.9220408329390472,
+    "per_cell": [
+     0.9319383773750898,
+     0.9386237365579639,
+     0.956617643677516,
+     0.9223685609694187,
+     0.5545442539983126,
+     0.5768410281305372,
+     -0.9176480883952105
+    ]
+   },
+   "C": {
+    "mean": 0.840675967675598,
+    "se": 0.03487530090923121,
+    "pooled": 0.9272918767644179,
+    "per_cell": [
+     0.932778179851828,
+     0.9384693720273809,
+     0.9563984489416836,
+     0.9350559469398544,
+     0.6108165149990293,
+     0.6705373432938124,
+     -0.83240976412574
+    ]
+   }
+  },
+  "oes_by_program_class": {
+   "a": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "null": -0.22085741679462498,
+    "D": -1.1145198109471297,
+    "P0": 0.6625578320184284,
+    "PM": 0.787163452429867,
+    "S": 0.796522958882122,
+    "C": 0.8156326613080028
+   },
+   "b": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "null": -0.40848106565500214,
+    "D": -3.161969304480101,
+    "P0": 0.4328310840805079,
+    "PM": 0.7415342334570315,
+    "S": 0.7694219713173286,
+    "C": 0.8487780310591605
+   },
+   "c": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "null": -0.09872928686048132,
+    "D": -3.916525857519536,
+    "P0": 0.48700777666677975,
+    "PM": 0.6353940419743528,
+    "S": 0.6449513844981175,
+    "C": 0.6890542073499978
+   },
+   "d": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "null": 0.028475489258396092,
+    "D": -0.6544643783209535,
+    "P0": 0.7634652812234698,
+    "PM": 0.8605586523831003,
+    "S": 0.8917364658242928,
+    "C": 0.9064903694019587
+   }
+  },
+  "acceptance": {
+   "L": {
+    "K": 3.920940438099881,
+    "D": 3.762519651599074,
+    "P0": 3.0391510483071276,
+    "S": 3.0140205067054158,
+    "C": 3.00885557676335
+   },
+   "n_items": 64,
+   "sigma": 0.0332156280934033,
+   "null_is": "P0",
+   "rho": 0.8295147862411608,
+   "sigma_items": {
+    "se": 0.005431665086376939,
+    "p05": 0.02456480052178486,
+    "p95": 0.042122096166696876
+   },
+   "rho_items": {
+    "se": 0.07221987491475601,
+    "p05": 0.7082911424961523,
+    "p95": 0.9448003513255409
+   },
+   "bars": {
+    "sigma_min": 0.15,
+    "rho_max": 0.7
+   },
+   "pass_sigma": false,
+   "pass_rho": false
+  },
+  "policy_labels": {
+   "K": "long-run average of the hidden world (climatology pool)",
+   "D": "ridge fitted to the real episodes the budget allows",
+   "P0": "ridge trained on simulations at prior draws",
+   "PM": "ridge trained on simulations at the prior mean",
+   "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+   "C": "ridge trained on simulations at the true parameters",
+   "O": "oracle: replicate futures from the hidden state (leave one out)",
+   "null": "null policy: the baseline every box starts with (prior-predictive long-run law, no history, no program); also the forecast a failed item is scored with"
+  }
+ },
+ "per_world": [
+  {
+   "instance_id": "pilot-qwen-ring-003",
+   "secret_commitment": "756ad9b5cae27abe5e6f4bd672372fdece816e668b0bf2c47be65a7c1a49a74a",
+   "rollouts": {
+    "null": {
+     "trace_id": "332fddace1df47b5b4683201612efb44",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "final_collection",
+      "ok": true,
+      "error": null,
+      "files": 2,
+      "bytes": 71453,
+      "sha256": "ebb4cdc776f13acfa7ac403534fb5061f09d9d47c9653b0f15edcbfdf42f89a8"
+     },
+     "submitted_before_finalization": false,
+     "lab_ticks_used": 0,
+     "lab_total_nats": 0.0,
+     "lab_requests": 2,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": null,
+     "member_ticks_simulated": null,
+     "train_episodes": null,
+     "agent_cpu_s": null,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": -0.02924303506446356,
+     "wall_s": {
+      "boot": 0.740898609161377,
+      "setup": 18.776007175445557,
+      "agent": 3.478672504425049,
+      "finalize": 0.774580717086792,
+      "verifier": 56.706281661987305,
+      "total": 80.47644066810608
+     },
+     "cpu_s": {
+      "agent_box_unverified": 3.42491,
+      "verifier_box": 41.1752,
+      "item_boxes": null,
+      "worker_in_reward": 4.164089634
+     },
+     "ended": "the agent stopped",
+     "limits": {
+      "max_turns": null,
+      "wall_minutes": 60.0,
+      "max_output_tokens_per_turn": null,
+      "max_context_tokens": null,
+      "cap_usd": null,
+      "cpus": 2.0,
+      "memory_gib": 4.0,
+      "pids": 512,
+      "workspace_mib": 1024.0,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0,
+      "read_only_root": true,
+      "lab_counts_turns": true,
+      "measured": true,
+      "harness": "physim2-script",
+      "checkpoint_seconds": 30.0,
+      "configured": {
+       "cpus": 2.0,
+       "memory_gb": 4.0
+      },
+      "statement_sha256": "881aa9b1c469050326db64b6c6172d8e58972e0fd9234647920cf5fe1a7afd51"
+     },
+     "box_caps": {
+      "cpus": 2,
+      "memory_gb": 4,
+      "swap": false,
+      "pids": 512,
+      "read_only_root": true,
+      "workspace_mib": 1024,
+      "scratch_mib": 512,
+      "scratch_path": "/tmp",
+      "shm_mib": 64,
+      "tmpfs": {
+       "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+       "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+       "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+       "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+      }
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "fallback": {
+       "policy": "null",
+       "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+       "n_items": 0,
+       "by_reason": {}
+      },
+      "cpu_s_mean": 0.291656015625,
+      "cpu_s_max": 0.440409,
+      "layers": {
+       "rlimits": true,
+       "uid": 32141,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 52.65523910522461,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.30722799999999995
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    },
+    "D": {
+     "trace_id": "3ea81eaa0c4b441d981780fae1ed761a",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 4,
+      "bytes": 122579,
+      "sha256": "72ac3a6e2f03e8632557bdfc90b81bc41c47cbf514c6e8c8d38db3e54abdb0a1"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 390,
+     "lab_total_nats": 30.660430214829717,
+     "lab_requests": 23,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": 6,
+     "member_ticks_simulated": 0,
+     "train_episodes": 6,
+     "agent_cpu_s": 1.220671191,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": 0.16106210579744096,
+     "wall_s": {
+      "boot": 0.9189560413360596,
+      "setup": 21.50336503982544,
+      "agent": 8.709657430648804,
+      "finalize": 0.4141860008239746,
+      "verifier": 55.55413866043091,
+      "total": 87.10030317306519
+     },
+     "cpu_s": {
+      "agent_box_unverified": 6.71665,
+      "verifier_box": 40.1061,
+      "item_boxes": null,
+      "worker_in_reward": 4.316369328
+     },
+     "ended": "submit",
+     "limits": {
+      "max_turns": null,
+      "wall_minutes": 60.0,
+      "max_output_tokens_per_turn": null,
+      "max_context_tokens": null,
+      "cap_usd": null,
+      "cpus": 2.0,
+      "memory_gib": 4.0,
+      "pids": 512,
+      "workspace_mib": 1024.0,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0,
+      "read_only_root": true,
+      "lab_counts_turns": true,
+      "measured": true,
+      "harness": "physim2-script",
+      "checkpoint_seconds": 30.0,
+      "configured": {
+       "cpus": 2.0,
+       "memory_gb": 4.0
+      },
+      "statement_sha256": "881aa9b1c469050326db64b6c6172d8e58972e0fd9234647920cf5fe1a7afd51"
+     },
+     "box_caps": {
+      "cpus": 2,
+      "memory_gb": 4,
+      "swap": false,
+      "pids": 512,
+      "read_only_root": true,
+      "workspace_mib": 1024,
+      "scratch_mib": 512,
+      "scratch_path": "/tmp",
+      "shm_mib": 64,
+      "tmpfs": {
+       "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+       "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+       "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+       "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+      }
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "fallback": {
+       "policy": "null",
+       "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+       "n_items": 0,
+       "by_reason": {}
+      },
+      "cpu_s_mean": 0.29094975,
+      "cpu_s_max": 0.405489,
+      "layers": {
+       "rlimits": true,
+       "uid": 37582,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 51.563520431518555,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.26887099999999997
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    },
+    "P0": {
+     "trace_id": "697bf3ceb4324c978402b88bf9e7050e",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 4,
+      "bytes": 627771,
+      "sha256": "d8d87127f5bf25dfbbeff4b113f3fb80a55787a884ca1ec2e3233005ad1709d8"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 0,
+     "lab_total_nats": 0.0,
+     "lab_requests": 5,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": null,
+     "member_ticks_simulated": 24576,
+     "train_episodes": 512,
+     "agent_cpu_s": 8.367750205,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": 0.8964912946517771,
+     "wall_s": {
+      "boot": 0.8714587688446045,
+      "setup": 18.070382833480835,
+      "agent": 11.667567491531372,
+      "finalize": 0.4172670841217041,
+      "verifier": 52.05604147911072,
+      "total": 83.08271765708923
+     },
+     "cpu_s": {
+      "agent_box_unverified": 13.8928,
+      "verifier_box": 37.7192,
+      "item_boxes": null,
+      "worker_in_reward": 3.899136820999999
+     },
+     "ended": "submit",
+     "limits": {
+      "max_turns": null,
+      "wall_minutes": 60.0,
+      "max_output_tokens_per_turn": null,
+      "max_context_tokens": null,
+      "cap_usd": null,
+      "cpus": 2.0,
+      "memory_gib": 4.0,
+      "pids": 512,
+      "workspace_mib": 1024.0,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0,
+      "read_only_root": true,
+      "lab_counts_turns": true,
+      "measured": true,
+      "harness": "physim2-script",
+      "checkpoint_seconds": 30.0,
+      "configured": {
+       "cpus": 2.0,
+       "memory_gb": 4.0
+      },
+      "statement_sha256": "881aa9b1c469050326db64b6c6172d8e58972e0fd9234647920cf5fe1a7afd51"
+     },
+     "box_caps": {
+      "cpus": 2,
+      "memory_gb": 4,
+      "swap": false,
+      "pids": 512,
+      "read_only_root": true,
+      "workspace_mib": 1024,
+      "scratch_mib": 512,
+      "scratch_path": "/tmp",
+      "shm_mib": 64,
+      "tmpfs": {
+       "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+       "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+       "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+       "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+      }
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "fallback": {
+       "policy": "null",
+       "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+       "n_items": 0,
+       "by_reason": {}
+      },
+      "cpu_s_mean": 0.27337173437499995,
+      "cpu_s_max": 0.356645,
+      "layers": {
+       "rlimits": true,
+       "uid": 47175,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 48.35182166099548,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.39273399999999997
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    },
+    "PM": {
+     "trace_id": "af383c48140f4cbd89e1c81c7f140ddb",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 4,
+      "bytes": 627815,
+      "sha256": "1db601ff73b1668d2b269b8ebe6d39553a548cc14054da1f87c3b02a1695869f"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 0,
+     "lab_total_nats": 0.0,
+     "lab_requests": 5,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": null,
+     "member_ticks_simulated": 24576,
+     "train_episodes": 512,
+     "agent_cpu_s": 8.031992876,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": 0.9172878060724375,
+     "wall_s": {
+      "boot": 0.7147936820983887,
+      "setup": 17.89198660850525,
+      "agent": 11.401463985443115,
+      "finalize": 0.43880748748779297,
+      "verifier": 53.112258195877075,
+      "total": 83.55930995941162
+     },
+     "cpu_s": {
+      "agent_box_unverified": 13.4326,
+      "verifier_box": 38.4633,
+      "item_boxes": null,
+      "worker_in_reward": 4.136699971000002
+     },
+     "ended": "submit",
+     "limits": {
+      "max_turns": null,
+      "wall_minutes": 60.0,
+      "max_output_tokens_per_turn": null,
+      "max_context_tokens": null,
+      "cap_usd": null,
+      "cpus": 2.0,
+      "memory_gib": 4.0,
+      "pids": 512,
+      "workspace_mib": 1024.0,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0,
+      "read_only_root": true,
+      "lab_counts_turns": true,
+      "measured": true,
+      "harness": "physim2-script",
+      "checkpoint_seconds": 30.0,
+      "configured": {
+       "cpus": 2.0,
+       "memory_gb": 4.0
+      },
+      "statement_sha256": "881aa9b1c469050326db64b6c6172d8e58972e0fd9234647920cf5fe1a7afd51"
+     },
+     "box_caps": {
+      "cpus": 2,
+      "memory_gb": 4,
+      "swap": false,
+      "pids": 512,
+      "read_only_root": true,
+      "workspace_mib": 1024,
+      "scratch_mib": 512,
+      "scratch_path": "/tmp",
+      "shm_mib": 64,
+      "tmpfs": {
+       "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+       "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+       "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+       "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+      }
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "fallback": {
+       "policy": "null",
+       "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+       "n_items": 0,
+       "by_reason": {}
+      },
+      "cpu_s_mean": 0.279257875,
+      "cpu_s_max": 0.377595,
+      "layers": {
+       "rlimits": true,
+       "uid": 50153,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 49.22882795333862,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.35310199999999997
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    },
+    "S": {
+     "trace_id": "191e8cb0622242e195e3ad98b9994cc2",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 4,
+      "bytes": 627810,
+      "sha256": "ebd730fccf9a0d6b25ff6fd6e51f795fbff5f7dcf643c27b69194addc66c88a4"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 390,
+     "lab_total_nats": 30.660430214829717,
+     "lab_requests": 23,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": 6,
+     "member_ticks_simulated": 49152,
+     "train_episodes": 512,
+     "agent_cpu_s": 8.013990939,
+     "posterior_sd_over_prior_sd": [
+      0.8843311528313658,
+      0.656012713709915,
+      0.3756844240623305
+     ],
+     "reward_skill_vs_O": 0.9220408329390477,
+     "wall_s": {
+      "boot": 2.648725986480713,
+      "setup": 17.173702001571655,
+      "agent": 11.923577547073364,
+      "finalize": 0.34889936447143555,
+      "verifier": 48.842578649520874,
+      "total": 80.93748354911804
+     },
+     "cpu_s": {
+      "agent_box_unverified": 12.7555,
+      "verifier_box": 35.3598,
+      "item_boxes": null,
+      "worker_in_reward": 3.8034693940000004
+     },
+     "ended": "submit",
+     "limits": {
+      "max_turns": null,
+      "wall_minutes": 60.0,
+      "max_output_tokens_per_turn": null,
+      "max_context_tokens": null,
+      "cap_usd": null,
+      "cpus": 2.0,
+      "memory_gib": 4.0,
+      "pids": 512,
+      "workspace_mib": 1024.0,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0,
+      "read_only_root": true,
+      "lab_counts_turns": true,
+      "measured": true,
+      "harness": "physim2-script",
+      "checkpoint_seconds": 30.0,
+      "configured": {
+       "cpus": 2.0,
+       "memory_gb": 4.0
+      },
+      "statement_sha256": "881aa9b1c469050326db64b6c6172d8e58972e0fd9234647920cf5fe1a7afd51"
+     },
+     "box_caps": {
+      "cpus": 2,
+      "memory_gb": 4,
+      "swap": false,
+      "pids": 512,
+      "read_only_root": true,
+      "workspace_mib": 1024,
+      "scratch_mib": 512,
+      "scratch_path": "/tmp",
+      "shm_mib": 64,
+      "tmpfs": {
+       "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+       "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+       "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+       "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+      }
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "fallback": {
+       "policy": "null",
+       "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+       "n_items": 0,
+       "by_reason": {}
+      },
+      "cpu_s_mean": 0.25522323437499994,
+      "cpu_s_max": 0.337412,
+      "layers": {
+       "rlimits": true,
+       "uid": 32153,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 45.3407084941864,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.245489
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    },
+    "C": {
+     "trace_id": "76b34991ec4c4fdba93f874179be39d5",
+     "graded": true,
+     "ok": true,
+     "script_exit_code": 0,
+     "submission": {
+      "source": "agent_submission",
+      "ok": true,
+      "error": null,
+      "files": 4,
+      "bytes": 627871,
+      "sha256": "92cc0f648f77e1214e37e7219945de8d6a924e14d860849aed371dae3fd2c272"
+     },
+     "submitted_before_finalization": true,
+     "lab_ticks_used": 0,
+     "lab_total_nats": 0.0,
+     "lab_requests": 2,
+     "lab_infrastructure_errors": 0,
+     "lab_episodes": null,
+     "member_ticks_simulated": null,
+     "train_episodes": null,
+     "agent_cpu_s": null,
+     "posterior_sd_over_prior_sd": null,
+     "reward_skill_vs_O": 0.9272918767644179,
+     "wall_s": {
+      "boot": 0.7119665145874023,
+      "setup": 17.94521164894104,
+      "agent": 3.461609125137329,
+      "finalize": 0.38205432891845703,
+      "verifier": 53.683945178985596,
+      "total": 76.18478679656982
+     },
+     "cpu_s": {
+      "agent_box_unverified": 3.14524,
+      "verifier_box": 38.7281,
+      "item_boxes": null,
+      "worker_in_reward": 4.072923317000001
+     },
+     "ended": "submit",
+     "limits": {
+      "max_turns": null,
+      "wall_minutes": 60.0,
+      "max_output_tokens_per_turn": null,
+      "max_context_tokens": null,
+      "cap_usd": null,
+      "cpus": 2.0,
+      "memory_gib": 4.0,
+      "pids": 512,
+      "workspace_mib": 1024.0,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0,
+      "read_only_root": true,
+      "lab_counts_turns": true,
+      "measured": true,
+      "harness": "physim2-script",
+      "checkpoint_seconds": 30.0,
+      "configured": {
+       "cpus": 2.0,
+       "memory_gb": 4.0
+      },
+      "statement_sha256": "881aa9b1c469050326db64b6c6172d8e58972e0fd9234647920cf5fe1a7afd51"
+     },
+     "box_caps": {
+      "cpus": 2,
+      "memory_gb": 4,
+      "swap": false,
+      "pids": 512,
+      "read_only_root": true,
+      "workspace_mib": 1024,
+      "scratch_mib": 512,
+      "scratch_path": "/tmp",
+      "shm_mib": 64,
+      "tmpfs": {
+       "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+       "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+       "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+       "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+      }
+     },
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "fallback": {
+       "policy": "null",
+       "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+       "n_items": 0,
+       "by_reason": {}
+      },
+      "cpu_s_mean": 0.28470825,
+      "cpu_s_max": 0.40872699999999995,
+      "layers": {
+       "rlimits": true,
+       "uid": 30374,
+       "cleanup": true
+      },
+      "items_with_leftovers": 0,
+      "cleanup_between_items": true,
+      "seconds": 49.95061802864075,
+      "isolation": "shared",
+      "validation": {
+       "ok": true,
+       "cpu_s_per_request": 0.269714
+      },
+      "item_boxes": null,
+      "item_box_wall_s_mean": null,
+      "infrastructure_failed_items": 0
+     }
+    }
+   },
+   "S_abs_error_over_prior_sd": [
+    1.1420707633923006,
+    0.22459413535306597,
+    0.008062383533594489
+   ],
+   "table": {
+    "n_items": 64,
+    "n_worlds": 1,
+    "cells": [
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      1,
+      8
+     ],
+     [
+      1,
+      16
+     ],
+     [
+      2,
+      16
+     ],
+     [
+      2,
+      32
+     ]
+    ],
+    "valid_cells": [
+     true,
+     true,
+     true,
+     true,
+     true,
+     true,
+     false
+    ],
+    "policies": {
+     "O": {
+      "L": 2.937339821949709,
+      "vs_C": 1.078409101877697,
+      "vs_O": 1.0
+     },
+     "K": {
+      "L": 3.920940438099881,
+      "vs_C": 0.0,
+      "vs_O": 0.0
+     },
+     "null": {
+      "L": 3.9497039054073886,
+      "vs_C": -0.03153595518004615,
+      "vs_O": -0.02924303506446356
+     },
+     "D": {
+      "L": 3.762519651599074,
+      "vs_C": 0.17369084085954892,
+      "vs_O": 0.16106210579744096
+     },
+     "P0": {
+      "L": 3.0391510483071276,
+      "vs_C": 0.9667843719065967,
+      "vs_O": 0.8964912946517771
+     },
+     "PM": {
+      "L": 3.018695586859992,
+      "vs_C": 0.9892115191099404,
+      "vs_O": 0.9172878060724375
+     },
+     "S": {
+      "L": 3.0140205067054158,
+      "vs_C": 0.9943372265443621,
+      "vs_O": 0.9220408329390477
+     },
+     "C": {
+      "L": 3.00885557676335,
+      "vs_C": 1.0,
+      "vs_O": 0.9272918767644179
+     }
+    },
+    "oes": {
+     "climatology": {
+      "mean": 0.0,
+      "se": 0.0,
+      "pooled": 0.0,
+      "per_cell": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "oracle": {
+      "mean": 1.0,
+      "se": 0.0,
+      "pooled": 1.0,
+      "per_cell": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "null": {
+      "mean": -0.07790932048948708,
+      "se": 0.036990776486057614,
+      "pooled": -0.02924303506446301,
+      "per_cell": [
+       -0.024641180125827056,
+       -0.021130152295326606,
+       -0.015134694109420038,
+       -0.02608030152433115,
+       -0.17455511031414397,
+       -0.20591448456787365,
+       -0.17031168356356935
+      ]
+     },
+     "D": {
+      "mean": -1.5807138394259708,
+      "se": 0.39746815098189264,
+      "pooled": 0.161062105797441,
+      "per_cell": [
+       0.8047980488652757,
+       0.5648655161006125,
+       0.17170819829036785,
+       -0.3349017245745821,
+       -6.226747520502463,
+       -4.464005554735036,
+       -45.319317974206704
+      ]
+     },
+     "P0": {
+      "mean": 0.663297369106025,
+      "se": 0.05708421403038301,
+      "pooled": 0.8964912946517776,
+      "per_cell": [
+       0.9317516944419777,
+       0.938643837932939,
+       0.9506775728894328,
+       0.8875440753079592,
+       0.08362665070467275,
+       0.1875403833591693,
+       -1.4701555139859512
+      ]
+     },
+     "PM": {
+      "mean": 0.7917663598459562,
+      "se": 0.0408232466749631,
+      "pooled": 0.9172878060724378,
+      "per_cell": [
+       0.9313472062285769,
+       0.9372895639263298,
+       0.9530725549595127,
+       0.9192760450983284,
+       0.5029959220469948,
+       0.5066168668159952,
+       -1.0122409753152692
+      ]
+     },
+     "S": {
+      "mean": 0.813488933451473,
+      "se": 0.036545780007452525,
+      "pooled": 0.9220408329390472,
+      "per_cell": [
+       0.9319383773750898,
+       0.9386237365579639,
+       0.956617643677516,
+       0.9223685609694187,
+       0.5545442539983126,
+       0.5768410281305372,
+       -0.9176480883952105
+      ]
+     },
+     "C": {
+      "mean": 0.840675967675598,
+      "se": 0.03363479355120555,
+      "pooled": 0.9272918767644179,
+      "per_cell": [
+       0.932778179851828,
+       0.9384693720273809,
+       0.9563984489416836,
+       0.9350559469398544,
+       0.6108165149990293,
+       0.6705373432938124,
+       -0.83240976412574
+      ]
+     }
+    },
+    "oes_by_program_class": {
+     "a": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "null": -0.22085741679462498,
+      "D": -1.1145198109471297,
+      "P0": 0.6625578320184284,
+      "PM": 0.787163452429867,
+      "S": 0.796522958882122,
+      "C": 0.8156326613080028
+     },
+     "b": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "null": -0.40848106565500214,
+      "D": -3.161969304480101,
+      "P0": 0.4328310840805079,
+      "PM": 0.7415342334570315,
+      "S": 0.7694219713173286,
+      "C": 0.8487780310591605
+     },
+     "c": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "null": -0.09872928686048132,
+      "D": -3.916525857519536,
+      "P0": 0.48700777666677975,
+      "PM": 0.6353940419743528,
+      "S": 0.6449513844981175,
+      "C": 0.6890542073499978
+     },
+     "d": {
+      "climatology": 0.0,
+      "oracle": 1.0,
+      "null": 0.028475489258396092,
+      "D": -0.6544643783209535,
+      "P0": 0.7634652812234698,
+      "PM": 0.8605586523831003,
+      "S": 0.8917364658242928,
+      "C": 0.9064903694019587
+     }
+    },
+    "acceptance": {
+     "L": {
+      "K": 3.920940438099881,
+      "D": 3.762519651599074,
+      "P0": 3.0391510483071276,
+      "S": 3.0140205067054158,
+      "C": 3.00885557676335
+     },
+     "n_items": 64,
+     "sigma": 0.0332156280934033,
+     "null_is": "P0",
+     "rho": 0.8295147862411608,
+     "sigma_items": {
+      "se": 0.0055527309611110845,
+      "p05": 0.0243425477294959,
+      "p95": 0.04179425449399878
+     },
+     "rho_items": {
+      "se": 0.07084968462826698,
+      "p05": 0.7090801546893397,
+      "p95": 0.936829941984052
+     },
+     "bars": {
+      "sigma_min": 0.15,
+      "rho_max": 0.7
+     },
+     "pass_sigma": false,
+     "pass_rho": false
+    },
+    "policy_labels": {}
+   }
+  }
+ ],
+ "rollout_cost": {
+  "n_rollouts": 6,
+  "wall_s_per_rollout_mean": 81.89017363389333,
+  "wall_s_per_rollout_max": 87.10030317306519,
+  "agent_box_cpu_s_unverified_mean": 8.894616666666666,
+  "verifier_box_cpu_s_mean": 38.59195,
+  "vf_eval_host_cpu_s_per_rollout": 46.740961666666664,
+  "vf_eval_wall_s_per_policy": {
+   "null": 93.51202940940857,
+   "D": 101.14907741546631,
+   "P0": 96.21858835220337,
+   "PM": 96.6744532585144,
+   "S": 93.7371678352356,
+   "C": 88.38436436653137
+  },
+  "note": "wall = boot + setup + agent + finalize of the solver trace plus the verifier phase (setup, restore, staging, reward); box CPU = the cgroup counter of each container (the agent box's is read inside a box where the agent is root: unverified); host CPU = vf-eval and its children (laboratory process, docker CLI), shared by the rollouts of one invocation"
+ },
+ "all_graded": true,
+ "all_ok": true,
+ "n_failed_items_total": 0,
+ "wall_s": 583.8345425128937,
+ "invocations": 1,
+ "driver_cpu_s": 7.310304054,
+ "failed_item_is_null_counterfactual": {
+  "D": {
+   "items": 64,
+   "items_scored_worse_than_null": 19,
+   "skill_vs_O": 0.16106210579744096,
+   "skill_vs_O_had_exactly_those_items_failed": 0.33006997351052975
+  },
+  "S": {
+   "items": 64,
+   "items_scored_worse_than_null": 0,
+   "skill_vs_O": 0.9220408329390477,
+   "skill_vs_O_had_exactly_those_items_failed": 0.9220408329390477
+  },
+  "P0": {
+   "items": 64,
+   "items_scored_worse_than_null": 0,
+   "skill_vs_O": 0.8964912946517771,
+   "skill_vs_O_had_exactly_those_items_failed": 0.8964912946517771
+  },
+  "note": "what a predictor would gain if it could fail exactly the items on which it scores worse than the null policy; it holds that policy itself (the baseline in its box), so nothing here is a gift of the grader"
+ }
+}

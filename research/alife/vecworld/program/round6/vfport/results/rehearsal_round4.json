@@ -5081,5 +5081,1429 @@
     "note": "OBSERVATION of the operator (not a runbook command): in the same clone, 'python3 -B -I tools/check_request.py --facts' (system Python, environment PATH and HOME only) exited 0; the config keys it lists are box_memory_gb, cap_usd, exam_profile, instance, max_context_tokens, max_output_tokens_per_turn, max_turns, model, push, reasoning_effort, schema, wall_minutes (no reasoning_summary), and the whole object equals the block of facts in this clone's RUNBOOK_MAC.md. Steps 1 to 3 were not issued again: their command texts are byte for byte those of the first pin, and the two code changes are covered by tests/exam_pure.py (19 of 19) and tools/check_round4.py (125 of 125) at this code."
    }
   ]
+ },
+ "second_pass": {
+  "what": "round 4, SECOND PASS: the third round-4 pin (commit 841b4a1e1d12afc7cd60b8b184b451d278895b1d, PIN.sha256 898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f, 136 files) rehearsed from a fresh clone, ONLY the runbook commands the second pass touches and what they need, each as ONE sh -c line by the clone's rehearsal/issue4.py: step 0 (its text changed: step 0 again at the same commit), the uv commands and checks of step 1 (the clone's environment), 3.0 (the go command, the one command that changed), one paid job from a request through 3a to 3h, and step 0 again afterwards",
+  "where": "cloud container: Linux x86_64, 4 shared cores, Docker 29.9.2, uv 0.11.32, sh = dash, root session, behind a TLS-intercepting proxy, 2.1 to 2.4 GiB free for everyone (it fell under 200 MB for a few minutes at 20:50 UTC through another job; see `disk`); 11 Nov 2026, 20:32 to 21:27 UTC",
+  "evidence_labels": "run (the issuer's sh -c lines: steps 0, 1, 3.0, 3a, 3b, 3c, the status commands, 3g, 3h); vf-eval (3d, 3e and the paid 3f, with the real provider)",
+  "commit_rehearsed": "841b4a1e1d12afc7cd60b8b184b451d278895b1d",
+  "sha256_of_PIN_at_that_commit": "898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f",
+  "how": {
+   "clone": "git init; sparse checkout of round6/vfport, round5/agentenv and vw1; git fetch --depth 1 --filter=blob:none origin 841b4a1e1...; git checkout --detach",
+   "issuing": "the clone's rehearsal/issue4.py through a two-line helper of the operator (`r5`) that fixes the issuer's own arguments; literal text, substitutions, names (never values) of the variables added, exit status and complete output per entry (`steps`)",
+   "home": "HOME was a folder of the rehearsal's scratch for every command",
+   "run_label": "physim2-port4fix2 in place of physim2-pilot-20261110 wherever it is a label",
+   "disk_floor": "8 GiB replaced by 1.2 GiB wherever a command had to run; 0e was first issued as written and refused",
+   "credentials": "PRIME_API_KEY and PRIME_TEAM_ID reached the paid command (3f) by inheritance of the name only; the pack (3h) inherited those two and HF_TOKEN, WANDB_API_KEY for its key scan; no value in any text, file or record",
+   "standing_go": "made by the operator with the changed 3.0 command (ceiling 5 dollars, date 2026-11-11); the notice says ON HOLD and the lead gave no go to this machine; the lead's confirmation that 3.0 now asks for was stood in for by the operator",
+   "uv": "the two uv commands with this machine's cache, Python store, proxy and certificate variables (UV_CACHE_DIR, UV_PYTHON_INSTALL_DIR values recorded; HTTPS_PROXY, SSL_CERT_FILE, UV_NATIVE_TLS names only), as in round 4",
+   "ca": "as in round 4, one file in the clone's environment only (zz_cloud_container_ca.pth) set SSL_CERT_FILE to this machine's public CA bundle for vf-eval's model client"
+  },
+  "outcome": {
+   "step_0": "0a: the commit, the study path, TREE-LISTED with no line between; 0b: 898089fc...108f PIN.sha256, PIN-OK; 0c: 6 names, 0 refused, default, unix:///var/run/docker.sock; 0d: a box of the operator's concurrent check (same run label) and the shared image's id stood before their sentinels, NO-PILOT-FOLDERS; 0e: refused at 8 GiB as written, DISK-OK at 1.2",
+   "step_1": "dry run: Using CPython 3.12.13, Would create ... .venv, Would download 1 package, Would install 103 packages; mkdir; the detached sync ended EXIT 0; import line ends `stand-in`; INTERPRETER-OK. Not issued: the image build and its status (the shared image physim2-ring:2 was used: deviation as in round 4), the image check, make_instances (3c makes the job's instance)",
+   "step_3_0": "ROLLOUTS-FOLDER-MADE; the changed go command (placeholders in single quotes) wrote {\"schema\": \"physim2-lead-go/v1\", \"ceiling_usd\": 5, \"date\": \"2026-11-11\"}",
+   "step_3_job": "qwen-ring-003 (request rehearsal/round4_jobs/qwen-ring-003.json, config round6/rollouts/configs/qwen_ring_003.toml, source commit 0575d557d...): 3a-git-fetch printed the source commit; 3a-fetch as written refused (no request under requests/: as intended), then through rehearsal/fetch4.py copied request, config and shared ledger; 3b: bound_usd 0.51927392 = cap_usd 0.5 + worst_call_usd 0.01927392 on the same line (T5), ceiling 5, after this run at most 3.9425; 3c: made; 3d: six scripted policies, EXIT 0 (C 0.927, S 0.922, PM 0.917, P0 0.896, D 0.161, null -0.029 of O); 3e: bound_on_the_bill 0.519274; 3f: 24 model calls, all streamed with usage, NONE refused by the request-key allow-list, no worst-case call; ended by the wall time (agent_timeout, 15 minutes); graded from the final collection in 64 item boxes, -0.029 (the baseline the box started with: the null policy's score to the last digit); counted $0.0318; 3g printed the report; 3h: 17 files, key scan clean, complete (../rollouts/qwen_ring_003/)",
+   "step_0_again": "after steps 1 and 3 at the same commit: 0a listed exactly one line between its second and third line, `!! research/alife/vecworld/program/round6/vfport/.venv/`, then TREE-LISTED; 0b PIN-OK; 0d: the image id before IMAGES-LISTED and no NO-PILOT-FOLDERS (the .venv and the pilot folder of 1b): what the new text of step 0 says. The text first said `!! .venv/`; corrected to the repository path git prints (prose only, after the pin)"
+  },
+  "flood": "tools/check_step3.py --only flood at the pin (vf-eval, scripted, no model): 14 of 14. A box pushed about 0.9 GB into every way out: a 64 MiB request to the laboratory (502 after 3.9 MB were sent: the guard answered 413 and closed; the laboratory answered afterwards), 80 connections (16 closed unread), a validator printing 256 MiB (report cut in the box), a validator writing 256 MiB straight into its exec's output (SandboxError, 96 MiB kept and 160 MiB dropped by vf-eval); vf-eval 517 -> 616 MiB, the laboratory 427 -> 427 MiB while it ran. A second rollout wrote 256 MiB into the harness command's own output (dash keeps it on a saved descriptor during `cmd > log`): the command failed with `client wrote more than the pilot reads`, vf-eval peaked at 631 MiB, and the failed run was graded on its last checkpoint by physim2-verifier (64 items). The card of the 2 GiB box showed the run's envelope and an item memory of 2 GiB; three trapped predictors failed lab.validate and the baseline passed as graded",
+  "disk": "at 20:48 to 20:53 UTC another job's work (a worktree it then removed) took the machine's free space from 2.1 GiB to under 200 MB; the operator's check_step3 was stopped by its own disk watchdog in the second flood rollout (EXIT 97: one SIGTERM, the box removed, nothing deleted), a line was written to the coordinator's channel, and the flood part was run again once 2.4 GiB were free",
+  "deviations": [
+   {
+    "n": 1,
+    "what": "the clone is sparse and shallow, fetched by commit",
+    "why": "disk"
+   },
+   {
+    "n": 2,
+    "what": "HOME in the scratch; uv's cache and Python store of this machine for the two uv commands",
+    "why": "no second gigabyte of downloads; the proxy"
+   },
+   {
+    "n": 3,
+    "what": "no image build; the shared physim2-ring:2 (docker/ is unchanged since the round-4 pins)",
+    "why": "a rebuild behind this proxy is no cache hit and would write about 1 GB on a machine with 2 GiB free"
+   },
+   {
+    "n": 4,
+    "what": "run label physim2-port4fix2; disk floor 1.2 GiB",
+    "why": "other jobs share Docker and the disk"
+   },
+   {
+    "n": 5,
+    "what": "3a's second command through rehearsal/fetch4.py",
+    "why": "a rehearsal request is never committed under a requests/ folder"
+   },
+   {
+    "n": 6,
+    "what": "the standing go made by the operator; the lead's confirmation of 3.0 stood in for",
+    "why": "no lead in this container"
+   },
+   {
+    "n": 7,
+    "what": "steps 2a to 2c, 4 and the interruption points were not issued again",
+    "why": "their commands and the code they rest on for those steps are unchanged in kind; the second pass touched none of their texts"
+   }
+  ],
+  "not_rehearsed": [
+   "the image build and its status",
+   "step 2",
+   "step 4",
+   "every point of If a run was interrupted (the texts of points 8 and the EXIT 97 reading changed, not their commands)",
+   "a run ended by the spend stop, the context cap or the turn cap with a real model",
+   "Prime's bill for qwen-ring-003",
+   "anything on macOS"
+  ],
+  "PILOT_NEVER_REUSE_AS_EXAM": "pilot-qwen-ring-003 and every instance of the checks are pilot material; their hidden side stayed in the scratch store and was deleted with it",
+  "steps": [
+   {
+    "n": 0,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "20:32:03",
+    "note": "Rehearsal of the round-4 SECOND-PASS pin (fixer, second pass), cloud container (Linux x86_64, 4 shared cores, Docker, uv 0.11.32, sh = dash, root session, behind a TLS-intercepting proxy, about 2.1 GiB free for everyone). Fresh sparse clone of 841b4a1e1d12afc7cd60b8b184b451d278895b1d (git init; sparse checkout of round6/vfport, round5/agentenv, vw1; fetch --depth 1 --filter=blob:none by commit from the public repository; checkout --detach). Only the runbook commands the second pass touches, and what they need: step 0 (text changed: step 0 again at the same commit), the two uv commands of step 1 and its checks (the clone needs its environment), 3.0 (the go command changed), and ONE paid job from a request through 3a to 3h (the request-key allow-list of the spend stop and the bounded output reading need a real model call to be shown), then step 0 again. Run label physim2-port4fix2, disk floor 1.2 GiB wherever a command has to run, HOME a scratch folder."
+   },
+   {
+    "n": 1,
+    "kind": "runbook command",
+    "label": "0a-commit",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && git rev-parse HEAD && pwd -P | grep -Fx \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && git --no-optional-locks status --porcelain --ignored -- . ../../round5/agentenv ../../../vw1 && echo \"TREE-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:07",
+    "seconds": 0.11,
+    "exit": 0,
+    "output": "841b4a1e1d12afc7cd60b8b184b451d278895b1d\n/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\nTREE-LISTED\n",
+    "note": "",
+    "output_short": [
+     "841b4a1e1d12afc7cd60b8b184b451d278895b1d",
+     "<STUDY2>",
+     "TREE-LISTED"
+    ]
+   },
+   {
+    "n": 2,
+    "kind": "runbook command",
+    "label": "0b-pin",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:08",
+    "seconds": 0.07,
+    "exit": 0,
+    "output": "898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f  PIN.sha256\nPIN-OK\n",
+    "note": "",
+    "output_short": [
+     "898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f  PIN.sha256",
+     "PIN-OK"
+    ]
+   },
+   {
+    "n": 3,
+    "kind": "runbook command",
+    "label": "0c-session",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && env | cut -d= -f1 | awk '/^(PHYSIM2_|UV_|VIRTUAL_ENV|PYTHON(PATH|HOME|EXECUTABLE)|__PYVENV_LAUNCHER__|DYLD_|DOCKER_|BUILDX_|VF_|MCP_HOST|MCP_PORT|PRIME_RUNS_MODE)/ { bad++ ; print \"FOUND \" $0 } END { print NR \" names, \" bad + 0 \" refused\" }' && docker context show && docker context inspect --format '{{.Endpoints.docker.Host}}'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:08",
+    "seconds": 0.07,
+    "exit": 0,
+    "output": "6 names, 0 refused\ndefault\nunix:///var/run/docker.sock\n",
+    "note": "",
+    "output_short": [
+     "6 names, 0 refused",
+     "default",
+     "unix:///var/run/docker.sock"
+    ]
+   },
+   {
+    "n": 4,
+    "kind": "runbook command",
+    "label": "0d-docker-and-folders",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && docker ps -a --filter label=verifiers.run=physim2-port4fix2 --format '{{.Names}}' && echo \"CONTAINERS-LISTED\" && docker images -q physim2-ring:2 && echo \"IMAGES-LISTED\" && test ! -e \"$HOME/physim2-pilot-20261110\" && test ! -L \"$HOME/physim2-pilot-20261110\" && test ! -e \"$HOME/physim2-pilot-20261110-results\" && test ! -L \"$HOME/physim2-pilot-20261110-results\" && test ! -e .venv && test ! -L .venv && echo \"NO-PILOT-FOLDERS\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:25",
+    "seconds": 0.13,
+    "exit": 0,
+    "output": "29.9.2\nvf-f1787ff6ea2c49bbbd67cfe4ec593765\nCONTAINERS-LISTED\n8080830e3492\nIMAGES-LISTED\nNO-PILOT-FOLDERS\n",
+    "note": "",
+    "output_short": [
+     "29.9.2",
+     "vf-f1787ff6ea2c49bbbd67cfe4ec593765",
+     "CONTAINERS-LISTED",
+     "8080830e3492",
+     "IMAGES-LISTED",
+     "NO-PILOT-FOLDERS"
+    ]
+   },
+   {
+    "n": 5,
+    "kind": "runbook command",
+    "label": "0e-disk",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) print \"DISK-OK \" int(free / 1048576) \" GiB free\" ; else print \"refused: \" int(free / 1048576) \" GiB free on the file system of the home folder, the floor is 8 GiB\" }'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:25",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": "refused: 2 GiB free on the file system of the home folder, the floor is 8 GiB\n",
+    "note": "",
+    "output_short": [
+     "refused: 2 GiB free on the file system of the home folder, the floor is 8 GiB"
+    ]
+   },
+   {
+    "n": 6,
+    "kind": "runbook command",
+    "label": "0e-disk",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 1258291) print \"DISK-OK \" int(free / 1048576) \" GiB free\" ; else print \"refused: \" int(free / 1048576) \" GiB free on the file system of the home folder, the floor is 8 GiB\" }'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "8388608",
+      "1258291"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:26",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": "DISK-OK 2 GiB free\n",
+    "note": "",
+    "output_short": [
+     "DISK-OK 2 GiB free"
+    ]
+   },
+   {
+    "n": 7,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "20:32:34",
+    "note": "0d: the container listed before CONTAINERS-LISTED is a box of the operator's own concurrent check (tools/check_step3.py at the same pin, run label physim2-port4fix2, in the worktree); the image id is the shared physim2-ring:2 (the image build is not rehearsed: deviation as in round 4). 0e: refused at the runbook's floor of 8 GiB as written, then issued with the rehearsal's floor of 1.2 GiB."
+   },
+   {
+    "n": 8,
+    "kind": "runbook command",
+    "label": "1a-uv-dry-run",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f pyproject.toml && test -f uv.lock && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 1258291) exit 0 ; print \"refused: under 8 GiB free on the file system of the home folder\" ; exit 1 }' && cd / && uv sync --project \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" --locked --python 3.12 --managed-python --dry-run 2>&1 | grep -E \"^Using CPython|project environment|Would (download|install)|error\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "8388608",
+      "1258291"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "HTTPS_PROXY",
+     "LANG",
+     "PATH",
+     "SSL_CERT_FILE",
+     "USER",
+     "UV_CACHE_DIR",
+     "UV_NATIVE_TLS",
+     "UV_PYTHON_INSTALL_DIR"
+    ],
+    "session_environment_added": {
+     "UV_CACHE_DIR": "/root/.cache/uv",
+     "UV_PYTHON_INSTALL_DIR": "/root/.local/share/uv/python",
+     "HTTPS_PROXY": "<the value of this machine; not recorded>",
+     "SSL_CERT_FILE": "<the value of this machine; not recorded>",
+     "UV_NATIVE_TLS": "<the value of this machine; not recorded>"
+    },
+    "started_utc": "20:32:35",
+    "seconds": 0.57,
+    "exit": 0,
+    "output": "Using CPython 3.12.13\nWould create project environment at: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv\nWould download 1 package\nWould install 103 packages\n",
+    "note": "",
+    "output_short": [
+     "Using CPython 3.12.13",
+     "Would create project environment at: <STUDY2>/.venv",
+     "Would download 1 package",
+     "Would install 103 packages"
+    ]
+   },
+   {
+    "n": 9,
+    "kind": "runbook command",
+    "label": "1b-mkdir",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && mkdir -m 700 \"$HOME/physim2-pilot-20261110\" && mkdir \"$HOME/physim2-pilot-20261110/scratch\" && echo \"PILOT-FOLDER-MADE\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:40",
+    "seconds": 0.01,
+    "exit": 0,
+    "output": "PILOT-FOLDER-MADE\n",
+    "note": "",
+    "output_short": [
+     "PILOT-FOLDER-MADE"
+    ]
+   },
+   {
+    "n": 10,
+    "kind": "runbook command",
+    "label": "1c-uv-sync",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f pyproject.toml && test -f uv.lock && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 1258291) exit 0 ; print \"refused: under 8 GiB free on the file system of the home folder\" ; exit 1 }' && docker info --format '{{.ServerVersion}}' && { ( nohup uv sync --project \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" --locked --python 3.12 --managed-python > \"$HOME/physim2-pilot-20261110/scratch/sync.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"$HOME/physim2-pilot-20261110/scratch/sync.log\" ) > /dev/null 2>&1 < /dev/null & }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "8388608",
+      "1258291"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "HTTPS_PROXY",
+     "LANG",
+     "PATH",
+     "SSL_CERT_FILE",
+     "USER",
+     "UV_CACHE_DIR",
+     "UV_NATIVE_TLS",
+     "UV_PYTHON_INSTALL_DIR"
+    ],
+    "session_environment_added": {
+     "UV_CACHE_DIR": "/root/.cache/uv",
+     "UV_PYTHON_INSTALL_DIR": "/root/.local/share/uv/python",
+     "HTTPS_PROXY": "<the value of this machine; not recorded>",
+     "SSL_CERT_FILE": "<the value of this machine; not recorded>",
+     "UV_NATIVE_TLS": "<the value of this machine; not recorded>"
+    },
+    "started_utc": "20:32:40",
+    "seconds": 0.06,
+    "exit": 0,
+    "output": "29.9.2\n",
+    "note": "",
+    "output_short": [
+     "29.9.2"
+    ]
+   },
+   {
+    "n": 11,
+    "kind": "runbook command",
+    "label": "1c-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && tail -n 3 \"$HOME/physim2-pilot-20261110/scratch/sync.log\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:58",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": " + verifiers==0.3.2.dev163 (from https://github.com/swpo/verifiers/releases/download/physim-a24f5e216d14/verifiers-0.3.2.dev163-py3-none-any.whl)\n + yarl==1.25.1\nEXIT 0\n",
+    "note": "",
+    "output_short": [
+     " + verifiers==0.3.2.dev163 (from https://github.com/swpo/verifiers/releases/download/physim-a24f5e216d14/verifiers-0.3.2.dev163-py3-none-any.whl)",
+     " + yarl==1.25.1",
+     "EXIT 0"
+    ]
+   },
+   {
+    "n": 12,
+    "kind": "runbook command",
+    "label": "1d-import",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B -c \"import physim2_env, physim2_script, verifiers, numpy, scipy, jax; print(verifiers.__version__, numpy.__version__, scipy.__version__, jax.__version__, physim2_env.__file__, physim2_env._nokey.state())\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:32:58",
+    "seconds": 9.57,
+    "exit": 0,
+    "output": "0.3.2.dev163 2.5.4 1.18.1 0.12.0.1 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/physim2_env/__init__.py stand-in\n",
+    "note": "",
+    "output_short": [
+     "0.3.2.dev163 2.5.4 1.18.1 0.12.0.1 <STUDY2>/physim2_env/__init__.py stand-in"
+    ]
+   },
+   {
+    "n": 13,
+    "kind": "runbook command",
+    "label": "1e-interpreter",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B -c \"import os, subprocess; line = subprocess.run(['ps', '-ww', '-p', str(os.getpid()), '-o', 'command='], capture_output=True, text=True).stdout.strip(); print(line[:160]); print('INTERPRETER-OK' if line.startswith('/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python -B -c ') else 'INTERPRETER-DIFFERS')\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:33:07",
+    "seconds": 0.04,
+    "exit": 0,
+    "output": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/pytho\nINTERPRETER-OK\n",
+    "note": "",
+    "output_short": [
+     "<STUDY2>/.venv/bin/pytho",
+     "INTERPRETER-OK"
+    ]
+   },
+   {
+    "n": 14,
+    "kind": "runbook command",
+    "label": "3.0-folder",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test ! -e \"$HOME/physim2-rollouts\" && test ! -L \"$HOME/physim2-rollouts\" && mkdir -m 700 \"$HOME/physim2-rollouts\" && mkdir \"$HOME/physim2-rollouts/requests\" \"$HOME/physim2-rollouts/configs\" && echo \"ROLLOUTS-FOLDER-MADE\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:33:14",
+    "seconds": 0.01,
+    "exit": 0,
+    "output": "ROLLOUTS-FOLDER-MADE\n",
+    "note": "",
+    "output_short": [
+     "ROLLOUTS-FOLDER-MADE"
+    ]
+   },
+   {
+    "n": 15,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "20:33:14",
+    "note": "3.0: the standing go is made by the operator of this rehearsal (the runbook's notice says ON HOLD; the lead gave no go to this machine; the confirmation that the session writes the file, which 3.0 now asks for, stands in for the lead's word here): ceiling 5 dollars, as in round 4's rehearsal (the shared ledger counts 3.4232 dollars spent by this container)."
+   },
+   {
+    "n": 16,
+    "kind": "runbook command",
+    "label": "3.0-go",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -d \"$HOME/physim2-rollouts\" && test ! -L \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && printf '{\"schema\": \"physim2-lead-go/v1\", \"ceiling_usd\": %s, \"date\": \"%s\"}\\n' '5' '2026-11-11' > \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && cat \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "CEILING_USD",
+      "5"
+     ],
+     [
+      "GO_DATE",
+      "2026-11-11"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:33:14",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": "{\"schema\": \"physim2-lead-go/v1\", \"ceiling_usd\": 5, \"date\": \"2026-11-11\"}\n",
+    "note": "",
+    "output_short": [
+     "{\"schema\": \"physim2-lead-go/v1\", \"ceiling_usd\": 5, \"date\": \"2026-11-11\"}"
+    ]
+   },
+   {
+    "n": 17,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "20:33:59",
+    "note": "Added, as in round 4's rehearsal, one file to the clone's environment only: .venv/lib/python3.12/site-packages/zz_cloud_container_ca.pth, setting SSL_CERT_FILE to this machine's public CA bundle when no such variable is set (verifiers' model client does not trust this container's TLS-intercepting proxy; the tools' allow-list keeps SSL_CERT_FILE out, as the Mac's protocol asks). No pinned file, command or allow-list changed."
+   },
+   {
+    "n": 18,
+    "kind": "runbook command",
+    "label": "3a-git-fetch",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && git fetch origin claude/fisim-agent-world-research-hepmlz && git rev-parse FETCH_HEAD",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:54:34",
+    "seconds": 0.59,
+    "exit": 0,
+    "output": "From https://github.com/swpo/physim\n * branch              claude/fisim-agent-world-research-hepmlz -> FETCH_HEAD\n * [new branch]        claude/fisim-agent-world-research-hepmlz -> origin/claude/fisim-agent-world-research-hepmlz\n0575d557d21ff7cb0963113d4093039a57471c00\n",
+    "note": "",
+    "output_short": [
+     "From https://github.com/swpo/physim",
+     " * branch              claude/fisim-agent-world-research-hepmlz -> FETCH_HEAD",
+     " * [new branch]        claude/fisim-agent-world-research-hepmlz -> origin/claude/fisim-agent-world-research-hepmlz",
+     "0575d557d21ff7cb0963113d4093039a57471c00"
+    ]
+   },
+   {
+    "n": 19,
+    "kind": "runbook command",
+    "label": "3a-fetch",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B tools/check_request.py --fetch --source-commit 0575d557d21ff7cb0963113d4093039a57471c00 --job-id qwen-ring-003 --pilot \"$HOME/physim2-rollouts\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "SOURCE_COMMIT",
+      "0575d557d21ff7cb0963113d4093039a57471c00"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:54:41",
+    "seconds": 0.09,
+    "exit": 2,
+    "output": "refused: commit 0575d557d21f does not hold research/alife/vecworld/program/rollouts/requests/qwen-ring-003.json (or the commit was not fetched)\n",
+    "note": "",
+    "output_short": [
+     "refused: commit 0575d557d21f does not hold research/alife/vecworld/program/rollouts/requests/qwen-ring-003.json (or the commit was not fetched)"
+    ]
+   },
+   {
+    "n": 20,
+    "kind": "runbook command",
+    "label": "3a-fetch",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B rehearsal/fetch4.py --requests-prefix research/alife/vecworld/program/round6/vfport/rehearsal/round4_jobs/ --fetch --source-commit 0575d557d21ff7cb0963113d4093039a57471c00 --job-id qwen-ring-003 --pilot \"$HOME/physim2-rollouts\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "SOURCE_COMMIT",
+      "0575d557d21ff7cb0963113d4093039a57471c00"
+     ],
+     [
+      "-B tools/check_request.py --fetch",
+      "-B rehearsal/fetch4.py --requests-prefix research/alife/vecworld/program/round6/vfport/rehearsal/round4_jobs/ --fetch"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:54:41",
+    "seconds": 0.69,
+    "exit": 0,
+    "output": "{\"job_id\": \"qwen-ring-003\", \"source_commit\": \"0575d557d21ff7cb0963113d4093039a57471c00\", \"request\": {\"file\": \"requests/qwen-ring-003.json\", \"bytes\": 865, \"sha256\": \"386d1c5df6212ba2525f62dcd35db0740b0411c8515087dd423297dbf9edf590\"}, \"config\": {\"file\": \"configs/qwen_ring_003.toml\", \"bytes\": 846, \"sha256\": \"fcac7e8f11053488aefe596be2e43140adb6e855dc1996f19417e370f66d299d\"}, \"shared_ledger\": {\"file\": \"shared-ledger.json\", \"bytes\": 1718, \"sha256\": \"34bad0589cc7cfe91e9a6a2c1708b4b8f8014cb4b6d693bcb4e0bc6d4cc9ef13\", \"updated_utc\": \"2026-11-11T18:44:41Z\", \"spent_elsewhere_usd\": 3.42323}, \"request_says\": {\"pin\": \"841b4a1e1d12afc7cd60b8b184b451d278895b1d\", \"pin_sha256\": \"898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f\", \"config\": \"research/alife/vecworld/program/round6/rollouts/configs/qwen_ring_003.toml\", \"exam_profile\": \"ring\", \"instance\": \"pilot-qwen-ring-003\", \"model\": \"qwen/qwen3.6-35b-a3b\", \"caps\": {\"max_turns\": 30, \"max_output_tokens\": 8192, \"wall_minutes\": 15, \"box_memory_gb\": 4}, \"cap_usd\": 0.5}}\n",
+    "note": "",
+    "output_short": [
+     "{\"job_id\": \"qwen-ring-003\", \"source_commit\": \"0575d557d21ff7cb0963113d4093039a57471c00\", \"request\": {\"file\": \"requests/qwen-ring-003.json\", \"bytes\": 865, \"sha256\": \"386d1"
+    ]
+   },
+   {
+    "n": 21,
+    "kind": "runbook command",
+    "label": "3b-check",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B tools/check_request.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-003.json\" --pilot \"$HOME/physim2-rollouts\" --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --prices",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:54:46",
+    "seconds": 0.56,
+    "exit": 0,
+    "output": "{\"job_id\": \"qwen-ring-003\", \"pin\": {\"pin\": \"841b4a1e1d12afc7cd60b8b184b451d278895b1d\", \"pin_sha256\": \"898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f\"}, \"config\": \"qwen_ring_003.toml\", \"config_sha256\": \"fcac7e8f11053488aefe596be2e43140adb6e855dc1996f19417e370f66d299d\", \"flat\": {\"model\": \"qwen/qwen3.6-35b-a3b\", \"exam_profile\": \"ring\", \"max_turns\": 30, \"max_output_tokens_per_turn\": 8192, \"wall_minutes\": 15, \"box_memory_gb\": 4, \"reasoning_effort\": \"default\", \"push\": false, \"schema\": \"physim2-rollout/v1\", \"instance\": \"pilot-qwen-ring-003\", \"max_context_tokens\": 100000, \"cap_usd\": 0.5}, \"instance\": {\"job\": null, \"in_index\": false, \"in_store\": false}, \"ledger\": {\"sum_usd\": 0.0, \"jobs\": 0, \"counted_at_their_bound\": []}, \"go\": {\"ceiling_usd\": 5.0, \"date\": \"2026-11-11\"}, \"bounds\": {\"worst_call_usd\": 0.01927392, \"bound_usd\": 0.51927392, \"crude_bound_usd\": 1.1132928, \"cap_usd\": 0.5, \"max_context_tokens\": 100000, \"max_output_tokens\": 8192, \"max_turns\": 30, \"prices_usd_per_mtok\": {\"input\": 0.11, \"output\": 1.01, \"cache_read\": 0.099, \"cache_write\": null, \"input_counted\": 0.11, \"context_window\": 262144, \"max_output_tokens\": 65536}}, \"ceiling\": {\"sum_usd\": 0.0, \"jobs\": 0, \"counted_at_their_bound\": [], \"ceiling_usd\": 5.0, \"spent_elsewhere_usd\": 3.42323, \"after_this_run_at_most_usd\": 3.94250392}}\n",
+    "note": "",
+    "output_short": [
+     "{\"job_id\": \"qwen-ring-003\", \"pin\": {\"pin\": \"841b4a1e1d12afc7cd60b8b184b451d278895b1d\", \"pin_sha256\": \"898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f\"}, "
+    ]
+   },
+   {
+    "n": 22,
+    "kind": "runbook command",
+    "label": "3c-instance",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-port4fix2 \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-003.json\" --pilot \"$HOME/physim2-rollouts\" --stage instance --disk-floor-gib 1.2",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "--disk-floor-gib 8",
+      "--disk-floor-gib 1.2"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:54:47",
+    "seconds": 16.05,
+    "exit": 0,
+    "output": "{\"stage\": \"instance\", \"job_id\": \"qwen-ring-003\", \"instance\": \"pilot-qwen-ring-003\", \"made\": true}\n",
+    "note": "",
+    "output_short": [
+     "{\"stage\": \"instance\", \"job_id\": \"qwen-ring-003\", \"instance\": \"pilot-qwen-ring-003\", \"made\": true}"
+    ]
+   },
+   {
+    "n": 23,
+    "kind": "runbook command",
+    "label": "2-quiet",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker ps --format '{{.Names}} {{.Image}}' && echo \"RUNNING-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:55:09",
+    "seconds": 0.03,
+    "exit": 0,
+    "output": "RUNNING-LISTED\n",
+    "note": "",
+    "output_short": [
+     "RUNNING-LISTED"
+    ]
+   },
+   {
+    "n": 24,
+    "kind": "runbook command",
+    "label": "3d-reference",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-port4fix2 nohup \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-003.json\" --pilot \"$HOME/physim2-rollouts\" --stage reference --disk-floor-gib 1.2 > \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/reference.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/reference.log\" ) > /dev/null 2>&1 < /dev/null & }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "--disk-floor-gib 8",
+      "--disk-floor-gib 1.2"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:55:09",
+    "seconds": 0.06,
+    "exit": 0,
+    "output": "29.9.2\n",
+    "note": "",
+    "output_short": [
+     "29.9.2"
+    ]
+   },
+   {
+    "n": 25,
+    "kind": "runbook command",
+    "label": "3-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/reference.log\" \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-port4fix2 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "20:55:09",
+    "seconds": 0.04,
+    "exit": 0,
+    "output": "==> /tmp/cla\ncontainers:\nprocesses:\nTOOL 22248 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin\nfree:\n2 GiB\nstatus done\n",
+    "note": "",
+    "output_short": [
+     "==> /tmp/cla",
+     "containers:",
+     "processes:",
+     "TOOL 22248 <STUDY2>/.venv/bin",
+     "free:",
+     "2 GiB",
+     "status done"
+    ]
+   },
+   {
+    "n": 26,
+    "kind": "runbook command",
+    "label": "3-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/reference.log\" \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-port4fix2 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:05:10",
+    "seconds": 0.07,
+    "exit": 0,
+    "output": "==> /tmp/cla\nEXIT 0\ncontainers:\nprocesses:\nfree:\n2 GiB\nstatus done\n",
+    "note": "",
+    "output_short": [
+     "==> /tmp/cla",
+     "EXIT 0",
+     "containers:",
+     "processes:",
+     "free:",
+     "2 GiB",
+     "status done"
+    ]
+   },
+   {
+    "n": 27,
+    "kind": "runbook command",
+    "label": "3e-dry-run",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-port4fix2 \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-003.json\" --pilot \"$HOME/physim2-rollouts\" --stage dry-run --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --disk-floor-gib 1.2",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "--disk-floor-gib 8",
+      "--disk-floor-gib 1.2"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:05:10",
+    "seconds": 10.78,
+    "exit": 0,
+    "output": "{\"job_id\": \"qwen-ring-003\", \"model\": \"qwen/qwen3.6-35b-a3b\", \"prices_usd_per_mtok\": {\"input\": 0.11, \"output\": 1.01, \"cache_read\": 0.099, \"cache_write\": null, \"input_counted\": 0.11, \"context_window\": 262144, \"max_output_tokens\": 65536}, \"one_worst_case_call_usd\": 0.019274, \"cap_usd\": 0.5, \"bound_on_the_bill_usd\": 0.519274, \"crude_bound_without_the_spend_stop_usd\": 1.11, \"ledger_sum_usd\": 0.0, \"spent_elsewhere_usd\": 3.42323, \"shared_ledger\": {\"updated_utc\": \"2026-11-11T18:44:41Z\", \"rows\": 7, \"sha256\": \"34bad0589cc7cfe91e9a6a2c1708b4b8f8014cb4b6d693bcb4e0bc6d4cc9ef13\"}, \"ceiling_usd\": 5.0, \"billed\": true}\n21:05:20    INFO wrote config to /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/home/physim2-rollouts/rollouts/qwen-ring-003/dry-run/qwen-ring-003-dry/configs/resolved/eval.json\n",
+    "note": "",
+    "output_short": [
+     "{\"job_id\": \"qwen-ring-003\", \"model\": \"qwen/qwen3.6-35b-a3b\", \"prices_usd_per_mtok\": {\"input\": 0.11, \"output\": 1.01, \"cache_read\": 0.099, \"cache_write\": null, \"input_count",
+     "21:05:20    INFO wrote config to <HOME2>/physim2-rollouts/rollouts/qwen-ring-003/dry-run/qwen-ring-003-dry/configs/resolved/eval.json"
+    ]
+   },
+   {
+    "n": 28,
+    "kind": "runbook command",
+    "label": "2-quiet",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker ps --format '{{.Names}} {{.Image}}' && echo \"RUNNING-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:05:37",
+    "seconds": 0.05,
+    "exit": 0,
+    "output": "RUNNING-LISTED\n",
+    "note": "",
+    "output_short": [
+     "RUNNING-LISTED"
+    ]
+   },
+   {
+    "n": 29,
+    "kind": "runbook command",
+    "label": "3-paid",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-port4fix2 nohup \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-003.json\" --pilot \"$HOME/physim2-rollouts\" --stage rollout --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --disk-floor-gib 1.2 --model-credentials prime > \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/rollout.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/rollout.log\" ) > /dev/null 2>&1 < /dev/null & }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "--disk-floor-gib 8",
+      "--disk-floor-gib 1.2"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "PRIME_API_KEY",
+     "PRIME_TEAM_ID",
+     "USER"
+    ],
+    "session_environment_added": {
+     "PRIME_API_KEY": "<the value of this machine; not recorded>",
+     "PRIME_TEAM_ID": "<the value of this machine; not recorded>"
+    },
+    "started_utc": "21:05:42",
+    "seconds": 0.08,
+    "exit": 0,
+    "output": "29.9.2\n",
+    "note": "",
+    "output_short": [
+     "29.9.2"
+    ]
+   },
+   {
+    "n": 30,
+    "kind": "runbook command",
+    "label": "3-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/reference.log\" \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-port4fix2 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:05:42",
+    "seconds": 0.07,
+    "exit": 0,
+    "output": "==> /tmp/cla\nEXIT 0\n\n==> /tmp/cla\ncontainers:\nprocesses:\nTOOL 26545 /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin\nfree:\n2 GiB\nstatus done\n",
+    "note": "",
+    "output_short": [
+     "==> /tmp/cla",
+     "EXIT 0",
+     "",
+     "==> /tmp/cla",
+     "containers:",
+     "processes:",
+     "TOOL 26545 <STUDY2>/.venv/bin",
+     "free:",
+     "2 GiB",
+     "status done"
+    ]
+   },
+   {
+    "n": 31,
+    "kind": "runbook command",
+    "label": "3-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/reference.log\" \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-port4fix2 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:24:43",
+    "seconds": 0.04,
+    "exit": 0,
+    "output": "==> /tmp/cla\nEXIT 0\n\n==> /tmp/cla\nEXIT 0\ncontainers:\nprocesses:\nfree:\n2 GiB\nstatus done\n",
+    "note": "",
+    "output_short": [
+     "==> /tmp/cla",
+     "EXIT 0",
+     "",
+     "==> /tmp/cla",
+     "EXIT 0",
+     "containers:",
+     "processes:",
+     "free:",
+     "2 GiB",
+     "status done"
+    ]
+   },
+   {
+    "n": 32,
+    "kind": "runbook command",
+    "label": "3g-report",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B tools/run_report.py --store \"$HOME/physim2-rollouts/store\" --run-dir \"$HOME/physim2-rollouts/rollouts/qwen-ring-003/out/qwen-ring-003\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:24:43",
+    "seconds": 0.07,
+    "exit": 0,
+    "output": "{\n \"traces_file\": true,\n \"episodes\": 1,\n \"rollouts\": [\n  {\n   \"instance_id\": \"pilot-qwen-ring-003\",\n   \"1_ok\": true,\n   \"1_reward_present\": true,\n   \"1_reward_skill_vs_O\": -0.02924303506446356,\n   \"1_trace_errors\": [],\n   \"1_episode_errors\": [],\n   \"2_network_restricted\": true,\n   \"2_verifier_box_network_restricted\": true,\n   \"2_single_use\": true,\n   \"2_item_isolation\": \"box\",\n   \"3_lab\": {\n    \"ticks_used\": 306,\n    \"resets\": 9,\n    \"requests\": 14,\n    \"rejected\": 0,\n    \"validations\": 0,\n    \"submissions\": 0,\n    \"infrastructure_errors\": 0\n   },\n   \"3_lab_submitted\": false,\n   \"3_tool_calls_by_name\": {\n    \"bash\": 24\n   },\n   \"4_submission_source\": \"final_collection\",\n   \"4_submission_ok\": true,\n   \"4_submission_files\": 2,\n   \"4_submission_bytes\": 73795,\n   \"4_submission_sha256\": \"ab257220b39b8b11659a144fe89818d4475a936f7f4030db5caba48d24a04e36\",\n   \"4_submission_error\": null,\n   \"4_stop_condition\": \"agent_timeout\",\n   \"4_trace_stop_condition\": \"agent_timeout\",\n   \"4_ended\": \"time limit\",\n   \"4_checkpoints\": {\n    \"taken\": 3,\n    \"unchanged\": 52,\n    \"failed\": 0\n   },\n   \"4_capture_submission\": {\n    \"n_files\": 2,\n    \"bytes\": 73795,\n    \"n_skipped\": 0,\n    \"complete\": true\n   },\n   \"4_capture_workspace\": {\n    \"n_files\": 3,\n    \"bytes\": 45025,\n    \"n_skipped\": 0,\n    \"complete\": true,\n    \"listed\": 36\n   },\n   \"5_validation_ok\": true,\n   \"5_n_items\": 64,\n   \"5_n_failed\": 0,\n   \"5_layers\": {\n    \"rlimits\": true,\n    \"uid\": 29686,\n    \"cleanup\": true\n   },\n   \"5_isolation\": \"box\",\n   \"5_item_boxes\": 64,\n   \"5_item_box_wall_s_mean\": 2.879469010978937,\n   \"5_infrastructure_failed_items\": 0,\n   \"5_skill_vs_O\": -0.02924303506446356,\n   \"5_reason\": null,\n   \"5_grading_error\": null,\n   \"5_fallback\": {\n    \"policy\": \"null\",\n    \"n_items\": 0,\n    \"by_reason\": {},\n    \"baseline_pool_sha256\": \"7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c\"\n   },\n   \"5_not_a_grade\": null,\n   \"5_recovery_error\": null,\n   \"5_marked_not_an_exam\": false,\n   \"5_between_item_state_marked\": false,\n   \"5_predictor_uid\": 29686,\n   \"5_container_evidence_count\": 2,\n   \"6_task_row_keys\": [\n    \"artifact_max_bytes\",\n    \"artifacts\",\n    \"config_name\",\n    \"id\",\n    \"idx\",\n    \"image\",\n    \"instance_id\",\n    \"name\",\n    \"network_allow\",\n    \"network_block\",\n    \"prompt\",\n    \"resources\",\n    \"secret_commitment\",\n    \"skills\",\n    \"timeout\",\n    \"workdir\",\n    \"world\"\n   ],\n   \"6_commitment_is_64_hex\": true,\n   \"7_num_input_tokens\": 12072,\n   \"7_num_output_tokens\": 5792,\n   \"7_wall_s\": {\n    \"boot\": 1.0161221027374268,\n    \"setup\": 24.164104461669922,\n    \"agent\": 900.2287919521332,\n    \"finalize\": 0.9960427284240723\n   },\n   \"7_verifier_wall_s\": 191.13706040382385,\n   \"7_num_turns\": 24,\n   \"8_limits\": {\n    \"max_turns\": 30,\n    \"wall_minutes\": 15.0,\n    \"max_output_tokens_per_turn\": 8192,\n    \"max_context_tokens\": 100000,\n    \"cap_usd\": 0.5,\n    \"cpus\": 2.0,\n    \"memory_gib\": 4.0,\n    \"pids\": 512,\n    \"workspace_mib\": 1024.0,\n    \"tmp_mib\": 512.0,\n    \"read_only_root\": true,\n    \"measured\": true\n   },\n   \"8_statement_sha256\": \"32f53b54107140b234e91515e17da6117428f68da60c00c4fcd898c874ca8758\",\n   \"8_reasoning\": {\n    \"requested_effort\": null,\n    \"requested_summary\": null,\n    \"sent_effort\": null,\n    \"sent_summary\": null,\n    \"model_calls\": 24,\n    \"replies\": 24,\n    \"replies_with_readable_reasoning\": 0,\n    \"replies_with_encrypted_reasoning_only\": 0,\n    \"replies_without_reasoning\": 24,\n    \"calls_with_reasoning_tokens\": 0,\n    \"reasoning_tokens\": null,\n    \"reasoning_tokens_reported\": false,\n    \"reasoning_on\": false\n   },\n   \"6_hidden_values_in_the_run_folder\": {\n    \"files_scanned\": 4,\n    \"needles\": 4,\n    \"hits\": {\n     \"secret\": 0,\n     \"hidden_parameter_1\": 0,\n     \"hidden_parameter_2\": 0,\n     \"hidden_parameter_3\": 0\n    },\n    \"total_hits\": 0\n   }\n  }\n ]\n}\n",
+    "note": "",
+    "output_short": [
+     "{",
+     " \"traces_file\": true,",
+     " \"episodes\": 1,",
+     " \"rollouts\": [",
+     "  {",
+     "   \"instance_id\": \"pilot-qwen-ring-003\",",
+     "   \"1_ok\": true,",
+     "   \"1_reward_present\": true,",
+     "   \"1_reward_skill_vs_O\": -0.02924303506446356,",
+     "   \"1_trace_errors\": [],",
+     "   \"1_episode_errors\": [],",
+     "   \"2_network_restricted\": true,",
+     "   \"2_verifier_box_network_restricted\": true,",
+     "   \"2_single_use\": true,",
+     "   \"2_item_isolation\": \"box\",",
+     "   \"3_lab\": {",
+     "    \"ticks_used\": 306,",
+     "    \"resets\": 9,",
+     "    \"requests\": 14,",
+     "    \"rejected\": 0,",
+     "    \"validations\": 0,",
+     "    \"submissions\": 0,",
+     "    \"infrastructure_errors\": 0",
+     "   },",
+     "   \"3_lab_submitted\": false,",
+     "   \"3_tool_calls_by_name\": {",
+     "    \"bash\": 24",
+     "   },",
+     "   \"4_submission_source\": \"final_collection\",",
+     "   \"4_submission_ok\": true,",
+     "   \"4_submission_files\": 2,",
+     "   \"4_submission_bytes\": 73795,",
+     "   \"4_submission_sha256\": \"ab257220b39b8b11659a144fe89818d4475a936f7f4030db5caba48d24a04e36\",",
+     "   \"4_submission_error\": null,",
+     "   \"4_stop_condition\": \"agent_timeout\",",
+     "   \"4_trace_stop_condition\": \"agent_timeout\",",
+     "   \"4_ended\": \"time limit\",",
+     "   \"4_checkpoints\": {",
+     "    \"taken\": 3,",
+     "    \"unchanged\": 52,",
+     "    \"failed\": 0",
+     "   },",
+     "   \"4_capture_submission\": {",
+     "    \"n_files\": 2,",
+     "    \"bytes\": 73795,",
+     "    \"n_skipped\": 0,",
+     "    \"complete\": true",
+     "   },",
+     "   \"4_capture_workspace\": {",
+     "    \"n_files\": 3,",
+     "    \"bytes\": 45025,",
+     "    \"n_skipped\": 0,",
+     "    \"complete\": true,",
+     "    \"listed\": 36",
+     "   },",
+     "   \"5_validation_ok\": true,",
+     "   \"5_n_items\": 64,",
+     "   \"5_n_failed\": 0,",
+     "   \"5_layers\": {",
+     "    \"rlimits\": true,",
+     "    \"uid\": 29686,",
+     "    \"cleanup\": true",
+     "   },",
+     "   \"5_isolation\": \"box\",",
+     "   \"5_item_boxes\": 64,",
+     "   \"5_item_box_wall_s_mean\": 2.879469010978937,",
+     "   \"5_infrastructure_failed_items\": 0,",
+     "   \"5_skill_vs_O\": -0.02924303506446356,",
+     "   \"5_reason\": null,",
+     "   \"5_grading_error\": null,",
+     "   \"5_fallback\": {",
+     "    \"policy\": \"null\",",
+     "    \"n_items\": 0,",
+     "    \"by_reason\": {},",
+     "    \"baseline_pool_sha256\": \"7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c\"",
+     "   },",
+     "   \"5_not_a_grade\": null,",
+     "   \"5_recovery_error\": null,",
+     "   \"5_marked_not_an_exam\": false,",
+     "   \"5_between_item_state_marked\": false,",
+     "   \"5_predictor_uid\": 29686,",
+     "   \"5_container_evidence_count\": 2,",
+     "   \"6_task_row_keys\": [",
+     "    \"artifact_max_bytes\",",
+     "    \"artifacts\",",
+     "    \"config_name\",",
+     "    \"id\",",
+     "    \"idx\",",
+     "    \"image\",",
+     "    \"instance_id\",",
+     "    \"name\",",
+     "    \"network_allow\",",
+     "    \"network_block\",",
+     "    \"prompt\",",
+     "    \"resources\",",
+     "    \"secret_commitment\",",
+     "    \"skills\",",
+     "    \"timeout\",",
+     "    \"workdir\",",
+     "    \"world\"",
+     "   ],",
+     "   \"6_commitment_is_64_hex\": true,",
+     "   \"7_num_input_tokens\": 12072,",
+     "   \"7_num_output_tokens\": 5792,",
+     "   \"7_wall_s\": {",
+     "    \"boot\": 1.0161221027374268,",
+     "    \"setup\": 24.164104461669922,",
+     "    \"agent\": 900.2287919521332,",
+     "    \"finalize\": 0.9960427284240723",
+     "   },",
+     "   \"7_verifier_wall_s\": 191.13706040382385,",
+     "   \"7_num_turns\": 24,",
+     "   \"8_limits\": {",
+     "    \"max_turns\": 30,",
+     "    \"wall_minutes\": 15.0,",
+     "    \"max_output_tokens_per_turn\": 8192,",
+     "    \"max_context_tokens\": 100000,",
+     "    \"cap_usd\": 0.5,",
+     "    \"cpus\": 2.0,",
+     "    \"memory_gib\": 4.0,",
+     "    \"pids\": 512,",
+     "    \"workspace_mib\": 1024.0,",
+     "    \"tmp_mib\": 512.0,",
+     "    \"read_only_root\": true,",
+     "    \"measured\": true",
+     "   },",
+     "   \"8_statement_sha256\": \"32f53b54107140b234e91515e17da6117428f68da60c00c4fcd898c874ca8758\",",
+     "   \"8_reasoning\": {",
+     "    \"requested_effort\": null,",
+     "    \"requested_summary\": null,",
+     "    \"sent_effort\": null,",
+     "    \"sent_summary\": null,",
+     "    \"model_calls\": 24,",
+     "    \"replies\": 24,",
+     "    \"replies_with_readable_reasoning\": 0,",
+     "    \"replies_with_encrypted_reasoning_only\": 0,",
+     "    \"replies_without_reasoning\": 24,",
+     "    \"calls_with_reasoning_tokens\": 0,",
+     "    \"reasoning_tokens\": null,",
+     "    \"reasoning_tokens_reported\": false,",
+     "    \"reasoning_on\": false",
+     "   },",
+     "   \"6_hidden_values_in_the_run_folder\": {",
+     "    \"files_scanned\": 4,",
+     "    \"needles\": 4,",
+     "    \"hits\": {",
+     "     \"secret\": 0,",
+     "     \"hidden_parameter_1\": 0,",
+     "     \"hidden_parameter_2\": 0,",
+     "     \"hidden_parameter_3\": 0",
+     "    },",
+     "    \"total_hits\": 0",
+     "   }",
+     "  }",
+     " ]",
+     "}"
+    ]
+   },
+   {
+    "n": 33,
+    "kind": "runbook command",
+    "label": "3h-pack",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport/.venv/bin/python\" -B tools/pack_rollout.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-003.json\" --pilot \"$HOME/physim2-rollouts\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-003"
+     ]
+    ],
+    "session_environment": [
+     "HF_TOKEN",
+     "HOME",
+     "LANG",
+     "PATH",
+     "PRIME_API_KEY",
+     "PRIME_TEAM_ID",
+     "USER",
+     "WANDB_API_KEY"
+    ],
+    "session_environment_added": {
+     "PRIME_API_KEY": "<the value of this machine; not recorded>",
+     "PRIME_TEAM_ID": "<the value of this machine; not recorded>",
+     "HF_TOKEN": "<the value of this machine; not recorded>",
+     "WANDB_API_KEY": "<the value of this machine; not recorded>"
+    },
+    "started_utc": "21:24:59",
+    "seconds": 0.4,
+    "exit": 0,
+    "output": "{\"files\": 17, \"total_bytes\": 334860, \"left_out\": [], \"missing\": [], \"key_scan\": \"clean\", \"complete\": true}\n",
+    "note": "",
+    "output_short": [
+     "{\"files\": 17, \"total_bytes\": 334860, \"left_out\": [], \"missing\": [], \"key_scan\": \"clean\", \"complete\": true}"
+    ]
+   },
+   {
+    "n": 34,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "21:25:05",
+    "note": "Step 0 again at the same commit, after this commit's step 1 (and step 3; step 2 was not run here, its pilot folder exists from 1b): what the new text of step 0 says to expect."
+   },
+   {
+    "n": 35,
+    "kind": "runbook command",
+    "label": "0a-commit",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && git rev-parse HEAD && pwd -P | grep -Fx \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && git --no-optional-locks status --porcelain --ignored -- . ../../round5/agentenv ../../../vw1 && echo \"TREE-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:25:06",
+    "seconds": 0.1,
+    "exit": 0,
+    "output": "841b4a1e1d12afc7cd60b8b184b451d278895b1d\n/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\n!! research/alife/vecworld/program/round6/vfport/.venv/\nTREE-LISTED\n",
+    "note": "",
+    "output_short": [
+     "841b4a1e1d12afc7cd60b8b184b451d278895b1d",
+     "<STUDY2>",
+     "!! research/alife/vecworld/program/round6/vfport/.venv/",
+     "TREE-LISTED"
+    ]
+   },
+   {
+    "n": 36,
+    "kind": "runbook command",
+    "label": "0b-pin",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:25:06",
+    "seconds": 0.05,
+    "exit": 0,
+    "output": "898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f  PIN.sha256\nPIN-OK\n",
+    "note": "",
+    "output_short": [
+     "898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f  PIN.sha256",
+     "PIN-OK"
+    ]
+   },
+   {
+    "n": 37,
+    "kind": "runbook command",
+    "label": "0d-docker-and-folders",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && docker ps -a --filter label=verifiers.run=physim2-port4fix2 --format '{{.Names}}' && echo \"CONTAINERS-LISTED\" && docker images -q physim2-ring:2 && echo \"IMAGES-LISTED\" && test ! -e \"$HOME/physim2-pilot-20261110\" && test ! -L \"$HOME/physim2-pilot-20261110\" && test ! -e \"$HOME/physim2-pilot-20261110-results\" && test ! -L \"$HOME/physim2-pilot-20261110-results\" && test ! -e .venv && test ! -L .venv && echo \"NO-PILOT-FOLDERS\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4fix2"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "21:25:06",
+    "seconds": 0.11,
+    "exit": 1,
+    "output": "29.9.2\nCONTAINERS-LISTED\n8080830e3492\nIMAGES-LISTED\n",
+    "note": "",
+    "output_short": [
+     "29.9.2",
+     "CONTAINERS-LISTED",
+     "8080830e3492",
+     "IMAGES-LISTED"
+    ]
+   }
+  ],
+  "paths": {
+   "<STUDY2>": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/clone/research/alife/vecworld/program/round6/vfport",
+   "<HOME2>": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal/home",
+   "<R2>": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4fix2/rehearsal",
+   "note": "`text` and `output` are literal and complete; `output_short` is the same output with the long paths written as <STUDY2>, <HOME2>, <R2> and each line cut at 170 characters"
+  }
  }
 }

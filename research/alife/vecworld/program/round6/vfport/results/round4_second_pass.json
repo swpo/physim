@@ -1,0 +1,443 @@
+{
+ "what": "the checks of the round-4 second pass at the third round-4 pin 841b4a1e1d12afc7cd60b8b184b451d278895b1d (PIN.sha256 898089fc...108f, 136 files), in the cloud container",
+ "PILOT_NEVER_REUSE_AS_EXAM": "every instance named here is pilot material",
+ "tools/check_round4.py": {
+  "n_checks": 141,
+  "n_failed": 0,
+  "failed": [],
+  "evidence": "TRIPWIRES on the host; section E (E1 to E16) is new"
+ },
+ "tests/exam_pure.py": {
+  "n_checks": 25,
+  "n_passed": 25,
+  "failed": [],
+  "evidence": "TRIPWIRES on the host"
+ },
+ "tests/exam_units.py": {
+  "n_checks": 96,
+  "n_passed": 96,
+  "failed": [],
+  "evidence": "a throwaway container (no mount, no network), removed by its name physim2-port4fix2-units"
+ },
+ "tools/check_driver.py": {
+  "n_checks": 33,
+  "n_passed": 33,
+  "failed": [],
+  "evidence": "four throwaway containers, each named physim2-drv-<mode>-<pid> and labelled physim2-port4fix2, removed (--rm)"
+ },
+ "tools/check_safety.py": {
+  "n_checks": 36,
+  "n_passed": 36,
+  "failed": [],
+  "evidence": "TRIPWIRES on the host"
+ },
+ "tools/check_round3.py --skip-container": {
+  "n_checks": 30,
+  "n_passed": 30,
+  "failed": [],
+  "evidence": "TRIPWIRES on the host"
+ },
+ "tools/check_runbook.py": {
+  "n_checks": 51,
+  "n_passed": 51,
+  "failed": [],
+  "evidence": "TEXT"
+ },
+ "tools/check_step3.py caps,route (vf-eval, stand-in model)": {
+  "n_checks": 44,
+  "lines": [
+   "ok   K0 an instance for the caps probe was made",
+   "ok   K1 the scripted rollout with the caps probe ended and saved a trace",
+   "ok   K2 the box was started with the caps and they were read back from the engine (memory lowered to 2 GiB by the run's config)",
+   "ok   K3 inside the box: 512 processes, 2 GiB of memory, no swap beyond it, a quota of 2 CPUs",
+   "ok   K4 the root file system is read-only: one byte into /root, /usr, /etc, /opt, /var/tmp, /home or / gives EROFS",
+   "ok   K5 ... and /workspace, /tmp, /dev/shm (and the exam's own /etc/physim2, /runtime) take it",
+   "ok   K6 the mount table of the box: an overlay root mounted read-only, tmpfs of 1 GiB at /workspace and 512 MiB at /tmp",
+   "ok   K7 /tmp is full at 512 MiB and /dev/shm at 64 MiB: `No space left on device`",
+   "ok   K8 /workspace is full at 1 GiB (it fits into the 2 GiB of this box together with nothing else)",
+   "ok   K9 the process limit: threads stop at about 512 with `can't start new thread`; a shell loop gets `Cannot fork`",
+   "ok   K10 the memory limit: a process that touches more than the box has is killed by the kernel (status -9, `Killed`), and the box goes on",
+   "ok   K11 the rollout was graded all the same: the baseline predictor of the box on every item, in capped grading boxes",
+   "ok   K12 the laboratory required its bearer and no container of this run is left",
+   "ok   F1 fetch (real git objects of a scratch repository): the request, its config and the shared ledger arrive in the pilot folder, byte for byte",
+   "ok   F2 ... and a commit that the repository does not hold gives a refusal, with the files in the pilot folder untouched",
+   "ok   R1 without the lead's standing go nothing of step 3 starts",
+   "ok   R2 the rollout stage is refused before the instance exists",
+   "ok   R4 stage instance: the name is registered to the job and the hidden instance is made",
+   "ok   R5 a second `instance` for the same name is refused: a name is used once",
+   "ok   R6 the dry run is refused before the reference table exists",
+   "ok   R7 stage reference: the profile's scripted policies on the job's instance, all graded",
+   "ok   R8 the rollout stage is refused before the free dry run has passed",
+   "ok   R9 stage dry-run: listed prices read without a credential; one worst-case call = 60,000 x $2/M + 512 x $10/M = $0.12512; bound = cap + that; vf-eval resolves the config and exits",
+   "ok   R3 the rollout stage WITHOUT the stand-in option and without the credentials option is refused (and the stand-in model is in no provider's list, if the list answers at all): nothing was started, ",
+   "ok   R10 stage rollout ran to its end (vf-eval exited by itself with status 0)",
+   "ok   R11 THE SPEND STOP: four calls at $0.041 pass the cap of $0.13 after the fourth; the fifth is never sent; stop condition `spend_cap`",
+   "ok   R12 ... the stand-in endpoint saw exactly those four requests, each with the reply cap of the run, the rollout's id and a (made-up) key",
+   "ok   R13 ... the counted cost is within cap_usd + one worst-case call, and the ledger holds the reservation and the closing row",
+   "ok   R14 RULING E1 through the stop path: the run was finalized and GRADED after the spend stop (64 items in capped boxes)",
+   "ok   R15 the trace records what the run cost as counted on the host",
+   "ok   R16 THE BEARER, from the host while the run was alive: without it the laboratory answers 401 with an empty body (POST, GET, another path, a random bearer, an empty one)",
+   "ok   R17 ... the laboratory process holds the bearer neither on its command line nor in its environment",
+   "ok   R18 ... inside the box: of every 64-hex string in the environment of every process and in the files of /etc/physim2, /tmp and /workspace, none is the bearer",
+   "ok   R19 ... and the box's environment holds no credential-like name besides the proxy settings verifiers gives a box",
+   "ok   R20 ... the laboratory was used from inside the box all the same (through the box's proxy, which carries the bearer)",
+   "ok   R21 ... and in the run's outputs (job folder, store, the whole pilot folder): no 64-hex string is the bearer",
+   "ok   R22 the read-only root was what the model's shell saw (`Read-only file system`)",
+   "ok   R23 the job cannot be run a second time",
+   "ok   R23b stage close has nothing to close: the tool wrote the job's closing row itself",
+   "ok   R24 the publication folder: every file of the protocol, a manifest with sha256 and size, a clean key scan",
+   "ok   R24b RULING E1: the note that the model's LAST tool call wrote (a call whose result it never saw) is in the frozen, graded submission",
+   "ok   R25 ... usage.json holds the cost per call and in total; status.json the stop condition, the reward and the caps",
+   "ok   R26 ... no published file holds the bearer, the scratch path of this machine or the stand-in's key word",
+   "ok   R27 no container of this run is left"
+  ],
+  "note": "run at the pin with VF_RUN_ID=physim2-port4fix2 and a disk floor of 1.2 GiB; caps K0-K12 and the route (F1-F2 fetch, R1-R27) all passed; its flood part was stopped at its second rollout by the disk watchdog (another job had filled the disk to under 200 MB for a few minutes: EXIT 97, the box removed, nothing deleted), and the flood part was run again on its own (next entry)",
+  "n_failed": 0
+ },
+ "tools/check_step3.py flood (vf-eval, scripted, no model)": {
+  "n_checks": 14,
+  "n_failed": 0,
+  "failed": [],
+  "checks": [
+   {
+    "name": "F0 two instances for the flood probe were made",
+    "ok": true,
+    "detail": null
+   },
+   {
+    "name": "F1 the scripted rollout with the flood probe ended and saved a trace",
+    "ok": true,
+    "detail": "ception up: url=http://127.0.0.1:38131\n21:26:03    INFO interception pool: 1 server(s), multiplex=32\n21:26:04    INFO docker: started container vf-fea3906f761246f28157f628abbfcf1e (image=physim2-ring:2)\n21:26:21    INFO tool server 'lab': http://127.0.0.1:50969/.vf-host/vbZomFRW8ZiYeMwNuhZ4MdptCKqds9LdBFXlwGJ2sdA/mcp\n21:26:42    INFO rollout done: id=745a89ee6c124601a93810daef576c68 task=0 reward=0.000 turns=0 stop=agent_completed\n21:26:43    INFO docker: started container vf-36f086545b844c489466660bb9173c13 (image=physim2-ring:2)\n21:27:32    INFO interception down: url=http://127.0.0.1:38131\n"
+   },
+   {
+    "name": "F2 X5 the card of the run: the envelope measured in THIS box (2 CPUs, 2 GiB, 512 processes, /dev/shm 64 MiB, the run's wall time) and an item memory of 2 GiB (the config says 4), 256 processes per item",
+    "ok": true,
+    "detail": {
+     "compute_envelope": {
+      "cpus": 2.0,
+      "memory_gib": 2.0,
+      "processes": 512,
+      "workspace_mib": 1024.0,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0,
+      "read_only_root": true,
+      "gpu": false,
+      "wall_minutes": 60.0,
+      "max_turns": null,
+      "measured": true,
+      "source": "this run: TASK.md section 4 (exam.json holds the profile's defaults)"
+     },
+     "predictor_limits": {
+      "n_samples": 256,
+      "cpu_seconds": 30,
+      "wall_seconds": 60,
+      "memory_gib": 2.0,
+      "artifact_mib": 64,
+      "processes": 256,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0
+     }
+    }
+   },
+   {
+    "name": "F3 K4 a 64 MiB request to the laboratory, declared or not, is refused or cut long before its end, and the laboratory answers afterwards",
+    "ok": true,
+    "detail": {
+     "declared_64_mib": {
+      "status": "HTTP/1.1 502 Bad Gateway",
+      "body_bytes_sent": 3932160,
+      "seconds": 0.0
+     },
+     "chunked_64_mib": {
+      "status": "HTTP/1.1 502 Bad Gateway",
+      "body_bytes_sent": 8126464,
+      "seconds": 0.01
+     },
+     "t": [
+      1794432382.55,
+      1794432382.56
+     ],
+     "after": {
+      "usage_ok": true
+     }
+    }
+   },
+   {
+    "name": "F4 K4 of 80 connections to the box's proxy at once, it closes the ones above 64 unread",
+    "ok": true,
+    "detail": {
+     "opened": 80,
+     "closed_unread_by_the_proxy": 16
+    }
+   },
+   {
+    "name": "F5 K4 a validator of the agent's that prints 256 MiB: the report is cut in the box and the check says so",
+    "ok": true,
+    "detail": {
+     "report": {
+      "ok": "False",
+      "stage": "validator",
+      "error": "the validator in the box returned no report",
+      "finalized": "False",
+      "accepted": "False"
+     },
+     "seconds": 0.4,
+     "t": [
+      1794432394.62,
+      1794432395.06
+     ]
+    }
+   },
+   {
+    "name": "F6 K4 one that writes 256 MiB straight into the output of its command (/proc/<parent>/fd/1): vf-eval keeps at most its bound and the check reports a failure",
+    "ok": true,
+    "detail": {
+     "report": {
+      "ok": "False",
+      "stage": "validator",
+      "error": "the validator could not run in the box (SandboxError)",
+      "finalized": "False",
+      "accepted": "False"
+     },
+     "seconds": 0.9,
+     "t": [
+      1794432395.06,
+      1794432395.96
+     ]
+    }
+   },
+   {
+    "name": "F7 K4 while the box pushed about 0.9 GB at it, vf-eval grew by less than 200 MiB and the laboratory by less than 64 MiB",
+    "ok": true,
+    "detail": {
+     "vf_eval_mib": [
+      517.1,
+      616.5
+     ],
+     "laboratory_mib": [
+      426.6,
+      426.6
+     ],
+     "samples": 496
+    }
+   },
+   {
+    "name": "F8 X6 lab.validate fails predictors that read a file left in /tmp or /dev/shm or import a module added to physim2/; the baseline still passes as graded",
+    "ok": true,
+    "detail": {
+     "as_graded": {
+      "x6tmp": {
+       "ok": false,
+       "stage": "example 0",
+       "error": "predictor failed (exit code 2): PermissionError: [Errno 13] Permission denied: '/tmp/agent_model.npy'\n",
+       "as_graded": true
+      },
+      "x6shm": {
+       "ok": false,
+       "stage": "example 0",
+       "error": "predictor failed (exit code 2): PermissionError: [Errno 13] Permission denied: '/dev/shm/agent_cache.npy'\n",
+       "as_graded": true
+      },
+      "x6pkg": {
+       "ok": false,
+       "stage": "example 0",
+       "error": "predictor failed (exit code 2): ModuleNotFoundError: No module named 'physim2.agent_helper'\n",
+       "as_graded": true
+      }
+     },
+     "baseline": {
+      "ok": true,
+      "as_graded": true
+     }
+    }
+   },
+   {
+    "name": "F9 the flooded rollout was graded all the same (64 items)",
+    "ok": true,
+    "detail": {
+     "n_items": 64,
+     "n_failed": 0,
+     "skill_vs_O": -0.056829508544564256
+    }
+   },
+   {
+    "name": "F10 the rollout whose script floods the harness command's output ended by itself and saved a trace",
+    "ok": true,
+    "detail": "terception up: url=http://127.0.0.1:46827\n21:27:43    INFO interception pool: 1 server(s), multiplex=32\n21:27:44    INFO docker: started container vf-b440704471834d0d8d6d5c6d47732e09 (image=physim2-ring:2)\n21:28:00    INFO tool server 'lab': http://127.0.0.1:49667/.vf-host/Bjpdnsl3n0pvI5k2_fpwzYB3ddTDmlnyRXDzbJ2jpdk/mcp\n21:28:01    INFO rollout done: id=881ccb038f62458bb9f07fb616a95573 task=0 reward=0.000 turns=0 stop=SandboxError\n21:28:02    INFO docker: started container vf-2e167eb4877d4661a933d13a6c40892e (image=physim2-ring:2)\n21:28:54    INFO interception down: url=http://127.0.0.1:46827\n"
+   },
+   {
+    "name": "F11 K4 the harness command's 256 MiB: vf-eval keeps at most its bound and drops the rest; the command is reported as failed (`client wrote more than the pilot reads`), and vf-eval's peak stayed within 200 MiB of the first flood rollout's",
+    "ok": true,
+    "detail": {
+     "errors": "[{\"type\": \"SandboxError\", \"message\": \"refused: a `docker exec` client wrote more than the pilot reads (167772179 bytes of standard output and 0 of standard error past 100663296 and 4194304); its output was dropped\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/home/user/wt/port4fix2/research/alife/vecworld/program/round6/vfport/.venv/lib/python3.12/site-packages/verifiers/v1/rollout.py\\\", line 407, in step\\n    await self._harness_session.turn(messages)\\n  File \\\"/home/user/wt/port4fix2/research/alife/vecworld/program/round6/vfport/.venv/lib/python3.12/site-packages/verifiers/v1",
+     "vf_eval_peak_mib": 631.1,
+     "first_rollout_peak_mib": 616.5,
+     "samples": 409
+    }
+   },
+   {
+    "name": "F12 ... and the failed run was graded on its last checkpoint by the env of a model run, physim2-verifier (ruling E1): 64 items",
+    "ok": true,
+    "detail": {
+     "grade": {
+      "n_items": 64,
+      "n_failed": 0,
+      "skill_vs_O": -0.018036368854324022
+     },
+     "submission": {
+      "source": "checkpoint",
+      "ok": true,
+      "error": null,
+      "files": 2,
+      "bytes": 71453,
+      "sha256": "ebb4cdc776f13acfa7ac403534fb5061f09d9d47c9653b0f15edcbfdf42f89a8",
+      "checkpoint": {
+       "source": "the baseline at setup",
+       "turn": 0,
+       "time": 1794432469.7483027,
+       "n": 1
+      }
+     }
+    }
+   },
+   {
+    "name": "F13 no container of this run is left",
+    "ok": true,
+    "detail": []
+   }
+  ],
+  "flood": {
+   "instances": [
+    "pilot-flood-212524-w0",
+    "pilot-floodh-212524-w0"
+   ],
+   "flood_report": {
+    "time": 1794432382.5214694,
+    "card": {
+     "compute_envelope": {
+      "cpus": 2.0,
+      "memory_gib": 2.0,
+      "processes": 512,
+      "workspace_mib": 1024.0,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0,
+      "read_only_root": true,
+      "gpu": false,
+      "wall_minutes": 60.0,
+      "max_turns": null,
+      "measured": true,
+      "source": "this run: TASK.md section 4 (exam.json holds the profile's defaults)"
+     },
+     "predictor_limits": {
+      "n_samples": 256,
+      "cpu_seconds": 30,
+      "wall_seconds": 60,
+      "memory_gib": 2.0,
+      "artifact_mib": 64,
+      "processes": 256,
+      "tmp_mib": 512.0,
+      "shm_mib": 64.0
+     }
+    },
+    "body": {
+     "declared_64_mib": {
+      "status": "HTTP/1.1 502 Bad Gateway",
+      "body_bytes_sent": 3932160,
+      "seconds": 0.0
+     },
+     "chunked_64_mib": {
+      "status": "HTTP/1.1 502 Bad Gateway",
+      "body_bytes_sent": 8126464,
+      "seconds": 0.01
+     },
+     "t": [
+      1794432382.55,
+      1794432382.56
+     ],
+     "after": {
+      "usage_ok": true
+     }
+    },
+    "t_floods_start": 1794432382.55,
+    "connections": {
+     "opened": 80,
+     "closed_unread_by_the_proxy": 16
+    },
+    "validator_prints": {
+     "report": {
+      "ok": "False",
+      "stage": "validator",
+      "error": "the validator in the box returned no report",
+      "finalized": "False",
+      "accepted": "False"
+     },
+     "seconds": 0.4,
+     "t": [
+      1794432394.62,
+      1794432395.06
+     ]
+    },
+    "validator_writes_into_the_exec_output": {
+     "report": {
+      "ok": "False",
+      "stage": "validator",
+      "error": "the validator could not run in the box (SandboxError)",
+      "finalized": "False",
+      "accepted": "False"
+     },
+     "seconds": 0.9,
+     "t": [
+      1794432395.06,
+      1794432395.96
+     ]
+    },
+    "as_graded": {
+     "x6tmp": {
+      "ok": false,
+      "stage": "example 0",
+      "error": "predictor failed (exit code 2): PermissionError: [Errno 13] Permission denied: '/tmp/agent_model.npy'\n",
+      "as_graded": true
+     },
+     "x6shm": {
+      "ok": false,
+      "stage": "example 0",
+      "error": "predictor failed (exit code 2): PermissionError: [Errno 13] Permission denied: '/dev/shm/agent_cache.npy'\n",
+      "as_graded": true
+     },
+     "x6pkg": {
+      "ok": false,
+      "stage": "example 0",
+      "error": "predictor failed (exit code 2): ModuleNotFoundError: No module named 'physim2.agent_helper'\n",
+      "as_graded": true
+     }
+    },
+    "t_floods_end": 1794432399.1,
+    "baseline_still_passes": {
+     "ok": true,
+     "as_graded": true
+    }
+   },
+   "memory_mib": {
+    "vf_eval": [
+     517.1,
+     616.5
+    ],
+    "laboratory": [
+     426.6,
+     426.6
+    ],
+    "harness_flood_vf_eval_peak": 631.1
+   },
+   "rewards": [
+    -0.056829508544564256,
+    -0.018036368854324022
+   ],
+   "wall_s": [
+    99.6,
+    82.0
+   ]
+  },
+  "run_label": "physim2-port4fix2",
+  "evidence": "run through vf-eval in the cloud container (Linux x86_64); the model endpoint is tools/standin_model.py on 127.0.0.1; no model, no credential"
+ }
+}

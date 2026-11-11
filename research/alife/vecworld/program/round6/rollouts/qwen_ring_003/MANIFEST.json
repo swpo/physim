@@ -1,0 +1,94 @@
+{
+ "marker": "PILOT_NEVER_REUSE_AS_EXAM",
+ "job_id": "qwen-ring-003",
+ "instance": "pilot-qwen-ring-003",
+ "files": [
+  {
+   "path": "status.json",
+   "bytes": 7012,
+   "sha256": "7cfb6187d6e39defdfc7d460afbc37121748d8797c6741eec3afaa9658c28f4b"
+  },
+  {
+   "path": "PILOT_NEVER_REUSE_AS_EXAM.txt",
+   "bytes": 202,
+   "sha256": "2373eb8a999afa87883bc2bfc748f00026f1c6646f612979bc986e0c170d8d56"
+  },
+  {
+   "path": "request.json",
+   "bytes": 864,
+   "sha256": "f7932c12566ea20a38f421354244b52b6335f80e249581e55eb16a0eabcf8f73"
+  },
+  {
+   "path": "config.toml",
+   "bytes": 846,
+   "sha256": "fcac7e8f11053488aefe596be2e43140adb6e855dc1996f19417e370f66d299d"
+  },
+  {
+   "path": "resolved.toml",
+   "bytes": 1080,
+   "sha256": "f834751a0460ba37907a67f763a8e4bc710c62ae202ef822c4b0d31842fe53f5"
+  },
+  {
+   "path": "model_entry.json",
+   "bytes": 1765,
+   "sha256": "1c2c8951741840fb60da8dc9f7dcf0a0fe0a85fd630acaf3e004f16bb32ae0de"
+  },
+  {
+   "path": "usage.json",
+   "bytes": 13704,
+   "sha256": "7484500ca23cc5a671a30ced9d7e570f5354478879d0a35dc00a089a7c4695e2"
+  },
+  {
+   "path": "grades.json",
+   "bytes": 20340,
+   "sha256": "d6d7000da36c91f6143dddf64030f2f11f9ad96783fd301164766a4823af3ba0"
+  },
+  {
+   "path": "reference.json",
+   "bytes": 33881,
+   "sha256": "086bd96577d50f756c235d1e3e73f737efc0b047aa94126460b5b956ffe3af2b"
+  },
+  {
+   "path": "lab_log.jsonl",
+   "bytes": 2141,
+   "sha256": "8b8877ee43376ca4ef0d710a00423f531e0ec02536088f3158c64e18e0cf72bb"
+  },
+  {
+   "path": "submission.json",
+   "bytes": 681,
+   "sha256": "c7318d9d2b8d9a4024989f14e6d1ee608c4659a2570001fa3c66c25e4fc929ed"
+  },
+  {
+   "path": "transcript.md",
+   "bytes": 59276,
+   "sha256": "cfdda6511955f460157a889d4ae01b3a13f84b024004593be50f69f6b5e666d1"
+  },
+  {
+   "path": "trace.redacted.jsonl",
+   "bytes": 118618,
+   "sha256": "ede27d9632226d6587a7a2572f8e11d357bd94817a540ec03ceaabf734ce76d1"
+  },
+  {
+   "path": "submission/pool.npz",
+   "bytes": 68912,
+   "sha256": "1565f63b82f38b622fb82f133da5cf056ae57d6d9582c252cc77842f01b9e16a"
+  },
+  {
+   "path": "submission/predict.py",
+   "bytes": 4883,
+   "sha256": "12620a89f84c34f32a06f2c4908ae86dd9e46d6567aec2b231d29d79061814da"
+  },
+  {
+   "path": "key_scan.json",
+   "bytes": 655,
+   "sha256": "b4ba7876369e2478ce02d0f141c5826518cee5a372414c01415317cb2d391e1c"
+  }
+ ],
+ "left_out": [],
+ "missing": [],
+ "total_bytes": 334860,
+ "limits": {
+  "max_file_bytes": 20971520,
+  "max_total_bytes": 52428800
+ }
+}
