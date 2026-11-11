@@ -8,13 +8,16 @@ Host-safety audit, required change 7: RUNBOOK_MAC.md names ONE commit and the sh
 checks that commit out detached and runs `shasum -a 256 -c PIN.sha256` before anything else. What is listed
 (tracked files only, as `git ls-files` names them; paths relative to the study folder):
 
-  this folder     physim2_env/, physim2_script/, tools/, agents/, configs/, docker/Dockerfile.*, pyproject.toml,
-                  uv.lock, .gitignore
+  this folder     physim2_env/, physim2_script/, physim2_verifier/ (the env of a model rollout: round 4), tools/,
+                  agents/, configs/, docker/ (the two Dockerfiles and, since round 4, everything the image build
+                  reads: harness-uv, harness-requirements.txt, ring-requirements.txt), pyproject.toml, uv.lock,
+                  .gitignore
   round 5         ../../round5/agentenv/{evaluator,physim2,agents,configs}/ and TASK.md.tmpl: imported, not copied
   the vw library  ../../../vw1/vw/
 
 Not listed: documents and results (README.md, RUNBOOK_MAC.md, PROGRESS.md, HOST_SAFETY_AUDIT.md, results/,
-redteam/), which nothing in the pilot executes. This tool reads files, writes PIN.sha256 and replaces one line
+redteam/, rehearsal/) and the development tests (tests/: on the runbook's never-list), which nothing in the
+pilot executes. This tool reads files, writes PIN.sha256 and replaces one line
 of RUNBOOK_MAC.md; nothing else.
 """
 import argparse
@@ -27,7 +30,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PIN = os.path.join(ROOT, "PIN.sha256")
-PATHS = ["physim2_env", "physim2_script", "tools", "agents", "configs", "docker/Dockerfile.ring", "docker/Dockerfile.network",
+PATHS = ["physim2_env", "physim2_script", "physim2_verifier", "tools", "agents", "configs", "docker",
          "pyproject.toml", "uv.lock", ".gitignore",
          "../../round5/agentenv/evaluator", "../../round5/agentenv/physim2", "../../round5/agentenv/agents", "../../round5/agentenv/configs",
          "../../round5/agentenv/TASK.md.tmpl", "../../../vw1/vw"]

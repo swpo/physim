@@ -26,11 +26,12 @@ environment handed to every child of this harness is built from PATH alone.
 
 usage: PHYSIM2_DEV_MACHINE=cloud-container python -B tools/check_round3.py --scratch DIR --out results/round3_checks.json
 
-ROUND 4 NOTE: this is round 3's check and was not run again in round 4. Its part on the command form of
-tools/vfrun.py with `--model-credentials` and configs/qwen_ring_bash.toml describes a route that round 4 replaced:
-a model run now starts from a request only (tools/vfrun.py --request ... --stage rollout; tools/check_round4.py
-and tools/check_step3.py test that route). The allow-list, the credential stand-in, the watchdog and the stop
-path that it tests are unchanged except where tools/check_round4.py says so (one SIGTERM per child: D40).
+ROUND 4 NOTE: round 4 replaced the route by which a model run starts: from a request only (tools/vfrun.py
+--request ... --stage rollout; tools/check_round4.py and tools/check_step3.py test that route). The integrator
+brought this check's part on the command form in line with that: a model config (configs/qwen_ring_bash.toml,
+kept as a fixture) and the flag `--model-credentials` are now REFUSED on the command form, and the checks say
+so. The allow-list, the credential stand-in, the watchdog and the stop path that it tests are unchanged except
+where tools/check_round4.py says so (one SIGTERM per child: D40).
 """
 import argparse
 import base64
@@ -85,7 +86,8 @@ try:
     ev["env"]["refused_names_of_the_made_up_session"] = bad
     checks["host_env_refused_names_are_those_of_the_step_0_check"] = bad == sorted(
         ["DOCKER_HOST", "DOCKER_CONTEXT", "DOCKER_CONFIG", "BUILDX_BUILDER", "MCP_HOST", "MCP_PORT", "PHYSIM2_AGENTENV", "PHYSIM2_STORE",
-         "PYTHONPATH", "PYTHONHOME", "VIRTUAL_ENV", "UV_PROJECT_ENVIRONMENT", "PRIME_RUNS_MODE", "VF_STATE_SECRET"])
+         "PYTHONPATH", "PYTHONHOME", "VIRTUAL_ENV", "UV_PROJECT_ENVIRONMENT", "PRIME_RUNS_MODE", "VF_STATE_SECRET",
+         "DYLD_INSERT_LIBRARIES"])            # round 4: DYLD_* joined the names step 0 looks for (the Mac review's R3-7)
     try:
         vfrun.require_clean_environment()
         said = None
@@ -116,8 +118,13 @@ ends = {"unix:///Users/lead/.docker/run/docker.sock": True, "unix:///var/run/doc
 ev["env"]["endpoints"] = {k: vfrun.endpoint_is_local(k) for k in ends}
 checks["host_env_only_a_unix_socket_counts_as_a_local_docker_engine"] = ev["env"]["endpoints"] == ends
 src = open(os.path.join(ROOT, "tools", "vfrun.py")).read()
-checks["host_env_every_docker_call_of_the_tools_gets_the_allow_listed_environment"] = src.count('subprocess.run(["docker"') == 2 \
-    and src.count("env=env)") >= 2 and all('env=vfrun.child_env()' in open(os.path.join(ROOT, "tools", f)).read() for f in ("prove.py", "check_probe.py"))
+# round 4: three `docker` calls in tools/vfrun.py (the context, `docker info`, and the listing by run label of stage
+# `close`); each must name the allow-listed environment inside its own call
+calls = [src[i:i + 400].split("\n\n")[0] for i in range(len(src)) if src.startswith('subprocess.run(["docker"', i)]
+ev["env"]["docker_calls_in_vfrun"] = len(calls)
+checks["host_env_every_docker_call_of_the_tools_gets_the_allow_listed_environment"] = len(calls) == 3 \
+    and all(("env=env)" in c.split("subprocess.run(", 2)[1] or "env=child_env())" in c.split("subprocess.run(", 2)[1]) for c in calls) \
+    and all('env=vfrun.child_env()' in open(os.path.join(ROOT, "tools", f)).read() for f in ("prove.py", "check_probe.py"))
 
 # ---- disk (D1) ----
 real_free = vfrun.free_bytes
@@ -164,17 +171,21 @@ pushy = os.path.join(SCRATCH, "pushy.toml")
 open(pushy, "w").write(open(scripted).read().replace("push = false", "push = true"))
 nocl = os.path.join(SCRATCH, "noclient.toml")
 open(nocl, "w").write(open(scripted).read().replace('api_key_var = "PHYSIM2_NO_MODEL_KEY"', 'api_key_var = "PRIME_API_KEY"'))
-ev["config"] = {"scripted": refused(scripted, model_credentials=False, dry_run=False),
-                "model config, no credentials flag": refused(qwen, model_credentials=False, dry_run=False),
-                "model config, dry run": refused(qwen, model_credentials=False, dry_run=True),
-                "model config, credentials flag": refused(qwen, model_credentials=True, dry_run=False),
-                "push = true": refused(pushy, model_credentials=False, dry_run=False),
-                "scripted with the default key variable": refused(nocl, model_credentials=False, dry_run=False)}
+# round 4: the command form of tools/vfrun.py starts SCRIPTED configs only, whatever flag is given; a model run
+# starts from a request (tools/check_round4.py, section D, tests that route). check_config has no credentials
+# argument any more, and the flag itself is refused on the command form (vfrun.main; tested in the box part).
+ev["config"] = {"scripted": refused(scripted, dry_run=False),
+                "model config": refused(qwen, dry_run=False),
+                "model config, dry run": refused(qwen, dry_run=True),
+                "push = true": refused(pushy, dry_run=False),
+                "push = true, dry run": refused(pushy, dry_run=True),
+                "scripted with the default key variable": refused(nocl, dry_run=False)}
 checks["host_config_the_scripted_config_is_accepted"] = ev["config"]["scripted"] is None
-checks["host_config_a_model_config_needs_the_credentials_flag"] = (ev["config"]["model config, no credentials flag"] or "").startswith("refused: without --model-credentials") \
-    and ev["config"]["model config, credentials flag"] is None and ev["config"]["model config, dry run"] is None
+checks["host_config_a_model_config_is_never_started_from_a_config_file"] = (ev["config"]["model config"] or "").startswith(
+    "refused: from a config file this tool starts scripted rollouts only") and ev["config"]["model config, dry run"] is None
 checks["host_config_upload_and_the_default_key_variable_are_refused"] = (ev["config"]["push = true"] or "").startswith("refused: the config does not say") \
-    and (ev["config"]["scripted with the default key variable"] or "").startswith("refused: without --model-credentials")
+    and (ev["config"]["push = true, dry run"] or "").startswith("refused: the config does not say") \
+    and (ev["config"]["scripted with the default key variable"] or "").startswith("refused: from a config file this tool starts scripted rollouts only")
 import tomllib
 sc = tomllib.load(open(scripted, "rb"))
 checks["host_config_stand_in_client_is_loopback_discard_and_a_name_never_set"] = sc["client"] == vfrun.NO_MODEL_CLIENT \
@@ -432,7 +443,8 @@ checks["box_a_session_with_docker_host_is_refused_before_anything_starts"] = str
 for k in noisy:
     os.environ.pop(k, None)
 os.environ["PRIME_API_KEY"], os.environ["PRIME_TEAM_ID"] = "made-up", "made-up"
-# 9. the command form (steps 2c and 3): scripted config accepted, model config only with the flag; credentials only then
+# 9. the command form (step 2c): a scripted config is accepted; a model config is never started from a config file,
+#    with or without the credentials flag (round 4: a model run starts from a request)
 fresh("exit0")
 args = ["--run-name", "single-d", "--out-dir", "/t/single", "--store", "/t/store", "--disk-floor-gib", "0.25"]
 r = call(lambda: vfrun.main(["--config", "/t/configs/scripted.toml", *args]))
@@ -443,7 +455,7 @@ checks["box_command_form_starts_a_scripted_config_without_any_credential"] = r.g
 fresh("exit0")
 r = call(lambda: vfrun.main(["--config", "/t/configs/model.toml", *args]))
 ev["command_model_without_flag"] = dict(r, stub_log=log())
-checks["box_command_form_refuses_a_model_config_without_the_flag"] = str(r.get("status", "")).startswith("refused: without --model-credentials") and log() == []
+checks["box_command_form_refuses_a_model_config"] = str(r.get("status", "")).startswith("refused: from a config file this tool starts scripted rollouts only") and log() == []
 fresh("exit0")
 r = call(lambda: vfrun.main(["--config", "/t/configs/model.toml", "--dry-run", *args]))
 got = seen()
@@ -452,9 +464,9 @@ checks["box_command_form_dry_run_of_a_model_config_gets_no_credential"] = r.get(
     and "PHYSIM2_MODEL_CREDENTIALS" not in got["env"]
 fresh("exit0")
 r = call(lambda: vfrun.main(["--config", "/t/configs/model.toml", "--model-credentials", "prime", *args]))
-got = seen()
-ev["command_model_with_flag"] = dict(r, child_env=got and sorted(got["env"]))
-checks["box_command_form_passes_the_key_only_with_the_step_3_flag"] = r.get("returned") == 0 and "PRIME_API_KEY" in got["env"] and got["env"].get("PHYSIM2_MODEL_CREDENTIALS") == "prime"
+ev["command_model_with_flag"] = dict(r, stub_log=log())
+# round 4: the flag belongs to the request route (stage rollout) only; on the command form it starts nothing
+checks["box_command_form_refuses_the_model_credentials_flag"] = str(r.get("status", "")).startswith("refused: a model rollout is started by a request") and log() == []
 fresh()
 vfrun.free_bytes = lambda path=None: 5 << 30
 r = call(lambda: vfrun.main(["--config", "/t/configs/scripted.toml", "--run-name", "single-d", "--out-dir", "/t/single2", "--store", "/t/store", "--disk-floor-gib", "8"]))
