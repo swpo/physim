@@ -34,7 +34,6 @@ import numpy as np
 
 from . import bearer as BEARER
 from . import profiles as PROFILES
-from .spend import PER_MESSAGE as SPEND_PER_MESSAGE, SLACK as SPEND_SLACK   # X17: the context bound's own constants
 from ._paths import HERE, PUBLIC, config_path, use_agentenv
 
 DROPPED = ["wire.py"]
@@ -216,6 +215,18 @@ def default_run(world: str, config_name: str, limits: dict | None = None) -> dic
     return run
 
 
+def spend_constants() -> dict:
+    """X17 (round 5): PER_MESSAGE and SLACK of the spend stop's prompt bound, read from spend.py's source (parsed, not
+    imported: spend.py needs pydantic, which an exam box does not have)."""
+    import ast
+    tree = ast.parse(open(os.path.join(HERE, "spend.py")).read())
+    got = {t.id: n.value.value for n in tree.body if isinstance(n, ast.Assign) and isinstance(n.value, ast.Constant)
+           for t in n.targets if getattr(t, "id", None) in ("PER_MESSAGE", "SLACK")}
+    if set(got) != {"PER_MESSAGE", "SLACK"}:
+        raise RuntimeError("the spend stop's constants were not found in spend.py")
+    return got
+
+
 def exam_places(caps: dict) -> list:
     """[(path, MiB)] of the writable places of a box that hold the exam's own files (X15): every tmpfs of the caps
     but /workspace and /tmp, with the size its mount options give."""
@@ -296,10 +307,11 @@ def limits_block(run: dict) -> str:
     c = run.get("max_context_tokens")
     tail = (f"a tool result longer than {int(cut):,} bytes is cut" if cut else "a long tool result is cut")
     if c:
+        sc = spend_constants()
         L.append(f"- **Context: {int(c):,} tokens.** Every turn sends the whole conversation again; nothing shortens or summarises "
                  f"it for you, and {tail}. Before each turn the operator bounds its size from above: the tokens the provider "
                  "counted for your previous turn, plus ONE TOKEN FOR EVERY BYTE added since (your last reply and the tool "
-                 f"results), plus {SPEND_PER_MESSAGE} per message and {SPEND_SLACK}. If that bound exceeds {int(c):,}, the run ends "
+                 f"results), plus {sc['PER_MESSAGE']} per message and {sc['SLACK']}. If that bound exceeds {int(c):,}, the run ends "
                  "before the turn. So the run can end while `lab.usage()` still reports `context_tokens_left` above zero (that "
                  "number is the provider's count of your last turn, not this bound). Keep tool output short: write data to files "
                  "and print summaries.")

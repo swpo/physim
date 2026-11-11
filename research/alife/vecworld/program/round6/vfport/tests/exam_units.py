@@ -2,6 +2,10 @@
 
     docker run -d --name NAME --network none --entrypoint sleep physim2-ring:3 infinity      (no mount, no socket)
     tar -cf - research/.../round6/vfport research/.../round5/agentenv research/.../vw1/vw | docker cp - NAME:/
+    (round 5) the two source files of verifiers' stock bash harness that the statement reads its numbers from, as
+    a bare package folder (nothing of it is imported): tar -C <site-packages of the pinned verifiers> -cf -
+    verifiers/v1/harnesses/utils/core.py verifiers/v1/harnesses/utils/compaction.py | docker cp - NAME:/opt/vfsrc
+    and `docker exec -e PYTHONPATH=/opt/vfsrc ...` below
     docker exec -w /research/alife/vecworld/program/round6/vfport NAME python -B tests/exam_units.py
     docker rm -f NAME
 

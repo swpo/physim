@@ -18,7 +18,7 @@ stay a hold); until then a session that reads this file stops here (rule A.1) an
 40-character hash in the coordinator's GO message. The lead checks it out (section C) and gives it to the
 session, and the first line that step 0 prints must equal it. The code is identified by the sha256 of
 `PIN.sha256`, the list of the sha256 of every file the pilot executes or imports; step 0 recomputes both.
-sha256 of `PIN.sha256`: `2f348fb8ac02d86f46229cfbd3fc5f643fa6c0678e4e72f4a4361e704a20b089`
+sha256 of `PIN.sha256`: `7b8a4292c006b463326e09d6e0faed133a049bc712729b950f36bcf8cd90c6c2`
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, the session and the disk, (1) install, (2) run the scripted,

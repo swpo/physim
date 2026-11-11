@@ -338,7 +338,7 @@ def check(path="submission", decl: dict | None = None, workspace: str = WORKSPAC
 
 if __name__ == "__main__":
     _rep = check(sys.argv[1] if len(sys.argv) > 1 else "submission")
-    if not _rep.get("as_graded"):                            # round 5 (X16): say it first, where it cannot be missed
-        print("NOTE: run by you, this check is NOT the check as graded (your predictor ran with your rights and could read "
-              "/workspace). Run lab.validate(\"submission\") (or the tool op validate) for the check as graded.")
     print(json.dumps(_rep, indent=1, default=str))
+    if not _rep.get("as_graded"):                            # round 5 (X16): said once more, apart from the report (stdout stays JSON)
+        print("NOTE: run by you, this check is NOT the check as graded (your predictor ran with your rights and could read "
+              "/workspace). Run lab.validate(\"submission\") (or the tool op validate) for the check as graded.", file=sys.stderr)
