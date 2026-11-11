@@ -1,0 +1,90 @@
+{
+ "size": 64,
+ "members": 3,
+ "ticks": 60,
+ "cpu_s_public_incl_compile": 7.950211286999999,
+ "candidates": {
+  "kpool": {
+   "max_abs_diff_fields": {
+    "S": 0.0,
+    "K": 0.0,
+    "L": 0.0,
+    "phi": 0.0
+   },
+   "max_abs_diff_L1": 0.0,
+   "max_abs_diff_L2": 0.0,
+   "hidden_field_max": 0.0,
+   "cpu_s_incl_compile": 8.000288427,
+   "bit_for_bit": true
+  },
+  "lpool": {
+   "max_abs_diff_fields": {
+    "S": 0.0,
+    "K": 0.0,
+    "L": 0.0,
+    "phi": 0.0
+   },
+   "max_abs_diff_L1": 0.0,
+   "max_abs_diff_L2": 0.0,
+   "hidden_field_max": 0.0,
+   "cpu_s_incl_compile": 8.215542966000001,
+   "bit_for_bit": true
+  },
+  "dorm": {
+   "max_abs_diff_fields": {
+    "S": 6.106226635438361e-16,
+    "K": 8.326672684688674e-16,
+    "L": 4.718447854656915e-16,
+    "phi": 2.9976021664879227e-15
+   },
+   "max_abs_diff_L1": 2.2737367544323206e-13,
+   "max_abs_diff_L2": 1.1368683772161603e-13,
+   "hidden_field_max": 0.0,
+   "cpu_s_incl_compile": 7.545782695,
+   "bit_for_bit": false
+  },
+  "bound": {
+   "max_abs_diff_fields": {
+    "S": 0.0,
+    "K": 0.0,
+    "L": 0.0,
+    "phi": 0.0
+   },
+   "max_abs_diff_L1": 0.0,
+   "max_abs_diff_L2": 0.0,
+   "hidden_field_max": 0.0,
+   "cpu_s_incl_compile": 7.01392757,
+   "bit_for_bit": true
+  }
+ },
+ "public_state_stats_last_tick": {
+  "S_inside_cells_quantiles": {
+   "0.01": 0.10659745887991846,
+   "0.05": 0.1163409171314434,
+   "0.25": 0.13140136336521016,
+   "0.5": 0.15538364536464674,
+   "0.75": 0.21207546667765131,
+   "0.95": 0.30087459059830696
+  },
+  "S_outside_quantiles": {
+   "0.01": 0.25812472055778,
+   "0.05": 0.3344416013844283,
+   "0.25": 0.4867114679852691,
+   "0.5": 0.6032127527933087,
+   "0.75": 0.7074245200106357,
+   "0.95": 0.8663228710169215
+  },
+  "K_inside_mean": 0.2703167681447584,
+  "L_inside_mean": 0.11763500439748976,
+  "phi_area_per_member": [
+   217,
+   1452,
+   1304
+  ],
+  "N_cells_last_tick": [
+   5.0,
+   3.0,
+   4.0
+  ]
+ }
+}
