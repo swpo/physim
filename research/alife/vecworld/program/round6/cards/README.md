@@ -224,6 +224,9 @@ inertia), and the membrane world qualifies for a reason I did not guess (the clo
 ## What failed, and limits
 
 - The population level's closure is not robust to seed or size; verdicts that rest on it alone are provisional.
+- The declared verdict calls the gliders world exam-worthy (population level, 0.16 to 0.26), although round 5 measured
+  its science share below the 0.15 bar in all nine cells: as a yes/no screen the population-level sigma_hat gives a
+  false positive there. At the block level it does not (0.09 to 0.11).
 - The actions gate does not discriminate; neither unit (oracle variance, cheap error) separates controls from
   interesting worlds on its own.
 - The first job's response-difference estimator was biased low (corrected for the second job) and its tick share
