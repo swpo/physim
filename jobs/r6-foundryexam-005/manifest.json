@@ -1,0 +1,208 @@
+{
+  "archive_sha256": "0c6c01b6e09bb5cb8fc850c1a3510bade4df699abb845ef2ef385a217253459d",
+  "files": [
+    {
+      "bytes": 2688,
+      "in_git": true,
+      "path": "sysinfo.txt",
+      "sha256": "97b7cac59d8831d482513ea804e1394428329d5c3768fc74e0fe2dfe1e67bb1b"
+    },
+    {
+      "bytes": 0,
+      "in_git": true,
+      "path": "job.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 286,
+      "in_git": true,
+      "path": "setup.log",
+      "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
+    },
+    {
+      "bytes": 27619,
+      "in_git": true,
+      "path": "run.log",
+      "sha256": "45a6176ad287206555ec21fb48ca176fe493e67a5735de175ad80f7e3bcdddb3"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "setup.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "exit.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "setup.start",
+      "sha256": "18152d1c2e8d318facdb6be76acc4ccefd1ea203e02350a20ce5d0d52db2fb5a"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.start",
+      "sha256": "6ab7476f6d9fbe6623552253fe05e7928282dad0bbde9bc1f83fb0789519969f"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.end",
+      "sha256": "4cf303881f2eb59bba59edfc34a84b5b9570ce5901fc5b182e9444779d783d67"
+    },
+    {
+      "bytes": 669,
+      "in_git": true,
+      "path": "out-listing.tsv",
+      "sha256": "1d4a868decd2e257e763dd2a6174c9827344ee861e752671d683fe7e4086c285"
+    },
+    {
+      "bytes": 420,
+      "in_git": true,
+      "path": "out/progress.txt",
+      "sha256": "10639770d30719eb2e9134356b46c5f277f1fcb43f5bbf433a6699045f4e0e23"
+    },
+    {
+      "bytes": 18173,
+      "in_git": true,
+      "path": "out/presmoke/P/train_info.json",
+      "sha256": "d447285c2a53f69bfa34cbbda9498959b4e64b78a06774241648d4135d18c91d"
+    },
+    {
+      "bytes": 16756,
+      "in_git": true,
+      "path": "out/presmoke/P/worlds.json",
+      "sha256": "554b7f1a6435542c895ba227f0a91cf21ea47170b90e949cbf56d53f6aa52a90"
+    },
+    {
+      "bytes": 129130,
+      "in_git": true,
+      "path": "out/presmoke/P/scores.npz",
+      "sha256": "b11e751c2bb5cf86067e49428b9a1acda75ebb995a7191e5d5e36c021a1fcb06"
+    },
+    {
+      "bytes": 35814,
+      "in_git": true,
+      "path": "out/presmoke/P/scores_refs.npz",
+      "sha256": "74d1a6584308ee3a9e0c04d4ada7c80cc61d4486de1f876fb2dde1252b40ebeb"
+    },
+    {
+      "bytes": 9585,
+      "in_git": true,
+      "path": "out/presmoke/P/meta.json",
+      "sha256": "150d175b73a08abc189e87c2fd4fc02697bbfd360c274710684c7b966d0093ad"
+    },
+    {
+      "bytes": 810301,
+      "in_git": true,
+      "path": "out/presmoke/P/items.npz",
+      "sha256": "c5d5249fc1c4af02574de382d39dfa70cc5454b3a5986d938d661ce0168cc7c5"
+    },
+    {
+      "bytes": 10044,
+      "in_git": true,
+      "path": "out/presmoke/gate.json",
+      "sha256": "582e90b4278b8e3541eccdd4ec9e3cf798d7f145c36dc487a1a31f26f604d2d3"
+    },
+    {
+      "bytes": 1586,
+      "in_git": true,
+      "path": "out/presmoke/code_norm.json",
+      "sha256": "b5f2c7a8535ca588ecc8478a76ab7e1c5adfc5d1d20ab666b34274352559b927"
+    },
+    {
+      "bytes": 4625,
+      "in_git": true,
+      "path": "out/presmoke/progress.txt",
+      "sha256": "098a15ec3840851fe195258f80ee2c6e64d3de1a8b1bb917a59043cb2ac83e9b"
+    },
+    {
+      "bytes": 10662,
+      "in_git": true,
+      "path": "out/presmoke/info.json",
+      "sha256": "f7a3bb9be45863c4fe0842c2238887788ce3e0be25f5cd69585fdd2b78abb15c"
+    },
+    {
+      "bytes": 582,
+      "in_git": true,
+      "path": "out/presmoke/shape_test.json",
+      "sha256": "bee37742868dcddec89409743b5d2015a4f04a441e6f075ddb99e8db915568a4"
+    },
+    {
+      "bytes": 264571,
+      "in_git": true,
+      "path": "out/full/P/train_info.json",
+      "sha256": "9ca2332a6f138a517415f88ea8859d0d115228f8f33b99faf342c74150375eb4"
+    },
+    {
+      "bytes": 134257,
+      "in_git": true,
+      "path": "out/full/P/worlds.json",
+      "sha256": "6340377f2f24dcd856b62b0687eb8498a6ae7076c20313b1faa00953a70641af"
+    },
+    {
+      "bytes": 961505,
+      "in_git": true,
+      "path": "out/full/P/scores.npz",
+      "sha256": "2bd5473c835487d5983674d49cab072d02acd69b5d2e988479feaa77f0f5e34c"
+    },
+    {
+      "bytes": 255934,
+      "in_git": true,
+      "path": "out/full/P/scores_refs.npz",
+      "sha256": "70a4c628ebc6aceb1e36c5e2f65c6b053069689acabd3c04ab4c8c6024938155"
+    },
+    {
+      "bytes": 10079,
+      "in_git": true,
+      "path": "out/full/P/meta.json",
+      "sha256": "b9ed0a29f2e2b667ddb346094f69b10cddc0260ee3dac4044445e9e7cc06e191"
+    },
+    {
+      "bytes": 6497740,
+      "in_git": true,
+      "path": "out/full/P/items.npz",
+      "sha256": "ab3c530e0a5843f422e1582ac75308083eb22e85468521b9d0531c3827b322a9"
+    },
+    {
+      "bytes": 102025,
+      "in_git": true,
+      "path": "out/full/gate.json",
+      "sha256": "47d53c3c7f4c8d4500f58729838c150d0656bcfcdfbdd7c9e00f51e81d219edb"
+    },
+    {
+      "bytes": 1586,
+      "in_git": true,
+      "path": "out/full/code_norm.json",
+      "sha256": "37f1ba7f0f1f28fb8ec567ba25200fcf903e0dfe3465dcb45d0f07c0c53eb6cc"
+    },
+    {
+      "bytes": 22909,
+      "in_git": true,
+      "path": "out/full/progress.txt",
+      "sha256": "946e839c3596d695a9179d2a43ff081607f5229c79e1b5feeeacb2995ddf0eb4"
+    },
+    {
+      "bytes": 10847,
+      "in_git": true,
+      "path": "out/full/info.json",
+      "sha256": "e3704ace36f0625085313de39c8a271d2bb5385dc509e1e2204b29968e1f3b6d"
+    }
+  ],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r6-foundryexam-005/collected/; ask for them by path.",
+  "skipped": [],
+  "skipped_count": 0,
+  "transfer_bytes": 8875276,
+  "transfer_stopped": null,
+  "truncated": false
+}
