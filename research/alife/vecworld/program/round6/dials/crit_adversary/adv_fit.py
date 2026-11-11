@@ -1,6 +1,6 @@
 """adv_fit -- the adversary's form-free repairs of the public law, fitted on the Lab and scored as gvh.py scores.
 
-    python -B adv_fit.py IN.npz [OUT.json] [designer's gvh json, for the paired check and its H column]
+    python -B adv_fit.py IN.npz [OUT.json] [designer's gvh json, for the paired check and its H column] [ACT.npz]
 
 Input: adv_sim.py's arrays (gvh.py's own Lab episodes, test items, truths and public runs; focus view at every
 tick; the public law's mean response to 8 transformed programs). DESIGN-STAGE CHECK, state given, tiny size,
@@ -16,6 +16,8 @@ that there is a carrier, where it converts, or that a route saturates.
               programs being the command delayed by 0, 4, 8, 16 ticks, as given or blurred over 3 x 3 bumps
     A_both    A_in and A_out together
     A_in_dur  A_in with every coefficient linear in the pulse duration (a strong pulse may enter differently)
+    A_act     (with ACT.npz, from adv_act.py) the public law run under a linearly filtered command (direct gain,
+              first-order lag with gain, time constant and blur: 4 numbers on a 39-point grid, least squares on the Lab)
 Coefficients are shared over ticks, one set per coordinate, ridge strength by leave-one-EPISODE-out on the Lab;
 the forecast ensemble is the public no-input ensemble moved by the fitted response (spread: the public futures
 under the program or without it, whichever scores better leave-one-episode-out on the Lab).
@@ -94,8 +96,9 @@ def fit_predict(Phi_l, r_l, Phi_t):
 
 def main():
     d = np.load(sys.argv[1])
-    out_path = sys.argv[2] if len(sys.argv) > 2 else None
-    ref = json.load(open(sys.argv[3])) if len(sys.argv) > 3 else None
+    out_path = sys.argv[2] if len(sys.argv) > 2 and sys.argv[2] != "-" else None
+    ref = json.load(open(sys.argv[3])) if len(sys.argv) > 3 and sys.argv[3] != "-" else None
+    act = np.load(sys.argv[4]) if len(sys.argv) > 4 else None
     y_lab, pub_lab, pub0_lab, Yt, pub, pub0 = (d[k] for k in ("y_lab", "pub_lab", "pub0_lab", "Yt", "pub", "pub0"))
     B_lab, B_test, F_lab, F_test, tm = d["B_lab"], d["B_test"], d["F_lab"], d["F_test"], d["test_member"]
     hs = list(HS)
@@ -103,10 +106,10 @@ def main():
     sc = np.maximum(sc, 0.1 * np.median(sc[sc > 1e-9]))      # gvh.py's scale (test truths)
     s_lab = y_lab[:, 1:].reshape(-1, 2).std(0)               # the recipes' own scale (Lab only)
 
-    def es(X):
-        return np.stack([energy_fair(X[:, :, h], Yt[:, :, h], sc[j]) for j, h in enumerate(hs)], 1).sum(1)
+    def es(X):                                               # (n_items, n_horizons)
+        return np.stack([energy_fair(X[:, :, h], Yt[:, :, h], sc[j]) for j, h in enumerate(hs)], 1)
     L = {"pub": es(pub), "pub0": es(pub0),
-         "O": np.stack([energy_loo(Yt[:, :, h], sc[j]) for j, h in enumerate(hs)], 1).sum(1)}
+         "O": np.stack([energy_loo(Yt[:, :, h], sc[j]) for j, h in enumerate(hs)], 1)}
     if "Hh" in d:
         L["H"] = es(d["Hh"])
 
@@ -142,6 +145,13 @@ def main():
             info[f"{kind}_n{n}"] = {"ridge_strength_per_coordinate": alphas, "spread_from": {"p": "public under the program", "0": "public without input"}[v],
                                     "lab_loo_energy": lab_es, "coefficients_per_coordinate": coefs}
 
+    if act is not None:
+        for n, g in zip(act["best_n"].tolist(), act["best_g"].tolist()):
+            L[f"A_act_n{n}"] = es(act[f"ens_g{g}"])
+            info[f"A_act_n{n}"] = {"fit_g0_g1_tau_blur": act["grid"][g].tolist(), "lab_sse": float(act["sse"][g, :n].sum()),
+                                   "lab_sse_public_law": float(act["sse"][2, :n].sum()), "spread_from": "the filtered public run itself"}
+    Lh = {k: v for k, v in L.items()}                        # per item and horizon
+    L = {k: v.sum(1) for k, v in L.items()}
     rb = np.random.default_rng(1)
     members = sorted(set(tm.tolist()))
 
@@ -159,6 +169,15 @@ def main():
         if k in ("pub", "O"):
             continue
         out["share_of_pub_to_O_gap"][k] = {"value": float(share(all_idx, k)), "se_members": float(np.std([share(b, k) for b in boots], ddof=1))}
+    gap = Lh["pub"] - Lh["O"]
+    heavy = max(members, key=lambda m_: gap[tm == m_].sum())
+    out["gap_pub_to_O"] = {"share_by_horizon": (gap.sum(0) / gap.sum()).tolist(), "horizons": hs,
+                           "share_by_test_member": {str(m_): float(gap[tm == m_].sum() / gap.sum()) for m_ in members},
+                           "heaviest_member": int(heavy)}
+    out["closed_by_horizon"] = {k: ((Lh["pub"] - v).sum(0) / gap.sum(0)).tolist() for k, v in Lh.items() if k not in ("pub", "O")}
+    out["closed_h_le_16"] = {k: float((Lh["pub"] - v)[:, :3].sum() / gap[:, :3].sum()) for k, v in Lh.items() if k not in ("pub", "O")}
+    out["closed_without_heaviest_member"] = {k: float((Lh["pub"] - v)[tm != heavy].sum() / gap[tm != heavy].sum())
+                                             for k, v in Lh.items() if k not in ("pub", "O")}
     if "Hh" in d:
         out["H_fit_lam_rho_DX"] = d["H_fit"].tolist()
     if ref is not None:                                      # the designer's file for the same seed: are the items the same?
@@ -170,7 +189,11 @@ def main():
     print("L", {k: round(v, 3) for k, v in out["L"].items()})
     for k, v in out["share_of_pub_to_O_gap"].items():
         extra = info.get(k, {})
-        print(f"  {k:14s} share {v['value']:+.3f} (se {v['se_members']:.3f})  {extra.get('spread_from', '')} {extra.get('ridge_strength_per_coordinate', '')}")
+        print(f"  {k:14s} share {v['value']:+.3f} (se {v['se_members']:.3f})  by h {np.round(out['closed_by_horizon'][k], 2).tolist()}  "
+              f"h<=16 {out['closed_h_le_16'][k]:+.2f}  w/o heaviest {out['closed_without_heaviest_member'][k]:+.2f}  "
+              f"{extra.get('fit_g0_g1_tau_blur', '')}")
+    print("  gap by horizon", np.round(out["gap_pub_to_O"]["share_by_horizon"], 2).tolist(), "by member",
+          {k: round(v, 2) for k, v in out["gap_pub_to_O"]["share_by_test_member"].items()})
     if ref is not None:
         print("  designer:", {k: round(v, 3) for k, v in ref["L"].items()}, "max |dL|", out["designer_file"]["max_abs_diff_L_pub_pub0_O_G2"])
     if out_path:

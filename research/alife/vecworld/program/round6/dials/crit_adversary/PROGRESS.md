@@ -13,3 +13,12 @@ Deliverable: CRITIQUE.md (under 900 words) in this folder.
   and adds public-law runs under a filter bank on the command (delay x blur); `adv_fit.py` fits form-free repairs
   on the Lab (lagged gain; filter bank; both) and scores as gvh.py does. Seed 5 is the development seed; seed 6 and
   a new seed are run once with the recipe frozen. Scratch: s5.npz (running).
+- 14:08: seed 5 (development seed), chosen carrier (lam 1, cat 1, rho 0.02, DX 0.5, a0 0.03): adv_sim reproduces the
+  designer's L(pub), L(pub0), L(O), L(G2) exactly (max difference 0.0), so its H column is paired. First recipes
+  (lagged gain, filter bank on the command, response mixing) close 0.17-0.31 of the gap pooled: no better than the
+  designer's generic recipes. BUT by horizon: 55% of the public-to-oracle gap is the 32-tick horizon and 55% is one
+  test member (8); at 4, 8, 16 ticks the designer's own per-horizon gain G2 closes 0.91, 0.87, 0.66 and the filter
+  bank 0.90, 0.86, 0.55; at 32 ticks every linear recipe is negative. A perfect mean with the public spread would
+  close 1.03, so the gap is all conditional mean. Next recipe (`adv_act.py`): the public law run under a linearly
+  filtered command (4 numbers on a 39-point grid), so that the public law's own nonlinear growth carries the
+  correction to 32 ticks. Running on seed 5.
