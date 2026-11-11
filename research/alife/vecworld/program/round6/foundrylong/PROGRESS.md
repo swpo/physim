@@ -54,15 +54,19 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 ## Running
 - Review of r6-foundrylong-001 read 18:50: fine to run, 2 minor (outputs ~53 MB: check manifest in_git before the analysis;
   completeness marks added to make_summary.py; DEVIATIONS addendum 2).
-- GPU job r6-foundrylong-002 (stage 2), requested ~21:20 UTC, cap $8.10. Follow: cd /home/user/physim && git fetch -q origin
-  gpu-jobs && git show origin/gpu-jobs:jobs/r6-foundrylong-002/status.json. READ jobs/r6-foundrylong-002/review.md BEFORE
-  the results. To cancel: push an empty gpu/requests/r6-foundrylong-002.cancel, verify with git ls-tree on origin.
+- GPU job r6-foundrylong-003 (stage 2, the study's LAST job), requested 21:38 UTC, cap $8.10. Follow: cd /home/user/physim &&
+  git fetch -q origin gpu-jobs && git show origin/gpu-jobs:jobs/r6-foundrylong-003/status.json. READ
+  jobs/r6-foundrylong-003/review.md BEFORE the results. To cancel: push an empty gpu/requests/r6-foundrylong-003.cancel,
+  verify with git ls-tree on origin.
 
+- 21:26: job 002 FAILED by design at its presmoke speed guard (exit 4 -> 2; $0.10 billed): the guard counted JIT
+  compilation (0.416 s per fit step per fit, projected 4.9 h). Addendum 4: steady timing; W's steps set by the measured
+  speed (<= 200, exit below 80). job_s2.sh smoke from a git archive again: exit 0 (7.2 min). Request 003 (last job).
 - 21:35: make_final.py (results/summary.json from the analyses; the exam-profile numbers) drafted and run on stage 1.
 
 ## Next step, exactly (stage 2)
-1. When 002 is done: read its review.md; check manifest in_git; git archive origin/gpu-jobs jobs/r6-foundrylong-002/out/full
-   to scratch; python -B make_summary2.py <dir> --job r6-foundrylong-002 -> results/analysis_stage2.json; read T1-T6.
+1. When 003 is done: read its review.md; check manifest in_git; git archive origin/gpu-jobs jobs/r6-foundrylong-003/out/full
+   to scratch; python -B make_summary2.py <dir> --job r6-foundrylong-003 -> results/analysis_stage2.json; read T1-T6.
 2. results/summary.json (every number with its source; make_final.py), README.md, final report; remove the worktree.
 
 ## Next step as it was before stage 1 (done)
@@ -77,4 +81,5 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 | job | state | cap | billed |
 |---|---|---|---|
 | r6-foundrylong-001 | done 21:01 UTC (exit 0, 2.35 h of run) | $8.10 | $4.92 |
-| r6-foundrylong-002 | requested ~21:20 UTC | $8.10 | - |
+| r6-foundrylong-002 | failed 21:26 UTC at its presmoke speed guard (compilation counted) | $8.10 | $0.10 |
+| r6-foundrylong-003 | requested 21:38 UTC | $8.10 | - |

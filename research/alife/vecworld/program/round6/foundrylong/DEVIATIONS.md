@@ -77,7 +77,7 @@ The declared criteria T1-T6 and their thresholds are unchanged. Fixed now:
    copied to inputs/stage1/ (P0(1,000) 3 seeds, C(16,384) seed 0, worlds.json). No platform allocator (the W fit
    dispatches one step at a time). Expected about 2.2 h, about $4.5; cap $8.10.
 
-## Addendum 4, 11 Nov 2026 21:45 UTC, before request r6-foundrylong-003 (seen: job 002's presmoke log, 2 worlds)
+## Addendum 4, 11 Nov 2026 21:30 UTC, before request r6-foundrylong-003 (seen: job 002's presmoke log, 2 worlds)
 
 Job r6-foundrylong-002 stopped itself at its presmoke speed guard after 1.6 min (exit 4; $0.10 billed): the guard
 divided the wall time of 10 fit steps, JIT compilation included, by the steps, and projected 4.9 h. Seen in its log
