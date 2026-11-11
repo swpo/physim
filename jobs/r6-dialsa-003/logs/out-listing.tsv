@@ -1,0 +1,17 @@
+1279	out/first_look.json
+202614	out/train_info.json
+2901439	out/scores.npz
+29592	out/identification.json
+3242774	out/nets.npz
+26471	out/progress.txt
+18935	out/info.json
+464	out/presmoke/zero_point.json
+1325	out/presmoke/first_look.json
+18722	out/presmoke/train_info.json
+337370	out/presmoke/scores.npz
+4375	out/presmoke/identification.json
+3231144	out/presmoke/nets.npz
+8335	out/presmoke/info.json
+812	out/presmoke/guard.json
+27514	out/presmoke/family_features.npz
+314753	out/family_features.npz

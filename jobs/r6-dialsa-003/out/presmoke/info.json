@@ -1,0 +1,354 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "study": "round6/dials/dialsA (plan study A, gliders calibration)",
+ "versions": {
+  "python": "3.12.16",
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4"
+ },
+ "backend": "gpu",
+ "devices": [
+  "cuda:0"
+ ],
+ "smoke": false,
+ "x64": true,
+ "max_hours": 1.9,
+ "secret_commitment": "cb039a99adfb157f89bdf82a78e604136e180ce5c98e2d22ececa9a996b6b867",
+ "modules": {
+  "vw": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/vw1/vw/__init__.py",
+  "_paths": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/vw1/port/_paths.py",
+  "flowlenia_jax": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/vw1/port/flowlenia_jax.py",
+  "phi": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/vw1/port/phi.py",
+  "aworld": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/vw1/port/aworld.py",
+  "wind": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/program/track2/actuation/wind.py",
+  "gworld": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/program/track2/gliders_exam/gworld.py",
+  "pilot": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/program/track2/gliders_exam/pilot.py",
+  "sbi_lib": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/program/round4/sbi/sbi_lib.py",
+  "ladder_lib": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/program/round5/ladder/ladder_lib.py",
+  "ladder_net": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/program/round5/ladder/ladder_net.py",
+  "dlaw": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/program/round6/dials/defect_gliders/dlaw.py",
+  "xlaw": "/home/ubuntu/gpujob/r6-dialsa-003/src/research/alife/vecworld/program/round6/dials/dialsA/xlaw.py"
+ },
+ "names": [
+  "lR",
+  "dm_00",
+  "ls_00",
+  "lh"
+ ],
+ "lo": [
+  0.91,
+  -0.15,
+  0.91,
+  0.91
+ ],
+ "hi": [
+  1.09,
+  0.15,
+  1.09,
+  1.09
+ ],
+ "truths_source": "round5/ladder/results/job/n4/truths.json",
+ "truths": [
+  [
+   1.0142636659899653,
+   -0.029852568761834425,
+   1.0362919727741309,
+   0.9450180687011148
+  ],
+  [
+   0.9506297215016538,
+   0.0032052918318795365,
+   1.0865622726399158,
+   0.9402826302655485
+  ],
+  [
+   0.9120577399870324,
+   0.03784308735670505,
+   0.910947153652681,
+   1.0610923772809704
+  ],
+  [
+   0.9663923467982765,
+   0.08938606358417614,
+   1.0247508103007108,
+   1.0430275278662264
+  ],
+  [
+   1.0015793874983798,
+   -0.1451776446277391,
+   1.0725673633876998,
+   0.9968204197237277
+  ],
+  [
+   0.9370216507803878,
+   0.005484288956911443,
+   1.0139823370187846,
+   1.008215647671368
+  ],
+  [
+   0.9973193584585546,
+   -0.04685528007920563,
+   1.0060249977330373,
+   1.0476264077052764
+  ],
+  [
+   0.9979504287410688,
+   -0.0933304381520364,
+   0.9198714009259171,
+   0.9419196458889095
+  ]
+ ],
+ "law": {
+  "term": "XW stress conversion (defect_gliders/dlaw.py)",
+  "W0": 0.12,
+  "DW": 0.05,
+  "KXW": 0.09
+ },
+ "net": {
+  "BATCH": 128,
+  "BLOCKS": 3,
+  "C": 48,
+  "CLIP": 1.0,
+  "DMAX": 8,
+  "EVAL_DRAWS": 8,
+  "EVAL_EVERY": 250,
+  "EVAL_ROWS": 128,
+  "HS": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "LAGS": [
+   0,
+   1,
+   2,
+   4,
+   8
+  ],
+  "LR": 0.001,
+  "MAX_ELEMS": 1073741824,
+  "MAX_LOCK": 8,
+  "M_TRAIN": 4,
+  "NG_NOISE": 8,
+  "NL_NOISE": 4,
+  "N_VAL": 1024,
+  "POP_H": 128,
+  "SLOT_H": 128,
+  "WD": 0.0001
+ },
+ "ft": {
+  "BATCH": 64,
+  "FOLDS": 4,
+  "GRID": 40,
+  "LOCK": 16,
+  "LR": 0.0001,
+  "N_TH": 512,
+  "N_VAL": 512,
+  "STEPS": 400
+ },
+ "grader": "fair energy score per item and horizon: vw.harness.HistoryExam._per_cell + vw.scoring.energy_fair through ladder_lib.ViewCells; L = sum over horizons, mean over items (acceptance.py)",
+ "config": {
+  "P": 16,
+  "H": 16,
+  "burn": 50,
+  "n_theta": 64,
+  "Kc": 2,
+  "chunk": 256,
+  "tile": 12,
+  "truths": [
+   0
+  ],
+  "etas": [
+   0.0,
+   4.0
+  ],
+  "n_mix": 32,
+  "n_free": 32,
+  "n_items": 48,
+  "R": 12,
+  "n_clim": 48,
+  "m": 32,
+  "m_plug": 8,
+  "budgets": [
+   8,
+   32,
+   2
+  ],
+  "d_first": 32,
+  "hs": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "lags": [
+   0,
+   1,
+   2,
+   4,
+   8
+  ],
+  "rungs": [
+   40,
+   120
+  ],
+  "steps_d": 40,
+  "d_doublings": 0,
+  "ft_steps": 80,
+  "ft_doublings": 0,
+  "seeds": 3,
+  "post_M": 4000,
+  "n_ctrl": 8,
+  "timing_runs": true
+ },
+ "member_ticks_planned": {
+  "families": 83968,
+  "lab": 10624,
+  "exams": 62208,
+  "plugins": 24576,
+  "total": 181376
+ },
+ "family_check": {
+  "c0_block_sum_lost_P_to_end|eta0|a": -0.00023968972949339404,
+  "c0_block_sum_lost_P_to_end|eta0|b": -8.436708433459672e-05,
+  "c0_block_sum_lost_P_to_end|eta0|c": 5.4844996257409975e-05,
+  "c0_block_sum_lost_P_to_end|eta0|d": 0.00016197111522153924,
+  "c0_block_sum_lost_P_to_end|eta4|a": -0.000107758806064992,
+  "c0_block_sum_lost_P_to_end|eta4|b": 0.005598444429726188,
+  "c0_block_sum_lost_P_to_end|eta4|c": 0.10615231147898242,
+  "c0_block_sum_lost_P_to_end|eta4|d": 0.28800595541492974
+ },
+ "lab": {
+  "eta0|t0": {
+   "usage": {
+    "ticks_used": 2112,
+    "max_ticks": 2112,
+    "resets": 64,
+    "episode_nats": 0.0,
+    "total_nats": 5000.37930869497,
+    "episode_left": 400.0,
+    "total_left": 20599.62069130503,
+    "episodes": 64,
+    "commands": 105
+   },
+   "classes_first_8": [
+    "a",
+    "d",
+    "b",
+    "c",
+    "b",
+    "d",
+    "a",
+    "c"
+   ],
+   "nats_by_class": {
+    "a": 0.0,
+    "b": 125.04741358687104,
+    "c": 199.99999999999994,
+    "d": 300.0
+   },
+   "c0_block_sum_lost_over_program_by_class": {
+    "a": -0.0002667294678748572,
+    "b": 0.00022160432808901454,
+    "c": 0.0003090605863965423,
+    "d": -9.033952396791944e-05
+   },
+   "structural_class_agreement_items": 1.0,
+   "structural_class_agreement_lab": 1.0
+  },
+  "eta4|t0": {
+   "usage": {
+    "ticks_used": 2112,
+    "max_ticks": 2112,
+    "resets": 64,
+    "episode_nats": 0.0,
+    "total_nats": 5000.379308694971,
+    "episode_left": 400.0,
+    "total_left": 20599.62069130503,
+    "episodes": 64,
+    "commands": 105
+   },
+   "classes_first_8": [
+    "a",
+    "d",
+    "b",
+    "c",
+    "b",
+    "d",
+    "a",
+    "c"
+   ],
+   "nats_by_class": {
+    "a": 0.0,
+    "b": 125.04741358687104,
+    "c": 200.0,
+    "d": 300.0
+   },
+   "c0_block_sum_lost_over_program_by_class": {
+    "a": -7.879298001102486e-05,
+    "b": 0.001869425368974345,
+    "c": 0.1237505305814,
+    "d": 0.3026990896939538
+   },
+   "structural_class_agreement_items": 1.0,
+   "structural_class_agreement_lab": 1.0
+  }
+ },
+ "times": {
+  "family_rates": {
+   "pub": {
+    "member_ticks": 41984,
+    "seconds": 51.06022357940674,
+    "seconds_last_chunk": 16.000929832458496,
+    "rate_last_chunk": 1311.9237581691614
+   },
+   "true": {
+    "member_ticks": 41984,
+    "seconds": 51.88705348968506,
+    "seconds_last_chunk": 16.686742782592773,
+    "rate_last_chunk": 1258.0046491696612
+   }
+  },
+  "1 families": 103.36824417114258,
+  "world_seconds": [
+   88.37738466262817,
+   35.765387296676636
+  ],
+  "2 worlds": 124.14332270622253,
+  "3 scripted inference": 0.27635931968688965,
+  "4 base nets, 40 steps": 15.900511503219604,
+  "4 scoring rung 40": 7.85424280166626,
+  "4 base nets, 120 steps": 7.628628253936768,
+  "4 scoring rung 120": 4.09503960609436,
+  "5 P0 on the Lab episodes": 2.143461227416992,
+  "5 fine-tuning N=8, 80 steps": 14.48327112197876,
+  "5 scoring N=8": 6.083370685577393,
+  "5 D(32), 40 steps": 12.206483840942383,
+  "5 fine-tuning N=32, 80 steps": 7.265088319778442,
+  "5 scoring N=32": 6.344823360443115,
+  "5 fine-tuning N=2, 80 steps": 5.3649516105651855,
+  "5 scoring N=2": 5.9120354652404785,
+  "5 control: FT and RES on 8 input-free Lab episodes": 8.675566673278809,
+  "5 D(8), 40 steps": 7.9077699184417725,
+  "5 D(2), 40 steps": 7.120123624801636
+ },
+ "failed": [],
+ "skipped": [],
+ "notes": [
+  "training rule: base nets not converged by the rule at 120 steps",
+  "training rule: fine-tunes at N=8 not converged by the rule at 80 steps",
+  "training rule: D(32) not converged by the rule at 40 steps",
+  "training rule: fine-tunes at N=32 not converged by the rule at 80 steps",
+  "training rule: fine-tunes at N=2 not converged by the rule at 80 steps",
+  "training rule: D(8) not converged by the rule at 40 steps",
+  "training rule: D(2) not converged by the rule at 40 steps"
+ ],
+ "stage_done": "done",
+ "hours": 0.10134414229128096,
+ "base_final_steps": 120,
+ "base_rule_met": false,
+ "member_ticks_total": 181376
+}
