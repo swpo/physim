@@ -45,6 +45,15 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
 - 13:17 the scan fix works: 18 ms per step of 16 lockstep nets (1.1 ms per net-step at batch 64), 6.5 ms per step of one
   shared net at batch 256. Arm P's nets done at minute 25 of the full pass; N30 nets at minute 40.
 
+- 13:51 job 003 DONE, exit 0: 1.07 pod-hours, $2.13 billed; failed [], skipped []; full pass 58 min, 32.6 M member-ticks.
+  results/analysis_job003.json (make_summary.py), figures fig_*_job003.png. First reading (pooled skill, K = 0, O = 1):
+  arm P: C 0.744, P0 0.664, FT(512) 0.732, D(512) 0.710, ridge(8) 0.640, S flat at 0.66; P0 takes 0.892 [0.866, 0.916] of C;
+  sigma 0.015 at 512, 0.100 at 8. N30: P0 share 0.787 (24-32 prior worlds only); N10: 0.953. Amortised S: rho about 0.
+  BUT criterion 6: C converged in only 4/32 (P), 9/24 (N30), 7/24 (N10) nets: C is a lower bound.
+- 14:05 decision: one follow-up job 004 (declared in DESIGN.md 5c before the request): C on 4,096 true-weight episodes with
+  8,000 steps at batch 128 (+ a 1,024-episode C to show convergence in data), up to 128 training neighbours in the N arms
+  (like for like with arm P's 210 prior worlds), new net seeds; same worlds, new items and Labs.
+
 ## Done
 - design and criteria declared and committed; pool and centres; code; CPU smokes from the git archive; requests 001 (rejected,
   $0), 002 (to be cancelled after arm P), 003 (pushed).

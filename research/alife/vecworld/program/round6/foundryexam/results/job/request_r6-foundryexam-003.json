@@ -1,0 +1,46 @@
+{
+  "request": {
+    "cap_usd": 7.8,
+    "disk_gb": null,
+    "env": {
+      "FX_ARMS": "P,N30,N10",
+      "FX_MAX_HOURS": "2.75",
+      "FX_SIZE": "full",
+      "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_40GB",
+        "A100_80GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r6-foundryexam-003",
+    "max_hours": 3.0,
+    "notes": "Follows r6-foundryexam-002, cancelled by me during arm P: its nets ran at 70 ms per step of two shared nets (one dispatch per step under the platform allocator), about 3.5 times the round-5 basis, so the per-world nets could not have finished (review of 002, minor 2, foresaw it). Changes, declared in DESIGN.md section 5b before this request (criteria unchanged): (a) fx_net.train runs 50 steps per dispatch (lax.scan in the jitted step); (b) global inputs enter as per-channel shifts instead of 81 convolved constant channels (first conv 207 wide instead of 936: temporaries about 4 times smaller); (c) per-world nets at batch 64, neighbourhood-arm shared nets at batch 128; (d) the presmoke's shape_test trains 16 lockstep nets and the two kinds of shared nets for 200 steps at the full shapes, writes ms per step to presmoke/shape_test.json, projects the net time of the full pass and exits 4 (job.sh: exit 2) if it exceeds 1.25 x the time available, so a slow configuration costs about 10 minutes, not the job. Acted on the review of 002: minor 1 (order: P0, S, P0s; C; D(512), FT(512); fine-tuned C; smaller budgets; second seeds; P0[16], P0[64] last; make_summary keeps the null's budget at 512 and flags it if incomplete), minor 3 (info.json after the gate and after every arm; reference scores saved as scores_refs.npz before any net), minor 4 (try/except per hidden world and per group of nets; meta.json before the quick report), and the notes (code standardisation without arm-P hidden worlds; the amortised net's random context excludes the example's own episode; a net cut before the last fifth of its schedule is not called converged). Not done: a SIGTERM handler. PILOT ONLY: hidden worlds are public functions of public seeds, their weights are written to $OUT; never an exam; the noise secret (os.urandom) is never written. Sizes as 002: gate of 896 worlds; arm P 16 hidden worlds and about 210 training worlds x 64 episodes; arms N30, N10 3 centres x 4 hidden neighbours and up to 32 training neighbours; per hidden world a Lab of 512 episodes, a HistoryExam of 32 items x 12 futures, 6 plug-ins, a ridge, 1,536 episodes at the true weights. Measured in 002 on this card: simulation 47,000 member-ticks/s (42 million in all: 15 minutes), 11.5 s per hidden world, presmoke 6 minutes. Nets: 24,700 lockstep steps per arm at batch 64 and 30,000 + 2 x 6,000 shared steps in arm P; if the round-5 basis holds (2.3-2.8 ms per net-step at batch 128) about 60 minutes; expected 1.6-2.0 h in all. Memory below 002's reviewed 10.4 GiB peak (smaller batch, narrower first layer); size guards as 002 (Runner chunk, check_elems at 2^30, device arrays below 2^31). job.sh's limit is 2.75 h from its own start (max_hours 3.0 leaves 0.25 h); arms P, N30, N10 take 45 / 27 / 27% of the time left and N10 is dropped first. Exit 1 if anything failed. $OUT about 20 MB. Cap: $2.35/h x 3.25 h = $7.64, rounded up plus $0.10. CPU test: job.sh with FX_SIZE=smoke from a git archive of exactly these four paths at the request's code, all three arms, exit 0.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/program/round5/foundry",
+      "research/alife/vecworld/program/round5/agentenv/evaluator",
+      "research/alife/vecworld/program/round6/foundryexam"
+    ],
+    "purpose": "Round-6 study foundryexam: exam pilot where the hidden law is a network's weights; rerun of 002 (cancelled: nets several times too slow) with 50 training steps per dispatch, a cheaper net and a presmoke speed guard; 16 screened-prior worlds and 2 x 12 neighbourhood worlds",
+    "ref": "96d04d5011956167c473b8121a8c9c75bf2d6f85",
+    "ref_source": "commit holding the request",
+    "requester": "cloud study foundryexam (round 6), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round6/foundryexam && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "bb1f49b85d150ff73e8ff333d8e05871a6dcd2ec",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r6-foundryexam-003.json",
+    "received_at": "2026-11-11T12:40:13Z",
+    "tip": "96d04d5011956167c473b8121a8c9c75bf2d6f85"
+  }
+}

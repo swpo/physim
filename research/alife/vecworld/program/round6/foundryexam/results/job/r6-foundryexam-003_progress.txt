@@ -1,0 +1,8 @@
+PILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material
+12:46:30 [job.sh] start, size full, arms P,N30,N10, max hours 2.75, nproc 30
+versions 3.12.16 0.12.0.1 2.5.4 [CudaDevice(id=0)] gpu
+name, memory.total [MiB], driver_version
+NVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08
+12:51:48 [job.sh] presmoke exit 0
+12:51:48 [job.sh] full pass: 2.662 h left of 2.75
+13:49:48 [job.sh] full exit 0; OUT size 21M
