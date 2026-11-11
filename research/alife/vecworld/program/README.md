@@ -168,11 +168,18 @@ Round 6 (10-11 Nov 2026, in progress; the lead's direction for it is in `roadmap
   hypothesis or only more prior simulations is open; no scripted policy chooses its Lab programs, so the study cannot
   say whether experimenting pays.
 - `round6/dials`: three exam designs under decision 1 (a public law with a hidden term, on gliders; a hidden carrier
-  level under the membrane cells; a compute limit on fed vortices), three adversarial critiques and `PLAN.md`. On a
-  CPU stand-in the gliders term is repaired by a generic residual fitted on one or two Lab episodes (a calibration
-  with real nets is running); the compute limit does not bite on fed vortices (summed small boxes score as exam-size
-  runs do); the membrane carrier withstands the adversary's generic policy only at 32 ticks, and its CPU gate is
-  being read.
+  level under the membrane cells; a compute limit on fed vortices), three adversarial critiques and `PLAN.md`. The
+  compute limit does not bite on fed vortices (summed small boxes score as exam-size runs do) and is deferred.
+  Study A (`dials/dialsA`, $2.08, checked): with real nets on round 5's ladder harness, a generic repair fitted on 8 Lab
+  episodes (fine-tuning, or a per-block residual, which always won) closes 0.47 of the gap between P0 and the
+  true-form net (one-sided 90% bounds 0.43 and 0.52; bar 0.7): "generic repair wins" is refuted, where the CPU stand-in
+  had forecast 0.70 to 1.46. Checker: the base nets stopped at the declared step cap, not converged by the plan's rule
+  (longer training widened the gap at each doubling); on the whole exam the P0-to-C share is 0.146 and 0.077 after the
+  repair, so a reopened design can reach the 0.15 bar only on the triggered item classes at 8 to 16 ticks (0.25 and
+  0.41 there). Study B stage 0 (`dials/dialsB`, $0.26, checked): the membrane carrier's CPU gate is a close call by the
+  declared rule and a no-go at the point; B is not built. Checker: the gate did not test the carrier, because the
+  hidden law is numerically unstable at the pilot centre (an explicit diffusion step at D_X = 0.5 grows a checkerboard
+  mode in both arms) and every seed shared one hidden value; the question is undecided, not closed.
 What round 6 says so far: the toy exam is trivially easy for a strong agent. On every other world tried, generic
 recipes (simulate the prior, then fine-tune or fit a residual on Lab data) take most of the skill at short horizons and
 generous Lab budgets. Where they fall short is at long horizons with few Lab episodes, and there the compute given to

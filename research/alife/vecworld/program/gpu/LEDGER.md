@@ -35,8 +35,9 @@ Round 6 (rows added as studies finish; billed amounts from each job's status.jso
 | 2026-11-11 | r6-cards-001/002 (world cards of 77 worlds, 140 runs) | Mac runner (round 6 study cards) | A100 40GB (lambdalabs, $1.99/h) | 1.35 | 2.68 | 25 | done, both exit 0 |
 | 2026-11-11 | r6-foundryexam-002/003/004/005 (exam pilot on the foundry automaton with hidden weights) | Mac runner (round 6 study foundryexam) | A100 40GB (lambdalabs, $1.99/h) | 5.88 | 11.70 | 25 | 003, 004, 005 done; 002 cancelled by the runner ($1.92: one dispatch per training step with the platform allocator was about 7 times too slow; the study's own cancel was never pushed); 001 rejected (notes over 4,000 characters, $0) |
 | 2026-11-11 | r6-dialsb-001/002 (CPU gate of the membrane-carrier design: state-given screens) | Mac runner (round 6 study dialsB) | CPU machine, 16 vCPU / 64 GB (nebius, $0.54/h) | about 0.5 | 0.26 | 5 | 002 done; 001 stopped by its own speed guard ($0.04: `nproc` returned 1 because OMP_NUM_THREADS=1 was exported first) |
+| 2026-11-11 | r6-dialsa-003 (gliders calibration: generic repair of an incomplete public law, real nets) | Mac runner (round 6 study dialsA) | A100 40GB (lambdalabs, $1.99/h) | 1.05 | 2.08 | 5 | done, exit 0; r6-dialsA-001 dropped (upper-case id), r6-dialsa-001 rejected (notes over 4,000 characters), r6-dialsa-002 held by the runner's review and cancelled before start (platform allocator with per-step dispatch), $0 each |
 
-Round 6 so far: $14.64 billed (the gliders calibration job r6-dialsa-003 is running), $60.91 in all, of $1,000 approved.
+Round 6 so far: $16.72 billed (the long-horizon foundry job r6-foundrylong-001 is requested), $62.99 in all, of $1,000 approved.
 Model spend (rollouts) is a separate total: `../round6/rollouts/LEDGER.md` and `ledger.json`.
 Lessons of round 6 for requests: job ids are lower case and must match the protocol's pattern (an invalid file name is
 dropped without a record); purpose at most 300 characters on one line, notes at most 4,000; do NOT set
