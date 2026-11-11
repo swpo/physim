@@ -20,10 +20,17 @@ field at its equilibrium, which is 0 at lam = 0, is the public law, checked bit 
   'bound'  substrate bound to the medium, B (immobile, not eaten, not washed out): S <-> B
                B' = lam k_a S - k_d B                           S' = ... - lam k_a S + k_d B
            (retardation factor 1 + lam k_a / k_d at equilibrium)
-  'pro'    a carrier of the INPUT: a fraction lam of what the channel injects (command and channel noise) arrives
-           as a carrier X (signed, moves with DX, not eaten, not washed out) that turns into substrate at rate rho
-               X' = DX lap X - rho X + lam f                    S' = ... + (1 - lam) f + rho X
-           (without input and channel noise X = 0: the passive law is the public law exactly)
+  'pro'    a carrier of the INPUT: of each realised channel coefficient c_j = u_j + eta_j (command plus channel
+           noise; the only way u enters, so the nats bound |u|^2 / (2 sigma_a^2) stays exact) the share
+           lam g(c_j), g(c) = c^2 / (c^2 + a0^2), arrives as a carrier X (signed, moves with DX, not eaten, not
+           washed out) that turns into substrate at rate rho; the rest arrives at once as in the public law
+               X' = DX lap X - rho X + f_carried                S' = ... + f_prompt + rho X
+           a0 = 0: every injection is carried alike (linear). a0 > 0: the prompt route saturates, so small
+           injections (the channel noise, weak spread-out commands) arrive as in the public law and strong
+           concentrated ones are carried. Without input and noise X = 0: the passive law is the public law.
+           cat in [0, 1]: the conversion rate is rho ((1 - cat) + cat K / 0.25): at cat = 1 the carrier is inert in
+           the medium and is converted only where there is cell catalyst (K is about 0.27 inside cells, 0 outside),
+           so what an injection does depends on which cells the carrier reaches.
 
 In balanced (slow) conditions 'kpool' and 'lpool' deliver exactly the public fluxes (rho Q = lam A), 'bound' sits
 at B = (lam k_a / k_d) S with no net exchange, and 'dorm' is silent while S stays above s_c: the public law is
@@ -53,7 +60,7 @@ import membrane_world as MW  # noqa: E402
 CANDS = ("kpool", "lpool", "dorm", "bound", "pro")
 EXTRA = {"kpool": "Q", "lpool": "R", "dorm": "Ki", "bound": "B", "pro": "X"}
 # illustrative hidden values (time units; one tick = 10): PILOT ONLY, never to be reused as an exam
-HID0 = dict(lam=0.0, rho=0.005, k_off=0.05, k_on=0.004, s_c=0.25, w_c=0.03, k_a=0.02, k_d=0.01, DX=0.2, eq0=1.0)
+HID0 = dict(lam=0.0, rho=0.005, k_off=0.05, k_on=0.004, s_c=0.25, w_c=0.03, k_a=0.02, k_d=0.01, DX=0.2, eq0=1.0, a0=0.0, cat=0.0)
 
 
 def make_native_step(cfg: MJ.Config, cand: str):
@@ -66,6 +73,8 @@ def make_native_step(cfg: MJ.Config, cand: str):
     def native_step(q, x, f):
         S, K, L, phi, E = x["S"], x["K"], x["L"], x["phi"], x[ek]
         lam = q["lam"]
+        if cand == "pro":
+            f, f_car = f                                     # prompt and carried parts of the channel's source
         g = phi * phi
         Ka = K - E if cand == "dorm" else K
         auto = q["c"] * S * Ka * (1 - K) * phi
@@ -89,9 +98,9 @@ def make_native_step(cfg: MJ.Config, cand: str):
             E2 = jnp.maximum(E - h * ex, 0)
             dS = ex
         else:  # pro: the channel's substrate arrives as a carrier X (signed), which diffuses and converts to S
-            E2 = E + h * (q["DX"] * lap(E) - q["rho"] * E + lam * f)
-            dS = q["rho"] * E
-            f = f * (1 - lam)
+            conv = q["rho"] * ((1 - q["cat"]) + q["cat"] * K / 0.25) * E     # cat = 1: only cell catalyst converts it
+            E2 = E + h * (q["DX"] * lap(E) + f_car) - h * conv
+            dS = conv
         S2 = jnp.maximum(S + h * (q["DS"] * lap(S) - auto - prodL + q["F"] * (1 - S) + f + dS), 0)
         K2 = jnp.maximum(K + h * (mob_div(K, g, q["DK"]) + auto - kdec * K + dK), 0)
         w = 4 * phi * (1 - phi)
@@ -139,7 +148,13 @@ def make_level(cfg: MJ.Config, cand: str, hidden: dict | None = None, theta: dic
         return dict(x, **{ek: E})
 
     def step(q, x, noise, u):
-        f = (MJ.channel(cfg, noise, u) @ B).reshape(cfg.H, cfg.W) / cfg.tick_time
+        c = MJ.channel(cfg, noise, u)                        # realised coefficients u + eta: the only way u enters
+        if cand == "pro":
+            g = c * c / (c * c + q["a0"] ** 2 + 1e-300)      # share of the carried route taken (1 if a0 = 0)
+            car = q["lam"] * g
+            f = ((c * (1 - car)) @ B).reshape(cfg.H, cfg.W) / cfg.tick_time, ((c * car) @ B).reshape(cfg.H, cfg.W) / cfg.tick_time
+        else:
+            f = (c @ B).reshape(cfg.H, cfg.W) / cfg.tick_time
         return jax.lax.fori_loop(0, n, lambda i, xx: ns(q, xx, f), x)
 
     return vw.Level(init=init, step=step, input_dim=cfg.m, params=q0, differentiable=True,

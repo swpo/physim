@@ -21,6 +21,7 @@ Policies (each an ensemble of 6 futures per test item):
             onset, offset, duration x offset), one ridge per horizon and coordinate, strength by leave-one-out
     G2      pub with a per-horizon response gain fitted on the Lab episodes: pub0 mean + g_h (pub mean - pub0 mean)
     G3      G2 with the gain a linear function of (duration, onset, offset) per horizon
+    G4      G3 plus a ridge (the features of G1) on what G3 leaves
     H       told the form (carrier with unknown lam, rho, DX): least squares over a 3 x 3 x 3 grid of the hidden
             law's mean response on the same Lab episodes, then the hidden law at the fitted values
     O       the hidden law at the true values (leave-one-out over the truths)
@@ -70,7 +71,7 @@ def main():
     n_lab = int(pos[2]) if len(pos) > 2 else 16
     seed = int(pos[3]) if len(pos) > 3 else 5
     nats, M = 300.0, 16
-    truth = dict({"rho": 0.005, "DX": 0.2}, **kv, lam=lam)
+    truth = dict({"rho": 0.005, "DX": 0.2}, **kv, lam=lam)        # other keys (a0, cat) are taken as known by H
     tag = f"lam{lam:g}_n{n_lab}_s{seed}" + "".join(f"_{k}{v:g}" for k, v in kv.items())
     cfg = SL.small_cfg(size)
     t_cpu = time.process_time()
@@ -136,7 +137,7 @@ def main():
     dl = (pub_lab.mean(1) - pub0_lab.mean(1)) / sc          # public response on the Lab episodes
     yl = (y_lab - pub0_lab.mean(1)) / sc
     dt_ = pub.mean(1) - pub0.mean(1)
-    G2, G3 = pub.copy(), pub.copy()
+    G2, G3, G4 = pub.copy(), pub.copy(), pub.copy()
     gains = []
     Zl = np.concatenate([np.ones((n_lab, 1)), np.abs(F_lab[:, 1:4])], 1)      # 1, duration, onset, offset
     Zt = np.concatenate([np.ones((len(test), 1)), np.abs(F_test[:, 1:4])], 1)
@@ -147,6 +148,9 @@ def main():
         A = (Zl[:, None, :] * dl[:, j, :, None]).reshape(n_lab * 2, 4)        # y = (Z b) * d
         b = np.linalg.solve(A.T @ A + 0.3 * np.eye(4), A.T @ yl[:, j].reshape(-1))
         G3[:, :, j] += ((Zt @ b - 1.0)[:, None] * dt_[:, j])[:, None]
+        r3 = yl[:, j] - (Zl @ b)[:, None] * dl[:, j]                           # G4: G3 + a ridge on what G3 leaves
+        for c in range(2):
+            G4[:, :, j, c] = G3[:, :, j, c] + (Xt @ ridge_fit(Xl, r3[:, c], 3.0))[:, None] * sc[j, c]
 
     # H: grid over the told form
     base = dict(wh.params)
@@ -165,7 +169,7 @@ def main():
 
     def es(X):
         return np.stack([energy_fair(X[:, :, j], Yt[:, :, j], sc[j]) for j in range(len(HS))], 1).sum(1)   # (n_items,)
-    L = {"pub": es(pub), "pub0": es(pub0), "G1": es(G1), "G2": es(G2), "G3": es(G3), "H": es(Hh),
+    L = {"pub": es(pub), "pub0": es(pub0), "G1": es(G1), "G2": es(G2), "G3": es(G3), "G4": es(G4), "H": es(Hh),
          "O": np.stack([energy_loo(Yt[:, :, j], sc[j]) for j in range(len(HS))], 1).sum(1)}
     tm = np.array([it[0] for it in test])
     rb = np.random.default_rng(1)
@@ -180,7 +184,7 @@ def main():
            "H_fit": {"lam": la, "rho": rh, "DX": dx, "grid": {k: list(v) for k, v in GRID.items()},
                      "best5_sse_lam_rho_DX": [list(f) for f in fits[:5]]}}
     all_idx = np.arange(len(test))
-    for k in ("pub0", "G1", "G2", "G3", "H"):
+    for k in ("pub0", "G1", "G2", "G3", "G4", "H"):
         bs = []
         for _ in range(400):
             mm = rb.choice(test_m, size=len(test_m))
