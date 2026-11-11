@@ -391,6 +391,20 @@ def main():
             shutil.copy(src, os.path.join(out, "reference", os.path.basename(src)))
             written["reference/" + os.path.basename(src)] = "reference table of tools/prove.py (scores, counters, commitments; no hidden value)"
 
+    # ---- the hidden side of this PILOT instance (allowed in a file that carries the marker; the secret is not written) ----
+    inst = json.load(open(os.path.join(hidden, "instance.json")))
+    hidden_values = {MARK: True, "theta_names": inst.get("theta_names"), "theta": inst.get("theta"), "world": inst.get("world"),
+                     "note": "the hidden parameters the agent had to learn; public only because this instance is pilot material"}
+    needles = [str(inst.get("secret_hex") or "")] + [repr(float(v))[:10] for v in inst.get("theta") or []]
+    hidden_hits = {"needles": len([x for x in needles if len(x) >= 6]), "files": 0, "hits": 0,
+                   "what": "the secret and the first ten characters of each hidden parameter, counted in every file of vf-eval's run folder"}
+    for root, _, names in os.walk(a.run_dir):
+        for n in names:
+            data = open(os.path.join(root, n), "rb").read()
+            hidden_hits["files"] += 1
+            hidden_hits["hits"] += sum(data.count(x.encode()) for x in needles if len(x) >= 6)
+    del inst, needles
+
     # ---- the result ----
     tm = tr.get("timing") or {}
     span = lambda k: None if not tm.get(k) or tm[k].get("end") is None or tm[k].get("start") is None else round(tm[k]["end"] - tm[k]["start"], 1)  # noqa: E731
@@ -429,6 +443,8 @@ def main():
         "noise_one_instance_bootstrap_over_items": noise,
         "agent_items_failed": None if failed is None else int(failed.sum()),
         "reference_box_check": proof.get("one_box_per_item_check_world_0"),
+        "hidden_parameters_of_this_pilot_instance": hidden_values,
+        "hidden_values_counted_in_the_run_folder": hidden_hits,
         "credential_like_fields_removed_from_the_raw_trace": sorted(set(removed)),
         "extracted_unix": time.time(),
     }

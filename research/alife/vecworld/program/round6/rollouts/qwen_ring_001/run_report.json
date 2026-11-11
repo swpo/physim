@@ -1,0 +1,98 @@
+{
+ "traces_file": true,
+ "episodes": 1,
+ "rollouts": [
+  {
+   "instance_id": "pilot-qwen-ring-001-r2-w0",
+   "1_ok": true,
+   "1_reward_present": true,
+   "1_reward_skill_vs_O": 0.0,
+   "1_trace_errors": [],
+   "1_episode_errors": [],
+   "2_network_restricted": true,
+   "2_verifier_box_network_restricted": true,
+   "2_single_use": true,
+   "2_item_isolation": "box",
+   "3_lab": {
+    "ticks_used": 306,
+    "resets": 18,
+    "requests": 39,
+    "rejected": 1,
+    "validations": 1,
+    "submissions": 0,
+    "infrastructure_errors": 0
+   },
+   "3_lab_submitted": false,
+   "3_tool_calls_by_name": {
+    "bash": 40
+   },
+   "4_submission_source": "final_collection",
+   "4_submission_ok": false,
+   "4_submission_files": 0,
+   "4_submission_bytes": 0,
+   "4_submission_sha256": null,
+   "4_submission_error": "(other, 28 characters)",
+   "4_stop_condition": "max_turns",
+   "4_trace_stop_condition": "max_turns",
+   "5_validation_ok": null,
+   "5_n_items": 64,
+   "5_n_failed": 64,
+   "5_layers": {
+    "rlimits": null,
+    "uid": null,
+    "cleanup": null
+   },
+   "5_isolation": null,
+   "5_item_boxes": null,
+   "5_item_box_wall_s_mean": null,
+   "5_infrastructure_failed_items": null,
+   "5_skill_vs_O": 0.0,
+   "5_reason": "(other, 28 characters)",
+   "5_grading_error": null,
+   "5_marked_not_an_exam": false,
+   "5_between_item_state_marked": false,
+   "5_predictor_uid": 35965,
+   "5_container_evidence_count": 2,
+   "6_task_row_keys": [
+    "artifact_max_bytes",
+    "artifacts",
+    "config_name",
+    "id",
+    "idx",
+    "image",
+    "instance_id",
+    "name",
+    "network_allow",
+    "network_block",
+    "prompt",
+    "resources",
+    "secret_commitment",
+    "skills",
+    "timeout",
+    "workdir",
+    "world"
+   ],
+   "6_commitment_is_64_hex": true,
+   "7_num_input_tokens": 18759,
+   "7_num_output_tokens": 18888,
+   "7_wall_s": {
+    "boot": 1.5935754776000977,
+    "setup": 19.683068990707397,
+    "agent": 643.3228566646576,
+    "finalize": 1.4698150157928467
+   },
+   "7_verifier_wall_s": 2.548537015914917,
+   "6_hidden_values_in_the_run_folder": {
+    "files_scanned": 4,
+    "needles": 4,
+    "hits": {
+     "secret": 0,
+     "hidden_parameter_1": 0,
+     "hidden_parameter_2": 0,
+     "hidden_parameter_3": 0
+    },
+    "total_hits": 0
+   }
+  }
+ ]
+}

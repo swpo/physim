@@ -1,0 +1,1089 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "name": "qwen_ring_001",
+ "instance_id": "pilot-qwen-ring-001-r2-w0",
+ "secret_commitment": "a125f5016080ec142c86391721dd52bfccad569b6332e88e3c53a9db1b685852",
+ "model": "qwen/qwen3.6-35b-a3b",
+ "harness": "bash",
+ "trace_id": "89efaafbb9284ecf97d92c180869544e",
+ "verifiers": "0.3.2.dev163",
+ "command": "cd S && nice -n 10 /home/user/evalwork/vfport/.venv/bin/python -B R/tools/here.py --run-id physim2-rollq-20261111 vfrun.py --config R/configs/qwen_ring_001.toml --run-name qwen-ring-001 --out-dir S/run --store S/store --disk-floor-gib 1.5 --model-credentials prime > S/run.log 2>&1 < /dev/null ; echo \"EXIT $?\" >> S/run.log   (S = the runner's scratch folder, R = research/alife/vecworld/program/round6/rollouts; PRIME_API_KEY and PRIME_TEAM_ID reach the process through the environment only)",
+ "caps": {
+  "max_turns": 40,
+  "max_total_tokens": 1500000,
+  "max_output_tokens": 60000,
+  "max_input_tokens": null
+ },
+ "sampling": {
+  "max_tokens": 8192
+ },
+ "timeout": {
+  "rollout": 3600.0
+ },
+ "box": {
+  "type": "docker",
+  "image": "physim2-ring-ca:1",
+  "cpu": 2.0,
+  "memory": 4.0,
+  "allow": [],
+  "block": [
+   "*"
+  ],
+  "workdir": "/workspace"
+ },
+ "outcome": {
+  "episode_ok": true,
+  "trace_ok": true,
+  "is_completed": true,
+  "stop_condition": "max_turns",
+  "is_timeout": false,
+  "trace_errors": [],
+  "episode_errors": [],
+  "reward_skill_vs_O": 0.0,
+  "graded": true
+ },
+ "turns": 40,
+ "message_nodes": 81,
+ "tool_calls_by_name": {
+  "bash": 40
+ },
+ "usage": {
+  "calls": [
+   {
+    "call": 1,
+    "node": 2,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 4.43,
+    "prompt_tokens_uncached": 3403,
+    "cached_input_tokens": 0,
+    "completion_tokens": 55,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0004
+   },
+   {
+    "call": 2,
+    "node": 4,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 0.76,
+    "prompt_tokens_uncached": 1703,
+    "cached_input_tokens": 3458,
+    "completion_tokens": 32,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0006
+   },
+   {
+    "call": 3,
+    "node": 6,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 0.84,
+    "prompt_tokens_uncached": 159,
+    "cached_input_tokens": 5193,
+    "completion_tokens": 36,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0006
+   },
+   {
+    "call": 4,
+    "node": 8,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 1.95,
+    "prompt_tokens_uncached": 461,
+    "cached_input_tokens": 5388,
+    "completion_tokens": 36,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0006
+   },
+   {
+    "call": 5,
+    "node": 10,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 0.83,
+    "prompt_tokens_uncached": 3146,
+    "cached_input_tokens": 5885,
+    "completion_tokens": 37,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.001
+   },
+   {
+    "call": 6,
+    "node": 12,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 2.0,
+    "prompt_tokens_uncached": 249,
+    "cached_input_tokens": 9068,
+    "completion_tokens": 77,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.001
+   },
+   {
+    "call": 7,
+    "node": 14,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 4.51,
+    "prompt_tokens_uncached": 334,
+    "cached_input_tokens": 9394,
+    "completion_tokens": 163,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0011
+   },
+   {
+    "call": 8,
+    "node": 16,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 2.78,
+    "prompt_tokens_uncached": 349,
+    "cached_input_tokens": 9891,
+    "completion_tokens": 142,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0012
+   },
+   {
+    "call": 9,
+    "node": 18,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 3.5,
+    "prompt_tokens_uncached": 770,
+    "cached_input_tokens": 10382,
+    "completion_tokens": 87,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0012
+   },
+   {
+    "call": 10,
+    "node": 20,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 2.22,
+    "prompt_tokens_uncached": 468,
+    "cached_input_tokens": 11239,
+    "completion_tokens": 132,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0013
+   },
+   {
+    "call": 11,
+    "node": 22,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 13.97,
+    "prompt_tokens_uncached": 326,
+    "cached_input_tokens": 11839,
+    "completion_tokens": 114,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0013
+   },
+   {
+    "call": 12,
+    "node": 24,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 3.5,
+    "prompt_tokens_uncached": 319,
+    "cached_input_tokens": 12279,
+    "completion_tokens": 98,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0013
+   },
+   {
+    "call": 13,
+    "node": 26,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 3.41,
+    "prompt_tokens_uncached": 191,
+    "cached_input_tokens": 12696,
+    "completion_tokens": 130,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0014
+   },
+   {
+    "call": 14,
+    "node": 28,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 5.93,
+    "prompt_tokens_uncached": 103,
+    "cached_input_tokens": 13017,
+    "completion_tokens": 304,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0016
+   },
+   {
+    "call": 15,
+    "node": 30,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 6.79,
+    "prompt_tokens_uncached": 2128,
+    "cached_input_tokens": 11687,
+    "completion_tokens": 271,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0017
+   },
+   {
+    "call": 16,
+    "node": 32,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 14.69,
+    "prompt_tokens_uncached": 14266,
+    "cached_input_tokens": 0,
+    "completion_tokens": 468,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.002
+   },
+   {
+    "call": 17,
+    "node": 34,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 1.64,
+    "prompt_tokens_uncached": 124,
+    "cached_input_tokens": 14734,
+    "completion_tokens": 165,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0016
+   },
+   {
+    "call": 18,
+    "node": 36,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 15.15,
+    "prompt_tokens_uncached": 4120,
+    "cached_input_tokens": 11687,
+    "completion_tokens": 435,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.002
+   },
+   {
+    "call": 19,
+    "node": 38,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 22.32,
+    "prompt_tokens_uncached": 2230,
+    "cached_input_tokens": 14208,
+    "completion_tokens": 525,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0022
+   },
+   {
+    "call": 20,
+    "node": 40,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 10.29,
+    "prompt_tokens_uncached": 33,
+    "cached_input_tokens": 16963,
+    "completion_tokens": 356,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.002
+   },
+   {
+    "call": 21,
+    "node": 42,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 4.88,
+    "prompt_tokens_uncached": 274,
+    "cached_input_tokens": 17352,
+    "completion_tokens": 423,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0022
+   },
+   {
+    "call": 22,
+    "node": 44,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 34.91,
+    "prompt_tokens_uncached": 270,
+    "cached_input_tokens": 18049,
+    "completion_tokens": 1265,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0031
+   },
+   {
+    "call": 23,
+    "node": 46,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 21.14,
+    "prompt_tokens_uncached": 7943,
+    "cached_input_tokens": 11687,
+    "completion_tokens": 1033,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0031
+   },
+   {
+    "call": 24,
+    "node": 48,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 18.37,
+    "prompt_tokens_uncached": 83,
+    "cached_input_tokens": 20663,
+    "completion_tokens": 830,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0029
+   },
+   {
+    "call": 25,
+    "node": 50,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 15.47,
+    "prompt_tokens_uncached": 79,
+    "cached_input_tokens": 21576,
+    "completion_tokens": 945,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0031
+   },
+   {
+    "call": 26,
+    "node": 52,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 11.95,
+    "prompt_tokens_uncached": 22679,
+    "cached_input_tokens": 0,
+    "completion_tokens": 920,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0034
+   },
+   {
+    "call": 27,
+    "node": 54,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 14.0,
+    "prompt_tokens_uncached": 120,
+    "cached_input_tokens": 23599,
+    "completion_tokens": 468,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0028
+   },
+   {
+    "call": 28,
+    "node": 56,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 7.33,
+    "prompt_tokens_uncached": 148,
+    "cached_input_tokens": 24187,
+    "completion_tokens": 486,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0029
+   },
+   {
+    "call": 29,
+    "node": 58,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 10.25,
+    "prompt_tokens_uncached": 376,
+    "cached_input_tokens": 24821,
+    "completion_tokens": 583,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0031
+   },
+   {
+    "call": 30,
+    "node": 60,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 7.7,
+    "prompt_tokens_uncached": 831,
+    "cached_input_tokens": 25780,
+    "completion_tokens": 334,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.003
+   },
+   {
+    "call": 31,
+    "node": 62,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 4.96,
+    "prompt_tokens_uncached": 163,
+    "cached_input_tokens": 26945,
+    "completion_tokens": 263,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.003
+   },
+   {
+    "call": 32,
+    "node": 64,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 22.78,
+    "prompt_tokens_uncached": 167,
+    "cached_input_tokens": 27371,
+    "completion_tokens": 843,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0036
+   },
+   {
+    "call": 33,
+    "node": 66,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 13.68,
+    "prompt_tokens_uncached": 64,
+    "cached_input_tokens": 28381,
+    "completion_tokens": 797,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0036
+   },
+   {
+    "call": 34,
+    "node": 68,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 25.63,
+    "prompt_tokens_uncached": 75,
+    "cached_input_tokens": 29242,
+    "completion_tokens": 767,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0037
+   },
+   {
+    "call": 35,
+    "node": 70,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 31.71,
+    "prompt_tokens_uncached": 67,
+    "cached_input_tokens": 30084,
+    "completion_tokens": 924,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0039
+   },
+   {
+    "call": 36,
+    "node": 72,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 23.09,
+    "prompt_tokens_uncached": 31271,
+    "cached_input_tokens": 0,
+    "completion_tokens": 900,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0043
+   },
+   {
+    "call": 37,
+    "node": 74,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 11.17,
+    "prompt_tokens_uncached": 648,
+    "cached_input_tokens": 32171,
+    "completion_tokens": 230,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0035
+   },
+   {
+    "call": 38,
+    "node": 76,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 11.51,
+    "prompt_tokens_uncached": 1262,
+    "cached_input_tokens": 33049,
+    "completion_tokens": 794,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0042
+   },
+   {
+    "call": 39,
+    "node": 78,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 37.07,
+    "prompt_tokens_uncached": 93,
+    "cached_input_tokens": 35105,
+    "completion_tokens": 2340,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0058
+   },
+   {
+    "call": 40,
+    "node": 80,
+    "model": "qwen/qwen3.6-35b-a3b",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 2.25,
+    "prompt_tokens_uncached": 29,
+    "cached_input_tokens": 37538,
+    "completion_tokens": 80,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0038
+   }
+  ],
+  "n_calls": 40,
+  "n_calls_without_usage": 0,
+  "billed_input_tokens": 758132,
+  "prompt_tokens_uncached": 101524,
+  "cached_input_tokens": 656608,
+  "completion_tokens": 18888,
+  "reasoning_tokens": 0,
+  "trace_num_input_tokens_counted_once": 18759,
+  "trace_num_output_tokens": 18888,
+  "trace_num_total_tokens_what_the_caps_see": 37647,
+  "price_usd_per_mtok": {
+   "input": 0.11,
+   "output": 1.01,
+   "cache_read": 0.099,
+   "source": "GET https://api.pinference.ai/api/v1/models (no credential sent)",
+   "fetched_unix": 1794393660
+  },
+  "cost_usd_with_cache_read_price": 0.095249,
+  "cost_usd_all_input_at_full_price": 0.102471,
+  "provider_reported_cost_usd": 0.0951,
+  "calls_with_provider_cost": 40,
+  "cost_usd_for_the_ledger": 0.102471,
+  "note": "the ledger takes the larger of: all billed input at the full input price plus output, and the provider's own cost field if it reports one. Calls without usage (errors) are counted but cannot be priced."
+ },
+ "wall_s": {
+  "boot": 1.6,
+  "setup": 19.7,
+  "agent": 643.3,
+  "finalize": 1.5,
+  "scoring": 0.0,
+  "verifier": 2.548537015914917,
+  "agent_split": {
+   "model": {
+    "duration": 451.41171073913574
+   },
+   "harness": {
+    "duration": 191.91114592552185
+   }
+  }
+ },
+ "lab": {
+  "ticks_used": 306,
+  "resets": 18,
+  "total_nats": 0.0,
+  "episodes": 18,
+  "requests": 39,
+  "rejected": 1,
+  "validations": 1,
+  "submissions": 0,
+  "submitted": false,
+  "infrastructure_errors": 0
+ },
+ "lab_requests_by_op": {
+  "card": {
+   "n": 1,
+   "ok": 1,
+   "rejected": 0,
+   "ticks": 0
+  },
+  "usage": {
+   "n": 1,
+   "ok": 1,
+   "rejected": 0,
+   "ticks": 0
+  },
+  "reset": {
+   "n": 17,
+   "ok": 17,
+   "rejected": 0,
+   "ticks": 17
+  },
+  "advance": {
+   "n": 17,
+   "ok": 17,
+   "rejected": 0,
+   "ticks": 272
+  },
+  "experiment": {
+   "n": 2,
+   "ok": 1,
+   "rejected": 1,
+   "ticks": 17
+  },
+  "validate": {
+   "n": 1,
+   "ok": 1,
+   "rejected": 0,
+   "ticks": 0
+  }
+ },
+ "submission": {
+  "source": "final_collection",
+  "ok": false,
+  "error": "submission has no predict.py",
+  "files": 0,
+  "bytes": 0,
+  "sha256": null
+ },
+ "verifier_box": {
+  "has_predict": false,
+  "network_restricted": true,
+  "writable_dirs": [
+   "/dev/mqueue",
+   "/dev/shm",
+   "/proc/acpi",
+   "/run/lock",
+   "/sys/firmware",
+   "/tmp",
+   "/var/tmp"
+  ],
+  "world_writable_paths_fixed": 0,
+  "owned_by_predictor_user_before": 0,
+  "predictor_uid": 35965,
+  "box_limits": {
+   "pids_max": "max",
+   "memory_max": "4294967296"
+  },
+  "container_evidence": [
+   "/.dockerenv",
+   "/proc/1/cgroup"
+  ]
+ },
+ "grade": {
+  "skill_vs_O": 0.0,
+  "n_items": 64,
+  "n_failed": 64,
+  "reason": "submission has no predict.py",
+  "isolation": null,
+  "item_boxes": null,
+  "item_box_wall_s_mean": null,
+  "infrastructure_failed_items": null,
+  "validation": null,
+  "layers": null,
+  "cpu_s_mean": null,
+  "cpu_s_max": null,
+  "seconds": null,
+  "verifier_wall_s": 2.548537015914917,
+  "L": 6.010414017323372,
+  "L_K": 6.010414017323372,
+  "L_O": 3.970665499644094
+ },
+ "network_restricted": true,
+ "single_use": true,
+ "item_isolation": "box",
+ "agent_key": "qwen/qwen3.6-35b-a3b|bash",
+ "agent_box_cpu_s_unverified": 163.692,
+ "table_one_instance": {
+  "what": "evaluator.grader.table on this one instance: L = mean energy score over the 64 items (sum over valid cells); vs_O = (L_K - L) / (L_K - L_O), vs_C = (L_K - L) / (L_K - L_C). AGENT = the model. Reference policies were graded with all items in one verifier box (prove.py), the model with one fresh box per item; prove.py's box check shows the two modes give identical per-item scores for the same files.",
+  "policies": {
+   "O": {
+    "L": 3.970665499644094,
+    "vs_C": 1.0725218986918867,
+    "vs_O": 1.0
+   },
+   "K": {
+    "L": 6.010414017323372,
+    "vs_C": 0.0,
+    "vs_O": 0.0
+   },
+   "S": {
+    "L": 4.120425210934663,
+    "vs_C": 0.9937766178355706,
+    "vs_O": 0.9265793258372078
+   },
+   "D": {
+    "L": 5.059578662777425,
+    "vs_C": 0.499959544503682,
+    "vs_O": 0.4661532273732249
+   },
+   "P0": {
+    "L": 4.344602329510989,
+    "vs_C": 0.87590185691538,
+    "vs_O": 0.8166750329141842
+   },
+   "PM": {
+    "L": 4.3866620848480515,
+    "vs_C": 0.853786381276282,
+    "vs_O": 0.7960549638358079
+   },
+   "C": {
+    "L": 4.108589429716275,
+    "vs_C": 1.0,
+    "vs_O": 0.9323818946910651
+   },
+   "null": {
+    "L": 6.091222615812622,
+    "vs_C": -0.042490037733146004,
+    "vs_O": -0.039616941887125515
+   },
+   "AGENT": {
+    "L": 6.010414017323372,
+    "vs_C": 0.0,
+    "vs_O": 0.0
+   }
+  },
+  "valid_cells": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cells": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    1,
+    8
+   ],
+   [
+    1,
+    16
+   ],
+   [
+    2,
+    16
+   ],
+   [
+    2,
+    32
+   ]
+  ],
+  "oes_per_cell": {
+   "climatology": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oracle": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "S": [
+    0.9409136486963673,
+    0.9329470515002029,
+    0.9303704416774804,
+    0.9172018180351891,
+    0.9240321200746233,
+    0.9444858481142576,
+    0.7170729787749726
+   ],
+   "D": [
+    0.8854573361985787,
+    0.7761798384075099,
+    0.5817494578947012,
+    0.5548156267948119,
+    -0.16257273463879515,
+    0.07463293670963843,
+    -4.093560402992691
+   ],
+   "P0": [
+    0.9309807711951386,
+    0.9073042761152487,
+    0.8939204256441297,
+    0.7617497406912791,
+    0.5799604864398412,
+    0.5562325945036276,
+    0.23230195032682224
+   ],
+   "PM": [
+    0.9295604454368183,
+    0.9034873565471301,
+    0.890264672398085,
+    0.7399190007885239,
+    0.5087113800438394,
+    0.5248453767642803,
+    -0.0568489265681924
+   ],
+   "C": [
+    0.9422315207555672,
+    0.9350723420365746,
+    0.93264823508442,
+    0.9220370037143856,
+    0.9437647822429477,
+    0.9607733535528927,
+    0.754631721528939
+   ],
+   "null": [
+    -0.007434685297472281,
+    -0.04089409871449251,
+    -0.023902331105806657,
+    -0.0652024071612446,
+    -0.07393903343941738,
+    -0.11580677235680743,
+    0.035280146832640476
+   ],
+   "AGENT": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "oes_by_program_class": {
+   "a": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.951518402999083,
+    "D": -0.3300083762173349,
+    "P0": 0.7517042966245183,
+    "PM": 0.6573698739808,
+    "C": 0.9511984956528027,
+    "null": -0.0296516414877603,
+    "AGENT": 0.0
+   },
+   "b": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.8325638905416849,
+    "D": -0.6155407951377535,
+    "P0": 0.57708441570951,
+    "PM": 0.469348014015344,
+    "C": 0.853651155069672,
+    "null": 0.026360856378289364,
+    "AGENT": 0.0
+   },
+   "c": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.8257319565203176,
+    "D": -0.8498165647943948,
+    "P0": 0.6353322205927008,
+    "PM": 0.6299615702598976,
+    "C": 0.8381570610190066,
+    "null": -0.0699509551189544,
+    "AGENT": 0.0
+   },
+   "d": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.942951621839079,
+    "D": 0.21294698306552431,
+    "P0": 0.7425536175322185,
+    "PM": 0.6865189488482946,
+    "C": 0.9557633984428452,
+    "null": -0.06149914576124467,
+    "AGENT": 0.0
+   }
+  },
+  "policy_labels": {
+   "K": "long-run average of the hidden world (climatology pool)",
+   "D": "ridge fitted to the real episodes the budget allows",
+   "P0": "ridge trained on simulations at prior draws",
+   "PM": "ridge trained on simulations at the prior mean",
+   "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+   "C": "ridge trained on simulations at the true parameters",
+   "O": "oracle: replicate futures from the hidden state (leave one out)",
+   "null": "null agent: prior-predictive long-run law, no history, no program"
+  }
+ },
+ "noise_one_instance_bootstrap_over_items": {
+  "n_items": 64,
+  "n_boot": 4000,
+  "skill_vs_O": {
+   "point": 0.0,
+   "se": 0.0,
+   "p05": 0.0,
+   "p95": 0.0
+  },
+  "skill_vs_C": {
+   "point": 0.0,
+   "se": 0.0,
+   "p05": 0.0,
+   "p95": 0.0
+  },
+  "mean_loss_minus_reference": {
+   "K": {
+    "point": 0.0,
+    "p05": 0.0,
+    "p95": 0.0,
+    "share_of_resamples_agent_better": 0.0
+   },
+   "O": {
+    "point": 2.039748517679278,
+    "p05": 1.7858880509750392,
+    "p95": 2.299578483252026,
+    "share_of_resamples_agent_better": 0.0
+   },
+   "S": {
+    "point": 1.8899888063887094,
+    "p05": 1.6410749719242936,
+    "p95": 2.1469765585202243,
+    "share_of_resamples_agent_better": 0.0
+   },
+   "D": {
+    "point": 0.9508353545459469,
+    "p05": 0.7051019577636746,
+    "p95": 1.1983561735087163,
+    "share_of_resamples_agent_better": 0.0
+   },
+   "P0": {
+    "point": 1.6658116878123828,
+    "p05": 1.4421559099787855,
+    "p95": 1.896361151083969,
+    "share_of_resamples_agent_better": 0.0
+   },
+   "PM": {
+    "point": 1.6237519324753205,
+    "p05": 1.4084557898839993,
+    "p95": 1.8439042818237186,
+    "share_of_resamples_agent_better": 0.0
+   },
+   "C": {
+    "point": 1.9018245876070967,
+    "p05": 1.6514582940078029,
+    "p95": 2.1607835326595373,
+    "share_of_resamples_agent_better": 0.0
+   },
+   "null": {
+    "point": -0.08080859848925037,
+    "p05": -0.16072296652773121,
+    "p95": -0.0022632202307907687,
+    "share_of_resamples_agent_better": 0.95375
+   }
+  }
+ },
+ "agent_items_failed": 64,
+ "reference_box_check": {
+  "C": {
+   "graded": true,
+   "trace_id": "b3944fd17345423fa3da16b9665d802e",
+   "n_failed": 0,
+   "identical_per_item_scores": true,
+   "max_abs_difference": 0.0,
+   "reward_box": 0.9323818946910651,
+   "reward_shared": 0.9323818946910651,
+   "same_frozen_files": true,
+   "grade": {
+    "isolation": "box",
+    "item_boxes": 64,
+    "item_boxes_parallel": 1,
+    "item_box_wall_s_mean": 4.7619562447071075,
+    "item_boxes_cpu_s": 69.87859013299997,
+    "infrastructure_failed_items": 0,
+    "seconds": 307.3803298473358,
+    "layers": {
+     "rlimits": true,
+     "uid": 22621,
+     "cleanup": true
+    },
+    "validation": {
+     "ok": true,
+     "cpu_s_per_request": 0.284573
+    }
+   },
+   "wall_s": {
+    "boot": 1.2695212364196777,
+    "setup": 9.266090869903564,
+    "agent": 3.8799920082092285,
+    "finalize": 0.14925193786621094,
+    "verifier": 310.685510635376,
+    "total": 325.25036668777466
+   },
+   "cpu_s": {
+    "agent_box_unverified": 2.66826,
+    "verifier_box": 2.10556,
+    "item_boxes": 69.87859013299997,
+    "worker_in_reward": 3.043948996000001
+   },
+   "vf_eval_wall_s": 340.9262409210205,
+   "vf_eval_host_cpu_s": 65.045559,
+   "shared_grade_seconds": 51.39713644981384
+  }
+ },
+ "hidden_parameters_of_this_pilot_instance": {
+  "PILOT_NEVER_REUSE_AS_EXAM": true,
+  "theta_names": [
+   "D",
+   "gamma",
+   "c"
+  ],
+  "theta": [
+   0.23110041848987856,
+   0.03442612471405568,
+   0.21734041165456502
+  ],
+  "world": "ring",
+  "note": "the hidden parameters the agent had to learn; public only because this instance is pilot material"
+ },
+ "hidden_values_counted_in_the_run_folder": {
+  "needles": 4,
+  "files": 4,
+  "hits": 0,
+  "what": "the secret and the first ten characters of each hidden parameter, counted in every file of vf-eval's run folder"
+ },
+ "credential_like_fields_removed_from_the_raw_trace": [
+  "/traces[]/agent/config/client/api_key_var",
+  "/traces[]/agent/config/client/headers/X-Prime-Team-ID",
+  "resolved_config/client/api_key_var",
+  "resolved_config/client/headers/X-Prime-Team-ID"
+ ],
+ "extracted_unix": 1794395619.2851381
+}

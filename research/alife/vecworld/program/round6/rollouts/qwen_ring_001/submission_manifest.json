@@ -1,0 +1,19 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "source": "agent box (the watcher's last copy before the box was removed)",
+ "container": "vf-356e05b00a57468dac0101dfc3db1049",
+ "tar_bytes": 1536,
+ "copied_unix": 1794395521.2619147,
+ "files": [],
+ "skipped": [],
+ "bytes": 0,
+ "frozen_manifest_of_the_laboratory": null,
+ "collection_recorded_in_the_trace": {
+  "source": "final_collection",
+  "ok": false,
+  "error": "submission has no predict.py",
+  "files": 0,
+  "bytes": 0,
+  "sha256": null
+ }
+}

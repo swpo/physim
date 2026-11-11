@@ -1,0 +1,18 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "note": "every file of this folder is pilot material of instance pilot-qwen-ring-001-r2-w0; files that cannot carry the marker themselves (the model's own files under submission/, the npz, copies) are covered by this manifest.",
+ "files": {
+  "lab_record.json": "text",
+  "model_entry.json": "copy",
+  "per_item_scores.json": "text",
+  "reference/proof_pilot.json": "reference table of tools/prove.py (scores, counters, commitments; no hidden value)",
+  "reference/proof_pilot_items.npz": "reference table of tools/prove.py (scores, counters, commitments; no hidden value)",
+  "resolved_config/eval.toml": "copy of vf-eval's resolved config (credential-like fields removed)",
+  "resolved_config/resolved/eval.json": "copy of vf-eval's resolved config (credential-like fields removed)",
+  "result.json": "text",
+  "submission_manifest.json": "text",
+  "timeline.jsonl": "copy",
+  "trace.redacted.jsonl": "text",
+  "transcript.md": "text"
+ }
+}
