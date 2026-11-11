@@ -32,3 +32,8 @@
   delta-method SE; rho at 2 episodes SE 0.11-0.27 over 8 worlds (undefined in n8|object). Expected SE of sigma per
   design in [design_expectations]; seed term 0.034 per training is an estimate from one round-5 pair.
 - Step 3 (next): write CRITIQUE.md (< 900 words), commit, push, remove worktree and scratch.
+- Step 3 done: CRITIQUE.md written (under 900 words by `wc -w`). Every number in it is either from a round-5
+  checker block, from the three DESIGN.md files, or from results/se_check.json (keys named in the text).
+  Derived by hand, not run: sigma_c "about 0.01 and 0.37" = (0.454 - 0.448) / 0.454 and (0.454 - 0.287) / 0.454
+  from compute_limit's transfer table; "0.5-1.3 SE" = 0.2 / (0.38, 0.16); "about $3" = twice stage 1's $1.5.
+- Finished: worktree and scratch removed after the last push.
