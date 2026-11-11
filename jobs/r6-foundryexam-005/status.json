@@ -9,11 +9,17 @@
       "at": "2026-11-11T15:33:25Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-11T15:33:45Z",
+      "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
+      "state": "queued"
     }
   ],
   "job_id": "r6-foundryexam-005",
-  "message": "request received",
+  "max_estimate_usd": null,
+  "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-11T15:33:25Z"
+  "state": "queued",
+  "updated_at": "2026-11-11T15:33:45Z"
 }
