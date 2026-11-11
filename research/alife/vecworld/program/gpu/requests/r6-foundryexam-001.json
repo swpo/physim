@@ -1,0 +1,37 @@
+{
+ "schema": "gpu-job/v1",
+ "job_id": "r6-foundryexam-001",
+ "purpose": "Round-6 study foundryexam: exam pilot where the hidden law is a network's weights (foundry transport automaton); reference policies K, O, C, P0, amortised S(N), fine-tuned P0, D(N), ridge on 16 screened-prior worlds and 2 x 12 neighbourhood worlds (eps 0.3, 0.1)",
+ "requester": "cloud study foundryexam (round 6), session_01BZceC7G6m7DgM6KpXjnWXj",
+ "paths": [
+  "research/alife/vecworld/vw1",
+  "research/alife/vecworld/program/round5/foundry",
+  "research/alife/vecworld/program/round5/agentenv/evaluator",
+  "research/alife/vecworld/program/round6/foundryexam"
+ ],
+ "gpu": {
+  "types": [
+   "A100_40GB",
+   "A100_80GB"
+  ],
+  "count": 1,
+  "spot": false
+ },
+ "max_hours": 3.25,
+ "cap_usd": 8.4,
+ "setup": [
+  "curl -LsSf https://astral.sh/uv/install.sh | sh",
+  "export PATH=$HOME/.local/bin:$PATH",
+  "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+  "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+ ],
+ "run": "cd research/alife/vecworld/program/round6/foundryexam && bash job.sh",
+ "env": {
+  "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+  "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+  "FX_SIZE": "full",
+  "FX_MAX_HOURS": "3.0",
+  "FX_ARMS": "P,N30,N10"
+ },
+ "notes": "PILOT ONLY: every hidden world is a public function of public seeds and its weights are written to $OUT; nothing here is ever an exam. Design, criteria and thresholds were committed before this request (round6/foundryexam/DESIGN.md, commits 82b655c98, f6cc4efb7, 787de8679 on the branch). job.sh: (1) presmoke, run_fx.py --size presmoke --arms P,N30: every stage once at the full job's shapes (simulation chunk 2048 members, Lab chunk 128, 32 items x 12 futures, plug-ins 256 members, net batches 128 x 4 and 256 x 4) with 2 + 1 hidden worlds and 20-60 training steps, plus shape_test(): 16 nets in lockstep on 1,536-episode data sets and 2 shared nets on a 25,600-episode data set (noise data, 12 steps and a validation pass each); exit 2 within about 10-15 minutes on any failure; (2) the full pass, whose time limit is 3.0 h minus the time the presmoke took (job.sh counts from its own start; the request's 3.25 h leaves 0.25 h for setup and collection). Full pass: exam-time gate of 416 pool worlds and 480 neighbour candidates (8 members x 332 ticks); arm P (16 hidden worlds of the screened prior, about 150-250 training worlds x 64 episodes), arms N30 and N10 (3 centres x 4 hidden neighbours, up to 32 training neighbours x 64 episodes each). Per hidden world: a Lab of 512 exam-mix episodes and a vw.harness.HistoryExam (32 items, 12 futures, 96 climatology runs) on the hidden vw.World, 6 plug-in simulators, a ridge; 1,536 simulated episodes at the true weights. Nets (float32, 3 x 3 convolutions as matmuls, 48 channels): per arm 6 + 2 shared nets (12,000 or 4,000 steps), and per hidden world 2 C + 2 fine-tuned C + 6 D + 6 fine-tuned P0, trained in lockstep groups of 16 (or 12) with one compiled shape per kind (data sets padded). About 42 million member-ticks of the 64 x 64 two-kind automaton (r5-foundry-001 measured 74,700 member-ticks/s on an H100; an A100 is taken as 2.5 times slower: about 25 minutes) and about 1.5 million net-steps (r5-ladder-002 measured 2.3-2.8 ms per net-step for this trunk on the A100: about 65 minutes); expected 1.8-2.2 h in all. Size guards: fx_lib.Runner refuses a chunk whose largest substep array passes 2^30 elements (at 2048 members it is 1.3e8); fx_net.check_elems refuses any training step, validation chunk (lax.map, 128 rows x 8 draws of one net) or sampling call whose largest intermediate passes 2^30 (largest: 16 nets x 512 samples x 64 blocks x 936 = 4.9e8); every device data array is asserted below 2^31 (largest: 16 x 1,536 x 33 x 192 = 1.6e8). Data sets are arguments of the jitted functions, never closed over. Memory: simulation about 3 MiB per member (review of r5-foundry-001: 19 GiB for about 6,900 members) so about 6 GiB per chunk; nets about 4-6 GiB. XLA_PYTHON_CLIENT_ALLOCATOR=platform because the job alternates simulation and training temporaries on a 40 GB card. Deadlines inside the script: arms run in the order P, N30, N10 with 45% / 27% / 27% of the time left; each training group stops at its next validation after the arm's deadline and later groups are skipped (recorded in info.json: skipped); N10 is the declared first casualty. A failure in one group of nets or one policy is recorded and does not stop the rest; exit 1 if anything failed. $OUT: progress.txt, per arm scores.npz (fair energy score per item, cell and policy), items.npz, meta.json, train_info.json (validation curves), worlds.json (hidden weights, marked PILOT), gate.json, info.json: about 15 MB, every file below 20 MB. The noise secret (os.urandom, 256 bits) is never written. No network or subprocess use outside setup. Cap: $2.35/h (A100 80GB) x (3.25 + 0.25) h = $8.23, rounded up plus $0.10 = $8.40. CPU test at commit 787de8679 (the code of this request; the later commit adds this file, a progress note and the time bookkeeping of job.sh's GPU branch; job.sh was rerun from the archive of that commit with FX_SIZE=smoke FX_ARMS=P, exit 0): job.sh with FX_SIZE=smoke from a git archive of exactly these four paths, all three arms, exit 0, failed [], skipped [] (8.4 minutes), and make_summary.py on its outputs."
+}

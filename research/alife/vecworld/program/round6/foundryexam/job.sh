@@ -10,7 +10,8 @@ PY=${PY:-python}
 mkdir -p "$OUT"
 export PYTHONDONTWRITEBYTECODE=1
 SIZE=${FX_SIZE:-full}
-HOURS=${FX_MAX_HOURS:-2.5}
+HOURS=${FX_MAX_HOURS:-3.0}          # for the whole of job.sh (presmoke + full pass)
+T_START=$(date +%s)
 ARMS=${FX_ARMS:-P,N30,N10}
 P() { echo "$(date +%T) [job.sh] $*" | tee -a "$OUT/progress.txt"; }
 echo "PILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material" > "$OUT/progress.txt"
@@ -23,11 +24,13 @@ if [ "$SIZE" = "smoke" ]; then
   P "smoke exit $RC"
   exit $RC
 fi
-$PY -B run_fx.py --size presmoke --arms P,N30 --out "$OUT/presmoke" --max-hours 0.4
+$PY -B run_fx.py --size presmoke --arms P,N30 --out "$OUT/presmoke" --max-hours 0.75
 RC=$?
 P "presmoke exit $RC"
 if [ $RC -ne 0 ]; then tail -40 "$OUT/presmoke/progress.txt"; exit 2; fi
-$PY -B run_fx.py --size full --arms "$ARMS" --out "$OUT/full" --max-hours "$HOURS"
+LEFT=$(awk -v h="$HOURS" -v t0="$T_START" -v t1="$(date +%s)" 'BEGIN { printf "%.3f", h - (t1 - t0) / 3600.0 }')
+P "full pass: $LEFT h left of $HOURS"
+$PY -B run_fx.py --size full --arms "$ARMS" --out "$OUT/full" --max-hours "$LEFT"
 RC=$?
 P "full exit $RC; OUT size $(du -sh "$OUT" | cut -f1)"
 exit $RC
