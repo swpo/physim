@@ -1,0 +1,174 @@
+16:37:57 job: start size=full nproc=16 limit=10800s
+16:42:05 presmoke ok wall 244s rate 578 member-ticks/s with compiles, 682 compiled; planned 5822544
+16:42:05 job: scans: 15 processes, 16 at a time, 10552 s left
+16:42:09 gate s5_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges none (alignm
+16:42:49 scanV DS_x1.2: viable 8/8 headroom +0.230
+16:42:50 scanV DS_x0.8: viable 4/8 headroom +0.364
+16:42:50 scanV DK_x0.8: viable 8/8 headroom -0.003
+16:42:51 scanV DS_x0.9: viable 6/8 headroom +0.046
+16:42:51 scanV default: viable 8/8 headroom +0.003
+16:42:51 scanV DK_x0.9: viable 8/8 headroom -0.003
+16:42:51 scanV DS_x1.1: viable 8/8 headroom +0.066
+16:43:08 scanV DL_x1.1: viable 8/8 headroom +0.005
+16:43:09 scanV DL_x1.2: viable 8/8 headroom +0.009
+16:43:09 scanV DK_x1.2: viable 8/8 headroom +0.005
+16:43:10 scanV DL_x0.8: viable 8/8 headroom +0.013
+16:43:10 scanV DL_x0.9: viable 8/8 headroom +0.006
+16:43:10 scanV DK_x1.1: viable 8/8 headroom +0.007
+16:43:10 scanV Dp_x0.8: viable 8/8 headroom +0.438
+16:43:29 scanV r_x0.9: viable 8/8 headroom +0.083
+16:43:29 scanV Dp_x0.9: viable 8/8 headroom +0.150
+16:43:30 scanV r_x1.1: viable 8/8 headroom +0.078
+16:43:30 scanV Dp_x1.1: viable 8/8 headroom +0.098
+16:43:30 scanV r_x0.8: viable 8/8 headroom +0.292
+16:43:30 scanV r_x1.2: viable 8/8 headroom +0.161
+16:43:30 scanV Dp_x1.2: viable 7/8 headroom +0.354
+16:43:41 scanV a_x1.2: viable 1/8 headroom +nan
+16:43:42 scanV a_x1.1: viable 3/8 headroom +0.124
+16:43:46 scanC a0_0.04: focus cells 15/16 gaps none +0.107 blind +0.117 aimed +0.228
+16:43:47 scanV th_x0.8: viable 0/8 headroom +nan
+16:43:48 scanC centre: focus cells 15/16 gaps none +0.130 blind +0.142 aimed +0.364
+16:43:48 scanC rho_0.005: focus cells 15/16 gaps none -0.002 blind +0.025 aimed +0.411
+16:43:48 scanV a_x0.8: viable 8/8 headroom +0.220
+16:43:48 scanV a_x0.9: viable 8/8 headroom +0.014
+16:43:49 scanC a0_0.025: focus cells 15/16 gaps none +0.213 blind +0.223 aimed +0.420
+16:43:49 scanC a0_0.05: focus cells 15/16 gaps none +0.093 blind +0.101 aimed +0.219
+16:43:49 scanC a0_0.02: focus cells 15/16 gaps none +0.297 blind +0.304 aimed +0.495
+16:43:49 scanC rho_0.01: focus cells 15/16 gaps none -0.004 blind +0.017 aimed +0.305
+16:43:49 scanV th_x0.9: viable 3/8 headroom +0.851
+16:43:49 scanV th_x1.1: viable 5/8 headroom +0.779
+16:43:52 gate s5_main base runs done: lab states [0, 1, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 268 member-ticks/s
+16:43:53 scanV F_x0.9: viable 3/8 headroom +0.360
+16:43:54 scanC rho_0.04: focus cells 0/16 gaps none +nan blind +nan aimed +nan
+16:43:55 scanC rho_0.08: focus cells 0/16 gaps none +nan blind +nan aimed +nan
+16:43:59 scanV th_x1.2: viable 0/8 headroom +nan
+16:43:59 scanV F_x0.8: viable 1/8 headroom +nan
+16:43:59 scanV F_x1.1: viable 8/8 headroom +0.964
+16:44:05 scanV F_x1.2: viable 0/8 headroom +nan
+16:44:06 scanV c_x0.8: viable 8/8 headroom +0.200
+16:44:06 scanV c_x0.9: viable 8/8 headroom +0.034
+16:44:08 scanV c_x1.2: viable 4/8 headroom +0.162
+16:44:09 scanV b_x0.8: viable 1/8 headroom +nan
+16:44:15 scanV c_x1.1: viable 7/8 headroom +0.028
+16:44:16 scanV b_x0.9: viable 7/8 headroom +0.273
+16:44:22 scanV b_x1.1: viable 4/8 headroom +0.395
+16:44:23 scanV b_x1.2: viable 2/8 headroom +nan
+16:44:23 scanV dK_x0.8: viable 6/8 headroom +1.106
+16:44:25 scanV dK_x1.1: viable 8/8 headroom +0.461
+16:44:26 scanV dK_x1.2: viable 8/8 headroom +0.821
+16:44:31 scanV dK_x0.9: viable 7/8 headroom +0.286
+16:44:32 scanV dL_x0.8: viable 0/8 headroom +nan
+16:44:32 scanV dL_x1.2: viable 0/8 headroom +nan
+16:44:38 scanV dL_x0.9: viable 7/8 headroom +0.737
+16:44:39 scanV dL_x1.1: viable 5/8 headroom +0.575
+16:44:40 scanV chi_x0.9: viable 8/8 headroom +0.026
+16:44:41 scanV chi_x1.1: viable 8/8 headroom +0.017
+16:44:45 scanV chi_x0.8: viable 8/8 headroom +0.112
+16:44:46 scanV chi_x1.2: viable 7/8 headroom +0.066
+16:44:48 scanC DX_0.1: focus cells 15/16 gaps none +0.006 blind +0.008 aimed +0.167
+16:44:49 scanC DX_0.35: focus cells 15/16 gaps none +0.006 blind +0.009 aimed +0.179
+16:44:49 scanC DX_0.05: focus cells 15/16 gaps none +0.005 blind +0.009 aimed +0.165
+16:44:50 scanC DX_0.2: focus cells 15/16 gaps none +0.006 blind +0.008 aimed +0.171
+16:45:25 gate s5_main A_act done (39 grid points)
+16:45:25 align: max |dL| over pub, pub0, O against the designer's file 0; G2 by horizon [0.91, 0.87, 0.656, -0.139] (adversary [0.91, 0.871, 0.656, -0.454]); A_act [0.947, 0.893, 0.81, 0.066] (adversary [0.883, 0.821, 0.689, 0.06])
+16:45:27 ranges.json sha256 f6784d4ccb4d3985d619c65a3c5ca97c45731576b9e2459f4c31132e606eefe2 hidden set ['dK', 'Dp', 'r', 'chi'] ranges {"a0": [0.03, 0.03], "rho": [0.02, 0.02], "DX": [0.5, 0.5]} failed {"a0": true, "rho": true, "DX": true}
+16:45:27 job: ranges.sha256: f6784d4ccb4d3985d619c65a3c5ca97c45731576b9e2459f4c31132e606eefe2  ranges.json
+16:45:27 job: gate: 16 processes, 16 at a time, 10350 s left
+16:45:30 gate s35_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:30 gate s32_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:30 gate s33_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:30 gate s35_control start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s31_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s36_control start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s32_control start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s37_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s34_control start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s33_control start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s34_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s37_control start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s38_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s38_control start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s36_main start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:45:31 gate s31_control start truth {"rho": 0.02, "DX": 0.5, "a0": 0.03} ranges f6784d4ccb4d
+16:47:07 gate s36_main base runs done: lab states [0, 1, 2, 3, 5, 6, 7] test states [8, 9, 11, 12, 13, 15] items 24 rate 240 member-ticks/s
+16:47:08 gate s36_control base runs done: lab states [0, 1, 2, 3, 5, 6, 7] test states [8, 9, 11, 12, 13, 15] items 24 rate 238 member-ticks/s
+16:47:08 gate s33_control base runs done: lab states [0, 1, 2, 4, 5, 6, 7] test states [8, 10, 11, 12, 13, 15] items 24 rate 237 member-ticks/s
+16:47:08 gate s33_main base runs done: lab states [0, 1, 2, 4, 5, 6, 7] test states [8, 10, 11, 12, 13, 15] items 24 rate 236 member-ticks/s
+16:47:20 gate s31_control base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 14, 15] items 28 rate 232 member-ticks/s
+16:47:20 gate s32_main base runs done: lab states [0, 1, 2, 3, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 252 member-ticks/s
+16:47:20 gate s37_control base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 12, 13, 14, 15] items 28 rate 232 member-ticks/s
+16:47:20 gate s34_main base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 252 member-ticks/s
+16:47:20 gate s38_main base runs done: lab states [0, 1, 2, 3, 4, 5] test states [9, 10, 11, 12, 13, 14, 15] items 28 rate 231 member-ticks/s
+16:47:20 gate s32_control base runs done: lab states [0, 1, 2, 3, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 252 member-ticks/s
+16:47:21 gate s31_main base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 14, 15] items 28 rate 231 member-ticks/s
+16:47:21 gate s37_main base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 12, 13, 14, 15] items 28 rate 231 member-ticks/s
+16:47:21 gate s35_main base runs done: lab states [0, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 251 member-ticks/s
+16:47:21 gate s34_control base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 251 member-ticks/s
+16:47:21 gate s38_control base runs done: lab states [0, 1, 2, 3, 4, 5] test states [9, 10, 11, 12, 13, 14, 15] items 28 rate 230 member-ticks/s
+16:47:21 gate s35_control base runs done: lab states [0, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 250 member-ticks/s
+16:49:10 gate s33_control A_act done (39 grid points)
+16:49:10 gate s36_control A_act done (39 grid points)
+16:49:10 gate s33_main A_act done (39 grid points)
+16:49:10 gate s36_main A_act done (39 grid points)
+16:49:27 gate s32_main A_act done (39 grid points)
+16:49:27 gate s32_control A_act done (39 grid points)
+16:49:27 gate s31_control A_act done (39 grid points)
+16:49:27 gate s37_main A_act done (39 grid points)
+16:49:27 gate s38_control A_act done (39 grid points)
+16:49:28 gate s38_main A_act done (39 grid points)
+16:49:43 gate s34_main A_act done (39 grid points)
+16:49:44 gate s37_control A_act done (39 grid points)
+16:49:44 gate s34_control A_act done (39 grid points)
+16:49:44 gate s35_main A_act done (39 grid points)
+16:49:44 gate s31_main A_act done (39 grid points)
+16:49:45 gate s35_control A_act done (39 grid points)
+16:57:09 gate s33_main H done (48 + 24 points per view)
+16:57:23 gate s33_control H done (48 + 24 points per view)
+16:57:25 gate s36_control H done (48 + 24 points per view)
+16:57:28 gate s36_main H done (48 + 24 points per view)
+16:57:49 gate s35_main H done (48 + 24 points per view)
+16:57:51 gate s31_control H done (48 + 24 points per view)
+16:57:51 gate s32_main H done (48 + 24 points per view)
+16:57:51 gate s32_control H done (48 + 24 points per view)
+16:57:52 gate s38_main H done (48 + 24 points per view)
+16:57:53 gate s37_main H done (48 + 24 points per view)
+16:57:53 gate s38_control H done (48 + 24 points per view)
+16:58:06 gate s34_main H done (48 + 24 points per view)
+16:58:07 gate s34_control H done (48 + 24 points per view)
+16:58:09 gate s35_control H done (48 + 24 points per view)
+16:58:10 gate s37_control H done (48 + 24 points per view)
+16:58:11 gate s31_main H done (48 + 24 points per view)
+16:59:52 gate s33_main stand-in done (36 items)
+16:59:52 gate s33_main DONE wall 861s member-ticks 271840 pick A_act heaviest 11 (0.60)
+17:00:05 gate s33_control stand-in done (36 items)
+17:00:05 gate s33_control DONE wall 874s member-ticks 276448 pick A_act heaviest 11 (0.23)
+17:00:07 gate s36_control stand-in done (36 items)
+17:00:07 gate s36_control DONE wall 877s member-ticks 276448 pick A_act heaviest 9 (0.50)
+17:00:10 gate s36_main stand-in done (36 items)
+17:00:10 gate s36_main DONE wall 879s member-ticks 276448 pick A_act heaviest 9 (0.51)
+17:00:54 gate s38_main stand-in done (42 items)
+17:00:54 gate s38_main DONE wall 923s member-ticks 289504 pick A_act heaviest 9 (0.64)
+17:00:54 gate s38_control stand-in done (42 items)
+17:00:54 gate s38_control DONE wall 924s member-ticks 289504 pick A_act heaviest 14 (0.35)
+17:01:13 gate s31_control stand-in done (42 items)
+17:01:13 gate s31_control DONE wall 942s member-ticks 298720 pick A_act heaviest 8 (0.22)
+17:01:13 gate s37_main stand-in done (42 items)
+17:01:13 gate s37_main DONE wall 943s member-ticks 298720 pick A_act heaviest 9 (0.26)
+17:01:25 gate s37_control stand-in done (42 items)
+17:01:25 gate s37_control DONE wall 955s member-ticks 304096 pick G3 heaviest 9 (0.20)
+17:01:27 gate s31_main stand-in done (42 items)
+17:01:27 gate s31_main DONE wall 956s member-ticks 304096 pick A_act heaviest 10 (0.51)
+17:01:30 gate s35_main stand-in done (48 items)
+17:01:30 gate s35_main DONE wall 959s member-ticks 313056 pick A_act heaviest 8 (0.29)
+17:01:31 gate s32_control stand-in done (48 items)
+17:01:31 gate s32_control DONE wall 960s member-ticks 313056 pick A_act heaviest 12 (0.26)
+17:01:31 gate s32_main stand-in done (48 items)
+17:01:31 gate s32_main DONE wall 961s member-ticks 313056 pick A_act heaviest 10 (0.49)
+17:01:40 gate s35_control stand-in done (48 items)
+17:01:40 gate s35_control DONE wall 970s member-ticks 319200 pick A_act heaviest 13 (0.22)
+17:01:44 gate s34_main stand-in done (48 items)
+17:01:44 gate s34_main DONE wall 973s member-ticks 324448 pick A_act heaviest 10 (0.30)
+17:01:44 gate s34_control stand-in done (48 items)
+17:01:44 gate s34_control DONE wall 974s member-ticks 324448 pick A_act heaviest 13 (0.25)
+17:01:49 analysis: verdict CLOSE CALL (plan's point rule: NO-GO) C1=0.482[holds clearly] C2=0.664[close] C3=0.784[close] C4=0.599[close] C5=-0.087[fails clearly]
+17:01:49 job: done in 1432 s; $OUT is 2 MB

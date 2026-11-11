@@ -1,0 +1,75 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "scan": "V",
+ "point": "th_x1.2",
+ "param": "th",
+ "factor": 1.2,
+ "members": 8,
+ "R": 4,
+ "value": 0.18,
+ "cells_at_T0": [
+  0,
+  2,
+  0,
+  0,
+  0,
+  0,
+  1,
+  0
+ ],
+ "area_at_T0": [
+  0.0,
+  0.01584991360137724,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.02945102549900945,
+  0.0
+ ],
+ "finite": [
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true
+ ],
+ "horizons_pooled": [
+  8,
+  16,
+  32
+ ],
+ "cells_at_32_no_input": [
+  [
+   2,
+   2,
+   2,
+   2
+  ],
+  [
+   0,
+   0,
+   0,
+   0
+  ]
+ ],
+ "area_at_32_no_input": [
+  [
+   0.06129189433936734,
+   0.06444457694201067,
+   0.062258931863854915,
+   0.0670590204102427
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ ],
+ "viable_members": 0,
+ "viable": false
+}

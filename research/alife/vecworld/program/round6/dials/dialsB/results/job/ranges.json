@@ -1,0 +1,582 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "carrier_ranges": {
+  "DX": {
+   "range": [
+    0.5,
+    0.5
+   ],
+   "rows": [
+    {
+     "admissible": true,
+     "effective": true,
+     "gap_aimed": 0.1648915839175629,
+     "gap_blind": 0.00865134847362326,
+     "gap_none": 0.0047456120650436395,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.0239222876219109,
+     "se_blind": 0.008656428690592528,
+     "se_none": 0.004054705726884028,
+     "silent": true,
+     "value": 0.05
+    },
+    {
+     "admissible": true,
+     "effective": true,
+     "gap_aimed": 0.16664086815442272,
+     "gap_blind": 0.00835738400569134,
+     "gap_none": 0.005863198557587164,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.024323880061798635,
+     "se_blind": 0.007983139395002578,
+     "se_none": 0.0042738536459904315,
+     "silent": true,
+     "value": 0.1
+    },
+    {
+     "admissible": true,
+     "effective": true,
+     "gap_aimed": 0.17126796451974194,
+     "gap_blind": 0.00830207974351475,
+     "gap_none": 0.005702639187771338,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.02507103980943941,
+     "se_blind": 0.007715888999040194,
+     "se_none": 0.004508651987509485,
+     "silent": true,
+     "value": 0.2
+    },
+    {
+     "admissible": true,
+     "effective": true,
+     "gap_aimed": 0.17868566241949066,
+     "gap_blind": 0.00885653028099658,
+     "gap_none": 0.005532328078342205,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.02604399722342028,
+     "se_blind": 0.007733432844519306,
+     "se_none": 0.004786672728241056,
+     "silent": true,
+     "value": 0.35
+    },
+    {
+     "admissible": false,
+     "effective": true,
+     "gap_aimed": 0.3643245876275541,
+     "gap_blind": 0.14151112345211586,
+     "gap_none": 0.13026374936856328,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.08374597201040272,
+     "se_blind": 0.10078130114183867,
+     "se_none": 0.1022163142890655,
+     "silent": false,
+     "value": 0.5
+    }
+   ],
+   "scan_failed": true
+  },
+  "a0": {
+   "range": [
+    0.03,
+    0.03
+   ],
+   "rows": [
+    {
+     "admissible": false,
+     "effective": true,
+     "gap_aimed": 0.4949741790095935,
+     "gap_blind": 0.30434796147108856,
+     "gap_none": 0.29749075587620116,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.0883030699448408,
+     "se_blind": 0.14977233754232988,
+     "se_none": 0.14903286013680808,
+     "silent": false,
+     "value": 0.02
+    },
+    {
+     "admissible": false,
+     "effective": true,
+     "gap_aimed": 0.4195884174181041,
+     "gap_blind": 0.22325379879371968,
+     "gap_none": 0.2125904425424772,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.08324251761313223,
+     "se_blind": 0.13056883243556236,
+     "se_none": 0.13238820831530354,
+     "silent": false,
+     "value": 0.025
+    },
+    {
+     "admissible": false,
+     "effective": true,
+     "gap_aimed": 0.3643245876275541,
+     "gap_blind": 0.14151112345211586,
+     "gap_none": 0.13026374936856328,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.08374597201040272,
+     "se_blind": 0.10078130114183867,
+     "se_none": 0.1022163142890655,
+     "silent": false,
+     "value": 0.03
+    },
+    {
+     "admissible": false,
+     "effective": true,
+     "gap_aimed": 0.22786098400689292,
+     "gap_blind": 0.1174669265562322,
+     "gap_none": 0.10653468659855944,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.06270336966475042,
+     "se_blind": 0.09421710827524463,
+     "se_none": 0.09540806499233781,
+     "silent": false,
+     "value": 0.04
+    },
+    {
+     "admissible": false,
+     "effective": true,
+     "gap_aimed": 0.2190993036484928,
+     "gap_blind": 0.10072452742836685,
+     "gap_none": 0.0932877674390584,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.09334057260846694,
+     "se_blind": 0.08376310550553286,
+     "se_none": 0.08550707932815985,
+     "silent": false,
+     "value": 0.05
+    }
+   ],
+   "scan_failed": true
+  },
+  "rho": {
+   "range": [
+    0.02,
+    0.02
+   ],
+   "rows": [
+    {
+     "admissible": true,
+     "effective": true,
+     "gap_aimed": 0.41055459570217495,
+     "gap_blind": 0.024567405547146943,
+     "gap_none": -0.0024649557258595283,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.0632365449642198,
+     "se_blind": 0.015521944816362833,
+     "se_none": 0.004904042873527258,
+     "silent": true,
+     "value": 0.005
+    },
+    {
+     "admissible": true,
+     "effective": true,
+     "gap_aimed": 0.3052931472461809,
+     "gap_blind": 0.01733726290363702,
+     "gap_none": -0.0043379762038105295,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.03803747224478948,
+     "se_blind": 0.011929480154062451,
+     "se_none": 0.005241182083689924,
+     "silent": true,
+     "value": 0.01
+    },
+    {
+     "admissible": false,
+     "effective": true,
+     "gap_aimed": 0.3643245876275541,
+     "gap_blind": 0.14151112345211586,
+     "gap_none": 0.13026374936856328,
+     "members_with_focus_cell": 15,
+     "se_aimed": 0.08374597201040272,
+     "se_blind": 0.10078130114183867,
+     "se_none": 0.1022163142890655,
+     "silent": false,
+     "value": 0.02
+    },
+    {
+     "admissible": false,
+     "effective": false,
+     "gap_aimed": null,
+     "gap_blind": null,
+     "gap_none": null,
+     "members_with_focus_cell": 0,
+     "se_aimed": null,
+     "se_blind": null,
+     "se_none": null,
+     "silent": false,
+     "value": 0.04
+    },
+    {
+     "admissible": false,
+     "effective": false,
+     "gap_aimed": null,
+     "gap_blind": null,
+     "gap_none": null,
+     "members_with_focus_cell": 0,
+     "se_aimed": null,
+     "se_blind": null,
+     "se_none": null,
+     "silent": false,
+     "value": 0.08
+    }
+   ],
+   "scan_failed": true
+  }
+ },
+ "hidden_set": [
+  {
+   "box": [
+    0.016,
+    0.024
+   ],
+   "family": "decay",
+   "headroom": 0.8214137626891951,
+   "param": "dK"
+  },
+  {
+   "box": [
+    0.08000000000000002,
+    0.12
+   ],
+   "family": "transport",
+   "headroom": 0.35385652859549943,
+   "param": "Dp"
+  },
+  {
+   "box": [
+    0.16000000000000003,
+    0.24
+   ],
+   "family": "phase",
+   "headroom": 0.161084213700179,
+   "param": "r"
+  },
+  {
+   "box": [
+    1.6,
+    2.4
+   ],
+   "family": "link",
+   "headroom": 0.06612871122544622,
+   "param": "chi"
+  }
+ ],
+ "pilot_centre": {
+  "DX": 0.5,
+  "a0": 0.03,
+  "rho": 0.02
+ },
+ "scan_V": {
+  "DK": {
+   "box": [
+    0.08000000000000002,
+    0.12
+   ],
+   "box_factors": [
+    0.8,
+    1.2
+   ],
+   "default": 0.1,
+   "eligible": false,
+   "family": "transport",
+   "headroom": -0.0034274665400856803,
+   "headroom_by_factor": {
+    "0.8": -0.0034274665400856803,
+    "0.9": -0.0032662408210525863,
+    "1.1": 0.00657980850478101,
+    "1.2": 0.00541710599087843
+   },
+   "viable": {
+    "0.8": true,
+    "0.9": true,
+    "1.1": true,
+    "1.2": true
+   }
+  },
+  "DL": {
+   "box": [
+    0.08000000000000002,
+    0.12
+   ],
+   "box_factors": [
+    0.8,
+    1.2
+   ],
+   "default": 0.1,
+   "eligible": false,
+   "family": "transport",
+   "headroom": 0.009295787970168825,
+   "headroom_by_factor": {
+    "0.8": 0.013274107200075007,
+    "0.9": 0.006077259594745924,
+    "1.1": 0.004750551946001325,
+    "1.2": 0.009295787970168825
+   },
+   "viable": {
+    "0.8": true,
+    "0.9": true,
+    "1.1": true,
+    "1.2": true
+   }
+  },
+  "DS": {
+   "box": [
+    0.18000000000000002,
+    0.24
+   ],
+   "box_factors": [
+    0.9,
+    1.2
+   ],
+   "default": 0.2,
+   "eligible": true,
+   "family": "transport",
+   "headroom": 0.04631797833510292,
+   "headroom_by_factor": {
+    "0.8": 0.3641639369880902,
+    "0.9": 0.04631797833510292,
+    "1.1": 0.06588779952059876,
+    "1.2": 0.23017987447621657
+   },
+   "viable": {
+    "0.8": false,
+    "0.9": true,
+    "1.1": true,
+    "1.2": true
+   }
+  },
+  "Dp": {
+   "box": [
+    0.08000000000000002,
+    0.12
+   ],
+   "box_factors": [
+    0.8,
+    1.2
+   ],
+   "default": 0.1,
+   "eligible": true,
+   "family": "transport",
+   "headroom": 0.35385652859549943,
+   "headroom_by_factor": {
+    "0.8": 0.43795874326144413,
+    "0.9": 0.15040334964137708,
+    "1.1": 0.09803638202731949,
+    "1.2": 0.35385652859549943
+   },
+   "viable": {
+    "0.8": true,
+    "0.9": true,
+    "1.1": true,
+    "1.2": true
+   }
+  },
+  "F": {
+   "box_factors": null,
+   "default": 0.006,
+   "eligible": false,
+   "family": "metabolism",
+   "headroom": null,
+   "headroom_by_factor": {
+    "0.8": null,
+    "0.9": 0.36023403254921177,
+    "1.1": 0.9635900840266864,
+    "1.2": null
+   },
+   "viable": {
+    "0.8": false,
+    "0.9": false,
+    "1.1": true,
+    "1.2": false
+   }
+  },
+  "a": {
+   "box_factors": null,
+   "default": 4.0,
+   "eligible": false,
+   "family": "phase",
+   "headroom": null,
+   "headroom_by_factor": {
+    "0.8": 0.220234017061365,
+    "0.9": 0.014268547011173102,
+    "1.1": 0.12369208670261815,
+    "1.2": null
+   },
+   "viable": {
+    "0.8": true,
+    "0.9": true,
+    "1.1": false,
+    "1.2": false
+   }
+  },
+  "b": {
+   "box_factors": null,
+   "default": 0.05,
+   "eligible": false,
+   "family": "metabolism",
+   "headroom": null,
+   "headroom_by_factor": {
+    "0.8": null,
+    "0.9": 0.2731212294568618,
+    "1.1": 0.39515339584937387,
+    "1.2": null
+   },
+   "viable": {
+    "0.8": false,
+    "0.9": true,
+    "1.1": false,
+    "1.2": false
+   }
+  },
+  "c": {
+   "box": [
+    0.16000000000000003,
+    0.22000000000000003
+   ],
+   "box_factors": [
+    0.8,
+    1.1
+   ],
+   "default": 0.2,
+   "eligible": true,
+   "family": "metabolism",
+   "headroom": 0.02784968658447405,
+   "headroom_by_factor": {
+    "0.8": 0.199973624865771,
+    "0.9": 0.033595778138662984,
+    "1.1": 0.02784968658447405,
+    "1.2": 0.1615740761230823
+   },
+   "viable": {
+    "0.8": true,
+    "0.9": true,
+    "1.1": true,
+    "1.2": false
+   }
+  },
+  "chi": {
+   "box": [
+    1.6,
+    2.4
+   ],
+   "box_factors": [
+    0.8,
+    1.2
+   ],
+   "default": 2.0,
+   "eligible": true,
+   "family": "link",
+   "headroom": 0.06612871122544622,
+   "headroom_by_factor": {
+    "0.8": 0.11246724404863469,
+    "0.9": 0.026163582457030404,
+    "1.1": 0.01687879535343456,
+    "1.2": 0.06612871122544622
+   },
+   "viable": {
+    "0.8": true,
+    "0.9": true,
+    "1.1": true,
+    "1.2": true
+   }
+  },
+  "dK": {
+   "box": [
+    0.016,
+    0.024
+   ],
+   "box_factors": [
+    0.8,
+    1.2
+   ],
+   "default": 0.02,
+   "eligible": true,
+   "family": "decay",
+   "headroom": 0.8214137626891951,
+   "headroom_by_factor": {
+    "0.8": 1.10624731689837,
+    "0.9": 0.2855630555708787,
+    "1.1": 0.46073265442580114,
+    "1.2": 0.8214137626891951
+   },
+   "viable": {
+    "0.8": true,
+    "0.9": true,
+    "1.1": true,
+    "1.2": true
+   }
+  },
+  "dL": {
+   "box_factors": null,
+   "default": 0.02,
+   "eligible": false,
+   "family": "decay",
+   "headroom": null,
+   "headroom_by_factor": {
+    "0.8": null,
+    "0.9": 0.7370259985187491,
+    "1.1": 0.574997175043076,
+    "1.2": null
+   },
+   "viable": {
+    "0.8": false,
+    "0.9": true,
+    "1.1": false,
+    "1.2": false
+   }
+  },
+  "r": {
+   "box": [
+    0.16000000000000003,
+    0.24
+   ],
+   "box_factors": [
+    0.8,
+    1.2
+   ],
+   "default": 0.2,
+   "eligible": true,
+   "family": "phase",
+   "headroom": 0.161084213700179,
+   "headroom_by_factor": {
+    "0.8": 0.2922307570413853,
+    "0.9": 0.08310677370200427,
+    "1.1": 0.07764695163607324,
+    "1.2": 0.161084213700179
+   },
+   "viable": {
+    "0.8": true,
+    "0.9": true,
+    "1.1": true,
+    "1.2": true
+   }
+  },
+  "th": {
+   "box_factors": null,
+   "default": 0.15,
+   "eligible": false,
+   "family": "phase",
+   "headroom": null,
+   "headroom_by_factor": {
+    "0.8": null,
+    "0.9": 0.8506299443366101,
+    "1.1": 0.7785395404468651,
+    "1.2": null
+   },
+   "viable": {
+    "0.8": false,
+    "0.9": false,
+    "1.1": false,
+    "1.2": false
+   }
+  }
+ },
+ "scan_V_default_floor": {
+  "headroom": 0.003472140078053263,
+  "se_members": 0.00725910363126063,
+  "viable_members": 8
+ },
+ "size": "full",
+ "what": "stage 0 of the membrane carrier: the hidden parameter set of the public law and the ranges of rho, D_X, a0, by the rules of DECLARED.md 2.6 (pilot values, never an exam)"
+}

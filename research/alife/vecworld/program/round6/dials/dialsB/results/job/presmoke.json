@@ -1,0 +1,29 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "what": "presmoke: every stage once at full array shapes (seed 30, not a gate seed)",
+ "size": "full",
+ "wall_s": 244.21305179595947,
+ "member_ticks": 139760,
+ "sim_s": 241.89241361618042,
+ "rate_member_ticks_per_s_incl_compiles": 577.7775247708361,
+ "gate_rate_member_ticks_per_s": 577.7775247708361,
+ "steady_rate_member_ticks_per_s": 682.3621418920128,
+ "scanV_point": {
+  "point": "DS_x0.8",
+  "viable_members": 4,
+  "headroom": 0.3641639369880902
+ },
+ "scanC_point": {
+  "point": "centre",
+  "gap_none": 0.13026374936856328,
+  "gap_blind": 0.14151112345211586,
+  "gap_aimed": 0.3643245876275541
+ },
+ "planned_member_ticks": {
+  "gate_per_seed_arm": 324448,
+  "gate": 5191168,
+  "scan_C": 350688,
+  "scan_V": 280688,
+  "total": 5822544
+ }
+}
