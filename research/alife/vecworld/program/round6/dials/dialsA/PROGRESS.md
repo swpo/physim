@@ -42,3 +42,10 @@ Worktree `/home/user/wt/dialsA`, branch `wt-dialsA`; scratch
   used) also exits 0.
 - Running: job `r6-dialsa-002` (requested). Locally: a tiny CPU test of the extension mode.
 - Next: as above (wait; review.md first; results to `results/job/`; make_summary; README).
+- 11 Nov 16:50 UTC. `r6-dialsa-002` was received at 16:35 and accepted (A100 40 GB, lambdalabs, $1.99/h, at most
+  $4.88); it is QUEUED behind two running pods (r6-foundryexam-005, run deadline 18:25; r6-dialsb-002). The
+  extension mode passed a tiny CPU test (`run_a.py --extension --prior <first job's outputs>`), and
+  `make_summary.py --job2` merges the two jobs' truths. README.md drafted (no results yet).
+- Running: job `r6-dialsa-002` (queued). Nothing local.
+- If restarted: run the wait loop again (scratch `wait_job.sh r6-dialsa-002`, or fetch origin/gpu-jobs every 60 s
+  and read jobs/r6-dialsa-002/status.json); when it ends, read review.md first.
