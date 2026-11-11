@@ -1,0 +1,18 @@
+# qwen-ring-003: rehearsal of the round-4 second-pass pin in the cloud container (fixer, second pass): ONE short
+# rollout of the default model on the ring profile, through the request route of RUNBOOK_MAC.md step 3, to show
+# that the second pass's bounds (the request-key allow-list of the spend stop, the bounded reading of the harness's
+# output, the laboratory's request caps, the proxy's caps) leave an ordinary model run as it was. Small caps on
+# purpose: 30 turns, 15 minutes, $0.50.
+# PILOT_NEVER_REUSE_AS_EXAM: the instance is public pilot material.
+schema = "physim2-rollout/v1"
+model = "qwen/qwen3.6-35b-a3b"
+exam_profile = "ring"
+instance = "pilot-qwen-ring-003"
+max_turns = 30
+max_output_tokens_per_turn = 8192
+max_context_tokens = 100000
+wall_minutes = 15
+box_memory_gb = 4
+cap_usd = 0.5
+reasoning_effort = "default"
+push = false

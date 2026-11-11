@@ -9,3 +9,6 @@ runs the pinned `tools/check_request.py` with the one constant that says where r
 them: `round6/rollouts/configs/qwen_ring_002_cut.toml` and `qwen_ring_002.toml`.
 
 Nobody runs these again: a job id, an instance name and a config name are each used once.
+
+Second pass of round 4 (fixer, 11 Nov 2026): `qwen-ring-003.json`, one short job (30 turns, 15 minutes, $0.50) that
+rehearses step 3 at the third round-4 pin (`841b4a1e1`); its config is `round6/rollouts/configs/qwen_ring_003.toml`.
