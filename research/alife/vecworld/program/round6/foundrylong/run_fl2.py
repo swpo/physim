@@ -215,10 +215,13 @@ def w_condition(HW, c):
     Zc = jnp.stack([W.to_z(theta_of_label(l)) for l in cand])
     t = time.time()
     pre = np.zeros((nH, len(cand)))
+    CB = 8                                                                     # candidates per call (memory)
     for i in range(nH):
-        r = lambda a: np.repeat(a[i:i + 1], len(cand), 0)
-        pre[i] = W.eval_batch(Zc, r(dens), r(Y), r(U), r(sc), jax.random.fold_in(KEY, 10 + i), M=CFG["w_eval_M"], k=CFG["w_k"],
-                              pool=CFG["w_eval_pool"], burn=CFG["burn"], E_max=CFG["w_pre_E"])
+        for c0 in range(0, len(cand), CB):
+            c1 = min(len(cand), c0 + CB)
+            r = lambda a: np.repeat(a[i:i + 1], c1 - c0, 0)
+            pre[i, c0:c1] = W.eval_batch(Zc[c0:c1], r(dens), r(Y), r(U), r(sc), jax.random.fold_in(KEY, 10 + i), M=CFG["w_eval_M"],
+                                         k=CFG["w_k"], pool=CFG["w_eval_pool"], burn=CFG["burn"], E_max=CFG["w_pre_E"])
     order = np.argsort(pre, 1)[:, : CFG["w_starts"]]                          # (nH, S)
     CLOCK[f"w{c}_prescreen_s"] = time.time() - t
     log(f"W{c}: prescreen of {len(cand)} prior worlds' weights ({time.time() - t:.0f}s); best loss median {np.median(pre.min(1)):.4f}")

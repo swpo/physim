@@ -32,3 +32,47 @@ The review (`origin/gpu-jobs:jobs/r6-foundrylong-001/review.md`: fine to run, 0 
 2. `make_summary.py` now marks S1 with the list `incomplete` (a declared null candidate or seed missing, a net cut by
    the deadline, P0 below 1,000 worlds) and reads S1a as "incomplete" unless P0x2, the second P0 size and the second
    C size are present and not cut. The declared rule is unchanged; the marks say when its inputs were not all there.
+
+## Addendum 3, 11 Nov 2026 21:25 UTC, before request r6-foundrylong-002 (seen: ALL of stage 1, results/analysis_stage1.json; the CPU tests of W in PROGRESS.md)
+
+Stage 1 says S1 SURVIVES (sigma(16, 32) = 0.218, lower bound 0.187, min over leave-one-out 0.178), so stage 2 runs.
+The declared criteria T1-T6 and their thresholds are unchanged. Fixed now:
+
+1. **Deviation: W's fit loss.** The declaration says the fit loss is "the fair energy score of the ensemble's short
+   forecasts against the next observed frames". On CPU (public world seed2027-46, before any stage-1 result) a fit on
+   one-tick forecasts reached the truth's loss level from a 30% neighbour while W's skill at the fit fell to 0.24 at
+   16 ticks (0.78 at the true weights): the one-tick loss does not pin what matters at 8 to 32 ticks. The fit loss is
+   therefore the exam's own score at 16 ticks on the Lab: from the assimilated ensemble at an anchor tick a, a free
+   16-tick forecast under the episode's commands, fair energy score against the observed frame a + 16 (gradient through
+   the 16 forecast ticks, recomputed in the backward pass; not through the assimilation). On CPU this fit took W from
+   0.37 to 0.68 at 16 ticks from a 30% start in 40 steps on 8 episodes. (The first CPU fits also used a wrong fair score,
+   spread term doubled; fixed before these numbers.)
+2. **W, sizes.** N = 32 Lab episodes only (every criterion is at N = 32; N = 8 is not run in stage 2). Starts: the
+   weights of the first 32 of the pilot's 210 screened training worlds, scored by the fit loss on 8 Lab episodes (4
+   members, anchors 0, 8, 16, 24, 32); the best 4 are refined: Adam, 200 steps, rate 0.03 then 0.01 for the last
+   quarter; each step 8 random episodes x 4 members x 2 random anchors; noise keys fixed per episode; members drawn
+   from a pool of 16 spun at the current weights (burn-in 300), renewed every 50 steps. Coordinates: fl_w.to_z (net
+   weights in prior SD units; scalars as positions in their prior ranges, kappa from 1e-6). dens is not fitted (the
+   nudge makes the loss independent of it): it is the Lab's observed mean mass per kind. Two fits per world and Lab
+   ("seeds" for the bootstrap): seed 0 is the better of starts 1 and 3, seed 1 of starts 2 and 4, by the fit loss on
+   all 32 episodes. Prediction: 24 members spun at the fitted weights, held to the item's 17 frames, then simulated
+   under its program. W(true) and W(prior): the same predictor at the true weights and at the plugPrior world's.
+3. **W+**: seed 0's fitted weights; 4,096 mix episodes; the C recipe at 4,096 episodes (8,000 steps, batch 128, the
+   training rule), one net per world and Lab.
+4. **Designed Lab**: the declared rule (fl_w.designed_prog): 12.5 nats in every one of the 32 test ticks (400 per
+   episode), aimed on the densest block of the last revealed frame at even ticks, regional on its 3 x 3 blocks at odd
+   ticks, direction 2 pi (e mod 8) / 8. Paired: designed episode e starts from the same state with the same free-tick
+   noise as mix episode e (same secret and labels), so the two Labs differ only in their programs.
+5. **G\* on each Lab**: P0(1,000) (stage 1's 3 seeds, scored again), FT(32), D(32), Dr(32), picked on the unscored half
+   separately for each Lab. FT's rate grid becomes {1.25e-5, 5e-5, 2e-4} (declared {5e-5, 2e-4, 8e-4}): in stage 1 the
+   cross-validation chose the grid's lowest rate in 122 of 144 (world, seed, horizon) cases at N = 32 and 8e-4 once, so
+   the declared grid did not bracket the optimum; a tuned null needs the lower rate. C is stage 1's C(16,384) seed 0
+   (one seed in stage 2).
+6. **Reading of T2-T4, T6** (make_summary2.py): T2 "pass" if the 90th percentile of rho_G is <= 0.7, "fail" if the
+   10th is > 0.7; W* and G* are picked separately on each Lab for T4; T6 uses the point estimates of T1 and T3 at 8 and
+   32 ticks and at 16 ticks with each world left out (T3 recomputed with the picks redone).
+7. **Job**: job_s2.sh: presmoke (2 worlds, every stage, the full fit shapes; a speed guard after W on the mix Lab exits
+   4 if the projection exceeds 1.25 x the time left), then the full pass; order: data, stage-1 nets, W mix, W(true),
+   W(prior), FT mix, D mix, W designed, FT designed, D designed, W+ mix, W+ designed. Stage 1's public parameters are
+   copied to inputs/stage1/ (P0(1,000) 3 seeds, C(16,384) seed 0, worlds.json). No platform allocator (the W fit
+   dispatches one step at a time). Expected about 2.2 h, about $4.5; cap $8.10.

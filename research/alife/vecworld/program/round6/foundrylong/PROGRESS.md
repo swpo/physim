@@ -41,12 +41,18 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   P0(1,000) 0.431, so sigma near 0.2 and stage 2 likely): fl_w.py (designed programs, paired designed Lab, batched fit,
   prediction), run_fl2.py, job_s2.sh. The whole run_fl2.py at smoke size on CPU: exit 0 (8.7 min). NOT requested.
 
+- 21:02: job 001 DONE (exit 0, 2.35 h, billed $4.92; only items.npz stayed on the Mac, not needed). make_summary.py ->
+  results/analysis_stage1.json: S1 SURVIVES, sigma(16, 32) = 0.218 [p10 0.187, min LOO 0.178, p90 0.253], null FT(32);
+  S1a "at this compute" (the step 210 -> 1,000 prior worlds gained 0.114 of sigma; doubling P0's steps 0.003);
+  S3 still falling at every horizon (s0(16) 0.53 / 0.39 / 0.28 at 64 / 210 / 1,000 worlds); S4 C not converged in data
+  (+0.048 of skill at 16 ticks for 4,096 -> 16,384); S5 undecided (0.115, p05 0.077); S2: P0 and C mostly NOT trained
+  by the 80% rule (late gains 1-5%), FT's CV chose the lowest rate in 122 of 144 cases. Stage 2 runs.
+- 21:25: addendum 3 (stage-2 details, W's loss deviation, FT grid); inputs/stage1/ (31 MB of stage-1 parameters).
+
 ## Running
 - Review of r6-foundrylong-001 read 18:50: fine to run, 2 minor (outputs ~53 MB: check manifest in_git before the analysis;
   completeness marks added to make_summary.py; DEVIATIONS addendum 2).
-- GPU job r6-foundrylong-001 (stage 1). Follow: cd /home/user/physim && git fetch -q origin gpu-jobs &&
-  git show origin/gpu-jobs:jobs/r6-foundrylong-001/status.json. READ jobs/r6-foundrylong-001/review.md BEFORE the results.
-  To cancel: push an empty gpu/requests/r6-foundrylong-001.cancel, verify with git ls-tree on origin.
+- (none yet; stage-2 request being prepared)
 
 ## Next step, exactly
 1. When the job is done: copy jobs/r6-foundrylong-001/out/full to scratch (git archive origin/gpu-jobs jobs/r6-foundrylong-001/out/full | tar -x),

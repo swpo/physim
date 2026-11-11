@@ -342,9 +342,10 @@ def fit_batch(Z0, dens, labY, labU, scale, key, steps=200, lr=(0.03, 0.01), lr_s
     return Z, np.stack(trace)
 
 
-def eval_batch(Z, dens, labY, labU, scale, key, M=4, k=16, pool=8, burn=300, every=8, E_max=None):
+def eval_batch(Z, dens, labY, labU, scale, key, M=4, k=16, pool=8, burn=300, every=8, E_max=None, E_chunk=8):
     """Fit loss of B weight vectors on all (or the first E_max) Lab episodes: fixed keys, M members from a pool spun
-    at each weight vector with the same keys, anchors 0, every, ..., T - k. Returns (B,)."""
+    at each weight vector with the same keys, anchors 0, every, ..., T - k; episodes in chunks of E_chunk (memory).
+    Returns (B,)."""
     import numpy as np
     _, ev, sp = _fns(k, burn)
     B, E = labY.shape[:2]
@@ -355,9 +356,13 @@ def eval_batch(Z, dens, labY, labU, scale, key, M=4, k=16, pool=8, burn=300, eve
     mi = np.arange(E * M) % pool
     X0 = P_[:, mi].reshape((B, E, M) + P_.shape[2:])
     keys = kb(8, E * M).reshape(B, E, M)
-    an = jnp.asarray(np.tile(np.arange(0, T - k + 1, every), (B, E, 1)))
-    return np.asarray(ev(jnp.asarray(Z), jnp.asarray(dens), X0, jnp.asarray(labY[:, :E]), jnp.asarray(labU[:, :E]), keys,
-                         jnp.asarray(scale), an))
+    tot = np.zeros(B)
+    for e0 in range(0, E, E_chunk):
+        e1 = min(E, e0 + E_chunk)
+        an = jnp.asarray(np.tile(np.arange(0, T - k + 1, every), (B, e1 - e0, 1)))
+        tot += (e1 - e0) * np.asarray(ev(jnp.asarray(Z), jnp.asarray(dens), X0[:, e0:e1], jnp.asarray(labY[:, e0:e1]),
+                                         jnp.asarray(labU[:, e0:e1]), keys[:, e0:e1], jnp.asarray(scale), an))
+    return tot / E
 
 
 _PRED = {}
