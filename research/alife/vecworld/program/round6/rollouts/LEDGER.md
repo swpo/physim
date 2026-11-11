@@ -13,6 +13,7 @@ Prices: Prime's Models API, `GET https://api.pinference.ai/api/v1/models`, field
 | 1 | qwen_ring_001 | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | $1.22 (see below) | ENDED 11:12 UTC, complete (40 model calls, stop condition `max_turns`, graded) | 758,132 billed (101,524 at the input price + 656,608 cache reads); the caps saw 18,759 | 18,888 | $0.1025 (all input at the full price; $0.0952 with the cache-read price; the provider's own `cost` fields sum to $0.0951) | $0.1025 |
 | 2 | preflight ping for astra_ring_001 (two streamed requests with tools, as the bash harness sends them: `tools/ping_stream.py`) | openai/gpt-6-astra | 10 / 50 / none listed | 2 x 2,048 output tokens ($0.21) | done 11:47 UTC, both answered, usage in the stream | 396 (182 + 214; 0 cached) | 24 (19 + 5; 0 reasoning) | $0.0052 (the provider's own `cost` fields: 0.0028 + 0.0024; the listed price gives the same) | $0.1077 |
 | 3 | astra_ring_001 | openai/gpt-6-astra | 10 / 50 / none listed | $19.02 (22 turns, 70,000 total tokens, 16,384 per reply; see "Row 3" below) | ENDED 12:09 UTC, complete (14 model calls, stop condition `frozen` after an accepted submit, graded) | 193,826 billed (21,636 uncached + 172,190 cache reads); the caps saw 10,135 | 10,782 (5,242 of them reasoning) | $2.4774 (all input at the listed $10; the provider's own `cost` fields sum to $1.0188, so cache reads are billed below the listed input price, at a rate the Models API does not list) | $2.5851 |
+| 4 | qwen_ring_002_cut (rehearsal of the round-4 pin from a request, `RUNBOOK_MAC.md` step 3; INTERRUPTED ON PURPOSE after a few turns to rehearse the clean-up) | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | $2.0303 (`cap_usd` 2 + one worst-case call of $0.0303: the spend stop's bound, section "Rows 4 and 5" below) | RUNNING (row written before the start) | | | | |
 
 Total spent by this workflow so far: **$2.59** of the $40 ceiling by the listed prices ($0.1025 + $0.0052 + $2.4774, with the $0.00003 ping); **$1.12** by the provider's own cost fields ($0.0951 + $0.0052 + $1.0188).
 
@@ -72,3 +73,17 @@ least 10 results, each at the 20,000-byte limit). The caps do not exclude that c
 whole context window the last call alone would cost $10.50. Both limits are told to the agent in one sentence of
 the system message (`configs/astra_ring_001.system_prompt.txt`). `max_output_tokens` is set to 70,000 so that it
 cannot end the run before the total does; it is no part of the bound.
+
+## Rows 4 and 5 (rehearsal of the round-4 pin): the bound is the spend stop's
+
+From round 4 on a model rollout is started from a request (`../vfport/RUNBOOK_MAC.md`, step 3) and has a spend stop
+in vf-eval (`../vfport/physim2_env/spend.py`): a call is sent only while what was counted so far, plus one
+worst-case call for every call still under way, is below `cap_usd`, and no call's prompt can exceed
+`max_context_tokens`. The bound on the bill is therefore
+
+    cap_usd + one worst-case call = cap_usd + max_context_tokens x p_in + max_output_tokens_per_turn x p_out
+
+For `qwen/qwen3.6-35b-a3b` at the prices listed on 11 Nov 2026 with the default caps (context 200,000, reply 8,192)
+one worst-case call is 200,000 x $0.11/M + 8,192 x $1.01/M = $0.0303, and with `cap_usd` = 2 the bound is $2.0303.
+The crude bound that the turn cap alone would give (150 turns x a full context window) is $5.57. The standing go
+of the rehearsal has a ceiling of $5, of which the tool counts the $2.5851 of rows 0 to 3 as spent elsewhere.
