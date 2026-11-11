@@ -1,7 +1,10 @@
 """Private channel from the laboratory process to the task controller (both on the trusted worker).
 
 The laboratory is a separate host process with no handle on the agent's box. The task controller, which runs in
-the vf-eval process and holds the verifiers Runtime of that box, listens on a Unix socket and serves two requests:
+the vf-eval process and holds the verifiers Runtime of that box, listens on a Unix socket and serves three requests:
+
+    status {}         the run's own clocks for `lab.usage()` (ruling E4): seconds elapsed and left of the
+                      wall-time limit, turns used and left of the turn limit (counted on the trace, here)
 
     announce {port}   write the laboratory's address into the box (/etc/physim2/lab.json), so that
                       `physim2.Lab()` works from any Python script under any harness
@@ -23,15 +26,28 @@ Round 4: the same dictionary also carries the laboratory's bearer (`lab_bearer`,
 rollout. The laboratory reads it over the state channel and answers no request without it; at `announce` the
 box's own proxy, inside this process, is told to put it on what it forwards to the laboratory's port
 (runtime.set_lab_bearer). It is never written into a box, a file, a log or a command line.
+
+CHECKPOINTS (round 4, ruling E1: whatever is in submission/ when the run ends is graded, however it ends).
+verifiers runs a task's finalize, and with it the final collection, only when the rollout did not fail. For a
+run that fails (the harness dies, the model route breaks) the controller therefore keeps the last frozen copy
+of submission/ it could take while the run was alive: the baseline at setup, then one before every model call
+(the task's stop hook asks for it) and one every `checkpoint_s` seconds, each only when a cheap fingerprint of
+the directory changed. The newest one is kept in memory and, as one tar archive that the freeze rules wrote
+(regular files only), in the run's folder of the store: <store>/<instance>/captures/<rollout>/checkpoint.tar
+with checkpoint.json. The env physim2_verifier grades that copy when a run failed.
 """
 from __future__ import annotations
 
 import asyncio
+import io
 import json
+import os
 import posixpath
 import secrets
 import socket
+import tarfile
 import tempfile
+import time
 import weakref
 from pathlib import Path
 
@@ -65,7 +81,8 @@ async def collect_frozen(runtime, artifacts, transport_bytes: int, max_mib: floa
 
 
 REPORT_KEYS = {"ok": bool, "stage": str, "error": str, "note": str, "files": int, "cpu_s": float, "wall_s": float,
-               "cpu_s_per_request": float, "wall_s_per_request": float}
+               "cpu_s_per_request": float, "wall_s_per_request": float, "as_graded": bool, "grading": str,
+               "package_changed_files": int}
 VALIDATE = ("import json, sys\n"
             "sys.path.insert(0, sys.argv[1])\n"
             "import physim2.validate as V\n"
@@ -93,8 +110,65 @@ def clean_report(text: str) -> dict:
     return out
 
 
+FINGERPRINT = ("cd {root} 2>/dev/null && find . -xdev \\( -type f -o -type l \\) -printf '%s %T@ %p\\n' 2>/dev/null | sort | sha256sum "
+               "|| echo absent")
+
+
+def frozen_files(files: dict, root: str, max_mib: float) -> dict:
+    """The frozen form (as collect_frozen returns it) of files this package made itself: {name: bytes} below
+    `root`. Used for the baseline, which is known without asking the box."""
+    buf = io.BytesIO()
+    with tarfile.open(fileobj=buf, mode="w") as tar:
+        for nm in sorted(files):
+            ti = tarfile.TarInfo(f"{root.strip('/')}/{nm}")
+            ti.size = len(files[nm])
+            tar.addfile(ti, io.BytesIO(files[nm]))
+    frozen, man, err = _rules.freeze(buf.getvalue(), root, max_mib)
+    return {"root": root, "archive": frozen, "manifest": man, "error": err, "ok": frozen is not None}
+
+
+def write_checkpoint(folder: str, frozen: dict, meta: dict) -> None:
+    """The newest frozen copy as <folder>/checkpoint.tar + checkpoint.json. Each file is written beside its
+    place and then put in place in one step (the laboratory's state.json is kept the same way), so a reader
+    never sees half a file; the archive goes first and the description names the archive's hash."""
+    import hashlib
+    os.makedirs(folder, mode=0o700, exist_ok=True)
+    raw = frozen["archive"]
+    for name, data in (("checkpoint.tar", raw),
+                       ("checkpoint.json", json.dumps(dict(meta, root=frozen["root"], manifest=frozen["manifest"],
+                                                           archive_sha256=hashlib.sha256(raw).hexdigest(), archive_bytes=len(raw)),
+                                                      indent=1).encode())):
+        tmp = os.path.join(folder, name + ".tmp")
+        fd = os.open(tmp, os.O_WRONLY | os.O_CREAT | os.O_TRUNC | getattr(os, "O_NOFOLLOW", 0), 0o600)
+        with os.fdopen(fd, "wb") as f:
+            f.write(data)
+        os.replace(tmp, os.path.join(folder, name))
+
+
+def read_checkpoint(folder: str, max_mib: float) -> dict | None:
+    """The checkpoint of a run as a frozen dict, or None. The archive is read from the worker's own store and
+    checked again: its hash must be the recorded one and it must pass the freeze rules unchanged."""
+    import hashlib
+    try:
+        with open(os.path.join(folder, "checkpoint.json")) as f:
+            meta = json.load(f)
+        with open(os.path.join(folder, "checkpoint.tar"), "rb") as f:
+            raw = f.read(int(max_mib * _rules.MIB) + (64 << 20))
+        if hashlib.sha256(raw).hexdigest() != meta["archive_sha256"]:
+            return None
+        frozen, man, err = _rules.freeze(raw, meta["root"], max_mib)
+        if frozen is None or man.get("sha256") != meta["manifest"].get("sha256"):
+            return None
+        return {"root": meta["root"], "archive": frozen, "manifest": man, "error": None, "ok": True,
+                "meta": {k: meta.get(k) for k in ("source", "turn", "time", "n")}}
+    except Exception:
+        return None
+
+
 class BoxAccess:
-    def __init__(self, runtime, artifacts, transport_bytes: int, max_mib: float, workdir: str = "/workspace", limits: dict | None = None):
+    def __init__(self, runtime, artifacts, transport_bytes: int, max_mib: float, workdir: str = "/workspace", limits: dict | None = None,
+                 *, trace=None, max_turns: int | None = None, wall_s: float | None = None, capture_dir: str | None = None,
+                 checkpoint_s: float = 30.0):
         self._runtime = weakref.ref(runtime)
         self.artifacts, self.transport_bytes, self.max_mib = artifacts, transport_bytes, max_mib
         self.workdir = workdir
@@ -106,6 +180,16 @@ class BoxAccess:
         self.server = None
         self.frozen: dict | None = None                      # set by `freeze`; the grader's copy from then on
         self.address: str | None = None
+        # ---- the run's clocks (status) and the checkpoints (ruling E1) ----
+        self._trace = weakref.ref(trace) if trace is not None else (lambda: None)
+        self.max_turns, self.wall_s, self.t0 = max_turns, wall_s, time.time()
+        self.capture_dir, self.checkpoint_s = capture_dir, float(checkpoint_s)
+        self.checkpointed: dict | None = None                # the newest frozen copy taken while the run was alive
+        self.checkpoints = {"taken": 0, "unchanged": 0, "failed": 0, "last_source": None}
+        self._fingerprint: str | None = None
+        self._lock = asyncio.Lock()
+        self._ticker: asyncio.Task | None = None
+        self._closed = False
 
     @property
     def runtime(self):
@@ -116,9 +200,89 @@ class BoxAccess:
 
     async def start(self) -> dict:
         self.server = await asyncio.start_unix_server(self.handle, self.path, limit=8192)
+        if self.checkpoint_s > 0:
+            self._ticker = asyncio.create_task(self._tick())
         return {"path": self.path, "secret": self.secret, "lab_bearer": self.lab_bearer}
 
+    # ---- the run's clocks ----
+    def status(self) -> dict:
+        """Seconds and turns, used and left, of THIS run (ruling E4). Turns are the trace's own count of model
+        replies; the wall clock starts with the agent's phase (verifiers' deadline starts at the same moment)."""
+        tr = self._trace()
+        start = getattr(getattr(getattr(tr, "timing", None), "agent", None), "start", None) or self.t0
+        elapsed = max(0.0, time.time() - float(start))
+        turns = int(getattr(tr, "num_turns", 0) or 0) if tr is not None else None
+        return {"seconds_elapsed": round(elapsed, 1),
+                "seconds_left": None if self.wall_s is None else round(max(0.0, float(self.wall_s) - elapsed), 1),
+                "turns_used": turns,
+                "turns_left": None if self.max_turns is None or turns is None else max(0, int(self.max_turns) - turns)}
+
+    # ---- checkpoints ----
+    def keep(self, frozen: dict, source: str) -> None:
+        """Make `frozen` (ok) the newest checkpoint: in memory and in the run's folder of the store."""
+        tr = self._trace()
+        self.checkpointed = frozen
+        self.checkpoints["taken"] += 1
+        self.checkpoints["last_source"] = source
+        if self.capture_dir:
+            try:
+                write_checkpoint(self.capture_dir, frozen, {"source": source, "time": time.time(), "n": self.checkpoints["taken"],
+                                                            "turn": int(getattr(tr, "num_turns", 0) or 0) if tr is not None else None})
+            except Exception:
+                self.checkpoints["failed"] += 1
+
+    async def checkpoint(self, source: str) -> bool:
+        """Take a frozen copy of submission/ if it changed since the last one. Never raises; never waits long."""
+        if self._closed or (self.frozen is not None and self.frozen.get("ok")):
+            return False                                     # after an accepted submit the submitted copy stands
+        try:
+            async with self._lock, asyncio.timeout(120):
+                runtime = self._runtime()
+                if runtime is None or self._closed:
+                    return False
+                require_container(runtime)
+                root = posixpath.join(self.workdir, self.artifacts[0].source)
+                r = await runtime.run(["sh", "-c", FINGERPRINT.format(root=root)], {})
+                mark = (r.stdout or "").strip()[:200]
+                if mark and mark == self._fingerprint:
+                    self.checkpoints["unchanged"] += 1
+                    return False
+                got = await collect_frozen(runtime, self.artifacts, self.transport_bytes, self.max_mib)
+                if not got["ok"]:                            # an empty or unfreezable directory: the older copy stands
+                    self.checkpoints["failed"] += 1
+                    self._fingerprint = mark or None
+                    return False
+                if self.frozen is not None and self.frozen.get("ok"):
+                    return False
+                self._fingerprint = mark or None
+                self.keep(got, source)
+                return True
+        except Exception:
+            self.checkpoints["failed"] += 1
+            return False
+
+    async def _tick(self) -> None:
+        """The timer behind the checkpoints: ends with the controller, with the box, or after three failures in
+        a row (a rollout that failed never reaches finalize, so nothing else would end it)."""
+        bad = 0
+        try:
+            while not self._closed and bad < 3:
+                await asyncio.sleep(self.checkpoint_s)
+                if self._closed or self._runtime() is None or getattr(self._runtime(), "stopped", False):
+                    return
+                before = self.checkpoints["failed"]
+                await self.checkpoint("timer")
+                bad = bad + 1 if self.checkpoints["failed"] > before else 0
+        except asyncio.CancelledError:
+            return
+        except Exception:
+            return
+
     async def close(self) -> None:
+        self._closed = True
+        if self._ticker is not None:
+            self._ticker.cancel()
+            self._ticker = None
         if self.server is not None:
             self.server.close()
             try:
@@ -136,6 +300,8 @@ class BoxAccess:
                     raise PermissionError("unauthorized")
                 if request["op"] == "announce":
                     value = await self.announce(int(request["port"]))
+                elif request["op"] == "status":
+                    value = self.status()
                 elif request["op"] == "check":
                     value = await self.check(str(request["path"]), bool(request["final"]))
                 else:
@@ -185,7 +351,10 @@ class BoxAccess:
         if not final or not report["ok"]:
             return {"report": report, "frozen": None}
         if self.frozen is None or not self.frozen["ok"]:
-            self.frozen = await collect_frozen(self.runtime, self.artifacts, self.transport_bytes, self.max_mib)
+            async with self._lock:                           # never beside a checkpoint's collection
+                self.frozen = await collect_frozen(self.runtime, self.artifacts, self.transport_bytes, self.max_mib)
+            if self.frozen["ok"]:
+                self.keep(self.frozen, "accepted submit")    # a run that fails after its submit is graded on this copy
         f = self.frozen
         return {"report": report, "frozen": {"ok": f["ok"], "error": f["error"], "files": len(f["manifest"]["files"]),
                                              "bytes": f["manifest"].get("bytes", 0), "sha256": f["manifest"].get("sha256")}}

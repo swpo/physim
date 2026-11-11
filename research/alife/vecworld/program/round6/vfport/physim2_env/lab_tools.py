@@ -40,37 +40,64 @@ class LabToolsConfig(vf.ToolsetConfig):
     """Instance store on the worker (default: $PHYSIM2_STORE). Never a path inside a box."""
 
 
-def make_service(hidden: str, name: str, check=None):
+USAGE = {"advance": "usage: advance(inputs) with inputs an array (T, {n_in}) of finite numbers, 1 <= T <= {max_block}, or advance(n) "
+                    "with an integer n for n ticks without input",
+         "experiment": "usage: experiment(label, inputs) with inputs an array (T, {n_in}) of finite numbers, 1 <= T <= {max_block}, or "
+                       "experiment(label, n) with an integer n for n ticks without input"}
+
+
+def make_service(hidden: str, name: str, check=None, status=None):
     """agentenv's LabService with the operations that needed the agent's files replaced (_check), and with two
     request checks moved in front of anything that runs or is charged (advance, experiment).
-    `check(path, final)` asks the task controller (access.BoxAccess.check)."""
+    `check(path, final)` asks the task controller (access.BoxAccess.check); `status()` asks it for the run's
+    clocks, which `usage` then reports next to the laboratory's own budgets (ruling E4)."""
     use_agentenv()
     from evaluator.lab_service import MAX_BLOCK, LabService, Rejected
 
     class VfLabService(LabService):
-        def _inputs(self, inputs):
-            """A block of inputs as a float array, or a format rejection (round 5 let numpy's own error through,
-            which the agent then saw as "infrastructure error")."""
+        def _usage_line(self, op):
+            return USAGE[op].format(n_in=self.lab.world.n_in, max_block=MAX_BLOCK)
+
+        def _inputs(self, inputs, op="advance"):
+            """A block of inputs as a float array, or a format rejection with one line of usage (round 5 let
+            numpy's own error through, which the agent then saw as "infrastructure error")."""
             n_in = self.lab.world.n_in
             try:
                 U = np.asarray(inputs, float)
             except (ValueError, TypeError, OverflowError):
                 U = None
             if U is None or U.ndim != 2 or U.shape[1] != n_in or not 1 <= U.shape[0] <= MAX_BLOCK or not np.all(np.isfinite(U)):
-                raise Rejected(f"format: inputs must be finite numbers with shape (T, {n_in}), 1 <= T <= {MAX_BLOCK}")
+                raise Rejected("format: " + self._usage_line(op))
             return U
 
+        def _block(self, op, inputs, n):
+            """(inputs, n) of advance or experiment, checked: exactly one of them, in the documented form."""
+            if inputs is None:
+                if isinstance(n, bool) or not isinstance(n, int) or not 1 <= n <= MAX_BLOCK:
+                    raise Rejected("format: " + self._usage_line(op))
+                return None, n
+            if n is not None:
+                raise Rejected("format: " + self._usage_line(op))
+            return self._inputs(inputs, op), None
+
         def advance(self, inputs=None, n=None):
-            return super().advance(inputs=None if inputs is None else self._inputs(inputs), n=n)
+            inputs, n = self._block("advance", inputs, n)
+            return super().advance(inputs=inputs, n=n)
 
         def experiment(self, label, inputs=None, n=None):
             # everything about the block is checked BEFORE the reset is charged
-            if inputs is None:
-                if isinstance(n, bool) or not isinstance(n, int) or not 1 <= n <= MAX_BLOCK:
-                    raise Rejected(f"format: n must be an integer in [1, {MAX_BLOCK}]")
-            else:
-                inputs = self._inputs(inputs)
+            inputs, n = self._block("experiment", inputs, n)
             return super().experiment(label, inputs=inputs, n=n)
+
+        def usage(self):
+            u = super().usage()
+            if status is not None:                           # the run's own clocks, from the task controller
+                try:
+                    got = status()
+                    u.update({k: got.get(k) for k in ("seconds_elapsed", "seconds_left", "turns_used", "turns_left")})
+                except Exception:
+                    pass
+            return u
 
         def _check(self, path, final: bool):
             # head: verbatim from LabService._check (attempt caps and counters)
@@ -146,7 +173,8 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         if chan:
             chan = {k: chan[k] for k in ("path", "secret") if k in chan}
         check = (lambda path, final: ACCESS.request(chan, "check", path=path, final=final)) if chan else None
-        self.service = make_service(hidden, state.get("rollout") or f"lab-{os.getpid()}", check)
+        status = (lambda: ACCESS.request(chan, "status", timeout=20.0)) if chan else None
+        self.service = make_service(hidden, state.get("rollout") or f"lab-{os.getpid()}", check, status)
         if json.load(open(os.path.join(hidden, "instance.json")))["secret_commitment"] != task.secret_commitment:
             raise RuntimeError("the stored instance is not the one the task row commits to")
         self.scrubbed = STORE.scrub_environment()            # hole 5: after loading, no token stays in this process
@@ -165,15 +193,20 @@ class LabTools(vf.Toolset[LabToolsConfig]):
         {"ok": true, "result": ...} or {"ok": false, "error": "...", "kind": "..."}; a rejected operation ran
         nothing and cost nothing.
         op "card": {} -> the public declaration (sizes, budgets, exam, limits).
-        op "usage": {} -> ticks and nats used and left, attempts, submitted.
+        op "usage": {} -> ticks and nats used and left, attempts, submitted; and of this run: seconds_elapsed,
+        seconds_left, turns_used, turns_left.
         op "reset": {"label": str|int} -> o(0), a list of n_obs numbers; starts a new episode (costs reset_cost ticks).
-        op "advance": {"inputs": [[n_in numbers] x T]} or {"n": T} -> T observations after each tick.
-        op "experiment": {"label": ..., "inputs": [...] or "n": T} -> T + 1 observations, row 0 is o(0).
-        op "validate": {"path": "submission"} -> runs the public check in your box (physim2/validate.py: format,
-        limits, same seed -> same samples; no accuracy feedback) and returns its report.
-        op "submit": {"path": "submission"} -> the same check; if it passes, submission/ is frozen as it is now
-        and the laboratory closes ("accepted": true). If it fails nothing is frozen and the laboratory stays open.
-        From Python in the workspace the same operations are `physim2.Lab()` methods (see TASK.md)."""
+        op "advance": {"inputs": [[n_in numbers] x T]} or {"n": T} (T ticks without input) -> T observations.
+        op "experiment": {"label": ..., "inputs": [[n_in numbers] x T]} or {"label": ..., "n": T} -> T + 1
+        observations, row 0 is o(0).
+        op "validate": {"path": "submission"} -> runs your predictor in your box the way the grader will (a clean
+        copy of submission/ alone, an unprivileged user that cannot read /workspace; format, limits, same seed ->
+        same samples; no accuracy feedback) and returns the report.
+        op "submit": {"path": "submission"} -> the same check; if it passes, submission/ is frozen as it is now,
+        the laboratory closes and YOUR RUN ENDS ("accepted": true). If it fails nothing is frozen and the
+        laboratory stays open. Without a submit, submission/ is graded as it is when the run ends.
+        From Python in the workspace the same operations are `physim2.Lab()` methods (see TASK.md); only that
+        client saves every reply to /workspace/lab_log.jsonl."""
         if self.service is None:
             return NEUTRAL
         if not isinstance(op, str) or (args is not None and not isinstance(args, dict)):
