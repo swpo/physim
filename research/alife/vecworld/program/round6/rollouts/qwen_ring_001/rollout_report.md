@@ -56,12 +56,12 @@ Wall clock: boot 1.6 s, setup 19.7 s, agent 643.3 s (model 451.4 s, harness and 
 
 | budget | used | cap | share | where the cap comes from | note |
 |---|---|---|---|---|---|
-| model turns | 40 | 40 | 100.0 % | agent config max_turns | the task text does not state this cap |
-| tokens as verifiers counts them (each fed-in token once) | 37,647 | 1,500,000 | 2.5 % | agent config max_total_tokens |  |
+| model turns | 40 | 40 | 100.0 % | agent config max_turns | what the agent was shown does not state this cap |
+| tokens as verifiers counts them (each fed-in token once) | 37,647 | 1,500,000 | 2.5 % | agent config max_total_tokens | what the agent was shown does not state this cap |
 | output tokens | 18,888 | 60,000 | 31.5 % | agent config max_output_tokens |  |
 | largest single reply (tokens) | 2,340 | 8,192 | 28.6 % | sampling max_tokens |  |
 | largest context sent (tokens) | 37,567 | 262,144 | 14.3 % | the model's context window (--model-entry) |  |
-| agent phase, wall seconds | 643.3 | 3,600.00 | 17.9 % | agent config timeout.rollout, else the task row | the hour TASK.md states |
+| agent phase, wall seconds | 643.3 | 3,600.00 | 17.9 % | agent config timeout.rollout, else the task row |  |
 | laboratory ticks | 306 | 400 | 76.5 % | exam config (reference table) |  |
 | nats in total | 0.000 | – | – | exam config (reference table) | no total cap in this config |
 | largest nats in one episode | 0.000 | 8.00 | 0.0 % | TASK.md in the trace | from the laboratory's log |
@@ -69,7 +69,7 @@ Wall clock: boot 1.6 s, setup 19.7 s, agent 643.3 s (model 451.4 s, harness and 
 | submit attempts | 0 | 16 | 0.0 % | exam config (reference table) |  |
 | submission size, bytes | 0 | 67,108,864 | 0.0 % | exam config (reference table) |  |
 | predictor CPU seconds, worst item | – | 30 | – | exam config (reference table) | not in this trace (no predictor ran, or one box per item) |
-| agent box CPU seconds (read inside the box: unverified) | 163.7 | 14,400.00 | 1.1 % | envelope cores x the hour |  |
+| agent box CPU seconds (read inside the box: unverified) | 163.7 | 14,400.00 | 1.1 % | the envelope's cores x the wall-clock cap |  |
 | model spend, USD | 0.102 | 1.22 | 8.4 % | max_turns x context window x input price + output caps x output price |  |
 
 ## 5. What the agent did
@@ -85,6 +85,8 @@ Tool calls by kind (a call with several kinds counts under the first of: network
 | read | 8 | 8 | 28.3 | 4.7 |
 
 Laboratory reached through: the `lab_call` tool 0 time(s), `physim2.Lab()` from Python in 9 tool call(s). Milestones: first simulator run: turn 7 (t = 21 s); first laboratory experiment: turn 10 (t = 41 s); first write under submission/: never; first validation: turn 40 (t = 641 s); submit: never.
+
+Longest model call: 37.1 s (turn 39); longest run of one turn's tools: 30.1 s (turn 25).
 
 The laboratory's counters in the trace: 306 ticks, 18 episodes, 0.00 nats, 39 requests (1 rejected, 0 infrastructure errors), 1 validation(s), 0 submit(s), submitted: no.
 
@@ -157,6 +159,7 @@ Laboratory requests, one line per episode (from the laboratory's own log; like e
   - `turn 11: ValueError: Out of range float values are not JSON compliant: nan`
   - `turn 12: physim2.labclient.LabError: format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 4096`
 - **no_graded_submission**: nothing gradable was collected (source `final_collection`, error: submission has no predict.py): scored as K
+- **box_differs_from_the_task_row**: the agent's box did not have the resources of the task row, which is what TASK.md states as the compute envelope (cpu: task row 4, box 2; memory: task row 8, box 4)
 - **predictor_outside_submission**: the agent wrote predict.py to `predict.py` and the trace shows no copy under submission/: only submission/ is collected
 
 Predictor source: read from the trace (the agent's last write to `predict.py`); `predict(history, program, queries, n_samples, seed)`, 234 lines; reads of `history`: 3, of `program`: 2.

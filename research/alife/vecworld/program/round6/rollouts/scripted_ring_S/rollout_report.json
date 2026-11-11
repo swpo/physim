@@ -343,7 +343,7 @@
    "cap": 3600.0,
    "share": 0.007985476983918084,
    "cap_from": "agent config timeout.rollout, else the task row",
-   "note": "the hour TASK.md states"
+   "note": ""
   },
   {
    "budget": "laboratory ticks",
@@ -406,7 +406,7 @@
    "used": 14.2099,
    "cap": 14400.0,
    "share": 0.000986798611111111,
-   "cap_from": "envelope cores x the hour",
+   "cap_from": "the envelope's cores x the wall-clock cap",
    "note": ""
   }
  ],
@@ -970,7 +970,14 @@
    }
   ]
  },
- "flags": [],
+ "flags": [
+  {
+   "id": "box_differs_from_the_task_row",
+   "text": "the agent's box did not have the resources of the task row, which is what TASK.md states as the compute envelope (cpu: task row 4, box 2)",
+   "turns": [],
+   "items": []
+  }
+ ],
  "flag_ids_checked": [
   "ended_by_a_cap_or_error",
   "last_tool_result_never_seen",
@@ -980,6 +987,7 @@
   "lab_errors",
   "python_errors",
   "long_stretches",
+  "box_differs_from_the_task_row",
   "no_graded_submission",
   "collected_without_submit",
   "submission_without_lab_use",

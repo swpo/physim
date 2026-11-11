@@ -59,6 +59,7 @@ def synthetic(base):
     ep = copy.deepcopy(base)
     tr = ep["traces"][0]
     tr["nodes"], tr["calls"] = tr["nodes"][:2], []
+    tr["nodes"][0]["message"]["content"] += " You have at most 40 replies."
     t = [tr["timing"]["agent"]["start"] + 1.0]
 
     def turn(tool_calls, results, model_s=2.0, tools_s=1.0, error=None):
@@ -141,7 +142,8 @@ def main():
               and sum(not x["ok"] for x in lr) == res["lab"]["rejected"] and {o: sum(x["op"] == o for x in lr) for o in by} == {o: v["n"] for o, v in by.items()})
         check("qwen: 18 episodes, all with zero inputs", [e["inputs"] for e in tl["lab_episodes"] if e["episode"]] == ["zero (0 nats charged)"] * 18)
         ids = {f["id"] for f in rep["flags"]}
-        check("qwen: flags", ids == {"ended_by_a_cap_or_error", "last_tool_result_never_seen", "lab_errors", "python_errors", "no_graded_submission", "predictor_outside_submission"}, str(sorted(ids)))
+        check("qwen: flags", ids == {"ended_by_a_cap_or_error", "last_tool_result_never_seen", "lab_errors", "python_errors", "no_graded_submission", "predictor_outside_submission",
+                                    "box_differs_from_the_task_row"}, str(sorted(ids)))
         check("qwen: the predictor it wrote (outside submission/) reads its history", rep["predictor_check"]["history"]["reads"] > 0 and rep["predictor_check"]["lines"] > 200)
         check("qwen: the report carries the pilot marker", rep[RR.MARK] is True and RR.MARK in md)
         rep2, _ = run(tmp, "qwen_min", "--trace", os.path.join(q, "trace.redacted.jsonl"))
@@ -160,7 +162,8 @@ def main():
         eps = [e for e in rep["timeline"]["lab_episodes"] if e["episode"]]
         check("scripted S: 8 episodes of 49 ticks; nats per episode add up to the counter", len(eps) == 8 and {e["ticks"] for e in eps} == {49} and close(sum(e["nats"] for e in eps), row["lab_total_nats"], 1e-5))
         check("scripted S: wall clock equals prove.py's", close(sum(rep["wall_s"][k] for k in ("boot", "setup", "agent", "finalize", "verifier")), row["wall_s"]["total"], 1e-6))
-        check("scripted S: no model, no cost, no flag", rep["usage"]["n_calls"] == 0 and not rep["flags"] and rep["timeline"]["script"]["exit_code"] == 0)
+        check("scripted S: no model, no cost, one flag (2 CPUs in the box, 4 in the task row)", rep["usage"]["n_calls"] == 0 and rep["timeline"]["script"]["exit_code"] == 0
+              and [x["id"] for x in rep["flags"]] == ["box_differs_from_the_task_row"])
         # ---- 2. synthetic traces ----
         base = json.loads(open(os.path.join(q, "trace.redacted.jsonl")).readline())
         f = os.path.join(tmp, "synthetic.jsonl")
@@ -181,7 +184,8 @@ def main():
         check("synthetic: the long stretch is flagged at turn 7", fl.get("long_stretches", {}).get("turns") == [7])
         check("synthetic: a predictor that ignores history and program is flagged (the edit was applied to the tracked file)",
               "predictor_ignores_history" in fl and "predictor_ignores_program" in fl and rep["predictor_check"]["source"].endswith("`submission/predict.py`)") and "predictor_outside_submission" not in fl)
-        check("synthetic: no false alarm", not {"ended_by_a_cap_or_error", "submission_without_lab_use", "no_graded_submission", "last_tool_result_never_seen"} & set(fl), str(sorted(fl)))
+        check("synthetic: no false alarm", not {"ended_by_a_cap_or_error", "submission_without_lab_use", "no_graded_submission", "last_tool_result_never_seen", "lab_use_not_visible"} & set(fl), str(sorted(fl)))
+        check("synthetic: a turn cap that the task text states is not marked as untold", [b["note"] for b in rep["budgets"] if b["budget"] == "model turns"] == [""])
         check("synthetic: a failed model call is counted and not priced", rep["usage"]["n_calls_failed"] == 1 and rep["usage"]["n_calls_without_usage"] == 1
               and close(rep["usage"]["cost_usd_all_input_at_full_price"], (12 * 1000 * 1 + 12 * 50 * 10) / 1e6))
         check("synthetic: without per-item scores the agent's row has its mean only", rep["scores"]["agent_per_item_source"] is None and rep["scores"]["policies"]["AGENT"].get("boot_se") is None

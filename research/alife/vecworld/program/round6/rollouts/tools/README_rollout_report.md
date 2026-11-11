@@ -71,7 +71,8 @@ Flags: `ended_by_a_cap_or_error` (stop condition other than `agent_completed` or
 docker.sock), `writes_into_the_public_package`, `network_attempt` (curl, wget, pip install, git clone, urllib,
 requests, sockets, any URL; `physim2.Lab()` itself is not counted), `lab_errors` (the laboratory's counters,
 `LabError` text in tool results, `"ok": false` from the tool, rejected lines of the log), `python_errors`,
-`long_stretches` (a model call or a turn's tools of at least `--long-s` seconds), `no_graded_submission`,
+`long_stretches` (a model call or a turn's tools of at least `--long-s` seconds), `box_differs_from_the_task_row`
+(CPUs or memory of the agent's box against the task row, which is what TASK.md states), `no_graded_submission`,
 `collected_without_submit`, `submission_without_lab_use` (graded with 0 laboratory ticks), `lab_use_not_visible`,
 `predictor_outside_submission`, `predictor_unreadable`, `predictor_ignores_history`,
 `predictor_ignores_program` (`predict()` never reads the argument, or reads only its shape; the source is the
@@ -99,7 +100,7 @@ agent's last write to `predict.py` in the trace, or `--submission`).
 
 ## Checked
 
-`python -B rollouts/tools/test_rollout_report.py` (37 checks, under a second, no model):
+`python -B rollouts/tools/test_rollout_report.py` (38 checks, under a second, no model):
 
 - **Qwen rollout** (`../qwen_ring_001/`): every row's L, skill vs O and vs C, the bootstrap se and ranges, the
   agent's paired differences, tokens (758,132 billed in, 18,888 out), cost ($0.102471; $0.095249 with the
@@ -109,8 +110,8 @@ agent's last write to `predict.py` in the trace, or `--submission`).
   `reference_noise.json` and `LEDGER.md`.
 - **Scripted agent** (`../scripted_ring_S/`): reward 0.926579, 392 ticks, 46.66 nats, 29 requests and the wall
   clock equal the S row of `prove.py`'s table. The other six scripted traces of that table also go through
-  (P0, PM, C, null and the one-box-per-item C raise `submission_without_lab_use`, as they should; S and D raise
-  nothing).
+  (P0, PM, C, null and the one-box-per-item C raise `submission_without_lab_use`, as they should; S and D do
+  not; all seven raise `box_differs_from_the_task_row`, since the reference boxes ran with 2 CPUs).
 - **Synthetic traces** (made in the test from the Qwen trace; no model has yet used these paths): requests
   through the laboratory tool with zero, structured and blind inputs and a rejection; reads outside the
   workspace; network attempts; a long stretch; a failed model call; a reply without a tool call; two calls in

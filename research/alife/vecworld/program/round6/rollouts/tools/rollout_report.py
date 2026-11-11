@@ -628,8 +628,13 @@ def flags(tr, turns, rows, lab, files, sub_dir, long_s):
     if sub.get("ok") and not labc.get("ticks_used"):
         add("submission_without_lab_use", "a submission was graded although the laboratory ran 0 ticks: the hidden world was never observed "
             f"({labc.get('requests', 0)} laboratory requests in all, none of them an experiment)")
-    elif sub.get("ok") and not any("lab" in r["kinds"] for r in rows) and rows:
+    if labc.get("ticks_used") and rows and not any("lab" in r["kinds"] for r in rows):
         add("lab_use_not_visible", f"the laboratory ran {labc.get('ticks_used')} ticks but no tool call of the trace shows a laboratory request (a script the trace does not show?)")
+    # -- what the agent was told about its box, against the box it had
+    told, had = tr["task"]["data"].get("resources") or {}, (tr.get("agent") or {}).get("runtime") or {}
+    diff = [f"{k}: task row {told[k]:g}, box {had[k]:g}" for k in ("cpu", "memory") if isinstance(told.get(k), (int, float)) and isinstance(had.get(k), (int, float)) and told[k] != had[k]]
+    if diff:
+        add("box_differs_from_the_task_row", "the agent's box did not have the resources of the task row, which is what TASK.md states as the compute envelope (" + "; ".join(diff) + ")")
     # -- the predictor's source
     src, where = None, None
     if sub_dir and os.path.isfile(os.path.join(sub_dir, "predict.py")):
@@ -652,8 +657,9 @@ def flags(tr, turns, rows, lab, files, sub_dir, long_s):
         for role in ("history", "program"):
             r = pc[role]
             if not pc["open_signature"] and (r["reads"] == 0 or r["shape_only"]):
-                add(f"predictor_ignores_{role}", f"predict() never reads its `{r['parameter']}` argument" if r["reads"] == 0 else
-                    f"predict() reads only the shape of its `{r['parameter']}` argument" + f" (source: {where}; static reading: passing it to a helper counts as a read)")
+                add(f"predictor_ignores_{role}", (f"predict() never reads its `{r['parameter']}` argument" if r["reads"] == 0 else
+                                                  f"predict() reads only the shape of its `{r['parameter']}` argument")
+                    + f" (source: {where}; a static reading: passing it to a helper would count as a read)")
     for r in rows:
         r.pop("_text", None)
     return out, pc
@@ -674,13 +680,21 @@ def budgets(tr, cfg, use, exam_cfg, caps_text, lab_eps, prices):
             return
         rows.append({"budget": name, "used": used, "cap": cap, "share": share, "cap_from": where, "note": note})
 
-    told = cfg.get("max_turns") and re.search(rf"\b{cfg['max_turns']}\s+(model\s+)?(turns|calls|steps)\b", str(tr["task"]["data"].get("prompt") or ""))
-    row("model turns", use["n_calls"] or None, cfg.get("max_turns"), "agent config max_turns", "" if told or not cfg.get("max_turns") else "the task text does not state this cap")
-    row("tokens as verifiers counts them (each fed-in token once)", use["caps_see_total_tokens"], cfg.get("max_total_tokens"), "agent config max_total_tokens")
+    first = next((i for i, n in enumerate(tr.get("nodes") or []) if n.get("sampled")), 0)
+    said = str(tr["task"]["data"].get("prompt") or "") + "\n".join(str(content_text((n.get("message") or {}).get("content")) or "") for n in (tr.get("nodes") or [])[:first])
+
+    def note(n):                                             # is the number followed, in the same sentence, by a word for what it caps?
+        if not n:
+            return ""
+        digits = f"{int(n):,}".replace(",", ",?")            # 70000 is found as 70000 and as 70,000
+        told = re.search(r"(?<![\d,.])" + digits + r"(?![\d,])[^.\n]{0,40}\b(turns?|repl(?:y|ies)|calls?|steps?|messages?|requests?|tokens?)\b", said)
+        return "" if told else "what the agent was shown does not state this cap"
+    row("model turns", use["n_calls"] or None, cfg.get("max_turns"), "agent config max_turns", note(cfg.get("max_turns")))
+    row("tokens as verifiers counts them (each fed-in token once)", use["caps_see_total_tokens"], cfg.get("max_total_tokens"), "agent config max_total_tokens", note(cfg.get("max_total_tokens")))
     row("output tokens", use["caps_see_output_tokens"], cfg.get("max_output_tokens"), "agent config max_output_tokens")
     row("largest single reply (tokens)", use["largest_reply_tokens"] or None, (cfg.get("sampling") or {}).get("max_tokens"), "sampling max_tokens")
     row("largest context sent (tokens)", use["largest_context_tokens"] or None, (prices or {}).get("context_window"), "the model's context window (--model-entry)")
-    row("agent phase, wall seconds", agent_s, wall_cap, "agent config timeout.rollout, else the task row", "the hour TASK.md states")
+    row("agent phase, wall seconds", agent_s, wall_cap, "agent config timeout.rollout, else the task row")
     row("laboratory ticks", lab.get("ticks_used"), (ec.get("lab") or {}).get("max_ticks"), "exam config (reference table)")
     row("nats in total", lab.get("total_nats"), (ec.get("lab") or {}).get("total_nats"), "exam config (reference table)", "no total cap in this config" if not (ec.get("lab") or {}).get("total_nats") else "")
     if lab_eps is not None:
@@ -692,7 +706,7 @@ def budgets(tr, cfg, use, exam_cfg, caps_text, lab_eps, prices):
         "" if g.get("cpu_s_max") is not None else "not in this trace (no predictor ran, or one box per item)")
     env = ec.get("envelope") or {}
     row("agent box CPU seconds (read inside the box: unverified)", ph.get("agent_box_cpu_s_unverified"),
-        None if not env.get("cpus") or not wall_cap else env["cpus"] * wall_cap, "envelope cores x the hour")
+        None if not env.get("cpus") or not wall_cap else env["cpus"] * wall_cap, "the envelope's cores x the wall-clock cap")
     if use.get("cost_usd_for_the_ledger") is not None:
         row("model spend, USD", use["cost_usd_for_the_ledger"], use.get("bound_by_caps_usd"), "max_turns x context window x input price + output caps x output price")
     return rows
@@ -798,6 +812,9 @@ def markdown(R):
         out.append(table(["kind", "tool calls", "turns", "model s", "tools s"], [[k, v["calls"], v["turns"], fmt(v["model_s"], 1), fmt(v["tools_s"], 1)] for k, v in tl["by_kind"].items()]) + "\n")
         out.append("Laboratory reached through: the `lab_call` tool " + f"{tl['lab_route']['tool']} time(s), `physim2.Lab()` from Python in {tl['lab_route']['python']} tool call(s). "
                    "Milestones: " + "; ".join(f"{k.replace('_', ' ')}: " + ("never" if v is None else f"turn {v['turn']} (t = {fmt(v['t_s'], 0)} s)") for k, v in tl["milestones"].items()) + ".\n")
+    if tl["turns"]:
+        lm, lt = max(tl["turns"], key=lambda t: t["model_s"] or 0), max(tl["turns"], key=lambda t: t["tools_s"] or 0)
+        out.append(f"Longest model call: {fmt(lm['model_s'], 1)} s (turn {lm['turn']}); longest run of one turn's tools: {fmt(lt['tools_s'], 1)} s (turn {lt['turn']}).\n")
     lc = o["lab"]
     out.append(f"The laboratory's counters in the trace: {fmt(lc.get('ticks_used'))} ticks, {fmt(lc.get('episodes'))} episodes, {fmt(lc.get('total_nats'), 2)} nats, "
                f"{fmt(lc.get('requests'))} requests ({fmt(lc.get('rejected'))} rejected, {fmt(lc.get('infrastructure_errors'))} infrastructure errors), "
@@ -869,7 +886,7 @@ def markdown(R):
 
 
 FLAG_IDS = ["ended_by_a_cap_or_error", "last_tool_result_never_seen", "outside_the_workspace", "writes_into_the_public_package", "network_attempt", "lab_errors", "python_errors",
-            "long_stretches", "no_graded_submission", "collected_without_submit", "submission_without_lab_use", "lab_use_not_visible",
+            "long_stretches", "box_differs_from_the_task_row", "no_graded_submission", "collected_without_submit", "submission_without_lab_use", "lab_use_not_visible",
             "predictor_outside_submission", "predictor_unreadable", "predictor_ignores_history", "predictor_ignores_program"]
 
 

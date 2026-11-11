@@ -40,7 +40,7 @@ Wall clock: boot 0.8 s, setup 7.9 s, agent 28.7 s (model 0.0 s, harness and tool
 |---|---|---|---|---|---|
 | tokens as verifiers counts them (each fed-in token once) | 0 | – | – | agent config max_total_tokens |  |
 | output tokens | 0 | – | – | agent config max_output_tokens |  |
-| agent phase, wall seconds | 28.7 | 3,600.00 | 0.8 % | agent config timeout.rollout, else the task row | the hour TASK.md states |
+| agent phase, wall seconds | 28.7 | 3,600.00 | 0.8 % | agent config timeout.rollout, else the task row |  |
 | laboratory ticks | 392 | 400 | 98.0 % | exam config (reference table) |  |
 | nats in total | 46.7 | – | – | exam config (reference table) | no total cap in this config |
 | largest nats in one episode | 8.000 | 8.00 | 100.0 % | TASK.md in the trace | from the laboratory's log |
@@ -48,7 +48,7 @@ Wall clock: boot 0.8 s, setup 7.9 s, agent 28.7 s (model 0.0 s, harness and tool
 | submit attempts | 1 | 16 | 6.2 % | exam config (reference table) |  |
 | submission size, bytes | 558,914 | 67,108,864 | 0.8 % | exam config (reference table) |  |
 | predictor CPU seconds, worst item | 0.343 | 30 | 1.1 % | exam config (reference table) |  |
-| agent box CPU seconds (read inside the box: unverified) | 14.2 | 14,400.00 | 0.1 % | envelope cores x the hour |  |
+| agent box CPU seconds (read inside the box: unverified) | 14.2 | 14,400.00 | 0.1 % | the envelope's cores x the wall-clock cap |  |
 
 ## 5. What the agent did
 
@@ -81,8 +81,7 @@ Laboratory requests, one line per episode (from the laboratory's own log; like e
 
 ## 6. Flags worth a human look
 
-None of the checks fired.
-
+- **box_differs_from_the_task_row**: the agent's box did not have the resources of the task row, which is what TASK.md states as the compute envelope (cpu: task row 4, box 2)
 
 Predictor source: not checked: the predictor's source is neither in the trace nor given with --submission.
 Checks that did not fire: collected_without_submit, ended_by_a_cap_or_error, lab_errors, lab_use_not_visible, last_tool_result_never_seen, long_stretches, network_attempt, no_graded_submission, outside_the_workspace, predictor_ignores_history, predictor_ignores_program, predictor_outside_submission, predictor_unreadable, python_errors, submission_without_lab_use, writes_into_the_public_package.

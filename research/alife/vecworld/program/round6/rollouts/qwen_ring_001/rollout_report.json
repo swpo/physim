@@ -378,7 +378,7 @@
    "cap": 40,
    "share": 1.0,
    "cap_from": "agent config max_turns",
-   "note": "the task text does not state this cap"
+   "note": "what the agent was shown does not state this cap"
   },
   {
    "budget": "tokens as verifiers counts them (each fed-in token once)",
@@ -386,7 +386,7 @@
    "cap": 1500000,
    "share": 0.025098,
    "cap_from": "agent config max_total_tokens",
-   "note": ""
+   "note": "what the agent was shown does not state this cap"
   },
   {
    "budget": "output tokens",
@@ -418,7 +418,7 @@
    "cap": 3600.0,
    "share": 0.17870079351796045,
    "cap_from": "agent config timeout.rollout, else the task row",
-   "note": "the hour TASK.md states"
+   "note": ""
   },
   {
    "budget": "laboratory ticks",
@@ -481,7 +481,7 @@
    "used": 163.692,
    "cap": 14400.0,
    "share": 0.011367500000000001,
-   "cap_from": "envelope cores x the hour",
+   "cap_from": "the envelope's cores x the wall-clock cap",
    "note": ""
   },
   {
@@ -2796,6 +2796,12 @@
    "items": []
   },
   {
+   "id": "box_differs_from_the_task_row",
+   "text": "the agent's box did not have the resources of the task row, which is what TASK.md states as the compute envelope (cpu: task row 4, box 2; memory: task row 8, box 4)",
+   "turns": [],
+   "items": []
+  },
+  {
    "id": "predictor_outside_submission",
    "text": "the agent wrote predict.py to `predict.py` and the trace shows no copy under submission/: only submission/ is collected",
    "turns": [],
@@ -2811,6 +2817,7 @@
   "lab_errors",
   "python_errors",
   "long_stretches",
+  "box_differs_from_the_task_row",
   "no_graded_submission",
   "collected_without_submit",
   "submission_without_lab_use",
