@@ -263,6 +263,10 @@ State (newest last; times UTC as this container's clock shows them):
 - DECISION: no second rollout. Nothing died on mechanics: every leg ran, including the ones no model had reached
   (accepted submit, freeze, stop hook `frozen`, a model-written predictor in the verifier box and in 64 item
   boxes, the `lab_call` tool).
+- 12:20 `ledger.json` (the coordinator's machine-readable ledger, schema rollout-ledger/v1; request in the channel
+  file at 12:11): row astra_ring_001 set to done with billed_usd 2.4774 (the figure of `LEDGER.md`: the usage
+  the provider reported at the listed prices; its own cost fields sum to 1.0188), billed_usd_total 2.5851,
+  reserved_usd_open 0.
 
 DONE for this role (astra_ring_001). Left on the machine: the Docker daemon (running, not to be stopped), the
 four images of qwen_ring_001 unchanged, no container, no process of this role. The runner's scratch folder
