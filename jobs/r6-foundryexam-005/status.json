@@ -1,9 +1,33 @@
 {
+  "billing_window_hours": 3.6181,
+  "bundle": {
+    "bundle_sha256": "05077f7dee57c65ab4749a214436c86f35141c0e2699a9972d701ca82593f08c",
+    "files": {
+      "job.sh": "d44edcc551dabc5503fdfbdca5e8211ebe3d85d6bc2f77a5865e56f07d16e429",
+      "request.json": "6dd3b9f452c9a9cffe9907abc6512df03199d77a285f1906d033381a823f6faf",
+      "run.sh": "b5047342e4727fe92184d84f879bc874abd9ba5bd499141045988e2ab9b6a9e2",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "ea9656b1062b8892626c74a70e9d888d93b8a1fee039e6339290244e1a2300b0"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/program/round5/foundry",
+      "research/alife/vecworld/program/round5/agentenv/evaluator",
+      "research/alife/vecworld/program/round6/foundryexam"
+    ],
+    "ref": "94451e27c85fcf3c19d99bb9f6640d503116c52d",
+    "src_bytes": 15492887
+  },
   "cap_usd": 7.2,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-11T15:33:25Z",
@@ -14,12 +38,55 @@
       "at": "2026-11-11T15:33:45Z",
       "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-11T15:34:08Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r6-foundryexam-005",
   "max_estimate_usd": null,
-  "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "IN",
+      "data_center": "asia-south-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    },
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-11T15:33:45Z"
+  "pods_terminated": null,
+  "run_started_epoch": 1794411248.728361,
+  "state": "provisioning",
+  "updated_at": "2026-11-11T15:34:08Z"
 }
