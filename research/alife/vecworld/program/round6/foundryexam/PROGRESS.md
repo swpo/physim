@@ -18,18 +18,20 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
   section 4). make_summary.py written and tested on smoke outputs.
 - 11:21 job.sh (FX_SIZE=smoke) from a git archive of exactly the request's four paths at commit 787de8679: exit 0 in 8.4 min.
 - 11:25 request r6-foundryexam-001 committed and pushed (A100 40/80 GB, max 3.25 h, cap $8.40).
+- 11:29 r6-foundryexam-001 REJECTED by the runner's validation (notes above 4000 characters), $0, no pod. Resubmitted as
+  r6-foundryexam-002 with shorter notes, same code (job.sh's two branches also checked with a stub interpreter).
 
 ## Done
 - design and criteria declared and committed; pool and centres; code; CPU smoke from the git archive; request 001 pushed.
 
 ## Running
-- r6-foundryexam-001 (GPU job). Watch: scratchpad/foundryexam/watch.sh r6-foundryexam-001 (log watch_r6-foundryexam-001.log);
-  status at origin/gpu-jobs:jobs/r6-foundryexam-001/status.json; read review.md when it appears.
+- r6-foundryexam-002 (GPU job). Watch: scratchpad/foundryexam/watch.sh r6-foundryexam-002 (log watch_r6-foundryexam-002.log);
+  status at origin/gpu-jobs:jobs/r6-foundryexam-002/status.json; read review.md when it appears.
 
 ## Exact next step
-1. when the job is final: copy origin/gpu-jobs:jobs/r6-foundryexam-001/out/full to scratch, run
-   `python -B make_summary.py <out>/full --job r6-foundryexam-001 --status <status.json>` -> results/analysis.json.
+1. when the job is final: copy origin/gpu-jobs:jobs/r6-foundryexam-002/out/full to scratch, run
+   `python -B make_summary.py <out>/full --job r6-foundryexam-002 --status <status.json>` -> results/analysis.json.
 2. write results/summary.json (claims with job id, file, key), README.md, final report; copy status.json, review.md and the small
    job outputs (meta.json, info.json, gate.json, worlds.json without thetas if large) into results/job/.
-3. if the job failed in the presmoke: fix, bump to r6-foundryexam-002 (never reuse an id), rerun the archive smoke first.
+3. if the job failed in the presmoke: fix, bump to r6-foundryexam-003 (never reuse an id), rerun the archive smoke first.
 4. when finished: remove the worktree and the scratch folder.
