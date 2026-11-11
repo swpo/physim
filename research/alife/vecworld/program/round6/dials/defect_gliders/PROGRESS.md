@@ -19,3 +19,9 @@ Design phase only: no GPU, no model calls, small CPU checks.
   give bit-identical passive futures). Speed about 7 ticks/s on CPU.
 - Next: screens G, XW, M, X, T at 6 states x 5 replicates x 8 ticks, calibration arm PAR (lR + 0.06),
   zero-point check, dial and horizon 16 for the chosen candidate, DESIGN.md.
+- 11 Nov 11:03 UTC. Screens done at eta = 1 (6 states x 5 replicates x 8 ticks; results/screen_*.json):
+  XW passive 0.000, aimed 0.150, regional 0.223, designed 0.264; M passive 0.000, aimed 0.126, regional 0.168,
+  designed 0.248; G aimed 0.040, regional 0.032 (weak). Running in the background: X, T, PAR (calibration).
+  Added to screen.py: a history-only surrogate (own level-1 start + other states' increments under each law)
+  and a per-state cache of public futures; `check_zero.py` and `dose.py` written, not yet run.
+- Next: check_zero, XW and M reruns with the surrogate, XW at eta = 4, dose-response, horizon 16, DESIGN.md.

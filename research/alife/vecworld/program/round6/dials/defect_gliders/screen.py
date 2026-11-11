@@ -106,31 +106,48 @@ def program(cls, b):
     raise KeyError(cls)
 
 
+def anchor(U_b, yc):
+    """Block edge (row, col) the program is centred on: circular mean of the blocks with input at the first
+    input tick (2 x 2 and 4 x 4 sets are centred on a block edge, so rounding is stable); the heaviest group
+    when there is no input."""
+    on = np.abs(U_b.reshape(Hh, 2, DL.G, DL.G)).sum(1)
+    tt = np.flatnonzero(on.sum((1, 2)) > 0)
+    if tt.size == 0:
+        return GW.heaviest_group(yc)
+    ii, jj = np.nonzero(on[tt[0]] > 0)
+    cm = lambda v: int(np.rint(np.angle(np.exp(2j * np.pi * (v + 0.5) / DL.G).mean()) * DL.G / (2 * np.pi))) % DL.G
+    return cm(ii), cm(jj)
+
+
 B = NS * R
 kd = GW.dyn_keys(ks)
 keys = jnp.stack([jax.random.fold_in(kd[b], 100 + r) for b in range(NS) for r in range(R)])
-sigB = jnp.full((B,), DL.SIG)
-t0B = jnp.zeros((B,), jnp.int64)
-rep_s = lambda X: jnp.asarray(np.repeat(np.asarray(X), R, axis=0))
 
 
-def futures(P, Q, T, S_, U):
-    y, A_end, S_end = RN.fut(DL.rep(P, B), DL.rep(Q, B), T, rep_s(A), rep_s(S_), keys, t0B, rep_s(U), sigB)
-    return np.asarray(y).reshape(NS, R, Hh + 1, GW.NC), np.asarray(A_end).reshape((NS, R) + A.shape[1:])
+def futures(P, Q, T, S_, U, idx=None):
+    """Futures of the states idx (default all): y (n, R, H + 1, 192), A_end (n, R, C, H, W)."""
+    idx = np.arange(NS) if idx is None else np.asarray(idx)
+    n = len(idx) * R
+    sel = np.repeat(idx, R)
+    kk = keys.reshape(NS, R)[idx].reshape(n)
+    y, A_end, S_end = RN.fut(DL.rep(P, n), DL.rep(Q, n), T, jnp.asarray(A[sel]), jnp.asarray(np.asarray(S_)[sel]), kk,
+                             jnp.zeros((n,), jnp.int64), jnp.asarray(U[sel]), jnp.full((n,), DL.SIG))
+    return np.asarray(y).reshape(len(idx), R, Hh + 1, GW.NC), np.asarray(A_end).reshape((len(idx), R) + A.shape[1:])
 
 
 def public_futures(U):
-    """Per-state cache: the public ensemble depends on the state, the program and the keys only."""
+    """Per-state cache: the public ensemble depends on the state, the program and the keys only; only the
+    states that are not in the cache are simulated."""
     hs = [hashlib.sha1(A[b].tobytes() + U[b].tobytes() + f"{R},{Hh},{args.seed},{b}".encode()).hexdigest()[:16] for b in range(NS)]
     fs = [os.path.join(args.scratch, f"pub_{h}.npz") for h in hs]
-    if all(os.path.exists(f) for f in fs):
-        d = [np.load(f) for f in fs]
-        return np.stack([x["y"] for x in d]), np.stack([x["m"] for x in d]), True
-    y, A_end = futures(P_pub, Q0, T0, np.zeros_like(S), U)
-    mass = A_end.sum((3, 4))
-    for b, f in enumerate(fs):
-        np.savez(f, y=y[b].astype(np.float64), m=mass[b])
-    return y, mass, False
+    miss = [b for b, f in enumerate(fs) if not os.path.exists(f)]
+    if miss:
+        y, A_end = futures(P_pub, Q0, T0, np.zeros_like(S), U, miss)
+        mass = A_end.sum((3, 4))
+        for i, b in enumerate(miss):
+            np.savez(fs[b], y=y[i].astype(np.float64), m=mass[i])
+    d = [np.load(f) for f in fs]
+    return np.stack([x["y"] for x in d]), np.stack([x["m"] for x in d]), NS - len(miss)
 
 
 out = {"what": "round-5 screen at tiny size, block view; see screen.py docstring",
@@ -144,7 +161,7 @@ for cls in PROGS:
     Yt, At = futures(P_true, Q_true, T_true, S, U)
     Xp, mp, hit = public_futures(U)
     Ytrue[cls] = Yt
-    log(f"program {cls}: futures done (public cache {'hit' if hit else 'miss'})")
+    log(f"program {cls}: futures done (public futures from the cache for {hit} of {NS} states)")
     sc = DL.SC1
     Oo = np.array([[float(energy_loo(Yt[b, :, h] / sc)) for h in HS] for b in range(NS)])
     Pl = np.array([[loo_cross(Xp[b, :, h] / sc, Yt[b, :, h] / sc) for h in HS] for b in range(NS)])
@@ -158,6 +175,24 @@ for cls in PROGS:
     se = float(np.sqrt((NS - 1) / NS * ((np.array(jk) - np.mean(jk)) ** 2).sum()))
     cellmean = float((num.mean(0) / den.mean(0)).mean())
     mt = At.sum((3, 4))                                         # (NS, R, 2) final masses, true law
+    # history-only surrogate INC(law): the item's own level-1 start y0 plus the level-1 increments of the OTHER
+    # states under `law` and the same program class, rolled so that the pushed blocks coincide (the law is
+    # translation invariant on the block grid for every candidate but T). No micro-state of the item is used.
+    anc = [anchor(U[b], obs[b, :GW.NC]) for b in range(NS)]
+
+    def inc(Yl, b, h):
+        rows = []
+        for o in range(NS):
+            if o != b:
+                d = (Yl[o, :, h] - Yl[o, :1, 0]).reshape(R, 3, DL.G, DL.G)
+                d = np.roll(d, (anc[b][0] - anc[o][0], anc[b][1] - anc[o][1]), axis=(2, 3))
+                rows.append(Yt[b, 0, 0][None] + d.reshape(R, GW.NC))
+        return np.concatenate(rows) / sc
+    It = np.array([[float(energy_fair(inc(Yt, b, h), Yt[b, :, h] / sc)) for h in HS] for b in range(NS)])
+    Ip = np.array([[float(energy_fair(inc(Xp, b, h), Yt[b, :, h] / sc)) for h in HS] for b in range(NS)])
+    hnum, hden = Ip - It, Kk - It
+    hjk = [float(np.delete(hnum, b, 0).sum() / np.delete(hden, b, 0).sum()) for b in range(NS)]
+    np.savez(os.path.join(args.scratch, f"fut_{args.cand}_{args.eta:g}_{cls}{args.tag}.npz"), Yt=Yt, Xp=Xp, U=U, anc=np.array(anc))
     out["programs"][cls] = {
         "nats_per_state": [GW.nats_of(u) for u in U],
         "screen_pooled": pooled, "screen_pooled_se_jackknife_states": se, "screen_cellmean": cellmean,
@@ -168,7 +203,17 @@ for cls in PROGS:
         "c0_mass_change_frac_true_mean_per_state": ((mt[:, :, 0].mean(1) - mass0[:, 0]) / mass0[:, 0]).tolist(),
         "c0_mass_change_frac_public_max_abs": float(np.abs((mp[:, :, 0] - mass0[:, None, 0]) / mass0[:, None, 0]).max()),
         "m2_mean_end_true_over_public": float(Yt[:, :, -1, 128:].mean() / Xp[:, :, -1, 128:].mean()),
-        "public_cache_hit": hit}
+        "public_states_from_cache": hit,
+        "history_only_surrogate": {
+            "what": "INC(law) = own level-1 start + other states' increments under law, pushed blocks aligned; share = (L(INC public) - L(INC true)) / (L(K) - L(INC true)), pooled",
+            "share_pooled": float(hnum.sum() / hden.sum()),
+            "share_se_jackknife_states": float(np.sqrt((NS - 1) / NS * ((np.array(hjk) - np.mean(hjk)) ** 2).sum())),
+            "share_per_horizon": (hnum.mean(0) / hden.mean(0)).tolist(),
+            "skill_INC_true_vs_O": float((Kk - It).sum() / den.sum()), "skill_INC_public_vs_O": float((Kk - Ip).sum() / den.sum()),
+            "L_mean_per_horizon": {"INC_true": It.mean(0).tolist(), "INC_public": Ip.mean(0).tolist()}}}
+    hs_ = out["programs"][cls]["history_only_surrogate"]
+    log(f"  history-only surrogate: share {hs_['share_pooled']:+.3f} (se {hs_['share_se_jackknife_states']:.3f}), "
+        f"INC true {hs_['skill_INC_true_vs_O']:.3f}, INC public {hs_['skill_INC_public_vs_O']:.3f} of oracle skill")
     log(f"  screen pooled {pooled:+.3f} (se {se:.3f}), cell mean {cellmean:+.3f}, pair rms {pair.mean(0).round(3).tolist()}, "
         f"dc0 {np.mean(out['programs'][cls]['c0_mass_change_frac_true_mean_per_state']):+.4f}")
 out["seconds"] = time.time() - t00
