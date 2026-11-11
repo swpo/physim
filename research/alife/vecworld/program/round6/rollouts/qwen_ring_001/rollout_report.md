@@ -160,7 +160,7 @@ Laboratory requests, one line per episode (from the laboratory's own log; like e
   - `turn 12: physim2.labclient.LabError: format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 4096`
 - **no_graded_submission**: nothing gradable was collected (source `final_collection`, error: submission has no predict.py): scored as K
 - **box_differs_from_the_task_row**: the agent's box did not have the resources of the task row, which is what TASK.md states as the compute envelope (cpu: task row 4, box 2; memory: task row 8, box 4)
-- **predictor_outside_submission**: the agent wrote predict.py to `predict.py` and the trace shows no copy under submission/: only submission/ is collected
+- **predictor_outside_submission**: the agent's predict.py is at `predict.py` (relative to the workspace) and the trace shows no copy under submission/, the only folder that is collected
 
 Predictor source: read from the trace (the agent's last write to `predict.py`); `predict(history, program, queries, n_samples, seed)`, 234 lines; reads of `history`: 3, of `program`: 2.
 Checks that did not fire: collected_without_submit, lab_use_not_visible, long_stretches, network_attempt, outside_the_workspace, predictor_ignores_history, predictor_ignores_program, predictor_unreadable, submission_without_lab_use, writes_into_the_public_package.

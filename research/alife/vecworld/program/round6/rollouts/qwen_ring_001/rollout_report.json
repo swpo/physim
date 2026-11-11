@@ -2803,7 +2803,7 @@
   },
   {
    "id": "predictor_outside_submission",
-   "text": "the agent wrote predict.py to `predict.py` and the trace shows no copy under submission/: only submission/ is collected",
+   "text": "the agent's predict.py is at `predict.py` (relative to the workspace) and the trace shows no copy under submission/, the only folder that is collected",
    "turns": [],
    "items": []
   }
