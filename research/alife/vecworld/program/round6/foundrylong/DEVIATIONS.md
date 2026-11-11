@@ -89,3 +89,18 @@ steps 0.25. Changes, for job 003 (the study's last):
    declared 200, that fits the time left after every other part (projected from stage 1's timings and the presmoke's)
    with a 10% margin; the presmoke exits 4 if fewer than 80 fit. The number is written to the presmoke's
    shape_test.json and passed to the full pass; it is reported with the results. Nothing else changes.
+
+## Addendum 5, 11 Nov 2026 23:15 UTC, while r6-foundrylong-003 runs (seen: the job's log up to FT on the mix Lab)
+
+Seen before writing this, in the job's progress log (pooled skill, not the analysis): at 16 ticks C 0.592, P0 0.433,
+W on the mix Lab 0.401, W at the true weights 0.524, W at another world's weights -0.705. Nothing of W+, of the
+designed Lab or of the bootstrap had been seen. Two readings, asked for by the runner's reviews (002 minor 2 and 3);
+no rule changes:
+
+1. **W+ is capped by its recipe.** W+ trains the C recipe on 4,096 episodes; in stage 1 that recipe at the TRUE weights
+   recovered (0.533 - 0.455) / (0.581 - 0.455) = 0.62 of the gap from FT(32) to C(16,384) at 16 ticks. So W+ cannot meet
+   T3's 0.7 by construction, whatever its weights: when W+ is the picked W*, a T3 shortfall is reported as a property
+   of the 4,096-episode recipe, and the comparison W+ against C(4,096)-at-the-truth (stage 1) is reported beside it.
+2. **Incomplete runs are not read.** make_summary2.py lists every failed or skipped part, every fit that did not run
+   the speed guard's step count, and every missing policy or seed; make_final.py then reports the stage-2 verdict as
+   "incomplete" and T1-T6 as values without verdicts. A Lab whose fits were cut is reported as lost, not rerun.

@@ -69,7 +69,10 @@ def main():
     # ---------------------------------------------------------------- stage 2
     if s2:
         src2 = "results/analysis_stage2.json (make_summary2.py on origin/gpu-jobs:jobs/r6-foundrylong-002/out/full/scores.npz)"
-        st2 = dict(source=src2, verdict=s2["verdict"], picks=s2["picks"])
+        inc = (s2.get("completeness") or {}).get("incomplete", ["completeness not computed"])
+        st2 = dict(source=src2, readable=not inc, incomplete=inc, w_steps=(s2.get("completeness") or {}).get("w_steps"),
+                   verdict=s2["verdict"] if not inc else dict(stage2="incomplete: T1-T6 are values without verdicts", criteria_values=s2["verdict"]["criteria"]),
+                   picks=s2["picks"])
         st2["T1_sigma_G"] = {h: dict(point=r3(v["point"]), p10=r3(v["lower_bound_all"]), p90=r3(v["upper_bound_all"]),
                                      p10_min_loo=r3(v["lower_bound_min_over_leave_one_out"]), p90_max_loo=r3(v["upper_bound_max_over_leave_one_out"]),
                                      G=v["all"]["G"], verdict=v["verdict"]) for h, v in s2["T1"].items()}
