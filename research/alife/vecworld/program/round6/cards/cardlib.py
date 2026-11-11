@@ -986,7 +986,7 @@ def analyse(rec, sz: Sizes, meta: dict, seed: int = 0, with_learned: bool = True
             coef = np.linalg.lstsq(Hz1, Lz, rcond=None)[0]
             r2 = 1.0 - ((Lz - Hz1 @ coef) ** 2).mean(0) / np.maximum(Lz.var(0), 1e-300)
             ent[tag] = dict(lam=lam.tolist(), r2_on_hand=r2.tolist(),
-                            learned={k: cl[k] for k in LK}, hand={k: ch[k] for k in LK})
+                            learned={k: cl.get(k) for k in LK}, hand={k: ch.get(k) for k in LK})
         card["learned"] = ent
     card["_per_state_grid"] = per_state_grid
     card["grid_shape"] = [G, G]

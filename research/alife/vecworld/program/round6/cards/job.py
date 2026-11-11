@@ -44,7 +44,7 @@ os.makedirs(os.path.join(OUT, "cards"), exist_ok=True)
 os.makedirs(os.path.join(OUT, "series"), exist_ok=True)
 
 if TINY:
-    SZ = CL.Sizes(M=4, M_fit=2, T=48, n_snap=2, R=3, R2=2, n_dir=1, eps=(0.1, 1.0),
+    SZ = CL.Sizes(M=6, M_fit=4, T=48, n_snap=1, R=3, R2=2, n_dir=1, eps=(0.1, 1.0),
                   arms=(("aimed", 200.0), ("blind", 200.0)), R_u=2, HB=32, n_boot=20)
 else:
     SZ = CL.Sizes()
@@ -178,6 +178,8 @@ def main():
                 keep.append(w)
         worlds = keep
     tasks = [(w, r) for w in worlds for r in w["runs"]]
+    if TINY:                                      # the slow worlds on a CPU: run A only (B and late run elsewhere)
+        tasks = [(w, r) for w, r in tasks if r == "A" or group_of(w) not in ("gliders", "vortex128")]
     # presmoke: the first run of every program group
     first, seen = [], set()
     for w, r in tasks:
