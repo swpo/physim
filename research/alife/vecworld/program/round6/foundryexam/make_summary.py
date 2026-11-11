@@ -292,11 +292,13 @@ def analyse_arm(d, arm):
         e["best_step_median"] = float(np.median(e["best_step_median"])) if e["best_step_median"] else None
     out["convergence"] = conv
     curves_t = {}
-    for k, v in info.items():
-        if isinstance(v, dict) and "hist" in v and k.split("|")[0].split()[-1] in ("P0", "A", "P0s", "C") or \
-                (isinstance(v, dict) and "hist" in v and (" C|" in k or k.startswith(("P0|", "A|", "P0s|")))):
-            curves_t[k] = dict(step=[h["step"] for h in v["hist"]], val_mean=[float(np.mean(h["val"])) for h in v["hist"]],
-                               train=[h["train"] for h in v["hist"]])
+    for k, v in info.items():                        # held-out loss of every group of nets (mean and range over its nets)
+        if isinstance(v, dict) and v.get("hist"):
+            V = np.array([h["val"] for h in v["hist"]], float)
+            curves_t[k] = dict(step=[h["step"] for h in v["hist"]], val_mean=[float(x) for x in V.mean(1)],
+                               val_min=[float(x) for x in V.min(1)], val_max=[float(x) for x in V.max(1)],
+                               train=[h["train"] for h in v["hist"]], steps=v["steps"], batch=v.get("batch"),
+                               ms_per_step=v.get("ms_per_step"), n_nets=len(v["best_val"]))
     out["training_curves"] = curves_t
     ts = [h["tick_share"] for h in worlds["hidden"]]
     out["stationarity"] = dict(first17_max=float(max(t["first17"] for t in ts)), all33_max=float(max(t["all33"] for t in ts)),

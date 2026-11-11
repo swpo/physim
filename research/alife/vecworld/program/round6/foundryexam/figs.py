@@ -84,7 +84,32 @@ def main():
         ax.legend(fontsize=7)
     fig.tight_layout()
     fig.savefig(os.path.join(a.out, "fig_worlds.png"), dpi=110)
-    print("wrote fig_budget.png, fig_worlds.png")
+    plt.close(fig)
+
+    # held-out loss against training step (criterion 6): the shared nets and the per-world reference nets of every arm
+    fig, axs = plt.subplots(1, len(arms), figsize=(5.2 * len(arms), 4.0), squeeze=False)
+    for ax, arm in zip(axs[0], arms):
+        tc = A["arms"][arm].get("training_curves", {})
+        for k, c in tc.items():
+            name = k.split("|")[0].replace(arm + " ", "")
+            if name not in ("P0", "A", "P0s", "C", "Cft", "Csm", "D@512 s0", "FT@512 s0"):
+                continue
+            col = {"P0": "k", "A": "#1f77b4", "P0s": "gray", "C": "#d62728", "Cft": "#ff7f0e", "Csm": "#e377c2",
+                   "D@512 s0": "#9467bd", "FT@512 s0": "#2ca02c"}[name]
+            x = [max(t, 50) for t in c["step"]]
+            ax.plot(x, c["val_mean"], "-", color=col, lw=1.1, alpha=0.9)
+        for name, col in (("P0", "k"), ("A (amortised S)", "#1f77b4"), ("P0s", "gray"), ("C", "#d62728"), ("C fine-tuned", "#ff7f0e"),
+                          ("C on 1,024 episodes", "#e377c2"), ("D(512)", "#9467bd"), ("FT(512)", "#2ca02c")):
+            ax.plot([], [], "-", color=col, label=name)
+        ax.set_xscale("log")
+        ax.set_xlabel("training step")
+        ax.set_ylabel("held-out fair energy score (mean over the group's nets)")
+        ax.set_title(f"arm {arm}: validation curves", fontsize=9)
+        ax.grid(alpha=0.3)
+    axs[0][0].legend(fontsize=7)
+    fig.tight_layout()
+    fig.savefig(os.path.join(a.out, "fig_curves.png"), dpi=110)
+    print("wrote fig_budget.png, fig_worlds.png, fig_curves.png")
 
 
 if __name__ == "__main__":
