@@ -48,7 +48,8 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 
 MARK = "PILOT_NEVER_REUSE_AS_EXAM"
-MAX_FILE, MAX_TOTAL = 20 << 20, 50 << 20
+import check_request as _CR  # noqa: E402   (round 5, T22: the publication's files and limits are stated in one place)
+MAX_FILE, MAX_TOTAL = _CR.PUBLICATION_MAX_FILE_BYTES, _CR.PUBLICATION_MAX_TOTAL_BYTES
 CRED_ENV = ("PRIME_API_KEY", "HF_TOKEN", "WANDB_API_KEY")
 CRED_KEY = re.compile(r"(?i)(api[-_]?key|authorization|bearer|passw(or)?d|cookie|credential|private[-_]?key|"
                       r"(access|refresh|auth|id|session)[-_]?token|secret|x-prime-team-id|team[-_]?id|user[-_]?id|user[-_]?name)")
@@ -465,8 +466,7 @@ def pack(request_path: str, pilot: str, out_dir: str | None = None, environ=None
 
     # ---- scrub machine details, scan, apply the size caps ----
     kept, left_out, scan_rows, total, replaced = {}, [], [], 0, 0
-    order = ["status.json", "PILOT_NEVER_REUSE_AS_EXAM.txt", "request.json", "config.toml", "resolved.toml", "model_entry.json", "usage.json",
-             "grades.json", "reference.json", "lab_log.jsonl", "submission.json", "transcript.md", "trace.redacted.jsonl"]
+    order = list(_CR.PUBLICATION_FILES)
     names = [n for n in order if n in files] + sorted(n for n in files if n not in order)
     for nm in names:
         data = files[nm]

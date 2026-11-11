@@ -24,7 +24,7 @@ PROFILES = {
     "ring": {
         "world": "ring",
         "config_name": "ring_r4",
-        "image": "physim2-ring:2",
+        "image": "physim2-ring:3",
         "box_cpus": 2,                                       # docker --cpus of every box (agent, verifier, item boxes)
         "box_memory_gb": 4,                                  # docker --memory; a rollout config may lower it, never raise it
         "max_turns": 150,

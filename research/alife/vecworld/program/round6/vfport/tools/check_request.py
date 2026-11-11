@@ -63,6 +63,11 @@ MAX_REQUEST_BYTES = 16 << 10
 PRIME_MODELS_URL = "https://api.pinference.ai/api/v1/models"
 REQUESTS_PREFIX = "research/alife/vecworld/program/rollouts/requests/"            # where requests are committed (never by this study)
 SHARED_LEDGER_PATH = "research/alife/vecworld/program/round6/rollouts/ledger.json"
+# Round 5 (runbook audit T22): the publication folder of a job as tools/pack_rollout.py builds it (these files in this
+# order, then submission/, key_scan.json and MANIFEST.json), its size limits in bytes, and the clean-up after a crash.
+PUBLICATION_FILES = ("status.json", "PILOT_NEVER_REUSE_AS_EXAM.txt", "request.json", "config.toml", "resolved.toml", "model_entry.json",
+                     "usage.json", "grades.json", "reference.json", "lab_log.jsonl", "submission.json", "transcript.md", "trace.redacted.jsonl")
+PUBLICATION_MAX_FILE_BYTES, PUBLICATION_MAX_TOTAL_BYTES = 20 << 20, 50 << 20
 STAGES = ("instance", "reference", "dry-run", "rollout", "close")                 # tools/vfrun.py --stage, in the order of a job
 GO_FILE = "LEAD-GO-MODEL-SPEND.json"
 GO_SCHEMA = "physim2-lead-go/v1"
@@ -565,7 +570,11 @@ def facts() -> dict:
             "stages": list(STAGES), "then": "tools/pack_rollout.py",
             "pilot_folder": {"go": GO_FILE, "go_schema": GO_SCHEMA, "go_max_age_days": GO_MAX_AGE_DAYS, "ledger": LEDGER, "instances": INSTANCES,
                              "shared_ledger": "shared-ledger.json", "shared_ledger_schema": SHARED_SCHEMA, "shared_ledger_source": SHARED_LEDGER_PATH},
-            "prices_from": PRIME_MODELS_URL}
+            "prices_from": PRIME_MODELS_URL,
+            "publication": {"folder": "publish/<job_id>/", "files": [*PUBLICATION_FILES, "submission/", "key_scan.json", "MANIFEST.json"],
+                            "max_file_bytes": PUBLICATION_MAX_FILE_BYTES, "max_total_bytes": PUBLICATION_MAX_TOTAL_BYTES,
+                            "created_once": True, "a_file_with_a_key_scan_hit": "left out and listed by name and count"},
+            "after_a_crash": {"stage": "close", "runbook": "If a run was interrupted, point 8", "then": "tools/pack_rollout.py"}}
 
 
 def facts_text() -> str:

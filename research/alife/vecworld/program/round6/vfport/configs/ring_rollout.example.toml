@@ -7,7 +7,7 @@
 # Every limit below is told to the agent in its task statement (TASK.md, section 4).
 schema = "physim2-rollout/v1"
 model = "qwen/qwen3.6-35b-a3b"          # a Prime inference model id (default)
-exam_profile = "ring"                   # physim2_env/profiles.py: ring world, exam config ring_r4, 64 items, image physim2-ring:2
+exam_profile = "ring"                   # physim2_env/profiles.py: ring world, exam config ring_r4, 64 items, image physim2-ring:3
 instance = "pilot-example-ring-001"     # REQUIRED: ^pilot-[a-z0-9-]{3,40}$ ; made with tools/make_instances.py --profile ring --id <this>
 max_turns = 150                         # 1..400    model replies (default 150)
 max_output_tokens_per_turn = 8192       # 256..32768 (default 8192)

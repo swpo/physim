@@ -1,6 +1,6 @@
 """exam_units -- unit checks of round 4's exam-side changes. RUNS ONLY INSIDE A THROWAWAY CONTAINER.
 
-    docker run -d --name NAME --network none --entrypoint sleep physim2-ring:2 infinity      (no mount, no socket)
+    docker run -d --name NAME --network none --entrypoint sleep physim2-ring:3 infinity      (no mount, no socket)
     tar -cf - research/.../round6/vfport research/.../round5/agentenv research/.../vw1/vw | docker cp - NAME:/
     docker exec -w /research/alife/vecworld/program/round6/vfport NAME python -B tests/exam_units.py
     docker rm -f NAME

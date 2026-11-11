@@ -124,7 +124,7 @@ def run_label() -> str:
     v = os.environ.get("VF_RUN_ID", "")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{5,62}", v):
         raise SystemExit("VF_RUN_ID is not set (or not a plain label of 6 to 63 characters). Start this tool as\n"
-                         "    VF_RUN_ID=<label of this run, e.g. physim2-pilot-20261110> python tools/...\n"
+                         "    VF_RUN_ID=<label of this run, e.g. physim2-pilot-r5> python tools/...\n"
                          "verifiers labels every container it creates with it (verifiers.run=<label>): after an interruption\n"
                          "that label is the only way to find this run's containers without touching anybody else's.")
     return v
@@ -544,9 +544,13 @@ def _reference_argv(req: dict, flat: dict, p: dict, profile: dict, floor_gib: fl
 def require_key_name(CR, environ=None) -> None:
     """A billed rollout starts only from a command whose environment holds the key's NAME: the key reaches vf-eval by
     the environment and no other way (the value is never read by this tool)."""
-    if KEY_VAR not in (os.environ if environ is None else environ):
+    env = os.environ if environ is None else environ
+    if KEY_VAR not in env:
         raise CR.Refused(f"a model rollout needs {KEY_VAR} in the environment of its command (the name is looked for; the value is "
                          "never read by this tool): the key reaches vf-eval by the environment and no other way")
+    if not env[KEY_VAR].strip():                             # round 5 (T24): an empty value makes verifiers fall back to the Prime login file
+        raise CR.Refused(f"{KEY_VAR} is set but empty in the environment of this command: verifiers would then take a key from the "
+                         "Prime login file; the key reaches vf-eval by the environment and no other way (only its emptiness was looked at)")
 
 
 def command_line_of(pid) -> str:

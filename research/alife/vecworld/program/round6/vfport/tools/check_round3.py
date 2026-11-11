@@ -55,7 +55,7 @@ checks, ev = {}, {}
 # ---- env (M1) ----
 real_environ = os.environ
 session = {"PATH": "/usr/bin:/bin", "HOME": "/Users/lead", "TMPDIR": "/var/folders/x/T/", "USER": "lead", "LANG": "en_US.UTF-8",
-           "VF_RUN_ID": "physim2-pilot-20261110",
+           "VF_RUN_ID": "physim2-pilot-r5",
            # everything below must NOT get through
            "DOCKER_HOST": "tcp://203.0.113.7:2375", "DOCKER_CONTEXT": "elsewhere", "DOCKER_CONFIG": "/tmp/x", "BUILDX_BUILDER": "remote",
            "MCP_HOST": "0.0.0.0", "MCP_PORT": "8000", "PHYSIM2_AGENTENV": "/tmp/other-checkout", "PHYSIM2_STORE": "/tmp/other-store",
@@ -526,7 +526,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scratch", required=True, help="an existing folder of the caller for the test's own small files")
     ap.add_argument("--out", required=True)
-    ap.add_argument("--image", default="physim2-ring:2")
+    ap.add_argument("--image", default="physim2-ring:3")
     ap.add_argument("--skip-container", action="store_true")
     a = ap.parse_args()
     scratch = os.path.realpath(a.scratch)

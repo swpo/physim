@@ -187,7 +187,7 @@ class Physim2Config(vf.TasksetConfig):
     """Public index of instances (default <store>/index.json)."""
     instances: list[str] | None = None
     """Instance ids to load (default: every row of the index)."""
-    image: str = "physim2-ring:2"
+    image: str = "physim2-ring:3"
     """The one image of both boxes (docker/Dockerfile.ring)."""
 
 

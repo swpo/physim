@@ -63,7 +63,7 @@ def main():
     c = RC.expand(full)
     check("config: expansion puts every limit where verifiers or the task enforces it, and fixes the rest",
           c["model"] == "openai/gpt-6-astra" and c["push"] is False and c["num_rollouts"] == 1 and c["sampling"] == {"max_tokens": 16384, "reasoning_effort": "low"}
-          and c["env"]["id"] == "physim2-verifier" and c["env"]["taskset"] == {"id": "physim2-env", "image": "physim2-ring:2", "instances": ["pilot-abc-001"],
+          and c["env"]["id"] == "physim2-verifier" and c["env"]["taskset"] == {"id": "physim2-env", "image": "physim2-ring:3", "instances": ["pilot-abc-001"],
                                                                               "task": {"limits": {"max_context_tokens": 200000, "cap_usd": 5.0, "box_cpus": 2.0, "box_memory_gb": 2.0}}}
           and c["env"]["agent"] == {"max_turns": 22, "timeout": {"rollout": 2700.0}, "runtime": {"type": "docker", "cpu": 2.0, "memory": 2.0},
                                     "harness": {"id": "bash", "edit": True, "search": False}, "retries": {"max_retries": 0}}
@@ -82,7 +82,7 @@ def main():
     t = PROFILES.table()
     check("profiles: the ring profile: 64 items, 256 samples per item, 400 ticks, a reset costs 17, image 2, six reference policies",
           len(t) == 1 and t[0]["profile"] == "ring" and t[0]["items"] == 64 and t[0]["samples_per_item"] == 256 and t[0]["lab_ticks"] == 400 and t[0]["reset_cost_ticks"] == 17
-          and t[0]["image"] == "physim2-ring:2" and t[0]["reference_policies"] == ["null", "D", "P0", "PM", "S", "C"] and t[0]["exam_config"] == "ring_r4", table=t)
+          and t[0]["image"] == "physim2-ring:3" and t[0]["reference_policies"] == ["null", "D", "P0", "PM", "S", "C"] and t[0]["exam_config"] == "ring_r4", table=t)
     capped = TASKSET.parse_box("/sys/fs/cgroup/cpu.max=200000 100000 \n/sys/fs/cgroup/memory.max=4294967296 \n/sys/fs/cgroup/pids.max=512 \nnproc=2\n"
                                "workspace=tmpfs 1048576\ntmp=tmpfs 524288\nrootfs=ro,relatime,lowerdir=/x")
     free = TASKSET.parse_box("/sys/fs/cgroup/cpu.max=max 100000 \n/sys/fs/cgroup/memory.max=max \n/sys/fs/cgroup/pids.max=max \nnproc=4\nworkspace=overlay 263174212\n"

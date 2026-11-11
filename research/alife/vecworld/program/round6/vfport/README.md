@@ -997,6 +997,86 @@ their commands). A disk emergency of another job (under 200 MB free for some min
 checks through the disk watchdog (`EXIT 97`, nothing deleted); it was run again.
 
 
+### 8.17 Round 5: the two sweeps, K9 and X13 closed by class (12 Nov 2026; not audited yet)
+
+Round 4 ended GO for steps 0 to 2 at `0697487eb` and NO-GO for step 3 on K9 (a model could make vf-eval hold about
+64 GiB through verifiers' interception server) and X13 (one `bash` command holds the agent for up to an hour, and
+the statement did not say so). Each earlier round found a new item of the same two classes after the previous one
+was fixed, so this round enumerated each class whole before changing code. Evidence labels: **read** (the cited
+lines; `vf:` is `verifiers/v1/` of the pinned checkout), **tripwires** (`tools/check_round4.py` part F,
+`tests/exam_pure.py`), **container** (`tests/exam_units.py` in a throwaway container), **vf-eval** (through vf-eval
+in capped boxes: `tools/check_step3.py`, part `flood5`), **inferred**. Nothing here ran on macOS.
+
+#### What a box can make a process on the host hold (the channel sweep)
+
+Every way a process inside a box (the agent's box, a grading box, a reference box) can make a process on the host
+(vf-eval with its interception server, box proxies and `docker` clients; the laboratory; the task controller; the
+tools that capture, grade, pack and log) hold memory, disk, CPU, connections or descriptors. "Today" is the round-4
+head `0697487eb`; line numbers of this folder are those of this round's pin.
+
+| # | channel (from a box) | host process | bound today (file:line) | bound after this round | test |
+|---|---|---|---|---|---|
+| 1 | request body to the interception server, with the secret read from the chat program's command line (vf:harnesses/utils/launch.py:54) | vf-eval | **1 GiB**, read whole once the secret matches (vf:interception/server.py:78, 424, 586-591): unbounded for the Mac | 16 MiB (`INTERCEPTION_BODY_MAX`, `physim2_env/runtime.py:108`, set by name at `:273` before any server starts; `start()` reads it at server.py:424); `413` beyond | tripwires F1-F2 (1 GiB declared: `413` after 19 MiB sent, the process grew 17 MiB); vf-eval G3 |
+| 2 | Python objects a parsed body becomes (pydantic `from_json`, then the chat dialect's models) | vf-eval | about 25 x the body (measured under tripwires: 7 MiB of `{},` -> 193 MiB; 8 MiB of short messages -> 196 MiB), x 64 requests at once: **unbounded for the Mac** | about 25 x 16 MiB x 1 request at once, about 0.4 GiB, freed when the request is answered | vf-eval G5 (peak RSS during 8 x 15 MiB and 2 x 1 GiB) |
+| 3 | requests of one box at once to the interception server (`/v1/chat/completions`, `/tool`, `/v1/models`, aux routes) | vf-eval | **64** (the proxy's connections, `runtime.py:106`) | 1 per box (`CALLBACK_ACTIVE_MAX`, `runtime.py:109`; the semaphore at `:405-414` is taken before the head is forwarded, so nothing of a waiting request reaches the server) | tripwires F4 (5 at once reach the upstream one at a time); vf-eval G4 |
+| 4 | body bytes of one request through the proxy to a host callback | the callback's process | **none of its own** (the relay paces, it does not cap) | 17 MiB (`CALLBACK_UPLOAD_MAX`, `runtime.py:110`, in `pump`): the box's connection is closed | tripwires F6 (40 MiB sent, 17 MiB arrived) |
+| 5 | connections of a box to its proxy; bytes waiting per connection | vf-eval | 64; 2 x 128 KiB + 64 KiB (`runtime.py:105-106`) | unchanged | check_round4 E6, E7; check_step3 `flood` (round 4) |
+| 6 | a request head through the proxy | vf-eval | 64 KiB (asyncio's reader limit at vf:runtimes/docker/egress.py:194; 128 KiB in the pilot's relay), 10 s (egress.py:20) | unchanged; every head is now read by the pilot's proxy, bearer or not | read |
+| 7 | "interception: unauthorized request" (server.py:588), "aux call failed" (server.py:931), "models call failed" (server.py:962): one log record per request a box sends | vf-eval's log (the rollout's log file on the host's disk) | **one line per request, no limit** (a box can send thousands a second) | 20 records of a kind in full, then one a minute with the count dropped; each cut at 2,000 characters (`RepeatLimit`, `runtime.py:178`, installed at `:224`) | tripwires F7; vf-eval G6 (3,000 requests without the secret) |
+| 8 | aiohttp's traceback for a request whose handler fails (a body that parses but is not an object) | vf-eval's log | **one traceback per request** (Python's last-resort handler) | the same filter, on aiohttp's loggers and on the last-resort handler | vf-eval G4/G6 (8 such requests) |
+| 9 | the laboratory's request log on the host (`store/<instance>/hidden/labs/<rollout>/log.jsonl`, written at `../../round5/agentenv/evaluator/lab_service.py:221`): one line per request, free ones and refused ones included, with the refusal's text, which repeats an operation's or an argument's name the box sent | the laboratory (disk) | **no limit on lines; a line up to 4 MiB** | 20,000 lines, then one `log_full` line; `error` and `detail` cut at 500 characters (`BoundedLog`, `physim2_env/lab_tools.py:42-83`, used at `:102`) | tripwires F8; vf-eval G7 (two names of 3 MiB, 2,000 refused requests) |
+| 10 | warnings of the MCP library and of uvicorn in the laboratory's process | the laboratory's log | uvicorn at `critical`, no access log (`lab_tools.py:326`); the library's own warnings: **no limit** | `RepeatLimit` in that process too (`lab_tools.py:301`) | read; tripwires F7 (the filter) |
+| 11 | request bodies to the laboratory | the laboratory | 4 MiB, 8 at once (`bearer.py:59-60`) | unchanged | check_round4 E1-E5 |
+| 12 | the laboratory's state file, rewritten after every request | the laboratory | constant size, replaced in place | unchanged | read |
+| 13 | output of every `docker` client vf-eval starts (the harness's command, `exec`, the in-box check, `cp`) | vf-eval | 96 MiB stdout, 4 MiB stderr per client (`runtime.py:104`, `_communicate`) | unchanged | check_round4 E8-E9; check_step3 `flood` |
+| 14 | the in-box check's report | vf-eval | 1 MiB, cut in the box (`access.py:95`) | unchanged | check_step3 `flood` |
+| 15 | an item's reply and its standard error (grading boxes) | vf-eval, grade record | 1 MiB reply (`grading.driver_cmd`), 4,000 bytes of stderr per item (`public/_item.py:617`) | unchanged | check_driver |
+| 16 | `submission/` taken every 30 s and before every turn | vf-eval, the store (disk) | the archive at most 64 + 8 MiB, read through `head -c`; one checkpoint file, replaced (`access.py:137`, `capture.py`) | unchanged | code audit K2 (round 4) |
+| 17 | model calls that pass the spend stop: the trace in memory and in `traces.jsonl`, the spend log | vf-eval | at most `max_turns` calls (vf:session.py:98); each prompt within `max_context_tokens` (`spend.py:170-183`); a refused call stops the run (`spend.py:249-255`) | unchanged; the effort and `n` now must be exactly the config's (K10) | check_round4 C, F10 |
+| 18 | requests after the run stopped: read and parsed, then `400` (server.py:591, 664) | vf-eval | as rows 1 to 3 | as rows 1 to 3 | vf-eval G4 |
+| 19 | the task controller's socket (`access.py:210`, lines of 8 KiB) | vf-eval | only the laboratory reaches it | unchanged | read |
+| 20 | vf-eval's output in the rollout stage of `tools/vfrun.py` | the tool's log file | written to the log file, not held (`vfrun.py:781`, `capture=False`); its volume is rows 7, 8, 10 | bounded through rows 7, 8, 10 | vf-eval G6 |
+| 21 | what `tools/pack_rollout.py` reads and publishes | the tool | reads the trace and the laboratory's log whole (rows 9, 17); publishes at most 20 MiB per file, 50 MiB in all | unchanged; the limits now stand in the block of facts (T22) | check_step3 `route` R24 |
+| 22 | CPU of vf-eval while a box floods | vf-eval | about one core (parsing; `nice -n 10`) | about one core, one request at a time | residual (section B of the runbook) |
+| 23 | CPU of the laboratory | the laboratory | at most 8 requests at once in one process; each simulation is charged to the budget, a refused one is cheap: about one core | unchanged | residual |
+| 24 | file descriptors of vf-eval: 2 per proxied connection | vf-eval | at most 2 x 64 + 2 per box | unchanged | residual, inferred: a shell on macOS often starts with a soft limit of 256 descriptors; a box at 64 connections uses about half of them; if vf-eval runs out, its own calls fail and the run fails, nothing on the Mac |
+| 25 | a grading or reference box's proxy | vf-eval | no host callback is registered for it: its requests are refused (`403`, `407`); 64 connections | unchanged; the gate and the upload cap apply to any callback | read |
+
+25 channels; 9 had no bound or one too large for the Mac (rows 1 to 4 and 7 to 10, row 4 counted with its
+destination); all 9 are bounded now, and rows 22 to 24 stay as residual risks (CPU and descriptors of the pilot's
+own processes, not of the Mac). The bound that rows 1 to 3 give together (about 0.4 GiB of vf-eval at once, freed
+after each request) replaces the runbook's former line "some hundreds of MiB at most, whatever it sends"
+(`RUNBOOK_MAC.md`, section B).
+
+#### What the agent experiences, against what it is told (the disclosure sweep)
+
+| # | what | told before this round | what the code does (source) | fixed how |
+|---|---|---|---|---|
+| 1 | one `bash` command holds the agent (X13) | nothing | the stock harness runs each command with `subprocess.run(..., timeout=3600)` and waits for it (vf:harnesses/utils/core.py:160-169); the harness has no parameter for it, so the pin cannot set min(600 s, a sixth of the wall) without patching it: **disclosed only** | section 4: one line, the number read from the harness's own source (`bundle.harness_constants`, `bundle.py:82`), "as long as this whole run or longer" when it is; how to avoid it: `timeout`, or a background job with ALL its output in a file; also in `lab.card()` (`bash_command_max_seconds`) |
+| 2 | a command that passes the limit | nothing | the shell is killed, the result is `error: Command '...' timed out after 3600 seconds`, its output is lost (core.py:170-171) | the same line |
+| 3 | a background job started with `&` | nothing | the harness reads the command's output to its end, so a job that still holds it keeps the command waiting until the job ends (core.py:162-164) | the same line (`nohup ... > fit.log 2>&1 &`) |
+| 4 | how a tool result is cut, and what it holds | "a tool result longer than 20,000 bytes is cut" (the number typed in `bundle.py`) | the first and the last 10,000 bytes are kept with a note of what was cut (vf:harnesses/utils/compaction.py:18, 128-140); standard output then standard error, no exit status (core.py:169); output that is not UTF-8 turns the whole result into an error message (core.py:165, 170) | one line in section 4, the number read from the harness's source; `bundle.py` no longer types it |
+| 5 | the context stop (X17) | "if your next turn could exceed N tokens, the run ends before that turn" | the bound is the provider's count of the last prompt plus ONE TOKEN PER BYTE added since, plus 16 per message and 64 (`spend.py:56-57, 170-183`); `context_tokens_left` is the provider's count of the last turn (`access.py:227-235`), so the run can end while it is above zero | said in section 4, with the meter's constants imported from `spend.py` |
+| 6 | the places the agent can write to (X15) | `/workspace`, `/tmp`, `/dev/shm` "and nowhere else" | `/etc/physim2` (1 MiB) and `/runtime` (16 MiB) are memory file systems root can write to (`boxcaps.py:39-40`) | section 4 names them, with their sizes from the caps, as the operator's places, not graded |
+| 7 | what `lab.validate` closes (X16) | `/workspace`, `/tmp`, `/dev/shm` | `/etc/physim2` and `/runtime` stayed readable: a predictor reading a file put there passed "as graded" and failed every item (`public/validate.py:122`) | they are in `SCRATCH_PLACES` (`validate.py:125`); the statement, the tool's text and the client say so; `python -m physim2.validate` prints first that it is NOT the check as graded and points to `lab.validate` (`validate.py:342`) |
+| 8 | the laboratory's log in `/workspace` (X14) | "every reply is saved" | a failed write was silent (`labclient.py`, `_log`) | the client says so on standard error (first time, then every 50th) and `lab.usage()` reports `lab_log_failures`; the statement says so |
+| 9 | the laboratory's own limits per call | nothing | at most 4 MiB per call (`413`) and 8 calls at once (`503`) (`bearer.py:59-60`) | section 3, rendered from `bearer.py` |
+| 10 | a failed item's fallback (X12) | the baseline's forecast (right) | the same; a docstring of `access.py` still said "scored as K" | the docstring |
+| 11 | turns, wall time, tokens per reply, spend, what is graded at the end, the box's envelope, `lab.usage()`'s clocks | rendered from the run (round 4: X1, X5) | as told (vf:session.py:98; `spend.py` `admit`; `access.py:215-240`; `boxcaps.py`) | unchanged |
+
+11 rows; 9 disclosures were wrong or missing (rows 1 to 9); row 10 was a wrong comment, not seen by the agent;
+row 11 was right. Every number in the new text is rendered from the code that enforces it (`tests/exam_pure.py`
+checks the X13, X15, X17 and sweep lines; `tests/exam_units.py` the bundle's text and X16 in a container).
+
+#### The other items of this round
+
+| item | change | where | test |
+|---|---|---|---|
+| K7 | the key scan's needles: the value plain, and in base64 and URL-safe base64 at each of the three alignments (only the characters that do not depend on the neighbours) | `tools/pack_rollout.py`, `credential_needles` | tripwires F9 (6 offsets x 2 alphabets) |
+| K10 | the spend stop admits only the config's `reasoning_effort` (none for `default`), written by `tools/vfrun.py` into the spend table, and `n` only as the integer 1 (`True` was 1) | `physim2_env/spend.py`, `check_shape`, `Meter`; `tools/vfrun.py` | tripwires F10 |
+| T19 to T25, CRED-2 | runbook text: step 0's first two commands before each job; $50 (the lead's decision) in 3b and on the STOP line; `EXIT 2` read both ways; the publication files, limits in bytes and the clean-up after a crash in the block of facts (`check_request.facts`, `"publication"`, `"after_a_crash"`); the runner's intake differences refused at 3a or 3b; "point 8 does not apply"; an empty `PRIME_API_KEY` refused (`vfrun.require_key_name`); the credential helpers in section B | `RUNBOOK_MAC.md`, `tools/check_request.py`, `tools/vfrun.py` | check_runbook; check_round4 D39 |
+| the Mac session's rulings (COORD, 11 Nov) | names of this round only: image `physim2-ring:3` (no file baked into it changed), pilot folder and run label `physim2-pilot-r5`; step 0 refuses its own names and lists round 4's as harmless; a fresh checkout at a path named for the round; "at least" 4 CPUs and 6 GB; `command grep` in every command; step 1's dry run refuses a Python that is not uv's own; section B lines on the session's shell and environment | `RUNBOOK_MAC.md`, `physim2_env/profiles.py`, `taskset.py`, the tools' defaults | check_runbook; rehearsal |
+
 ## 9. Where the code contradicted the memo, and what else turned up
 
 1. **"This cloud container has no Docker daemon" (memo section 3).** The binaries are installed and the daemon

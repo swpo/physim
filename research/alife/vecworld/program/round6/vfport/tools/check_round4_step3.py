@@ -438,7 +438,9 @@ def run(check, raises, scratch):
           CR.PRIME_MODELS_URL == vfrun.PRIME_INFERENCE_URL + "/models" and vfrun.KEY_VAR == "PRIME_API_KEY" and "DYLD_INSERT_LIBRARIES" in vfrun.refused_names({"DYLD_INSERT_LIBRARIES": "x"})
           and vfrun.refused_names({"PRIME_API_KEY": "x", "HOME": "/h", "SSL_CERT_FILE": "/c"}) == [] and "SSL_CERT_FILE" not in vfrun.ENV_PASS + vfrun.ENV_PASS_MODEL
           and "needs PRIME_API_KEY in the environment" in (refused(lambda: vfrun.require_key_name(CR, {"HOME": "/h", "PRIME_TEAM_ID": "t"})) or "")
-          and vfrun.require_key_name(CR, {"PRIME_API_KEY": "made-up"}) is None)
+          and vfrun.require_key_name(CR, {"PRIME_API_KEY": "made-up"}) is None
+          and "set but empty" in (refused(lambda: vfrun.require_key_name(CR, {"PRIME_API_KEY": " "})) or "")   # round 5, T24
+          and "set but empty" in (refused(lambda: vfrun.require_key_name(CR, {"PRIME_API_KEY": ""})) or ""))
     # ---- the one stop path, with a child that is an object of this test (nothing is signalled) ----
     import subprocess as SP
 

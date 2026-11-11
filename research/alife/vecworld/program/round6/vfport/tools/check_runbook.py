@@ -46,8 +46,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PLACE = "/ABSOLUTE/PATH/TO/vfport"
 GUARD = f'cd "{PLACE}" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && '
-LABEL = "physim2-pilot-20261110"
-PILOT = '"$HOME/physim2-pilot-20261110'
+LABEL = "physim2-pilot-r5"
+PILOT = '"$HOME/physim2-pilot-r5'
 ROLLOUTS = '"$HOME/physim2-rollouts'
 
 
@@ -210,7 +210,7 @@ def main():
     checks["text_every_rm_rf_is_chained_behind_its_checks_and_names_the_two_pilot_folders"] = len(rm) == 2 and all(
         c.count("rm -rf") == 1 and f'test -f {PILOT}/store/index.json" && test -d {PILOT}/scratch"' in c.split("rm -rf")[0]
         and re.search(r"&& rm -rf ", c) and want_rm in c and "\n" not in c and ";" not in c.replace(gate, "") for c in rm)
-    checks["text_step_4_copies_the_results_out_before_it_deletes"] = any("cp " in c.split("rm -rf")[0] and "physim2-pilot-20261110-results" in c.split("rm -rf")[0]
+    checks["text_step_4_copies_the_results_out_before_it_deletes"] = any("cp " in c.split("rm -rf")[0] and "physim2-pilot-r5-results" in c.split("rm -rf")[0]
                                                                         and "test -s " in c.split("rm -rf")[0] for c in rm)
     checks["text_the_shared_image_is_kept"] = "docker rmi" not in joined and "is not this pilot's to\nremove" in text
     never = ("`sudo`", "`docker run` with `-v`, `--mount`", "pasting the route's own commands", "`physim2_env/public/_item.py`", "`agents/*.py`",
