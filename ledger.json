@@ -289,16 +289,16 @@
       "state": "cancelled"
     },
     {
-      "billed_usd": null,
+      "billed_usd": 2.1274,
       "cap_usd": 7.8,
-      "conservative_usd": 2.1783,
-      "finished_at": null,
+      "conservative_usd": 2.2654,
+      "finished_at": "2026-11-11T13:50:40Z",
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 1.095,
+      "hours": 1.138,
       "job_id": "r6-foundryexam-003",
       "purpose": "Round-6 study foundryexam: exam pilot where the hidden law is a network's weights; rerun of 002 (cancelled: nets several times too slow) with 50 training steps per dispatch, a cheaper net and a presmoke speed guard; 16 screened-prior worlds and 2 x 12 neighbourhood worlds",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "running"
+      "state": "done"
     },
     {
       "billed_usd": 0.0501,
@@ -339,10 +339,10 @@
   ],
   "summary": {
     "auto_job_cap_usd": 25.0,
-    "committed_usd": 58.6734,
+    "committed_usd": 53.0008,
     "prior_spend_usd": 0.0,
-    "spent_usd": 53.0517,
+    "spent_usd": 53.0008,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T13:47:41Z"
+    "updated_at": "2026-11-11T13:50:40Z"
   }
 }

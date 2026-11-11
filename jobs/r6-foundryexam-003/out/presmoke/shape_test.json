@@ -1,0 +1,20 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "ms_per_step_lock16": 18.625775973002117,
+ "ms_per_net_step_lock16": 1.1641109983126323,
+ "ms_per_step_big2": {
+  "random": 10.119600296020508,
+  "own": 9.745322863260904
+ },
+ "lock_steps_per_arm": 24700,
+ "projected_net_hours": {
+  "P": 0.22649433855657228,
+  "N30": 0.14113499770561855,
+  "N10": 0.14113499770561855
+ },
+ "projected_net_hours_total": 0.5087643339678093,
+ "full_hours": 2.75,
+ "seconds": 44.64331817626953,
+ "net_hours_available": 2.143688854376475,
+ "speed_ok": true
+}

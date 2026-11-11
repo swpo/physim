@@ -19,10 +19,20 @@
     "src_bytes": 14809872
   },
   "cap_usd": 7.8,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 2.1784
+  "collected": {
+    "error": null,
+    "files": 50,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 20775707,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 2.1274,
+    "conservative_usd": 2.2654
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-11T13:50:40Z",
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
@@ -48,11 +58,21 @@
       "at": "2026-11-11T12:46:20Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-11T13:50:14Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-11T13:50:40Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "r6-foundryexam-003",
   "max_estimate_usd": null,
-  "message": "heartbeat",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -81,7 +101,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 2.1274,
       "created_at": "2026-11-11T12:42:17Z",
       "data_center": "us-east-1",
       "gpu": "A100_40GB",
@@ -94,11 +114,11 @@
       "ready_at": "2026-11-11T12:46:10Z",
       "requested_at": "2026-11-11T12:42:01Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-11T13:50:19Z"
     }
   ],
-  "pods_terminated": null,
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-11T12:59:27Z",
     "file": "jobs/r6-foundryexam-003/review.md",
@@ -108,7 +128,7 @@
   "run_deadline": "2026-11-11T15:46:20Z",
   "run_started_epoch": 1794400919.702623,
   "started_at": "2026-11-11T12:46:20Z",
-  "state": "running",
+  "state": "done",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\nstep 2800/3000 train 0.1033 val [0.168, 0.093, 0.1793, 0.1126, 0.1276, 0.1001] (45s)\n13:45:23 [  53.5 min]   net N10 <ssh-target> s0[0] step 3000/3000 train 0.0984 val [0.1683, 0.0927, 0.1796, 0.1131, 0.1271, 0.0992] (48s)\n13:45:24 [  53.6 min]   N10 <ssh-target> s0[0]: 13.6 ms per step of 12 nets\n13:45:31 [  53.7 min]   net N10 <ssh-target> s0[0] step 400/1200 train 0.1141 val [0.1636, 0.0763, 0.1747, 0.098, 0.1221, 0.0985] (7s)\n13:45:37 [  53.8 min]   net N10 <ssh-target> s0[0] step 800/1200 train 0.1120 val [0.1608, 0.0756, 0.1721, 0.0977, 0.1201, 0.0964] (13s)\n13:45:44 [  53.9 min]   net N10 <ssh-target> s0[0] step 1200/1200 train 0.1137 val [0.1594, 0.0753, 0.1712, 0.0975, 0.1189, 0.0958] (19s)\n13:45:44 [  53.9 min]   N10 <ssh-target> s0[0]: 13.6 ms per step of 12 nets\n13:46:00 [  54.1 min]   net N10 Cft[0] step 1000/1500 train 0.1171 val [0.1653, 0.076, 0.157, 0.0964, 0.1196, 0.0999] (15s)\n13:46:07 [  54.3 min]   net N10 Cft[0] step 1500/1500 train 0.1135 val [0.1641, 0.0751, 0.1557, 0.0954, 0.1182, 0.0983] (23s)\n13:46:07 [  54.3 min]   N10 Cft[0]: 13.9 ms per step of 12 nets\n13:46:23 [  54.5 min]   net N10 Cft[1] step 1000/1500 train 0.1128 val [0.1659, 0.0759, 0.1563, 0.097, 0.1203, 0.1005] (15s)\n13:46:30 [  54.7 min]   net N10 Cft[1] step 1500/1500 train 0.1161 val [0.164, 0.0746, 0.1544, 0.0964, 0.1189, 0.098] (23s)\n13:46:31 [  54.7 min]   N10 Cft[1]: 13.9 ms per step of 12 nets\n13:46:38 [  54.8 min]   net N10 <ssh-target> s0[0] step 400/1500 train 0.1317 val [0.2111, 0.1144, 0.212, 0.1443, 0.1655, 0.1631] (6s)\n13:46:44 [  54.9 min]   net N10 <ssh-target> s0[0] step 800/1500 train 0.1058 val [0.2065, 0.1148, 0.2052, 0.1493, 0.1506, 0.1441] (13s)\n13:46:51 [  55.0 min]   net N10 <ssh-target> s0[0] step 1200/1500 train 0.1014 val [0.2084, 0.1186, 0.2086, 0.153, 0.1472, 0.1381] (19s)\n13:46:56 [  55.1 min]   net N10 <ssh-target> s0[0] step 1500/1500 train 0.0927 val [0.2098, 0.1203, 0.2085, 0.1552, 0.1462, 0.137] (24s)\n13:46:56 [  55.1 min]   N10 <ssh-target> s0[0]: 13.6 ms per step of 12 nets\n13:47:03 [  55.2 min]   net N10 <ssh-target> s0[0] step 400/800 train 0.1060 val [0.1666, 0.082, 0.1749, 0.1049, 0.1154, 0.1133] (7s)\n13:47:09 [  55.3 min]   net N10 <ssh-target> s0[0] step 800/800 train 0.1013 val [0.1661, 0.0816, 0.1754, 0.1053, 0.1143, 0.1105] (13s)\n13:47:10 [  55.3 min]   N10 <ssh-target> s0[0]: 13.7 ms per step of 12 nets\n13:47:17 [  55.4 min]   net N10 <ssh-target> s0[0] step 400/800 train 0.1012 val [0.2143, 0.1352, 0.2615, 0.1755, 0.1741, 0.1627] (6s)\n13:47:23 [  55.5 min]   net N10 <ssh-target> s0[0] step 800/800 train 0.0799 val [0.2198, 0.1424, 0.265, 0.1826, 0.1746, 0.1597] (13s)\n13:47:24 [  55.5 min]   N10 <ssh-target> s0[0]: 13.7 ms per step of 12 nets\n13:47:31 [  55.7 min]   net N10 <ssh-target> s0[0] step 400/400 train 0.0892 val [0.1639, 0.0832, 0.185, 0.1113, 0.1025, 0.0989] (7s)\n13:47:31 [  55.7 min]   N10 <ssh-target> s0[0]: 13.7 ms per step of 12 nets\n13:47:38 [  55.8 min]   net N10 <ssh-target> s0[0] step 400/400 train 0.0794 val [0.2489, 0.2208, 0.3056, 0.2824, 0.3311, 0.2318] (6s)\n13:47:39 [  55.8 min]   N10 <ssh-target> s0[0]: 13.7 ms per step of 12 nets\n== out/progress.txt\nPILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material\n12:46:30 [job.sh] start, size full, arms P,N30,N10, max hours 2.75, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\nname, memory.total [MiB], driver_version\nNVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08\n12:51:48 [job.sh] presmoke exit 0\n12:51:48 [job.sh] full pass: 2.662 h left of 2.75\n",
-  "updated_at": "2026-11-11T13:47:41Z"
+  "updated_at": "2026-11-11T13:50:40Z"
 }
