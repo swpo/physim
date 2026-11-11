@@ -190,6 +190,21 @@ out["compute_limit"] = {
                       "gpu_memory": "round5/vortexexam summary.json [review_of_job2]: peak about 10 GB at batch 1024, 128 px"},
 }
 
+# ----------------------------------------------------------------------------- caps by the rule at the upper hour estimate, and first-job spend
+st1h_m = (stage1_mt / 7091 / 3600 + 0.5 + 0.1, (stage1_mt + (1536 + 1536 + 2048) * EPM) / (7091 * 0.45) / 3600 + 0.8 + 0.1)   # nets 0.5-0.8 h: estimate
+out["caps_by_rule_A100_40GB_at_upper_hours"] = {
+    "defect_gliders_stage1": cap(A100, round(h1[1], 2)), "defect_gliders_stage2": cap(A100, round(h2[1], 2)),
+    "defect_gliders_stage1_stats_minimum": cap(A100, out["defect_gliders"]["stats_critic_minimum_stage1"]["hours_A100_40GB_estimate"][1]),
+    "sublevel_second_whole": cap(A100, round(hm[1], 2)), "sublevel_second_main_at_3.5_h": cap(A100, 3.5),
+    "sublevel_second_stage1": {"hours_estimate": [round(x, 2) for x in st1h_m], "usd": [round(A100 * x, 2) for x in st1h_m], "cap": cap(A100, round(st1h_m[1], 2))},
+    "compute_limit_stop_rule": cap(A100, round(hs[1], 2)), "compute_limit_full": cap(A100, round(hf[1], 2))}
+half32_h = hs[1] - (128 * 16 * T) / (r64[0] * 4) / 3600        # 32 px at the same cost per pixel-tick as the cards job's 64 px rate: not measured
+out["compute_limit"]["stop_rule_job"]["if_the_32px_design_halves"] = {"upper_hours": round(half32_h, 2), "cap_by_rule": cap(A100, round(half32_h, 2))}
+out["compute_limit"]["stop_rule_job"]["max_hours_under_a_cap_of_6"] = max_hours(A100, 6)
+first = (A100 * (h1[0] + st1h_m[0] + hs[0]), A100 * (h1[1] + st1h_m[1] + hs[1]))
+out["first_jobs_expected_usd"] = {"value": [round(x, 1) for x in first], "what": "defect_gliders stage 1 + sublevel_second stage 1 + compute_limit stop rule, A100 40GB",
+                                  "billed_by_the_end_of_round5": 46.27, "approved": 1000, "source": "gpu/LEDGER.md"}
+
 # ----------------------------------------------------------------------------- enforcement of decision 2 as the port stands
 net = None
 p = os.path.join(HERE, "results", "net_cpu_cost.json")

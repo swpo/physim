@@ -17,3 +17,5 @@
   arithmetic holds in all three; differences are in rates (membrane much cheaper than the designer's bracket; vortex 64/32 px unmeasured on the A100),
   in budgets that the reference policies do not fit (defect_gliders H; compute_limit pooled designs) and in what the port can meter.
 - Next: CRITIQUE.md (< 900 words), commit, push, remove worktree and scratch.
+- DONE: CRITIQUE.md written (897 words by wc -w). Files: CRITIQUE.md, recompute.py -> results/recompute.json, net_cpu_cost.py -> results/net_cpu_cost.json.
+  Worktree and scratch removed after the push.

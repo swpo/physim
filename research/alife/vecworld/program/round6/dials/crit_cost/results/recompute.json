@@ -296,7 +296,12 @@
    "cut_32px_design_to_128_points_saves_member_ticks": 827392,
    "cards_job_64px_detail": "r6-cards-001 progress.txt vortex64__B: main 16 members x 500 ticks in 78.5 s (102/s, batch 16), branch 32 x 30 x 32 member-ticks in 92.4 s (332/s, device batch 960)",
    "share_of_member_ticks_at_32px": 0.8,
-   "note": "the 32 px rate is not measured on any card; the 64 px rate on the A100 40GB is measured only in the cards job (209)"
+   "note": "the 32 px rate is not measured on any card; the 64 px rate on the A100 40GB is measured only in the cards job (209)",
+   "if_the_32px_design_halves": {
+    "upper_hours": 2.15,
+    "cap_by_rule": 4.88
+   },
+   "max_hours_under_a_cap_of_6": 2.71
   },
   "full_study": {
    "exam_equivalent_member_ticks": 1600000.0,
@@ -353,6 +358,36 @@
    "at_64px": 20971520,
    "gpu_memory": "round5/vortexexam summary.json [review_of_job2]: peak about 10 GB at batch 1024, 128 px"
   }
+ },
+ "caps_by_rule_A100_40GB_at_upper_hours": {
+  "defect_gliders_stage1": 3.01,
+  "defect_gliders_stage2": 4.26,
+  "defect_gliders_stage1_stats_minimum": 3.5,
+  "sublevel_second_whole": 6.11,
+  "sublevel_second_main_at_3.5_h": 7.56,
+  "sublevel_second_stage1": {
+   "hours_estimate": [
+    0.66,
+    1.13
+   ],
+   "usd": [
+    1.32,
+    2.24
+   ],
+   "cap": 2.85
+  },
+  "compute_limit_stop_rule": 5.41,
+  "compute_limit_full": 10.47
+ },
+ "first_jobs_expected_usd": {
+  "value": [
+   4.3,
+   9.5
+  ],
+  "what": "defect_gliders stage 1 + sublevel_second stage 1 + compute_limit stop rule, A100 40GB",
+  "billed_by_the_end_of_round5": 46.27,
+  "approved": 1000,
+  "source": "gpu/LEDGER.md"
  },
  "net_training_inside_the_research_budget": {
   "block_net_cpu_s_per_step": 0.9758,
