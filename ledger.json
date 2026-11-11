@@ -301,6 +301,18 @@
       "state": "done"
     },
     {
+      "billed_usd": 0.0,
+      "cap_usd": 8.4,
+      "conservative_usd": 0.0,
+      "finished_at": null,
+      "gpu": "-",
+      "hours": 0,
+      "job_id": "r6-foundryexam-004",
+      "purpose": "Round-6 study foundryexam, follow-up of 003 (done): the true-weight reference net trained to convergence (4,096 episodes, 8,000 steps), 128 instead of 32 prior worlds in the neighbourhood arms, new seeds, new items and Labs on the same hidden worlds",
+      "requester_branch": "claude/fisim-agent-world-research-hepmlz",
+      "state": "received"
+    },
+    {
       "billed_usd": 0.0501,
       "cap_usd": 1.5,
       "conservative_usd": 0.1585,
@@ -343,6 +355,6 @@
     "prior_spend_usd": 0.0,
     "spent_usd": 53.0008,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T13:50:40Z"
+    "updated_at": "2026-11-11T14:04:40Z"
   }
 }
