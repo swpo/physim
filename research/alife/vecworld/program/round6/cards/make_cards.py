@@ -433,8 +433,11 @@ def main():
                   open(os.path.join(wd, "card.json"), "w"), indent=1, default=float)
         d, g = D[c0["run"]], G[c0["run"]]
         rows.append(dict(world=w, role=c0["role"], family=c0["family"], job=c0["_job"], run=c0["run"], verdict=g["verdict"],
-                         sigma_hat=g["sigma_hat_best"], level=g["sigma_hat_level"], sigma_hat_grid=d.get("grid.sigma_hat"),
-                         sigma_hat_pop=d.get("pop.sigma_hat"), pop_tick_share_max=d.get("pop.tick_share_max"),
+                         sigma_hat=g["sigma_hat_best"], level=g["sigma_hat_level"],
+                         # shown only where the level is predictable (pf(8) >= PF_MIN), as the verdict uses it
+                         sigma_hat_grid=d.get("grid.sigma_hat") if (d.get("grid.pf8") or 0) >= GT.TH["PF_MIN"] else None,
+                         sigma_hat_pop=d.get("pop.sigma_hat") if (d.get("pop.pf8") or 0) >= GT.TH["PF_MIN"] else None,
+                         pop_tick_share_max=d.get("pop.tick_share_max"),
                          pf8=d.get("grid.pf8"), ceil8=d.get("grid.ceil8"),
                          ceil8_mean=d.get("grid.ceil8_mean"), w_theta8=d.get("grid.w_theta8"), pl01=d.get("grid.pl_ratio0.1_8"),
                          pl003=d.get("grid.pl_ratio0.03_8"), bodies=d.get("s.nb_mean"), half_life=d.get("s.half_life_ticks"),

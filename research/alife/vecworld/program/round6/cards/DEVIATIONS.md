@@ -9,7 +9,8 @@ decided and what had been seen by then.
 
 The review (`origin/gpu-jobs:jobs/r6-cards-001/review.md`, copy in `results/jobs/r6-cards-001/`) arrived at
 12:06 UTC while the job ran. These changes were committed at 12:12 UTC (320ce1a22). The first result lines of the
-job (its heartbeat) were read at 12:13 UTC; the cards were fetched at 12:26 UTC.
+job (its heartbeat) were read at 12:13 UTC; the cards were fetched at 12:26 UTC. Seen before that: CPU cards of
+foundry draw 4470 at full size and of membrane and vortices at small size (run with the uncorrected estimators).
 
 1. **Tick share (review item 1).** The level's tick share is the mean of the per-channel shares. The first version
    pooled the channels before the covariance, which reads about s / d^2 when one of d channels carries the tick

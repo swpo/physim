@@ -134,6 +134,59 @@ def main():
               dict(worlds=sel, verdicts=verd, gates={k: int(sum(g(k))) for k in GATE_KEYS}, late_same=int(sum(late)), late_n=len(late),
                    stats=stats, r5_types={w: r5type.get(w) for w in sel}),
               f"r6-cards-001:cards/<world>__A.json for the worlds listed; medians and means over worlds computed here")
+    # ---------------------------------------------------------------- 3b. the block level alone (DEVIATIONS.md C1)
+    def block_ok(w, run="A"):
+        a, b = val(w, run, "grid.sigma_hat"), val(w, run, "grid.pf8")
+        return bool(a is not None and b is not None and b >= GT.TH["PF_MIN"] and a >= GT.TH["SIGMA_HAT_MIN"])
+    grp = {"designed": [w for w in names if role.get(w) == "designed"], "shortlist": [w for w in names if role.get(w) == "shortlist"],
+           "candidates": [w for w in names if role.get(w) == "candidate"], "prior": [w for w in names if role.get(w) == "prior"],
+           "controls": ctl}
+    runs_of = lambda w: [x for x in D[w] if not x.endswith("_first")]
+    claim("block_level", "sigma_hat at the block level alone (robust between seeds and sizes), worlds at or above the 0.15 bar in run A: "
+          + "; ".join(f"{k} {sum(block_ok(w) for w in v)} of {len(v)}" for k, v in grp.items()) + ".",
+          dict(per_world={w: {x: r(val(w, x, "grid.sigma_hat")) for x in runs_of(w)} for k in ("designed", "shortlist", "controls") for w in grp[k]},
+               pop_level={w: {x: r(val(w, x, "pop.sigma_hat")) for x in runs_of(w)} for k in ("designed", "shortlist") for w in grp[k]},
+               at_or_above_bar={k: [w for w in v if block_ok(w)] for k, v in grp.items()},
+               exam_worthy_by_population_level_only=[w for w in names if gate(w, "A", "exam_worthy") and not block_ok(w)]),
+          "<job>:cards/<world>__<run>.json:derived.grid.sigma_hat and derived.pop.sigma_hat (jobs per world in results/derived.json:_jobs)")
+    # ---------------------------------------------------------------- 3c. hypotheses that the cards alone can speak to
+    vx = [w for w in ("vortex64", "vortex128", "vortex128g16", "vortex64_s4") if w in D]
+    claim("H6:vortex_clock", "H6 (a clock takes the population level of the fed vortices): tick share of the population level, mean over "
+          "components and its largest component (the kind share), by world and run.",
+          {w: {x: dict(mean=r(val(w, x, "pop.tick_share")), max=r(val(w, x, "pop.tick_share_max")), block=r(val(w, x, "grid.tick_share")))
+               for x in runs_of(w)} for w in vx},
+          {w: [src(w, x, "pop.tick_share") for x in runs_of(w)] for w in vx})
+    allw = [w for w in names]
+    claim("H7:actions_gate", f"H7: the declared actions gate passes in {sum(bool(gate(w, 'A', 'actions')) for w in allw)} of {len(allw)} worlds "
+          f"(run A), including {sum(bool(gate(w, 'A', 'actions')) for w in ctl)} of {len(ctl)} controls: it does not discriminate. "
+          "The shift of an aimed 200-nat input in units of the cheap family's error at 4 ticks (added after the first card) does.",
+          dict(act_ms={w: r(val(w, "A", "grid.act_ms")) for w in named + ctl},
+               act_over_cheap_error={w: {x: r(val(w, x, "grid.act_ms_over_vcheap")) for x in runs_of(w)} for w in named + ctl},
+               share_of_variance={w: r(val(w, "A", "grid.act_ms_var")) for w in named + ctl},
+               aimed_over_blind={w: r(val(w, "A", "grid.aim_ratio")) for w in named + ctl}),
+          "<job>:cards/<world>__<run>.json:derived.grid.act_ms, .grid.act_ms_over_vcheap, .grid.act_ms_var, .grid.aim_ratio")
+    claim("H8:learned_variable", f"H8: the learned_differs gate (slow features at least 0.05 more closed than the hand block view at 8 ticks in "
+          f"both orders) passes in {sum(bool(gate(w, 'A', 'learned_differs')) for w in allw)} of {len(allw)} worlds in run A.",
+          {w: dict(dceil8=[r(val(w, "A", "l.dceil8_AB")), r(val(w, "A", "l.dceil8_BA"))],
+                   dceil16=[r(val(w, "A", "l.dceil16_AB")), r(val(w, "A", "l.dceil16_BA"))],
+                   dceil32_AB=r(val(w, "A", "l.dceil32_AB")), r2_min=r(val(w, "A", "l.r2_min"))) for w in named},
+          "<job>:cards/<world>__A.json:derived.l.*")
+    claim("H2:watching_and_experiments", "H2 inputs: evidence index (nats per tick about a 10%-of-prior move of the hidden part, block view), "
+          "ticks to 3 nats, and the response difference of an aimed 200-nat input under a prior-sized move (in oracle variances; corrected "
+          "estimator only where the run is from r6-cards-002 or the world is a foundry world).",
+          {w: dict(evidence=r(val(w, "A", "grid.evidence0.1")), ticks_to_3nats=r(val(w, "A", "grid.ticks_to_3nats0.1")),
+                   xresp=r(val(w, "A", "grid.xresp")), job=jobs_of[w]["A"]) for w in named},
+          "<job>:cards/<world>__A.json:derived.grid.evidence0.1, .grid.ticks_to_3nats0.1, .grid.xresp")
+    claim("structure", "Bodies and the single-body law (quiet steps, displacement at 8 ticks) of the named worlds, runs A / B / late.",
+          {w: {x: dict(bodies=r(val(w, x, "s.nb_mean")), half_life=r(val(w, x, "s.half_life_ticks")), v_net=r(val(w, x, "s.v_net")),
+                       events100=r(val(w, x, "s.events100")), quiet8=r(val(w, x, "b.quiet8")), body_pf8=r(val(w, x, "b.pf_disp8")),
+                       body_ceil8=r(val(w, x, "b.ceil_disp8")), inertia_ceil8=r(val(w, x, "b.ceil_pers_disp8")),
+                       with_field_ceil8=r(val(w, x, "b.ceil_field_disp8"))) for x in runs_of(w)} for w in named + ["ctl_freebodies"]},
+          "<job>:cards/<world>__<run>.json:derived.s.*, .b.*")
+    claim("stationarity", "Member share (variance between members' time-means) of the block view, runs A / B / late, named worlds.",
+          {w: {x: dict(member_share=r(val(w, x, "grid.member_share")), pop_member_share=r(val(w, x, "pop.member_share")),
+                       stationary_gate=gate(w, x, "stationary")) for x in runs_of(w)} for w in named},
+          "<job>:cards/<world>__<run>.json:derived.grid.member_share")
     # ---------------------------------------------------------------- 4. robustness
     seed_w = [w for w in names if "seed" in ROB.get(w, {})]
     if seed_w:

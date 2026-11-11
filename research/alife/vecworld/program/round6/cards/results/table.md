@@ -14,7 +14,7 @@ Columns: sigma_hat at the block and the population level (the verdict uses the l
 | foundry_06845 | shortlist | exam-worthy + actions | 0.31 | 0.92 | 1.00 | 0.74 | 1.02 | 27.2 | 12.4 | 14.2 | 0.46 | 8.38 | 0.098 | 8.3e-06 | 0.022 | 0.11 | 0.10 | -0.30 | yes | 0.048 |
 | foundry_01672 | shortlist | exam-worthy + actions | 0.28 | 0.49 | 1.00 | 0.76 | 0.94 | 125 | 4.06 | 37.3 | 0.95 | 20.5 | 0.33 | 1.1e-05 | 0.13 | 0.16 | 0.44 | -0.23 | yes | 0.049 |
 | foundry_03078 | shortlist | exam-worthy + reading-worthy + actions | 0.29 | 0.54 | 1.00 | 0.74 | 0.84 | 33.3 | 13.2 | 36.2 | 0.89 | 19.0 | 0.33 | 2.4e-04 | 0.47 | 0.035 | 0.42 | -0.19 | yes | 0.049 |
-| ctl_noise | control | dull: nothing predictable | 1.00 | 1.00 | -0.005 | -0.00 | n/a | 1.2e-04 | 11.6 | 0.80 | n/a | 0.00 | 0.00 | -5.8e-06 | 0.014 | 0.005 | -0.00 | 0.12 | n/a | 0.021 |
+| ctl_noise | control | dull: nothing predictable | n/a | n/a | -0.005 | -0.00 | n/a | 1.2e-04 | 11.6 | 0.80 | n/a | 0.00 | 0.00 | -5.8e-06 | 0.014 | 0.005 | -0.00 | 0.12 | n/a | 0.021 |
 | ctl_freebodies | control | dull: the hidden part has no weight | 0.007 | 0.063 | 0.95 | 0.74 | 0.003 | 6.5e-04 | 5.37 | 40.4 | 0.98 | 4.27 | 0.66 | -1.3e-05 | 0.053 | 0.073 | 0.35 | -0.086 | yes | 0.020 |
 | ctl_uniform_00000 | control | dull: predictable by the cheap family | 0.005 | n/a | 0.58 | 0.99 | 2.38 | 0.048 | 0.00 | n/a | n/a | 3.56 | 3.60 | 9.1e-06 | n/a | 0.41 | n/a | -0.011 | no | 0.046 |
 | ctl_uniform_00002 | control | dull: predictable by the cheap family | 0.028 | n/a | 0.46 | 0.97 | 407 | 0.90 | 0.00 | n/a | n/a | 4.47 | 4.46 | 0.003 | n/a | 9.1e-04 | n/a | -0.020 | yes | 0.046 |
@@ -61,7 +61,7 @@ Columns: sigma_hat at the block and the population level (the verdict uses the l
 | foundry_00023 | prior | dull: predictable by the cheap family | 0.026 | n/a | 0.45 | 0.98 | 1.43 | 0.005 | 0.00 | n/a | n/a | 3.71 | 3.69 | 0.002 | n/a | 0.001 | n/a | -0.085 | n/a | 0.047 |
 | foundry_00025 | prior | dull: predictable by the cheap family | 0.001 | 0.015 | 1.00 | 1.00 | 0.64 | 9.49 | 24.0 | 18358 | 0.21 | 2.58 | 1.45 | 8.2e-04 | 0.58 | 0.11 | 0.97 | 8.5e-04 | n/a | 0.047 |
 | foundry_00026 | prior | dull: predictable by the cheap family | 0.014 | 0.009 | 1.00 | 0.99 | 0.52 | 26.1 | 2.71 | 84.2 | 0.24 | 50.6 | 2.10 | 0.004 | 0.94 | 0.054 | 0.99 | -0.079 | n/a | 0.049 |
-| foundry_00027 | prior | dull: little predictable | 0.23 | n/a | 0.12 | 0.98 | 65.6 | 3.5e-04 | 0.00 | n/a | n/a | 3.02 | 2.95 | -3.0e-08 | n/a | 0.012 | n/a | 0.39 | n/a | 0.046 |
+| foundry_00027 | prior | dull: little predictable | n/a | n/a | 0.12 | 0.98 | 65.6 | 3.5e-04 | 0.00 | n/a | n/a | 3.02 | 2.95 | -3.0e-08 | n/a | 0.012 | n/a | 0.39 | n/a | 0.046 |
 | foundry_00028 | prior | dull: predictable by the cheap family | 3.3e-04 | 0.019 | 1.00 | 1.00 | 0.50 | 45.3 | 12.2 | 817 | 0.00 | 7.40 | 5.33 | 0.002 | 0.96 | 0.013 | 0.98 | -2.1e-04 | n/a | 0.048 |
 | foundry_00029 | prior | dull: predictable by the cheap family | 4.6e-04 | n/a | 0.97 | 1.00 | 6.02 | 1.08 | 0.012 | 10.4 | n/a | 7.24 | 7.17 | 5.1e-04 | n/a | 0.17 | n/a | -0.005 | n/a | 0.047 |
 | foundry_00030 | prior | dull: predictable by the cheap family | 0.004 | n/a | 0.98 | 1.00 | 0.20 | 0.74 | 0.00 | n/a | n/a | 3.09 | 2.78 | 1.6e-04 | n/a | 0.10 | n/a | 0.005 | n/a | 0.047 |
