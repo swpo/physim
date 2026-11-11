@@ -5313,5 +5313,132 @@
    "fine_tune_steps_at_batch_64": 400,
    "note": "cross-validation multiplies the fine-tune steps by folds + 1"
   }
+ },
+ "checker": {
+  "who": "independent checker of study A, 11 Nov 2026 (restart after the 18:28 UTC stop); CPU only, no job run, about 1 CPU-minute",
+  "PILOT_NEVER_REUSE_AS_EXAM": true,
+  "edits": [
+   "none: no number or text of the study was changed; every headline and criterion number below was recomputed by the checker's own numpy code and agrees to 4 decimals; this block was added"
+  ],
+  "recomputed": {
+   "source": "results/job/scores.npz (sha256 225d29f3fd75cd89..., byte-identical to origin/gpu-jobs:jobs/r6-dialsa-003/out/scores.npz; status.json, review.md, info.json, train_info.json, identification.json also identical); score half, picks on sel per truth and seed, SE = truths as clusters + seed term, t(0.90, 7) = 1.415",
+   "sigma_0": {
+    "value": 0.017,
+    "se": 0.0035,
+    "test": "|0.0170 - 0.018| = 0.0010 <= 2 sqrt(0.004^2 + 0.0035^2) = 0.0106; also <= 0.008",
+    "verdict": "holds"
+   },
+   "zero_pairs_in_units_of_K_minus_publicC": {
+    "trueformC_vs_publicC": [
+     0.0072,
+     0.001
+    ],
+    "FT8_vs_P0": [
+     -0.0053,
+     0.0033
+    ],
+    "RES8_vs_P0": [
+     0.0155,
+     0.0013
+    ],
+    "verdict": "each |mean| <= 0.02: holds"
+   },
+   "s_aimed_regional_eta4": {
+    "value": 0.2792,
+    "se": 0.0057,
+    "bounds90": [
+     0.2711,
+     0.2872
+    ],
+    "median": 0.2785,
+    "loo": [
+     0.2763,
+     0.282
+    ],
+    "verdict": "stand-in holds (0.10 <= s <= 0.30); study does not fail (s >= 0.05)"
+   },
+   "gap_P0_minus_C_all": {
+    "mean": 0.3078,
+    "se": 0.009,
+    "note": "34 SE: g is read"
+   },
+   "g_all_primary": {
+    "value": 0.4713,
+    "se": 0.0311,
+    "bounds90": [
+     0.4273,
+     0.5154
+    ],
+    "median": 0.4422,
+    "loo": [
+     0.4443,
+     0.4824
+    ],
+    "per_seed": [
+     0.4648,
+     0.4791,
+     0.4703
+    ],
+    "contrast_d": {
+     "mean": -0.0704,
+     "se": 0.0086,
+     "upper90": -0.0583
+    },
+    "verdict": "refuted (upper bound of d < 0)"
+   },
+   "g_aimed_regional_secondary": {
+    "value": 0.5375,
+    "se": 0.0265,
+    "bounds90": [
+     0.5,
+     0.575
+    ],
+    "contrast_d_upper90": -0.0747,
+    "verdict": "refuted"
+   },
+   "share_FT_picked_eta4": 0.0,
+   "reported_numbers_checked": "closures by class and budget (RES 0.17/0.47/0.61, FT -0.01/0.08/0.12; aimed 0.36, regional 0.62 at N = 8), g per horizon (0.73, 0.66, 0.50, 0.24, 0.27), science share against P0 and against G (0.146, 0.279; 0.077, 0.129; 0.057, 0.098), base-schedule rungs (s 0.247, 0.267, 0.279; sigma_0 0.013, 0.015, 0.017), screens (0.33, 0.59, 0.23; kept 0.38, 0.48), skill vs O, controls (0.06, 0.00), S(8) 0.03, stand-in residual n2 1.46 / 0.93 (defect_gliders/results/surrogate.json rows fut16_XW_4_c, _d): all agree",
+   "not_rechecked": [
+    "identification.json posterior distances",
+    "the Lab bookkeeping of channel-0 loss",
+    "the presmoke member-tick count"
+   ]
+  },
+  "robustness": {
+   "one_truth": "per-truth g 0.385 to 0.636; the contrast d is negative for every truth and every truth x seed (largest -0.011)",
+   "one_item_or_start_state": "the heaviest item carries at most 9.4% of any truth's P0-to-C gap; dropping each truth's 5 heaviest items gives g = 0.400",
+   "bootstrap": "truths x items within class x seeds, 4,000 draws: g 5% to 95% [0.423, 0.526], P(g >= 0.7) = 0",
+   "df": "Satterthwaite df 7.7 gives the same upper bound of d (-0.058)",
+   "best_case_pick": "best of FT, RES and the cross-validated residual picked on the scored half itself: g = 0.486 at N = 8, 0.614 at N = 32",
+   "horizons": "with each horizon weighted by 1 / (L(K) - L(C)) instead of raw scores g = 0.39"
+  },
+  "declared_and_plan": {
+   "committed_before_the_job": "DECLARED.md has one commit, 94451e27c at 15:33 UTC; first request f38f88ac0 at 16:11 UTC; the job started 17:11 UTC. a_stats.py (the criteria) is unchanged between the pinned job ref f38f88ac0 and the results commit 0d634849c; make_summary.py changed only in reported keys, the extension merge and D's clock flag",
+   "part1_vs_plan": "Part 1 matches PLAN.md section 2 A and the rows naming A (sizes, policies, criteria, thresholds, extension, outcome table); only source citations and the statistician's remarks are omitted",
+   "recorded_deviations": "DEVIATIONS 1-5 written before any run, 6 after the job; 1 (a cap of two doublings on the plan's open-ended training rule) is the one of substance: the base nets are not trained by the plan's rule (best steps 22,750 to 24,000 of 24,000)",
+   "not_recorded_or_interpretations": [
+    "zero point (ii) is read on the mean over truths of the paired difference (R13, declared before any run). Read as 'each truth within 0.02', FT(8) against P0 misses at truth 4 (-0.025, a gain of FT over P0, not a harness fault); the other two pairs pass at every truth",
+    "D nets: all 144 have their best validation step at 250 of 1,200, the first validation point, so the rule is met formally but the minimum is not located; no criterion moves, since D(32) trails P0 by 0.38 in L at eta 0",
+    "FT: the cross-validation minimum at eta 4 is 40 steps, the first non-zero grid point, for all 24 nets (README limits, not DEVIATIONS)",
+    "on the GPU the switch at eta 0 differs from gworld.tick by 6.7e-11, as gworld differs from itself (9.2e-11); the plan's bit-for-bit check holds on CPU (check_a.json)",
+    "the plan's 'all nets get equal steps' is applied to the six base nets; D nets keep 1,200 steps and fine-tunes 400 (R11, R16)"
+   ]
+  },
+  "job_records": {
+   "r6-dialsa-003": "A100-SXM4-40GB, lambdalabs, $1.99/h, ref f38f88ac0, exit 0, pod 17:08-18:14 UTC, billed $2.0814 (conservative $2.1944), cap $5; nothing failed or skipped",
+   "earlier": "r6-dialsA-001 dropped without status (capital letter); r6-dialsa-001 rejected, $0; r6-dialsa-002 held by review and cancelled before start, $0",
+   "review_acted_on": "002's major (platform allocator) removed in 003; the minor (D groups stopped by the clock) handled in make_summary (no D group stopped); make_summary's job id fixed; 25-50 steps per dispatch left for the next revision",
+   "study_total_usd": 2.0814
+  },
+  "wording": [
+   "headline.s.fine_tuned_C_picked_share (0.458) picks between two sampling draws of the same net: cross-validation chose 0 steps for every C fine-tune (train_info.json ft.8 rule CFT|eta4 chosen_steps_hist). The README's 'never improved on it' is the right reading",
+   "'A: refuted, with s >= 0.15' uses the plan's s (aimed and regional, 0.279) and is the row the declared rule gives. On the whole exam the P0-to-C share is 0.146 (upper 0.152) and 0.077 after the generic repair, so a reopened stress-conversion design can reach 0.15 only on the triggered classes at 8 to 16 ticks (0.25, 0.41)",
+   "the README's opening answer quotes the science share left after generic repair (0.08, 0.13). Those keys were added after the results were seen (DEVIATIONS 6): they are reported numbers, not criteria",
+   "the verdict holds at the declared cap on nets that are not converged by the plan's rule. Each doubling widened the P0-to-C gap (0.250, 0.285, 0.308 in L), which points to lower g with longer training. That is an extrapolation and was not tested",
+   "the refutation is relative to the two declared recipes, FT at one rate on a 40-step grid and the designer's residual; a stronger generic recipe was not tried",
+   "s rose with each doubling (0.247, 0.267, 0.279), so 'stand-in holds' (<= 0.30) may not survive converged nets; it decides B's stage-0 clause, not A's row"
+  ],
+  "secrets": "only the secret's commitment is written (info.json secret_commitment); every json output, scores.npz and this summary carry the PILOT marker; the truths are round 5's public pilot truths",
+  "verdict_signed": "Refuted by the declared rule (g = 0.47, one-sided 90% bounds 0.43 and 0.52; contrast upper bound -0.058); zero point holds; s = 0.28 (stand-in holds); the study does not fail; outcome row 'A: refuted, with s >= 0.15'. Caveats: nets not converged by the plan's rule (declared cap), two recipes only, whole-exam share 0.146"
  }
 }
