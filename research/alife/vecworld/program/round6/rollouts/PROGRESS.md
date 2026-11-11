@@ -144,3 +144,57 @@ State (newest last; times UTC as this container's clock shows them):
   P0, PM, C, null in one box per rollout; no second grading of C with one box per item (done for
   qwen_ring_001 on the same image; the model's own grading uses one box per item); `--no-cross-check` (that
   check runs the item driver on the host).
+- 11:47 Paid ping of the model as the bash harness calls it (`tools/ping_stream.py`, new: two streamed requests
+  with the harness's own tool definitions and its own stream reader; the second sends the assistant's tool call
+  back with a made-up result): both answered (5.7 s and 1.3 s), finish reasons `tool_calls` then `stop`, usage
+  arrives in the stream (182 + 214 tokens in, 19 + 5 out, 0 reasoning tokens on this trivial request, 0 cached),
+  the provider's own `cost` fields are $0.0028 and $0.0024, exactly the listed $10 / $50 per million. So the
+  token caps will see this model's usage, and the second turn of a tool conversation is accepted.
+- 11:48 COORDINATOR'S RULINGS read in the channel file (written 11:42 UTC): (1) do not repeat the hidden turn
+  cut: bound the bill by turns x context at $20 or less and take the largest turn cap that fits; comparability
+  with the Qwen run does not justify the flaw; (2) if a config-level field lets one sentence be added to what
+  the agent is told without touching the pinned tree, tell it its turn limit there; change nothing else in the
+  task statement or the exam; (3) record the frozen submission and /workspace with the watcher. The plan of the
+  11:40 entry (40 turns, 42,000 tokens, nothing told) is DROPPED; nothing had been started with it.
+- 11:52 THE CAPS AS RUN. At $10 per million input tokens the turn cap cannot go up: turns and total tokens share
+  one budget, (turns + 4) x total tokens <= 1.92 million for a $20 bound (`LEDGER.md`, "Row 3": 150 turns would
+  leave 12,400 tokens, 40 turns 43,600). The largest turn cap is taken that still leaves the conversation of a
+  complete attempt by a model that reasons at every turn, about 3,000 tokens per turn:
+  **max_turns 22, max_total_tokens 70,000**; max_output_tokens 70,000 (so that no third cap can end the run
+  first); sampling.max_tokens 16,384 instead of 8,192 (for this model a reply is reasoning and answer together;
+  a reply cut inside a tool call or inside its reasoning would be a failure of ours). Bound by these caps:
+  **$19.02** (under $20 unless the last reply returns over 98,000 tokens of tool output).
+  DISCLOSURE: verifiers has a config field for it (`[env.taskset] system_prompt`, a file whose text becomes the
+  task's system prompt; the bash harness appends it to its own system line; the pinned tree is not touched). The
+  agent is told BOTH limits that can end its run, in one sentence, because with this bound the token limit is as
+  likely to end it as the turn limit. Word for word (`configs/astra_ring_001.system_prompt.txt`):
+
+      Limits of this run, set by the operator: it ends after your 22nd reply (a reply with all the tool calls in
+      it counts as one) or once the conversation has used 70,000 tokens in total (the task text, every tool
+      result and everything you generate, reasoning included, each counted once), whichever comes first; neither
+      counter is shown to you.
+
+  Checked without starting anything: the taskset loads the sentence and the harness composes the system message
+  as its own line, a blank line, then that sentence; the first message (TASK.md) is identical to the one of
+  qwen_ring_001 (9,169 characters, same sha256). So the agent's hour is NOT the binding limit of this rollout:
+  22 replies or 70,000 tokens are, and it knows both.
+- 11:52 Reference table done (`tools/prove.py` through `tools/prove_here.py`, EXIT 0, 496 s for 6 scripted
+  rollouts, boxes at 2 CPUs and 4 GB): all graded. Skill on the K-to-O scale: O 1.000, C 0.888, S 0.883, P0 0.791,
+  PM 0.787, D 0.037, K 0, null -0.043.
+- 11:52 Dry run of step 3 in its Linux form (free, no model, no credential): `DRY-RUN-OK`; vf-eval resolved the
+  config; against the dry run of qwen_ring_001 it differs in exactly: model, instance, max_turns 40 -> 22,
+  max_total_tokens 1,500,000 -> 70,000, max_output_tokens 60,000 -> 70,000, sampling.max_tokens 8,192 -> 16,384,
+  taskset system_prompt (new), and the run's own names.
+- 11:54 ROLLOUT astra_ring_001 STARTED (this entry is committed before the start). Run label
+  physim2-rolla-20261111, run name astra-ring-001, instance pilot-astra-ring-001-w0, model openai/gpt-6-astra,
+  image physim2-ring-ca:1, config `configs/astra_ring_001.toml`. The command, from the runner's scratch folder
+  S, with R = this folder (the key is inherited through the environment; its value is on no command line):
+
+      nice -n 10 /home/user/evalwork/vfport/.venv/bin/python -B R/tools/here.py --run-id physim2-rolla-20261111 \
+        vfrun.py --config R/configs/astra_ring_001.toml --run-name astra-ring-001 --out-dir S/run --store S/store \
+        --disk-floor-gib 1.5 --model-credentials prime > S/run.log 2>&1 < /dev/null ; echo "EXIT $?" >> S/run.log
+
+  Watched by `tools/watch.py` (docker ps by the run label, the laboratory's counters, copies of submission/
+  from the agent's box and the verifier's box and of /workspace from the agent's box; no exec in a box, no
+  signal, no reading of the model's text). If this container restarts before an ENDED entry follows, the
+  rollout was cut: record it as cut with what the provider billed, and do not reuse the instance.

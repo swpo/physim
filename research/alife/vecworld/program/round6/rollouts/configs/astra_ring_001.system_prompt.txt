@@ -1,0 +1,1 @@
+Limits of this run, set by the operator: it ends after your 22nd reply (a reply with all the tool calls in it counts as one) or once the conversation has used 70,000 tokens in total (the task text, every tool result and everything you generate, reasoning included, each counted once), whichever comes first; neither counter is shown to you.

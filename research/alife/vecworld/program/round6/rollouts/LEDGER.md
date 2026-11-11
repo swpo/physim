@@ -11,8 +11,10 @@ Prices: Prime's Models API, `GET https://api.pinference.ai/api/v1/models`, field
 |---|---|---|---|---|---|---|---|---|---|
 | 0 | preflight ping for qwen_ring_001 (one request, `tools/ping_model.py`) | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | 16 output tokens | done 10:59 UTC, HTTP 200 | 258 | 2 | $0.00003 (the provider's own `cost` field said 0) | $0.00003 |
 | 1 | qwen_ring_001 | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | $1.22 (see below) | ENDED 11:12 UTC, complete (40 model calls, stop condition `max_turns`, graded) | 758,132 billed (101,524 at the input price + 656,608 cache reads); the caps saw 18,759 | 18,888 | $0.1025 (all input at the full price; $0.0952 with the cache-read price; the provider's own `cost` fields sum to $0.0951) | $0.1025 |
+| 2 | preflight ping for astra_ring_001 (two streamed requests with tools, as the bash harness sends them: `tools/ping_stream.py`) | openai/gpt-6-astra | 10 / 50 / none listed | 2 x 2,048 output tokens ($0.21) | done 11:47 UTC, both answered, usage in the stream | 396 (182 + 214; 0 cached) | 24 (19 + 5; 0 reasoning) | $0.0052 (the provider's own `cost` fields: 0.0028 + 0.0024; the listed price gives the same) | $0.1077 |
+| 3 | astra_ring_001 | openai/gpt-6-astra | 10 / 50 / none listed | $19.02 (22 turns, 70,000 total tokens, 16,384 per reply; see "Row 3" below) | NOT STARTED YET (row written before the start) | | | | |
 
-Total spent by this workflow so far: **$0.10** of the $40 ceiling.
+Total spent by this workflow so far: **$0.11** of the $40 ceiling (row 3 not started).
 
 Scripted, model-free runs (the reference table, the dry run) cost $0 and are not listed.
 
@@ -29,3 +31,44 @@ Row 1: 40 x 262,144 x $0.11/M + 68,192 x $1.01/M = $1.15 + $0.07 = $1.22. The sa
 $5 in / $20 out per million with a 400 k context and 40 turns gives $80 + $1.4: the turn cap, not the token cap,
 is what sizes an expensive rollout. Cost after a rollout is computed from the per-call usage in the trace
 (sum of prompt tokens, cached tokens and completion tokens over the calls), never from `num_input_tokens`.
+
+## Row 3 (astra_ring_001): the bound made exact, and what it costs the rollout
+
+Price of `openai/gpt-6-astra` from the same Models API field: $10 in, $50 out per million tokens, no cache-read
+price listed (all input is counted at $10), context window 1,050,000 tokens. The two-request ping (row 2) was
+billed at exactly these prices (the provider's `cost` fields: $0.0028 = (182 x $10 + 19 x $50) / 1e6 and
+$0.0024 = (214 x $10 + 5 x $50) / 1e6). With the pinned caps the formula above gives 40 x 1,050,000 x $10/M = $420.
+
+What does bound the context of a call is `max_total_tokens`, for every call but the last:
+
+- verifiers refuses a turn when `num_total_tokens` has reached the cap (session.py:83-113), and after every call
+  `num_total_tokens >= that call's prompt tokens + completion tokens` (trace.py:178-189 and 482-509: a call's new
+  input is its prompt beyond the previous call's prompt + completion, clamped at zero; reasoning tokens count as
+  completion tokens).
+- So a call that is followed by another has prompt + completion < M, and all completions before the last call
+  sum to less than M. The last call may exceed M by the tool results of one reply (the harness cuts each result
+  at 20,000 bytes, harnesses/utils/compaction.py:18) and its reply is at most `sampling.max_tokens`.
+
+      bill <= [ (T - 1) x p_in + (p_out - p_in) ] x M  +  p_in x (M + D)  +  p_out x R
+            = (10 T + 40) x M / 1e6  +  50 x R / 1e6  +  10 x D / 1e6        for $10 in, $50 out
+
+  with T = `max_turns`, M = `max_total_tokens`, R = `sampling.max_tokens`, D = tokens of tool output returned by
+  the last reply's tool calls.
+
+Turns and total tokens therefore share ONE budget: at $20 and R = 16,384, (T + 4) x M <= 1.92 million.
+
+| turns T | largest M under $20 | what it means |
+|---|---|---|
+| 150 | 12,400 | the task statement alone is 3,400 tokens |
+| 40 | 43,600 | rollout qwen_ring_001 used 37,647 in its 40 turns with no reasoning tokens, and had not finished |
+| 30 | 56,400 | |
+| 22 | 73,700 | **chosen: T = 22, M = 70,000** (about 3,000 tokens of conversation per turn) |
+| 16 | 95,900 | |
+
+Chosen caps (coordinator's rulings of 11:42 UTC: no hidden cut; the bill bounded by turns x context at $20 or
+less; the limits told to the agent): T = 22, M = 70,000, R = 16,384. Bound: $18.20 + $0.82 = **$19.02**, plus
+$0.01 per 1,000 tokens of D: under $20 unless the last reply returns more than 98,000 tokens of tool output (at
+least 10 results, each at the 20,000-byte limit). The caps do not exclude that case; if a single reply filled the
+whole context window the last call alone would cost $10.50. Both limits are told to the agent in one sentence of
+the system message (`configs/astra_ring_001.system_prompt.txt`). `max_output_tokens` is set to 70,000 so that it
+cannot end the run before the total does; it is no part of the bound.
