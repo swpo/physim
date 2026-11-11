@@ -1,0 +1,1594 @@
+{
+  "archive_sha256": "fa74333c8463dee5f1500f2efb17046456c9401932d44d5b0e51e6cc41426d44",
+  "files": [
+    {
+      "bytes": 2688,
+      "in_git": true,
+      "path": "sysinfo.txt",
+      "sha256": "bc87e2c4f1104a0f2a0e934f5753895e948a07b0667f90587c25c446724940a6"
+    },
+    {
+      "bytes": 0,
+      "in_git": true,
+      "path": "job.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 286,
+      "in_git": true,
+      "path": "setup.log",
+      "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
+    },
+    {
+      "bytes": 251,
+      "in_git": true,
+      "path": "run.log",
+      "sha256": "47661046eaf2150b2e7d3015be5e458ffad4b19abdebcc96103713f272be4b31"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "setup.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "exit.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "setup.start",
+      "sha256": "d0274fcac81682a62b44b6ea8e6cfa8a32e13877bcea6c8391a3458827bdc182"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.start",
+      "sha256": "bad8d82ec38f4f012d969ee83134c19e70203398a7f48fb572d986c47d8d0e02"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.end",
+      "sha256": "877c7ee0380c4154f037b5e409da03763e2f8156076112613a1ae6e2ce672f35"
+    },
+    {
+      "bytes": 9976,
+      "in_git": true,
+      "path": "out-listing.tsv",
+      "sha256": "e2b206324fce77a2ad908a28bfd0f76c7b7b973188cb2a33fa94fde2f2d837f7"
+    },
+    {
+      "bytes": 34200,
+      "in_git": true,
+      "path": "out/job_state.json",
+      "sha256": "e9a7196e5e265361c4a3d3d080161af45a867a2ae727f4f7c2ec78df17065a06"
+    },
+    {
+      "bytes": 20612,
+      "in_git": true,
+      "path": "out/logs/job.log",
+      "sha256": "a962a6b0ae07ca83660cc75a58bec61123daad87bdb6817339958715a6d4cfed"
+    },
+    {
+      "bytes": 137625,
+      "in_git": true,
+      "path": "out/series/foundry_00416__A.npz",
+      "sha256": "f2bec01624ae1beed2f66c00faa1650e2d0e92358177ffac671081b2b928d7d6"
+    },
+    {
+      "bytes": 88558,
+      "in_git": true,
+      "path": "out/series/foundry_00015__A.npz",
+      "sha256": "ebc0b3c9ae9c2d04e317466b6a9cfdeb91b2c70f5ef3a8b150614bf758798371"
+    },
+    {
+      "bytes": 141157,
+      "in_git": true,
+      "path": "out/series/foundry_07820__A.npz",
+      "sha256": "e831de0d962f6b1ac34c94bab7dbf70408e7f142d25b34f0ae6913b4c06b9497"
+    },
+    {
+      "bytes": 97122,
+      "in_git": true,
+      "path": "out/series/foundry_08010__late.npz",
+      "sha256": "aa719ef95e93fc9fa042a91320c6ee7eee9b75a2a94d2dd75c721baaed83fcfb"
+    },
+    {
+      "bytes": 50907,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00000__A.npz",
+      "sha256": "b1889ce140f5cc062f6758bbb68679fe71fe36b6dee98a8b30cfdff8b5b9bbd5"
+    },
+    {
+      "bytes": 186585,
+      "in_git": true,
+      "path": "out/series/foundry_01672__late.npz",
+      "sha256": "08baa45a476c1740e38ce2994034db5ed3528b77c583d54cf52dfbb84b762bbe"
+    },
+    {
+      "bytes": 106442,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00001__B.npz",
+      "sha256": "efa9439cadc325c0605301b60733a1f5772d05af247a155ddac18dec2d98b963"
+    },
+    {
+      "bytes": 140808,
+      "in_git": true,
+      "path": "out/series/foundry_03854__A.npz",
+      "sha256": "6331acf2433453048bc85eaf56d0c98a5012ec4c8dfc27d786d0e648ebd732b3"
+    },
+    {
+      "bytes": 185765,
+      "in_git": true,
+      "path": "out/series/foundry_01672__B.npz",
+      "sha256": "6404c8df7ae50b38aeb312f591f8ccbd7715d1cda83b8e1da440de63841c1244"
+    },
+    {
+      "bytes": 180176,
+      "in_git": true,
+      "path": "out/series/foundry_00028__A.npz",
+      "sha256": "051bc533440b057a27352f423f9ddb551a8c75a69b0e6b2333edb237f8787d82"
+    },
+    {
+      "bytes": 154252,
+      "in_git": true,
+      "path": "out/series/gliders__B.npz",
+      "sha256": "19a025125020ce2d08448c7d836f134db1da491902bcd6979be6f4d670cefe7d"
+    },
+    {
+      "bytes": 150974,
+      "in_git": true,
+      "path": "out/series/foundry_00009__A.npz",
+      "sha256": "87159d7d97d1447ce009d44dd482c41705e8b62cf7b8b950e6676073f313f808"
+    },
+    {
+      "bytes": 187255,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00024__B.npz",
+      "sha256": "2e3294cb426030f41aabfe209b3d54684e1a97778826c91a68b8faed95a4e069"
+    },
+    {
+      "bytes": 293875,
+      "in_git": true,
+      "path": "out/series/foundry128_04470__A.npz",
+      "sha256": "b0781c5b363833cd6ec7834627d2a2551f5884e235ae60efd29a4723d539a84b"
+    },
+    {
+      "bytes": 179429,
+      "in_git": true,
+      "path": "out/series/foundry_04470__B.npz",
+      "sha256": "e6d5046e3c75ee0965f50ab839913a5696181312af363273fc92936c9e060652"
+    },
+    {
+      "bytes": 189794,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00022__A.npz",
+      "sha256": "916eefd34e2ddfe5076c15a732cbb9eeb7237fbe7d96861638659e94f47cb826"
+    },
+    {
+      "bytes": 177718,
+      "in_git": true,
+      "path": "out/series/foundry_04470__A.npz",
+      "sha256": "87d3a0e00bbb0f658ba6e10b7fb7f20b1f3c69d4b2b2a5afc83b7fd2ba872f7d"
+    },
+    {
+      "bytes": 137099,
+      "in_git": true,
+      "path": "out/series/foundry_07913__late.npz",
+      "sha256": "f1869ee3f1ed8fbc6a4678acb43d77eccf1bd41df8ce7e20911843a527862870"
+    },
+    {
+      "bytes": 203454,
+      "in_git": true,
+      "path": "out/series/foundry128_03078__A.npz",
+      "sha256": "8c9ef5b709754830f15442c6c274b211eabe337d680bdd050c1c8c9980c2dcca"
+    },
+    {
+      "bytes": 77646,
+      "in_git": true,
+      "path": "out/series/foundry_00029__A.npz",
+      "sha256": "42d7296ab66c592ca80b4d9bdcf1f8b85d4f2ba9650751d94954eff8935d7de9"
+    },
+    {
+      "bytes": 200249,
+      "in_git": true,
+      "path": "out/series/foundry_04289__late.npz",
+      "sha256": "eca2097c77db57dc238791e87d18f67a91705f7412c00341517ace950d9163cf"
+    },
+    {
+      "bytes": 50490,
+      "in_git": true,
+      "path": "out/series/foundry_00007__A.npz",
+      "sha256": "8933ed2354a911d5648248c25f92d477792ec53bd3041f71f220d58a5c415245"
+    },
+    {
+      "bytes": 261917,
+      "in_git": true,
+      "path": "out/series/foundry128_06845__A.npz",
+      "sha256": "56d6bb5dd54102bf275f4840e5d9ab1a5072aaaae542a3a3219e400936254639"
+    },
+    {
+      "bytes": 229133,
+      "in_git": true,
+      "path": "out/series/vortex64__A.npz",
+      "sha256": "69e9ed8a72a9b47cd89165f1412bfc12820b6264606af965957b423c67611c3f"
+    },
+    {
+      "bytes": 188284,
+      "in_git": true,
+      "path": "out/series/foundry_04186__A.npz",
+      "sha256": "59e9094c68fa11b16c973ca420407613e634f49124cda65cffc5dd483130500f"
+    },
+    {
+      "bytes": 54820,
+      "in_git": true,
+      "path": "out/series/foundry_00016__A.npz",
+      "sha256": "3d621c5983e38fd0126dc640d4745317c59ce6e6bacdf41431781361a026d9a4"
+    },
+    {
+      "bytes": 142537,
+      "in_git": true,
+      "path": "out/series/ctl_freebodies__late.npz",
+      "sha256": "c54b6262718d62ca92d5bb99e42ff2ea87b4d8a2a819db80cd4acab5c0f03f7e"
+    },
+    {
+      "bytes": 65237,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00002__late.npz",
+      "sha256": "2c61f1628cff715f01d8e49e67084c7ea6154ae1d98a62e0fc75f2136ee1acbd"
+    },
+    {
+      "bytes": 210182,
+      "in_git": true,
+      "path": "out/series/foundry_07567__late.npz",
+      "sha256": "be9911346c477434a5f93dfad39b6099483ee6cc1801e42d7d5fd6a38b12d607"
+    },
+    {
+      "bytes": 146267,
+      "in_git": true,
+      "path": "out/series/foundry_03101__late.npz",
+      "sha256": "a47adf0ba321e8526596dffcced44a252869a9b61d555502d71353726852225e"
+    },
+    {
+      "bytes": 192967,
+      "in_git": true,
+      "path": "out/series/foundry_04919__A.npz",
+      "sha256": "cf062ec3af033b5c789d34516ea15a5da57695b0325d2c1d76c43848301fe8fa"
+    },
+    {
+      "bytes": 187097,
+      "in_git": true,
+      "path": "out/series/foundry_04186__B.npz",
+      "sha256": "f2f5e48b5b43cc96099a57e06c84e5fa051790e2a4280c037bf88225b6d204fd"
+    },
+    {
+      "bytes": 99587,
+      "in_git": true,
+      "path": "out/series/foundry_04495__late.npz",
+      "sha256": "0c2d30c2f7c2b1d7e6e887a9c424dccecb372d019f8f8c2af0ca068e8317264b"
+    },
+    {
+      "bytes": 187784,
+      "in_git": true,
+      "path": "out/series/foundry_00021__A.npz",
+      "sha256": "052b219bcc44bf4f0f1d8391a093a022c85645a435ae7f3cde45b6167c5e9bb5"
+    },
+    {
+      "bytes": 94449,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00011__A.npz",
+      "sha256": "cf433fe3cfaef0452fe7270d021ae7d77be6ea75b615dc7d1b733d55db49d993"
+    },
+    {
+      "bytes": 142664,
+      "in_git": true,
+      "path": "out/series/ctl_freebodies__B.npz",
+      "sha256": "b35634bfa4ed68e0327c766b6a081186c5a5d6aee427e343d2097c2f3ef76013"
+    },
+    {
+      "bytes": 210329,
+      "in_git": true,
+      "path": "out/series/foundry_07567__B.npz",
+      "sha256": "3ae691633e7a3292641a2ec4a756141a04d0f8cd3216a65cf85b9a25eb1704fa"
+    },
+    {
+      "bytes": 155346,
+      "in_git": true,
+      "path": "out/series/foundry_00262__B.npz",
+      "sha256": "18589484c941db825e56bae2e1d80ee6f61df7bf4c88da78eb4df3566bbcb3e1"
+    },
+    {
+      "bytes": 146053,
+      "in_git": true,
+      "path": "out/series/foundry_03078__B.npz",
+      "sha256": "f1a4b1ea2c453a36b2420a96ef8a1962b5d619e8942ea80561ca9c1e7ba3ddb4"
+    },
+    {
+      "bytes": 146025,
+      "in_git": true,
+      "path": "out/series/foundry_03078__A.npz",
+      "sha256": "13358e26809d3074355bbf43b82bcdd02c5286cab2a2ccf7bb9fb9b2dc7228ef"
+    },
+    {
+      "bytes": 120434,
+      "in_git": true,
+      "path": "out/series/foundry_03854__late.npz",
+      "sha256": "bb6eac81622406b18abc5fa49fa83ce795ead1e4eba138ebaff3b84001b654d1"
+    },
+    {
+      "bytes": 53559,
+      "in_git": true,
+      "path": "out/series/foundry_00020__A.npz",
+      "sha256": "c1f543ff46d7c38b23043b7467787004f2d85a6c46f958c1b7a13bff906e222e"
+    },
+    {
+      "bytes": 142902,
+      "in_git": true,
+      "path": "out/series/foundry_08010__A.npz",
+      "sha256": "c667ca1fdbe20cb0544eb2a87500a50e633ce9a76ef9f3528a98a4329ee97570"
+    },
+    {
+      "bytes": 153092,
+      "in_git": true,
+      "path": "out/series/foundry_03101__A.npz",
+      "sha256": "f3001c375c392001d944450be7f917cb9ec039378bd31e2fe60a3e8c1c2c1ff4"
+    },
+    {
+      "bytes": 267585,
+      "in_git": true,
+      "path": "out/series/membrane__late.npz",
+      "sha256": "9d46df43b9658520eb48a206f1dd091c662b4e88179d4103029c635ddb2e1a26"
+    },
+    {
+      "bytes": 154264,
+      "in_git": true,
+      "path": "out/series/foundry_00060__A.npz",
+      "sha256": "16ac5b4aea9b6e1ce10406e92e1c0cb4f8b8b85d9c451ea10866d399daddb873"
+    },
+    {
+      "bytes": 164513,
+      "in_git": true,
+      "path": "out/series/foundry_06845__B.npz",
+      "sha256": "5b60a521432c4ba6e576708ea7ede059356816b4649f56a11403e0343b41e017"
+    },
+    {
+      "bytes": 51700,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00000__B.npz",
+      "sha256": "4329c39d53ce839aa957fc4e6b0729235e6e24540721726d4c185a550d48f025"
+    },
+    {
+      "bytes": 185826,
+      "in_git": true,
+      "path": "out/series/foundry_01672__A.npz",
+      "sha256": "e1dcab992042c519fa5ba20272feb9d1d10b17167db0b460b9ac5ec6d3382344"
+    },
+    {
+      "bytes": 50557,
+      "in_git": true,
+      "path": "out/series/ctl_diffusion_1__A.npz",
+      "sha256": "c07c5be0acd411dee8d7eeea7dd624bdf7a7db5e90c34e0525895a84ac516942"
+    },
+    {
+      "bytes": 146983,
+      "in_git": true,
+      "path": "out/series/foundry_07760__A.npz",
+      "sha256": "185ec4c0716bdc0b476bcaf075aebc2e9ea980813c6f0e01ec3c133779038b51"
+    },
+    {
+      "bytes": 182800,
+      "in_git": true,
+      "path": "out/series/foundry_05671__late.npz",
+      "sha256": "94d488f68b7bb72f17697aeaf38c3db4050ea5534131f34617cf70f54ede96db"
+    },
+    {
+      "bytes": 135477,
+      "in_git": true,
+      "path": "out/series/foundry_00416__late.npz",
+      "sha256": "843c04b6755f2489695106849cef152d06773a8cc702f1576a41d9e3f7e082ae"
+    },
+    {
+      "bytes": 187750,
+      "in_git": true,
+      "path": "out/series/foundry_04186__late.npz",
+      "sha256": "bcc955879461e8e9dfbdfc35bf20a203e4470f193ebc63899b90f02128f1e89f"
+    },
+    {
+      "bytes": 52315,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00004__late.npz",
+      "sha256": "c2b8ad228b9db4b1eb9b8e0e9081a4ef1f664751f3c4d42c79d1d3b0739c806d"
+    },
+    {
+      "bytes": 80238,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00004__A.npz",
+      "sha256": "6019beeedc077876d04aa488f4d3042019ed4ebd1146cff93ea1d5738cfbcea3"
+    },
+    {
+      "bytes": 196102,
+      "in_git": true,
+      "path": "out/series/foundry_00013__A.npz",
+      "sha256": "bf05d6ba69ad40c879fe9fd8bec5d05278cddabbdeb9bfa5d4054c4c4a7dad82"
+    },
+    {
+      "bytes": 67760,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00002__A.npz",
+      "sha256": "7a903878d78ce5b07cf73238787ee08b399c572b79d8bf06b0f6612087f3d73a"
+    },
+    {
+      "bytes": 87281,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00003__B.npz",
+      "sha256": "21da0a1b3ff54239900c039f760a1fab2d77f171e1b7bbda2326c7150d918441"
+    },
+    {
+      "bytes": 199380,
+      "in_git": true,
+      "path": "out/series/foundry_04289__A.npz",
+      "sha256": "766f5ebb27c4015cba58685eb95c407f89ce14a56eb61a4eb20c3bd67974a18e"
+    },
+    {
+      "bytes": 190332,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00022__B.npz",
+      "sha256": "f0a6632a19667c2de86c86c50d9aad4763378b770eb6863f0cea7f60e4f9aa8b"
+    },
+    {
+      "bytes": 165124,
+      "in_git": true,
+      "path": "out/series/foundry_06845__late.npz",
+      "sha256": "a4fdb1c22867c5253cfef9df7852969861387bc867837040a2689477297f327d"
+    },
+    {
+      "bytes": 149971,
+      "in_git": true,
+      "path": "out/series/foundry_07913__A.npz",
+      "sha256": "ab4e16808b65e9fee81c3d705956267a3aac6b13ee67fa2acb24fd79332c608c"
+    },
+    {
+      "bytes": 164927,
+      "in_git": true,
+      "path": "out/series/foundry_06845__A.npz",
+      "sha256": "9f859b7c9a9c791b009bed927414fd1e14bfb0be5498b1e26d9871409b690fdf"
+    },
+    {
+      "bytes": 154036,
+      "in_git": true,
+      "path": "out/series/foundry_00262__A.npz",
+      "sha256": "7834b69f65e5cdf58b5a5d195032122fa1040ff8627e74d25e4eaf65d92c0654"
+    },
+    {
+      "bytes": 53728,
+      "in_git": true,
+      "path": "out/series/ctl_diffusion_0__A.npz",
+      "sha256": "7874aaddfa2f3fc5fd30b3ae8db52c0b868cdb052bc7482cd3d9b1f88d700d95"
+    },
+    {
+      "bytes": 218036,
+      "in_git": true,
+      "path": "out/series/foundry128_00262__A.npz",
+      "sha256": "1f3f666d0b670e7ee53bdb496def63bbab93ff0e6f257afcba9589fedca45688"
+    },
+    {
+      "bytes": 138858,
+      "in_git": true,
+      "path": "out/series/foundry_04495__A.npz",
+      "sha256": "a7ee940640cd1c2e81642ffe485bd9b11c62b68cecc54725de2d2c4b15b8446e"
+    },
+    {
+      "bytes": 155493,
+      "in_git": true,
+      "path": "out/series/foundry_00060__late.npz",
+      "sha256": "a73500c3e64ffed5b41dc6ff4d3c6ba4d6951d2fb9da67816bf3784c2f9ec1eb"
+    },
+    {
+      "bytes": 72751,
+      "in_git": true,
+      "path": "out/series/foundry_00012__A.npz",
+      "sha256": "9c862505ed0115796b0d5d8753ba49a4b2443853e13d6fa3c10e35b1c71a7dde"
+    },
+    {
+      "bytes": 49646,
+      "in_git": true,
+      "path": "out/series/foundry_00030__A.npz",
+      "sha256": "9aba386dbecebaeea1d5f697d9518cf3549ce87ed0471f960ad361ce7f10d57a"
+    },
+    {
+      "bytes": 172572,
+      "in_git": true,
+      "path": "out/series/ctl_noise__A.npz",
+      "sha256": "6d40a1cb4f082e51b211f74f862a25753f4c462c996a84ce98c86da53fcf3a1c"
+    },
+    {
+      "bytes": 242523,
+      "in_git": true,
+      "path": "out/series/foundry128_01672__A.npz",
+      "sha256": "9c740c53d4522e31428a6dbb9e150fa02e375f67993bae902ecf9226bb7e3b45"
+    },
+    {
+      "bytes": 197381,
+      "in_git": true,
+      "path": "out/series/foundry_04833__late.npz",
+      "sha256": "25f2c64171d11cc44f323e8608b7f6b5f8cd0561f3d533a94380ec712ed7b439"
+    },
+    {
+      "bytes": 266733,
+      "in_git": true,
+      "path": "out/series/membrane__A.npz",
+      "sha256": "a901720c24cb88e2bb8f41596e2507e71a138adb77dcc93ba7c5ac77b66e5c40"
+    },
+    {
+      "bytes": 151242,
+      "in_git": true,
+      "path": "out/series/foundry_00025__A.npz",
+      "sha256": "809a0c37f114ab674f120176db56a91b37fcfe01f430f085ec7d8f8a136df63a"
+    },
+    {
+      "bytes": 138087,
+      "in_git": true,
+      "path": "out/series/foundry_03062__A.npz",
+      "sha256": "cb542fc789b95dcfa29f4488a20228a7ba7c32eb3cead4f318efa881974b51f8"
+    },
+    {
+      "bytes": 72761,
+      "in_git": true,
+      "path": "out/series/foundry_00014__A.npz",
+      "sha256": "38047f7c3a35a511eb319b870da2d43a8783e4bc2734b94821d559420380e023"
+    },
+    {
+      "bytes": 136214,
+      "in_git": true,
+      "path": "out/series/foundry_02755__late.npz",
+      "sha256": "85baf8dd0e2d2ec6df35fd00b6f84c7e663a1aec6f1b5b072e210a288a72de26"
+    },
+    {
+      "bytes": 72733,
+      "in_git": true,
+      "path": "out/series/foundry_00018__A.npz",
+      "sha256": "1f99b2c17e8e01c54e2b070f7676c0bbac05e2ae0aa5be05f3f84dc4a56d00ff"
+    },
+    {
+      "bytes": 162862,
+      "in_git": true,
+      "path": "out/series/foundry_00124__A.npz",
+      "sha256": "f287e1278513a012189fe3c09ce63d9ba55074b41c7b54195e42bb8fd76032ad"
+    },
+    {
+      "bytes": 48823,
+      "in_git": true,
+      "path": "out/series/foundry_00027__A.npz",
+      "sha256": "0208888362467baf8972bf8a3334c8affa553a3e9fbec101976209311fc6ea81"
+    },
+    {
+      "bytes": 59728,
+      "in_git": true,
+      "path": "out/series/foundry_00023__A.npz",
+      "sha256": "80b1b8e669f0d606d0bca17edb52d03ca5b706499d72f233722779beb9231b95"
+    },
+    {
+      "bytes": 174966,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00022__late.npz",
+      "sha256": "93b2edfb87a63e17693d2391e4ed8b2d6485c85bb092a660124a2129e8529da9"
+    },
+    {
+      "bytes": 153198,
+      "in_git": true,
+      "path": "out/series/gliders__late.npz",
+      "sha256": "67e87d0b6c632181e7fb150c737c2089b4ee7459407d75ae249d3c895dfe308a"
+    },
+    {
+      "bytes": 185737,
+      "in_git": true,
+      "path": "out/series/foundry_00010__A.npz",
+      "sha256": "2695c6e887fce57dd15886ec869c47cea624eac76fe6dc06c7ac20d6e56e1610"
+    },
+    {
+      "bytes": 67465,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00002__B.npz",
+      "sha256": "1d7dfade1f23849633598818d96abc9f149cfdfb3191d36c65a8b916d398bc00"
+    },
+    {
+      "bytes": 90933,
+      "in_git": true,
+      "path": "out/series/foundry_00008__A.npz",
+      "sha256": "5a8d069a7a6a1858b61e4c9a65992db8a4401f0721d5b5c4507378d8e4d004de"
+    },
+    {
+      "bytes": 42446,
+      "in_git": true,
+      "path": "out/series/foundry_00005__A.npz",
+      "sha256": "237070eb3a1d88ed3fe40358b17770885075bccf53b37c6349e6ec8b9f02f070"
+    },
+    {
+      "bytes": 57303,
+      "in_git": true,
+      "path": "out/series/foundry_00017__A.npz",
+      "sha256": "a9309b35315c2ab59c48d158b905cc5f4cf55e5d89a7ec75bc67d934eff8134f"
+    },
+    {
+      "bytes": 229520,
+      "in_git": true,
+      "path": "out/series/vortex64__B.npz",
+      "sha256": "e9d800b37f07d1458c171e5cd27a55f6747dcd790b9280b996679a47f9b7e3ca"
+    },
+    {
+      "bytes": 149849,
+      "in_git": true,
+      "path": "out/series/foundry_00262__late.npz",
+      "sha256": "10a267876a6ac341d31f7fa1554fe178febbf0745a4dcd470b471607149e9a0b"
+    },
+    {
+      "bytes": 123267,
+      "in_git": true,
+      "path": "out/series/foundry_07820__late.npz",
+      "sha256": "401e619c52124bb21663341500c89e9faf9b16ef6b8a0b14ca710ee7513f7d34"
+    },
+    {
+      "bytes": 145427,
+      "in_git": true,
+      "path": "out/series/foundry_03078__late.npz",
+      "sha256": "2558df60004f22c89dd34e29effcc1b62a38f87648ed167041cc62c7b49ca9bf"
+    },
+    {
+      "bytes": 230410,
+      "in_git": true,
+      "path": "out/series/vortex64__late.npz",
+      "sha256": "17c2e229f3930b8aa501652a02a60cbed65eeac1ce19a06e205c1f466097310e"
+    },
+    {
+      "bytes": 50961,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00000__late.npz",
+      "sha256": "1abfad5589de875ec0716a2d03b68de11216cb7d8cf1744755cb6546dde156bb"
+    },
+    {
+      "bytes": 196623,
+      "in_git": true,
+      "path": "out/series/foundry_05671__A.npz",
+      "sha256": "566ec2075873929327b84028b5205c633cb07d4543113079c5b19d78fa2cd8d8"
+    },
+    {
+      "bytes": 53747,
+      "in_git": true,
+      "path": "out/series/foundry_00006__A.npz",
+      "sha256": "7ca646d06fffdabddf12280d2a8100b0dfebdc5227a3757f2011d16c6878fb07"
+    },
+    {
+      "bytes": 198220,
+      "in_git": true,
+      "path": "out/series/foundry_04833__A.npz",
+      "sha256": "abd5b35215305e8ec68f65b6e6b3e62df55a0b5e197c0c34cce27950ebb2ea07"
+    },
+    {
+      "bytes": 315632,
+      "in_git": true,
+      "path": "out/series/foundry128_07567__A.npz",
+      "sha256": "f8e1c1b148308cf17523989cdf18fa9dec972b92a6328bba30c400bbf4922fc2"
+    },
+    {
+      "bytes": 132482,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00001__late.npz",
+      "sha256": "b14b9b88baa9ae00cc4fba36542e1bfd9403f8d7aa7d519db191439661ed4112"
+    },
+    {
+      "bytes": 147984,
+      "in_git": true,
+      "path": "out/series/foundry_02755__A.npz",
+      "sha256": "4e6029d20d6cba74860f5083fdb6e39e645b6ad9763f4ea45216594772d68d94"
+    },
+    {
+      "bytes": 236925,
+      "in_git": true,
+      "path": "out/series/foundry128_04186__A.npz",
+      "sha256": "716e136a88c36559fa51c26f305ad6300427b354b9426735200c76897eb5df34"
+    },
+    {
+      "bytes": 152618,
+      "in_git": true,
+      "path": "out/series/foundry_00031__A.npz",
+      "sha256": "32f0b24960644e7e152792c1ddc9b7285d4de3d6b6dbc3a41ba93ffa9fb8a49f"
+    },
+    {
+      "bytes": 119781,
+      "in_git": true,
+      "path": "out/series/foundry_00019__A.npz",
+      "sha256": "8fdcec6eed9a3aea509804003643ba2cd18af2b5cfbae2f53d6c2e309544b497"
+    },
+    {
+      "bytes": 173818,
+      "in_git": true,
+      "path": "out/series/ctl_noise__B.npz",
+      "sha256": "82cc87abe9511d6e0eb09e010cc42eee6cdce7e55f3d3de8047af19f9afc7df2"
+    },
+    {
+      "bytes": 131969,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00011__late.npz",
+      "sha256": "04fa8c4f493823147ea7df591ff5fa5521462dddc47838ea12b2c5a2a34d0028"
+    },
+    {
+      "bytes": 210562,
+      "in_git": true,
+      "path": "out/series/foundry_07567__A.npz",
+      "sha256": "6d80c556cb9c2d6f2a13e670e729c9f61db8226063b1b31d3e4a72e48e08149b"
+    },
+    {
+      "bytes": 181668,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00024__late.npz",
+      "sha256": "255bdb3ca35b8c931d2c01ee3dab9e4fc76353205a9a0c7bd0ce26d7e2ab0705"
+    },
+    {
+      "bytes": 85806,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00003__A.npz",
+      "sha256": "8f871ba031b03b84b042702aa82c938d492946892da6b8f1c915ba75589fe01d"
+    },
+    {
+      "bytes": 262723,
+      "in_git": true,
+      "path": "out/series/membrane__B.npz",
+      "sha256": "0bf0201079c65c9f9967e56b2a695831701f56729dd1375b13965737da410315"
+    },
+    {
+      "bytes": 79903,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00003__late.npz",
+      "sha256": "90bbb9706d93f4b178501200bdf6b6c432f93c842d116506b7d965c767156db3"
+    },
+    {
+      "bytes": 317263,
+      "in_git": true,
+      "path": "out/series/vortex128__A.npz",
+      "sha256": "29c11dd01179e856c730a66b38942ad6aaf774c6fc9dad70a0752fa20b33f6ea"
+    },
+    {
+      "bytes": 101322,
+      "in_git": true,
+      "path": "out/series/foundry_03062__late.npz",
+      "sha256": "fac4903f29a86fb4d7000d44c990836a66bf0f52ec6dfcb350002dd4308a450a"
+    },
+    {
+      "bytes": 178061,
+      "in_git": true,
+      "path": "out/series/foundry_04470__late.npz",
+      "sha256": "74bb0dd2d99151f161405b62c3464e98e70bd92a143e23b5f2375eabb621ba1d"
+    },
+    {
+      "bytes": 92411,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00001__A.npz",
+      "sha256": "c73979827223b5f3b9ea573853902efde375e960bcdab08c6cefed5c7e2822d1"
+    },
+    {
+      "bytes": 189291,
+      "in_git": true,
+      "path": "out/series/foundry_04919__late.npz",
+      "sha256": "2258f513ca71f24cf003cdb7fd2294947cca41c447bdeb6a6959db28d575a151"
+    },
+    {
+      "bytes": 189493,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00024__A.npz",
+      "sha256": "4c1f4ac974d01823403b9b79775fa6710180c6a6c4a52eedbd707a62e39773f5"
+    },
+    {
+      "bytes": 185375,
+      "in_git": true,
+      "path": "out/series/foundry_00026__A.npz",
+      "sha256": "11f6df12809a0e446bd41766f4bfd17e5b36631e459e1f4c98ae5064382c1951"
+    },
+    {
+      "bytes": 137153,
+      "in_git": true,
+      "path": "out/series/foundry_00124__late.npz",
+      "sha256": "ee6d90efbb66dce719b35b3b9d03e686bbc622f64e55b2f52eb626f55dac0b6b"
+    },
+    {
+      "bytes": 143189,
+      "in_git": true,
+      "path": "out/series/ctl_freebodies__A.npz",
+      "sha256": "f1dc8f386d10a02da080f5d63694c70033c6d6d70ce9746876f476958b319ba3"
+    },
+    {
+      "bytes": 80258,
+      "in_git": true,
+      "path": "out/series/ctl_uniform_00004__B.npz",
+      "sha256": "ba5168e745d03e7dff469a9afe47b52b423a0a8d848911a228a84e7a45dbe986"
+    },
+    {
+      "bytes": 153950,
+      "in_git": true,
+      "path": "out/series/gliders__A.npz",
+      "sha256": "72bfedbbf66ef8b44972e09870eac20a52d971f42f138be452a9c0fdcedffead"
+    },
+    {
+      "bytes": 130111,
+      "in_git": true,
+      "path": "out/series/foundry_07760__late.npz",
+      "sha256": "507e06431846a6ab5734e5931196ad6863889f20fe109ba0de1d345297308867"
+    },
+    {
+      "bytes": 93642,
+      "in_git": true,
+      "path": "out/series/ctl_frozen_00011__B.npz",
+      "sha256": "dcac38e841f86829e8c9b4a958d168eebb2970a2d4b7b1422a8b28c5ca0e3b4f"
+    },
+    {
+      "bytes": 69579,
+      "in_git": true,
+      "path": "out/cards/foundry_07567__A.json",
+      "sha256": "e93acbbc8888e5aa007cf4d99a593d265bf51e3c7a2f09d8a9a8f625668f0d48"
+    },
+    {
+      "bytes": 71070,
+      "in_git": true,
+      "path": "out/cards/foundry_00009__A.json",
+      "sha256": "803ad13b03a86806c4b4ad7685f6ede74aca66fe45037d1bee2af33d722f2b92"
+    },
+    {
+      "bytes": 70702,
+      "in_git": true,
+      "path": "out/cards/foundry_01672__late.json",
+      "sha256": "48f1dd03883084d724a191919a1929bd96e57f56dc26f6da13ae194ef77d2a03"
+    },
+    {
+      "bytes": 71612,
+      "in_git": true,
+      "path": "out/cards/vortex64__A.json",
+      "sha256": "2506e183dd0c7d0a5abc8f6946da41176ee2d1745fb290e79dea3238b0b31623"
+    },
+    {
+      "bytes": 71615,
+      "in_git": true,
+      "path": "out/cards/foundry_00028__A.json",
+      "sha256": "edc2e8487754983ba92cb3e8e86343840f8596637516e313855aad70dcb24866"
+    },
+    {
+      "bytes": 70900,
+      "in_git": true,
+      "path": "out/cards/foundry_07820__A.json",
+      "sha256": "17e5d248b4063e34f5268c1d8cfa205f08ee949d88a1a03e35f2a124ec09e9fa"
+    },
+    {
+      "bytes": 35280,
+      "in_git": true,
+      "path": "out/cards/foundry_00012__A.json",
+      "sha256": "359bba1b9fc37e5582c1e5f4e220c6aa434109f83f695345afc65983e60f118a"
+    },
+    {
+      "bytes": 71936,
+      "in_git": true,
+      "path": "out/cards/foundry_08010__A.json",
+      "sha256": "238b77ee53bd6bf6d8d51ffe96d667f314d26faee3569fe14c1f974978800cf8"
+    },
+    {
+      "bytes": 71178,
+      "in_git": true,
+      "path": "out/cards/ctl_freebodies__A.json",
+      "sha256": "f3c355e511f5ea8e6b24b155dbd5fb2843f4a5c7056f684285a5d2f4cf493369"
+    },
+    {
+      "bytes": 40864,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00011__B.json",
+      "sha256": "13b601e002f1c9f4d199acd55dd6c4bd5701e950b28c99f82738f75f0b28c298"
+    },
+    {
+      "bytes": 70531,
+      "in_git": true,
+      "path": "out/cards/foundry_01672__B.json",
+      "sha256": "dd9dae835e1c144d58c69f873e794a3d53a4c05397ae3238ef7d8b6a0bf3f112"
+    },
+    {
+      "bytes": 34904,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00000__A.json",
+      "sha256": "d775355c59dee55556ddf4e84b1158d83958e4ffe29e4e23dca0dff4bb833587"
+    },
+    {
+      "bytes": 67745,
+      "in_git": true,
+      "path": "out/cards/foundry_06845__A.json",
+      "sha256": "bca88a58621e1d2a78d114f00a05164b83785c0564771d7d45f8c47a30abad8c"
+    },
+    {
+      "bytes": 66551,
+      "in_git": true,
+      "path": "out/cards/foundry_04495__late.json",
+      "sha256": "06b1101cbcb5bd202a052b63f374e6357b8df79c03a9139c97a42a5632bf2f9c"
+    },
+    {
+      "bytes": 69775,
+      "in_git": true,
+      "path": "out/cards/foundry_00031__A.json",
+      "sha256": "15b3e4131989cdabfdadda65d68680d94a5b92b5befff9c391017cc08aa9de46"
+    },
+    {
+      "bytes": 52370,
+      "in_git": true,
+      "path": "out/cards/ctl_noise__A.json",
+      "sha256": "8b6c19d0019c5ae415f5396fcf78f50a9be5deaa4032c6bcb5509c47a8edaf6c"
+    },
+    {
+      "bytes": 68316,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00011__A.json",
+      "sha256": "db89df4f27e8a4224cc7903c1bd7cf7b3237e159e9310c62b299c19fb7590ab7"
+    },
+    {
+      "bytes": 35945,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00004__A.json",
+      "sha256": "e94c2bd71a5ed477438aa0f47e2e67f206d7219f24b98583074570313546b8e3"
+    },
+    {
+      "bytes": 71673,
+      "in_git": true,
+      "path": "out/cards/vortex64__B.json",
+      "sha256": "1e607cfa0490efb60f009196cf6e86fbb53290beb218acc0f842f4cfd81e5cac"
+    },
+    {
+      "bytes": 70242,
+      "in_git": true,
+      "path": "out/cards/foundry_04186__B.json",
+      "sha256": "476fd10ef85bda73070a5ccaa2aa9832d76323940e2f7ce0e0e715d33e5dc982"
+    },
+    {
+      "bytes": 35308,
+      "in_git": true,
+      "path": "out/cards/foundry_00007__A.json",
+      "sha256": "249fb1e7b5e5d2291bb1f24410a91c494a47b3fed5eca1c6266667a5b32578da"
+    },
+    {
+      "bytes": 71618,
+      "in_git": true,
+      "path": "out/cards/vortex128__A.json",
+      "sha256": "89944001914e55907a798f6e5cdd0e78b5a351b63fd419d792ac58dd8eb57009"
+    },
+    {
+      "bytes": 68576,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00001__late.json",
+      "sha256": "264ac18a05cdc2ed9cb933613ed4e3ca7dfa16dc603c140b684910cd70144099"
+    },
+    {
+      "bytes": 71052,
+      "in_git": true,
+      "path": "out/cards/gliders__A.json",
+      "sha256": "24f91b71ba04a89548f64e264949a59189c03a94405e76702de3a53400676af1"
+    },
+    {
+      "bytes": 34543,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00002__A.json",
+      "sha256": "339b370b16f1c08bb61a0465ee03fedf2148af5b111a9fd497ae608d50f20772"
+    },
+    {
+      "bytes": 70445,
+      "in_git": true,
+      "path": "out/cards/gliders__B.json",
+      "sha256": "2e8186e00e8a76e38224504cc69dadc71680ce4ad513deb710f67b0e697c174e"
+    },
+    {
+      "bytes": 71635,
+      "in_git": true,
+      "path": "out/cards/membrane__B.json",
+      "sha256": "a5669a4ade0aa5baf86695986c8d36ec32ff9cdce7e050fcac2404d46f83435c"
+    },
+    {
+      "bytes": 36147,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00004__B.json",
+      "sha256": "a8dc546350fc32e0ee8846d1b778aa1f35a49055d02a931aff37b2ba42e1520a"
+    },
+    {
+      "bytes": 71672,
+      "in_git": true,
+      "path": "out/cards/foundry_04470__B.json",
+      "sha256": "fbca134823762b4bbf1f093d09774a3550114dd81fe1fc43f145f25a4780956d"
+    },
+    {
+      "bytes": 52755,
+      "in_git": true,
+      "path": "out/cards/ctl_noise__B.json",
+      "sha256": "723c56a9d328910dc9a29a6a719379250b1f8ac15c6730a9052396cc43597ee0"
+    },
+    {
+      "bytes": 70855,
+      "in_git": true,
+      "path": "out/cards/foundry_05671__late.json",
+      "sha256": "50836146a7711189847d436e10dcf9cf2ae88ed7f539f0ae878c7d89629cbb42"
+    },
+    {
+      "bytes": 35732,
+      "in_git": true,
+      "path": "out/cards/foundry_00008__A.json",
+      "sha256": "a3874ec48cd8c020224b2d97dad7cb1b46ae40e383df6447b969478043c69372"
+    },
+    {
+      "bytes": 34553,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00002__B.json",
+      "sha256": "e883eb37bcb83c7ab52aabcf3bd30afe1063658399d1677c12a27e0920082447"
+    },
+    {
+      "bytes": 70660,
+      "in_git": true,
+      "path": "out/cards/foundry_01672__A.json",
+      "sha256": "415d6a6969f05d187f9ee43cab3404803b3f9f2ee91acb62eaf8f99d19caf8be"
+    },
+    {
+      "bytes": 70591,
+      "in_git": true,
+      "path": "out/cards/foundry_00060__late.json",
+      "sha256": "a40bab33be7ed9ee43b93b51e9df54541e0bdc0844a6f43f453327766d5b4fa4"
+    },
+    {
+      "bytes": 71297,
+      "in_git": true,
+      "path": "out/cards/foundry_04289__A.json",
+      "sha256": "e97851febf6f92de38d7aba8c1f0fc4bdf57a3a6764fdb80431e0316e59745ce"
+    },
+    {
+      "bytes": 35639,
+      "in_git": true,
+      "path": "out/cards/foundry_00016__A.json",
+      "sha256": "65bb6505dc3d593ec6167eb92435dd8d02772340a3f71edcb62213d1b8ede64e"
+    },
+    {
+      "bytes": 70135,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00024__A.json",
+      "sha256": "6d0b3fda1347664e252fcfbe5fb3000d7c570729482d5ef6d82af6f95664191b"
+    },
+    {
+      "bytes": 71768,
+      "in_git": true,
+      "path": "out/cards/foundry_00124__late.json",
+      "sha256": "e8abff2e294a3e7071ccbd453ebb0ff955d239264180794d7018a8c72924f3de"
+    },
+    {
+      "bytes": 71561,
+      "in_git": true,
+      "path": "out/cards/foundry_00416__late.json",
+      "sha256": "1937434dc6892327cea4dbcddaaa741043e300e263a63e0683de6a8a0d1dac0c"
+    },
+    {
+      "bytes": 69740,
+      "in_git": true,
+      "path": "out/cards/foundry_07567__late.json",
+      "sha256": "d8d343f5f3024d75e120513f70f7322fcbdf9c08e52fff1040c261cbba7b6770"
+    },
+    {
+      "bytes": 69065,
+      "in_git": true,
+      "path": "out/cards/foundry_00021__A.json",
+      "sha256": "f72f1c81da9ce42cde4e8cf739de62085ca0c8b54c603f9306917d74a4e3eaae"
+    },
+    {
+      "bytes": 70662,
+      "in_git": true,
+      "path": "out/cards/foundry_04833__A.json",
+      "sha256": "b45d630a8c8234182e91dfe2e9a0e635a9f1cfde9ded5c19c17a7822ecf77c81"
+    },
+    {
+      "bytes": 34385,
+      "in_git": true,
+      "path": "out/cards/foundry_00027__A.json",
+      "sha256": "25859e1010cf5fae61d97a545adcb280ef041327314a0e1a7d195e6a2546597e"
+    },
+    {
+      "bytes": 35375,
+      "in_git": true,
+      "path": "out/cards/foundry_00030__A.json",
+      "sha256": "ed9c1221648473361cc8d2892238b563834af3c5b0ef6d039ac9f7c3adeeb9c0"
+    },
+    {
+      "bytes": 70048,
+      "in_git": true,
+      "path": "out/cards/foundry_00025__A.json",
+      "sha256": "8ce72caa568a38765f2eb4a1742d4cf139d160c70204dddcc43ec7e899e8a70e"
+    },
+    {
+      "bytes": 70800,
+      "in_git": true,
+      "path": "out/cards/foundry_02755__late.json",
+      "sha256": "61d7dcfb4a79b9b3b71bbb6fa7dca6949c6f024e783e1d96cf99b007d4a35be3"
+    },
+    {
+      "bytes": 35943,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00003__B.json",
+      "sha256": "fdb69fbafa6083ae635cb2e480b9eca59ce971a57b18355cb17ccb832e6ac286"
+    },
+    {
+      "bytes": 35845,
+      "in_git": true,
+      "path": "out/cards/foundry_00029__A.json",
+      "sha256": "e2b57c0fd139590633229a622f1444ff560f3f4d3b0e1913d773379fb1a87079"
+    },
+    {
+      "bytes": 69613,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00024__B.json",
+      "sha256": "45aa9a2964743f3faa27a26c84f46b1ef5eb96a5a4021514b123ef686aae658c"
+    },
+    {
+      "bytes": 69321,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00011__late.json",
+      "sha256": "18daccf9a9a3bd8c2fc7fd4cb14af8230945ed59767ffd31bbed2e9f6d723bb0"
+    },
+    {
+      "bytes": 68932,
+      "in_git": true,
+      "path": "out/cards/foundry_04186__A.json",
+      "sha256": "8f568f1f65f436473fe2feaf7655892cbc2b6c425ed7a90041468e235631e299"
+    },
+    {
+      "bytes": 70388,
+      "in_git": true,
+      "path": "out/cards/foundry_07820__late.json",
+      "sha256": "3714326e35e636519df7d881413617d8bf38b4d6e307d7342e587ee80ef5c4ea"
+    },
+    {
+      "bytes": 34860,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00000__B.json",
+      "sha256": "94e61004b4960518a97eda121e3e916c5639e92f9fdefd174e09e5d6b8af7c4f"
+    },
+    {
+      "bytes": 70934,
+      "in_git": true,
+      "path": "out/cards/foundry_03078__B.json",
+      "sha256": "8dc33af701bc78e55029439c1e385e929a332586a2ab9335b908b64e7a5d0549"
+    },
+    {
+      "bytes": 71623,
+      "in_git": true,
+      "path": "out/cards/foundry_00124__A.json",
+      "sha256": "398bf54ae084cb6bceb7fbe02221be71a3a19645900602fd9393809ee4d187c3"
+    },
+    {
+      "bytes": 69510,
+      "in_git": true,
+      "path": "out/cards/foundry128_03078__A.json",
+      "sha256": "65f106096992dfada969b6db5abd470d1330820da244e3332411cd114e601b21"
+    },
+    {
+      "bytes": 35097,
+      "in_git": true,
+      "path": "out/cards/foundry_00005__A.json",
+      "sha256": "ae27d8c1983e7e6b6c8791e2c255b0a81c8a55eccfa80aed006cca1c397e4c5a"
+    },
+    {
+      "bytes": 34843,
+      "in_git": true,
+      "path": "out/cards/foundry_00023__A.json",
+      "sha256": "af52a4a633101071bbbcc7853bf0abb6f7c76ecce485dbc3757413b140218d6a"
+    },
+    {
+      "bytes": 34966,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00004__late.json",
+      "sha256": "5bf13e67cc63bd0e7a5aad080553968a30e263290616e98d1951607cd4a10eb3"
+    },
+    {
+      "bytes": 70467,
+      "in_git": true,
+      "path": "out/cards/foundry_03078__late.json",
+      "sha256": "04b2b0e596a5a29ed11d47f5ef16725ef664433218b4b0df39b3826122f656cd"
+    },
+    {
+      "bytes": 70798,
+      "in_git": true,
+      "path": "out/cards/foundry_04833__late.json",
+      "sha256": "4968ce2781de0f6a9ee9cd9780ce0f1922650264445c6443b0a3c66d56801810"
+    },
+    {
+      "bytes": 71409,
+      "in_git": true,
+      "path": "out/cards/foundry_04289__late.json",
+      "sha256": "b5d59eaf7acfaeb98c158c4070c051960b9bdd9b25a1f88887586827f63d6399"
+    },
+    {
+      "bytes": 70658,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00024__late.json",
+      "sha256": "fc5d740b544ab922c318208edecac686c26fb69a03c74c004c8c3dab70d1c6fe"
+    },
+    {
+      "bytes": 69617,
+      "in_git": true,
+      "path": "out/cards/foundry128_04186__A.json",
+      "sha256": "06bdcd0d57e452188e6ebb7a973a9f4fb5639456eb8c137fb37fd030c062c179"
+    },
+    {
+      "bytes": 69132,
+      "in_git": true,
+      "path": "out/cards/foundry_04919__late.json",
+      "sha256": "0d6d420c062940c37202341f1113e72a1c8e760492f3b157f20bf59a9846e66d"
+    },
+    {
+      "bytes": 35209,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00003__late.json",
+      "sha256": "38629e4ca690e0ccce4f3c0406d2a962ed4ef3249da4bf91da5e8ed0ae112514"
+    },
+    {
+      "bytes": 70442,
+      "in_git": true,
+      "path": "out/cards/foundry_03078__A.json",
+      "sha256": "f542429ea08742c75846e8782bde9e60a6d6ef1f60cac4f9dbe17e5305badeda"
+    },
+    {
+      "bytes": 35467,
+      "in_git": true,
+      "path": "out/cards/ctl_diffusion_0__A.json",
+      "sha256": "45b8460f14dd82c0bb97ff4c0e24c092f0c881563901129bcd8b7d1ca1092810"
+    },
+    {
+      "bytes": 70681,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00022__late.json",
+      "sha256": "5af19be07c57d3f58cca837829d4f1a9fd502102eea523fd1bb1bc11c69fa6d3"
+    },
+    {
+      "bytes": 69302,
+      "in_git": true,
+      "path": "out/cards/foundry_03854__late.json",
+      "sha256": "f6ded4230857cb62ea869c3b3db48ef70e8847dcb1e463e0cd4848ebf325d278"
+    },
+    {
+      "bytes": 71510,
+      "in_git": true,
+      "path": "out/cards/foundry_05671__A.json",
+      "sha256": "626fe6f1aec744d9425d74c78d97fbd6e0ba307486adfa0fcd87644cfa8e9799"
+    },
+    {
+      "bytes": 71563,
+      "in_git": true,
+      "path": "out/cards/foundry_07760__A.json",
+      "sha256": "6ba31616430e4b4ab13d8001f19a0b7d280cbbfa9d7c81e02794a4828e3a9b36"
+    },
+    {
+      "bytes": 71259,
+      "in_git": true,
+      "path": "out/cards/foundry_03101__late.json",
+      "sha256": "1f08b4e66474d1709c7b230b4b116d63d6336718ff6b7d3945158cddd1315f36"
+    },
+    {
+      "bytes": 35669,
+      "in_git": true,
+      "path": "out/cards/foundry_00006__A.json",
+      "sha256": "b091739230e9cdf8351ebdf033b2dc5901802bfc8528d334ed21b5a2990f8f7f"
+    },
+    {
+      "bytes": 71059,
+      "in_git": true,
+      "path": "out/cards/foundry_00262__late.json",
+      "sha256": "caaefe29c615ed65a0162908681638b9e5cc672740833490ea25c31193672f04"
+    },
+    {
+      "bytes": 68763,
+      "in_git": true,
+      "path": "out/cards/foundry_06845__B.json",
+      "sha256": "1123858d2a71151150f0d8eadfbef73ef11e9f238a21f47b16947e86b3c3a582"
+    },
+    {
+      "bytes": 69493,
+      "in_git": true,
+      "path": "out/cards/foundry_04919__A.json",
+      "sha256": "337d664d503a77c4a61ff01508b91c1e3fd926af9b23958ff72762d73aeb97ce"
+    },
+    {
+      "bytes": 70870,
+      "in_git": true,
+      "path": "out/cards/foundry_04470__A.json",
+      "sha256": "0b5f31fb241df22fd397252d9b6c207005a4d0f6a9bf0577bdaa88c367f92929"
+    },
+    {
+      "bytes": 69161,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00001__A.json",
+      "sha256": "be033500a7ba1610f68d270430736fbb92be6b20d0552933a6e1f9e7d0173390"
+    },
+    {
+      "bytes": 71221,
+      "in_git": true,
+      "path": "out/cards/ctl_freebodies__late.json",
+      "sha256": "ec042e4cbf3975951859471547f97f89ed29b237926bcd06d8423c08e7a56f84"
+    },
+    {
+      "bytes": 36510,
+      "in_git": true,
+      "path": "out/cards/foundry_00017__A.json",
+      "sha256": "80cc902e822d9b8cd479b26af2f85f364ac9c9268b1e661508cddb6c4cc78ce9"
+    },
+    {
+      "bytes": 71260,
+      "in_git": true,
+      "path": "out/cards/foundry128_00262__A.json",
+      "sha256": "f5c4354b9253a09343d650caefac40d3f531494783476ed8d6e1b5e7a868ce23"
+    },
+    {
+      "bytes": 70749,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00022__B.json",
+      "sha256": "453ab204d454aaeda071eb40e039476c6064ea026ec90b6fc25f41e91fc9b966"
+    },
+    {
+      "bytes": 71691,
+      "in_git": true,
+      "path": "out/cards/membrane__late.json",
+      "sha256": "1afc041c43fba58757c5923c7db935af9ea2cdde8f730202ed887a96f49ac8c2"
+    },
+    {
+      "bytes": 38784,
+      "in_git": true,
+      "path": "out/cards/foundry_00019__A.json",
+      "sha256": "6b5e8eecd9750d115de4876a478a9e621edd8cff32283e24e208b227613c347a"
+    },
+    {
+      "bytes": 70694,
+      "in_git": true,
+      "path": "out/cards/foundry_07913__late.json",
+      "sha256": "ef070a07c9fe328985b1d20ce9d665e2c70c23061f85b912b936d2bec5cd25d0"
+    },
+    {
+      "bytes": 68602,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00001__B.json",
+      "sha256": "1d3bf699065b719b6da1d5a685b745cbd228d1f72066326c2bb43a98b8682f09"
+    },
+    {
+      "bytes": 35142,
+      "in_git": true,
+      "path": "out/cards/foundry_00018__A.json",
+      "sha256": "c44c19b1952d9ca3f03d03e9f71488ea5f5a086be104e373a1cdd3b7015b4dc4"
+    },
+    {
+      "bytes": 71396,
+      "in_git": true,
+      "path": "out/cards/foundry_03101__A.json",
+      "sha256": "21ac56f868890c89732b9891af825349f515ac0d174cd4137fdf60f65098c4aa"
+    },
+    {
+      "bytes": 71320,
+      "in_git": true,
+      "path": "out/cards/ctl_freebodies__B.json",
+      "sha256": "3e57a0099a21f4e777abcdabf52cde5037bb91e57675e7f4052b009b7f5fa793"
+    },
+    {
+      "bytes": 71289,
+      "in_git": true,
+      "path": "out/cards/foundry128_01672__A.json",
+      "sha256": "98eb6f2e7f628abb88c315a33e6b7f0d90b47a449e744f5587305d8e8b633a14"
+    },
+    {
+      "bytes": 72039,
+      "in_git": true,
+      "path": "out/cards/membrane__A.json",
+      "sha256": "3643043cee4bf2359aadee57ab6c6c1d71c9d72840e09d4d8805cb700c0a9433"
+    },
+    {
+      "bytes": 35830,
+      "in_git": true,
+      "path": "out/cards/ctl_diffusion_1__A.json",
+      "sha256": "960c6a62fa28e9f26d62130552ed78a6f203951fed704ea256f830cd4697754e"
+    },
+    {
+      "bytes": 71738,
+      "in_git": true,
+      "path": "out/cards/foundry_03062__A.json",
+      "sha256": "90da6e97520880013135905f23ec2999eb6207b638febd9ff29662f4e46b1f20"
+    },
+    {
+      "bytes": 71048,
+      "in_git": true,
+      "path": "out/cards/foundry_00026__A.json",
+      "sha256": "58263e85a7c59b4d7762a011a821ed534f3c74db111c071353f6b9c16c8ac869"
+    },
+    {
+      "bytes": 34873,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00000__late.json",
+      "sha256": "601738f03871f5002da72c43a72240e5696fe29104e391e20d451350b3c85160"
+    },
+    {
+      "bytes": 66367,
+      "in_git": true,
+      "path": "out/cards/foundry_03062__late.json",
+      "sha256": "1d958711a1b0991432d171d00454a53dbb54712843f4158156ce674d147fc4fa"
+    },
+    {
+      "bytes": 70719,
+      "in_git": true,
+      "path": "out/cards/foundry_02755__A.json",
+      "sha256": "a86fa9f2aefb560080bdef0f0da9e5ec34de92a4562451833182bc4c3f7bb18e"
+    },
+    {
+      "bytes": 70065,
+      "in_git": true,
+      "path": "out/cards/foundry128_07567__A.json",
+      "sha256": "958aa88ea866dc11ed72ce03db152fdf6c30298e80982b23ca9823518577f5e0"
+    },
+    {
+      "bytes": 71885,
+      "in_git": true,
+      "path": "out/cards/foundry_04495__A.json",
+      "sha256": "883149b9142a98259207942562b31373bc4baf575a14ff3b4eb84fe4c96861b2"
+    },
+    {
+      "bytes": 69545,
+      "in_git": true,
+      "path": "out/cards/foundry_04186__late.json",
+      "sha256": "b6d7689b3a98575d967f7138ef30a5c1edbf8f70cee36df0171afc09ae508897"
+    },
+    {
+      "bytes": 71439,
+      "in_git": true,
+      "path": "out/cards/foundry_00262__B.json",
+      "sha256": "36fb379eb160764e4bbadc636ba868d04b3b9b81cb3a6425988a241b1bb4c3b4"
+    },
+    {
+      "bytes": 69947,
+      "in_git": true,
+      "path": "out/cards/foundry_00013__A.json",
+      "sha256": "671d8b397d7d77876b0766aeb3d3ff5bb755ad972b0d0093af24bd1aec8a4fe8"
+    },
+    {
+      "bytes": 71490,
+      "in_git": true,
+      "path": "out/cards/vortex64__late.json",
+      "sha256": "264b64c1cd2d16c6bc09c8b9f5dcfc9c278d820c7f406150dda318b15f45f6ed"
+    },
+    {
+      "bytes": 34509,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00002__late.json",
+      "sha256": "77b703b831ac1ce6a1279454ab56a8aa23425589c2ce94ab95caef06ee17d6f6"
+    },
+    {
+      "bytes": 69239,
+      "in_git": true,
+      "path": "out/cards/foundry_07760__late.json",
+      "sha256": "450c0f50e6d99bb34ab129c86b77ec652a8d4b0cbf361c7fd7018e3b041cd05b"
+    },
+    {
+      "bytes": 69943,
+      "in_git": true,
+      "path": "out/cards/foundry_07567__B.json",
+      "sha256": "26a3e3bc1429d53aa1de9f297f5229a9c7070a2294f13515319a6b735d3cb5ef"
+    },
+    {
+      "bytes": 69225,
+      "in_git": true,
+      "path": "out/cards/foundry128_06845__A.json",
+      "sha256": "1844aae2d61f3b23c489b07dd20c586862915afa1daccdbe7234703122f28f05"
+    },
+    {
+      "bytes": 71050,
+      "in_git": true,
+      "path": "out/cards/foundry_03854__A.json",
+      "sha256": "59fd6abfb7419035f1bf2059312c1fccabb8895b07ade0c159a78df349dbee4d"
+    },
+    {
+      "bytes": 70913,
+      "in_git": true,
+      "path": "out/cards/foundry_00060__A.json",
+      "sha256": "d4ae00d1a6fbc2737e6bb49d89dea7c05ed49c5e02a6d09d989d079c14bd5dd4"
+    },
+    {
+      "bytes": 36225,
+      "in_git": true,
+      "path": "out/cards/foundry_00015__A.json",
+      "sha256": "bfae065a241732e56e3999da9ee56141d84dce1a11ea4fa2dc21a42ccc3a632b"
+    },
+    {
+      "bytes": 35391,
+      "in_git": true,
+      "path": "out/cards/foundry_00020__A.json",
+      "sha256": "a8ca4a9c9481fb94417e6f3c21e508e7150228193021300a201e9b3729b0348a"
+    },
+    {
+      "bytes": 68900,
+      "in_git": true,
+      "path": "out/cards/foundry_06845__late.json",
+      "sha256": "c5ac35d43269a3e8263a10bb8bcb445dde0b1f5f410ec42635e79fd14a628d04"
+    },
+    {
+      "bytes": 70279,
+      "in_git": true,
+      "path": "out/cards/foundry_04470__late.json",
+      "sha256": "a9bb2487433887025ab321d7722ba06187e6927c59587d6209e56f1bcc0d5ec7"
+    },
+    {
+      "bytes": 71348,
+      "in_git": true,
+      "path": "out/cards/foundry_00262__A.json",
+      "sha256": "270d6b766ae732f02239f7af6873a501c3f2d03e2f5d0d5b6e0295de90724cb7"
+    },
+    {
+      "bytes": 70881,
+      "in_git": true,
+      "path": "out/cards/ctl_frozen_00022__A.json",
+      "sha256": "8405c6bcc7454765b323820cb5dc365fe7fe1dd92ff44a70fec36e56c6d510fe"
+    },
+    {
+      "bytes": 35223,
+      "in_git": true,
+      "path": "out/cards/foundry_00014__A.json",
+      "sha256": "d96049c8f65e823226dc1baea044f1036ed6dc2c57f692939d6b47a1909667d1"
+    },
+    {
+      "bytes": 35963,
+      "in_git": true,
+      "path": "out/cards/ctl_uniform_00003__A.json",
+      "sha256": "fb1bea9ac0a03c9aa61b8996e814b8b384ba2bf4f0eb2b5363fbb52b70066c3a"
+    },
+    {
+      "bytes": 66306,
+      "in_git": true,
+      "path": "out/cards/foundry_08010__late.json",
+      "sha256": "f4559fc198a90b2d6e940b92c5934db30331f2731d80a805fed504b8f8ddec67"
+    },
+    {
+      "bytes": 71813,
+      "in_git": true,
+      "path": "out/cards/foundry_00416__A.json",
+      "sha256": "7fd5db563c5c59c1cc9d31ed3cac310cdf08eebd0afa8aa54a564b06d84fe8a6"
+    },
+    {
+      "bytes": 72148,
+      "in_git": true,
+      "path": "out/cards/foundry_07913__A.json",
+      "sha256": "031a08a1711a1b5b6cd284c546d990875b6db4a29e87ec12c3425805025c09a5"
+    },
+    {
+      "bytes": 70872,
+      "in_git": true,
+      "path": "out/cards/gliders__late.json",
+      "sha256": "19e35930dc1959d5e1057763b1797e67e20252dd1925f8dcfc9d187524e2bdf4"
+    },
+    {
+      "bytes": 71089,
+      "in_git": true,
+      "path": "out/cards/foundry_00010__A.json",
+      "sha256": "62ff412c8bea3109d50345ec76e6070085ae31561a2d22bda9bf2ecf33bf639a"
+    },
+    {
+      "bytes": 71644,
+      "in_git": true,
+      "path": "out/cards/foundry128_04470__A.json",
+      "sha256": "00f1fe9c7aa9ba69fc37de7cd37421331dd9c0933d0533d1d54b8160f9c576e8"
+    },
+    {
+      "bytes": 20949,
+      "in_git": true,
+      "path": "out/progress.txt",
+      "sha256": "3e147e8894ab054de4640bab1b8efd66e9dfa02349ed8d1419b83607f5a39a8d"
+    }
+  ],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r6-cards-001/collected/; ask for them by path.",
+  "skipped": [],
+  "skipped_count": 0,
+  "transfer_bytes": 21299405,
+  "transfer_stopped": null,
+  "truncated": false
+}
