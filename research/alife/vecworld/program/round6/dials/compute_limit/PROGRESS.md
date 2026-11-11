@@ -34,3 +34,9 @@
   re-check of the overflow counters) and a second 128 px pool (seed 2). Next: add to analyse.py (a) the level-2
   models as rows of the state-given screen, (b) a transfer table scored on the 128 px members; then `analyse.py
   <scratch>` in full, then DESIGN.md, commit, push, remove the worktree and the scratch folder.
+- 13:25: full analysis rerun with 20 members at 64 px and 8 at 128 px (results/summary.json is now COMPLETE: finite_size,
+  budget_curve, horizon_transfer, transfer_128 (new), screen with the coarse-step and level-2 rows and the constants by
+  input arm). Overflow counters re-checked on the new pools: 0 ticks, peaks 14 of 24 slots (64 px) and 48 of 56 (128 px).
+  Main new finding: a generic regression fitted on POOLED small boxes (4 x 64 px or 7 x 48 px summed) equals the
+  exam-size reference at 128 px (0.448 and 0.459 against 0.454); from 32 px boxes nothing does (0.287).
+- Running: run_mut100.sh (pools at mut128 = 100, then `check_mut100.py <scratch>` -> results/mut100.json). Then DESIGN.md.
