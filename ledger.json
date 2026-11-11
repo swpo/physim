@@ -267,10 +267,10 @@
     {
       "billed_usd": null,
       "cap_usd": 4.3,
-      "conservative_usd": 0.434,
+      "conservative_usd": 0.4434,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.218,
+      "hours": 0.223,
       "job_id": "r6-cards-002",
       "purpose": "Round-6 study cards, job 2: world cards on slower clocks (membrane, fed vortices: 4 world ticks per card tick), gliders with round 5's 1- and 8-parameter hidden sets, three reruns with the corrected response-difference estimator, true diffusion controls, 128-px vortices with 8-px blocks; 15 runs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -279,14 +279,14 @@
     {
       "billed_usd": null,
       "cap_usd": 8.4,
-      "conservative_usd": 2.0476,
+      "conservative_usd": 2.0553,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 1.029,
+      "hours": 1.033,
       "job_id": "r6-foundryexam-002",
       "purpose": "Round-6 study foundryexam: exam pilot where the hidden law is a network's weights (foundry transport automaton); reference policies K, O, C, P0, amortised S(N), fine-tuned P0, D(N), ridge on 16 screened-prior worlds and 2 x 12 neighbourhood worlds (eps 0.3, 0.1)",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "running"
+      "state": "collecting"
     },
     {
       "billed_usd": 0.0,
@@ -298,7 +298,7 @@
       "job_id": "r6-foundryexam-003",
       "purpose": "Round-6 study foundryexam: exam pilot where the hidden law is a network's weights; rerun of 002 (cancelled: nets several times too slow) with 50 training steps per dispatch, a cheaper net and a presmoke speed guard; 16 screened-prior worlds and 2 x 12 neighbourhood worlds",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
-      "state": "received"
+      "state": "queued"
     },
     {
       "billed_usd": 0.0501,
@@ -339,10 +339,10 @@
   ],
   "summary": {
     "auto_job_cap_usd": 25.0,
-    "committed_usd": 60.2207,
+    "committed_usd": 68.0207,
     "prior_spend_usd": 0.0,
-    "spent_usd": 50.0023,
+    "spent_usd": 50.0194,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T12:40:55Z"
+    "updated_at": "2026-11-11T12:41:12Z"
   }
 }
