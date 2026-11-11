@@ -58,3 +58,8 @@ Worktree `/home/user/wt/dialsA`, branch `wt-dialsA`; scratch
 - Running: job `r6-dialsa-003` (received 17:01; waits for a GPU slot, expected 17:30-17:40; modelled run 1.55 h).
 - If restarted: wait on r6-dialsa-003 (fetch origin/gpu-jobs every 60 s); read jobs/r6-dialsa-003/review.md
   BEFORE the results; then results to `results/job/`, `python -B make_summary.py`, README.
+- 11 Nov 17:13 UTC. `r6-dialsa-003` RUNNING since 17:11:38 (A100 40 GB). Its review.md is read (0 blocker, 0 major,
+  1 minor: D(N)'s rule and deadline-stopped groups, already handled in make_summary; notes: the zero point can
+  miss for reasons that are not harness faults, namely final-rung nets against round 5's 6,000-step sigma and
+  RES(8) fitting noise at eta 0; a next code revision should run 25-50 steps per dispatch).
+- Running: job `r6-dialsa-003`. Expected end about 18:50 UTC (the script stops itself at 1.9 h).
