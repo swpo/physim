@@ -8,10 +8,12 @@ cd "$(dirname "$0")"
 export OUT="${OUT:-$PWD/out}"
 mkdir -p "$OUT"
 export S0_SIZE="${S0_SIZE:-full}"
+# the processor count is taken BEFORE OMP_NUM_THREADS is set: GNU nproc answers OMP_NUM_THREADS when it is set
+# (r6-dialsb-001 ran one process at a time for that reason and its speed guard stopped it; 002 set S0_NPROC=16)
+NPROC="${S0_NPROC:-$(env -u OMP_NUM_THREADS -u OMP_THREAD_LIMIT nproc)}"
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 JAX_PLATFORMS=cpu
 export XLA_FLAGS="--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1"
 PY="${PY:-python}"
-NPROC="${S0_NPROC:-$(nproc)}"
 LIMIT_S="${S0_LIMIT_S:-10800}"
 T_START=$(date +%s)
 left() { echo $(( LIMIT_S - ($(date +%s) - T_START) )); }

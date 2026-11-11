@@ -1,6 +1,8 @@
 """make_summary -- results/summary.json of dialsB from the job's published output (numpy-free, seconds).
 
-    python -B make_summary.py JOBDIR [JOB_ID]
+    python -B make_summary.py JOBDIR [OTHER_JOBDIR ...]
+
+OTHER_JOBDIRs are the study's other jobs (failed or cancelled ones): only their status.json is read, for the cost.
 
 JOBDIR is the job's folder as published on the gpu-jobs branch (status.json, out/...), for example extracted with
     git archive origin/gpu-jobs jobs/r6-dialsB-001 | tar -x -C SCRATCH        (JOBDIR = SCRATCH/jobs/r6-dialsB-001)
@@ -15,7 +17,8 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 jobdir = sys.argv[1]
-job_id = sys.argv[2] if len(sys.argv) > 2 else os.path.basename(os.path.normpath(jobdir))
+job_id = os.path.basename(os.path.normpath(jobdir))
+others = sys.argv[2:]
 out = os.path.join(jobdir, "out")
 res = os.path.join(HERE, "results")
 dst = os.path.join(res, "job")
@@ -55,10 +58,7 @@ def pooled(arm, view, sub, pol):
 S = {"PILOT_NEVER_REUSE_AS_EXAM": True,
      "what": "dialsB: stage 0 of the membrane carrier (study B of ../PLAN.md), the CPU gate; state given, 64 px, 8 fresh seeds, "
              "main and control arm; every number with its source. DECLARED.md holds the rule, written before any run.",
-     "job": {"id": job_id, "state": status.get("state"), "exit_code": status.get("exit_code", status.get("run_exit_code")),
-             "status_fields": {k: status[k] for k in status if any(t in k.lower() for t in ("cost", "rate", "hour", "price", "billed", "pod", "gpu", "offer", "started", "finished", "ended", "elapsed", "seconds"))
-                               and not isinstance(status[k], (list,))},
-             "source": {"job": job_id, "file": f"jobs/{job_id}/status.json"}},
+     "job": None,
      "sizes": {"seeds": seeds, "arms": ["main (cat = 1)", "control (cat = 0)"], "px": 64, "lab_episodes": 16, "truths_per_item": 6,
                "test_items_per_seed_arm": {arm: {s: A["arms"][arm]["heaviest"][str(s)]["items"] for s in map(str, seeds)} for arm in A["arms"]},
                "member_ticks_gate": A["cost"]["member_ticks_gate"], "planned_member_ticks": P["planned_member_ticks"],
@@ -68,6 +68,26 @@ S = {"PILOT_NEVER_REUSE_AS_EXAM": True,
      "verdict": dict(A["verdict"], source=src("analysis.json", "verdict")),
      "conditions": {k: cond_row(k) for k in A["conditions"]},
      "table_focus": {}, "table_cell_resolved": {}, "by_horizon": {}, "stand_in": {}, "scans": {}}
+
+
+def job_row(path):
+    st = json.load(open(os.path.join(path, "status.json")))
+    jid = os.path.basename(os.path.normpath(path))
+    from datetime import datetime
+    t = lambda k: datetime.strptime(st[k], "%Y-%m-%dT%H:%M:%SZ") if st.get(k) else None      # noqa: E731
+    hours = (t("finished_at") - t("started_at")).total_seconds() / 3600 if t("finished_at") and t("started_at") else None
+    return {"id": jid, "state": st.get("state"), "exit_code": st.get("exit_code"), "message": st.get("message"), "pod": st.get("pod"),
+            "started_at": st.get("started_at"), "finished_at": st.get("finished_at"), "run_hours_started_to_finished": hours,
+            "billed_usd": (st.get("cost") or {}).get("billed_usd"), "conservative_usd": (st.get("cost") or {}).get("conservative_usd"),
+            "cap_usd": st.get("cap_usd"), "ref": (st.get("bundle") or {}).get("ref"),
+            "source": {"job": jid, "file": f"jobs/{jid}/status.json", "key": "state, exit_code, pod, started_at, finished_at, cost, cap_usd, bundle.ref"}}
+
+
+S["job"] = job_row(jobdir)
+S["other_jobs"] = [job_row(p) for p in others]
+S["cost_total"] = {"billed_usd": sum(j["billed_usd"] or 0.0 for j in [S["job"]] + S["other_jobs"]),
+                   "machine_hours": sum(j["run_hours_started_to_finished"] or 0.0 for j in [S["job"]] + S["other_jobs"]),
+                   "note": "sum over the jobs listed here; r6-dialsB-001 (upper-case id) was never acknowledged by the runner and cost nothing"}
 for arm in A["arms"]:
     for view, key in (("focus", "table_focus"), ("cr", "table_cell_resolved")):
         S[key][arm] = {sub: {p: pooled(arm, view, sub, p) for p in ("G2", "G3", "A_act", "Gstar", "G1", "G4", "H", "pub0")}
