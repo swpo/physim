@@ -144,7 +144,14 @@ def diffusion_theta(prior_seed: int, index: int):
 
 
 # ----------------------------------------------------------------------------- gliders
-def gliders() -> CL.Adapter:
+# the hidden sets of round 5's ladder (round5/ladder/ladder_lib.py: SETS, SCAN_BOX, SHRINK = 0.6; copied, not imported)
+GLIDERS_SETS = {1: ["lR"], 4: ["lR", "dm_00", "ls_00", "lh"],
+                8: ["lR", "dm_00", "ls_00", "lh", "dm_10", "ls_01", "dm_01", "lA"]}
+GLIDERS_SCAN = {"lR": (0.85, 1.15), "dm_00": (-0.25, 0.25), "ls_00": (0.85, 1.15), "lh": (0.85, 1.15),
+                "dm_10": (-0.25, 0.25), "ls_01": (0.85, 1.15), "dm_01": (-0.25, 0.25), "lA": (0.75, 1.25)}
+
+
+def gliders(n_hidden: int = 4) -> CL.Adapter:
     for p in (ACT, GE):
         _path(p)
     _path(FOUNDRY)
@@ -159,7 +166,12 @@ def gliders() -> CL.Adapter:
     lev0, cfg, _ = FJ.make_level("A_gliders", GW.NOISE_STD)
     _, trv, _ = PH.phi_objects_jax("A_gliders")
     prior = json.load(open(os.path.join(GE, "results", "prior.json")))
-    names, lo, hi = prior["names"], prior["lo"], prior["hi"]
+    names = GLIDERS_SETS[int(n_hidden)]
+    cen = np.array([sum(GLIDERS_SCAN[k]) / 2 for k in names])
+    hw = np.array([(GLIDERS_SCAN[k][1] - GLIDERS_SCAN[k][0]) / 2 * 0.6 for k in names])
+    lo, hi = cen - hw, cen + hw
+    if n_hidden == 4:
+        assert names == prior["names"] and np.allclose(lo, prior["lo"]) and np.allclose(hi, prior["hi"])
     to_theta = lambda d: _np(GW.theta_to_params(d))
     nb = _box_neighbour(names, lo, hi, to_theta, seed=6101)
     sw = GW.SIGMA_W
@@ -168,13 +180,14 @@ def gliders() -> CL.Adapter:
         return _topk_pattern(block_means(field.sum(0)[None], GW.G)[0], rng, aimed, 2)
 
     return CL.Adapter(
-        name="gliders", family="gliders", init=lambda p, k: lev0.init(p, k), tick=lambda p, A, nz, u: GW.tick(p, A, nz, u, sw),
+        name="gliders" if n_hidden == 4 else f"gliders_n{n_hidden}", family="gliders", init=lambda p, k: lev0.init(p, k), tick=lambda p, A, nz, u: GW.tick(p, A, nz, u, sw),
         m=GW.NW, sigma_u=sw, grid=lambda x: TN.block_view(x, 8), fine=lambda x: TN.block_view(x, 16),
         trk=trv.bt, trk_field=lambda x: x, theta0=_np(GW.theta_to_params({})), neighbour=lambda th, e, d: nb(th, e, d), aim=aim,
         G=8, Hpx=GW.H, burn=GW.BURN, late_gap=600, state_batch=8, grid_names=("mean_c0", "mean_c1", "mean_S2"),
         meta=dict(lattice=[2, GW.H, GW.W], substeps_per_tick=GW.STRIDE, input="wind 2 x 8 x 8, noise std %.2f" % sw,
-                  hidden="lR, dm_00, ls_00, lh (4 global parameters of the Flow-Lenia law)",
-                  prior="track2/gliders_exam/results/prior.json (uniform box, shrunk by 0.6); theta = the centre",
+                  hidden=", ".join(names) + f" ({len(names)} global parameter(s) of the Flow-Lenia law)",
+                  prior="round 5 ladder's box for this hidden set (scanned box x 0.6; for 4 parameters = "
+                        "track2/gliders_exam/results/prior.json); theta = the centre",
                   views="Phi_coarse (block means of 2 channels and of S^2, 16 px blocks); the port's blob tracker (12 slots)"))
 
 

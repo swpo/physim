@@ -33,14 +33,26 @@
    "priority": 1
   },
   {
-   "name": "gliders_s4",
+   "name": "gliders_n1",
    "kind": "gliders",
-   "stride": 4,
+   "n_hidden": 1,
    "role": "designed",
    "runs": [
-    "A"
+    "A",
+    "B"
    ],
-   "priority": 2
+   "priority": 1
+  },
+  {
+   "name": "gliders_n8",
+   "kind": "gliders",
+   "n_hidden": 8,
+   "role": "designed",
+   "runs": [
+    "A",
+    "B"
+   ],
+   "priority": 1
   }
  ]
 }

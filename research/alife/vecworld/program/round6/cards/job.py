@@ -110,7 +110,7 @@ def _adapter_of(w):
         return AD.foundry(AD.diffusion_theta(W["prior_seed"] + 31, w["draw"]), index=w["draw"], H=64, name=w["name"],
                           nb_seed=W["prior_seed"] + 31)
     if k == "gliders":
-        return AD.gliders()
+        return AD.gliders(w.get("n_hidden", 4))
     if k == "vortex":
         H = w.get("H", 64)
         if TINY:
