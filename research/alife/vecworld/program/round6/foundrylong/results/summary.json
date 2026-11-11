@@ -2,7 +2,7 @@
  "PILOT_NEVER_REUSE_AS_EXAM": true,
  "study": "foundrylong",
  "round": 6,
- "declared": "DECLARED.md (commit 2ab6e7bb, before any request); deviations and addenda 1-3 in DEVIATIONS.md",
+ "declared": "DECLARED.md (commit 2ab6e7bb, before any request); deviations and addenda 1-5 in DEVIATIONS.md",
  "jobs": {
   "r6-foundrylong-001": {
    "stage": 1,
@@ -24,7 +24,7 @@
    "source": "origin/gpu-jobs:jobs/r6-foundrylong-003/status.json (billed), out/full/info.json, out/progress.txt"
   }
  },
- "gpu_total_usd": 8.94,
+ "gpu_total_usd": 8.93,
  "stage1": {
   "source": "results/analysis_stage1.json (make_summary.py on origin/gpu-jobs:jobs/r6-foundrylong-001/out/full/scores.npz)",
   "n_worlds": 16,
@@ -605,7 +605,7 @@
   }
  },
  "stage2": {
-  "source": "results/analysis_stage2.json (make_summary2.py on origin/gpu-jobs:jobs/r6-foundrylong-002/out/full/scores.npz)",
+  "source": "results/analysis_stage2.json (make_summary2.py on origin/gpu-jobs:jobs/r6-foundrylong-003/out/full/scores.npz)",
   "readable": true,
   "incomplete": [],
   "w_steps": 143,
@@ -962,7 +962,8 @@
      }
     },
     "holds": false
-   }
+   },
+   "units": "loss (fair energy score), L(mix Lab) - L(designed Lab), paired over worlds; positive = designed better. In skill units at 16 ticks: W* +0.010, G* -0.009, D +0.045. The designed Lab spends 400 nats per episode, the mix Lab about 200 on average (none / 200 / 200 / 400), so designed-vs-mix also doubles the nats (checker)"
   },
   "T5_actions": {
    "8": {
@@ -1323,7 +1324,8 @@
    "W_fit_share_of_way_from_prior_to_true_weights": 0.9,
    "W_plus_skill": 0.326,
    "C4096_at_true_weights_stage1": 0.533,
-   "note": "W_true_minus_C is L(C) - L(W(true)) per world (negative: C better). W(true) below C means the predictor's state inference, not the law, is the first limit (DECLARED section 3); W+ trains the 4,096-episode C recipe at the fitted weights, so its ceiling is C(4,096) at the truth (addendum 5)"
+   "note": "W_true_minus_C is L(C) - L(W(true)) per world (negative: C better). W(true) below C means the predictor's state inference, not the law, is the first limit (DECLARED section 3); W+ trains the 4,096-episode C recipe at the fitted weights, so its ceiling is C(4,096) at the truth (addendum 5)",
+   "W_fit_share_note": "added after seeing the results; the baseline W(prior) is far below climatology (-0.70), so the share flatters: the fitted W is 0.030 of skill below P0 and 0.066 below FT (checker)"
   }
  },
  "W_cpu_tests": {
@@ -1517,5 +1519,38 @@
     49
    ]
   }
+ },
+ "checker": {
+  "by": "independent checker, 12 Nov 2026 (CPU only, own code; no job run)",
+  "recomputed": "all headline numbers reproduce from origin/gpu-jobs scores.npz of jobs 001 and 003 with independent code and a different bootstrap seed: S1 0.218 [p10 0.188, min LOO 0.179, p90 0.254], S1a after-step bound 0.062 (0.071 with the all-world bound), S3 falls 0.087 / 0.114 / 0.186 (z 5 to 6), S4 last gains 0.038 / 0.048 / 0.069, T1 0.208 [0.178, min LOO 0.169], T2 0.226 [0.196, 0.255], T3 -0.536 (t -1.86, 5 of 16), T5 0.119, W(true) - C t -3.22 (C better in 12 of 16), every skill in the tables to 0.001. Every verdict (S1 SURVIVES, S1a 'at this compute', T1 pass, T2 pass, T3 fail, T4 fail, T6 fail, stage 2 UNDECIDED) follows by the declared rule",
+  "edits": [
+   "declared: addenda 1-5 (was 1-3)",
+   "gpu_total_usd: 8.93 = 4.9154 + 0.1028 + 3.9154 billed (was 8.94, a sum of rounded parts)",
+   "stage2.source: job r6-foundrylong-003 (was 002, which stopped at its presmoke and wrote no full scores)",
+   "stage2.T4_experiments.units added (the report quotes loss differences without units)",
+   "stage2.readings_16_ticks.W_fit_share_note added"
+  ],
+  "corrections_to_the_report": [
+   "'first limit is the state, not the law' holds at 8 and 16 ticks only. W(true) recovers 0.24 / 0.46 / 0.78 of the G*-to-C gap at 8 / 16 / 32 ticks (t vs G* 1.25 / 2.28 / 3.17); at 32 ticks W(true) would pass T3 and ties C (C better in 9 of 16, t 1.17), so there the weight inference is what fails. At 16 ticks the fit costs more skill (W(true) - W 0.123) than the filter (C - W(true) 0.066); the filter alone suffices to fail T3 there",
+   "'a robust gap' (report, 'What it means') contradicts the declared S1a reading 'at this compute': after one more step of prior worlds the lower bound would be 0.06 (P0 still falls about 0.11 of sigma per 4.8x worlds)",
+   "'both reviews read and acted on before any results' : there were three reviews; addendum 5 was written after seeing pooled stage-2 skills in the progress log (it says so). The crash-on-a-cut-fit minor (002, 003) was not fixed; no fit was cut, so it did not matter",
+   "'fits on a box: about 40-50 min of 2 cores for 200 steps' is the CPU test's fit (1 start, 4 episodes x 2 members x 2 anchors per step). The job's W (8 x 4 x 2 per step, 4 starts, 143 steps, plus a 32-start prescreen) is about 11x that (4x the work per step, 4 starts, 143 steps): roughly 7.5-9.4 h of 2 cores per world and Lab (checker's linear extrapolation)"
+  ],
+  "unrecorded_deviations_or_omissions": [
+   "no stage-2 training-rule (S2) report. Checker's counts (trained by the 80% rule at 8 / 16 / 32 ticks): FTm 38 / 41 / 43 of 48, FTd 36 / 39 / 46, Dm 44 / 47 / 47, Dd 47 / 48 / 48, W+ mix 3 / 6 / 15 of 16, W+ designed 2 / 7 / 15: W+ is a lower bound of its recipe (one seed, no seed variance in its bars)",
+   "W fits ran 143 Adam steps (addendum 4; declared 200) and are not converged: the best 10-step window of the batch-median fit loss falls after 80% of the steps in 3 of 8 (mix) and 4 of 8 (designed) fit batches; W's 0.404 is a lower bound of the fit recipe (W(true) at 16 ticks would still fail T3)",
+   "S5 / T5 'actions matter' is read as the 5th percentile >= 0.10 (in the analysis code before job 001, the pilot's practice), not stated in DECLARED.md or an addendum; it does not change a verdict",
+   "S1a's after-step bound subtracts from the minimum leave-one-out lower bound (0.062), stricter than the declared 'lower bound' (all worlds: 0.071); both are below 0.15",
+   "T1/T3 medians over worlds are not carried into summary.json (declared beside every mean)"
+  ],
+  "checks_that_hold": [
+   "DECLARED.md committed 17:55 UTC, before request 001 (18:21) and never edited after; stage-2 criteria declared there; addendum 3 (W fit loss, FT rate grid) written after seeing stage 1 and disclosed as such",
+   "jobs: 001 lambdalabs A100 40GB exit 0 billed $4.92 (2.47 h of pod, 2.35 h of job clock), only items.npz kept on the Mac; 002 exit 2 (presmoke guard, exit 4) $0.10; 003 exit 0 $3.92, nothing failed, skipped or cut",
+   "null tuning: stage 1's FT grid did not bracket the rate (lowest in 122 of 144), but stage 2's lower grid moved FT - P0 only from 0.034 to 0.036 of skill and sigma from 0.218 to 0.208: S1 is not an artefact of it. Stage 2's grid is still at its low edge in 27 of 48 cases at 32 ticks",
+   "C with one seed in stage 2 is harmless: stage-1 sigma(16, 32) is 0.218 with C seed 0 and 0.217 with seed 1",
+   "no world carries a mean: S1 and T1 hold with each world left out; T3 fails with each world left out",
+   "no secret committed (commitments only); PILOT_NEVER_REUSE_AS_EXAM in every results file and job output"
+  ],
+  "verdict": "Numbers and declared verdicts confirmed: S1 SURVIVES only 'at this compute' (not robust); stage 2 UNDECIDED (T1 pass, T3 fail). The reading that state inference is the first limit is right at 8 and 16 ticks and wrong at 32, where W at the true weights would pass T3"
  }
 }
