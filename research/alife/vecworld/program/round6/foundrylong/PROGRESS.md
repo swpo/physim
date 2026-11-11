@@ -22,6 +22,8 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   remat; w_cpu.py test 3 (fit from a 30% neighbour with scalars and from another screened world) running on CPU.
 
 ## Running
+- Review of r6-foundrylong-001 read 18:50: fine to run, 2 minor (outputs ~53 MB: check manifest in_git before the analysis;
+  completeness marks added to make_summary.py; DEVIATIONS addendum 2).
 - GPU job r6-foundrylong-001 (stage 1). Follow: cd /home/user/physim && git fetch -q origin gpu-jobs &&
   git show origin/gpu-jobs:jobs/r6-foundrylong-001/status.json. READ jobs/r6-foundrylong-001/review.md BEFORE the results.
   To cancel: push an empty gpu/requests/r6-foundrylong-001.cancel, verify with git ls-tree on origin.

@@ -201,6 +201,18 @@ def main():
     rob["reading"] = ("robust" if (S1["verdict"] == "SURVIVES" and rob["lower_bound_after_one_more_step_of_the_null"] >= BAR)
                       or (S1["verdict"] == "CLOSED" and rob["upper_bound_after_one_more_step_of_C"] < BAR)
                       else ("at this compute" if S1["verdict"] != "UNDECIDED" else "undecided"))
+    # completeness (review of r6-foundrylong-001, minor 2): a verdict computed without a declared net or seed, or with a
+    # net cut by the job's deadline, is marked; S1a reads "incomplete" unless its three inputs are present and whole
+    ti0 = js["train_info"] or {}
+    stopped = sorted({k.split("|")[0] for k, v in ti0.items() if isinstance(v, dict) and v.get("stopped_early")})
+    decl = {P0: 3, f"FT@{Nd}": 3, f"D@{Nd}": 3, f"Dr@{Nd}": 1, f"C{cs[-1]}": 2}
+    S1["incomplete"] = ([f"{b}: {len(an.bases.get(b, []))} of {n} seeds" for b, n in decl.items() if len(an.bases.get(b, [])) < n]
+                        + [f"{b}: stopped early by the deadline" for b in decl if b in stopped]
+                        + ([f"P0 reached {p0s[-1]} prior worlds, not 1,000"] if p0s[-1] != 1000 else []))
+    need = ["P0x2"] + ([f"P0w{p0s[-2]}"] if len(p0s) > 1 else ["P0w210"]) + ([f"C{cs[-2]}"] if len(cs) > 1 else ["C4096"])
+    rob["inputs_missing_or_cut"] = [b for b in need if not an.has(b) or b in stopped]
+    if rob["inputs_missing_or_cut"]:
+        rob["reading"] = "incomplete"
     S1["S1a"] = rob
     S1["stage2_runs"] = bool(S1["verdict"] == "SURVIVES" or (S1["verdict"] == "UNDECIDED" and S1["point"] >= BAR))
     out["S1"] = S1

@@ -18,6 +18,7 @@ PILOT ONLY: nothing produced with this module may be reused as an exam.
 """
 from __future__ import annotations
 
+import math
 import os
 import sys
 
@@ -124,8 +125,8 @@ def lab_loss(th, X0, Ys, Us, keys, scale, remat=False):
 NETS = (("W1", (FAM.F, FAM.HID), FAM.G1 / FAM.F ** 0.5), ("b1", (FAM.HID,), 1.0), ("W2", (FAM.HID, FAM.O), FAM.HID ** -0.5))
 BOX = (("beta", "log", 2.0, 60.0, ()), ("alpha", "log", 0.3, 30.0, ()), ("kappa", "log", 1e-6, 0.1, ()),
        ("gam", "lin", 0.0, 2.0, ()), ("mu", "lin", 0.05, 0.25, ()), ("gr", "lin", 0.0, 3.0, ()), ("wq", "lin", 0.0, 2.0, (FAM.C,)))
-NZ_NET = sum(int(jnp.prod(jnp.asarray(s))) for _, s, _ in NETS)
-NZ = NZ_NET + sum(int(jnp.prod(jnp.asarray(s))) if s else 1 for *_, s in BOX)
+NZ_NET = sum(math.prod(s) for _, s, _ in NETS)
+NZ = NZ_NET + sum(math.prod(s) if s else 1 for *_, s in BOX)
 
 
 def to_z(th):
@@ -142,11 +143,11 @@ def to_z(th):
 def from_z(z, dens):
     th, i = {}, 0
     for k, shp, sd in NETS:
-        n = int(jnp.prod(jnp.asarray(shp)))
+        n = math.prod(shp)
         th[k] = z[i:i + n].reshape(shp) * sd
         i += n
     for k, kind, lo, hi, shp in BOX:
-        n = int(jnp.prod(jnp.asarray(shp))) if shp else 1
+        n = math.prod(shp) if shp else 1
         v = jnp.clip(z[i:i + n], 0.0, 1.0)
         v = jnp.exp(jnp.log(lo) + v * (jnp.log(hi) - jnp.log(lo))) if kind == "log" else lo + v * (hi - lo)
         th[k] = v.reshape(shp) if shp else v[0]
