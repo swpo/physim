@@ -29,6 +29,10 @@ ROBUST_KEYS = ["grid.pf8", "grid.ceil8", "grid.gap8", "grid.sigma_hat", "grid.w_
                "pop.pf8", "pop.ceil8", "pop.sigma_hat", "pop.tick_share", "pop.act_ms", "s.nb_mean", "s.half_life_ticks",
                "s.v_net", "s.events100", "b.pf_disp8", "b.ceil_disp8", "b.ceil_field_disp8", "b.quiet8",
                "x.bodies_to_grid8", "l.dceil8_AB", "l.dceil16_AB", "t.l1_8", "k.law32"]
+# entries that scale with the area or with the input per block are not compared across sizes (the Mac's review of
+# the first job, item 6): the body count and the events are compared per 64 x 64 px, the action entries are left out
+SIZE_SKIP = {"grid.act_ms", "grid.aim_ratio", "pop.act_ms", "grid.xresp"}
+SIZE_PER_AREA = {"s.nb_mean", "s.events100"}
 GATE_KEYS = ["exam_worthy", "structure", "interaction", "reading_worthy", "actions", "stationary", "levels_add",
              "learned_differs"]
 
@@ -64,6 +68,10 @@ def load(dirs):
     for d in dirs:
         for f in sorted(glob.glob(os.path.join(d, "cards", "*.json"))):
             c = json.load(open(f))
+            if not c.get("finite", True):
+                print("NON-FINITE run left out:", f)
+                continue
+            c["_dir"] = d
             cards[(c["world"], c["run"])] = c
             s = os.path.join(d, "series", os.path.basename(f)[:-5] + ".npz")
             if os.path.exists(s):
@@ -217,8 +225,9 @@ def card_md(world, runs, D, G, late, rob, rate, job):
     A("")
     A("## 3. Stationarity")
     A("")
-    A(f"- Share of the variance that is a function of the tick alone: block view {fmt(d.get('grid.tick_share'), 3)}, "
-      f"population {fmt(d.get('pop.tick_share'), 3)}"
+    A(f"- Share of the variance that is a function of the tick alone (mean over channels; largest channel in brackets): "
+      f"block view {fmt(d.get('grid.tick_share'), 3)} [{fmt(d.get('grid.tick_share_max'), 3)}], "
+      f"population {fmt(d.get('pop.tick_share'), 3)} [{fmt(d.get('pop.tick_share_max'), 3)}]"
       + (" (" + ", ".join(f"{k} {fmt(v, 2)}" for k, v in c['pop'].get('tick_share_q', {}).items()) + ")" if not c["pop"].get("empty") else "") + ".")
     A(f"- Share between members' time-means: block view {fmt(d.get('grid.member_share'), 3)}, population {fmt(d.get('pop.member_share'), 3)}.")
     if late:
@@ -274,9 +283,10 @@ def card_md(world, runs, D, G, late, rob, rate, job):
     A("")
     A("## 9. Cost")
     A("")
-    spt = cost_of(runs)
+    spt, inc = cost_of(runs, True)
     A(f"- {fmt(1e3 * spt, 3)} ms per member-tick on the job's {c.get('backend', 'gpu').upper()} with the tracker on every member, "
-      f"compile excluded where the program had run before ({fmt(1.0 / spt, 0)} member-ticks/s)"
+      + ("COMPILE INCLUDED (this world's only run was the first call of its program)" if inc else "compile excluded")
+      + f" ({fmt(1.0 / spt, 0)} member-ticks/s)"
       + (f"; USD {fmt(rate * spt / 3600 * 1e6)} per million member-ticks at USD {rate}/h." if rate else "."))
     A("")
     A("## Gates and robustness")
@@ -294,7 +304,8 @@ def card_md(world, runs, D, G, late, rob, rate, job):
         if True:
             bad = [k for k, v in rob["size"].items() if v is False]
             A("")
-            A(f"Size (64 against 128 px): {len([v for v in rob['size'].values() if v])} of {len(rob['size'])} entries agree"
+            A(f"Size (64 px against {rob.get('size_against')}; counts per area, action entries left out): "
+              f"{len([v for v in rob['size'].values() if v])} of {len(rob['size'])} entries agree"
               + (f"; not robust: {', '.join(bad)}." if bad else "."))
     sh = rob.get("split_half")
     if sh:
@@ -307,12 +318,15 @@ def card_md(world, runs, D, G, late, rob, rate, job):
     return "\n".join(L) + "\n"
 
 
-def cost_of(runs):
-    """Seconds per member-tick, compile excluded: runs that were not the first call of their program."""
+def cost_of(runs, flag=False):
+    """Seconds per member-tick, compile excluded: runs that were not the first call of their program. Where a
+    world's only runs were first calls the value includes the compile (flag True)."""
     t = [r["timing"] for r in runs.values() if not r["timing"].get("first_call_of_program", False)]
-    if not t:
+    inc = not t
+    if inc:
         t = [r["timing"] for r in runs.values()]
-    return float(np.median([(x["main_s"] + x["branch_s"]) / (x["main_member_ticks"] + x["branch_member_ticks"]) for x in t]))
+    v = float(np.median([(x["main_s"] + x["branch_s"]) / (x["main_member_ticks"] + x["branch_member_ticks"]) for x in t]))
+    return (v, inc) if flag else v
 
 
 # ----------------------------------------------------------------------------- main
@@ -328,7 +342,9 @@ def main():
     worlds = {}
     for (w, r), c in cards.items():
         worlds.setdefault(w, {})[r] = c
-    order = json.load(open(os.path.join(HERE, "worlds.json")))["worlds"]
+    order = json.load(open(os.path.join(HERE, "worlds.json")))["worlds"] + json.load(open(os.path.join(HERE, "worlds2.json")))["worlds"]
+    seen_names = set()
+    order = [w for w in order if not (w["name"] in seen_names or seen_names.add(w["name"]))]
     names = [w["name"] for w in order if w["name"] in worlds] + [w for w in worlds if w not in {x["name"] for x in order}]
     os.makedirs(os.path.join(a.res, "cards"), exist_ok=True)
     derived, robust, rows = {}, {}, []
@@ -344,10 +360,17 @@ def main():
         if "A" in runs and "B" in runs:
             rob["seed"] = {k: GT.robust(D["A"].get(k), D["B"].get(k)) for k in ROBUST_KEYS}
             rob["seed_gates"] = {k: bool(G["A"][k] == G["B"][k]) for k in GATE_KEYS + ["dull"]}
-        big = w.replace("foundry_", "foundry128_") if w.startswith("foundry_") else ("vortex128" if w == "vortex64" else None)
+        big = w.replace("foundry_", "foundry128_") if w.startswith("foundry_") else None
+        if w == "vortex64":
+            big = "vortex128g16" if "vortex128g16" in worlds else "vortex128"
         if big and big in worlds and "A" in worlds[big] and "A" in runs:
             db, gb = rederive(worlds[big]["A"])
-            rob["size"] = {k: GT.robust(D["A"].get(k), db.get(k)) for k in ROBUST_KEYS}
+            area = (worlds[big]["A"]["meta"]["Hpx"] / runs["A"]["meta"]["Hpx"]) ** 2
+            same_blocks = worlds[big]["A"]["meta"]["Hpx"] / worlds[big]["A"]["meta"]["G"] == runs["A"]["meta"]["Hpx"] / runs["A"]["meta"]["G"]
+            keys = [k for k in ROBUST_KEYS if k not in SIZE_SKIP and (same_blocks or not k.startswith(("grid.", "x.", "l.")))]
+            rob["size"] = {k: GT.robust(D["A"].get(k), None if db.get(k) is None else db[k] / (area if k in SIZE_PER_AREA else 1.0))
+                           for k in keys}
+            rob["size_against"] = big
             rob["size_gates"] = {k: bool(G["A"][k] == gb[k]) for k in GATE_KEYS + ["dull"]}
         if late:
             rob["late"] = late
@@ -397,7 +420,7 @@ def main():
                          pop_pf8=d.get("pop.pf8"), pop_ceil8=d.get("pop.ceil8"), x_bg=d.get("x.bodies_to_grid8"),
                          l_dceil8=None if d.get("l.dceil8_AB") is None else min(d["l.dceil8_AB"], d["l.dceil8_BA"]),
                          l_dceil16=None if d.get("l.dceil16_AB") is None else min(d["l.dceil16_AB"], d["l.dceil16_BA"]),
-                         twin_l1_8=d.get("t.l1_8"), ms_per_mt=1e3 * cost_of(runs),
+                         twin_l1_8=d.get("t.l1_8"), ms_per_mt=1e3 * cost_of(runs), cost_includes_compile=cost_of(runs, True)[1],
                          late_same=None if not late else late["same"],
                          seed_gates_same=None if "seed_gates" not in rob else all(rob["seed_gates"].values()),
                          **{k: g[k] for k in GATE_KEYS}))

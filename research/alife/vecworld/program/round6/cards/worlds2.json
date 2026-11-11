@@ -53,6 +53,67 @@
     "B"
    ],
    "priority": 1
+  },
+  {
+   "name": "gliders",
+   "kind": "gliders",
+   "role": "designed",
+   "runs": [
+    "A"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "vortex64",
+   "kind": "vortex",
+   "H": 64,
+   "role": "designed",
+   "runs": [
+    "A"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "membrane",
+   "kind": "membrane",
+   "role": "designed",
+   "runs": [
+    "A"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "ctl_puredif_0",
+   "kind": "puredif",
+   "draw": 0,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "ctl_puredif_1",
+   "kind": "puredif",
+   "draw": 1,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "vortex128g16",
+   "kind": "vortex",
+   "H": 128,
+   "G": 16,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 3
   }
  ]
 }

@@ -1,15 +1,19 @@
 """check_cardlib -- the card's estimators against a world whose answers are known in closed form (numpy only).
 
-World: independent AR(1) numbers on a 2 x 8 x 8 grid, z(t+1) = a z(t) + sqrt(1 - a^2) xi, unit variance, plus a
-common function of the tick g(t) = A sin(2 pi t / 200). The hidden part is a; a neighbour at eps is a + 0.1 eps.
-An input adds c to a fixed set of blocks during the first T_in ticks of a branch (aimed: 4 blocks, blind: the same
-norm on 4 other blocks). Expected, per horizon h (in units of the AR variance; the card standardises by the total
-variance 1 + A^2 / 2, which the expectations below include):
-    predictable fraction   PF(h) = 1 - (1 - a^(2h)) / V_clim            closure ceiling = 1 (the law is linear)
-    plug-in loss           PL(eps, h) = (a'^h - a^h)^2 E z^2   (paired estimator: tight; unpaired: within its noise)
-    actions                D(h) = MS(h) = mean over cells of (sum_i a^(h-1-i) c)^2 , i < min(h, T_in)
-    response difference    RD(h) = the same with (a'^k - a^k)
-    tick share             (A^2 / 2) / (1 + A^2 / 2)
+World: independent AR(1) numbers on a 2 x 8 x 8 grid, z(t+1) = a z(t) + sqrt(1 - a^2) xi, unit variance; CHANNEL 0
+ONLY carries a common function of the tick g(t) = A sin(2 pi t / 200) (the case the Mac's review of the first job
+asked for: one trending channel). The hidden part is a; a neighbour at eps is a + 0.1 eps. An input adds
+c (1 + 0.5 zeta) to a fixed set of blocks during the first T_in ticks of a branch, zeta a standard normal that
+belongs to the noise of the replica (so the response varies with the replica and is shared by arms on the same
+noise; aimed: 4 blocks, blind: the same norm on 4 other blocks). Expected, per horizon h (the card standardises
+each channel by its own variance, 1 + A^2 / 2 for channel 0 and 1 for channel 1; F below is the mean of the two
+reciprocals):
+    oracle variance        V_orc(h) = F (1 - a^(2h))                    closure ceiling near 1 at 1 and 2 ticks
+    plug-in loss           PL(eps, h) = F (a'^h - a^h)^2   (paired estimator: tight; unpaired: within its noise)
+    actions                MS(h) = F mean over cells of (sum_i a^(h-1-i) c)^2 , i < min(h, T_in);  D(h) = 1.25 MS(h)
+    response difference    RD(h) = the same as MS with (a'^k - a^k)
+    tick share             channel 0: (A^2 / 2) / (1 + A^2 / 2), channel 1: 0; the level's share is their mean
+                           (the pooled estimate of the first job reads about a quarter of the channel's share)
 Run: python -B check_cardlib.py  -> results/check_cardlib.json, exit 1 on a failed check.
 """
 import json
@@ -36,7 +40,8 @@ def main():
     x[0] = rng.normal(size=(M, Q, G, G))
     for t in range(T):
         x[t + 1] = a * x[t] + s * rng.normal(size=(M, Q, G, G))
-    Y = x + g(np.arange(T + 1))[:, None, None, None, None]
+    ch0 = np.array([1.0, 0.0])[None, None, :, None, None]         # the tick function lives on channel 0
+    Y = x + g(np.arange(T + 1))[:, None, None, None, None] * ch0
     seg = T // sz.n_snap
     ts = [(i + 1) * seg for i in range(sz.n_snap)]
     xs = np.concatenate([x[t, sz.M_fit:] for t in ts], 0)                     # (NS, Q, G, G)
@@ -62,26 +67,28 @@ def main():
         kid[idx] = np.arange(sz.R_u)
     YA = np.zeros((sz.NS, sz.HB, sz.Bb, Q, G, G))
     cur = np.broadcast_to(xs[:, None], (sz.NS, sz.Bb, Q, G, G)).copy()
+    mult = (1.0 + 0.5 * rng.normal(size=(sz.NS, sz.Bb)))[:, kid][:, :, None, None, None]   # belongs to the noise
     for h in range(sz.HB):
         xi = rng.normal(size=(sz.NS, sz.Bb, Q, G, G))
         xi = xi[:, kid]
         sa = np.full(sz.Bb, s)[None, :, None, None, None]         # the noise amplitude is not part of the hidden part
-        cur = aa[None, :, None, None, None] * cur + sa * xi + (c[None] if h < sz.T_in else 0.0)
-        YA[:, h] = cur + g(t0 + h + 1)[:, None, None, None, None]
+        cur = aa[None, :, None, None, None] * cur + sa * xi + (c[None] * mult if h < sz.T_in else 0.0)
+        YA[:, h] = cur + g(t0 + h + 1)[:, None, None, None, None] * ch0
     out = CL.grid_card(Y.astype(np.float32), YA.astype(np.float32), sz, ts, np.arange(sz.M_fit), seed=1)
     vtot = 1 + A_t ** 2 / 2
+    F = 0.5 * (1 / vtot + 1.0)
     hz = np.array(sz.hz)
     exp = {}
-    exp["v_orc"] = (1 - a ** (2 * hz)) / vtot
-    exp["tick_share"] = (A_t ** 2 / 2) / vtot
-    exp["pl"] = {str(e): (nb(e) ** hz - a ** hz) ** 2 / vtot for e in sz.eps}
+    exp["v_orc"] = (1 - a ** (2 * hz)) * F
+    exp["tick_share_q"] = [(A_t ** 2 / 2) / vtot, 0.0]
+    exp["pl"] = {str(e): (nb(e) ** hz - a ** hz) ** 2 * F for e in sz.eps}
 
     def resp(al, h, cc):
         return sum(al ** (h - 1 - i) for i in range(min(h, sz.T_in))) * cc
     frac = 4.0 / (G * G)
-    exp["D"] = {f"{k}_{int(n)}": np.array([resp(a, h, amp[(k, n)]) ** 2 * frac for h in hz]) / vtot for (k, n) in lay["act"]}
+    exp["MS"] = {f"{k}_{int(n)}": np.array([resp(a, h, amp[(k, n)]) ** 2 * frac for h in hz]) * F for (k, n) in lay["act"]}
     xa = amp[tuple(sz.x_arm)]
-    exp["RD"] = np.array([(resp(nb(sz.x_eps), h, xa) - resp(a, h, xa)) ** 2 * frac for h in hz]) / vtot
+    exp["RD"] = np.array([(resp(nb(sz.x_eps), h, xa) - resp(a, h, xa)) ** 2 * frac for h in hz]) * F
     checks = []
 
     def chk(name, got, want, rtol, atol):
@@ -92,14 +99,17 @@ def main():
     chk("oracle variance V_orc(h)", out["v_orc"], exp["v_orc"], 0.05, 0.002)
     chk("typical-state V_orc(h) (median over states)", out["v_orc_med"], exp["v_orc"], 0.06, 0.002)
     chk("closure ceiling at 1 and 2 ticks (the linear law is exact; the tick function costs a little)", out["ceil"][:2], np.ones(2), 0.0, 0.02)
-    chk("tick share", out["tick_share"], exp["tick_share"], 0.15, 0.01)
+    chk("tick share per channel (one trending channel)", out["tick_share_q"], exp["tick_share_q"], 0.15, 0.01)
+    chk("tick share of the level = mean of the channels", out["tick_share"], np.mean(exp["tick_share_q"]), 0.15, 0.01)
+    checks.append(dict(name="pooled tick share (the first job's value), reported, not checked", ok=True,
+                       got=float(out["tick_share_pooled"]), want=None))
     for e in sz.eps:
         chk(f"plug-in loss PL(eps = {e}, h), paired", out["pl"][str(e)]["pl"], exp["pl"][str(e)], 0.1, 2e-5)
         chk(f"plug-in loss PL(eps = {e}, h), unpaired (round 5's form)", out["pl"][str(e)]["pl_unpaired"], exp["pl"][str(e)], 0.25, 0.03)
-    for k, v in exp["D"].items():
-        chk(f"paired displacement D, arm {k}", out["act"][k]["D"], v, 0.05, 1e-4)
-        chk(f"predictable shift MS, arm {k}", out["act"][k]["MS"], v, 0.05, 1e-4)
-    chk("response difference RD(h)", out["xresp"]["RD"], exp["RD"], 0.1, 1e-4)
+    for k, v in exp["MS"].items():
+        chk(f"paired displacement D = 1.25 MS (the response varies with the replica), arm {k}", out["act"][k]["D"], 1.25 * v, 0.2, 2e-4)
+        chk(f"predictable shift MS, arm {k}", out["act"][k]["MS"], v, 0.2, 2e-4)
+    chk("response difference RD(h), responses on common noise", out["xresp"]["RD"], exp["RD"], 0.25, 3e-4)
     chk("member share is small for an ergodic level", out["member_share"], 0.0, 0.0, 0.08)
     res = dict(passed=bool(all(c["ok"] for c in checks)), a=a, A_tick=A_t, sizes=dict(M=sz.M, T=sz.T, NS=sz.NS, R=sz.R), checks=checks)
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)

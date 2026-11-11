@@ -36,8 +36,8 @@ Gates (all thresholds in TH):
                   single-body law leaves at least 10% of it (ceiling <= BODY_CEIL_MAX)
   reading_worthy  structure and interaction
   actions         act_ms >= ACT_MS_MIN at the grid or the population level
-  stationary      tick share <= TICK_SHARE_MAX and member share <= MEMBER_SHARE_MAX at the grid level (the late
-                  window is compared separately, see late_vs_early)
+  stationary      tick share (mean of the per-channel shares) <= TICK_SHARE_MAX and member share <=
+                  MEMBER_SHARE_MAX at the grid level (the late window is compared separately, see late_vs_early)
   levels_add      the slot list improves the block view's cheap prediction at 8 ticks by >= CROSS_GAIN_MIN of the
                   variance, or the population level has pf(8) >= PF_MIN with a closure gap >= GAP_MIN
   learned_differs slow features of the fine view beat the hand block view by >= LEARNED_DCEIL_MIN in ceiling at
@@ -66,6 +66,18 @@ def _f(x):
 
 def _at(lst, hz, h):
     return _f(lst[list(hz).index(h)]) if (lst is not None and h in hz) else float("nan")
+
+
+def _tick_q(lv, live=None):
+    """Per-channel tick shares of a level (list for the grid, dict for the population) -> (mean, max) over the
+    live channels. The level's tick share is the MEAN OF THE PER-CHANNEL SHARES (corrected after the Mac's review
+    of the first job, item 1, before any card was read: pooling the channels first gives about s / d^2)."""
+    q = lv.get("tick_share_q")
+    if q is None:
+        return float("nan"), float("nan")
+    v = list(q.values()) if isinstance(q, dict) else [x for x, l in zip(q, live or [True] * len(q)) if l]
+    v = [float(x) for x in v if x is not None]
+    return (float(np.mean(v)), float(np.max(v))) if v else (float("nan"), float("nan"))
 
 
 def _level(card, L):
@@ -133,7 +145,8 @@ def derive(card: dict) -> dict:
                 if n in a:
                     d[f"{L}.act_ms_{n[6:]}"] = _at(a[n]["MS_over_vorc_med"], hz, 4)
         d[f"{L}.xresp"] = _at(lv["xresp"]["RD_over_vorc_med"], hz, 4)
-        d[f"{L}.tick_share"] = _f(lv.get("tick_share"))
+        d[f"{L}.tick_share"], d[f"{L}.tick_share_max"] = _tick_q(lv if L == "grid" else card["pop"],
+                                                                 lv.get("live") if L == "grid" else None)
         d[f"{L}.member_share"] = _f(lv.get("member_share"))
     s = card["structure"]
     for k in ("nb_mean", "nb_std", "body_frac", "rg", "v_net", "half_life_ticks", "events100", "births100", "deaths100",
@@ -177,6 +190,7 @@ def derive(card: dict) -> dict:
     t = card["twins"]
     d["t.l1_8"] = _at(t["l1"], card["grid"]["hz"], 8)
     d["t.doubling"] = _f(t["doubling_ticks_2_8"])
+    d["finite"] = bool(card.get("finite", True))
     tm = card["timing"]
     d["cost.s_per_member_tick"] = (tm["main_s"] + tm["branch_s"]) / (tm["main_member_ticks"] + tm["branch_member_ticks"])
     return d
@@ -207,7 +221,9 @@ def gates(d: dict) -> dict:
                            or (ok(d.get("pop.pf8")) and d["pop.pf8"] >= TH["PF_MIN"] and d["pop.gap8"] >= TH["GAP_MIN"]))
     g["learned_differs"] = bool(ok(d.get("l.dceil8_AB")) and min(d["l.dceil8_AB"], d["l.dceil8_BA"]) >= TH["LEARNED_DCEIL_MIN"]
                                 and d["l.r2_min"] < TH["LEARNED_R2_MAX"])
-    if not ok(pf_max) or pf_max < TH["PF_NOISE"]:
+    if not d.get("finite", True):
+        v = "invalid: non-finite"
+    elif not ok(pf_max) or pf_max < TH["PF_NOISE"]:
         v = "dull: nothing predictable"
     elif not g["closure_gap"]:
         v = "dull: predictable by the cheap family" if g["predictable"] else "dull: little predictable"

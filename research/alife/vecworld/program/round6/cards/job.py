@@ -81,10 +81,10 @@ def group_of(w):
 
 def _group_of(w):
     k = w["kind"]
-    if k in ("foundry", "diffusion"):
+    if k in ("foundry", "diffusion", "puredif"):
         return f"foundry{w.get('H', 64)}"
     if k == "vortex":
-        return f"vortex{w.get('H', 64)}"
+        return f"vortex{w.get('H', 64)}" + (f"g{w['G']}" if w.get("G") else "")
     return k
 
 
@@ -106,6 +106,9 @@ def _adapter_of(w):
     k = w["kind"]
     if k == "foundry":
         return AD.foundry(AD.foundry_theta(W["prior_seed"], w["draw"]), index=w["draw"], H=w.get("H", 64), name=w["name"])
+    if k == "puredif":
+        return AD.foundry(AD.pure_diffusion_theta(W["prior_seed"] + 31, w["draw"]), index=w["draw"], H=64, name=w["name"],
+                          nb_seed=W["prior_seed"] + 31)
     if k == "diffusion":
         return AD.foundry(AD.diffusion_theta(W["prior_seed"] + 31, w["draw"]), index=w["draw"], H=64, name=w["name"],
                           nb_seed=W["prior_seed"] + 31)
@@ -115,7 +118,7 @@ def _adapter_of(w):
         H = w.get("H", 64)
         if TINY:
             H = 64
-        return AD.vortex(H, **tiny_kw("vortex"))
+        return AD.vortex(H, G=w.get("G"), **tiny_kw("vortex"))
     if k == "membrane":
         return AD.membrane(**tiny_kw("membrane"))
     if k == "noise":
@@ -169,10 +172,12 @@ def run_one(w, run):
                         per_state_v_clim=ps["v_clim"], per_state_v_orc=ps["v_orc"], per_state_v_pred=ps["v_pred"],
                         tracks_member0=tb0)
     tm = rec["timing"]
-    P(f"{name}: sim {tm['main_s']:.1f}+{tm['branch_s']:.1f}s analyse {ta:.1f}s | {c['gates']['verdict']} | "
+    P(f"{name}: sim {tm['main_s']:.1f}+{tm['branch_s']:.1f}s analyse {ta:.1f}s | finite {c['finite']} | {c['gates']['verdict']} | "
       f"pf8 {d.get('grid.pf8', float('nan')):.2f} ceil8 {d.get('grid.ceil8', float('nan')):.2f} "
       f"sigma_hat {c['gates']['sigma_hat_best']} nb {d['s.nb_mean']:.1f}")
     STATE["timing"][name] = dict(tm, analyse_s=ta)
+    if not c["finite"]:
+        raise FloatingPointError(f"{name}: non-finite values in the run (the card is written and marked invalid)")
     return c
 
 
@@ -192,7 +197,7 @@ def main():
         worlds = keep
     tasks = [(w, r) for w in worlds for r in w["runs"] if not RUNS or r in RUNS]
     if TINY:                                      # the slow worlds on a CPU: run A only (B and late run elsewhere)
-        tasks = [(w, r) for w, r in tasks if r == "A" or _group_of(w) not in ("gliders", "vortex128")]
+        tasks = [(w, r) for w, r in tasks if r == "A" or _group_of(w) not in ("gliders", "vortex128", "vortex128g16")]
     # presmoke: the first run of every program group
     first, seen = [], set()
     for w, r in tasks:

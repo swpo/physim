@@ -455,16 +455,18 @@ def _hidden_and_actions(za_h, v_orc_s, sz: Sizes, lay, ax, rng):
             D_med=np.median(Ds, 1).tolist(), MS_med=np.median(Ms, 1).tolist(),
             MS_over_vorc_med=(np.median(Ms, 1) / np.maximum(np.median(np.asarray(v_orc_s), 1), 1e-12)).tolist())
     # does the response to the input depend on the hidden part? d = response under theta, d' under theta' (same
-    # noise, same input); RD = |mean d' - mean d|^2 - (var d + var d') / R_u; and the paired displacement of the
-    # hidden-part move itself with common noise
+    # noise, same input); RD = |mean (d' - d)|^2 - var(d' - d) / R_u (the first job subtracted var d + var d',
+    # which is biased low because the two responses share their noise: the Mac's review, item 2); and the paired
+    # displacement of the hidden-part move itself with common noise
     Ru = sz.R_u
     ia = lay["act"][tuple(sz.x_arm)]
     RDs, PPs, MSs = [], [], []
     for zh in za_h:
         d = zh[:, ia] - zh[:, :Ru]
         d2 = zh[:, lay["xa"]] - zh[:, lay["xb"]]
-        corr = ((d.var(1, ddof=1) + d2.var(1, ddof=1)).mean(ax) / Ru) if Ru > 1 else 0.0
-        RDs.append(((d2.mean(1) - d.mean(1)) ** 2).mean(ax) - corr)
+        e = d2 - d                                # per replica: the two responses share their noise
+        corr = (e.var(1, ddof=1).mean(ax) / Ru) if Ru > 1 else 0.0
+        RDs.append((e.mean(1) ** 2).mean(ax) - corr)
         PPs.append(((zh[:, lay["xb"]] - zh[:, :Ru]) ** 2).mean(1).mean(ax))
         MSs.append((d.mean(1) ** 2).mean(ax) - ((d.var(1, ddof=1).mean(ax) / Ru) if Ru > 1 else 0.0))
     RDs, PPs, MSs = np.asarray(RDs), np.asarray(PPs), np.asarray(MSs)
@@ -543,8 +545,10 @@ def grid_card(Y, YA, sz: Sizes, ts, fit_idx, with_arms=True, extra=None, extra_t
     out["excess_top10pct_share"] = {str(k): v for k, v in ex_cells.items()}
     if detail:
         zf = z[:, fit_idx]
-        out["tick_share"] = _tick_share(zf)
         out["tick_share_q"] = [_tick_share(zf[:, :, q]) for q in range(Q)]
+        out["tick_share_pooled"] = _tick_share(zf)     # channels pooled before the covariance: about s / d^2 when one
+        #                                                of d channels carries the tick function (the Mac's review, item 1)
+        out["tick_share"] = float(np.mean([v for v, l in zip(out["tick_share_q"], live) if l])) if live.any() else float("nan")
         out["member_share"] = _member_share(np.moveaxis(z, 2, -1).reshape(T + 1, M, -1, Q).mean(2))
         out["d"] = int(live.sum() * G * G)
         out["var_static"] = float(np.mean(zf.mean(0) ** 2))
@@ -885,8 +889,9 @@ def pop_card(rec, sz: Sizes, ts, grid_moments=None, grid_moments_test=None, seed
                              ceil=((cc["v_clim"] - np.minimum(np.minimum(cc["v_pred"], cc["v_pers"]), cc["v_clim"])) / den).tolist(),
                              v_orc=cc["v_orc"].tolist())
     zf = z[:, fit]
-    out["tick_share"] = _tick_share(zf)
     out["tick_share_q"] = {POP_NAMES[i]: _tick_share(zf[:, :, j]) for j, i in enumerate(li)}
+    out["tick_share_pooled"] = _tick_share(zf)
+    out["tick_share"] = float(np.mean(list(out["tick_share_q"].values())))
     out["member_share"] = _member_share(z)
     out["member_share_q"] = {POP_NAMES[i]: _member_share(z[:, :, j:j + 1]) for j, i in enumerate(li)}
     out["autocorr"] = [float(np.mean(zf[h:] * zf[:-h])) for h in hz]
