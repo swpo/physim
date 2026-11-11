@@ -106,6 +106,15 @@ def D_of(S, ei, nb, cls=ALL):
     return L, {"candidates": names, "share_net_picked": float(np.mean(np.array(names)[idx] == f"Dnet@{nb}"))}
 
 
+def picked_items(S, names, ei):
+    """Per-item scores (n_truth, n_seed, n_items, n_h) on `score` of the candidate picked on `sel`."""
+    names = [n for n in names if S.has(n)]
+    sel = np.stack([S.L(n, ei, half=0) for n in names])
+    idx = np.argmin(np.where(np.isfinite(sel), sel, np.inf), 0)
+    a = np.stack([S.d[n][ei][:, :, 1] for n in names])                  # (cand, T, S, I, H)
+    return np.take_along_axis(a, idx[None, :, :, None, None], 0)[0]
+
+
 def g_rule(S, ei, nb, cls, hsel=None, c_fixed=None):
     """g = (L(P0) - L(G)) / (L(P0) - L(C)) with the declared rule on d_t = a_t - 0.7 b_t."""
     P0 = S.L("P0", ei, cls=cls, hsel=hsel)

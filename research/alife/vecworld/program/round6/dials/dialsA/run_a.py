@@ -411,11 +411,13 @@ def stage_finetune(cfg, worlds, Pn, Tn, nb, which, kinds, steps, tag):
     tasks = []
     for (ei, t), w in worlds.items():
         A = lab_view(cfg, w, which)
+        lc = w["lab_cls"][:cfg["n_mix"]] if which == "A_mix" else w["lab_cls"][cfg["n_mix"]:]
+        lc = [str(c) for c in lc[:nb]]                  # the experimenter's own program classes: stratified folds
         for s in range(cfg["seeds"]):
             if "FT" in kinds:
-                tasks.append({"id": ("FT", ei, t, s), "base": Pn[s], "A": A, "eps": range(nb), "TH": TH_prior})
+                tasks.append({"id": ("FT", ei, t, s), "base": Pn[s], "A": A, "eps": range(nb), "cls": lc, "TH": TH_prior})
             if "CFT" in kinds:
-                tasks.append({"id": ("CFT", ei, t, s), "base": Tn[s], "A": A, "eps": range(nb),
+                tasks.append({"id": ("CFT", ei, t, s), "base": Tn[s], "A": A, "eps": range(nb), "cls": lc,
                               "TH": np.tile(LL.pad_u(u_truth(t, w["eta"])), (AN.FT.N_TH, 1))})
     T1 = worlds[next(iter(worlds))]["lab_obs"].shape[1]
     shapes = AN.fixed_shapes(max(cfg["n_mix"], cfg["n_free"]), T1)
@@ -616,6 +618,12 @@ def pipeline(cfg, out_dir, est=None):
         lab_means(cfg, worlds, Pn, MLc)
     quick(cfg, SCO, worlds, "after the base nets")
 
+    def declared_after(nb):
+        """Seconds the stages that the plan declares still need after budget nb's fine-tunes (presmoke's
+        estimates): D at round 5's column, the budgets not yet run, the final writes."""
+        i = cfg["budgets"].index(nb)
+        return (est["D_first"] if i == 0 else 0.0) + sum(est[f"N{b}"] for b in cfg["budgets"][i + 1:]) + est["final"]
+
     def budget(nb, key, kinds=("FT", "CFT")):
         steps, k = cfg["ft_steps"], 0
         while True:
@@ -626,7 +634,7 @@ def pipeline(cfg, out_dir, est=None):
                 + f"; {inf['timing']['ms_per_lockstep_step_median']} ms per lockstep step")
             if inf["rule_met"] or k >= cfg["ft_doublings"]:
                 break
-            if est is not None and left() < 2.2 * times.get(f"5 fine-tuning N={nb}, {steps} steps", 0.0) + (rest if nb == 8 else 0.0) + 240:
+            if est is not None and left() < 2.2 * times.get(f"5 fine-tuning N={nb}, {steps} steps", 0.0) + declared_after(nb) + 240:
                 NOTES.append(f"training rule: fine-tunes at N={nb} not doubled past {steps} steps (clock)")
                 break
             steps, k = 2 * steps, k + 1

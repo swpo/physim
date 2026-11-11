@@ -174,23 +174,28 @@ def ft_lockstep(P_init, dsets, TH, shapes, steps, seed, grid=None, snap_at=None,
     return (None if curve is None else np.array(curve).T), out, dt
 
 
-def folds_of(n):
-    """Cross-validation folds over the first n episodes: min(FT.FOLDS, n) folds, episode j in fold j mod K."""
+def folds_of(n, strata=None):
+    """Cross-validation folds over n episodes: min(FT.FOLDS, n) folds. The episodes are ordered by stratum
+    (the Lab program class the experimenter chose; stable) and dealt round-robin, so that at N = 8 with two
+    episodes per class every held-out pair holds two different classes and every training set every class.
+    Returns [(train positions, held-out positions)]."""
     K = min(FT.FOLDS, n)
-    return [([j for j in range(n) if j % K != f], [j for j in range(n) if j % K == f]) for f in range(K)]
+    order = list(range(n)) if strata is None else sorted(range(n), key=lambda j: (str(strata[j]), j))
+    fold = {j: r % K for r, j in enumerate(order)}
+    return [([j for j in range(n) if fold[j] != f], [j for j in range(n) if fold[j] == f]) for f in range(K)]
 
 
 def finetune_cv(tasks, shapes, steps, seed, log=None, tag=""):
     """Cross-validated fine-tuning of many nets (DECLARED R8).
     tasks: list of dicts {id, base (parameter tree), A (view arrays of the world's episodes), eps (list of
-    episode indices to use), TH (N_TH, DMAX)}.
+    episode indices to use), cls (their Lab program classes, for the folds), TH (N_TH, DMAX)}.
     Returns ({id: parameter tree}, {id: {"curve": mean CV curve, "steps": chosen}}, timing)."""
     t0 = time.time()
     grid = FT.GRID
     cv, owner = [], []
     for ti, tk in enumerate(tasks):
         eps = list(tk["eps"])
-        for tr, va in folds_of(len(eps)):
+        for tr, va in folds_of(len(eps), tk.get("cls")):
             cv.append((tk, [eps[j] for j in tr], [eps[j] for j in va]))
             owner.append(ti)
     curves = np.zeros((len(cv), steps // grid + 1))

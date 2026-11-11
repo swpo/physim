@@ -16,3 +16,10 @@ Each entry: when, what the plan says, what was done instead, why. `DECLARED.md` 
    and for drawing truths. The block view's scales are public constants and the 8 truths are read from round
    5's file, so those simulations are not run. The 96 items of a world are two exams of 48, each with a
    climatology pool of 48 (DECLARED R2), which leaves the count unchanged.
+4. **11 Nov 2026, 15:50 UTC, before any run (the code was not yet complete). Folds and the clock.** Two points
+   that DECLARED R8 and R16 leave open were fixed while the job was written. (a) The cross-validation folds
+   are stratified by the Lab program class the experimenter chose: episodes are ordered by class and dealt
+   round-robin, so that at N = 8 every held-out pair holds two different classes and every training set holds
+   every class. Unstratified folds would, one time in four, hold out both episodes of a class. (b) "Only if
+   the job's clock allows": a doubling of the fine-tune schedule is made only if, by the presmoke's estimates,
+   the stages the plan declares (D at round 5's column, the budgets not yet run) still fit afterwards.
