@@ -116,7 +116,27 @@ rho = (L(P0) - L(S(N))) / (L(P0) - L(C)).
    interval of a quantity that involves a trained net draws the seed with the worlds (as in criterion 1), and the
    seed-to-seed difference is reported next to the world-clustered SE.
 
+## 5b. Changes after job r6-foundryexam-002 (declared before request 003; criteria and thresholds unchanged)
+
+Job 002 trained its nets several times slower than the round-5 basis (70 ms per step of the two shared P0 nets where
+about 20 were expected: one dispatch per training step under the platform allocator). It was cancelled during arm P;
+what had been seen of it by then: the gate's pass counts, the validation curve of the two P0 nets, and the presmoke's
+printout on 3 worlds with 60-step nets. No score of the full pass existed when the following was fixed:
+
+- 50 training steps per dispatch (a scan inside the jitted step); the presmoke measures ms per step at the full
+  shapes and stops the job if the projected net time exceeds 1.25 times what the full pass has.
+- Net: the global inputs (horizon, codes, global noise) enter as a learned per-channel shift at the input and in each
+  block instead of being convolved as 81 constant channels. Same information, less compute. This is a different net
+  from job 002's, so nothing of 002 enters the results.
+- Batch 64 for the per-world nets (C, D, FT) and 128 for the shared nets of the neighbourhood arms (256 in arm P);
+  C: 4,000 steps, fine-tuned C: 1,500; P0s and P0[16], P0[64]: 6,000 steps (P0 and S: 12,000).
+- Order within an arm (a deadline cuts from the end): P0, S, P0s; C; D(512), FT(512); fine-tuned C; D and FT at 128,
+  32, 8; second seeds; P0[16], P0[64]. In the summary the null's budget stays 512 and is flagged if incomplete.
+- The public code standardisation is computed from pool worlds that are not hidden worlds of arm P; the amortised
+  net's random context never contains the example's own episode.
+
 ## 6. Sizes and budget
 
-Hidden worlds: 16 (arm P) + 12 (N30) + 12 (N10). One GPU job (A100, $1.99-2.35/h), expected about 2 h, cap $8.40;
+Hidden worlds: 16 (arm P) + 12 (N30) + 12 (N10). One GPU job (A100, $1.99-2.35/h), expected about 2 h, cap $8.40
+(job 002; request 003 after the changes of section 5b: cap $7.80);
 a second job only for a declared follow-up. Study cap $25.
