@@ -9,11 +9,58 @@
       "at": "2026-11-11T11:41:21Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-11T11:41:47Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $7.40",
+      "state": "queued"
     }
   ],
   "job_id": "r6-cards-001",
-  "message": "request received",
+  "max_estimate_usd": 7.4,
+  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $7.40",
+  "plan": {
+    "max_estimate_usd": 7.4,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      },
+      {
+        "cloud_id": "gpu_1x_h100_pcie",
+        "country": "US",
+        "data_center": "us-west-3",
+        "disk_gb": 1024,
+        "gpu_memory_gb": 80,
+        "gpu_type": "H100_80GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 2,
+        "rate_usd_hr": 3.29,
+        "security": "secure_cloud",
+        "socket": "PCIe",
+        "stock": "Available",
+        "vcpus": 26
+      }
+    ],
+    "planned_at": "2026-11-11T11:41:47Z",
+    "window_hours": 2.25
+  },
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-11T11:41:21Z"
+  "state": "queued",
+  "updated_at": "2026-11-11T11:41:47Z"
 }
