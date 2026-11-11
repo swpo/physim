@@ -1,0 +1,49 @@
+{
+  "request": {
+    "cap_usd": 7.2,
+    "disk_gb": null,
+    "env": {
+      "FX_ARMS": "P",
+      "FX_MAX_HOURS": "2.5",
+      "FX_N_CBIG": "16384",
+      "FX_PRESMOKE_ARMS": "P",
+      "FX_SEED_OFFSET": "2000",
+      "FX_SIZE": "full",
+      "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+      "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+    },
+    "git_outputs_max_mb": 50.0,
+    "gpu": {
+      "count": 1,
+      "spot": false,
+      "types": [
+        "A100_40GB",
+        "A100_80GB"
+      ]
+    },
+    "image": "ubuntu_22_cuda_12",
+    "job_id": "r6-foundryexam-005",
+    "max_hours": 2.75,
+    "notes": "Follows r6-foundryexam-004 (done). Declared in DESIGN.md section 5d after 004's results: in 004 the reference net C still gains from more true-weight data (C on 4,096 episodes against C on 1,024), so every share that is normalised by C is a bound. This job adds one point to that curve in arm P only: FX_N_CBIG=16384 simulates 16,384 exam-mix episodes per hidden world at the true weights (the first 4,096 are C's, the first 1,024 Csm's) and trains a third net 'Cbig' on them (24,000 steps at batch 128, 8 nets in lockstep, one seed). Everything else is 004's arm P unchanged (same hidden and training worlds; seeds + 2000; a new noise secret, so new items and Labs), which makes this a third independent repeat of arm P. FX_ARMS=P and FX_PRESMOKE_ARMS=P: no neighbourhood arm. Code changes against 004 (1e9acab5): run_fx.py (n_cbig, steps_Cbig, lock_Cbig, the Cbig data set and its lockstep group right after C, its shape in shape_test and in the speed projection, --full-arms), job.sh (presmoke arms and --full-arms from the environment); fx_lib.py and fx_net.py unchanged. Sizes: gate of the 416 pool worlds (2 chunks); 210 training worlds x 64 episodes; 16 hidden worlds; 262,144 true-weight episodes = 128 chunks of 2,048 members x 332 ticks = 87 million member-ticks (004 measured about 16 s per chunk: 35 minutes); nets as 004's arm P (32 minutes there) plus Cbig: 2 groups of 8 nets x 24,000 steps (004 measured 40 ms per step of 16 nets at batch 128: about 20 ms for 8, 16 minutes). Expected 1.7-1.9 h on job.sh's clock; its limit is 2.5 h, max_hours 2.75. Memory: host arrays 6.6 GiB (observations) + 4.3 GiB (commands) + about 16 GiB of per-world data sets (the pod had 200 GiB); the largest device data set is the Cbig stack, 8 x 16,384 episodes: X 8.3e8 elements (3.1 GiB), with wind sums 7.2 GiB, plus training temporaries of about 5 GiB (8 nets at batch 128); every device array asserted below 2^31. The presmoke simulates the same per-world size for 2 hidden worlds and shape_test trains the exact Cbig shape (8 nets on 16,384-episode sets) for 200 steps before anything else, so a memory failure shows in the first minutes; presmoke about 13 minutes. Deadlines and containment as 004; order within the arm: P0, S, P0s; C; Cbig; D(512), FT(512); fine-tuned C; Csm; the rest. PILOT ONLY: public pilot worlds, weights written to $OUT, never an exam; the noise secret is never written. $OUT about 9 MB. Cap: $2.35/h x 3.0 h = $7.05, rounded up plus $0.10. CPU test: job.sh with FX_SIZE=smoke FX_ARMS=P FX_N_CBIG=1 from a git archive of exactly these four paths at the request's code, exit 0, and make_summary.py on its outputs.",
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/program/round5/foundry",
+      "research/alife/vecworld/program/round5/agentenv/evaluator",
+      "research/alife/vecworld/program/round6/foundryexam"
+    ],
+    "purpose": "Round-6 study foundryexam, last job: the learning curve of the true-weight reference net in the screened-prior arm (1,024 / 4,096 / 16,384 simulated episodes per hidden world), a third independent repeat of that arm (new items, Labs and seeds on the same 16 hidden worlds)",
+    "ref": "94451e27c85fcf3c19d99bb9f6640d503116c52d",
+    "ref_source": "commit holding the request",
+    "requester": "cloud study foundryexam (round 6), session_01BZceC7G6m7DgM6KpXjnWXj",
+    "run": "cd research/alife/vecworld/program/round6/foundryexam && bash job.sh",
+    "schema": "gpu-job/v1",
+    "setup": "curl -LsSf https://astral.sh/uv/install.sh | sh\nexport PATH=$HOME/.local/bin:$PATH\nuv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate\nuv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  },
+  "source": {
+    "blob": "54e5669a51a4db631d95a54da3543a78f39ecaa5",
+    "branch": "claude/fisim-agent-world-research-hepmlz",
+    "path": "research/alife/vecworld/program/gpu/requests/r6-foundryexam-005.json",
+    "received_at": "2026-11-11T15:33:25Z",
+    "tip": "94451e27c85fcf3c19d99bb9f6640d503116c52d"
+  }
+}
