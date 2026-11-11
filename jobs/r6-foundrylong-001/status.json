@@ -21,7 +21,7 @@
   "cap_usd": 8.1,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.1633
+    "conservative_usd": 0.5799
   },
   "guard_at": null,
   "guard_reason": null,
@@ -123,6 +123,12 @@
     }
   ],
   "pods_terminated": null,
+  "review": {
+    "at": "2026-11-11T18:45:10Z",
+    "file": "jobs/r6-foundrylong-001/review.md",
+    "sha256": "9e0f7ef4f616e514b69764dd31342191c48dfbc5b140b9944406bedf8ea58e3f",
+    "summary": "0 blocker, 0 major, 2 minor; outputs about 53 MB, over the 50 MB git cap (check in_git), S1a verdict ignores cut nets; fine to run"
+  },
   "run_deadline": "2026-11-11T21:41:36Z",
   "run_started_epoch": 1794421660.6429949,
   "started_at": "2026-11-11T18:32:36Z",
