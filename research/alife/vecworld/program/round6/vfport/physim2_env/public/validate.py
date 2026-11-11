@@ -8,6 +8,14 @@ request per process, CPU, memory and wall-clock limits), three calls in all: exa
 (the samples must be identical) and example 1.
 The example requests were simulated at the prior mean with public noise: passing says nothing about accuracy.
 
+AS IT WILL BE GRADED. Grading happens in a fresh container that holds only submission/ (read-only), TASK.md and
+the original physim2 package: nothing else you wrote exists there. This check therefore runs the predictor from
+a clean copy of the submission ALONE, in a temporary directory next to a copy of the physim2 package, and,
+when the laboratory started it (lab.validate, lab.submit), as the box's unprivileged user while /workspace is
+closed to that user (its mode is 0700 for the seconds the check runs, and is put back afterwards). A predictor
+that reads a file outside its own directory, or that names its own files by an absolute path below
+/workspace, fails here as it would fail in grading: load your files relative to predict.py.
+
 Where it runs: ONLY inside an exam box, which the environment marks with /etc/physim2/predictor_uid. Started by
 the laboratory (lab.validate, lab.submit) the predictor runs as that unprivileged uid and its leftovers are
 removed; started by you (python -m physim2.validate) it runs as you, under the limits only (the driver's
@@ -38,6 +46,34 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE = os.path.dirname(HERE)
 UID_FILE = "/etc/physim2/predictor_uid"
 NOT_A_BOX = f"this check runs inside an exam box only ({UID_FILE} is missing or not root's); nothing was run"
+ROUTE_VAR, ROUTE_VALUE = "PHYSIM2_BOX_CLEANUP", "disposable-box"      # set by the laboratory's route only (see _item.py)
+GRADED_WHERE = ("Grading happens in a fresh container that holds only submission/ (read-only, at /workspace/submission), TASK.md and "
+                "the original physim2 package: nothing else you wrote exists there, and there is no laboratory and no network. ")
+AS_GRADED = ("This check ran your predictor the same way: from a clean copy of the directory alone, as an unprivileged user that "
+             "could not read /workspace.")
+NOT_AS_GRADED = ("This check ran your predictor from a clean copy of the directory alone but with YOUR rights: it could still read "
+                 "/workspace. Only lab.validate(...) proves that it runs where it is graded.")
+
+
+def package_changes(workspace: str = WORKSPACE) -> int | None:
+    """How many files of physim2/ in this workspace differ from the package the box was given (MANIFEST.json),
+    or are missing. The grader uses the original package, whatever this one looks like. None: no manifest."""
+    import hashlib
+    try:
+        with open(os.path.join(HERE, "MANIFEST.json")) as f:
+            man = json.load(f)
+    except (OSError, ValueError):
+        return None
+    n = 0
+    for rel, digest in man.items():
+        if not rel.startswith("physim2/") or rel.endswith("MANIFEST.json"):
+            continue
+        try:
+            with open(os.path.join(workspace, rel), "rb") as f:
+                n += hashlib.sha256(f.read()).hexdigest() != digest
+        except OSError:
+            n += 1
+    return n
 
 
 def box_uid():
@@ -152,6 +188,10 @@ def check(path="submission", decl: dict | None = None, workspace: str = WORKSPAC
     if err:
         return {"ok": False, "stage": "artifact", "error": err, "finalized": False}
     tmp = tempfile.mkdtemp(prefix="physim2-validate-")
+    # Started by the laboratory (root, route variable): the predictor will run as the box's unprivileged user, and
+    # for that user /workspace is closed while the check runs, as it does not exist where the predictor is graded.
+    hide = os.geteuid() == 0 and os.environ.get(ROUTE_VAR) == ROUTE_VALUE
+    mode = None
     try:
         os.chmod(tmp, 0o755)
         dst = os.path.join(tmp, "submission")
@@ -162,14 +202,39 @@ def check(path="submission", decl: dict | None = None, workspace: str = WORKSPAC
             for nm in files:
                 os.chmod(os.path.join(root, nm), 0o444)
             os.chmod(root, 0o555)
+        # the public package next to it, as in the grader's box (a copy: /workspace itself is closed below)
+        shutil.copytree(HERE, os.path.join(tmp, "physim2"), symlinks=False, ignore=shutil.ignore_patterns("__pycache__"))
+        for root, dirs, files in os.walk(os.path.join(tmp, "physim2")):
+            os.chmod(root, 0o755)
+            for nm in files:
+                os.chmod(os.path.join(root, nm), 0o644)
         ex = np.load(os.path.join(HERE, "examples.npz"))
-        rep = validate(dst, workspace, ex, queries, dims, limits)
+        ex = {k: np.asarray(ex[k]) for k in ("history", "prefix", "test")}
+        if hide:
+            ws = os.path.realpath(workspace)
+            st = os.lstat(ws)
+            if stat.S_ISDIR(st.st_mode) and st.st_uid == 0 and ws not in ("/", "/tmp"):
+                mode = stat.S_IMODE(st.st_mode)
+                os.chmod(ws, 0o700)
+        rep = validate(dst, tmp, ex, queries, dims, limits)
     finally:
+        if mode is not None:
+            try:
+                os.chmod(os.path.realpath(workspace), mode)
+            except OSError:
+                pass
         for root, dirs, files in os.walk(tmp):
             os.chmod(root, 0o755)
         shutil.rmtree(tmp, ignore_errors=True)
     rep["files"] = len(man["files"])
     rep["finalized"] = False
+    rep["as_graded"] = bool(hide and mode is not None)
+    rep["grading"] = GRADED_WHERE + (AS_GRADED if rep["as_graded"] else NOT_AS_GRADED)
+    changed = package_changes(workspace)
+    if changed:
+        rep["package_changed_files"] = int(changed)
+        rep["grading"] += (f" Note: {int(changed)} file(s) of physim2/ in this workspace differ from the original package; the grader "
+                           "uses the original.")
     return rep
 
 

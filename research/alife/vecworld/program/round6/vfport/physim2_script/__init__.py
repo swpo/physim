@@ -1,7 +1,7 @@
 """physim2-script -- a scripted, model-free harness: run ONE script inside the agent's box.
 
     --env.agent.harness.id physim2-script
-    --env.agent.harness.agent-dir /abs/path/to/agents      host directory, copied to /opt/agent in the box
+    --env.agent.harness.agent-dir /abs/path/to/agents      host directory, copied to /tmp/physim2-agent in the box
     --env.agent.harness.script reference_agent.py          a file of that directory
     --env.agent.harness.args '["--policy", "S", "--sizes", "{...}"]'
 
@@ -9,7 +9,7 @@ The script runs where a model's shell commands would run: in the box, in the tas
 the network cut, with the tool servers up. It is given NOTHING a model's own script would not find: no
 laboratory address in its environment (physim2.Lab() reads /etc/physim2/lab.json, which the task controller
 wrote), no credential. The harness only checks that the address written into the box is the tool URL verifiers
-handed to it, and keeps the script's output in the box (/logs/agent/script.log). No model call is made.
+handed to it, and keeps the script's output in the box (/tmp/physim2-agent-logs/script.log). No model call is made.
 """
 from __future__ import annotations
 
@@ -21,8 +21,9 @@ import tarfile
 
 import verifiers.v1 as vf
 
-AGENT_HOME = "/opt/agent"
-LOG = "/logs/agent/script.log"
+# round 4: a box has a read-only root (physim2_env/boxcaps.py); the script and its log live in the scratch
+AGENT_HOME = "/tmp/physim2-agent"
+LOG = "/tmp/physim2-agent-logs/script.log"
 ADDRESS_FILE = "/etc/physim2/lab.json"
 
 
@@ -68,7 +69,7 @@ class ScriptHarness(vf.Harness[ScriptHarnessConfig]):
         if getattr(runtime.config, "type", None) not in ("docker", "prime"):   # its commands write as root: never on a host
             raise RuntimeError("physim2-script runs its script in a container runtime only")
         require_box(runtime)
-        r = await runtime.run(["mkdir", "-p", AGENT_HOME, "/logs/agent"], {})
+        r = await runtime.run(["mkdir", "-p", AGENT_HOME, os.path.dirname(LOG)], {})
         if r.exit_code:
             raise RuntimeError("could not prepare the box for the script")
 
