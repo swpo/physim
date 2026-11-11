@@ -578,6 +578,12 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         info["stop_condition"] = trace.stop_condition
         info["ended"] = "failed run"
         info["reasoning"] = reasoning_record(trace)
+        try:                                                 # what the run cost, as counted on the host (fixer B's meter)
+            meter = SPEND.METERS.pop(state.rollout, None)
+            if meter is not None:
+                info["spend"] = meter.summary()
+        except Exception:
+            pass
         return dict(state.collection)
 
     def _lab_usage(self, rollout: str) -> dict:

@@ -58,6 +58,8 @@ from physim2_env import grading as GRADING  # noqa: E402
 from physim2_env.public import _rules  # noqa: E402
 
 CHECKS, T0 = [], time.time()
+CFG = "ring_r4"                                              # the ring profile's exam config (256 samples per item, 17-tick reset)
+M = 256
 
 
 def check(name, ok, **detail):
@@ -211,35 +213,51 @@ def part_capture():
 
 # ============================================================================= 2. bundle and baseline
 def part_bundle():
-    raw, info = BUNDLE.public_bundle("ring", "smoke_ring")
+    raw, info = BUNDLE.public_bundle("ring", CFG)
     names = tarfile.open(fileobj=io.BytesIO(raw)).getnames()
     check("2 bundle: submission/ holds the baseline predict.py and pool.npz", "submission/predict.py" in names and "submission/pool.npz" in names)
-    pool = BUNDLE.null_pool("ring", "smoke_ring")
+    pool = BUNDLE.null_pool("ring", CFG)
     check("2 bundle: the pool has 512 episodes per level in the exam's shapes", {l: a.shape for l, a in pool.items()} == {1: (512, 5, 6), 2: (512, 2, 3)}
           and all(a.dtype == np.float32 for a in pool.values()), shapes={l: a.shape for l, a in pool.items()})
     other = subprocess.run([sys.executable, "-B", "-c",
                             "import sys, types, os; pkg = types.ModuleType('physim2_env'); pkg.__path__ = [os.path.join(%r, 'physim2_env')]; sys.modules['physim2_env'] = pkg\n"
                             "from physim2_env import bundle as B\n"
-                            "raw, info = B.public_bundle('ring', 'smoke_ring'); print(info['baseline']['pool_sha256'], info['baseline']['files']['pool.npz'])" % ROOT],
+                            "raw, info = B.public_bundle('ring', 'ring_r4'); print(info['baseline']['pool_sha256'], info['baseline']['files']['pool.npz'])" % ROOT],
                            capture_output=True, text=True)
     check("2 bundle: another process builds the same pool and the same pool.npz bytes",
           other.stdout.split() == [info["baseline"]["pool_sha256"], info["baseline"]["files"]["pool.npz"]], out=other.stdout[-200:], err=other.stderr[-300:])
     md = info["task_md"]
     for needle in ("**Turns: at most 150.**", "**Wall-clock time: 60 minutes**", "2 CPU cores, 4 GiB of memory",
+                   "at most 512 processes and threads", "`/workspace` (1024 MiB) and `/tmp` (512 MiB) and nowhere else",
                    "Whatever is in `submission/` at the moment your run ends is graded", "the same 3 hidden numbers",
                    "/workspace/lab_log.jsonl", "A failed item is scored with the baseline's forecast", "an integer T for T ticks without input",
-                   "from a clean copy of `submission/` alone", "`turns_used` and `turns_left`", "you never see their results"):
+                   "from a clean copy of `submission/` alone", "`turns_used` and `turns_left`", "you never see their results",
+                   "costs 17 ticks", "as much as the 17 observations of one item's history", "The grader asks for n_samples = 256",
+                   "over pairs of DIFFERENT samples", "Your 256 samples are treated as independent draws", "how you are scored is public"):
         check(f"2 statement (default limits) says: {needle[:60]}", needle in md)
     check("2 statement: no sentence promises K for a failure", "scored as K" not in md)
-    run = dict(BUNDLE.default_run("ring", "smoke_ring"), max_turns=22, wall_minutes=45, max_output_tokens_per_turn=16384, max_context_tokens=70000,
+    run = dict(BUNDLE.default_run("ring", CFG), max_turns=22, wall_minutes=45, max_output_tokens_per_turn=16384, max_context_tokens=70000,
                cap_usd=19.5, cpus=1.5, memory_gib=2, pids=512, measured=True)
-    md2 = BUNDLE.statement("ring", "smoke_ring", run)
+    md2 = BUNDLE.statement("ring", CFG, run)
     for needle in ("**Turns: at most 22.**", "reply number 22", "**Wall-clock time: 45 minutes**", "**One reply: at most 16384 tokens**", "**Context: 70,000 tokens.**",
-                   "**Spend: 19.5 US dollars**", "1.5 CPU cores, 2 GiB of memory", "at most 512 processes and threads", "(Measured in this box when it started.)"):
+                   "**Spend: 19.5 US dollars**", "1.5 CPU cores, 2 GiB of memory", "at most 512 processes and threads", "(Measured in this box when it started.)",
+                   "`context_tokens_used`"):
         check(f"2 statement (a run's own limits) says: {needle[:60]}", needle in md2)
-    md3 = BUNDLE.statement("ring", "smoke_ring", dict(run, max_turns=None, max_context_tokens=None, cap_usd=None, pids=None, lab_counts_turns=False))
-    check("2 statement: without a turn cap it says so, and without a context cap it names the model's window",
-          "no limit on the number of turns" in md3 and "must fit your model's context window" in md3 and "Spend" not in md3 and "does not count turns" in md3)
+    md3 = BUNDLE.statement("ring", CFG, dict(run, max_turns=None, max_context_tokens=None, cap_usd=None, pids=None, lab_counts_turns=False,
+                                             workspace_mib=None, tmp_mib=None, read_only_root=False))
+    check("2 statement: without a turn cap it says so, without a context cap it names the model's window, and an uncapped box is described as such",
+          "no limit on the number of turns" in md3 and "must fit your model's context window" in md3 and "Spend" not in md3 and "does not count turns" in md3
+          and "no limit of its own on the number of processes" in md3 and "no disk quota of its own" in md3)
+    old = BUNDLE.statement("ring", "smoke_ring")
+    check("2 statement: round 5's exam config still renders, with its own numbers (32 samples, a 1-tick reset)",
+          "The grader asks for n_samples = 32" in old and "costs 1 ticks" in old and "as much as the" not in old)
+    # ruling E15: what a box holds at start
+    groups = info["file_groups"]
+    listed = [f for g in groups for f in g["files"]]
+    check("2 box contents: every file of the bundle is in exactly one named group", sorted(listed) == sorted(n for n in names if n not in ("physim2", "submission") and not n.endswith("/"))
+          or sorted(listed) == sorted(set(listed)), n=len(listed), groups=[g["group"] for g in groups])
+    check("2 box contents: the designers' closed-form library and the toy worlds are not shipped; the scoring code is, in its own group",
+          not any("lingauss" in n or "toys" in n for n in names) and any(g["group"].endswith("scoring.py") and g["files"] for g in groups))
     # the baseline through the public runner, as a predictor process
     work = tempfile.mkdtemp(prefix="base-")
     with tarfile.open(fileobj=io.BytesIO(raw)) as tar:
@@ -249,13 +267,28 @@ def part_bundle():
     outs = []
     for seed in (0, 0, 1):
         rq, rp = os.path.join(work, f"rq{len(outs)}.npz"), os.path.join(work, f"rp{len(outs)}.npz")
-        np.savez(rq, history=ex["history"][0], prefix=ex["prefix"][0], test=ex["test"][0], queries=json.dumps(card["exam"]["queries"]), n_samples=32, seed=seed)
+        np.savez(rq, history=ex["history"][0], prefix=ex["prefix"][0], test=ex["test"][0], queries=json.dumps(card["exam"]["queries"]), n_samples=M, seed=seed)
         r = subprocess.run([sys.executable, "-I", "-B", os.path.join(work, "physim2", "predict_runner.py"), os.path.join(work, "submission"), rq, rp],
                            capture_output=True, text=True)
         outs.append(dict(np.load(rp)) if r.returncode == 0 else r.stderr)
     ok = all(isinstance(o, dict) for o in outs)
-    check("2 baseline: runs through predict_runner.py and returns the exam's shapes", ok and outs[0]["level1"].shape == (32, 5, 6) and outs[0]["level2"].shape == (32, 2, 3),
+    check("2 baseline: runs through predict_runner.py and returns the exam's shapes", ok and outs[0]["level1"].shape == (M, 5, 6) and outs[0]["level2"].shape == (M, 2, 3),
           out=str(outs[0])[:200] if not ok else None)
+    check("2 card: the public card states the price of a reset (17 ticks) and 256 samples", card["ticks"]["reset_cost"] == 17 and card["exam"]["n_samples"] == M)
+    # ruling E15: the public simulator and the reference agents' own modules work in the trimmed box
+    code = ("import sys, numpy as np; sys.path.insert(0, %r); sys.path.insert(0, %r)\n"
+            "import physim2; W = physim2.load_world(); rng = np.random.default_rng(0)\n"
+            "th = W.prior_sample(rng, 4); sim = W.Simulator(chunk=4); ep = sim.episodes(th, 3)\n"
+            "fr = sim.free_run(th, 5, 8); w = W.build_world(W.PRIOR_MEAN); v = W.viable(th, seed=1)\n"
+            "U = W.draw_program(W.program_mix().names[1], rng, ep['obs'][0, :17], 32); l2 = W.level(2, ep['obs']); sc = W.scales(); nb = W.nats_budget()\n"
+            "import inference, ridge_family\n"
+            "m = ridge_family.fit('ring', ep['obs'], ep['U'], {1: [1, 2], 2: [16]}, sc)\n"
+            "print('SIM-OK', ep['obs'].shape, fr.shape, l2.shape, sorted(k for k in sys.modules if k.startswith('vw.')))\n"
+            % (work, os.path.join(ROOT, "..", "..", "round5", "agentenv", "agents")))
+    r = subprocess.run([sys.executable, "-I", "-B", "-c", code], capture_output=True, text=True)
+    check("2 box contents: the public simulator (episodes, free_run, build_world, viable, draw_program, level, scales) and the reference "
+          "agents' modules run in the trimmed box", "SIM-OK (4, 49, 6) (4, 9, 6)" in r.stdout and "vw.lingauss" not in r.stdout and "vw.scoring" in r.stdout,
+          out=r.stdout[-300:], err=r.stderr[-400:])
     check("2 baseline: same seed, same samples; another seed, other samples",
           ok and np.array_equal(outs[0]["level1"], outs[1]["level1"]) and not np.array_equal(outs[0]["level1"], outs[2]["level1"]))
     return work, raw, info
@@ -273,14 +306,15 @@ def part_null(work):
     os.makedirs(os.path.dirname(hidden))
     os.chmod(store, 0o755)                                   # round 5's sandbox runs the predictor as uid 65534: its request
     os.chmod(os.path.dirname(hidden), 0o755)                 # folder (<store>/<instance>/work) must be reachable; hidden/ stays 0700
-    cfg = json.load(open(os.path.join(ROOT, "..", "..", "round5", "agentenv", "configs", "smoke_ring.json")))
+    from physim2_env._paths import config_path
+    cfg = json.load(open(config_path(CFG)))
     INST.make_instance("ring", cfg, hidden)
     INST.build_exam(hidden, log=lambda *_: None)
     ex = INST.FrozenExam(hidden)
-    fb = GRADING.fallback(hidden, "ring", "smoke_ring", 32, 0)
+    fb = GRADING.fallback(hidden, "ring", CFG, M, 0)
     pub = tempfile.mkdtemp(prefix="pub-")
     os.chmod(pub, 0o755)
-    BW.build("ring", BUNDLE.load_config("smoke_ring"), pub)
+    BW.build("ring", BUNDLE.load_config(CFG), pub)
     sub = os.path.join(work, "submission")
     for r_, ds, fs in os.walk(work):
         os.chmod(r_, 0o755)

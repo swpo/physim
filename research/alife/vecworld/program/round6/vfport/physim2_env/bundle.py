@@ -172,9 +172,9 @@ def default_run(world: str, config_name: str, limits: dict | None = None) -> dic
            "cpus": lim.get("box_cpus") or p.get("box_cpus") or PROFILES.FALLBACK_BOX["box_cpus"],
            "memory_gib": lim.get("box_memory_gb") or p.get("box_memory_gb") or PROFILES.FALLBACK_BOX["box_memory_gb"],
            "pids": None, "workspace_mib": None, "tmp_mib": None, "read_only_root": None, "lab_counts_turns": True, "measured": False}
-    try:                                                     # the caps the runtime of this package sets on every box, if it sets any
-        from . import runtime as RUNTIME
-        caps = RUNTIME.box_caps(memory_gb=lim.get("box_memory_gb"))
+    try:                                                     # the caps the runtime of this package sets on every box (boxcaps.py)
+        from . import boxcaps as BOXCAPS
+        caps = BOXCAPS.box_caps(memory_gb=lim.get("box_memory_gb"))
         run.update(cpus=caps.get("cpus", run["cpus"]), memory_gib=caps.get("memory_gb", run["memory_gib"]), pids=caps.get("pids"),
                    workspace_mib=caps.get("workspace_mib"), tmp_mib=caps.get("scratch_mib"), read_only_root=caps.get("read_only_root"))
     except Exception:

@@ -2,8 +2,11 @@
 the agent's route (scripted harness in the agent's box, host-side laboratory, stock isolated grader, per-item
 predictor runs in the verifier box), the reference table and the acceptance shares.
 
-For each of --worlds fresh hidden instances (tools/make_instances.py; they live in --store only):
-  S, D, P0, PM, null   agentenv's agents/reference_agent.py, run in the agent's box by the physim2-script harness
+For each of --worlds fresh hidden instances (tools/make_instances.py; they live in --store only), or for the ONE
+existing instance --instance of an exam profile (--profile: the reference table of a rollout):
+  null                 the baseline every box starts with, left untouched (agents/keep_baseline.py); what a failed
+                       item of any predictor is scored with
+  S, D, P0, PM         agentenv's agents/reference_agent.py, run in the agent's box by the physim2-script harness
   C                    needs the true parameters: built on the worker by tools/build_reference.py (the same script,
                        --no-submit; the parameters go from a file of mode 0600 in the store into that process's
                        memory, never onto a command line), then installed and submitted from the agent's box by
@@ -19,7 +22,11 @@ in ONE verifier box (--isolation shared, 0.6 s per item). The default of the tas
 exercised on --box-check policies of the first world: the same frozen submission must get the same per-item
 scores in both modes.
 
+Every box of a reference policy gets the caps a model's box gets (ruling E8): the task asks for the profile's
+CPUs and memory, and --memory lowers the memory when the rollout it stands beside ran with less.
+
 usage: VF_RUN_ID=<label> python tools/prove.py --store DIR --scratch DIR --worlds 4 --disk-floor-gib 8 --out results/proof_ring.json
+       VF_RUN_ID=<label> python tools/prove.py --store DIR --scratch DIR --profile ring --instance pilot-x --disk-floor-gib 8 --out FILE
 """
 import argparse
 import json
@@ -39,14 +46,16 @@ sys.path.insert(0, HERE)
 import vfrun  # noqa: E402
 
 vfrun.require_clean_environment()                          # before the package is imported: see vfrun.ENV_REFUSE
-from physim2_env._paths import agentenv_root, use_agentenv  # noqa: E402
+from physim2_env._paths import agentenv_root, config_path, use_agentenv  # noqa: E402
+from physim2_env import profiles as PROFILES  # noqa: E402
 
 POLICIES = ["S", "D", "P0", "PM", "C", "null"]
 LABELS = {"K": "long-run average of the hidden world (climatology pool)", "D": "ridge fitted to the real episodes the budget allows",
           "P0": "ridge trained on simulations at prior draws", "PM": "ridge trained on simulations at the prior mean",
           "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
           "C": "ridge trained on simulations at the true parameters", "O": "oracle: replicate futures from the hidden state (leave one out)",
-          "null": "null agent: prior-predictive long-run law, no history, no program"}
+          "null": "null policy: the baseline every box starts with (prior-predictive long-run law, no history, no program); "
+                  "also the forecast a failed item is scored with"}
 
 
 def prebuild_C(store, iid, sizes, seed):
@@ -104,18 +113,25 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--store", required=True)
     ap.add_argument("--scratch", required=True)
+    ap.add_argument("--profile", default=None, help="an exam profile (physim2_env/profiles.py): its world, exam config, reference "
+                                                    "policies and sizes; with --instance")
+    ap.add_argument("--instance", default=None, help="with --profile: the ONE existing instance to build the reference table on")
     ap.add_argument("--world", default="ring")
     ap.add_argument("--config", default="smoke_ring")
     ap.add_argument("--worlds", type=int, default=4)
     ap.add_argument("--prefix", default="proof-ring")
     ap.add_argument("--sizes", default='{"n_lab": 8, "n_design": 256, "k_design": 2, "n_train": 512}')
-    ap.add_argument("--policies", default=",".join(POLICIES))
-    ap.add_argument("--cpu", type=float, default=2)
+    ap.add_argument("--policies", default=None)
+    ap.add_argument("--cpu", type=float, default=None, help="CPUs of every box (default: what the task asks for, the profile's)")
+    ap.add_argument("--memory", type=float, default=None,
+                    help="memory of every box in GB, to LOWER the profile's cap as a rollout did (ruling E8); default: the profile's")
     ap.add_argument("--isolation", default="shared", choices=["shared", "box"])
-    ap.add_argument("--box-check", default="C,D", help="policies re-run on the first world with one box per item ('' = none)")
-    ap.add_argument("--no-cross-check", action="store_true",
-                    help="skip the comparison with round 5's own grader, which runs the evaluator's reference predictor in agentenv's "
-                         "local sandbox ON THIS MACHINE (written for Linux; use this flag on a Mac)")
+    ap.add_argument("--box-check", default=None, help="policies re-run on the first world with one box per item ('' = none)")
+    ap.add_argument("--cross-check", action="store_true",
+                    help="also grade C through round 5's own grader, which runs the evaluator's reference predictor in agentenv's local "
+                         "sandbox ON THIS MACHINE (it changes modes and removes its own temporary folders there): only inside a "
+                         "throwaway container; off by default since round 4")
+    ap.add_argument("--no-cross-check", action="store_true", help="accepted and ignored: the cross-check is off unless --cross-check is given")
     ap.add_argument("--disk-floor-gib", type=float, default=vfrun.DISK_FLOOR_GIB,
                     help="the disk watchdog: no run starts, and a run is stopped, when the file system of the home folder has less free space")
     ap.add_argument("--out", required=True)
@@ -123,11 +139,26 @@ def main():
     vfrun.DISK_FLOOR_GIB = a.disk_floor_gib
     vfrun.run_label()
     vfrun.require_disk(vfrun.disk_floor_bytes(), "the tool")
-    sizes, pols = json.loads(a.sizes), a.policies.split(",")
-    t0, c0 = time.time(), time.process_time()
-    ids = [f"{a.prefix}-w{w}" for w in range(a.worlds)]
     idx = os.path.join(a.store, "index.json")
     have = {r["instance_id"] for r in json.load(open(idx))} if os.path.exists(idx) else set()
+    if a.profile is not None:                                # the reference table of ONE existing instance of a profile
+        prof = PROFILES.get(a.profile)
+        if not a.instance or a.instance not in have:
+            raise SystemExit("refused: --profile needs --instance ID, an instance that tools/make_instances.py --profile made in this store")
+        a.world, a.config, a.worlds = prof["world"], prof["config_name"], 1
+        a.sizes = json.dumps(prof["reference_sizes"])
+        a.policies = a.policies or ",".join(prof["reference_policies"])
+        a.box_check = "" if a.box_check is None else a.box_check
+        ids = [a.instance]
+    else:
+        if a.instance:
+            raise SystemExit("refused: --instance goes with --profile")
+        ids = [f"{a.prefix}-w{w}" for w in range(a.worlds)]
+    a.policies = a.policies or ",".join(POLICIES)
+    a.box_check = "C,D" if a.box_check is None else a.box_check
+    limits = {} if a.memory is None else {"box_memory_gb": a.memory}
+    sizes, pols = json.loads(a.sizes), a.policies.split(",")
+    t0, c0 = time.time(), time.process_time()
     if not set(ids) <= have:
         r = vfrun.run_helper([sys.executable, "-B", os.path.join(HERE, "make_instances.py"), "--store", a.store, "--world", a.world,
                               "--config", a.config, "--n", str(a.worlds), "--prefix", a.prefix])
@@ -146,13 +177,16 @@ def main():
                 prebuild_C(a.store, iid, sizes, w)
             harness = {"agent_dir": os.path.join(a.store, "{instance_id}", "work", "reference_C"), "script": "install_prebuilt.py",
                        "label": "C", "collect": ["agent_log_prebuilt.json"], "collect_dir": notes}
+        elif pol == "null":                                  # the box's own baseline, untouched and not submitted
+            harness = {"agent_dir": os.path.join(ROOT, "agents"), "script": "keep_baseline.py", "label": "null",
+                       "collect": ["agent_log_null.json"], "collect_dir": notes}
         else:
             harness = {"agent_dir": ae_agents, "script": "reference_agent.py", "label": pol,
                        "args": ["--policy", pol, "--sizes", json.dumps(sizes), "--seed", "{idx}"],
                        "collect": [f"agent_log_{pol}.json"] + (["posterior_draws_u.npy"] if pol == "S" else []), "collect_dir": notes,
                        "collect_tree": "submission" if pol in a.box_check.split(",") else ""}
         r = vfrun.run_eval(f"proof-{pol.lower()}", store=a.store, out_dir=out_dir, harness=harness, instances=ids, cpu=a.cpu,
-                           task={"item_isolation": a.isolation})
+                           task={"item_isolation": a.isolation, "limits": limits})
         rolls = [vfrun.rollout(ep) for ep in r["episodes"]]
         if len(rolls) != len(ids):
             raise SystemExit(f"policy {pol}: {len(rolls)} episodes for {len(ids)} instances\n{r['log_tail']}")
@@ -176,7 +210,7 @@ def main():
             shutil.copy(os.path.join(ROOT, "agents", "install_prebuilt.py"), os.path.join(dst, "install_prebuilt.py"))
             harness = {"agent_dir": dst, "script": "install_prebuilt.py", "label": f"{pol}-box"}
         r = vfrun.run_eval(f"proof-{pol.lower()}-box", store=a.store, out_dir=out_dir, harness=harness, instances=ids[:1], cpu=a.cpu,
-                           task={"item_isolation": "box", "item_boxes_parallel": 2 if pol == "D" else 1})
+                           task={"item_isolation": "box", "item_boxes_parallel": 2 if pol == "D" else 1, "limits": limits})
         if len(r["episodes"]) != 1:
             raise SystemExit(f"box check {pol}: no episode\n{r['log_tail']}")
         state["box"][pol] = {"rollout": vfrun.rollout(r["episodes"][0]), "wall_s": r["wall_s"], "host_cpu_s": r["host_cpu_s"]}
@@ -197,9 +231,11 @@ def main():
             g = os.path.join(hidden, "grades")
             if x["graded"]:                                  # name the per-item scores of this rollout after its policy
                 shutil.copy(os.path.join(g, f"{x['trace_id']}.npz"), os.path.join(g, f"{pol}.npz"))
-            else:                                            # a rollout without a reward is K (memo hole 3)
+            else:                                            # a rollout without a reward: every item as the null policy (ruling E3)
+                from physim2_env import grading as GRADING
                 ex = INST.FrozenExam(hidden)
-                np.savez_compressed(os.path.join(g, f"{pol}.npz"), es=ex.references()["K"], failed=np.ones(ex.n, bool), cpu=np.zeros(ex.n))
+                fb = GRADING.fallback(hidden, a.world, a.config)
+                np.savez_compressed(os.path.join(g, f"{pol}.npz"), es=fb["es"], failed=np.ones(ex.n, bool), cpu=np.zeros(ex.n))
             lg_f = os.path.join(notes, x["trace_id"], f"agent_log_{pol}.json")
             lg = json.load(open(lg_f)) if os.path.exists(lg_f) else {}
             post = lg.get("posterior")
@@ -213,7 +249,9 @@ def main():
                 "train_episodes": lg.get("train_episodes"), "agent_cpu_s": lg.get("cpu_s"),
                 "posterior_sd_over_prior_sd": None if post is None else post["sd_over_prior_sd"],
                 "reward_skill_vs_O": x["reward_skill_vs_O"], "wall_s": x["wall_s"], "cpu_s": x["cpu_s"],
-                "grade": {k: gr.get(k) for k in ("n_items", "n_failed", "cpu_s_mean", "cpu_s_max", "layers", "items_with_leftovers",
+                "ended": (x.get("info") or {}).get("ended"), "limits": (x.get("info") or {}).get("limits"),
+                "box_caps": (x.get("info") or {}).get("box_caps"),
+                "grade": {k: gr.get(k) for k in ("n_items", "n_failed", "fallback", "cpu_s_mean", "cpu_s_max", "layers", "items_with_leftovers",
                                                  "cleanup_between_items", "seconds", "isolation", "validation", "item_boxes",
                                                  "item_box_wall_s_mean", "infrastructure_failed_items")}}
         if "S" in pols:                                      # how close was the scripted inference (no theta is written)
@@ -224,7 +262,7 @@ def main():
                 u_true = (theta - (W.PRIOR_LO + W.PRIOR_HI) / 2) / ((W.PRIOR_HI - W.PRIOR_LO) / 2)
                 rec["S_abs_error_over_prior_sd"] = (np.abs(np.load(f).mean(0) - u_true) * np.sqrt(3)).tolist()
         rec["table"] = GR.table(hidden, pols, n_boot=500)
-        if "C" in pols and not a.no_cross_check:
+        if "C" in pols and a.cross_check:
             try:
                 rec["same_submission_through_round5_grader"] = cross_check(a.store, iid, a.world, a.config)
             except Exception as e:
@@ -257,10 +295,12 @@ def main():
                                                               "seconds", "layers", "validation")},
                     "wall_s": x["wall_s"], "cpu_s": x["cpu_s"], "vf_eval_wall_s": b["wall_s"], "vf_eval_host_cpu_s": b["host_cpu_s"],
                     "shared_grade_seconds": xs["grade"].get("seconds")}
-    # ---- red team 8: a failed item is scored as K, so "crash where I would lose to K" is free ----
-    crash = {p: None for p in ("D", "S", "P0") if p in pols}  # filled below, once the valid cells are known
+    # ---- red team 8, after ruling E3: a failed item is scored as the NULL policy, which every agent holds
+    #      anyway (it is the baseline in its box). What is "crash where I would lose to the null policy" worth? ----
+    crash = {p: None for p in ("D", "S", "P0") if p in pols and "null" in pols}  # filled below, once the valid cells are known
     rolls = [r for p in pols for r in state["runs"][p]["rollouts"]]
-    out = {"world": a.world, "config": json.load(open(os.path.join(agentenv_root(), "configs", f"{a.config}.json"))),
+    out = {"world": a.world, "config_name": a.config, "config": json.load(open(config_path(a.config))), "profile": a.profile,
+           "instance_ids": ids, "box_memory_gb_requested": a.memory,
            "sizes": sizes, "n_worlds": a.worlds, "policy_labels": LABELS, "PILOT_NEVER_REUSE_AS_EXAM": True,
            "hidden_values_in_this_file": "none (theta, secrets and items stay in the worker's store, which is deleted)",
            "route": "vf-eval physim2-env --env.id isolated-verifier, docker runtime, physim2-script harness, --no-push",
@@ -291,14 +331,16 @@ def main():
     json.dump(state, open(state_f, "w"))
     valid = np.array(out["pooled"]["valid_cells"], bool)
     Kf, Of = items["K"].reshape(-1, len(valid))[:, valid].sum(1), items["O"].reshape(-1, len(valid))[:, valid].sum(1)
+    Nf = items["es_null"].reshape(-1, len(valid))[:, valid].sum(1) if "null" in pols else None
     for pol in crash:
         e = items[f"es_{pol}"].reshape(-1, len(valid))[:, valid].sum(1)
-        worse = e > Kf
+        worse = e > Nf
         sk = lambda v: float((Kf.mean() - v.mean()) / (Kf.mean() - Of.mean()))  # noqa: E731
-        crash[pol] = {"items": int(len(e)), "items_scored_worse_than_K": int(worse.sum()), "skill_vs_O": sk(e),
-                      "skill_vs_O_had_exactly_those_items_failed": sk(np.where(worse, Kf, e))}
-    out["failed_item_is_K_counterfactual"] = dict(crash, note="what a predictor would gain if it could fail exactly the items on which it "
-                                                              "scores worse than K (it cannot know them; this is the upper bound of the effect)")
+        crash[pol] = {"items": int(len(e)), "items_scored_worse_than_null": int(worse.sum()), "skill_vs_O": sk(e),
+                      "skill_vs_O_had_exactly_those_items_failed": sk(np.where(worse, Nf, e))}
+    out["failed_item_is_null_counterfactual"] = dict(crash, note="what a predictor would gain if it could fail exactly the items on which it "
+                                                                 "scores worse than the null policy; it holds that policy itself (the baseline "
+                                                                 "in its box), so nothing here is a gift of the grader")
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     json.dump(out, open(a.out, "w"), indent=1)
     p = out["pooled"]
