@@ -143,6 +143,12 @@
     }
   ],
   "pods_terminated": true,
+  "review": {
+    "at": "2026-11-11T21:36:33Z",
+    "file": "jobs/r6-foundrylong-002/review.md",
+    "sha256": "ca2791355f8e9d4a1552ab8be5e292090df536fd8d368cea538dd74b36380a41",
+    "summary": "1 blocker: the speed guard times jit compiles and an eval, then scales them about 368x (why 002 stopped); 0 major, 3 minor; science wired as declared"
+  },
   "run_deadline": "2026-11-12T00:32:37Z",
   "run_started_epoch": 1794431926.700292,
   "started_at": "2026-11-11T21:23:37Z",
