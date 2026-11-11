@@ -45,6 +45,7 @@ branch, are ignored. The Mac checks for new requests about once a minute.
 | `gpu.types` | Prime GPU type names in order of preference: `H100_80GB`, `H200_141GB`, `A100_80GB`, `A100_40GB`, `L40S_48GB`, `RTX6000Ada_48GB`, `RTX_PRO_6000B_96GB`, `A10_24GB`, `V100_16GB`. The cheapest available offer of the first type that has stock is used. |
 | `gpu.count` | 1-8 (default 1) |
 | `gpu.spot` | allow spot instances (default false). Use only if the job checkpoints, because spot pods can be preempted. |
+| `gpu.min_vcpus`, `gpu.min_memory_gb` | optional floors (integers). Only offers with at least this many vCPUs and GB of RAM are used, cheapest first. They matter mostly for `CPU_NODE`, the type for CPU-only VMs (no GPU; `nvidia-smi` then only errors in `sysinfo.txt`): its offers come in one size each, from 2 to 64 vCPUs, and without a floor the cheapest (smallest) one is rented. Example: `"gpu": {"types": ["CPU_NODE"], "count": 1, "min_vcpus": 16}`. |
 | `image` | Prime image (default `ubuntu_22_cuda_12`, which has the NVIDIA driver and CUDA 12; JAX/PyTorch come from `setup`) |
 | `disk_gb` | optional disk size |
 | `max_hours` | longest the job may run (0.05-24) |
