@@ -71,8 +71,8 @@ Sizes: 16 members (8 fit), 400 ticks after 200 of burn-in, 32 test states x 6 re
 | levels_add | yes | yes | yes |
 | learned_differs | no | no | no |
 
-Seed (A against B): 27 of 30 entries agree; not robust: pop.sigma_hat, pop.tick_share, pop.act_ms.
+Seed (A against B): 26 of 29 entries agree; not robust: pop.sigma_hat, pop.tick_share, pop.act_ms.
 
 Estimator size (even against odd test states, block view at 8 ticks): predictable fraction 1.00 / 1.00, ceiling 0.99 / 1.00.
 
-Source: run A: job r6-cards-001; run B: job r6-cards-001; run late: job r6-cards-001; files `out/cards/membrane__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards (`card.json` here holds the derived numbers and gates of every run). Pilot: never an exam instance.
+Source: run A: job r6-cards-002; run B: job r6-cards-001; run late: job r6-cards-001; files `out/cards/membrane__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards (`card.json` here holds the derived numbers and gates of every run). Pilot: never an exam instance.

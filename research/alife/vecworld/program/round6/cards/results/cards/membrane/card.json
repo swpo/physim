@@ -59,7 +59,7 @@
   "Bb": 30
  },
  "jobs": {
-  "A": "r6-cards-001",
+  "A": "r6-cards-002",
   "B": "r6-cards-001",
   "late": "r6-cards-001"
  },
@@ -114,13 +114,13 @@
     "grid.aim_ratio": 2.5472832886360783,
     "grid.act_ms_50": 1.3059401912920119,
     "grid.act_ms_800": 21.33275030040368,
-    "grid.xresp": 0.026847435640361395,
+    "grid.xresp": 0.027329386637396987,
     "grid.tick_share": -0.0013473882542413829,
     "grid.tick_share_max": -7.658231716257705e-05,
     "grid.member_share": 0.0729471749260223,
     "pop.pf1": 0.9999448960684275,
     "pop.ceil1": 0.993463965976432,
-    "pop.gap1": 0.0033089737616456218,
+    "pop.gap1": 0.0033089737616456135,
     "pop.pf2": 0.9986880319912035,
     "pop.ceil2": 0.968187162126534,
     "pop.gap2": 0.015069949465722559,
@@ -134,8 +134,8 @@
     "pop.ceil16": 0.7658749997660531,
     "pop.gap16": 0.10740117556354499,
     "pop.pf32": 0.8685705814361349,
-    "pop.ceil32": 0.636433419328502,
-    "pop.gap32": 0.1874854118534698,
+    "pop.ceil32": 0.6364334193285018,
+    "pop.gap32": 0.18748541185346987,
     "pop.pf8_mean": 0.965272215283495,
     "pop.ceil8_mean": 0.8251320058814497,
     "pop.gap8_mean": 0.09531323270819855,
@@ -166,8 +166,8 @@
     "pop.aim_ratio": 0.5043519904865829,
     "pop.act_ms_50": 0.02867764610820745,
     "pop.act_ms_800": 0.8849000735080548,
-    "pop.xresp": -0.060374617695083996,
-    "pop.tick_share": -0.0037881552328406726,
+    "pop.xresp": 0.0068946282362694,
+    "pop.tick_share": -0.003788155232840673,
     "pop.tick_share_max": 0.058075085736292456,
     "pop.member_share": 0.18913617787553308,
     "s.nb_mean": 14.530548628428928,
@@ -203,7 +203,7 @@
     "b.ceil_mass16": 0.6149565748052489,
     "b.quiet8": 0.8372429971022493,
     "b.n_test8": 393.0,
-    "x.bodies_to_grid8": 4.307722699638597e-05,
+    "x.bodies_to_grid8": 4.307722699659414e-05,
     "x.grid_to_bodies8": 0.020653277741184473,
     "x.grid_to_pop8": 0.005997534017798081,
     "x.pop_over_pers8": 0.06674415848218089,
@@ -221,7 +221,7 @@
     "t.l1_8": 0.015862739540170877,
     "t.doubling": 2.4347799182508747,
     "finite": true,
-    "cost.s_per_member_tick": 0.0007036842287532867
+    "cost.s_per_member_tick": 0.0006632347487741046
    },
    "gates": {
     "predictable": true,
@@ -665,7 +665,7 @@
     0.9280322483134731,
     0.8259438298038398,
     0.7658749997660531,
-    0.636433419328502
+    0.6364334193285018
    ],
    "pl_over_vorc": {
     "0.03": [
@@ -728,8 +728,8 @@
     ]
    },
    "timing": {
-    "main_s": 18.21527361869812,
-    "branch_s": 10.1572744846344,
+    "main_s": 17.373135805130005,
+    "branch_s": 9.368489265441895,
     "burn": 200,
     "main_member_ticks": 9600,
     "branch_member_ticks": 30720,
@@ -1038,7 +1038,6 @@
    "grid.pl_ratio0.1_8": true,
    "grid.act_ms": true,
    "grid.aim_ratio": true,
-   "grid.xresp": true,
    "grid.tick_share": true,
    "grid.member_share": true,
    "pop.pf8": true,
@@ -1106,6 +1105,64 @@
    "same": true,
    "overlap": 0.0
   },
+  "rerun": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "rerun_values": {
+   "grid.pf8": [
+    0.9987100981733485,
+    0.9987100981733485
+   ],
+   "grid.ceil8": [
+    0.9952631011418612,
+    0.9952631011418612
+   ],
+   "grid.sigma_hat": [
+    0.012494727875998701,
+    0.012494727875998701
+   ],
+   "s.nb_mean": [
+    14.530548628428928,
+    14.530548628428928
+   ],
+   "b.ceil_disp8": [
+    0.6597404458514995,
+    0.6597404458514995
+   ]
+  },
+  "rerun_jobs": [
+   "r6-cards-001",
+   "r6-cards-002"
+  ],
+  "xresp_first_biased": 0.026847435640361395,
   "split_half": {
    "pf8": [
     0.9986448884010315,
@@ -1120,6 +1177,6 @@
    "note": "block view, ridge or climatology, medians over 16 states each"
   }
  },
- "figure_bytes": null,
+ "figure_bytes": 54040,
  "PILOT_NEVER_REUSE_AS_EXAM": true
 }

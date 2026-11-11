@@ -287,6 +287,66 @@ def main():
             claim(f"clock:{a}", f"{a} on a clock of 1 world tick against 4: verdict {gate(a, 'A', 'verdict')!r} against {gate(b, 'A', 'verdict')!r}.",
                   {k: [r(val(a, "A", k)), r(val(b, "A", k))] for k in keys},
                   {k: [src(a, "A", k), src(b, "A", k)] for k in keys})
+    # ---------------------------------------------------------------- 8. statements of the README that need their own entry
+    def series(w, run):
+        f = os.path.join(HERE, "work", jobs_of[w][run], "out", "series", f"{w}__{run}.npz")
+        return np.load(f) if os.path.exists(f) else None
+    reg = {}
+    for w, run in (("foundry_04470", "A"), ("foundry_04470", "B"), ("foundry_04470", "late"), ("foundry_00262", "A"), ("foundry_00262", "late")):
+        z = series(w, run)
+        if z is not None:
+            mm = z["pop"][:, :, 4].astype(float).mean(0)                      # member time-means of the largest body
+            reg[f"{w}__{run}"] = dict(members_with_largest_body_above_1p5_median=int((mm > 1.5 * np.median(mm)).sum()), members=int(len(mm)),
+                                      median=r(np.median(mm)), largest=[r(x) for x in sorted(mm)[-4:]])
+    if reg:
+        claim("regimes", "A second regime in a minority of members: members whose time-mean largest body exceeds 1.5 times the median over members.",
+              reg, "<job>:series/<world>__<run>.npz:pop[:, :, 4] (largest tracked body per member and tick)")
+    z = series("gliders", "A")
+    if z is not None:
+        g = z["gmean"].astype(float)
+        claim("gliders_member_share", "Gliders: share of the variance of each block channel's box mean that lies between members' time-means "
+              "(the two kind masses are conserved per episode).",
+              dict(channels=["mean_c0", "mean_c1", "mean_S2"], between_member_share=[r(x) for x in g.mean(0).var(0) / np.maximum(g.var((0, 1)), 1e-300)],
+                   declared_member_share=r(val("gliders", "A", "grid.member_share"))),
+              f"{jobs_of['gliders']['A']}:series/gliders__A.npz:gmean; {src('gliders', 'A', 'grid.member_share')}")
+    kl = [w for w in named if val(w, "A", "k.law8") is not None]
+    claim("kind_share_law", "The fed-vortex kind-share law ds = b1 s(1-s) + b2 (1-2s) against a line in s and a constant drift: ceilings at 8 and 32 ticks.",
+          {w: {k: r(val(w, "A", "k." + k)) for k in ("law8", "lin8", "const8", "law32", "lin32", "const32", "pf8", "pf32")} for w in kl},
+          "<job>:cards/<world>__A.json:derived.k.*")
+    exc = {}
+    for w in named:
+        f = os.path.join(HERE, "work", jobs_of[w]["A"], "out", "cards", f"{w}__A.json")
+        if os.path.exists(f):
+            c = json.load(open(f))
+            exc[w] = dict(top10pct_share_8=r(c["grid"]["excess_top10pct_share"].get("8")), ceil1=r(val(w, "A", "grid.ceil1")),
+                          ceil4=r(val(w, "A", "grid.ceil4")), ceil8=r(val(w, "A", "grid.ceil8")), ceil16=r(val(w, "A", "grid.ceil16")),
+                          ceil32=r(val(w, "A", "grid.ceil32")))
+    claim("law_breaks", "Where the linear local law breaks: block-view ceilings by horizon and the share of the excess error at 8 ticks "
+          "carried by the worst tenth of (state, block) cells.", exc, "<job>:cards/<world>__A.json:grid.excess_top10pct_share.8, derived.grid.ceil<h>")
+    gl = [w for w in ("gliders", "gliders_n1", "gliders_n8") if w in D]
+    claim("levels", "What one level adds to another's cheap predictor at 8 ticks (share of the variance): slot list to block view, block view to "
+          "body law, block moments to population law, population law over persistence.",
+          dict(named={w: {k: r(val(w, "A", "x." + k)) for k in ("bodies_to_grid8", "grid_to_bodies8", "grid_to_pop8", "pop_over_pers8")} for w in named},
+               gliders_bodies_to_grid_all_runs=[r(val(w, x, "x.bodies_to_grid8")) for w in gl for x in D[w]]),
+          "<job>:cards/<world>__<run>.json:derived.x.*")
+    lw = [w for w in names if "late" in ROB.get(w, {}) and ROB[w]["late"].get("same") is not None]
+    claim("late_breakdown", "Late window equal to early, by group.",
+          {k: dict(same=int(sum(bool(ROB[w]["late"]["same"]) for w in lw if role.get(w) == k)), n=int(sum(1 for w in lw if role.get(w) == k)))
+           for k in ("designed", "shortlist", "candidate", "control")}, "results/robustness.json:<world>.late.same")
+    rule = [w for w in names if gate(w, "A", "exam_worthy") and gate(w, "A", "stationary") and ROB.get(w, {}).get("late", {}).get("same") is True]
+    rule.sort(key=lambda w: (-int(bool(gate(w, "A", "reading_worthy"))), -int(bool(gate(w, "A", "actions"))), -(gate(w, "A", "sigma_hat_best") or 0)))
+    claim("which_first", "The declared rule applied to run A (exam-worthy, stationary in the window, late equal to early; reading-worthy first, "
+          "then actions, then sigma_hat): order before the one-per-family step.",
+          dict(order=[dict(world=w, family=role.get(w), reading_worthy=gate(w, "A", "reading_worthy"), sigma_hat=r(gate(w, "A", "sigma_hat_best")),
+                           sigma_hat_block=r(val(w, "A", "grid.sigma_hat"))) for w in rule]),
+          "results/derived.json:<world>.A.gates and results/robustness.json:<world>.late.same")
+    claim("round5_quoted", "Numbers of round 5 quoted in the README.",
+          dict(gliders_sigma_block_pop=R5_SIGMA, vortex_sigma_at_most=0.136, pl_3pct_10pct_median_24_worlds=[5.4, 45],
+               bias2_gliders_block_mass_r2=[0.918, 0.994], slots_parts_over_tracker_16=0.389, bias2_membrane_nonlinear_closure_gain=[0.141, 0.252],
+               foundry_cert_ceilings_4470=[0.991, 0.955, 0.796, 0.480, 0.272, 0.193]),
+          dict(gliders_sigma=R5_SIGMA_SRC, vortex="program/README.md, round 5 vortexexam (0.136 +- 0.054 against the best C of any family)",
+               pl="round5/foundry/results/summary.json:checker.verified.recomputed_from_gpu_outputs", bias2="round5/bias2/results/summary.json:claims G1, M3",
+               slots="program/README.md, round 5 slots (+0.389 +- 0.018)", foundry="round5/foundry/README.md (draw 4470)"))
     out = dict(study="cards (round 6): world cards", date="2026-11-11", PILOT_NEVER_REUSE_AS_EXAM=True, jobs=jobs,
                gpu_total=dict(billed_usd=r(sum(j["billed_usd"] or 0 for j in jobs), 4), conservative_usd=r(sum(j["conservative_usd"] or 0 for j in jobs), 4),
                               budget_usd=25.0, source="results/jobs/<job>/status.json:cost"),

@@ -52,7 +52,7 @@ Sizes: 16 members (8 fit), 400 ticks after 100 of burn-in, 32 test states x 6 re
 
 - Plug-in loss / oracle variance at 8 ticks for a move of 3% / 10% / 100% of the prior: block view 8.1e-04 / 0.010 / 0.73; population 0.004 / 0.044 / 3.93.
 - Weight of a prior-sized error, w_theta at 4 / 8 / 16 ticks: block view 0.016 / 0.055 / 0.18; sigma_hat block view 0.082, population 0.35.
-- Response to the aimed 200-nat input changes by -0.35 oracle variances when the hidden part moves by the prior. Evidence index for a 10% move: 0.16 nats per tick (3 nats in 19.0 ticks).
+- Response to the aimed 200-nat input changes by 0.023 oracle variances when the hidden part moves by the prior. Evidence index for a 10% move: 0.16 nats per tick (3 nats in 19.0 ticks).
 - Noise twins: 26.4% of the matter placed differently after 8 ticks; doubling time 4.9 ticks.
 
 ## 9. Cost
@@ -72,10 +72,10 @@ Sizes: 16 members (8 fit), 400 ticks after 100 of burn-in, 32 test states x 6 re
 | levels_add | yes | yes | yes |
 | learned_differs | no | no | yes |
 
-Seed (A against B): 27 of 30 entries agree; not robust: grid.xresp, pop.act_ms, l.dceil16_AB.
+Seed (A against B): 27 of 29 entries agree; not robust: pop.act_ms, l.dceil16_AB.
 
-Size (64 px against vortex128; counts per area, action entries left out): 10 of 14 entries agree; not robust: pop.sigma_hat, pop.tick_share, s.v_net, k.law32.
+Size (64 px against vortex128g16; counts per area, action entries left out): 17 of 26 entries agree; not robust: grid.ceil8, grid.gap8, grid.sigma_hat, grid.w_theta8, grid.member_share, pop.sigma_hat, pop.tick_share, s.v_net, k.law32.
 
 Estimator size (even against odd test states, block view at 8 ticks): predictable fraction 0.92 / 0.93, ceiling 0.44 / 0.46.
 
-Source: run A: job r6-cards-001; run B: job r6-cards-001; run late: job r6-cards-001; files `out/cards/vortex64__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards (`card.json` here holds the derived numbers and gates of every run). Pilot: never an exam instance.
+Source: run A: job r6-cards-002; run B: job r6-cards-001; run late: job r6-cards-001; files `out/cards/vortex64__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards (`card.json` here holds the derived numbers and gates of every run). Pilot: never an exam instance.

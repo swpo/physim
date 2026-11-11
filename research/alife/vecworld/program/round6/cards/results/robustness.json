@@ -8,16 +8,15 @@
    "grid.w_theta8": true,
    "grid.pl_ratio0.03_8": true,
    "grid.pl_ratio0.1_8": true,
-   "grid.act_ms": true,
+   "grid.act_ms": false,
    "grid.aim_ratio": false,
-   "grid.xresp": true,
    "grid.tick_share": true,
    "grid.member_share": true,
    "pop.pf8": true,
    "pop.ceil8": false,
-   "pop.sigma_hat": true,
+   "pop.sigma_hat": false,
    "pop.tick_share": true,
-   "pop.act_ms": true,
+   "pop.act_ms": false,
    "s.nb_mean": true,
    "s.half_life_ticks": true,
    "s.v_net": true,
@@ -30,7 +29,7 @@
    "l.dceil8_AB": true,
    "l.dceil16_AB": false,
    "t.l1_8": true,
-   "k.law32": true
+   "k.law32": false
   },
   "seed_gates": {
    "exam_worthy": true,
@@ -45,28 +44,28 @@
   },
   "late": {
    "d_mean": [
-    6.658156323853588e-11,
-    -1.3221674794103148e-10,
-    0.0012876593813943608
+    1.1377089967698679e-10,
+    3.9074803067354694e-11,
+    -0.0003263891080888365
    ],
    "log_sd_ratio": [
-    -0.0066920830457059665,
-    -0.0143839473795591,
-    -0.009946830494202778
+    0.009727397235584044,
+    0.004111415565942889,
+    0.0040391259524201455
    ],
-   "count_ratio": 0.976375654204633,
-   "events_early": 46.796875,
+   "count_ratio": 0.9495285410118625,
+   "events_early": 46.96875,
    "events_late": 43.65625,
    "pf8": [
-    0.9856327625312143,
+    0.9875600816143699,
     0.9879119015963684
    ],
    "ceil8": [
-    0.45296885279838134,
+    0.4941845757821649,
     0.49757652463150653
    ],
    "sigma_hat": [
-    0.09738493862428271,
+    0.11342918874527375,
     0.0997297664171295
    ],
    "verdict": [
@@ -76,14 +75,72 @@
    "same": true,
    "overlap": 0.0
   },
+  "rerun": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": false,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": false
+  },
+  "rerun_values": {
+   "grid.pf8": [
+    0.9856327625312143,
+    0.9875600816143699
+   ],
+   "grid.ceil8": [
+    0.45296885279838134,
+    0.4941845757821649
+   ],
+   "grid.sigma_hat": [
+    0.09738493862428271,
+    0.11342918874527375
+   ],
+   "s.nb_mean": [
+    7.474906483790524,
+    7.686253117206983
+   ],
+   "b.ceil_disp8": [
+    0.9679165190332464,
+    0.9625157973239405
+   ]
+  },
+  "rerun_jobs": [
+   "r6-cards-001",
+   "r6-cards-002"
+  ],
+  "xresp_first_biased": 0.06166875209343244,
   "split_half": {
    "pf8": [
-    0.986189603805542,
-    0.9850233197212219
+    0.9888532161712646,
+    0.9871350526809692
    ],
    "ceil8": [
-    0.45939505100250244,
-    0.443788081407547
+    0.48936283588409424,
+    0.5014393329620361
    ],
    "pf8_agree": true,
    "ceil8_agree": true,
@@ -101,7 +158,6 @@
    "grid.pl_ratio0.1_8": true,
    "grid.act_ms": true,
    "grid.aim_ratio": true,
-   "grid.xresp": false,
    "grid.tick_share": true,
    "grid.member_share": true,
    "pop.pf8": true,
@@ -135,6 +191,15 @@
    "dull": true
   },
   "size": {
+   "grid.pf8": true,
+   "grid.ceil8": false,
+   "grid.gap8": false,
+   "grid.sigma_hat": false,
+   "grid.w_theta8": false,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.tick_share": true,
+   "grid.member_share": false,
    "pop.pf8": true,
    "pop.ceil8": true,
    "pop.sigma_hat": false,
@@ -147,10 +212,13 @@
    "b.ceil_disp8": true,
    "b.ceil_field_disp8": true,
    "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
    "t.l1_8": true,
    "k.law32": false
   },
-  "size_against": "vortex128",
+  "size_against": "vortex128g16",
   "size_gates": {
    "exam_worthy": true,
    "structure": true,
@@ -197,6 +265,64 @@
    "same": true,
    "overlap": 0.0
   },
+  "rerun": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "rerun_values": {
+   "grid.pf8": [
+    0.9301021861656203,
+    0.9301021861656203
+   ],
+   "grid.ceil8": [
+    0.45683929503356807,
+    0.45683929503356807
+   ],
+   "grid.sigma_hat": [
+    0.0824399661766508,
+    0.0824399661766508
+   ],
+   "s.nb_mean": [
+    8.004052369077307,
+    8.004052369077307
+   ],
+   "b.ceil_disp8": [
+    0.8801599211097985,
+    0.8801599211097985
+   ]
+  },
+  "rerun_jobs": [
+   "r6-cards-001",
+   "r6-cards-002"
+  ],
+  "xresp_first_biased": -0.3452423399993505,
   "split_half": {
    "pf8": [
     0.9242548942565918,
@@ -222,7 +348,6 @@
    "grid.pl_ratio0.1_8": true,
    "grid.act_ms": true,
    "grid.aim_ratio": true,
-   "grid.xresp": true,
    "grid.tick_share": true,
    "grid.member_share": true,
    "pop.pf8": true,
@@ -290,6 +415,64 @@
    "same": true,
    "overlap": 0.0
   },
+  "rerun": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": true,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "rerun_values": {
+   "grid.pf8": [
+    0.9987100981733485,
+    0.9987100981733485
+   ],
+   "grid.ceil8": [
+    0.9952631011418612,
+    0.9952631011418612
+   ],
+   "grid.sigma_hat": [
+    0.012494727875998701,
+    0.012494727875998701
+   ],
+   "s.nb_mean": [
+    14.530548628428928,
+    14.530548628428928
+   ],
+   "b.ceil_disp8": [
+    0.6597404458514995,
+    0.6597404458514995
+   ]
+  },
+  "rerun_jobs": [
+   "r6-cards-001",
+   "r6-cards-002"
+  ],
+  "xresp_first_biased": 0.026847435640361395,
   "split_half": {
    "pf8": [
     0.9986448884010315,
@@ -3370,6 +3553,312 @@
    "ceil8": [
     0.30117928981781006,
     0.3085702657699585
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "membrane_s4": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": false,
+   "grid.aim_ratio": false,
+   "grid.xresp": false,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": true,
+   "pop.sigma_hat": true,
+   "pop.tick_share": false,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "late": {
+   "d_mean": [
+    -0.006021636942274019,
+    0.0035967747727320564,
+    0.003882452742543187,
+    0.0032902774749124226
+   ],
+   "log_sd_ratio": [
+    -0.0018011669047023934,
+    -0.0030458318157639626,
+    -0.00323878679954346,
+    -0.004750674097851864
+   ],
+   "count_ratio": 1.0093774584360413,
+   "events_early": 18.765625,
+   "events_late": 18.078125,
+   "pf8": [
+    0.9722708119779983,
+    0.9668047661279354
+   ],
+   "ceil8": [
+    0.837087479459533,
+    0.819008112273877
+   ],
+   "sigma_hat": [
+    0.24432723601641904,
+    0.24924397546418556
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": null,
+   "overlap": 0.625,
+   "same_if_counted": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9669358134269714,
+    0.9772968292236328
+   ],
+   "ceil8": [
+    0.830906331539154,
+    0.8588185906410217
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "vortex64_s4": {
+  "late": {
+   "d_mean": [
+    0.0012408108648903602,
+    0.007536440852825444,
+    -0.04238684657236717,
+    -0.021341349178340806
+   ],
+   "log_sd_ratio": [
+    0.004505882671272036,
+    -0.0009809086362577927,
+    -0.05497845043427383,
+    -0.08764782415434169
+   ],
+   "count_ratio": 1.0404740003246578,
+   "events_early": 83.609375,
+   "events_late": 75.375,
+   "pf8": [
+    0.419306277714116,
+    0.473373425861249
+   ],
+   "ceil8": [
+    0.2378938505499531,
+    0.2838414320319259
+   ],
+   "sigma_hat": [
+    0.2763759294887596,
+    0.2034547013536625
+   ],
+   "verdict": [
+    "exam-worthy + reading-worthy + actions",
+    "exam-worthy + reading-worthy + actions"
+   ],
+   "same": null,
+   "overlap": 0.75,
+   "same_if_counted": true
+  },
+  "split_half": {
+   "pf8": [
+    0.410486102104187,
+    0.4300803542137146
+   ],
+   "ceil8": [
+    0.28499528765678406,
+    0.1524595022201538
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": false,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "gliders_n1": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": true,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": false,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": true,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": true
+  },
+  "split_half": {
+   "pf8": [
+    0.9867172837257385,
+    0.989295482635498
+   ],
+   "ceil8": [
+    0.44648775458335876,
+    0.5127407908439636
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "gliders_n8": {
+  "seed": {
+   "grid.pf8": true,
+   "grid.ceil8": true,
+   "grid.gap8": true,
+   "grid.sigma_hat": true,
+   "grid.w_theta8": true,
+   "grid.pl_ratio0.03_8": true,
+   "grid.pl_ratio0.1_8": true,
+   "grid.act_ms": true,
+   "grid.aim_ratio": true,
+   "grid.xresp": true,
+   "grid.tick_share": true,
+   "grid.member_share": true,
+   "pop.pf8": true,
+   "pop.ceil8": false,
+   "pop.sigma_hat": false,
+   "pop.tick_share": true,
+   "pop.act_ms": false,
+   "s.nb_mean": true,
+   "s.half_life_ticks": true,
+   "s.v_net": true,
+   "s.events100": true,
+   "b.pf_disp8": true,
+   "b.ceil_disp8": true,
+   "b.ceil_field_disp8": true,
+   "b.quiet8": true,
+   "x.bodies_to_grid8": true,
+   "l.dceil8_AB": true,
+   "l.dceil16_AB": true,
+   "t.l1_8": true,
+   "k.law32": true
+  },
+  "seed_gates": {
+   "exam_worthy": false,
+   "structure": true,
+   "interaction": true,
+   "reading_worthy": true,
+   "actions": true,
+   "stationary": true,
+   "levels_add": true,
+   "learned_differs": true,
+   "dull": false
+  },
+  "split_half": {
+   "pf8": [
+    0.9888988733291626,
+    0.9874098300933838
+   ],
+   "ceil8": [
+    0.5430856943130493,
+    0.46783438324928284
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_puredif_0": {
+  "split_half": {
+   "pf8": [
+    0.9259691834449768,
+    0.9219589233398438
+   ],
+   "ceil8": [
+    1.000312328338623,
+    1.0004369020462036
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "ctl_puredif_1": {
+  "split_half": {
+   "pf8": [
+    0.979342520236969,
+    0.9806267619132996
+   ],
+   "ceil8": [
+    0.9999361038208008,
+    0.9996921420097351
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "vortex128g16": {
+  "split_half": {
+   "pf8": [
+    0.8629477620124817,
+    0.867624044418335
+   ],
+   "ceil8": [
+    0.17222821712493896,
+    0.17175203561782837
    ],
    "pf8_agree": true,
    "ceil8_agree": true,

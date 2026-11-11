@@ -4,7 +4,7 @@ Columns: sigma_hat at the block and the population level (the verdict uses the l
 
 | world | role | verdict | sigma_hat block | sigma_hat pop | PF(8) | c(8) | w_theta(8) | PL10%/Vorc | bodies | half-life | body law c(8) | act_ms | act / cheap error | tick share block | tick share pop, max | member share | pop c(8) | learned dc(16) | late = early | ms/member-tick |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gliders | designed | exam-worthy + actions | 0.097 | 0.20 | 0.99 | 0.45 | 0.058 | 0.026 | 7.47 | 23.4 | 0.97 | 6.42 | 0.13 | 4.6e-07 | 0.042 | 0.73 | 0.14 | -0.14 | yes | 1.50 |
+| gliders | designed | exam-worthy + actions | 0.11 | 0.16 | 0.99 | 0.49 | 0.058 | 0.055 | 7.69 | 24.2 | 0.96 | 5.57 | 0.12 | 5.0e-08 | 0.049 | 0.73 | 0.31 | -0.15 | yes | 1.45 |
 | vortex64 | designed | exam-worthy + reading-worthy + actions | 0.082 | 0.35 | 0.93 | 0.46 | 0.055 | 0.010 | 8.00 | 51.3 | 0.88 | 19.7 | 1.81 | 0.028 | 0.58 | 0.34 | 0.62 | 0.034 | yes | 4.78 |
 | membrane | designed | exam-worthy + reading-worthy + actions | 0.012 | 0.16 | 1.00 | 1.00 | 0.018 | 0.15 | 14.5 | 215 | 0.66 | 5.25 | 2.19 | -0.001 | 0.058 | 0.073 | 0.83 | -0.028 | yes | 0.14 |
 | foundry_04470 | shortlist | exam-worthy + reading-worthy + actions | 0.44 | 0.89 | 1.00 | 0.52 | 0.96 | 189 | 18.9 | 22.0 | 0.41 | 4.19 | 0.015 | 2.5e-05 | 0.068 | 0.15 | 0.053 | 0.093 | yes | 0.045 |
@@ -74,3 +74,10 @@ Columns: sigma_hat at the block and the population level (the verdict uses the l
 | foundry128_01672 | size | exam-worthy + reading-worthy + actions | 0.28 | 0.41 | 1.00 | 0.75 | 0.93 | 124 | 14.9 | 36.9 | 0.89 | 7.00 | 0.12 | 2.6e-06 | 0.11 | 0.11 | 0.65 | -0.25 | n/a | 0.19 |
 | foundry128_03078 | size | exam-worthy + reading-worthy + actions | 0.31 | 0.77 | 1.00 | 0.74 | 0.84 | 32.1 | 52.5 | 37.5 | 0.72 | 4.45 | 0.070 | 3.0e-04 | 0.78 | 0.080 | 0.27 | -0.13 | n/a | 0.19 |
 | vortex128 | size | exam-worthy + actions | 0.15 | 0.26 | 0.91 | 0.32 | 0.11 | 0.014 | 31.7 | 43.9 | 0.90 | 6.16 | 0.62 | 0.059 | 0.80 | 0.16 | 0.73 | -0.041 | n/a | 14.2 |
+| membrane_s4 | designed | exam-worthy + reading-worthy + actions | 0.24 | 0.35 | 0.97 | 0.84 | 0.58 | 0.21 | 14.9 | 52.0 | 0.46 | 2.91 | 0.43 | -0.002 | 0.028 | 0.018 | 0.73 | -0.059 | n/a | 0.42 |
+| vortex64_s4 | designed | exam-worthy + reading-worthy + actions | 0.28 | 0.42 | 0.42 | 0.24 | 0.24 | 0.003 | 8.64 | 18.9 | 0.28 | 7.13 | 1.85 | 0.010 | 0.41 | 0.63 | 0.59 | -0.44 | n/a | 17.6 |
+| gliders_n1 | designed | dull: the hidden part has no weight | 0.061 | 0.098 | 0.99 | 0.48 | 0.037 | 0.033 | 7.52 | 23.3 | 0.98 | 6.10 | 0.14 | 1.9e-07 | 0.045 | 0.74 | 0.00 | -0.15 | n/a | 1.45 |
+| gliders_n8 | designed | exam-worthy + actions | 0.067 | 0.17 | 0.99 | 0.51 | 0.037 | 0.030 | 7.43 | 23.8 | 0.99 | 6.45 | 0.16 | 1.2e-07 | 0.026 | 0.74 | 0.33 | -0.17 | n/a | 1.45 |
+| ctl_puredif_0 | control | dull: predictable by the cheap family | 0.00 | n/a | 0.92 | 1.00 | 0.00 | 0.00 | 0.00 | n/a | n/a | 5.40 | 5.34 | 2.2e-04 | n/a | 0.10 | n/a | -0.013 | n/a | 0.56 |
+| ctl_puredif_1 | control | dull: predictable by the cheap family | 0.00 | n/a | 0.98 | 1.00 | 0.00 | 0.00 | 0.00 | n/a | n/a | 4.92 | 4.87 | 7.9e-04 | n/a | 0.15 | n/a | -0.003 | n/a | 0.046 |
+| vortex128g16 | size | exam-worthy + actions | 0.16 | 0.26 | 0.86 | 0.17 | 0.11 | 0.009 | 31.7 | 43.9 | 0.90 | 5.39 | 0.37 | 0.027 | 0.80 | 0.16 | 0.73 | 0.013 | n/a | 14.2 |
