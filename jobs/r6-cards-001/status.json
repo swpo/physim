@@ -1,9 +1,40 @@
 {
+  "billing_window_hours": 3.0,
+  "bundle": {
+    "bundle_sha256": "ebfcf8d1c791497b81680629ab96ec53fc29fe559f504e4d7dfcc17393ba0db8",
+    "files": {
+      "job.sh": "eb3ffb96f28ac235c14e8e16b560dc4eea064f6d10b52983ea545cc5cd51d2fa",
+      "request.json": "e4d7071b9b982b8382b6ace4977ddc0413dc0f04b55b591fe39d63729392da94",
+      "run.sh": "25e47f8c42bad2a749650b56159d9804c5d2dff94e8056c28a111cd490b73e73",
+      "setup.sh": "b603a0f51a4682026279cee7b86db55c0b73a4df478d432c352a48283ac34e81",
+      "src.tar.gz": "ed3f9fb4ac7872071766d82b1fc32f1d4d8d6a58a41c6c342b89961743941bda"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/gliders_exam",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/track1/vortex_world",
+      "research/alife/vecworld/program/track1/membrane_world",
+      "research/alife/vecworld/program/round5/vortexexam/prior.json",
+      "research/alife/vecworld/program/round5/foundry/tnca.py",
+      "research/alife/vecworld/program/round6/cards"
+    ],
+    "ref": "c6ea69424704dcd627ed44f72c2a5b1ca0dad31a",
+    "src_bytes": 10843585
+  },
   "cap_usd": 11.4,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-11T11:41:21Z",
@@ -14,11 +45,52 @@
       "at": "2026-11-11T11:41:47Z",
       "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $7.40",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-11T11:43:39Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r6-cards-001",
   "max_estimate_usd": 7.4,
-  "message": "no offer that fits the cap is available right now; will retry",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    },
+    {
+      "cloud_id": "gpu_1x_h100_pcie",
+      "country": "US",
+      "data_center": "us-west-3",
+      "disk_gb": 1024,
+      "gpu_memory_gb": 80,
+      "gpu_type": "H100_80GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 2,
+      "rate_usd_hr": 3.29,
+      "security": "secure_cloud",
+      "socket": "PCIe",
+      "stock": "Available",
+      "vcpus": 26
+    }
+  ],
   "plan": {
     "max_estimate_usd": 7.4,
     "offers": [
@@ -60,7 +132,27 @@
     "planned_at": "2026-11-11T11:41:47Z",
     "window_hours": 2.25
   },
-  "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-11T11:42:34Z"
+  "pods": [
+    {
+      "billed_usd": null,
+      "created_at": null,
+      "data_center": "us-east-1",
+      "gpu": "A100_40GB",
+      "name": "gpujob-r6-cards-001-a1",
+      "note": null,
+      "pod_id": null,
+      "provider": "lambdalabs",
+      "provision_error": null,
+      "rate_usd_hr": 1.99,
+      "ready_at": null,
+      "requested_at": "2026-11-11T11:43:41Z",
+      "spot": false,
+      "state": "create_intent",
+      "terminated_at": null
+    }
+  ],
+  "pods_terminated": null,
+  "run_started_epoch": 1794397419.601971,
+  "state": "provisioning",
+  "updated_at": "2026-11-11T11:43:39Z"
 }
