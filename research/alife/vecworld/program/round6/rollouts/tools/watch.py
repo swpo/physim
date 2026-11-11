@@ -13,7 +13,10 @@ appends one JSON line to <out>/timeline.jsonl:
 and it copies /workspace/submission out of the first two long-lived boxes of the run (the agent's box, then the
 verifier's box, which holds the frozen copy that is graded) with `docker cp NAME:/workspace/submission -`,
 keeping the newest copy per box: <out>/<name>.submission.tar. verifiers keeps the frozen submission in memory
-only, so this is the one way to have the folder after the run.
+only, so this is the one way to have the folder after the run. From the FIRST box (the agent's) it also copies
+the whole /workspace (<out>/<name>.workspace.tar): what an agent writes outside submission/ (its scripts, notes
+and data) is otherwise lost with the box. (Added after rollout qwen_ring_001, whose model wrote its predictor to
+/workspace/predict.py; tested on a made-up box only.)
 
 What it does NOT do: it starts nothing inside a box (no `docker exec`), sends no signal, removes nothing, and
 reads no text the model wrote (not the rollout's log beyond its last 12 characters, not the trace). A copy is
@@ -53,11 +56,11 @@ def lab_counters(store, iid):
         return None
 
 
-def copy_submission(name, out):
-    tmp, dst = os.path.join(out, name + ".submission.tar.tmp"), os.path.join(out, name + ".submission.tar")
+def copy_out(name, out, path="/workspace/submission", suffix="submission"):
+    tmp, dst = os.path.join(out, f"{name}.{suffix}.tar.tmp"), os.path.join(out, f"{name}.{suffix}.tar")
     try:
         with open(tmp, "wb") as f:
-            p = subprocess.Popen(["docker", "cp", f"{name}:/workspace/submission", "-"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+            p = subprocess.Popen(["docker", "cp", f"{name}:{path}", "-"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
             n = 0
             while True:
                 b = p.stdout.read(1 << 20)
@@ -98,7 +101,9 @@ def main():
             if name not in boxes and len(boxes) < MAX_BOXES and now - first_seen[name] >= MIN_AGE:
                 boxes.append(name)
             if name in boxes:
-                copied[name] = copy_submission(name, a.out)
+                copied[name] = copy_out(name, a.out)
+                if name == boxes[0]:                         # the agent's box: everything it wrote, not only submission/
+                    copied[name + " /workspace"] = copy_out(name, a.out, "/workspace", "workspace")
         try:
             with open(a.log, "rb") as f:
                 f.seek(max(0, os.path.getsize(a.log) - 12))

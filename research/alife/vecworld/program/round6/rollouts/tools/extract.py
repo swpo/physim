@@ -194,19 +194,25 @@ def usage_and_cost(tr: dict, entry: dict) -> dict:
                     "field if it reports one. Calls without usage (errors) are counted but cannot be priced."}
 
 
-def unpack_submission(tar_path: str, dst: str) -> dict:
-    """Regular files only, names kept inside dst, nothing executed. Returns a manifest."""
+def unpack_submission(tar_path: str, dst: str, top: str = "submission", skip_dirs=(), max_file: int = 64 << 20) -> dict:
+    """Regular files only, names kept inside dst, nothing executed. Returns a manifest. `top` is the folder the
+    tar was made from; members under `skip_dirs` (first path part) and files above `max_file` bytes are listed
+    in the manifest (size and sha256 for the large ones) but not written."""
     man = {"files": [], "skipped": [], "bytes": 0}
     with tarfile.open(tar_path) as tf:
         for m in tf.getmembers():
             parts = [p for p in m.name.split("/") if p not in ("", ".")]
-            if parts[:1] == ["submission"]:
+            if parts[:1] == [top]:
                 parts = parts[1:]
-            if not parts:
+            if not parts or parts[0] in skip_dirs:
                 continue
             if not m.isreg() or ".." in parts or m.size > (64 << 20):
                 if not m.isdir():
                     man["skipped"].append({"name": m.name[:200], "why": "not a regular file" if not m.isreg() else "name or size"})
+                continue
+            if m.size > max_file:
+                h = hashlib.sha256(tf.extractfile(m).read()).hexdigest()
+                man["skipped"].append({"name": "/".join(parts)[:200], "why": f"larger than {max_file} bytes: listed, not copied", "bytes": m.size, "sha256": h})
                 continue
             target = os.path.join(dst, *parts)
             os.makedirs(os.path.dirname(target), exist_ok=True)
@@ -361,6 +367,20 @@ def main():
             for r in man["files"]:
                 written["submission/" + r["path"]] = "model-written file"
             break
+    # ---- the agent's whole workspace, if the watcher copied it (its own files; the public package is left out) ----
+    wtar = os.path.join(a.watch, order[0] + ".workspace.tar") if order else ""
+    if wtar and os.path.exists(wtar):
+        dst = os.path.join(out, "workspace")
+        shutil.rmtree(dst, ignore_errors=True)
+        os.makedirs(dst)
+        wman = unpack_submission(wtar, dst, top="workspace", skip_dirs=("physim2", "submission"), max_file=2 << 20)
+        for r in wman["files"]:
+            written["workspace/" + r["path"]] = "model-written file (the agent's box, outside submission/)"
+        put("workspace_manifest.json", json.dumps(dict({MARK: True, "source": "the watcher's last copy of /workspace from the agent's box "
+                                                        "(at most 20 s before the box was removed); physim2/ (public) and submission/ "
+                                                        "(see submission_manifest.json) are left out; files above 2 MiB are listed only",
+                                                        "container": order[0], "tar_bytes": os.path.getsize(wtar),
+                                                        "copied_unix": os.path.getmtime(wtar)}, **wman), indent=1))
     sub["frozen_manifest_of_the_laboratory"] = (lab.get("frozen") or None) if lab.get("found") else None
     sub["collection_recorded_in_the_trace"] = info.get("submission")
     put("submission_manifest.json", json.dumps(sub, indent=1))
@@ -457,6 +477,11 @@ def main():
         "extracted_unix": time.time(),
     }
     put("result.json", json.dumps(res, indent=1, default=str))
+    for root, _, names in os.walk(out):                      # whatever else the runner put into the folder
+        for n in names:
+            rel = os.path.relpath(os.path.join(root, n), out)
+            if rel not in written and rel != "MANIFEST.json":
+                written[rel] = "written by the runner of the rollout (see RESULT.md, Files)"
     put("MANIFEST.json", json.dumps({MARK: True, "note": "every file of this folder is pilot material of instance " + a.instance
                                      + "; files that cannot carry the marker themselves (the model's own files under submission/, "
                                      "the npz, copies) are covered by this manifest.", "files": dict(sorted(written.items()))}, indent=1))
