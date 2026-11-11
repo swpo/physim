@@ -56,7 +56,11 @@ ap.add_argument("--max-hours", type=float, default=2.0, help="the script's own l
 ap.add_argument("--smoke", action="store_true", help="tiny shapes for a CPU test of the code path")
 ap.add_argument("--cpu-ok", action="store_true", help="allow a CPU backend (tests only)")
 ap.add_argument("--no-presmoke", action="store_true")
+ap.add_argument("--extension", action="store_true",
+                help="DECLARED R19: 8 more truths, the first job's base nets and public-family features reused")
+ap.add_argument("--prior", default=os.path.join(HERE, "results", "job"), help="the first job's outputs (extension)")
 args = ap.parse_args()
+EXT = bool(args.extension)
 ROOT_OUT = args.out
 os.makedirs(ROOT_OUT, exist_ok=True)
 T0 = time.time()
@@ -182,6 +186,35 @@ INFO = {"study": "round6/dials/dialsA (plan study A, gliders calibration)",
                   "through ladder_lib.ViewCells; L = sum over horizons, mean over items (acceptance.py)"}
 
 
+if EXT:
+    # DECLARED R19: the first 8 viable of 48 box draws (numpy seed [6601, 4]), round 5's viability rule under
+    # the public law (viab_joint.viability, as run_ladder.stage_truths). Public pilot values, written out.
+    import viab_joint as VJ  # noqa: E402
+    VJ.T = 6 if args.smoke else 100
+    n_cand, n_new = (6, 1) if args.smoke else (48, 8)
+    cand = LO + (HI - LO) * np.random.default_rng([6601, 4]).random((n_cand, 4))
+    rows, _ = VJ.viability(NAMES, cand, member_keys(make_key(6601, 4), n_cand), RN=RN)
+    okv = [bool(r["viable"]) for r in rows]
+    new = [c for c, v in zip(cand, okv) if v][:n_new]
+    if len(new) < n_new:
+        if not args.smoke:
+            log(f"FATAL: only {len(new)} viable candidates for the extension")
+            sys.exit(5)
+        new = list(cand[:n_new])
+    n_old = len(TRUTHS)
+    TRUTHS = np.concatenate([TRUTHS, np.array(new)])
+    new_idx = list(range(n_old, n_old + n_new))
+    FULL = dict(FULL, truths=new_idx, rungs=())
+    PRE = dict(PRE, truths=new_idx[:1], rungs=())
+    INFO.update(extension=True, truths=TRUTHS.tolist(), prior_job_outputs=os.path.relpath(args.prior, HERE),
+                extension_truths={"indices": new_idx, "rule": "first viable of box draws, numpy seed [6601, 4], "
+                                  "viab_joint.viability under the public law (DECLARED R19)",
+                                  "candidates": cand.tolist(), "viable": okv, "n_viable": int(sum(okv)),
+                                  "member_ticks": n_cand * (FULL["burn"] + VJ.T)})
+    log(f"extension: truths {new_idx} = {np.round(np.array(new), 3).tolist()} ({sum(okv)}/{n_cand} candidates viable)")
+    X.assert_one_checkout()
+
+
 def cfg_json(cfg):
     return {k: (list(v) if isinstance(v, (tuple, list)) else v) for k, v in cfg.items()}
 
@@ -190,7 +223,7 @@ def estimate_ticks(cfg):
     nw = len(cfg["truths"]) * len(cfg["etas"])
     ni, R, b = cfg["n_items"], cfg["R"], cfg["burn"]
     KD = 4 * cfg["Kc"]
-    return {"families": 2 * cfg["n_theta"] * KD * EP_T, "lab": nw * (cfg["n_mix"] + cfg["n_free"]) * (b + PER_EP),
+    return {"families": 0 if EXT else 2 * cfg["n_theta"] * KD * EP_T, "lab": nw * (cfg["n_mix"] + cfg["n_free"]) * (b + PER_EP),
             "exams": nw * 2 * (ni * (b + P_) + ni * R * H_ + cfg["n_clim"] * (b + H_)),
             "plugins": nw * 2 * ni * cfg["m_plug"] * H_}
 
@@ -326,9 +359,14 @@ def save_scores(cfg, SCO, worlds, extra=None):
 
 # ----------------------------------------------------------------------------- 3 scripted inference
 def stage_identify(cfg, fam, worlds):
-    pub = fam["pub"]
+    if EXT:                                             # the first job's public-family features
+        z = np.load(os.path.join(args.prior, "family_features.npz"))
+        pub = {"Ud": z["pub_Ud"], "th_u": z["pub_th_u"].astype(float), "KD": int(z["KD"])}
+        Fd = z["pub_features"].astype(float)
+    else:
+        pub = fam["pub"]
+        Fd = LL.view_features(VIEW, pub["obs"], pub["U"], P_)
     N, KD = len(pub["Ud"]), pub["KD"]
-    Fd = LL.view_features(VIEW, pub["obs"], pub["U"], P_)
     proj = SL.Projection().fit(Fd, pub["th_u"])
     em = LL.Emulator().fit(pub["Ud"], proj(Fd).reshape(N, KD, 4), rng=np.random.default_rng([4405, 4]))
     rng = np.random.default_rng([4403, 4])
@@ -345,8 +383,9 @@ def stage_identify(cfg, fam, worlds):
                          "abs_err_over_prior_sd": (np.abs(post["mean_u"] - ut) / PSD).tolist()})
     jdump("identification.json", {"method": "round 5's (ladder run_ladder.stage_identify), block view, mix arm, public law",
                                   "emulator": em.diag, "projection_r2": proj.r2, "per_world_budget": rows})
-    npz("family_features.npz", pub_features=Fd.astype(np.float32), pub_th_u=pub["th_u"].astype(np.float32),
-        pub_Ud=pub["Ud"], KD=np.array(KD))
+    if not EXT:
+        npz("family_features.npz", pub_features=Fd.astype(np.float32), pub_th_u=pub["th_u"].astype(np.float32),
+            pub_Ud=pub["Ud"], KD=np.array(KD))
     return draws
 
 
@@ -568,8 +607,10 @@ def pipeline(cfg, out_dir, est=None):
             return False
         return True
 
-    with Timer("1 families", times):
-        fam, info["family_check"] = stage_families(cfg, times)
+    fam = None
+    if not EXT:
+        with Timer("1 families", times):
+            fam, info["family_check"] = stage_families(cfg, times)
     with Timer("2 worlds", times):
         worlds = stage_worlds(cfg, times)
     info["lab"] = {f"eta{w['eta']:g}|t{w['truth']}": {"usage": w["lab_usage"], "classes_first_8": w["lab_cls"][:8].tolist(),
@@ -619,18 +660,31 @@ def pipeline(cfg, out_dir, est=None):
             score_base(cfg, SCO, worlds, Pn, Tn, f"@r{steps}", keep=S0c)
         save_scores(cfg, SCO, worlds)
         flush(f"base_{steps}")
-    final_steps = TR["base"][-1]["steps"]
-    for k in ("P0", "Cpub", "Ctrue"):
-        SCO[k] = SCO[f"{k}@r{final_steps}"].copy()
-    info["base_final_steps"] = int(final_steps)
-    info["base_rule_met"] = bool(TR["base"][-1]["rule_met"])
-    if not info["base_rule_met"]:
-        NOTES.append(f"training rule: base nets not converged by the rule at {final_steps} steps")
-    arrs = {}
-    for s in range(nS):
-        arrs.update(AN.tree_to_arrays(f"P{s}", Pn[s]))
-        arrs.update(AN.tree_to_arrays(f"T{s}", Tn[s]))
-    npz("nets.npz", steps=np.array(final_steps), **arrs)
+    if EXT:                                             # the first job's base nets, not retrained
+        with Timer("4 base nets loaded and scored", times):
+            zn = np.load(os.path.join(args.prior, "nets.npz"))
+            tmpl = NN.init_params(VIEW, jax.random.key(0), True)
+            Pn = [AN.tree_from_arrays(f"P{s}", zn, tmpl) for s in range(nS)]
+            Tn = [AN.tree_from_arrays(f"T{s}", zn, tmpl) for s in range(nS)]
+            final_steps = int(zn["steps"])
+            score_base(cfg, SCO, worlds, Pn, Tn, "", keep=S0c)
+        info["base_final_steps"] = final_steps
+        info["base_nets_from"] = os.path.relpath(os.path.join(args.prior, "nets.npz"), HERE)
+        save_scores(cfg, SCO, worlds)
+        flush("base_loaded")
+    else:
+        final_steps = TR["base"][-1]["steps"]
+        for k in ("P0", "Cpub", "Ctrue"):
+            SCO[k] = SCO[f"{k}@r{final_steps}"].copy()
+        info["base_final_steps"] = int(final_steps)
+        info["base_rule_met"] = bool(TR["base"][-1]["rule_met"])
+        if not info["base_rule_met"]:
+            NOTES.append(f"training rule: base nets not converged by the rule at {final_steps} steps")
+        arrs = {}
+        for s in range(nS):
+            arrs.update(AN.tree_to_arrays(f"P{s}", Pn[s]))
+            arrs.update(AN.tree_to_arrays(f"T{s}", Tn[s]))
+        npz("nets.npz", steps=np.array(final_steps), **arrs)
     with Timer("5 P0 on the Lab episodes", times):
         lab_means(cfg, worlds, Pn, MLc)
     quick(cfg, SCO, worlds, "after the base nets")
@@ -749,13 +803,16 @@ def presmoke():
     c, p = FULL, PRE
     nw = len(c["truths"]) * len(c["etas"])
     nwp = len(p["truths"]) * len(p["etas"])
-    fr = times["family_rates"]
-    n_chunks = -(-c["n_theta"] * 4 * c["Kc"] // c["chunk"])
-    t_fam = sum(n_chunks * fr[k]["seconds_last_chunk"] for k in ("pub", "true"))
     t_world = nw * float(np.min(times["world_seconds"]))
-    b_fast = TR["base"][-1]                                # the second base run: compiled before
-    ms_base = b_fast["seconds"] / max(b_fast["steps"], 1)
-    sc_rung = times[f"4 scoring rung {p['rungs'][-1]}"] / nwp * nw
+    if EXT:
+        t_fam, ms_base = 0.0, 0.02                         # no base training; D nets at a prior of 20 ms per step
+    else:
+        fr = times["family_rates"]
+        n_chunks = -(-c["n_theta"] * 4 * c["Kc"] // c["chunk"])
+        t_fam = sum(n_chunks * fr[k]["seconds_last_chunk"] for k in ("pub", "true"))
+        b_fast = TR["base"][-1]                            # the second base run: compiled before
+        ms_base = b_fast["seconds"] / max(b_fast["steps"], 1)
+        sc_rung = times[f"4 scoring rung {p['rungs'][-1]}"] / nwp * nw
     est = {"families": t_fam, "worlds": t_world, "final": 120.0, "seconds_per_base_step": ms_base}
     for st in c["rungs"]:
         est[f"base_{st}"] = st * ms_base + sc_rung
@@ -772,7 +829,8 @@ def presmoke():
     est["N8"] = est[f"N{c['budgets'][0]}"]
     est["D_first"] = est[f"D{c['d_first']}"]
     est["ctrl"] = 0.5 * est["N8"]
-    required = (est["families"] + est["worlds"] + est[f"base_{c['rungs'][0]}"] + est["N8"] + est["D_first"] + est["final"])
+    required = (est["families"] + est["worlds"] + (est[f"base_{c['rungs'][0]}"] if c["rungs"] else 0.0) + est["N8"]
+                + est["D_first"] + est["final"])
     everything = required + sum(est[f"base_{st}"] for st in c["rungs"][1:]) + sum(est[f"N{nb}"] for nb in c["budgets"][1:]) \
         + est["ctrl"] + sum(est[f"D{nb}"] for nb in c["budgets"] if nb != c["d_first"])
     g = {"estimates_seconds": est, "required_seconds": required, "everything_seconds": everything,

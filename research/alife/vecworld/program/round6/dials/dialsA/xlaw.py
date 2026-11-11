@@ -40,6 +40,7 @@ import flowlenia_jax as FJ  # noqa: E402
 import phi as PH  # noqa: E402
 import aworld  # noqa: E402,F401
 import wind  # noqa: E402,F401
+import viability  # noqa: E402,F401
 import ladder_lib as LL  # noqa: E402
 import ladder_net as NN  # noqa: E402
 import dlaw as DL  # noqa: E402
@@ -60,8 +61,8 @@ W0, DW, KXW = DL.W0, DL.DW, DL.KXW
 
 def module_files():
     """Where the imported study modules came from (the job asserts they all sit under one checkout)."""
-    names = ["vw", "_paths", "flowlenia_jax", "phi", "aworld", "wind", "gworld", "pilot", "sbi_lib", "ladder_lib",
-             "ladder_net", "dlaw", "xlaw"]
+    names = ["vw", "_paths", "flowlenia_jax", "phi", "aworld", "wind", "viability", "viab_joint", "gworld", "pilot",
+             "sbi_lib", "ladder_lib", "ladder_net", "dlaw", "xlaw"]
     return {n: os.path.abspath(getattr(sys.modules[n], "__file__", "?")) for n in names if n in sys.modules}
 
 
