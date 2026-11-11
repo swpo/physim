@@ -209,10 +209,12 @@ def main():
               dict(worlds={w: ROB[w].get("size_against") for w in size_w}, share_of_worlds_agreeing=frac,
                    gate_flips={w: [k for k, v in ROB[w]["size_gates"].items() if not v] for w in size_w if not all(ROB[w]["size_gates"].values())}),
               "results/robustness.json:<world>.size, .size_gates")
-    late_w = [w for w in names if "late" in ROB.get(w, {})]
+    late_w = [w for w in names if "late" in ROB.get(w, {}) and ROB[w]["late"].get("same") is not None]
+    over_w = {w: r(ROB[w]["late"]["overlap"]) for w in names if "late" in ROB.get(w, {}) and ROB[w]["late"].get("same") is None}
     if late_w:
         claim("robust:late", f"Late window against early ({len(late_w)} worlds): the same statistics in "
-              f"{sum(1 for w in late_w if ROB[w]['late']['same'])}; not in {[w for w in late_w if not ROB[w]['late']['same']]}.",
+              f"{sum(1 for w in late_w if ROB[w]['late']['same'])}; not in {[w for w in late_w if not ROB[w]['late']['same']]}. "
+              f"Not counted (the late window overlaps run A's on the slower clock): {over_w}.",
               {w: dict(same=ROB[w]["late"]["same"], count_ratio=r(ROB[w]["late"]["count_ratio"]),
                        d_mean_max=r(np.max(np.abs(ROB[w]["late"]["d_mean"]))), log_sd_max=r(np.max(np.abs(ROB[w]["late"]["log_sd_ratio"]))),
                        ceil8=[r(x) for x in ROB[w]["late"]["ceil8"]], sigma_hat=[r(x) for x in ROB[w]["late"]["sigma_hat"]],

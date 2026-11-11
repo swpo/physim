@@ -1165,7 +1165,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [

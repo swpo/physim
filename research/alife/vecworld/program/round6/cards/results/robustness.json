@@ -73,7 +73,8 @@
     "exam-worthy + actions",
     "exam-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -193,7 +194,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -285,7 +287,8 @@
     "exam-worthy + reading-worthy + actions",
     "dull: the hidden part has no weight"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -415,7 +418,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -545,7 +549,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -675,7 +680,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + actions"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -805,7 +811,8 @@
     "exam-worthy + actions",
     "exam-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -935,7 +942,8 @@
     "exam-worthy + actions",
     "exam-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1065,7 +1073,8 @@
     "exam-worthy + actions",
     "exam-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1195,7 +1204,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1343,7 +1353,8 @@
     "dull: the hidden part has no weight",
     "dull: the hidden part has no weight"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1433,7 +1444,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1523,7 +1535,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1613,7 +1626,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1703,7 +1717,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1793,7 +1808,8 @@
     "dull: predictable by the cheap family",
     "dull: the hidden part has no weight"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1883,7 +1899,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -1973,7 +1990,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2063,7 +2081,8 @@
     "dull: predictable by the cheap family",
     "dull: the hidden part has no weight"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2140,7 +2159,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2187,7 +2207,8 @@
     "dull: the hidden part has no weight",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2234,7 +2255,8 @@
     "exam-worthy + reading-worthy + actions",
     "dull: the hidden part has no weight"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2281,7 +2303,8 @@
     "exam-worthy + reading-worthy + actions",
     "dull: the hidden part has no weight"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2328,7 +2351,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2375,7 +2399,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2422,7 +2447,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2469,7 +2495,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2516,7 +2543,8 @@
     "exam-worthy + actions",
     "exam-worthy + actions"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2563,7 +2591,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2610,7 +2639,8 @@
     "exam-worthy + reading-worthy + actions",
     "exam-worthy + reading-worthy + actions"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2657,7 +2687,8 @@
     "exam-worthy + reading-worthy + actions",
     "dull: predictable by the cheap family"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2704,7 +2735,8 @@
     "exam-worthy + reading-worthy + actions",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2751,7 +2783,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2798,7 +2831,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [
@@ -2845,7 +2879,8 @@
     "dull: predictable by the cheap family",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [

@@ -51,3 +51,16 @@ either job was read (commit c2eb0af2b, 12:00 UTC; extended in 320ce1a22):
    first full-size card, no gate). The declared actions gate (predictable shift of an aimed 200-nat input of at
    least 0.1 oracle variances) passes in every world, the uniform controls included: it does not discriminate.
 3. **Figures** are palette-quantised (about a third of the bytes).
+
+## D. After the runner's review of r6-cards-002 (read at 12:47 UTC, before that job's results)
+
+1. **Slow-clock late windows are not counted** (review item 1). On the 4-tick clock the late window shares 62% to
+   75% of its ticks with run A's (same seed, same trajectory), so "late = early" there is largely a self-comparison.
+   `make_cards.py` reports the overlap and leaves those worlds out of the late-window counts.
+2. **Seed check and the response difference** (item 2). Where run A comes from the second job (corrected estimator)
+   and run B from the first (biased), the response difference is left out of the seed comparison.
+3. **Units on the slower clock** (note). The structure gate's thresholds are in card ticks; a half-life of 51 world
+   ticks reads as 13 card ticks at 4 world ticks per card tick. The README compares clocks in world ticks and says
+   where a gate changes for that reason alone.
+4. Not changed: a presmoke failure of the 128-px size check would have ended the second job (item 3); the
+   non-finite flag covers the main run, not the branches (note).

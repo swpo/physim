@@ -223,6 +223,10 @@ def card_md(world, runs, D, G, late, rob, rate):
     s = c["structure"]
     A("## 2. Structure")
     A("")
+    if m.get("stride"):
+        A(f"(Ticks here are card ticks of {m['stride']} world ticks: multiply half-lives by {m['stride']} and divide speeds and event rates "
+          f"by {m['stride']} to compare with the card on the world's own clock; the structure gate's thresholds are in card ticks.)")
+        A("")
     A(f"- Bodies: {fmt(s['nb_mean'])} +- {fmt(s['nb_std'])} (slots {s['K']}, full {fmt(100 * s['slots_full_share'], 1)}% of the time), "
       f"{fmt(100 * s['body_frac'], 0)}% of the matter, radius {fmt(s['rg'])} px, half-life {fmt(s['half_life_ticks'], 0)} ticks, "
       f"net speed {fmt(s.get('v_net'))} px/tick.")
@@ -248,7 +252,9 @@ def card_md(world, runs, D, G, late, rob, rate):
         A(f"- Late window (+{m.get('late_gap')} ticks) against early: largest shift of a block-channel mean {fmt(np.max(np.abs(late['d_mean'])))} sd, "
           f"largest log sd ratio {fmt(np.max(np.abs(late['log_sd_ratio'])))}, body count x {fmt(late['count_ratio'])}, "
           f"events {fmt(late['events_early'])} -> {fmt(late['events_late'])}, ceiling at 8 {fmt(late['ceil8'][0])} -> {fmt(late['ceil8'][1])}, "
-          f"sigma_hat {fmt(late['sigma_hat'][0])} -> {fmt(late['sigma_hat'][1])}. Same statistics: **{fmt(late['same'])}**.")
+          f"sigma_hat {fmt(late['sigma_hat'][0])} -> {fmt(late['sigma_hat'][1])}. "
+          + (f"Same statistics: **{fmt(late['same'])}**." if late.get("overlap", 0) == 0 else
+             f"The two windows share {fmt(100 * late['overlap'], 0)}% of their ticks (same seed, slower clock), so this is not a test of stationarity."))
     A("")
     A("## 4. Effective laws")
     A("")
@@ -374,9 +380,16 @@ def main():
         if "A_first" in worlds[w]:
             derived[w]["A_first"] = dict(derived=df, gates=gf)
         late = GT.late_vs_early(runs["A"], runs["late"]) if "A" in runs and "late" in runs else None
+        if late:                                  # the review of r6-cards-002, item 1: on a slower clock the late window
+            Tw = runs["A"]["sizes"]["T"]          # overlaps run A's (same seed, same trajectory)
+            late["overlap"] = float(max(0, runs["A"]["burn"] + Tw - runs["late"]["burn"]) / Tw)
+            if late["overlap"] > 0:
+                late["same_if_counted"] = late["same"]
+                late["same"] = None               # not evidence of stationarity: not counted
         rob = {}
         if "A" in runs and "B" in runs:
-            rob["seed"] = {k: GT.robust(D["A"].get(k), D["B"].get(k)) for k in ROBUST_KEYS}
+            skip = {"grid.xresp"} if runs["A"]["_job"] != runs["B"]["_job"] else set()   # corrected against biased estimator
+            rob["seed"] = {k: GT.robust(D["A"].get(k), D["B"].get(k)) for k in ROBUST_KEYS if k not in skip}
             rob["seed_gates"] = {k: bool(G["A"][k] == G["B"][k]) for k in GATE_KEYS + ["dull"]}
         big = w.replace("foundry_", "foundry128_") if w.startswith("foundry_") else None
         if w == "vortex64":
@@ -450,7 +463,8 @@ def main():
                          l_dceil8=None if d.get("l.dceil8_AB") is None else min(d["l.dceil8_AB"], d["l.dceil8_BA"]),
                          l_dceil16=None if d.get("l.dceil16_AB") is None else min(d["l.dceil16_AB"], d["l.dceil16_BA"]),
                          twin_l1_8=d.get("t.l1_8"), ms_per_mt=1e3 * cost_of(runs), cost_includes_compile=cost_of(runs, True)[1],
-                         late_same=None if not late else late["same"],
+                         late_same=None if not late else late["same"], late_overlap=None if not late else late.get("overlap"),
+                         stride=c0["meta"].get("stride", 1),
                          seed_gates_same=None if "seed_gates" not in rob else all(rob["seed_gates"].values()),
                          **{k: g[k] for k in GATE_KEYS}))
     derived["_jobs"] = {w: {r: c["_job"] for r, c in worlds[w].items()} for w in names}

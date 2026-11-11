@@ -753,7 +753,8 @@
     "dull: the hidden part has no weight",
     "dull: predictable by the cheap family"
    ],
-   "same": false
+   "same": false,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [

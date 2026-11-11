@@ -1103,7 +1103,8 @@
     "exam-worthy + reading-worthy + actions",
     "dull: the hidden part has no weight"
    ],
-   "same": true
+   "same": true,
+   "overlap": 0.0
   },
   "split_half": {
    "pf8": [

@@ -358,7 +358,8 @@
       "exam-worthy + actions",
       "exam-worthy + actions"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -525,7 +526,8 @@
       "exam-worthy + reading-worthy + actions",
       "exam-worthy + reading-worthy + actions"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -692,7 +694,8 @@
       "exam-worthy + reading-worthy + actions",
       "dull: the hidden part has no weight"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -857,7 +860,8 @@
       "exam-worthy + reading-worthy + actions",
       "exam-worthy + reading-worthy + actions"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -1022,7 +1026,8 @@
       "exam-worthy + reading-worthy + actions",
       "exam-worthy + reading-worthy + actions"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -1187,7 +1192,8 @@
       "exam-worthy + reading-worthy + actions",
       "exam-worthy + actions"
      ],
-     "same": false
+     "same": false,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -1352,7 +1358,8 @@
       "exam-worthy + actions",
       "exam-worthy + actions"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -1517,7 +1524,8 @@
       "exam-worthy + actions",
       "exam-worthy + actions"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -1682,7 +1690,8 @@
       "exam-worthy + actions",
       "exam-worthy + actions"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -1847,7 +1856,8 @@
       "exam-worthy + reading-worthy + actions",
       "exam-worthy + actions"
      ],
-     "same": true
+     "same": true,
+     "overlap": 0.0
     }
    },
    "sources": {
@@ -3684,7 +3694,7 @@
   },
   {
    "id": "robust:late",
-   "claim": "Late window against early (35 worlds): the same statistics in 19; not in ['foundry_00262', 'ctl_uniform_00000', 'ctl_uniform_00003', 'ctl_uniform_00004', 'ctl_frozen_00001', 'ctl_frozen_00011', 'ctl_frozen_00024', 'foundry_00124', 'foundry_02755', 'foundry_03062', 'foundry_03854', 'foundry_04495', 'foundry_07760', 'foundry_07820', 'foundry_07913', 'foundry_08010'].",
+   "claim": "Late window against early (35 worlds): the same statistics in 19; not in ['foundry_00262', 'ctl_uniform_00000', 'ctl_uniform_00003', 'ctl_uniform_00004', 'ctl_frozen_00001', 'ctl_frozen_00011', 'ctl_frozen_00024', 'foundry_00124', 'foundry_02755', 'foundry_03062', 'foundry_03854', 'foundry_04495', 'foundry_07760', 'foundry_07820', 'foundry_07913', 'foundry_08010']. Not counted (the late window overlaps run A's on the slower clock): {}.",
    "values": {
     "gliders": {
      "same": true,
