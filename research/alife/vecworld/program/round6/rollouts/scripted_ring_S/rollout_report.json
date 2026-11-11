@@ -1,0 +1,1005 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "name": "scripted_ring_S",
+ "inputs": {
+  "trace": "`trace.redacted.jsonl` (sha256 4d1fd4142a02\u2026)",
+  "reference table": "`proof_pilot.json` + `proof_pilot_items.npz`",
+  "laboratory log": "given",
+  "per-item scores of the agent": "not given",
+  "prices": "not given",
+  "submission copy": "not given"
+ },
+ "outcome": {
+  "agent": "none/scripted",
+  "harness": "physim2-script",
+  "trace_id": "d889a4f4df2445a19c1f5dfb90c2951b",
+  "verifiers": "0.3.2.dev163",
+  "ok": true,
+  "stop_condition": "agent_completed",
+  "ended_by_agent": true,
+  "is_timeout": false,
+  "errors": [],
+  "episode_errors": [],
+  "submission": {
+   "source": "agent_submission",
+   "ok": true,
+   "error": null,
+   "files": 3,
+   "bytes": 558914,
+   "sha256": "ff6d2afe94790e335c79de54e6805a1b5fab2700607fa3b6afb07fa38c403fb7"
+  },
+  "lab": {
+   "ticks_used": 392,
+   "resets": 8,
+   "total_nats": 46.660430182829714,
+   "episodes": 8,
+   "requests": 29,
+   "rejected": 0,
+   "validations": 1,
+   "submissions": 1,
+   "submitted": true,
+   "infrastructure_errors": 0
+  },
+  "n_items": 64,
+  "n_failed": 0,
+  "item_isolation": "shared",
+  "network_restricted": true,
+  "box": {
+   "image": "physim2-ring:1",
+   "cpu": 2.0,
+   "memory": 8.0
+  }
+ },
+ "scores": {
+  "instance_id": "pilot-qwen-ring-001-r2-w0",
+  "secret_commitment": "a125f5016080ec142c86391721dd52bfccad569b6332e88e3c53a9db1b685852",
+  "n_items": 64,
+  "valid_cells": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "policies": {
+   "K": {
+    "L": 6.010414017323372,
+    "skill_vs_O": 0.0,
+    "skill_vs_C": 0.0,
+    "boot_se": 0.0,
+    "boot_p05": 0.0,
+    "boot_p95": 0.0,
+    "item_skill_p10": 0.0,
+    "item_skill_p50": 0.0,
+    "item_skill_p90": 0.0,
+    "items_worse_than_K": 0,
+    "label": "long-run average of the hidden world (climatology pool)",
+    "agent_minus_policy": {
+     "mean_loss": -1.8899888063887094,
+     "p05": -2.1469765585202243,
+     "p95": -1.6410749719242936,
+     "items_agent_better": 64,
+     "items_equal": 0
+    }
+   },
+   "O": {
+    "L": 3.970665499644094,
+    "skill_vs_O": 0.9999999999999999,
+    "skill_vs_C": 1.0725218986918867,
+    "boot_se": 0.0,
+    "boot_p05": 1.0,
+    "boot_p95": 1.0,
+    "item_skill_p10": 0.40924362683319904,
+    "item_skill_p50": 0.8021003259347695,
+    "item_skill_p90": 1.938262928954689,
+    "items_worse_than_K": 0,
+    "label": "oracle: replicate futures from the hidden state (leave one out)",
+    "agent_minus_policy": {
+     "mean_loss": 0.14975971129056853,
+     "p05": 0.1271976785378607,
+     "p95": 0.17326390526432797,
+     "items_agent_better": 3,
+     "items_equal": 0
+    }
+   },
+   "S": {
+    "L": 4.120425210934663,
+    "skill_vs_O": 0.9265793258372078,
+    "skill_vs_C": 0.9937766178355706,
+    "boot_se": 0.008318524868336463,
+    "boot_p05": 0.9116238525705388,
+    "boot_p95": 0.9390729476879485,
+    "item_skill_p10": 0.33205332870990284,
+    "item_skill_p50": 0.6988981796087483,
+    "item_skill_p90": 1.8862770808235165,
+    "items_worse_than_K": 0,
+    "label": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+    "agent_minus_policy": {
+     "mean_loss": 0.0,
+     "p05": 0.0,
+     "p95": 0.0,
+     "items_agent_better": 0,
+     "items_equal": 64
+    }
+   },
+   "D": {
+    "L": 5.059578662777425,
+    "skill_vs_O": 0.4661532273732248,
+    "skill_vs_C": 0.499959544503682,
+    "boot_se": 0.0474022211193115,
+    "boot_p05": 0.38002395790389254,
+    "boot_p95": 0.5373369151219647,
+    "item_skill_p10": -0.19971477653289238,
+    "item_skill_p50": 0.3816277822336515,
+    "item_skill_p90": 1.3542431000593644,
+    "items_worse_than_K": 12,
+    "label": "ridge fitted to the real episodes the budget allows",
+    "agent_minus_policy": {
+     "mean_loss": -0.9391534518427627,
+     "p05": -1.076256956171716,
+     "p95": -0.806558935531828,
+     "items_agent_better": 64,
+     "items_equal": 0
+    }
+   },
+   "P0": {
+    "L": 4.344602329510989,
+    "skill_vs_O": 0.8166750329141844,
+    "skill_vs_C": 0.87590185691538,
+    "boot_se": 0.012628534425394635,
+    "boot_p05": 0.7946181207516594,
+    "boot_p95": 0.8362270915301966,
+    "item_skill_p10": 0.2943003645281614,
+    "item_skill_p50": 0.6073500488807737,
+    "item_skill_p90": 1.7340953849245602,
+    "items_worse_than_K": 0,
+    "label": "ridge trained on simulations at prior draws",
+    "agent_minus_policy": {
+     "mean_loss": -0.224177118576326,
+     "p05": -0.2687436063626937,
+     "p95": -0.18113755337360524,
+     "items_agent_better": 58,
+     "items_equal": 0
+    }
+   },
+   "PM": {
+    "L": 4.3866620848480515,
+    "skill_vs_O": 0.7960549638358081,
+    "skill_vs_C": 0.853786381276282,
+    "boot_se": 0.011821544774163601,
+    "boot_p05": 0.7764446729909545,
+    "boot_p95": 0.8150801468590426,
+    "item_skill_p10": 0.27733124395021724,
+    "item_skill_p50": 0.6029532732085836,
+    "item_skill_p90": 1.7187355476776858,
+    "items_worse_than_K": 0,
+    "label": "ridge trained on simulations at the prior mean",
+    "agent_minus_policy": {
+     "mean_loss": -0.2662368739133885,
+     "p05": -0.31924097855803585,
+     "p95": -0.2171910367827492,
+     "items_agent_better": 60,
+     "items_equal": 0
+    }
+   },
+   "C": {
+    "L": 4.108589429716275,
+    "skill_vs_O": 0.9323818946910654,
+    "skill_vs_C": 1.0,
+    "boot_se": 0.008410355542279415,
+    "boot_p05": 0.9174019666235844,
+    "boot_p95": 0.9449614736356643,
+    "item_skill_p10": 0.32333629134064007,
+    "item_skill_p50": 0.7054885825508559,
+    "item_skill_p90": 1.8744980231937325,
+    "items_worse_than_K": 0,
+    "label": "ridge trained on simulations at the true parameters",
+    "agent_minus_policy": {
+     "mean_loss": 0.011835781218387853,
+     "p05": 0.004491930040606818,
+     "p95": 0.019641992176495024,
+     "items_agent_better": 26,
+     "items_equal": 0
+    }
+   },
+   "null": {
+    "L": 6.091222615812622,
+    "skill_vs_O": -0.03961694188712529,
+    "skill_vs_C": -0.042490037733146004,
+    "boot_se": 0.023008017701206803,
+    "boot_p05": -0.07710024561249683,
+    "boot_p95": -0.0011289329191834696,
+    "item_skill_p10": -0.34499674357774335,
+    "item_skill_p50": -0.0011853233756874246,
+    "item_skill_p90": 0.1398124165147319,
+    "items_worse_than_K": 32,
+    "label": "null agent: prior-predictive long-run law, no history, no program",
+    "agent_minus_policy": {
+     "mean_loss": -1.9707974048779593,
+     "p05": -2.2646688658375584,
+     "p95": -1.6956929238621767,
+     "items_agent_better": 64,
+     "items_equal": 0
+    }
+   },
+   "AGENT": {
+    "L": 4.120425210934663,
+    "skill_vs_O": 0.9265793258372078,
+    "skill_vs_C": 0.9937766178355706,
+    "boot_se": 0.008318524868336463,
+    "boot_p05": 0.9116238525705388,
+    "boot_p95": 0.9390729476879485,
+    "item_skill_p10": 0.33205332870990284,
+    "item_skill_p50": 0.6988981796087483,
+    "item_skill_p90": 1.8862770808235165,
+    "items_worse_than_K": 0,
+    "label": "the examined agent of this trace"
+   }
+  },
+  "agent_per_item_source": "the reference table: this trace is one of its own rollouts of policy S (same trace id)",
+  "agent_items_failed": 0,
+  "skill_by_program_class": null,
+  "checks": {
+   "reference_table_recomputed_from_its_per_item_file": true,
+   "trace_L_K_and_L_O_equal_the_reference_table": true,
+   "agent_per_item_mean_equals_trace_L": true,
+   "agent_skill_equals_trace_reward": true,
+   "failed_items_equal_trace_n_failed": true
+  },
+  "boot": {
+   "n_boot": 4000,
+   "seed": 0
+  },
+  "reward_in_trace": 0.9265793258372078,
+  "grade_reason": null,
+  "reference": {
+   "file": "proof_pilot.json",
+   "items_file": "proof_pilot_items.npz",
+   "config": {
+    "exam": {
+     "n_items": 64,
+     "R": 16,
+     "n_clim": 256
+    },
+    "lab": {
+     "max_ticks": 400,
+     "reset_cost": 1,
+     "total_nats": null
+    },
+    "predictor": {
+     "n_samples": 32,
+     "cpu_seconds": 30,
+     "wall_seconds": 60,
+     "memory_gib": 4,
+     "artifact_mib": 64
+    },
+    "envelope": {
+     "cpus": 4,
+     "wall_hours": 1,
+     "memory_gib": 8,
+     "gpu": false
+    },
+    "validation": {
+     "max_attempts": 16
+    }
+   },
+   "grading_mode": {
+    "table": "item_isolation = shared",
+    "taskset_default": "item_isolation = box (one fresh box per item)"
+   },
+   "pilot_marker": true,
+   "twin_policy": "S"
+  }
+ },
+ "usage": {
+  "n_calls": 0,
+  "n_calls_failed": 0,
+  "n_calls_without_usage": 0,
+  "billed_input_tokens": 0,
+  "prompt_tokens_uncached": 0,
+  "cached_input_tokens": 0,
+  "completion_tokens": 0,
+  "reasoning_tokens": 0,
+  "largest_context_tokens": 0,
+  "largest_reply_tokens": 0,
+  "caps_see_input_tokens": 0,
+  "caps_see_output_tokens": 0,
+  "caps_see_total_tokens": 0,
+  "provider_reported_cost_usd": null,
+  "calls_with_provider_cost": 0,
+  "prices": null
+ },
+ "wall_s": {
+  "boot": 0.8001456260681152,
+  "setup": 7.8568503856658936,
+  "agent": 28.747717142105103,
+  "finalize": 0.11399984359741211,
+  "verifier": 49.314680337905884,
+  "agent_model": 0.0,
+  "agent_harness": 28.747717142105103
+ },
+ "budgets": [
+  {
+   "budget": "tokens as verifiers counts them (each fed-in token once)",
+   "used": 0,
+   "cap": null,
+   "share": null,
+   "cap_from": "agent config max_total_tokens",
+   "note": ""
+  },
+  {
+   "budget": "output tokens",
+   "used": 0,
+   "cap": null,
+   "share": null,
+   "cap_from": "agent config max_output_tokens",
+   "note": ""
+  },
+  {
+   "budget": "agent phase, wall seconds",
+   "used": 28.747717142105103,
+   "cap": 3600.0,
+   "share": 0.007985476983918084,
+   "cap_from": "agent config timeout.rollout, else the task row",
+   "note": "the hour TASK.md states"
+  },
+  {
+   "budget": "laboratory ticks",
+   "used": 392,
+   "cap": 400,
+   "share": 0.98,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "nats in total",
+   "used": 46.660430182829714,
+   "cap": null,
+   "share": null,
+   "cap_from": "exam config (reference table)",
+   "note": "no total cap in this config"
+  },
+  {
+   "budget": "largest nats in one episode",
+   "used": 8.0,
+   "cap": 8.0,
+   "share": 1.0,
+   "cap_from": "TASK.md in the trace",
+   "note": "from the laboratory's log"
+  },
+  {
+   "budget": "validation attempts",
+   "used": 1,
+   "cap": 16,
+   "share": 0.0625,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "submit attempts",
+   "used": 1,
+   "cap": 16,
+   "share": 0.0625,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "submission size, bytes",
+   "used": 558914,
+   "cap": 67108864,
+   "share": 0.008328467607498169,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "predictor CPU seconds, worst item",
+   "used": 0.343028,
+   "cap": 30,
+   "share": 0.011434266666666667,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "agent box CPU seconds (read inside the box: unverified)",
+   "used": 14.2099,
+   "cap": 14400.0,
+   "share": 0.000986798611111111,
+   "cap_from": "envelope cores x the hour",
+   "note": ""
+  }
+ ],
+ "caps_in_task_text": {
+  "tick_nats": 2.0,
+  "episode_nats": 8.0
+ },
+ "timeline": {
+  "script": {
+   "tool_servers": [
+    "lab"
+   ],
+   "address_file_matches_tool_url": true,
+   "script": "reference_agent.py",
+   "label": "S",
+   "exit_code": 0,
+   "log_tail": "[   13.0s] lab episodes\n[   19.7s] inference\n[   19.9s] training simulations\n[   20.4s] fit\n{\"member_ticks_simulated\": 49152, \"lab_episodes\": 8, \"train_episodes\": 512, \"cpu_s\": 9.35307918, \"submit\": {\"ok\": true, \"note\": \"format and reproducibility only; no accuracy feedback\", \"files\": 3, \"cpu_s_per_request\": 0.324055, \"wall_s_per_request\": 0.3733022212982178, \"sha256\": \"ff6d2afe94790e335c79de54e6805a1b5fab2700607fa3b6afb07fa38c403fb7\", \"finalized\": true, \"accepted\": true}}\n",
+   "collected": [
+    "agent_log_S.json",
+    "posterior_draws_u.npy",
+    "script.log"
+   ]
+  },
+  "turns": [],
+  "rows": [],
+  "by_kind": {},
+  "milestones": {
+   "first_simulator_run": null,
+   "first_laboratory_experiment": null,
+   "first_write_under_submission/": null,
+   "first_validation": null,
+   "submit": null
+  },
+  "lab_record_given": true,
+  "lab_route": {
+   "tool": 0,
+   "python": 0
+  },
+  "lab_requests": [
+   {
+    "t_s": 13.1,
+    "turn": null,
+    "episode": null,
+    "op": "card",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 0.0008766651153564453
+   },
+   {
+    "t_s": 13.1,
+    "turn": null,
+    "episode": null,
+    "op": "usage",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 4.363059997558594e-05
+   },
+   {
+    "t_s": 13.8,
+    "turn": null,
+    "episode": 1,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.8787176609039307
+   },
+   {
+    "t_s": 14.7,
+    "turn": null,
+    "episode": 1,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.4469161033630371
+   },
+   {
+    "t_s": 15.1,
+    "turn": null,
+    "episode": 1,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 32,
+    "nats": 0.0,
+    "seconds": 0.014947652816772461
+   },
+   {
+    "t_s": 15.1,
+    "turn": null,
+    "episode": 2,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0015938282012939453
+   },
+   {
+    "t_s": 15.1,
+    "turn": null,
+    "episode": 2,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.005601406097412109
+   },
+   {
+    "t_s": 15.2,
+    "turn": null,
+    "episode": 2,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 32,
+    "nats": 8.0,
+    "seconds": 0.04394984245300293
+   },
+   {
+    "t_s": 15.2,
+    "turn": null,
+    "episode": 3,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0009410381317138672
+   },
+   {
+    "t_s": 15.2,
+    "turn": null,
+    "episode": 3,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.005082130432128906
+   },
+   {
+    "t_s": 15.2,
+    "turn": null,
+    "episode": 3,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 32,
+    "nats": 8.0,
+    "seconds": 0.012109994888305664
+   },
+   {
+    "t_s": 15.3,
+    "turn": null,
+    "episode": 4,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0011758804321289062
+   },
+   {
+    "t_s": 15.3,
+    "turn": null,
+    "episode": 4,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.009995460510253906
+   },
+   {
+    "t_s": 15.3,
+    "turn": null,
+    "episode": 4,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 32,
+    "nats": 8.0,
+    "seconds": 0.011700868606567383
+   },
+   {
+    "t_s": 15.3,
+    "turn": null,
+    "episode": 5,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0009763240814208984
+   },
+   {
+    "t_s": 15.3,
+    "turn": null,
+    "episode": 5,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.0047130584716796875
+   },
+   {
+    "t_s": 15.3,
+    "turn": null,
+    "episode": 5,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 32,
+    "nats": 0.0,
+    "seconds": 0.010548114776611328
+   },
+   {
+    "t_s": 15.3,
+    "turn": null,
+    "episode": 6,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0008854866027832031
+   },
+   {
+    "t_s": 15.3,
+    "turn": null,
+    "episode": 6,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.00487208366394043
+   },
+   {
+    "t_s": 15.4,
+    "turn": null,
+    "episode": 6,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 32,
+    "nats": 6.66043,
+    "seconds": 0.013868570327758789
+   },
+   {
+    "t_s": 15.4,
+    "turn": null,
+    "episode": 7,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0009672641754150391
+   },
+   {
+    "t_s": 15.4,
+    "turn": null,
+    "episode": 7,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.013203620910644531
+   },
+   {
+    "t_s": 15.4,
+    "turn": null,
+    "episode": 7,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 32,
+    "nats": 8.0,
+    "seconds": 0.0254819393157959
+   },
+   {
+    "t_s": 15.4,
+    "turn": null,
+    "episode": 8,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.001291036605834961
+   },
+   {
+    "t_s": 15.5,
+    "turn": null,
+    "episode": 8,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.010190010070800781
+   },
+   {
+    "t_s": 15.5,
+    "turn": null,
+    "episode": 8,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 32,
+    "nats": 8.0,
+    "seconds": 0.016588449478149414
+   },
+   {
+    "t_s": 22.9,
+    "turn": null,
+    "episode": 8,
+    "op": "validate",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 2.428377866744995
+   },
+   {
+    "t_s": 25.4,
+    "turn": null,
+    "episode": 8,
+    "op": "submit",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 2.7061150074005127
+   },
+   {
+    "t_s": 28.1,
+    "turn": null,
+    "episode": 8,
+    "op": "usage",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 2.574920654296875e-05
+   }
+  ],
+  "lab_episodes": [
+   {
+    "episode": null,
+    "turn": null,
+    "t_s": 13.1,
+    "ops": [
+     "card"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": null
+   },
+   {
+    "episode": null,
+    "turn": null,
+    "t_s": 13.1,
+    "ops": [
+     "usage"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": null
+   },
+   {
+    "episode": 1,
+    "turn": null,
+    "t_s": 13.8,
+    "ops": [
+     "reset",
+     "advance",
+     "advance"
+    ],
+    "ticks": 49,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 2,
+    "turn": null,
+    "t_s": 15.1,
+    "ops": [
+     "reset",
+     "advance",
+     "advance"
+    ],
+    "ticks": 49,
+    "nats": 8.0,
+    "rejected": [],
+    "inputs": "non-zero; blind or structured: not recoverable (the laboratory does not log inputs)"
+   },
+   {
+    "episode": 3,
+    "turn": null,
+    "t_s": 15.2,
+    "ops": [
+     "reset",
+     "advance",
+     "advance"
+    ],
+    "ticks": 49,
+    "nats": 8.0,
+    "rejected": [],
+    "inputs": "non-zero; blind or structured: not recoverable (the laboratory does not log inputs)"
+   },
+   {
+    "episode": 4,
+    "turn": null,
+    "t_s": 15.3,
+    "ops": [
+     "reset",
+     "advance",
+     "advance"
+    ],
+    "ticks": 49,
+    "nats": 8.0,
+    "rejected": [],
+    "inputs": "non-zero; blind or structured: not recoverable (the laboratory does not log inputs)"
+   },
+   {
+    "episode": 5,
+    "turn": null,
+    "t_s": 15.3,
+    "ops": [
+     "reset",
+     "advance",
+     "advance"
+    ],
+    "ticks": 49,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 6,
+    "turn": null,
+    "t_s": 15.3,
+    "ops": [
+     "reset",
+     "advance",
+     "advance"
+    ],
+    "ticks": 49,
+    "nats": 6.66043,
+    "rejected": [],
+    "inputs": "non-zero; blind or structured: not recoverable (the laboratory does not log inputs)"
+   },
+   {
+    "episode": 7,
+    "turn": null,
+    "t_s": 15.4,
+    "ops": [
+     "reset",
+     "advance",
+     "advance"
+    ],
+    "ticks": 49,
+    "nats": 8.0,
+    "rejected": [],
+    "inputs": "non-zero; blind or structured: not recoverable (the laboratory does not log inputs)"
+   },
+   {
+    "episode": 8,
+    "turn": null,
+    "t_s": 15.4,
+    "ops": [
+     "reset",
+     "advance",
+     "advance"
+    ],
+    "ticks": 49,
+    "nats": 8.0,
+    "rejected": [],
+    "inputs": "non-zero; blind or structured: not recoverable (the laboratory does not log inputs)"
+   },
+   {
+    "episode": null,
+    "turn": null,
+    "t_s": 22.9,
+    "ops": [
+     "validate"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": null
+   },
+   {
+    "episode": null,
+    "turn": null,
+    "t_s": 25.4,
+    "ops": [
+     "submit"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": null
+   },
+   {
+    "episode": null,
+    "turn": null,
+    "t_s": 28.1,
+    "ops": [
+     "usage"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": null
+   }
+  ]
+ },
+ "flags": [],
+ "flag_ids_checked": [
+  "ended_by_a_cap_or_error",
+  "last_tool_result_never_seen",
+  "outside_the_workspace",
+  "writes_into_the_public_package",
+  "network_attempt",
+  "lab_errors",
+  "python_errors",
+  "long_stretches",
+  "no_graded_submission",
+  "collected_without_submit",
+  "submission_without_lab_use",
+  "lab_use_not_visible",
+  "predictor_outside_submission",
+  "predictor_unreadable",
+  "predictor_ignores_history",
+  "predictor_ignores_program"
+ ],
+ "predictor_check": {
+  "source": null,
+  "note": "not checked: the predictor's source is neither in the trace nor given with --submission"
+ },
+ "limits": [
+  "The laboratory does not log the inputs of a request, only ticks and nats: `zero` is exact (0 nats charged), `blind` or `structured` for requests made from Python is a reading of the code that ran in that turn, and is absent when that code is not in the trace.",
+  "The predictor's source is not in the trace (a scripted agent, or written by a program) and no --submission was given: whether it reads its history is not checked.",
+  "A scripted agent leaves no messages: what it did inside the box is not in the trace beyond the end of its own log and the laboratory's log.",
+  "What the agent read is taken from the commands it wrote: files opened inside a Python script, by a module it imported, or by a helper file the trace never shows are not seen; a path that is mentioned may not have been read. Network attempts likewise: names of tools and libraries, not packets.",
+  "Kinds, input classes and flags are heuristics over text (the README lists the rules); the numbers of sections 1 to 4 are not.",
+  "Why the agent did something, whether its modelling was sound, and whether real data ever entered its fit are for a reader of transcript.md.",
+  "The noise shown is over the items of one instance; nothing here says how the agent would do on another hidden world."
+ ]
+}

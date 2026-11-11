@@ -1,0 +1,2855 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "name": "qwen_ring_001",
+ "inputs": {
+  "trace": "`trace.redacted.jsonl` (sha256 a8c649d84204\u2026)",
+  "reference table": "`proof_pilot.json` + `proof_pilot_items.npz`",
+  "laboratory log": "given",
+  "per-item scores of the agent": "given",
+  "prices": "GET https://api.pinference.ai/api/v1/models (no credential sent)",
+  "submission copy": "not given"
+ },
+ "outcome": {
+  "agent": "qwen/qwen3.6-35b-a3b",
+  "harness": "bash",
+  "trace_id": "89efaafbb9284ecf97d92c180869544e",
+  "verifiers": "0.3.2.dev163",
+  "ok": true,
+  "stop_condition": "max_turns",
+  "ended_by_agent": false,
+  "is_timeout": false,
+  "errors": [],
+  "episode_errors": [],
+  "submission": {
+   "source": "final_collection",
+   "ok": false,
+   "error": "submission has no predict.py",
+   "files": 0,
+   "bytes": 0,
+   "sha256": null
+  },
+  "lab": {
+   "ticks_used": 306,
+   "resets": 18,
+   "total_nats": 0.0,
+   "episodes": 18,
+   "requests": 39,
+   "rejected": 1,
+   "validations": 1,
+   "submissions": 0,
+   "submitted": false,
+   "infrastructure_errors": 0
+  },
+  "n_items": 64,
+  "n_failed": 64,
+  "item_isolation": "box",
+  "network_restricted": true,
+  "box": {
+   "image": "physim2-ring-ca:1",
+   "cpu": 2.0,
+   "memory": 4.0
+  }
+ },
+ "scores": {
+  "instance_id": "pilot-qwen-ring-001-r2-w0",
+  "secret_commitment": "a125f5016080ec142c86391721dd52bfccad569b6332e88e3c53a9db1b685852",
+  "n_items": 64,
+  "valid_cells": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "policies": {
+   "K": {
+    "L": 6.010414017323372,
+    "skill_vs_O": 0.0,
+    "skill_vs_C": 0.0,
+    "boot_se": 0.0,
+    "boot_p05": 0.0,
+    "boot_p95": 0.0,
+    "item_skill_p10": 0.0,
+    "item_skill_p50": 0.0,
+    "item_skill_p90": 0.0,
+    "items_worse_than_K": 0,
+    "label": "long-run average of the hidden world (climatology pool)",
+    "agent_minus_policy": {
+     "mean_loss": 0.0,
+     "p05": 0.0,
+     "p95": 0.0,
+     "items_agent_better": 0,
+     "items_equal": 64
+    }
+   },
+   "O": {
+    "L": 3.970665499644094,
+    "skill_vs_O": 0.9999999999999999,
+    "skill_vs_C": 1.0725218986918867,
+    "boot_se": 0.0,
+    "boot_p05": 1.0,
+    "boot_p95": 1.0,
+    "item_skill_p10": 0.40924362683319904,
+    "item_skill_p50": 0.8021003259347695,
+    "item_skill_p90": 1.938262928954689,
+    "items_worse_than_K": 0,
+    "label": "oracle: replicate futures from the hidden state (leave one out)",
+    "agent_minus_policy": {
+     "mean_loss": 2.039748517679278,
+     "p05": 1.7858880509750392,
+     "p95": 2.299578483252026,
+     "items_agent_better": 0,
+     "items_equal": 0
+    }
+   },
+   "S": {
+    "L": 4.120425210934663,
+    "skill_vs_O": 0.9265793258372078,
+    "skill_vs_C": 0.9937766178355706,
+    "boot_se": 0.008318524868336463,
+    "boot_p05": 0.9116238525705388,
+    "boot_p95": 0.9390729476879485,
+    "item_skill_p10": 0.33205332870990284,
+    "item_skill_p50": 0.6988981796087483,
+    "item_skill_p90": 1.8862770808235165,
+    "items_worse_than_K": 0,
+    "label": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+    "agent_minus_policy": {
+     "mean_loss": 1.8899888063887094,
+     "p05": 1.6410749719242936,
+     "p95": 2.1469765585202243,
+     "items_agent_better": 0,
+     "items_equal": 0
+    }
+   },
+   "D": {
+    "L": 5.059578662777425,
+    "skill_vs_O": 0.4661532273732248,
+    "skill_vs_C": 0.499959544503682,
+    "boot_se": 0.0474022211193115,
+    "boot_p05": 0.38002395790389254,
+    "boot_p95": 0.5373369151219647,
+    "item_skill_p10": -0.19971477653289238,
+    "item_skill_p50": 0.3816277822336515,
+    "item_skill_p90": 1.3542431000593644,
+    "items_worse_than_K": 12,
+    "label": "ridge fitted to the real episodes the budget allows",
+    "agent_minus_policy": {
+     "mean_loss": 0.9508353545459467,
+     "p05": 0.7051019577636746,
+     "p95": 1.1983561735087163,
+     "items_agent_better": 12,
+     "items_equal": 0
+    }
+   },
+   "P0": {
+    "L": 4.344602329510989,
+    "skill_vs_O": 0.8166750329141844,
+    "skill_vs_C": 0.87590185691538,
+    "boot_se": 0.012628534425394635,
+    "boot_p05": 0.7946181207516594,
+    "boot_p95": 0.8362270915301966,
+    "item_skill_p10": 0.2943003645281614,
+    "item_skill_p50": 0.6073500488807737,
+    "item_skill_p90": 1.7340953849245602,
+    "items_worse_than_K": 0,
+    "label": "ridge trained on simulations at prior draws",
+    "agent_minus_policy": {
+     "mean_loss": 1.6658116878123832,
+     "p05": 1.4421559099787855,
+     "p95": 1.896361151083969,
+     "items_agent_better": 0,
+     "items_equal": 0
+    }
+   },
+   "PM": {
+    "L": 4.3866620848480515,
+    "skill_vs_O": 0.7960549638358081,
+    "skill_vs_C": 0.853786381276282,
+    "boot_se": 0.011821544774163601,
+    "boot_p05": 0.7764446729909545,
+    "boot_p95": 0.8150801468590426,
+    "item_skill_p10": 0.27733124395021724,
+    "item_skill_p50": 0.6029532732085836,
+    "item_skill_p90": 1.7187355476776858,
+    "items_worse_than_K": 0,
+    "label": "ridge trained on simulations at the prior mean",
+    "agent_minus_policy": {
+     "mean_loss": 1.623751932475321,
+     "p05": 1.4084557898839993,
+     "p95": 1.8439042818237186,
+     "items_agent_better": 0,
+     "items_equal": 0
+    }
+   },
+   "C": {
+    "L": 4.108589429716275,
+    "skill_vs_O": 0.9323818946910654,
+    "skill_vs_C": 1.0,
+    "boot_se": 0.008410355542279415,
+    "boot_p05": 0.9174019666235844,
+    "boot_p95": 0.9449614736356643,
+    "item_skill_p10": 0.32333629134064007,
+    "item_skill_p50": 0.7054885825508559,
+    "item_skill_p90": 1.8744980231937325,
+    "items_worse_than_K": 0,
+    "label": "ridge trained on simulations at the true parameters",
+    "agent_minus_policy": {
+     "mean_loss": 1.901824587607097,
+     "p05": 1.6514582940078029,
+     "p95": 2.1607835326595373,
+     "items_agent_better": 0,
+     "items_equal": 0
+    }
+   },
+   "null": {
+    "L": 6.091222615812622,
+    "skill_vs_O": -0.03961694188712529,
+    "skill_vs_C": -0.042490037733146004,
+    "boot_se": 0.023008017701206803,
+    "boot_p05": -0.07710024561249683,
+    "boot_p95": -0.0011289329191834696,
+    "item_skill_p10": -0.34499674357774335,
+    "item_skill_p50": -0.0011853233756874246,
+    "item_skill_p90": 0.1398124165147319,
+    "items_worse_than_K": 32,
+    "label": "null agent: prior-predictive long-run law, no history, no program",
+    "agent_minus_policy": {
+     "mean_loss": -0.08080859848924991,
+     "p05": -0.16072296652773121,
+     "p95": -0.0022632202307907687,
+     "items_agent_better": 32,
+     "items_equal": 0
+    }
+   },
+   "AGENT": {
+    "L": 6.010414017323372,
+    "skill_vs_O": 0.0,
+    "skill_vs_C": 0.0,
+    "boot_se": 0.0,
+    "boot_p05": 0.0,
+    "boot_p95": 0.0,
+    "item_skill_p10": 0.0,
+    "item_skill_p50": 0.0,
+    "item_skill_p90": 0.0,
+    "items_worse_than_K": 0,
+    "label": "the examined agent of this trace"
+   }
+  },
+  "agent_per_item_source": "--items (extract.py's per_item_scores.json, rounded to 6 decimals)",
+  "agent_items_failed": 64,
+  "skill_by_program_class": {
+   "a": {
+    "n_items": 16,
+    "S": 0.9279696167611822,
+    "D": 0.6593809880600515,
+    "P0": 0.8367731300306401,
+    "PM": 0.8127705760191158,
+    "C": 0.928425167144505,
+    "null": -0.021724548247854872,
+    "AGENT": 0.0
+   },
+   "b": {
+    "n_items": 16,
+    "S": 0.9290812341349983,
+    "D": 0.5839947472311539,
+    "P0": 0.8187580357905336,
+    "PM": 0.7823193760593806,
+    "C": 0.9345748970636029,
+    "null": -0.006823657020844703,
+    "AGENT": 0.0
+   },
+   "c": {
+    "n_items": 16,
+    "S": 0.8853862227413929,
+    "D": 0.022255352551106503,
+    "P0": 0.790509096164356,
+    "PM": 0.788531692078765,
+    "C": 0.8889294707739614,
+    "null": -0.07152486421306511,
+    "AGENT": 0.0
+   },
+   "d": {
+    "n_items": 16,
+    "S": 0.9445921306202778,
+    "D": 0.5186263867940343,
+    "P0": 0.8177680992488426,
+    "PM": 0.7982073853373967,
+    "C": 0.95446569686044,
+    "null": -0.050808126179605256,
+    "AGENT": 0.0
+   }
+  },
+  "checks": {
+   "reference_table_recomputed_from_its_per_item_file": true,
+   "trace_L_K_and_L_O_equal_the_reference_table": true,
+   "agent_per_item_mean_equals_trace_L": true,
+   "agent_skill_equals_trace_reward": true,
+   "failed_items_equal_trace_n_failed": true
+  },
+  "boot": {
+   "n_boot": 4000,
+   "seed": 0
+  },
+  "reward_in_trace": 0.0,
+  "grade_reason": "submission has no predict.py",
+  "reference": {
+   "file": "proof_pilot.json",
+   "items_file": "proof_pilot_items.npz",
+   "config": {
+    "exam": {
+     "n_items": 64,
+     "R": 16,
+     "n_clim": 256
+    },
+    "lab": {
+     "max_ticks": 400,
+     "reset_cost": 1,
+     "total_nats": null
+    },
+    "predictor": {
+     "n_samples": 32,
+     "cpu_seconds": 30,
+     "wall_seconds": 60,
+     "memory_gib": 4,
+     "artifact_mib": 64
+    },
+    "envelope": {
+     "cpus": 4,
+     "wall_hours": 1,
+     "memory_gib": 8,
+     "gpu": false
+    },
+    "validation": {
+     "max_attempts": 16
+    }
+   },
+   "grading_mode": {
+    "table": "item_isolation = shared",
+    "taskset_default": "item_isolation = box (one fresh box per item)"
+   },
+   "pilot_marker": true,
+   "twin_policy": null
+  }
+ },
+ "usage": {
+  "n_calls": 40,
+  "n_calls_failed": 0,
+  "n_calls_without_usage": 0,
+  "billed_input_tokens": 758132,
+  "prompt_tokens_uncached": 101524,
+  "cached_input_tokens": 656608,
+  "completion_tokens": 18888,
+  "reasoning_tokens": 0,
+  "largest_context_tokens": 37567,
+  "largest_reply_tokens": 2340,
+  "caps_see_input_tokens": 18759,
+  "caps_see_output_tokens": 18888,
+  "caps_see_total_tokens": 37647,
+  "provider_reported_cost_usd": 0.0951,
+  "calls_with_provider_cost": 40,
+  "prices": {
+   "input": 0.11,
+   "output": 1.01,
+   "cache_read": 0.099,
+   "context_window": 262144,
+   "source": "GET https://api.pinference.ai/api/v1/models (no credential sent)"
+  },
+  "cost_usd_all_input_at_full_price": 0.102471,
+  "cost_usd_with_cache_read_price": 0.095249,
+  "cost_usd_for_the_ledger": 0.102471,
+  "bound_by_caps_usd": 1.2223
+ },
+ "wall_s": {
+  "boot": 1.5935754776000977,
+  "setup": 19.683068990707397,
+  "agent": 643.3228566646576,
+  "finalize": 1.4698150157928467,
+  "verifier": 2.548537015914917,
+  "agent_model": 451.41171073913574,
+  "agent_harness": 191.91114592552185
+ },
+ "budgets": [
+  {
+   "budget": "model turns",
+   "used": 40,
+   "cap": 40,
+   "share": 1.0,
+   "cap_from": "agent config max_turns",
+   "note": "the task text does not state this cap"
+  },
+  {
+   "budget": "tokens as verifiers counts them (each fed-in token once)",
+   "used": 37647,
+   "cap": 1500000,
+   "share": 0.025098,
+   "cap_from": "agent config max_total_tokens",
+   "note": ""
+  },
+  {
+   "budget": "output tokens",
+   "used": 18888,
+   "cap": 60000,
+   "share": 0.3148,
+   "cap_from": "agent config max_output_tokens",
+   "note": ""
+  },
+  {
+   "budget": "largest single reply (tokens)",
+   "used": 2340,
+   "cap": 8192,
+   "share": 0.28564453125,
+   "cap_from": "sampling max_tokens",
+   "note": ""
+  },
+  {
+   "budget": "largest context sent (tokens)",
+   "used": 37567,
+   "cap": 262144,
+   "share": 0.14330673217773438,
+   "cap_from": "the model's context window (--model-entry)",
+   "note": ""
+  },
+  {
+   "budget": "agent phase, wall seconds",
+   "used": 643.3228566646576,
+   "cap": 3600.0,
+   "share": 0.17870079351796045,
+   "cap_from": "agent config timeout.rollout, else the task row",
+   "note": "the hour TASK.md states"
+  },
+  {
+   "budget": "laboratory ticks",
+   "used": 306,
+   "cap": 400,
+   "share": 0.765,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "nats in total",
+   "used": 0.0,
+   "cap": null,
+   "share": null,
+   "cap_from": "exam config (reference table)",
+   "note": "no total cap in this config"
+  },
+  {
+   "budget": "largest nats in one episode",
+   "used": 0.0,
+   "cap": 8.0,
+   "share": 0.0,
+   "cap_from": "TASK.md in the trace",
+   "note": "from the laboratory's log"
+  },
+  {
+   "budget": "validation attempts",
+   "used": 1,
+   "cap": 16,
+   "share": 0.0625,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "submit attempts",
+   "used": 0,
+   "cap": 16,
+   "share": 0.0,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "submission size, bytes",
+   "used": 0,
+   "cap": 67108864,
+   "share": 0.0,
+   "cap_from": "exam config (reference table)",
+   "note": ""
+  },
+  {
+   "budget": "predictor CPU seconds, worst item",
+   "used": null,
+   "cap": 30,
+   "share": null,
+   "cap_from": "exam config (reference table)",
+   "note": "not in this trace (no predictor ran, or one box per item)"
+  },
+  {
+   "budget": "agent box CPU seconds (read inside the box: unverified)",
+   "used": 163.692,
+   "cap": 14400.0,
+   "share": 0.011367500000000001,
+   "cap_from": "envelope cores x the hour",
+   "note": ""
+  },
+  {
+   "budget": "model spend, USD",
+   "used": 0.102471,
+   "cap": 1.2223,
+   "share": 0.08383457416346234,
+   "cap_from": "max_turns x context window x input price + output caps x output price",
+   "note": ""
+  }
+ ],
+ "caps_in_task_text": {
+  "tick_nats": 2.0,
+  "episode_nats": 8.0
+ },
+ "timeline": {
+  "script": null,
+  "turns": [
+   {
+    "turn": 1,
+    "t_s": 8.1,
+    "model_s": 4.4,
+    "tools_s": 0.1,
+    "tokens_in": 3403,
+    "tokens_out": 55,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 2,
+    "t_s": 9.0,
+    "model_s": 0.8,
+    "tools_s": 0.0,
+    "tokens_in": 5161,
+    "tokens_out": 32,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 3,
+    "t_s": 9.9,
+    "model_s": 0.8,
+    "tools_s": 0.1,
+    "tokens_in": 5352,
+    "tokens_out": 36,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 4,
+    "t_s": 11.9,
+    "model_s": 2.0,
+    "tools_s": 0.0,
+    "tokens_in": 5849,
+    "tokens_out": 36,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 5,
+    "t_s": 12.8,
+    "model_s": 0.8,
+    "tools_s": 0.0,
+    "tokens_in": 9031,
+    "tokens_out": 37,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 6,
+    "t_s": 14.8,
+    "model_s": 2.0,
+    "tools_s": 1.3,
+    "tokens_in": 9317,
+    "tokens_out": 77,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 7,
+    "t_s": 20.7,
+    "model_s": 4.5,
+    "tools_s": 9.4,
+    "tokens_in": 9728,
+    "tokens_out": 163,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 8,
+    "t_s": 32.8,
+    "model_s": 2.8,
+    "tools_s": 1.6,
+    "tokens_in": 10240,
+    "tokens_out": 142,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 9,
+    "t_s": 38.0,
+    "model_s": 3.5,
+    "tools_s": 0.6,
+    "tokens_in": 11152,
+    "tokens_out": 87,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1,
+    "lab_record": {
+     "requests": 2,
+     "ticks": 0,
+     "nats": 0.0,
+     "rejected": 0,
+     "ops": {
+      "card": 1,
+      "usage": 1
+     }
+    }
+   },
+   {
+    "turn": 10,
+    "t_s": 40.8,
+    "model_s": 2.2,
+    "tools_s": 3.7,
+    "tokens_in": 11707,
+    "tokens_out": 132,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1,
+    "lab_record": {
+     "requests": 2,
+     "ticks": 17,
+     "nats": 0.0,
+     "rejected": 0,
+     "ops": {
+      "reset": 1,
+      "advance": 1
+     }
+    }
+   },
+   {
+    "turn": 11,
+    "t_s": 58.4,
+    "model_s": 14.0,
+    "tools_s": 0.6,
+    "tokens_in": 12165,
+    "tokens_out": 114,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 12,
+    "t_s": 62.5,
+    "model_s": 3.5,
+    "tools_s": 0.6,
+    "tokens_in": 12598,
+    "tokens_out": 98,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1,
+    "lab_record": {
+     "requests": 1,
+     "ticks": 0,
+     "nats": 0.0,
+     "rejected": 1,
+     "ops": {
+      "experiment": 1
+     }
+    }
+   },
+   {
+    "turn": 13,
+    "t_s": 66.5,
+    "model_s": 3.4,
+    "tools_s": 0.9,
+    "tokens_in": 12887,
+    "tokens_out": 130,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1,
+    "lab_record": {
+     "requests": 1,
+     "ticks": 17,
+     "nats": 0.0,
+     "rejected": 0,
+     "ops": {
+      "experiment": 1
+     }
+    }
+   },
+   {
+    "turn": 14,
+    "t_s": 73.4,
+    "model_s": 5.9,
+    "tools_s": 6.5,
+    "tokens_in": 13120,
+    "tokens_out": 304,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 15,
+    "t_s": 86.7,
+    "model_s": 6.8,
+    "tools_s": 6.8,
+    "tokens_in": 13815,
+    "tokens_out": 271,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 16,
+    "t_s": 108.2,
+    "model_s": 14.7,
+    "tools_s": 1.6,
+    "tokens_in": 14266,
+    "tokens_out": 468,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 17,
+    "t_s": 111.4,
+    "model_s": 1.6,
+    "tools_s": 1.8,
+    "tokens_in": 14858,
+    "tokens_out": 165,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1,
+    "lab_record": {
+     "requests": 10,
+     "ticks": 85,
+     "nats": 0.0,
+     "rejected": 0,
+     "ops": {
+      "reset": 5,
+      "advance": 5
+     }
+    }
+   },
+   {
+    "turn": 18,
+    "t_s": 128.4,
+    "model_s": 15.2,
+    "tools_s": 6.8,
+    "tokens_in": 15807,
+    "tokens_out": 435,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 19,
+    "t_s": 157.5,
+    "model_s": 22.3,
+    "tools_s": 1.8,
+    "tokens_in": 16438,
+    "tokens_out": 525,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 20,
+    "t_s": 169.5,
+    "model_s": 10.3,
+    "tools_s": 4.3,
+    "tokens_in": 16996,
+    "tokens_out": 356,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 21,
+    "t_s": 178.7,
+    "model_s": 4.9,
+    "tools_s": 1.4,
+    "tokens_in": 17626,
+    "tokens_out": 423,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1,
+    "lab_record": {
+     "requests": 2,
+     "ticks": 17,
+     "nats": 0.0,
+     "rejected": 0,
+     "ops": {
+      "reset": 1,
+      "advance": 1
+     }
+    }
+   },
+   {
+    "turn": 22,
+    "t_s": 215.0,
+    "model_s": 34.9,
+    "tools_s": 6.1,
+    "tokens_in": 18319,
+    "tokens_out": 1265,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 23,
+    "t_s": 242.3,
+    "model_s": 21.1,
+    "tools_s": 5.3,
+    "tokens_in": 19630,
+    "tokens_out": 1033,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 24,
+    "t_s": 266.0,
+    "model_s": 18.4,
+    "tools_s": 6.1,
+    "tokens_in": 20746,
+    "tokens_out": 830,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 25,
+    "t_s": 287.6,
+    "model_s": 15.5,
+    "tools_s": 30.1,
+    "tokens_in": 21655,
+    "tokens_out": 945,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 26,
+    "t_s": 329.7,
+    "model_s": 12.0,
+    "tools_s": 17.5,
+    "tokens_in": 22679,
+    "tokens_out": 920,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 27,
+    "t_s": 361.1,
+    "model_s": 14.0,
+    "tools_s": 3.6,
+    "tokens_in": 23719,
+    "tokens_out": 468,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 28,
+    "t_s": 372.1,
+    "model_s": 7.3,
+    "tools_s": 3.6,
+    "tokens_in": 24335,
+    "tokens_out": 486,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 29,
+    "t_s": 386.0,
+    "model_s": 10.3,
+    "tools_s": 3.8,
+    "tokens_in": 25197,
+    "tokens_out": 583,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 30,
+    "t_s": 397.5,
+    "model_s": 7.7,
+    "tools_s": 3.7,
+    "tokens_in": 26611,
+    "tokens_out": 334,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 31,
+    "t_s": 406.1,
+    "model_s": 5.0,
+    "tools_s": 3.4,
+    "tokens_in": 27108,
+    "tokens_out": 263,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 32,
+    "t_s": 432.3,
+    "model_s": 22.8,
+    "tools_s": 3.7,
+    "tokens_in": 27538,
+    "tokens_out": 843,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 33,
+    "t_s": 449.7,
+    "model_s": 13.7,
+    "tools_s": 9.7,
+    "tokens_in": 28445,
+    "tokens_out": 797,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 34,
+    "t_s": 485.0,
+    "model_s": 25.6,
+    "tools_s": 8.5,
+    "tokens_in": 29317,
+    "tokens_out": 767,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 35,
+    "t_s": 525.2,
+    "model_s": 31.7,
+    "tools_s": 5.2,
+    "tokens_in": 30151,
+    "tokens_out": 924,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 36,
+    "t_s": 553.6,
+    "model_s": 23.1,
+    "tools_s": 8.1,
+    "tokens_in": 31271,
+    "tokens_out": 900,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 37,
+    "t_s": 572.8,
+    "model_s": 11.2,
+    "tools_s": 0.8,
+    "tokens_in": 32819,
+    "tokens_out": 230,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1,
+    "lab_record": {
+     "requests": 20,
+     "ticks": 170,
+     "nats": 0.0,
+     "rejected": 0,
+     "ops": {
+      "reset": 10,
+      "advance": 10
+     }
+    }
+   },
+   {
+    "turn": 38,
+    "t_s": 585.1,
+    "model_s": 11.5,
+    "tools_s": 15.3,
+    "tokens_in": 34311,
+    "tokens_out": 794,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 39,
+    "t_s": 637.5,
+    "model_s": 37.1,
+    "tools_s": 1.7,
+    "tokens_in": 35198,
+    "tokens_out": 2340,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1
+   },
+   {
+    "turn": 40,
+    "t_s": 641.4,
+    "model_s": 2.2,
+    "tools_s": 1.9,
+    "tokens_in": 37567,
+    "tokens_out": 80,
+    "finish_reason": "tool_calls",
+    "model_error": null,
+    "n_tool_calls": 1,
+    "lab_record": {
+     "requests": 1,
+     "ticks": 0,
+     "nats": 0.0,
+     "rejected": 0,
+     "ops": {
+      "validate": 1
+     }
+    }
+   }
+  ],
+  "rows": [
+   {
+    "turn": 1,
+    "tool": "bash",
+    "kinds": [
+     "read"
+    ],
+    "what": "cat TASK.md | head -100",
+    "detail": {
+     "python_lines": null,
+     "writes": [],
+     "scripts_run": []
+    },
+    "result": {
+     "seen": true,
+     "chars": 5907
+    }
+   },
+   {
+    "turn": 2,
+    "tool": "bash",
+    "kinds": [
+     "read"
+    ],
+    "what": "ls -la",
+    "detail": {
+     "python_lines": null,
+     "writes": [],
+     "scripts_run": []
+    },
+    "result": {
+     "seen": true,
+     "chars": 246
+    }
+   },
+   {
+    "turn": 3,
+    "tool": "bash",
+    "kinds": [
+     "read"
+    ],
+    "what": "ls -la physim2/",
+    "detail": {
+     "python_lines": null,
+     "writes": [],
+     "scripts_run": []
+    },
+    "result": {
+     "seen": true,
+     "chars": 805
+    }
+   },
+   {
+    "turn": 4,
+    "tool": "bash",
+    "kinds": [
+     "read"
+    ],
+    "what": "cat physim2/world_ring.py",
+    "detail": {
+     "python_lines": null,
+     "writes": [],
+     "scripts_run": []
+    },
+    "result": {
+     "seen": true,
+     "chars": 9175
+    }
+   },
+   {
+    "turn": 5,
+    "tool": "bash",
+    "kinds": [
+     "read"
+    ],
+    "what": "cat physim2/__init__.py",
+    "detail": {
+     "python_lines": null,
+     "writes": [],
+     "scripts_run": []
+    },
+    "result": {
+     "seen": true,
+     "chars": 859
+    }
+   },
+   {
+    "turn": 6,
+    "tool": "bash",
+    "kinds": [
+     "read"
+    ],
+    "what": "python -c \"import physim2; W = physim2.load_world(); print(dir(W)); p\u2026",
+    "detail": {
+     "python_lines": 1,
+     "writes": [],
+     "scripts_run": [],
+     "python_only_inspects": true,
+     "python_gist": ""
+    },
+    "result": {
+     "seen": true,
+     "chars": 815
+    }
+   },
+   {
+    "turn": 7,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Generate some episodes at prior mean to understand the str\u2026",
+    "detail": {
+     "python_lines": 10,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "episodes"
+     ],
+     "python_gist": "Generate some episodes at prior mean to understand the stru\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 386
+    }
+   },
+   {
+    "turn": 8,
+    "tool": "bash",
+    "kinds": [
+     "read"
+    ],
+    "what": "python -c: Let's understand the observation model better",
+    "detail": {
+     "python_lines": 8,
+     "writes": [],
+     "scripts_run": [],
+     "python_only_inspects": true,
+     "python_gist": "Let's understand the observation model better"
+    },
+    "result": {
+     "seen": true,
+     "chars": 793
+    }
+   },
+   {
+    "turn": 9,
+    "tool": "bash",
+    "kinds": [
+     "lab-info",
+     "read"
+    ],
+    "what": "python -c: lab = physim2.Lab()",
+    "detail": {
+     "python_lines": 7,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "card": 1,
+      "usage": 1
+     },
+     "lab_input_sites": [],
+     "python_only_inspects": true,
+     "python_gist": "lab = physim2.Lab()"
+    },
+    "result": {
+     "seen": true,
+     "chars": 999
+    }
+   },
+   {
+    "turn": 10,
+    "tool": "bash",
+    "kinds": [
+     "lab"
+    ],
+    "what": "python -c: Try a simple experiment with no input",
+    "detail": {
+     "python_lines": 10,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "reset": 1,
+      "advance": 1
+     },
+     "lab_input_sites": [
+      {
+       "op": "advance",
+       "class": "zero",
+       "evidence": "static: an integer T: T ticks without input"
+      }
+     ],
+     "python_gist": "Try a simple experiment with no input"
+    },
+    "result": {
+     "seen": true,
+     "chars": 353
+    }
+   },
+   {
+    "turn": 11,
+    "tool": "bash",
+    "kinds": [
+     "lab"
+    ],
+    "what": "python -c: Let's try experiment which is reset + advance",
+    "detail": {
+     "python_lines": 6,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "experiment": 1
+     },
+     "lab_input_sites": [
+      {
+       "op": "experiment",
+       "class": "invalid",
+       "evidence": "static: no inputs (None)"
+      }
+     ],
+     "python_gist": "Let's try experiment which is reset + advance"
+    },
+    "result": {
+     "seen": true,
+     "chars": 1092,
+     "python_error": "ValueError: Out of range float values are not JSON compliant: nan"
+    }
+   },
+   {
+    "turn": 12,
+    "tool": "bash",
+    "kinds": [
+     "lab"
+    ],
+    "what": "python -c: Try experiment with empty input array (T ticks without inp\u2026",
+    "detail": {
+     "python_lines": 5,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "experiment": 1
+     },
+     "lab_input_sites": [
+      {
+       "op": "experiment",
+       "class": "invalid",
+       "evidence": "static: no inputs ([])"
+      }
+     ],
+     "python_gist": "Try experiment with empty input array (T ticks without inpu\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 590,
+     "python_error": "physim2.labclient.LabError: format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 4096",
+     "lab_error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 4096"
+    }
+   },
+   {
+    "turn": 13,
+    "tool": "bash",
+    "kinds": [
+     "lab"
+    ],
+    "what": "python -c: experiment: reset + advance, so we need to provide T inputs",
+    "detail": {
+     "python_lines": 7,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "experiment": 1
+     },
+     "lab_input_sites": [
+      {
+       "op": "experiment",
+       "class": "zero",
+       "evidence": "static: `U` = np.zeros(...), never written to"
+      }
+     ],
+     "python_gist": "experiment: reset + advance, so we need to provide T inputs"
+    },
+    "result": {
+     "seen": true,
+     "chars": 110
+    }
+   },
+   {
+    "turn": 14,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Let's understand the dynamics better",
+    "detail": {
+     "python_lines": 9,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Let's understand the dynamics better"
+    },
+    "result": {
+     "seen": true,
+     "chars": 418
+    }
+   },
+   {
+    "turn": 15,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Generate many episodes at different parameter values to un\u2026",
+    "detail": {
+     "python_lines": 12,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Generate many episodes at different parameter values to und\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 217
+    }
+   },
+   {
+    "turn": 16,
+    "tool": "bash",
+    "kinds": [
+     "read"
+    ],
+    "what": "python -c: Let me understand the dynamics more carefully",
+    "detail": {
+     "python_lines": 11,
+     "writes": [],
+     "scripts_run": [],
+     "python_only_inspects": true,
+     "python_gist": "Let me understand the dynamics more carefully"
+    },
+    "result": {
+     "seen": true,
+     "chars": 139
+    }
+   },
+   {
+    "turn": 17,
+    "tool": "bash",
+    "kinds": [
+     "lab"
+    ],
+    "what": "python -c: Let me try a simpler approach: use real experiments to nar\u2026",
+    "detail": {
+     "python_lines": 11,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "reset": 1,
+      "advance": 1
+     },
+     "lab_input_sites": [
+      {
+       "op": "advance",
+       "class": "zero",
+       "evidence": "static: an integer T: T ticks without input"
+      }
+     ],
+     "python_gist": "Let me try a simpler approach: use real experiments to narr\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 890
+    }
+   },
+   {
+    "turn": 18,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Let's understand the observation model more carefully",
+    "detail": {
+     "python_lines": 13,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Let's understand the observation model more carefully"
+    },
+    "result": {
+     "seen": true,
+     "chars": 300
+    }
+   },
+   {
+    "turn": 19,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Let me try a different approach: use the Kalman filter wit\u2026",
+    "detail": {
+     "python_lines": 8,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator"
+     ],
+     "python_gist": "Let me try a different approach: use the Kalman filter with\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 36
+    }
+   },
+   {
+    "turn": 20,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Let me think about this differently.",
+    "detail": {
+     "python_lines": 10,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Let me think about this differently."
+    },
+    "result": {
+     "seen": true,
+     "chars": 290
+    }
+   },
+   {
+    "turn": 21,
+    "tool": "bash",
+    "kinds": [
+     "lab"
+    ],
+    "what": "python -c: Let me try a more practical approach: use the Lab to colle\u2026",
+    "detail": {
+     "python_lines": 22,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "reset": 1,
+      "advance": 1
+     },
+     "lab_input_sites": [
+      {
+       "op": "advance",
+       "class": "zero",
+       "evidence": "static: an integer T: T ticks without input"
+      }
+     ],
+     "python_gist": "Let me try a more practical approach: use the Lab to collec\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 310
+    }
+   },
+   {
+    "turn": 22,
+    "tool": "bash",
+    "kinds": [
+     "sim",
+     "write"
+    ],
+    "what": "cat > /workspace/infer_params.py << 'EOF'",
+    "detail": {
+     "python_lines": 76,
+     "writes": [
+      [
+       "infer_params.py",
+       124
+      ]
+     ],
+     "scripts_run": [
+      "infer_params.py"
+     ],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Sigma_x = sigma^2 * sum_{k=0}^{inf} A^k (A^k)^T"
+    },
+    "result": {
+     "seen": true,
+     "chars": 79
+    }
+   },
+   {
+    "turn": 23,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: The issue is that the Kalman filter needs to track the ful\u2026",
+    "detail": {
+     "python_lines": 57,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "The issue is that the Kalman filter needs to track the full\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 139
+    }
+   },
+   {
+    "turn": 24,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Generate test data at known params",
+    "detail": {
+     "python_lines": 53,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Generate test data at known params"
+    },
+    "result": {
+     "seen": true,
+     "chars": 89
+    }
+   },
+   {
+    "turn": 25,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Generate test data at known params",
+    "detail": {
+     "python_lines": 57,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Generate test data at known params"
+    },
+    "result": {
+     "seen": true,
+     "chars": 85
+    }
+   },
+   {
+    "turn": 26,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Generate test data at known params",
+    "detail": {
+     "python_lines": 55,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Generate test data at known params"
+    },
+    "result": {
+     "seen": true,
+     "chars": 138
+    }
+   },
+   {
+    "turn": 27,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Let me check: is the observation model correct?",
+    "detail": {
+     "python_lines": 27,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Let me check: is the observation model correct?"
+    },
+    "result": {
+     "seen": true,
+     "chars": 164
+    }
+   },
+   {
+    "turn": 28,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: The theoretical variance is ~1.96 for all blocks, but the \u2026",
+    "detail": {
+     "python_lines": 29,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "The theoretical variance is ~1.96 for all blocks, but the s\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 436
+    }
+   },
+   {
+    "turn": 29,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: The theoretical covariance has a specific structure. Let m\u2026",
+    "detail": {
+     "python_lines": 36,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "The theoretical covariance has a specific structure. Let me\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 933
+    }
+   },
+   {
+    "turn": 30,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Check: does the Simulator use the correct stationary initi\u2026",
+    "detail": {
+     "python_lines": 15,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Check: does the Simulator use the correct stationary initia\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 203
+    }
+   },
+   {
+    "turn": 31,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: The variance varies a lot across seeds at t=0, which sugge\u2026",
+    "detail": {
+     "python_lines": 14,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "The variance varies a lot across seeds at t=0, which sugges\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 207
+    }
+   },
+   {
+    "turn": 32,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Test Kalman filter log-likelihood computation",
+    "detail": {
+     "python_lines": 46,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Test Kalman filter log-likelihood computation"
+    },
+    "result": {
+     "seen": true,
+     "chars": 100
+    }
+   },
+   {
+    "turn": 33,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: The LL values are quite different for the same params with\u2026",
+    "detail": {
+     "python_lines": 51,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "The LL values are quite different for the same params with \u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 81
+    }
+   },
+   {
+    "turn": 34,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: Let me try a much finer grid around the true params",
+    "detail": {
+     "python_lines": 52,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "Let me try a much finer grid around the true params"
+    },
+    "result": {
+     "seen": true,
+     "chars": 83
+    }
+   },
+   {
+    "turn": 35,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: The problem is that the likelihood landscape is very flat \u2026",
+    "detail": {
+     "python_lines": 49,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "free_run"
+     ],
+     "python_gist": "The problem is that the likelihood landscape is very flat a\u2026"
+    },
+    "result": {
+     "seen": true,
+     "chars": 235
+    }
+   },
+   {
+    "turn": 36,
+    "tool": "bash",
+    "kinds": [
+     "sim"
+    ],
+    "what": "python -c: The LL differences are very small. This is because:",
+    "detail": {
+     "python_lines": 49,
+     "writes": [],
+     "scripts_run": [],
+     "sim_calls": [
+      "Simulator",
+      "episodes"
+     ],
+     "python_gist": "The LL differences are very small. This is because:"
+    },
+    "result": {
+     "seen": true,
+     "chars": 857
+    }
+   },
+   {
+    "turn": 37,
+    "tool": "bash",
+    "kinds": [
+     "lab"
+    ],
+    "what": "python -c: Let's collect some real data first",
+    "detail": {
+     "python_lines": 13,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "reset": 1,
+      "advance": 1
+     },
+     "lab_input_sites": [
+      {
+       "op": "advance",
+       "class": "zero",
+       "evidence": "static: an integer T: T ticks without input"
+      }
+     ],
+     "python_gist": "Let's collect some real data first"
+    },
+    "result": {
+     "seen": true,
+     "chars": 1332
+    }
+   },
+   {
+    "turn": 38,
+    "tool": "bash",
+    "kinds": [
+     "sim",
+     "write"
+    ],
+    "what": "cat > /workspace/build_predictor.py << 'PYEOF'",
+    "detail": {
+     "python_lines": 57,
+     "writes": [
+      [
+       "build_predictor.py",
+       77
+      ]
+     ],
+     "scripts_run": [
+      "build_predictor.py"
+     ],
+     "sim_calls": [
+      "Simulator",
+      "episodes"
+     ],
+     "python_gist": "Generate many parameter draws from prior"
+    },
+    "result": {
+     "seen": true,
+     "chars": 180
+    }
+   },
+   {
+    "turn": 39,
+    "tool": "bash",
+    "kinds": [
+     "sim",
+     "write"
+    ],
+    "what": "cat > /workspace/predict.py << 'PYEOF'",
+    "detail": {
+     "python_lines": 137,
+     "writes": [
+      [
+       "predict.py",
+       234
+      ]
+     ],
+     "scripts_run": [
+      "predict.py"
+     ],
+     "sim_calls": [
+      "Simulator"
+     ],
+     "python_gist": "Load precomputed episodes"
+    },
+    "result": {
+     "seen": true,
+     "chars": 52
+    }
+   },
+   {
+    "turn": 40,
+    "tool": "bash",
+    "kinds": [
+     "validate"
+    ],
+    "what": "python -c: Test with the example requests",
+    "detail": {
+     "python_lines": 6,
+     "writes": [],
+     "scripts_run": [],
+     "lab_call_sites": {
+      "validate": 1
+     },
+     "lab_input_sites": [],
+     "python_gist": "Test with the example requests"
+    },
+    "result": {
+     "seen": false
+    }
+   }
+  ],
+  "by_kind": {
+   "validate": {
+    "calls": 1,
+    "turns": 1,
+    "model_s": 2.2,
+    "tools_s": 1.9
+   },
+   "lab": {
+    "calls": 7,
+    "turns": 7,
+    "model_s": 40.8,
+    "tools_s": 9.8
+   },
+   "lab-info": {
+    "calls": 1,
+    "turns": 1,
+    "model_s": 3.5,
+    "tools_s": 0.6
+   },
+   "sim": {
+    "calls": 23,
+    "turns": 23,
+    "model_s": 376.7,
+    "tools_s": 171.0
+   },
+   "read": {
+    "calls": 8,
+    "turns": 8,
+    "model_s": 28.3,
+    "tools_s": 4.7
+   }
+  },
+  "milestones": {
+   "first_simulator_run": {
+    "turn": 7,
+    "t_s": 20.7
+   },
+   "first_laboratory_experiment": {
+    "turn": 10,
+    "t_s": 40.8
+   },
+   "first_write_under_submission/": null,
+   "first_validation": {
+    "turn": 40,
+    "t_s": 641.4
+   },
+   "submit": null
+  },
+  "lab_record_given": true,
+  "lab_route": {
+   "tool": 0,
+   "python": 9
+  },
+  "lab_requests": [
+   {
+    "t_s": 38.5,
+    "turn": 9,
+    "episode": null,
+    "op": "card",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 0.00095367431640625
+   },
+   {
+    "t_s": 38.5,
+    "turn": 9,
+    "episode": null,
+    "op": "usage",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 2.86102294921875e-05
+   },
+   {
+    "t_s": 41.4,
+    "turn": 10,
+    "episode": 1,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 1.7127337455749512
+   },
+   {
+    "t_s": 43.1,
+    "turn": 10,
+    "episode": 1,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 1.3027822971343994
+   },
+   {
+    "t_s": 63.1,
+    "turn": 12,
+    "episode": 1,
+    "op": "experiment",
+    "ok": false,
+    "kind": "request",
+    "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 4096",
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 7.82012939453125e-05
+   },
+   {
+    "t_s": 67.3,
+    "turn": 13,
+    "episode": 2,
+    "op": "experiment",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 17,
+    "nats": 0.0,
+    "seconds": 0.017244338989257812
+   },
+   {
+    "t_s": 112.9,
+    "turn": 17,
+    "episode": 3,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0017328262329101562
+   },
+   {
+    "t_s": 112.9,
+    "turn": 17,
+    "episode": 3,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.004911899566650391
+   },
+   {
+    "t_s": 113.0,
+    "turn": 17,
+    "episode": 4,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0009942054748535156
+   },
+   {
+    "t_s": 113.0,
+    "turn": 17,
+    "episode": 4,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.0051920413970947266
+   },
+   {
+    "t_s": 113.0,
+    "turn": 17,
+    "episode": 5,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0009295940399169922
+   },
+   {
+    "t_s": 113.0,
+    "turn": 17,
+    "episode": 5,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.0047757625579833984
+   },
+   {
+    "t_s": 113.0,
+    "turn": 17,
+    "episode": 6,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0008628368377685547
+   },
+   {
+    "t_s": 113.0,
+    "turn": 17,
+    "episode": 6,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.004691362380981445
+   },
+   {
+    "t_s": 113.0,
+    "turn": 17,
+    "episode": 7,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0008559226989746094
+   },
+   {
+    "t_s": 113.0,
+    "turn": 17,
+    "episode": 7,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.00541377067565918
+   },
+   {
+    "t_s": 179.9,
+    "turn": 21,
+    "episode": 8,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0032978057861328125
+   },
+   {
+    "t_s": 180.0,
+    "turn": 21,
+    "episode": 8,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.007120609283447266
+   },
+   {
+    "t_s": 573.2,
+    "turn": 37,
+    "episode": 9,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0019092559814453125
+   },
+   {
+    "t_s": 573.3,
+    "turn": 37,
+    "episode": 9,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.025822877883911133
+   },
+   {
+    "t_s": 573.3,
+    "turn": 37,
+    "episode": 10,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0010106563568115234
+   },
+   {
+    "t_s": 573.3,
+    "turn": 37,
+    "episode": 10,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.009912490844726562
+   },
+   {
+    "t_s": 573.3,
+    "turn": 37,
+    "episode": 11,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0009505748748779297
+   },
+   {
+    "t_s": 573.3,
+    "turn": 37,
+    "episode": 11,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.007818460464477539
+   },
+   {
+    "t_s": 573.3,
+    "turn": 37,
+    "episode": 12,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0008611679077148438
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 12,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.005044460296630859
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 13,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.000911712646484375
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 13,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.0050868988037109375
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 14,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0032722949981689453
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 14,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.009721040725708008
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 15,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0015544891357421875
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 15,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.010198593139648438
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 16,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0010700225830078125
+   },
+   {
+    "t_s": 573.4,
+    "turn": 37,
+    "episode": 16,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.009759187698364258
+   },
+   {
+    "t_s": 573.5,
+    "turn": 37,
+    "episode": 17,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.000850677490234375
+   },
+   {
+    "t_s": 573.5,
+    "turn": 37,
+    "episode": 17,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.008939266204833984
+   },
+   {
+    "t_s": 573.5,
+    "turn": 37,
+    "episode": 18,
+    "op": "reset",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 1,
+    "nats": 0.0,
+    "seconds": 0.0008542537689208984
+   },
+   {
+    "t_s": 573.5,
+    "turn": 37,
+    "episode": 18,
+    "op": "advance",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 16,
+    "nats": 0.0,
+    "seconds": 0.012658119201660156
+   },
+   {
+    "t_s": 641.9,
+    "turn": 40,
+    "episode": 18,
+    "op": "validate",
+    "ok": true,
+    "kind": null,
+    "error": null,
+    "ticks": 0,
+    "nats": 0.0,
+    "seconds": 0.6117174625396729
+   }
+  ],
+  "lab_episodes": [
+   {
+    "episode": null,
+    "turn": 9,
+    "t_s": 38.5,
+    "ops": [
+     "card"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": null
+   },
+   {
+    "episode": null,
+    "turn": 9,
+    "t_s": 38.5,
+    "ops": [
+     "usage"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": null
+   },
+   {
+    "episode": 1,
+    "turn": 10,
+    "t_s": 41.4,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": null,
+    "turn": 12,
+    "t_s": 63.1,
+    "ops": [
+     "experiment"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [
+     {
+      "op": "experiment",
+      "kind": "request",
+      "error": "format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 4096"
+     }
+    ],
+    "inputs": null
+   },
+   {
+    "episode": 2,
+    "turn": 13,
+    "t_s": 67.3,
+    "ops": [
+     "experiment"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 3,
+    "turn": 17,
+    "t_s": 112.9,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 4,
+    "turn": 17,
+    "t_s": 113.0,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 5,
+    "turn": 17,
+    "t_s": 113.0,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 6,
+    "turn": 17,
+    "t_s": 113.0,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 7,
+    "turn": 17,
+    "t_s": 113.0,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 8,
+    "turn": 21,
+    "t_s": 179.9,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 9,
+    "turn": 37,
+    "t_s": 573.2,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 10,
+    "turn": 37,
+    "t_s": 573.3,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 11,
+    "turn": 37,
+    "t_s": 573.3,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 12,
+    "turn": 37,
+    "t_s": 573.3,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 13,
+    "turn": 37,
+    "t_s": 573.4,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 14,
+    "turn": 37,
+    "t_s": 573.4,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 15,
+    "turn": 37,
+    "t_s": 573.4,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 16,
+    "turn": 37,
+    "t_s": 573.4,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 17,
+    "turn": 37,
+    "t_s": 573.5,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": 18,
+    "turn": 37,
+    "t_s": 573.5,
+    "ops": [
+     "reset",
+     "advance"
+    ],
+    "ticks": 17,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": "zero (0 nats charged)"
+   },
+   {
+    "episode": null,
+    "turn": 40,
+    "t_s": 641.9,
+    "ops": [
+     "validate"
+    ],
+    "ticks": 0,
+    "nats": 0.0,
+    "rejected": [],
+    "inputs": null
+   }
+  ]
+ },
+ "flags": [
+  {
+   "id": "ended_by_a_cap_or_error",
+   "text": "the rollout did not end by the agent's own choice: stop condition `max_turns`",
+   "turns": [],
+   "items": []
+  },
+  {
+   "id": "last_tool_result_never_seen",
+   "text": "the last reply (turn 40) called a tool whose result never reached the model: validate; whatever it did (a validation attempt, a laboratory request) still counted",
+   "turns": [
+    40
+   ],
+   "items": []
+  },
+  {
+   "id": "lab_errors",
+   "text": "the laboratory rejected 1 request(s) and counted 0 infrastructure error(s) (its counters in the trace); 1 rejection(s) are visible in tool results, 1 in the laboratory's own log",
+   "turns": [
+    12
+   ],
+   "items": [
+    "turn 12: experiment: request: format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 4096"
+   ]
+  },
+  {
+   "id": "python_errors",
+   "text": "2 tool call(s) ended in a Python traceback",
+   "turns": [
+    11,
+    12
+   ],
+   "items": [
+    "turn 11: ValueError: Out of range float values are not JSON compliant: nan",
+    "turn 12: physim2.labclient.LabError: format: inputs must be finite numbers with shape (T, 24), 1 <= T <= 4096"
+   ]
+  },
+  {
+   "id": "no_graded_submission",
+   "text": "nothing gradable was collected (source `final_collection`, error: submission has no predict.py): scored as K",
+   "turns": [],
+   "items": []
+  },
+  {
+   "id": "predictor_outside_submission",
+   "text": "the agent wrote predict.py to `predict.py` and the trace shows no copy under submission/: only submission/ is collected",
+   "turns": [],
+   "items": []
+  }
+ ],
+ "flag_ids_checked": [
+  "ended_by_a_cap_or_error",
+  "last_tool_result_never_seen",
+  "outside_the_workspace",
+  "writes_into_the_public_package",
+  "network_attempt",
+  "lab_errors",
+  "python_errors",
+  "long_stretches",
+  "no_graded_submission",
+  "collected_without_submit",
+  "submission_without_lab_use",
+  "lab_use_not_visible",
+  "predictor_outside_submission",
+  "predictor_unreadable",
+  "predictor_ignores_history",
+  "predictor_ignores_program"
+ ],
+ "predictor_check": {
+  "source": "the trace (the agent's last write to `predict.py`)",
+  "parsed": true,
+  "has_predict": true,
+  "params": [
+   "history",
+   "program",
+   "queries",
+   "n_samples",
+   "seed"
+  ],
+  "open_signature": false,
+  "lines": 234,
+  "history": {
+   "parameter": "history",
+   "reads": 3,
+   "shape_only": false
+  },
+  "program": {
+   "parameter": "program",
+   "reads": 2,
+   "shape_only": false
+  }
+ },
+ "limits": [
+  "The laboratory does not log the inputs of a request, only ticks and nats: `zero` is exact (0 nats charged), `blind` or `structured` for requests made from Python is a reading of the code that ran in that turn, and is absent when that code is not in the trace.",
+  "The predictor check is a static reading: an argument passed on to a helper counts as read, and what the code does with it is not judged.",
+  "What the agent read is taken from the commands it wrote: files opened inside a Python script, by a module it imported, or by a helper file the trace never shows are not seen; a path that is mentioned may not have been read. Network attempts likewise: names of tools and libraries, not packets.",
+  "Kinds, input classes and flags are heuristics over text (the README lists the rules); the numbers of sections 1 to 4 are not.",
+  "Why the agent did something, whether its modelling was sound, and whether real data ever entered its fit are for a reader of transcript.md.",
+  "The noise shown is over the items of one instance; nothing here says how the agent would do on another hidden world."
+ ]
+}

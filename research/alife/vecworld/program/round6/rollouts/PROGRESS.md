@@ -100,6 +100,35 @@ For the next runner on this machine (the same wrappers work for any model):
 3. Afterwards `tools/here.py ... run_report.py`, `tools/extract.py`, `tools/scan_key.py` (and
    `tools/redact_values.py` if it reports account identifiers), then the ledger and the commit.
 
+## Report tool (toolsmith session of 11 Nov 2026; no rollout, no model call, no Docker run, $0)
+
+Purpose: one command that turns the saved trace of one rollout plus the instance's reference table into a
+report a person can read, with no model in the loop.
+
+- 11:33 Own worktree; read the Qwen rollout's files and the pinned port (nothing under `../vfport` is touched).
+  The port's `results/` keep no raw trace; the runner's scratch folder still held the seven scripted rollouts of
+  its reference table (`prove.py`), so the scripted test input is one of those (policy S on the same pilot
+  instance) and no new instance was opened.
+- 11:47 `tools/rollout_report.py` (work in progress, committed): scores beside the reference policies, usage and
+  cost, budgets, timeline, flags.
+- 11:56 DONE. `tools/rollout_report.py`, `tools/README_rollout_report.md` (inputs, the rules behind the
+  heuristics, what a trace alone cannot tell), `tools/test_rollout_report.py` (37 checks, all passing: the
+  tool's numbers against the runner's `result.json`, `reference_noise.json`, `LEDGER.md` and `prove.py`'s table;
+  synthetic traces for the paths no model has used yet). Example reports: `qwen_ring_001/rollout_report.md`
+  and `scripted_ring_S/rollout_report.md` (each with its `.json`). New folder `scripted_ring_S/`: the scripted
+  trace and the laboratory's log of that rollout, as test inputs.
+  Before the commit: 0 credentials and 0 account identifiers (`tools/scan_key.py`), 0 hidden values of the pilot
+  instance in the new files.
+
+For the next runner: after `tools/extract.py`, add one step,
+
+    python -B tools/rollout_report.py --trace NAME/trace.redacted.jsonl --reference NAME/reference/PROOF.json \
+        --model-entry NAME/model_entry.json --lab-record NAME/lab_record.json --items NAME/per_item_scores.json \
+        --name NAME --out NAME/rollout_report
+
+and read section 6 (flags) and section 5 (timeline) of the result before the transcript. The reference table
+must be the one of the rollout's own instance (the tool refuses another instance or commitment).
+
 ## astra_ring_001 (the first rollout of a strong model; runner session of 11 Nov 2026, in the cloud container)
 
 Purpose: see what a strong agent does on the same exam and where it lands among the reference policies; look for

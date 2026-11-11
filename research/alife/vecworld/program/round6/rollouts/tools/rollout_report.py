@@ -12,9 +12,9 @@ trace.redacted.jsonl), and PROOF.json, the reference table of ../vfport/tools/pr
   2 scores             the agent beside K, null, D, PM, P0, S, C, O: mean loss, skill, item bootstrap, per-item spread
   3 usage and cost     per-call usage as the provider reported it, priced with --prices (USD per million tokens)
   4 budgets            turns, tokens, wall clock, laboratory ticks and nats, attempts, predictor limits, each against its cap
-  5 timeline           every tool call with its kind (read, sim, lab, lab-info, validate, submit, write, compute),
-                       turn, time and durations; laboratory requests with ticks, nats and the class of their inputs
-  6 flags              things worth a human look (see FLAGS below and the README)
+  5 timeline           every tool call with its kind (read, write, compute, sim, lab, lab-info, validate, submit,
+                       network), turn, time and durations; laboratory requests with ticks, nats and input class
+  6 flags              things worth a human look (FLAG_IDS below; the rules are in README.md)
   7 limits             what this report could not see with the inputs it was given
 
 Optional inputs make it exact where the trace alone is not:
@@ -37,7 +37,7 @@ import numpy as np
 
 MARK = "PILOT_NEVER_REUSE_AS_EXAM"
 LAB_TOOLS = {"lab_call", "call", "lab.call", "lab__call", "mcp__lab__call"}
-KIND_ORDER = ["submit", "validate", "lab", "lab-info", "sim", "compute", "write", "read", "talk", "other"]
+KIND_ORDER = ["network", "submit", "validate", "lab", "lab-info", "sim", "compute", "write", "read", "talk", "other"]
 ENDED_BY_AGENT = {"agent_completed", "frozen"}
 
 # ---- what the agent's own text is matched against (documented in the README; all of it is heuristic) ----
@@ -64,9 +64,9 @@ ABS_PATH = re.compile(r"(?<![\w.:/\\])(/(?:" + ROOTS + r")(?:/[\w.*?\[\]~+-]+)*|
 HARMLESS = re.compile(r"^/(dev/null|tmp(/|$)|usr/bin/env$|(usr/)?(local/)?bin/(python[\d.]*|bash|sh|env)$)")
 ESCAPE = re.compile(
     r"(?:^|[\s'\"=(])(?:\.\./|\.\.(?=[\s'\")]|$)|~/|\$HOME\b)"                                # up and out of the workspace, or the home folder
-    r"|\b(?:ls|cd|find|du|tree|grep|cat)\s+(?:-\S+\s+)*/(?=\s|$)|['\"]/['\"]"                    # the root of the box, in a command or in code
+    r"|\b(?:ls|cd|find|du|tree|grep|cat)\s+(?:-\S+\s+)*/(?=[\s;&|)]|$)|['\"]/['\"]"                    # the root of the box, in a command or in code
     r"|\bos\.environ\b(?!\s*\[[^\]\n]*\]\s*=[^=])(?!\.setdefault)|\bgetenv\(|(?:^|[;&|]\s*)(?:printenv|env)\s*(?:$|[|>;\n])"   # reads the environment
-    r"|docker\.sock|(?:^|[;&|]\s*)(?:mount|ps)\b", re.M)
+    r"|docker\.sock|(?:^|[;&|]\s*)(?:mount|ps|ln\s+-\w*s)\b", re.M)
 
 
 def one_line(s, n=70):
@@ -76,6 +76,11 @@ def one_line(s, n=70):
 
 def code_span(s, n=70):
     return "`" + one_line(s, n).replace("`", "'").replace("|", "¦") + "`"
+
+
+def load_json(path):
+    with open(path) as f:
+        return json.load(f)
 
 
 def load_trace(path, episode):
@@ -99,7 +104,7 @@ def boot(per_item, n_boot=4000, seed=0):
 
 
 def scores(tr, ref_path, items_path):
-    proof = json.load(open(ref_path))
+    proof = load_json(ref_path)
     data, ph = tr["task"]["data"], (tr.get("info") or {}).get("physim2") or {}
     iid, g = data.get("instance_id"), ph.get("grade") or {}
     worlds = [w.get("instance_id") for w in proof.get("per_world", [])]
@@ -119,18 +124,19 @@ def scores(tr, ref_path, items_path):
     n = len(per["K"])
     # ---- the agent's per-item scores: a file, or one of three cases where the reference table already holds them ----
     agent, failed, classes, source = None, None, None, None
-    ref_twin = next((p for p, r in (pw.get("rollouts") or {}).items() if r.get("trace_id") == tr.get("id")), None)
+    ref_twin = next((p for p, r in (pw.get("rollouts") or {}).items() if r.get("trace_id") == tr.get("id")), None) or next(
+        (p for p, r in (proof.get("one_box_per_item_check_world_0") or {}).items() if w == 0 and r.get("trace_id") == tr.get("id") and r.get("identical_per_item_scores")), None)
     if items_path and items_path.endswith(".npz"):
         zi = np.load(items_path, allow_pickle=False)
         agent, failed, source = zi["es"][:, valid].sum(1), zi["failed"].astype(bool), "--items (the store's grade file)"
     elif items_path:
-        d = json.load(open(items_path))
+        d = load_json(items_path)
         agent = np.asarray(d["agent_per_item_per_cell"], float)[:, valid].sum(1)
         failed, classes = np.asarray(d["agent_item_failed"], bool), d.get("program_class_per_item")
         source = "--items (extract.py's per_item_scores.json, rounded to 6 decimals)"
     elif ref_twin:
         agent, failed = per[ref_twin], z[f"failed_{ref_twin}"][w].astype(bool)
-        source = f"the reference table: this trace IS its rollout of policy {ref_twin} (same trace id)"
+        source = f"the reference table: this trace is one of its own rollouts of policy {ref_twin} (same trace id)"
     elif g.get("n_items") == n and g.get("n_failed") == n:
         agent, failed, source = per["K"].copy(), np.ones(n, bool), "the rule: every item failed, and a failed item is scored as K"
     elif (tr.get("rewards", {}).get("skill") or {}).get("score") is None:
@@ -352,6 +358,8 @@ def read_bash(cmd, files, workdir):
         kinds.add("write")
     if READ_CMD.search(re.sub(r"\bcat\s*(?=>|<<)", "", plain)):          # `cat > file << EOF` writes, it does not read
         kinds.add("read")
+    if NETWORK.search(cmd) or URL.search(cmd):
+        kinds.add("network")
     if code and not kinds & {"lab", "sim", "validate", "submit"}:
         kinds.add("compute" if PY_WORK.search(code) or (d["python_lines"] or 0) > 20 else "read")
         d["python_only_inspects"] = "compute" not in kinds
@@ -365,8 +373,8 @@ def read_bash(cmd, files, workdir):
 
 def lab_tool_call(args, result, sigma, reset_cost):
     """One call of the laboratory TOOL: everything about the request is in the trace."""
-    op, a = args.get("op"), args.get("args") or {}
-    d = {"op": op, "via": "tool"}
+    op, a = args.get("op"), args.get("args") if isinstance(args.get("args"), dict) else {}
+    d = {"op": op if isinstance(op, str) else None, "via": "tool"}
     try:
         rep = json.loads(result) if isinstance(result, str) else None
     except ValueError:
@@ -412,6 +420,30 @@ def content_text(c):
     return c
 
 
+def read_call(name, namespace, args, res, files, workdir, sigma, reset_cost):
+    """Kinds, details and a one-line description of one tool call, and the text of it that the flags search
+    (what the agent itself wrote; the numbers of an inputs array are left out)."""
+    text = "\n".join(str(v) for v in args.values() if isinstance(v, str))
+    if name in LAB_TOOLS or namespace == "lab":
+        kinds, d = lab_tool_call(args, res, sigma, reset_cost)
+        what = f"lab tool: {d['op']}" + (f" ({d['inputs']['class']} inputs)" if "inputs" in d else "")
+        inner = args.get("args") if isinstance(args.get("args"), dict) else {}
+        text += "\n" + json.dumps({k: v for k, v in inner.items() if k != "inputs"})
+    elif "command" in args:
+        kinds, d = read_bash(str(args["command"]), files, workdir)
+        first = re.sub(rf"^\s*cd\s+{re.escape(workdir)}/?\s*(&&|;)\s*", "", str(args["command"]).strip())
+        what = first.splitlines()[0] if first else ""
+        if re.search(r"-c\s+['\"]\s*$", what) and d.get("python_gist"):
+            what = re.sub(r"\s*['\"]\s*$", "", what) + ": " + d["python_gist"]
+    elif "old_str" in args or "new_str" in args:
+        p = norm_path(str(args.get("path", "")), workdir)
+        files[p] = files[p].replace(str(args.get("old_str", "")), str(args.get("new_str", "")), 1) if p in files else str(args.get("new_str", ""))
+        kinds, d, what = {"write"}, {"writes": [(p, str(args.get("new_str", "")).count("\n") + 1)]}, f"edit {p}"
+    else:
+        kinds, d, what = {"other"}, {}, name + " " + one_line(json.dumps(args), 50)
+    return kinds, d, what, text
+
+
 def timeline(tr, lab_log, sigma, reset_cost):
     nodes, calls, tm = tr.get("nodes") or [], tr.get("calls") or [], tr.get("timing") or {}
     workdir = (tr["task"]["data"].get("workdir") or "/workspace").rstrip("/")
@@ -442,23 +474,10 @@ def timeline(tr, lab_log, sigma, reset_cost):
                 args = {"_unparsed": str(tc.get("arguments"))}
             args = args if isinstance(args, dict) else {"_value": args}
             res = results.get(tc.get("id"))
-            text = "\n".join(str(v) for v in args.values() if isinstance(v, str))      # what the agent itself wrote
-            if name in LAB_TOOLS or tc.get("namespace") == "lab":
-                kinds, d = lab_tool_call(args, res, sigma, reset_cost)
-                what = f"lab tool: {d['op']}" + (f" ({d['inputs']['class']} inputs, {d.get('ticks')} ticks)" if "inputs" in d else "")
-                text = json.dumps({k2: v for k2, v in (args.get("args") or {}).items() if k2 != "inputs"})
-            elif "command" in args:
-                kinds, d = read_bash(str(args["command"]), files, workdir)
-                first = re.sub(rf"^\s*cd\s+{re.escape(workdir)}/?\s*(&&|;)\s*", "", str(args["command"]).strip())
-                what = first.splitlines()[0] if first else ""
-                if re.search(r"-c\s+['\"]\s*$", what) and d.get("python_gist"):
-                    what = re.sub(r"\s*['\"]\s*$", "", what) + ": " + d["python_gist"]
-            elif "old_str" in args or "new_str" in args:
-                p = norm_path(str(args.get("path", "")), workdir)
-                files[p] = files[p].replace(str(args.get("old_str", "")), str(args.get("new_str", "")), 1) if p in files else str(args.get("new_str", ""))
-                kinds, d, what = {"write"}, {"writes": [(p, str(args.get("new_str", "")).count("\n") + 1)]}, f"edit {p}"
-            else:
-                kinds, d, what = {"other"}, {}, name + " " + one_line(json.dumps(args), 50)
+            try:
+                kinds, d, what, text = read_call(name, tc.get("namespace"), args, res, files, workdir, sigma, reset_cost)
+            except Exception as e:                           # one odd command must not sink the report
+                kinds, d, what, text = {"other"}, {"reader_error": type(e).__name__}, f"{name} (not read: {type(e).__name__})", json.dumps(args)
             rows.append({"turn": k + 1, "tool": name, "kinds": sorted(kinds, key=KIND_ORDER.index), "what": one_line(what, 70), "detail": d,
                          "result": result_status(res), "_text": text})
     # ---- the laboratory's own log, matched to turns by time (a request belongs to the turn whose tools were running) ----
@@ -520,7 +539,7 @@ def predictor_check(src):
     """Does predict() read its history and program arguments? Parsed, never run."""
     try:
         tree = ast.parse(src)
-    except (SyntaxError, ValueError) as e:
+    except (SyntaxError, ValueError, RecursionError, MemoryError) as e:
         return {"parsed": False, "error": type(e).__name__}
     fn = next((n for n in ast.walk(tree) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and n.name == "predict"), None)
     if fn is None:
@@ -540,7 +559,7 @@ def predictor_check(src):
     return out
 
 
-def flags(tr, turns, rows, lab, files, sub_dir, long_s, score):
+def flags(tr, turns, rows, lab, files, sub_dir, long_s):
     ph = (tr.get("info") or {}).get("physim2") or {}
     labc, sub, out = ph.get("lab") or {}, ph.get("submission") or {}, []
 
@@ -564,18 +583,22 @@ def flags(tr, turns, rows, lab, files, sub_dir, long_s, score):
                     and p != (tr["task"]["data"].get("workdir") or "/workspace"):
                 seen.append((r["turn"], p))
         for m in ESCAPE.finditer(text):
-            seen.append((r["turn"], one_line(m.group(0).strip(" '\"=("), 30)))
+            seen.append((r["turn"], one_line(m.group(0).strip(" ;&|'\"=(\n"), 30)))
     if seen:
+        seen = sorted(set(seen))
         add("outside_the_workspace", f"{len(seen)} mention(s) of a path outside the workspace, of the environment, or of the box's wiring in what the agent wrote "
             "(a mention is not proof of a read: look at the turns)", [t for t, _ in seen], [f"turn {t}: {p}" for t, p in seen[:25]])
+    pkg = sorted({(r["turn"], p) for r in rows for p, _ in r["detail"].get("writes") or [] if str(p).startswith("physim2/")})
+    if pkg:
+        add("writes_into_the_public_package", "the agent wrote into physim2/, the public package that the predictor and the local check import", [t for t, _ in pkg], [f"turn {t}: {p}" for t, p in pkg[:25]])
     net = [(r["turn"], (m.group(1) or m.group(2) or "").strip()) for r in rows for m in NETWORK.finditer(r.get("_text") or "")]
-    net += [(r["turn"], one_line(u, 60)) for r in rows for u in URL.findall(r.get("_text") or "")]
+    net = sorted(set(net + [(r["turn"], one_line(u, 60)) for r in rows for u in URL.findall(r.get("_text") or "")]))
     if net:
         add("network_attempt", f"{len(net)} command(s) or call(s) that reach for the network (the box has none; physim2.Lab() itself is not counted)",
             [t for t, _ in net], [f"turn {t}: {w}" for t, w in net[:25]])
     # -- errors from the laboratory
     seen_err = [(r["turn"], r["result"]["lab_error"]) for r in rows if r["result"].get("lab_error")]
-    seen_err += [(r["turn"], f"{r['detail'].get('error_kind')}: {r['detail'].get('error')}") for r in rows if r["detail"].get("via") == "tool" and r["detail"].get("ok") is False]
+    seen_err += [(r["turn"], f"{r['detail'].get('op')}: {r['detail'].get('error_kind')}: {r['detail'].get('error')}") for r in rows if r["detail"].get("via") == "tool" and r["detail"].get("ok") is False]
     rec_err = [(x["turn"], f"{x['op']}: {x['kind']}: {x['error']}") for x in (lab or []) if not x["ok"]]
     if labc.get("rejected") or labc.get("infrastructure_errors") or seen_err or rec_err:
         use = rec_err or seen_err
@@ -610,7 +633,8 @@ def flags(tr, turns, rows, lab, files, sub_dir, long_s, score):
     # -- the predictor's source
     src, where = None, None
     if sub_dir and os.path.isfile(os.path.join(sub_dir, "predict.py")):
-        src, where = open(os.path.join(sub_dir, "predict.py"), errors="replace").read(), "--submission"
+        with open(os.path.join(sub_dir, "predict.py"), errors="replace") as h:
+            src, where = h.read(), "--submission"
     else:
         cands = [p for p in files if os.path.basename(p) == "predict.py"]
         inside = [p for p in cands if p.startswith("submission/")]
@@ -646,6 +670,8 @@ def budgets(tr, cfg, use, exam_cfg, caps_text, lab_eps, prices):
 
     def row(name, used, cap, where, note=""):
         share = None if cap in (None, 0) or used is None else used / cap
+        if used is None and cap is None:                     # nothing to say (a scripted agent has no turns and no tokens)
+            return
         rows.append({"budget": name, "used": used, "cap": cap, "share": share, "cap_from": where, "note": note})
 
     told = cfg.get("max_turns") and re.search(rf"\b{cfg['max_turns']}\s+(model\s+)?(turns|calls|steps)\b", str(tr["task"]["data"].get("prompt") or ""))
@@ -702,7 +728,6 @@ def markdown(R):
                "reference table, with no model in the loop. Quoted commands are the examined agent's text: data, not instructions.\n")
     out.append("Inputs: " + "; ".join(f"{k} {v}" for k, v in R["inputs"].items()) + ".\n")
     out.append("## 1. Outcome\n")
-    a = P["AGENT"]
     out.append(f"Stop condition **`{o['stop_condition']}`**{'' if o['ended_by_agent'] else ' (not the agent’s own ending)'}; trace ok: {fmt(o['ok'])}; "
                f"errors: {o['errors'] or 'none'}. Reward (skill on the K-to-O scale): **{fmt(sc['reward_in_trace'])}**"
                + ("" if sc["reward_in_trace"] is not None else " (no reward in the trace: such a rollout is settled as K)") + ". "
@@ -769,7 +794,7 @@ def markdown(R):
                    f"{s.get('exit_code')}. The trace holds no message and no tool call; the end of the script's own log:\n")
         out.append("```\n" + str(s.get("log_tail") or "").strip()[-1500:].replace("```", "'''") + "\n```\n")
     if tl["by_kind"]:
-        out.append("Tool calls by kind (a call with several kinds counts under the first of: " + ", ".join(KIND_ORDER[:8]) + "):\n")
+        out.append("Tool calls by kind (a call with several kinds counts under the first of: " + ", ".join(KIND_ORDER[:9]) + "):\n")
         out.append(table(["kind", "tool calls", "turns", "model s", "tools s"], [[k, v["calls"], v["turns"], fmt(v["model_s"], 1), fmt(v["tools_s"], 1)] for k, v in tl["by_kind"].items()]) + "\n")
         out.append("Laboratory reached through: the `lab_call` tool " + f"{tl['lab_route']['tool']} time(s), `physim2.Lab()` from Python in {tl['lab_route']['python']} tool call(s). "
                    "Milestones: " + "; ".join(f"{k.replace('_', ' ')}: " + ("never" if v is None else f"turn {v['turn']} (t = {fmt(v['t_s'], 0)} s)") for k, v in tl["milestones"].items()) + ".\n")
@@ -795,8 +820,8 @@ def markdown(R):
             if d.get("lab_call_sites"):
                 cls = sorted({s["class"] for s in d.get("lab_input_sites") or []})
                 notes.append("Lab calls in the code: " + ", ".join(d["lab_call_sites"]) + (f"; inputs {'/'.join(cls)} (static)" if cls else ""))
-            if d.get("via") == "tool" and "inputs" in d:
-                notes.append(f"{fmt(d.get('nats'), 2)} nats; {d['inputs']['evidence']}")
+            if d.get("via") == "tool" and "ticks" in d:
+                notes.append((f"{d['ticks']} ticks, {fmt(d.get('nats'), 2)} nats" if d.get("ok") else "nothing ran") + ("; " + d["inputs"]["evidence"] if "inputs" in d else ""))
             if d.get("local_check"):
                 notes.append("local check, not the laboratory's")
             lr = t.get("lab_record") if first else None
@@ -843,7 +868,7 @@ def markdown(R):
     return "\n".join(out)
 
 
-FLAG_IDS = ["ended_by_a_cap_or_error", "last_tool_result_never_seen", "outside_the_workspace", "network_attempt", "lab_errors", "python_errors",
+FLAG_IDS = ["ended_by_a_cap_or_error", "last_tool_result_never_seen", "outside_the_workspace", "writes_into_the_public_package", "network_attempt", "lab_errors", "python_errors",
             "long_stretches", "no_graded_submission", "collected_without_submit", "submission_without_lab_use", "lab_use_not_visible",
             "predictor_outside_submission", "predictor_unreadable", "predictor_ignores_history", "predictor_ignores_program"]
 
@@ -870,7 +895,7 @@ def main(argv=None):
         raise SystemExit("this trace is not of the physim2-env taskset (no info.physim2)")
     prices = None
     if a.model_entry:
-        e = json.load(open(a.model_entry))
+        e = load_json(a.model_entry)
         p = (e.get("entry") or e).get("pricing") or {}
         prices = {"input": p["input_usd_per_mtok"], "output": p["output_usd_per_mtok"], "cache_read": p.get("cache_read_usd_per_mtok"),
                   "context_window": (e.get("entry") or e).get("context_window"), "source": a.price_source or e.get("source") or os.path.basename(a.model_entry)}
@@ -880,7 +905,8 @@ def main(argv=None):
     lab_log = None
     if a.lab_record:
         f = os.path.join(a.lab_record, "log.jsonl") if os.path.isdir(a.lab_record) else a.lab_record
-        raw = open(f).read()
+        with open(f) as h:
+            raw = h.read()
         try:
             lab_log = json.loads(raw)["log"]
         except (ValueError, KeyError, TypeError):
@@ -894,7 +920,7 @@ def main(argv=None):
     us = usage(tr, prices, cfg)
     turns, rows, lab, files = timeline(tr, lab_log, float(m_sig.group(1)) if m_sig else None, (exam_cfg.get("lab") or {}).get("reset_cost", 1))
     eps = None if lab is None else lab_episodes(lab, rows)
-    fl, pc = flags(tr, turns, rows, lab, files, a.submission, a.long_s, sc)
+    fl, pc = flags(tr, turns, rows, lab, files, a.submission, a.long_s)
     # ---- summaries of the timeline ----
     by_kind, T = {}, {t["turn"]: t for t in turns}
     for r in rows:
