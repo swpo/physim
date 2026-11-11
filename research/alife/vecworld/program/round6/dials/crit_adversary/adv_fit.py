@@ -181,6 +181,21 @@ def main():
     out["closed_h_le_16"] = {k: float((Lh["pub"] - v)[:, :3].sum() / gap[:, :3].sum()) for k, v in Lh.items() if k not in ("pub", "O")}
     out["closed_without_heaviest_member"] = {k: float((Lh["pub"] - v)[tm != heavy].sum() / gap[tm != heavy].sum())
                                              for k, v in Lh.items() if k not in ("pub", "O")}
+    ex = [j for j, h in enumerate(hs) if h in (8, 16, 32)]   # the design's declared exam horizons
+    out["closed_h_8_16_32"] = {k: float((Lh["pub"] - v)[:, ex].sum() / gap[:, ex].sum()) for k, v in Lh.items() if k not in ("pub", "O")}
+    hv = tm == heavy                                         # the heaviest member's items: focus-view cell mass, mean over items and futures
+    out["heaviest_member_focus_mass"] = {"at_start": float(Yt[hv, :, 0, 0].mean()), "truth_h32": float(Yt[hv, :, 32, 0].mean()),
+                                         "public_law_h32": float(pub[hv, :, 32, 0].mean()), "public_law_no_input_h32": float(pub0[hv, :, 32, 0].mean()),
+                                         "share_of_gap_at_h32": float(gap[hv, 3].sum() / gap.sum())}
+
+    def paired(a, b, cols):                                  # closed(a) - closed(b) over the given horizons, bootstrap over members
+        f = lambda idx: float((Lh[b] - Lh[a])[idx][:, cols].sum() / gap[idx][:, cols].sum())  # noqa: E731
+        return [f(all_idx), float(np.std([f(bb) for bb in boots], ddof=1))]
+    out["paired_differences_value_se"] = {}
+    for a, b in (("G2", "H"), ("A_act_n16", "H"), ("A_act_n16", "G2")):
+        if a in Lh and b in Lh:
+            out["paired_differences_value_se"][f"{a} - {b} | h<=16"] = paired(a, b, [0, 1, 2])
+            out["paired_differences_value_se"][f"{a} - {b} | h=32"] = paired(a, b, [3])
     if "Hh" in d:
         out["H_fit_lam_rho_DX"] = d["H_fit"].tolist()
     if ref is not None:                                      # the designer's file for the same seed: are the items the same?
@@ -195,6 +210,9 @@ def main():
         print(f"  {k:14s} share {v['value']:+.3f} (se {v['se_members']:.3f})  by h {np.round(out['closed_by_horizon'][k], 2).tolist()}  "
               f"h<=16 {out['closed_h_le_16'][k]:+.2f}  w/o heaviest {out['closed_without_heaviest_member'][k]:+.2f}  "
               f"{extra.get('fit_g0_g1_tau_blur', '')}")
+    print("  paired", {k: np.round(v, 2).tolist() for k, v in out["paired_differences_value_se"].items()})
+    print("  exam horizons 8,16,32:", {k: round(v, 2) for k, v in out["closed_h_8_16_32"].items() if k in ("G2", "H", "A_act_n16", "A_in_n16")},
+          "heaviest", {k: round(v, 2) for k, v in out["heaviest_member_focus_mass"].items()})
     print("  gap by horizon", np.round(out["gap_pub_to_O"]["share_by_horizon"], 2).tolist(), "by member",
           {k: round(v, 2) for k, v in out["gap_pub_to_O"]["share_by_test_member"].items()})
     if ref is not None:

@@ -22,7 +22,7 @@ Deliverable: CRITIQUE.md (under 900 words) in this folder.
   close 1.03, so the gap is all conditional mean. Next recipe (`adv_act.py`): the public law run under a linearly
   filtered command (4 numbers on a 39-point grid), so that the public law's own nonlinear growth carries the
   correction to 32 ticks. Running on seed 5.
-- 14:27: `adv_act.py` on seed 5 (development) and seed 6 (recipe frozen before it ran). Results in
+- 14:21: `adv_act.py` on seed 5 (development) and seed 6 (recipe frozen before it ran). Results in
   `results/adv_s5.json`, `results/adv_s6.json` (`adv_fit.py`). Both seeds reproduce the designer's L(pub), L(pub0),
   L(O), L(G2) exactly; on seed 6 the designer's H is re-run here and reproduces its share (0.773).
   Share of the public-to-oracle gap closed at 4 / 8 / 16 / 32 ticks:
@@ -34,3 +34,26 @@ Deliverable: CRITIQUE.md (under 900 words) in this folder.
   Reading: generic repair closes about 0.8 up to 16 ticks (as well as or better than the told form); the design's
   resistance is the 32-tick horizon alone. Seeds 7 and 8 running with `bank=0` (the designer's runs only, for G2
   by horizon on four seeds). Then CRITIQUE.md.
+- 14:30: seeds 7 and 8 done (`bank=0`: the designer's runs only). G2 at 4 / 8 / 16 / 32 ticks: seed 7 0.98 0.84 0.52 0.03
+  (pooled 0.27, se 0.17), seed 8 1.02 0.92 0.66 0.06 (pooled 0.58, se 0.10). `make_summary.py` -> `results/summary.json`.
+  CRITIQUE.md written (893 words counting table cells, 845 by `wc -w`).
+- DONE. CPU used: 1,397 CPU-s of simulation in six runs (adv_sim seeds 5, 6, 7, 8: 267, 438, 138, 128 s; adv_act seeds
+  5, 6: 224, 202 s), fits in seconds; one process at a time; no GPU job, no model call. Scratch deleted, worktree
+  removed after the last push. Nothing outside this folder was changed (a `gvh.py` import only).
+
+## Files
+
+| file | what |
+|---|---|
+| `CRITIQUE.md` | the deliverable |
+| `adv_sim.py` | repeats `sublevel_second/gvh.py` call for call, keeps the focus view at every tick, adds public-law runs under delayed / blurred commands; `H=1` re-runs the designer's told-form fit, `bank=0` skips the filter bank |
+| `adv_act.py` | the public law under a linearly filtered command: 39-point grid fitted on the Lab, test ensembles at the best point |
+| `adv_fit.py` -> `results/adv_s<seed>.json` | fits the form-free recipes on the Lab, scores every policy as `gvh.py` does, by horizon and by member |
+| `make_summary.py` -> `results/summary.json` | the numbers of CRITIQUE.md section 1 in one file |
+
+Commands (CPU, `OMP_NUM_THREADS=1 nice -n 10`, the vw1 venv's python -B; ARGS = `1 64 16 <seed> cat=1 rho=0.02 DX=0.5 a0=0.03`):
+`adv_sim.py S.npz ARGS [H=1] [bank=0]`; `adv_act.py S.npz A.npz ARGS`;
+`adv_fit.py S.npz results/adv_s<seed>.json <designer's gvh json or -> [A.npz]`; `make_summary.py`.
+Raw arrays (S.npz, A.npz) were scratch only; the scripts regenerate them. Seed 5 was the development seed of the
+recipes; seed 6 ran after they were frozen; seeds 7 and 8 are the designer's runs only. All hidden values are the
+designer's pilot values: never to be reused as an exam.

@@ -1,0 +1,419 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "what": "share of the public-to-oracle gap closed on sublevel_second/gvh.py's check (chosen carrier: lam 1, cat 1, rho 0.02, DX 0.5, a0 0.03; 64 px; 16 Lab episodes), by horizon; source files results/adv_s<seed>.json",
+ "horizons": [
+  4,
+  8,
+  16,
+  32
+ ],
+ "rows": [
+  {
+   "seed": 5,
+   "policy": "G2",
+   "closed_by_horizon": [
+    0.91,
+    0.871,
+    0.656,
+    -0.454
+   ],
+   "closed_h_le_16": 0.788,
+   "closed_h_8_16_32": 0.023,
+   "pooled": 0.105,
+   "pooled_se_members": 0.167,
+   "fit": null
+  },
+  {
+   "seed": 5,
+   "policy": "A_in_n16",
+   "closed_by_horizon": [
+    0.901,
+    0.856,
+    0.547,
+    -0.045
+   ],
+   "closed_h_le_16": 0.735,
+   "closed_h_8_16_32": 0.245,
+   "pooled": 0.305,
+   "pooled_se_members": 0.158,
+   "fit": null
+  },
+  {
+   "seed": 5,
+   "policy": "A_act_n4",
+   "closed_by_horizon": [
+    0.06,
+    -0.004,
+    0.065,
+    -0.015
+   ],
+   "closed_h_le_16": 0.038,
+   "closed_h_8_16_32": 0.004,
+   "pooled": 0.009,
+   "pooled_se_members": 0.031,
+   "fit": [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "seed": 5,
+   "policy": "A_act_n8",
+   "closed_by_horizon": [
+    0.883,
+    0.821,
+    0.689,
+    0.06
+   ],
+   "closed_h_le_16": 0.778,
+   "closed_h_8_16_32": 0.332,
+   "pooled": 0.383,
+   "pooled_se_members": 0.197,
+   "fit": [
+    0.25,
+    1.0,
+    3.0,
+    2.0
+   ]
+  },
+  {
+   "seed": 5,
+   "policy": "A_act_n16",
+   "closed_by_horizon": [
+    0.883,
+    0.821,
+    0.689,
+    0.06
+   ],
+   "closed_h_le_16": 0.778,
+   "closed_h_8_16_32": 0.332,
+   "pooled": 0.383,
+   "pooled_se_members": 0.197,
+   "fit": [
+    0.25,
+    1.0,
+    3.0,
+    2.0
+   ]
+  },
+  {
+   "seed": 5,
+   "policy": "ceiling_true_mean",
+   "closed_by_horizon": [
+    1.076,
+    1.072,
+    1.081,
+    0.987
+   ],
+   "closed_h_le_16": 1.077,
+   "closed_h_8_16_32": 1.022,
+   "pooled": 1.027,
+   "pooled_se_members": 0.049,
+   "fit": null
+  },
+  {
+   "seed": 6,
+   "policy": "G2",
+   "closed_by_horizon": [
+    0.812,
+    0.937,
+    0.767,
+    -0.05
+   ],
+   "closed_h_le_16": 0.839,
+   "closed_h_8_16_32": 0.283,
+   "pooled": 0.341,
+   "pooled_se_members": 0.101,
+   "fit": null
+  },
+  {
+   "seed": 6,
+   "policy": "A_in_n16",
+   "closed_by_horizon": [
+    0.677,
+    0.404,
+    0.221,
+    -0.17
+   ],
+   "closed_h_le_16": 0.4,
+   "closed_h_8_16_32": 0.007,
+   "pooled": 0.081,
+   "pooled_se_members": 0.082,
+   "fit": null
+  },
+  {
+   "seed": 6,
+   "policy": "A_act_n4",
+   "closed_by_horizon": [
+    0.923,
+    0.897,
+    0.837,
+    0.058
+   ],
+   "closed_h_le_16": 0.88,
+   "closed_h_8_16_32": 0.357,
+   "pooled": 0.419,
+   "pooled_se_members": 0.153,
+   "fit": [
+    0.25,
+    1.0,
+    3.0,
+    2.0
+   ]
+  },
+  {
+   "seed": 6,
+   "policy": "A_act_n8",
+   "closed_by_horizon": [
+    0.923,
+    0.897,
+    0.837,
+    0.058
+   ],
+   "closed_h_le_16": 0.88,
+   "closed_h_8_16_32": 0.357,
+   "pooled": 0.419,
+   "pooled_se_members": 0.153,
+   "fit": [
+    0.25,
+    1.0,
+    3.0,
+    2.0
+   ]
+  },
+  {
+   "seed": 6,
+   "policy": "A_act_n16",
+   "closed_by_horizon": [
+    0.923,
+    0.897,
+    0.837,
+    0.058
+   ],
+   "closed_h_le_16": 0.88,
+   "closed_h_8_16_32": 0.357,
+   "pooled": 0.419,
+   "pooled_se_members": 0.153,
+   "fit": [
+    0.25,
+    1.0,
+    3.0,
+    2.0
+   ]
+  },
+  {
+   "seed": 6,
+   "policy": "H",
+   "closed_by_horizon": [
+    0.565,
+    0.623,
+    0.604,
+    0.908
+   ],
+   "closed_h_le_16": 0.601,
+   "closed_h_8_16_32": 0.799,
+   "pooled": 0.773,
+   "pooled_se_members": 0.076,
+   "fit": null
+  },
+  {
+   "seed": 6,
+   "policy": "ceiling_true_mean",
+   "closed_by_horizon": [
+    1.065,
+    1.1,
+    1.14,
+    1.009
+   ],
+   "closed_h_le_16": 1.107,
+   "closed_h_8_16_32": 1.05,
+   "pooled": 1.052,
+   "pooled_se_members": 0.032,
+   "fit": null
+  },
+  {
+   "seed": 7,
+   "policy": "G2",
+   "closed_by_horizon": [
+    0.983,
+    0.843,
+    0.517,
+    0.025
+   ],
+   "closed_h_le_16": 0.761,
+   "closed_h_8_16_32": 0.198,
+   "pooled": 0.271,
+   "pooled_se_members": 0.173,
+   "fit": null
+  },
+  {
+   "seed": 7,
+   "policy": "ceiling_true_mean",
+   "closed_by_horizon": [
+    1.084,
+    1.091,
+    1.106,
+    1.011
+   ],
+   "closed_h_le_16": 1.094,
+   "closed_h_8_16_32": 1.034,
+   "pooled": 1.039,
+   "pooled_se_members": 0.028,
+   "fit": null
+  },
+  {
+   "seed": 8,
+   "policy": "G2",
+   "closed_by_horizon": [
+    1.02,
+    0.919,
+    0.663,
+    0.061
+   ],
+   "closed_h_le_16": 0.819,
+   "closed_h_8_16_32": 0.542,
+   "pooled": 0.584,
+   "pooled_se_members": 0.101,
+   "fit": null
+  },
+  {
+   "seed": 8,
+   "policy": "ceiling_true_mean",
+   "closed_by_horizon": [
+    1.162,
+    1.055,
+    1.061,
+    0.481
+   ],
+   "closed_h_le_16": 1.071,
+   "closed_h_8_16_32": 0.862,
+   "pooled": 0.888,
+   "pooled_se_members": 0.165,
+   "fit": null
+  }
+ ],
+ "cpu_s": {
+  "seed5_adv_sim": 266.950956415,
+  "seed6_adv_sim": 437.764425349,
+  "seed7_adv_sim": 138.19463398300002,
+  "seed8_adv_sim": 127.62913865099999,
+  "adv_act_seed5_seed6": "224.1 and 202.3 (printed by adv_act.py; logs were scratch)",
+  "total_about": 1397
+ },
+ "seed5": {
+  "gap_share_by_horizon": [
+   0.092,
+   0.168,
+   0.19,
+   0.551
+  ],
+  "largest_member_share_of_gap": 0.554,
+  "n_test_members": 8,
+  "heaviest_member_focus_mass": {
+   "at_start": 385.9702768619325,
+   "truth_h32": 469.58722962314135,
+   "public_law_h32": 214.36965886844519,
+   "public_law_no_input_h32": 64.27720375219606,
+   "share_of_gap_at_h32": 0.495711669314599
+  },
+  "paired_differences_value_se": {
+   "A_act_n16 - G2 | h<=16": [
+    -0.010121037845530442,
+    0.06727962120779159
+   ],
+   "A_act_n16 - G2 | h=32": [
+    0.5132097864041688,
+    3.891616244299878
+   ]
+  },
+  "designer_file_max_abs_diff_L": 0.0,
+  "role": "development seed of the adversary's recipes"
+ },
+ "seed6": {
+  "gap_share_by_horizon": [
+   0.11,
+   0.157,
+   0.173,
+   0.56
+  ],
+  "largest_member_share_of_gap": 0.339,
+  "n_test_members": 7,
+  "heaviest_member_focus_mass": {
+   "at_start": 611.2569155686623,
+   "truth_h32": 341.15850302903647,
+   "public_law_h32": 303.08213810587165,
+   "public_law_no_input_h32": 448.7568258576095,
+   "share_of_gap_at_h32": 0.276713503781916
+  },
+  "paired_differences_value_se": {
+   "G2 - H | h<=16": [
+    0.23817255374889115,
+    0.043872594083767605
+   ],
+   "G2 - H | h=32": [
+    -0.9580240010463776,
+    0.1216008874656716
+   ],
+   "A_act_n16 - H | h<=16": [
+    0.2792406165296002,
+    0.0717684940988313
+   ],
+   "A_act_n16 - H | h=32": [
+    -0.8501176238468714,
+    0.23813262113976566
+   ],
+   "A_act_n16 - G2 | h<=16": [
+    0.041068062780708986,
+    0.04694761890171352
+   ],
+   "A_act_n16 - G2 | h=32": [
+    0.10790637719950609,
+    0.21345209608810442
+   ]
+  },
+  "designer_file_max_abs_diff_L": 0.0,
+  "role": "recipes frozen before this seed ran; the designer's H re-run"
+ },
+ "seed7": {
+  "gap_share_by_horizon": [
+   0.093,
+   0.117,
+   0.124,
+   0.666
+  ],
+  "largest_member_share_of_gap": 0.496,
+  "n_test_members": 8,
+  "heaviest_member_focus_mass": {
+   "at_start": 664.234099842953,
+   "truth_h32": 1173.8261256631533,
+   "public_law_h32": 1019.4789973465589,
+   "public_law_no_input_h32": 1072.5263547780878,
+   "share_of_gap_at_h32": 0.4654321641788878
+  },
+  "paired_differences_value_se": {},
+  "designer_file_max_abs_diff_L": null,
+  "role": "the designer's runs only (bank=0)"
+ },
+ "seed8": {
+  "gap_share_by_horizon": [
+   0.087,
+   0.299,
+   0.304,
+   0.31
+  ],
+  "largest_member_share_of_gap": 0.31,
+  "n_test_members": 6,
+  "heaviest_member_focus_mass": {
+   "at_start": 350.76065362475236,
+   "truth_h32": 212.92288666288883,
+   "public_law_h32": 87.80253424787468,
+   "public_law_no_input_h32": 45.56305672845582,
+   "share_of_gap_at_h32": 0.20713902995445713
+  },
+  "paired_differences_value_se": {},
+  "designer_file_max_abs_diff_L": null,
+  "role": "the designer's runs only (bank=0)"
+ }
+}
