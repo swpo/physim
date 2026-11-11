@@ -16,3 +16,15 @@ Nearest things done where the plan, the assignment or DECLARED.md could not be f
    the hash is computed and printed by the job before its first gate run (`ranges.sha256`, stdout, every gate
    process checks it), and the file and its hash are committed here from the job's output. The rule that turns
    the scans into ranges was committed before the job (DECLARED.md 2.6).
+3. **11 Nov, 16:31 UTC, a second job.** `r6-dialsb-001` was stopped by its own speed guard after 5 minutes (exit 3;
+   $0.0432 billed, `jobs/r6-dialsb-001/status.json` [cost.billed_usd]): `job.sh` exports `OMP_NUM_THREADS=1`
+   before it calls `nproc`, and GNU `nproc` then answers 1, so the job planned one process at a time on a
+   16-vCPU machine (projected 20,762 s against the guard's 9,000). The local tests had set `S0_NPROC` by hand
+   and could not see it. The presmoke passed on the machine. This is a failure "for a reason that is not a
+   result" (DECLARED.md 2.7): `r6-dialsb-002` is the same tested commit, pinned by `ref`, with the one
+   environment variable `S0_NPROC=16`. No line of code and no declared size or rule changed.
+   What the failed job showed before it stopped, stated here so that nobody can say it was used silently: its
+   presmoke ran scan C's centre point at full size and printed gaps of 0.130 (no input), 0.142 (blind) and
+   0.364 (aimed) (`jobs/r6-dialsb-001/out/presmoke.json` [scanC_point]). By the rule of DECLARED.md 2.6 the
+   centre is then not "silent" (thresholds 0.03 and 0.05), so scan C will be recorded as failed and the gate
+   will run every seed at the pilot centre. The rule stands as declared; nothing was changed in response.
