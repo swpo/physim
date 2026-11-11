@@ -10,6 +10,7 @@ order in which they were put to the lead; the roadmap's own number is in bracket
 | 3 [4] | rollouts with real agents | decided 9 Nov | cleared to spend; a cheap model first for mechanics, then Astra |
 | 4 [7] | the same model on v1 and v2 fed vortices | decided 9 Nov | not a priority now; not scheduled |
 | 5 [6] | where sealed answers live, and who grades | decided 10 Nov | a private Hugging Face dataset repo, not the lead's Mac; the grader must build on the verifiers library, not reinvent it |
+| 5b | where the port's first runs happen | decided 11 Nov (relayed) | smoke test on a rented Prime CPU machine first; model rollout on the Mac; no credential on a rented machine |
 | 6 [5, 6] | the collective pilot and the large foundry pass | decided 10 Nov | both wait; a collective, if run, is run from the coordinator's session with Claude sessions as agents |
 
 Roadmap decision 3 (the acceptance definition) was not put separately. The two quantities of roadmap section 1
@@ -101,6 +102,22 @@ sure to take a look at primes verifiers library we're using and make sure we're 
 - Not needed for the Qwen mechanics check or the first Astra look, which use pilot worlds that are never reused.
 - Still needed from the lead when it is built: the private repo under an account or organisation of the lead's choice,
   and the two tokens.
+
+## 5b. Where the first runs of the verifiers port happen (11 Nov, relayed by the Mac session)
+
+After three host-safety audit rounds had cleared the scripted smoke test for the Mac, the lead decided, in words
+relayed by the Mac session: "Actually just use remote stuff from prime right? Why even go through all this intense
+care if you can rent a cheap machine to do it? And then totally safe", and then: "Model run on Mac is fine I think.
+Fair that we don't want to ship the credentials to the rented machine."
+
+- The scripted, model-free smoke test (runbook steps 0 to 2) runs first on a rented Prime CPU machine through the Mac
+  runner, as a cheap pre-check (`../round6/vfsmoke`). No credential goes to a rented machine.
+- The model rollout (step 3) runs on the Mac, where the model key is. Steps 0 to 2 run there once, right before it,
+  from a newly pinned commit that the Mac session reviews first, and after the lead has settled Docker Desktop's
+  disk limit and the price.
+- Lesson for the coordinator: the question "which machine" should have been put to the lead before the audit rounds,
+  not after. The scripted test had already passed on Linux in the cloud container; only the model key ties anything
+  to the Mac.
 
 ## 6. The collective pilot and the large foundry pass
 
