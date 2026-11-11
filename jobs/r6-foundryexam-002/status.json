@@ -19,10 +19,20 @@
     "src_bytes": 14801151
   },
   "cap_usd": 8.4,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 2.0477
+  "collected": {
+    "error": null,
+    "files": 27,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 1532608,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 1.9196,
+    "conservative_usd": 2.0553
+  },
+  "exit_code": null,
+  "finished_at": "2026-11-11T12:41:29Z",
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
@@ -48,11 +58,21 @@
       "at": "2026-11-11T11:43:38Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-11T12:41:05Z",
+      "message": "job cancelled; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-11T12:41:29Z",
+      "message": "job cancelled; pods terminated",
+      "state": "cancelled"
     }
   ],
   "job_id": "r6-foundryexam-002",
   "max_estimate_usd": 6.96,
-  "message": "heartbeat",
+  "message": "job cancelled; pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -105,7 +125,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 1.9196,
       "created_at": "2026-11-11T11:39:32Z",
       "data_center": "us-east-1",
       "gpu": "A100_40GB",
@@ -118,11 +138,11 @@
       "ready_at": "2026-11-11T11:43:29Z",
       "requested_at": "2026-11-11T11:39:10Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-11T12:41:09Z"
     }
   ],
-  "pods_terminated": null,
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-11T12:01:02Z",
     "file": "jobs/r6-foundryexam-002/review.md",
@@ -132,7 +152,7 @@
   "run_deadline": "2026-11-11T14:58:38Z",
   "run_started_epoch": 1794397149.3358269,
   "started_at": "2026-11-11T11:43:38Z",
-  "state": "running",
+  "state": "cancelled",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n27 171/323, pool:control2027 3/5, N30 132/240, N10 207/240 (70s)\n11:51:11 [   1.4 min]   sim code-norm 256/256\n11:51:28 [   1.7 min]   sim P train g0 2048/13440\n11:53:08 [   3.4 min] P group prior: 210 training worlds x 64 episodes, 16 hidden\n11:54:07 [   4.4 min] P hidden world 4: lab + exam + plug-ins + ridge done (58s so far)\n11:54:49 [   5.1 min] P hidden world 8: lab + exam + plug-ins + ridge done (100s so far)\n11:55:31 [   5.8 min] P hidden world 12: lab + exam + plug-ins + ridge done (142s so far)\n11:56:14 [   6.5 min] P hidden world 16: lab + exam + plug-ins + ridge done (184s so far)\n11:56:30 [   6.8 min]   sim P C 2048/24576\n11:58:40 [   8.9 min]   sim P C 18432/24576\n12:00:51 [  11.1 min]   net P P0 g0 step 1000/12000 train 0.1422 val [0.1488, 0.1492] (76s)\n12:02:00 [  12.3 min]   net P P0 g0 step 2000/12000 train 0.1191 val [0.1417, 0.1434] (146s)\n12:03:10 [  13.4 min]   net P P0 g0 step 3000/12000 train 0.1149 val [0.1394, 0.1402] (215s)\n12:04:19 [  14.6 min]   net P P0 g0 step 4000/12000 train 0.1232 val [0.1379, 0.1387] (284s)\n12:05:28 [  15.7 min]   net P P0 g0 step 5000/12000 train 0.1136 val [0.1357, 0.1368] (353s)\n12:06:37 [  16.9 min]   net P P0 g0 step 6000/12000 train 0.1147 val [0.1361, 0.1353] (423s)\n12:07:47 [  18.0 min]   net P P0 g0 step 7000/12000 train 0.1138 val [0.1346, 0.1351] (492s)\n12:08:56 [  19.2 min]   net P P0 g0 step 8000/12000 train 0.1147 val [0.1345, 0.1353] (561s)\n12:10:05 [  20.3 min]   net P P0 g0 step 9000/12000 train 0.1090 val [0.1337, 0.1352] (630s)\n12:11:14 [  21.5 min]   net P P0 g0 step 10000/12000 train 0.1189 val [0.1337, 0.1341] (700s)\n12:12:23 [  22.6 min]   net P P0 g0 step 11000/12000 train 0.1119 val [0.1331, 0.1341] (769s)\n12:13:33 [  23.8 min]   net P P0 g0 step 12000/12000 train 0.1000 val [0.134, 0.135] (838s)\n12:14:49 [  25.1 min]   net P A g0 step 1000/12000 train 0.1318 val [0.1475, 0.1491] (76s)\n12:15:59 [  26.2 min]   net P A g0 step 2000/12000 train 0.1246 val [0.142, 0.1416] (146s)\n12:17:09 [  27.4 min]   net P A g0 step 3000/12000 train 0.1118 val [0.1385, 0.1408] (215s)\n12:18:18 [  28.6 min]   net P A g0 step 4000/12000 train 0.1114 val [0.1373, 0.1423] (285s)\n12:19:28 [  29.7 min]   net P A g0 step 5000/12000 train 0.1282 val [0.1362, 0.1367] (355s)\n12:20:37 [  30.9 min]   net P A g0 step 6000/12000 train 0.1222 val [0.1351, 0.1368] (424s)\n12:21:47 [  32.0 min]   net P A g0 step 7000/12000 train 0.1071 val [0.1358, 0.1372] (494s)\n12:22:56 [  33.2 min]   net P A g0 step 8000/12000 train 0.1075 val [0.1361, 0.1347] (563s)\n12:24:06 [  34.4 min]   net P A g0 step 9000/12000 train 0.1057 val [0.1357, 0.1335] (633s)\n12:25:15 [  35.5 min]   net P A g0 step 10000/12000 train 0.1043 val [0.1347, 0.1336] (702s)\n12:26:25 [  36.7 min]   net P A g0 step 11000/12000 train 0.1145 val [0.1336, 0.1337] (772s)\n12:27:34 [  37.8 min]   net P A g0 step 12000/12000 train 0.1036 val [0.1335, 0.1329] (841s)\n12:28:48 [  39.1 min]   net P P0s g0 step 1000/12000 train 0.1500 val [0.155, 0.1536] (73s)\n== out/progress.txt\nPILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material\n11:43:46 [job.sh] start, size full, arms P,N30,N10, max hours 3.0, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\nname, memory.total [MiB], driver_version\nNVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08\n11:49:42 [job.sh] presmoke exit 0\n11:49:42 [job.sh] full pass: 2.901 h left of 3.0\n",
-  "updated_at": "2026-11-11T12:29:41Z"
+  "updated_at": "2026-11-11T12:41:29Z"
 }
