@@ -54,6 +54,9 @@ assert os.path.realpath(os.path.dirname(vw.__file__)) == os.path.realpath(os.pat
 assert os.path.realpath(os.path.dirname(_paths.__file__)) == os.path.realpath(PORT), _paths.__file__
 
 
+_FIXED = ("/home/user/evalwork/vecworld/vw1/port", "/home/user/evalwork/vecworld/program/track2/actuation")
+
+
 def _path(p):
     if p not in sys.path:
         sys.path.append(p)
@@ -145,10 +148,14 @@ def gliders() -> CL.Adapter:
     for p in (ACT, GE):
         _path(p)
     _path(FOUNDRY)
+    for p in _FIXED:          # gworld.py and wind.py insert these fixed paths at the front unless already present:
+        _path(p)              # appended here, so that this repository's copies are the ones imported everywhere
     import gworld as GW
     import flowlenia_jax as FJ
     import phi as PH
     import tnca as TN
+    for mod, where in ((GW, GE), (FJ, PORT), (PH, PORT), (GW.WD, ACT)):
+        assert os.path.realpath(os.path.dirname(mod.__file__)) == os.path.realpath(where), (mod.__file__, where)
     lev0, cfg, _ = FJ.make_level("A_gliders", GW.NOISE_STD)
     _, trv, _ = PH.phi_objects_jax("A_gliders")
     prior = json.load(open(os.path.join(GE, "results", "prior.json")))
