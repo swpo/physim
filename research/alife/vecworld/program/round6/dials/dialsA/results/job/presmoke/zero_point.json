@@ -1,0 +1,15 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "B": 64,
+ "backend": "gpu",
+ "max_abs_xw0_minus_gworld": 6.722089551658428e-11,
+ "max_abs_gworld_rerun": 9.199441208807002e-11,
+ "max_abs_xw4_minus_gworld": 3.0551681125153447,
+ "bitwise_xw0_equals_gworld": false,
+ "bitwise_gworld_rerun": false,
+ "level0_max": 4.672979335049302,
+ "channel0_mass_lost_xw4_fraction": 0.060799731877521745,
+ "total_mass_rel_change_xw4": 2.220446049250313e-16,
+ "tolerance": 1e-08,
+ "ok": true
+}

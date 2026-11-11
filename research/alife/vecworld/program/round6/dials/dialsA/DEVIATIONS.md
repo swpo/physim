@@ -33,3 +33,11 @@ Each entry: when, what the plan says, what was done instead, why. `DECLARED.md` 
    the 24,000-step rung. `r6-dialsa-003`, pushed by the coordinator at 17:01, is the job that runs: the same
    pinned commit (f38f88ac0), paths, run line, hours and cap, without that allocator setting. No code, size,
    seed or criterion differs between the four requests.
+6. **11 Nov 2026, 18:25 UTC, after the job. The base nets are not converged by the plan's rule.** As entry 1
+   foresaw, the rule was unmet at every rung and at the cap: best validation steps 22,750 to 24,000 of 24,000.
+   Done as declared (R16): the 24,000-step nets are the scored ones, they are reported as "not converged by the
+   rule", and all three rungs are scored (s with the true-form net alone 0.247, 0.267, 0.279; sigma at the zero
+   point 0.013, 0.015, 0.017). Fine-tunes and D nets met the rule at their first schedule; no doubling of theirs
+   was needed and the clock cut nothing. After the results were seen, reported-only numbers were added to
+   `make_summary.py` (the science share by budget and by horizon, the cross-validation gain, the counts of chosen
+   ridges); no criterion, threshold or pick was touched.

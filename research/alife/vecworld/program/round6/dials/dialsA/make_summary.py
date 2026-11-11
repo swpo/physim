@@ -201,6 +201,20 @@ if g:
         K = S.L("K", e4, cls=cls)
         sg[f"sigma_against_P0|{name}"] = short(ST.ratio(S.L("P0", e4, cls=cls) - Lc, K - Lc))
         sg[f"sigma_against_G|{name}"] = short(ST.ratio(Lg - Lc, K - Lc))
+    for nb in budgets:                                       # what generic repair leaves, by Lab budget
+        if not (S.has(f"FT@{nb}") or S.has(f"RES@{nb}")) or not S.has(f"CFT@{nb}"):
+            continue
+        for name, cls in (("all", ALL), ("aimed_regional", TRIG)):
+            Lc, _ = ST.C_of(S, e4, nb, cls)
+            Lg, _ = ST.G_of(S, e4, nb, cls)
+            sg[f"sigma_against_G@{nb}|{name}"] = short(ST.ratio(Lg - Lc, S.L("K", e4, cls=cls) - Lc))
+    for i, h in enumerate(HS):                               # by horizon at the primary budget
+        for name, cls in (("all", ALL), ("aimed_regional", TRIG)):
+            Lc, _ = ST.C_of(S, e4, NB, cls, [i])
+            Lg, _ = ST.G_of(S, e4, NB, cls, [i])
+            K = S.L("K", e4, cls=cls, hsel=[i])
+            sg[f"h{h}|sigma_against_P0|{name}"] = short(ST.ratio(S.L("P0", e4, cls=cls, hsel=[i]) - Lc, K - Lc), ("value", "se"))
+            sg[f"h{h}|sigma_against_G|{name}"] = short(ST.ratio(Lg - Lc, K - Lc), ("value", "se"))
 rep["science_share_eta4"] = sg
 # sigma at the zero point once more through round 5's own function (acceptance.shares, bootstrap over worlds)
 try:
@@ -243,8 +257,21 @@ tr = {"source": f"{args.job}: train_info.json"}
 tr["base"] = [{k: b.get(k) for k in ("steps", "best_step", "best_val", "rule_met", "seconds", "stopped_early", "net_order")}
               | {"val_mean_curve": [[h["step"], h["val_mean"]] for h in b.get("hist", [])]} for b in TR.get("base", [])]
 tr["fine_tunes"] = {nb: [{"steps": f["steps"], "rule_met": f["rule_met"], "rule": f["rule"], "timing": {k: v for k, v in f["timing"].items()
-                                                                                                    if not k.startswith("group_")}}
+                                                                                                    if not k.startswith("group_")},
+                          "cv_gain_at_the_chosen_step_relative": {
+                              g_: float(np.mean([(v["curve"][0] - min(v["curve"])) / v["curve"][0] for k, v in f["per_net"].items()
+                                                 if k.split("|")[0] == g_.split("|")[0]
+                                                 and f"eta{S.etas[int(k.split('|')[1])]:g}" == g_.split("|")[1]]))
+                              for g_ in f["rule"]}}
                          for f in fs] for nb, fs in TR.get("ft", {}).items()}
+tr["res_cv_ridge_counts"] = {}
+for name, dd in (TR.get("res_cv_ridge") or {}).items():
+    cnt = {}
+    for key, ch in dd.items():
+        for c_, lam in ch.items():
+            k2 = f"{key.split('|')[0]}|{c_}|{lam}"
+            cnt[k2] = cnt.get(k2, 0) + 1
+    tr["res_cv_ridge_counts"][name] = dict(sorted(cnt.items()))
 # a group stopped on the job's clock is NOT trained by the plan's rule, whatever its best step (review of the job)
 tr["D"] = {nb: [{"steps": d["steps"], "best_steps": [b for g_ in d["groups"] for b in g_["best_step"]],
                  "stopped_on_the_clock": [g_.get("stopped_early") for g_ in d["groups"] if g_.get("stopped_early") is not None],

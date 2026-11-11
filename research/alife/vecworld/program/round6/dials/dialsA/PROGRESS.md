@@ -63,3 +63,9 @@ Worktree `/home/user/wt/dialsA`, branch `wt-dialsA`; scratch
   miss for reasons that are not harness faults, namely final-rung nets against round 5's 6,000-step sigma and
   RES(8) fitting noise at eta 0; a next code revision should run 25-50 steps per dispatch).
 - Running: job `r6-dialsa-003`. Expected end about 18:50 UTC (the script stops itself at 1.9 h).
+- 11 Nov 18:30 UTC. `r6-dialsa-003` DONE at 18:14 (exit 0, 62 min on the pod, billed $2.08; nothing failed,
+  nothing cut). Outputs copied to `results/job/` (nets.npz stays on origin/gpu-jobs), `results/summary.json`
+  made, README.md written, DEVIATIONS entry 6. Verdicts by the declared rules: zero point holds; s = 0.279 (the
+  stand-in holds); g = 0.471, bounds 0.427 and 0.515: REFUTED. The rule is not undecided, so NO extension is
+  requested. Study total billed: $2.08 of the $8 cap.
+- Done: everything. Running: nothing. Jobs: none open. Scratch deleted; worktree removed.

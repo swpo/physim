@@ -1,0 +1,28 @@
+{
+ "what": "plain-numpy recomputation of the headline from results/job/scores.npz (job r6-dialsa-003)",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "recomputed": {
+  "sigma_0": 0.017003812135401867,
+  "s_aimed_regional": 0.2791528358295113,
+  "g_all": 0.47133199117880126,
+  "g_aimed_regional": 0.5375369947905975,
+  "g_contrast_mean_se_upper90": [
+   -0.0703949743002239,
+   0.008578922999320697,
+   -0.05825579825618511
+  ]
+ },
+ "summary_headline": {
+  "sigma_0": 0.0170038120234085,
+  "s_aimed_regional": 0.27915283701644983,
+  "g_all": 0.4713319888477192,
+  "g_aimed_regional": 0.5375369944568638,
+  "g_contrast_mean_se_upper90": [
+   -0.0703949753424644,
+   null,
+   -0.058255797206244395
+  ]
+ },
+ "max_abs_difference": 2.3310820496114104e-09,
+ "agrees": true
+}
