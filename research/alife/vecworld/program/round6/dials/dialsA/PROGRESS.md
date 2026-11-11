@@ -36,3 +36,9 @@ Worktree `/home/user/wt/dialsA`, branch `wt-dialsA`; scratch
   Since the first push: an extension mode in `run_a.py` (`--extension`, DECLARED R19; not tested yet, not used by
   this job) and a merge of two jobs in `make_summary.py` (`--job2`).
 - Running: job `r6-dialsa-001` (requested; both GPU slots may be busy for a while).
+- 11 Nov 16:33 UTC. `r6-dialsa-001` was REJECTED by the runner at 16:26 before any pod ($0): "notes: printable text
+  up to 4000 characters" (mine had about 4,300). Resubmitted as `r6-dialsa-002`: the same request with notes of
+  3,246 characters, pinned to ref f38f88ac0. A tiny CPU pass of the current head (extension mode present, not
+  used) also exits 0.
+- Running: job `r6-dialsa-002` (requested). Locally: a tiny CPU test of the extension mode.
+- Next: as above (wait; review.md first; results to `results/job/`; make_summary; README).

@@ -1,0 +1,41 @@
+{
+ "schema": "gpu-job/v1",
+ "job_id": "r6-dialsa-002",
+ "purpose": "Round-6 dials, study A (gliders calibration): does a generic repair (fine-tuning, per-block residual) of the public-prior net close its gap to the true-form net when the public law lacks stress conversion; 8 truths x eta 0 and 4, 3 seeds per net",
+ "ref": "f38f88ac09b26dff92d524c97309991a48d0d460",
+ "requester": "cloud study dialsA (round 6 dials, plan study A), session_01BZceC7G6m7DgM6KpXjnWXj",
+ "paths": [
+  "research/alife/vecworld/vw1",
+  "research/alife/vecworld/integrate",
+  "research/alife/vecworld/spec",
+  "research/alife/vecworld/level0",
+  "research/alife/vecworld/program/track2/gliders_exam",
+  "research/alife/vecworld/program/track2/actuation",
+  "research/alife/vecworld/program/round4/sbi",
+  "research/alife/vecworld/program/round5/ladder",
+  "research/alife/vecworld/program/round6/dials/defect_gliders",
+  "research/alife/vecworld/program/round6/dials/dialsA"
+ ],
+ "gpu": {
+  "types": [
+   "A100_40GB"
+  ],
+  "count": 1,
+  "spot": false
+ },
+ "max_hours": 2.2,
+ "cap_usd": 5.0,
+ "setup": [
+  "curl -LsSf https://astral.sh/uv/install.sh | sh",
+  "export PATH=$HOME/.local/bin:$PATH",
+  "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+  "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+ ],
+ "run": "cd research/alife/vecworld/program/round6/dials/dialsA && bash job.sh",
+ "env": {
+  "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+  "XLA_PYTHON_CLIENT_ALLOCATOR": "platform",
+  "A_MAX_HOURS": "1.9"
+ },
+ "notes": "Resubmission of r6-dialsa-001 (rejected before any pod, $0: its notes passed 4,000 characters; nothing else changed). Study A of round 6's dials plan (round6/dials/PLAN.md section 2 A), declared in round6/dials/dialsA/DECLARED.md at 94451e27c before any run. PILOT_NEVER_REUSE_AS_EXAM: the 8 truths are round 5's public pilot truths; the world secret is os.urandom and never written. One process (job.sh -> run_a.py). (0) Presmoke at FULL SHAPES and small counts, in the same process so that every program is compiled once: the zero point of the law switch (one tick, 64 members, dlaw.tick at xw = 0 against gworld.tick; on a GPU within max(1e-8, 100 x the rerun difference), because the reintegration's scatter-add is not bit-deterministic), 2 x 512 family episodes in chunks of 256, one truth at eta 0 and 4 (Lab of 64 episodes, two exams of 48 items x 12 replicates = 576-member rollouts, 384-member plug-ins), 6 conditioned block nets in lockstep on 6,144-episode sets (40 + 120 steps), 16 fine-tunes in lockstep at batch 64, D nets, every sampler; then a speed guard: exit 4 if the required stages do not fit. (1) Families: public (round 5's simulator unchanged) and true-form (eta 0 at 384 points, 4 at 384), 768 points x 8 mix episodes each: 1.01 million member-ticks. (2) 8 truths x eta {0, 4}: Lab, two exams, climatology, state-given plug-in: 0.78 million member-ticks. (3) Round 5's scripted inference. (4) Base nets: 3 seeds x 2 families, 6,000 steps, doubled while the training rule is unmet, at most to 24,000; every rung scored. (5) N = 8: cross-validated fine-tunes (400 steps, 16 in lockstep), the per-block residual, S; D(32); then N = 32, N = 2, a control, D(8), D(2) as the clock allows. 1.79 million member-ticks (the plan's 1.80) plus 0.18 million in the presmoke. Expected 1.2-1.5 h on the script's clock from round 5's rates on this card (1,312 member-ticks/s for families, 19-25 s per 48-item exam, 3.9 ms per step of one block net, 17.7 ms per step of 8 small ones); script limit 1.9 h (A_MAX_HOURS), max_hours 2.2. Optional stages run only if the presmoke's estimate fits the time left. Memory: the simulation shapes are round 5's ladder job's, which ran on this card; new are 6 nets on 6,144-episode sets (device data 2.2 GB, largest array 2.3e8 elements) and 16 fine-tunes at batch 64 (step array 1.13e8 elements, as round 5's 8 nets at batch 128). check_elems refuses any call past 2^30 elements, every device array is asserted below 2^31, data go to jitted functions as arguments, allocator platform. Outputs about 15 MB, all public, largest file below 8 MB. Exit non-zero on a failed part, a failed presmoke (1) or the speed guard (4). Cap: $1.99/h x (2.2 + 0.25) h = $4.88, + $0.10 -> 5.0 (the plan's cap; one card type listed for that reason). Code pinned to ref f38f88ac0. CPU tests: check_a.py (results/check_a.json: one tick, a family of 8 members x 10 ticks and a Lab batch are bitwise equal to round 5's code at eta = 0 and differ at eta = 4 on the aimed and regional classes only); the whole of job.sh at tiny shapes (presmoke, speed guard, full pass, exit 0) from a git archive of exactly these paths at 12082fa09, whose job code (run_a.py, a_nets.py, a_stats.py, xlaw.py, job.sh) equals the pinned ref's."
+}
