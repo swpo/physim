@@ -27,3 +27,21 @@ before it rents a pod.
 
 Totals after round 5 (from `origin/gpu-jobs:ledger.json`, 10 Nov 2026): $32.51 billed in round 5, $46.27 billed in all, of $1,000 approved.
 Lessons of round 5 for requests: the nebius H200 is listed at $5.55/h and bills $6.69/h (the runner now prices offers at the billed rate); size a cap as rate x (max_hours + 0.25), rounded up, plus $0.10; a CPU compile-level memory estimate is not a safe proxy for GPU validation memory; on a 40 GB card a fragmented allocator pool can fail at under 20% use (XLA_PYTHON_CLIENT_ALLOCATOR=platform avoided it); the runner publishes its code review of each job at `jobs/<id>/review.md` on the gpu-jobs branch.
+
+Round 6 (rows added as studies finish; billed amounts from each job's status.json on the gpu-jobs branch):
+
+| date | job | session | machine | hours | cost (USD) | cap (USD) | result |
+|---|---|---|---|---|---|---|---|
+| 2026-11-11 | r6-cards-001/002 (world cards of 77 worlds, 140 runs) | Mac runner (round 6 study cards) | A100 40GB (lambdalabs, $1.99/h) | 1.35 | 2.68 | 25 | done, both exit 0 |
+| 2026-11-11 | r6-foundryexam-002/003/004/005 (exam pilot on the foundry automaton with hidden weights) | Mac runner (round 6 study foundryexam) | A100 40GB (lambdalabs, $1.99/h) | 5.88 | 11.70 | 25 | 003, 004, 005 done; 002 cancelled by the runner ($1.92: one dispatch per training step with the platform allocator was about 7 times too slow; the study's own cancel was never pushed); 001 rejected (notes over 4,000 characters, $0) |
+| 2026-11-11 | r6-dialsb-001/002 (CPU gate of the membrane-carrier design: state-given screens) | Mac runner (round 6 study dialsB) | CPU machine, 16 vCPU / 64 GB (nebius, $0.54/h) | about 0.5 | 0.26 | 5 | 002 done; 001 stopped by its own speed guard ($0.04: `nproc` returned 1 because OMP_NUM_THREADS=1 was exported first) |
+
+Round 6 so far: $14.64 billed (the gliders calibration job r6-dialsa-003 is running), $60.91 in all, of $1,000 approved.
+Model spend (rollouts) is a separate total: `../round6/rollouts/LEDGER.md` and `ledger.json`.
+Lessons of round 6 for requests: job ids are lower case and must match the protocol's pattern (an invalid file name is
+dropped without a record); purpose at most 300 characters on one line, notes at most 4,000; do NOT set
+XLA_PYTHON_CLIENT_ALLOCATOR=platform for a loop that dispatches one jitted step per Python iteration (3.5 to 7 times
+slower on the A100; put many steps in one dispatch, and use the platform allocator only when fragmentation is shown);
+compute a process count before exporting OMP_NUM_THREADS, or use `nproc --all`; output file names must differ by more
+than case (the Mac's file system ignores case); a cancel exists only once `<id>.cancel` is on origin (verify with
+`git ls-tree`); the runner rents plain CPU machines for scripted jobs ("types": ["CPU_NODE"]).

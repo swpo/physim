@@ -139,6 +139,41 @@ nearly all the reachable skill, whatever the observed level or the number of hid
 that remain are those of decision 1. Learned coarse-grainings depend on the level-0 theory and on the loss normalisation,
 and none produces objects. Random weights-as-law worlds are cheap to generate and screen.
 
-Round 6 (10 Nov 2026, in progress): `roadmap/GRADER_VS_VERIFIERS.md` (what the verifiers library already provides for
-the grader) and `round6/vfport` (the exam as a verifiers environment on its stock isolated grader, proven with scripted
-agents on Docker, reviewed and red-teamed; a host-safety audit precedes any run on the lead's Mac; no model rollout yet).
+Round 6 (10-11 Nov 2026, in progress; the lead's direction for it is in `roadmap/DECISIONS.md`, section "Direction"):
+- `roadmap/GRADER_VS_VERIFIERS.md` and `round6/vfport`: the exam as a verifiers environment on the library's isolated
+  grader, proven with scripted agents on Docker, reviewed, red-teamed and audited for host safety in three rounds. A
+  fourth round (in progress) carries the exam faults found by the first rollouts, a dollar cap enforced while a run is
+  under way, and rollouts driven by request files for the lead's Mac.
+- `round6/rollouts`: the first two model rollouts, on the ring smoke-test exam, $2.59. A strong model scored 0.964 of
+  the oracle in six minutes with a closed-form filter (an estimated 0.05-0.08 of it from choosing its 32 samples
+  jointly, which the fair energy score rewards); a cheap model was cut by a reply limit it had not been told and
+  scored 0 by rule. The ring is trivially easy for a strong agent and tests bookkeeping in a weak one. Both rollouts
+  exposed faults of the exam (failure paid with climatology, a one-tick reset, token limits that do not bound the bill).
+- `round6/cards`: one card per world and level, computed by one tool on 77 worlds (140 runs, $2.68): predictability by
+  horizon, bodies and whether a single-body law gives their motion, stationarity, the weight of the hidden part given
+  the state, actions, cost. Block-level screen for the science share at 8 ticks: gliders 0.09-0.11, fed vortices
+  0.07-0.09, membrane 0.01, the seven shortlisted foundry worlds 0.28-0.51. Checker: the numbers reproduce; the card
+  does not single out the foundry shortlist independently (in that family the screen is the linear predictor's
+  closure gap, the quantity round 5 selected on); the dial is the horizon, not the clock (at equal world time the
+  cards agree, and a prior-sized error in the hidden part weighs 2-6% of the predictable variance at 8 ticks but
+  32-55% at 32); the rank agreement with round 5's measured shares (0.83 over six cells) is fragile and untested on a
+  positive; seven of twelve controls can hardly fail.
+- `round6/foundryexam`: an exam pilot on the foundry automaton with all 250 weights hidden ($11.70; three arms: the
+  screened prior, and 30% and 10% weight neighbourhoods of three centres). The no-experiment policy's share of the
+  true-weights reference is 0.83-0.87 on the screened prior and at 30%, against 0.958 at 10%. At the declared null
+  (512 Lab episodes) sigma fails the bar in every arm (0.02-0.07): fine-tuning on Lab data closes the gap without a
+  hypothesis. Horizon is the strongest dial: at 16 ticks with 8 Lab episodes sigma is 0.15 or more in all 16 worlds of
+  the screened prior. Checker: every number reproduces; neither the reference nor the no-experiment policy is
+  saturated in compute, so the shares are values at this compute, not bounds; whether the long-horizon gap needs a
+  hypothesis or only more prior simulations is open; no scripted policy chooses its Lab programs, so the study cannot
+  say whether experimenting pays.
+- `round6/dials`: three exam designs under decision 1 (a public law with a hidden term, on gliders; a hidden carrier
+  level under the membrane cells; a compute limit on fed vortices), three adversarial critiques and `PLAN.md`. On a
+  CPU stand-in the gliders term is repaired by a generic residual fitted on one or two Lab episodes (a calibration
+  with real nets is running); the compute limit does not bite on fed vortices (summed small boxes score as exam-size
+  runs do); the membrane carrier withstands the adversary's generic policy only at 32 ticks, and its CPU gate is
+  being read.
+What round 6 says so far: the toy exam is trivially easy for a strong agent. On every other world tried, generic
+recipes (simulate the prior, then fine-tune or fit a residual on Lab data) take most of the skill at short horizons and
+generous Lab budgets. Where they fall short is at long horizons with few Lab episodes, and there the compute given to
+the recipe is a dial of its own. Rollouts in such a setting need exam profiles beyond the ring in the environment.
