@@ -22,7 +22,7 @@
   "cap_usd": 2.5,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.0393
+    "conservative_usd": 0.1559
   },
   "guard_at": null,
   "guard_reason": null,
@@ -53,7 +53,7 @@
   ],
   "job_id": "r6-dialsb-002",
   "max_estimate_usd": 2.03,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "cpu-d3_16vcpu-64gb",
@@ -134,5 +134,6 @@
   "run_started_epoch": 1794414973.227658,
   "started_at": "2026-11-11T16:37:59Z",
   "state": "running",
-  "updated_at": "2026-11-11T16:37:59Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n16:37:57 job: start size=full nproc=16 limit=10800s\nversions: python 3.12.16 jax <ip> numpy 2.5.4 scipy 1.18.1\n16:40:25 gate s30_main H done (2 + 1 points per view)\n16:42:05 gate s30_main stand-in done (42 items)\n16:42:05 presmoke ok wall 244s rate 578 member-ticks/s with compiles, 682 compiled; planned 5822544\nspeed guard: steady rate 682 member-ticks/s per process, planned 5822544 member-ticks, 16 processes: projected 2071 s (limit 9000 s; full size only)\n16:42:05 job: scans: 15 processes, 16 at a time, 10552 s left\n16:45:27 job: ranges.sha256: f6784d4ccb4d3985d619c65a3c5ca97c45731576b9e2459f4c31132e606eefe2  ranges.json\n16:45:27 job: gate: 16 processes, 16 at a time, 10350 s left\n== out/progress.txt\n [0, 1, 2, 3, 5, 6, 7] test states [8, 9, 11, 12, 13, 15] items 24 rate 238 member-ticks/s\n16:47:08 gate s33_control base runs done: lab states [0, 1, 2, 4, 5, 6, 7] test states [8, 10, 11, 12, 13, 15] items 24 rate 237 member-ticks/s\n16:47:08 gate s33_main base runs done: lab states [0, 1, 2, 4, 5, 6, 7] test states [8, 10, 11, 12, 13, 15] items 24 rate 236 member-ticks/s\n16:47:20 gate s31_control base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 14, 15] items 28 rate 232 member-ticks/s\n16:47:20 gate s32_main base runs done: lab states [0, 1, 2, 3, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 252 member-ticks/s\n16:47:20 gate s37_control base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 12, 13, 14, 15] items 28 rate 232 member-ticks/s\n16:47:20 gate s34_main base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 252 member-ticks/s\n16:47:20 gate s38_main base runs done: lab states [0, 1, 2, 3, 4, 5] test states [9, 10, 11, 12, 13, 14, 15] items 28 rate 231 member-ticks/s\n16:47:20 gate s32_control base runs done: lab states [0, 1, 2, 3, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 252 member-ticks/s\n16:47:21 gate s31_main base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 14, 15] items 28 rate 231 member-ticks/s\n16:47:21 gate s37_main base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 12, 13, 14, 15] items 28 rate 231 member-ticks/s\n16:47:21 gate s35_main base runs done: lab states [0, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 251 member-ticks/s\n16:47:21 gate s34_control base runs done: lab states [0, 1, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 251 member-ticks/s\n16:47:21 gate s38_control base runs done: lab states [0, 1, 2, 3, 4, 5] test states [9, 10, 11, 12, 13, 14, 15] items 28 rate 230 member-ticks/s\n16:47:21 gate s35_control base runs done: lab states [0, 2, 3, 4, 5, 6, 7] test states [8, 9, 10, 11, 12, 13, 14, 15] items 32 rate 250 member-ticks/s\n16:49:10 gate s33_control A_act done (39 grid points)\n16:49:10 gate s36_control A_act done (39 grid points)\n16:49:10 gate s33_main A_act done (39 grid points)\n16:49:10 gate s36_main A_act done (39 grid points)\n16:49:27 gate s32_main A_act done (39 grid points)\n16:49:27 gate s32_control A_act done (39 grid points)\n16:49:27 gate s31_control A_act done (39 grid points)\n16:49:27 gate s37_main A_act done (39 grid points)\n16:49:27 gate s38_control A_act done (39 grid points)\n16:49:28 gate s38_main A_act done (39 grid points)\n16:49:43 gate s34_main A_act done (39 grid points)\n16:49:44 gate s37_control A_act done (39 grid points)\n16:49:44 gate s34_control A_act done (39 grid points)\n16:49:44 gate s35_main A_act done (39 grid points)\n16:49:44 gate s31_main A_act done (39 grid points)\n16:49:45 gate s35_control A_act done (39 grid points)\n",
+  "updated_at": "2026-11-11T16:53:33Z"
 }
