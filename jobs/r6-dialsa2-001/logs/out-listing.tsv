@@ -1,0 +1,17 @@
+1220	out/first_look.json
+518375	out/train_info.json
+343030	out/scores_eta12.npz
+3232990	out/scores.npz
+134137	out/identification.json
+3226471	out/nets.npz
+64153	out/progress.txt
+70933	out/info.json
+462	out/presmoke/zero_point.json
+1218	out/presmoke/first_look.json
+17981	out/presmoke/train_info.json
+47193	out/presmoke/scores_eta12.npz
+172096	out/presmoke/scores.npz
+12542	out/presmoke/identification.json
+3215075	out/presmoke/nets.npz
+22432	out/presmoke/info.json
+791	out/presmoke/guard.json

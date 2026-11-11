@@ -26,10 +26,20 @@
     "src_bytes": 25289045
   },
   "cap_usd": 8.4,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 6.4047
+  "collected": {
+    "error": null,
+    "files": 27,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 10431750,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 6.6171,
+    "conservative_usd": 6.8265
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-11T23:54:04Z",
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
@@ -55,11 +65,21 @@
       "at": "2026-11-11T20:35:03Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-11T23:53:33Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-11T23:54:04Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "r6-dialsa2-001",
   "max_estimate_usd": null,
-  "message": "heartbeat",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -105,7 +125,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 6.6171,
       "created_at": "2026-11-11T20:28:10Z",
       "data_center": "asia-south-1",
       "gpu": "A100_40GB",
@@ -118,11 +138,11 @@
       "ready_at": "2026-11-11T20:34:26Z",
       "requested_at": "2026-11-11T20:27:54Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-11T23:53:43Z"
     }
   ],
-  "pods_terminated": null,
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-11T20:47:47Z",
     "file": "jobs/r6-dialsa2-001/review.md",
@@ -132,7 +152,7 @@
   "run_deadline": "2026-11-12T00:29:03Z",
   "run_started_epoch": 1794428872.984712,
   "started_at": "2026-11-11T20:35:03Z",
-  "state": "running",
+  "state": "done",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n31999731063843, 0.9451000094413757, 0.8567000031471252, 0.991599977016449, 1.0569000244140625] (20s)\n23:03:36 [ 148.4 min]   net[D(8) 1200] step 1200/1200 train 0.0458 val [0.9628000259399414, 0.8587999939918518, 0.9266999959945679, 0.9805999994277954, 0.9563000202178955, 0.8711000084877014, 1.010200023651123, 1.0728000402450562] (27s)\n23:08:08 [ 152.9 min] == 6 D(8), 1200 steps done in 300s\n23:08:08 [ 152.9 min] first look after N=8: {\"eta0\": {\"Cpub\": 0.446, \"Ctrue\": 0.416, \"Ctrue_blind\": 0.422, \"<ssh-target>\": -0.205, \"<ssh-target>\": 0.132, \"<ssh-target>\": 0.439, \"<ssh-target>\": 0.411, \"<ssh-target>\": 0.413, \"K\": 0.0, \"O\": 1.0, \"P0\": 0.422, \"<ssh-target>\": 0.422, \"<ssh-target>\": 0.411, \"<ssh-target>\": 0.445}, \"eta4\": {\"<ssh-target>\": 0.476, \"<ssh-target>\": 0.256, \"Cpub\": 0.256, \"Ctrue\": 0.475, \"Ctrue_blind\": 0.256, \"<ssh-target>\": -0.157, \"<ssh-target>\": 0.09, \"<ssh-target>\": 0.292, \"<ssh-target>\": 0.475, \"<ssh-target>\": 0.474, \"K\": 0.0, \"O\": 1.0, \"P0\": 0.252, \"<ssh-target>\": 0.353, \"<ssh-target>\": 0.357, \"<ssh-target>\": 0.208}, \"verdict\": \"UNDECIDED\", \"parts\": {\"T1\": true, \"T2\": true, \"T3\": true, \"T4\": true, \"T5\": true, \"zero_point\": false, \"T1_fails\": false, \"T2_fails\": false}, \"sigma_G\": 0.26, \"rho_G\": 0.448, \"H_recovery\": 0.996, \"H_t\": 25.42}\n23:08:08 [ 152.9 min] == 6 fine-tuning N=32\n23:08:21 [ 153.1 min]   ft[N=32 FT|eta0] cv group 1/24 31.6 ms/step (13s)\n23:11:45 [ 156.5 min]   ft[N=32 FT|eta0] cv group 17/24 31.6 ms/step (218s)\n23:13:28 [ 158.2 min]   ft[N=32 FT|eta4] cv group 1/24 31.6 ms/step (13s)\n23:16:53 [ 161.6 min]   ft[N=32 FT|eta4] cv group 17/24 31.6 ms/step (218s)\n23:18:35 [ 163.4 min]   ft[N=32 CFT|eta4] cv group 1/24 31.6 ms/step (13s)\n23:22:00 [ 166.8 min]   ft[N=32 CFT|eta4] cv group 17/24 31.5 ms/step (218s)\n23:23:55 [ 168.7 min]   ft[N=32 FT|eta0] cv group 1/24 31.6 ms/step (25s)\n23:30:42 [ 175.5 min]   ft[N=32 FT|eta0] cv group 17/24 31.6 ms/step (432s)\n23:34:40 [ 179.4 min] == 6 fine-tuning N=32 done in 1593s\n23:34:40 [ 179.4 min]   N=32: FT|eta0 best <ssh-target> (steps 800, rates [0.0001, 2e-05]) interior True, FT|eta4 best <ssh-target> (steps 400, rates [0.0001, 2e-05]) interior True, CFT|eta4 best <ssh-target> (steps 400, rates [0.0001, 2e-05]) interior True; 31.559008359909058 ms per lockstep step\n23:34:40 [ 179.4 min] == 6 scoring N=32\n23:36:13 [ 181.0 min] == 6 scoring N=32 done in 92s\n23:36:13 [ 181.0 min] == 6 D(32), 1200 steps\n23:36:24 [ 181.2 min]   net[D(32) 1200] step 400/1200 train 0.2163 val [0.6883999705314636, 0.7911999821662903, 0.6990000009536743, 0.7265999913215637, 0.7491000294685364, 0.8474000096321106, 0.8833000063896179, 0.8611000180244446] (11s)\n23:36:31 [ 181.3 min]   net[D(32) 1200] step 800/1200 train 0.1271 val [0.7419000267982483, 0.8395000100135803, 0.7666000127792358, 0.8158000111579895, 0.8123999834060669, 0.9100000262260437, 0.9430999755859375, 0.9165999889373779] (18s)\n23:36:38 [ 181.4 min]   net[D(32) 1200] step 1200/1200 train 0.1075 val [0.7573000192642212, 0.85589998960495, 0.7871999740600586, 0.835099995136261, 0.8345000147819519, 0.9264000058174133, 0.9710000157356262, 0.9377999901771545] (25s)\n== out/progress.txt\n31999731063843, 0.9451000094413757, 0.8567000031471252, 0.991599977016449, 1.0569000244140625] (20s)\n23:03:36 [ 148.4 min]   net[D(8) 1200] step 1200/1200 train 0.0458 val [0.9628000259399414, 0.8587999939918518, 0.9266999959945679, 0.9805999994277954, 0.9563000202178955, 0.8711000084877014, 1.010200023651123, 1.0728000402450562] (27s)\n23:08:08 [ 152.9 min] == 6 D(8), 1200 steps done in 300s\n23:08:08 [ 152.9 min] first look after N=8: {\"eta0\": {\"Cpub\": 0.446, \"Ctrue\": 0.416, \"Ctrue_blind\": 0.422, \"<ssh-target>\": -0.205, \"<ssh-target>\": 0.132, \"<ssh-target>\": 0.439, \"<ssh-target>\": 0.411, \"<ssh-target>\": 0.413, \"K\": 0.0, \"O\": 1.0, \"P0\": 0.422, \"<ssh-target>\": 0.422, \"<ssh-target>\": 0.411, \"<ssh-target>\": 0.445}, \"eta4\": {\"<ssh-target>\": 0.476, \"<ssh-target>\": 0.256, \"Cpub\": 0.256, \"Ctrue\": 0.475, \"Ctrue_blind\": 0.256, \"<ssh-target>\": -0.157, \"<ssh-target>\": 0.09, \"<ssh-target>\": 0.292, \"<ssh-target>\": 0.475, \"<ssh-target>\": 0.474, \"K\": 0.0, \"O\": 1.0, \"P0\": 0.252, \"<ssh-target>\": 0.353, \"<ssh-target>\": 0.357, \"<ssh-target>\": 0.208}, \"verdict\": \"UNDECIDED\", \"parts\": {\"T1\": true, \"T2\": true, \"T3\": true, \"T4\": true, \"T5\": true, \"zero_point\": false, \"T1_fails\": false, \"T2_fails\": false}, \"sigma_G\": 0.26, \"rho_G\": 0.448, \"H_recovery\": 0.996, \"H_t\": 25.42}\n23:08:08 [ 152.9 min] == 6 fine-tuning N=32\n23:08:21 [ 153.1 min]   ft[N=32 FT|eta0] cv group 1/24 31.6 ms/step (13s)\n23:11:45 [ 156.5 min]   ft[N=32 FT|eta0] cv group 17/24 31.6 ms/step (218s)\n23:13:28 [ 158.2 min]   ft[N=32 FT|eta4] cv group 1/24 31.6 ms/step (13s)\n23:16:53 [ 161.6 min]   ft[N=32 FT|eta4] cv group 17/24 31.6 ms/step (218s)\n23:18:35 [ 163.4 min]   ft[N=32 CFT|eta4] cv group 1/24 31.6 ms/step (13s)\n23:22:00 [ 166.8 min]   ft[N=32 CFT|eta4] cv group 17/24 31.5 ms/step (218s)\n23:23:55 [ 168.7 min]   ft[N=32 FT|eta0] cv group 1/24 31.6 ms/step (25s)\n23:30:42 [ 175.5 min]   ft[N=32 FT|eta0] cv group 17/24 31.6 ms/step (432s)\n23:34:40 [ 179.4 min] == 6 fine-tuning N=32 done in 1593s\n23:34:40 [ 179.4 min]   N=32: FT|eta0 best <ssh-target> (steps 800, rates [0.0001, 2e-05]) interior True, FT|eta4 best <ssh-target> (steps 400, rates [0.0001, 2e-05]) interior True, CFT|eta4 best <ssh-target> (steps 400, rates [0.0001, 2e-05]) interior True; 31.559008359909058 ms per lockstep step\n23:34:40 [ 179.4 min] == 6 scoring N=32\n23:36:13 [ 181.0 min] == 6 scoring N=32 done in 92s\n23:36:13 [ 181.0 min] == 6 D(32), 1200 steps\n23:36:24 [ 181.2 min]   net[D(32) 1200] step 400/1200 train 0.2163 val [0.6883999705314636, 0.7911999821662903, 0.6990000009536743, 0.7265999913215637, 0.7491000294685364, 0.8474000096321106, 0.8833000063896179, 0.8611000180244446] (11s)\n23:36:31 [ 181.3 min]   net[D(32) 1200] step 800/1200 train 0.1271 val [0.7419000267982483, 0.8395000100135803, 0.7666000127792358, 0.8158000111579895, 0.8123999834060669, 0.9100000262260437, 0.9430999755859375, 0.9165999889373779] (18s)\n23:36:38 [ 181.4 min]   net[D(32) 1200] step 1200/1200 train 0.1075 val [0.7573000192642212, 0.85589998960495, 0.7871999740600586, 0.835099995136261, 0.8345000147819519, 0.9264000058174133, 0.9710000157356262, 0.9377999901771545] (25s)\n",
-  "updated_at": "2026-11-11T23:41:00Z"
+  "updated_at": "2026-11-11T23:54:04Z"
 }
