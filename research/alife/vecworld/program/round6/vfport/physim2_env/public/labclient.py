@@ -12,17 +12,25 @@ environment variable PHYSIM2_LAB, else the file /etc/physim2/lab.json that the e
     o0 = lab.reset("my-episode-1")  # new episode from a fresh hidden start; costs reset_cost ticks
     obs = lab.advance(U)            # U (T, n_in) inputs for the next T ticks -> observations (T, n_obs)
     obs = lab.experiment("ep-2", U) # reset + advance: (T + 1, n_obs), row 0 is o(0)
-    lab.validate("submission")      # format and reproducibility check only (no accuracy feedback); runs HERE
-    lab.submit("submission")        # freeze the predictor; ends the investigation
+    obs = lab.experiment("ep-3", 16)   # an integer T instead of U: T ticks without input (also lab.advance(T))
+    lab.validate("submission")      # runs the predictor as the grader will (no accuracy feedback); runs HERE
+    lab.submit("submission")        # takes the copy that is graded and ENDS YOUR RUN
 
 A rejected command raises LabError; nothing runs and nothing is charged (the message says why, using
 public information only).
+
+Every reply is saved: after each operation this client appends one JSON line to /workspace/lab_log.jsonl
+(LOG below) with the time, the operation, its arguments and the full result (arrays as nested lists) or the
+error. Real observations cost budget and cannot be asked for twice, and a script that ends takes its variables
+with it: `Lab.read_log()` gives every reply back. Only this client writes the log; a call made through the
+tool directly is not in it.
 """
 from __future__ import annotations
 
 import json
 import os
 import shutil
+import time
 import urllib.error
 import urllib.request
 
@@ -30,6 +38,9 @@ import numpy as np
 
 ADDRESS_FILE = "/etc/physim2/lab.json"
 TOOL = "call"
+HERE = os.path.dirname(os.path.abspath(__file__))
+LOG = os.environ.get("PHYSIM2_LAB_LOG") or os.path.join(os.path.dirname(HERE), "lab_log.jsonl")
+MAX_BLOCK = 4096                                             # ticks per call (the laboratory's own bound)
 
 
 class LabError(RuntimeError):
@@ -61,9 +72,71 @@ class Lab:
         self.timeout = timeout
         self._n = 0
         self._http = urllib.request.build_opener(urllib.request.ProxyHandler({}))   # the address is a direct route
+        self.log_path = LOG
+        try:                                                 # n_in of this exam, for the argument check of advance/experiment
+            with open(os.path.join(HERE, "exam.json")) as f:
+                self._n_in = int(json.load(f)["n_in"])
+        except Exception:
+            self._n_in = None
+
+    # ---- every reply is saved (see the module text) ----
+    def _log(self, op: str, args: dict, ok: bool, **rest) -> None:
+        try:
+            line = json.dumps(dict({"t": round(time.time(), 3), "n": self._n, "op": op, "args": _plain(args), "ok": ok}, **rest))
+            with open(self.log_path, "a") as f:
+                f.write(line + "\n")
+        except Exception:                                    # a full disk or a read-only directory never breaks a call
+            pass
+
+    @staticmethod
+    def read_log(path: str | None = None) -> list:
+        """Every saved reply, oldest first: [{"t", "n", "op", "args", "ok", "result" | "error", "kind"}].
+        Results of reset, advance and experiment are nested lists: np.asarray(entry["result"])."""
+        out = []
+        try:
+            with open(path or LOG) as f:
+                for line in f:
+                    try:
+                        out.append(json.loads(line))
+                    except ValueError:
+                        pass
+        except OSError:
+            pass
+        return out
+
+    def _call(self, op: str, **args):
+        try:
+            res = self._send(op, **args)
+        except LabError as e:
+            self._log(op, args, False, error=str(e), kind=e.kind)
+            raise
+        self._log(op, args, True, result=res)
+        return res
+
+    def _block(self, op: str, inputs) -> dict:
+        """The inputs argument of advance / experiment as the request's arguments: {"n": T} for an integer T,
+        {"inputs": array (T, n_in)} for a block of inputs. Anything else raises LabError with one line of usage,
+        here, before anything is sent."""
+        shape = f"(T, {self._n_in})" if self._n_in else "(T, n_in)"
+        call = "lab.advance(U)" if op == "advance" else "lab.experiment(label, U)"
+        usage = (f"usage: {call} with U an array {shape} of finite numbers, 1 <= T <= {MAX_BLOCK}, or an integer T "
+                 "for T ticks without input")
+        if inputs is None or isinstance(inputs, (bool, np.bool_, str, bytes, dict)):
+            raise LabError(usage, "request")
+        if isinstance(inputs, (int, np.integer)):
+            if not 1 <= int(inputs) <= MAX_BLOCK:
+                raise LabError(usage, "request")
+            return {"n": int(inputs)}
+        try:
+            U = np.asarray(inputs, np.float64)
+        except (ValueError, TypeError, OverflowError):
+            raise LabError(usage, "request") from None
+        if U.ndim != 2 or not 1 <= U.shape[0] <= MAX_BLOCK or (self._n_in and U.shape[1] != self._n_in) or not np.all(np.isfinite(U)):
+            raise LabError(usage, "request")
+        return {"inputs": U}
 
     # ---- transport: one MCP tools/call over HTTP per operation ----
-    def _call(self, op: str, **args):
+    def _send(self, op: str, **args):
         self._n += 1
         body = {"jsonrpc": "2.0", "id": self._n, "method": "tools/call",
                 "params": {"name": TOOL, "arguments": {"op": op, "args": _plain(args)}}}
@@ -107,23 +180,21 @@ class Lab:
         return np.asarray(self._call("reset", label=label), np.float64)
 
     def advance(self, inputs) -> np.ndarray:
-        """Run len(inputs) ticks of the current episode; inputs (T, n_in) (zeros = no input) or an
+        """Run T ticks of the current episode. `inputs`: an array (T, n_in) of inputs (zeros = no input), or an
         integer T for T ticks without input. Returns the T observations after each tick (T, n_obs).
         The whole block is validated first: on a violation nothing runs and nothing is charged."""
-        if isinstance(inputs, (int, np.integer)):
-            return np.asarray(self._call("advance", n=int(inputs)), np.float64)
-        return np.asarray(self._call("advance", inputs=np.asarray(inputs, np.float64)), np.float64)
+        return np.asarray(self._call("advance", **self._block("advance", inputs)), np.float64)
 
     def experiment(self, label, inputs) -> np.ndarray:
-        """reset(label) then advance(inputs): observations (T + 1, n_obs), row 0 = o(0)."""
-        if isinstance(inputs, (int, np.integer)):
-            return np.asarray(self._call("experiment", label=label, n=int(inputs)), np.float64)
-        return np.asarray(self._call("experiment", label=label, inputs=np.asarray(inputs, np.float64)), np.float64)
+        """reset(label) then advance(inputs): observations (T + 1, n_obs), row 0 = o(0). `inputs`: an array
+        (T, n_in), or an integer T for T ticks without input (lab.experiment("free-1", 16))."""
+        return np.asarray(self._call("experiment", label=label, **self._block("experiment", inputs)), np.float64)
 
     def validate(self, path: str = "submission") -> dict:
-        """Format, limits and reproducibility on two public example requests, run in this box with the grader's
-        driver (physim2/validate.py). The laboratory starts the check and returns its report; you can also run
-        `python -m physim2.validate <path>` yourself, without the laboratory."""
+        """Format, limits and reproducibility on two public example requests, run in this box the way the grader
+        will run your predictor: from a clean copy of the directory alone, as an unprivileged user that cannot
+        read /workspace (physim2/validate.py). The laboratory starts the check and returns its report; you can
+        also run `python -m physim2.validate <path>` yourself, without the laboratory (then with your rights)."""
         from . import validate as V
         try:
             V.resolve(path)
@@ -132,9 +203,11 @@ class Lab:
         return self._call("validate", path=str(path))
 
     def submit(self, path: str = "submission") -> dict:
-        """Validate, then freeze: if the check passes, the grader's worker takes its copy of submission/ now and
-        the laboratory closes ("accepted": True); if not, nothing is frozen. A directory other than submission/
-        is copied there first (only submission/ is collected)."""
+        """Validate, then freeze, and END YOUR RUN: if the check passes, the grader's worker takes its copy of
+        submission/ now, the laboratory closes ("accepted": True) and the run ends before your next turn; if
+        not, nothing is frozen and nothing ends. You do not need to submit to be graded: whatever is in
+        submission/ when the run ends is graded. A directory other than submission/ is copied there first
+        (only submission/ is collected)."""
         from . import validate as V
         try:
             src = V.resolve(path)

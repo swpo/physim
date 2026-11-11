@@ -5,8 +5,8 @@ Order of work (all of it after the agent's box is gone):
 
   1. validation     the three public example calls of round 5 (evaluator/submission.py:105-125: example 0 twice
                     with the same seed, example 1), run in the verifier box verifiers gave us and compared ON THE
-                    WORKER. A predictor that fails one of them is not graded item by item: every item is K
-                    (round 5's rule: only a validated predictor is frozen, run_rollout.py:97-108).
+                    WORKER. A predictor that fails one of them is not graded item by item (round 5's rule: only
+                    a validated predictor is frozen, run_rollout.py:97-108): every item falls back (below).
   2. the exam       one request at a time (memo hole 1). `isolation="box"` (default): every item gets a FRESH box
                     from verifiers' `provision_runtime` with the verifier's own resolved config (same image, same
                     network policy), staged like the verifier box and destroyed after its one request, so that
@@ -14,10 +14,19 @@ Order of work (all of it after the agent's box is gone):
                     one verifier box, with the driver's cleanup between them (cheaper; a pilot mode, because
                     timestamps, the process-id counter and kernel counters of a box survive that cleanup).
   3. scoring        agentenv's arithmetic, unchanged and by import -- FrozenExam.request / score / references
-                    (evaluator/instance.py:149-172), check_shapes (evaluator/submission.py:94-102), failed item
-                    = K (evaluator/grader.py:45-56), pooled L and skill (evaluator/acceptance.py:61-68). Added:
-                    a reply must be what predict_runner.py writes (float32, one array per level; _rules.read_reply)
-                    and an item whose score is not finite is a failed item.
+                    (evaluator/instance.py:149-172), check_shapes (evaluator/submission.py:94-102), pooled L and
+                    skill (evaluator/acceptance.py:61-68). Added: a reply must be what predict_runner.py writes
+                    (float32, one array per level; _rules.read_reply) and an item whose score is not finite is a
+                    failed item.
+
+THE FALLBACK (round 4, ruling E3). Round 5 scored a failed item as K, the climatology of the HIDDEN world, which
+no agent can know: failing was paid (an empty submission scored 0.000, the honest null agent -0.040). Now an
+item without a valid forecast -- no predictor, a failed validation, an error, a time-out, a wrong shape,
+non-finite values, an unreadable reply, a score that is not finite, no box -- is scored with the forecast of
+the NULL policy for that item: the baseline every box starts with (bundle.null_pool; public prior only),
+computed here on the worker by the baseline's own predict function (null_scores). Never K. The grade record
+lists every item that fell back and one word from FALLBACK_REASONS for why. The scale (K = 0, O = 1) and the
+arithmetic of every valid forecast are untouched.
 
 Truths, the climatology pool, item ids and program classes never enter a box. In every box the predictor runs
 through public/_item.py as an unprivileged user (a random uid per rollout) under the declared limits.
@@ -133,14 +142,106 @@ def summary(ex, es, refs) -> dict:
             "valid_cells": valid.tolist()}
 
 
-def score_as_k(hidden: str, name: str, reason: str, extra: dict | None = None) -> dict:
-    """No usable predictor: every item is scored as K (run_rollout.finalize, lines 103-108)."""
+# ---- the fallback (ruling E3) ----
+FALLBACK_REASONS = ("no predict.py", "no submission", "validation failed", "raised", "killed", "timed out", "out of memory",
+                    "wrong shape", "non-finite values", "unreadable reply", "score not finite", "not reproducible",
+                    "infrastructure", "not run", "grading error", "ungraded run")
+_SHAPE = re.compile(r"^(ValueError: predict: level -?\d+ has shape|KeyError: .predict: level -?\d+ missing|TypeError: predict must return a dict)")
+_NONFINITE = re.compile(r"^ValueError: predict: level -?\d+ has non-finite values")
+
+
+def fallback_reason(r: dict | None, bad: str | None) -> str:
+    """One word from FALLBACK_REASONS for a request that gave no valid forecast: `r` is the driver's record (or a
+    skip), `bad` the worker's verdict on the reply. Decided from fixed patterns only; the predictor's own text is
+    never copied into the reason."""
+    r = r or {}
+    if "skip" in r:
+        return "not run"
+    if r.get("why") in ("infrastructure", "driver error") or r.get("driver_error"):
+        return "infrastructure"
+    if not r.get("ok"):
+        why = str(r.get("why") or "")
+        if why in ("wall-clock limit", "CPU-time limit"):
+            return "timed out"
+        if why.startswith("no reply file") or why == "reply too large":
+            return "unreadable reply"
+        lines = [x for x in str(r.get("stderr") or "").splitlines() if x.strip()]
+        last = lines[-1].strip() if lines else ""
+        if _SHAPE.match(last):
+            return "wrong shape"
+        if _NONFINITE.match(last):
+            return "non-finite values"
+        if last.startswith("MemoryError") or "MemoryError" in last[:80]:
+            return "out of memory"
+        rc = r.get("returncode")
+        return "killed" if isinstance(rc, int) and rc < 0 else "raised"
+    bad = str(bad or "")
+    if bad.startswith("unreadable reply"):
+        return "unreadable reply"
+    if "non-finite" in bad:
+        return "non-finite values"
+    if "has shape" in bad or bad.endswith("missing"):
+        return "wrong shape"
+    return "raised"
+
+
+def null_scores(ex, pool: dict, m: int, seed: int = 0) -> np.ndarray:
+    """Fair energy score per (item, cell) of the NULL policy's forecast: what the baseline in submission/ returns
+    for the grader's request (n_samples = m, the grader's seed), scored like any forecast. The forecast is made by
+    the baseline's OWN predict function (public/baseline_predict.py, a file of this package: no submitted code)
+    on the pool the box was given, and passes through the same float32 reply format as a graded predictor.
+    The null policy ignores history and program, so every item gets the same samples; the scores differ with
+    the item's real futures."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("physim2_baseline_predict", os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                                                                         "public", "baseline_predict.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod._P = {f"level{l}": np.asarray(pool[l]) for l in pool}
+    out = mod.predict(None, None, {l: list(ts) for l, ts in ex.queries.items()}, int(m), int(seed))
+    S = {}
+    for l, ts in ex.queries.items():
+        a = np.asarray(out[l], np.float64).astype(np.float32).astype(np.float64)     # the reply's round trip
+        if a.shape != (m, len(ts), ex.dims[l]) or not np.all(np.isfinite(a)):
+            raise RuntimeError("the null policy's pool does not fit the exam")
+        S[l] = np.broadcast_to(a[None], (ex.n,) + a.shape)
+    with np.errstate(all="ignore"):
+        sc = ex.score(S)
+    if not np.all(np.isfinite(sc)):
+        raise RuntimeError("the null policy's score is not finite")
+    return sc
+
+
+def fallback(hidden: str, world: str, config_name: str, m: int | None = None, seed: int = 0) -> dict:
+    """{"es": the null policy's scores (items, cells), "pool_sha256": which pool}: what a failed item is scored with."""
+    from . import bundle as BUNDLE
+    ex = exam(hidden)
+    pool = BUNDLE.null_pool(world, config_name)
+    m = int(m or BUNDLE.load_config(config_name)["predictor"]["n_samples"])
+    return {"es": null_scores(ex, pool, m, seed), "pool_sha256": BUNDLE.pool_sha256(pool), "policy": "null"}
+
+
+def fallback_summary(reasons: dict, fb: dict) -> dict:
+    """What a trace says about the fallback: counts by reason, never an item or a predictor's text."""
+    by = {}
+    for why in reasons.values():
+        by[why] = by.get(why, 0) + 1
+    return {"policy": fb.get("policy", "null"), "baseline_pool_sha256": fb.get("pool_sha256"), "n_items": len(reasons), "by_reason": by}
+
+
+def score_as_null(hidden: str, name: str, reason: str, fb: dict, extra: dict | None = None, detail: str | None = None) -> dict:
+    """No usable predictor: EVERY item is scored with the null policy's forecast (ruling E3; round 5 scored K
+    here, run_rollout.finalize, lines 103-108). `reason` is one word of FALLBACK_REASONS, optionally followed by
+    ": " and a second one; `detail` (free text, may quote a predictor) stays in the store's record."""
     ex = exam(hidden)
     refs = ex.references()
-    es = refs["K"].copy()
-    rec = dict({"name": name, "n_items": ex.n, "n_failed": ex.n, "reason": reason, "errors": [], "seconds": 0.0}, **(extra or {}))
+    es = np.array(fb["es"], float)
+    reasons = {i: reason for i in range(ex.n)}
+    rec = dict({"name": name, "n_items": ex.n, "n_failed": ex.n, "reason": reason, "detail": detail, "errors": [], "seconds": 0.0,
+                "fallback": fallback_summary(reasons, fb), "fallback_items": [{"item": i, "reason": reason} for i in range(ex.n)]},
+               **(extra or {}))
     save(hidden, name, es, np.ones(ex.n, bool), np.zeros(ex.n), rec)
-    return dict(summary(ex, es, refs), n_items=ex.n, n_failed=ex.n, reason=reason)
+    return dict(summary(ex, es, refs), n_items=ex.n, n_failed=ex.n, reason=reason, fallback=rec["fallback"])
 
 
 async def box_cpu_seconds(runtime) -> float | None:
@@ -253,10 +354,11 @@ async def fresh_box(config, prepare):
         yield rt
 
 
-async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, uid: int, examples: dict, seed: int = 0,
+async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, uid: int, examples: dict, fb: dict, seed: int = 0,
                 cleanup: bool = True, deadline: float | None = None, prepare=None, parallel: int = 1) -> dict:
     """The loop of evaluator/grader.py:34-64. `prepare` (async: stage a fresh box) selects one box per item;
-    None runs every item in `runtime`."""
+    None runs every item in `runtime`. `fb` (fallback()) holds the null policy's scores for the same grading
+    seed: an item without a valid forecast gets its row."""
     ex = exam(hidden)
     m = int(limits["n_samples"])
     wall = float(limits.get("wall_seconds") or 0)
@@ -278,10 +380,12 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
             dirty = -1
     val_layers = next((r.get("layers") for r in vrecs if r.get("layers")), None)
     if not val["ok"]:
-        reason = f"validation failed ({val['stage']}): {val['error']}"
-        g = score_as_k(hidden, name, reason[:4000], {"validation": val, "layers": val_layers, "isolation": isolation})
+        sub = "not reproducible" if val["stage"] == "reproducibility" else fallback_reason(vrecs[-1] if vrecs else None, val["error"])
+        reason = f"validation failed: {sub}"
+        g = score_as_null(hidden, name, reason, fb, {"validation": val, "layers": val_layers, "isolation": isolation},
+                          detail=f"validation failed ({val['stage']}): {val['error']}"[:4000])
         return dict(g, validation={"ok": False, "stage": val["stage"]}, layers=val_layers, isolation=isolation,
-                    seconds=time.time() - t0, reason=f"validation failed ({val['stage']})")
+                    seconds=time.time() - t0)
 
     # ---- 2. the exam ----
     async def one_shared(i):
@@ -289,7 +393,7 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
 
     async def one_box(i):
         """Item i in a box of its own. A box that cannot be provisioned or staged is the evaluator's failure:
-        tried twice, then recorded as an infrastructure failure of that item (scored as K, and counted)."""
+        tried twice, then recorded as an infrastructure failure of that item (it falls back, and is counted)."""
         last = "?"
         for attempt in range(2):
             started, r = False, None
@@ -324,7 +428,15 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
         async with sem:
             return await one(i)
 
+    reasons: dict[int, str] = {}                             # item -> one word of FALLBACK_REASONS
+
     async def handle(i, r):
+        bad = await handle_one(i, r)
+        if bad:
+            reasons[i] = "infrastructure" if bad == fatal else fallback_reason(r, bad)
+        return bad
+
+    async def handle_one(i, r):
         nonlocal layers, dirty, box_cpu, fatal
         if "skip" in r:
             return r["skip"]
@@ -366,9 +478,11 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
     wild = ~np.isfinite(sc).all(1) & ~failed                 # a reply whose score overflows is a failed item
     for i in np.flatnonzero(wild):
         failed[i] = True
+        reasons[int(i)] = "score not finite"
         errors.append({"item": int(i), "error": "the samples give a score that is not finite"})
-    sc[failed] = refs["K"][failed]                           # a failed request is scored as K
-    out = dict(summary(ex, sc, refs), n_items=ex.n, n_failed=int(failed.sum()), cpu_s_mean=float(cpu.mean()),
+    sc[failed] = np.asarray(fb["es"], float)[failed]         # ruling E3: the null policy's forecast for that item, never K
+    fbs = fallback_summary(reasons, fb)
+    out = dict(summary(ex, sc, refs), n_items=ex.n, n_failed=int(failed.sum()), fallback=fbs, cpu_s_mean=float(cpu.mean()),
                cpu_s_max=float(cpu.max()), wall_s_mean=float(wall_s.mean()), seconds=time.time() - t0, layers=layers or val_layers,
                items_with_leftovers=sum(1 for c in cleanups if c["killed"] or c["removed"] or c["ipc_removed"]),
                box_not_clean_after_item=dirty, cleanup_between_items=cleanup, isolation=isolation,
@@ -381,6 +495,7 @@ async def grade(runtime, hidden: str, name: str, limits: dict, workdir: str, *, 
            "cpu_s_max": float(cpu.max()), "wall_s_mean": float(wall_s.mean()), "seconds": time.time() - t0,
            "errors": errors, "layers": layers or val_layers, "cleanups": cleanups, "box_not_clean_after_item": dirty,
            "cleanup_between_items": cleanup, "isolation": isolation, "validation": val, "infrastructure_failed_items": infra,
-           "non_finite_items": [int(i) for i in np.flatnonzero(wild)]}
+           "non_finite_items": [int(i) for i in np.flatnonzero(wild)], "fallback": fbs,
+           "fallback_items": [{"item": int(i), "reason": reasons[i]} for i in sorted(reasons)]}
     save(hidden, name, sc, failed, cpu, rec)
     return out
