@@ -16,15 +16,26 @@ README.md, DECLARED.md, DEVIATIONS.md.
   tiny size from a git archive of the five requested paths is running here (scratch `dialsB/out_tiny`, smoke
   seeds 91, 92, never gate seeds). Nothing decisive has run; no job requested.
 
+- 16:07: the whole job script at tiny size from a git archive of the five requested paths at 52ae6e403631:
+  exit 0, 753 s (smoke seeds 91, 92; numbers meaningless). `s0.py align` at full size on the designer's pilot
+  seed 5 reproduces his L(pub), L(pub0), L(O) exactly (max difference 0.0), G2 at 4, 8, 16 ticks to three
+  decimals (the 32-tick gain differs: fitted here with the Lab's scale, as declared), and picks the adversary's
+  filter (0.25, 1, 3, 2).
+- 16:08: job **r6-dialsB-001** requested (CPU_NODE 16 vCPU / 64 GB, max_hours 3.5, cap $2.50).
+
 ## Next step (exact)
 
-1. When the tiny run exits 0: read `out_tiny/analysis.json` for sanity, run `s0.py align` once here (full size,
-   seed 5, a pilot seed) to confirm L(pub), L(pub0), L(O) equal the designer's file.
-2. Re-run the tiny whole-job test from an archive of the final commit, then commit the request
-   `research/alife/vecworld/program/gpu/requests/r6-dialsB-001.json` (CPU_NODE 16 vCPU / 64 GB, max_hours 3.5,
-   cap $2.50; draft in scratch `dialsB/req_draft.json`), push, and wait with one background loop on gpu-jobs.
-3. Read `jobs/r6-dialsB-001/review.md` BEFORE the results; then `make_summary.py`, README.md, final report.
+1. Wait: one background loop fetching `origin/gpu-jobs` every 60 s until `jobs/r6-dialsB-001/status.json` has a
+   final state (done | failed | timeout | cancelled | rejected | infra_error). "queued, waiting for an offer" is
+   not stuck; a stock-out is requeued by the runner.
+2. Read `git show origin/gpu-jobs:jobs/r6-dialsB-001/review.md` BEFORE any result and act on it.
+3. `git archive origin/gpu-jobs jobs/r6-dialsB-001 | tar -x -C <scratch>`; `python -B make_summary.py
+   <scratch>/jobs/r6-dialsB-001`; commit `results/` (summary.json and results/job/*.json, ranges.sha256).
+4. README.md (per-seed and per-horizon table, each condition with its number and verdict, what a build needs),
+   DEVIATIONS.md, final report; remove the worktree and the scratch folder.
 
 ## Jobs
 
-none yet
+| job | state | note |
+|---|---|---|
+| r6-dialsB-001 | requested 16:08 UTC | the one planned job; cap $2.50 of the study's $5 |
