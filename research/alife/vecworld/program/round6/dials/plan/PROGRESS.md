@@ -11,3 +11,6 @@
 - Decision: recommend A (gliders calibration: stage 1 of defect_gliders with a changed question, 8 truths, 3 seeds),
   B (membrane carrier with a CPU gate, then two GPU jobs); drop XW as an exam; defer compute_limit.
 - Step 2 (in progress): writing ../PLAN.md.
+- DONE (11 Nov 2026). `../PLAN.md` written and pushed (1,288 whitespace-separated tokens outside table lines).
+  Nothing was simulated and no GPU job or model call was made; the only commands were readers of the designers'
+  and critics' result files. Scratch folder deleted; worktree removed after the last push. Nothing is running.
