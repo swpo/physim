@@ -599,13 +599,15 @@
       "bytes": 1861,
       "in_git": true,
       "path": "out/scan/V_DL_x1.2.json",
-      "sha256": "eb2998ebc5f04a5170e7a18bd2c38555da96dcfd9b61c4be3442a6b32c6ede86"
+      "sha256": "eb2998ebc5f04a5170e7a18bd2c38555da96dcfd9b61c4be3442a6b32c6ede86",
+      "stored_as": ".case/99"
     },
     {
       "bytes": 1873,
       "in_git": true,
       "path": "out/scan/V_dK_x1.1.json",
-      "sha256": "42ccba315f02dd1fbce0505108c77afb4fb63815eb7d3f71370a23990b4ee1ad"
+      "sha256": "42ccba315f02dd1fbce0505108c77afb4fb63815eb7d3f71370a23990b4ee1ad",
+      "stored_as": ".case/100"
     },
     {
       "bytes": 1867,
@@ -641,7 +643,8 @@
       "bytes": 1872,
       "in_git": true,
       "path": "out/scan/V_DL_x1.1.json",
-      "sha256": "51df52f01462610b6916f1faf0f95b03da582f8d82fe078ea468181621931fcf"
+      "sha256": "51df52f01462610b6916f1faf0f95b03da582f8d82fe078ea468181621931fcf",
+      "stored_as": ".case/106"
     },
     {
       "bytes": 726,
@@ -713,7 +716,8 @@
       "bytes": 1873,
       "in_git": true,
       "path": "out/scan/V_DL_x0.9.json",
-      "sha256": "4f1ce7554a64bf9d541ec01d689afa77c97b59ece22b663dd60488ddce0d68df"
+      "sha256": "4f1ce7554a64bf9d541ec01d689afa77c97b59ece22b663dd60488ddce0d68df",
+      "stored_as": ".case/118"
     },
     {
       "bytes": 1882,
@@ -791,19 +795,22 @@
       "bytes": 1857,
       "in_git": true,
       "path": "out/scan/V_dK_x1.2.json",
-      "sha256": "b33be5242358b4fe7e606d2a1b3ca130ec64e5d9377eead6a51519d00b23abf8"
+      "sha256": "b33be5242358b4fe7e606d2a1b3ca130ec64e5d9377eead6a51519d00b23abf8",
+      "stored_as": ".case/131"
     },
     {
       "bytes": 1884,
       "in_git": true,
       "path": "out/scan/V_DK_x0.8.json",
-      "sha256": "27c72d90c7b50fbc43707c7dc32246241a14bdf7e92cc1e726cb6d10f28866eb"
+      "sha256": "27c72d90c7b50fbc43707c7dc32246241a14bdf7e92cc1e726cb6d10f28866eb",
+      "stored_as": ".case/132"
     },
     {
       "bytes": 1885,
       "in_git": true,
       "path": "out/scan/V_DK_x0.9.json",
-      "sha256": "16e07c9fadca2c07f393324446f97fc7047398b9b458b06f214f509ce945e9fe"
+      "sha256": "16e07c9fadca2c07f393324446f97fc7047398b9b458b06f214f509ce945e9fe",
+      "stored_as": ".case/133"
     },
     {
       "bytes": 729,
@@ -815,7 +822,8 @@
       "bytes": 1874,
       "in_git": true,
       "path": "out/scan/V_DL_x0.8.json",
-      "sha256": "9e2260c6fff5b6357220af3701882e5e182d9a7cfffd1dfefb2a7b36cf758c70"
+      "sha256": "9e2260c6fff5b6357220af3701882e5e182d9a7cfffd1dfefb2a7b36cf758c70",
+      "stored_as": ".case/135"
     },
     {
       "bytes": 1879,
@@ -907,7 +915,8 @@
     "max_files": 2000,
     "max_mb": 50.0
   },
-  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r6-dialsb-002/collected/; ask for them by path.",
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r6-dialsb-002/collected/; ask for them by path. A file whose name differs from another's only by case or Unicode normalization (one file on the Mac) is kept under collected/<stored_as> instead.",
+  "re_extracted": "2026-11-11: re-extracted with the case-collision fix",
   "skipped": [],
   "skipped_count": 0,
   "transfer_bytes": 538437,
