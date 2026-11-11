@@ -495,6 +495,244 @@
   },
   "what": "arm P: the same hidden worlds and training worlds in both jobs; items, Labs, noise secret and every training seed differ, and C has more data and steps in the final job. Pooled skill."
  },
+ "arm_P_three_jobs": {
+  "what": "arm P in jobs 003, 004, 005: the same 16 hidden worlds, the same 210 prior worlds and the same training simulations of the prior nets; items, Labs, noise secret and every net seed differ. Pooled skill per job, range over the three; paired gaps per job; the scratch reference nets by job.",
+  "jobs": [
+   "r6-foundryexam-003",
+   "r6-foundryexam-004",
+   "r6-foundryexam-005"
+  ],
+  "skill": {
+   "P0": {
+    "values": [
+     0.6635,
+     0.6627,
+     0.6553
+    ],
+    "range": 0.0082
+   },
+   "P0s": {
+    "values": [
+     0.6479,
+     0.6461,
+     0.6345
+    ],
+    "range": 0.0134
+   },
+   "S@0": {
+    "values": [
+     0.6602,
+     0.6581,
+     0.6488
+    ],
+    "range": 0.0114
+   },
+   "S@8": {
+    "values": [
+     0.6644,
+     0.6641,
+     0.6536
+    ],
+    "range": 0.0108
+   },
+   "S@512": {
+    "values": [
+     0.6639,
+     0.6646,
+     0.6544
+    ],
+    "range": 0.0102
+   },
+   "FT@8": {
+    "values": [
+     0.6694,
+     0.6729,
+     0.6648
+    ],
+    "range": 0.0081
+   },
+   "FT@32": {
+    "values": [
+     0.6987,
+     0.6972,
+     0.689
+    ],
+    "range": 0.0097
+   },
+   "FT@128": {
+    "values": [
+     0.7163,
+     0.7166,
+     0.7104
+    ],
+    "range": 0.0062
+   },
+   "FT@512": {
+    "values": [
+     0.7325,
+     0.7368,
+     0.7284
+    ],
+    "range": 0.0083
+   },
+   "D@8": {
+    "values": [
+     0.4749,
+     0.4794,
+     0.4664
+    ],
+    "range": 0.0131
+   },
+   "D@32": {
+    "values": [
+     0.5769,
+     0.5747,
+     0.569
+    ],
+    "range": 0.0079
+   },
+   "D@128": {
+    "values": [
+     0.65,
+     0.6525,
+     0.6445
+    ],
+    "range": 0.008
+   },
+   "D@512": {
+    "values": [
+     0.71,
+     0.7104,
+     0.7019
+    ],
+    "range": 0.0085
+   },
+   "Dr@8": {
+    "values": [
+     0.6402,
+     0.6374,
+     0.6284
+    ],
+    "range": 0.0118
+   },
+   "Dr@512": {
+    "values": [
+     0.6672,
+     0.6654,
+     0.6548
+    ],
+    "range": 0.0123
+   },
+   "P0w16": {
+    "values": [
+     0.5051,
+     0.5222,
+     0.5141
+    ],
+    "range": 0.017
+   },
+   "P0w64": {
+    "values": [
+     0.6214,
+     0.6284,
+     0.6131
+    ],
+    "range": 0.0154
+   },
+   "Kp": {
+    "values": [
+     0.2188,
+     0.2157,
+     0.198
+    ],
+    "range": 0.0209
+   },
+   "plug03": {
+    "values": [
+     0.9159,
+     0.9136,
+     0.9161
+    ],
+    "range": 0.0026
+   },
+   "plug10": {
+    "values": [
+     0.6873,
+     0.6818,
+     0.6831
+    ],
+    "range": 0.0055
+   },
+   "plug30": {
+    "values": [
+     0.2048,
+     0.2,
+     0.1935
+    ],
+    "range": 0.0113
+   },
+   "plugU0": {
+    "values": [
+     0.9388,
+     0.9361,
+     0.932
+    ],
+    "range": 0.0067
+   }
+  },
+  "largest_range": 0.0209,
+  "gaps": {
+   "FT@512 - P0": [
+    0.069,
+    0.0741,
+    0.0732
+   ],
+   "FT@32 - P0": [
+    0.0352,
+    0.0345,
+    0.0337
+   ],
+   "P0 - P0s": [
+    0.0157,
+    0.0166,
+    0.0208
+   ],
+   "C - D@512": [
+    0.034,
+    0.0572
+   ],
+   "S@512 - P0": [
+    0.0004,
+    0.0019,
+    -0.0009
+   ]
+  },
+  "reference_nets": {
+   "r6-foundryexam-004": {
+    "share_noexp_with_C4096": 0.8633,
+    "skill": {
+     "Csm": 0.7338,
+     "C": 0.7677
+    },
+    "steps": {
+     "Csm->C": 0.0338
+    }
+   },
+   "r6-foundryexam-005": {
+    "share_noexp_with_C4096": 0.8605,
+    "skill": {
+     "Csm": 0.7242,
+     "C": 0.7615,
+     "Cbig": 0.7868
+    },
+    "steps": {
+     "Csm->C": 0.0373,
+     "C->Cbig": 0.0253
+    }
+   }
+  },
+  "source": "results/analysis_job003.json, results/analysis.json, results/analysis_job005.json: arms.P"
+ },
  "tracker_centres": {
   "what": "round-5 screen (job r5-foundry-001, ticks 50-290) of the three centres: mean number of tracked bodies, share of the mass in bodies, fusions + fissions per 100 ticks and member. The object view is not examined in this pilot.",
   "source": "round5/foundry/results/per_draw.json.gz",

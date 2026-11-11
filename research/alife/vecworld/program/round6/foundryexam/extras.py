@@ -42,6 +42,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--analysis", default=os.path.join(RES, "analysis.json"))
     ap.add_argument("--first", default=os.path.join(RES, "analysis_job003.json"))
+    ap.add_argument("--third", default=os.path.join(RES, "analysis_job005.json"))
     a = ap.parse_args()
     A = json.load(open(a.analysis))
     out = {}
@@ -124,6 +125,34 @@ def main():
         bj["what"] = ("arm P: the same hidden worlds and training worlds in both jobs; items, Labs, noise secret and every training seed "
                       "differ, and C has more data and steps in the final job. Pooled skill.")
         out["between_jobs"] = bj
+    # ---- arm P over the three jobs (repeats with new items, Labs and net seeds on fixed training simulations)
+    if os.path.exists(a.first) and os.path.exists(a.third):
+        J = [json.load(open(a.first)), A, json.load(open(a.third))]
+        tp = {}
+        for b in ("P0", "P0s", "S@0", "S@8", "S@512", "FT@8", "FT@32", "FT@128", "FT@512", "D@8", "D@32", "D@128", "D@512", "Dr@8", "Dr@512",
+                  "P0w16", "P0w64", "Kp", "plug03", "plug10", "plug30", "plugU0"):
+            vals = [x["arms"]["P"]["table"][b]["oes_pooled"]["value"] for x in J if b in x["arms"]["P"]["table"]]
+            if len(vals) == 3:
+                tp[b] = dict(values=[round(v, 4) for v in vals], range=round(max(vals) - min(vals), 4))
+        gaps = {}
+        for g in ("FT@512 - P0", "FT@32 - P0", "P0 - P0s", "C - D@512", "S@512 - P0"):
+            vals = [x["arms"]["P"]["gaps_oes"][g]["value"] for x in J if g in x["arms"]["P"]["gaps_oes"]]
+            if g.startswith("C - "):
+                vals = vals[:2]                     # the ceiling differs by job; quoted per job in c_curve
+            gaps[g] = [round(v, 4) for v in vals]
+        c4 = {}
+        for x in J[1:]:
+            cc = x["arms"]["P"].get("c_curve")
+            if cc:
+                c4[x["job"]] = dict(share_noexp_with_C4096=round(cc["share_noexp"]["C"]["value"], 4),
+                                    skill={e["name"]: round(e["oes_pooled"]["value"], 4) for e in cc["nets"]},
+                                    steps={f"{st['frm']}->{st['to']}": round(st["gain"]["value"], 4) for st in cc["steps"]})
+        out["arm_P_three_jobs"] = dict(
+            what="arm P in jobs 003, 004, 005: the same 16 hidden worlds, the same 210 prior worlds and the same training simulations of "
+                 "the prior nets; items, Labs, noise secret and every net seed differ. Pooled skill per job, range over the three; "
+                 "paired gaps per job; the scratch reference nets by job.",
+            jobs=[x["job"] for x in J], skill=tp, largest_range=max(v["range"] for v in tp.values()), gaps=gaps, reference_nets=c4,
+            source="results/analysis_job003.json, results/analysis.json, results/analysis_job005.json: arms.P")
     # ---- tracker (round-5 screen) and wind probe
     per = json.load(gzip.open(os.path.join(FOUNDRY, "results", "per_draw.json.gz"), "rt"))
     pos = {int(d): i for i, d in enumerate(per["draw"])}
@@ -164,6 +193,8 @@ def main():
     print(json.dumps(out["compute"]["with_prescreen"]), out["compute"]["share_of_C"])
     if "between_jobs" in out:
         print(json.dumps(out["between_jobs"]["hidden_labels"]))
+    if "arm_P_three_jobs" in out:
+        print(json.dumps(out["arm_P_three_jobs"]))
 
 
 if __name__ == "__main__":

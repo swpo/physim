@@ -70,21 +70,20 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
   0.33 [0.26, 0.42] at 8 Lab episodes, 0.25 at 32, 0.11 at 512. N30 has one hidden world different from 003 (c1672-j1006
   for j1003), as the review of 004 foresaw.
 
+- 17:20 job 005 DONE, exit 0: 1.67 pod-hours billed, $3.32; failed [], skipped []; 93.8 M member-ticks.
+  results/analysis_job005.json. C's learning curve in arm P: 0.724 (1,024 episodes), 0.761 (4,096), 0.787 (16,384);
+  steps +0.037, +0.025: not converged, C a lower bound. With the 16,384-episode reference: P0's share 0.833 [0.800, 0.863],
+  sigma 0.155 at 8 Lab episodes, 0.074 at 512; at 16 ticks 0.39 / 0.31 / 0.18.
+- 17:40 README.md, results/summary.json (446 claims with sources), figures, tables; final report returned to the coordinator.
+  Total billed $11.70 (001 $0, 002 $1.92, 003 $2.13, 004 $4.33, 005 $3.32), 5.88 pod-hours.
+
 ## Done
-- design and criteria declared and committed; pool and centres; code; CPU smokes from the git archive; requests 001 (rejected,
-  $0), 002 (to be cancelled after arm P), 003 (pushed).
+- everything: design and criteria (DESIGN.md with dated changes), code, five requests (001 rejected, 002 cancelled, 003-005 done),
+  analysis, summary with sources, README, figures.
 
 ## Running
-- r6-foundryexam-004 (ends about 16:25 pod clock) and r6-foundryexam-005 (ends about 17:45). Watchers: scratchpad/foundryexam/
-  watch.sh JOB and hb.sh JOB (restart them after a container restart).
+- nothing.
 
 ## Exact next step
-1. when 004 is final: `bash fetch.sh r6-foundryexam-004 <scratch>`; `python -B make_summary.py
-   <scratch>/jobs/r6-foundryexam-004/out/full --job r6-foundryexam-004 --status <...>/status.json --name analysis_job004.json`.
-2. when 005 is final: the same with --name analysis_job005.json.
-3. final tables: three arms from 004 (analysis_job004.json); arm P's ceiling and learning curve from 005; the spread of arm P
-   over 003, 004, 005. Copy the chosen main analysis to results/analysis.json, then `python -B extras.py`,
-   `python -B make_claims.py`, `python -B figs.py`, `python -B tables.py --other results/analysis_job003.json`; README.md;
-   final report.
-4. if 005 fails: final = 004, C a lower bound (Csm against C shows the trend).
-5. when finished: remove the worktree (git worktree remove) and the scratch folder.
+- none for this study. To regenerate the results folder: see "Reproduce" in README.md. The worktree and the scratch folder
+  are removed at the end of the session; the job outputs stay on origin/gpu-jobs:jobs/r6-foundryexam-00{2,3,4,5}.

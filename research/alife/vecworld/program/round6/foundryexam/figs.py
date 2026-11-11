@@ -110,6 +110,30 @@ def main():
     fig.tight_layout()
     fig.savefig(os.path.join(a.out, "fig_curves.png"), dpi=110)
     print("wrote fig_budget.png, fig_worlds.png, fig_curves.png")
+    # learning curve of nets trained from scratch at the true weights (job 005, arm P): Lab episodes (D) and simulated
+    # episodes (Csm, C, Cbig) on one axis, with the no-experiment level and the fine-tuned P0
+    p5 = os.path.join(a.out, "analysis_job005.json")
+    if os.path.exists(p5):
+        R = json.load(open(p5))["arms"]["P"]
+        cc, T = R["c_curve"], R["table"]
+        fig, ax = plt.subplots(figsize=(6.4, 4.4))
+        d = R["budgets"]["curves"]["D"]
+        ax.plot(d["N"], d["oes_pooled"], "o-", color="#d62728", label="D(N): N Lab episodes, from scratch")
+        xs = [e["episodes"] for e in cc["nets"]]
+        ys = [e["oes_pooled"]["value"] for e in cc["nets"]]
+        ax.plot(xs, ys, "s-", color="k", label="C(n): n simulated episodes at the true weights, from scratch")
+        f = R["budgets"]["curves"]["FT"]
+        ax.plot(f["N"], f["oes_pooled"], "o-", color="#2ca02c", label="FT(N): P0 fine-tuned on N Lab episodes")
+        ax.axhline(T["P0"]["oes_pooled"]["value"], ls="--", color="k", lw=1.2, label="P0: 13,440 episodes of 210 prior worlds")
+        ax.set_xscale("log", base=2)
+        ax.set_xlabel("episodes of the hidden world (Lab or simulated at the true weights)")
+        ax.set_ylabel("pooled skill, climatology 0 to oracle 1")
+        ax.set_title("arm P (job 005, 16 hidden worlds): the reference net is not converged in data", fontsize=9)
+        ax.grid(alpha=0.3)
+        ax.legend(fontsize=7, loc="lower right")
+        fig.tight_layout()
+        fig.savefig(os.path.join(a.out, "fig_ccurve.png"), dpi=110)
+        print("wrote fig_ccurve.png")
 
 
 if __name__ == "__main__":

@@ -5,19 +5,22 @@ hypothesis and no experiment (P0: train on simulations of the public prior) take
 still hold when the hidden part is the 250 numbers of the level-0 network itself, and the public simulator is the
 family, not the world?
 
-**Answer.** Less than before, and how much less depends on three dials that this pilot measured.
+**Answer.** Less than before, and how much less depends on four dials that this pilot measured: the width of the
+prior, the Lab budget, the query horizon, and how well the reference is trained.
 - On the foundry's transport automaton, observed in the block view, P0 takes 0.863 [0.835, 0.889] of the skill of a
-  net trained at the true weights (C) when the exam's prior is the screened prior, and 0.868 [0.840, 0.899] when it is
-  a 30% neighbourhood of a public world. With a 10% neighbourhood it takes 0.958, as in round 5.
-- The remaining tenth is not reserved for science. P0 fine-tuned on Lab episodes, with no hypothesis, closes 33% of
-  the gap at 32 episodes and 71% at 512. The science share sigma is 0.12 at 8 Lab episodes and 0.04 at 512, below the
-  0.15 bar at every budget when all horizons are pooled.
-- The horizon is the strongest dial. At 16 ticks alone, P0 takes 0.66 [0.58, 0.74] of C, and sigma is 0.33 [0.26,
-  0.42] at 8 Lab episodes, 0.25 [0.20, 0.32] at 32 and 0.11 at 512 (screened prior). This breakdown was first made
-  after job 003 and then repeated on new items in job 004.
-- A scripted inference of the world from Lab statistics (amortised S) adds nothing: rho is 0.01 to 0.05.
-- C is a lower bound: it still gains from more true-weight data (section "What C is worth"), so P0's shares are upper
-  bounds and the sigmas lower bounds.
+  net trained at the true weights on 4,096 episodes (C) when the exam's prior is the screened prior, and 0.868 [0.840,
+  0.899] when it is a 30% neighbourhood of a public world. With a 10% neighbourhood it takes 0.958, as in round 5.
+- C is a lower bound, so these shares are upper bounds. With the reference trained on 16,384 episodes (job 005,
+  screened prior) P0's share is 0.833 [0.800, 0.863], and the reference still gained 0.025 from that last fourfold
+  step in data.
+- The remaining sixth is not reserved for science. P0 fine-tuned on Lab episodes, with no hypothesis, closes 26% of
+  the gap to the 16,384-episode reference at 32 episodes and 56% at 512. The science share sigma (pooled over
+  horizons, screened prior, 16,384-episode reference) is 0.155 [0.129, 0.184] at 8 Lab episodes, undecided against the
+  0.15 bar, and 0.074 [0.059, 0.091] at 512, the declared null: fail.
+- The horizon is the strongest dial. At 16 ticks alone, P0 takes 0.61 [0.52, 0.69] of the reference, and sigma is
+  0.39 [0.30, 0.47] at 8 Lab episodes, 0.31 [0.25, 0.38] at 32 and 0.18 [0.14, 0.23] at 512. This breakdown was first
+  made after job 003 and then repeated on new items in jobs 004 and 005.
+- A scripted inference of the world from Lab statistics (amortised S) adds nothing: rho is -0.01 to 0.05.
 
 **PILOT ONLY.** Every hidden world here is a public function of public seeds and its weights are written to public
 outputs (`origin/gpu-jobs:jobs/<job>/out/full/<arm>/worlds.json`). These worlds, Labs and items must never be
@@ -57,17 +60,21 @@ episodes; plug-in simulators from the hidden state with wrong weights or without
 | job | state | card | pod-hours billed | billed | what |
 |---|---|---|---|---|---|
 | r6-foundryexam-001 | rejected by the runner's validation (notes over 4,000 characters) | - | 0 | $0 | - |
-| r6-foundryexam-002 | cancelled by the runner when 003 arrived | A100 40GB | 0.96 | $1.92 | one dispatch per training step: 70 ms per step of two nets, 3.5 times the round-5 basis; nothing of it enters the results |
+| r6-foundryexam-002 | cancelled by the runner when 003 arrived | A100 40GB | 0.96 | $1.92 | one dispatch per training step: 70 ms per step of the two shared nets (9.6 ms after the fix); nothing of it enters the results |
 | r6-foundryexam-003 | done, exit 0 | A100 40GB | 1.07 | $2.13 | first full pass, three arms (C on 1,536 episodes; 24-32 prior worlds in the N arms) |
 | r6-foundryexam-004 | done, exit 0 | A100 40GB | 2.17 | $4.33 | the table below: C on 4,096 episodes with 8,000 steps, 83-128 prior worlds in the N arms, new seeds, items and Labs |
-| r6-foundryexam-005 | see "What C is worth" | A100 40GB | | | arm P again with a third reference net on 16,384 episodes |
+| r6-foundryexam-005 | done, exit 0 | A100 40GB | 1.67 | $3.32 | arm P again (same worlds, new items, Labs and seeds) with a third reference net on 16,384 episodes: C's learning curve |
+
+Total billed: $11.70 for 5.88 pod-hours (billed amount over the $1.99/h rate; `results/job/status_*.json`), of the
+study's $25.
 
 Job 004: 80.9 million member-ticks of the 64 x 64 automaton (float64) in 2.05 h on an A100-SXM4-40GB (lambdalabs,
 $1.99/h), jax 0.12.0.1; 40 hidden worlds, each with a Lab of 512 episodes, 32 items x 12 replicate futures and 96
-climatology runs; 724 trained nets (float32). No part failed or was skipped in 003 or 004. Each job passed the
-runner's code review (`results/job/review_*.md`) and a presmoke at full shapes.
+climatology runs; 724 trained nets (float32). Job 005: 93.8 million member-ticks in 1.50 h, 16 hidden worlds. No part
+failed or was skipped in 003, 004 or 005. Each job passed the runner's code review (`results/job/review_*.md`) and a
+presmoke at full shapes.
 
-## Results (job 004; pooled skill, climatology 0, oracle 1; ± world-clustered SE with a training seed drawn per resample)
+## Results (job 004, C on 4,096 episodes; pooled skill, climatology 0, oracle 1; ± world-clustered SE with a training seed drawn per resample)
 
 | policy | arm P | arm N30 | arm N10 |
 |---|---|---|---|
@@ -130,10 +137,13 @@ Figures: `results/fig_budget.png` (skill against Lab budget), `results/fig_world
 
 ### Reading
 
-1. **Acceptance.** Pooled over the five horizons no arm passes sigma >= 0.15 at any Lab budget; with no Lab at all
-   the interval of arm P reaches 0.165 (undecided). rho passes its bar (at most 0.7) trivially: the scripted S does
-   nothing. By horizon, arm P passes at 16 ticks with 8 or 32 Lab episodes and at 8 ticks with 8; arm N30 passes at 16
-   ticks with 8 (undecided with 32: 0.23 [0.14, 0.33]).
+1. **Acceptance.** Pooled over the five horizons no arm passes sigma >= 0.15 at any Lab budget against the
+   4,096-episode C; with no Lab at all the interval of arm P reaches 0.165 (undecided). Against the 16,384-episode
+   reference (job 005) arm P is undecided at 8 Lab episodes (0.155 [0.129, 0.184]) and fails from 32 on. rho passes its
+   bar (at most 0.7) trivially: the scripted S does nothing. By horizon (intervals above 0.15): against the
+   4,096-episode C, arm P passes at 16 ticks with 8 or 32 Lab episodes and at 8 ticks with 8, and arm N30 at 16 ticks
+   with 8 (undecided with 32: 0.23 [0.14, 0.33]); against the 16,384-episode reference arm P passes at 8 and at 16
+   ticks with 8 or 32 Lab episodes, and is undecided at 16 ticks with 512 (0.18 [0.14, 0.23]).
 2. **The prior's width is a dial, up to a point.** A 10% neighbourhood is a round-5 exam (0.958). A 30% neighbourhood
    and the screened prior are the same to P0 (0.868, 0.863) once P0 has enough prior worlds; job 003's lower figure
    for N30 (0.787) was an artifact of 24-32 prior worlds.
@@ -154,7 +164,7 @@ Figures: `results/fig_budget.png` (skill against Lab budget), `results/fig_world
    arm N10 shows that a net trained on worlds within 10% of the truth has 0.958 of C, so weights inferred to about
    10% and then simulated would recover most of the gap, where it is largest: at 8 to 16 ticks, with at most 32 Lab
    episodes. Nothing here shows that 240 weights can be inferred from that little block-view data; the one scripted
-   attempt (33 summary statistics, amortised) recovered nothing. (c) Beyond C, 0.23 of the skill needs the hidden
+   attempt (33 summary statistics, amortised) recovered nothing. (c) Beyond C, 0.21 to 0.23 of the skill needs the hidden
    level-0 state: with the state in hand the weights must be right to about 6% for the simulator to match C, 10% to
    match P0 (interpolated between the 3%, 10% and 30% plug-ins, after the results).
 7. **Actions.** The centres were chosen by the declared rule (largest effect of an aimed 200-nat command in the CPU
@@ -166,23 +176,44 @@ Figures: `results/fig_budget.png` (skill against Lab budget), `results/fig_world
 8. **Stationarity and seeds.** The tick alone carries at most 6e-05 of any hidden world's block-view variance.
    Seed-to-seed differences of the gaps are at most 0.006 in pooled skill; the intervals are world-to-world spread.
 
-### What C is worth
+### What C is worth (job 005, arm P: the same 16 hidden worlds, new items)
 
 Criterion 6 (converged if the held-out loss improved by less than 2% of its total gain over the last fifth of the
-schedule) holds for 12 of 32 C nets in arm P of job 004 (4 of 32 in job 003), and C on 4,096 episodes is 0.034 ±
-0.003 above C on 1,024. C is therefore a lower bound on what the family reaches at the true weights, in steps and in
-data. P0 itself misses the criterion narrowly in arm P (late share 0.031 for both seeds); A, P0s, D(512), FT(512) and
-the fine-tuned C meet it for most nets (`tables.py` prints the full table).
+schedule) holds for 12 of 32 C nets in arm P of job 004 (4 of 32 in job 003), so job 005 trained three scratch nets
+per hidden world on nested sets of simulated episodes at the true weights (`results/fig_ccurve.png`):
 
-Job 005 (arm P, same hidden worlds, new items) adds a third point, C on 16,384 episodes: see the section at the end.
+| reference net | episodes | pooled skill | P0's share with it as the ceiling | sigma at 8 Lab episodes | sigma at 512 |
+|---|---|---|---|---|---|
+| Csm | 1,024 | 0.724 ± 0.029 | 0.905 [0.877, 0.930] | 0.082 [0.062, 0.105] | -0.006 [-0.016, 0.005] |
+| C | 4,096 | 0.761 ± 0.028 | 0.861 [0.831, 0.887] | 0.127 [0.105, 0.152] | 0.043 [0.033, 0.055] |
+| Cbig | 16,384 | 0.787 ± 0.027 | 0.833 [0.800, 0.863] | 0.155 [0.129, 0.184] | 0.074 [0.059, 0.091] |
 
-### Between jobs (arm P: same hidden and prior worlds; new items, Labs, secret and training seeds)
+The steps gain 0.037 ± 0.003 and 0.025 ± 0.003 of pooled skill. By the rule of DESIGN.md 5d (a last step above
+0.01) C is not converged in data, and Cbig is not converged in steps either (3 of 16 nets by criterion 6, best step
+23,375 of 24,000). Every share and sigma in this file is therefore a bound in the direction that favours P0. If the
+gain kept shrinking by the same factor per fourfold step the reference would end near 0.84 and P0's share near 0.78;
+that is an extrapolation from two steps, not a measurement. With Cbig as the ceiling in job 005: sigma with no Lab
+0.167 [0.137, 0.200], at 32 Lab episodes 0.124 [0.103, 0.148], at 128 0.097; a data-only learner does not reach 90%
+of it within 512 Lab episodes and needs 136 to match P0; by horizon, sigma at 8 / 32 / 512 Lab episodes is 0.16 /
+0.13 / 0.08 at 4 ticks, 0.26 / 0.21 / 0.12 at 8 ticks and 0.39 / 0.31 / 0.18 at 16 ticks. The neighbourhood arms
+have no 16,384-episode reference; their C gained 0.023 (N30) and 0.031 (N10) from 1,024 to 4,096 episodes, so their
+shares are upper bounds of the same kind. P0 itself misses criterion 6 narrowly (late share 0.031 to 0.042);
+`tables.py` prints the convergence of every kind of net.
 
-Every policy except C repeats within 0.004 of pooled skill between jobs 003 and 004 (P0 0.664 and 0.663, FT(512)
-0.732 and 0.737, D(512) 0.710 and 0.710, ridge(8) 0.640 and 0.637, S(8) 0.664 and 0.664), P0 on 16 worlds within
-0.017. C moved from 0.744 to 0.768 with 2.7 times the data and twice the steps at twice the batch, and with it P0's
-share from 0.892 to 0.863. Arm N10 has the same hidden worlds in both jobs; arm N30 has one different (c1672-j1006
-for c1672-j1003), because the gate's noise is keyed by a candidate's row and the larger candidate list moved the rows.
+A reference that needs tens of thousands of simulated episodes per world is itself a statement about compute: at the
+true weights, 16,384 episodes are 5.4 million member-ticks per hidden world, a quarter of what P0 spent on all 210
+prior worlds.
+
+### Between jobs (arm P: same hidden and prior worlds and the same training simulations of the prior nets; new items, Labs, secret and net seeds)
+
+Over jobs 003, 004 and 005 every policy other than C stays within 0.014 of pooled skill (P0 0.664, 0.663, 0.655;
+FT(512) 0.732, 0.737, 0.728; D(512) 0.710, 0.710, 0.702; ridge on 8 episodes 0.640, 0.637, 0.628; S(8) 0.664,
+0.664, 0.654), P0 on 16 or 64 worlds within 0.017 and persistence within 0.021. The paired quantities are tighter:
+P0's share against the 4,096-episode C is 0.863 in job 004 and 0.861 in job 005, and that C gains 0.034 and 0.037 over
+the 1,024-episode net. Job 003's C (1,536 episodes, 4,000 steps at batch 64) had 0.744 and P0's share 0.892. The three
+jobs repeat the measurement, not the choice of worlds or the prior nets' training data. Arm N10 has the same hidden
+worlds in 003 and 004; arm N30 has one different (c1672-j1006 for c1672-j1003), because the gate's noise is keyed by a
+candidate's row and the longer candidate list moved the rows.
 
 ## Decisions taken, and why
 
@@ -200,7 +231,8 @@ for c1672-j1003), because the gate's noise is keyed by a candidate's row and the
 - Request 001 was rejected for the length of its notes. Job 002 cost $1.92 for nothing: one dispatch per training
   step under the platform allocator. Fixed by 50 steps per dispatch (9.6 ms per step of the two shared nets instead
   of 70) and a presmoke that measures the speed and stops the job if the projection does not fit.
-- C is not converged (above). The N arms of job 003 were not like for like with arm P.
+- C is not converged, even on 16,384 episodes with 24,000 steps (above): three jobs moved the reference from 0.744 to
+  0.768 to 0.787 and P0's share from 0.892 to 0.863 to 0.833. The N arms of job 003 were not like for like with arm P.
 - The amortised S is a weak script: 33 hand-made statistics of block-view windows. Its failure says little about what
   inference of the weights could do.
 - The speed guard and deadlines were never exercised in the full passes (nothing was cut).
@@ -213,9 +245,9 @@ for c1672-j1003), because the gate's noise is keyed by a candidate's row and the
 
 Gate threshold 0.2 (after a CPU check, before any GPU run). Section 5b (after job 002's speed, before any score).
 Sections 5c and 5d (jobs 004 and 005, after job 003's and then 004's arm-P results). The by-horizon breakdown, the
-rank correlations over worlds, the compute accounting, the weight-error equivalents and the between-job table are
-descriptive and were written after job 003; the by-horizon numbers quoted are job 004's, which ran after that
-breakdown existed. The criteria of DESIGN.md section 5 were not changed.
+rank correlations over worlds, the compute accounting, the weight-error equivalents, the between-job tables and the
+extrapolation of C's curve are descriptive and were written after job 003; the by-horizon numbers quoted are those
+of jobs 004 and 005, which ran after that breakdown existed. The criteria of DESIGN.md section 5 were not changed.
 
 ## Limits
 
@@ -235,7 +267,7 @@ jobs are repeats of the measurement, not of the choice of worlds.
 | `run_fx.py`, `job.sh` | the GPU job (presmoke with shape and speed test, then the full pass) |
 | `make_pool.py`, `results/pool.json` | the public pool of screened worlds and the centres |
 | `make_summary.py`, `extras.py`, `make_claims.py`, `tables.py`, `figs.py`, `fetch.sh` | job outputs to `results/` |
-| `results/analysis.json` | job 004, everything recomputed from per-item scores; `analysis_job003.json`, `analysis_job005.json` likewise |
+| `results/analysis.json` | job 004 (three arms), everything recomputed from per-item scores; `analysis_job003.json` (first pass) and `analysis_job005.json` (arm P with the 16,384-episode reference) likewise |
 | `results/summary.json` | every quoted number with its source; `results/job/` holds status, review and progress of every job |
 | `PROGRESS.md` | log of the study |
 

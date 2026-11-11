@@ -30,21 +30,16 @@ def q3(q):
                 median_world=round(q["median_world"], 4), se_worlds_only=round(q["se_worlds_only"], 4))
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--analysis", default=os.path.join(RES, "analysis.json"))
-    ap.add_argument("--job", default="r6-foundryexam-002")
-    a = ap.parse_args()
-    A = json.load(open(a.analysis))
+def claims_from(A, pre, fname, claims):
+    """Claims of every arm of one analysis file; ids are prefixed (e.g. 'j005.') for a second job."""
     job = A["job"]
-    claims = []
 
-    def add(cid, text, key, value=None, file="results/analysis.json", jobid=None):
+    def add(cid, text, key, value=None, file=None, jobid=None):
         v = get(A, key) if value is None else value
         if isinstance(v, dict) and "value" in v and "p05" in v:
             v = q3(v)
-        claims.append(dict(id=cid, text=text, value=v, source=dict(job=jobid or job, file=file, key=key)))
-
+        claims.append(dict(id=pre + cid, text=(f"[{job}] " if pre else "") + text, value=v,
+                           source=dict(job=jobid or job, file=file or fname, key=key)))
     for arm, R in A["arms"].items():
         p = f"arms.{arm}"
         acc = R["acceptance"]
@@ -116,6 +111,28 @@ def main():
         add(f"{arm}.stationarity", f"arm {arm}: share of the variance carried by the tick alone", f"{p}.stationarity")
         add(f"{arm}.oes_by_class", f"arm {arm}: per-cell-mean OES by program class", f"{p}.oes_by_class",
             value={c: {b: round(v[b], 3) for b in ("C", "P0", "plugU0", "plugTrue") if b in v} for c, v in (R["oes_by_class"] or {}).items()})
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--analysis", default=os.path.join(RES, "analysis.json"))
+    ap.add_argument("--job", default="r6-foundryexam-004")
+    ap.add_argument("--also", default=os.path.join(RES, "analysis_job005.json"),
+                    help="a second analysis whose claims are added with the prefix of its job (job 005: arm P with the larger reference net)")
+    a = ap.parse_args()
+    claims = []
+    A0 = json.load(open(a.analysis))
+    sets = [(A0, "", "results/analysis.json")]
+    if a.also and os.path.exists(a.also):
+        sets.append((json.load(open(a.also)), "j005.", "results/" + os.path.basename(a.also)))
+    for A, pre, fname in sets:
+        claims_from(A, pre, fname, claims)
+    A = A0
+    job = A["job"]
+
+    def add(cid, text, key, value=None, file="results/analysis.json", jobid=None):
+        v = get(A, key) if value is None else value
+        claims.append(dict(id=cid, text=text, value=v, source=dict(job=jobid or job, file=file, key=key)))
     add("gate", "exam-time gate: worlds passing by kind", "gate.passed")
     add("job.info", "job: sizes, platform, member-ticks, hours, failed, skipped", "job_info",
         value={k: A["job_info"].get(k) for k in ("size", "arms", "platform", "member_ticks_public_simulator", "hours", "failed", "skipped")})
@@ -142,6 +159,16 @@ def main():
                pilots_never_exam="Every hidden world of this study is a public function of public seeds (prior seeds 2026 and 2027, "
                                  "neighbour seeds 606000 + draw) and its weights are in origin/gpu-jobs:jobs/<job>/out/full/<arm>/worlds.json. "
                                  "They, their Lab data and their items must never be reused as an exam.")
+    head = ["P.share_noexp", "N30.share_noexp", "N10.share_noexp", "j005.P.c_curve", "j005.P.c_curve_steps", "j005.P.c_curve_share",
+            "j005.P.c_curve_verdict", "j005.P.share_noexp", "j005.P.sigma_no_lab", "j005.P.sigma@8", "j005.P.sigma@32", "j005.P.sigma",
+            "P.sigma@8", "P.sigma", "N30.sigma", "N10.sigma", "j005.P.h16.share_noexp", "j005.P.h16.sigma@8", "j005.P.h16.sigma@32",
+            "j005.P.h16.sigma@512", "P.h16.sigma@8", "N30.h16.sigma@8", "P.rho@8", "P.rho@512", "j005.P.rhoFT@32", "j005.P.rhoFT@512",
+            "P.curve.FT", "P.curve.D", "P.curve.Dr", "P.N90_data_only", "P.N_P0_data_only", "P.state_given.plugPrior",
+            "P.state_given.plug10", "P.gap.O - C", "P.gap.C - P0", "P.gap.P0 - P0s", "P.actions", "N30.actions", "N10.actions",
+            "P.rank_corr", "P.stationarity", "P.convergence", "j005.P.convergence", "gate", "centres"]
+    ids = {c["id"] for c in claims}
+    out["headline"] = dict(what="ids of the claims quoted in README.md's answer and in the final report", ids=[h for h in head if h in ids],
+                           missing=[h for h in head if h not in ids])
     extra = os.path.join(RES, "summary_extra.json")
     if os.path.exists(extra):
         out.update(json.load(open(extra)))
