@@ -2,6 +2,7 @@
  "PILOT_NEVER_REUSE_AS_EXAM": true,
  "note": "every file of this folder is pilot material of instance pilot-astra-ring-001-w0; files that cannot carry the marker themselves (the model's own files under submission/, the npz, copies) are covered by this manifest.",
  "files": {
+  "RESULT.md": "written by the runner of the rollout (see RESULT.md, Files)",
   "dry_run_resolved_eval.json": "written by the runner of the rollout (see RESULT.md, Files)",
   "fair_score_check.json": "written by the runner of the rollout (see RESULT.md, Files)",
   "lab_record.json": "text",
