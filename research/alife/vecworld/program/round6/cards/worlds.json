@@ -1,0 +1,961 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "prior_seed": 2026,
+ "run_seeds": {
+  "A": 6001,
+  "B": 6002,
+  "late": 6001
+ },
+ "shortlist": [
+  4470,
+  4186,
+  262,
+  7567,
+  6845,
+  1672,
+  3078
+ ],
+ "candidates_sampled": [
+  60,
+  124,
+  416,
+  2755,
+  3062,
+  3101,
+  3854,
+  4289,
+  4495,
+  4833,
+  4919,
+  5671,
+  7760,
+  7820,
+  7913,
+  8010
+ ],
+ "prior_sample": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31
+ ],
+ "uniform_controls": [
+  0,
+  2,
+  3,
+  4
+ ],
+ "frozen_controls": [
+  1,
+  11,
+  22,
+  24
+ ],
+ "worlds": [
+  {
+   "name": "gliders",
+   "kind": "gliders",
+   "role": "designed",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "vortex64",
+   "kind": "vortex",
+   "H": 64,
+   "role": "designed",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "membrane",
+   "kind": "membrane",
+   "role": "designed",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "foundry_04470",
+   "kind": "foundry",
+   "draw": 4470,
+   "H": 64,
+   "role": "shortlist",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_04186",
+   "kind": "foundry",
+   "draw": 4186,
+   "H": 64,
+   "role": "shortlist",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_00262",
+   "kind": "foundry",
+   "draw": 262,
+   "H": 64,
+   "role": "shortlist",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_07567",
+   "kind": "foundry",
+   "draw": 7567,
+   "H": 64,
+   "role": "shortlist",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_06845",
+   "kind": "foundry",
+   "draw": 6845,
+   "H": 64,
+   "role": "shortlist",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_01672",
+   "kind": "foundry",
+   "draw": 1672,
+   "H": 64,
+   "role": "shortlist",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_03078",
+   "kind": "foundry",
+   "draw": 3078,
+   "H": 64,
+   "role": "shortlist",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "ctl_noise",
+   "kind": "noise",
+   "role": "control",
+   "runs": [
+    "A",
+    "B"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "ctl_freebodies",
+   "kind": "free",
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "ctl_uniform_00000",
+   "kind": "foundry",
+   "draw": 0,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "ctl_uniform_00002",
+   "kind": "foundry",
+   "draw": 2,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "ctl_uniform_00003",
+   "kind": "foundry",
+   "draw": 3,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "ctl_uniform_00004",
+   "kind": "foundry",
+   "draw": 4,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "ctl_frozen_00001",
+   "kind": "foundry",
+   "draw": 1,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "frozen"
+  },
+  {
+   "name": "ctl_frozen_00011",
+   "kind": "foundry",
+   "draw": 11,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "frozen"
+  },
+  {
+   "name": "ctl_frozen_00022",
+   "kind": "foundry",
+   "draw": 22,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "frozen"
+  },
+  {
+   "name": "ctl_frozen_00024",
+   "kind": "foundry",
+   "draw": 24,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1,
+   "r5_type": "frozen"
+  },
+  {
+   "name": "ctl_diffusion_0",
+   "kind": "diffusion",
+   "draw": 0,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "ctl_diffusion_1",
+   "kind": "diffusion",
+   "draw": 1,
+   "H": 64,
+   "role": "control",
+   "runs": [
+    "A"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "foundry_00060",
+   "kind": "foundry",
+   "draw": 60,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_00124",
+   "kind": "foundry",
+   "draw": 124,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_00416",
+   "kind": "foundry",
+   "draw": 416,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_02755",
+   "kind": "foundry",
+   "draw": 2755,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_03062",
+   "kind": "foundry",
+   "draw": 3062,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_03101",
+   "kind": "foundry",
+   "draw": 3101,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_03854",
+   "kind": "foundry",
+   "draw": 3854,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_04289",
+   "kind": "foundry",
+   "draw": 4289,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_04495",
+   "kind": "foundry",
+   "draw": 4495,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_04833",
+   "kind": "foundry",
+   "draw": 4833,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_04919",
+   "kind": "foundry",
+   "draw": 4919,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_05671",
+   "kind": "foundry",
+   "draw": 5671,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_07760",
+   "kind": "foundry",
+   "draw": 7760,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_07820",
+   "kind": "foundry",
+   "draw": 7820,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_07913",
+   "kind": "foundry",
+   "draw": 7913,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_08010",
+   "kind": "foundry",
+   "draw": 8010,
+   "H": 64,
+   "role": "candidate",
+   "runs": [
+    "A",
+    "late"
+   ],
+   "priority": 2,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_00005",
+   "kind": "foundry",
+   "draw": 5,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00006",
+   "kind": "foundry",
+   "draw": 6,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00007",
+   "kind": "foundry",
+   "draw": 7,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00008",
+   "kind": "foundry",
+   "draw": 8,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00009",
+   "kind": "foundry",
+   "draw": 9,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "active:bodies"
+  },
+  {
+   "name": "foundry_00010",
+   "kind": "foundry",
+   "draw": 10,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "active:bodies"
+  },
+  {
+   "name": "foundry_00012",
+   "kind": "foundry",
+   "draw": 12,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00013",
+   "kind": "foundry",
+   "draw": 13,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "active:field"
+  },
+  {
+   "name": "foundry_00014",
+   "kind": "foundry",
+   "draw": 14,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00015",
+   "kind": "foundry",
+   "draw": 15,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00016",
+   "kind": "foundry",
+   "draw": 16,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00017",
+   "kind": "foundry",
+   "draw": 17,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00018",
+   "kind": "foundry",
+   "draw": 18,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00019",
+   "kind": "foundry",
+   "draw": 19,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00020",
+   "kind": "foundry",
+   "draw": 20,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00021",
+   "kind": "foundry",
+   "draw": 21,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "active:field"
+  },
+  {
+   "name": "foundry_00023",
+   "kind": "foundry",
+   "draw": 23,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00025",
+   "kind": "foundry",
+   "draw": 25,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "frozen"
+  },
+  {
+   "name": "foundry_00026",
+   "kind": "foundry",
+   "draw": 26,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry_00027",
+   "kind": "foundry",
+   "draw": 27,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00028",
+   "kind": "foundry",
+   "draw": 28,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "frozen"
+  },
+  {
+   "name": "foundry_00029",
+   "kind": "foundry",
+   "draw": 29,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00030",
+   "kind": "foundry",
+   "draw": 30,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "uniform"
+  },
+  {
+   "name": "foundry_00031",
+   "kind": "foundry",
+   "draw": 31,
+   "H": 64,
+   "role": "prior",
+   "runs": [
+    "A"
+   ],
+   "priority": 3,
+   "r5_type": "frozen"
+  },
+  {
+   "name": "foundry128_04470",
+   "kind": "foundry",
+   "draw": 4470,
+   "H": 128,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 4,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry128_04186",
+   "kind": "foundry",
+   "draw": 4186,
+   "H": 128,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 4,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry128_00262",
+   "kind": "foundry",
+   "draw": 262,
+   "H": 128,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 4,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry128_07567",
+   "kind": "foundry",
+   "draw": 7567,
+   "H": 128,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 4,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry128_06845",
+   "kind": "foundry",
+   "draw": 6845,
+   "H": 128,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 4,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry128_01672",
+   "kind": "foundry",
+   "draw": 1672,
+   "H": 128,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 4,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "foundry128_03078",
+   "kind": "foundry",
+   "draw": 3078,
+   "H": 128,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 4,
+   "r5_type": "active:movers"
+  },
+  {
+   "name": "vortex128",
+   "kind": "vortex",
+   "H": 128,
+   "role": "size",
+   "runs": [
+    "A"
+   ],
+   "priority": 5
+  }
+ ]
+}
