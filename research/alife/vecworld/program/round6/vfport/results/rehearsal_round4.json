@@ -4,7 +4,7 @@
  "evidence_labels": "run (steps 0 and 1, the status, stop, reset, close, report, settle and pack commands); vf-eval (steps 2a, 2b, 2c, the reference stage and dry run of three jobs, and the three paid rollouts with a real model through Prime inference, push = false); inferred (everything about macOS)",
  "commit_rehearsed": "d9694f3e5b6c92a98c13fb36f02645f01f18728c",
  "sha256_of_PIN_at_that_commit": "9f1511add96b527d0ef208f81f5195162c4159740e898fefbb7dde6396d896e4",
- "relation_to_the_commit_a_re_audit_reads": "the rehearsal ran the FIRST round-4 pin (d9694f3e5). After it, and listed under `changes_after_the_first_push`, the pin changed in three pinned files (tools/run_report.py: the turn count of a saved trace; physim2_env/rollout_config.py, tools/check_config.py, tools/check_round4_step3.py and configs/ring_rollout.example.toml: the config key reasoning_summary removed) and in prose; the 41 fenced shell commands and the 2 inline commands of RUNBOOK_MAC.md are byte for byte the rehearsed ones (compared by script); the toml example and the block of facts changed with the schema. The commands affected by the change (step 0 at the new pin, and the schema printed by the facts command) were issued again from a fresh clone of the new head: `rerun_at_the_new_pin`.",
+ "relation_to_the_commit_a_re_audit_reads": "the rehearsal ran the FIRST round-4 pin (d9694f3e5). The second pin, commit c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed (sha256 of PIN.sha256 776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc, 135 files), differs from it in five pinned files and in prose (`changes_after_the_first_push`); the 41 fenced shell commands and the 2 inline commands of RUNBOOK_MAC.md are byte for byte the rehearsed ones (compared by script); the toml example and the block of facts changed with the schema. Step 0 was issued again from a fresh clone of the second pin (`rerun_at_the_new_pin`); a commit after it that changes only this record and other files outside PIN.sha256 does not change the pinned code.",
  "how": {
   "clone": "git init; sparse checkout of round6/vfport, round5/agentenv and vw1; git fetch --depth 1 --filter=blob:none origin d9694f3e5b6c92a98c13fb36f02645f01f18728c; git checkout --detach (the history is several GB; the machine had 2.3 GiB free)",
   "issuing": "rehearsal/issue4.py of the clone, called by a two-line shell helper of the operator (`r4`) that only fixes the issuer's own arguments; the issuer records the literal text, its substitutions, the names (never the values) of the variables it added, the exit status and the complete output",
@@ -249,7 +249,7 @@
   "the report tool printed `7_num_turns: null` for every saved trace (fixed after the first push)"
  ],
  "left_behind": {
-  "removed_at_the_end": "the rehearsal clone with its .venv, HOME folder, stores and job folders (one rm -rf of that one folder in the operator's scratch, path written out); no container of the run label remained (docker ps -a by label: none); no image was built or removed",
+  "removed_at_the_end": "the rehearsal clone with its .venv, the scratch HOME with the pilot folders, the stores and the job folders, and the clone of the rerun: each one rm -rf of that one folder in the operator's scratch, path written out; no container of the run label remained (docker ps -a by label: none); no image was built or removed",
   "left_on_this_machine": [
    "/tmp/physim2-io-<random> folders and /tmp/vf-port-<hex> files of the rollouts (outside the operator's scratch; not removed by pattern)",
    "uv's shared cache gained the clone's packages"
@@ -265,6 +265,39 @@
  ],
  "hidden_values_note": "scanned before the clone was removed, against the two stores of the rehearsal (step 2's pilot store and step 3's store: each instance's secret and the first ten characters of each hidden parameter): counts in `hidden_values_in_this_record`. Instances made here are public pilot material, never to be reused as an exam.",
  "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "changes_after_the_first_push": [
+  {
+   "n": 1,
+   "files": [
+    "physim2_env/rollout_config.py",
+    "tools/check_config.py",
+    "tools/check_round4_step3.py",
+    "configs/ring_rollout.example.toml",
+    "RUNBOOK_MAC.md (example config, 3.1, block of facts)"
+   ],
+   "what": "the config key reasoning_summary removed: a config that holds it is refused as an unknown key; reasoning_effort alone stays",
+   "why": "job 1: the route refused the reasoning object (HTTP 400) for the default model; coordinator 18:24 UTC",
+   "tests": "tests/exam_pure.py (two bad files with the key refused; an effort travels as reasoning_effort alone): 19 of 19; tools/check_round4.py D4b: 125 of 125; tools/check_runbook.py: 51 of 51 (the block of facts equals the code)"
+  },
+  {
+   "n": 2,
+   "files": [
+    "tools/run_report.py"
+   ],
+   "what": "7_num_turns counts the sampled nodes of a saved trace",
+   "why": "it printed null for every saved trace: verifiers' Trace.num_turns is a property (v1/trace.py:640) and is not saved",
+   "tests": "tests/exam_pure.py (made-up traces); the report on job 3's trace prints 143"
+  },
+  {
+   "n": 3,
+   "files": [
+    "RUNBOOK_MAC.md"
+   ],
+   "what": "prose in five places (`mismatches`) and the evidence paragraph",
+   "why": "what the rehearsal showed",
+   "tests": "tools/check_runbook.py 51 of 51; the command blocks compared byte for byte with the rehearsed ones"
+  }
+ ],
  "counts": {
   "entries": 118,
   "runbook_commands_issued": 106,
@@ -4859,5 +4892,194 @@
     "{\"files\": 17, \"total_bytes\": 1045263, \"left_out\": [], \"missing\": [], \"key_scan\": \"clean\", \"complete\": true}"
    ]
   }
- ]
+ ],
+ "rerun_at_the_new_pin": {
+  "commit": "c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed",
+  "sha256_of_PIN.sha256": "776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc",
+  "how": "a fresh sparse clone of the pushed second pin (fetched by commit), a fresh scratch HOME, the clone's own rehearsal/issue4.py; step 0 issued as sh -c lines; the other changes are on no command's text",
+  "outcome": "0a: the commit c7db465d5..., the study path, TREE-LISTED with no line between; 0b: 776d9a33...fadc PIN.sha256, PIN-OK; 0c: 6 names, 0 refused, default, unix:///var/run/docker.sock; 0d: the shared image's id before IMAGES-LISTED (deviation 3), NO-PILOT-FOLDERS; 0e: refused at the floor of 8 GiB (2 GiB free), as written; the block of facts printed by the clone's check_request.py equals the runbook's",
+  "checks_at_the_second_pin": {
+   "tests/exam_pure.py": "19 of 19 (TRIPWIRES); 20 of 20 with --trace on astra_ring_001's saved trace",
+   "tools/check_round4.py (with check_round4_step3.py)": "125 of 125 (TRIPWIRES)",
+   "tools/check_runbook.py": "51 of 51 (TEXT)",
+   "tools/pin.py --check": "135 files, 0 differences",
+   "tools/check_step3.py": {
+    "result": "44 of 44",
+    "failed": [],
+    "evidence": "VF-EVAL against the stand-in endpoint (caps probe and the whole request route with the six scripted policies, run label physim2-port4i, disk floor 1.2 GiB); no container left"
+   },
+   "tools/check_round3.py --skip-container": "30 of 30 (TRIPWIRES)"
+  },
+  "paths": {
+   "<STUDY2>": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport",
+   "<HOME2>": "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/home"
+  },
+  "steps": [
+   {
+    "n": 0,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "18:53:02",
+    "note": "RERUN AT THE SECOND PIN (c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed): the commands affected by the change after the first push, i.e. step 0 (the commit and the pin), from a fresh sparse clone of the pushed head with a fresh scratch HOME. The other changes (the config schema, the report tool) are on no command's text; they are exercised by the checks named in the record."
+   },
+   {
+    "n": 1,
+    "kind": "runbook command",
+    "label": "0a-commit",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && git rev-parse HEAD && pwd -P | grep -Fx \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport\" && git --no-optional-locks status --porcelain --ignored -- . ../../round5/agentenv ../../../vw1 && echo \"TREE-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "18:53:02",
+    "seconds": 0.08,
+    "exit": 0,
+    "output": "c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed\n/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport\nTREE-LISTED\n",
+    "note": "",
+    "output_short": [
+     "c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed",
+     "<STUDY2>",
+     "TREE-LISTED"
+    ]
+   },
+   {
+    "n": 2,
+    "kind": "runbook command",
+    "label": "0b-pin",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "18:53:02",
+    "seconds": 0.05,
+    "exit": 0,
+    "output": "776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc  PIN.sha256\nPIN-OK\n",
+    "note": "",
+    "output_short": [
+     "776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc  PIN.sha256",
+     "PIN-OK"
+    ]
+   },
+   {
+    "n": 3,
+    "kind": "runbook command",
+    "label": "0c-session",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && env | cut -d= -f1 | awk '/^(PHYSIM2_|UV_|VIRTUAL_ENV|PYTHON(PATH|HOME|EXECUTABLE)|__PYVENV_LAUNCHER__|DYLD_|DOCKER_|BUILDX_|VF_|MCP_HOST|MCP_PORT|PRIME_RUNS_MODE)/ { bad++ ; print \"FOUND \" $0 } END { print NR \" names, \" bad + 0 \" refused\" }' && docker context show && docker context inspect --format '{{.Endpoints.docker.Host}}'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "18:53:02",
+    "seconds": 0.06,
+    "exit": 0,
+    "output": "6 names, 0 refused\ndefault\nunix:///var/run/docker.sock\n",
+    "note": "",
+    "output_short": [
+     "6 names, 0 refused",
+     "default",
+     "unix:///var/run/docker.sock"
+    ]
+   },
+   {
+    "n": 4,
+    "kind": "runbook command",
+    "label": "0d-docker-and-folders",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && docker ps -a --filter label=verifiers.run=physim2-port4i --format '{{.Names}}' && echo \"CONTAINERS-LISTED\" && docker images -q physim2-ring:2 && echo \"IMAGES-LISTED\" && test ! -e \"$HOME/physim2-pilot-20261110\" && test ! -L \"$HOME/physim2-pilot-20261110\" && test ! -e \"$HOME/physim2-pilot-20261110-results\" && test ! -L \"$HOME/physim2-pilot-20261110-results\" && test ! -e .venv && test ! -L .venv && echo \"NO-PILOT-FOLDERS\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport"
+     ],
+     [
+      "physim2-pilot-20261110 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "physim2-port4i"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "18:53:03",
+    "seconds": 0.11,
+    "exit": 0,
+    "output": "29.9.2\nCONTAINERS-LISTED\n8080830e3492\nIMAGES-LISTED\nNO-PILOT-FOLDERS\n",
+    "note": "the shared image physim2-ring:2 exists on this machine: an image id before IMAGES-LISTED (deviation 3 of the main rehearsal)",
+    "output_short": [
+     "29.9.2",
+     "CONTAINERS-LISTED",
+     "8080830e3492",
+     "IMAGES-LISTED",
+     "NO-PILOT-FOLDERS"
+    ]
+   },
+   {
+    "n": 5,
+    "kind": "runbook command",
+    "label": "0e-disk",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) print \"DISK-OK \" int(free / 1048576) \" GiB free\" ; else print \"refused: \" int(free / 1048576) \" GiB free on the file system of the home folder, the floor is 8 GiB\" }'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/port4i/rerun/clone/research/alife/vecworld/program/round6/vfport"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "18:53:03",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": "refused: 2 GiB free on the file system of the home folder, the floor is 8 GiB\n",
+    "note": "",
+    "output_short": [
+     "refused: 2 GiB free on the file system of the home folder, the floor is 8 GiB"
+    ]
+   },
+   {
+    "n": 6,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "18:53:17",
+    "note": "OBSERVATION of the operator (not a runbook command): in the same clone, 'python3 -B -I tools/check_request.py --facts' (system Python, environment PATH and HOME only) exited 0; the config keys it lists are box_memory_gb, cap_usd, exam_profile, instance, max_context_tokens, max_output_tokens_per_turn, max_turns, model, push, reasoning_effort, schema, wall_minutes (no reasoning_summary), and the whole object equals the block of facts in this clone's RUNBOOK_MAC.md. Steps 1 to 3 were not issued again: their command texts are byte for byte those of the first pin, and the two code changes are covered by tests/exam_pure.py (19 of 19) and tools/check_round4.py (125 of 125) at this code."
+   }
+  ]
+ }
 }
