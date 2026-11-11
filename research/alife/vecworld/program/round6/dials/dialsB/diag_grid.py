@@ -15,9 +15,10 @@ without input; reported at ticks 150 and 182: the largest |X|, the largest grid-
 import json
 import os
 import sys
+import tempfile
 
 sys.dont_write_bytecode = True
-os.environ.setdefault("OUT", "/tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/dialsB/out_diag")
+os.environ.setdefault("OUT", tempfile.mkdtemp(prefix="dialsB_diag_"))       # s0's progress file goes here
 import numpy as np  # noqa: E402
 
 import s0  # noqa: E402
