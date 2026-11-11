@@ -57,17 +57,27 @@ Worktree: /home/user/wt/foundryexam (branch wt-foundryexam). Scratch: scratchpad
 - 14:04 job.sh smoke from the git archive of the 004 code: exit 0, all three arms (5.4 min). Request r6-foundryexam-004
   pushed (A100, max 3.25 h, cap $8.40; expected about 2.1 h).
 
+- 15:07 job 004 arm P done (log): per-cell-mean skill C 0.760 (4,096 episodes), Csm 0.725 (1,024), fine-tuned C 0.746,
+  P0 0.654; P0's share 0.863. C still gains from data, so shares normalised by C are bounds.
+- 15:33 job 005 declared (DESIGN.md 5d) and requested: arm P only, Cbig on 16,384 true-weight episodes (the learning curve of
+  C), third independent repeat of arm P. job.sh smoke from the git archive with FX_ARMS=P FX_N_CBIG=1: exit 0 (2.8 min).
+  A100, max 2.75 h, cap $7.20. 004 is still running (N arms).
+
 ## Done
 - design and criteria declared and committed; pool and centres; code; CPU smokes from the git archive; requests 001 (rejected,
   $0), 002 (to be cancelled after arm P), 003 (pushed).
 
 ## Running
-- r6-foundryexam-004. Watchers: scratchpad/foundryexam/watch.sh and hb.sh (restart them after a container restart).
+- r6-foundryexam-004 (ends about 16:25 pod clock) and r6-foundryexam-005 (ends about 17:45). Watchers: scratchpad/foundryexam/
+  watch.sh JOB and hb.sh JOB (restart them after a container restart).
 
 ## Exact next step
 1. when 004 is final: `bash fetch.sh r6-foundryexam-004 <scratch>`; `python -B make_summary.py
-   <scratch>/jobs/r6-foundryexam-004/out/full --job r6-foundryexam-004 --status <scratch>/jobs/r6-foundryexam-004/status.json`
-   (writes results/analysis.json; 003's is results/analysis_job003.json); `python -B make_claims.py --job r6-foundryexam-004`;
-   `python -B figs.py`; then README.md (004 = final table, 003 = first pass and between-job check) and the final report.
-2. if 004 fails or is cut: the final table is 003's with C marked as a lower bound (DESIGN.md 5c).
-3. when finished: remove the worktree (git worktree remove) and the scratch folder.
+   <scratch>/jobs/r6-foundryexam-004/out/full --job r6-foundryexam-004 --status <...>/status.json --name analysis_job004.json`.
+2. when 005 is final: the same with --name analysis_job005.json.
+3. final tables: three arms from 004 (analysis_job004.json); arm P's ceiling and learning curve from 005; the spread of arm P
+   over 003, 004, 005. Copy the chosen main analysis to results/analysis.json, then `python -B extras.py`,
+   `python -B make_claims.py`, `python -B figs.py`, `python -B tables.py --other results/analysis_job003.json`; README.md;
+   final report.
+4. if 005 fails: final = 004, C a lower bound (Csm against C shows the trend).
+5. when finished: remove the worktree (git worktree remove) and the scratch folder.
