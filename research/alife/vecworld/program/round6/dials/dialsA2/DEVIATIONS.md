@@ -12,3 +12,13 @@ Each entry: when, what the task or plan says, what was done instead, why. `DECLA
 2. **11 Nov 2026, 19:40 UTC, before any run. A wrong clock time in DECLARED.md's header.** The header says "about
    19:50 UTC"; the file was committed at 19:26:12 UTC (commit 3fd4076c5), before any code of this study existed (the
    first code commit is 0b5617736 at 19:33 UTC). The commit time is the record; DECLARED.md is not edited.
+3. **11 Nov 2026, 20:50 UTC, job r6-dialsa2-001 running, no result seen. The runner's review (3 minor) and what follows
+   from it.** (a) DECLARED R11 says each kind of widening of the fine-tune grid (doubled steps, a smaller rate) may
+   happen at most twice; the code caps the widening rounds of a group at two in all (`cfg["ft_widen"]`), so a group
+   that doubles its steps and then needs a smaller rate, or the reverse, can be left short of R11's grid. Any group so
+   left is reported "not interior" in the job's notes and in `results/summary.json` [training.ft]; it is not rerun.
+   (b) The speed guard's projection of D(N) is 5 to 12 times too large (compile time scaled by the world count), so
+   the clock checks before a base-net doubling, N = 32 and the eta 1/2 arm reserve too much; if one of them is cut,
+   that cut is the guard's error, not the declared priority, and is listed here after the job. (c) If a D(N) group
+   is stopped by the deadline, the doubling can retrain it briefly and overwrite Dnet(N); `stopped_early` of every
+   D group is read before Dnet is quoted. The code is not changed while the job runs.
