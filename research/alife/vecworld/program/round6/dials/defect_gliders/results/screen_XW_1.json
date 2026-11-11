@@ -120,7 +120,34 @@
    ],
    "c0_mass_change_frac_public_max_abs": 3.1891401793438843e-16,
    "m2_mean_end_true_over_public": 1.0,
-   "public_cache_hit": false
+   "public_states_from_cache": 6,
+   "history_only_surrogate": {
+    "what": "INC(law) = own level-1 start + other states' increments under law, pushed blocks aligned; share = (L(INC public) - L(INC true)) / (L(K) - L(INC true)), pooled",
+    "share_pooled": 0.0,
+    "share_se_jackknife_states": 0.0,
+    "share_per_horizon": [
+     0.0,
+     0.0,
+     0.0,
+     -0.0
+    ],
+    "skill_INC_true_vs_O": 0.37029045480379347,
+    "skill_INC_public_vs_O": 0.37029045480379347,
+    "L_mean_per_horizon": {
+     "INC_true": [
+      0.18222775725169305,
+      0.3615832996157912,
+      0.6696033812846717,
+      0.9345241411916884
+     ],
+     "INC_public": [
+      0.18222775725169305,
+      0.3615832996157912,
+      0.6696033812846717,
+      0.9345241411916884
+     ]
+    }
+   }
   },
   "c": {
    "nats_per_state": [
@@ -185,7 +212,34 @@
    ],
    "c0_mass_change_frac_public_max_abs": 4.783710269015827e-16,
    "m2_mean_end_true_over_public": 1.0307145533853632,
-   "public_cache_hit": false
+   "public_states_from_cache": 6,
+   "history_only_surrogate": {
+    "what": "INC(law) = own level-1 start + other states' increments under law, pushed blocks aligned; share = (L(INC public) - L(INC true)) / (L(K) - L(INC true)), pooled",
+    "share_pooled": 0.014763241159007642,
+    "share_se_jackknife_states": 0.008504059678883557,
+    "share_per_horizon": [
+     0.0032784658181896397,
+     0.006141631242297168,
+     0.024453876454097256,
+     -0.051605039969693796
+    ],
+    "skill_INC_true_vs_O": 0.37805472405920215,
+    "skill_INC_public_vs_O": 0.372473410996614,
+    "L_mean_per_horizon": {
+     "INC_true": [
+      0.19205656758019438,
+      0.3747779988631035,
+      0.6605737641210845,
+      0.935902587109592
+     ],
+     "INC_public": [
+      0.1941912676224615,
+      0.3776403153223573,
+      0.6652692424763414,
+      0.9433946757408987
+     ]
+    }
+   }
   },
   "d": {
    "nats_per_state": [
@@ -250,7 +304,34 @@
    ],
    "c0_mass_change_frac_public_max_abs": 4.783710269015827e-16,
    "m2_mean_end_true_over_public": 1.0817817891048525,
-   "public_cache_hit": false
+   "public_states_from_cache": 6,
+   "history_only_surrogate": {
+    "what": "INC(law) = own level-1 start + other states' increments under law, pushed blocks aligned; share = (L(INC public) - L(INC true)) / (L(K) - L(INC true)), pooled",
+    "share_pooled": 0.057617042901565024,
+    "share_se_jackknife_states": 0.013757085259385671,
+    "share_per_horizon": [
+     0.01397487833345441,
+     0.026339814220061587,
+     0.1383616486739224,
+     -0.38924536274519383
+    ],
+    "skill_INC_true_vs_O": 0.39043079849237855,
+    "skill_INC_public_vs_O": 0.3679353304255509,
+    "L_mean_per_horizon": {
+     "INC_true": [
+      0.21796846323515617,
+      0.4230336788373749,
+      0.7088739590255665,
+      0.914860073060567
+     ],
+     "INC_public": [
+      0.22675223659716215,
+      0.43438589110027154,
+      0.7322633292882866,
+      0.9386066138073327
+     ]
+    }
+   }
   },
   "s": {
    "nats_per_state": [
@@ -315,9 +396,36 @@
    ],
    "c0_mass_change_frac_public_max_abs": 3.1891401793438843e-16,
    "m2_mean_end_true_over_public": 1.057203323870726,
-   "public_cache_hit": false
+   "public_states_from_cache": 6,
+   "history_only_surrogate": {
+    "what": "INC(law) = own level-1 start + other states' increments under law, pushed blocks aligned; share = (L(INC public) - L(INC true)) / (L(K) - L(INC true)), pooled",
+    "share_pooled": 0.044224718440284506,
+    "share_se_jackknife_states": 0.014824280278934301,
+    "share_per_horizon": [
+     0.019114682342578196,
+     0.04200853213298057,
+     0.0935916112500374,
+     -0.06173399511382933
+    ],
+    "skill_INC_true_vs_O": 0.36247039768519645,
+    "skill_INC_public_vs_O": 0.3464402464046307,
+    "L_mean_per_horizon": {
+     "INC_true": [
+      0.2159850995137067,
+      0.4146827501739158,
+      0.7055873855780971,
+      0.9259430791429422
+     ],
+     "INC_public": [
+      0.22806988651637902,
+      0.4330166810126392,
+      0.7205956875534083,
+      0.9311435558139375
+     ]
+    }
+   }
   }
  },
- "seconds": 306.1320469379425,
+ "seconds": 230.78901886940002,
  "member_ticks": 2220
 }

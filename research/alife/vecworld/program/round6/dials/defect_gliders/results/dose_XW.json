@@ -1,0 +1,127 @@
+{
+ "what": "dose-response of the total channel-0 mass (a level-1 quantity the public law conserves) to designed pushes",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "cand": "XW",
+ "eta": 4.0,
+ "n_states": 6,
+ "R": 2,
+ "ticks_observed": 4,
+ "trigger": {
+  "W0": 0.12,
+  "full": 0.16999999999999998
+ },
+ "rows": [
+  {
+   "program": "strong",
+   "nats_per_tick": 12.5,
+   "ticks": 1,
+   "nats": 12.499999975,
+   "peak_field": 0.11381664354071999,
+   "dc0_over_local_c0_mean": -0.006511762713521319,
+   "se_states": 0.005180513592217087,
+   "dc0_over_total_c0_mean": -0.0014103650179993418,
+   "total_mass_change_max_abs": 2.2737367544323206e-13
+  },
+  {
+   "program": "strong",
+   "nats_per_tick": 12.5,
+   "ticks": 2,
+   "nats": 24.99999995,
+   "peak_field": 0.11381664354071999,
+   "dc0_over_local_c0_mean": -0.024573098084621537,
+   "se_states": 0.00819323148044917,
+   "dc0_over_total_c0_mean": -0.005798373718304661,
+   "total_mass_change_max_abs": 4.547473508864641e-13
+  },
+  {
+   "program": "strong",
+   "nats_per_tick": 25.0,
+   "ticks": 1,
+   "nats": 24.999999950000003,
+   "peak_field": 0.16096104091907035,
+   "dc0_over_local_c0_mean": -0.1743837589802266,
+   "se_states": 0.049936822703447376,
+   "dc0_over_total_c0_mean": -0.039342710631304546,
+   "total_mass_change_max_abs": 2.2737367544323206e-13
+  },
+  {
+   "program": "strong",
+   "nats_per_tick": 25.0,
+   "ticks": 2,
+   "nats": 49.999999900000006,
+   "peak_field": 0.16096104091907035,
+   "dc0_over_local_c0_mean": -0.3119963993726846,
+   "se_states": 0.045742436596131746,
+   "dc0_over_total_c0_mean": -0.06985626278247971,
+   "total_mass_change_max_abs": 4.547473508864641e-13
+  },
+  {
+   "program": "strong",
+   "nats_per_tick": 50.0,
+   "ticks": 1,
+   "nats": 49.9999999,
+   "peak_field": 0.22763328708143998,
+   "dc0_over_local_c0_mean": -0.4743470358608936,
+   "se_states": 0.04251563927725929,
+   "dc0_over_total_c0_mean": -0.10445801891370536,
+   "total_mass_change_max_abs": 4.547473508864641e-13
+  },
+  {
+   "program": "strong",
+   "nats_per_tick": 50.0,
+   "ticks": 2,
+   "nats": 99.9999998,
+   "peak_field": 0.22763328708143998,
+   "dc0_over_local_c0_mean": -0.6396104720029014,
+   "se_states": 0.04042498088755472,
+   "dc0_over_total_c0_mean": -0.14154149660893814,
+   "total_mass_change_max_abs": 4.547473508864641e-13
+  },
+  {
+   "program": "strong",
+   "nats_per_tick": 100.0,
+   "ticks": 1,
+   "nats": 99.99999980000001,
+   "peak_field": 0.3219220818381407,
+   "dc0_over_local_c0_mean": -0.7367334550267649,
+   "se_states": 0.04171494482217349,
+   "dc0_over_total_c0_mean": -0.15922590526605648,
+   "total_mass_change_max_abs": 2.2737367544323206e-13
+  },
+  {
+   "program": "strong",
+   "nats_per_tick": 100.0,
+   "ticks": 2,
+   "nats": 199.99999960000002,
+   "peak_field": 0.3219220818381407,
+   "dc0_over_local_c0_mean": -0.9260073954784449,
+   "se_states": 0.038039150704078095,
+   "dc0_over_total_c0_mean": -0.20146035182602196,
+   "total_mass_change_max_abs": 4.547473508864641e-13
+  },
+  {
+   "program": "aimed",
+   "nats_per_tick": 50.0,
+   "ticks": 4,
+   "nats": 199.99999999999997,
+   "peak_field": 0.22763328730907326,
+   "dc0_over_local_c0_mean": -0.9182267173825682,
+   "se_states": 0.04073537432068667,
+   "dc0_over_total_c0_mean": -0.11445632544031904,
+   "total_mass_change_max_abs": 4.547473508864641e-13
+  },
+  {
+   "program": "regional",
+   "nats_per_tick": 75.0,
+   "ticks": 4,
+   "nats": 300.00000000000006,
+   "peak_field": 0.15307328956695143,
+   "dc0_over_local_c0_mean": -0.7732720464919188,
+   "se_states": 0.0419800894137565,
+   "dc0_over_total_c0_mean": -0.3028600476243869,
+   "total_mass_change_max_abs": 4.547473508864641e-13
+  }
+ ],
+ "seconds": 134.08064937591553,
+ "member_ticks": 780
+}

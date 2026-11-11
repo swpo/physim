@@ -30,3 +30,12 @@ Design phase only: no GPU, no model calls, small CPU checks.
   episodes (visible without inputs; history-only surrogate 0.01-0.02), PAR (lR + 0.06, calibration) 0.07 with
   surrogate 0.013. Second chain running: check_zero, XW at eta 1 and 4 with the surrogate, dose-response,
   M with the surrogate, XW eta 4 to horizon 16.
+- 11 Nov 11:48 UTC. All CPU checks done (results/summary.json collects them). check_zero: traced zeros are
+  bitwise equal to gworld.tick. XW at eta 4: state-given 0.29 / 0.42 (aimed / regional, 8 ticks), 0.32 / 0.50
+  to 16 ticks; dose-response clean. New: `surrogate.py`, a simulation-trained history-only family (LLR) and a
+  GENERIC residual on it (RES): XW eta 4 keeps a share of 0.11 / 0.30 without the state (hidden-parameter
+  calibration 0.003), but RES fitted on ONE true-world episode of the class closes 0.94 / 0.70 of it, on two
+  0.93 or more. Forecast: the design beats P0 where it acts and is repaired by a generic residual.
+  `views.py` (block + population view to 16 ticks), `baseline_by_class.py` (zero point by item class from the
+  ladder's saved scores: sigma 0.013-0.020 in every class).
+- Next: DESIGN.md, scratch deleted, worktree removed.

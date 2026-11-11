@@ -120,6 +120,7 @@ class DRunner:
     """Batched runs with per-member strengths q (lax.map over members, as gworld.Runner).
     init_burn(P, Q, T, k (B,), sig (B,)) -> A, S, m, obs (B, 336)   [tracker on, for aimed programs]
     fut(P, Q, T, A, S, key (B,), t0 (B,), uw (B, Tn, NW), sig (B,)) -> y (B, Tn + 1, 192), A_end, S_end
+    fut_obs(P, Q, T, A, S, m, key, t0, uw, sig) -> y (B, Tn + 1, 336)   [tracker on: block + object view]
     T is one terrain (2, H, W) shared by the batch."""
 
     def __init__(self, burn: int = GW.BURN):
@@ -131,6 +132,7 @@ class DRunner:
         self.burn = int(burn)
         self.init_burn = jax.jit(self._init_burn)
         self.fut = jax.jit(self._fut)
+        self.fut_obs = jax.jit(self._fut_obs)
 
     def _init_burn(self, P, Q, T, k, sig):
         bt, fold = self.bt, jax.random.fold_in
@@ -166,6 +168,26 @@ class DRunner:
             (A, S, _), ys = jax.lax.scan(body, (A, S, t0), uw)
             return jnp.concatenate([y0[None], ys], 0), A, S
         return jax.lax.map(one, (P, Q, A, S, key, t0, uw, sig))
+
+
+    def _fut_obs(self, P, Q, T, A, S, m, key, t0, uw, sig):
+        """As fut, with the tracker running: y (B, Tn + 1, 336) = block view + object view."""
+        bt, fold = self.bt, jax.random.fold_in
+
+        def one(args):
+            p, q, A, S, m, kk, t0, uw, sg = args
+            kp = fold(kk, GW._ST_PROC)
+            ob = lambda A, m: jnp.concatenate([self.pc.phi(A, ()), bt.phi(A, m)])
+
+            def body(c, w):
+                A, S, m, t = c
+                A, S = tick(p, q, T, A, S, Noise(kp, t), w, sg)
+                m = bt.update_memory(m, A)
+                return (A, S, m, t + 1), ob(A, m)
+            y0 = ob(A, m)
+            _, ys = jax.lax.scan(body, (A, S, m, t0), uw)
+            return jnp.concatenate([y0[None], ys], 0)
+        return jax.lax.map(one, (P, Q, A, S, m, key, t0, uw, sig))
 
 
 def stack(trees):

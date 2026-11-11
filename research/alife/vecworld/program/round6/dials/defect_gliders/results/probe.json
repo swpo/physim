@@ -11,10 +11,10 @@
    0.10004977074192098,
    0.11929276728943049
   ],
-  "frac_points_above_W0": 1.7547607421875e-05,
-  "ticks_with_any_point_above_W0_of_400": 2,
-  "W0": 0.11,
-  "DW": 0.06
+  "frac_points_above_W0": 0.0,
+  "ticks_with_any_point_above_W0_of_400": 0,
+  "W0": 0.12,
+  "DW": 0.05
  },
  "programs": {
   "mix_aimed_200": {
@@ -22,7 +22,7 @@
    "nats_tick0": 49.99999999999999,
    "max_coefficient": 0.25,
    "peak_field": 0.22763328730907323,
-   "frac_area_above_W0": 0.057861328125,
+   "frac_area_above_W0": 0.0517578125,
    "frac_area_full_trigger": 0.026123046875,
    "ticks_with_input": 4
   },
@@ -31,34 +31,34 @@
    "nats_tick0": 75.0,
    "max_coefficient": 0.14625543318872908,
    "peak_field": 0.15307328956695143,
-   "frac_area_above_W0": 0.17138671875,
+   "frac_area_above_W0": 0.15478515625,
    "frac_area_full_trigger": 0.0,
    "ticks_with_input": 4
   },
   "designed_strong_200": {
-   "nats": 99.99999979999997,
-   "nats_tick0": 49.999999899999985,
-   "max_coefficient": 0.23883412204256738,
-   "peak_field": 0.22763328708143993,
-   "frac_area_above_W0": 0.057861328125,
-   "frac_area_full_trigger": 0.026123046875,
+   "nats": 199.99999960000002,
+   "nats_tick0": 99.99999980000001,
+   "max_coefficient": 0.3377624545500698,
+   "peak_field": 0.32192208183814075,
+   "frac_area_above_W0": 0.07373046875,
+   "frac_area_full_trigger": 0.0517578125,
    "ticks_with_input": 2
   },
   "designed_squeeze_200": {
-   "nats": 99.99999979999998,
-   "nats_tick0": 49.99999989999999,
-   "max_coefficient": 0.1767766951198602,
-   "peak_field": 0.15797798946889308,
-   "frac_area_above_W0": 0.05419921875,
-   "frac_area_full_trigger": 0.0,
+   "nats": 199.99999960000002,
+   "nats_tick0": 99.99999980000001,
+   "max_coefficient": 0.24999999975000003,
+   "peak_field": 0.2234146152633426,
+   "frac_area_above_W0": 0.08544921875,
+   "frac_area_full_trigger": 0.04150390625,
    "ticks_with_input": 2
   }
  },
  "speed_one_thread": {
-  "burn_with_tracker_ticks_per_s": 6.701947074913598,
-  "burn_compile_s": 10.120422124862671,
-  "future_block_view_ticks_per_s": 6.968018548138973,
-  "future_compile_s": 1.9457764625549316
+  "burn_with_tracker_ticks_per_s": 6.155206653715841,
+  "burn_compile_s": 12.093172073364258,
+  "future_block_view_ticks_per_s": 6.496931026692412,
+  "future_compile_s": 2.608323812484741
  },
- "seconds": 27.455738067626953
+ "seconds": 29.927676677703857
 }
