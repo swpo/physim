@@ -1,9 +1,40 @@
 {
+  "billing_window_hours": 4.2211,
+  "bundle": {
+    "bundle_sha256": "04ef5a18cc4f685787d9e89f8a0ce7f409a0dc9a506e885fc9db726bf766b534",
+    "files": {
+      "job.sh": "33725c3d6a250661f2954b2c2f49177c17607b20664e39433d2f6cfdb2c3cb5f",
+      "request.json": "b67481b0573711cb74c2a211049788499b53657935b8311944ad6451f46b5ed7",
+      "run.sh": "cde01095f05d723edfb6b78bfbef89868192ee667ae10c6c047008d005750de5",
+      "setup.sh": "aa7b887739795a9df0b2686427a7369b4e922002c3718f7bc3751460ec6d5fc1",
+      "src.tar.gz": "c4be72dc95ae584dda25a69424ae721a712bd6571f642e764cdb293ee3e382c0"
+    },
+    "paths": [
+      "research/alife/vecworld/vw1",
+      "research/alife/vecworld/integrate",
+      "research/alife/vecworld/spec",
+      "research/alife/vecworld/level0",
+      "research/alife/vecworld/program/track2/gliders_exam",
+      "research/alife/vecworld/program/track2/actuation",
+      "research/alife/vecworld/program/round4/sbi",
+      "research/alife/vecworld/program/round5/ladder",
+      "research/alife/vecworld/program/round6/dials/defect_gliders",
+      "research/alife/vecworld/program/round6/dials/dialsA",
+      "research/alife/vecworld/program/round6/dials/dialsA2"
+    ],
+    "ref": "e0df0c079649c253b4c7437a249b1f88f0a3ca6f",
+    "src_bytes": 25289045
+  },
   "cap_usd": 8.4,
   "cost": {
     "billed_usd": 0.0,
     "conservative_usd": 0.0
   },
+  "guard_at": null,
+  "guard_reason": null,
+  "guard_terminated": null,
+  "hard_deadline": null,
+  "hard_deadline_epoch": null,
   "history": [
     {
       "at": "2026-11-11T20:27:15Z",
@@ -14,12 +45,55 @@
       "at": "2026-11-11T20:27:34Z",
       "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
       "state": "queued"
+    },
+    {
+      "at": "2026-11-11T20:27:52Z",
+      "message": "renting a pod",
+      "state": "provisioning"
     }
   ],
   "job_id": "r6-dialsa2-001",
   "max_estimate_usd": null,
-  "message": "no offer currently lists this gpu/image (out of stock, or a wrong type or image name); the runner retries",
+  "message": "renting a pod",
+  "offers_at_start": [
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "IN",
+      "data_center": "asia-south-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    },
+    {
+      "cloud_id": "gpu_1x_a100_sxm4",
+      "country": "US",
+      "data_center": "us-east-1",
+      "disk_gb": 512,
+      "gpu_memory_gb": 40,
+      "gpu_type": "A100_40GB",
+      "is_spot": false,
+      "memory_gb": 200,
+      "provider": "lambdalabs",
+      "rank": 0,
+      "rate_usd_hr": 1.99,
+      "security": "secure_cloud",
+      "socket": "SXM4",
+      "stock": "Available",
+      "vcpus": 30
+    }
+  ],
   "pods": [],
-  "state": "queued",
-  "updated_at": "2026-11-11T20:27:34Z"
+  "pods_terminated": null,
+  "run_started_epoch": 1794428872.984712,
+  "state": "provisioning",
+  "updated_at": "2026-11-11T20:27:52Z"
 }
