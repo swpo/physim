@@ -363,10 +363,10 @@
     {
       "billed_usd": null,
       "cap_usd": 8.1,
-      "conservative_usd": 2.2054,
+      "conservative_usd": 2.715,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 1.108,
+      "hours": 1.364,
       "job_id": "r6-foundrylong-001",
       "purpose": "Round-6 study foundrylong, stage 1: is the pilot's long-horizon gap (16 ticks, 32 Lab episodes) only the recipe's compute? P0 on 1,000 screened prior worlds (3 seeds), a cross-validated fine-tune, a 16,384-episode reference; queries at 8, 16, 32 ticks on the pilot's 16 hidden worlds",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -413,8 +413,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 71.0969,
     "prior_spend_usd": 0.0,
-    "spent_usd": 65.2023,
+    "spent_usd": 65.7119,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T19:34:11Z"
+    "updated_at": "2026-11-11T19:49:33Z"
   }
 }
