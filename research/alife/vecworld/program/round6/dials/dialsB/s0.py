@@ -593,8 +593,10 @@ def gate(seed, arm, smoke=False, truth=None):
     arrs = {f"L_{v}_{k}": a for v in VIEWS for k, a in L[v].items()}
     arrs.update({f"S_{k}": a for k, a in st.items()})
     os.makedirs(os.path.join(OUT, "gate"), exist_ok=True)
-    np.savez_compressed(os.path.join(OUT, "gate", f"{tag}.npz"), test_state=tm, st_class=np.array([c for c, _, _ in st_items]),
+    tmp = os.path.join(OUT, "gate", f".{tag}.tmp.npz")                              # written whole, then renamed
+    np.savez_compressed(tmp, test_state=tm, st_class=np.array([c for c, _, _ in st_items]),
                         st_state=np.array([i for _, i, _ in st_items]), F_test=Ft, **arrs)
+    os.replace(tmp, os.path.join(OUT, "gate", f"{tag}.npz"))
     jdump(meta, os.path.join(OUT, "gate", f"{tag}.json"))
     progress(f"gate {tag} DONE wall {meta['wall_s']:.0f}s member-ticks {meta['member_ticks']} "
              f"pick {info['focus']['Gstar_pick']} heaviest {heavy} ({meta['heaviest_share_of_gap']:.2f})")
@@ -668,6 +670,12 @@ def scan_c(part, nparts, smoke=False):
                  f"blind {res.get('gap_blind', float('nan')):+.3f} aimed {res.get('gap_aimed', float('nan')):+.3f}")
 
 
+def v_tag(name, fac):
+    """File tag of a scan V point. The index keeps names distinct on file systems that ignore case (DK / dK,
+    DL / dL): the jobs r6-dialsb-001/002 ran commit 52ae6e4, which wrote V_<name>_x<factor>.json."""
+    return f"{V_PARAMS.index(name):02d}_{name}_x{fac:g}"
+
+
 def scan_v(part, nparts, smoke=False):
     pts = [("default", 1.0)] + [(p, f) for p in SZ["v_params"] for f in V_FACTORS]
     pts = pts[1:2] if smoke else [p for j, p in enumerate(pts) if j % nparts == part]
@@ -678,7 +686,7 @@ def scan_v(part, nparts, smoke=False):
     tru, plug = Sim(spec_p, 0), Sim(spec_p, 1)
     need = math.ceil(0.75 * M)
     for name, fac in pts:
-        tag = "default" if name == "default" else f"{name}_x{fac:g}"
+        tag = "default" if name == "default" else v_tag(name, fac)
         if name != "default":
             tru.set(**{name: MJ.THETA[name] * fac})
         x, L1h = tru.form(M, (79, 1))
@@ -723,7 +731,7 @@ def ranges():
     sd = os.path.join(OUT, "scan")
     V = {}
     for p in SZ["v_params"]:
-        V[p] = {f: json.load(open(os.path.join(sd, f"V_{p}_x{f:g}.json"))) for f in V_FACTORS}
+        V[p] = {f: json.load(open(os.path.join(sd, f"V_{v_tag(p, f)}.json"))) for f in V_FACTORS}
     table = {}
     for p, r in V.items():
         via = {f: r[f]["viable"] for f in V_FACTORS}

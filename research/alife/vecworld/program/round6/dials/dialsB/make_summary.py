@@ -27,10 +27,15 @@ os.makedirs(os.path.join(dst, "scan"), exist_ok=True)
 for f in ("analysis.json", "ranges.json", "ranges.sha256", "presmoke.json", "align.json", "progress.txt"):
     if os.path.exists(os.path.join(out, f)):
         shutil.copy(os.path.join(out, f), os.path.join(dst, f))
+V_ORDER = ("DS", "DK", "DL", "Dp", "r", "a", "th", "F", "c", "b", "dK", "dL", "chi")       # s0.V_PARAMS
 for sub in ("gate", "scan"):
     for f in sorted(os.listdir(os.path.join(out, sub))):
         if f.endswith(".json"):
-            shutil.copy(os.path.join(out, sub, f), os.path.join(dst, sub, f))
+            g = f
+            if sub == "scan" and f.startswith("V_") and f != "V_default.json" and not f[2:4].isdigit():
+                name = f[2:].rsplit("_x", 1)[0]          # the job wrote V_<name>_x<factor>.json: DK / dK differ by case only
+                g = f"V_{V_ORDER.index(name):02d}_{f[2:]}"
+            shutil.copy(os.path.join(out, sub, f), os.path.join(dst, sub, g))
 status = json.load(open(os.path.join(jobdir, "status.json")))
 shutil.copy(os.path.join(jobdir, "status.json"), os.path.join(dst, "status.json"))
 A = json.load(open(os.path.join(out, "analysis.json")))

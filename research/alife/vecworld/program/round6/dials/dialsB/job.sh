@@ -12,7 +12,7 @@ export S0_SIZE="${S0_SIZE:-full}"
 # (r6-dialsb-001 ran one process at a time for that reason and its speed guard stopped it; 002 set S0_NPROC=16)
 NPROC="${S0_NPROC:-$(env -u OMP_NUM_THREADS -u OMP_THREAD_LIMIT nproc)}"
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 JAX_PLATFORMS=cpu
-export XLA_FLAGS="--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1"
+export XLA_FLAGS="--xla_cpu_multi_thread_eigen=false"   # the jobs also passed a second token that XLA drops (review, minor 1)
 PY="${PY:-python}"
 LIMIT_S="${S0_LIMIT_S:-10800}"
 T_START=$(date +%s)
