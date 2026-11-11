@@ -1,0 +1,64 @@
+{
+ "what": "constants behind the candidate hidden terms; CPU; command: python -B probe.py",
+ "background": {
+  "sd_per_component_min_max": [
+   0.022863193233713924,
+   0.02576634159168937
+  ],
+  "magnitude_percentiles_50_99_99.99_max_over_400_ticks": [
+   0.028662912082840754,
+   0.07377704916305523,
+   0.10004977074192098,
+   0.11929276728943049
+  ],
+  "frac_points_above_W0": 1.7547607421875e-05,
+  "ticks_with_any_point_above_W0_of_400": 2,
+  "W0": 0.11,
+  "DW": 0.06
+ },
+ "programs": {
+  "mix_aimed_200": {
+   "nats": 199.99999999999997,
+   "nats_tick0": 49.99999999999999,
+   "max_coefficient": 0.25,
+   "peak_field": 0.22763328730907323,
+   "frac_area_above_W0": 0.057861328125,
+   "frac_area_full_trigger": 0.026123046875,
+   "ticks_with_input": 4
+  },
+  "mix_regional_300": {
+   "nats": 300.0,
+   "nats_tick0": 75.0,
+   "max_coefficient": 0.14625543318872908,
+   "peak_field": 0.15307328956695143,
+   "frac_area_above_W0": 0.17138671875,
+   "frac_area_full_trigger": 0.0,
+   "ticks_with_input": 4
+  },
+  "designed_strong_200": {
+   "nats": 99.99999979999997,
+   "nats_tick0": 49.999999899999985,
+   "max_coefficient": 0.23883412204256738,
+   "peak_field": 0.22763328708143993,
+   "frac_area_above_W0": 0.057861328125,
+   "frac_area_full_trigger": 0.026123046875,
+   "ticks_with_input": 2
+  },
+  "designed_squeeze_200": {
+   "nats": 99.99999979999998,
+   "nats_tick0": 49.99999989999999,
+   "max_coefficient": 0.1767766951198602,
+   "peak_field": 0.15797798946889308,
+   "frac_area_above_W0": 0.05419921875,
+   "frac_area_full_trigger": 0.0,
+   "ticks_with_input": 2
+  }
+ },
+ "speed_one_thread": {
+  "burn_with_tracker_ticks_per_s": 6.701947074913598,
+  "burn_compile_s": 10.120422124862671,
+  "future_block_view_ticks_per_s": 6.968018548138973,
+  "future_compile_s": 1.9457764625549316
+ },
+ "seconds": 27.455738067626953
+}

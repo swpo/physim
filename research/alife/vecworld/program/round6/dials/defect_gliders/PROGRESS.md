@@ -12,3 +12,10 @@ Design phase only: no GPU, no model calls, small CPU checks.
 - Candidates: G gust (flow gain above a wind threshold), XW stress conversion (c0 -> c1 above a wind threshold),
   M scar (slow field charged by strong wind that weakens growth), X dense conversion (c0 -> c1 above a density
   threshold), T terrain (static smooth field shifting the growth centres).
+- 11 Nov 10:30 UTC. Container had restarted (nothing but this note survived; the note was not yet committed).
+  Resumed: `dlaw.py` (five hidden terms, traced strengths), `probe.py` (results/probe.json: background wind
+  magnitude max 0.119 over 400 ticks, mix aimed push peak 0.228, regional 0.153; wind trigger set to
+  0.12-0.17), `screen.py` (state-given screen with common random numbers; smoke run: wind-triggered terms
+  give bit-identical passive futures). Speed about 7 ticks/s on CPU.
+- Next: screens G, XW, M, X, T at 6 states x 5 replicates x 8 ticks, calibration arm PAR (lR + 0.06),
+  zero-point check, dial and horizon 16 for the chosen candidate, DESIGN.md.
