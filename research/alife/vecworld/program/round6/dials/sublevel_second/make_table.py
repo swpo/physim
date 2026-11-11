@@ -69,6 +69,42 @@ def main():
         print(f"| {os.path.basename(f)} | {d['truth_pilot']} | " + " | ".join(cell(k) for k in ("pub0", "G1", "G2", "G3", "G4", "H")) +
               f" | {hf['lam']}, {hf['rho']}, {hf['DX']} |")
     rows["_gvh"] = gv
+
+    # the two tables of DESIGN.md
+    D3A = [("public_m12", "the public law itself (noise floor)", "0"),
+           ("dorm_sc0.09_m12", "dormant catalyst (dormancy below substrate 0.09)", "1"),
+           ("kpool_lam0.3_m12", "catalyst precursor pool", "0.3"),
+           ("lpool_lam0.3_m12", "lipid precursor pool", "0.3"),
+           ("bound_lam0.2_m12", "substrate bound to the medium", "0.2"),
+           ("pro_lam0.25_m12", "carrier, converts everywhere", "0.25"),
+           ("pro_lam0.5_m12", "carrier, converts everywhere", "0.5"),
+           ("pro_lam1_m12", "carrier, converts everywhere", "1"),
+           ("pro_cat_lam1_m12", "carrier, converted at cells, no saturation", "1"),
+           ("pro_cat_sat_lam0.25_m12", "**carrier, converted at cells, saturating route**", "0.25"),
+           ("pro_cat_sat_lam0.5_m12", "**the same**", "0.5"),
+           ("pro_cat_sat_lam1_m12", "**the same**", "1"),
+           ("public_128", "floor at 128 px, 6 members", "0"),
+           ("pro_cat_sat_lam1_128", "**the same carrier** at 128 px, 6 members", "1")]
+    print("\n### DESIGN table 3a\n| candidate (run) | dial | boxes without cells | none | blind | aimed feed | aimed starve | population view, input items |")
+    print("|---|---|---|---|---|---|---|---|")
+    for tag, label, dial in D3A:
+        if tag not in rows:
+            print(f"| {label} (`{tag}`) | {dial} | PENDING |")
+            continue
+        r = rows[tag]
+        f = r["focus"]
+        print(f"| {label} (`{tag}`) | {dial} | {r['members_without_cells_at_T0']} of {r['members']} | " +
+              " | ".join(g(f[c]).replace("+", "") for c in ("none", "blind", "feed", "starve")) + f" | {g(r['pop']['inputs']).replace('+', '')} |")
+    print("\n### DESIGN table 3b\n| carrier (pilot values) | file | ignores the program | G1 | better of G2, G3 | G4 | H | H's fit |")
+    print("|---|---|---|---|---|---|---|---|")
+    for fn, v in gv.items():
+        t, sh = v["truth_pilot"], v["share"]
+        lab = ("converted at cells" if t.get("cat", 0) == 1 else "converts everywhere") + (", saturating" if t.get("a0", 0) > 0 else "") + \
+              f", lam {t['lam']:g}, rho {t['rho']:g}, D_X {t['DX']:g}, seed {v['seed']}"
+        best = max(("G2", "G3"), key=lambda k: sh[k]["value"])
+        c = lambda k: f"{sh[k]['value']:.2f} ± {sh[k]['se_members']:.2f}" if k in sh else "not run"      # noqa: E731
+        hf = v["H_fit"]
+        print(f"| {lab} | `R/{fn}` | {c('pub0')} | {c('G1')} | {c(best)} | {c('G4')} | {c('H')} | {hf['lam']:g}, {hf['rho']:g}, {hf['DX']:g} |")
     json.dump(rows, open(os.path.join(HERE, "results", "table.json"), "w"), indent=1)
 
 

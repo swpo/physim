@@ -43,3 +43,11 @@ Deliverable: `DESIGN.md` in this folder.
   closes about nothing (best 0.02 +- 0.09) and the told-form fit 1.00. Queued (q8, q9): screens of the catalysed
   carrier (dial 1, 0.5, 0.25, 128 px, with the saturating route), attribution run (same rho and DX without
   catalysis), second seed, uniform reruns of dorm / lpool / bound, check_zero again. Then DESIGN.md.
+- 12:01: chosen variant fixed: the carrier that only cell catalyst converts, with a saturating prompt route
+  (`pro`, cat=1, a0=0.03). At dial 1: formation identical to the public world's, passive and blind gaps at the
+  floor, aimed 0.27 / 0.20 (focus). gvh: best generic recipe 0.10 +- 0.16 of the gap, told-form fit 1.02; the
+  attribution run (same rho and DX, conversion everywhere) gives the gain 0.77: the cell-dependence is what
+  defeats generic repair. Old 8-member result files of the first script version removed (superseded by the
+  12-member runs). DESIGN.md drafted; queue q10 still running (dial 0.5 and 0.25, 128 px, second seed, uniform
+  reruns of dorm / lpool / bound, check_zero, wrong-rate comparison). Then: fill tables, trim to 1,500 words,
+  final commit, remove worktree and scratch.
