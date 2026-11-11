@@ -1,0 +1,199 @@
+{
+ "size": "full",
+ "t_start": 1794400355.0,
+ "done": [
+  "membrane_s4__A",
+  "vortex64_s4__A",
+  "gliders_n1__A",
+  "vortex64__A",
+  "membrane__A",
+  "ctl_puredif_0__A",
+  "vortex128g16__A",
+  "ctl_puredif_1__A",
+  "gliders_n1__B",
+  "gliders_n8__A",
+  "gliders_n8__B",
+  "gliders__A",
+  "membrane_s4__B",
+  "membrane_s4__late",
+  "vortex64_s4__late"
+ ],
+ "failed": [],
+ "skipped": [],
+ "presmoke": "passed",
+ "timing": {
+  "membrane_s4__A": {
+   "main_s": 19.18244957923889,
+   "branch_s": 17.80882978439331,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 3.3895723819732666
+  },
+  "vortex64_s4__A": {
+   "main_s": 265.4734742641449,
+   "branch_s": 377.20513582229614,
+   "burn": 25,
+   "main_member_ticks": 6800,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 3.192674398422241
+  },
+  "gliders_n1__A": {
+   "main_s": 37.530091524124146,
+   "branch_s": 46.56364870071411,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 2.5938570499420166
+  },
+  "vortex64__A": {
+   "main_s": 87.92969226837158,
+   "branch_s": 96.8646457195282,
+   "burn": 100,
+   "main_member_ticks": 8000,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 4.272338390350342
+  },
+  "membrane__A": {
+   "main_s": 17.373135805130005,
+   "branch_s": 9.368489265441895,
+   "burn": 200,
+   "main_member_ticks": 9600,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 3.441526174545288
+  },
+  "ctl_puredif_0__A": {
+   "main_s": 15.127875328063965,
+   "branch_s": 6.099796295166016,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 2.4407689571380615
+  },
+  "vortex128g16__A": {
+   "main_s": 176.6879961490631,
+   "branch_s": 373.28766775131226,
+   "burn": 100,
+   "main_member_ticks": 8000,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 11.766710758209229
+  },
+  "ctl_puredif_1__A": {
+   "main_s": 0.6610231399536133,
+   "branch_s": 1.0759634971618652,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.424919366836548
+  },
+  "gliders_n1__B": {
+   "main_s": 13.808241128921509,
+   "branch_s": 41.27038621902466,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.691899299621582
+  },
+  "gliders_n8__A": {
+   "main_s": 13.802093029022217,
+   "branch_s": 41.268680572509766,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.9526028633117676
+  },
+  "gliders_n8__B": {
+   "main_s": 13.802777767181396,
+   "branch_s": 41.25209927558899,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.7899534702301025
+  },
+  "gliders__A": {
+   "main_s": 13.816004514694214,
+   "branch_s": 41.26233720779419,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 2.875718116760254
+  },
+  "membrane_s4__B": {
+   "main_s": 3.7390668392181396,
+   "branch_s": 12.139277458190918,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.4295921325683594
+  },
+  "membrane_s4__late": {
+   "main_s": 4.6358277797698975,
+   "branch_s": 12.142103672027588,
+   "burn": 200,
+   "main_member_ticks": 9600,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.452249526977539
+  },
+  "vortex64_s4__late": {
+   "main_s": 314.3951723575592,
+   "branch_s": 372.2998080253601,
+   "burn": 125,
+   "main_member_ticks": 8400,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": false,
+   "analyse_s": 3.3120837211608887
+  }
+ },
+ "errors": [],
+ "sizes": {
+  "M": 16,
+  "M_fit": 8,
+  "T": 400,
+  "NS": 32,
+  "R": 6,
+  "R2": 2,
+  "n_dir": 2,
+  "eps": [
+   0.03,
+   0.1,
+   1.0
+  ],
+  "arms": [
+   [
+    "aimed",
+    200.0
+   ],
+   [
+    "blind",
+    200.0
+   ],
+   [
+    "aimed",
+    50.0
+   ],
+   [
+    "aimed",
+    800.0
+   ]
+  ],
+  "R_u": 2,
+  "HB": 32,
+  "Bb": 30
+ },
+ "presmoke_s": 1583.0715980529785,
+ "elapsed_s": 2558.906136035919
+}

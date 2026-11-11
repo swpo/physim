@@ -1,0 +1,3 @@
+12:32:35 [job.sh] PILOT_NEVER_REUSE_AS_EXAM start, size full, nproc 30
+versions 3.12.16 0.12.0.1 2.5.4 [CudaDevice(id=0)] gpu
+13:15:15 [job.sh] OUT size 3.9M, largest file 317253 /home/ubuntu/gpujob/r6-cards-002/out/series/vortex128g16__A.npz; done, RC=0
