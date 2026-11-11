@@ -5416,5 +5416,171 @@
    "file": "jobs/r6-dialsb-002/out/align.json",
    "key": ""
   }
+ },
+ "after_the_fact_grid_scale_diagnostic": {
+  "AFTER_THE_FACT": "written after the job's results were read; a diagnostic, in no verdict",
+  "no_input_2_members": [
+   {
+    "cat": 1.0,
+    "rho": 0.02,
+    "DX": 0.5,
+    "checkerboard_factor_per_native_step_inside_cells": 1.0108,
+    "tick_150": {
+     "finite": true,
+     "max_abs_X": 0.48713122144571164,
+     "max_grid_scale_part": 0.4849324628673174,
+     "ratio": 0.9954863115284035,
+     "S_min": 0.09458256722280882
+    },
+    "tick_182": {
+     "finite": true,
+     "max_abs_X": 33.854080417758524,
+     "max_grid_scale_part": 33.6529907352664,
+     "ratio": 0.9940601050150918,
+     "S_min": 0.0,
+     "cells": [
+      3,
+      3
+     ]
+    }
+   },
+   {
+    "cat": 1.0,
+    "rho": 0.02,
+    "DX": 0.35,
+    "checkerboard_factor_per_native_step_inside_cells": 0.4107999999999999,
+    "tick_150": {
+     "finite": true,
+     "max_abs_X": 0.013193838430792887,
+     "max_grid_scale_part": 0.00012546154146218184,
+     "ratio": 0.009509100942858992,
+     "S_min": 0.0976642443266874
+    },
+    "tick_182": {
+     "finite": true,
+     "max_abs_X": 0.011430681274223135,
+     "max_grid_scale_part": 0.00015206293585234495,
+     "ratio": 0.01330305099095501,
+     "S_min": 0.10308427450240971,
+     "cells": [
+      3,
+      3
+     ]
+    }
+   },
+   {
+    "cat": 1.0,
+    "rho": 0.01,
+    "DX": 0.5,
+    "checkerboard_factor_per_native_step_inside_cells": 1.0054,
+    "tick_150": {
+     "finite": true,
+     "max_abs_X": 0.012122647107403309,
+     "max_grid_scale_part": 0.00011715479848391219,
+     "ratio": 0.009664126774123918,
+     "S_min": 0.09806460062419307
+    },
+    "tick_182": {
+     "finite": true,
+     "max_abs_X": 0.011716775807152153,
+     "max_grid_scale_part": 0.00013333911327583024,
+     "ratio": 0.011380188156748497,
+     "S_min": 0.1030105174393183,
+     "cells": [
+      3,
+      3
+     ]
+    }
+   },
+   {
+    "cat": 1.0,
+    "rho": 0.04,
+    "DX": 0.5,
+    "checkerboard_factor_per_native_step_inside_cells": 1.0216,
+    "tick_150": {
+     "finite": false,
+     "max_abs_X": NaN,
+     "max_grid_scale_part": NaN,
+     "ratio": NaN,
+     "S_min": NaN
+    },
+    "tick_182": {
+     "finite": false,
+     "max_abs_X": NaN,
+     "max_grid_scale_part": NaN,
+     "ratio": NaN,
+     "S_min": NaN,
+     "cells": [
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "cat": 0.0,
+    "rho": 0.02,
+    "DX": 0.5,
+    "checkerboard_factor_per_native_step_inside_cells": 1.01,
+    "tick_150": {
+     "finite": true,
+     "max_abs_X": 0.01119153744937983,
+     "max_grid_scale_part": 0.00011202928715226858,
+     "ratio": 0.010010178463770997,
+     "S_min": 0.09769916964746823
+    },
+    "tick_182": {
+     "finite": true,
+     "max_abs_X": 0.009437234266049099,
+     "max_grid_scale_part": 0.0001431387357947525,
+     "ratio": 0.015167445435756634,
+     "S_min": 0.10329891460278648,
+     "cells": [
+      3,
+      3
+     ]
+    }
+   }
+  ],
+  "gate_start_states_main_arm": [
+   {
+    "seed": 31,
+    "tick_150_max_grid_scale_part_min_median_max": [
+     0.00011121602972538201,
+     0.1305779532431602,
+     1.6316036643018776
+    ],
+    "tick_182_finite_members_of_16": 16,
+    "tick_182_members_with_S_clipped_at_0": 5,
+    "tick_182_max_grid_scale_part_finite_max": 155.17167389319508
+   },
+   {
+    "seed": 36,
+    "tick_150_max_grid_scale_part_min_median_max": [
+     7.79240695796316e-05,
+     0.07905946248866316,
+     1.8021519198581761
+    ],
+    "tick_182_finite_members_of_16": 15,
+    "tick_182_members_with_S_clipped_at_0": 2,
+    "tick_182_max_grid_scale_part_finite_max": 32.12253468049269
+   }
+  ],
+  "source": [
+   {
+    "job": "none (run in the container after the job, diag_grid.py)",
+    "file": "results/diag_grid.json",
+    "key": "rows"
+   },
+   {
+    "job": "none (run in the container after the job, diag_grid.py)",
+    "file": "results/diag_grid.json",
+    "key": "gate_start_states"
+   }
+  ]
+ },
+ "per_horizon_full_statistics": {
+  "file": "results/per_horizon.json",
+  "made_by": "horizons.py from jobs/r6-dialsb-002/out/gate/*.npz",
+  "max_abs_difference_from_analysis_json": 0.0
  }
 }

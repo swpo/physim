@@ -37,21 +37,25 @@ README.md, DECLARED.md, DEVIATIONS.md.
   running here (scratch `dialsB/out_tiny`). To write up from the review: the noise keys are the same in every
   seed and arm; C3 also tests whether A_act's grid covers the truth.
 
+- 17:03: **r6-dialsb-002 done** (exit 0, 25 min, $0.2204 billed). Review unchanged since read. Outputs fetched
+  from `origin/gpu-jobs`; `make_summary.py`, `horizons.py`, `tables.py` run; `results/` committed.
+- 17:10: after the fact, `diag_grid.py`: at the pilot centre the carrier field is a growing checkerboard wherever
+  there is catalyst (README section 3). In no verdict.
+- 17:25: README.md, DEVIATIONS.md 4-6, summary.json final. **Verdict by the declared rule: CLOSE CALL; the plan's
+  rule at the point estimates: NO-GO; the build is not started.** DONE. Worktree and scratch removed after the
+  last push.
+
 ## Next step (exact)
 
-1. Wait: one background loop fetching `origin/gpu-jobs` every 60 s until `jobs/r6-dialsb-002/status.json` has a
-   final state (done | failed | timeout | cancelled | rejected | infra_error). "queued, waiting for an offer" is
-   not stuck; a stock-out is requeued by the runner.
-2. Read `git show origin/gpu-jobs:jobs/r6-dialsb-002/review.md` BEFORE any result and act on it.
-3. `git archive origin/gpu-jobs jobs/r6-dialsb-002 | tar -x -C <scratch>`; `python -B make_summary.py
-   <scratch>/jobs/r6-dialsb-002`; commit `results/` (summary.json and results/job/*.json, ranges.sha256).
-4. README.md (per-seed and per-horizon table, each condition with its number and verdict, what a build needs),
-   DEVIATIONS.md, final report; remove the worktree and the scratch folder.
+None for this study. For the coordinator: README section 5 (a gate at stable hidden values: one CPU job, about
+$0.25, 1.5-2 agent-hours; not requested).
 
 ## Jobs
 
 | job | state | note |
 |---|---|---|
-| r6-dialsB-001 | cancelled 16:21 UTC (cancel file pushed), never acknowledged by the runner | its id has an upper-case letter, which PROTOCOL.md's pattern does not allow; $0 |
-| r6-dialsb-001 | failed 16:28 UTC, exit 3 (its own speed guard), $0.0432 billed | `nproc` answered 1 because OMP_NUM_THREADS=1 was exported first; presmoke passed (672 member-ticks/s per process); DEVIATIONS.md 3 |
-| r6-dialsb-002 | running since 16:38 UTC (nebius CPU node, 16 vCPU, $0.54/h) | the same tested commit by `ref`, env S0_NPROC=16; cap $2.50; expected about 50 minutes |
+| r6-dialsB-001 | never acknowledged by the runner; cancel file pushed 16:21 UTC; request file removed later | upper-case id (DEVIATIONS 1); $0 |
+| r6-dialsb-001 | failed 16:28 UTC, exit 3 (its own speed guard), $0.0432 billed | `nproc` answered 1 because OMP_NUM_THREADS=1 was exported first; presmoke passed (DEVIATIONS 3) |
+| r6-dialsb-002 | done 17:03 UTC, exit 0, $0.2204 billed, 25 min on a nebius CPU node (16 vCPU, $0.54/h) | the tested commit 52ae6e403631 by `ref`, env S0_NPROC=16 |
+
+Billed in all: $0.2636 of the study's $5.

@@ -123,6 +123,31 @@ if AL is not None:
                                                                "closed_by_horizon_4_8_16_32", "adversary_file_closed_by_horizon", "closed_h_8_16_32",
                                                                "adversary_file_closed_h_8_16_32", "A_act_fit", "adversary_A_act_fit", "Gstar_pick")},
                                           source=src("align.json", ""))
+dg = os.path.join(res, "diag_grid.json")
+if os.path.exists(dg):                                      # after the fact, run in the cloud container, in no verdict
+    G = json.load(open(dg))
+    loc = lambda k: {"job": "none (run in the container after the job, diag_grid.py)", "file": "results/diag_grid.json", "key": k}      # noqa: E731
+    S["after_the_fact_grid_scale_diagnostic"] = {
+        "AFTER_THE_FACT": G["AFTER_THE_FACT"],
+        "no_input_2_members": [{"cat": r["cat"], "rho": r["rho"], "DX": r["DX"],
+                                "checkerboard_factor_per_native_step_inside_cells": r["checkerboard_factor_per_native_step_inside_cells"],
+                                "tick_150": {k: r["tick_150"][k] for k in ("finite", "max_abs_X", "max_grid_scale_part", "ratio", "S_min")},
+                                "tick_182": {k: r["tick_182"][k] for k in ("finite", "max_abs_X", "max_grid_scale_part", "ratio", "S_min", "cells")}}
+                               for r in G["rows"]],
+        "gate_start_states_main_arm": [{"seed": r["seed"],
+                                        "tick_150_max_grid_scale_part_min_median_max": [min(r["tick_150"]["max_grid_scale_part_per_member"]),
+                                                                                         sorted(r["tick_150"]["max_grid_scale_part_per_member"])[8],
+                                                                                         max(r["tick_150"]["max_grid_scale_part_per_member"])],
+                                        "tick_182_finite_members_of_16": r["tick_182"]["finite_members"],
+                                        "tick_182_members_with_S_clipped_at_0": sum(1 for v in r["tick_182"]["S_min_per_member"] if v == 0.0),
+                                        "tick_182_max_grid_scale_part_finite_max": max(v for v in r["tick_182"]["max_grid_scale_part_per_member"] if v == v)}
+                                       for r in G["gate_start_states"]],
+        "source": [loc("rows"), loc("gate_start_states")]}
+ph = os.path.join(res, "per_horizon.json")
+if os.path.exists(ph):
+    PH = json.load(open(ph))
+    S["per_horizon_full_statistics"] = {"file": "results/per_horizon.json", "made_by": "horizons.py from jobs/%s/out/gate/*.npz" % job_id,
+                                        "max_abs_difference_from_analysis_json": PH["max_abs_difference_from_analysis_json_by_horizon"]}
 with open(os.path.join(res, "summary.json"), "w") as f:
     json.dump(S, f, indent=1)
 print("wrote results/summary.json; verdict", A["verdict"])

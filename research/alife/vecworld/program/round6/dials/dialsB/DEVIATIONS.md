@@ -28,3 +28,16 @@ Nearest things done where the plan, the assignment or DECLARED.md could not be f
    0.364 (aimed) (`jobs/r6-dialsb-001/out/presmoke.json` [scanC_point]). By the rule of DECLARED.md 2.6 the
    centre is then not "silent" (thresholds 0.03 and 0.05), so scan C will be recorded as failed and the gate
    will run every seed at the pilot centre. The rule stands as declared; nothing was changed in response.
+4. **11 Nov, 17:05 UTC, no fresh hidden values.** Not a departure from DECLARED.md but from what the plan wanted:
+   scan C failed for rho, D_X and a0 (the pilot centre is not "silent": gaps 0.130 without input and 0.142 under
+   blind input), so by DECLARED.md 2.6 the ranges are the centre alone and all eight seeds have the same hidden
+   values (0.02, 0.5, 0.03). The told-form recipe's design does not contain that point, which is all that is left
+   of "truths off its grid".
+5. **11 Nov, 17:15 UTC, two things done after the results were read**, both in no verdict: `horizons.py` (the
+   per-horizon medians, leave-one-seed-out ranges and bootstraps that DECLARED.md 2.4 lists and the job's
+   `analysis.json` lacks; the job's review noted it; same formulas, same bootstrap draws, pooled values equal to
+   the job's), and `diag_grid.py` (the grid-scale content of the carrier field, README section 3), written to
+   explain why scan C failed at the centre only.
+6. **A third request was not made.** DECLARED.md 2.7 allows one more job only for a failure that is not a result.
+   A gate at numerically stable hidden values would be a new study with rules written after these results; it is
+   described and costed in the README (section 5) and left to the coordinator.
