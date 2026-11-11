@@ -16,6 +16,13 @@ process (stopped by its exact pid), and the tools of this folder. It calls no mo
           stop (`spend_cap` ends the run, the run is graded, the ledger closes within its bound), the
           publication folder.
 
+  flood   (round 4, second pass, code audit K4) agents/probe_flood.py in the agent's box of a scripted rollout:
+          a box that sends without end into every way out (a 64 MiB request to the laboratory, 80 connections
+          to its proxy, a validator that prints 256 MiB and one that writes 256 MiB straight into its command's
+          output); then a second rollout whose script writes 256 MiB into the harness command's own output. The
+          peak memory of vf-eval and of the laboratory is sampled from /proc on the host while the floods run;
+          the card of the run (exam audit X5) and three predictors that must fail `validate` (X6) ride along.
+
 Everything is written under --scratch and left there. Every check is one line in the output JSON with the
 numbers it rests on.
 """
@@ -128,6 +135,142 @@ def run_caps(scratch, tag, floor, log):
     check("K12 the laboratory required its bearer and no container of this run is left",
           ph.get("lab_bearer_required") is True and containers_left() == [], containers_left())
     return {"instance": iid, "trace_id": x["trace_id"], "box_caps": caps, "caps_report": rep, "reward": x["reward_skill_vs_O"], "wall_s": round(r["wall_s"], 1)}
+
+
+# ----------------------------------------------------------------------------- flood (K4)
+class Sampler(threading.Thread):
+    """Reads, every 0.2 s, the resident memory of the vf-eval whose command line holds `needle` and of the
+    laboratory it started (/proc on this host: a read only). Keeps (time, vf-eval MiB, laboratory MiB)."""
+
+    def __init__(self, needle: str):
+        super().__init__(daemon=True)
+        self.needle, self.samples, self.stop = needle, [], threading.Event()
+
+    @staticmethod
+    def _rss(pid):
+        try:
+            for line in open(f"/proc/{pid}/status"):
+                if line.startswith("VmRSS:"):
+                    return int(line.split()[1]) / 1024.0
+        except OSError:
+            return None
+        return None
+
+    def _find(self):
+        vf, lab = None, None
+        for d in os.listdir("/proc"):
+            if not d.isdigit():
+                continue
+            try:
+                cmd = open(f"/proc/{d}/cmdline", "rb").read().replace(b"\0", b" ").decode("utf-8", "replace")
+                ppid = int(open(f"/proc/{d}/stat").read().rsplit(")", 1)[1].split()[1])
+            except (OSError, ValueError, IndexError):
+                continue
+            if "tools/vfeval.py" in cmd and self.needle in cmd and "nice" not in cmd.split(" ", 1)[0]:
+                vf = int(d)
+            elif "physim2_env.lab_tools" in cmd:
+                lab = (int(d), ppid)
+        return vf, (lab[0] if lab and lab[1] == vf else None)
+
+    def run(self):
+        vf = lab = None
+        while not self.stop.is_set():
+            if vf is None or lab is None or self._rss(vf) is None:
+                vf, lab = self._find()
+            self.samples.append((time.time(), self._rss(vf) if vf else None, self._rss(lab) if lab else None))
+            time.sleep(0.2)
+
+    def peak(self, t0=None, t1=None, which=1):
+        got = [x[which] for x in self.samples if x[which] is not None and (t0 is None or x[0] >= t0) and (t1 is None or x[0] <= t1)]
+        return round(max(got), 1) if got else None
+
+
+def run_flood(scratch, tag, floor, log):
+    import check_config as CC
+    profile = CC.light("profiles").get("ring")
+    store, out_dir, notes = os.path.join(scratch, "flood-store"), os.path.join(scratch, "flood-runs"), os.path.join(scratch, "flood-notes")
+    ok, iid = make_instance(store, f"pilot-flood-{tag}", profile, log)
+    ok2, iid2 = make_instance(store, f"pilot-floodh-{tag}", profile, log)
+    if not check("F0 two instances for the flood probe were made", ok and ok2):
+        return {}
+    with open(os.path.join(store, "PILOT_NEVER_REUSE_AS_EXAM.txt"), "a") as f:
+        f.write(f"PILOT_NEVER_REUSE_AS_EXAM: {iid} and {iid2} were made for tools/check_step3.py (flood), never an exam.\n")
+    name = f"flood-{tag}"
+    sam = Sampler(os.path.join(out_dir, f"{name}.toml"))
+    sam.start()
+    try:
+        r = vfrun.run_eval(name, store=store, out_dir=out_dir, instances=[iid], cpu=2, memory=2, image=profile["image"],
+                           harness={"agent_dir": os.path.join(ROOT, "agents"), "script": "probe_flood.py", "label": "flood",
+                                    "collect": ["flood_report.json"], "collect_dir": notes},
+                           task={"item_isolation": "shared"}, disk_floor_gib=floor, timeout=2400)
+    finally:
+        sam.stop.set()
+        sam.join(5)
+    if not check("F1 the scripted rollout with the flood probe ended and saved a trace", len(r["episodes"]) == 1, r["log_tail"][-600:]):
+        return {}
+    x = vfrun.rollout(r["episodes"][0])
+    rep_f = os.path.join(notes, x["trace_id"], "flood_report.json")
+    rep = json.load(open(rep_f)) if os.path.exists(rep_f) else {}
+    card = rep.get("card") or {}
+    env, lim = card.get("compute_envelope") or {}, card.get("predictor_limits") or {}
+    check("F2 X5 the card of the run: the envelope measured in THIS box (2 CPUs, 2 GiB, 512 processes, /dev/shm 64 MiB, the run's wall time) and an "
+          "item memory of 2 GiB (the config says 4), 256 processes per item",
+          env.get("memory_gib") == 2.0 and env.get("cpus") == 2.0 and env.get("processes") == 512 and env.get("shm_mib") == 64.0 and env.get("measured") is True
+          and lim.get("memory_gib") == 2.0 and lim.get("processes") == 256, card)
+    body = rep.get("body") or {}
+    check("F3 K4 a 64 MiB request to the laboratory, declared or not, is refused or cut long before its end, and the laboratory answers afterwards",
+          all(str(v.get("status", "")).startswith(("HTTP/1.1 413", "HTTP/1.1 502", "closed", "send failed")) and v.get("body_bytes_sent", 1 << 30) < (64 << 20)
+              for k, v in body.items() if k not in ("after", "t")) and (body.get("after") or {}).get("usage_ok") is True, body)
+    con = rep.get("connections") or {}
+    check("F4 K4 of 80 connections to the box's proxy at once, it closes the ones above 64 unread", con.get("opened") == 80 and con.get("closed_unread_by_the_proxy") == 16, con)
+    vp, vw = rep.get("validator_prints") or {}, rep.get("validator_writes_into_the_exec_output") or {}
+    check("F5 K4 a validator of the agent's that prints 256 MiB: the report is cut in the box and the check says so",
+          (vp.get("report") or {}).get("ok") == "False" and "no report" in str((vp.get("report") or {}).get("error")), vp)
+    check("F6 K4 one that writes 256 MiB straight into the output of its command (/proc/<parent>/fd/1): vf-eval keeps at most its bound "
+          "and the check reports a failure", (vw.get("report") or {}).get("ok") == "False" and "SandboxError" in str((vw.get("report") or {}).get("error")), vw)
+    t_first, t_last = rep.get("t_floods_start") or 0, rep.get("t_floods_end") or 0
+    base_vf, base_lab = sam.peak(None, t_first - 0.5, 1), sam.peak(None, t_first - 0.5, 2)
+    peak_vf, peak_lab = sam.peak(t_first, t_last + 2, 1), sam.peak(t_first, t_last + 2, 2)
+    check("F7 K4 while the box pushed about 0.9 GB at it, vf-eval grew by less than 200 MiB and the laboratory by less than 64 MiB",
+          None not in (base_vf, peak_vf, base_lab, peak_lab) and peak_vf - base_vf < 200 and peak_lab - base_lab < 64,
+          {"vf_eval_mib": [base_vf, peak_vf], "laboratory_mib": [base_lab, peak_lab], "samples": len(sam.samples)})
+    ag = rep.get("as_graded") or {}
+    check("F8 X6 lab.validate fails predictors that read a file left in /tmp or /dev/shm or import a module added to physim2/; the baseline still passes as graded",
+          all(ag.get(k, {}).get("ok") is False for k in ("x6tmp", "x6shm", "x6pkg")) and (rep.get("baseline_still_passes") or {}).get("ok") is True
+          and (rep.get("baseline_still_passes") or {}).get("as_graded") is True, {"as_graded": ag, "baseline": rep.get("baseline_still_passes")})
+    g = x.get("grade") or {}
+    check("F9 the flooded rollout was graded all the same (64 items)", x["graded"] and g.get("n_items") == 64, {k: g.get(k) for k in ("n_items", "n_failed", "skill_vs_O")})
+    # ---- the harness's own output ----
+    name2 = f"floodh-{tag}"
+    sam2 = Sampler(os.path.join(out_dir, f"{name2}.toml"))
+    sam2.start()
+    try:
+        r2 = vfrun.run_eval(name2, store=store, out_dir=out_dir, instances=[iid2], cpu=2, memory=2, image=profile["image"],
+                            harness={"agent_dir": os.path.join(ROOT, "agents"), "script": "probe_flood.py", "args": ["--harness-flood"],
+                                     "label": "floodh", "collect": ["flood_report.json"], "collect_dir": notes},
+                            task={"item_isolation": "shared"}, disk_floor_gib=floor, timeout=2400,
+                            env_id="physim2-verifier")          # the env of a model run: it grades a failed run too (ruling E1)
+    finally:
+        sam2.stop.set()
+        sam2.join(5)
+    if not check("F10 the rollout whose script floods the harness command's output ended by itself and saved a trace", len(r2["episodes"]) == 1, r2["log_tail"][-600:]):
+        return {"flood": rep}
+    x2 = vfrun.rollout(r2["episodes"][0])
+    tr2 = r2["episodes"][0]["traces"][0]
+    errs = json.dumps(tr2.get("errors") or [], default=str)
+    peak2 = sam2.peak(None, None, 1)
+    check("F11 K4 the harness command's 256 MiB: vf-eval keeps at most its bound and drops the rest; the command is reported as failed "
+          "(`client wrote more than the pilot reads`), and vf-eval's peak stayed within 200 MiB of the first flood rollout's",
+          "wrote more than the pilot reads" in errs and peak2 is not None and peak_vf is not None and peak2 - peak_vf < 200,
+          {"errors": errs[:600], "vf_eval_peak_mib": peak2, "first_rollout_peak_mib": peak_vf, "samples": len(sam2.samples)})
+    g2 = x2.get("grade") or {}
+    check("F12 ... and the failed run was graded on its last checkpoint by the env of a model run, physim2-verifier (ruling E1): 64 items",
+          x2["graded"] and g2.get("n_items") == 64 and (x2.get("submission") or {}).get("source") == "checkpoint",
+          {"grade": {k: g2.get(k) for k in ("n_items", "n_failed", "skill_vs_O")}, "submission": x2.get("submission")})
+    check("F13 no container of this run is left", containers_left() == [], containers_left())
+    return {"instances": [iid, iid2], "flood_report": rep, "memory_mib": {"vf_eval": [base_vf, peak_vf], "laboratory": [base_lab, peak_lab],
+                                                                          "harness_flood_vf_eval_peak": peak2},
+            "rewards": [x.get("reward_skill_vs_O"), x2.get("reward_skill_vs_O")], "wall_s": [round(r["wall_s"], 1), round(r2["wall_s"], 1)]}
 
 
 def containers_left():
@@ -460,6 +603,8 @@ def main() -> int:
         out["caps"] = run_caps(a.scratch, tag, a.disk_floor_gib, log)
     if "route" in a.only:
         out["route"] = run_route(a.scratch, tag, a.disk_floor_gib, log, a.skip_reference)
+    if "flood" in a.only:
+        out["flood"] = run_flood(a.scratch, tag, a.disk_floor_gib, log)
     failed = [c["name"] for c in CHECKS if not c["ok"]]
     out.update(n_checks=len(CHECKS), n_failed=len(failed), failed=failed, checks=CHECKS, wall_s=round(time.time() - out["started_unix"], 1))
     text = json.dumps(out, indent=1, default=str).replace(os.path.abspath(a.scratch), "<scratch>")

@@ -373,7 +373,8 @@ def end_of_child(rc, how: str, record: str, floor: int | None) -> None:
 
 def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=None, task: dict | None = None,
              cpu: float | None = 2, env: dict | None = None, timeout: float = 3600, image: str | None = None,
-             timeouts: dict | None = None, disk_floor_gib: float | None = None, memory: float | None = None) -> dict:
+             timeouts: dict | None = None, disk_floor_gib: float | None = None, memory: float | None = None,
+             env_id: str = "isolated-verifier") -> dict:
     """Returns {"episodes": [...], "wall_s", "host_cpu_s", "returncode", "run_dir", "log_tail"}.
     The task option `agent_key` defaults to the run name: `single_use` stays ON, and each scripted policy or
     probe is its own agent (the same run name on the same instance is refused, as a re-roll would be)."""
@@ -381,7 +382,7 @@ def run_eval(name: str, *, store: str, out_dir: str, harness: dict, instances=No
     cfg = {"model": "none/scripted", "num_rollouts": 1, "max_concurrent": 1, "push": False, "output_dir": out_dir,
            "client": dict(NO_MODEL_CLIENT),                  # no model is called, and no model credential is loaded
            "run": {"name": name},
-           "env": {"id": "isolated-verifier",
+           "env": {"id": env_id if env_id in ("isolated-verifier", "physim2-verifier") else "isolated-verifier",
                    "taskset": {"id": "physim2-env", "store": store},
                    "agent": {"runtime": {"type": "docker"}, "harness": dict({"id": "physim2-script"}, **harness)},
                    "retries": {"max_retries": 0},

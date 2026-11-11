@@ -19,8 +19,9 @@ container exposed faults of the exam, and with the lead's Mac available again, t
 changed for model rollouts driven by request files; `RUNBOOK_MAC.md` is ON HOLD until that round's verdict).
 The two branches of round 4 were merged, pinned and rehearsed by an integrator (section 8.14: the pin and every
 check at the pinned code; section 8.15: the rehearsal of steps 0 to 3 with a real model, the faults it found and
-the second pin).
-Where sections 8.12 to 8.15 and an earlier section differ, the later one holds. Everything of rounds 1 to 3 was
+the second pin). The verdict on that pin (`HOST_SAFETY_AUDIT.md`, "Re-audit, round 4") said GO for steps 0 to 2 and
+NO-GO for step 3; a second-pass fixer closed the items it left open and pinned again (section 8.16; no verdict yet).
+Where sections 8.12 to 8.16 and an earlier section differ, the later one holds. Everything of rounds 1 to 3 was
 RUN on Docker in the cloud container (Linux x86_64, 4 cores, Docker 29.9.2) with scripted agents only. No model
 call, no GPU job, no upload. Round 4's rehearsal made three model rollouts from request files there (section 8.15);
 nothing was uploaded.

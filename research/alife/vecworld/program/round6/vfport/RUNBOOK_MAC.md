@@ -1,42 +1,13 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
-**GO for steps 0 to 2.** Round-4 verdict of the host-safety audit, 11 Nov 2026 (`HOST_SAFETY_AUDIT.md`,
-"Re-audit, round 4"). Steps 0, 1 and 2 of this file and "If a run was interrupted" (as it applies to step 2) may
-run on the lead's Mac, as written, from ONE commit: the commit that holds this notice. Its 40-character hash is
-in the coordinator's GO message (a commit cannot name itself); the lead checks it out and gives it to the
-session, and step 0 compares it. Step 4 is covered too; run it only when the lead says the pilot is over. Judged
-were the code of commit `c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed` and the commands as rehearsed at commit
-`d9694f3e5b6c92a98c13fb36f02645f01f18728c` (the 41 fenced commands and the 2 inline commands of this file are,
-byte for byte, the rehearsed ones); in the folders the pilot uses, the commits after `c7db465d5` changed
-`results/`, `rehearsal/`, this notice and `HOST_SAFETY_AUDIT.md` and nothing else, and step 0 proves the code by
-the pin below. This GO replaces the round-3 GO: run this commit, not `08bd5a669867623a476e7446a74612be47001b3b`.
-
-**Step 3 (model rollouts) is NOT released by this notice: NO-GO.** Rule A.1 stands: step 3 needs a notice that
-begins `**GO for steps 0 to 3.**`. Two findings of major severity are open, and each needs a change of a pinned
-file, so a new pin: (1) a model in its box can push an unbounded amount of data into processes on the Mac (the
-output of the in-box check, which vf-eval reads whole; a request body, which the laboratory reads whole; the
-relay buffer of the box's proxy): the Mac's memory, not its files; (2) the in-box check `lab.validate` reports
-"as graded" for predictors that then fail in grading. From this commit, run no command of section 3, 3.0
-included, and create no `LEAD-GO-MODEL-SPEND.json`.
-
-The verdict adds three corrections of wording. Where the text below says something else, these hold. No command
-changes.
-
-1. **Section B, "What reaches those processes":** the closing words "`DYLD_*` variables are not looked for by
-   anybody" are wrong for this pin. Step 0's environment check and every tool look for `DYLD_*` names and refuse
-   a session that holds one (`FOUND DYLD_...` in step 0 is a stop, as step 0 says).
-2. **Step 2b, the report command:** its first line prints counts (`round5 <n> of <m> [...] new <n> of <m>
-   [...]`) for which this file gives no expected numbers; the cloud rehearsal printed `round5 32 of 34 [] new 66
-   of 66 []`. Report the counts as they are; what decides a stop is the two lists of `probe.log` (on the Mac:
-   `"failed_round5": []` and `"failed_new": ["b_lab_process_dropped_it_after_loading"]`).
-3. **"If a run was interrupted", point 3:** Docker Desktop may spell the refusal for an unknown name
-   `Error: No such object: <name>` (capital E) where the text says `error:`. It means the same: nothing was
-   removed; stop and report.
-
-For the lead, not the session: step 0 of this text expects no pilot folder, no `.venv` and no image
-`physim2-ring:2`. Unless the next pin's step 0 says otherwise, before that pin's step 0 (the pin that may release
-step 3) the lead clears what this commit's steps 1 and 2 leave: step 4 (the two pilot folders), then by hand the
-`.venv` of the study folder (or a fresh checkout) and the image (`HOST_SAFETY_AUDIT.md`, "Re-audit, round 4").
+**ON HOLD (round 4, second pass, 11 Nov 2026). Run nothing from this copy.** The GO for steps 0 to 2 of the
+round-4 verdict holds for the commit that carried it, `8bbab3324ae510990f17be400602e97d4042ef6e`, and for that
+commit only. This copy carries the second pass's changes (code audit K4: byte bounds between a box and the Mac;
+exam audit X6: `lab.validate` as graded; K1, K2, K5, X1, X5, X9; the step-3 text of the runbook audit, T2 to T12;
+see `README.md`, section 8.16), a new `PIN.sha256`, and no verdict yet, so nothing below is released: not steps 0
+to 2, not step 3, not step 4. A new notice replaces this one when the verdict of this pass is written (it will
+begin `**GO for steps 0 to 3.**`, or `**GO for steps 0 to 2.**`, or stay a hold); until then a session that reads
+this file stops here (rule A.1) and reports.
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->
@@ -44,7 +15,7 @@ step 3) the lead clears what this commit's steps 1 and 2 leave: step 4 (the two 
 40-character hash in the coordinator's GO message. The lead checks it out (section C) and gives it to the
 session, and the first line that step 0 prints must equal it. The code is identified by the sha256 of
 `PIN.sha256`, the list of the sha256 of every file the pilot executes or imports; step 0 recomputes both.
-sha256 of `PIN.sha256`: `776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc`
+sha256 of `PIN.sha256`: `898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f`
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, the session and the disk, (1) install, (2) run the scripted,
@@ -167,7 +138,8 @@ in ONE command (next paragraph), and a tool refuses to start (`refused: the envi
 step 0 has you check, yourself, which `docker` context answers, and why a tool refuses to start unless that
 context names a Unix socket of this machine. The commands of this file that are not tools (`git`, `docker`,
 `shasum`, `df`, the interpreter one-liners of steps 1 and 2) run with the session's whole environment, as any
-command of the session does; `DYLD_*` variables are not looked for by anybody.
+command of the session does. `DYLD_*` names are looked for by step 0's environment check and by every tool, which
+refuse a session that holds one (`FOUND DYLD_...` in step 0 is a stop).
 
 **The model key (step 3 only): who holds it, and for how long.** Your session's environment holds
 `PRIME_API_KEY`, before and after the pilot. Every command of the session inherits it, the tools included, and
@@ -177,6 +149,7 @@ no tool reads its value except as listed here:
 |---|---|---|---|
 | `tools/vfrun.py --stage rollout --model-credentials prime` (the one paid command) | in its environment, like every command | the rollout and its grading | copies `PRIME_API_KEY` and `PRIME_TEAM_ID` into the environment of ONE child, its vf-eval; refuses to start a model run without `PRIME_API_KEY` in its environment (the name is looked for, the value never read). In every other stage and tool the child gets neither |
 | that vf-eval | in its environment | from its start to its end: set-up, the agent's wall time (at most 180 minutes), finalize and grading (at most 160 minutes more; then the tool stops it) | verifiers' model client sends it as the `Authorization` header to `https://api.pinference.ai/api/v1` and to nowhere else: the run's config names that address itself, so the Prime login file cannot move it [`tools/vfrun.py`, `PRIME_INFERENCE_URL`; vf:configs/client.py:37-57]. verifiers may read `~/.prime/config.json` for the team id |
+| `git rev-parse`, started once by verifiers in vf-eval to find its own version [vf:utils/version.py:23-31] | in its environment (vf-eval's, inherited) | at most 5 s (then Python kills it) | nothing: it reads the repository's metadata and prints a hash |
 | the laboratory | **no**: verifiers starts it without any variable whose name holds `API_KEY` [vf:runtimes/subprocess.py:104, 134, 151]; `PRIME_TEAM_ID` (an account name, not a secret) does reach it, and it drops every token-like name from its own environment after loading (on Linux also from what `/proc` shows; not on macOS) | | |
 | `docker` clients of vf-eval | **no**: the pilot starts them without credential-like names and without `PRIME_*` [`physim2_env/runtime.py`, `docker_client_env`]. One exception: the `docker rm --force <its box>` at the end of a box inherits vf-eval's environment for the seconds it runs [vf:runtimes/docker/__init__.py:553-567]; a `docker` client puts no variable into a container unless told to | | |
 | a box (the model's, the grader's, a reference policy's) | **no**. A container inherits nothing from the Mac. The harness in the model's box holds a per-rollout secret for verifiers' interception server, with which it asks for model calls; those calls are made by vf-eval, counted and capped (step 3, the spend stop) | | |
@@ -204,7 +177,21 @@ before the box is used (a box without them is not used: the rollout fails at boo
 | network | none of its own: verifiers cuts the box and gives it one proxy on the Mac, through which it reaches the model route and the laboratory and nothing else [vf:runtimes/docker/egress.py] | refused connections |
 
 Everything a box can write is memory and counts against its memory cap: a box that fills `/workspace` and `/tmp`
-has 2.4 GB left for its processes. **A box cannot write to Docker's disk**, so a model cannot make Docker
+has 2.4 GB left for its processes.
+
+**What a box can make processes on the Mac hold** (second pass of round 4, code audit K4). The caps above bound
+what a box stores, not what it sends. Every way out of a box into a process on the Mac is now bounded as well:
+
+| way out | bound | what the box sees beyond it |
+|---|---|---|
+| the output of any `docker` client that vf-eval starts (the harness's own command, the in-box check, `exec`, `cp` of `submission/`) | vf-eval keeps at most 96 MiB of standard output and 4 MiB of standard error per client and reads and drops the rest [`physim2_env/runtime.py`, `_communicate`] | the command counts as failed (`client wrote more than the pilot reads`); for the harness's command the run ends as a failed run and is graded on its last copy of `submission/` (ruling E1) |
+| the in-box check `lab.validate` | its report is cut at 1 MiB in the box (`| head -c 1048576`) [`physim2_env/access.py`] | "the validator in the box returned no report" |
+| a request to the laboratory | at most 4 MiB per request, counted as it arrives, and at most 8 requests at once [`physim2_env/bearer.py`] | `413` (too large), `503` (busy); nothing of it reaches the laboratory's code |
+| the box's proxy in vf-eval | at most 64 connections of a box at once, and at most 320 KiB waiting per connection [`physim2_env/runtime.py`] | further connections are closed unread; a sender is slowed, not buffered |
+
+So a box can make vf-eval and the laboratory hold some hundreds of MiB at most, whatever it sends (measured in the
+cloud container with a box that pushed about 0.9 GB: `results/rehearsal_round4.json`, `second_pass`). It can
+still keep a core of the Mac busy while vf-eval reads and drops what it sends, until the run's wall time ends it. **A box cannot write to Docker's disk**, so a model cannot make Docker
 Desktop's disk image grow; that is why this pin asks for no disk setting. Measured from inside a box in the
 cloud container (`results/round4_step3.json`, checks K2 to K10). Docker Desktop's virtual machine remains the
 wall between a box and the Mac; that wall was not tested by this study.
@@ -415,6 +402,16 @@ cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/t
 Expected: four lines. Docker's version, `CONTAINERS-LISTED` (no container of this pilot: a name before it is a
 stop), `IMAGES-LISTED` (no image `physim2-ring:2` yet: an image id before it is a stop), `NO-PILOT-FOLDERS`
 (neither pilot folder nor a `.venv` exists, not even as a link). A missing line: stop.
+
+**Step 0 again, later, at the SAME commit** (a new session that is to run step 3 after steps 1 and 2 passed on this
+Mac at this commit, as its own report of them says): then what those steps left is expected, and only that. The
+first command of step 0 lists `!! .venv/` between its second and third line (no other line); this command prints
+an image id before `IMAGES-LISTED` and no `NO-PILOT-FOLDERS` (the `.venv` and, unless step 4 ran, the pilot
+folder of steps 1 and 2). Go on with step 3 then; do not run steps 1 and 2 again. Anything else listed is a stop.
+**A `.venv` or an image `physim2-ring:2` left by ANOTHER commit** (an earlier pin's steps 1 and 2, for example
+`8bbab3324...`) is a stop as written above: step 1's dry run would say `Would replace` or `Would use`, and the
+image was built from another commit's files. They are the lead's to remove, by hand, before this commit's step 1
+(or the lead uses a fresh checkout); the session removes neither.
 
 ```sh
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk "$HOME" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) print "DISK-OK " int(free / 1048576) " GiB free" ; else print "refused: " int(free / 1048576) " GiB free on the file system of the home folder, the floor is 8 GiB" }'
@@ -662,7 +659,9 @@ print('kill in box', e['h_harness_dies']['killall']['first'], 'wall_s', round(p[
 "
 ```
 
-Report these lines as they are. They answer what only the Mac can answer: what told the driver it was inside a
+Report these lines as they are. The first one prints counts (`round5 <n> of <m> [...] new <n> of <m> [...]`) for
+which this file gives no expected numbers (the cloud rehearsal printed `round5 32 of 34 [] new 66 of 66 []`);
+what decides a stop is the two lists of `probe.log` above. The lines answer what only the Mac can answer: what told the driver it was inside a
 container (`container_evidence`; in the cloud container `/.dockerenv` and the control group of pid 1), whether
 the uncut control container reaches a listener on the Mac (`control`), and what a box can reach: in
 `agent box net`, `proxy_loopback_names` shows what the box's proxy answered when it was asked, with the box's
@@ -706,8 +705,9 @@ the second one. **In step 3, use it once per job:** points 1 to 5, then 7 and 8,
 run again, whatever happened, and the next request waits until point 8 is done.
 
 Use it when a detached command of step 2 or step 3 did not end with `EXIT 0`: the Mac slept, Docker Desktop stopped, a command was
-cut, the session was restarted, you were told to stop, a tool ended with `EXIT 97` (the disk floor: points 1 to 5,
-then stop and report, whatever the count) or `EXIT 98` (the tool had to stop its vf-eval, or vf-eval was killed).
+cut, the session was restarted, you were told to stop, a tool ended with `EXIT 97` (the disk floor: in step 2
+points 1 to 5, in step 3 points 1 to 5, 7 and 8; then stop and report, whatever the count) or `EXIT 98` (the tool
+had to stop its vf-eval, or vf-eval was killed).
 Do exactly this, in this order, and nothing else. In particular do not start the step again before the end of
 this section.
 
@@ -752,9 +752,10 @@ this section.
    ```
 
    It prints two lines: `physim2-pilot-20261110`, the run label that Docker has on record for that name, and then
-   the name. **If it prints nothing, or one line that begins `error:`, nothing was removed**: no container of
-   that exact name carries this pilot's label (cloud rehearsal: nothing for a container with another label,
-   `error: no such object: <name>` for a name no container has). Stop and report.
+   the name. **If it prints nothing, or one line that begins `error:` (Docker Desktop may spell it `Error: No such
+   object: <name>`, with a capital E: the same), nothing was removed**: no container of that exact name carries
+   this pilot's label (cloud rehearsal: nothing for a container with another label, `error: no such object:
+   <name>` for a name no container has). Stop and report.
 4. **A `LAB` or a `HELPER` line is still listed and no `VF-EVAL` and no `TOOL` is:** stop it by its pid with the
    stop command of point 2. Neither holds state worth keeping. On Linux a laboratory that has lost its vf-eval
    ends by itself at once; **on macOS it does not (inferred: verifiers asks the kernel for that on Linux
@@ -794,12 +795,14 @@ this section.
    | the task controller's socket and the small temporary folders of point 7 | `$TMPDIR`, `~/.cache/verifiers` | leave them (point 7) |
    | a half-written store: `store/<instance>/captures/<rollout>/checkpoint.tar` (and a `*.tmp` beside it), `hidden/labs/<rollout>/` with the laboratory's budget as spent, `hidden/opened/<hash>.json` (the instance is used: this agent can never open it again), no `final/` folder and no grade | the folder of step 3 | leave it. Nothing reads a half-written file as if it were whole: a later tool takes the last complete checkpoint or none |
    | the job folder: `out/` with or without a trace, `spend.jsonl` (possibly a call that was sent and never settled), `rollout.stopped.json`, `status.json` | the folder of step 3 | leave it; `tools/pack_rollout.py` reads it as it is |
-   | the ledger: the job's `reserved` row, and its `ended` row unless the TOOL itself was killed | `LEDGER.jsonl` | if the tool wrote `ended` (the log's last lines show a JSON line with `"ended"` before the `EXIT` line): nothing. If not, the job counts at its whole bound and blocks every later job until you close it (next command) |
+   | the ledger: the job's `reserved` row, and its `ended` row unless the TOOL itself was killed | `LEDGER.jsonl` | run the close command below in every case, and do not look into the log to decide (3f: the log holds the model's text). If the tool closed the books itself, the command answers `refused: nothing to close`; if not, the job counts at its whole bound and blocks every later job until the command has closed it |
    | the instance name and the job id | `INSTANCES.jsonl`, `LEDGER.jsonl` | used, for ever. The job is never run again; a new attempt is a new request with a new job id and a new instance name |
    | the key | nowhere: it was in the environment of the tool and of vf-eval, which are gone | nothing |
 
    Close the job's books (this starts nothing and spends nothing; it refuses while the job's tool, a laboratory of
-   its instance or a container of the run label is still there, and when the ledger has nothing open for the job):
+   its instance or a container of the run label is still there, and when the ledger has nothing open for the job).
+   **Close it at the commit the job ran at**: the command checks the request's pin against this checkout first, so
+   do not check out another commit (a new pin) while a cut job of this one is open; close it here, then move on:
 
    ```sh
    cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-pilot-20261110 "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage close --disk-floor-gib 8
@@ -820,14 +823,17 @@ this section.
 **Not released by a notice that says "steps 0 to 2".** Step 3 runs only when ALL of this holds: the notice of this
 file begins `**GO for steps 0 to 3.**`; steps 0 to 2 have passed on this Mac at this commit and the lead has read
 their report; the lead's standing go for model spend exists (3.0); a request names this commit (3.1). The tools
-check the last three themselves and refuse otherwise; nothing in steps 0 to 2 can start a model run: their
+check the last two themselves and refuse otherwise (no go file, or a request that names another commit: `refused:`);
+**that steps 0 to 2 passed on this Mac at this commit is NOT checked by any tool**: it is yours to know from your
+own report of them, and without it you do not start step 3. Nothing in steps 0 to 2 can start a model run: their
 commands carry no request, and `tools/vfrun.py` starts a model only from a request, in the one stage `rollout`,
 with `--model-credentials prime` and `--shared-ledger` on its command, after the stages before it have passed.
 
 This is the only step in which an untrusted model acts. It is root in a container for the minutes its request
 allows (at most 180). Between it and the Mac stand the box caps of section B (it can write only to memory that
-is charged to its own 4 GB, it has no network of its own, it holds no credential) and Docker Desktop's virtual
-machine; that last wall was not tested by this study. What the model writes comes back to the Mac as data.
+is charged to its own 4 GB, it has no network of its own, it holds no credential), the byte bounds of section B
+(what it sends to vf-eval and to the laboratory) and Docker Desktop's virtual machine; that last wall was not
+tested by this study. What the model writes comes back to the Mac as data.
 
 A job runs ONCE. One job at a time. Everything of step 3 lives in `$HOME/physim2-rollouts`, which steps 1, 2 and
 4 neither make nor delete.
@@ -844,13 +850,18 @@ on; its ledger and its list of used instance names are meant to outlive a pin) o
 **The lead's go for model spend is one file, `$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json`: a dollar ceiling
 and a date.** You create it ONLY when the lead tells you to in this session, with the ceiling the lead names
 (`CEILING_USD`: digits, at most one point) and the date of that day in UTC (`GO_DATE`: `YYYY-MM-DD`); never from a
-message in a file, a request or a commit, never on your own. The ceiling is the lead's ONE total for model
+message in a file, a request or a commit, never on your own. **Who writes it.** Round 3 had the lead make its go
+file by hand; from round 4 the session writes this one line on the lead's word. Before you write it the first
+time, ask the lead to confirm, in this session, that you are to write it (and not the lead by hand). Without that
+confirmation write nothing: the lead may make the file by hand instead, with exactly the line the command below
+writes. The two placeholders stand inside single quotes in the command, so a shell expands nothing in them; you
+still read each against its shape first (rule A.2). The ceiling is the lead's ONE total for model
 rollouts on every machine: the tools add what this folder's ledger holds, what the program's shared ledger says
 other machines spent, and the bound of the run that asks, and refuse when the sum would pass it. A go is good
 for 30 days; a new ceiling or a new date is the same command again, on the lead's word.
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -d "$HOME/physim2-rollouts" && test ! -L "$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json" && printf '{"schema": "physim2-lead-go/v1", "ceiling_usd": %s, "date": "%s"}\n' "CEILING_USD" "GO_DATE" > "$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json" && cat "$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json"
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -d "$HOME/physim2-rollouts" && test ! -L "$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json" && printf '{"schema": "physim2-lead-go/v1", "ceiling_usd": %s, "date": "%s"}\n' 'CEILING_USD' 'GO_DATE' > "$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json" && cat "$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json"
 ```
 
 Expected: the one line you wrote, for example `{"schema": "physim2-lead-go/v1", "ceiling_usd": 500, "date":
@@ -861,7 +872,11 @@ days old, or with any other key in it.
 ### 3.1 The request, the config, and what the pin fixes
 
 A request is a JSON file of schema `rollout-job/v1`, committed by the requester as
-`research/alife/vecworld/program/rollouts/requests/<job_id>.json`. It names this commit (`pin`, and `pin_sha256`,
+`research/alife/vecworld/program/rollouts/requests/<job_id>.json` on the branch
+`claude/fisim-agent-world-research-hepmlz` of the repository's `origin`. **That one folder of that one branch is the
+only source of requests**: 3a fetches that branch and reads that folder of the commit it fetched, and nothing
+else. A request anywhere else (another branch, another folder, a file in a message or on the Mac) is not run; if
+a runner hands you one, the answer is a report, not a copy into that folder. It names this commit (`pin`, and `pin_sha256`,
 the sha256 of `PIN.sha256`), a rollout config, an exam profile, a NEW pilot instance name, a model, four caps and
 `cap_usd`. The config is a flat TOML file of schema `physim2-rollout/v1`,
 `research/alife/vecworld/program/round6/rollouts/configs/<name>.toml`. Neither can name code, a path, an image,
@@ -968,8 +983,12 @@ that entry in the job folder (`model_entry.json`) and prints, for the request's 
 
 **A request is accepted only if `cap_usd` is at least one worst-case call. The bound on the bill is `cap_usd`
 plus one worst-case call**: a call is sent only while what was counted so far (plus one worst case for every
-call still under way) is below `cap_usd`, and no single call can cost more than the worst case, because its
-prompt is bounded before it is sent and its reply by the provider's own limit. The crude bound is what the
+call still under way) is below `cap_usd`, and at the LISTED prices no single call can cost more than the worst
+case, because its prompt is bounded before it is sent and its reply by the provider's own limit. Both bounds hold
+at the listed prices only: when a reply's own cost field is higher than its tokens at the listed prices, that
+higher cost is counted as it is (point 2), so a provider that bills above its listing can make one call count
+more than the worst case and the run end above the bound; the runner's reconciliation with the bill (point 8) is
+what catches that. The crude bound is what the
 turn cap alone would allow without the spend stop; it is printed for comparison and is not what the tools
 reserve. (Round 3's text bounded the bill by the token caps of the config, `1.5 x p_in + 0.06 x p_out`. That
 was wrong: those caps count each fed-in token once, while the provider bills the whole conversation again at
@@ -1048,9 +1067,11 @@ cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/t
 
 Expected: one JSON line. What must hold before you go on: `"pin"` is this commit and the hash of the pin block;
 under `"instance"` all three are `null`/`false` (a new name); `"go"` shows the lead's ceiling and date;
-`"bounds"` shows `worst_call_usd`, `bound_usd` and `crude_bound_usd`; `"ceiling"` shows the ledger's sum, what
-other machines spent and `after_this_run_at_most_usd`. Compare `bound_usd` with the bound you computed yourself
-from Prime's list, and with what the runner's protocol lets you start without asking. A line `refused:` (another
+`"bounds"` shows `worst_call_usd`, `bound_usd` and `crude_bound_usd` (and `cap_usd`); `"ceiling"` shows the
+ledger's sum, what other machines spent and `after_this_run_at_most_usd`. Check on that same line that `bound_usd`
+equals `cap_usd` plus `worst_call_usd` (no command of this file computes a bound of its own: the tool computed both
+from Prime's list a moment ago), and that `bound_usd` is within what the runner's protocol lets you start without
+asking. A line `refused:` (another
 pin; an unknown key; a cap below one worst-case call; a context cap above the model's window; an instance name
 the store has seen; the ceiling) is the answer to the requester: report it; do not edit the request.
 
@@ -1118,8 +1139,10 @@ are the tool's own `refused:` line; the status command does not show it: report 
 and stop). `EXIT 1` or another small number with nothing running: vf-eval ended by itself and reported a failure;
 go on with 3g and 3h, which show what happened, and say so in the report. `EXIT 97`, `EXIT 98`, `EXIT 130`,
 `EXIT 137` or `EXIT 143` (the tool itself was killed or stopped from outside), any `EXIT` line while a container
-or a process is still listed, or no `EXIT` line when the wall time plus 160 minutes have passed: "If a run was
-interrupted", points 1 to 5, 7 and 8.
+or a process is still listed, or no `EXIT` line when the request's wall time plus 165 minutes have passed (the
+tool's own deadline is the wall time plus 160 minutes; the 5 minutes more give its stop the time to act and write
+the line): "If a run was interrupted", points 1 to 5, 7 and 8, then stop and report. `EXIT 97` (the disk floor)
+is read the same way, and after it no further request starts until the lead has decided about the disk (rule 7).
 In every case: do not run the job again.
 
 **3g. Read the run through the report tool** (fixed fields and counts; no text of the model):
@@ -1173,6 +1196,11 @@ whose agent never called the laboratory has no laboratory log (`"missing": ["lab
 was cut by a kill of vf-eval has no saved trace, so `missing` names `grades.json`, `lab_log.jsonl`,
 `submission/`, `trace.redacted.jsonl` and `transcript.md`, and the folder holds the status, the usage per call,
 the reference table and what was asked for (10 files).
+
+**A publication folder without `MANIFEST.json` is unfinished** (the pack was cut: the Mac slept, the session
+ended, the command was stopped). It is not handed to the runner and not published; the pack is not run again
+(it never overwrites a folder that exists): report it. The folder is the lead's to remove by hand; the job's run
+files stay as they are.
 
 **What leaves the Mac is this folder and nothing else of step 3**: the runner publishes it under
 `rollouts/<job_id>/` on its results branch, by its own protocol, together with its own record of the bound it

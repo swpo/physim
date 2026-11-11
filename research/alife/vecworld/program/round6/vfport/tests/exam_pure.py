@@ -145,8 +145,9 @@ def main():
           and RR.num_turns({}) is None)
     # ---- second pass of round 4: X1, X5 (the statement and the card rendered from the run) ----
     from physim2_env import bundle as BUNDLE
-    shm = TASKSET.parse_box("workspace=tmpfs 1048576\ntmp=tmpfs 524288\nshm=tmpfs 65536\nrootfs=ro")
-    check("box (X5): /dev/shm is measured too: 64 MiB", shm["shm_mib"] == 64.0 and capped["shm_mib"] is None, shm=shm)
+    shm = TASKSET.parse_box("workspace=tmpfs 1048576\ntmp=tmpfs 524288\nshm=shm 65536\nrootfs=ro")
+    check("box (X5): /dev/shm is measured too: 64 MiB (Docker names its source `shm`)", shm["shm_mib"] == 64.0 and capped["shm_mib"] is None
+          and TASKSET.parse_box("shm=overlay 65536")["shm_mib"] is None, shm=shm)
     run = dict(BUNDLE.default_run("ring", "ring_r4"), memory_gib=2.0, cpus=2.0, shm_mib=64.0, wall_minutes=45.0, max_turns=40, measured=True,
                checkpoint_seconds=30.0)
     cfg = BUNDLE.load_config("ring_r4")

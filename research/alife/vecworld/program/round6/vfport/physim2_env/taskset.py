@@ -94,7 +94,8 @@ def parse_box(text: str) -> dict:
            "shm_mib": None, "read_only_root": None}
     for key, name in (("workspace", "workspace_mib"), ("tmp", "tmp_mib"), ("shm", "shm_mib")):
         f = (kv.get(key) or "").split()
-        if len(f) == 2 and f[0] == "tmpfs" and num(f[1]):
+        # a memory file system of its own; Docker names the source of /dev/shm `shm` (type tmpfs)
+        if len(f) == 2 and (f[0] == "tmpfs" or (key == "shm" and f[0] == "shm")) and num(f[1]):
             out[name] = round(int(f[1]) / 1024.0, 1)
     opts = (kv.get("rootfs") or "").split(",")
     if opts and opts[0]:

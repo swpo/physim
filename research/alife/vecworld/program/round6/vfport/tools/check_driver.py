@@ -20,6 +20,13 @@ with the exam image and feeds one script to the Python inside. There, as root:
   mount_*    a SECOND throwaway container, started with `--tmpfs /extra` (a mount a prepared box does not have; no
              host path is ever mounted by this tool): with every other layer present, the guard refuses, every
              function refuses, the canaries survive, and the driver on the grading route runs nothing (audit A4)
+  capped_*   (round 4, second pass, code audit K1) a THIRD container with the four memory file systems of a capped
+             box exactly as the runtime mounts them (physim2_env/boxcaps.py: TMPFS, with their sizes): the guard
+             accepts them; and a FOURTH whose /workspace is a tmpfs without the box's size: the guard refuses and
+             names it
+
+Every container gets a name of its own (physim2-drv-<mode>-<pid>) and the run label of VF_RUN_ID if it is set; it
+removes itself (--rm), and one that is still there after its call (a timeout) is removed by that exact name.
 
 usage: python tools/check_driver.py --out results/driver_container.json [--image physim2-ring:1]
 """
@@ -40,12 +47,26 @@ MODE = "MODE_PLACEHOLDER"
 import base64, importlib.util, json, os, shutil, signal, subprocess, sys, time
 assert os.path.exists("/.dockerenv") or "docker" in open("/proc/1/cgroup").read(), "this script is for a throwaway container only"
 ITEM, RUNNER = "/runtime/item.py", "/w/physim2/predict_runner.py"
-os.makedirs("/runtime"); os.makedirs("/w/physim2"); os.makedirs("/w/sub")
+os.makedirs("/runtime", exist_ok=True); os.makedirs("/w/physim2"); os.makedirs("/w/sub")
 open(ITEM, "wb").write(base64.b64decode(ITEM_B64)); open(RUNNER, "wb").write(base64.b64decode(RUNNER_B64))
 spec = importlib.util.spec_from_file_location("item", ITEM); item = importlib.util.module_from_spec(spec); spec.loader.exec_module(item)
 X, Y = 31001, 31002
 VAR, VAL = item.ROUTE_VAR, item.ROUTE_VALUE
 checks, ev = {}, {}
+if MODE in ("capped", "capped_nosize"):   # K1: only the guard's view of the mounts; nothing is killed or deleted in these two
+    os.makedirs("/etc/physim2", exist_ok=True)
+    open("/etc/physim2/predictor_uid", "w").write(str(X)); os.chmod("/etc/physim2/predictor_uid", 0o644)
+    os.environ[VAR] = VAL
+    g = item.box_guard(X)
+    foreign = item.foreign_mounts(item.box_mounts(), isfile=item._regular)
+    sizes = {m[0]: m[3] for m in item.box_mounts() if m[0] in item.BOX_TMPFS}
+    ev[MODE] = {"guard_ok": g["ok"], "why": g["why"], "foreign": foreign, "box_tmpfs_options": sizes}
+    if MODE == "capped":
+        checks["capped_guard_accepts_the_four_tmpfs_mounts_of_a_capped_box_with_their_sizes"] = g["ok"] is True and foreign == [] and len(sizes) == 4
+    else:
+        checks["capped_guard_refuses_a_workspace_tmpfs_without_the_box_size"] = g["ok"] is False and foreign == ["/workspace (tmpfs, not the box's size)"]
+    print("RESULT" + json.dumps({"checks": checks, "evidence": ev}))
+    sys.exit(0)
 
 
 def canary(uid):
@@ -273,19 +294,33 @@ def main():
     runner = open(os.path.join(agentenv_root(), "physim2", "predict_runner.py"), "rb").read()
     head = f"ITEM_B64 = {base64.b64encode(item).decode()!r}\nRUNNER_B64 = {base64.b64encode(runner).decode()!r}\n"
     res = {"checks": {}, "evidence": {}}
-    # two throwaway containers; neither gets a host path (-v / --mount are never used here), both are removed on exit
-    for mode, options in (("main", []), ("extra", ["--tmpfs", "/extra"])):
-        p = subprocess.run(["docker", "run", "--rm", "-i", "--network", "none", *options, a.image, "python3", "-B", "-"],
-                           input=head + INSIDE.replace("MODE_PLACEHOLDER", mode), capture_output=True, text=True, timeout=600)
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("boxcaps", os.path.join(a.package_root, "physim2_env", "boxcaps.py"))
+    BOXCAPS = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(BOXCAPS)                         # pure values (no import of the package)
+    capped = [x for path, opts in BOXCAPS.TMPFS for x in ("--tmpfs", f"{path}:{opts}")]
+    nosize = [x for path, opts in BOXCAPS.TMPFS for x in ("--tmpfs", f"{path}:{opts}" if path != "/workspace" else "/workspace:rw,exec,mode=755")]
+    label = ["--label", f"verifiers.run={os.environ['VF_RUN_ID']}"] if os.environ.get("VF_RUN_ID") else []
+    # four throwaway containers; none gets a host path (-v / --mount are never used here), each is removed on exit
+    for mode, options in (("main", []), ("extra", ["--tmpfs", "/extra"]), ("capped", capped), ("capped_nosize", nosize)):
+        name = f"physim2-drv-{mode.replace('_', '-')}-{os.getpid()}"
+        try:
+            p = subprocess.run(["docker", "run", "--rm", "-i", "--name", name, *label, "--network", "none", *options, a.image, "python3", "-B", "-"],
+                               input=head + INSIDE.replace("MODE_PLACEHOLDER", mode), capture_output=True, text=True, timeout=600)
+        finally:
+            left = subprocess.run(["docker", "ps", "-a", "--filter", f"name=^{name}$", "--format", "{{.Names}}"], capture_output=True, text=True, timeout=60)
+            if left.stdout.strip() == name:
+                subprocess.run(["docker", "rm", "-f", name], capture_output=True, text=True, timeout=60)
         line = next((ln for ln in p.stdout.splitlines() if ln.startswith("RESULT")), None)
         if line is None:
             raise SystemExit(f"the container ({mode}) gave no result:\n" + (p.stdout + p.stderr)[-2000:])
         got = json.loads(line[6:])
         res["checks"].update(got["checks"])
-        res["evidence"]["main" if mode == "main" else "container_with_tmpfs_extra"] = got["evidence"]
+        res["evidence"]["main" if mode == "main" else "container_with_tmpfs_extra" if mode == "extra" else f"container_{mode}"] = got["evidence"]
     res["evidence"] = dict(res["evidence"].pop("main"), **res["evidence"])
-    out = {"where": f"inside `docker run --rm --network none {a.image}` and a second one with `--tmpfs /extra` (nothing of this ran on the "
-                    "host; no host path was mounted)", "n_checks": len(res["checks"]),
+    out = {"where": f"inside `docker run --rm --network none {a.image}`, a second one with `--tmpfs /extra`, a third with the four tmpfs mounts of a "
+                    "capped box and a fourth whose /workspace tmpfs lacks the box's size (nothing of this ran on the host; no host path was mounted)",
+           "n_checks": len(res["checks"]),
            "n_passed": sum(v is True for v in res["checks"].values()), "failed": [k for k, v in res["checks"].items() if v is not True], **res}
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     json.dump(out, open(a.out, "w"), indent=1)
