@@ -1,0 +1,14 @@
+490	out/progress.txt
+16567	out/presmoke/train_info.json
+672	out/presmoke/worlds.json
+7020	out/presmoke/progress.txt
+2156	out/presmoke/info.json
+460	out/presmoke/shape_test.json
+7136	out/presmoke/w_info.json
+503762	out/full/train_info.json
+5037	out/full/worlds.json
+1120342	out/full/scores.npz
+266660	out/full/w_fits.npz
+11046	out/full/progress.txt
+4552	out/full/info.json
+123595	out/full/w_info.json

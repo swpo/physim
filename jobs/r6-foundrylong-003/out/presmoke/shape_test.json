@@ -1,0 +1,21 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "seconds_per_step_of_B_fits": 1.5211979813045926,
+ "B": 8,
+ "fit_calls": 16.0,
+ "w_steps": 143,
+ "projected_hours_total": 2.571373830964288,
+ "projected_rest_hours": 1.6045680028462581,
+ "hours_available": 2.6734360263082713,
+ "speed_ok": true,
+ "records": [
+  {
+   "steps": 10,
+   "B": 8,
+   "seconds": 33.25994300842285,
+   "first_s": 15.113386869430542,
+   "steady_s": 13.690781831741333,
+   "steady_steps": 9
+  }
+ ]
+}

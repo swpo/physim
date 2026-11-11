@@ -19,10 +19,20 @@
     "src_bytes": 47967490
   },
   "cap_usd": 8.1,
-  "cost": {
-    "billed_usd": null,
-    "conservative_usd": 3.7775
+  "collected": {
+    "error": null,
+    "files": 24,
+    "ok": true,
+    "skipped": 0,
+    "transfer_bytes": 1594546,
+    "truncated": false
   },
+  "cost": {
+    "billed_usd": 3.9154,
+    "conservative_usd": 4.0659
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-11T23:44:36Z",
   "guard_at": null,
   "guard_reason": null,
   "guard_terminated": null,
@@ -48,11 +58,21 @@
       "at": "2026-11-11T21:47:11Z",
       "message": "job started on the pod",
       "state": "running"
+    },
+    {
+      "at": "2026-11-11T23:44:06Z",
+      "message": "job done; collecting outputs",
+      "state": "collecting"
+    },
+    {
+      "at": "2026-11-11T23:44:37Z",
+      "message": "job finished (exit 0); pods terminated",
+      "state": "done"
     }
   ],
   "job_id": "r6-foundrylong-003",
   "max_estimate_usd": 6.77,
-  "message": "heartbeat",
+  "message": "job finished (exit 0); pods terminated",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -139,7 +159,7 @@
   },
   "pods": [
     {
-      "billed_usd": null,
+      "billed_usd": 3.9154,
       "created_at": "2026-11-11T21:41:57Z",
       "data_center": "asia-south-1",
       "gpu": "A100_40GB",
@@ -152,11 +172,11 @@
       "ready_at": "2026-11-11T21:46:25Z",
       "requested_at": "2026-11-11T21:41:40Z",
       "spot": false,
-      "state": "ready",
-      "terminated_at": null
+      "state": "terminated",
+      "terminated_at": "2026-11-11T23:44:16Z"
     }
   ],
-  "pods_terminated": null,
+  "pods_terminated": true,
   "review": {
     "at": "2026-11-11T21:38:19Z",
     "file": "jobs/r6-foundrylong-003/review.md",
@@ -166,7 +186,7 @@
   "run_deadline": "2026-11-12T00:56:11Z",
   "run_started_epoch": 1794433299.031221,
   "started_at": "2026-11-11T21:47:11Z",
-  "state": "running",
+  "state": "done",
   "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n_cv <ssh-target>|s1: N 32, cross-validation 95s; chosen steps (median per horizon) [225.0, 125.0, 100.0], rates [5e-05, 0.000125, 5e-05]\n23:13:52 [  82.7 min]   ft_cv <ssh-target>|s2: N 32, cross-validation 95s; chosen steps (median per horizon) [250.0, 200.0, 50.0], rates [5e-05, 5e-05, 0.000125]\n23:14:15 [  83.1 min] FT designed done (356s); skill by horizon (8, 16, 32): {'C16384': [0.681, 0.592, 0.51], '<ssh-target>': [0.356, 0.21, 0.029], '<ssh-target>': [0.497, 0.359, 0.251], '<ssh-target>': [0.496, 0.357, 0.251], '<ssh-target>': [0.579, 0.458, 0.337], '<ssh-target>': [0.581, 0.468, 0.362], 'Kp': [-0.147, -0.469, -0.886], 'P0w1000': [0.55, 0.433, 0.326], 'Wd': [0.49, 0.412, 0.34], 'Wm': [0.484, 0.401, 0.323], 'Wprior': [-0.481, -0.705, -1.005], 'Wtrue': [0.603, 0.524, 0.474], 'plugPrior': [-1.19, -2.017, -2.715], 'plugTrue': [1.0, 1.0, 1.001], 'plugU0': [0.912, 0.911, 0.919]}\n23:15:08 [  84.0 min] D designed done (53s); skill by horizon (8, 16, 32): {'C16384': [0.681, 0.592, 0.51], '<ssh-target>': [0.393, 0.251, 0.02], '<ssh-target>': [0.356, 0.21, 0.029], '<ssh-target>': [0.497, 0.359, 0.251], '<ssh-target>': [0.496, 0.357, 0.251], '<ssh-target>': [0.579, 0.458, 0.337], '<ssh-target>': [0.581, 0.468, 0.362], 'Kp': [-0.147, -0.469, -0.886], 'P0w1000': [0.55, 0.433, 0.326], 'Wd': [0.49, 0.412, 0.34], 'Wm': [0.484, 0.401, 0.323], 'Wprior': [-0.481, -0.705, -1.005], 'Wtrue': [0.603, 0.524, 0.474], 'plugPrior': [-1.19, -2.017, -2.715], 'plugTrue': [1.0, 1.0, 1.001], 'plugU0': [0.912, 0.911, 0.919]}\n23:15:31 [  84.4 min]   sim W+m 2048/65536\n23:17:49 [  86.6 min]   sim W+m 18432/65536\n23:20:05 [  88.9 min]   sim W+m 34816/65536\n23:22:22 [  91.2 min]   sim W+m 51200/65536\n23:25:52 [  94.7 min]   net W+m w0-7 step 4000/8000 train 0.2733 val(h) [[0.1182, 0.1967, 0.3336], [0.2212, 0.3001, 0.4488], [0.4689, 0.5815, 0.6607]] (79s)\n23:27:04 [  95.9 min]   net W+m w0-7 step 8000/8000 train 0.2625 val(h) [[0.1152, 0.1928, 0.3329], [0.2157, 0.2949, 0.4544], [0.4637, 0.5774, 0.6674]] (151s)\n23:28:24 [  97.2 min]   net W+m w8-15 step 4000/8000 train 0.1915 val(h) [[0.3014, 0.4138, 0.5709], [0.1055, 0.1726, 0.3421], [0.202, 0.2866, 0.4421]] (72s)\n23:29:37 [  98.4 min]   net W+m w8-15 step 8000/8000 train 0.1805 val(h) [[0.2953, 0.4083, 0.577], [0.1017, 0.1691, 0.3424], [0.1998, 0.2873, 0.4588]] (144s)\n23:29:38 [  98.5 min] W+ mix done (870s); skill by horizon (8, 16, 32): {'C16384': [0.681, 0.592, 0.51], '<ssh-target>': [0.393, 0.251, 0.02], '<ssh-target>': [0.356, 0.21, 0.029], '<ssh-target>': [0.497, 0.359, 0.251], '<ssh-target>': [0.496, 0.357, 0.251], '<ssh-target>': [0.579, 0.458, 0.337], '<ssh-target>': [0.581, 0.468, 0.362], 'Kp': [-0.147, -0.469, -0.886], 'P0w1000': [0.55, 0.433, 0.326], 'Wd': [0.49, 0.412, 0.34], 'Wm': [0.484, 0.401, 0.323], 'Wpm': [0.451, 0.321, 0.182], 'Wprior': [-0.481, -0.705, -1.005], 'Wtrue': [0.603, 0.524, 0.474], 'plugPrior': [-1.19, -2.017, -2.715], 'plugTrue': [1.0, 1.0, 1.001], 'plugU0': [0.912, 0.911, 0.919]}\n23:29:55 [  98.8 min]   sim W+d 2048/65536\n23:32:12 [ 101.0 min]   sim W+d 18432/65536\n23:34:29 [ 103.3 min]   sim W+d 34816/65536\n== out/progress.txt\nPILOT_NEVER_REUSE_AS_EXAM: the hidden worlds of this job are public pilot material\n21:47:19 [job_s2.sh] start, size full, max hours 2.9, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\nname, memory.total [MiB], driver_version\nNVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08\n21:51:07 [job_s2.sh] presmoke exit 0\n21:51:07 [job_s2.sh] W steps for the full pass (speed guard): 143\n21:51:07 [job_s2.sh] full pass: 2.837 h left of 2.9\n",
-  "updated_at": "2026-11-11T23:35:33Z"
+  "updated_at": "2026-11-11T23:44:37Z"
 }

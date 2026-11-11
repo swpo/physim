@@ -1,0 +1,108 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "size": "presmoke",
+ "finished": true,
+ "config": {
+  "burn": 300,
+  "n_hidden": 2,
+  "n_lab": 32,
+  "lab_chunk": 32,
+  "n_items": 96,
+  "R": 12,
+  "n_clim": 96,
+  "m": 24,
+  "m_plug": 8,
+  "N": 32,
+  "ft_lrs": [
+   5e-05,
+   0.0002
+  ],
+  "ft_smax": 100,
+  "ft_folds": 4,
+  "d_steps": 100,
+  "batch_lab": 64,
+  "n_seeds": 2,
+  "eval_small": 50,
+  "chunk_steps": 50,
+  "w_cands": 8,
+  "w_pre_E": 8,
+  "w_starts": 4,
+  "w_steps": 10,
+  "w_lr": [
+   0.03,
+   0.01
+  ],
+  "w_eb": 8,
+  "w_M": 4,
+  "w_A": 2,
+  "w_k": 16,
+  "w_pool": 16,
+  "w_respin": 50,
+  "w_pair": 2,
+  "w_eval_M": 4,
+  "w_eval_pool": 8,
+  "wp_n": 512,
+  "wp_steps": 100,
+  "wp_batch": 128,
+  "wp_lock": 8,
+  "eval_big": 50,
+  "shape_test": true
+ },
+ "platform": {
+  "jax": "0.12.0.1",
+  "numpy": "2.5.4",
+  "python": "3.12.16",
+  "backend": "gpu",
+  "devices": [
+   "cuda:0"
+  ]
+ },
+ "member_ticks_runner": 1425408,
+ "speed": {
+  "wm_fit": [
+   {
+    "steps": 10,
+    "B": 8,
+    "seconds": 33.25994300842285,
+    "first_s": 15.113386869430542,
+    "steady_s": 13.690781831741333,
+    "steady_steps": 9
+   }
+  ],
+  "wd_fit": [
+   {
+    "steps": 10,
+    "B": 8,
+    "seconds": 19.67609167098999,
+    "first_s": 2.575451135635376,
+    "steady_s": 13.696581602096558,
+    "steady_steps": 9
+   }
+  ]
+ },
+ "hours": 0.061422272390789456,
+ "failed": [],
+ "skipped": [],
+ "clock": {
+  "hidden_s": 28.121485948562622,
+  "stage-1 nets_s": 3.2991693019866943,
+  "wm_prescreen_s": 9.779387712478638,
+  "wm_fit_s": 43.21841788291931,
+  "w_predict_s": 32.06297993659973,
+  "W mix_s": 63.30172848701477,
+  "W references_s": 13.083565473556519,
+  "scores_s": 2.802058458328247,
+  "FT mix_s": 17.064804077148438,
+  "D mix_s": 2.519066095352173,
+  "wd_prescreen_s": 2.4093101024627686,
+  "wd_fit_s": 22.089319467544556,
+  "W designed_s": 35.34002208709717,
+  "FT designed_s": 6.822822570800781,
+  "D designed_s": 1.2301669120788574,
+  "wpm_sim_s": 22.982894897460938,
+  "W+ mix_s": 31.010849475860596,
+  "wpd_sim_s": 17.136875867843628,
+  "W+ designed_s": 18.347888469696045
+ },
+ "secret_commitment": "9a6528f298d784b2b9e84aaad08b65154e84ede67ae549b62aa0c570bb12d75d"
+}

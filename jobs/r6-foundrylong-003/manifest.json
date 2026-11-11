@@ -1,0 +1,160 @@
+{
+  "archive_sha256": "f2db931a48d2cd1543baaf8b378e542585549fec5770736e55f2a1d95cbcfeae",
+  "files": [
+    {
+      "bytes": 2688,
+      "in_git": true,
+      "path": "sysinfo.txt",
+      "sha256": "f3d6619c8bf04fa72b5cbe4c582515d00a3d1a8bdcfa7e7c6dfc692b972b7902"
+    },
+    {
+      "bytes": 0,
+      "in_git": true,
+      "path": "job.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 286,
+      "in_git": true,
+      "path": "setup.log",
+      "sha256": "4cbbd9e1fcba48ec46f9bc68068f7bd80a925d92e5145223b9e0d2f4a913b70c"
+    },
+    {
+      "bytes": 18221,
+      "in_git": true,
+      "path": "run.log",
+      "sha256": "dff6ba991cd3eaf95a7438b38d5fe1f9c8b4c67cdada3b63f1194af2c3bd9a47"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "setup.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2,
+      "in_git": true,
+      "path": "exit.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "setup.start",
+      "sha256": "58f68227269509a0d7ac279dc7942223d56db503efaa59c727481734b3b53f5d"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.start",
+      "sha256": "cea373da9c4013107e5bb5f0c131b0b1128549f27ec1817b563c4c37957a82f3"
+    },
+    {
+      "bytes": 11,
+      "in_git": true,
+      "path": "run.end",
+      "sha256": "f986a0f6ddb232743b0322df39a243d1b0c06a6e49fd42c2cceb1a5bebc98191"
+    },
+    {
+      "bytes": 400,
+      "in_git": true,
+      "path": "out-listing.tsv",
+      "sha256": "d8368af773964f12df50cdf0c3bf5516b28bb2ba3fdd0c225dfbfcf330bd7417"
+    },
+    {
+      "bytes": 490,
+      "in_git": true,
+      "path": "out/progress.txt",
+      "sha256": "f78ce2a6fd7a28d973fd0370d6e8f0dbb79c56af138aab9020fc6eb24d1b0411"
+    },
+    {
+      "bytes": 16567,
+      "in_git": true,
+      "path": "out/presmoke/train_info.json",
+      "sha256": "222af89dc78460378da0f2c7d4dd910fb406e4d0bc7c8ea92454f704129c7228"
+    },
+    {
+      "bytes": 672,
+      "in_git": true,
+      "path": "out/presmoke/worlds.json",
+      "sha256": "1c9b6570425219dc0bc9105454cf14eef3fd97487f7ca2048081ffc5536ffe1d"
+    },
+    {
+      "bytes": 7020,
+      "in_git": true,
+      "path": "out/presmoke/progress.txt",
+      "sha256": "16bb23d297b8b9be23d5e3c1db85f2cd51f9ee0bd66b414e5f85357a6aa5cb93"
+    },
+    {
+      "bytes": 2156,
+      "in_git": true,
+      "path": "out/presmoke/info.json",
+      "sha256": "3d0bfb5242508945bd647446265a391eb74b991c48f4246bac948bc9848fbe51"
+    },
+    {
+      "bytes": 460,
+      "in_git": true,
+      "path": "out/presmoke/shape_test.json",
+      "sha256": "424c2704b6bd513211b404c9a7090e4b1a9b3e1bbd7c92895b205b5d19b2d347"
+    },
+    {
+      "bytes": 7136,
+      "in_git": true,
+      "path": "out/presmoke/w_info.json",
+      "sha256": "32664c75003a3e462da2799f11ef77ef8209557a94c7dc86d3359d549b429672"
+    },
+    {
+      "bytes": 503762,
+      "in_git": true,
+      "path": "out/full/train_info.json",
+      "sha256": "597e5531940b8fc2bcf09ffb78be0806e257cf61c4c12d17d30944e6258cd4de"
+    },
+    {
+      "bytes": 5037,
+      "in_git": true,
+      "path": "out/full/worlds.json",
+      "sha256": "27e5b68690cf227480039ceea19e864b4a39d187b6970525f32df9353322ab41"
+    },
+    {
+      "bytes": 1120342,
+      "in_git": true,
+      "path": "out/full/scores.npz",
+      "sha256": "b4ce15b2b30110c6bca9cc895b11695b295e8c5c749dab110b139f9d271add01"
+    },
+    {
+      "bytes": 266660,
+      "in_git": true,
+      "path": "out/full/w_fits.npz",
+      "sha256": "07a8902ae42a823f72b43b968a161cdeac659f0329ec1ab56a2dbcc7efd8dac6"
+    },
+    {
+      "bytes": 11046,
+      "in_git": true,
+      "path": "out/full/progress.txt",
+      "sha256": "312174f585e9539f861842068d915ce51eedae17860e6f27527b27559d798f08"
+    },
+    {
+      "bytes": 4552,
+      "in_git": true,
+      "path": "out/full/info.json",
+      "sha256": "3d7f7192b34619e4b2e7c04f0a11b12cbe78b2389f64a721cafd39a40d426c00"
+    },
+    {
+      "bytes": 123595,
+      "in_git": true,
+      "path": "out/full/w_info.json",
+      "sha256": "a2dc6b44c6e90f367a153344e7ceaabc555a4aa498beded9f89bab9f0aacbcd6"
+    }
+  ],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r6-foundrylong-003/collected/; ask for them by path. A file whose name differs from another's only by case or Unicode normalization (one file on the Mac) is kept under collected/<stored_as> instead.",
+  "skipped": [],
+  "skipped_count": 0,
+  "transfer_bytes": 1594546,
+  "transfer_stopped": null,
+  "truncated": false
+}
