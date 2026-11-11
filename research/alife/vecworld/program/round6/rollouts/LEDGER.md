@@ -12,9 +12,9 @@ Prices: Prime's Models API, `GET https://api.pinference.ai/api/v1/models`, field
 | 0 | preflight ping for qwen_ring_001 (one request, `tools/ping_model.py`) | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | 16 output tokens | done 10:59 UTC, HTTP 200 | 258 | 2 | $0.00003 (the provider's own `cost` field said 0) | $0.00003 |
 | 1 | qwen_ring_001 | qwen/qwen3.6-35b-a3b | 0.11 / 1.01 / 0.099 | $1.22 (see below) | ENDED 11:12 UTC, complete (40 model calls, stop condition `max_turns`, graded) | 758,132 billed (101,524 at the input price + 656,608 cache reads); the caps saw 18,759 | 18,888 | $0.1025 (all input at the full price; $0.0952 with the cache-read price; the provider's own `cost` fields sum to $0.0951) | $0.1025 |
 | 2 | preflight ping for astra_ring_001 (two streamed requests with tools, as the bash harness sends them: `tools/ping_stream.py`) | openai/gpt-6-astra | 10 / 50 / none listed | 2 x 2,048 output tokens ($0.21) | done 11:47 UTC, both answered, usage in the stream | 396 (182 + 214; 0 cached) | 24 (19 + 5; 0 reasoning) | $0.0052 (the provider's own `cost` fields: 0.0028 + 0.0024; the listed price gives the same) | $0.1077 |
-| 3 | astra_ring_001 | openai/gpt-6-astra | 10 / 50 / none listed | $19.02 (22 turns, 70,000 total tokens, 16,384 per reply; see "Row 3" below) | NOT STARTED YET (row written before the start) | | | | |
+| 3 | astra_ring_001 | openai/gpt-6-astra | 10 / 50 / none listed | $19.02 (22 turns, 70,000 total tokens, 16,384 per reply; see "Row 3" below) | ENDED 12:09 UTC, complete (14 model calls, stop condition `frozen` after an accepted submit, graded) | 193,826 billed (21,636 uncached + 172,190 cache reads); the caps saw 10,135 | 10,782 (5,242 of them reasoning) | $2.4774 (all input at the listed $10; the provider's own `cost` fields sum to $1.0188, so cache reads are billed below the listed input price, at a rate the Models API does not list) | $2.5851 |
 
-Total spent by this workflow so far: **$0.11** of the $40 ceiling (row 3 not started).
+Total spent by this workflow so far: **$2.59** of the $40 ceiling by the listed prices ($0.1025 + $0.0052 + $2.4774, with the $0.00003 ping); **$1.12** by the provider's own cost fields ($0.0951 + $0.0052 + $1.0188).
 
 Scripted, model-free runs (the reference table, the dry run) cost $0 and are not listed.
 

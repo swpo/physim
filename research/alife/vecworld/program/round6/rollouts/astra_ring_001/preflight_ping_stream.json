@@ -1,0 +1,80 @@
+{
+ "model": "openai/gpt-6-astra",
+ "base_url": "https://api.pinference.ai/api/v1",
+ "unix": 1794397596.2048273,
+ "max_tokens_per_reply": 2048,
+ "as_the_harness_sends_it": "chat.completions, stream=true, stream_options.include_usage=true, tools=[bash, edit]",
+ "environment_names": [
+  "HOME",
+  "LC_CTYPE",
+  "PATH",
+  "PRIME_API_KEY",
+  "PRIME_TEAM_ID",
+  "SSL_CERT_FILE"
+ ],
+ "request_1": {
+  "n_messages_sent": 2,
+  "ok": true,
+  "seconds": 5.72,
+  "finish_reason": "tool_calls",
+  "usage": {
+   "completion_tokens": 19,
+   "prompt_tokens": 182,
+   "total_tokens": 201,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cache_write_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost": 0.0028
+  },
+  "message_fields": [
+   "role",
+   "tool_calls"
+  ],
+  "content_characters": 0,
+  "tool_calls": [
+   {
+    "name": "bash",
+    "arguments_characters": 21
+   }
+  ],
+  "reasoning_fields": {}
+ },
+ "request_2": {
+  "n_messages_sent": 4,
+  "ok": true,
+  "seconds": 1.29,
+  "finish_reason": "stop",
+  "usage": {
+   "completion_tokens": 5,
+   "prompt_tokens": 214,
+   "total_tokens": 219,
+   "completion_tokens_details": {
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "image_tokens": 0
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cache_write_tokens": 0,
+    "cached_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost": 0.0024
+  },
+  "message_fields": [
+   "content",
+   "role"
+  ],
+  "content_characters": 4,
+  "tool_calls": [],
+  "reasoning_fields": {}
+ }
+}

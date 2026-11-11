@@ -231,3 +231,18 @@ State (newest last; times UTC as this container's clock shows them):
   from the agent's box and the verifier's box and of /workspace from the agent's box; no exec in a box, no
   signal, no reading of the model's text). If this container restarts before an ENDED entry follows, the
   rollout was cut: record it as cut with what the provider billed, and do not reuse the instance.
+
+- 12:09 ROLLOUT astra_ring_001 ENDED: `EXIT 0`, 16 min 4 s after the start (11:53:51 to 12:09:55). Complete,
+  graded, not cut. 14 model calls in 359 s of the agent phase, stop condition **`frozen`**: the agent validated
+  and submitted through the `lab_call` tool, the submit was accepted, the task's stop hook ended the rollout
+  (the first time that hook fired for a model). Laboratory: 210 episodes (10 of 20 observations, then 200 bare
+  resets), 400 of 400 ticks, 0 nats, 215 requests, 0 rejected, 1 validation, 1 submission, 0 infrastructure
+  errors. Grading: the frozen `submission/` (predict.py and posterior.npz, 417,993 bytes) passed the three
+  example calls in the verifier box and ran in 64 item boxes (0 failed items, 4.8 CPU-seconds per item, 8.6 s
+  per box, 568 s in all). **Reward (skill on the K-to-O scale): 0.964** (bootstrap se 0.010 over the 64 items of
+  this one instance), above C 0.888 and S 0.883; P0 0.791, PM 0.787, D 0.037, null -0.043.
+  Billed: 193,826 input tokens (172,190 of them cache reads) and 10,782 output tokens (5,242 reasoning):
+  **$2.48** at the listed prices ($1.02 by the provider's own cost fields); the caps saw 20,917 of 70,000 tokens
+  and 14 of 22 turns, so neither told limit was reached. No credential, no account identifier and no hidden
+  value in what is committed (`tools/scan_key.py`: 62 files, 0 and 0; the port's report tool: 0 hidden values
+  in the run folder).

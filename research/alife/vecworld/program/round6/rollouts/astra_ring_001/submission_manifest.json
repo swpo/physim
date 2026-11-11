@@ -1,0 +1,46 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "source": "verifier box (the frozen copy that was graded)",
+ "container": "vf-c28762ddbf844f9da663d14515d39048",
+ "tar_bytes": 420864,
+ "copied_unix": 1794398977.1581202,
+ "files": [
+  {
+   "path": "posterior.npz",
+   "bytes": 413500,
+   "sha256": "0c4b237bc989cf6b06d7865c65fca03ae9cbeb4467ad1878ed7652c2573dd46a"
+  },
+  {
+   "path": "predict.py",
+   "bytes": 4493,
+   "sha256": "6614794b1f88ef560e8c6f406339686c9524553df3888b01cf0b76f86f8f1f86"
+  }
+ ],
+ "skipped": [],
+ "bytes": 417993,
+ "frozen_manifest_of_the_laboratory": {
+  "files": 2,
+  "bytes": 417993,
+  "sha256": "699ef6848c216f934085bd468dc2ca023fe8254eb6b058bf100faffd14be5b0f",
+  "usage": {
+   "ticks_used": 400,
+   "max_ticks": 400,
+   "resets": 210,
+   "episode_nats": 0.0,
+   "total_nats": 0.0,
+   "episode_left": 8.0,
+   "total_left": null,
+   "episodes": 210,
+   "commands": 0
+  },
+  "time": 1794398420.0659904
+ },
+ "collection_recorded_in_the_trace": {
+  "source": "agent_submission",
+  "ok": true,
+  "error": null,
+  "files": 2,
+  "bytes": 417993,
+  "sha256": "699ef6848c216f934085bd468dc2ca023fe8254eb6b058bf100faffd14be5b0f"
+ }
+}

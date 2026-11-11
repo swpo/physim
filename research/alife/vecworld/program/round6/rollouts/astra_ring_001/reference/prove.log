@@ -1,0 +1,10 @@
+{"instance_id": "pilot-astra-ring-001-w0", "secret_commitment": "58488c5f9354675cd595e0ace9b0375c5361a6eafb5454a7f36194ee9028f4bf", "n_items": 64, "R": 16, "seconds": 8.7}
+S: [0.883] (98s)
+D: [0.037] (174s)
+P0: [0.791] (257s)
+PM: [0.787] (335s)
+C: [0.888] (415s)
+null: [-0.043] (496s)
+{"O": 1.1264, "K": 0.0, "S": 0.9946, "D": 0.0415, "P0": 0.8905, "PM": 0.8862, "C": 1.0, "null": -0.0487}
+{"sigma": 0.10954971511429468, "null_is": "P0", "rho": 0.9510692871542329, "sigma_worlds": null, "rho_worlds": null}
+EXIT 0

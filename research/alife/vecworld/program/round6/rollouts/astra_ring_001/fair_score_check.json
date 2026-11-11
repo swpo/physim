@@ -1,0 +1,73 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "what": "the runner's own check after rollout astra_ring_001 (no code of the model, no exam data): the evaluator's own scoring functions (vw.scoring.energy_fair for a 32-member ensemble, energy_loo for the oracle) on a made-up truth N(0, I_d) with R = 16 replicate truths per item and 4000 items. Ensembles drawn FROM THE TRUE LAW: independent draws, 16 antithetic pairs, 32 scrambled Sobol points through the normal quantile function. Each entry: [mean, standard error]; the *_minus_oracle entries: [mean paired difference, its standard error, the difference as a share of the oracle's score].",
+ "reading": "independent draws from the truth score as the leave-one-out oracle does (the fair estimator is unbiased for them); negatively dependent draws from the same law score 1.3 % (antithetic) to 2.1-2.4 % (Sobol) BELOW the oracle. The oracle row O is therefore not a ceiling for a submission that chooses its 32 samples jointly.",
+ "results": {
+  "d=3": {
+   "oracle_loo": [
+    0.6502607891118537,
+    0.0010879956911428795
+   ],
+   "iid": [
+    0.6507603772613568,
+    0.0011038517818629339
+   ],
+   "antithetic": [
+    0.6416721619212888,
+    0.0010607628923624212
+   ],
+   "sobol": [
+    0.6343416978422256,
+    0.001051985897432891
+   ],
+   "iid_minus_oracle": [
+    0.000499588149502976,
+    0.0004254714422415208,
+    0.0007682889048028391
+   ],
+   "antithetic_minus_oracle": [
+    -0.008588627190564888,
+    0.0003079705891962762,
+    -0.013207973376797794
+   ],
+   "sobol_minus_oracle": [
+    -0.01591909126962822,
+    0.0002923253745109803,
+    -0.024481087490099175
+   ]
+  },
+  "d=6": {
+   "oracle_loo": [
+    0.6767578960593182,
+    0.0008065684209847838
+   ],
+   "iid": [
+    0.677133343602938,
+    0.0008110120429062914
+   ],
+   "antithetic": [
+    0.6679455818463857,
+    0.0007819989897618439
+   ],
+   "sobol": [
+    0.6625701148153855,
+    0.0007775523994031048
+   ],
+   "iid_minus_oracle": [
+    0.0003754475436197782,
+    0.00030913947658105267,
+    0.0005547737910498942
+   ],
+   "antithetic_minus_oracle": [
+    -0.008812314212932553,
+    0.00021321469037880906,
+    -0.013021368888705436
+   ],
+   "sobol_minus_oracle": [
+    -0.014187781243932667,
+    0.00020698981491273018,
+    -0.020964337950907484
+   ]
+  }
+ }
+}

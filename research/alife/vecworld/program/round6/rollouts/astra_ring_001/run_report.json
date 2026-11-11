@@ -1,0 +1,101 @@
+{
+ "traces_file": true,
+ "episodes": 1,
+ "rollouts": [
+  {
+   "instance_id": "pilot-astra-ring-001-w0",
+   "1_ok": true,
+   "1_reward_present": true,
+   "1_reward_skill_vs_O": 0.9644672859725923,
+   "1_trace_errors": [],
+   "1_episode_errors": [],
+   "2_network_restricted": true,
+   "2_verifier_box_network_restricted": true,
+   "2_single_use": true,
+   "2_item_isolation": "box",
+   "3_lab": {
+    "ticks_used": 400,
+    "resets": 210,
+    "requests": 215,
+    "rejected": 0,
+    "validations": 1,
+    "submissions": 1,
+    "infrastructure_errors": 0
+   },
+   "3_lab_submitted": true,
+   "3_tool_calls_by_name": {
+    "bash": 10,
+    "edit": 2,
+    "lab_call": 2
+   },
+   "4_submission_source": "agent_submission",
+   "4_submission_ok": true,
+   "4_submission_files": 2,
+   "4_submission_bytes": 417993,
+   "4_submission_sha256": "699ef6848c216f934085bd468dc2ca023fe8254eb6b058bf100faffd14be5b0f",
+   "4_submission_error": null,
+   "4_stop_condition": "frozen",
+   "4_trace_stop_condition": "frozen",
+   "5_validation_ok": true,
+   "5_n_items": 64,
+   "5_n_failed": 0,
+   "5_layers": {
+    "rlimits": true,
+    "uid": 56849,
+    "cleanup": true
+   },
+   "5_isolation": "box",
+   "5_item_boxes": 64,
+   "5_item_box_wall_s_mean": 8.591243539005518,
+   "5_infrastructure_failed_items": 0,
+   "5_skill_vs_O": 0.9644672859725923,
+   "5_reason": null,
+   "5_grading_error": null,
+   "5_marked_not_an_exam": false,
+   "5_between_item_state_marked": false,
+   "5_predictor_uid": 56849,
+   "5_container_evidence_count": 2,
+   "6_task_row_keys": [
+    "artifact_max_bytes",
+    "artifacts",
+    "config_name",
+    "id",
+    "idx",
+    "image",
+    "instance_id",
+    "name",
+    "network_allow",
+    "network_block",
+    "prompt",
+    "resources",
+    "secret_commitment",
+    "skills",
+    "system_prompt",
+    "timeout",
+    "workdir",
+    "world"
+   ],
+   "6_commitment_is_64_hex": true,
+   "7_num_input_tokens": 10135,
+   "7_num_output_tokens": 10782,
+   "7_wall_s": {
+    "boot": 1.2253620624542236,
+    "setup": 18.066890239715576,
+    "agent": 359.4747841358185,
+    "finalize": 0.093505859375
+   },
+   "7_verifier_wall_s": 567.6588680744171,
+   "6_hidden_values_in_the_run_folder": {
+    "files_scanned": 4,
+    "needles": 4,
+    "hits": {
+     "secret": 0,
+     "hidden_parameter_1": 0,
+     "hidden_parameter_2": 0,
+     "hidden_parameter_3": 0
+    },
+    "total_hits": 0
+   }
+  }
+ ]
+}

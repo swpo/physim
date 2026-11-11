@@ -456,9 +456,11 @@ def main():
         "envelope_told_to_the_agent_vs_box": {
             "task_row_resources": ((tr.get("task") or {}).get("data") or {}).get("resources"),
             "task_row_timeout": ((tr.get("task") or {}).get("data") or {}).get("timeout"),
+            "system_prompt_added_by_the_config": ((tr.get("task") or {}).get("data") or {}).get("system_prompt"),
             "note": "TASK.md states the compute envelope of the exam config (the task row's resources and the agent timeout); the box "
-                    "itself had the cpu and memory of `box` above when the config set them, and the agent is told nothing about "
-                    "max_turns or the token caps"},
+                    "itself had the cpu and memory of `box` above when the config set them. About max_turns and the token caps the "
+                    "agent is told what `system_prompt_added_by_the_config` says (a taskset-level field, appended by the bash "
+                    "harness to its own system line), and nothing if that is null (rollout qwen_ring_001)"},
         "lab_process": (lab.get("process") or None) if lab.get("found") else None,
         "table_one_instance": None if table is None else {
             "what": "evaluator.grader.table on this one instance: L = mean energy score over the 64 items (sum over valid cells); "

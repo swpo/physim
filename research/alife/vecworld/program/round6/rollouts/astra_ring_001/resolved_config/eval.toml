@@ -1,0 +1,85 @@
+# Rollout astra_ring_001: ONE rollout of a strong model (openai/gpt-6-astra) on the ring smoke exam with verifiers'
+# stock `bash` harness, in the cloud container. The first rollout of a strong model on a v2 exam.
+# PILOT_NEVER_REUSE_AS_EXAM.
+# A copy of ../../vfport/configs/qwen_ring_bash.toml (pinned, unchanged there). The exam, the task statement
+# (TASK.md and the first message) and the harness are those of rollout qwen_ring_001. Differences:
+#   model      qwen/qwen3.5-35b-a3b -> openai/gpt-6-astra (listed by Prime's Models API on 11 Nov 2026 at $10 in /
+#              $50 out per million tokens, no cache-read price given, context window 1,050,000 tokens, reasoning
+#              mandatory with default effort "medium"; nothing about reasoning is set here)
+#   image      physim2-ring:1 -> physim2-ring-ca:1 (the same image plus this machine's CA bundle:
+#              ../docker/Dockerfile.ring-ca; as in qwen_ring_001)
+#   instances  mac-ring-w0 -> pilot-astra-ring-001-w0 (a fresh pilot instance, made for this rollout)
+#   runtime    cpu = 2, memory = 4 (every box of the rollout: agent box, verifier box, item boxes; as in
+#              qwen_ring_001)
+#   THE CAPS (coordinator's rulings of 11:42 UTC, 11 Nov 2026: no hidden cut, the bill bounded by turns x
+#   context at $20 or less, the limits told to the agent if a config field allows it):
+#     max_turns          40 -> 22
+#     max_total_tokens   1,500,000 -> 70,000
+#     max_output_tokens  60,000 -> 70,000 (so that it cannot end the run before the total; it is no part of
+#                        the bound, which already has all completions under the total)
+#     sampling.max_tokens 8,192 -> 16,384 (for this model one reply = reasoning + answer together; a reply cut
+#                        inside a tool call's arguments or inside its reasoning is a failure of ours)
+#   system_prompt  NEW: one sentence, appended by the bash harness to its own system line, that tells the agent
+#              the two limits that can end its run (astra_ring_001.system_prompt.txt next to this file). A field
+#              of every verifiers taskset config; the pinned tree is not touched. The path is relative to the
+#              folder tools/vfrun.py starts vf-eval in (the port's folder).
+# Unchanged: push = false, one hour, no retries anywhere, single_use = true, item_isolation = "box".
+#
+# Why the turn cap went DOWN. The lead's rule: a rollout whose caps allow more than $20 is not started. The bill
+# of a chat rollout is (context of each call) summed over the calls. verifiers refuses a turn when the trace's
+# num_total_tokens has reached max_total_tokens, and after every call num_total_tokens >= that call's prompt +
+# completion tokens (trace.py: a call's new input is its prompt beyond the previous call's prompt + completion,
+# clamped at zero). So every call but the last has prompt + completion under M = max_total_tokens; the last may
+# exceed it by the tool results of one reply (each cut at 20,000 bytes by the harness) and one reply of R tokens.
+# With T turns, $10 in and $50 out per million tokens:
+#   bill <= (10 T + 40) x M / 1e6  +  50 x R / 1e6  +  10 x D / 1e6     (D: tokens of tool output of the last reply)
+# so T and M share one budget of about 1.8 million token-turns: 150 turns would leave 12,000 tokens (the task
+# statement alone is 3,400), 40 turns 43,000 (rollout qwen_ring_001 used 37,647 in 40 turns without any
+# reasoning tokens and had not finished), 22 turns 70,000. The largest turn cap is taken that still leaves the
+# conversation of a complete attempt by a reasoning model (about 3,000 tokens per turn):
+#   T = 22, M = 70,000, R = 16,384:  $18.20 + $0.82 = $19.02, plus $0.01 per 1,000 tokens of D: under $20 unless
+#   the last reply returns more than 98,000 tokens of tool output (at least 10 results at the 20,000-byte limit).
+# Started only by the command recorded in ../PROGRESS.md (through ../tools/here.py and the pinned tools/vfrun.py).
+model = "openai/gpt-6-astra"
+num_rollouts = 1
+max_concurrent = 1
+push = false
+
+[sampling]
+max_tokens = 16384
+
+[env]
+id = "isolated-verifier"
+
+[env.taskset]
+id = "physim2-env"
+image = "physim2-ring-ca:1"
+instances = ["pilot-astra-ring-001-w0"]
+system_prompt = "../rollouts/configs/astra_ring_001.system_prompt.txt"
+
+[env.agent]
+max_turns = 22
+max_total_tokens = 70000
+max_output_tokens = 70000
+
+[env.agent.timeout]
+rollout = 3600                   # the ring config's envelope: one hour
+
+[env.agent.runtime]
+type = "docker"
+cpu = 2
+memory = 4                       # GB
+
+[env.agent.harness]
+id = "bash"
+edit = true
+search = false
+
+[env.agent.retries]
+max_retries = 0                  # a rerun would hand the agent a fresh laboratory budget
+
+[env.retries]
+max_retries = 0
+
+[env.verifier]
+retries = 0
