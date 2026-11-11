@@ -40,6 +40,7 @@ T_LIMIT = float(os.environ.get("CARDS_T_LIMIT_S", 6000))
 REQUIRE_GPU = os.environ.get("CARDS_REQUIRE_GPU", "0") == "1"
 ONLY = [s for s in os.environ.get("CARDS_ONLY", "").split(",") if s]          # world names (tests)
 MAX_PRIORITY = int(os.environ.get("CARDS_MAX_PRIORITY", 9))
+RUNS = [s for s in os.environ.get("CARDS_RUNS", "").split(",") if s]          # run names (tests, CPU checks)
 os.makedirs(os.path.join(OUT, "cards"), exist_ok=True)
 os.makedirs(os.path.join(OUT, "series"), exist_ok=True)
 
@@ -48,7 +49,7 @@ if TINY:
                   arms=(("aimed", 200.0), ("blind", 200.0)), R_u=2, HB=32, n_boot=20)
 else:
     SZ = CL.Sizes()
-W = json.load(open(os.path.join(HERE, "worlds.json")))
+W = json.load(open(os.path.join(HERE, os.environ.get("CARDS_WORLDS", "worlds.json"))))
 STATE = dict(size=SIZE, t_start=T_START, done=[], failed=[], skipped=[], presmoke=None, timing={}, errors=[],
              sizes=dict(M=SZ.M, M_fit=SZ.M_fit, T=SZ.T, NS=SZ.NS, R=SZ.R, R2=SZ.R2, n_dir=SZ.n_dir, eps=list(SZ.eps),
                         arms=[list(a) for a in SZ.arms], R_u=SZ.R_u, HB=SZ.HB, Bb=SZ.Bb))
@@ -74,6 +75,11 @@ def save_state():
 
 def group_of(w):
     """Worlds of one group share one compiled program."""
+    g = _group_of(w)
+    return g + (f"_s{w['stride']}" if w.get("stride", 1) > 1 else "")
+
+
+def _group_of(w):
     k = w["kind"]
     if k in ("foundry", "diffusion"):
         return f"foundry{w.get('H', 64)}"
@@ -90,6 +96,13 @@ def tiny_kw(kind):
 
 
 def adapter_of(w):
+    ad = _adapter_of(w)
+    if w.get("stride", 1) > 1:
+        ad = AD.strided(ad, w["stride"], w["name"])
+    return ad
+
+
+def _adapter_of(w):
     k = w["kind"]
     if k == "foundry":
         return AD.foundry(AD.foundry_theta(W["prior_seed"], w["draw"]), index=w["draw"], H=w.get("H", 64), name=w["name"])
@@ -177,9 +190,9 @@ def main():
                 seen.add(group_of(w))
                 keep.append(w)
         worlds = keep
-    tasks = [(w, r) for w in worlds for r in w["runs"]]
+    tasks = [(w, r) for w in worlds for r in w["runs"] if not RUNS or r in RUNS]
     if TINY:                                      # the slow worlds on a CPU: run A only (B and late run elsewhere)
-        tasks = [(w, r) for w, r in tasks if r == "A" or group_of(w) not in ("gliders", "vortex128")]
+        tasks = [(w, r) for w, r in tasks if r == "A" or _group_of(w) not in ("gliders", "vortex128")]
     # presmoke: the first run of every program group
     first, seen = [], set()
     for w, r in tasks:

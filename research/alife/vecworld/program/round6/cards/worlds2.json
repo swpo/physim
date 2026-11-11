@@ -1,0 +1,46 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "prior_seed": 2026,
+ "run_seeds": {
+  "A": 6001,
+  "B": 6002,
+  "late": 6001
+ },
+ "worlds": [
+  {
+   "name": "membrane_s4",
+   "kind": "membrane",
+   "stride": 4,
+   "role": "designed",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "vortex64_s4",
+   "kind": "vortex",
+   "H": 64,
+   "stride": 4,
+   "role": "designed",
+   "runs": [
+    "A",
+    "B",
+    "late"
+   ],
+   "priority": 1
+  },
+  {
+   "name": "gliders_s4",
+   "kind": "gliders",
+   "stride": 4,
+   "role": "designed",
+   "runs": [
+    "A"
+   ],
+   "priority": 2
+  }
+ ]
+}

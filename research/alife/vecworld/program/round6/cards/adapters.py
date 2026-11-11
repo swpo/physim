@@ -346,5 +346,22 @@ def free_bodies() -> CL.Adapter:
                   views="as the foundry, on the rendered field"))
 
 
+def strided(ad: CL.Adapter, n: int, name: str = None) -> CL.Adapter:
+    """The same world on a slower clock: one card tick = n world ticks (the world's own noise at every world tick,
+    Noise.substep(n, i); an input is held over the n world ticks, so a card tick of input u costs n |u|^2 /
+    (2 sigma_u^2) nats, written as sigma_u / sqrt(n)). Burn-in and the late gap keep their length in world time."""
+    n = int(n)
+
+    def tick(th, x, nz, u):
+        def body(xx, i):
+            return ad.tick(th, xx, nz.substep(n, i), u), None
+        x, _ = jax.lax.scan(body, x, jnp.arange(n))
+        return x
+    return dataclasses.replace(ad, name=name or f"{ad.name}_s{n}", tick=tick, sigma_u=ad.sigma_u / np.sqrt(n),
+                               burn=int(np.ceil(ad.burn / n)), late_gap=int(np.ceil(ad.late_gap / n)),
+                               meta=dict(ad.meta, stride=n, substeps_per_tick=ad.meta.get("substeps_per_tick", 1) * n,
+                                         input=str(ad.meta.get("input")) + f", held over {n} world ticks"))
+
+
 def with_theta(ad: CL.Adapter, theta, name: str, **kw) -> CL.Adapter:
     return dataclasses.replace(ad, theta0=_np(theta), name=name, **kw)

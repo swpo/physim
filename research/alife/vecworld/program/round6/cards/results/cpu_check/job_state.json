@@ -1,0 +1,59 @@
+{
+ "size": "full",
+ "t_start": 1794397846.3421426,
+ "done": [
+  "foundry_04470__A"
+ ],
+ "failed": [],
+ "skipped": [],
+ "presmoke": "passed",
+ "timing": {
+  "foundry_04470__A": {
+   "main_s": 103.83035826683044,
+   "branch_s": 347.77554726600647,
+   "burn": 50,
+   "main_member_ticks": 7200,
+   "branch_member_ticks": 30720,
+   "first_call_of_program": true,
+   "analyse_s": 4.367607593536377
+  }
+ },
+ "errors": [],
+ "sizes": {
+  "M": 16,
+  "M_fit": 8,
+  "T": 400,
+  "NS": 32,
+  "R": 6,
+  "R2": 2,
+  "n_dir": 2,
+  "eps": [
+   0.03,
+   0.1,
+   1.0
+  ],
+  "arms": [
+   [
+    "aimed",
+    200.0
+   ],
+   [
+    "blind",
+    200.0
+   ],
+   [
+    "aimed",
+    50.0
+   ],
+   [
+    "aimed",
+    800.0
+   ]
+  ],
+  "R_u": 2,
+  "HB": 32,
+  "Bb": 30
+ },
+ "presmoke_s": 456.96816539764404,
+ "elapsed_s": 457.62393379211426
+}

@@ -122,6 +122,11 @@ def derive(card: dict) -> dict:
             d[f"{L}.act_ms"] = _at(a["aimed_200"]["MS_over_vorc_med"], hz, 4)
             d[f"{L}.act_ms_mean"] = _at(a["aimed_200"]["MS_over_vorc"], hz, 4)
             d[f"{L}.act_D_floor"] = _at(a["aimed_200"]["D_over_floor"], hz, 4)
+            # added after the first full-size card (a descriptor, no gate): the same shift in units of the cheap
+            # family's error, i.e. what an input-blind recipe loses relative to what it already gets wrong
+            vch = min(_at(lv["v_pred_med"], hz, 4), _at(lv["v_pers_med"], hz, 4), _at(lv["v_clim_med"], hz, 4))
+            d[f"{L}.act_ms_over_vcheap"] = _at(a["aimed_200"]["MS_med"], hz, 4) / max(vch, 1e-12)
+            d[f"{L}.act_ms_var"] = _at(a["aimed_200"]["MS_med"], hz, 4)
             if "blind_200" in a:
                 d[f"{L}.aim_ratio"] = _at(a["aimed_200"]["D_med"], hz, 4) / max(_at(a["blind_200"]["D_med"], hz, 4), 1e-12)
             for n in ("aimed_50", "aimed_800"):

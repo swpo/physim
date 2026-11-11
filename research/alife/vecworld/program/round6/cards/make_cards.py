@@ -256,6 +256,7 @@ def card_md(world, runs, D, G, late, rob, rate, job):
         A("")
     A("## 7. Actions (block view, 4 ticks after the input starts)")
     A("")
+    A(f"- The aimed 200-nat shift is {fmt(d.get('grid.act_ms_var'), 3)} of the block view's variance, {fmt(d.get('grid.act_ms_over_vcheap'), 3)} of the cheap family's error.")
     A(f"- Predictable shift / oracle variance: aimed 50 / 200 / 800 nats {row([d.get('grid.act_ms_50'), d.get('grid.act_ms'), d.get('grid.act_ms_800')])}; "
       f"displacement of the aimed 200-nat input / twin floor {fmt(d.get('grid.act_D_floor'))}; aimed / blind {fmt(d.get('grid.aim_ratio'))}. "
       f"Population level: {fmt(d.get('pop.act_ms'))}.")
@@ -274,7 +275,8 @@ def card_md(world, runs, D, G, late, rob, rate, job):
     A("## 9. Cost")
     A("")
     spt = cost_of(runs)
-    A(f"- {fmt(1e3 * spt, 3)} ms per member-tick on the job's GPU, compile excluded ({fmt(1.0 / spt, 0)} member-ticks/s)"
+    A(f"- {fmt(1e3 * spt, 3)} ms per member-tick on the job's {c.get('backend', 'gpu').upper()} with the tracker on every member, "
+      f"compile excluded where the program had run before ({fmt(1.0 / spt, 0)} member-ticks/s)"
       + (f"; USD {fmt(rate * spt / 3600 * 1e6)} per million member-ticks at USD {rate}/h." if rate else "."))
     A("")
     A("## Gates and robustness")
@@ -283,15 +285,22 @@ def card_md(world, runs, D, G, late, rob, rate, job):
     A("|---|" + "---|" * len(runs))
     for k in GATE_KEYS:
         A(f"| {k} | " + " | ".join(fmt(G[r][k]) for r in runs) + " |")
-    if rob:
+    if rob.get("seed"):
         bad = [k for k, v in rob.get("seed", {}).items() if v is False]
         A("")
         A(f"Seed (A against B): {len([v for v in rob.get('seed', {}).values() if v])} of {len(rob.get('seed', {}))} entries agree"
           + (f"; not robust: {', '.join(bad)}." if bad else "."))
-        if rob.get("size") is not None:
+    if rob.get("size") is not None:
+        if True:
             bad = [k for k, v in rob["size"].items() if v is False]
+            A("")
             A(f"Size (64 against 128 px): {len([v for v in rob['size'].values() if v])} of {len(rob['size'])} entries agree"
               + (f"; not robust: {', '.join(bad)}." if bad else "."))
+    sh = rob.get("split_half")
+    if sh:
+        A("")
+        A(f"Estimator size (even against odd test states, block view at 8 ticks): predictable fraction {row(sh['pf8'])}, "
+          f"ceiling {row(sh['ceil8'])}.")
     A("")
     A(f"Source: job {job}, `out/cards/{world}__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards "
       "(`card.json` here holds the derived numbers and gates of every run). Pilot: never an exam instance.")
@@ -342,6 +351,19 @@ def main():
             rob["size_gates"] = {k: bool(G["A"][k] == gb[k]) for k in GATE_KEYS + ["dull"]}
         if late:
             rob["late"] = late
+        if ("A" in runs) and (w, "A") in series:                  # estimator size: even against odd test states
+            z = np.load(series[(w, "A")])
+            hz = runs["A"]["grid"]["hz"]
+            i8 = hz.index(8)
+            half = []
+            for sl in (slice(0, None, 2), slice(1, None, 2)):
+                vc, vo, vp = (np.median(z[k][i8, sl]) for k in ("per_state_v_clim", "per_state_v_orc", "per_state_v_pred"))
+                half.append(dict(pf8=float(1 - vo / max(vc, 1e-300)),
+                                 ceil8=float((vc - min(vp, vc)) / (vc - vo)) if abs(vc - vo) > 1e-12 else float("nan")))
+            rob["split_half"] = dict(pf8=[h["pf8"] for h in half], ceil8=[h["ceil8"] for h in half],
+                                     pf8_agree=GT.robust(half[0]["pf8"], half[1]["pf8"]),
+                                     ceil8_agree=GT.robust(half[0]["ceil8"], half[1]["ceil8"]),
+                                     note="block view, ridge or climatology, medians over 16 states each")
         robust[w] = rob
         wd = os.path.join(a.res, "cards", w)
         os.makedirs(wd, exist_ok=True)
@@ -369,6 +391,7 @@ def main():
                          pl003=d.get("grid.pl_ratio0.03_8"), bodies=d.get("s.nb_mean"), half_life=d.get("s.half_life_ticks"),
                          v_net=d.get("s.v_net"), events=d.get("s.events100"), body_pf8=d.get("b.pf_disp8"),
                          body_ceil8=d.get("b.ceil_disp8"), quiet8=d.get("b.quiet8"), act_ms=d.get("grid.act_ms"),
+                         act_ms_over_vcheap=d.get("grid.act_ms_over_vcheap"),
                          aim_ratio=d.get("grid.aim_ratio"), xresp=d.get("grid.xresp"), tick_share=d.get("grid.tick_share"),
                          pop_tick_share=d.get("pop.tick_share"), member_share=d.get("grid.member_share"),
                          pop_pf8=d.get("pop.pf8"), pop_ceil8=d.get("pop.ceil8"), x_bg=d.get("x.bodies_to_grid8"),
