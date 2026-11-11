@@ -399,7 +399,7 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             box = None
         if box is not None:
             configured = {"cpus": run["cpus"], "memory_gb": run["memory_gib"]}
-            run.update(cpus=box["cpus"], memory_gib=box["memory_gib"], pids=box["pids"], measured=True, nproc=box["nproc"],
+            run.update(cpus=box["cpus"], memory_gib=box["memory_gib"], pids=box["pids"], measured=True,
                        workspace_mib=box["workspace_mib"], tmp_mib=box["tmp_mib"], read_only_root=box["read_only_root"],
                        configured=configured)
         return run
@@ -503,6 +503,10 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
             return "time limit"
         if stop in ("max_input_tokens", "max_output_tokens", "max_total_tokens"):
             return "token limit"
+        if stop == "max_context_tokens":                     # the worker's spend stop (physim2_env/spend.py)
+            return "context limit"
+        if stop == "spend_cap":
+            return "spend limit"
         if stop == "agent_completed":
             return "the agent stopped"
         return "stopped" if stop else "ended"
@@ -653,7 +657,10 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                                           detail="the reward ran outside the isolated grader (use --env.id isolated-verifier)")
             elif not info["verifier_box"].get("has_predict"):
                 col = trace.state.collection or {}
-                g = GRADING.score_as_null(hidden, name, "no predict.py" if col.get("files") else "no submission", fb,
+                # "no predict.py": the directory was there without the one required file (the freeze rules' own
+                # words); "no submission": no directory, or one the collection or the freeze rules refused
+                missing = str(col.get("error") or "").startswith("submission has no predict.py")
+                g = GRADING.score_as_null(hidden, name, "no predict.py" if missing else "no submission", fb,
                                           detail=col.get("error") or "no predictor")
             else:
                 budget = self.data.timeout.scoring

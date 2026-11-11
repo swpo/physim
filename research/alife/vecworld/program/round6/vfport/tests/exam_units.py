@@ -251,6 +251,13 @@ def part_bundle():
     old = BUNDLE.statement("ring", "smoke_ring")
     check("2 statement: round 5's exam config still renders, with its own numbers (32 samples, a 1-tick reset)",
           "The grader asks for n_samples = 32" in old and "costs 1 ticks" in old and "as much as the" not in old)
+    try:
+        BUNDLE.null_pool("gliders", "smoke_gliders")
+        guard = "no error"
+    except RuntimeError as e:
+        guard = str(e)
+    check("2 bundle: a world this pin builds no baseline pool for is refused at once (no hours of simulation behind a config name)",
+          guard.startswith("this pin builds no baseline pool for world 'gliders'"), guard=guard[:120])
     # ruling E15: what a box holds at start
     groups = info["file_groups"]
     listed = [f for g in groups for f in g["files"]]
