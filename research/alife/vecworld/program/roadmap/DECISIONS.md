@@ -213,6 +213,19 @@ The coordinator's working loop that follows from it (a reading, to be corrected 
 
 Environment and safety work serves step 3 and must not queue ahead of steps 1, 2 and 4.
 
+## Round-6 design studies: the lead's two choices (11 Nov 2026, evening)
+
+Put to the lead after both studies had been independently checked (`../round6/dials/dialsA`, `../round6/dials/dialsB`):
+
+- Gliders with a hidden term in the public law (stress conversion). Study A refuted "generic repair wins" (a residual
+  fitted on 8 Lab episodes closes 0.47 of the gap, bar 0.7), but over the whole exam the science share left after the
+  repair is 0.08 to 0.13. The lead chose "Reopen, triggered bar": the next stage (16 truths, a recipe told the form)
+  runs with its bar declared in advance on the item classes that trigger the hidden term, at 8 to 16 ticks, in an exam
+  built from those items only.
+- Membrane cells with a hidden carrier level. Its CPU gate was a no-go at the point estimate, and its checker found the
+  hidden law numerically unstable at the pilot settings, so the idea was not really tested. The lead chose "Close it":
+  the design is recorded as not built and untested, with the instability finding; nothing more is spent on it now.
+
 ## Earlier standing decisions that bear on the roadmap
 
 - GPU spending up to $1,000 in total is approved (7 Nov); jobs with a cap of $25 or less start without asking
