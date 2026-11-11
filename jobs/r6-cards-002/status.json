@@ -28,7 +28,7 @@
   "cap_usd": 4.3,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.5966
+    "conservative_usd": 0.6611
   },
   "guard_at": null,
   "guard_reason": null,
@@ -59,7 +59,7 @@
   ],
   "job_id": "r6-cards-002",
   "max_estimate_usd": 3.48,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -140,5 +140,6 @@
   "run_started_epoch": 1794400068.544506,
   "started_at": "2026-11-11T12:32:25Z",
   "state": "running",
-  "updated_at": "2026-11-11T12:32:25Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\n12:32:35 [job.sh] PILOT_NEVER_REUSE_AS_EXAM start, size full, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\n== out/progress.txt\n12:32:35 [job.sh] PILOT_NEVER_REUSE_AS_EXAM start, size full, nproc 30\nversions 3.12.16 <ip> 2.5.4 [CudaDevice(id=0)] gpu\nname, memory.total [MiB], driver_version\nNVIDIA A100-SXM4-40GB, 40960 MiB, 570.148.08\n12:32:41 [      7s] PILOT_NEVER_REUSE_AS_EXAM cards job, size full, backend gpu, devices [CudaDevice(id=0)], jax <ip>, numpy 2.5.4\n12:32:41 [      7s] 10 worlds, 15 runs, presmoke of 7 program groups: ['membrane_s4', 'vortex64_s4', 'gliders', 'vortex64', 'membrane', 'foundry64', 'vortex128g16']\n12:33:24 [     49s] membrane_s4__A: sim 19.2+17.8s analyse 3.4s | finite True | exam-worthy + reading-worthy + actions | pf8 0.97 ceil8 0.84 sigma_hat 0.34968714790838334 nb 14.9\n12:44:10 [    695s] vortex64_s4__A: sim 265.5+377.2s analyse 3.2s | finite True | exam-worthy + reading-worthy + actions | pf8 0.42 ceil8 0.24 sigma_hat 0.4241269036557707 nb 8.6\n12:45:38 [    783s] gliders_n1__A: sim 37.5+46.6s analyse 2.6s | finite True | dull: the hidden part has no weight | pf8 0.99 ceil8 0.48 sigma_hat 0.09805760087560089 nb 7.5\n",
+  "updated_at": "2026-11-11T12:47:45Z"
 }
