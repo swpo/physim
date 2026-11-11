@@ -36,3 +36,10 @@ Deliverable: `DESIGN.md` in this folder.
   0.25, 0.5, 1; with the hidden law at a wrong conversion rate (0.02 for 0.005) half of the gap stays (0.19).
   `gvh.py` written (generic repair of the public law against a told-the-form fit, state given). Queued: 128-px
   runs, gvh, check_zero with `pro`, uniform reruns of the other candidates at 12 members. Then DESIGN.md.
+- 11:47: 128 px: focus-view gap of the linear carrier at dial 1 carries over (0.33 +- 0.07 on input items; pop
+  halves to 0.06). `gvh.py` (state given, 16 Lab episodes, focus view): for the LINEAR carrier a per-horizon gain
+  on the public response closes 0.84 of the public-to-oracle gap, the told-form fit 1.00: generic repair nearly
+  suffices. For the carrier that only cell catalyst converts (`cat=1`, rho 0.02, DX 0.5) every generic recipe
+  closes about nothing (best 0.02 +- 0.09) and the told-form fit 1.00. Queued (q8, q9): screens of the catalysed
+  carrier (dial 1, 0.5, 0.25, 128 px, with the saturating route), attribution run (same rho and DX without
+  catalysis), second seed, uniform reruns of dorm / lpool / bound, check_zero again. Then DESIGN.md.
