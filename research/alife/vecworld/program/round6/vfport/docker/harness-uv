@@ -1,0 +1,36 @@
+#!/bin/sh
+# /usr/local/bin/uv in a box of the PhySim v2 exam. THIS IS NOT uv. It is a stand-in of this study for the two
+# commands that verifiers' stock `bash` harness runs in a box at set-up (verifiers 0.3.2.dev163,
+# runtimes/base.py:274-279, after `command -v uv` found this file):
+#
+#     uv sync --script /tmp/vf-scripts/<sha256>.py -q --no-config
+#     uv python find --script /tmp/vf-scripts/<sha256>.py --no-config
+#
+# The real commands would resolve the harness program's six packages, download them from the package index into
+# the box and print the interpreter of the environment they made. In this image that environment exists already:
+# docker/Dockerfile.ring installed exactly those packages, pinned and checked by hash
+# (docker/harness-requirements.txt), into /opt/physim2-harness/venv. So this stand-in checks that the script it is
+# asked about declares the dependencies the image was built for, and then does nothing (sync) or prints that
+# interpreter (python find). It downloads nothing, writes nothing and starts nothing: set-up needs no network and
+# works on a read-only root. Any other use ends with status 2 and one line that says why.
+PY=/opt/physim2-harness/venv/bin/python
+DEPS='# dependencies = ["openai", "mcp==2.0.0", "httpx", "httpx2", "tenacity", "certifi"]'
+no() { echo "uv: $1" >&2; exit 2; }
+case "${1:-} ${2:-}" in
+  "sync --script") mode=sync ;;
+  "python find") mode=find ;;
+  "--version "*|"-V "*) echo "uv-stand-in physim2 (not uv: see /usr/local/bin/uv)"; exit 0 ;;
+  *) no "this box has no uv and no network to install from; python3, pip's installed packages and the image's numpy, scipy and jax are what there is" ;;
+esac
+script=""
+prev=""
+for a in "$@"; do
+  if [ "$prev" = "--script" ]; then script=$a; fi
+  prev=$a
+done
+[ -n "$script" ] || no "no --script argument"
+[ -f "$script" ] || no "the script does not exist"
+grep -qxF -- "$DEPS" "$script" || no "this image was built for another harness program (its dependency line differs); rebuild the image"
+[ -x "$PY" ] || no "the preinstalled harness environment is missing"
+if [ "$mode" = find ]; then echo "$PY"; fi
+exit 0

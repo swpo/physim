@@ -90,6 +90,9 @@ ROOT_FS = {"overlay"}                                        # the root of a Doc
 KERNEL_DIRS = ("/proc", "/sys", "/dev")                      # mounts at or below these are the container's own ...
 KERNEL_FS = SKIP_FS | {"tmpfs", "devtmpfs", "mqueue"}        # ... if they are of a kernel or memory file-system type
 ETC_FILES = ("/etc/hostname", "/etc/hosts", "/etc/resolv.conf")   # the three files Docker mounts into every container
+# round 4: a box of the pilot has a read-only root, and the four places the exam writes to are memory file
+# systems that the runtime mounts with fixed sizes (physim2_env/boxcaps.py: TMPFS). They belong to the box.
+BOX_TMPFS = ("/workspace", "/tmp", "/etc/physim2", "/runtime")
 
 
 def container_evidence():
@@ -146,7 +149,9 @@ def foreign_mounts(mounts, isfile=None):
       /                                  exactly once, as the container's own overlay root
       /proc, /sys, /dev and below        of a kernel or memory file-system type (proc, sysfs, tmpfs, cgroup, ...)
       /etc/hostname, /etc/hosts, /etc/resolv.conf     the three FILES Docker mounts into every container
-    A host folder or a volume anywhere, a tmpfs outside /dev, a bind mount below /dev: foreign."""
+      /workspace, /tmp, /etc/physim2, /runtime        each at most once, as a tmpfs of its own (the capped box of
+                                                      round 4: read-only root, these four memory file systems)
+    A host folder or a volume anywhere, a tmpfs anywhere else outside /dev, a bind mount below /dev: foreign."""
     bad = []
     roots = [m for m in mounts if m[0] == "/"]
     if len(roots) != 1:
@@ -161,6 +166,9 @@ def foreign_mounts(mounts, isfile=None):
         elif mp in ETC_FILES:
             if isfile is not None and not isfile(mp):
                 bad.append(f"{mp} (not a regular file)")
+        elif mp in BOX_TMPFS:                                # exactly once, a tmpfs of its own (root "/"), nothing else
+            if fs != "tmpfs" or root != "/" or sum(1 for m in mounts if m[0] == mp) != 1:
+                bad.append(f"{mp} ({fs})")
         else:
             bad.append(f"{mp} ({fs})")
     return bad

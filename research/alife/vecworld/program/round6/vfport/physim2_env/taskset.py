@@ -62,11 +62,16 @@ GIB = 1 << 30
 MEASURE = ("for f in /sys/fs/cgroup/cpu.max /sys/fs/cgroup/memory.max /sys/fs/cgroup/pids.max "
            "/sys/fs/cgroup/cpu/cpu.cfs_quota_us /sys/fs/cgroup/cpu/cpu.cfs_period_us /sys/fs/cgroup/memory/memory.limit_in_bytes "
            "/sys/fs/cgroup/pids/pids.max; do printf '%s=' \"$f\"; (cat \"$f\" 2>/dev/null || echo absent) | head -c 64 | tr '\\n' ' '; echo; done; "
-           "printf 'nproc='; (nproc 2>/dev/null || echo absent)")
+           "printf 'nproc='; (nproc 2>/dev/null || echo absent); "
+           "printf 'workspace='; (df -Pk /workspace 2>/dev/null | awk 'NR==2{print $1, $2}'); echo; "
+           "printf 'tmp='; (df -Pk /tmp 2>/dev/null | awk 'NR==2{print $1, $2}'); echo; "
+           "printf 'rootfs='; (awk '$2==\"/\"{print $4}' /proc/mounts 2>/dev/null | tail -n 1 | cut -c1-60)")
 
 
 def parse_box(text: str) -> dict:
-    """{"cpus", "memory_gib", "pids"} from MEASURE's output; None where the runtime set no limit. Pure."""
+    """{"cpus", "memory_gib", "pids", "workspace_mib", "tmp_mib", "read_only_root"} from MEASURE's output; None
+    where the runtime set no limit (a directory counts as limited only when it is a memory file system of its own:
+    the size of a shared disk is nobody's quota). Pure."""
     kv = {}
     for line in str(text).splitlines():
         k, sep, v = line.partition("=")
@@ -78,7 +83,15 @@ def parse_box(text: str) -> dict:
             return int(v)
         except (TypeError, ValueError):
             return None
-    out = {"cpus": None, "memory_gib": None, "pids": None, "nproc": num(kv.get("nproc"))}
+    out = {"cpus": None, "memory_gib": None, "pids": None, "nproc": num(kv.get("nproc")), "workspace_mib": None, "tmp_mib": None,
+           "read_only_root": None}
+    for key, name in (("workspace", "workspace_mib"), ("tmp", "tmp_mib")):
+        f = (kv.get(key) or "").split()
+        if len(f) == 2 and f[0] == "tmpfs" and num(f[1]):
+            out[name] = round(int(f[1]) / 1024.0, 1)
+    opts = (kv.get("rootfs") or "").split(",")
+    if opts and opts[0]:
+        out["read_only_root"] = "ro" in opts
     cpu = (kv.get("/sys/fs/cgroup/cpu.max") or "").split()
     if len(cpu) == 2 and num(cpu[0]) and num(cpu[1]):
         out["cpus"] = round(int(cpu[0]) / int(cpu[1]), 3)
@@ -180,34 +193,51 @@ BOX_ENV_ALLOW = {"PHYSIM2_AGENT_HOME", "PHYSIM2_PROBE_PATHS", "PYTHONDONTWRITEBY
                  "LANG", "LC_ALL", "TZ", "TERM"}
 
 
+def _f(o, k):
+    """Field k of a trace object or of the same thing read back from a saved trace (a dict)."""
+    return o.get(k) if isinstance(o, dict) else getattr(o, k, None)
+
+
 def reasoning_record(trace) -> dict:
-    """Ruling E10: was the model's reasoning on, and at what effort, as far as the request and the replies show.
-    `requested_effort` is what this run's config asked for (None: nothing was sent, the provider's default
-    applies); the counts come from the replies saved on the trace. Numbers and fixed words only."""
-    acfg = getattr(getattr(trace, "agent", None), "config", None)
-    sampling = getattr(acfg, "sampling", None)
-    effort = getattr(sampling, "reasoning_effort", None)
-    replies = with_text = with_state = with_tokens = 0
-    tokens = None
-    for node in getattr(trace, "nodes", None) or []:
-        if not getattr(node, "sampled", False):
-            continue
-        replies += 1
-        msg = getattr(node, "message", None)
-        if getattr(msg, "reasoning_content", None):
-            with_text += 1
-        if getattr(msg, "provider_state", None):
-            with_state += 1
-        n = getattr(getattr(node, "usage", None), "reasoning_tokens", None)
+    """Rulings E10 and E14: was the model's reasoning on, at what effort, and what of it came back, as far as the
+    requests and the replies show. Requested: what this run's config asked for and what each model call was
+    sent (None: nothing was sent, the provider's default applies). Came back: per reply, readable reasoning (a
+    reasoning text or a summary), encrypted reasoning only, or none; and the reasoning tokens the provider
+    counted. Numbers and fixed words only; never a reply's text. Works on a live trace and on a saved one."""
+    def word(v):
+        return v if isinstance(v, str) and v.replace("_", "").isalnum() and len(v) <= 16 else None
+    sampling = _f(_f(_f(trace, "agent"), "config") or {}, "sampling") or {}
+    asked = _f(sampling, "reasoning")
+    calls = _f(trace, "calls") or []
+    sent_effort, sent_summary, tokens, with_tokens = set(), set(), None, 0
+    for c in calls:
+        sm = _f(c, "sampling") or {}
+        r = _f(sm, "reasoning")
+        sent_effort.add(word(_f(sm, "reasoning_effort")) or word(_f(r or {}, "effort")))
+        sent_summary.add(word(_f(r or {}, "summary")))
+        n = _f(_f(c, "usage") or {}, "reasoning_tokens")
         if isinstance(n, int) and not isinstance(n, bool):
             tokens = (tokens or 0) + n
             with_tokens += 1 if n > 0 else 0
-    seen = bool(with_text or with_state or with_tokens)
-    return {"requested_effort": effort if isinstance(effort, str) and effort.isalnum() and len(effort) <= 16 else None,
-            "replies": replies, "replies_with_reasoning_text": with_text, "replies_with_reasoning_state": with_state,
-            "replies_with_reasoning_tokens": with_tokens, "reasoning_tokens": tokens,
-            "reasoning_seen_in_replies": seen if replies else None,
-            "reasoning_tokens_reported": tokens is not None}
+    replies = readable = encrypted_only = 0
+    for node in _f(trace, "nodes") or []:
+        if not _f(node, "sampled"):
+            continue
+        replies += 1
+        msg = _f(node, "message") or {}
+        kinds = {str(_f(x, "type")) for x in (_f(msg, "provider_state") or []) if isinstance(x, dict) or hasattr(x, "type")}
+        if _f(msg, "reasoning_content") or any(k.endswith((".summary", ".text")) for k in kinds):
+            readable += 1
+        elif any("encrypted" in k for k in kinds):
+            encrypted_only += 1
+    seen = bool(readable or encrypted_only or with_tokens)
+    return {"requested_effort": word(_f(sampling, "reasoning_effort")) or word(_f(asked or {}, "effort")),
+            "requested_summary": word(_f(asked or {}, "summary")),
+            "sent_effort": sorted(x for x in sent_effort if x) or None, "sent_summary": sorted(x for x in sent_summary if x) or None,
+            "model_calls": len(calls), "replies": replies, "replies_with_readable_reasoning": readable,
+            "replies_with_encrypted_reasoning_only": encrypted_only, "replies_without_reasoning": replies - readable - encrypted_only,
+            "calls_with_reasoning_tokens": with_tokens, "reasoning_tokens": tokens, "reasoning_tokens_reported": tokens is not None,
+            "reasoning_on": seen if replies else None}
 
 
 def agent_identity(trace, configured: str = "") -> str:
@@ -301,7 +331,8 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                 json.dump({"agent_key": key, "first_rollout": trace.id, "time": time.time()}, f)
         box = ACCESS.BoxAccess(runtime, list(self.data.artifacts), self.data.artifact_max_bytes, cfg["predictor"]["artifact_mib"],
                                WORKDIR, cfg["predictor"], trace=trace, max_turns=run["max_turns"], wall_s=60.0 * run["wall_minutes"],
-                               capture_dir=self._captures(trace.id), checkpoint_s=self.config.checkpoint_seconds)
+                               max_context_tokens=run["max_context_tokens"], capture_dir=self._captures(trace.id),
+                               checkpoint_s=self.config.checkpoint_seconds)
         self._access[trace.id] = box
         # the first checkpoint is the baseline itself, known without asking the box: a run that fails before
         # anything else could be copied is graded on what its box started with
@@ -337,8 +368,8 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
                "max_output_tokens_per_turn": None if scripted else getattr(sampling, "max_tokens", None),
                "max_context_tokens": self.config.limits.max_context_tokens, "cap_usd": self.config.limits.cap_usd,
                "cpus": getattr(runtime.config, "cpu", None), "memory_gib": getattr(runtime.config, "memory", None),
-               "pids": None, "scratch_gib": None, "lab_counts_turns": True, "measured": False,
-               "harness": str(getattr(harness, "id", None) or "?")[:40]}
+               "pids": None, "workspace_mib": None, "tmp_mib": None, "read_only_root": None, "lab_counts_turns": True,
+               "measured": False, "harness": str(getattr(harness, "id", None) or "?")[:40]}
         try:
             r = await runtime.run(["sh", "-c", MEASURE], {})
             box = parse_box(r.stdout) if r.exit_code == 0 else None
@@ -347,6 +378,7 @@ class Physim2Task(vf.Task[Physim2Data, Physim2State, Physim2TaskConfig]):
         if box is not None:
             configured = {"cpus": run["cpus"], "memory_gb": run["memory_gib"]}
             run.update(cpus=box["cpus"], memory_gib=box["memory_gib"], pids=box["pids"], measured=True, nproc=box["nproc"],
+                       workspace_mib=box["workspace_mib"], tmp_mib=box["tmp_mib"], read_only_root=box["read_only_root"],
                        configured=configured)
         return run
 

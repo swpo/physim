@@ -28,4 +28,9 @@ def use_agentenv() -> str:
 
 
 def config_path(name: str) -> str:
-    return os.path.join(agentenv_root(), "configs", f"{name}.json")
+    """The exam config `name`: one of this package's own (physim2_env/exam_configs, round 4 on) or, as before,
+    one of agentenv's (round 5's configs, unchanged)."""
+    if not name or any(c not in "abcdefghijklmnopqrstuvwxyz0123456789_" for c in name):
+        raise ValueError("bad exam config name")
+    own = os.path.join(HERE, "exam_configs", f"{name}.json")
+    return own if os.path.isfile(own) else os.path.join(agentenv_root(), "configs", f"{name}.json")

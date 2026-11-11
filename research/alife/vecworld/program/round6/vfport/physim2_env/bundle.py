@@ -37,6 +37,43 @@ from ._paths import HERE, PUBLIC, config_path, use_agentenv
 
 DROPPED = ["wire.py"]
 ADDED = ["labclient.py", "validate.py", "_item.py", "_rules.py"]
+# Ruling E15: of the vendored vw library a box gets only what the public world module imports. For the ring that
+# is everything but two files: the designers' closed-form linear-Gaussian family (the exact filter and its
+# certificates) and the toy worlds. Neither is imported by physim2.world_ring, by vw/__init__ or by the
+# reference agents (checked by tests/exam_units.py: the public simulator runs without them). The scoring code
+# (vw/scoring.py) stays on purpose: the rule you are scored by is public, and the statement says so.
+VENDOR_DROPPED = {"ring": ["_vendor/vw1/vw/lingauss.py", "_vendor/vw1/vw/toys.py"]}
+# Every file a box holds at start belongs to one of these groups (first match); tools and results quote them.
+FILE_GROUPS = [
+    ("TASK.md", "the task statement"),
+    ("submission/", "the baseline: the null policy (predict.py and its pool of prior-predictive episodes); replaced by the agent"),
+    ("physim2/_vendor/vw1/vw/scoring.py", "the scoring rule (fair energy score), shipped on purpose: how you are scored is public"),
+    ("physim2/_vendor/", "the public simulator's own sources (verbatim copies): what physim2.world_<name> imports to simulate the law"),
+    ("physim2/world_", "the public world: law, coarse-grainings, prior, test-program generator, simulator"),
+    ("physim2/world.json", "which world this exam is"),
+    ("physim2/labclient.py", "the client of the laboratory (and its log of every reply)"),
+    ("physim2/validate.py", "the check of a submission, as the grader will run it"),
+    ("physim2/_item.py", "the grader's one-request driver (unprivileged user, limits, cleanup): public and trusted"),
+    ("physim2/_rules.py", "the grader's freeze rules and reply format"),
+    ("physim2/predict_runner.py", "how a predictor is called"),
+    ("physim2/examples.npz", "two public example requests (prior mean, public noise) for validation"),
+    ("physim2/exam.json", "the public card of the exam (sizes, budgets, limits)"),
+    ("physim2/MANIFEST.json", "sha256 of every file of the bundle"),
+    ("physim2/", "package plumbing (__init__, import path of the vendored sources)"),
+]
+
+
+def file_groups(names) -> list[dict]:
+    """The files of a bundle by group: [{"group", "why", "files": [...]}] in the order of FILE_GROUPS."""
+    out = [{"group": g, "why": why, "files": []} for g, why in FILE_GROUPS]
+    for nm in sorted(names):
+        for row in out:
+            if nm == row["group"] or nm.startswith(row["group"]):
+                row["files"].append(nm)
+                break
+        else:
+            raise ValueError(f"a file of the bundle belongs to no group: {nm}")
+    return [r for r in out if r["files"]]
 BASELINE = "baseline_predict.py"                             # shipped as submission/predict.py
 TOOL_OUTPUT_MAX_BYTES = 20_000                               # verifiers harnesses/utils/compaction.py:18 (the stock bash harness)
 _CACHE: dict = {}
@@ -129,12 +166,20 @@ def default_run(world: str, config_name: str, limits: dict | None = None) -> dic
     cfg = load_config(config_name)
     p = PROFILES.for_exam(world, config_name) or {}
     lim = {k: v for k, v in (limits or {}).items() if v is not None}
-    return {"max_turns": p.get("max_turns"), "wall_minutes": p.get("wall_minutes") or 60.0 * cfg["envelope"]["wall_hours"],
-            "max_output_tokens_per_turn": p.get("max_output_tokens_per_turn"),
-            "max_context_tokens": lim.get("max_context_tokens"), "cap_usd": lim.get("cap_usd"),
-            "cpus": lim.get("box_cpus") or p.get("box_cpus") or PROFILES.FALLBACK_BOX["box_cpus"],
-            "memory_gib": lim.get("box_memory_gb") or p.get("box_memory_gb") or PROFILES.FALLBACK_BOX["box_memory_gb"],
-            "pids": None, "scratch_gib": None, "lab_counts_turns": True, "measured": False}
+    run = {"max_turns": p.get("max_turns"), "wall_minutes": p.get("wall_minutes") or 60.0 * cfg["envelope"]["wall_hours"],
+           "max_output_tokens_per_turn": p.get("max_output_tokens_per_turn"),
+           "max_context_tokens": lim.get("max_context_tokens"), "cap_usd": lim.get("cap_usd"),
+           "cpus": lim.get("box_cpus") or p.get("box_cpus") or PROFILES.FALLBACK_BOX["box_cpus"],
+           "memory_gib": lim.get("box_memory_gb") or p.get("box_memory_gb") or PROFILES.FALLBACK_BOX["box_memory_gb"],
+           "pids": None, "workspace_mib": None, "tmp_mib": None, "read_only_root": None, "lab_counts_turns": True, "measured": False}
+    try:                                                     # the caps the runtime of this package sets on every box, if it sets any
+        from . import runtime as RUNTIME
+        caps = RUNTIME.box_caps(memory_gb=lim.get("box_memory_gb"))
+        run.update(cpus=caps.get("cpus", run["cpus"]), memory_gib=caps.get("memory_gb", run["memory_gib"]), pids=caps.get("pids"),
+                   workspace_mib=caps.get("workspace_mib"), tmp_mib=caps.get("scratch_mib"), read_only_root=caps.get("read_only_root"))
+    except Exception:
+        pass
+    return run
 
 
 def _g(v) -> str:
@@ -177,12 +222,21 @@ def limits_block(run: dict) -> str:
     else:
         L.append("- `lab.usage()` reports `seconds_elapsed` and `seconds_left` of this run. The laboratory does not count turns: "
                  "count your own replies.")
+    if run.get("max_context_tokens"):
+        L.append("- `lab.usage()` also reports `context_tokens_used` (your last turn, as the provider counted it) and "
+                 "`context_tokens_left`.")
     cpus = "no cap on CPU cores" if not run.get("cpus") else f"{_g(run['cpus'])} CPU cores"
     mem = "no cap on memory" if not run.get("memory_gib") else f"{_g(run['memory_gib'])} GiB of memory (a process that takes more is killed)"
     pids = "no limit of its own on the number of processes" if not run.get("pids") else f"at most {int(run['pids'])} processes and threads"
-    disk = ("no disk quota of its own (it shares the operator's disk: keep what you write under about 2 GiB)" if not run.get("scratch_gib")
-            else f"{_g(run['scratch_gib'])} GiB of scratch space")
-    L.append(f"- **This box:** {cpus}, {mem}, no GPU, {pids}, {disk}; no network except the laboratory."
+    ws, tmp = run.get("workspace_mib"), run.get("tmp_mib")
+    if ws or tmp:
+        disk = "you can write to " + " and ".join(x for x in ((f"`/workspace` ({_g(ws)} MiB)" if ws else ""), (f"`/tmp` ({_g(tmp)} MiB)" if tmp else "")) if x)
+        disk += (" and nowhere else (the rest of the file system is read-only, your home directory included)" if run.get("read_only_root")
+                 else "")
+        disk += "; both are kept in memory, so what you write there also counts against the box's memory, and a full one answers `No space left on device`"
+    else:
+        disk = "no disk quota of its own (it shares the operator's disk: keep what you write under about 2 GiB)"
+    L.append(f"- **This box:** {cpus}, {mem}, no GPU, {pids}; {disk}. No network except the laboratory."
              + (" (Measured in this box when it started.)" if run.get("measured") else ""))
     return "\n".join(L)
 
@@ -205,6 +259,8 @@ def statement(world: str, config_name: str, run: dict | None = None) -> str:
         in_lo=f"{W.IN_LO:g}", in_hi=f"{W.IN_HI:g}", prior_table=rows,
         viability_note=getattr(W, "VIABILITY_NOTE", "No further selection was applied."),
         reset_cost=cfg["lab"]["reset_cost"], max_ticks=cfg["lab"]["max_ticks"], sigma_in=f"{W.SIGMA_IN:g}",
+        reset_note=(f", as much as the {d['P'] + 1} observations of one item's history: an episode is not a cheap way to draw one "
+                    "more observation" if int(cfg["lab"]["reset_cost"]) > 1 else ""),
         tick_cap=f"{W.TICK_CAP:g}", episode_cap=f"{W.EPISODE_CAP:g}",
         total_nats_note="" if tn is None else f", {tn:g} over the whole investigation",
         cpu_s_tick=f"{W.CPU_S_PER_MEMBER_TICK:g}", n_items=cfg["exam"]["n_items"], R=cfg["exam"]["R"],
@@ -237,7 +293,7 @@ def public_bundle(world: str, config_name: str):
             for nm in files:
                 os.chmod(os.path.join(root, nm), 0o644)
         pkg = os.path.join(pub, "physim2")
-        for nm in DROPPED:
+        for nm in DROPPED + VENDOR_DROPPED.get(world, []):
             os.unlink(os.path.join(pkg, nm))
         for nm in ADDED:
             shutil.copyfile(os.path.join(PUBLIC, nm), os.path.join(pkg, nm))
@@ -280,7 +336,8 @@ def public_bundle(world: str, config_name: str):
         info = {"files": len(man), "bytes": sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(pub) for f in fs)
                 + sum(len(v) for v in base.values()),
                 "manifest_sha256": hashlib.sha256(json.dumps(man, sort_keys=True).encode()).hexdigest(), "task_md": task_md,
-                "examples": examples, "baseline": {"policy": "null", "episodes": PROFILES.BASELINE_EPISODES,
+                "examples": examples, "file_groups": file_groups(man),
+                "baseline": {"policy": "null", "episodes": PROFILES.BASELINE_EPISODES,
                                                    "pool_sha256": pool_sha256(null_pool(world, config_name)),
                                                    "files": {nm: hashlib.sha256(v).hexdigest() for nm, v in base.items()}}}
     _CACHE[key] = (buf.getvalue(), info)
