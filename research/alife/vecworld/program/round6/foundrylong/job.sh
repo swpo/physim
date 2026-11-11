@@ -29,6 +29,8 @@ RC=$?
 P "presmoke exit $RC"
 if [ $RC -ne 0 ]; then tail -40 "$OUT/presmoke/progress.txt"; exit 2; fi   # 4 from run_fl: too slow (shape_test.json)
 rm -rf "$OUT/presmoke/cparams" "$OUT"/presmoke/params_*.npz "$OUT/presmoke/items.npz"   # test material, not results
+export FL_SCREEN_CHUNK=$($PY -c "import json; print(json.load(open('$OUT/presmoke/screen.json'))['speed']['chunk_used'])")
+P "screen chunk for the full pass: $FL_SCREEN_CHUNK draws"
 LEFT=$(awk -v h="$HOURS" -v t0="$T_START" -v t1="$(date +%s)" 'BEGIN { printf "%.3f", h - (t1 - t0) / 3600.0 }')
 P "full pass: $LEFT h left of $HOURS"
 $PY -B run_fl.py --size full --out "$OUT/full" --max-hours "$LEFT"

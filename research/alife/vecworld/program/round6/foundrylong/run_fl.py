@@ -69,7 +69,12 @@ SMOKE = dict(burn=3, chunk=8, n_screen=16, gate_M=2, gate_on=False, n_pilot_trai
              lab_chunk=4, n_items=4, R=3, n_clim=4, m=4, m_plug=3, budgets=[4, 8], p0_worlds=[3, 6], p0_steps={3: 20, 6: 20},
              p0x2_steps=40, batch_p0=16, n_c=[4, 8], c_steps={4: 20, 8: 20}, c_lock={4: 2, 8: 2}, c_seeds={4: 1, 8: 2},
              batch_c=16, c_group=2, ft_lrs=[2e-4, 8e-4], ft_smax=20, ft_folds=2, d_steps={4: 20, 8: 20}, batch_lab=16,
-             n_seeds=2, eval_big=10, eval_small=10, chunk_steps=10, shape_test=False, save_params=True)
+             n_seeds=2, eval_big=10, eval_small=10, chunk_steps=10, shape_test=True, save_params=True)
+# the shapes the shape test trains: the full job's, or (CPU smoke) tiny ones that only exercise the code
+SHAPE_F = FULL if args.size != "smoke" else dict(FULL, p0_worlds=[4, 8], epw=4, n_c=[8, 16, 32], c_lock={8: 2, 16: 2, 32: 2}, n_lab=8,
+                                                 c_steps={8: 20, 16: 20, 32: 20}, c_seeds={8: 1, 16: 1, 32: 2}, batch_p0=16, batch_c=16,
+                                                 batch_lab=16)
+SHAPE_STEPS = 200 if args.size != "smoke" else 20
 CFG = {"full": FULL, "presmoke": PRESMOKE, "smoke": SMOKE}[args.size]
 NN.Cfg.CHUNK = CFG["chunk_steps"]
 if args.size == "smoke":
@@ -174,7 +179,8 @@ def stage_screen():
             else:
                 os.environ[k] = v
     J2.T_LATE = 1e9
-    info = J2.run_arm("prior2028", ids, PRIOR_NEW, J2.SZ)
+    ch = int(os.environ.get("FL_SCREEN_CHUNK", "0")) or None        # the chunk that fitted in the presmoke (job.sh)
+    info = J2.run_arm("prior2028", ids, PRIOR_NEW, J2.SZ, chunk=ch)
     if info.get("failed") or info["n_done"] != len(ids):
         raise RuntimeError(f"screen: {info['n_done']} of {len(ids)} draws done ({info.get('failed')})")
     d0 = os.path.join(work, "prior2028")
@@ -197,7 +203,9 @@ def stage_screen():
         **{k: np.asarray(d[k], np.float32) for k in keep if k in d})
     rate = info.get("member_ticks_per_s_steady")
     SPEED["screen"] = dict(member_ticks=int(sum(c["member_ticks"] for c in info["chunks"])), seconds=info["seconds"],
-                           member_ticks_per_s_steady=rate, chunks=len(info["chunks"]), chunk=info["chunk"])
+                           member_ticks_per_s_steady=rate, chunks=len(info["chunks"]), chunk=info["chunk"],
+                           chunk_used=int(info["chunks"][-2 if len(info["chunks"]) > 1 else -1]["n"]),
+                           errors=[e for e in J2.STATE.get("errors", [])])
     jdump("screen.json", dict(what="round 5's screen (job2.run_arm, its sizes) on the pre-screened draws of prior seed 2028",
                               prior_seed=PRIOR_NEW, n_draws=len(idx), n_candidates=int(cand.sum()), sizes=info["sizes"],
                               types={str(k): int((np.asarray(typ) == k).sum()) for k in np.unique(typ)},
@@ -301,7 +309,7 @@ def shape_test(n_sel, n_cand_est):
     """The full job's largest training shapes on noise data, 200 steps each, and a projection of the whole job from
     the measured speeds (simulation from this presmoke's screen and Runner chunks). Exit 4 if the projection
     exceeds 1.25 x the time the full pass will have."""
-    F, t = FULL, time.time()
+    F, t, NS_ = SHAPE_F, time.time(), SHAPE_STEPS
     rng = np.random.default_rng(0)
 
     def noise(E):
@@ -310,24 +318,27 @@ def shape_test(n_sel, n_cand_est):
     E = max(F["p0_worlds"]) * F["epw"]
     obs, U = noise(E)
     ds = LL.make_ds(obs, U, SMU, SSD, seed=0, world_of=np.repeat(np.arange(max(F["p0_worlds"])), F["epw"]))
-    _, inf = LL.train(ds, 200, [0, 1, 2], batch=F["batch_p0"], eval_every=200, log=log, tag=" shape P0(1000) x3")
+    _, inf = LL.train(ds, NS_, [0, 1, 2], batch=F["batch_p0"], eval_every=NS_, log=log, tag=" shape P0(1000) x3")
     ms["p0_3"] = inf["ms_per_step"]
-    _, inf = LL.train(ds, 200, [0], batch=F["batch_p0"], eval_every=200, log=log, tag=" shape P0x2 x1")
+    _, inf = LL.train(ds, NS_, [0], batch=F["batch_p0"], eval_every=NS_, log=log, tag=" shape P0x2 x1")
     ms["p0_1"] = inf["ms_per_step"]
     del ds
     nC = max(F["n_c"])
     dsc = LL.make_ds(obs[:nC], U[:nC], SMU, SSD, seed=0)
     Lk = F["c_lock"][nC]
-    _, inf = LL.train([dsc] * Lk, 200, list(range(Lk)), batch=F["batch_c"], eval_every=200, log=log, tag=f" shape C({nC}) x{Lk}")
+    _, inf = LL.train([dsc] * Lk, NS_, list(range(Lk)), batch=F["batch_c"], eval_every=NS_, log=log, tag=f" shape C({nC}) x{Lk}")
     ms["c_big"] = inf["ms_per_step"]
     nM = sorted(F["n_c"])[-2]
     dsm = LL.make_ds(obs[:nM], U[:nM], SMU, SSD, seed=0)
-    _, inf = LL.train([dsm] * 16, 200, list(range(16)), batch=F["batch_c"], eval_every=200, log=log, tag=f" shape C({nM}) x16")
+    Lm = min(F["c_lock"][nM], F["c_group"])
+    _, inf = LL.train([dsm] * Lm, NS_, list(range(Lm)), batch=F["batch_c"], eval_every=NS_, log=log, tag=f" shape C({nM}) x{Lm}",
+                      pad=(nM, NEX * nM, 3 * LL.NV_H))
     ms["c_mid"] = inf["ms_per_step"]
     del dsc, dsm
     nL = F["n_lab"]
     dl = LL.make_ds(obs[:nL], U[:nL], SMU, SSD, val_ep=(np.arange(nL) % 4 == 0))
-    _, inf = LL.train([dl] * 16, 200, list(range(16)), batch=F["batch_lab"], sched="const", eval_every=50, log=log, tag=" shape lab x16",
+    Kl = min(16, F["n_hidden"])
+    _, inf = LL.train([dl] * Kl, NS_, list(range(Kl)), batch=F["batch_lab"], sched="const", eval_every=NS_, log=log, tag=f" shape lab x{Kl}",
                       pad=LAB_PAD)
     ms["lab"] = inf["ms_per_step"]
     del obs, U
@@ -339,9 +350,10 @@ def shape_test(n_sel, n_cand_est):
                                   + F["n_hidden"] * max(F["n_c"]) * tick_ep) / rr + 400.0)
     p0 = ms["p0_3"] * sum(F["p0_steps"].values()) + ms["p0_1"] * F["p0x2_steps"]
     c = (ms["c_big"] * F["c_steps"][nC] * F["c_seeds"][nC] * (F["n_hidden"] / Lk)
-         + ms["c_mid"] * sum(F["c_steps"][n] * F["c_seeds"][n] for n in F["n_c"] if n != nC))
-    ft = ms["lab"] * F["n_seeds"] * len(F["budgets"]) * len(F["ft_lrs"]) * F["ft_smax"] * (F["ft_folds"] + 1)
-    dd = ms["lab"] * F["n_seeds"] * sum(F["d_steps"].values())
+         + ms["c_mid"] * sum(F["c_steps"][n] * F["c_seeds"][n] for n in F["n_c"] if n != nC) * (F["n_hidden"] / Lm))
+    grp = F["n_hidden"] / Kl
+    ft = ms["lab"] * F["n_seeds"] * len(F["budgets"]) * len(F["ft_lrs"]) * F["ft_smax"] * (F["ft_folds"] + 1) * grp
+    dd = ms["lab"] * F["n_seeds"] * sum(F["d_steps"].values()) * grp
     net_s = (p0 + c + ft + dd) / 1e3
     total_h = (sim_s + net_s + 600.0) / 3600                       # 600 s: compilation, scoring, saving
     res = dict(ms_per_step=ms, screen_member_ticks_per_s=sr, runner_member_ticks_per_s=rr, projected_sim_hours=sim_s / 3600,
