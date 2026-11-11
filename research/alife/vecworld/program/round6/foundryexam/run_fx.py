@@ -205,6 +205,7 @@ def arm_groups(arm, cands, cth):
         hid = [e27[i] for i in sorted(pick.tolist())]
         hid_ids = {(c["prior_seed"], c["index"]) for c in hid}
         train = [c for c in good if (c["prior_seed"], c["index"]) not in hid_ids]
+        train = [train[i] for i in np.random.default_rng(20261112).permutation(len(train))]   # P0[n] = a random subset
         if len(hid) < CFG["n_hidden_P"] or len(train) < 4:
             raise RuntimeError(f"arm P: {len(hid)} hidden and {len(train)} training worlds pass the gate")
         hidden = [dict(theta=c["theta"], label=f"seed{c['prior_seed']}-{c['index']}", plug_prior=train[i % len(train)]["theta"],
@@ -267,10 +268,11 @@ def hidden_world(arm, gi, wi, hw, world, st_norm):
                 clim=dict(mean=ex.clim_mean, sd=ex.clim_sd))
 
 
-def train_groups(cfg, jobs, steps, lr=None, init_of=None, tag="", info=None, deadline=None, eval_every=None):
-    """jobs: list of (name, dataset, seed). Trains them in lockstep groups of at most MAX_LOCK; returns {name: params}."""
+def train_groups(cfg, jobs, steps, lock, lr=None, init_of=None, tag="", info=None, deadline=None, eval_every=None, pad=None):
+    """jobs: list of (name, dataset, seed). Trains them in lockstep groups of `lock` nets (one compiled shape:
+    the caller lists the jobs seed-major, `lock` = the number of hidden worlds); returns {name: params}."""
     out = {}
-    L = NN.Cfg.MAX_LOCK
+    L = min(int(lock), NN.Cfg.MAX_LOCK)
     for s in range(0, len(jobs), L):
         grp = jobs[s:s + L]
         init = None if init_of is None else [init_of[g[0]] for g in grp]
@@ -279,7 +281,7 @@ def train_groups(cfg, jobs, steps, lr=None, init_of=None, tag="", info=None, dea
             log("SKIP " + SKIPPED[-1])
             continue
         ps, inf = NN.train(cfg, [g[1] for g in grp], steps, [g[2] for g in grp], lr=lr, init=init, log=log,
-                           tag=f" {tag}[{s // L}]", deadline=deadline, eval_every=eval_every)
+                           tag=f" {tag}[{s // L}]", deadline=deadline, eval_every=eval_every, pad=pad)
         inf["names"] = [g[0] for g in grp]
         if info is not None:
             info[f"{tag}|batch{s // L}"] = inf
@@ -298,6 +300,8 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
     smu, ssd = st_norm
     info, steps_big = {}, CFG["steps_big"][arm]
     ai = ARMS_ALL.index(arm)
+    pad_big = None if arm == "P" else (CFG["nb_train"] * CFG["epw"], NEX * CFG["nb_train"] * CFG["epw"])
+    pad_lab = (CFG["n_lab"], NEX * CFG["n_lab"])
     # ---- the agent's simulator: training worlds of each group
     for gi, g in enumerate(groups):
         obs, U, cls = sim_mix(g["train"], CFG["epw"], 1000 + 100 * ai + gi, f" {arm} train g{gi}")
@@ -334,7 +338,7 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
         for nm, cfg, seeds in (("P0", C_FULL, [0, 1]), ("A", C_AM, [10, 11]), ("P0s", C_STATE, [20, 21])):
             try:
                 ps, inf = NN.train(cfg, g["ds"], steps_big, seeds, batch=CFG["batch_big"], log=log, tag=f" {arm} {nm} g{gi}",
-                                   deadline=t_arm_end, eval_every=CFG["eval_every"])
+                                   deadline=t_arm_end, eval_every=CFG["eval_every"], pad=pad_big)
                 info[f"{nm}|g{gi}"] = inf
                 if inf["stopped_early"]:
                     SKIPPED.append(f"{arm} {nm} g{gi} stopped at step {inf['stopped_early']} (deadline)")
@@ -362,7 +366,8 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
     log(f"{arm} prior nets done ({time.time() - tn:.0f}s)")
     try:
         jobs = [(f"C|w{i}|s{s}", h["dsC"], 100 + 2 * i + s) for s in (0, 1) for i, h in enumerate(HW)]
-        got = train_groups(C_FULL, jobs, CFG["steps_C"], tag=f"{arm} C", info=info, deadline=t_arm_end, eval_every=CFG["eval_every"])
+        got = train_groups(C_FULL, jobs, CFG["steps_C"], nH, tag=f"{arm} C", info=info, deadline=t_arm_end,
+                           eval_every=CFG["eval_every"])
         nets.update({k: (C_FULL, v) for k, v in got.items()})
     except Exception:
         FAILED.append(f"{arm} nets C")
@@ -375,14 +380,14 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
             dl = [NN.make_dataset(h["lab"]["obs"][:N_], h["lab"]["U"][:N_], smu, ssd, seed=N + i) for i, h in enumerate(HW)]
             sd = (0, 1) if N in CFG["seeds2"] else (0,)
             jobs = [(f"D@{N}|w{i}|s{s}", dl[i], 200 + 2 * i + s) for s in sd for i in range(nH)]
-            got = train_groups(C_FULL, jobs, CFG["steps_D"][N], tag=f"{arm} D@{N}", info=info, deadline=t_arm_end,
-                               eval_every=CFG["eval_every_small"])
+            got = train_groups(C_FULL, jobs, CFG["steps_D"][N], nH, tag=f"{arm} D@{N}", info=info, deadline=t_arm_end,
+                               eval_every=CFG["eval_every_small"], pad=pad_lab)
             nets.update({k: (C_FULL, v) for k, v in got.items()})
             jobs = [(f"FT@{N}|w{i}|s{s}", dl[i], 300 + 2 * i + s) for s in sd for i in range(nH)
                     if f"P0|g{HW[i]['gi']}|s{s}" in nets]
             init_of = {j[0]: nets[f"P0|g{HW[int(j[0].split('|')[1][1:])]['gi']}|s{j[0].split('|')[2][1:]}"][1] for j in jobs}
-            got = train_groups(C_FULL, jobs, CFG["steps_FT"][N], lr=CFG["lr_FT"], init_of=init_of, tag=f"{arm} FT@{N}", info=info,
-                               deadline=t_arm_end, eval_every=CFG["eval_every_small"])
+            got = train_groups(C_FULL, jobs, CFG["steps_FT"][N], nH, lr=CFG["lr_FT"], init_of=init_of, tag=f"{arm} FT@{N}",
+                               info=info, deadline=t_arm_end, eval_every=CFG["eval_every_small"], pad=pad_lab)
             nets.update({k: (C_FULL, v) for k, v in got.items()})
         except Exception:
             FAILED.append(f"{arm} nets D/FT@{N}")
@@ -501,6 +506,8 @@ def shape_test(st_norm):
 
 
 ARMS_ALL = ["P", "N30", "N10"]
+ARM_WEIGHT = {"P": 2.0, "N30": 1.2, "N10": 1.2}       # shares of the time left (arm P is the primary arm)
+NEX = sum(FL.T1 - h - FL.P for h in FL.HS)             # examples per episode (anchors t in [16, 32 - h])
 
 
 def main():
@@ -517,7 +524,7 @@ def main():
     reps = {}
     todo = [a for a in ARMS if a in ARMS_ALL]
     for k, arm in enumerate(todo):
-        share = left() / (len(todo) - k)
+        share = left() * ARM_WEIGHT[arm] / sum(ARM_WEIGHT[a] for a in todo[k:])
         if left() < 600 and args.size == "full":
             SKIPPED.append(f"arm {arm} (time left {left():.0f}s)")
             log("SKIP " + SKIPPED[-1])

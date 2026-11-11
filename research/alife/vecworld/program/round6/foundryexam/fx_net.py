@@ -151,12 +151,21 @@ _ARR = ("X", "CU", "CtU", "CS", "CN", "ST")
 _CONST = ("smu", "ssd", "EW")
 
 
-def stack_datasets(dsets):
-    """Pad and stack along a leading net axis (device arrays)."""
+def _nva(n):
+    """Rows of the padded validation index: whole chunks of EVAL_ROWS, at least N_VAL (one shape for all nets)."""
+    n = max(n, Cfg.N_VAL, 1)
+    return -(-n // Cfg.EVAL_ROWS) * Cfg.EVAL_ROWS
+
+
+def stack_datasets(dsets, pad=None):
+    """Pad and stack along a leading net axis (device arrays). pad = (episodes, training rows): pad to at
+    least these sizes, so that groups with different data sizes share one compiled program (padding rows are
+    never sampled: the example index only names real episodes and n_tr, n_va give the real row counts)."""
     E = max(d["X"].shape[0] for d in dsets)
     ntr = max(len(d["tr"]) for d in dsets)
-    nva = max(max(len(d["va"]) for d in dsets), 1)
-    nva = -(-nva // Cfg.EVAL_ROWS) * Cfg.EVAL_ROWS
+    if pad is not None:
+        E, ntr = max(E, int(pad[0])), max(ntr, int(pad[1]))
+    nva = _nva(max(len(d["va"]) for d in dsets))
 
     def pad(a, n):
         a = np.asarray(a)
@@ -340,9 +349,16 @@ def _fns(cfg, keys, shared, batch):
     return _FN[k]
 
 
-def device_dataset(d):
-    out = {k: jnp.asarray(d[k]) for k in _ARR + _CONST if k in d}
-    out["tr"], out["va"] = jnp.asarray(d["tr"]), jnp.asarray(_pad_va(d["va"]))
+def device_dataset(d, pad=None):
+    def padn(a, n):
+        a = np.asarray(a)
+        if n is None or len(a) >= n:
+            return a
+        return np.concatenate([a, np.zeros((n - len(a),) + a.shape[1:], a.dtype)], 0)
+    E, ntr = (None, None) if pad is None else (int(pad[0]), int(pad[1]))
+    out = {k: jnp.asarray(padn(d[k], E)) for k in _ARR if k in d}
+    out.update({k: jnp.asarray(d[k]) for k in _CONST if k in d})
+    out["tr"], out["va"] = jnp.asarray(padn(d["tr"], ntr)), jnp.asarray(_pad_va(d["va"]))
     out["n_tr"], out["n_va"] = jnp.asarray(np.int32(len(d["tr"]))), jnp.asarray(np.int32(len(d["va"])))
     for k, v in out.items():
         assert v.size < 2 ** 31, f"device array {k} has {v.size} elements"
@@ -350,12 +366,12 @@ def device_dataset(d):
 
 
 def _pad_va(va):
-    nva = max(len(va), 1)
-    nva = -(-nva // Cfg.EVAL_ROWS) * Cfg.EVAL_ROWS
+    nva = _nva(len(va))
     return np.concatenate([va, np.zeros((nva - len(va), 3), va.dtype)], 0) if len(va) < nva else va
 
 
-def train(cfg, dsets, steps, seeds, lr=None, init=None, batch=None, log=None, tag="", deadline=None, eval_every=None):
+def train(cfg, dsets, steps, seeds, lr=None, init=None, batch=None, log=None, tag="", deadline=None, eval_every=None,
+          pad=None):
     """Train len(seeds) nets in lockstep. dsets: a list of data sets (one per net) or ONE data set shared by
     all nets (seeds differ). init: list of parameter trees to start from (fine-tuning; step 0 is then
     evaluated, so a fine-tuned net is never worse on its held-out episodes than its start).
@@ -371,12 +387,12 @@ def train(cfg, dsets, steps, seeds, lr=None, init=None, batch=None, log=None, ta
     check_elems(cfg[0], 1, Cfg.EVAL_ROWS * Cfg.EVAL_DRAWS, "validation chunk")
     t_call = time.time()
     if shared:
-        D = device_dataset(dsets)
+        D = device_dataset(dsets, pad)
         has_val = np.array([dsets["n_val_ep"] > 0] * Kn)
         n_ex, n_ep = [len(dsets["tr"])] * Kn, [dsets["n_ep"]] * Kn
     else:
         assert len(dsets) == Kn
-        D = stack_datasets(dsets)
+        D = stack_datasets(dsets, pad)
         has_val = np.array([d["n_val_ep"] > 0 for d in dsets])
         n_ex, n_ep = [len(d["tr"]) for d in dsets], [d["n_ep"] for d in dsets]
     vstep, veval = _fns(cfg, tuple(sorted(D)), shared, batch)
