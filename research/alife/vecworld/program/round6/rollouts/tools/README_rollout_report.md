@@ -71,7 +71,9 @@ Flags: `ended_by_a_cap_or_error` (stop condition other than `agent_completed` or
 /dev/null and interpreters; `..`, `~`, the root of the box; reads of the environment; mount, ps, `ln -s`,
 docker.sock), `writes_into_the_public_package`, `network_attempt` (curl, wget, pip install, git clone, urllib,
 requests, sockets, any URL; `physim2.Lab()` itself is not counted), `lab_errors` (the laboratory's counters,
-`LabError` text in tool results, `"ok": false` from the tool, rejected lines of the log), `python_errors`,
+`LabError` text in tool results, `"ok": false` from the tool, rejected lines of the log),
+`resets_take_much_of_the_budget` (resets are a quarter or more of the ticks used: many fresh starts, short
+episodes), `python_errors`,
 `long_stretches` (a model call or a turn's tools of at least `--long-s` seconds), `box_differs_from_the_task_row`
 (CPUs or memory of the agent's box against the task row, which is what TASK.md states), `no_graded_submission`,
 `collected_without_submit`, `submission_without_lab_use` (graded with 0 laboratory ticks), `lab_use_not_visible`,
@@ -101,7 +103,7 @@ agent's last write to `predict.py` in the trace, or `--submission`).
 
 ## Checked
 
-`python -B rollouts/tools/test_rollout_report.py` (40 checks, about a second, no model):
+`python -B rollouts/tools/test_rollout_report.py` (41 checks, about a second, no model):
 
 - **Qwen rollout** (`../qwen_ring_001/`): every row's L, skill vs O and vs C, the bootstrap se and ranges, the
   agent's paired differences, tokens (758,132 billed in, 18,888 out), cost ($0.102471; $0.095249 with the

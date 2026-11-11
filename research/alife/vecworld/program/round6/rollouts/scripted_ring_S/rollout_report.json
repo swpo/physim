@@ -414,6 +414,7 @@
   "tick_nats": 2.0,
   "episode_nats": 8.0
  },
+ "reset_cost": 1,
  "timeline": {
   "script": {
    "tool_servers": [
@@ -985,6 +986,7 @@
   "writes_into_the_public_package",
   "network_attempt",
   "lab_errors",
+  "resets_take_much_of_the_budget",
   "python_errors",
   "long_stretches",
   "box_differs_from_the_task_row",

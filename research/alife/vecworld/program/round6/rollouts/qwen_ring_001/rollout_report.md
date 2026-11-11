@@ -135,6 +135,8 @@ Every tool call (t = seconds of the agent phase at which the model's reply arriv
 | 39 | 638 | 37.1 | 1.7 | sim+write | `cat > /workspace/predict.py << 'PYEOF'`; runs 137 lines of Python; writes predict.py (234 lines); simulator: Simulator |  | ok (52 chars) |
 | 40 | 641 | 2.2 | 1.9 | validate | `python -c: Test with the example requests`; runs 6 lines of Python; Lab calls in the code: validate | 1 req (validate x1), 0 ticks, 0.00 nats | no result: the rollout ended |
 
+Shape of the experiments: 18 episodes; ticks of advance per episode: least 16, median 16, most 16; 0 episode(s) are a reset alone; 0 with non-zero inputs.
+
 Laboratory requests, one line per episode (from the laboratory's own log; like episodes of one turn share a line; a rejected request has its own):
 
 | episode | turn | t | requests | ticks | nats | inputs | rejected |
@@ -163,7 +165,7 @@ Laboratory requests, one line per episode (from the laboratory's own log; like e
 - **predictor_outside_submission**: the agent's predict.py is at `predict.py` (relative to the workspace) and the trace shows no copy under submission/, the only folder that is collected
 
 Predictor source: read from the trace (the agent's last write to `predict.py`); `predict(history, program, queries, n_samples, seed)`, 234 lines; reads of `history`: 3, of `program`: 2.
-Checks that did not fire: collected_without_submit, lab_use_not_visible, long_stretches, network_attempt, outside_the_workspace, predictor_ignores_history, predictor_ignores_program, predictor_unreadable, submission_without_lab_use, writes_into_the_public_package.
+Checks that did not fire: collected_without_submit, lab_use_not_visible, long_stretches, network_attempt, outside_the_workspace, predictor_ignores_history, predictor_ignores_program, predictor_unreadable, resets_take_much_of_the_budget, submission_without_lab_use, writes_into_the_public_package.
 
 ## 7. What this report could not see
 

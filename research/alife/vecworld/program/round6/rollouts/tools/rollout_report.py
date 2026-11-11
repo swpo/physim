@@ -568,7 +568,7 @@ def predictor_check(src):
     return out
 
 
-def flags(tr, turns, rows, lab, files, sub_dir, long_s):
+def flags(tr, turns, rows, lab, files, sub_dir, long_s, reset_cost=1):
     ph = (tr.get("info") or {}).get("physim2") or {}
     labc, sub, out = ph.get("lab") or {}, ph.get("submission") or {}, []
 
@@ -614,6 +614,10 @@ def flags(tr, turns, rows, lab, files, sub_dir, long_s):
         add("lab_errors", f"the laboratory rejected {labc.get('rejected')} request(s) and counted {labc.get('infrastructure_errors')} infrastructure error(s) "
             f"(its counters in the trace); {len(seen_err)} rejection(s) are visible in tool results"
             + (f", {len(rec_err)} in the laboratory's own log" if lab is not None else ""), [t for t, _ in use if t], [f"turn {t}: {one_line(e, 150)}" for t, e in use[:25]])
+    n_res, used = labc.get("resets") or 0, labc.get("ticks_used") or 0
+    if n_res and n_res * reset_cost >= 0.25 * used:          # fresh starts instead of long episodes: each shows o(0), a draw from the long-run law
+        add("resets_take_much_of_the_budget", f"{n_res} resets took {n_res * reset_cost} of the {used} laboratory ticks used: {(used - n_res * reset_cost) / n_res:.1f} ticks "
+            "of advance per episode on average. The agent bought fresh starts rather than long episodes; each reset shows o(0) of a new start")
     py_err = [(r["turn"], r["result"]["python_error"]) for r in rows if r["result"].get("python_error")]
     if py_err:
         add("python_errors", f"{len(py_err)} tool call(s) ended in a Python traceback", [t for t, _ in py_err], [f"turn {t}: {e}" for t, e in py_err[:25]])
@@ -863,6 +867,11 @@ def markdown(R):
                          + (f", {lr['rejected']} rejected" if lr["rejected"] else ""), one_line(status, 90).replace("|", "¦")])
         out.append(table(["turn", "t", "model s", "tools s", "kind", "what", "lab (its own log)", "result"], rows) + "\n")
     if tl["lab_episodes"] is not None:
+        real = [e for e in tl["lab_episodes"] if e["episode"]]
+        if real:
+            adv = sorted(e["ticks"] - R["reset_cost"] for e in real)
+            out.append(f"Shape of the experiments: {len(real)} episodes; ticks of advance per episode: least {adv[0]}, median {adv[len(adv) // 2]}, most {adv[-1]}; "
+                       f"{sum(a_ == 0 for a_ in adv)} episode(s) are a reset alone; {sum(e['nats'] > 0 for e in real)} with non-zero inputs.\n")
         out.append("Laboratory requests, one line per episode (from the laboratory's own log; like episodes of one turn share a line; a rejected request has its own):\n")
         groups = []                                          # consecutive episodes of one turn with the same requests, ticks, nats and inputs
         for e in tl["lab_episodes"]:
@@ -896,7 +905,8 @@ def markdown(R):
     return "\n".join(out)
 
 
-FLAG_IDS = ["ended_by_a_cap_or_error", "last_tool_result_never_seen", "outside_the_workspace", "writes_into_the_public_package", "network_attempt", "lab_errors", "python_errors",
+FLAG_IDS = ["ended_by_a_cap_or_error", "last_tool_result_never_seen", "outside_the_workspace", "writes_into_the_public_package", "network_attempt", "lab_errors",
+            "resets_take_much_of_the_budget", "python_errors",
             "long_stretches", "box_differs_from_the_task_row", "no_graded_submission", "collected_without_submit", "submission_without_lab_use", "lab_use_not_visible",
             "predictor_outside_submission", "predictor_unreadable", "predictor_ignores_history", "predictor_ignores_program"]
 
@@ -948,7 +958,7 @@ def main(argv=None):
     us = usage(tr, prices, cfg)
     turns, rows, lab, files = timeline(tr, lab_log, float(m_sig.group(1)) if m_sig else None, (exam_cfg.get("lab") or {}).get("reset_cost", 1))
     eps = None if lab is None else lab_episodes(lab, rows)
-    fl, pc = flags(tr, turns, rows, lab, files, a.submission, a.long_s)
+    fl, pc = flags(tr, turns, rows, lab, files, a.submission, a.long_s, (exam_cfg.get("lab") or {}).get("reset_cost", 1))
     # ---- summaries of the timeline ----
     by_kind, T = {}, {t["turn"]: t for t in turns}
     for r in rows:
@@ -1004,7 +1014,7 @@ def main(argv=None):
          "scores": sc, "usage": us,
          "wall_s": {"boot": span("boot"), "setup": span("setup"), "agent": span("agent"), "finalize": span("finalize"), "verifier": g.get("verifier_wall_s"),
                     "agent_model": ((tm.get("agent") or {}).get("model") or {}).get("duration"), "agent_harness": ((tm.get("agent") or {}).get("harness") or {}).get("duration")},
-         "budgets": None, "caps_in_task_text": caps_text,
+         "budgets": None, "caps_in_task_text": caps_text, "reset_cost": (exam_cfg.get("lab") or {}).get("reset_cost", 1),
          "timeline": {"script": script, "turns": turns, "rows": rows, "by_kind": by_kind, "milestones": miles, "lab_record_given": lab is not None,
                       "lab_route": {"tool": sum(r["detail"].get("via") == "tool" for r in rows), "python": sum(bool(r["detail"].get("lab_call_sites")) for r in rows)},
                       "lab_requests": lab, "lab_episodes": eps},

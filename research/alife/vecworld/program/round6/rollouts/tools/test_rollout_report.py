@@ -196,6 +196,10 @@ def main():
         ph["lab"].update(ticks_used=0)
         json.dump(ep, open(f, "w"))
         rep, _ = run(tmp, "syn2", "--trace", f)
+        ph["lab"].update(ticks_used=400, resets=210)
+        json.dump(ep, open(f, "w"))
+        check("synthetic: 210 resets in 400 ticks are flagged; the Qwen rollout's 18 in 306 are not",
+              "resets_take_much_of_the_budget" in {x["id"] for x in run(tmp, "syn2b", "--trace", f)[0]["flags"]} and "resets_take_much_of_the_budget" not in ids)
         check("synthetic: a graded submission with 0 laboratory ticks is flagged", {"submission_without_lab_use", "collected_without_submit"} <= {x["id"] for x in rep["flags"]})
         ep = json.loads(open(os.path.join(q, "trace.redacted.jsonl")).readline())      # turn 17 now runs a script the trace never shows
         tr = ep["traces"][0]

@@ -64,6 +64,8 @@ A scripted agent: `reference_agent.py` (label `S`) ran in the agent's box for 28
 
 The laboratory's counters in the trace: 392 ticks, 8 episodes, 46.66 nats, 29 requests (0 rejected, 0 infrastructure errors), 1 validation(s), 1 submit(s), submitted: yes.
 
+Shape of the experiments: 8 episodes; ticks of advance per episode: least 48, median 48, most 48; 0 episode(s) are a reset alone; 6 with non-zero inputs.
+
 Laboratory requests, one line per episode (from the laboratory's own log; like episodes of one turn share a line; a rejected request has its own):
 
 | episode | turn | t | requests | ticks | nats | inputs | rejected |
@@ -84,7 +86,7 @@ Laboratory requests, one line per episode (from the laboratory's own log; like e
 - **box_differs_from_the_task_row**: the agent's box did not have the resources of the task row, which is what TASK.md states as the compute envelope (cpu: task row 4, box 2)
 
 Predictor source: not checked: the predictor's source is neither in the trace nor given with --submission.
-Checks that did not fire: collected_without_submit, ended_by_a_cap_or_error, lab_errors, lab_use_not_visible, last_tool_result_never_seen, long_stretches, network_attempt, no_graded_submission, outside_the_workspace, predictor_ignores_history, predictor_ignores_program, predictor_outside_submission, predictor_unreadable, python_errors, submission_without_lab_use, writes_into_the_public_package.
+Checks that did not fire: collected_without_submit, ended_by_a_cap_or_error, lab_errors, lab_use_not_visible, last_tool_result_never_seen, long_stretches, network_attempt, no_graded_submission, outside_the_workspace, predictor_ignores_history, predictor_ignores_program, predictor_outside_submission, predictor_unreadable, python_errors, resets_take_much_of_the_budget, submission_without_lab_use, writes_into_the_public_package.
 
 ## 7. What this report could not see
 
