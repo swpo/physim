@@ -1,6 +1,7 @@
 """analyse -- finite-size table, budget curve and state-given screen for study (c) at tiny size (numpy only).
 
-  python -B analyse.py <scratch dir>        -> results/summary.json
+  python -B analyse.py <scratch dir>          -> results/summary.json (everything; about 3 CPU-minutes)
+  python -B analyse.py <scratch dir> screen   -> only the finite-size table and the screen are recomputed
 
 Inputs (made by run_pools.sh and screen_state.py; raw arrays are scratch, not committed):
   b{32,48,64}_s*.npz   level-2 trajectories (N, s_b) per box side at declared parameters (eps 0.4, mut128 25)
@@ -285,7 +286,6 @@ def main():
            "parameters": "declared, not hidden: eps 0.4, mut128 25, all others vxlib.THETA0; float64; CPU",
            "pools": {str(H): dict(members=int(P[H].shape[0]), ticks=int(P[H].shape[1]),
                                   cpu_s=sum(m["cpu_s"] for m in meta[H]),
-                                  tracker_overflow=sum(m["overflow"] for m in meta[H]),
                                   cost_units_per_episode=round(P[H].shape[1] * H * H / (T_EXAM * EXAM_H ** 2), 4))
                      for H in P if P[H] is not None}}
 
@@ -294,7 +294,7 @@ def main():
     P128, meta128 = load_pool(S, 128)
     if P128 is not None:
         out["pools"]["128"] = dict(members=int(P128.shape[0]), ticks=int(P128.shape[1]), cpu_s=sum(m["cpu_s"] for m in meta128),
-                                   tracker_overflow=sum(m["overflow"] for m in meta128), note="finite-size table only")
+                                   note="finite-size table only")
     for H in (32, 48, 64, 128):
         l2 = P.get(H) if H != 128 else P128
         if l2 is None:
@@ -338,234 +338,242 @@ def main():
     scale = np.array([late[..., 0].std(), late[..., 1].std()])
     fscale = np.array([2.5, 0.15, 20.0])
     unit = {H: P[H].shape[1] * H * H / (T_EXAM * EXAM_H ** 2) for H in P if P[H] is not None}
-    budgets = (1, 2, 4, 8, 15)
-    n_draw = 6
-    N_LAB = 2                                  # exam-size Lab episodes of the multi-fidelity recipes
-    CELLS = ("", "|h64", "|s_b")
-    pol = {}
+    MODE = sys.argv[2] if len(sys.argv) > 2 else "all"
+    prev_f = os.path.join(HERE, "results", "summary.json")
+    if MODE != "all":
+        prev = json.load(open(prev_f))
+        for k in ("budget_curve", "horizon_transfer", "fss_constants"):
+            if k in prev:
+                out[k] = prev[k]
+    if MODE == "all":
+        budgets = (1, 2, 4, 8, 15)
+        n_draw = 6
+        N_LAB = 2                                  # exam-size Lab episodes of the multi-fidelity recipes
+        CELLS = ("", "|h64", "|s_b")
+        pol = {}
 
-    def add(name, i, a_, h, es, es_s):
-        d = pol.setdefault(name, {c: np.zeros(B64) for c in CELLS} | {"n": np.zeros(B64), "n64": np.zeros(B64)})
-        d[""][i] += es
-        d["|s_b"][i] += es_s
-        d["n"][i] += 1
-        if h == 64:
-            d["|h64"][i] += es
-            d["n64"][i] += 1
+        def add(name, i, a_, h, es, es_s):
+            d = pol.setdefault(name, {c: np.zeros(B64) for c in CELLS} | {"n": np.zeros(B64), "n64": np.zeros(B64)})
+            d[""][i] += es
+            d["|s_b"][i] += es_s
+            d["n"][i] += 1
+            if h == 64:
+                d["|h64"][i] += es
+                d["n64"][i] += 1
 
-    def put(name, i, a_, h, Xf, y):
-        add(name, i, a_, h, fair_es(Xf, y, scale), fair_es(Xf[:, 1:2], y[1:2], scale[1:2]))
+        def put(name, i, a_, h, Xf, y):
+            add(name, i, a_, h, fair_es(Xf, y, scale), fair_es(Xf[:, 1:2], y[1:2], scale[1:2]))
 
-    items = [(a_, h) for a_ in ANCH for h in HS if a_ + h <= T_EXAM]
-    fss_c = None
-    if P[48] is not None:
-        fss_c = {f: fss(law_fit(P[32], f), law_fit(P[48], f)) for f in ("law", "lin", "const")}
-        fss_r = ridge_fss_fit(P[32], P[48])
-        out["fss_constants"] = dict(law=fss_c["law"], cost_units=round(P[32].shape[0] * unit[32] + P[48].shape[0] * unit[48], 2))
-    for i in range(B64):
-        others = np.array([j for j in range(B64) if j != i])
-        clim = T64[others][:, LAB + 19:].reshape(-1, 2)                    # long-run: all ticks from 80 on
-        r0 = np.random.default_rng([i, 0])
-        for (a_, h) in items:
-            x0, y = T64[i, a_ - 1].copy(), T64[i, a_ + h - 1]
-            put("K", i, a_, h, clim[r0.integers(0, len(clim), 64)], y)
-            put("Ktick", i, a_, h, T64[others, a_ + h - 1], y)
-            put("persistence", i, a_, h, np.tile(x0, (2, 1)), y)
-            if fss_c:
-                for f in fss_c:
-                    put(f"{f}_fss32+48", i, a_, h, law_predict(fss_c[f], x0, h, r0, 1.0), y)
-                put("ridge_fss32+48", i, a_, h, ridge_predict(fss_r, x0, h, r0), y)
+        items = [(a_, h) for a_ in ANCH for h in HS if a_ + h <= T_EXAM]
+        fss_c = None
+        if P[48] is not None:
+            fss_c = {f: fss(law_fit(P[32], f), law_fit(P[48], f)) for f in ("law", "lin", "const")}
+            fss_r = ridge_fss_fit(P[32], P[48])
+            out["fss_constants"] = dict(law=fss_c["law"], cost_units=round(P[32].shape[0] * unit[32] + P[48].shape[0] * unit[48], 2))
+        for i in range(B64):
+            others = np.array([j for j in range(B64) if j != i])
+            clim = T64[others][:, LAB + 19:].reshape(-1, 2)                    # long-run: all ticks from 80 on
+            r0 = np.random.default_rng([i, 0])
+            for (a_, h) in items:
+                x0, y = T64[i, a_ - 1].copy(), T64[i, a_ + h - 1]
+                put("K", i, a_, h, clim[r0.integers(0, len(clim), 64)], y)
+                put("Ktick", i, a_, h, T64[others, a_ + h - 1], y)
+                put("persistence", i, a_, h, np.tile(x0, (2, 1)), y)
+                if fss_c:
+                    for f in fss_c:
+                        put(f"{f}_fss32+48", i, a_, h, law_predict(fss_c[f], x0, h, r0, 1.0), y)
+                    put("ridge_fss32+48", i, a_, h, ridge_predict(fss_r, x0, h, r0), y)
+            for R in budgets:
+                for dr in range(n_draw):
+                    r_ = np.random.default_rng([i, R, dr])
+                    sets = {"64": (T64[r_.choice(others, min(R, len(others)), replace=False)], 1.0)}
+                    for H in (32, 48):
+                        if P[H] is None:
+                            continue
+                        nH = int(round(R / unit[H]))
+                        if 1 <= nH <= P[H].shape[0]:
+                            sets[str(H)] = (P[H][r_.choice(P[H].shape[0], nH, replace=False)], (EXAM_H / H) ** 2)
+                    mods = {}
+                    for key, (tr, ar) in sets.items():
+                        mods["A" + key] = ("analog", analog_fit(tr, ar))
+                        mods["ridge" + key] = ("ridge", ridge_fit(tr, ar))
+                        for form in ("law", "lin", "const"):
+                            mods[f"{form}{key}"] = ("law", law_fit(tr, form), ar)
+                        if key != "64":
+                            mods[f"law{key}_noscale"] = ("law_ns", law_fit(tr, "law"), ar)
+                    mods["At64"] = ("analog_t", mods["A64"][1])
+                    if "32" in sets and len(sets["32"][0]) >= 4:
+                        tl = analog_fit(pool_tiles(sets["32"][0], r_, 2 * len(sets["32"][0])), 1.0)
+                        mods["A32tile"] = ("analog", tl)
+                        lab = T64[r_.choice(others, N_LAB, replace=False)]
+                        mods[f"A32tile+res{N_LAB}"] = ("analog_res", tl, residual_fit(tl, lab, fscale))
+                    for (a_, h) in items:
+                        x0, y = T64[i, a_ - 1].copy(), T64[i, a_ + h - 1]
+                        for name, m in mods.items():
+                            if m[0] == "analog":
+                                Xf = analog_predict(m[1], x0, a_, h, r_, fscale)
+                            elif m[0] == "analog_t":
+                                Xf = analog_predict(m[1], x0, a_, h, r_, fscale, use_tick=True)
+                            elif m[0] == "analog_res":
+                                Xf = finish(analog_predict(m[1], x0, a_, h, r_, fscale) + feats(x0, m[2]["nbar"]) @ m[2][h])
+                            elif m[0] == "ridge":
+                                Xf = ridge_predict(m[1], x0, h, r_)
+                            else:
+                                Xf = law_predict(m[1], x0, h, r_, m[2], scale_noise=(m[0] == "law"))
+                            put(f"{name}@R{R}", i, a_, h, Xf, y)
+
+        def L(name, cell, idx=None):
+            d = pol[name]
+            n = d["n64"] if cell == "|h64" else d["n"]
+            v = d[cell] / n
+            return v.mean() if idx is None else v[idx].mean()
+
+        def skill(name, cell):
+            boot = [1 - L(name, cell, idx) / L("K", cell, idx) for idx in rng.integers(0, B64, (1000, B64))]
+            return [round(float(1 - L(name, cell) / L("K", cell)), 4), round(float(np.std(boot)), 4)]
+
+        def diff(n1, n2, cell):
+            """Skill of n1 minus skill of n2, paired bootstrap over the truth members: value, se, z."""
+            boot = [(L(n2, cell, idx) - L(n1, cell, idx)) / L("K", cell, idx) for idx in rng.integers(0, B64, (1000, B64))]
+            v = (L(n2, cell) - L(n1, cell)) / L("K", cell)
+            se = float(np.std(boot))
+            return [round(float(v), 4), round(se, 4), round(float(v / max(se, 1e-9)), 2)]
+
+        out["budget_curve"] = dict(
+            note="skill = 1 - L / L(K), L the fair energy score pooled over items (truth members x 6 anchors x 4 horizons "
+                 "at 64 px); value, bootstrap se over truth members. K = long-run distribution (the other members, all "
+                 "ticks from 80 on); Ktick = the other members at the target tick. Budget R in 64 px episode equivalents "
+                 "(px-ticks): a policy named X32 at R uses round(R / 0.365) episodes at 32 px, X48 round(R / 0.692) at "
+                 "48 px, X64 R exam-size episodes (with the parameters fixed and public this is also D(R) on R Lab "
+                 "episodes). A = analog ensemble on (N, s_b) (At: also the tick); ridge = increments regressed on "
+                 "(1, s, s^2, N) per horizon, residuals resampled; law / lin / const = the level-2 law iterated in "
+                 "8-tick steps, the round-5 control without the selection term, constant drift; _noscale = law without "
+                 "the box-size scaling of its noise; A32tile = analog on synthetic episodes pooled from four 32 px "
+                 "members; +res2 = the same plus a linear correction of the mean fitted on 2 exam-size Lab episodes; "
+                 "_fss32+48 = law (or control) constants extrapolated linearly in 1 / area from the whole 32 and 48 px "
+                 "pools; ridge_fss32+48 = the regression with every coefficient linear in 1 / area, read at 64 px. "
+                 "Cells: all, |h64 (64 ticks ahead), |s_b (kind share only).",
+            scale_sd=[round(float(v), 4) for v in scale], truth_members=B64, items_per_member=len(items),
+            L_K={c or "all": round(float(L("K", c)), 4) for c in CELLS},
+            skill={c or "all": {k: skill(k, c) for k in sorted(pol) if k != "K"} for c in CELLS})
+        cmp_ = {}
+        pairs_ = [("law64", "A64"), ("law64", "ridge64"), ("law64", "lin64"), ("law64", "const64"), ("ridge64", "A64"),
+                  ("At64", "A64"), ("law32", "A32"), ("law32", "lin32"), ("law32", "law32_noscale"), ("A32tile", "A32"),
+                  ("A64", "A32"), ("A64", "A32tile"), ("law64", "law32"), ("ridge64", "ridge32"), ("A64", "A48"),
+                  ("law64", "law48"), (f"A32tile+res{N_LAB}", "A32tile"), ("law64", f"A32tile+res{N_LAB}")]
         for R in budgets:
-            for dr in range(n_draw):
-                r_ = np.random.default_rng([i, R, dr])
-                sets = {"64": (T64[r_.choice(others, min(R, len(others)), replace=False)], 1.0)}
-                for H in (32, 48):
-                    if P[H] is None:
-                        continue
-                    nH = int(round(R / unit[H]))
-                    if 1 <= nH <= P[H].shape[0]:
-                        sets[str(H)] = (P[H][r_.choice(P[H].shape[0], nH, replace=False)], (EXAM_H / H) ** 2)
-                mods = {}
-                for key, (tr, ar) in sets.items():
-                    mods["A" + key] = ("analog", analog_fit(tr, ar))
-                    mods["ridge" + key] = ("ridge", ridge_fit(tr, ar))
-                    for form in ("law", "lin", "const"):
-                        mods[f"{form}{key}"] = ("law", law_fit(tr, form), ar)
-                    if key != "64":
-                        mods[f"law{key}_noscale"] = ("law_ns", law_fit(tr, "law"), ar)
-                mods["At64"] = ("analog_t", mods["A64"][1])
-                if "32" in sets and len(sets["32"][0]) >= 4:
-                    tl = analog_fit(pool_tiles(sets["32"][0], r_, 2 * len(sets["32"][0])), 1.0)
-                    mods["A32tile"] = ("analog", tl)
-                    lab = T64[r_.choice(others, N_LAB, replace=False)]
-                    mods[f"A32tile+res{N_LAB}"] = ("analog_res", tl, residual_fit(tl, lab, fscale))
-                for (a_, h) in items:
-                    x0, y = T64[i, a_ - 1].copy(), T64[i, a_ + h - 1]
-                    for name, m in mods.items():
-                        if m[0] == "analog":
-                            Xf = analog_predict(m[1], x0, a_, h, r_, fscale)
-                        elif m[0] == "analog_t":
-                            Xf = analog_predict(m[1], x0, a_, h, r_, fscale, use_tick=True)
-                        elif m[0] == "analog_res":
-                            Xf = finish(analog_predict(m[1], x0, a_, h, r_, fscale) + feats(x0, m[2]["nbar"]) @ m[2][h])
-                        elif m[0] == "ridge":
-                            Xf = ridge_predict(m[1], x0, h, r_)
-                        else:
-                            Xf = law_predict(m[1], x0, h, r_, m[2], scale_noise=(m[0] == "law"))
-                        put(f"{name}@R{R}", i, a_, h, Xf, y)
-
-    def L(name, cell, idx=None):
-        d = pol[name]
-        n = d["n64"] if cell == "|h64" else d["n"]
-        v = d[cell] / n
-        return v.mean() if idx is None else v[idx].mean()
-
-    def skill(name, cell):
-        boot = [1 - L(name, cell, idx) / L("K", cell, idx) for idx in rng.integers(0, B64, (1000, B64))]
-        return [round(float(1 - L(name, cell) / L("K", cell)), 4), round(float(np.std(boot)), 4)]
-
-    def diff(n1, n2, cell):
-        """Skill of n1 minus skill of n2, paired bootstrap over the truth members: value, se, z."""
-        boot = [(L(n2, cell, idx) - L(n1, cell, idx)) / L("K", cell, idx) for idx in rng.integers(0, B64, (1000, B64))]
-        v = (L(n2, cell) - L(n1, cell)) / L("K", cell)
-        se = float(np.std(boot))
-        return [round(float(v), 4), round(se, 4), round(float(v / max(se, 1e-9)), 2)]
-
-    out["budget_curve"] = dict(
-        note="skill = 1 - L / L(K), L the fair energy score pooled over items (truth members x 6 anchors x 4 horizons "
-             "at 64 px); value, bootstrap se over truth members. K = long-run distribution (the other members, all "
-             "ticks from 80 on); Ktick = the other members at the target tick. Budget R in 64 px episode equivalents "
-             "(px-ticks): a policy named X32 at R uses round(R / 0.365) episodes at 32 px, X48 round(R / 0.692) at "
-             "48 px, X64 R exam-size episodes (with the parameters fixed and public this is also D(R) on R Lab "
-             "episodes). A = analog ensemble on (N, s_b) (At: also the tick); ridge = increments regressed on "
-             "(1, s, s^2, N) per horizon, residuals resampled; law / lin / const = the level-2 law iterated in "
-             "8-tick steps, the round-5 control without the selection term, constant drift; _noscale = law without "
-             "the box-size scaling of its noise; A32tile = analog on synthetic episodes pooled from four 32 px "
-             "members; +res2 = the same plus a linear correction of the mean fitted on 2 exam-size Lab episodes; "
-             "_fss32+48 = law (or control) constants extrapolated linearly in 1 / area from the whole 32 and 48 px "
-             "pools; ridge_fss32+48 = the regression with every coefficient linear in 1 / area, read at 64 px. "
-             "Cells: all, |h64 (64 ticks ahead), |s_b (kind share only).",
-        scale_sd=[round(float(v), 4) for v in scale], truth_members=B64, items_per_member=len(items),
-        L_K={c or "all": round(float(L("K", c)), 4) for c in CELLS},
-        skill={c or "all": {k: skill(k, c) for k in sorted(pol) if k != "K"} for c in CELLS})
-    cmp_ = {}
-    pairs_ = [("law64", "A64"), ("law64", "ridge64"), ("law64", "lin64"), ("law64", "const64"), ("ridge64", "A64"),
-              ("At64", "A64"), ("law32", "A32"), ("law32", "lin32"), ("law32", "law32_noscale"), ("A32tile", "A32"),
-              ("A64", "A32"), ("A64", "A32tile"), ("law64", "law32"), ("ridge64", "ridge32"), ("A64", "A48"),
-              ("law64", "law48"), (f"A32tile+res{N_LAB}", "A32tile"), ("law64", f"A32tile+res{N_LAB}")]
-    for R in budgets:
+            for cell in CELLS:
+                for a_, b_ in pairs_:
+                    n1, n2 = f"{a_}@R{R}", f"{b_}@R{R}"
+                    if n1 in pol and n2 in pol:
+                        cmp_[f"{a_} - {b_} {cell} @R{R}".replace("  ", " ")] = diff(n1, n2, cell)
         for cell in CELLS:
-            for a_, b_ in pairs_:
-                n1, n2 = f"{a_}@R{R}", f"{b_}@R{R}"
-                if n1 in pol and n2 in pol:
-                    cmp_[f"{a_} - {b_} {cell} @R{R}".replace("  ", " ")] = diff(n1, n2, cell)
-    for cell in CELLS:
-        for a_, b_ in (("law64@R2", f"A32tile+res{N_LAB}@R8"), ("law64@R2", "A64@R15"), ("law64@R1", "A64@R4"),
-                       ("law64@R2", "A32tile@R15"), ("law_fss32+48", "law64@R15"), ("law_fss32+48", "law32@R15"),
-                       ("law_fss32+48", "lin_fss32+48"), ("law_fss32+48", "A32tile@R15"), ("law_fss32+48", "A64@R15"),
-                       ("law_fss32+48", "const_fss32+48"), ("law_fss32+48", "ridge_fss32+48"), ("law_fss32+48", "ridge32@R15"),
-                       ("ridge_fss32+48", "ridge32@R15"), ("law_fss32+48", "ridge48@R8"), ("law_fss32+48", "law48@R8"),
-                       ("ridge64@R15", "ridge32@R15"), ("ridge64@R15", "ridge48@R8"), ("law64@R15", "law48@R8")):
-            if a_ in pol and b_ in pol:
-                cmp_[f"{a_} - {b_} {cell}".strip()] = diff(a_, b_, cell)
-    out["budget_curve"]["paired_differences"] = dict(note="skill difference (first minus second), bootstrap se, z; paired over the truth members", **cmp_)
+            for a_, b_ in (("law64@R2", f"A32tile+res{N_LAB}@R8"), ("law64@R2", "A64@R15"), ("law64@R1", "A64@R4"),
+                           ("law64@R2", "A32tile@R15"), ("law_fss32+48", "law64@R15"), ("law_fss32+48", "law32@R15"),
+                           ("law_fss32+48", "lin_fss32+48"), ("law_fss32+48", "A32tile@R15"), ("law_fss32+48", "A64@R15"),
+                           ("law_fss32+48", "const_fss32+48"), ("law_fss32+48", "ridge_fss32+48"), ("law_fss32+48", "ridge32@R15"),
+                           ("ridge_fss32+48", "ridge32@R15"), ("law_fss32+48", "ridge48@R8"), ("law_fss32+48", "law48@R8"),
+                           ("ridge64@R15", "ridge32@R15"), ("ridge64@R15", "ridge48@R8"), ("law64@R15", "law48@R8")):
+                if a_ in pol and b_ in pol:
+                    cmp_[f"{a_} - {b_} {cell}".strip()] = diff(a_, b_, cell)
+        out["budget_curve"]["paired_differences"] = dict(note="skill difference (first minus second), bootstrap se, z; paired over the truth members", **cmp_)
 
-    # ---------------- 2b. horizon transfer: nothing at exam size is seen beyond tick T_CUT
-    T_CUT = 140
-    items_b = [(a_, h) for a_ in (140, 160, 180) for h in (32, 64, 96) if a_ + h <= T_EXAM]
-    polb = {}
+        # ---------------- 2b. horizon transfer: nothing at exam size is seen beyond tick T_CUT
+        T_CUT = 140
+        items_b = [(a_, h) for a_ in (140, 160, 180) for h in (32, 64, 96) if a_ + h <= T_EXAM]
+        polb = {}
 
-    def putb(name, i, Xf, y):
-        d = polb.setdefault(name, {"all": np.zeros(B64), "s_b": np.zeros(B64), "n": np.zeros(B64)})
-        d["all"][i] += fair_es(Xf, y, scale)
-        d["s_b"][i] += fair_es(Xf[:, 1:2], y[1:2], scale[1:2])
-        d["n"][i] += 1
+        def putb(name, i, Xf, y):
+            d = polb.setdefault(name, {"all": np.zeros(B64), "s_b": np.zeros(B64), "n": np.zeros(B64)})
+            d["all"][i] += fair_es(Xf, y, scale)
+            d["s_b"][i] += fair_es(Xf[:, 1:2], y[1:2], scale[1:2])
+            d["n"][i] += 1
 
-    small8 = {H: int(round(8 / unit[H])) for H in (32, 48) if P[H] is not None and int(round(8 / unit[H])) <= P[H].shape[0]}
-    for i in range(B64):
-        others = np.array([j for j in range(B64) if j != i])
-        clim = T64[others][:, LAB + 19:].reshape(-1, 2)
-        r0 = np.random.default_rng([i, 1])
-        full = T64[others]
-        refs = {"C_law64_full@R15": ("law", law_fit(full, "law"), 1.0),
-                "C_ridgeit64_full@R15": ("ridge", ridge_it_fit([(full, 1.0, 1.0)]))}
-        if fss_c:
-            refs["law_fss32+48"] = ("law", fss_c["law"], 1.0)
-            refs["lin_fss32+48"] = ("law", fss_c["lin"], 1.0)
-        for (a_, h) in items_b:
-            x0, y = T64[i, a_ - 1].copy(), T64[i, a_ + h - 1]
-            putb("K", i, clim[r0.integers(0, len(clim), 64)], y)
-            putb("Ktick", i, T64[others, a_ + h - 1], y)
-            putb("persistence", i, np.tile(x0, (2, 1)), y)
-            for name, m in refs.items():
-                putb(name, i, law_predict(m[1], x0, h, r0, m[2]) if m[0] == "law" else ridge_it_predict(m[1], x0, h, r0), y)
+        small8 = {H: int(round(8 / unit[H])) for H in (32, 48) if P[H] is not None and int(round(8 / unit[H])) <= P[H].shape[0]}
+        for i in range(B64):
+            others = np.array([j for j in range(B64) if j != i])
+            clim = T64[others][:, LAB + 19:].reshape(-1, 2)
+            r0 = np.random.default_rng([i, 1])
+            full = T64[others]
+            refs = {"C_law64_full@R15": ("law", law_fit(full, "law"), 1.0),
+                    "C_ridgeit64_full@R15": ("ridge", ridge_it_fit([(full, 1.0, 1.0)]))}
+            if fss_c:
+                refs["law_fss32+48"] = ("law", fss_c["law"], 1.0)
+                refs["lin_fss32+48"] = ("law", fss_c["lin"], 1.0)
+            for (a_, h) in items_b:
+                x0, y = T64[i, a_ - 1].copy(), T64[i, a_ + h - 1]
+                putb("K", i, clim[r0.integers(0, len(clim), 64)], y)
+                putb("Ktick", i, T64[others, a_ + h - 1], y)
+                putb("persistence", i, np.tile(x0, (2, 1)), y)
+                for name, m in refs.items():
+                    putb(name, i, law_predict(m[1], x0, h, r0, m[2]) if m[0] == "law" else ridge_it_predict(m[1], x0, h, r0), y)
+            for n_lab in budgets:
+                for dr in range(n_draw):
+                    r_ = np.random.default_rng([i, n_lab, dr, 7])
+                    lab = T64[r_.choice(others, min(n_lab, len(others)), replace=False)]
+                    mods = {f"{f}64cut": ("law", law_fit(lab, f, t_to=T_CUT), 1.0) for f in ("law", "lin", "const")}
+                    mods["ridgeit64cut"] = ("ridge", ridge_it_fit([(lab, 1.0, 1.0)], t_to=T_CUT))
+                    if n_lab in (2, 15) and dr < 2:
+                        mods["analogit64cut"] = ("analog", analog_it_fit([(lab, 1.0, 1.0)], t_to=T_CUT))
+                    for H, nH in small8.items():
+                        sm = P[H][r_.choice(P[H].shape[0], nH, replace=False)]
+                        ar = (EXAM_H / H) ** 2
+                        mods[f"ridgeit{H}"] = ("ridge", ridge_it_fit([(sm, ar, 1.0)]))
+                        mods[f"law{H}"] = ("law", law_fit(sm, "law"), ar)
+                        mods[f"ridgeit{H}+lab"] = ("ridge", ridge_it_fit([(sm, ar, 1.0), (lab[:, :T_CUT], 1.0, 1.0)]))
+                    for (a_, h) in items_b:
+                        x0, y = T64[i, a_ - 1].copy(), T64[i, a_ + h - 1]
+                        for name, m in mods.items():
+                            if m[0] == "law":
+                                Xf = law_predict(m[1], x0, h, r_, m[2])
+                            elif m[0] == "ridge":
+                                Xf = ridge_it_predict(m[1], x0, h, r_)
+                            else:
+                                Xf = analog_it_predict(m[1], x0, h, r_, fscale)
+                            putb(f"{name}@n{n_lab}", i, Xf, y)
+
+        def Lb(name, cell, idx=None):
+            v = polb[name][cell] / polb[name]["n"]
+            return v.mean() if idx is None else v[idx].mean()
+
+        def skillb(name, cell):
+            boot = [1 - Lb(name, cell, idx) / Lb("K", cell, idx) for idx in rng.integers(0, B64, (1000, B64))]
+            return [round(float(1 - Lb(name, cell) / Lb("K", cell)), 4), round(float(np.std(boot)), 4)]
+
+        def diffb(n1, n2, cell):
+            boot = [(Lb(n2, cell, idx) - Lb(n1, cell, idx)) / Lb("K", cell, idx) for idx in rng.integers(0, B64, (1000, B64))]
+            v = (Lb(n2, cell) - Lb(n1, cell)) / Lb("K", cell)
+            se = float(np.std(boot))
+            return [round(float(v), 4), round(se, 4), round(float(v / max(se, 1e-9)), 2)]
+
+        cmpb = {}
         for n_lab in budgets:
-            for dr in range(n_draw):
-                r_ = np.random.default_rng([i, n_lab, dr, 7])
-                lab = T64[r_.choice(others, min(n_lab, len(others)), replace=False)]
-                mods = {f"{f}64cut": ("law", law_fit(lab, f, t_to=T_CUT), 1.0) for f in ("law", "lin", "const")}
-                mods["ridgeit64cut"] = ("ridge", ridge_it_fit([(lab, 1.0, 1.0)], t_to=T_CUT))
-                if n_lab in (2, 15) and dr < 2:
-                    mods["analogit64cut"] = ("analog", analog_it_fit([(lab, 1.0, 1.0)], t_to=T_CUT))
-                for H, nH in small8.items():
-                    sm = P[H][r_.choice(P[H].shape[0], nH, replace=False)]
-                    ar = (EXAM_H / H) ** 2
-                    mods[f"ridgeit{H}"] = ("ridge", ridge_it_fit([(sm, ar, 1.0)]))
-                    mods[f"law{H}"] = ("law", law_fit(sm, "law"), ar)
-                    mods[f"ridgeit{H}+lab"] = ("ridge", ridge_it_fit([(sm, ar, 1.0), (lab[:, :T_CUT], 1.0, 1.0)]))
-                for (a_, h) in items_b:
-                    x0, y = T64[i, a_ - 1].copy(), T64[i, a_ + h - 1]
-                    for name, m in mods.items():
-                        if m[0] == "law":
-                            Xf = law_predict(m[1], x0, h, r_, m[2])
-                        elif m[0] == "ridge":
-                            Xf = ridge_it_predict(m[1], x0, h, r_)
-                        else:
-                            Xf = analog_it_predict(m[1], x0, h, r_, fscale)
-                        putb(f"{name}@n{n_lab}", i, Xf, y)
-
-    def Lb(name, cell, idx=None):
-        v = polb[name][cell] / polb[name]["n"]
-        return v.mean() if idx is None else v[idx].mean()
-
-    def skillb(name, cell):
-        boot = [1 - Lb(name, cell, idx) / Lb("K", cell, idx) for idx in rng.integers(0, B64, (1000, B64))]
-        return [round(float(1 - Lb(name, cell) / Lb("K", cell)), 4), round(float(np.std(boot)), 4)]
-
-    def diffb(n1, n2, cell):
-        boot = [(Lb(n2, cell, idx) - Lb(n1, cell, idx)) / Lb("K", cell, idx) for idx in rng.integers(0, B64, (1000, B64))]
-        v = (Lb(n2, cell) - Lb(n1, cell)) / Lb("K", cell)
-        se = float(np.std(boot))
-        return [round(float(v), 4), round(se, 4), round(float(v / max(se, 1e-9)), 2)]
-
-    cmpb = {}
-    for n_lab in budgets:
-        for cell in ("all", "s_b"):
-            for a_, b_ in (("law64cut", "lin64cut"), ("law64cut", "const64cut"), ("law64cut", "ridgeit64cut"),
-                           ("law64cut", "analogit64cut"), ("law64cut", "ridgeit32"), ("law64cut", "ridgeit32+lab"),
-                           ("law32", "ridgeit32"), ("law64cut", "law32"), ("ridgeit32", "const64cut"), ("law64cut", "ridgeit48+lab"),
-                           ("law64cut", "ridgeit48"), ("ridgeit32+lab", "ridgeit32")):
-                n1, n2 = f"{a_}@n{n_lab}", f"{b_}@n{n_lab}"
-                if n1 in polb and n2 in polb:
-                    cmpb[f"{a_} - {b_} |{cell} @n{n_lab}"] = diffb(n1, n2, cell)
-            for b_ in ("C_law64_full@R15", "C_ridgeit64_full@R15", "Ktick", "law_fss32+48"):
-                if b_ in polb:
-                    cmpb[f"law64cut@n{n_lab} - {b_} |{cell}"] = diffb(f"law64cut@n{n_lab}", b_, cell)
-    if "law_fss32+48" in polb:
-        for cell in ("all", "s_b"):
-            cmpb[f"law_fss32+48 - lin_fss32+48 |{cell}"] = diffb("law_fss32+48", "lin_fss32+48", cell)
-            cmpb[f"law_fss32+48 - C_law64_full@R15 |{cell}"] = diffb("law_fss32+48", "C_law64_full@R15", cell)
-    out["horizon_transfer"] = dict(
-        note=f"items: anchors 140, 160, 180 and horizons 32, 64, 96 ticks (within 260); every exam-size source is cut at tick "
-             f"{T_CUT} (pairs within ticks 61..{T_CUT}): X64cut@n = fitted on n exam-size episodes cut there (n Lab "
-             "episodes under a tick budget, or n short exam-size simulations: 0.54 n cost units). All models iterate "
-             "8-tick steps: law / lin / const as above; ridgeit = generic autoregression on (1, s, s^2, N); analogit = "
-             "analog steps (run at n = 2 and 15 only, 2 draws: it is slow and always negative). X32, X48 = fitted on full-length small-box episodes worth 8 cost units (naive rescale); "
-             "+lab = the small-box data pooled half and half with the cut Lab data; C_ = references fitted on 15 "
-             "full exam-size episodes; _fss32+48 as above. skill = 1 - L / L(K); value, bootstrap se over truths.",
-        items=items_b, small_box_episodes_at_8_units=small8,
-        skill={c: {k: skillb(k, c) for k in sorted(polb) if k != "K"} for c in ("all", "s_b")},
-        paired_differences=dict(note="first minus second: skill difference, bootstrap se, z (paired over truths)", **cmpb))
+            for cell in ("all", "s_b"):
+                for a_, b_ in (("law64cut", "lin64cut"), ("law64cut", "const64cut"), ("law64cut", "ridgeit64cut"),
+                               ("law64cut", "analogit64cut"), ("law64cut", "ridgeit32"), ("law64cut", "ridgeit32+lab"),
+                               ("law32", "ridgeit32"), ("law64cut", "law32"), ("ridgeit32", "const64cut"), ("law64cut", "ridgeit48+lab"),
+                               ("law64cut", "ridgeit48"), ("ridgeit32+lab", "ridgeit32")):
+                    n1, n2 = f"{a_}@n{n_lab}", f"{b_}@n{n_lab}"
+                    if n1 in polb and n2 in polb:
+                        cmpb[f"{a_} - {b_} |{cell} @n{n_lab}"] = diffb(n1, n2, cell)
+                for b_ in ("C_law64_full@R15", "C_ridgeit64_full@R15", "Ktick", "law_fss32+48"):
+                    if b_ in polb:
+                        cmpb[f"law64cut@n{n_lab} - {b_} |{cell}"] = diffb(f"law64cut@n{n_lab}", b_, cell)
+        if "law_fss32+48" in polb:
+            for cell in ("all", "s_b"):
+                cmpb[f"law_fss32+48 - lin_fss32+48 |{cell}"] = diffb("law_fss32+48", "lin_fss32+48", cell)
+                cmpb[f"law_fss32+48 - C_law64_full@R15 |{cell}"] = diffb("law_fss32+48", "C_law64_full@R15", cell)
+        out["horizon_transfer"] = dict(
+            note=f"items: anchors 140, 160, 180 and horizons 32, 64, 96 ticks (within 260); every exam-size source is cut at tick "
+                 f"{T_CUT} (pairs within ticks 61..{T_CUT}): X64cut@n = fitted on n exam-size episodes cut there (n Lab "
+                 "episodes under a tick budget, or n short exam-size simulations: 0.54 n cost units). All models iterate "
+                 "8-tick steps: law / lin / const as above; ridgeit = generic autoregression on (1, s, s^2, N); analogit = "
+                 "analog steps (run at n = 2 and 15 only, 2 draws: it is slow and always negative). X32, X48 = fitted on full-length small-box episodes worth 8 cost units (naive rescale); "
+                 "+lab = the small-box data pooled half and half with the cut Lab data; C_ = references fitted on 15 "
+                 "full exam-size episodes; _fss32+48 as above. skill = 1 - L / L(K); value, bootstrap se over truths.",
+            items=items_b, small_box_episodes_at_8_units=small8,
+            skill={c: {k: skillb(k, c) for k in sorted(polb) if k != "K"} for c in ("all", "s_b")},
+            paired_differences=dict(note="first minus second: skill difference, bootstrap se, z (paired over truths)", **cmpb))
 
     # ---------------- 3. state-given screen
     def ld(name):
@@ -624,7 +632,7 @@ def main():
                    "three members f=3/7 of the ensemble": lambda j, r, h: np.delete(tr[j], r, 0)[:3, h - 1]}
             if arm != "none":
                 fcs["oracle ignoring the program"] = lambda j, r, h: np.delete(o["l2"][j], r, 0)[:, h - 1]
-            for dtf in (2, 4):
+            for dtf in (2, 5):
                 d = ld(f"scr_b_{arm}_dt{dtf}.npz")
                 if d is not None:
                     fcs[f"coarse step x{dtf} f=1/{dtf}"] = (lambda j, r, h, d=d: np.delete(d["l2"][j], r, 0)[:, h - 1])
@@ -645,7 +653,7 @@ def main():
                 scr[arm]["tiles_start"] = dict(N_sum_of_tiles=t["n0"].sum(0)[:, 0].tolist(), N_exam_box=x0[:, 0].tolist(),
                                                s_b_tiles=s0[:, 0].round(3).tolist(), s_b_exam_box=x0[:, 1].round(3).tolist(),
                                                finite=bool(t["finite"]))
-            for dtf in (2, 4):
+            for dtf in (2, 5):
                 d = ld(f"scr_b_{arm}_dt{dtf}.npz")
                 if d is not None:
                     scr[arm][f"coarse_x{dtf}_mean_change"] = {
@@ -676,11 +684,12 @@ def main():
     with open(os.path.join(HERE, "results", "summary.json"), "w") as f:
         json.dump(out, f, indent=1)
     print(json.dumps(out["finite_size"], indent=1))
-    for k, v in out["budget_curve"]["skill"]["all"].items():
-        print(k, v, out["budget_curve"]["skill"]["|h64"][k], out["budget_curve"]["skill"]["|s_b"][k])
-    print("--- horizon transfer")
-    for k, v in out["horizon_transfer"]["skill"]["all"].items():
-        print(k, v, out["horizon_transfer"]["skill"]["s_b"][k])
+    if MODE == "all":
+        for k, v in out["budget_curve"]["skill"]["all"].items():
+            print(k, v, out["budget_curve"]["skill"]["|h64"][k], out["budget_curve"]["skill"]["|s_b"][k])
+        print("--- horizon transfer")
+        for k, v in out["horizon_transfer"]["skill"]["all"].items():
+            print(k, v, out["horizon_transfer"]["skill"]["s_b"][k])
     if "screen" in out:
         for arm in ("none", "aimed"):
             if arm in out["screen"]:

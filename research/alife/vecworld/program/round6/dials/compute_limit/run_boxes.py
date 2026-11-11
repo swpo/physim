@@ -43,7 +43,9 @@ def main():
     l2 = VX.level2(Y, r.K)
     s1 = VX.summaries(Y, r.K)
     meta = dict(H=a.H, B=a.B, T=a.T, seed=a.seed, eps=a.eps, mut128=a.mut128, K=r.K, wall_s=round(time.time() - t0, 1),
-                cpu_s=round(time.process_time() - c0, 1), overflow=int(np.asarray(r.overflow(M)).sum()),
+                cpu_s=round(time.process_time() - c0, 1),
+                overflow_ticks_raw_kept=np.asarray(r.overflow(M))[:, :2].sum(0).astype(int).tolist(),
+                peak_raw_kept=np.asarray(r.overflow(M))[:, 2:].max(0).astype(int).tolist(),
                 marker="PILOT_NEVER_REUSE_AS_EXAM; parameters are declared, not hidden")
     np.savez_compressed(a.out, l2=l2.astype(np.float32), s1=s1, meta=json.dumps(meta))
     print(json.dumps(meta), flush=True)

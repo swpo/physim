@@ -19,3 +19,13 @@
   2-4 exam-size episodes and the law ties with its controls (lin, const, ridge); the law fitted on data cut at
   tick 140 extrapolates worse than a constant drift; small-box simulations do nearly as well as the reference there.
   Forecast for the design: a pure compute dial is filled by generic few-constant fits; say so and declare a stop rule.
+- 12:50: full pools analysed (results/summary.json: finite_size, budget_curve, horizon_transfer complete; screen has
+  the no-input arm so far). Still queued in scratch: aimed and blind input arms, tiles under the aimed program,
+  coarse step x2 and x5 (run_after.sh, run_after2.sh). Then `analyse.py <scratch> screen`, then DESIGN.md.
+- Findings so far: (1) budget binds for the analog learner only (0.03 at 1 exam-size episode, 0.23 at 15); a
+  4-constant regression has 0.21 at 2 and 0.26 at 4; (2) the level-2 law ties with the control without the selection
+  term at every budget; (3) 32 px boxes are biased (regression 0.21 against 0.28), 48 px boxes are not;
+  (4) given the state, tiles and a truncated horizon are worse than climatology; (5) a law fitted on data cut at
+  tick 140 loses to a constant drift. Forecast: the design fails acceptance; a $6 stop-rule job is proposed.
+- The `overflow` number in the pools' meta summed peaks with overflow ticks (meaningless); run_boxes.py now saves
+  them apart; a short re-check is still to do.

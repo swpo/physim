@@ -6,7 +6,7 @@ Stages (each a few CPU-minutes; files under <scratch>):
   base                         J states at tick A0 (default 140) from the declared initial law   -> scr_base.npz
   branch --arm A --dtf F       R fresh-noise branches of HZ ticks per state at 64 px under arm A (none, or a
                                200-nat program of the public mix: blind = class b, aimed = class c, regional =
-                               class d) with the native step multiplied by F (1 = the law; 2, 4 = the cheap
+                               class d) with the native step multiplied by F (1 = the law; 2, 5 = the cheap
                                integrator: the same law at 1/F of the cost)                     -> scr_b_A_dtF.npz
   tiles --arm A                every state cut into four 32 px tiles, each run periodically with R fresh-noise
                                branches (arm aimed: the 64 px program restricted to each tile)  -> scr_t_A.npz
