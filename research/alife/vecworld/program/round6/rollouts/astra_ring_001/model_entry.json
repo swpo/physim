@@ -1,0 +1,62 @@
+{
+ "fetched_unix": 1794396844,
+ "source": "GET https://api.pinference.ai/api/v1/models (no credential sent)",
+ "n_models_listed": 132,
+ "entry": {
+  "created": 1788556514,
+  "id": "openai/gpt-6-astra",
+  "object": "model",
+  "owned_by": "",
+  "display_name": "GPT-6 Astra",
+  "serving": "gateway",
+  "pricing": {
+   "input_usd_per_mtok": 10,
+   "output_usd_per_mtok": 50,
+   "cache_read_usd_per_mtok": null,
+   "cache_write_usd_per_mtok": null,
+   "effective_at": "2026-09-04T21:15:14.299026+00:00"
+  },
+  "specs": {
+   "context_window": 1050000,
+   "max_output_tokens": 128000,
+   "modalities": {
+    "input": [
+     "file",
+     "image",
+     "text"
+    ],
+    "output": [
+     "text"
+    ]
+   },
+   "supports_reasoning": true
+  },
+  "context_window": 1050000,
+  "max_output_tokens": 128000,
+  "reasoning": {
+   "supported_efforts": [
+    "max",
+    "xhigh",
+    "high",
+    "medium",
+    "low"
+   ],
+   "default_effort": "medium",
+   "default_enabled": true,
+   "mandatory": true
+  },
+  "supported_parameters": [
+   "include_reasoning",
+   "max_completion_tokens",
+   "max_tokens",
+   "reasoning",
+   "reasoning_effort",
+   "response_format",
+   "seed",
+   "structured_outputs",
+   "tool_choice",
+   "tools",
+   "verbosity"
+  ]
+ }
+}

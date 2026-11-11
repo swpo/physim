@@ -1,0 +1,66 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "source": "the watcher's last copy of /workspace from the agent's box (at most 20 s before the box was removed); physim2/ (public) and submission/ (see submission_manifest.json) are left out; files above 2 MiB are listed only",
+ "container": "vf-89419f7be67a4ff6b37d50824225289f",
+ "tar_bytes": 1291264,
+ "copied_unix": 1794398413.9980867,
+ "files": [
+  {
+   "path": "TASK.md",
+   "bytes": 9034,
+   "sha256": "8f60a44c779d16dd854c14399114005e112b11c147891f77ba6899a77ee37328"
+  },
+  {
+   "path": "check.py",
+   "bytes": 1713,
+   "sha256": "130cadb6a488ec0bf67d18a830f68e3dad505066f25f64c578917c3a9c02fed2"
+  },
+  {
+   "path": "collect.py",
+   "bytes": 282,
+   "sha256": "66859ab1949dedf38bc59ae4542f7556a1fef510a932d736e5e68e8ce80c60f4"
+  },
+  {
+   "path": "collect_extra.py",
+   "bytes": 250,
+   "sha256": "8704c3f9909a60ae68c7b4f759de308a60b1a43f2bdc54e9e1254540fc2dabda"
+  },
+  {
+   "path": "data_extra.npz",
+   "bytes": 9860,
+   "sha256": "b73cd3284e0081aede8a2ba1140e08310ac528d396c7930279212a46892af612"
+  },
+  {
+   "path": "data_initial.npz",
+   "bytes": 9860,
+   "sha256": "5aab14461c753537862742c4bc01db1a4b99789aecaccc3ccd19a44de669089c"
+  },
+  {
+   "path": "fit.npz",
+   "bytes": 600,
+   "sha256": "2f36ac559bd5a27e1168aee820abc82fe811bbfa61bd27cf53b1c9e00ccde8ac"
+  },
+  {
+   "path": "infer.py",
+   "bytes": 2734,
+   "sha256": "c9a550030854f977cabe60d1b752bc920b926e743481c7b6e8741f7c5471fadd"
+  },
+  {
+   "path": "posterior.py",
+   "bytes": 1371,
+   "sha256": "447f29b0ed41fea6c8ad2a43a23e39a67963ed57aa12e5b21323750217a40dd2"
+  },
+  {
+   "path": "posterior_raw.npz",
+   "bytes": 516984,
+   "sha256": "52780f61c88f79eeb4e85720c8bfa801a09de348719536fb30c89d4179bacb9f"
+  },
+  {
+   "path": "sample_check.py",
+   "bytes": 1575,
+   "sha256": "02bde1a67002a2284cc9dbfff6074c8e084c158b138f6b6f1d783d00869fd120"
+  }
+ ],
+ "skipped": [],
+ "bytes": 554263
+}

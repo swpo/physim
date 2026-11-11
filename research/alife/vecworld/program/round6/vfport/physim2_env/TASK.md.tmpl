@@ -58,7 +58,7 @@ What you learn about the hidden numbers in the laboratory holds for every item o
 import physim2
 lab = physim2.Lab()
 lab.card(); lab.usage()
-o0  = lab.reset("any-name")        # new episode from a fresh hidden start; costs {reset_cost} tick(s) -> (n_obs,)
+o0  = lab.reset("any-name")        # new episode from a fresh hidden start; costs {reset_cost} ticks -> (n_obs,)
 obs = lab.advance(U)               # U: array (T, n_in) of inputs for the next T ticks -> (T, n_obs)
 obs = lab.advance(T)               # an integer T: T ticks without input -> (T, n_obs)
 obs = lab.experiment("name", U)    # reset + advance -> (T + 1, n_obs), row 0 is o(0); U an array (T, n_in) ...
@@ -66,7 +66,8 @@ obs = lab.experiment("name", T)    # ... or an integer T for T ticks without inp
 ```
 
 Budgets, all enforced before anything runs (a rejected command costs nothing):
-- **ticks**: {max_ticks} real ticks in total, resets included;
+- **ticks**: {max_ticks} real ticks in total. Every tick you advance costs 1. **Starting an episode (`reset`, and the
+  reset inside `experiment`) costs {reset_cost} ticks**{reset_note};
 - **information**: an input `u` at one tick costs `|u|^2 / (2 * {sigma_in}^2)` nats; at most {tick_cap} nats per tick,
   {episode_cap} per episode{total_nats_note}. (Inputs enter the world as a shift of Gaussian noise that is always
   present, so this cost is exactly how distinguishable your action is from no action.) The exam's own test
@@ -107,11 +108,14 @@ as you have something better, and check it with `lab.validate("submission")`.
   applied. Test programs come from the public mix `W.program_mix()` in equal shares ({program_classes}); some are
   built from the history itself (for example a push aimed at a visible feature).
 - For every item the real world was continued {R} times with fresh noise. Your samples are compared with those
-  real futures by the **energy score** (lower is better): mean distance from your samples to a real future minus
-  half the mean distance between your samples, with every coordinate divided by a public scale (`W.scales()`)
-  and distances taken as root mean square. It rewards being right and being honest about uncertainty: samples
-  that are too narrow or too wide both lose. It is computed separately for every queried (level, time) and
-  averaged over items.
+  real futures by the **fair energy score** (lower is better): mean distance from your samples to a real future
+  minus half the mean distance between your samples, taken over pairs of DIFFERENT samples (a sample is never
+  paired with itself), with every coordinate divided by a public scale (`W.scales()`) and distances taken as root
+  mean square. It rewards being right and being honest about uncertainty: samples that are too narrow or too wide
+  both lose. It is computed separately for every queried (level, time) and averaged over items. The code is in
+  your box on purpose (`physim2/_vendor/vw1/vw/scoring.py`, `energy_fair`): how you are scored is public.
+- **Your {n_samples} samples are treated as independent draws from your predictive law.** That is what the score
+  estimates, and what the reference policies return. Return independent draws.
 - Your score is reported next to reference policies: **K** (samples from the world's long-run average, ignoring
   history and program), **null** (the baseline in `submission/`: the long-run behaviour under the prior), a
   predictor trained on simulations at the prior mean, **P0** (trained on simulations at prior draws: no

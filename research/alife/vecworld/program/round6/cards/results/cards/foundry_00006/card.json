@@ -1,0 +1,337 @@
+{
+ "world": "foundry_00006",
+ "role": "prior",
+ "family": "foundry",
+ "meta": {
+  "lattice": [
+   2,
+   64,
+   64
+  ],
+  "substeps_per_tick": 4,
+  "input": "wind 2 x 8 x 8, noise std 0.25",
+  "hidden": "240 weights of the law net (+ 10 scalars, kept by the neighbours)",
+  "prior": "round5/foundry/tnca.py draw_theta; neighbour = round 5's weight neighbour",
+  "views": "block means of each kind and of S^2 on 8 px blocks; blob tracker on S / mean(S) > 2",
+  "name": "foundry_00006",
+  "m": 128,
+  "sigma_u": 0.25,
+  "G": 8,
+  "Hpx": 64,
+  "K": 24,
+  "burn": 50,
+  "late_gap": 1950
+ },
+ "sizes": {
+  "M": 16,
+  "M_fit": 8,
+  "T": 400,
+  "NS": 32,
+  "R": 6,
+  "R2": 2,
+  "n_dir": 2,
+  "eps": [
+   0.03,
+   0.1,
+   1.0
+  ],
+  "arms": [
+   [
+    "aimed",
+    200.0
+   ],
+   [
+    "blind",
+    200.0
+   ],
+   [
+    "aimed",
+    50.0
+   ],
+   [
+    "aimed",
+    800.0
+   ]
+  ],
+  "R_u": 2,
+  "T_in": 4,
+  "HB": 32,
+  "Bb": 30
+ },
+ "jobs": {
+  "A": "r6-cards-001"
+ },
+ "runs": {
+  "A": {
+   "derived": {
+    "grid.pf1": 0.9976116866045636,
+    "grid.ceil1": 0.9999286036451466,
+    "grid.gap1": 4.507070674904441e-05,
+    "grid.pf2": 0.9954117585506028,
+    "grid.ceil2": 0.9997961610228934,
+    "grid.gap2": 0.00012809723974401346,
+    "grid.pf4": 0.9911871202315375,
+    "grid.ceil4": 0.999693977588803,
+    "grid.gap4": 0.000189942865531657,
+    "grid.pf8": 0.9829951606340416,
+    "grid.ceil8": 0.9998051683761028,
+    "grid.gap8": 0.00011789814490986185,
+    "grid.pf16": 0.9703610759344018,
+    "grid.ceil16": 0.999028469844181,
+    "grid.gap16": 0.0005739956043916417,
+    "grid.pf32": 0.9470396239748893,
+    "grid.ceil32": 0.9986392347625849,
+    "grid.gap32": 0.0007539469709307231,
+    "grid.pf8_mean": 0.9860198945589423,
+    "grid.ceil8_mean": 0.9996015979946844,
+    "grid.gap8_mean": 0.00029259795312391,
+    "grid.ceil_raw8_mean": 0.9996015979946844,
+    "grid.ceil8_se": 0.00038726458633915384,
+    "grid.pf8_se": 0.0017958531634156797,
+    "grid.w_theta4": 0.0015248678475056111,
+    "grid.w_theta8": 0.005788957815969293,
+    "grid.w_theta16": 0.018499864142198008,
+    "grid.sigma_hat": 0.0004907947303044077,
+    "grid.pl_ratio0.03_8": 0.00038799835726925457,
+    "grid.pl_ratio0.03_8_mean": 0.0005170228465516943,
+    "grid.evidence0.03": 0.004749872718606977,
+    "grid.ticks_to_3nats0.03": 631.5958716636574,
+    "grid.pl_ratio0.1_8": 0.003790548230707568,
+    "grid.pl_ratio0.1_8_mean": 0.0050836168416707895,
+    "grid.evidence0.1": 0.04617456113024471,
+    "grid.ticks_to_3nats0.1": 64.97083949618691,
+    "grid.pl_ratio1.0_8": 0.33464106280263545,
+    "grid.pl_ratio1.0_8_mean": 0.435862660536848,
+    "grid.evidence1.0": 4.349417178167191,
+    "grid.ticks_to_3nats1.0": 0.6897475861959453,
+    "grid.act_ms": 5.310399404015662,
+    "grid.act_ms_mean": 5.382645253338187,
+    "grid.act_D_floor": 2.696265887630449,
+    "grid.act_ms_over_vcheap": 5.133705333872314,
+    "grid.act_ms_var": 0.029306174712460404,
+    "grid.aim_ratio": 1.9719557833656869,
+    "grid.act_ms_50": 1.2478724714792833,
+    "grid.act_ms_800": 26.25829125270624,
+    "grid.xresp": 0.5788996481822932,
+    "grid.tick_share": 0.00038273010107507774,
+    "grid.tick_share_max": 0.0011481903032252523,
+    "grid.member_share": 0.15164114423133704,
+    "s.nb_mean": 0.0,
+    "s.nb_std": 0.0,
+    "s.body_frac": 0.0,
+    "s.rg": 0.0,
+    "s.v_net": 0.0,
+    "s.half_life_ticks": NaN,
+    "s.events100": 0.0,
+    "s.births100": 0.0,
+    "s.deaths100": 0.0,
+    "s.slots_full_share": 0.0,
+    "s.wavelength_px": 11.626628405071726,
+    "s.cv_cell": 0.08660354494926972,
+    "s.moved": 0.019300313666462898,
+    "s.events100_per_body": 0.0,
+    "s.body_speed_len": 0.0,
+    "b.pf_disp8": NaN,
+    "b.ceil_disp8": NaN,
+    "b.ceil_disp8_mean": NaN,
+    "b.ceil_pers_disp8": NaN,
+    "b.ceil_field_disp8": NaN,
+    "b.ceil_disp1": NaN,
+    "b.ceil_disp4": NaN,
+    "b.ceil_disp16": NaN,
+    "b.pf_mass8": NaN,
+    "b.ceil_mass8": NaN,
+    "b.ceil_mass8_mean": NaN,
+    "b.ceil_pers_mass8": NaN,
+    "b.ceil_field_mass8": NaN,
+    "b.ceil_mass1": NaN,
+    "b.ceil_mass4": NaN,
+    "b.ceil_mass16": NaN,
+    "b.quiet8": NaN,
+    "b.n_test8": 0.0,
+    "x.bodies_to_grid8": -3.469446951953614e-18,
+    "x.grid_to_bodies8": NaN,
+    "l.dceil8_AB": -0.0007806932294029956,
+    "l.dceil8_BA": -0.0009685493995464922,
+    "l.dpf8_AB": -0.0018501714491355736,
+    "l.dpf8_BA": -0.002469239353154351,
+    "l.dgap8_AB": 0.000347481572645688,
+    "l.dgap8_BA": 0.0005544159846764523,
+    "l.r2_min": 0.9945332112543824,
+    "l.dceil16_AB": -0.002354223681463541,
+    "l.dceil16_BA": -0.0016772960131867798,
+    "l.dceil32_AB": -0.0037733069753538295,
+    "l.dceil32_BA": -0.004849938749669214,
+    "t.l1_8": 0.02958356582093984,
+    "t.doubling": 37.88125068197405,
+    "finite": true,
+    "cost.s_per_member_tick": 4.670721191897171e-05
+   },
+   "gates": {
+    "predictable": true,
+    "closure_gap": false,
+    "sigma_hat_best": 0.0004907947303044077,
+    "sigma_hat_level": "grid",
+    "exam_worthy": false,
+    "structure": false,
+    "interaction": false,
+    "reading_worthy": false,
+    "actions": true,
+    "stationary": true,
+    "levels_add": false,
+    "learned_differs": false,
+    "verdict": "dull: predictable by the cheap family",
+    "dull": true
+   }
+  }
+ },
+ "curves": {
+  "A": {
+   "hz": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+   ],
+   "grid_pf": [
+    0.9976116866045636,
+    0.9954117585506028,
+    0.9911871202315375,
+    0.9829951606340416,
+    0.9703610759344018,
+    0.9470396239748893
+   ],
+   "grid_ceil": [
+    0.9999286036451466,
+    0.9997961610228934,
+    0.999693977588803,
+    0.9998051683761028,
+    0.999028469844181,
+    0.9986392347625849
+   ],
+   "grid_ceil_se": [
+    3.4823190106538816e-05,
+    7.04314909090906e-05,
+    0.00015515731124026124,
+    0.00038726458633915384,
+    0.0005623210087368157,
+    0.0010094627059403427
+   ],
+   "grid_ceil_mean": [
+    0.9999452148130107,
+    0.9998702442253568,
+    0.9997419123288809,
+    0.9996015979946844,
+    0.9992191007919621,
+    0.9986375949080216
+   ],
+   "bodies_ceil": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "bodies_pf": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "pop_pf": null,
+   "pop_ceil": null,
+   "pl_over_vorc": {
+    "0.03": [
+     4.947784081882268e-05,
+     8.822282503146702e-05,
+     0.00019777690467561612,
+     0.00038799835726925457,
+     0.0007882818707507489,
+     0.0013830505871120016
+    ],
+    "0.1": [
+     0.0004809850117733823,
+     0.000860609749558138,
+     0.0019295255794768112,
+     0.003790548230707568,
+     0.007809638502814186,
+     0.013877581577730481
+    ],
+    "1.0": [
+     0.045306428939241576,
+     0.08356014051051175,
+     0.17150232503018106,
+     0.33464106280263545,
+     0.6056747550596757,
+     1.0200411862200882
+    ]
+   },
+   "act_D_over_floor": {
+    "aimed_200": [
+     0.6349265275195971,
+     1.3166384770180777,
+     2.696265887630449,
+     1.3130213466477825,
+     0.6521696790122876,
+     0.2935722588018867
+    ],
+    "blind_200": [
+     0.320764421113077,
+     0.6629154023667639,
+     1.3700260286097266,
+     0.6644125034354309,
+     0.32749934698302324,
+     0.14498619124237527
+    ],
+    "aimed_50": [
+     0.14624551673527553,
+     0.30268157157115805,
+     0.6201116650107239,
+     0.30362978813281344,
+     0.15161490167707514,
+     0.06861816441080369
+    ],
+    "aimed_800": [
+     3.1493356863438735,
+     6.532725689308,
+     13.441184817225576,
+     6.414496275009891,
+     3.132083722869165,
+     1.3893531393194354
+    ]
+   },
+   "timing": {
+    "main_s": 0.6897768974304199,
+    "branch_s": 1.0813605785369873,
+    "burn": 50,
+    "main_member_ticks": 7200,
+    "branch_member_ticks": 30720,
+    "first_call_of_program": false
+   },
+   "burn": 50,
+   "seed": 6001
+  }
+ },
+ "robustness": {
+  "split_half": {
+   "pf8": [
+    0.9851105213165283,
+    0.9822855591773987
+   ],
+   "ceil8": [
+    0.9996367692947388,
+    0.9996788501739502
+   ],
+   "pf8_agree": true,
+   "ceil8_agree": true,
+   "note": "block view, ridge or climatology, medians over 16 states each"
+  }
+ },
+ "figure_bytes": null,
+ "PILOT_NEVER_REUSE_AS_EXAM": true
+}

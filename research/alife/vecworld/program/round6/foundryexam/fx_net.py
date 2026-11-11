@@ -15,6 +15,12 @@ in lockstep with jax.vmap, best held-out parameters kept), changed for worlds th
                                   k random in {0, 1, 2, ..., 256} (training of the amortised net)
   cfg            (lags, use_code, mode): P0s is lags (0, 1) with use_code False (code inputs zeroed)
 
+Local inputs (lags, wind, local noise) go through the 3 x 3 convolutions; global inputs (horizon, codes, global
+noise) enter as a learned per-channel shift at the input and in every block (they are the same at every block, so
+convolving nine copies of them would only cost time and memory).
+Training runs Cfg.CHUNK steps per dispatch (lax.scan inside the jitted step): job r6-foundryexam-002 ran one
+step per dispatch under XLA_PYTHON_CLIENT_ALLOCATOR=platform and was several times slower than the round-5 basis.
+
 Data sets are passed to the jitted functions as arguments, never closed over. float32 throughout.
 """
 from __future__ import annotations
@@ -53,6 +59,7 @@ class Cfg:
     EVAL_DRAWS = 8
     MAX_LOCK = 16
     KMAX = 256
+    CHUNK = 50          # training steps per dispatch
     MAX_ELEMS = 2 ** 30
 
 
@@ -191,7 +198,8 @@ def n_glob():
 
 
 def n_in(lags):
-    return 3 * len(lags) + 4 + n_glob() + Cfg.NL_NOISE
+    """Local input channels: block numbers at the lags, the program's wind (sum and ramp), local noise."""
+    return 3 * len(lags) + 4 + Cfg.NL_NOISE
 
 
 def check_elems(lags, n_nets, n_samples, what):
@@ -209,8 +217,13 @@ def init_params(key, lags):
     def conv(k, ci, co, scale=1.0):
         return {"w": jax.random.normal(k, (3, 3, ci, co), F32) * scale * math.sqrt(2.0 / (9 * ci)),
                 "b": jnp.zeros((co,), F32)}
-    return {"in": conv(next(ks), cin, C),
-            "blocks": [{"c1": conv(next(ks), C, C), "c2": conv(next(ks), C, C, 0.2)} for _ in range(Cfg.BLOCKS)],
+    ng = n_glob()
+
+    def dense(k, scale):
+        return jax.random.normal(k, (ng, C), F32) * scale * math.sqrt(1.0 / ng)
+    return {"in": conv(next(ks), cin, C), "gin": dense(next(ks), 1.0),
+            "blocks": [{"c1": conv(next(ks), C, C), "c2": conv(next(ks), C, C, 0.2), "g": dense(next(ks), 0.5)}
+                       for _ in range(Cfg.BLOCKS)],
             "out": {"w": jax.random.normal(next(ks), (C, 3), F32) * 0.1 * math.sqrt(1.0 / C), "b": jnp.zeros((3,), F32)}}
 
 
@@ -221,14 +234,15 @@ def _conv(x, p):
 
 
 def apply(params, inp):
-    h = jax.nn.gelu(_conv(inp, params["in"]))
+    loc, glob = inp                                                              # (N, G, G, cin), (N, ng)
+    h = jax.nn.gelu(_conv(loc, params["in"]) + (glob @ params["gin"])[:, None, None, :])
     for blk in params["blocks"]:
-        h = h + _conv(jax.nn.gelu(_conv(h, blk["c1"])), blk["c2"])
+        h = h + _conv(jax.nn.gelu(_conv(h, blk["c1"]) + (glob @ blk["g"])[:, None, None, :]), blk["c2"])
     return jax.nn.gelu(h) @ params["out"]["w"] + params["out"]["b"]            # (N, G, G, 3)
 
 
 def build_inputs(cfg, D, e, t, hi, key, m):
-    """Inputs of examples (e, t, hi) (n,) with m noise draws each -> (n * m, G, G, cin), and (mu, sdc)."""
+    """Inputs of examples (e, t, hi) (n,) with m noise draws each -> ((n * m, G, G, cin), (n * m, ng)), mu, sdc."""
     lags, use_code, mode = cfg
     HSa = jnp.asarray(Cfg.HS)
     n = e.shape[0]
@@ -240,7 +254,8 @@ def build_inputs(cfg, D, e, t, hi, key, m):
         EW = D["EW"]
         kk = jnp.asarray(KS)[jax.random.randint(k0, (n,), 0, len(KS))]
         ke, kw = jax.random.split(k3)
-        ce = (e // EW)[:, None] * EW + jax.random.randint(ke, (n, Cfg.KMAX), 0, EW)
+        # other episodes of the same world, never the example's own (review of 002: the Lab never holds the item)
+        ce = (e // EW)[:, None] * EW + ((e % EW)[:, None] + 1 + jax.random.randint(ke, (n, Cfg.KMAX), 0, EW - 1)) % EW
         cw = jax.random.randint(kw, (n, Cfg.KMAX), 0, 2)
         msk = (jnp.arange(Cfg.KMAX)[None] < kk[:, None]).astype(F32)
         cs = (D["ST"][ce, cw] * msk[..., None]).sum(1)
@@ -263,9 +278,8 @@ def build_inputs(cfg, D, e, t, hi, key, m):
     gb = jnp.concatenate([jnp.broadcast_to(glob[:, None], (n, m, glob.shape[1])), zg], -1)
     base = jnp.concatenate([jnp.moveaxis(xs, 1, 3).reshape(n, G, G, -1), cu, w2], -1).astype(F32)
     zl = jax.random.normal(k2, (n, m, G, G, Cfg.NL_NOISE), F32)
-    x = jnp.concatenate([jnp.broadcast_to(base[:, None], (n, m) + base.shape[1:]),
-                         jnp.broadcast_to(gb[:, :, None, None, :], (n, m, G, G, gb.shape[-1])), zl], -1)
-    return x.reshape((n * m,) + x.shape[2:]), mu, sdc
+    x = jnp.concatenate([jnp.broadcast_to(base[:, None], (n, m) + base.shape[1:]), zl], -1)
+    return (x.reshape((n * m,) + x.shape[2:]), gb.reshape(n * m, gb.shape[-1])), mu, sdc
 
 
 def _rms(v):
@@ -309,7 +323,7 @@ _FN = {}
 
 
 def _fns(cfg, keys, shared, batch):
-    k = (cfg, keys, shared, batch, Cfg.M_TRAIN, Cfg.EVAL_ROWS, Cfg.EVAL_DRAWS, Cfg.KMAX)
+    k = (cfg, keys, shared, batch, Cfg.M_TRAIN, Cfg.EVAL_ROWS, Cfg.EVAL_DRAWS, Cfg.KMAX, Cfg.CHUNK)
     if k not in _FN:
         B, M = batch, Cfg.M_TRAIN
         ecfg = cfg
@@ -322,6 +336,14 @@ def _fns(cfg, keys, shared, batch):
             l, g = jax.value_and_grad(loss_fn)(p, cfg, Dk, ex[:, 0], ex[:, 1], ex[:, 2], k2, M)
             p, s = _adamw(p, g, s, lr)
             return p, s, l
+
+        def step_many(p, s, Dk, keys_, lrs):
+            """Cfg.CHUNK steps of one net in one dispatch: keys_ (CHUNK,), lrs (CHUNK,)."""
+            def body(c, kl):
+                pp, ss, ll = step_one(c[0], c[1], Dk, kl[0], kl[1])
+                return (pp, ss), ll
+            (p, s), ls = jax.lax.scan(body, (p, s), (keys_, lrs))
+            return p, s, ls[-1]
 
         R, ND = Cfg.EVAL_ROWS, Cfg.EVAL_DRAWS
 
@@ -339,11 +361,11 @@ def _fns(cfg, keys, shared, batch):
             sm, cn = jax.lax.map(chunk, (exc, idx))
             return sm.sum() / jnp.maximum(cn.sum(), 1.0)
         if shared:
-            vstep = jax.jit(jax.vmap(step_one, in_axes=(0, 0, None, 0, None)))
+            vstep = jax.jit(jax.vmap(step_many, in_axes=(0, 0, None, 0, None)))
             veval = jax.jit(lambda Pp, D: jax.lax.map(lambda p: eval_one(p, D), Pp))
         else:
             Dax = {kk: 0 for kk in keys}
-            vstep = jax.jit(jax.vmap(step_one, in_axes=(0, 0, Dax, 0, None)))
+            vstep = jax.jit(jax.vmap(step_many, in_axes=(0, 0, Dax, 0, None)))
             veval = jax.jit(lambda Pp, D: jax.lax.map(lambda a: eval_one(a[0], a[1]), (Pp, D)))
         _FN[k] = (vstep, veval)
     return _FN[k]
@@ -425,13 +447,26 @@ def train(cfg, dsets, steps, seeds, lr=None, init=None, batch=None, log=None, ta
         return v
     if init is not None:
         evaluate(0, None)
-    it = 0
+    CH = Cfg.CHUNK
+    if steps % CH or ee % CH:
+        raise ValueError(f"train: steps {steps} and eval_every {ee} must be multiples of Cfg.CHUNK = {CH}")
+    it, first, timed, t_steps = 0, True, 0, 0.0
+
+    def lr_at(i):
+        warm = min(1.0, i / 100) if init is None else 1.0
+        return lr0 * warm * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * i / steps)))
     while it < steps:
-        it += 1
-        warm = min(1.0, it / 100) if init is None else 1.0
-        lr_t = lr0 * warm * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * it / steps)))
+        lrs = jnp.asarray([lr_at(i) for i in range(it + 1, it + CH + 1)], F32)
+        it += CH
         key, sub = jax.random.split(key)
-        Pm, st, l = vstep(Pm, st, D, jax.random.split(sub, Kn), lr_t)
+        td = time.time()
+        Pm, st, l = vstep(Pm, st, D, jax.random.split(sub, Kn * CH).reshape(Kn, CH), lrs)
+        l.block_until_ready()
+        if first:
+            first = False                                 # the first dispatch holds the compilation
+        else:
+            timed += CH
+            t_steps += time.time() - td
         if it % ee == 0 or it == steps:
             v = evaluate(it, l)
             if log and (it % (4 * ee) == 0 or it == steps):
@@ -441,7 +476,9 @@ def train(cfg, dsets, steps, seeds, lr=None, init=None, batch=None, log=None, ta
                 stopped = it
                 break
     params = [jax.tree_util.tree_map(lambda a, k=k: a[k], best) for k in range(Kn)]
+    ms_step = 1e3 * t_steps / timed if timed else None                      # training dispatches only, compile excluded
     info = {"best_val": best_val.tolist(), "best_step": best_step.tolist(), "hist": hist, "seconds": time.time() - t0,
+            "ms_per_step": ms_step, "ms_per_net_step": None if ms_step is None else ms_step / Kn,
             "seconds_with_setup": time.time() - t_call, "steps": steps, "stopped_early": stopped, "lr": lr0,
             "batch": batch, "n_train_examples": n_ex, "n_episodes": n_ep, "seeds": [int(s) for s in seeds],
             "cfg": [list(cfg[0]), bool(cfg[1]), cfg[2]], "converged": convergence(hist, steps, init is not None)}
@@ -452,7 +489,7 @@ def train(cfg, dsets, steps, seeds, lr=None, init=None, batch=None, log=None, ta
 def convergence(hist, steps, finetune=False):
     """Criterion 6 of DESIGN.md per net: improvement of the held-out loss over the last fifth of the schedule
     as a share of (first - best); converged if below 0.02 (or if the loss never improved on its first value)."""
-    if len(hist) < 3:
+    if len(hist) < 3 or hist[-1]["step"] < 0.8 * steps:      # too short, or cut by a deadline before the last fifth
         return None
     S = np.array([hh["step"] for hh in hist])
     V = np.array([hh["val"] for hh in hist], float)                       # (n_eval, K)

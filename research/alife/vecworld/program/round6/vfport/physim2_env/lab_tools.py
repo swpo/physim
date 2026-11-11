@@ -94,7 +94,8 @@ def make_service(hidden: str, name: str, check=None, status=None):
             if status is not None:                           # the run's own clocks, from the task controller
                 try:
                     got = status()
-                    u.update({k: got.get(k) for k in ("seconds_elapsed", "seconds_left", "turns_used", "turns_left")})
+                    u.update({k: got[k] for k in ("seconds_elapsed", "seconds_left", "turns_used", "turns_left", "context_tokens_used",
+                                                  "context_tokens_left") if k in got})
                 except Exception:
                     pass
             return u

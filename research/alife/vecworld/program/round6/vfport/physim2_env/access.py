@@ -167,8 +167,8 @@ def read_checkpoint(folder: str, max_mib: float) -> dict | None:
 
 class BoxAccess:
     def __init__(self, runtime, artifacts, transport_bytes: int, max_mib: float, workdir: str = "/workspace", limits: dict | None = None,
-                 *, trace=None, max_turns: int | None = None, wall_s: float | None = None, capture_dir: str | None = None,
-                 checkpoint_s: float = 30.0):
+                 *, trace=None, max_turns: int | None = None, wall_s: float | None = None, max_context_tokens: int | None = None,
+                 capture_dir: str | None = None, checkpoint_s: float = 30.0):
         self._runtime = weakref.ref(runtime)
         self.artifacts, self.transport_bytes, self.max_mib = artifacts, transport_bytes, max_mib
         self.workdir = workdir
@@ -182,7 +182,7 @@ class BoxAccess:
         self.address: str | None = None
         # ---- the run's clocks (status) and the checkpoints (ruling E1) ----
         self._trace = weakref.ref(trace) if trace is not None else (lambda: None)
-        self.max_turns, self.wall_s, self.t0 = max_turns, wall_s, time.time()
+        self.max_turns, self.wall_s, self.t0, self.max_context_tokens = max_turns, wall_s, time.time(), max_context_tokens
         self.capture_dir, self.checkpoint_s = capture_dir, float(checkpoint_s)
         self.checkpointed: dict | None = None                # the newest frozen copy taken while the run was alive
         self.checkpoints = {"taken": 0, "unchanged": 0, "failed": 0, "last_source": None}
@@ -212,10 +212,20 @@ class BoxAccess:
         start = getattr(getattr(getattr(tr, "timing", None), "agent", None), "start", None) or self.t0
         elapsed = max(0.0, time.time() - float(start))
         turns = int(getattr(tr, "num_turns", 0) or 0) if tr is not None else None
-        return {"seconds_elapsed": round(elapsed, 1),
-                "seconds_left": None if self.wall_s is None else round(max(0.0, float(self.wall_s) - elapsed), 1),
-                "turns_used": turns,
-                "turns_left": None if self.max_turns is None or turns is None else max(0, int(self.max_turns) - turns)}
+        out = {"seconds_elapsed": round(elapsed, 1),
+               "seconds_left": None if self.wall_s is None else round(max(0.0, float(self.wall_s) - elapsed), 1),
+               "turns_used": turns,
+               "turns_left": None if self.max_turns is None or turns is None else max(0, int(self.max_turns) - turns)}
+        if self.max_context_tokens:                          # the conversation as the provider counted it at the last reply
+            used = None
+            try:
+                u = getattr((getattr(tr, "calls", None) or [])[-1], "usage", None)
+                used = int(getattr(u, "prompt_tokens", 0) or 0) + int(getattr(u, "completion_tokens", 0) or 0) if u is not None else None
+            except Exception:
+                used = None
+            out["context_tokens_used"] = used
+            out["context_tokens_left"] = None if used is None else max(0, int(self.max_context_tokens) - used)
+        return out
 
     # ---- checkpoints ----
     def keep(self, frozen: dict, source: str) -> None:

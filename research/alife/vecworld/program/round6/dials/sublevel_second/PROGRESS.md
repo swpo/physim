@@ -51,3 +51,29 @@ Deliverable: `DESIGN.md` in this folder.
   12-member runs). DESIGN.md drafted; queue q10 still running (dial 0.5 and 0.25, 128 px, second seed, uniform
   reruns of dorm / lpool / bound, check_zero, wrong-rate comparison). Then: fill tables, trim to 1,500 words,
   final commit, remove worktree and scratch.
+- 12:22: queue q10/q11 done: chosen carrier at dial 0.25, 0.5, 0.75, 1 (aimed gap 0.02, 0.06, 0.15, 0.23), at 128 px
+  (focus 0.45 / 0.21 aimed, passive 0.013 +- 0.011, population view 0.015 +- 0.011), with a0 = 0.02 (larger, but
+  the passive gap leaves the floor), second gvh seed (best generic 0.34 +- 0.10, told-form fit 0.77 +- 0.08 with
+  lam fitted at 0.5), wrong-rate comparison, uniform 12-member reruns of dorm / lpool / bound, check_zero with
+  the final `sublevel.py` (pro bit for bit). DESIGN.md written and trimmed to 1,476 words outside tables.
+- 12:38: the comparison rows made before `pro` got its a0 and cat switches (linear carrier screens, first gvh,
+  dial-1 failures of the pools) are being rerun with the final code so that every file in `results/` is the
+  output of the committed scripts; the first four reruns reproduce the earlier numbers to the printed digits.
+
+## Files
+
+| file | what |
+|---|---|
+| `DESIGN.md` | the deliverable |
+| `sublevel.py` | the membrane world with one hidden field per candidate (kpool, lpool, dorm, bound, pro); wraps `track1/membrane_world`, changes nothing there |
+| `check_zero.py` -> `results/check_zero.json` | dial 0 equals the public world (fields, level 1, level 2) |
+| `screen.py` -> `results/screen_<tag>.json` | round-5 screen by program class in three views; `plug_<name>=value` compares with the hidden law at wrong values |
+| `probe_S.py` -> `results/probe_S.json` | substrate inside the target cell under aimed inputs |
+| `gvh.py` -> `results/gvh_<tag>.json` | generic repair of the public law against a told-form fit, state given |
+| `make_table.py` -> `results/table.json` | the tables of DESIGN.md from the result files |
+
+Commands (CPU, one process, `OMP_NUM_THREADS=1`, about 85 CPU-s per 64-px screen, 190 per 128-px screen, 300 per gvh):
+`python -B screen.py <cand> <lam> [size members R nats seed] [key=value ...] [tag=...]`; the tag of every result
+file encodes its arguments (`m12` = 12 members, seed 2; `128` = 128 px, 6 members, seed 3; `cat` = cat=1 rho=0.02
+DX=0.5; `sat` = a0=0.03; untagged dial-1 failures: 8 members, seed 1); each JSON repeats them (`hidden_values_pilot`).
+All hidden values are pilot values: never to be reused as an exam.

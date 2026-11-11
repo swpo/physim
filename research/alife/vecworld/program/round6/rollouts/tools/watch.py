@@ -43,10 +43,14 @@ def sh(cmd, timeout=60):
         return 1, ""
 
 
-def lab_counters(store, iid):
+def lab_counters(store, iid, since=0.0):
+    """The newest laboratory record of the instance that was touched after `since` (the watcher's own start): the
+    records of earlier rollouts on the same instance (the scripted reference policies) are not this rollout's.
+    (Rollout astra_ring_001: the first line of its timeline shows a reference policy's counters, written before
+    this filter existed.)"""
     d = os.path.join(store, iid, "hidden", "labs")
     try:
-        labs = sorted((os.path.getmtime(os.path.join(d, n)), n) for n in os.listdir(d))
+        labs = sorted((m, n) for m, n in ((os.path.getmtime(os.path.join(d, n)), n) for n in os.listdir(d)) if m >= since)
         s = json.load(open(os.path.join(d, labs[-1][1], "state.json")))
         out = {k: s.get(k) for k in ("ticks_used", "resets", "total_nats", "episodes")}
         out.update({k: s["state"].get(k) for k in ("requests", "rejected", "validations", "submissions", "submitted")})
@@ -113,7 +117,7 @@ def main():
             ended, tail = False, []
         st = os.statvfs(os.path.expanduser("~"))
         rec = {"t": round(now - t0, 1), "unix": round(now, 1), "docker_ok": rc == 0, "containers": [{"name": n, "status": s} for n, s in live],
-               "boxes_copied": copied, "lab": lab_counters(a.store, a.instance), "free_gib": round(st.f_bavail * st.f_frsize / (1 << 30), 2),
+               "boxes_copied": copied, "lab": lab_counters(a.store, a.instance, t0 - 5.0), "free_gib": round(st.f_bavail * st.f_frsize / (1 << 30), 2),
                "log_ends_with_exit": tail[0] if ended else None}
         with open(os.path.join(a.out, "timeline.jsonl"), "a") as f:
             f.write(json.dumps(rec) + "\n")

@@ -1,8 +1,15 @@
 """Exam profiles: what a rollout config may name as `exam_profile`, and everything that follows from the name.
 
-A profile fixes the world, the exam config (agentenv/configs/<config_name>.json: items, replicate truths,
-laboratory budget, per-item predictor limits), the image of every box, the box's CPU and memory caps, the
-default turn and wall-time limits, and the scripted policies of the reference table. A rollout config
+A profile fixes the world, the exam config (physim2_env/exam_configs/<config_name>.json, or one of round 5's in
+agentenv/configs: items, replicate truths, laboratory budget and the tick price of starting an episode, samples
+per item and the per-item predictor limits), the image of every box, the box's CPU and memory caps, the default
+turn and wall-time limits, and the scripted policies of the reference table.
+
+The ring profile's exam config is `ring_r4`: round 5's `smoke_ring` with two numbers changed after the first
+rollout of a strong model (coordinator's rulings E12 and E13): 256 samples per item instead of 32 (with m samples
+a jointly chosen sample set can beat independent draws from the true law by about 1/(m - 1) of the score), and
+17 ticks for starting an episode instead of 1 (the price of one item history; a bare reset was a one-tick
+observation of the stationary law). The world, the items and the scoring arithmetic are unchanged. A rollout config
 (physim2_env/rollout_config.py) names a profile and may lower the memory cap; it cannot name a world, an exam
 config or an image.
 
@@ -16,7 +23,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PROFILES = {
     "ring": {
         "world": "ring",
-        "config_name": "smoke_ring",
+        "config_name": "ring_r4",
         "image": "physim2-ring:2",
         "box_cpus": 2,                                       # docker --cpus of every box (agent, verifier, item boxes)
         "box_memory_gb": 4,                                  # docker --memory; a rollout config may lower it, never raise it
@@ -51,9 +58,11 @@ def for_exam(world: str, config_name: str) -> dict | None:
 
 
 def exam_config(name: str) -> dict:
-    """The raw exam config of a profile (public numbers only), read from agentenv/configs."""
+    """The raw exam config of a profile (public numbers only)."""
+    cfg = get(name)["config_name"]
+    own = os.path.join(HERE, "exam_configs", cfg + ".json")
     root = os.environ.get("PHYSIM2_AGENTENV") or os.path.join(HERE, "..", "..", "..", "round5", "agentenv")
-    with open(os.path.join(os.path.abspath(root), "configs", get(name)["config_name"] + ".json")) as f:
+    with open(own if os.path.isfile(own) else os.path.join(os.path.abspath(root), "configs", cfg + ".json")) as f:
         return json.load(f)
 
 
@@ -64,10 +73,15 @@ def items(name: str) -> int:
 
 def table() -> list[dict]:
     """One row per profile, for the runbook and for the runner's mechanical check."""
-    return [{"profile": n, "world": p["world"], "exam_config": p["config_name"], "items": items(n), "image": p["image"],
-             "box_cpus": p["box_cpus"], "box_memory_gb": p["box_memory_gb"], "max_turns": p["max_turns"],
-             "wall_minutes": p["wall_minutes"], "reference_policies": list(p["reference_policies"])}
-            for n, p in sorted(PROFILES.items())]
+    out = []
+    for n, p in sorted(PROFILES.items()):
+        c = exam_config(n)
+        out.append({"profile": n, "world": p["world"], "exam_config": p["config_name"], "items": int(c["exam"]["n_items"]),
+                    "samples_per_item": int(c["predictor"]["n_samples"]), "lab_ticks": int(c["lab"]["max_ticks"]),
+                    "reset_cost_ticks": int(c["lab"]["reset_cost"]), "image": p["image"], "box_cpus": p["box_cpus"],
+                    "box_memory_gb": p["box_memory_gb"], "max_turns": p["max_turns"], "wall_minutes": p["wall_minutes"],
+                    "reference_policies": list(p["reference_policies"])})
+    return out
 
 
 if __name__ == "__main__":

@@ -50,34 +50,41 @@ ap.add_argument("--size", default="full", choices=("full", "presmoke", "smoke"))
 ap.add_argument("--arms", default="P,N30,N10")
 ap.add_argument("--max-hours", type=float, default=2.5)
 ap.add_argument("--cpu-ok", action="store_true")
+ap.add_argument("--full-hours", type=float, default=None, help="presmoke: the time the full pass will have (speed guard)")
 args = ap.parse_args()
 OUT = args.out
 os.makedirs(OUT, exist_ok=True)
 T0 = time.time()
 T_END = T0 + args.max_hours * 3600
 
+SB_FULL = {"P": {"P0": 12000, "A": 12000, "P0s": 6000, "P0w": 6000}, "N30": {"P0": 4000, "A": 4000, "P0s": 3000},
+           "N10": {"P0": 4000, "A": 4000, "P0s": 3000}}
 FULL = dict(burn=300, chunk=2048, gate_M=8, gate_on=True, pool_limit=None, n_hidden_P=16, n_centres=3, n_hidden_N=4,
             nb_train_cand=64, nb_train=32, nb_hidden_cand=16, epw=64, n_lab=512, lab_chunk=128, n_csim=1536,
             n_items=32, R=12, n_clim=96, m=24, m_plug=8, budgets=[8, 32, 128, 512], s_budgets=[0, 2, 8, 32, 128, 512],
-            seeds2=[32, 512], steps_big={"P": 12000, "N30": 4000, "N10": 4000}, batch_big=256, steps_C=5000, steps_Cft=2000,
-            lr_Cft=3e-4,
-            steps_D={8: 400, 32: 800, 128: 1500, 512: 3000}, steps_FT={8: 200, 32: 400, 128: 800, 512: 1200},
-            lr_FT=2e-4, nw_curve=[16, 64], eval_every=250, eval_every_small=100, shape_test=False)
+            seeds2=[32, 512], steps_big=SB_FULL, batch_big={"P": 256, "N30": 128, "N10": 128}, batch_world=64,
+            steps_C=4000, steps_Cft=1500, lr_Cft=3e-4, steps_D={8: 400, 32: 800, 128: 1500, 512: 3000},
+            steps_FT={8: 200, 32: 400, 128: 800, 512: 1200}, lr_FT=2e-4, nw_curve=[16, 64], eval_every=250,
+            eval_every_small=100, chunk_steps=50, shape_test=False)
+_SBT = {a: {k: 100 for k in v} for a, v in SB_FULL.items()}
 PRESMOKE = dict(FULL, pool_limit=40, n_hidden_P=2, n_centres=1, n_hidden_N=1, nb_train_cand=6, nb_train=4,
-                nb_hidden_cand=4, steps_big={"P": 60, "N30": 60, "N10": 60}, steps_C=60, steps_Cft=20,
-                steps_D={8: 40, 32: 40, 128: 40, 512: 40}, steps_FT={8: 20, 32: 20, 128: 20, 512: 20}, nw_curve=[16],
-                eval_every=20, eval_every_small=20, shape_test=True)
+                nb_hidden_cand=4, steps_big=_SBT, steps_C=100, steps_Cft=50, steps_D={8: 50, 32: 50, 128: 50, 512: 50},
+                steps_FT={8: 50, 32: 50, 128: 50, 512: 50}, nw_curve=[16], eval_every=50, eval_every_small=50, shape_test=True)
+_SBS = {a: {k: 20 for k in v} for a, v in SB_FULL.items()}
 SMOKE = dict(burn=3, chunk=8, gate_M=2, gate_on=False, pool_limit=10, n_hidden_P=2, n_centres=1, n_hidden_N=1,
              nb_train_cand=3, nb_train=3, nb_hidden_cand=2, epw=4, n_lab=8, lab_chunk=4, n_csim=8, n_items=4, R=3,
-             n_clim=4, m=4, m_plug=3, budgets=[8], s_budgets=[0, 2, 8], seeds2=[8],
-             steps_big={"P": 30, "N30": 20, "N10": 20}, batch_big=16, steps_C=20, steps_Cft=10, lr_Cft=3e-4,
-             steps_D={8: 20}, steps_FT={8: 10}, lr_FT=2e-4, nw_curve=[4], eval_every=10, eval_every_small=10, shape_test=False)
+             n_clim=4, m=4, m_plug=3, budgets=[8], s_budgets=[0, 2, 8], seeds2=[8], steps_big=_SBS,
+             batch_big={"P": 16, "N30": 16, "N10": 16}, batch_world=16, steps_C=20, steps_Cft=10, lr_Cft=3e-4,
+             steps_D={8: 20}, steps_FT={8: 10}, lr_FT=2e-4, nw_curve=[4], eval_every=10, eval_every_small=10,
+             chunk_steps=10, shape_test=False)
 CFG = {"full": FULL, "presmoke": PRESMOKE, "smoke": SMOKE}[args.size]
+NN.Cfg.BATCH, NN.Cfg.CHUNK = CFG["batch_world"], CFG["chunk_steps"]
 if args.size == "smoke":
-    NN.Cfg.BATCH, NN.Cfg.N_VAL, NN.Cfg.EVAL_ROWS, NN.Cfg.EVAL_DRAWS, NN.Cfg.KMAX = 16, 32, 16, 4, 8
+    NN.Cfg.N_VAL, NN.Cfg.EVAL_ROWS, NN.Cfg.EVAL_DRAWS, NN.Cfg.KMAX = 32, 16, 4, 8
     NN.KS = (0, 1, 2, 4, 8)
 STRICT = args.size != "full"                      # in a test pass a skipped or failed part fails the pass
 ARMS = [a for a in args.arms.split(",") if a]
+ARMS_FULL = ["P", "N30", "N10"]                   # the arms of the full pass (the presmoke's speed guard projects these)
 EPS = {"N30": 0.3, "N10": 0.1}
 FAILED, SKIPPED = [], []
 CLOCK = {}
@@ -291,6 +298,8 @@ def train_groups(cfg, jobs, steps, lock, lr=None, init_of=None, tag="", info=Non
         ps, inf = NN.train(cfg, [g[1] for g in grp], steps, [g[2] for g in grp], lr=lr, init=init, log=log,
                            tag=f" {tag}[{s // L}]", deadline=deadline, eval_every=eval_every, pad=pad)
         inf["names"] = [g[0] for g in grp]
+        if inf.get("ms_per_step"):
+            log(f"  {tag}[{s // L}]: {inf['ms_per_step']:.1f} ms per step of {len(grp)} nets")
         if info is not None:
             info[f"{tag}|batch{s // L}"] = inf
         if inf["stopped_early"]:
@@ -300,13 +309,24 @@ def train_groups(cfg, jobs, steps, lock, lr=None, init_of=None, tag="", info=Non
     return out
 
 
+def save_scores(arm, HW, fname):
+    names = sorted(set().union(*[set(h["S"]) for h in HW]))
+    names = [nm for nm in names if all(nm in h["S"] for h in HW)]
+    S = {nm: np.concatenate([h["S"][nm] for h in HW]) for nm in names}
+    world_of = np.repeat(np.arange(len(HW)), CFG["n_items"])
+    klass = np.concatenate([h["klass"] for h in HW])
+    npz(f"{arm}/{fname}", names=np.array(names), world=world_of, klass=klass, group=np.array([h["gi"] for h in HW]),
+        cells=np.array(HW[0]["ex"].cells), **{"S__" + nm.replace("|", "__").replace("@", "_at_"): S[nm] for nm in names})
+    return S, names, world_of, klass
+
+
 def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
     t_arm = time.time()
     groups = arm_groups(arm, cands, cth)
     if not groups:
         raise RuntimeError(f"arm {arm}: no group")
     smu, ssd = st_norm
-    info, steps_big = {}, CFG["steps_big"][arm]
+    info = {}
     ai = ARMS_ALL.index(arm)
     pad_big = None if arm == "P" else (CFG["nb_train"] * CFG["epw"], NEX * CFG["nb_train"] * CFG["epw"])
     pad_lab = (CFG["n_lab"], NEX * CFG["n_lab"])
@@ -323,10 +343,17 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
     HW = []
     for gi, g in enumerate(groups):
         for hw in g["hidden"]:
-            HW.append(hidden_world(arm, gi, len(HW), hw, world, st_norm))
+            try:                                     # one bad world is dropped and recorded, not the arm (review of 002, minor 4)
+                HW.append(hidden_world(arm, gi, len(HW), hw, world, st_norm))
+            except Exception:
+                FAILED.append(f"{arm} hidden world {hw['label']}")
+                log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
             if len(HW) % 4 == 0:
                 log(f"{arm} hidden world {len(HW)}: lab + exam + plug-ins + ridge done ({CLOCK['hidden_s']:.0f}s so far)")
     nH = len(HW)
+    if nH < 1:
+        raise RuntimeError(f"arm {arm}: no hidden world left")
+    save_scores(arm, HW, "scores_refs.npz")          # references, plug-ins and the ridge, before any net
     worlds_json = dict(arm=arm, eps=EPS.get(arm), groups=[dict(gid=g["gid"], n_train=len(g["train"]), train_labels=g["train_labels"])
                                                           for g in groups],
                        hidden=[dict(label=h["label"], group=groups[h["gi"]]["gid"], tick_share=h["tick"], lab=h["lab_nats"],
@@ -340,74 +367,94 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
         sl = slice(i * CFG["n_csim"], (i + 1) * CFG["n_csim"])
         h["dsC"] = NN.make_dataset(obsC[sl], UC[sl], smu, ssd, seed=i)
     del obsC, UC
-    # ---- nets
+    # ---- nets, in priority order (a deadline cuts from the end; review of 002, minor 1): the prior nets, C, the
+    #      largest Lab budget, the fine-tuned ceiling, the smaller budgets, the second seeds, P0's world-count curve
     nets = {}                                        # name -> (cfg, params)
     tn = time.time()
+    sb, bb = CFG["steps_big"][arm], CFG["batch_big"][arm]
     for gi, g in enumerate(groups):
         for nm, cfg, seeds in (("P0", C_FULL, [0, 1]), ("A", C_AM, [10, 11]), ("P0s", C_STATE, [20, 21])):
             try:
-                ps, inf = NN.train(cfg, g["ds"], steps_big, seeds, batch=CFG["batch_big"], log=log, tag=f" {arm} {nm} g{gi}",
+                ps, inf = NN.train(cfg, g["ds"], sb[nm], seeds, batch=bb, log=log, tag=f" {arm} {nm} g{gi}",
                                    deadline=t_arm_end, eval_every=CFG["eval_every"], pad=pad_big)
                 info[f"{nm}|g{gi}"] = inf
                 if inf["stopped_early"]:
                     SKIPPED.append(f"{arm} {nm} g{gi} stopped at step {inf['stopped_early']} (deadline)")
                 for s, p in enumerate(ps):
                     nets[f"{nm}|g{gi}|s{s}"] = (cfg, p)
+                log(f"{arm} {nm} g{gi}: {inf['ms_per_step']:.1f} ms per step ({len(seeds)} nets, batch {bb})")
             except Exception:
                 FAILED.append(f"{arm} net {nm} g{gi}")
                 log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
-        if arm == "P":
-            obs, U, wo = g["obs_U_wo"]
-            for nw in CFG["nw_curve"]:
-                if nw >= g["n_train_worlds"]:
-                    continue
-                try:
-                    sel = wo < nw
-                    ds = NN.make_dataset(obs[sel], U[sel], smu, ssd, seed=nw, world_of=wo[sel])
-                    ps, inf = NN.train(C_FULL, ds, steps_big, [30], batch=CFG["batch_big"], log=log, tag=f" {arm} P0[{nw}]",
-                                       deadline=t_arm_end, eval_every=CFG["eval_every"])
-                    info[f"P0w{nw}|g{gi}"] = inf
-                    nets[f"P0w{nw}|g{gi}|s0"] = (C_FULL, ps[0])
-                except Exception:
-                    FAILED.append(f"{arm} net P0[{nw}]")
-                    log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
-        g.pop("obs_U_wo")
     log(f"{arm} prior nets done ({time.time() - tn:.0f}s)")
-    try:
-        jobs = [(f"C|w{i}|s{s}", h["dsC"], 100 + 2 * i + s) for s in (0, 1) for i, h in enumerate(HW)]
-        got = train_groups(C_FULL, jobs, CFG["steps_C"], nH, tag=f"{arm} C", info=info, deadline=t_arm_end,
-                           eval_every=CFG["eval_every"])
+
+    def p0_init(jobs):
+        return {j[0]: nets[f"P0|g{HW[int(j[0].split('|')[1][1:])]['gi']}|s{j[0].split('|')[2][1:]}"][1] for j in jobs}
+    dl = {}
+
+    def lab_sets(N):
+        if N not in dl:
+            N_ = min(N, CFG["n_lab"])
+            dl[N] = [NN.make_dataset(h["lab"]["obs"][:N_], h["lab"]["U"][:N_], smu, ssd, seed=N + i) for i, h in enumerate(HW)]
+        return dl[N]
+
+    def do(kind, N=None, s=None):
+        if kind == "C":
+            jobs = [(f"C|w{i}|s{sd}", h["dsC"], 100 + 2 * i + sd) for sd in (0, 1) for i, h in enumerate(HW)]
+            got = train_groups(C_FULL, jobs, CFG["steps_C"], nH, tag=f"{arm} C", info=info, deadline=t_arm_end,
+                               eval_every=CFG["eval_every"])
+        elif kind == "Cft":      # P0 fine-tuned on the true-weight simulations (the other candidate for the ceiling)
+            jobs = [(f"Cft|w{i}|s{sd}", h["dsC"], 150 + 2 * i + sd) for sd in (0, 1) for i, h in enumerate(HW)
+                    if f"P0|g{h['gi']}|s{sd}" in nets]
+            got = train_groups(C_FULL, jobs, CFG["steps_Cft"], nH, lr=CFG["lr_Cft"], init_of=p0_init(jobs), tag=f"{arm} Cft",
+                               info=info, deadline=t_arm_end, eval_every=CFG["eval_every"])
+        elif kind == "D":
+            jobs = [(f"D@{N}|w{i}|s{s}", lab_sets(N)[i], 200 + 2 * i + s) for i in range(nH)]
+            got = train_groups(C_FULL, jobs, CFG["steps_D"][N], nH, tag=f"{arm} D@{N} s{s}", info=info, deadline=t_arm_end,
+                               eval_every=CFG["eval_every_small"], pad=pad_lab)
+        else:
+            jobs = [(f"FT@{N}|w{i}|s{s}", lab_sets(N)[i], 300 + 2 * i + s) for i in range(nH) if f"P0|g{HW[i]['gi']}|s{s}" in nets]
+            got = train_groups(C_FULL, jobs, CFG["steps_FT"][N], nH, lr=CFG["lr_FT"], init_of=p0_init(jobs),
+                               tag=f"{arm} FT@{N} s{s}", info=info, deadline=t_arm_end, eval_every=CFG["eval_every_small"], pad=pad_lab)
         nets.update({k: (C_FULL, v) for k, v in got.items()})
-        # Cft: P0 fine-tuned on the same true-weight simulations (the other candidate for the family's ceiling)
-        jobs = [(f"Cft|w{i}|s{s}", h["dsC"], 150 + 2 * i + s) for s in (0, 1) for i, h in enumerate(HW)
-                if f"P0|g{h['gi']}|s{s}" in nets]
-        init_of = {j[0]: nets[f"P0|g{HW[int(j[0].split('|')[1][1:])]['gi']}|s{j[0].split('|')[2][1:]}"][1] for j in jobs}
-        got = train_groups(C_FULL, jobs, CFG["steps_Cft"], nH, lr=CFG["lr_Cft"], init_of=init_of, tag=f"{arm} Cft", info=info,
-                           deadline=t_arm_end, eval_every=CFG["eval_every"])
-        nets.update({k: (C_FULL, v) for k, v in got.items()})
-    except Exception:
-        FAILED.append(f"{arm} nets C")
-        log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
+    Nmax = max(CFG["budgets"])
+    plan = [("C", None, None), ("D", Nmax, 0), ("FT", Nmax, 0), ("Cft", None, None)]
+    for N in sorted(CFG["budgets"], reverse=True):
+        if N != Nmax:
+            plan += [("D", N, 0), ("FT", N, 0)]
+    for N in sorted(CFG["seeds2"]):
+        plan += [("D", N, 1), ("FT", N, 1)]
+    for kind, N, s in plan:
+        try:
+            do(kind, N, s)
+        except Exception:
+            FAILED.append(f"{arm} nets {kind} {N} {s}")
+            log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
     for h in HW:
         h.pop("dsC")
-    for N in CFG["budgets"]:
-        try:
-            N_ = min(N, CFG["n_lab"])
-            dl = [NN.make_dataset(h["lab"]["obs"][:N_], h["lab"]["U"][:N_], smu, ssd, seed=N + i) for i, h in enumerate(HW)]
-            sd = (0, 1) if N in CFG["seeds2"] else (0,)
-            jobs = [(f"D@{N}|w{i}|s{s}", dl[i], 200 + 2 * i + s) for s in sd for i in range(nH)]
-            got = train_groups(C_FULL, jobs, CFG["steps_D"][N], nH, tag=f"{arm} D@{N}", info=info, deadline=t_arm_end,
-                               eval_every=CFG["eval_every_small"], pad=pad_lab)
-            nets.update({k: (C_FULL, v) for k, v in got.items()})
-            jobs = [(f"FT@{N}|w{i}|s{s}", dl[i], 300 + 2 * i + s) for s in sd for i in range(nH)
-                    if f"P0|g{HW[i]['gi']}|s{s}" in nets]
-            init_of = {j[0]: nets[f"P0|g{HW[int(j[0].split('|')[1][1:])]['gi']}|s{j[0].split('|')[2][1:]}"][1] for j in jobs}
-            got = train_groups(C_FULL, jobs, CFG["steps_FT"][N], nH, lr=CFG["lr_FT"], init_of=init_of, tag=f"{arm} FT@{N}",
-                               info=info, deadline=t_arm_end, eval_every=CFG["eval_every_small"], pad=pad_lab)
-            nets.update({k: (C_FULL, v) for k, v in got.items()})
-        except Exception:
-            FAILED.append(f"{arm} nets D/FT@{N}")
-            log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
+    if arm == "P":
+        obs, U, wo = groups[0]["obs_U_wo"]
+        for nw in CFG["nw_curve"]:
+            if nw >= groups[0]["n_train_worlds"]:
+                continue
+            if time.time() > t_arm_end:
+                SKIPPED.append(f"{arm} P0[{nw}] (deadline)")
+                log("SKIP " + SKIPPED[-1])
+                continue
+            try:
+                sel = wo < nw
+                ds = NN.make_dataset(obs[sel], U[sel], smu, ssd, seed=nw, world_of=wo[sel])
+                ps, inf = NN.train(C_FULL, ds, sb["P0w"], [30], batch=bb, log=log, tag=f" {arm} P0[{nw}]",
+                                   deadline=t_arm_end, eval_every=CFG["eval_every"])
+                info[f"P0w{nw}|g0"] = inf
+                if inf["stopped_early"]:
+                    SKIPPED.append(f"{arm} P0[{nw}] stopped at step {inf['stopped_early']} (deadline)")
+                nets[f"P0w{nw}|g0|s0"] = (C_FULL, ps[0])
+            except Exception:
+                FAILED.append(f"{arm} net P0[{nw}]")
+                log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
+    for g in groups:
+        g.pop("obs_U_wo", None)
     CLOCK[f"{arm}_nets_s"] = time.time() - tn
     log(f"{arm} all nets done ({time.time() - tn:.0f}s), {len(nets)} nets")
     jdump(f"{arm}/train_info.json", info)
@@ -437,22 +484,19 @@ def run_arm(arm, cands, cth, world, st_norm, t_arm_end):
             except Exception:
                 FAILED.append(f"{arm} scores {key} world {i}")
                 log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
-    names = sorted(set().union(*[set(h["S"]) for h in HW]))
-    names = [nm for nm in names if all(nm in h["S"] for h in HW)]
-    S = {nm: np.concatenate([h["S"][nm] for h in HW]) for nm in names}
-    world_of = np.repeat(np.arange(nH), CFG["n_items"])
-    klass = np.concatenate([h["klass"] for h in HW])
-    npz(f"{arm}/scores.npz", names=np.array(names), world=world_of, klass=klass, group=np.array([h["gi"] for h in HW]),
-        cells=np.array(HW[0]["ex"].cells), **{"S__" + nm.replace("|", "__").replace("@", "_at_"): S[nm] for nm in names})
+    S, names, world_of, klass = save_scores(arm, HW, "scores.npz")
     npz(f"{arm}/items.npz", hist=np.stack([h["hist"] for h in HW]).astype(np.float32),
         Ptest=np.stack([h["Ptest"] for h in HW]).astype(np.float32))
     CLOCK[f"{arm}_scores_s"] = time.time() - ts
     # ---- quick report (the full analysis is make_summary.py)
+    meta = dict(arm=arm, eps=EPS.get(arm), n_hidden=nH, n_items=CFG["n_items"], R=CFG["R"], m=m, names=names,
+                hidden_labels=[h["label"] for h in HW], groups=[g["gid"] for g in groups],
+                group_of_world=[h["gi"] for h in HW], cells=HW[0]["ex"].cells, quick=None,
+                seconds=time.time() - t_arm, clock={k: v for k, v in CLOCK.items()})
+    jdump(f"{arm}/meta.json", meta)                  # written before the quick report, which may fail on missing policies
     rep = quick_report(S, world_of, klass)
-    jdump(f"{arm}/meta.json", dict(arm=arm, eps=EPS.get(arm), n_hidden=nH, n_items=CFG["n_items"], R=CFG["R"], m=m, names=names,
-                                   hidden_labels=[h["label"] for h in HW], groups=[g["gid"] for g in groups],
-                                   group_of_world=[h["gi"] for h in HW], cells=HW[0]["ex"].cells, quick=rep,
-                                   seconds=time.time() - t_arm, clock={k: v for k, v in CLOCK.items()}))
+    meta["quick"] = rep
+    jdump(f"{arm}/meta.json", meta)
     log(f"{arm} done in {(time.time() - t_arm) / 60:.1f} min; OES " + ", ".join(f"{k} {v:.3f}" for k, v in rep["oes"].items()))
     log(f"{arm} sigma {rep['sigma']:.3f} (null {rep['null_is']}), no-experiment share of C {rep['share_noexp']:.3f}, "
         f"rho@8 {rep.get('rho@8')}, rho@512 {rep.get('rho@512')}")
@@ -503,8 +547,12 @@ def quick_report(S, world_of, klass):
 
 
 def shape_test(st_norm):
-    """Presmoke only: one lockstep group of MAX_LOCK nets and one shared big net at the FULL job's array shapes
-    (data are noise; 12 steps and one validation pass each), so that a memory failure shows within minutes."""
+    """Presmoke only: one lockstep group of MAX_LOCK nets and the shared big nets at the FULL job's array shapes
+    (data are noise), 200 steps each, so that a memory failure shows within minutes and the speed is MEASURED.
+    Speed guard (written after r6-foundryexam-002, whose nets ran several times slower than the round-5 basis):
+    the net time of the full pass is projected from the measured ms per step; if it exceeds 1.25 x the time the
+    full pass will have, minus 35 minutes for simulation, hidden worlds, compilation and scoring, the presmoke
+    fails (exit 4) before the full pass spends anything."""
     smu, ssd = st_norm
     rng = np.random.default_rng(0)
     t = time.time()
@@ -512,16 +560,45 @@ def shape_test(st_norm):
     obs = np.abs(rng.standard_normal((E, FL.T1, FL.NOBS))).astype(np.float32) + 0.1
     U = np.zeros((E, FL.P + FL.H, FL.NW), np.float32)
     ds = NN.make_dataset(obs, U, smu, ssd, seed=0)
-    NN.train(C_FULL, [ds] * NN.Cfg.MAX_LOCK, 12, list(range(NN.Cfg.MAX_LOCK)), log=log, tag=" shape lock16", eval_every=6)
+    _, inf = NN.train(C_FULL, [ds] * NN.Cfg.MAX_LOCK, 200, list(range(NN.Cfg.MAX_LOCK)), log=log, tag=" shape lock16", eval_every=200)
+    ms16 = inf["ms_per_step"]
     nW = 400
     Eb = nW * FULL["epw"]
     obs = np.abs(rng.standard_normal((Eb, FL.T1, FL.NOBS))).astype(np.float32) + 0.1
     U = np.zeros((Eb, FL.P + FL.H, FL.NW), np.float32)
     wo = np.repeat(np.arange(nW), FULL["epw"])
     ds = NN.make_dataset(obs, U, smu, ssd, seed=0, world_of=wo, ST=NN.episode_stats(NN.to_grid(obs)), EW=FULL["epw"])
+    ms2 = {}
     for cfg in (C_AM, C_FULL):
-        NN.train(cfg, ds, 12, [0, 1], batch=FULL["batch_big"], log=log, tag=f" shape big {cfg[2]}", eval_every=6)
-    log(f"shape test passed ({time.time() - t:.0f}s)")
+        _, inf = NN.train(cfg, ds, 200, [0, 1], batch=FULL["batch_big"]["P"], log=log, tag=f" shape big {cfg[2]}", eval_every=200)
+        ms2[cfg[2]] = inf["ms_per_step"]
+    F = FULL
+    lock = (2 * F["steps_C"] + 2 * F["steps_Cft"]
+            + sum((F["steps_D"][N] + F["steps_FT"][N]) * (2 if N in F["seeds2"] else 1) for N in F["budgets"]))
+    sbP = F["steps_big"]["P"]
+    proj = {"P": ms16 * lock + ms2["own"] * (sbP["P0"] + sbP["P0s"] + sbP["P0w"]) + ms2["random"] * sbP["A"]}
+    for a in ("N30", "N10"):
+        sbn = F["steps_big"][a]
+        frac = F["batch_big"][a] / F["batch_big"]["P"]
+        proj[a] = (ms16 * lock * (F["n_centres"] * F["n_hidden_N"]) / NN.Cfg.MAX_LOCK
+                   + F["n_centres"] * frac * (ms2["own"] * (sbn["P0"] + sbn["P0s"]) + ms2["random"] * sbn["A"]))
+    arms = [a for a in ARMS_FULL if a in proj]
+    total_h = sum(proj[a] for a in arms) / 3.6e6
+    res = dict(ms_per_step_lock16=ms16, ms_per_net_step_lock16=ms16 / NN.Cfg.MAX_LOCK, ms_per_step_big2=ms2,
+               lock_steps_per_arm=lock, projected_net_hours={a: proj[a] / 3.6e6 for a in arms}, projected_net_hours_total=total_h,
+               full_hours=args.full_hours, seconds=time.time() - t)
+    ok = True
+    if args.full_hours is not None:
+        have = args.full_hours - (time.time() - T0) / 3600 - 35.0 / 60.0
+        res["net_hours_available"] = have
+        ok = total_h <= 1.25 * have
+    res["speed_ok"] = bool(ok)
+    jdump("shape_test.json", res)
+    log(f"shape test: {ms16:.1f} ms per step of 16 nets ({ms16 / 16:.2f} per net-step), big nets {ms2}; projected net time "
+        f"{total_h:.2f} h for arms {arms}; available {res.get('net_hours_available')}; speed_ok {ok} ({time.time() - t:.0f}s)")
+    if not ok:
+        log("TOO SLOW: the full pass would not finish its nets; stopping before it starts")
+        sys.exit(4)
 
 
 ARMS_ALL = ["P", "N30", "N10"]
@@ -529,19 +606,35 @@ ARM_WEIGHT = {"P": 2.0, "N30": 1.2, "N10": 1.2}       # shares of the time left 
 NEX = sum(FL.T1 - h - FL.P for h in FL.HS)             # examples per episode (anchors t in [16, 32 - h])
 
 
+def write_info(reps, todo, done=False):
+    jdump("info.json", dict(size=args.size, arms=todo, finished=bool(done),
+                            config={k: (v if not isinstance(v, dict) else {str(a): b for a, b in v.items()}) for k, v in CFG.items()},
+                            platform=dict(jax=jax.__version__, numpy=np.__version__, python=platform.python_version(),
+                                          backend=backend, devices=[str(d) for d in jax.devices()], world_dtype="float64",
+                                          net_dtype="float32"),
+                            member_ticks_public_simulator=RUN.member_ticks, hours=(time.time() - T0) / 3600, failed=FAILED,
+                            skipped=SKIPPED, clock=CLOCK, secret_commitment=SECRET.commitment(),
+                            arms_done=list(reps), quick={a: r for a, r in reps.items()}))
+
+
 def main():
     cands, cth = stage_gate()
     world = FL.build_world(cands[0]["theta"], CFG["burn"])
-    # public standardisation of the code: own-window statistics of the pool's free gate episodes
-    pool_ok = [i for i, c in enumerate(cands) if c["kind"] == "pool" and c["ok"]]
-    obs, U, _ = sim_mix([cands[i]["theta"] for i in pool_ok[:64]], 4, 77, " code-norm")
+    # public standardisation of the code: window statistics of simulated episodes of pool worlds that are not hidden
+    # worlds of arm P (review of 002: the first version drew from all gate-passing pool worlds)
+    hid = set()
+    if "P" in ARMS:
+        hid = {h["label"] for h in arm_groups("P", cands, cth)[0]["hidden"]}
+    pool_ok = [c for c in cands if c["kind"] == "pool" and c["ok"] and f"seed{c['prior_seed']}-{c['index']}" not in hid]
+    obs, U, _ = sim_mix([c["theta"] for c in pool_ok[:64]], 4, 77, " code-norm")
     st = NN.episode_stats(NN.to_grid(obs)).reshape(-1, NN.NS)
     st_norm = (st.mean(0), np.maximum(st.std(0), 1e-3))
-    jdump("code_norm.json", dict(mean=st_norm[0], sd=st_norm[1], n_windows=int(st.shape[0])))
+    jdump("code_norm.json", dict(mean=st_norm[0], sd=st_norm[1], n_windows=int(st.shape[0]), n_worlds=len(pool_ok[:64])))
     if CFG["shape_test"]:
         shape_test(st_norm)
     reps = {}
     todo = [a for a in ARMS if a in ARMS_ALL]
+    write_info(reps, todo)
     for k, arm in enumerate(todo):
         share = left() * ARM_WEIGHT[arm] / sum(ARM_WEIGHT[a] for a in todo[k:])
         if left() < 600 and args.size == "full":
@@ -553,14 +646,8 @@ def main():
         except Exception:
             FAILED.append(f"arm {arm}")
             log("FAILED " + FAILED[-1] + "\n" + traceback.format_exc())
-    jdump("info.json", dict(size=args.size, arms=todo, config={k: (v if not isinstance(v, dict) else {str(a): b for a, b in v.items()})
-                                                               for k, v in CFG.items()},
-                            platform=dict(jax=jax.__version__, numpy=np.__version__, python=platform.python_version(),
-                                          backend=backend, devices=[str(d) for d in jax.devices()], world_dtype="float64",
-                                          net_dtype="float32"),
-                            member_ticks_public_simulator=RUN.member_ticks, hours=(time.time() - T0) / 3600, failed=FAILED,
-                            skipped=SKIPPED, clock=CLOCK, secret_commitment=SECRET.commitment(),
-                            quick={a: r for a, r in reps.items()}))
+        write_info(reps, todo)
+    write_info(reps, todo, done=True)
     log(f"done: arms {list(reps)}, {(time.time() - T0) / 3600:.2f} h, failed {FAILED}, skipped {SKIPPED}")
     bad = bool(FAILED) or (STRICT and bool(SKIPPED)) or not reps
     sys.exit(1 if bad else 0)

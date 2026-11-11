@@ -1,0 +1,91 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "instance_id": "pilot-astra-ring-001-w0",
+ "what": "bootstrap over the 64 items of this ONE instance (4000 resamples, seed 0): skill on the K-to-O scale of every policy and of the model (AGENT), with its standard error, and paired differences of skill. It says how well this instance separates the rows, nothing about other hidden worlds.",
+ "skill_vs_O": {
+  "S": {
+   "point": 0.883,
+   "se": 0.0142,
+   "p05": 0.8582,
+   "p95": 0.9045
+  },
+  "D": {
+   "point": 0.0369,
+   "se": 0.0828,
+   "p05": -0.1092,
+   "p95": 0.1635
+  },
+  "P0": {
+   "point": 0.7905,
+   "se": 0.018,
+   "p05": 0.7598,
+   "p95": 0.8184
+  },
+  "PM": {
+   "point": 0.7867,
+   "se": 0.0172,
+   "p05": 0.7569,
+   "p95": 0.8131
+  },
+  "C": {
+   "point": 0.8878,
+   "se": 0.0136,
+   "p05": 0.8641,
+   "p95": 0.9086
+  },
+  "null": {
+   "point": -0.0432,
+   "se": 0.0266,
+   "p05": -0.0878,
+   "p95": 0.0014
+  },
+  "AGENT": {
+   "point": 0.9645,
+   "se": 0.0096,
+   "p05": 0.9477,
+   "p95": 0.9796
+  }
+ },
+ "paired_skill_differences": {
+  "AGENT minus C": {
+   "point": 0.0767,
+   "se": 0.0089,
+   "share_of_resamples_positive": 1.0
+  },
+  "AGENT minus S": {
+   "point": 0.0815,
+   "se": 0.0096,
+   "share_of_resamples_positive": 1.0
+  },
+  "AGENT minus P0": {
+   "point": 0.174,
+   "se": 0.0143,
+   "share_of_resamples_positive": 1.0
+  },
+  "AGENT minus D": {
+   "point": 0.9276,
+   "se": 0.0794,
+   "share_of_resamples_positive": 1.0
+  },
+  "C minus S": {
+   "point": 0.0048,
+   "se": 0.0027,
+   "share_of_resamples_positive": 0.9647
+  },
+  "S minus P0": {
+   "point": 0.0925,
+   "se": 0.011,
+   "share_of_resamples_positive": 1.0
+  },
+  "P0 minus PM": {
+   "point": 0.0038,
+   "se": 0.0069,
+   "share_of_resamples_positive": 0.7147
+  },
+  "P0 minus D": {
+   "point": 0.7536,
+   "se": 0.0756,
+   "share_of_resamples_positive": 1.0
+  }
+ }
+}

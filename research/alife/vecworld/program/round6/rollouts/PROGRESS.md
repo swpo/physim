@@ -112,13 +112,17 @@ report a person can read, with no model in the loop.
 - 11:47 `tools/rollout_report.py` (work in progress, committed): scores beside the reference policies, usage and
   cost, budgets, timeline, flags.
 - 11:56 DONE. `tools/rollout_report.py`, `tools/README_rollout_report.md` (inputs, the rules behind the
-  heuristics, what a trace alone cannot tell), `tools/test_rollout_report.py` (41 checks, all passing: the
+  heuristics, what a trace alone cannot tell), `tools/test_rollout_report.py` (42 checks, all passing: the
   tool's numbers against the runner's `result.json`, `reference_noise.json`, `LEDGER.md` and `prove.py`'s table;
   synthetic traces for the paths no model has used yet). Example reports: `qwen_ring_001/rollout_report.md`
   and `scripted_ring_S/rollout_report.md` (each with its `.json`). New folder `scripted_ring_S/`: the scripted
   trace and the laboratory's log of that rollout, as test inputs.
   Before the commit: 0 credentials and 0 account identifiers (`tools/scan_key.py`), 0 hidden values of the pilot
   instance in the new files.
+- 12:10 Tried on the trace of astra_ring_001 as soon as that rollout had exited (read only, from its runner's
+  scratch folder; output to the toolsmith's scratch folder, nothing of it committed here): it ran, its five
+  consistency checks hold, its bound equals the ledger's $19.02. Three rules corrected by that trace and one
+  flag added (`tools/README_rollout_report.md`, "Checked"). The report of that rollout is its runner's to make.
 
 For the next runner: after `tools/extract.py`, add one step,
 
@@ -227,3 +231,52 @@ State (newest last; times UTC as this container's clock shows them):
   from the agent's box and the verifier's box and of /workspace from the agent's box; no exec in a box, no
   signal, no reading of the model's text). If this container restarts before an ENDED entry follows, the
   rollout was cut: record it as cut with what the provider billed, and do not reuse the instance.
+
+- 12:09 ROLLOUT astra_ring_001 ENDED: `EXIT 0`, 16 minutes after the start (11:53:51 to 12:09:50). Complete,
+  graded, not cut. 14 model calls in 359 s of the agent phase, stop condition **`frozen`**: the agent validated
+  and submitted through the `lab_call` tool, the submit was accepted, the task's stop hook ended the rollout
+  (the first time that hook fired for a model). Laboratory: 210 episodes (10 of 20 observations, then 200 bare
+  resets), 400 of 400 ticks, 0 nats, 215 requests, 0 rejected, 1 validation, 1 submission, 0 infrastructure
+  errors. Grading: the frozen `submission/` (predict.py and posterior.npz, 417,993 bytes) passed the three
+  example calls in the verifier box and ran in 64 item boxes (0 failed items, 4.8 CPU-seconds per item, 8.6 s
+  per box, 568 s in all). **Reward (skill on the K-to-O scale): 0.964** (bootstrap se 0.010 over the 64 items of
+  this one instance), above C 0.888 and S 0.883; P0 0.791, PM 0.787, D 0.037, null -0.043.
+  Billed: 193,826 input tokens (172,190 of them cache reads) and 10,782 output tokens (5,242 reasoning):
+  **$2.48** at the listed prices ($1.02 by the provider's own cost fields); the caps saw 20,917 of 70,000 tokens
+  and 14 of 22 turns, so neither told limit was reached. No credential, no account identifier and no hidden
+  value in what is committed (`tools/scan_key.py`: 62 files, 0 and 0; the port's report tool: 0 hidden values
+  in the run folder).
+- 12:20 Extracted into `astra_ring_001/` (start with `RESULT.md`): result, per-item scores next to the reference
+  policies with their bootstrap noise, the laboratory's log, the transcript (Markdown and raw record with the
+  team header removed), the frozen `submission/` from the verifier's box, the agent's own files from its box
+  (`workspace/`), the watcher's timeline, the port's own report. `tools/scan_key.py` on the whole folder:
+  0 credentials, 0 account identifiers.
+- 12:25 TWO FINDINGS ABOUT THE EXAM, for whoever reads the transcript (details in `astra_ring_001/RESULT.md`,
+  "Leaks, shortcuts, gaming"). (1) The model's loss is BELOW the oracle's at 16 and 32 ticks ahead (paired
+  t = -6.7, -5.9, -2.7 over the 64 items): its 32 samples per item are a scrambled Sobol set, not independent
+  draws, and the grader's fair energy score rewards that. Checked with the evaluator's own scoring functions on
+  a made-up Gaussian truth, no code of the model (`astra_ring_001/fair_score_check.json`): independent draws
+  from the truth score as the oracle does, antithetic pairs 1.3 % below it, a Sobol set 2.1 to 2.4 % below it.
+  So O is not a ceiling, and part of the model's 0.077 over C is the sampling scheme (rough estimate: about 0.91
+  with independent samples). (2) It spent 200 of the 400 ticks on bare resets: one tick, one independent
+  observation of the stationary law. No input was ever applied.
+- DECISION: no second rollout. Nothing died on mechanics: every leg ran, including the ones no model had reached
+  (accepted submit, freeze, stop hook `frozen`, a model-written predictor in the verifier box and in 64 item
+  boxes, the `lab_call` tool).
+- 12:20 `ledger.json` (the coordinator's machine-readable ledger, schema rollout-ledger/v1; request in the channel
+  file at 12:11): row astra_ring_001 set to done with billed_usd 2.4774 (the figure of `LEDGER.md`: the usage
+  the provider reported at the listed prices; its own cost fields sum to 1.0188), billed_usd_total 2.5851,
+  reserved_usd_open 0.
+
+DONE for this role (astra_ring_001). Left on the machine: the Docker daemon (running, not to be stopped), the
+four images of qwen_ring_001 unchanged, no container, no process of this role. The runner's scratch folder
+`rolla/` (store with the hidden side of the pilot instance, the unredacted run folder, the watcher's copies)
+stays until the container restarts; nothing in it is needed.
+
+For the next runner on this machine, in addition to the list above:
+1. `tools/prove_here.py --run-id LABEL --box-memory-gb 4 [arguments of prove.py]` for the reference table with
+   the 4 GB cap on the scripted boxes; `--box-check '' --no-cross-check` takes 8 minutes for six policies.
+2. `tools/ping_stream.py MODEL OUT` before the first rollout of a model: two streamed requests as the bash
+   harness sends them (usage in the stream, the second turn of a tool conversation, reasoning tokens).
+3. Size turns and total tokens together (`LEDGER.md`, "Row 3") and tell the agent both through
+   `[env.taskset] system_prompt = "<file>"` (path relative to the port's folder).

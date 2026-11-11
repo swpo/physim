@@ -1,0 +1,4432 @@
+{
+ "study": "cards (round 6): world cards",
+ "date": "2026-11-11",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "jobs": [
+  {
+   "job_id": "r6-cards-001",
+   "state": "done",
+   "gpu": "A100_40GB",
+   "provider": "lambdalabs",
+   "rate_usd_hr": 1.99,
+   "billed_usd": 1.2495,
+   "conservative_usd": 1.3657,
+   "cap_usd": 11.4,
+   "started_at": "2026-11-11T11:47:27Z",
+   "finished_at": "2026-11-11T12:25:12Z",
+   "billed_hours": 0.628,
+   "pod_requested_at": "2026-11-11T11:43:39Z",
+   "exit_code": 0,
+   "review": "0 blocker, 0 major, 6 minor (2 affect pre-registered gates: tick share fixable offline, response difference biased low); fine to run",
+   "runs_done": 125,
+   "runs_failed": [],
+   "runs_skipped": [],
+   "presmoke": "passed",
+   "presmoke_s": 986.6844420433044,
+   "elapsed_s": 2208.020262002945,
+   "source": "origin/gpu-jobs:jobs/r6-cards-001/status.json and out/job_state.json (copies: results/jobs/r6-cards-001/)"
+  }
+ ],
+ "gpu_total": {
+  "billed_usd": 1.25,
+  "conservative_usd": 1.366,
+  "budget_usd": 25.0,
+  "source": "results/jobs/<job>/status.json:cost"
+ },
+ "thresholds": {
+  "PF_MIN": 0.3,
+  "PF_NOISE": 0.1,
+  "GAP_MIN": 0.05,
+  "SIGMA_HAT_MIN": 0.15,
+  "NB_MIN": 2.0,
+  "SLOTS_FULL_MAX": 0.05,
+  "HALF_LIFE_MIN": 16.0,
+  "V_NET_MIN": 0.05,
+  "EVENTS_MIN": 2.0,
+  "BODY_PF_MIN": 0.3,
+  "BODY_CEIL_MAX": 0.9,
+  "ACT_MS_MIN": 0.1,
+  "TICK_SHARE_MAX": 0.1,
+  "MEMBER_SHARE_MAX": 0.3,
+  "CROSS_GAIN_MIN": 0.02,
+  "LEARNED_DCEIL_MIN": 0.05,
+  "LEARNED_R2_MAX": 0.9,
+  "LATE_DMEAN_MAX": 0.5,
+  "LATE_LOGSD_MAX": 0.35,
+  "LATE_COUNT_LO": 0.67,
+  "LATE_COUNT_HI": 1.5,
+  "LATE_SIGMA_HAT": 0.1,
+  "ROBUST_ABS": 0.05,
+  "ROBUST_REL": 0.25
+ },
+ "claims": [
+  {
+   "id": "controls",
+   "claim": "The card's own test: 29 of 29 runs of the 10 negative controls come out dull (pure-noise field, uniform and frozen foundry draws, true diffusion, non-interacting bodies; the two no-affinity worlds that keep the mobility gain are listed but not counted).",
+   "values": {
+    "verdicts": {
+     "ctl_noise": {
+      "A": "dull: nothing predictable",
+      "B": "dull: nothing predictable"
+     },
+     "ctl_freebodies": {
+      "A": "dull: the hidden part has no weight",
+      "B": "dull: the hidden part has no weight",
+      "late": "dull: the hidden part has no weight"
+     },
+     "ctl_uniform_00000": {
+      "A": "dull: predictable by the cheap family",
+      "B": "dull: predictable by the cheap family",
+      "late": "dull: predictable by the cheap family"
+     },
+     "ctl_uniform_00002": {
+      "A": "dull: predictable by the cheap family",
+      "B": "dull: predictable by the cheap family",
+      "late": "dull: predictable by the cheap family"
+     },
+     "ctl_uniform_00003": {
+      "A": "dull: predictable by the cheap family",
+      "B": "dull: predictable by the cheap family",
+      "late": "dull: predictable by the cheap family"
+     },
+     "ctl_uniform_00004": {
+      "A": "dull: predictable by the cheap family",
+      "B": "dull: predictable by the cheap family",
+      "late": "dull: predictable by the cheap family"
+     },
+     "ctl_frozen_00001": {
+      "A": "dull: predictable by the cheap family",
+      "B": "dull: predictable by the cheap family",
+      "late": "dull: the hidden part has no weight"
+     },
+     "ctl_frozen_00011": {
+      "A": "dull: predictable by the cheap family",
+      "B": "dull: predictable by the cheap family",
+      "late": "dull: predictable by the cheap family"
+     },
+     "ctl_frozen_00022": {
+      "A": "dull: predictable by the cheap family",
+      "B": "dull: predictable by the cheap family",
+      "late": "dull: predictable by the cheap family"
+     },
+     "ctl_frozen_00024": {
+      "A": "dull: predictable by the cheap family",
+      "B": "dull: predictable by the cheap family",
+      "late": "dull: the hidden part has no weight"
+     },
+     "ctl_diffusion_0": {
+      "A": "dull: predictable by the cheap family"
+     },
+     "ctl_diffusion_1": {
+      "A": "dull: predictable by the cheap family"
+     }
+    },
+    "counted": [
+     "ctl_noise",
+     "ctl_freebodies",
+     "ctl_uniform_00000",
+     "ctl_uniform_00002",
+     "ctl_uniform_00003",
+     "ctl_uniform_00004",
+     "ctl_frozen_00001",
+     "ctl_frozen_00011",
+     "ctl_frozen_00022",
+     "ctl_frozen_00024"
+    ],
+    "dull": 29,
+    "runs": 29,
+    "sigma_hat": {
+     "ctl_noise": {
+      "A": null,
+      "B": null
+     },
+     "ctl_freebodies": {
+      "A": 0.0631,
+      "B": 0.0374,
+      "late": 0.0399
+     },
+     "ctl_uniform_00000": {
+      "A": 0.00517,
+      "B": 0.00994,
+      "late": 0.00229
+     },
+     "ctl_uniform_00002": {
+      "A": 0.0279,
+      "B": 0.0203,
+      "late": 0.0
+     },
+     "ctl_uniform_00003": {
+      "A": 0.000247,
+      "B": 0.000437,
+      "late": 0.000237
+     },
+     "ctl_uniform_00004": {
+      "A": 0.000165,
+      "B": 0.00018,
+      "late": 0.00132
+     },
+     "ctl_frozen_00001": {
+      "A": 0.0264,
+      "B": 0.00741,
+      "late": 0.0413
+     },
+     "ctl_frozen_00011": {
+      "A": 0.0318,
+      "B": 0.000253,
+      "late": 0.141
+     },
+     "ctl_frozen_00022": {
+      "A": 0.0553,
+      "B": 0.0258,
+      "late": 0.016
+     },
+     "ctl_frozen_00024": {
+      "A": 0.0454,
+      "B": 0.0412,
+      "late": 0.0438
+     },
+     "ctl_diffusion_0": {
+      "A": 0.000784
+     },
+     "ctl_diffusion_1": {
+      "A": 1.69e-08
+     }
+    }
+   },
+   "sources": {
+    "ctl_noise": [
+     "r6-cards-001:cards/ctl_noise__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_noise__B.json:gates.verdict"
+    ],
+    "ctl_freebodies": [
+     "r6-cards-001:cards/ctl_freebodies__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_freebodies__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_freebodies__late.json:gates.verdict"
+    ],
+    "ctl_uniform_00000": [
+     "r6-cards-001:cards/ctl_uniform_00000__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_uniform_00000__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_uniform_00000__late.json:gates.verdict"
+    ],
+    "ctl_uniform_00002": [
+     "r6-cards-001:cards/ctl_uniform_00002__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_uniform_00002__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_uniform_00002__late.json:gates.verdict"
+    ],
+    "ctl_uniform_00003": [
+     "r6-cards-001:cards/ctl_uniform_00003__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_uniform_00003__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_uniform_00003__late.json:gates.verdict"
+    ],
+    "ctl_uniform_00004": [
+     "r6-cards-001:cards/ctl_uniform_00004__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_uniform_00004__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_uniform_00004__late.json:gates.verdict"
+    ],
+    "ctl_frozen_00001": [
+     "r6-cards-001:cards/ctl_frozen_00001__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_frozen_00001__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_frozen_00001__late.json:gates.verdict"
+    ],
+    "ctl_frozen_00011": [
+     "r6-cards-001:cards/ctl_frozen_00011__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_frozen_00011__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_frozen_00011__late.json:gates.verdict"
+    ],
+    "ctl_frozen_00022": [
+     "r6-cards-001:cards/ctl_frozen_00022__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_frozen_00022__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_frozen_00022__late.json:gates.verdict"
+    ],
+    "ctl_frozen_00024": [
+     "r6-cards-001:cards/ctl_frozen_00024__A.json:gates.verdict",
+     "r6-cards-001:cards/ctl_frozen_00024__B.json:gates.verdict",
+     "r6-cards-001:cards/ctl_frozen_00024__late.json:gates.verdict"
+    ],
+    "ctl_diffusion_0": [
+     "r6-cards-001:cards/ctl_diffusion_0__A.json:gates.verdict"
+    ],
+    "ctl_diffusion_1": [
+     "r6-cards-001:cards/ctl_diffusion_1__A.json:gates.verdict"
+    ]
+   }
+  },
+  {
+   "id": "card:gliders",
+   "claim": "gliders: exam-worthy + actions; sigma_hat 0.199 at the pop level.",
+   "values": {
+    "grid.pf8": 0.986,
+    "grid.ceil8": 0.453,
+    "grid.ceil8_mean": 0.461,
+    "grid.ceil8_se": 0.023,
+    "grid.w_theta8": 0.0584,
+    "grid.sigma_hat": 0.0974,
+    "pop.pf8": 0.873,
+    "pop.ceil8": 0.143,
+    "pop.w_theta8": 0.26,
+    "pop.sigma_hat": 0.199,
+    "grid.pl_ratio0.03_8": -0.00276,
+    "grid.pl_ratio0.1_8": 0.0262,
+    "grid.pl_ratio1.0_8": 4.01,
+    "s.nb_mean": 7.47,
+    "s.half_life_ticks": 23.4,
+    "s.v_net": 1.74,
+    "s.events100": 46.8,
+    "b.pf_disp8": 0.997,
+    "b.ceil_disp8": 0.968,
+    "b.ceil_pers_disp8": 0.968,
+    "b.ceil_field_disp8": 0.968,
+    "b.quiet8": 0.524,
+    "grid.act_ms": 6.42,
+    "grid.act_ms_over_vcheap": 0.133,
+    "grid.act_ms_var": 0.0231,
+    "grid.aim_ratio": 4.25,
+    "grid.xresp": 0.0617,
+    "grid.tick_share": 4.63e-07,
+    "grid.tick_share_max": 1.39e-06,
+    "pop.tick_share": 0.0234,
+    "pop.tick_share_max": 0.0416,
+    "grid.member_share": 0.727,
+    "pop.member_share": 0.118,
+    "x.bodies_to_grid8": 0.0343,
+    "x.grid_to_bodies8": 0.00464,
+    "x.grid_to_pop8": 0.0141,
+    "x.pop_over_pers8": 0.185,
+    "l.dceil8_AB": -0.269,
+    "l.dceil8_BA": -0.294,
+    "l.dceil16_AB": -0.137,
+    "l.dceil16_BA": -0.136,
+    "l.dceil32_AB": 0.035,
+    "l.r2_min": 0.0216,
+    "t.l1_8": 0.312,
+    "t.doubling": 8.04,
+    "k.law8": 0.404,
+    "k.law32": 0.586,
+    "k.lin32": 0.587,
+    "k.const32": 0.00579,
+    "k.pf32": 0.509,
+    "grid.evidence0.1": 2.0,
+    "grid.ticks_to_3nats0.1": 1.5,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.198701679488426,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": true,
+     "interaction": false,
+     "reading_worthy": false,
+     "actions": true,
+     "stationary": false,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + actions",
+     "B": "exam-worthy + actions",
+     "late": "exam-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      6.658156323853588e-11,
+      -1.3221674794103148e-10,
+      0.0012876593813943608
+     ],
+     "log_sd_ratio": [
+      -0.0066920830457059665,
+      -0.0143839473795591,
+      -0.009946830494202778
+     ],
+     "count_ratio": 0.976375654204633,
+     "events_early": 46.796875,
+     "events_late": 43.65625,
+     "pf8": [
+      0.9856327625312143,
+      0.9879119015963684
+     ],
+     "ceil8": [
+      0.45296885279838134,
+      0.49757652463150653
+     ],
+     "sigma_hat": [
+      0.09738493862428271,
+      0.0997297664171295
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/gliders__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/gliders__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/gliders__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/gliders__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/gliders__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/gliders__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/gliders__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/gliders__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/gliders__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/gliders__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/gliders__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/gliders__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/gliders__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/gliders__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/gliders__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/gliders__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/gliders__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/gliders__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/gliders__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/gliders__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/gliders__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/gliders__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/gliders__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/gliders__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/gliders__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/gliders__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/gliders__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/gliders__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/gliders__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/gliders__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/gliders__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/gliders__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/gliders__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/gliders__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/gliders__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/gliders__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/gliders__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/gliders__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/gliders__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/gliders__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/gliders__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/gliders__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/gliders__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/gliders__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/gliders__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/gliders__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/gliders__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/gliders__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/gliders__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/gliders__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/gliders__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/gliders__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:vortex64",
+   "claim": "vortex64: exam-worthy + reading-worthy + actions; sigma_hat 0.352 at the pop level.",
+   "values": {
+    "grid.pf8": 0.93,
+    "grid.ceil8": 0.457,
+    "grid.ceil8_mean": 0.403,
+    "grid.ceil8_se": 0.0528,
+    "grid.w_theta8": 0.0545,
+    "grid.sigma_hat": 0.0824,
+    "pop.pf8": 0.827,
+    "pop.ceil8": 0.624,
+    "pop.w_theta8": 0.823,
+    "pop.sigma_hat": 0.352,
+    "grid.pl_ratio0.03_8": 0.000806,
+    "grid.pl_ratio0.1_8": 0.01,
+    "grid.pl_ratio1.0_8": 0.725,
+    "s.nb_mean": 8.0,
+    "s.half_life_ticks": 51.3,
+    "s.v_net": 0.966,
+    "s.events100": 27.2,
+    "b.pf_disp8": 0.981,
+    "b.ceil_disp8": 0.88,
+    "b.ceil_pers_disp8": 0.88,
+    "b.ceil_field_disp8": 0.88,
+    "b.quiet8": 0.716,
+    "grid.act_ms": 19.7,
+    "grid.act_ms_over_vcheap": 1.81,
+    "grid.act_ms_var": 0.504,
+    "grid.aim_ratio": 0.853,
+    "grid.xresp": -0.345,
+    "grid.tick_share": 0.028,
+    "grid.tick_share_max": 0.0561,
+    "pop.tick_share": 0.219,
+    "pop.tick_share_max": 0.582,
+    "grid.member_share": 0.337,
+    "pop.member_share": 0.0984,
+    "x.bodies_to_grid8": 0.00258,
+    "x.grid_to_bodies8": -0.0103,
+    "x.grid_to_pop8": 0.0224,
+    "x.pop_over_pers8": 0.152,
+    "l.dceil8_AB": 0.00129,
+    "l.dceil8_BA": -0.0131,
+    "l.dceil16_AB": 0.0371,
+    "l.dceil16_BA": 0.0339,
+    "l.dceil32_AB": -0.022,
+    "l.r2_min": 0.0269,
+    "t.l1_8": 0.264,
+    "t.doubling": 4.87,
+    "k.law8": 0.23,
+    "k.law32": 0.478,
+    "k.lin32": 0.521,
+    "k.const32": 0.277,
+    "k.pf32": 0.627,
+    "grid.evidence0.1": 0.158,
+    "grid.ticks_to_3nats0.1": 19.0,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.35237937507202527,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": true,
+     "interaction": true,
+     "reading_worthy": true,
+     "actions": true,
+     "stationary": false,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + reading-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + reading-worthy + actions",
+     "B": "exam-worthy + reading-worthy + actions",
+     "late": "exam-worthy + reading-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      0.005570982566924521,
+      0.05483480614380391,
+      -0.18101193334912294,
+      0.09056809542558099
+     ],
+     "log_sd_ratio": [
+      0.029837650061715622,
+      -0.0002936206937535672,
+      -0.11277556122824497,
+      -0.09630008985983629
+     ],
+     "count_ratio": 1.0811037114927755,
+     "events_early": 27.1875,
+     "events_late": 28.234375,
+     "pf8": [
+      0.9301021861656203,
+      0.9288812479158569
+     ],
+     "ceil8": [
+      0.45683929503356807,
+      0.27647379966228086
+     ],
+     "sigma_hat": [
+      0.0824399661766508,
+      0.07269596874375722
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/vortex64__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/vortex64__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/vortex64__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/vortex64__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/vortex64__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/vortex64__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/vortex64__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/vortex64__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/vortex64__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/vortex64__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/vortex64__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/vortex64__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/vortex64__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/vortex64__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/vortex64__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/vortex64__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/vortex64__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/vortex64__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/vortex64__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/vortex64__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/vortex64__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/vortex64__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/vortex64__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/vortex64__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/vortex64__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/vortex64__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/vortex64__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/vortex64__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/vortex64__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/vortex64__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/vortex64__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/vortex64__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/vortex64__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/vortex64__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/vortex64__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/vortex64__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/vortex64__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/vortex64__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/vortex64__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/vortex64__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/vortex64__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/vortex64__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/vortex64__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/vortex64__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/vortex64__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/vortex64__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/vortex64__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/vortex64__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/vortex64__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/vortex64__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/vortex64__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/vortex64__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:membrane",
+   "claim": "membrane: exam-worthy + reading-worthy + actions; sigma_hat 0.16 at the pop level.",
+   "values": {
+    "grid.pf8": 0.999,
+    "grid.ceil8": 0.995,
+    "grid.ceil8_mean": 0.994,
+    "grid.ceil8_se": 0.000474,
+    "grid.w_theta8": 0.018,
+    "grid.sigma_hat": 0.0125,
+    "pop.pf8": 0.972,
+    "pop.ceil8": 0.826,
+    "pop.w_theta8": 0.466,
+    "pop.sigma_hat": 0.16,
+    "grid.pl_ratio0.03_8": 0.0138,
+    "grid.pl_ratio0.1_8": 0.152,
+    "grid.pl_ratio1.0_8": 14.0,
+    "s.nb_mean": 14.5,
+    "s.half_life_ticks": 215.0,
+    "s.v_net": 0.127,
+    "s.events100": 5.38,
+    "b.pf_disp8": 0.968,
+    "b.ceil_disp8": 0.66,
+    "b.ceil_pers_disp8": 0.562,
+    "b.ceil_field_disp8": 0.719,
+    "b.quiet8": 0.837,
+    "grid.act_ms": 5.25,
+    "grid.act_ms_over_vcheap": 2.19,
+    "grid.act_ms_var": 0.00343,
+    "grid.aim_ratio": 2.55,
+    "grid.xresp": 0.0268,
+    "grid.tick_share": -0.00135,
+    "grid.tick_share_max": -7.66e-05,
+    "pop.tick_share": -0.00379,
+    "pop.tick_share_max": 0.0581,
+    "grid.member_share": 0.0729,
+    "pop.member_share": 0.189,
+    "x.bodies_to_grid8": 4.31e-05,
+    "x.grid_to_bodies8": 0.0207,
+    "x.grid_to_pop8": 0.006,
+    "x.pop_over_pers8": 0.0667,
+    "l.dceil8_AB": -0.0104,
+    "l.dceil8_BA": -0.0106,
+    "l.dceil16_AB": -0.0278,
+    "l.dceil16_BA": -0.0275,
+    "l.dceil32_AB": -0.0634,
+    "l.r2_min": 0.000781,
+    "t.l1_8": 0.0159,
+    "t.doubling": 2.43,
+    "k.law8": null,
+    "k.law32": null,
+    "k.lin32": null,
+    "k.const32": null,
+    "k.pf32": null,
+    "grid.evidence0.1": 4.04,
+    "grid.ticks_to_3nats0.1": 0.742,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.16004964070554464,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": true,
+     "interaction": true,
+     "reading_worthy": true,
+     "actions": true,
+     "stationary": true,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + reading-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + reading-worthy + actions",
+     "B": "dull: the hidden part has no weight",
+     "late": "dull: the hidden part has no weight"
+    },
+    "late": {
+     "d_mean": [
+      -0.0231399742528268,
+      0.00959580420951572,
+      0.023355415885242193,
+      -0.0034214111153175746
+     ],
+     "log_sd_ratio": [
+      -0.023374896968682658,
+      -0.018016730673594997,
+      -0.011941509845309414,
+      -0.033128884005510666
+     ],
+     "count_ratio": 1.044053288711546,
+     "events_early": 5.375,
+     "events_late": 5.3125,
+     "pf8": [
+      0.9987100981733485,
+      0.9984435115207208
+     ],
+     "ceil8": [
+      0.9952631011418612,
+      0.9937914758346741
+     ],
+     "sigma_hat": [
+      0.012494727875998701,
+      0.01370284770990767
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "dull: the hidden part has no weight"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/membrane__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/membrane__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/membrane__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/membrane__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/membrane__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/membrane__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/membrane__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/membrane__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/membrane__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/membrane__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/membrane__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/membrane__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/membrane__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/membrane__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/membrane__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/membrane__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/membrane__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/membrane__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/membrane__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/membrane__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/membrane__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/membrane__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/membrane__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/membrane__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/membrane__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/membrane__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/membrane__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/membrane__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/membrane__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/membrane__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/membrane__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/membrane__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/membrane__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/membrane__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/membrane__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/membrane__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/membrane__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/membrane__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/membrane__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/membrane__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/membrane__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/membrane__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/membrane__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/membrane__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/membrane__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/membrane__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/membrane__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/membrane__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/membrane__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/membrane__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/membrane__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/membrane__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:foundry_04470",
+   "claim": "foundry_04470: exam-worthy + reading-worthy + actions; sigma_hat 0.885 at the pop level.",
+   "values": {
+    "grid.pf8": 0.998,
+    "grid.ceil8": 0.523,
+    "grid.ceil8_mean": 0.533,
+    "grid.ceil8_se": 0.0164,
+    "grid.w_theta8": 0.961,
+    "grid.sigma_hat": 0.439,
+    "pop.pf8": 0.95,
+    "pop.ceil8": 0.0533,
+    "pop.w_theta8": 36.7,
+    "pop.sigma_hat": 0.885,
+    "grid.pl_ratio0.03_8": 20.0,
+    "grid.pl_ratio0.1_8": 189.0,
+    "grid.pl_ratio1.0_8": 557.0,
+    "s.nb_mean": 18.9,
+    "s.half_life_ticks": 22.0,
+    "s.v_net": 0.556,
+    "s.events100": 82.4,
+    "b.pf_disp8": 0.999,
+    "b.ceil_disp8": 0.413,
+    "b.ceil_pers_disp8": 0.363,
+    "b.ceil_field_disp8": 0.415,
+    "b.quiet8": 0.381,
+    "grid.act_ms": 4.19,
+    "grid.act_ms_over_vcheap": 0.0149,
+    "grid.act_ms_var": 0.00283,
+    "grid.aim_ratio": 2.59,
+    "grid.xresp": 3.16,
+    "grid.tick_share": 2.46e-05,
+    "grid.tick_share_max": 7.38e-05,
+    "pop.tick_share": 0.0494,
+    "pop.tick_share_max": 0.0676,
+    "grid.member_share": 0.15,
+    "pop.member_share": 0.0521,
+    "x.bodies_to_grid8": 0.0129,
+    "x.grid_to_bodies8": -0.00695,
+    "x.grid_to_pop8": 0.0313,
+    "x.pop_over_pers8": 0.706,
+    "l.dceil8_AB": 0.0184,
+    "l.dceil8_BA": -0.00247,
+    "l.dceil16_AB": 0.093,
+    "l.dceil16_BA": 0.0967,
+    "l.dceil32_AB": 0.134,
+    "l.r2_min": 0.000183,
+    "t.l1_8": 0.0466,
+    "t.doubling": 9.37,
+    "k.law8": 0.43,
+    "k.law32": 0.636,
+    "k.lin32": 0.634,
+    "k.const32": 0.00349,
+    "k.pf32": 0.827,
+    "grid.evidence0.1": 7780.0,
+    "grid.ticks_to_3nats0.1": 0.000385,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.8851037564344634,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": true,
+     "interaction": true,
+     "reading_worthy": true,
+     "actions": true,
+     "stationary": true,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + reading-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + reading-worthy + actions",
+     "B": "exam-worthy + reading-worthy + actions",
+     "late": "exam-worthy + reading-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      -8.60701586595207e-11,
+      -9.352643193343182e-11,
+      0.014821783235052139
+     ],
+     "log_sd_ratio": [
+      0.003964638196145986,
+      0.041975957828217544,
+      0.01544871810890847
+     ],
+     "count_ratio": 1.03143819872962,
+     "events_early": 82.4375,
+     "events_late": 83.046875,
+     "pf8": [
+      0.998279313734524,
+      0.9983037040618333
+     ],
+     "ceil8": [
+      0.5225301860339959,
+      0.5168186873953693
+     ],
+     "sigma_hat": [
+      0.4389954915437913,
+      0.44484707844825716
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/foundry_04470__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/foundry_04470__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/foundry_04470__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/foundry_04470__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/foundry_04470__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/foundry_04470__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/foundry_04470__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/foundry_04470__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/foundry_04470__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/foundry_04470__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/foundry_04470__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/foundry_04470__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/foundry_04470__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/foundry_04470__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/foundry_04470__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/foundry_04470__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/foundry_04470__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/foundry_04470__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/foundry_04470__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/foundry_04470__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/foundry_04470__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/foundry_04470__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/foundry_04470__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/foundry_04470__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/foundry_04470__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/foundry_04470__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/foundry_04470__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/foundry_04470__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/foundry_04470__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/foundry_04470__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/foundry_04470__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/foundry_04470__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/foundry_04470__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/foundry_04470__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:foundry_04186",
+   "claim": "foundry_04186: exam-worthy + reading-worthy + actions; sigma_hat 0.679 at the pop level.",
+   "values": {
+    "grid.pf8": 0.986,
+    "grid.ceil8": 0.498,
+    "grid.ceil8_mean": 0.526,
+    "grid.ceil8_se": 0.0264,
+    "grid.w_theta8": 0.899,
+    "grid.sigma_hat": 0.439,
+    "pop.pf8": 0.879,
+    "pop.ceil8": 0.336,
+    "pop.w_theta8": 113.0,
+    "pop.sigma_hat": 0.679,
+    "grid.pl_ratio0.03_8": 0.944,
+    "grid.pl_ratio0.1_8": 12.1,
+    "grid.pl_ratio1.0_8": 61.9,
+    "s.nb_mean": 10.1,
+    "s.half_life_ticks": 20.4,
+    "s.v_net": 0.673,
+    "s.events100": 83.7,
+    "b.pf_disp8": 0.993,
+    "b.ceil_disp8": 0.862,
+    "b.ceil_pers_disp8": 0.862,
+    "b.ceil_field_disp8": 0.88,
+    "b.quiet8": 0.536,
+    "grid.act_ms": 12.1,
+    "grid.act_ms_over_vcheap": 0.378,
+    "grid.act_ms_var": 0.0758,
+    "grid.aim_ratio": 8.49,
+    "grid.xresp": 10.8,
+    "grid.tick_share": 1.43e-05,
+    "grid.tick_share_max": 3.42e-05,
+    "pop.tick_share": 0.175,
+    "pop.tick_share_max": 0.358,
+    "grid.member_share": 0.0583,
+    "pop.member_share": 0.042,
+    "x.bodies_to_grid8": 0.00517,
+    "x.grid_to_bodies8": 0.023,
+    "x.grid_to_pop8": 0.0411,
+    "x.pop_over_pers8": 0.747,
+    "l.dceil8_AB": -0.293,
+    "l.dceil8_BA": -0.257,
+    "l.dceil16_AB": -0.14,
+    "l.dceil16_BA": -0.207,
+    "l.dceil32_AB": -0.182,
+    "l.r2_min": 0.00281,
+    "t.l1_8": 0.212,
+    "t.doubling": 5.25,
+    "k.law8": null,
+    "k.law32": null,
+    "k.lin32": null,
+    "k.const32": null,
+    "k.pf32": null,
+    "grid.evidence0.1": 721.0,
+    "grid.ticks_to_3nats0.1": 0.00416,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.6794418967014685,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": true,
+     "interaction": true,
+     "reading_worthy": true,
+     "actions": true,
+     "stationary": true,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + reading-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + reading-worthy + actions",
+     "B": "exam-worthy + reading-worthy + actions",
+     "late": "exam-worthy + reading-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      3.466223785002727e-06,
+      -6.2034773111976225e-06,
+      -0.004382648822733253
+     ],
+     "log_sd_ratio": [
+      0.0023481877117574788,
+      0.005609166287689416,
+      0.008616966861043454
+     ],
+     "count_ratio": 0.9150867658864942,
+     "events_early": 83.671875,
+     "events_late": 83.203125,
+     "pf8": [
+      0.9856772137387826,
+      0.9807063291828618
+     ],
+     "ceil8": [
+      0.4983014887388229,
+      0.5233391801570786
+     ],
+     "sigma_hat": [
+      0.439147413048346,
+      0.4405263187173272
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/foundry_04186__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/foundry_04186__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/foundry_04186__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/foundry_04186__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/foundry_04186__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/foundry_04186__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/foundry_04186__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/foundry_04186__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/foundry_04186__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/foundry_04186__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/foundry_04186__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/foundry_04186__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/foundry_04186__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/foundry_04186__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/foundry_04186__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/foundry_04186__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/foundry_04186__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/foundry_04186__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/foundry_04186__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/foundry_04186__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/foundry_04186__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/foundry_04186__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/foundry_04186__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/foundry_04186__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/foundry_04186__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/foundry_04186__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/foundry_04186__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/foundry_04186__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/foundry_04186__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/foundry_04186__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/foundry_04186__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/foundry_04186__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/foundry_04186__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/foundry_04186__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:foundry_00262",
+   "claim": "foundry_00262: exam-worthy + reading-worthy + actions; sigma_hat 0.71 at the pop level.",
+   "values": {
+    "grid.pf8": 1.0,
+    "grid.ceil8": 0.511,
+    "grid.ceil8_mean": 0.497,
+    "grid.ceil8_se": 0.0205,
+    "grid.w_theta8": 0.844,
+    "grid.sigma_hat": 0.495,
+    "pop.pf8": 0.999,
+    "pop.ceil8": 0.234,
+    "pop.w_theta8": 220.0,
+    "pop.sigma_hat": 0.71,
+    "grid.pl_ratio0.03_8": 24.0,
+    "grid.pl_ratio0.1_8": 304.0,
+    "grid.pl_ratio1.0_8": 8730.0,
+    "s.nb_mean": 12.0,
+    "s.half_life_ticks": 20.1,
+    "s.v_net": 0.755,
+    "s.events100": 85.9,
+    "b.pf_disp8": 1.0,
+    "b.ceil_disp8": 0.882,
+    "b.ceil_pers_disp8": 0.882,
+    "b.ceil_field_disp8": 0.882,
+    "b.quiet8": 0.556,
+    "grid.act_ms": 3.78,
+    "grid.act_ms_over_vcheap": 0.00101,
+    "grid.act_ms_var": 0.000152,
+    "grid.aim_ratio": 8.21,
+    "grid.xresp": 3.7,
+    "grid.tick_share": -7.2e-06,
+    "grid.tick_share_max": -6.87e-20,
+    "pop.tick_share": 0.0355,
+    "pop.tick_share_max": 0.0779,
+    "grid.member_share": 0.191,
+    "pop.member_share": 0.127,
+    "x.bodies_to_grid8": 0.0234,
+    "x.grid_to_bodies8": 0.0337,
+    "x.grid_to_pop8": 0.0327,
+    "x.pop_over_pers8": 0.0449,
+    "l.dceil8_AB": -0.342,
+    "l.dceil8_BA": -0.455,
+    "l.dceil16_AB": -0.122,
+    "l.dceil16_BA": -0.144,
+    "l.dceil32_AB": -0.0128,
+    "l.r2_min": 0.0263,
+    "t.l1_8": 0.023,
+    "t.doubling": 10.5,
+    "k.law8": 0.0,
+    "k.law32": 0.073,
+    "k.lin32": 0.028,
+    "k.const32": 0.0123,
+    "k.pf32": 0.9,
+    "grid.evidence0.1": 8020.0,
+    "grid.ticks_to_3nats0.1": 0.000374,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.7101148328350986,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": true,
+     "interaction": true,
+     "reading_worthy": true,
+     "actions": true,
+     "stationary": true,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + reading-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + reading-worthy + actions",
+     "B": "exam-worthy + actions",
+     "late": "exam-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      5.341423196537515e-11,
+      -1.0721003739257247e-10,
+      0.17164692192238273
+     ],
+     "log_sd_ratio": [
+      0.3052919036484538,
+      0.20722694933913885,
+      0.7287205288995346
+     ],
+     "count_ratio": 0.8907225575792118,
+     "events_early": 85.9375,
+     "events_late": 61.5625,
+     "pf8": [
+      0.9999033632449625,
+      0.9999099118943433
+     ],
+     "ceil8": [
+      0.5113817773997634,
+      0.5181332146716073
+     ],
+     "sigma_hat": [
+      0.4947178152797136,
+      0.5050469735064583
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + actions"
+     ],
+     "same": false
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/foundry_00262__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/foundry_00262__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/foundry_00262__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/foundry_00262__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/foundry_00262__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/foundry_00262__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/foundry_00262__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/foundry_00262__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/foundry_00262__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/foundry_00262__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/foundry_00262__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/foundry_00262__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/foundry_00262__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/foundry_00262__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/foundry_00262__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/foundry_00262__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/foundry_00262__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/foundry_00262__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/foundry_00262__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/foundry_00262__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/foundry_00262__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/foundry_00262__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/foundry_00262__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/foundry_00262__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/foundry_00262__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/foundry_00262__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/foundry_00262__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/foundry_00262__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/foundry_00262__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/foundry_00262__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/foundry_00262__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/foundry_00262__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/foundry_00262__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/foundry_00262__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:foundry_07567",
+   "claim": "foundry_07567: exam-worthy + actions; sigma_hat 0.769 at the pop level.",
+   "values": {
+    "grid.pf8": 0.988,
+    "grid.ceil8": 0.495,
+    "grid.ceil8_mean": 0.481,
+    "grid.ceil8_se": 0.0206,
+    "grid.w_theta8": 0.948,
+    "grid.sigma_hat": 0.477,
+    "pop.pf8": 0.796,
+    "pop.ceil8": 0.156,
+    "pop.w_theta8": 21.2,
+    "pop.sigma_hat": 0.769,
+    "grid.pl_ratio0.03_8": 6.35,
+    "grid.pl_ratio0.1_8": 81.9,
+    "grid.pl_ratio1.0_8": 76.5,
+    "s.nb_mean": 11.1,
+    "s.half_life_ticks": 11.2,
+    "s.v_net": 1.07,
+    "s.events100": 128.0,
+    "b.pf_disp8": 0.997,
+    "b.ceil_disp8": 0.666,
+    "b.ceil_pers_disp8": 0.666,
+    "b.ceil_field_disp8": 0.666,
+    "b.quiet8": 0.193,
+    "grid.act_ms": 7.33,
+    "grid.act_ms_over_vcheap": 0.161,
+    "grid.act_ms_var": 0.0386,
+    "grid.aim_ratio": 3.31,
+    "grid.xresp": 8.17,
+    "grid.tick_share": 2.82e-05,
+    "grid.tick_share_max": 4.82e-05,
+    "pop.tick_share": 0.0158,
+    "pop.tick_share_max": 0.0364,
+    "grid.member_share": 0.095,
+    "pop.member_share": 0.0688,
+    "x.bodies_to_grid8": 0.00505,
+    "x.grid_to_bodies8": -0.0163,
+    "x.grid_to_pop8": 0.0864,
+    "x.pop_over_pers8": 0.743,
+    "l.dceil8_AB": -0.117,
+    "l.dceil8_BA": -0.0294,
+    "l.dceil16_AB": 0.0489,
+    "l.dceil16_BA": 0.0632,
+    "l.dceil32_AB": 0.0891,
+    "l.r2_min": 0.0058,
+    "t.l1_8": 0.0882,
+    "t.doubling": 7.8,
+    "k.law8": 0.349,
+    "k.law32": 0.79,
+    "k.lin32": 0.785,
+    "k.const32": 0.0,
+    "k.pf32": 0.628,
+    "grid.evidence0.1": 414.0,
+    "grid.ticks_to_3nats0.1": 0.00724,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.7693870852076801,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": false,
+     "interaction": true,
+     "reading_worthy": false,
+     "actions": true,
+     "stationary": true,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + actions",
+     "B": "exam-worthy + actions",
+     "late": "exam-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      -0.024414272394950157,
+      0.029681331025595194,
+      0.013839729345172684
+     ],
+     "log_sd_ratio": [
+      0.20202172583729847,
+      -0.021989003296605684,
+      -0.05314988428347332
+     ],
+     "count_ratio": 1.0538340851147283,
+     "events_early": 128.15625,
+     "events_late": 130.5625,
+     "pf8": [
+      0.9877620751568846,
+      0.9890178247793755
+     ],
+     "ceil8": [
+      0.49543167213050016,
+      0.5536873716813393
+     ],
+     "sigma_hat": [
+      0.4768528273592163,
+      0.42136619073057185
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/foundry_07567__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/foundry_07567__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/foundry_07567__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/foundry_07567__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/foundry_07567__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/foundry_07567__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/foundry_07567__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/foundry_07567__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/foundry_07567__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/foundry_07567__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/foundry_07567__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/foundry_07567__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/foundry_07567__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/foundry_07567__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/foundry_07567__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/foundry_07567__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/foundry_07567__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/foundry_07567__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/foundry_07567__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/foundry_07567__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/foundry_07567__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/foundry_07567__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/foundry_07567__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/foundry_07567__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/foundry_07567__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/foundry_07567__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/foundry_07567__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/foundry_07567__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/foundry_07567__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/foundry_07567__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/foundry_07567__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/foundry_07567__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/foundry_07567__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/foundry_07567__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:foundry_06845",
+   "claim": "foundry_06845: exam-worthy + actions; sigma_hat 0.916 at the pop level.",
+   "values": {
+    "grid.pf8": 0.998,
+    "grid.ceil8": 0.736,
+    "grid.ceil8_mean": 0.721,
+    "grid.ceil8_se": 0.0141,
+    "grid.w_theta8": 1.02,
+    "grid.sigma_hat": 0.309,
+    "pop.pf8": 0.952,
+    "pop.ceil8": 0.104,
+    "pop.w_theta8": 33.5,
+    "pop.sigma_hat": 0.916,
+    "grid.pl_ratio0.03_8": 3.54,
+    "grid.pl_ratio0.1_8": 27.2,
+    "grid.pl_ratio1.0_8": 495.0,
+    "s.nb_mean": 12.4,
+    "s.half_life_ticks": 14.2,
+    "s.v_net": 0.61,
+    "s.events100": 78.9,
+    "b.pf_disp8": 0.998,
+    "b.ceil_disp8": 0.456,
+    "b.ceil_pers_disp8": 0.456,
+    "b.ceil_field_disp8": 0.548,
+    "b.quiet8": 0.272,
+    "grid.act_ms": 8.38,
+    "grid.act_ms_over_vcheap": 0.0978,
+    "grid.act_ms_var": 0.00753,
+    "grid.aim_ratio": 2.64,
+    "grid.xresp": 6.02,
+    "grid.tick_share": 8.29e-06,
+    "grid.tick_share_max": 2.49e-05,
+    "pop.tick_share": 0.0038,
+    "pop.tick_share_max": 0.0216,
+    "grid.member_share": 0.113,
+    "pop.member_share": 0.0587,
+    "x.bodies_to_grid8": 0.00963,
+    "x.grid_to_bodies8": 0.0427,
+    "x.grid_to_pop8": 0.0741,
+    "x.pop_over_pers8": 0.647,
+    "l.dceil8_AB": -0.317,
+    "l.dceil8_BA": -0.321,
+    "l.dceil16_AB": -0.303,
+    "l.dceil16_BA": -0.303,
+    "l.dceil32_AB": -0.0899,
+    "l.r2_min": 0.000807,
+    "t.l1_8": 0.0405,
+    "t.doubling": 9.24,
+    "k.law8": null,
+    "k.law32": null,
+    "k.lin32": null,
+    "k.const32": null,
+    "k.pf32": null,
+    "grid.evidence0.1": 1280.0,
+    "grid.ticks_to_3nats0.1": 0.00234,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.9155349225651856,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": false,
+     "interaction": true,
+     "reading_worthy": false,
+     "actions": true,
+     "stationary": true,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + actions",
+     "B": "exam-worthy + actions",
+     "late": "exam-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      2.758528214432433e-10,
+      2.0959616903764715e-10,
+      0.005429140064683159
+     ],
+     "log_sd_ratio": [
+      -0.006418596778507515,
+      0.018176328847658345,
+      0.0029714563227278834
+     ],
+     "count_ratio": 1.0120516824501309,
+     "events_early": 78.921875,
+     "events_late": 79.09375,
+     "pf8": [
+      0.9979463816336535,
+      0.9978826738888228
+     ],
+     "ceil8": [
+      0.7364260420518757,
+      0.7194649539174696
+     ],
+     "sigma_hat": [
+      0.309272691365649,
+      0.3279803390699911
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/foundry_06845__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/foundry_06845__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/foundry_06845__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/foundry_06845__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/foundry_06845__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/foundry_06845__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/foundry_06845__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/foundry_06845__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/foundry_06845__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/foundry_06845__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/foundry_06845__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/foundry_06845__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/foundry_06845__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/foundry_06845__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/foundry_06845__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/foundry_06845__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/foundry_06845__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/foundry_06845__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/foundry_06845__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/foundry_06845__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/foundry_06845__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/foundry_06845__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/foundry_06845__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/foundry_06845__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/foundry_06845__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/foundry_06845__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/foundry_06845__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/foundry_06845__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/foundry_06845__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/foundry_06845__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/foundry_06845__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/foundry_06845__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/foundry_06845__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/foundry_06845__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:foundry_01672",
+   "claim": "foundry_01672: exam-worthy + actions; sigma_hat 0.491 at the pop level.",
+   "values": {
+    "grid.pf8": 0.997,
+    "grid.ceil8": 0.757,
+    "grid.ceil8_mean": 0.749,
+    "grid.ceil8_se": 0.0203,
+    "grid.w_theta8": 0.938,
+    "grid.sigma_hat": 0.283,
+    "pop.pf8": 0.99,
+    "pop.ceil8": 0.441,
+    "pop.w_theta8": 25.4,
+    "pop.sigma_hat": 0.491,
+    "grid.pl_ratio0.03_8": 14.8,
+    "grid.pl_ratio0.1_8": 125.0,
+    "grid.pl_ratio1.0_8": 346.0,
+    "s.nb_mean": 4.06,
+    "s.half_life_ticks": 37.3,
+    "s.v_net": 0.622,
+    "s.events100": 20.9,
+    "b.pf_disp8": 0.998,
+    "b.ceil_disp8": 0.945,
+    "b.ceil_pers_disp8": 0.945,
+    "b.ceil_field_disp8": 0.945,
+    "b.quiet8": 0.662,
+    "grid.act_ms": 20.5,
+    "grid.act_ms_over_vcheap": 0.335,
+    "grid.act_ms_var": 0.0237,
+    "grid.aim_ratio": 9.0,
+    "grid.xresp": 38.9,
+    "grid.tick_share": 1.05e-05,
+    "grid.tick_share_max": 3.1e-05,
+    "pop.tick_share": 0.0415,
+    "pop.tick_share_max": 0.13,
+    "grid.member_share": 0.164,
+    "pop.member_share": 0.0858,
+    "x.bodies_to_grid8": 0.0168,
+    "x.grid_to_bodies8": -0.0721,
+    "x.grid_to_pop8": 0.0201,
+    "x.pop_over_pers8": 0.105,
+    "l.dceil8_AB": -0.336,
+    "l.dceil8_BA": -0.326,
+    "l.dceil16_AB": -0.234,
+    "l.dceil16_BA": -0.22,
+    "l.dceil32_AB": 0.0245,
+    "l.r2_min": 0.0575,
+    "t.l1_8": 0.0726,
+    "t.doubling": 7.86,
+    "k.law8": 0.0312,
+    "k.law32": 0.0385,
+    "k.lin32": 0.0413,
+    "k.const32": 0.0156,
+    "k.pf32": 0.774,
+    "grid.evidence0.1": 6990.0,
+    "grid.ticks_to_3nats0.1": 0.000429,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.4905882981950363,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": true,
+     "interaction": false,
+     "reading_worthy": false,
+     "actions": true,
+     "stationary": true,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + actions",
+     "B": "exam-worthy + actions",
+     "late": "exam-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      -0.0005238455539538366,
+      0.0005857887918960468,
+      -0.0012806894672890822
+     ],
+     "log_sd_ratio": [
+      0.006915706752648205,
+      0.026033355811158117,
+      0.019807438436528133
+     ],
+     "count_ratio": 0.9465596065926467,
+     "events_early": 20.921875,
+     "events_late": 20.96875,
+     "pf8": [
+      0.9972968998498266,
+      0.9971155409702517
+     ],
+     "ceil8": [
+      0.7571755652861609,
+      0.7451925217850485
+     ],
+     "sigma_hat": [
+      0.2831938807549266,
+      0.29757689686769967
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/foundry_01672__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/foundry_01672__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/foundry_01672__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/foundry_01672__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/foundry_01672__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/foundry_01672__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/foundry_01672__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/foundry_01672__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/foundry_01672__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/foundry_01672__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/foundry_01672__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/foundry_01672__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/foundry_01672__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/foundry_01672__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/foundry_01672__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/foundry_01672__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/foundry_01672__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/foundry_01672__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/foundry_01672__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/foundry_01672__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/foundry_01672__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/foundry_01672__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/foundry_01672__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/foundry_01672__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/foundry_01672__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/foundry_01672__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/foundry_01672__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/foundry_01672__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/foundry_01672__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/foundry_01672__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/foundry_01672__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/foundry_01672__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/foundry_01672__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/foundry_01672__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "card:foundry_03078",
+   "claim": "foundry_03078: exam-worthy + reading-worthy + actions; sigma_hat 0.537 at the pop level.",
+   "values": {
+    "grid.pf8": 0.998,
+    "grid.ceil8": 0.744,
+    "grid.ceil8_mean": 0.738,
+    "grid.ceil8_se": 0.0203,
+    "grid.w_theta8": 0.844,
+    "grid.sigma_hat": 0.292,
+    "pop.pf8": 0.981,
+    "pop.ceil8": 0.42,
+    "pop.w_theta8": 59.2,
+    "pop.sigma_hat": 0.537,
+    "grid.pl_ratio0.03_8": 3.92,
+    "grid.pl_ratio0.1_8": 33.3,
+    "grid.pl_ratio1.0_8": 351.0,
+    "s.nb_mean": 13.2,
+    "s.half_life_ticks": 36.2,
+    "s.v_net": 0.257,
+    "s.events100": 52.8,
+    "b.pf_disp8": 0.997,
+    "b.ceil_disp8": 0.888,
+    "b.ceil_pers_disp8": 0.888,
+    "b.ceil_field_disp8": 0.888,
+    "b.quiet8": 0.735,
+    "grid.act_ms": 19.0,
+    "grid.act_ms_over_vcheap": 0.332,
+    "grid.act_ms_var": 0.022,
+    "grid.aim_ratio": 5.41,
+    "grid.xresp": 17.5,
+    "grid.tick_share": 0.000244,
+    "grid.tick_share_max": 0.000732,
+    "pop.tick_share": 0.0864,
+    "pop.tick_share_max": 0.467,
+    "grid.member_share": 0.0352,
+    "pop.member_share": 0.0359,
+    "x.bodies_to_grid8": 0.0112,
+    "x.grid_to_bodies8": -0.0183,
+    "x.grid_to_pop8": 0.0242,
+    "x.pop_over_pers8": 0.18,
+    "l.dceil8_AB": -0.112,
+    "l.dceil8_BA": -0.125,
+    "l.dceil16_AB": -0.192,
+    "l.dceil16_BA": -0.18,
+    "l.dceil32_AB": -0.0509,
+    "l.r2_min": 0.0127,
+    "t.l1_8": 0.078,
+    "t.doubling": 7.8,
+    "k.law8": 0.234,
+    "k.law32": 0.388,
+    "k.lin32": 0.387,
+    "k.const32": 0.0,
+    "k.pf32": 0.665,
+    "grid.evidence0.1": 790.0,
+    "grid.ticks_to_3nats0.1": 0.0038,
+    "gates": {
+     "predictable": true,
+     "closure_gap": true,
+     "sigma_hat_best": 0.5374699097029992,
+     "sigma_hat_level": "pop",
+     "exam_worthy": true,
+     "structure": true,
+     "interaction": true,
+     "reading_worthy": true,
+     "actions": true,
+     "stationary": true,
+     "levels_add": true,
+     "learned_differs": false,
+     "verdict": "exam-worthy + reading-worthy + actions",
+     "dull": false
+    },
+    "verdict_by_run": {
+     "A": "exam-worthy + reading-worthy + actions",
+     "B": "exam-worthy + reading-worthy + actions",
+     "late": "exam-worthy + actions"
+    },
+    "late": {
+     "d_mean": [
+      -9.201641831238045e-11,
+      -1.3856963079066646e-10,
+      -0.00025734141690080784
+     ],
+     "log_sd_ratio": [
+      -0.003242860194376883,
+      0.0018832140366442675,
+      -0.0351394193320902
+     ],
+     "count_ratio": 0.9347388257464224,
+     "events_early": 52.84375,
+     "events_late": 49.203125,
+     "pf8": [
+      0.9975994069636043,
+      0.9976233805913383
+     ],
+     "ceil8": [
+      0.744445885537514,
+      0.7535032351612688
+     ],
+     "sigma_hat": [
+      0.29161636628802995,
+      0.2948985232320386
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + actions"
+     ],
+     "same": true
+    }
+   },
+   "sources": {
+    "grid.pf8": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.pf8",
+    "grid.ceil8": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.ceil8",
+    "grid.ceil8_mean": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.ceil8_mean",
+    "grid.ceil8_se": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.ceil8_se",
+    "grid.w_theta8": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.w_theta8",
+    "grid.sigma_hat": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.sigma_hat",
+    "pop.pf8": "r6-cards-001:cards/foundry_03078__A.json:derived.pop.pf8",
+    "pop.ceil8": "r6-cards-001:cards/foundry_03078__A.json:derived.pop.ceil8",
+    "pop.w_theta8": "r6-cards-001:cards/foundry_03078__A.json:derived.pop.w_theta8",
+    "pop.sigma_hat": "r6-cards-001:cards/foundry_03078__A.json:derived.pop.sigma_hat",
+    "grid.pl_ratio0.03_8": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.pl_ratio0.03_8",
+    "grid.pl_ratio0.1_8": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.pl_ratio0.1_8",
+    "grid.pl_ratio1.0_8": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.pl_ratio1.0_8",
+    "s.nb_mean": "r6-cards-001:cards/foundry_03078__A.json:derived.s.nb_mean",
+    "s.half_life_ticks": "r6-cards-001:cards/foundry_03078__A.json:derived.s.half_life_ticks",
+    "s.v_net": "r6-cards-001:cards/foundry_03078__A.json:derived.s.v_net",
+    "s.events100": "r6-cards-001:cards/foundry_03078__A.json:derived.s.events100",
+    "b.pf_disp8": "r6-cards-001:cards/foundry_03078__A.json:derived.b.pf_disp8",
+    "b.ceil_disp8": "r6-cards-001:cards/foundry_03078__A.json:derived.b.ceil_disp8",
+    "b.ceil_pers_disp8": "r6-cards-001:cards/foundry_03078__A.json:derived.b.ceil_pers_disp8",
+    "b.ceil_field_disp8": "r6-cards-001:cards/foundry_03078__A.json:derived.b.ceil_field_disp8",
+    "b.quiet8": "r6-cards-001:cards/foundry_03078__A.json:derived.b.quiet8",
+    "grid.act_ms": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.act_ms",
+    "grid.act_ms_over_vcheap": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.act_ms_over_vcheap",
+    "grid.act_ms_var": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.act_ms_var",
+    "grid.aim_ratio": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.aim_ratio",
+    "grid.xresp": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.xresp",
+    "grid.tick_share": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.tick_share",
+    "grid.tick_share_max": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.tick_share_max",
+    "pop.tick_share": "r6-cards-001:cards/foundry_03078__A.json:derived.pop.tick_share",
+    "pop.tick_share_max": "r6-cards-001:cards/foundry_03078__A.json:derived.pop.tick_share_max",
+    "grid.member_share": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.member_share",
+    "pop.member_share": "r6-cards-001:cards/foundry_03078__A.json:derived.pop.member_share",
+    "x.bodies_to_grid8": "r6-cards-001:cards/foundry_03078__A.json:derived.x.bodies_to_grid8",
+    "x.grid_to_bodies8": "r6-cards-001:cards/foundry_03078__A.json:derived.x.grid_to_bodies8",
+    "x.grid_to_pop8": "r6-cards-001:cards/foundry_03078__A.json:derived.x.grid_to_pop8",
+    "x.pop_over_pers8": "r6-cards-001:cards/foundry_03078__A.json:derived.x.pop_over_pers8",
+    "l.dceil8_AB": "r6-cards-001:cards/foundry_03078__A.json:derived.l.dceil8_AB",
+    "l.dceil8_BA": "r6-cards-001:cards/foundry_03078__A.json:derived.l.dceil8_BA",
+    "l.dceil16_AB": "r6-cards-001:cards/foundry_03078__A.json:derived.l.dceil16_AB",
+    "l.dceil16_BA": "r6-cards-001:cards/foundry_03078__A.json:derived.l.dceil16_BA",
+    "l.dceil32_AB": "r6-cards-001:cards/foundry_03078__A.json:derived.l.dceil32_AB",
+    "l.r2_min": "r6-cards-001:cards/foundry_03078__A.json:derived.l.r2_min",
+    "t.l1_8": "r6-cards-001:cards/foundry_03078__A.json:derived.t.l1_8",
+    "t.doubling": "r6-cards-001:cards/foundry_03078__A.json:derived.t.doubling",
+    "k.law8": "r6-cards-001:cards/foundry_03078__A.json:derived.k.law8",
+    "k.law32": "r6-cards-001:cards/foundry_03078__A.json:derived.k.law32",
+    "k.lin32": "r6-cards-001:cards/foundry_03078__A.json:derived.k.lin32",
+    "k.const32": "r6-cards-001:cards/foundry_03078__A.json:derived.k.const32",
+    "k.pf32": "r6-cards-001:cards/foundry_03078__A.json:derived.k.pf32",
+    "grid.evidence0.1": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.evidence0.1",
+    "grid.ticks_to_3nats0.1": "r6-cards-001:cards/foundry_03078__A.json:derived.grid.ticks_to_3nats0.1"
+   }
+  },
+  {
+   "id": "foundry:shortlist",
+   "claim": "Foundry shortlist (7 worlds, run A): 7 exam-worthy, 4 reading-worthy, 7 pass the actions gate, 7 stationary in the window; late window equal to early in 6 of 7 with a late run.",
+   "values": {
+    "worlds": [
+     "foundry_04470",
+     "foundry_04186",
+     "foundry_00262",
+     "foundry_07567",
+     "foundry_06845",
+     "foundry_01672",
+     "foundry_03078"
+    ],
+    "verdicts": {
+     "exam-worthy + reading-worthy + actions": 4,
+     "exam-worthy + actions": 3
+    },
+    "gates": {
+     "exam_worthy": 7,
+     "structure": 5,
+     "interaction": 6,
+     "reading_worthy": 4,
+     "actions": 7,
+     "stationary": 7,
+     "levels_add": 7,
+     "learned_differs": 0
+    },
+    "late_same": 6,
+    "late_n": 7,
+    "stats": {
+     "grid.ceil8": {
+      "median": 0.523,
+      "mean": 0.609,
+      "min": 0.495,
+      "max": 0.757
+     },
+     "grid.pf8": {
+      "median": 0.998,
+      "mean": 0.995,
+      "min": 0.986,
+      "max": 1.0
+     },
+     "grid.sigma_hat": {
+      "median": 0.439,
+      "mean": 0.391,
+      "min": 0.283,
+      "max": 0.495
+     },
+     "grid.pl_ratio0.03_8": {
+      "median": 6.35,
+      "mean": 10.5,
+      "min": 0.944,
+      "max": 24.0
+     },
+     "grid.pl_ratio0.1_8": {
+      "median": 81.9,
+      "mean": 110.0,
+      "min": 12.1,
+      "max": 304.0
+     },
+     "s.nb_mean": {
+      "median": 12.0,
+      "mean": 11.7,
+      "min": 4.06,
+      "max": 18.9
+     },
+     "s.half_life_ticks": {
+      "median": 20.4,
+      "mean": 23.0,
+      "min": 11.2,
+      "max": 37.3
+     },
+     "b.ceil_disp8": {
+      "median": 0.862,
+      "mean": 0.73,
+      "min": 0.413,
+      "max": 0.945
+     },
+     "grid.act_ms": {
+      "median": 8.38,
+      "mean": 10.7,
+      "min": 3.78,
+      "max": 20.5
+     },
+     "grid.act_ms_over_vcheap": {
+      "median": 0.161,
+      "mean": 0.188,
+      "min": 0.00101,
+      "max": 0.378
+     },
+     "grid.member_share": {
+      "median": 0.113,
+      "mean": 0.115,
+      "min": 0.0352,
+      "max": 0.191
+     },
+     "l.dceil16_AB": {
+      "median": -0.14,
+      "mean": -0.121,
+      "min": -0.303,
+      "max": 0.093
+     },
+     "x.bodies_to_grid8": {
+      "median": 0.0112,
+      "mean": 0.012,
+      "min": 0.00505,
+      "max": 0.0234
+     }
+    },
+    "r5_types": {
+     "foundry_04470": "active:movers",
+     "foundry_04186": "active:movers",
+     "foundry_00262": "active:movers",
+     "foundry_07567": "active:movers",
+     "foundry_06845": "active:movers",
+     "foundry_01672": "active:movers",
+     "foundry_03078": "active:movers"
+    }
+   },
+   "sources": "r6-cards-001:cards/<world>__A.json for the worlds listed; medians and means over worlds computed here"
+  },
+  {
+   "id": "foundry:candidates",
+   "claim": "Foundry candidates (16 worlds, run A): 10 exam-worthy, 15 reading-worthy, 16 pass the actions gate, 15 stationary in the window; late window equal to early in 7 of 16 with a late run.",
+   "values": {
+    "worlds": [
+     "foundry_00060",
+     "foundry_00124",
+     "foundry_00416",
+     "foundry_02755",
+     "foundry_03062",
+     "foundry_03101",
+     "foundry_03854",
+     "foundry_04289",
+     "foundry_04495",
+     "foundry_04833",
+     "foundry_04919",
+     "foundry_05671",
+     "foundry_07760",
+     "foundry_07820",
+     "foundry_07913",
+     "foundry_08010"
+    ],
+    "verdicts": {
+     "exam-worthy + reading-worthy + actions": 9,
+     "dull: the hidden part has no weight": 1,
+     "dull: predictable by the cheap family": 5,
+     "exam-worthy + actions": 1
+    },
+    "gates": {
+     "exam_worthy": 10,
+     "structure": 15,
+     "interaction": 15,
+     "reading_worthy": 15,
+     "actions": 16,
+     "stationary": 15,
+     "levels_add": 11,
+     "learned_differs": 0
+    },
+    "late_same": 7,
+    "late_n": 16,
+    "stats": {
+     "grid.ceil8": {
+      "median": 0.978,
+      "mean": 0.952,
+      "min": 0.824,
+      "max": 0.995
+     },
+     "grid.pf8": {
+      "median": 0.999,
+      "mean": 0.998,
+      "min": 0.989,
+      "max": 1.0
+     },
+     "grid.sigma_hat": {
+      "median": 0.0372,
+      "mean": 0.0708,
+      "min": 0.00767,
+      "max": 0.226
+     },
+     "grid.pl_ratio0.03_8": {
+      "median": 2.04,
+      "mean": 3.86,
+      "min": 0.0255,
+      "max": 13.8
+     },
+     "grid.pl_ratio0.1_8": {
+      "median": 17.8,
+      "mean": 31.8,
+      "min": 0.248,
+      "max": 137.0
+     },
+     "s.nb_mean": {
+      "median": 13.0,
+      "mean": 12.2,
+      "min": 5.22,
+      "max": 19.2
+     },
+     "s.half_life_ticks": {
+      "median": 87.5,
+      "mean": 99.8,
+      "min": 27.8,
+      "max": 241.0
+     },
+     "b.ceil_disp8": {
+      "median": 0.59,
+      "mean": 0.539,
+      "min": 0.0,
+      "max": 0.989
+     },
+     "grid.act_ms": {
+      "median": 13.8,
+      "mean": 18.1,
+      "min": 3.38,
+      "max": 77.4
+     },
+     "grid.act_ms_over_vcheap": {
+      "median": 1.51,
+      "mean": 1.86,
+      "min": 0.0503,
+      "max": 4.82
+     },
+     "grid.member_share": {
+      "median": 0.111,
+      "mean": 0.131,
+      "min": 0.000503,
+      "max": 0.478
+     },
+     "l.dceil16_AB": {
+      "median": -0.0439,
+      "mean": -0.0539,
+      "min": -0.209,
+      "max": 0.0839
+     },
+     "x.bodies_to_grid8": {
+      "median": 0.000272,
+      "mean": 0.0026,
+      "min": -0.0044,
+      "max": 0.0293
+     }
+    },
+    "r5_types": {
+     "foundry_00060": "active:movers",
+     "foundry_00124": "active:movers",
+     "foundry_00416": "active:movers",
+     "foundry_02755": "active:movers",
+     "foundry_03062": "active:movers",
+     "foundry_03101": "active:movers",
+     "foundry_03854": "active:movers",
+     "foundry_04289": "active:movers",
+     "foundry_04495": "active:movers",
+     "foundry_04833": "active:movers",
+     "foundry_04919": "active:movers",
+     "foundry_05671": "active:movers",
+     "foundry_07760": "active:movers",
+     "foundry_07820": "active:movers",
+     "foundry_07913": "active:movers",
+     "foundry_08010": "active:movers"
+    }
+   },
+   "sources": "r6-cards-001:cards/<world>__A.json for the worlds listed; medians and means over worlds computed here"
+  },
+  {
+   "id": "foundry:prior",
+   "claim": "Foundry prior (32 worlds, run A): 1 exam-worthy, 1 reading-worthy, 32 pass the actions gate, 25 stationary in the window; late window equal to early in 2 of 8 with a late run.",
+   "values": {
+    "worlds": [
+     "foundry_00005",
+     "foundry_00006",
+     "foundry_00007",
+     "foundry_00008",
+     "foundry_00009",
+     "foundry_00010",
+     "foundry_00012",
+     "foundry_00013",
+     "foundry_00014",
+     "foundry_00015",
+     "foundry_00016",
+     "foundry_00017",
+     "foundry_00018",
+     "foundry_00019",
+     "foundry_00020",
+     "foundry_00021",
+     "foundry_00023",
+     "foundry_00025",
+     "foundry_00026",
+     "foundry_00027",
+     "foundry_00028",
+     "foundry_00029",
+     "foundry_00030",
+     "foundry_00031",
+     "ctl_uniform_00000",
+     "ctl_uniform_00002",
+     "ctl_uniform_00003",
+     "ctl_uniform_00004",
+     "ctl_frozen_00001",
+     "ctl_frozen_00011",
+     "ctl_frozen_00022",
+     "ctl_frozen_00024"
+    ],
+    "verdicts": {
+     "dull: predictable by the cheap family": 28,
+     "dull: the hidden part has no weight": 2,
+     "exam-worthy + actions": 1,
+     "dull: little predictable": 1
+    },
+    "gates": {
+     "exam_worthy": 1,
+     "structure": 1,
+     "interaction": 8,
+     "reading_worthy": 1,
+     "actions": 32,
+     "stationary": 25,
+     "levels_add": 3,
+     "learned_differs": 0
+    },
+    "late_same": 2,
+    "late_n": 8,
+    "stats": {
+     "grid.ceil8": {
+      "median": 0.999,
+      "mean": 0.996,
+      "min": 0.975,
+      "max": 1.0
+     },
+     "grid.pf8": {
+      "median": 0.988,
+      "mean": 0.89,
+      "min": 0.119,
+      "max": 1.0
+     },
+     "grid.sigma_hat": {
+      "median": 0.00109,
+      "mean": 0.0115,
+      "min": 0.0,
+      "max": 0.232
+     },
+     "grid.pl_ratio0.03_8": {
+      "median": 0.05,
+      "mean": 0.779,
+      "min": 2.78e-05,
+      "max": 5.89
+     },
+     "grid.pl_ratio0.1_8": {
+      "median": 0.613,
+      "mean": 7.46,
+      "min": 0.000346,
+      "max": 47.7
+     },
+     "s.nb_mean": {
+      "median": 0.0122,
+      "mean": 4.84,
+      "min": 0.0,
+      "max": 24.0
+     },
+     "s.half_life_ticks": {
+      "median": 210.0,
+      "mean": 1770.0,
+      "min": 10.4,
+      "max": 18400.0
+     },
+     "b.ceil_disp8": {
+      "median": 0.0,
+      "mean": 0.0534,
+      "min": 0.0,
+      "max": 0.24
+     },
+     "grid.act_ms": {
+      "median": 5.78,
+      "mean": 7.06,
+      "min": 0.902,
+      "max": 50.6
+     },
+     "grid.act_ms_over_vcheap": {
+      "median": 5.36,
+      "mean": 5.11,
+      "min": 0.4,
+      "max": 13.1
+     },
+     "grid.member_share": {
+      "median": 0.101,
+      "mean": 0.172,
+      "min": 6.78e-06,
+      "max": 0.866
+     },
+     "l.dceil16_AB": {
+      "median": -0.00214,
+      "mean": 0.00708,
+      "min": -0.0762,
+      "max": 0.388
+     },
+     "x.bodies_to_grid8": {
+      "median": 1.73e-18,
+      "mean": 1.29e-05,
+      "min": -0.000206,
+      "max": 0.000609
+     }
+    },
+    "r5_types": {
+     "foundry_00005": "uniform",
+     "foundry_00006": "uniform",
+     "foundry_00007": "uniform",
+     "foundry_00008": "uniform",
+     "foundry_00009": "active:bodies",
+     "foundry_00010": "active:bodies",
+     "foundry_00012": "uniform",
+     "foundry_00013": "active:field",
+     "foundry_00014": "uniform",
+     "foundry_00015": "uniform",
+     "foundry_00016": "uniform",
+     "foundry_00017": "uniform",
+     "foundry_00018": "uniform",
+     "foundry_00019": "uniform",
+     "foundry_00020": "uniform",
+     "foundry_00021": "active:field",
+     "foundry_00023": "uniform",
+     "foundry_00025": "frozen",
+     "foundry_00026": "active:movers",
+     "foundry_00027": "uniform",
+     "foundry_00028": "frozen",
+     "foundry_00029": "uniform",
+     "foundry_00030": "uniform",
+     "foundry_00031": "frozen",
+     "ctl_uniform_00000": "uniform",
+     "ctl_uniform_00002": "uniform",
+     "ctl_uniform_00003": "uniform",
+     "ctl_uniform_00004": "uniform",
+     "ctl_frozen_00001": "frozen",
+     "ctl_frozen_00011": "frozen",
+     "ctl_frozen_00022": "frozen",
+     "ctl_frozen_00024": "frozen"
+    }
+   },
+   "sources": "r6-cards-001:cards/<world>__A.json for the worlds listed; medians and means over worlds computed here"
+  },
+  {
+   "id": "block_level",
+   "claim": "sigma_hat at the block level alone (robust between seeds and sizes), worlds at or above the 0.15 bar in run A: designed 0 of 3; shortlist 7 of 7; candidates 2 of 16; prior 0 of 24; controls 0 of 12.",
+   "values": {
+    "per_world": {
+     "gliders": {
+      "A": 0.0974,
+      "B": 0.0943,
+      "late": 0.0997
+     },
+     "vortex64": {
+      "A": 0.0824,
+      "B": 0.0905,
+      "late": 0.0727
+     },
+     "membrane": {
+      "A": 0.0125,
+      "B": 0.0138,
+      "late": 0.0137
+     },
+     "foundry_04470": {
+      "A": 0.439,
+      "B": 0.47,
+      "late": 0.445
+     },
+     "foundry_04186": {
+      "A": 0.439,
+      "B": 0.441,
+      "late": 0.441
+     },
+     "foundry_00262": {
+      "A": 0.495,
+      "B": 0.505,
+      "late": 0.505
+     },
+     "foundry_07567": {
+      "A": 0.477,
+      "B": 0.505,
+      "late": 0.421
+     },
+     "foundry_06845": {
+      "A": 0.309,
+      "B": 0.311,
+      "late": 0.328
+     },
+     "foundry_01672": {
+      "A": 0.283,
+      "B": 0.285,
+      "late": 0.298
+     },
+     "foundry_03078": {
+      "A": 0.292,
+      "B": 0.292,
+      "late": 0.295
+     },
+     "ctl_noise": {
+      "A": 0.997,
+      "B": 1.0
+     },
+     "ctl_freebodies": {
+      "A": 0.00708,
+      "B": 0.00834,
+      "late": 0.00811
+     },
+     "ctl_uniform_00000": {
+      "A": 0.00517,
+      "B": 0.00994,
+      "late": 0.00229
+     },
+     "ctl_uniform_00002": {
+      "A": 0.0279,
+      "B": 0.0203,
+      "late": 0.0
+     },
+     "ctl_uniform_00003": {
+      "A": 0.000247,
+      "B": 0.000437,
+      "late": 0.000237
+     },
+     "ctl_uniform_00004": {
+      "A": 0.000165,
+      "B": 0.00018,
+      "late": 0.00132
+     },
+     "ctl_frozen_00001": {
+      "A": 0.000291,
+      "B": 0.000227,
+      "late": 0.00115
+     },
+     "ctl_frozen_00011": {
+      "A": 0.000303,
+      "B": 0.000253,
+      "late": 0.000231
+     },
+     "ctl_frozen_00022": {
+      "A": 0.000182,
+      "B": 0.000179,
+      "late": 1.48e-05
+     },
+     "ctl_frozen_00024": {
+      "A": 0.000515,
+      "B": 0.000517,
+      "late": 8.87e-05
+     },
+     "ctl_diffusion_0": {
+      "A": 0.000784
+     },
+     "ctl_diffusion_1": {
+      "A": 1.69e-08
+     }
+    },
+    "pop_level": {
+     "gliders": {
+      "A": 0.199,
+      "B": 0.265,
+      "late": 0.211
+     },
+     "vortex64": {
+      "A": 0.352,
+      "B": 0.316,
+      "late": 0.318
+     },
+     "membrane": {
+      "A": 0.16,
+      "B": 0.107,
+      "late": 0.142
+     },
+     "foundry_04470": {
+      "A": 0.885,
+      "B": 0.213,
+      "late": 0.969
+     },
+     "foundry_04186": {
+      "A": 0.679,
+      "B": 0.635,
+      "late": 0.595
+     },
+     "foundry_00262": {
+      "A": 0.71,
+      "B": 0.555,
+      "late": 0.213
+     },
+     "foundry_07567": {
+      "A": 0.769,
+      "B": 0.76,
+      "late": 0.676
+     },
+     "foundry_06845": {
+      "A": 0.916,
+      "B": 0.874,
+      "late": 0.897
+     },
+     "foundry_01672": {
+      "A": 0.491,
+      "B": 0.61,
+      "late": 0.519
+     },
+     "foundry_03078": {
+      "A": 0.537,
+      "B": 0.618,
+      "late": 0.589
+     }
+    },
+    "at_or_above_bar": {
+     "designed": [],
+     "shortlist": [
+      "foundry_04470",
+      "foundry_04186",
+      "foundry_00262",
+      "foundry_07567",
+      "foundry_06845",
+      "foundry_01672",
+      "foundry_03078"
+     ],
+     "candidates": [
+      "foundry_04289",
+      "foundry_04495"
+     ],
+     "prior": [],
+     "controls": []
+    },
+    "exam_worthy_by_population_level_only": [
+     "gliders",
+     "vortex64",
+     "membrane",
+     "foundry_00060",
+     "foundry_00416",
+     "foundry_02755",
+     "foundry_03101",
+     "foundry_04833",
+     "foundry_04919",
+     "foundry_05671",
+     "foundry_07760",
+     "foundry_00013",
+     "vortex128"
+    ]
+   },
+   "sources": "<job>:cards/<world>__<run>.json:derived.grid.sigma_hat and derived.pop.sigma_hat (jobs per world in results/derived.json:_jobs)"
+  },
+  {
+   "id": "H6:vortex_clock",
+   "claim": "H6 (a clock takes the population level of the fed vortices): tick share of the population level, mean over components and its largest component (the kind share), by world and run.",
+   "values": {
+    "vortex64": {
+     "A": {
+      "mean": 0.219,
+      "max": 0.582,
+      "block": 0.028
+     },
+     "B": {
+      "mean": 0.258,
+      "max": 0.55,
+      "block": 0.0268
+     },
+     "late": {
+      "mean": 0.0419,
+      "max": 0.142,
+      "block": -0.000173
+     }
+    },
+    "vortex128": {
+     "A": {
+      "mean": 0.403,
+      "max": 0.799,
+      "block": 0.0594
+     }
+    }
+   },
+   "sources": {
+    "vortex64": [
+     "r6-cards-001:cards/vortex64__A.json:derived.pop.tick_share",
+     "r6-cards-001:cards/vortex64__B.json:derived.pop.tick_share",
+     "r6-cards-001:cards/vortex64__late.json:derived.pop.tick_share"
+    ],
+    "vortex128": [
+     "r6-cards-001:cards/vortex128__A.json:derived.pop.tick_share"
+    ]
+   }
+  },
+  {
+   "id": "H7:actions_gate",
+   "claim": "H7: the declared actions gate passes in 69 of 70 worlds (run A), including 11 of 12 controls: it does not discriminate. The shift of an aimed 200-nat input in units of the cheap family's error at 4 ticks (added after the first card) does.",
+   "values": {
+    "act_ms": {
+     "gliders": 6.42,
+     "vortex64": 19.7,
+     "membrane": 5.25,
+     "foundry_04470": 4.19,
+     "foundry_04186": 12.1,
+     "foundry_00262": 3.78,
+     "foundry_07567": 7.33,
+     "foundry_06845": 8.38,
+     "foundry_01672": 20.5,
+     "foundry_03078": 19.0,
+     "ctl_noise": 0.0,
+     "ctl_freebodies": 4.27,
+     "ctl_uniform_00000": 3.56,
+     "ctl_uniform_00002": 4.47,
+     "ctl_uniform_00003": 6.22,
+     "ctl_uniform_00004": 5.98,
+     "ctl_frozen_00001": 14.1,
+     "ctl_frozen_00011": 11.9,
+     "ctl_frozen_00022": 1.34,
+     "ctl_frozen_00024": 6.62,
+     "ctl_diffusion_0": 4.74,
+     "ctl_diffusion_1": 4.92
+    },
+    "act_over_cheap_error": {
+     "gliders": {
+      "A": 0.133,
+      "B": 0.151,
+      "late": 0.158
+     },
+     "vortex64": {
+      "A": 1.81,
+      "B": 2.07,
+      "late": 2.0
+     },
+     "membrane": {
+      "A": 2.19,
+      "B": 1.79,
+      "late": 2.0
+     },
+     "foundry_04470": {
+      "A": 0.0149,
+      "B": 0.0159,
+      "late": 0.013
+     },
+     "foundry_04186": {
+      "A": 0.378,
+      "B": 0.362,
+      "late": 0.465
+     },
+     "foundry_00262": {
+      "A": 0.00101,
+      "B": 0.000661,
+      "late": 0.000675
+     },
+     "foundry_07567": {
+      "A": 0.161,
+      "B": 0.161,
+      "late": 0.201
+     },
+     "foundry_06845": {
+      "A": 0.0978,
+      "B": 0.0938,
+      "late": 0.0916
+     },
+     "foundry_01672": {
+      "A": 0.335,
+      "B": 0.377,
+      "late": 0.332
+     },
+     "foundry_03078": {
+      "A": 0.332,
+      "B": 0.273,
+      "late": 0.375
+     },
+     "ctl_noise": {
+      "A": 0.0,
+      "B": 0.0
+     },
+     "ctl_freebodies": {
+      "A": 0.662,
+      "B": 0.643,
+      "late": 0.707
+     },
+     "ctl_uniform_00000": {
+      "A": 3.6,
+      "B": 3.47,
+      "late": 3.52
+     },
+     "ctl_uniform_00002": {
+      "A": 4.46,
+      "B": 4.73,
+      "late": 4.03
+     },
+     "ctl_uniform_00003": {
+      "A": 6.01,
+      "B": 5.43,
+      "late": 5.51
+     },
+     "ctl_uniform_00004": {
+      "A": 5.94,
+      "B": 4.86,
+      "late": 3.53
+     },
+     "ctl_frozen_00001": {
+      "A": 13.1,
+      "B": 12.4,
+      "late": 13.3
+     },
+     "ctl_frozen_00011": {
+      "A": 12.0,
+      "B": 10.5,
+      "late": 12.1
+     },
+     "ctl_frozen_00022": {
+      "A": 0.636,
+      "B": 0.547,
+      "late": 0.963
+     },
+     "ctl_frozen_00024": {
+      "A": 5.7,
+      "B": 6.55,
+      "late": 6.01
+     },
+     "ctl_diffusion_0": {
+      "A": 4.71
+     },
+     "ctl_diffusion_1": {
+      "A": 4.88
+     }
+    },
+    "share_of_variance": {
+     "gliders": 0.0231,
+     "vortex64": 0.504,
+     "membrane": 0.00343,
+     "foundry_04470": 0.00283,
+     "foundry_04186": 0.0758,
+     "foundry_00262": 0.000152,
+     "foundry_07567": 0.0386,
+     "foundry_06845": 0.00753,
+     "foundry_01672": 0.0237,
+     "foundry_03078": 0.022,
+     "ctl_noise": 0.0,
+     "ctl_freebodies": 0.0311,
+     "ctl_uniform_00000": 0.944,
+     "ctl_uniform_00002": 1.35,
+     "ctl_uniform_00003": 0.0299,
+     "ctl_uniform_00004": 0.0189,
+     "ctl_frozen_00001": 0.00442,
+     "ctl_frozen_00011": 0.0366,
+     "ctl_frozen_00022": 4.55e-05,
+     "ctl_frozen_00024": 0.00548,
+     "ctl_diffusion_0": 0.185,
+     "ctl_diffusion_1": 0.0403
+    },
+    "aimed_over_blind": {
+     "gliders": 4.25,
+     "vortex64": 0.853,
+     "membrane": 2.55,
+     "foundry_04470": 2.59,
+     "foundry_04186": 8.49,
+     "foundry_00262": 8.21,
+     "foundry_07567": 3.31,
+     "foundry_06845": 2.64,
+     "foundry_01672": 9.0,
+     "foundry_03078": 5.41,
+     "ctl_noise": 0.0,
+     "ctl_freebodies": 12.4,
+     "ctl_uniform_00000": 1.6,
+     "ctl_uniform_00002": 1.41,
+     "ctl_uniform_00003": 2.15,
+     "ctl_uniform_00004": 1.99,
+     "ctl_frozen_00001": 5.33,
+     "ctl_frozen_00011": 4.68,
+     "ctl_frozen_00022": 1.93,
+     "ctl_frozen_00024": 2.13,
+     "ctl_diffusion_0": 1.58,
+     "ctl_diffusion_1": 1.66
+    }
+   },
+   "sources": "<job>:cards/<world>__<run>.json:derived.grid.act_ms, .grid.act_ms_over_vcheap, .grid.act_ms_var, .grid.aim_ratio"
+  },
+  {
+   "id": "H8:learned_variable",
+   "claim": "H8: the learned_differs gate (slow features at least 0.05 more closed than the hand block view at 8 ticks in both orders) passes in 0 of 70 worlds in run A.",
+   "values": {
+    "gliders": {
+     "dceil8": [
+      -0.269,
+      -0.294
+     ],
+     "dceil16": [
+      -0.137,
+      -0.136
+     ],
+     "dceil32_AB": 0.035,
+     "r2_min": 0.0216
+    },
+    "vortex64": {
+     "dceil8": [
+      0.00129,
+      -0.0131
+     ],
+     "dceil16": [
+      0.0371,
+      0.0339
+     ],
+     "dceil32_AB": -0.022,
+     "r2_min": 0.0269
+    },
+    "membrane": {
+     "dceil8": [
+      -0.0104,
+      -0.0106
+     ],
+     "dceil16": [
+      -0.0278,
+      -0.0275
+     ],
+     "dceil32_AB": -0.0634,
+     "r2_min": 0.000781
+    },
+    "foundry_04470": {
+     "dceil8": [
+      0.0184,
+      -0.00247
+     ],
+     "dceil16": [
+      0.093,
+      0.0967
+     ],
+     "dceil32_AB": 0.134,
+     "r2_min": 0.000183
+    },
+    "foundry_04186": {
+     "dceil8": [
+      -0.293,
+      -0.257
+     ],
+     "dceil16": [
+      -0.14,
+      -0.207
+     ],
+     "dceil32_AB": -0.182,
+     "r2_min": 0.00281
+    },
+    "foundry_00262": {
+     "dceil8": [
+      -0.342,
+      -0.455
+     ],
+     "dceil16": [
+      -0.122,
+      -0.144
+     ],
+     "dceil32_AB": -0.0128,
+     "r2_min": 0.0263
+    },
+    "foundry_07567": {
+     "dceil8": [
+      -0.117,
+      -0.0294
+     ],
+     "dceil16": [
+      0.0489,
+      0.0632
+     ],
+     "dceil32_AB": 0.0891,
+     "r2_min": 0.0058
+    },
+    "foundry_06845": {
+     "dceil8": [
+      -0.317,
+      -0.321
+     ],
+     "dceil16": [
+      -0.303,
+      -0.303
+     ],
+     "dceil32_AB": -0.0899,
+     "r2_min": 0.000807
+    },
+    "foundry_01672": {
+     "dceil8": [
+      -0.336,
+      -0.326
+     ],
+     "dceil16": [
+      -0.234,
+      -0.22
+     ],
+     "dceil32_AB": 0.0245,
+     "r2_min": 0.0575
+    },
+    "foundry_03078": {
+     "dceil8": [
+      -0.112,
+      -0.125
+     ],
+     "dceil16": [
+      -0.192,
+      -0.18
+     ],
+     "dceil32_AB": -0.0509,
+     "r2_min": 0.0127
+    }
+   },
+   "sources": "<job>:cards/<world>__A.json:derived.l.*"
+  },
+  {
+   "id": "H2:watching_and_experiments",
+   "claim": "H2 inputs: evidence index (nats per tick about a 10%-of-prior move of the hidden part, block view), ticks to 3 nats, and the response difference of an aimed 200-nat input under a prior-sized move (in oracle variances; corrected estimator only where the run is from r6-cards-002 or the world is a foundry world).",
+   "values": {
+    "gliders": {
+     "evidence": 2.0,
+     "ticks_to_3nats": 1.5,
+     "xresp": 0.0617,
+     "job": "r6-cards-001"
+    },
+    "vortex64": {
+     "evidence": 0.158,
+     "ticks_to_3nats": 19.0,
+     "xresp": -0.345,
+     "job": "r6-cards-001"
+    },
+    "membrane": {
+     "evidence": 4.04,
+     "ticks_to_3nats": 0.742,
+     "xresp": 0.0268,
+     "job": "r6-cards-001"
+    },
+    "foundry_04470": {
+     "evidence": 7780.0,
+     "ticks_to_3nats": 0.000385,
+     "xresp": 3.16,
+     "job": "r6-cards-001"
+    },
+    "foundry_04186": {
+     "evidence": 721.0,
+     "ticks_to_3nats": 0.00416,
+     "xresp": 10.8,
+     "job": "r6-cards-001"
+    },
+    "foundry_00262": {
+     "evidence": 8020.0,
+     "ticks_to_3nats": 0.000374,
+     "xresp": 3.7,
+     "job": "r6-cards-001"
+    },
+    "foundry_07567": {
+     "evidence": 414.0,
+     "ticks_to_3nats": 0.00724,
+     "xresp": 8.17,
+     "job": "r6-cards-001"
+    },
+    "foundry_06845": {
+     "evidence": 1280.0,
+     "ticks_to_3nats": 0.00234,
+     "xresp": 6.02,
+     "job": "r6-cards-001"
+    },
+    "foundry_01672": {
+     "evidence": 6990.0,
+     "ticks_to_3nats": 0.000429,
+     "xresp": 38.9,
+     "job": "r6-cards-001"
+    },
+    "foundry_03078": {
+     "evidence": 790.0,
+     "ticks_to_3nats": 0.0038,
+     "xresp": 17.5,
+     "job": "r6-cards-001"
+    }
+   },
+   "sources": "<job>:cards/<world>__A.json:derived.grid.evidence0.1, .grid.ticks_to_3nats0.1, .grid.xresp"
+  },
+  {
+   "id": "structure",
+   "claim": "Bodies and the single-body law (quiet steps, displacement at 8 ticks) of the named worlds, runs A / B / late.",
+   "values": {
+    "gliders": {
+     "A": {
+      "bodies": 7.47,
+      "half_life": 23.4,
+      "v_net": 1.74,
+      "events100": 46.8,
+      "quiet8": 0.524,
+      "body_pf8": 0.997,
+      "body_ceil8": 0.968,
+      "inertia_ceil8": 0.968,
+      "with_field_ceil8": 0.968
+     },
+     "B": {
+      "bodies": 7.57,
+      "half_life": 23.3,
+      "v_net": 1.77,
+      "events100": 46.8,
+      "quiet8": 0.518,
+      "body_pf8": 0.997,
+      "body_ceil8": 0.979,
+      "inertia_ceil8": 0.979,
+      "with_field_ceil8": 0.979
+     },
+     "late": {
+      "bodies": 7.3,
+      "half_life": 25.2,
+      "v_net": 1.73,
+      "events100": 43.7,
+      "quiet8": 0.514,
+      "body_pf8": 0.997,
+      "body_ceil8": 0.971,
+      "inertia_ceil8": 0.971,
+      "with_field_ceil8": 0.971
+     }
+    },
+    "vortex64": {
+     "A": {
+      "bodies": 8.0,
+      "half_life": 51.3,
+      "v_net": 0.966,
+      "events100": 27.2,
+      "quiet8": 0.716,
+      "body_pf8": 0.981,
+      "body_ceil8": 0.88,
+      "inertia_ceil8": 0.88,
+      "with_field_ceil8": 0.88
+     },
+     "B": {
+      "bodies": 7.78,
+      "half_life": 48.7,
+      "v_net": 0.961,
+      "events100": 27.6,
+      "quiet8": 0.707,
+      "body_pf8": 0.98,
+      "body_ceil8": 0.858,
+      "inertia_ceil8": 0.858,
+      "with_field_ceil8": 0.858
+     },
+     "late": {
+      "bodies": 8.65,
+      "half_life": 50.9,
+      "v_net": 0.839,
+      "events100": 28.2,
+      "quiet8": 0.731,
+      "body_pf8": 0.978,
+      "body_ceil8": 0.885,
+      "inertia_ceil8": 0.884,
+      "with_field_ceil8": 0.884
+     }
+    },
+    "membrane": {
+     "A": {
+      "bodies": 14.5,
+      "half_life": 215.0,
+      "v_net": 0.127,
+      "events100": 5.38,
+      "quiet8": 0.837,
+      "body_pf8": 0.968,
+      "body_ceil8": 0.66,
+      "inertia_ceil8": 0.562,
+      "with_field_ceil8": 0.719
+     },
+     "B": {
+      "bodies": 14.7,
+      "half_life": 210.0,
+      "v_net": 0.126,
+      "events100": 5.39,
+      "quiet8": 0.843,
+      "body_pf8": 0.98,
+      "body_ceil8": 0.735,
+      "inertia_ceil8": 0.673,
+      "with_field_ceil8": 0.786
+     },
+     "late": {
+      "bodies": 15.2,
+      "half_life": 209.0,
+      "v_net": 0.123,
+      "events100": 5.31,
+      "quiet8": 0.846,
+      "body_pf8": 0.965,
+      "body_ceil8": 0.692,
+      "inertia_ceil8": 0.68,
+      "with_field_ceil8": 0.774
+     }
+    },
+    "foundry_04470": {
+     "A": {
+      "bodies": 18.9,
+      "half_life": 22.0,
+      "v_net": 0.556,
+      "events100": 82.4,
+      "quiet8": 0.381,
+      "body_pf8": 0.999,
+      "body_ceil8": 0.413,
+      "inertia_ceil8": 0.363,
+      "with_field_ceil8": 0.415
+     },
+     "B": {
+      "bodies": 18.0,
+      "half_life": 25.8,
+      "v_net": 0.481,
+      "events100": 72.7,
+      "quiet8": 0.467,
+      "body_pf8": 0.999,
+      "body_ceil8": 0.431,
+      "inertia_ceil8": 0.417,
+      "with_field_ceil8": 0.429
+     },
+     "late": {
+      "bodies": 19.5,
+      "half_life": 23.8,
+      "v_net": 0.523,
+      "events100": 83.0,
+      "quiet8": 0.402,
+      "body_pf8": 0.999,
+      "body_ceil8": 0.276,
+      "inertia_ceil8": 0.276,
+      "with_field_ceil8": 0.289
+     }
+    },
+    "foundry_04186": {
+     "A": {
+      "bodies": 10.1,
+      "half_life": 20.4,
+      "v_net": 0.673,
+      "events100": 83.7,
+      "quiet8": 0.536,
+      "body_pf8": 0.993,
+      "body_ceil8": 0.862,
+      "inertia_ceil8": 0.862,
+      "with_field_ceil8": 0.88
+     },
+     "B": {
+      "bodies": 10.0,
+      "half_life": 18.9,
+      "v_net": 0.679,
+      "events100": 86.0,
+      "quiet8": 0.527,
+      "body_pf8": 0.995,
+      "body_ceil8": 0.858,
+      "inertia_ceil8": 0.858,
+      "with_field_ceil8": 0.858
+     },
+     "late": {
+      "bodies": 9.24,
+      "half_life": 19.4,
+      "v_net": 0.747,
+      "events100": 83.2,
+      "quiet8": 0.514,
+      "body_pf8": 0.995,
+      "body_ceil8": 0.894,
+      "inertia_ceil8": 0.894,
+      "with_field_ceil8": 0.894
+     }
+    },
+    "foundry_00262": {
+     "A": {
+      "bodies": 12.0,
+      "half_life": 20.1,
+      "v_net": 0.755,
+      "events100": 85.9,
+      "quiet8": 0.556,
+      "body_pf8": 1.0,
+      "body_ceil8": 0.882,
+      "inertia_ceil8": 0.882,
+      "with_field_ceil8": 0.882
+     },
+     "B": {
+      "bodies": 11.7,
+      "half_life": 20.7,
+      "v_net": 0.753,
+      "events100": 81.4,
+      "quiet8": 0.543,
+      "body_pf8": 1.0,
+      "body_ceil8": 0.912,
+      "inertia_ceil8": 0.912,
+      "with_field_ceil8": 0.912
+     },
+     "late": {
+      "bodies": 10.7,
+      "half_life": 26.1,
+      "v_net": 0.696,
+      "events100": 61.6,
+      "quiet8": 0.656,
+      "body_pf8": 1.0,
+      "body_ceil8": 0.94,
+      "inertia_ceil8": 0.94,
+      "with_field_ceil8": 0.94
+     }
+    },
+    "foundry_07567": {
+     "A": {
+      "bodies": 11.1,
+      "half_life": 11.2,
+      "v_net": 1.07,
+      "events100": 128.0,
+      "quiet8": 0.193,
+      "body_pf8": 0.997,
+      "body_ceil8": 0.666,
+      "inertia_ceil8": 0.666,
+      "with_field_ceil8": 0.666
+     },
+     "B": {
+      "bodies": 11.3,
+      "half_life": 11.1,
+      "v_net": 1.08,
+      "events100": 133.0,
+      "quiet8": 0.201,
+      "body_pf8": 0.996,
+      "body_ceil8": 0.487,
+      "inertia_ceil8": 0.487,
+      "with_field_ceil8": 0.487
+     },
+     "late": {
+      "bodies": 11.7,
+      "half_life": 12.2,
+      "v_net": 1.05,
+      "events100": 131.0,
+      "quiet8": 0.224,
+      "body_pf8": 0.998,
+      "body_ceil8": 0.781,
+      "inertia_ceil8": 0.781,
+      "with_field_ceil8": 0.781
+     }
+    },
+    "foundry_06845": {
+     "A": {
+      "bodies": 12.4,
+      "half_life": 14.2,
+      "v_net": 0.61,
+      "events100": 78.9,
+      "quiet8": 0.272,
+      "body_pf8": 0.998,
+      "body_ceil8": 0.456,
+      "inertia_ceil8": 0.456,
+      "with_field_ceil8": 0.548
+     },
+     "B": {
+      "bodies": 12.4,
+      "half_life": 13.9,
+      "v_net": 0.607,
+      "events100": 79.5,
+      "quiet8": 0.279,
+      "body_pf8": 0.999,
+      "body_ceil8": 0.0879,
+      "inertia_ceil8": 0.0471,
+      "with_field_ceil8": 0.14
+     },
+     "late": {
+      "bodies": 12.5,
+      "half_life": 13.7,
+      "v_net": 0.612,
+      "events100": 79.1,
+      "quiet8": 0.267,
+      "body_pf8": 0.999,
+      "body_ceil8": 0.443,
+      "inertia_ceil8": 0.443,
+      "with_field_ceil8": 0.443
+     }
+    },
+    "foundry_01672": {
+     "A": {
+      "bodies": 4.06,
+      "half_life": 37.3,
+      "v_net": 0.622,
+      "events100": 20.9,
+      "quiet8": 0.662,
+      "body_pf8": 0.998,
+      "body_ceil8": 0.945,
+      "inertia_ceil8": 0.945,
+      "with_field_ceil8": 0.945
+     },
+     "B": {
+      "bodies": 3.95,
+      "half_life": 35.6,
+      "v_net": 0.613,
+      "events100": 21.6,
+      "quiet8": 0.672,
+      "body_pf8": 0.998,
+      "body_ceil8": 0.938,
+      "inertia_ceil8": 0.938,
+      "with_field_ceil8": 0.938
+     },
+     "late": {
+      "bodies": 3.84,
+      "half_life": 35.8,
+      "v_net": 0.633,
+      "events100": 21.0,
+      "quiet8": 0.653,
+      "body_pf8": 0.998,
+      "body_ceil8": 0.943,
+      "inertia_ceil8": 0.943,
+      "with_field_ceil8": 0.943
+     }
+    },
+    "foundry_03078": {
+     "A": {
+      "bodies": 13.2,
+      "half_life": 36.2,
+      "v_net": 0.257,
+      "events100": 52.8,
+      "quiet8": 0.735,
+      "body_pf8": 0.997,
+      "body_ceil8": 0.888,
+      "inertia_ceil8": 0.888,
+      "with_field_ceil8": 0.888
+     },
+     "B": {
+      "bodies": 13.1,
+      "half_life": 37.0,
+      "v_net": 0.251,
+      "events100": 52.0,
+      "quiet8": 0.74,
+      "body_pf8": 0.996,
+      "body_ceil8": 0.897,
+      "inertia_ceil8": 0.897,
+      "with_field_ceil8": 0.897
+     },
+     "late": {
+      "bodies": 12.4,
+      "half_life": 38.3,
+      "v_net": 0.264,
+      "events100": 49.2,
+      "quiet8": 0.743,
+      "body_pf8": 0.997,
+      "body_ceil8": 0.924,
+      "inertia_ceil8": 0.924,
+      "with_field_ceil8": 0.924
+     }
+    },
+    "ctl_freebodies": {
+     "A": {
+      "bodies": 5.37,
+      "half_life": 40.4,
+      "v_net": 0.656,
+      "events100": 19.2,
+      "quiet8": 0.698,
+      "body_pf8": 0.962,
+      "body_ceil8": 0.978,
+      "inertia_ceil8": 0.978,
+      "with_field_ceil8": 0.978
+     },
+     "B": {
+      "bodies": 5.49,
+      "half_life": 41.1,
+      "v_net": 0.656,
+      "events100": 19.5,
+      "quiet8": 0.708,
+      "body_pf8": 0.964,
+      "body_ceil8": 0.962,
+      "inertia_ceil8": 0.962,
+      "with_field_ceil8": 0.962
+     },
+     "late": {
+      "bodies": 5.58,
+      "half_life": 44.9,
+      "v_net": 0.655,
+      "events100": 18.0,
+      "quiet8": 0.738,
+      "body_pf8": 0.966,
+      "body_ceil8": 0.982,
+      "inertia_ceil8": 0.982,
+      "with_field_ceil8": 0.982
+     }
+    }
+   },
+   "sources": "<job>:cards/<world>__<run>.json:derived.s.*, .b.*"
+  },
+  {
+   "id": "stationarity",
+   "claim": "Member share (variance between members' time-means) of the block view, runs A / B / late, named worlds.",
+   "values": {
+    "gliders": {
+     "A": {
+      "member_share": 0.727,
+      "pop_member_share": 0.118,
+      "stationary_gate": false
+     },
+     "B": {
+      "member_share": 0.669,
+      "pop_member_share": 0.0891,
+      "stationary_gate": false
+     },
+     "late": {
+      "member_share": 0.723,
+      "pop_member_share": 0.279,
+      "stationary_gate": false
+     }
+    },
+    "vortex64": {
+     "A": {
+      "member_share": 0.337,
+      "pop_member_share": 0.0984,
+      "stationary_gate": false
+     },
+     "B": {
+      "member_share": 0.409,
+      "pop_member_share": 0.105,
+      "stationary_gate": false
+     },
+     "late": {
+      "member_share": 0.842,
+      "pop_member_share": 0.377,
+      "stationary_gate": false
+     }
+    },
+    "membrane": {
+     "A": {
+      "member_share": 0.0729,
+      "pop_member_share": 0.189,
+      "stationary_gate": true
+     },
+     "B": {
+      "member_share": 0.067,
+      "pop_member_share": 0.216,
+      "stationary_gate": true
+     },
+     "late": {
+      "member_share": 0.0812,
+      "pop_member_share": 0.145,
+      "stationary_gate": true
+     }
+    },
+    "foundry_04470": {
+     "A": {
+      "member_share": 0.15,
+      "pop_member_share": 0.0521,
+      "stationary_gate": true
+     },
+     "B": {
+      "member_share": 0.733,
+      "pop_member_share": 0.69,
+      "stationary_gate": false
+     },
+     "late": {
+      "member_share": 0.13,
+      "pop_member_share": 0.0536,
+      "stationary_gate": true
+     }
+    },
+    "foundry_04186": {
+     "A": {
+      "member_share": 0.0583,
+      "pop_member_share": 0.042,
+      "stationary_gate": true
+     },
+     "B": {
+      "member_share": 0.0847,
+      "pop_member_share": 0.0588,
+      "stationary_gate": true
+     },
+     "late": {
+      "member_share": 0.104,
+      "pop_member_share": 0.0799,
+      "stationary_gate": true
+     }
+    },
+    "foundry_00262": {
+     "A": {
+      "member_share": 0.191,
+      "pop_member_share": 0.127,
+      "stationary_gate": true
+     },
+     "B": {
+      "member_share": 0.398,
+      "pop_member_share": 0.139,
+      "stationary_gate": false
+     },
+     "late": {
+      "member_share": 0.97,
+      "pop_member_share": 0.555,
+      "stationary_gate": false
+     }
+    },
+    "foundry_07567": {
+     "A": {
+      "member_share": 0.095,
+      "pop_member_share": 0.0688,
+      "stationary_gate": true
+     },
+     "B": {
+      "member_share": 0.103,
+      "pop_member_share": 0.0892,
+      "stationary_gate": true
+     },
+     "late": {
+      "member_share": 0.268,
+      "pop_member_share": 0.198,
+      "stationary_gate": true
+     }
+    },
+    "foundry_06845": {
+     "A": {
+      "member_share": 0.113,
+      "pop_member_share": 0.0587,
+      "stationary_gate": true
+     },
+     "B": {
+      "member_share": 0.226,
+      "pop_member_share": 0.12,
+      "stationary_gate": true
+     },
+     "late": {
+      "member_share": 0.171,
+      "pop_member_share": 0.0893,
+      "stationary_gate": true
+     }
+    },
+    "foundry_01672": {
+     "A": {
+      "member_share": 0.164,
+      "pop_member_share": 0.0858,
+      "stationary_gate": true
+     },
+     "B": {
+      "member_share": 0.144,
+      "pop_member_share": 0.0792,
+      "stationary_gate": true
+     },
+     "late": {
+      "member_share": 0.143,
+      "pop_member_share": 0.0903,
+      "stationary_gate": true
+     }
+    },
+    "foundry_03078": {
+     "A": {
+      "member_share": 0.0352,
+      "pop_member_share": 0.0359,
+      "stationary_gate": true
+     },
+     "B": {
+      "member_share": 0.0575,
+      "pop_member_share": 0.0439,
+      "stationary_gate": true
+     },
+     "late": {
+      "member_share": 0.116,
+      "pop_member_share": 0.0849,
+      "stationary_gate": true
+     }
+    }
+   },
+   "sources": "<job>:cards/<world>__<run>.json:derived.grid.member_share"
+  },
+  {
+   "id": "robust:seed",
+   "claim": "Seed robustness over 20 worlds with runs A and B (agreement within 0.05 or 25%): entries that agree in at least 90% of worlds: ['b.ceil_field_disp8', 'b.pf_disp8', 'b.quiet8', 'grid.act_ms', 'grid.ceil8', 'grid.gap8', 'grid.pf8', 'grid.pl_ratio0.03_8', 'grid.pl_ratio0.1_8', 'grid.sigma_hat', 'grid.tick_share', 'grid.w_theta8', 'l.dceil8_AB', 'pop.pf8', 's.events100', 's.half_life_ticks', 's.nb_mean', 's.v_net', 't.l1_8', 'x.bodies_to_grid8']; below 70%: ['pop.act_ms', 'pop.ceil8'].",
+   "values": {
+    "worlds": [
+     "gliders",
+     "vortex64",
+     "membrane",
+     "foundry_04470",
+     "foundry_04186",
+     "foundry_00262",
+     "foundry_07567",
+     "foundry_06845",
+     "foundry_01672",
+     "foundry_03078",
+     "ctl_noise",
+     "ctl_freebodies",
+     "ctl_uniform_00000",
+     "ctl_uniform_00002",
+     "ctl_uniform_00003",
+     "ctl_uniform_00004",
+     "ctl_frozen_00001",
+     "ctl_frozen_00011",
+     "ctl_frozen_00022",
+     "ctl_frozen_00024"
+    ],
+    "share_of_worlds_agreeing": {
+     "grid.pf8": 1.0,
+     "grid.ceil8": 1.0,
+     "grid.gap8": 0.95,
+     "grid.sigma_hat": 1.0,
+     "grid.w_theta8": 0.95,
+     "grid.pl_ratio0.03_8": 1.0,
+     "grid.pl_ratio0.1_8": 0.95,
+     "grid.act_ms": 1.0,
+     "grid.aim_ratio": 0.7,
+     "grid.xresp": 0.85,
+     "grid.tick_share": 1.0,
+     "grid.member_share": 0.8,
+     "pop.pf8": 0.95,
+     "pop.ceil8": 0.6,
+     "pop.sigma_hat": 0.85,
+     "pop.tick_share": 0.85,
+     "pop.act_ms": 0.55,
+     "s.nb_mean": 1.0,
+     "s.half_life_ticks": 0.9,
+     "s.v_net": 1.0,
+     "s.events100": 0.9,
+     "b.pf_disp8": 0.9,
+     "b.ceil_disp8": 0.85,
+     "b.ceil_field_disp8": 0.9,
+     "b.quiet8": 0.95,
+     "x.bodies_to_grid8": 1.0,
+     "l.dceil8_AB": 0.95,
+     "l.dceil16_AB": 0.75,
+     "t.l1_8": 1.0,
+     "k.law32": 0.8
+    },
+    "gates_same_share": {
+     "exam_worthy": 0.95,
+     "structure": 1.0,
+     "interaction": 0.85,
+     "reading_worthy": 0.95,
+     "actions": 1.0,
+     "stationary": 0.9,
+     "levels_add": 1.0,
+     "learned_differs": 1.0,
+     "dull": 0.95
+    },
+    "gate_flips": {
+     "membrane": [
+      "exam_worthy",
+      "dull"
+     ],
+     "foundry_04470": [
+      "stationary"
+     ],
+     "foundry_00262": [
+      "interaction",
+      "reading_worthy",
+      "stationary"
+     ],
+     "ctl_frozen_00001": [
+      "interaction"
+     ],
+     "ctl_frozen_00024": [
+      "interaction"
+     ]
+    }
+   },
+   "sources": "results/robustness.json:<world>.seed, .seed_gates (from runs A and B of each world)"
+  },
+  {
+   "id": "robust:size",
+   "claim": "Size robustness over 8 worlds (64 px against 128 px, counts per area, action entries left out): entries that agree in at least 90%: ['b.pf_disp8', 'b.quiet8', 'grid.ceil8', 'grid.gap8', 'grid.pf8', 'grid.sigma_hat', 'grid.tick_share', 'grid.w_theta8', 'l.dceil8_AB', 'pop.pf8', 's.events100', 's.half_life_ticks', 's.nb_mean', 't.l1_8', 'x.bodies_to_grid8']; below 70%: ['grid.member_share', 'k.law32', 'pop.ceil8', 'pop.sigma_hat', 'pop.tick_share'].",
+   "values": {
+    "worlds": {
+     "vortex64": "vortex128",
+     "foundry_04470": "foundry128_04470",
+     "foundry_04186": "foundry128_04186",
+     "foundry_00262": "foundry128_00262",
+     "foundry_07567": "foundry128_07567",
+     "foundry_06845": "foundry128_06845",
+     "foundry_01672": "foundry128_01672",
+     "foundry_03078": "foundry128_03078"
+    },
+    "share_of_worlds_agreeing": {
+     "b.ceil_disp8": 0.75,
+     "b.ceil_field_disp8": 0.75,
+     "b.pf_disp8": 1.0,
+     "b.quiet8": 1.0,
+     "grid.ceil8": 1.0,
+     "grid.gap8": 1.0,
+     "grid.member_share": 0.571,
+     "grid.pf8": 1.0,
+     "grid.pl_ratio0.03_8": 0.857,
+     "grid.pl_ratio0.1_8": 0.857,
+     "grid.sigma_hat": 1.0,
+     "grid.tick_share": 1.0,
+     "grid.w_theta8": 1.0,
+     "k.law32": 0.375,
+     "l.dceil16_AB": 0.714,
+     "l.dceil8_AB": 1.0,
+     "pop.ceil8": 0.25,
+     "pop.pf8": 1.0,
+     "pop.sigma_hat": 0.625,
+     "pop.tick_share": 0.375,
+     "s.events100": 1.0,
+     "s.half_life_ticks": 1.0,
+     "s.nb_mean": 1.0,
+     "s.v_net": 0.875,
+     "t.l1_8": 1.0,
+     "x.bodies_to_grid8": 1.0
+    },
+    "gate_flips": {
+     "vortex64": [
+      "interaction",
+      "reading_worthy",
+      "stationary"
+     ],
+     "foundry_04470": [
+      "stationary"
+     ],
+     "foundry_00262": [
+      "stationary"
+     ],
+     "foundry_01672": [
+      "interaction",
+      "reading_worthy"
+     ]
+    }
+   },
+   "sources": "results/robustness.json:<world>.size, .size_gates"
+  },
+  {
+   "id": "robust:late",
+   "claim": "Late window against early (35 worlds): the same statistics in 19; not in ['foundry_00262', 'ctl_uniform_00000', 'ctl_uniform_00003', 'ctl_uniform_00004', 'ctl_frozen_00001', 'ctl_frozen_00011', 'ctl_frozen_00024', 'foundry_00124', 'foundry_02755', 'foundry_03062', 'foundry_03854', 'foundry_04495', 'foundry_07760', 'foundry_07820', 'foundry_07913', 'foundry_08010'].",
+   "values": {
+    "gliders": {
+     "same": true,
+     "count_ratio": 0.976,
+     "d_mean_max": 0.00129,
+     "log_sd_max": 0.0144,
+     "ceil8": [
+      0.453,
+      0.498
+     ],
+     "sigma_hat": [
+      0.0974,
+      0.0997
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ]
+    },
+    "vortex64": {
+     "same": true,
+     "count_ratio": 1.08,
+     "d_mean_max": 0.181,
+     "log_sd_max": 0.113,
+     "ceil8": [
+      0.457,
+      0.276
+     ],
+     "sigma_hat": [
+      0.0824,
+      0.0727
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ]
+    },
+    "membrane": {
+     "same": true,
+     "count_ratio": 1.04,
+     "d_mean_max": 0.0234,
+     "log_sd_max": 0.0331,
+     "ceil8": [
+      0.995,
+      0.994
+     ],
+     "sigma_hat": [
+      0.0125,
+      0.0137
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "dull: the hidden part has no weight"
+     ]
+    },
+    "foundry_04470": {
+     "same": true,
+     "count_ratio": 1.03,
+     "d_mean_max": 0.0148,
+     "log_sd_max": 0.042,
+     "ceil8": [
+      0.523,
+      0.517
+     ],
+     "sigma_hat": [
+      0.439,
+      0.445
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ]
+    },
+    "foundry_04186": {
+     "same": true,
+     "count_ratio": 0.915,
+     "d_mean_max": 0.00438,
+     "log_sd_max": 0.00862,
+     "ceil8": [
+      0.498,
+      0.523
+     ],
+     "sigma_hat": [
+      0.439,
+      0.441
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ]
+    },
+    "foundry_00262": {
+     "same": false,
+     "count_ratio": 0.891,
+     "d_mean_max": 0.172,
+     "log_sd_max": 0.729,
+     "ceil8": [
+      0.511,
+      0.518
+     ],
+     "sigma_hat": [
+      0.495,
+      0.505
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + actions"
+     ]
+    },
+    "foundry_07567": {
+     "same": true,
+     "count_ratio": 1.05,
+     "d_mean_max": 0.0297,
+     "log_sd_max": 0.202,
+     "ceil8": [
+      0.495,
+      0.554
+     ],
+     "sigma_hat": [
+      0.477,
+      0.421
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ]
+    },
+    "foundry_06845": {
+     "same": true,
+     "count_ratio": 1.01,
+     "d_mean_max": 0.00543,
+     "log_sd_max": 0.0182,
+     "ceil8": [
+      0.736,
+      0.719
+     ],
+     "sigma_hat": [
+      0.309,
+      0.328
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ]
+    },
+    "foundry_01672": {
+     "same": true,
+     "count_ratio": 0.947,
+     "d_mean_max": 0.00128,
+     "log_sd_max": 0.026,
+     "ceil8": [
+      0.757,
+      0.745
+     ],
+     "sigma_hat": [
+      0.283,
+      0.298
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ]
+    },
+    "foundry_03078": {
+     "same": true,
+     "count_ratio": 0.935,
+     "d_mean_max": 0.000257,
+     "log_sd_max": 0.0351,
+     "ceil8": [
+      0.744,
+      0.754
+     ],
+     "sigma_hat": [
+      0.292,
+      0.295
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + actions"
+     ]
+    },
+    "ctl_freebodies": {
+     "same": true,
+     "count_ratio": 1.04,
+     "d_mean_max": 0.00753,
+     "log_sd_max": 0.0508,
+     "ceil8": [
+      0.739,
+      0.768
+     ],
+     "sigma_hat": [
+      0.00708,
+      0.00811
+     ],
+     "verdict": [
+      "dull: the hidden part has no weight",
+      "dull: the hidden part has no weight"
+     ]
+    },
+    "ctl_uniform_00000": {
+     "same": false,
+     "count_ratio": 1.0,
+     "d_mean_max": 0.012,
+     "log_sd_max": 0.567,
+     "ceil8": [
+      0.991,
+      0.993
+     ],
+     "sigma_hat": [
+      0.00517,
+      0.00229
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "ctl_uniform_00002": {
+     "same": true,
+     "count_ratio": 1.0,
+     "d_mean_max": 0.0211,
+     "log_sd_max": 0.0946,
+     "ceil8": [
+      0.975,
+      1.0
+     ],
+     "sigma_hat": [
+      0.0279,
+      0.0
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "ctl_uniform_00003": {
+     "same": false,
+     "count_ratio": 1.0,
+     "d_mean_max": 0.0648,
+     "log_sd_max": 0.565,
+     "ceil8": [
+      1.0,
+      0.999
+     ],
+     "sigma_hat": [
+      0.000247,
+      0.000237
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "ctl_uniform_00004": {
+     "same": false,
+     "count_ratio": 1.0,
+     "d_mean_max": 0.0462,
+     "log_sd_max": 1.99,
+     "ceil8": [
+      1.0,
+      0.996
+     ],
+     "sigma_hat": [
+      0.000165,
+      0.00132
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "ctl_frozen_00001": {
+     "same": false,
+     "count_ratio": 2.79,
+     "d_mean_max": 3.82,
+     "log_sd_max": 2.58,
+     "ceil8": [
+      1.0,
+      0.999
+     ],
+     "sigma_hat": [
+      0.000291,
+      0.00115
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: the hidden part has no weight"
+     ]
+    },
+    "ctl_frozen_00011": {
+     "same": false,
+     "count_ratio": 2.24,
+     "d_mean_max": 0.996,
+     "log_sd_max": 1.05,
+     "ceil8": [
+      1.0,
+      1.0
+     ],
+     "sigma_hat": [
+      0.000303,
+      0.000231
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "ctl_frozen_00022": {
+     "same": true,
+     "count_ratio": 0.954,
+     "d_mean_max": 0.27,
+     "log_sd_max": 0.315,
+     "ceil8": [
+      1.0,
+      1.0
+     ],
+     "sigma_hat": [
+      0.000182,
+      1.48e-05
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "ctl_frozen_00024": {
+     "same": false,
+     "count_ratio": 0.843,
+     "d_mean_max": 0.116,
+     "log_sd_max": 0.605,
+     "ceil8": [
+      1.0,
+      1.0
+     ],
+     "sigma_hat": [
+      0.000515,
+      8.87e-05
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: the hidden part has no weight"
+     ]
+    },
+    "foundry_00060": {
+     "same": true,
+     "count_ratio": 1.0,
+     "d_mean_max": 0.0844,
+     "log_sd_max": 0.115,
+     "ceil8": [
+      0.938,
+      0.932
+     ],
+     "sigma_hat": [
+      0.101,
+      0.0945
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ]
+    },
+    "foundry_00124": {
+     "same": false,
+     "count_ratio": 0.558,
+     "d_mean_max": 0.758,
+     "log_sd_max": 1.26,
+     "ceil8": [
+      0.976,
+      0.987
+     ],
+     "sigma_hat": [
+      0.0359,
+      0.0304
+     ],
+     "verdict": [
+      "dull: the hidden part has no weight",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "foundry_00416": {
+     "same": true,
+     "count_ratio": 0.722,
+     "d_mean_max": 0.00191,
+     "log_sd_max": 0.124,
+     "ceil8": [
+      0.982,
+      0.985
+     ],
+     "sigma_hat": [
+      0.0344,
+      0.0284
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "dull: the hidden part has no weight"
+     ]
+    },
+    "foundry_02755": {
+     "same": false,
+     "count_ratio": 0.591,
+     "d_mean_max": 0.0736,
+     "log_sd_max": 0.6,
+     "ceil8": [
+      0.887,
+      0.986
+     ],
+     "sigma_hat": [
+      0.142,
+      0.0215
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "dull: the hidden part has no weight"
+     ]
+    },
+    "foundry_03062": {
+     "same": false,
+     "count_ratio": 0.151,
+     "d_mean_max": 0.0779,
+     "log_sd_max": 0.58,
+     "ceil8": [
+      0.984,
+      0.97
+     ],
+     "sigma_hat": [
+      0.0285,
+      0.0331
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "foundry_03101": {
+     "same": true,
+     "count_ratio": 0.746,
+     "d_mean_max": 0.012,
+     "log_sd_max": 0.0983,
+     "ceil8": [
+      0.974,
+      0.977
+     ],
+     "sigma_hat": [
+      0.0386,
+      0.0315
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ]
+    },
+    "foundry_03854": {
+     "same": false,
+     "count_ratio": 0.226,
+     "d_mean_max": 0.108,
+     "log_sd_max": 0.344,
+     "ceil8": [
+      0.995,
+      0.999
+     ],
+     "sigma_hat": [
+      0.00767,
+      0.000835
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "foundry_04289": {
+     "same": true,
+     "count_ratio": 1.05,
+     "d_mean_max": 0.0164,
+     "log_sd_max": 0.0344,
+     "ceil8": [
+      0.824,
+      0.853
+     ],
+     "sigma_hat": [
+      0.226,
+      0.209
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ]
+    },
+    "foundry_04495": {
+     "same": false,
+     "count_ratio": 0.113,
+     "d_mean_max": 0.0597,
+     "log_sd_max": 0.376,
+     "ceil8": [
+      0.858,
+      0.911
+     ],
+     "sigma_hat": [
+      0.189,
+      0.131
+     ],
+     "verdict": [
+      "exam-worthy + actions",
+      "exam-worthy + actions"
+     ]
+    },
+    "foundry_04833": {
+     "same": true,
+     "count_ratio": 0.943,
+     "d_mean_max": 0.0466,
+     "log_sd_max": 0.2,
+     "ceil8": [
+      0.923,
+      0.921
+     ],
+     "sigma_hat": [
+      0.112,
+      0.107
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ]
+    },
+    "foundry_04919": {
+     "same": true,
+     "count_ratio": 0.984,
+     "d_mean_max": 0.209,
+     "log_sd_max": 0.22,
+     "ceil8": [
+      0.992,
+      0.991
+     ],
+     "sigma_hat": [
+      0.0141,
+      0.0146
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "exam-worthy + reading-worthy + actions"
+     ]
+    },
+    "foundry_05671": {
+     "same": true,
+     "count_ratio": 0.702,
+     "d_mean_max": 0.318,
+     "log_sd_max": 0.278,
+     "ceil8": [
+      0.99,
+      1.0
+     ],
+     "sigma_hat": [
+      0.0203,
+      0.000162
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "foundry_07760": {
+     "same": false,
+     "count_ratio": 0.625,
+     "d_mean_max": 0.0893,
+     "log_sd_max": 0.544,
+     "ceil8": [
+      0.95,
+      0.998
+     ],
+     "sigma_hat": [
+      0.09,
+      0.003
+     ],
+     "verdict": [
+      "exam-worthy + reading-worthy + actions",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "foundry_07820": {
+     "same": false,
+     "count_ratio": 0.481,
+     "d_mean_max": 0.102,
+     "log_sd_max": 0.474,
+     "ceil8": [
+      0.986,
+      0.991
+     ],
+     "sigma_hat": [
+      0.0243,
+      0.014
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "foundry_07913": {
+     "same": false,
+     "count_ratio": 0.573,
+     "d_mean_max": 0.0281,
+     "log_sd_max": 0.271,
+     "ceil8": [
+      0.979,
+      0.997
+     ],
+     "sigma_hat": [
+      0.0456,
+      0.0067
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    },
+    "foundry_08010": {
+     "same": false,
+     "count_ratio": 0.106,
+     "d_mean_max": 0.197,
+     "log_sd_max": 0.847,
+     "ceil8": [
+      0.988,
+      0.993
+     ],
+     "sigma_hat": [
+      0.0221,
+      0.0141
+     ],
+     "verdict": [
+      "dull: predictable by the cheap family",
+      "dull: predictable by the cheap family"
+     ]
+    }
+   },
+   "sources": "results/robustness.json:<world>.late (runs A and late of each world)"
+  },
+  {
+   "id": "robust:estimator_size",
+   "claim": "Estimator size (even against odd test states, 16 each): the block view's ceiling at 8 ticks agrees in 70 of 70 worlds, its predictable fraction in 70.",
+   "values": {
+    "not_agreeing": []
+   },
+   "sources": "results/robustness.json:<world>.split_half (from series/<world>__A.npz per-state arrays)"
+  },
+  {
+   "id": "robust:platform",
+   "claim": "CPU (this container) against the GPU job for foundry draw 4470, run A, same code and seeds: 11 of 11 entries agree; verdict 'exam-worthy + reading-worthy + actions' against 'exam-worthy + reading-worthy + actions'.",
+   "values": {
+    "grid.pf8": {
+     "cpu": 0.998,
+     "gpu": 0.998
+    },
+    "grid.ceil8": {
+     "cpu": 0.523,
+     "gpu": 0.523
+    },
+    "grid.sigma_hat": {
+     "cpu": 0.439,
+     "gpu": 0.439
+    },
+    "grid.pl_ratio0.1_8": {
+     "cpu": 189.0,
+     "gpu": 189.0
+    },
+    "s.nb_mean": {
+     "cpu": 18.9,
+     "gpu": 18.9
+    },
+    "s.half_life_ticks": {
+     "cpu": 22.0,
+     "gpu": 22.0
+    },
+    "b.ceil_disp8": {
+     "cpu": 0.425,
+     "gpu": 0.413
+    },
+    "grid.act_ms": {
+     "cpu": 4.19,
+     "gpu": 4.19
+    },
+    "grid.member_share": {
+     "cpu": 0.15,
+     "gpu": 0.15
+    },
+    "pop.ceil8": {
+     "cpu": 0.0403,
+     "gpu": 0.0533
+    },
+    "l.dceil16_AB": {
+     "cpu": 0.0924,
+     "gpu": 0.093
+    }
+   },
+   "sources": {
+    "cpu": "results/cpu_check/foundry_04470__A.json",
+    "gpu": "r6-cards-001:cards/foundry_04470__A.json:derived.<key>"
+   }
+  },
+  {
+   "id": "cost",
+   "claim": "Cost per member-tick on the job's GPU with the tracker on every member, compile excluded (median over worlds of a group).",
+   "values": {
+    "gliders": {
+     "ms_per_member_tick": 1.5,
+     "member_ticks_per_s": 668.0,
+     "n_worlds": 1,
+     "usd_per_million_member_ticks": 0.828
+    },
+    "vortex64": {
+     "ms_per_member_tick": 4.78,
+     "member_ticks_per_s": 209.0,
+     "n_worlds": 1,
+     "usd_per_million_member_ticks": 2.64
+    },
+    "membrane": {
+     "ms_per_member_tick": 0.141,
+     "member_ticks_per_s": 7090.0,
+     "n_worlds": 1,
+     "usd_per_million_member_ticks": 0.078
+    },
+    "foundry": {
+     "ms_per_member_tick": 0.0467,
+     "member_ticks_per_s": 21400.0,
+     "n_worlds": 57,
+     "usd_per_million_member_ticks": 0.0258
+    },
+    "control": {
+     "ms_per_member_tick": 0.0204,
+     "member_ticks_per_s": 49100.0,
+     "n_worlds": 2,
+     "usd_per_million_member_ticks": 0.0113
+    },
+    "foundry128": {
+     "ms_per_member_tick": 0.191,
+     "member_ticks_per_s": 5220.0,
+     "n_worlds": 6,
+     "usd_per_million_member_ticks": 0.106
+    }
+   },
+   "sources": "results/table.json:ms_per_mt (from timing of runs that were not the first call of their program)"
+  }
+ ],
+ "check_cardlib": {
+  "passed": true,
+  "source": "results/check_cardlib.json"
+ }
+}

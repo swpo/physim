@@ -1,0 +1,735 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "name": "astra_ring_001",
+ "instance_id": "pilot-astra-ring-001-w0",
+ "secret_commitment": "58488c5f9354675cd595e0ace9b0375c5361a6eafb5454a7f36194ee9028f4bf",
+ "model": "openai/gpt-6-astra",
+ "harness": "bash",
+ "trace_id": "20ee19f703164b3386c6a1f6f1564391",
+ "verifiers": "0.3.2.dev163",
+ "command": "cd S && nice -n 10 /home/user/evalwork/vfport/.venv/bin/python -B R/tools/here.py --run-id physim2-rolla-20261111 vfrun.py --config R/configs/astra_ring_001.toml --run-name astra-ring-001 --out-dir S/run --store S/store --disk-floor-gib 1.5 --model-credentials prime > S/run.log 2>&1 < /dev/null ; echo \"EXIT $?\" >> S/run.log   (S = the runner's scratch folder, R = research/alife/vecworld/program/round6/rollouts; PRIME_API_KEY and PRIME_TEAM_ID reach the process through the environment only)",
+ "caps": {
+  "max_turns": 22,
+  "max_total_tokens": 70000,
+  "max_output_tokens": 70000,
+  "max_input_tokens": null
+ },
+ "sampling": {
+  "max_tokens": 16384
+ },
+ "timeout": {
+  "rollout": 3600.0
+ },
+ "box": {
+  "type": "docker",
+  "image": "physim2-ring-ca:1",
+  "cpu": 2.0,
+  "memory": 4.0,
+  "allow": [],
+  "block": [
+   "*"
+  ],
+  "workdir": "/workspace"
+ },
+ "outcome": {
+  "episode_ok": true,
+  "trace_ok": true,
+  "is_completed": true,
+  "stop_condition": "frozen",
+  "is_timeout": false,
+  "trace_errors": [],
+  "episode_errors": [],
+  "reward_skill_vs_O": 0.9644672859725923,
+  "graded": true
+ },
+ "turns": 14,
+ "message_nodes": 29,
+ "tool_calls_by_name": {
+  "bash": 10,
+  "edit": 2,
+  "lab_call": 2
+ },
+ "usage": {
+  "calls": [
+   {
+    "call": 1,
+    "node": 2,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 2.25,
+    "prompt_tokens_uncached": 2992,
+    "cached_input_tokens": 0,
+    "completion_tokens": 28,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0313
+   },
+   {
+    "call": 2,
+    "node": 4,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 18.76,
+    "prompt_tokens_uncached": 3163,
+    "cached_input_tokens": 2989,
+    "completion_tokens": 586,
+    "reasoning_tokens": 450,
+    "provider_cost": 0.0754
+   },
+   {
+    "call": 3,
+    "node": 6,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 5.21,
+    "prompt_tokens_uncached": 1991,
+    "cached_input_tokens": 6149,
+    "completion_tokens": 186,
+    "reasoning_tokens": 45,
+    "provider_cost": 0.0423
+   },
+   {
+    "call": 4,
+    "node": 8,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 22.39,
+    "prompt_tokens_uncached": 694,
+    "cached_input_tokens": 8137,
+    "completion_tokens": 1322,
+    "reasoning_tokens": 219,
+    "provider_cost": 0.087
+   },
+   {
+    "call": 5,
+    "node": 10,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 15.0,
+    "prompt_tokens_uncached": 1932,
+    "cached_input_tokens": 8828,
+    "completion_tokens": 509,
+    "reasoning_tokens": 287,
+    "provider_cost": 0.0613
+   },
+   {
+    "call": 6,
+    "node": 12,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 41.23,
+    "prompt_tokens_uncached": 1226,
+    "cached_input_tokens": 10757,
+    "completion_tokens": 1548,
+    "reasoning_tokens": 1034,
+    "provider_cost": 0.1086
+   },
+   {
+    "call": 7,
+    "node": 14,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 54.92,
+    "prompt_tokens_uncached": 1719,
+    "cached_input_tokens": 11980,
+    "completion_tokens": 2638,
+    "reasoning_tokens": 1034,
+    "provider_cost": 0.1736
+   },
+   {
+    "call": 8,
+    "node": 16,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 25.6,
+    "prompt_tokens_uncached": 2751,
+    "cached_input_tokens": 13696,
+    "completion_tokens": 1132,
+    "reasoning_tokens": 516,
+    "provider_cost": 0.1099
+   },
+   {
+    "call": 9,
+    "node": 18,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 22.6,
+    "prompt_tokens_uncached": 1316,
+    "cached_input_tokens": 16444,
+    "completion_tokens": 837,
+    "reasoning_tokens": 544,
+    "provider_cost": 0.0785
+   },
+   {
+    "call": 10,
+    "node": 20,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 3.09,
+    "prompt_tokens_uncached": 851,
+    "cached_input_tokens": 17757,
+    "completion_tokens": 83,
+    "reasoning_tokens": 0,
+    "provider_cost": 0.0319
+   },
+   {
+    "call": 11,
+    "node": 22,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 4.85,
+    "prompt_tokens_uncached": 949,
+    "cached_input_tokens": 17757,
+    "completion_tokens": 145,
+    "reasoning_tokens": 76,
+    "provider_cost": 0.0387
+   },
+   {
+    "call": 12,
+    "node": 24,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 24.82,
+    "prompt_tokens_uncached": 163,
+    "cached_input_tokens": 18703,
+    "completion_tokens": 1066,
+    "reasoning_tokens": 448,
+    "provider_cost": 0.0777
+   },
+   {
+    "call": 13,
+    "node": 26,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 19.88,
+    "prompt_tokens_uncached": 1270,
+    "cached_input_tokens": 18863,
+    "completion_tokens": 534,
+    "reasoning_tokens": 508,
+    "provider_cost": 0.0645
+   },
+   {
+    "call": 14,
+    "node": 28,
+    "model": "openai/gpt-6-astra",
+    "finish_reason": "tool_calls",
+    "error": null,
+    "seconds": 4.96,
+    "prompt_tokens_uncached": 619,
+    "cached_input_tokens": 20130,
+    "completion_tokens": 168,
+    "reasoning_tokens": 81,
+    "provider_cost": 0.0381
+   }
+  ],
+  "n_calls": 14,
+  "n_calls_without_usage": 0,
+  "billed_input_tokens": 193826,
+  "prompt_tokens_uncached": 21636,
+  "cached_input_tokens": 172190,
+  "completion_tokens": 10782,
+  "reasoning_tokens": 5242,
+  "trace_num_input_tokens_counted_once": 10135,
+  "trace_num_output_tokens": 10782,
+  "trace_num_total_tokens_what_the_caps_see": 20917,
+  "price_usd_per_mtok": {
+   "input": 10,
+   "output": 50,
+   "cache_read": null,
+   "source": "GET https://api.pinference.ai/api/v1/models (no credential sent)",
+   "fetched_unix": 1794396844
+  },
+  "cost_usd_with_cache_read_price": 2.47736,
+  "cost_usd_all_input_at_full_price": 2.47736,
+  "provider_reported_cost_usd": 1.0188,
+  "calls_with_provider_cost": 14,
+  "cost_usd_for_the_ledger": 2.47736,
+  "note": "the ledger takes the larger of: all billed input at the full input price plus output, and the provider's own cost field if it reports one. Calls without usage (errors) are counted but cannot be priced."
+ },
+ "wall_s": {
+  "boot": 1.2,
+  "setup": 18.1,
+  "agent": 359.5,
+  "finalize": 0.1,
+  "scoring": 0.0,
+  "verifier": 567.6588680744171,
+  "agent_split": {
+   "model": {
+    "duration": 265.55347442626953
+   },
+   "harness": {
+    "duration": 93.92130970954895
+   }
+  }
+ },
+ "lab": {
+  "ticks_used": 400,
+  "resets": 210,
+  "total_nats": 0.0,
+  "episodes": 210,
+  "requests": 215,
+  "rejected": 0,
+  "validations": 1,
+  "submissions": 1,
+  "submitted": true,
+  "infrastructure_errors": 0
+ },
+ "lab_requests_by_op": {
+  "card": {
+   "n": 1,
+   "ok": 1,
+   "rejected": 0,
+   "ticks": 0
+  },
+  "experiment": {
+   "n": 10,
+   "ok": 10,
+   "rejected": 0,
+   "ticks": 200
+  },
+  "usage": {
+   "n": 2,
+   "ok": 2,
+   "rejected": 0,
+   "ticks": 0
+  },
+  "reset": {
+   "n": 200,
+   "ok": 200,
+   "rejected": 0,
+   "ticks": 200
+  },
+  "validate": {
+   "n": 1,
+   "ok": 1,
+   "rejected": 0,
+   "ticks": 0
+  },
+  "submit": {
+   "n": 1,
+   "ok": 1,
+   "rejected": 0,
+   "ticks": 0
+  }
+ },
+ "submission": {
+  "source": "agent_submission",
+  "ok": true,
+  "error": null,
+  "files": 2,
+  "bytes": 417993,
+  "sha256": "699ef6848c216f934085bd468dc2ca023fe8254eb6b058bf100faffd14be5b0f"
+ },
+ "verifier_box": {
+  "has_predict": true,
+  "network_restricted": true,
+  "writable_dirs": [
+   "/dev/mqueue",
+   "/dev/shm",
+   "/proc/acpi",
+   "/run/lock",
+   "/sys/firmware",
+   "/tmp",
+   "/var/tmp"
+  ],
+  "world_writable_paths_fixed": 0,
+  "owned_by_predictor_user_before": 0,
+  "predictor_uid": 56849,
+  "box_limits": {
+   "pids_max": "max",
+   "memory_max": "4294967296"
+  },
+  "container_evidence": [
+   "/.dockerenv",
+   "/proc/1/cgroup"
+  ]
+ },
+ "grade": {
+  "skill_vs_O": 0.9644672859725923,
+  "n_items": 64,
+  "n_failed": 0,
+  "reason": null,
+  "isolation": "box",
+  "item_boxes": 64,
+  "item_box_wall_s_mean": 8.591243539005518,
+  "infrastructure_failed_items": 0,
+  "validation": {
+   "ok": true,
+   "cpu_s_per_request": 4.774012
+  },
+  "layers": {
+   "rlimits": true,
+   "uid": 56849,
+   "cleanup": true
+  },
+  "cpu_s_mean": 4.841415875000001,
+  "cpu_s_max": 5.810701,
+  "seconds": 565.1243615150452,
+  "verifier_wall_s": 567.6588680744171,
+  "L": 3.694043771769295,
+  "L_K": 4.793409301465456,
+  "L_O": 3.6535411631827417
+ },
+ "network_restricted": true,
+ "single_use": true,
+ "item_isolation": "box",
+ "agent_key": "openai/gpt-6-astra|bash",
+ "agent_box_cpu_s_unverified": 89.8425,
+ "envelope_told_to_the_agent_vs_box": {
+  "task_row_resources": {
+   "cpu": 4.0,
+   "memory": 8.0
+  },
+  "task_row_timeout": {
+   "setup": 900.0,
+   "agent": 3600.0,
+   "finalize": 900.0,
+   "scoring": 7300.0
+  },
+  "system_prompt_added_by_the_config": "Limits of this run, set by the operator: it ends after your 22nd reply (a reply with all the tool calls in it counts as one) or once the conversation has used 70,000 tokens in total (the task text, every tool result and everything you generate, reasoning included, each counted once), whichever comes first; neither counter is shown to you.",
+  "note": "TASK.md states the compute envelope of the exam config (the task row's resources and the agent timeout); the box itself had the cpu and memory of `box` above when the config set them. About max_turns and the token caps the agent is told what `system_prompt_added_by_the_config` says (a taskset-level field, appended by the bash harness to its own system line), and nothing if that is null (rollout qwen_ring_001)"
+ },
+ "lab_process": {
+  "pid": 10708,
+  "scrubbed_variables": [
+   "PHYSIM2_MODEL_CREDENTIALS"
+  ],
+  "announced": true,
+  "token_values_left_in_environ": false,
+  "token_like_names_left_in_os_environ": []
+ },
+ "table_one_instance": {
+  "what": "evaluator.grader.table on this one instance: L = mean energy score over the 64 items (sum over valid cells); vs_O = (L_K - L) / (L_K - L_O), vs_C = (L_K - L) / (L_K - L_C). AGENT = the model. Reference policies were graded with all items in one verifier box (prove.py), the model with one fresh box per item; prove.py's box check shows the two modes give identical per-item scores for the same files.",
+  "policies": {
+   "O": {
+    "L": 3.6535411631827417,
+    "vs_C": 1.1264226572257834,
+    "vs_O": 1.0
+   },
+   "K": {
+    "L": 4.793409301465456,
+    "vs_C": 0.0,
+    "vs_O": 0.0
+   },
+   "S": {
+    "L": 3.786897186505496,
+    "vs_C": 0.9946396543474069,
+    "vs_O": 0.8830074998642703
+   },
+   "D": {
+    "L": 4.751388679390779,
+    "vs_C": 0.04152496169157633,
+    "vs_O": 0.036864458846953885
+   },
+   "P0": {
+    "L": 3.89233020654937,
+    "vs_C": 0.8904502848857053,
+    "vs_O": 0.7905116957419482
+   },
+   "PM": {
+    "L": 3.896629386752493,
+    "vs_C": 0.8862018162903902,
+    "vs_O": 0.7867400487779406
+   },
+   "C": {
+    "L": 3.7814728573867784,
+    "vs_C": 1.0,
+    "vs_O": 0.8877662337357949
+   },
+   "null": {
+    "L": 4.842660222366499,
+    "vs_C": -0.04866997447244226,
+    "vs_O": -0.04320755993341734
+   },
+   "AGENT": {
+    "L": 3.694043771769295,
+    "vs_C": 1.086397803072587,
+    "vs_O": 0.9644672859725923
+   }
+  },
+  "valid_cells": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "cells": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    1,
+    8
+   ],
+   [
+    1,
+    16
+   ],
+   [
+    2,
+    16
+   ],
+   [
+    2,
+    32
+   ]
+  ],
+  "oes_per_cell": {
+   "climatology": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oracle": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "S": [
+    0.9079954991083334,
+    0.877708025150292,
+    0.8945258211707653,
+    0.9118310933123767,
+    0.8238454567048041,
+    0.9066862338983867,
+    -0.5559285648715849
+   ],
+   "D": [
+    0.7927260184341687,
+    0.571436137094256,
+    0.26435513885494916,
+    0.15026475569612183,
+    -2.7652177581971036,
+    -1.5878989251600908,
+    -28.96384138481514
+   ],
+   "P0": [
+    0.8967962425754853,
+    0.8533691550175427,
+    0.8422505198465415,
+    0.70465020562566,
+    0.3775487288707055,
+    0.43733611878105644,
+    -1.0383739627670865
+   ],
+   "PM": [
+    0.8953267065090391,
+    0.8481044644516688,
+    0.8364188234399348,
+    0.6679413128690962,
+    0.30339096932418963,
+    0.5082533727893173,
+    -0.6269332239766443
+   ],
+   "C": [
+    0.9087511139985004,
+    0.8788784925484182,
+    0.8959483554525053,
+    0.9205029805598547,
+    0.8468737120049936,
+    0.9143106713226372,
+    -0.35907291458675833
+   ],
+   "null": [
+    -0.01772047319763376,
+    -0.039438966117657244,
+    -0.010133743683685005,
+    -0.11614861556577191,
+    -0.10662978728148054,
+    -0.20434650076885374,
+    0.3595324534154703
+   ],
+   "AGENT": [
+    0.9237675743916416,
+    0.905529237424743,
+    0.9402722346318103,
+    0.9879770968345322,
+    1.2535845806058143,
+    1.1906639715269969,
+    1.8573223933101803
+   ]
+  },
+  "oes_by_program_class": {
+   "a": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.7250113001720686,
+    "D": -5.305182632880502,
+    "P0": 0.31675223467911184,
+    "PM": 0.34365823551082364,
+    "C": 0.6990290822457105,
+    "null": -0.010191902119777302,
+    "AGENT": 1.5372488841864638
+   },
+   "b": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.5222239683490592,
+    "D": -7.217345660368996,
+    "P0": 0.26445642865644814,
+    "PM": 0.23172723152491365,
+    "C": 0.5934263693292151,
+    "null": -0.08696072219525028,
+    "AGENT": 1.4638598854565676
+   },
+   "c": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.6873248331929481,
+    "D": -5.552940273026132,
+    "P0": 0.37923548693349457,
+    "PM": 0.5065075023477943,
+    "C": 0.7609335239615952,
+    "null": -0.0981565788906799,
+    "AGENT": 1.1475169849124172
+   },
+   "d": {
+    "climatology": 0.0,
+    "oracle": 1.0,
+    "S": 0.6522148585087025,
+    "D": -3.617223260566294,
+    "P0": 0.5281678444723686,
+    "PM": 0.5497947243685025,
+    "C": 0.6540696639182472,
+    "null": 0.050970965988019076,
+    "AGENT": 1.0722123386119502
+   }
+  },
+  "policy_labels": {
+   "K": "long-run average of the hidden world (climatology pool)",
+   "D": "ridge fitted to the real episodes the budget allows",
+   "P0": "ridge trained on simulations at prior draws",
+   "PM": "ridge trained on simulations at the prior mean",
+   "S": "scripted inference, then ridge trained on simulations at posterior draws (the reference agent)",
+   "C": "ridge trained on simulations at the true parameters",
+   "O": "oracle: replicate futures from the hidden state (leave one out)",
+   "null": "null agent: prior-predictive long-run law, no history, no program"
+  }
+ },
+ "noise_one_instance_bootstrap_over_items": {
+  "n_items": 64,
+  "n_boot": 4000,
+  "skill_vs_O": {
+   "point": 0.9644672859725923,
+   "se": 0.009637747403521801,
+   "p05": 0.9477084759621148,
+   "p95": 0.9796006867575644
+  },
+  "skill_vs_C": {
+   "point": 1.086397803072587,
+   "se": 0.011019281721589346,
+   "p05": 1.070188815027498,
+   "p95": 1.106356141370675
+  },
+  "mean_loss_minus_reference": {
+   "K": {
+    "point": -1.0993655296961609,
+    "p05": -1.245412964297318,
+    "p95": -0.9561844276941617,
+    "share_of_resamples_agent_better": 1.0
+   },
+   "O": {
+    "point": 0.04050260858655319,
+    "p05": 0.02385142404008502,
+    "p95": 0.057389974546740816,
+    "share_of_resamples_agent_better": 0.0
+   },
+   "S": {
+    "point": -0.09285341473620123,
+    "p05": -0.10658677770846454,
+    "p95": -0.07990774158939103,
+    "share_of_resamples_agent_better": 1.0
+   },
+   "D": {
+    "point": -1.0573449076214838,
+    "p05": -1.2044106052134238,
+    "p95": -0.9185763959613068,
+    "share_of_resamples_agent_better": 1.0
+   },
+   "P0": {
+    "point": -0.19828643478007502,
+    "p05": -0.22608800991309913,
+    "p95": -0.17027029737033245,
+    "share_of_resamples_agent_better": 1.0
+   },
+   "PM": {
+    "point": -0.20258561498319816,
+    "p05": -0.23053906749143216,
+    "p95": -0.17587052266688558,
+    "share_of_resamples_agent_better": 1.0
+   },
+   "C": {
+    "point": -0.08742908561748353,
+    "p05": -0.1000561192381337,
+    "p95": -0.07521493646852033,
+    "share_of_resamples_agent_better": 1.0
+   },
+   "null": {
+    "point": -1.148616450597204,
+    "p05": -1.2966126236094748,
+    "p95": -1.004554173199992,
+    "share_of_resamples_agent_better": 1.0
+   }
+  }
+ },
+ "agent_items_failed": 0,
+ "reference_box_check": {},
+ "hidden_parameters_of_this_pilot_instance": {
+  "PILOT_NEVER_REUSE_AS_EXAM": true,
+  "theta_names": [
+   "D",
+   "gamma",
+   "c"
+  ],
+  "theta": [
+   0.16582565276276973,
+   0.06214094419637892,
+   0.2719314439947213
+  ],
+  "world": "ring",
+  "note": "the hidden parameters the agent had to learn; public only because this instance is pilot material"
+ },
+ "hidden_values_counted_in_the_run_folder": {
+  "needles": 4,
+  "files": 4,
+  "hits": 0,
+  "what": "the secret and the first ten characters of each hidden parameter, counted in every file of vf-eval's run folder"
+ },
+ "credential_like_fields_removed_from_the_raw_trace": [
+  "/traces[]/agent/config/client/headers/X-Prime-Team-ID",
+  "resolved_config/client/headers/X-Prime-Team-ID"
+ ],
+ "extracted_unix": 1794399545.8651698
+}

@@ -135,8 +135,19 @@ def foundry_theta(prior_seed: int, index: int):
     return TN.draw_theta(int(prior_seed), int(index))
 
 
+def pure_diffusion_theta(prior_seed: int, index: int):
+    """Round 5's control (round5/foundry/job.py stage_controls): beta = 0, gam = 0, kappa = 0, noisy diffusion with
+    crowding."""
+    th = dict(foundry_theta(prior_seed, index))
+    for k in ("beta", "gam", "kappa"):
+        th[k] = np.asarray(0.0)
+    return th
+
+
 def diffusion_theta(prior_seed: int, index: int):
-    """Round 5's control: no affinity, no conversion (diffusion with noise)."""
+    """NOT round 5's diffusion control (the Mac's review of the first job, item 5): no affinity and no conversion,
+    but the mobility gain gam is kept, so the leave rate still depends on the local density through the hidden net.
+    Kept because the first job ran it (worlds ctl_diffusion_*); the true control is pure_diffusion_theta."""
     th = dict(foundry_theta(prior_seed, index))
     th["beta"] = np.asarray(0.0)
     th["kappa"] = np.asarray(0.0)
@@ -192,7 +203,7 @@ def gliders(n_hidden: int = 4) -> CL.Adapter:
 
 
 # ----------------------------------------------------------------------------- fed vortices
-def vortex(H: int = 64, n_sub: int = 250, lab_t: float = 300.0) -> CL.Adapter:
+def vortex(H: int = 64, n_sub: int = 250, lab_t: float = 300.0, G: int = None) -> CL.Adapter:
     _path(VWORLD)
     import vortex_jax as VJ
     import vortex_world as VW
@@ -211,7 +222,7 @@ def vortex(H: int = 64, n_sub: int = 250, lab_t: float = 300.0) -> CL.Adapter:
         t.update({k: np.asarray(v, np.float64) for k, v in d.items()})
         return t
     nb = _box_neighbour(names, lo, hi, to_theta, seed=6102)
-    G = 8
+    G = 8 if G is None else int(G)      # the first job used 8 blocks per side at every H (16 px blocks at 128 px)
     Gb = cfg.G
 
     def fields(x):
@@ -222,7 +233,7 @@ def vortex(H: int = 64, n_sub: int = 250, lab_t: float = 300.0) -> CL.Adapter:
         return _topk_pattern(block_means(field.sum(0)[None], Gb)[0], rng, aimed, 1)
 
     return CL.Adapter(
-        name=f"vortex{H}", family="vortex", init=lev.init, tick=lev.step, m=cfg.m, sigma_u=cfg.sigma_a,
+        name=f"vortex{H}" + ("" if G == 8 else f"g{G}"), family="vortex", init=lev.init, tick=lev.step, m=cfg.m, sigma_u=cfg.sigma_a,
         grid=lambda x: block_means(fields(x), G), fine=lambda x: block_means(fields(x), 2 * G),
         trk=trk, trk_field=VW.kinds_field, theta0=th0, neighbour=lambda th, e, d: nb(th, e, d), aim=aim,
         G=G, Hpx=H, burn=100, late_gap=400, state_batch=32 if H == 64 else 16,

@@ -1,8 +1,9 @@
 """make_cards -- job outputs -> results/: one card per world (card.md + card.png + card.json), the comparison
 table (table.md, table.csv), robustness.json (seed, size, late window), derived.json (every run).
 
-usage: python -B make_cards.py <job out dir> [<job out dir> ...] --job <job_id> [--rate USD_PER_HOUR] [--no-fig]
-A later directory overrides an earlier one for the same (world, run). numpy + matplotlib; no JAX.
+usage: python -B make_cards.py <job_id>=<job out dir> [<job_id>=<job out dir> ...] [--rate USD_PER_HOUR] [--no-fig]
+A later directory overrides an earlier one for the same (world, run); the earlier card is kept as run "<run>_first"
+(the same seeds run twice: a rerun check). numpy + matplotlib; no JAX.
 """
 from __future__ import annotations
 
@@ -29,6 +30,10 @@ ROBUST_KEYS = ["grid.pf8", "grid.ceil8", "grid.gap8", "grid.sigma_hat", "grid.w_
                "pop.pf8", "pop.ceil8", "pop.sigma_hat", "pop.tick_share", "pop.act_ms", "s.nb_mean", "s.half_life_ticks",
                "s.v_net", "s.events100", "b.pf_disp8", "b.ceil_disp8", "b.ceil_field_disp8", "b.quiet8",
                "x.bodies_to_grid8", "l.dceil8_AB", "l.dceil16_AB", "t.l1_8", "k.law32"]
+# entries that scale with the area or with the input per block are not compared across sizes (the Mac's review of
+# the first job, item 6): the body count and the events are compared per 64 x 64 px, the action entries are left out
+SIZE_SKIP = {"grid.act_ms", "grid.aim_ratio", "pop.act_ms", "grid.xresp"}
+SIZE_PER_AREA = {"s.nb_mean", "s.events100"}
 GATE_KEYS = ["exam_worthy", "structure", "interaction", "reading_worthy", "actions", "stationary", "levels_add",
              "learned_differs"]
 
@@ -61,13 +66,23 @@ def row(vals, nd=2):
 
 def load(dirs):
     cards, series = {}, {}
-    for d in dirs:
+    for spec in dirs:
+        job, d = spec.split("=", 1) if "=" in spec else ("?", spec)
         for f in sorted(glob.glob(os.path.join(d, "cards", "*.json"))):
             c = json.load(open(f))
-            cards[(c["world"], c["run"])] = c
+            if not c.get("finite", True):
+                print("NON-FINITE run left out:", f)
+                continue
+            c["_job"] = job
+            key = (c["world"], c["run"])
+            if key in cards:
+                cards[(c["world"], c["run"] + "_first")] = cards[key]
+                if key in series:
+                    series[(c["world"], c["run"] + "_first")] = series[key]
+            cards[key] = c
             s = os.path.join(d, "series", os.path.basename(f)[:-5] + ".npz")
             if os.path.exists(s):
-                series[(c["world"], c["run"])] = s
+                series[key] = s
     return cards, series
 
 
@@ -142,7 +157,10 @@ def figure(world, runs, series, path):
             y = np.array(c["grid"]["pl"][e]["pl_over_vorc_med"], float)
             ax.plot(hz, np.where(y > 0, y, np.nan), color=SEQ[i], lw=2, marker="o", ms=4, label=f"{e} of the prior")
     ax.axhline(1.0, color=INK2, lw=0.8, ls=(0, (3, 3)))
-    ax.legend(frameon=False, fontsize=7, title="block view; move of", title_fontsize=7, labelcolor=INK)
+    lo, hi = ax.get_ylim()
+    ax.set_ylim(lo, hi * 20)
+    ax.legend(frameon=False, fontsize=6.5, title="block view; move of", title_fontsize=6.5, labelcolor=INK, loc="upper right",
+              handlelength=1.6, borderaxespad=0.1)
     ax = fig.add_subplot(gs[1, 6:8])
     base(ax, "Actions: displacement / twin floor", logy=True)
     for i, n in enumerate(("aimed_50", "aimed_200", "aimed_800")):
@@ -153,17 +171,21 @@ def figure(world, runs, series, path):
         y = np.array(c["grid"]["act"]["blind_200"]["D_over_floor"], float)
         ax.plot(hz, np.where(y > 0, y, np.nan), color=INK2, lw=1.5, ls=(0, (4, 2)), marker="s", ms=3.5, label="blind, 200 nats")
     ax.axhline(1.0, color=INK2, lw=0.8, ls=(0, (3, 3)))
-    ax.legend(frameon=False, fontsize=7, labelcolor=INK, loc="lower left")
+    lo, hi = ax.get_ylim()
+    ax.set_ylim(lo, hi * 6)                                 # room for the legend above the curves
+    ax.legend(frameon=False, fontsize=6.5, labelcolor=INK, loc="upper right", handlelength=1.6, borderaxespad=0.1, ncol=2)
     g = c.get("_gates", {})
     fig.suptitle(f"{world}: {g.get('verdict', '')}   (run {c['run']}, {c['meta'].get('lattice')}, "
                  f"{c['sizes']['M']} members x {c['sizes']['T']} ticks)", x=0.045, ha="left", fontsize=10, fontweight="bold")
     fig.savefig(path, dpi=100)
     plt.close(fig)
+    from PIL import Image                                   # 128-colour palette: about a third of the bytes
+    Image.open(path).convert("RGB").quantize(colors=128, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(path, optimize=True)
     return os.path.getsize(path)
 
 
 # ----------------------------------------------------------------------------- card.md
-def card_md(world, runs, D, G, late, rob, rate, job):
+def card_md(world, runs, D, G, late, rob, rate):
     c = runs.get("A") or next(iter(runs.values()))
     r0 = c["run"]
     d, g = D[r0], G[r0]
@@ -217,8 +239,9 @@ def card_md(world, runs, D, G, late, rob, rate, job):
     A("")
     A("## 3. Stationarity")
     A("")
-    A(f"- Share of the variance that is a function of the tick alone: block view {fmt(d.get('grid.tick_share'), 3)}, "
-      f"population {fmt(d.get('pop.tick_share'), 3)}"
+    A(f"- Share of the variance that is a function of the tick alone (mean over channels; largest channel in brackets): "
+      f"block view {fmt(d.get('grid.tick_share'), 3)} [{fmt(d.get('grid.tick_share_max'), 3)}], "
+      f"population {fmt(d.get('pop.tick_share'), 3)} [{fmt(d.get('pop.tick_share_max'), 3)}]"
       + (" (" + ", ".join(f"{k} {fmt(v, 2)}" for k, v in c['pop'].get('tick_share_q', {}).items()) + ")" if not c["pop"].get("empty") else "") + ".")
     A(f"- Share between members' time-means: block view {fmt(d.get('grid.member_share'), 3)}, population {fmt(d.get('pop.member_share'), 3)}.")
     if late:
@@ -274,9 +297,10 @@ def card_md(world, runs, D, G, late, rob, rate, job):
     A("")
     A("## 9. Cost")
     A("")
-    spt = cost_of(runs)
+    spt, inc = cost_of(runs, True)
     A(f"- {fmt(1e3 * spt, 3)} ms per member-tick on the job's {c.get('backend', 'gpu').upper()} with the tracker on every member, "
-      f"compile excluded where the program had run before ({fmt(1.0 / spt, 0)} member-ticks/s)"
+      + ("COMPILE INCLUDED (this world's only run was the first call of its program)" if inc else "compile excluded")
+      + f" ({fmt(1.0 / spt, 0)} member-ticks/s)"
       + (f"; USD {fmt(rate * spt / 3600 * 1e6)} per million member-ticks at USD {rate}/h." if rate else "."))
     A("")
     A("## Gates and robustness")
@@ -294,7 +318,8 @@ def card_md(world, runs, D, G, late, rob, rate, job):
         if True:
             bad = [k for k, v in rob["size"].items() if v is False]
             A("")
-            A(f"Size (64 against 128 px): {len([v for v in rob['size'].values() if v])} of {len(rob['size'])} entries agree"
+            A(f"Size (64 px against {rob.get('size_against')}; counts per area, action entries left out): "
+              f"{len([v for v in rob['size'].values() if v])} of {len(rob['size'])} entries agree"
               + (f"; not robust: {', '.join(bad)}." if bad else "."))
     sh = rob.get("split_half")
     if sh:
@@ -302,24 +327,27 @@ def card_md(world, runs, D, G, late, rob, rate, job):
         A(f"Estimator size (even against odd test states, block view at 8 ticks): predictable fraction {row(sh['pf8'])}, "
           f"ceiling {row(sh['ceil8'])}.")
     A("")
-    A(f"Source: job {job}, `out/cards/{world}__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards "
+    A("Source: " + "; ".join(f"run {r}: job {c_['_job']}" for r, c_ in runs.items())
+      + f"; files `out/cards/{world}__<run>.json` on origin/gpu-jobs; numbers recomputed by `make_cards.py` from those cards "
       "(`card.json` here holds the derived numbers and gates of every run). Pilot: never an exam instance.")
     return "\n".join(L) + "\n"
 
 
-def cost_of(runs):
-    """Seconds per member-tick, compile excluded: runs that were not the first call of their program."""
+def cost_of(runs, flag=False):
+    """Seconds per member-tick, compile excluded: runs that were not the first call of their program. Where a
+    world's only runs were first calls the value includes the compile (flag True)."""
     t = [r["timing"] for r in runs.values() if not r["timing"].get("first_call_of_program", False)]
-    if not t:
+    inc = not t
+    if inc:
         t = [r["timing"] for r in runs.values()]
-    return float(np.median([(x["main_s"] + x["branch_s"]) / (x["main_member_ticks"] + x["branch_member_ticks"]) for x in t]))
+    v = float(np.median([(x["main_s"] + x["branch_s"]) / (x["main_member_ticks"] + x["branch_member_ticks"]) for x in t]))
+    return (v, inc) if flag else v
 
 
 # ----------------------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("dirs", nargs="+")
-    ap.add_argument("--job", default="?")
     ap.add_argument("--rate", type=float, default=0.0)
     ap.add_argument("--no-fig", action="store_true")
     ap.add_argument("--res", default=RES)
@@ -328,29 +356,47 @@ def main():
     worlds = {}
     for (w, r), c in cards.items():
         worlds.setdefault(w, {})[r] = c
-    order = json.load(open(os.path.join(HERE, "worlds.json")))["worlds"]
+    order = json.load(open(os.path.join(HERE, "worlds.json")))["worlds"] + json.load(open(os.path.join(HERE, "worlds2.json")))["worlds"]
+    seen_names = set()
+    order = [w for w in order if not (w["name"] in seen_names or seen_names.add(w["name"]))]
     names = [w["name"] for w in order if w["name"] in worlds] + [w for w in worlds if w not in {x["name"] for x in order}]
     os.makedirs(os.path.join(a.res, "cards"), exist_ok=True)
     derived, robust, rows = {}, {}, []
     for w in names:
         runs = {r: worlds[w][r] for r in ("A", "B", "late") if r in worlds[w]}
+        if "A_first" in worlds[w]:
+            df, gf = rederive(worlds[w]["A_first"])
         D, G = {}, {}
         for r, c in runs.items():
             D[r], G[r] = rederive(c)
             c["_gates"] = G[r]
         derived[w] = {r: dict(derived=D[r], gates=G[r]) for r in runs}
+        if "A_first" in worlds[w]:
+            derived[w]["A_first"] = dict(derived=df, gates=gf)
         late = GT.late_vs_early(runs["A"], runs["late"]) if "A" in runs and "late" in runs else None
         rob = {}
         if "A" in runs and "B" in runs:
             rob["seed"] = {k: GT.robust(D["A"].get(k), D["B"].get(k)) for k in ROBUST_KEYS}
             rob["seed_gates"] = {k: bool(G["A"][k] == G["B"][k]) for k in GATE_KEYS + ["dull"]}
-        big = w.replace("foundry_", "foundry128_") if w.startswith("foundry_") else ("vortex128" if w == "vortex64" else None)
+        big = w.replace("foundry_", "foundry128_") if w.startswith("foundry_") else None
+        if w == "vortex64":
+            big = "vortex128g16" if "vortex128g16" in worlds else "vortex128"
         if big and big in worlds and "A" in worlds[big] and "A" in runs:
             db, gb = rederive(worlds[big]["A"])
-            rob["size"] = {k: GT.robust(D["A"].get(k), db.get(k)) for k in ROBUST_KEYS}
+            area = (worlds[big]["A"]["meta"]["Hpx"] / runs["A"]["meta"]["Hpx"]) ** 2
+            same_blocks = worlds[big]["A"]["meta"]["Hpx"] / worlds[big]["A"]["meta"]["G"] == runs["A"]["meta"]["Hpx"] / runs["A"]["meta"]["G"]
+            keys = [k for k in ROBUST_KEYS if k not in SIZE_SKIP and (same_blocks or not k.startswith(("grid.", "x.", "l.")))]
+            rob["size"] = {k: GT.robust(D["A"].get(k), None if db.get(k) is None else db[k] / (area if k in SIZE_PER_AREA else 1.0))
+                           for k in keys}
+            rob["size_against"] = big
             rob["size_gates"] = {k: bool(G["A"][k] == gb[k]) for k in GATE_KEYS + ["dull"]}
         if late:
             rob["late"] = late
+        if "A_first" in worlds[w]:                # the same seeds simulated in two jobs
+            rob["rerun"] = {k: GT.robust(D["A"].get(k), df.get(k)) for k in ROBUST_KEYS if k not in ("grid.xresp",)}
+            rob["rerun_values"] = {k: [df.get(k), D["A"].get(k)] for k in ("grid.pf8", "grid.ceil8", "grid.sigma_hat", "s.nb_mean", "b.ceil_disp8")}
+            rob["rerun_jobs"] = [worlds[w]["A_first"]["_job"], runs["A"]["_job"]]
+            rob["xresp_first_biased"] = df.get("grid.xresp")
         if ("A" in runs) and (w, "A") in series:                  # estimator size: even against odd test states
             z = np.load(series[(w, "A")])
             hz = runs["A"]["grid"]["hz"]
@@ -370,7 +416,7 @@ def main():
         fig_bytes = None
         if not a.no_fig:
             fig_bytes = figure(w, runs, series, os.path.join(wd, "card.png"))
-        open(os.path.join(wd, "card.md"), "w").write(card_md(w, runs, D, G, late, rob, a.rate, a.job))
+        open(os.path.join(wd, "card.md"), "w").write(card_md(w, runs, D, G, late, rob, a.rate))
         c0 = runs.get("A") or next(iter(runs.values()))
         curves = {r: dict(hz=c["grid"]["hz"], grid_pf=c["grid"]["pf_med"], grid_ceil=c["grid"]["ceil_med"],
                           grid_ceil_se=c["grid"].get("ceil_med_se"), grid_ceil_mean=c["grid"]["ceil"],
@@ -380,13 +426,19 @@ def main():
                           pl_over_vorc={e: v["pl_over_vorc_med"] for e, v in c["grid"]["pl"].items()},
                           act_D_over_floor={k: v["D_over_floor"] for k, v in c["grid"]["act"].items()},
                           timing=c["timing"], burn=c["burn"], seed=c["seed"]) for r, c in runs.items()}
-        json.dump(dict(world=w, role=c0["role"], family=c0["family"], meta=c0["meta"], sizes=c0["sizes"], job=a.job,
+        json.dump(dict(world=w, role=c0["role"], family=c0["family"], meta=c0["meta"], sizes=c0["sizes"],
+                       jobs={r: c["_job"] for r, c in runs.items()},
                        runs={r: dict(derived=D[r], gates=G[r]) for r in runs}, curves=curves, robustness=rob,
                        figure_bytes=fig_bytes, PILOT_NEVER_REUSE_AS_EXAM=True),
                   open(os.path.join(wd, "card.json"), "w"), indent=1, default=float)
         d, g = D[c0["run"]], G[c0["run"]]
-        rows.append(dict(world=w, role=c0["role"], family=c0["family"], verdict=g["verdict"],
-                         sigma_hat=g["sigma_hat_best"], level=g["sigma_hat_level"], pf8=d.get("grid.pf8"), ceil8=d.get("grid.ceil8"),
+        rows.append(dict(world=w, role=c0["role"], family=c0["family"], job=c0["_job"], run=c0["run"], verdict=g["verdict"],
+                         sigma_hat=g["sigma_hat_best"], level=g["sigma_hat_level"],
+                         # shown only where the level is predictable (pf(8) >= PF_MIN), as the verdict uses it
+                         sigma_hat_grid=d.get("grid.sigma_hat") if (d.get("grid.pf8") or 0) >= GT.TH["PF_MIN"] else None,
+                         sigma_hat_pop=d.get("pop.sigma_hat") if (d.get("pop.pf8") or 0) >= GT.TH["PF_MIN"] else None,
+                         pop_tick_share_max=d.get("pop.tick_share_max"),
+                         pf8=d.get("grid.pf8"), ceil8=d.get("grid.ceil8"),
                          ceil8_mean=d.get("grid.ceil8_mean"), w_theta8=d.get("grid.w_theta8"), pl01=d.get("grid.pl_ratio0.1_8"),
                          pl003=d.get("grid.pl_ratio0.03_8"), bodies=d.get("s.nb_mean"), half_life=d.get("s.half_life_ticks"),
                          v_net=d.get("s.v_net"), events=d.get("s.events100"), body_pf8=d.get("b.pf_disp8"),
@@ -397,23 +449,35 @@ def main():
                          pop_pf8=d.get("pop.pf8"), pop_ceil8=d.get("pop.ceil8"), x_bg=d.get("x.bodies_to_grid8"),
                          l_dceil8=None if d.get("l.dceil8_AB") is None else min(d["l.dceil8_AB"], d["l.dceil8_BA"]),
                          l_dceil16=None if d.get("l.dceil16_AB") is None else min(d["l.dceil16_AB"], d["l.dceil16_BA"]),
-                         twin_l1_8=d.get("t.l1_8"), ms_per_mt=1e3 * cost_of(runs),
+                         twin_l1_8=d.get("t.l1_8"), ms_per_mt=1e3 * cost_of(runs), cost_includes_compile=cost_of(runs, True)[1],
                          late_same=None if not late else late["same"],
                          seed_gates_same=None if "seed_gates" not in rob else all(rob["seed_gates"].values()),
                          **{k: g[k] for k in GATE_KEYS}))
+    derived["_jobs"] = {w: {r: c["_job"] for r, c in worlds[w].items()} for w in names}
     json.dump(derived, open(os.path.join(a.res, "derived.json"), "w"), default=float)
     json.dump(robust, open(os.path.join(a.res, "robustness.json"), "w"), indent=1, default=float)
     json.dump(rows, open(os.path.join(a.res, "table.json"), "w"), indent=1, default=float)
     # comparison table
-    cols = [("world", "world"), ("role", "role"), ("verdict", "verdict"), ("sigma_hat", "sigma_hat"), ("pf8", "PF(8)"),
-            ("ceil8", "c(8)"), ("w_theta8", "w_theta(8)"), ("pl01", "PL10%/Vorc"), ("bodies", "bodies"), ("half_life", "half-life"),
-            ("body_ceil8", "body law c(8)"), ("act_ms", "act_ms"), ("tick_share", "tick share"), ("member_share", "member share"),
-            ("pop_ceil8", "pop c(8)"), ("l_dceil16", "learned dc(16)"), ("late_same", "late = early"), ("ms_per_mt", "ms/member-tick")]
+    cols = [("world", "world"), ("role", "role"), ("verdict", "verdict"), ("sigma_hat_grid", "sigma_hat block"),
+            ("sigma_hat_pop", "sigma_hat pop"), ("pf8", "PF(8)"), ("ceil8", "c(8)"), ("w_theta8", "w_theta(8)"),
+            ("pl01", "PL10%/Vorc"), ("bodies", "bodies"), ("half_life", "half-life"), ("body_ceil8", "body law c(8)"),
+            ("act_ms", "act_ms"), ("act_ms_over_vcheap", "act / cheap error"), ("tick_share", "tick share block"),
+            ("pop_tick_share_max", "tick share pop, max"), ("member_share", "member share"), ("pop_ceil8", "pop c(8)"),
+            ("l_dceil16", "learned dc(16)"), ("late_same", "late = early"), ("ms_per_mt", "ms/member-tick")]
     T = ["| " + " | ".join(h for _, h in cols) + " |", "|" + "---|" * len(cols)]
     for r in rows:
         T.append("| " + " | ".join(fmt(r[k]) for k, _ in cols) + " |")
     open(os.path.join(a.res, "table.md"), "w").write(
-        "# World cards: comparison table (run A; ratios from medians over test states)\n\n" + "\n".join(T) + "\n")
+        "# World cards: comparison table (run A; ratios from medians over test states)\n\n"
+        "Columns: sigma_hat at the block and the population level (the verdict uses the larger where the level is predictable); "
+        "PF(8), c(8), w_theta(8): predictable fraction, closure ceiling of the cheap family and weight of a prior-sized error in "
+        "the hidden part, block view, 8 ticks; PL10%/Vorc: plug-in loss of a 10%-of-prior neighbour over the oracle variance; "
+        "bodies, half-life (ticks); body law c(8): ceiling of the single-body law for displacement on quiet steps; act_ms: "
+        "predictable shift of an aimed 200-nat input over the oracle variance at 4 ticks, and the same over the cheap family's "
+        "error; tick share: mean over block channels, and the largest population component; member share (block view); "
+        "pop c(8); learned dc(16): ceiling of the slow features minus the hand view at 16 ticks (the smaller of the two orders); "
+        "late = early; ms per member-tick (compile included where the world's only run was a first call: the 128-px rows).\n\n"
+        + "\n".join(T) + "\n")
     keys = list(rows[0].keys())
     with open(os.path.join(a.res, "table.csv"), "w") as f:
         f.write(",".join(keys) + "\n")

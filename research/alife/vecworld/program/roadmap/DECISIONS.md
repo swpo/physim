@@ -10,7 +10,8 @@ order in which they were put to the lead; the roadmap's own number is in bracket
 | 3 [4] | rollouts with real agents | decided 9 Nov | cleared to spend; a cheap model first for mechanics, then Astra |
 | 4 [7] | the same model on v1 and v2 fed vortices | decided 9 Nov | not a priority now; not scheduled |
 | 5 [6] | where sealed answers live, and who grades | decided 10 Nov | a private Hugging Face dataset repo, not the lead's Mac; the grader must build on the verifiers library, not reinvent it |
-| 5b | where the port's first runs happen | decided 11 Nov (relayed) | smoke test on a rented Prime CPU machine first; model rollout on the Mac; no credential on a rented machine |
+| 5b | where the port's first runs happen | decided 11 Nov (relayed); partly replaced by 5c | smoke test on a rented Prime CPU machine first; model rollout on the Mac; no credential on a rented machine |
+| 5c | where model rollouts run, and how they are requested | decided 11 Nov (direct, then relayed) | short mechanics checks in the coordinator's cloud container; everything else on the Mac, unattended, by request files against a reviewed pin |
 | 6 [5, 6] | the collective pilot and the large foundry pass | decided 10 Nov | both wait; a collective, if run, is run from the coordinator's session with Claude sessions as agents |
 
 Roadmap decision 3 (the acceptance definition) was not put separately. The two quantities of roadmap section 1
@@ -118,6 +119,57 @@ Fair that we don't want to ship the credentials to the rented machine."
 - Lesson for the coordinator: the question "which machine" should have been put to the lead before the audit rounds,
   not after. The scripted test had already passed on Linux in the cloud container; only the model key ties anything
   to the Mac.
+
+## 5c. Where model rollouts run, and how they are requested (11 Nov)
+
+This replaces the part of 5b that put the first model rollout on the Mac after a smoke test on a rented machine.
+
+In the cloud container (the lead, directly, when the Mac was short of disk): "You have my API key in your
+environment already. So if all you need to do is call inference on models, then you should be able to do it", "for
+testing or for like the small Qwen model, that is something you can just do", "Just run in Docker, put some
+reasonable limit", and later: "I think we settled that we'll just have to run the rollouts on the remote Claude Code
+container and deal with the time limit".
+
+On the Mac again (relayed by the Mac session, after the lead freed 85 GiB): "85G is much better. I think we can
+continue the work as originally planned on the laptop now", and on running unattended: "Yeah laptop is plugged in
+so running stuff 24/7 should be ok".
+
+- Short mechanics checks with a cheap model stay in the coordinator's cloud container (cents, fast to repeat, each
+  sized to finish inside the container's lifetime). The first two rollouts ran there (`../round6/rollouts`).
+- Every rollout that is to be quoted, or that cannot finish well inside 45 minutes, runs on the Mac, where the
+  model key stays. No credential goes to a rented machine. The Prime CPU pre-check of the smoke test (5b) is
+  dropped: the Mac runs runbook steps 0 to 2 itself right before step 3.
+- Protocol agreed with the Mac session (its runner executes one rollout at a time, unattended): the coordinator
+  commits a request file (`rollouts/requests/<id>.json`, schema `rollout-job/v1`) naming a pinned commit of
+  `../round6/vfport` that the Mac session has reviewed and passed, a config under `../round6/rollouts/configs/`,
+  an exam profile, a new pilot instance name, a model, caps and a dollar cap. The runner makes the instance,
+  builds the reference table with the scripted policies, runs the rollout, scans everything for the key and
+  publishes transcript, redacted trace, laboratory log, grades per item, reference table, usage and cost and the
+  frozen submission under `rollouts/<id>/` on the `gpu-jobs` branch. A change under `../round6/vfport` needs a new
+  pin and a fresh review; a new config or instance under a passed pin does not, if the config passes a strict
+  schema.
+- Money: model rollouts count against the lead's figure for model spend ("anything under $500 is fine", read as a
+  total), separate from the $1,000 for GPUs. The Mac's runner starts a rollout of up to $50 without asking; above
+  that it waits for the lead.
+- Pilot instances are public material and are never reused as exams. Sealed exams still wait for the private
+  store (decision 5).
+
+## Rulings on the exam after the first rollout (the coordinator, 11 Nov; for the lead to correct)
+
+The first model rollout (`../round6/rollouts/qwen_ring_001`) was decided by faults of the exam, not by the agent's
+science: it was cut by a turn limit the task statement never mentioned, and its empty submission was scored as
+climatology, which beat the honest null agent. Under decision 3 ("if there are leaks or issues or hacking
+opportunities") the coordinator ruled, for the next pinned version of the environment:
+
+- What is in `submission/` when the run ends is graded, however the run ends; `submit` only ends it early.
+- The box starts with a working baseline predictor in `submission/` (the null policy: public prior, no Lab data).
+- A missing or failing predictor is scored as the null policy's forecast on that item, never as climatology, so
+  that failing is never worth more than an honest weak answer. The skill scale (climatology 0, oracle 1) and the
+  scoring of valid forecasts do not change.
+- The turn limit and the time limit are stated in the task statement, with what happens at the end.
+- The laboratory client keeps every reply on disk for the agent.
+- A model run carries a dollar cap that the tools enforce while it runs (the run is stopped, and what is in
+  `submission/` is graded), because the token limits of the library do not bound the bill.
 
 ## 6. The collective pilot and the large foundry pass
 

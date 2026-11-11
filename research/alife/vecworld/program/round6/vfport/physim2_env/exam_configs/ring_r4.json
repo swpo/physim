@@ -1,0 +1,7 @@
+{
+ "exam": {"n_items": 64, "R": 16, "n_clim": 256},
+ "lab": {"max_ticks": 400, "reset_cost": 17, "total_nats": null},
+ "predictor": {"n_samples": 256, "cpu_seconds": 30, "wall_seconds": 60, "memory_gib": 4, "artifact_mib": 64},
+ "envelope": {"cpus": 2, "wall_hours": 1, "memory_gib": 4, "gpu": false},
+ "validation": {"max_attempts": 16}
+}

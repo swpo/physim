@@ -24,10 +24,10 @@ if [ "$SIZE" = "smoke" ]; then
   P "smoke exit $RC"
   exit $RC
 fi
-$PY -B run_fx.py --size presmoke --arms P,N30 --out "$OUT/presmoke" --max-hours 0.75
+$PY -B run_fx.py --size presmoke --arms P,N30 --out "$OUT/presmoke" --max-hours 0.75 --full-hours "$HOURS"
 RC=$?
 P "presmoke exit $RC"
-if [ $RC -ne 0 ]; then tail -40 "$OUT/presmoke/progress.txt"; exit 2; fi
+if [ $RC -ne 0 ]; then tail -40 "$OUT/presmoke/progress.txt"; exit 2; fi   # 4 from run_fx: nets too slow (shape_test.json)
 LEFT=$(awk -v h="$HOURS" -v t0="$T_START" -v t1="$(date +%s)" 'BEGIN { printf "%.3f", h - (t1 - t0) / 3600.0 }')
 P "full pass: $LEFT h left of $HOURS"
 $PY -B run_fx.py --size full --arms "$ARMS" --out "$OUT/full" --max-hours "$LEFT"
