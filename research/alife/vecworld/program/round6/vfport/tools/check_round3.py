@@ -508,7 +508,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scratch", required=True, help="an existing folder of the caller for the test's own small files")
     ap.add_argument("--out", required=True)
-    ap.add_argument("--image", default="physim2-ring:1")
+    ap.add_argument("--image", default="physim2-ring:2")
     ap.add_argument("--skip-container", action="store_true")
     a = ap.parse_args()
     scratch = os.path.realpath(a.scratch)

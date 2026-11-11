@@ -17,15 +17,18 @@ command of the runbook.
              "never" table and the inventory are there; the store path is on each command that needs it
   pin_*      (change 7) the pin block names the hash of PIN.sha256 as it is on disk, PIN.sha256 matches the
              files, and (in the copy at the head of the branch) names one commit
-  step3_*    (change 9) the paid command stands alone between STOP lines, writes to a file, is read through
-             tools/run_report.py only; no `claude_code` / `codex`
+  step3_*    (change 9; round 4) the paid command is the request route's stage `rollout`, alone between STOP lines
+             behind the lead's standing go, writes to a file, is read through tools/run_report.py and
+             tools/pack_rollout.py only; the stages stand in their order; the block of facts (request shape,
+             config schema, profiles with item counts, reference policies) equals what the code prints; no
+             `claude_code` / `codex`
   r3_*       (round 3: the Mac session's review and the disk requirement) the pilot's processes are matched letter
              for letter and their lines cut; the stop command signals only after its own comparison; step 0 checks
              the session's own environment with the list the tools use; no command sets a variable but the run
              label or starts vf-eval itself; no count can hide a failed command; no rm -rf follows a linked folder;
              docker rm reads the label back; the disk floor is on every start; no other container during step 2;
              the build cache is named
-  hold       the first lines say ON HOLD (in a copy a verdict released: GO for steps 0 to 2)
+  hold       the first lines say ON HOLD (in a copy a verdict released: GO for steps 0 to 2, or 0 to 3)
 
 usage: python -B tools/check_runbook.py --out results/safety_runbook.json [--runbook RUNBOOK_MAC.md]
 """
@@ -45,6 +48,7 @@ PLACE = "/ABSOLUTE/PATH/TO/vfport"
 GUARD = f'cd "{PLACE}" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && '
 LABEL = "physim2-pilot-20261110"
 PILOT = '"$HOME/physim2-pilot-20261110'
+ROLLOUTS = '"$HOME/physim2-rollouts'
 
 
 def blocks(text):
@@ -125,16 +129,17 @@ def main():
     # ---- change 2: runs ----
     START = r'nohup "[^"]+/\.venv/bin/python" -B tools/(prove|check_probe|vfrun)\.py '
     real = [c for c in cmds if re.search(START, c)]
-    dry = [c for c in cmds if "tools/vfrun.py" in c and "--dry-run" in c]
+    dry = [c for c in cmds if "tools/vfrun.py" in c and "--stage dry-run" in c]
     starts = real + dry
     ev["commands_that_start_a_rollout"] = [re.sub(r"\s+", " ", c[len(GUARD):])[:110] for c in real]
-    checks["run_every_rollout_command_carries_the_run_label"] = len(real) == 4 and len(dry) == 1 and all(f"VF_RUN_ID={LABEL} " in c for c in starts)
+    vfrun_cmds = [c for c in cmds if re.search(r'python" -B tools/vfrun\.py ', c)]
+    checks["run_every_rollout_command_carries_the_run_label"] = len(real) == 5 and len(dry) == 1 and all(f"VF_RUN_ID={LABEL} " in c for c in starts + vfrun_cmds)
     checks["run_every_rollout_command_is_detached_with_a_log_and_an_exit_line"] = all(
         "{ ( " in c and "nohup " in c and c.rstrip().endswith("> /dev/null 2>&1 < /dev/null & }") and 'echo "EXIT $?" >>' in c and ".log\" 2>&1 < /dev/null" in c
         for c in real)
     checks["run_every_detached_command_has_a_docker_info_gate"] = all("docker info --format '{{.ServerVersion}}' && { ( " in c for c in cmds if "nohup " in c)
-    checks["run_the_dry_run_is_alone_in_its_block_behind_the_leads_file"] = len(dry) == 1 and dry[0].count("tools/vfrun.py") == 1 and "nohup" not in dry[0] \
-        and f'test -f {PILOT}/scratch/LEAD-GO-STEP3" && ' in dry[0]
+    checks["run_the_dry_run_is_alone_in_its_block_and_carries_no_credential_option"] = len(dry) == 1 and dry[0].count("tools/vfrun.py") == 1 \
+        and "nohup" not in dry[0] and "--model-credentials" not in dry[0] and "--shared-ledger " in dry[0]
     ps = [c for c in cmds if "docker ps" in c]
     labelled = [c for c in ps if "docker ps -a" in c]
     checks["run_containers_are_listed_by_the_run_label_only"] = len(labelled) >= 4 and all(f"docker ps -a --filter label=verifiers.run={LABEL}" in c for c in labelled) \
@@ -142,7 +147,8 @@ def main():
     checks["run_if_interrupted_section"] = all(k in text for k in ("## If a run was interrupted", "kill -TERM PID_FROM_THE_STATUS_LINE",
                                                                   "docker rm -f NAME_FROM_THE_STATUS_LINE", "pilot folders reset", "make_instances"))
     invoked = [c for c in cmds if re.search(r'\.venv/bin/python" -B tools/(prove|check_probe|make_instances|run_report|settle|vfrun)\.py ', c)]
-    checks["run_store_path_is_on_every_command_that_needs_it"] = len(invoked) >= 9 and all(f'--store {PILOT}/store"' in c for c in invoked)
+    checks["run_store_path_is_on_every_command_that_needs_it"] = len(invoked) >= 12 and all(
+        f'--store {PILOT}/store"' in c or f'--store {ROLLOUTS}/store"' in c or f'--pilot {ROLLOUTS}"' in c for c in invoked)
 
     # ---- round 3: exact matching of the pilot's processes (m2), cut output (m1) ----
     joined = "\n".join(cmds)
@@ -171,24 +177,24 @@ def main():
     checks["r3_no_command_sets_a_variable_but_the_run_label"] = assigns == ["VF_RUN_ID"]
     checks["r3_vf_eval_is_never_started_by_a_command_of_the_runbook"] = "bin/vf-eval" not in joined and not re.search(r'python" -B [^ ]*vfeval\.py', joined)
     # ---- round 3: counts that fail loudly (m11), links (m3), the label re-check (m6) ----
-    checks["r3_no_count_can_hide_a_failed_command"] = "| wc -l" not in joined and joined.count("grep -c") == 1 \
+    checks["r3_no_count_can_hide_a_failed_command"] = "| wc -l" not in joined and joined.count("grep -c") == 0 \
         and all(k in joined for k in ('&& echo "TREE-LISTED"', '&& echo "CONTAINERS-LISTED"', '&& echo "IMAGES-LISTED"', '&& echo "NO-PILOT-FOLDERS"', '&& echo "RUNNING-LISTED"'))
     rm = [c for c in cmds if re.search(r"\brm -rf\b", c)]
     nolink = f'test ! -L {PILOT}" && test ! -L {PILOT}/store" && test ! -L {PILOT}/scratch" && '
     checks["r3_no_rm_rf_follows_a_linked_pilot_folder"] = len(rm) == 2 and all(nolink in c.split("rm -rf")[0] for c in rm) \
-        and f'test ! -e {PILOT}" && test ! -L {PILOT}"' in joined and "test ! -L docker/extra-ca.crt" in joined
+        and f'test ! -e {PILOT}" && test ! -L {PILOT}"' in joined and f'test ! -e {ROLLOUTS}" && test ! -L {ROLLOUTS}"' in joined
     drm = [c for c in cmds if "docker rm" in c]
     checks["r3_docker_rm_reads_the_label_back_first"] = len(drm) == 1 and drm[0].endswith(
         "docker inspect --format '{{index .Config.Labels \"verifiers.run\"}}' NAME_FROM_THE_STATUS_LINE | grep -Fx " + LABEL + " && docker rm -f NAME_FROM_THE_STATUS_LINE")
     # ---- round 3: the disk floor (D1), other containers (m7), the build cache (m10) ----
     gate = "df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print \"refused: under 8 GiB free on the file system of the home folder\" ; exit 1 }' && "
     gated = [c for c in cmds if gate in c]
-    checks["r3_disk_floor_is_on_every_start"] = all("--disk-floor-gib 8" in c for c in real) and len(gated) == 3 \
+    checks["r3_disk_floor_is_on_every_start"] = all("--disk-floor-gib 8" in c for c in real + vfrun_cmds) and len(gated) == 4 \
         and all(any(k in c for c in gated) for k in ("--dry-run 2>&1 | grep", "nohup uv sync", "nohup docker build")) \
         and any("DISK-OK" in c and "8388608" in c for c in cmds) and "**You never\n   make room:**" in text and "EXIT 97" in text
     quiet = [c for c in cmds if c.endswith("docker ps --format '{{.Names}} {{.Image}}' && echo \"RUNNING-LISTED\"")]
     checks["r3_no_other_container_runs_during_step_2"] = len(quiet) == 1 and text.index(quiet[0]) < text.index("### 2a.") \
-        and "A bearer for the laboratory" in text
+        and "every request needs the rollout's bearer" in text and text.count("RUNNING-LISTED") >= 4
     checks["r3_build_cache_is_in_the_inventory_and_in_step_4"] = "the build cache of those two builds" in text and any(c.endswith("&& docker system df") for c in cmds) \
         and "docker builder\nprune" in text
 
@@ -203,7 +209,7 @@ def main():
     want_rm = f'rm -rf {PILOT}/store" {PILOT}/scratch"'
     checks["text_every_rm_rf_is_chained_behind_its_checks_and_names_the_two_pilot_folders"] = len(rm) == 2 and all(
         c.count("rm -rf") == 1 and f'test -f {PILOT}/store/index.json" && test -d {PILOT}/scratch"' in c.split("rm -rf")[0]
-        and re.search(r"&& rm -rf ", c) and want_rm in c and "\n" not in c and ";" not in c for c in rm)
+        and re.search(r"&& rm -rf ", c) and want_rm in c and "\n" not in c and ";" not in c.replace(gate, "") for c in rm)
     checks["text_step_4_copies_the_results_out_before_it_deletes"] = any("cp " in c.split("rm -rf")[0] and "physim2-pilot-20261110-results" in c.split("rm -rf")[0]
                                                                         and "test -s " in c.split("rm -rf")[0] for c in rm)
     checks["text_the_shared_image_is_kept"] = "docker rmi" not in joined and "is not this pilot's to\nremove" in text
@@ -212,30 +218,56 @@ def main():
              "`.venv/bin/vf-eval`, `tools/vfeval.py`", "opening `~/.prime/config.json`", "deleting anything to make room", "`docker context use`")
     checks["text_the_never_table_is_there"] = all(k in text for k in never)
     inventory = ("What is signalled or killed on the Mac", "What is deleted on the Mac", "What is written and left on the Mac", "What listens on the Mac",
-                 "~/.cache/verifiers/runtimes/subprocess", "/tmp/vf-port-", "docker/extra-ca.crt", "SIGTERM",
+                 "~/.cache/verifiers/runtimes/subprocess", "/tmp/vf-port-", "What is replaced in place", "SIGTERM",
+                 "The model key (step 3 only): who holds it, and for how long", "A box cannot write to Docker's disk", "api.pinference.ai",
                  "What reaches those processes from your session", "at every stop of vf-eval", "verifiers' interception server", "io.sock", "git rev-parse",
                  "No model credential in steps 0 to 2", "**Not on macOS:**", "reference_C.theta.json")
     checks["text_the_inventory_is_there"] = all(k in text for k in inventory)
     checks["text_stop_rule_and_the_known_macos_exception"] = "Stop rule" in text and "stop and report" in text.lower() \
         and '"failed_new": ["b_lab_process_dropped_it_after_loading"]' in text
-    checks["text_extra_ca_is_created_only_if_absent"] = "(test -e docker/extra-ca.crt || : > docker/extra-ca.crt)" in joined
+    checks["text_no_certificate_file_is_made"] = "extra-ca.crt" not in joined
+    checks["text_the_six_points_of_the_round_3_notice_are_in_the_body"] = all(k in text for k in (
+        "Before 2a, again before 2b, and again before 2c", "After a stop that does not end in point 6", "docker rm --force <its box>",
+        "~/.docker/buildx/", "at least 11 GiB free", "except the image build and its status"))
     checks["text_the_three_rules_of_the_round_2_notice_are_in_the_body"] = "60 minutes have passed since the start" in text \
         and "treat the interruption as\nthe second one" in text and "may or may not be listed" in text
 
     # ---- change 9: step 3 ----
-    paid = [c for c in real if "qwen_ring_bash.toml" in c]
+    paid = [c for c in real if "--stage rollout" in c]
     i_paid = text.index(paid[0].splitlines()[0]) if paid else -1
     before, after = text[:i_paid], text[i_paid:]
     checks["step3_the_paid_command_stands_alone_under_a_stop_line_with_the_price"] = len(paid) == 1 and before.rstrip().endswith("```sh") \
-        and "STOP. THE NEXT COMMAND SPENDS MONEY" in before[-2500:] and "1.5 x p_in + 0.06 x p_out" in before[-2500:] and "in the go message" in before[-2500:]
-    checks["step3_output_goes_to_a_file_and_is_never_displayed"] = bool(paid) and "qwen.log\" 2>&1 < /dev/null" in paid[0] and "Never display `qwen.log`" in after \
-        and "cut -c 1-12" in after
+        and "STOP. THE NEXT COMMAND SPENDS MONEY" in before[-2500:] and "bound_on_the_bill_usd" in before[-2500:] \
+        and "cap_usd`\nplus one worst-case call" in text and "is at least one worst-case call" in text
+    checks["step3_output_goes_to_a_file_and_is_never_displayed"] = bool(paid) and "rollout.log\" 2>&1 < /dev/null" in paid[0] and "Never display `rollout.log`" in after \
+        and "cut -c 1-12" in text
+    order = ["tools/check_request.py --fetch", "--shared-ledger " + ROLLOUTS + '/shared-ledger.json" --prices', "--stage instance", "--stage reference",
+             "--stage dry-run", "STOP. THE NEXT COMMAND SPENDS MONEY", "--stage rollout --shared-ledger", "tools/run_report.py --store " + ROLLOUTS,
+             "tools/pack_rollout.py --request"]
+    three = text[text.index("## 3. Model rollouts"):text.index("## 4. After the pilot")] if "## 3. Model rollouts" in text else ""
+    at = [three.find(k) for k in order]
+    ev["step3_order"] = dict(zip(order, at))
+    checks["step3_the_stages_stand_in_their_order"] = all(i >= 0 for i in at) and at == sorted(at)
+    sys.path.insert(0, HERE)
+    import check_request as CR
+    m3 = re.search(r"<!-- STEP3-FACTS-BEGIN -->\n```json\n(.*?)\n```\n<!-- STEP3-FACTS-END -->", text, re.S)
+    try:
+        facts_same = m3 is not None and json.loads(m3.group(1)) == json.loads(json.dumps(CR.facts()))
+    except ValueError:
+        facts_same = False
+    checks["step3_the_block_of_facts_is_what_the_code_prints"] = facts_same
+    checks["step3_every_request_command_names_the_job_by_its_placeholder"] = all(
+        (f'--request {ROLLOUTS}/requests/JOB_ID.json" --pilot {ROLLOUTS}"' in c) != ("--fetch" in c) for c in cmds
+        if re.search(r'python" -B tools/(vfrun|check_request|pack_rollout)\.py ', c) and "--config configs/" not in c) \
+        and "A step-3 placeholder is replaced only by" in text
+    checks["step3_the_crash_cleanup_is_in_the_interrupted_section"] = "what a crash in the middle of a model rollout leaves behind" in text \
+        and "--stage close --disk-floor-gib 8" in joined and "One job at a time" in text
     checks["step3_the_run_is_read_through_the_report_tool"] = "tools/run_report.py" in after and os.path.isfile(os.path.join(HERE, "run_report.py"))
     checks["step3_no_other_harness_is_offered"] = "claude_code" not in text and "codex" not in text
-    checks["step3_disk_decision_bearer_and_own_hold"] = "The lead's decision about Docker Desktop's disk" in text and "SEPARATE HOLD" in text \
-        and "NO-GO until steps 0 to 2 have passed on this Mac" in text
+    checks["step3_own_go"] = "SEPARATE GO" in text and 'Not released by a notice that says "steps 0 to 2"' in text \
+        and "You create it ONLY when the lead tells you to in this session" in text
     checks["step3_model_credentials_only_on_the_paid_command_behind_the_leads_file"] = joined.count("--model-credentials prime") == 1 \
-        and bool(paid) and "--model-credentials prime" in paid[0] and f'test -f {PILOT}/scratch/LEAD-GO-STEP3" && ' in paid[0]
+        and bool(paid) and "--model-credentials prime" in paid[0] and f'test -f {ROLLOUTS}/LEAD-GO-MODEL-SPEND.json" && ' in paid[0]
 
     # ---- change 7: the pin ----
     m = re.search(r"<!-- PIN-BEGIN -->(.*?)<!-- PIN-END -->", text, re.S)
@@ -250,7 +282,7 @@ def main():
         ev["pin"]["files_listed"] = len(open(pin_file).read().splitlines())
     checks["pin_block_names_the_hash_of_PIN_sha256"] = bool(pin_hash) and pin_hash in pin_block
     checks["pin_file_matches_the_files_on_disk"] = chk.returncode == 0
-    checks["pin_commands_compare_commit_and_hashes"] = f'git rev-parse HEAD && pwd -P | grep -Fx "{PLACE}" && git status --porcelain' in joined \
+    checks["pin_commands_compare_commit_and_hashes"] = f'git rev-parse HEAD && pwd -P | grep -Fx "{PLACE}" && git --no-optional-locks status --porcelain --ignored' in joined \
         and "shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK" in joined and "git checkout --detach" in text
     if commit:                                               # the copy at the head of the branch
         r = subprocess.run(["git", "cat-file", "-t", commit.group(0)], cwd=ROOT, capture_output=True, text=True)
@@ -263,8 +295,9 @@ def main():
         checks["pin_names_one_commit_that_holds_this_PIN_sha256"] = ev["pin"]["pinned_commit_is_a_commit"] and ev["pin"]["PIN.sha256_in_the_pinned_commit_is_this_one"]
         checks["pin_runbook_in_the_pinned_commit_differs_in_the_pin_block_only"] = ev["pin"]["runbook_in_the_pinned_commit_differs_in_the_pin_block_only"]
     first = text.splitlines()[2]
-    ev["notice"] = "ON HOLD" if first.startswith("**ON HOLD") else ("GO for steps 0 to 2" if first.startswith("**GO for steps 0 to 2.**") else "?")
-    checks["hold"] = first.startswith("**ON HOLD. Run nothing from this file.**") or first.startswith("**GO for steps 0 to 2.**")
+    go = [g for g in ("**GO for steps 0 to 2.**", "**GO for steps 0 to 3.**") if first.startswith(g)]
+    ev["notice"] = "ON HOLD" if first.startswith("**ON HOLD") else (go[0].strip("*. ") if go else "?")
+    checks["hold"] = first.startswith("**ON HOLD") or bool(go)
     out = {"what": "RUNBOOK_MAC.md checked as text (required changes 1, 2, 6, 7, 9 of HOST_SAFETY_AUDIT.md) and its guard run with echo in place "
                    "of the command; no command of the runbook was run by this tool",
            "evidence_label": "read (text checks); run (the guard line: cd, test, echo only)",

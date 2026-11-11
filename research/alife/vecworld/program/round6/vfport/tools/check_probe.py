@@ -108,7 +108,7 @@ def main():
     ap.add_argument("--store", required=True)
     ap.add_argument("--scratch", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--image", default="physim2-ring:1")
+    ap.add_argument("--image", default="physim2-ring:2")
     ap.add_argument("--cpu", type=float, default=2)
     ap.add_argument("--disk-floor-gib", type=float, default=vfrun.DISK_FLOOR_GIB,
                     help="the disk watchdog: no run starts, and a run is stopped, when the file system of the home folder has less free space")

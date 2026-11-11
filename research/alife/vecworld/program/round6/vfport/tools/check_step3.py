@@ -171,11 +171,11 @@ print("ENVNAMES", " ".join(sorted(os.environ)))
 print("LABJSON", open("/etc/physim2/lab.json").read())
 PY"""
 STEPS = [
-    {"say": "Looking at the box.", "bash": "cd /workspace && ls && ls submission && python3 -c \"import physim2; lab = physim2.Lab(); print('USAGE', lab.usage())\"",
+    {"say": "Looking at the box.", "bash": "cd /workspace && ls && ls submission && python3 -c \"import physim2; lab = physim2.Lab(); print('USAGE', lab.usage())\"; (echo x > /root/x) 2>&1 | tail -n 1",
      "usage": {"prompt_tokens": 20000, "completion_tokens": 100}},
     {"bash": SCAN, "usage": {"prompt_tokens": 20000, "completion_tokens": 100}},
     {"bash": "sleep 25; echo waited", "usage": {"prompt_tokens": 20000, "completion_tokens": 100}},
-    {"bash": "echo '# a note' > /workspace/submission/NOTE.txt; ls -la /workspace/submission; (echo x > /root/x) 2>&1 | tail -n 1",
+    {"bash": "echo '# a note' > /workspace/submission/NOTE.txt; ls -la /workspace/submission",
      "usage": {"prompt_tokens": 20000, "completion_tokens": 100}},
     {"bash": "echo this call must never be answered: the cap is spent", "usage": {"prompt_tokens": 20000, "completion_tokens": 100}},
 ]
@@ -214,10 +214,12 @@ def probe_lab(store, instance, result, stop):
     labs = os.path.join(store, instance, "hidden", "labs")
     while not stop.is_set():
         try:
-            for name in os.listdir(labs):
+            for name in os.listdir(labs):                    # the reference policies left their records here too: theirs are dead
                 rec = json.load(open(os.path.join(labs, name, "process.json")))
-                if rec.get("port") and "no_bearer" not in result:
+                if rec.get("port") and "no_bearer" not in result and os.path.isdir(f"/proc/{rec.get('pid')}"):
                     port = rec["port"]
+                    if not isinstance(http_status(port)[0], int):       # not listening yet: ask again in a moment
+                        continue
                     result.update(port=port, bearer_sha256=rec.get("bearer_sha256"), bearer_required=rec.get("bearer_required"),
                                   no_bearer=http_status(port), get=http_status(port, method="GET"),
                                   random_bearer=http_status(port, {"Authorization": "Bearer " + os.urandom(32).hex()}),
@@ -261,19 +263,42 @@ def run_route(scratch, tag, floor, log, skip_reference):
     os.mkdir(pilot, 0o700)
     os.mkdir(os.path.join(pilot, "configs"), 0o700)
     instance, job = f"pilot-s3-{tag}-w0", f"s3-{tag}"
-    cfg = os.path.join(pilot, "configs", "standin.toml")
-    with open(cfg, "w") as f:
-        f.write(FLAT.format(instance=instance))
+    cfg = CC.REPO_PREFIX + "standin.toml"                    # the request names its config by the repository path
     script = os.path.join(pilot, "steps.json")
     with open(script, "w") as f:
         json.dump(STEPS, f)
     req = {"schema": "rollout-job/v1", "job_id": job, "purpose": "round-4 rehearsal of the request route against a stand-in endpoint", "requester": "tools/check_step3.py",
            "pin": CR.git_head(), "pin_sha256": CR.pin_sha256(), "config": cfg, "exam_profile": "ring", "instance": instance, "model": "standin/echo-1",
            "caps": {"max_turns": 12, "max_output_tokens": 512, "wall_minutes": 10, "box_memory_gb": 2}, "cap_usd": 0.13}
-    os.mkdir(os.path.join(pilot, "requests"), 0o700)
     rp = os.path.join(pilot, "requests", job + ".json")
-    with open(rp, "w") as f:
-        json.dump(req, f, indent=1)
+    # A scratch repository of this test stands for the lab branch: ONE commit that holds the request, its config and
+    # the shared ledger at their real paths. (The real repository never gets a file under rollouts/requests/ from here.)
+    repo = os.path.join(scratch, f"repo-{tag}")
+    shared = {"schema": "rollout-ledger/v1", "updated_utc": "2026-11-11T12:20:03Z", "billed_usd_total": 0.25, "reserved_usd_open": 0.1,
+              "rows": [{"id": "a", "model": "m/x", "where": "cloud-container", "status": "done", "bound_usd": 1.0, "billed_usd": 0.25},
+                       {"id": "b", "model": "m/x", "where": "cloud-container", "status": "running", "bound_usd": 0.1}]}
+    for rel, textf in ((CR.REQUESTS_PREFIX + job + ".json", json.dumps(req, indent=1)), (cfg, FLAT.format(instance=instance)),
+                       (CR.SHARED_LEDGER_PATH, json.dumps(shared, indent=1))):
+        os.makedirs(os.path.dirname(os.path.join(repo, rel)), exist_ok=True)
+        with open(os.path.join(repo, rel), "w") as f:
+            f.write(textf)
+    genv = dict(vfrun.child_env(), GIT_CONFIG_GLOBAL="/dev/null", GIT_CONFIG_SYSTEM="/dev/null")
+    for argv in (["init", "-q"], ["add", "-A"], ["-c", "user.name=check_step3", "-c", "user.email=check_step3@example.invalid", "commit", "-q", "-m", "a scratch commit of tools/check_step3.py"]):
+        subprocess.run(["git", "-C", repo, *argv], check=True, capture_output=True, env=genv, timeout=60)
+    commit = subprocess.run(["git", "-C", repo, "rev-parse", "HEAD"], check=True, capture_output=True, text=True, env=genv, timeout=60).stdout.strip()
+    from_repo = lambda c, path, limit: CR.git_show(c, path, limit, repo=repo)   # noqa: E731
+    got = CR.fetch(pilot, commit, job, show=from_repo)
+    check("F1 fetch (real git objects of a scratch repository): the request, its config and the shared ledger arrive in the pilot folder, byte for byte",
+          open(rp).read() == json.dumps(req, indent=1) and open(os.path.join(pilot, "configs", "standin.toml")).read() == FLAT.format(instance=instance)
+          and abs(got["shared_ledger"]["spent_elsewhere_usd"] - 0.35) < 1e-12 and got["source_commit"] == commit, got)
+    try:
+        CR.fetch(pilot, "0" * 40, job, show=from_repo)
+        f2 = "accepted"
+    except CR.Refused as e:
+        f2 = str(e)
+    check("F2 ... and a commit that the repository does not hold gives a refusal, with the files in the pilot folder untouched",
+          "does not hold" in f2 and open(rp).read() == json.dumps(req, indent=1), f2)
+    ledger_opt = ["--shared-ledger", os.path.join(pilot, "shared-ledger.json")]
     standin = subprocess.Popen([PY, "-B", os.path.join(HERE, "standin_model.py"), "--script", script, "--log", os.path.join(pilot, "standin_requests.jsonl")],
                                stdout=subprocess.PIPE, text=True, env=vfrun.child_env(), stdin=subprocess.DEVNULL)
     out = {"job_id": job, "instance": instance, "pilot": "<scratch>/" + os.path.basename(pilot)}
@@ -292,9 +317,6 @@ def run_route(scratch, tag, floor, log, skip_reference):
                        "note": "a test's own go for a stand-in endpoint: nothing is billed"}, f)
         rc, o = stage("rollout")
         check("R2 the rollout stage is refused before the instance exists", rc == 2 and "refused:" in o, o[-300:])
-        rc, o = tool([os.path.join("tools", "vfrun.py"), "--request", rp, "--pilot", pilot, "--stage", "instance", "--disk-floor-gib", str(floor)], log=log)
-        check("R3 the same request WITHOUT the stand-in option is refused: its config is not in round6/rollouts/configs/ (and the stand-in model is not listed anywhere)",
-              rc == 2 and "refused:" in o, o[-300:])
         rc, o = stage("instance")
         check("R4 stage instance: the name is registered to the job and the hidden instance is made", rc == 0 and (last_json(o) or {}).get("made") is True
               and CR.instance_state(CR.pilot_paths(pilot), instance) == {"job": job, "in_index": True, "in_store": True}, o[-400:])
@@ -319,18 +341,22 @@ def run_route(scratch, tag, floor, log, skip_reference):
                     json.dump({"all_graded": True, "STUB": "the reference stage failed in this test (see R7); the route goes on with a stub"}, f)
         rc, o = stage("rollout")
         check("R8 the rollout stage is refused before the free dry run has passed", rc == 2 and "dry run" in o, o[-300:])
-        rc, o = stage("dry-run")
+        rc, o = stage("dry-run", ledger_opt)
         d = next((json.loads(x) for x in o.splitlines() if x.startswith('{"job_id"')), {})
         worst = (60000 * 2.0 + 512 * 10.0) / 1e6
         check("R9 stage dry-run: listed prices read without a credential; one worst-case call = 60,000 x $2/M + 512 x $10/M = $0.12512; bound = cap + that; vf-eval resolves the config and exits",
               rc == 0 and abs(d.get("one_worst_case_call_usd", 0) - worst) < 1e-6 and abs(d.get("bound_on_the_bill_usd", 0) - 0.13 - worst) < 1e-6 and d.get("billed") is False
-              and abs(d.get("crude_bound_without_the_spend_stop_usd", 0) - round(12 * (100000 * 2.0 + 512 * 10.0) / 1e6, 2)) < 0.011, (rc, d, o[-300:]))
+              and abs(d.get("crude_bound_without_the_spend_stop_usd", 0) - round(12 * (100000 * 2.0 + 512 * 10.0) / 1e6, 2)) < 0.011
+              and abs(d.get("spent_elsewhere_usd", 0) - 0.35) < 1e-9, (rc, d, o[-300:]))
+        rc, o = tool([os.path.join("tools", "vfrun.py"), "--request", rp, "--pilot", pilot, "--stage", "rollout", "--disk-floor-gib", str(floor), *ledger_opt], log=log)
+        check("R3 the rollout stage WITHOUT the stand-in option and without the credentials option is refused (and the stand-in model is in no provider's list, "
+              "if the list answers at all): nothing was started, the ledger is empty", rc == 2 and "refused:" in o and CR.ledger_rows(CR.pilot_paths(pilot, job)) == [], o[-300:])
         out["bounds"] = d
         probe, stop = {}, threading.Event()
         watcher = threading.Thread(target=probe_lab, args=(os.path.join(pilot, "store"), instance, probe, stop), daemon=True)
         watcher.start()
         t0 = time.time()
-        rc, o = stage("rollout", timeout=5400)
+        rc, o = stage("rollout", ledger_opt, timeout=5400)
         stop.set()
         watcher.join(5)
         out["rollout_wall_s"] = round(time.time() - t0, 1)
@@ -365,7 +391,7 @@ def run_route(scratch, tag, floor, log, skip_reference):
         fp = re.search(r"FINGERPRINTS (\d+) ([0-9a-f ]*)", text)
         box_prints = set((fp.group(2).split() if fp else []))
         check("R18 ... inside the box: of every 64-hex string in the environment of every process and in the files of /etc/physim2, /tmp and /workspace, none is the bearer",
-              fp is not None and int(fp.group(1)) >= 0 and "FINGERPRINTS_TOO_MANY" not in text and probe.get("bearer_sha256") not in box_prints and len(str(probe.get("bearer_sha256"))) == 64, {"strings": fp.group(1) if fp else None})
+              fp is not None and int(fp.group(1)) >= 0 and not re.search(r"FINGERPRINTS_TOO_MANY \d", text) and probe.get("bearer_sha256") not in box_prints and len(str(probe.get("bearer_sha256"))) == 64, {"strings": fp.group(1) if fp else None})
         names = re.search(r"ENVNAMES ([A-Za-z0-9_ ]*)", text)
         envnames = names.group(1).split() if names else []
         check("R19 ... and the box's environment holds no credential-like name besides the proxy settings verifiers gives a box",
@@ -376,9 +402,11 @@ def run_route(scratch, tag, floor, log, skip_reference):
         check("R21 ... and in the run's outputs (job folder, store, the whole pilot folder): no 64-hex string is the bearer", all(v[2] == 0 and v[0] > 0 for v in scans.values()), scans)
         out["bearer"] = {"probe": {k: v for k, v in probe.items() if k != "bearer_sha256"}, "box_hex64_strings": int(fp.group(1)) if fp else None,
                          "output_scans_files_strings_hits": scans}
-        check("R22 the read-only root was what the model's shell saw (`Read-only file system`), and its note reached submission/", "Read-only file system" in text and "NOTE.txt" in text)
+        check("R22 the read-only root was what the model's shell saw (`Read-only file system`)", "Read-only file system" in text)
         rc, o = stage("rollout")
         check("R23 the job cannot be run a second time", rc == 2 and "runs once" in o, o[-300:])
+        rc, o = stage("close")
+        check("R23b stage close has nothing to close: the tool wrote the job's closing row itself", rc == 2 and "nothing to close" in o, o[-300:])
         rc, o = tool([os.path.join("tools", "pack_rollout.py"), "--request", rp, "--pilot", pilot], log=log)
         packed = last_json(o) or {}
         man = json.load(open(os.path.join(p["published"], "MANIFEST.json"))) if os.path.exists(os.path.join(p["published"], "MANIFEST.json")) else {}
@@ -390,6 +418,8 @@ def run_route(scratch, tag, floor, log, skip_reference):
               and man.get("total_bytes", 1 << 40) < 50 << 20, (rc, packed, [n for n in need if n not in have]))
         usage = json.load(open(os.path.join(p["published"], "usage.json"))) if "usage.json" in have else {}
         st = json.load(open(os.path.join(p["published"], "status.json"))) if "status.json" in have else {}
+        check("R24b RULING E1: the note that the model's LAST tool call wrote (a call whose result it never saw) is in the frozen, graded submission",
+              "submission/NOTE.txt" in have and "submission/predict.py" in have and (ph.get("submission") or {}).get("source") == "final_collection", have)
         check("R25 ... usage.json holds the cost per call and in total; status.json the stop condition, the reward and the caps",
               usage.get("attempts") == 4 and abs((usage.get("counted_usd") or 0) - total["counted_usd"]) < 1e-9 and (st.get("trace") or {}).get("stop_condition") == "spend_cap"
               and (st.get("trace") or {}).get("graded") is True, {"usage": {k: usage.get(k) for k in ("attempts", "counted_usd")}, "trace": st.get("trace", {}).get("stop_condition")})

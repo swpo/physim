@@ -7,7 +7,10 @@ A config passes only if ALL of this holds:
 
   where      the file is `round6/rollouts/configs/<name>.toml` (given from the repository root, from the study
              folder or absolute), directly in that folder, a regular file, not a link, at most 16 KiB of UTF-8,
-             with a name of lower-case letters, digits and `. _ -`
+             with a name of lower-case letters, digits and `. _ -`. On the runner's machine the pinned checkout
+             does not hold a config that was committed after the pin: the request route reads the runner's copy
+             of that one file in `<pilot>/configs/<name>.toml` (tools/check_request.py --fetch puts it there;
+             --config-dir here), and the request still names it by its repository path
   flat       top-level keys only, each a string, an integer, a number or a boolean: no table, no array, no date
   known      every key is one of physim2_env/rollout_config.py's FLAT_KEYS, with its type and range (that file
              is the schema; `python -B tools/check_config.py --schema` prints it as JSON for the runner)
@@ -214,6 +217,8 @@ def main(argv=None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description="the strict schema of a rollout config")
     ap.add_argument("--config", help="round6/rollouts/configs/<name>.toml")
+    ap.add_argument("--config-dir", default=None, help="the folder that holds the copy to check (default: this checkout's "
+                                                       "round6/rollouts/configs/; the request route reads <pilot>/configs/)")
     ap.add_argument("--schema", action="store_true", help="print the schema, the exam profiles and their item counts as JSON")
     a = ap.parse_args(argv)
     if a.schema:
@@ -221,6 +226,9 @@ def main(argv=None) -> int:
         return 0
     if not a.config:
         ap.error("--config or --schema")
+    if a.config_dir:
+        global CONFIG_DIR
+        CONFIG_DIR = os.path.normpath(os.path.abspath(os.path.expanduser(a.config_dir)))
     try:
         got = check(a.config)
     except Refused as e:

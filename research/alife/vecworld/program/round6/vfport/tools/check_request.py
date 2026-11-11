@@ -1,6 +1,11 @@
 """check_request -- a rollout request (schema `rollout-job/v1`) and the state of the pilot folder it would run in.
 
-    python -B tools/check_request.py --request FILE --pilot DIR [--prices] [--no-go]
+    python -B tools/check_request.py --fetch --source-commit HEX --job-id ID --pilot DIR
+    python -B tools/check_request.py --request FILE --pilot DIR [--prices] [--no-go] [--shared-ledger FILE]
+    python -B tools/check_request.py --facts
+
+The first form copies a job's three input files out of one commit of the repository into the pilot folder (see
+fetch); the second checks a request; the third prints what a runner can check mechanically (see facts).
 
 A request is a JSON object with EXACTLY these keys:
 
@@ -56,6 +61,9 @@ INSTANCE = re.compile(r"^pilot-[a-z0-9-]{3,40}$")
 HEX40, HEX64 = re.compile(r"^[0-9a-f]{40}$"), re.compile(r"^[0-9a-f]{64}$")
 MAX_REQUEST_BYTES = 16 << 10
 PRIME_MODELS_URL = "https://api.pinference.ai/api/v1/models"
+REQUESTS_PREFIX = "research/alife/vecworld/program/rollouts/requests/"            # where requests are committed (never by this study)
+SHARED_LEDGER_PATH = "research/alife/vecworld/program/round6/rollouts/ledger.json"
+STAGES = ("instance", "reference", "dry-run", "rollout", "close")                 # tools/vfrun.py --stage, in the order of a job
 GO_FILE = "LEAD-GO-MODEL-SPEND.json"
 GO_SCHEMA = "physim2-lead-go/v1"
 GO_MAX_AGE_DAYS = 30
@@ -149,7 +157,17 @@ def check_pin(req: dict, root: str = ROOT, head: str | None = None) -> dict:
 
 
 # ----------------------------------------------------------------------------- 3, 4. the config
+def use_pilot_configs(pilot: str) -> str:
+    """From now on a config named `round6/rollouts/configs/<name>.toml` is read from `<pilot>/configs/<name>.toml`:
+    the runner's copy of that one file (see fetch). Returns the folder."""
+    CC.CONFIG_DIR = os.path.join(os.path.abspath(os.path.expanduser(pilot)), "configs")
+    return CC.CONFIG_DIR
+
+
 def check_config(req: dict) -> dict:
+    name = req["config"][len(CC.REPO_PREFIX):] if req["config"].startswith(CC.REPO_PREFIX) else ""
+    if not CC.NAME.match(name):
+        raise Refused("the request's config is not `" + CC.REPO_PREFIX + "<name>.toml`")
     try:
         got = CC.check(req["config"])
     except CC.Refused as e:
@@ -172,7 +190,8 @@ def pilot_paths(pilot: str, job_id: str | None = None) -> dict:
     pilot = os.path.abspath(os.path.expanduser(pilot))
     p = {"pilot": pilot, "store": os.path.join(pilot, "store"), "rollouts": os.path.join(pilot, "rollouts"),
          "publish": os.path.join(pilot, "publish"), "ledger": os.path.join(pilot, LEDGER), "instances": os.path.join(pilot, INSTANCES),
-         "go": os.path.join(pilot, GO_FILE)}
+         "go": os.path.join(pilot, GO_FILE), "requests": os.path.join(pilot, "requests"), "configs": os.path.join(pilot, "configs"),
+         "shared": os.path.join(pilot, "shared-ledger.json")}
     if job_id:
         job = os.path.join(p["rollouts"], job_id)
         p.update(job=job, out=os.path.join(job, "out"), run_dir=os.path.join(job, "out", job_id), status=os.path.join(job, "status.json"),
@@ -282,6 +301,13 @@ def ledger_sum(rows: list[dict]) -> dict:
             total += max(j.get("bound", 0.0), j.get("counted") or 0.0)
             open_jobs.append(job)
     return {"sum_usd": total, "jobs": len(jobs), "counted_at_their_bound": sorted(str(j) for j in open_jobs)}
+
+
+def open_jobs(rows: list[dict]) -> list[str]:
+    """Job ids that the ledger holds as reserved and never ended: a rollout that is running, or one whose tool died
+    before it could close its row. One rollout at a time: while there is one, no stage of any job starts."""
+    ended = {r.get("job_id") for r in rows if r.get("event") == "ended"}
+    return sorted({str(r.get("job_id")) for r in rows if r.get("event") == "reserved" and r.get("job_id") not in ended})
 
 
 def check_job_is_new(p: dict, req: dict) -> None:
@@ -442,6 +468,131 @@ def check_ceiling(p: dict, go: dict, b: dict, elsewhere: dict | None = None) -> 
     return dict(s, ceiling_usd=go["ceiling_usd"], spent_elsewhere_usd=other, after_this_run_at_most_usd=s["sum_usd"] + other + b["bound_usd"])
 
 
+# ----------------------------------------------------------------------------- 0. the three input files of a job
+def git_show(commit: str, path: str, limit: int, repo: str = ROOT) -> bytes:
+    """The bytes of `path` (from the repository root) in `commit`, read from the checkout's own object store.
+    Read-only; no network; a client that does not answer in 20 s is killed by Python (its own child)."""
+    try:
+        r = subprocess.run(["git", "-C", repo, "show", f"{commit}:{path}"], capture_output=True, timeout=20, stdin=subprocess.DEVNULL,
+                           env={k: os.environ[k] for k in ("PATH", "HOME") if k in os.environ})
+    except (OSError, subprocess.TimeoutExpired):
+        raise Refused("git did not answer") from None
+    if r.returncode != 0:
+        raise Refused(f"commit {commit[:12]} does not hold {path} (or the commit was not fetched)")
+    if len(r.stdout) > limit:
+        raise Refused(f"{path} is larger than {limit} bytes")
+    return r.stdout
+
+
+def _existing(path: str) -> bytes | None:
+    try:
+        st = os.lstat(path)
+    except FileNotFoundError:
+        return None
+    if not stat.S_ISREG(st.st_mode) or st.st_size > (1 << 20):
+        raise Refused(f"{os.path.basename(path)} in the pilot folder is not a small regular file")
+    with open(path, "rb") as f:
+        return f.read()
+
+
+def fetch(pilot: str, commit: str, job_id: str, show=git_show) -> dict:
+    """Copy the THREE input files of a job out of ONE commit of the repository into the pilot folder, as data:
+
+        <REQUESTS_PREFIX><job_id>.json          -> <pilot>/requests/<job_id>.json     (created once, never replaced)
+        the config the request names            -> <pilot>/configs/<name>.toml        (created once, never replaced)
+        <SHARED_LEDGER_PATH>                    -> <pilot>/shared-ledger.json         (the newest copy)
+
+    Nothing else is read from that commit and nothing of it is executed: the code stays the pin's. The request must
+    pass its own shape check and carry the job id of its file name; the config's NAME must be a plain file name in
+    round6/rollouts/configs/ (its content is checked by the strict schema when the request is checked); the ledger
+    must be of schema rollout-ledger/v1. Refused, with nothing written, if any of that fails."""
+    if not isinstance(commit, str) or not HEX40.match(commit):
+        raise Refused("--source-commit is not 40 hexadecimal digits")
+    if not isinstance(job_id, str) or not JOB.match(job_id):
+        raise Refused("--job-id is not lower-case letters, digits and hyphens (3 to 63 characters)")
+    p = dict(require_pilot(pilot), **pilot_paths(pilot, job_id))
+    raw = show(commit, REQUESTS_PREFIX + job_id + ".json", MAX_REQUEST_BYTES)
+    try:
+        req = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError):
+        raise Refused("the request is not UTF-8 JSON") from None
+    bad = validate_request(req)
+    if bad:
+        raise Refused("the request: " + "; ".join(bad))
+    if req["job_id"] != job_id:
+        raise Refused("the request's job_id is not the name of its file")
+    name = req["config"][len(CC.REPO_PREFIX):] if req["config"].startswith(CC.REPO_PREFIX) else ""
+    if not CC.NAME.match(name):
+        raise Refused("the request's config is not `" + CC.REPO_PREFIX + "<name>.toml`")
+    cfg = show(commit, CC.REPO_PREFIX + name, CC.MAX_BYTES)
+    led = show(commit, SHARED_LEDGER_PATH, 256 << 10)
+    targets = (("request", os.path.join(p["requests"], job_id + ".json"), raw), ("config", os.path.join(p["configs"], name), cfg))
+    for key, path, data in targets:                          # look before anything is written
+        have = _existing(path)
+        if have is not None and have != data:
+            raise Refused(f"the pilot folder holds another {key} under this name: a request and a config are never replaced "
+                          "(the requester writes a new job id and a new config name)")
+    out = {"job_id": job_id, "source_commit": commit}
+    for d in (p["requests"], p["configs"]):
+        os.makedirs(d, mode=0o700, exist_ok=True)
+    for key, path, data in targets:
+        if _existing(path) is None:
+            fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0), 0o600)
+            with os.fdopen(fd, "wb") as f:
+                f.write(data)
+        out[key] = {"file": os.path.relpath(path, p["pilot"]), "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
+    fd = os.open(p["shared"], os.O_WRONLY | os.O_CREAT | os.O_TRUNC | getattr(os, "O_NOFOLLOW", 0), 0o600)
+    with os.fdopen(fd, "wb") as f:
+        f.write(led)
+    s = shared_ledger(p["shared"])                           # a ledger of another shape is refused here, and by every later stage
+    out["shared_ledger"] = {"file": "shared-ledger.json", "bytes": len(led), "sha256": s["sha256"], "updated_utc": s["updated_utc"],
+                            "spent_elsewhere_usd": s["spent_elsewhere_usd"]}
+    out["request_says"] = {k: req[k] for k in ("pin", "pin_sha256", "config", "exam_profile", "instance", "model", "caps", "cap_usd")}
+    return out
+
+
+def facts() -> dict:
+    """What a runner needs to check a request and a config mechanically, as data: the request's keys and shapes, the
+    strict schema of a rollout config, the exam profiles with their item counts, the scripted policies of the
+    reference table, the stages in order, and the files of the pilot folder. RUNBOOK_MAC.md, step 3, prints the
+    same object; tools/check_runbook.py compares the two."""
+    return {"request": {"schema": SCHEMA, "keys": list(KEYS), "caps_keys": list(CAP_KEYS), "job_id": JOB.pattern, "instance": INSTANCE.pattern,
+                        "pin": HEX40.pattern, "pin_sha256": HEX64.pattern, "max_bytes": MAX_REQUEST_BYTES, "file": REQUESTS_PREFIX + "<job_id>.json",
+                        "wall_minutes_max": 180, "box_memory_gb_max": 4},
+            "config": CC.schema(),
+            "reference_table": {"tool": "tools/prove.py", "policies_by_profile": {r["profile"]: r["reference_policies"] for r in CC.schema()["exam_profiles"]},
+                                "scale": "K = 0 (climatology) and O = 1 (oracle) come from the frozen exam, not from a rollout"},
+            "stages": list(STAGES), "then": "tools/pack_rollout.py",
+            "pilot_folder": {"go": GO_FILE, "go_schema": GO_SCHEMA, "go_max_age_days": GO_MAX_AGE_DAYS, "ledger": LEDGER, "instances": INSTANCES,
+                             "shared_ledger": "shared-ledger.json", "shared_ledger_schema": SHARED_SCHEMA, "shared_ledger_source": SHARED_LEDGER_PATH},
+            "prices_from": PRIME_MODELS_URL}
+
+
+def facts_text() -> str:
+    """facts() as JSON text with one line per key of a config and per exam profile (what the runbook prints)."""
+    f = facts()
+    d = lambda o: json.dumps(o, separators=(", ", ": "))     # noqa: E731
+    lines = ["{"]
+    for i, (k, v) in enumerate(f.items()):
+        comma = "," if i < len(f) - 1 else ""
+        if k != "config":
+            lines.append(f" {json.dumps(k)}: {d(v)}{comma}")
+            continue
+        lines.append(' "config": {')
+        items = list(v.items())
+        for j, (k2, v2) in enumerate(items):
+            c2 = "," if j < len(items) - 1 else ""
+            if k2 == "keys":
+                ks = list(v2.items())
+                lines += ['  "keys": {'] + [f"   {json.dumps(a)}: {d(b)}" + ("," if n < len(ks) - 1 else "") for n, (a, b) in enumerate(ks)] + ["  }" + c2]
+            elif k2 == "exam_profiles":
+                lines += ['  "exam_profiles": ['] + ["   " + d(r) + ("," if n < len(v2) - 1 else "") for n, r in enumerate(v2)] + ["  ]" + c2]
+            else:
+                lines.append(f"  {json.dumps(k2)}: {d(v2)}{c2}")
+        lines.append(" }" + comma)
+    return "\n".join(lines + ["}"])
+
+
 def spend_log_total(path: str) -> dict:
     """What a run's spend log (physim2_env/spend.py) says was counted: the last line's running sum, plus one
     worst-case call for every attempt that was sent and never settled (the process died with it in flight)."""
@@ -464,14 +615,34 @@ def spend_log_total(path: str) -> dict:
 def main(argv=None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description="check a rollout request against the pin and the pilot folder; starts nothing")
-    ap.add_argument("--request", required=True)
-    ap.add_argument("--pilot", required=True)
+    ap.add_argument("--request")
+    ap.add_argument("--pilot")
+    ap.add_argument("--fetch", action="store_true", help="copy the job's request, its config and the shared ledger out of --source-commit "
+                                                         "into the pilot folder (reads git objects of this checkout; no network)")
+    ap.add_argument("--source-commit", help="with --fetch: the 40-character commit that holds the request")
+    ap.add_argument("--job-id", help="with --fetch: the job id (the request is <job_id>.json)")
+    ap.add_argument("--facts", action="store_true", help="print the request's shape, the config schema, the profiles and the stages as JSON")
     ap.add_argument("--prices", action="store_true", help="also fetch the model's listed prices (one GET, no credential) and print the bounds")
     ap.add_argument("--no-go", action="store_true", help="do not look for the lead's go (for the free stages)")
     ap.add_argument("--shared-ledger", default=None, help="a copy of the program's shared ledger (rollout-ledger/v1): what other machines spent")
     a = ap.parse_args(argv)
+    if a.facts:
+        print(facts_text())
+        return 0
+    if not a.pilot or bool(a.request) == bool(a.fetch) or (a.fetch and not (a.source_commit and a.job_id)):
+        ap.error("--request FILE --pilot DIR, or --fetch --source-commit HEX --job-id ID --pilot DIR, or --facts")
+    if a.fetch:
+        try:
+            print(json.dumps(fetch(a.pilot, a.source_commit, a.job_id)))
+        except (Refused, CC.Refused) as e:
+            print("refused: " + str(e))
+            return 2
+        return 0
     try:
+        use_pilot_configs(a.pilot)
         req = read_request(a.request)
+        if os.path.basename(a.request) != req["job_id"] + ".json":
+            raise Refused("the request file is not named <job_id>.json")
         pin = check_pin(req)
         cfg = check_config(req)
         p = dict(require_pilot(a.pilot), **pilot_paths(a.pilot, req["job_id"]))

@@ -246,6 +246,66 @@ def run(check, raises, scratch):
     check("D22 ... and passes as this job's instance once the store holds it; a name the store holds unregistered is refused for everybody",
           CR.check_instance(p, r, must_exist=True)["in_index"] and refused(lambda: CR.check_instance(p, dict(r, instance="pilot-stray-001"), must_exist=False)))
 
+    # ---- the three input files of a job, out of one commit (fetch); the commit is a dictionary here ----
+    commit, job2 = "c0" * 20, "fetch-test-1"
+    req2 = dict(req, job_id=job2, config=CC.REPO_PREFIX + "fetch_cfg.toml")
+    tree = {CR.REQUESTS_PREFIX + job2 + ".json": json.dumps(req2).encode(), CC.REPO_PREFIX + "fetch_cfg.toml": FLAT.encode(),
+            CR.SHARED_LEDGER_PATH: json.dumps(led).encode()}
+    asked = []
+
+    def show_from(t):
+        def show(c, path, limit):
+            asked.append(path)
+            if c != commit or path not in t:
+                raise CR.Refused("the commit does not hold " + path)
+            if len(t[path]) > limit:
+                raise CR.Refused("too large")
+            return t[path]
+        return show
+    got_f = CR.fetch(pilot, commit, job2, show=show_from(tree))
+    rq, cf = os.path.join(pilot, "requests", job2 + ".json"), os.path.join(pilot, "configs", "fetch_cfg.toml")
+    check("D22b fetch: the request, the config it names and the shared ledger are copied out of ONE commit into the pilot folder, byte for byte, "
+          "and nothing else is asked of that commit",
+          sorted(asked) == sorted(tree) and open(rq, "rb").read() == tree[CR.REQUESTS_PREFIX + job2 + ".json"] and open(cf, "rb").read() == FLAT.encode()
+          and got_f["config"]["file"] == os.path.join("configs", "fetch_cfg.toml") and abs(got_f["shared_ledger"]["spent_elsewhere_usd"] - 0.35) < 1e-12
+          and got_f["request_says"]["instance"] == "pilot-d-test-001" and (os.stat(rq).st_mode & 0o777) == 0o600, got_f)
+    changed = dict(tree, **{CR.REQUESTS_PREFIX + job2 + ".json": json.dumps(dict(req2, purpose="another purpose")).encode()})
+    bad_fetch = {
+        "a commit that is not 40 hex digits": lambda: CR.fetch(pilot, "HEAD", job2, show=show_from(tree)),
+        "a job id with a slash": lambda: CR.fetch(pilot, commit, "../x", show=show_from(tree)),
+        "a job id with a quote and a semicolon": lambda: CR.fetch(pilot, commit, 'a"; echo x; "', show=show_from(tree)),
+        "a commit without that request": lambda: CR.fetch(pilot, commit, "no-such-job", show=show_from(tree)),
+        "a request whose job_id is not its file name": lambda: CR.fetch(pilot, commit, "other-name", show=show_from(
+            dict(tree, **{CR.REQUESTS_PREFIX + "other-name.json": tree[CR.REQUESTS_PREFIX + job2 + ".json"]}))),
+        "a request with an unknown key": lambda: CR.fetch(pilot, commit, "bad-key-1", show=show_from(
+            dict(tree, **{CR.REQUESTS_PREFIX + "bad-key-1.json": json.dumps(dict(req2, job_id="bad-key-1", command="x")).encode()}))),
+        "a config outside round6/rollouts/configs/": lambda: CR.fetch(pilot, commit, "bad-cfg-1", show=show_from(
+            dict(tree, **{CR.REQUESTS_PREFIX + "bad-cfg-1.json": json.dumps(dict(req2, job_id="bad-cfg-1", config="research/alife/vecworld/program/round6/vfport/tools/vfrun.py")).encode()}))),
+        "a config in a sub-folder": lambda: CR.fetch(pilot, commit, "bad-cfg-2", show=show_from(
+            dict(tree, **{CR.REQUESTS_PREFIX + "bad-cfg-2.json": json.dumps(dict(req2, job_id="bad-cfg-2", config=CC.REPO_PREFIX + "sub/x.toml")).encode()}))),
+        "the same job id with other content": lambda: CR.fetch(pilot, commit, job2, show=show_from(changed)),
+        "a commit without the shared ledger": lambda: CR.fetch(pilot, commit, job2, show=show_from({k: v for k, v in tree.items() if k != CR.SHARED_LEDGER_PATH})),
+        "a pilot folder that is not 0700": lambda: CR.fetch(loose, commit, job2, show=show_from(tree)),
+    }
+    res = {k: bool(refused(fn)) for k, fn in bad_fetch.items()}
+    again = CR.fetch(pilot, commit, job2, show=show_from(tree))
+    check(f"D22c ... {len(bad_fetch)} fetches are refused (shapes that a shell would run, another request under a used name, a config outside the "
+          "folder, a missing ledger); the same fetch again changes nothing",
+          all(res.values()) and again["request"]["sha256"] == got_f["request"]["sha256"] and open(rq, "rb").read() == tree[CR.REQUESTS_PREFIX + job2 + ".json"]
+          and sorted(os.listdir(os.path.join(pilot, "requests"))) == [job2 + ".json"] and sorted(os.listdir(os.path.join(pilot, "configs"))) == ["fetch_cfg.toml"], res)
+    CR.use_pilot_configs(pilot)
+    by_copy = CR.check_config(CR.read_request(rq))
+    CC.CONFIG_DIR = cfg_dir
+    check("D22d the request route reads the config from the runner's copy in <pilot>/configs/, under its repository name; a request that names its "
+          "config by any other path is refused",
+          by_copy["path"] == cf and by_copy["flat"]["max_turns"] == 12 and bool(refused(lambda: CR.check_config(dict(r, config=cf))))
+          and bool(refused(lambda: CR.check_config(dict(r, config="configs/good.toml")))), by_copy["path"])
+    fx = CR.facts()
+    check("D22e the facts a runner can check mechanically: request keys, config keys, profiles with item counts, reference policies, stages in order",
+          fx["request"]["keys"] == list(CR.KEYS) and set(fx["config"]["keys"]) == set(RC.FLAT_KEYS) and fx["stages"] == ["instance", "reference", "dry-run", "rollout", "close"]
+          and fx["reference_table"]["policies_by_profile"] == {"ring": ["null", "D", "P0", "PM", "S", "C"]} and fx["config"]["exam_profiles"][0]["items"] == 64
+          and json.loads(CR.facts_text()) == json.loads(json.dumps(fx)), fx["stages"])
+
     # ---- the spend log's total ----
     log = os.path.join(scratch, f"spendlog-{tag}.jsonl")
     with open(log, "w") as f:
@@ -348,6 +408,36 @@ def run(check, raises, scratch):
           not tr_left and red.count(PK.REMOVED) >= 2 and "abcdefghijklmnopqrstuvwxyz012345" not in red and "c0c0c0" in red and "PRIME_API_KEY" in red, left)
     check("D34 the folder is never overwritten, and a job without a folder is refused", refused(lambda: PK.pack(rp, pilot, environ=env))
           and refused(lambda: PK.pack(rp, loose)))
+    # ---- one rollout at a time; the books of an interrupted job (stage close) ----
+    import vfrun
+    rows_now = CR.ledger_rows(p)
+    check("D36 the ledger's open jobs (reserved, never ended) are named: while there is one, no stage of any job starts",
+          CR.open_jobs(rows_now) == sorted(["earlier-3", "standin-1", r["job_id"]]) and CR.open_jobs([x for x in rows_now if x.get("job_id") == "earlier-1"]) == [], CR.open_jobs(rows_now))
+    with open(p["status"], "w") as f:
+        json.dump({"stages": {"rollout": {"started": True, "tool_pid": 4242}}}, f)
+    with open(os.path.join(hidden, "labs", trace_id, "process.json"), "w") as f:
+        json.dump({"pid": 4343, "port": 5}, f)
+    wrote = []
+    quiet = lambda pid: ""                                   # noqa: E731
+    tool_alive = lambda pid: "/x/.venv/bin/python -B tools/vfrun.py --request r.json --pilot d --stage rollout" if pid == 4242 else ""   # noqa: E731
+    lab_alive = lambda pid: "/x/.venv/bin/python -m physim2_env.lab_tools" if pid == 4343 else ""                                       # noqa: E731
+    other_pid = lambda pid: "/usr/bin/some-other-program --stage rollout"                                                               # noqa: E731
+    ws = lambda p_, stage, rec: wrote.append((stage, rec))   # noqa: E731
+    still = {"the tool is alive": refused(lambda: vfrun.close_job(p, r, CR, ps=tool_alive, containers=lambda: [], write_status=ws)),
+             "a laboratory is alive": refused(lambda: vfrun.close_job(p, r, CR, ps=lab_alive, containers=lambda: [], write_status=ws)),
+             "a container is left": refused(lambda: vfrun.close_job(p, r, CR, ps=quiet, containers=lambda: ["vf-" + "ab" * 16], write_status=ws))}
+    check("D37 stage close is refused while the job's tool, a laboratory of its instance or a container of the run label is still there",
+          all(v and "still on this machine" in v for v in still.values()) and not wrote
+          and vfrun.leftovers(p, r, ps=other_pid, containers=lambda: []) == [], still)
+    row = vfrun.close_job(p, r, CR, ps=other_pid, containers=lambda: [], write_status=ws)
+    check("D38 ... and once nothing is left it writes the closing row: status cut, the cost from the spend log with one worst-case call for the "
+          "call that never settled, the count marked incomplete (the ledger keeps the job at its bound)",
+          row["status"] == "cut" and abs(row["counted_usd"] - t["counted_usd"]) < 1e-12 and row["count_complete"] is False and row["worst_case_calls"] == 2
+          and wrote and wrote[0][1]["status"] == "cut" and r["job_id"] not in CR.open_jobs(CR.ledger_rows(p))
+          and "nothing to close" in (refused(lambda: vfrun.close_job(p, r, CR, ps=quiet, containers=lambda: [], write_status=ws)) or ""), row)
+    check("D39 the one address of a model run is the service the prices are read from, and the key's name is looked for, never its value",
+          CR.PRIME_MODELS_URL == vfrun.PRIME_INFERENCE_URL + "/models" and vfrun.KEY_VAR == "PRIME_API_KEY" and "DYLD_INSERT_LIBRARIES" in vfrun.refused_names({"DYLD_INSERT_LIBRARIES": "x"})
+          and vfrun.refused_names({"PRIME_API_KEY": "x", "HOME": "/h", "SSL_CERT_FILE": "/c"}) == [] and "SSL_CERT_FILE" not in vfrun.ENV_PASS + vfrun.ENV_PASS_MODEL)
     one = {"prompt_tokens": 900}
     check("D35 generic credential shapes are found by the scan: a bearer token, a private key block, an sk- key, a token in a url",
           set(PK.scan(b"Authorization: Bearer " + b"a" * 30 + b"\n-----BEGIN OPENSSH PRIVATE KEY-----\nsk-" + b"B" * 30 + b" https://user:hunter2hunter2@host/x", {}, {}))

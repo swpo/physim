@@ -266,7 +266,7 @@ print("RESULT" + json.dumps({"checks": checks, "evidence": ev}))
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
-    ap.add_argument("--image", default="physim2-ring:1")
+    ap.add_argument("--image", default="physim2-ring:2")
     ap.add_argument("--package-root", default=ROOT)
     a = ap.parse_args()
     item = open(os.path.join(a.package_root, "physim2_env", "public", "_item.py"), "rb").read()

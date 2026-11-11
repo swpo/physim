@@ -34,8 +34,8 @@ Also a command of its own, in two forms:
 the COMMAND FORM (RUNBOOK_MAC.md, step 2c): a scripted rollout from a vf-eval config file. The config must name
 the stand-in client and the scripted harness; no credential is passed or loaded; a model cannot be called.
 
-    VF_RUN_ID=<label> python -B tools/vfrun.py --request JOB.json --pilot DIR --stage instance|reference|dry-run|rollout \
-        --disk-floor-gib 8 [--model-credentials prime]
+    VF_RUN_ID=<label> python -B tools/vfrun.py --request JOB.json --pilot DIR --stage instance|reference|dry-run|rollout|close \
+        --disk-floor-gib 8 [--shared-ledger FILE] [--model-credentials prime]
 
 the REQUEST ROUTE (step 3, round 4): one stage of the rollout that a request file describes (schema
 rollout-job/v1; tools/check_request.py). Every stage checks the request, the pin, the strict schema of the
@@ -78,7 +78,8 @@ ENV_PASS_MODEL = ("PRIME_API_KEY", "PRIME_TEAM_ID")
 # VF_RUN_ID is the one exception: the command that starts a tool sets it.
 # round 4 (audit round 3, G1): PYTHONEXECUTABLE and __PYVENV_LAUNCHER__ move the interpreter's idea of its own
 # environment (CPython Modules/getpath.py) and are refused like PYTHONHOME.
-ENV_REFUSE = re.compile(r"^(PHYSIM2_|UV_|VIRTUAL_ENV|PYTHON(PATH|HOME|EXECUTABLE)|__PYVENV_LAUNCHER__|DOCKER_|BUILDX_|VF_|MCP_HOST|MCP_PORT|"
+# round 4 (the Mac review's R3-7): DYLD_* move the libraries a program of macOS loads; no tool starts with one.
+ENV_REFUSE = re.compile(r"^(PHYSIM2_|UV_|VIRTUAL_ENV|PYTHON(PATH|HOME|EXECUTABLE)|__PYVENV_LAUNCHER__|DYLD_|DOCKER_|BUILDX_|VF_|MCP_HOST|MCP_PORT|"
                         r"PRIME_RUNS_MODE)")
 ENV_REFUSE_EXCEPT = ("VF_RUN_ID",)
 # ...and two names are accepted with exactly the value a tool itself gives its children (child_env), so that a
@@ -112,7 +113,7 @@ def require_clean_environment() -> None:
     if bad:
         raise SystemExit("refused: the environment of this command holds " + ", ".join(bad) + ".\n"
                          "A tool of the pilot starts only from an environment without PHYSIM2_*, UV_*, VIRTUAL_ENV, PYTHONPATH, "
-                         "PYTHONHOME, PYTHONEXECUTABLE, __PYVENV_LAUNCHER__, DOCKER_*, BUILDX_*, VF_* (other than the VF_RUN_ID of "
+                         "PYTHONHOME, PYTHONEXECUTABLE, __PYVENV_LAUNCHER__, DYLD_*, DOCKER_*, BUILDX_*, VF_* (other than the VF_RUN_ID of "
                          "the command itself), MCP_HOST, MCP_PORT "
                          "and PRIME_RUNS_MODE: one of them could send Docker commands to another engine or imports to another "
                          "checkout (RUNBOOK_MAC.md, step 0). Nothing was started. Stop and report.")
@@ -456,9 +457,14 @@ def check_config(path: str, *, dry_run: bool) -> dict:
 #   reference   the scripted policies of the profile on that instance (tools/prove.py; $0): the reference table
 #   dry-run     listed prices and the bounds on the bill; vf-eval resolves the run's config and exits ($0)
 #   rollout     the model run: needs --model-credentials prime, the reservation in the ledger, the spend meter
+#   close       only after an interruption that killed this tool: closes the job's open ledger row as "cut"
 # Every stage first checks the request, the pin, the strict config schema, the pilot folder and the lead's
 # standing go (<pilot>/LEAD-GO-MODEL-SPEND.json): without that file nothing of step 3 starts.
-STAGES = ("instance", "reference", "dry-run", "rollout")
+STAGES = ("instance", "reference", "dry-run", "rollout", "close")
+# The ONE address a model run talks to, written into the run's config so that neither the Prime login file nor a
+# variable can move it (verifiers/v1/configs/client.py:37-57 takes `inference_url` from the login file otherwise).
+PRIME_INFERENCE_URL = "https://api.pinference.ai/api/v1"
+KEY_VAR = "PRIME_API_KEY"
 GRADING_ALLOWANCE_S = 9600.0                                 # set-up, finalize and the grading boxes, on top of the agent's wall time
 
 
@@ -533,6 +539,74 @@ def _reference_argv(req: dict, flat: dict, p: dict, profile: dict, floor_gib: fl
                    "--cpu", str(profile["box_cpus"]), "--box-check", ""]
 
 
+def command_line_of(pid) -> str:
+    """The command line of a process of this user, or "" (it is gone, or `ps` did not answer). Read-only."""
+    try:
+        r = subprocess.run(["ps", "-ww", "-p", str(int(pid)), "-o", "command="], capture_output=True, text=True, timeout=20,
+                           stdin=subprocess.DEVNULL, env=child_env())
+    except (OSError, ValueError, TypeError, subprocess.TimeoutExpired):
+        return ""
+    return r.stdout.strip()
+
+
+def containers_of_this_run() -> list[str]:
+    """Names of the containers that carry this command's run label (running or not)."""
+    r = subprocess.run(["docker", "ps", "-a", "--filter", f"label=verifiers.run={run_label()}", "--format", "{{.Names}}"],
+                       capture_output=True, text=True, timeout=60, stdin=subprocess.DEVNULL, env=child_env())
+    if r.returncode:
+        raise SystemExit("Docker does not answer (`docker ps` failed); nothing was changed. Stop and report.")
+    return [x for x in r.stdout.split() if x]
+
+
+def leftovers(p: dict, req: dict, ps=command_line_of, containers=containers_of_this_run) -> list[str]:
+    """What an interrupted rollout of this job still has on the machine, in words: its tool, a laboratory of its
+    instance, containers of the run label. Empty = the clean-up of RUNBOOK_MAC.md ("If a run was interrupted",
+    points 1 to 5) is done. Looks; signals and removes nothing."""
+    left = []
+    try:
+        with open(p["status"]) as f:
+            pid = (json.load(f)["stages"].get("rollout") or {}).get("tool_pid")
+    except (OSError, ValueError, KeyError):
+        pid = None
+    if pid and "tools/vfrun.py" in ps(pid) and "--stage rollout" in ps(pid):
+        left.append(f"the tool of this job (pid {pid})")
+    labs = os.path.join(p["store"], req["instance"], "hidden", "labs")
+    for name in sorted(os.listdir(labs)) if os.path.isdir(labs) else []:
+        try:
+            with open(os.path.join(labs, name, "process.json")) as f:
+                lab_pid = json.load(f).get("pid")
+        except (OSError, ValueError):
+            continue
+        if lab_pid and "physim2_env.lab_tools" in ps(lab_pid):
+            left.append(f"a laboratory of this job's instance (pid {lab_pid})")
+    left += [f"container {n}" for n in containers()]
+    return left
+
+
+def close_job(p: dict, req: dict, CR, ps=command_line_of, containers=containers_of_this_run, write_status=None) -> dict:
+    """Stage `close`: after an interruption that killed the tool itself (it could not write the job's closing row),
+    and after the clean-up of the runbook, write that row: status `cut`, the cost counted from the run's spend log
+    (one worst-case call for every call that was sent and never settled). Refused while anything of the job is
+    still there, and when the ledger has nothing open for this job."""
+    events = [r.get("event") for r in CR.ledger_rows(p) if r.get("job_id") == req["job_id"]]
+    if "reserved" not in events or "ended" in events:
+        raise CR.Refused("nothing to close: the ledger holds no open row for this job")
+    left = leftovers(p, req, ps, containers)
+    if left:
+        raise CR.Refused("still on this machine: " + "; ".join(left[:6]) + ". First RUNBOOK_MAC.md, \"If a run was interrupted\", points 1 to 5")
+    try:
+        total = CR.spend_log_total(p["spend_log"])
+    except CR.Refused:
+        total = {"present": True, "counted_usd": None, "attempts": None, "complete": False}
+    counted = 0.0 if not total["present"] else total["counted_usd"]
+    row = {"event": "ended", "job_id": req["job_id"], "status": "cut", "how": "closed after an interruption (--stage close)", "returncode": None,
+           "counted_usd": counted, "count_complete": bool(total["complete"] or not total["present"]), "attempts": total.get("attempts"),
+           "worst_case_calls": total.get("worst_case_calls"), "stopped": total.get("stopped"), "billed": total.get("billed", True)}
+    CR.ledger_append(p, row)
+    (write_status or _write_status)(p, "rollout", {"ended": True, "status": "cut", "how": row["how"], "counted_usd": counted, "closed_by": "--stage close"})
+    return row
+
+
 def reference_done(p: dict) -> dict | None:
     """The finished reference table of a job (<job>/reference.json with every rollout graded), or None."""
     try:
@@ -555,8 +629,7 @@ def request_route(a) -> int:
             raise CR.Refused("--stand-in-endpoint is for tests against a stand-in on this machine: http://127.0.0.1:<port>/v1 and nothing else")
         if stand_in and a.model_credentials:
             raise CR.Refused("a stand-in endpoint and model credentials do not go together")
-        if stand_in:                                         # a test: its configs live in the test's own pilot folder
-            CC.CONFIG_DIR = os.path.join(os.path.abspath(os.path.expanduser(a.pilot)), "configs")
+        CR.use_pilot_configs(a.pilot)                        # the runner's copy of the job's config: <pilot>/configs/<name>.toml
         req = CR.read_request(a.request)
         if os.path.basename(a.request) != req["job_id"] + ".json":
             raise CR.Refused("the request file is not named <job_id>.json")
@@ -565,9 +638,19 @@ def request_route(a) -> int:
         flat = cfg["flat"]
         profile = CC.light("profiles").get(flat["exam_profile"])
         p = dict(CR.require_pilot(a.pilot), **CR.pilot_paths(a.pilot, req["job_id"]))
-        go = CR.read_go(p)                                   # the lead's standing go: nothing of step 3 starts without it
         rows = CR.ledger_rows(p)
         started = [r for r in rows if r.get("job_id") == req["job_id"]]
+        if a.stage == "close":                               # spends nothing and starts nothing: it needs no go
+            require_docker()
+            row = close_job(p, req, CR)
+            print(json.dumps({"stage": "close", "job_id": req["job_id"], "status": "cut", "counted_usd": row["counted_usd"],
+                              "count_complete": row["count_complete"]}))
+            return 0
+        go = CR.read_go(p)                                   # the lead's standing go: nothing of step 3 starts without it
+        still_open = CR.open_jobs(rows)
+        if still_open:                                       # one rollout at a time, and none while an interrupted one is not closed
+            raise CR.Refused(f"the ledger holds a job that was started and has not ended ({still_open[0]}): one rollout at a time. If "
+                             "it was interrupted: RUNBOOK_MAC.md, \"If a run was interrupted\", then --stage close for that job")
 
         if a.stage == "instance":
             if started:
@@ -629,8 +712,10 @@ def request_route(a) -> int:
             spend["cache_read_usd_per_mtok"] = prices["cache_read"]
         resolved = json.loads(json.dumps(cfg["expanded"]))
         resolved["env"]["taskset"].setdefault("task", {})["spend"] = spend
-        if stand_in:
-            resolved["client"] = {"type": "eval", "base_url": stand_in, "api_key_var": STAND_IN_VAR}
+        resolved["client"] = {"type": "eval", "base_url": stand_in, "api_key_var": STAND_IN_VAR} if stand_in else \
+            {"type": "eval", "base_url": PRIME_INFERENCE_URL, "api_key_var": KEY_VAR}
+        if CR.PRIME_MODELS_URL != PRIME_INFERENCE_URL + "/models":
+            raise CR.Refused("the price listing and the inference address are not the same service")
         import tomli_w
 
         if a.stage == "dry-run":
@@ -649,6 +734,9 @@ def request_route(a) -> int:
             raise CR.Refused("a model rollout needs --model-credentials prime on its command (or, in a test, --stand-in-endpoint)")
         if started:
             raise CR.Refused("the ledger already holds this job id: a job runs once, and a run that was cut is not run again")
+        if not stand_in and KEY_VAR not in os.environ:
+            raise CR.Refused(f"a model rollout needs {KEY_VAR} in the environment of its command (the name is looked for; the value is "
+                             "never read by this tool): the key reaches vf-eval by the environment and no other way")
         try:
             with open(p["status"]) as f:
                 dry = json.load(f)["stages"].get("dry-run") or {}
@@ -672,7 +760,7 @@ def request_route(a) -> int:
         print("refused: " + str(e), flush=True)
         return 2
 
-    _write_status(p, "rollout", {"started": True, "bound_usd": b["bound_usd"], "billed": not stand_in})
+    _write_status(p, "rollout", {"started": True, "bound_usd": b["bound_usd"], "billed": not stand_in, "tool_pid": os.getpid()})
     extra = {"PHYSIM2_STORE": p["store"], "PHYSIM2_SPEND_LOG": p["spend_log"]}
     if stand_in:
         extra[STAND_IN_VAR] = STAND_IN_VALUE
