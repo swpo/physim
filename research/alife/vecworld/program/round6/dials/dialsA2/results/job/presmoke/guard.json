@@ -1,0 +1,25 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "estimates_seconds": {
+  "families": 1185.89310836792,
+  "worlds": 921.2115898132324,
+  "inference": 11.368904113769531,
+  "final": 120.0,
+  "seconds_per_base_step": 0.013964389578501383,
+  "base_24000": 376.5305770874023,
+  "base_48000": 711.6759269714355,
+  "base_96000": 1381.9666267395019,
+  "base_192000": 2722.5480262756346,
+  "N8": 1227.741174340248,
+  "D8": 2245.950485229492,
+  "N32": 1227.741174340248,
+  "D32": 2245.950485229492,
+  "x": 1218.7258123457432
+ },
+ "required_seconds": 6088.695838952064,
+ "everything_seconds": 15597.30389085412,
+ "seconds_left": 12497.603525400162,
+ "presmoke_seconds": 462.39647579193115,
+ "note": "per-stage times are upper estimates: presmoke stages include compilation where a stage ran once",
+ "ok": true
+}

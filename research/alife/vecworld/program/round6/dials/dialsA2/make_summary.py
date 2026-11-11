@@ -168,6 +168,29 @@ try:
 except Exception as exc:
     rep["study_A_whole_exam_quoted"] = f"not available: {exc!r}"
 
+# ---- diagnosis of the zero point (written after the results were seen; reported only, never a criterion)
+dg = {"note": "added to make_summary.py after the results were seen; reported only; units of mean_t [L(K) - L(public-form C)] "
+              "at eta 0 (as the zero point) or of mean_t [L(K) - L(C)] at eta 4", "source": src_sc}
+Kz, Cpz = S.L("K", e0), S.L("Cpub", e0)
+uz = float((Kz - Cpz).mean())
+rel0 = lambda a, b: short({**stat(a - b), "mean": stat(a - b)["mean"] / uz, "se": stat(a - b)["se"] / uz,
+                           "median_truths": stat(a - b)["median_truths"] / uz, "loo_min": stat(a - b)["loo_min"] / uz,
+                           "loo_max": stat(a - b)["loo_max"] / uz, "lower90": stat(a - b)["lower90"] / uz,
+                           "upper90": stat(a - b)["upper90"] / uz})
+dg["trueformC_minus_publicC_eta0_by_rung"] = {str(r): rel0(S.L(f"Ctrue@r{r}", e0), S.L(f"Cpub@r{r}", e0)) for r in rungs
+                                               if S.has(f"Ctrue@r{r}", f"Cpub@r{r}")}
+dg["trueformC_minus_publicC_eta0_per_truth"] = np.round((S.L("Ctrue", e0) - Cpz).mean(1) / uz, 4).tolist()
+dg["P0_minus_publicC_eta0 (the type-(a) share at eta 0)"] = rel0(S.L("P0", e0), Cpz)
+for n in ("S@8", "FT@8", "RES@8", "Dnet@8", "Dridge@8"):
+    dg[f"{n}_minus_P0_eta0"] = rel0(S.L(n, e0), S.L("P0", e0))
+dg["Gstar_picks_eta0"] = ST.picked(S, ST.G_names(8), e0)["share_picked"]
+dg["H8_minus_trueformC_eta0"] = rel0(S.L("H@8", e0), S.L("Ctrue", e0))
+dg["blindC_minus_C_eta0 (true-form net, no program)"] = rel0(S.L("Ctrue_blind", e0), S.L("Ctrue", e0))
+u4 = float((S.L("K", e4) - Lc8).mean())
+dg["H8_minus_trueformC_eta4_in_K_minus_C"] = float((S.L("H@8", e4) - S.L("Ctrue", e4)).mean() / u4)
+dg["CFT8_minus_trueformC_eta4_in_K_minus_C"] = float((S.L("CFT@8", e4) - S.L("Ctrue", e4)).mean() / u4)
+out_dg = dg
+
 # ---- training
 trn = {"source": SRC + "train_info.json"}
 if tr:
@@ -214,7 +237,8 @@ if status:
 
 out = {"study": "round6/dials/dialsA2: the gliders stress-conversion exam reopened with a triggered bar", PILOT: True,
        "declared": "DECLARED.md (commit 3fd4076c5, 19:26 UTC, before any code or request)", "job": job,
-       "what_ran": ran, "headline": h, "criteria": crit, "reported": rep, "training": trn}
+       "what_ran": ran, "headline": h, "criteria": crit, "reported": rep, "diagnosis_after_results": out_dg,
+       "training": trn}
 
 
 def conv(o):

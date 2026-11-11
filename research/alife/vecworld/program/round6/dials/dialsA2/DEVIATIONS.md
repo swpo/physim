@@ -22,3 +22,11 @@ Each entry: when, what the task or plan says, what was done instead, why. `DECLA
    that cut is the guard's error, not the declared priority, and is listed here after the job. (c) If a D(N) group
    is stopped by the deadline, the doubling can retrain it briefly and overwrite Dnet(N); `stopped_early` of every
    D group is read before Dnet is quoted. The code is not changed while the job runs.
+4. **12 Nov 2026, 00:05 UTC, after the job. What the clock and the review's points did.** Nothing was cut: every stage
+   ran, including N = 32 and the eta 1/2 arm (the guard's oversized D estimate, entry 3b, did not bind). No fine-tune
+   group needed both kinds of widening (entry 3a): CFT at N = 8 and at eta 2 added one rate, FT at N = 32, eta 0
+   doubled its steps once, and every group's pick is interior. No D group was stopped by the deadline (entry 3c).
+   The base nets met the rule at 192,000 steps, the declared maximum. The zero point missed (README); its diagnosis
+   (`make_summary.py` [diagnosis_after_results]) was written after the results were seen and is reported only; no
+   criterion, threshold or reading was changed, and no second job was requested (DECLARED R20 allows one only for a
+   failure or the clock).

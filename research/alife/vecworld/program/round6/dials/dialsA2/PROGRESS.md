@@ -23,12 +23,14 @@ r6-dialsa2-NNN (lower case, per the coordinator). Scratch /tmp/claude-0/-home-us
   21:18; base nets 24,000 and 48,000 unconverged by the rule (48,000: best steps 29,000-39,500, one past 80%);
   96,000 unmet; 192,000 rung training from 22:00.
 
+- 22:42: base nets met the rule at 192,000 steps; 23:53 job done, exit 0, nothing failed, skipped or cut; billed
+  $6.62 (pod 3.43 h). 00:00: outputs in results/job (nets.npz left on the jobs branch); make_summary.py ->
+  results/summary.json; verdict UNDECIDED (T1-T5 hold; the zero point misses on all three pairs); README.md,
+  DEVIATIONS entry 4.
+
 ## Running
-- r6-dialsa2-001 (GPU job). Waiting with scratch/wait_job.sh r6-dialsa2-001 (log wait_r6-dialsa2-001.log).
-  Expected end about 23:45 UTC; N = 32 will probably be cut by the guard's oversized D estimate (review minor 1).
+- nothing.
 
 ## Next step
-- Read origin/gpu-jobs:jobs/r6-dialsa2-001/review.md as soon as it appears and act on it (cancel = push
-  requests/r6-dialsa2-001.cancel and verify with git ls-tree).
-- After the job: copy outputs (not nets.npz) to results/job/, run make_summary.py --job-id r6-dialsa2-001, write
-  README.md and the final report.
+- None for this study: the verdict is undecided and goes to the lead (README "Next step": a re-declared zero point
+  and a balanced true-form family, about $7, or rollouts on the profile as it stands).
