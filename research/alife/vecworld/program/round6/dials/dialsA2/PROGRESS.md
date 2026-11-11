@@ -12,12 +12,16 @@ r6-dialsa2-NNN (lower case, per the coordinator). Scratch /tmp/claude-0/-home-us
 - 20:03: archive test started: job.sh at tiny shapes from a git archive of exactly the request paths at 04ddec834
   (scratch arch/, log arch.log).
 
+- 20:26: archive test of e0df0c079 (per-group widening of the fine-tune grid): job.sh at tiny shapes from a git
+  archive of exactly the request paths, presmoke, guard, full pass, exit 0; make_summary runs on its output.
+- 20:28: request r6-dialsa2-001 committed and pushed (ref e0df0c079, A100 40GB, max_hours 3.9, cap $8.40,
+  script limit 3.6 h).
+
 ## Running
-- archive test (local CPU, background).
+- r6-dialsa2-001 (GPU job). Waiting with scratch/wait_job.sh r6-dialsa2-001 (log wait_r6-dialsa2-001.log).
 
 ## Next step
-- When the archive test exits 0: commit research/alife/vecworld/program/gpu/requests/r6-dialsa2-001.json (draft in
-  scratch r6-dialsa2-001.json.draft; ref 04ddec834, A100 40GB, max_hours 3.9, cap $8.40), push, then wait with one
-  background loop on origin/gpu-jobs:jobs/r6-dialsa2-001/status.json; read review.md first when it appears.
-- After the job: copy outputs to results/job/, run make_summary.py --job-id r6-dialsa2-001, write README.md and the
-  final report.
+- Read origin/gpu-jobs:jobs/r6-dialsa2-001/review.md as soon as it appears and act on it (cancel = push
+  requests/r6-dialsa2-001.cancel and verify with git ls-tree).
+- After the job: copy outputs (not nets.npz) to results/job/, run make_summary.py --job-id r6-dialsa2-001, write
+  README.md and the final report.
