@@ -233,7 +233,7 @@ def ft_lockstep(P_init, dsets, TH, lrs, shapes, steps, seed, snap_at=None, evalu
     curve = [np.asarray(veval(P, D, TH))] if evaluate else None
     snap = P
     key = jax.random.key(seed)
-    t1, it = None, 0
+    t1, it, t_start = None, 0, time.time()
     while it < steps:
         key, sub = jax.random.split(key)
         P, st, snap, vs = run(P, st, snap, D, TH, sub, lr, jnp.asarray(it, jnp.int32), sa)
@@ -245,7 +245,7 @@ def ft_lockstep(P_init, dsets, TH, lrs, shapes, steps, seed, snap_at=None, evalu
             t1 = time.time()
     jax.block_until_ready(P)
     n_after = steps - grid * nblk
-    ms = (time.time() - t1) / n_after * 1e3 if n_after > 0 else float("nan")
+    ms = (time.time() - t1) / n_after * 1e3 if n_after > 0 else (time.time() - t_start) / steps * 1e3
     out = None if snap_at is None else [jax.tree_util.tree_map(lambda a, k=k: a[k], snap) for k in range(Kn)]
     return (None if curve is None else np.array(curve).T), out, ms
 

@@ -2,7 +2,7 @@
 
 PILOT ONLY: the truths are public pilot values; the Lab data, items and nets written here must NEVER be reused as an
 exam. The world secret (256 bits, os.urandom) is never written; only its commitment. What is declared is in
-DECLARED.md (committed at 3fd4076c5, before this file existed); what this file does, in order:
+DECLARED.md (committed at 3fd4076c5, 19:26 UTC, before this file existed); what this file does, in order:
 
   0 presmoke  the same pipeline at FULL SHAPES and small counts (one truth at eta 0 and 4 plus the eta-1 arm, 512
               episodes per family tiled to 6,144 for the nets' shapes, a few hundred steps per net), the zero point
@@ -70,10 +70,10 @@ FULL = dict(P=16, H=16, burn=GW.BURN, n_theta=768, Kc=4, chunk=256, tile=1, trut
 # presmoke: every stage once at the full shapes (chunk 256, 576-member truth rollouts, 6 base nets on 6,144 episodes,
 # 16 fine-tunes in lockstep, 96-item sampling); small counts
 PRE = dict(FULL, n_theta=64, tile=12, truths=[0], x_truths=[0], x_etas=(1.0,), rungs=(250, 500), steps_d=100,
-           d_doublings=0, ft_steps=40, ft_widen=0, post_M=4000, timing_runs=True)
+           d_doublings=0, ft_steps=80, ft_widen=0, post_M=4000, timing_runs=True)
 SMOKE = dict(P=4, H=4, burn=2, n_theta=8, Kc=1, chunk=8, tile=1, truths=[0, 8], etas=(0.0, 4.0), x_truths=[0],
              x_etas=(1.0,), n_mix=8, n_free=2, n_des=8, n_items=4, R=3, n_clim=4, m=4, budgets=(4, 8), hs=(1, 2, 4),
-             lags=(0, 1, 2, 4), rungs=(50, 100), steps_d=50, d_doublings=1, d_eval=50, ft_steps=40,
+             lags=(0, 1, 2, 4), rungs=(50, 100), steps_d=50, d_doublings=1, d_eval=50, ft_steps=80,
              ft_rates=(1e-4, 2e-5), ft_widen=1, seeds=2, post_M=2000, n_ext=1, ext_cand=6, viab_T=6, timing_runs=False)
 if args.smoke:
     FULL = SMOKE
