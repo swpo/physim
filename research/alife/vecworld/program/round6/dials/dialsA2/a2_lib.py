@@ -250,11 +250,10 @@ def ft_lockstep(P_init, dsets, TH, lrs, shapes, steps, seed, snap_at=None, evalu
     return (None if curve is None else np.array(curve).T), out, ms
 
 
-def finetune_cv(tasks, shapes, steps, rates, seed, log=None, tag=""):
-    """Cross-validated fine-tuning (DECLARED R11) of many nets at several rates, in lockstep groups of
-    AN.FT.LOCK runs. tasks: dicts {id, base, A, eps, cls, TH}. Per task the (rate, steps) with the least mean
-    held-out score over its folds (0 steps: the base net unchanged); then the final fine-tune on all its
-    episodes at that point. Returns ({id: params}, {id: info}, timing)."""
+def cv_curves(tasks, shapes, steps, rates, seed, log=None, tag=""):
+    """Cross-validation curves (DECLARED R11) of many fine-tunes at several rates, in lockstep groups of AN.FT.LOCK
+    runs. tasks: dicts {id, base, A, eps, cls, TH}. Returns ({id: (n_rates, steps // GRID + 1) mean held-out score
+    over the task's folds}, timing)."""
     t0 = time.time()
     grid = AN.FT.GRID
     runs = []                                                    # (task index, rate index, train eps, held-out eps)
@@ -265,7 +264,7 @@ def finetune_cv(tasks, shapes, steps, rates, seed, log=None, tag=""):
                 runs.append((ti, ri, [eps[j] for j in tr], [eps[j] for j in va]))
     npt = steps // grid + 1
     curves = np.zeros((len(runs), npt))
-    ms_l, sec_cv, sec_fin = [], [], []
+    ms_l, sec = [], []
     L = AN.FT.LOCK
     for s0 in range(0, len(runs), L):
         tg = time.time()
@@ -278,23 +277,36 @@ def finetune_cv(tasks, shapes, steps, rates, seed, log=None, tag=""):
                                 [rates[ri] for _, ri, _, _ in part], shapes, steps, seed + 7 * s0 + 1)
         curves[s0:s0 + n] = cu[:n]
         ms_l.append(ms)
-        sec_cv.append(time.time() - tg)
+        sec.append(time.time() - tg)
         if log and (s0 // L) % 16 == 0:
             log(f"  ft{tag} cv group {s0 // L + 1}/{-(-len(runs) // L)} {ms:.1f} ms/step ({time.time() - t0:.0f}s)")
     tix = np.array([r[0] for r in runs])
     rix = np.array([r[1] for r in runs])
-    info, choice = {}, []
+    out = {}
     for ti, tk in enumerate(tasks):
-        c = np.stack([curves[(tix == ti) & (rix == ri)].mean(0) for ri in range(len(rates))])   # (n_rates, npt)
-        c = np.where(np.isfinite(c), c, np.inf)
-        ri, k = np.unravel_index(int(np.argmin(c)), c.shape)
-        s = int(k) * grid
-        info[tk["id"]] = {"curves": c.tolist(), "rate": float(rates[ri]) if s > 0 else 0.0, "rate_index": int(ri),
-                          "steps": s, "n_folds": int(((tix == ti) & (rix == 0)).sum())}
-        choice.append((s, ri))
+        c = np.stack([curves[(tix == ti) & (rix == ri)].mean(0) for ri in range(len(rates))])
+        out[tk["id"]] = np.where(np.isfinite(c), c, np.inf)
+    timing = {"seconds": time.time() - t0, "ms_per_lockstep_step_median": float(np.nanmedian(ms_l)) if ms_l else None,
+              "n_cv_runs": len(runs), "steps": int(steps), "grid": int(grid), "rates": [float(r) for r in rates],
+              "group_seconds_cv": sec}
+    return out, timing
+
+
+def pick(curve, rates):
+    """(steps, rate index) with the least mean held-out score; 0 steps = the base net unchanged."""
+    c = np.asarray(curve, float)
+    ri, k = np.unravel_index(int(np.argmin(c)), c.shape)
+    return int(k) * AN.FT.GRID, int(ri)
+
+
+def final_fits(tasks, choice, shapes, seed):
+    """The final fine-tune of each task on all its episodes at its chosen (steps, rate); 0 steps: the base net
+    unchanged. Returns ({id: params}, seconds per lockstep group)."""
     out = {tk["id"]: tk["base"] for tk in tasks}
     todo = [ti for ti in range(len(tasks)) if choice[ti][0] > 0]
-    unit = grid * TRN.FT_DISPATCH
+    unit = AN.FT.GRID * TRN.FT_DISPATCH
+    L = AN.FT.LOCK
+    sec = []
     for s0 in range(0, len(todo), L):
         tg = time.time()
         part = todo[s0:s0 + L]
@@ -302,16 +314,13 @@ def finetune_cv(tasks, shapes, steps, rates, seed, log=None, tag=""):
         part = part + [part[-1]] * (L - n)
         dsets = [AN.ft_dataset(tasks[ti]["A"], list(tasks[ti]["eps"]), [], seed=0) for ti in part]
         mx = max(choice[ti][0] for ti in part)
-        _, prm, ms = ft_lockstep([tasks[ti]["base"] for ti in part], dsets, np.stack([tasks[ti]["TH"] for ti in part]),
-                                 [rates[choice[ti][1]] for ti in part], shapes, -(-mx // unit) * unit,
-                                 seed + 7 * s0 + 100003, snap_at=[choice[ti][0] for ti in part], evaluate=False)
+        _, prm, _ = ft_lockstep([tasks[ti]["base"] for ti in part], dsets, np.stack([tasks[ti]["TH"] for ti in part]),
+                                [choice[ti][1] for ti in part], shapes, -(-mx // unit) * unit,
+                                seed + 7 * s0 + 100003, snap_at=[choice[ti][0] for ti in part], evaluate=False)
         for j in range(n):
             out[tasks[part[j]]["id"]] = prm[j]
-        sec_fin.append(time.time() - tg)
-    timing = {"seconds": time.time() - t0, "ms_per_lockstep_step_median": float(np.nanmedian(ms_l)) if ms_l else None,
-              "n_cv_runs": len(runs), "n_final_runs": len(todo), "steps": int(steps), "grid": int(grid),
-              "rates": [float(r) for r in rates], "group_seconds_cv": sec_cv, "group_seconds_final": sec_fin}
-    return out, info, timing
+        sec.append(time.time() - tg)
+    return out, sec
 
 
 def widen_decision(group_curves, rates, steps):

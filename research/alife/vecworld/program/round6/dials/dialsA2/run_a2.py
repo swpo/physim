@@ -497,41 +497,91 @@ def lab_view(cfg, w):
     return w["A_mix"]
 
 
-def stage_finetune(cfg, worlds, Pn, Tn, nb, kinds_of, steps, rates, tag):
-    """FT (public-form base, prior conditioning) and CFT (true-form base, conditioning at the truth) on the first
-    nb Lab mix episodes of every world and seed, cross-validated over (rate, steps). kinds_of(w) -> kinds."""
+def ft_groups(cfg, worlds, Pn, Tn, nb):
+    """Fine-tune tasks by group (kind x eta): FT (public-form base, prior conditioning) at every eta, CFT
+    (true-form base, conditioning at the truth) at eta > 0, on the first nb Lab mix episodes of every world and seed."""
     TH_prior = LL.pad_u(PRI_U[:AN.FT.N_TH])
-    tasks = []
+    groups = {}
     for (ei, t), w in worlds.items():
         A = lab_view(cfg, w)
         lc = [str(c) for c in w["lab_cls"][lab_slices(cfg)["mix"]][:nb]]
         for s in range(cfg["seeds"]):
-            for kind in kinds_of(w):
+            for kind in (("FT",) if w["eta"] == 0 else ("FT", "CFT")):
                 if kind == "FT":
-                    tasks.append({"id": ("FT", ei, t, s), "base": Pn[s], "A": A, "eps": range(nb), "cls": lc, "TH": TH_prior})
+                    tk = {"id": ("FT", ei, t, s), "base": Pn[s], "A": A, "eps": range(nb), "cls": lc, "TH": TH_prior}
                 else:
-                    tasks.append({"id": ("CFT", ei, t, s), "base": Tn[s], "A": A, "eps": range(nb), "cls": lc,
-                                  "TH": np.tile(LL.pad_u(u_truth(t, w["eta"])), (AN.FT.N_TH, 1))})
+                    tk = {"id": ("CFT", ei, t, s), "base": Tn[s], "A": A, "eps": range(nb), "cls": lc,
+                          "TH": np.tile(LL.pad_u(u_truth(t, w["eta"])), (AN.FT.N_TH, 1))}
+                groups.setdefault(f"{kind}|eta{w['eta']:g}", []).append(tk)
+    return groups
+
+
+def stage_finetune(cfg, worlds, Pn, Tn, nb, tagx, est):
+    """DECLARED R11: cross-validation curves over (rate, steps) per group; a group whose best point is past 80% of
+    its steps reruns at doubled steps, one whose best is at 0 steps or at the first grid point of its smallest
+    rate adds a rate five times smaller (only that rate is run); each at most cfg['ft_widen'] times; then each
+    net's own pick and its final fine-tune."""
+    groups = ft_groups(cfg, worlds, Pn, Tn, nb)
     T1 = worlds[next(iter(worlds))]["lab_obs"].shape[1]
     shapes = AN.fixed_shapes(cfg["n_mix"], T1)
-    prm, info, timing = A2.finetune_cv(tasks, shapes, steps, rates, seed=5000 + 97 * nb, log=log, tag=tag)
-    groups = {}
-    for (kind, ei, t, s), v in info.items():
-        groups.setdefault(f"{kind}|eta{worlds[(ei, t)]['eta']:g}", []).append(v)
-    rule = {}
-    for g, vs in groups.items():
-        c = np.mean(np.array([v["curves"] for v in vs]), 0)
-        dec, s_best, r_best = A2.widen_decision(c, rates, steps)
-        edge = [v for v in vs if v["steps"] == 0 or v["steps"] >= steps
-                or (v["steps"] == AN.FT.GRID and v["rate_index"] == int(np.argmin(rates)))]
-        rule[g] = {"mean_curves": np.round(c, 6).tolist(), "best_steps": s_best, "best_rate": r_best, "widen": dec,
-                   "interior": dec is None, "share_nets_pick_at_edge": len(edge) / len(vs),
-                   "share_nets_zero_steps": float(np.mean([v["steps"] == 0 for v in vs])),
-                   "picked_steps": [v["steps"] for v in vs], "picked_rates": [v["rate"] for v in vs]}
-    return prm, {"per_net": {"|".join(map(str, k)): {kk: vv for kk, vv in v.items() if kk != "curves"}
-                             for k, v in info.items()},
-                 "rule": rule, "timing": timing, "steps": int(steps), "rates": [float(r) for r in rates],
-                 "interior": bool(all(r["interior"] for r in rule.values()))}
+    st = {g: {"steps": cfg["ft_steps"], "rates": [], "curves": None, "rounds": []} for g in groups}
+    todo = {g: list(cfg["ft_rates"]) for g in groups}
+    timing, k = [], 0
+    while True:
+        t_round = time.time()
+        for g, rates in todo.items():
+            cur, tm = A2.cv_curves(groups[g], shapes, st[g]["steps"], rates, seed=5000 + 97 * nb + 1009 * k,
+                                   log=log, tag=f"[N={nb}{tagx} {g}]")
+            timing.append({"group": g, "round": k, **tm})
+            if st[g]["curves"] is None:
+                st[g]["curves"], st[g]["rates"] = cur, list(rates)
+            else:
+                st[g]["curves"] = {i: np.concatenate([st[g]["curves"][i], cur[i]], 0) for i in cur}
+                st[g]["rates"] = st[g]["rates"] + list(rates)
+        dec = {}
+        for g in groups:
+            c = np.mean([st[g]["curves"][tk["id"]] for tk in groups[g]], 0)
+            d, s_best, r_best = A2.widen_decision(c, st[g]["rates"], st[g]["steps"])
+            st[g]["rounds"].append({"round": k, "steps": st[g]["steps"], "rates": list(st[g]["rates"]),
+                                    "best_steps": s_best, "best_rate": r_best, "widen": d, "mean_curves": np.round(c, 6).tolist()})
+            dec[g] = d
+        need = [g for g in groups if dec[g] is not None]
+        if not need or k >= cfg["ft_widen"]:
+            break
+        if est is not None and left() < 2.5 * (time.time() - t_round) + est["final"] + 300:
+            NOTES.append(f"FT grid at N={nb}{tagx}: widening of {need} cut by the clock")
+            break
+        todo = {}
+        for g in need:
+            if dec[g] == "steps":
+                st[g]["steps"] *= 2
+                todo[g], st[g]["curves"], st[g]["rates"] = list(st[g]["rates"]), None, []
+            else:
+                todo[g] = [min(st[g]["rates"]) / 5.0]
+        k += 1
+    tasks, choice, rule, per_net = [], [], {}, {}
+    for g, tks in groups.items():
+        picks = []
+        for tk in tks:
+            s, ri = A2.pick(st[g]["curves"][tk["id"]], st[g]["rates"])
+            r = float(st[g]["rates"][ri]) if s > 0 else 0.0
+            picks.append((s, ri, r))
+            tasks.append(tk)
+            choice.append((s, r))
+            per_net["|".join(map(str, tk["id"]))] = {"steps": s, "rate": r}
+        last = st[g]["rounds"][-1]
+        smallest = int(np.argmin(st[g]["rates"]))
+        edge = [p for p in picks if p[0] == 0 or p[0] > 0.8 * st[g]["steps"] or (p[0] == AN.FT.GRID and p[1] == smallest)]
+        rule[g] = {"rounds": st[g]["rounds"], "steps": st[g]["steps"], "rates": st[g]["rates"],
+                   "best_steps": last["best_steps"], "best_rate": last["best_rate"], "widen": last["widen"],
+                   "interior": last["widen"] is None, "share_nets_pick_at_edge": len(edge) / len(picks),
+                   "share_nets_zero_steps": float(np.mean([p[0] == 0 for p in picks]))}
+    t_fin = time.time()
+    prm, sec_fin = A2.final_fits(tasks, choice, shapes, seed=6000 + 97 * nb)
+    info = {"per_net": per_net, "rule": rule, "timing": timing, "final_seconds": time.time() - t_fin,
+            "final_group_seconds": sec_fin, "interior": bool(all(r["interior"] for r in rule.values())),
+            "ms_per_lockstep_step": timing[0]["ms_per_lockstep_step_median"]}
+    return prm, info
 
 
 def lab_means(cfg, worlds, Pn, cache):
@@ -711,29 +761,15 @@ def pipeline(cfg, out_dir, est=None):
     quick(cfg, SCO, worlds, "after the base nets")
 
     def budget(nb, wds, sco, drw, s0c, mlc, key, tagx=""):
-        steps, rates, k = cfg["ft_steps"], list(cfg["ft_rates"]), 0
-        while True:
-            name = f"6 fine-tuning N={nb}{tagx}, {steps} steps, rates {rates}"
-            with Timer(name, times):
-                ftp, inf = stage_finetune(cfg, wds, Pn, Tn, nb, lambda w: ("FT",) if w["eta"] == 0 else ("FT", "CFT"),
-                                          steps, rates, f"[N={nb}{tagx}]")
-            TR["ft"].setdefault(f"{nb}{tagx}", []).append(inf)
-            log(f"  N={nb}{tagx}: " + ", ".join(f"{g} best {v['best_steps']}@{v['best_rate']:g} widen {v['widen']}"
-                                               for g, v in inf["rule"].items())
-                + f"; {inf['timing']['ms_per_lockstep_step_median']} ms per lockstep step")
-            decs = {v["widen"] for v in inf["rule"].values()} - {None}
-            if not decs or k >= cfg["ft_widen"]:
-                break
-            if est is not None and left() < 2.5 * times[name] + est["final"] + 300:
-                NOTES.append(f"FT grid at N={nb}{tagx} not widened past steps {steps}, rates {rates} (clock)")
-                break
-            if "steps" in decs:
-                steps *= 2
-            if "rate" in decs:
-                rates = rates + [min(rates) / 5.0]
-            k += 1
+        with Timer(f"6 fine-tuning N={nb}{tagx}", times):
+            ftp, inf = stage_finetune(cfg, wds, Pn, Tn, nb, tagx, est)
+        TR["ft"][f"{nb}{tagx}"] = inf
+        log(f"  N={nb}{tagx}: " + ", ".join(f"{g} best {v['best_steps']}@{v['best_rate']:g} (steps {v['steps']}, "
+                                           f"rates {v['rates']}) interior {v['interior']}" for g, v in inf["rule"].items())
+            + f"; {inf['ms_per_lockstep_step']} ms per lockstep step")
         if not inf["interior"]:
-            NOTES.append(f"FT grid at N={nb}{tagx}: pick not interior in every group at steps {steps}, rates {rates}")
+            NOTES.append(f"FT grid at N={nb}{tagx}: pick not interior in every group "
+                         + str({g: v["widen"] for g, v in inf["rule"].items() if not v["interior"]}))
         with Timer(f"6 scoring N={nb}{tagx}", times):
             score_budget(cfg, sco, wds, nb, ftp, drw, s0c, mlc, Pn, Tn)
 
@@ -838,8 +874,7 @@ def presmoke():
     for st in c["rungs"]:
         est[f"base_{st}"] = st * ms_base + sc_rung
     for nb in c["budgets"]:
-        tm = TR["ft"][str(p["budgets"][0])][-1]["timing"]
-        ms_ft = tm["ms_per_lockstep_step_median"] / 1e3
+        ms_ft = TR["ft"][str(p["budgets"][0])]["ms_per_lockstep_step"] / 1e3
         k_cv = len(AN.folds_of(nb))
         n_ft = nw * c["seeds"] + (nw // 2) * c["seeds"]           # FT at every eta, CFT at eta 4
         runs = n_ft * k_cv * len(c["ft_rates"])

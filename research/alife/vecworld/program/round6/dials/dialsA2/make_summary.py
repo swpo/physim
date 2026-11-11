@@ -177,12 +177,13 @@ if tr:
                     "curve_step": [hh["step"] for hh in b["hist"]], "curve_val": [hh["val"] for hh in b["hist"]]}
                    for b in tr["base"]]
     trn["base_rule_met_at_scored_rung"] = bool(tr["base"][-1]["rule_met"]) if tr["base"] else None
-    trn["ft"] = {k: [{"steps": v["steps"], "rates": v["rates"], "interior": v["interior"],
-                      "groups": {g: {kk: r[kk] for kk in ("best_steps", "best_rate", "widen", "interior",
-                                                           "share_nets_pick_at_edge", "share_nets_zero_steps", "mean_curves")}
-                                 for g, r in v["rule"].items()},
-                      "ms_per_lockstep_step": v["timing"]["ms_per_lockstep_step_median"]} for v in vs]
-                 for k, vs in tr["ft"].items()}
+    trn["ft"] = {k: {"interior": v["interior"], "ms_per_lockstep_step": v["ms_per_lockstep_step"],
+                     "groups": {g: {kk: r[kk] for kk in ("steps", "rates", "best_steps", "best_rate", "widen", "interior",
+                                                          "share_nets_pick_at_edge", "share_nets_zero_steps", "rounds")}
+                                for g, r in v["rule"].items()},
+                     "per_net_picks": "train_info.json [ft][budget][per_net]"}
+                 for k, v in tr["ft"].items()}
+    trn["ft"] = json.loads(json.dumps(trn["ft"], default=lambda o: o.tolist() if hasattr(o, "tolist") else str(o)))
     trn["D"] = {k: [{"steps": v["steps"], "rule_met": v["rule_met"], "best_step_hist_per_eval": v["best_step_hist"]}
                     for v in vs] for k, vs in tr["D"].items()}
     lam = tr.get("res_cv_ridge", {})

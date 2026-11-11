@@ -4,13 +4,20 @@ Worktree /home/user/wt/dialsA2 (branch wt-dialsA2, pushed to claude/fisim-agent-
 r6-dialsa2-NNN (lower case, per the coordinator). Scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/dialsA2/.
 
 ## Done
-- 19:50 UTC: read PLAN.md, dialsA (README, DECLARED, DEVIATIONS, summary checker block, run_a.py, a_nets.py, xlaw.py,
-  a_stats.py, job outputs and review of r6-dialsa-003), defect_gliders DESIGN.md, DECISIONS.md. Wrote DECLARED.md,
-  DEVIATIONS.md (entry 1), this file; committed before any code or request.
+- 19:26 UTC: DECLARED.md committed (3fd4076c5) before any code or request; DEVIATIONS.md entries 1 (whole exam quoted
+  from A) and 2 (the header's clock time is wrong; the commit time is the record).
+- 19:33-20:02: code: a2_lib.py (scan trainers, rate-per-net fine-tunes, designed arms, H/H_mix), a2_stats.py (criteria),
+  run_a2.py (job), job.sh, make_summary.py. CPU smoke in place: presmoke, guard, full pass, exit 0 (20:02);
+  make_summary runs on its output. Committed 04ddec834 (the ref to pin).
+- 20:03: archive test started: job.sh at tiny shapes from a git archive of exactly the request paths at 04ddec834
+  (scratch arch/, log arch.log).
 
 ## Running
-- nothing
+- archive test (local CPU, background).
 
 ## Next step
-- Build run_a2.py (reusing dialsA's xlaw, a_nets, a_stats), a2_train.py (50-step scan trainer), a2_infer.py (H, H_mix),
-  a2_stats.py, job.sh; CPU smoke test from a git archive of exactly the request paths; then request r6-dialsa2-001.
+- When the archive test exits 0: commit research/alife/vecworld/program/gpu/requests/r6-dialsa2-001.json (draft in
+  scratch r6-dialsa2-001.json.draft; ref 04ddec834, A100 40GB, max_hours 3.9, cap $8.40), push, then wait with one
+  background loop on origin/gpu-jobs:jobs/r6-dialsa2-001/status.json; read review.md first when it appears.
+- After the job: copy outputs to results/job/, run make_summary.py --job-id r6-dialsa2-001, write README.md and the
+  final report.
