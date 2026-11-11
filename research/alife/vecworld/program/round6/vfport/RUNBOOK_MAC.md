@@ -1,12 +1,42 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
-**ON HOLD (round 4, 11 Nov 2026). Run nothing from this copy.** The round-3 GO for steps 0 to 2 held for the
-commit `08bd5a669867623a476e7446a74612be47001b3b` and for that commit only. The code and this file were changed
-in round 4 (the laboratory's bearer, box caps in code, the spend stop, a step 3 that is driven by a request, the
-exam rulings E1 to E16), and that round has no verdict yet, so nothing below is released: not steps 0 to 2, not
-step 3, not step 4. A new notice replaces this one when the round-4 verdict is written (it will begin
-`**GO for steps 0 to 3.**`, or `**GO for steps 0 to 2.**`, or stay a hold); until then a session that reads this
-file stops here (rule A.1) and reports.
+**GO for steps 0 to 2.** Round-4 verdict of the host-safety audit, 11 Nov 2026 (`HOST_SAFETY_AUDIT.md`,
+"Re-audit, round 4"). Steps 0, 1 and 2 of this file and "If a run was interrupted" (as it applies to step 2) may
+run on the lead's Mac, as written, from ONE commit: the commit that holds this notice. Its 40-character hash is
+in the coordinator's GO message (a commit cannot name itself); the lead checks it out and gives it to the
+session, and step 0 compares it. Step 4 is covered too; run it only when the lead says the pilot is over. Judged
+were the code of commit `c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed` and the commands as rehearsed at commit
+`d9694f3e5b6c92a98c13fb36f02645f01f18728c` (the 41 fenced commands and the 2 inline commands of this file are,
+byte for byte, the rehearsed ones); in the folders the pilot uses, the commits after `c7db465d5` changed
+`results/`, `rehearsal/`, this notice and `HOST_SAFETY_AUDIT.md` and nothing else, and step 0 proves the code by
+the pin below. This GO replaces the round-3 GO: run this commit, not `08bd5a669867623a476e7446a74612be47001b3b`.
+
+**Step 3 (model rollouts) is NOT released by this notice: NO-GO.** Rule A.1 stands: step 3 needs a notice that
+begins `**GO for steps 0 to 3.**`. Two findings of major severity are open, and each needs a change of a pinned
+file, so a new pin: (1) a model in its box can push an unbounded amount of data into processes on the Mac (the
+output of the in-box check, which vf-eval reads whole; a request body, which the laboratory reads whole; the
+relay buffer of the box's proxy): the Mac's memory, not its files; (2) the in-box check `lab.validate` reports
+"as graded" for predictors that then fail in grading. From this commit, run no command of section 3, 3.0
+included, and create no `LEAD-GO-MODEL-SPEND.json`.
+
+The verdict adds three corrections of wording. Where the text below says something else, these hold. No command
+changes.
+
+1. **Section B, "What reaches those processes":** the closing words "`DYLD_*` variables are not looked for by
+   anybody" are wrong for this pin. Step 0's environment check and every tool look for `DYLD_*` names and refuse
+   a session that holds one (`FOUND DYLD_...` in step 0 is a stop, as step 0 says).
+2. **Step 2b, the report command:** its first line prints counts (`round5 <n> of <m> [...] new <n> of <m>
+   [...]`) for which this file gives no expected numbers; the cloud rehearsal printed `round5 32 of 34 [] new 66
+   of 66 []`. Report the counts as they are; what decides a stop is the two lists of `probe.log` (on the Mac:
+   `"failed_round5": []` and `"failed_new": ["b_lab_process_dropped_it_after_loading"]`).
+3. **"If a run was interrupted", point 3:** Docker Desktop may spell the refusal for an unknown name
+   `Error: No such object: <name>` (capital E) where the text says `error:`. It means the same: nothing was
+   removed; stop and report.
+
+For the lead, not the session: step 0 of this text expects no pilot folder, no `.venv` and no image
+`physim2-ring:2`. Unless the next pin's step 0 says otherwise, before that pin's step 0 (the pin that may release
+step 3) the lead clears what this commit's steps 1 and 2 leave: step 4 (the two pilot folders), then by hand the
+`.venv` of the study folder (or a fresh checkout) and the image (`HOST_SAFETY_AUDIT.md`, "Re-audit, round 4").
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->

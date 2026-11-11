@@ -1,4 +1,4 @@
-# VERDICT (round 3, 10 Nov 2026): GO for the scripted smoke test on the lead's Mac (steps 0 to 2 of `RUNBOOK_MAC.md`), from the one commit that holds this line (code and commands as judged at db3ff5a6eacc6a4ccc66374df5ac3fc0051c75e3; sha256 of `PIN.sha256` cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4). It replaces the round-2 GO for af767adbdeac3d00906d7a3394421e1bc4d6e486, which was suspended after the Mac session's own review: that commit is not to be run. The one-model rollout stays NO-GO until the smoke test has passed on the Mac and the open points of step 3 are settled. See "Re-audit, round 3" at the end; sections 1 to 6, "Re-audit, round 1" and "Re-audit, round 2" are the three earlier verdicts, kept as they were.
+# VERDICT (round 4, 11 Nov 2026): GO for the scripted smoke test on the lead's Mac (steps 0 to 2 of `RUNBOOK_MAC.md`), from the one commit that holds this line (code as judged at c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed, commands as rehearsed at d9694f3e5b6c92a98c13fb36f02645f01f18728c; sha256 of `PIN.sha256` 776d9a333d545d21abd182879fc311fbb41bd710d024a035b15b48df84f6fadc). NO-GO for step 3, the model rollouts driven by requests: two major findings are open (K4: a model in its box can push an unbounded amount of data into processes on the Mac; X6: the in-box check `validate` reports "as graded" for predictors that fail in grading), and each needs a new pin. It replaces the round-3 GO for 08bd5a669867623a476e7446a74612be47001b3b, which is not to be run any more. See "Re-audit, round 4" at the end; sections 1 to 6 and the re-audits of rounds 1 to 3 are the earlier verdicts, kept as they were.
 
 Host-safety audit of `round6/vfport`, 10 Nov 2026. Audited: `round6/vfport` and `round5/agentenv` at
 branch head 216eddf37, identical in both folders to 997005f56 (archives compared by me). All three lenses
@@ -635,3 +635,217 @@ did: 48 of 48, 8 of 8, 46 of 46), nor `tools/check_safety.py`, the red team's at
 --worlds 4` or the gliders rollout. Of the changed check tools (pinned, on the Mac's never-list) I read the
 opening texts and searched the added lines for calls that kill or delete: they stand in scripts that are sent
 into containers and in the harness that starts them. The code re-audit read that diff in full.
+
+## Re-audit, round 4
+
+**VERDICT, 11 Nov 2026: GO for the scripted smoke test on the lead's Mac (steps 0, 1 and 2 of
+`RUNBOOK_MAC.md`). NO-GO for step 3, the model rollouts driven by request files: two findings of major severity
+are open (K4 and X6 below). Each needs a change of a pinned file, so a new pin, a re-audit of its diff and a
+rehearsal of what changed.**
+
+The GO covers steps 0, 1 and 2, the section "If a run was interrupted" as it applies to step 2, and step 4 once
+the lead says the pilot is over. It holds for ONE commit: the commit that carries this section and the GO notice
+at the top of the runbook; the coordinator's message gives its 40-character hash, the lead checks it out, and
+step 0 compares it. It replaces the round-3 GO: `08bd5a669867623a476e7446a74612be47001b3b` is not to be run any
+more. This verdict replaced the first line of this file, added this section, and replaced the notice between
+`HOLD-BEGIN` and `HOLD-END` of the runbook (GO for steps 0 to 2, NO-GO for step 3 in words, three corrections of
+wording); it changed nothing else and no command. Neither file is listed in `PIN.sha256` (run: 0 matches).
+
+Judged: the code of the second round-4 pin, `c7db465d5fc990aa41d28cfb6cfc36eb34f8b2ed` (sha256 of `PIN.sha256`
+`776d9a33…fadc`, equal to the runbook's pin block; 135 of 135 files match at the branch head: run), and the
+commands as rehearsed from a fresh clone of the first round-4 pin, `d9694f3e5b6c92a98c13fb36f02645f01f18728c`.
+Between the rehearsed and the judged commit: the 41 fenced commands and the 2 inline commands are byte for byte
+the same (run: my script); the prose changed in six places (the opening paragraph, section B's network paragraph, 3.1,
+3g, 3h, the closing section), and so did the pin block, the block of facts and the example config (the removed
+key `reasoning_summary`); five pinned files changed
+(`rollout_config.py`, `check_config.py`, `check_round4_step3.py`, `run_report.py`, the example config), of which
+steps 0 to 2 use one, `run_report.py` (one field of 2c's report: the turn count; read). After `c7db465d5` only
+`results/`, `rehearsal/`, this file and the notice changed in the three folders the pilot uses (run: `git diff
+--stat`). Inputs: the integrator's report and three audits: code (GO for steps 0 to 2, NO-GO for step 3), runbook
+(GO for steps 0 to 3, minor items) and exam integrity (one major, scores quotable on conditions). What I rely on
+I checked at the head myself; where a row rests on somebody else's run it says whose.
+
+| evidence label | meaning in this round |
+|---|---|
+| read | the cited lines were read by me (verifiers: the pinned checkout; mcp 2.0.0, starlette 1.10.0, uvicorn 0.54.0: the versions of `uv.lock`, read in an installed copy of them) |
+| run | run by me: scripts over texts and records, `sha256sum`, `git`, and one key scan (a Python process that read the values from its environment and printed file names and counts only); no file of the port was executed |
+| tripwire, container, vf-eval (integrator, fixers, auditors) | their runs, recorded in `results/`; none by me |
+| inferred | reasoned, not run: every statement about macOS and Docker Desktop |
+
+### What changed since 08bd5a66
+
+| area | change | where (pinned unless said) | checked by me |
+|---|---|---|---|
+| the laboratory | a 256-bit bearer per rollout, in vf-eval's memory only; `401` without it before the application; DNS-rebinding protection on (Host `127.0.0.1:<port>` only); the box's proxy adds the header for laboratory requests | `physim2_env/bearer.py`, `lab_tools.py`, `runtime.py`, `access.py` | read |
+| the boxes | caps added to every box and read back from the engine before use: 2 CPUs, at most 4 GB without swap, 512 processes, read-only root, memory-backed `/workspace` 1 GiB, `/tmp` 512 MiB, `/etc/physim2`, `/runtime`; a config can only lower memory | `boxcaps.py`, `runtime.py` | read (the code audit read and the fixers measured the rest) |
+| the image | `physim2-ring:2`: verifiers' `bash` harness preinstalled from hashed pins, so a box downloads nothing at set-up; the scientific wheels hashed (`ring-requirements.txt` says the aarch64 compile gives the same file) | `docker/` (now pinned) | read |
+| the driver guard | the four memory file systems of a capped box are accepted mount points | `public/_item.py` (+9 lines) | read: see K1 |
+| the spend stop | one counted client in vf-eval; worst-case counting of missing usage, errors and streams without usage; mandatory `max_context_tokens`; the provider's cost field when higher; the lead's standing go `LEAD-GO-MODEL-SPEND.json` and one ceiling over this Mac's ledger and the program's shared ledger | `spend.py`, `tools/vfrun.py`, `tools/check_request.py` | read |
+| step 3 | request route `rollout-job/v1` (stages instance, reference, dry-run, rollout, close), strict config schema, publication folder with key scan and manifest | `tools/check_request.py`, `tools/vfrun.py`, `tools/pack_rollout.py`, `rollout_config.py`, `tools/check_config.py`, `profiles.py` | read |
+| the exam | rulings E1 to E15 (list in the report to the coordinator; E16 not done); profile `ring` with exam config `ring_r4` (64 items, 256 samples, reset 17 ticks) | `taskset.py`, `grading.py`, `access.py`, `capture.py`, `bundle.py`, `TASK.md.tmpl`, `public/`, `agents/keep_baseline.py` | read in part (X1 to X11) |
+| the session's environment | refused names now include `PYTHONEXECUTABLE`, `__PYVENV_LAUNCHER__` and `DYLD_*` (step 0 and every tool); the nine names a child inherits are unchanged and do not include `SSL_CERT_FILE` | `tools/vfrun.py:74, 82-84`; runbook step 0 | read |
+| the runbook | 43 commands (35 in round 3), 20 of them byte for byte round 3's; every one starts with the folder guard; no `$(...)`, no backtick, no variable but `$HOME` and `$?`; the destructive targets are round 3's four (one pid after its command line was compared, one container by exact name after its label was read back, the two pilot subfolders after link checks, in point 6 and step 4) | `RUNBOOK_MAC.md` (not pinned) | run (script) |
+| the pin | 135 files (109): `docker/`, `physim2_verifier/` and the new tools added | `PIN.sha256` | run |
+
+Every kill, delete, move or mode change added since 08bd5a66 outside `tests/`, `rehearsal/` and `results/` stands
+in a box script behind the marker gate (`agents/probe_caps.py`, `public/validate.py`), in a command sent into a
+box (`taskset.py`), in the image build, in a development check on the Mac's never-list, in `tools/vfrun.py`'s stop
+of its own child, or replaces a file inside the pilot folder (`access.py`, `vfrun.py`) (run: a search of the diff
+for 15 primitives; read: each hit).
+
+### The code audit (K1 to K8)
+
+| item | severity | status | evidence (mine unless said) |
+|---|---|---|---|
+| K1 the driver guard accepts any tmpfs at `/workspace`, `/tmp`, `/etc/physim2`, `/runtime` | minor, Linux hosts only | open; same class as N5 | read (`_item.py:95, 169-171`): a host tmpfs bound there by a hand-started Linux container passes (round 3 refused it). A Mac folder is never a tmpfs and is refused wherever it is mounted; every `docker run` by hand is on the never-list (inferred for the Mac). Not a reopening of A4/A5 (below). Fix: require the box's own `size=` option |
+| K2 capture: directories not counted; a tar error in mid-file leaves an unlisted partial file | minor | open | auditor's container run (22 hostile archives, nothing outside the destination); not repeated |
+| K3 the bearer | none | closed | read: `bearer.py` in full, `lab_tools.py:254-262` |
+| **K4 a box can push unbounded data into processes on the Mac** | **major, step 3** | **open: blocks step 3** | read: the laboratory's `check` runs `physim2.validate` from `/workspace` (`access.py:86-89, 355`), which the agent, root in its box, can rewrite; verifiers reads that command's whole output into vf-eval's memory (`runtime.py:96-99` delegates to `vf:runtimes/container.py:44-63`, `proc.communicate()` at line 59), for up to `check_timeout` (`access.py:175`); a request to the laboratory with the bearer is read whole (`mcp/server/streamable_http.py:537`, `await request.body()`; uvicorn sets no body limit); the proxy's pump feeds every chunk into an unbounded buffer (`runtime.py:167-178`). The box caps bound what a box holds, not what it sends. Fix: cap the validator's output in the box (`... \| head -c 1048576`), refuse request bodies above a limit in `bearer.guard` (Content-Length and counted bytes), bound the relay buffer; a test for each |
+| K5 spend stop: `check_shape` is a deny-list; the chained prompt bound ignores non-message fields outside `_rest_hash`; failed spend-log writes are silent | minor, step 3 | open | read (`spend.py:119-172`). Effect if a provider honours such a field: one call can cost more than "one worst-case call" (up to the model's window instead of `max_context_tokens`), or be routed elsewhere; the provider's cost field still counts when higher. Fix: an allow-list of request keys; every non-message key in the hash |
+| K6 strict config schema | none | closed | read (`rollout_config.py`, `check_config.py`); the block of facts equals `check_request.py --facts` (code auditor, tripwire) |
+| K7 the model key | none | closed | read (`vfrun.py`: `ENV_PASS`, the model names only with `--model-credentials`); run: 0 hits for the values of `PRIME_API_KEY`, `HF_TOKEN`, `WANDB_API_KEY` (plain and base64 at three alignments) in 274 files of `round6/rollouts` and `round6/vfport`. Minor: `pack_rollout.py`'s base64 needle has one alignment |
+| K8 the pin | none | closed | run (135/135; both edited files outside it); every file that runs on the Mac is listed (`docker/`, `physim2_verifier/`, tools, agents, configs, `uv.lock`); `tests/` and `rehearsal/` are not, and are on the never-list |
+
+### The runbook audit (T1 to T18)
+
+| item | severity | status |
+|---|---|---|
+| T1 no accidental start of a model from steps 0 to 2 | none | closed (read: the command form refuses a config that is not scripted; the rollout stage needs a request, the go file, `--model-credentials prime`) |
+| T2 "the tools check the last three themselves" (3, opening) | minor, step 3 | open: no tool checks that steps 0 to 2 passed |
+| T3 the go file: placeholders inside double quotes; the session writes the file on the lead's word, where an earlier decision had the lead make it by hand | minor, step 3 | open; the lead confirms the procedure before step 3 |
+| T4 "no single call can cost more than the worst case" holds at the listed prices only | minor, step 3 | open (with K5) |
+| T5 3b's "the bound you computed yourself": no command computes it | minor, step 3 | open |
+| T6 refusals print `refused:` and exit 2 | none | closed |
+| T7 status commands print no key and no hidden value | none | closed |
+| T8 point 8 asks to read the log's last lines, which 3f forbids | minor, step 3 | open |
+| T9 `close` checks the pin first: a cut job must be closed at its own commit | minor, step 3 | open (read: `vfrun.py:645, 652`) |
+| T10 `EXIT 97` in step 3: two readings, both safe | minor, step 3 | open |
+| T11 3f's "wall time plus 160 minutes" equals the tool's own deadline (`GRADING_ALLOWANCE_S`, `vfrun.py:468, 777`) | minor, step 3 | open |
+| T12 an interrupted pack (`publish/<job>` without `MANIFEST.json`) | minor, step 3 | open |
+| T13 the Mac runner's protocol is checkable from the block of facts | none; one mismatch | closed; minor: the runner accepts requests from more places than 3a reads (ends in a refusal at 3a) |
+| T14 section B: "`DYLD_*` not looked for" is false; `git rev-parse` missing from the key table | minor | the first is corrected by the notice (point 1); the second is step 3, open |
+| T15 "If a run was interrupted" on paper, per phase | none | closed for step 2; step 3's cases as listed by the auditor |
+| T16 the rehearsal record against the text | none | closed; I repeated the comparison of commands (above) |
+| T17 macOS differences end in a stop (`Error: No such object`, zsh `noclobber`, `chpwd` output, `nohup` notice, the session's sandbox) | minor | point 3 of the notice for the first; the rest residual |
+| T18 the Mac review's minor findings | | see below |
+
+### The exam-integrity audit (X1 to X11)
+
+| item | severity | status |
+|---|---|---|
+| X1 E1, the end of the run: graded on the last checkpoint after a failed run (at most 30 s or one model call old), while the statement says "at the moment your run ends" | minor (wording) | open |
+| X2 E2, the baseline | none | closed (records: an untouched box scores as the null policy, below K) |
+| X3 E3, fallback and arithmetic | none; two notes | closed: the round-5 cross-check gives identical scores for six predictors (largest difference 0.0) at the profile `ring_r4` (`results/round4_exam.json`, entries 41 to 46 of `proof.checks`: read); no grading file changed after that proof (run: `git diff --stat 9dafd57df c7db465d5`). Notes: the reason word of a fallback comes from the predictor's stderr; `not_a_grade` scores 0.0 |
+| X4 E4 to E7 | none | closed (read: `TASK.md.tmpl:9, 49, 77, 94-100`, `bundle.py:190-230`, `public/labclient.py:22, 46, 125`; E7: Lab and exam both `build_world(inst["theta"])`, `round5/agentenv/evaluator/instance.py:107`, `lab_service.py:52`) |
+| X5 E8: the card's envelope and per-item memory are fixed numbers while a config may lower the box; `/dev/shm` and the 256-process item limit undisclosed | minor | open (read: `round5/agentenv/evaluator/lab_service.py:93`) |
+| **X6 E9: `validate` says "as graded" for predictors that fail in grading** | **major (exam integrity), step 3** | **open: blocks step 3.** read (`public/validate.py:58-75, 175-238`, the copy at 206, `/workspace` closed at 218): the check copies the agent's own `physim2/` (added files included; `package_changes` looks at manifest entries only) and closes `/workspace` only, so a predictor that reads `/tmp`, `/dev/shm` or an added `physim2/` file passes here and fails every item in grading (all 64 then fall back to the null policy). Auditor's container run: `ok: true, as_graded: true` for two such predictors. Fix: copy `physim2/` from the manifest entries only and fail on a mismatch; close `/tmp` and `/dev/shm` to other users during the check; both cases into `check_round4` |
+| X7 gaming the grader | minor residual | jointly chosen samples still gain about 0.4% at 256 samples (about one standard error) |
+| X8 leaks in the box | none | closed |
+| X9 no `--max-reply-mib` on `driver_cmd` (default 64 MiB per item) | minor | open (read: `_item.py:694`) |
+| X10 the caps from the agent's side | none | closed apart from X5 |
+| X11 what qwen_ring_002 showed; three changes before the next rollouts (X6; E16; `python -m physim2.validate` forwarded to `lab.validate`) | | recommendations |
+
+### The Mac review's minor findings (identifiers only)
+
+Status as fixer B reported it and as the runbook audit read the text; spot-checked by me where marked.
+
+| status | findings |
+|---|---|
+| closed in code | CRED-5 (the bearer: read), SIG-3, G1 (both names refused: read), NEWC-1, RB-8 (`--ignored`, `--no-optional-locks`: read), RB-3/R3-4, INV-9 (`--no-cross-check` kept: read), DOCK-3/INV-4/INV-2 |
+| closed in text | SIG-2 (read), INV-7 (read), DEL-2 (read), DEL-3/INV-6 (read), the apt and apk mirrors (read), RB-7, INV-5 (read), INV-8 (read), RB-1, RB-2 (runbook audit; fixer B had deferred it), RB-9, CRED-1 (read) |
+| accepted with reason, in text | DEL-1 (read), DOCK-5 (read), R3-3 |
+| closed in part | R3-8; R3-7 (`DYLD_*` refused; the stale sentence is point 1 of the notice); INV-3/R3-9 (disclosed); DOCK-1/RB-4/R3-1/RB-5 (the tools refuse a context that is not a local Unix socket) |
+| open, minor | CRED-2 (git's and docker's credential helpers are not in section B); DOCK-4 (mitigated: a box carries no extra mount; the guard is unchanged; said in `README.md` only) |
+| deferred | CRED-4/CMD-14 (build backend pinned by version, not hash); RB-6 (needs the Mac); CMD-5, SIG-1, R3-2, R3-5, INV-1 (the appendix gives no text); the list "not covered by anyone" |
+
+### Rounds 1 to 3: nothing reopened
+
+| earlier finding | status | evidence |
+|---|---|---|
+| A1 working directory | closed | run: 43 of 43 commands begin with the folder guard; `uv` in two commands, both with `--project <absolute path>`, the dry run first |
+| A2, N1 to N3, interruption | closed | the status and stop commands are round 3's with the same matching; rehearsed again as `sh -c` lines (record: one stop by the stop command, `EXIT 130`, a reset; a watchdog trip, `EXIT 97`; in step 3 a SIGKILL of tool and vf-eval cleared by points 1, 3, 5 and 8) |
+| A3 box scripts | closed | the new box script `agents/probe_caps.py` deletes only its own one-byte file behind the marker gate (code audit, read; the hit read by me) |
+| A4, A5 driver | closed for the Mac; narrowed on Linux | `_item.py` changed in the allow-list only (K1): a Mac share is still refused wherever it is mounted; no `rmtree`, unlink and rmdir of listed paths only (unchanged lines). K1 joins N5 as a Linux-host residual |
+| S1, S2, N4 | closed | unchanged; N4 used by this verdict |
+| N5 to N8 | open, minor, Linux hosts only | unchanged, plus K1 |
+| M1 to M3, m1 to m11, D1 (round 3) | closed | `ENV_PASS` unchanged, `ENV_REFUSE` wider (read); `_nokey` and the stand-in client unchanged for scripted runs; the watchdog on every start (record: `EXIT 97`) |
+| G1 | closed | read: step 0's pattern and `ENV_REFUSE` hold both names |
+| change 9 (step 3) | replaced | by the request route of round 4; NO-GO in this round (K4, X6) |
+
+### The Mac runner's protocol: can the pin meet it?
+
+Yes, as far as a program can check it (runbook audit T13; read by me): the request keys and shapes, the strict
+config schema with its forbidden fields, the profile `ring` with 64 items, the scripted policies of the reference
+table (`null`, `D`, `P0`, `PM`, `S`, `C`), the stages, the publication files and the 20 MB / 50 MB limits stand in
+the block of facts between markers, which `tools/check_request.py --facts` prints; the crash clean-up is point 8
+of "If a run was interrupted" with stage `close`; `SSL_CERT_FILE` is not on the tools' allow-list; the key
+reaches vf-eval by the environment only. What this pin cannot give the runner is a rollout: the route is in
+place, but step 3 is not released (K4, X6), so no request should name this commit.
+
+### What remains before GO for steps 0 to 3
+
+1. **K4** (major): a byte cap on the validator's output inside the box; a body limit in `bearer.guard`; a bounded
+   relay buffer in `runtime.py`; one test each (a box that writes without end must not grow vf-eval or the
+   laboratory beyond a fixed bound).
+2. **X6** (major): `validate` copies `physim2/` from the manifest entries only and fails on any difference;
+   `/tmp` and `/dev/shm` are closed to other users for the check; the two predictors of the exam audit fail the
+   check; `check_round4` gains both cases.
+3. Same pin, minor: K1 (`size=` on the four tmpfs mounts), K2, K5 (allow-list of request keys; all non-message
+   keys in the hash; a failed spend-log write is not silent), X1 (one clause in §4), X5 (card rendered from the
+   run; `/dev/shm` and 256 processes disclosed), X9 (`--max-reply-mib 1`).
+4. Runbook text of step 3: T2, T3, T4, T5, T8, T9, T10, T11, T12, the `git rev-parse` row of T14, the request
+   source of T13; and step 0 should say what a `.venv` and an image `physim2-ring:2` left by this pin's steps 1
+   and 2 mean (today both are a stop).
+5. A new pin, a re-audit of its diff, a rehearsal of every changed command and of one model job from a request
+   (at least to the first model call, with the new caps exercised by a box that floods), and a verdict.
+
+### Scores from this pin
+
+Not quotable without conditions. The exam audit found one fault that can make a run's score misleading (X6: an
+agent trapped by the false "as graded" scores the null policy on all 64 items), and the top of the scale is
+unknown until ruling E16's two reference rows exist (the strong model scored above C on the ring). A score of
+this code may be quoted only with its `n_failed` and fallback reasons, with `infrastructure_failed_items` = 0,
+without `grading error` or `not_a_grade`, and, for a run whose items failed for `validation failed`, only after
+its detail was read for the X6 trap; and not as a measure of how hard the ring is. qwen_ring_002 (0.786, no
+failed item, no fallback; code of `d9694f3e5`, whose grading files equal this pin's) meets these conditions.
+
+### Residual risks, also with this GO
+
+- **Nothing has run on macOS or Docker Desktop** (inferred only, each ending in a stop rather than a repair):
+  zsh as the session's shell and a detached command outliving its call; BSD `ps`, `awk`, `df -Pk`, `shasum`;
+  uv's managed Python and its command line; that Docker Desktop applies `--read-only`, `--tmpfs`, `--memory`,
+  `--pids-limit` and `--cpus` as the Linux engine does (the caps are read back and a box without them is not
+  used); the signs of a container and the mount table there; that a laboratory outlives a killed vf-eval.
+- **Never run in the runbook's form:** the image build of step 1 and its status command (built in the cloud with
+  two proxy arguments the Mac does not use); step 4; point 4 of "If a run was interrupted"; the rule for a second
+  interruption; a stop of a vf-eval by its own pid.
+- **As the lead:** the tools and the laboratory run on the Mac as the lead; `uv sync` runs a build backend pinned
+  by version, not hash (CRED-4); the `docker` client may ask its credential helper when it pulls the base image
+  (CRED-2).
+- **The disk:** the watchdog is a brake, not a wall; `uv sync` and the image build are checked before they start
+  only.
+- **Linux hosts:** N5 to N8 and K1; the cloud rehearsal's own scripts act for real on the cloud host.
+- **Step 3, when a later pin releases it:** an untrusted model is root in a capped box for up to 180 minutes;
+  Docker Desktop's virtual machine and verifiers' network cut are the walls (2b measures the cut on the Mac);
+  the spend stop rests on the provider's usage and was seen to stop a run only against the stand-in endpoint
+  (`results/round4_step3.json`, R11, R14); the ledger ceiling was seen to refuse under tripwires (D19 to D19c) and
+  to block the next job while a cut job's row was open (rehearsal).
+
+### By hand (the lead, and the Mac session before its first command)
+
+In addition to section C of the runbook and the lists of rounds 1 to 3:
+
+| when | check | expected |
+|---|---|---|
+| before | the coordinator's GO message; `git rev-parse HEAD`; the first text line of `RUNBOOK_MAC.md` on disk | a 40-character hash; equal to it; it begins `**GO for steps 0 to 2.**` and names round 4. Not `08bd5a66…` |
+| before | nothing of round 3 on the Mac: `ls "$HOME/physim2-pilot-20261110"`, `docker images physim2-ring`, `.venv` in the study folder | none (section C and step 0 expect none) |
+| before | Docker Desktop: 4 CPUs and at least 6 GB for its virtual machine; at least 11 GiB free on the home folder's file system | as section C says; nothing changed by the pilot |
+| after step 2b | the report: both lists of `probe.log`; `staging` with `box_limits`; `control`; `agent box net` with `proxy_loopback_names`; `item box net` | `failed_new` holds `b_lab_process_dropped_it_after_loading` only; `box_limits` shows the caps; these lines are what a later step-3 GO rests on (the network cut and the caps on Docker Desktop) |
+| after the pilot | before the next pin's step 0 | step 4 on the lead's word; then the lead removes `.venv` (or uses a fresh checkout) and the image `physim2-ring:2` by hand, unless the next runbook says otherwise |
+| step 3 | | not from this commit. The next pin's verdict says what it needs (above) |
+
+Not covered by this round: the same as section 6 and rounds 1 to 3. By me: no rollout, no container, nothing on
+macOS; I did not rerun the check tools (`check_runbook.py` reads the notice's first line only for `GO for steps 0
+to 2.` or `0 to 3.`: read, lines 297-300), `tools/check_step3.py` or the exam proof, and I did not repeat the
+auditors' container runs (capture, E9). The Mac review's text was read; no detail of the lead's machine is
+written here.
