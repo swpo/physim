@@ -185,12 +185,12 @@ def main():
         and f'test ! -e {PILOT}" && test ! -L {PILOT}"' in joined and f'test ! -e {ROLLOUTS}" && test ! -L {ROLLOUTS}"' in joined
     drm = [c for c in cmds if "docker rm" in c]
     checks["r3_docker_rm_reads_the_label_back_first"] = len(drm) == 1 and drm[0].endswith(
-        "docker inspect --format '{{index .Config.Labels \"verifiers.run\"}}' NAME_FROM_THE_STATUS_LINE | grep -Fx " + LABEL + " && docker rm -f NAME_FROM_THE_STATUS_LINE")
+        "docker inspect --format '{{index .Config.Labels \"verifiers.run\"}}' NAME_FROM_THE_STATUS_LINE | command grep -Fx " + LABEL + " && docker rm -f NAME_FROM_THE_STATUS_LINE")
     # ---- round 3: the disk floor (D1), other containers (m7), the build cache (m10) ----
     gate = "df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print \"refused: under 8 GiB free on the file system of the home folder\" ; exit 1 }' && "
     gated = [c for c in cmds if gate in c]
     checks["r3_disk_floor_is_on_every_start"] = all("--disk-floor-gib 8" in c for c in real + vfrun_cmds) and len(gated) == 4 \
-        and all(any(k in c for c in gated) for k in ("--dry-run 2>&1 | grep", "nohup uv sync", "nohup docker build")) \
+        and all(any(k in c for c in gated) for k in ("--dry-run 2>&1 | command grep", "nohup uv sync", "nohup docker build")) \
         and any("DISK-OK" in c and "8388608" in c for c in cmds) and "**You never\n   make room:**" in text and "EXIT 97" in text
     quiet = [c for c in cmds if c.endswith("docker ps --format '{{.Names}} {{.Image}}' && echo \"RUNNING-LISTED\"")]
     checks["r3_no_other_container_runs_during_step_2"] = len(quiet) == 1 and text.index(quiet[0]) < text.index("### 2a.") \
@@ -280,9 +280,21 @@ def main():
                  "commit_named": commit.group(0) if commit else None, "pin.py --check": chk.stdout.strip().splitlines()[:5], "files_listed": None}
     if pin_hash:
         ev["pin"]["files_listed"] = len(open(pin_file).read().splitlines())
+    # ---- round 5: the Mac session's rulings (COORD, 11 Nov) ----
+    checks["r5_every_grep_of_a_command_is_command_grep"] = all(re.sub(r"command grep", "", c).count("grep") == 0 for c in cmds) \
+        and sum(c.count("command grep") for c in cmds) >= 3
+    old_names = [c for c in cmds if "physim2-pilot-20261110" in c or "physim2-ring:2" in c]
+    checks["r5_names_of_this_round_only"] = len(old_names) == 1 and "EARLIER PINS, HARMLESS:" in old_names[0] \
+        and "rm " not in old_names[0] and "docker rmi" not in old_names[0] and "-t physim2-ring:3 docker/" in joined \
+        and all("physim2-pilot-r5" in c for c in cmds if "VF_RUN_ID=" in c)
+    checks["r5_the_dry_run_refuses_a_python_that_is_not_uvs_own"] = any(
+        "--managed-python --dry-run" in c and "interpreter at:/ { print \"refused: uv chose a Python that is not its own\" }" in c for c in cmds) \
+        and all("--managed-python" in c for c in cmds if re.search(r"(^|[ &|;(])uv ", c))
+    checks["r5_step3_names_the_50_dollars_and_reads_exit_2_both_ways"] = text.count("at most **$50**") == 2 and "go on with 3g and 3h in both cases" in text \
+        and "**Before each job (T19): the first two commands of step 0**" in text and "(point 8 does not apply: no model was called)" in text
     checks["pin_block_names_the_hash_of_PIN_sha256"] = bool(pin_hash) and pin_hash in pin_block
     checks["pin_file_matches_the_files_on_disk"] = chk.returncode == 0
-    checks["pin_commands_compare_commit_and_hashes"] = f'git rev-parse HEAD && pwd -P | grep -Fx "{PLACE}" && git --no-optional-locks status --porcelain --ignored' in joined \
+    checks["pin_commands_compare_commit_and_hashes"] = f'git rev-parse HEAD && pwd -P | command grep -Fx "{PLACE}" && git --no-optional-locks status --porcelain --ignored' in joined \
         and "shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK" in joined and "git checkout --detach" in text
     if commit:                                               # the copy at the head of the branch
         r = subprocess.run(["git", "cat-file", "-t", commit.group(0)], cwd=ROOT, capture_output=True, text=True)

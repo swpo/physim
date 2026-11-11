@@ -18,7 +18,7 @@ stay a hold); until then a session that reads this file stops here (rule A.1) an
 40-character hash in the coordinator's GO message. The lead checks it out (section C) and gives it to the
 session, and the first line that step 0 prints must equal it. The code is identified by the sha256 of
 `PIN.sha256`, the list of the sha256 of every file the pilot executes or imports; step 0 recomputes both.
-sha256 of `PIN.sha256`: `898089fcc011fcb6f46ec1aac77c5504dbd1ff2de5093ee1a07de23f99d4108f`
+sha256 of `PIN.sha256`: `2f348fb8ac02d86f46229cfbd3fc5f643fa6c0678e4e72f4a4361e704a20b089`
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, the session and the disk, (1) install, (2) run the scripted,
@@ -1002,14 +1002,16 @@ run was interrupted") (T22). A runner's own intake that differs from this block 
   "fixed_by_the_pin": {"env": "physim2-verifier", "taskset": "physim2-env", "harness": {"id": "bash", "edit": true, "search": false}, "runtime": "docker", "num_rollouts": 1, "max_concurrent": 1, "retries": 0, "push": false},
   "forbidden_fields": ["agent_dir", "allow", "api_key_var", "args", "base_url", "block", "box_env_allow", "client", "collect", "collect_dir", "collect_tree", "colocated", "command", "compaction", "disk", "endpoints", "entrypoint", "env", "extra_body", "forward_env", "gpu", "headers", "index", "judges", "mount", "mounts", "network", "network_allow", "output_dir", "python", "script", "skills", "store", "system_prompt", "tools", "toolsets", "url", "volume", "volumes", "workdir"],
   "exam_profiles": [
-   {"profile": "ring", "world": "ring", "exam_config": "ring_r4", "items": 64, "samples_per_item": 256, "lab_ticks": 400, "reset_cost_ticks": 17, "image": "physim2-ring:2", "box_cpus": 2, "box_memory_gb": 4, "max_turns": 150, "wall_minutes": 60, "reference_policies": ["null", "D", "P0", "PM", "S", "C"]}
+   {"profile": "ring", "world": "ring", "exam_config": "ring_r4", "items": 64, "samples_per_item": 256, "lab_ticks": 400, "reset_cost_ticks": 17, "image": "physim2-ring:3", "box_cpus": 2, "box_memory_gb": 4, "max_turns": 150, "wall_minutes": 60, "reference_policies": ["null", "D", "P0", "PM", "S", "C"]}
   ]
  },
  "reference_table": {"tool": "tools/prove.py", "policies_by_profile": {"ring": ["null", "D", "P0", "PM", "S", "C"]}, "scale": "K = 0 (climatology) and O = 1 (oracle) come from the frozen exam, not from a rollout"},
  "stages": ["instance", "reference", "dry-run", "rollout", "close"],
  "then": "tools/pack_rollout.py",
  "pilot_folder": {"go": "LEAD-GO-MODEL-SPEND.json", "go_schema": "physim2-lead-go/v1", "go_max_age_days": 30, "ledger": "LEDGER.jsonl", "instances": "INSTANCES.jsonl", "shared_ledger": "shared-ledger.json", "shared_ledger_schema": "rollout-ledger/v1", "shared_ledger_source": "research/alife/vecworld/program/round6/rollouts/ledger.json"},
- "prices_from": "https://api.pinference.ai/api/v1/models"
+ "prices_from": "https://api.pinference.ai/api/v1/models",
+ "publication": {"folder": "publish/<job_id>/", "files": ["status.json", "PILOT_NEVER_REUSE_AS_EXAM.txt", "request.json", "config.toml", "resolved.toml", "model_entry.json", "usage.json", "grades.json", "reference.json", "lab_log.jsonl", "submission.json", "transcript.md", "trace.redacted.jsonl", "submission/", "key_scan.json", "MANIFEST.json"], "max_file_bytes": 20971520, "max_total_bytes": 52428800, "created_once": true, "a_file_with_a_key_scan_hit": "left out and listed by name and count"},
+ "after_a_crash": {"stage": "close", "runbook": "If a run was interrupted, point 8", "then": "tools/pack_rollout.py"}
 }
 ```
 <!-- STEP3-FACTS-END -->
