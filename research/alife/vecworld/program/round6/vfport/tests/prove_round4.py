@@ -32,6 +32,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -402,7 +403,7 @@ class Proof:
         subs = {p: os.path.join(self.store, self.iid, "captures", ref[p]["trace_id"], "final", "submission") for p in ref}
         subs.update(valid=self.captured(runs["end-submit"]), mixed=self.captured(runs["mixed-submit"]))
         out = os.path.join(self.scratch, "round5.npz")
-        name = "physim2-port4a-xcheck"
+        name = re.sub(r"[^A-Za-z0-9_.-]", "-", vfrun.run_label())[:40] + "-xcheck"   # the caller's own run label names the container
         if not os.path.exists(out):
             env = vfrun.child_env()
 

@@ -1072,8 +1072,10 @@ submit, the turn limit, the wall time, the spend stop, the context limit, an err
 is graded. `EXIT 2` with nothing running: the tool refused before anything started (the last lines of the log
 are the tool's own `refused:` line; the status command does not show it: report "refused at the rollout stage"
 and stop). `EXIT 1` or another small number with nothing running: vf-eval ended by itself and reported a failure;
-go on with 3g and 3h, which show what happened, and say so in the report. `EXIT 97`, `EXIT 98`, `EXIT 130`, or no
-`EXIT` line when the wall time plus 160 minutes have passed: "If a run was interrupted", points 1 to 5, 7 and 8.
+go on with 3g and 3h, which show what happened, and say so in the report. `EXIT 97`, `EXIT 98`, `EXIT 130`,
+`EXIT 137` or `EXIT 143` (the tool itself was killed or stopped from outside), any `EXIT` line while a container
+or a process is still listed, or no `EXIT` line when the wall time plus 160 minutes have passed: "If a run was
+interrupted", points 1 to 5, 7 and 8.
 In every case: do not run the job again.
 
 **3g. Read the run through the report tool** (fixed fields and counts; no text of the model):
