@@ -21,7 +21,7 @@
   "cap_usd": 8.4,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.1748
+    "conservative_usd": 0.5495
   },
   "guard_at": null,
   "guard_reason": null,
@@ -123,6 +123,12 @@
     }
   ],
   "pods_terminated": null,
+  "review": {
+    "at": "2026-11-11T14:21:48Z",
+    "file": "jobs/r6-foundryexam-004/review.md",
+    "sha256": "7db4b6c766f1b0fe09e5815904bdabb636dd75c25d71130aac61502b4171041c",
+    "summary": "0 blocker, 0 major, 2 minor; N-arm hidden picks may differ from 003 (gate noise keyed by row); speed guard still lenient; fine to run"
+  },
   "run_deadline": "2026-11-11T17:25:30Z",
   "run_started_epoch": 1794405913.727472,
   "started_at": "2026-11-11T14:10:30Z",
