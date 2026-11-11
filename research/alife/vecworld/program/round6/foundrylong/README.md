@@ -42,10 +42,81 @@ bound: P0 improves by about 0.11 of the range per fivefold step in prior worlds 
 more training steps on the same worlds give nothing. The recipe is limited by the number of distinct prior worlds it
 sees, and C itself is not converged in data, so the gap would also widen with a better reference.
 
-## Stage 2: can a hypothesis close it, and do experiments pay?
+## Stage 2: can a hypothesis close it, and do experiments pay? (job r6-foundrylong-003, 1.88 h, $3.92)
 
-Running (job r6-foundrylong-003; r6-foundrylong-002 stopped itself at its presmoke speed guard, $0.10). See
-`PROGRESS.md`.
+Same 16 hidden worlds, new items, Labs and secret. Per world a Lab of 32 exam-mix episodes and a paired Lab of 32
+designed episodes (same initial states and free-tick noise; 12.5 nats in every test tick, aimed and regional pushes on
+the densest block). Generic candidates on each Lab: P0(1,000) (stage 1's parameters), FT(32) (cross-validated, rate
+grid moved down, addendum 3), D(32), ridge. The hypothesis W: the 250 weights fitted by Adam through the simulator
+on the Lab with the exam's own 16-tick score as the loss (32 prior worlds' weights prescreened, the best 4 refined for
+143 steps, the count the speed guard allowed; addendum 4), then a nudged ensemble of the fitted world's own states
+held to each item's 17 frames and simulated under its program. W+: the C recipe on 4,096 episodes simulated at the
+fitted weights. (r6-foundrylong-002 stopped itself at its presmoke speed guard, which had counted compilation, $0.10.)
+
+| skill at 16 ticks (8 / 32 in brackets) | mix Lab | designed Lab |
+|---|---|---|
+| C(16,384) | 0.593 (0.678 / 0.509) | |
+| G* = FT(32) | 0.470 (0.579 / 0.364) | 0.461 |
+| P0(1,000) | 0.434 | |
+| W (fitted weights) | 0.404 (0.483 / 0.325) | 0.414 |
+| W+ (simulate-to-train at the fit) | 0.326 | 0.356 |
+| D(32) / ridge | 0.209 / 0.360 | 0.254 / 0.362 |
+| W at the TRUE weights | 0.527 (0.603 / 0.477) | |
+| W at another screened world's weights | -0.70 | |
+
+| criterion (declared) | number | verdict |
+|---|---|---|
+| T1 science share against G*, 16 ticks | sigma_G 0.208; p10 0.178 (min over leave-one-out 0.170); p90 0.242 | **pass** (32 ticks: 0.286, pass; 8 ticks: 0.145, undecided) |
+| T2 generic share | rho_G = 0.226 (p90 0.255) of P0's gap to C | **pass** (<= 0.7) |
+| T3 solvable | W* = W; recovery of the G*-to-C gap -0.54; W beats G* at t = -1.86 (better in 5 of 16 worlds) | **fails** |
+| T4 experiments pay | designed minus mix for W: +0.006 +- 0.018 of loss; for G*: -0.005 +- 0.002 | **fails** |
+| T5 actions | 0.119 (p05 0.078); regional programs 0.20 | undecided |
+| T6 not one horizon, not one world | T1 and T3 do not both hold at 8 and 32 ticks | fails |
+| **stage 2** | neither the declared pass (T1-T6) nor the declared fail (T1 fails or T2 > 0.7) | **undecided** |
+
+Reading (DECLARED.md section 3, row "T1 passes, T3 fails"). The gap is real against the best generic recipe on new
+items and Labs: the tuned fine-tune leaves 0.21 of the range at 16 ticks and 0.29 at 32, with every world left out.
+No scripted policy closes it. The weight inference is not the first limit: the same predictor at the TRUE weights
+reaches only 0.527 at 16 ticks, below the reference net C (0.593; C better in 12 of 16 worlds, t = 3.2). The fitted
+weights get W 90% of the way from a wrong world's weights to the true ones in skill (0.404 against 0.527), but they
+are as far from the truth in parameter space as a prior draw (the law is sloppy): simulate-to-train at the fit (W+,
+0.326) is far below the same recipe at the truth (C(4,096), 0.533 in stage 1). So the test is hard for two reasons
+at once: a history of 192 block averages does not pin the fine state well enough for a nudged ensemble, and Lab data
+pin the predictive part of the law only roughly. Designed experiments (full-budget, every-tick pushes) did not help
+W or FT; they helped D (+0.026 +- 0.004 of loss at 16 ticks), the only policy that learns from the Lab alone.
+
+Added after seeing the results (readings, not criteria): the "90% of the way" share and the parameter distance of
+the fits (`w_info.json`: median RMS distance 1.48 prior SDs from the truth, as far as a random prior draw).
+
+## What failed or is weak
+
+- W's fits ran 143 Adam steps, not the declared 200 (the speed guard's choice, addendum 4); W is a lower bound of what
+  this hypothesis reaches. One W per world and Lab is the better of two starts, from 4 refined of 32 prescreened.
+- The first fit loss (one-tick forecasts) fitted the loss and not the law, and the first CPU fits used a fair score with
+  a doubled spread term; both were found on CPU before any stage-2 job (addendum 3).
+- Job 002's speed guard counted compilation as fit time and stopped the job ($0.10).
+- P0 and C are not trained by the 80% rule (late gains 1-5%); C is not converged in data; every share is a value at
+  this compute. P0's curve in prior worlds is nested in worlds available, not in what each net saw (review 001).
+- S5 and T5 (actions) are undecided: inputs carry about 0.12 of the range, regional pushes 0.2.
+
+## What it means for the lead's direction, and the next step
+
+This is the first setting in the program where the generic recipes leave a gap that survives a tuned null, five times
+the pilot's prior compute, new items and every world left out (0.21 of the range at 16 ticks, 0.29 at 32), AND where
+the obvious scientific move (infer the law, then simulate) does not trivially win. It is not trivially easy. But it
+is hard partly for a reason that is not science of the law: even with the true law in hand, a filter on the block
+view loses to a net trained on 16,384 true-law episodes. An agent would have to (1) infer the predictive part of the
+weights from Lab data (fit through the simulator against its own long-horizon score: box-feasible, about 40-50 min of
+2 cores per 200 steps), and (2) build a state filter as good as C's, which in this study took simulate-to-train at
+16,384 episodes per world (12.7 h of simulation on 2 cores): GPU-scale. And because P0 keeps improving with prior
+worlds (0.11 of sigma per fivefold step, no flattening), the bar moves with the research compute an exam grants.
+
+Next step (CPU, about a day of agent time, no GPU): replace the nudged ensemble with a better filter at known weights
+(a particle filter with resampling on the block view, or a net trained on simulations at the fitted weights at
+16,384 episodes) and measure W(true) against C on stage 2's public items; if W(true) reaches C, the setting is a test
+of law inference and the exam profile can be priced (research budget in full episodes from `cpu_part.py`); if not,
+the block view should be made less lossy (finer blocks) before this world family is used for rollouts. A GPU rerun
+(about $5) is worth it only after that.
 
 ## Weight inference on CPU (before the stage-2 job; one public world)
 
@@ -78,7 +149,7 @@ the observed frame (gradient through the forecast ticks).
 
 ## Files
 
-`DECLARED.md` (the plan), `DEVIATIONS.md` (addenda 1-4), `PROGRESS.md` (log), `fl_lib.py` (training driver over the
+`DECLARED.md` (the plan), `DEVIATIONS.md` (addenda 1-5), `PROGRESS.md` (log), `fl_lib.py` (training driver over the
 pilot's code), `run_fl.py` + `job.sh` (stage 1), `fl_w.py` (weight inference, designed programs), `run_fl2.py` +
 `job_s2.sh` (stage 2), `make_summary.py`, `make_summary2.py`, `make_final.py`, `cpu_part.py`, `w_cpu.py`, `make_sel.py`;
 `inputs/` (the pilot's worlds, the code norm, the pre-screened draws of seed 2028, stage 1's public parameters);

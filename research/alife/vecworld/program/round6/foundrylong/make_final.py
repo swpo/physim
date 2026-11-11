@@ -34,7 +34,11 @@ def main():
                declared="DECLARED.md (commit 2ab6e7bb, before any request); deviations and addenda 1-3 in DEVIATIONS.md",
                jobs={"r6-foundrylong-001": dict(stage=1, billed_usd=4.92, run_hours=r3(s1["job_info"]["hours"]),
                                                 source="origin/gpu-jobs:jobs/r6-foundrylong-001/status.json (billed), out/full/info.json"),
-                     "r6-foundrylong-002": dict(stage=2, billed_usd=None, source="origin/gpu-jobs:jobs/r6-foundrylong-002/status.json")})
+                     "r6-foundrylong-002": dict(stage=2, billed_usd=0.10, outcome="stopped by its own presmoke speed guard (compilation counted); addendum 4",
+                                                source="origin/gpu-jobs:jobs/r6-foundrylong-002/status.json"),
+                     "r6-foundrylong-003": dict(stage=2, billed_usd=3.92, run_hours=1.88, w_steps_chosen_by_speed_guard=143,
+                                                source="origin/gpu-jobs:jobs/r6-foundrylong-003/status.json (billed), out/full/info.json, out/progress.txt")},
+               gpu_total_usd=round(4.92 + 0.10 + 3.92, 2))
     # ---------------------------------------------------------------- stage 1
     S1 = s1["S1"]
     src1 = "results/analysis_stage1.json (make_summary.py on origin/gpu-jobs:jobs/r6-foundrylong-001/out/full/scores.npz)"
@@ -94,6 +98,16 @@ def main():
         st2["W_pipeline"] = s2.get("W_pipeline")
         st2["W_fits"] = s2.get("W_fits")
         st2["job_info"] = s2.get("job_info")
+        # readings declared in DECLARED.md section 3 and addendum 5 (not criteria)
+        k = st2["skill"]
+        c4096_truth = s1["skill"]["C4096"]["16"]["value"]
+        st2["readings_16_ticks"] = dict(
+            W_true_minus_C=s2["W_pipeline"]["16"]["Wtrue_minus_C"],
+            W_true_skill=k["Wtrue"]["16"], C_skill=k["C16384"]["16"], W_fit_skill=k["Wm"]["16"], W_prior_skill=k["Wprior"]["16"],
+            W_fit_share_of_way_from_prior_to_true_weights=r3((k["Wm"]["16"] - k["Wprior"]["16"]) / (k["Wtrue"]["16"] - k["Wprior"]["16"])),
+            W_plus_skill=k["Wpm"]["16"], C4096_at_true_weights_stage1=r3(c4096_truth),
+            note=("W_true_minus_C is L(C) - L(W(true)) per world (negative: C better). W(true) below C means the predictor's state inference, not the law, is the first limit (DECLARED section 3); "
+                  "W+ trains the 4,096-episode C recipe at the fitted weights, so its ceiling is C(4,096) at the truth (addendum 5)"))
         out["stage2"] = st2
     # ---------------------------------------------------------------- W on CPU (before the stage-2 job)
     wt = {}

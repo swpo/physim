@@ -54,7 +54,7 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 ## Running
 - Review of r6-foundrylong-001 read 18:50: fine to run, 2 minor (outputs ~53 MB: check manifest in_git before the analysis;
   completeness marks added to make_summary.py; DEVIATIONS addendum 2).
-- GPU job r6-foundrylong-003 (stage 2, the study's LAST job), requested 21:38 UTC, cap $8.10. Follow: cd /home/user/physim &&
+- nothing (all three jobs ended). Old note: GPU job r6-foundrylong-003 (stage 2, the study's LAST job), requested 21:38 UTC, cap $8.10. Follow: cd /home/user/physim &&
   git fetch -q origin gpu-jobs && git show origin/gpu-jobs:jobs/r6-foundrylong-003/status.json. READ
   jobs/r6-foundrylong-003/review.md BEFORE the results. To cancel: push an empty gpu/requests/r6-foundrylong-003.cancel,
   verify with git ls-tree on origin.
@@ -67,9 +67,16 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
   to the speed; not fixable without a 4th job); (2) W+ at 4,096 episodes is capped near C(4,096)'s level (~0.62 of
   the G*-to-C gap): read W+ as a reading; (3) exit 0 != complete: make_summary2.py now marks incompleteness (tested on
   002's presmoke outputs, which are test material only). Job 003 queued: no offer within the cap at 21:38; retrying.
+- 23:44: job 003 DONE (exit 0, 1.88 h full pass, billed $3.92; all files in git; complete: no failed/skipped part,
+  every fit at 143 steps). make_summary2.py -> results/analysis_stage2.json: T1 pass (sigma_G 0.208, p10 0.178, LOO
+  min 0.170), T2 pass (0.226), T3 FAILS (W 0.404 < FT 0.470 at 16 ticks), T4 fails, T5 undecided, T6 fails: stage 2
+  UNDECIDED by the declared rule. W(true) 0.527 < C 0.593: the state inference is the first limit.
+  make_final.py -> results/summary.json; README.md complete. GPU total $8.94 of $25 (3 jobs).
 - 21:35: make_final.py (results/summary.json from the analyses; the exam-profile numbers) drafted and run on stage 1.
 
-## Next step, exactly (stage 2)
+## Next step, exactly: DONE except removing the worktree and the scratch directory (final report delivered)
+
+## Next step as it was during stage 2 (done)
 1. When 003 is done: read its review.md; check manifest in_git; git archive origin/gpu-jobs jobs/r6-foundrylong-003/out/full
    to scratch; python -B make_summary2.py <dir> --job r6-foundrylong-003 -> results/analysis_stage2.json; read T1-T6.
 2. results/summary.json (every number with its source; make_final.py), README.md, final report; remove the worktree.
@@ -87,4 +94,4 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 |---|---|---|---|
 | r6-foundrylong-001 | done 21:01 UTC (exit 0, 2.35 h of run) | $8.10 | $4.92 |
 | r6-foundrylong-002 | failed 21:26 UTC at its presmoke speed guard (compilation counted) | $8.10 | $0.10 |
-| r6-foundrylong-003 | running since 21:47 UTC; presmoke passed; speed guard chose 143 W steps (1.55 s per step of 8 fits) | $8.10 | - |
+| r6-foundrylong-003 | done 23:44 UTC (exit 0; speed guard chose 143 W steps) | $8.10 | $3.92 |
