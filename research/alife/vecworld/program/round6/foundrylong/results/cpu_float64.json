@@ -1,0 +1,82 @@
+{
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "dtype": "float64",
+ "affinity": [
+  0,
+  1
+ ],
+ "jax": "0.12.0.1",
+ "what": "foundry automaton 64 x 64, 2 kinds, 4 substeps per tick; world seed2027-46",
+ "speed": {
+  "1": {
+   "member_ticks_per_s": 124.35846457039455,
+   "seconds_per_call": 0.2573206424713135,
+   "ticks": 32,
+   "dtype": "float64"
+  },
+  "8": {
+   "member_ticks_per_s": 118.19893546943966,
+   "seconds_per_call": 2.1658401489257812,
+   "ticks": 32,
+   "dtype": "float64"
+  },
+  "32": {
+   "member_ticks_per_s": 119.8812827411674,
+   "seconds_per_call": 8.541783809661865,
+   "ticks": 32,
+   "dtype": "float64"
+  },
+  "128": {
+   "member_ticks_per_s": 107.88050810247498,
+   "seconds_per_call": 37.967933893203735,
+   "ticks": 32,
+   "dtype": "float64"
+  }
+ },
+ "episode": {
+  "ticks": 348,
+  "burn_in": 300,
+  "history": 16,
+  "test": 32,
+  "best_batch": 1,
+  "member_ticks_per_s": 124.35846457039455,
+  "cpu_seconds_per_full_episode_on_2_cores": 2.798361986875534,
+  "core_seconds_per_full_episode": 5.596723973751068,
+  "question": {
+   "members": 32,
+   "ticks": 32,
+   "member_ticks": 1024,
+   "seconds_on_2_cores": 8.541783809661865
+  }
+ },
+ "bundle": {
+  "parts_bytes_float32": {
+   "lab_obs_32_episodes": 1204224,
+   "lab_programs_32_episodes": 786432,
+   "item_histories_96": 1253376,
+   "item_programs_96": 1572864,
+   "replicate_futures_96x12x3": 2654208,
+   "climatology_96x3": 221184,
+   "replicate_futures_all_32_ticks_96x12": 28311552
+  },
+  "block_view_npz_ratio": 0.9295997619628906,
+  "public_bytes": 4816896,
+  "sealed_bytes": 2875392,
+  "total_bytes": 7692288,
+  "total_bytes_compressed_estimate": 5075512,
+  "note": "programs are sparse (zero outside 4 ticks) and compress to a few percent; block views are dense floats",
+  "build_member_ticks": {
+   "lab": 11136,
+   "items_history": 30336,
+   "futures": 36864,
+   "climatology": 33408,
+   "total": 111744
+  },
+  "build_seconds_on_2_cores": 898.5636835098267
+ },
+ "nets": {
+  "ms_per_step_one_net_batch64": 220.509934425354,
+  "ms_per_step_one_net_batch256": 977.2441625595093,
+  "seconds_per_item_32_samples_3_horizons": 0.0276519775390625
+ }
+}

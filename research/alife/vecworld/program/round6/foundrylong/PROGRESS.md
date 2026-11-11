@@ -10,6 +10,9 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 - 18:21: fl_lib.py (driver), run_fl.py + job.sh (stage-1 job), make_summary.py; DEVIATIONS.md addendum 1; the whole job.sh
   at FL_SIZE=smoke from a git archive of the four request paths: exit 0 (5.7 min on CPU); make_summary.py runs on its outputs.
 - 18:25: request gpu/requests/r6-foundrylong-001.json pushed (cap $8.10, max_hours 3.15, expected 2.65 h, about $5.3).
+- 18:30: CPU part measured (cpu_part.py -> results/cpu_float64.json, cpu_float32.json; 2 pinned cores of a SHARED 4-core
+  box, so speeds are lower bounds). fl_w.py (W prototype: nudged-ensemble assimilation, fit loss) and w_cpu.py (CPU
+  tests 1 and 2 on a public world) written, not yet run. 18:28 stopped by the usage limit; 18:35 restart, WIP committed.
 
 ## Running
 - GPU job r6-foundrylong-001 (stage 1). Follow: cd /home/user/physim && git fetch -q origin gpu-jobs &&
@@ -27,4 +30,4 @@ Scratch: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpa
 ## Jobs
 | job | state | cap | billed |
 |---|---|---|---|
-| r6-foundrylong-001 | requested 18:25 UTC | $8.10 | - |
+| r6-foundrylong-001 | running since 18:32 UTC (A100 40GB, $1.99/h) | $8.10 | - |

@@ -1,0 +1,117 @@
+"""fl_w -- study foundrylong, stage 2 (prototype): a hypothesis policy whose hypothesis is the 250 hidden numbers.
+
+The hidden level-0 state is never observed, only the block view (block means of the two kinds and of S^2). W
+marginalises the state with an ensemble of the candidate world's OWN states (spun up under the candidate weights),
+held to the observed block means of both kinds at every observed tick:
+
+  nudge        per block and kind, scale the cells so that the block means equal the observed ones (keeps the
+               within-block pattern of the member, positivity, and the observed mass)
+  assimilate   tick by tick over an observed window: one-tick forecast with fresh noise, record its block view,
+               then nudge to the observed frame
+  fit loss     fair energy score of the one-tick forecasts against the observed frames (in units of the per-channel
+               SD of the observations), mean over ticks and episodes; gradients flow through each one-tick forecast
+               (the nudged state is a constant: truncated, one tick)
+  predict      assimilate the item's 17 frames at the fitted weights, then simulate under the item's program
+
+Everything is a pure function of (theta, arrays, keys); batching by jax.vmap. float64 like the world.
+PILOT ONLY: nothing produced with this module may be reused as an exam.
+"""
+from __future__ import annotations
+
+import os
+import sys
+
+sys.dont_write_bytecode = True
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+import fl_lib as LL  # noqa: E402
+
+FL = LL.FL
+import jax  # noqa: E402
+import jax.numpy as jnp  # noqa: E402
+from jax import lax  # noqa: E402
+
+import tnca as TN  # noqa: E402
+from vw.core import Noise  # noqa: E402
+
+FAM = TN.FAM
+G, BPX, C = FAM.GW, FAM.H // FAM.GW, FAM.C
+NW, NOBS = FAM.NW, (FAM.C + 1) * FAM.GW * FAM.GW
+
+
+def view(x):
+    return TN.block_view(x).reshape(-1)
+
+
+def up(a):
+    return jnp.repeat(jnp.repeat(a, BPX, -2), BPX, -1)
+
+
+def nudge(x, y):
+    """x (C, H, W) >= 0, y (NOBS,) observed block view -> x with the observed block means of every kind."""
+    m = x.reshape(C, G, BPX, G, BPX).mean((2, 4))
+    f = y.reshape(C + 1, G, G)[:C] / jnp.maximum(m, 1e-30)
+    return x * up(f)
+
+
+def spin(th, keys, burn: int):
+    """Members of the candidate world after its own burn-in: (M, C, H, W)."""
+    def one(k):
+        x = TN.init(th, jax.random.fold_in(k, 1), FAM)
+        kb = jax.random.fold_in(k, 2)
+        x, _ = lax.scan(lambda x, t: (TN.tick_free(th, x, Noise(kb, t), FAM), None), x, jnp.arange(burn))
+        return x
+    return jax.vmap(one)(keys)
+
+
+def assimilate(th, x, Y, U, keys, t0=0, stop=True):
+    """x (M, C, H, W) members; Y (T + 1, NOBS) observed frames; U (T, NW) commands of the T ticks; keys (M,).
+    Returns (members held to Y[T], YF (T, M, NOBS) one-tick forecasts made before each nudge)."""
+    x = jax.vmap(nudge, (0, None))(x, Y[0])
+
+    def body(x, inp):
+        t, y, u = inp
+        xs = lax.stop_gradient(x) if stop else x
+        xf = jax.vmap(lambda xx, k: TN.tick(th, xx, Noise(k, t), u, FAM))(xs, keys)
+        return jax.vmap(nudge, (0, None))(xf, y), jax.vmap(view)(xf)
+    T = U.shape[0]
+    return lax.scan(body, x, (t0 + jnp.arange(T), Y[1:], U))
+
+
+def forecast(th, x, U, keys, t0):
+    """Free simulation of the members under the commands U (T, NW): block views (T, M, NOBS)."""
+    def body(x, inp):
+        t, u = inp
+        xn = jax.vmap(lambda xx, k: TN.tick(th, xx, Noise(k, t), u, FAM))(x, keys)
+        return xn, jax.vmap(view)(xn)
+    _, Y = lax.scan(body, x, (t0 + jnp.arange(U.shape[0]), U))
+    return Y
+
+
+def fair_es(X, y):
+    """X (M, d) ensemble, y (d,): fair energy score with the RMS norm."""
+    M = X.shape[0]
+    rms = lambda v: jnp.sqrt(jnp.mean(v * v, -1) + 1e-12)
+    return rms(X - y[None]).mean() - rms(X[:, None] - X[None]).sum() / (M * (M - 1))
+
+
+def episode_loss(th, x, Y, U, keys, scale):
+    """Mean over the ticks of an observed episode of the fair energy score of the one-tick forecasts (scaled)."""
+    _, YF = assimilate(th, x, Y, U, keys)
+    return jax.vmap(lambda yf, y: fair_es(yf / scale, y / scale))(YF, Y[1:]).mean()
+
+
+def lab_loss(th, X0, Ys, Us, keys, scale):
+    """X0 (E, M, C, H, W) members per episode, Ys (E, T + 1, NOBS), Us (E, T, NW), keys (E, M)."""
+    return jax.vmap(lambda x, Y, U, k: episode_loss(th, x, Y, U, k, scale))(X0, Ys, Us, keys).mean()
+
+
+def predict(th, x, hist, Ptest, keys, queries):
+    """One item: assimilate its history (P + 1, NOBS) from members x (M, ...), then simulate under its test
+    program (H, NW). Returns samples (M, len(queries), NOBS)."""
+    P = hist.shape[0] - 1
+    xa, _ = assimilate(th, x, hist, jnp.zeros((P, NW)), keys)
+    kf = jax.vmap(lambda k: jax.random.fold_in(k, 77))(keys)
+    Y = forecast(th, xa, Ptest, kf, P)                                  # (H, M, NOBS)
+    return jnp.moveaxis(Y[jnp.asarray(queries) - 1], 0, 1)
