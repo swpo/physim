@@ -1,0 +1,1301 @@
+{
+ "what": "round 4, fixer B (step 3 and host safety): the laboratory's bearer, the box caps, the spend stop, the request route, the strict config schema, the publication folder, the books of an interrupted job. PILOT_NEVER_REUSE_AS_EXAM: every instance made for these checks is pilot material in a scratch folder.",
+ "evidence": {
+  "host_checks": "TRIPWIRES: run on the host of the cloud container with every kill, delete, move, mode change and process start replaced by a tripwire before the package was imported (tools/check_round4.py; the last check is that no tripwire fired)",
+  "through_vf_eval": "VF-EVAL: run through vf-eval in containers that verifiers started (image physim2-ring:2, run label physim2-port4b), Linux x86_64, Docker 29.9.2; the model endpoint was tools/standin_model.py on 127.0.0.1 with a made-up key word",
+  "runbook_text": "READ: RUNBOOK_MAC.md checked as text (tools/check_runbook.py); its one failing check is the pin file, which this role does not regenerate",
+  "step3_shell_lines": "the commands of step 3 that were issued as `sh -c` lines, with a scratch folder as HOME",
+  "macos": "nothing ran on a Mac: everything about macOS and Docker Desktop is INFERRED",
+  "model": "no model was called and no credential was passed, loaded or read by any of these runs"
+ },
+ "commands": [
+  "env -i PATH=$PATH HOME=$HOME .venv/bin/python -B tools/check_round4.py --scratch <scratch>/chk --out <scratch>/chk/round4_host.json",
+  "env -i PATH=$PATH HOME=$HOME VF_RUN_ID=physim2-port4b nice -n 10 .venv/bin/python -B tools/check_step3.py --scratch <scratch>/e2e2 --out ... --dev-machine cloud-container --disk-floor-gib 1.2",
+  "env -i PATH=$PATH HOME=$HOME VF_RUN_ID=physim2-port4b nice -n 10 .venv/bin/python -B tools/check_step3.py --scratch <scratch>/e2e3 --out ... --dev-machine cloud-container --only route --disk-floor-gib 1.2",
+  ".venv/bin/python -B tools/check_runbook.py --out <scratch>/chk/runbook_check.json",
+  "python3 <scratch>/reh/issue.py <key> [JOB_ID]    (one runbook command of step 3 as sh -c, HOME = a scratch folder)"
+ ],
+ "host_checks": {
+  "tool": "tools/check_round4.py",
+  "n_checks": 125,
+  "n_failed": 0,
+  "failed": [],
+  "wall_s": 4.4,
+  "checks": [
+   {
+    "name": "A1 the pin's caps: 2 CPUs, 4 GiB, no swap, 512 processes, read-only root, four tmpfs",
+    "ok": true
+   },
+   {
+    "name": "A2 a request may lower the memory, never raise it",
+    "ok": true
+   },
+   {
+    "name": "A3 the box's docker run gets the caps right after `run`",
+    "ok": true
+   },
+   {
+    "name": "A4 ... and its own --cpus 4.0 and --memory 8.0g are gone",
+    "ok": true
+   },
+   {
+    "name": "A5 ... with the four tmpfs mounts and their sizes",
+    "ok": true
+   },
+   {
+    "name": "A6 ... and everything else of verifiers' command is kept in order",
+    "ok": true
+   },
+   {
+    "name": "A7 a lowered memory is what the command carries",
+    "ok": true
+   },
+   {
+    "name": "A8 the off-Linux form (--add-host) and an --env pass",
+    "ok": true
+   },
+   {
+    "name": "A9 a box command with anything else on it is refused (11 forms)",
+    "ok": true
+   },
+   {
+    "name": "A10 ... as is one with another name, another entrypoint or another tail",
+    "ok": true
+   },
+   {
+    "name": "A11 a helper container (--rm) and every other docker command are not boxes",
+    "ok": true
+   },
+   {
+    "name": "A12 a docker run that is neither is refused",
+    "ok": true
+   },
+   {
+    "name": "A13 a container started with the caps passes the read-back",
+    "ok": true
+   },
+   {
+    "name": "A14 ... and each of 15 deviations fails it",
+    "ok": true
+   },
+   {
+    "name": "A15 no HostConfig at all fails it",
+    "ok": true
+   },
+   {
+    "name": "A16 a runtime config that asks for more gets the pin's caps; one that asks for less gets less",
+    "ok": true
+   },
+   {
+    "name": "B1 a secret is 256 bits of hex, and two differ",
+    "ok": true
+   },
+   {
+    "name": "B2 authorized: exactly one Authorization header with the bearer",
+    "ok": true
+   },
+   {
+    "name": "B3 inject: the box's own Authorization headers go, the bearer comes, the rest stays",
+    "ok": true
+   },
+   {
+    "name": "B4 inject refuses what is not one complete, plain request head",
+    "ok": true
+   },
+   {
+    "name": "B5 behind the guard: no header, another bearer, a cut bearer, another scheme -> 401; the bearer -> 200",
+    "ok": true
+   },
+   {
+    "name": "B6 ... and the four refused requests never reached the application",
+    "ok": true
+   },
+   {
+    "name": "B7 a guard without a secret refuses everybody",
+    "ok": true
+   },
+   {
+    "name": "B8 the laboratory binds 127.0.0.1 and a port of the system's choice, whatever MCP_HOST and MCP_PORT say",
+    "ok": true
+   },
+   {
+    "name": "B9 the laboratory: a request without the bearer, or with another, is refused with 401 and an empty body",
+    "ok": true
+   },
+   {
+    "name": "B10 ... and with the bearer the MCP server answers",
+    "ok": true
+   },
+   {
+    "name": "B11 DNS-rebinding protection is on: the bearer with another Host -> 421, with a foreign Origin -> 403",
+    "ok": true
+   },
+   {
+    "name": "B12 a laboratory that was given no bearer serves nothing: it stops before it listens for requests",
+    "ok": true
+   },
+   {
+    "name": "B13 through a box's proxy: before the bearer is registered the laboratory answers 401",
+    "ok": true
+   },
+   {
+    "name": "B14 ... after it, the same request passes, also when the box sends an Authorization header of its own",
+    "ok": true
+   },
+   {
+    "name": "B15 ... the box's address and the laboratory's replies do not hold the secret",
+    "ok": true
+   },
+   {
+    "name": "B16 ... a request to ANOTHER upstream keeps the box's own header and gets no bearer",
+    "ok": true
+   },
+   {
+    "name": "B17 ... an unknown callback token gets nothing from the proxy",
+    "ok": true
+   },
+   {
+    "name": "B18 a box without the pilot's proxy cannot be given the bearer (the caller hears it)",
+    "ok": true
+   },
+   {
+    "name": "C1 one worst-case call: 10,000 x $2/M + 1,000 x $10/M = $0.03",
+    "ok": true
+   },
+   {
+    "name": "C2 a reply with usage costs its tokens at the listed prices",
+    "ok": true
+   },
+   {
+    "name": "C3 cache reads at the LISTED cache-read price",
+    "ok": true
+   },
+   {
+    "name": "C4 ... and at the FULL input price when the record holds no cache-read price",
+    "ok": true
+   },
+   {
+    "name": "C5 the provider's own cost field counts when it is HIGHER, never when it is lower",
+    "ok": true
+   },
+   {
+    "name": "C6 missing or partial usage (11 forms) costs ONE WORST-CASE CALL, never zero",
+    "ok": true
+   },
+   {
+    "name": "C7 a request the meter cannot bound is refused (10 forms); the bash harness's own shape passes",
+    "ok": true
+   },
+   {
+    "name": "C7b the reasoning settings a rollout config can ask for (an effort; the route's `reasoning` object) and a streamed request pass the shape check",
+    "ok": true
+   },
+   {
+    "name": "C8 the first prompt is bounded by the bytes of the whole request",
+    "ok": true
+   },
+   {
+    "name": "C9 a continued conversation: the provider's last prompt count plus one token per byte added since",
+    "ok": true
+   },
+   {
+    "name": "C10 a rewritten history, or changed tools, falls back to the bytes of the whole request",
+    "ok": true
+   },
+   {
+    "name": "C11 bytes, not characters, are counted",
+    "ok": true
+   },
+   {
+    "name": "C12 a request in flight is reserved at one worst-case call",
+    "ok": true
+   },
+   {
+    "name": "C13 parallel requests are admitted while the RESERVED sum is below the cap: three at $0.021 under a cap of $0.05, a fourth is refused",
+    "ok": true
+   },
+   {
+    "name": "C14 ... and with the cap at $0.04 the third is refused: what is reserved never exceeds cap_usd + one worst-case call",
+    "ok": true
+   },
+   {
+    "name": "C15 settling replaces the reservation by the reply's cost, once",
+    "ok": true
+   },
+   {
+    "name": "C16 an attempt without usage is settled at the worst case",
+    "ok": true
+   },
+   {
+    "name": "C17 a prompt that could exceed max_context_tokens is refused as max_context_tokens, and the run stays stopped",
+    "ok": true
+   },
+   {
+    "name": "C18 the Responses and Anthropic routes and an auxiliary route are refused",
+    "ok": true
+   },
+   {
+    "name": "C19 a meter without a usable cap or price is not made",
+    "ok": true
+   },
+   {
+    "name": "C20 the spend table makes a meter; an empty one makes none; an incomplete or contradicted one is refused",
+    "ok": true
+   },
+   {
+    "name": "C21 the stream scanner finds a usage chunk split across reads, and none where there is none",
+    "ok": true
+   },
+   {
+    "name": "C22 through verifiers' client: a reply with usage is counted at the listed prices",
+    "ok": true
+   },
+   {
+    "name": "C23 ... the request went out with the stand-in's made-up key, the rollout's id and the reply cap",
+    "ok": true
+   },
+   {
+    "name": "C24 ... and the run's spend log holds the meter line, the attempt and its settlement (numbers and words only)",
+    "ok": true
+   },
+   {
+    "name": "C25 a reply WITHOUT usage costs one worst-case call",
+    "ok": true
+   },
+   {
+    "name": "C26 ... as does a reply with partial usage (which verifiers then rejects as malformed: still counted)",
+    "ok": true
+   },
+   {
+    "name": "C27 three error replies (500, 429, 400) and then a good one: FOUR attempts counted, three at the worst case",
+    "ok": true
+   },
+   {
+    "name": "C28 a streamed reply: the usage chunk is found as the bytes pass, cache reads at their listed price",
+    "ok": true
+   },
+   {
+    "name": "C29 a streamed reply without a usage chunk costs one worst-case call",
+    "ok": true
+   },
+   {
+    "name": "C30 a stream that is closed unread: reserved while open, settled at the worst case when closed",
+    "ok": true
+   },
+   {
+    "name": "C31 the cap: calls are sent while counted < cap_usd; then the next one is refused with `400 rollout stopped: spend_cap`",
+    "ok": true
+   },
+   {
+    "name": "C32 ... the refused call never left the process, and the counted cost is within cap_usd + one worst-case call",
+    "ok": true
+   },
+   {
+    "name": "C33 ... and nothing is sent after a stop",
+    "ok": true
+   },
+   {
+    "name": "C34 the context cap: a prompt that could exceed max_context_tokens is not sent; the run stops as max_context_tokens",
+    "ok": true
+   },
+   {
+    "name": "C35 a conversation whose bytes exceed the cap still passes while the provider's count plus the added bytes does not",
+    "ok": true
+   },
+   {
+    "name": "C36 six requests AT ONCE under a cap of $0.05 (worst case $0.021): three are sent, three are refused before they leave",
+    "ok": true
+   },
+   {
+    "name": "C37 without a meter (a scripted run) NO model call leaves the process",
+    "ok": true
+   },
+   {
+    "name": "C38 ... nor for another rollout's id, nor on an auxiliary route",
+    "ok": true
+   },
+   {
+    "name": "C39 a request the meter cannot bound stops the run as model_request_refused, unsent",
+    "ok": true
+   },
+   {
+    "name": "C40 a provider cost field above the listed prices is what counts, and it can end the run",
+    "ok": true
+   },
+   {
+    "name": "D1 a flat config with known keys passes; the expansion is the pin's model rollout",
+    "ok": true
+   },
+   {
+    "name": "D2 the schema refuses each of 20 configs that reach beyond it",
+    "ok": true
+   },
+   {
+    "name": "D3 ... and each of 9 files that are not a plain small file directly in round6/rollouts/configs/",
+    "ok": true
+   },
+   {
+    "name": "D4 an expansion that differs from the pin's model rollout in any of 12 ways is caught, independently of expand()",
+    "ok": true
+   },
+   {
+    "name": "D4b the reasoning keys (rulings E10, E14): an effort alone, a summary alone, both: each expands to exactly one form; anything else in [sampling] is caught; an unknown summary word is refused",
+    "ok": true
+   },
+   {
+    "name": "D5 the schema as data: the keys, the fixed part, the forbidden fields and the exam profiles with their item counts",
+    "ok": true
+   },
+   {
+    "name": "D6 a well-formed request passes its own shape check",
+    "ok": true
+   },
+   {
+    "name": "D7 each of 15 malformed requests is refused",
+    "ok": true
+   },
+   {
+    "name": "D8 the pin: the sha256 of this checkout's PIN.sha256 and the commit must both be the request's",
+    "ok": true
+   },
+   {
+    "name": "D9 request and config must agree on profile, instance, model, the four caps and cap_usd",
+    "ok": true
+   },
+   {
+    "name": "D10 the pilot folder must be a 0700 directory of this user",
+    "ok": true
+   },
+   {
+    "name": "D11 no standing go, no step 3",
+    "ok": true
+   },
+   {
+    "name": "D12 the go file: 8 wrong forms are refused; a ceiling and a date of the last 30 days pass",
+    "ok": true
+   },
+   {
+    "name": "D13 listed prices, fetched without a credential: one worst-case call = 20,000 x $2/M + 512 x $10/M = $0.04512",
+    "ok": true
+   },
+   {
+    "name": "D14 the crude bound, turns x (context WINDOW x input + reply x output): 12 x (100,000 x $2/M + 512 x $10/M) = $2.46",
+    "ok": true
+   },
+   {
+    "name": "D15 a cap below one worst-case call is refused; so is a context cap above the model's window, and an unlisted model",
+    "ok": true
+   },
+   {
+    "name": "D15b a listing WITHOUT a cache-read price gives none (cache reads then count at the input price); a listed cache-WRITE price above the input price is what prompt tokens are counted at: one worst-case call = 20,000 x $3/M + 512 x $10/M",
+    "ok": true
+   },
+   {
+    "name": "D16 an empty ledger sums to zero, and this run's bound fits under a ceiling of $1",
+    "ok": true
+   },
+   {
+    "name": "D17 a job that was reserved and never closed counts at its whole bound: 0.4 + 0.545 fits under $1",
+    "ok": true
+   },
+   {
+    "name": "D18 a closed job counts what was counted (0.1); a cut job without a complete count stays at its bound (0.3); a stand-in run counts nothing",
+    "ok": true
+   },
+   {
+    "name": "D19 the ceiling: 0.6 in the ledger plus this run's bound of 0.545 would exceed $1 -> refused",
+    "ok": true
+   },
+   {
+    "name": "D19b THE CEILING IS ONE TOTAL: a shared ledger (rollout-ledger/v1) adds what other machines spent: done and cut rows at their billed cost, a running row at its bound (0.2 + 0.05 + 0.1 = 0.35); the file's own totals count when they are higher",
+    "ok": true
+   },
+   {
+    "name": "D19c ... 0.6 here + 0.35 elsewhere + this run's 0.545 fits under $1.50 and not under $1.49; 7 malformed shared ledgers and a missing one are refused",
+    "ok": true
+   },
+   {
+    "name": "D20 a job id that the ledger holds is never run again",
+    "ok": true
+   },
+   {
+    "name": "D21 an instance name is new before it is made; once registered it belongs to its job",
+    "ok": true
+   },
+   {
+    "name": "D22 ... and passes as this job's instance once the store holds it; a name the store holds unregistered is refused for everybody",
+    "ok": true
+   },
+   {
+    "name": "D22b fetch: the request, the config it names and the shared ledger are copied out of ONE commit into the pilot folder, byte for byte, and nothing else is asked of that commit",
+    "ok": true
+   },
+   {
+    "name": "D22c ... 11 fetches are refused (shapes that a shell would run, another request under a used name, a config outside the folder, a missing ledger); the same fetch again changes nothing",
+    "ok": true
+   },
+   {
+    "name": "D22d the request route reads the config from the runner's copy in <pilot>/configs/, under its repository name; a request that names its config by any other path is refused",
+    "ok": true
+   },
+   {
+    "name": "D22e the facts a runner can check mechanically: request keys, config keys, profiles with item counts, reference policies, stages in order",
+    "ok": true
+   },
+   {
+    "name": "D23 a spend log with an attempt that never settled: counted = settled + one worst case for it, and the count is not complete",
+    "ok": true
+   },
+   {
+    "name": "D24 no spend log: nothing was counted because nothing could be sent",
+    "ok": true
+   },
+   {
+    "name": "D25 the publication folder holds the files of the protocol, each with sha256 and size in MANIFEST.json",
+    "ok": true
+   },
+   {
+    "name": "D26 a file that holds the key's VALUE is left out and listed (here: a submission file the agent wrote)",
+    "ok": true
+   },
+   {
+    "name": "D27 no published byte holds the key, the team id, the pilot folder's path, the instance's secret or a hidden parameter",
+    "ok": true
+   },
+   {
+    "name": "D28 the key scan reports names and counts only, also for the job folder's own files (the log with the key in it)",
+    "ok": true
+   },
+   {
+    "name": "D29 status.json: the stop condition, the reward, the laboratory counters, the ledger rows, and what is missing",
+    "ok": true
+   },
+   {
+    "name": "D30 usage.json: every attempt with its cost and basis, the total, and the attempt that never settled at the worst case",
+    "ok": true
+   },
+   {
+    "name": "D31 grades per item with the fallback reason, without the predictor's own text; the laboratory log without worker-side detail",
+    "ok": true
+   },
+   {
+    "name": "D32 the transcript keeps the model's text as data: a fence the text cannot close, tool call and result in order",
+    "ok": true
+   },
+   {
+    "name": "D33 the redacted trace: the team header and the Authorization header are removed by field name; the public commitment and the key variable's NAME stay",
+    "ok": true
+   },
+   {
+    "name": "D34 the folder is never overwritten, and a job without a folder is refused",
+    "ok": true
+   },
+   {
+    "name": "D36 the ledger's open jobs (reserved, never ended) are named: while there is one, no stage of any job starts",
+    "ok": true
+   },
+   {
+    "name": "D37 stage close is refused while the job's tool, a laboratory of its instance or a container of the run label is still there",
+    "ok": true
+   },
+   {
+    "name": "D38 ... and once nothing is left it writes the closing row: status cut, the cost from the spend log with one worst-case call for the call that never settled, the count marked incomplete (the ledger keeps the job at its bound)",
+    "ok": true
+   },
+   {
+    "name": "D39 the one address of a model run is the service the prices are read from, and the key's name is looked for, never its value",
+    "ok": true
+   },
+   {
+    "name": "D40 the stop path: ONE SIGTERM to a child however often the tool is told to stop; the wait goes on to the same deadline; SIGKILL only after the grace period; a stop that had begun is not signalled again",
+    "ok": true
+   },
+   {
+    "name": "D41 the reference table is built by profile on the job's own instance, in boxes with the request's (lowered) memory; the instance is made by profile under exactly the requested name",
+    "ok": true
+   },
+   {
+    "name": "D35 generic credential shapes are found by the scan: a bearer token, a private key block, an sk- key, a token in a url",
+    "ok": true
+   },
+   {
+    "name": "Z the tripwires recorded no attempt to kill, delete, move, re-own or start anything",
+    "ok": true
+   }
+  ]
+ },
+ "through_vf_eval": {
+  "caps": {
+   "n_checks": 13,
+   "n_failed": 0,
+   "checks": [
+    {
+     "name": "K0 an instance for the caps probe was made",
+     "ok": true
+    },
+    {
+     "name": "K1 the scripted rollout with the caps probe ended and saved a trace",
+     "ok": true
+    },
+    {
+     "name": "K2 the box was started with the caps and they were read back from the engine (memory lowered to 2 GiB by the run's config)",
+     "ok": true
+    },
+    {
+     "name": "K3 inside the box: 512 processes, 2 GiB of memory, no swap beyond it, a quota of 2 CPUs",
+     "ok": true
+    },
+    {
+     "name": "K4 the root file system is read-only: one byte into <home>, /usr, /etc, /opt, /var/tmp, /home or / gives EROFS",
+     "ok": true
+    },
+    {
+     "name": "K5 ... and /workspace, /tmp, /dev/shm (and the exam's own /etc/physim2, /runtime) take it",
+     "ok": true
+    },
+    {
+     "name": "K6 the mount table of the box: an overlay root mounted read-only, tmpfs of 1 GiB at /workspace and 512 MiB at /tmp",
+     "ok": true
+    },
+    {
+     "name": "K7 /tmp is full at 512 MiB and /dev/shm at 64 MiB: `No space left on device`",
+     "ok": true
+    },
+    {
+     "name": "K8 /workspace is full at 1 GiB (it fits into the 2 GiB of this box together with nothing else)",
+     "ok": true
+    },
+    {
+     "name": "K9 the process limit: threads stop at about 512 with `can't start new thread`; a shell loop gets `Cannot fork`",
+     "ok": true
+    },
+    {
+     "name": "K10 the memory limit: a process that touches more than the box has is killed by the kernel (status -9, `Killed`), and the box goes on",
+     "ok": true
+    },
+    {
+     "name": "K11 the rollout was graded all the same: the baseline predictor of the box on every item, in capped grading boxes",
+     "ok": true
+    },
+    {
+     "name": "K12 the laboratory required its bearer and no container of this run is left",
+     "ok": true
+    }
+   ],
+   "measured": {
+    "instance": "pilot-caps-130844-w0",
+    "trace_id": "6842304fb0e04afd923723981c82a735",
+    "box_caps": {
+     "cpus": 2,
+     "memory_gb": 2,
+     "swap": false,
+     "pids": 512,
+     "read_only_root": true,
+     "workspace_mib": 1024,
+     "scratch_mib": 512,
+     "scratch_path": "/tmp",
+     "shm_mib": 64,
+     "tmpfs": {
+      "/workspace": "rw,exec,nosuid,nodev,size=1024m,mode=755",
+      "/tmp": "rw,exec,nosuid,nodev,size=512m,mode=1777",
+      "/etc/physim2": "rw,noexec,nosuid,nodev,size=1m,mode=755",
+      "/runtime": "rw,noexec,nosuid,nodev,size=16m,mode=755"
+     }
+    },
+    "caps_report": {
+     "uid": 0,
+     "time": 1794402572.563378,
+     "limits_seen": {
+      "pids_max": "512",
+      "memory_max": "2147483648",
+      "swap_max": "2147483648",
+      "cpu_max": "200000 100000",
+      "nproc": 4
+     },
+     "mounts": {
+      "/": {
+       "type": "overlay",
+       "options": "ro,relatime",
+       "super": "rw,lowerdir=/var/lib/docker/overlay2/l/6SAILYKB4DLXGW5DHIKT5QXVV4:/var/lib/docker/overlay2/l/BMRJJ466DYHK7SV3YLEFAFUKZQ:/var/lib/docker/overlay2/l/RHZRRN4WEGB6VID7KCTHFGDCOC:/var/lib/docker/overlay2/l/4H5ZTXFLBYK2RM3GAPBDVN3BMQ:/var/lib/docker/overlay2/l/FQYHXI3OW7TXOEV53CYRHGKHGM:/var/lib/docker/overlay2/l/M3LFNJGNKNIEOBYIIVJBPI6GYQ:/var/lib/docker/overlay2/l/G2EJ4AHHHA5J7UKAMUFKCD67QI:/var/lib/docker/overlay2/l/WSIWNT64TL2WNLIVXPG4ULZBNM:/var/lib/docker/overlay2/l/6FJOZQYECMS4FTEAZ46ROKIYNG:/var/lib/docker/overlay2/l/FCGVOKKP7XZV2NBXXRWRWONPLT,upperdir=/var/lib/docker/overlay2/84387d1ad343aea4e1056b1048ccb8bfed9584cd0e96e8319495d9d5ada0a696/diff,workdir=/var/lib/docker/overlay2/84387d1ad343aea4e1056b1048ccb8bfed9584cd0e96e8319495d9d5ada0a696/work"
+      },
+      "/dev/shm": {
+       "type": "tmpfs",
+       "options": "rw,nosuid,nodev,noexec,relatime",
+       "super": "rw,size=65536k"
+      },
+      "/runtime": {
+       "type": "tmpfs",
+       "options": "rw,nosuid,nodev,noexec,relatime",
+       "super": "rw,size=16384k,mode=755"
+      },
+      "/tmp": {
+       "type": "tmpfs",
+       "options": "rw,nosuid,nodev,relatime",
+       "super": "rw,size=524288k"
+      },
+      "/workspace": {
+       "type": "tmpfs",
+       "options": "rw,nosuid,nodev,relatime",
+       "super": "rw,size=1048576k,mode=755"
+      },
+      "/etc/physim2": {
+       "type": "tmpfs",
+       "options": "rw,nosuid,nodev,noexec,relatime",
+       "super": "rw,size=1024k,mode=755"
+      }
+     },
+     "write_one_byte": {
+      "<home>": "EROFS: Read-only file system",
+      "/usr": "EROFS: Read-only file system",
+      "/etc": "EROFS: Read-only file system",
+      "/opt": "EROFS: Read-only file system",
+      "/var/tmp": "EROFS: Read-only file system",
+      "/home": "EROFS: Read-only file system",
+      "/": "EROFS: Read-only file system",
+      "/workspace": "written",
+      "/tmp": "written",
+      "/dev/shm": "written",
+      "/etc/physim2": "written",
+      "/runtime": "written"
+     },
+     "home": {
+      "HOME": "<home>",
+      "expanduser": "<home>"
+     },
+     "fill_tmp": {
+      "mib_written": 511,
+      "error": "ENOSPC: No space left on device"
+     },
+     "fill_workspace": {
+      "mib_written": 1023,
+      "error": "ENOSPC: No space left on device"
+     },
+     "fill_shm": {
+      "mib_written": 64,
+      "error": "ENOSPC: No space left on device"
+     },
+     "threads": {
+      "threads_started": 509,
+      "error": "can't start new thread"
+     },
+     "fork_in_a_shell": {
+      "last_line": "sh: 0: Cannot fork",
+      "stderr_last_line": ""
+     },
+     "memory": {
+      "returncode": -9,
+      "mib_reached": 1984,
+      "stderr_last_line": "",
+      "shell_would_print": "Killed"
+     },
+     "after": {
+      "still_running": true,
+      "write_workspace": "written"
+     }
+    },
+    "reward": -0.024896835329685896,
+    "wall_s": 107.9
+   }
+  },
+  "route": {
+   "n_checks": 31,
+   "n_failed": 0,
+   "failed": [],
+   "wall_s": 895.5,
+   "checks": [
+    {
+     "name": "F1 fetch (real git objects of a scratch repository): the request, its config and the shared ledger arrive in the pilot folder, byte for byte",
+     "ok": true
+    },
+    {
+     "name": "F2 ... and a commit that the repository does not hold gives a refusal, with the files in the pilot folder untouched",
+     "ok": true
+    },
+    {
+     "name": "R1 without the lead's standing go nothing of step 3 starts",
+     "ok": true
+    },
+    {
+     "name": "R2 the rollout stage is refused before the instance exists",
+     "ok": true
+    },
+    {
+     "name": "R4 stage instance: the name is registered to the job and the hidden instance is made",
+     "ok": true
+    },
+    {
+     "name": "R5 a second `instance` for the same name is refused: a name is used once",
+     "ok": true
+    },
+    {
+     "name": "R6 the dry run is refused before the reference table exists",
+     "ok": true
+    },
+    {
+     "name": "R7 stage reference: the profile's scripted policies on the job's instance, all graded",
+     "ok": true
+    },
+    {
+     "name": "R8 the rollout stage is refused before the free dry run has passed",
+     "ok": true
+    },
+    {
+     "name": "R9 stage dry-run: listed prices read without a credential; one worst-case call = 60,000 x $2/M + 512 x $10/M = $0.12512; bound = cap + that; vf-eval resolves the config and exits",
+     "ok": true
+    },
+    {
+     "name": "R3 the rollout stage WITHOUT the stand-in option and without the credentials option is refused (and the stand-in model is in no provider's list, if the list answers at all): nothing was started, the ledger is empty",
+     "ok": true
+    },
+    {
+     "name": "R10 stage rollout ran to its end (vf-eval exited by itself with status 0)",
+     "ok": true
+    },
+    {
+     "name": "R11 THE SPEND STOP: four calls at $0.041 pass the cap of $0.13 after the fourth; the fifth is never sent; stop condition `spend_cap`",
+     "ok": true
+    },
+    {
+     "name": "R12 ... the stand-in endpoint saw exactly those four requests, each with the reply cap of the run, the rollout's id and a (made-up) key",
+     "ok": true
+    },
+    {
+     "name": "R13 ... the counted cost is within cap_usd + one worst-case call, and the ledger holds the reservation and the closing row",
+     "ok": true
+    },
+    {
+     "name": "R14 RULING E1 through the stop path: the run was finalized and GRADED after the spend stop (64 items in capped boxes)",
+     "ok": true
+    },
+    {
+     "name": "R15 the trace records what the run cost as counted on the host",
+     "ok": true
+    },
+    {
+     "name": "R16 THE BEARER, from the host while the run was alive: without it the laboratory answers 401 with an empty body (POST, GET, another path, a random bearer, an empty one)",
+     "ok": true
+    },
+    {
+     "name": "R17 ... the laboratory process holds the bearer neither on its command line nor in its environment",
+     "ok": true
+    },
+    {
+     "name": "R18 ... inside the box: of every 64-hex string in the environment of every process and in the files of /etc/physim2, /tmp and /workspace, none is the bearer",
+     "ok": true
+    },
+    {
+     "name": "R19 ... and the box's environment holds no credential-like name besides the proxy settings verifiers gives a box",
+     "ok": true
+    },
+    {
+     "name": "R20 ... the laboratory was used from inside the box all the same (through the box's proxy, which carries the bearer)",
+     "ok": true
+    },
+    {
+     "name": "R21 ... and in the run's outputs (job folder, store, the whole pilot folder): no 64-hex string is the bearer",
+     "ok": true
+    },
+    {
+     "name": "R22 the read-only root was what the model's shell saw (`Read-only file system`)",
+     "ok": true
+    },
+    {
+     "name": "R23 the job cannot be run a second time",
+     "ok": true
+    },
+    {
+     "name": "R23b stage close has nothing to close: the tool wrote the job's closing row itself",
+     "ok": true
+    },
+    {
+     "name": "R24 the publication folder: every file of the protocol, a manifest with sha256 and size, a clean key scan",
+     "ok": true
+    },
+    {
+     "name": "R24b RULING E1: the note that the model's LAST tool call wrote (a call whose result it never saw) is in the frozen, graded submission",
+     "ok": true
+    },
+    {
+     "name": "R25 ... usage.json holds the cost per call and in total; status.json the stop condition, the reward and the caps",
+     "ok": true
+    },
+    {
+     "name": "R26 ... no published file holds the bearer, the scratch path of this machine or the stand-in's key word",
+     "ok": true
+    },
+    {
+     "name": "R27 no container of this run is left",
+     "ok": true
+    }
+   ],
+   "measured": {
+    "job_id": "s3-132937",
+    "instance": "pilot-s3-132937-w0",
+    "pilot": "<scratch>/pilot-132937",
+    "reference": {
+     "wall_s": 605.5,
+     "all_graded": true,
+     "pooled": {
+      "O": 1.0,
+      "K": 0.0,
+      "null": -0.026961439073046684,
+      "D": 0.34202700829051425,
+      "P0": 0.7948435672699349,
+      "PM": 0.7586981320416505,
+      "S": 0.8590342657136647,
+      "C": 0.8758256760418719
+     }
+    },
+    "bounds": {
+     "job_id": "s3-132937",
+     "model": "standin/echo-1",
+     "prices_usd_per_mtok": {
+      "input": 2.0,
+      "output": 10.0,
+      "cache_read": 0.5,
+      "cache_write": null,
+      "input_counted": 2.0,
+      "context_window": 100000,
+      "max_output_tokens": 4096
+     },
+     "one_worst_case_call_usd": 0.12512,
+     "cap_usd": 0.13,
+     "bound_on_the_bill_usd": 0.25512,
+     "crude_bound_without_the_spend_stop_usd": 2.46,
+     "ledger_sum_usd": 0.0,
+     "spent_elsewhere_usd": 0.35,
+     "shared_ledger": {
+      "updated_utc": "2026-11-11T12:20:03Z",
+      "rows": 2,
+      "sha256": "0431f31adfd62af0a374671ed2082d3950041ff7118edd1d13e13a0fab6dac5b"
+     },
+     "ceiling_usd": 5.0,
+     "billed": false
+    },
+    "rollout_wall_s": 260.1,
+    "bearer": {
+     "probe": {
+      "port": 37057,
+      "bearer_required": true,
+      "no_bearer": [
+       401,
+       0
+      ],
+      "get": [
+       401,
+       0
+      ],
+      "random_bearer": [
+       401,
+       0
+      ],
+      "empty_bearer": [
+       401,
+       0
+      ],
+      "other_path": [
+       401,
+       0
+      ],
+      "lab_pid": 31293,
+      "lab_process": {
+       "cmdline_bytes": 109,
+       "environ_bytes": 1477,
+       "hex64_strings": 0,
+       "bearer_among_them": false
+      }
+     },
+     "box_hex64_strings": 29,
+     "output_scans_files_strings_hits": {
+      "job folder": [
+       59,
+       119,
+       0
+      ],
+      "store": [
+       137,
+       124,
+       0
+      ],
+      "pilot folder": [
+       204,
+       244,
+       0
+      ]
+     }
+    },
+    "stop_condition": "spend_cap",
+    "reward": -0.026961439073046684,
+    "spend": {
+     "present": true,
+     "counted_usd": 0.164,
+     "attempts": 4,
+     "settled": 4,
+     "never_settled": 0,
+     "worst_case_calls": 0,
+     "refused": 0,
+     "stopped": null,
+     "complete": true,
+     "worst_call_usd": 0.12512,
+     "bound_usd": 0.25512,
+     "billed": false,
+     "within_bound": true
+    },
+    "published_files": [
+     "PILOT_NEVER_REUSE_AS_EXAM.txt",
+     "config.toml",
+     "grades.json",
+     "key_scan.json",
+     "lab_log.jsonl",
+     "model_entry.json",
+     "reference.json",
+     "request.json",
+     "resolved.toml",
+     "status.json",
+     "submission.json",
+     "submission/NOTE.txt",
+     "submission/pool.npz",
+     "submission/predict.py",
+     "trace.redacted.jsonl",
+     "transcript.md",
+     "usage.json"
+    ],
+    "left_out": [],
+    "lab": {
+     "ticks_used": 0,
+     "resets": 0,
+     "total_nats": 0.0,
+     "episodes": 0,
+     "requests": 1,
+     "rejected": 0,
+     "validations": 0,
+     "submissions": 0,
+     "submitted": false,
+     "infrastructure_errors": 0
+    }
+   }
+  },
+  "first_route_run": {
+   "n_checks": 27,
+   "failed": [
+    "R16",
+    "R17",
+    "R18",
+    "R22"
+   ],
+   "why": "four faults of the TEST, found at its first complete run and fixed before the run reported above: R16 and R17 asked a laboratory of a finished reference policy (its record is in the same folder; its port was closed and its process gone), R18 looked for a word that its own script contains, R22 expected the model to see the result of its last tool call, which no agent ever sees (the note that call wrote IS in the graded submission: R24b). The code under test did not change between the two runs, except that the request now arrives through fetch and the stages take --shared-ledger."
+  }
+ },
+ "mac_runner_conditions_on_the_spend_stop": {
+  "1 a reply with missing or partial usage, a stream without a final usage chunk, an error reply: ONE worst-case call, never zero": {
+   "tests": [
+    "C6",
+    "C16",
+    "C25",
+    "C26",
+    "C27",
+    "C29",
+    "C30",
+    "D23"
+   ],
+   "all_passed": true,
+   "missing": []
+  },
+  "2 every HTTP attempt counts, retries included (verifiers' client does not retry: clients/base.py:14-16; the run's config allows no retry; a retry of the harness is a new, counted request)": {
+   "tests": [
+    "C22",
+    "C27",
+    "D4"
+   ],
+   "all_passed": true,
+   "missing": []
+  },
+  "3 cache reads at the full input price unless the saved model entry lists a cache-read price (and prompt tokens at a listed cache-write price where that is higher)": {
+   "tests": [
+    "C3",
+    "C4",
+    "D15b"
+   ],
+   "all_passed": true,
+   "missing": []
+  },
+  "4 counter and stop live in the host-side process only; one counted client; no model call without a meter, for another rollout or on another route": {
+   "tests": [
+    "C13",
+    "C14",
+    "C36",
+    "C37",
+    "C38",
+    "C39",
+    "R12"
+   ],
+   "all_passed": true,
+   "missing": []
+  },
+  "5 prices and context window from the provider's listing at run start, written into the run's record (model_entry.json)": {
+   "tests": [
+    "D13",
+    "D15",
+    "R9",
+    "R24"
+   ],
+   "all_passed": true,
+   "missing": []
+  },
+  "6 max_turns stays a cap of its own: always set, compared with the config by the strict schema": {
+   "tests": [
+    "D1",
+    "D4"
+   ],
+   "all_passed": true,
+   "missing": []
+  },
+  "7 max_context_tokens is mandatory and enforced before each call; the one-call worst case uses it": {
+   "tests": [
+    "D2",
+    "D13",
+    "D15",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C17",
+    "C34",
+    "C35"
+   ],
+   "all_passed": true,
+   "missing": []
+  },
+  "8 acceptance rule (cap_usd >= one worst-case call), bound = cap_usd + one worst-case call, the count per call and in total in the publication folder": {
+   "tests": [
+    "D15",
+    "C31",
+    "C32",
+    "R11",
+    "R13",
+    "D30",
+    "R25"
+   ],
+   "all_passed": true,
+   "missing": []
+  }
+ },
+ "runbook_text_check": {
+  "copy": "the pinned commit's own copy (no commit named)",
+  "n_checks": 51,
+  "n_passed": 50,
+  "failed": [
+   "pin_file_matches_the_files_on_disk"
+  ]
+ },
+ "step3_commands_issued_as_shell_lines": [
+  {
+   "key": "3.0-folder",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test ! -e \"$HOME/physim2-rollouts\" && test ! -L \"$HOME/physim2-rollouts\" && mkdir -m 700 \"$HOME/physim2-rollouts\" && mkdir \"$HOME/physim2-rollouts/requests\" \"$HOME/physim2-rollouts/configs\" && echo \"ROLLOUTS-FOLDER-MADE\"",
+   "exit": 0,
+   "stdout": "ROLLOUTS-FOLDER-MADE\n",
+   "stderr": "",
+   "seconds": 0.0,
+   "floor_changed": null,
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3.0-folder",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test ! -e \"$HOME/physim2-rollouts\" && test ! -L \"$HOME/physim2-rollouts\" && mkdir -m 700 \"$HOME/physim2-rollouts\" && mkdir \"$HOME/physim2-rollouts/requests\" \"$HOME/physim2-rollouts/configs\" && echo \"ROLLOUTS-FOLDER-MADE\"",
+   "exit": 1,
+   "stdout": "",
+   "stderr": "",
+   "seconds": 0.0,
+   "floor_changed": null,
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3.0-go",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -d \"$HOME/physim2-rollouts\" && test ! -L \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && printf '{\"schema\": \"physim2-lead-go/v1\", \"ceiling_usd\": %s, \"date\": \"%s\"}\\n' \"5\" \"2026-11-11\" > \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && cat \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\"",
+   "exit": 0,
+   "stdout": "{\"schema\": \"physim2-lead-go/v1\", \"ceiling_usd\": 5, \"date\": \"2026-11-11\"}\n",
+   "stderr": "",
+   "seconds": 0.0,
+   "floor_changed": null,
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3b-check",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<study>/.venv/bin/python\" -B tools/check_request.py --request \"$HOME/physim2-rollouts/requests/reh-qwen-001.json\" --pilot \"$HOME/physim2-rollouts\" --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --prices",
+   "exit": 0,
+   "stdout": "{\"job_id\": \"reh-qwen-001\", \"pin\": {\"pin\": \"c0af5f802e281b25c8c41c02750e46e0fadf89cd\", \"pin_sha256\": \"cd67eb4b8d706acf44c23dce72efd087532b422a5b66179c1cdc92561ffd03e4\"}, \"config\": \"reh_qwen_001.toml\", \"config_sha256\": \"1d37903b81b3e937edce1fd9da582d0d7c9936c8bab8138e6be93e532164cff1\", \"flat\": {\"model\": \"qwen/qwen3.6-35b-a3b\", \"exam_profile\": \"ring\", \"max_turns\": 150, \"max_output_tokens_per_turn\": 8192, \"wall_minutes\": 60, \"box_memory_gb\": 4, \"reasoning_effort\": \"default\", \"reasoning_summary\": \"default\", \"push\": false, \"schema\": \"physim2-rollout/v1\", \"instance\": \"pilot-reh-qwen-001\", \"max_context_tokens\": 200000, \"cap_usd\": 1.0}, \"instance\": {\"job\": null, \"in_index\": false, \"in_store\": false}, \"ledger\": {\"sum_usd\": 0.0, \"jobs\": 0, \"counted_at_their_bound\": []}, \"go\": {\"ceiling_usd\": 5.0, \"date\": \"2026-11-11\"}, \"bounds\": {\"worst_call_usd\": 0.03027392, \"bound_usd\": 1.03027392, \"crude_bound_usd\": 5.566464, \"cap_usd\": 1.0, \"max_context_tokens\": 200000, \"max_output_tokens\": 8192, \"max_turns\": 150, \"prices_usd_per_mtok\": {\"input\": 0.11, \"output\": 1.01, \"cache_read\": 0.099, \"cache_write\": null, \"input_counted\": 0.11, \"context_window\": 262144, \"max_output_tokens\": 32768}}, \"ceiling\": {\"sum_usd\": 0.0, \"jobs\": 0, \"counted_at_their_bound\": [], \"ceiling_usd\": 5.0, \"spent_elsewhere_usd\": 2.58513, \"after_this_run_at_most_usd\": 3.61540392}}\n",
+   "stderr": "",
+   "seconds": 0.7,
+   "floor_changed": null,
+   "environment_added_by_the_cloud_wrapper": [
+    "HTTPS_PROXY",
+    "SSL_CERT_FILE"
+   ]
+  },
+  {
+   "key": "3c-instance",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-port4b \"<study>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/reh-qwen-001.json\" --pilot \"$HOME/physim2-rollouts\" --stage instance --disk-floor-gib 1.2",
+   "exit": 0,
+   "stdout": "{\"stage\": \"instance\", \"job_id\": \"reh-qwen-001\", \"instance\": \"pilot-reh-qwen-001\", \"made\": true}\n",
+   "stderr": "",
+   "seconds": 18.6,
+   "floor_changed": "--disk-floor-gib 8 -> 1.2",
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3c-instance",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-port4b \"<study>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/reh-qwen-001.json\" --pilot \"$HOME/physim2-rollouts\" --stage instance --disk-floor-gib 1.2",
+   "exit": 2,
+   "stdout": "refused: the store has seen this instance name already; a name is never used twice\n",
+   "stderr": "",
+   "seconds": 0.1,
+   "floor_changed": "--disk-floor-gib 8 -> 1.2",
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3e-dry-run",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-port4b \"<study>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/reh-qwen-001.json\" --pilot \"$HOME/physim2-rollouts\" --stage dry-run --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --disk-floor-gib 1.2",
+   "exit": 2,
+   "stdout": "refused: the reference table of this job is not finished (stage `reference`; <job>/reference.json with all_graded true)\n",
+   "stderr": "",
+   "seconds": 0.1,
+   "floor_changed": "--disk-floor-gib 8 -> 1.2",
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": [
+    "HTTPS_PROXY",
+    "SSL_CERT_FILE"
+   ]
+  },
+  {
+   "key": "3d-reference",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-port4b nohup \"<study>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/reh-qwen-001.json\" --pilot \"$HOME/physim2-rollouts\" --stage reference --disk-floor-gib 1.2 > \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/reference.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/reference.log\" ) > /dev/null 2>&1 < /dev/null & }",
+   "exit": 0,
+   "stdout": "29.9.2\n",
+   "stderr": "",
+   "seconds": 0.1,
+   "floor_changed": "--disk-floor-gib 8 -> 1.2",
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3-status",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/reference.log\" \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-port4b --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"<study>\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+   "exit": 0,
+   "stdout": "==> /tmp/cla\ncontainers:\nprocesses:\nTOOL 11974 <study>/.venv/bin/python -B tools/prove.py --store <a path of this machine, cut>\nfree:\n2 GiB\nstatus done\n",
+   "stderr": "",
+   "seconds": 0.0,
+   "floor_changed": null,
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3-status",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/reference.log\" \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-port4b --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"<study>\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+   "exit": 0,
+   "stdout": "==> /tmp/cla\nEXIT 0\ncontainers:\nprocesses:\nfree:\n2 GiB\nstatus done\n",
+   "stderr": "",
+   "seconds": 0.0,
+   "floor_changed": null,
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3e-dry-run",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-port4b \"<study>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/reh-qwen-001.json\" --pilot \"$HOME/physim2-rollouts\" --stage dry-run --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --disk-floor-gib 1.2",
+   "exit": 0,
+   "stdout": "{\"job_id\": \"reh-qwen-001\", \"model\": \"qwen/qwen3.6-35b-a3b\", \"prices_usd_per_mtok\": {\"input\": 0.11, \"output\": 1.01, \"cache_read\": 0.099, \"cache_write\": null, \"input_counted\": 0.11, \"context_window\": 262144, \"max_output_tokens\": 32768}, \"one_worst_case_call_usd\": 0.030274, \"cap_usd\": 1.0, \"bound_on_the_bill_usd\": 1.030274, \"crude_bound_without_the_spend_stop_usd\": 5.57, \"ledger_sum_usd\": 0.0, \"spent_elsewhere_usd\": 2.58513, \"shared_ledger\": {\"updated_utc\": \"2026-11-11T12:20:03Z\", \"rows\": 4, \"sha256\": \"930796996dc8737dae5137a29d520e1f6fc71ae0fab52df6c40741fdd4b95dca\"}, \"ceiling_usd\": 5.0, \"billed\": true}\n",
+   "stderr": "13:54:36    INFO wrote config to <scratch home>/physim2-rollouts/rollouts/reh-qwen-001/dry-run/reh-qwen-001-dry/configs/resolved/eval.json\n",
+   "seconds": 9.5,
+   "floor_changed": "--disk-floor-gib 8 -> 1.2",
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": [
+    "HTTPS_PROXY",
+    "SSL_CERT_FILE"
+   ]
+  },
+  {
+   "key": "3h-pack",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<study>/.venv/bin/python\" -B tools/pack_rollout.py --request \"$HOME/physim2-rollouts/requests/reh-qwen-001.json\" --pilot \"$HOME/physim2-rollouts\"",
+   "exit": 0,
+   "stdout": "{\"files\": 8, \"total_bytes\": 37701, \"left_out\": [], \"missing\": [\"grades.json\", \"lab_log.jsonl\", \"model_entry.json\", \"resolved.toml\", \"submission/\", \"trace.redacted.jsonl\", \"transcript.md\"], \"key_scan\": \"clean\", \"complete\": false}\n",
+   "stderr": "",
+   "seconds": 0.1,
+   "floor_changed": null,
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3-paid",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-port4b nohup \"<study>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/reh-qwen-001.json\" --pilot \"$HOME/physim2-rollouts\" --stage rollout --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --disk-floor-gib 1.2 --model-credentials prime > \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/rollout.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/rollout.log\" ) > /dev/null 2>&1 < /dev/null & }",
+   "exit": 0,
+   "stdout": "29.9.2\n",
+   "stderr": "",
+   "seconds": 0.1,
+   "floor_changed": "--disk-floor-gib 8 -> 1.2",
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": []
+  },
+  {
+   "key": "3-status",
+   "command": "cd \"<study>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/reference.log\" \"$HOME/physim2-rollouts/rollouts/reh-qwen-001/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=physim2-port4b --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"<study>\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+   "exit": 0,
+   "stdout": "==> /tmp/cla\nEXIT 0\n\n==> /tmp/cla\nEXIT 2\ncontainers:\nvf-f5b032aae4b54ee19e62b2ff928e45da Up 3 seconds\nprocesses:\nVF-EVAL 25690 <study>/.venv/bin/python -B <study>/\nfree:\n2 GiB\nstatus done\n",
+   "stderr": "",
+   "seconds": 0.0,
+   "floor_changed": null,
+   "run_label_changed": "physim2-pilot-20261110 -> physim2-port4b",
+   "environment_added_by_the_cloud_wrapper": []
+  }
+ ],
+ "step2b_probe_at_this_code": {
+  "n_checks_round5": 34,
+  "n_reproduced": 32,
+  "failed_round5": [],
+  "n_checks_new": 66,
+  "n_passed_new": 66,
+  "failed_new": [],
+  "wall_s": 1595.4021520614624,
+  "tool": "tools/check_probe.py (step 2b of the runbook), 37 scripted rollouts through vf-eval in capped boxes of image physim2-ring:2",
+  "names_that_failed_with_the_round_3_expectations": [
+   "a_control_without_cleanup_finds_them",
+   "a2_shared_box_carries_all_four_channels",
+   "d_every_hostile_rollout_is_graded",
+   "d_replaced_tar_duplicate_collision_longpath_score_K",
+   "e_falsified_check_in_the_agent_box_freezes_but_the_grader_validates",
+   "e_unsubmitted_nondeterministic_predictor_scores_K",
+   "e_unsubmitted_predictor_failing_one_example_call_scores_K",
+   "e_final_collection_respects_the_submission_cap",
+   "box_scripts_passed_their_gate_inside_the_box",
+   "h_settle_records_K_for_such_a_rollout",
+   "f_overflow_fifo_and_bomb_fail_every_item_and_score_K",
+   "d_deleted_submission_scores_K",
+   "d_empty_oversize_huge_and_broken_tar_score_K",
+   "d_control_default_collection_grades_a_deleted_submission",
+   "d_links_are_left_out_and_the_rest_is_graded",
+   "d_junk_in_logs_artifacts_does_not_matter"
+  ],
+  "how": "the rollouts ran ONCE; the round-3 expectations then failed in 16 names, every one a consequence of a round-4 ruling or of the box caps (a failed item scores as the null policy, not K; the final collection has no attempt cap; five hostile agents end at their first write outside /workspace and /tmp with `Read-only file system`; /var/tmp and /run/lock no longer carry between items); the expectations were rewritten and the checks recomputed from the same stored rollouts",
+  "null_policy_reward_on_the_probe_instance": "every all-failed rollout and the untouched baseline score the same number, bit for bit (not 0.0)"
+ },
+ "bounds_for_the_default_config": {
+  "config": {
+   "model": "qwen/qwen3.6-35b-a3b",
+   "max_turns": 150,
+   "max_output_tokens_per_turn": 8192,
+   "max_context_tokens": 200000,
+   "cap_usd": 1.0
+  },
+  "prices_usd_per_mtok_listed_on_2026-11-11": {
+   "input": 0.11,
+   "output": 1.01,
+   "cache_read": 0.099,
+   "context_window": 262144
+  },
+  "one_worst_case_call_usd": 0.030274,
+  "bound_on_the_bill_usd": 1.030274,
+  "crude_bound_without_the_spend_stop_usd": 5.5665,
+  "source": "the request check of step 3b, issued as a shell line against the provider's public model list (no credential): see step3_commands_issued_as_shell_lines"
+ }
+}

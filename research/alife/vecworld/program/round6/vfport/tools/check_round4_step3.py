@@ -437,7 +437,9 @@ def run(check, raises, scratch):
           and "nothing to close" in (refused(lambda: vfrun.close_job(p, r, CR, ps=quiet, containers=lambda: [], write_status=ws)) or ""), row)
     check("D39 the one address of a model run is the service the prices are read from, and the key's name is looked for, never its value",
           CR.PRIME_MODELS_URL == vfrun.PRIME_INFERENCE_URL + "/models" and vfrun.KEY_VAR == "PRIME_API_KEY" and "DYLD_INSERT_LIBRARIES" in vfrun.refused_names({"DYLD_INSERT_LIBRARIES": "x"})
-          and vfrun.refused_names({"PRIME_API_KEY": "x", "HOME": "/h", "SSL_CERT_FILE": "/c"}) == [] and "SSL_CERT_FILE" not in vfrun.ENV_PASS + vfrun.ENV_PASS_MODEL)
+          and vfrun.refused_names({"PRIME_API_KEY": "x", "HOME": "/h", "SSL_CERT_FILE": "/c"}) == [] and "SSL_CERT_FILE" not in vfrun.ENV_PASS + vfrun.ENV_PASS_MODEL
+          and "needs PRIME_API_KEY in the environment" in (refused(lambda: vfrun.require_key_name(CR, {"HOME": "/h", "PRIME_TEAM_ID": "t"})) or "")
+          and vfrun.require_key_name(CR, {"PRIME_API_KEY": "made-up"}) is None)
     # ---- the one stop path, with a child that is an object of this test (nothing is signalled) ----
     import subprocess as SP
 
@@ -476,6 +478,12 @@ def run(check, raises, scratch):
           how1 == "SIGTERM" and [c for c in c1.calls if c[0] == "signal"] == [("signal", 15)] and ("kill",) not in c1.calls and len(c1.calls) == 4
           and how2 == "SIGTERM, then SIGKILL" and c2.calls.count(("kill",)) == 1 and [c for c in c2.calls if c[0] == "signal"] == [("signal", 15)]
           and how3 == "SIGTERM" and not [c for c in c3.calls if c[0] == "signal"], (how1, c1.calls, how2, c2.calls, how3, c3.calls))
+    argv = vfrun._reference_argv(r, got["flat"], p, CC.light("profiles").get("ring"), 8.0)
+    inst = vfrun._instance_argv(r, got["flat"], p, CC.light("profiles").get("ring"))
+    check("D41 the reference table is built by profile on the job's own instance, in boxes with the request's (lowered) memory; the instance is "
+          "made by profile under exactly the requested name",
+          argv[argv.index("--profile") + 1] == "ring" and argv[argv.index("--instance") + 1] == "pilot-d-test-001" and argv[argv.index("--memory") + 1] == "2"
+          and argv[argv.index("--out") + 1] == p["reference"] and inst[-4:] == ["--profile", "ring", "--id", "pilot-d-test-001"], (argv[2:], inst[2:]))
     one = {"prompt_tokens": 900}
     check("D35 generic credential shapes are found by the scan: a bearer token, a private key block, an sk- key, a token in a url",
           set(PK.scan(b"Authorization: Bearer " + b"a" * 30 + b"\n-----BEGIN OPENSSH PRIVATE KEY-----\nsk-" + b"B" * 30 + b" https://user:hunter2hunter2@host/x", {}, {}))

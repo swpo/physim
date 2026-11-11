@@ -758,6 +758,15 @@ cloud container, run label `physim2-port4b`), INFERRED. Results: `results/round4
 | 9 | The Mac review's minor findings | the table below | |
 | 10 | The default model id is `qwen/qwen3.6-35b-a3b` (`physim2_env/rollout_config.py`, the runbook's example); the old `configs/qwen_ring_bash.toml` is no longer used by anything | | READ |
 
+Step 2b's tool (`tools/check_probe.py`, 100 boundary checks through 37 scripted rollouts) was run once at this code
+and its expectations were brought in line with round 4 (`results/round4_step3.json`, `step2b_probe_at_this_code`):
+every all-failed rollout and the untouched baseline score the same number, the null policy's, bit for bit, and
+never K; the laboratory still caps submit attempts while the final collection is graded all the same (ruling E1);
+five hostile agents that begin by replacing `/usr/bin/tar` or writing under `/logs` end there with `Read-only file
+system` (the caps remove those attacks at their first step; under the stock env of the scripted tools such a
+rollout is ungraded and settled as the null policy, under the env of model rollouts its last checkpoint is
+graded); `/var/tmp` and `/run/lock` no longer carry anything between items. Both failure lists are empty on Linux.
+
 What the Mac's runner asked of the spend stop, and the test of each line: (1) missing or partial usage, a stream
 without a usage chunk, an error reply: one worst-case call (C6, C25 to C30); (2) every HTTP attempt counts:
 verifiers' client does not retry (`clients/base.py:14-16`), the config allows no retry, a retry of the harness is

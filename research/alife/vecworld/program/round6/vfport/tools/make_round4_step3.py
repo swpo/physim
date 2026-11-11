@@ -12,6 +12,7 @@ import argparse
 import base64
 import json
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -49,7 +50,7 @@ def brief(checks):
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    for k in ("host", "caps", "route", "first-route", "runbook", "issued", "probe", "out"):
+    for k in ("host", "caps", "route", "first-route", "runbook", "issued", "probe", "probe-before", "out"):
         ap.add_argument("--" + k, default=None, required=k in ("host", "caps", "route", "runbook", "out"))
     ap.add_argument("--scratch", default="", help="the scratch folder of the runs, replaced by <scratch> in every string")
     a = ap.parse_args()
@@ -63,7 +64,7 @@ def main() -> int:
     if a.issued:
         with open(a.issued) as f:
             issued = [json.loads(x) for x in f if x.strip()]
-    probe = load(a.probe)
+    probe, probe_before = load(a.probe), load(a.probe_before)
     out = {
         "what": "round 4, fixer B (step 3 and host safety): the laboratory's bearer, the box caps, the spend stop, the request route, the strict "
                 "config schema, the publication folder, the books of an interrupted job. PILOT_NEVER_REUSE_AS_EXAM: every instance made for "
@@ -95,7 +96,15 @@ def main() -> int:
         "mac_runner_conditions_on_the_spend_stop": conditions,
         "runbook_text_check": None if runbook is None else {k: runbook.get(k) for k in ("copy", "n_checks", "n_passed", "failed")},
         "step3_commands_issued_as_shell_lines": issued,
-        "step2b_probe_at_this_code": None if probe is None else {k: probe.get(k) for k in ("n_checks_round5", "n_reproduced", "failed_round5", "n_checks_new", "n_passed_new", "failed_new", "wall_s")},
+        "step2b_probe_at_this_code": None if probe is None else dict(
+            {k: probe.get(k) for k in ("n_checks_round5", "n_reproduced", "failed_round5", "n_checks_new", "n_passed_new", "failed_new", "wall_s")},
+            tool="tools/check_probe.py (step 2b of the runbook), 37 scripted rollouts through vf-eval in capped boxes of image physim2-ring:2",
+            names_that_failed_with_the_round_3_expectations=None if probe_before is None else probe_before.get("failed_new"),
+            how="the rollouts ran ONCE; the round-3 expectations then failed in 16 names, every one a consequence of a round-4 ruling or of the box "
+                "caps (a failed item scores as the null policy, not K; the final collection has no attempt cap; five hostile agents end at their "
+                "first write outside /workspace and /tmp with `Read-only file system`; /var/tmp and /run/lock no longer carry between items); the "
+                "expectations were rewritten and the checks recomputed from the same stored rollouts",
+            null_policy_reward_on_the_probe_instance="every all-failed rollout and the untouched baseline score the same number, bit for bit (not 0.0)"),
         "bounds_for_the_default_config": {
             "config": {"model": "qwen/qwen3.6-35b-a3b", "max_turns": 150, "max_output_tokens_per_turn": 8192, "max_context_tokens": 200000, "cap_usd": 1.0},
             "prices_usd_per_mtok_listed_on_2026-11-11": {"input": 0.11, "output": 1.01, "cache_read": 0.099, "context_window": 262144},
@@ -117,6 +126,9 @@ def main() -> int:
     for old, new in ((a.scratch, "<scratch>"), (ROOT, "<study>"), (os.path.expanduser("~"), "<home>")):
         if old and len(old) > 3:
             text = text.replace(old, new)
+    for whole in (a.scratch, ROOT):                           # a path that an output line cut short (the status command cuts at 160 characters)
+        if whole and len(whole) > 24:
+            text = re.sub(re.escape(whole[:24]) + r"[^\s\"\\]*", "<a path of this machine, cut>", text)
     hits = {}
     for name in CRED:
         v = os.environ.get(name) or ""

@@ -532,11 +532,20 @@ def _reference_argv(req: dict, flat: dict, p: dict, profile: dict, floor_gib: fl
     """The command that builds the reference table: the profile's scripted policies on the job's instance."""
     base = [sys.executable, "-B", os.path.join("tools", "prove.py"), "--store", p["store"], "--scratch", os.path.join(p["job"], "reference"),
             "--no-cross-check", "--disk-floor-gib", str(floor_gib), "--out", p["reference"]]
-    if _helper_takes("prove.py", "--profile"):
-        return base + ["--profile", flat["exam_profile"], "--instance", req["instance"]]
+    if _helper_takes("prove.py", "--profile"):                # ruling E8: the reference boxes get the caps of the model's box,
+        memory = ["--memory", str(flat["box_memory_gb"])] if _helper_takes("prove.py", "--memory") else []   # a lowered memory included
+        return base + ["--profile", flat["exam_profile"], "--instance", req["instance"]] + memory
     return base + ["--world", profile["world"], "--config", profile["config_name"], "--worlds", "1", "--prefix", req["instance"][:-3],
                    "--policies", ",".join(profile["reference_policies"]), "--sizes", json.dumps(profile["reference_sizes"]),
                    "--cpu", str(profile["box_cpus"]), "--box-check", ""]
+
+
+def require_key_name(CR, environ=None) -> None:
+    """A billed rollout starts only from a command whose environment holds the key's NAME: the key reaches vf-eval by
+    the environment and no other way (the value is never read by this tool)."""
+    if KEY_VAR not in (os.environ if environ is None else environ):
+        raise CR.Refused(f"a model rollout needs {KEY_VAR} in the environment of its command (the name is looked for; the value is "
+                         "never read by this tool): the key reaches vf-eval by the environment and no other way")
 
 
 def command_line_of(pid) -> str:
@@ -734,9 +743,8 @@ def request_route(a) -> int:
             raise CR.Refused("a model rollout needs --model-credentials prime on its command (or, in a test, --stand-in-endpoint)")
         if started:
             raise CR.Refused("the ledger already holds this job id: a job runs once, and a run that was cut is not run again")
-        if not stand_in and KEY_VAR not in os.environ:
-            raise CR.Refused(f"a model rollout needs {KEY_VAR} in the environment of its command (the name is looked for; the value is "
-                             "never read by this tool): the key reaches vf-eval by the environment and no other way")
+        if not stand_in:
+            require_key_name(CR)
         try:
             with open(p["status"]) as f:
                 dry = json.load(f)["stages"].get("dry-run") or {}

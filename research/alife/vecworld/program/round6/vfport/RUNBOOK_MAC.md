@@ -584,7 +584,7 @@ per item box>` (2.7 s in the cloud container: report the Mac's number, it is the
 mode; with 256 samples per item it is higher than round 3's); in the table null below D below P0 below C, O
 above C (ordering, not values). Anything else: stop and report.
 
-### 2b. The boundary checks and the probes, on their own small instance (37 short rollouts; about 20 minutes)
+### 2b. The boundary checks and the probes, on their own small instance (37 short rollouts; about 25 minutes)
 
 ```sh
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-20261110 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/check_probe.py --store "$HOME/physim2-pilot-20261110/store" --scratch "$HOME/physim2-pilot-20261110/scratch/probe" --disk-floor-gib 8 --out "$HOME/physim2-pilot-20261110/scratch/probe_mac.json" > "$HOME/physim2-pilot-20261110/scratch/probe.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-20261110/scratch/probe.log" ) > /dev/null 2>&1 < /dev/null & }
@@ -598,7 +598,11 @@ JSON object. Expected on the Mac:
   there: the check reads the laboratory process's environment block in `/proc`, which macOS does not have. (On
   Linux the list is empty.)
 
-Any other name in either list: stop and report the two lists. Several checks were measured on Linux only (the
+Any other name in either list: stop and report the two lists. (The checks were brought in line with round 4:
+a rollout whose every item fails scores exactly what the null policy scores, never K; five of the hostile test
+agents begin by replacing `/usr/bin/tar` or by writing under `/logs`, and now end right there with `Read-only file
+system`, which is what the check `d_tar_replacement_and_junk_outside_the_writable_places_are_stopped_by_the_read_only_root`
+expects; a box carries one directory less between items.) Several checks were measured on Linux only (the
 network cut and its control `c_*`, among them the new `c_agent_box_proxy_refuses_the_workers_own_loopback_names`;
 the per-item channels `a2_*`; `agent_sees_only_its_own_processes`); if one of them differs on Docker Desktop,
 that is a finding to report, not something to make pass. Then, for the report:
@@ -767,8 +771,9 @@ this section.
    "count_complete": <true or false>}`, or one line `refused: nothing to close: the ledger holds no open row for
    this job` when the tool had closed the books itself. Any other `refused:` line: stop and report. The counted
    cost is what the run's spend log holds, with ONE WORST-CASE CALL for every call that was sent and never
-   settled; with `"count_complete": false` the ledger keeps the job at its whole bound until the runner has
-   reconciled it with Prime's billing. Then build the publication folder of the cut run (step 3h: the same
+   settled; with `"count_complete": false` this folder's ledger goes on counting the job at its whole bound against
+   the lead's ceiling (the safe side; no tool lowers it afterwards), and the runner records what Prime billed in
+   its own table. Then build the publication folder of the cut run (step 3h: the same
    command; it packs what is there and lists what is missing) and report. An interrupted model rollout is recorded
    as cut; its last checkpoint of `submission/` stays in the store, ungraded.
 
@@ -1065,8 +1070,10 @@ number.) The run is over when the line under `rollout.log` reads `EXIT 0` and no
 submit, the turn limit, the wall time, the spend stop, the context limit, an error of the agent): each of these
 is graded. `EXIT 2` with nothing running: the tool refused before anything started (the last lines of the log
 are the tool's own `refused:` line; the status command does not show it: report "refused at the rollout stage"
-and stop). `EXIT 97`, `EXIT 98`, `EXIT 130`, or no `EXIT` line when the wall time plus 160 minutes have passed:
-"If a run was interrupted", points 1 to 5, 7 and 8. Do not run the job again.
+and stop). `EXIT 1` or another small number with nothing running: vf-eval ended by itself and reported a failure;
+go on with 3g and 3h, which show what happened, and say so in the report. `EXIT 97`, `EXIT 98`, `EXIT 130`, or no
+`EXIT` line when the wall time plus 160 minutes have passed: "If a run was interrupted", points 1 to 5, 7 and 8.
+In every case: do not run the job again.
 
 **3g. Read the run through the report tool** (fixed fields and counts; no text of the model):
 
@@ -1182,9 +1189,10 @@ folder.
 - Steps 0 to 2 as text of this round: the commands that changed since round 3 (the tree check with `--ignored`,
   the environment check with three more names, the pilot-folder command without the certificate file, the image
   tag, `make_instances` and `prove.py` with `ring_r4` and the null policy, the reset command with its disk gate)
-  were not issued as `sh -c` lines in this round, and step 2b (`tools/check_probe.py`) and step 2c were not
-  rerun with the box caps and image 2; the numbers quoted for 2a are from the same tool run by profile on
-  another hidden world.
+  were not issued as `sh -c` lines in this round. Step 2b's tool was run at this code with the box caps and
+  image 2 (`results/round4_step3.json`: 34 and 66 checks, both lists of failures empty on Linux, 27 minutes on a
+  loaded machine), not as its `sh -c` line; step 2c was not rerun (it needs `configs/scripted_ring.toml` to name
+  image 2); the numbers quoted for 2a are from the same tool run by profile on another hidden world.
 - Step 3 as text: the stages `instance`, `reference`, `dry-run`, `rollout` (against the stand-in), `close` (its
   refusal) and `tools/pack_rollout.py` ran as tools in the cloud container with a scratch folder as the pilot
   folder; `tools/check_request.py --fetch` ran on a scratch repository (no file was ever committed under
