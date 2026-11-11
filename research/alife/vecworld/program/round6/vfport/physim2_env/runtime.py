@@ -2,7 +2,7 @@
 laboratory's bearer on a box's own proxy.
 
 `install()` (called once per vf-eval process, when the taskset module is imported) changes three names of the
-module `verifiers.v1.runtimes.docker`, and nothing else of verifiers:
+module `verifiers.v1.runtimes.docker` and one of `verifiers.v1.runtimes.container`, and nothing else of verifiers:
 
   cli                   the function through which that module runs `docker ...`. The wrapper edits ONE command,
                         the `docker run` of a box issued by `DockerRuntime.start`, adding the caps of
@@ -13,6 +13,14 @@ module `verifiers.v1.runtimes.docker`, and nothing else of verifiers:
   EgressProxy           replaced by a subclass that can put one header on the requests it forwards to ONE
                         upstream port of the host's loopback: the laboratory's bearer (bearer.py). A box never
                         sees that header; requests to every other destination pass byte for byte.
+
+  container._communicate   the one function through which verifiers starts a `docker` client (run, exec,
+                        inspect, port, build). verifiers lets the client inherit vf-eval's whole environment; in a
+                        model run that includes the model key. The wrapper gives the client an environment
+                        without any credential-like name and without the PRIME_* names. (Not covered: the
+                        synchronous `docker rm --force <its box>` at teardown, runtimes/docker/__init__.py:553-567,
+                        which inherits the environment; a `docker` client puts no variable into a container
+                        unless it is told to with --env.)
 
 Why in place and not a subclass of DockerRuntime: the worker gate of the host-safety audit (round 1, change 5;
 grading.container_gate) accepts a box only if its class is EXACTLY verifiers' DockerRuntime, and that gate
@@ -29,6 +37,8 @@ from __future__ import annotations
 import asyncio
 import contextvars
 import json
+import os
+import re
 
 from . import bearer as BEARER
 from . import boxcaps as BOXCAPS
@@ -38,6 +48,14 @@ box_caps = BOXCAPS.box_caps                                  # for the statement
 _INSTALLED = False
 _CAPS: contextvars.ContextVar[dict | None] = contextvars.ContextVar("physim2_box_caps", default=None)
 ATTR = "_physim2_box"                                        # on a started runtime: {"caps": ..., "verified": True, ...}
+# names a `docker` client of vf-eval does not need: credentials under any usual name, and the Prime account's
+NOT_FOR_DOCKER = re.compile(r"(?i)(api[-_]?key|token|secret|passw(or)?d|credential|^PRIME_)")
+
+
+def docker_client_env(environ=None) -> dict:
+    """The environment of a `docker` client that vf-eval starts: vf-eval's own, minus NOT_FOR_DOCKER."""
+    environ = os.environ if environ is None else environ
+    return {k: v for k, v in environ.items() if not NOT_FOR_DOCKER.search(k)}
 
 
 def resolved_caps(config) -> dict:
@@ -73,7 +91,12 @@ def install() -> bool:
     from verifiers.v1.errors import SandboxError
     from verifiers.v1.runtimes.docker import egress as E
 
-    orig_cli, orig_start = D.cli, D.DockerRuntime.start
+    import verifiers.v1.runtimes.container as C
+
+    orig_cli, orig_start, orig_communicate = D.cli, D.DockerRuntime.start, C._communicate
+
+    async def _communicate(*argv, input=None, env=None):
+        return await orig_communicate(*argv, input=input, env=docker_client_env() if env is None else env)
 
     async def cli(*argv, input=None, env=None):
         caps = _CAPS.get()
@@ -159,6 +182,7 @@ def install() -> bool:
             finally:
                 task.cancel()
 
+    C._communicate = _communicate
     D.cli = cli
     D.DockerRuntime.start = start
     D.EgressProxy = BearerEgressProxy
