@@ -31,7 +31,7 @@ Campaign cap $1000.00 · spent $59.61 (billed where Prime has reported it, other
 | r6-cards-002 | done | claude/fisim-agent-world-research-hepmlz | A100_40GB (lambdalabs) | 0.793 | 1.58 | 1.43 | 4.3 | 2026-11-11T13:15:45Z |
 | r6-dialsa-002 | queued | claude/fisim-agent-world-research-hepmlz | - | 0 | 0.00 | 0.00 | 5.0 |  |
 | r6-dialsb-001 | failed | claude/fisim-agent-world-research-hepmlz | CPU_NODE (nebius) | 0.112 | 0.06 | 0.04 | 2.5 | 2026-11-11T16:28:12Z |
-| r6-dialsb-002 | running | claude/fisim-agent-world-research-hepmlz | CPU_NODE (nebius) | 0.072 | 0.04 | pending | 2.5 |  |
+| r6-dialsb-002 | running | claude/fisim-agent-world-research-hepmlz | CPU_NODE (nebius) | 0.073 | 0.04 | pending | 2.5 |  |
 | r6-foundryexam-002 | cancelled | claude/fisim-agent-world-research-hepmlz | A100_40GB (lambdalabs) | 1.033 | 2.06 | 1.92 | 8.4 | 2026-11-11T12:41:29Z |
 | r6-foundryexam-003 | done | claude/fisim-agent-world-research-hepmlz | A100_40GB (lambdalabs) | 1.138 | 2.27 | 2.13 | 7.8 | 2026-11-11T13:50:40Z |
 | r6-foundryexam-004 | done | claude/fisim-agent-world-research-hepmlz | A100_40GB (lambdalabs) | 2.257 | 4.49 | 4.33 | 8.4 | 2026-11-11T16:21:00Z |

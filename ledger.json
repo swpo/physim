@@ -303,10 +303,10 @@
     {
       "billed_usd": null,
       "cap_usd": 2.5,
-      "conservative_usd": 0.039,
+      "conservative_usd": 0.0393,
       "finished_at": null,
       "gpu": "CPU_NODE (nebius)",
-      "hours": 0.072,
+      "hours": 0.073,
       "job_id": "r6-dialsb-002",
       "purpose": "Round-6 dials, study B stage 0 (CPU gate of the membrane carrier, no GPU): state-given check at 64 px on 8 fresh seeds, main and control arm; generic recipes (gains, command filter) against a told-form fit; history-only stand-in; scans for the hidden set and ranges",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -351,7 +351,7 @@
     {
       "billed_usd": null,
       "cap_usd": 7.2,
-      "conservative_usd": 2.2023,
+      "conservative_usd": 2.2034,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
       "hours": 1.107,
@@ -401,8 +401,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 72.0703,
     "prior_spend_usd": 0.0,
-    "spent_usd": 59.6116,
+    "spent_usd": 59.613,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T16:40:34Z"
+    "updated_at": "2026-11-11T16:40:36Z"
   }
 }

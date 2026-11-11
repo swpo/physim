@@ -22,7 +22,7 @@
   "cap_usd": 2.5,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.0159
+    "conservative_usd": 0.0393
   },
   "guard_at": null,
   "guard_reason": null,
@@ -124,6 +124,12 @@
     }
   ],
   "pods_terminated": null,
+  "review": {
+    "at": "2026-11-11T16:40:36Z",
+    "file": "jobs/r6-dialsb-002/review.md",
+    "sha256": "de46c854eaabaf185e2d085a457b867c9aaa71fc6ffa0e54678ebeff0d2e8122",
+    "summary": "0 blocker, 0 major, 3 minor; 001 stopped on nproc=1 (OMP_NUM_THREADS), which this review missed; 002 sets S0_NPROC=16; case-only file names fixed on the runner"
+  },
   "run_deadline": "2026-11-11T20:07:59Z",
   "run_started_epoch": 1794414973.227658,
   "started_at": "2026-11-11T16:37:59Z",
