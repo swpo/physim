@@ -267,10 +267,10 @@
     {
       "billed_usd": null,
       "cap_usd": 4.3,
-      "conservative_usd": 1.1225,
+      "conservative_usd": 1.1694,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.564,
+      "hours": 0.588,
       "job_id": "r6-cards-002",
       "purpose": "Round-6 study cards, job 2: world cards on slower clocks (membrane, fed vortices: 4 world ticks per card tick), gliders with round 5's 1- and 8-parameter hidden sets, three reruns with the corrected response-difference estimator, true diffusion controls, 128-px vortices with 8-px blocks; 15 runs",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -291,10 +291,10 @@
     {
       "billed_usd": null,
       "cap_usd": 7.8,
-      "conservative_usd": 0.6521,
+      "conservative_usd": 0.699,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 0.328,
+      "hours": 0.351,
       "job_id": "r6-foundryexam-003",
       "purpose": "Round-6 study foundryexam: exam pilot where the hidden law is a network's weights; rerun of 002 (cancelled: nets several times too slow) with 50 training steps per dispatch, a cheaper net and a presmoke speed guard; 16 screened-prior worlds and 2 x 12 neighbourhood worlds",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -341,8 +341,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 61.5403,
     "prior_spend_usd": 0.0,
-    "spent_usd": 51.2149,
+    "spent_usd": 51.3087,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-11T13:01:40Z"
+    "updated_at": "2026-11-11T13:03:05Z"
   }
 }
