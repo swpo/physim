@@ -25,3 +25,8 @@ Design phase only: no GPU, no model calls, small CPU checks.
   Added to screen.py: a history-only surrogate (own level-1 start + other states' increments under each law)
   and a per-state cache of public futures; `check_zero.py` and `dose.py` written, not yet run.
 - Next: check_zero, XW and M reruns with the surrogate, XW at eta = 4, dose-response, horizon 16, DESIGN.md.
+- 11 Nov 11:20 UTC. First chain done (results/screen_{G,M,X,T,PAR}_1.json): G weak (0.03-0.06), X inert at
+  every program (0.000; the density trigger is not reached, also not by a converging wind), T 0.20 in passive
+  episodes (visible without inputs; history-only surrogate 0.01-0.02), PAR (lR + 0.06, calibration) 0.07 with
+  surrogate 0.013. Second chain running: check_zero, XW at eta 1 and 4 with the surrogate, dose-response,
+  M with the surrogate, XW eta 4 to horizon 16.
