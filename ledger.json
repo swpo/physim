@@ -303,10 +303,10 @@
     {
       "billed_usd": null,
       "cap_usd": 9.6,
-      "conservative_usd": 2.7486,
+      "conservative_usd": 3.2584,
       "finished_at": null,
       "gpu": "A100_40GB (lambdalabs)",
-      "hours": 1.381,
+      "hours": 1.637,
       "job_id": "r6-dialsa3-001",
       "purpose": "Round-6 dials, study dialsA3: zero-point rerun of dialsA2 (gliders stress conversion, triggered items, 8-16 ticks) on 16 new truths, true-form family half at eta 0, presmoke stop rule; T1-T5 and the re-declared zero point; 3 seeds per net",
       "requester_branch": "claude/fisim-agent-world-research-hepmlz",
@@ -461,8 +461,8 @@
     "auto_job_cap_usd": 25.0,
     "committed_usd": 88.1476,
     "prior_spend_usd": 0.0,
-    "spent_usd": 81.2962,
+    "spent_usd": 81.806,
     "total_cap_usd": 1000.0,
-    "updated_at": "2026-11-12T05:41:31Z"
+    "updated_at": "2026-11-12T05:56:54Z"
   }
 }
