@@ -28,10 +28,15 @@ Coordinator channel: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe4
 - Full pass: families done 05:05 (true-form 1,536 x 8 in 802 s), worlds 05:28; base nets 24,000, 48,000 and 96,000
   unmet by the rule; 192,000 rung from 06:09 (as dialsA2).
 
+- 06:52 base nets 192,000: rule NOT met (true-form best steps 170,000-190,250); 07:18 N = 8 and D(8) done; the job's
+  first look after N = 8 (a3_stats): UNDECIDED; T1-T5 hold; zero point misses on (i) -0.105 and (iii) -0.094, holds
+  on (ii) -0.004.
+- ~07:50 pod unreachable; 07:59 infra_error, no file collected, billed $7.14 (DEVIATIONS entries 2, 3). No second job
+  (remaining $2.86 cannot fit the declared required stages, about 2.9 h).
+
 ## Running
-- r6-dialsa3-001 full pass (background watch loop: scratch watch.sh -> watch.log); expected end about 08:05 UTC.
+- nothing.
 
 ## Next step
-- Wait on origin/gpu-jobs:jobs/r6-dialsa3-001/status.json (one background loop, 60 s); read review.md BEFORE results and
-  act on it (DEVIATIONS entry, no code change while running). Then copy outputs to results/job (not nets.npz),
-  run make_summary.py, write README.md, DEVIATIONS, final report.
+- summarize_tails.py: parse the 19 heartbeat versions of status.json (scratch tails/) into results/job/
+  progress_from_heartbeats.txt and results/summary.json; README.md; final report; remove the worktree.
