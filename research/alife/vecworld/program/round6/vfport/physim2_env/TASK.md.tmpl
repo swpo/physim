@@ -8,7 +8,7 @@ No background is assumed: everything you need is in this file and in the `physim
 **The three rules that decide your score** (details below):
 1. Whatever is in `submission/` when your run ends is graded, however the run ends. `submission/` already holds
    a working baseline. Put your predictor there early and improve it in place.
-2. Your run has hard limits (section 4). Nothing warns you before one of them ends the run.
+2. Your run has hard limits (section 4). Nothing warns you before one of them ends the run.{reply_rule}
 3. Your predictor is graded in a fresh container that holds only `submission/`: nothing else you wrote exists
    there.
 
@@ -100,11 +100,10 @@ One real tick of this world costs about {cpu_s_tick} CPU-seconds to simulate on 
 {limits_block}
 
 **How the run ends, and what is graded.** Whatever is in `submission/` at the moment your run ends is graded,
-however it ends: your own `lab.submit("submission")`, the turn limit, the time limit, the context or spend
-limit, or an error. (After an error that ends the run abruptly, what is graded is the last copy the operator
+however it ends: your own `lab.submit("submission")`,{reply_end} the turn limit, the time limit, the context or
+spend limit, or an error. (After an error that ends the run abruptly, what is graded is the last copy the operator
 took while the run was alive: one is taken before every turn and every {checkpoint_s} seconds, whenever
-`submission/` changed.) `lab.submit` only ends the run early; it is not needed for a grade. Nothing announces the
-end. So keep a predictor that works in `submission/` at all times: start from the baseline, replace it as soon
+`submission/` changed.) `lab.submit` is not needed for a grade. Nothing announces the end. So keep a predictor that works in `submission/` at all times: start from the baseline, replace it as soon
 as you have something better, and check it with `lab.validate("submission")`.
 
 ## 5. How you are graded
@@ -133,6 +132,10 @@ as you have something better, and check it with `lab.validate("submission")`.
   also the working directory), this file and the original `physim2` package. Nothing else you wrote in
   `/workspace` or anywhere else exists there. Per item: at most {pred_cpu} CPU-seconds, {pred_wall} s of wall clock,
   {pred_mem} GiB of memory and {pred_procs} processes and threads; the submission may be at most {artifact_mib} MiB.
+  The CPU-seconds and the memory are limits of EACH PROCESS of your predictor (a child process gets the same limits
+  of its own; the memory limit is on address space, which also counts memory reserved and never used), and no file
+  it writes may exceed {pred_file_mib} MiB. If `submission/` is larger than {artifact_mib} MiB when your run ends, every item
+  is scored with the baseline's forecast (an earlier copy is used only after an error, section 4).
   {item_scratch} It may import numpy, scipy, jax and `physim2`. Nothing is carried from one item to the next.
 - **A failed item is scored with the baseline's forecast.** On an item where your predictor is missing, raises
   an error, runs out of time or memory, or returns a wrong shape or non-finite values, the null policy's

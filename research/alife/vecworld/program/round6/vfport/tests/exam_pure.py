@@ -204,6 +204,43 @@ def main():
           "and the client's notice when its log cannot be written (X14)",
           f"One call carries at most {BEARER_.MAX_BODY >> 20} MiB" in md and f"at most {BEARER_.MAX_ACTIVE} calls of yours at once" in md.replace("\n  ", " ")
           and "`lab_log_failures`" in md)
+    # ---- round 5, second pass: X20, X22, X23, X24 ----
+    loop_src = core_src[core_src.index("async def run_chat_loop("):]
+    loop_src = loop_src[:loop_src.index("\ndef ")] if "\ndef " in loop_src else loop_src
+    check("statement (X20): the harness's ending is parsed from its loop (run_chat_loop: `if not message.tool_calls: return`; a reply "
+          "cut at max_tokens is no error there), and the parse is required",
+          hc.get("reply_without_tool_call_ends_run") is True and "        if not message.tool_calls:\n            return\n" in loop_src
+          and 'finish_reason="length" as an exception' in core_src, constants=hc)
+    head3 = md.split("## 1.")[0]
+    tail4 = md.split("**How the run ends, and what is graded.**")[1].split("## 5.")[0]
+    check("statement (X20): rule 2, section 4 and its ending paragraph say that a reply without a tool call ends the run at once, and so "
+          "does a reply cut at the reply limit before its tool call; `only ends the run early` and `loses the tool call` are gone",
+          "A reply of yours that calls no tool ends it too, at once." in head3
+          and "**A reply of yours with no tool call in it ends your run at once**" in sec4
+          and "A reply cut at this length before it began its tool call has no tool call, and so ENDS YOUR RUN" in sec4
+          and "a reply of yours that calls no tool (section 4)," in tail4.replace("\n", " ")
+          and "only ends the run early" not in md and "loses the tool call" not in md, snippet=sec4[:900])
+    mdx = BUNDLE.statement("ring", "ring_r4", dict(run, **{k: None for k in hc if k != "source"}))   # as taskset renders it for a script
+    check("statement (X20): a run of another harness (a script) is told neither", "calls no tool" not in mdx and "no tool call" not in mdx)
+    mdu = BUNDLE.statement("ring", "ring_r4", dict(run, cap_usd=1.0, max_context_tokens=100000))
+    sec4u = mdu.split("## 4.")[1].split("## 5.")[0].replace("\n", " ")
+    check("statement (X22): the spend line says what is counted: the listed prices, the provider's own cost when higher, and the largest "
+          "call possible for a reply that fails or has no token counts (spend.py, reply_cost and worst_call_usd)",
+          "or at the provider's own reported cost when that is higher" in sec4u and "is counted as the largest call possible (the whole "
+          "context limit at the input price and a full reply at the output price)" in sec4u and "at your model's listed prices, counted" not in sec4u,
+          snippet=sec4u[sec4u.find("**Spend"):sec4u.find("**Spend") + 600])
+    check("statement (X21): context_tokens_used is the provider's count with cache reads", "cache reads included" in sec4u)
+    item_src2 = open(os.path.join(ROOT, "physim2_env", "public", "_item.py")).read()
+    sec5 = " ".join(md.split("## 5.")[1].split("## 6.")[0].split())
+    check("statement (X23): the per-item CPU and memory limits are said to be per process (RLIMIT_CPU and RLIMIT_AS of the driver, "
+          "inherited by children) and the file-size limit is named, from the driver's --file-mib default",
+          "limits of EACH PROCESS of your predictor" in sec5 and "the memory limit is on address space" in sec5
+          and f"no file it writes may exceed {BUNDLE.ITEM_FILE_MIB} MiB" in sec5
+          and f'ap.add_argument("--file-mib", type=float, default={BUNDLE.ITEM_FILE_MIB})' in item_src2
+          and "resource.setrlimit(resource.RLIMIT_AS," in item_src2 and "resource.setrlimit(resource.RLIMIT_CPU, (cpu, cpu))" in item_src2,
+          snippet=sec5[sec5.find("Per item"):sec5.find("Per item") + 700])
+    check("statement (X24): a submission over the size limit at the end gives every item the baseline's forecast",
+          "If `submission/` is larger than 64 MiB when your run ends, every item is scored with the baseline's forecast" in sec5)
     env5 = BUNDLE.card_envelope(dict(run, **hc))
     check("card (X13): lab.card()'s envelope carries the per-command limit and the tool-result cut",
           env5["bash_command_max_seconds"] == 3600 and env5["tool_result_max_bytes"] == 20000, envelope=env5)

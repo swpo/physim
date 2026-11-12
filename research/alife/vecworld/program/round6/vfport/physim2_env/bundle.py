@@ -99,10 +99,25 @@ def harness_constants() -> dict:
            and any(getattr(t, "id", None) == "TOOL_OUTPUT_MAX_BYTES" for t in n.targets)]
     if len(tos) != 1 or len(cut) != 1 or not all(isinstance(v, int) and v > 0 for v in (tos[0], cut[0])):
         raise RuntimeError(f"the stock bash harness's limits were not found once each in its source ({tos}, {cut})")
-    return {"command_limit_s": int(tos[0]), "tool_output_max_bytes": int(cut[0]), "source": "verifiers v1 harnesses/utils (core.py run_bash, compaction.py)"}
+    # Round 5, second pass (X20): how the harness's loop ends. In run_chat_loop, `if not message.tool_calls: return`
+    # (core.py:380-381): a reply without a tool call ends the agent's program, and verifiers records the run as
+    # agent_completed. A reply cut at max_tokens is not an error there (finish_reason "length" is accepted,
+    # core.py:296-298): cut before its tool call began it has none, and ends the run the same way.
+    loop = [n for n in core.body if isinstance(n, ast.AsyncFunctionDef) and n.name == "run_chat_loop"]
+    ends = [n for f in loop for n in ast.walk(f) if isinstance(n, ast.If) and isinstance(n.test, ast.UnaryOp)
+            and isinstance(n.test.op, ast.Not) and isinstance(n.test.operand, ast.Attribute) and n.test.operand.attr == "tool_calls"
+            and len(n.body) == 1 and isinstance(n.body[0], ast.Return) and n.body[0].value is None]
+    reads = [f for f in core.body if isinstance(f, ast.AsyncFunctionDef) and f.name == "_read_chat_completion"]
+    length_raises = any(isinstance(c, ast.Constant) and c.value == "length" for f in loop + reads for c in ast.walk(f))
+    if len(loop) != 1 or len(ends) != 1 or len(reads) != 1 or length_raises:
+        raise RuntimeError("the stock bash harness's ending (a reply without a tool call ends the run; a cut reply is not an error) "
+                           f"was not found as read ({len(loop)}, {len(ends)}, {len(reads)}, {length_raises})")
+    return {"command_limit_s": int(tos[0]), "tool_output_max_bytes": int(cut[0]), "reply_without_tool_call_ends_run": True,
+            "source": "verifiers v1 harnesses/utils (core.py run_bash and run_chat_loop, compaction.py)"}
 
 
 ITEM_PROCESSES = 256                                         # the driver's RLIMIT_NPROC per item (public/_item.py, run.pre)
+ITEM_FILE_MIB = 256                                          # X23: the driver's RLIMIT_FSIZE, its --file-mib default (grading passes none)
 _CACHE: dict = {}
 _POOLS: dict = {}
 
@@ -286,8 +301,14 @@ def limits_block(run: dict) -> str:
              "your own thinking, every tool call, all simulation and training. When the time is up the run ends at once, in the "
              "middle of whatever is running.")
     if run.get("max_output_tokens_per_turn"):
-        L.append(f"- **One reply: at most {int(run['max_output_tokens_per_turn'])} tokens**, your reasoning included. A reply that is "
-                 "cut at this length loses the tool call it was writing.")
+        L.append(f"- **One reply: at most {int(run['max_output_tokens_per_turn'])} tokens**, your reasoning included."
+                 + (" A reply cut at this length before it began its tool call has no tool call, and so ENDS YOUR RUN (next point); "
+                    "one cut inside a tool call's arguments gets `error: invalid JSON in tool arguments` as that call's result."
+                    if run.get("reply_without_tool_call_ends_run") else " A reply cut at this length ends where it was cut."))
+    if run.get("reply_without_tool_call_ends_run"):          # X20 (round 5, second pass): parsed from the harness's loop
+        L.append("- **A reply of yours with no tool call in it ends your run at once**, whatever turns and time are left: the "
+                 "harness takes it as your final answer. There is no question back and no second chance; every reply that is not "
+                 "meant to be your last must call a tool.")
     cmd_s, cut = run.get("command_limit_s"), run.get("tool_output_max_bytes")
     if cmd_s:                                                # X13 (round 5): rendered from the harness's own source
         wall_s = 60.0 * float(run["wall_minutes"])
@@ -319,9 +340,11 @@ def limits_block(run: dict) -> str:
         L.append(f"- **Context:** every turn sends the whole conversation again and nothing shortens or summarises it; it must fit "
                  f"your model's context window, and {tail}.")
     if run.get("cap_usd"):
-        L.append(f"- **Spend: {_g(run['cap_usd'])} US dollars** at your model's listed prices, counted by the operator over all your "
-                 "turns. Each turn is billed for the whole conversation so far, so a long conversation makes every further turn "
-                 "more expensive. If the limit is reached, the run ends.")
+        L.append(f"- **Spend: {_g(run['cap_usd'])} US dollars**, counted by the operator over all your turns: each reply at your "
+                 "model's listed prices, or at the provider's own reported cost when that is higher; a reply that fails, or comes "
+                 "back without its token counts, is counted as the largest call possible (the whole context limit at the input "
+                 "price and a full reply at the output price). Each turn is billed for the whole conversation so far, so a long "
+                 "conversation makes every further turn more expensive. If the limit is reached, the run ends.")
     if run.get("lab_counts_turns", True):
         L.append("- `lab.usage()` reports, next to the laboratory's budgets, `seconds_elapsed` and `seconds_left` of this run and "
                  "`turns_used` and `turns_left` (the turn that makes the call is already counted).")
@@ -329,8 +352,8 @@ def limits_block(run: dict) -> str:
         L.append("- `lab.usage()` reports `seconds_elapsed` and `seconds_left` of this run. The laboratory does not count turns: "
                  "count your own replies.")
     if run.get("max_context_tokens"):
-        L.append("- `lab.usage()` also reports `context_tokens_used` (your last turn, as the provider counted it) and "
-                 "`context_tokens_left`.")
+        L.append("- `lab.usage()` also reports `context_tokens_used` (your last turn, as the provider counted it, cache reads "
+                 "included) and `context_tokens_left`.")
     cpus = "no cap on CPU cores" if not run.get("cpus") else f"{_g(run['cpus'])} CPU cores"
     mem = "no cap on memory" if not run.get("memory_gib") else f"{_g(run['memory_gib'])} GiB of memory (a process that takes more is killed)"
     pids = "no limit of its own on the number of processes" if not run.get("pids") else f"at most {int(run['pids'])} processes and threads"
@@ -388,7 +411,9 @@ def statement(world: str, config_name: str, run: dict | None = None) -> str:
         program_classes=", ".join(W.program_mix().names), pred_cpu=cfg["predictor"]["cpu_seconds"],
         pred_wall=cfg["predictor"]["wall_seconds"], pred_mem=_g(item_limits(run, cfg)["memory_gib"]), pred_procs=ITEM_PROCESSES,
         item_scratch=item_scratch(item_limits(run, cfg)), checkpoint_s=_g(run.get("checkpoint_seconds") or 30),
-        artifact_mib=cfg["predictor"]["artifact_mib"], max_attempts=cfg["validation"]["max_attempts"],
+        artifact_mib=cfg["predictor"]["artifact_mib"], max_attempts=cfg["validation"]["max_attempts"], pred_file_mib=ITEM_FILE_MIB,
+        reply_rule=(" A reply of yours that calls no tool ends it too, at once." if run.get("reply_without_tool_call_ends_run") else ""),
+        reply_end=(" a reply of yours that calls no tool (section 4)," if run.get("reply_without_tool_call_ends_run") else ""),
         baseline_episodes=PROFILES.BASELINE_EPISODES, limits_block=limits_block(run),
         lab_body_mib=_g(BEARER.MAX_BODY / (1 << 20)), lab_active=BEARER.MAX_ACTIVE)
     with open(os.path.join(HERE, "TASK.md.tmpl")) as f:

@@ -96,8 +96,17 @@ REPORT_MAX = 1 << 20
 VALIDATE_SH = f'python3 -B -c "$0" "$1" "$2" 2>/dev/null | head -c {REPORT_MAX}'
 
 
+REPORT_TEXT_MAX = REPORT_MAX + (64 << 10)                    # round 5, second pass (K12): more than this came past `head -c`
+
+
 def clean_report(text: str) -> dict:
-    """The validator's last output line as a small, typed report (the box is the agent's: take nothing else)."""
+    """The validator's last output line as a small, typed report (the box is the agent's: take nothing else).
+    Round 5, second pass (K12): `head -c` cuts what the validator prints, but root in the box can write past it into
+    the exec's own output (/proc/<pid>/fd/1), up to the runtime's OUTPUT_MAX. Such text is refused by its length
+    BEFORE any strip, split or parse (splitting 96 MiB of short lines costs vf-eval 18 to 36 times that)."""
+    if not isinstance(text, str) or len(text) > REPORT_TEXT_MAX:
+        return {"ok": False, "stage": "validator", "error": f"the validator in the box returned more than {REPORT_MAX >> 20} MiB "
+                "(more than its report can be): no report"}
     try:
         raw = json.loads(text.strip().splitlines()[-1])
         assert isinstance(raw, dict)
@@ -229,7 +238,10 @@ class BoxAccess:
             used = None
             try:
                 u = getattr((getattr(tr, "calls", None) or [])[-1], "usage", None)
-                used = int(getattr(u, "prompt_tokens", 0) or 0) + int(getattr(u, "completion_tokens", 0) or 0) if u is not None else None
+                # X21 (round 5, second pass): verifiers' prompt_tokens leaves the provider's cache reads out (types.py,
+                # Usage); the conversation is all three
+                used = (int(getattr(u, "prompt_tokens", 0) or 0) + int(getattr(u, "cached_input_tokens", 0) or 0)
+                        + int(getattr(u, "completion_tokens", 0) or 0)) if u is not None else None
             except Exception:
                 used = None
             out["context_tokens_used"] = used
@@ -266,7 +278,7 @@ class BoxAccess:
                 require_container(runtime)
                 root = posixpath.join(self.workdir, self.artifacts[0].source)
                 r = await runtime.run(["sh", "-c", FINGERPRINT.format(root=root)], {})
-                mark = (r.stdout or "").strip()[:200]
+                mark = (r.stdout or "")[:4096].strip()[:200]       # K12: cut before anything else (root can write past)
                 if mark and mark == self._fingerprint:
                     self.checkpoints["unchanged"] += 1
                     return False

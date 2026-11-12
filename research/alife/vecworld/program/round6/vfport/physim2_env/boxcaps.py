@@ -17,6 +17,11 @@ The caps (round 4; the Mac's Docker Desktop settings are not touched):
   /tmp        512 MiB, memory-backed --tmpfs /tmp:...               the scratch; "No space left on device"
   /dev/shm    64 MiB                 Docker's default               "No space left on device"
   /etc/physim2, /runtime  1 MiB, 16 MiB   --tmpfs ...               the exam's own files (marker, driver, request)
+  container log  none                --log-driver none              round 5, second pass (K13): what a process writes
+                                                                    to the output of the box's PID 1 (root can open
+                                                                    /proc/1/fd/1) is kept nowhere; with Docker's
+                                                                    default json-file driver it filled a log without
+                                                                    limit on the engine's disk
 
 Everything writable is memory-backed and is charged to the box's memory: a box cannot write to the Docker
 engine's disk at all, and a box whose /workspace and /tmp are full has about 2.4 GiB left for its processes.
@@ -33,6 +38,7 @@ WORKSPACE_MIB = 1024
 SCRATCH_MIB = 512
 SHM_MIB = 64                                                 # Docker's default /dev/shm; not set here, checked after the start
 SCRATCH_PATH = "/tmp"
+LOG_DRIVER = "none"                                          # K13: the box's container log is kept nowhere
 # (mount point, options): exactly what `docker inspect` reports back under HostConfig.Tmpfs
 TMPFS = (("/workspace", f"rw,exec,nosuid,nodev,size={WORKSPACE_MIB}m,mode=755"),
          ("/tmp", f"rw,exec,nosuid,nodev,size={SCRATCH_MIB}m,mode=1777"),
@@ -124,7 +130,8 @@ def cap_run_argv(argv, caps: dict) -> list[str]:
     if len(rest) != 2 or rest[1] != "infinity" or rest[0].startswith("-") or not {"--name", "--entrypoint", "--network"} <= seen:
         raise ValueError("refused: the `docker run` of a box does not end in `<image> infinity` or lacks its name, entrypoint or network")
     mem = f"{caps['memory_gb']}g"
-    add = ["--cpus", str(caps["cpus"]), "--memory", mem, "--memory-swap", mem, "--pids-limit", str(caps["pids"]), "--read-only"]
+    add = ["--cpus", str(caps["cpus"]), "--memory", mem, "--memory-swap", mem, "--pids-limit", str(caps["pids"]), "--read-only",
+           "--log-driver", LOG_DRIVER]
     for path, opts in caps["tmpfs"].items():
         add += ["--tmpfs", f"{path}:{opts}"]
     return argv[:2] + add + kept + rest
@@ -141,6 +148,8 @@ def check_host_config(host_config: dict, caps: dict) -> list[str]:
     for key, value in want.items():
         if h.get(key) != value:
             why.append(f"{key} is {h.get(key)!r}, not {value!r}")
+    if (h.get("LogConfig") or {}).get("Type") != LOG_DRIVER:     # K13
+        why.append(f"the log driver is {(h.get('LogConfig') or {}).get('Type')!r}, not {LOG_DRIVER!r}")
     if (h.get("Tmpfs") or {}) != caps["tmpfs"]:
         why.append("the tmpfs mounts are not exactly the four of the caps")
     for key in ("Binds", "Mounts", "VolumesFrom", "Devices", "CapAdd"):

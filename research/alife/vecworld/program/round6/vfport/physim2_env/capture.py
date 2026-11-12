@@ -215,16 +215,21 @@ def workspace_command(workdir: str, out: str, *, exclude=("physim2", "submission
             f"test -f {shlex.quote(out)}")
 
 
+LISTING_BYTES = 400000
+
+
 def listing_command(workdir: str, max_lines: int = 4000) -> str:
     """The shell line that lists the working directory inside the box: type, size in bytes, path (one per line)."""
     return (f"cd {shlex.quote(workdir)} && find . -xdev -name __pycache__ -prune -o -printf '%y %s %p\\n' 2>/dev/null "
-            f"| head -n {int(max_lines)} | head -c 400000")
+            f"| head -n {int(max_lines)} | head -c {LISTING_BYTES}")
 
 
 def parse_listing(text: str, max_lines: int = 4000) -> dict:
-    """The listing as data: [type letter, size, name escaped to ASCII and cut]. The text is the box's own."""
+    """The listing as data: [type letter, size, name escaped to ASCII and cut]. The text is the box's own: root in
+    the box can write past `head -c` into the exec's output, so it is cut to LISTING_BYTES before it is split
+    (round 5, second pass, K12)."""
     rows, total = [], 0
-    for line in text.splitlines()[:max_lines]:
+    for line in text[:LISTING_BYTES].splitlines()[:max_lines]:
         p = line.split(" ", 2)
         if len(p) != 3 or len(p[0]) != 1 or not p[1].isdigit():
             continue

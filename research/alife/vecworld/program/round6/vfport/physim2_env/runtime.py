@@ -43,8 +43,8 @@ now also sets, before any server starts, three things of verifiers by name and e
 
   interception.server.MAX_REQUEST_BODY   INTERCEPTION_BODY_MAX (16 MiB); the server reads it at start()
                         (server.py:424) for aiohttp's client_max_size: a larger body is answered 413 after that many
-                        bytes. A body is parsed whole into Python objects (measured: up to 25 times its size), so
-                        the bound on one request is about 25 x 16 MiB.
+                        bytes. A body is parsed whole into Python objects (measured: 25 times its size for a flat
+                        list, 36 for nested JSON; K14: say about 40), so one request costs about 40 x 16 MiB, 0.7 GiB.
   logging               a filter (RepeatLimit) on the interception server's logger and on Python's last-resort
                         handler: each kind of record (logger and message) passes LOG_REPEAT_MAX times in full, then
                         once a minute with the count dropped; every record is cut at LOG_RECORD_MAX characters. A box
@@ -54,8 +54,10 @@ now also sets, before any server starts, three things of verifiers by name and e
                         waits until fewer than CALLBACK_ACTIVE_MAX requests of the same box go there; nothing of it,
                         head or body, is forwarded before. And the body a box sends to a callback is cut after
                         CALLBACK_UPLOAD_MAX bytes (the connection is closed).
-So what one box can make vf-eval hold through that route is about CALLBACK_ACTIVE_MAX x 25 x INTERCEPTION_BODY_MAX
-(measured through vf-eval: README).
+So what one box can make vf-eval hold through that route is about CALLBACK_ACTIVE_MAX x 40 x INTERCEPTION_BODY_MAX
+(measured through vf-eval: README). Round 5, second pass (K11): the proxy finds the callback of a request exactly as
+verifiers' proxy routes it (h11, the method, the path of urlsplit(target)): a request target in absolute form or
+starting with `//` reaches the same callback there, and so passes the same gate and cut here.
 
 Why in place and not a subclass of DockerRuntime: the worker gate of the host-safety audit (round 1, change 5;
 grading.container_gate) accepts a box only if its class is EXACTLY verifiers' DockerRuntime, and that gate
@@ -77,6 +79,7 @@ import logging
 import os
 import re
 import signal
+from urllib.parse import urlsplit
 
 from . import bearer as BEARER
 from . import boxcaps as BOXCAPS
@@ -350,7 +353,8 @@ def install() -> bool:
             self._active = 0                                 # connections being served now (MAX_CONNECTIONS)
             self.refused_connections = 0
             self._gates: dict[tuple[str, int], asyncio.Semaphore] = {}   # round 5: per callback without a bearer
-            self.callback_stats = {"waited": 0, "most_at_once": 0, "cut_uploads": 0}
+            self.callback_stats = {"waited": 0, "most_at_once": 0, "cut_uploads": 0,
+                                   "targets": {"origin": 0, "absolute": 0, "double_slash": 0}}   # K11: forms that passed the gate
             self._callback_active = 0
 
         def set_bearer(self, port: int, secret: str) -> None:
@@ -359,11 +363,24 @@ def install() -> bool:
             self._bearers[("127.0.0.1", port)] = BEARER.header_value(secret)
 
         def _callback_of(self, head: bytes):
-            """The host callback a request head is addressed to (verifiers' _Callback), or None."""
-            path = BEARER.target_path(head)
-            if not path.startswith(E._CALLBACK_PREFIX):
+            """The host callback a request head is addressed to (verifiers' _Callback), or None. Found exactly as
+            verifiers' proxy routes it (egress.py:194-213): h11 parses the head, the method is not CONNECT, and
+            the PATH of urlsplit(target) begins with the callback prefix. Round 5, second pass (K11): the raw
+            target missed a request in absolute form (`POST http://x/.vf-host/...`) or starting with `//`,
+            which verifiers routes to the callback all the same, past the gate and the cut below."""
+            try:
+                conn = E.h11.Connection(E.h11.SERVER)
+                conn.receive_data(head)
+                request = conn.next_event()
+                if not isinstance(request, E.h11.Request):
+                    return None
+                method, target = request.method.decode("ascii"), request.target.decode("ascii")
+            except Exception:                                # verifiers' proxy refuses such a head too: nothing is forwarded
                 return None
-            return self._callbacks.get(path[len(E._CALLBACK_PREFIX):].partition("/")[0].partition("?")[0])
+            path = urlsplit(target).path
+            if method == "CONNECT" or not path.startswith(E._CALLBACK_PREFIX):
+                return None
+            return self._callbacks.get(path[len(E._CALLBACK_PREFIX):].partition("/")[0])
 
         def _bearer_for(self, head: bytes) -> bytes | None:
             callback = self._callback_of(head)
@@ -407,6 +424,9 @@ def install() -> bool:
                 sem = self._gates.get(key)
                 if sem is None:
                     sem = self._gates[key] = asyncio.Semaphore(CALLBACK_ACTIVE_MAX)
+                t = BEARER.target_path(head)
+                form = "double_slash" if t.startswith("//") else "origin" if t.startswith("/") else "absolute"
+                self.callback_stats["targets"][form] += 1
                 if sem.locked():
                     self.callback_stats["waited"] += 1
                 await sem.acquire()

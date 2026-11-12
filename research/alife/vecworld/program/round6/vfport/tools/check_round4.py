@@ -28,7 +28,9 @@ functions, and servers on 127.0.0.1 inside THIS process (threads), reached by cl
                     process grows by less than 64 MiB; the box's proxy lets one request at a time through to a
                     callback without a bearer (the others wait) and cuts a body after CALLBACK_UPLOAD_MAX; the
                     laboratory's callback (with a bearer) is not gated; the log filter; the laboratory's bounded log;
-                    the statement's rendering of the harness's per-command limit (X13)
+                    the statement's rendering of the harness's per-command limit (X13); second pass: K11 (absolute
+                    form and `//` targets pass the same gate and cut), K12 (box text refused or cut before parsing),
+                    K13 (the box's log driver, part A), X21 (cache reads in lab.usage()'s context count)
 
 No model is called and no credential is read: the endpoint is the stand-in and its key is a made-up word.
 Nothing is removed afterwards: --scratch is the caller's to remove.
@@ -123,8 +125,8 @@ def test_boxcaps():
           and raises(lambda: BOXCAPS.box_caps(memory_gb=0.5)) and raises(lambda: BOXCAPS.box_caps(memory_gb=True))
           and raises(lambda: BOXCAPS.box_caps(cpus=3)))
     out = BOXCAPS.cap_run_argv(box_argv(), caps)
-    want = ["--cpus", "2", "--memory", "4g", "--memory-swap", "4g", "--pids-limit", "512", "--read-only"]
-    check("A3 the box's docker run gets the caps right after `run`", out[2:2 + len(want)] == want, out[:14])
+    want = ["--cpus", "2", "--memory", "4g", "--memory-swap", "4g", "--pids-limit", "512", "--read-only", "--log-driver", "none"]
+    check("A3 the box's docker run gets the caps right after `run` (round 5, second pass, K13: --log-driver none)", out[2:2 + len(want)] == want, out[:14])
     check("A4 ... and its own --cpus 4.0 and --memory 8.0g are gone", "4.0" not in out and "8.0g" not in out and out.count("--cpus") == 1
           and out.count("--memory") == 1)
     tm = [out[i + 1] for i, a in enumerate(out) if a == "--tmpfs"]
@@ -155,16 +157,18 @@ def test_boxcaps():
     gib = 1 << 30
     good = {"ReadonlyRootfs": True, "Memory": 4 * gib, "MemorySwap": 4 * gib, "NanoCpus": 2_000_000_000, "PidsLimit": 512,
             "Privileged": False, "Tmpfs": dict(BOXCAPS.TMPFS), "Binds": None, "Mounts": None, "VolumesFrom": None, "Devices": [],
-            "CapAdd": None, "PidMode": "", "IpcMode": "private", "UTSMode": "", "UsernsMode": "", "CgroupnsMode": "host", "ShmSize": 64 << 20}
+            "CapAdd": None, "PidMode": "", "IpcMode": "private", "UTSMode": "", "UsernsMode": "", "CgroupnsMode": "host", "ShmSize": 64 << 20,
+            "LogConfig": {"Type": "none", "Config": {}}}
     check("A13 a container started with the caps passes the read-back", BOXCAPS.check_host_config(good, caps) == [], BOXCAPS.check_host_config(good, caps))
     worse = {"writable root": {"ReadonlyRootfs": False}, "more memory": {"Memory": 8 * gib}, "swap": {"MemorySwap": 8 * gib},
              "more cpus": {"NanoCpus": 4_000_000_000}, "no process limit": {"PidsLimit": None}, "privileged": {"Privileged": True},
              "a fifth tmpfs": {"Tmpfs": dict(BOXCAPS.TMPFS, **{"/x": "rw"})}, "a missing tmpfs": {"Tmpfs": dict(BOXCAPS.TMPFS[:3])},
              "a larger workspace": {"Tmpfs": dict(BOXCAPS.TMPFS, **{"/workspace": "rw,size=8g"})}, "a bind": {"Binds": ["/home:/x"]},
              "a mount": {"Mounts": [{"Type": "bind"}]}, "host pid": {"PidMode": "host"}, "host ipc": {"IpcMode": "host"},
-             "a capability": {"CapAdd": ["SYS_ADMIN"]}, "a larger shm": {"ShmSize": 1 << 30}}
+             "a capability": {"CapAdd": ["SYS_ADMIN"]}, "a larger shm": {"ShmSize": 1 << 30},
+             "the default json-file log (K13)": {"LogConfig": {"Type": "json-file", "Config": {}}}, "no log config (K13)": {"LogConfig": None}}
     got = {k: bool(BOXCAPS.check_host_config(dict(good, **v), caps)) for k, v in worse.items()}
-    check("A14 ... and each of 15 deviations fails it", all(got.values()), got)
+    check("A14 ... and each of 17 deviations fails it (K13: a log driver other than none, or none read back)", all(got.values()) and len(got) == 17, got)
     check("A15 no HostConfig at all fails it", bool(BOXCAPS.check_host_config(None, caps)))
 
     class Cfg:
@@ -1042,22 +1046,37 @@ def test_round5(scratch: str):
             lpath = "/" + lab_url.split("/", 3)[3]
             res2 = await asyncio.gather(*(call("POST", lpath, body=b"{}", timeout=30) for _ in range(3)))
             lab = {"statuses": [x[0] for x in res2], "most_at_upstream": state["most"]}
-            state["bytes"].clear()
-            rd, wr = await asyncio.open_connection("127.0.0.1", proxy.port)
-            total = 40 << 20
-            wr.write(f"POST {path} HTTP/1.1\r\nHost: x\r\nContent-Length: {total}\r\n\r\n".encode())
-            sent, piece = 0, b"a" * (1 << 20)
-            try:
-                async with asyncio.timeout(20):
-                    while sent < total:
-                        wr.write(piece)
-                        await wr.drain()
-                        sent += len(piece)
-            except (TimeoutError, OSError):
-                pass
-            wr.close()
-            await asyncio.sleep(1.0)
-            return {"gated": gated, "lab": lab, "upload": {"box_sent": sent, "upstream_got": list(state["bytes"]), "stats": dict(proxy.callback_stats)}}
+            # round 5, second pass (K11): the same callback in absolute form and with a target starting with `//`
+            # (verifiers' proxy routes both by the path of urlsplit(target), egress.py:203-213)
+            other = {"absolute": f"http://vf.host.internal:{proxy.port}{path}",
+                     "double_slash": f"//vf.host.internal{path}"}
+            forms = {}
+            for form, target in other.items():
+                state["most"] = 0
+                res3 = await asyncio.gather(*(call("POST", target, body=b"{}", timeout=30) for _ in range(5)))
+                forms[form] = {"statuses": [x[0] for x in res3], "most_at_upstream": state["most"]}
+            forms["stats"] = json.loads(json.dumps(proxy.callback_stats))
+
+            async def upload(target):
+                state["bytes"].clear()
+                cut0 = proxy.callback_stats["cut_uploads"]
+                rd, wr = await asyncio.open_connection("127.0.0.1", proxy.port)
+                total = 40 << 20
+                wr.write(f"POST {target} HTTP/1.1\r\nHost: x\r\nContent-Length: {total}\r\n\r\n".encode())
+                sent, piece = 0, b"a" * (1 << 20)
+                try:
+                    async with asyncio.timeout(20):
+                        while sent < total:
+                            wr.write(piece)
+                            await wr.drain()
+                            sent += len(piece)
+                except (TimeoutError, OSError):
+                    pass
+                wr.close()
+                await asyncio.sleep(1.0)
+                return {"box_sent": sent, "upstream_got": list(state["bytes"]), "cut": proxy.callback_stats["cut_uploads"] - cut0}
+            uploads = {"origin": await upload(path), **{form: await upload(t) for form, t in other.items()}}
+            return {"gated": gated, "lab": lab, "forms": forms, "upload": uploads, "stats": dict(proxy.callback_stats)}
         finally:
             await proxy.stop()
     g = asyncio.run(gate())
@@ -1067,10 +1086,16 @@ def test_round5(scratch: str):
           and g["gated"]["stats"]["waited"] >= 1 and g["gated"]["stats"]["most_at_once"] == 1, g["gated"])
     check("F5 ... the laboratory's callback (with its bearer) is not gated here: it bounds its own requests (bearer.py)",
           g["lab"]["statuses"] == [200] * 3 and g["lab"]["most_at_upstream"] == 3, g["lab"])
+    fm = g["forms"]
+    check("F4b K11 ... and so do 5 at once in absolute form (`POST http://vf.host.internal:<port>/.vf-host/...`) and 5 with a target "
+          "starting with `//`: all answered, one at a time at the upstream, each counted by the gate under its form",
+          all(fm[f]["statuses"] == [200] * 5 and fm[f]["most_at_upstream"] == 1 for f in ("absolute", "double_slash"))
+          and fm["stats"]["targets"] == {"origin": 5, "absolute": 5, "double_slash": 5} and fm["stats"]["most_at_once"] == 1, fm)
     up = g["upload"]
-    check("F6 ... a body of 40 MiB to a callback is cut after CALLBACK_UPLOAD_MAX: the upstream got at most that, the connection was closed",
-          up["stats"]["cut_uploads"] == 1 and all(b <= RUNTIME.CALLBACK_UPLOAD_MAX for b in up["upstream_got"]) and up["box_sent"] > RUNTIME.CALLBACK_UPLOAD_MAX,
-          up)
+    check("F6 ... a body of 40 MiB to a callback is cut after CALLBACK_UPLOAD_MAX: the upstream got at most that, the connection was closed; "
+          "K11: also in absolute form and with a `//` target",
+          all(u["cut"] == 1 and all(b <= RUNTIME.CALLBACK_UPLOAD_MAX for b in u["upstream_got"]) and u["box_sent"] > RUNTIME.CALLBACK_UPLOAD_MAX
+              for u in up.values()) and sorted(up) == ["absolute", "double_slash", "origin"], up)
 
     # ---- the log filter ----
     clock = [0.0]
@@ -1149,6 +1174,47 @@ def test_round5(scratch: str):
           and 'spend["reasoning_effort"] = flat["reasoning_effort"]' in open(os.path.join(HERE, "vfrun.py")).read()
           and SPEND.meter_for(SPEND.SpendConfig(**{k: v for k, v in sp.model_dump().items() if k != "reasoning_effort"}), log_path="").reasoning_effort is None,
           cases)
+
+    # ---- round 5, second pass: K12 (box text refused or cut before it is parsed) and X21 (cache reads in the context) ----
+    import tracemalloc
+    import types
+    from physim2_env import access as ACCESS
+    from physim2_env import capture as CAPTURE
+    flood = "ab\n" * ((90 << 20) // 3)                      # 90 MiB of short lines: under the runtime's 96 MiB, past head -c
+    good_line = 'x\n' * 10 + json.dumps({"ok": True, "stage": "done", "seconds": 1.5}) + "\n"
+    tracemalloc.start()
+    t1 = time.time()
+    rep_flood = ACCESS.clean_report(flood)
+    s1 = time.time() - t1
+    peak_report = tracemalloc.get_traced_memory()[1]
+    tracemalloc.reset_peak()
+    lst = CAPTURE.parse_listing(flood)
+    peak_listing = tracemalloc.get_traced_memory()[1]
+    tracemalloc.stop()
+    edge = ACCESS.clean_report(good_line + " " * (ACCESS.REPORT_TEXT_MAX - len(good_line)))
+    over = ACCESS.clean_report(good_line + " " * (ACCESS.REPORT_TEXT_MAX + 1 - len(good_line)))
+    check("F11 K12 clean_report refuses box text longer than REPORT_MAX + 64 KiB before any strip, split or parse (90 MiB of short lines: "
+          "no report, under 1 MiB of Python memory); a report at the length limit is still read",
+          rep_flood.get("ok") is False and "more than 1 MiB" in rep_flood.get("error", "") and peak_report < (1 << 20)
+          and edge == {"ok": True, "stage": "done"} and over.get("ok") is False and ACCESS.REPORT_TEXT_MAX == (1 << 20) + (64 << 10),
+          {"flood": rep_flood, "peak_bytes": peak_report, "seconds": round(s1, 4), "edge": edge, "over": over})
+    check("F12 K12 parse_listing cuts the text to LISTING_BYTES (400,000, the listing's own head -c) before it splits it: 90 MiB of "
+          "short lines cost under 32 MiB of Python memory",
+          peak_listing < (32 << 20) and CAPTURE.LISTING_BYTES == 400000 and f"head -c {CAPTURE.LISTING_BYTES}" in CAPTURE.listing_command("/workspace"),
+          {"peak_bytes": peak_listing, "n": lst["n"]})
+    del flood
+    from verifiers.v1.types import Usage
+    u = Usage(prompt_tokens=622, completion_tokens=150, cached_input_tokens=10882)
+    fake = types.SimpleNamespace(_trace=lambda: types.SimpleNamespace(calls=[types.SimpleNamespace(usage=u)], num_turns=10, timing=None),
+                                 t0=time.time(), wall_s=1080.0, max_turns=60, max_context_tokens=100000, envelope=None, item_limits=None)
+    st = ACCESS.BoxAccess.status(fake)
+    u2 = Usage(prompt_tokens=622, completion_tokens=150)
+    fake2 = types.SimpleNamespace(**dict(vars(fake), _trace=lambda: types.SimpleNamespace(calls=[types.SimpleNamespace(usage=u2)], num_turns=10, timing=None)))
+    st2 = ACCESS.BoxAccess.status(fake2)
+    check("F13 X21 lab.usage()'s context_tokens_used counts the provider's cache reads (verifiers' prompt_tokens leaves them out): "
+          "622 + 10,882 cached + 150 = 11,654, and 772 when there are none",
+          st["context_tokens_used"] == 11654 == u.input_tokens + u.completion_tokens and st["context_tokens_left"] == 100000 - 11654
+          and st2["context_tokens_used"] == 772, {"with_cache": st, "without": st2})
 
 
 def GRADING_driver_cmd(*a):
