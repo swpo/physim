@@ -5,12 +5,17 @@ r6-dialsa3-NNN (lower case). Scratch /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436
 Coordinator channel: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/dialsA3_COORD.txt
 
 ## Done
-- 12 Nov ~03:05 UTC: DECLARED.md written (dialsA2's in full with changes A3-1 to A3-11) and committed before any code
+- 12 Nov 03:01 UTC: DECLARED.md (dialsA2's in full with changes A3-1 to A3-11) committed (3e9026c7b) before any code
   or request.
+- 03:07-03:35: code run_a3.py, a3_stats.py, make_summary.py, job.sh (f3c192b0e WIP, 37035b5c8 tested). CPU smoke at
+  tiny shapes in the worktree: presmoke, stop rule, guard, full pass, exit 0; make_summary runs on its output.
+- 03:38: archive test of 37035b5c8 (exactly the request paths), stop path forced by a test flag: exit 0 before the full
+  pass, make_summary's stop branch OK.
 
 ## Running
 - nothing.
 
 ## Next step
-- Code: run_a3.py (copy of dialsA2's run_a2.py with A3-1, A3-2, A3-4, A3-8), a3_stats.py (zero point A3-3),
-  make_summary.py, job.sh; CPU smoke; archive test of exactly the request paths; request r6-dialsa3-001.
+- Archive test of 37035b5c8, full path (--ignore-stop-rule), log in scratch arch_full.log; if exit 0 and make_summary
+  OK: commit and push the request research/alife/vecworld/program/gpu/requests/r6-dialsa3-001.json (written, ref
+  37035b5c8, cap $9.60), then wait on origin/gpu-jobs:jobs/r6-dialsa3-001/status.json; read review.md first.
