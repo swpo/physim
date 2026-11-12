@@ -1,8 +1,8 @@
 {
  "schema": "rollout-ledger/v1",
  "note": "Model spend from the coordinator's cloud container, for the runner on the Mac to count against the lead's one total for model rollouts. Kept in step with LEDGER.md in this folder. Rollouts run by the Mac are NOT listed here (see the rollouts table on the gpu-jobs branch). reserved_usd_open is the sum of bounds of runs started here and not yet reconciled.",
- "updated_utc": "2026-11-11T21:26:06Z",
- "billed_usd_total": 3.455,
+ "updated_utc": "2026-11-12T00:46:56Z",
+ "billed_usd_total": 3.6576,
  "reserved_usd_open": 0,
  "rows": [
   {
@@ -68,6 +68,14 @@
    "status": "done",
    "bound_usd": 0.5193,
    "billed_usd": 0.0318
+  },
+  {
+   "id": "qwen_ring_004",
+   "model": "qwen/qwen3.6-35b-a3b",
+   "where": "cloud-container",
+   "status": "done",
+   "bound_usd": 1.0193,
+   "billed_usd": 0.2026
   }
  ]
 }

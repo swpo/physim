@@ -1,0 +1,1 @@
+PILOT_NEVER_REUSE_AS_EXAM: rollout qwen-ring-004 ran on the pilot instance pilot-qwen-ring-004. The instance and everything in this folder are public pilot material and are never to be used as an exam.

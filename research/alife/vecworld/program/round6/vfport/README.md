@@ -1068,6 +1068,20 @@ after each request) replaces the runbook's former line "some hundreds of MiB at 
 row 11 was right. Every number in the new text is rendered from the code that enforces it (`tests/exam_pure.py`
 checks the X13, X15, X17 and sweep lines; `tests/exam_units.py` the bundle's text and X16 in a container).
 
+#### What ran (`results/rehearsal_round5.json`)
+
+Offline: `tests/exam_pure.py` 33 of 33 and `tools/check_round4.py` 151 of 151 (tripwires), `tools/check_runbook.py`
+55 of 55, `tools/check_round3.py` host part 30 of 30 (tripwires), `tests/exam_units.py` 103 of 103 (container).
+Through vf-eval: `tools/check_step3.py --only route,flood5 --skip-reference` 40 of 40. In `flood5` the box read the
+chat program's secret from `/proc`; its two 1 GiB requests were cut after 22 MiB had left the box (the server's
+limit 16 MiB, the proxy's cut 17 MiB, the rest socket buffers); 8 requests of 15 MiB went through one at a time (7
+waited); vf-eval grew from 528 to 955 MiB at its peak (the bound of rows 1 to 3 is about 0.4 GiB); 3,000
+unauthorized requests left 20 log lines and 2,980 counted drops; the laboratory's log kept 2,004 lines, the longest
+1,234 bytes, after names of 3 MiB. The rehearsal from a fresh clone of the pin and one paid job (`qwen-ring-004`,
+$0.2026 counted, skill 0.316 of the oracle, turn limit, no failed item: `../rollouts/qwen_ring_004/`) are in the
+runbook's last section. The agent read section 4: every training command ran under its own `timeout` (120 to 600
+s); the longest held it 219 s; no background job.
+
 #### The other items of this round
 
 | item | change | where | test |

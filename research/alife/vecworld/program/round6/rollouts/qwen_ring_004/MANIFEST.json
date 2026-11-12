@@ -1,0 +1,104 @@
+{
+ "marker": "PILOT_NEVER_REUSE_AS_EXAM",
+ "job_id": "qwen-ring-004",
+ "instance": "pilot-qwen-ring-004",
+ "files": [
+  {
+   "path": "status.json",
+   "bytes": 7283,
+   "sha256": "f558587cf51f58cf3587ee367707d2f084b66452e3bdcbb1716618a49f87309e"
+  },
+  {
+   "path": "PILOT_NEVER_REUSE_AS_EXAM.txt",
+   "bytes": 202,
+   "sha256": "e2b3a24d38b3be1c2c04957ee231a86b774097cb75b0b8835adfe45552280cc5"
+  },
+  {
+   "path": "request.json",
+   "bytes": 926,
+   "sha256": "5967dc2e33c7ffa4f7816a1ea2218909ea082c036dc95668578a184a89ef0d62"
+  },
+  {
+   "path": "config.toml",
+   "bytes": 909,
+   "sha256": "a3ed02978a1872a1e2a0ad99e0b982b190ec1bf96c4673acee475fd8cf99d24b"
+  },
+  {
+   "path": "resolved.toml",
+   "bytes": 1081,
+   "sha256": "b76469d851175697aae786644024d31d11cb1237ed47d46628a7ebab1085530c"
+  },
+  {
+   "path": "model_entry.json",
+   "bytes": 1765,
+   "sha256": "ef7a54318f887ca7514d5691f432f40a2f03f0ca6c0575640c9bf371721fb9f4"
+  },
+  {
+   "path": "usage.json",
+   "bytes": 29501,
+   "sha256": "b0e46d95b4546df6172fca31a1b211f58190cee83398bd8bd9bd5534b8ae7ebd"
+  },
+  {
+   "path": "grades.json",
+   "bytes": 20357,
+   "sha256": "34dafda1dfad22211544f088f8729104a973c7c19dd48a880f741b3ddd21c8d8"
+  },
+  {
+   "path": "reference.json",
+   "bytes": 35126,
+   "sha256": "dd7fc9b3ae91893a24a709bed7ae5bf0bf6697715609467a9b2919a8f3035ff5"
+  },
+  {
+   "path": "lab_log.jsonl",
+   "bytes": 3437,
+   "sha256": "a2fbc9b18a2092b7edf641274fe5f4842075e37ad90493a5a518d8a2fbc6d42a"
+  },
+  {
+   "path": "submission.json",
+   "bytes": 963,
+   "sha256": "77cd45290a30a5f8c87dd838330f15fb9c1ab6fe1343f008bf0f5fce6c635d52"
+  },
+  {
+   "path": "transcript.md",
+   "bytes": 185450,
+   "sha256": "15dcc6f537e31252c39fbc9e6cd49876f58323c896760d0415c2e37509e1b14f"
+  },
+  {
+   "path": "trace.redacted.jsonl",
+   "bytes": 279559,
+   "sha256": "93d9a1082d2d210ce8106d14e1ef73ca9b6c8f38217ed13c07386fd111eb490f"
+  },
+  {
+   "path": "submission/best_theta.npz",
+   "bytes": 2197,
+   "sha256": "a1d1c22498092833cef67309c6f0acf212fc1f654ff1bd68b23f509d47711fdf"
+  },
+  {
+   "path": "submission/pool.npz",
+   "bytes": 68912,
+   "sha256": "1565f63b82f38b622fb82f133da5cf056ae57d6d9582c252cc77842f01b9e16a"
+  },
+  {
+   "path": "submission/predict.py",
+   "bytes": 5642,
+   "sha256": "e6b0b3fe14e4eed133ef37ffcf15e55cfac492ba8b7062d5c69a3e27f4f4f021"
+  },
+  {
+   "path": "submission/sim_pool_full.npz",
+   "bytes": 12297850,
+   "sha256": "84850520bc4a47e30e4a0369a9d128d9661bd1a1c508cf0c6f540b12cbd30749"
+  },
+  {
+   "path": "key_scan.json",
+   "bytes": 1371,
+   "sha256": "23385845452580a9fe9d9a952bcb53b72990e3f1c9b9d43bf3af601884372d81"
+  }
+ ],
+ "left_out": [],
+ "missing": [],
+ "total_bytes": 12942531,
+ "limits": {
+  "max_file_bytes": 20971520,
+  "max_total_bytes": 52428800
+ }
+}

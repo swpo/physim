@@ -1,0 +1,46 @@
+{
+ "marker": "PILOT_NEVER_REUSE_AS_EXAM",
+ "needles": {
+  "credentials_from_the_environment": [
+   "HF_TOKEN",
+   "HF_TOKEN (base64, alignment 0)",
+   "HF_TOKEN (base64, alignment 1)",
+   "HF_TOKEN (base64, alignment 2)",
+   "HF_TOKEN (urlsafe base64, alignment 0)",
+   "HF_TOKEN (urlsafe base64, alignment 1)",
+   "HF_TOKEN (urlsafe base64, alignment 2)",
+   "PRIME_API_KEY",
+   "PRIME_API_KEY (base64, alignment 0)",
+   "PRIME_API_KEY (base64, alignment 1)",
+   "PRIME_API_KEY (base64, alignment 2)",
+   "PRIME_API_KEY (urlsafe base64, alignment 0)",
+   "PRIME_API_KEY (urlsafe base64, alignment 1)",
+   "PRIME_API_KEY (urlsafe base64, alignment 2)",
+   "WANDB_API_KEY",
+   "WANDB_API_KEY (base64, alignment 0)",
+   "WANDB_API_KEY (base64, alignment 1)",
+   "WANDB_API_KEY (base64, alignment 2)",
+   "WANDB_API_KEY (urlsafe base64, alignment 0)",
+   "WANDB_API_KEY (urlsafe base64, alignment 1)",
+   "WANDB_API_KEY (urlsafe base64, alignment 2)"
+  ],
+  "generic_shapes": [
+   "aws access key id",
+   "basic auth in a url",
+   "bearer token",
+   "github token",
+   "hf_ token",
+   "json web token",
+   "private key block",
+   "sk- key",
+   "slack token"
+  ],
+  "hidden_values_of_the_instance": 4
+ },
+ "candidates_scanned": 17,
+ "candidates_with_hits": [],
+ "machine_details_replaced": 0,
+ "left_out": [],
+ "job_folder_files_with_a_credential": [],
+ "verdict": "clean"
+}

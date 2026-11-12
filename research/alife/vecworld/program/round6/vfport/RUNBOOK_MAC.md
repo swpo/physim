@@ -1345,6 +1345,17 @@ folder.
   byte bounds of section B were exercised by a box that floods, through vf-eval (`tools/check_step3.py`, part
   `flood`: 14 of 14). Not issued again: steps 2 and 4 and the points of "If a run was interrupted"; their commands
   did not change.
+- **Round 5 (this pin).** The commands it touched were rehearsed from a fresh sparse clone of this pin, each as ONE
+  `sh -c` line (`results/rehearsal_round5.json`): step 0 (the earlier pin's image listed between `EARLIER PINS,
+  HARMLESS:` and `EARLIER-LISTED`), the uv commands and checks of step 1 (the dry run with `command grep` and the
+  refusal of a Python that is not uv's own), the image check and the instance of step 1, "Before 2a", 3.0, and one
+  paid job from a request through 3a to 3h (`qwen-ring-004`: 60 model calls, none refused, ended by the turn limit,
+  graded with no failed item, $0.2026 counted against a bound of $1.0193, packed clean: `../rollouts/qwen_ring_004/`),
+  then step 0 again. A box that floods the interception server (two requests of 1 GiB with the secret read from the
+  chat program's command line, 8 of 15 MiB at once, 3,000 without the secret) and the laboratory ran through vf-eval
+  (`tools/check_step3.py`, part `flood5`: 10 of 10; part `route` with the stand-in again: 30 of 30). Not issued: the
+  image build of step 1 (below; `physim2-ring:3` was a tag of round 4's image, no file baked into it changed), steps
+  2a to 2c and 4 and the points of "If a run was interrupted" (their commands changed in the pilot's names only).
 - The image build of step 1: built in the cloud container behind its TLS-intercepting proxy with two build
   arguments that the Mac does not use; the command of step 1 as written was not run (in the rehearsal the
   shared image of that build was used: a rebuild behind this proxy is not a cache hit and the machine had

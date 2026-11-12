@@ -1,0 +1,40 @@
+{
+ "root": "/workspace/submission",
+ "files": [
+  {
+   "path": "best_theta.npz",
+   "bytes": 2197,
+   "sha256": "a1d1c22498092833cef67309c6f0acf212fc1f654ff1bd68b23f509d47711fdf"
+  },
+  {
+   "path": "pool.npz",
+   "bytes": 68912,
+   "sha256": "1565f63b82f38b622fb82f133da5cf056ae57d6d9582c252cc77842f01b9e16a"
+  },
+  {
+   "path": "predict.py",
+   "bytes": 5642,
+   "sha256": "e6b0b3fe14e4eed133ef37ffcf15e55cfac492ba8b7062d5c69a3e27f4f4f021"
+  },
+  {
+   "path": "sim_pool_full.npz",
+   "bytes": 12297850,
+   "sha256": "84850520bc4a47e30e4a0369a9d128d9661bd1a1c508cf0c6f540b12cbd30749"
+  }
+ ],
+ "skipped": [],
+ "n_files": 4,
+ "bytes": 12374601,
+ "n_skipped": 0,
+ "skipped_bytes_declared": 0,
+ "directories_seen": 1,
+ "directories_made": 0,
+ "caps": {
+  "max_files": 2000,
+  "max_bytes": 20971520
+ },
+ "complete": true,
+ "archive": "read to its end",
+ "written": true,
+ "graded_manifest_sha256": "001496291b7044dc6cd9506330559548f8905b44add8df1b552228d137ac7f1f"
+}
