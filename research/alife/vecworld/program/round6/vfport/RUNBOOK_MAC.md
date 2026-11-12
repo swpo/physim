@@ -1,12 +1,38 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
-**ON HOLD: run nothing from this commit.** Round 5, second pass (the fixer's commit, 12 Nov 2026): the five majors
-and the minors that the first pass of round 5 left open (`HOST_SAFETY_AUDIT.md`, "Re-audit, round 5", K11 to K15,
-X20 to X24, T26, T27) were changed in pinned files, so this is a new pin with names of its own (`physim2-ring:4`,
-`$HOME/physim2-pilot-r6`, a fresh checkout such as `~/physim-r6`). It has not been audited. The GO for steps 0 to
-2 of the first pass of round 5 holds for its own commit, `5be2466e307ccc4785278af43279b63a06c3ac9f`, only; what that
-commit's steps leave (`physim2-ring:3`, `$HOME/physim2-pilot-r5`) this pin's step 0 lists as harmless. A verdict
-replaces this notice.
+**GO for steps 0 to 3.** Round-5 verdict of the host-safety audit, second pass, 12 Nov 2026
+(`HOST_SAFETY_AUDIT.md`, "Re-audit, round 5, second pass"). Steps 0, 1 and 2 of this file, then step 3 (model
+rollouts, one request at a time), "If a run was interrupted", and step 4 once the lead says the pilot is over, may
+run on the lead's Mac, as written, from ONE commit: the commit that holds this notice. Its 40-character hash is in
+the coordinator's GO message (a commit cannot name itself); the lead checks it out in a fresh checkout for this
+round (section C) and gives it to the session, and step 0 compares it. **Step 3 starts only after steps 0 to 2 have
+passed on this Mac at this commit and the lead has read their report** (rule A.1; no tool checks this), and every
+request names this commit as its source commit (a request that names the pin's commit `19b6beb83` is refused at
+3b). Judged were the code of the round-5 second-pass pin, commit `19b6beb836874f9f938c51367849e2442bd6af4e` (the
+pin below), and the commands as rehearsed from a fresh clone of it, with one paid job from a request through 3a to
+3h (`results/rehearsal_round5.json`, `second_pass`; `../rollouts/qwen_ring_005/`). Not issued at this pin: the image
+build of step 1, step 2's commands, step 4 and the points of "If a run was interrupted"; they differ from round 4's
+rehearsed commands only in this pin's names and, in point 3, `command grep -Fx` for `grep -Fx` (in `sh` the two
+match alike). After the pin, the commits changed `results/`, `rehearsal/`, `README.md`, `../rollouts/`, prose of
+this file (no command), this notice and `HOST_SAFETY_AUDIT.md`, and no file of the pin. This GO replaces the GO for
+steps 0 to 2 of round 5, first pass, for `5be2466e307ccc4785278af43279b63a06c3ac9f`: start from this commit only;
+what that commit's steps leave (`physim2-ring:3`, `$HOME/physim2-pilot-r5`) step 0 lists as harmless.
+
+**Three corrections to the text below (wording only; the next pin puts them in place).** (1) Memory (section B,
+K16): vf-eval turns the output of each `docker` client into text of up to 4 times its size, and the harness's
+command, a checkpoint and the in-box check can each carry up to 96 MiB at the same time; so what a box can make
+vf-eval hold is about 3 GiB at worst, not about 0.8 GiB, and the laboratory about 1.2 GiB more: about 4 GiB of the
+Mac's memory beside Docker Desktop's, for seconds at a time. (2) Step 3h looks for the key only if `PRIME_API_KEY`
+is in its own environment, and otherwise reports `clean` without having looked: run 3h only in a session started
+with the key as section C says; if you are not sure of that (a restarted session), stop and report instead of
+packing. Before a publication folder is handed on, the lead checks that its `key_scan.json` lists `PRIME_API_KEY`
+under `credentials_from_the_environment`. (3) Steps 3d and 3f: `cut -c 1-12` hides the file's name after `==>`;
+the lines come in the command's order, `reference.log` first, then `rollout.log` (a log not yet made has no line).
+
+For the lead, not the session: scores of this pin may be quoted only on the conditions of the audit's section
+"Scores from this pin"; the rehearsal jobs' scores are records, not results. The spend stop has been seen to stop a
+run only against the stand-in endpoint; with the provider it has counted (job 005: $0.0978 of a $0.5193 bound)
+but not yet stopped a run. Step 2b has not run at this code anywhere; its two lists decide a stop.
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->
