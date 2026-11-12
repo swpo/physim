@@ -147,8 +147,13 @@ Round 6 (10-11 Nov 2026, in progress; the lead's direction for it is in `roadmap
   files for the lead's Mac; its verdict at 0697487eb is GO for the scripted steps 0 to 2 on the Mac and NO-GO for model
   rollouts, on two findings: a box could make vf-eval on the Mac hold about 64 GiB through verifiers' own interception
   server, and one shell command can hold the agent longer than its run without the statement saying so (a rehearsal
-  rollout lost 735 of its 900 s that way). A fifth round (in progress) closes both classes: every channel from a box
-  into a host process bounded and tested, everything the agent is told checked against what happens.
+  rollout lost 735 of its 900 s that way). The fifth round (two passes) closed both classes at major severity: every
+  channel from a box into a host process bounded and tested by a flood through vf-eval (interception server, validator
+  report, container log, laboratory, box proxy, logs), everything the agent is told checked against what happens. Its
+  verdict at aa16b4d18 is GO for steps 0 to 3 on the lead's Mac (pin 19b6beb83), after steps 0 to 2 pass there; scores
+  quotable only with the fallback count, zero infrastructure failures, P0, S and C of the same instance inside the bars,
+  and the stop condition. Its rehearsal rollout ran end to end from a request ($0.10). Minor findings go to the next
+  pin. Nothing has run on macOS yet.
 - `round6/rollouts`: the first two model rollouts, on the ring smoke-test exam, $2.59. A strong model scored 0.964 of
   the oracle in six minutes with a closed-form filter (an estimated 0.05-0.08 of it from choosing its 32 samples
   jointly, which the fair energy score rewards); a cheap model was cut by a reply limit it had not been told and
@@ -184,7 +189,14 @@ Round 6 (10-11 Nov 2026, in progress; the lead's direction for it is in `roadmap
   0.41 there). Study B stage 0 (`dials/dialsB`, $0.26, checked): the membrane carrier's CPU gate is a close call by the
   declared rule and a no-go at the point; B is not built. Checker: the gate did not test the carrier, because the
   hidden law is numerically unstable at the pilot centre (an explicit diffusion step at D_X = 0.5 grows a checkerboard
-  mode in both arms) and every seed shared one hidden value; the question is undecided, not closed.
+  mode in both arms) and every seed shared one hidden value; the question is undecided, not closed. The lead closed B.
+  Study A2 (`dials/dialsA2`, $6.62, checked), gliders reopened by the lead on the triggered item classes at 8 to 16
+  ticks, 16 truths, nets trained to the plan's rule: all five declared criteria hold by wide margins (science share
+  0.260, one-sided bounds 0.243 to 0.277; generic share 0.448; the recipe told the form closes 0.996 of the gap; actions
+  matter), but the zero-point control at eta 0 misses on all three pairs (the true-form net is weaker than the public
+  one at eta 0 by 0.069), so the verdict is UNDECIDED by the declared rule. Checker: every number reproduces to five
+  decimals; the cause of the miss (too few eta-0 points in the true-form training set) is an untested hypothesis; the
+  presmoke had already shown it. A rerun with a re-declared zero point and new truths (`dials/dialsA3`) is running.
 - `round6/foundrylong` ($8.93, checked): the foundry exam at 16 and 32 ticks with 32 Lab episodes. Stage 1: with five
   times the pilot's prior worlds (1,000), the no-experiment recipe still leaves a gap: sigma 0.218 at 16 ticks
   (one-sided lower bound 0.187; 0.178 with any one world left out), but only at this compute: the step from 210 to
