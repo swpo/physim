@@ -1095,6 +1095,43 @@ s); the longest held it 219 s; no background job.
 | T19 to T25, CRED-2 | runbook text: step 0's first two commands before each job; $50 (the lead's decision) in 3b and on the STOP line; `EXIT 2` read both ways; the publication files, limits in bytes and the clean-up after a crash in the block of facts (`check_request.facts`, `"publication"`, `"after_a_crash"`); the runner's intake differences refused at 3a or 3b; "point 8 does not apply"; an empty `PRIME_API_KEY` refused (`vfrun.require_key_name`); the credential helpers in section B | `RUNBOOK_MAC.md`, `tools/check_request.py`, `tools/vfrun.py` | check_runbook; check_round4 D39 |
 | the Mac session's rulings (COORD, 11 Nov) | names of this round only: image `physim2-ring:3` (no file baked into it changed), pilot folder and run label `physim2-pilot-r5`; step 0 refuses its own names and lists round 4's as harmless; a fresh checkout at a path named for the round; "at least" 4 CPUs and 6 GB; `command grep` in every command; step 1's dry run refuses a Python that is not uv's own; section B lines on the session's shell and environment | `RUNBOOK_MAC.md`, `physim2_env/profiles.py`, `taskset.py`, the tools' defaults | check_runbook; rehearsal |
 
+### 8.18 Round 5, second pass: K11 to K15, X20 to X24, T26, T27 (12 Nov 2026; not audited yet)
+
+The first pass of round 5 ended GO for steps 0 to 2 at `5be2466e3` and NO-GO for step 3 on five majors that its
+audits found in the classes this round was to close: three ways a box makes a process on the host hold something
+(K11 to K13) and two things the agent is told that do not happen (X20, X21). This pass changes only what those
+items and the minors of the same verdict need. Labels as in 8.17; `vf:` is `verifiers/v1/` of the pinned checkout.
+The new pin is `19b6beb83` (sha256 of `PIN.sha256` `41da66d69750ce7829112f30c4c22417b0e19df38c34448818dbfac4670f78c8`,
+136 files), with names of its own: image `physim2-ring:4` (a tag of the same image: no file baked into it changed),
+pilot folder and run label `physim2-pilot-r6`, a fresh checkout such as `~/physim-r6`; step 0 lists the first
+pass's `physim2-ring:3` and `$HOME/physim2-pilot-r5` (and round 4's names) as harmless.
+
+| item | what was wrong (read) | change | where | test |
+|---|---|---|---|---|
+| K11 major | the per-box gate and the upload cut found the callback from the raw request target; verifiers' proxy routes by the path of `urlsplit(target)` (vf:runtimes/docker/egress.py:194-213), so a target in absolute form or starting with `//` reached the interception server ungated and uncut | the callback is found exactly as verifiers finds it: h11 parses the head, the method is not CONNECT, the path of `urlsplit(target)` begins with the prefix; the gate counts each form | `physim2_env/runtime.py`, `_callback_of`, `callback_stats["targets"]` | tripwires F4b, F6 (5 at once in absolute form and with `//`: one at a time upstream; 40 MiB in each form cut at 17 MiB); vf-eval G10 (8 + 8 of 15 MiB through vf-eval: `most_at_once` 1, `waited` 21, `targets` absolute 8, `//` 8) |
+| K12 major | the in-box check's report and the listing of the working directory are box text that root can write past `head -c` (into the exec's output, up to 96 MiB); both were stripped, split and parsed whole (18 to 36 times the text) | `clean_report` refuses text longer than `REPORT_MAX` + 64 KiB before anything else; `parse_listing` cuts the text to the listing's own 400,000 bytes before it splits; the checkpoint's fingerprint is cut to 4 KiB before it is stripped. The parses of grading boxes (`grading.py`) need none: there the predictor runs as another uid with its output to `/dev/null` and cannot open root's pipes (read) | `physim2_env/access.py`, `capture.py` | tripwires F11 (90 MiB of short lines: refused in 3 ms, 173 bytes of Python memory), F12 (the listing: under 32 MiB); vf-eval G11 (a validator wrote 90 MiB of short lines past its `head -c`: refused, vf-eval's peak in that window 770 MiB against 935 MiB before it; overall peak of the flood rollout 936 MiB) |
+| K13 major | the box's `docker run` carried no `--log-driver`, so what a box writes to its PID 1's output (`/proc/1/fd/1`) went to Docker's `json-file` log without a size limit | `--log-driver none` on every box, read back after the start (`LogConfig.Type`); a box without it is refused | `physim2_env/boxcaps.py`, `cap_run_argv`, `check_host_config` | tripwires A3, A14; vf-eval G12 (8 MiB written to `/proc/1/fd/1`; 66 boxes of the run seen by Docker (the agent's and the grading boxes): driver `none`, no log path, `docker logs` refused) |
+| X20 major | the statement said "`lab.submit` only ends the run early" and that a cut reply "loses the tool call it was writing"; the harness ends the run at any reply without a tool call (vf:harnesses/utils/core.py:380-381), and a reply cut at the token limit before its tool call has none | rule 2, section 4 and its ending paragraph say so; a reply cut inside a tool call's arguments gets `error: invalid JSON in tool arguments` (core.py:400-402); the fact is parsed from the harness's loop (`bundle.harness_constants` raises if `if not message.tool_calls: return` is not found once in `run_chat_loop`, or if `"length"` is handled there) | `physim2_env/bundle.py`, `TASK.md.tmpl` | exam_pure (X20, three checks) |
+| X21 major | `lab.usage()`'s `context_tokens_used` was verifiers' `prompt_tokens`, which leaves the provider's cache reads out (vf:types.py:121-147) | `prompt_tokens + cached_input_tokens + completion_tokens`; the statement says "cache reads included" | `physim2_env/access.py`, `status` | tripwires F13 (622 + 10,882 cached + 150 = 11,654); the rehearsal job (below) |
+| X22 minor | "at your model's listed prices" | the provider's own cost when higher; a reply that fails or has no token counts is counted as the largest call possible | `bundle.py`, the spend line | exam_pure (X22) |
+| X23 minor | "30 CPU-seconds and a memory limit per item" | the CPU and memory limits are per process (children get their own; the memory limit is on address space), and no file may exceed 256 MiB (`ITEM_FILE_MIB`, the driver's `--file-mib` default, checked against `public/_item.py`) | `TASK.md.tmpl`, `bundle.py` | exam_pure (X23) |
+| X24 minor | the 64 MiB limit was given as a limit only | a `submission/` over it at the end gives every item the baseline's forecast; an earlier copy is used only after an error | `TASK.md.tmpl` | exam_pure (X24) |
+| K14 minor | "about 25 times, 0.4 GiB" | "about 40 times, about 0.7 GiB per request" (25 measured for flat lists, 36 for nested JSON); flood5's G5 bound uses 40 | README 8.17 row 2, runbook section B, `runtime.py`'s docstring, `tools/check_step3.py` | text |
+| K15 minor | the laboratory's memory was not stated | 8 requests of 4 MiB at once, each parsed and waiting on the service lock: about 1.2 GiB in that process (inferred) | README 8.17 row 11, runbook section B | text |
+| T26 minor | the T19 paragraph did not name the expected `.venv` line | it names `!! research/alife/vecworld/program/round6/vfport/.venv/` as the one expected line after steps 1 and 2 | `RUNBOOK_MAC.md`, step 3 | check_runbook; rehearsal |
+| T27 minor | 3a "changes nothing / reads that commit's objects" was not exact in a `--filter=blob:none` clone | 3a, CRED-2 and section C say that the second command fetches the three files' contents from the host (and may start the credential helper), and that the remote must be https | `RUNBOOK_MAC.md` | rehearsal (3a's second command in a blob:none clone, over https) |
+
+README 8.17 gets rows 26 (the container log) and 27 (verifiers' two helper containers: fixed programs run to their
+end during a box's start, before any agent; the box shares only their network: read) and the second-pass notes in
+rows 2, 3, 4, 11, 13 and 14. Nothing of rounds 1 to 4 or of the first pass was reopened: every request still
+passes `_handle` and `relay_buffer`; the gate and the cut are the same code, now reached by every form of target.
+
+**What ran** (`results/rehearsal_round5.json`, `second_pass`). Offline: `tools/check_round4.py` 155 of 155,
+`tests/exam_pure.py` 40 of 40, `tools/check_round3.py` host part 30 of 30 (tripwires); `tests/exam_units.py` 103 of
+103 (throwaway container, no host mount); `tools/check_runbook.py` 55 of 55. Through vf-eval:
+`tools/check_step3.py --only route,flood5 --skip-reference` 43 of 43 (route 30, flood5 13, of them G10 to G12 new).
+REHEARSAL_PLACEHOLDER
+
 ## 9. Where the code contradicted the memo, and what else turned up
 
 1. **"This cloud container has no Docker daemon" (memo section 3).** The binaries are installed and the daemon
