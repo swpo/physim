@@ -107,7 +107,9 @@ Results:
 Push an empty file `<job_id>.cancel` next to the request, on the same branch
 (a cancel anywhere else is ignored). It works in every state before the job ends,
 including while the pod is still being provisioned. The Mac sees it within about
-2 minutes, stops the job, collects what exists, and terminates the pod.
+2 minutes, stops the job, collects what exists, and terminates the pod. If the pod
+does not answer SSH at that moment, the Mac makes one collection attempt and then
+terminates it (it waits about 5 more minutes only while the Mac itself is offline).
 
 ## Budget and approval
 
@@ -153,7 +155,24 @@ termination are bounded by it, and outputs are unpacked only after the pod is
 gone. Before the first pod is created, a detached guard process must be running:
 it terminates the job's pods if the runner dies or the hard deadline passes, and
 a manual `sweep` applies the same rule. Termination is confirmed pod by pod with
-the provider; a pod the provider still lists as live is deleted again. While the
+the provider; a pod the provider still lists as live is deleted again.
+
+A pod that stops answering SSH is not given up for that alone. While the
+provider still lists it, it is kept to its run deadline (the status says so),
+and collection is then retried every one to two minutes until shortly before
+the hard deadline; only the provider reporting the pod ended (two readings at
+least a minute apart; it is asked at most every 2 minutes) or a cancel ends this
+early. A pod that answers SSH but reports its job folder missing for 10 minutes
+(5 answers or more in a row) ends as an infrastructure error; a pod that answers
+but cannot run the check (for example it cannot fork) is kept like an
+unreachable one. A dead pod the provider keeps listing can
+therefore cost up to its whole `cap_usd`, never more. Minutes in which the Mac
+itself is offline (it cannot reach Prime or GitHub) are never counted against a
+pod: a job outlives a network outage on the Mac's side (job r6-dialsa3-001 was
+lost to one before this rule). An outage that lasts past the hard deadline
+bills, like a sleeping Mac, until the Mac reconnects and the guard terminates
+the pod. Collection keeps the best of its attempts, so a retry never loses a
+partial archive. While the
 guard runs it keeps the Mac from idle-sleeping (`caffeinate -i`); a closed lid
 or a forced sleep still stops it, and a running pod then keeps billing until the
 Mac wakes.
