@@ -9,11 +9,58 @@
       "at": "2026-11-12T03:56:55Z",
       "message": "request received",
       "state": "received"
+    },
+    {
+      "at": "2026-11-12T03:59:55Z",
+      "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $9.45",
+      "state": "queued"
     }
   ],
   "job_id": "r6-dialsa3-001",
-  "message": "request received",
+  "max_estimate_usd": 9.45,
+  "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $9.45",
+  "plan": {
+    "max_estimate_usd": 9.45,
+    "offers": [
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "IN",
+        "data_center": "asia-south-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      },
+      {
+        "cloud_id": "gpu_1x_a100_sxm4",
+        "country": "US",
+        "data_center": "us-east-1",
+        "disk_gb": 512,
+        "gpu_memory_gb": 40,
+        "gpu_type": "A100_40GB",
+        "is_spot": false,
+        "memory_gb": 200,
+        "provider": "lambdalabs",
+        "rank": 0,
+        "rate_usd_hr": 1.99,
+        "security": "secure_cloud",
+        "socket": "SXM4",
+        "stock": "Available",
+        "vcpus": 30
+      }
+    ],
+    "planned_at": "2026-11-12T03:59:55Z",
+    "window_hours": 4.75
+  },
   "pods": [],
-  "state": "received",
-  "updated_at": "2026-11-12T03:56:55Z"
+  "state": "queued",
+  "updated_at": "2026-11-12T03:59:55Z"
 }
