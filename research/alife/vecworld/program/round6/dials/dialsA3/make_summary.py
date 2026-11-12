@@ -255,6 +255,32 @@ if status:
         job["pod_hours"] = round(sum((np.datetime64(p["terminated_at"][:19]) - np.datetime64(p["created_at"][:19])).astype(float)
                                      for p in pods if p.get("terminated_at") and p.get("created_at")) / 3600.0, 3)
 
+# ---- R19's cost of each reference policy in episode equivalents (added before the results were read, after the
+# runner's review note 4; DEVIATIONS entry 1c). Simulated episodes are burn + 32 ticks, Lab episodes 33 charged ticks.
+if info and info.get("config"):
+    cf = info["config"]
+    n_pub = cf["n_theta"] * 2 * cf["Kc"]
+    n_true = sum(cf["true_n"]) * 2 * cf["Kc"]
+    n_des = cf["n_theta"] * 8
+    ep_t = cf["burn"] + cf["P"] + cf["H"]
+    tm = info.get("times") or {}
+    base_s = sum(v for k, v in tm.items() if k.startswith("5 base nets") and isinstance(v, (int, float)))
+    rows = {"P0": (n_pub, 0, "public family; base net (shared with S, FT, RES)"),
+            "S(N)": (n_pub, "N mix", "public family (emulator and net) + the first N Lab mix episodes"),
+            "FT(N)": (n_pub, "N mix", "P0's net + N Lab mix episodes (cross-validated fine-tune)"),
+            "RES(N)": (n_pub, "N mix", "P0's net + N Lab mix episodes"),
+            "D(N)": (0, "N mix", "N Lab mix episodes alone"),
+            "G*(N)": (n_pub, "N mix", "the union of P0, D, S, FT, RES (all on the same N mix episodes)"),
+            "H(N)": (n_des + n_true, "N designed", "designed family (emulator) + true-form family (net)"),
+            "H_mix(N)": (n_true, "N mix", "true-form family (emulator and net)"),
+            "C (reference, not available to an agent)": (n_true, "0 or N mix", "true-form family's net at the truth")}
+    rep["cost_episode_equivalents"] = {
+        "source": SRC + "info.json [config], [times]; sizes declared in DECLARED.md R5, R7, A3-2",
+        "simulated_episode_ticks": ep_t, "lab_episode_charged_ticks": 1 + cf["P"] + cf["H"],
+        "families_episodes": {"public": n_pub, "true_form": n_true, "designed": n_des},
+        "base_net_ladder_gpu_seconds_all_rungs_six_nets": round(base_s, 1),
+        "rows": {k: {"simulated_episodes": v[0], "lab_episodes": v[1], "what": v[2]} for k, v in rows.items()}}
+
 # ---- the presmoke's stop rule (DECLARED A3-4) and the speed guard
 pre = {"source": SRC + "presmoke/stop_rule.json, presmoke/guard.json, presmoke/zero_point.json",
        "stop_rule": jl(os.path.join("presmoke", "stop_rule.json")), "guard": jl(os.path.join("presmoke", "guard.json")),
