@@ -1,0 +1,19 @@
+{
+ "schema": "rollout-job/v1",
+ "job_id": "qwen-ring-004",
+ "purpose": "rehearsal of the round-5 pin in the cloud container: one rollout of the default model on the ring profile from a request (60 turns, 18 minutes, $1.00), to see the agent meet the new disclosures (one command holds it until it returns; how a tool result is cut; the context bound) and to show that the round-5 bounds leave an ordinary model run as it was",
+ "requester": "fixer of port round 5 (cloud container)",
+ "pin": "c48eb6dc28b31f798a8c75f3b9612c8895570278",
+ "pin_sha256": "025a9da6e724f5f907b05497603ced013a78c531ded70affd82b0c8f1d004eed",
+ "config": "research/alife/vecworld/program/round6/rollouts/configs/qwen_ring_004.toml",
+ "exam_profile": "ring",
+ "instance": "pilot-qwen-ring-004",
+ "model": "qwen/qwen3.6-35b-a3b",
+ "caps": {
+  "max_turns": 60,
+  "max_output_tokens": 8192,
+  "wall_minutes": 18,
+  "box_memory_gb": 4
+ },
+ "cap_usd": 1.0
+}
