@@ -1,0 +1,992 @@
+{
+ "record": {
+  "fallback": {
+   "policy": "null",
+   "baseline_pool_sha256": "7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c",
+   "n_items": 64,
+   "by_reason": {
+    "validation failed: raised": 64
+   }
+  },
+  "isolation": "box",
+  "layers": {
+   "rlimits": true,
+   "uid": 38859,
+   "cleanup": true
+  },
+  "n_failed": 64,
+  "n_items": 64,
+  "name": "a0dd43c54a9f4dee90a0b6c78ff25727",
+  "reason": "validation failed: raised",
+  "seconds": 0.0,
+  "validation": {
+   "ok": false,
+   "stage": "example 0",
+   "error": "predictor failed (exit code 2): ValueError: vmap was requested to map its argument along axis 0, which implies that its rank should be at least 1, but is only 0 (its shape is ())\n"
+  }
+ },
+ "n_errors": 0,
+ "items": [
+  {
+   "item": 0,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.632095,
+    0.593467,
+    0.592576,
+    0.621234,
+    0.711751,
+    0.712797,
+    0.557982
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 1,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.559327,
+    0.642857,
+    0.663554,
+    0.581104,
+    0.609505,
+    0.520116,
+    0.558664
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 2,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.4922,
+    0.513221,
+    0.56898,
+    0.552927,
+    0.617273,
+    0.57301,
+    0.549275
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 3,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.480112,
+    0.467511,
+    0.627933,
+    0.665431,
+    0.762955,
+    0.753046,
+    0.650947
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 4,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.830819,
+    0.876008,
+    1.097984,
+    0.857393,
+    0.717369,
+    0.731688,
+    0.509353
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 5,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.519949,
+    0.612032,
+    0.77495,
+    0.761085,
+    0.644201,
+    0.607846,
+    0.666337
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 6,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.844009,
+    1.007883,
+    1.314877,
+    0.960734,
+    0.646674,
+    0.625119,
+    0.525648
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 7,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.798358,
+    0.894815,
+    1.117488,
+    0.903199,
+    0.627272,
+    0.525867,
+    0.604946
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 8,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.641234,
+    0.579167,
+    0.620612,
+    0.605107,
+    0.616967,
+    0.640925,
+    0.59905
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 9,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.731324,
+    0.692873,
+    0.606044,
+    0.662433,
+    0.659641,
+    0.621951,
+    0.649935
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 10,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.831366,
+    0.72479,
+    0.631204,
+    0.659311,
+    0.63738,
+    0.572595,
+    0.600787
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 11,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.564175,
+    0.570164,
+    0.538619,
+    0.644048,
+    0.641,
+    0.650656,
+    0.49484
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 12,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.79937,
+    0.898916,
+    1.218,
+    0.865925,
+    0.657095,
+    0.641581,
+    0.579383
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 13,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.457366,
+    0.508639,
+    0.559254,
+    0.5519,
+    0.685201,
+    0.624251,
+    0.599501
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 14,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.888084,
+    0.787376,
+    0.765224,
+    0.702228,
+    0.631205,
+    0.570606,
+    0.698307
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 15,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.62608,
+    0.730725,
+    1.110408,
+    0.932982,
+    0.752575,
+    0.750129,
+    0.572639
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 16,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.630178,
+    0.669318,
+    0.989022,
+    0.737408,
+    0.715275,
+    0.710918,
+    0.538099
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 17,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.563772,
+    0.598673,
+    0.650238,
+    0.704065,
+    0.679522,
+    0.69209,
+    0.75596
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 18,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.712346,
+    0.720566,
+    0.881683,
+    0.692568,
+    0.628932,
+    0.647718,
+    0.739521
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 19,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.525352,
+    0.478883,
+    0.665331,
+    0.646854,
+    0.631823,
+    0.531284,
+    0.624848
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 20,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.77181,
+    0.686236,
+    0.710131,
+    0.591656,
+    0.663197,
+    0.601001,
+    0.544541
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 21,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    1.022356,
+    1.223449,
+    1.431095,
+    1.095138,
+    0.853167,
+    0.829266,
+    0.533789
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 22,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.516706,
+    0.565299,
+    0.852738,
+    0.709511,
+    0.579016,
+    0.522419,
+    0.614435
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 23,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.745774,
+    0.705788,
+    0.673593,
+    0.570941,
+    0.563266,
+    0.503971,
+    0.683954
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 24,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.500787,
+    0.609665,
+    0.880241,
+    0.656265,
+    0.685634,
+    0.620209,
+    0.647602
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 25,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.461774,
+    0.542837,
+    0.684478,
+    0.626471,
+    0.637886,
+    0.549413,
+    0.494531
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 26,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.886262,
+    1.003824,
+    1.216709,
+    0.96777,
+    0.780102,
+    0.669944,
+    0.583109
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 27,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.7927,
+    0.691043,
+    0.695733,
+    0.637233,
+    0.598853,
+    0.595895,
+    0.505971
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 28,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.495075,
+    0.512322,
+    0.573591,
+    0.606178,
+    0.622845,
+    0.497269,
+    0.647728
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 29,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.501895,
+    0.483443,
+    0.570425,
+    0.594201,
+    0.62659,
+    0.599474,
+    0.641438
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 30,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    1.145916,
+    1.003563,
+    0.916993,
+    0.721546,
+    0.620462,
+    0.616778,
+    0.557117
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 31,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.614205,
+    0.664382,
+    0.972698,
+    0.824154,
+    0.677442,
+    0.66502,
+    0.604578
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 32,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.730759,
+    0.848693,
+    1.178761,
+    0.883207,
+    0.675001,
+    0.666674,
+    0.561098
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 33,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.534288,
+    0.545025,
+    0.561467,
+    0.581572,
+    0.601389,
+    0.529923,
+    0.522688
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 34,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.635706,
+    0.626528,
+    0.646287,
+    0.61862,
+    0.666859,
+    0.544717,
+    0.541948
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 35,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.849328,
+    0.755488,
+    0.71838,
+    0.608631,
+    0.581981,
+    0.563151,
+    0.619773
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 36,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.48452,
+    0.530247,
+    0.563797,
+    0.645341,
+    0.575097,
+    0.52144,
+    0.630056
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 37,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.920054,
+    0.894314,
+    0.90985,
+    0.836882,
+    0.684052,
+    0.685897,
+    0.516589
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 38,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.65722,
+    0.678076,
+    0.670665,
+    0.606414,
+    0.674665,
+    0.662366,
+    0.675767
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 39,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.417212,
+    0.580623,
+    0.839507,
+    0.688753,
+    0.662329,
+    0.665976,
+    0.615132
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 40,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.634579,
+    0.808352,
+    1.166173,
+    0.846254,
+    0.714105,
+    0.681539,
+    0.585786
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 41,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.507856,
+    0.586882,
+    0.841746,
+    0.656777,
+    0.670101,
+    0.6234,
+    0.567362
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 42,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.465378,
+    0.511978,
+    0.704386,
+    0.635139,
+    0.626054,
+    0.570811,
+    0.575587
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 43,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.577641,
+    0.614914,
+    0.769795,
+    0.667204,
+    0.6926,
+    0.577726,
+    0.620466
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 44,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.752852,
+    0.792897,
+    1.077513,
+    0.811584,
+    0.728998,
+    0.703896,
+    0.580752
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 45,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.71633,
+    0.669474,
+    0.626372,
+    0.53725,
+    0.639608,
+    0.638292,
+    0.648634
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 46,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.477749,
+    0.541586,
+    0.605046,
+    0.575025,
+    0.62365,
+    0.64827,
+    0.646451
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 47,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.605768,
+    0.618523,
+    0.56832,
+    0.635467,
+    0.619441,
+    0.482477,
+    0.656136
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 48,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.768243,
+    0.74299,
+    0.679136,
+    0.687521,
+    0.719115,
+    0.682143,
+    0.656523
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 49,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.919518,
+    0.897887,
+    0.82376,
+    0.713684,
+    0.614571,
+    0.571189,
+    0.604306
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 50,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.477177,
+    0.499832,
+    0.539413,
+    0.561925,
+    0.607777,
+    0.607551,
+    0.554865
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 51,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.679425,
+    0.627059,
+    0.628855,
+    0.652804,
+    0.636549,
+    0.615736,
+    0.591009
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 52,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.509399,
+    0.482837,
+    0.596247,
+    0.655674,
+    0.63853,
+    0.6565,
+    0.565083
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 53,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.453185,
+    0.43646,
+    0.643477,
+    0.617177,
+    0.622297,
+    0.633296,
+    0.495512
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 54,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.486934,
+    0.506374,
+    0.555097,
+    0.637745,
+    0.614796,
+    0.505218,
+    0.545016
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 55,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.50567,
+    0.62788,
+    0.964795,
+    0.750696,
+    0.614689,
+    0.585544,
+    0.51429
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 56,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.641633,
+    0.600715,
+    0.821969,
+    0.652635,
+    0.652267,
+    0.614307,
+    0.697676
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 57,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.471437,
+    0.525167,
+    0.544569,
+    0.561075,
+    0.579156,
+    0.53636,
+    0.6141
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 58,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.502049,
+    0.696073,
+    0.959811,
+    0.793114,
+    0.626296,
+    0.634118,
+    0.57945
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 59,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.555984,
+    0.61783,
+    0.897253,
+    0.745152,
+    0.596085,
+    0.531303,
+    0.639847
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 60,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.504012,
+    0.562415,
+    0.66916,
+    0.705759,
+    0.688667,
+    0.65418,
+    0.64831
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 61,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.541442,
+    0.641975,
+    1.000749,
+    0.775763,
+    0.650095,
+    0.650632,
+    0.637412
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 62,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.790632,
+    0.795824,
+    0.722679,
+    0.701191,
+    0.657964,
+    0.683236,
+    0.590544
+   ],
+   "cpu_s": 0.0
+  },
+  {
+   "item": 63,
+   "failed": true,
+   "fallback_reason": "validation failed: raised",
+   "energy_score_by_cell": [
+    0.463987,
+    0.629751,
+    0.996241,
+    0.804336,
+    0.662215,
+    0.694142,
+    0.546903
+   ],
+   "cpu_s": 0.0
+  }
+ ],
+ "marker": "PILOT_NEVER_REUSE_AS_EXAM"
+}

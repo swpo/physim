@@ -1130,7 +1130,16 @@ passes `_handle` and `relay_buffer`; the gate and the cut are the same code, now
 `tests/exam_pure.py` 40 of 40, `tools/check_round3.py` host part 30 of 30 (tripwires); `tests/exam_units.py` 103 of
 103 (throwaway container, no host mount); `tools/check_runbook.py` 55 of 55. Through vf-eval:
 `tools/check_step3.py --only route,flood5 --skip-reference` 43 of 43 (route 30, flood5 13, of them G10 to G12 new).
-REHEARSAL_PLACEHOLDER
+The rehearsal from a fresh sparse clone of `19b6beb83`: every runbook command this pass changed, each as ONE `sh -c`
+line (step 0 with the earlier pins' images listed as harmless; step 1's uv commands and checks; Before 2a; 3.0; one
+paid job through 3a to 3h; step 0 again, which printed exactly the one `.venv` line of T26). The job `qwen-ring-005`
+(`../rollouts/qwen_ring_005/`): 40 model calls, none refused, ended by the turn limit after 367 s of 900, $0.0978
+counted against a bound of $0.5193. Its box ran with log driver `none` (read back by the environment; `docker logs`
+refused). `lab.usage()` reported `context_tokens_used` 11,918, 12,669, 13,410 and 16,671: the provider's prompt with
+its cache reads plus the reply, where the first pass's count would have shown 1,258, 177, 12,962 and 304 (X21). The
+agent's own predictor raised on the first public example, so all 64 items were scored with the null policy (0.006 of
+the oracle; no infrastructure failure); the instance's sigma 0.035 and rho 0.896 are outside the program's bars,
+so nothing about the score is a result.
 
 ## 9. Where the code contradicted the memo, and what else turned up
 

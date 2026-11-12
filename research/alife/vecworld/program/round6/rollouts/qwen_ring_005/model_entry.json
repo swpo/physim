@@ -1,0 +1,84 @@
+{
+ "fetched_unix": 1794448361,
+ "source": "GET https://api.pinference.ai/api/v1/models (no credential sent)",
+ "entry": {
+  "output_modalities": [
+   "text"
+  ],
+  "supported_sampling_parameters": [
+   "temperature",
+   "top_p",
+   "top_k",
+   "min_p",
+   "presence_penalty",
+   "repetition_penalty",
+   "stop",
+   "max_tokens",
+   "max_completion_tokens",
+   "response_format"
+  ],
+  "supported_features": [
+   "tools",
+   "json_mode",
+   "structured_outputs",
+   "reasoning"
+  ],
+  "name": "Qwen3.6 35B A3B",
+  "description": "Qwen3.6 35B A3B: a mixture-of-experts multimodal model with reasoning, tool calling and structured outputs, at its full 262K context.",
+  "hugging_face_id": "Qwen/Qwen3.6-35B-A3B",
+  "quantization": "fp8",
+  "created": 1776232759,
+  "context_length": 262144,
+  "max_output_length": 65536,
+  "input_modalities": [
+   "text",
+   "image",
+   "video"
+  ],
+  "supported_parameters": [
+   "temperature",
+   "top_p",
+   "top_k",
+   "min_p",
+   "presence_penalty",
+   "repetition_penalty",
+   "stop",
+   "max_tokens",
+   "max_completion_tokens",
+   "reasoning",
+   "include_reasoning",
+   "response_format",
+   "structured_outputs",
+   "tools",
+   "tool_choice"
+  ],
+  "id": "qwen/qwen3.6-35b-a3b",
+  "object": "model",
+  "owned_by": "",
+  "display_name": "Qwen3.6 35B A3B",
+  "serving": "hosted",
+  "pricing": {
+   "input_usd_per_mtok": 0.11,
+   "output_usd_per_mtok": 1.01,
+   "cache_read_usd_per_mtok": 0.099,
+   "cache_write_usd_per_mtok": null
+  },
+  "specs": {
+   "context_window": 262144,
+   "max_output_tokens": 65536,
+   "modalities": {
+    "input": [
+     "text",
+     "image",
+     "video"
+    ],
+    "output": [
+     "text"
+    ]
+   },
+   "supports_reasoning": true
+  },
+  "context_window": 262144,
+  "max_output_tokens": 65536
+ }
+}

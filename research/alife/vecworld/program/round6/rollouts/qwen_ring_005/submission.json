@@ -1,0 +1,45 @@
+{
+ "root": "/workspace/submission",
+ "files": [
+  {
+   "path": "pool.npz",
+   "bytes": 68912,
+   "sha256": "1565f63b82f38b622fb82f133da5cf056ae57d6d9582c252cc77842f01b9e16a"
+  },
+  {
+   "path": "pool_large.npz",
+   "bytes": 74238,
+   "sha256": "c6f199f74c1fe73e2c3e145d0af4e7576881bcc9b5ff918d6bd4a4882c34cb16"
+  },
+  {
+   "path": "pool_v2.npz",
+   "bytes": 1278706,
+   "sha256": "f6d58e4323d2bb6f2dedf540ad7a041762df9cfe712541c58718a2fa6c6d76d0"
+  },
+  {
+   "path": "pool_v3.npz",
+   "bytes": 1311724,
+   "sha256": "68328ba157b826d5d5102a4ccc20ff8d9a1d2c2c436e5a47625a734bb9e5ee6f"
+  },
+  {
+   "path": "predict.py",
+   "bytes": 4452,
+   "sha256": "1ab2533f1f4e69a707721309edadac31d612bfed2345441311f9335c8756ece5"
+  }
+ ],
+ "skipped": [],
+ "n_files": 5,
+ "bytes": 2738032,
+ "n_skipped": 0,
+ "skipped_bytes_declared": 0,
+ "directories_seen": 1,
+ "directories_made": 0,
+ "caps": {
+  "max_files": 2000,
+  "max_bytes": 20971520
+ },
+ "complete": true,
+ "archive": "read to its end",
+ "written": true,
+ "graded_manifest_sha256": "8e7d68bd23691f68f9ef29e32f968cc2a1438625f3b008cdec7f04bf02e3afda"
+}

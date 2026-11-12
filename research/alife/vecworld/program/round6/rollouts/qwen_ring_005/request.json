@@ -1,0 +1,19 @@
+{
+ "cap_usd": 0.5,
+ "caps": {
+  "box_memory_gb": 4,
+  "max_output_tokens": 8192,
+  "max_turns": 40,
+  "wall_minutes": 15
+ },
+ "config": "research/alife/vecworld/program/round6/rollouts/configs/qwen_ring_005.toml",
+ "exam_profile": "ring",
+ "instance": "pilot-qwen-ring-005",
+ "job_id": "qwen-ring-005",
+ "model": "qwen/qwen3.6-35b-a3b",
+ "pin": "19b6beb836874f9f938c51367849e2442bd6af4e",
+ "pin_sha256": "41da66d69750ce7829112f30c4c22417b0e19df38c34448818dbfac4670f78c8",
+ "purpose": "rehearsal of the round-5 second-pass pin in the cloud container: one rollout of the default model on the ring profile from a request (40 turns, 15 minutes, $0.50), through the changed box run line (--log-driver none) and the proxy's new routing of model requests, to see the agent meet the corrected statement (a reply without a tool call ends the run) and lab.usage()'s context count with cache reads",
+ "requester": "fixer of port round 5, second pass (cloud container)",
+ "schema": "rollout-job/v1"
+}

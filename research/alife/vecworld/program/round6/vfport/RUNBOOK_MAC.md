@@ -1365,6 +1365,18 @@ folder.
   (`tools/check_step3.py`, part `flood5`: 10 of 10; part `route` with the stand-in again: 30 of 30). Not issued: the
   image build of step 1 (below; `physim2-ring:3` was a tag of round 4's image, no file baked into it changed), steps
   2a to 2c and 4 and the points of "If a run was interrupted" (their commands changed in the pilot's names only).
+- **Round 5, second pass (this pin, `19b6beb83`).** The commands it changed (the names `physim2-ring:4` and
+  `physim2-pilot-r6`; step 0's list of the earlier pins) were rehearsed from a fresh sparse clone of this pin, each as
+  ONE `sh -c` line (`results/rehearsal_round5.json`, `second_pass`): step 0 (`physim2-ring:3` and `physim2-ring:2`
+  listed between `EARLIER PINS, HARMLESS:` and `EARLIER-LISTED`), step 1's uv commands and checks, the image check and
+  the instance of step 1, "Before 2a", 3.0, and one paid job from a request through 3a to 3h (`qwen-ring-005`: 40 model
+  calls, none refused, ended by the turn limit, graded, $0.0978 counted against a bound of $0.5193, packed clean:
+  `../rollouts/qwen_ring_005/`; 3a's second command in a `--filter=blob:none` clone over https, T27), then step 0
+  again (the one `.venv` line of T26, then an image id before `IMAGES-LISTED`). The box flood ran through vf-eval
+  again with the request target in absolute form and with `//` (K11), a validator writing 90 MiB of short lines past
+  its `head -c` (K12) and 8 MiB into the box's PID 1 output with every box's log driver read from Docker (K13)
+  (`tools/check_step3.py`, parts `route` and `flood5`: 43 of 43). Not issued: as in the first pass (the image build;
+  steps 2a to 2c and 4 and the points of "If a run was interrupted", changed in the pilot's names only).
 - The image build of step 1: built in the cloud container behind its TLS-intercepting proxy with two build
   arguments that the Mac does not use; the command of step 1 as written was not run (in the rehearsal the
   shared image of that build was used: a rebuild behind this proxy is not a cache hit and the machine had

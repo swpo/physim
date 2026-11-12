@@ -1655,5 +1655,1366 @@
   "agent_and_the_new_disclosures": "the agent read section 4 and ran every training command under its own `timeout` (120, 180, 300, 600 s); the longest commands held it 219 s and 188 s, none near the harness's 3,600 s; no background job; it read seconds_left and turns_left through lab.usage() twice; the run ended at the turn limit with about 5 of 18 minutes left",
   "published": "../../rollouts/qwen_ring_004/ (19 files, key scan clean)"
  },
- "rehearsed_commands": "0a, 0b, 0c, 0d, 0e (as written, refused; then floor 1.2), 1a (as written, refused; then with uv's settings), 1b, 1c and its status, 1d, 1e, 1g, 1h, Before 2a, 3.0 folder and go, 3a (git fetch; fetch as written, refused; then through fetch4.py), 3b, 3c, 3d reference and its status, 3e, the paid start, 3f status, 3g report and settle, 3h pack, then 0a, 0b, 0d again (step 0 at the same commit: `!! .venv/` and an image id before IMAGES-LISTED, and the chain stops there, as the text says)"
+ "rehearsed_commands": "0a, 0b, 0c, 0d, 0e (as written, refused; then floor 1.2), 1a (as written, refused; then with uv's settings), 1b, 1c and its status, 1d, 1e, 1g, 1h, Before 2a, 3.0 folder and go, 3a (git fetch; fetch as written, refused; then through fetch4.py), 3b, 3c, 3d reference and its status, 3e, the paid start, 3f status, 3g report and settle, 3h pack, then 0a, 0b, 0d again (step 0 at the same commit: `!! .venv/` and an image id before IMAGES-LISTED, and the chain stops there, as the text says)",
+ "second_pass": {
+  "what": "round 5, SECOND PASS (fixer port5fix2): the checks of K11 to K13, X20 to X24, the flood of the interception route, the validator and the container log through vf-eval, and the runbook commands this pass changed issued byte for byte from a fresh sparse clone of the new pin, with ONE paid job from a request",
+  "where": "the cloud container (Linux x86_64, Docker 29.9.2, sh = dash, root, behind a TLS-intercepting proxy, about 2.2 GiB free for everyone); nothing on macOS",
+  "commit_rehearsed": "19b6beb836874f9f938c51367849e2442bd6af4e",
+  "sha256_of_PIN.sha256_at_that_commit": "41da66d69750ce7829112f30c4c22417b0e19df38c34448818dbfac4670f78c8",
+  "files_pinned": 136,
+  "evidence_labels": {
+   "tripwires": "run on the host under tools/tripwires.py",
+   "container": "run in a throwaway container with no host mount",
+   "vf-eval": "run through vf-eval in capped boxes",
+   "rehearsal": "a runbook command issued as ONE sh -c line by rehearsal/issue6.py"
+  },
+  "checks": {
+   "tools/check_round4.py (A to F)": {
+    "result": "155 of 155",
+    "label": "tripwires",
+    "new": "A3, A14 (K13 log driver); F4b, F6 (K11 absolute form and `//`); F11, F12 (K12); F13 (X21)"
+   },
+   "tests/exam_pure.py": {
+    "result": "40 of 40",
+    "label": "tripwires",
+    "new": "X20 (three), X22, X21 text, X23, X24"
+   },
+   "tools/check_round3.py (host part, --skip-container)": {
+    "result": "30 of 30",
+    "label": "tripwires"
+   },
+   "tests/exam_units.py": {
+    "result": "103 of 103",
+    "label": "container"
+   },
+   "tools/check_runbook.py": {
+    "result": "55 of 55",
+    "label": "run (text)"
+   },
+   "tools/check_step3.py --only route,flood5 --skip-reference": {
+    "result": "43 of 43",
+    "label": "vf-eval",
+    "new": "G10 (K11), G11 (K12), G12 (K13)"
+   }
+  },
+  "flood5": {
+   "memory_mib": {
+    "vf_eval": [
+     508.6,
+     935.9
+    ],
+    "vf_eval_validator_short_lines": [
+     935.3,
+     769.9
+    ]
+   },
+   "box_proxy": {
+    "callback": {
+     "waited": 21,
+     "most_at_once": 1,
+     "cut_uploads": 2,
+     "targets": {
+      "origin": 3013,
+      "absolute": 8,
+      "double_slash": 8
+     }
+    },
+    "refused_connections": 0,
+    "log_records_dropped": 2984
+   },
+   "container_logs": {
+    "boxes": 66,
+    "all_none_no_path_no_bytes": true
+   },
+   "checks": [
+    {
+     "name": "G0 flood5: the instance and the dry run of the stand-in job passed",
+     "ok": true
+    },
+    {
+     "name": "G1 flood5: the rollout ran to its end (vf-eval exited by itself with status 0)",
+     "ok": true
+    },
+    {
+     "name": "G2 K9: inside the box the chat program's secret and the server's address were read from its command line, as a model could",
+     "ok": true
+    },
+    {
+     "name": "G3 K9: one request declaring 1 GiB and one chunked 1 GiB, with the secret: each refused after at most 16 MiB (+ buffers) of its body (413, or the connection closed under the sender)",
+     "ok": true
+    },
+    {
+     "name": "G4 K9: 8 requests of 15 MiB at once, with the secret: every one answered, and the box's proxy let at most 1 through to the server at a time (the others waited)",
+     "ok": true
+    },
+    {
+     "name": "G5 K9: vf-eval's resident memory during these floods stayed within 768 MiB of its level before them (40 x the body limit x requests at once, + 128 MiB; K14: the parse factor is about 40)",
+     "ok": true
+    },
+    {
+     "name": "G6 3000 requests without the secret: answered 401; the run's log holds at most 20 of their lines + one a minute, and the trace counts the records dropped",
+     "ok": true
+    },
+    {
+     "name": "G7 the laboratory's log on the host: every line at most 2 KiB although four requests named 3 MiB operations or arguments, at most 20000 lines + one",
+     "ok": true
+    },
+    {
+     "name": "G8 the run was still graded (64 items) after all of this",
+     "ok": true
+    },
+    {
+     "name": "G10 K11: 1 at a time also for 8 requests of 15 MiB in absolute form and 8 with a target starting with `//`: all answered, and the proxy's gate counted each under its form (before the fix neither form reached the gate)",
+     "ok": true
+    },
+    {
+     "name": "G11 K12: a validator writing 90 MiB of short lines past its `head -c` into its command's output: the report is refused (`more than 1 MiB`) and vf-eval grew by less than 400 MiB in that window (splitting it would cost 18 to 36 times 90 MiB); the original validator answers afterwards",
+     "ok": true
+    },
+    {
+     "name": "G12 K13: the box wrote 8 MiB into its PID 1's output (/proc/1/fd/1), and every box of the run had Docker's log driver `none`, no log file, and `docker logs` refused: no container log grew",
+     "ok": true
+    },
+    {
+     "name": "G9 no container of this run is left",
+     "ok": true
+    }
+   ]
+  },
+  "steps": [
+   {
+    "n": 0,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "01:40:54",
+    "note": "Rehearsal of the round-5 SECOND-PASS pin (fixer port5fix2), cloud container (Linux x86_64, Docker, sh = dash, root session, behind a TLS-intercepting proxy, about 2.2 GiB free for everyone). Fresh sparse clone of 19b6beb836874f9f938c51367849e2442bd6af4e (git init; sparse checkout of round6/vfport, round5/agentenv, vw1; fetch --depth 1 --filter=blob:none by commit from the public repository; checkout --detach). The commands this pass changed (names physim2-ring:4 and physim2-pilot-r6, step 0's list of earlier pins) and what they need: step 0, step 1 (uv commands and checks; the image build not issued: physim2-ring:4 is a tag of the same image, no baked file changed), Before 2a, 3.0, ONE paid job from a request through 3a to 3h, then step 0 again. Run label port5fix2-r6, disk floor 1.2 GiB wherever a command has to run, HOME a scratch folder."
+   },
+   {
+    "n": 1,
+    "kind": "runbook command",
+    "label": "0a-commit",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && git rev-parse HEAD && pwd -P | command grep -Fx \"<STUDY6>\" && git --no-optional-locks status --porcelain --ignored -- . ../../round5/agentenv ../../../vw1 && echo \"TREE-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:40:54",
+    "seconds": 0.03,
+    "exit": 0,
+    "output": "19b6beb836874f9f938c51367849e2442bd6af4e\n<STUDY6>\nTREE-LISTED\n",
+    "note": ""
+   },
+   {
+    "n": 2,
+    "kind": "runbook command",
+    "label": "0b-pin",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:40:54",
+    "seconds": 0.1,
+    "exit": 0,
+    "output": "41da66d69750ce7829112f30c4c22417b0e19df38c34448818dbfac4670f78c8  PIN.sha256\nPIN-OK\n",
+    "note": ""
+   },
+   {
+    "n": 3,
+    "kind": "runbook command",
+    "label": "0c-session",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && env | cut -d= -f1 | awk '/^(PHYSIM2_|UV_|VIRTUAL_ENV|PYTHON(PATH|HOME|EXECUTABLE)|__PYVENV_LAUNCHER__|DYLD_|DOCKER_|BUILDX_|VF_|MCP_HOST|MCP_PORT|PRIME_RUNS_MODE)/ { bad++ ; print \"FOUND \" $0 } END { print NR \" names, \" bad + 0 \" refused\" }' && docker context show && docker context inspect --format '{{.Endpoints.docker.Host}}'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:40:54",
+    "seconds": 0.04,
+    "exit": 0,
+    "output": "6 names, 0 refused\ndefault\nunix:///var/run/docker.sock\n",
+    "note": ""
+   },
+   {
+    "n": 4,
+    "kind": "runbook command",
+    "label": "0d-docker-and-folders",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && docker ps -a --filter label=verifiers.run=port5fix2-r6 --format '{{.Names}}' && echo \"CONTAINERS-LISTED\" && docker images -q physim2-ring:4 && echo \"IMAGES-LISTED\" && test ! -e \"$HOME/physim2-pilot-r6\" && test ! -L \"$HOME/physim2-pilot-r6\" && test ! -e \"$HOME/physim2-pilot-r6-results\" && test ! -L \"$HOME/physim2-pilot-r6-results\" && test ! -e .venv && test ! -L .venv && echo \"NO-PILOT-FOLDERS\" && echo \"EARLIER PINS, HARMLESS:\" && docker images --format '{{.Repository}}:{{.Tag}}' physim2-ring:3 && docker images --format '{{.Repository}}:{{.Tag}}' physim2-ring:2 && { ls -d \"$HOME/physim2-pilot-r5\" \"$HOME/physim2-pilot-r5-results\" \"$HOME/physim2-pilot-20261110\" \"$HOME/physim2-pilot-20261110-results\" 2>/dev/null ; true ; } && echo \"EARLIER-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:40:54",
+    "seconds": 0.19,
+    "exit": 0,
+    "output": "29.9.2\nCONTAINERS-LISTED\n8080830e3492\nIMAGES-LISTED\nNO-PILOT-FOLDERS\nEARLIER PINS, HARMLESS:\nphysim2-ring:3\nphysim2-ring:2\nEARLIER-LISTED\n",
+    "note": ""
+   },
+   {
+    "n": 5,
+    "kind": "runbook command",
+    "label": "0e-disk",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) print \"DISK-OK \" int(free / 1048576) \" GiB free\" ; else print \"refused: \" int(free / 1048576) \" GiB free on the file system of the home folder, the floor is 8 GiB\" }'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:01",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": "refused: 2 GiB free on the file system of the home folder, the floor is 8 GiB\n",
+    "note": "as written: this machine has under 8 GiB free for everyone"
+   },
+   {
+    "n": 6,
+    "kind": "runbook command",
+    "label": "0e-disk",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 1258291) print \"DISK-OK \" int(free / 1048576) \" GiB free\" ; else print \"refused: \" int(free / 1048576) \" GiB free on the file system of the home folder, the floor is 8 GiB\" }'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "8388608",
+      "1258291"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:01",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": "DISK-OK 2 GiB free\n",
+    "note": ""
+   },
+   {
+    "n": 7,
+    "kind": "runbook command",
+    "label": "1a-uv-dry-run",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f pyproject.toml && test -f uv.lock && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print \"refused: under 8 GiB free on the file system of the home folder\" ; exit 1 }' && cd / && uv sync --project \"<STUDY6>\" --locked --python 3.12 --managed-python --dry-run 2>&1 | command grep -E \"^Using CPython|project environment|Would (download|install)|error\" | awk '{ print } /^Using CPython/ && / interpreter at:/ { print \"refused: uv chose a Python that is not its own\" }'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:01",
+    "seconds": 0.0,
+    "exit": 1,
+    "output": "refused: under 8 GiB free on the file system of the home folder\n",
+    "note": "as written: refused by the disk floor"
+   },
+   {
+    "n": 8,
+    "kind": "runbook command",
+    "label": "1a-uv-dry-run",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f pyproject.toml && test -f uv.lock && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 1258291) exit 0 ; print \"refused: under 8 GiB free on the file system of the home folder\" ; exit 1 }' && cd / && uv sync --project \"<STUDY6>\" --locked --python 3.12 --managed-python --dry-run 2>&1 | command grep -E \"^Using CPython|project environment|Would (download|install)|error\" | awk '{ print } /^Using CPython/ && / interpreter at:/ { print \"refused: uv chose a Python that is not its own\" }'",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "8388608",
+      "1258291"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "HTTPS_PROXY",
+     "LANG",
+     "PATH",
+     "SSL_CERT_FILE",
+     "USER",
+     "UV_CACHE_DIR",
+     "UV_LINK_MODE",
+     "UV_NATIVE_TLS",
+     "UV_PYTHON_INSTALL_DIR"
+    ],
+    "session_environment_added": {
+     "UV_CACHE_DIR": "/root/.cache/uv",
+     "UV_PYTHON_INSTALL_DIR": "/root/.local/share/uv/python",
+     "UV_LINK_MODE": "hardlink",
+     "HTTPS_PROXY": "<the value of this machine; not recorded>",
+     "SSL_CERT_FILE": "<the value of this machine; not recorded>",
+     "UV_NATIVE_TLS": "<the value of this machine; not recorded>"
+    },
+    "started_utc": "01:41:01",
+    "seconds": 0.63,
+    "exit": 0,
+    "output": "Using CPython 3.12.13\nWould create project environment at: <STUDY6>/.venv\nWould download 1 package\nWould install 103 packages\n",
+    "note": ""
+   },
+   {
+    "n": 9,
+    "kind": "runbook command",
+    "label": "1b-mkdir",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && mkdir -m 700 \"$HOME/physim2-pilot-r6\" && mkdir \"$HOME/physim2-pilot-r6/scratch\" && echo \"PILOT-FOLDER-MADE\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:06",
+    "seconds": 0.01,
+    "exit": 0,
+    "output": "PILOT-FOLDER-MADE\n",
+    "note": ""
+   },
+   {
+    "n": 10,
+    "kind": "runbook command",
+    "label": "1c-uv-sync",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f pyproject.toml && test -f uv.lock && df -Pk \"$HOME\" | awk 'NR == 2 { free = $4 } END { if (free >= 1258291) exit 0 ; print \"refused: under 8 GiB free on the file system of the home folder\" ; exit 1 }' && docker info --format '{{.ServerVersion}}' && { ( nohup uv sync --project \"<STUDY6>\" --locked --python 3.12 --managed-python > \"$HOME/physim2-pilot-r6/scratch/sync.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"$HOME/physim2-pilot-r6/scratch/sync.log\" ) > /dev/null 2>&1 < /dev/null & }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "8388608",
+      "1258291"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "HTTPS_PROXY",
+     "LANG",
+     "PATH",
+     "SSL_CERT_FILE",
+     "USER",
+     "UV_CACHE_DIR",
+     "UV_LINK_MODE",
+     "UV_NATIVE_TLS",
+     "UV_PYTHON_INSTALL_DIR"
+    ],
+    "session_environment_added": {
+     "UV_CACHE_DIR": "/root/.cache/uv",
+     "UV_PYTHON_INSTALL_DIR": "/root/.local/share/uv/python",
+     "UV_LINK_MODE": "hardlink",
+     "HTTPS_PROXY": "<the value of this machine; not recorded>",
+     "SSL_CERT_FILE": "<the value of this machine; not recorded>",
+     "UV_NATIVE_TLS": "<the value of this machine; not recorded>"
+    },
+    "started_utc": "01:41:06",
+    "seconds": 0.07,
+    "exit": 0,
+    "output": "29.9.2\n",
+    "note": ""
+   },
+   {
+    "n": 11,
+    "kind": "runbook command",
+    "label": "1c-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && tail -n 3 \"$HOME/physim2-pilot-r6/scratch/sync.log\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:11",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": " + verifiers==0.3.2.dev163 (from https://github.com/swpo/verifiers/releases/download/physim-a24f5e216d14/verifiers-0.3.2.dev163-py3-none-any.whl)\n + yarl==1.25.1\nEXIT 0\n",
+    "note": ""
+   },
+   {
+    "n": 12,
+    "kind": "runbook command",
+    "label": "1d-import",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B -c \"import physim2_env, physim2_script, verifiers, numpy, scipy, jax; print(verifiers.__version__, numpy.__version__, scipy.__version__, jax.__version__, physim2_env.__file__, physim2_env._nokey.state())\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:14",
+    "seconds": 10.18,
+    "exit": 0,
+    "output": "0.3.2.dev163 2.5.4 1.18.1 0.12.0.1 <STUDY6>/physim2_env/__init__.py stand-in\n",
+    "note": ""
+   },
+   {
+    "n": 13,
+    "kind": "runbook command",
+    "label": "1e-interpreter",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B -c \"import os, subprocess; line = subprocess.run(['ps', '-ww', '-p', str(os.getpid()), '-o', 'command='], capture_output=True, text=True).stdout.strip(); print(line[:160]); print('INTERPRETER-OK' if line.startswith('<STUDY6>/.venv/bin/python -B -c ') else 'INTERPRETER-DIFFERS')\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:25",
+    "seconds": 0.04,
+    "exit": 0,
+    "output": "<STUDY6>/.venv/bin/pytho\nINTERPRETER-OK\n",
+    "note": ""
+   },
+   {
+    "n": 14,
+    "kind": "runbook command",
+    "label": "1g-image-check",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker run --rm --network none --label verifiers.run=port5fix2-r6 physim2-ring:4 python -c \"import numpy, scipy, jax; print(numpy.__version__, scipy.__version__, jax.__version__)\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:25",
+    "seconds": 1.28,
+    "exit": 0,
+    "output": "2.5.4 1.18.1 0.12.0.1\n",
+    "note": ""
+   },
+   {
+    "n": 15,
+    "kind": "runbook command",
+    "label": "1h-make-instances",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B tools/make_instances.py --store \"$HOME/physim2-pilot-r6/store\" --world ring --config ring_r4 --n 1 --prefix mac-ring",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:26",
+    "seconds": 15.92,
+    "exit": 0,
+    "output": "{\"instance_id\": \"mac-ring-w0\", \"secret_commitment\": \"f281adfde3cb2dfdb82cc5713089264f67c90e73628811ec95deb45a4ba51378\", \"n_items\": 64, \"R\": 16, \"seconds\": 5.6}\n",
+    "note": ""
+   },
+   {
+    "n": 16,
+    "kind": "runbook command",
+    "label": "2-quiet",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker ps --format '{{.Names}} {{.Image}}' && echo \"RUNNING-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:42",
+    "seconds": 0.04,
+    "exit": 0,
+    "output": "RUNNING-LISTED\n",
+    "note": ""
+   },
+   {
+    "n": 17,
+    "kind": "note of the operator (not a runbook command)",
+    "utc": "01:41:55",
+    "note": "Added, as in rounds 4 and 5, one file to the clone's environment only: .venv/lib/python3.12/site-packages/zz_cloud_container_ca.pth, setting SSL_CERT_FILE to this machine's public CA bundle when no such variable is set (verifiers' model client does not trust this container's TLS-intercepting proxy; the tools' allow-list keeps SSL_CERT_FILE out, as the Mac's protocol asks). No pinned file, command or allow-list changed."
+   },
+   {
+    "n": 18,
+    "kind": "runbook command",
+    "label": "3.0-folder",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test ! -e \"$HOME/physim2-rollouts\" && test ! -L \"$HOME/physim2-rollouts\" && mkdir -m 700 \"$HOME/physim2-rollouts\" && mkdir \"$HOME/physim2-rollouts/requests\" \"$HOME/physim2-rollouts/configs\" && echo \"ROLLOUTS-FOLDER-MADE\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:55",
+    "seconds": 0.01,
+    "exit": 0,
+    "output": "ROLLOUTS-FOLDER-MADE\n",
+    "note": ""
+   },
+   {
+    "n": 19,
+    "kind": "runbook command",
+    "label": "3.0-go",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -d \"$HOME/physim2-rollouts\" && test ! -L \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && printf '{\"schema\": \"physim2-lead-go/v1\", \"ceiling_usd\": %s, \"date\": \"%s\"}\\n' '5' '2026-11-12' > \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && cat \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "CEILING_USD",
+      "5"
+     ],
+     [
+      "GO_DATE",
+      "2026-11-12"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:55",
+    "seconds": 0.0,
+    "exit": 0,
+    "output": "{\"schema\": \"physim2-lead-go/v1\", \"ceiling_usd\": 5, \"date\": \"2026-11-12\"}\n",
+    "note": "the lead's confirmation that 3.0 asks for is stood in for by the operator; the notice says ON HOLD and nothing is released to the Mac"
+   },
+   {
+    "n": 20,
+    "kind": "runbook command",
+    "label": "3a-git-fetch",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && git fetch origin claude/fisim-agent-world-research-hepmlz && git rev-parse FETCH_HEAD",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:41:55",
+    "seconds": 0.58,
+    "exit": 0,
+    "output": "From https://github.com/swpo/physim\n * branch              claude/fisim-agent-world-research-hepmlz -> FETCH_HEAD\n * [new branch]        claude/fisim-agent-world-research-hepmlz -> origin/claude/fisim-agent-world-research-hepmlz\n664d68c6cb6a018d35cb68665d5b06e0ea07c190\n",
+    "note": ""
+   },
+   {
+    "n": 21,
+    "kind": "runbook command",
+    "label": "3a-fetch",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B tools/check_request.py --fetch --source-commit 664d68c6cb6a018d35cb68665d5b06e0ea07c190 --job-id qwen-ring-005 --pilot \"$HOME/physim2-rollouts\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "SOURCE_COMMIT",
+      "664d68c6cb6a018d35cb68665d5b06e0ea07c190"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:42:01",
+    "seconds": 0.09,
+    "exit": 2,
+    "output": "refused: commit 664d68c6cb6a does not hold research/alife/vecworld/program/rollouts/requests/qwen-ring-005.json (or the commit was not fetched)\n",
+    "note": "as written: a rehearsal request is never committed under requests/"
+   },
+   {
+    "n": 22,
+    "kind": "runbook command",
+    "label": "3a-fetch",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B rehearsal/fetch4.py --requests-prefix research/alife/vecworld/program/round6/vfport/rehearsal/round5_jobs/ --fetch --source-commit 664d68c6cb6a018d35cb68665d5b06e0ea07c190 --job-id qwen-ring-005 --pilot \"$HOME/physim2-rollouts\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "SOURCE_COMMIT",
+      "664d68c6cb6a018d35cb68665d5b06e0ea07c190"
+     ],
+     [
+      "-B tools/check_request.py --fetch",
+      "-B rehearsal/fetch4.py --requests-prefix research/alife/vecworld/program/round6/vfport/rehearsal/round5_jobs/ --fetch"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:42:01",
+    "seconds": 0.72,
+    "exit": 0,
+    "output": "{\"job_id\": \"qwen-ring-005\", \"source_commit\": \"664d68c6cb6a018d35cb68665d5b06e0ea07c190\", \"request\": {\"file\": \"requests/qwen-ring-005.json\", \"bytes\": 989, \"sha256\": \"84a88cd122215d14121081514540b73c90dfd81c2a61108ef5e3f12a83073304\"}, \"config\": {\"file\": \"configs/qwen_ring_005.toml\", \"bytes\": 887, \"sha256\": \"6cc8767f9607eaa86fb2fb1afce9082926624bc14543680853b341cdb7e73c9f\"}, \"shared_ledger\": {\"file\": \"shared-ledger.json\", \"bytes\": 2059, \"sha256\": \"5bc9e448d0f0dee062e746bb0f7b3cf6b6775ed2df114bbfcabeb1bf3e8da1c6\", \"updated_utc\": \"2026-11-12T00:46:56Z\", \"spent_elsewhere_usd\": 3.65763}, \"request_says\": {\"pin\": \"19b6beb836874f9f938c51367849e2442bd6af4e\", \"pin_sha256\": \"41da66d69750ce7829112f30c4c22417b0e19df38c34448818dbfac4670f78c8\", \"config\": \"research/alife/vecworld/program/round6/rollouts/configs/qwen_ring_005.toml\", \"exam_profile\": \"ring\", \"instance\": \"pilot-qwen-ring-005\", \"model\": \"qwen/qwen3.6-35b-a3b\", \"caps\": {\"max_turns\": 40, \"max_output_tokens\": 8192, \"wall_minutes\": 15, \"box_memory_gb\": 4}, \"cap_usd\": 0.5}}\n",
+    "note": "through rehearsal/fetch4.py; in this --filter=blob:none clone the three files' contents were fetched from the host on demand (T27), over the https remote"
+   },
+   {
+    "n": 23,
+    "kind": "runbook command",
+    "label": "3b-check",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B tools/check_request.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-005.json\" --pilot \"$HOME/physim2-rollouts\" --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --prices",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:42:05",
+    "seconds": 0.6,
+    "exit": 0,
+    "output": "{\"job_id\": \"qwen-ring-005\", \"pin\": {\"pin\": \"19b6beb836874f9f938c51367849e2442bd6af4e\", \"pin_sha256\": \"41da66d69750ce7829112f30c4c22417b0e19df38c34448818dbfac4670f78c8\"}, \"config\": \"qwen_ring_005.toml\", \"config_sha256\": \"6cc8767f9607eaa86fb2fb1afce9082926624bc14543680853b341cdb7e73c9f\", \"flat\": {\"model\": \"qwen/qwen3.6-35b-a3b\", \"exam_profile\": \"ring\", \"max_turns\": 40, \"max_output_tokens_per_turn\": 8192, \"wall_minutes\": 15, \"box_memory_gb\": 4, \"reasoning_effort\": \"default\", \"push\": false, \"schema\": \"physim2-rollout/v1\", \"instance\": \"pilot-qwen-ring-005\", \"max_context_tokens\": 100000, \"cap_usd\": 0.5}, \"instance\": {\"job\": null, \"in_index\": false, \"in_store\": false}, \"ledger\": {\"sum_usd\": 0.0, \"jobs\": 0, \"counted_at_their_bound\": []}, \"go\": {\"ceiling_usd\": 5.0, \"date\": \"2026-11-12\"}, \"bounds\": {\"worst_call_usd\": 0.01927392, \"bound_usd\": 0.51927392, \"crude_bound_usd\": 1.4843904, \"cap_usd\": 0.5, \"max_context_tokens\": 100000, \"max_output_tokens\": 8192, \"max_turns\": 40, \"prices_usd_per_mtok\": {\"input\": 0.11, \"output\": 1.01, \"cache_read\": 0.099, \"cache_write\": null, \"input_counted\": 0.11, \"context_window\": 262144, \"max_output_tokens\": 65536}}, \"ceiling\": {\"sum_usd\": 0.0, \"jobs\": 0, \"counted_at_their_bound\": [], \"ceiling_usd\": 5.0, \"spent_elsewhere_usd\": 3.65763, \"after_this_run_at_most_usd\": 4.17690392}}\n",
+    "note": ""
+   },
+   {
+    "n": 24,
+    "kind": "runbook command",
+    "label": "3c-instance",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=port5fix2-r6 \"<STUDY6>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-005.json\" --pilot \"$HOME/physim2-rollouts\" --stage instance --disk-floor-gib 1.2",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "--disk-floor-gib 8",
+      "--disk-floor-gib 1.2"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:42:05",
+    "seconds": 15.8,
+    "exit": 0,
+    "output": "{\"stage\": \"instance\", \"job_id\": \"qwen-ring-005\", \"instance\": \"pilot-qwen-ring-005\", \"made\": true}\n",
+    "note": ""
+   },
+   {
+    "n": 25,
+    "kind": "runbook command",
+    "label": "2-quiet",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker ps --format '{{.Names}} {{.Image}}' && echo \"RUNNING-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:42:26",
+    "seconds": 0.03,
+    "exit": 0,
+    "output": "RUNNING-LISTED\n",
+    "note": ""
+   },
+   {
+    "n": 26,
+    "kind": "runbook command",
+    "label": "3d-reference",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=port5fix2-r6 nohup \"<STUDY6>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-005.json\" --pilot \"$HOME/physim2-rollouts\" --stage reference --disk-floor-gib 1.2 > \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/reference.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/reference.log\" ) > /dev/null 2>&1 < /dev/null & }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "--disk-floor-gib 8",
+      "--disk-floor-gib 1.2"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:42:26",
+    "seconds": 0.06,
+    "exit": 0,
+    "output": "29.9.2\n",
+    "note": ""
+   },
+   {
+    "n": 27,
+    "kind": "runbook command",
+    "label": "3-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/reference.log\" \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=port5fix2-r6 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"<STUDY6>\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:43:11",
+    "seconds": 0.05,
+    "exit": 0,
+    "output": "==> /tmp/cla\ncontainers:\nvf-269d5a8e841c45379909ed49027aef4c Up 4 seconds\nprocesses:\nTOOL  8767 <STUDY6>/.venv/bin\nVF-EVAL  8844 <STUDY6>/.venv/bin\nfree:\n2 GiB\nstatus done\n",
+    "note": ""
+   },
+   {
+    "n": 28,
+    "kind": "runbook command",
+    "label": "3-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/reference.log\" \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=port5fix2-r6 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"<STUDY6>\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:52:26",
+    "seconds": 0.05,
+    "exit": 0,
+    "output": "==> /tmp/cla\nEXIT 0\ncontainers:\nprocesses:\nfree:\n2 GiB\nstatus done\n",
+    "note": ""
+   },
+   {
+    "n": 29,
+    "kind": "runbook command",
+    "label": "3e-dry-run",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=port5fix2-r6 \"<STUDY6>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-005.json\" --pilot \"$HOME/physim2-rollouts\" --stage dry-run --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --disk-floor-gib 1.2",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "--disk-floor-gib 8",
+      "--disk-floor-gib 1.2"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:52:26",
+    "seconds": 8.88,
+    "exit": 0,
+    "output": "{\"job_id\": \"qwen-ring-005\", \"model\": \"qwen/qwen3.6-35b-a3b\", \"prices_usd_per_mtok\": {\"input\": 0.11, \"output\": 1.01, \"cache_read\": 0.099, \"cache_write\": null, \"input_counted\": 0.11, \"context_window\": 262144, \"max_output_tokens\": 65536}, \"one_worst_case_call_usd\": 0.019274, \"cap_usd\": 0.5, \"bound_on_the_bill_usd\": 0.519274, \"crude_bound_without_the_spend_stop_usd\": 1.48, \"ledger_sum_usd\": 0.0, \"spent_elsewhere_usd\": 3.65763, \"shared_ledger\": {\"updated_utc\": \"2026-11-12T00:46:56Z\", \"rows\": 9, \"sha256\": \"5bc9e448d0f0dee062e746bb0f7b3cf6b6775ed2df114bbfcabeb1bf3e8da1c6\"}, \"ceiling_usd\": 5.0, \"billed\": true}\n01:52:34    INFO wrote config to <HOME6>/physim2-rollouts/rollouts/qwen-ring-005/dry-run/qwen-ring-005-dry/configs/resolved/eval.json\n",
+    "note": ""
+   },
+   {
+    "n": 30,
+    "kind": "runbook command",
+    "label": "2-quiet",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker ps --format '{{.Names}} {{.Image}}' && echo \"RUNNING-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:52:35",
+    "seconds": 0.03,
+    "exit": 0,
+    "output": "RUNNING-LISTED\n",
+    "note": ""
+   },
+   {
+    "n": 31,
+    "kind": "runbook command",
+    "label": "3-paid",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f \"$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json\" && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=port5fix2-r6 nohup \"<STUDY6>/.venv/bin/python\" -B tools/vfrun.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-005.json\" --pilot \"$HOME/physim2-rollouts\" --stage rollout --shared-ledger \"$HOME/physim2-rollouts/shared-ledger.json\" --disk-floor-gib 1.2 --model-credentials prime > \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/rollout.log\" 2>&1 < /dev/null ; echo \"EXIT $?\" >> \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/rollout.log\" ) > /dev/null 2>&1 < /dev/null & }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "--disk-floor-gib 8",
+      "--disk-floor-gib 1.2"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "PRIME_API_KEY",
+     "PRIME_TEAM_ID",
+     "USER"
+    ],
+    "session_environment_added": {
+     "PRIME_API_KEY": "<the value of this machine; not recorded>",
+     "PRIME_TEAM_ID": "<the value of this machine; not recorded>"
+    },
+    "started_utc": "01:52:41",
+    "seconds": 0.05,
+    "exit": 0,
+    "output": "29.9.2\n",
+    "note": "bound_on_the_bill_usd 0.519274 (at most 50, the runner's limit; at most 1.50, this pass's brief); the standing go of the rehearsal (ceiling 5; spent elsewhere 3.6576)"
+   },
+   {
+    "n": 32,
+    "kind": "runbook command",
+    "label": "3-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/reference.log\" \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=port5fix2-r6 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"<STUDY6>\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:53:47",
+    "seconds": 0.04,
+    "exit": 0,
+    "output": "==> /tmp/cla\nEXIT 0\n\n==> /tmp/cla\n01:53:09    \ncontainers:\nvf-c652ef08f2004f57b715e2cab25e6c90 Up 55 seconds\nprocesses:\nTOOL 12338 <STUDY6>/.venv/bin\nVF-EVAL 12379 <STUDY6>/.venv/bin\nLAB 13005 <STUDY6>/.venv/bin\nfree:\n2 GiB\nstatus done\n",
+    "note": ""
+   },
+   {
+    "n": 33,
+    "kind": "runbook command",
+    "label": "3-status",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/reference.log\" \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/rollout.log\" 2>/dev/null | cut -c 1-12 ; echo \"containers:\" ; docker ps -a --filter label=verifiers.run=port5fix2-r6 --format '{{.Names}} {{.Status}}' ; echo \"processes:\" ; ps axww -o pid= -o command= | awk -v p=\"<STUDY6>\" 'BEGIN { py = p \"/.venv/bin/python \" } { line = $0 ; sub(/^ *[0-9]+ /, \"\", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = \"OTHER\" ; if (index(r, \"-B tools/prove.py \") == 1 || index(r, \"-B tools/check_probe.py \") == 1 || index(r, \"-B tools/vfrun.py \") == 1) k = \"TOOL\" ; else if (index(r, \"-B \" p \"/tools/vfeval.py @ \") == 1) k = \"VF-EVAL\" ; else if (index(r, \"-m physim2_env.lab_tools\") == 1) k = \"LAB\" ; else if (index(r, \"-B \" p \"/tools/make_instances.py \") == 1 || index(r, \"-B tools/make_instances.py \") == 1 || index(r, \"-B \" p \"/tools/build_reference.py \") == 1) k = \"HELPER\" ; else if (index(r, \"-c\") == 1) k = \"PROBE\" ; print k \" \" substr($0, 1, 160) }' ; echo \"free:\" ; df -Pk \"$HOME\" | awk 'NR == 2 { print int($4 / 1048576) \" GiB\" }' ; echo \"status done\" ; }",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:59:38",
+    "seconds": 0.04,
+    "exit": 0,
+    "output": "==> /tmp/cla\nEXIT 0\n\n==> /tmp/cla\nEXIT 0\ncontainers:\nprocesses:\nfree:\n2 GiB\nstatus done\n",
+    "note": ""
+   },
+   {
+    "n": 34,
+    "kind": "runbook command",
+    "label": "3g-report",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B tools/run_report.py --store \"$HOME/physim2-rollouts/store\" --run-dir \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/out/qwen-ring-005\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "01:59:38",
+    "seconds": 0.06,
+    "exit": 0,
+    "output": "{\n \"traces_file\": true,\n \"episodes\": 1,\n \"rollouts\": [\n  {\n   \"instance_id\": \"pilot-qwen-ring-005\",\n   \"1_ok\": true,\n   \"1_reward_present\": true,\n   \"1_reward_skill_vs_O\": 0.006254084976798876,\n   \"1_trace_errors\": [],\n   \"1_episode_errors\": [],\n   \"2_network_restricted\": true,\n   \"2_verifier_box_network_restricted\": true,\n   \"2_single_use\": true,\n   \"2_item_isolation\": \"box\",\n   \"3_lab\": {\n    \"ticks_used\": 400,\n    \"resets\": 12,\n    \"requests\": 21,\n    \"rejected\": 3,\n    \"validations\": 0,\n    \"submissions\": 0,\n    \"infrastructure_errors\": 0\n   },\n   \"3_lab_submitted\": false,\n   \"3_tool_calls_by_name\": {\n    \"bash\": 40\n   },\n   \"4_submission_source\": \"final_collection\",\n   \"4_submission_ok\": true,\n   \"4_submission_files\": 5,\n   \"4_submission_bytes\": 2738032,\n   \"4_submission_sha256\": \"8e7d68bd23691f68f9ef29e32f968cc2a1438625f3b008cdec7f04bf02e3afda\",\n   \"4_submission_error\": null,\n   \"4_stop_condition\": \"max_turns\",\n   \"4_trace_stop_condition\": \"max_turns\",\n   \"4_ended\": \"turn limit\",\n   \"4_checkpoints\": {\n    \"taken\": 11,\n    \"unchanged\": 42,\n    \"failed\": 0\n   },\n   \"4_capture_submission\": {\n    \"n_files\": 5,\n    \"bytes\": 2738032,\n    \"n_skipped\": 0,\n    \"complete\": true\n   },\n   \"4_capture_workspace\": {\n    \"n_files\": 9,\n    \"bytes\": 72512,\n    \"n_skipped\": 0,\n    \"complete\": true,\n    \"listed\": 45\n   },\n   \"5_validation_ok\": false,\n   \"5_n_items\": 64,\n   \"5_n_failed\": 64,\n   \"5_layers\": {\n    \"rlimits\": true,\n    \"uid\": 38859,\n    \"cleanup\": true\n   },\n   \"5_isolation\": \"box\",\n   \"5_item_boxes\": null,\n   \"5_item_box_wall_s_mean\": null,\n   \"5_infrastructure_failed_items\": null,\n   \"5_skill_vs_O\": 0.006254084976798876,\n   \"5_reason\": \"validation failed: raised\",\n   \"5_grading_error\": null,\n   \"5_fallback\": {\n    \"policy\": \"null\",\n    \"n_items\": 64,\n    \"by_reason\": {\n     \"validation failed: raised\": 64\n    },\n    \"baseline_pool_sha256\": \"7a5e0926646b908e8e1eefb9b74b8b224134383e0b7d26740e8fcc937f4f323c\"\n   },\n   \"5_not_a_grade\": null,\n   \"5_recovery_error\": null,\n   \"5_marked_not_an_exam\": false,\n   \"5_between_item_state_marked\": false,\n   \"5_predictor_uid\": 38859,\n   \"5_container_evidence_count\": 2,\n   \"6_task_row_keys\": [\n    \"artifact_max_bytes\",\n    \"artifacts\",\n    \"config_name\",\n    \"id\",\n    \"idx\",\n    \"image\",\n    \"instance_id\",\n    \"name\",\n    \"network_allow\",\n    \"network_block\",\n    \"prompt\",\n    \"resources\",\n    \"secret_commitment\",\n    \"skills\",\n    \"timeout\",\n    \"workdir\",\n    \"world\"\n   ],\n   \"6_commitment_is_64_hex\": true,\n   \"7_num_input_tokens\": 16528,\n   \"7_num_output_tokens\": 18080,\n   \"7_wall_s\": {\n    \"boot\": 0.7195000648498535,\n    \"setup\": 17.439486265182495,\n    \"agent\": 367.08539628982544,\n    \"finalize\": 0.7036604881286621\n   },\n   \"7_verifier_wall_s\": 8.753360986709595,\n   \"7_num_turns\": 40,\n   \"8_limits\": {\n    \"max_turns\": 40,\n    \"wall_minutes\": 15.0,\n    \"max_output_tokens_per_turn\": 8192,\n    \"max_context_tokens\": 100000,\n    \"cap_usd\": 0.5,\n    \"cpus\": 2.0,\n    \"memory_gib\": 4.0,\n    \"pids\": 512,\n    \"workspace_mib\": 1024.0,\n    \"tmp_mib\": 512.0,\n    \"read_only_root\": true,\n    \"measured\": true\n   },\n   \"8_statement_sha256\": \"2454cd24e1a268d939514fc0aa1b814eb1dc43a18c89400d449044bf8db7aeb1\",\n   \"8_reasoning\": {\n    \"requested_effort\": null,\n    \"requested_summary\": null,\n    \"sent_effort\": null,\n    \"sent_summary\": null,\n    \"model_calls\": 40,\n    \"replies\": 40,\n    \"replies_with_readable_reasoning\": 0,\n    \"replies_with_encrypted_reasoning_only\": 0,\n    \"replies_without_reasoning\": 40,\n    \"calls_with_reasoning_tokens\": 0,\n    \"reasoning_tokens\": null,\n    \"reasoning_tokens_reported\": false,\n    \"reasoning_on\": false\n   },\n   \"6_hidden_values_in_the_run_folder\": {\n    \"files_scanned\": 4,\n    \"needles\": 4,\n    \"hits\": {\n     \"secret\": 0,\n     \"hidden_parameter_1\": 0,\n     \"hidden_parameter_2\": 0,\n     \"hidden_parameter_3\": 0\n    },\n    \"total_hits\": 0\n   }\n  }\n ]\n}\n",
+    "note": ""
+   },
+   {
+    "n": 35,
+    "kind": "runbook command",
+    "label": "3g-settle",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B tools/settle.py --store \"$HOME/physim2-rollouts/store\" --run-dir \"$HOME/physim2-rollouts/rollouts/qwen-ring-005/out/qwen-ring-005\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "02:00:01",
+    "seconds": 0.07,
+    "exit": 0,
+    "output": "{\"trace_id\": \"a0dd43c54a9f4dee90a0b6c78ff25727\", \"instance_id\": \"pilot-qwen-ring-005\", \"graded\": true, \"reward\": 0.006254084976798876, \"errors\": [], \"settled_as_null\": false}\n",
+    "note": ""
+   },
+   {
+    "n": 36,
+    "kind": "runbook command",
+    "label": "3h-pack",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && \"<STUDY6>/.venv/bin/python\" -B tools/pack_rollout.py --request \"$HOME/physim2-rollouts/requests/qwen-ring-005.json\" --pilot \"$HOME/physim2-rollouts\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "JOB_ID",
+      "qwen-ring-005"
+     ]
+    ],
+    "session_environment": [
+     "HF_TOKEN",
+     "HOME",
+     "LANG",
+     "PATH",
+     "PRIME_API_KEY",
+     "PRIME_TEAM_ID",
+     "USER",
+     "WANDB_API_KEY"
+    ],
+    "session_environment_added": {
+     "PRIME_API_KEY": "<the value of this machine; not recorded>",
+     "PRIME_TEAM_ID": "<the value of this machine; not recorded>",
+     "HF_TOKEN": "<the value of this machine; not recorded>",
+     "WANDB_API_KEY": "<the value of this machine; not recorded>"
+    },
+    "started_utc": "02:00:01",
+    "seconds": 0.78,
+    "exit": 0,
+    "output": "{\"files\": 20, \"total_bytes\": 3146467, \"left_out\": [], \"missing\": [], \"key_scan\": \"clean\", \"complete\": true}\n",
+    "note": ""
+   },
+   {
+    "n": 37,
+    "kind": "runbook command",
+    "label": "0a-commit",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && git rev-parse HEAD && pwd -P | command grep -Fx \"<STUDY6>\" && git --no-optional-locks status --porcelain --ignored -- . ../../round5/agentenv ../../../vw1 && echo \"TREE-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "02:00:04",
+    "seconds": 0.06,
+    "exit": 0,
+    "output": "19b6beb836874f9f938c51367849e2442bd6af4e\n<STUDY6>\n!! research/alife/vecworld/program/round6/vfport/.venv/\nTREE-LISTED\n",
+    "note": "step 0 again at the same commit, after steps 1 and 3"
+   },
+   {
+    "n": 38,
+    "kind": "runbook command",
+    "label": "0b-pin",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && shasum -a 256 PIN.sha256 && shasum -a 256 -c PIN.sha256 > /dev/null && echo PIN-OK",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "02:00:04",
+    "seconds": 0.05,
+    "exit": 0,
+    "output": "41da66d69750ce7829112f30c4c22417b0e19df38c34448818dbfac4670f78c8  PIN.sha256\nPIN-OK\n",
+    "note": "step 0 again at the same commit, after steps 1 and 3"
+   },
+   {
+    "n": 39,
+    "kind": "runbook command",
+    "label": "0d-docker-and-folders",
+    "issued_as": "sh -c '<text>', started in /, no terminal",
+    "text": "cd \"<STUDY6>\" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && docker ps -a --filter label=verifiers.run=port5fix2-r6 --format '{{.Names}}' && echo \"CONTAINERS-LISTED\" && docker images -q physim2-ring:4 && echo \"IMAGES-LISTED\" && test ! -e \"$HOME/physim2-pilot-r6\" && test ! -L \"$HOME/physim2-pilot-r6\" && test ! -e \"$HOME/physim2-pilot-r6-results\" && test ! -L \"$HOME/physim2-pilot-r6-results\" && test ! -e .venv && test ! -L .venv && echo \"NO-PILOT-FOLDERS\" && echo \"EARLIER PINS, HARMLESS:\" && docker images --format '{{.Repository}}:{{.Tag}}' physim2-ring:3 && docker images --format '{{.Repository}}:{{.Tag}}' physim2-ring:2 && { ls -d \"$HOME/physim2-pilot-r5\" \"$HOME/physim2-pilot-r5-results\" \"$HOME/physim2-pilot-20261110\" \"$HOME/physim2-pilot-20261110-results\" 2>/dev/null ; true ; } && echo \"EARLIER-LISTED\"",
+    "substitutions": [
+     [
+      "/ABSOLUTE/PATH/TO/vfport",
+      "<STUDY6>"
+     ],
+     [
+      "physim2-pilot-r6 (as a run label, 1 time(s); never as a folder name under $HOME)",
+      "port5fix2-r6"
+     ]
+    ],
+    "session_environment": [
+     "HOME",
+     "LANG",
+     "PATH",
+     "USER"
+    ],
+    "session_environment_added": {},
+    "started_utc": "02:00:04",
+    "seconds": 0.11,
+    "exit": 1,
+    "output": "29.9.2\nCONTAINERS-LISTED\n8080830e3492\nIMAGES-LISTED\n",
+    "note": "step 0 again at the same commit, after steps 1 and 3"
+   }
+  ],
+  "paths": {
+   "<STUDY6>": "the clone's study folder",
+   "<HOME6>": "the rehearsal's HOME",
+   "<R6>": "the rehearsal's scratch",
+   "<S6>": "the fixer's scratch"
+  },
+  "model_job": {
+   "job_id": "qwen-ring-005",
+   "request": "rehearsal/round5_jobs/qwen-ring-005.json",
+   "source_commit": "664d68c6cb6a018d35cb68665d5b06e0ea07c190",
+   "model": "qwen/qwen3.6-35b-a3b",
+   "caps": {
+    "max_turns": 40,
+    "wall_minutes": 15,
+    "max_output_tokens_per_turn": 8192,
+    "max_context_tokens": 100000,
+    "cap_usd": 0.5
+   },
+   "bound_on_the_bill_usd": 0.51927392,
+   "counted_usd": 0.09780129,
+   "calls": 40,
+   "refused": 0,
+   "stop_condition": "max_turns",
+   "agent_wall_s": 367.1,
+   "skill_vs_O": 0.0063,
+   "n_failed_items": 64,
+   "why_the_items_failed": "validation failed: raised (the grader's first call on public example 0 raised in the agent's own predictor: ValueError from jax.vmap on a scalar); every item was scored with the null policy's forecast",
+   "infrastructure_failed_items": 0,
+   "reference_vs_O": {
+    "C": 0.929,
+    "S": 0.926,
+    "PM": 0.92,
+    "P0": 0.897,
+    "D": 0.296,
+    "null": 0.006
+   },
+   "instance_sigma": 0.035,
+   "instance_rho": 0.896,
+   "instance_inside_the_program_bars": false,
+   "box_log_driver_read_by_hand_during_the_run": {
+    "LogConfig": {
+     "Type": "none",
+     "Config": {}
+    },
+    "LogPath": "",
+    "docker_logs": "Error response from daemon: configured logging driver does not support reading"
+   },
+   "lab_usage_context_tokens_used": [
+    11918,
+    12669,
+    13410,
+    16671
+   ],
+   "the_same_turns_by_prompt_tokens_alone_as_in_the_first_pass": [
+    1258,
+    177,
+    12962,
+    304
+   ],
+   "x21_reading": "each reading equals prompt_tokens + cached_input_tokens + completion_tokens of the last finished call (calls 9, 11, 12, 15)",
+   "x20_reading": "the run ended at the turn limit; no reply ended it without a tool call; the statement the agent got holds the new lines (transcript.md)",
+   "tokens": {
+    "prompt": 788804,
+    "cache_reads": 706653,
+    "completion": 18080,
+    "reasoning": 0
+   },
+   "published": "../../rollouts/qwen_ring_005/ (20 files, key scan clean)",
+   "ledger": "../../rollouts/LEDGER.md row 9; ledger.json; running sum $3.7554"
+  },
+  "rehearsed_commands": "0a, 0b, 0c, 0d (the earlier pins' images physim2-ring:3 and physim2-ring:2 listed between `EARLIER PINS, HARMLESS:` and `EARLIER-LISTED`), 0e (as written, refused; then floor 1.2), 1a (as written, refused; then with uv's settings), 1b, 1c and its status, 1d, 1e, 1g, 1h, Before 2a, 3.0 folder and go, 3a (git fetch; fetch as written, refused; then through fetch4.py, in this --filter=blob:none clone over https: T27), 3b, 3c, 3d reference and its status, 3e, the paid start, 3f status, 3g report and settle, 3h pack, then 0a (exactly one line `!! research/alife/vecworld/program/round6/vfport/.venv/` between the folder and TREE-LISTED: T26), 0b, 0d again (an image id before IMAGES-LISTED; the chain stops there, as the text says)",
+  "not_rehearsed": [
+   "the image build of step 1 as written (physim2-ring:4 is a docker tag of round 4's physim2-ring:2; no file baked into the image changed)",
+   "steps 2a to 2c and step 4, and the points of 'If a run was interrupted' (their commands changed in the pilot's names only: label and folder)",
+   "anything on macOS or Docker Desktop"
+  ],
+  "deviations": [
+   "0d: an image id stood before IMAGES-LISTED (the tag physim2-ring:4 made on this machine before the rehearsal); the runbook says stop there; the earlier pins' images were listed after `EARLIER PINS, HARMLESS:` as the text says",
+   "0e and 1a: first issued as written and refused by the 8 GiB floor (this machine has about 2 GiB free); then with 1.2 GiB",
+   "3a: the second command first as written (refused: a rehearsal request is never committed under requests/), then through rehearsal/fetch4.py",
+   "the clone's environment got one .pth file setting SSL_CERT_FILE to this machine's public CA bundle (as in rounds 4 and 5); no pinned file, command or allow-list changed"
+  ],
+  "key_scan": "the fixer's own scan (a Python process that read PRIME_API_KEY, HF_TOKEN and WANDB_API_KEY from its environment and printed only file names and counts; plain and base64 / URL-safe base64 at three alignments): the publication, the job folder and the rehearsal's record, no hit; then round6/vfport and round6/rollouts before the commit, no hit"
+ }
 }
