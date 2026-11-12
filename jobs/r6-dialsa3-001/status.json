@@ -29,7 +29,7 @@
   "cap_usd": 9.6,
   "cost": {
     "billed_usd": null,
-    "conservative_usd": 0.1958
+    "conservative_usd": 0.7075
   },
   "guard_at": null,
   "guard_reason": null,
@@ -60,7 +60,7 @@
   ],
   "job_id": "r6-dialsa3-001",
   "max_estimate_usd": 9.45,
-  "message": "job started on the pod",
+  "message": "heartbeat",
   "offers_at_start": [
     {
       "cloud_id": "gpu_1x_a100_sxm4",
@@ -158,5 +158,6 @@
   "run_started_epoch": 1794457118.175149,
   "started_at": "2026-11-12T04:24:33Z",
   "state": "running",
-  "updated_at": "2026-11-12T04:24:33Z"
+  "tails": "== setup.log\ndownloading uv 0.13.7 x86_64-unknown-linux-gnu\ninstalling to /home/ubuntu/.local/bin\n  uv\n  uvx\neverything's installed!\n\nTo add $HOME/.local/bin to your PATH, either restart your shell or run:\n\n    source $HOME/.local/bin/env (sh, bash, zsh)\n    source $HOME/.local/bin/env.fish (fish)\n== run.log\nversions <ip> 2.5.4 1.18.0 [CudaDevice(id=0)]\nname, memory.total [MiB], memory.used [MiB]\nNVIDIA A100-SXM4-40GB, 40960 MiB, 0 MiB\n04:32:07 [   0.0 min] backend gpu devices ['cuda:0'] jax <ip> x64 True smoke=False max_hours=4.2\n04:32:33 [   0.4 min] truths 0-15: [[1.059, 0.116, 1.065, 1.0], [0.927, 0.092, 1.067, 1.004], [0.945, 0.092, 1.084, 1.058], [0.949, -0.118, 0.918, 1.056], [1.006, -0.035, 1.008, 1.0], [0.975, -0.107, 1.044, 0.99], [0.939, 0.056, 1.001, 1.032], [0.955, 0.029, 1.021, 1.053], [1.012, -0.057, 1.017, 0.913], [0.972, 0.061, 1.042, 1.074], [1.024, 0.039, 0.988, 1.075], [1.055, 0.014, 1.042, 0.982], [1.034, 0.035, 0.92, 1.007], [1.053, -0.095, 0.932, 1.0], [1.076, 0.106, 0.955, 0.968], [1.045, -0.039, 0.943, 1.07]] (43/48 candidates viable, 26s; least max-abs distance to dialsA2's truths and draws 0.007)\n04:32:34 [   0.4 min] == 0 zero point of the law switch\n04:32:50 [   0.7 min]   {\"B\": 64, \"backend\": \"gpu\", \"max_abs_xw0_minus_gworld\": 5.3999471560928214e-11, \"max_abs_gworld_rerun\": 6.306866140448619e-11, \"max_abs_xw4_minus_gworld\": 3.05516811115124, \"bitwise_xw0_equals_gworld\": false, \"bitwise_gworld_rerun\": false, \"level0_max\": 3.946598266701332, \"channel0_mass_lost_xw4_fraction\": 0.06079973121677407, \"total_mass_rel_change_xw4\": 2.220446049250313e-16, \"tolerance\": 1e-08, \"ok\": true}\n04:32:50 [   0.7 min] == 0 zero point of the law switch done in 17s\n04:32:50 [   0.7 min] pipeline -> /home/ubuntu/gpujob/r6-dialsa3-001/out/presmoke: 1 truths x eta [0.0, 4.0], member-ticks planned 621,024\n04:32:50 [   0.7 min] == 2 families\n04:34:46 [   2.6 min]   family pub: 192 points x 8 episodes, 115s, last chunk 1308 member-ticks/s; nats by class {'c': 200.0, 'd': 300.0}\n04:38:25 [   6.3 min]   family true: 384 points x 8 episodes, 219s, last chunk 1256 member-ticks/s; nats by class {'c': 200.0, 'd': 300.0}\n== out/progress.txt\nPILOT_NEVER_REUSE_AS_EXAM: this log is of a pilot on public pilot truths\n04:32:07 [   0.0 min] backend gpu devices ['cuda:0'] jax <ip> x64 True smoke=False max_hours=4.2\n04:32:33 [   0.4 min] truths 0-15: [[1.059, 0.116, 1.065, 1.0], [0.927, 0.092, 1.067, 1.004], [0.945, 0.092, 1.084, 1.058], [0.949, -0.118, 0.918, 1.056], [1.006, -0.035, 1.008, 1.0], [0.975, -0.107, 1.044, 0.99], [0.939, 0.056, 1.001, 1.032], [0.955, 0.029, 1.021, 1.053], [1.012, -0.057, 1.017, 0.913], [0.972, 0.061, 1.042, 1.074], [1.024, 0.039, 0.988, 1.075], [1.055, 0.014, 1.042, 0.982], [1.034, 0.035, 0.92, 1.007], [1.053, -0.095, 0.932, 1.0], [1.076, 0.106, 0.955, 0.968], [1.045, -0.039, 0.943, 1.07]] (43/48 candidates viable, 26s; least max-abs distance to dialsA2's truths and draws 0.007)\n04:32:34 [   0.4 min] == 0 zero point of the law switch\n04:32:50 [   0.7 min]   {\"B\": 64, \"backend\": \"gpu\", \"max_abs_xw0_minus_gworld\": 5.3999471560928214e-11, \"max_abs_gworld_rerun\": 6.306866140448619e-11, \"max_abs_xw4_minus_gworld\": 3.05516811115124, \"bitwise_xw0_equals_gworld\": false, \"bitwise_gworld_rerun\": false, \"level0_max\": 3.946598266701332, \"channel0_mass_lost_xw4_fraction\": 0.06079973121677407, \"total_mass_rel_change_xw4\": 2.220446049250313e-16, \"tolerance\": 1e-08, \"ok\": true}\n04:32:50 [   0.7 min] == 0 zero point of the law switch done in 17s\n04:32:50 [   0.7 min] pipeline -> /home/ubuntu/gpujob/r6-dialsa3-001/out/presmoke: 1 truths x eta [0.0, 4.0], member-ticks planned 621,024\n04:32:50 [   0.7 min] == 2 families\n04:34:46 [   2.6 min]   family pub: 192 points x 8 episodes, 115s, last chunk 1308 member-ticks/s; nats by class {'c': 200.0, 'd': 300.0}\n04:38:25 [   6.3 min]   family true: 384 points x 8 episodes, 219s, last chunk 1256 member-ticks/s; nats by class {'c': 200.0, 'd': 300.0}\n",
+  "updated_at": "2026-11-12T04:39:58Z"
 }
