@@ -20,8 +20,13 @@ Coordinator channel: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe4
 - 04:18: the runner's review: 0 blocker, 0 major, 0 minor, fine to run (results/job/review.md); notes recorded in
   DEVIATIONS entry 1 (no code change while it runs).
 
+- 04:24 job started on the pod (lambdalabs A100 40GB); 04:32 script start; truths 43/48 viable.
+- 04:46 presmoke done (13.9 min): stop rule r = -0.2115 +- 0.0236 at 6,000 steps (+0.063 at 500), threshold
+  0.067 -> go (the true-form C at eta 0 BETTER than the public-form C in the presmoke); guard: required 78.5 min,
+  everything 198.5, left 238 -> go. Full pass from 04:46, expected end about 08:05 UTC.
+
 ## Running
-- r6-dialsa3-001 (request on origin 03:56 UTC; queued 03:59; provisioning 04:18).
+- r6-dialsa3-001 full pass (background watch loop: scratch watch.sh -> watch.log).
 
 ## Next step
 - Wait on origin/gpu-jobs:jobs/r6-dialsa3-001/status.json (one background loop, 60 s); read review.md BEFORE results and
