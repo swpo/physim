@@ -61,6 +61,7 @@ ap.add_argument("--smoke", action="store_true", help="tiny shapes for a CPU test
 ap.add_argument("--cpu-ok", action="store_true", help="allow a CPU backend (tests only)")
 ap.add_argument("--no-presmoke", action="store_true")
 ap.add_argument("--ignore-stop-rule", action="store_true", help="tests only: read the stop rule but do not stop")
+ap.add_argument("--force-stop-rule", action="store_true", help="tests only: take the stop path whatever the rule reads")
 args = ap.parse_args()
 ROOT_OUT = args.out
 os.makedirs(ROOT_OUT, exist_ok=True)
@@ -88,8 +89,8 @@ SMOKE = dict(P=4, H=4, burn=2, n_theta=8, true_n=(8, 2, 6), Kc=1, chunk=8, pad_E
              ft_rates=(1e-4, 2e-5), ft_widen=1, seeds=2, post_M=2000, n_truths=2, ext_cand=6, viab_T=6, timing_runs=False)
 if args.smoke:
     FULL = SMOKE
-    PRE = dict(SMOKE, n_theta=4, true_n=(4, 1, 3), pad_E=sum(SMOKE["true_n"]) * 2 * SMOKE["Kc"], rungs=(50, 100),
-               d_doublings=0, ft_widen=0, truths=[0], timing_runs=True)
+    PRE = dict(SMOKE, pad_E=2 * sum(SMOKE["true_n"]) * 2 * SMOKE["Kc"], rungs=(50, 100), d_doublings=0, ft_widen=0,
+               truths=[0], timing_runs=True)
     NN.Cfg.EVAL_EVERY, NN.Cfg.BATCH, NN.Cfg.M_TRAIN, NN.Cfg.C, NN.Cfg.BLOCKS = 50, 8, 2, 8, 1
     NN.Cfg.N_VAL, NN.Cfg.EVAL_ROWS, NN.Cfg.EVAL_DRAWS = 16, 8, 2
     AN.FT.BATCH, AN.FT.LOCK, AN.FT.N_TH, AN.FT.N_VAL = 4, 4, 16, 16
@@ -999,8 +1000,9 @@ def stop_rule(cfg):
     last = out["by_rung"][str(cfg["rungs"][-1])]
     out["read_at_rung"] = int(cfg["rungs"][-1])
     out["r"], out["se"], out["threshold"] = last["r_trueformC_minus_publicC"], last["se"], last["threshold"]
-    out["stop"] = bool(out["r"] > out["threshold"])
+    out["stop"] = bool(out["r"] > out["threshold"]) or bool(args.force_stop_rule)
     out["ignored_for_a_test"] = bool(args.ignore_stop_rule)
+    out["forced_for_a_test"] = bool(args.force_stop_rule)
     jdump("stop_rule.json", out)
     log(f"presmoke stop rule (A3-4): r = {out['r']:+.4f} +- {out['se']:.4f} (true-form C minus public-form C at eta 0, "
         f"units of K - public-form C, rung {out['read_at_rung']}), threshold {out['threshold']:.4f} -> "
