@@ -1,0 +1,20 @@
+{
+  "archive_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "files": [],
+  "git_limits": {
+    "file_max_mb": 20,
+    "max_files": 2000,
+    "max_mb": 50.0
+  },
+  "note": "Files with in_git=false are kept on the runner Mac under ~/Library/Application Support/gpujobs/state/jobs/r6-dialsa3-001/collected/; ask for them by path. A file whose name differs from another's only by case or Unicode normalization (one file on the Mac) is kept under collected/<stored_as> instead.",
+  "skipped": [
+    {
+      "path": null,
+      "reason": "archive read stopped: empty file"
+    }
+  ],
+  "skipped_count": 1,
+  "transfer_bytes": 0,
+  "transfer_stopped": null,
+  "truncated": false
+}
