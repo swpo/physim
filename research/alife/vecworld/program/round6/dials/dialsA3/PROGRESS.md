@@ -25,8 +25,11 @@ Coordinator channel: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe4
   0.067 -> go (the true-form C at eta 0 BETTER than the public-form C in the presmoke); guard: required 78.5 min,
   everything 198.5, left 238 -> go. Full pass from 04:46, expected end about 08:05 UTC.
 
+- Full pass: families done 05:05 (true-form 1,536 x 8 in 802 s), worlds 05:28; base nets 24,000, 48,000 and 96,000
+  unmet by the rule; 192,000 rung from 06:09 (as dialsA2).
+
 ## Running
-- r6-dialsa3-001 full pass (background watch loop: scratch watch.sh -> watch.log).
+- r6-dialsa3-001 full pass (background watch loop: scratch watch.sh -> watch.log); expected end about 08:05 UTC.
 
 ## Next step
 - Wait on origin/gpu-jobs:jobs/r6-dialsa3-001/status.json (one background loop, 60 s); read review.md BEFORE results and
