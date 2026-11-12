@@ -34,9 +34,12 @@ Coordinator channel: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe4
 - ~07:50 pod unreachable; 07:59 infra_error, no file collected, billed $7.14 (DEVIATIONS entries 2, 3). No second job
   (remaining $2.86 cannot fit the declared required stages, about 2.9 h).
 
+- 08:03-08:15: summarize_tails.py -> results/summary.json and results/job/ (status.json, manifest.json,
+  heartbeat_commits.txt, progress_from_heartbeats.txt); README.md. Verdict UNDECIDED (A3-11 row 2).
+
 ## Running
-- nothing.
+- nothing. No job is queued or running for this study; $7.14 billed of the $10.
 
 ## Next step
-- summarize_tails.py: parse the 19 heartbeat versions of status.json (scratch tails/) into results/job/
-  progress_from_heartbeats.txt and results/summary.json; README.md; final report; remove the worktree.
+- None for this study: the verdict is undecided and goes to the lead (README "Next step": a like-for-like zero point,
+  about $7-7.5 with a new cap, or rollouts on the profile as an undecided design).
