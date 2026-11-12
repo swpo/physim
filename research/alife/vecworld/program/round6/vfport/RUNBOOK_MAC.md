@@ -18,7 +18,7 @@ stay a hold); until then a session that reads this file stops here (rule A.1) an
 40-character hash in the coordinator's GO message. The lead checks it out (section C) and gives it to the
 session, and the first line that step 0 prints must equal it. The code is identified by the sha256 of
 `PIN.sha256`, the list of the sha256 of every file the pilot executes or imports; step 0 recomputes both.
-sha256 of `PIN.sha256`: `7b8a4292c006b463326e09d6e0faed133a049bc712729b950f36bcf8cd90c6c2`
+sha256 of `PIN.sha256`: `025a9da6e724f5f907b05497603ced013a78c531ded70affd82b0c8f1d004eed`
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, the session and the disk, (1) install, (2) run the scripted,
@@ -197,7 +197,7 @@ what a box stores, not what it sends. Every way out of a box into a process on t
 | a request to the laboratory | at most 4 MiB per request, counted as it arrives, and at most 8 requests at once [`physim2_env/bearer.py`] | `413` (too large), `503` (busy); nothing of it reaches the laboratory's code |
 | the box's proxy in vf-eval | at most 64 connections of a box at once, and at most 320 KiB waiting per connection [`physim2_env/runtime.py`] | further connections are closed unread; a sender is slowed, not buffered |
 | verifiers' interception server in vf-eval (the box's way to the model; the per-rollout secret it asks for is on the command line of the chat program in the box, so the model can read it) (round 5, K9) | at most 16 MiB per request body (`INTERCEPTION_BODY_MAX`, set by name before the server starts; verifiers' own default is 1 GiB) [`physim2_env/runtime.py`, `install`; vf:interception/server.py:78, 424, 586-591]; the box's proxy lets ONE request of a box at a time through to it and holds the others before anything of them is forwarded (`CALLBACK_ACTIVE_MAX`), and cuts a body after 17 MiB (`CALLBACK_UPLOAD_MAX`) | `413` after 16 MiB; a further request waits; the connection is closed after 17 MiB |
-| vf-eval's log and the laboratory's log (round 5, channel sweep) | a kind of log record that a box can cause once per request (an unauthorized request, a failed one) is written 20 times in full, then once a minute with the count dropped, each cut at 2,000 characters [`physim2_env/runtime.py`, `RepeatLimit`, also in the laboratory's process]; the laboratory's request log on the Mac holds at most 20,000 lines, each text in it cut at 500 characters [`physim2_env/lab_tools.py`, `BoundedLog`] | nothing (the requests are still answered) |
+| vf-eval's log and the laboratory's log (round 5, channel sweep) | a kind of log record that a box can cause once per request (an unauthorized request, a failed one) is written 20 times in full, then once a minute with the count dropped, each cut at 2,000 characters [`physim2_env/runtime.py`, `RepeatLimit`, also in the laboratory's process]; the laboratory's request log on the Mac holds at most 20,000 lines, each text in a line cut at 500 characters [`physim2_env/lab_tools.py`, `BoundedLog`] | nothing (the requests are still answered) |
 
 So what a box can make vf-eval hold is bounded, whatever it sends. The largest single term is the interception
 server: a body is read whole (at most 16 MiB) and then parsed into Python objects, which can take up to about 25

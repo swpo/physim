@@ -1,0 +1,18 @@
+# qwen-ring-004: rehearsal of the round-5 pin in the cloud container (fixer, round 5): ONE rollout of the default
+# model on the ring profile, through the request route of RUNBOOK_MAC.md step 3, to see the agent meet the new
+# disclosures (one command holds you until it returns, up to the harness's 3,600 s; how a tool result is cut; the
+# context bound) and to show that the round-5 bounds (16 MiB per request to the interception server, one request
+# of a box at a time, bounded logs) leave an ordinary model run as it was. 60 turns, 18 minutes, $1.00.
+# PILOT_NEVER_REUSE_AS_EXAM: the instance is public pilot material.
+schema = "physim2-rollout/v1"
+model = "qwen/qwen3.6-35b-a3b"
+exam_profile = "ring"
+instance = "pilot-qwen-ring-004"
+max_turns = 60
+max_output_tokens_per_turn = 8192
+max_context_tokens = 100000
+wall_minutes = 18
+box_memory_gb = 4
+cap_usd = 1.0
+reasoning_effort = "default"
+push = false

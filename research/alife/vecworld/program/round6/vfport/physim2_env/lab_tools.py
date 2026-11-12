@@ -38,7 +38,8 @@ MAX_REQUEST_VALUES = 4096 * 512                              # one block of inpu
 # on the host, a request the agent can repeat without cost (card, usage, a refused one) included, and the line held
 # the refusal's text, which can repeat what the box sent (an operation's name, an argument's name). BoundedLog keeps
 # at most LAB_LOG_MAX_LINES lines (then one line `log_full`; requests are still served and counted in the state)
-# and cuts `error` and `detail` at LAB_LOG_TEXT_MAX characters: the file stays under about 20 MB.
+# and cuts every text of a line (`op`, `error`, `detail`) at LAB_LOG_TEXT_MAX characters: the file stays under about
+# 30 MB.
 LAB_LOG_MAX_LINES = 20_000
 LAB_LOG_TEXT_MAX = 500
 
@@ -60,8 +61,7 @@ class BoundedLog:
             return 0
         try:
             rec = json.loads(line)
-            for k in ("error", "detail"):
-                v = rec.get(k)
+            for k, v in list(rec.items()):                   # every text of the line: `op` too can be the box's
                 if isinstance(v, str) and len(v) > self.text_max:
                     rec[k] = v[:self.text_max] + f" [... cut at {self.text_max} characters]"
             line = json.dumps(rec) + "\n"

@@ -607,10 +607,17 @@ FLAT5 = FLAT.replace("cap_usd = 0.13", "cap_usd = 1.0").replace("wall_minutes = 
 def run_flood5(scratch, tag, floor, log):
     import check_config as CC
     import check_request as CR
-    from physim2_env import lab_tools as LT
+    import ast
+    import types
+    if ROOT not in sys.path:
+        sys.path.insert(0, ROOT)
     from physim2_env import runtime as RT
+    lt_src = ast.parse(open(os.path.join(ROOT, "physim2_env", "lab_tools.py")).read())   # its constant, without importing verifiers here
+    LT = types.SimpleNamespace(LAB_LOG_MAX_LINES=next(n.value.value for n in lt_src.body if isinstance(n, ast.Assign)
+                                                     and getattr(n.targets[0], "id", None) == "LAB_LOG_MAX_LINES"))
     pilot = os.path.join(scratch, f"pilot5-{tag}")
-    os.makedirs(os.path.join(pilot, "configs"), 0o700)
+    os.mkdir(pilot, 0o700)
+    os.mkdir(os.path.join(pilot, "configs"), 0o700)
     instance, job = f"pilot-f5-{tag}-w0", f"f5-{tag}"
     cfg = CC.REPO_PREFIX + "standin.toml"
     script = os.path.join(pilot, "steps.json")
@@ -676,9 +683,13 @@ def run_flood5(scratch, tag, floor, log):
         og = rep.get("one_gib") or {}
         dec, chk = og.get("declared") or {}, og.get("chunked") or {}
         lim = RT.INTERCEPTION_BODY_MAX + (16 << 20)            # the server's limit plus what socket buffers and the relay hold
-        check(f"G3 K9: one request declaring 1 GiB and one chunked 1 GiB, with the secret: each answered 413 after at most "
-              f"{RT.INTERCEPTION_BODY_MAX >> 20} MiB (+ buffers) of its body",
-              all(str(x.get("status", "")).startswith("HTTP/1.1 413") and x.get("body_bytes_sent", 1 << 40) <= lim for x in (dec, chk)), og)
+        # the server answers 413 after its limit and closes; through the box's proxy the box may see that answer or only
+        # the closed connection (the proxy was still forwarding the body): either way it could send no more than the
+        # limit plus what the socket buffers on the way hold
+        check(f"G3 K9: one request declaring 1 GiB and one chunked 1 GiB, with the secret: each refused after at most "
+              f"{RT.INTERCEPTION_BODY_MAX >> 20} MiB (+ buffers) of its body (413, or the connection closed under the sender)",
+              all((str(x.get("status", "")).startswith("HTTP/1.1 413") or "ConnectionReset" in str(x.get("status")) or x.get("status") == "closed"
+                   or "BrokenPipe" in str(x.get("status"))) and x.get("body_bytes_sent", 1 << 40) <= lim for x in (dec, chk)), og)
         par = rep.get("parallel") or {}
         answers = [a or {} for a in par.get("answers") or []]
         bp = ph.get("box_proxy") or {}

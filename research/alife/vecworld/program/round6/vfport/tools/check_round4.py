@@ -1108,10 +1108,10 @@ def test_round5(scratch: str):
     with open(path, "w") as raw:
         bl = LT.BoundedLog(raw, max_lines=100)
         for i in range(150):
-            bl.write(json.dumps({"t": i, "op": "x", "ok": False, "error": "unknown operation " + "X" * (3 << 20), "detail": "k" * 5000}) + "\n")
+            bl.write(json.dumps({"t": i, "op": "X" * (3 << 20), "ok": False, "error": "unknown operation " + "X" * (3 << 20), "detail": "k" * 5000}) + "\n")
             bl.flush()
     rows = open(path, "rb").read().splitlines()
-    ok_rows = all(len(x) < 1500 for x in rows) and json.loads(rows[0])["error"].endswith("[... cut at 500 characters]")
+    ok_rows = all(len(x) < 2048 for x in rows) and json.loads(rows[0])["error"].endswith("[... cut at 500 characters]")
     check("F8 the laboratory's log on the host: a 3 MiB operation name is cut at 500 characters; after max_lines one line `log_full` and "
           "nothing more; the service writes through it",
           len(rows) == 101 and ok_rows and json.loads(rows[-1])["event"] == "log_full" and "BoundedLog(self._log)" in inspect.getsource(LT.make_service)
@@ -1146,7 +1146,8 @@ def test_round5(scratch: str):
     check("F10 K10 the spend stop admits only the config's reasoning effort (none for `default`) and only the integer 1 for n; the meter "
           "takes the effort from the spend table vfrun writes",
           [k for k, v in cases.items() if v is None] == ["none asked, none sent", "low asked, low sent", "n=1"] and mt.reasoning_effort == "low"
-          and '"reasoning_effort": None if flat["reasoning_effort"] == "default" else flat["reasoning_effort"]' in open(os.path.join(HERE, "vfrun.py")).read(),
+          and 'spend["reasoning_effort"] = flat["reasoning_effort"]' in open(os.path.join(HERE, "vfrun.py")).read()
+          and SPEND.meter_for(SPEND.SpendConfig(**{k: v for k, v in sp.model_dump().items() if k != "reasoning_effort"}), log_path="").reasoning_effort is None,
           cases)
 
 
