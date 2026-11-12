@@ -1,0 +1,1542 @@
+{
+ "study": "round6/dials/dialsA3: the zero-point rerun of the reopened gliders exam (dialsA2)",
+ "PILOT_NEVER_REUSE_AS_EXAM": true,
+ "declared": "DECLARED.md (commit 3e9026c7b, 03:01 UTC 12 Nov 2026, before any code or request)",
+ "how_this_file_was_made": "summarize_tails.py from results/job/progress_from_heartbeats.txt (the runner's heartbeat tails in the 19 committed versions of origin/gpu-jobs:jobs/r6-dialsa3-001/status.json, results/job/heartbeat_commits.txt) and results/job/status.json; the job's output files were lost (DEVIATIONS entry 2)",
+ "job": {
+  "id": "r6-dialsa3-001",
+  "source": "r6-dialsa3-001: status.json [state], [message], [cost], [pods], [history]",
+  "state": "infra_error",
+  "message": "RuntimeError: pod unreachable over SSH for 10 minutes; collection incomplete: transfer exited 255; pods terminated",
+  "cost": {
+   "billed_usd": 7.1364,
+   "conservative_usd": 7.3267
+  },
+  "cap_usd": 9.6,
+  "ref": "37035b5c8ddf7995b06904647bb276ec7b911395",
+  "pod": {
+   "provider": "lambdalabs",
+   "gpu": "A100_40GB",
+   "data_center": "us-east-1",
+   "rate_usd_hr": 1.99,
+   "created_at": "2026-11-12T04:18:54Z",
+   "ready_at": "2026-11-12T04:24:20Z",
+   "terminated_at": "2026-11-12T07:59:33Z",
+   "billed_usd": 7.1364
+  },
+  "history": [
+   {
+    "at": "2026-11-12T03:56:55Z",
+    "message": "request received",
+    "state": "received"
+   },
+   {
+    "at": "2026-11-12T03:59:55Z",
+    "message": "accepted: A100_40GB via lambdalabs at $1.99/h, at most $9.45",
+    "state": "queued"
+   },
+   {
+    "at": "2026-11-12T04:18:38Z",
+    "message": "renting a pod",
+    "state": "provisioning"
+   },
+   {
+    "at": "2026-11-12T04:24:33Z",
+    "message": "job started on the pod",
+    "state": "running"
+   },
+   {
+    "at": "2026-11-12T07:59:54Z",
+    "message": "RuntimeError: pod unreachable over SSH for 10 minutes; collection incomplete: transfer exited 255; pods terminated",
+    "state": "infra_error"
+   }
+  ],
+  "review": "Fine to run: 0 blocker, 0 major, 0 minor. About 3.6 h and $7.2; the declared presmoke stop (exit 0 after about 17 min) is a real UNDECIDED signal, not a fault. dialsA2's three review minors are fixed.",
+  "outputs_collected": "none (manifest.json: files [], transfer 0 bytes)"
+ },
+ "presmoke": {
+  "source": "r6-dialsa3-001: status.json heartbeat tails (results/job/progress_from_heartbeats.txt) [presmoke stop rule line]",
+  "stop_rule": {
+   "r_trueformC_minus_publicC_eta0": -0.2115,
+   "se": 0.0236,
+   "read_at_rung": 6000,
+   "threshold": 0.0672,
+   "decision": "go",
+   "by_rung": {
+    "500": 0.0629,
+    "6000": -0.2115
+   },
+   "unit": "L(K) - L(public-form C), truth 0, score half, 3 seeds (DECLARED A3-4)"
+  },
+  "speed_guard": {
+   "required_min": 78.5,
+   "everything_min": 198.5,
+   "left_min": 238.1,
+   "decision": "go",
+   "estimates_seconds": {
+    "families": 1587.935,
+    "worlds": 922.58,
+    "inference": 45.759,
+    "final": 120.0,
+    "seconds_per_base_step": 0.014,
+    "seconds_per_D_group_step": 0.023,
+    "D_score_seconds_per_world": 1.251,
+    "base_24000": 373.35,
+    "base_48000": 705.77,
+    "base_96000": 1370.609,
+    "base_192000": 2700.287,
+    "N8": 1222.758,
+    "D8": 435.68,
+    "N32": 1222.758,
+    "D32": 435.68,
+    "x": 765.254
+   },
+   "source": "r6-dialsa3-001: status.json heartbeat tails (results/job/progress_from_heartbeats.txt) [speed guard line]"
+  },
+  "law_switch_zero_point": {
+   "B": 64,
+   "backend": "gpu",
+   "max_abs_xw0_minus_gworld": 5.3999471560928214e-11,
+   "max_abs_gworld_rerun": 6.306866140448619e-11,
+   "max_abs_xw4_minus_gworld": 3.05516811115124,
+   "bitwise_xw0_equals_gworld": false,
+   "bitwise_gworld_rerun": false,
+   "level0_max": 3.946598266701332,
+   "channel0_mass_lost_xw4_fraction": 0.06079973121677407,
+   "total_mass_rel_change_xw4": 2.220446049250313e-16,
+   "tolerance": 1e-08,
+   "ok": true
+  },
+  "first_look_skill_vs_O_one_truth": {
+   "source": "r6-dialsa3-001: status.json heartbeat tails (results/job/progress_from_heartbeats.txt) [presmoke 'first look final' line]",
+   "note": "presmoke sizes (192-point families, 6,000-step nets, truth 0 only); not a result",
+   "eta0": {
+    "Cpub": 0.398,
+    "Ctrue": 0.482,
+    "Ctrue_blind": 0.489,
+    "Dnet@32": 0.008,
+    "Dnet@8": -0.067,
+    "Dridge@32": 0.251,
+    "Dridge@8": 0.203,
+    "FT@32": 0.419,
+    "FT@8": 0.41,
+    "H@32": 0.477,
+    "H@8": 0.474,
+    "H_mix@32": 0.478,
+    "H_mix@8": 0.476,
+    "K": 0.0,
+    "O": 1.0,
+    "P0": 0.41,
+    "RES@32": 0.411,
+    "RES@8": 0.41,
+    "RESfix@32": 0.411,
+    "RESfix@8": 0.403,
+    "S@32": 0.397,
+    "S@8": 0.396
+   },
+   "eta4": {
+    "CFT@32": 0.503,
+    "CFT@8": 0.498,
+    "CFT_blind@32": 0.275,
+    "CFT_blind@8": 0.274,
+    "Cpub": 0.229,
+    "Ctrue": 0.504,
+    "Ctrue_blind": 0.276,
+    "Dnet@32": 0.019,
+    "Dnet@8": -0.046,
+    "Dridge@32": 0.185,
+    "Dridge@8": 0.148,
+    "FT@32": 0.286,
+    "FT@8": 0.261,
+    "H@32": 0.503,
+    "H@8": 0.502,
+    "H_mix@32": 0.503,
+    "H_mix@8": 0.502,
+    "K": 0.0,
+    "O": 1.0,
+    "P0": 0.248,
+    "RES@32": 0.383,
+    "RES@8": 0.348,
+    "RESfix@32": 0.383,
+    "RESfix@8": 0.356,
+    "S@32": 0.205,
+    "S@8": 0.211
+   }
+  }
+ },
+ "what_ran": {
+  "source": "r6-dialsa3-001: status.json heartbeat tails (results/job/progress_from_heartbeats.txt)",
+  "backend": "gpu (cuda:0), jax 0.12.0.1, x64 world, float32 nets",
+  "truths": [
+   [
+    1.059,
+    0.116,
+    1.065,
+    1.0
+   ],
+   [
+    0.927,
+    0.092,
+    1.067,
+    1.004
+   ],
+   [
+    0.945,
+    0.092,
+    1.084,
+    1.058
+   ],
+   [
+    0.949,
+    -0.118,
+    0.918,
+    1.056
+   ],
+   [
+    1.006,
+    -0.035,
+    1.008,
+    1.0
+   ],
+   [
+    0.975,
+    -0.107,
+    1.044,
+    0.99
+   ],
+   [
+    0.939,
+    0.056,
+    1.001,
+    1.032
+   ],
+   [
+    0.955,
+    0.029,
+    1.021,
+    1.053
+   ],
+   [
+    1.012,
+    -0.057,
+    1.017,
+    0.913
+   ],
+   [
+    0.972,
+    0.061,
+    1.042,
+    1.074
+   ],
+   [
+    1.024,
+    0.039,
+    0.988,
+    1.075
+   ],
+   [
+    1.055,
+    0.014,
+    1.042,
+    0.982
+   ],
+   [
+    1.034,
+    0.035,
+    0.92,
+    1.007
+   ],
+   [
+    1.053,
+    -0.095,
+    0.932,
+    1.0
+   ],
+   [
+    1.076,
+    0.106,
+    0.955,
+    0.968
+   ],
+   [
+    1.045,
+    -0.039,
+    0.943,
+    1.07
+   ]
+  ],
+  "truths_viable_of_candidates": [
+   43,
+   48
+  ],
+  "truths_min_maxabs_distance_to_dialsA2_truths_and_seed_6601_draws": 0.007,
+  "families_full_pass": {
+   "pub": {
+    "points": 768,
+    "episodes_per_point": 8,
+    "seconds": 385,
+    "member_ticks_per_s_last_chunk": 1308
+   },
+   "true": {
+    "points": 1536,
+    "episodes_per_point": 8,
+    "seconds": 802,
+    "member_ticks_per_s_last_chunk": 1256
+   }
+  },
+  "member_ticks_planned_full_pass": 3578112,
+  "stages_done": "presmoke (all stages once), families, worlds (16 truths x eta 0, 4), inference, base nets 24k-192k, N = 8 (FT, CFT, RES, S, H, H_mix, blind C), D(8)",
+  "stages_lost": "N = 32 (cut by the platform during its fine-tunes) and the eta 1 and 2 arm (never started); every output file",
+  "nets_npz_sha256": "68c8c24ca309c72bcb8031c0a3336ce96cec4d7da00b9a87fb7bf7e2a2991a14"
+ },
+ "training": {
+  "source": "r6-dialsa3-001: status.json heartbeat tails (results/job/progress_from_heartbeats.txt)",
+  "base_rungs_surviving": [
+   {
+    "steps": 96000,
+    "best_step": [
+     30000,
+     55000,
+     45500,
+     83750,
+     96000,
+     92000
+    ],
+    "best_val": [
+     0.408,
+     0.4043,
+     0.4065,
+     0.3864,
+     0.3872,
+     0.3922
+    ],
+    "rule_met": false,
+    "net_order": [
+     "P0",
+     "P1",
+     "P2",
+     "T0",
+     "T1",
+     "T2"
+    ]
+   },
+   {
+    "steps": 192000,
+    "best_step": [
+     77750,
+     59750,
+     39750,
+     190250,
+     170000,
+     178500
+    ],
+    "best_val": [
+     0.409,
+     0.4057,
+     0.4099,
+     0.3856,
+     0.3845,
+     0.3878
+    ],
+    "rule_met": false,
+    "net_order": [
+     "P0",
+     "P1",
+     "P2",
+     "T0",
+     "T1",
+     "T2"
+    ]
+   }
+  ],
+  "base_rule": "unmet at every rung that survives; 24,000 and 48,000 rungs' best-step lines fell between heartbeats, but the ladder went on to 96,000 and 192,000, so neither met the rule (R9); at 192,000 (the declared maximum) the true-form nets' best steps exceed 153,600: not converged by the rule (DEVIATIONS entry 3)",
+  "base_curve_points_surviving": [
+   {
+    "rung": 48000,
+    "step": 2000,
+    "train": 0.45,
+    "val": [
+     0.4569,
+     0.453,
+     0.4557,
+     0.4579,
+     0.4593,
+     0.4644
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 4000,
+    "train": 0.4292,
+    "val": [
+     0.4324,
+     0.4304,
+     0.4392,
+     0.4351,
+     0.435,
+     0.4418
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 6000,
+    "train": 0.4126,
+    "val": [
+     0.4244,
+     0.4255,
+     0.4282,
+     0.4264,
+     0.4272,
+     0.4313
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 8000,
+    "train": 0.4016,
+    "val": [
+     0.4192,
+     0.4178,
+     0.4234,
+     0.4172,
+     0.4189,
+     0.4262
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 10000,
+    "train": 0.395,
+    "val": [
+     0.4172,
+     0.414,
+     0.4225,
+     0.4145,
+     0.4137,
+     0.4227
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 12000,
+    "train": 0.3936,
+    "val": [
+     0.4141,
+     0.4124,
+     0.4181,
+     0.4124,
+     0.4148,
+     0.4183
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 14000,
+    "train": 0.3801,
+    "val": [
+     0.415,
+     0.4107,
+     0.4174,
+     0.4097,
+     0.4085,
+     0.4171
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 16000,
+    "train": 0.3847,
+    "val": [
+     0.4103,
+     0.4107,
+     0.4153,
+     0.4075,
+     0.4058,
+     0.4129
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 18000,
+    "train": 0.3859,
+    "val": [
+     0.4092,
+     0.4109,
+     0.4165,
+     0.4075,
+     0.4044,
+     0.4097
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 20000,
+    "train": 0.3816,
+    "val": [
+     0.4102,
+     0.4056,
+     0.4155,
+     0.4007,
+     0.4043,
+     0.4089
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 22000,
+    "train": 0.381,
+    "val": [
+     0.4109,
+     0.4085,
+     0.4131,
+     0.4007,
+     0.4035,
+     0.4072
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 24000,
+    "train": 0.3791,
+    "val": [
+     0.4085,
+     0.4093,
+     0.4127,
+     0.3997,
+     0.4011,
+     0.4069
+    ]
+   },
+   {
+    "rung": 48000,
+    "step": 26000,
+    "train": 0.3709,
+    "val": [
+     0.4087,
+     0.4076,
+     0.4126,
+     0.4003,
+     0.4001,
+     0.406
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 16000,
+    "train": 0.3875,
+    "val": [
+     0.4133,
+     0.4124,
+     0.4149,
+     0.4109,
+     0.4114,
+     0.4139
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 18000,
+    "train": 0.3819,
+    "val": [
+     0.4132,
+     0.4109,
+     0.412,
+     0.4069,
+     0.4094,
+     0.4125
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 20000,
+    "train": 0.3832,
+    "val": [
+     0.4147,
+     0.4096,
+     0.4126,
+     0.4068,
+     0.4093,
+     0.414
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 22000,
+    "train": 0.3851,
+    "val": [
+     0.413,
+     0.409,
+     0.4125,
+     0.4068,
+     0.408,
+     0.4079
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 24000,
+    "train": 0.3777,
+    "val": [
+     0.4132,
+     0.4096,
+     0.4112,
+     0.4031,
+     0.4067,
+     0.4089
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 26000,
+    "train": 0.3775,
+    "val": [
+     0.4109,
+     0.4071,
+     0.4127,
+     0.4036,
+     0.4051,
+     0.4083
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 28000,
+    "train": 0.3794,
+    "val": [
+     0.4111,
+     0.4054,
+     0.4108,
+     0.4007,
+     0.404,
+     0.4059
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 30000,
+    "train": 0.3737,
+    "val": [
+     0.408,
+     0.406,
+     0.4102,
+     0.4005,
+     0.4014,
+     0.4041
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 32000,
+    "train": 0.3693,
+    "val": [
+     0.4133,
+     0.4089,
+     0.408,
+     0.4012,
+     0.4017,
+     0.4033
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 34000,
+    "train": 0.3735,
+    "val": [
+     0.4101,
+     0.4093,
+     0.4093,
+     0.4005,
+     0.3997,
+     0.4067
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 36000,
+    "train": 0.372,
+    "val": [
+     0.4097,
+     0.4069,
+     0.4094,
+     0.3997,
+     0.4014,
+     0.4043
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 38000,
+    "train": 0.3704,
+    "val": [
+     0.41,
+     0.4071,
+     0.4087,
+     0.3979,
+     0.3992,
+     0.4034
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 40000,
+    "train": 0.3696,
+    "val": [
+     0.4111,
+     0.4062,
+     0.4069,
+     0.3965,
+     0.3987,
+     0.4013
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 42000,
+    "train": 0.3637,
+    "val": [
+     0.4106,
+     0.4058,
+     0.409,
+     0.3967,
+     0.3964,
+     0.4035
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 86000,
+    "train": 0.3444,
+    "val": [
+     0.4116,
+     0.4062,
+     0.4093,
+     0.3874,
+     0.3887,
+     0.3941
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 88000,
+    "train": 0.3492,
+    "val": [
+     0.4117,
+     0.4073,
+     0.4102,
+     0.3872,
+     0.3886,
+     0.3936
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 90000,
+    "train": 0.3446,
+    "val": [
+     0.4112,
+     0.4078,
+     0.4096,
+     0.387,
+     0.3886,
+     0.3929
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 92000,
+    "train": 0.3476,
+    "val": [
+     0.4121,
+     0.4072,
+     0.4106,
+     0.3872,
+     0.3881,
+     0.3922
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 94000,
+    "train": 0.3491,
+    "val": [
+     0.4119,
+     0.4074,
+     0.4106,
+     0.3873,
+     0.3878,
+     0.3929
+    ]
+   },
+   {
+    "rung": 96000,
+    "step": 96000,
+    "train": 0.3427,
+    "val": [
+     0.4117,
+     0.4083,
+     0.4105,
+     0.3876,
+     0.3872,
+     0.3939
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 2000,
+    "train": 0.4508,
+    "val": [
+     0.4567,
+     0.4518,
+     0.4577,
+     0.4593,
+     0.457,
+     0.4679
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 4000,
+    "train": 0.4304,
+    "val": [
+     0.4375,
+     0.4326,
+     0.4403,
+     0.4401,
+     0.4382,
+     0.4435
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 6000,
+    "train": 0.411,
+    "val": [
+     0.4292,
+     0.4233,
+     0.4322,
+     0.4306,
+     0.4291,
+     0.4335
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 8000,
+    "train": 0.4074,
+    "val": [
+     0.4251,
+     0.419,
+     0.4226,
+     0.4254,
+     0.4221,
+     0.4265
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 10000,
+    "train": 0.3962,
+    "val": [
+     0.4224,
+     0.4202,
+     0.4215,
+     0.4273,
+     0.4201,
+     0.421
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 12000,
+    "train": 0.3921,
+    "val": [
+     0.4187,
+     0.4111,
+     0.4232,
+     0.4187,
+     0.4133,
+     0.419
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 54000,
+    "train": 0.3639,
+    "val": [
+     0.4109,
+     0.4084,
+     0.4134,
+     0.4005,
+     0.3969,
+     0.4002
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 56000,
+    "train": 0.368,
+    "val": [
+     0.4108,
+     0.413,
+     0.4151,
+     0.3994,
+     0.3981,
+     0.4018
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 58000,
+    "train": 0.3603,
+    "val": [
+     0.4106,
+     0.4084,
+     0.4125,
+     0.4003,
+     0.3972,
+     0.399
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 60000,
+    "train": 0.3686,
+    "val": [
+     0.4126,
+     0.4096,
+     0.4112,
+     0.3978,
+     0.3969,
+     0.4006
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 62000,
+    "train": 0.367,
+    "val": [
+     0.4144,
+     0.4071,
+     0.4152,
+     0.3981,
+     0.3965,
+     0.4009
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 64000,
+    "train": 0.3594,
+    "val": [
+     0.4132,
+     0.4099,
+     0.4149,
+     0.3962,
+     0.3943,
+     0.3999
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 66000,
+    "train": 0.3615,
+    "val": [
+     0.4119,
+     0.4072,
+     0.4137,
+     0.3948,
+     0.3958,
+     0.398
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 68000,
+    "train": 0.3623,
+    "val": [
+     0.4113,
+     0.4103,
+     0.4149,
+     0.3948,
+     0.3954,
+     0.3979
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 70000,
+    "train": 0.3644,
+    "val": [
+     0.4123,
+     0.4093,
+     0.4133,
+     0.3944,
+     0.3958,
+     0.3963
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 72000,
+    "train": 0.3594,
+    "val": [
+     0.4167,
+     0.4103,
+     0.4142,
+     0.3956,
+     0.3935,
+     0.3981
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 74000,
+    "train": 0.3554,
+    "val": [
+     0.4133,
+     0.4092,
+     0.4156,
+     0.3975,
+     0.3933,
+     0.3958
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 76000,
+    "train": 0.3613,
+    "val": [
+     0.4144,
+     0.4104,
+     0.4145,
+     0.3937,
+     0.3934,
+     0.3952
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 78000,
+    "train": 0.3595,
+    "val": [
+     0.4109,
+     0.4073,
+     0.4156,
+     0.3932,
+     0.3925,
+     0.3969
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 80000,
+    "train": 0.358,
+    "val": [
+     0.4128,
+     0.4099,
+     0.416,
+     0.3965,
+     0.3914,
+     0.3978
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 124000,
+    "train": 0.3445,
+    "val": [
+     0.4143,
+     0.4115,
+     0.4154,
+     0.3888,
+     0.3888,
+     0.3908
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 126000,
+    "train": 0.3491,
+    "val": [
+     0.416,
+     0.4116,
+     0.4159,
+     0.3901,
+     0.39,
+     0.3908
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 128000,
+    "train": 0.3432,
+    "val": [
+     0.4147,
+     0.4107,
+     0.4154,
+     0.3886,
+     0.3885,
+     0.3913
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 130000,
+    "train": 0.3456,
+    "val": [
+     0.417,
+     0.4113,
+     0.4143,
+     0.3884,
+     0.3887,
+     0.3916
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 132000,
+    "train": 0.343,
+    "val": [
+     0.4142,
+     0.4115,
+     0.4163,
+     0.3876,
+     0.3883,
+     0.3903
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 134000,
+    "train": 0.3424,
+    "val": [
+     0.415,
+     0.4128,
+     0.4159,
+     0.3865,
+     0.3884,
+     0.3908
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 136000,
+    "train": 0.3446,
+    "val": [
+     0.4134,
+     0.4135,
+     0.4147,
+     0.3875,
+     0.3861,
+     0.391
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 138000,
+    "train": 0.3424,
+    "val": [
+     0.4157,
+     0.4118,
+     0.4144,
+     0.3884,
+     0.3874,
+     0.3897
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 140000,
+    "train": 0.3424,
+    "val": [
+     0.4163,
+     0.4119,
+     0.4149,
+     0.3894,
+     0.3873,
+     0.3905
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 142000,
+    "train": 0.3445,
+    "val": [
+     0.4145,
+     0.4145,
+     0.4139,
+     0.3863,
+     0.3894,
+     0.391
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 144000,
+    "train": 0.3449,
+    "val": [
+     0.4162,
+     0.4137,
+     0.4141,
+     0.388,
+     0.3867,
+     0.3902
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 146000,
+    "train": 0.3488,
+    "val": [
+     0.4149,
+     0.4135,
+     0.4161,
+     0.3867,
+     0.3869,
+     0.3903
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 148000,
+    "train": 0.3407,
+    "val": [
+     0.4168,
+     0.4134,
+     0.4133,
+     0.3884,
+     0.388,
+     0.3892
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 150000,
+    "train": 0.3361,
+    "val": [
+     0.4148,
+     0.4123,
+     0.4159,
+     0.3875,
+     0.3875,
+     0.3894
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 178000,
+    "train": 0.3362,
+    "val": [
+     0.4156,
+     0.4135,
+     0.416,
+     0.3868,
+     0.3859,
+     0.3887
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 180000,
+    "train": 0.3391,
+    "val": [
+     0.4163,
+     0.4143,
+     0.4159,
+     0.3865,
+     0.3854,
+     0.3889
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 182000,
+    "train": 0.3313,
+    "val": [
+     0.4156,
+     0.4139,
+     0.4157,
+     0.3864,
+     0.3855,
+     0.3887
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 184000,
+    "train": 0.3355,
+    "val": [
+     0.4152,
+     0.414,
+     0.4158,
+     0.3869,
+     0.3854,
+     0.3894
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 186000,
+    "train": 0.3354,
+    "val": [
+     0.4156,
+     0.4156,
+     0.4161,
+     0.3859,
+     0.3854,
+     0.3893
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 188000,
+    "train": 0.3369,
+    "val": [
+     0.4155,
+     0.4149,
+     0.4158,
+     0.3865,
+     0.3864,
+     0.3892
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 190000,
+    "train": 0.3322,
+    "val": [
+     0.4152,
+     0.4154,
+     0.4165,
+     0.3865,
+     0.3852,
+     0.3881
+    ]
+   },
+   {
+    "rung": 192000,
+    "step": 192000,
+    "train": 0.3356,
+    "val": [
+     0.4156,
+     0.4141,
+     0.4161,
+     0.3858,
+     0.3851,
+     0.3893
+    ]
+   }
+  ],
+  "ft_N8_line": "N=8: FT|eta0 best <ssh-target> (steps 400, rates [0.0001, 2e-05]) interior True, FT|eta4 best <ssh-target> (steps 400, rates [0.0001, 2e-05]) interior True, CFT|eta4 best <ssh-target> (steps 400, rates [0.0001, 2e-05, 4.000000000000001e-06]) interior True; 31.671891940964596 ms per lockstep step",
+  "D8": "1,200 steps, no doubling followed (the next stage was N = 32), so D(8) met the rule at 1,200"
+ },
+ "headline": {
+  "source": "r6-dialsa3-001: status.json heartbeat tails (results/job/progress_from_heartbeats.txt) ['first look after N=8' line, written by a3_stats.first_look -> a3_stats.criteria on the complete N = 8 scores of 16 truths at eta 0 and 4]",
+  "verdict": "UNDECIDED",
+  "verdict_parts": {
+   "T1": true,
+   "T2": true,
+   "T3": true,
+   "T4": true,
+   "T5": true,
+   "zero_point": false,
+   "T1_fails": false,
+   "T2_fails": false
+  },
+  "T1_sigma_G": 0.337,
+  "T2_rho_G": 0.38,
+  "T3_H_recovery": 0.992,
+  "T3_t": 18.77,
+  "zero_point": {
+   "trueformC_vs_publicC": -0.1048,
+   "Gstar_vs_S": -0.0044,
+   "H_vs_S": -0.0939,
+   "Gstar_vs_P0 (reported; dialsA2's pair)": -0.062,
+   "H_vs_P0 (reported)": -0.1515
+  },
+  "zero_point_tolerance": 0.02,
+  "zero_point_in_rule": [
+   "trueformC_vs_publicC",
+   "Gstar_vs_S",
+   "H_vs_S"
+  ],
+  "lost": "SE, one-sided 90% bounds, medians over truths, leave-one-truth-out ranges, G* and C picks, T4's and T5's numbers (their verdicts are in verdict_parts); per-item scores were not collected"
+ },
+ "skill_vs_O_N8": {
+  "source": "r6-dialsa3-001: status.json heartbeat tails (results/job/progress_from_heartbeats.txt) ['first look after N=8' line; '<ssh-target>' keys restored by sorted order]",
+  "definition": "(L(K) - L) / (L(K) - L(O)), L mean over 16 truths, 3 seeds, `score` items, 8-16 ticks",
+  "eta0": {
+   "Cpub": 0.473,
+   "Ctrue": 0.523,
+   "Ctrue_blind": 0.511,
+   "Dnet@8": -0.154,
+   "Dridge@8": 0.162,
+   "FT@8": 0.471,
+   "H@8": 0.518,
+   "H_mix@8": 0.521,
+   "K": 0.0,
+   "O": 1.0,
+   "P0": 0.446,
+   "RES@8": 0.446,
+   "RESfix@8": 0.439,
+   "S@8": 0.473
+  },
+  "eta4": {
+   "CFT@8": 0.569,
+   "CFT_blind@8": 0.294,
+   "Cpub": 0.26,
+   "Ctrue": 0.569,
+   "Ctrue_blind": 0.296,
+   "Dnet@8": -0.126,
+   "Dridge@8": 0.108,
+   "FT@8": 0.3,
+   "H@8": 0.567,
+   "H_mix@8": 0.567,
+   "K": 0.0,
+   "O": 1.0,
+   "P0": 0.26,
+   "RES@8": 0.378,
+   "RESfix@8": 0.381,
+   "S@8": 0.224
+  }
+ },
+ "derived_from_skills": {
+  "note": "derived here from 3-decimal skills; a ratio of skill differences equals the ratio of mean-L differences; C at eta 4 taken as the better of Ctrue and CFT@8 (the job picks per truth and seed on `sel`); reported, never criteria",
+  "eta0_in_units_of_K_minus_publicC": {
+   "Ctrue": -0.106,
+   "P0": 0.057,
+   "S@8": 0.0,
+   "FT@8": 0.004,
+   "RES@8": 0.057,
+   "Dnet@8": 1.326,
+   "Dridge@8": 0.658,
+   "H@8": -0.095,
+   "H_mix@8": -0.101,
+   "Ctrue_blind": -0.08
+  },
+  "eta0_note": "each value is L(policy) - L(public-form C) over L(K) - L(public-form C); negative = better than the public-form C",
+  "eta4_s_P0_to_C_share_of_K_to_C": 0.543,
+  "eta4_recovery_of_P0_to_C": {
+   "H@8": 0.994,
+   "H_mix@8": 0.994,
+   "RES@8": 0.382,
+   "RESfix@8": 0.392,
+   "FT@8": 0.129,
+   "S@8": -0.117,
+   "Cpub": 0.0,
+   "Dnet@8": -1.249,
+   "Dridge@8": -0.492
+  },
+  "eta4_T4_blind_loss_share_approx": 0.483,
+  "eta4_L_publicC_minus_L_trueform_net_in_K_minus_C": 0.543,
+  "eta0_skill_gap_trueform_minus_publicC_carried_to_eta4_reading": {
+   "note": "a reading written after the results (untested): if the true-form net's eta-0 advantage over the public-form net (a training-family effect, A3 README) carried to eta 4, a like-for-like C would have skill C4 - (Ctrue0 - Cpub0); sigma_G and rho_G recomputed with it, G* approximated by RES@8 (skill 0.378; the job's sigma_G 0.337 implies a G* skill of 0.377)",
+   "skill_C_like_for_like": 0.519,
+   "sigma_G": 0.272,
+   "rho_G": 0.456
+  }
+ },
+ "dialsA2_quoted": {
+  "source": "../dialsA2/results/summary.json [headline], [reported], [checker] (job r6-dialsa2-001)",
+  "verdict": "UNDECIDED",
+  "verdict_parts": {
+   "T1": true,
+   "T2": true,
+   "T3": true,
+   "T4": true,
+   "T5": true,
+   "zero_point": false,
+   "T1_fails": false,
+   "T2_fails": false
+  },
+  "T1_sigma_G": 0.26025,
+  "T2_rho_G": 0.44765,
+  "T3_H_recovery": 0.99595,
+  "T3_t": 25.417771030123216,
+  "T4_blind_loss_share": 0.4592,
+  "zero_point": {
+   "trueformC_vs_publicC": 0.06878,
+   "Gstar_vs_P0": -0.05244,
+   "H_vs_S": 0.07696,
+   "Gstar_vs_S (reported)": -0.00071,
+   "H_vs_P0 (reported)": 0.02522
+  },
+  "s_P0_to_C_eta4": 0.47116,
+  "skill_vs_O": {
+   "eta0": {
+    "Cpub": 0.4464,
+    "Ctrue": 0.4157,
+    "Ctrue_blind": 0.4216,
+    "Dnet@32": -0.0182,
+    "Dnet@8": -0.205,
+    "Dridge@32": 0.1898,
+    "Dridge@8": 0.1316,
+    "FT@32": 0.4486,
+    "FT@8": 0.4394,
+    "H@32": 0.4139,
+    "H@8": 0.4105,
+    "H_mix@32": 0.4156,
+    "H_mix@8": 0.413,
+    "K": 0.0,
+    "O": 1.0,
+    "P0": 0.4218,
+    "RES@32": 0.4248,
+    "RES@8": 0.4225,
+    "RESfix@32": 0.4242,
+    "RESfix@8": 0.4115,
+    "S@32": 0.4468,
+    "S@8": 0.4449
+   },
+   "eta4": {
+    "CFT@32": 0.4798,
+    "CFT@8": 0.4763,
+    "CFT_blind@32": 0.2595,
+    "CFT_blind@8": 0.2562,
+    "Cpub": 0.2556,
+    "Ctrue": 0.4749,
+    "Ctrue_blind": 0.2564,
+    "Dnet@32": 0.0263,
+    "Dnet@8": -0.1567,
+    "Dridge@32": 0.1608,
+    "Dridge@8": 0.0902,
+    "FT@32": 0.3072,
+    "FT@8": 0.2917,
+    "H@32": 0.476,
+    "H@8": 0.475,
+    "H_mix@32": 0.4748,
+    "H_mix@8": 0.4739,
+    "K": 0.0,
+    "O": 1.0,
+    "P0": 0.2517,
+    "RES@32": 0.3738,
+    "RES@8": 0.3528,
+    "RESfix@32": 0.374,
+    "RESfix@8": 0.3567,
+    "S@32": 0.2079,
+    "S@8": 0.2084
+   }
+  },
+  "eta0_diagnosis_checker": {
+   "P0_minus_publicC": [
+    0.05517,
+    0.0129
+   ],
+   "S8_minus_P0": -0.05174,
+   "FT8_minus_P0": -0.03937,
+   "RES8_minus_P0": -0.00151,
+   "H8_minus_trueformC": 0.01162,
+   "blindC_minus_C": [
+    -0.01316,
+    0.00591
+   ],
+   "trueformC_minus_publicC_min_over_truths": 0.0299,
+   "by_rung": [
+    0.0677,
+    0.0728,
+    0.0538,
+    0.0688
+   ]
+  },
+  "presmoke_pair_at_500_steps": "+0.234 +- 0.034 (DECLARED.md header, computed from r6-dialsa2-001 presmoke/scores.npz)"
+ }
+}
