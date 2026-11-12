@@ -1,0 +1,17 @@
+# qwen-ring-mac-001: the first model rollout on the lead's Mac, through RUNBOOK_MAC.md step 3 at the round-5 GO commit
+# (aa16b4d18). Mechanics check of the whole request route on macOS with the default cheap model on the ring profile,
+# at the profile's default limits (150 turns, 60 minutes). The ring is a smoke-test world: its score is a record of
+# the mechanics, not a result (quote conditions: HOST_SAFETY_AUDIT.md, round 5).
+# PILOT_NEVER_REUSE_AS_EXAM: the instance is public pilot material.
+schema = "physim2-rollout/v1"
+model = "qwen/qwen3.6-35b-a3b"
+exam_profile = "ring"
+instance = "pilot-qwen-ring-mac-001"
+max_turns = 150
+max_output_tokens_per_turn = 8192
+max_context_tokens = 200000
+wall_minutes = 60
+box_memory_gb = 4
+cap_usd = 1.5
+reasoning_effort = "default"
+push = false

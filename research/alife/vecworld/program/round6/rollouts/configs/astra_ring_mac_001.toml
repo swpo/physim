@@ -1,0 +1,20 @@
+# astra-ring-mac-001: the strong model on the ring profile on the lead's Mac, through RUNBOOK_MAC.md step 3 at the
+# round-5 GO commit (aa16b4d18), after qwen-ring-mac-001 has closed cleanly. Its first rollout (astra_ring_001,
+# 11 Nov, 0.964 in 14 replies) ran under the faults the rollouts README lists; this one runs under the corrected
+# exam (256 samples per item, 17-tick reset, limits told, final submission graded, failed items on the null
+# forecast). Mechanics and a reading of how the strong agent works under the told limits, not a result: the ring is
+# a smoke-test world. One reply holds reasoning and answer together, hence 16,384 output tokens per reply. Bound by
+# the spend stop: cap_usd plus one worst-case call (150,000 context and 16,384 output tokens at the listed price).
+# PILOT_NEVER_REUSE_AS_EXAM: the instance is public pilot material.
+schema = "physim2-rollout/v1"
+model = "openai/gpt-6-astra"
+exam_profile = "ring"
+instance = "pilot-astra-ring-mac-001"
+max_turns = 60
+max_output_tokens_per_turn = 16384
+max_context_tokens = 150000
+wall_minutes = 60
+box_memory_gb = 4
+cap_usd = 15
+reasoning_effort = "default"
+push = false
