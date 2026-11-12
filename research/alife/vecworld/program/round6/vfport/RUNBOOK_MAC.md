@@ -1,16 +1,39 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
-**ON HOLD (round 5, fixer, 12 Nov 2026). Run nothing from this copy.** The GO for steps 0 to 2 of round 4,
-second pass, holds for the commit that carried it, `0697487eb4b9d9bcf4f5753543c0786141b99094`, and for that commit
-only. This copy carries the changes of round 5 (code audit K9 and the channel sweep: verifiers' interception server
-takes at most 16 MiB per request, one request of a box at a time, the run's logs and the laboratory's log are
-bounded; exam audit X13 and the disclosure sweep: the task statement says that one command holds the agent until
-it returns, for up to the harness's 3,600 s, and how to avoid it; K7, K10, X12, X14 to X17; the runbook audit's
-T19 to T25 and CRED-2; the Mac session's rulings of 11 Nov: a fresh checkout and names of this round only,
-`physim2-ring:3`, `$HOME/physim2-pilot-r5`; see `README.md`, section 8.17), a new `PIN.sha256`, and no verdict
-yet, so nothing below is released: not steps 0 to 2, not step 3, not step 4. A new notice replaces this one when
-the verdict of this round is written (it will begin `**GO for steps 0 to 3.**`, or `**GO for steps 0 to 2.**`, or
-stay a hold); until then a session that reads this file stops here (rule A.1) and reports.
+**GO for steps 0 to 2.** Round-5 verdict of the host-safety audit, first pass, 12 Nov 2026
+(`HOST_SAFETY_AUDIT.md`, "Re-audit, round 5"). Steps 0, 1 and 2 of this file and "If a run was interrupted" (as it
+applies to step 2) may run on the lead's Mac, as written, from ONE commit: the commit that holds this notice. Its
+40-character hash is in the coordinator's GO message (a commit cannot name itself); the lead checks it out in a
+fresh checkout for this round (section C) and gives it to the session, and step 0 compares it. Step 4 is covered
+too; run it only when the lead says the pilot is over. Judged were the code of the round-5 pin, commit
+`c48eb6dc28b31f798a8c75f3b9612c8895570278` (the pin below), and the commands as rehearsed from a fresh clone of it
+(`results/rehearsal_round5.json`): every command that changed beyond this round's names was issued there; the
+image build of step 1 (tried there; it failed behind the cloud's proxy), step 2's commands, step 4 and the points
+of "If a run was interrupted" were not rehearsed at this pin and differ from round 4's rehearsed commands only in
+the names `physim2-ring:3` and `physim2-pilot-r5`.
+After the pin, the commits changed `results/`, `rehearsal/`, `README.md`, prose of this file (no command), this
+notice and `HOST_SAFETY_AUDIT.md`, and no file of the pin. This GO replaces the GO of round 4, second pass, for
+`0697487eb4b9d9bcf4f5753543c0786141b99094`: start steps 0 to 2 from this commit only. A smoke test that passed at
+`0697487eb` stays a result; what it left under its own names (`physim2-ring:2`, `$HOME/physim2-pilot-20261110`)
+step 0 lists as harmless.
+
+**Step 3 (model rollouts) is NOT released by this notice: NO-GO.** Rule A.1 stands: step 3 needs a notice that
+begins `**GO for steps 0 to 3.**`. Five findings of major severity are open, and each needs a change of a pinned
+file, so a new pin: (1) a model in its box can pass the new per-box gate and upload cut on its way to verifiers'
+interception server by writing the request target in absolute form (`http://host:port/...`) or with two leading
+slashes, so what vf-eval can be made to hold falls back to 64 requests of 16 MiB at once, tens of GiB once parsed;
+(2) the in-box check's report and the listing of `submission/`, both written by the box, are split and parsed
+whole in vf-eval (up to 96 MiB each time, about 2 to 3.5 GiB once parsed); (3) a box's container log has no size
+limit, so a box can fill the disk of Docker Desktop's virtual machine for as long as it runs; (4) the task
+statement does not say that a reply without a tool call, or one cut at the token limit before its tool call, ends
+the run; (5) `lab.usage()` reports the context without cache reads, so it shows almost the whole context left
+until the context stop ends the run. From this commit, run no command of section 3, 3.0 included, and create no
+`LEAD-GO-MODEL-SPEND.json`.
+
+For the lead, not the session: steps 1 and 2 at this commit leave `physim2-ring:3`, `$HOME/physim2-pilot-r5` (and
+`$HOME/physim2-pilot-r5-results` after step 4) and the study folder's `.venv`. A later pin that changes a pinned
+file needs names of its own, or its step 0 stops on what this commit left. Step 2b has not run at this code
+anywhere; what decides a stop there is its two lists, as step 2b says.
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->
