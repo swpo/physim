@@ -1538,5 +1538,64 @@
    ]
   },
   "presmoke_pair_at_500_steps": "+0.234 +- 0.034 (DECLARED.md header, computed from r6-dialsa2-001 presmoke/scores.npz)"
+ },
+ "checker": {
+  "who": "independent checker of study dialsA3 (round 6), 12 Nov 2026; CPU only (about 1 CPU-minute), no job run",
+  "verdict_signed": "UNDECIDED by the declared rule (DECLARED A3-11 row 2, R17, R21), confirmed on the evidence that survives: the zero point misses on pairs (i) true-form C - public-form C = -0.1048 and (iii) H - S = -0.0939 (tolerance 0.02 on the point estimate, so no lost SE is needed to decide it); pair (ii) G* - S = -0.0044 holds; T1-T5 hold by the job's own computation of the declared rule; neither PASS nor FAIL. The SEs, bounds, medians and leave-one-truth-out ranges behind T1-T5 cannot be checked: no score file exists.",
+  "edits_to_this_file": "none to any existing number or text; only this 'checker' block was added",
+  "declaration": {
+   "diff_against_dialsA2": "every changed hunk of dialsA3/DECLARED.md against dialsA2/DECLARED.md (sha256 249250ce...c072 at 3fd4076c5, unchanged since) is in Part 0, a heading, or a passage marked [A3-n]. Substantive changes: the five given (A3-1 truths, seed [6631, 4]; A3-2 true-form family 1,536 x 8 with 768 at eta 0, 256 at 4, 512 uniform; A3-3 pair (ii) G* - S in place of G* - P0; A3-4 presmoke stop rule; A3-5 round 5's sigma declared not applicable, with reason) and the implied ones, each stated: A3-6 no nets reused, A3-7 budget ($12 in two jobs -> $10, one job, a second only if the first is cut by the platform; script limit 3.6 -> 4.2 h, cap $8.40 -> $9.60), A3-8 code fixes stated as no rule change, A3-9 extra reported readings, A3-10 whole exam not re-sat (dialsA2's DEVIATIONS 1 made explicit), A3-11 outcome rows. Unchanged: question, exam, Lab, policies, training rule R9, T1-T5, statistics R4, R10-R16. Part 1's zero-point unit now reads L(K) - L(public-form C) (dialsA2's table said L(K) - L(C); its R17 and code already used public-form C): harmonised, not changed.",
+   "committed_before_request": "yes: 3e9026c7b at 2026-11-12T03:01:51Z (DECLARED, DEVIATIONS, PROGRESS only); first code f3c192b0e 03:07:11Z; request 5a5b5446e 03:56:21Z; no later commit touches DECLARED.md"
+  },
+  "records": {
+   "job": "r6-dialsa3-001 (origin/gpu-jobs:jobs/r6-dialsa3-001/status.json): state infra_error at 07:59:54Z, exit_code null, 'pod unreachable over SSH for 10 minutes; collection incomplete: transfer exited 255'; collected 0 files, transfer 0 bytes (manifest.json files []); billed $7.1364 (conservative $7.3267) of cap $9.60; one A100 40GB lambdalabs us-east-1 at $1.99/h, pod 04:18:54-07:59:33Z = 3.68 h, ready 04:24:20Z; script log 04:32:07Z to its last surviving line 07:44:18Z (192.2 min, in the N = 32 fine-tunes)",
+   "review": "review.md sha256 3acd6d31...4d56 equals status.json [review]; 0 blocker, 0 major, 0 minor, six notes; read before any result (DEVIATIONS 1 committed 7d065a2bd 04:19:22Z; first presmoke numbers 04:46Z). The study's results/job/status.json and review.md are byte-identical to the jobs branch",
+   "heartbeat_log": "my own merge of the run.log tails of the 19 committed status.json versions gives the same 167 lines as results/job/progress_from_heartbeats.txt (only the order of lines with equal timestamps differs). The tails have gaps (e.g. 04:33-04:45Z, the inference stage)",
+   "failed_skipped_cut": "no FAILED, SKIP or FATAL line in the surviving tails; every N = 8 key needed by the criteria is in the first look; N = 32 was cut mid fine-tune and the eta 1/2 arm never started",
+   "cause_of_the_loss": "the coordinator's channel (08:10Z) attributes the termination to the runner Mac losing its internet 07:49-07:59Z (pod most likely healthy), not to the provider; README and DEVIATIONS 2 say 'cut by the platform'",
+   "presmoke_stop_rule": "applied as declared: run_a3.stop_rule reads truth 0, eta 0, `score` half, 3 seeds, the last presmoke rung (PRE rungs (500, 6000); families 192 public, 384 true-form = 192/64/128, untiled, padded to 12,288 episodes), SE^2 = SD_items(seed mean)^2/48 + SD_seeds(item mean)^2/3 in the unit; logged r = -0.2115 +- 0.0236, threshold 0.0672 (= 0.02 + 2 x 0.0236, my arithmetic) -> go; by rung 500: +0.0629. The rule is one-sided by declaration, so it could not fire on a true-form advantage; no deviation"
+  },
+  "recomputation": {
+   "score_files": "none exist (nothing was collected and the pod was terminated). The recomputation asked for (own code, a different bootstrap seed, the seed term) cannot be done; SEs, one-sided bounds, medians, leave-one-truth-out ranges, picks and the numbers of T4 and T5 are lost, as the study says",
+   "code_path_instead": "the logged 'first look after N=8' (07:18:27Z) is a3_stats.first_look -> a3_stats.criteria(S, 8, 0, 1) on the N = 8 scores of 16 truths x eta (0, 4) after D(8): the same call make_summary.py makes (ST.criteria(S, 8, e0, len(S.etas) - 1)). It wraps dialsA2's a2_stats.criteria (checked by dialsA2's checker) and a_stats.stat (SE^2 = SD_truths^2/16 + SD_seeds^2/3, t90(15) = 1.341), so the logged verdict parts are the declared rule's, seed term included; no later stage rewrites an N = 8 key",
+   "key_restoration": "the '<ssh-target>' keys (names containing '@', scrubbed by the runner) restored by sorted name order: checked against sorted(S.d) in a2_stats.skills and dialsA2's real key set; unique and consistent (eta 0: Dnet, Dridge, FT, H, H_mix before K, RES, RESfix, S after P0; eta 4: CFT, CFT_blind first). The verdict, its parts, sigma_G, rho_G, the zero-point pairs and H's numbers carry no '@' key",
+   "consistency_from_3_decimal_skills": {
+    "zero_i_trueformC_vs_publicC": "-0.1048 reported; -(s_Ctrue - s_Cpub)/s_Cpub in [-0.1079, -0.1035]: consistent",
+    "zero_iii_H_vs_S": "-0.0939 reported; in [-0.0974, -0.0929]: consistent",
+    "H_vs_P0_reported": "-0.1515 reported; in [-0.1545, -0.1499]: consistent",
+    "Gstar_eta0": "G*'s skill implied by G* - S (0.4751) and by G* - P0 (0.4753) agree",
+    "eta4": "sigma_G 0.337 and rho_G 0.380 jointly imply C skill 0.5696 and G* skill 0.3777 (about RES@8, 0.378); from them H recovery 0.9916 (logged 0.992), T4 blind loss about 0.482, s = (L(P0) - L(C))/(L(K) - L(C)) = 0.544 (README 0.543)",
+    "source": "job r6-dialsa3-001, status.json heartbeat tails, line 'first look after N=8'; checker's script (scratch, not committed)"
+   },
+   "criteria": {
+    "T1": "sigma_G 0.337; lower bound >= 0 by the job (value lost): holds",
+    "T2": "rho_G 0.380; read and upper bound <= 0 by the job (values lost): holds",
+    "T3": "recovery 0.992, t = 18.77: holds",
+    "T4": "about 0.48 (derived), job boolean true: holds",
+    "T5": "job boolean true, numbers lost: holds",
+    "zero_point": "(i) -0.1048 misses; (ii) -0.0044 holds; (iii) -0.0939 misses: misses",
+    "verdict": "UNDECIDED (from the logged parts by the declared rule; same as the job's)"
+   }
+  },
+  "conclusions_checked": {
+   "verdict": "UNDECIDED, A3-11 row 2: follows",
+   "like_with_like": "not like with like, as the study says after the results: C (the true-form net) is trained on 1,536 x 8 episodes, P0, the public-form C and through them S, FT, RES and G* on 768 x 8; the public-form nets peaked at 39,750-77,750 steps, the true-form nets at 170,000-190,250. Pair (i) and pair (iii) (H uses the true-form net) measure that difference; T1 and T2 at eta 4 rest on the same stronger C. The 'like-for-like' sigma_G 0.272, rho_G 0.456 is arithmetic on 3-decimal skills (correct) under the untested assumption that the eta-0 skill gap carries unchanged to eta 4; T1/T2 against a like-for-like C are not established",
+   "validation_losses": "0.385-0.388 (true-form) against 0.406-0.410 (public-form) are on different validation sets (the true-form one holds eta > 0 episodes); they do not show which net fits better",
+   "pair_i_history": "'+0.069 (dialsA2), +0.007 (study A), -0.105 (here)' mixes exams: study A's +0.007 is on its whole exam (four classes, horizons 1-16, base nets at 24,000 steps; ../dialsA/results/summary.json [headline][zero_pairs]), not on triggered items at 8-16 ticks. 'Pair (i) tracks the family, not the law' is plausible (the switch at eta 0 equals gworld.tick to 5.4e-11) and untested, as stated",
+   "one_truth": "per-truth values, medians and leave-one-out ranges are lost. T5's boolean shows sigma_G and rho_G hold at the point estimate with the heaviest truth out and at 8 and at 16 ticks alone; whether the zero-point miss rests on one truth cannot be checked (it is 5 times the tolerance)",
+   "training": "the scored base nets are the 192,000-step ones, not converged by R9 for the true-form nets (best steps above 153,600), reported as declared (DEVIATIONS 3). A better-trained C would raise sigma_G and lower rho_G (T1/T2 conservative) and plausibly widen the pair (i) miss",
+   "reused_nets": "none (A3-6): run_a3.py loads no net file, retrains all six base nets (train_base, net order P0-P2, T0-T2) and writes nets.npz (sha256 68c8c24c...1a14, file lost)",
+   "truths": "16 new; least max-abs distance to dialsA2's 16 truths 0.031 (my computation from both summaries); the logged 0.007 is to one of the 48 seed-[6601, 4] draws, not to a dialsA2 truth; 'independent sets' holds",
+   "margin_claim": "'T1 to T5 hold with margin on two sets of 16 truths': the margin is known for the point estimates of T1-T3 only; T4/T5 numbers and every bound of this study are lost",
+   "after_the_results": "README 'What it means', [derived_from_skills] and DEVIATIONS 2-3 say they were written after the results. Commit f42261c98 (05:45Z, R19 costs in make_summary) says 'before any result is read' but follows the presmoke numbers (logged 04:46Z, noted in b80908734 04:55Z); it changes reporting only"
+  },
+  "misstated_or_open": [
+   "'cut by the platform' (README, DEVIATIONS 2): per the coordinator the runner ended a likely healthy pod while the Mac was offline",
+   "'the declared required stages took about 166 min' (DEVIATIONS 2, report): R18's required stages are the base nets at 24,000 steps plus N = 8 and D(8); the 166 min include the optional doublings (84 min of ladder); the guard estimated the required stages at 78.5 min. The conclusion that nothing fits in $2.86 is unchanged",
+   "DEVIATIONS entry 2 is dated 08:10 UTC but was committed at 08:02:25Z (0a5bb89ed); PROGRESS gives 08:03-08:15 while the study's last commit is 08:05:55Z: timestamps only",
+   "OPEN: 'no second job; option (a) needs a new cap' is superseded by the coordinator's ruling in the channel file (line dated 08:10Z, placed before the study's 08:02:34 line): study cap raised to $18; resubmit the same request as r6-dialsa3-002. No r6-dialsa3-002 request exists on origin (requests folder and gpu-jobs jobs/ checked 12 Nov). The ruling has not been acted on"
+  ],
+  "next_step": "the coordinator's ruling stands: r6-dialsa3-002 with identical content (only the id), about 3.6 h, about $7.2 at $1.99/h, cap $9.60, inside the raised $18. It would recover the scores, SEs, bounds, medians, leave-one-out ranges, N = 32 and the eta 1/2 arm. Before it runs, fix in DEVIATIONS how it is read: it has a fresh os.urandom secret (new items and noise on the same truths), so it is a replicate, and its full outputs should decide with 001's first look reported beside, not chosen between. Expect the same verdict: the pair (i) miss is 5 times the tolerance and comes from the family design; a like-for-like zero point (option a) is a new declaration, not this rerun",
+  "secrets_and_markers": "the world secret is os.urandom and only its commitment is written (to info.json, lost); no secret, commitment or exam answer appears in the tails, status.json, this file or the README. The truths (public seed [6631, 4]) are public pilot values, marked: this file PILOT_NEVER_REUSE_AS_EXAM true, README 'PILOT ONLY', DECLARED 'PILOT ONLY', request notes PILOT_NEVER_REUSE_AS_EXAM"
  }
 }
