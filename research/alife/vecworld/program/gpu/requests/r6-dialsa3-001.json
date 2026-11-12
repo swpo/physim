@@ -1,0 +1,42 @@
+{
+  "schema": "gpu-job/v1",
+  "job_id": "r6-dialsa3-001",
+  "purpose": "Round-6 dials, study dialsA3: zero-point rerun of dialsA2 (gliders stress conversion, triggered items, 8-16 ticks) on 16 new truths, true-form family half at eta 0, presmoke stop rule; T1-T5 and the re-declared zero point; 3 seeds per net",
+  "ref": "37035b5c8ddf7995b06904647bb276ec7b911395",
+  "paths": [
+    "research/alife/vecworld/vw1",
+    "research/alife/vecworld/integrate",
+    "research/alife/vecworld/spec",
+    "research/alife/vecworld/level0",
+    "research/alife/vecworld/program/track2/gliders_exam",
+    "research/alife/vecworld/program/track2/actuation",
+    "research/alife/vecworld/program/round4/sbi",
+    "research/alife/vecworld/program/round5/ladder",
+    "research/alife/vecworld/program/round6/dials/defect_gliders",
+    "research/alife/vecworld/program/round6/dials/dialsA",
+    "research/alife/vecworld/program/round6/dials/dialsA2",
+    "research/alife/vecworld/program/round6/dials/dialsA3"
+  ],
+  "gpu": {
+    "types": [
+      "A100_40GB"
+    ],
+    "count": 1,
+    "spot": false
+  },
+  "max_hours": 4.5,
+  "cap_usd": 9.6,
+  "setup": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "export PATH=$HOME/.local/bin:$PATH",
+    "uv venv -q -p 3.12 $GPUJOB_DIR/.venv && . $GPUJOB_DIR/.venv/bin/activate",
+    "uv pip install -q 'jax[cuda12]==0.12.0.1' numpy==2.5.4 scipy==1.18.0"
+  ],
+  "run": "cd research/alife/vecworld/program/round6/dials/dialsA3 && bash job.sh",
+  "env": {
+    "A3_MAX_HOURS": "4.2",
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "notes": "Study dialsA3 of round 6 (round6/dials/dialsA3): the zero-point rerun of dialsA2, declared in DECLARED.md at 3e9026c7b (03:01 UTC) before any code. PILOT_NEVER_REUSE_AS_EXAM: 16 truths drawn in the job by a public seed ([6631, 4]); the world secret is os.urandom and never written. dialsA2's run_a2.py with the smallest changes (run_a3.py; a2_lib, xlaw, a_nets, a_stats imported unchanged). (0) Presmoke at FULL SHAPES, same process: the law switch's zero point; families of 192 points (384 true-form), untiled, base-net data padded with zeros to the full 12,288-episode arrays (padding never sampled); one truth at eta 0 and 4 plus one eta-1 world; six block nets in lockstep at 500 and 6,000 steps; fine-tunes 16 in lockstep, D nets, every sampler and posterior. Then the DECLARED STOP RULE (A3-4): if the true-form C at eta 0 trails the public-form C by more than 0.02 + 2 SE (presmoke/stop_rule.json), the job ends before the full pass with exit 0 (a declared end, not a fault; the file stopped_by_presmoke_rule.json says so). Then a speed guard on steady rates only (no first-call compilation; D projected from the base nets' steady step time, the review minor 1 of r6-dialsa2-001): exit 4 if the required stages do not fit the script's 4.2 h. (1) Truths: viability of 48 candidates. (2) Families: public 768 x 8, true-form 1,536 x 8 (eta 0 at 768), designed 768 x 8; about 26 min at dialsA2's 1,260-1,310 member-ticks/s. (3) 16 truths x eta 0/4 worlds, about 15 min. (4) S, H, H_mix (numpy). (5) Base nets: 6 in lockstep, 50 steps per dispatch, 24,000 steps doubled while the rule is unmet, at most 192,000 (dialsA2 needed 192,000: 81 min of ladder at 13.4 ms/step). (6) N = 8: fine-tunes (widening now counted per kind, minor 2), RES, S, H, H_mix, D(8) (no doubling after a deadline stop, minor 3); then N = 32 and the eta 1/2 arm on 4 truths if the clock allows. Expected 3.4-3.7 h on the script's clock (dialsA2: 3.30 h for the same stages, plus about 7 min of true-form episodes and about 7 min more presmoke). Memory: the base-net stack is 6 nets x 12,288 episodes (the public sets padded by ladder_net.stack_datasets): X 4.7e8 elements (0.22 of 2^31), CU and CtU 3.1e8 each, about 4.4 GB; device arrays asserted below 2^31; step arrays as dialsA2's; data passed to jitted functions as arguments; default allocator. Outputs 10-15 MB, all public, largest nets.npz about 3.5 MB (its sha256 is logged). Exit codes: 0 done or stopped by the declared presmoke rule, 1 presmoke failure, 2 a failed part, 3 no GPU, 4 speed guard, 5 fewer than 16 viable truths. Cap: $1.99/h x (4.5 + 0.25) h = $9.45, + $0.10 -> $9.60 (the study's GPU cap is $10; a second job only if this one is cut by the platform). CPU tests: the whole job.sh at tiny shapes from a git archive of exactly these paths at the pinned ref 37035b5c8, twice: the stop path forced by a test-only flag (presmoke, rule, exit 0 before the full pass) and the full path with the rule ignored by a test-only flag (presmoke, guard, full pass, exit 0); make_summary.py runs on both outputs. Neither flag is set in job.sh.",
+  "requester": "cloud study dialsA3 (round 6 dials), session_01BZceC7G6m7DgM6KpXjnWXj"
+}

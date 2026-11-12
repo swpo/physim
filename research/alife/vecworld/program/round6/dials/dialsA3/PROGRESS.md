@@ -12,10 +12,15 @@ Coordinator channel: /tmp/claude-0/-home-user/a7c2ec48-e3a6-5436-88da-a7523dbbe4
 - 03:38: archive test of 37035b5c8 (exactly the request paths), stop path forced by a test flag: exit 0 before the full
   pass, make_summary's stop branch OK.
 
+- 03:56: archive test of 37035b5c8, full path (rule ignored by the test flag): presmoke, guard, full pass, exit 0;
+  make_summary OK.
+- ~03:58: request r6-dialsa3-001 committed and pushed (ref 37035b5c8, A100 40GB, max_hours 4.5, cap $9.60, script
+  limit 4.2 h).
+
 ## Running
-- nothing.
+- r6-dialsa3-001 (requested ~03:58 UTC).
 
 ## Next step
-- Archive test of 37035b5c8, full path (--ignore-stop-rule), log in scratch arch_full.log; if exit 0 and make_summary
-  OK: commit and push the request research/alife/vecworld/program/gpu/requests/r6-dialsa3-001.json (written, ref
-  37035b5c8, cap $9.60), then wait on origin/gpu-jobs:jobs/r6-dialsa3-001/status.json; read review.md first.
+- Wait on origin/gpu-jobs:jobs/r6-dialsa3-001/status.json (one background loop, 60 s); read review.md BEFORE results and
+  act on it (DEVIATIONS entry, no code change while running). Then copy outputs to results/job (not nets.npz),
+  run make_summary.py, write README.md, DEVIATIONS, final report.
