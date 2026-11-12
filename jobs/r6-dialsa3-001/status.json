@@ -61,6 +61,12 @@
     "window_hours": 4.75
   },
   "pods": [],
+  "review": {
+    "at": "2026-11-12T04:18:27Z",
+    "file": "jobs/r6-dialsa3-001/review.md",
+    "sha256": "3acd6d313eea75bc46132902540d3e33c7873bc913dbd6996e87155452ce4d56",
+    "summary": "Fine to run: 0 blocker, 0 major, 0 minor. About 3.6 h and $7.2; the declared presmoke stop (exit 0 after about 17 min) is a real UNDECIDED signal, not a fault. dialsA2's three review minors are fixed."
+  },
   "state": "queued",
   "updated_at": "2026-11-12T03:59:55Z"
 }
