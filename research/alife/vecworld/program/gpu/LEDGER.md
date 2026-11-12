@@ -38,8 +38,9 @@ Round 6 (rows added as studies finish; billed amounts from each job's status.jso
 | 2026-11-11 | r6-dialsa-003 (gliders calibration: generic repair of an incomplete public law, real nets) | Mac runner (round 6 study dialsA) | A100 40GB (lambdalabs, $1.99/h) | 1.05 | 2.08 | 5 | done, exit 0; r6-dialsA-001 dropped (upper-case id), r6-dialsa-001 rejected (notes over 4,000 characters), r6-dialsa-002 held by the runner's review and cancelled before start (platform allocator with per-step dispatch), $0 each |
 | 2026-11-11 | r6-foundrylong-001/002/003 (long-horizon foundry exam: the recipe at five times the prior compute; weight inference through the simulator, designed Labs) | Mac runner (round 6 study foundrylong) | A100 40GB (lambdalabs, $1.99/h) | about 4.3 | 8.93 | 25 | 001 and 003 done, exit 0; 002 stopped by its own speed guard after the presmoke ($0.10: the guard counted JIT compilation as fit time) |
 | 2026-11-11 | r6-dialsa2-001 (gliders reopened: triggered items, designed arms) | Mac runner (round 6 study dialsA2) | A100 40GB (lambdalabs, $1.99/h) | 3.3 | 6.62 | 12 | done, exit 0, complete |
+| 2026-11-12 | r6-dialsa3-001 (gliders: the zero-point rerun on 16 new truths) | Mac runner (round 6 study dialsA3) | A100 40GB (lambdalabs, $1.99/h) | 3.68 | 7.14 | 10 | infra_error, nothing collected: the runner terminated a likely healthy pod about 20 min before its end while the Mac was offline (07:49-07:59Z); the runner was fixed; the first look survives in the heartbeat tails |
 
-Round 6 so far: $32.27 billed, $78.54 in all, of $1,000 approved.
+Round 6 so far: $39.41 billed, $85.68 in all, of $1,000 approved.
 Model spend (rollouts) is a separate total: `../round6/rollouts/LEDGER.md` and `ledger.json`.
 Lessons of round 6 for requests: job ids are lower case and must match the protocol's pattern (an invalid file name is
 dropped without a record); purpose at most 300 characters on one line, notes at most 4,000; do NOT set

@@ -196,7 +196,13 @@ Round 6 (10-11 Nov 2026, in progress; the lead's direction for it is in `roadmap
   matter), but the zero-point control at eta 0 misses on all three pairs (the true-form net is weaker than the public
   one at eta 0 by 0.069), so the verdict is UNDECIDED by the declared rule. Checker: every number reproduces to five
   decimals; the cause of the miss (too few eta-0 points in the true-form training set) is an untested hypothesis; the
-  presmoke had already shown it. A rerun with a re-declared zero point and new truths (`dials/dialsA3`) is running.
+  presmoke had already shown it. Study A3 (`dials/dialsA3`, $7.14, checked on what survives), the rerun on 16 new
+  truths with a true-form training family twice the size: T1 to T5 hold again (science share 0.337, generic share
+  0.380, the told-form recipe closes 0.992), and the zero point misses again in the other direction (the true-form net
+  at eta 0 is now better than the public one by 0.105; G* against S holds at -0.004): UNDECIDED. The job's files were
+  lost (the Mac runner ended a healthy pod while the Mac was offline; fixed), so these are the job's own first-look
+  values from its log, without error bars. Reading, written after the results: the trained-net zero point tracks the
+  size of the training family, not the law (the hidden law matches the public tick to 5e-11 at eta 0).
 - `round6/foundrylong` ($8.93, checked): the foundry exam at 16 and 32 ticks with 32 Lab episodes. Stage 1: with five
   times the pilot's prior worlds (1,000), the no-experiment recipe still leaves a gap: sigma 0.218 at 16 ticks
   (one-sided lower bound 0.187; 0.178 with any one world left out), but only at this compute: the step from 210 to

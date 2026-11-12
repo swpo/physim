@@ -9,7 +9,8 @@ P0", and a presmoke stop rule. Does the zero point now hold, and do T1 to T5 hol
 **Answer: UNDECIDED by the declared rule** (`DECLARED.md` A3-11, row 2). T1 to T5 hold again, on 16 truths nobody
 had seen. The zero point misses again, now in the **other direction**: with twice the training data, the true-form
 net at eta 0 is *better* than the public-form net, by 0.105 of L(K) - L(public-form C), where dialsA2's was worse by
-0.069. G\* against S holds (-0.004). The job was cut by the platform after the N = 8 stage and no output file came
+0.069. G\* against S holds (-0.004). The job was cut after the N = 8 stage (by the Mac runner, not the provider: see
+"What failed") and no output file came
 back, so the verdict and point estimates come from the job's own first look (computed in the job by
 `a3_stats.criteria` on the complete N = 8 scores) as it survives in the runner's heartbeat tails. The standard errors,
 bounds, medians and leave-one-truth-out ranges were lost with the files.
@@ -100,7 +101,12 @@ Skill against the oracle at N = 8 (`results/summary.json` [skill_vs_O_N8]):
 
 ## What failed
 
-The platform: the pod became unreachable during N = 32 and nothing was collected (`DEVIATIONS.md` entry 2). No second
+The pod became unreachable during N = 32 and nothing was collected (`DEVIATIONS.md` entry 2). Corrected by the
+coordinator from the runner's account: the cause was the runner, not the provider or the study's code. The lead's
+Mac lost its internet connection from about 07:49 to 07:59 UTC; the runner's supervise loop counted ten minutes of
+failed SSH polls as "pod unreachable" although its own check of the provider's API was failing too, its collection
+then failed, and it terminated a pod that was most likely healthy and about 20 minutes from its end. The runner was
+fixed before any further job. No second
 job: the $2.86 left of the $10 buys at most 1.1 h; the declared required stages took about 166 min here.
 
 ## Next step (for the lead)
