@@ -146,7 +146,7 @@ def main():
         raise SystemExit("check_interrupt.py is a development check for the Linux build container; it is NOT part of the Mac runbook.")
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
-    ap.add_argument("--image", default="physim2-ring:3")
+    ap.add_argument("--image", default="physim2-ring:4")
     a = ap.parse_args()
     checks, ev = {}, {}
     # ---- part 1: a real process and real signals, inside a throwaway container (no host path mounted) ----

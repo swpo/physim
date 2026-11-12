@@ -19,7 +19,7 @@ id = "isolated-verifier"         # the stock isolated grader
 
 [env.taskset]
 id = "physim2-env"
-image = "physim2-ring:3"
+image = "physim2-ring:4"
 # store = "/absolute/path"       # default: $PHYSIM2_STORE
 instances = ["mac-ring-w0"]      # without this line: every row of <store>/index.json
 

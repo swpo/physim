@@ -46,8 +46,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 PLACE = "/ABSOLUTE/PATH/TO/vfport"
 GUARD = f'cd "{PLACE}" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && '
-LABEL = "physim2-pilot-r5"
-PILOT = '"$HOME/physim2-pilot-r5'
+LABEL = "physim2-pilot-r6"
+PILOT = '"$HOME/physim2-pilot-r6'
 ROLLOUTS = '"$HOME/physim2-rollouts'
 
 
@@ -210,7 +210,7 @@ def main():
     checks["text_every_rm_rf_is_chained_behind_its_checks_and_names_the_two_pilot_folders"] = len(rm) == 2 and all(
         c.count("rm -rf") == 1 and f'test -f {PILOT}/store/index.json" && test -d {PILOT}/scratch"' in c.split("rm -rf")[0]
         and re.search(r"&& rm -rf ", c) and want_rm in c and "\n" not in c and ";" not in c.replace(gate, "") for c in rm)
-    checks["text_step_4_copies_the_results_out_before_it_deletes"] = any("cp " in c.split("rm -rf")[0] and "physim2-pilot-r5-results" in c.split("rm -rf")[0]
+    checks["text_step_4_copies_the_results_out_before_it_deletes"] = any("cp " in c.split("rm -rf")[0] and "physim2-pilot-r6-results" in c.split("rm -rf")[0]
                                                                         and "test -s " in c.split("rm -rf")[0] for c in rm)
     checks["text_the_shared_image_is_kept"] = "docker rmi" not in joined and "is not this pilot's to\nremove" in text
     never = ("`sudo`", "`docker run` with `-v`, `--mount`", "pasting the route's own commands", "`physim2_env/public/_item.py`", "`agents/*.py`",
@@ -283,10 +283,11 @@ def main():
     # ---- round 5: the Mac session's rulings (COORD, 11 Nov) ----
     checks["r5_every_grep_of_a_command_is_command_grep"] = all(re.sub(r"command grep", "", c).count("grep") == 0 for c in cmds) \
         and sum(c.count("command grep") for c in cmds) >= 3
-    old_names = [c for c in cmds if "physim2-pilot-20261110" in c or "physim2-ring:2" in c]
+    old_names = [c for c in cmds if any(n in c for n in ("physim2-pilot-20261110", "physim2-ring:2", "physim2-pilot-r5", "physim2-ring:3"))]
     checks["r5_names_of_this_round_only"] = len(old_names) == 1 and "EARLIER PINS, HARMLESS:" in old_names[0] \
-        and "rm " not in old_names[0] and "docker rmi" not in old_names[0] and "-t physim2-ring:3 docker/" in joined \
-        and all("physim2-pilot-r5" in c for c in cmds if "VF_RUN_ID=" in c)
+        and all(n in old_names[0] for n in ("physim2-pilot-r5-results", "physim2-ring:3", "physim2-pilot-20261110-results", "physim2-ring:2")) \
+        and "rm " not in old_names[0] and "docker rmi" not in old_names[0] and "-t physim2-ring:4 docker/" in joined \
+        and all("physim2-pilot-r6" in c for c in cmds if "VF_RUN_ID=" in c)
     checks["r5_the_dry_run_refuses_a_python_that_is_not_uvs_own"] = any(
         "--managed-python --dry-run" in c and "interpreter at:/ { print \"refused: uv chose a Python that is not its own\" }" in c for c in cmds) \
         and all("--managed-python" in c for c in cmds if re.search(r"(^|[ &|;(])uv ", c))

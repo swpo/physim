@@ -124,7 +124,7 @@ def run_label() -> str:
     v = os.environ.get("VF_RUN_ID", "")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{5,62}", v):
         raise SystemExit("VF_RUN_ID is not set (or not a plain label of 6 to 63 characters). Start this tool as\n"
-                         "    VF_RUN_ID=<label of this run, e.g. physim2-pilot-r5> python tools/...\n"
+                         "    VF_RUN_ID=<label of this run, e.g. physim2-pilot-r6> python tools/...\n"
                          "verifiers labels every container it creates with it (verifiers.run=<label>): after an interruption\n"
                          "that label is the only way to find this run's containers without touching anybody else's.")
     return v

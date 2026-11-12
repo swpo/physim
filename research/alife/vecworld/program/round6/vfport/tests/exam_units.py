@@ -1,6 +1,6 @@
 """exam_units -- unit checks of round 4's exam-side changes. RUNS ONLY INSIDE A THROWAWAY CONTAINER.
 
-    docker run -d --name NAME --network none --entrypoint sleep physim2-ring:3 infinity      (no mount, no socket)
+    docker run -d --name NAME --network none --entrypoint sleep physim2-ring:4 infinity      (no mount, no socket)
     tar -cf - research/.../round6/vfport research/.../round5/agentenv research/.../vw1/vw | docker cp - NAME:/
     (round 5) the two source files of verifiers' stock bash harness that the statement reads its numbers from, as
     a bare package folder (nothing of it is imported): tar -C <site-packages of the pinned verifiers> -cf -

@@ -30,7 +30,11 @@ process (stopped by its exact pid), and the tools of this folder. It calls no mo
           parallel requests of 15 MiB of JSON, 3,000 requests without the secret, and floods of the laboratory
           (names of 3 MiB, 2,000 refused requests). Checked from the host: the answers, vf-eval's and the
           laboratory's peak memory, the lines of the run's log, the laboratory's log file, the box proxy's
-          counters in the trace, and that the run is still graded.
+          counters in the trace, and that the run is still graded. Round 5, second pass: the parallel requests
+          again in absolute form and with a `//` target (K11), a validator writing 90 MiB of short lines past its
+          `head -c` (K12, with vf-eval's peak memory in that window), and 8 MiB into the box's PID 1 output while
+          LogWatch reads Docker's record of every box of the run (K13: log driver, log path, `docker logs`;
+          read-only docker commands: ps, inspect, logs).
 
 Everything is written under --scratch and left there. Every check is one line in the output JSON with the
 numbers it rests on.
@@ -591,6 +595,39 @@ def run_route(scratch, tag, floor, log, skip_reference):
 
 
 # ----------------------------------------------------------------------------- flood5 (round 5, K9)
+class LogWatch(threading.Thread):
+    """Round 5, second pass (K13): every 2 s, the containers of this run (label verifiers.run=<run label>) as Docker
+    records them: the log driver, the log path, and what `docker logs` gives (read-only docker commands only)."""
+
+    def __init__(self):
+        super().__init__(daemon=True)
+        self.seen, self.stop = {}, threading.Event()
+
+    def run(self):
+        env = vfrun.child_env()
+        while not self.stop.is_set():
+            try:
+                ids = subprocess.run(["docker", "ps", "-q", "--no-trunc", "--filter", f"label=verifiers.run={vfrun.run_label()}"],
+                                     capture_output=True, text=True, timeout=30, env=env).stdout.split()
+                for cid in ids:
+                    rec = self.seen.get(cid)
+                    if rec is None:
+                        r = subprocess.run(["docker", "inspect", "--format", "{{json .HostConfig.LogConfig}}|{{.LogPath}}|{{.Name}}", cid],
+                                           capture_output=True, text=True, timeout=30, env=env)
+                        cfg, _, rest = r.stdout.strip().partition("|")
+                        path, _, name = rest.partition("|")
+                        rec = self.seen[cid] = {"name": name, "log_config": json.loads(cfg) if cfg.startswith("{") else cfg,
+                                                "log_path": path, "logs_bytes_max": 0, "logs_refused": None, "polls": 0}
+                    lg = subprocess.run(["docker", "logs", cid], capture_output=True, timeout=60, env=env)
+                    rec["polls"] += 1
+                    rec["logs_bytes_max"] = max(rec["logs_bytes_max"], len(lg.stdout) + len(lg.stderr) if lg.returncode == 0 else 0)
+                    if lg.returncode != 0:
+                        rec["logs_refused"] = lg.stderr.decode("utf-8", "replace").strip()[:160]
+            except Exception as e:                           # a box that went away between ps and inspect
+                self.seen.setdefault("errors", {"n": 0})["n"] += 1
+            self.stop.wait(2.0)
+
+
 def flood5_steps() -> list:
     import base64
     code = base64.b64encode(open(os.path.join(ROOT, "agents", "probe_flood.py"), "rb").read()).decode()
@@ -659,10 +696,14 @@ def run_flood5(scratch, tag, floor, log):
             return out
         sam = Sampler(job)
         sam.start()
+        lw = LogWatch()
+        lw.start()
         t0 = time.time()
         rc, o = tool([*base, "--stage", "rollout", *ledger_opt], log=log, timeout=5400)
         sam.stop.set()
         sam.join(5)
+        lw.stop.set()
+        lw.join(70)
         out["rollout_wall_s"] = round(time.time() - t0, 1)
         end = next((json.loads(x) for x in reversed(o.splitlines()) if x.startswith('{"job_id"') and '"ended"' in x), {})
         check("G1 flood5: the rollout ran to its end (vf-eval exited by itself with status 0)", rc == 0 and end.get("ended") == "exited", (rc, end, o[-1200:]))
@@ -703,9 +744,9 @@ def run_flood5(scratch, tag, floor, log):
         t_last = (rep.get("unauthorized") or {}).get("t", [None, None])[1] or rep.get("t_end")
         base_vf = sam.peak(None, (t_first or time.time()) - 0.5, 1)
         peak_vf = sam.peak(t_first, (t_last or time.time()) + 2, 1)
-        bound = 25 * RT.INTERCEPTION_BODY_MAX * RT.CALLBACK_ACTIVE_MAX / (1 << 20) + 128
+        bound = 40 * RT.INTERCEPTION_BODY_MAX * RT.CALLBACK_ACTIVE_MAX / (1 << 20) + 128
         check(f"G5 K9: vf-eval's resident memory during these floods stayed within {bound:.0f} MiB of its level before them "
-              "(25 x the body limit x requests at once, + 128 MiB)",
+              "(40 x the body limit x requests at once, + 128 MiB; K14: the parse factor is about 40)",
               None not in (base_vf, peak_vf) and peak_vf - base_vf < bound,
               {"vf_eval_mib": [base_vf, peak_vf], "samples": len(sam.samples), "laboratory_mib": [sam.peak(None, None, 2)]})
         ua = rep.get("unauthorized") or {}
@@ -728,8 +769,40 @@ def run_flood5(scratch, tag, floor, log):
               {"files": len(labs), "lines": len(rows), "longest_bytes": big, "box_view": rep.get("lab")})
         g = ph.get("grade") or {}
         check("G8 the run was still graded (64 items) after all of this", g.get("n_items") == 64, {k: g.get(k) for k in ("n_items", "n_failed", "reason")})
+        # ---- round 5, second pass: K11, K12, K13 ----
+        forms = {f: [a or {} for a in (rep.get(f) or {}).get("answers") or []] for f in ("absolute", "double_slash")}
+        tg = cb.get("targets") or {}
+        check(f"G10 K11: {RT.CALLBACK_ACTIVE_MAX} at a time also for 8 requests of 15 MiB in absolute form and 8 with a target starting "
+              "with `//`: all answered, and the proxy's gate counted each under its form (before the fix neither form reached the gate)",
+              all(len(v) == 8 and all(str(a.get("status", "")).startswith("HTTP/1.1 ") for a in v) for v in forms.values())
+              and tg.get("absolute", 0) >= 8 and tg.get("double_slash", 0) >= 8 and cb.get("most_at_once") == RT.CALLBACK_ACTIVE_MAX,
+              {"statuses": {f: [a.get("status") for a in v] for f, v in forms.items()}, "targets": tg, "most_at_once": cb.get("most_at_once")})
+        vs = rep.get("validator_short_lines") or {}
+        vt = vs.get("t") or [None, None]
+        base_v = sam.peak(vt[0] - 20 if vt[0] else None, vt[0], 1) if vt[0] else None
+        peak_v = sam.peak(vt[0], (vt[1] or 0) + 2, 1) if vt[0] else None
+        check("G11 K12: a validator writing 90 MiB of short lines past its `head -c` into its command's output: the report is refused "
+              "(`more than 1 MiB`) and vf-eval grew by less than 400 MiB in that window (splitting it would cost 18 to 36 times 90 MiB); "
+              "the original validator answers afterwards",
+              (vs.get("report") or {}).get("ok") == "False" and "more than 1 MiB" in str((vs.get("report") or {}).get("error"))
+              and None not in (base_v, peak_v) and peak_v - base_v < 400 and "raised" not in (rep.get("validator_after") or {"raised": 1}),
+              {"report": vs.get("report"), "vf_eval_mib": [base_v, peak_v], "after": rep.get("validator_after")})
+        # boxes are verifiers' `vf-<32 hex>` containers; its two helpers of a box start (the proxy listener and the network
+        # cut: `--rm`, run to their end during the start, before any agent; the box shares only their network) are not
+        boxes = {k: v for k, v in lw.seen.items() if k != "errors" and re.fullmatch(r"/vf-[0-9a-f]{32}", v["name"])}
+        helpers = [v["name"] for k, v in lw.seen.items() if k != "errors" and k not in boxes]
+        pl = rep.get("pid1_log") or {}
+        check("G12 K13: the box wrote 8 MiB into its PID 1's output (/proc/1/fd/1), and every box of the run had Docker's log driver "
+              "`none`, no log file, and `docker logs` refused: no container log grew",
+              pl.get("written") == 8 << 20 and len(boxes) >= 2
+              and all((v["log_config"] or {}).get("Type") == "none" and v["log_path"] == "" and v["logs_bytes_max"] == 0
+                      and v["logs_refused"] and v["polls"] >= 1 for v in boxes.values()),
+              {"pid1": pl, "boxes": {v["name"]: {k: v[k] for k in ("log_config", "log_path", "logs_bytes_max", "logs_refused", "polls")}
+                                     for v in boxes.values()}, "helpers_seen": helpers, "errors": lw.seen.get("errors")})
         check("G9 no container of this run is left", containers_left() == [], containers_left())
-        out.update(memory_mib={"vf_eval": [base_vf, peak_vf]}, box_proxy=bp, log_lines_unauthorized=len(lines), lab_log={"lines": len(rows), "longest": big})
+        out.update(memory_mib={"vf_eval": [base_vf, peak_vf], "vf_eval_validator_short_lines": [base_v, peak_v]}, box_proxy=bp,
+                   log_lines_unauthorized=len(lines), lab_log={"lines": len(rows), "longest": big},
+                   container_logs={v["name"]: [(v["log_config"] or {}).get("Type"), v["log_path"], v["logs_bytes_max"]] for v in boxes.values()})
     finally:
         standin.terminate()                                  # this test's own child, by its exact pid
         try:

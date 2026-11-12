@@ -1,39 +1,12 @@
 # RUNBOOK for the Mac session: PhySim v2 on verifiers
 <!-- HOLD-BEGIN: a verdict edits the text between this line and HOLD-END, and nothing else in this file -->
-**GO for steps 0 to 2.** Round-5 verdict of the host-safety audit, first pass, 12 Nov 2026
-(`HOST_SAFETY_AUDIT.md`, "Re-audit, round 5"). Steps 0, 1 and 2 of this file and "If a run was interrupted" (as it
-applies to step 2) may run on the lead's Mac, as written, from ONE commit: the commit that holds this notice. Its
-40-character hash is in the coordinator's GO message (a commit cannot name itself); the lead checks it out in a
-fresh checkout for this round (section C) and gives it to the session, and step 0 compares it. Step 4 is covered
-too; run it only when the lead says the pilot is over. Judged were the code of the round-5 pin, commit
-`c48eb6dc28b31f798a8c75f3b9612c8895570278` (the pin below), and the commands as rehearsed from a fresh clone of it
-(`results/rehearsal_round5.json`): every command that changed beyond this round's names was issued there; the
-image build of step 1 (tried there; it failed behind the cloud's proxy), step 2's commands, step 4 and the points
-of "If a run was interrupted" were not rehearsed at this pin and differ from round 4's rehearsed commands only in
-the names `physim2-ring:3` and `physim2-pilot-r5`.
-After the pin, the commits changed `results/`, `rehearsal/`, `README.md`, prose of this file (no command), this
-notice and `HOST_SAFETY_AUDIT.md`, and no file of the pin. This GO replaces the GO of round 4, second pass, for
-`0697487eb4b9d9bcf4f5753543c0786141b99094`: start steps 0 to 2 from this commit only. A smoke test that passed at
-`0697487eb` stays a result; what it left under its own names (`physim2-ring:2`, `$HOME/physim2-pilot-20261110`)
-step 0 lists as harmless.
-
-**Step 3 (model rollouts) is NOT released by this notice: NO-GO.** Rule A.1 stands: step 3 needs a notice that
-begins `**GO for steps 0 to 3.**`. Five findings of major severity are open, and each needs a change of a pinned
-file, so a new pin: (1) a model in its box can pass the new per-box gate and upload cut on its way to verifiers'
-interception server by writing the request target in absolute form (`http://host:port/...`) or with two leading
-slashes, so what vf-eval can be made to hold falls back to 64 requests of 16 MiB at once, tens of GiB once parsed;
-(2) the in-box check's report and the listing of `submission/`, both written by the box, are split and parsed
-whole in vf-eval (up to 96 MiB each time, about 2 to 3.5 GiB once parsed); (3) a box's container log has no size
-limit, so a box can fill the disk of Docker Desktop's virtual machine for as long as it runs; (4) the task
-statement does not say that a reply without a tool call, or one cut at the token limit before its tool call, ends
-the run; (5) `lab.usage()` reports the context without cache reads, so it shows almost the whole context left
-until the context stop ends the run. From this commit, run no command of section 3, 3.0 included, and create no
-`LEAD-GO-MODEL-SPEND.json`.
-
-For the lead, not the session: steps 1 and 2 at this commit leave `physim2-ring:3`, `$HOME/physim2-pilot-r5` (and
-`$HOME/physim2-pilot-r5-results` after step 4) and the study folder's `.venv`. A later pin that changes a pinned
-file needs names of its own, or its step 0 stops on what this commit left. Step 2b has not run at this code
-anywhere; what decides a stop there is its two lists, as step 2b says.
+**ON HOLD: run nothing from this commit.** Round 5, second pass (the fixer's commit, 12 Nov 2026): the five majors
+and the minors that the first pass of round 5 left open (`HOST_SAFETY_AUDIT.md`, "Re-audit, round 5", K11 to K15,
+X20 to X24, T26, T27) were changed in pinned files, so this is a new pin with names of its own (`physim2-ring:4`,
+`$HOME/physim2-pilot-r6`, a fresh checkout such as `~/physim-r6`). It has not been audited. The GO for steps 0 to
+2 of the first pass of round 5 holds for its own commit, `5be2466e307ccc4785278af43279b63a06c3ac9f`, only; what that
+commit's steps leave (`physim2-ring:3`, `$HOME/physim2-pilot-r5`) this pin's step 0 lists as harmless. A verdict
+replaces this notice.
 <!-- HOLD-END -->
 
 <!-- PIN-BEGIN -->
@@ -41,7 +14,7 @@ anywhere; what decides a stop there is its two lists, as step 2b says.
 40-character hash in the coordinator's GO message. The lead checks it out (section C) and gives it to the
 session, and the first line that step 0 prints must equal it. The code is identified by the sha256 of
 `PIN.sha256`, the list of the sha256 of every file the pilot executes or imports; step 0 recomputes both.
-sha256 of `PIN.sha256`: `025a9da6e724f5f907b05497603ced013a78c531ded70affd82b0c8f1d004eed`
+sha256 of `PIN.sha256`: `41da66d69750ce7829112f30c4c22417b0e19df38c34448818dbfac4670f78c8`
 <!-- PIN-END -->
 
 What this is: the exact commands to (0) verify the code, the session and the disk, (1) install, (2) run the scripted,
@@ -49,8 +22,9 @@ model-free smoke test on Docker at $0, (3) run the model rollout that ONE REQUES
 there are requests, one at a time, and (4) clean up. This is the text of round 4. Steps 0 to 2 and step 4 are the
 commands of round 3 with the changes that `README.md`, section 8.12, lists (no certificate file, the exam config
 `ring_r4`, the null policy in the reference table, two more names in the environment check) and, from round 5, the
-names of this round only: the image `physim2-ring:3`, the pilot folder `$HOME/physim2-pilot-r5` and its run label
-`physim2-pilot-r5`, a fresh checkout (section C), and `command grep` (section B, "The session's shell").
+names of this pin only: the image `physim2-ring:4`, the pilot folder `$HOME/physim2-pilot-r6` and its run label
+`physim2-pilot-r6` (round 5, second pass; the first pass used `physim2-ring:3` and `physim2-pilot-r5`), a fresh
+checkout (section C), and `command grep` (section B, "The session's shell").
 Step 3 is new: it is driven by a request (schema `rollout-job/v1`) and by the tools `tools/check_request.py`,
 `tools/vfrun.py --request` and `tools/pack_rollout.py`.
 Evidence. Round 3 rehearsed every command of steps 0 to 2 and of step 4 except the image build and its status
@@ -216,29 +190,32 @@ what a box stores, not what it sends. Every way out of a box into a process on t
 | way out | bound | what the box sees beyond it |
 |---|---|---|
 | the output of any `docker` client that vf-eval starts (the harness's own command, the in-box check, `exec`, `cp` of `submission/`) | vf-eval keeps at most 96 MiB of standard output and 4 MiB of standard error per client and reads and drops the rest [`physim2_env/runtime.py`, `_communicate`] | the command counts as failed (`client wrote more than the pilot reads`); for the harness's command the run ends as a failed run and is graded on its last copy of `submission/` (ruling E1) |
-| the in-box check `lab.validate` | its report is cut at 1 MiB in the box (`| head -c 1048576`) [`physim2_env/access.py`] | "the validator in the box returned no report" |
+| the in-box check `lab.validate` | its report is cut at 1 MiB in the box (`| head -c 1048576`) [`physim2_env/access.py`]; root in the box can write past that cut into the check's own output, so text longer than 1 MiB + 64 KiB is refused before anything splits or parses it, and the listing of the working directory taken at the end is cut to 400,000 bytes before it is split (round 5, second pass, K12) [`access.py`, `clean_report`; `capture.py`, `parse_listing`] | "the validator in the box returned no report" (or "more than 1 MiB") |
 | a request to the laboratory | at most 4 MiB per request, counted as it arrives, and at most 8 requests at once [`physim2_env/bearer.py`] | `413` (too large), `503` (busy); nothing of it reaches the laboratory's code |
 | the box's proxy in vf-eval | at most 64 connections of a box at once, and at most 320 KiB waiting per connection [`physim2_env/runtime.py`] | further connections are closed unread; a sender is slowed, not buffered |
-| verifiers' interception server in vf-eval (the box's way to the model; the per-rollout secret it asks for is on the command line of the chat program in the box, so the model can read it) (round 5, K9) | at most 16 MiB per request body (`INTERCEPTION_BODY_MAX`, set by name before the server starts; verifiers' own default is 1 GiB) [`physim2_env/runtime.py`, `install`; vf:interception/server.py:78, 424, 586-591]; the box's proxy lets ONE request of a box at a time through to it and holds the others before anything of them is forwarded (`CALLBACK_ACTIVE_MAX`), and cuts a body after 17 MiB (`CALLBACK_UPLOAD_MAX`) | `413` after 16 MiB; a further request waits; the connection is closed after 17 MiB |
+| verifiers' interception server in vf-eval (the box's way to the model; the per-rollout secret it asks for is on the command line of the chat program in the box, so the model can read it) (round 5, K9) | at most 16 MiB per request body (`INTERCEPTION_BODY_MAX`, set by name before the server starts; verifiers' own default is 1 GiB) [`physim2_env/runtime.py`, `install`; vf:interception/server.py:78, 424, 586-591]; the box's proxy lets ONE request of a box at a time through to it and holds the others before anything of them is forwarded (`CALLBACK_ACTIVE_MAX`), and cuts a body after 17 MiB (`CALLBACK_UPLOAD_MAX`). The proxy finds that route exactly as verifiers' own proxy does (the path of the request target), so a target written in absolute form (`http://host:port/...`) or starting with `//` meets the same gate and cut (round 5, second pass, K11) | `413` after 16 MiB; a further request waits; the connection is closed after 17 MiB |
+| the box's container log: what a process writes to the output of the box's PID 1 (root in the box can open `/proc/1/fd/1`) (round 5, second pass, K13) | kept nowhere: every box is started with `--log-driver none`, read back after its start (a box without it is refused) [`physim2_env/boxcaps.py`]. Docker's default driver would keep it in a log file without a size limit on Docker Desktop's disk | nothing; `docker logs` of a box answers that its driver does not read logs |
 | vf-eval's log and the laboratory's log (round 5, channel sweep) | a kind of log record that a box can cause once per request (an unauthorized request, a failed one) is written 20 times in full, then once a minute with the count dropped, each cut at 2,000 characters [`physim2_env/runtime.py`, `RepeatLimit`, also in the laboratory's process]; the laboratory's request log on the Mac holds at most 20,000 lines, each text in a line cut at 500 characters [`physim2_env/lab_tools.py`, `BoundedLog`] | nothing (the requests are still answered) |
 
 So what a box can make vf-eval hold is bounded, whatever it sends. The largest single term is the interception
-server: a body is read whole (at most 16 MiB) and then parsed into Python objects, which can take up to about 25
-times the body's size (measured under tripwires: a 15 MiB body of empty JSON objects or of short messages takes
-about 400 MiB), and only one request of a box is there at a time: about 0.4 GiB at once, freed when the request is
+server: a body is read whole (at most 16 MiB) and then parsed into Python objects, which take about 40 times the
+body's size (measured: 25 times for a flat list of empty JSON objects or of short messages, 36 times for nested
+JSON; K14), and only one request of a box is there at a time: about 0.7 GiB at once, freed when the request is
 answered. To that add the bounds of the other rows (at most 64 connections x 320 KiB in the proxy, 96 MiB + 4 MiB
-of one `docker` client's output, 8 x 4 MiB of request bodies in the laboratory). Round 4's text here said "some
+of one `docker` client's output). The laboratory, a process of its own, holds at most 8 requests of 4 MiB at once,
+each parsed and waiting for the one simulation at a time: about 1.2 GiB in that process (inferred; K15). Round 4's text here said "some
 hundreds of MiB at most": that was false for the interception server, which took 1 GiB per request and 64 at once
 (about 64 GiB; K9). Measured through vf-eval in the cloud container: a box that pushed about 0.9 GB into the old
 ways out (`results/rehearsal_round4.json`, `second_pass`), and round 5's box that sent two requests of 1 GiB, 8
 requests of 15 MiB and 3,000 unauthorized ones to the interception server and floods to the laboratory
 (`results/rehearsal_round5.json`, `flood5`). It can
-still keep a core of the Mac busy while vf-eval reads and drops what it sends, until the run's wall time ends it. **A box cannot write to Docker's disk**, so a model cannot make Docker
+still keep a core of the Mac busy while vf-eval reads and drops what it sends, until the run's wall time ends it. **A box cannot write to Docker's disk** (its container log included, since round 5's second pass: K13), so a model cannot make Docker
 Desktop's disk image grow; that is why this pin asks for no disk setting. Measured from inside a box in the
 cloud container (`results/round4_step3.json`, checks K2 to K10). Docker Desktop's virtual machine remains the
 wall between a box and the Mac; that wall was not tested by this study.
 
-**Credential helpers (CRED-2).** `git` (step 0, and the one fetch of step 3) and the `docker` client (the image
+**Credential helpers (CRED-2).** `git` (step 0; the fetch of 3a; and, in a checkout made with `--filter=blob:none`,
+the second command of 3a, which fetches the contents of the job's three files from the host when it reads them: T27) and the `docker` client (the image
 build of step 1 pulls `python:3.12-slim`; verifiers' helper image at the first rollout pulls `alpine:3.22`) may
 start the credential helpers that their own configuration names (for `git`, the system's keychain helper; for
 Docker Desktop, its own helper): the helper may read the stored login for that one host, to answer that one
@@ -320,8 +297,8 @@ Append-only: `LEDGER.jsonl`, `INSTANCES.jsonl`, `rollouts/<job>/spend.jsonl`, th
 **What is written and left on the Mac.** uv's own Python 3.12, if uv has none yet: the DRY RUN of step 1
 already downloads it (`~/.local/share/uv/python`; 104 MB on disk in the cloud rehearsal); `.venv` in the study
 folder (about 1 GB with jax) and uv's cache (`~/.cache/uv`);
-the folder `$HOME/physim2-pilot-r5` (mode 0700) with `store` and `scratch`, and in step 4
-`$HOME/physim2-pilot-r5-results`; in the store, next to the hidden instance, one more file with the hidden
+the folder `$HOME/physim2-pilot-r6` (mode 0700) with `store` and `scratch`, and in step 4
+`$HOME/physim2-pilot-r6-results`; in the store, next to the hidden instance, one more file with the hidden
 parameters, `store/<instance>/work/reference_C.theta.json` (mode 0600; it goes with the store); after a run was
 stopped, a small `<run name>.stopped.json` beside the run folder (the reason, in words and numbers);
 `~/.cache/verifiers/` (created by verifiers); one small file `/tmp/vf-port-<hex>` per rollout, which verifiers
@@ -330,7 +307,7 @@ never removes (leave them; do not delete by pattern); small state files of the `
 folders nobody removes: the laboratory's working folder `~/.cache/verifiers/runtimes/subprocess/vf-<12 hex>` (one
 log file), `$TMPDIR/physim2-io-<random>` (one socket), and possibly `$TMPDIR/physim2-bundle-<random>` (a copy of
 the public package, about 1 MB) and an empty `$TMPDIR/vf-network-<random>`. In Docker Desktop's disk image: the
-images `physim2-ring:3` (about 620 MB), `python:3.12-slim`, and `localhost/verifiers-network:1` with
+images `physim2-ring:4` (about 620 MB), `python:3.12-slim`, and `localhost/verifiers-network:1` with
 `alpine:3.22`, which verifiers builds itself at the first rollout (if an image of that name is already on the
 Mac, from other verifiers work, verifiers uses it as it is, and runs it with the right to configure the network
 of each box: it is the lead's own image either way); and **the build cache of those two builds** (BuildKit;
@@ -400,17 +377,17 @@ connections to port 443 of two addresses, the two that `api.pinference.ai` resol
 | check | command | expected |
 |---|---|---|
 | hold lifted | the coordinator's message | GO for steps 0 to 3 (or 0 to 2), with a 40-character commit hash |
-| where the checkout is | a FRESH checkout for this round, at a path named for it, directly under your home folder: for example `git clone --filter=blob:none --no-checkout <the repository> ~/physim-r5`, then in it `git sparse-checkout set --cone research/alife/vecworld` and the checkout of the GO hash below; not under `~/Documents` or `~/Desktop` | a fresh checkout holds no `.venv` of an earlier pin (step 0 stops on one); those two folders are synced to iCloud on this Mac: a synced `.venv` of 1 GB and a synced store are not wanted. Do not add the study folder to a uv workspace of the repository's root: step 1 expects it to stand alone |
+| where the checkout is | a FRESH checkout for this round, at a path named for it, directly under your home folder: for example `git clone --filter=blob:none --no-checkout <the repository's https address> ~/physim-r6` (https, not SSH: 3a fetches files through it, T27), then in it `git sparse-checkout set --cone research/alife/vecworld` and the checkout of the GO hash below; not under `~/Documents` or `~/Desktop` | a fresh checkout holds no `.venv` of an earlier pin (step 0 stops on one); those two folders are synced to iCloud on this Mac: a synced `.venv` of 1 GB and a synced store are not wanted. Do not add the study folder to a uv workspace of the repository's root: step 1 expects it to stand alone |
 | right code | in the study folder: `git fetch origin claude/fisim-agent-world-research-hepmlz`, then `git checkout --detach <the hash of the GO message>`; `git rev-parse HEAD`; `git status --short` | that hash, all 40 characters; nothing listed |
 | right text | the first lines of `RUNBOOK_MAC.md` in the study folder | they begin `**GO for steps 0 to 3.**` (or `0 to 2`), not ON HOLD |
-| user | `id -u`; `echo "$HOME"`; `ls "$HOME/physim2-pilot-r5" "$HOME/physim2-pilot-r5-results"` | not 0; your own home; no such folders (folders of earlier pins, such as `$HOME/physim2-pilot-20261110`, do not matter: step 0 lists them as harmless, and they are yours to remove when you like). A current backup of the Mac exists |
+| user | `id -u`; `echo "$HOME"`; `ls "$HOME/physim2-pilot-r6" "$HOME/physim2-pilot-r6-results"` | not 0; your own home; no such folders (folders of earlier pins, such as `$HOME/physim2-pilot-r5` or `$HOME/physim2-pilot-20261110`, do not matter: step 0 lists them as harmless, and they are yours to remove when you like). A current backup of the Mac exists |
 | machine | `uname -m` | `arm64` |
 | folder | `pwd -P` in the study folder | ends in `research/alife/vecworld/program/round6/vfport`. **This output, character for character, is the path you give the session** (step 0 compares it) |
 | path is plain | `pwd -P \| LC_ALL=C command grep -E '^[A-Za-z0-9/._-]+$'` in the study folder | it prints the path again. If it prints nothing, the path holds a space or another character outside letters, digits and `/ . _ -`: move the checkout first |
 | the session | started in the study folder; given that path and the hash of the GO message | no subagents; one command per call |
 | tools | `command -v uv docker`; `uv --version`; `docker context show`; `docker info` | uv 0.11 or later (it must know `--managed-python`); Docker Desktop's own client and context `desktop-linux`; it answers. If uv is missing or older: stop and ask, do not install it from inside the session |
 | variables | `env \| cut -d= -f1 \| command grep -E '^(PHYSIM2_\|UV_\|VIRTUAL_ENV\|PYTHON(PATH\|HOME\|EXECUTABLE)\|__PYVENV_LAUNCHER__\|DYLD_\|DOCKER_\|BUILDX_\|VF_\|MCP_HOST\|MCP_PORT\|PRIME_RUNS_MODE)'` | nothing. This is your terminal; the session checks its own environment in step 0 and the tools check theirs |
-| other runs | `docker ps -a --filter label=verifiers.run`; `docker ps`; `docker images physim2-ring` | no `physim2-ring:3` (an image of an earlier pin, `physim2-ring:2`, may stay: it is not used), no container of the pilot, **and no container of anything else is running** while steps 2 and 3 run (the laboratory now needs a secret, section B; the rule stays as a second wall). Save the output of `docker ps -a`, `docker images` and `docker system df` as the baseline |
+| other runs | `docker ps -a --filter label=verifiers.run`; `docker ps`; `docker images physim2-ring` | no `physim2-ring:4` (images of earlier pins, `physim2-ring:3` and `physim2-ring:2`, may stay: they are not used), no container of the pilot, **and no container of anything else is running** while steps 2 and 3 run (the laboratory now needs a secret, section B; the rule stays as a second wall). Save the output of `docker ps -a`, `docker images` and `docker system df` as the baseline |
 | room | `df -Pk "$HOME"`; Docker Desktop: Settings, Resources | at least 11 GiB free on the Mac before step 0: the pilot's floor of 8 GiB plus the about 3 GiB that steps 1 and 2 write (half in the study folder and uv's cache, half in Docker's disk image). With less, a later command refuses or the watchdog stops a run: a stop like any other, nothing is lost and nothing is deleted to make room. The watchdog measures the file system of the home folder only: Docker Desktop's disk image must be on it (the default). At least 4 CPUs and at least 6 GB of memory for Docker Desktop's virtual machine (more is fine) (a box is capped at 2 CPUs and 4 GB, and the grading boxes come one at a time). No Docker Desktop setting is changed by the pilot or needs to be: a box of this pin cannot write to Docker's disk at all (read-only root, memory-backed scratch; section B) |
 | power | plugged in; no sleep for the 45 minutes of steps 1 and 2, nor while a rollout of step 3 runs (up to its wall time plus grading) | a sleep is an interruption |
 | network | VPN, TLS-intercepting proxy | none (the image build needs a direct connection) |
@@ -459,14 +436,15 @@ whose VALUE holds a line break adds a line of its own, which can only add a `FOU
 a name.)
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && docker ps -a --filter label=verifiers.run=physim2-pilot-r5 --format '{{.Names}}' && echo "CONTAINERS-LISTED" && docker images -q physim2-ring:3 && echo "IMAGES-LISTED" && test ! -e "$HOME/physim2-pilot-r5" && test ! -L "$HOME/physim2-pilot-r5" && test ! -e "$HOME/physim2-pilot-r5-results" && test ! -L "$HOME/physim2-pilot-r5-results" && test ! -e .venv && test ! -L .venv && echo "NO-PILOT-FOLDERS" && echo "EARLIER PINS, HARMLESS:" && docker images --format '{{.Repository}}:{{.Tag}}' physim2-ring:2 && { ls -d "$HOME/physim2-pilot-20261110" "$HOME/physim2-pilot-20261110-results" 2>/dev/null ; true ; } && echo "EARLIER-LISTED"
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && docker ps -a --filter label=verifiers.run=physim2-pilot-r6 --format '{{.Names}}' && echo "CONTAINERS-LISTED" && docker images -q physim2-ring:4 && echo "IMAGES-LISTED" && test ! -e "$HOME/physim2-pilot-r6" && test ! -L "$HOME/physim2-pilot-r6" && test ! -e "$HOME/physim2-pilot-r6-results" && test ! -L "$HOME/physim2-pilot-r6-results" && test ! -e .venv && test ! -L .venv && echo "NO-PILOT-FOLDERS" && echo "EARLIER PINS, HARMLESS:" && docker images --format '{{.Repository}}:{{.Tag}}' physim2-ring:3 && docker images --format '{{.Repository}}:{{.Tag}}' physim2-ring:2 && { ls -d "$HOME/physim2-pilot-r5" "$HOME/physim2-pilot-r5-results" "$HOME/physim2-pilot-20261110" "$HOME/physim2-pilot-20261110-results" 2>/dev/null ; true ; } && echo "EARLIER-LISTED"
 ```
 
 Expected: six lines or more. Docker's version, `CONTAINERS-LISTED` (no container of this pilot: a name before it
-is a stop), `IMAGES-LISTED` (no image `physim2-ring:3` yet: an image id before it is a stop), `NO-PILOT-FOLDERS`
+is a stop), `IMAGES-LISTED` (no image `physim2-ring:4` yet: an image id before it is a stop), `NO-PILOT-FOLDERS`
 (neither pilot folder of this round nor a `.venv` exists, not even as a link), `EARLIER PINS, HARMLESS:`, then
-what earlier pins left under THEIR names, if anything (`physim2-ring:2`, `$HOME/physim2-pilot-20261110`,
-`$HOME/physim2-pilot-20261110-results`), then `EARLIER-LISTED`. What stands between those two lines is not a
+what earlier pins left under THEIR names, if anything (`physim2-ring:3`, `physim2-ring:2`, `$HOME/physim2-pilot-r5`,
+`$HOME/physim2-pilot-r5-results`, `$HOME/physim2-pilot-20261110`, `$HOME/physim2-pilot-20261110-results`), then
+`EARLIER-LISTED`. What stands between those two lines is not a
 stop: this round uses none of it, and it is the lead's to remove by hand when the lead likes (report it). A
 missing line: stop.
 
@@ -477,8 +455,9 @@ first command of step 0 lists one line between its second and third line, `!! re
 `IMAGES-LISTED` and stops there: no `NO-PILOT-FOLDERS` and nothing after it (the `.venv` and, unless step 4 ran,
 the pilot folder of steps 1 and 2). Seen so in round 4's cloud rehearsal after steps 1 and 3
 (`results/rehearsal_round4.json`, `second_pass`). Go on with step 3 then; do not run steps 1 and 2 again. Anything else listed is a stop.
-**What earlier pins left** under their own names (round 4's image `physim2-ring:2` and folders
-`$HOME/physim2-pilot-20261110`, `-results`) is listed and harmless (above). A `.venv` in THIS checkout is not: it
+**What earlier pins left** under their own names (round 5's first pass: image `physim2-ring:3` and folders
+`$HOME/physim2-pilot-r5`, `-results`; round 4: `physim2-ring:2` and `$HOME/physim2-pilot-20261110`, `-results`) is
+listed and harmless (above). A `.venv` in THIS checkout is not: it
 can only come from another commit's step 1 in the same folder, step 1's dry run would say `Would replace` or
 `Would use`, and that is a stop as written above. The cure is the lead's: a fresh checkout at a new path (section
 C); the session removes nothing.
@@ -518,7 +497,7 @@ Python 3.12 of its own yet, it downloads one now, before it prints anything (clo
 `~/.local/share/uv/python`), so allow it a minute.
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && mkdir -m 700 "$HOME/physim2-pilot-r5" && mkdir "$HOME/physim2-pilot-r5/scratch" && echo "PILOT-FOLDER-MADE"
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && mkdir -m 700 "$HOME/physim2-pilot-r6" && mkdir "$HOME/physim2-pilot-r6/scratch" && echo "PILOT-FOLDER-MADE"
 ```
 
 Expected: `PILOT-FOLDER-MADE`. `mkdir` fails if a pilot folder exists already, and nothing after it runs: stop.
@@ -529,14 +508,14 @@ is the only `uv` command that changes anything; no later command uses `uv`. It b
 pinned build backend; a `pyproject.toml` whose pins differ from `uv.lock` makes it fail (`--locked`).
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f pyproject.toml && test -f uv.lock && df -Pk "$HOME" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print "refused: under 8 GiB free on the file system of the home folder" ; exit 1 }' && docker info --format '{{.ServerVersion}}' && { ( nohup uv sync --project "/ABSOLUTE/PATH/TO/vfport" --locked --python 3.12 --managed-python > "$HOME/physim2-pilot-r5/scratch/sync.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r5/scratch/sync.log" ) > /dev/null 2>&1 < /dev/null & }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f pyproject.toml && test -f uv.lock && df -Pk "$HOME" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print "refused: under 8 GiB free on the file system of the home folder" ; exit 1 }' && docker info --format '{{.ServerVersion}}' && { ( nohup uv sync --project "/ABSOLUTE/PATH/TO/vfport" --locked --python 3.12 --managed-python > "$HOME/physim2-pilot-r6/scratch/sync.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r6/scratch/sync.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
 It prints Docker's version and returns at once. Status (repeat until the log's last line is `EXIT 0`; any other
 `EXIT` line, or a line with `error`: stop; no `EXIT` line after 20 minutes: stop and report, signal nothing):
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && tail -n 3 "$HOME/physim2-pilot-r5/scratch/sync.log"
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && tail -n 3 "$HOME/physim2-pilot-r6/scratch/sync.log"
 ```
 
 Expected when it is finished: two lines that begin with ` + ` (the last of the installed packages), then
@@ -566,18 +545,18 @@ Nothing after this step could find or stop the pilot's processes.
 The image build takes minutes, so it runs detached:
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk "$HOME" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print "refused: under 8 GiB free on the file system of the home folder" ; exit 1 }' && docker info --format '{{.ServerVersion}}' && { ( nohup docker build -f docker/Dockerfile.ring -t physim2-ring:3 docker/ > "$HOME/physim2-pilot-r5/scratch/build.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r5/scratch/build.log" ) > /dev/null 2>&1 < /dev/null & }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk "$HOME" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print "refused: under 8 GiB free on the file system of the home folder" ; exit 1 }' && docker info --format '{{.ServerVersion}}' && { ( nohup docker build -f docker/Dockerfile.ring -t physim2-ring:4 docker/ > "$HOME/physim2-pilot-r6/scratch/build.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r6/scratch/build.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
 It prints Docker's version and returns at once. Status (repeat until the log's last line is `EXIT 0`; any other
 `EXIT` line: stop; no `EXIT` line after 30 minutes: stop and report, signal nothing):
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && tail -n 2 "$HOME/physim2-pilot-r5/scratch/build.log"
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && tail -n 2 "$HOME/physim2-pilot-r6/scratch/build.log"
 ```
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker run --rm --network none --label verifiers.run=physim2-pilot-r5 physim2-ring:3 python -c "import numpy, scipy, jax; print(numpy.__version__, scipy.__version__, jax.__version__)"
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker run --rm --network none --label verifiers.run=physim2-pilot-r6 physim2-ring:4 python -c "import numpy, scipy, jax; print(numpy.__version__, scipy.__version__, jax.__version__)"
 ```
 
 Expected: `2.5.4 1.18.1 0.12.0.1`. This is the ONE image of every box: the agent's, the grader's and the reference
@@ -591,7 +570,7 @@ The hidden side lives in a store OUTSIDE the repository. Make one fresh ring ins
 hidden theta are drawn now; about 15 s):
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/make_instances.py --store "$HOME/physim2-pilot-r5/store" --world ring --config ring_r4 --n 1 --prefix mac-ring
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/make_instances.py --store "$HOME/physim2-pilot-r6/store" --world ring --config ring_r4 --n 1 --prefix mac-ring
 ```
 
 Expected: one JSON line with `"instance_id": "mac-ring-w0"`, `"n_items": 64`, `"R": 16` and a
@@ -603,7 +582,7 @@ Expected: one JSON line with `"instance_id": "mac-ring-w0"`, `"n_items": 64`, `"
 The tools start verifiers' vf-eval (`physim2-env`, `--env.id isolated-verifier`) with the Docker runtime and the
 scripted harness; they set `push = false`, `PRIME_RUNS_MODE=disabled` and a stand-in model client, build the
 environment of everything they start from the allow-list of section B, and keep the disk floor of rule 7.
-`VF_RUN_ID=physim2-pilot-r5` is on every run command: verifiers writes it on every container it creates as
+`VF_RUN_ID=physim2-pilot-r6` is on every run command: verifiers writes it on every container it creates as
 the label `verifiers.run`, and the tools refuse to start without it. The store path and the disk floor are on
 every command; nothing depends on a variable set earlier.
 
@@ -622,7 +601,7 @@ second wall. Whether to stop a foreign container is the lead's decision.)
 **Status command of step 2** (use it after starting 2a, 2b or 2c, and whenever you want to know what runs):
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 4 "$HOME/physim2-pilot-r5/scratch/prove.log" "$HOME/physim2-pilot-r5/scratch/probe.log" "$HOME/physim2-pilot-r5/scratch/single.log" 2>/dev/null | cut -c 1-200 ; echo "containers:" ; docker ps -a --filter label=verifiers.run=physim2-pilot-r5 --format '{{.Names}} {{.Status}}' ; echo "processes:" ; ps axww -o pid= -o command= | awk -v p="/ABSOLUTE/PATH/TO/vfport" 'BEGIN { py = p "/.venv/bin/python " } { line = $0 ; sub(/^ *[0-9]+ /, "", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = "OTHER" ; if (index(r, "-B tools/prove.py ") == 1 || index(r, "-B tools/check_probe.py ") == 1 || index(r, "-B tools/vfrun.py ") == 1) k = "TOOL" ; else if (index(r, "-B " p "/tools/vfeval.py @ ") == 1) k = "VF-EVAL" ; else if (index(r, "-m physim2_env.lab_tools") == 1) k = "LAB" ; else if (index(r, "-B " p "/tools/make_instances.py ") == 1 || index(r, "-B tools/make_instances.py ") == 1 || index(r, "-B " p "/tools/build_reference.py ") == 1) k = "HELPER" ; else if (index(r, "-c") == 1) k = "PROBE" ; print k " " substr($0, 1, 160) }' ; echo "free:" ; df -Pk "$HOME" | awk 'NR == 2 { print int($4 / 1048576) " GiB" }' ; echo "status done" ; }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 4 "$HOME/physim2-pilot-r6/scratch/prove.log" "$HOME/physim2-pilot-r6/scratch/probe.log" "$HOME/physim2-pilot-r6/scratch/single.log" 2>/dev/null | cut -c 1-200 ; echo "containers:" ; docker ps -a --filter label=verifiers.run=physim2-pilot-r6 --format '{{.Names}} {{.Status}}' ; echo "processes:" ; ps axww -o pid= -o command= | awk -v p="/ABSOLUTE/PATH/TO/vfport" 'BEGIN { py = p "/.venv/bin/python " } { line = $0 ; sub(/^ *[0-9]+ /, "", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = "OTHER" ; if (index(r, "-B tools/prove.py ") == 1 || index(r, "-B tools/check_probe.py ") == 1 || index(r, "-B tools/vfrun.py ") == 1) k = "TOOL" ; else if (index(r, "-B " p "/tools/vfeval.py @ ") == 1) k = "VF-EVAL" ; else if (index(r, "-m physim2_env.lab_tools") == 1) k = "LAB" ; else if (index(r, "-B " p "/tools/make_instances.py ") == 1 || index(r, "-B tools/make_instances.py ") == 1 || index(r, "-B " p "/tools/build_reference.py ") == 1) k = "HELPER" ; else if (index(r, "-c") == 1) k = "PROBE" ; print k " " substr($0, 1, 160) }' ; echo "free:" ; df -Pk "$HOME" | awk 'NR == 2 { print int($4 / 1048576) " GiB" }' ; echo "status done" ; }
 ```
 
 It prints the last lines of the logs that exist (each under a line `==> <file> <==`, each line cut at 200
@@ -658,7 +637,7 @@ is the disk floor (rule 7).
 ### 2a. One world, four policies, then C once more with one box per exam item (about 12 minutes)
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r5 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/prove.py --store "$HOME/physim2-pilot-r5/store" --scratch "$HOME/physim2-pilot-r5/scratch/proof" --world ring --config ring_r4 --worlds 1 --prefix mac-ring --policies null,D,P0,C --box-check C --no-cross-check --disk-floor-gib 8 --out "$HOME/physim2-pilot-r5/scratch/proof_mac.json" > "$HOME/physim2-pilot-r5/scratch/prove.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r5/scratch/prove.log" ) > /dev/null 2>&1 < /dev/null & }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r6 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/prove.py --store "$HOME/physim2-pilot-r6/store" --scratch "$HOME/physim2-pilot-r6/scratch/proof" --world ring --config ring_r4 --worlds 1 --prefix mac-ring --policies null,D,P0,C --box-check C --no-cross-check --disk-floor-gib 8 --out "$HOME/physim2-pilot-r6/scratch/proof_mac.json" > "$HOME/physim2-pilot-r6/scratch/prove.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r6/scratch/prove.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
 It prints Docker's version and returns at once (the tool runs on, detached). Then use the status command, the
@@ -674,7 +653,7 @@ what a failed item is scored as, and it lies near K, a little below or above. Th
 ```sh
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B -c "
 import json
-p = json.load(open('$HOME/physim2-pilot-r5/scratch/proof_mac.json'))
+p = json.load(open('$HOME/physim2-pilot-r6/scratch/proof_mac.json'))
 r = p['per_world'][0]['rollouts']; b = p['one_box_per_item_check_world_0']['C']
 print('all_graded', p['all_graded'], 'all_ok', p['all_ok'], 'failed_items', p['n_failed_items_total'])
 print('ticks', {k: r[k]['lab_ticks_used'] for k in r})
@@ -693,7 +672,7 @@ above C (ordering, not values). Anything else: stop and report.
 ### 2b. The boundary checks and the probes, on their own small instance (37 short rollouts; about 25 minutes)
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r5 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/check_probe.py --store "$HOME/physim2-pilot-r5/store" --scratch "$HOME/physim2-pilot-r5/scratch/probe" --disk-floor-gib 8 --out "$HOME/physim2-pilot-r5/scratch/probe_mac.json" > "$HOME/physim2-pilot-r5/scratch/probe.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r5/scratch/probe.log" ) > /dev/null 2>&1 < /dev/null & }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r6 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/check_probe.py --store "$HOME/physim2-pilot-r6/store" --scratch "$HOME/physim2-pilot-r6/scratch/probe" --disk-floor-gib 8 --out "$HOME/physim2-pilot-r6/scratch/probe_mac.json" > "$HOME/physim2-pilot-r6/scratch/probe.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r6/scratch/probe.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
 Then the status command and the "must show" rule. When `probe.log` ends with `EXIT 0`, the line before it is one
@@ -716,7 +695,7 @@ that is a finding to report, not something to make pass. Then, for the report:
 ```sh
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B -c "
 import json
-p = json.load(open('$HOME/physim2-pilot-r5/scratch/probe_mac.json'))
+p = json.load(open('$HOME/physim2-pilot-r6/scratch/probe_mac.json'))
 e = p['evidence']
 print('round5', p['n_reproduced'], 'of', p['n_checks_round5'], p['failed_round5'], 'new', p['n_passed_new'], 'of', p['n_checks_new'], p['failed_new'])
 print('staging', {k: e['verifier_box_staging'][k] for k in ('container_evidence', 'world_writable_paths_fixed', 'box_limits', 'predictor_uid')})
@@ -745,7 +724,7 @@ model rollout is NOT started this way: the command form refuses every config tha
 its own route.) It can run once: a second run of the same agent on the same instance is refused.
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r5 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --config configs/scripted_ring.toml --run-name single-d --out-dir "$HOME/physim2-pilot-r5/scratch/single" --store "$HOME/physim2-pilot-r5/store" --disk-floor-gib 8 > "$HOME/physim2-pilot-r5/scratch/single.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r5/scratch/single.log" ) > /dev/null 2>&1 < /dev/null & }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r6 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --config configs/scripted_ring.toml --run-name single-d --out-dir "$HOME/physim2-pilot-r6/scratch/single" --store "$HOME/physim2-pilot-r6/store" --disk-floor-gib 8 > "$HOME/physim2-pilot-r6/scratch/single.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-pilot-r6/scratch/single.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
 Then the status command and the "must show" rule (the `TOOL` line reads `... -B tools/vfrun.py --config
@@ -756,7 +735,7 @@ hold the examined model's text, and step 3 has a status command of its own that 
 a run only through the report tool, which prints fixed fields and counts:
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/run_report.py --store "$HOME/physim2-pilot-r5/store" --run-dir "$HOME/physim2-pilot-r5/scratch/single/single-d"
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/run_report.py --store "$HOME/physim2-pilot-r6/store" --run-dir "$HOME/physim2-pilot-r6/scratch/single/single-d"
 ```
 
 Expected: `"1_ok": true`, `"1_reward_present": true`, both `network_restricted` true, `"2_single_use": true`,
@@ -819,10 +798,10 @@ this section.
    each one by its exact name, one command per container, the name copied from the status output:
 
    ```sh
-   cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker inspect --format '{{index .Config.Labels "verifiers.run"}}' NAME_FROM_THE_STATUS_LINE | command grep -Fx physim2-pilot-r5 && docker rm -f NAME_FROM_THE_STATUS_LINE
+   cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker inspect --format '{{index .Config.Labels "verifiers.run"}}' NAME_FROM_THE_STATUS_LINE | command grep -Fx physim2-pilot-r6 && docker rm -f NAME_FROM_THE_STATUS_LINE
    ```
 
-   It prints two lines: `physim2-pilot-r5`, the run label that Docker has on record for that name, and then
+   It prints two lines: `physim2-pilot-r6`, the run label that Docker has on record for that name, and then
    the name. **If it prints nothing, or one line that begins `error:` (Docker Desktop may spell it `Error: No such
    object: <name>`, with a capital E: the same), nothing was removed**: no container of that exact name carries
    this pilot's label (cloud rehearsal: nothing for a container with another label, `error: no such object:
@@ -841,7 +820,7 @@ this section.
    agent, so the store is not reusable:
 
    ```sh
-   cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk "$HOME" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print "refused: under 8 GiB free on the file system of the home folder" ; exit 1 }' && test ! -L "$HOME/physim2-pilot-r5" && test ! -L "$HOME/physim2-pilot-r5/store" && test ! -L "$HOME/physim2-pilot-r5/scratch" && test -f "$HOME/physim2-pilot-r5/store/index.json" && test -d "$HOME/physim2-pilot-r5/scratch" && rm -rf "$HOME/physim2-pilot-r5/store" "$HOME/physim2-pilot-r5/scratch" && mkdir "$HOME/physim2-pilot-r5/scratch" && echo "pilot folders reset"
+   cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && df -Pk "$HOME" | awk 'NR == 2 { free = $4 } END { if (free >= 8388608) exit 0 ; print "refused: under 8 GiB free on the file system of the home folder" ; exit 1 }' && test ! -L "$HOME/physim2-pilot-r6" && test ! -L "$HOME/physim2-pilot-r6/store" && test ! -L "$HOME/physim2-pilot-r6/scratch" && test -f "$HOME/physim2-pilot-r6/store/index.json" && test -d "$HOME/physim2-pilot-r6/scratch" && rm -rf "$HOME/physim2-pilot-r6/store" "$HOME/physim2-pilot-r6/scratch" && mkdir "$HOME/physim2-pilot-r6/scratch" && echo "pilot folders reset"
    ```
 
    Expected: `pilot folders reset`. If it prints nothing: stop and report (a pilot folder that is a link is one
@@ -876,7 +855,7 @@ this section.
    do not check out another commit (a new pin) while a cut job of this one is open; close it here, then move on:
 
    ```sh
-   cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-pilot-r5 "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage close --disk-floor-gib 8
+   cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-pilot-r6 "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage close --disk-floor-gib 8
    ```
 
    Expected: one JSON line, `{"stage": "close", "job_id": "<the job>", "status": "cut", "counted_usd": <dollars>,
@@ -1025,7 +1004,7 @@ run was interrupted") (T22). A runner's own intake that differs from this block 
   "fixed_by_the_pin": {"env": "physim2-verifier", "taskset": "physim2-env", "harness": {"id": "bash", "edit": true, "search": false}, "runtime": "docker", "num_rollouts": 1, "max_concurrent": 1, "retries": 0, "push": false},
   "forbidden_fields": ["agent_dir", "allow", "api_key_var", "args", "base_url", "block", "box_env_allow", "client", "collect", "collect_dir", "collect_tree", "colocated", "command", "compaction", "disk", "endpoints", "entrypoint", "env", "extra_body", "forward_env", "gpu", "headers", "index", "judges", "mount", "mounts", "network", "network_allow", "output_dir", "python", "script", "skills", "store", "system_prompt", "tools", "toolsets", "url", "volume", "volumes", "workdir"],
   "exam_profiles": [
-   {"profile": "ring", "world": "ring", "exam_config": "ring_r4", "items": 64, "samples_per_item": 256, "lab_ticks": 400, "reset_cost_ticks": 17, "image": "physim2-ring:3", "box_cpus": 2, "box_memory_gb": 4, "max_turns": 150, "wall_minutes": 60, "reference_policies": ["null", "D", "P0", "PM", "S", "C"]}
+   {"profile": "ring", "world": "ring", "exam_config": "ring_r4", "items": 64, "samples_per_item": 256, "lab_ticks": 400, "reset_cost_ticks": 17, "image": "physim2-ring:4", "box_cpus": 2, "box_memory_gb": 4, "max_turns": 150, "wall_minutes": 60, "reference_policies": ["null", "D", "P0", "PM", "S", "C"]}
   ]
  },
  "reference_table": {"tool": "tools/prove.py", "policies_by_profile": {"ring": ["null", "D", "P0", "PM", "S", "C"]}, "scale": "K = 0 (climatology) and O = 1 (oracle) come from the frozen exam, not from a rollout"},
@@ -1112,7 +1091,10 @@ How the count is made (each line has its test in `results/round4_step3.json`):
 
 ### 3.3 One job: the commands, in order
 
-**Before each job (T19): the first two commands of step 0**, as written (HEAD and the tree; `PIN-OK`). The tools
+**Before each job (T19): the first two commands of step 0**, as written (HEAD and the tree; `PIN-OK`). After steps
+1 and 2 at this commit the first command prints exactly one line between the folder and `TREE-LISTED`:
+`!! research/alife/vecworld/program/round6/vfport/.venv/` (the environment of step 1; step 0, "Step 0 again,
+later"). That line is expected; any other line there is a stop (T26). The tools
 check that a request names this commit and the sha256 of `PIN.sha256` (`check_pin` hashes that one file and
 compares HEAD), not the files it lists: only `shasum -c` of step 0 does. A deviation there: stop.
 
@@ -1122,7 +1104,11 @@ that the first command prints. Anything else: stop (rule A.2).
 
 **3a. Bring the job's three files** (the request, the config it names, the program's shared ledger), as data,
 out of one commit of the repository's branch. The first command talks to the repository's host and changes
-nothing in the checked-out files; the second reads that commit's objects and writes three files:
+nothing in the checked-out files; the second reads that commit's objects and writes three files. In a checkout
+made with `--filter=blob:none` (section C), git fetches the contents of those three files from the host while the
+second command reads them, and may start its credential helper for that (section B). The remote must be the
+repository's https address: with an SSH remote that fetch fails and the second command refuses with a message
+that does not say why; stop and report (T27):
 
 ```sh
 cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && git fetch origin claude/fisim-agent-world-research-hepmlz && git rev-parse FETCH_HEAD
@@ -1159,7 +1145,7 @@ the store has seen; the ceiling) is the answer to the requester: report it; do n
 **3c. Make the instance** (seconds; from here on the instance name is used, whatever happens next):
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-pilot-r5 "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage instance --disk-floor-gib 8
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-pilot-r6 "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage instance --disk-floor-gib 8
 ```
 
 Expected: `{"stage": "instance", "job_id": "<the job>", "instance": "<its name>", "made": true}`.
@@ -1168,7 +1154,7 @@ Expected: `{"stage": "instance", "job_id": "<the job>", "instance": "<its name>"
 (expected: `RUNNING-LISTED` alone). Then:
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r5 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage reference --disk-floor-gib 8 > "$HOME/physim2-rollouts/rollouts/JOB_ID/reference.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-rollouts/rollouts/JOB_ID/reference.log" ) > /dev/null 2>&1 < /dev/null & }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r6 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage reference --disk-floor-gib 8 > "$HOME/physim2-rollouts/rollouts/JOB_ID/reference.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-rollouts/rollouts/JOB_ID/reference.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
 It prints Docker's version and returns at once. **Status command of step 3** (use it now, right away: the "must
@@ -1176,7 +1162,7 @@ show" rule of step 2 holds here too, with a `TOOL` line that reads `... -B tools
 moment and then `... -B tools/prove.py ...`; and use it while the rollout of 3f runs):
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 "$HOME/physim2-rollouts/rollouts/JOB_ID/reference.log" "$HOME/physim2-rollouts/rollouts/JOB_ID/rollout.log" 2>/dev/null | cut -c 1-12 ; echo "containers:" ; docker ps -a --filter label=verifiers.run=physim2-pilot-r5 --format '{{.Names}} {{.Status}}' ; echo "processes:" ; ps axww -o pid= -o command= | awk -v p="/ABSOLUTE/PATH/TO/vfport" 'BEGIN { py = p "/.venv/bin/python " } { line = $0 ; sub(/^ *[0-9]+ /, "", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = "OTHER" ; if (index(r, "-B tools/prove.py ") == 1 || index(r, "-B tools/check_probe.py ") == 1 || index(r, "-B tools/vfrun.py ") == 1) k = "TOOL" ; else if (index(r, "-B " p "/tools/vfeval.py @ ") == 1) k = "VF-EVAL" ; else if (index(r, "-m physim2_env.lab_tools") == 1) k = "LAB" ; else if (index(r, "-B " p "/tools/make_instances.py ") == 1 || index(r, "-B tools/make_instances.py ") == 1 || index(r, "-B " p "/tools/build_reference.py ") == 1) k = "HELPER" ; else if (index(r, "-c") == 1) k = "PROBE" ; print k " " substr($0, 1, 160) }' ; echo "free:" ; df -Pk "$HOME" | awk 'NR == 2 { print int($4 / 1048576) " GiB" }' ; echo "status done" ; }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && { tail -n 1 "$HOME/physim2-rollouts/rollouts/JOB_ID/reference.log" "$HOME/physim2-rollouts/rollouts/JOB_ID/rollout.log" 2>/dev/null | cut -c 1-12 ; echo "containers:" ; docker ps -a --filter label=verifiers.run=physim2-pilot-r6 --format '{{.Names}} {{.Status}}' ; echo "processes:" ; ps axww -o pid= -o command= | awk -v p="/ABSOLUTE/PATH/TO/vfport" 'BEGIN { py = p "/.venv/bin/python " } { line = $0 ; sub(/^ *[0-9]+ /, "", line) ; if (index(line, py) != 1) next ; r = substr(line, length(py) + 1) ; k = "OTHER" ; if (index(r, "-B tools/prove.py ") == 1 || index(r, "-B tools/check_probe.py ") == 1 || index(r, "-B tools/vfrun.py ") == 1) k = "TOOL" ; else if (index(r, "-B " p "/tools/vfeval.py @ ") == 1) k = "VF-EVAL" ; else if (index(r, "-m physim2_env.lab_tools") == 1) k = "LAB" ; else if (index(r, "-B " p "/tools/make_instances.py ") == 1 || index(r, "-B tools/make_instances.py ") == 1 || index(r, "-B " p "/tools/build_reference.py ") == 1) k = "HELPER" ; else if (index(r, "-c") == 1) k = "PROBE" ; print k " " substr($0, 1, 160) }' ; echo "free:" ; df -Pk "$HOME" | awk 'NR == 2 { print int($4 / 1048576) " GiB" }' ; echo "status done" ; }
 ```
 
 It prints, for each of the two logs that exists, a line that begins `==>` (the start of the file's name) and the
@@ -1189,7 +1175,7 @@ report; the job is not continued (point 8 does not apply: no model was called) (
 config, writes it and exits):
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-pilot-r5 "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage dry-run --shared-ledger "$HOME/physim2-rollouts/shared-ledger.json" --disk-floor-gib 8
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && VF_RUN_ID=physim2-pilot-r6 "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage dry-run --shared-ledger "$HOME/physim2-rollouts/shared-ledger.json" --disk-floor-gib 8
 ```
 
 Expected: a JSON line with the model's listed prices, `one_worst_case_call_usd`, `cap_usd`,
@@ -1205,7 +1191,7 @@ without asking the lead; above it, the lead's word in this session first). First
 "Before 2a" once more (expected: `RUNNING-LISTED` alone).
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f "$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json" && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r5 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage rollout --shared-ledger "$HOME/physim2-rollouts/shared-ledger.json" --disk-floor-gib 8 --model-credentials prime > "$HOME/physim2-rollouts/rollouts/JOB_ID/rollout.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-rollouts/rollouts/JOB_ID/rollout.log" ) > /dev/null 2>&1 < /dev/null & }
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test -f "$HOME/physim2-rollouts/LEAD-GO-MODEL-SPEND.json" && docker info --format '{{.ServerVersion}}' && { ( VF_RUN_ID=physim2-pilot-r6 nohup "/ABSOLUTE/PATH/TO/vfport/.venv/bin/python" -B tools/vfrun.py --request "$HOME/physim2-rollouts/requests/JOB_ID.json" --pilot "$HOME/physim2-rollouts" --stage rollout --shared-ledger "$HOME/physim2-rollouts/shared-ledger.json" --disk-floor-gib 8 --model-credentials prime > "$HOME/physim2-rollouts/rollouts/JOB_ID/rollout.log" 2>&1 < /dev/null ; echo "EXIT $?" >> "$HOME/physim2-rollouts/rollouts/JOB_ID/rollout.log" ) > /dev/null 2>&1 < /dev/null & }
 ```
 
 ---
@@ -1301,7 +1287,7 @@ when the program has no further use for it. First run the status command of step
 deleted unless every check and every copy before it succeeded:
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test ! -L "$HOME/physim2-pilot-r5" && test ! -L "$HOME/physim2-pilot-r5/store" && test ! -L "$HOME/physim2-pilot-r5/scratch" && test -f "$HOME/physim2-pilot-r5/store/index.json" && test -d "$HOME/physim2-pilot-r5/scratch" && test -f "$HOME/physim2-pilot-r5/scratch/proof_mac.json" && test -f "$HOME/physim2-pilot-r5/scratch/probe_mac.json" && mkdir "$HOME/physim2-pilot-r5-results" && cp "$HOME/physim2-pilot-r5/scratch/proof_mac.json" "$HOME/physim2-pilot-r5/scratch/proof_mac_items.npz" "$HOME/physim2-pilot-r5/scratch/probe_mac.json" "$HOME/physim2-pilot-r5/scratch/prove.log" "$HOME/physim2-pilot-r5/scratch/probe.log" "$HOME/physim2-pilot-r5-results/" && test -s "$HOME/physim2-pilot-r5-results/proof_mac.json" && test -s "$HOME/physim2-pilot-r5-results/probe_mac.json" && rm -rf "$HOME/physim2-pilot-r5/store" "$HOME/physim2-pilot-r5/scratch" && rmdir "$HOME/physim2-pilot-r5" && ls "$HOME/physim2-pilot-r5-results"
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && test ! -L "$HOME/physim2-pilot-r6" && test ! -L "$HOME/physim2-pilot-r6/store" && test ! -L "$HOME/physim2-pilot-r6/scratch" && test -f "$HOME/physim2-pilot-r6/store/index.json" && test -d "$HOME/physim2-pilot-r6/scratch" && test -f "$HOME/physim2-pilot-r6/scratch/proof_mac.json" && test -f "$HOME/physim2-pilot-r6/scratch/probe_mac.json" && mkdir "$HOME/physim2-pilot-r6-results" && cp "$HOME/physim2-pilot-r6/scratch/proof_mac.json" "$HOME/physim2-pilot-r6/scratch/proof_mac_items.npz" "$HOME/physim2-pilot-r6/scratch/probe_mac.json" "$HOME/physim2-pilot-r6/scratch/prove.log" "$HOME/physim2-pilot-r6/scratch/probe.log" "$HOME/physim2-pilot-r6-results/" && test -s "$HOME/physim2-pilot-r6-results/proof_mac.json" && test -s "$HOME/physim2-pilot-r6-results/probe_mac.json" && rm -rf "$HOME/physim2-pilot-r6/store" "$HOME/physim2-pilot-r6/scratch" && rmdir "$HOME/physim2-pilot-r6" && ls "$HOME/physim2-pilot-r6-results"
 ```
 
 Expected: the five file names. If it prints nothing: stop and report. The copied files
@@ -1310,18 +1296,18 @@ traces are deleted with the scratch folder. Of step 3, what leaves the Mac is ea
 (step 3h) and nothing else.
 
 ```sh
-cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker ps -a --filter label=verifiers.run=physim2-pilot-r5 --format '{{.Names}} {{.Status}}' && echo "CONTAINERS-LISTED" && docker images --format '{{.Repository}}:{{.Tag}} {{.Size}}' && docker system df
+cd "/ABSOLUTE/PATH/TO/vfport" && test -f RUNBOOK_MAC.md && test -f physim2_env/taskset.py && docker ps -a --filter label=verifiers.run=physim2-pilot-r6 --format '{{.Names}} {{.Status}}' && echo "CONTAINERS-LISTED" && docker images --format '{{.Repository}}:{{.Tag}} {{.Size}}' && docker system df
 ```
 
 Expected: `CONTAINERS-LISTED` with no line before it (no container of the pilot), then the images, then Docker's
 own table of what its disk holds (images, containers, volumes, build cache). Compare with the baseline of the
-by-hand checks: the pilot added `physim2-ring:3`, `localhost/verifiers-network:1` (unless it was there) and no container;
+by-hand checks: the pilot added `physim2-ring:4`, `localhost/verifiers-network:1` (unless it was there) and no container;
 `python:3.12-slim` and `alpine:3.22` may or may not be listed (Docker Desktop does not always list the base
 images of a build): that is not a deviation. Another new image, or a container of the pilot, is. The pilot also
 added build cache (the "Build Cache" row; several hundred megabytes). **Remove none of it yourself.** The helper
 image `localhost/verifiers-network:1` is shared with other verifiers work on this Mac and is not this pilot's to
-remove; `physim2-ring:3` is needed by every rollout of step 3 and may be removed by the lead, by hand, when no
-further run is planned at this pin (`docker rmi physim2-ring:3`; an earlier pin's `physim2-ring:2` likewise, when the lead likes); the build cache can only be removed together with that of every other project (`docker builder
+remove; `physim2-ring:4` is needed by every rollout of step 3 and may be removed by the lead, by hand, when no
+further run is planned at this pin (`docker rmi physim2-ring:4`; earlier pins' `physim2-ring:3` and `physim2-ring:2` likewise, when the lead likes); the build cache can only be removed together with that of every other project (`docker builder
 prune`), which is the lead's decision and never the session's. The `.venv` stays until the lead removes the
 checkout. Left on the Mac besides: uv's cache and Python, `~/.cache/verifiers`, `/tmp/vf-port-*`, the results
 folder.
@@ -1368,7 +1354,7 @@ folder.
   byte bounds of section B were exercised by a box that floods, through vf-eval (`tools/check_step3.py`, part
   `flood`: 14 of 14). Not issued again: steps 2 and 4 and the points of "If a run was interrupted"; their commands
   did not change.
-- **Round 5 (this pin).** The commands it touched were rehearsed from a fresh sparse clone of this pin, each as ONE
+- **Round 5, first pass (pin `c48eb6dc2`).** The commands it touched were rehearsed from a fresh sparse clone of this pin, each as ONE
   `sh -c` line (`results/rehearsal_round5.json`): step 0 (the earlier pin's image listed between `EARLIER PINS,
   HARMLESS:` and `EARLIER-LISTED`), the uv commands and checks of step 1 (the dry run with `command grep` and the
   refusal of a Python that is not uv's own), the image check and the instance of step 1, "Before 2a", 3.0, and one

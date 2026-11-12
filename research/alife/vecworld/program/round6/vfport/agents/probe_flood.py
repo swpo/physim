@@ -24,8 +24,14 @@ is measured by the tool that started the rollout, from outside the box.
               secret (the box's proxy lets one at a time through to the server, the others wait); UNAUTHORIZED
               small requests without the secret (vf-eval's log keeps a bounded number of their lines); to the
               laboratory, LAB_BIG requests with an operation name of 3 MiB and LAB_SMALL refused ones (the
-              laboratory's log on the host keeps each line short and at most its number of lines). Writes
-              /workspace/flood5_report.json.
+              laboratory's log on the host keeps each line short and at most its number of lines). Round 5,
+              second pass: the same PARALLEL requests again in ABSOLUTE FORM (`POST http://<host>:<port>/.vf-host/
+              ...`) and with a target starting with `//` (K11: the box's proxy gates them as it gates the others);
+              a validator of the agent's that writes 90 MiB of SHORT LINES past its `head -c` into the output of
+              the command that started it, under the runtime's 96 MiB (K12: the report is refused before it is
+              split; the tool that started the rollout records vf-eval's memory); and 8 MiB written into the
+              output of the box's PID 1 (/proc/1/fd/1, K13: the box's container log; the tool watches Docker's
+              record of every box of the run). Writes /workspace/flood5_report.json.
   harness     with --harness-flood: 256 MiB into the output of the harness's own command, last of all. vf-eval
               keeps at most its bound, the harness command is reported as failed, and the run is graded on its
               last checkpoint (ruling E1). The report is written BEFORE that, in a second file the harness never
@@ -111,13 +117,13 @@ def chat_program() -> dict:
     return {}
 
 
-def raw_post(url: str, headers: dict, declared, n: int, piece: bytes, wait_s: float = 120.0) -> dict:
+def raw_post(url: str, headers: dict, declared, n: int, piece: bytes, wait_s: float = 120.0, target: str | None = None) -> dict:
     """One POST of n body bytes (declared length, or chunked when declared is None) to an http:// URL, sent as
     fast as the peer takes it; stops at the first byte of an answer. Returns the status line, the body bytes sent
     and the seconds."""
     u = urllib.parse.urlsplit(url)
     s = socket.create_connection((u.hostname, u.port or 80), timeout=60)
-    head = [f"POST {u.path} HTTP/1.1", f"Host: {u.netloc}", "Content-Type: application/json", "Connection: close"]
+    head = [f"POST {target or u.path} HTTP/1.1", f"Host: {u.netloc}", "Content-Type: application/json", "Connection: close"]
     head += [f"{k}: {v}" for k, v in headers.items()]
     head += [f"Content-Length: {declared}"] if declared is not None else ["Transfer-Encoding: chunked"]
     s.sendall(("\r\n".join(head) + "\r\n\r\n").encode())
@@ -176,6 +182,19 @@ def interception_flood(rep: dict) -> None:
     for t in ths:
         t.join(600)
     rep["parallel"] = {"n": PARALLEL, "body_bytes": len(body), "t": [round(t0, 2), round(time.time(), 2)], "answers": res}
+    u = urllib.parse.urlsplit(url)                           # round 5, second pass (K11): the same, in absolute form and `//`
+    for form, target in (("absolute", url), ("double_slash", "//" + u.netloc + u.path)):
+        res = [None] * PARALLEL
+
+        def worker2(i, target=target):
+            res[i] = raw_post(url, auth, len(body), len(body), body, target=target)
+        ths = [threading.Thread(target=worker2, args=(i,)) for i in range(PARALLEL)]
+        t0 = time.time()
+        for t in ths:
+            t.start()
+        for t in ths:
+            t.join(600)
+        rep[form] = {"n": PARALLEL, "target_starts": target[:12], "t": [round(t0, 2), round(time.time(), 2)], "answers": res}
     t0, statuses = time.time(), {}
     for i in range(UNAUTHORIZED):
         r = raw_post(url, {"Authorization": "Bearer not-the-secret"}, 2, 2, b"{}", wait_s=30)
@@ -196,6 +215,36 @@ def interception_flood(rep: dict) -> None:
             out[k] = out.get(k, 0) + 1
     out["t"] = [round(t0, 2), round(time.time(), 2)]
     rep["lab"] = out
+    # ---- round 5, second pass (K12): a validator that writes 90 MiB of short lines past `head -c` ----
+    vpath = os.path.join(os.path.dirname(physim2.__file__), "validate.py")
+    original = open(vpath, "rb").read()
+    t0 = time.time()
+    try:
+        with open(vpath, "w") as f:
+            f.write("import os\n_b = '/proc/%d/fd' % os.getppid()\n"
+                    "_n = [n for n in sorted(os.listdir(_b), key=lambda n: (n not in ('1', '2'), int(n))) if os.readlink(_b + '/' + n).startswith('pipe:')]\n"
+                    "_f = open(_b + '/' + (_n[0] if _n else '1'), 'wb', buffering=0)\nfor _ in range(90):\n    _f.write(b'ab\\n' * 349525 + b'a\\n')\n"
+                    "def check(path):\n    return {'ok': True}\n")
+        try:
+            r = lab._call("validate", path="submission")
+        except Exception as e:
+            r = {"raised": f"{type(e).__name__}: {str(e)[:200]}"}
+    finally:
+        with open(vpath, "wb") as f:
+            f.write(original)
+        sys.modules.pop("physim2.validate", None)
+    rep["validator_short_lines"] = {"report": {k: str(v)[:200] for k, v in r.items()}, "bytes": 90 * MIB,
+                                    "t": [round(t0, 2), round(time.time(), 2)]}
+    try:                                                     # the original validator still answers
+        r2 = lab._call("validate", path="submission")
+        rep["validator_after"] = {k: str(v)[:120] for k, v in r2.items()}
+    except Exception as e:
+        rep["validator_after"] = {"raised": type(e).__name__}
+    # ---- round 5, second pass (K13): 8 MiB into the output of the box's PID 1 (its container log) ----
+    time.sleep(3.0)
+    t0 = time.time()
+    rep["pid1_log"] = dict(write_to("/proc/1/fd/1", 8 * MIB), t=[round(t0, 2), round(time.time(), 2)])
+    time.sleep(8.0)                                          # the tool that started the rollout looks at Docker's record meanwhile
 
 
 def main():
