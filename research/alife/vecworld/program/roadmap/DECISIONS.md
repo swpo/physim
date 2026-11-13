@@ -189,8 +189,10 @@ term right?"
   grading; the library's own spend stops for now, with the review's spend items before the first paid rollout.
 - First milestone met on Prime sandboxes (13 Nov, scripted, no model): the reference table of the pilot instance
   reproduces vfport's to the last digit for null, D, P0 and C, per item (264 boxes, about $0.11 of sandbox time). Not
-  yet pushed: the lead asked to be asked first. Measured in the agent box: one CPU visible although two were
-  requested, no cgroup limits, a 10 GB root disk; the told envelope is to be switched to measured values.
+  yet pushed: the lead asked to be asked first. Prime's boxes are virtual machines sized to the request (measured
+  at 1, 2, 4 and 8 CPUs with 4 to 16 GB: the CPU count and memory match the request and an allocation past it is
+  killed; no cgroup limits inside); the "one CPU" first reported came from the scripted harness's own
+  OMP_NUM_THREADS=1. A 10 GB root disk. The told envelope is to be the measured one, checked at set-up.
 
 ## Rulings on the exam after the first rollout (the coordinator, 11 Nov; for the lead to correct)
 
