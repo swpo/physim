@@ -12,6 +12,7 @@ order in which they were put to the lead; the roadmap's own number is in bracket
 | 5 [6] | where sealed answers live, and who grades | decided 10 Nov | a private Hugging Face dataset repo, not the lead's Mac; the grader must build on the verifiers library, not reinvent it |
 | 5b | where the port's first runs happen | decided 11 Nov (relayed); partly replaced by 5c | smoke test on a rented Prime CPU machine first; model rollout on the Mac; no credential on a rented machine |
 | 5c | where model rollouts run, and how they are requested | decided 11 Nov (direct, then relayed) | short mechanics checks in the coordinator's cloud container; everything else on the Mac, unattended, by request files against a reviewed pin |
+| 5d | the environment's platform | decided 13 Nov (relayed) | rebuild on stock verifiers 0.4.1 with Prime sandboxes, as PhySim v1 does; vfport frozen at aa16b4d18 as a reference |
 | 6 [5, 6] | the collective pilot and the large foundry pass | decided 10 Nov | both wait; a collective, if run, is run from the coordinator's session with Claude sessions as agents |
 
 Roadmap decision 3 (the acceptance definition) was not put separately. The two quantities of roadmap section 1
@@ -153,6 +154,35 @@ so running stuff 24/7 should be ok".
   that it waits for the lead.
 - Pilot instances are public material and are never reused as exams. Sealed exams still wait for the private
   store (decision 5).
+
+## 5d. Rebuild the environment on stock verifiers 0.4.1 (13 Nov, relayed by the Mac session)
+
+After an independent check that the lead asked the Mac session for (vfport against verifiers 0.4.1 and against the
+PhySim v1 environment), the lead chose to rebuild: "Yes let's rebuild (design a) which feels better for the long
+term right?"
+
+- The target ("design A"): one taskset on stock `verifiers==0.4.1`, as PhySim v1 does it. The agent's box, the
+  verifier box and one fresh box per graded item run in Prime sandboxes (network allow-list empty, confirmed before
+  the agent starts); the Lab is a per-task tool server on the host that runs vf-run, wrapping round 5's LabService,
+  reached through verifiers' interception server; hidden parameters, the secret and the truth never leave that host;
+  the predictor is an artifact graded with the library's isolated scoring. Estimated 1.5 to 2.5 thousand lines of
+  product code plus tests, against about 9.5 thousand in vfport, most of which served two choices this replaces:
+  running root model code in local Docker on the Mac, and the request, pin and ledger layer around it.
+- What carries over from vfport: single use of an instance; the null baseline in the box and failed items scored on
+  the null forecast; the strict reply reader and a random user id per item; limits told to the agent from the code's
+  values; the Lab process's environment scrub; commitment-only rows and the trace and canary scans; spend admission
+  (in-flight calls times the worst call, an allow-list of request keys, one sample per call); the hostile
+  submissions and the scripted harness as test assets.
+- `round6/vfport` is frozen at aa16b4d18 (its last GO) as a reference and a cross-check; no further pin, no
+  profile 2 on it, no rollout request against it. The profile-2 design (`../round6/profile2`) stays valid for the
+  worlds, budgets, reference tiers and decision rule; its list of pin changes is re-targeted at the rebuild.
+- First milestone: a scripted run through vf-run on Prime sandboxes, with no model spend, that reproduces vfport's
+  reference table on the same pilot instance, plus measured sandbox cost and latency for one rollout (about 66
+  boxes) and the forced harness crash and hostile submissions.
+- Lesson for the coordinator, the second of its kind (after 5b): the platform question (local Docker against the
+  library's own sandboxes) was not put to the lead before five rounds of hardening a local design.
+- Open with the lead: who builds it; the image route (a pinned public base image with installs at set-up, as v1
+  does, or a pushed image); how errored runs are graded.
 
 ## Rulings on the exam after the first rollout (the coordinator, 11 Nov; for the lead to correct)
 
