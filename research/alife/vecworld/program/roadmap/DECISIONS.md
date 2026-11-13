@@ -181,8 +181,16 @@ term right?"
   boxes) and the forced harness crash and hostile submissions.
 - Lesson for the coordinator, the second of its kind (after 5b): the platform question (local Docker against the
   library's own sandboxes) was not put to the lead before five rounds of hardening a local design.
-- Open with the lead: who builds it; the image route (a pinned public base image with installs at set-up, as v1
-  does, or a pushed image); how errored runs are graded.
+- Settled by the lead with the Mac session (13 Nov, relayed): the Mac session builds it
+  (`../round6/physim2`, packages `physim2_vf` and `physim2_vf_scripted`; round 5's agentenv and vfport's pure
+  modules imported unchanged through hash-pinned seams); every box installs hash-pinned requirements from a pinned
+  `python:3.12-slim` by digest, and no image is published; a crashed run is settled on the null policy by a
+  script; `validate` inside the box gives feedback only and `submit` only ends the run, the authoritative check is at
+  grading; the library's own spend stops for now, with the review's spend items before the first paid rollout.
+- First milestone met on Prime sandboxes (13 Nov, scripted, no model): the reference table of the pilot instance
+  reproduces vfport's to the last digit for null, D, P0 and C, per item (264 boxes, about $0.11 of sandbox time). Not
+  yet pushed: the lead asked to be asked first. Measured in the agent box: one CPU visible although two were
+  requested, no cgroup limits, a 10 GB root disk; the told envelope is to be switched to measured values.
 
 ## Rulings on the exam after the first rollout (the coordinator, 11 Nov; for the lead to correct)
 
